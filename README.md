@@ -3,13 +3,14 @@ Markdown source for the Network Foundations course served by Learn
 
 ## Local preview
 
-The local Learn preview must use GitHub `main`, never the current local branch. Fetch and build its exact commit with:
+Use GitHub `main` for the current published-source view, or a GitHub PR head for a clearly labeled candidate review. Neither mode reads the current local branch:
 
 ```sh
-python3 scripts/build_main_preview.py
+python3 scripts/build_preview.py
+python3 scripts/build_preview.py --pr 1
 ```
 
-This records the source commit in the generated catalog and serves no lessons when GitHub `main` has no course content. `preview/` is generated and ignored. The content in an unmerged pull request will not appear in this preview.
+Each generated catalog records and displays the exact GitHub commit used. `preview/` is generated and ignored. A PR preview is a review candidate; only content merged to `main` is the published-source baseline.
 
 ## Unit 1 source
 

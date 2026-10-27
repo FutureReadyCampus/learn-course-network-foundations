@@ -79,7 +79,7 @@ def reading_pages(path: Path, beginner_path: Path, diagram_path: Path, illustrat
     return pages
 
 
-def build(source_revision: str = "local-draft") -> dict:
+def build(source_revision: str = "local-draft", source_label: str = "local draft") -> dict:
     course_meta = yaml.safe_load((ROOT / "course.yaml").read_text(encoding="utf-8"))
     units = []
     for item in course_meta["units"]:
@@ -126,11 +126,16 @@ def build(source_revision: str = "local-draft") -> dict:
             lessons.append((unit_order[unit_config["id"]], order, lesson))
     lessons = [lesson for _, _, lesson in sorted(lessons, key=lambda item: (item[0], item[1]))]
     return {
-        "version": f"github-main-{source_revision}",
+        "version": f"network-{source_revision}",
         "title": course_meta["course"]["title"],
         "units": units,
         "lessons": lessons,
-        "limits": "LOCAL PREVIEW ONLY · Generated from Markdown; not published",
+        "limits": f"PREVIEW ONLY · {source_label} · not published",
+        "preview_source": {
+            "label": source_label,
+            "sha": source_revision,
+            "url": f"https://github.com/FutureReadyCampus/learn-course-network-foundations/commit/{source_revision}",
+        },
     }
 
 
@@ -138,8 +143,9 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=ROOT / "preview/learn-network-course.json")
     parser.add_argument("--source-revision", default="local-draft")
+    parser.add_argument("--source-label", default="local draft")
     args = parser.parse_args()
-    catalog = build(args.source_revision)
+    catalog = build(args.source_revision, args.source_label)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Built {len(catalog['units'])} units and {len(catalog['lessons'])} lessons: {args.output}")
