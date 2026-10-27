@@ -1,15 +1,16 @@
 # learn-course-network-foundations
 Markdown source for the Network Foundations course served by Learn
 
-## Unit 1 local preview
+## Local preview
 
-The Markdown files are the source. Generate the Learn catalog with:
+The local Learn preview must use GitHub `main`, never the current local branch. Fetch and build its exact commit with:
 
 ```sh
-python3 -m venv .venv
-. .venv/bin/activate
-pip install -r requirements.txt
-python scripts/build_course.py
+python3 scripts/build_main_preview.py
 ```
 
-This writes `preview/learn-network-course.json`. Treat that file as generated output; edit the Unit and Lesson Markdown instead. The current pilot exports only Lessons that have a `lesson.md` and at least one file in `steps/`.
+This records the source commit in the generated catalog and serves no lessons when GitHub `main` has no course content. `preview/` is generated and ignored. The content in an unmerged pull request will not appear in this preview.
+
+## Unit 1 source
+
+Unit 1 follows the Wiki catalog. Its source Markdown, beginner-guide JSON and supplied SVG files are preserved under `sources/wiki/oeweo-network/`; the Learn catalog is generated from the Wiki reading editions.

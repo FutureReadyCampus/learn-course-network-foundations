@@ -39,7 +39,47 @@ def split_paragraphs(text: str) -> list[str]:
     return paragraphs
 
 
-def build() -> dict:
+def reading_pages(path: Path, beginner_path: Path, diagram_path: Path, illustrated_pages: list[int]) -> list[dict]:
+    source = path.read_text(encoding="utf-8")
+    edition = source.split("<!-- reading-edition:start -->", 1)[1].split("<!-- reading-edition:end -->", 1)[0]
+    sections = re.findall(r"^### (.+?)\s*\n(.*?)(?=^### |\Z)", edition, re.M | re.S)
+    concepts = json.loads(beginner_path.read_text(encoding="utf-8"))["concepts"]
+    pages = []
+    for index, (heading, body) in enumerate(sections):
+        title = re.sub(r"\s*·\s*\d+:\d+.*$", "", heading).strip()
+        concept = concepts[min(index, len(concepts) - 1)] if concepts else {}
+        page = {
+            "title": title,
+            "paragraphs": split_paragraphs(body),
+            "terms": [item["term"] for item in concept.get("terms", [])],
+            "questions": [],
+        }
+        illustrations = []
+        if index == 0:
+            illustrations.append({
+                "src": f"/api/v1/network-course-assets/{diagram_path.relative_to(ROOT).as_posix()}",
+                "title": f"{title} · 학습 흐름",
+                "alt": f"{title}의 Wiki 학습 흐름 그림",
+                "caption": "Wiki 제공 그림",
+            })
+        if index + 1 in illustrated_pages and concept.get("anim"):
+            anim = concept["anim"]
+            asset = ROOT / "sources/wiki/oeweo-network/newbie/anim" / anim["file"]
+            illustrations.append({
+                "src": f"/api/v1/network-course-assets/{asset.relative_to(ROOT).as_posix()}",
+                "title": anim["title"],
+                "alt": anim["alt"],
+                "caption": anim["caption"],
+            })
+        if illustrations:
+            page["illustrations"] = illustrations
+        pages.append(page)
+    if not pages:
+        raise ValueError(f"Wiki reading edition has no sections: {path}")
+    return pages
+
+
+def build(source_revision: str = "local-draft") -> dict:
     course_meta = yaml.safe_load((ROOT / "course.yaml").read_text(encoding="utf-8"))
     units = []
     for item in course_meta["units"]:
@@ -54,43 +94,39 @@ def build() -> dict:
 
     lessons = []
     unit_order = {item["id"]: index for index, item in enumerate(course_meta["units"])}
-    for path in sorted(ROOT.glob("units/**/lessons/**/lesson.md")):
-        metadata, _ = read_front_matter(path)
-        step_paths = sorted((path.parent / "steps").glob("*.md"))
-        pages = []
-        for step_path in step_paths:
-            body = step_path.read_text(encoding="utf-8").strip()
-            heading, _, content = body.partition("\n")
-            title = heading.removeprefix("# ").strip()
-            pages.append({
-                "title": title,
-                "paragraphs": split_paragraphs(content),
+    for unit_config in course_meta["units"]:
+        unit_path = ROOT / unit_config["path"]
+        if not unit_path.exists():
+            continue
+        unit_meta, _ = read_front_matter(unit_path)
+        for order, item in enumerate(unit_meta.get("wiki_lessons", [])):
+            lesson = {
+                "id": item["id"],
+                "unit": unit_config["id"],
+                "title": item["title"],
                 "terms": [],
-                "questions": [],
-            })
-        if not pages:
-            raise ValueError(f"Lesson has no step Markdown files: {path.parent}")
-        lesson = {
-            "id": metadata["id"],
-            "unit": metadata["unit"],
-            "title": metadata["title"],
-            "terms": [],
-            "pages": pages,
-            "source": "learn-course-network-foundations",
-            "reading": [],
-            "question": "",
-            "choices": [],
-            "scenario": "",
-            "commands": [],
-            "controls": [],
-            "hint": "",
-            "explain": "",
-            "kind": "reading",
-        }
-        lessons.append((unit_order[metadata["unit"]], metadata.get("order", 0), lesson))
+                "pages": reading_pages(
+                    ROOT / item["path"],
+                    ROOT / item["beginner_guide"],
+                    ROOT / item["wiki_diagram"],
+                    item.get("illustrated_pages", []),
+                ),
+                "source": "oeweo-network-wiki",
+                "source_path": item["path"],
+                "reading": [],
+                "question": "",
+                "choices": [],
+                "scenario": "",
+                "commands": [],
+                "controls": [],
+                "hint": "",
+                "explain": "",
+                "kind": "reading",
+            }
+            lessons.append((unit_order[unit_config["id"]], order, lesson))
     lessons = [lesson for _, _, lesson in sorted(lessons, key=lambda item: (item[0], item[1]))]
     return {
-        "version": "network-foundations-local-draft",
+        "version": f"github-main-{source_revision}",
         "title": course_meta["course"]["title"],
         "units": units,
         "lessons": lessons,
@@ -101,8 +137,9 @@ def build() -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=ROOT / "preview/learn-network-course.json")
+    parser.add_argument("--source-revision", default="local-draft")
     args = parser.parse_args()
-    catalog = build()
+    catalog = build(args.source_revision)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Built {len(catalog['units'])} units and {len(catalog['lessons'])} lessons: {args.output}")
