@@ -43,6 +43,7 @@ def main() -> None:
 
         if ASSETS.exists():
             shutil.rmtree(ASSETS)
+        ASSETS.mkdir(parents=True, exist_ok=True)
         shutil.copytree(source_root / "sources", ASSETS / "sources")
         subprocess.run([
             "python3", str(source_root / "scripts/build_course.py"),
