@@ -2,6 +2,7 @@
 id: before-networking
 title: 들어가기에 앞서...
 status: draft
+animations_dir: units/01-before-networking/animations
 source:
   repository: course-network
   path: studio/wiki/oeweo-network/catalog.json
@@ -10,9 +11,9 @@ wiki_lessons:
   - id: u1-prerequisites
     title: 수강 전에 알고 있다고 가정하는 것들
     path: sources/wiki/oeweo-network/lesson-01.md
-    beginner_guide: sources/wiki/oeweo-network/newbie/specs/lesson-01.json
+    beginner_guide: units/01-before-networking/lesson-01-guide.json
     wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-01.svg
-    illustrated_pages: [2, 3, 4]
+    illustrated_pages: [2, 3, 4, 5, 6, 8]
   - id: u1-layers
     title: Layer와 Layered 구조
     path: sources/wiki/oeweo-network/lesson-02.md
@@ -35,7 +36,7 @@ wiki_lessons:
 
 # 들어가기에 앞서...
 
-이 Unit은 Wiki 기초편 첫 대분류를 따릅니다. 원본의 강의소개는 Unit 안내로 두고, 원본 Lesson 2–5의 Wiki 정리문을 네 Lesson으로 읽습니다. 설명 순서와 문장은 Wiki에서 가져오며, 왕초보 길잡이의 개념 설명과 SVG를 대응 페이지에 함께 표시합니다.
+이 Unit은 Wiki 기초편 첫 대분류를 따릅니다. 원본의 강의소개는 Unit 안내로 두고, 원본 Lesson 2–5의 Wiki 정리문을 네 Lesson으로 읽습니다. Lesson 1의 설명과 시각 자료는 초보자가 따라 할 수 있게 다듬었고, 원문과 36개 보충 JSON·89개 원본 SVG는 `sources/wiki/oeweo-network/`에 그대로 보존합니다.
 
 ## 원본 범위
 
@@ -45,4 +46,4 @@ wiki_lessons:
 4. 네트워크와 네트워킹 그리고 개념 — 왕초보 길잡이 Lesson 3
 5. User mode와 Kernel mode — 왕초보 길잡이 Lesson 4
 
-원문 Markdown, 왕초보 JSON, Wiki SVG와 왕초보 SVG의 복사본은 `sources/wiki/oeweo-network/`에 보존합니다. Unit 페이지는 이 자료를 읽기 순서와 Learn 표시 형식으로 연결합니다.
+Unit 페이지는 원문을 읽기 순서와 Learn 표시 형식으로 연결합니다. 움직이는 SVG는 원본을 보존하고, 학습 화면에는 0.3× 재생본을 사용합니다.

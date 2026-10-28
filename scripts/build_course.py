@@ -7,6 +7,7 @@ import argparse
 import json
 import re
 from pathlib import Path
+from typing import Optional
 
 import yaml
 
@@ -39,7 +40,14 @@ def split_paragraphs(text: str) -> list[str]:
     return paragraphs
 
 
-def reading_pages(path: Path, beginner_path: Path, diagram_path: Path, illustrated_pages: list[int]) -> list[dict]:
+def reading_pages(
+    path: Path,
+    beginner_path: Path,
+    diagram_path: Path,
+    illustrated_pages: list[int],
+    animation_assets: dict,
+    unit_animation_dir: Optional[str],
+) -> list[dict]:
     source = path.read_text(encoding="utf-8")
     edition = source.split("<!-- reading-edition:start -->", 1)[1].split("<!-- reading-edition:end -->", 1)[0]
     sections = re.findall(r"^### (.+?)\s*\n(.*?)(?=^### |\Z)", edition, re.M | re.S)
@@ -59,18 +67,29 @@ def reading_pages(path: Path, beginner_path: Path, diagram_path: Path, illustrat
             illustrations.append({
                 "src": f"/api/v1/network-course-assets/{diagram_path.relative_to(ROOT).as_posix()}",
                 "title": f"{title} · 학습 흐름",
-                "alt": f"{title}의 Wiki 학습 흐름 그림",
-                "caption": "Wiki 제공 그림",
+                "alt": f"{title}의 개념 순서와 강의 시점을 보여 주는 학습 흐름도",
+                "caption": "개념이 이어지는 순서를 확인해 보세요.",
             })
         if index + 1 in illustrated_pages and concept.get("anim"):
-            anim = concept["anim"]
-            asset = ROOT / "sources/wiki/oeweo-network/newbie/anim" / anim["file"]
-            illustrations.append({
-                "src": f"/api/v1/network-course-assets/{asset.relative_to(ROOT).as_posix()}",
-                "title": anim["title"],
-                "alt": anim["alt"],
-                "caption": anim["caption"],
-            })
+            animations = [concept["anim"], *concept.get("additional_anims", [])]
+            for anim in animations:
+                candidates = []
+                if unit_animation_dir:
+                    candidates.append(ROOT / unit_animation_dir / anim["file"])
+                runtime_dir = animation_assets.get("runtime_dir")
+                if runtime_dir:
+                    candidates.append(ROOT / runtime_dir / anim["file"])
+                source_dir = animation_assets.get("source_dir", "sources/wiki/oeweo-network/newbie/anim")
+                candidates.append(ROOT / source_dir / anim["file"])
+                asset = next((candidate for candidate in candidates if candidate.is_file()), None)
+                if asset is None:
+                    raise FileNotFoundError(f"Missing SVG animation {anim['file']} for {path}")
+                illustrations.append({
+                    "src": f"/api/v1/network-course-assets/{asset.relative_to(ROOT).as_posix()}",
+                    "title": anim["title"],
+                    "alt": anim["alt"],
+                    "caption": anim["caption"],
+                })
         if illustrations:
             page["illustrations"] = illustrations
         pages.append(page)
@@ -110,6 +129,8 @@ def build(source_revision: str = "local-draft", source_label: str = "local draft
                     ROOT / item["beginner_guide"],
                     ROOT / item["wiki_diagram"],
                     item.get("illustrated_pages", []),
+                    course_meta.get("animation_assets", {}),
+                    unit_meta.get("animations_dir"),
                 ),
                 "source": "oeweo-network-wiki",
                 "source_path": item["path"],

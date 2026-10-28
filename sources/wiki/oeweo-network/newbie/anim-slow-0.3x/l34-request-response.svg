@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+  <rect width="960" height="540" fill="#0f1115"/>
+
+  <!-- 제목 + 고정 결론 -->
+  <text x="480" y="56" text-anchor="middle" font-size="34" font-weight="700" fill="#e6e8ec">HTTP는 요청 → 응답, 한 쌍의 대화</text>
+  <text x="480" y="98" text-anchor="middle" font-size="24" fill="#9aa3b2">손님(클라이언트)이 먼저 주문하고, 식당(서버)이 내준다</text>
+
+  <!-- 네트워크 길 -->
+  <line x1="262" y1="284" x2="748" y2="284" stroke="#3d4b60" stroke-width="3" stroke-dasharray="10 8"/>
+
+  <!-- 클라이언트(브라우저) -->
+  <rect x="40" y="150" width="210" height="230" rx="10" fill="#171a21" stroke="#3d4b60" stroke-width="3"/>
+  <line x1="40" y1="186" x2="250" y2="186" stroke="#3d4b60" stroke-width="2"/>
+  <circle cx="60" cy="168" r="6" fill="#ffb454"/>
+  <circle cx="80" cy="168" r="6" fill="#7ee7c7"/>
+  <circle cx="100" cy="168" r="6" fill="#6ea8fe"/>
+  <rect x="52" y="194" width="186" height="34" rx="6" fill="#0f1115" stroke="#3d4b60"/>
+  <text x="64" y="219" font-size="24" fill="#e6e8ec">index.html</text>
+  <text x="145" y="310" text-anchor="middle" font-size="24" fill="#9aa3b2">빈 화면
+    <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.76;0.78;0.97;1" dur="33.333s" repeatCount="indefinite"/>
+  </text>
+  <!-- 채워지는 문서 -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.76;0.79;0.95;0.98;1" dur="33.333s" repeatCount="indefinite"/>
+    <rect x="52" y="238" width="186" height="130" rx="4" fill="#e6e8ec"/>
+    <rect x="64" y="250" width="140" height="20" rx="3" fill="#6ea8fe"/>
+    <rect x="64" y="282" width="160" height="10" rx="3" fill="#9aa3b2"/>
+    <rect x="64" y="302" width="130" height="10" rx="3" fill="#9aa3b2"/>
+    <rect x="64" y="322" width="150" height="10" rx="3" fill="#9aa3b2"/>
+    <rect x="64" y="342" width="100" height="10" rx="3" fill="#9aa3b2"/>
+  </g>
+  <text x="145" y="420" text-anchor="middle" font-size="26" font-weight="700" fill="#7ee7c7">클라이언트(브라우저)</text>
+  <text x="145" y="452" text-anchor="middle" font-size="24" fill="#9aa3b2">= 손님</text>
+
+  <!-- 서버 -->
+  <rect x="760" y="150" width="160" height="230" rx="10" fill="#171a21" stroke="#3d4b60" stroke-width="3"/>
+  <g fill="#0f1115" stroke="#3d4b60">
+    <rect x="775" y="168" width="130" height="56" rx="6"/>
+    <rect x="775" y="237" width="130" height="56" rx="6"/>
+    <rect x="775" y="306" width="130" height="56" rx="6"/>
+  </g>
+  <g stroke="#3d4b60" stroke-width="4">
+    <line x1="788" y1="196" x2="860" y2="196"/>
+    <line x1="788" y1="265" x2="860" y2="265"/>
+    <line x1="788" y1="334" x2="860" y2="334"/>
+  </g>
+  <g fill="#7ee7c7">
+    <animate attributeName="fill" values="#7ee7c7;#7ee7c7;#ffb454;#7ee7c7;#ffb454;#7ee7c7;#7ee7c7" keyTimes="0;0.47;0.5;0.52;0.54;0.56;1" dur="33.333s" repeatCount="indefinite"/>
+    <circle cx="886" cy="196" r="7"/>
+    <circle cx="886" cy="265" r="7"/>
+    <circle cx="886" cy="334" r="7"/>
+  </g>
+  <text x="840" y="420" text-anchor="middle" font-size="26" font-weight="700" fill="#6ea8fe">서버</text>
+  <text x="840" y="452" text-anchor="middle" font-size="24" fill="#9aa3b2">= 식당</text>
+
+  <!-- ① Request 라벨 -->
+  <text x="505" y="190" text-anchor="middle" font-size="26" font-weight="700" fill="#ffb454" opacity="0">① Request(요청) →
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.22;0.26;0.95;0.98;1" dur="33.333s" repeatCount="indefinite"/>
+  </text>
+  <!-- 요청 쪽지 -->
+  <g opacity="0">
+    <animateTransform attributeName="transform" type="translate" values="0,0;0,0;280,0;280,0" keyTimes="0;0.23;0.45;1" dur="33.333s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2;0.23;0.45;0.48;1" dur="33.333s" repeatCount="indefinite"/>
+    <rect x="260" y="208" width="210" height="46" rx="6" fill="#171a21" stroke="#ffb454" stroke-width="3"/>
+    <text x="365" y="239" text-anchor="middle" font-size="24" fill="#e6e8ec">GET /index.html</text>
+  </g>
+
+  <!-- 응답 상자 -->
+  <g opacity="0">
+    <animateTransform attributeName="transform" type="translate" values="0,0;0,0;-280,0;-280,0" keyTimes="0;0.58;0.76;1" dur="33.333s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.55;0.58;0.76;0.8;1" dur="33.333s" repeatCount="indefinite"/>
+    <rect x="540" y="314" width="210" height="46" rx="6" fill="#7ee7c7"/>
+    <text x="645" y="345" text-anchor="middle" font-size="24" font-weight="700" fill="#0f1115">200 OK + HTML</text>
+  </g>
+  <!-- ② Response 라벨 -->
+  <text x="505" y="396" text-anchor="middle" font-size="26" font-weight="700" fill="#7ee7c7" opacity="0">← ② Response(응답)
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.56;0.6;0.95;0.98;1" dur="33.333s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- 자막 바 -->
+  <rect x="40" y="474" width="880" height="54" rx="10" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+  <g font-size="26" text-anchor="middle" fill="#e6e8ec">
+    <text x="480" y="510">왼쪽은 손님(브라우저), 오른쪽은 식당(서버)
+      <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.2;0.23;0.97;1" dur="33.333s" repeatCount="indefinite"/>
+    </text>
+    <text x="480" y="510" opacity="0">① 손님이 먼저 주문을 보낸다: Request
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2;0.23;0.47;0.5;1" dur="33.333s" repeatCount="indefinite"/>
+    </text>
+    <text x="480" y="510" opacity="0">② 서버가 문서를 담아 돌려준다: Response
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.53;0.75;0.78;1" dur="33.333s" repeatCount="indefinite"/>
+    </text>
+    <text x="480" y="510" opacity="0" fill="#7ee7c7" font-weight="700">요청 먼저, 응답은 그 뒤 — 한 쌍의 대화
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.78;0.8;0.95;0.97;1" dur="33.333s" repeatCount="indefinite"/>
+    </text>
+  </g>
+</svg>

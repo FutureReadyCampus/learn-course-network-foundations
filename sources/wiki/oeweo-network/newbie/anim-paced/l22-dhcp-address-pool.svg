@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+<rect width="960" height="540" fill="#0f1115"/>
+<text x="480" y="50" text-anchor="middle" font-size="34" font-weight="700" fill="#e6e8ec">주소 풀에서 꺼내 꾸러미로 건네준다</text>
+
+<!-- DHCP 서버와 주소 풀 -->
+<rect x="30" y="80" width="280" height="350" rx="14" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<text x="170" y="116" text-anchor="middle" font-size="26" font-weight="700" fill="#7ee7c7">DHCP 서버</text>
+<text x="170" y="152" text-anchor="middle" font-size="24" fill="#9aa3b2">주소 풀</text>
+<g font-size="24">
+  <rect x="50" y="168" width="240" height="44" rx="8" fill="#0f1115" stroke="#3d4b60" stroke-width="2">
+    <animate attributeName="fill" values="#0f1115;#0f1115;#ffb454;#ffb454;#0f1115" keyTimes="0;0.52;0.56;0.96;1" dur="16s" repeatCount="indefinite"/>
+  </rect>
+  <text x="60" y="198" fill="#e6e8ec">192.168.0.100<animate attributeName="fill" values="#e6e8ec;#e6e8ec;#0f1115;#0f1115;#e6e8ec" keyTimes="0;0.52;0.56;0.96;1" dur="16s" repeatCount="indefinite"/></text>
+  <text x="284" y="198" text-anchor="end" font-weight="700" fill="#0f1115" opacity="0">사용 중<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.52;0.56;0.96;1" dur="16s" repeatCount="indefinite"/></text>
+
+  <rect x="50" y="220" width="240" height="44" rx="8" fill="#0f1115" stroke="#3d4b60" stroke-width="2">
+    <animate attributeName="fill" values="#0f1115;#0f1115;#ffb454;#ffb454;#0f1115" keyTimes="0;0.85;0.88;0.96;1" dur="16s" repeatCount="indefinite"/>
+  </rect>
+  <text x="60" y="250" fill="#e6e8ec">192.168.0.101<animate attributeName="fill" values="#e6e8ec;#e6e8ec;#0f1115;#0f1115;#e6e8ec" keyTimes="0;0.85;0.88;0.96;1" dur="16s" repeatCount="indefinite"/></text>
+  <text x="284" y="250" text-anchor="end" font-weight="700" fill="#0f1115" opacity="0">사용 중<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.85;0.88;0.96;1" dur="16s" repeatCount="indefinite"/></text>
+
+  <rect x="50" y="272" width="240" height="44" rx="8" fill="#0f1115" stroke="#3d4b60" stroke-width="2"/>
+  <text x="60" y="302" fill="#e6e8ec">192.168.0.102</text>
+  <rect x="50" y="324" width="240" height="44" rx="8" fill="#0f1115" stroke="#3d4b60" stroke-width="2"/>
+  <text x="60" y="354" fill="#e6e8ec">192.168.0.103</text>
+  <rect x="50" y="376" width="240" height="44" rx="8" fill="#0f1115" stroke="#3d4b60" stroke-width="2"/>
+  <text x="60" y="406" fill="#e6e8ec">192.168.0.104</text>
+</g>
+
+<!-- PC A / PC B -->
+<g font-size="24">
+  <rect x="700" y="80" width="230" height="130" rx="14" fill="#171a21" stroke="#6ea8fe" stroke-width="2"/>
+  <text x="815" y="120" text-anchor="middle" font-size="26" font-weight="700" fill="#6ea8fe">PC A</text>
+  <text x="815" y="170" text-anchor="middle" fill="#9aa3b2">IP: ?<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.63;0.65;0.96;1" dur="16s" repeatCount="indefinite"/></text>
+  <text x="815" y="170" text-anchor="middle" font-weight="700" fill="#7ee7c7" opacity="0">192.168.0.100<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.63;0.66;0.96;1" dur="16s" repeatCount="indefinite"/></text>
+
+  <rect x="700" y="300" width="230" height="130" rx="14" fill="#171a21" stroke="#6ea8fe" stroke-width="2"/>
+  <text x="815" y="340" text-anchor="middle" font-size="26" font-weight="700" fill="#6ea8fe">PC B</text>
+  <text x="815" y="390" text-anchor="middle" fill="#9aa3b2">IP: ?<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.9;0.92;0.96;1" dur="16s" repeatCount="indefinite"/></text>
+  <text x="815" y="390" text-anchor="middle" font-weight="700" fill="#ffb454" opacity="0">192.168.0.101<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.9;0.93;0.96;1" dur="16s" repeatCount="indefinite"/></text>
+</g>
+
+<!-- 요청 말풍선 -->
+<g opacity="0">
+  <rect x="500" y="92" width="180" height="44" rx="22" fill="#171a21" stroke="#6ea8fe" stroke-width="2"/>
+  <text x="590" y="122" text-anchor="middle" font-size="24" fill="#e6e8ec">주소 주세요</text>
+  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2;0.22;0.3;0.32;1" dur="16s" repeatCount="indefinite"/>
+</g>
+<g opacity="0">
+  <rect x="500" y="374" width="180" height="44" rx="22" fill="#171a21" stroke="#6ea8fe" stroke-width="2"/>
+  <text x="590" y="404" text-anchor="middle" font-size="24" fill="#e6e8ec">주소 주세요</text>
+  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.8;0.81;0.84;0.85;1" dur="16s" repeatCount="indefinite"/>
+</g>
+
+<!-- 꾸러미 A: .100 -->
+<g opacity="0">
+  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.22;0.25;0.62;0.65;1" dur="16s" repeatCount="indefinite"/>
+  <animateTransform attributeName="transform" type="translate" values="0,0;0,0;300,-100;300,-100" keyTimes="0;0.5;0.63;1" dur="16s" repeatCount="indefinite"/>
+  <g transform="translate(500,255)"><g>
+    <animateTransform attributeName="transform" type="scale" values="1;1;0.3;0.3" keyTimes="0;0.5;0.63;1" dur="16s" repeatCount="indefinite"/>
+    <g transform="translate(-500,-255)" font-size="24">
+      <rect x="330" y="160" width="340" height="190" rx="12" fill="#171a21" stroke="#7ee7c7" stroke-width="3"/>
+      <rect x="345" y="172" width="310" height="40" rx="6" fill="#7ee7c7"/>
+      <text x="360" y="201" font-weight="700" fill="#0f1115">IP 192.168.0.100</text>
+      <text x="360" y="249" fill="#e6e8ec" opacity="0">마스크 255.255.255.0<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.28;0.31;1" dur="16s" repeatCount="indefinite"/></text>
+      <text x="360" y="289" fill="#e6e8ec" opacity="0">게이트웨이 192.168.0.1<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.34;0.37;1" dur="16s" repeatCount="indefinite"/></text>
+      <text x="360" y="329" fill="#e6e8ec" opacity="0">DNS 8.8.8.8<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.4;0.43;1" dur="16s" repeatCount="indefinite"/></text>
+    </g>
+  </g></g>
+</g>
+
+<!-- 꾸러미 B: .101 -->
+<g opacity="0">
+  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.83;0.85;0.88;0.9;1" dur="16s" repeatCount="indefinite"/>
+  <animateTransform attributeName="transform" type="translate" values="0,0;0,0;300,120;300,120" keyTimes="0;0.85;0.9;1" dur="16s" repeatCount="indefinite"/>
+  <g transform="translate(500,255)"><g>
+    <animateTransform attributeName="transform" type="scale" values="1;1;0.3;0.3" keyTimes="0;0.85;0.9;1" dur="16s" repeatCount="indefinite"/>
+    <g transform="translate(-500,-255)" font-size="24">
+      <rect x="330" y="160" width="340" height="190" rx="12" fill="#171a21" stroke="#ffb454" stroke-width="3"/>
+      <rect x="345" y="172" width="310" height="40" rx="6" fill="#ffb454"/>
+      <text x="360" y="201" font-weight="700" fill="#0f1115">IP 192.168.0.101</text>
+      <text x="360" y="249" fill="#e6e8ec">마스크 255.255.255.0</text>
+      <text x="360" y="289" fill="#e6e8ec">게이트웨이 192.168.0.1</text>
+      <text x="360" y="329" fill="#e6e8ec">DNS 8.8.8.8</text>
+    </g>
+  </g></g>
+</g>
+
+<!-- 자막 바 -->
+<rect x="30" y="450" width="900" height="70" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<g font-size="26" text-anchor="middle" fill="#e6e8ec">
+  <text x="480" y="494">DHCP 서버는 나눠 줄 번호 목록, 주소 풀을 갖고 있어요<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.19;0.21;0.97;1" dur="16s" repeatCount="indefinite"/></text>
+  <text x="480" y="494" opacity="0">번호 하나에 마스크·게이트웨이·DNS를 붙여 한 꾸러미로<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2;0.22;0.49;0.51;1" dur="16s" repeatCount="indefinite"/></text>
+  <text x="480" y="494" opacity="0">PC A가 꾸러미를 받고, 풀의 .100은 '사용 중'이 돼요<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.52;0.79;0.81;1" dur="16s" repeatCount="indefinite"/></text>
+  <text x="480" y="494" opacity="0" fill="#7ee7c7" font-weight="700">결론: 풀에서 번호를 하나씩 꺼내 설정과 함께 준다<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.8;0.82;0.96;0.98;1" dur="16s" repeatCount="indefinite"/></text>
+</g>
+</svg>

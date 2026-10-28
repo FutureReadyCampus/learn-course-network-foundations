@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+<rect width="960" height="540" fill="#0f1115"/>
+<text x="480" y="50" font-size="34" font-weight="700" fill="#e6e8ec" text-anchor="middle">IP는 건물, 포트는 호수</text>
+
+<!-- building = computer -->
+<rect x="470" y="85" width="430" height="350" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="3">
+<animate attributeName="stroke" values="#3d4b60;#3d4b60;#7ee7c7;#7ee7c7;#3d4b60" keyTimes="0;0.33;0.37;0.95;1" dur="33.333s" repeatCount="indefinite"/>
+</rect>
+<rect x="472" y="87" width="426" height="46" rx="10" fill="#3d4b60"/>
+<text x="685" y="119" font-size="26" font-weight="700" fill="#e6e8ec" text-anchor="middle">건물 = 컴퓨터 <tspan fill="#7ee7c7">192.168.0.10</tspan></text>
+<!-- entrance on left wall -->
+<rect x="466" y="250" width="10" height="90" fill="#0f1115"/>
+<line x1="471" y1="250" x2="471" y2="340" stroke="#7ee7c7" stroke-width="3" stroke-dasharray="6 6"/>
+
+<!-- row 80 -->
+<rect x="485" y="145" width="400" height="80" rx="8" fill="#0f1115" stroke="#3d4b60" stroke-width="2"/>
+<text x="498" y="194" font-size="26" font-weight="700" fill="#ffb454">80호</text>
+<rect x="566" y="153" width="54" height="64" fill="#7ee7c7" opacity="0.3"/>
+<rect x="566" y="153" width="54" height="64" rx="3" fill="#6ea8fe" stroke="#9aa3b2" stroke-width="2">
+<animate attributeName="width" values="54;54;10;10;54" keyTimes="0;0.6;0.65;0.95;1" dur="33.333s" repeatCount="indefinite"/>
+</rect>
+<text x="636" y="194" font-size="26" fill="#e6e8ec">웹</text>
+<!-- web program icon -->
+<g>
+<rect x="770" y="155" width="100" height="60" rx="6" fill="#171a21" stroke="#9aa3b2" stroke-width="2">
+<animate attributeName="stroke" values="#9aa3b2;#9aa3b2;#7ee7c7;#7ee7c7;#9aa3b2" keyTimes="0;0.77;0.79;0.95;1" dur="33.333s" repeatCount="indefinite"/>
+<animate attributeName="stroke-width" values="2;2;5;5;2" keyTimes="0;0.77;0.79;0.95;1" dur="33.333s" repeatCount="indefinite"/>
+</rect>
+<line x1="770" y1="171" x2="870" y2="171" stroke="#9aa3b2" stroke-width="2"/>
+<circle cx="780" cy="163" r="3" fill="#ffb454"/><circle cx="790" cy="163" r="3" fill="#7ee7c7"/><circle cx="800" cy="163" r="3" fill="#6ea8fe"/>
+<rect x="782" y="180" width="76" height="8" rx="3" fill="#3d4b60"/>
+<rect x="782" y="196" width="50" height="8" rx="3" fill="#3d4b60"/>
+</g>
+
+<!-- rows 25 and 22 (stay closed) -->
+<g>
+<animate attributeName="opacity" values="1;1;0.45;0.45;1" keyTimes="0;0.78;0.82;0.95;1" dur="33.333s" repeatCount="indefinite"/>
+<rect x="485" y="240" width="400" height="80" rx="8" fill="#0f1115" stroke="#3d4b60" stroke-width="2"/>
+<text x="498" y="289" font-size="26" font-weight="700" fill="#9aa3b2">25호</text>
+<rect x="566" y="248" width="54" height="64" rx="3" fill="#3d4b60" stroke="#9aa3b2" stroke-width="2"/>
+<text x="636" y="289" font-size="26" fill="#e6e8ec">메일</text>
+<rect x="780" y="255" width="80" height="50" rx="4" fill="#171a21" stroke="#9aa3b2" stroke-width="2"/>
+<polyline points="780,255 820,284 860,255" fill="none" stroke="#9aa3b2" stroke-width="2"/>
+
+<rect x="485" y="335" width="400" height="80" rx="8" fill="#0f1115" stroke="#3d4b60" stroke-width="2"/>
+<text x="498" y="384" font-size="26" font-weight="700" fill="#9aa3b2">22호</text>
+<rect x="566" y="343" width="54" height="64" rx="3" fill="#3d4b60" stroke="#9aa3b2" stroke-width="2"/>
+<text x="636" y="384" font-size="26" fill="#e6e8ec">원격</text>
+<rect x="770" y="347" width="100" height="56" rx="6" fill="#171a21" stroke="#9aa3b2" stroke-width="2"/>
+<text x="784" y="384" font-size="24" font-weight="700" fill="#7ee7c7">&gt;_</text>
+</g>
+
+<!-- "found the building" label -->
+<text x="235" y="215" font-size="26" font-weight="700" fill="#7ee7c7" text-anchor="middle" opacity="0">✓ IP로 건물을 찾았다
+<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.33;0.38;0.95;1" dur="33.333s" repeatCount="indefinite"/>
+</text>
+
+<!-- parcel box with IP + port -->
+<g>
+<animateTransform attributeName="transform" type="translate" values="0 0;0 0;195 0;195 0;0 0" keyTimes="0;0.05;0.33;0.95;1" dur="33.333s" repeatCount="indefinite"/>
+<rect x="20" y="245" width="240" height="100" rx="10" fill="#171a21" stroke="#ffb454" stroke-width="3"/>
+<text x="36" y="282" font-size="24" fill="#e6e8ec">IP <tspan fill="#7ee7c7" font-weight="700">192.168.0.10</tspan></text>
+<rect x="32" y="298" width="216" height="36" rx="6" fill="#3d4b60"/>
+<rect x="32" y="298" width="216" height="36" rx="6" fill="#ffb454" opacity="0">
+<animate attributeName="opacity" values="0;0;0.8;0.2;0.8;0.2;0.8;0.8;0" keyTimes="0;0.5;0.52;0.54;0.56;0.58;0.6;0.95;1" dur="33.333s" repeatCount="indefinite"/>
+</rect>
+<text x="140" y="324" font-size="24" font-weight="700" fill="#e6e8ec" text-anchor="middle">포트 80</text>
+</g>
+
+<!-- small parcel travelling to door 80 then to program -->
+<g opacity="0">
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.62;0.63;0.78;0.8;1" dur="33.333s" repeatCount="indefinite"/>
+<animateTransform attributeName="transform" type="translate" values="440 295;440 295;593 185;820 185;820 185" keyTimes="0;0.63;0.7;0.78;1" dur="33.333s" repeatCount="indefinite"/>
+<rect x="-20" y="-15" width="40" height="30" rx="4" fill="#ffb454"/>
+<line x1="-20" y1="0" x2="20" y2="0" stroke="#0f1115" stroke-width="2"/>
+</g>
+
+<!-- caption bar -->
+<rect x="40" y="458" width="880" height="66" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<g font-size="26" fill="#e6e8ec" text-anchor="middle">
+<text x="480" y="500">상자에는 IP와 포트, 두 주소가 적혀 있어요
+<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.23;0.26;0.97;1" dur="33.333s" repeatCount="indefinite"/>
+</text>
+<text x="480" y="500" opacity="0">먼저 IP 주소로 건물(컴퓨터)을 찾아요
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.26;0.29;0.48;0.51;1" dur="33.333s" repeatCount="indefinite"/>
+</text>
+<text x="480" y="500" opacity="0">포트 80을 보고 80호 문만 열려 웹이 받아요
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.51;0.54;0.78;0.81;1" dur="33.333s" repeatCount="indefinite"/>
+</text>
+<text x="480" y="500" opacity="0" font-weight="700" fill="#7ee7c7">IP = 건물,  포트 = 호수(프로그램)
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.81;0.84;0.95;0.97;1" dur="33.333s" repeatCount="indefinite"/>
+</text>
+</g>
+</svg>

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+  <rect width="960" height="540" fill="#0f1115"/>
+
+  <!-- 제목 -->
+  <text x="40" y="54" font-size="34" font-weight="700" fill="#e6e8ec">클라이언트의 <tspan fill="#ffb454">3000번</tspan>에서 서버의 <tspan fill="#ffb454">80번</tspan>으로</text>
+
+  <!-- 경로선 (회색 점선) -->
+  <line x1="280" y1="225" x2="690" y2="225" stroke="#3d4b60" stroke-width="4" stroke-dasharray="10 8"/>
+  <!-- 경로선 하이라이트 (8~10초) -->
+  <line x1="280" y1="225" x2="690" y2="225" stroke="#7ee7c7" stroke-width="7" stroke-linecap="round" opacity="0">
+    <animate attributeName="opacity" dur="14s" repeatCount="indefinite" keyTimes="0;0.79;0.8;0.95;0.97;1" values="0;0;1;1;0;0"/>
+  </line>
+
+  <!-- 클라이언트 컴퓨터 -->
+  <rect x="30" y="90" width="270" height="250" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="3"/>
+  <text x="165" y="128" text-anchor="middle" font-size="26" font-weight="700" fill="#e6e8ec">클라이언트</text>
+  <text x="165" y="162" text-anchor="middle" font-size="24" font-weight="700" fill="#7ee7c7">192.168.0.10</text>
+  <rect x="50" y="185" width="140" height="80" rx="6" fill="#0f1115" stroke="#6ea8fe" stroke-width="2"/>
+  <rect x="50" y="185" width="140" height="16" rx="6" fill="#6ea8fe"/>
+  <text x="120" y="242" text-anchor="middle" font-size="24" fill="#e6e8ec">프로그램</text>
+  <rect x="45" y="285" width="240" height="42" rx="6" fill="#0f1115" stroke="#9aa3b2" stroke-width="2"/>
+  <text x="125" y="314" text-anchor="middle" font-size="24" fill="#9aa3b2">운영체제</text>
+
+  <!-- 3000 번호표: 운영체제에서 올라와 프로그램 옆에 붙음 (2~5초) -->
+  <g opacity="0" transform="translate(0,84)">
+    <animate attributeName="opacity" dur="14s" repeatCount="indefinite" keyTimes="0;0.2;0.23;0.96;0.98;1" values="0;0;1;1;0;0"/>
+    <animateTransform attributeName="transform" type="translate" dur="14s" repeatCount="indefinite" keyTimes="0;0.25;0.4;0.98;0.99;1" values="0,84;0,84;0,0;0,0;0,84;0,84"/>
+    <rect x="200" y="203" width="78" height="44" rx="6" fill="#ffb454"/>
+    <text x="239" y="234" text-anchor="middle" font-size="24" font-weight="700" fill="#0f1115">3000</text>
+  </g>
+
+  <!-- 스위치 -->
+  <rect x="362" y="207" width="76" height="36" rx="5" fill="#171a21" stroke="#6ea8fe" stroke-width="3"/>
+  <g fill="#6ea8fe"><rect x="372" y="219" width="10" height="12"/><rect x="390" y="219" width="10" height="12"/><rect x="408" y="219" width="10" height="12"/><rect x="426" y="219" width="4" height="12"/></g>
+  <text x="400" y="282" text-anchor="middle" font-size="24" fill="#9aa3b2">스위치</text>
+  <!-- 라우터 -->
+  <circle cx="550" cy="225" r="24" fill="#171a21" stroke="#6ea8fe" stroke-width="3"/>
+  <path d="M536,225 H564 M550,211 V239" stroke="#6ea8fe" stroke-width="3"/>
+  <text x="550" y="282" text-anchor="middle" font-size="24" fill="#9aa3b2">라우터</text>
+
+  <!-- 서버 컴퓨터 -->
+  <rect x="660" y="90" width="270" height="250" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="3"/>
+  <text x="795" y="128" text-anchor="middle" font-size="26" font-weight="700" fill="#e6e8ec">서버</text>
+  <text x="795" y="162" text-anchor="middle" font-size="24" font-weight="700" fill="#7ee7c7">192.168.0.20</text>
+  <rect x="690" y="185" width="210" height="80" rx="6" fill="#0f1115" stroke="#ffb454" stroke-width="3">
+    <animate attributeName="stroke" dur="14s" repeatCount="indefinite" keyTimes="0;0.78;0.8;0.95;0.97;1" values="#ffb454;#ffb454;#7ee7c7;#7ee7c7;#ffb454;#ffb454"/>
+    <animate attributeName="stroke-width" dur="14s" repeatCount="indefinite" keyTimes="0;0.78;0.8;0.95;0.97;1" values="3;3;6;6;3;3"/>
+  </rect>
+  <text x="805" y="238" text-anchor="middle" font-size="24" fill="#e6e8ec"><tspan font-size="34" font-weight="700" fill="#ffb454">80</tspan>번 창구</text>
+  <circle cx="735" cy="306" r="9" fill="#7ee7c7">
+    <animate attributeName="opacity" dur="14s" repeatCount="indefinite" keyTimes="0;0.1;0.2;0.3;0.4;0.5;0.6;0.7;0.8;0.9;1" values="1;0.3;1;0.3;1;0.3;1;0.3;1;0.3;1"/>
+  </circle>
+  <text x="755" y="314" font-size="24" fill="#7ee7c7">대기 중</text>
+
+  <!-- 요청 봉투: 3000 → 스위치 → 라우터 → 80 (5~8초) -->
+  <g opacity="0" transform="translate(280,225)">
+    <animate attributeName="opacity" dur="14s" repeatCount="indefinite" keyTimes="0;0.5;0.52;0.95;0.97;1" values="0;0;1;1;0;0"/>
+    <animateTransform attributeName="transform" type="translate" dur="14s" repeatCount="indefinite"
+      keyTimes="0;0.52;0.6;0.63;0.7;0.73;0.79;0.97;0.98;1" values="280,225;280,225;400,225;400,225;550,225;550,225;668,225;668,225;280,225;280,225"/>
+    <rect x="-24" y="-17" width="48" height="34" rx="4" fill="#e6e8ec" stroke="#0f1115" stroke-width="2"/>
+    <path d="M-24,-17 L0,4 L24,-17" fill="none" stroke="#0f1115" stroke-width="2"/>
+  </g>
+
+  <!-- 봉투에 적힌 주소 (5~10초) -->
+  <g opacity="0">
+    <animate attributeName="opacity" dur="14s" repeatCount="indefinite" keyTimes="0;0.5;0.52;0.95;0.97;1" values="0;0;1;1;0;0"/>
+    <rect x="130" y="362" width="700" height="72" rx="10" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+    <rect x="152" y="381" width="48" height="34" rx="4" fill="#e6e8ec"/>
+    <path d="M152,381 L176,402 L200,381" fill="none" stroke="#0f1115" stroke-width="2"/>
+    <text x="510" y="408" text-anchor="middle" font-size="27" font-weight="700" fill="#e6e8ec">192.168.0.10:<tspan fill="#ffb454">3000</tspan> → 192.168.0.20:<tspan fill="#ffb454">80</tspan></text>
+  </g>
+
+  <!-- 결론 (8~10초) -->
+  <g opacity="0">
+    <animate attributeName="opacity" dur="14s" repeatCount="indefinite" keyTimes="0;0.79;0.8;0.95;0.97;1" values="0;0;1;1;0;0"/>
+    <rect x="315" y="98" width="330" height="66" rx="12" fill="#171a21" stroke="#7ee7c7" stroke-width="3"/>
+    <text x="480" y="141" text-anchor="middle" font-size="28" font-weight="700" fill="#7ee7c7">IP + 포트 = 하나의 길</text>
+  </g>
+
+  <!-- 자막 바 -->
+  <rect x="20" y="466" width="920" height="58" rx="10" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+  <g font-size="26" text-anchor="middle" fill="#e6e8ec">
+    <text x="480" y="504">서버는 80번 창구를 열고 손님을 기다려요
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" keyTimes="0;0.22;0.24;0.97;0.99;1" values="1;1;0;0;1;1"/>
+    </text>
+    <text x="480" y="504" opacity="0">운영체제가 프로그램에 3000번 번호표를 줘요
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" keyTimes="0;0.23;0.25;0.49;0.51;1" values="0;0;1;1;0;0"/>
+    </text>
+    <text x="480" y="504" opacity="0">요청은 스위치와 라우터를 지나 80번으로 가요
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" keyTimes="0;0.5;0.52;0.78;0.79;1" values="0;0;1;1;0;0"/>
+    </text>
+    <text x="480" y="504" opacity="0">양 끝의 IP와 포트 번호가 하나의 길을 만들어요
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" keyTimes="0;0.785;0.795;0.96;0.98;1" values="0;0;1;1;0;0"/>
+    </text>
+  </g>
+</svg>

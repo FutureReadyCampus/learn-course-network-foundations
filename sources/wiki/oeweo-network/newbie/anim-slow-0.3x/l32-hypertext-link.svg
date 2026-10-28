@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+  <rect width="960" height="540" fill="#0f1115"/>
+  <defs>
+    <clipPath id="c1"><rect x="278" y="200" width="0" height="120">
+      <animate attributeName="width" dur="33.333s" repeatCount="indefinite" values="0;0;86;86;0" keyTimes="0;0.21;0.27;0.99;1"/>
+    </rect></clipPath>
+    <clipPath id="c2"><rect x="598" y="180" width="0" height="160">
+      <animate attributeName="width" dur="33.333s" repeatCount="indefinite" values="0;0;86;86;0" keyTimes="0;0.55;0.61;0.99;1"/>
+    </rect></clipPath>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#6ea8fe"/></marker>
+  </defs>
+
+  <!-- 제목 (항상 보임) -->
+  <text x="480" y="58" text-anchor="middle" font-size="34" font-weight="700" fill="#e6e8ec">링크: 문서와 문서를 잇는 길</text>
+
+  <!-- 그물 연결선 C→A (마지막에 등장) -->
+  <g opacity="0">
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.76;0.8;0.95;0.98;1"/>
+    <path d="M282 130 H678" fill="none" stroke="#7ee7c7" stroke-width="3" stroke-dasharray="10 8"/>
+    <circle cx="282" cy="130" r="6" fill="#7ee7c7"/>
+    <circle cx="678" cy="130" r="6" fill="#7ee7c7"/>
+  </g>
+
+  <!-- 문서 A (항상 보임) -->
+  <rect x="40" y="100" width="240" height="170" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="3"/>
+  <text x="62" y="136" font-size="24" fill="#9aa3b2">paperA.html</text>
+  <text x="62" y="176" font-size="28" font-weight="700" fill="#e6e8ec">문서 A</text>
+  <rect x="62" y="194" width="196" height="10" rx="5" fill="#3d4b60"/>
+  <g>
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" values="1;0.3;1;0.3;1;1" keyTimes="0;0.05;0.1;0.15;0.2;1"/>
+    <text x="62" y="248" font-size="26" font-weight="600" fill="#6ea8fe">참고: B</text>
+    <rect x="62" y="254" width="76" height="3" fill="#6ea8fe"/>
+  </g>
+
+  <!-- 점선 화살표 A→B -->
+  <path d="M282 238 C330 238 316 290 356 290" fill="none" stroke="#6ea8fe" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#ah)" clip-path="url(#c1)"/>
+
+  <!-- 문서 B -->
+  <g opacity="0">
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.25;0.32;0.95;0.98;1"/>
+    <animateTransform attributeName="transform" type="translate" dur="33.333s" repeatCount="indefinite" values="0 14;0 14;0 0;0 0" keyTimes="0;0.25;0.32;1"/>
+    <rect x="360" y="190" width="240" height="170" rx="12" fill="#171a21" stroke="#6ea8fe" stroke-width="3"/>
+    <text x="382" y="226" font-size="24" font-weight="600" fill="#ffb454">paperB.html</text>
+    <text x="382" y="266" font-size="28" font-weight="700" fill="#e6e8ec">문서 B</text>
+    <rect x="382" y="284" width="196" height="10" rx="5" fill="#3d4b60"/>
+    <text x="382" y="338" font-size="26" font-weight="600" fill="#6ea8fe">참고: C</text>
+    <rect x="382" y="344" width="76" height="3" fill="#6ea8fe"/>
+  </g>
+
+  <!-- 점선 화살표 B→C -->
+  <path d="M602 300 C650 300 636 200 676 200" fill="none" stroke="#6ea8fe" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#ah)" clip-path="url(#c2)"/>
+
+  <!-- 문서 C -->
+  <g opacity="0">
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.59;0.66;0.95;0.98;1"/>
+    <animateTransform attributeName="transform" type="translate" dur="33.333s" repeatCount="indefinite" values="0 14;0 14;0 0;0 0" keyTimes="0;0.59;0.66;1"/>
+    <rect x="680" y="100" width="240" height="170" rx="12" fill="#171a21" stroke="#6ea8fe" stroke-width="3"/>
+    <text x="702" y="136" font-size="24" font-weight="600" fill="#ffb454">paperC.html</text>
+    <text x="702" y="176" font-size="28" font-weight="700" fill="#e6e8ec">문서 C</text>
+    <rect x="702" y="194" width="196" height="10" rx="5" fill="#3d4b60"/>
+    <rect x="702" y="222" width="150" height="10" rx="5" fill="#3d4b60"/>
+  </g>
+
+  <!-- 결론 글귀 -->
+  <text x="480" y="428" text-anchor="middle" font-size="36" font-weight="800" fill="#7ee7c7" opacity="0">문서 + 연결 = 웹
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.77;0.81;0.95;0.98;1"/>
+  </text>
+
+  <!-- 클릭 물결 -->
+  <circle cx="106" cy="240" r="6" fill="none" stroke="#ffb454" stroke-width="3" opacity="0">
+    <animate attributeName="cx" dur="33.333s" repeatCount="indefinite" calcMode="discrete" values="106;426" keyTimes="0;0.4"/>
+    <animate attributeName="cy" dur="33.333s" repeatCount="indefinite" calcMode="discrete" values="240;330" keyTimes="0;0.4"/>
+    <animate attributeName="r" dur="33.333s" repeatCount="indefinite" values="6;6;34;6;6;34;6" keyTimes="0;0.195;0.24;0.25;0.53;0.575;1"/>
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" values="0;0;1;0;0;1;0;0" keyTimes="0;0.195;0.2;0.24;0.53;0.535;0.575;1"/>
+  </circle>
+
+  <!-- 마우스 포인터 -->
+  <g>
+    <animateTransform attributeName="transform" type="translate" dur="33.333s" repeatCount="indefinite" values="190 300;190 300;110 244;110 244;430 334;430 334;190 300;190 300" keyTimes="0;0.1;0.19;0.42;0.52;0.76;0.88;1"/>
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" values="1;1;0;0;1" keyTimes="0;0.72;0.76;0.95;1"/>
+    <path d="M0 0 L0 30 L8 23 L14 36 L20 33 L14 21 L25 21 Z" fill="#e6e8ec" stroke="#0f1115" stroke-width="2" stroke-linejoin="round"/>
+  </g>
+
+  <!-- 자막 바 -->
+  <rect x="30" y="462" width="900" height="60" rx="10" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+  <g font-size="26" text-anchor="middle" fill="#e6e8ec">
+    <text x="480" y="501">파란 밑줄 글자가 링크, 다른 문서로 가는 길이에요
+      <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" values="1;1;0;0;1" keyTimes="0;0.23;0.26;0.96;1"/>
+    </text>
+    <text x="480" y="501" opacity="0">누르면 주소 paperB.html의 문서 B가 열려요
+      <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.24;0.27;0.53;0.56;1"/>
+    </text>
+    <text x="480" y="501" opacity="0">B 안의 링크를 누르면 또 문서 C로 건너가요
+      <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.54;0.57;0.74;0.77;1"/>
+    </text>
+    <text x="480" y="501" opacity="0" fill="#7ee7c7" font-weight="700">이런 연결이 쌓인 문서의 그물, 그것이 웹이에요
+      <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.76;0.79;0.95;0.97;1"/>
+    </text>
+  </g>
+</svg>
