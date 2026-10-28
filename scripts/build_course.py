@@ -146,10 +146,11 @@ def build(source_revision: str = "local-draft", source_label: str = "local draft
             }
             lessons.append((unit_order[unit_config["id"]], order, lesson))
     lessons = [lesson for _, _, lesson in sorted(lessons, key=lambda item: (item[0], item[1]))]
+    active_units = {lesson["unit"] for lesson in lessons}
     return {
         "version": f"network-{source_revision}",
         "title": course_meta["course"]["title"],
-        "units": units,
+        "units": [unit for unit in units if unit["id"] in active_units],
         "lessons": lessons,
         "limits": f"PREVIEW ONLY · {source_label} · not published",
         "preview_source": {
