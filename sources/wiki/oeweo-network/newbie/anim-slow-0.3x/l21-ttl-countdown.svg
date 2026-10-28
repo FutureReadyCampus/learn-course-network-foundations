@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+<rect width="960" height="540" fill="#0f1115"/>
+<text x="480" y="46" font-size="34" font-weight="700" fill="#e6e8ec" text-anchor="middle">홉마다 줄어드는 TTL, 바닥나면 폐기</text>
+<text x="480" y="86" font-size="24" fill="#9aa3b2" text-anchor="middle">라우터를 지날 때마다 <tspan fill="#ffb454" font-weight="700">TTL −1</tspan>, 0이 되면 그 라우터에서 <tspan fill="#ffb454" font-weight="700">폐기</tspan></text>
+
+<!-- path -->
+<line x1="140" y1="260" x2="490" y2="260" stroke="#3d4b60" stroke-width="4"/>
+<line x1="490" y1="260" x2="610" y2="260" stroke="#3d4b60" stroke-width="4" stroke-dasharray="6 10"/>
+<line x1="610" y1="260" x2="640" y2="260" stroke="#3d4b60" stroke-width="4"/>
+<text x="550" y="246" font-size="34" font-weight="700" fill="#9aa3b2" text-anchor="middle">…</text>
+
+<!-- nodes -->
+<g fill="#171a21" stroke="#3d4b60" stroke-width="3">
+<rect x="40" y="228" width="100" height="64" rx="12"/>
+<rect x="220" y="228" width="100" height="64" rx="12"/>
+<rect x="380" y="228" width="100" height="64" rx="12"/>
+</g>
+<rect x="640" y="228" width="120" height="64" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="3">
+<animate attributeName="stroke" values="#3d4b60;#ffb454;#3d4b60" keyTimes="0;0.74;0.95" calcMode="discrete" dur="33.333s" repeatCount="indefinite"/>
+</rect>
+<g fill="none" stroke="#9aa3b2" stroke-width="3" stroke-linecap="round">
+<rect x="70" y="244" width="40" height="26" rx="3"/><line x1="90" y1="270" x2="90" y2="278"/><line x1="80" y1="278" x2="100" y2="278"/>
+</g>
+<g fill="none" stroke="#6ea8fe" stroke-width="3" stroke-linecap="round">
+<circle cx="270" cy="260" r="18"/><line x1="258" y1="260" x2="282" y2="260"/><line x1="270" y1="248" x2="270" y2="272"/>
+<circle cx="430" cy="260" r="18"/><line x1="418" y1="260" x2="442" y2="260"/><line x1="430" y1="248" x2="430" y2="272"/>
+<circle cx="700" cy="260" r="18"/><line x1="688" y1="260" x2="712" y2="260"/><line x1="700" y1="248" x2="700" y2="272"/>
+</g>
+<g font-size="24" fill="#9aa3b2" text-anchor="middle">
+<text x="90" y="326">PC</text><text x="270" y="326">라우터 1</text><text x="430" y="326">라우터 2</text><text x="700" y="326">마지막 라우터</text>
+</g>
+
+<!-- packet with TTL flag -->
+<g>
+<animateTransform attributeName="transform" type="translate" values="90 260;90 260;270 260;270 260;430 260;430 260;640 260;700 260;700 260;90 260;90 260" keyTimes="0;0.2;0.28;0.32;0.4;0.46;0.7;0.74;0.95;0.951;1" dur="33.333s" repeatCount="indefinite"/>
+<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.78;0.86;0.95;1" dur="33.333s" repeatCount="indefinite"/>
+<line x1="0" y1="-22" x2="0" y2="-58" stroke="#9aa3b2" stroke-width="3"/>
+<rect x="-75" y="-110" width="150" height="52" rx="8" fill="#7ee7c7">
+<animate attributeName="fill" values="#7ee7c7;#ff6b6b;#7ee7c7" keyTimes="0;0.74;0.95" calcMode="discrete" dur="33.333s" repeatCount="indefinite"/>
+</rect>
+<g font-size="30" font-weight="700" fill="#0f1115" text-anchor="middle">
+<text x="0" y="-73">TTL 128<animate attributeName="opacity" values="1;0;1" keyTimes="0;0.28;0.95" calcMode="discrete" dur="33.333s" repeatCount="indefinite"/></text>
+<text x="0" y="-73" opacity="0">TTL 127<animate attributeName="opacity" values="0;1;0" keyTimes="0;0.28;0.4" calcMode="discrete" dur="33.333s" repeatCount="indefinite"/></text>
+<text x="0" y="-73" opacity="0">TTL 126<animate attributeName="opacity" values="0;1;0" keyTimes="0;0.4;0.5" calcMode="discrete" dur="33.333s" repeatCount="indefinite"/></text>
+<text x="0" y="-73" opacity="0">TTL 125<animate attributeName="opacity" values="0;1;0" keyTimes="0;0.5;0.54" calcMode="discrete" dur="33.333s" repeatCount="indefinite"/></text>
+<text x="0" y="-73" opacity="0">TTL 97<animate attributeName="opacity" values="0;1;0" keyTimes="0;0.54;0.58" calcMode="discrete" dur="33.333s" repeatCount="indefinite"/></text>
+<text x="0" y="-73" opacity="0">TTL 63<animate attributeName="opacity" values="0;1;0" keyTimes="0;0.58;0.62" calcMode="discrete" dur="33.333s" repeatCount="indefinite"/></text>
+<text x="0" y="-73" opacity="0">TTL 30<animate attributeName="opacity" values="0;1;0" keyTimes="0;0.62;0.66" calcMode="discrete" dur="33.333s" repeatCount="indefinite"/></text>
+<text x="0" y="-73" opacity="0">TTL 5<animate attributeName="opacity" values="0;1;0" keyTimes="0;0.66;0.7" calcMode="discrete" dur="33.333s" repeatCount="indefinite"/></text>
+<text x="0" y="-73" opacity="0">TTL 1<animate attributeName="opacity" values="0;1;0" keyTimes="0;0.7;0.74" calcMode="discrete" dur="33.333s" repeatCount="indefinite"/></text>
+<text x="0" y="-73" opacity="0">TTL 0<animate attributeName="opacity" values="0;1;0" keyTimes="0;0.74;0.95" calcMode="discrete" dur="33.333s" repeatCount="indefinite"/></text>
+</g>
+<rect x="-32" y="-22" width="64" height="44" rx="6" fill="#171a21" stroke="#ffb454" stroke-width="3"/>
+<line x1="-32" y1="-6" x2="32" y2="-6" stroke="#ffb454" stroke-width="2"/>
+</g>
+
+<!-- -1 badges -->
+<g font-size="28" font-weight="700" fill="#ffb454" text-anchor="middle">
+<text x="370" y="170" opacity="0">−1
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.28;0.29;0.34;0.37;1" dur="33.333s" repeatCount="indefinite"/>
+<animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 -28;0 -28" keyTimes="0;0.28;0.37;1" dur="33.333s" repeatCount="indefinite"/></text>
+<text x="530" y="170" opacity="0">−1
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.4;0.41;0.46;0.49;1" dur="33.333s" repeatCount="indefinite"/>
+<animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 -28;0 -28" keyTimes="0;0.4;0.49;1" dur="33.333s" repeatCount="indefinite"/></text>
+<text x="805" y="170" opacity="0">−1
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.74;0.75;0.8;0.83;1" dur="33.333s" repeatCount="indefinite"/>
+<animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 -28;0 -28" keyTimes="0;0.74;0.83;1" dur="33.333s" repeatCount="indefinite"/></text>
+</g>
+
+<!-- smoke -->
+<g fill="#9aa3b2">
+<circle cx="685" cy="245" r="10" opacity="0">
+<animate attributeName="opacity" values="0;0;0.6;0;0" keyTimes="0;0.78;0.81;0.9;1" dur="33.333s" repeatCount="indefinite"/>
+<animate attributeName="r" values="10;10;34;34" keyTimes="0;0.78;0.9;1" dur="33.333s" repeatCount="indefinite"/>
+<animate attributeName="cy" values="245;245;205;205" keyTimes="0;0.78;0.9;1" dur="33.333s" repeatCount="indefinite"/></circle>
+<circle cx="715" cy="230" r="8" opacity="0">
+<animate attributeName="opacity" values="0;0;0.5;0;0" keyTimes="0;0.79;0.82;0.91;1" dur="33.333s" repeatCount="indefinite"/>
+<animate attributeName="r" values="8;8;28;28" keyTimes="0;0.79;0.91;1" dur="33.333s" repeatCount="indefinite"/>
+<animate attributeName="cy" values="230;230;180;180" keyTimes="0;0.79;0.91;1" dur="33.333s" repeatCount="indefinite"/></circle>
+<circle cx="695" cy="200" r="8" opacity="0">
+<animate attributeName="opacity" values="0;0;0.45;0;0" keyTimes="0;0.8;0.83;0.92;1" dur="33.333s" repeatCount="indefinite"/>
+<animate attributeName="r" values="8;8;26;26" keyTimes="0;0.8;0.92;1" dur="33.333s" repeatCount="indefinite"/>
+<animate attributeName="cy" values="200;200;150;150" keyTimes="0;0.8;0.92;1" dur="33.333s" repeatCount="indefinite"/></circle>
+</g>
+
+<!-- discard panel -->
+<g opacity="0">
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.79;0.82;0.95;0.97;1" dur="33.333s" repeatCount="indefinite"/>
+<rect x="440" y="346" width="490" height="96" rx="14" fill="#171a21" stroke="#ffb454" stroke-width="3"/>
+<text x="685" y="384" font-size="28" font-weight="700" fill="#ffb454" text-anchor="middle">폐기 (Drop)</text>
+<text x="685" y="424" font-size="24" fill="#e6e8ec" text-anchor="middle">안내를 보낼 수도, 안 보낼 수도 있음</text>
+</g>
+
+<!-- caption bar -->
+<rect x="40" y="462" width="880" height="62" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<g font-size="26" fill="#e6e8ec" text-anchor="middle">
+<text x="480" y="502">패킷의 TTL 깃발은 128에서 출발합니다
+<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.25;0.27;0.97;1" dur="33.333s" repeatCount="indefinite"/></text>
+<text x="480" y="502" opacity="0">라우터를 하나 지날 때마다 1씩 줄어듭니다
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.27;0.29;0.48;0.5;1" dur="33.333s" repeatCount="indefinite"/></text>
+<text x="480" y="502" opacity="0">계속 지나면 숫자는 1, 그리고 0까지 내려갑니다
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.52;0.75;0.77;1" dur="33.333s" repeatCount="indefinite"/></text>
+<text x="480" y="502" opacity="0">TTL이 0이 된 라우터에서 패킷은 폐기됩니다
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.77;0.79;0.95;0.97;1" dur="33.333s" repeatCount="indefinite"/></text>
+</g>
+</svg>

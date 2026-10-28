@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+<rect width="960" height="540" fill="#0f1115"/>
+<text x="480" y="46" font-size="34" font-weight="700" fill="#e6e8ec" text-anchor="middle">동네부터 찾는 택배</text>
+<text x="480" y="90" font-size="24" fill="#9aa3b2" text-anchor="middle">라우터는 <tspan fill="#6ea8fe" font-weight="700">동네(Network ID)</tspan>로 길을 찾고, <tspan fill="#ffb454" font-weight="700">집(Host ID)</tspan>은 마지막에</text>
+
+<!-- start spot -->
+<text x="110" y="258" font-size="24" fill="#9aa3b2" text-anchor="middle">출발</text>
+<rect x="25" y="271" width="170" height="58" rx="10" fill="none" stroke="#3d4b60" stroke-width="2" stroke-dasharray="6 6"/>
+
+<!-- roads (base) -->
+<g stroke="#3d4b60" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+<line x1="195" y1="300" x2="200" y2="300"/>
+<polyline points="400,300 430,300 430,200 460,200"/>
+<polyline points="430,300 430,350 465,350"/>
+<line x1="660" y1="200" x2="690" y2="200"/>
+</g>
+<!-- lit roads -->
+<polyline points="400,300 430,300 430,200 460,200" stroke="#7ee7c7" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0">
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.23;0.26;0.5;0.53;1" dur="33.333s" repeatCount="indefinite"/>
+</polyline>
+<line x1="660" y1="200" x2="690" y2="200" stroke="#7ee7c7" stroke-width="6" stroke-linecap="round" opacity="0">
+<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.53;0.56;0.95;1" dur="33.333s" repeatCount="indefinite"/>
+</line>
+
+<!-- other neighborhood (not chosen) -->
+<rect x="465" y="325" width="175" height="50" rx="10" fill="#171a21" stroke="#3d4b60" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="552" y="358" font-size="24" fill="#9aa3b2" text-anchor="middle">10.0.0 동네</text>
+
+<!-- routers -->
+<rect x="200" y="267" width="200" height="66" rx="14" fill="#171a21" stroke="#3d4b60" stroke-width="3">
+<animate attributeName="stroke" values="#3d4b60;#3d4b60;#7ee7c7;#7ee7c7;#3d4b60;#3d4b60" keyTimes="0;0.19;0.21;0.44;0.47;1" dur="33.333s" repeatCount="indefinite"/>
+</rect>
+<text x="300" y="364" font-size="24" fill="#9aa3b2" text-anchor="middle">라우터 1</text>
+<rect x="460" y="167" width="200" height="66" rx="14" fill="#171a21" stroke="#3d4b60" stroke-width="3">
+<animate attributeName="stroke" values="#3d4b60;#3d4b60;#7ee7c7;#7ee7c7;#3d4b60;#3d4b60" keyTimes="0;0.49;0.51;0.68;0.71;1" dur="33.333s" repeatCount="indefinite"/>
+</rect>
+<text x="560" y="264" font-size="24" fill="#9aa3b2" text-anchor="middle">라우터 2</text>
+
+<!-- direction tags -->
+<text x="300" y="250" font-size="24" font-weight="700" fill="#7ee7c7" text-anchor="middle" opacity="0">192.168.0 쪽으로 ↑<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.23;0.26;0.44;0.47;1" dur="33.333s" repeatCount="indefinite"/></text>
+<text x="560" y="150" font-size="24" font-weight="700" fill="#7ee7c7" text-anchor="middle" opacity="0">192.168.0 쪽으로 →<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.53;0.56;0.68;0.71;1" dur="33.333s" repeatCount="indefinite"/></text>
+
+<!-- destination neighborhood -->
+<rect x="690" y="120" width="250" height="280" rx="18" fill="#141a26" stroke="#6ea8fe" stroke-width="2" stroke-dasharray="10 7" opacity="0.5">
+<animate attributeName="opacity" values="0.5;0.5;1;1;0.5" keyTimes="0;0.70;0.74;0.95;1" dur="33.333s" repeatCount="indefinite"/>
+<animate attributeName="stroke-width" values="2;2;4;4;2" keyTimes="0;0.70;0.74;0.95;1" dur="33.333s" repeatCount="indefinite"/>
+</rect>
+<text x="815" y="154" font-size="24" font-weight="700" fill="#6ea8fe" text-anchor="middle">192.168.0 동네</text>
+
+<!-- houses -->
+<g opacity="0.35">
+<animate attributeName="opacity" values="0.35;0.35;1;1;0.35" keyTimes="0;0.75;0.78;0.95;1" dur="33.333s" repeatCount="indefinite"/>
+<g fill="#171a21" stroke="#9aa3b2" stroke-width="2">
+<path d="M707 302 L735 276 L763 302 Z"/><rect x="711" y="302" width="48" height="48"/>
+<path d="M867 302 L895 276 L923 302 Z"/><rect x="871" y="302" width="48" height="48"/>
+</g>
+<g fill="#171a21" stroke="#9aa3b2" stroke-width="2">
+<animate attributeName="fill" values="#171a21;#171a21;#4a3414;#4a3414;#171a21" keyTimes="0;0.77;0.80;0.95;1" dur="33.333s" repeatCount="indefinite"/>
+<animate attributeName="stroke" values="#9aa3b2;#9aa3b2;#ffb454;#ffb454;#9aa3b2" keyTimes="0;0.77;0.80;0.95;1" dur="33.333s" repeatCount="indefinite"/>
+<path d="M787 302 L815 276 L843 302 Z"/><rect x="791" y="302" width="48" height="48"/>
+</g>
+<g font-size="24" text-anchor="middle" fill="#e6e8ec">
+<text x="735" y="335">5</text><text x="815" y="335" font-weight="700" fill="#ffb454">10</text><text x="895" y="335">20</text>
+</g>
+<text x="815" y="384" font-size="24" fill="#9aa3b2" text-anchor="middle">집 번호(Host ID)</text>
+</g>
+
+<!-- parcel -->
+<g>
+<animateTransform attributeName="transform" type="translate" values="110 300;110 300;300 300;300 300;560 200;560 200;815 200;815 200;815 236;815 236;110 300;110 300" keyTimes="0;0.12;0.20;0.42;0.50;0.66;0.73;0.75;0.79;0.965;0.97;1" dur="33.333s" repeatCount="indefinite"/>
+<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.95;0.965;0.97;1" dur="33.333s" repeatCount="indefinite"/>
+<rect x="-80" y="-24" width="160" height="48" rx="8" fill="#2a2214" stroke="#ffb454" stroke-width="2"/>
+<text x="-66" y="9" font-size="24" font-weight="700"><tspan fill="#6ea8fe">192.168.0</tspan><tspan fill="#ffb454">.10<animate attributeName="fill-opacity" values="1;1;0.3;0.3;1;1" keyTimes="0;0.21;0.23;0.72;0.75;1" dur="33.333s" repeatCount="indefinite"/></tspan></text>
+<rect x="-71" y="-19" width="108" height="38" rx="6" fill="none" stroke="#7ee7c7" stroke-width="3" opacity="0">
+<animate attributeName="opacity" values="0;0;1;1;0;0;1;1;0;0" keyTimes="0;0.22;0.25;0.42;0.44;0.52;0.55;0.68;0.71;1" dur="33.333s" repeatCount="indefinite"/>
+</rect>
+<rect x="36" y="-19" width="36" height="38" rx="6" fill="none" stroke="#ffb454" stroke-width="3" opacity="0">
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.77;0.80;0.95;0.96;1" dur="33.333s" repeatCount="indefinite"/>
+</rect>
+</g>
+
+<!-- subtitle bar -->
+<rect x="40" y="428" width="880" height="88" rx="14" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<g font-size="26" fill="#e6e8ec" text-anchor="middle">
+<text x="480" y="481">앞 <tspan fill="#6ea8fe" font-weight="700">192.168.0</tspan>은 동네, 끝 <tspan fill="#ffb454" font-weight="700">10</tspan>은 집 번호<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.20;0.22;0.97;1" dur="33.333s" repeatCount="indefinite"/></text>
+<text x="480" y="481" opacity="0">라우터는 앞부분 <tspan fill="#6ea8fe" font-weight="700">동네</tspan>만 보고 방향을 정해요<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.22;0.24;0.48;0.50;1" dur="33.333s" repeatCount="indefinite"/></text>
+<text x="480" y="481" opacity="0">다음 라우터도 <tspan fill="#6ea8fe" font-weight="700">동네</tspan>만 보고 동네 안으로 보내요<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.50;0.52;0.74;0.76;1" dur="33.333s" repeatCount="indefinite"/></text>
+<text x="480" y="481" opacity="0">동네에 들어온 뒤에야 <tspan fill="#ffb454" font-weight="700">10번 집</tspan>을 찾아요<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.76;0.78;0.95;0.97;1" dur="33.333s" repeatCount="indefinite"/></text>
+</g>
+</svg>

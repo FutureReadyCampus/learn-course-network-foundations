@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+<rect width="960" height="540" fill="#0f1115"/>
+<defs><clipPath id="stage"><rect x="0" y="78" width="960" height="380"/></clipPath></defs>
+<text x="480" y="52" font-size="34" font-weight="700" fill="#e6e8ec" text-anchor="middle">전구 48개가 모두 켜진 주소 = ‘모두에게’</text>
+<g opacity="1"><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.2;0.23;0.96;1" dur="16s" repeatCount="indefinite"/>
+<text x="480" y="132" font-size="24" fill="#9aa3b2" text-anchor="middle">전구 1개 = 비트 1개 (꺼짐 0, 켜짐 1)</text>
+<circle cx="270" cy="190" r="20" fill="#171a21" stroke="#3d4b60" stroke-width="3"/>
+<circle cx="270" cy="190" r="20" fill="#7ee7c7" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.015;0.025;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></circle>
+<text x="270" y="258" font-size="30" fill="#9aa3b2" text-anchor="middle">0<animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.015;0.025;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></text>
+<text x="270" y="258" font-size="30" font-weight="700" fill="#7ee7c7" text-anchor="middle" opacity="0">1<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.015;0.025;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></text>
+<circle cx="330" cy="190" r="20" fill="#171a21" stroke="#3d4b60" stroke-width="3"/>
+<circle cx="330" cy="190" r="20" fill="#7ee7c7" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.035;0.045;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></circle>
+<text x="330" y="258" font-size="30" fill="#9aa3b2" text-anchor="middle">0<animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.035;0.045;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></text>
+<text x="330" y="258" font-size="30" font-weight="700" fill="#7ee7c7" text-anchor="middle" opacity="0">1<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.035;0.045;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></text>
+<circle cx="390" cy="190" r="20" fill="#171a21" stroke="#3d4b60" stroke-width="3"/>
+<circle cx="390" cy="190" r="20" fill="#7ee7c7" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.055;0.065;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></circle>
+<text x="390" y="258" font-size="30" fill="#9aa3b2" text-anchor="middle">0<animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.055;0.065;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></text>
+<text x="390" y="258" font-size="30" font-weight="700" fill="#7ee7c7" text-anchor="middle" opacity="0">1<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.055;0.065;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></text>
+<circle cx="450" cy="190" r="20" fill="#171a21" stroke="#3d4b60" stroke-width="3"/>
+<circle cx="450" cy="190" r="20" fill="#7ee7c7" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.075;0.085;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></circle>
+<text x="450" y="258" font-size="30" fill="#9aa3b2" text-anchor="middle">0<animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.075;0.085;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></text>
+<text x="450" y="258" font-size="30" font-weight="700" fill="#7ee7c7" text-anchor="middle" opacity="0">1<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.075;0.085;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></text>
+<circle cx="510" cy="190" r="20" fill="#171a21" stroke="#3d4b60" stroke-width="3"/>
+<circle cx="510" cy="190" r="20" fill="#7ee7c7" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.095;0.105;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></circle>
+<text x="510" y="258" font-size="30" fill="#9aa3b2" text-anchor="middle">0<animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.095;0.105;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></text>
+<text x="510" y="258" font-size="30" font-weight="700" fill="#7ee7c7" text-anchor="middle" opacity="0">1<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.095;0.105;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></text>
+<circle cx="570" cy="190" r="20" fill="#171a21" stroke="#3d4b60" stroke-width="3"/>
+<circle cx="570" cy="190" r="20" fill="#7ee7c7" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.115;0.125;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></circle>
+<text x="570" y="258" font-size="30" fill="#9aa3b2" text-anchor="middle">0<animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.115;0.125;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></text>
+<text x="570" y="258" font-size="30" font-weight="700" fill="#7ee7c7" text-anchor="middle" opacity="0">1<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.115;0.125;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></text>
+<circle cx="630" cy="190" r="20" fill="#171a21" stroke="#3d4b60" stroke-width="3"/>
+<circle cx="630" cy="190" r="20" fill="#7ee7c7" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.135;0.145;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></circle>
+<text x="630" y="258" font-size="30" fill="#9aa3b2" text-anchor="middle">0<animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.135;0.145;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></text>
+<text x="630" y="258" font-size="30" font-weight="700" fill="#7ee7c7" text-anchor="middle" opacity="0">1<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.135;0.145;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></text>
+<circle cx="690" cy="190" r="20" fill="#171a21" stroke="#3d4b60" stroke-width="3"/>
+<circle cx="690" cy="190" r="20" fill="#7ee7c7" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.155;0.165;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></circle>
+<text x="690" y="258" font-size="30" fill="#9aa3b2" text-anchor="middle">0<animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.155;0.165;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></text>
+<text x="690" y="258" font-size="30" font-weight="700" fill="#7ee7c7" text-anchor="middle" opacity="0">1<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.155;0.165;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></text>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.095;0.105;0.24;0.25;1" dur="16s" repeatCount="indefinite"/><path d="M250 274 v8 H470 v-8" fill="none" stroke="#ffb454" stroke-width="3"/><text x="360" y="330" font-size="44" font-weight="700" fill="#ffb454" text-anchor="middle">F</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.175;0.185;0.24;0.25;1" dur="16s" repeatCount="indefinite"/><path d="M490 274 v8 H710 v-8" fill="none" stroke="#ffb454" stroke-width="3"/><text x="600" y="330" font-size="44" font-weight="700" fill="#ffb454" text-anchor="middle">F</text></g>
+<text x="480" y="390" font-size="30" font-weight="700" fill="#e6e8ec" text-anchor="middle" opacity="0">11111111 = FF<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18;0.19;0.24;0.25;1" dur="16s" repeatCount="indefinite"/></text>
+</g>
+<g clip-path="url(#stage)">
+<circle cx="480" cy="295" r="60" fill="none" stroke="#7ee7c7" stroke-width="4" opacity="0"><animate attributeName="r" values="60;60;470;470" keyTimes="0;0.775;0.875;1" dur="16s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;0.9;0;0" keyTimes="0;0.775;0.785;0.875;1" dur="16s" repeatCount="indefinite"/></circle>
+<circle cx="480" cy="295" r="60" fill="none" stroke="#7ee7c7" stroke-width="4" opacity="0"><animate attributeName="r" values="60;60;470;470" keyTimes="0;0.81;0.91;1" dur="16s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;0.9;0;0" keyTimes="0;0.81;0.82;0.91;1" dur="16s" repeatCount="indefinite"/></circle>
+<circle cx="480" cy="295" r="60" fill="none" stroke="#7ee7c7" stroke-width="4" opacity="0"><animate attributeName="r" values="60;60;470;470" keyTimes="0;0.845;0.945;1" dur="16s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;0.9;0;0" keyTimes="0;0.845;0.855;0.945;1" dur="16s" repeatCount="indefinite"/></circle>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.52;0.56;0.95;0.98;1" dur="16s" repeatCount="indefinite"/>
+<rect x="25" y="190" width="70" height="46" rx="5" fill="#171a21" stroke="#3d4b60" stroke-width="3"/><rect x="25" y="190" width="70" height="46" rx="5" fill="#1d3b35" stroke="#7ee7c7" stroke-width="3" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.79;0.81;0.95;1" dur="16s" repeatCount="indefinite"/></rect><rect x="50" y="240" width="20" height="8" fill="#3d4b60"/>
+<rect x="25" y="330" width="70" height="46" rx="5" fill="#171a21" stroke="#3d4b60" stroke-width="3"/><rect x="25" y="330" width="70" height="46" rx="5" fill="#1d3b35" stroke="#7ee7c7" stroke-width="3" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.79;0.81;0.95;1" dur="16s" repeatCount="indefinite"/></rect><rect x="50" y="380" width="20" height="8" fill="#3d4b60"/>
+<rect x="865" y="190" width="70" height="46" rx="5" fill="#171a21" stroke="#3d4b60" stroke-width="3"/><rect x="865" y="190" width="70" height="46" rx="5" fill="#1d3b35" stroke="#7ee7c7" stroke-width="3" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.79;0.81;0.95;1" dur="16s" repeatCount="indefinite"/></rect><rect x="890" y="240" width="20" height="8" fill="#3d4b60"/>
+<rect x="865" y="330" width="70" height="46" rx="5" fill="#171a21" stroke="#3d4b60" stroke-width="3"/><rect x="865" y="330" width="70" height="46" rx="5" fill="#1d3b35" stroke="#7ee7c7" stroke-width="3" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.79;0.81;0.95;1" dur="16s" repeatCount="indefinite"/></rect><rect x="890" y="380" width="20" height="8" fill="#3d4b60"/>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.52;0.56;0.95;0.98;1" dur="16s" repeatCount="indefinite"/>
+<rect x="120" y="160" width="720" height="270" rx="14" fill="#171a21" stroke="#ffb454" stroke-width="3"/>
+<path d="M120 160 L480 245 L840 160" fill="none" stroke="#ffb454" stroke-width="3"/>
+<text x="150" y="266" font-size="24" font-weight="700" fill="#ffb454">받는 사람</text>
+<rect x="150" y="276" width="660" height="110" rx="8" fill="#0f1115" stroke="#3d4b60" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="810" y="416" font-size="24" fill="#9aa3b2" text-anchor="end" opacity="0">특정 기기 한 대가 아님<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.68;0.7;0.95;1" dur="16s" repeatCount="indefinite"/></text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.31;0.34;0.48;0.5;1" dur="16s" repeatCount="indefinite"/><text x="55" y="110" font-size="24" font-weight="700" fill="#6ea8fe">일반 기기 한 대 (일부만 켜짐)</text>
+<circle cx="67.5" cy="140" r="6" fill="#6ea8fe" stroke="#6ea8fe" stroke-width="2"/>
+<circle cx="82.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="97.5" cy="140" r="6" fill="#6ea8fe" stroke="#6ea8fe" stroke-width="2"/>
+<circle cx="112.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="127.5" cy="140" r="6" fill="#6ea8fe" stroke="#6ea8fe" stroke-width="2"/>
+<circle cx="142.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="157.5" cy="140" r="6" fill="#6ea8fe" stroke="#6ea8fe" stroke-width="2"/>
+<circle cx="172.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<text x="120" y="184" font-size="32" font-weight="700" fill="#e6e8ec" text-anchor="middle">AA</text>
+<circle cx="211.5" cy="140" r="6" fill="#6ea8fe" stroke="#6ea8fe" stroke-width="2"/>
+<circle cx="226.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="241.5" cy="140" r="6" fill="#6ea8fe" stroke="#6ea8fe" stroke-width="2"/>
+<circle cx="256.5" cy="140" r="6" fill="#6ea8fe" stroke="#6ea8fe" stroke-width="2"/>
+<circle cx="271.5" cy="140" r="6" fill="#6ea8fe" stroke="#6ea8fe" stroke-width="2"/>
+<circle cx="286.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="301.5" cy="140" r="6" fill="#6ea8fe" stroke="#6ea8fe" stroke-width="2"/>
+<circle cx="316.5" cy="140" r="6" fill="#6ea8fe" stroke="#6ea8fe" stroke-width="2"/>
+<text x="264" y="184" font-size="32" font-weight="700" fill="#e6e8ec" text-anchor="middle">BB</text>
+<text x="192" y="182" font-size="32" fill="#9aa3b2" text-anchor="middle">:</text>
+<circle cx="355.5" cy="140" r="6" fill="#6ea8fe" stroke="#6ea8fe" stroke-width="2"/>
+<circle cx="370.5" cy="140" r="6" fill="#6ea8fe" stroke="#6ea8fe" stroke-width="2"/>
+<circle cx="385.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="400.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="415.5" cy="140" r="6" fill="#6ea8fe" stroke="#6ea8fe" stroke-width="2"/>
+<circle cx="430.5" cy="140" r="6" fill="#6ea8fe" stroke="#6ea8fe" stroke-width="2"/>
+<circle cx="445.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="460.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<text x="408" y="184" font-size="32" font-weight="700" fill="#e6e8ec" text-anchor="middle">CC</text>
+<text x="336" y="182" font-size="32" fill="#9aa3b2" text-anchor="middle">:</text>
+<circle cx="499.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="514.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="529.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="544.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="559.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="574.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="589.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="604.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<text x="552" y="184" font-size="32" font-weight="700" fill="#e6e8ec" text-anchor="middle">00</text>
+<text x="480" y="182" font-size="32" fill="#9aa3b2" text-anchor="middle">:</text>
+<circle cx="643.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="658.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="673.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="688.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="703.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="718.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="733.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="748.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<text x="696" y="184" font-size="32" font-weight="700" fill="#e6e8ec" text-anchor="middle">00</text>
+<text x="624" y="182" font-size="32" fill="#9aa3b2" text-anchor="middle">:</text>
+<circle cx="787.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="802.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="817.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="832.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="847.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="862.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<circle cx="877.5" cy="140" r="6" fill="#6ea8fe" stroke="#6ea8fe" stroke-width="2"/>
+<circle cx="892.5" cy="140" r="6" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<text x="840" y="184" font-size="32" font-weight="700" fill="#e6e8ec" text-anchor="middle">02</text>
+<text x="768" y="182" font-size="32" fill="#9aa3b2" text-anchor="middle">:</text>
+</g>
+<text x="55" y="250" font-size="24" font-weight="700" fill="#7ee7c7" opacity="0">브로드캐스트 주소 (48개 모두 켜짐)<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.32;0.34;0.48;0.5;1" dur="16s" repeatCount="indefinite"/></text>
+<g opacity="1"><animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.95;0.98;1" dur="16s" repeatCount="indefinite"/><g transform="translate(55,280)"><animateTransform attributeName="transform" type="translate" values="55,280;55,280;182,280;182,280;182,318;182,318;55,280" keyTimes="0;0.48;0.52;0.56;0.68;0.98;1" dur="16s" repeatCount="indefinite"/><g><animateTransform attributeName="transform" type="scale" values="1;1;0.7;0.7;1" keyTimes="0;0.48;0.52;0.98;1" dur="16s" repeatCount="indefinite"/>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.2;0.21;1" dur="16s" repeatCount="indefinite"/>
+<circle cx="12.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="27.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="42.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="57.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="72.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="87.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="102.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="117.5" cy="0" r="6" fill="#7ee7c7"/>
+<text x="65" y="44" font-size="36" font-weight="700" fill="#7ee7c7" text-anchor="middle">FF</text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.22;0.23;1" dur="16s" repeatCount="indefinite"/>
+<circle cx="156.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="171.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="186.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="201.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="216.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="231.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="246.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="261.5" cy="0" r="6" fill="#7ee7c7"/>
+<text x="209" y="44" font-size="36" font-weight="700" fill="#7ee7c7" text-anchor="middle">FF</text>
+<text x="137" y="42" font-size="36" fill="#9aa3b2" text-anchor="middle">:</text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.24;0.25;1" dur="16s" repeatCount="indefinite"/>
+<circle cx="300.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="315.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="330.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="345.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="360.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="375.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="390.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="405.5" cy="0" r="6" fill="#7ee7c7"/>
+<text x="353" y="44" font-size="36" font-weight="700" fill="#7ee7c7" text-anchor="middle">FF</text>
+<text x="281" y="42" font-size="36" fill="#9aa3b2" text-anchor="middle">:</text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.26;0.27;1" dur="16s" repeatCount="indefinite"/>
+<circle cx="444.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="459.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="474.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="489.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="504.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="519.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="534.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="549.5" cy="0" r="6" fill="#7ee7c7"/>
+<text x="497" y="44" font-size="36" font-weight="700" fill="#7ee7c7" text-anchor="middle">FF</text>
+<text x="425" y="42" font-size="36" fill="#9aa3b2" text-anchor="middle">:</text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.28;0.29;1" dur="16s" repeatCount="indefinite"/>
+<circle cx="588.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="603.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="618.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="633.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="648.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="663.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="678.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="693.5" cy="0" r="6" fill="#7ee7c7"/>
+<text x="641" y="44" font-size="36" font-weight="700" fill="#7ee7c7" text-anchor="middle">FF</text>
+<text x="569" y="42" font-size="36" fill="#9aa3b2" text-anchor="middle">:</text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.3;0.31;1" dur="16s" repeatCount="indefinite"/>
+<circle cx="732.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="747.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="762.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="777.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="792.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="807.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="822.5" cy="0" r="6" fill="#7ee7c7"/>
+<circle cx="837.5" cy="0" r="6" fill="#7ee7c7"/>
+<text x="785" y="44" font-size="36" font-weight="700" fill="#7ee7c7" text-anchor="middle">FF</text>
+<text x="713" y="42" font-size="36" fill="#9aa3b2" text-anchor="middle">:</text>
+</g>
+</g></g></g>
+<rect x="40" y="462" width="880" height="62" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<text x="480" y="502" font-size="28" font-weight="700" fill="#e6e8ec" text-anchor="middle" opacity="1">전구 8개가 모두 켜지면 11111111, 짧게 FF<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.185;0.195;0.97;1" dur="16s" repeatCount="indefinite"/></text>
+<text x="480" y="502" font-size="28" font-weight="700" fill="#e6e8ec" text-anchor="middle" opacity="0">MAC 주소는 8개씩 6칸, 전구 48개<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.185;0.195;0.485;0.495;1" dur="16s" repeatCount="indefinite"/></text>
+<text x="480" y="502" font-size="28" font-weight="700" fill="#e6e8ec" text-anchor="middle" opacity="0">전부 켜진 주소를 받는 사람 칸에 적으면<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.485;0.495;0.765;0.775;1" dur="16s" repeatCount="indefinite"/></text>
+<text x="480" y="502" font-size="28" font-weight="700" fill="#7ee7c7" text-anchor="middle" opacity="0">FF:FF:FF:FF:FF:FF = 같은 범위 모두에게<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.765;0.775;0.96;0.97;1" dur="16s" repeatCount="indefinite"/></text>
+</svg>

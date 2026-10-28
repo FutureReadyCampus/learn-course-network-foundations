@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+<rect width="960" height="540" fill="#0f1115"/>
+<text x="480" y="48" text-anchor="middle" font-size="34" font-weight="700" fill="#e6e8ec">호스트의 두 갈래</text>
+
+<!-- 지도 장면 -->
+<g id="map">
+  <!-- 연결선 -->
+  <line x1="275" y1="290" x2="420" y2="290" stroke="#3d4b60" stroke-width="6"/>
+  <line x1="540" y1="290" x2="720" y2="290" stroke="#3d4b60" stroke-width="6"/>
+
+  <!-- 강조 덧칠: 엔드포인트(주황), 스위치(파랑) -->
+  <g>
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" values="1;1;0;0;1;1" keyTimes="0;0.15;0.18;0.54;0.57;1"/>
+    <rect x="115" y="230" width="170" height="100" rx="12" fill="#ffb454" fill-opacity="0.15" stroke="#ffb454" stroke-width="3"/>
+    <rect x="685" y="230" width="150" height="100" rx="12" fill="#ffb454" fill-opacity="0.15" stroke="#ffb454" stroke-width="3"/>
+    <rect x="400" y="230" width="160" height="100" rx="12" fill="#6ea8fe" fill-opacity="0.2" stroke="#6ea8fe" stroke-width="3"/>
+  </g>
+
+  <!-- 노트북 -->
+  <rect x="150" y="240" width="100" height="62" rx="5" fill="#171a21" stroke="#9aa3b2" stroke-width="3"/>
+  <path d="M135 306 H265 L277 320 H123 Z" fill="#3d4b60"/>
+  <!-- 공유기 -->
+  <line x1="442" y1="270" x2="432" y2="240" stroke="#9aa3b2" stroke-width="4" stroke-linecap="round"/>
+  <line x1="518" y1="270" x2="528" y2="240" stroke="#9aa3b2" stroke-width="4" stroke-linecap="round"/>
+  <rect x="420" y="270" width="120" height="42" rx="8" fill="#171a21" stroke="#9aa3b2" stroke-width="3"/>
+  <circle cx="445" cy="291" r="5" fill="#7ee7c7"/><circle cx="465" cy="291" r="5" fill="#7ee7c7"/><circle cx="485" cy="291" r="5" fill="#7ee7c7"/>
+  <!-- 웹 서버 -->
+  <rect x="720" y="238" width="80" height="84" rx="6" fill="#171a21" stroke="#9aa3b2" stroke-width="3"/>
+  <line x1="730" y1="266" x2="790" y2="266" stroke="#3d4b60" stroke-width="3"/>
+  <line x1="730" y1="294" x2="790" y2="294" stroke="#3d4b60" stroke-width="3"/>
+  <circle cx="782" cy="252" r="4" fill="#7ee7c7"/><circle cx="782" cy="280" r="4" fill="#7ee7c7"/><circle cx="782" cy="308" r="4" fill="#7ee7c7"/>
+
+  <!-- 장비 이름 -->
+  <text x="200" y="360" text-anchor="middle" font-size="26" fill="#e6e8ec">노트북</text>
+  <text x="200" y="392" text-anchor="middle" font-size="24" fill="#7ee7c7">192.168.0.10</text>
+  <text x="480" y="360" text-anchor="middle" font-size="26" fill="#e6e8ec">공유기</text>
+  <text x="760" y="360" text-anchor="middle" font-size="26" fill="#e6e8ec">웹 서버</text>
+
+  <!-- 호스트 테두리 -->
+  <g>
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" values="1;1;0;0;1;1" keyTimes="0;0.15;0.18;0.34;0.37;1"/>
+    <rect x="60" y="86" width="840" height="324" rx="20" fill="none" stroke="#7ee7c7" stroke-width="3" stroke-dasharray="12 8"/>
+    <rect x="300" y="68" width="360" height="38" rx="19" fill="#0f1115" stroke="#7ee7c7" stroke-width="2"/>
+    <text x="480" y="96" text-anchor="middle" font-size="24" font-weight="700" fill="#7ee7c7">호스트 · 연결된 컴퓨터 모두</text>
+  </g>
+
+  <!-- 역할 꼬리표: 스위치 / 엔드포인트 -->
+  <g>
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" values="1;1;0;0;1;1" keyTimes="0;0.15;0.18;0.54;0.57;1"/>
+    <rect x="90" y="154" width="220" height="70" rx="10" fill="#171a21" stroke="#ffb454" stroke-width="2"/>
+    <text x="200" y="184" text-anchor="middle" font-size="26" font-weight="700" fill="#ffb454">엔드포인트</text>
+    <text x="200" y="212" text-anchor="middle" font-size="24" fill="#e6e8ec">네트워크를 이용</text>
+    <rect x="370" y="154" width="220" height="70" rx="10" fill="#171a21" stroke="#6ea8fe" stroke-width="2"/>
+    <text x="480" y="184" text-anchor="middle" font-size="26" font-weight="700" fill="#6ea8fe">스위치</text>
+    <text x="480" y="212" text-anchor="middle" font-size="24" fill="#e6e8ec">네트워크를 이룸</text>
+    <rect x="650" y="154" width="220" height="70" rx="10" fill="#171a21" stroke="#ffb454" stroke-width="2"/>
+    <text x="760" y="184" text-anchor="middle" font-size="26" font-weight="700" fill="#ffb454">엔드포인트</text>
+    <text x="760" y="212" text-anchor="middle" font-size="24" fill="#e6e8ec">네트워크를 이용</text>
+  </g>
+
+  <!-- 셋 다 호스트 칩: 공유기도 호스트 -->
+  <g>
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" values="1;1;0;0;1;1" keyTimes="0;0.15;0.18;0.76;0.79;1"/>
+    <rect x="145" y="112" width="110" height="34" rx="17" fill="#7ee7c7"/>
+    <text x="200" y="138" text-anchor="middle" font-size="24" font-weight="700" fill="#0f1115">호스트</text>
+    <rect x="425" y="112" width="110" height="34" rx="17" fill="#7ee7c7"/>
+    <text x="480" y="138" text-anchor="middle" font-size="24" font-weight="700" fill="#0f1115">호스트</text>
+    <rect x="705" y="112" width="110" height="34" rx="17" fill="#7ee7c7"/>
+    <text x="760" y="138" text-anchor="middle" font-size="24" font-weight="700" fill="#0f1115">호스트</text>
+  </g>
+</g>
+
+<!-- 자막 바 -->
+<rect x="40" y="440" width="880" height="70" rx="14" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<g font-size="26" text-anchor="middle" fill="#e6e8ec">
+  <text x="480" y="484" font-weight="700" fill="#7ee7c7">셋 다 호스트 — 공유기는 스위치, 나머지는 엔드포인트
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" values="1;1;0;0;1;1" keyTimes="0;0.15;0.17;0.76;0.78;1"/></text>
+  <text x="480" y="484" opacity="0">처음부터 볼게요: 공유기에 노트북과 웹 서버가 연결돼요
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.17;0.19;0.34;0.36;1"/></text>
+  <text x="480" y="484" opacity="0">네트워크에 연결된 컴퓨터는 모두 ‘호스트’예요
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.34;0.36;0.54;0.56;1"/></text>
+  <text x="480" y="484" opacity="0">네트워크를 이루면 <tspan fill="#6ea8fe" font-weight="700">스위치</tspan>, 쓰면 <tspan fill="#ffb454" font-weight="700">엔드포인트</tspan>
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.54;0.56;0.76;0.78;1"/></text>
+</g>
+</svg>

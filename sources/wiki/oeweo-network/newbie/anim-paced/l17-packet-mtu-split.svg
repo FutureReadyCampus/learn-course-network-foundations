@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+<rect width="960" height="540" fill="#0f1115"/>
+<text x="480" y="56" font-size="34" font-weight="700" fill="#e6e8ec" text-anchor="middle">1,500바이트 상자의 속 나누기</text>
+
+<!-- ruler: MTU 1,500 -->
+<g stroke="#9aa3b2" stroke-width="2">
+<line x1="100" y1="132" x2="760" y2="132"/>
+<line x1="100" y1="120" x2="100" y2="144"/><line x1="760" y1="120" x2="760" y2="144"/>
+<line x1="232" y1="126" x2="232" y2="138"/><line x1="364" y1="126" x2="364" y2="138"/>
+<line x1="496" y1="126" x2="496" y2="138"/><line x1="628" y1="126" x2="628" y2="138"/>
+</g>
+<text x="100" y="110" font-size="24" fill="#9aa3b2" text-anchor="middle">0</text>
+<text x="760" y="110" font-size="24" fill="#9aa3b2" text-anchor="middle">1,500</text>
+<text x="430" y="110" font-size="26" font-weight="700" fill="#e6e8ec" text-anchor="middle">MTU 1,500바이트</text>
+
+<!-- empty box -->
+<rect x="100" y="160" width="660" height="100" fill="#171a21" stroke="#3d4b60" stroke-width="3"/>
+
+<!-- header fill (yellow) -->
+<rect x="100" y="160" width="0" height="100" fill="#ffb454">
+<animate attributeName="width" values="0;0;70;70;0" keyTimes="0;0.2;0.27;0.95;1" dur="14s" repeatCount="indefinite"/>
+</rect>
+<g opacity="0" font-weight="700" fill="#0f1115" text-anchor="middle">
+<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.26;0.3;0.95;1" dur="14s" repeatCount="indefinite"/>
+<text x="135" y="204" font-size="24">헤더</text>
+<text x="135" y="240" font-size="24">20</text>
+</g>
+
+<!-- payload fill (blue) -->
+<rect x="172" y="160" width="0" height="100" fill="#6ea8fe">
+<animate attributeName="width" values="0;0;588;588;0" keyTimes="0;0.31;0.42;0.95;1" dur="14s" repeatCount="indefinite"/>
+</rect>
+<text x="466" y="222" font-size="28" font-weight="700" fill="#0f1115" text-anchor="middle" opacity="0">페이로드 1,480
+<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.41;0.45;0.95;1" dur="14s" repeatCount="indefinite"/>
+</text>
+
+<!-- formula -->
+<g opacity="0" transform="translate(0,24)">
+<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.5;0.56;0.95;1" dur="14s" repeatCount="indefinite"/>
+<animateTransform attributeName="transform" type="translate" values="0,24;0,24;0,0;0,0;0,24" keyTimes="0;0.5;0.56;0.95;1" dur="14s" repeatCount="indefinite"/>
+<text x="430" y="336" font-size="36" font-weight="700" fill="#e6e8ec" text-anchor="middle"><tspan fill="#ffb454">20</tspan> + <tspan fill="#6ea8fe">1,480</tspan> = <tspan fill="#7ee7c7">1,500</tspan></text>
+</g>
+
+<!-- theoretical 65,515 tag (dashed, faint) -->
+<g opacity="0">
+<animate attributeName="opacity" values="0;0;0.6;0.6;0;0" keyTimes="0;0.53;0.59;0.8;0.85;1" dur="14s" repeatCount="indefinite"/>
+<rect x="790" y="150" width="140" height="120" rx="8" fill="none" stroke="#9aa3b2" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="860" y="196" font-size="24" fill="#9aa3b2" text-anchor="middle">이론상</text>
+<text x="860" y="238" font-size="28" font-weight="700" fill="#9aa3b2" text-anchor="middle">65,515</text>
+</g>
+
+<!-- solid 1,500 box glow -->
+<rect x="100" y="160" width="660" height="100" fill="none" stroke="#7ee7c7" stroke-width="5" opacity="0">
+<animate attributeName="opacity" values="0;0;1;0.3;1;0.3;1;1;0" keyTimes="0;0.82;0.84;0.86;0.88;0.9;0.92;0.95;1" dur="14s" repeatCount="indefinite"/>
+</rect>
+
+<!-- caption bar -->
+<rect x="40" y="430" width="880" height="80" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<g font-size="26" fill="#e6e8ec" text-anchor="middle">
+<text x="480" y="480">패킷 상자 하나의 한도(MTU)는 보통 1,500바이트예요.
+<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.18;0.2;0.95;1" dur="14s" repeatCount="indefinite"/>
+</text>
+<text x="480" y="480" opacity="0">앞 20바이트는 헤더(송장), 나머지 1,480은 페이로드예요.
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18;0.2;0.48;0.5;1" dur="14s" repeatCount="indefinite"/>
+</text>
+<text x="480" y="480" opacity="0">형식상 65,515까지 가능하지만, 실제로는 MTU에 맞춰요.
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.48;0.5;0.78;0.8;1" dur="14s" repeatCount="indefinite"/>
+</text>
+<text x="480" y="480" opacity="0" fill="#7ee7c7" font-weight="700">패킷 = 헤더 20 + 페이로드 1,480 = 1,500바이트
+<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.78;0.8;0.95;1" dur="14s" repeatCount="indefinite"/>
+</text>
+</g>
+</svg>

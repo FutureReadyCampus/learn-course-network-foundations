@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+<rect width="960" height="540" fill="#0f1115"/>
+<text x="480" y="50" font-size="34" font-weight="700" fill="#e6e8ec" text-anchor="middle">큰 문서는 번호 붙은 조각으로 나뉘어 간다</text>
+<text x="480" y="92" font-size="24" fill="#9aa3b2" text-anchor="middle">길은 한 번에 <tspan fill="#ffb454" font-weight="700">최대 1,500바이트</tspan>(MTU)까지만 실어 나릅니다</text>
+
+<text x="40" y="160" font-size="26" font-weight="700" fill="#6ea8fe">보내는 쪽</text>
+<text x="920" y="160" font-size="26" font-weight="700" fill="#6ea8fe" text-anchor="end">받는 쪽</text>
+
+<!-- lanes (several roads) -->
+<g stroke="#3d4b60" stroke-width="3" stroke-dasharray="14 12" opacity="0.6">
+<line x1="40" y1="225" x2="920" y2="225"/>
+<line x1="40" y1="305" x2="920" y2="305"/>
+<line x1="40" y1="385" x2="920" y2="385"/>
+</g>
+
+<!-- piece 1 -->
+<g>
+<animateTransform attributeName="transform" type="translate" values="60 200;60 200;510 200;510 200;60 200;60 200" keyTimes="0;0.57;0.76;0.95;0.985;1" dur="10s" repeatCount="indefinite"/>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.49;0.53;0.77;0.8;1" dur="10s" repeatCount="indefinite"/>
+<rect x="-44" y="-10" width="212" height="70" rx="10" fill="#16223a" stroke="#6ea8fe" stroke-width="3"/>
+<text x="-22" y="34" font-size="24" font-weight="700" fill="#6ea8fe" text-anchor="middle">IP</text></g>
+<rect width="160" height="50" rx="6" fill="#1f4a40" stroke="#7ee7c7" stroke-width="3"/>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.24;0.3;0.95;0.98;1" dur="10s" repeatCount="indefinite"/>
+<circle cx="22" cy="25" r="17" fill="#ffb454"/>
+<text x="22" y="33" font-size="24" font-weight="700" fill="#0f1115" text-anchor="middle">1</text>
+<text x="100" y="34" font-size="24" fill="#e6e8ec" text-anchor="middle">1,460</text></g>
+</g>
+
+<!-- piece 2 -->
+<g>
+<animateTransform attributeName="transform" type="translate" values="220 200;220 200;290 200;290 200;290 280;720 280;720 280;670 200;670 200;220 200;220 200" keyTimes="0;0.2;0.26;0.54;0.57;0.68;0.78;0.84;0.95;0.985;1" dur="10s" repeatCount="indefinite"/>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.49;0.53;0.77;0.8;1" dur="10s" repeatCount="indefinite"/>
+<rect x="-44" y="-10" width="212" height="70" rx="10" fill="#16223a" stroke="#6ea8fe" stroke-width="3"/>
+<text x="-22" y="34" font-size="24" font-weight="700" fill="#6ea8fe" text-anchor="middle">IP</text></g>
+<rect width="160" height="50" rx="6" fill="#1f4a40" stroke="#7ee7c7" stroke-width="3"/>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.24;0.3;0.95;0.98;1" dur="10s" repeatCount="indefinite"/>
+<circle cx="22" cy="25" r="17" fill="#ffb454"/>
+<text x="22" y="33" font-size="24" font-weight="700" fill="#0f1115" text-anchor="middle">2</text>
+<text x="100" y="34" font-size="24" fill="#e6e8ec" text-anchor="middle">1,460</text></g>
+</g>
+
+<!-- piece 3 -->
+<g>
+<animateTransform attributeName="transform" type="translate" values="380 200;380 200;520 200;520 200;520 360;520 360;760 360;760 360;830 200;830 200;380 200;380 200" keyTimes="0;0.2;0.26;0.54;0.57;0.59;0.72;0.81;0.87;0.95;0.985;1" dur="10s" repeatCount="indefinite"/>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.49;0.53;0.77;0.8;1" dur="10s" repeatCount="indefinite"/>
+<rect x="-44" y="-10" width="142" height="70" rx="10" fill="#16223a" stroke="#6ea8fe" stroke-width="3"/>
+<text x="-22" y="34" font-size="24" font-weight="700" fill="#6ea8fe" text-anchor="middle">IP</text></g>
+<rect width="90" height="50" rx="6" fill="#1f4a40" stroke="#7ee7c7" stroke-width="3"/>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.24;0.3;0.95;0.98;1" dur="10s" repeatCount="indefinite"/>
+<circle cx="22" cy="25" r="17" fill="#ffb454"/>
+<text x="22" y="33" font-size="24" font-weight="700" fill="#0f1115" text-anchor="middle">3</text>
+<text x="62" y="34" font-size="24" fill="#e6e8ec" text-anchor="middle">80</text></g>
+</g>
+
+<!-- whole stream overlay -->
+<g>
+<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.2;0.23;0.97;1" dur="10s" repeatCount="indefinite"/>
+<rect x="60" y="200" width="410" height="50" rx="6" fill="#1f4a40" stroke="#7ee7c7" stroke-width="3"/>
+<text x="265" y="234" font-size="26" font-weight="700" fill="#e6e8ec" text-anchor="middle">Stream 3,000바이트</text>
+</g>
+
+<!-- cut marks -->
+<g stroke="#ffb454" stroke-width="4" stroke-dasharray="8 6" opacity="0">
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.17;0.19;0.24;0.27;1" dur="10s" repeatCount="indefinite"/>
+<line x1="220" y1="184" x2="220" y2="266"/>
+<line x1="380" y1="184" x2="380" y2="266"/>
+</g>
+
+<!-- restored label -->
+<text x="715" y="300" font-size="26" font-weight="700" fill="#7ee7c7" text-anchor="middle" opacity="0">다시 3,000바이트로 복원
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.86;0.89;0.95;0.97;1" dur="10s" repeatCount="indefinite"/></text>
+
+<!-- caption bar -->
+<rect x="20" y="452" width="920" height="72" rx="14" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<g font-size="26" fill="#e6e8ec" text-anchor="middle">
+<text x="480" y="497">3,000바이트 문서는 한 번에 못 실어 보냅니다
+<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.21;0.24;0.97;1" dur="10s" repeatCount="indefinite"/></text>
+<text x="480" y="497" opacity="0">TCP가 세 조각으로 자르고 <tspan fill="#ffb454" font-weight="700">번호표 1·2·3</tspan>을 붙입니다
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.22;0.25;0.48;0.51;1" dur="10s" repeatCount="indefinite"/></text>
+<text x="480" y="497" opacity="0"><tspan fill="#6ea8fe" font-weight="700">IP 봉투</tspan>에 담긴 패킷은 따로 가서 2번이 먼저 오기도 해요
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.49;0.52;0.76;0.79;1" dur="10s" repeatCount="indefinite"/></text>
+<text x="480" y="497" opacity="0" font-weight="700" fill="#7ee7c7">받는 쪽은 번호 순서대로 다시 이어 붙입니다
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.77;0.8;0.96;0.98;1" dur="10s" repeatCount="indefinite"/></text>
+</g>
+</svg>

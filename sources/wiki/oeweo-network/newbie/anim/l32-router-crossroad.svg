@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+<rect width="960" height="540" fill="#0f1115"/>
+<text x="480" y="48" font-size="34" font-weight="700" fill="#e6e8ec" text-anchor="middle">라우터는 교차로의 안내원</text>
+<text x="480" y="90" font-size="24" fill="#9aa3b2" text-anchor="middle">상자에 붙은 <tspan fill="#ffb454" font-weight="700">도착지</tspan>를 보고 갈 길을 골라 줍니다</text>
+
+<!-- roads -->
+<g stroke="#3d4b60" stroke-width="14" stroke-linecap="round" fill="none">
+<line x1="170" y1="285" x2="500" y2="285"/>
+<line x1="500" y1="285" x2="750" y2="175"/>
+<line x1="500" y1="285" x2="750" y2="395"/>
+</g>
+
+<!-- villages -->
+<g font-size="26" font-weight="700" fill="#e6e8ec">
+<rect x="20" y="240" width="150" height="90" rx="14" fill="#171a21" stroke="#3d4b60" stroke-width="3"/>
+<path d="M36 288 L56 270 L76 288 Z M41 288 h30 v22 h-30 Z" fill="#6ea8fe"/>
+<text x="124" y="294" text-anchor="middle">서울대</text>
+
+<rect x="750" y="130" width="180" height="90" rx="14" fill="#171a21" stroke="#3d4b60" stroke-width="3">
+<animate attributeName="stroke" values="#3d4b60;#3d4b60;#7ee7c7;#7ee7c7;#3d4b60;#3d4b60" keyTimes="0;0.72;0.75;0.86;0.9;1" dur="10s" repeatCount="indefinite"/>
+</rect>
+<path d="M776 178 L796 160 L816 178 Z M781 178 h30 v22 h-30 Z" fill="#6ea8fe"/>
+<text x="868" y="184" text-anchor="middle">구미</text>
+
+<rect x="750" y="350" width="180" height="90" rx="14" fill="#171a21" stroke="#3d4b60" stroke-width="3">
+<animate attributeName="stroke" values="#3d4b60;#3d4b60;#7ee7c7;#7ee7c7;#3d4b60" keyTimes="0;0.92;0.94;0.97;1" dur="10s" repeatCount="indefinite"/>
+</rect>
+<path d="M776 398 L796 380 L816 398 Z M781 398 h30 v22 h-30 Z" fill="#6ea8fe"/>
+<text x="868" y="404" text-anchor="middle">미국</text>
+</g>
+
+<!-- direction arrows (light up when router decides) -->
+<g transform="translate(500 285) rotate(-23.75)" fill="#7ee7c7" stroke="#7ee7c7" opacity="0">
+<line x1="50" y1="0" x2="225" y2="0" stroke-width="8" stroke-linecap="round"/>
+<polygon points="222,-16 252,0 222,16" stroke="none"/>
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.55;0.58;0.78;0.82;1" dur="10s" repeatCount="indefinite"/>
+</g>
+<g transform="translate(500 285) rotate(23.75)" fill="#7ee7c7" stroke="#7ee7c7" opacity="0">
+<line x1="50" y1="0" x2="225" y2="0" stroke-width="8" stroke-linecap="round"/>
+<polygon points="222,-16 252,0 222,16" stroke="none"/>
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.8;0.83;0.95;0.98;1" dur="10s" repeatCount="indefinite"/>
+</g>
+
+<!-- router (guide) -->
+<circle cx="500" cy="285" r="36" fill="none" stroke="#7ee7c7" stroke-width="4" opacity="0">
+<animate attributeName="r" values="36;36;64;36;64;36;36;64;36" keyTimes="0;0.5;0.56;0.561;0.62;0.621;0.79;0.85;1" dur="10s" repeatCount="indefinite"/>
+<animate attributeName="opacity" values="0;0;0.9;0;0.9;0;0;0.9;0;0" keyTimes="0;0.5;0.505;0.56;0.565;0.62;0.79;0.795;0.85;1" dur="10s" repeatCount="indefinite"/>
+</circle>
+<circle cx="500" cy="285" r="36" fill="#171a21" stroke="#7ee7c7" stroke-width="3">
+<animate attributeName="fill" values="#171a21;#171a21;#1f4a40;#1f4a40;#171a21;#171a21;#1f4a40;#1f4a40;#171a21;#171a21" keyTimes="0;0.5;0.52;0.62;0.65;0.79;0.81;0.85;0.88;1" dur="10s" repeatCount="indefinite"/>
+</circle>
+<circle cx="500" cy="270" r="9" fill="#7ee7c7"/>
+<path d="M482 304 Q500 278 518 304 Z" fill="#7ee7c7"/>
+<text x="500" y="352" font-size="24" font-weight="700" fill="#7ee7c7" text-anchor="middle">라우터</text>
+
+<!-- parcel 1: to Gumi -->
+<g opacity="0">
+<animateTransform attributeName="transform" type="translate" values="250 285;250 285;380 285;380 285;500 285;637 225;637 225" keyTimes="0;0.22;0.46;0.62;0.665;0.73;1" dur="10s" repeatCount="indefinite"/>
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2;0.23;0.73;0.76;1" dur="10s" repeatCount="indefinite"/>
+<rect x="-78" y="-23" width="156" height="46" rx="8" fill="#2a2116" stroke="#ffb454" stroke-width="3">
+<animate attributeName="stroke" values="#ffb454;#ffb454;#7ee7c7;#7ee7c7;#ffb454" keyTimes="0;0.5;0.52;0.98;1" dur="10s" repeatCount="indefinite"/>
+</rect>
+<text x="0" y="9" font-size="24" font-weight="700" fill="#ffb454" text-anchor="middle">목적지: 구미</text>
+</g>
+
+<!-- parcel 2: to USA -->
+<g opacity="0">
+<animateTransform attributeName="transform" type="translate" values="250 285;250 285;380 285;380 285;500 285;637 345;637 345" keyTimes="0;0.69;0.79;0.82;0.865;0.93;1" dur="10s" repeatCount="indefinite"/>
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.68;0.71;0.93;0.95;1" dur="10s" repeatCount="indefinite"/>
+<rect x="-78" y="-23" width="156" height="46" rx="8" fill="#2a2116" stroke="#ffb454" stroke-width="3">
+<animate attributeName="stroke" values="#ffb454;#ffb454;#7ee7c7;#7ee7c7;#ffb454" keyTimes="0;0.79;0.81;0.98;1" dur="10s" repeatCount="indefinite"/>
+</rect>
+<text x="0" y="9" font-size="24" font-weight="700" fill="#ffb454" text-anchor="middle">목적지: 미국</text>
+</g>
+
+<!-- caption bar -->
+<rect x="0" y="468" width="960" height="72" fill="#171a21"/>
+<line x1="0" y1="468" x2="960" y2="468" stroke="#3d4b60" stroke-width="2"/>
+<g font-size="26" text-anchor="middle" fill="#e6e8ec">
+<text x="480" y="514">교차로 한가운데에 라우터(안내원)가 서 있어요
+<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.21;0.24;0.985;1" dur="10s" repeatCount="indefinite"/>
+</text>
+<text x="480" y="514" opacity="0">서울대에서 '목적지: 구미' 상자가 출발해요
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.22;0.25;0.48;0.51;1" dur="10s" repeatCount="indefinite"/>
+</text>
+<text x="480" y="514" opacity="0">라우터가 도착지를 읽고 구미 길로 보내요
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.49;0.52;0.76;0.79;1" dur="10s" repeatCount="indefinite"/>
+</text>
+<text x="480" y="514" opacity="0" fill="#7ee7c7" font-weight="700">라우터 = 길 안내 · 도착지를 보고 길을 골라 줘요
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.77;0.8;0.96;0.985;1" dur="10s" repeatCount="indefinite"/>
+</text>
+</g>
+</svg>

@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540">
+<rect width="960" height="540" fill="#0f1115"/>
+<g font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+  <!-- title + mode tag -->
+  <text x="30" y="50" font-size="34" font-weight="700" fill="#e6e8ec">한 곳에 보내기와 모두에게 보내기</text>
+  <text x="930" y="50" font-size="26" font-weight="700" fill="#6ea8fe" text-anchor="end">① 유니캐스트
+    <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.48;0.5;0.96;1" dur="33.333s" repeatCount="indefinite"/></text>
+  <text x="930" y="50" font-size="26" font-weight="700" fill="#7ee7c7" text-anchor="end" opacity="0">② 브로드캐스트
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.48;0.5;0.96;1" dur="33.333s" repeatCount="indefinite"/></text>
+
+  <!-- complex (same network) -->
+  <rect x="30" y="72" width="610" height="370" rx="16" fill="#171a21" stroke="#3d4b60" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="48" y="102" font-size="24" fill="#9aa3b2">우리 단지 = 같은 네트워크</text>
+  <text x="870" y="102" font-size="24" fill="#9aa3b2" text-anchor="middle">단지 밖</text>
+
+  <!-- base wires -->
+  <g stroke="#3d4b60" stroke-width="3">
+    <line x1="215" y1="225" x2="345" y2="150"/>
+    <line x1="215" y1="225" x2="345" y2="300"/>
+    <line x1="215" y1="225" x2="555" y2="225"/>
+    <line x1="725" y1="225" x2="800" y2="225"/>
+  </g>
+  <!-- unicast route -->
+  <line x1="215" y1="225" x2="800" y2="225" stroke="#6ea8fe" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19;0.21;0.45;0.48;1" dur="33.333s" repeatCount="indefinite"/></line>
+  <!-- broadcast routes -->
+  <g stroke="#7ee7c7" stroke-width="5" opacity="0">
+    <line x1="215" y1="225" x2="345" y2="150"/>
+    <line x1="215" y1="225" x2="345" y2="300"/>
+    <line x1="215" y1="225" x2="555" y2="225"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.54;0.57;0.95;0.98;1" dur="33.333s" repeatCount="indefinite"/>
+  </g>
+  <!-- blocked: gateway -> outside -->
+  <line x1="725" y1="225" x2="800" y2="225" stroke="#ffb454" stroke-width="4" stroke-dasharray="6 6" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.73;0.76;0.95;0.98;1" dur="33.333s" repeatCount="indefinite"/></line>
+
+  <!-- devices -->
+  <g font-size="24" text-anchor="middle">
+    <rect x="40" y="190" width="175" height="70" rx="10" fill="#0f1115" stroke="#6ea8fe" stroke-width="3"/>
+    <text x="127" y="218" fill="#e6e8ec" font-weight="700">내 PC</text>
+    <text x="127" y="248" fill="#9aa3b2">192.168.0.10</text>
+
+    <rect x="345" y="115" width="170" height="70" rx="10" fill="#0f1115" stroke="#3d4b60" stroke-width="3"/>
+    <text x="430" y="143" fill="#e6e8ec">이웃 PC</text>
+    <text x="430" y="173" fill="#9aa3b2">192.168.0.20</text>
+
+    <rect x="345" y="265" width="170" height="70" rx="10" fill="#0f1115" stroke="#3d4b60" stroke-width="3"/>
+    <text x="430" y="293" fill="#e6e8ec">이웃 PC</text>
+    <text x="430" y="323" fill="#9aa3b2">192.168.0.30</text>
+
+    <rect x="555" y="190" width="170" height="70" rx="10" fill="#0f1115" stroke="#3d4b60" stroke-width="3"/>
+    <text x="640" y="218" fill="#e6e8ec">게이트웨이</text>
+    <text x="640" y="248" fill="#9aa3b2">192.168.0.1</text>
+
+    <rect x="800" y="190" width="140" height="70" rx="10" fill="#0f1115" stroke="#3d4b60" stroke-width="3"/>
+    <text x="870" y="218" fill="#e6e8ec" font-weight="700">3.3.3.3</text>
+    <text x="870" y="248" fill="#9aa3b2">(가정)</text>
+  </g>
+
+  <!-- arrival highlights -->
+  <rect x="800" y="190" width="140" height="70" rx="10" fill="#6ea8fe" fill-opacity="0.15" stroke="#6ea8fe" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.41;0.43;0.46;0.49;1" dur="33.333s" repeatCount="indefinite"/></rect>
+  <g fill="#7ee7c7" fill-opacity="0.12" stroke="#7ee7c7" stroke-width="5" opacity="0">
+    <rect x="345" y="115" width="170" height="70" rx="10"/>
+    <rect x="345" y="265" width="170" height="70" rx="10"/>
+    <rect x="555" y="190" width="170" height="70" rx="10"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.67;0.69;0.95;0.98;1" dur="33.333s" repeatCount="indefinite"/>
+  </g>
+
+  <!-- stop mark -->
+  <g opacity="0">
+    <circle cx="762" cy="225" r="20" fill="#0f1115" stroke="#ffb454" stroke-width="4"/>
+    <path d="M752 215 L772 235 M772 215 L752 235" stroke="#ffb454" stroke-width="4" stroke-linecap="round"/>
+    <text x="870" y="305" font-size="24" fill="#ffb454" text-anchor="middle" font-weight="700">밖으로는</text>
+    <text x="870" y="337" font-size="24" fill="#ffb454" text-anchor="middle" font-weight="700">안 나가요</text>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.73;0.76;0.95;0.98;1" dur="33.333s" repeatCount="indefinite"/>
+  </g>
+
+  <!-- packets (moving: 4) -->
+  <defs>
+    <g id="env"><rect x="-20" y="-13" width="40" height="26" rx="3"/><path d="M-20 -13 L0 3 L20 -13" fill="none" stroke="#0f1115" stroke-width="2.5"/></g>
+  </defs>
+  <g fill="#6ea8fe" opacity="0">
+    <use href="#env"/>
+    <animateTransform attributeName="transform" type="translate" values="230,225;230,225;535,225;745,225;770,225;770,225" keyTimes="0;0.2;0.31;0.35;0.42;1" dur="33.333s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19;0.2;0.42;0.45;1" dur="33.333s" repeatCount="indefinite"/>
+  </g>
+  <g fill="#7ee7c7" opacity="0">
+    <use href="#env"/>
+    <animateTransform attributeName="transform" type="translate" values="230,225;230,225;230,225;325,161;325,161" keyTimes="0;0.55;0.57;0.68;1" dur="33.333s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.54;0.55;0.68;0.71;1" dur="33.333s" repeatCount="indefinite"/>
+  </g>
+  <g fill="#7ee7c7" opacity="0">
+    <use href="#env"/>
+    <animateTransform attributeName="transform" type="translate" values="230,225;230,225;230,225;325,289;325,289" keyTimes="0;0.55;0.57;0.68;1" dur="33.333s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.54;0.55;0.68;0.71;1" dur="33.333s" repeatCount="indefinite"/>
+  </g>
+  <g fill="#7ee7c7" opacity="0">
+    <use href="#env"/>
+    <animateTransform attributeName="transform" type="translate" values="230,225;230,225;230,225;535,225;535,225" keyTimes="0;0.55;0.57;0.68;1" dur="33.333s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.54;0.55;0.68;0.71;1" dur="33.333s" repeatCount="indefinite"/>
+  </g>
+
+  <!-- packet header card -->
+  <rect x="40" y="356" width="500" height="76" rx="10" fill="#0f1115" stroke="#3d4b60" stroke-width="2"/>
+  <g font-size="24">
+    <g>
+      <g fill="#6ea8fe" transform="translate(72,394)"><use href="#env"/></g>
+      <text x="106" y="403" fill="#9aa3b2">목적지 IP  <tspan fill="#e6e8ec" font-weight="700">3.3.3.3</tspan></text>
+      <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.48;0.5;0.96;1" dur="33.333s" repeatCount="indefinite"/>
+    </g>
+    <g opacity="0">
+      <g fill="#7ee7c7" transform="translate(72,394)"><use href="#env"/></g>
+      <text x="106" y="386" fill="#9aa3b2">목적지 IP  <tspan fill="#e6e8ec" font-weight="700">192.168.0.255</tspan></text>
+      <text x="106" y="418" fill="#9aa3b2">목적지 MAC  <tspan fill="#e6e8ec" font-weight="700">FF-FF-FF-FF-FF-FF</tspan></text>
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.48;0.5;0.96;1" dur="33.333s" repeatCount="indefinite"/>
+    </g>
+  </g>
+
+  <!-- subtitle bar -->
+  <rect x="30" y="454" width="900" height="70" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+  <g font-size="26" text-anchor="middle">
+    <text x="480" y="498" fill="#e6e8ec">목적지 주소가 패킷이 갈 곳을 정해요.
+      <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.16;0.18;0.975;1" dur="33.333s" repeatCount="indefinite"/></text>
+    <text x="480" y="498" fill="#e6e8ec" opacity="0">3.3.3.3 앞 패킷은 게이트웨이를 지나 한 곳에만 가요.
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18;0.2;0.46;0.48;1" dur="33.333s" repeatCount="indefinite"/></text>
+    <text x="480" y="498" fill="#e6e8ec" opacity="0">192.168.0.255 앞 패킷은 단지 안 모두에게 복사돼요.
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.48;0.5;0.74;0.76;1" dur="33.333s" repeatCount="indefinite"/></text>
+    <text x="480" y="498" fill="#7ee7c7" font-weight="700" opacity="0">유니캐스트 = 한 곳, 브로드캐스트 = 같은 범위 모두
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.76;0.78;0.95;0.975;1" dur="33.333s" repeatCount="indefinite"/></text>
+  </g>
+</g>
+</svg>

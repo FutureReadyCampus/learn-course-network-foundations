@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+  <rect width="960" height="540" fill="#0f1115"/>
+
+  <!-- 제목 = 결론 (항상 보임) -->
+  <text x="480" y="62" text-anchor="middle" font-size="32" font-weight="700" fill="#e6e8ec">1 Gbps ≠ 1 GB/s · 소문자 b와 대문자 B는 8배 차이</text>
+
+  <!-- 양옆 큰 글자 b / B -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.25;0.32;0.95;1" dur="10s" repeatCount="indefinite"/>
+    <text x="110" y="300" text-anchor="middle" font-size="130" font-weight="700" fill="#7ee7c7">b
+      <animate attributeName="font-size" values="130;130;160;130;130" keyTimes="0;0.83;0.87;0.91;1" dur="10s" repeatCount="indefinite"/>
+    </text>
+    <text x="110" y="345" text-anchor="middle" font-size="24" fill="#9aa3b2">bit · 비트</text>
+    <text x="850" y="300" text-anchor="middle" font-size="130" font-weight="700" fill="#ffb454">B
+      <animate attributeName="font-size" values="130;130;160;130;130" keyTimes="0;0.83;0.87;0.91;1" dur="10s" repeatCount="indefinite"/>
+    </text>
+    <text x="850" y="345" text-anchor="middle" font-size="24" fill="#9aa3b2">Byte · 바이트</text>
+  </g>
+
+  <!-- 장면 A/B: 비트 8칸 → 바이트 상자 -->
+  <g>
+    <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.5;0.53;0.95;1" dur="10s" repeatCount="indefinite"/>
+    <!-- 바이트 상자 (묶임) -->
+    <rect x="200" y="110" width="560" height="132" rx="14" fill="#ffb454" fill-opacity="0.12" stroke="#ffb454" stroke-width="4" opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.22;0.28;0.5;0.53;1" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="x" values="200;200;232;232" keyTimes="0;0.22;0.3;1" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="110;110;138;138" keyTimes="0;0.22;0.3;1" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="width" values="560;560;496;496" keyTimes="0;0.22;0.3;1" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="height" values="132;132;76;76" keyTimes="0;0.22;0.3;1" dur="10s" repeatCount="indefinite"/>
+    </rect>
+    <!-- 비트 8칸: 10110010 -->
+    <g fill="#171a21" stroke="#7ee7c7" stroke-width="3">
+      <rect x="244" y="150" width="52" height="52" rx="6"/>
+      <rect x="304" y="150" width="52" height="52" rx="6"/>
+      <rect x="364" y="150" width="52" height="52" rx="6"/>
+      <rect x="424" y="150" width="52" height="52" rx="6"/>
+      <rect x="484" y="150" width="52" height="52" rx="6"/>
+      <rect x="544" y="150" width="52" height="52" rx="6"/>
+      <rect x="604" y="150" width="52" height="52" rx="6"/>
+      <rect x="664" y="150" width="52" height="52" rx="6"/>
+    </g>
+    <g font-size="28" font-weight="700" fill="#e6e8ec" text-anchor="middle">
+      <text x="270" y="186">1</text><text x="330" y="186">0</text><text x="390" y="186">1</text><text x="450" y="186">1</text>
+      <text x="510" y="186">0</text><text x="570" y="186">0</text><text x="630" y="186">1</text><text x="690" y="186">0</text>
+    </g>
+    <text x="480" y="292" text-anchor="middle" font-size="30" font-weight="700" fill="#7ee7c7">b = bit (0 또는 1 한 칸)
+      <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.2;0.24;0.95;1" dur="10s" repeatCount="indefinite"/>
+    </text>
+    <text x="480" y="292" text-anchor="middle" font-size="30" font-weight="700" fill="#ffb454" opacity="0">B = Byte = 8 bit
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.24;0.28;0.5;1" dur="10s" repeatCount="indefinite"/>
+    </text>
+  </g>
+
+  <!-- 장면 C: 1 Gbps 막대를 8칸으로 -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.52;0.55;0.95;1" dur="10s" repeatCount="indefinite"/>
+    <text x="480" y="160" text-anchor="middle" font-size="26" fill="#6ea8fe">1 Gbps = 1초에 10억 비트</text>
+    <rect x="220" y="180" width="520" height="64" rx="6" fill="#6ea8fe" fill-opacity="0.25" stroke="#6ea8fe" stroke-width="3"/>
+    <rect x="220" y="180" width="65" height="64" rx="6" fill="#ffb454" opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.57;0.59;0.95;1" dur="10s" repeatCount="indefinite"/>
+    </rect>
+    <g stroke="#e6e8ec" stroke-width="2" opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.55;0.57;0.95;1" dur="10s" repeatCount="indefinite"/>
+      <line x1="285" y1="180" x2="285" y2="244"/><line x1="350" y1="180" x2="350" y2="244"/>
+      <line x1="415" y1="180" x2="415" y2="244"/><line x1="480" y1="180" x2="480" y2="244"/>
+      <line x1="545" y1="180" x2="545" y2="244"/><line x1="610" y1="180" x2="610" y2="244"/>
+      <line x1="675" y1="180" x2="675" y2="244"/>
+    </g>
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.58;0.6;0.95;1" dur="10s" repeatCount="indefinite"/>
+      <line x1="252" y1="252" x2="252" y2="276" stroke="#ffb454" stroke-width="3"/>
+      <polygon points="244,274 260,274 252,286" fill="#ffb454"/>
+      <text x="220" y="316" font-size="28" font-weight="700" fill="#ffb454">한 칸 = 약 0.125 GB/s</text>
+      <text x="480" y="378" text-anchor="middle" font-size="26" fill="#e6e8ec">초당 1 GB가 아니라 약 0.125 GB</text>
+    </g>
+  </g>
+
+  <!-- 장면 D: 경고 깜빡임 -->
+  <text x="480" y="436" text-anchor="middle" font-size="30" font-weight="700" fill="#ffb454" opacity="0">대문자 B로 착각하면 8배 틀린다!
+    <animate attributeName="opacity" values="0;0;1;0.2;1;0.2;1;1;0" keyTimes="0;0.8;0.82;0.85;0.88;0.9;0.92;0.95;1" dur="10s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- 자막 바 -->
+  <rect x="0" y="468" width="960" height="72" fill="#171a21"/>
+  <line x1="0" y1="468" x2="960" y2="468" stroke="#3d4b60" stroke-width="2"/>
+  <g font-size="26" fill="#e6e8ec" text-anchor="middle">
+    <text x="480" y="514">작은 칸 하나가 비트(b), 0 또는 1을 담아요
+      <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.22;0.25;0.96;1" dur="10s" repeatCount="indefinite"/>
+    </text>
+    <text x="480" y="514" opacity="0">비트 8개를 묶으면 1바이트(B)예요
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.23;0.26;0.49;0.52;1" dur="10s" repeatCount="indefinite"/>
+    </text>
+    <text x="480" y="514" opacity="0">1 Gbps를 8칸으로 나누면 한 칸이 약 0.125 GB/s
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.53;0.79;0.82;1" dur="10s" repeatCount="indefinite"/>
+    </text>
+    <text x="480" y="514" opacity="0" fill="#7ee7c7">소문자 b와 대문자 B는 8배 차이!
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.8;0.83;0.95;0.97;1" dur="10s" repeatCount="indefinite"/>
+    </text>
+  </g>
+</svg>

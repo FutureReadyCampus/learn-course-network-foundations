@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+  <rect width="960" height="540" fill="#0f1115"/>
+
+  <!-- 제목 = 결론 (항상 보임) -->
+  <text x="480" y="50" text-anchor="middle" font-size="32" font-weight="700" fill="#e6e8ec">AND 연산: 구멍(1)은 남기고, 막힌 칸(0)은 지운다</text>
+
+  <!-- 왼쪽 라벨 -->
+  <g font-size="26" fill="#9aa3b2" text-anchor="end">
+    <text x="200" y="119">IP 주소</text>
+    <text x="200" y="205">마스크</text>
+    <text x="200" y="235" font-size="24">= 가림판</text>
+    <text x="200" y="315">결과</text>
+    <text x="200" y="343" font-size="24" fill="#7ee7c7">네트워크 ID</text>
+  </g>
+
+  <!-- 빛줄기 (구멍 통과) : 2~5초 -->
+  <g fill="#7ee7c7" opacity="0">
+    <animate attributeName="opacity" values="0;0;0.35;0.35;0;0" keyTimes="0;0.2;0.25;0.44;0.5;1" dur="14s" repeatCount="indefinite"/>
+    <rect x="250" y="140" width="100" height="150"/>
+    <rect x="420" y="140" width="100" height="150"/>
+    <rect x="590" y="140" width="100" height="150"/>
+  </g>
+
+  <!-- IP 주소 줄 -->
+  <g fill="#171a21" stroke="#6ea8fe" stroke-width="3">
+    <rect x="225" y="80" width="150" height="60" rx="8"/>
+    <rect x="395" y="80" width="150" height="60" rx="8"/>
+    <rect x="565" y="80" width="150" height="60" rx="8"/>
+    <rect x="735" y="80" width="150" height="60" rx="8"/>
+  </g>
+  <g font-size="32" font-weight="700" fill="#e6e8ec" text-anchor="middle">
+    <text x="300" y="121">192</text><text x="470" y="121">168</text><text x="640" y="121">0</text>
+    <text x="385" y="121" fill="#9aa3b2">.</text><text x="555" y="121" fill="#9aa3b2">.</text><text x="725" y="121" fill="#9aa3b2">.</text>
+    <text x="810" y="121">10<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.48;0.5;0.95;1" dur="14s" repeatCount="indefinite"/></text>
+    <text x="810" y="119" font-size="24" fill="#ffb454" opacity="0">0000 1010<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.48;0.5;0.95;1" dur="14s" repeatCount="indefinite"/></text>
+  </g>
+
+  <!-- 마스크 줄 (구멍 아래로 255가 보임) -->
+  <g fill="#171a21" stroke="#7ee7c7" stroke-width="3">
+    <rect x="225" y="180" width="150" height="60" rx="8"/>
+    <rect x="395" y="180" width="150" height="60" rx="8"/>
+    <rect x="565" y="180" width="150" height="60" rx="8"/>
+  </g>
+  <g font-size="32" font-weight="700" fill="#e6e8ec" text-anchor="middle">
+    <text x="300" y="221">255</text><text x="470" y="221">255</text><text x="640" y="221">255</text>
+  </g>
+
+  <!-- 가림판: 앞 3칸 구멍, 마지막 칸 막힘 -->
+  <path fill="#3d4b60" fill-rule="evenodd" d="M215 168 h680 v84 h-680z M221 176 h158 v68 h-158z M391 176 h158 v68 h-158z M561 176 h158 v68 h-158z"/>
+  <rect x="735" y="180" width="150" height="60" rx="8" fill="#2a3342" stroke="#3d4b60" stroke-width="3">
+    <animate attributeName="stroke" values="#3d4b60;#3d4b60;#ffb454;#ffb454;#3d4b60;#3d4b60" keyTimes="0;0.59;0.61;0.65;0.68;1" dur="14s" repeatCount="indefinite"/>
+  </rect>
+  <text x="810" y="219" text-anchor="middle" font-size="26" font-weight="700" fill="#9aa3b2">0 · 막힘</text>
+
+  <!-- 결과 줄 -->
+  <g fill="#171a21" stroke="#3d4b60" stroke-width="3" stroke-dasharray="8 6">
+    <rect x="225" y="290" width="150" height="60" rx="8"/>
+    <rect x="395" y="290" width="150" height="60" rx="8"/>
+    <rect x="565" y="290" width="150" height="60" rx="8"/>
+    <rect x="735" y="290" width="150" height="60" rx="8"/>
+  </g>
+  <g font-size="32" fill="#9aa3b2" text-anchor="middle">
+    <text x="385" y="331">.</text><text x="555" y="331">.</text><text x="725" y="331">.</text>
+  </g>
+  <!-- 192 168 0 내려앉음 : 2~5초 -->
+  <g font-size="32" font-weight="700" fill="#7ee7c7" text-anchor="middle" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.28;0.4;0.95;1" dur="14s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0 -60;0 -60;0 0;0 0" keyTimes="0;0.28;0.42;1" dur="14s" repeatCount="indefinite"/>
+    <text x="300" y="331">192</text><text x="470" y="331">168</text><text x="640" y="331">0</text>
+  </g>
+  <!-- 마지막 칸 0 -->
+  <text x="810" y="331" text-anchor="middle" font-size="32" font-weight="700" fill="#ffb454" opacity="0">0<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.72;0.75;0.95;1" dur="14s" repeatCount="indefinite"/></text>
+  <!-- 결과 완성 테두리 -->
+  <rect x="219" y="284" width="672" height="72" rx="12" fill="none" stroke="#7ee7c7" stroke-width="3" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.74;0.78;0.95;1" dur="14s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- 떨어지는 마지막 묶음: 가림판에 부딪혀 지워짐 : 5~8초 -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.52;0.54;0.72;0.75;1" dur="14s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 30;6 30;-6 30;0 30;0 30;0 210;0 210;0 0" keyTimes="0;0.54;0.6;0.61;0.62;0.63;0.65;0.72;0.95;1" dur="14s" repeatCount="indefinite"/>
+    <rect x="735" y="80" width="150" height="60" rx="8" fill="#2a2116" stroke="#ffb454" stroke-width="3"/>
+    <text x="810" y="119" text-anchor="middle" font-size="24" font-weight="700" fill="#ffb454">0000 1010<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.62;0.64;0.98;1" dur="14s" repeatCount="indefinite"/></text>
+    <text x="810" y="119" text-anchor="middle" font-size="24" font-weight="700" fill="#e6e8ec" opacity="0">0000 0000<animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.62;0.64;0.98;1" dur="14s" repeatCount="indefinite"/></text>
+  </g>
+
+  <!-- 비교 패널 : 8~10초 -->
+  <rect x="60" y="366" width="840" height="94" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+  <text x="480" y="422" text-anchor="middle" font-size="24" fill="#9aa3b2">다른 주소도 같은 가림판으로 계산해 비교</text>
+  <g font-size="24" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.8;0.83;0.95;0.98;1" dur="14s" repeatCount="indefinite"/>
+    <rect x="62" y="368" width="836" height="90" rx="11" fill="#171a21"/>
+    <text x="90" y="402" fill="#e6e8ec">192.168.0.77  →  <tspan fill="#7ee7c7" font-weight="700">192.168.0.0</tspan></text>
+    <rect x="640" y="377" width="236" height="34" rx="17" fill="#7ee7c7" fill-opacity="0.18" stroke="#7ee7c7" stroke-width="2"/>
+    <text x="758" y="402" text-anchor="middle" fill="#7ee7c7" font-weight="700">✓ 같은 네트워크</text>
+  </g>
+  <g font-size="24" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.85;0.88;0.95;0.98;1" dur="14s" repeatCount="indefinite"/>
+    <text x="90" y="442" fill="#e6e8ec">192.168.1.5  →  <tspan fill="#ff7a7a" font-weight="700">192.168.1.0</tspan></text>
+    <rect x="640" y="417" width="236" height="34" rx="17" fill="#ff7a7a" fill-opacity="0.18" stroke="#ff7a7a" stroke-width="2"/>
+    <text x="758" y="442" text-anchor="middle" fill="#ff7a7a" font-weight="700">✗ 다른 네트워크</text>
+  </g>
+
+  <!-- 자막 바 -->
+  <rect x="0" y="474" width="960" height="66" fill="#171a21"/>
+  <g font-size="26" fill="#e6e8ec" text-anchor="middle">
+    <text x="480" y="516">마스크의 1은 구멍, 0은 막힌 칸입니다.<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.18;0.2;0.97;1" dur="14s" repeatCount="indefinite"/></text>
+    <text x="480" y="516" opacity="0">구멍(1) 아래 값은 그대로 내려옵니다.<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2;0.22;0.48;0.5;1" dur="14s" repeatCount="indefinite"/></text>
+    <text x="480" y="516" opacity="0">막힌 칸(0)에 닿은 호스트 자리는 0으로 지워집니다.<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.52;0.78;0.8;1" dur="14s" repeatCount="indefinite"/></text>
+    <text x="480" y="516" opacity="0" fill="#7ee7c7" font-weight="700">남은 네트워크 ID가 같으면 같은 네트워크!<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.8;0.82;0.95;0.97;1" dur="14s" repeatCount="indefinite"/></text>
+  </g>
+</svg>

@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+  <rect width="960" height="540" fill="#0f1115"/>
+
+  <!-- 제목 -->
+  <text x="480" y="58" text-anchor="middle" font-size="34" font-weight="700" fill="#e6e8ec">NIC 위에 쌓이는 층</text>
+
+  <!-- 케이블(항상 보임): NIC 오른쪽으로 나가는 선 -->
+  <line x1="680" y1="385" x2="940" y2="385" stroke="#3d4b60" stroke-width="5" stroke-linecap="round">
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" keyTimes="0;0.37;0.39;0.49;0.51;1" values="1;1;0;0;1;1"/>
+  </line>
+
+  <!-- NIC (하드웨어, 항상 보임) -->
+  <rect x="300" y="350" width="380" height="70" rx="10" fill="#171a21" stroke="#ffb454" stroke-width="3"/>
+  <text x="322" y="394" font-size="26" font-weight="700" fill="#ffb454">NIC <tspan font-size="24" font-weight="400" fill="#9aa3b2">(만질 수 있는 부품)</tspan></text>
+
+  <!-- 0~2초: 빈 자리 + 깜박이는 물음표 -->
+  <g opacity="1">
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" keyTimes="0;0.05;0.1;0.15;0.19;0.21;0.97;1" values="1;0.35;1;0.35;1;0;0;1"/>
+    <rect x="300" y="280" width="380" height="60" rx="10" fill="none" stroke="#9aa3b2" stroke-width="2" stroke-dasharray="10 8"/>
+    <text x="490" y="328" text-anchor="middle" font-size="50" font-weight="700" fill="#9aa3b2">?</text>
+  </g>
+
+  <!-- 2~5초: 드라이버 블록이 내려와 끼워짐 -->
+  <g opacity="0">
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" keyTimes="0;0.2;0.23;0.95;0.99;1" values="0;0;1;1;0;0"/>
+    <animateTransform attributeName="transform" type="translate" dur="33.333s" repeatCount="indefinite" keyTimes="0;0.2;0.29;1" values="0,-110;0,-110;0,0;0,0"/>
+    <rect x="300" y="280" width="380" height="60" rx="10" fill="#171a21" stroke="#6ea8fe" stroke-width="3"/>
+    <text x="322" y="319" font-size="26" font-weight="700" fill="#6ea8fe">드라이버 <tspan font-size="24" font-weight="400" fill="#9aa3b2">(통역사)</tspan></text>
+  </g>
+
+  <!-- 3~5초: 통역 말풍선 (공통 말 → NIC의 말) -->
+  <g opacity="0">
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" keyTimes="0;0.31;0.34;0.48;0.5;1" values="0;0;1;1;0;0"/>
+    <path d="M712,280 h220 a8,8 0 0 1 8,8 v40 a8,8 0 0 1 -8,8 h-220 a8,8 0 0 1 -8,-8 v-12 l-14,-8 l14,-8 v-12 a8,8 0 0 1 8,-8 z" fill="#171a21" stroke="#e6e8ec" stroke-width="2"/>
+    <text x="822" y="317" text-anchor="middle" font-size="24" fill="#e6e8ec">공통 말: 보내라</text>
+  </g>
+  <g opacity="0">
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" keyTimes="0;0.38;0.41;0.48;0.5;1" values="0;0;1;1;0;0"/>
+    <path d="M822,338 v12" stroke="#6ea8fe" stroke-width="3"/>
+    <path d="M814,344 l8,8 l8,-8" fill="none" stroke="#6ea8fe" stroke-width="3"/>
+    <path d="M712,356 h220 a8,8 0 0 1 8,8 v44 a8,8 0 0 1 -8,8 h-220 a8,8 0 0 1 -8,-8 v-14 l-14,-8 l14,-8 v-14 a8,8 0 0 1 8,-8 z" fill="#171a21" stroke="#ffb454" stroke-width="2"/>
+    <text x="822" y="395" text-anchor="middle" font-size="24" fill="#ffb454">NIC의 말: 1011</text>
+  </g>
+
+  <!-- 5~8초: IP 블록 -->
+  <g opacity="0">
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" keyTimes="0;0.5;0.53;0.95;0.99;1" values="0;0;1;1;0;0"/>
+    <animateTransform attributeName="transform" type="translate" dur="33.333s" repeatCount="indefinite" keyTimes="0;0.5;0.58;1" values="0,-90;0,-90;0,0;0,0"/>
+    <rect x="300" y="210" width="380" height="60" rx="10" fill="#171a21" stroke="#7ee7c7" stroke-width="3"/>
+    <text x="322" y="249" font-size="26" font-weight="700" fill="#7ee7c7">IP <tspan font-size="24" font-weight="400" fill="#9aa3b2">소프트웨어</tspan></text>
+  </g>
+
+  <!-- TCP 블록 -->
+  <g opacity="0">
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" keyTimes="0;0.6;0.63;0.95;0.99;1" values="0;0;1;1;0;0"/>
+    <animateTransform attributeName="transform" type="translate" dur="33.333s" repeatCount="indefinite" keyTimes="0;0.6;0.68;1" values="0,-60;0,-60;0,0;0,0"/>
+    <rect x="300" y="140" width="380" height="60" rx="10" fill="#171a21" stroke="#7ee7c7" stroke-width="3"/>
+    <text x="322" y="179" font-size="26" font-weight="700" fill="#7ee7c7">TCP <tspan font-size="24" font-weight="400" fill="#9aa3b2">소프트웨어</tspan></text>
+  </g>
+
+  <!-- 왼쪽 '운영체제 수준' 괄호: 위에서 아래로 그려짐 -->
+  <path d="M288,140 h-16 v200 h16" fill="none" stroke="#ffb454" stroke-width="3" stroke-dasharray="232" stroke-dashoffset="232">
+    <animate attributeName="stroke-dashoffset" dur="33.333s" repeatCount="indefinite" keyTimes="0;0.66;0.78;0.95;0.99;1" values="232;232;0;0;232;232"/>
+  </path>
+  <g font-size="24" font-weight="700" fill="#ffb454" text-anchor="end" opacity="0">
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" keyTimes="0;0.72;0.76;0.95;0.99;1" values="0;0;1;1;0;0"/>
+    <text x="258" y="234">운영체제</text>
+    <text x="258" y="266">수준</text>
+  </g>
+
+  <!-- 8~10초: 데이터 상자가 위에서 NIC까지 내려옴 -->
+  <g opacity="0">
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" keyTimes="0;0.79;0.81;0.9;0.92;1" values="0;0;1;1;0;0"/>
+    <animateTransform attributeName="transform" type="translate" dur="33.333s" repeatCount="indefinite" keyTimes="0;0.81;0.9;1" values="0,94;0,94;0,366;0,366"/>
+    <rect x="574" y="0" width="94" height="38" rx="6" fill="#7ee7c7"/>
+    <text x="621" y="27" text-anchor="middle" font-size="24" font-weight="700" fill="#0f1115">데이터</text>
+  </g>
+
+  <!-- 신호가 선으로 빠져나감 -->
+  <circle cx="0" cy="385" r="10" fill="#7ee7c7" opacity="0">
+    <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" keyTimes="0;0.9;0.91;0.96;0.97;1" values="0;0;1;1;0;0"/>
+    <animate attributeName="cx" dur="33.333s" repeatCount="indefinite" keyTimes="0;0.9;0.96;1" values="690;690;930;930"/>
+  </circle>
+
+  <!-- 자막 바 -->
+  <rect x="40" y="452" width="880" height="64" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+  <g font-size="26" text-anchor="middle" fill="#e6e8ec">
+    <text x="480" y="494">NIC만 꽂으면 아직 말이 안 통해요
+      <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" keyTimes="0;0.19;0.21;0.98;1" values="1;1;0;0;1"/>
+    </text>
+    <text x="480" y="494" opacity="0">드라이버가 공통 말을 NIC의 말로 통역해요
+      <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" keyTimes="0;0.21;0.23;0.49;0.51;1" values="0;0;1;1;0;0"/>
+    </text>
+    <text x="480" y="494" opacity="0">그 위에 IP·TCP 소프트웨어가 쌓여요
+      <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" keyTimes="0;0.51;0.53;0.79;0.81;1" values="0;0;1;1;0;0"/>
+    </text>
+    <text x="480" y="494" opacity="0" font-weight="700" fill="#7ee7c7">NIC + 드라이버 + TCP/IP, 전체가 한 세트
+      <animate attributeName="opacity" dur="33.333s" repeatCount="indefinite" keyTimes="0;0.81;0.83;0.97;0.99;1" values="0;0;1;1;0;0"/>
+    </text>
+  </g>
+</svg>
