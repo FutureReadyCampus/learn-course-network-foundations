@@ -65,7 +65,7 @@ pages:
       - concept-basic-02-05
       - concept-basic-02-06
     illustration_after_paragraph:
-      - -1
+      - 2
       - 12
     illustrations:
       - file: assets/l04-layer-map.svg

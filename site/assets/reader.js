@@ -22,26 +22,56 @@
   const imageSrc = (src) => src?.startsWith("/api/v1/network-course-assets/")
     ? `${base}/assets/course-assets/${src.slice("/api/v1/network-course-assets/".length)}`
     : src;
-  const renderProse = (paragraphs = []) => {
-    let html = "";
+  const renderProse = (paragraphs = [], illustrations = []) => {
+    const prose = document.createElement("div");
+    prose.className = "net-prose";
     let list = [];
     const flush = () => {
       if (!list.length) return;
-      html += `<ul>${list.map((item) => `<li>${inline(item)}</li>`).join("")}</ul>`;
+      const ul = document.createElement("ul");
+      list.forEach((item) => {
+        const li = document.createElement("li");
+        li.innerHTML = inline(item);
+        ul.append(li);
+      });
+      prose.append(ul);
       list = [];
     };
-    for (const text of paragraphs) {
+    const byParagraph = new Map();
+    illustrations.forEach((illustration) => {
+      const index = Number.isInteger(illustration.after_paragraph) ? illustration.after_paragraph : -1;
+      if (!byParagraph.has(index)) byParagraph.set(index, []);
+      byParagraph.get(index).push(illustration);
+    });
+    const appendIllustrations = (index) => {
+      const items = byParagraph.get(index) || [];
+      if (!items.length) return;
+      flush();
+      items.forEach((illustration) => prose.append(renderIllustration(illustration)));
+    };
+    appendIllustrations(-1);
+    for (const [index, text] of paragraphs.entries()) {
       const lines = String(text).split("\n");
       if (lines.length > 1 && lines.every((line) => /^\s*(?:[-*]|\d+\.)\s+/.test(line))) {
         list.push(...lines.map((line) => line.replace(/^\s*(?:[-*]|\d+\.)\s+/, "")));
       } else {
         flush();
-        if (lines.length > 1) html += `<pre><code>${esc(text)}</code></pre>`;
-        else html += `<p>${inline(text)}</p>`;
+        if (lines.length > 1) {
+          const pre = document.createElement("pre");
+          const code = document.createElement("code");
+          code.textContent = text;
+          pre.append(code);
+          prose.append(pre);
+        } else {
+          const p = document.createElement("p");
+          p.innerHTML = inline(text);
+          prose.append(p);
+        }
       }
+      appendIllustrations(index);
     }
     flush();
-    return html;
+    return prose;
   };
   const allItems = (course) => {
     const out = [];
@@ -134,15 +164,7 @@
     sequence.className = "net-sequence";
     sequence.textContent = progress;
     main.append(eyebrow, title, sequence);
-    if (page.illustrations?.length) {
-      const figures = document.createElement("div");
-      figures.className = "illustration-stack";
-      page.illustrations.forEach((illustration) => figures.append(renderIllustration(illustration)));
-      main.append(figures);
-    }
-    const prose = document.createElement("div");
-    prose.className = "net-prose";
-    prose.innerHTML = renderProse(page.paragraphs || []);
+    const prose = renderProse(page.paragraphs || [], page.illustrations || []);
     main.append(prose);
     const previous = list[state.lessonIndex - 1];
     const next = list[state.lessonIndex + 1];
