@@ -52,7 +52,14 @@
     appendIllustrations(-1);
     for (const [index, text] of paragraphs.entries()) {
       const lines = String(text).split("\n");
-      if (lines.length > 1 && lines.every((line) => /^\s*(?:[-*]|\d+\.)\s+/.test(line))) {
+      const heading = lines.length === 1 ? text.match(/^(#{3,4})\s+(.+)$/) : null;
+      if (heading) {
+        flush();
+        // ## is the page boundary and renders as the page H1; body ###/#### become H2/H3.
+        const element = document.createElement(heading[1].length === 3 ? "h2" : "h3");
+        element.innerHTML = inline(heading[2]);
+        prose.append(element);
+      } else if (lines.length > 1 && lines.every((line) => /^\s*(?:[-*]|\d+\.)\s+/.test(line))) {
         list.push(...lines.map((line) => line.replace(/^\s*(?:[-*]|\d+\.)\s+/, "")));
       } else {
         flush();
