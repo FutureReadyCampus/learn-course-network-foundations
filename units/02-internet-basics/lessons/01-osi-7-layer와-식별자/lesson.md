@@ -2,6 +2,7 @@
 id: u2-l05-osi-7-layer와-식별자
 title: 택배 한 상자가 도착하기까지
 source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-05.md
+wiki_diagram: units/02-internet-basics/lessons/01-osi-7-layer와-식별자/assets/diagrams/lesson-05.svg
 page_groups:
 - title: 택배 한 상자가 도착하기까지
   sections: [1]
@@ -15,9 +16,30 @@ page_groups:
   sections: [5]
 - title: 처음부터 끝까지 다시 따라가요
   sections: [6]
+page_metadata:
+- animations:
+  - file: l05-osi-layer-stack.svg
+    title: 앞으로 만날 여러 단계의 지도
+    alt: 통신을 여러 단계로 나눈 그림. 각 단계의 이름과 데이터가 이동하는 방향이 표시되어 있습니다.
+    caption: 앞으로 배울 내용을 미리 보여 주는 그림입니다. 안에 있는 이름은 지금 이해하거나 외우지 않아도 괜찮아요.
+- terms: []
+- terms: []
+- animations:
+  - file: l05-mac-per-nic.svg
+    title: 한 컴퓨터에 연결된 여러 길
+    alt: 컴퓨터와 연결 지점마다 서로 다른 표기가 붙는 모습을 보여 주는 그림입니다.
+    caption: 그림에 낯선 이름과 숫자가 있어도 괜찮아요. 자세한 내용은 뒤에서 다시 만나고, 지금은 건물 주소와 출입구, 받는 사람 안내가 서로 다르다는 비유만 살펴보면 됩니다.
+- terms: []
+- terms: []
+  animations:
+  - file: l05-three-identifiers.svg
+    title: 택배에 붙는 여러 안내와 비교해 보기
+    alt: 서로 다른 세 가지 네트워크 표기가 각각 다른 대상을 가리키는 그림입니다.
+    caption: 뒤에서 자세히 배울 내용이 담긴 그림입니다. 지금은 택배의 주소와 출입구, 받는 사람 안내가 서로 다르다는 비유만 기억해도 충분해요.
+animations_dir: units/02-internet-basics/lessons/01-osi-7-layer와-식별자/assets/animations
 ---
 
-이 글에서는 택배 한 상자가 보내는 사람의 손을 떠나 받는 사람에게 도착하는 길을 따라갑니다. 지금은 상자가 어디로 가고, 누가 옮기고, 마지막에 누구에게 전달되는지만 살펴보면 됩니다. 낯선 이름이나 복잡한 규칙은 잠시 옆에 두고, 익숙한 택배 이야기를 먼저 그려 봅시다.
+이 글에서는 택배 한 상자가 보내는 사람의 손을 떠나 받는 사람에게 도착하는 길을 따라갑니다. 그림에는 앞으로 만날 낯선 이름도 나옵니다. 지금은 그 이름을 이해하거나 외우지 않아도 괜찮아요. 상자가 어디로 가고, 누가 옮기고, 마지막에 누구에게 전달되는지만 택배 이야기로 따라가 봅시다.
 
 ## 택배 한 상자가 도착하기까지
 
