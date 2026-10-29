@@ -132,6 +132,29 @@
       caption.textContent = illustration.caption;
       figure.append(caption);
     }
+    if (illustration.credit || illustration.source_url || illustration.license_url) {
+      const credit = document.createElement("p");
+      credit.className = "illustration-credit";
+      if (illustration.credit) credit.append(document.createTextNode(`${illustration.credit} · `));
+      if (illustration.source_url) {
+        const source = document.createElement("a");
+        source.href = illustration.source_url;
+        source.target = "_blank";
+        source.rel = "noreferrer noopener";
+        source.textContent = "원본 출처";
+        credit.append(source);
+      }
+      if (illustration.source_url && illustration.license_url) credit.append(document.createTextNode(" · "));
+      if (illustration.license_url) {
+        const license = document.createElement("a");
+        license.href = illustration.license_url;
+        license.target = "_blank";
+        license.rel = "noreferrer noopener";
+        license.textContent = illustration.license_label || "사용 허가";
+        credit.append(license);
+      }
+      figure.append(credit);
+    }
     return figure;
   };
   const render = (course, state) => {
@@ -143,7 +166,6 @@
     state.pageIndex = Math.min(Math.max(0, state.pageIndex), Math.max(0, pages.length - 1));
     const page = pages[state.pageIndex] || { title: item.lesson.title, paragraphs: [] };
     const unitIndex = course.units.findIndex((unit) => unit.id === item.unit.id);
-    const unitLessonNumber = course.lessons.filter((lesson) => lesson.unit === item.unit.id).indexOf(item.lesson) + 1;
     state.unitIndex = unitIndex;
     byId.set(item.lesson.id, item);
     document.title = `${page.title} · ${item.unit.title} · 외워서 공부하는 네트워크`;
@@ -163,15 +185,9 @@
     banner.innerHTML = `<strong>Learn 콘텐츠 후보</strong><span>${esc(course.preview_source?.label || "develop 미리보기")}</span>${sourceUrl ? `<a href="${esc(sourceUrl)}" target="_blank" rel="noreferrer" title="${esc(sha)}">${esc(sha.slice(0, 12))}</a>` : ""}`;
     const main = document.getElementById("network-lesson");
     main.replaceChildren();
-    const eyebrow = document.createElement("p");
-    eyebrow.className = "net-eyebrow";
-    eyebrow.textContent = `Unit ${String(unitIndex + 1).padStart(2, "0")} · ${item.unit.title} / Lesson ${String(unitLessonNumber).padStart(2, "0")} · Page ${state.pageIndex + 1} / ${pages.length}`;
     const title = document.createElement("h1");
     title.textContent = page.title;
-    const sequence = document.createElement("p");
-    sequence.className = "net-sequence";
-    sequence.textContent = progress;
-    main.append(eyebrow, title, sequence);
+    main.append(title);
     const prose = renderProse(page.paragraphs || [], page.illustrations || []);
     main.append(prose);
     const previous = list[state.lessonIndex - 1];

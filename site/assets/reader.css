@@ -62,6 +62,8 @@ button { color: inherit; }
 .illustration-control:hover { background: #303640; }
 .illustration-control:focus-visible, .icon-button:focus-visible, .page-nav :is(a,button):focus-visible, .course-sidebar a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 .illustration figcaption { margin-block-start: 9px; color: var(--muted); font-size: .8125rem; text-align: start; }
+.illustration-credit { margin: 4px 0 0; color: var(--muted); font-size: .75rem; text-align: start; }
+.illustration-credit a { color: inherit; text-decoration: underline; text-underline-offset: .15em; }
 .net-prose { max-width: 760px; margin-inline: auto; font-size: 1.0625rem; line-height: 1.9; overflow-wrap: anywhere; }
 .net-prose p { margin: 0 0 20px; }
 .net-prose h2 { margin: 34px 0 14px; font-size: 1.35rem; line-height: 1.45; }
