@@ -54,14 +54,30 @@ def main() -> None:
             print(f"{label} {revision} has no course.yaml; preview contains no lessons.")
             return
 
-        if ASSETS.exists():
-            shutil.rmtree(ASSETS)
-        ASSETS.mkdir(parents=True, exist_ok=True)
-        shutil.copytree(source_root / "sources", ASSETS / "sources")
         subprocess.run([
             "python3", str(source_root / "scripts/build_course.py"),
             "--output", str(OUTPUT), "--source-revision", revision, "--source-label", label,
         ], check=True)
+        catalog = json.loads(OUTPUT.read_text(encoding="utf-8"))
+        if ASSETS.exists():
+            shutil.rmtree(ASSETS)
+        ASSETS.mkdir(parents=True, exist_ok=True)
+        prefix = "/api/v1/network-course-assets/"
+        for lesson in catalog["lessons"]:
+            for page in lesson["pages"]:
+                for illustration in page.get("illustrations", []):
+                    src = illustration["src"]
+                    if not src.startswith(prefix):
+                        raise ValueError(f"Unexpected network course asset URL: {src}")
+                    relative = Path(src.removeprefix(prefix))
+                    if relative.is_absolute() or ".." in relative.parts:
+                        raise ValueError(f"Unsafe catalog asset path: {relative}")
+                    source_asset = source_root / relative
+                    if not source_asset.is_file():
+                        raise FileNotFoundError(f"Missing catalog asset: {relative}")
+                    destination = ASSETS / relative
+                    destination.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copy2(source_asset, destination)
         print(f"Local preview generated from {label} {revision}.")
 
 
