@@ -1,8 +1,8 @@
 ---
 id: u6-l32-웹-기술-창시자와-대한민국-인터넷
 title: 웹 기술 창시자와 대한민국 인터넷
-source_wiki: sources/wiki/oeweo-network/lesson-32.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-32.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-32.md
+wiki_diagram: units/06-web-fundamentals/lessons/02-웹-기술-창시자와-대한민국-인터넷/assets/diagrams/lesson-32.svg
 page_metadata:
 - terms:
   - 웹(Web)
@@ -44,6 +44,7 @@ page_metadata:
     alt: 서울대 쪽 길에서 온 상자가 가운데 라우터 교차로에 도착해, 라벨의 목적지를 읽고 구미 방향 길로 나가는 장면입니다.
     caption: 라우터는 도착지를 보고 상자를 알맞은 길로 보내 줍니다.
 - terms: []
+animations_dir: units/06-web-fundamentals/lessons/02-웹-기술-창시자와-대한민국-인터넷/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

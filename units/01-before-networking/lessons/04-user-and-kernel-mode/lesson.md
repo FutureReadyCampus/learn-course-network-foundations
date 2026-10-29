@@ -145,6 +145,7 @@ pages:
         alt: 맨 아래 NIC 상자 위에 드라이버 블록이 끼워지고, 그 위에 TCP와 IP 블록이 차례로 쌓이는 장면입니다. 마지막에 위에서 내려온 데이터가 NIC를 통해 선으로 나갑니다.
         caption: OSI를 실제 구성 요소에 연결한 뒤, 장치 쪽의 드라이버와 NIC를 다시 확인합니다.
         after_paragraph: 9
+animations_dir: units/01-before-networking/lessons/04-user-and-kernel-mode/assets/animations
 ---
 
 ## 하드웨어·소프트웨어와 NIC·드라이버

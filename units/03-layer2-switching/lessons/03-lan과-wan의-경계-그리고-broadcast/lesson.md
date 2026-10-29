@@ -1,8 +1,8 @@
 ---
 id: u3-l10-lan과-wan의-경계-그리고-broadcast
 title: LAN과 WAN의 경계 그리고 Broadcast
-source_wiki: sources/wiki/oeweo-network/lesson-10.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-10.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-10.md
+wiki_diagram: units/03-layer2-switching/lessons/03-lan과-wan의-경계-그리고-broadcast/assets/diagrams/lesson-10.svg
 page_metadata:
 - terms:
   - 유니캐스트 (Unicast)
@@ -49,6 +49,7 @@ page_metadata:
 - terms:
   - LAN (Local Area Network)
   - WAN (Wide Area Network)
+animations_dir: units/03-layer2-switching/lessons/03-lan과-wan의-경계-그리고-broadcast/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

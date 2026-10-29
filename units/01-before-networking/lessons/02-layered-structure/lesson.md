@@ -74,6 +74,7 @@ pages:
           장면입니다.
         caption: OSI라는 설명 틀을 TCP, IP, 드라이버와 NIC의 구현 위치에 연결해 봅니다.
         after_paragraph: 26
+animations_dir: units/01-before-networking/lessons/02-layered-structure/assets/animations
 ---
 
 ## 계층을 관계와 의존성으로 읽기

@@ -34,7 +34,7 @@ These Guide fields also differ between the archive and the current working input
 
 The working input was used for the target front matter, preserving the local edits. The earlier archived file remains untouched for provenance.
 
-The working Lesson 1 guide input was merged into the Lesson front matter and removed as a duplicate after this comparison. Its earlier archive snapshot remains under `sources/wiki/oeweo-network/newbie/specs/`.
+The working Lesson 1 guide input was merged into the Lesson front matter and removed as a duplicate after this comparison. The structured guide is stored beside the owning Lesson.
 
 ## SVG assets
 

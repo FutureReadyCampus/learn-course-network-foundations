@@ -1,8 +1,8 @@
 ---
 id: u3-l09-l2-스위치에-대해서
 title: L2 스위치에 대해서
-source_wiki: sources/wiki/oeweo-network/lesson-09.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-09.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-09.md
+wiki_diagram: units/03-layer2-switching/lessons/02-l2-스위치에-대해서/assets/diagrams/lesson-09.svg
 page_metadata:
 - terms:
   - 스위칭 (Switching)
@@ -45,6 +45,7 @@ page_metadata:
 - terms:
   - L3 / L4 / L7
   - Cisco (시스코)
+animations_dir: units/03-layer2-switching/lessons/02-l2-스위치에-대해서/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

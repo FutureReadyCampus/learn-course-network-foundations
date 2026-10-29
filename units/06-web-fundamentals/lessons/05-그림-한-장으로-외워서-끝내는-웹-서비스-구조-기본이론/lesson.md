@@ -1,8 +1,8 @@
 ---
 id: u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론
 title: 그림 한 장으로 외워서 끝내는 웹 서비스 구조 기본이론
-source_wiki: sources/wiki/oeweo-network/lesson-35.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-35.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-35.md
+wiki_diagram: units/06-web-fundamentals/lessons/05-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론/assets/diagrams/lesson-35.svg
 page_metadata:
 - terms:
   - 스트림(Stream)
@@ -63,6 +63,7 @@ page_metadata:
   - ODBC · JDBC
 - terms:
   - MVC
+animations_dir: units/06-web-fundamentals/lessons/05-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

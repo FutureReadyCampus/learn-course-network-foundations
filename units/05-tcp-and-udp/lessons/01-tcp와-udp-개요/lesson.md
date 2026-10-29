@@ -1,8 +1,8 @@
 ---
 id: u5-l25-tcp와-udp-개요
 title: TCP와 UDP 개요
-source_wiki: sources/wiki/oeweo-network/lesson-25.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-25.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-25.md
+wiki_diagram: units/05-tcp-and-udp/lessons/01-tcp와-udp-개요/assets/diagrams/lesson-25.svg
 page_metadata:
 - terms:
   - 프로토콜(protocol)
@@ -50,6 +50,7 @@ page_metadata:
 - terms:
   - Listen
 - terms: []
+animations_dir: units/05-tcp-and-udp/lessons/01-tcp와-udp-개요/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

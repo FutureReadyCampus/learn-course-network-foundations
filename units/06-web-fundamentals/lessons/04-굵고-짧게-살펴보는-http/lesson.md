@@ -1,8 +1,8 @@
 ---
 id: u6-l34-굵고-짧게-살펴보는-http
 title: 굵고 짧게 살펴보는 HTTP
-source_wiki: sources/wiki/oeweo-network/lesson-34.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-34.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-34.md
+wiki_diagram: units/06-web-fundamentals/lessons/04-굵고-짧게-살펴보는-http/assets/diagrams/lesson-34.svg
 page_metadata:
 - terms:
   - Stream(스트림)
@@ -40,6 +40,7 @@ page_metadata:
   - GET / POST
   - HEAD / PUT / DELETE
 - terms: []
+animations_dir: units/06-web-fundamentals/lessons/04-굵고-짧게-살펴보는-http/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

@@ -1,8 +1,8 @@
 ---
 id: u6-l31-한-번에-끝내는-dns
 title: 한 번에 끝내는 DNS
-source_wiki: sources/wiki/oeweo-network/lesson-31.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-31.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-31.md
+wiki_diagram: units/06-web-fundamentals/lessons/01-한-번에-끝내는-dns/assets/diagrams/lesson-31.svg
 page_metadata:
 - terms:
   - DNS(Domain Name System)
@@ -56,6 +56,7 @@ page_metadata:
     caption: 캐시 DNS가 루트, .com, naver.com 담당 서버 순으로 안내를 받아 내려갑니다.
 - terms:
   - 권한 있는 서버(담당 네임 서버)
+animations_dir: units/06-web-fundamentals/lessons/01-한-번에-끝내는-dns/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

@@ -1,8 +1,8 @@
 ---
 id: u4-l22-인터넷-설정-자동화를-위한-dhcp
 title: 인터넷 설정 자동화를 위한 DHCP
-source_wiki: sources/wiki/oeweo-network/lesson-22.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-22.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-22.md
+wiki_diagram: units/04-layer3-addressing/lessons/12-인터넷-설정-자동화를-위한-dhcp/assets/diagrams/lesson-22.svg
 page_metadata:
 - terms:
   - IP 주소
@@ -53,6 +53,7 @@ page_metadata:
   - Wireshark
   - 프로토콜 규격
   - 소켓 프로그래밍
+animations_dir: units/04-layer3-addressing/lessons/12-인터넷-설정-자동화를-위한-dhcp/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

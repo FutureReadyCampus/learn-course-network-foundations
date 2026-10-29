@@ -1,8 +1,8 @@
 ---
 id: u4-l17-ip-헤더-형식
 title: IP 헤더 형식
-source_wiki: sources/wiki/oeweo-network/lesson-17.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-17.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-17.md
+wiki_diagram: units/04-layer3-addressing/lessons/07-ip-헤더-형식/assets/diagrams/lesson-17.svg
 page_metadata:
 - terms:
   - 헤더 (Header)
@@ -47,6 +47,7 @@ page_metadata:
   - Identification
 - terms:
   - 계층별 해석
+animations_dir: units/04-layer3-addressing/lessons/07-ip-헤더-형식/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

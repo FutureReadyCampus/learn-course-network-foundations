@@ -1,8 +1,8 @@
 ---
 id: "u9-advanced-17-l4-부하분산과-무정지-시스템"
 title: "L4 부하분산과 무정지 시스템"
-source_wiki: "sources/wiki/oeweo-network/advanced/lesson-17.md"
-wiki_diagram: "sources/wiki/oeweo-network/advanced/concepts/lesson-17.svg"
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-17.md
+wiki_diagram: units/09-load-balancing/lessons/01-l4-부하분산과-무정지-시스템/assets/diagrams/lesson-17.svg
 ---
 
 핵심 개념을 주제별로 정리했다.

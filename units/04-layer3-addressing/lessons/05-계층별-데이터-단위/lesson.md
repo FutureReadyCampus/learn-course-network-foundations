@@ -1,8 +1,8 @@
 ---
 id: u4-l15-계층별-데이터-단위
 title: 계층별 데이터 단위
-source_wiki: sources/wiki/oeweo-network/lesson-15.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-15.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-15.md
+wiki_diagram: units/04-layer3-addressing/lessons/05-계층별-데이터-단위/assets/diagrams/lesson-15.svg
 page_metadata:
 - terms:
   - Frame(프레임)
@@ -34,6 +34,7 @@ page_metadata:
     caption: 데이터에 TCP 헤더, IP 헤더, 프레임 헤더가 차례로 덧붙어 케이블로 나갑니다.
 - terms:
   - Datagram(데이터그램)
+animations_dir: units/04-layer3-addressing/lessons/05-계층별-데이터-단위/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

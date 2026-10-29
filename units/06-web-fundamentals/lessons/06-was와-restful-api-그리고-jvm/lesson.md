@@ -1,8 +1,8 @@
 ---
 id: u6-l36-was와-restful-api-그리고-jvm
 title: WAS와 RESTful API 그리고 JVM
-source_wiki: sources/wiki/oeweo-network/lesson-36.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-36.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-36.md
+wiki_diagram: units/06-web-fundamentals/lessons/06-was와-restful-api-그리고-jvm/assets/diagrams/lesson-36.svg
 page_metadata:
 - terms:
   - Tier(티어)
@@ -69,6 +69,7 @@ page_metadata:
   - Cookie(쿠키)
   - 클라이언트 검증 / 서버 검증
 - terms: []
+animations_dir: units/06-web-fundamentals/lessons/06-was와-restful-api-그리고-jvm/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

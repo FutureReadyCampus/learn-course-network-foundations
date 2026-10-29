@@ -1,8 +1,8 @@
 ---
 id: u4-l13-encapsulation과-decapsulation
 title: Encapsulation과 Decapsulation
-source_wiki: sources/wiki/oeweo-network/lesson-13.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-13.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-13.md
+wiki_diagram: units/04-layer3-addressing/lessons/03-encapsulation과-decapsulation/assets/diagrams/lesson-13.svg
 page_metadata:
 - terms:
   - Encapsulation(캡슐화)
@@ -31,6 +31,7 @@ page_metadata:
       남는 장면입니다.
     caption: 서버에 도착한 프레임이 마트료시카처럼 겉부터 헤더를 하나씩 떼며 '안녕'이 나옵니다.
 - terms: []
+animations_dir: units/04-layer3-addressing/lessons/03-encapsulation과-decapsulation/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.
