@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import shutil
+from urllib.parse import quote
 from pathlib import Path
 
 from build_course import ROOT, build
@@ -56,9 +57,10 @@ def main() -> None:
 
     html = (SITE / "index.html").read_text(encoding="utf-8")
     html = html.replace('window.NETWORK_SITE_BASE = "";', f'window.NETWORK_SITE_BASE = {json.dumps(baseurl)};')
-    html = html.replace('window.NETWORK_COURSE_URL = "/data/course.json";', f'window.NETWORK_COURSE_URL = {json.dumps(baseurl + "/data/course.json")};')
+    revision_query = f"?v={quote(args.source_revision, safe='')}"
+    html = html.replace('window.NETWORK_COURSE_URL = "/data/course.json";', f'window.NETWORK_COURSE_URL = {json.dumps(baseurl + "/data/course.json" + revision_query)};')
     for name in ("/assets/reader.css", "/assets/reader.js"):
-        html = html.replace(f'"{name}"', json.dumps(baseurl + name))
+        html = html.replace(f'"{name}"', json.dumps(baseurl + name + revision_query))
     (output / "index.html").write_text(html, encoding="utf-8")
     # GitHub Pages serves this copy for deep links; the reader restores the route from pathname.
     (output / "404.html").write_text(html, encoding="utf-8")
