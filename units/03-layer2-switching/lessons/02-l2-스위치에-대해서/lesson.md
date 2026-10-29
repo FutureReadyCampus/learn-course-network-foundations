@@ -8,17 +8,97 @@ page_metadata:
   - 액세스 스위치 (Access switch)
   - 엔드포인트 (Endpoint)
   - 포트 (Port)
+  illustrations:
+  - file: "assets/photos/switch-8-port.jpg"
+    title: "8포트 데스크톱 스위치"
+    alt: "회색 8포트 스위치의 앞면에 여러 네트워크 케이블이 꽂혀 있습니다."
+    caption: "가정이나 교실용 소형 스위치도 여러 유선 장치를 연결하는 LAN 장비입니다."
+    credit: "사진: Teoprofe / Wikimedia Commons (CC0)"
+    source_url: "https://commons.wikimedia.org/wiki/File:Switch_sobremesa_con_8_puertos_Ethernet.jpg"
+    license_label: "CC0"
+    license_url: "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    after_paragraph: 1
+  - file: "assets/photos/switch-front-view.jpg"
+    title: "Ethernet 스위치 앞면"
+    alt: "책상 위 회색 Linksys 스위치의 앞면과 상태 표시등이 보입니다."
+    caption: "제품 모양은 달라도 여러 장치의 케이블을 모으는 역할은 같습니다."
+    credit: "사진: CCDBarcodeScanner / Wikimedia Commons (CC BY-SA 4.0)"
+    source_url: "https://commons.wikimedia.org/wiki/File:Ethernet_Switch_(Front_View).jpg"
+    license_label: "CC BY-SA 4.0"
+    license_url: "https://creativecommons.org/licenses/by-sa/4.0"
+    after_paragraph: 1
+
 - terms:
   - MAC 주소 테이블
   - 출발지 MAC 주소
   - 학습 (Learning)
+  illustrations:
+  - file: "assets/photos/switch-ports-cisco.jpg"
+    title: "Cisco 스위치의 RJ45 포트"
+    alt: "번호가 매겨진 Cisco 스위치의 RJ45 포트 여러 개와 LED가 보입니다."
+    caption: "포트 번호를 따라가면 각 케이블이 스위치의 어디에 꽂혔는지 확인할 수 있습니다."
+    credit: "사진: Ben Franske / Wikimedia Commons (CC BY-SA 4.0)"
+    source_url: "https://commons.wikimedia.org/wiki/File:RJ45_Switch_Ports.jpg"
+    license_label: "CC BY-SA 4.0"
+    license_url: "https://creativecommons.org/licenses/by-sa/4.0"
+    after_paragraph: 1
+  - file: "assets/photos/switch-vintage.jpg"
+    title: "초기형 Ethernet 스위치"
+    alt: "작은 회색 상자형 Ethernet 스위치가 책상 위에 놓여 있습니다."
+    caption: "오래된 실물 사진입니다. 모델과 세대에 따라 포트 수와 모양이 다릅니다."
+    credit: "사진: Syced / Wikimedia Commons (CC0)"
+    source_url: "https://commons.wikimedia.org/wiki/File:Peabird_Ethernet_switch_in_2003.jpg"
+    license_label: "CC0"
+    license_url: "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    after_paragraph: 1
+
 - terms:
   - 목적지 MAC 주소
   - 유니캐스트 (Unicast)
+  illustrations:
+  - file: "assets/photos/switch-ethernet-with-cables.jpg"
+    title: "스위치와 여러 Ethernet 케이블"
+    alt: "검은색 스위치에 노랑, 파랑 등 여러 색의 Ethernet 케이블이 꽂혀 있습니다."
+    caption: "같은 스위치의 서로 다른 포트에 각 장치의 케이블을 연결합니다."
+    credit: "사진: Raysonho @ Open Grid Scheduler / Grid Engine / Wikimedia Commons (CC0)"
+    source_url: "https://commons.wikimedia.org/wiki/File:EthernetSwitch.jpg"
+    license_label: "CC0"
+    license_url: "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    after_paragraph: 1
+  - file: "assets/photos/switch-ports-connected.jpg"
+    title: "케이블이 꽂힌 스위치 포트"
+    alt: "스위치 포트에 흰색 케이블이 연결되어 있고 LED 표시가 보입니다."
+    caption: "LED는 연결 상태나 활동을 살펴보는 단서입니다. 뜻은 장비 설명서에서 확인하세요."
+    credit: "사진: Ben Stanfield / Wikimedia Commons (CC BY-SA 2.0)"
+    source_url: "https://commons.wikimedia.org/wiki/File:Switch-Ethernet-Connection.jpg"
+    license_label: "CC BY-SA 2.0"
+    license_url: "https://creativecommons.org/licenses/by-sa/2.0"
+    after_paragraph: 1
+
 - terms:
   - 알 수 없는 유니캐스트
   - 플러딩 (Flooding)
   - 브로드캐스트 (Broadcast)
+  illustrations:
+  - file: "assets/photos/switch-cables-angle.jpg"
+    title: "케이블이 연결된 Ethernet 스위치"
+    alt: "스위치의 여러 포트에 회색과 검은색 케이블이 꽂혀 있습니다."
+    caption: "사진은 장비의 외형을 보여 줍니다. 프레임이 퍼지는 범위는 본문에서 설명합니다."
+    credit: "사진: Raysonho @ Open Grid Scheduler / Grid Engine / Wikimedia Commons (CC0)"
+    source_url: "https://commons.wikimedia.org/wiki/File:EthernetSwitch2.jpg"
+    license_label: "CC0"
+    license_url: "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    after_paragraph: 1
+  - file: "assets/photos/switch-front-view.jpg"
+    title: "다중 포트 스위치"
+    alt: "책상 위 회색 Linksys 스위치의 앞면과 상태 표시등이 보입니다."
+    caption: "제품 모양은 달라도 여러 장치의 케이블을 모으는 역할은 같습니다."
+    credit: "사진: CCDBarcodeScanner / Wikimedia Commons (CC BY-SA 4.0)"
+    source_url: "https://commons.wikimedia.org/wiki/File:Ethernet_Switch_(Front_View).jpg"
+    license_label: "CC BY-SA 4.0"
+    license_url: "https://creativecommons.org/licenses/by-sa/4.0"
+    after_paragraph: 1
+
 - terms:
   - Link up (링크 업)
   - Link down (링크 다운)
@@ -28,9 +108,49 @@ page_metadata:
     title: 케이블 연결과 링크 상태
     alt: PC와 스위치 포트 사이의 케이블이 연결되어 링크가 올라오고, 케이블이 끊기면 링크가 내려가는 과정을 보여 줍니다.
     caption: 케이블을 꽂는 것만으로 끝나는 것이 아니라 양쪽 장치의 연결이 성립해야 Link up입니다.
+  illustrations:
+  - file: "assets/photos/switch-port-leds.jpg"
+    title: "스위치 포트 LED 확대"
+    alt: "D-Link 스위치의 포트 LED 광 가이드가 가까이에서 보입니다."
+    caption: "스위치마다 LED 색과 깜박임의 뜻이 다르므로 모델 설명을 확인하세요."
+    credit: "사진: Nixdorf / Wikimedia Commons (CC BY-SA 4.0)"
+    source_url: "https://commons.wikimedia.org/wiki/File:Light_guide_LEDs_on_switch.jpg"
+    license_label: "CC BY-SA 4.0"
+    license_url: "https://creativecommons.org/licenses/by-sa/4.0"
+    after_paragraph: 1
+  - file: "assets/photos/switch-rack-leds.jpg"
+    title: "랙에 설치된 스위치의 LED"
+    alt: "랙에 설치된 네트워크 스위치와 포트의 점등 LED가 보입니다."
+    caption: "LED는 링크나 데이터 활동을 확인하는 단서이며, 정확한 뜻은 장비마다 다릅니다."
+    credit: "사진: Shixart1985 / Wikimedia Commons (CC BY 2.0)"
+    source_url: "https://commons.wikimedia.org/wiki/File:Network_switches_arranged_in_a_server_rack_with_visible_LED_lights_indicating_connection_status_and_power_levels.jpg"
+    license_label: "CC BY 2.0"
+    license_url: "https://creativecommons.org/licenses/by/2.0"
+    after_paragraph: 1
+
 - terms:
   - 업링크 (Uplink)
   - 배포 스위치 (Distribution switch)
+  illustrations:
+  - file: "assets/photos/switch-rack-patch-panels.jpg"
+    title: "랙의 스위치와 패치 패널"
+    alt: "랙 안에 스위치와 패치 패널이 설치되어 있고 많은 케이블이 연결되어 있습니다."
+    caption: "여러 스위치와 케이블을 한곳에 모아 두는 네트워크 랙의 예입니다."
+    credit: "사진: Dsimic / Wikimedia Commons (CC BY-SA 4.0)"
+    source_url: "https://commons.wikimedia.org/wiki/File:19-inch_rackmount_Ethernet_switches_and_patch_panels.jpg"
+    license_label: "CC BY-SA 4.0"
+    license_url: "https://creativecommons.org/licenses/by-sa/4.0"
+    after_paragraph: 1
+  - file: "assets/photos/switch-rack-cables.jpg"
+    title: "케이블이 연결된 네트워크 랙"
+    alt: "네트워크 랙에 여러 스위치와 케이블이 설치되어 있습니다."
+    caption: "랙은 여러 네트워크 장비를 정리해 설치하는 구조물입니다."
+    credit: "사진: Yann / Wikimedia Commons (CC BY-SA 3.0)"
+    source_url: "https://commons.wikimedia.org/wiki/File:Computer_rack_with_switches_and_cables.jpg"
+    license_label: "CC BY-SA 3.0"
+    license_url: "http://creativecommons.org/licenses/by-sa/3.0/"
+    after_paragraph: 1
+
 - terms:
   - L2 경로
   - 같은 LAN
@@ -39,10 +159,49 @@ page_metadata:
     title: 같은 LAN의 두 PC가 스위치를 거쳐 통신
     alt: PC 3의 프레임이 액세스 스위치 A, 배포 스위치, 액세스 스위치 B를 거쳐 PC 5에 도착하고 응답이 돌아옵니다.
     caption: 같은 LAN에 속한 두 PC는 여러 스위치를 지나도 L2 프레임으로 통신할 수 있습니다.
+  illustrations:
+  - file: "assets/photos/switch-pair-cat5.jpg"
+    title: "케이블로 연결된 두 스위치"
+    alt: "두 네트워크 스위치와 CAT5 케이블이 함께 보입니다."
+    caption: "두 스위치도 케이블로 연결해 단말 사이의 LAN 경로를 구성할 수 있습니다."
+    credit: "사진: ShakataGaNai / Wikimedia Commons (CC BY-SA 3.0)"
+    source_url: "https://commons.wikimedia.org/wiki/File:Network_switches.jpg"
+    license_label: "CC BY-SA 3.0"
+    license_url: "https://creativecommons.org/licenses/by-sa/3.0"
+    after_paragraph: 1
+  - file: "assets/photos/switch-rack-patch-panels.jpg"
+    title: "여러 스위치와 패치 패널"
+    alt: "랙 안에 스위치와 패치 패널이 설치되어 있고 많은 케이블이 연결되어 있습니다."
+    caption: "여러 스위치와 케이블을 한곳에 모아 두는 네트워크 랙의 예입니다."
+    credit: "사진: Dsimic / Wikimedia Commons (CC BY-SA 4.0)"
+    source_url: "https://commons.wikimedia.org/wiki/File:19-inch_rackmount_Ethernet_switches_and_patch_panels.jpg"
+    license_label: "CC BY-SA 4.0"
+    license_url: "https://creativecommons.org/licenses/by-sa/4.0"
+    after_paragraph: 1
+
 - terms:
   - MAC 주소 학습
   - 목적지 조회
   - 프레임 전달
+  illustrations:
+  - file: "assets/photos/switch-8-port.jpg"
+    title: "8포트 스위치 다시 보기"
+    alt: "회색 8포트 스위치의 앞면에 여러 네트워크 케이블이 꽂혀 있습니다."
+    caption: "가정이나 교실용 소형 스위치도 여러 유선 장치를 연결하는 LAN 장비입니다."
+    credit: "사진: Teoprofe / Wikimedia Commons (CC0)"
+    source_url: "https://commons.wikimedia.org/wiki/File:Switch_sobremesa_con_8_puertos_Ethernet.jpg"
+    license_label: "CC0"
+    license_url: "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    after_paragraph: 1
+  - file: "assets/photos/switch-rack-leds.jpg"
+    title: "랙 스위치 다시 보기"
+    alt: "랙에 설치된 네트워크 스위치와 포트의 점등 LED가 보입니다."
+    caption: "LED는 링크나 데이터 활동을 확인하는 단서이며, 정확한 뜻은 장비마다 다릅니다."
+    credit: "사진: Shixart1985 / Wikimedia Commons (CC BY 2.0)"
+    source_url: "https://commons.wikimedia.org/wiki/File:Network_switches_arranged_in_a_server_rack_with_visible_LED_lights_indicating_connection_status_and_power_levels.jpg"
+    license_label: "CC BY 2.0"
+    license_url: "https://creativecommons.org/licenses/by/2.0"
+    after_paragraph: 1
 animations_dir: units/03-layer2-switching/lessons/02-l2-스위치에-대해서/assets/animations
 ---
 이 Lesson에서는 L2 스위치가 프레임을 전달하는 순서를 배웁니다. 먼저 PC가 스위치에 연결되는 모습을 보고, 스위치가 출발지 MAC 주소를 기억하는 방법을 알아봅니다. 그다음 목적지 MAC 주소를 이미 아는 경우와 아직 모르는 경우를 비교하고, 여러 스위치를 거치는 경로까지 따라갑니다.

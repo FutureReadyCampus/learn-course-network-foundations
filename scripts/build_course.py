@@ -200,6 +200,22 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
                     "alt": anim["alt"],
                     "caption": anim["caption"],
                 })
+        for extra in page_meta.get("illustrations", []):
+            asset = lesson_asset(path, extra["file"], lesson_meta, animation_assets)
+            after_paragraph = extra.get("after_paragraph", -1)
+            if after_paragraph < -1 or after_paragraph >= len(page["paragraphs"]):
+                raise ValueError(f"Illustration position is outside Page paragraphs in {path}, page {index + 1}")
+            item = {
+                "src": f"/api/v1/network-course-assets/{asset.relative_to(ROOT).as_posix()}",
+                "title": extra.get("title", title),
+                "alt": extra["alt"],
+                "caption": extra["caption"],
+                "after_paragraph": after_paragraph,
+            }
+            for key in ("credit", "source_url", "license_label", "license_url"):
+                if key in extra:
+                    item[key] = extra[key]
+            illustrations.append(item)
         if illustrations:
             page["illustrations"] = illustrations
         pages.append(page)
