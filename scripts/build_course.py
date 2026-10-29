@@ -50,6 +50,16 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
     guide_path = lesson_meta.get("beginner_guide")
     concepts = json.loads((ROOT / guide_path).read_text(encoding="utf-8"))["concepts"] if guide_path else []
     page_metadata = lesson_meta.get("page_metadata", [])
+    page_groups = lesson_meta.get("page_groups")
+    if page_groups:
+        grouped_sections = []
+        for group in page_groups:
+            indices = group["sections"]
+            if not indices or any(index < 1 or index > len(sections) for index in indices):
+                raise ValueError(f"Invalid page group sections in {path}")
+            grouped_sections.append((group["title"], "\n\n".join(sections[index - 1][1] for index in indices)))
+        sections = grouped_sections
+>>>>>>> cfffb2b (content: combine short Unit 1 Lesson 1 pages)
     diagram_ref = lesson_meta.get("wiki_diagram")
     diagram_path = ROOT / diagram_ref if diagram_ref else None
     illustrated_pages = lesson_meta.get("illustrated_pages", [])
@@ -57,12 +67,22 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
     pages = []
     for index, (heading, body) in enumerate(sections):
         title = re.sub(r"\s*·\s*\d+:\d+.*$", "", heading).strip()
+<<<<<<< HEAD
         concept = concepts[min(index, len(concepts) - 1)] if concepts else {}
         page_meta = page_metadata[index] if index < len(page_metadata) else {}
         page = {
             "title": title,
             "paragraphs": split_paragraphs(body),
             "terms": page_meta.get("terms", [item["term"] for item in concept.get("terms", [])]),
+=======
+        concept_indices = [section_index - 1 for section_index in page_groups[index]["sections"]] if page_groups else ([min(index, len(concepts) - 1)] if concepts else [])
+        page_concepts = [concepts[concept_index] for concept_index in concept_indices if concept_index < len(concepts)]
+        page_meta = page_metadata[index] if index < len(page_metadata) else {}
+        page = {
+            "title": title,
+            "paragraphs": split_paragraphs(body),
+            "terms": page_meta.get("terms", list(dict.fromkeys(item["term"] for concept in page_concepts for item in concept.get("terms", [])))),
+>>>>>>> cfffb2b (content: combine short Unit 1 Lesson 1 pages)
             "questions": [],
         }
         illustrations = []
@@ -74,8 +94,8 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
                 "caption": "개념이 이어지는 순서를 확인해 보세요.",
             })
         animations = page_meta.get("animations")
-        if animations is None and index + 1 in illustrated_pages and concept.get("anim"):
-            animations = [concept["anim"], *concept.get("additional_anims", [])]
+        if animations is None and index + 1 in illustrated_pages:
+            animations = [anim for concept in page_concepts for anim in ([concept["anim"]] if concept.get("anim") else []) + concept.get("additional_anims", [])]
         if animations:
             for anim in animations:
                 candidates = []

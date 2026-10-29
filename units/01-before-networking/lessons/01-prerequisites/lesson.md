@@ -4,8 +4,17 @@ title: "수강 전에 알고 있다고 가정하는 것들"
 source_wiki: sources/wiki/oeweo-network/lesson-01.md
 beginner_guide: units/01-before-networking/lessons/01-prerequisites/guide.json
 wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-01.svg
-illustrated_pages: [2, 3, 4, 5, 6, 8]
+illustrated_pages: [1, 2, 3, 4]
 animations_dir: units/01-before-networking/lessons/01-prerequisites/assets/animations
+page_groups:
+  - title: 수강 전 바탕과 비트·바이트
+    sections: [1, 2]
+  - title: 논리 연산·마스크와 진법
+    sections: [3, 4]
+  - title: 프로그램·프로세스에서 OSI와 개념·구현까지
+    sections: [5, 6, 9]
+  - title: User mode·Kernel mode와 버퍼
+    sections: [7, 8]
 ---
 
 ## 수강 전에 필요한 바탕 · 0:01
