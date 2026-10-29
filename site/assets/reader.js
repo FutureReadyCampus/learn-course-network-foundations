@@ -143,6 +143,7 @@
     state.pageIndex = Math.min(Math.max(0, state.pageIndex), Math.max(0, pages.length - 1));
     const page = pages[state.pageIndex] || { title: item.lesson.title, paragraphs: [] };
     const unitIndex = course.units.findIndex((unit) => unit.id === item.unit.id);
+    const unitLessonNumber = course.lessons.filter((lesson) => lesson.unit === item.unit.id).indexOf(item.lesson) + 1;
     state.unitIndex = unitIndex;
     byId.set(item.lesson.id, item);
     document.title = `${page.title} · ${item.unit.title} · 외워서 공부하는 네트워크`;
@@ -164,7 +165,7 @@
     main.replaceChildren();
     const eyebrow = document.createElement("p");
     eyebrow.className = "net-eyebrow";
-    eyebrow.textContent = `Unit ${String(unitIndex + 1).padStart(2, "0")} · ${item.unit.title} / Lesson ${String(list.indexOf(item) + 1).padStart(2, "0")} · Page ${state.pageIndex + 1} / ${pages.length}`;
+    eyebrow.textContent = `Unit ${String(unitIndex + 1).padStart(2, "0")} · ${item.unit.title} / Lesson ${String(unitLessonNumber).padStart(2, "0")} · Page ${state.pageIndex + 1} / ${pages.length}`;
     const title = document.createElement("h1");
     title.textContent = page.title;
     const sequence = document.createElement("p");
