@@ -5,8 +5,6 @@ source:
   repository: course-network
   lesson_path: studio/wiki/oeweo-network/lesson-04.md
   guide_path: studio/wiki/oeweo-network/newbie/specs/lesson-04.json
-diagram:
-  file: assets/lesson-04.svg
 concepts:
   - id: concept-basic-04-01
     terms:
@@ -118,7 +116,6 @@ pages:
       - concept-basic-04-01
       - concept-basic-04-02
     illustration_after_paragraph:
-      - 3
       - 12
     illustrations: []
   - concepts:
