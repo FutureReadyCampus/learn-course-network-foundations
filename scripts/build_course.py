@@ -7,7 +7,6 @@ import argparse
 import json
 import re
 from pathlib import Path
-from typing import Optional
 
 import yaml
 
@@ -40,18 +39,13 @@ def split_paragraphs(text: str) -> list[str]:
     return paragraphs
 
 
-def reading_pages(
-    path: Path,
-    beginner_path: Path,
-    diagram_path: Path,
-    illustrated_pages: list[int],
-    animation_assets: dict,
-    unit_animation_dir: Optional[str],
-) -> list[dict]:
+def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list[dict]:
     source = path.read_text(encoding="utf-8")
-    edition = source.split("<!-- reading-edition:start -->", 1)[1].split("<!-- reading-edition:end -->", 1)[0]
-    sections = re.findall(r"^### (.+?)\s*\n(.*?)(?=^### |\Z)", edition, re.M | re.S)
-    concepts = json.loads(beginner_path.read_text(encoding="utf-8"))["concepts"]
+    sections = re.findall(r"^## (.+?)\s*\n(.*?)(?=^## |\Z)", source, re.M | re.S)
+    concepts = json.loads((ROOT / lesson_meta["beginner_guide"]).read_text(encoding="utf-8"))["concepts"]
+    diagram_path = ROOT / lesson_meta["wiki_diagram"]
+    illustrated_pages = lesson_meta.get("illustrated_pages", [])
+    lesson_animation_dir = lesson_meta.get("animations_dir")
     pages = []
     for index, (heading, body) in enumerate(sections):
         title = re.sub(r"\s*·\s*\d+:\d+.*$", "", heading).strip()
@@ -74,8 +68,8 @@ def reading_pages(
             animations = [concept["anim"], *concept.get("additional_anims", [])]
             for anim in animations:
                 candidates = []
-                if unit_animation_dir:
-                    candidates.append(ROOT / unit_animation_dir / anim["file"])
+                if lesson_animation_dir:
+                    candidates.append(ROOT / lesson_animation_dir / anim["file"])
                 runtime_dir = animation_assets.get("runtime_dir")
                 if runtime_dir:
                     candidates.append(ROOT / runtime_dir / anim["file"])
@@ -94,7 +88,7 @@ def reading_pages(
             page["illustrations"] = illustrations
         pages.append(page)
     if not pages:
-        raise ValueError(f"Wiki reading edition has no sections: {path}")
+        raise ValueError(f"Lesson source has no Page headings: {path}")
     return pages
 
 
@@ -118,22 +112,17 @@ def build(source_revision: str = "local-draft", source_label: str = "local draft
         if not unit_path.exists():
             continue
         unit_meta, _ = read_front_matter(unit_path)
-        for order, item in enumerate(unit_meta.get("wiki_lessons", [])):
+        for order, lesson_ref in enumerate(unit_meta.get("lessons", [])):
+            lesson_path = unit_path.parent / lesson_ref["path"]
+            lesson_meta, _ = read_front_matter(ROOT / lesson_path)
             lesson = {
-                "id": item["id"],
+                "id": lesson_meta["id"],
                 "unit": unit_config["id"],
-                "title": item["title"],
+                "title": lesson_meta["title"],
                 "terms": [],
-                "pages": reading_pages(
-                    ROOT / item["path"],
-                    ROOT / item["beginner_guide"],
-                    ROOT / item["wiki_diagram"],
-                    item.get("illustrated_pages", []),
-                    course_meta.get("animation_assets", {}),
-                    unit_meta.get("animations_dir"),
-                ),
+                "pages": reading_pages(ROOT / lesson_path, lesson_meta, course_meta.get("animation_assets", {})),
                 "source": "oeweo-network-wiki",
-                "source_path": item["path"],
+                "source_path": lesson_meta["source_wiki"],
                 "reading": [],
                 "question": "",
                 "choices": [],
