@@ -157,6 +157,74 @@
     }
     return figure;
   };
+  const renderQuiz = (questions, state, pageKey, onProgress) => {
+    const section = document.createElement("section");
+    section.className = "page-quiz";
+    section.setAttribute("aria-label", "이 페이지의 퀴즈");
+    const heading = document.createElement("h2");
+    heading.textContent = "개념 확인 퀴즈";
+    section.append(heading);
+    const passed = new Set(state.quizPassed?.[pageKey] || []);
+    const storePassed = (id) => {
+      if (!state.quizPassed) state.quizPassed = {};
+      passed.add(id);
+      state.quizPassed[pageKey] = [...passed];
+      onProgress(questions.every((question) => passed.has(question.id)));
+    };
+    questions.forEach((question, index) => {
+      const card = document.createElement("fieldset");
+      card.className = "page-quiz-question";
+      const legend = document.createElement("legend");
+      legend.textContent = `${index + 1}. ${question.prompt}`;
+      card.append(legend);
+      const result = document.createElement("p");
+      result.className = "page-quiz-result";
+      result.setAttribute("role", "status");
+      result.setAttribute("aria-live", "polite");
+      const grade = (answer, feedback) => {
+        const correct = question.kind === "short"
+          ? question.answers.some((value) => value.trim().toLowerCase() === answer.trim().toLowerCase())
+          : answer === question.answer;
+        result.dataset.correct = String(correct);
+        result.textContent = `${correct ? "정답입니다." : "다시 생각해 보세요."} ${feedback}`;
+        if (correct) storePassed(question.id);
+      };
+      if (question.kind === "choice") {
+        question.choices.forEach((choice) => {
+          const label = document.createElement("label");
+          label.className = "page-quiz-choice";
+          const input = document.createElement("input");
+          input.type = "radio";
+          input.name = question.id;
+          input.value = choice.id;
+          input.addEventListener("change", () => grade(choice.id, choice.feedback));
+          const text = document.createElement("span");
+          text.textContent = choice.text;
+          label.append(input, text);
+          card.append(label);
+        });
+      } else {
+        const form = document.createElement("form");
+        const input = document.createElement("input");
+        input.type = "text";
+        input.maxLength = 80;
+        input.autocomplete = "off";
+        input.setAttribute("aria-label", question.prompt);
+        const submit = document.createElement("button");
+        submit.type = "submit";
+        submit.textContent = "확인";
+        form.append(input, submit);
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          if (input.value.trim()) grade(input.value, question.feedback);
+        });
+        card.append(form);
+      }
+      card.append(result);
+      section.append(card);
+    });
+    return section;
+  };
   const render = (course, state) => {
     const list = allItems(course);
     if (!list.length) return;
@@ -190,6 +258,14 @@
     main.append(title);
     const prose = renderProse(page.paragraphs || [], page.illustrations || []);
     main.append(prose);
+    const questions = page.questions || [];
+    const pageKey = `${item.lesson.id}:${state.pageIndex}`;
+    let pageComplete = !questions.length || questions.every((question) => (state.quizPassed?.[pageKey] || []).includes(question.id));
+    let nextPage;
+    if (questions.length) main.append(renderQuiz(questions, state, pageKey, (complete) => {
+      pageComplete = complete;
+      if (nextPage) nextPage.disabled = !pageComplete;
+    }));
     const previous = list[state.lessonIndex - 1];
     const next = list[state.lessonIndex + 1];
     const navFooter = document.createElement("nav");
@@ -204,10 +280,10 @@
       else if (previous) { state.lessonIndex--; state.pageIndex = (previous.lesson.pages || []).length - 1; }
       visit(course, state);
     });
-    const nextPage = document.createElement("button");
+    nextPage = document.createElement("button");
     nextPage.type = "button";
     nextPage.textContent = "다음 페이지 →";
-    nextPage.disabled = state.pageIndex >= pages.length - 1 && !next;
+    nextPage.disabled = (state.pageIndex >= pages.length - 1 && !next) || !pageComplete;
     nextPage.addEventListener("click", () => {
       if (state.pageIndex < pages.length - 1) state.pageIndex++;
       else if (next) { state.lessonIndex++; state.pageIndex = 0; }
@@ -221,8 +297,10 @@
     document.querySelectorAll(".lesson-link, .page-link").forEach((anchor) => anchor.addEventListener("click", (event) => {
       event.preventDefault();
       const targetLesson = Number(anchor.dataset.lesson);
+      const targetPage = Number(anchor.dataset.page || 0);
+      if ((targetLesson > state.lessonIndex || (targetLesson === state.lessonIndex && targetPage > state.pageIndex)) && !pageComplete) return;
       state.lessonIndex = targetLesson;
-      state.pageIndex = Number(anchor.dataset.page || 0);
+      state.pageIndex = targetPage;
       visit(course, state);
     }));
     document.getElementById("sidebar-toggle").setAttribute("aria-expanded", "true");

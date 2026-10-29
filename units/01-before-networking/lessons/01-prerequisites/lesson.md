@@ -184,6 +184,48 @@ pages:
     illustration_after_paragraph:
       - 8
     illustrations: []
+    questions:
+      - id: u1-prerequisites-p01-q01
+        kind: choice
+        difficulty: easy
+        prompt: 네트워크란 무엇인가요?
+        choices:
+          - id: a
+            text: 컴퓨터끼리 정보를 주고받는 것
+            feedback: 맞아요. 네트워크는 컴퓨터끼리 정보를 주고받는 일입니다.
+          - id: b
+            text: 컴퓨터가 정보를 저장하는 파일의 크기
+            feedback: 파일 크기는 바이트 등으로 나타내며, 네트워크는 컴퓨터끼리 정보를 주고받는 일입니다.
+          - id: c
+            text: 0 또는 1 하나로 나타내는 가장 작은 정보 단위
+            feedback: 이것은 비트의 설명입니다. 네트워크는 컴퓨터끼리 정보를 주고받는 일입니다.
+          - id: d
+            text: 실행 중인 프로그램
+            feedback: 실행 중인 프로그램은 프로세스입니다. 네트워크는 컴퓨터끼리 정보를 주고받는 일입니다.
+        answer: a
+      - id: u1-prerequisites-p01-q02
+        kind: choice
+        difficulty: medium
+        prompt: 비트 8개를 한 묶음으로 부르는 단위는 무엇인가요?
+        choices:
+          - id: a
+            text: 바이트
+            feedback: 맞아요. 8비트가 1바이트입니다.
+          - id: b
+            text: 킬로바이트
+            feedback: 킬로바이트는 바이트보다 큰 단위입니다.
+          - id: c
+            text: Mbps
+            feedback: Mbps는 초당 전송하는 메가비트 수를 나타냅니다.
+          - id: d
+            text: 프로세스
+            feedback: 프로세스는 실행 중인 프로그램을 가리킵니다.
+        answer: a
+      - id: u1-prerequisites-p01-q03
+        kind: short
+        prompt: 컴퓨터 정보의 가장 작은 단위로, 0 또는 1 하나를 나타내는 것은 무엇인가요?
+        answers: [비트, bit]
+        feedback: 비트(bit)는 0 또는 1 하나를 나타내는 가장 작은 정보 단위입니다.
   - concepts:
       - concept-basic-01-03
       - concept-basic-01-04
