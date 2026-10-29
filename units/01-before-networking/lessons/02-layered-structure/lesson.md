@@ -61,19 +61,22 @@ pages:
       - concept-basic-02-01
       - concept-basic-02-02
       - concept-basic-02-03
+    illustration_after_paragraph:
+      - -1
+      - 12
+    illustrations: []
+  - concepts:
       - concept-basic-02-04
       - concept-basic-02-05
       - concept-basic-02-06
-    illustration_after_paragraph:
-      - 3
-      - 15
+    illustration_after_paragraph: []
     illustrations:
       - file: assets/l04-layer-map.svg
         title: OSI의 계층을 실제 기술과 연결하기
         alt: 왼쪽의 OSI 층 사다리가 오른쪽의 Chrome, TCP, IP, 드라이버, NIC 칸과 선으로 이어지고, User mode와 Kernel mode와 하드웨어 영역이 색으로 구분되는
           장면입니다.
         caption: OSI라는 설명 틀을 TCP, IP, 드라이버와 NIC의 구현 위치에 연결해 봅니다.
-        after_paragraph: 32
+        after_paragraph: 12
 animations_dir: units/01-before-networking/lessons/02-layered-structure/assets/animations
 ---
 
@@ -113,7 +116,7 @@ IT 기술을 설명하는 그림에도 이와 똑같은 모양이 자주 나옵�
 
 이 비유가 맞는 곳은 ‘아래가 빠지면 위가 흔들린다’는 점까지입니다. 실제 IT 도식에서 층은 눈에 보이는 바닥이 아니라 약속된 기능의 단위라서, 어느 정도로 기대는지는 그림마다 따져 보아야 합니다. 한 줄로 되짚으면, 위 계층은 아래 계층에 의존하며 그 정도는 ‘한 가지 일에만 기댐’에서 ‘아래가 없으면 존재조차 못 함’까지 다양합니다.
 
-### 학교 과정에서 OSI까지
+## 학교 과정에서 OSI까지
 
 대학교를 졸업해 학사 학위를 받았다는 사람을 만났다고 해 보겠습니다. 우리는 그 사람이 고등학교도 다녔을 것이라고 별 의심 없이 생각합니다. 말하지 않았는데도 그렇게 짐작하는 까닭은, 대학 과정이 고등학교 과정을 마쳤다는 전제 위에서 시작되기 때문입니다.
 
