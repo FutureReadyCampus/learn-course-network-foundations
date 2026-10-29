@@ -1,8 +1,8 @@
 ---
 id: u5-l29-tcp-연결-이라는-착각
 title: TCP '연결'이라는 착각
-source_wiki: sources/wiki/oeweo-network/lesson-29.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-29.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-29.md
+wiki_diagram: units/05-tcp-and-udp/lessons/05-tcp-연결-이라는-착각/assets/diagrams/lesson-29.svg
 page_metadata:
 - terms:
   - LAN 케이블
@@ -42,6 +42,7 @@ page_metadata:
     caption: 5초 분량을 쌓아 두면 1초 멈춰도 남은 4초로 영상이 이어집니다.
 - terms:
   - 애플리케이션 상태
+animations_dir: units/05-tcp-and-udp/lessons/05-tcp-연결-이라는-착각/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

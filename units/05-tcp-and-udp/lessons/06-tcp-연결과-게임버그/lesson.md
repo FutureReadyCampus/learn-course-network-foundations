@@ -1,8 +1,8 @@
 ---
 id: u5-l30-tcp-연결과-게임버그
 title: TCP 연결과 게임버그
-source_wiki: sources/wiki/oeweo-network/lesson-30.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-30.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-30.md
+wiki_diagram: units/05-tcp-and-udp/lessons/06-tcp-연결과-게임버그/assets/diagrams/lesson-30.svg
 page_metadata:
 - terms:
   - 엔드포인트(endpoint)
@@ -30,6 +30,7 @@ page_metadata:
   - 무결성(integrity)
   - 가용성(availability)
 - terms: []
+animations_dir: units/05-tcp-and-udp/lessons/06-tcp-연결과-게임버그/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

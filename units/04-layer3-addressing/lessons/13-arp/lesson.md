@@ -1,8 +1,8 @@
 ---
 id: u4-l23-arp
 title: ARP
-source_wiki: sources/wiki/oeweo-network/lesson-23.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-23.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-23.md
+wiki_diagram: units/04-layer3-addressing/lessons/13-arp/assets/diagrams/lesson-23.svg
 page_metadata:
 - terms:
   - IP 주소
@@ -33,6 +33,7 @@ page_metadata:
 - terms:
   - ARP 캐시
 - terms: []
+animations_dir: units/04-layer3-addressing/lessons/13-arp/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

@@ -1,8 +1,8 @@
 ---
 id: u4-l14-패킷의-생성과-전달
 title: 패킷의 생성과 전달
-source_wiki: sources/wiki/oeweo-network/lesson-14.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-14.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-14.md
+wiki_diagram: units/04-layer3-addressing/lessons/04-패킷의-생성과-전달/assets/diagrams/lesson-14.svg
 page_metadata:
 - terms:
   - 패킷 (packet)
@@ -41,6 +41,7 @@ page_metadata:
     title: 프레임이 도착하기까지
     alt: 왼쪽 호스트에서 나온 프레임이 L2 스위치와 라우터, 인터넷을 거쳐 오른쪽 호스트의 프로세스에 도착하는 장면입니다.
     caption: 호스트에서 출발한 프레임이 스위치와 라우터를 거쳐 상대 호스트의 프로세스까지 갑니다.
+animations_dir: units/04-layer3-addressing/lessons/04-패킷의-생성과-전달/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

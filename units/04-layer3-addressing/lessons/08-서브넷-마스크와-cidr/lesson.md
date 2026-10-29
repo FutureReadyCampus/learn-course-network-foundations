@@ -1,8 +1,8 @@
 ---
 id: u4-l18-서브넷-마스크와-cidr
 title: 서브넷 마스크와 CIDR
-source_wiki: sources/wiki/oeweo-network/lesson-18.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-18.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-18.md
+wiki_diagram: units/04-layer3-addressing/lessons/08-서브넷-마스크와-cidr/assets/diagrams/lesson-18.svg
 page_metadata:
 - terms:
   - 네트워크 ID(Network ID)
@@ -42,6 +42,7 @@ page_metadata:
 - terms:
   - 서브네팅(Subnetting)
   - 옥텟(octet)
+animations_dir: units/04-layer3-addressing/lessons/08-서브넷-마스크와-cidr/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

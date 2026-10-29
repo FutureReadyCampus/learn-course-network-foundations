@@ -1,8 +1,8 @@
 ---
 id: u4-l16-중요-이해하면-인생이-바뀌는-tcp-ip-송-수신구조
 title: '[※중요] 이해하면 인생이 바뀌는 TCP/IP 송·수신구조'
-source_wiki: sources/wiki/oeweo-network/lesson-16.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-16.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-16.md
+wiki_diagram: units/04-layer3-addressing/lessons/06-중요-이해하면-인생이-바뀌는-tcp-ip-송-수신구조/assets/diagrams/lesson-16.svg
 page_metadata:
 - terms:
   - MTU (Maximum Transmission Unit)
@@ -60,6 +60,7 @@ page_metadata:
 - terms:
   - Lost Segment
   - 관찰 항목 다섯 가지
+animations_dir: units/04-layer3-addressing/lessons/06-중요-이해하면-인생이-바뀌는-tcp-ip-송-수신구조/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

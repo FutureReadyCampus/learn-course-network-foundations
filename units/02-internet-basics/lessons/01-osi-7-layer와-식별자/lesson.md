@@ -1,8 +1,8 @@
 ---
 id: u2-l05-osi-7-layer와-식별자
 title: OSI 7 layer와 식별자
-source_wiki: sources/wiki/oeweo-network/lesson-05.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-05.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-05.md
+wiki_diagram: units/02-internet-basics/lessons/01-osi-7-layer와-식별자/assets/diagrams/lesson-05.svg
 page_metadata:
 - terms:
   - OSI 7 layer
@@ -47,6 +47,7 @@ page_metadata:
     alt: 건물 모양의 호스트에 출입문 세 개가 나타나 MAC 주소 표찰이 붙고, 지붕에 IP 주소가 붙으며, 안쪽 방에 포트 번호가 켜지는
       장면입니다.
     caption: 문마다 MAC, 건물 전체에 IP, 사무실 호수에 포트 번호가 붙습니다.
+animations_dir: units/02-internet-basics/lessons/01-osi-7-layer와-식별자/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

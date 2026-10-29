@@ -51,9 +51,9 @@ def lesson_asset(
         raise ValueError(f"Unsafe Lesson asset path {filename!r} in {path}")
     candidates = []
     if animated:
-        runtime_dir = animation_assets.get("runtime_dir")
-        if runtime_dir:
-            candidates.append(ROOT / runtime_dir / relative.name)
+        lesson_animation_dir = lesson_meta.get("animations_dir")
+        if lesson_animation_dir:
+            candidates.append(ROOT / lesson_animation_dir / relative.name)
         lesson_runtime_dir = lesson_meta.get("runtime_assets_dir")
         if lesson_runtime_dir:
             candidates.append(path.parent / lesson_runtime_dir / relative.name)
@@ -188,15 +188,10 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
             animations = [anim for concept in page_concepts for anim in ([concept["anim"]] if concept.get("anim") else []) + concept.get("additional_anims", [])]
         if animations:
             for anim in animations:
-                candidates = []
-                if lesson_animation_dir:
-                    candidates.append(ROOT / lesson_animation_dir / anim["file"])
-                runtime_dir = animation_assets.get("runtime_dir")
-                if runtime_dir:
-                    candidates.append(ROOT / runtime_dir / anim["file"])
-                source_dir = animation_assets.get("source_dir", "sources/wiki/oeweo-network/newbie/anim")
-                candidates.append(ROOT / source_dir / anim["file"])
-                asset = next((candidate for candidate in candidates if candidate.is_file()), None)
+                animation_dir = ROOT / lesson_animation_dir if lesson_animation_dir else path.parent / "assets" / "animations"
+                asset = animation_dir / anim["file"]
+                if not asset.is_file():
+                    asset = None
                 if asset is None:
                     raise FileNotFoundError(f"Missing SVG animation {anim['file']} for {path}")
                 illustrations.append({

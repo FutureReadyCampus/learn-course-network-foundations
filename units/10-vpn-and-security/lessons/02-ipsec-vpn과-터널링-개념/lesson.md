@@ -1,8 +1,8 @@
 ---
 id: "u10-advanced-20-ipsec-vpn과-터널링-개념"
 title: "IPSec VPN과 터널링 개념"
-source_wiki: "sources/wiki/oeweo-network/advanced/lesson-20.md"
-wiki_diagram: "sources/wiki/oeweo-network/advanced/concepts/lesson-20.svg"
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-20.md
+wiki_diagram: units/10-vpn-and-security/lessons/02-ipsec-vpn과-터널링-개념/assets/diagrams/lesson-20.svg
 ---
 
 핵심 개념을 주제별로 정리했다.

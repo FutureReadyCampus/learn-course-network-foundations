@@ -1,8 +1,8 @@
 ---
 id: u4-l20-host-자신을-가리키는-ip주소
 title: Host 자신을 가리키는 IP주소
-source_wiki: sources/wiki/oeweo-network/lesson-20.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-20.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-20.md
+wiki_diagram: units/04-layer3-addressing/lessons/10-host-자신을-가리키는-ip주소/assets/diagrams/lesson-20.svg
 page_metadata:
 - terms:
   - 원격지(Remote)
@@ -32,6 +32,7 @@ page_metadata:
     caption: 127.0.0.1로 보낸 패킷은 NIC와 케이블까지 내려가지 않고 컴퓨터 안에서 되돌아옵니다.
 - terms:
   - IPC(Inter Process Communication)
+animations_dir: units/04-layer3-addressing/lessons/10-host-자신을-가리키는-ip주소/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

@@ -88,6 +88,7 @@ pages:
           장면입니다.
         caption: TCP/IP의 역할을 익힌 뒤 실제 컴퓨터 안에서 어느 부분이 일을 맡는지 살펴봅니다.
         after_paragraph: 12
+animations_dir: units/01-before-networking/lessons/03-networking-concepts/assets/animations
 ---
 
 ## Network·Networking과 대화의 조건

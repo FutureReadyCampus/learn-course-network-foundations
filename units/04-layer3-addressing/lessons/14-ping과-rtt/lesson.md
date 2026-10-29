@@ -1,8 +1,8 @@
 ---
 id: u4-l24-ping과-rtt
 title: Ping과 RTT
-source_wiki: sources/wiki/oeweo-network/lesson-24.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-24.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-24.md
+wiki_diagram: units/04-layer3-addressing/lessons/14-ping과-rtt/assets/diagrams/lesson-24.svg
 page_metadata:
 - terms:
   - 동기화(Synchronization)
@@ -35,6 +35,7 @@ page_metadata:
     alt: 왼쪽 PC에서 A, B, C, D가 담긴 Echo Request 봉투가 서버로 가고, 서버에서 같은 내용의 Echo Reply 봉투가
       돌아옵니다. 마지막에 Ping은 프로그램, ICMP는 약속, RTT는 값이라는 세 라벨이 나타납니다.
     caption: Ping은 A B C D를 담아 보내고, 같은 내용이 돌아오는 시간을 잽니다.
+animations_dir: units/04-layer3-addressing/lessons/14-ping과-rtt/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

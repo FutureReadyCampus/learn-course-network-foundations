@@ -229,6 +229,7 @@ pages:
         alt: 맨 아래 NIC 상자 위에 드라이버 블록이 끼워지고, 그 위에 TCP와 IP 블록이 차례로 쌓이는 장면입니다.
         caption: ‘정보를 주고받는다’는 개념이 실제로는 여러 소프트웨어와 장치의 협력으로 구현됩니다.
         after_paragraph: 4
+animations_dir: units/01-before-networking/lessons/01-prerequisites/assets/animations
 ---
 
 ## 수강 전에 필요한 바탕과 비트·바이트

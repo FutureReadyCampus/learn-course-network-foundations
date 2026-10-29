@@ -1,8 +1,8 @@
 ---
 id: u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소
 title: NIC, L2 Frame, LAN 카드 그리고 MAC 주소
-source_wiki: sources/wiki/oeweo-network/lesson-08.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-08.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-08.md
+wiki_diagram: units/03-layer2-switching/lessons/01-nic-l2-frame-lan-카드-그리고-mac-주소/assets/diagrams/lesson-08.svg
 page_metadata:
 - terms:
   - NIC (Network Interface Card)
@@ -59,6 +59,7 @@ page_metadata:
 - terms:
   - 광섬유 케이블
   - 슬롯 (Slot)
+animations_dir: units/03-layer2-switching/lessons/01-nic-l2-frame-lan-카드-그리고-mac-주소/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

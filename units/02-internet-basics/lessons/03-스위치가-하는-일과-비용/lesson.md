@@ -1,8 +1,8 @@
 ---
 id: u2-l07-스위치가-하는-일과-비용
 title: 스위치가 하는 일과 비용
-source_wiki: sources/wiki/oeweo-network/lesson-07.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-07.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-07.md
+wiki_diagram: units/02-internet-basics/lessons/03-스위치가-하는-일과-비용/assets/diagrams/lesson-07.svg
 page_metadata:
 - terms: []
 - terms: []
@@ -37,6 +37,7 @@ page_metadata:
   - route print
   - 네트워크 마스크
 - terms: []
+animations_dir: units/02-internet-basics/lessons/03-스위치가-하는-일과-비용/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

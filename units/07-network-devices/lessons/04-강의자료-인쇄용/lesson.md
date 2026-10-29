@@ -1,7 +1,7 @@
 ---
 id: "u7-advanced-04-강의자료-인쇄용"
 title: "강의자료 - 인쇄용"
-source_wiki: "sources/wiki/oeweo-network/advanced/lesson-04.md"
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-04.md
 ---
 
 Chapter 1. 네트워크 장치의 구조

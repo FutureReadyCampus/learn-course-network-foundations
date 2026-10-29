@@ -2,7 +2,7 @@
 
 This record identifies the archived inputs used for the Unit 1 migration. The source repository was `course-network`, at HEAD `90a5cc40dec981b0e37fa334f3fae8ba673c8f32` when its contents were imported on 2026-10-28.
 
-That SHA identifies the source checkout's committed baseline. It does **not** identify all imported content: the Wiki lesson Markdown had uncommitted edits, and the beginner-guide JSON and animation SVG additions were untracked. Those files are preserved under `sources/wiki/oeweo-network/` in this repository. The `archive SHA-256` values below identify those retained snapshots, not upstream Git blobs.
+That SHA identifies the source checkout's committed baseline. It does **not** identify all imported content: the Wiki lesson Markdown had uncommitted edits, and the beginner-guide JSON and animation SVG additions were untracked. Required guide and media assets are stored beside their owning Unit Lessons. The `archive SHA-256` values below identify the source snapshots used during migration, not upstream Git blobs.
 
 The original source checkout currently has the same HEAD but a later, changed worktree. Its current copies of the four lesson Markdown files and JSON files differ from this repository's archived snapshots. Do not treat the current worktree as the historical import source; use the retained snapshots below for migration comparison.
 

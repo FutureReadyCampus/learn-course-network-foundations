@@ -10,14 +10,6 @@ from xml.etree import ElementTree as ET
 
 
 ROOT = Path(__file__).resolve().parents[1]
-ANIMATION_DIRS = (
-    ROOT / "sources/wiki/oeweo-network/newbie/anim",
-    ROOT / "sources/wiki/oeweo-network/newbie/anim-paced",
-    ROOT / "sources/wiki/oeweo-network/advanced/concepts",
-)
-STATIC_DIRS = (ROOT / "sources/wiki/oeweo-network/concepts",)
-LESSON_ASSET_DIRS = (ROOT / "units/01-before-networking/lessons",)
-LESSON_RUNTIME_DIRS = (ROOT / "units/01-before-networking/lessons/01-prerequisites/assets/animations",)
 ANIMATION_TAGS = {"animate", "animateMotion", "animateTransform", "set"}
 STEP_TEXT = re.compile(r"^\s*(\d+)\s*/\s*(\d+)\s*$")
 
@@ -79,50 +71,22 @@ def main() -> int:
     animations = []
     static = []
     errors = []
-    for directory in ANIMATION_DIRS:
-        if not directory.is_dir():
-            errors.append(f"missing animation directory: {directory.relative_to(ROOT)}")
-            continue
-        for path in sorted(directory.glob("*.svg")):
+    asset_files = sorted(
+        path
+        for path in (ROOT / "units").glob("*/lessons/*/assets/**/*.svg")
+        if any(directory in path.parts for directory in ("diagrams", "animations", "animation-source"))
+    )
+    for path in asset_files:
+        try:
             root = ET.parse(path).getroot()
-            if any(local_name(node) in ANIMATION_TAGS for node in root.iter()):
-                animations.append(path)
-
-    for directory in STATIC_DIRS:
-        if not directory.is_dir():
-            errors.append(f"missing static diagram directory: {directory.relative_to(ROOT)}")
+        except ET.ParseError as error:
+            errors.append(f"{path.relative_to(ROOT)}: invalid SVG XML: {error}")
             continue
-        for path in sorted(directory.glob("*.svg")):
-            try:
-                root = ET.parse(path).getroot()
-            except ET.ParseError as error:
-                errors.append(f"{path.relative_to(ROOT)}: invalid SVG XML: {error}")
-                continue
-            if any(local_name(node) in ANIMATION_TAGS for node in root.iter()):
-                errors.append(f"{path.relative_to(ROOT)}: animated SVG found in static diagram inventory")
-            else:
-                static.append(path)
-
-    for directory in LESSON_ASSET_DIRS:
-        if not directory.is_dir():
-            errors.append(f"missing Lesson asset directory: {directory.relative_to(ROOT)}")
-            continue
-        for path in sorted(directory.rglob("*.svg")):
-            try:
-                root = ET.parse(path).getroot()
-            except ET.ParseError as error:
-                errors.append(f"{path.relative_to(ROOT)}: invalid SVG XML: {error}")
-                continue
-            animated = any(local_name(node) in ANIMATION_TAGS for node in root.iter())
-            is_runtime = any(parent in path.parents for parent in LESSON_RUNTIME_DIRS)
-            if animated and is_runtime:
-                animations.append(path)
-            elif not animated:
-                static.append(path)
-
-    for directory in LESSON_RUNTIME_DIRS:
-        if not directory.is_dir():
-            errors.append(f"missing Lesson runtime asset directory: {directory.relative_to(ROOT)}")
+        animated = any(local_name(node) in ANIMATION_TAGS for node in root.iter())
+        if animated:
+            animations.append(path)
+        elif "diagrams" in path.parts:
+            static.append(path)
 
     for path in animations:
         ok, detail = has_step_badge(path)

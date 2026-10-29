@@ -4,8 +4,6 @@ course:
   language: ko
   status: draft
 animation_assets:
-  source_dir: sources/wiki/oeweo-network/newbie/anim
-  runtime_dir: sources/wiki/oeweo-network/newbie/anim-paced
   durations_file: docs/svg-playback.yaml
 units:
 - id: before-networking

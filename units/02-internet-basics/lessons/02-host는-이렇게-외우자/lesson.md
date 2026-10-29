@@ -1,8 +1,8 @@
 ---
 id: u2-l06-host는-이렇게-외우자
 title: Host는 이렇게 외우자
-source_wiki: sources/wiki/oeweo-network/lesson-06.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-06.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-06.md
+wiki_diagram: units/02-internet-basics/lessons/02-host는-이렇게-외우자/assets/diagrams/lesson-06.svg
 page_metadata:
 - terms:
   - 호스트(Host)
@@ -43,6 +43,7 @@ page_metadata:
       스위치는 공유기 하나가 대표로 나오고, 클라이언트와 서버 꼬리표가 붙으며, 피어는 글로 설명합니다.
     caption: 호스트는 네트워크를 이루는 스위치와 네트워크를 쓰는 엔드포인트로 나뉩니다. 지도에는 스위치 대표로 공유기 하나만 그렸지만,
       라우터, 보안 스위치, 탭·애그리게이션 스위치도 같은 스위치 쪽이고, 엔드포인트 안에는 클라이언트와 서버 말고 피어도 있습니다.
+animations_dir: units/02-internet-basics/lessons/02-host는-이렇게-외우자/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

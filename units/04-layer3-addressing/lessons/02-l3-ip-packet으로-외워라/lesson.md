@@ -1,8 +1,8 @@
 ---
 id: u4-l12-l3-ip-packet으로-외워라
 title: L3 IP Packet으로 외워라
-source_wiki: sources/wiki/oeweo-network/lesson-12.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-12.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-12.md
+wiki_diagram: units/04-layer3-addressing/lessons/02-l3-ip-packet으로-외워라/assets/diagrams/lesson-12.svg
 page_metadata:
 - terms:
   - 패킷 (Packet)
@@ -49,6 +49,7 @@ page_metadata:
     alt: 패킷 하나의 헤더에서 계층 2의 MAC 주소, 계층 3의 IP 주소, 계층 4의 포트 번호가 차례로 켜지며 각각 출발지와 목적지를
       나타냅니다.
     caption: 헤더에서 MAC 주소, IP 주소, 포트 번호는 계층이 다를 뿐 모두 ‘어디서 어디로’를 나타냅니다.
+animations_dir: units/04-layer3-addressing/lessons/02-l3-ip-packet으로-외워라/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

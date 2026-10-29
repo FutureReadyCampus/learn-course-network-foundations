@@ -1,8 +1,8 @@
 ---
 id: u5-l28-tcp-udp-헤더형식과-게임서버-특징
 title: TCP, UDP 헤더형식과 게임서버 특징
-source_wiki: sources/wiki/oeweo-network/lesson-28.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-28.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-28.md
+wiki_diagram: units/05-tcp-and-udp/lessons/04-tcp-udp-헤더형식과-게임서버-특징/assets/diagrams/lesson-28.svg
 page_metadata:
 - terms:
   - 포트 번호 (Port Number)
@@ -46,6 +46,7 @@ page_metadata:
     caption: 위치 3번이 사라졌을 때 TCP는 기다리고 UDP는 최신 5번으로 넘어갑니다.
 - terms:
   - HTTP/3
+animations_dir: units/05-tcp-and-udp/lessons/04-tcp-udp-헤더형식과-게임서버-특징/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

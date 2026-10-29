@@ -1,8 +1,8 @@
 ---
 id: u6-l33-url과-uri
 title: URL과 URI
-source_wiki: sources/wiki/oeweo-network/lesson-33.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-33.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-33.md
+wiki_diagram: units/06-web-fundamentals/lessons/03-url과-uri/assets/diagrams/lesson-33.svg
 page_metadata:
 - terms:
   - URL(Uniform Resource Locator)
@@ -46,6 +46,7 @@ page_metadata:
 - terms:
   - 포트 번호(port number)
   - 기본 포트
+animations_dir: units/06-web-fundamentals/lessons/03-url과-uri/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

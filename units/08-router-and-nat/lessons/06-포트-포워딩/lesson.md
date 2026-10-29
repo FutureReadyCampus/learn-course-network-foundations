@@ -1,8 +1,8 @@
 ---
 id: "u8-advanced-15-포트-포워딩"
 title: "포트 포워딩"
-source_wiki: "sources/wiki/oeweo-network/advanced/lesson-15.md"
-wiki_diagram: "sources/wiki/oeweo-network/advanced/concepts/lesson-15.svg"
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-15.md
+wiki_diagram: units/08-router-and-nat/lessons/06-포트-포워딩/assets/diagrams/lesson-15.svg
 ---
 
 핵심 개념을 주제별로 정리했다.

@@ -1,8 +1,8 @@
 ---
 id: u4-l19-broadcast-ip주소
 title: Broadcast IP주소
-source_wiki: sources/wiki/oeweo-network/lesson-19.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-19.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-19.md
+wiki_diagram: units/04-layer3-addressing/lessons/09-broadcast-ip주소/assets/diagrams/lesson-19.svg
 page_metadata:
 - terms:
   - 비트(bit)
@@ -34,6 +34,7 @@ page_metadata:
   - 사용 가능한 호스트 주소
 - terms:
   - 예약된 주소
+animations_dir: units/04-layer3-addressing/lessons/09-broadcast-ip주소/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

@@ -1,8 +1,8 @@
 ---
 id: u5-l26-tcp-연결과정
 title: TCP 연결과정
-source_wiki: sources/wiki/oeweo-network/lesson-26.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-26.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-26.md
+wiki_diagram: units/05-tcp-and-udp/lessons/02-tcp-연결과정/assets/diagrams/lesson-26.svg
 page_metadata:
 - terms:
   - 3-way handshake
@@ -41,6 +41,7 @@ page_metadata:
       갑니다.
 - terms:
   - Virtual Circuit(가상 회선)
+animations_dir: units/05-tcp-and-udp/lessons/02-tcp-연결과정/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

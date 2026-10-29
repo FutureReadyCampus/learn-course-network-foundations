@@ -1,8 +1,8 @@
 ---
 id: u4-l11-ipv4주소의-기본-구조
 title: IPv4주소의 기본 구조
-source_wiki: sources/wiki/oeweo-network/lesson-11.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-11.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-11.md
+wiki_diagram: units/04-layer3-addressing/lessons/01-ipv4주소의-기본-구조/assets/diagrams/lesson-11.svg
 page_metadata:
 - terms:
   - MAC 주소 (Media Access Control address)
@@ -41,6 +41,7 @@ page_metadata:
       10번 집에 도착합니다.
     caption: 라우터는 상자의 동네(Network ID)만 보고 방향을 정하고, 마지막 동네에서 집(Host ID)을 찾습니다.
 - terms: []
+animations_dir: units/04-layer3-addressing/lessons/01-ipv4주소의-기본-구조/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

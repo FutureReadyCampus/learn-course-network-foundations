@@ -1,8 +1,8 @@
 ---
 id: u4-l21-ttl과-단편화
 title: TTL과 단편화
-source_wiki: sources/wiki/oeweo-network/lesson-21.md
-wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-21.svg
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-21.md
+wiki_diagram: units/04-layer3-addressing/lessons/11-ttl과-단편화/assets/diagrams/lesson-21.svg
 page_metadata:
 - terms:
   - Router(라우터)
@@ -53,6 +53,7 @@ page_metadata:
   - Tunneling(터널링)
 - terms:
   - Hop 수
+animations_dir: units/04-layer3-addressing/lessons/11-ttl과-단편화/assets/animations
 ---
 
 핵심 개념을 주제별로 정리했다.

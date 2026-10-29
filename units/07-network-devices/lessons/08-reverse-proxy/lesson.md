@@ -1,8 +1,8 @@
 ---
 id: "u7-advanced-08-reverse-proxy"
 title: "Reverse Proxy"
-source_wiki: "sources/wiki/oeweo-network/advanced/lesson-08.md"
-wiki_diagram: "sources/wiki/oeweo-network/advanced/concepts/lesson-08.svg"
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-08.md
+wiki_diagram: units/07-network-devices/lessons/08-reverse-proxy/assets/diagrams/lesson-08.svg
 ---
 
 핵심 개념을 주제별로 정리했다.
