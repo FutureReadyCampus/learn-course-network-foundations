@@ -67,7 +67,7 @@ pages:
       - concept-basic-03-02
       - concept-basic-03-03
     illustration_after_paragraph:
-      - -1
+      - 3
       - 14
     illustrations: []
   - concepts:
@@ -81,7 +81,7 @@ pages:
         alt: 건물 세 층이 아래부터 쌓이는 그림입니다. 1층 공기 중 2미터 이내, 2층 말로 대화, 3층 공통 언어이고, 1층이 진공으로 바뀌자 위의 두 층이 함께 꺼지며, 1층이 복구되면
           다시 모두 켜집니다.
         caption: 통신 규칙을 소개하는 첫 장면에서, 아래 조건이 위 조건을 받치는 모습을 살펴보세요.
-        after_paragraph: -1
+        after_paragraph: 5
       - file: assets/l04-layer-map.svg
         title: 프로토콜 이름에서 실제 통신 흐름으로
         alt: 왼쪽의 OSI 층 사다리가 오른쪽의 Chrome, TCP, IP, 드라이버, NIC 칸과 선으로 이어지고, User mode와 Kernel mode와 하드웨어 영역이 색으로 구분되는

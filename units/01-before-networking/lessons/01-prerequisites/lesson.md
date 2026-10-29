@@ -184,36 +184,36 @@ pages:
       - concept-basic-01-01
       - concept-basic-01-02
     illustration_after_paragraph:
-      - 3
-      - -1
+      - 2
+      - 6
     illustrations: []
   - concepts:
       - concept-basic-01-03
       - concept-basic-01-04
     illustration_after_paragraph:
-      - -1
-      - 5
+      - 1
+      - 7
       - 8
     illustrations: []
   - concepts:
       - concept-basic-01-05
       - concept-basic-01-06
     illustration_after_paragraph:
-      - -1
-      - 8
+      - 2
+      - 9
     illustrations: []
   - concepts:
       - concept-basic-01-07
       - concept-basic-01-08
     illustration_after_paragraph:
-      - -1
+      - 8
     illustrations:
       - file: assets/l04-nic-driver-stack.svg
         title: 애플리케이션에서 NIC까지 이어지는 층
         alt: 맨 아래 NIC 상자 위에 드라이버 블록이 끼워지고, 그 위에 TCP와 IP 블록이 차례로 쌓이는 장면입니다. User mode의 애플리케이션 요청이 Kernel mode를 거쳐
           장치에 닿습니다.
         caption: 애플리케이션과 네트워크 장치 사이에서 운영체제와 드라이버가 일을 나눕니다.
-        after_paragraph: 4
+        after_paragraph: 3
   - concepts:
       - concept-basic-01-09
     illustration_after_paragraph: []
@@ -223,7 +223,7 @@ pages:
         alt: 왼쪽의 OSI 층 사다리가 오른쪽의 Chrome, TCP, IP, 드라이버, NIC 칸과 선으로 이어지고, User mode와 Kernel mode와 하드웨어 영역이 색으로 구분되는
           장면입니다.
         caption: 같은 네트워크를 역할의 개념과 실제 구현 위치라는 두 관점으로 볼 수 있습니다.
-        after_paragraph: -1
+        after_paragraph: 2
       - file: assets/l04-nic-driver-stack.svg
         title: 같은 목적을 맡는 구현 구성 요소
         alt: 맨 아래 NIC 상자 위에 드라이버 블록이 끼워지고, 그 위에 TCP와 IP 블록이 차례로 쌓이는 장면입니다.

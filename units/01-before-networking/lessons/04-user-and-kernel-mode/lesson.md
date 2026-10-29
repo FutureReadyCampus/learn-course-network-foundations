@@ -118,33 +118,33 @@ pages:
       - concept-basic-04-01
       - concept-basic-04-02
     illustration_after_paragraph:
-      - -1
+      - 2
       - 8
     illustrations: []
   - concepts:
       - concept-basic-04-03
       - concept-basic-04-04
     illustration_after_paragraph:
-      - -1
+      - 5
     illustrations:
       - file: assets/l04-nic-driver-stack.svg
         title: 커널에서 네트워크 장치까지
         alt: 맨 아래 NIC 상자 위에 드라이버 블록이 끼워지고, 그 위에 TCP와 IP 블록이 차례로 쌓이는 장면입니다. User mode의 애플리케이션 요청이 Kernel mode를 거쳐
           장치에 닿습니다.
         caption: 애플리케이션의 요청은 커널과 드라이버를 거쳐 네트워크 장치에 도착합니다.
-        after_paragraph: 4
+        after_paragraph: 3
   - concepts:
       - concept-basic-04-05
       - concept-basic-04-06
       - concept-basic-04-07
     illustration_after_paragraph:
-      - -1
+      - 6
     illustrations:
       - file: assets/l04-nic-driver-stack.svg
         title: TCP/IP 아래의 드라이버와 NIC
         alt: 맨 아래 NIC 상자 위에 드라이버 블록이 끼워지고, 그 위에 TCP와 IP 블록이 차례로 쌓이는 장면입니다. 마지막에 위에서 내려온 데이터가 NIC를 통해 선으로 나갑니다.
         caption: OSI를 실제 구성 요소에 연결한 뒤, 장치 쪽의 드라이버와 NIC를 다시 확인합니다.
-        after_paragraph: 9
+        after_paragraph: 13
 animations_dir: units/01-before-networking/lessons/04-user-and-kernel-mode/assets/animations
 ---
 
