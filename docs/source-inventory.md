@@ -35,3 +35,8 @@ editorial changes should keep these source references and stable course IDs.
   commit. Learn deployment remains a separate release path.
 - `stage` builds the static GitHub Pages reader for cross-device review. Pages
   output labels the exact source commit.
+
+## Cleanup
+
+- Guide metadata for Lessons 5–36 was moved from 32 JSON sidecars into the corresponding Lesson Markdown front matter. The source SVG mapping remains in [newbie-asset-map.md](newbie-asset-map.md).
+- The 89 initial 0.3× playback derivatives were removed. Authored animation SVGs and the 89 selected `anim-paced/` runtime assets remain.

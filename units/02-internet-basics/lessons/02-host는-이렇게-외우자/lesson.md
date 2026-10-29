@@ -1,10 +1,48 @@
 ---
-id: "u2-l06-host는-이렇게-외우자"
-title: "Host는 이렇게 외우자"
-source_wiki: "sources/wiki/oeweo-network/lesson-06.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-06.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-06.svg"
-illustrated_pages: [4, 8]
+id: u2-l06-host는-이렇게-외우자
+title: Host는 이렇게 외우자
+source_wiki: sources/wiki/oeweo-network/lesson-06.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-06.svg
+page_metadata:
+- terms:
+  - 호스트(Host)
+  - 워크스테이션(Workstation)
+- terms:
+  - 스위치(Switch)
+  - 인프라(Infrastructure)
+  - L2 스위치
+  - 호스트와 스위치의 관계
+- terms:
+  - 엔드포인트(End point)
+  - 단말·단말기
+- terms:
+  - 클라이언트(Client)
+  - 서버(Server)
+  animations:
+  - file: l06-client-server.svg
+    title: 요청하는 쪽, 답하는 쪽
+    alt: 왼쪽의 PC에서 오른쪽의 웹 서버로 요청 화살표가 가고, 서버에서 PC로 웹 페이지가 돌아오는 장면입니다.
+    caption: 브라우저가 요청을 보내면 웹 서버가 답을 돌려줍니다. 요청하는 쪽이 클라이언트, 답하는 쪽이 서버입니다.
+- terms:
+  - P2P(Peer to Peer)
+  - 피어(Peer)
+  - 비트토렌트(BitTorrent)
+- terms:
+  - 라우터(Router)
+  - IPS
+  - 공유기
+- terms:
+  - 탭 스위치(Tap Switch)
+  - 애그리게이션 스위치(Aggregation Switch)
+  - 관리 목적
+- terms: []
+  animations:
+  - file: l06-host-roles.svg
+    title: 호스트의 두 갈래
+    alt: 한 지도 위에서 노트북과 서버는 엔드포인트로, 가운데 공유기는 스위치로 색이 칠해지고, 모두를 호스트라는 큰 테두리가 감싸는 장면입니다.
+      스위치는 공유기 하나가 대표로 나오고, 클라이언트와 서버 꼬리표가 붙으며, 피어는 글로 설명합니다.
+    caption: 호스트는 네트워크를 이루는 스위치와 네트워크를 쓰는 엔드포인트로 나뉩니다. 지도에는 스위치 대표로 공유기 하나만 그렸지만,
+      라우터, 보안 스위치, 탭·애그리게이션 스위치도 같은 스위치 쪽이고, 엔드포인트 안에는 클라이언트와 서버 말고 피어도 있습니다.
 ---
 
 핵심 개념을 주제별로 정리했다.

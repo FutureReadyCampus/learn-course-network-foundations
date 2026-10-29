@@ -36,4 +36,4 @@ Learn deployment remains a separate release path from the `stage` Pages site.
 
 Each authored Unit lives under `units/NN-unit-name/`. Its `unit.md` lists Lesson source files under `lessons/NN-lesson-name/lesson.md`; each `##` heading in a Lesson is one learner-facing Page. Put Lesson-specific guides and media beside that Lesson under `assets/`.
 
-Unit 1 follows the Wiki catalog. The authored Page text is in the Unit's Lesson Markdown. The original Wiki Markdown, beginner-guide JSON and source SVG files remain preserved under `sources/wiki/oeweo-network/` with references recorded in Lesson front matter. See [Content structure](docs/CONTENT_STRUCTURE.md).
+Unit 1 follows the Wiki catalog. The authored Page text is in the Unit's Lesson Markdown. Retained Wiki Markdown, Unit 1 guide JSON and authoring SVGs live under `sources/wiki/oeweo-network/`; guide metadata for the other Lessons is stored in their Lesson front matter. See [Content structure](docs/CONTENT_STRUCTURE.md).

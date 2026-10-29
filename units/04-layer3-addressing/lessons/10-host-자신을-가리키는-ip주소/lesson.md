@@ -1,10 +1,37 @@
 ---
-id: "u4-l20-host-자신을-가리키는-ip주소"
-title: "Host 자신을 가리키는 IP주소"
-source_wiki: "sources/wiki/oeweo-network/lesson-20.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-20.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-20.svg"
-illustrated_pages: [3, 5]
+id: u4-l20-host-자신을-가리키는-ip주소
+title: Host 자신을 가리키는 IP주소
+source_wiki: sources/wiki/oeweo-network/lesson-20.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-20.svg
+page_metadata:
+- terms:
+  - 원격지(Remote)
+  - 호스트(Host)
+- terms:
+  - 프로세스(Process)
+  - 루프백(Loopback) 주소
+- terms:
+  - 소켓(Socket)
+  - 서버(Server)와 클라이언트(Client)
+  animations:
+  - file: l20-same-host-server-client.svg
+    title: 한 컴퓨터 안의 서버와 클라이언트
+    alt: 192.168.0.10이라는 이름표가 붙은 상자 안에 서버와 클라이언트 두 개의 작은 상자가 있고, 클라이언트에서 서버로 화살표가
+      이어집니다.
+    caption: 192.168.0.10 컴퓨터 하나 안에서 클라이언트 프로세스가 같은 주소의 서버 프로세스에 접속합니다.
+- terms:
+  - 인터페이스(Interface)
+  - localhost
+- terms:
+  - 패킷(Packet)
+  - 물리 네트워크
+  animations:
+  - file: l20-loopback-uturn.svg
+    title: 루프백, 현관 앞에서 유턴하는 패킷
+    alt: 컴퓨터 상자 안에서 클라이언트가 보낸 패킷이 NIC와 케이블 쪽으로 가다가 방향을 꺾어 서버로 들어갑니다. 케이블 쪽은 비어 있습니다.
+    caption: 127.0.0.1로 보낸 패킷은 NIC와 케이블까지 내려가지 않고 컴퓨터 안에서 되돌아옵니다.
+- terms:
+  - IPC(Inter Process Communication)
 ---
 
 핵심 개념을 주제별로 정리했다.

@@ -1,10 +1,45 @@
 ---
-id: "u6-l34-굵고-짧게-살펴보는-http"
-title: "굵고 짧게 살펴보는 HTTP"
-source_wiki: "sources/wiki/oeweo-network/lesson-34.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-34.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-34.svg"
-illustrated_pages: [1, 3]
+id: u6-l34-굵고-짧게-살펴보는-http
+title: 굵고 짧게 살펴보는 HTTP
+source_wiki: sources/wiki/oeweo-network/lesson-34.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-34.svg
+page_metadata:
+- terms:
+  - Stream(스트림)
+  - 프로토콜(protocol)
+  animations:
+  - file: l34-stream-boundary.svg
+    title: 끊김 없는 두루마리, 약속으로 끊어 읽기
+    alt: 글자가 끊김 없이 흘러가는 긴 띠 위에서 빈 줄 약속을 만나면 가위가 두 메시지로 나누는 장면입니다.
+    caption: Stream에는 칸막이가 없어서, 약속(HTTP 규칙)으로 메시지 경계를 찾습니다.
+- terms:
+  - 헤더(header)
+- terms:
+  - Request / Response
+  - Method(메서드)
+  animations:
+  - file: l34-request-response.svg
+    title: 손님 같은 클라이언트, 식당 같은 서버
+    alt: 왼쪽 컴퓨터가 GET 요청 쪽지를 오른쪽 서버로 보내고, 서버가 HTML 문서를 담은 응답을 돌려보내는 장면입니다.
+    caption: 클라이언트가 Request를 보내면 서버가 Response로 답합니다.
+- terms:
+  - Wireshark
+  - 경로(path)
+- terms:
+  - User-Agent
+  - Accept 계열
+  - gzip
+- terms:
+  - Content-Length
+  - Cookie(쿠키)
+  - UTF-8
+- terms:
+  - 응답 코드(status code)
+  - 404 Not Found
+- terms:
+  - GET / POST
+  - HEAD / PUT / DELETE
+- terms: []
 ---
 
 핵심 개념을 주제별로 정리했다.

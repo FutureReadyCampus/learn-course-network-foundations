@@ -1,10 +1,42 @@
 ---
-id: "u2-l07-스위치가-하는-일과-비용"
-title: "스위치가 하는 일과 비용"
-source_wiki: "sources/wiki/oeweo-network/lesson-07.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-07.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-07.svg"
-illustrated_pages: [4, 5]
+id: u2-l07-스위치가-하는-일과-비용
+title: 스위치가 하는 일과 비용
+source_wiki: sources/wiki/oeweo-network/lesson-07.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-07.svg
+page_metadata:
+- terms: []
+- terms: []
+- terms:
+  - 스위치(Switch)
+  - 인터페이스(Interface)
+  - 스위칭(Switching)
+- terms:
+  - 패킷(Packet)
+  - 라우터(Router)
+  - 라우팅 테이블(Routing Table)
+  - 자료구조
+  animations:
+  - file: l07-packet-routing-table.svg
+    title: 라우터가 표를 보고 패킷의 길을 고른다
+    alt: 자동차 모양의 패킷이 목적지 10.0.0.7을 달고 교차로 모양 라우터에 도착합니다. 옆의 표에서 10.0.0.0 대역 줄이 강조되고,
+      패킷이 2번 출구 도로로 나갑니다.
+    caption: 패킷은 목적지 주소를 들고 라우터에 도착하고, 라우터는 라우팅 테이블의 해당 줄을 찾아 알맞은 출구로 내보냅니다.
+- terms:
+  - MAC 주소
+  - 포트 번호
+  - HTTP
+  animations:
+  - file: l07-switch-by-layer.svg
+    title: 같은 패킷, 계층마다 다른 근거
+    alt: 한 개의 패킷 위에 MAC 주소, IP 주소, 포트 번호, HTTP 내용 칸이 차례로 밝아지며, 각각 L2, L3, L4, L7 스위치
+      이름표와 연결됩니다.
+    caption: 하나의 패킷에서 L2는 MAC, L3는 IP, L4는 포트 번호, L7은 HTTP 내용을 읽고 길을 고릅니다.
+- terms:
+  - 메트릭(Metric)
+- terms:
+  - route print
+  - 네트워크 마스크
+- terms: []
 ---
 
 핵심 개념을 주제별로 정리했다.

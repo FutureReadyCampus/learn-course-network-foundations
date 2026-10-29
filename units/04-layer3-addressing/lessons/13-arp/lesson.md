@@ -1,10 +1,38 @@
 ---
-id: "u4-l23-arp"
-title: "ARP"
-source_wiki: "sources/wiki/oeweo-network/lesson-23.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-23.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-23.svg"
-illustrated_pages: [6, 8]
+id: u4-l23-arp
+title: ARP
+source_wiki: sources/wiki/oeweo-network/lesson-23.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-23.svg
+page_metadata:
+- terms:
+  - IP 주소
+  - MAC 주소
+  - NIC
+- terms: []
+- terms:
+  - ARP
+  - 게이트웨이(Gateway)
+- terms: []
+- terms: []
+- terms:
+  - 브로드캐스트
+  animations:
+  - file: l23-arp-broadcast.svg
+    title: ARP 요청은 모두에게, 대답은 주인만
+    alt: PC에서 나온 질문 신호가 같은 구간의 장치 세 대로 퍼지고, 192.168.0.1인 게이트웨이만 불이 켜집니다.
+    caption: PC가 같은 구간 모두에게 '192.168.0.1 누구?'라고 묻습니다.
+- terms: []
+- terms:
+  - 패킷(Packet)
+  - 프레임(Frame)
+  animations:
+  - file: l23-packet-in-frame.svg
+    title: IP 패킷을 프레임에 담기
+    alt: IP 패킷 상자가 이더넷 프레임이라는 더 큰 상자에 담기고, 바깥 상자의 받는 사람이 게이트웨이로 적힙니다.
+    caption: 안쪽 송장은 3.3.3.3, 바깥 송장은 게이트웨이입니다.
+- terms:
+  - ARP 캐시
+- terms: []
 ---
 
 핵심 개념을 주제별로 정리했다.

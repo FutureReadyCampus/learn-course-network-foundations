@@ -1,10 +1,40 @@
 ---
-id: "u4-l24-ping과-rtt"
-title: "Ping과 RTT"
-source_wiki: "sources/wiki/oeweo-network/lesson-24.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-24.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-24.svg"
-illustrated_pages: [2, 7]
+id: u4-l24-ping과-rtt
+title: Ping과 RTT
+source_wiki: sources/wiki/oeweo-network/lesson-24.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-24.svg
+page_metadata:
+- terms:
+  - 동기화(Synchronization)
+  - 서버(Server)
+  - 지연(Latency)
+- terms:
+  - RTT(Round Trip Time)
+  - 밀리초(ms)
+  - Ping(핑)
+  animations:
+  - file: l24-ping-round-trip.svg
+    title: 세 사람의 왕복 시간
+    alt: 철수, 영희, 길동의 컴퓨터에서 각각 서버로 신호 점이 출발해 돌아오는 장면입니다. 철수의 점이 가장 먼저 돌아오고 길동의 점이 가장
+      늦게 돌아오며, 마지막에 20, 25, 50ms 막대 길이가 비교됩니다.
+    caption: 같은 서버를 다녀오는 데 철수는 20ms, 영희는 25ms, 길동은 50ms가 걸립니다.
+- terms:
+  - 응답 시간
+- terms:
+  - DoS / DDoS
+  - 게이트웨이(Gateway)
+- terms:
+  - 게이트웨이 주소
+- terms: []
+- terms:
+  - 에코(Echo)
+  - ICMP(Internet Control Message Protocol)
+  animations:
+  - file: l24-icmp-echo.svg
+    title: 보낸 그대로 돌아오는 에코
+    alt: 왼쪽 PC에서 A, B, C, D가 담긴 Echo Request 봉투가 서버로 가고, 서버에서 같은 내용의 Echo Reply 봉투가
+      돌아옵니다. 마지막에 Ping은 프로그램, ICMP는 약속, RTT는 값이라는 세 라벨이 나타납니다.
+    caption: Ping은 A B C D를 담아 보내고, 같은 내용이 돌아오는 시간을 잽니다.
 ---
 
 핵심 개념을 주제별로 정리했다.

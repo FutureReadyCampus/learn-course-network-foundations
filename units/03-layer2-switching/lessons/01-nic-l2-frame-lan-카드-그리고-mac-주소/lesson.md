@@ -1,10 +1,64 @@
 ---
-id: "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소"
-title: "NIC, L2 Frame, LAN 카드 그리고 MAC 주소"
-source_wiki: "sources/wiki/oeweo-network/lesson-08.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-08.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-08.svg"
-illustrated_pages: [2, 4, 7]
+id: u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소
+title: NIC, L2 Frame, LAN 카드 그리고 MAC 주소
+source_wiki: sources/wiki/oeweo-network/lesson-08.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-08.svg
+page_metadata:
+- terms:
+  - NIC (Network Interface Card)
+  - 인터페이스 (Interface)
+  - 리얼텍 (Realtek)
+- terms:
+  - 호스트 (Host)
+  - 액세스 포인트 (Access Point)
+  - LAN (Local Area Network)
+  - 인터페이스와 케이블 구멍
+  animations:
+  - file: l08-host-two-nics.svg
+    title: 호스트 하나, 인터페이스 둘
+    alt: 노트북 모양의 네모 하나에 진한 점이 처음엔 하나, 나중엔 둘로 늘어납니다. 점 하나는 무선으로 액세스 포인트에, 다른 하나는 선으로
+      이어집니다. 마지막 장면에서도 점은 둘로 유지되고 ‘점 2개 = 인터페이스 2개’ 문구가 나옵니다.
+    caption: 노트북 한 대에 무선 NIC와 USB 유선 NIC가 달리면 문이 두 개가 됩니다. 진한 점 하나가 인터페이스 하나이므로 점
+      두 개는 인터페이스 두 개입니다.
+- terms:
+  - LAN (Local Area Network)
+  - MAN (Metropolitan Area Network)
+  - WAN (Wide Area Network)
+- terms:
+  - MAC 주소 (Media Access Control address)
+  - 식별자 (identifier)
+  - 16진수 (hexadecimal)
+  - 임시 MAC 주소
+  animations:
+  - file: l08-mac-address-label.svg
+    title: NIC에 붙는 문패, MAC 주소
+    alt: NIC 모양의 작은 카드에 여섯 덩어리의 MAC 주소 라벨이 붙습니다. 호스트에 NIC가 하나 더 붙으면 다른 값의 라벨이 하나 더
+      생깁니다. 공장에서 새긴 주소만 앞 세 덩어리를 회사로 읽을 수 있고, 임시 주소는 그렇게 읽지 않는다는 점도 함께 보입니다.
+    caption: 공장에서 NIC마다 서로 다른 MAC 주소가 새겨지고, 한 호스트의 NIC가 둘이면 주소도 둘입니다. 무선 연결에서는 개인정보
+      보호를 위한 임시 주소가 대신 보이기도 합니다.
+- terms:
+  - 프레임 (Frame)
+  - L2 (Layer 2, 계층 2)
+  - 패킷 (Packet)
+  - 메인보드 (Mainboard)
+- terms:
+  - Ethernet
+  - Jumbo Frame
+  - 바이트 (Byte)
+- terms:
+  - 비트 (bit)
+  - 바이트 (Byte)
+  - bps (bits per second)
+  - 기가비트 (Gigabit)
+  animations:
+  - file: l08-bit-vs-byte-speed.svg
+    title: 소문자 b와 대문자 B, 8배의 차이
+    alt: 작은 물방울 8개가 모여 병 하나가 되고, 그 아래 b와 B 글자가 나란히 놓입니다. 이어서 1Gbps 눈금이 약 125MB/s 눈금으로
+      환산됩니다.
+    caption: 8비트가 1바이트이므로 1Gbps는 초당 1GB가 아니라 약 0.125GB입니다.
+- terms:
+  - 광섬유 케이블
+  - 슬롯 (Slot)
 ---
 
 핵심 개념을 주제별로 정리했다.

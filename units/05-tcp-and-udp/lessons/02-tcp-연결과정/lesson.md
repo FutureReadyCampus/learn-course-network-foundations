@@ -1,10 +1,46 @@
 ---
-id: "u5-l26-tcp-연결과정"
-title: "TCP 연결과정"
-source_wiki: "sources/wiki/oeweo-network/lesson-26.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-26.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-26.svg"
-illustrated_pages: [5, 7]
+id: u5-l26-tcp-연결과정
+title: TCP 연결과정
+source_wiki: sources/wiki/oeweo-network/lesson-26.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-26.svg
+page_metadata:
+- terms:
+  - 3-way handshake
+  - 시간축
+- terms:
+  - RTT
+  - ms(밀리초)
+  - 포트(port)
+- terms:
+  - SYN
+  - Payload(페이로드)
+  - 순서번호
+- terms:
+  - ACK
+- terms:
+  - SYN+ACK
+  animations:
+  - file: l26-three-way-handshake.svg
+    title: 세 번의 악수와 순서번호
+    alt: 왼쪽 클라이언트와 오른쪽 서버 사이에 세 개의 화살표가 위에서 아래로 차례로 나타나며 SYN 1000, SYN+ACK 4000 확인
+      1001, ACK 4001이 표시됩니다.
+    caption: SYN 1000, SYN+ACK 4000/1001, ACK 4001이 시간 순서로 오가며 양쪽이 번호를 맞춥니다.
+- terms:
+  - MSS
+  - 바이트(byte)
+- terms:
+  - LISTEN
+  - ESTABLISHED
+  - 소켓(socket)
+  animations:
+  - file: l26-tcp-states.svg
+    title: 연결 상태가 바뀌는 순서
+    alt: 클라이언트와 서버 양쪽에 상태 이름표가 있고, 메시지가 오갈 때마다 이름표가 SYN_SENT, SYN_RECEIVED, ESTABLISHED로
+      바뀝니다.
+    caption: 클라이언트는 SYN_SENT에서 ESTABLISHED로, 서버는 LISTEN과 SYN_RECEIVED를 거쳐 ESTABLISHED로
+      갑니다.
+- terms:
+  - Virtual Circuit(가상 회선)
 ---
 
 핵심 개념을 주제별로 정리했다.

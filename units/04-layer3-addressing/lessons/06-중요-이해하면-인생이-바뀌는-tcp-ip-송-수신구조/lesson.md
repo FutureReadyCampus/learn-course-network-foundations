@@ -1,10 +1,65 @@
 ---
-id: "u4-l16-중요-이해하면-인생이-바뀌는-tcp-ip-송-수신구조"
-title: "[※중요] 이해하면 인생이 바뀌는 TCP/IP 송·수신구조"
-source_wiki: "sources/wiki/oeweo-network/lesson-16.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-16.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-16.svg"
-illustrated_pages: [5, 6, 9]
+id: u4-l16-중요-이해하면-인생이-바뀌는-tcp-ip-송-수신구조
+title: '[※중요] 이해하면 인생이 바뀌는 TCP/IP 송·수신구조'
+source_wiki: sources/wiki/oeweo-network/lesson-16.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-16.svg
+page_metadata:
+- terms:
+  - MTU (Maximum Transmission Unit)
+  - 패킷 (Packet)
+- terms:
+  - 서버 (Server)
+  - 송신 측 / 수신 측
+- terms:
+  - 프로세스 (Process)
+  - 소켓 (Socket)
+  - 커널 (Kernel)
+- terms:
+  - 버퍼 (Buffer)
+  - Buffered I/O
+- terms:
+  - 세그멘테이션 (Segmentation)
+  - 세그먼트 (Segment)
+  animations:
+  - file: l16-tcp-segmentation.svg
+    title: 큰 데이터를 번호 붙은 조각으로
+    alt: 긴 막대 모양의 데이터가 TCP라고 적힌 상자를 통과하며 번호가 붙은 세 개의 조각으로 나뉘어 아래 방향으로 나오는 장면.
+    caption: 긴 데이터가 TCP를 지나며 1번, 2번, 3번 조각으로 나뉘어 줄지어 나옵니다.
+- terms:
+  - 페이로드 (Payload)
+  - 캡슐화 (Encapsulation)
+  - 패킷과 프레임
+  animations:
+  - file: l16-encapsulation-packing.svg
+    title: 조각이 상자가 되고 트럭에 실리다
+    alt: 번호 1이 적힌 조각에 IP 송장이 붙어 상자가 되고, 그 상자가 프레임이라고 적힌 트럭에 실려 달리는 장면.
+    caption: 세그먼트에 IP 송장이 붙어 패킷이 되고, 다시 프레임 트럭에 실립니다.
+- terms:
+  - 디캡슐화 (Decapsulation)
+- terms:
+  - 수신 버퍼
+- terms:
+  - ACK (Acknowledgement)
+  animations:
+  - file: l16-tcp-ack.svg
+    title: 받았어요, 이제 3번 주세요
+    alt: 왼쪽 송신 측에서 1번과 2번 상자가 오른쪽 수신 측으로 가고, 수신 측에서 ACK 3이라고 적힌 말풍선이 돌아와 3번 상자가 이어
+      출발하는 장면.
+    caption: 1번과 2번이 도착하면 수신 측이 ACK 3을 돌려보내고, 송신 측은 그제야 3번을 보냅니다.
+- terms:
+  - 여유 공간
+- terms:
+  - 재전송 (Retransmission)
+  - 중복 ACK (Duplicate ACK)
+- terms:
+  - Out of order
+  - 엔드포인트 (Endpoint)
+- terms:
+  - Window Size
+  - Zero Window
+- terms:
+  - Lost Segment
+  - 관찰 항목 다섯 가지
 ---
 
 핵심 개념을 주제별로 정리했다.

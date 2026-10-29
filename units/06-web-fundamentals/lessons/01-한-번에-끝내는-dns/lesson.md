@@ -1,10 +1,61 @@
 ---
-id: "u6-l31-한-번에-끝내는-dns"
-title: "한 번에 끝내는 DNS"
-source_wiki: "sources/wiki/oeweo-network/lesson-31.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-31.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-31.svg"
-illustrated_pages: [1, 6, 12]
+id: u6-l31-한-번에-끝내는-dns
+title: 한 번에 끝내는 DNS
+source_wiki: sources/wiki/oeweo-network/lesson-31.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-31.svg
+page_metadata:
+- terms:
+  - DNS(Domain Name System)
+  - IP 주소
+  animations:
+  - file: l31-dns-phonebook.svg
+    title: 이름을 번호로 바꿔 주는 DNS
+    alt: 왼쪽 컴퓨터가 www.naver.com이라는 말풍선을 DNS 주소록 아이콘에 보내자, 주소록이 숫자 주소 하나를 담아 돌려보내고 컴퓨터가
+      그 주소로 연결선을 긋는 장면입니다.
+    caption: 브라우저가 이름을 들고 DNS에 물으면, DNS가 IP 주소를 돌려줍니다.
+- terms:
+  - 계층(hierarchy)
+  - 분산(distributed)
+- terms:
+  - Domain name
+  - Host name
+- terms:
+  - ISP
+  - 공유기
+- terms:
+  - DNS 서버 주소
+  - 8.8.8.8
+- terms:
+  - DNS Cache
+  - TTL(Time To Live)
+  animations:
+  - file: l31-dns-cache-ttl.svg
+    title: DNS 캐시와 유효 시간
+    alt: PC의 메모에 3.3.3.3이 적히고 2시간 타이머가 줄어드는 동안 재접속은 바로 되다가, 타이머가 0이 되면 메모가 지워지고 다시
+      DNS에 묻는 장면입니다.
+    caption: 한 번 받은 답을 유효 시간 동안 기억해 두었다가 쓰고, 시간이 끝나면 다시 묻습니다.
+- terms:
+  - DNS 변조
+- terms:
+  - 주 DNS / 보조 DNS
+- terms:
+  - hosts 파일
+  - DNS Forwarding
+- terms:
+  - 캐시 DNS
+- terms:
+  - Root DNS
+- terms:
+  - TLD(Top Level Domain)
+  - 담당 서버
+  animations:
+  - file: l31-dns-hierarchy.svg
+    title: 루트에서 담당 서버까지 따라가기
+    alt: 캐시 DNS가 루트 서버에 묻자 .com 담당 서버를 안내받고, .com 서버에 묻자 naver.com 담당 서버를 안내받고, 마지막으로
+      담당 서버에서 www의 IP 주소를 받는 세 단계의 장면입니다.
+    caption: 캐시 DNS가 루트, .com, naver.com 담당 서버 순으로 안내를 받아 내려갑니다.
+- terms:
+  - 권한 있는 서버(담당 네임 서버)
 ---
 
 핵심 개념을 주제별로 정리했다.

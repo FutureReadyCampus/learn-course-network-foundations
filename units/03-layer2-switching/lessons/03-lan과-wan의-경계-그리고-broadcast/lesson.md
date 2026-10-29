@@ -1,10 +1,54 @@
 ---
-id: "u3-l10-lan과-wan의-경계-그리고-broadcast"
-title: "LAN과 WAN의 경계 그리고 Broadcast"
-source_wiki: "sources/wiki/oeweo-network/lesson-10.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-10.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-10.svg"
-illustrated_pages: [3, 4, 6]
+id: u3-l10-lan과-wan의-경계-그리고-broadcast
+title: LAN과 WAN의 경계 그리고 Broadcast
+source_wiki: sources/wiki/oeweo-network/lesson-10.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-10.svg
+page_metadata:
+- terms:
+  - 유니캐스트 (Unicast)
+  - 브로드캐스트 (Broadcast)
+- terms:
+  - 브로드캐스트 도메인 (Broadcast Domain)
+- terms:
+  - 16진수 (Hexadecimal)
+  - 브로드캐스트 MAC 주소
+  animations:
+  - file: l10-broadcast-mac-all-ones.svg
+    title: 전구 48개가 모두 켜진 주소는 ‘모두에게’
+    alt: 전구 8개가 모두 켜져 FF가 되고, 이것이 여섯 칸 이어져 FF:FF:FF:FF:FF:FF가 되어 봉투의 받는 사람 칸에 들어가는
+      장면입니다.
+    caption: FF는 켜진 전구 8개이고, 6칸이 모두 FF인 MAC 주소는 브로드캐스트를 뜻합니다.
+- terms:
+  - 프레임 (Frame)
+  - 헤더 (Header)
+  - 배포 스위치 (Distribution Switch)
+  animations:
+  - file: l10-broadcast-flood-switches.svg
+    title: 방송 프레임은 스위치마다 갈라져 퍼진다
+    alt: PC 1이 방송 프레임을 보내자 스위치 A, 배포 스위치 C, 스위치 B를 거쳐 모든 PC로 프레임이 복사되어 퍼지는 장면입니다.
+    caption: 받는 곳이 FF:FF:FF:FF:FF:FF인 프레임은 스위치를 지날 때마다 여러 갈래로 복사됩니다.
+- terms:
+  - 트래픽 (Traffic)
+  - 호스트 (Host)
+- terms:
+  - L3 (Layer 3)
+  - 라우팅 (Routing)
+  animations:
+  - file: l10-l3-boundary-blocks-broadcast.svg
+    title: L3 경계는 방송이 넘어가지 못하게 막는다
+    alt: 왼쪽 구역의 PC 1이 방송을 보내자 왼쪽 PC들에게만 퍼지고, 가운데 경계 장비에서 막혀 오른쪽 PC들에게는 닿지 않는 장면입니다.
+    caption: 경계를 두면 한쪽 방송은 그 구역 안에서만 퍼지고 반대쪽에는 닿지 않습니다.
+- terms:
+  - MAC 주소
+  - IP 주소
+- terms:
+  - 논리적 (Logical)
+- terms:
+  - 가상화 (Virtualization)
+  - 가상 머신 (Virtual Machine)
+- terms:
+  - LAN (Local Area Network)
+  - WAN (Wide Area Network)
 ---
 
 핵심 개념을 주제별로 정리했다.

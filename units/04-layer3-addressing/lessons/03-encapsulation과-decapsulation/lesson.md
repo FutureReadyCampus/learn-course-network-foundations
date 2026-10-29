@@ -1,10 +1,36 @@
 ---
-id: "u4-l13-encapsulation과-decapsulation"
-title: "Encapsulation과 Decapsulation"
-source_wiki: "sources/wiki/oeweo-network/lesson-13.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-13.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-13.svg"
-illustrated_pages: [3, 4]
+id: u4-l13-encapsulation과-decapsulation
+title: Encapsulation과 Decapsulation
+source_wiki: sources/wiki/oeweo-network/lesson-13.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-13.svg
+page_metadata:
+- terms:
+  - Encapsulation(캡슐화)
+  - 헤더(Header)
+- terms:
+  - 단위화
+  - 마트료시카
+- terms:
+  - 세그먼트(Segment)
+  - 패킷(Packet)
+  - 프레임(Frame)
+  - Payload(페이로드)
+  animations:
+  - file: l13-encapsulation-nesting.svg
+    title: 안쪽부터 감싸기 · 데이터가 프레임이 되기까지
+    alt: 가운데의 '안녕' 데이터 상자에 TCP 헤더, IP 헤더, 프레임 헤더가 차례로 붙으며 더 큰 상자가 이를 감싸는 장면입니다. 각
+      상자의 이름이 세그먼트, 패킷, 프레임으로 바뀝니다.
+    caption: '''안녕'' 데이터에 TCP, IP, 프레임 헤더가 차례로 덧붙으며 마트료시카처럼 겹겹이 감싸집니다.'
+- terms:
+  - Decapsulation(디캡슐화)
+  - Stream(스트림)
+  animations:
+  - file: l13-decapsulation-peel.svg
+    title: 바깥부터 풀기 · 프레임에서 데이터까지
+    alt: 서버에 도착한 가장 큰 프레임 상자에서 프레임 헤더, IP 헤더, TCP 헤더가 바깥부터 차례로 떨어져 나가고 마지막에 '안녕' 데이터만
+      남는 장면입니다.
+    caption: 서버에 도착한 프레임이 마트료시카처럼 겉부터 헤더를 하나씩 떼며 '안녕'이 나옵니다.
+- terms: []
 ---
 
 핵심 개념을 주제별로 정리했다.
