@@ -190,7 +190,12 @@
         if (correct) storePassed(question.id);
       };
       if (question.kind === "choice") {
-        question.choices.forEach((choice) => {
+        const choices = [...question.choices];
+        for (let position = choices.length - 1; position > 0; position -= 1) {
+          const swapWith = Math.floor(Math.random() * (position + 1));
+          [choices[position], choices[swapWith]] = [choices[swapWith], choices[position]];
+        }
+        choices.forEach((choice) => {
           const label = document.createElement("label");
           label.className = "page-quiz-choice";
           const input = document.createElement("input");

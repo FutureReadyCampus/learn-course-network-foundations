@@ -118,6 +118,56 @@ pages:
     illustration_after_paragraph:
       - 12
     illustrations: []
+    questions:
+    - id: u1-04-user-and-kernel-mode-p01-q01
+      kind: choice
+      difficulty: easy
+      prompt: 컴퓨터에서 NIC는 무엇인가요?
+      choices:
+      - id: d
+        text: 인터넷 주소의 한 종류입니다
+        feedback: 다시 확인해 보세요. 컴퓨터를 네트워크에 연결해 주는 하드웨어입니다
+      - id: b
+        text: 실행 중인 네트워크 프로그램입니다
+        feedback: 다시 확인해 보세요. 컴퓨터를 네트워크에 연결해 주는 하드웨어입니다
+      - id: a
+        text: 컴퓨터를 네트워크에 연결해 주는 하드웨어입니다
+        feedback: 맞아요. 컴퓨터를 네트워크에 연결해 주는 하드웨어입니다
+      - id: e
+        text: 화면을 그리는 운영체제 메뉴입니다
+        feedback: 다시 확인해 보세요. 컴퓨터를 네트워크에 연결해 주는 하드웨어입니다
+      - id: c
+        text: 파일을 압축하는 소프트웨어입니다
+        feedback: 다시 확인해 보세요. 컴퓨터를 네트워크에 연결해 주는 하드웨어입니다
+      answer: a
+    - id: u1-04-user-and-kernel-mode-p01-q02
+      kind: choice
+      difficulty: medium
+      prompt: NIC가 운영체제와 협력할 수 있도록 장치별 명령을 다루는 소프트웨어는 무엇인가요?
+      choices:
+      - id: c
+        text: 웹 브라우저입니다
+        feedback: 다시 확인해 보세요. 장치 드라이버입니다
+      - id: a
+        text: 장치 드라이버입니다
+        feedback: 맞아요. 장치 드라이버입니다
+      - id: e
+        text: 바이트 변환기입니다
+        feedback: 다시 확인해 보세요. 장치 드라이버입니다
+      - id: b
+        text: 프로세스 스케줄러만을 뜻합니다
+        feedback: 다시 확인해 보세요. 장치 드라이버입니다
+      - id: d
+        text: OSI 모델입니다
+        feedback: 다시 확인해 보세요. 장치 드라이버입니다
+      answer: a
+    - id: u1-04-user-and-kernel-mode-p01-q03
+      kind: short
+      prompt: '핵심 개념을 입력해 보세요: NIC'
+      answers:
+      - NIC
+      - nic
+      feedback: 정답은 NIC입니다.
   - concepts:
       - concept-basic-04-03
       - concept-basic-04-04
@@ -130,6 +180,56 @@ pages:
           장치에 닿습니다.
         caption: 애플리케이션의 요청은 커널과 드라이버를 거쳐 네트워크 장치에 도착합니다.
         after_paragraph: 5
+    questions:
+    - id: u1-04-user-and-kernel-mode-p02-q01
+      kind: choice
+      difficulty: easy
+      prompt: 일반 애플리케이션은 보통 어느 실행 구역에서 동작하나요?
+      choices:
+      - id: c
+        text: NIC mode입니다
+        feedback: 다시 확인해 보세요. User mode입니다
+      - id: a
+        text: User mode입니다
+        feedback: 맞아요. User mode입니다
+      - id: e
+        text: OSI mode입니다
+        feedback: 다시 확인해 보세요. User mode입니다
+      - id: b
+        text: Kernel mode입니다
+        feedback: 다시 확인해 보세요. User mode입니다
+      - id: d
+        text: Firmware mode입니다
+        feedback: 다시 확인해 보세요. User mode입니다
+      answer: a
+    - id: u1-04-user-and-kernel-mode-p02-q02
+      kind: choice
+      difficulty: medium
+      prompt: 프로그램이 커널 기능을 정해진 방식으로 요청하는 것을 무엇이라고 하나요?
+      choices:
+      - id: d
+        text: 프로토콜 계층화입니다
+        feedback: 다시 확인해 보세요. 시스템 콜입니다
+      - id: b
+        text: 네트워크 주소 변환입니다
+        feedback: 다시 확인해 보세요. 시스템 콜입니다
+      - id: a
+        text: 시스템 콜입니다
+        feedback: 맞아요. 시스템 콜입니다
+      - id: e
+        text: 비트 마스킹입니다
+        feedback: 다시 확인해 보세요. 시스템 콜입니다
+      - id: c
+        text: 드라이버 설치입니다
+        feedback: 다시 확인해 보세요. 시스템 콜입니다
+      answer: a
+    - id: u1-04-user-and-kernel-mode-p02-q03
+      kind: short
+      prompt: '핵심 개념을 입력해 보세요: 시스템 콜'
+      answers:
+      - 시스템 콜
+      - 시스템 콜
+      feedback: 정답은 시스템 콜입니다.
   - concepts:
       - concept-basic-04-05
       - concept-basic-04-06
@@ -142,6 +242,56 @@ pages:
         alt: 맨 아래 NIC 상자 위에 드라이버 블록이 끼워지고, 그 위에 TCP와 IP 블록이 차례로 쌓이는 장면입니다. 마지막에 위에서 내려온 데이터가 NIC를 통해 선으로 나갑니다.
         caption: OSI를 실제 구성 요소에 연결한 뒤, 장치 쪽의 드라이버와 NIC를 다시 확인합니다.
         after_paragraph: 18
+    questions:
+    - id: u1-04-user-and-kernel-mode-p03-q01
+      kind: choice
+      difficulty: easy
+      prompt: OSI의 L4 전송 계층 프로토콜은 무엇인가요?
+      choices:
+      - id: d
+        text: 드라이버입니다
+        feedback: 다시 확인해 보세요. TCP입니다
+      - id: b
+        text: IP입니다
+        feedback: 다시 확인해 보세요. TCP입니다
+      - id: a
+        text: TCP입니다
+        feedback: 맞아요. TCP입니다
+      - id: e
+        text: 소켓입니다
+        feedback: 다시 확인해 보세요. TCP입니다
+      - id: c
+        text: NIC입니다
+        feedback: 다시 확인해 보세요. TCP입니다
+      answer: a
+    - id: u1-04-user-and-kernel-mode-p03-q02
+      kind: choice
+      difficulty: medium
+      prompt: TCP와 IP의 계층과 역할을 바르게 연결한 것은 무엇인가요?
+      choices:
+      - id: c
+        text: 둘 다 하드웨어 장치입니다
+        feedback: 다시 확인해 보세요. TCP는 L4 전송, IP는 L3 네트워크 계층에서 주소 기반 전달을 다룹니다
+      - id: a
+        text: TCP는 L4 전송, IP는 L3 네트워크 계층에서 주소 기반 전달을 다룹니다
+        feedback: 맞아요. TCP는 L4 전송, IP는 L3 네트워크 계층에서 주소 기반 전달을 다룹니다
+      - id: e
+        text: 둘은 같은 프로토콜의 다른 이름입니다
+        feedback: 다시 확인해 보세요. TCP는 L4 전송, IP는 L3 네트워크 계층에서 주소 기반 전달을 다룹니다
+      - id: b
+        text: TCP는 L3, IP는 L4입니다
+        feedback: 다시 확인해 보세요. TCP는 L4 전송, IP는 L3 네트워크 계층에서 주소 기반 전달을 다룹니다
+      - id: d
+        text: TCP는 NIC 드라이버이고 IP는 애플리케이션입니다
+        feedback: 다시 확인해 보세요. TCP는 L4 전송, IP는 L3 네트워크 계층에서 주소 기반 전달을 다룹니다
+      answer: a
+    - id: u1-04-user-and-kernel-mode-p03-q03
+      kind: short
+      prompt: '핵심 개념을 입력해 보세요: IP'
+      answers:
+      - IP
+      - ip
+      feedback: 정답은 IP입니다.
 animations_dir: units/01-before-networking/lessons/04-user-and-kernel-mode/assets/animations
 ---
 
