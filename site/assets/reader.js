@@ -132,6 +132,29 @@
       caption.textContent = illustration.caption;
       figure.append(caption);
     }
+    if (illustration.credit || illustration.source_url || illustration.license_url) {
+      const credit = document.createElement("p");
+      credit.className = "illustration-credit";
+      if (illustration.credit) credit.append(document.createTextNode(`${illustration.credit} · `));
+      if (illustration.source_url) {
+        const source = document.createElement("a");
+        source.href = illustration.source_url;
+        source.target = "_blank";
+        source.rel = "noreferrer noopener";
+        source.textContent = "원본 출처";
+        credit.append(source);
+      }
+      if (illustration.source_url && illustration.license_url) credit.append(document.createTextNode(" · "));
+      if (illustration.license_url) {
+        const license = document.createElement("a");
+        license.href = illustration.license_url;
+        license.target = "_blank";
+        license.rel = "noreferrer noopener";
+        license.textContent = illustration.license_label || "사용 허가";
+        credit.append(license);
+      }
+      figure.append(credit);
+    }
     return figure;
   };
   const render = (course, state) => {
