@@ -6,7 +6,7 @@
 
   <!-- 0~2초: 프레임 전체 이름표 -->
   <text x="480" y="122" text-anchor="middle" font-size="24" font-weight="700" fill="#9aa3b2">▼ 이 숫자 줄 전체가 프레임 하나
-    <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.2;0.22;0.96;1" dur="10s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.2;0.22;0.96;1" dur="16s" repeatCount="indefinite"/>
   </text>
 
   <!-- 16진수 패널 (회색 바이트) -->
@@ -31,24 +31,24 @@
 
   <!-- 2~5초: 색칠 + 이름표 -->
   <g opacity="0">
-    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.22;0.26;0.95;0.99;1" dur="10s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.22;0.26;0.95;0.99;1" dur="16s" repeatCount="indefinite"/>
     <rect x="62" y="154" width="312" height="50" rx="8" fill="#7ee7c7" fill-opacity="0.22" stroke="#7ee7c7" stroke-width="3"/>
     <text x="218" y="122" text-anchor="middle" font-size="24" font-weight="700" fill="#7ee7c7">목적지 MAC</text>
   </g>
   <g opacity="0">
-    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.31;0.35;0.95;0.99;1" dur="10s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.31;0.35;0.95;0.99;1" dur="16s" repeatCount="indefinite"/>
     <rect x="374" y="154" width="312" height="50" rx="8" fill="#ffb454" fill-opacity="0.22" stroke="#ffb454" stroke-width="3"/>
     <text x="530" y="122" text-anchor="middle" font-size="24" font-weight="700" fill="#ffb454">출발지 MAC</text>
   </g>
   <g opacity="0">
-    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.40;0.44;0.95;0.99;1" dur="10s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.40;0.44;0.95;0.99;1" dur="16s" repeatCount="indefinite"/>
     <rect x="686" y="154" width="104" height="50" rx="8" fill="#b98cff" fill-opacity="0.25" stroke="#b98cff" stroke-width="3"/>
     <text x="760" y="122" text-anchor="middle" font-size="24" font-weight="700" fill="#b98cff">Type 0800 = 뒤는 IP</text>
   </g>
 
   <!-- 5~6.5초: 화살표 → 45, 말풍선 -->
   <g opacity="0">
-    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.52;0.56;0.95;0.99;1" dur="10s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.52;0.56;0.95;0.99;1" dur="16s" repeatCount="indefinite"/>
     <rect x="790" y="154" width="52" height="50" rx="8" fill="none" stroke="#e6e8ec" stroke-width="3"/>
     <path d="M738 206 Q777 246 812 210" fill="none" stroke="#b98cff" stroke-width="3"/>
     <path d="M806 214 L816 204 L818 218 Z" fill="#b98cff"/>
@@ -58,7 +58,7 @@
 
   <!-- 6.5~8초: c0 a8 00 0a 파랑 + 192.168.0.10 -->
   <g opacity="0">
-    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.62;0.66;0.95;0.99;1" dur="10s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.62;0.66;0.95;0.99;1" dur="16s" repeatCount="indefinite"/>
     <rect x="582" y="286" width="208" height="50" rx="8" fill="#6ea8fe" fill-opacity="0.25" stroke="#6ea8fe" stroke-width="3"/>
     <text x="686" y="384" text-anchor="middle" font-size="26" font-weight="700" fill="#6ea8fe">출발지 IP = 192.168.0.10</text>
   </g>
@@ -77,8 +77,8 @@
 
   <!-- 8~10초: 와이어샤크 풀이 줄 -->
   <g opacity="0">
-    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.74;0.79;0.95;0.99;1" dur="10s" repeatCount="indefinite"/>
-    <animateTransform attributeName="transform" type="translate" values="0 30;0 30;0 0;0 0;0 30" keyTimes="0;0.74;0.79;0.95;1" dur="10s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.74;0.79;0.95;0.99;1" dur="16s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0 30;0 30;0 0;0 0;0 30" keyTimes="0;0.74;0.79;0.95;1" dur="16s" repeatCount="indefinite"/>
     <rect x="40" y="398" width="876" height="50" rx="10" fill="#171a21" stroke="#7ee7c7" stroke-width="2"/>
     <rect x="52" y="406" width="160" height="34" rx="8" fill="#7ee7c7"/>
     <text x="132" y="431" text-anchor="middle" font-size="24" font-weight="700" fill="#0f1115">와이어샤크</text>
@@ -90,16 +90,17 @@
   <line x1="0" y1="462" x2="960" y2="462" stroke="#3d4b60" stroke-width="2"/>
   <g font-size="26" font-weight="700" text-anchor="middle">
     <text x="480" y="510" fill="#e6e8ec">패킷은 이런 16진수 숫자 줄이에요
-      <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.2;0.23;0.97;1" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.2;0.23;0.97;1" dur="16s" repeatCount="indefinite"/>
     </text>
     <text x="480" y="510" fill="#e6e8ec" opacity="0">맨 앞부터 정해진 순서로 칸을 나눠 읽어요
-      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.22;0.25;0.5;0.53;1" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.22;0.25;0.5;0.53;1" dur="16s" repeatCount="indefinite"/>
     </text>
     <text x="480" y="510" fill="#e6e8ec" opacity="0">Type 0800을 보고, 뒤를 IP 헤더로 읽어요
-      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.52;0.55;0.76;0.78;1" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.52;0.55;0.76;0.78;1" dur="16s" repeatCount="indefinite"/>
     </text>
     <text x="480" y="510" fill="#7ee7c7" opacity="0">사람이 직접 풀지 않아도 도구가 풀어 준다
-      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.77;0.79;0.95;0.97;1" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.77;0.79;0.95;0.97;1" dur="16s" repeatCount="indefinite"/>
     </text>
   </g>
+<g aria-label="재생 단계"><rect x="40" y="28" width="88" height="40" rx="20" fill="#171a21" stroke="#3d4b60" stroke-width="2"/><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="1">1 / 4<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.23;0.24;1" calcMode="discrete" dur="16s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">2 / 4<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.23;0.24;0.53;0.54;1" calcMode="discrete" dur="16s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">3 / 4<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.53;0.54;0.77;0.78;1" calcMode="discrete" dur="16s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">4 / 4<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.77;0.78;1" calcMode="discrete" dur="16s" repeatCount="indefinite"/></text></g>
 </svg>

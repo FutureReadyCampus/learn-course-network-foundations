@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fbf5e9" />
+    <title>외워서 공부하는 네트워크 · Learn 콘텐츠 미리보기</title>
+    <link rel="stylesheet" href="/assets/reader.css" />
+    <script defer src="/assets/reader.js"></script>
+  </head>
+  <body>
+    <div class="network-course">
+      <header class="study-topbar">
+        <div class="topbar-brand"><span class="brand-mark" aria-hidden="true">N</span><span>Network</span></div>
+        <div class="topbar-course">외워서 공부하는 네트워크</div>
+        <div class="topbar-actions"><span class="preview-label">콘텐츠 미리보기</span><button id="sidebar-toggle" class="icon-button" type="button" aria-expanded="true" aria-controls="network-nav">목차</button></div>
+      </header>
+      <div id="source-banner" class="source-banner" role="status"></div>
+      <div class="course-workspace">
+        <aside id="network-nav" class="course-sidebar" aria-label="네트워크 학습 목차"></aside>
+        <main id="network-lesson" class="net-lesson" tabindex="-1">
+          <p class="loading">콘텐츠를 불러오는 중입니다…</p>
+        </main>
+      </div>
+    </div>
+    <script>window.NETWORK_SITE_BASE = ""; window.NETWORK_COURSE_URL = "/data/course.json";</script>
+  </body>
+</html>

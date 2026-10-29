@@ -1,0 +1,32 @@
+---
+id: "u7-advanced-02-세-가지-네트워크-장치-구조"
+title: "세 가지 네트워크 장치 구조"
+source_wiki: "sources/wiki/oeweo-network/advanced/lesson-02.md"
+wiki_diagram: "sources/wiki/oeweo-network/advanced/concepts/lesson-02.svg"
+---
+
+핵심 개념을 주제별로 정리했다.
+
+## Inline·Out of path·Proxy
+
+네트워크 장치를 처음 접하면 먼저 Inline, Out of path, Proxy 중 어떤 구조인지 살펴보는 것이 좋다. 한 장치가 여러 구조를 함께 가질 수도 있으므로 하나만 고집해 분류할 필요는 없다. Inline과 Out of path는 패킷 단위로, Proxy는 소켓의 Stream 수준으로 데이터를 다룬다는 차이가 있다.
+
+## Inline · 통과와 차단
+
+Inline 장치는 패킷이 통과하는 경로에 놓인다. 공기가 필터를 통과하는 모습에 비유할 수 있다. 장치는 패킷을 통과(Bypass)시키거나 버려(Drop) 차단할 수 있다. 출력 인터페이스가 여러 개라면 어느 방향으로 내보낼지도 선택한다. 라우터가 대표적인 Inline 장치다. Out of path도 패킷을 보지만, 직접 경로에서 통과·차단을 결정하는 대신 읽고 인지하는 것을 주목적으로 한다.
+
+## Out of path · 관찰과 수집
+
+보안 문제를 알아내는 장치라면 보안 센서, 장애를 알아내는 장치라면 장애 대응 센서로 볼 수 있다. 이러한 센서는 보통 Out of path 구조로 연결한다. Tap 스위치 등으로 패킷을 복사받는 지점을 Tapping Point라고 하며, 복사한 데이터를 분석해 결과를 알린다. 반면 MP3, JPG, DOC 같은 파일 수준의 내용을 보려면 패킷 여러 개를 다시 조립해야 한다. 약 1MB에 패킷 1,000개, 10MB에 약 1만 개가 필요한 규모의 예를 든다. 이런 상위 데이터를 처리할 때 소켓의 Stream을 사용하는 Proxy가 유리하다. Proxy 역시 중간에서 데이터를 허용하거나 걸러낼 수 있다.
+
+## Proxy · Socket Stream 처리
+
+Proxy는 대리자다. 애플리케이션의 Stream이 대리자를 지나가므로 전체 내용을 관찰하고 처리할 수 있다. 여기서는 User mode, Application, Proxy, Socket, Stream을 한 묶음으로 연결해 이해한다. TCP를 추상화한 소켓을 사용하는 애플리케이션 수준의 장치라는 뜻이다.
+
+## 장치를 구조로 분류하기
+
+이 관점에서 Application Proxy는 OSI의 L5~L7 수준과 연결된다. L7인 HTTP를 분석하려면 소켓 Stream을 직접 다루는 Proxy 구조가 편리하다. 장치 이름보다 어떤 단위의 데이터를 어느 위치에서 처리하는지 먼저 살펴보면 역할을 파악하기 쉽다.
+
+## 여러 구조가 결합되는 경우
+
+패킷 수준에서 HTTP를 분석하는 것도 불가능한 것은 아니지만, 패킷 조립과 해석 등 추가 과정이 필요하다. 따라서 Inline·Out of path는 Packet과, User mode의 Application Proxy는 Socket·Stream과 연결해 기억하면 된다. 이후에는 각 구조의 구체적인 동작을 살펴본다. L2 프레임만을 다루는 특수한 사례는 이 과정에서 거의 다루지 않는다.

@@ -4,15 +4,15 @@
 <text x="480" y="86" font-size="24" fill="#9aa3b2" text-anchor="middle">연결됨은 <tspan fill="#7ee7c7" font-weight="700">내가 내린 판단</tspan>일 뿐, <tspan fill="#ffb454" font-weight="700">상대가 누구인지</tspan>는 모른다</text>
 
 <!-- 연결됨 전구 -->
-<circle cx="110" cy="156" r="32" fill="#7ee7c7" opacity="0"><animate attributeName="opacity" values="0;0;0.25;0.25;0;0" keyTimes="0;0.7;0.72;0.95;0.98;1" dur="10s" repeatCount="indefinite"/></circle>
+<circle cx="110" cy="156" r="32" fill="#7ee7c7" opacity="0"><animate attributeName="opacity" values="0;0;0.25;0.25;0;0" keyTimes="0;0.7;0.72;0.95;0.98;1" dur="14s" repeatCount="indefinite"/></circle>
 <circle cx="110" cy="156" r="22" fill="#3d4b60"/>
-<circle cx="110" cy="156" r="22" fill="#7ee7c7" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.7;0.72;0.95;0.98;1" dur="10s" repeatCount="indefinite"/></circle>
+<circle cx="110" cy="156" r="22" fill="#7ee7c7" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.7;0.72;0.95;0.98;1" dur="14s" repeatCount="indefinite"/></circle>
 <rect x="100" y="178" width="20" height="12" rx="3" fill="#9aa3b2"/>
 <text x="152" y="167" font-size="26" fill="#9aa3b2">연결됨</text>
-<text x="152" y="167" font-size="26" font-weight="700" fill="#7ee7c7" opacity="0">연결됨<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.7;0.72;0.95;0.98;1" dur="10s" repeatCount="indefinite"/></text>
+<text x="152" y="167" font-size="26" font-weight="700" fill="#7ee7c7" opacity="0">연결됨<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.7;0.72;0.95;0.98;1" dur="14s" repeatCount="indefinite"/></text>
 
 <!-- 말풍선: 내가 내린 판단 -->
-<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.77;0.8;0.95;0.98;1" dur="10s" repeatCount="indefinite"/>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.77;0.8;0.95;0.98;1" dur="14s" repeatCount="indefinite"/>
 <rect x="252" y="128" width="210" height="56" rx="14" fill="#171a21" stroke="#7ee7c7" stroke-width="3"/>
 <polygon points="253,146 234,158 253,166" fill="#7ee7c7"/>
 <text x="357" y="165" font-size="26" font-weight="700" fill="#e6e8ec" text-anchor="middle">내가 내린 판단</text>
@@ -26,9 +26,9 @@
 <text x="175" y="412" font-size="24" fill="#e6e8ec" text-anchor="middle">내 컴퓨터</text>
 
 <!-- 서버: 얼굴은 물음표 -->
-<text x="800" y="140" font-size="24" font-weight="700" fill="#ffb454" text-anchor="middle" opacity="0">누구인지는 아직 모름<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.77;0.8;0.95;0.98;1" dur="10s" repeatCount="indefinite"/></text>
+<text x="800" y="140" font-size="24" font-weight="700" fill="#ffb454" text-anchor="middle" opacity="0">누구인지는 아직 모름<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.77;0.8;0.95;0.98;1" dur="14s" repeatCount="indefinite"/></text>
 <circle cx="800" cy="205" r="42" fill="#171a21" stroke="#ffb454" stroke-width="3"/>
-<text x="800" y="223" font-size="52" font-weight="700" fill="#ffb454" text-anchor="middle">?<animate attributeName="opacity" values="1;1;0.2;1;0.2;1;0.2;1;1" keyTimes="0;0.8;0.83;0.86;0.89;0.92;0.94;0.96;1" dur="10s" repeatCount="indefinite"/></text>
+<text x="800" y="223" font-size="52" font-weight="700" fill="#ffb454" text-anchor="middle">?<animate attributeName="opacity" values="1;1;0.2;1;0.2;1;0.2;1;1" keyTimes="0;0.8;0.83;0.86;0.89;0.92;0.94;0.96;1" dur="14s" repeatCount="indefinite"/></text>
 <rect x="725" y="262" width="150" height="110" rx="10" fill="#171a21" stroke="#3d4b60" stroke-width="3"/>
 <line x1="740" y1="298" x2="860" y2="298" stroke="#3d4b60" stroke-width="2"/>
 <line x1="740" y1="334" x2="860" y2="334" stroke="#3d4b60" stroke-width="2"/>
@@ -38,14 +38,14 @@
 <text x="800" y="412" font-size="24" fill="#e6e8ec" text-anchor="middle">서버 <tspan fill="#9aa3b2">203.0.113.5</tspan></text>
 
 <!-- SYN 봉투 -->
-<g opacity="1"><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.48;0.5;0.95;1" dur="10s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="0 0;0 0;295 0;295 0;0 0;0 0" keyTimes="0;0.2;0.46;0.5;0.51;1" dur="10s" repeatCount="indefinite"/>
+<g opacity="1"><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.48;0.5;0.95;1" dur="14s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="0 0;0 0;295 0;295 0;0 0;0 0" keyTimes="0;0.2;0.46;0.5;0.51;1" dur="14s" repeatCount="indefinite"/>
 <rect x="300" y="215" width="120" height="70" rx="6" fill="#171a21" stroke="#7ee7c7" stroke-width="3"/>
 <polyline points="300,217 360,241 420,217" fill="none" stroke="#7ee7c7" stroke-width="3"/>
 <text x="360" y="275" font-size="24" font-weight="700" fill="#e6e8ec" text-anchor="middle">SYN</text>
 </g>
 
 <!-- SYN+ACK 봉투 -->
-<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.48;0.5;0.7;0.73;1" dur="10s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="0 0;0 0;-265 0;-265 0;0 0;0 0" keyTimes="0;0.5;0.7;0.73;0.74;1" dur="10s" repeatCount="indefinite"/>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.48;0.5;0.7;0.73;1" dur="14s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="0 0;0 0;-265 0;-265 0;0 0;0 0" keyTimes="0;0.5;0.7;0.73;0.74;1" dur="14s" repeatCount="indefinite"/>
 <rect x="565" y="302" width="150" height="70" rx="6" fill="#171a21" stroke="#ffb454" stroke-width="3"/>
 <polyline points="565,304 640,328 715,304" fill="none" stroke="#ffb454" stroke-width="3"/>
 <text x="640" y="362" font-size="24" font-weight="700" fill="#e6e8ec" text-anchor="middle">SYN+ACK</text>
@@ -53,8 +53,9 @@
 
 <!-- 자막 바 -->
 <rect x="40" y="436" width="880" height="76" rx="14" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
-<text x="480" y="484" font-size="26" fill="#e6e8ec" text-anchor="middle" opacity="1">내 컴퓨터는 오른쪽 서버의 얼굴을 모릅니다<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.18;0.2;0.97;1" dur="10s" repeatCount="indefinite"/></text>
-<text x="480" y="484" font-size="26" fill="#e6e8ec" text-anchor="middle" opacity="0">약속된 신호 SYN 봉투를 서버로 보냅니다<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2;0.22;0.48;0.5;1" dur="10s" repeatCount="indefinite"/></text>
-<text x="480" y="484" font-size="26" fill="#e6e8ec" text-anchor="middle" opacity="0">약속대로 SYN+ACK가 돌아오자 '연결됨' 불이 켜집니다<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.52;0.76;0.78;1" dur="10s" repeatCount="indefinite"/></text>
-<text x="480" y="484" font-size="26" font-weight="700" fill="#7ee7c7" text-anchor="middle" opacity="0">연결됨은 내 판단일 뿐, 상대가 누구인지는 알려 주지 않습니다<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.78;0.8;0.95;0.97;1" dur="10s" repeatCount="indefinite"/></text>
+<text x="480" y="484" font-size="26" fill="#e6e8ec" text-anchor="middle" opacity="1">내 컴퓨터는 오른쪽 서버의 얼굴을 모릅니다<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.18;0.2;0.97;1" dur="14s" repeatCount="indefinite"/></text>
+<text x="480" y="484" font-size="26" fill="#e6e8ec" text-anchor="middle" opacity="0">약속된 신호 SYN 봉투를 서버로 보냅니다<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2;0.22;0.48;0.5;1" dur="14s" repeatCount="indefinite"/></text>
+<text x="480" y="484" font-size="26" fill="#e6e8ec" text-anchor="middle" opacity="0">약속대로 SYN+ACK가 돌아오자 '연결됨' 불이 켜집니다<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.52;0.76;0.78;1" dur="14s" repeatCount="indefinite"/></text>
+<text x="480" y="484" font-size="26" font-weight="700" fill="#7ee7c7" text-anchor="middle" opacity="0">연결됨은 내 판단일 뿐, 상대가 누구인지는 알려 주지 않습니다<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.78;0.8;0.95;0.97;1" dur="14s" repeatCount="indefinite"/></text>
+<g aria-label="재생 단계"><rect x="40" y="28" width="88" height="40" rx="20" fill="#171a21" stroke="#3d4b60" stroke-width="2"/><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="1">1 / 4<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.2;0.21;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">2 / 4<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2;0.21;0.5;0.51;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">3 / 4<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.51;0.78;0.79;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">4 / 4<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.78;0.79;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text></g>
 </svg>

@@ -1,17 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
 <rect width="960" height="540" fill="#0f1115"/>
 <text x="480" y="50" font-size="34" font-weight="700" fill="#e6e8ec" text-anchor="middle">/24 = 왼쪽 24비트가 네트워크 ID</text>
-<g><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.5;0.55;0.97;1" dur="10s" repeatCount="indefinite"/>
-<g><animateTransform attributeName="transform" type="translate" values="0,0;0,0;0,20;0,20;0,0" keyTimes="0;0.5;0.55;0.97;1" dur="10s" repeatCount="indefinite"/>
+<g><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.5;0.55;0.97;1" dur="14s" repeatCount="indefinite"/>
+<g><animateTransform attributeName="transform" type="translate" values="0,0;0,0;0,20;0,20;0,0" keyTimes="0;0.5;0.55;0.97;1" dur="14s" repeatCount="indefinite"/>
 <text x="250" y="108" font-size="24" fill="#9aa3b2" text-anchor="end">IP 주소</text><text x="266" y="108" font-size="32" font-weight="700" fill="#e6e8ec">192.168.0.10</text></g>
-<g><animateTransform attributeName="transform" type="translate" values="0,0;0,0;0,-22;0,-22;0,0" keyTimes="0;0.5;0.55;0.97;1" dur="10s" repeatCount="indefinite"/>
+<g><animateTransform attributeName="transform" type="translate" values="0,0;0,0;0,-22;0,-22;0,0" keyTimes="0;0.5;0.55;0.97;1" dur="14s" repeatCount="indefinite"/>
 <text x="250" y="150" font-size="24" fill="#9aa3b2" text-anchor="end">마스크</text><text x="266" y="150" font-size="32" font-weight="700" fill="#e6e8ec">255.255.255.0</text></g>
 </g>
 <defs><clipPath id="win"><rect x="640" y="118" width="80" height="44"/></clipPath>
-<clipPath id="lit"><rect x="60" y="190" height="60" width="0"><animate attributeName="width" calcMode="discrete" values="0;22;46;70;94;118;142;166;190;224;248;272;296;320;344;368;392;426;450;474;498;522;546;570;594;0" keyTimes="0;0.212;0.224;0.236;0.248;0.26;0.272;0.284;0.296;0.308;0.32;0.332;0.344;0.356;0.368;0.38;0.392;0.404;0.416;0.428;0.44;0.452;0.464;0.476;0.488;0.99" dur="10s" repeatCount="indefinite"/></rect></clipPath></defs>
-<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.17;0.2;0.5;0.55;1" dur="10s" repeatCount="indefinite"/>
+<clipPath id="lit"><rect x="60" y="190" height="60" width="0"><animate attributeName="width" calcMode="discrete" values="0;22;46;70;94;118;142;166;190;224;248;272;296;320;344;368;392;426;450;474;498;522;546;570;594;0" keyTimes="0;0.212;0.224;0.236;0.248;0.26;0.272;0.284;0.296;0.308;0.32;0.332;0.344;0.356;0.368;0.38;0.392;0.404;0.416;0.428;0.44;0.452;0.464;0.476;0.488;0.99" dur="14s" repeatCount="indefinite"/></rect></clipPath></defs>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.17;0.2;0.5;0.55;1" dur="14s" repeatCount="indefinite"/>
 <text x="560" y="150" font-size="26" fill="#9aa3b2">→ 1이</text><text x="726" y="150" font-size="26" fill="#9aa3b2">개</text>
-<g clip-path="url(#win)"><g><animateTransform attributeName="transform" type="translate" calcMode="discrete" values="0,0;0,-44;0,-88;0,-132;0,-176;0,-220;0,-264;0,-308;0,-352;0,-396;0,-440;0,-484;0,-528;0,-572;0,-616;0,-660;0,-704;0,-748;0,-792;0,-836;0,-880;0,-924;0,-968;0,-1012;0,-1056;0,0" keyTimes="0;0.212;0.224;0.236;0.248;0.26;0.272;0.284;0.296;0.308;0.32;0.332;0.344;0.356;0.368;0.38;0.392;0.404;0.416;0.428;0.44;0.452;0.464;0.476;0.488;0.99" dur="10s" repeatCount="indefinite"/>
+<g clip-path="url(#win)"><g><animateTransform attributeName="transform" type="translate" calcMode="discrete" values="0,0;0,-44;0,-88;0,-132;0,-176;0,-220;0,-264;0,-308;0,-352;0,-396;0,-440;0,-484;0,-528;0,-572;0,-616;0,-660;0,-704;0,-748;0,-792;0,-836;0,-880;0,-924;0,-968;0,-1012;0,-1056;0,0" keyTimes="0;0.212;0.224;0.236;0.248;0.26;0.272;0.284;0.296;0.308;0.32;0.332;0.344;0.356;0.368;0.38;0.392;0.404;0.416;0.428;0.44;0.452;0.464;0.476;0.488;0.99" dur="14s" repeatCount="indefinite"/>
 <text x="680" y="152" font-size="36" font-weight="700" fill="#7ee7c7" text-anchor="middle">0</text>
 <text x="680" y="196" font-size="36" font-weight="700" fill="#7ee7c7" text-anchor="middle">1</text>
 <text x="680" y="240" font-size="36" font-weight="700" fill="#7ee7c7" text-anchor="middle">2</text>
@@ -38,7 +38,7 @@
 <text x="680" y="1164" font-size="36" font-weight="700" fill="#7ee7c7" text-anchor="middle">23</text>
 <text x="680" y="1208" font-size="36" font-weight="700" fill="#7ee7c7" text-anchor="middle">24</text>
 </g></g></g>
-<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.54;0.59;0.96;0.99;1" dur="10s" repeatCount="indefinite"/>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.54;0.59;0.96;0.99;1" dur="14s" repeatCount="indefinite"/>
 <text x="498" y="152" font-size="48" font-weight="700" fill="#e6e8ec" text-anchor="end">192.168.0.10</text><text x="500" y="152" font-size="48" font-weight="700" fill="#7ee7c7">/24</text>
 </g>
 <g font-size="24" font-weight="700" text-anchor="middle">
@@ -75,7 +75,7 @@
 <rect x="810" y="198" width="22" height="40" rx="4" fill="#171a21" stroke="#3d4b60" stroke-width="1.5"/><text x="821" y="226" fill="#9aa3b2" fill-opacity="0.6">0</text>
 <rect x="834" y="198" width="22" height="40" rx="4" fill="#171a21" stroke="#3d4b60" stroke-width="1.5"/><text x="845" y="226" fill="#9aa3b2" fill-opacity="0.6">0</text>
 </g>
-<g clip-path="url(#lit)" font-size="24" font-weight="700" text-anchor="middle"><animate attributeName="opacity" values="1;1;0;1" keyTimes="0;0.96;0.985;1" dur="10s" repeatCount="indefinite"/>
+<g clip-path="url(#lit)" font-size="24" font-weight="700" text-anchor="middle"><animate attributeName="opacity" values="1;1;0;1" keyTimes="0;0.96;0.985;1" dur="14s" repeatCount="indefinite"/>
 <rect x="60" y="198" width="22" height="40" rx="4" fill="#7ee7c7"/><text x="71" y="226" fill="#0f1115">1</text>
 <rect x="84" y="198" width="22" height="40" rx="4" fill="#7ee7c7"/><text x="95" y="226" fill="#0f1115">1</text>
 <rect x="108" y="198" width="22" height="40" rx="4" fill="#7ee7c7"/><text x="119" y="226" fill="#0f1115">1</text>
@@ -101,13 +101,13 @@
 <rect x="608" y="198" width="22" height="40" rx="4" fill="#7ee7c7"/><text x="619" y="226" fill="#0f1115">1</text>
 <rect x="632" y="198" width="22" height="40" rx="4" fill="#7ee7c7"/><text x="643" y="226" fill="#0f1115">1</text>
 </g>
-<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.58;0.62;0.95;0.98;1" dur="10s" repeatCount="indefinite"/>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.58;0.62;0.95;0.98;1" dur="14s" repeatCount="indefinite"/>
 <line x1="660" y1="186" x2="660" y2="250" stroke="#ffb454" stroke-width="3" stroke-dasharray="6 4"/>
 <path d="M560 164 L652 188" stroke="#7ee7c7" stroke-width="3" fill="none"/><path d="M658 190 L644 192 L649 181 Z" fill="#7ee7c7"/>
 <path d="M60 248 v8 H654 v-8" fill="none" stroke="#7ee7c7" stroke-width="2.5"/><text x="357" y="282" font-size="24" font-weight="700" fill="#7ee7c7" text-anchor="middle">네트워크 ID · 24비트</text>
 <path d="M666 248 v8 H856 v-8" fill="none" stroke="#ffb454" stroke-width="2.5"/><text x="761" y="282" font-size="24" font-weight="700" fill="#ffb454" text-anchor="middle">호스트 · 8비트</text>
 </g>
-<g opacity="0" font-size="26" font-weight="700" text-anchor="middle"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.77;0.81;0.96;0.99;1" dur="10s" repeatCount="indefinite"/>
+<g opacity="0" font-size="26" font-weight="700" text-anchor="middle"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.77;0.81;0.96;0.99;1" dur="14s" repeatCount="indefinite"/>
 <rect x="60" y="300" width="190" height="34" rx="6" fill="#171a21" stroke="#3d4b60" stroke-width="1.5" opacity="1"/><text x="155" y="326" fill="#e6e8ec">192</text>
 <rect x="262" y="300" width="190" height="34" rx="6" fill="#171a21" stroke="#3d4b60" stroke-width="1.5" opacity="1"/><text x="357" y="326" fill="#e6e8ec">168</text>
 <rect x="464" y="300" width="190" height="34" rx="6" fill="#171a21" stroke="#3d4b60" stroke-width="1.5" opacity="1"/><text x="559" y="326" fill="#e6e8ec">0</text>
@@ -122,13 +122,14 @@
 <rect x="666" y="384" width="190" height="34" rx="6" fill="#171a21" stroke="#3d4b60" stroke-width="1.5" opacity="0.5"/><text x="761" y="410" fill="#9aa3b2">5</text>
 <text x="898" y="326" font-size="24" fill="#9aa3b2">기준</text>
 </g>
-<g opacity="0" font-weight="700" text-anchor="middle"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.85;0.88;0.96;0.99;1" dur="10s" repeatCount="indefinite"/>
+<g opacity="0" font-weight="700" text-anchor="middle"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.85;0.88;0.96;0.99;1" dur="14s" repeatCount="indefinite"/>
 <rect x="58" y="340" width="598" height="38" rx="8" fill="none" stroke="#7ee7c7" stroke-width="3"/><text x="898" y="370" font-size="32" fill="#7ee7c7">✓</text>
 <rect x="464" y="382" width="190" height="34" rx="6" fill="#ff5d5d" fill-opacity="0.25" stroke="#ff5d5d" stroke-width="3"/><text x="559" y="408" font-size="26" fill="#ff5d5d">1</text><text x="898" y="412" font-size="32" fill="#ff5d5d">✗</text>
 </g>
 <rect x="40" y="450" width="880" height="64" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="1.5"/>
-<text x="480" y="491" font-size="26" fill="#e6e8ec" text-anchor="middle" opacity="1">IP 주소 옆에 마스크를 따로 적던 두 줄 표기<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.19;0.21;0.97;1" dur="10s" repeatCount="indefinite"/></text>
-<text x="480" y="491" font-size="26" fill="#e6e8ec" text-anchor="middle" opacity="0">마스크 255.255.255.0의 1을 왼쪽부터 세면 24개<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2;0.22;0.49;0.51;1" dur="10s" repeatCount="indefinite"/></text>
-<text x="480" y="491" font-size="26" fill="#e6e8ec" text-anchor="middle" opacity="0">그래서 한 줄로 /24 = 왼쪽 24비트가 네트워크 ID<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.52;0.78;0.8;1" dur="10s" repeatCount="indefinite"/></text>
-<text x="480" y="491" font-size="26" fill="#e6e8ec" text-anchor="middle" opacity="0">/24는 255.255.255.0을 짧게 적은 같은 경계<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.79;0.81;0.96;0.98;1" dur="10s" repeatCount="indefinite"/></text>
+<text x="480" y="491" font-size="26" fill="#e6e8ec" text-anchor="middle" opacity="1">IP 주소 옆에 마스크를 따로 적던 두 줄 표기<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.19;0.21;0.97;1" dur="14s" repeatCount="indefinite"/></text>
+<text x="480" y="491" font-size="26" fill="#e6e8ec" text-anchor="middle" opacity="0">마스크 255.255.255.0의 1을 왼쪽부터 세면 24개<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2;0.22;0.49;0.51;1" dur="14s" repeatCount="indefinite"/></text>
+<text x="480" y="491" font-size="26" fill="#e6e8ec" text-anchor="middle" opacity="0">그래서 한 줄로 /24 = 왼쪽 24비트가 네트워크 ID<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.52;0.78;0.8;1" dur="14s" repeatCount="indefinite"/></text>
+<text x="480" y="491" font-size="26" fill="#e6e8ec" text-anchor="middle" opacity="0">/24는 255.255.255.0을 짧게 적은 같은 경계<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.79;0.81;0.96;0.98;1" dur="14s" repeatCount="indefinite"/></text>
+<g aria-label="재생 단계"><rect x="40" y="28" width="88" height="40" rx="20" fill="#171a21" stroke="#3d4b60" stroke-width="2"/><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="1">1 / 4<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.2;0.21;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">2 / 4<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2;0.21;0.5;0.51;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">3 / 4<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.51;0.79;0.8;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">4 / 4<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.79;0.8;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text></g>
 </svg>

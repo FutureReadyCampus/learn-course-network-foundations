@@ -1,0 +1,51 @@
+name: Publish stage reader
+
+on:
+  push:
+    branches: [stage]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages-stage
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout stage source
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Build static reader
+        run: |
+          python -m pip install -r requirements.txt
+          python scripts/build_pages.py \
+            --baseurl "/learn-course-network-foundations" \
+            --source-revision "$GITHUB_SHA" \
+            --source-label "stage · $GITHUB_SHA"
+          touch site/dist/.nojekyll
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

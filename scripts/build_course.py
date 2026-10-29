@@ -42,8 +42,15 @@ def split_paragraphs(text: str) -> list[str]:
 def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list[dict]:
     source = path.read_text(encoding="utf-8")
     sections = re.findall(r"^## (.+?)\s*\n(.*?)(?=^## |\Z)", source, re.M | re.S)
-    concepts = json.loads((ROOT / lesson_meta["beginner_guide"]).read_text(encoding="utf-8"))["concepts"]
-    diagram_path = ROOT / lesson_meta["wiki_diagram"]
+    if not sections:
+        title = lesson_meta["title"]
+        body = re.sub(r"\A---\s*\n.*?\n---\s*\n?", "", source, count=1, flags=re.S)
+        body = re.sub(r"\A#\s+.+\n", "", body, count=1, flags=re.M).strip()
+        sections = [(title, body)]
+    guide_path = lesson_meta.get("beginner_guide")
+    concepts = json.loads((ROOT / guide_path).read_text(encoding="utf-8"))["concepts"] if guide_path else []
+    diagram_ref = lesson_meta.get("wiki_diagram")
+    diagram_path = ROOT / diagram_ref if diagram_ref else None
     illustrated_pages = lesson_meta.get("illustrated_pages", [])
     lesson_animation_dir = lesson_meta.get("animations_dir")
     pages = []
@@ -57,7 +64,7 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
             "questions": [],
         }
         illustrations = []
-        if index == 0:
+        if index == 0 and diagram_path and diagram_path.is_file():
             illustrations.append({
                 "src": f"/api/v1/network-course-assets/{diagram_path.relative_to(ROOT).as_posix()}",
                 "title": f"{title} · 학습 흐름",
