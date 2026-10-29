@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
 <rect width="960" height="540" fill="#0f1115"/>
 <defs><clipPath id="lz"><rect x="30" y="70" width="392" height="370"/></clipPath></defs>
-<text x="480" y="48" text-anchor="middle" font-size="34" font-weight="700" fill="#e6e8ec">L3 경계는 방송이 넘어가지 못하게 막는다</text>
+<text x="480" y="48" text-anchor="middle" font-size="34" font-weight="700" fill="#e6e8ec">라우터는 L2 브로드캐스트를 전달하지 않는다</text>
 
 <!-- 두 구역 -->
 <rect x="30" y="70" width="380" height="370" rx="14" fill="#171a21" fill-opacity="0.5" stroke="#7ee7c7" stroke-width="5"><animate attributeName="stroke" values="#7ee7c7;#3d4b60;#3d4b60;#7ee7c7;#7ee7c7" keyTimes="0;0.06;0.78;0.82;1" dur="14s" repeatCount="indefinite"/><animate attributeName="stroke-width" values="5;2;2;5;5" keyTimes="0;0.06;0.78;0.82;1" dur="14s" repeatCount="indefinite"/></rect>
