@@ -16,7 +16,6 @@ page_metadata:
   - L2 / L3 / L4
 - terms:
   - 식별자(Identifier)
-- terms:
   - MAC 주소(MAC address)
   - NIC / 네트워크 인터페이스
   - 16진수
@@ -28,17 +27,12 @@ page_metadata:
 - terms:
   - IP 주소(IP address)
   - 호스트(Host)
-- terms:
   - 포트 번호(Port number)
   - 포트(Port)
   - 프로세스(Process)
 - terms:
   - 명령 프롬프트 / 터미널
   - ipconfig / ifconfig
-- terms:
-  - DoD 분류
-  - 액세스 단(Access)
-- terms:
   - 세 가지 식별자
   animations:
   - file: l05-three-identifiers.svg
@@ -46,6 +40,22 @@ page_metadata:
     alt: 건물 모양의 호스트에 출입문 세 개가 나타나 MAC 주소 표찰이 붙고, 지붕에 IP 주소가 붙으며, 안쪽 방에 포트 번호가 켜지는
       장면입니다.
     caption: 문마다 MAC, 건물 전체에 IP, 사무실 호수에 포트 번호가 붙습니다.
+- terms:
+  - DoD 분류
+  - 액세스 단(Access)
+page_groups:
+- title: OSI 계층을 훑어보기
+  sections: [1]
+- title: 계층을 실제 구성요소에 연결하기
+  sections: [2]
+- title: 식별자란 무엇일까 · MAC 주소와 NIC
+  sections: [3, 4]
+- title: IP 주소와 포트 번호
+  sections: [5, 6]
+- title: 내 컴퓨터에서 확인하고 세 가지 식별자 정리
+  sections: [7, 9]
+- title: DoD 분류와 계층 묶기
+  sections: [8]
 animations_dir: units/02-internet-basics/lessons/01-osi-7-layer와-식별자/assets/animations
 ---
 
