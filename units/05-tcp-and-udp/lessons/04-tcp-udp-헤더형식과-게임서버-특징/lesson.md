@@ -1,10 +1,51 @@
 ---
-id: "u5-l28-tcp-udp-헤더형식과-게임서버-특징"
-title: "TCP, UDP 헤더형식과 게임서버 특징"
-source_wiki: "sources/wiki/oeweo-network/lesson-28.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-28.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-28.svg"
-illustrated_pages: [1, 5, 7]
+id: u5-l28-tcp-udp-헤더형식과-게임서버-특징
+title: TCP, UDP 헤더형식과 게임서버 특징
+source_wiki: sources/wiki/oeweo-network/lesson-28.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-28.svg
+page_metadata:
+- terms:
+  - 포트 번호 (Port Number)
+  - Well-known Port
+  animations:
+  - file: l28-port-apartment.svg
+    title: IP는 건물, 포트는 호수
+    alt: 데이터 상자가 건물 모양 컴퓨터에 도착한 뒤, 목적지 포트 80이 적힌 호수의 문으로 들어가는 장면입니다.
+    caption: 도착한 데이터는 IP로 컴퓨터를 찾고, 포트 번호로 알맞은 프로그램을 찾아갑니다.
+- terms:
+  - Sequence Number
+  - ACK (Acknowledgement)
+  - Data Offset
+- terms:
+  - 제어 플래그 (Control Flag)
+  - RST (Reset)
+- terms:
+  - Retransmission (재전송)
+  - Duplicate ACK
+  - Out of order
+- terms:
+  - Window Size
+  - Zero Window
+  - Checksum (검사합)
+  animations:
+  - file: l28-window-buffer.svg
+    title: 받을 자리를 알리는 Window
+    alt: 수신 버퍼 칸이 데이터로 차오르며 Window 숫자가 줄어 0이 되는 장면입니다.
+    caption: 프로그램이 데이터를 가져가는 속도가 느리면 수신 버퍼가 차고 Window는 0이 됩니다.
+- terms:
+  - UDP (User Datagram Protocol)
+  - 흐름 제어 (Flow Control)
+  - 혼잡 제어 (Congestion Control)
+- terms:
+  - 동기화
+  - 지연 (Latency)
+  animations:
+  - file: l28-udp-game-latest.svg
+    title: 기다리는 TCP, 건너뛰는 UDP
+    alt: 위아래 두 줄에서 TCP 줄은 사라진 3번 때문에 멈추고 UDP 줄은 3번을 건너뛰어 최신 위치가 보이는 장면입니다.
+    caption: 위치 3번이 사라졌을 때 TCP는 기다리고 UDP는 최신 5번으로 넘어갑니다.
+- terms:
+  - HTTP/3
 ---
 
 핵심 개념을 주제별로 정리했다.

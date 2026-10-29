@@ -49,6 +49,7 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
         sections = [(title, body)]
     guide_path = lesson_meta.get("beginner_guide")
     concepts = json.loads((ROOT / guide_path).read_text(encoding="utf-8"))["concepts"] if guide_path else []
+    page_metadata = lesson_meta.get("page_metadata", [])
     diagram_ref = lesson_meta.get("wiki_diagram")
     diagram_path = ROOT / diagram_ref if diagram_ref else None
     illustrated_pages = lesson_meta.get("illustrated_pages", [])
@@ -57,10 +58,11 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
     for index, (heading, body) in enumerate(sections):
         title = re.sub(r"\s*·\s*\d+:\d+.*$", "", heading).strip()
         concept = concepts[min(index, len(concepts) - 1)] if concepts else {}
+        page_meta = page_metadata[index] if index < len(page_metadata) else {}
         page = {
             "title": title,
             "paragraphs": split_paragraphs(body),
-            "terms": [item["term"] for item in concept.get("terms", [])],
+            "terms": page_meta.get("terms", [item["term"] for item in concept.get("terms", [])]),
             "questions": [],
         }
         illustrations = []
@@ -71,8 +73,10 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
                 "alt": f"{title}의 개념 순서와 강의 시점을 보여 주는 학습 흐름도",
                 "caption": "개념이 이어지는 순서를 확인해 보세요.",
             })
-        if index + 1 in illustrated_pages and concept.get("anim"):
+        animations = page_meta.get("animations")
+        if animations is None and index + 1 in illustrated_pages and concept.get("anim"):
             animations = [concept["anim"], *concept.get("additional_anims", [])]
+        if animations:
             for anim in animations:
                 candidates = []
                 if lesson_animation_dir:

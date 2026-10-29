@@ -1,10 +1,46 @@
 ---
-id: "u4-l11-ipv4주소의-기본-구조"
-title: "IPv4주소의 기본 구조"
-source_wiki: "sources/wiki/oeweo-network/lesson-11.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-11.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-11.svg"
-illustrated_pages: [2, 4, 6]
+id: u4-l11-ipv4주소의-기본-구조
+title: IPv4주소의 기본 구조
+source_wiki: sources/wiki/oeweo-network/lesson-11.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-11.svg
+page_metadata:
+- terms:
+  - MAC 주소 (Media Access Control address)
+  - IP 주소 (Internet Protocol address)
+  - 계층 (Layer)
+- terms:
+  - 비트 (bit)
+  - 바이트 (byte)
+  animations:
+  - file: l11-ip-four-bytes.svg
+    title: 32비트를 8비트 네 칸으로
+    alt: 전등 스위치 32개가 한 줄로 늘어서 있다가 8개씩 네 칸으로 나뉘고, 각 칸 아래에 0~255 사이의 숫자가 점으로 이어진 IPv4
+      주소 형태로 나타납니다.
+    caption: 스위치 32개를 8개씩 네 칸으로 묶으면, 칸마다 0부터 255까지 읽힙니다.
+- terms:
+  - ipconfig
+  - 사설 주소 (private address)
+- terms:
+  - Network ID (네트워크 식별자)
+  - Host ID (호스트 식별자)
+  - 호스트 (Host)
+  animations:
+  - file: l11-network-host-split.svg
+    title: 주소 속의 동네와 번지
+    alt: 192.168.0.10 주소가 두 가지 색으로 나뉘어, 앞의 192.168.0은 동네 이름표로 뒤의 10은 집 번호표로 표시되고 같은
+      동네의 다른 집들이 나타납니다.
+    caption: 192.168.0.10에서 앞 24비트는 동네(Network ID), 뒤 8비트는 번지(Host ID)입니다.
+- terms:
+  - 목적지 (destination)
+- terms:
+  - 라우터 (Router)
+  animations:
+  - file: l11-parcel-router.svg
+    title: 동네부터 찾는 택배
+    alt: 192.168.0.10이 적힌 상자가 라우터 두 곳을 지나며 동네 이름만 보고 방향을 바꾸다가, 192.168.0 동네에 들어선 뒤
+      10번 집에 도착합니다.
+    caption: 라우터는 상자의 동네(Network ID)만 보고 방향을 정하고, 마지막 동네에서 집(Host ID)을 찾습니다.
+- terms: []
 ---
 
 핵심 개념을 주제별로 정리했다.

@@ -1,10 +1,68 @@
 ---
-id: "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론"
-title: "그림 한 장으로 외워서 끝내는 웹 서비스 구조 기본이론"
-source_wiki: "sources/wiki/oeweo-network/lesson-35.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-35.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-35.svg"
-illustrated_pages: [1, 4, 15]
+id: u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론
+title: 그림 한 장으로 외워서 끝내는 웹 서비스 구조 기본이론
+source_wiki: sources/wiki/oeweo-network/lesson-35.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-35.svg
+page_metadata:
+- terms:
+  - 스트림(Stream)
+  - MTU(Maximum Transmission Unit)
+  animations:
+  - file: l35-stream-to-packets.svg
+    title: 큰 문서가 조각으로 나뉘어 갔다가 다시 이어진다
+    alt: 긴 막대 모양의 데이터가 세 조각으로 잘려 번호표와 봉투가 붙은 채 길을 따라 이동하고, 받는 쪽에서 원래 막대로 다시 이어 붙는
+      장면입니다.
+    caption: 3,000바이트의 문서가 번호 붙은 세 조각으로 나뉘어 이동하고, 도착해서 번호 순서대로 이어 붙습니다.
+- terms: []
+- terms:
+  - 웹 클라이언트(Web Client)
+  - Stateless(무상태)
+- terms:
+  - DNS(Domain Name System)
+  - GET
+  animations:
+  - file: l35-browser-request-flow.svg
+    title: 주소를 입력하면 일어나는 네 걸음
+    alt: 브라우저가 주소 이름을 DNS에 물어 IP 주소를 받고, 서버와 TCP 선을 잇고, GET 편지를 보낸 뒤 HTML 문서를 돌려받아
+      화면에 표시하는 장면입니다.
+    caption: 이름 찾기(DNS), 연결(TCP), 요청(GET), 응답(HTML) 순서로 문서가 도착합니다.
+- terms:
+  - 유지보수(Maintenance)
+- terms:
+  - CSS(Cascading Style Sheets)
+- terms:
+  - 스크립트(Script)
+  - 태그(Tag)
+- terms:
+  - 파서(Parser)
+  - 렌더링 엔진(Rendering Engine)
+- terms: []
+- terms:
+  - POST
+- terms:
+  - 상태(State)
+- terms:
+  - 쿠키(Cookie)
+  - 세션(Session)
+- terms:
+  - DB(Database)
+  - 시큐어 코딩(Secure Coding)
+- terms:
+  - SQL
+  - RDBMS
+- terms:
+  - WAS(Web Application Server)
+  - 정적·동적 문서
+  animations:
+  - file: l35-web-was-db-flow.svg
+    title: 로그인 한 번이 웹 서버, WAS, DB를 지나는 길
+    alt: 브라우저에서 보낸 아이디 tester가 웹 서버, 처리 서버, DB로 차례로 이동하고, 처리 서버가 빈칸 문서에 tester를 채워
+      만든 문서가 되돌아와 브라우저에 표시되는 장면입니다.
+    caption: 입력이 웹 서버와 WAS를 거쳐 DB에서 확인되고, tester님 안녕하세요라는 문서로 돌아옵니다.
+- terms:
+  - ODBC · JDBC
+- terms:
+  - MVC
 ---
 
 핵심 개념을 주제별로 정리했다.

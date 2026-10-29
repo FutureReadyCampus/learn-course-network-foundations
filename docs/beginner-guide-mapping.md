@@ -9,4 +9,4 @@ Unit 1 follows the Wiki catalog order and retains the Wiki's four existing teach
 | 네트워크와 네트워킹 그리고 개념 | 기초편 4 | `units/01-before-networking/lessons/03-networking-concepts/lesson.md` | `newbie/specs/lesson-03.json` | `concepts/lesson-03.svg`, `l03-layers-dependency.svg` |
 | User mode와 Kernel mode | 기초편 5 | `units/01-before-networking/lessons/04-user-and-kernel-mode/lesson.md` | `newbie/specs/lesson-04.json` | `concepts/lesson-04.svg`, matching `newbie/anim/l04-*` |
 
-Catalog item 1, 강의소개, is Unit-level orientation rather than a completion-bearing Lesson. Each Lesson Markdown preserves the Wiki reading-edition prose and source reference. Beginner-guide SVGs attach to the matching Page; no SVG archive file is deleted as part of this restructuring.
+Catalog item 1, 강의소개, is Unit-level orientation rather than a completion-bearing Lesson. Each Lesson Markdown preserves the Wiki reading-edition prose and source reference. Beginner-guide SVGs attach to the matching Page; authored SVG originals remain, while unused 0.3× playback derivatives were removed.

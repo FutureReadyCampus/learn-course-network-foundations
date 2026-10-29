@@ -1,10 +1,52 @@
 ---
-id: "u2-l05-osi-7-layer와-식별자"
-title: "OSI 7 layer와 식별자"
-source_wiki: "sources/wiki/oeweo-network/lesson-05.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-05.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-05.svg"
-illustrated_pages: [1, 4, 9]
+id: u2-l05-osi-7-layer와-식별자
+title: OSI 7 layer와 식별자
+source_wiki: sources/wiki/oeweo-network/lesson-05.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-05.svg
+page_metadata:
+- terms:
+  - OSI 7 layer
+  - TLS / SSL
+  animations:
+  - file: l05-osi-layer-stack.svg
+    title: 일곱 층으로 나눠 보는 통신
+    alt: 아래에서 위로 일곱 개의 가로 막대가 쌓이고 각 층의 이름이 붙은 뒤, 맨 위에서 작은 상자가 한 층씩 아래로 내려갑니다.
+    caption: 통신을 일곱 층으로 쌓아 놓고, 위에서 만든 데이터가 한 층씩 내려가는 모습입니다.
+- terms:
+  - 장치 드라이버(Device driver)
+  - L2 / L3 / L4
+- terms:
+  - 식별자(Identifier)
+- terms:
+  - MAC 주소(MAC address)
+  - NIC / 네트워크 인터페이스
+  - 16진수
+  animations:
+  - file: l05-mac-per-nic.svg
+    title: MAC 주소는 NIC마다 하나
+    alt: 컴퓨터 한 대의 아래쪽에 NIC가 하나씩 늘어 세 개가 되고, NIC마다 서로 다른 MAC 주소 표찰이 붙습니다.
+    caption: 컴퓨터는 한 대여도 NIC가 3개면 MAC 주소도 3개입니다.
+- terms:
+  - IP 주소(IP address)
+  - 호스트(Host)
+- terms:
+  - 포트 번호(Port number)
+  - 포트(Port)
+  - 프로세스(Process)
+- terms:
+  - 명령 프롬프트 / 터미널
+  - ipconfig / ifconfig
+- terms:
+  - DoD 분류
+  - 액세스 단(Access)
+- terms:
+  - 세 가지 식별자
+  animations:
+  - file: l05-three-identifiers.svg
+    title: 세 식별자는 무엇을 가리킬까
+    alt: 건물 모양의 호스트에 출입문 세 개가 나타나 MAC 주소 표찰이 붙고, 지붕에 IP 주소가 붙으며, 안쪽 방에 포트 번호가 켜지는
+      장면입니다.
+    caption: 문마다 MAC, 건물 전체에 IP, 사무실 호수에 포트 번호가 붙습니다.
 ---
 
 핵심 개념을 주제별로 정리했다.

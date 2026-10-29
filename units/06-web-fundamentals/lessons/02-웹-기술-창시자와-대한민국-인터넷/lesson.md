@@ -1,10 +1,49 @@
 ---
-id: "u6-l32-웹-기술-창시자와-대한민국-인터넷"
-title: "웹 기술 창시자와 대한민국 인터넷"
-source_wiki: "sources/wiki/oeweo-network/lesson-32.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-32.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-32.svg"
-illustrated_pages: [3, 4, 8]
+id: u6-l32-웹-기술-창시자와-대한민국-인터넷
+title: 웹 기술 창시자와 대한민국 인터넷
+source_wiki: sources/wiki/oeweo-network/lesson-32.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-32.svg
+page_metadata:
+- terms:
+  - 웹(Web)
+  - 인터넷(Internet)
+- terms:
+  - CERN
+  - 참고문헌
+- terms:
+  - 하이퍼텍스트(Hypertext)
+  - 링크(Link)
+  - HTML
+  animations:
+  - file: l32-hypertext-link.svg
+    title: 링크는 문서와 문서를 잇는 길
+    alt: 문서 A 카드 안의 파란 링크 글자를 누르면 점선이 이어지며 문서 B 카드가 나타나고, 이어서 B에서 C로 이어지는 모습입니다.
+    caption: 링크를 누르면 문서 A에서 문서 B로 곧장 건너갑니다.
+- terms:
+  - 프로토콜(Protocol)
+  - HTTP
+  - TCP/IP
+  animations:
+  - file: l32-html-http-internet.svg
+    title: 문서·배달 규칙·길, 세 겹의 웹
+    alt: 맨 위 층에 HTML 문서, 가운데 층에 HTTP 포장, 아래 층에 인터넷 도로가 쌓여 있고 문서가 위에서 아래로 포장되어 도로를
+      달려 오른쪽 브라우저에 도착하는 장면입니다.
+    caption: HTML 문서는 HTTP 규칙으로 포장되어 인터넷이라는 길을 달립니다.
+- terms:
+  - 중립성
+  - 기조연설
+- terms:
+  - 튜링상(Turing Award)
+- terms:
+  - 인터넷 명예의 전당
+- terms:
+  - 라우터(Router)
+  animations:
+  - file: l32-router-crossroad.svg
+    title: 라우터는 교차로의 안내원
+    alt: 서울대 쪽 길에서 온 상자가 가운데 라우터 교차로에 도착해, 라벨의 목적지를 읽고 구미 방향 길로 나가는 장면입니다.
+    caption: 라우터는 도착지를 보고 상자를 알맞은 길로 보내 줍니다.
+- terms: []
 ---
 
 핵심 개념을 주제별로 정리했다.

@@ -1,10 +1,47 @@
 ---
-id: "u5-l27-tcp-연결종료-및-상태변화"
-title: "TCP 연결종료 및 상태변화"
-source_wiki: "sources/wiki/oeweo-network/lesson-27.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-27.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-27.svg"
-illustrated_pages: [2, 4]
+id: u5-l27-tcp-연결종료-및-상태변화
+title: TCP 연결종료 및 상태변화
+source_wiki: sources/wiki/oeweo-network/lesson-27.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-27.svg
+page_metadata:
+- terms:
+  - FIN
+  - ACK
+  - 4-way handshake
+- terms:
+  - 상태(State)
+  - FIN_WAIT_1 / FIN_WAIT_2
+  animations:
+  - file: l27-tcp-four-way-close.svg
+    title: 연결을 끝내는 네 번의 메시지
+    alt: 왼쪽 클라이언트와 오른쪽 서버 사이로 FIN과 ACK 메시지가 차례로 오가고, 각 컴퓨터 위의 상태 이름표가 ESTABLISHED에서
+      FIN_WAIT, CLOSE_WAIT, TIME_WAIT 등으로 바뀝니다.
+    caption: 클라이언트의 FIN과 서버의 ACK, 서버의 FIN과 클라이언트의 ACK가 두 쌍으로 오가며 양쪽 상태가 바뀝니다.
+- terms:
+  - CLOSE_WAIT
+  - LAST_ACK
+- terms:
+  - TIME_WAIT
+  - CLOSED
+  - 소켓(socket)
+  animations:
+  - file: l27-time-wait-socket-slot.svg
+    title: 끊었다고 바로 빈칸이 되지는 않습니다
+    alt: 소켓 100칸이 모두 사용 중인 격자에서 한 칸이 모래시계가 있는 TIME_WAIT 상태가 되었다가 CLOSED가 되자 사용 중 숫자가
+      99로 줄고 빈칸이 생깁니다.
+    caption: 연결이 끝난 소켓 칸은 TIME_WAIT 동안 비지 않고, CLOSED가 된 뒤에야 다시 쓸 수 있습니다.
+- terms:
+  - 자원 회수
+- terms:
+  - 애플리케이션 프로토콜
+  - User mode
+- terms:
+  - LISTEN
+  - ESTABLISHED
+  - 수동 종료 / 능동 종료
+- terms:
+  - SYN_SENT
+- terms: []
 ---
 
 핵심 개념을 주제별로 정리했다.

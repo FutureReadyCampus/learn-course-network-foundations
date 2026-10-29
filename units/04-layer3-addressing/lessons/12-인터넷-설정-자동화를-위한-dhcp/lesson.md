@@ -1,10 +1,58 @@
 ---
-id: "u4-l22-인터넷-설정-자동화를-위한-dhcp"
-title: "인터넷 설정 자동화를 위한 DHCP"
-source_wiki: "sources/wiki/oeweo-network/lesson-22.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-22.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-22.svg"
-illustrated_pages: [3, 5, 7]
+id: u4-l22-인터넷-설정-자동화를-위한-dhcp
+title: 인터넷 설정 자동화를 위한 DHCP
+source_wiki: sources/wiki/oeweo-network/lesson-22.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-22.svg
+page_metadata:
+- terms:
+  - IP 주소
+  - 서브넷 마스크
+  - 게이트웨이
+  - DNS 서버
+  - ISP
+- terms:
+  - 수동 설정
+  - 자동 설정
+  - Google DNS
+- terms:
+  - DHCP
+  - 클라이언트
+  - 서버
+  animations:
+  - file: l22-dhcp-client-server.svg
+    title: 빈 설정 칸을 서버가 채워 준다
+    alt: 네 칸이 비어 있는 컴퓨터가 서버에 요청하자 서버가 IP, 마스크, 게이트웨이, DNS 값을 돌려주어 칸이 채워지는 장면입니다.
+    caption: DHCP 클라이언트는 설정을 요청하고, DHCP 서버는 값 묶음을 돌려줍니다.
+- terms:
+  - Static(정적)
+  - Dynamic(동적)
+- terms:
+  - Discover
+  - 브로드캐스트
+  - 액세스 스위치
+  animations:
+  - file: l22-dhcp-discover-broadcast.svg
+    title: 서버를 모를 때는 모두에게 외친다
+    alt: 켜진 PC가 보낸 Discover 신호가 스위치에서 복제되어 모든 기기로 퍼지고, 일반 PC는 반응하지 않으며 DHCP 서버만 불이
+      켜집니다.
+    caption: PC의 Discover 신호가 스위치를 통해 같은 범위의 모든 기기에 퍼지고, DHCP 서버만 반응합니다.
+- terms:
+  - 제안(offer)
+- terms:
+  - 주소 풀(Address Pool)
+  animations:
+  - file: l22-dhcp-address-pool.svg
+    title: 주소 풀에서 꾸러미로 받는다
+    alt: 서버의 주소 풀에서 192.168.0.100이 선택되어 게이트웨이, DNS, 마스크와 함께 한 꾸러미로 PC에 전달되고, 다음 PC는
+      192.168.0.101을 받습니다.
+    caption: 서버는 주소 풀에서 번호 하나를 고르고 나머지 설정과 한 꾸러미로 묶어 건네줍니다.
+- terms:
+  - 브로드캐스트 도메인
+  - 중복 할당
+- terms:
+  - Wireshark
+  - 프로토콜 규격
+  - 소켓 프로그래밍
 ---
 
 핵심 개념을 주제별로 정리했다.

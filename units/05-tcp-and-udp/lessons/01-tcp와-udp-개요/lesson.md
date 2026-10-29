@@ -1,10 +1,55 @@
 ---
-id: "u5-l25-tcp와-udp-개요"
-title: "TCP와 UDP 개요"
-source_wiki: "sources/wiki/oeweo-network/lesson-25.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-25.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-25.svg"
-illustrated_pages: [2, 6, 8]
+id: u5-l25-tcp와-udp-개요
+title: TCP와 UDP 개요
+source_wiki: sources/wiki/oeweo-network/lesson-25.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-25.svg
+page_metadata:
+- terms:
+  - 프로토콜(protocol)
+  - L4
+- terms:
+  - 연결 지향(Connection-oriented)
+  - Virtual Circuit(가상 회선)
+  animations:
+  - file: l25-tcp-connection-vs-udp.svg
+    title: 연결이 있는 TCP, 연결이 없는 UDP
+    alt: 화면 왼쪽에서는 두 컴퓨터 사이에 점선 통로가 생기고 확인 신호가 오갑니다. 오른쪽에서는 두 컴퓨터 사이에 아무 통로 없이 엽서 모양
+      짐이 한 방향으로 날아갑니다.
+    caption: TCP는 먼저 연결을 맺고 확인을 주고받으며, UDP는 연결 없이 그냥 보냅니다.
+- terms:
+  - 순서번호(Sequence number)
+  - 세그먼트(Segment)
+- terms:
+  - 바이트(byte)
+  - 상태(State)
+- terms:
+  - 수신 버퍼(receive buffer)
+  - 흐름 제어(Flow control)
+  - Zero Window
+- terms:
+  - Frame · Packet · Segment · Datagram
+  - Stream
+  animations:
+  - file: l25-layers-data-units.svg
+    title: 층을 지날 때마다 이름이 바뀌는 데이터
+    alt: 작은 데이터 상자에 먼저 포트 봉투, 다음 IP 봉투, 마지막으로 MAC 봉투가 차례로 씌워지고, 각 단계마다 Segment, Packet,
+      Frame 이름표가 붙습니다.
+    caption: 같은 데이터가 포트, IP, MAC 순으로 겹겹이 감싸지며 Segment, Packet, Frame이 됩니다.
+- terms:
+  - 포트 번호(Port number)
+  - 소켓(socket)
+  - 클라이언트(Client)와 서버(Server)
+- terms:
+  - PID(Process ID)
+  animations:
+  - file: l25-client-server-ports.svg
+    title: 클라이언트의 3000번에서 서버의 80번으로
+    alt: 왼쪽의 클라이언트(192.168.0.10, 포트 3000)에서 오른쪽의 서버(192.168.0.20, 포트 80)로 요청 봉투가 스위치와
+      라우터를 거쳐 이동하는 장면입니다.
+    caption: 두 컴퓨터는 IP 주소와 포트 번호의 짝으로 서로를 찾아 하나의 길을 이룹니다.
+- terms:
+  - Listen
+- terms: []
 ---
 
 핵심 개념을 주제별로 정리했다.

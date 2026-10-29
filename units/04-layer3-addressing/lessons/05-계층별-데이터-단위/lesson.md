@@ -1,10 +1,39 @@
 ---
-id: "u4-l15-계층별-데이터-단위"
-title: "계층별 데이터 단위"
-source_wiki: "sources/wiki/oeweo-network/lesson-15.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-15.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-15.svg"
-illustrated_pages: [4, 5]
+id: u4-l15-계층별-데이터-단위
+title: 계층별 데이터 단위
+source_wiki: sources/wiki/oeweo-network/lesson-15.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-15.svg
+page_metadata:
+- terms:
+  - Frame(프레임)
+  - Packet(패킷)
+  - Segment(세그먼트)
+- terms:
+  - Socket(소켓)
+  - Stream(스트림)
+  - User mode(사용자 모드)
+- terms:
+  - MTU(Maximum Transmission Unit)
+  - MSS(Maximum Segment Size)
+  - Header(헤더)
+- terms:
+  - Segmentation(분할)
+  animations:
+  - file: l15-segmentation.svg
+    title: 긴 데이터를 MSS 조각으로 나누기
+    alt: 왼쪽에서 길게 이어진 막대가 일정한 길이로 잘리고, 각 조각에 1번, 2번, 3번 번호표가 붙어 오른쪽으로 한 줄로 나가는 장면입니다.
+      마지막 조각만 짧습니다.
+    caption: 긴 Stream이 1,460바이트 조각으로 잘리고 번호가 붙어 한 줄로 나갑니다.
+- terms:
+  - Encapsulation(캡슐화)
+  animations:
+  - file: l15-encapsulation.svg
+    title: 세그먼트가 패킷과 프레임으로 감싸지는 과정
+    alt: 작은 데이터 상자에 TCP 헤더, IP 헤더, 프레임 헤더와 꼬리가 한 겹씩 덧붙으며 바깥 상자가 커지고, 마지막에 케이블 위로 이동하는
+      장면입니다.
+    caption: 데이터에 TCP 헤더, IP 헤더, 프레임 헤더가 차례로 덧붙어 케이블로 나갑니다.
+- terms:
+  - Datagram(데이터그램)
 ---
 
 핵심 개념을 주제별로 정리했다.

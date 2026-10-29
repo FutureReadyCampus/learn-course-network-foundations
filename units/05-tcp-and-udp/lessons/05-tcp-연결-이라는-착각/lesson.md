@@ -1,10 +1,47 @@
 ---
-id: "u5-l29-tcp-연결-이라는-착각"
-title: "TCP '연결'이라는 착각"
-source_wiki: "sources/wiki/oeweo-network/lesson-29.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-29.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-29.svg"
-illustrated_pages: [2, 6, 7]
+id: u5-l29-tcp-연결-이라는-착각
+title: TCP '연결'이라는 착각
+source_wiki: sources/wiki/oeweo-network/lesson-29.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-29.svg
+page_metadata:
+- terms:
+  - LAN 케이블
+  - TCP 연결
+- terms:
+  - 물리 계층(L1)
+  - 전송 계층(L4)
+  animations:
+  - file: l29-physical-vs-logical.svg
+    title: 선이 끊겨도 연결 기록은 남는다
+    alt: 두 컴퓨터 사이에 아래쪽 케이블과 위쪽 점선 약속선이 그려져 있고, 케이블이 끊겨도 점선은 유지되는 장면입니다.
+    caption: 1층 선이 끊겨도 4층의 연결 장부는 그대로 남아 있습니다.
+- terms:
+  - 소켓(Socket)
+  - RFC
+- terms:
+  - Heartbeat(하트비트)
+- terms:
+  - ACK
+  - RTT / SRTT
+- terms:
+  - RTO
+  - 세그먼트(Segment)
+  animations:
+  - file: l29-rto-doubling.svg
+    title: 기다리는 시간이 2배씩 늘어난다
+    alt: 왼쪽 송신자가 오른쪽 수신자에게 패킷을 보내지만 중간에서 사라지고, 가로 시간선에 재전송 간격이 1초, 2초, 4초로 길어지다 마지막에
+      ACK가 돌아오는 장면입니다.
+    caption: 확인이 안 오면 다시 보내고, 기다리는 시간은 1초, 2초, 4초로 늘어납니다.
+- terms:
+  - 버퍼(Buffer)
+  - Loss(손실)
+  animations:
+  - file: l29-buffer-cushion.svg
+    title: 버퍼가 끊김을 가려 준다
+    alt: 물탱크 모양의 버퍼에 5칸이 차 있고 한 칸이 줄어드는 사이 입구가 잠시 막혀도 영상 화면은 계속 재생되는 장면입니다.
+    caption: 5초 분량을 쌓아 두면 1초 멈춰도 남은 4초로 영상이 이어집니다.
+- terms:
+  - 애플리케이션 상태
 ---
 
 핵심 개념을 주제별로 정리했다.

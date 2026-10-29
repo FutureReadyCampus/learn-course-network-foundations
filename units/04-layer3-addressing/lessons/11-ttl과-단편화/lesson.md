@@ -1,10 +1,58 @@
 ---
-id: "u4-l21-ttl과-단편화"
-title: "TTL과 단편화"
-source_wiki: "sources/wiki/oeweo-network/lesson-21.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-21.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-21.svg"
-illustrated_pages: [2, 4, 7]
+id: u4-l21-ttl과-단편화
+title: TTL과 단편화
+source_wiki: sources/wiki/oeweo-network/lesson-21.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-21.svg
+page_metadata:
+- terms:
+  - Router(라우터)
+  - L3 스위치
+  - DNS
+- terms:
+  - Forwarding(전달)
+  - Hop(홉)
+  animations:
+  - file: l21-router-forwarding.svg
+    title: 라우터는 패킷을 소비하지 않고 넘겨 준다
+    alt: PC에서 출발한 패킷이 라우터 세 대를 차례로 지나 서버에 도착하는 장면입니다. 각 라우터는 도착지 주소만 읽고 다음 쪽으로 넘깁니다.
+    caption: 라우터는 도착지 주소만 읽고 다음 라우터로 패킷을 넘길 뿐, 내용물은 서버에게 그대로 갑니다.
+- terms:
+  - TTL(Time To Live)
+  - IP 헤더
+- terms:
+  - 8비트
+  - 폐기(Drop)
+  animations:
+  - file: l21-ttl-countdown.svg
+    title: 홉마다 줄어드는 TTL, 바닥나면 폐기
+    alt: 패킷 위의 TTL 숫자가 128에서 127, 126으로 줄어들다가 마지막 라우터에서 0이 되어 패킷이 사라지는 장면입니다.
+    caption: 라우터를 지날 때마다 TTL이 1씩 줄고, 숫자가 다 되면 그 라우터에서 패킷이 버려집니다.
+- terms:
+  - MTU(Maximum Transmission Unit)
+  - Fragmentation(단편화)
+  - 바이트(Byte)
+- terms:
+  - Routing Table(라우팅 테이블)
+  - Routing Path(라우팅 경로)
+- terms:
+  - Payload(페이로드)
+  - Flag / Offset
+  - Identification(식별 값)
+  animations:
+  - file: l21-fragmentation.svg
+    title: 1,500바이트 패킷이 두 조각으로 나뉘는 순간
+    alt: 헤더와 페이로드로 이루어진 긴 패킷이 1,400이라고 적힌 좁은 문 앞에서 A와 B 두 개의 작은 패킷으로 갈라져 통과하는 장면입니다.
+    caption: 1,400바이트 구간을 만나면 페이로드를 A, B로 쪼개고 각각에 IP 헤더를 새로 붙입니다.
+- terms:
+  - Endpoint(엔드포인트)
+  - 재조립(Reassembly)
+  - Segment(세그먼트)
+- terms:
+  - VPN(Virtual Private Network)
+  - IPsec
+  - Tunneling(터널링)
+- terms:
+  - Hop 수
 ---
 
 핵심 개념을 주제별로 정리했다.

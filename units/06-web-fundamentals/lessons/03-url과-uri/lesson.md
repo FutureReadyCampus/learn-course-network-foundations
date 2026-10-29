@@ -1,10 +1,51 @@
 ---
-id: "u6-l33-url과-uri"
-title: "URL과 URI"
-source_wiki: "sources/wiki/oeweo-network/lesson-33.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-33.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-33.svg"
-illustrated_pages: [4, 7]
+id: u6-l33-url과-uri
+title: URL과 URI
+source_wiki: sources/wiki/oeweo-network/lesson-33.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-33.svg
+page_metadata:
+- terms:
+  - URL(Uniform Resource Locator)
+  - URI(Uniform Resource Identifier)
+- terms:
+  - 자원(Resource)
+  - HTML · CSS · JS
+- terms:
+  - JSON
+  - 식별(identify)과 특정(locate)
+- terms:
+  - Scheme(스킴)
+  - Authority · Path · Query · Fragment
+  animations:
+  - file: l33-uri-parts.svg
+    title: 주소 한 줄은 칸이 나뉜 운송장
+    alt: 한 줄로 쓰인 웹 주소가 방식, 호스트, 포트, 경로, 쿼리 다섯 조각으로 색이 나뉘며 택배 운송장의 칸으로 옮겨 가는 장면입니다.
+    caption: https://www.test.co.kr:8080/data/index.html?search_keyword=Test 는 방식,
+      호스트, 포트, 경로, 쿼리 칸으로 나뉩니다.
+- terms:
+  - 프로토콜(protocol)
+  - 호스트(host)
+- terms:
+  - 절대 경로(absolute path)
+  - 상대 경로(relative path)
+- terms:
+  - 웹 루트(web root)
+  - 기본 문서(default document)
+  animations:
+  - file: l33-web-root-path.svg
+    title: 주소의 / 는 서버가 열어 둔 로비
+    alt: 서버 디스크의 폴더 그림에서 C 드라이브와 web 폴더 부분은 흐려지고, 웹 루트부터 data 폴더와 index.html까지 이어지는
+      경로가 브라우저 주소창의 /data/index.html과 연결되는 장면입니다.
+    caption: 브라우저 주소의 경로는 디스크 전체가 아니라 웹 루트에서 시작합니다.
+- terms:
+  - 동적 처리
+  - 클라이언트(client)
+- terms:
+  - Query(쿼리)
+  - 매개변수(Parameter)와 값(Value)
+- terms:
+  - 포트 번호(port number)
+  - 기본 포트
 ---
 
 핵심 개념을 주제별로 정리했다.

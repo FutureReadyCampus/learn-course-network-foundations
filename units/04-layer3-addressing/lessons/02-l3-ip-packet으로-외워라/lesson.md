@@ -1,10 +1,54 @@
 ---
-id: "u4-l12-l3-ip-packet으로-외워라"
-title: "L3 IP Packet으로 외워라"
-source_wiki: "sources/wiki/oeweo-network/lesson-12.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-12.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-12.svg"
-illustrated_pages: [4, 5, 7]
+id: u4-l12-l3-ip-packet으로-외워라
+title: L3 IP Packet으로 외워라
+source_wiki: sources/wiki/oeweo-network/lesson-12.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-12.svg
+page_metadata:
+- terms:
+  - 패킷 (Packet)
+  - 데이터 (Data)
+- terms:
+  - IP (Internet Protocol)
+  - L3 (3계층, 네트워크 계층)
+  - 프레임 (Frame)
+  - 프로토콜 (Protocol)
+- terms:
+  - MTU (Maximum Transmission Unit)
+  - 바이트 (Byte)
+- terms:
+  - 헤더 (Header)
+  - 페이로드 (Payload)
+  animations:
+  - file: l12-header-payload.svg
+    title: 송장 붙은 상자, 헤더와 페이로드
+    alt: 기다란 직사각형 상자의 앞쪽에 헤더라는 송장 부분이 붙고 나머지가 페이로드로 채워집니다. 그 페이로드가 열리면 안에 헤더와 페이로드를
+      가진 작은 상자가 다시 나타납니다.
+    caption: 헤더는 길을 안내하는 송장, 페이로드는 상자 속 내용물입니다. 상자 안에 다시 상자가 들어 있을 수도 있습니다.
+- terms:
+  - 와이어샤크 (Wireshark)
+  - 16진수 (Hexadecimal)
+  - Type (이더넷 타입)
+  - IHL (Internet Header Length)
+  animations:
+  - file: l12-hex-decode.svg
+    title: 16진수 숫자 줄을 헤더로 읽기
+    alt: 회색 16진수 숫자들이 가로로 늘어서 있고, 앞에서부터 색깔이 입혀지며 목적지 MAC, 출발지 MAC, Type 0800, IP 45,
+      출발지 IP c0 a8 00 0a라는 이름표가 차례로 붙습니다.
+    caption: 16진수 숫자의 줄이 앞에서부터 이더넷 헤더, IP 헤더 순서로 의미가 붙어 갑니다.
+- terms:
+  - 스니퍼 (Sniffer)
+  - 분석기 (Analyzer)
+  - 프로토콜 디코더 (Protocol Decoder)
+- terms:
+  - MAC 주소 (Media Access Control address)
+  - IP 주소 (Internet Protocol address)
+  - 포트 번호 (Port number)
+  animations:
+  - file: l12-three-addresses.svg
+    title: 출발지와 도착지를 나타내는 세 가지 주소
+    alt: 패킷 하나의 헤더에서 계층 2의 MAC 주소, 계층 3의 IP 주소, 계층 4의 포트 번호가 차례로 켜지며 각각 출발지와 목적지를
+      나타냅니다.
+    caption: 헤더에서 MAC 주소, IP 주소, 포트 번호는 계층이 다를 뿐 모두 ‘어디서 어디로’를 나타냅니다.
 ---
 
 핵심 개념을 주제별로 정리했다.

@@ -1,10 +1,47 @@
 ---
-id: "u4-l18-서브넷-마스크와-cidr"
-title: "서브넷 마스크와 CIDR"
-source_wiki: "sources/wiki/oeweo-network/lesson-18.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-18.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-18.svg"
-illustrated_pages: [2, 3, 5]
+id: u4-l18-서브넷-마스크와-cidr
+title: 서브넷 마스크와 CIDR
+source_wiki: sources/wiki/oeweo-network/lesson-18.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-18.svg
+page_metadata:
+- terms:
+  - 네트워크 ID(Network ID)
+  - 호스트 ID(Host ID)
+  - 서브넷 마스크(Subnet Mask)
+- terms:
+  - 비트(bit)
+  - 16진수(hexadecimal)
+  animations:
+  - file: l18-mask-boundary.svg
+    title: 서브넷 마스크 = 켜진 전구의 끝이 경계선
+    alt: 32개의 전구가 8개씩 네 묶음으로 놓여 있고, 왼쪽 세 묶음은 켜지고 마지막 묶음은 꺼진 채로 남아 그 사이에 경계선이 그어집니다.
+      192.168.0.10 주소가 이 선을 기준으로 192.168.0과 10으로 갈라집니다.
+    caption: 255.255.255.0은 앞의 24칸이 켜지고 뒤의 8칸이 꺼진 32칸 표시이며, 켜진 칸이 끝나는 곳이 경계선입니다.
+- terms:
+  - AND 연산
+  - 마스크 연산
+  - 패킷(packet)
+  animations:
+  - file: l18-and-mask.svg
+    title: AND 연산 = 구멍 뚫린 가림판
+    alt: 위 줄에 IP 주소 192.168.0.10, 아래에 서브넷 마스크 255.255.255.0이 놓이고, 앞쪽 24칸은 구멍이 뚫린 가림판으로
+      덮여 값이 그대로 결과 줄에 내려오며 마지막 8칸은 막혀 0000 0000으로 지워집니다. 결과 192.168.0.0이 다른 주소들과 비교됩니다.
+    caption: 마스크가 1인 칸은 주소 값이 그대로 내려가고, 0인 칸은 지워져서 호스트 자리가 0이 됩니다.
+- terms:
+  - 클래스(Class)
+- terms:
+  - CIDR(사이더)
+  - 슬래시 표기(/24)
+  animations:
+  - file: l18-cidr-slash.svg
+    title: /24 = 왼쪽 24비트가 네트워크 ID
+    alt: 32칸 막대 위에 255.255.255.0의 1이 24개 켜지고, 이 표기가 192.168.0.10/24 한 줄로 접힙니다. 이어
+      192.168.0.10과 192.168.0.77은 앞 24칸이 같아 초록 표시가, 192.168.1.5는 달라 빨강 표시가 뜹니다.
+    caption: 255.255.255.0이라고 길게 쓰나 /24라고 짧게 쓰나 같은 경계를 가리키고, 앞 24비트만 비교하면 같은 네트워크인지
+      알 수 있습니다.
+- terms:
+  - 서브네팅(Subnetting)
+  - 옥텟(octet)
 ---
 
 핵심 개념을 주제별로 정리했다.

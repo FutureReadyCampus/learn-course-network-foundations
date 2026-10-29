@@ -13,7 +13,6 @@ ROOT = Path(__file__).resolve().parents[1]
 ANIMATION_DIRS = (
     ROOT / "sources/wiki/oeweo-network/newbie/anim",
     ROOT / "sources/wiki/oeweo-network/newbie/anim-paced",
-    ROOT / "sources/wiki/oeweo-network/newbie/anim-slow-0.3x",
     ROOT / "sources/wiki/oeweo-network/advanced/concepts",
     ROOT / "units/01-before-networking/lessons/01-prerequisites/assets/animations",
 )

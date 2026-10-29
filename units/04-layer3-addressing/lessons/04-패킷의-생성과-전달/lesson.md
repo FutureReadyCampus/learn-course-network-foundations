@@ -1,10 +1,46 @@
 ---
-id: "u4-l14-패킷의-생성과-전달"
-title: "패킷의 생성과 전달"
-source_wiki: "sources/wiki/oeweo-network/lesson-14.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-14.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-14.svg"
-illustrated_pages: [6, 8, 9]
+id: u4-l14-패킷의-생성과-전달
+title: 패킷의 생성과 전달
+source_wiki: sources/wiki/oeweo-network/lesson-14.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-14.svg
+page_metadata:
+- terms:
+  - 패킷 (packet)
+- terms:
+  - 호스트 (host)
+- terms: []
+- terms: []
+- terms:
+  - 프로세스 (process)
+  - 게이트웨이 (gateway)
+  - 인터페이스 (interface)
+- terms:
+  - 포트 번호 (port number)
+  animations:
+  - file: l14-ip-and-port.svg
+    title: IP 주소는 집, 포트는 집 안의 이름
+    alt: 상자가 IP 주소 203.0.113.20이 적힌 집에 도착한 뒤, 집 안에서 80번이 적힌 방의 프로그램에게 전달되는 장면입니다.
+    caption: IP 주소로 호스트를 찾은 뒤, 포트 번호로 안쪽의 받을 프로세스를 고릅니다.
+- terms:
+  - 소켓 (socket)
+  - 커널 (kernel)
+- terms:
+  - 헤더 (header)
+  - 세그먼트·패킷·프레임
+  animations:
+  - file: l14-encapsulation.svg
+    title: 헤더가 차례로 감싸는 포장
+    alt: 작은 데이터 블록 앞에 TCP 헤더, IP 헤더, Ethernet 헤더가 차례로 붙으며 세그먼트, 패킷, 프레임으로 이름이 바뀌는
+      장면입니다.
+    caption: 데이터에 TCP, IP, Ethernet 헤더가 차례로 붙어 가장 바깥의 프레임이 됩니다.
+- terms:
+  - L2 액세스 스위치
+  - 라우터 (router)
+  animations:
+  - file: l14-delivery-flow.svg
+    title: 프레임이 도착하기까지
+    alt: 왼쪽 호스트에서 나온 프레임이 L2 스위치와 라우터, 인터넷을 거쳐 오른쪽 호스트의 프로세스에 도착하는 장면입니다.
+    caption: 호스트에서 출발한 프레임이 스위치와 라우터를 거쳐 상대 호스트의 프로세스까지 갑니다.
 ---
 
 핵심 개념을 주제별로 정리했다.

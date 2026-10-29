@@ -1,10 +1,39 @@
 ---
-id: "u4-l19-broadcast-ip주소"
-title: "Broadcast IP주소"
-source_wiki: "sources/wiki/oeweo-network/lesson-19.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-19.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-19.svg"
-illustrated_pages: [2, 3]
+id: u4-l19-broadcast-ip주소
+title: Broadcast IP주소
+source_wiki: sources/wiki/oeweo-network/lesson-19.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-19.svg
+page_metadata:
+- terms:
+  - 비트(bit)
+  - 호스트 ID(Host ID)
+  - 브로드캐스트(broadcast)
+- terms:
+  - 브로드캐스트 주소(broadcast address)
+  - 게이트웨이(gateway)
+  animations:
+  - file: l19-broadcast-address.svg
+    title: 호수 칸을 전부 1로 채우면 단지 방송 주소
+    alt: 192.168.0.0/24 주소에서 앞의 24비트는 고정되어 있고 마지막 8비트 칸이 하나씩 1로 켜지면서 255가 되고, 주소가
+      192.168.0.255로 바뀌어 단지 전체에 방송이 퍼지는 장면입니다.
+    caption: 192.168.0.0/24에서 마지막 8칸이 모두 1이 되면 192.168.0.255, 즉 이 단지의 방송 주소가 됩니다.
+- terms:
+  - 유니캐스트(unicast)
+  - 멀티캐스트(multicast)
+  animations:
+  - file: l19-unicast-vs-broadcast.svg
+    title: 한 곳에 보내기와 모두에게 보내기
+    alt: PC에서 출발한 패킷이 3.3.3.3으로 가는 경우에는 게이트웨이를 거쳐 단지 밖으로 나가고, 192.168.0.255로 가는 경우에는
+      단지 안의 모든 장치로 동시에 복사되어 전달되는 장면입니다.
+    caption: 목적지 3.3.3.3은 게이트웨이를 거쳐 밖으로 나가고, 192.168.0.255는 같은 단지 안 모두에게 퍼집니다.
+- terms:
+  - 액세스 스위치(access switch)
+  - 배포 스위치(distribution switch)
+- terms:
+  - 네트워크 주소
+  - 사용 가능한 호스트 주소
+- terms:
+  - 예약된 주소
 ---
 
 핵심 개념을 주제별로 정리했다.

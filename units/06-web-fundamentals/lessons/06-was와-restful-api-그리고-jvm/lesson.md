@@ -1,10 +1,74 @@
 ---
-id: "u6-l36-was와-restful-api-그리고-jvm"
-title: "WAS와 RESTful API 그리고 JVM"
-source_wiki: "sources/wiki/oeweo-network/lesson-36.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-36.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-36.svg"
-illustrated_pages: [1, 8, 12]
+id: u6-l36-was와-restful-api-그리고-jvm
+title: WAS와 RESTful API 그리고 JVM
+source_wiki: sources/wiki/oeweo-network/lesson-36.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-36.svg
+page_metadata:
+- terms:
+  - Tier(티어)
+  - WAS
+  - DB(데이터베이스)
+  animations:
+  - file: l36-three-tier-path.svg
+    title: 주문 한 건이 지나가는 세 단
+    alt: 브라우저에서 출발한 요청 신호가 웹 서버, WAS, DB 순서로 지나가고 응답이 같은 길을 되돌아 브라우저에 도착하는 장면입니다.
+    caption: 요청은 웹 서버, WAS, DB 순으로 들어가고 결과는 거꾸로 되돌아옵니다.
+- terms:
+  - APM
+  - 응답 시간
+- terms:
+  - JVM
+  - Java Bytecode
+  - Middleware(미들웨어)
+- terms:
+  - 런타임(runtime)
+  - 템플릿
+- terms:
+  - Servlet
+  - Servlet Container
+  - Tomcat
+  - JSP
+- terms:
+  - 프레임워크
+  - 객체(object)
+  - 의존 관계
+- terms:
+  - 프런트엔드(front-end)
+  - UI
+  - GET / POST
+- terms:
+  - JSON
+  - XML
+  - React.js / Vue.js
+  animations:
+  - file: l36-json-to-screen.svg
+    title: 자료만 보내면 화면은 기기가 만든다
+    alt: 서버에서 같은 JSON 꾸러미가 휴대폰, 태블릿, PC로 전달되고 각 기기가 크기에 맞는 서로 다른 화면 배치를 그리는 장면입니다.
+    caption: 같은 JSON을 받아도 휴대폰, 태블릿, PC가 각자 알맞은 화면을 그립니다.
+- terms:
+  - CRUD
+  - 함수
+- terms:
+  - URI
+  - 매개변수(parameter)
+  - API
+- terms:
+  - IPS
+  - SSL 가속기
+  - WAF
+- terms:
+  - HTTPS
+  - 복호화
+  - SQL Injection
+  animations:
+  - file: l36-https-segments.svg
+    title: 어디까지 잠겨서 가는가
+    alt: 브라우저에서 보낸 비밀번호가 잠금 표시와 함께 SSL 장비까지 가고, 장비에서 잠금이 풀린 채 안쪽 서버로 이어지는 장면입니다.
+    caption: 브라우저에서 SSL 장비까지는 암호문, 그 안쪽은 평문일 수 있습니다.
+- terms:
+  - Cookie(쿠키)
+  - 클라이언트 검증 / 서버 검증
+- terms: []
 ---
 
 핵심 개념을 주제별로 정리했다.

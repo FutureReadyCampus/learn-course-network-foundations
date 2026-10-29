@@ -1,10 +1,50 @@
 ---
-id: "u3-l09-l2-스위치에-대해서"
-title: "L2 스위치에 대해서"
-source_wiki: "sources/wiki/oeweo-network/lesson-09.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-09.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-09.svg"
-illustrated_pages: [4, 7]
+id: u3-l09-l2-스위치에-대해서
+title: L2 스위치에 대해서
+source_wiki: sources/wiki/oeweo-network/lesson-09.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-09.svg
+page_metadata:
+- terms:
+  - 스위칭 (Switching)
+  - 포트 (Port)
+  - MAC 주소 (MAC address)
+  - 엔드포인트 (Endpoint)
+- terms:
+  - 도식
+  - 인터페이스 (Interface)
+- terms:
+  - LED
+  - 충돌 (Collision)
+  - CSMA/CD
+- terms:
+  - Link up (링크 업)
+  - Link down (링크 다운)
+  - 물리적 연결
+  animations:
+  - file: l09-link-up-down.svg
+    title: 케이블이 이어지면 Link up
+    alt: PC와 스위치 포트 사이의 케이블이 처음엔 떨어져 있다가 꽂히면서 스위치 포트 옆 LED가 회색에서 녹색으로 바뀌고, 다시 케이블이
+      빠지면 LED가 꺼집니다.
+    caption: 케이블이 꽂혀 녹색 LED가 켜지면 Link up, 케이블이 빠져 불이 꺼지면 Link down입니다.
+- terms:
+  - Uplink (업링크)
+  - Link up (링크 업)
+  - L3 라우터
+- terms:
+  - Distribution switch (배포 스위치)
+  - VLAN
+  - 라우터 (Router)
+- terms:
+  - L2 경로
+  animations:
+  - file: l09-l2-path.svg
+    title: PC 3번에서 PC 5번까지
+    alt: 위쪽에 배포 스위치, 아래 좌우에 액세스 스위치 A와 B가 있고 PC 3번은 A에, PC 5번은 B에 꽂혀 있습니다. 데이터를 나타내는
+      점이 PC 3번에서 A, 배포, B를 거쳐 PC 5번에 닿고, 응답 점이 같은 길로 돌아옵니다.
+    caption: 다른 액세스 스위치에 꽂힌 두 PC는 배포 스위치까지 올라갔다 내려오며 주고받고, 응답도 같은 길로 돌아옵니다.
+- terms:
+  - L3 / L4 / L7
+  - Cisco (시스코)
 ---
 
 핵심 개념을 주제별로 정리했다.

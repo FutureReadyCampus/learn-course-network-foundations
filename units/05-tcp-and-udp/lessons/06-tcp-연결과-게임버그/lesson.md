@@ -1,10 +1,35 @@
 ---
-id: "u5-l30-tcp-연결과-게임버그"
-title: "TCP 연결과 게임버그"
-source_wiki: "sources/wiki/oeweo-network/lesson-30.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-30.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-30.svg"
-illustrated_pages: [1]
+id: u5-l30-tcp-연결과-게임버그
+title: TCP 연결과 게임버그
+source_wiki: sources/wiki/oeweo-network/lesson-30.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-30.svg
+page_metadata:
+- terms:
+  - 엔드포인트(endpoint)
+  - 연결(connection)
+  animations:
+  - file: l30-tcp-connection-judgment.svg
+    title: 응답이 오면 '연결됨'이라 믿는다
+    alt: 왼쪽 컴퓨터가 오른쪽 서버로 SYN 신호를 보내고 SYN+ACK 응답을 받자 연결됨 전구가 켜지지만, 오른쪽 상대의 얼굴은 물음표로
+      가려져 있는 장면입니다.
+    caption: 규칙에 맞는 응답이 오면 내 컴퓨터는 연결되었다고 판단하지만, 상대의 얼굴은 여전히 가려져 있습니다.
+- terms:
+  - MMORPG
+  - 서버(server)와 클라이언트(client)
+- terms:
+  - 동기화(synchronization)
+- terms:
+  - 아이템 복제 버그
+  - UDP
+- terms:
+  - SYN
+  - ACK
+  - 인증(authentication)
+- terms:
+  - 기밀성(confidentiality)
+  - 무결성(integrity)
+  - 가용성(availability)
+- terms: []
 ---
 
 핵심 개념을 주제별로 정리했다.

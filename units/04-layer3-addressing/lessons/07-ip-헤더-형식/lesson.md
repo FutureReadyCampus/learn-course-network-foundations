@@ -1,10 +1,52 @@
 ---
-id: "u4-l17-ip-헤더-형식"
-title: "IP 헤더 형식"
-source_wiki: "sources/wiki/oeweo-network/lesson-17.md"
-beginner_guide: "sources/wiki/oeweo-network/newbie/specs/lesson-17.json"
-wiki_diagram: "sources/wiki/oeweo-network/concepts/lesson-17.svg"
-illustrated_pages: [1, 2, 5]
+id: u4-l17-ip-헤더-형식
+title: IP 헤더 형식
+source_wiki: sources/wiki/oeweo-network/lesson-17.md
+wiki_diagram: sources/wiki/oeweo-network/concepts/lesson-17.svg
+page_metadata:
+- terms:
+  - 헤더 (Header)
+  - 페이로드 (Payload)
+  - MTU (Maximum Transmission Unit)
+  animations:
+  - file: l17-packet-mtu-split.svg
+    title: 1,500바이트 상자의 속 나누기
+    alt: 긴 막대 하나가 1,500바이트로 표시되고, 앞쪽 20바이트가 헤더, 나머지 1,480바이트가 페이로드로 나뉘는 장면입니다.
+    caption: MTU 1,500바이트 안에서 헤더 20바이트를 빼면 페이로드는 1,480바이트가 남습니다.
+- terms:
+  - 비트 (bit)
+  - 바이트 (byte)
+  - 16진수 (hexadecimal)
+  - IHL (Internet Header Length)
+  animations:
+  - file: l17-byte-45-split.svg
+    title: 첫 바이트 45 쪼개 보기
+    alt: 16진수 45가 8개의 켜짐·꺼짐 칸으로 풀리고, 앞 4칸은 Version 4, 뒤 4칸은 IHL 5로 나뉘며 헤더 5줄이 20바이트가
+      되는 장면입니다.
+    caption: 16진수 45는 8칸으로 풀면 앞 4칸은 Version 4, 뒤 4칸은 IHL 5입니다.
+- terms:
+  - Total Length
+  - Type of Service (TOS)
+- terms:
+  - 단편화 (Fragmentation)
+  - TTL (Time To Live)
+- terms:
+  - 홉 (Hop)
+  - Protocol 필드
+  - IANA
+  animations:
+  - file: l17-ttl-hops.svg
+    title: 홉마다 줄어드는 TTL
+    alt: 왼쪽 컴퓨터에서 TTL 128 패킷이 출발해 라우터 세 개를 지나며 127, 126, 125로 줄고, 다른 패킷은 TTL 1에서 0이
+      되어 사라지는 장면입니다.
+    caption: 패킷이 라우터를 하나 지날 때마다 TTL이 1씩 줄고, 0이 되면 사라집니다.
+- terms:
+  - 검사합 (Checksum)
+- terms:
+  - Wireshark
+  - Identification
+- terms:
+  - 계층별 해석
 ---
 
 핵심 개념을 주제별로 정리했다.
