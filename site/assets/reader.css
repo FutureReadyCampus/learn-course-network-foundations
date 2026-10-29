@@ -64,6 +64,8 @@ button { color: inherit; }
 .illustration figcaption { margin-block-start: 9px; color: var(--muted); font-size: .8125rem; text-align: start; }
 .net-prose { max-width: 760px; margin-inline: auto; font-size: 1.0625rem; line-height: 1.9; overflow-wrap: anywhere; }
 .net-prose p { margin: 0 0 20px; }
+.net-prose h2 { margin: 34px 0 14px; font-size: 1.35rem; line-height: 1.45; }
+.net-prose h3 { margin: 25px 0 10px; font-size: 1.12rem; line-height: 1.5; }
 .net-prose ul, .net-prose ol { margin: 0 0 22px; padding-inline-start: 1.5em; }
 .net-prose li { padding-inline-start: 3px; margin-block: 7px; }
 .net-prose code { padding: .08em .28em; border: 1px solid var(--border); border-radius: 4px; background: var(--surface-muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .88em; overflow-wrap: anywhere; }
