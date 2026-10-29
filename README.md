@@ -14,4 +14,6 @@ Each generated catalog records and displays the exact GitHub commit used. `previ
 
 ## Unit 1 source
 
-Unit 1 follows the Wiki catalog. Its source Markdown, beginner-guide JSON and supplied SVG files are preserved under `sources/wiki/oeweo-network/`; the Learn catalog is generated from the Wiki reading editions.
+Each authored Unit lives under `units/NN-unit-name/`. Its `unit.md` lists Lesson source files under `lessons/NN-lesson-name/lesson.md`; each `##` heading in a Lesson is one learner-facing Page. Put Lesson-specific guides and media beside that Lesson under `assets/`.
+
+Unit 1 follows the Wiki catalog. The authored Page text is in the Unit's Lesson Markdown. The original Wiki Markdown, beginner-guide JSON and source SVG files remain preserved under `sources/wiki/oeweo-network/` with references recorded in Lesson front matter. See [Content structure](docs/CONTENT_STRUCTURE.md).
