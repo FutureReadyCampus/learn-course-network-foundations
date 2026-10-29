@@ -59,7 +59,6 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
                 raise ValueError(f"Invalid page group sections in {path}")
             grouped_sections.append((group["title"], "\n\n".join(sections[index - 1][1] for index in indices)))
         sections = grouped_sections
->>>>>>> cfffb2b (content: combine short Unit 1 Lesson 1 pages)
     diagram_ref = lesson_meta.get("wiki_diagram")
     diagram_path = ROOT / diagram_ref if diagram_ref else None
     illustrated_pages = lesson_meta.get("illustrated_pages", [])
@@ -67,14 +66,6 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
     pages = []
     for index, (heading, body) in enumerate(sections):
         title = re.sub(r"\s*·\s*\d+:\d+.*$", "", heading).strip()
-<<<<<<< HEAD
-        concept = concepts[min(index, len(concepts) - 1)] if concepts else {}
-        page_meta = page_metadata[index] if index < len(page_metadata) else {}
-        page = {
-            "title": title,
-            "paragraphs": split_paragraphs(body),
-            "terms": page_meta.get("terms", [item["term"] for item in concept.get("terms", [])]),
-=======
         concept_indices = [section_index - 1 for section_index in page_groups[index]["sections"]] if page_groups else ([min(index, len(concepts) - 1)] if concepts else [])
         page_concepts = [concepts[concept_index] for concept_index in concept_indices if concept_index < len(concepts)]
         page_meta = page_metadata[index] if index < len(page_metadata) else {}
@@ -82,7 +73,6 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
             "title": title,
             "paragraphs": split_paragraphs(body),
             "terms": page_meta.get("terms", list(dict.fromkeys(item["term"] for concept in page_concepts for item in concept.get("terms", [])))),
->>>>>>> cfffb2b (content: combine short Unit 1 Lesson 1 pages)
             "questions": [],
         }
         illustrations = []
