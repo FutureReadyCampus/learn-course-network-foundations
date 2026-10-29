@@ -39,7 +39,107 @@ def split_paragraphs(text: str) -> list[str]:
     return paragraphs
 
 
+def lesson_asset(
+    path: Path,
+    filename: str,
+    lesson_meta: dict,
+    animation_assets: dict,
+    animated: bool = False,
+) -> Path:
+    relative = Path(filename)
+    if relative.is_absolute() or ".." in relative.parts:
+        raise ValueError(f"Unsafe Lesson asset path {filename!r} in {path}")
+    candidates = []
+    if animated:
+        runtime_dir = animation_assets.get("runtime_dir")
+        if runtime_dir:
+            candidates.append(ROOT / runtime_dir / relative.name)
+        lesson_runtime_dir = lesson_meta.get("runtime_assets_dir")
+        if lesson_runtime_dir:
+            candidates.append(path.parent / lesson_runtime_dir / relative.name)
+    candidates.append(path.parent / relative)
+    asset = next((candidate for candidate in candidates if candidate.is_file()), None)
+    if asset is None:
+        raise FileNotFoundError(f"Missing Lesson asset {filename} for {path}")
+    return asset
+
+
+def authored_reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list[dict]:
+    _, source = read_front_matter(path)
+    sections = re.findall(r"^## (.+?)\s*\n(.*?)(?=^## |\Z)", source, re.M | re.S)
+    pages_meta = lesson_meta.get("pages", [])
+    concepts = {item["id"]: item for item in lesson_meta.get("concepts", [])}
+    if not sections or len(sections) != len(pages_meta):
+        raise ValueError(f"Page metadata does not match Lesson headings in {path}")
+
+    illustrated = set(lesson_meta.get("illustrated_concepts", []))
+    diagram = lesson_meta.get("diagram", {}).get("file")
+    pages = []
+    for index, (heading, body) in enumerate(sections):
+        metadata = pages_meta[index]
+        concept_ids = metadata.get("concepts", [])
+        missing = [concept_id for concept_id in concept_ids if concept_id not in concepts]
+        if missing:
+            raise ValueError(f"Unknown Page concepts in {path}: {', '.join(missing)}")
+        selected = [concepts[concept_id] for concept_id in concept_ids]
+        page = {
+            "title": re.sub(r"\s*·\s*\d+:\d+.*$", "", heading).strip(),
+            "paragraphs": split_paragraphs(body),
+            "terms": list(dict.fromkeys(
+                term["term"] for concept in selected for term in concept.get("terms", [])
+            )),
+            "questions": [],
+        }
+        illustrations = []
+        if index == 0 and diagram:
+            asset = lesson_asset(path, diagram, lesson_meta, animation_assets)
+            illustrations.append({
+                "src": f"/api/v1/network-course-assets/{asset.relative_to(ROOT).as_posix()}",
+                "title": f"{page['title']} · 학습 흐름",
+                "alt": f"{page['title']}의 개념 순서를 보여 주는 그림",
+                "caption": "개념이 이어지는 순서를 확인해 보세요.",
+            })
+        for concept_id, concept in zip(concept_ids, selected):
+            if concept_id not in illustrated:
+                continue
+            animations = ([concept["anim"]] if concept.get("anim") else []) + concept.get("additional_anims", [])
+            for animation in animations:
+                asset = lesson_asset(path, animation["file"], lesson_meta, animation_assets, animated=True)
+                illustrations.append({
+                    "src": f"/api/v1/network-course-assets/{asset.relative_to(ROOT).as_posix()}",
+                    "title": animation["title"],
+                    "alt": animation["alt"],
+                    "caption": animation["caption"],
+                })
+        positions = metadata.get("illustration_after_paragraph")
+        if positions is not None:
+            if len(positions) != len(illustrations):
+                raise ValueError(f"Illustration positions do not match Page assets in {path}, page {index + 1}")
+            for illustration, after_paragraph in zip(illustrations, positions):
+                if after_paragraph < -1 or after_paragraph >= len(page["paragraphs"]):
+                    raise ValueError(f"Illustration position is outside Page paragraphs in {path}, page {index + 1}")
+                illustration["after_paragraph"] = after_paragraph
+        for illustration in metadata.get("illustrations", []):
+            asset = lesson_asset(path, illustration["file"], lesson_meta, animation_assets, animated=True)
+            after_paragraph = illustration["after_paragraph"]
+            if after_paragraph < -1 or after_paragraph >= len(page["paragraphs"]):
+                raise ValueError(f"Illustration position is outside Page paragraphs in {path}, page {index + 1}")
+            illustrations.append({
+                "src": f"/api/v1/network-course-assets/{asset.relative_to(ROOT).as_posix()}",
+                "title": illustration.get("title", page["title"]),
+                "alt": illustration["alt"],
+                "caption": illustration["caption"],
+                "after_paragraph": after_paragraph,
+            })
+        if illustrations:
+            page["illustrations"] = illustrations
+        pages.append(page)
+    return pages
+
+
 def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list[dict]:
+    if "pages" in lesson_meta and "concepts" in lesson_meta:
+        return authored_reading_pages(path, lesson_meta, animation_assets)
     source = path.read_text(encoding="utf-8")
     sections = re.findall(r"^## (.+?)\s*\n(.*?)(?=^## |\Z)", source, re.M | re.S)
     if not sections:
@@ -143,7 +243,9 @@ def build(source_revision: str = "local-draft", source_label: str = "local draft
                 "terms": [],
                 "pages": reading_pages(ROOT / lesson_path, lesson_meta, course_meta.get("animation_assets", {})),
                 "source": "oeweo-network-wiki",
-                "source_path": lesson_meta["source_wiki"],
+                "source_path": lesson_meta.get("source_wiki")
+                or (lesson_meta.get("source", {}).get("lesson_path", "")
+                    if isinstance(lesson_meta.get("source"), dict) else ""),
                 "reading": [],
                 "question": "",
                 "choices": [],

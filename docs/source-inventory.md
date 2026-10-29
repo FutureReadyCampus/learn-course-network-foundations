@@ -10,6 +10,8 @@ Unit 7 to 10 flow maps`). The import is preserved under
 specifications, concept diagrams, and source animation SVGs. The separately
 timed runtime SVGs live under `newbie/anim-paced/`.
 
+See [CONTENT_STRUCTURE.md](CONTENT_STRUCTURE.md) for the Unit → Lesson → Page authoring format.
+
 ## Unit and source mapping
 
 | Unit | Imported section | Source lessons | Lessons |
@@ -40,3 +42,7 @@ editorial changes should keep these source references and stable course IDs.
 
 - Guide metadata for Lessons 5–36 was moved from 32 JSON sidecars into the corresponding Lesson Markdown front matter. The source SVG mapping remains in [newbie-asset-map.md](newbie-asset-map.md).
 - The 89 initial 0.3× playback derivatives were removed. Authored animation SVGs and the 89 selected `anim-paced/` runtime assets remain.
+
+## Unit 1 Markdown migration
+
+The four Unit 1 Lesson bodies and their Page metadata now live together in the Lesson Markdown files. The mapping, migration comparison, and imported-source provenance are recorded in [unit1-content-mapping.md](unit1-content-mapping.md), [unit1-migration-comparison.md](unit1-migration-comparison.md), and [unit1-provenance.md](unit1-provenance.md).
