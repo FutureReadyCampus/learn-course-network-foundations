@@ -4,37 +4,35 @@ course:
   language: ko
   status: draft
 animation_assets:
-  source_dir: sources/wiki/oeweo-network/newbie/anim
-  runtime_dir: sources/wiki/oeweo-network/newbie/anim-paced
   durations_file: docs/svg-playback.yaml
 units:
 - id: before-networking
   title: 들어가기에 앞서...
   path: units/01-before-networking/unit.md
 - id: internet-basics
-  title: Internet 기반 네트워크 입문
+  title: "Internet 기반 네트워크 입문"
   path: units/02-internet-basics/unit.md
 - id: layer2-switching
-  title: L2수준에서 외울 것들
+  title: "L2수준에서 외울 것들"
   path: units/03-layer2-switching/unit.md
 - id: layer3-addressing
-  title: L3 수준에서 외울 것들
+  title: "L3 수준에서 외울 것들"
   path: units/04-layer3-addressing/unit.md
 - id: tcp-and-udp
-  title: L4 수준 대표주자 TCP와 UDP
+  title: "L4 수준 대표주자 TCP와 UDP"
   path: units/05-tcp-and-udp/unit.md
 - id: web-fundamentals
-  title: 웹을 이루는 핵심기술
+  title: "웹을 이루는 핵심기술"
   path: units/06-web-fundamentals/unit.md
 - id: network-devices
-  title: 네트워크 장치의 구조
+  title: "네트워크 장치의 구조"
   path: units/07-network-devices/unit.md
 - id: router-and-nat
-  title: 인터넷 공유기 작동원리
+  title: "인터넷 공유기 작동원리"
   path: units/08-router-and-nat/unit.md
 - id: load-balancing
-  title: 부하분산 시스템 작동원리
+  title: "부하분산 시스템 작동원리"
   path: units/09-load-balancing/unit.md
 - id: vpn-and-security
-  title: VPN과 네트워크 보안 솔루션
+  title: "VPN과 네트워크 보안 솔루션"
   path: units/10-vpn-and-security/unit.md

@@ -1,0 +1,40 @@
+---
+id: "u7-advanced-01-강의소개-및-교육목표"
+title: "강의소개 및 교육목표"
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-01.md
+wiki_diagram: units/07-network-devices/lessons/01-강의소개-및-교육목표/assets/diagrams/lesson-01.svg
+---
+
+핵심 개념을 주제별로 정리했다.
+
+## 응용 단원 길잡이
+
+응용 단원에서는 기초 네트워크 개념을 바탕으로 장비 구조, NAT, 부하분산, VPN과 보안 장치를 살펴본다.
+
+## 먼저 살펴볼 기초 개념
+
+패킷의 생성 원리와 User mode·Kernel mode의 구분은 장비 구조를 이해하는 데 도움이 된다. 이 개념이 낯설다면 Unit 1–6의 관련 설명을 먼저 읽고, 여기의 장치 구조와 연결해 살펴본다. 그림을 볼 때는 각 장치가 어느 계층에서 어떤 데이터를 처리하는지 따라간다.
+
+## 공유기 설정을 찾아보는 경험
+
+가정용 공유기의 설정 화면에서 포트 포워딩이나 DNS 같은 항목을 찾아보면 NAT와 주소 변환을 익숙한 장비 동작에 연결할 수 있다. 설정을 실제로 변경하지 않아도 항목 이름과 설명을 살펴보는 것만으로 충분하다.
+
+## 세 가지 네트워크 장치 구조
+
+첫 학습 목표는 네트워크 장치 또는 Appliance의 세 가지 구조를 구별하는 것이다. Inline, Out of path, Proxy가 이에 해당한다. Inline과 Out of path는 주로 패킷을, Proxy는 소켓 수준의 데이터를 다룬다. 각 구조의 공통점과 차이를 살펴본다.
+
+## NAT와 공유기
+
+두 번째 주제는 인터넷 공유기의 NAT(Network Address Translation)다. NAT의 종류와 주소 변환의 작동 원리를 알아본다.
+
+## 부하분산의 원리
+
+NAT를 이해하면 L4 스위치를 이용한 Load Balancing도 연결해 이해할 수 있다. 웹 서비스의 백엔드뿐 아니라 네트워크 수준에서 부하를 분산하는 원리를 살펴본다.
+
+## VPN과 보안 장치
+
+VPN(Virtual Private Network)의 특징과 종류, 다른 네트워크 장치와 결합하는 방식도 다룬다. 네트워크를 운영하려면 VPN이 어디에서 어떻게 작동하는지 알아야 한다. 방화벽과 IPS(Intrusion Prevention System) 같은 보안 장치는 보안 스위치라는 관점으로도 설명한다. 네트워크 구조와 보안 기능을 함께 이해하는 과정이다.
+
+## 학습 목표와 활용
+
+이 단원은 장치의 세 가지 구조, NAT, 부하분산, VPN과 보안이라는 네 주제를 연결한다. 원리를 실제 네트워크 운영에 적용할 때 각 장비의 위치와 역할을 함께 살펴본다.

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+  <rect width="960" height="540" fill="#0f1115"/>
+
+  <!-- 제목: 항상 보이는 핵심 결론 -->
+  <text x="480" y="46" text-anchor="middle" font-size="32" font-weight="700" fill="#e6e8ec">소켓 = 앱과 커널 사이의 단순한 창구</text>
+
+  <!-- 구역 -->
+  <rect x="20" y="64" width="920" height="162" rx="10" fill="#171a21" opacity="0.55"/>
+  <rect x="20" y="226" width="920" height="218" rx="10" fill="#171a21" stroke="#3d4b60" stroke-width="1.5"/>
+  <text x="926" y="102" text-anchor="end" font-size="24" fill="#9aa3b2">User mode (앱)</text>
+  <text x="40" y="270" font-size="24" fill="#9aa3b2">Kernel mode (커널)</text>
+  <!-- 경계선 (소켓 자리만 비움) -->
+  <line x1="20" y1="226" x2="428" y2="226" stroke="#9aa3b2" stroke-width="2" stroke-dasharray="10 8"/>
+  <line x1="606" y1="226" x2="940" y2="226" stroke="#9aa3b2" stroke-width="2" stroke-dasharray="10 8"/>
+
+  <!-- Chrome 창 -->
+  <rect x="120" y="76" width="280" height="136" rx="10" fill="#0f1115" stroke="#3d4b60" stroke-width="2"/>
+  <line x1="120" y1="114" x2="400" y2="114" stroke="#3d4b60" stroke-width="2"/>
+  <circle cx="146" cy="95" r="12" fill="#6ea8fe"/>
+  <circle cx="146" cy="95" r="12" fill="none" stroke="#ffb454" stroke-width="5" stroke-dasharray="25 50"/>
+  <circle cx="146" cy="95" r="5" fill="#e6e8ec"/>
+  <text x="168" y="104" font-size="24" fill="#e6e8ec">Chrome</text>
+  <text x="326" y="172" font-size="24" font-weight="700" fill="#ffb454" opacity="0">write
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.47;0.5;0.64;0.67;1" dur="14s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- 커널 블록 -->
+  <rect x="340" y="262" width="280" height="44" rx="8" fill="#0f1115" stroke="#6ea8fe" stroke-width="2"/>
+  <text x="354" y="293" font-size="24" font-weight="700" fill="#6ea8fe">TCP</text>
+  <rect x="340" y="320" width="280" height="44" rx="8" fill="#0f1115" stroke="#ffb454" stroke-width="2"/>
+  <text x="354" y="351" font-size="24" font-weight="700" fill="#ffb454">IP</text>
+  <rect x="340" y="378" width="280" height="44" rx="8" fill="#0f1115" stroke="#9aa3b2" stroke-width="2"/>
+  <text x="354" y="409" font-size="24" font-weight="700" fill="#e6e8ec">NIC</text>
+  <text x="640" y="293" font-size="24" fill="#6ea8fe" opacity="0">+ TCP 껍데기
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.62;0.645;0.9;0.93;1" dur="14s" repeatCount="indefinite"/>
+  </text>
+  <text x="640" y="351" font-size="24" fill="#ffb454" opacity="0">+ IP 껍데기
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.72;0.745;0.9;0.93;1" dur="14s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- open 연결선 -->
+  <line x1="400" y1="190" x2="446" y2="222" stroke="#7ee7c7" stroke-width="4" stroke-linecap="round" stroke-dasharray="60" stroke-dashoffset="60">
+    <animate attributeName="stroke-dashoffset" values="60;60;0;0;60;60" keyTimes="0;0.25;0.3;0.89;0.94;1" dur="14s" repeatCount="indefinite"/>
+  </line>
+
+  <!-- 소켓(수화기) -->
+  <circle cx="480" cy="228" r="44" fill="none" stroke="#7ee7c7" stroke-width="3" opacity="0">
+    <animate attributeName="opacity" values="0;0;0.8;0;0;0.9;0.1;0.9;0.1;0;0" keyTimes="0;0.2;0.25;0.32;0.82;0.84;0.86;0.88;0.9;0.92;1" dur="14s" repeatCount="indefinite"/>
+  </circle>
+  <g opacity="0.25">
+    <animate attributeName="opacity" values="0.25;0.25;1;1;0.3;1;0.3;1;1;0.25;0.25" keyTimes="0;0.2;0.25;0.82;0.84;0.86;0.88;0.9;0.94;0.97;1" dur="14s" repeatCount="indefinite"/>
+    <rect x="432" y="208" width="96" height="40" rx="12" fill="#0f1115" stroke="#7ee7c7" stroke-width="2"/>
+    <path d="M454,236 Q480,206 506,236" fill="none" stroke="#7ee7c7" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="452" cy="236" r="8" fill="#7ee7c7"/>
+    <circle cx="508" cy="236" r="8" fill="#7ee7c7"/>
+    <text x="540" y="237" font-size="24" font-weight="700" fill="#7ee7c7">소켓</text>
+  </g>
+  <text x="540" y="200" font-size="24" font-weight="700" fill="#7ee7c7" opacity="0">open
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.29;0.31;0.87;0.89;1" dur="14s" repeatCount="indefinite"/>
+  </text>
+  <text x="540" y="200" font-size="24" font-weight="700" fill="#9aa3b2" opacity="0">close
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.89;0.9;0.95;0.97;1" dur="14s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- '안녕' 상자 (껍데기 포함) -->
+  <g transform="translate(260,165)">
+    <animateTransform attributeName="transform" type="translate" values="260,165;260,165;480,226;480,284;480,284;480,342;480,342;480,400;880,400;880,400;260,165;260,165" keyTimes="0;0.5;0.58;0.64;0.68;0.74;0.76;0.8;0.88;0.94;0.945;1" dur="14s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.86;0.88;0.95;1" dur="14s" repeatCount="indefinite"/>
+    <rect x="-74" y="-38" width="148" height="76" rx="10" fill="#ffb454" fill-opacity="0.18" stroke="#ffb454" stroke-width="3" opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.735;0.745;0.9;0.91;1" dur="14s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="-62" y="-30" width="124" height="60" rx="9" fill="#6ea8fe" fill-opacity="0.22" stroke="#6ea8fe" stroke-width="3" opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.635;0.645;0.9;0.91;1" dur="14s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="-50" y="-22" width="100" height="44" rx="8" fill="#171a21" stroke="#7ee7c7" stroke-width="2.5"/>
+    <text x="0" y="9" text-anchor="middle" font-size="24" font-weight="700" fill="#e6e8ec">안녕</text>
+  </g>
+
+  <!-- 자막 바 -->
+  <rect x="20" y="454" width="920" height="72" rx="10" fill="#171a21" stroke="#3d4b60" stroke-width="1.5"/>
+  <g font-size="26" text-anchor="middle">
+    <text x="480" y="500" fill="#e6e8ec">위는 앱(User mode), 아래는 커널(Kernel mode)
+      <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.26;0.28;0.97;1" dur="14s" repeatCount="indefinite"/>
+    </text>
+    <text x="480" y="500" fill="#e6e8ec" opacity="0">Chrome은 경계의 소켓을 열기(open)만 하면 된다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.28;0.3;0.48;0.5;1" dur="14s" repeatCount="indefinite"/>
+    </text>
+    <text x="480" y="500" fill="#e6e8ec" opacity="0">쓰기(write)만 하면 커널이 TCP·IP로 포장해 준다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.52;0.76;0.78;1" dur="14s" repeatCount="indefinite"/>
+    </text>
+    <text x="480" y="500" fill="#7ee7c7" font-weight="700" opacity="0">소켓 = 앱과 커널 사이의 단순한 창구
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.78;0.795;0.95;0.97;1" dur="14s" repeatCount="indefinite"/>
+    </text>
+  </g>
+<g aria-label="재생 단계"><rect x="40" y="28" width="88" height="40" rx="20" fill="#171a21" stroke="#3d4b60" stroke-width="2"/><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="1">1 / 4<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.28;0.29;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">2 / 4<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.28;0.29;0.5;0.51;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">3 / 4<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.51;0.775;0.785;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">4 / 4<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.775;0.785;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text></g>
+</svg>

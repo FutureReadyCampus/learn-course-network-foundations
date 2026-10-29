@@ -1,0 +1,28 @@
+---
+id: "u7-advanced-08-reverse-proxy"
+title: "Reverse Proxy"
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-08.md
+wiki_diagram: units/07-network-devices/lessons/08-reverse-proxy/assets/diagrams/lesson-08.svg
+---
+
+핵심 개념을 주제별로 정리했다.
+
+## Client 보호와 Server 보호
+
+앞의 Proxy가 클라이언트의 접속을 대신하는 관점이었다면, Reverse Proxy는 서버 앞에서 요청을 대신 받는 관점이다. 서버를 보호하기 위해 여러 방어 장치를 함께 배치할 수 있다. 인터넷에서 웹 서버에 바로 접근하게 하기보다 앞단의 장치가 먼저 요청을 받는 구조를 살펴보자.
+
+## IPS · 앞단에서의 방어
+
+그림의 맨 앞에는 IPS가 있다. 패킷을 분석하고 정책에 따라 IP 대역이나 L4 이하 정보를 통제하며, Signature 검사나 DPI도 활용할 수 있다. 그러나 HTTPS로 내용이 암호화되어 있으면 패킷을 보는 장비가 안의 요청 내용을 그대로 해석하기 어렵다.
+
+## SSL Accelerator와 복호화
+
+웹 서버 대신 SSL 처리를 맡는 Proxy나 SSL Accelerator를 둘 수 있다. 이 기능을 부하분산 장치나 WAF와 결합하는 경우도 있다. www.abc.com을 찾는 클라이언트에게 DNS가 실제 웹 서버 대신 앞단 Proxy의 주소인 5.5.5.5를 알려 준다고 가정하자. 클라이언트는 이 주소로 HTTPS 연결을 하고, 장치는 서버를 대리해 통신한다. 이 장비에서 복호화한 뒤 안쪽으로 HTTP 평문을 전달하는 구성이라면, 뒤의 장치가 실제 요청 내용을 검사할 수 있다.
+
+## WAF · 웹 요청을 검사
+
+WAF(Web Application Firewall)는 웹 요청을 보고 서버 공격 여부를 검사한다. Proxy 방식으로 요청을 받아 실제 웹 서버로 전달하고, 그 응답을 다시 클라이언트에 돌려줄 수 있다. 외부 클라이언트가 보는 접속 대상과 실제 처리를 하는 웹 서버가 분리되는 구조다.
+
+## Reverse Proxy로 서버 보호
+
+이처럼 서버 앞에서 요청을 대리하고 보호하는 구성을 Reverse Proxy라고 한다. 장치와 웹 서버의 설정에 따라 HTTP Proxy 등의 형태로 운영할 수 있으며, Transparent 방식도 함께 언급한다. 이 경우에도 Application Proxy, Socket, Stream이라는 관계는 같다. 서버 쪽을 대리한다는 방향과 목적을 추가해 이해하면 된다.

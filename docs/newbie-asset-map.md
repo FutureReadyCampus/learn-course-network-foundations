@@ -1,6 +1,6 @@
 # 왕초보 길잡이 그림 자산 배치표
 
-원본 JSON의 Lesson 번호를 Course Studio Wiki `lesson-NN.html`에 대응시킨 보존 목록입니다. SVG는 각 JSON의 `concepts[].anim.file`에 연결된 페이지에 놓습니다. 단, Learn 후보에 실제로 가져온 수업은 Unit 1의 네 Lesson뿐이며, 나머지는 원본 아카이브 상태입니다.
+가져온 원본 JSON에서 추출한 Lesson 번호와 SVG 대응 목록입니다. Lesson 5–36의 Page별 용어·선택된 animation metadata는 각 Lesson Markdown front matter로 옮겼고, 해당 JSON 32개 파일은 삭제했습니다. 이 표는 삭제한 원본에서 가져온 SVG 대응 정보를 보존합니다.
 
 | 원본 Lesson | Wiki catalog 항목 | 개념 ID · SVG |
 |---|---:|---|

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+<rect width="960" height="540" fill="#0f1115"/>
+<defs>
+<clipPath id="leftOfTcp"><rect x="0" y="0" width="480" height="540"/></clipPath>
+</defs>
+<text x="480" y="46" font-size="34" font-weight="700" fill="#e6e8ec" text-anchor="middle">큰 데이터를 번호 붙은 조각으로</text>
+<text x="480" y="88" font-size="24" fill="#9aa3b2" text-anchor="middle">TCP는 큰 데이터를 <tspan fill="#7ee7c7" font-weight="700">번호 붙은 조각</tspan>으로 나누어 IP에 넘긴다</text>
+
+<!-- IP layer (bottom) -->
+<rect x="390" y="360" width="550" height="70" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="3">
+<animate attributeName="stroke" values="#3d4b60;#3d4b60;#7ee7c7;#7ee7c7;#3d4b60" keyTimes="0;0.84;0.88;0.95;1" dur="14s" repeatCount="indefinite"/>
+</rect>
+<text x="480" y="404" font-size="24" font-weight="700" fill="#e6e8ec" text-anchor="middle">IP (L3)</text>
+
+<!-- down arrow to IP -->
+<g fill="#7ee7c7" stroke="#7ee7c7" opacity="0.35">
+<animate attributeName="opacity" values="0.35;0.35;1;1;0;0;0.35" keyTimes="0;0.78;0.8;0.84;0.88;0.95;1" dur="14s" repeatCount="indefinite"/>
+<line x1="765" y1="282" x2="765" y2="336" stroke-width="5"/>
+<polygon points="752,334 778,334 765,354" stroke="none"/>
+</g>
+
+<!-- segments: start hidden under the TCP box, slide out right, then drop into IP -->
+<g opacity="0">
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.501;0.93;0.95;1" dur="14s" repeatCount="indefinite"/>
+<animateTransform attributeName="transform" type="translate" values="-145 0;-145 0;0 0;0 0;0 165;0 165;-145 0;-145 0" keyTimes="0;0.5;0.58;0.82;0.9;0.95;0.951;1" dur="14s" repeatCount="indefinite"/>
+<rect x="600" y="200" width="107" height="60" rx="6" fill="#6ea8fe"/>
+<text x="653" y="239" font-size="24" font-weight="700" fill="#0f1115" text-anchor="middle">1,460</text>
+<rect x="608" y="162" width="60" height="34" rx="6" fill="#ffb454"/>
+<text x="638" y="188" font-size="24" font-weight="700" fill="#0f1115" text-anchor="middle">1번</text>
+</g>
+<g opacity="0">
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.6;0.601;0.93;0.95;1" dur="14s" repeatCount="indefinite"/>
+<animateTransform attributeName="transform" type="translate" values="-260 0;-260 0;0 0;0 0;0 165;0 165;-260 0;-260 0" keyTimes="0;0.6;0.68;0.82;0.9;0.95;0.951;1" dur="14s" repeatCount="indefinite"/>
+<rect x="715" y="200" width="107" height="60" rx="6" fill="#6ea8fe"/>
+<text x="768" y="239" font-size="24" font-weight="700" fill="#0f1115" text-anchor="middle">1,460</text>
+<rect x="723" y="162" width="60" height="34" rx="6" fill="#ffb454"/>
+<text x="753" y="188" font-size="24" font-weight="700" fill="#0f1115" text-anchor="middle">2번</text>
+</g>
+<g opacity="0">
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.7;0.701;0.93;0.95;1" dur="14s" repeatCount="indefinite"/>
+<animateTransform attributeName="transform" type="translate" values="-375 0;-375 0;0 0;0 0;0 165;0 165;-375 0;-375 0" keyTimes="0;0.7;0.78;0.82;0.9;0.95;0.951;1" dur="14s" repeatCount="indefinite"/>
+<rect x="830" y="200" width="86" height="60" rx="6" fill="#6ea8fe"/>
+<text x="873" y="239" font-size="24" font-weight="700" fill="#0f1115" text-anchor="middle">1,176</text>
+<rect x="838" y="162" width="60" height="34" rx="6" fill="#ffb454"/>
+<text x="868" y="188" font-size="24" font-weight="700" fill="#0f1115" text-anchor="middle">3번</text>
+</g>
+
+<!-- socket buffer label -->
+<text x="40" y="182" font-size="24" fill="#e6e8ec">소켓 버퍼 <tspan fill="#6ea8fe" font-weight="700">4,096바이트</tspan>
+<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.4;0.46;0.95;1" dur="14s" repeatCount="indefinite"/>
+</text>
+
+<!-- long bar: moves to TCP, gets two cut lines, slides in -->
+<g clip-path="url(#leftOfTcp)">
+<g>
+<animateTransform attributeName="transform" type="translate" values="0 0;0 0;50 0;50 0;440 0;440 0;0 0;0 0" keyTimes="0;0.2;0.28;0.4;0.5;0.95;0.951;1" dur="14s" repeatCount="indefinite"/>
+<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.5;0.501;0.95;1" dur="14s" repeatCount="indefinite"/>
+<rect x="40" y="200" width="300" height="60" rx="6" fill="#6ea8fe"/>
+<line x1="147" y1="190" x2="147" y2="190" stroke="#ffb454" stroke-width="5" stroke-dasharray="10 5">
+<animate attributeName="y2" values="190;190;270;270;190" keyTimes="0;0.28;0.34;0.95;1" dur="14s" repeatCount="indefinite"/>
+</line>
+<line x1="254" y1="190" x2="254" y2="190" stroke="#ffb454" stroke-width="5" stroke-dasharray="10 5">
+<animate attributeName="y2" values="190;190;270;270;190" keyTimes="0;0.33;0.39;0.95;1" dur="14s" repeatCount="indefinite"/>
+</line>
+</g>
+</g>
+
+<!-- TCP box (on top, hides what is inside) -->
+<rect x="390" y="150" width="180" height="160" rx="14" fill="#171a21" stroke="#7ee7c7" stroke-width="3"/>
+<text x="480" y="222" font-size="34" font-weight="700" fill="#7ee7c7" text-anchor="middle">TCP</text>
+<text x="480" y="262" font-size="24" fill="#9aa3b2" text-anchor="middle">전송 계층 L4</text>
+
+<!-- caption bar -->
+<rect x="0" y="458" width="960" height="82" fill="#171a21"/>
+<line x1="0" y1="458" x2="960" y2="458" stroke="#3d4b60" stroke-width="2"/>
+<g font-size="26" fill="#e6e8ec" text-anchor="middle">
+<text x="480" y="509">소켓 버퍼에 4,096바이트가 한 덩어리로 있어요
+<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.23;0.26;0.97;1" dur="14s" repeatCount="indefinite"/>
+</text>
+<text x="480" y="509" opacity="0">TCP가 1,460바이트씩 끊어 <tspan fill="#ffb454" font-weight="700">두 번 자릅니다</tspan>
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.26;0.29;0.47;0.5;1" dur="14s" repeatCount="indefinite"/>
+</text>
+<text x="480" y="509" opacity="0">조각마다 <tspan fill="#ffb454" font-weight="700">1번·2번·3번</tspan> 번호표를 붙여 줄 세워요
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.53;0.75;0.78;1" dur="14s" repeatCount="indefinite"/>
+</text>
+<text x="480" y="509" opacity="0"><tspan fill="#7ee7c7" font-weight="700">나누고 번호 붙이기</tspan> → 조각을 IP로 내려보내요
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.78;0.8;0.95;0.97;1" dur="14s" repeatCount="indefinite"/>
+</text>
+</g>
+<g aria-label="재생 단계"><rect x="40" y="28" width="88" height="40" rx="20" fill="#171a21" stroke="#3d4b60" stroke-width="2"/><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="1">1 / 4<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.27;0.28;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">2 / 4<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.27;0.28;0.51;0.52;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">3 / 4<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.51;0.52;0.78;0.79;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">4 / 4<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.78;0.79;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text></g>
+</svg>

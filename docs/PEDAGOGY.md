@@ -1,3 +1,5 @@
 # Unit 1 source and presentation
 
-Unit 1 reuses the Wiki reading editions rather than introducing a new teaching pattern. The source sequence is preserved in `sources/wiki/oeweo-network/lesson-01.md` through `lesson-04.md`; beginner-guide notes and diagrams are preserved alongside them. Learn only splits each existing reading edition at its Wiki subheadings and attaches the corresponding supplied illustrations.
+Unit 1 preserves the Wiki reading-edition sequence rather than introducing a new teaching pattern. The authored Learn text lives in the matching Unit Lesson Markdown so later edits do not depend on rebuilding from Wiki headings. Lesson front matter links to the exact source Wiki revision. Guides, diagrams and animation assets live beside the Lesson that uses them.
+
+This records a source migration and authoring choice. It does not claim measured learning gains or establish a new teaching pattern.

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+  <rect width="960" height="540" fill="#0f1115"/>
+
+  <!-- 제목 = 결론 (항상 보임) -->
+  <text x="480" y="56" text-anchor="middle" font-size="34" font-weight="700" fill="#e6e8ec">AND 마스크: 구멍(1) 자리의 비트만 남는다</text>
+
+  <!-- 아래: 값 1011 -->
+  <text x="310" y="298" text-anchor="end" font-size="26" fill="#9aa3b2">값</text>
+  <g fill="#171a21" stroke="#6ea8fe" stroke-width="3">
+    <rect x="340" y="250" width="80" height="72" rx="8"/>
+    <rect x="444" y="250" width="80" height="72" rx="8"/>
+    <rect x="548" y="250" width="80" height="72" rx="8"/>
+    <rect x="652" y="250" width="80" height="72" rx="8"/>
+  </g>
+  <g font-size="38" font-weight="700" fill="#e6e8ec" text-anchor="middle">
+    <text x="380" y="300">1</text><text x="484" y="300">0</text><text x="588" y="300">1</text><text x="692" y="300">1</text>
+  </g>
+
+  <!-- 막힌 칸 아래는 어두워짐 (1,2,4번째) -->
+  <g fill="#0f1115" opacity="0">
+    <animate attributeName="opacity" values="0;0;0.78;0.78;0" keyTimes="0;0.38;0.46;0.95;1" dur="14s" repeatCount="indefinite"/>
+    <rect x="338" y="248" width="84" height="76" rx="8"/>
+    <rect x="442" y="248" width="84" height="76" rx="8"/>
+    <rect x="650" y="248" width="84" height="76" rx="8"/>
+  </g>
+  <!-- 구멍 칸 아래는 밝게 빛남 (3번째) -->
+  <rect x="548" y="250" width="80" height="72" rx="8" fill="#7ee7c7" fill-opacity="0.22" stroke="#7ee7c7" stroke-width="5" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;0.6;1;1;0" keyTimes="0;0.38;0.46;0.52;0.58;0.95;1" dur="14s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- 위: 가림판 0010 (내려와 얹힘) -->
+  <g>
+    <animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 66;0 66;0 0" keyTimes="0;0.2;0.45;0.95;1" calcMode="spline" keySplines="0 0 1 1;0.4 0 0.2 1;0 0 1 1;0.4 0 0.2 1" dur="14s" repeatCount="indefinite"/>
+    <text x="310" y="142" text-anchor="end" font-size="26" fill="#9aa3b2">가림판</text>
+    <rect x="328" y="88" width="416" height="92" rx="12" fill="#3d4b60"/>
+    <g fill="#2a3342">
+      <rect x="340" y="98" width="80" height="72" rx="8"/>
+      <rect x="444" y="98" width="80" height="72" rx="8"/>
+      <rect x="652" y="98" width="80" height="72" rx="8"/>
+    </g>
+    <rect x="548" y="98" width="80" height="72" rx="8" fill="#0f1115" stroke="#7ee7c7" stroke-width="3" stroke-dasharray="8 6"/>
+    <g font-size="34" font-weight="700" text-anchor="middle">
+      <text x="380" y="146" fill="#9aa3b2">0</text><text x="484" y="146" fill="#9aa3b2">0</text>
+      <text x="588" y="146" fill="#7ee7c7">1</text><text x="692" y="146" fill="#9aa3b2">0</text>
+    </g>
+  </g>
+
+  <!-- 결과 줄 -->
+  <text x="310" y="408" text-anchor="end" font-size="26" fill="#9aa3b2">결과</text>
+  <g fill="none" stroke="#3d4b60" stroke-width="2" stroke-dasharray="6 6">
+    <rect x="340" y="364" width="80" height="62" rx="8"/>
+    <rect x="444" y="364" width="80" height="62" rx="8"/>
+    <rect x="548" y="364" width="80" height="62" rx="8"/>
+    <rect x="652" y="364" width="80" height="62" rx="8"/>
+  </g>
+  <g font-size="36" font-weight="700" text-anchor="middle">
+    <text x="380" y="408" fill="#9aa3b2" opacity="0">0
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.5;0.53;0.95;1" dur="14s" repeatCount="indefinite"/>
+    </text>
+    <text x="484" y="408" fill="#9aa3b2" opacity="0">0
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.57;0.6;0.95;1" dur="14s" repeatCount="indefinite"/>
+    </text>
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.64;0.67;0.95;1" dur="14s" repeatCount="indefinite"/>
+      <rect x="548" y="364" width="80" height="62" rx="8" fill="#7ee7c7" fill-opacity="0.2" stroke="#7ee7c7" stroke-width="3"/>
+      <text x="588" y="408" fill="#7ee7c7">1</text>
+    </g>
+    <text x="692" y="408" fill="#9aa3b2" opacity="0">0
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.71;0.74;0.95;1" dur="14s" repeatCount="indefinite"/>
+    </text>
+  </g>
+
+  <!-- 결론 한 줄 -->
+  <text x="480" y="466" text-anchor="middle" font-size="28" font-weight="700" fill="#ffb454" opacity="0">AND = 둘 다 1일 때만 1
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.8;0.84;0.95;1" dur="14s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- 자막 바 -->
+  <rect x="0" y="484" width="960" height="56" fill="#171a21"/>
+  <line x1="0" y1="484" x2="960" y2="484" stroke="#3d4b60" stroke-width="2"/>
+  <g font-size="24" fill="#e6e8ec" text-anchor="middle">
+    <text x="480" y="521">아래는 값 1011, 위는 셋째 칸만 구멍 뚫린 가림판 0010
+      <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.22;0.25;0.97;1" dur="14s" repeatCount="indefinite"/>
+    </text>
+    <text x="480" y="521" opacity="0">가림판을 얹으면 구멍(1) 자리만 보이고 나머지는 가려진다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.22;0.25;0.47;0.5;1" dur="14s" repeatCount="indefinite"/>
+    </text>
+    <text x="480" y="521" opacity="0">칸마다 보면, 구멍이 있고 아래도 1인 셋째 칸만 1
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.47;0.5;0.77;0.8;1" dur="14s" repeatCount="indefinite"/>
+    </text>
+    <text x="480" y="521" opacity="0">1011 AND 0010 = 0010 · 구멍 자리의 비트만 남았다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.77;0.8;0.95;0.97;1" dur="14s" repeatCount="indefinite"/>
+    </text>
+  </g>
+<g aria-label="재생 단계"><rect x="40" y="28" width="88" height="40" rx="20" fill="#171a21" stroke="#3d4b60" stroke-width="2"/><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="1">1 / 4<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.23;0.24;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">2 / 4<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.23;0.24;0.48;0.49;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">3 / 4<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.48;0.49;0.78;0.79;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">4 / 4<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.78;0.79;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text></g>
+</svg>

@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+<rect width="960" height="540" fill="#0f1115"/>
+<text x="480" y="48" font-size="34" font-weight="700" fill="#e6e8ec" text-anchor="middle">안쪽부터 감싸기 · 데이터가 프레임이 되기까지</text>
+
+<!-- layer ruler -->
+<g>
+<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.80;0.83;0.97;1" dur="16s" repeatCount="indefinite"/>
+<g fill="#171a21" stroke="#3d4b60" stroke-width="2">
+<rect x="230" y="82" width="140" height="40" rx="20"/>
+<rect x="410" y="82" width="140" height="40" rx="20"/>
+<rect x="590" y="82" width="140" height="40" rx="20"/>
+</g>
+<rect x="230" y="82" width="140" height="40" rx="20" fill="#1d2a40" stroke="#6ea8fe" stroke-width="3" opacity="0">
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.20;0.22;0.34;0.36;1" dur="16s" repeatCount="indefinite"/>
+</rect>
+<rect x="410" y="82" width="140" height="40" rx="20" fill="#163029" stroke="#7ee7c7" stroke-width="3" opacity="0">
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.34;0.36;0.50;0.52;1" dur="16s" repeatCount="indefinite"/>
+</rect>
+<rect x="590" y="82" width="140" height="40" rx="20" fill="#2a2f3a" stroke="#e6e8ec" stroke-width="3" opacity="0">
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.50;0.52;0.80;0.82;1" dur="16s" repeatCount="indefinite"/>
+</rect>
+<g font-size="24" fill="#e6e8ec" text-anchor="middle">
+<text x="300" y="111">L4 · TCP</text>
+<text x="480" y="111">L3 · IP</text>
+<text x="660" y="111">L2 · 프레임</text>
+<text x="390" y="111" fill="#9aa3b2">→</text>
+<text x="570" y="111" fill="#9aa3b2">→</text>
+</g>
+</g>
+<text x="480" y="114" font-size="32" font-weight="700" fill="#7ee7c7" text-anchor="middle" opacity="0">안쪽부터 감싼다: 데이터 → 세그먼트 → 패킷 → 프레임
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.82;0.85;0.95;0.97;1" dur="16s" repeatCount="indefinite"/>
+</text>
+
+<!-- nesting assembly: slides so the current outer box stays centered -->
+<g transform="translate(-241,0)">
+<animateTransform attributeName="transform" type="translate" values="-241,0;-241,0;-179,0;-179,0;-72,0;-72,0;0,0;0,0;-241,0" keyTimes="0;0.26;0.30;0.40;0.44;0.56;0.60;0.95;1" dur="16s" repeatCount="indefinite"/>
+<g transform="translate(480,266)"><g>
+<animateTransform attributeName="transform" type="scale" values="1;1;0.9;0.9;1" keyTimes="0;0.80;0.86;0.95;1" dur="16s" repeatCount="indefinite"/>
+<g transform="translate(-480,-266)">
+
+<!-- frame (L2) -->
+<g opacity="0">
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.56;0.60;0.95;0.98;1" dur="16s" repeatCount="indefinite"/>
+<rect x="122" y="140" width="716" height="252" rx="12" fill="#14171d" stroke="#e6e8ec" stroke-width="3">
+<animate attributeName="rx" values="12;12;40;40;12" keyTimes="0;0.80;0.86;0.95;1" dur="16s" repeatCount="indefinite"/>
+</rect>
+<text x="146" y="172" font-size="24" font-weight="700" fill="#e6e8ec">프레임</text>
+</g>
+<g opacity="0" transform="translate(-200,0)">
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.50;0.54;0.95;0.98;1" dur="16s" repeatCount="indefinite"/>
+<animateTransform attributeName="transform" type="translate" values="-200,0;-200,0;0,0;0,0;-200,0" keyTimes="0;0.50;0.56;0.98;1" dur="16s" repeatCount="indefinite"/>
+<rect x="136" y="186" width="130" height="192" rx="10" fill="#2a2f3a" stroke="#e6e8ec" stroke-width="2"/>
+<text x="201" y="276" font-size="24" fill="#e6e8ec" text-anchor="middle">프레임</text>
+<text x="201" y="308" font-size="24" fill="#e6e8ec" text-anchor="middle">헤더</text>
+</g>
+
+<!-- packet (L3) -->
+<g opacity="0">
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.40;0.44;0.95;0.98;1" dur="16s" repeatCount="indefinite"/>
+<rect x="280" y="180" width="544" height="198" rx="12" fill="#151b1c" stroke="#7ee7c7" stroke-width="3">
+<animate attributeName="rx" values="12;12;40;40;12" keyTimes="0;0.80;0.86;0.95;1" dur="16s" repeatCount="indefinite"/>
+<animate attributeName="stroke" values="#7ee7c7;#7ee7c7;#ffb454;#ffb454;#7ee7c7;#7ee7c7" keyTimes="0;0.60;0.62;0.79;0.81;1" dur="16s" repeatCount="indefinite"/>
+<animate attributeName="stroke-width" values="3;3;5;5;3;3" keyTimes="0;0.60;0.62;0.79;0.81;1" dur="16s" repeatCount="indefinite"/>
+</rect>
+<text x="304" y="212" font-size="24" font-weight="700" fill="#7ee7c7">패킷</text>
+</g>
+<g opacity="0" transform="translate(-200,0)">
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.34;0.38;0.95;0.98;1" dur="16s" repeatCount="indefinite"/>
+<animateTransform attributeName="transform" type="translate" values="-200,0;-200,0;0,0;0,0;-200,0" keyTimes="0;0.34;0.40;0.98;1" dur="16s" repeatCount="indefinite"/>
+<rect x="294" y="226" width="200" height="138" rx="10" fill="#163029" stroke="#7ee7c7" stroke-width="2"/>
+<text x="394" y="260" font-size="24" font-weight="700" fill="#7ee7c7" text-anchor="middle">IP 헤더</text>
+<text x="394" y="300" font-size="24" fill="#e6e8ec" text-anchor="middle">192.168.0.10</text>
+<text x="394" y="338" font-size="24" fill="#e6e8ec" text-anchor="middle">→ 203.0.113.5</text>
+</g>
+
+<!-- segment (L4) -->
+<g opacity="0">
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.26;0.30;0.95;0.98;1" dur="16s" repeatCount="indefinite"/>
+<rect x="508" y="220" width="302" height="144" rx="12" fill="#161a23" stroke="#6ea8fe" stroke-width="3">
+<animate attributeName="rx" values="12;12;40;40;12" keyTimes="0;0.80;0.86;0.95;1" dur="16s" repeatCount="indefinite"/>
+</rect>
+<text x="530" y="250" font-size="24" font-weight="700" fill="#6ea8fe">세그먼트</text>
+</g>
+<g opacity="0" transform="translate(-200,0)">
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.20;0.24;0.95;0.98;1" dur="16s" repeatCount="indefinite"/>
+<animateTransform attributeName="transform" type="translate" values="-200,0;-200,0;0,0;0,0;-200,0" keyTimes="0;0.20;0.26;0.98;1" dur="16s" repeatCount="indefinite"/>
+<rect x="522" y="262" width="110" height="88" rx="10" fill="#1d2a40" stroke="#6ea8fe" stroke-width="2"/>
+<text x="577" y="300" font-size="24" font-weight="700" fill="#6ea8fe" text-anchor="middle">TCP</text>
+<text x="577" y="332" font-size="24" fill="#e6e8ec" text-anchor="middle">헤더</text>
+</g>
+
+<!-- data -->
+<rect x="646" y="262" width="150" height="88" rx="10" fill="#171a21" stroke="#9aa3b2" stroke-width="2"/>
+<text x="721" y="318" font-size="32" font-weight="700" fill="#e6e8ec" text-anchor="middle">안녕</text>
+<text x="721" y="250" font-size="24" fill="#9aa3b2" text-anchor="middle">데이터</text>
+
+<!-- payload bracket -->
+<g opacity="0">
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.60;0.62;0.79;0.81;1" dur="16s" repeatCount="indefinite"/>
+<path d="M282 398 v12 h540 v-12" fill="none" stroke="#ffb454" stroke-width="3"/>
+<text x="552" y="440" font-size="24" fill="#ffb454" text-anchor="middle"><tspan font-weight="700">Payload</tspan> = 프레임이 실어 나르는 내용물</text>
+</g>
+
+</g></g></g>
+</g>
+
+<!-- caption bar -->
+<rect x="40" y="462" width="880" height="64" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+<g font-size="26" fill="#e6e8ec" text-anchor="middle">
+<text x="480" y="503">보낼 데이터는 '안녕' 두 글자입니다
+<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.18;0.20;0.97;1" dur="16s" repeatCount="indefinite"/>
+</text>
+<text x="480" y="503" opacity="0">계층마다 데이터 앞에 헤더를 하나씩 붙입니다
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18;0.20;0.48;0.50;1" dur="16s" repeatCount="indefinite"/>
+</text>
+<text x="480" y="503" opacity="0">안쪽의 패킷 전체가 프레임의 Payload가 됩니다
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.48;0.50;0.78;0.80;1" dur="16s" repeatCount="indefinite"/>
+</text>
+<text x="480" y="503" opacity="0" fill="#7ee7c7" font-weight="700">결론: 데이터는 안쪽부터 겹겹이 감싸진다
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.78;0.80;0.95;0.97;1" dur="16s" repeatCount="indefinite"/>
+</text>
+</g>
+<g aria-label="재생 단계"><rect x="40" y="28" width="88" height="40" rx="20" fill="#171a21" stroke="#3d4b60" stroke-width="2"/><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="1">1 / 4<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.18;0.19;1" calcMode="discrete" dur="16s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">2 / 4<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18;0.19;0.48;0.49;1" calcMode="discrete" dur="16s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">3 / 4<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.48;0.49;0.78;0.79;1" calcMode="discrete" dur="16s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">4 / 4<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.78;0.79;1" calcMode="discrete" dur="16s" repeatCount="indefinite"/></text></g>
+</svg>

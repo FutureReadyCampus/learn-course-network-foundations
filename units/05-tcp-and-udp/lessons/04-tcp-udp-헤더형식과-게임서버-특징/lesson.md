@@ -1,0 +1,84 @@
+---
+id: u5-l28-tcp-udp-헤더형식과-게임서버-특징
+title: TCP, UDP 헤더형식과 게임서버 특징
+source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-28.md
+wiki_diagram: units/05-tcp-and-udp/lessons/04-tcp-udp-헤더형식과-게임서버-특징/assets/diagrams/lesson-28.svg
+page_metadata:
+- terms:
+  - 포트 번호 (Port Number)
+  - Well-known Port
+  animations:
+  - file: l28-port-apartment.svg
+    title: IP는 건물, 포트는 호수
+    alt: 데이터 상자가 건물 모양 컴퓨터에 도착한 뒤, 목적지 포트 80이 적힌 호수의 문으로 들어가는 장면입니다.
+    caption: 도착한 데이터는 IP로 컴퓨터를 찾고, 포트 번호로 알맞은 프로그램을 찾아갑니다.
+- terms:
+  - Sequence Number
+  - ACK (Acknowledgement)
+  - Data Offset
+- terms:
+  - 제어 플래그 (Control Flag)
+  - RST (Reset)
+- terms:
+  - Retransmission (재전송)
+  - Duplicate ACK
+  - Out of order
+- terms:
+  - Window Size
+  - Zero Window
+  - Checksum (검사합)
+  animations:
+  - file: l28-window-buffer.svg
+    title: 받을 자리를 알리는 Window
+    alt: 수신 버퍼 칸이 데이터로 차오르며 Window 숫자가 줄어 0이 되는 장면입니다.
+    caption: 프로그램이 데이터를 가져가는 속도가 느리면 수신 버퍼가 차고 Window는 0이 됩니다.
+- terms:
+  - UDP (User Datagram Protocol)
+  - 흐름 제어 (Flow Control)
+  - 혼잡 제어 (Congestion Control)
+- terms:
+  - 동기화
+  - 지연 (Latency)
+  animations:
+  - file: l28-udp-game-latest.svg
+    title: 기다리는 TCP, 건너뛰는 UDP
+    alt: 위아래 두 줄에서 TCP 줄은 사라진 3번 때문에 멈추고 UDP 줄은 3번을 건너뛰어 최신 위치가 보이는 장면입니다.
+    caption: 위치 3번이 사라졌을 때 TCP는 기다리고 UDP는 최신 5번으로 넘어갑니다.
+- terms:
+  - HTTP/3
+animations_dir: units/05-tcp-and-udp/lessons/04-tcp-udp-헤더형식과-게임서버-특징/assets/animations
+---
+
+핵심 개념을 주제별로 정리했다.
+
+## Port · 송수신 프로세스 식별
+
+TCP 헤더 도식은 가로 32비트를 기준으로 표현한다. 출발지와 목적지 포트 번호는 각각 16비트이므로 표현 범위는 0~65,535다. 예시에는 양 끝값을 제외한 사용 가능 개수 설명도 있지만, 해당 설명은 별도 확인이 필요하다. 서비스별로 정해 둔 Well-known Port가 있다. 예를 들어 이 단원의 HTTP 웹 서비스는 TCP 80번을 기본으로 사용하므로 브라우저 주소에 :80을 생략할 수 있다. 기본값과 다른 포트를 쓰면 명시한다. FTP나 Telnet에도 정해진 포트가 있다.
+
+## Sequence와 Acknowledgement
+
+Sequence Number는 전송한 데이터의 바이트 수에 따라 증가한다. 100바이트를 보내면 100, 1,000바이트면 1,000, 1,460바이트면 1,460만큼 진행하는 식이다. ACK는 수신한 내용과 다음에 기대하는 순서를 알리는 데 쓰인다. Data Offset은 TCP Payload가 시작하는 위치를 해석하는 데 필요한 값이다. 옵션 유무에 따라 헤더 길이가 달라질 수 있다는 점에서 IP의 IHL과 연결해 이해할 수 있다.
+
+## 제어 플래그
+
+TCP 제어 플래그에는 앞서 본 SYN, FIN, ACK가 있다. 연결 요청과 종료, 응답을 나타낼 때 사용하는 정보다. RST는 문제가 생긴 연결을 리셋하거나 비정상적으로 종료하는 상황과 연결된다. PSH를 버퍼링에 지체하지 않고 데이터를 전달하라는 취지로 소개한다. 각 플래그의 정교한 동작과 혼잡 제어 관련 내용은 여기서 깊이 다루지 않는다.
+
+## 대표적인 TCP 장애 유형
+
+앞서 본 TCP 관찰 항목은 Loss, Retransmission, Duplicate ACK, Out of order, Zero Window다. 데이터 유실, 재전송, 중복 응답, 순서 어긋남, 수신 공간 부족을 각각 나타낸다. 이러한 통신 이상을 바탕으로 전송 속도와 상태를 조절하는 문제를 혼잡 제어와 연결해 소개한다. 각 현상의 원인은 구별해야 하며 세부 제어 알고리즘은 이 과정의 범위를 벗어난다.
+
+## Window · 수신 버퍼의 여유
+
+Window Size는 수신 버퍼의 여유 공간을 알리는 값이다. 데이터가 들어오면 줄고, 프로세스가 가져가 처리하면 다시 늘어난다. 수신 속도에 비해 애플리케이션의 처리 속도가 느려 버퍼가 가득 차면 Zero Window가 발생한다. 이 이 절은 이런 경우 애플리케이션이 데이터를 충분히 빨리 가져가지 못하는 원인을 살펴보라고 설명한다. 단순히 네트워크 속도를 낮추는 방법보다 처리 측의 문제를 조사하는 관점이다. Checksum은 전송한 데이터에 손상이 있는지 확인하는 검사합이다. TCP의 세부 제어는 복잡하므로 여기서는 헤더의 전체 구성을 익힌다.
+
+## 간결한 UDP Header
+
+UDP 헤더는 TCP보다 간결하다. 출발지·목적지 포트, 길이, Checksum을 중심으로 구성된다. UDP 자체는 TCP와 같은 혼잡 제어나 수신 버퍼의 여유 공간을 확인하는 흐름 제어를 제공하지 않는다. 이러한 차이를 앞서 상대의 상태를 고려하는 방식의 차이로 설명했다.
+
+## 게임 서버와 UDP
+
+영상 송출 서버에 여러 사용자가 접속하고, 각 사용자의 회선이 서로 다르다고 하자. 가장 느린 한 사람 때문에 모든 사람의 송출을 느리게 하는 것이 적절하지 않을 수 있다. 이를 UDP를 활용할 이유로 설명한다. 게임에서도 상태 동기화와 지연 처리가 중요하다. TCP는 중간 데이터가 빠지면 이를 다시 받으려 하므로, 순서를 기다리는 동안 처리가 지연될 수 있다. 실시간 게임에서는 일부 중간 상태를 건너뛰고 최신 상태를 전달하는 편이 더 적절한 경우가 있다. 화면에서 캐릭터가 순간 이동하듯 보이는 현상과 연결해 생각할 수 있다. UDP를 사용하면 개발자가 필요한 혼잡 제어와 동기화 로직을 애플리케이션에 직접 설계할 수 있다. 모든 중간 데이터를 반드시 복구할지, 오래된 상태는 버릴지 선택할 수 있다는 점이다. 이런 이유로 게임과 멀티미디어 전송에서 UDP가 사용된다고 설명한다.
+
+## HTTP/3 등 확장되는 활용
+
+HTTP/3에서도 UDP를 활용한다. 여기서는 이를 TCP가 제공하는 처리 전체에 의존하기보다 필요한 제어를 다른 계층에서 구성하는 방향과 연결해 소개한다. 여기서는 TCP와 UDP 헤더의 복잡도와 기능 차이를 이해하면 된다. 혼잡 제어의 구체적인 알고리즘은 별도의 자료에서 더 깊이 살펴보아야 한다.

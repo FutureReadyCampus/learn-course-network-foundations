@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+<rect width="960" height="540" fill="#0f1115"/>
+
+<!-- 제목(핵심 결론, 항상 보임) -->
+<text x="480" y="46" text-anchor="middle" font-size="34" font-weight="700" fill="#e6e8ec">서버·클라이언트는 기계가 아니라 <tspan fill="#7ee7c7">역할</tspan>이다</text>
+
+<!-- 큰 컴퓨터 상자 -->
+<rect x="40" y="70" width="880" height="360" rx="14" fill="#171a21" stroke="#3d4b60" stroke-width="3">
+  <animate attributeName="stroke" values="#3d4b60;#3d4b60;#ffb454;#ffb454;#3d4b60;#3d4b60" keyTimes="0;0.78;0.8;0.95;0.97;1" dur="12s" repeatCount="indefinite"/>
+  <animate attributeName="stroke-width" values="3;3;6;6;3;3" keyTimes="0;0.78;0.8;0.95;0.97;1" dur="12s" repeatCount="indefinite"/>
+</rect>
+<rect x="60" y="84" width="330" height="44" rx="8" fill="#0f1115" stroke="#3d4b60" stroke-width="2"/>
+<text x="80" y="115" font-size="26" fill="#e6e8ec">컴퓨터 <tspan font-weight="700" fill="#6ea8fe">192.168.0.10</tspan></text>
+
+<!-- 클라이언트 프로세스 -->
+<g>
+  <animateTransform attributeName="transform" type="translate" values="0 10;0 -6;0 0;0 0;0 10" keyTimes="0;0.1;0.2;0.97;1" dur="12s" repeatCount="indefinite"/>
+  <rect x="80" y="150" width="260" height="210" rx="12" fill="#0f1115" stroke="#3d4b60" stroke-width="3">
+    <animate attributeName="stroke" values="#3d4b60;#3d4b60;#7ee7c7;#7ee7c7;#3d4b60;#3d4b60" keyTimes="0;0.76;0.78;0.95;0.97;1" dur="12s" repeatCount="indefinite"/>
+    <animate attributeName="fill" values="#0f1115;#0f1115;#163028;#163028;#0f1115;#0f1115" keyTimes="0;0.76;0.78;0.95;0.97;1" dur="12s" repeatCount="indefinite"/>
+  </rect>
+  <text x="210" y="236" text-anchor="middle" font-size="30" font-weight="700" fill="#6ea8fe">클라이언트</text>
+  <text x="210" y="276" text-anchor="middle" font-size="24" fill="#9aa3b2">프로세스 · 먼저 걸기</text>
+</g>
+
+<!-- 서버 프로세스 -->
+<g>
+  <animateTransform attributeName="transform" type="translate" values="0 10;0 -6;0 0;0 0;0 10" keyTimes="0;0.1;0.2;0.97;1" dur="12s" repeatCount="indefinite"/>
+  <rect x="620" y="150" width="260" height="210" rx="12" fill="#0f1115" stroke="#3d4b60" stroke-width="3">
+    <animate attributeName="stroke" values="#3d4b60;#3d4b60;#7ee7c7;#7ee7c7;#3d4b60;#3d4b60" keyTimes="0;0.76;0.78;0.95;0.97;1" dur="12s" repeatCount="indefinite"/>
+    <animate attributeName="fill" values="#0f1115;#0f1115;#163028;#163028;#0f1115;#0f1115" keyTimes="0;0.76;0.78;0.95;0.97;1" dur="12s" repeatCount="indefinite"/>
+  </rect>
+  <text x="750" y="192" text-anchor="middle" font-size="30" font-weight="700" fill="#7ee7c7">서버</text>
+  <text x="750" y="226" text-anchor="middle" font-size="24" fill="#9aa3b2">프로세스 · 기다리기</text>
+  <!-- 전화기 모양 소켓 -->
+  <g transform="translate(750,278)" opacity="0.3">
+    <animate attributeName="opacity" values="0.3;0.3;1;1;0.3;0.3" keyTimes="0;0.21;0.25;0.95;0.97;1" dur="12s" repeatCount="indefinite"/>
+    <circle r="28" fill="#0f1115" stroke="#7ee7c7" stroke-width="3"/>
+    <path d="M-17 7 Q 0 -19 17 7" fill="none" stroke="#7ee7c7" stroke-width="8" stroke-linecap="round"/>
+    <rect x="-22" y="4" width="12" height="9" rx="3" fill="#7ee7c7"/>
+    <rect x="10" y="4" width="12" height="9" rx="3" fill="#7ee7c7"/>
+  </g>
+  <text x="750" y="340" text-anchor="middle" font-size="24" fill="#ffb454" opacity="0">연결 기다리는 중…
+    <animate attributeName="opacity" values="0;0;1;0.25;1;0.25;1;0.25;1;0.25;1;0;0" keyTimes="0;0.24;0.27;0.33;0.39;0.45;0.51;0.57;0.63;0.69;0.74;0.77;1" dur="12s" repeatCount="indefinite"/>
+  </text>
+  <text x="750" y="340" text-anchor="middle" font-size="24" font-weight="700" fill="#7ee7c7" opacity="0">연결됨!
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.77;0.79;0.95;0.97;1" dur="12s" repeatCount="indefinite"/>
+  </text>
+</g>
+
+<!-- 말풍선: 192.168.0.10으로 접속 -->
+<g opacity="0">
+  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.53;0.95;0.97;1" dur="12s" repeatCount="indefinite"/>
+  <rect x="360" y="148" width="240" height="80" rx="14" fill="#0f1115" stroke="#6ea8fe" stroke-width="2"/>
+  <polygon points="372,226 344,246 398,226" fill="#0f1115" stroke="#6ea8fe" stroke-width="2" stroke-linejoin="round"/>
+  <rect x="373" y="222" width="24" height="5" fill="#0f1115"/>
+  <text x="480" y="182" text-anchor="middle" font-size="26" font-weight="700" fill="#6ea8fe">192.168.0.10</text>
+  <text x="480" y="214" text-anchor="middle" font-size="24" fill="#e6e8ec">으로 접속</text>
+</g>
+
+<!-- 클라이언트 → 서버 화살표 -->
+<line x1="345" y1="290" x2="604" y2="290" stroke="#6ea8fe" stroke-width="5" stroke-dasharray="260" stroke-dashoffset="260">
+  <animate attributeName="stroke-dashoffset" values="260;260;0;0;260;260" keyTimes="0;0.55;0.68;0.95;0.97;1" dur="12s" repeatCount="indefinite"/>
+</line>
+<polygon points="602,278 620,290 602,302" fill="#6ea8fe" opacity="0">
+  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.67;0.69;0.95;0.97;1" dur="12s" repeatCount="indefinite"/>
+</polygon>
+<!-- 연결선(연결 완료) -->
+<line x1="340" y1="290" x2="620" y2="290" stroke="#7ee7c7" stroke-width="8" stroke-linecap="round" opacity="0">
+  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.76;0.78;0.95;0.97;1" dur="12s" repeatCount="indefinite"/>
+</line>
+
+<!-- 상자 밖으로 나간 것 없음 -->
+<g opacity="0">
+  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.78;0.8;0.95;0.97;1" dur="12s" repeatCount="indefinite"/>
+  <rect x="250" y="376" width="460" height="42" rx="10" fill="#0f1115" stroke="#ffb454" stroke-width="2"/>
+  <text x="480" y="405" text-anchor="middle" font-size="24" font-weight="700" fill="#ffb454">상자 밖으로 나간 신호: 없음</text>
+</g>
+
+<!-- 자막 바 -->
+<rect x="40" y="446" width="880" height="76" rx="10" fill="#171a21"/>
+<g font-size="26" fill="#e6e8ec" text-anchor="middle">
+  <text x="480" y="494">컴퓨터 한 대(192.168.0.10) 안에 프로세스가 두 개
+    <animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.22;0.24;0.96;0.98;1" dur="12s" repeatCount="indefinite"/>
+  </text>
+  <text x="480" y="494" opacity="0">서버는 소켓(전화기)을 열고 연결을 기다려요
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.24;0.26;0.47;0.49;1" dur="12s" repeatCount="indefinite"/>
+  </text>
+  <text x="480" y="494" opacity="0">클라이언트가 같은 주소 192.168.0.10으로 접속
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.49;0.51;0.76;0.78;1" dur="12s" repeatCount="indefinite"/>
+  </text>
+  <text x="480" y="494" opacity="0" fill="#7ee7c7" font-weight="700">한 컴퓨터 안에서 연결 완료, 밖으로는 안 나가요
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.78;0.8;0.95;0.97;1" dur="12s" repeatCount="indefinite"/>
+  </text>
+</g>
+<g aria-label="재생 단계"><rect x="40" y="28" width="88" height="40" rx="20" fill="#171a21" stroke="#3d4b60" stroke-width="2"/><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="1">1 / 4<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.24;0.25;1" calcMode="discrete" dur="12s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">2 / 4<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.24;0.25;0.49;0.5;1" calcMode="discrete" dur="12s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">3 / 4<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.49;0.5;0.78;0.79;1" calcMode="discrete" dur="12s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">4 / 4<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.78;0.79;1" calcMode="discrete" dur="12s" repeatCount="indefinite"/></text></g>
+</svg>

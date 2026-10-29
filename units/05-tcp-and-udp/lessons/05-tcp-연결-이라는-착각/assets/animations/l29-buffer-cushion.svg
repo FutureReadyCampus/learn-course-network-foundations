@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+  <rect width="960" height="540" fill="#0f1115"/>
+
+  <!-- 제목 + 핵심 결론(항상 보임) -->
+  <text x="40" y="52" font-size="34" font-weight="700" fill="#e6e8ec">버퍼가 끊김을 가려 준다</text>
+  <text x="40" y="90" font-size="24" fill="#9aa3b2">쌓아 둔 만큼은 네트워크가 끊겨도 <tspan fill="#7ee7c7">화면이 이어집니다</tspan></text>
+
+  <!-- 네트워크 -->
+  <rect x="40" y="130" width="170" height="200" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="3"/>
+  <g stroke="#6ea8fe" stroke-width="4" fill="none" stroke-linecap="round">
+    <path d="M125,250 V190"/>
+    <path d="M105,175 A28,28 0 0 1 145,175"/>
+    <path d="M92,160 A46,46 0 0 1 158,160"/>
+    <path d="M100,250 H150"/>
+  </g>
+  <circle cx="125" cy="188" r="7" fill="#6ea8fe"/>
+  <text x="125" y="300" text-anchor="middle" font-size="26" font-weight="700" fill="#e6e8ec">네트워크</text>
+
+  <!-- 들어오는 파이프 -->
+  <rect x="210" y="216" width="190" height="28" fill="#171a21" stroke="#3d4b60" stroke-width="3"/>
+  <rect x="215" y="222" width="22" height="16" rx="3" fill="#6ea8fe" opacity="1">
+    <animate attributeName="opacity" dur="14s" repeatCount="indefinite" keyTimes="0;0.19;0.2;0.83;0.84;0.96;0.97;1" values="1;1;0;0;1;1;0;1"/>
+    <animateTransform attributeName="transform" type="translate" dur="14s" repeatCount="indefinite" keyTimes="0.0000;0.0995;0.1000;0.1995;0.2000;0.2995;0.3000;0.3995;0.4000;0.4995;0.5000;0.5995;0.6000;0.6995;0.7000;0.7995;0.8000;0.8995;0.9000;0.9995;1.0000" values="0.0,0;169.1,0;0.0,0;169.1,0;0.0,0;169.2,0;0.0,0;169.2,0;0.0,0;169.1,0;0.0,0;169.2,0;0.0,0;169.2,0;0.0,0;169.2,0;0.0,0;169.2,0;0.0,0;169.2,0;170.0,0"/>
+  </rect>
+  <rect x="215" y="222" width="22" height="16" rx="3" fill="#6ea8fe" opacity="1">
+    <animate attributeName="opacity" dur="14s" repeatCount="indefinite" keyTimes="0;0.19;0.2;0.83;0.84;0.96;0.97;1" values="1;1;0;0;1;1;0;1"/>
+    <animateTransform attributeName="transform" type="translate" dur="14s" repeatCount="indefinite" keyTimes="0.0000;0.0495;0.0500;0.1495;0.1500;0.2495;0.2500;0.3495;0.3500;0.4495;0.4500;0.5495;0.5500;0.6495;0.6500;0.7495;0.7500;0.8495;0.8500;0.9495;0.9500;1.0000" values="85.0,0;169.1,0;0.0,0;169.2,0;0.0,0;169.1,0;0.0,0;169.1,0;0.0,0;169.2,0;0.0,0;169.2,0;0.0,0;169.2,0;0.0,0;169.2,0;0.0,0;169.2,0;0.0,0;169.2,0;0.0,0;85.0,0"/>
+  </rect>
+
+  <!-- 입구 막힘 (2~8초) -->
+  <g opacity="0">
+    <animate attributeName="opacity" dur="14s" repeatCount="indefinite" keyTimes="0;0.2;0.22;0.8;0.82;1" values="0;0;1;1;0;0"/>
+    <rect x="212" y="200" width="24" height="60" rx="4" fill="#ffb454"/>
+    <path d="M216,214 L232,246 M232,214 L216,246" stroke="#0f1115" stroke-width="4" stroke-linecap="round"/>
+    <rect x="248" y="150" width="140" height="46" rx="10" fill="#ffb454"/>
+    <text x="318" y="182" text-anchor="middle" font-size="24" font-weight="700" fill="#0f1115">1초 끊김</text>
+  </g>
+
+  <!-- 버퍼(물탱크) -->
+  <rect x="400" y="110" width="150" height="290" rx="14" fill="#171a21" stroke="#3d4b60" stroke-width="3"/>
+  <text x="475" y="142" text-anchor="middle" font-size="26" font-weight="700" fill="#e6e8ec">버퍼</text>
+  <!-- 빈 칸 자리 표시 -->
+  <rect x="418" y="158" width="114" height="34" rx="5" fill="none" stroke="#3d4b60" stroke-width="2" stroke-dasharray="6 5"/>
+  <!-- 맨 위 칸: 비었다가 다시 채워짐 -->
+  <g>
+    <animate attributeName="opacity" dur="14s" repeatCount="indefinite" keyTimes="0;0.25;0.4;0.85;0.92;1" values="1;1;0;0;1;1"/>
+    <rect x="415" y="155" width="120" height="40" rx="6" fill="#7ee7c7"/>
+    <text x="475" y="184" text-anchor="middle" font-size="24" font-weight="700" fill="#0f1115">1초</text>
+  </g>
+  <g fill="#7ee7c7">
+    <rect x="415" y="201" width="120" height="40" rx="6"/>
+    <rect x="415" y="247" width="120" height="40" rx="6"/>
+    <rect x="415" y="293" width="120" height="40" rx="6"/>
+    <rect x="415" y="339" width="120" height="40" rx="6"/>
+  </g>
+  <g font-size="24" font-weight="700" fill="#0f1115" text-anchor="middle">
+    <text x="475" y="230">1초</text>
+    <text x="475" y="276">1초</text>
+    <text x="475" y="322">1초</text>
+    <text x="475" y="368">1초</text>
+  </g>
+  <!-- 칸 수 -->
+  <text x="475" y="434" text-anchor="middle" font-size="24" font-weight="700" fill="#7ee7c7">5칸 = 5초 분량
+    <animate attributeName="opacity" dur="14s" repeatCount="indefinite" keyTimes="0;0.38;0.4;0.9;0.92;1" values="1;1;0;0;1;1"/>
+  </text>
+  <text x="475" y="434" text-anchor="middle" font-size="24" font-weight="700" fill="#ffb454" opacity="0">4칸 = 4초 분량
+    <animate attributeName="opacity" dur="14s" repeatCount="indefinite" keyTimes="0;0.38;0.4;0.9;0.92;1" values="0;0;1;1;0;0"/>
+  </text>
+
+  <!-- 나가는 파이프 -->
+  <rect x="550" y="256" width="100" height="28" fill="#171a21" stroke="#3d4b60" stroke-width="3"/>
+  <!-- 버퍼에서 꺼낸 1칸이 화면으로 -->
+  <rect x="556" y="260" width="36" height="20" rx="4" fill="#7ee7c7" opacity="0">
+    <animate attributeName="opacity" dur="14s" repeatCount="indefinite" keyTimes="0;0.25;0.26;0.39;0.4;1" values="0;0;1;1;0;0"/>
+    <animateTransform attributeName="transform" type="translate" dur="14s" repeatCount="indefinite" keyTimes="0;0.25;0.4;1" values="0,0;0,0;60,0;60,0"/>
+  </rect>
+
+  <!-- 재생 화면 -->
+  <rect x="650" y="130" width="270" height="200" rx="12" fill="#171a21" stroke="#6ea8fe" stroke-width="3"/>
+  <rect x="765" y="330" width="40" height="20" fill="#3d4b60"/>
+  <rect x="725" y="350" width="120" height="10" rx="4" fill="#3d4b60"/>
+  <path d="M700,178 L700,222 L736,200 Z" fill="#7ee7c7"/>
+  <text x="752" y="210" font-size="26" font-weight="700" fill="#7ee7c7">재생 중</text>
+  <rect x="680" y="270" width="210" height="12" rx="6" fill="#3d4b60"/>
+  <rect x="680" y="270" width="20" height="12" rx="6" fill="#7ee7c7">
+    <animate attributeName="width" dur="14s" repeatCount="indefinite" keyTimes="0;0.95;1" values="20;210;20"/>
+  </rect>
+  <text x="785" y="394" text-anchor="middle" font-size="24" fill="#9aa3b2">재생 화면</text>
+
+  <!-- 자막 바 -->
+  <rect x="40" y="454" width="880" height="64" rx="10" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+  <g font-size="26" text-anchor="middle" fill="#e6e8ec">
+    <text x="480" y="495">버퍼에 영상 5초 분량을 미리 쌓아 둡니다
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" keyTimes="0;0.175;0.185;0.97;1" values="1;1;0;0;1"/>
+    </text>
+    <text x="480" y="495" opacity="0">네트워크가 <tspan fill="#ffb454">1초 끊기면</tspan> 버퍼에서 꺼내 씁니다
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" keyTimes="0;0.185;0.195;0.475;0.485;1" values="0;0;1;1;0;0"/>
+    </text>
+    <text x="480" y="495" opacity="0">남은 4칸으로 화면은 멈추지 않고 이어집니다
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" keyTimes="0;0.485;0.495;0.775;0.785;1" values="0;0;1;1;0;0"/>
+    </text>
+    <text x="480" y="495" opacity="0">다시 채워지니 <tspan fill="#7ee7c7">시청자는 눈치채지 못합니다</tspan>
+      <animate attributeName="opacity" dur="14s" repeatCount="indefinite" keyTimes="0;0.785;0.795;0.955;0.965;1" values="0;0;1;1;0;0"/>
+    </text>
+  </g>
+<g aria-label="재생 단계"><rect x="40" y="28" width="88" height="40" rx="20" fill="#171a21" stroke="#3d4b60" stroke-width="2"/><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="1">1 / 4<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.175;0.185;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">2 / 4<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.175;0.185;0.475;0.485;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">3 / 4<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.475;0.485;0.775;0.785;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">4 / 4<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.775;0.785;1" calcMode="discrete" dur="14s" repeatCount="indefinite"/></text></g>
+</svg>
