@@ -193,56 +193,6 @@ pages:
       - 9
       - 11
     illustrations: []
-    questions:
-    - id: u1-01-prerequisites-p02-q01
-      kind: choice
-      difficulty: easy
-      prompt: AND 연산 결과가 1이 되려면 입력은 어떠해야 하나요?
-      choices:
-      - id: c
-        text: 입력 중 하나만 1이면 됩니다
-        feedback: 다시 확인해 보세요. 두 입력이 모두 1이어야 합니다
-      - id: a
-        text: 두 입력이 모두 1이어야 합니다
-        feedback: 맞아요. 두 입력이 모두 1이어야 합니다
-      - id: e
-        text: 항상 첫 번째 입력을 따릅니다
-        feedback: 다시 확인해 보세요. 두 입력이 모두 1이어야 합니다
-      - id: b
-        text: 두 입력이 서로 달라야 합니다
-        feedback: 다시 확인해 보세요. 두 입력이 모두 1이어야 합니다
-      - id: d
-        text: 두 입력이 모두 0이어야 합니다
-        feedback: 다시 확인해 보세요. 두 입력이 모두 1이어야 합니다
-      answer: a
-    - id: u1-01-prerequisites-p02-q02
-      kind: choice
-      difficulty: medium
-      prompt: 1011에 0010 마스크를 AND로 적용하면 결과는 무엇인가요?
-      choices:
-      - id: d
-        text: '0000'
-        feedback: 다시 확인해 보세요. 0010
-      - id: b
-        text: '1111'
-        feedback: 다시 확인해 보세요. 0010
-      - id: a
-        text: '0010'
-        feedback: 맞아요. 0010
-      - id: e
-        text: '1101'
-        feedback: 다시 확인해 보세요. 0010
-      - id: c
-        text: '1011'
-        feedback: 다시 확인해 보세요. 0010
-      answer: a
-    - id: u1-01-prerequisites-p02-q03
-      kind: short
-      prompt: '핵심 개념을 입력해 보세요: 마스크'
-      answers:
-      - 마스크
-      - 마스크
-      feedback: 정답은 마스크입니다.
   - concepts:
       - concept-basic-01-05
       - concept-basic-01-06
@@ -250,56 +200,6 @@ pages:
       - 4
       - 13
     illustrations: []
-    questions:
-    - id: u1-01-prerequisites-p03-q01
-      kind: choice
-      difficulty: easy
-      prompt: 16진수에서 사용할 수 있는 기호는 무엇인가요?
-      choices:
-      - id: d
-        text: 0부터 9와 A부터 Z까지 사용합니다
-        feedback: 다시 확인해 보세요. 0부터 9와 A부터 F입니다
-      - id: b
-        text: 0과 1만 사용합니다
-        feedback: 다시 확인해 보세요. 0부터 9와 A부터 F입니다
-      - id: a
-        text: 0부터 9와 A부터 F입니다
-        feedback: 맞아요. 0부터 9와 A부터 F입니다
-      - id: e
-        text: 1부터 16까지의 숫자만 사용합니다
-        feedback: 다시 확인해 보세요. 0부터 9와 A부터 F입니다
-      - id: c
-        text: 0부터 7까지 사용합니다
-        feedback: 다시 확인해 보세요. 0부터 9와 A부터 F입니다
-      answer: a
-    - id: u1-01-prerequisites-p03-q02
-      kind: choice
-      difficulty: medium
-      prompt: 4비트 1011의 값은 얼마인가요?
-      choices:
-      - id: c
-        text: '10'
-        feedback: 다시 확인해 보세요. 11
-      - id: a
-        text: '11'
-        feedback: 맞아요. 11
-      - id: e
-        text: '13'
-        feedback: 다시 확인해 보세요. 11
-      - id: b
-        text: '9'
-        feedback: 다시 확인해 보세요. 11
-      - id: d
-        text: '12'
-        feedback: 다시 확인해 보세요. 11
-      answer: a
-    - id: u1-01-prerequisites-p03-q03
-      kind: short
-      prompt: '핵심 개념을 입력해 보세요: 16진수'
-      answers:
-      - 16진수
-      - 16진수
-      feedback: 정답은 16진수입니다.
   - concepts:
       - concept-basic-01-07
       - concept-basic-01-08
@@ -312,56 +212,6 @@ pages:
           장치에 닿습니다.
         caption: 애플리케이션과 네트워크 장치 사이에서 운영체제와 드라이버가 일을 나눕니다.
         after_paragraph: 5
-    questions:
-    - id: u1-01-prerequisites-p04-q01
-      kind: choice
-      difficulty: easy
-      prompt: 택배 상자가 불규칙하게 도착하고 작업자가 일정한 속도로 내보낼 때 임시 선반은 어떤 역할을 하나요?
-      choices:
-      - id: c
-        text: 상자 내용을 암호화합니다
-        feedback: 다시 확인해 보세요. 도착과 처리 속도의 차이를 잠시 흡수합니다
-      - id: a
-        text: 도착과 처리 속도의 차이를 잠시 흡수합니다
-        feedback: 맞아요. 도착과 처리 속도의 차이를 잠시 흡수합니다
-      - id: e
-        text: 상자 크기를 모두 같게 만듭니다
-        feedback: 다시 확인해 보세요. 도착과 처리 속도의 차이를 잠시 흡수합니다
-      - id: b
-        text: 택배의 주소를 자동으로 바꿉니다
-        feedback: 다시 확인해 보세요. 도착과 처리 속도의 차이를 잠시 흡수합니다
-      - id: d
-        text: 네트워크 연결을 끊습니다
-        feedback: 다시 확인해 보세요. 도착과 처리 속도의 차이를 잠시 흡수합니다
-      answer: a
-    - id: u1-01-prerequisites-p04-q02
-      kind: choice
-      difficulty: medium
-      prompt: 선반이 비었을 때 일어나는 일로 알맞은 것은 무엇인가요?
-      choices:
-      - id: d
-        text: 선반이 속도를 높여 상자를 만들어 냅니다
-        feedback: 다시 확인해 보세요. 다음 상자가 도착할 때까지 작업자가 기다립니다
-      - id: b
-        text: 작업자가 빈 상자를 만들어 보냅니다
-        feedback: 다시 확인해 보세요. 다음 상자가 도착할 때까지 작업자가 기다립니다
-      - id: a
-        text: 다음 상자가 도착할 때까지 작업자가 기다립니다
-        feedback: 맞아요. 다음 상자가 도착할 때까지 작업자가 기다립니다
-      - id: e
-        text: 상자가 도착하지 않아도 계속 처리합니다
-        feedback: 다시 확인해 보세요. 다음 상자가 도착할 때까지 작업자가 기다립니다
-      - id: c
-        text: 이전 상자가 자동으로 복제됩니다
-        feedback: 다시 확인해 보세요. 다음 상자가 도착할 때까지 작업자가 기다립니다
-      answer: a
-    - id: u1-01-prerequisites-p04-q03
-      kind: short
-      prompt: '핵심 개념을 입력해 보세요: 버퍼'
-      answers:
-      - 버퍼
-      - 버퍼
-      feedback: 정답은 버퍼입니다.
   - concepts:
       - concept-basic-01-09
     illustration_after_paragraph: []
@@ -377,56 +227,6 @@ pages:
         alt: 맨 아래 NIC 상자 위에 드라이버 블록이 끼워지고, 그 위에 TCP와 IP 블록이 차례로 쌓이는 장면입니다.
         caption: ‘정보를 주고받는다’는 개념이 실제로는 여러 소프트웨어와 장치의 협력으로 구현됩니다.
         after_paragraph: 6
-    questions:
-    - id: u1-01-prerequisites-p05-q01
-      kind: choice
-      difficulty: easy
-      prompt: 개념과 구현의 차이를 가장 잘 설명한 것은 무엇인가요?
-      choices:
-      - id: d
-        text: 구현은 아직 만들지 않은 생각입니다
-        feedback: 다시 확인해 보세요. 개념은 생각의 틀이고 구현은 실제로 동작하게 만든 것입니다
-      - id: b
-        text: 개념은 하드웨어이고 구현은 설명 문장입니다
-        feedback: 다시 확인해 보세요. 개념은 생각의 틀이고 구현은 실제로 동작하게 만든 것입니다
-      - id: a
-        text: 개념은 생각의 틀이고 구현은 실제로 동작하게 만든 것입니다
-        feedback: 맞아요. 개념은 생각의 틀이고 구현은 실제로 동작하게 만든 것입니다
-      - id: e
-        text: 개념은 실행 중인 프로그램만 뜻합니다
-        feedback: 다시 확인해 보세요. 개념은 생각의 틀이고 구현은 실제로 동작하게 만든 것입니다
-      - id: c
-        text: 개념과 구현은 항상 같은 것입니다
-        feedback: 다시 확인해 보세요. 개념은 생각의 틀이고 구현은 실제로 동작하게 만든 것입니다
-      answer: a
-    - id: u1-01-prerequisites-p05-q02
-      kind: choice
-      difficulty: medium
-      prompt: 택배를 일정한 순서로 처리한다는 목표와 실제 분류 장치의 관계는 무엇인가요?
-      choices:
-      - id: c
-        text: 둘 다 물리적 네트워크 주소입니다
-        feedback: 다시 확인해 보세요. 목표는 개념이고 장치는 그 목표를 실현한 구현입니다
-      - id: a
-        text: 목표는 개념이고 장치는 그 목표를 실현한 구현입니다
-        feedback: 맞아요. 목표는 개념이고 장치는 그 목표를 실현한 구현입니다
-      - id: e
-        text: 구현은 목표와 무관합니다
-        feedback: 다시 확인해 보세요. 목표는 개념이고 장치는 그 목표를 실현한 구현입니다
-      - id: b
-        text: 목표가 구현이고 장치가 개념입니다
-        feedback: 다시 확인해 보세요. 목표는 개념이고 장치는 그 목표를 실현한 구현입니다
-      - id: d
-        text: 장치는 개념을 설명하는 용어일 뿐입니다
-        feedback: 다시 확인해 보세요. 목표는 개념이고 장치는 그 목표를 실현한 구현입니다
-      answer: a
-    - id: u1-01-prerequisites-p05-q03
-      kind: short
-      prompt: '핵심 개념을 입력해 보세요: 구현'
-      answers:
-      - 구현
-      - 구현
-      feedback: 정답은 구현입니다.
 animations_dir: units/01-before-networking/lessons/01-prerequisites/assets/animations
 ---
 ## 수강 전에 필요한 바탕과 비트·바이트
@@ -489,6 +289,8 @@ AND 마스크로 필요한 비트만 골라낼 수 있게 되면, 그 결과를 
 
 한 가지 짚을 점이 있습니다. 전화번호는 끊는 위치가 마음대로이지만, 16진수는 반드시 4비트씩 끊습니다. 또 ‘10’이라는 글자는 10진수에서는 열, 2진수에서는 둘, 16진수에서는 열여섯을 뜻해서, 16진수에는 0xB2 처럼 앞에 0x를 붙여 진법을 밝히기도 합니다. 한 줄로 되짚으면, 2진수를 4비트씩 끊어 한 글자씩 바꾸면 긴 0과 1이 짧은 16진수가 됩니다. 이 관계가 낯설다면 정리문 말대로 먼저 확인해 두기를 권합니다.
 
+<!-- quiz: quiz-u1-l01-p02 -->
+
 ## 프로그램·프로세스와 OSI
 
 ### 프로그램과 실행 중인 프로세스
@@ -520,6 +322,8 @@ OSI 7 layer(OSI 7계층)는 네트워크가 하는 일을 일곱 층으로 나�
 그러면 왜 실제 동작을 먼저 익히라고 할까요? 지도는 길을 걸어 본 사람에게 더 잘 읽히기 때문입니다. 웹 브라우저에서 사이트 주소를 눌러 사진을 내려받는다고 해 봅시다. 요청은 우리가 쓰는 프로그램에서 출발해 아래로 한 단계씩 내려가고, 맨 아래에서 신호가 되어 나갑니다. 이 흐름을 한 번 따라가 본 뒤에 ‘프로그램에 맞닿은 맨 위가 응용, 신호가 나가는 맨 아래가 물리’라고 이름을 붙이면 일곱 층은 외울 목록이 아니라 방금 걸은 길의 구간 이름이 됩니다.
 
 정리문은 이 권유의 이유를 ‘뒤에서 설명한다’고 하므로, 여기서는 단정하지 않고 그 자리에서 확인하겠습니다. 다만 비유는 여기까지입니다. OSI는 땅의 모양을 그린 지도가 아니라 일의 나눔을 그린 것이어서, 그 뜻은 실제 동작을 익힌 뒤에 훨씬 쉽게 다가옵니다. 한 줄로 되짚으면, OSI는 이름만 기억해 두고 구체적인 동작부터 걸어 보는 구역도입니다.
+
+<!-- quiz: quiz-u1-l01-p03 -->
 
 ## User mode·Kernel mode와 버퍼
 
@@ -553,6 +357,8 @@ User mode와 Kernel mode가 컴퓨터 안의 서로 다른 장소는 아닙니�
 
 화면에 “버퍼링 중…”이라고 쓰여도 그 말이 임시 공간 자체를 가리키는 것은 아닙니다. 버퍼는 데이터를 잠깐 담는 메모리 공간이고, 버퍼링은 도착과 사용의 속도 차이를 다루기 위해 데이터를 잠시 쌓아 두고 꺼내 쓰는 과정입니다. 택배 선반은 이 흐름을 눈에 보이게 보여 주지만, 컴퓨터의 버퍼는 동영상뿐 아니라 파일 읽기나 네트워크 장비 등 여러 곳에서 사용됩니다. 한 줄로 되짚으면, 버퍼는 데이터가 잠시 머무는 자리이고 버퍼링은 데이터가 그 자리를 거쳐 가는 과정입니다.
 
+<!-- quiz: quiz-u1-l01-p04 -->
+
 ## 개념과 구현
 
 ### 개념은 무엇을, 구현은 어떻게
@@ -580,3 +386,5 @@ IT 공부에서 헷갈리는 순간의 상당수는 이 둘을 섞어 읽을 때
 한 가지 대상을 두 층위에서 말할 수도 있습니다. “도착과 사용 속도가 다를 때 데이터를 잠시 담아 둔다”는 것은 버퍼의 역할을 설명하는 개념입니다. “브라우저가 메모리의 몇 바이트를 예약하고, 데이터 조각을 정해진 순서로 넣고 뺀다”는 말은 구체적인 구현을 설명합니다. 새 단어를 만나면 어느 쪽 설명인지 찾아보면 개념이 더 선명해집니다.
 
 마지막으로 짧게 구별해 봅시다. “영상이 끊기지 않도록 도착한 조각을 잠시 모아 둔다”는 문장은 어떤 목적을 말하므로 개념에 가깝습니다. “플레이어가 메모리에 영상 조각을 저장하고 재생 위치에 맞춰 차례로 읽는다”는 문장은 어떻게 하는지를 말하므로 구현에 가깝습니다. 구현 방법은 바뀔 수 있고, 그때마다 속도나 저장 공간 같은 장단점도 달라집니다. 개념과 구현을 나누면 바뀐 방법 속에서도 변하지 않은 목적을 다시 찾을 수 있습니다.
+
+<!-- quiz: quiz-u1-l01-p05 -->
