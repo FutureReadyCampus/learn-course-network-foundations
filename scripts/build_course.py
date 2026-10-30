@@ -21,13 +21,15 @@ def page_questions(value, path: Path, page_number: int) -> list[dict]:
         return []
     if len(value) < 3:
         raise ValueError(f"Page needs at least three questions in {path}, page {page_number}")
-    expected = [("choice", "easy"), ("choice", "medium"), ("short", None)]
+    expected = [("choice", "easy"), ("choice", "medium")]
     for index, question in enumerate(value, 1):
         where = f"{path}, page {page_number}, question {index}"
         if not isinstance(question, dict) or not isinstance(question.get("prompt"), str) or not question["prompt"].strip():
             raise ValueError(f"Question needs a prompt in {where}")
         kind = question.get("kind")
         if index <= len(expected) and (kind, question.get("difficulty")) != expected[index - 1]:
+            raise ValueError(f"Unexpected question kind or difficulty in slot {index} in {where}")
+        if index == 3 and (kind, question.get("difficulty")) not in {("short", None), ("choice", "medium")}:
             raise ValueError(f"Unexpected question kind or difficulty in slot {index} in {where}")
         if kind == "choice":
             choices = question.get("choices")

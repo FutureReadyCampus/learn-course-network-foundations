@@ -107,11 +107,12 @@ pages:
       answer: a
     - id: u1-02-layered-structure-p01-q03
       kind: short
-      prompt: '핵심 개념을 입력해 보세요: Layer'
+      prompt: 여러 요소를 층처럼 쌓아 요소 사이의 관계까지 나타내는 구조를 무엇이라고 하나요?
       answers:
-      - Layer
-      - layer
-      feedback: 정답은 Layer입니다.
+      - Layered 구조
+      - 계층 구조
+      - layered structure
+      feedback: Layered 구조(계층 구조)는 요소를 층처럼 쌓아 요소 사이의 관계까지 나타냅니다.
     questions:
     - id: u1-02-layered-structure-p01-q01
       kind: choice
@@ -157,17 +158,23 @@ pages:
       answer: a
     - id: u1-02-layered-structure-p01-q03
       kind: short
-      prompt: '핵심 개념을 입력해 보세요: Layer'
+      prompt: 여러 요소를 층처럼 쌓아 요소 사이의 관계까지 나타내는 구조를 무엇이라고 하나요?
       answers:
-      - Layer
-      - layer
-      feedback: 정답은 Layer입니다.
+      - Layered 구조
+      - 계층 구조
+      - layered structure
+      feedback: Layered 구조(계층 구조)는 요소를 층처럼 쌓아 요소 사이의 관계까지 나타냅니다.
   - concepts:
       - concept-basic-02-04
       - concept-basic-02-05
       - concept-basic-02-06
     illustration_after_paragraph: []
     illustrations:
+      - file: assets/l02-layer-dependency.svg
+        title: 아래 층이 빠지면 위 층이 무너진다
+        alt: 3층과 4층 두 개의 네모 상자가 위아래로 쌓여 있고, 4층에서 3층으로 화살표가 아래로 향합니다. 3층을 빼내자 4층이 아래로 내려앉으며 흐려집니다.
+        caption: 아래의 전제가 있어야 위 단계가 성립하는 관계를 먼저 살펴보세요.
+        after_paragraph: -1
       - file: assets/l04-layer-map.svg
         title: OSI의 계층을 실제 기술과 연결하기
         alt: 왼쪽의 OSI 층 사다리가 오른쪽의 Chrome, TCP, IP, 드라이버, NIC 칸과 선으로 이어지고, User mode와 Kernel mode와 하드웨어 영역이 색으로 구분되는
