@@ -1,52 +1,251 @@
 quizzes:
   quiz-u1-l01-p01:
     questions:
-      - id: u1-01-prerequisites-p01-q01
-        kind: choice
-        difficulty: easy
-        prompt: 네트워크에서 비트와 바이트의 관계는 무엇인가요?
-        choices:
-          - id: d
-            text: 비트와 바이트는 같은 단위입니다
-            feedback: 다시 확인해 보세요. 1바이트는 8비트입니다
-          - id: b
-            text: 1비트는 8바이트입니다
-            feedback: 다시 확인해 보세요. 1바이트는 8비트입니다
-          - id: a
-            text: 1바이트는 8비트입니다
-            feedback: 맞아요. 1바이트는 8비트입니다
-          - id: e
-            text: 바이트는 네트워크에서만 쓰는 단위입니다
-            feedback: 다시 확인해 보세요. 1바이트는 8비트입니다
-          - id: c
-            text: 1바이트는 1,000비트입니다
-            feedback: 다시 확인해 보세요. 1바이트는 8비트입니다
-        answer: a
-      - id: u1-01-prerequisites-p01-q02
-        kind: choice
-        difficulty: medium
-        prompt: Mbps와 MB에서 소문자 b와 대문자 B는 각각 무엇을 뜻하나요?
-        choices:
-          - id: c
-            text: 소문자 b는 바이트, 대문자 B는 비트입니다
-            feedback: 다시 확인해 보세요. 소문자 b는 비트, 대문자 B는 바이트입니다
-          - id: a
-            text: 소문자 b는 비트, 대문자 B는 바이트입니다
-            feedback: 맞아요. 소문자 b는 비트, 대문자 B는 바이트입니다
-          - id: e
-            text: 대소문자는 단위에 영향을 주지 않습니다
-            feedback: 다시 확인해 보세요. 소문자 b는 비트, 대문자 B는 바이트입니다
-          - id: b
-            text: 둘 다 바이트를 뜻합니다
-            feedback: 다시 확인해 보세요. 소문자 b는 비트, 대문자 B는 바이트입니다
-          - id: d
-            text: 둘 다 비트/초를 뜻합니다
-            feedback: 다시 확인해 보세요. 소문자 b는 비트, 대문자 B는 바이트입니다
-        answer: a
-      - id: u1-01-prerequisites-p01-q03
-        kind: short
-        prompt: '핵심 개념을 입력해 보세요: 비트'
-        answers:
-          - 비트
-          - 비트
-        feedback: 정답은 비트입니다.
+    - id: u1-01-prerequisites-p01-q01
+      kind: choice
+      difficulty: easy
+      prompt: 네트워크에서 비트와 바이트의 관계는 무엇인가요?
+      choices:
+      - id: d
+        text: 비트와 바이트는 같은 단위입니다
+        feedback: 다시 확인해 보세요. 1바이트는 8비트입니다
+      - id: b
+        text: 1비트는 8바이트입니다
+        feedback: 다시 확인해 보세요. 1바이트는 8비트입니다
+      - id: a
+        text: 1바이트는 8비트입니다
+        feedback: 맞아요. 1바이트는 8비트입니다
+      - id: e
+        text: 바이트는 네트워크에서만 쓰는 단위입니다
+        feedback: 다시 확인해 보세요. 1바이트는 8비트입니다
+      - id: c
+        text: 1바이트는 1,000비트입니다
+        feedback: 다시 확인해 보세요. 1바이트는 8비트입니다
+      answer: a
+    - id: u1-01-prerequisites-p01-q02
+      kind: choice
+      difficulty: medium
+      prompt: Mbps와 MB에서 소문자 b와 대문자 B는 각각 무엇을 뜻하나요?
+      choices:
+      - id: c
+        text: 소문자 b는 바이트, 대문자 B는 비트입니다
+        feedback: 다시 확인해 보세요. 소문자 b는 비트, 대문자 B는 바이트입니다
+      - id: a
+        text: 소문자 b는 비트, 대문자 B는 바이트입니다
+        feedback: 맞아요. 소문자 b는 비트, 대문자 B는 바이트입니다
+      - id: e
+        text: 대소문자는 단위에 영향을 주지 않습니다
+        feedback: 다시 확인해 보세요. 소문자 b는 비트, 대문자 B는 바이트입니다
+      - id: b
+        text: 둘 다 바이트를 뜻합니다
+        feedback: 다시 확인해 보세요. 소문자 b는 비트, 대문자 B는 바이트입니다
+      - id: d
+        text: 둘 다 비트/초를 뜻합니다
+        feedback: 다시 확인해 보세요. 소문자 b는 비트, 대문자 B는 바이트입니다
+      answer: a
+    - id: u1-01-prerequisites-p01-q03
+      kind: short
+      prompt: 0 또는 1 하나를 나타내는 가장 작은 정보 단위는 무엇일까요? (영어 단어로 답해주세요)
+      answers:
+      - bit
+      feedback: 정답은 bit입니다.
+  quiz-u1-l01-p02:
+    questions:
+    - id: u1-01-prerequisites-p02-q01
+      kind: choice
+      difficulty: easy
+      prompt: AND 연산 결과가 1이 되려면 입력은 어떠해야 하나요?
+      choices:
+      - id: c
+        text: 입력 중 하나만 1이면 됩니다
+        feedback: 다시 확인해 보세요. 두 입력이 모두 1이어야 합니다
+      - id: a
+        text: 두 입력이 모두 1이어야 합니다
+        feedback: 맞아요. 두 입력이 모두 1이어야 합니다
+      - id: e
+        text: 항상 첫 번째 입력을 따릅니다
+        feedback: 다시 확인해 보세요. 두 입력이 모두 1이어야 합니다
+      - id: b
+        text: 두 입력이 서로 달라야 합니다
+        feedback: 다시 확인해 보세요. 두 입력이 모두 1이어야 합니다
+      - id: d
+        text: 두 입력이 모두 0이어야 합니다
+        feedback: 다시 확인해 보세요. 두 입력이 모두 1이어야 합니다
+      answer: a
+    - id: u1-01-prerequisites-p02-q02
+      kind: choice
+      difficulty: medium
+      prompt: 1011에 0010 마스크를 AND로 적용하면 결과는 무엇인가요?
+      choices:
+      - id: d
+        text: '0000'
+        feedback: 다시 확인해 보세요. 0010
+      - id: b
+        text: '1111'
+        feedback: 다시 확인해 보세요. 0010
+      - id: a
+        text: '0010'
+        feedback: 맞아요. 0010
+      - id: e
+        text: '1101'
+        feedback: 다시 확인해 보세요. 0010
+      - id: c
+        text: '1011'
+        feedback: 다시 확인해 보세요. 0010
+      answer: a
+    - id: u1-01-prerequisites-p02-q03
+      kind: short
+      prompt: 정보에서 필요한 부분만 골라내기 위해 쓰는 값은 무엇인가요? (영어 단어로 답해주세요)
+      answers:
+      - mask
+      feedback: 정답은 mask입니다.
+  quiz-u1-l01-p03:
+    questions:
+    - id: u1-01-prerequisites-p03-q01
+      kind: choice
+      difficulty: easy
+      prompt: 16진수에서 사용할 수 있는 기호는 무엇인가요?
+      choices:
+      - id: d
+        text: 0부터 9와 A부터 Z까지 사용합니다
+        feedback: 다시 확인해 보세요. 0부터 9와 A부터 F입니다
+      - id: b
+        text: 0과 1만 사용합니다
+        feedback: 다시 확인해 보세요. 0부터 9와 A부터 F입니다
+      - id: a
+        text: 0부터 9와 A부터 F입니다
+        feedback: 맞아요. 0부터 9와 A부터 F입니다
+      - id: e
+        text: 1부터 16까지의 숫자만 사용합니다
+        feedback: 다시 확인해 보세요. 0부터 9와 A부터 F입니다
+      - id: c
+        text: 0부터 7까지 사용합니다
+        feedback: 다시 확인해 보세요. 0부터 9와 A부터 F입니다
+      answer: a
+    - id: u1-01-prerequisites-p03-q02
+      kind: choice
+      difficulty: medium
+      prompt: 4비트 1011의 값은 얼마인가요?
+      choices:
+      - id: c
+        text: '10'
+        feedback: 다시 확인해 보세요. 11
+      - id: a
+        text: '11'
+        feedback: 맞아요. 11
+      - id: e
+        text: '13'
+        feedback: 다시 확인해 보세요. 11
+      - id: b
+        text: '9'
+        feedback: 다시 확인해 보세요. 11
+      - id: d
+        text: '12'
+        feedback: 다시 확인해 보세요. 11
+      answer: a
+    - id: u1-01-prerequisites-p03-q03
+      kind: short
+      prompt: 실행 중인 프로그램을 무엇이라고 하나요? (영어 단어로 답해주세요)
+      answers:
+      - process
+      feedback: 정답은 process입니다.
+  quiz-u1-l01-p04:
+    questions:
+    - id: u1-01-prerequisites-p04-q01
+      kind: choice
+      difficulty: easy
+      prompt: 택배 상자가 불규칙하게 도착하고 작업자가 일정한 속도로 내보낼 때 임시 선반은 어떤 역할을 하나요?
+      choices:
+      - id: c
+        text: 상자 내용을 암호화합니다
+        feedback: 다시 확인해 보세요. 도착과 처리 속도의 차이를 잠시 흡수합니다
+      - id: a
+        text: 도착과 처리 속도의 차이를 잠시 흡수합니다
+        feedback: 맞아요. 도착과 처리 속도의 차이를 잠시 흡수합니다
+      - id: e
+        text: 상자 크기를 모두 같게 만듭니다
+        feedback: 다시 확인해 보세요. 도착과 처리 속도의 차이를 잠시 흡수합니다
+      - id: b
+        text: 택배의 주소를 자동으로 바꿉니다
+        feedback: 다시 확인해 보세요. 도착과 처리 속도의 차이를 잠시 흡수합니다
+      - id: d
+        text: 네트워크 연결을 끊습니다
+        feedback: 다시 확인해 보세요. 도착과 처리 속도의 차이를 잠시 흡수합니다
+      answer: a
+    - id: u1-01-prerequisites-p04-q02
+      kind: choice
+      difficulty: medium
+      prompt: 선반이 비었을 때 일어나는 일로 알맞은 것은 무엇인가요?
+      choices:
+      - id: d
+        text: 선반이 속도를 높여 상자를 만들어 냅니다
+        feedback: 다시 확인해 보세요. 다음 상자가 도착할 때까지 작업자가 기다립니다
+      - id: b
+        text: 작업자가 빈 상자를 만들어 보냅니다
+        feedback: 다시 확인해 보세요. 다음 상자가 도착할 때까지 작업자가 기다립니다
+      - id: a
+        text: 다음 상자가 도착할 때까지 작업자가 기다립니다
+        feedback: 맞아요. 다음 상자가 도착할 때까지 작업자가 기다립니다
+      - id: e
+        text: 상자가 도착하지 않아도 계속 처리합니다
+        feedback: 다시 확인해 보세요. 다음 상자가 도착할 때까지 작업자가 기다립니다
+      - id: c
+        text: 이전 상자가 자동으로 복제됩니다
+        feedback: 다시 확인해 보세요. 다음 상자가 도착할 때까지 작업자가 기다립니다
+      answer: a
+    - id: u1-01-prerequisites-p04-q03
+      kind: short
+      prompt: 데이터를 잠시 담아 두는 메모리 공간은 무엇인가요? (영어 단어로 답해주세요)
+      answers:
+      - buffer
+      feedback: 정답은 buffer입니다.
+  quiz-u1-l01-p05:
+    questions:
+    - id: u1-01-prerequisites-p05-q01
+      kind: choice
+      difficulty: easy
+      prompt: 개념과 구현의 차이를 가장 잘 설명한 것은 무엇인가요?
+      choices:
+      - id: d
+        text: 구현은 아직 만들지 않은 생각입니다
+        feedback: 다시 확인해 보세요. 개념은 생각의 틀이고 구현은 실제로 동작하게 만든 것입니다
+      - id: b
+        text: 개념은 하드웨어이고 구현은 설명 문장입니다
+        feedback: 다시 확인해 보세요. 개념은 생각의 틀이고 구현은 실제로 동작하게 만든 것입니다
+      - id: a
+        text: 개념은 생각의 틀이고 구현은 실제로 동작하게 만든 것입니다
+        feedback: 맞아요. 개념은 생각의 틀이고 구현은 실제로 동작하게 만든 것입니다
+      - id: e
+        text: 개념은 실행 중인 프로그램만 뜻합니다
+        feedback: 다시 확인해 보세요. 개념은 생각의 틀이고 구현은 실제로 동작하게 만든 것입니다
+      - id: c
+        text: 개념과 구현은 항상 같은 것입니다
+        feedback: 다시 확인해 보세요. 개념은 생각의 틀이고 구현은 실제로 동작하게 만든 것입니다
+      answer: a
+    - id: u1-01-prerequisites-p05-q02
+      kind: choice
+      difficulty: medium
+      prompt: 택배를 일정한 순서로 처리한다는 목표와 실제 분류 장치의 관계는 무엇인가요?
+      choices:
+      - id: c
+        text: 둘 다 물리적 네트워크 주소입니다
+        feedback: 다시 확인해 보세요. 목표는 개념이고 장치는 그 목표를 실현한 구현입니다
+      - id: a
+        text: 목표는 개념이고 장치는 그 목표를 실현한 구현입니다
+        feedback: 맞아요. 목표는 개념이고 장치는 그 목표를 실현한 구현입니다
+      - id: e
+        text: 구현은 목표와 무관합니다
+        feedback: 다시 확인해 보세요. 목표는 개념이고 장치는 그 목표를 실현한 구현입니다
+      - id: b
+        text: 목표가 구현이고 장치가 개념입니다
+        feedback: 다시 확인해 보세요. 목표는 개념이고 장치는 그 목표를 실현한 구현입니다
+      - id: d
+        text: 장치는 개념을 설명하는 용어일 뿐입니다
+        feedback: 다시 확인해 보세요. 목표는 개념이고 장치는 그 목표를 실현한 구현입니다
+      answer: a
+    - id: u1-01-prerequisites-p05-q03
+      kind: short
+      prompt: 세부를 잠시 접어 두고 무엇을 할지 남기는 생각을 무엇이라고 하나요? (영어 단어로 답해주세요)
+      answers:
+      - abstraction
+      feedback: 정답은 abstraction입니다.
