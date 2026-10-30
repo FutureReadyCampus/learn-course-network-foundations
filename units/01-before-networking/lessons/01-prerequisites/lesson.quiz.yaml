@@ -287,7 +287,7 @@ quizzes:
       answer: a
     - id: u1-01-prerequisites-p05-q03
       kind: short
-      prompt: 세부 구현은 잠시 덮어 두고, 무엇을 하려는지에 초점을 맞춰 설명하는 관점입니다. 다음 설명이 가리키는 개념은 무엇일까요? (영어 단어로 답해주세요)
+      prompt: 생각한 목적을 실제로 해내는 구체적인 방법과 모양입니다. 이 개념을 영어 단어로 답해주세요.
       answers:
-      - abstraction
-      feedback: 정답은 abstraction입니다.
+      - implementation
+      feedback: 정답은 implementation입니다.
