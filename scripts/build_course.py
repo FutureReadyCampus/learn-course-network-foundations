@@ -104,12 +104,21 @@ def authored_reading_pages(path: Path, lesson_meta: dict, animation_assets: dict
     sections = re.findall(r"^## (.+?)\s*\n(.*?)(?=^## |\Z)", source, re.M | re.S)
     pages_meta = lesson_meta.get("pages", [])
     concepts = {item["id"]: item for item in lesson_meta.get("concepts", [])}
+    quiz_file = lesson_meta.get("quiz_file")
+    quiz_sets = {}
+    if quiz_file:
+        quiz_path = lesson_asset(path, quiz_file, lesson_meta, animation_assets)
+        quiz_data = yaml.safe_load(quiz_path.read_text(encoding="utf-8")) or {}
+        quiz_sets = quiz_data.get("quizzes", {})
+        if not isinstance(quiz_sets, dict):
+            raise ValueError(f"Quiz file needs a quizzes mapping: {quiz_path}")
     if not sections or len(sections) != len(pages_meta):
         raise ValueError(f"Page metadata does not match Lesson headings in {path}")
 
     illustrated = set(lesson_meta.get("illustrated_concepts", []))
     diagram = lesson_meta.get("diagram", {}).get("file")
     pages = []
+    used_quizzes = set()
     for index, (heading, body) in enumerate(sections):
         metadata = pages_meta[index]
         concept_ids = metadata.get("concepts", [])
@@ -117,14 +126,30 @@ def authored_reading_pages(path: Path, lesson_meta: dict, animation_assets: dict
         if missing:
             raise ValueError(f"Unknown Page concepts in {path}: {', '.join(missing)}")
         selected = [concepts[concept_id] for concept_id in concept_ids]
+        inline_quizzes = []
+        markers = list(re.finditer(r"<!--\s*quiz:\s*([\w-]+)\s*-->", body))
+        for marker in markers:
+            quiz_id = marker.group(1)
+            if quiz_id not in quiz_sets or quiz_id in used_quizzes:
+                raise ValueError(f"Unknown or repeated quiz marker {quiz_id!r} in {path}, page {index + 1}")
+            before_marker = re.sub(r"<!--\s*quiz:\s*[\w-]+\s*-->", "", body[:marker.start()])
+            inline_quizzes.append({
+                "id": quiz_id,
+                "after_paragraph": len(split_paragraphs(before_marker)),
+                "questions": page_questions(quiz_sets[quiz_id].get("questions"), path, index + 1),
+            })
+            used_quizzes.add(quiz_id)
+        clean_body = re.sub(r"<!--\s*quiz:\s*[\w-]+\s*-->", "", body)
         page = {
             "title": re.sub(r"\s*·\s*\d+:\d+.*$", "", heading).strip(),
-            "paragraphs": split_paragraphs(body),
+            "paragraphs": split_paragraphs(clean_body),
             "terms": list(dict.fromkeys(
                 term["term"] for concept in selected for term in concept.get("terms", [])
             )),
             "questions": page_questions(metadata.get("questions", []), path, index + 1),
         }
+        if inline_quizzes:
+            page["inline_quizzes"] = inline_quizzes
         illustrations = []
         if index == 0 and diagram:
             asset = lesson_asset(path, diagram, lesson_meta, animation_assets)
@@ -169,6 +194,9 @@ def authored_reading_pages(path: Path, lesson_meta: dict, animation_assets: dict
         if illustrations:
             page["illustrations"] = illustrations
         pages.append(page)
+    if used_quizzes != set(quiz_sets):
+        unused = sorted(set(quiz_sets) - used_quizzes)
+        raise ValueError(f"Quiz file has unplaced quizzes in {path}: {', '.join(unused)}")
     return pages
 
 

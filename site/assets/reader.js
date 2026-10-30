@@ -22,7 +22,7 @@
   const imageSrc = (src) => src?.startsWith("/api/v1/network-course-assets/")
     ? `${base}/assets/course-assets/${src.slice("/api/v1/network-course-assets/".length)}`
     : src;
-  const renderProse = (paragraphs = [], illustrations = []) => {
+  const renderProse = (paragraphs = [], illustrations = [], inlineQuizzes = [], renderInlineQuiz = () => null) => {
     const prose = document.createElement("div");
     prose.className = "net-prose";
     let list = [];
@@ -49,7 +49,14 @@
       flush();
       items.forEach((illustration) => prose.append(renderIllustration(illustration)));
     };
+    const appendQuizzes = (index) => {
+      const items = inlineQuizzes.filter((quiz) => quiz.after_paragraph === index);
+      if (!items.length) return;
+      flush();
+      items.forEach((quiz) => prose.append(renderInlineQuiz(quiz)));
+    };
     appendIllustrations(-1);
+    appendQuizzes(0);
     for (const [index, text] of paragraphs.entries()) {
       const lines = String(text).split("\n");
       const heading = lines.length === 1 ? text.match(/^(#{3,4})\s+(.+)$/) : null;
@@ -76,6 +83,7 @@
         }
       }
       appendIllustrations(index);
+      appendQuizzes(index + 1);
     }
     flush();
     return prose;
@@ -261,15 +269,21 @@
     const title = document.createElement("h1");
     title.textContent = page.title;
     main.append(title);
-    const prose = renderProse(page.paragraphs || [], page.illustrations || []);
-    main.append(prose);
     const questions = page.questions || [];
+    const inlineQuizzes = page.inline_quizzes || [];
+    const allQuestions = [...questions, ...inlineQuizzes.flatMap((quiz) => quiz.questions)];
     const pageKey = `${item.lesson.id}:${state.pageIndex}`;
-    let pageComplete = !questions.length || questions.every((question) => (state.quizPassed?.[pageKey] || []).includes(question.id));
     let nextPage;
-    if (questions.length) main.append(renderQuiz(questions, state, pageKey, (complete) => {
-      pageComplete = complete;
+    let pageComplete = !allQuestions.length || allQuestions.every((question) => (state.quizPassed?.[pageKey] || []).includes(question.id));
+    const updatePageProgress = () => {
+      pageComplete = allQuestions.every((question) => (state.quizPassed?.[pageKey] || []).includes(question.id));
       if (nextPage) nextPage.disabled = !pageComplete;
+    };
+    const prose = renderProse(page.paragraphs || [], page.illustrations || [], inlineQuizzes,
+      (quiz) => renderQuiz(quiz.questions, state, pageKey, updatePageProgress));
+    main.append(prose);
+    if (questions.length) main.append(renderQuiz(questions, state, pageKey, (complete) => {
+      updatePageProgress();
     }));
     const previous = list[state.lessonIndex - 1];
     const next = list[state.lessonIndex + 1];

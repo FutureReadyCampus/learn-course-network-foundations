@@ -1,0 +1,52 @@
+quizzes:
+  quiz-u1-l01-p01:
+    questions:
+      - id: u1-01-prerequisites-p01-q01
+        kind: choice
+        difficulty: easy
+        prompt: 네트워크에서 비트와 바이트의 관계는 무엇인가요?
+        choices:
+          - id: d
+            text: 비트와 바이트는 같은 단위입니다
+            feedback: 다시 확인해 보세요. 1바이트는 8비트입니다
+          - id: b
+            text: 1비트는 8바이트입니다
+            feedback: 다시 확인해 보세요. 1바이트는 8비트입니다
+          - id: a
+            text: 1바이트는 8비트입니다
+            feedback: 맞아요. 1바이트는 8비트입니다
+          - id: e
+            text: 바이트는 네트워크에서만 쓰는 단위입니다
+            feedback: 다시 확인해 보세요. 1바이트는 8비트입니다
+          - id: c
+            text: 1바이트는 1,000비트입니다
+            feedback: 다시 확인해 보세요. 1바이트는 8비트입니다
+        answer: a
+      - id: u1-01-prerequisites-p01-q02
+        kind: choice
+        difficulty: medium
+        prompt: Mbps와 MB에서 소문자 b와 대문자 B는 각각 무엇을 뜻하나요?
+        choices:
+          - id: c
+            text: 소문자 b는 바이트, 대문자 B는 비트입니다
+            feedback: 다시 확인해 보세요. 소문자 b는 비트, 대문자 B는 바이트입니다
+          - id: a
+            text: 소문자 b는 비트, 대문자 B는 바이트입니다
+            feedback: 맞아요. 소문자 b는 비트, 대문자 B는 바이트입니다
+          - id: e
+            text: 대소문자는 단위에 영향을 주지 않습니다
+            feedback: 다시 확인해 보세요. 소문자 b는 비트, 대문자 B는 바이트입니다
+          - id: b
+            text: 둘 다 바이트를 뜻합니다
+            feedback: 다시 확인해 보세요. 소문자 b는 비트, 대문자 B는 바이트입니다
+          - id: d
+            text: 둘 다 비트/초를 뜻합니다
+            feedback: 다시 확인해 보세요. 소문자 b는 비트, 대문자 B는 바이트입니다
+        answer: a
+      - id: u1-01-prerequisites-p01-q03
+        kind: short
+        prompt: '핵심 개념을 입력해 보세요: 비트'
+        answers:
+          - 비트
+          - 비트
+        feedback: 정답은 비트입니다.
