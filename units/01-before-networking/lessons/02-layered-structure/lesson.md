@@ -62,6 +62,106 @@ pages:
     illustration_after_paragraph:
       - 12
     illustrations: []
+    questions:
+    - id: u1-02-layered-structure-p01-q01
+      kind: choice
+      difficulty: easy
+      prompt: Layer(레이어)는 무슨 뜻인가요?
+      choices:
+      - id: d
+        text: 통신 속도
+        feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
+      - id: b
+        text: 네트워크 주소
+        feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
+      - id: a
+        text: 층 또는 구성 요소 하나입니다
+        feedback: 맞아요. 층 또는 구성 요소 하나입니다
+      - id: e
+        text: 실행 중인 프로그램
+        feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
+      - id: c
+        text: 파일의 크기
+        feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
+      answer: a
+    - id: u1-02-layered-structure-p01-q02
+      kind: choice
+      difficulty: medium
+      prompt: 계층 그림을 위아래로 쌓아 표현하면 무엇을 함께 볼 수 있나요?
+      choices:
+      - id: c
+        text: 각 요소의 실제 물리적 크기를 알 수 있습니다
+        feedback: 다시 확인해 보세요. 요소와 요소 사이의 관계를 함께 볼 수 있습니다
+      - id: a
+        text: 요소와 요소 사이의 관계를 함께 볼 수 있습니다
+        feedback: 맞아요. 요소와 요소 사이의 관계를 함께 볼 수 있습니다
+      - id: e
+        text: 요소가 만들어진 날짜를 알 수 있습니다
+        feedback: 다시 확인해 보세요. 요소와 요소 사이의 관계를 함께 볼 수 있습니다
+      - id: b
+        text: 요소의 이름만 볼 수 있습니다
+        feedback: 다시 확인해 보세요. 요소와 요소 사이의 관계를 함께 볼 수 있습니다
+      - id: d
+        text: 통신 속도만 알 수 있습니다
+        feedback: 다시 확인해 보세요. 요소와 요소 사이의 관계를 함께 볼 수 있습니다
+      answer: a
+    - id: u1-02-layered-structure-p01-q03
+      kind: short
+      prompt: '핵심 개념을 입력해 보세요: Layer'
+      answers:
+      - Layer
+      - layer
+      feedback: 정답은 Layer입니다.
+    questions:
+    - id: u1-02-layered-structure-p01-q01
+      kind: choice
+      difficulty: easy
+      prompt: Layer(레이어)는 무슨 뜻인가요?
+      choices:
+      - id: d
+        text: 통신 속도
+        feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
+      - id: b
+        text: 네트워크 주소
+        feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
+      - id: a
+        text: 층 또는 구성 요소 하나입니다
+        feedback: 맞아요. 층 또는 구성 요소 하나입니다
+      - id: e
+        text: 실행 중인 프로그램
+        feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
+      - id: c
+        text: 파일의 크기
+        feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
+      answer: a
+    - id: u1-02-layered-structure-p01-q02
+      kind: choice
+      difficulty: medium
+      prompt: 계층 그림을 위아래로 쌓아 표현하면 무엇을 함께 볼 수 있나요?
+      choices:
+      - id: c
+        text: 각 요소의 실제 물리적 크기를 알 수 있습니다
+        feedback: 다시 확인해 보세요. 요소와 요소 사이의 관계를 함께 볼 수 있습니다
+      - id: a
+        text: 요소와 요소 사이의 관계를 함께 볼 수 있습니다
+        feedback: 맞아요. 요소와 요소 사이의 관계를 함께 볼 수 있습니다
+      - id: e
+        text: 요소가 만들어진 날짜를 알 수 있습니다
+        feedback: 다시 확인해 보세요. 요소와 요소 사이의 관계를 함께 볼 수 있습니다
+      - id: b
+        text: 요소의 이름만 볼 수 있습니다
+        feedback: 다시 확인해 보세요. 요소와 요소 사이의 관계를 함께 볼 수 있습니다
+      - id: d
+        text: 통신 속도만 알 수 있습니다
+        feedback: 다시 확인해 보세요. 요소와 요소 사이의 관계를 함께 볼 수 있습니다
+      answer: a
+    - id: u1-02-layered-structure-p01-q03
+      kind: short
+      prompt: '핵심 개념을 입력해 보세요: Layer'
+      answers:
+      - Layer
+      - layer
+      feedback: 정답은 Layer입니다.
   - concepts:
       - concept-basic-02-04
       - concept-basic-02-05
@@ -74,6 +174,106 @@ pages:
           장면입니다.
         caption: OSI라는 설명 틀을 TCP, IP, 드라이버와 NIC의 구현 위치에 연결해 봅니다.
         after_paragraph: 12
+    questions:
+    - id: u1-02-layered-structure-p02-q01
+      kind: choice
+      difficulty: easy
+      prompt: 어떤 요소가 성립하기 전에 갖추어야 하는 조건은 무엇이라고 하나요?
+      choices:
+      - id: c
+        text: 프로세스
+        feedback: 다시 확인해 보세요. 전제 또는 전제조건입니다
+      - id: a
+        text: 전제 또는 전제조건입니다
+        feedback: 맞아요. 전제 또는 전제조건입니다
+      - id: e
+        text: 인터페이스
+        feedback: 다시 확인해 보세요. 전제 또는 전제조건입니다
+      - id: b
+        text: 구현 위치
+        feedback: 다시 확인해 보세요. 전제 또는 전제조건입니다
+      - id: d
+        text: 프로토콜
+        feedback: 다시 확인해 보세요. 전제 또는 전제조건입니다
+      answer: a
+    - id: u1-02-layered-structure-p02-q02
+      kind: choice
+      difficulty: medium
+      prompt: 학교 과정을 1부터 4까지 한 줄로 놓을 때 4가 성립하기 위한 바로 앞 전제조건은 무엇인가요?
+      choices:
+      - id: d
+        text: 4입니다
+        feedback: 다시 확인해 보세요. 3입니다
+      - id: b
+        text: 1입니다
+        feedback: 다시 확인해 보세요. 3입니다
+      - id: a
+        text: 3입니다
+        feedback: 맞아요. 3입니다
+      - id: e
+        text: 전제조건은 없습니다
+        feedback: 다시 확인해 보세요. 3입니다
+      - id: c
+        text: 2입니다
+        feedback: 다시 확인해 보세요. 3입니다
+      answer: a
+    - id: u1-02-layered-structure-p02-q03
+      kind: short
+      prompt: '핵심 개념을 입력해 보세요: 전제조건'
+      answers:
+      - 전제조건
+      - 전제조건
+      feedback: 정답은 전제조건입니다.
+    questions:
+    - id: u1-02-layered-structure-p02-q01
+      kind: choice
+      difficulty: easy
+      prompt: 어떤 요소가 성립하기 전에 갖추어야 하는 조건은 무엇이라고 하나요?
+      choices:
+      - id: c
+        text: 프로세스
+        feedback: 다시 확인해 보세요. 전제 또는 전제조건입니다
+      - id: a
+        text: 전제 또는 전제조건입니다
+        feedback: 맞아요. 전제 또는 전제조건입니다
+      - id: e
+        text: 인터페이스
+        feedback: 다시 확인해 보세요. 전제 또는 전제조건입니다
+      - id: b
+        text: 구현 위치
+        feedback: 다시 확인해 보세요. 전제 또는 전제조건입니다
+      - id: d
+        text: 프로토콜
+        feedback: 다시 확인해 보세요. 전제 또는 전제조건입니다
+      answer: a
+    - id: u1-02-layered-structure-p02-q02
+      kind: choice
+      difficulty: medium
+      prompt: 학교 과정을 1부터 4까지 한 줄로 놓을 때 4가 성립하기 위한 바로 앞 전제조건은 무엇인가요?
+      choices:
+      - id: d
+        text: 4입니다
+        feedback: 다시 확인해 보세요. 3입니다
+      - id: b
+        text: 1입니다
+        feedback: 다시 확인해 보세요. 3입니다
+      - id: a
+        text: 3입니다
+        feedback: 맞아요. 3입니다
+      - id: e
+        text: 전제조건은 없습니다
+        feedback: 다시 확인해 보세요. 3입니다
+      - id: c
+        text: 2입니다
+        feedback: 다시 확인해 보세요. 3입니다
+      answer: a
+    - id: u1-02-layered-structure-p02-q03
+      kind: short
+      prompt: '핵심 개념을 입력해 보세요: 전제조건'
+      answers:
+      - 전제조건
+      - 전제조건
+      feedback: 정답은 전제조건입니다.
 animations_dir: units/01-before-networking/lessons/02-layered-structure/assets/animations
 ---
 

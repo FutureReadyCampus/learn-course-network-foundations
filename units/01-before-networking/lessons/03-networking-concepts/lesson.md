@@ -67,6 +67,56 @@ pages:
     illustration_after_paragraph:
       - 19
     illustrations: []
+    questions:
+    - id: u1-03-networking-concepts-p01-q01
+      kind: choice
+      difficulty: easy
+      prompt: 두 컴퓨터가 연결되어 있지만 아직 데이터를 주고받지 않는 상태는 무엇인가요?
+      choices:
+      - id: d
+        text: 프로세스가 종료된 상태입니다
+        feedback: 다시 확인해 보세요. 네트워크가 형성된 상태입니다
+      - id: b
+        text: 네트워킹이 이미 진행 중입니다
+        feedback: 다시 확인해 보세요. 네트워크가 형성된 상태입니다
+      - id: a
+        text: 네트워크가 형성된 상태입니다
+        feedback: 맞아요. 네트워크가 형성된 상태입니다
+      - id: e
+        text: 프로토콜이 반드시 전송 중인 상태입니다
+        feedback: 다시 확인해 보세요. 네트워크가 형성된 상태입니다
+      - id: c
+        text: 구현이 없는 상태입니다
+        feedback: 다시 확인해 보세요. 네트워크가 형성된 상태입니다
+      answer: a
+    - id: u1-03-networking-concepts-p01-q02
+      kind: choice
+      difficulty: medium
+      prompt: 네트워크와 네트워킹의 차이를 바르게 설명한 것은 무엇인가요?
+      choices:
+      - id: c
+        text: 둘은 같은 말입니다
+        feedback: 다시 확인해 보세요. 네트워크는 연결 관계이고 네트워킹은 그 위에서 정보를 주고받는 행동입니다
+      - id: a
+        text: 네트워크는 연결 관계이고 네트워킹은 그 위에서 정보를 주고받는 행동입니다
+        feedback: 맞아요. 네트워크는 연결 관계이고 네트워킹은 그 위에서 정보를 주고받는 행동입니다
+      - id: e
+        text: 네트워킹은 연결 없이도 항상 가능합니다
+        feedback: 다시 확인해 보세요. 네트워크는 연결 관계이고 네트워킹은 그 위에서 정보를 주고받는 행동입니다
+      - id: b
+        text: 네트워크는 전송 행동이고 네트워킹은 연결 관계입니다
+        feedback: 다시 확인해 보세요. 네트워크는 연결 관계이고 네트워킹은 그 위에서 정보를 주고받는 행동입니다
+      - id: d
+        text: 네트워크는 장치, 네트워킹은 파일 크기입니다
+        feedback: 다시 확인해 보세요. 네트워크는 연결 관계이고 네트워킹은 그 위에서 정보를 주고받는 행동입니다
+      answer: a
+    - id: u1-03-networking-concepts-p01-q03
+      kind: short
+      prompt: '핵심 개념을 입력해 보세요: 네트워킹'
+      answers:
+      - 네트워킹
+      - 네트워킹
+      feedback: 정답은 네트워킹입니다.
   - concepts:
       - concept-basic-03-04
       - concept-basic-03-05
@@ -85,6 +135,56 @@ pages:
           장면입니다.
         caption: TCP/IP의 역할을 익힌 뒤 실제 컴퓨터 안에서 어느 부분이 일을 맡는지 살펴봅니다.
         after_paragraph: 16
+    questions:
+    - id: u1-03-networking-concepts-p02-q01
+      kind: choice
+      difficulty: easy
+      prompt: 컴퓨터들이 서로 통신할 때 함께 지키는 약속을 무엇이라고 하나요?
+      choices:
+      - id: c
+        text: 하드웨어입니다
+        feedback: 다시 확인해 보세요. 프로토콜입니다
+      - id: a
+        text: 프로토콜입니다
+        feedback: 맞아요. 프로토콜입니다
+      - id: e
+        text: 버퍼입니다
+        feedback: 다시 확인해 보세요. 프로토콜입니다
+      - id: b
+        text: 프로세스입니다
+        feedback: 다시 확인해 보세요. 프로토콜입니다
+      - id: d
+        text: 파일 시스템입니다
+        feedback: 다시 확인해 보세요. 프로토콜입니다
+      answer: a
+    - id: u1-03-networking-concepts-p02-q02
+      kind: choice
+      difficulty: medium
+      prompt: 네트워크 개념을 공부할 때 역추론은 어떤 방식인가요?
+      choices:
+      - id: d
+        text: 네트워크 연결을 끊고 결과를 관찰합니다
+        feedback: 다시 확인해 보세요. 구체적인 기술을 먼저 익히고 거기서 전체 구조를 짐작합니다
+      - id: b
+        text: 전체 구조를 외운 뒤 구체 기술을 전혀 보지 않습니다
+        feedback: 다시 확인해 보세요. 구체적인 기술을 먼저 익히고 거기서 전체 구조를 짐작합니다
+      - id: a
+        text: 구체적인 기술을 먼저 익히고 거기서 전체 구조를 짐작합니다
+        feedback: 맞아요. 구체적인 기술을 먼저 익히고 거기서 전체 구조를 짐작합니다
+      - id: e
+        text: 규칙 없이 용어를 나열합니다
+        feedback: 다시 확인해 보세요. 구체적인 기술을 먼저 익히고 거기서 전체 구조를 짐작합니다
+      - id: c
+        text: 장치를 분해해 부품 이름만 외웁니다
+        feedback: 다시 확인해 보세요. 구체적인 기술을 먼저 익히고 거기서 전체 구조를 짐작합니다
+      answer: a
+    - id: u1-03-networking-concepts-p02-q03
+      kind: short
+      prompt: '핵심 개념을 입력해 보세요: 프로토콜'
+      answers:
+      - 프로토콜
+      - 프로토콜
+      feedback: 정답은 프로토콜입니다.
 animations_dir: units/01-before-networking/lessons/03-networking-concepts/assets/animations
 ---
 

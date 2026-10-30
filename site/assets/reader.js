@@ -22,7 +22,7 @@
   const imageSrc = (src) => src?.startsWith("/api/v1/network-course-assets/")
     ? `${base}/assets/course-assets/${src.slice("/api/v1/network-course-assets/".length)}`
     : src;
-  const renderProse = (paragraphs = [], illustrations = []) => {
+  const renderProse = (paragraphs = [], illustrations = [], inlineQuizzes = [], renderInlineQuiz = () => null) => {
     const prose = document.createElement("div");
     prose.className = "net-prose";
     let list = [];
@@ -49,7 +49,14 @@
       flush();
       items.forEach((illustration) => prose.append(renderIllustration(illustration)));
     };
+    const appendQuizzes = (index) => {
+      const items = inlineQuizzes.filter((quiz) => quiz.after_paragraph === index);
+      if (!items.length) return;
+      flush();
+      items.forEach((quiz) => prose.append(renderInlineQuiz(quiz)));
+    };
     appendIllustrations(-1);
+    appendQuizzes(0);
     for (const [index, text] of paragraphs.entries()) {
       const lines = String(text).split("\n");
       const heading = lines.length === 1 ? text.match(/^(#{3,4})\s+(.+)$/) : null;
@@ -76,6 +83,7 @@
         }
       }
       appendIllustrations(index);
+      appendQuizzes(index + 1);
     }
     flush();
     return prose;
@@ -157,6 +165,71 @@
     }
     return figure;
   };
+  const renderQuiz = (questions) => {
+    const section = document.createElement("section");
+    section.className = "page-quiz";
+    section.setAttribute("aria-label", "이 페이지의 퀴즈");
+    const heading = document.createElement("h2");
+    heading.textContent = "개념 확인 퀴즈";
+    section.append(heading);
+    questions.forEach((question, index) => {
+      const card = document.createElement("fieldset");
+      card.className = "page-quiz-question";
+      const legend = document.createElement("legend");
+      legend.textContent = `${index + 1}. ${question.prompt}`;
+      card.append(legend);
+      const result = document.createElement("p");
+      result.className = "page-quiz-result";
+      result.setAttribute("role", "status");
+      result.setAttribute("aria-live", "polite");
+      const grade = (answer, feedback) => {
+        const correct = question.kind === "short"
+          ? question.answers.some((value) => value.trim().toLowerCase() === answer.trim().toLowerCase())
+          : answer === question.answer;
+        result.dataset.correct = String(correct);
+        result.textContent = `${correct ? "정답입니다." : "다시 생각해 보세요."} ${feedback}`;
+      };
+      if (question.kind === "choice") {
+        const choices = [...question.choices];
+        for (let position = choices.length - 1; position > 0; position -= 1) {
+          const swapWith = Math.floor(Math.random() * (position + 1));
+          [choices[position], choices[swapWith]] = [choices[swapWith], choices[position]];
+        }
+        choices.forEach((choice) => {
+          const label = document.createElement("label");
+          label.className = "page-quiz-choice";
+          const input = document.createElement("input");
+          input.type = "radio";
+          input.name = question.id;
+          input.value = choice.id;
+          input.addEventListener("change", () => grade(choice.id, choice.feedback));
+          const text = document.createElement("span");
+          text.textContent = choice.text;
+          label.append(input, text);
+          card.append(label);
+        });
+      } else {
+        const form = document.createElement("form");
+        const input = document.createElement("input");
+        input.type = "text";
+        input.maxLength = 80;
+        input.autocomplete = "off";
+        input.setAttribute("aria-label", question.prompt);
+        const submit = document.createElement("button");
+        submit.type = "submit";
+        submit.textContent = "확인";
+        form.append(input, submit);
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          if (input.value.trim()) grade(input.value, question.feedback);
+        });
+        card.append(form);
+      }
+      card.append(result);
+      section.append(card);
+    });
+    return section;
+  };
   const render = (course, state) => {
     const list = allItems(course);
     if (!list.length) return;
@@ -188,8 +261,13 @@
     const title = document.createElement("h1");
     title.textContent = page.title;
     main.append(title);
-    const prose = renderProse(page.paragraphs || [], page.illustrations || []);
+    const questions = page.questions || [];
+    const inlineQuizzes = page.inline_quizzes || [];
+    let nextPage;
+    const prose = renderProse(page.paragraphs || [], page.illustrations || [], inlineQuizzes,
+      (quiz) => renderQuiz(quiz.questions));
     main.append(prose);
+    if (questions.length) main.append(renderQuiz(questions));
     const previous = list[state.lessonIndex - 1];
     const next = list[state.lessonIndex + 1];
     const navFooter = document.createElement("nav");
@@ -204,7 +282,7 @@
       else if (previous) { state.lessonIndex--; state.pageIndex = (previous.lesson.pages || []).length - 1; }
       visit(course, state);
     });
-    const nextPage = document.createElement("button");
+    nextPage = document.createElement("button");
     nextPage.type = "button";
     nextPage.textContent = "다음 페이지 →";
     nextPage.disabled = state.pageIndex >= pages.length - 1 && !next;
@@ -221,8 +299,9 @@
     document.querySelectorAll(".lesson-link, .page-link").forEach((anchor) => anchor.addEventListener("click", (event) => {
       event.preventDefault();
       const targetLesson = Number(anchor.dataset.lesson);
+      const targetPage = Number(anchor.dataset.page || 0);
       state.lessonIndex = targetLesson;
-      state.pageIndex = Number(anchor.dataset.page || 0);
+      state.pageIndex = targetPage;
       visit(course, state);
     }));
     document.getElementById("sidebar-toggle").setAttribute("aria-expanded", "true");

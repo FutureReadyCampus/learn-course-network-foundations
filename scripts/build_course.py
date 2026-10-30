@@ -14,6 +14,41 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def page_questions(value, path: Path, page_number: int) -> list[dict]:
+    if not isinstance(value, list):
+        raise ValueError(f"Page questions must be a list in {path}, page {page_number}")
+    if not value:
+        return []
+    if len(value) < 3:
+        raise ValueError(f"Page needs at least three questions in {path}, page {page_number}")
+    expected = [("choice", "easy"), ("choice", "medium"), ("short", None)]
+    for index, question in enumerate(value, 1):
+        where = f"{path}, page {page_number}, question {index}"
+        if not isinstance(question, dict) or not isinstance(question.get("prompt"), str) or not question["prompt"].strip():
+            raise ValueError(f"Question needs a prompt in {where}")
+        kind = question.get("kind")
+        if index <= len(expected) and (kind, question.get("difficulty")) != expected[index - 1]:
+            raise ValueError(f"Unexpected question kind or difficulty in slot {index} in {where}")
+        if kind == "choice":
+            choices = question.get("choices")
+            if not isinstance(choices, list) or len(choices) != 5 or any(not isinstance(choice, dict) for choice in choices):
+                raise ValueError(f"Choice question needs exactly five choices in {where}")
+            ids = [choice.get("id") for choice in choices]
+            if any(not isinstance(choice_id, str) or not choice_id.strip() for choice_id in ids) or len(set(ids)) != 5 or question.get("answer") not in ids:
+                raise ValueError(f"Choice question needs five unique choices and a valid answer in {where}")
+            if any(not isinstance(choice.get("text"), str) or not choice["text"].strip()
+                   or not isinstance(choice.get("feedback"), str) or not choice["feedback"].strip()
+                   for choice in choices):
+                raise ValueError(f"Every choice needs text and feedback in {where}")
+        elif kind == "short":
+            answers = question.get("answers")
+            if not isinstance(answers, list) or not answers or any(not isinstance(answer, str) or not answer.strip() for answer in answers):
+                raise ValueError(f"Short question needs accepted answers in {where}")
+        else:
+            raise ValueError(f"Question kind must be choice or short in {where}")
+    return value
+
+
 def read_front_matter(path: Path) -> tuple[dict, str]:
     text = path.read_text(encoding="utf-8")
     match = re.match(r"\A---\s*\n(.*?)\n---\s*\n?(.*)\Z", text, re.S)
@@ -69,12 +104,21 @@ def authored_reading_pages(path: Path, lesson_meta: dict, animation_assets: dict
     sections = re.findall(r"^## (.+?)\s*\n(.*?)(?=^## |\Z)", source, re.M | re.S)
     pages_meta = lesson_meta.get("pages", [])
     concepts = {item["id"]: item for item in lesson_meta.get("concepts", [])}
+    quiz_file = lesson_meta.get("quiz_file")
+    quiz_sets = {}
+    if quiz_file:
+        quiz_path = lesson_asset(path, quiz_file, lesson_meta, animation_assets)
+        quiz_data = yaml.safe_load(quiz_path.read_text(encoding="utf-8")) or {}
+        quiz_sets = quiz_data.get("quizzes", {})
+        if not isinstance(quiz_sets, dict):
+            raise ValueError(f"Quiz file needs a quizzes mapping: {quiz_path}")
     if not sections or len(sections) != len(pages_meta):
         raise ValueError(f"Page metadata does not match Lesson headings in {path}")
 
     illustrated = set(lesson_meta.get("illustrated_concepts", []))
     diagram = lesson_meta.get("diagram", {}).get("file")
     pages = []
+    used_quizzes = set()
     for index, (heading, body) in enumerate(sections):
         metadata = pages_meta[index]
         concept_ids = metadata.get("concepts", [])
@@ -82,14 +126,30 @@ def authored_reading_pages(path: Path, lesson_meta: dict, animation_assets: dict
         if missing:
             raise ValueError(f"Unknown Page concepts in {path}: {', '.join(missing)}")
         selected = [concepts[concept_id] for concept_id in concept_ids]
+        inline_quizzes = []
+        markers = list(re.finditer(r"<!--\s*quiz:\s*([\w-]+)\s*-->", body))
+        for marker in markers:
+            quiz_id = marker.group(1)
+            if quiz_id not in quiz_sets or quiz_id in used_quizzes:
+                raise ValueError(f"Unknown or repeated quiz marker {quiz_id!r} in {path}, page {index + 1}")
+            before_marker = re.sub(r"<!--\s*quiz:\s*[\w-]+\s*-->", "", body[:marker.start()])
+            inline_quizzes.append({
+                "id": quiz_id,
+                "after_paragraph": len(split_paragraphs(before_marker)),
+                "questions": page_questions(quiz_sets[quiz_id].get("questions"), path, index + 1),
+            })
+            used_quizzes.add(quiz_id)
+        clean_body = re.sub(r"<!--\s*quiz:\s*[\w-]+\s*-->", "", body)
         page = {
             "title": re.sub(r"\s*·\s*\d+:\d+.*$", "", heading).strip(),
-            "paragraphs": split_paragraphs(body),
+            "paragraphs": split_paragraphs(clean_body),
             "terms": list(dict.fromkeys(
                 term["term"] for concept in selected for term in concept.get("terms", [])
             )),
-            "questions": [],
+            "questions": page_questions(metadata.get("questions", []), path, index + 1),
         }
+        if inline_quizzes:
+            page["inline_quizzes"] = inline_quizzes
         illustrations = []
         if index == 0 and diagram:
             asset = lesson_asset(path, diagram, lesson_meta, animation_assets)
@@ -134,6 +194,9 @@ def authored_reading_pages(path: Path, lesson_meta: dict, animation_assets: dict
         if illustrations:
             page["illustrations"] = illustrations
         pages.append(page)
+    if used_quizzes != set(quiz_sets):
+        unused = sorted(set(quiz_sets) - used_quizzes)
+        raise ValueError(f"Quiz file has unplaced quizzes in {path}: {', '.join(unused)}")
     return pages
 
 
@@ -173,7 +236,7 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
             "title": title,
             "paragraphs": split_paragraphs(body),
             "terms": page_meta.get("terms", list(dict.fromkeys(item["term"] for concept in page_concepts for item in concept.get("terms", [])))),
-            "questions": [],
+            "questions": page_questions(page_meta.get("questions", []), path, index + 1),
         }
         illustrations = []
         if index == 0 and diagram_path and diagram_path.is_file():

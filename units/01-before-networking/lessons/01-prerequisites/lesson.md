@@ -2,6 +2,7 @@
 id: u1-prerequisites
 title: 수강 전에 알고 있다고 가정하는 것들
 runtime_assets_dir: assets/animations
+quiz_file: lesson.quiz.yaml
 source:
   repository: course-network
   lesson_path: studio/wiki/oeweo-network/lesson-01.md
@@ -192,6 +193,56 @@ pages:
       - 9
       - 11
     illustrations: []
+    questions:
+    - id: u1-01-prerequisites-p02-q01
+      kind: choice
+      difficulty: easy
+      prompt: AND 연산 결과가 1이 되려면 입력은 어떠해야 하나요?
+      choices:
+      - id: c
+        text: 입력 중 하나만 1이면 됩니다
+        feedback: 다시 확인해 보세요. 두 입력이 모두 1이어야 합니다
+      - id: a
+        text: 두 입력이 모두 1이어야 합니다
+        feedback: 맞아요. 두 입력이 모두 1이어야 합니다
+      - id: e
+        text: 항상 첫 번째 입력을 따릅니다
+        feedback: 다시 확인해 보세요. 두 입력이 모두 1이어야 합니다
+      - id: b
+        text: 두 입력이 서로 달라야 합니다
+        feedback: 다시 확인해 보세요. 두 입력이 모두 1이어야 합니다
+      - id: d
+        text: 두 입력이 모두 0이어야 합니다
+        feedback: 다시 확인해 보세요. 두 입력이 모두 1이어야 합니다
+      answer: a
+    - id: u1-01-prerequisites-p02-q02
+      kind: choice
+      difficulty: medium
+      prompt: 1011에 0010 마스크를 AND로 적용하면 결과는 무엇인가요?
+      choices:
+      - id: d
+        text: '0000'
+        feedback: 다시 확인해 보세요. 0010
+      - id: b
+        text: '1111'
+        feedback: 다시 확인해 보세요. 0010
+      - id: a
+        text: '0010'
+        feedback: 맞아요. 0010
+      - id: e
+        text: '1101'
+        feedback: 다시 확인해 보세요. 0010
+      - id: c
+        text: '1011'
+        feedback: 다시 확인해 보세요. 0010
+      answer: a
+    - id: u1-01-prerequisites-p02-q03
+      kind: short
+      prompt: '핵심 개념을 입력해 보세요: 마스크'
+      answers:
+      - 마스크
+      - 마스크
+      feedback: 정답은 마스크입니다.
   - concepts:
       - concept-basic-01-05
       - concept-basic-01-06
@@ -199,6 +250,56 @@ pages:
       - 4
       - 13
     illustrations: []
+    questions:
+    - id: u1-01-prerequisites-p03-q01
+      kind: choice
+      difficulty: easy
+      prompt: 16진수에서 사용할 수 있는 기호는 무엇인가요?
+      choices:
+      - id: d
+        text: 0부터 9와 A부터 Z까지 사용합니다
+        feedback: 다시 확인해 보세요. 0부터 9와 A부터 F입니다
+      - id: b
+        text: 0과 1만 사용합니다
+        feedback: 다시 확인해 보세요. 0부터 9와 A부터 F입니다
+      - id: a
+        text: 0부터 9와 A부터 F입니다
+        feedback: 맞아요. 0부터 9와 A부터 F입니다
+      - id: e
+        text: 1부터 16까지의 숫자만 사용합니다
+        feedback: 다시 확인해 보세요. 0부터 9와 A부터 F입니다
+      - id: c
+        text: 0부터 7까지 사용합니다
+        feedback: 다시 확인해 보세요. 0부터 9와 A부터 F입니다
+      answer: a
+    - id: u1-01-prerequisites-p03-q02
+      kind: choice
+      difficulty: medium
+      prompt: 4비트 1011의 값은 얼마인가요?
+      choices:
+      - id: c
+        text: '10'
+        feedback: 다시 확인해 보세요. 11
+      - id: a
+        text: '11'
+        feedback: 맞아요. 11
+      - id: e
+        text: '13'
+        feedback: 다시 확인해 보세요. 11
+      - id: b
+        text: '9'
+        feedback: 다시 확인해 보세요. 11
+      - id: d
+        text: '12'
+        feedback: 다시 확인해 보세요. 11
+      answer: a
+    - id: u1-01-prerequisites-p03-q03
+      kind: short
+      prompt: '핵심 개념을 입력해 보세요: 16진수'
+      answers:
+      - 16진수
+      - 16진수
+      feedback: 정답은 16진수입니다.
   - concepts:
       - concept-basic-01-07
       - concept-basic-01-08
@@ -211,6 +312,56 @@ pages:
           장치에 닿습니다.
         caption: 애플리케이션과 네트워크 장치 사이에서 운영체제와 드라이버가 일을 나눕니다.
         after_paragraph: 5
+    questions:
+    - id: u1-01-prerequisites-p04-q01
+      kind: choice
+      difficulty: easy
+      prompt: 택배 상자가 불규칙하게 도착하고 작업자가 일정한 속도로 내보낼 때 임시 선반은 어떤 역할을 하나요?
+      choices:
+      - id: c
+        text: 상자 내용을 암호화합니다
+        feedback: 다시 확인해 보세요. 도착과 처리 속도의 차이를 잠시 흡수합니다
+      - id: a
+        text: 도착과 처리 속도의 차이를 잠시 흡수합니다
+        feedback: 맞아요. 도착과 처리 속도의 차이를 잠시 흡수합니다
+      - id: e
+        text: 상자 크기를 모두 같게 만듭니다
+        feedback: 다시 확인해 보세요. 도착과 처리 속도의 차이를 잠시 흡수합니다
+      - id: b
+        text: 택배의 주소를 자동으로 바꿉니다
+        feedback: 다시 확인해 보세요. 도착과 처리 속도의 차이를 잠시 흡수합니다
+      - id: d
+        text: 네트워크 연결을 끊습니다
+        feedback: 다시 확인해 보세요. 도착과 처리 속도의 차이를 잠시 흡수합니다
+      answer: a
+    - id: u1-01-prerequisites-p04-q02
+      kind: choice
+      difficulty: medium
+      prompt: 선반이 비었을 때 일어나는 일로 알맞은 것은 무엇인가요?
+      choices:
+      - id: d
+        text: 선반이 속도를 높여 상자를 만들어 냅니다
+        feedback: 다시 확인해 보세요. 다음 상자가 도착할 때까지 작업자가 기다립니다
+      - id: b
+        text: 작업자가 빈 상자를 만들어 보냅니다
+        feedback: 다시 확인해 보세요. 다음 상자가 도착할 때까지 작업자가 기다립니다
+      - id: a
+        text: 다음 상자가 도착할 때까지 작업자가 기다립니다
+        feedback: 맞아요. 다음 상자가 도착할 때까지 작업자가 기다립니다
+      - id: e
+        text: 상자가 도착하지 않아도 계속 처리합니다
+        feedback: 다시 확인해 보세요. 다음 상자가 도착할 때까지 작업자가 기다립니다
+      - id: c
+        text: 이전 상자가 자동으로 복제됩니다
+        feedback: 다시 확인해 보세요. 다음 상자가 도착할 때까지 작업자가 기다립니다
+      answer: a
+    - id: u1-01-prerequisites-p04-q03
+      kind: short
+      prompt: '핵심 개념을 입력해 보세요: 버퍼'
+      answers:
+      - 버퍼
+      - 버퍼
+      feedback: 정답은 버퍼입니다.
   - concepts:
       - concept-basic-01-09
     illustration_after_paragraph: []
@@ -226,9 +377,58 @@ pages:
         alt: 맨 아래 NIC 상자 위에 드라이버 블록이 끼워지고, 그 위에 TCP와 IP 블록이 차례로 쌓이는 장면입니다.
         caption: ‘정보를 주고받는다’는 개념이 실제로는 여러 소프트웨어와 장치의 협력으로 구현됩니다.
         after_paragraph: 6
+    questions:
+    - id: u1-01-prerequisites-p05-q01
+      kind: choice
+      difficulty: easy
+      prompt: 개념과 구현의 차이를 가장 잘 설명한 것은 무엇인가요?
+      choices:
+      - id: d
+        text: 구현은 아직 만들지 않은 생각입니다
+        feedback: 다시 확인해 보세요. 개념은 생각의 틀이고 구현은 실제로 동작하게 만든 것입니다
+      - id: b
+        text: 개념은 하드웨어이고 구현은 설명 문장입니다
+        feedback: 다시 확인해 보세요. 개념은 생각의 틀이고 구현은 실제로 동작하게 만든 것입니다
+      - id: a
+        text: 개념은 생각의 틀이고 구현은 실제로 동작하게 만든 것입니다
+        feedback: 맞아요. 개념은 생각의 틀이고 구현은 실제로 동작하게 만든 것입니다
+      - id: e
+        text: 개념은 실행 중인 프로그램만 뜻합니다
+        feedback: 다시 확인해 보세요. 개념은 생각의 틀이고 구현은 실제로 동작하게 만든 것입니다
+      - id: c
+        text: 개념과 구현은 항상 같은 것입니다
+        feedback: 다시 확인해 보세요. 개념은 생각의 틀이고 구현은 실제로 동작하게 만든 것입니다
+      answer: a
+    - id: u1-01-prerequisites-p05-q02
+      kind: choice
+      difficulty: medium
+      prompt: 택배를 일정한 순서로 처리한다는 목표와 실제 분류 장치의 관계는 무엇인가요?
+      choices:
+      - id: c
+        text: 둘 다 물리적 네트워크 주소입니다
+        feedback: 다시 확인해 보세요. 목표는 개념이고 장치는 그 목표를 실현한 구현입니다
+      - id: a
+        text: 목표는 개념이고 장치는 그 목표를 실현한 구현입니다
+        feedback: 맞아요. 목표는 개념이고 장치는 그 목표를 실현한 구현입니다
+      - id: e
+        text: 구현은 목표와 무관합니다
+        feedback: 다시 확인해 보세요. 목표는 개념이고 장치는 그 목표를 실현한 구현입니다
+      - id: b
+        text: 목표가 구현이고 장치가 개념입니다
+        feedback: 다시 확인해 보세요. 목표는 개념이고 장치는 그 목표를 실현한 구현입니다
+      - id: d
+        text: 장치는 개념을 설명하는 용어일 뿐입니다
+        feedback: 다시 확인해 보세요. 목표는 개념이고 장치는 그 목표를 실현한 구현입니다
+      answer: a
+    - id: u1-01-prerequisites-p05-q03
+      kind: short
+      prompt: '핵심 개념을 입력해 보세요: 구현'
+      answers:
+      - 구현
+      - 구현
+      feedback: 정답은 구현입니다.
 animations_dir: units/01-before-networking/lessons/01-prerequisites/assets/animations
 ---
-
 ## 수강 전에 필요한 바탕과 비트·바이트
 
 산에 오르려고 입구에 서면 안내판이 하나 서 있습니다. ‘이 코스는 등산화를 신고 두 시간쯤 걸을 수 있어야 합니다.’ 이런 문구를 읽고 나면 그대로 오를지, 더 쉬운 코스로 돌아갈지 정하게 되지요. 위의 정리문이 바로 그 안내판으로, 이 강의라는 산을 오르기 전에 어떤 준비가 되어 있어야 하는지를 먼저 적어 둔 것입니다.
@@ -252,6 +452,8 @@ animations_dir: units/01-before-networking/lessons/01-prerequisites/assets/anima
 전구 한 줄(1바이트)이 1,024줄 모이면 1KiB이고, 그 위로 메비바이트(MiB), 기비바이트(GiB)가 1,024배씩 이어집니다. ‘킬로는 1,000 아닌가?’ 싶은 것이 자연스럽습니다. 엄밀한 표기로는 1,000바이트가 1kB이고 1,024바이트가 1KiB입니다. 다만 파일 탐색기나 앱 화면이 1,024을 기준으로 세면서 KB라고 간단히 표시하기도 합니다. 그래서 같은 파일 크기가 화면마다 조금 다르게 보일 수 있습니다. 이 강의에서는 1,024바이트씩 묶는 기준을 사용합니다.
 
 2의 거듭제곱은 용량과 늘 함께 나옵니다. 32개의 비트로 만들 수 있는 모양은 2의 32제곱, 곧 4,294,967,296가지입니다. 이만큼의 바이트를 1,024바이트씩 묶으면 4GiB가 되고, 1,000바이트씩 묶는 단위로는 약 4.3GB입니다. 원 강의도 뒤의 안내에서 2의 32제곱 바이트가 4GB라고 바로잡았습니다. 여기서는 먼저 1,024 기준의 4GiB를 기억하고, 화면에서 GB라고 보일 때는 표시 기준이 다를 수 있음을 알아두면 충분합니다.
+
+<!-- quiz: quiz-u1-l01-p01 -->
 
 #### 크기와 속도에서 단위 구별하기
 
