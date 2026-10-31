@@ -1,0 +1,28 @@
+name: Dispatch Learn content sync
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - course.yaml
+      - requirements.txt
+      - scripts/build_course.py
+      - units/**
+
+permissions:
+  contents: read
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch Learn Network content sync
+        env:
+          GH_TOKEN: ${{ secrets.LEARN_SYNC_DISPATCH_TOKEN }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          gh api repos/FutureReadyCampus/learn/dispatches \
+            --method POST \
+            --field event_type=network-content-main-updated \
+            --field client_payload[source_repository]=FutureReadyCampus/learn-course-network-foundations \
+            --field client_payload[source_sha]="$SOURCE_SHA"
