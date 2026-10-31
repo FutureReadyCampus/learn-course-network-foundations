@@ -452,6 +452,69 @@ page_metadata:
     answers:
     - "router"
     feedback: "정답은 router입니다."
+  - id: u4-01-p07-q04
+    kind: choice
+    difficulty: medium
+    prompt: "라우터가 다른 네트워크로 향하는 패킷을 받았을 때, 다음 전달 방향을 정하는 데 주로 확인하는 것은 무엇인가요?"
+    choices:
+    - id: a
+      text: "패킷을 만든 프로그램의 이름"
+      feedback: "다시 확인해 보세요. 라우터는 목적지와 경로 정보를 살펴 다음 방향을 정합니다."
+    - id: b
+      text: "Ethernet 케이블의 길이"
+      feedback: "다시 확인해 보세요. 케이블 길이가 아니라 목적지와 경로 정보를 이용합니다."
+    - id: c
+      text: "출발지 장치의 화면 해상도"
+      feedback: "다시 확인해 보세요. 화면 설정은 경로 선택 기준이 아닙니다."
+    - id: d
+      text: "목적지 IP 주소와 라우터가 가진 경로 정보"
+      feedback: "맞아요. 라우터는 목적지 IP와 경로 정보를 보고 다음 방향을 고릅니다."
+    - id: e
+      text: "목적지 장치의 사용자 이름"
+      feedback: "다시 확인해 보세요. 사용자 이름이 아니라 목적지 IP와 경로 정보를 살펴봅니다."
+    answer: d
+  - id: u4-01-p07-q05
+    kind: choice
+    difficulty: medium
+    prompt: "일반적인 라우터 전달에서 여러 네트워크 구간을 지나도 최종 목적지를 계속 가리키는 주소는 무엇인가요?"
+    choices:
+    - id: a
+      text: "목적지 IP 주소"
+      feedback: "맞아요. 목적지 IP는 최종 목적지를 계속 가리킵니다."
+    - id: b
+      text: "매 구간의 목적지 MAC 주소"
+      feedback: "다시 확인해 보세요. 각 구간의 MAC 주소는 다음 프레임 수신자에 맞게 달라질 수 있습니다."
+    - id: c
+      text: "라우터의 포트 번호"
+      feedback: "다시 확인해 보세요. 포트 번호는 최종 목적지 IP를 대신하지 않습니다."
+    - id: d
+      text: "스위치의 포트 개수"
+      feedback: "다시 확인해 보세요. 스위치의 포트 개수는 패킷의 최종 목적지를 나타내지 않습니다."
+    - id: e
+      text: "각 네트워크의 이름"
+      feedback: "다시 확인해 보세요. 네트워크 이름이 패킷의 목적지 주소로 유지되는 것은 아닙니다."
+    answer: a
+  - id: u4-01-p07-q06
+    kind: choice
+    difficulty: medium
+    prompt: "패킷이 목적지 네트워크에 도착한 뒤에는 무엇을 향해 전달되나요?"
+    choices:
+    - id: a
+      text: "항상 출발지 네트워크의 라우터로 돌아간다"
+      feedback: "다시 확인해 보세요. 목적지 네트워크 안에서 최종 장치를 향해 전달됩니다."
+    - id: b
+      text: "인터넷의 모든 장치에 복사된다"
+      feedback: "다시 확인해 보세요. 브로드캐스트처럼 모든 장치에 보내는 것을 뜻하지 않습니다."
+    - id: c
+      text: "목적지 장치의 네트워크 인터페이스"
+      feedback: "맞아요. 목적지 네트워크 안에서 해당 장치의 인터페이스로 전달됩니다."
+    - id: d
+      text: "가장 가까운 DNS 서버만"
+      feedback: "다시 확인해 보세요. DNS 서버가 아니라 패킷의 목적지 장치를 향합니다."
+    - id: e
+      text: "보내는 장치의 MAC 주소"
+      feedback: "다시 확인해 보세요. 목적지 네트워크 안에서 최종 목적지 인터페이스를 향합니다."
+    answer: c
 ---
 ## MAC 주소만으로 다른 LAN까지 보낼 수 있을까?
 
