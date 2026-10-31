@@ -339,6 +339,69 @@ page_metadata:
     - "prefix length"
     - "prefix-length"
     feedback: "정답은 prefix length입니다."
+  - id: u4-01-p06-q04
+    kind: choice
+    difficulty: medium
+    prompt: "192.168.0.10/24에서 네트워크 부분에 해당하는 것은 무엇인가요?"
+    choices:
+    - id: a
+      text: "192.168.0"
+      feedback: "맞아요. /24는 앞의 24비트인 192.168.0을 네트워크 부분으로 정합니다."
+    - id: b
+      text: "마지막 숫자 10"
+      feedback: "다시 생각해 보세요. /24에서는 마지막 8비트가 호스트 부분입니다."
+    - id: c
+      text: "192.168.0.10 전체가 네트워크 부분"
+      feedback: "다시 생각해 보세요. /24에서는 뒤의 8비트가 호스트 부분으로 남습니다."
+    - id: d
+      text: "192.168"
+      feedback: "다시 생각해 보세요. 192.168은 /16일 때의 네트워크 부분입니다."
+    - id: e
+      text: "10.0"
+      feedback: "주소의 네트워크 경계와 각 숫자를 비교해 다시 확인해 보세요."
+    answer: a
+  - id: u4-01-p06-q05
+    kind: choice
+    difficulty: medium
+    prompt: "IP 주소를 네트워크 부분과 호스트 부분으로 나누어 읽는 이유로 가장 알맞은 것은 무엇인가요?"
+    choices:
+    - id: a
+      text: "각 숫자를 서로 다른 프로토콜로 바꾸기 위해서"
+      feedback: "다시 생각해 보세요. 두 부분은 목적지가 속한 네트워크와 그 안의 장치를 구분합니다."
+    - id: b
+      text: "IP 주소를 MAC 주소로 변환하기 위해서"
+      feedback: "다시 생각해 보세요. 이 구분은 MAC 주소 변환을 뜻하지 않습니다."
+    - id: c
+      text: "앞부분으로 네트워크를 찾고, 뒷부분으로 그 네트워크 안의 인터페이스를 구별하기 위해서"
+      feedback: "맞아요. 네트워크 부분과 호스트 부분이 각각 그 역할을 합니다."
+    - id: d
+      text: "주소의 숫자를 항상 네 개로 만들기 위해서"
+      feedback: "다시 생각해 보세요. 점으로 구분된 네 숫자와 네트워크 경계는 같은 뜻이 아닙니다."
+    - id: e
+      text: "패킷의 크기와 전송 속도를 나타내기 위해서"
+      feedback: "다시 생각해 보세요. 이 부분은 주소에서 목적지를 구분하는 역할입니다."
+    answer: c
+  - id: u4-01-p06-q06
+    kind: choice
+    difficulty: medium
+    prompt: "192.168.0.10/24와 같은 /24 네트워크에서 호스트 부분은 무엇을 구별하나요?"
+    choices:
+    - id: a
+      text: "인터넷 서비스 제공자"
+      feedback: "다시 생각해 보세요. 호스트 부분은 네트워크 안의 인터페이스를 구별합니다."
+    - id: b
+      text: "주소가 속한 네트워크"
+      feedback: "이것은 네트워크 부분의 역할입니다. 호스트 부분이 구별하는 대상을 생각해 보세요."
+    - id: c
+      text: "라우터가 선택한 다음 경로"
+      feedback: "다시 생각해 보세요. 호스트 부분은 경로 선택을 나타내지 않습니다."
+    - id: d
+      text: "IP 주소가 IPv4인지 IPv6인지"
+      feedback: "다시 생각해 보세요. 호스트 부분은 IP 버전을 표시하지 않습니다."
+    - id: e
+      text: "그 네트워크 안의 장치 인터페이스"
+      feedback: "맞아요. 호스트 부분은 해당 네트워크 안에서 인터페이스를 구별합니다."
+    answer: e
 - terms: []
   questions:
   - id: u4-01-p07-q01
