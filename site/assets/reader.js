@@ -169,9 +169,6 @@
     const section = document.createElement("section");
     section.className = "page-quiz";
     section.setAttribute("aria-label", "이 페이지의 퀴즈");
-    const heading = document.createElement("h2");
-    heading.textContent = "개념 확인 퀴즈";
-    section.append(heading);
     questions.forEach((question, index) => {
       const card = document.createElement("fieldset");
       card.className = "page-quiz-question";
