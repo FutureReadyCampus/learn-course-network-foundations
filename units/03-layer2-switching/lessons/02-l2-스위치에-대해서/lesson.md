@@ -77,6 +77,27 @@ page_metadata:
     answers:
     - Access switch
     feedback: 정답은 Access switch입니다.
+  - id: u3-02-p01-q04
+    kind: choice
+    difficulty: medium
+    prompt: "단말 가까이에서 PC나 프린터를 연결하는 스위치는 무엇인가요?"
+    choices:
+    - id: a
+      text: "배포 서버"
+      feedback: "다시 본문을 확인해 보세요. 배포 서버."
+    - id: b
+      text: "라우터"
+      feedback: "다시 본문을 확인해 보세요. 라우터."
+    - id: c
+      text: "모뎀"
+      feedback: "다시 본문을 확인해 보세요. 모뎀."
+    - id: d
+      text: "무선 NIC"
+      feedback: "다시 본문을 확인해 보세요. 무선 NIC."
+    - id: e
+      text: "액세스 스위치"
+      feedback: "맞아요. 액세스 스위치입니다."
+    answer: e
   animations:
   - file: l09-access-switch-ports.svg
     title: "액세스 스위치에 단말 연결하기"
@@ -229,6 +250,27 @@ page_metadata:
     answers:
     - MAC address table
     feedback: 정답은 MAC address table입니다.
+  - id: u3-02-p02-q04
+    kind: choice
+    difficulty: medium
+    prompt: "스위치가 같은 MAC 주소를 새 포트에서 다시 학습하면 일반적으로 어떤 일이 일어나나요?"
+    choices:
+    - id: a
+      text: "프레임의 IP 주소를 포트 번호로 바꾼다"
+      feedback: "다시 본문을 확인해 보세요. 프레임의 IP 주소를 포트 번호로 바꾼다."
+    - id: b
+      text: "MAC 주소 테이블의 포트 기록을 새 위치로 갱신한다"
+      feedback: "맞아요. MAC 주소 테이블의 포트 기록을 새 위치로 갱신한다입니다."
+    - id: c
+      text: "그 MAC 주소를 영구 차단한다"
+      feedback: "다시 본문을 확인해 보세요. 그 MAC 주소를 영구 차단한다."
+    - id: d
+      text: "모든 스위치 포트를 비활성화한다"
+      feedback: "다시 본문을 확인해 보세요. 모든 스위치 포트를 비활성화한다."
+    - id: e
+      text: "출발지 MAC 주소를 목적지 MAC 주소로 바꾼다"
+      feedback: "다시 본문을 확인해 보세요. 출발지 MAC 주소를 목적지 MAC 주소로 바꾼다."
+    answer: b
   animations:
   - file: l09-mac-learning.svg
     title: "출발지 MAC과 포트를 기억한다"
@@ -305,6 +347,27 @@ page_metadata:
     answers:
     - destination MAC address
     feedback: 정답은 destination MAC address입니다.
+  - id: u3-02-p03-q04
+    kind: choice
+    difficulty: medium
+    prompt: "목적지 MAC 주소가 MAC 주소 테이블에 있고 8번 포트에 연결되어 있다면 스위치는 프레임을 어떻게 전달하나요?"
+    choices:
+    - id: a
+      text: "들어온 포트를 포함한 모든 포트로 항상 복사한다"
+      feedback: "다시 본문을 확인해 보세요. 들어온 포트를 포함한 모든 포트로 항상 복사한다."
+    - id: b
+      text: "라우터를 통해서만 보낸다"
+      feedback: "다시 본문을 확인해 보세요. 라우터를 통해서만 보낸다."
+    - id: c
+      text: "포트 번호를 무작위로 고른다"
+      feedback: "다시 본문을 확인해 보세요. 포트 번호를 무작위로 고른다."
+    - id: d
+      text: "8번 포트로 전달한다"
+      feedback: "맞아요. 8번 포트로 전달한다입니다."
+    - id: e
+      text: "프레임을 폐기한다"
+      feedback: "다시 본문을 확인해 보세요. 프레임을 폐기한다."
+    answer: d
   animations:
   - file: l09-known-unicast.svg
     title: "목적지를 알면 그 포트로만"
@@ -382,6 +445,27 @@ page_metadata:
     answers:
     - Unicast
     feedback: 정답은 Unicast입니다.
+  - id: u3-02-p04-q04
+    kind: choice
+    difficulty: medium
+    prompt: "목적지 MAC 주소를 모르는 프레임을 플러딩할 때 스위치의 동작으로 맞는 것은 무엇인가요?"
+    choices:
+    - id: a
+      text: "들어온 포트를 제외한 같은 LAN의 포트들로 내보낸다"
+      feedback: "맞아요. 들어온 포트를 제외한 같은 LAN의 포트들로 내보낸다입니다."
+    - id: b
+      text: "들어온 포트로만 되돌려 보낸다"
+      feedback: "다시 본문을 확인해 보세요. 들어온 포트로만 되돌려 보낸다."
+    - id: c
+      text: "인터넷의 모든 네트워크로 전달한다"
+      feedback: "다시 본문을 확인해 보세요. 인터넷의 모든 네트워크로 전달한다."
+    - id: d
+      text: "목적지 IP 주소를 찾아 라우팅한다"
+      feedback: "다시 본문을 확인해 보세요. 목적지 IP 주소를 찾아 라우팅한다."
+    - id: e
+      text: "프레임을 항상 폐기한다"
+      feedback: "다시 본문을 확인해 보세요. 프레임을 항상 폐기한다."
+    answer: a
   animations:
   - file: l09-unknown-flooding.svg
     title: "목적지를 모르면 플러딩"
@@ -464,6 +548,27 @@ page_metadata:
     answers:
     - Link down
     feedback: 정답은 Link down입니다.
+  - id: u3-02-p05-q04
+    kind: choice
+    difficulty: medium
+    prompt: "포트 LED에 Link up이 표시될 때 확인할 수 있는 사실은 무엇인가요?"
+    choices:
+    - id: a
+      text: "IP 주소 설정까지 정상이다"
+      feedback: "다시 본문을 확인해 보세요. IP 주소 설정까지 정상이다."
+    - id: b
+      text: "인터넷 연결이 반드시 정상이다"
+      feedback: "다시 본문을 확인해 보세요. 인터넷 연결이 반드시 정상이다."
+    - id: c
+      text: "해당 링크의 연결이 성립했다"
+      feedback: "맞아요. 해당 링크의 연결이 성립했다입니다."
+    - id: d
+      text: "DNS 조회가 성공했다"
+      feedback: "다시 본문을 확인해 보세요. DNS 조회가 성공했다."
+    - id: e
+      text: "모든 애플리케이션이 통신 가능하다"
+      feedback: "다시 본문을 확인해 보세요. 모든 애플리케이션이 통신 가능하다."
+    answer: c
 - terms:
   - 업링크 (Uplink)
   - 배포 스위치 (Distribution switch)
@@ -535,6 +640,27 @@ page_metadata:
     answers:
     - Distribution layer
     feedback: 정답은 Distribution layer입니다.
+  - id: u3-02-p06-q04
+    kind: choice
+    difficulty: medium
+    prompt: "Uplink와 Link up을 구분한 설명으로 맞는 것은 무엇인가요?"
+    choices:
+    - id: a
+      text: "Uplink는 연결 상태이고 Link up은 연결 방향이다"
+      feedback: "다시 본문을 확인해 보세요. Uplink는 연결 상태이고 Link up은 연결 방향이다."
+    - id: b
+      text: "두 용어 모두 목적지 MAC 주소를 뜻한다"
+      feedback: "다시 본문을 확인해 보세요. 두 용어 모두 목적지 MAC 주소를 뜻한다."
+    - id: c
+      text: "Uplink는 언제나 L3 라우팅만 뜻한다"
+      feedback: "다시 본문을 확인해 보세요. Uplink는 언제나 L3 라우팅만 뜻한다."
+    - id: d
+      text: "Link up이면 인터넷 접속도 보장된다"
+      feedback: "다시 본문을 확인해 보세요. Link up이면 인터넷 접속도 보장된다."
+    - id: e
+      text: "Uplink는 상위 장비 쪽 연결의 역할이고 Link up은 연결 성립 상태다"
+      feedback: "맞아요. Uplink는 상위 장비 쪽 연결의 역할이고 Link up은 연결 성립 상태다입니다."
+    answer: e
   animations:
   - file: l09-uplink-distribution.svg
     title: "업링크로 배포 스위치에 모으기"
@@ -617,6 +743,27 @@ page_metadata:
     answers:
     - L3 switch
     feedback: 정답은 L3 switch입니다.
+  - id: u3-02-p07-q04
+    kind: choice
+    difficulty: medium
+    prompt: "같은 LAN에 있는 두 PC 사이에서 여러 스위치가 프레임을 전달할 때 각 스위치는 무엇을 기준으로 다음 포트를 고르나요?"
+    choices:
+    - id: a
+      text: "출발지 PC가 전체 경로를 지정한다"
+      feedback: "다시 본문을 확인해 보세요. 출발지 PC가 전체 경로를 지정한다."
+    - id: b
+      text: "각 스위치의 MAC 주소 테이블에서 목적지 MAC 주소를 찾는다"
+      feedback: "맞아요. 각 스위치의 MAC 주소 테이블에서 목적지 MAC 주소를 찾는다입니다."
+    - id: c
+      text: "각 스위치가 목적지 IP로 인터넷 경로를 계산한다"
+      feedback: "다시 본문을 확인해 보세요. 각 스위치가 목적지 IP로 인터넷 경로를 계산한다."
+    - id: d
+      text: "배포 스위치만 프레임을 전달한다"
+      feedback: "다시 본문을 확인해 보세요. 배포 스위치만 프레임을 전달한다."
+    - id: e
+      text: "각 PC의 화면 해상도를 비교한다"
+      feedback: "다시 본문을 확인해 보세요. 각 PC의 화면 해상도를 비교한다."
+    answer: b
 - terms:
   - MAC 주소 학습
   - 목적지 조회
@@ -689,6 +836,28 @@ page_metadata:
     answers:
     - forwarding
     feedback: 정답은 forwarding입니다.
+  - id: u3-02-p08-q04
+    kind: choice
+    difficulty: medium
+    prompt: "L2 스위치의 기본 프레임 처리 순서로 가장 알맞은 것은 무엇인가요?"
+    choices:
+    - id: a
+      text: "목적지 IP를 학습하고, 모든 프레임을 라우터로 보낸다"
+      feedback: "다시 본문을 확인해 보세요. 목적지 IP를 학습하고, 모든 프레임을 라우터로 보낸다."
+    - id: b
+      text: "프레임을 먼저 플러딩하고, 출발지 MAC을 삭제한다"
+      feedback: "다시 본문을 확인해 보세요. 프레임을 먼저 플러딩하고, 출발지 MAC을 삭제한다."
+    - id: c
+      text: "출발지 MAC으로 목적지 포트를 정하고, 입력 포트로 되돌린다"
+      feedback: "다시 본문을 확인해 보세요. 출발지 MAC으로 목적지 포트를 정하고, 입력 포트로 되돌린다."
+    - id: d
+      text: "출발지 MAC과 입력 포트를 학습하고, 목적지 MAC을 조회해 알려진 포트로 전달하거나 모르면 플러딩한다"
+      feedback: "맞아요. 출발지 MAC과 입력 포트를 학습하고, 목적지 MAC을 조회해 알려진 포트로 전달하거나 모르면 플러딩한다입니다."
+    - id: e
+      text: "Link up을 확인한 뒤 IP 주소를 바꾼다"
+      feedback: "다시 본문을 확인해 보세요. Link up을 확인한 뒤 IP 주소를 바꾼다."
+    answer: d
+
   animations:
   - file: l09-l2-four-steps.svg
     title: "L2 스위치 동작 네 단계"

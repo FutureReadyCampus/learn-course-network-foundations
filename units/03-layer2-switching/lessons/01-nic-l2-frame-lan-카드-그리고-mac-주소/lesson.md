@@ -57,6 +57,27 @@ page_metadata:
     answers:
     - network interface
     feedback: 정답은 network interface입니다.
+  - id: u3-01-p01-q04
+    kind: choice
+    difficulty: medium
+    prompt: "집의 문처럼 컴퓨터와 네트워크 사이에서 신호를 주고받게 해 주는 장치는 무엇인가요?"
+    choices:
+    - id: a
+      text: "스위치 포트"
+      feedback: "다시 본문을 확인해 보세요. 스위치 포트."
+    - id: b
+      text: "라우터"
+      feedback: "다시 본문을 확인해 보세요. 라우터."
+    - id: c
+      text: "프레임"
+      feedback: "다시 본문을 확인해 보세요. 프레임."
+    - id: d
+      text: "NIC"
+      feedback: "맞아요. NIC입니다."
+    - id: e
+      text: "IP 주소"
+      feedback: "다시 본문을 확인해 보세요. IP 주소."
+    answer: d
   animations:
   - file: l08-nic-door.svg
     title: "NIC는 컴퓨터의 문"
@@ -122,6 +143,27 @@ page_metadata:
     answers:
     - port
     feedback: 정답은 port입니다.
+  - id: u3-01-p02-q04
+    kind: choice
+    difficulty: medium
+    prompt: "노트북 한 대에 Wi-Fi와 USB Ethernet 연결이 모두 있다면 가장 알맞은 설명은 무엇인가요?"
+    choices:
+    - id: a
+      text: "호스트 한 대에 네트워크 인터페이스가 두 개 있다"
+      feedback: "맞아요. 호스트 한 대에 네트워크 인터페이스가 두 개 있다입니다."
+    - id: b
+      text: "컴퓨터가 두 대의 호스트가 된다"
+      feedback: "다시 본문을 확인해 보세요. 컴퓨터가 두 대의 호스트가 된다."
+    - id: c
+      text: "두 NIC가 반드시 같은 MAC 주소를 쓴다"
+      feedback: "다시 본문을 확인해 보세요. 두 NIC가 반드시 같은 MAC 주소를 쓴다."
+    - id: d
+      text: "Wi-Fi는 인터페이스로 세지 않는다"
+      feedback: "다시 본문을 확인해 보세요. Wi-Fi는 인터페이스로 세지 않는다."
+    - id: e
+      text: "USB 어댑터가 액세스 스위치가 된다"
+      feedback: "다시 본문을 확인해 보세요. USB 어댑터가 액세스 스위치가 된다."
+    answer: a
 - terms:
   - LAN (Local Area Network)
   - MAN (Metropolitan Area Network)
@@ -175,6 +217,27 @@ page_metadata:
     answers:
     - LAN
     feedback: 정답은 LAN입니다.
+  - id: u3-01-p03-q04
+    kind: choice
+    difficulty: medium
+    prompt: "LAN, MAN, WAN을 나누는 주된 기준은 무엇인가요?"
+    choices:
+    - id: a
+      text: "전송 속도의 높고 낮음"
+      feedback: "다시 본문을 확인해 보세요. 전송 속도의 높고 낮음."
+    - id: b
+      text: "케이블과 무선 중 무엇을 쓰는지"
+      feedback: "다시 본문을 확인해 보세요. 케이블과 무선 중 무엇을 쓰는지."
+    - id: c
+      text: "네트워크가 아우르는 지리적 범위"
+      feedback: "맞아요. 네트워크가 아우르는 지리적 범위입니다."
+    - id: d
+      text: "연결된 컴퓨터의 개수만"
+      feedback: "다시 본문을 확인해 보세요. 연결된 컴퓨터의 개수만."
+    - id: e
+      text: "MAC 주소의 길이"
+      feedback: "다시 본문을 확인해 보세요. MAC 주소의 길이."
+    answer: c
   animations:
   - file: l08-lan-man-wan.svg
     title: "LAN, MAN, WAN"
@@ -239,6 +302,27 @@ page_metadata:
     answers:
     - private address
     feedback: 정답은 private address입니다.
+  - id: u3-01-p04-q04
+    kind: choice
+    difficulty: medium
+    prompt: "일반적인 MAC 주소는 보통 몇 비트인가요?"
+    choices:
+    - id: a
+      text: "8비트"
+      feedback: "다시 본문을 확인해 보세요. 8비트."
+    - id: b
+      text: "16비트"
+      feedback: "다시 본문을 확인해 보세요. 16비트."
+    - id: c
+      text: "32비트"
+      feedback: "다시 본문을 확인해 보세요. 32비트."
+    - id: d
+      text: "64비트"
+      feedback: "다시 본문을 확인해 보세요. 64비트."
+    - id: e
+      text: "48비트"
+      feedback: "맞아요. 48비트입니다."
+    answer: e
 - terms:
   - 프레임 (Frame)
   - L2 (Layer 2, 계층 2)
@@ -292,6 +376,27 @@ page_metadata:
     answers:
     - Frame
     feedback: 정답은 Frame입니다.
+  - id: u3-01-p05-q04
+    kind: choice
+    difficulty: medium
+    prompt: "패킷과 프레임의 관계를 가장 정확히 설명한 것은 무엇인가요?"
+    choices:
+    - id: a
+      text: "프레임은 인터넷 전체에서 변하지 않는 포장이다"
+      feedback: "다시 본문을 확인해 보세요. 프레임은 인터넷 전체에서 변하지 않는 포장이다."
+    - id: b
+      text: "패킷은 한 링크에서 전달되는 프레임의 데이터 부분에 실릴 수 있다"
+      feedback: "맞아요. 패킷은 한 링크에서 전달되는 프레임의 데이터 부분에 실릴 수 있다입니다."
+    - id: c
+      text: "패킷은 MAC 주소이고 프레임은 IP 주소다"
+      feedback: "다시 본문을 확인해 보세요. 패킷은 MAC 주소이고 프레임은 IP 주소다."
+    - id: d
+      text: "한 프레임에는 파일 하나만 들어간다"
+      feedback: "다시 본문을 확인해 보세요. 한 프레임에는 파일 하나만 들어간다."
+    - id: e
+      text: "프레임은 라우터 사이에서 쓰이지 않는다"
+      feedback: "다시 본문을 확인해 보세요. 프레임은 라우터 사이에서 쓰이지 않는다."
+    answer: b
   animations:
   - file: l08-frame-per-link.svg
     title: "NIC가 주고받는 L2 프레임"
@@ -350,6 +455,27 @@ page_metadata:
     answers:
     - Jumbo Frame
     feedback: 정답은 Jumbo Frame입니다.
+  - id: u3-01-p06-q04
+    kind: choice
+    difficulty: medium
+    prompt: "일반 Ethernet에서 MTU 1,500바이트가 가리키는 것은 무엇인가요?"
+    choices:
+    - id: a
+      text: "헤더와 FCS를 포함한 프레임 전체 크기"
+      feedback: "다시 본문을 확인해 보세요. 헤더와 FCS를 포함한 프레임 전체 크기."
+    - id: b
+      text: "Ethernet 헤더만의 크기"
+      feedback: "다시 본문을 확인해 보세요. Ethernet 헤더만의 크기."
+    - id: c
+      text: "초당 전송 비트 수"
+      feedback: "다시 본문을 확인해 보세요. 초당 전송 비트 수."
+    - id: d
+      text: "프레임의 데이터(payload) 부분 최대 크기"
+      feedback: "맞아요. 프레임의 데이터(payload) 부분 최대 크기입니다."
+    - id: e
+      text: "MAC 주소의 크기"
+      feedback: "다시 본문을 확인해 보세요. MAC 주소의 크기."
+    answer: d
   animations:
   - file: l08-frame-size.svg
     title: "프레임 크기 세는 법"
@@ -415,6 +541,27 @@ page_metadata:
     answers:
     - Byte
     feedback: 정답은 Byte입니다.
+  - id: u3-01-p07-q04
+    kind: choice
+    difficulty: medium
+    prompt: "1Gbps를 바이트 단위의 이론상 전송량으로 바꾸면 초당 약 얼마인가요?"
+    choices:
+    - id: a
+      text: "125MB/s"
+      feedback: "맞아요. 125MB/s입니다."
+    - id: b
+      text: "1MB/s"
+      feedback: "다시 본문을 확인해 보세요. 1MB/s."
+    - id: c
+      text: "8MB/s"
+      feedback: "다시 본문을 확인해 보세요. 8MB/s."
+    - id: d
+      text: "1GB/s"
+      feedback: "다시 본문을 확인해 보세요. 1GB/s."
+    - id: e
+      text: "1,000MB/s"
+      feedback: "다시 본문을 확인해 보세요. 1,000MB/s."
+    answer: a
 - terms:
   - 광섬유 케이블
   - 슬롯 (Slot)
@@ -467,6 +614,28 @@ page_metadata:
     answers:
     - Ethernet
     feedback: 정답은 Ethernet입니다.
+  - id: u3-01-p08-q04
+    kind: choice
+    difficulty: medium
+    prompt: "구리 케이블과 광섬유 케이블의 신호 전달 방식에 대한 설명으로 맞는 것은 무엇인가요?"
+    choices:
+    - id: a
+      text: "구리와 광섬유 모두 반드시 전기 신호만 전달한다"
+      feedback: "다시 본문을 확인해 보세요. 구리와 광섬유 모두 반드시 전기 신호만 전달한다."
+    - id: b
+      text: "광섬유는 IP 패킷을 직접 전달하므로 NIC가 필요 없다"
+      feedback: "다시 본문을 확인해 보세요. 광섬유는 IP 패킷을 직접 전달하므로 NIC가 필요 없다."
+    - id: c
+      text: "구리 케이블은 전기 신호, 광섬유는 빛 신호를 전달한다"
+      feedback: "맞아요. 구리 케이블은 전기 신호, 광섬유는 빛 신호를 전달한다입니다."
+    - id: d
+      text: "10Gbps 연결은 반드시 광섬유를 써야 한다"
+      feedback: "다시 본문을 확인해 보세요. 10Gbps 연결은 반드시 광섬유를 써야 한다."
+    - id: e
+      text: "구리 케이블은 MAC 주소를 전달할 수 없다"
+      feedback: "다시 본문을 확인해 보세요. 구리 케이블은 MAC 주소를 전달할 수 없다."
+    answer: c
+
   animations:
   - file: l08-find-my-interface.svg
     title: "내 컴퓨터에서 연결 지점 찾기"

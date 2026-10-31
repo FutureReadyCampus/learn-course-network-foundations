@@ -56,6 +56,27 @@ page_metadata:
     answers:
     - Broadcast
     feedback: 정답은 Broadcast입니다.
+  - id: u3-03-p01-q04
+    kind: choice
+    difficulty: medium
+    prompt: "교실 전체 안내 방송처럼 같은 구역의 여러 장치에 한꺼번에 보내는 통신은 무엇인가요?"
+    choices:
+    - id: a
+      text: "Broadcast"
+      feedback: "맞아요. Broadcast입니다."
+    - id: b
+      text: "Unicast"
+      feedback: "다시 본문을 확인해 보세요. Unicast."
+    - id: c
+      text: "Uplink"
+      feedback: "다시 본문을 확인해 보세요. Uplink."
+    - id: d
+      text: "Link up"
+      feedback: "다시 본문을 확인해 보세요. Link up."
+    - id: e
+      text: "Routing"
+      feedback: "다시 본문을 확인해 보세요. Routing."
+    answer: a
   animations:
   - file: l10-unicast-vs-broadcast.svg
     title: "Unicast와 Broadcast"
@@ -113,6 +134,27 @@ page_metadata:
     answers:
     - broadcast domain
     feedback: 정답은 broadcast domain입니다.
+  - id: u3-03-p02-q04
+    kind: choice
+    difficulty: medium
+    prompt: "브로드캐스트 도메인을 가장 잘 설명한 것은 무엇인가요?"
+    choices:
+    - id: a
+      text: "인터넷 전체의 모든 장치"
+      feedback: "다시 본문을 확인해 보세요. 인터넷 전체의 모든 장치."
+    - id: b
+      text: "한 서버에서 실행되는 프로그램 수"
+      feedback: "다시 본문을 확인해 보세요. 한 서버에서 실행되는 프로그램 수."
+    - id: c
+      text: "Ethernet 브로드캐스트 프레임이 전달되어 장치들이 수신하는 범위"
+      feedback: "맞아요. Ethernet 브로드캐스트 프레임이 전달되어 장치들이 수신하는 범위입니다."
+    - id: d
+      text: "무선 신호의 속도 구간"
+      feedback: "다시 본문을 확인해 보세요. 무선 신호의 속도 구간."
+    - id: e
+      text: "MAC 주소를 만드는 회사들의 목록"
+      feedback: "다시 본문을 확인해 보세요. MAC 주소를 만드는 회사들의 목록."
+    answer: c
   animations:
   - file: l10-apartment-broadcast-zone.svg
     title: "방송이 닿는 구역"
@@ -176,6 +218,27 @@ page_metadata:
     answers:
     - broadcast MAC address
     feedback: 정답은 broadcast MAC address입니다.
+  - id: u3-03-p03-q04
+    kind: choice
+    difficulty: medium
+    prompt: "FF:FF:FF:FF:FF:FF가 Ethernet 브로드캐스트 MAC 주소인 이유는 무엇인가요?"
+    choices:
+    - id: a
+      text: "IP 주소가 모두 255이기 때문이다"
+      feedback: "다시 본문을 확인해 보세요. IP 주소가 모두 255이기 때문이다."
+    - id: b
+      text: "문자 F가 네트워크 장치를 뜻하기 때문이다"
+      feedback: "다시 본문을 확인해 보세요. 문자 F가 네트워크 장치를 뜻하기 때문이다."
+    - id: c
+      text: "라우터가 모든 MAC 주소를 그 값으로 바꾸기 때문이다"
+      feedback: "다시 본문을 확인해 보세요. 라우터가 모든 MAC 주소를 그 값으로 바꾸기 때문이다."
+    - id: d
+      text: "6개의 네트워크에 각각 하나씩 보내기 때문이다"
+      feedback: "다시 본문을 확인해 보세요. 6개의 네트워크에 각각 하나씩 보내기 때문이다."
+    - id: e
+      text: "6바이트의 각 비트가 모두 1인 48비트 주소이기 때문이다"
+      feedback: "맞아요. 6바이트의 각 비트가 모두 1인 48비트 주소이기 때문이다입니다."
+    answer: e
 - terms:
   - 프레임 (Frame)
   - 헤더 (Header)
@@ -234,6 +297,27 @@ page_metadata:
     answers:
     - header
     feedback: 정답은 header입니다.
+  - id: u3-03-p04-q04
+    kind: choice
+    difficulty: medium
+    prompt: "스위치가 Ethernet 브로드캐스트 프레임을 받았을 때 일반적인 전달 방식은 무엇인가요?"
+    choices:
+    - id: a
+      text: "들어온 포트로만 되돌려 보낸다"
+      feedback: "다시 본문을 확인해 보세요. 들어온 포트로만 되돌려 보낸다."
+    - id: b
+      text: "들어온 포트를 제외한 같은 브로드캐스트 도메인의 포트로 전달한다"
+      feedback: "맞아요. 들어온 포트를 제외한 같은 브로드캐스트 도메인의 포트로 전달한다입니다."
+    - id: c
+      text: "MAC 주소 테이블에 있는 한 포트에만 보낸다"
+      feedback: "다시 본문을 확인해 보세요. MAC 주소 테이블에 있는 한 포트에만 보낸다."
+    - id: d
+      text: "다른 IP 네트워크로 라우팅한다"
+      feedback: "다시 본문을 확인해 보세요. 다른 IP 네트워크로 라우팅한다."
+    - id: e
+      text: "프레임을 항상 폐기한다"
+      feedback: "다시 본문을 확인해 보세요. 프레임을 항상 폐기한다."
+    answer: b
 - terms:
   - 트래픽 (Traffic)
   - 호스트 (Host)
@@ -286,6 +370,27 @@ page_metadata:
     answers:
     - bandwidth
     feedback: 정답은 bandwidth입니다.
+  - id: u3-03-p05-q04
+    kind: choice
+    difficulty: medium
+    prompt: "브로드캐스트 트래픽이 지나치게 많아질 때 생길 수 있는 영향은 무엇인가요?"
+    choices:
+    - id: a
+      text: "모든 유니캐스트 통신이 반드시 즉시 중단된다"
+      feedback: "다시 본문을 확인해 보세요. 모든 유니캐스트 통신이 반드시 즉시 중단된다."
+    - id: b
+      text: "MAC 주소가 자동으로 IP 주소로 바뀐다"
+      feedback: "다시 본문을 확인해 보세요. MAC 주소가 자동으로 IP 주소로 바뀐다."
+    - id: c
+      text: "Ethernet 프레임 크기 한계가 사라진다"
+      feedback: "다시 본문을 확인해 보세요. Ethernet 프레임 크기 한계가 사라진다."
+    - id: d
+      text: "링크 대역폭과 장치 처리 자원을 차지해 다른 통신에 지연을 줄 수 있다"
+      feedback: "맞아요. 링크 대역폭과 장치 처리 자원을 차지해 다른 통신에 지연을 줄 수 있다입니다."
+    - id: e
+      text: "라우터가 더 많은 링크를 자동으로 만든다"
+      feedback: "다시 본문을 확인해 보세요. 라우터가 더 많은 링크를 자동으로 만든다."
+    answer: d
   animations:
   - file: l10-broadcast-uses-links.svg
     title: "방송이 잦으면 자원이 줄어든다"
@@ -349,6 +454,27 @@ page_metadata:
     answers:
     - L3 boundary
     feedback: 정답은 L3 boundary입니다.
+  - id: u3-03-p06-q04
+    kind: choice
+    difficulty: medium
+    prompt: "일반적인 Ethernet 브로드캐스트가 다른 IP 네트워크에 그대로 전달되지 않도록 경계를 만드는 장비와, 필요할 때 사용할 수 있는 보조 기능의 조합은 무엇인가요?"
+    choices:
+    - id: a
+      text: "라우터와 DHCP relay"
+      feedback: "맞아요. 라우터와 DHCP relay입니다."
+    - id: b
+      text: "액세스 스위치와 MAC learning"
+      feedback: "다시 본문을 확인해 보세요. 액세스 스위치와 MAC learning."
+    - id: c
+      text: "NIC와 Link up"
+      feedback: "다시 본문을 확인해 보세요. NIC와 Link up."
+    - id: d
+      text: "DNS 서버와 Unicast"
+      feedback: "다시 본문을 확인해 보세요. DNS 서버와 Unicast."
+    - id: e
+      text: "광섬유와 FCS"
+      feedback: "다시 본문을 확인해 보세요. 광섬유와 FCS."
+    answer: a
 - terms:
   - MAC 주소
   - IP 주소
@@ -401,6 +527,27 @@ page_metadata:
     answers:
     - IP address
     feedback: 정답은 IP address입니다.
+  - id: u3-03-p07-q04
+    kind: choice
+    difficulty: medium
+    prompt: "일반적인 라우터 전달에서 여러 링크를 지날 때 주소가 바뀌거나 유지되는 방식으로 맞는 것은 무엇인가요?"
+    choices:
+    - id: a
+      text: "MAC 주소와 목적지 IP가 항상 함께 바뀐다"
+      feedback: "다시 본문을 확인해 보세요. MAC 주소와 목적지 IP가 항상 함께 바뀐다."
+    - id: b
+      text: "목적지 IP는 매 링크마다 다음 스위치 주소로 바뀐다"
+      feedback: "다시 본문을 확인해 보세요. 목적지 IP는 매 링크마다 다음 스위치 주소로 바뀐다."
+    - id: c
+      text: "링크별 MAC 주소는 다음 프레임 수신자에 맞게 바뀔 수 있고, 목적지 IP는 최종 목적지를 가리킨다"
+      feedback: "맞아요. 링크별 MAC 주소는 다음 프레임 수신자에 맞게 바뀔 수 있고, 목적지 IP는 최종 목적지를 가리킨다입니다."
+    - id: d
+      text: "출발지와 목적지 MAC은 인터넷 끝까지 고정된다"
+      feedback: "다시 본문을 확인해 보세요. 출발지와 목적지 MAC은 인터넷 끝까지 고정된다."
+    - id: e
+      text: "라우터는 MAC 주소만 보고 네트워크 사이 경로를 정한다"
+      feedback: "다시 본문을 확인해 보세요. 라우터는 MAC 주소만 보고 네트워크 사이 경로를 정한다."
+    answer: c
   animations:
   - file: l10-mac-changes-ip-stays.svg
     title: "MAC은 링크마다, IP는 끝까지"
@@ -457,6 +604,27 @@ page_metadata:
     answers:
     - abstraction
     feedback: 정답은 abstraction입니다.
+  - id: u3-03-p08-q04
+    kind: choice
+    difficulty: medium
+    prompt: "IP 네트워크를 논리적 연결이라고 부르는 설명으로 맞는 것은 무엇인가요?"
+    choices:
+    - id: a
+      text: "논리적 네트워크에는 실제 케이블이나 장비가 없다"
+      feedback: "다시 본문을 확인해 보세요. 논리적 네트워크에는 실제 케이블이나 장비가 없다."
+    - id: b
+      text: "인터넷 구름 그림은 케이블이 존재하지 않는다는 뜻이다"
+      feedback: "다시 본문을 확인해 보세요. 인터넷 구름 그림은 케이블이 존재하지 않는다는 뜻이다."
+    - id: c
+      text: "논리 네트워크는 항상 하나의 컴퓨터 안에만 있다"
+      feedback: "다시 본문을 확인해 보세요. 논리 네트워크는 항상 하나의 컴퓨터 안에만 있다."
+    - id: d
+      text: "IP 주소가 있으면 물리 연결이 필요 없다"
+      feedback: "다시 본문을 확인해 보세요. IP 주소가 있으면 물리 연결이 필요 없다."
+    - id: e
+      text: "물리 링크와 장비 위에서 주소와 규칙으로 구성한 연결을 따로 표현한다"
+      feedback: "맞아요. 물리 링크와 장비 위에서 주소와 규칙으로 구성한 연결을 따로 표현한다입니다."
+    answer: e
   animations:
   - file: l10-cloud-over-cables.svg
     title: "포인터와 구름: 논리적이라는 말"
@@ -514,6 +682,27 @@ page_metadata:
     answers:
     - virtualization
     feedback: 정답은 virtualization입니다.
+  - id: u3-03-p09-q04
+    kind: choice
+    difficulty: medium
+    prompt: "가상화가 한 대의 실제 서버에서 여러 가상 머신을 제공할 수 있게 하는 방식으로 가장 알맞은 것은 무엇인가요?"
+    choices:
+    - id: a
+      text: "서버 안에 같은 수의 물리 컴퓨터를 추가 설치한다"
+      feedback: "다시 본문을 확인해 보세요. 서버 안에 같은 수의 물리 컴퓨터를 추가 설치한다."
+    - id: b
+      text: "소프트웨어가 실제 컴퓨터 자원을 나누어 각 가상 머신에 제공한다"
+      feedback: "맞아요. 소프트웨어가 실제 컴퓨터 자원을 나누어 각 가상 머신에 제공한다입니다."
+    - id: c
+      text: "각 가상 머신이 별도의 인터넷을 물리적으로 만든다"
+      feedback: "다시 본문을 확인해 보세요. 각 가상 머신이 별도의 인터넷을 물리적으로 만든다."
+    - id: d
+      text: "MAC 주소를 모두 같게 설정한다"
+      feedback: "다시 본문을 확인해 보세요. MAC 주소를 모두 같게 설정한다."
+    - id: e
+      text: "가상 머신은 네트워크 인터페이스를 사용할 수 없다"
+      feedback: "다시 본문을 확인해 보세요. 가상 머신은 네트워크 인터페이스를 사용할 수 없다."
+    answer: b
   animations:
   - file: l10-one-server-many-vms.svg
     title: "한 대를 여러 대처럼: 가상화"
@@ -571,6 +760,28 @@ page_metadata:
     answers:
     - WAN
     feedback: 정답은 WAN입니다.
+  - id: u3-03-p10-q04
+    kind: choice
+    difficulty: medium
+    prompt: "LAN과 WAN을 구분하는 기본 관점에 대한 설명으로 가장 정확한 것은 무엇인가요?"
+    choices:
+    - id: a
+      text: "LAN은 항상 물리적이고 WAN은 항상 논리적이다"
+      feedback: "다시 본문을 확인해 보세요. LAN은 항상 물리적이고 WAN은 항상 논리적이다."
+    - id: b
+      text: "WAN은 반드시 광섬유를 써야 한다"
+      feedback: "다시 본문을 확인해 보세요. WAN은 반드시 광섬유를 써야 한다."
+    - id: c
+      text: "LAN은 유선만, WAN은 무선만 사용한다"
+      feedback: "다시 본문을 확인해 보세요. LAN은 유선만, WAN은 무선만 사용한다."
+    - id: d
+      text: "주로 네트워크가 아우르는 범위를 설명하며, 물리적·논리적 여부만으로 구분하지 않는다"
+      feedback: "맞아요. 주로 네트워크가 아우르는 범위를 설명하며, 물리적·논리적 여부만으로 구분하지 않는다입니다."
+    - id: e
+      text: "LAN과 WAN은 속도 순위를 나타낸다"
+      feedback: "다시 본문을 확인해 보세요. LAN과 WAN은 속도 순위를 나타낸다."
+    answer: d
+
   animations:
   - file: l10-lan-wan-summary.svg
     title: "LAN·WAN 한 장으로 정리"
