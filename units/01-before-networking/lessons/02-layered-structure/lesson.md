@@ -226,11 +226,11 @@ pages:
       answer: a
     - id: u1-02-layered-structure-p02-q03
       kind: short
-      prompt: '핵심 개념을 입력해 보세요: 전제조건'
+      prompt: 다음 단계가 성립하기 전에 먼저 갖추어야 하는 조건을 가리키는 말입니다. 어떤 개념일까요? (영어 단어로 답해주세요)
       answers:
-      - 전제조건
-      - 전제조건
-      feedback: 정답은 전제조건입니다.
+      - prerequisite
+      - precondition
+      feedback: 정답은 prerequisite입니다.
     questions:
     - id: u1-02-layered-structure-p02-q01
       kind: choice
@@ -276,11 +276,11 @@ pages:
       answer: a
     - id: u1-02-layered-structure-p02-q03
       kind: short
-      prompt: '핵심 개념을 입력해 보세요: 전제조건'
+      prompt: 다음 단계가 성립하기 전에 먼저 갖추어야 하는 조건을 가리키는 말입니다. 어떤 개념일까요? (영어 단어로 답해주세요)
       answers:
-      - 전제조건
-      - 전제조건
-      feedback: 정답은 전제조건입니다.
+      - prerequisite
+      - precondition
+      feedback: 정답은 prerequisite입니다.
 animations_dir: units/01-before-networking/lessons/02-layered-structure/assets/animations
 ---
 

@@ -163,11 +163,11 @@ pages:
       answer: a
     - id: u1-04-user-and-kernel-mode-p01-q03
       kind: short
-      prompt: '핵심 개념을 입력해 보세요: NIC'
+      prompt: 컴퓨터가 유선 또는 무선 네트워크에 접속할 수 있게 하는 하드웨어 장치입니다. 어떤 장치일까요? (영어 약어로 답해주세요)
       answers:
       - NIC
-      - nic
-      feedback: 정답은 NIC입니다.
+      - network interface card
+      feedback: 정답은 NIC(Network Interface Card)입니다.
   - concepts:
       - concept-basic-04-03
       - concept-basic-04-04
@@ -225,11 +225,12 @@ pages:
       answer: a
     - id: u1-04-user-and-kernel-mode-p02-q03
       kind: short
-      prompt: '핵심 개념을 입력해 보세요: 시스템 콜'
+      prompt: 애플리케이션이 커널에 작업을 요청할 때 사용하는 운영체제 인터페이스입니다. 어떤 개념일까요? (영어 용어로 답해주세요)
       answers:
+      - system call
+      - syscall
       - 시스템 콜
-      - 시스템 콜
-      feedback: 정답은 시스템 콜입니다.
+      feedback: 정답은 system call입니다.
   - concepts:
       - concept-basic-04-05
       - concept-basic-04-06
@@ -287,11 +288,11 @@ pages:
       answer: a
     - id: u1-04-user-and-kernel-mode-p03-q03
       kind: short
-      prompt: '핵심 개념을 입력해 보세요: IP'
+      prompt: 네트워크 계층에서 목적지 주소를 기준으로 패킷을 전달하는 인터넷 프로토콜의 약어입니다. 어떤 개념일까요? (영어 약어로 답해주세요)
       answers:
       - IP
-      - ip
-      feedback: 정답은 IP입니다.
+      - Internet Protocol
+      feedback: 정답은 IP(Internet Protocol)입니다.
 animations_dir: units/01-before-networking/lessons/04-user-and-kernel-mode/assets/animations
 ---
 

@@ -31,6 +31,7 @@ button { color: inherit; }
 .topbar-brand { display: inline-flex; align-items: center; gap: 8px; font-weight: 750; white-space: nowrap; }
 .brand-mark { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; color: var(--on-accent); background: var(--brand); font-size: 14px; }
 .topbar-course { min-width: 0; color: var(--muted); font-size: .875rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.topbar-location { color: var(--text); font-size: .75rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .topbar-actions { display: flex; align-items: center; gap: 10px; margin-inline-start: auto; }
 .preview-label { padding: 4px 9px; border: 1px solid var(--notice-border); border-radius: 999px; color: var(--muted); background: var(--notice-bg); font-size: .75rem; white-space: nowrap; }
 .icon-button, .page-nav a, .page-nav button { min-height: 40px; border: 1px solid var(--control-border); border-radius: 8px; padding: 7px 12px; background: var(--surface); color: var(--text); text-decoration: none; cursor: pointer; }
@@ -99,7 +100,8 @@ button { color: inherit; }
 }
 @media (max-width: 560px) {
   .study-topbar { gap: 9px; padding-inline: 12px; }
-  .topbar-course { font-size: .75rem; }
+  .topbar-course { display: none; }
+  .topbar-location { font-size: .6875rem; }
   .preview-label { display: none; }
   .net-lesson { padding: 24px 16px 112px; }
   .net-lesson > h1 { text-align: start; }

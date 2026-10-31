@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+  <rect width="960" height="540" fill="#0f1115"/>
+
+  <!-- 제목 + 고정 결론 -->
+  <text x="480" y="58" text-anchor="middle" font-size="34" font-weight="700" fill="#e6e8ec">받으면서 나눠 주는 피어</text>
+  <text x="480" y="100" text-anchor="middle" font-size="24" fill="#9aa3b2">P2P = 참여자끼리 직접 주고받는 방식 (예: 비트토렌트)</text>
+
+  <rect x="115" y="160" width="110" height="66" rx="6" fill="#171a21" stroke="#3d4b60" stroke-width="3"/><rect x="123" y="168" width="94" height="50" rx="2" fill="#0f1115"/><rect x="162" y="226" width="16" height="10" fill="#3d4b60"/><rect x="140" y="236" width="60" height="6" rx="3" fill="#3d4b60"/><text x="170" y="274" text-anchor="middle" font-size="24" fill="#e6e8ec">피어 A</text>
+  <rect x="93" y="290" width="34" height="34" rx="4" fill="#6ea8fe"/><text x="110" y="314" text-anchor="middle" font-size="20" font-weight="700" fill="#0f1115">1</text>
+  <rect x="133" y="290" width="34" height="34" rx="4" fill="#6ea8fe"/><text x="150" y="314" text-anchor="middle" font-size="20" font-weight="700" fill="#0f1115">2</text>
+  <rect x="173" y="290" width="34" height="34" rx="4" fill="#0f1115" stroke="#3d4b60" stroke-width="2"/><text x="190" y="314" text-anchor="middle" font-size="20" fill="#9aa3b2">3</text>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.67;0.7;0.97;0.99;1" dur="12s" repeatCount="indefinite"/><rect x="173" y="290" width="34" height="34" rx="4" fill="#6ea8fe"/><text x="190" y="314" text-anchor="middle" font-size="20" font-weight="700" fill="#0f1115">3</text></g>
+  <rect x="213" y="290" width="34" height="34" rx="4" fill="#0f1115" stroke="#3d4b60" stroke-width="2"/><text x="230" y="314" text-anchor="middle" font-size="20" fill="#9aa3b2">4</text>
+  <rect x="425" y="160" width="110" height="66" rx="6" fill="#171a21" stroke="#3d4b60" stroke-width="3"/><rect x="433" y="168" width="94" height="50" rx="2" fill="#0f1115"/><rect x="472" y="226" width="16" height="10" fill="#3d4b60"/><rect x="450" y="236" width="60" height="6" rx="3" fill="#3d4b60"/><text x="480" y="274" text-anchor="middle" font-size="24" font-weight="700" fill="#e6e8ec">나</text>
+  <rect x="403" y="290" width="34" height="34" rx="4" fill="#0f1115" stroke="#3d4b60" stroke-width="2"/><text x="420" y="314" text-anchor="middle" font-size="20" fill="#9aa3b2">1</text>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.42;0.45;0.97;0.99;1" dur="12s" repeatCount="indefinite"/><rect x="403" y="290" width="34" height="34" rx="4" fill="#6ea8fe"/><text x="420" y="314" text-anchor="middle" font-size="20" font-weight="700" fill="#0f1115">1</text></g>
+  <rect x="443" y="290" width="34" height="34" rx="4" fill="#0f1115" stroke="#3d4b60" stroke-width="2"/><text x="460" y="314" text-anchor="middle" font-size="20" fill="#9aa3b2">2</text>
+  <rect x="483" y="290" width="34" height="34" rx="4" fill="#6ea8fe"/><text x="500" y="314" text-anchor="middle" font-size="20" font-weight="700" fill="#0f1115">3</text>
+  <rect x="523" y="290" width="34" height="34" rx="4" fill="#0f1115" stroke="#3d4b60" stroke-width="2"/><text x="540" y="314" text-anchor="middle" font-size="20" fill="#9aa3b2">4</text>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.42;0.45;0.97;0.99;1" dur="12s" repeatCount="indefinite"/><rect x="523" y="290" width="34" height="34" rx="4" fill="#6ea8fe"/><text x="540" y="314" text-anchor="middle" font-size="20" font-weight="700" fill="#0f1115">4</text></g>
+  <rect x="735" y="160" width="110" height="66" rx="6" fill="#171a21" stroke="#3d4b60" stroke-width="3"/><rect x="743" y="168" width="94" height="50" rx="2" fill="#0f1115"/><rect x="782" y="226" width="16" height="10" fill="#3d4b60"/><rect x="760" y="236" width="60" height="6" rx="3" fill="#3d4b60"/><text x="790" y="274" text-anchor="middle" font-size="24" fill="#e6e8ec">피어 B</text>
+  <rect x="713" y="290" width="34" height="34" rx="4" fill="#0f1115" stroke="#3d4b60" stroke-width="2"/><text x="730" y="314" text-anchor="middle" font-size="20" fill="#9aa3b2">1</text>
+  <rect x="753" y="290" width="34" height="34" rx="4" fill="#0f1115" stroke="#3d4b60" stroke-width="2"/><text x="770" y="314" text-anchor="middle" font-size="20" fill="#9aa3b2">2</text>
+  <rect x="793" y="290" width="34" height="34" rx="4" fill="#0f1115" stroke="#3d4b60" stroke-width="2"/><text x="810" y="314" text-anchor="middle" font-size="20" fill="#9aa3b2">3</text>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.67;0.7;0.97;0.99;1" dur="12s" repeatCount="indefinite"/><rect x="793" y="290" width="34" height="34" rx="4" fill="#6ea8fe"/><text x="810" y="314" text-anchor="middle" font-size="20" font-weight="700" fill="#0f1115">3</text></g>
+  <rect x="833" y="290" width="34" height="34" rx="4" fill="#6ea8fe"/><text x="850" y="314" text-anchor="middle" font-size="20" font-weight="700" fill="#0f1115">4</text>
+  <!-- 받기: 1은 A에서, 4는 B에서 -->
+  <g opacity="0"><animateTransform attributeName="transform" type="translate" values="0,0;0,0;0,70;310,70;310,0;310,0" keyTimes="0;0.27;0.3;0.39;0.42;1" dur="12s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.26;0.27;0.42;0.43;1" dur="12s" repeatCount="indefinite"/><rect x="93" y="290" width="34" height="34" rx="4" fill="#6ea8fe"/><text x="110" y="314" text-anchor="middle" font-size="20" font-weight="700" fill="#0f1115">1</text></g>
+  <g opacity="0"><animateTransform attributeName="transform" type="translate" values="0,0;0,0;0,70;-310,70;-310,0;-310,0" keyTimes="0;0.27;0.3;0.39;0.42;1" dur="12s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.26;0.27;0.42;0.43;1" dur="12s" repeatCount="indefinite"/><rect x="833" y="290" width="34" height="34" rx="4" fill="#6ea8fe"/><text x="850" y="314" text-anchor="middle" font-size="20" font-weight="700" fill="#0f1115">4</text></g>
+  <!-- 주기: 3을 A와 B에게 -->
+  <g opacity="0"><animateTransform attributeName="transform" type="translate" values="0,0;0,0;0,70;-310,70;-310,0;-310,0" keyTimes="0;0.52;0.55;0.64;0.67;1" dur="12s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.51;0.52;0.67;0.68;1" dur="12s" repeatCount="indefinite"/><rect x="483" y="290" width="34" height="34" rx="4" fill="#ffb454"/><text x="500" y="314" text-anchor="middle" font-size="20" font-weight="700" fill="#0f1115">3</text></g>
+  <g opacity="0"><animateTransform attributeName="transform" type="translate" values="0,0;0,0;0,70;310,70;310,0;310,0" keyTimes="0;0.52;0.55;0.64;0.67;1" dur="12s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.51;0.52;0.67;0.68;1" dur="12s" repeatCount="indefinite"/><rect x="483" y="290" width="34" height="34" rx="4" fill="#ffb454"/><text x="500" y="314" text-anchor="middle" font-size="20" font-weight="700" fill="#0f1115">3</text></g>
+
+  <!-- 모두 피어 -->
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.75;0.78;0.97;0.99;1" dur="12s" repeatCount="indefinite"/>
+    <rect x="120" y="118" width="100" height="36" rx="18" fill="#7ee7c7" stroke="#7ee7c7" stroke-width="2"/><text x="170" y="144" text-anchor="middle" font-size="22" font-weight="700" fill="#0f1115">피어</text><rect x="430" y="118" width="100" height="36" rx="18" fill="#7ee7c7" stroke="#7ee7c7" stroke-width="2"/><text x="480" y="144" text-anchor="middle" font-size="22" font-weight="700" fill="#0f1115">피어</text><rect x="740" y="118" width="100" height="36" rx="18" fill="#7ee7c7" stroke="#7ee7c7" stroke-width="2"/><text x="790" y="144" text-anchor="middle" font-size="22" font-weight="700" fill="#0f1115">피어</text>
+    <rect x="390" y="360" width="180" height="36" rx="18" fill="#0f1115" stroke="#7ee7c7" stroke-width="2"/><text x="480" y="386" text-anchor="middle" font-size="22" font-weight="700" fill="#7ee7c7">받기 + 주기</text>
+  </g>
+
+  <!-- 자막 바 -->
+  <rect x="0" y="478" width="960" height="62" fill="#171a21"/>
+  <g font-size="26" fill="#e6e8ec" text-anchor="middle">
+    <text x="480" y="518" opacity="1">파일을 조각으로 나눠, 참여자마다 가진 조각이 다릅니다
+      <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.24;0.25;0.99;1" dur="12s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">나는 없는 조각 1과 4를 다른 피어에게서 받습니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.24;0.25;0.49;0.5;1" dur="12s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">이미 가진 조각 3은 다른 피어에게 보내 줍니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.49;0.5;0.74;0.75;1" dur="12s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">받는 쪽이자 주는 쪽, 그래서 <tspan fill="#7ee7c7" font-weight="700">피어</tspan>입니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.74;0.75;0.98;0.99;1" dur="12s" repeatCount="indefinite"/></text>
+  </g>
+<g aria-label="재생 단계"><rect x="40" y="28" width="88" height="40" rx="20" fill="#171a21" stroke="#3d4b60" stroke-width="2"/><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="1">1 / 4<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.24;0.25;1" calcMode="discrete" dur="12s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">2 / 4<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.24;0.25;0.49;0.5;1" calcMode="discrete" dur="12s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">3 / 4<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.49;0.5;0.74;0.75;1" calcMode="discrete" dur="12s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">4 / 4<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.74;0.75;1" calcMode="discrete" dur="12s" repeatCount="indefinite"/></text></g>
+</svg>

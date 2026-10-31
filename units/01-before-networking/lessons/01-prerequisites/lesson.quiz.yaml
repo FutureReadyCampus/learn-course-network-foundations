@@ -45,7 +45,7 @@ quizzes:
       answer: a
     - id: u1-01-prerequisites-p01-q03
       kind: short
-      prompt: 0 또는 1 하나를 나타내는 가장 작은 정보 단위는 무엇일까요? (영어 단어로 답해주세요)
+      prompt: 0과 1 중 하나의 값을 나타내는 컴퓨터의 가장 작은 정보 단위입니다. 다음 설명이 가리키는 개념은 무엇일까요? (영어 단어로 답해주세요)
       answers:
       - bit
       feedback: 정답은 bit입니다.
@@ -95,7 +95,7 @@ quizzes:
       answer: a
     - id: u1-01-prerequisites-p02-q03
       kind: short
-      prompt: 정보에서 필요한 부분만 골라내기 위해 쓰는 값은 무엇인가요? (영어 단어로 답해주세요)
+      prompt: AND 연산에서 필요한 비트 자리만 남기도록 1과 0으로 자리를 표시하는 값입니다. 다음 설명이 가리키는 개념은 무엇일까요? (영어 단어로 답해주세요)
       answers:
       - mask
       feedback: 정답은 mask입니다.
@@ -145,7 +145,7 @@ quizzes:
       answer: a
     - id: u1-01-prerequisites-p03-q03
       kind: short
-      prompt: 실행 중인 프로그램을 무엇이라고 하나요? (영어 단어로 답해주세요)
+      prompt: 컴퓨터에서 실행되어 현재 동작 중인 프로그램을 가리키는 말입니다. 다음 설명이 가리키는 개념은 무엇일까요? (영어 단어로 답해주세요)
       answers:
       - process
       feedback: 정답은 process입니다.
@@ -237,7 +237,7 @@ quizzes:
       answer: a
     - id: u1-01-prerequisites-p04-q03
       kind: short
-      prompt: 데이터를 잠시 담아 두는 메모리 공간은 무엇인가요? (영어 단어로 답해주세요)
+      prompt: 도착한 데이터와 꺼내 쓰는 속도 차이를 흡수하도록 데이터를 메모리에 잠시 담아 두는 공간입니다. 다음 설명이 가리키는 개념은 무엇일까요? (영어 단어로 답해주세요)
       answers:
       - buffer
       feedback: 정답은 buffer입니다.
@@ -285,24 +285,15 @@ quizzes:
         text: 장치는 개념을 설명하는 용어일 뿐입니다
         feedback: 다시 확인해 보세요. 목표는 개념이고 장치는 그 목표를 실현한 구현입니다
       answer: a
+    - id: u1-01-prerequisites-p05-q03
+      kind: short
+      prompt: 세부를 덜어 내고 무엇을 하려는지에 초점을 맞춘 생각입니다. 이 개념은 무엇일까요? (abstraction 또는 implementation 중 하나를 영어 단어로 답해주세요)
+      answers:
+      - abstraction
+      feedback: 정답은 abstraction입니다.
     - id: u1-01-prerequisites-p05-q04
-      kind: choice
-      difficulty: medium
-      prompt: 세부를 잠시 접어 두고 무엇을 할지 중심으로 보는 생각은 무엇인가요?
-      choices:
-      - id: a
-        text: 추상화(abstraction)
-        feedback: 맞아요. 추상화는 세부를 걷어 내고 목적이나 역할을 중심으로 보는 생각입니다.
-      - id: b
-        text: 구현(implementation)
-        feedback: 구현은 목적이나 역할을 실제로 해내는 구체적인 방법입니다.
-      - id: c
-        text: 프로세스(process)
-        feedback: 프로세스는 실행 중인 프로그램입니다.
-      - id: d
-        text: 비트(bit)
-        feedback: 비트는 0 또는 1 하나를 나타내는 정보 단위입니다.
-      - id: e
-        text: 버퍼(buffer)
-        feedback: 버퍼는 데이터를 잠시 담아 두는 메모리 공간입니다.
-      answer: a
+      kind: short
+      prompt: 생각한 목적을 실제로 해내는 구체적인 방법과 모양입니다. 이 개념은 무엇일까요? (abstraction 또는 implementation 중 하나를 영어 단어로 답해주세요)
+      answers:
+      - implementation
+      feedback: 정답은 implementation입니다.

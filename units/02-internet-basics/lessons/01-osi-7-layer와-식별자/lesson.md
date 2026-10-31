@@ -22,20 +22,320 @@ page_metadata:
     title: 앞으로 만날 여러 단계의 지도
     alt: 통신을 여러 단계로 나눈 그림. 각 단계의 이름과 데이터가 이동하는 방향이 표시되어 있습니다.
     caption: 앞으로 배울 내용을 미리 보여 주는 그림입니다. 안에 있는 이름은 지금 이해하거나 외우지 않아도 괜찮아요.
+  questions:
+  - id: u2-l05-p01-q01
+    kind: choice
+    difficulty: easy
+    prompt: 택배가 출발한 뒤 여러 장소를 거쳐 도착할 수 있는 이유는 무엇인가요?
+    choices:
+    - id: a
+      text: 여러 장소와 사람이 차례로 상자를 이어받기 때문입니다
+      feedback: 맞아요. 여러 장소와 사람이 차례로 상자를 이어받기 때문입니다.
+    - id: b
+      text: 상자가 목적지에 순간 이동하기 때문입니다
+      feedback: 다시 생각해 보세요. 여러 단계의 전달이 이어집니다.
+    - id: c
+      text: 받는 사람이 매번 새 상자를 준비하기 때문입니다
+      feedback: 다시 생각해 보세요. 같은 상자가 여정을 이어갑니다.
+    - id: d
+      text: 배달원이 처음부터 끝까지 혼자 운반하기 때문입니다
+      feedback: 다시 생각해 보세요. 여정에는 여러 장소와 사람이 참여합니다.
+    - id: e
+      text: 상자에 안내가 필요 없기 때문입니다
+      feedback: 다시 생각해 보세요. 목적지로 가려면 안내가 필요합니다.
+    answer: a
+  - id: u2-l05-p01-q02
+    kind: choice
+    difficulty: medium
+    prompt: 택배 여정과 네트워크 통신을 연결해서 이해할 때 가장 알맞은 설명은 무엇인가요?
+    choices:
+    - id: a
+      text: 중간 단계가 바뀌면 처음 보낸 데이터도 다른 데이터가 됩니다
+      feedback: 다시 생각해 보세요. 같은 데이터가 목적지로 전달됩니다.
+    - id: b
+      text: 중간 단계마다 맡은 일이 다르지만 전달 과정은 이어질 수 있습니다
+      feedback: 맞아요. 중간 단계마다 맡은 일이 다르지만 전달 과정은 이어질 수 있습니다.
+    - id: c
+      text: 모든 전달 단계는 반드시 같은 일을 해야 합니다
+      feedback: 다시 생각해 보세요. 단계마다 맡은 일이 다를 수 있습니다.
+    - id: d
+      text: 네트워크에는 중간 전달 과정이 존재하지 않습니다
+      feedback: 다시 생각해 보세요. 글은 여러 전달 단계를 보여 줍니다.
+    - id: e
+      text: 목적지는 전달 단계마다 달라집니다
+      feedback: 다시 생각해 보세요. 상자는 처음 정한 목적지로 향합니다.
+    answer: b
+  - id: u2-l05-p01-q03
+    kind: short
+    prompt: 여러 장소나 장치가 전달을 차례로 이어받아 목적지까지 보내는 과정입니다. 어떤 개념일까요? (영어 단어로 답해주세요)
+    answers:
+    - delivery
+    feedback: 정답은 delivery입니다. 네트워크에서는 여러 단계가 데이터 전달을 이어받습니다.
 - terms: []
+  questions:
+  - id: u2-l05-p02-q01
+    kind: choice
+    difficulty: easy
+    prompt: 택배 여정에서 상자가 계속 움직이려면 다음 단계가 무엇을 해야 하나요?
+    choices:
+    - id: a
+      text: 앞 단계가 하던 일을 이어받아야 합니다
+      feedback: 맞아요. 앞 단계가 하던 일을 이어받아야 합니다.
+    - id: b
+      text: 앞 단계의 모든 일을 처음부터 다시 해야 합니다
+      feedback: 다시 확인해 보세요. 각 단계는 맡은 일을 이어받습니다.
+    - id: c
+      text: 목적지를 매번 다른 곳으로 바꿔야 합니다
+      feedback: 다시 확인해 보세요. 상자는 같은 목적지로 향합니다.
+    - id: d
+      text: 다른 사람이 상자를 보지 못하게 해야 합니다
+      feedback: 다시 확인해 보세요. 여러 담당자가 상자를 이어받습니다.
+    - id: e
+      text: 상자를 여정 중에 버려야 합니다
+      feedback: 다시 확인해 보세요. 전달은 도착할 때까지 이어집니다.
+    answer: a
+  - id: u2-l05-p02-q02
+    kind: choice
+    difficulty: medium
+    prompt: 중간 분류센터가 상자를 맡았을 때 글에서 설명한 역할은 무엇인가요?
+    choices:
+    - id: a
+      text: 전국의 모든 주소를 매번 처음부터 확인하는 것
+      feedback: 다시 확인해 보세요. 맡은 단계는 다음에 보낼 방향을 정합니다.
+    - id: b
+      text: 상자에 든 물건을 새 물건으로 바꾸는 것
+      feedback: 다시 확인해 보세요. 상자는 같은 채로 이동합니다.
+    - id: c
+      text: 상자를 다음에 보낼 방향으로 분류하는 것
+      feedback: 맞아요. 상자를 다음에 보낼 방향으로 분류하는 것.
+    - id: d
+      text: 받는 사람 대신 상자를 사용하는 것
+      feedback: 다시 확인해 보세요. 분류센터는 전달을 이어 줍니다.
+    - id: e
+      text: 앞 단계와 뒤 단계를 없애는 것
+      feedback: 다시 확인해 보세요. 전달 단계들은 서로 이어집니다.
+    answer: c
+  - id: u2-l05-p02-q03
+    kind: short
+    prompt: 앞 단계의 결과를 받아 다음 단계로 넘기는 동작을 가리키는 말입니다. 어떤 개념일까요? (영어 단어로 답해주세요)
+    answers:
+    - handoff
+    feedback: 정답은 handoff입니다. 각 단계는 일을 다음 단계에 넘겨 전달을 이어갑니다.
 - terms: []
+  questions:
+  - id: u2-l05-p03-q01
+    kind: choice
+    difficulty: easy
+    prompt: 택배의 집 주소가 알려 주는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 어느 건물이나 집으로 보낼지
+      feedback: 맞아요. 어느 건물이나 집으로 보낼지.
+    - id: b
+      text: 상자를 누가 포장했는지
+      feedback: 다시 확인해 보세요. 집 주소는 도착할 곳을 알려 줍니다.
+    - id: c
+      text: 건물 안에서 어느 사람에게 줄지
+      feedback: 다시 확인해 보세요. 그 정보는 받는 사람 이름이나 방 번호에 해당합니다.
+    - id: d
+      text: 상자 안에 무엇이 들었는지
+      feedback: 다시 확인해 보세요. 집 주소는 목적지를 표시합니다.
+    - id: e
+      text: 상자를 어느 색으로 포장했는지
+      feedback: 다시 확인해 보세요. 포장 색은 주소의 역할이 아닙니다.
+    answer: a
+  - id: u2-l05-p03-q02
+    kind: choice
+    difficulty: medium
+    prompt: 글의 비유에서 집 주소, 출입구, 받는 사람 이름을 서로 구분하는 이유는 무엇인가요?
+    choices:
+    - id: a
+      text: 셋 모두 같은 질문에 답하기 때문입니다
+      feedback: 다시 확인해 보세요. 각각 목적지, 들어갈 길, 건물 안의 대상을 가리킵니다.
+    - id: b
+      text: 상자마다 안내를 하나만 적을 수 있기 때문입니다
+      feedback: 다시 확인해 보세요. 한 상자에 여러 안내가 함께 있을 수 있습니다.
+    - id: c
+      text: 택배를 더 무겁게 만들기 위해서입니다
+      feedback: 다시 확인해 보세요. 안내마다 답하는 질문과 역할이 다릅니다.
+    - id: d
+      text: 각 안내가 목적지, 들어갈 곳, 받을 대상을 다르게 알려 주기 때문입니다
+      feedback: 맞아요. 각 안내가 목적지, 들어갈 곳, 받을 대상을 다르게 알려 주기 때문입니다.
+    - id: e
+      text: 받는 사람 이름만으로 모든 배송이 끝나기 때문입니다
+      feedback: 다시 확인해 보세요. 목적지와 받을 대상은 다른 정보입니다.
+    answer: d
+  - id: u2-l05-p03-q03
+    kind: short
+    prompt: 데이터가 다른 네트워크로 이동할 때 목적지 네트워크를 찾는 데 쓰는 주소입니다. 어떤 개념일까요? (영어 용어로 답해주세요)
+    answers:
+    - IP address
+    - IP
+    feedback: 정답은 IP address입니다. IP 주소는 데이터가 향할 네트워크상의 목적지를 나타냅니다.
 - animations:
   - file: l05-mac-per-nic.svg
     title: 한 컴퓨터에 연결된 여러 길
     alt: 컴퓨터와 연결 지점마다 서로 다른 표기가 붙는 모습을 보여 주는 그림입니다.
-    caption: 그림에 낯선 이름과 숫자가 있어도 괜찮아요. 자세한 내용은 뒤에서 다시 만나고, 지금은 건물 주소와 출입구, 받는 사람 안내가 서로 다르다는 비유만 살펴보면 됩니다.
+    caption: 그림에 낯선 이름과 숫자가 있어도 괜찮아요. 자세한 내용은 뒤에서 다시 만나고, 지금은 건물 주소와 출입구, 받는 사람 안내가
+      서로 다르다는 비유만 살펴보면 됩니다.
+  questions:
+  - id: u2-l05-p04-q01
+    kind: choice
+    difficulty: easy
+    prompt: 배달원이 건물에 도착한 뒤에도 확인해야 할 수 있는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 상자를 받을 사람이나 방
+      feedback: 맞아요. 상자를 받을 사람이나 방.
+    - id: b
+      text: 상자를 처음 만든 공장
+      feedback: 다시 확인해 보세요. 필요한 것은 받을 대상입니다.
+    - id: c
+      text: 택배 차량의 색깔
+      feedback: 다시 확인해 보세요. 필요한 것은 상자를 받을 대상입니다.
+    - id: d
+      text: 상자를 다른 물건으로 바꾸는 방법
+      feedback: 다시 확인해 보세요. 상자는 받을 사람에게 전달됩니다.
+    - id: e
+      text: 보낸 사람이 사는 동네
+      feedback: 다시 확인해 보세요. 도착 뒤에는 받을 대상을 확인합니다.
+    answer: a
+  - id: u2-l05-p04-q02
+    kind: choice
+    difficulty: medium
+    prompt: 같은 건물 안에 여러 사무실이 있을 때 가장 알맞은 전달 방법은 무엇인가요?
+    choices:
+    - id: a
+      text: 건물 주소만 보고 아무 곳에나 두고 갑니다
+      feedback: 다시 확인해 보세요. 건물 안에서 받을 대상을 더 확인해야 합니다.
+    - id: b
+      text: 주소로 건물을 찾고 이름이나 방 번호로 받을 대상을 확인합니다
+      feedback: 맞아요. 주소로 건물을 찾고 이름이나 방 번호로 받을 대상을 확인합니다.
+    - id: c
+      text: 받는 사람 이름을 건물 주소 대신 사용합니다
+      feedback: 다시 확인해 보세요. 건물 주소와 받을 대상 정보는 역할이 다릅니다.
+    - id: d
+      text: 출입구를 확인하지 않고 상자를 보냅니다
+      feedback: 다시 확인해 보세요. 들어갈 길과 받을 대상을 확인할 수 있습니다.
+    - id: e
+      text: 모든 상자를 한 사무실에 모읍니다
+      feedback: 다시 확인해 보세요. 각 상자를 알맞은 대상에게 전달해야 합니다.
+    answer: b
+  - id: u2-l05-p04-q03
+    kind: short
+    prompt: 한 컴퓨터의 네트워크 인터페이스를 구분할 때 사용하는 주소입니다. 어떤 개념일까요? (영어 용어로 답해주세요)
+    answers:
+    - MAC address
+    - MAC
+    feedback: 정답은 MAC address입니다. MAC 주소는 네트워크 인터페이스를 구분하는 데 쓰입니다.
 - terms: []
+  questions:
+  - id: u2-l05-p05-q01
+    kind: choice
+    difficulty: easy
+    prompt: 택배 여정을 설명할 때 자세히 나누거나 크게 묶어 볼 수 있나요?
+    choices:
+    - id: a
+      text: 네, 목적에 따라 세세한 단계나 큰 흐름으로 나눌 수 있습니다
+      feedback: 맞아요. 네, 목적에 따라 세세한 단계나 큰 흐름으로 나눌 수 있습니다.
+    - id: b
+      text: 아니요, 여정은 한 가지 방식으로만 설명할 수 있습니다
+      feedback: 다시 확인해 보세요. 여러 방식으로 나눠 볼 수 있습니다.
+    - id: c
+      text: 네, 하지만 나누면 실제 목적지도 달라집니다
+      feedback: 다시 확인해 보세요. 설명 방식이 목적지를 바꾸지는 않습니다.
+    - id: d
+      text: 아니요, 단계가 세 개보다 많으면 설명할 수 없습니다
+      feedback: 다시 확인해 보세요. 자세히 나누거나 큰 단계로 묶을 수 있습니다.
+    - id: e
+      text: 네, 자세히 나누면 상자가 사라집니다
+      feedback: 다시 확인해 보세요. 설명 방식은 실제 상자를 바꾸지 않습니다.
+    answer: a
+  - id: u2-l05-p05-q02
+    kind: choice
+    difficulty: medium
+    prompt: 세세한 단계로 나눈 설명과 큰 흐름으로 묶은 설명의 관계는 무엇인가요?
+    choices:
+    - id: a
+      text: 서로 다른 여정을 설명하므로 함께 사용할 수 없습니다
+      feedback: 다시 확인해 보세요. 두 설명은 같은 여정을 다른 정도로 나눠 보여 줍니다.
+    - id: b
+      text: 큰 흐름으로 묶으면 실제 전달 순서가 반드시 바뀝니다
+      feedback: 다시 확인해 보세요. 설명 방식이 달라도 여정 자체는 바뀌지 않습니다.
+    - id: c
+      text: 같은 여정을 서로 다른 자세한 정도로 설명할 수 있습니다
+      feedback: 맞아요. 같은 여정을 서로 다른 자세한 정도로 설명할 수 있습니다.
+    - id: d
+      text: 세세한 설명에는 단계가 없고 큰 설명에만 단계가 있습니다
+      feedback: 다시 확인해 보세요. 두 방식 모두 여정을 단계로 설명합니다.
+    - id: e
+      text: 어느 설명이든 상자에 붙은 안내를 없애야 합니다
+      feedback: 다시 확인해 보세요. 설명 방식은 안내를 없애지 않습니다.
+    answer: c
+  - id: u2-l05-p05-q03
+    kind: short
+    prompt: 통신의 일을 여러 단계로 나누어 각 단계의 역할을 설명하는 방식입니다. 어떤 개념일까요? (영어 단어로 답해주세요)
+    answers:
+    - layering
+    - layered model
+    feedback: 정답은 layering입니다. 계층화는 통신 기능을 여러 단계로 나눠 설명합니다.
 - terms: []
   animations:
   - file: l05-three-identifiers.svg
     title: 택배에 붙는 여러 안내와 비교해 보기
     alt: 서로 다른 세 가지 네트워크 표기가 각각 다른 대상을 가리키는 그림입니다.
-    caption: 뒤에서 자세히 배울 내용이 담긴 그림입니다. 지금은 택배의 주소와 출입구, 받는 사람 안내가 서로 다르다는 비유만 기억해도 충분해요.
+    caption: 뒤에서 자세히 배울 내용이 담긴 그림입니다. 지금은 택배의 주소와 출입구, 받는 사람 안내가 서로 다르다는 비유만 기억해도
+      충분해요.
+  questions:
+  - id: u2-l05-p06-q01
+    kind: choice
+    difficulty: easy
+    prompt: 상자를 준비한 뒤 받는 사람에게 도착하기까지 무엇이 이어지나요?
+    choices:
+    - id: a
+      text: 여러 단계의 전달 과정
+      feedback: 맞아요. 여러 단계의 전달 과정.
+    - id: b
+      text: 상자를 매번 새것으로 바꾸는 과정
+      feedback: 다시 확인해 보세요. 같은 상자를 여러 단계가 이어받습니다.
+    - id: c
+      text: 목적지를 계속 바꾸는 과정
+      feedback: 다시 확인해 보세요. 상자는 처음 정한 목적지로 향합니다.
+    - id: d
+      text: 받는 사람이 상자를 보내는 과정
+      feedback: 다시 확인해 보세요. 글은 보내는 사람부터 받는 사람까지를 설명합니다.
+    - id: e
+      text: 안내 없이 상자를 옮기는 과정
+      feedback: 다시 확인해 보세요. 주소와 받을 대상 같은 안내가 쓰입니다.
+    answer: a
+  - id: u2-l05-p06-q02
+    kind: choice
+    difficulty: medium
+    prompt: 이 글이 소개하는 네트워크 통신을 이해하는 데 가장 도움이 되는 방법은 무엇인가요?
+    choices:
+    - id: a
+      text: 낯선 이름을 먼저 모두 외운 뒤 흐름을 살펴봅니다
+      feedback: 다시 확인해 보세요. 글은 우선 전체 흐름을 떠올리라고 합니다.
+    - id: b
+      text: 목적지, 전달 단계, 마지막 받을 대상을 구분해 봅니다
+      feedback: 맞아요. 목적지, 전달 단계, 마지막 받을 대상을 구분해 봅니다.
+    - id: c
+      text: 모든 안내가 같은 의미라고 가정합니다
+      feedback: 다시 확인해 보세요. 주소, 출입구, 받을 대상은 서로 다른 정보를 줍니다.
+    - id: d
+      text: 중간 단계가 없는 것으로 생각합니다
+      feedback: 다시 확인해 보세요. 여러 단계가 상자를 이어받아 전달합니다.
+    - id: e
+      text: 상자가 어디로 가는지는 중요하지 않다고 생각합니다
+      feedback: 다시 확인해 보세요. 처음 정한 목적지로 가는 것이 핵심입니다.
+    answer: b
+  - id: u2-l05-p06-q03
+    kind: short
+    prompt: 데이터가 네트워크를 지나 마지막으로 도착해야 하는 장치나 네트워크를 가리킵니다. 어떤 개념일까요? (영어 단어로 답해주세요)
+    answers:
+    - destination
+    - destination address
+    feedback: 정답은 destination입니다. 전달이 끝나는 목적지를 뜻합니다.
 animations_dir: units/02-internet-basics/lessons/01-osi-7-layer와-식별자/assets/animations
 ---
 

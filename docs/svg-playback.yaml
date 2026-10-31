@@ -12,7 +12,13 @@ animations:
   l05-osi-layer-stack.svg: 16
   l05-three-identifiers.svg: 14
   l06-client-server.svg: 10
+  l06-endpoint-ends.svg: 12
+  l06-host-connected.svg: 12
   l06-host-roles.svg: 10
+  l06-p2p-peers.svg: 12
+  l06-router-next-hop.svg: 12
+  l06-switch-infra.svg: 12
+  l06-tap-aggregation.svg: 12
   l07-packet-routing-table.svg: 16
   l07-switch-by-layer.svg: 14
   l08-bit-vs-byte-speed.svg: 12
