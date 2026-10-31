@@ -12,6 +12,57 @@ import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
+PAGE_ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+YOUTUBE_ID_RE = re.compile(r"^[A-Za-z0-9_-]{11}$")
+PAGE_ID_MARKER_RE = re.compile(r"\A\s*<!--\s*learn-page-id:\s*([a-z0-9]+(?:-[a-z0-9]+)*)\s*-->\s*")
+
+
+def page_marker(body: str, path: Path) -> tuple[str | None, str]:
+    match = PAGE_ID_MARKER_RE.match(body)
+    if match:
+        return match.group(1), body[match.end():]
+    if "learn-page-id:" in body:
+        raise ValueError(f"Page ID marker must appear immediately after a Page heading in {path}")
+    return None, body
+
+
+def page_metadata_by_id(metadata: list, path: Path) -> dict[str, dict]:
+    result = {}
+    for item in metadata:
+        if not isinstance(item, dict):
+            raise ValueError(f"Page metadata entries must be objects in {path}")
+        page_id = item.get("page_id")
+        if page_id is None:
+            if "video" in item:
+                raise ValueError(f"Page video metadata requires page_id in {path}")
+            continue
+        if not isinstance(page_id, str) or not PAGE_ID_RE.fullmatch(page_id):
+            raise ValueError(f"Invalid page_id in {path}: {page_id!r}")
+        if page_id in result:
+            raise ValueError(f"Duplicate page_id metadata in {path}: {page_id}")
+        result[page_id] = item
+    return result
+
+
+def validate_page_video(metadata: dict, page_id: str, path: Path) -> dict:
+    video = metadata.get("video")
+    if video is None:
+        return {}
+    if not isinstance(video, dict) or not isinstance(video.get("video_id"), str) or not YOUTUBE_ID_RE.fullmatch(video["video_id"]):
+        raise ValueError(f"Page video needs an 11-character YouTube video_id in {path}: {page_id}")
+    if not isinstance(video.get("title"), str) or not video["title"].strip():
+        raise ValueError(f"Page video needs a title in {path}: {page_id}")
+    if "creator" in video and (not isinstance(video["creator"], str) or not video["creator"].strip()):
+        raise ValueError(f"Page video creator must be non-empty text in {path}: {page_id}")
+    if "duration_seconds" in video and (
+        isinstance(video["duration_seconds"], bool)
+        or not isinstance(video["duration_seconds"], (int, float))
+        or video["duration_seconds"] <= 0
+    ):
+        raise ValueError(f"Page video duration_seconds must be positive in {path}: {page_id}")
+    return {"video": {
+        key: video[key] for key in ("video_id", "title", "creator", "duration_seconds") if key in video
+    }}
 
 
 def page_questions(value, path: Path, page_number: int) -> list[dict]:
@@ -215,6 +266,19 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
     guide_path = lesson_meta.get("beginner_guide")
     concepts = json.loads((ROOT / guide_path).read_text(encoding="utf-8"))["concepts"] if guide_path else []
     page_metadata = lesson_meta.get("page_metadata", [])
+    anchored_metadata = page_metadata_by_id(page_metadata, path)
+    marked_sections = []
+    seen_page_ids = set()
+    for heading, body in sections:
+        page_id, body = page_marker(body, path)
+        if page_id and page_id in seen_page_ids:
+            raise ValueError(f"Duplicate learn-page-id marker in {path}: {page_id}")
+        if page_id:
+            seen_page_ids.add(page_id)
+        marked_sections.append((heading, body, page_id))
+    missing_ids = set(anchored_metadata) - seen_page_ids
+    if missing_ids:
+        raise ValueError(f"Page metadata references unknown page_id in {path}: {', '.join(sorted(missing_ids))}")
     page_groups = lesson_meta.get("page_groups")
     if page_groups:
         grouped_sections = []
@@ -222,24 +286,32 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
             indices = group["sections"]
             if not indices or any(index < 1 or index > len(sections) for index in indices):
                 raise ValueError(f"Invalid page group sections in {path}")
-            grouped_sections.append((group["title"], "\n\n".join(sections[index - 1][1] for index in indices)))
+            members = [marked_sections[index - 1] for index in indices]
+            ids = {member[2] for member in members if member[2]}
+            if len(ids) > 1:
+                raise ValueError(f"A page group cannot combine multiple learn-page-id markers in {path}")
+            grouped_sections.append((group["title"], "\n\n".join(member[1] for member in members), next(iter(ids), None)))
         sections = grouped_sections
+    else:
+        sections = marked_sections
     diagram_ref = lesson_meta.get("wiki_diagram")
     diagram_path = ROOT / diagram_ref if diagram_ref else None
     illustrated_pages = lesson_meta.get("illustrated_pages", [])
     lesson_animation_dir = lesson_meta.get("animations_dir")
     pages = []
-    for index, (heading, body) in enumerate(sections):
+    for index, (heading, body, page_id) in enumerate(sections):
         title = re.sub(r"\s*·\s*\d+:\d+.*$", "", heading).strip()
         concept_indices = [section_index - 1 for section_index in page_groups[index]["sections"]] if page_groups else ([min(index, len(concepts) - 1)] if concepts else [])
         page_concepts = [concepts[concept_index] for concept_index in concept_indices if concept_index < len(concepts)]
-        page_meta = page_metadata[index] if index < len(page_metadata) else {}
+        page_meta = anchored_metadata.get(page_id, page_metadata[index] if index < len(page_metadata) else {})
         page = {
             "title": title,
             "paragraphs": split_paragraphs(body),
             "terms": page_meta.get("terms", list(dict.fromkeys(item["term"] for concept in page_concepts for item in concept.get("terms", [])))),
             "questions": page_questions(page_meta.get("questions", []), path, index + 1),
         }
+        if page_id and page_id in anchored_metadata:
+            page.update(validate_page_video(page_meta, page_id, path))
         illustrations = []
         if index == 0 and diagram_path and diagram_path.is_file():
             illustrations.append({
