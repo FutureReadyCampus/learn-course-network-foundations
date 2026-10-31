@@ -7,17 +7,18 @@ page_metadata:
 - terms:
   - 호스트(Host)
   - 워크스테이션(Workstation)
+  inline_questions_after: 1
   questions:
   - id: u2-l06-p01-q01
     kind: choice
     difficulty: easy
-    prompt: 다음 중 네트워크에서 Host가 될 수 있는 것은 무엇인가요?
+    prompt: 집 Wi-Fi로 동영상을 보는 스마트폰도 Host일까요?
     choices:
     - id: a
       text: 네트워크와 연결되지 않은 책상
       feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
     - id: b
-      text: 네트워크를 통해 데이터를 주고받는 스마트폰
+      text: 네. 네트워크로 데이터를 주고받으니 Host가 될 수 있어요.
       feedback: 맞아요. 네트워크를 통해 데이터를 주고받는 스마트폰.
     - id: c
       text: 전원이 꺼진 종이 상자
@@ -68,6 +69,7 @@ page_metadata:
   - 인프라(Infrastructure)
   - L2 스위치
   - 네트워크 중간 장비
+  inline_questions_after: 1
   questions:
   - id: u2-l06-p02-q01
     kind: choice
@@ -93,24 +95,24 @@ page_metadata:
   - id: u2-l06-p02-q02
     kind: choice
     difficulty: medium
-    prompt: 여러 네트워크 사이에서 패킷이 갈 다음 방향을 고르는 장비는 무엇인가요?
+    prompt: 노트북과 프린터 사이에 있는 L2 스위치는 어떤 일을 하나요?
     choices:
     - id: a
-      text: 네트워크를 이용하는 엔드포인트
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      text: 같은 네트워크의 기기들이 서로 통신하도록 연결해요.
+      feedback: 맞아요. L2 스위치는 같은 네트워크 안의 기기들을 연결해요.
     - id: b
-      text: 항상 클라이언트인 Host
+      text: 웹 페이지를 요청하는 브라우저 역할을 해요.
       feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
     - id: c
-      text: 라우터
-      feedback: 맞아요. 라우터는 목적지 네트워크를 보고 패킷의 다음 방향을 골라요.
+      text: 네트워크 통신의 끝에서 데이터를 주고받아요.
+      feedback: 이 설명은 통신의 끝 장치에 해당해요. 스위치는 중간에서 연결을 이어 줍니다.
     - id: d
-      text: P2P 참여자
+      text: 서비스를 이용하는 스마트폰 역할을 해요.
       feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
     - id: e
-      text: 웹 서비스를 제공하는 서버
+      text: 파일을 출력하는 프린터 역할을 해요.
       feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
-    answer: c
+    answer: a
   - id: u2-l06-p02-q03
     kind: short
     prompt: 네트워크의 중간 장비와 연결을 포함해 통신을 받쳐 주는 기반을 뜻합니다. 어떤 개념일까요? (영어 단어로 답해주세요)
@@ -125,6 +127,7 @@ page_metadata:
 - terms:
   - 엔드포인트(End point)
   - 단말·단말기
+  inline_questions_after: 1
   questions:
   - id: u2-l06-p03-q01
     kind: choice
@@ -188,6 +191,7 @@ page_metadata:
     title: 요청하는 쪽, 답하는 쪽
     alt: 왼쪽의 PC에서 오른쪽의 웹 서버로 요청 화살표가 가고, 서버에서 PC로 웹 페이지가 돌아오는 장면입니다.
     caption: 브라우저가 요청을 보내면 웹 서버가 답을 돌려줍니다. 요청하는 쪽이 클라이언트, 답하는 쪽이 서버입니다.
+  inline_questions_after: 1
   questions:
   - id: u2-l06-p04-q01
     kind: choice
@@ -241,6 +245,7 @@ page_metadata:
   - P2P(Peer to Peer)
   - 피어(Peer)
   - 비트토렌트(BitTorrent)
+  inline_questions_after: 1
   questions:
   - id: u2-l06-p05-q01
     kind: choice
@@ -299,6 +304,7 @@ page_metadata:
   - 라우터(Router)
   - IPS
   - 공유기
+  inline_questions_after: 1
   questions:
   - id: u2-l06-p06-q01
     kind: choice
@@ -357,11 +363,12 @@ page_metadata:
   - 탭 스위치(Tap Switch)
   - 애그리게이션 스위치(Aggregation Switch)
   - 관리 목적
+  inline_questions_after: 1
   questions:
   - id: u2-l06-p07-q01
     kind: choice
     difficulty: easy
-    prompt: Tap Switch가 트래픽을 복사해 전달하는 주된 목적은 무엇인가요?
+    prompt: 네트워크 문제를 살펴볼 때 Tap Switch가 분석 장비에 보내는 것은 무엇인가요?
     choices:
     - id: a
       text: 사용자 대신 웹 페이지를 작성하기 위해
@@ -418,6 +425,7 @@ page_metadata:
     title: Host, Endpoint, Client/Server
     alt: 노트북과 웹 서버는 통신의 끝 장치로, 가운데 공유기는 패킷을 전달하는 라우터로 표시됩니다. 노트북에는 Host와 Endpoint, 요청을 시작하는 Client 꼬리표가 붙고, 서버에는 Host와 Endpoint, 응답을 제공하는 Server 꼬리표가 붙습니다.
     caption: Host는 통신의 끝에 있는 장치이고, Endpoint는 특정 통신의 한쪽 끝을 가리킵니다. Client와 Server는 그 통신에서 요청을 시작하고 응답을 제공하는 역할입니다. 가운데 라우터는 패킷을 다음 네트워크로 전달합니다.
+  inline_questions_after: 1
   questions:
   - id: u2-l06-p08-q01
     kind: choice

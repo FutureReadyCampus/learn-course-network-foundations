@@ -165,7 +165,7 @@
     }
     return figure;
   };
-  const renderQuiz = (questions) => {
+  const renderQuiz = (questions, startIndex = 0) => {
     const section = document.createElement("section");
     section.className = "page-quiz";
     section.setAttribute("aria-label", "이 페이지의 퀴즈");
@@ -176,7 +176,7 @@
       const card = document.createElement("fieldset");
       card.className = "page-quiz-question";
       const legend = document.createElement("legend");
-      legend.textContent = `${index + 1}. ${question.prompt}`;
+      legend.textContent = `${startIndex + index + 1}. ${question.prompt}`;
       card.append(legend);
       const result = document.createElement("p");
       result.className = "page-quiz-result";
@@ -267,9 +267,9 @@
     const inlineQuizzes = page.inline_quizzes || [];
     let nextPage;
     const prose = renderProse(page.paragraphs || [], page.illustrations || [], inlineQuizzes,
-      (quiz) => renderQuiz(quiz.questions));
+      (quiz) => renderQuiz(quiz.questions, quiz.start_index || 0));
     main.append(prose);
-    if (questions.length) main.append(renderQuiz(questions));
+    if (questions.length) main.append(renderQuiz(questions, page.question_start_index || 0));
     const previous = list[state.lessonIndex - 1];
     const next = list[state.lessonIndex + 1];
     const navFooter = document.createElement("nav");

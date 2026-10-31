@@ -304,12 +304,28 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
         concept_indices = [section_index - 1 for section_index in page_groups[index]["sections"]] if page_groups else ([min(index, len(concepts) - 1)] if concepts else [])
         page_concepts = [concepts[concept_index] for concept_index in concept_indices if concept_index < len(concepts)]
         page_meta = anchored_metadata.get(page_id, page_metadata[index] if index < len(page_metadata) else {})
+        questions = page_questions(page_meta.get("questions", []), path, index + 1)
+        inline_quizzes = []
+        inline_questions_after = page_meta.get("inline_questions_after")
+        if inline_questions_after is not None:
+            paragraph_count = len(split_paragraphs(body))
+            if not isinstance(inline_questions_after, int) or inline_questions_after < 1 or inline_questions_after >= paragraph_count:
+                raise ValueError(f"inline_questions_after must point between paragraphs in {path}, page {index + 1}")
+            inline_quizzes.append({
+                "id": f"{page_id or f'page-{index + 1}'}-checkpoint",
+                "after_paragraph": inline_questions_after,
+                "start_index": 0,
+                "questions": questions[:1],
+            })
         page = {
             "title": title,
             "paragraphs": split_paragraphs(body),
             "terms": page_meta.get("terms", list(dict.fromkeys(item["term"] for concept in page_concepts for item in concept.get("terms", [])))),
-            "questions": page_questions(page_meta.get("questions", []), path, index + 1),
+            "questions": questions[1:] if inline_quizzes else questions,
         }
+        if inline_quizzes:
+            page["inline_quizzes"] = inline_quizzes
+            page["question_start_index"] = 1
         if page_id and page_id in anchored_metadata:
             page.update(validate_page_video(page_meta, page_id, path))
         illustrations = []
