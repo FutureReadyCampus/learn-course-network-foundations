@@ -118,6 +118,11 @@ page_metadata:
     - infrastructure
     feedback: 정답은 infrastructure입니다. 이 Lesson에서는 Switch를 네트워크 인프라 쪽 장비를 묶는 넓은 분류로
       사용합니다.
+  animations:
+  - file: l06-switch-infra.svg
+    title: 네트워크를 이루는 쪽, Switch
+    alt: PC 세 대와 프린터가 먼저 보이고, 그 위에 L2 스위치 두 대가 나타나 기기들을 잇습니다. 이어서 스위치들이 라우터로 모여 인터넷과 연결되고 데이터 점이 PC에서 인터넷까지 이동합니다. 마지막에 스위치와 라우터는 파란 인프라 쪽, PC와 프린터는 주황 단말 쪽으로 묶입니다.
+    caption: PC와 프린터는 네트워크를 쓰는 쪽이고, 그 사이를 잇는 L2 스위치와 라우터는 네트워크를 이루는 인프라 쪽입니다. 이 강의에서는 인프라 역할을 넓게 Switch라고 부르고, L2 스위치는 Host에 넣지 않습니다.
 - terms:
   - 엔드포인트(End point)
   - 단말·단말기
@@ -171,6 +176,11 @@ page_metadata:
     - endpoint
     - end point
     feedback: 정답은 Endpoint입니다. 스마트폰과 서비스를 제공하는 서버 모두 Endpoint가 될 수 있습니다.
+  animations:
+  - file: l06-endpoint-ends.svg
+    title: 선의 끝에 있는 엔드포인트
+    alt: 노트북, 스위치, 프린터가 한 줄로 연결되어 있습니다. 노트북에서 인쇄 요청 점이 스위치를 지나 프린터로 가고 프린터에서 종이가 나옵니다. 이어서 노트북과 프린터에 엔드포인트 꼬리표가, 스위치에는 중간 전달 꼬리표가 붙고, 마지막에 스위치가 흐려지며 양 끝이 강조됩니다.
+    caption: 노트북은 인쇄를 요청하고 프린터는 출력합니다. 연결의 양 끝에서 서비스를 이용하거나 제공하는 두 기기가 엔드포인트이고, 중간 스위치는 요청을 전달할 뿐입니다.
 - terms:
   - 클라이언트(Client)
   - 서버(Server)
@@ -281,6 +291,11 @@ page_metadata:
     answers:
     - peer
     feedback: 정답은 Peer입니다. Peer는 상황에 따라 받는 역할과 보내는 역할을 모두 할 수 있습니다.
+  animations:
+  - file: l06-p2p-peers.svg
+    title: 받으면서 나눠 주는 피어
+    alt: 피어 A, 나, 피어 B 세 컴퓨터 아래에 파일 조각 1부터 4까지 칸이 있습니다. 처음에는 A가 1과 2, 나는 3, B는 4만 가지고 있습니다. 나는 A에게서 조각 1을, B에게서 조각 4를 받고, 이어서 내가 가진 조각 3을 A와 B에게 보냅니다. 마지막에 세 컴퓨터 모두에 피어 꼬리표가 붙고 나에게 받기 + 주기 표시가 붙습니다.
+    caption: P2P에서는 참여자끼리 파일 조각을 직접 주고받습니다. 나는 없는 조각을 받는 동시에 가진 조각을 나눠 주므로, 받는 쪽이자 주는 쪽인 피어입니다.
 - terms:
   - 라우터(Router)
   - IPS
@@ -334,6 +349,11 @@ page_metadata:
     answers:
     - router
     feedback: 정답은 Router입니다. 라우터는 라우팅 정보에 따라 패킷의 다음 방향을 선택합니다.
+  animations:
+  - file: l06-router-next-hop.svg
+    title: 다음 길을 고르는 라우터
+    alt: 노트북에서 목적지 203.0.113.5가 적힌 패킷이 라우터로 갑니다. 라우터 아래 라우팅 정보 표에서 203.0.113.x는 B망이라는 줄이 강조되고, 패킷은 A망, B망, C망 세 갈래 중 B망 쪽 연결로 나가 B망에 도착합니다. 마지막에 라우터 위에 L3 장비 꼬리표가 붙습니다.
+    caption: 라우터는 패킷의 목적지 IP를 라우팅 정보와 맞춰 보고 다음에 보낼 연결을 고릅니다. IP가 L3 정보이므로 라우터를 대표적인 L3 장비라고 부릅니다.
 - terms:
   - 탭 스위치(Tap Switch)
   - 애그리게이션 스위치(Aggregation Switch)
@@ -388,6 +408,11 @@ page_metadata:
     - aggregation switch
     - aggregation
     feedback: 정답은 Aggregation Switch입니다. Aggregation은 여러 연결을 모은다는 뜻입니다.
+  animations:
+  - file: l06-tap-aggregation.svg
+    title: 탭은 복사, 애그리게이션은 모으기
+    alt: 화면 왼쪽에서는 PC와 라우터 사이의 흐름이 탭을 지나가고, 탭에서 복사본 점이 아래 분석 장비로 내려갑니다. 오른쪽에서는 1층, 2층, 3층 스위치의 연결이 애그리게이션 스위치로 모인 뒤 상위 장비로 올라갑니다. 마지막에 왼쪽에는 관찰용 흐름 복사, 오른쪽에는 여러 연결 모으기 꼬리표가 붙습니다.
+    caption: 탭 스위치는 지나가는 트래픽의 복사본을 보안·분석 장비로 보내 흐름을 관찰하게 하고, 애그리게이션 스위치는 여러 구간의 연결을 모아 상위 장비로 잇습니다. 둘 다 인프라 쪽 장비입니다.
 - terms: []
   animations:
   - file: l06-host-roles.svg
