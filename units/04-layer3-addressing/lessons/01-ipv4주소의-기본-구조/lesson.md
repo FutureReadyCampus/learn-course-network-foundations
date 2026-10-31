@@ -6,11 +6,61 @@ additional_sources:
   - https://github.com/physical-spark/course-network/blob/90a5cc40dec981b0e37fa334f3fae8ba673c8f32/studio/wiki/honja-network/03-1.md
   - https://github.com/physical-spark/course-network/blob/90a5cc40dec981b0e37fa334f3fae8ba673c8f32/studio/wiki/honja-network/03-2.md
 wiki_diagram: units/04-layer3-addressing/lessons/01-ipv4주소의-기본-구조/assets/diagrams/lesson-11.svg
+animations_dir: units/04-layer3-addressing/lessons/01-ipv4주소의-기본-구조/assets/animations
 page_metadata:
 - terms:
   - MAC 주소 (Media Access Control address)
   - IP 주소 (Internet Protocol address)
   - 계층 (Layer)
+  questions:
+  - id: u4-01-p01-q01
+    kind: choice
+    difficulty: easy
+    prompt: "같은 LAN 안에서 Ethernet 프레임을 전달할 때 스위치가 목적지로 확인하는 주소는 무엇인가요?"
+    choices:
+    - id: a
+      text: "IP 주소"
+      feedback: "다시 확인해 보세요. IP 주소."
+    - id: b
+      text: "MAC 주소"
+      feedback: "맞아요. MAC 주소입니다."
+    - id: c
+      text: "프리픽스 길이"
+      feedback: "다시 확인해 보세요. 프리픽스 길이."
+    - id: d
+      text: "포트 번호"
+      feedback: "다시 확인해 보세요. 포트 번호."
+    - id: e
+      text: "호스트 이름"
+      feedback: "다시 확인해 보세요. 호스트 이름."
+    answer: b
+  - id: u4-01-p01-q02
+    kind: choice
+    difficulty: medium
+    prompt: "다른 도시의 네트워크에 있는 친구에게 데이터를 보내려 할 때, 목적지 네트워크를 찾아가는 데 쓰이는 주소는 무엇인가요?"
+    choices:
+    - id: a
+      text: "친구의 MAC 주소만"
+      feedback: "다시 확인해 보세요. 친구의 MAC 주소만."
+    - id: b
+      text: "스위치 포트 번호"
+      feedback: "다시 확인해 보세요. 스위치 포트 번호."
+    - id: c
+      text: "현재 LAN 이름"
+      feedback: "다시 확인해 보세요. 현재 LAN 이름."
+    - id: d
+      text: "IP 주소"
+      feedback: "맞아요. IP 주소입니다."
+    - id: e
+      text: "Ethernet 케이블 번호"
+      feedback: "다시 확인해 보세요. Ethernet 케이블 번호."
+    answer: d
+  - id: u4-01-p01-q03
+    kind: short
+    prompt: "현재 연결 구간에서 Ethernet 프레임을 전달할 상대를 구별하는 주소는 무엇인가요? (영어 표현으로 답해주세요)"
+    answers:
+    - "MAC address"
+    feedback: "정답은 MAC address입니다."
 - terms:
   - 비트 (bit)
   - 바이트 (byte)
@@ -20,9 +70,107 @@ page_metadata:
     alt: 전등 스위치 32개가 한 줄로 늘어서 있다가 8개씩 네 칸으로 나뉘고, 각 칸 아래에 0~255 사이의 숫자가 점으로 이어진 IPv4
       주소 형태로 나타납니다.
     caption: 스위치 32개를 8개씩 네 칸으로 묶으면, 칸마다 0부터 255까지 읽힙니다.
+  questions:
+  - id: u4-01-p02-q01
+    kind: choice
+    difficulty: easy
+    prompt: "IPv4 주소 한 개는 몇 비트로 이루어져 있나요?"
+    choices:
+    - id: a
+      text: "8비트"
+      feedback: "다시 확인해 보세요. 8비트."
+    - id: b
+      text: "16비트"
+      feedback: "다시 확인해 보세요. 16비트."
+    - id: c
+      text: "24비트"
+      feedback: "다시 확인해 보세요. 24비트."
+    - id: d
+      text: "32비트"
+      feedback: "맞아요. 32비트입니다."
+    - id: e
+      text: "64비트"
+      feedback: "다시 확인해 보세요. 64비트."
+    answer: d
+  - id: u4-01-p02-q02
+    kind: choice
+    difficulty: medium
+    prompt: "IPv4 주소를 점으로 구분해 네 숫자로 적을 때, 각 숫자는 몇 비트 묶음을 나타내나요?"
+    choices:
+    - id: a
+      text: "8비트"
+      feedback: "맞아요. 8비트입니다."
+    - id: b
+      text: "4비트"
+      feedback: "다시 확인해 보세요. 4비트."
+    - id: c
+      text: "16비트"
+      feedback: "다시 확인해 보세요. 16비트."
+    - id: d
+      text: "24비트"
+      feedback: "다시 확인해 보세요. 24비트."
+    - id: e
+      text: "32비트"
+      feedback: "다시 확인해 보세요. 32비트."
+    answer: a
+  - id: u4-01-p02-q03
+    kind: short
+    prompt: "IPv4 주소를 이루며 0과 1로 표현되는 정보의 가장 작은 단위는 무엇인가요? (영어 단어로 답해주세요)"
+    answers:
+    - "bit"
+    feedback: "정답은 bit입니다."
 - terms:
   - ipconfig
   - 사설 주소 (private address)
+  questions:
+  - id: u4-01-p03-q01
+    kind: choice
+    difficulty: easy
+    prompt: "8비트로 나타낼 수 있는 값의 범위는 무엇인가요?"
+    choices:
+    - id: a
+      text: "0~255"
+      feedback: "맞아요. 0~255입니다."
+    - id: b
+      text: "0~15"
+      feedback: "다시 확인해 보세요. 0~15."
+    - id: c
+      text: "0~31"
+      feedback: "다시 확인해 보세요. 0~31."
+    - id: d
+      text: "0~127"
+      feedback: "다시 확인해 보세요. 0~127."
+    - id: e
+      text: "1~256"
+      feedback: "다시 확인해 보세요. 1~256."
+    answer: a
+  - id: u4-01-p03-q02
+    kind: choice
+    difficulty: medium
+    prompt: "2진수 10101000에서 1인 자리의 값을 더한 결과는 얼마인가요?"
+    choices:
+    - id: a
+      text: "160"
+      feedback: "다시 확인해 보세요. 160."
+    - id: b
+      text: "170"
+      feedback: "다시 확인해 보세요. 170."
+    - id: c
+      text: "184"
+      feedback: "다시 확인해 보세요. 184."
+    - id: d
+      text: "200"
+      feedback: "다시 확인해 보세요. 200."
+    - id: e
+      text: "168"
+      feedback: "맞아요. 168입니다."
+    answer: e
+  - id: u4-01-p03-q03
+    kind: short
+    prompt: "네트워크 어댑터의 IP 주소를 Windows 명령 프롬프트에서 확인할 때 실행하는 명령은 무엇인가요? (명령어로 답해주세요)"
+    answers:
+    - "ipconfig"
+    feedback: "정답은 ipconfig입니다."
 - terms:
   - Network ID (네트워크 식별자)
   - Host ID (호스트 식별자)
@@ -33,8 +181,107 @@ page_metadata:
     title: /24 예에서 네트워크 부분과 호스트 부분
     alt: 192.168.0.10/24에서 앞 24비트와 뒤 8비트를 색으로 나누어 보이고, 같은 네트워크의 주소와 다른 네트워크의 주소를 비교합니다.
     caption: 이 그림은 /24라는 예입니다. 프리픽스 길이가 바뀌면 네트워크와 호스트의 경계도 달라집니다.
+  questions:
+  - id: u4-01-p04-q01
+    kind: choice
+    difficulty: easy
+    prompt: "네트워크에서 데이터를 주고받는 끝단 장치의 예로 알맞은 것은 무엇인가요?"
+    choices:
+    - id: a
+      text: "라우터의 경로표만"
+      feedback: "다시 확인해 보세요. 라우터의 경로표만."
+    - id: b
+      text: "프리픽스 길이"
+      feedback: "다시 확인해 보세요. 프리픽스 길이."
+    - id: c
+      text: "Ethernet 프레임의 헤더"
+      feedback: "다시 확인해 보세요. Ethernet 프레임의 헤더."
+    - id: d
+      text: "스위치 포트 번호만"
+      feedback: "다시 확인해 보세요. 스위치 포트 번호만."
+    - id: e
+      text: "노트북"
+      feedback: "맞아요. 노트북입니다."
+    answer: e
+  - id: u4-01-p04-q02
+    kind: choice
+    difficulty: medium
+    prompt: "노트북에 유선과 무선 연결이 모두 있을 때, 이 Lesson의 설명에 가장 잘 맞는 것은 무엇인가요?"
+    choices:
+    - id: a
+      text: "노트북은 IP 주소를 하나만 가질 수 있다"
+      feedback: "다시 확인해 보세요. 노트북은 IP 주소를 하나만 가질 수 있다."
+    - id: b
+      text: "각 연결은 별도의 네트워크 인터페이스로 동작할 수 있다"
+      feedback: "맞아요. 각 연결은 별도의 네트워크 인터페이스로 동작할 수 있다입니다."
+    - id: c
+      text: "두 연결은 언제나 같은 MAC 주소다"
+      feedback: "다시 확인해 보세요. 두 연결은 언제나 같은 MAC 주소다."
+    - id: d
+      text: "유선 연결만 호스트가 된다"
+      feedback: "다시 확인해 보세요. 유선 연결만 호스트가 된다."
+    - id: e
+      text: "무선 연결에는 IP 주소가 필요 없다"
+      feedback: "다시 확인해 보세요. 무선 연결에는 IP 주소가 필요 없다."
+    answer: b
+  - id: u4-01-p04-q03
+    kind: short
+    prompt: "네트워크에 연결되어 주소를 주고받는 장치를 가리키는 말은 무엇인가요? (영어 단어로 답해주세요)"
+    answers:
+    - "host"
+    feedback: "정답은 host입니다."
 - terms:
   - 목적지 (destination)
+  questions:
+  - id: u4-01-p05-q01
+    kind: choice
+    difficulty: easy
+    prompt: "IP 주소에서 장치가 속한 네트워크를 나타내는 부분은 무엇인가요?"
+    choices:
+    - id: a
+      text: "Host ID"
+      feedback: "다시 확인해 보세요. Host ID."
+    - id: b
+      text: "MAC 주소"
+      feedback: "다시 확인해 보세요. MAC 주소."
+    - id: c
+      text: "Network ID"
+      feedback: "맞아요. Network ID입니다."
+    - id: d
+      text: "포트 번호"
+      feedback: "다시 확인해 보세요. 포트 번호."
+    - id: e
+      text: "기본 게이트웨이"
+      feedback: "다시 확인해 보세요. 기본 게이트웨이."
+    answer: c
+  - id: u4-01-p05-q02
+    kind: choice
+    difficulty: medium
+    prompt: "동네와 집 번호 비유에서, 먼저 어느 동네로 갈지 정하는 부분은 무엇에 해당하나요?"
+    choices:
+    - id: a
+      text: "Host ID"
+      feedback: "다시 확인해 보세요. Host ID."
+    - id: b
+      text: "MAC 주소"
+      feedback: "다시 확인해 보세요. MAC 주소."
+    - id: c
+      text: "Network ID"
+      feedback: "맞아요. Network ID입니다."
+    - id: d
+      text: "Ethernet 포트"
+      feedback: "다시 확인해 보세요. Ethernet 포트."
+    - id: e
+      text: "라우터의 이름"
+      feedback: "다시 확인해 보세요. 라우터의 이름."
+    answer: c
+  - id: u4-01-p05-q03
+    kind: short
+    prompt: "IP 주소에서 장치가 속한 네트워크를 식별하는 부분을 무엇이라고 하나요? (Network ID 또는 Host ID 중 영어 표현으로 답해주세요)"
+    answers:
+    - "Network ID"
+    - "network id"
+    feedback: "정답은 Network ID입니다."
 - terms:
   - 라우터 (Router)
   animations:
@@ -42,10 +289,107 @@ page_metadata:
     title: 목적지 네트워크를 향해 전달하는 라우터
     alt: 목적지 IP 주소가 적힌 데이터가 라우터들을 거쳐 목적지 네트워크 쪽으로 이동하고, 마지막 네트워크에서 목적지 장치로 전달됩니다.
     caption: 라우터는 목적지 IP와 경로 정보를 보고 다음 네트워크로 전달합니다. 이 그림의 동네 구분은 /24를 가정한 단순한 예입니다.
+  questions:
+  - id: u4-01-p06-q01
+    kind: choice
+    difficulty: easy
+    prompt: "192.168.0.10/24에서 /24가 알려 주는 것은 무엇인가요?"
+    choices:
+    - id: a
+      text: "네트워크 부분으로 사용하는 비트 수"
+      feedback: "맞아요. 네트워크 부분으로 사용하는 비트 수입니다."
+    - id: b
+      text: "주소가 24개라는 뜻"
+      feedback: "다시 확인해 보세요. 주소가 24개라는 뜻."
+    - id: c
+      text: "호스트 이름의 길이"
+      feedback: "다시 확인해 보세요. 호스트 이름의 길이."
+    - id: d
+      text: "MAC 주소의 크기"
+      feedback: "다시 확인해 보세요. MAC 주소의 크기."
+    - id: e
+      text: "24개의 라우터가 있다는 뜻"
+      feedback: "다시 확인해 보세요. 24개의 라우터가 있다는 뜻."
+    answer: a
+  - id: u4-01-p06-q02
+    kind: choice
+    difficulty: medium
+    prompt: "192.168.0.10/16에서 네트워크 부분으로 사용하는 것은 몇 비트인가요?"
+    choices:
+    - id: a
+      text: "8비트"
+      feedback: "다시 확인해 보세요. 8비트."
+    - id: b
+      text: "24비트"
+      feedback: "다시 확인해 보세요. 24비트."
+    - id: c
+      text: "32비트"
+      feedback: "다시 확인해 보세요. 32비트."
+    - id: d
+      text: "48비트"
+      feedback: "다시 확인해 보세요. 48비트."
+    - id: e
+      text: "16비트"
+      feedback: "맞아요. 16비트입니다."
+    answer: e
+  - id: u4-01-p06-q03
+    kind: short
+    prompt: "IP 주소에서 네트워크와 호스트의 경계를 나타내는 /24 같은 표기를 무엇이라고 하나요? (영어 표현으로 답해주세요)"
+    answers:
+    - "prefix length"
+    - "prefix-length"
+    feedback: "정답은 prefix length입니다."
 - terms: []
-animations_dir: units/04-layer3-addressing/lessons/01-ipv4주소의-기본-구조/assets/animations
+  questions:
+  - id: u4-01-p07-q01
+    kind: choice
+    difficulty: easy
+    prompt: "다른 네트워크로 향하는 패킷을 다음 네트워크 쪽으로 전달하는 장치는 무엇인가요?"
+    choices:
+    - id: a
+      text: "스위치"
+      feedback: "다시 확인해 보세요. 스위치."
+    - id: b
+      text: "프린터"
+      feedback: "다시 확인해 보세요. 프린터."
+    - id: c
+      text: "네트워크 어댑터"
+      feedback: "다시 확인해 보세요. 네트워크 어댑터."
+    - id: d
+      text: "라우터"
+      feedback: "맞아요. 라우터입니다."
+    - id: e
+      text: "모뎀 케이블"
+      feedback: "다시 확인해 보세요. 모뎀 케이블."
+    answer: d
+  - id: u4-01-p07-q02
+    kind: choice
+    difficulty: medium
+    prompt: "다른 네트워크에 있는 서버로 보낼 때, 현재 LAN의 Ethernet 프레임은 보통 누구의 MAC 주소를 목적지로 사용하나요?"
+    choices:
+    - id: a
+      text: "먼 서버의 MAC 주소"
+      feedback: "다시 확인해 보세요. 먼 서버의 MAC 주소."
+    - id: b
+      text: "다음으로 받을 라우터의 MAC 주소"
+      feedback: "맞아요. 다음으로 받을 라우터의 MAC 주소입니다."
+    - id: c
+      text: "보내는 노트북 자신의 MAC 주소"
+      feedback: "다시 확인해 보세요. 보내는 노트북 자신의 MAC 주소."
+    - id: d
+      text: "DNS 서버의 MAC 주소"
+      feedback: "다시 확인해 보세요. DNS 서버의 MAC 주소."
+    - id: e
+      text: "목적지 포트 번호"
+      feedback: "다시 확인해 보세요. 목적지 포트 번호."
+    answer: b
+  - id: u4-01-p07-q03
+    kind: short
+    prompt: "목적지 IP와 경로 정보를 살펴 다음 네트워크 쪽으로 패킷을 전달하는 장치는 무엇인가요? (영어 단어로 답해주세요)"
+    answers:
+    - "router"
+    feedback: "정답은 router입니다."
 ---
-
 ## MAC 주소만으로 다른 LAN까지 보낼 수 있을까?
 
 같은 집의 노트북에서 같은 집의 프린터로 파일을 보낸다고 해 보자. 두 기기가 같은 LAN에 연결되어 있다면, Ethernet 프레임은 프린터의 네트워크 인터페이스가 가진 MAC 주소를 목적지로 삼아 전달될 수 있다. 이때 스위치는 프레임의 목적지 MAC 주소를 보고 어느 포트 쪽으로 보낼지 판단한다.
