@@ -58,7 +58,8 @@ button { color: inherit; }
 .net-sequence { margin: 0 auto 26px; padding-block-end: 14px; border-block-end: 1px solid var(--border); color: var(--muted); font-size: .8125rem; text-align: center; }
 .illustration { margin: 18px 0 26px; }
 .net-prose > .illustration { max-width: 830px; margin: 24px auto 32px; }
-.illustration object, .illustration img { display: block; width: 100%; max-height: 480px; aspect-ratio: 16 / 9; border: 0; border-radius: 10px 10px 0 0; background: #101216; object-fit: contain; }
+.illustration object, .illustration img { display: block; width: 100%; max-height: 480px; aspect-ratio: 16 / 9; border: 0; border-radius: 10px; background: #101216; object-fit: contain; }
+.illustration.has-animation-control object { border-radius: 10px 10px 0 0; }
 .illustration-control { display: block; width: 100%; min-height: 38px; padding: 6px 12px; border: 0; border-radius: 0 0 10px 10px; color: #f5f6f8; background: #191c22; font-size: .8125rem; cursor: pointer; }
 .illustration-control:hover { background: #303640; }
 .illustration-control:focus-visible, .icon-button:focus-visible, .page-nav :is(a,button):focus-visible, .course-sidebar a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }

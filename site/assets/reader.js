@@ -126,9 +126,15 @@
       object.setAttribute("aria-label", illustration.alt || illustration.title || "");
       object.setAttribute("title", illustration.alt || illustration.title || "");
       object.addEventListener("load", () => {
-        try { object.contentDocument?.documentElement.unpauseAnimations?.(); } catch { /* Browser may block an inaccessible SVG document. */ }
+        try {
+          const root = object.contentDocument?.documentElement;
+          if (!root || !root.querySelector("animate, animateMotion, animateTransform, set")) return;
+          figure.classList.add("has-animation-control");
+          figure.append(controlFor(object));
+          root.unpauseAnimations?.();
+        } catch { /* Browser may block an inaccessible SVG document. */ }
       });
-      figure.append(object, controlFor(object));
+      figure.append(object);
     } else {
       const image = document.createElement("img");
       image.src = src;
