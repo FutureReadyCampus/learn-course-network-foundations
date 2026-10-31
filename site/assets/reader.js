@@ -141,11 +141,6 @@
       image.alt = illustration.alt || "";
       figure.append(image);
     }
-    if (illustration.caption) {
-      const caption = document.createElement("figcaption");
-      caption.textContent = illustration.caption;
-      figure.append(caption);
-    }
     if (illustration.credit || illustration.source_url || illustration.license_url) {
       const credit = document.createElement("p");
       credit.className = "illustration-credit";

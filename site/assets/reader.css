@@ -63,7 +63,6 @@ button { color: inherit; }
 .illustration-control { display: block; width: 100%; min-height: 38px; padding: 6px 12px; border: 0; border-radius: 0 0 10px 10px; color: #f5f6f8; background: #191c22; font-size: .8125rem; cursor: pointer; }
 .illustration-control:hover { background: #303640; }
 .illustration-control:focus-visible, .icon-button:focus-visible, .page-nav :is(a,button):focus-visible, .course-sidebar a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
-.illustration figcaption { margin-block-start: 9px; color: var(--muted); font-size: .8125rem; text-align: start; }
 .illustration-credit { margin: 4px 0 0; color: var(--muted); font-size: .75rem; text-align: start; }
 .illustration-credit a { color: inherit; text-decoration: underline; text-underline-offset: .15em; }
 .net-prose { max-width: 760px; margin-inline: auto; font-size: 1.0625rem; line-height: 1.9; overflow-wrap: anywhere; }
