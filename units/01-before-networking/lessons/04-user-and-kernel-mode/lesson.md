@@ -117,7 +117,12 @@ pages:
       - concept-basic-04-02
     illustration_after_paragraph:
       - 12
-    illustrations: []
+    illustrations:
+      - file: assets/l04-daily-hotel-floors.svg
+        title: "호텔로 보는 컴퓨터"
+        alt: "호텔 건물이 세 층으로 나뉘어 있습니다. 맨 아래 기계 설비 층의 보일러는 가운데 층 직원이 켜야 돌아가고, 맨 위 객실에는 Chrome과 메모장 손님이 머뭅니다. 손님이 설비실로 내려가려다 막혀 직원에게 부탁하고, 마지막에 아래층 출입구가 NIC로 표시되며 바깥 세상과 이어집니다."
+        caption: "하드웨어는 기계 설비, 커널은 설비를 다루는 직원, 애플리케이션은 객실 손님입니다. 손님은 설비를 직접 만지지 않고 커널을 거치며, 바깥과 이어지는 출입구가 NIC입니다."
+        after_paragraph: 6
     questions:
     - id: u1-04-user-and-kernel-mode-p01-q01
       kind: choice
@@ -180,6 +185,11 @@ pages:
           장치에 닿습니다.
         caption: 애플리케이션의 요청은 커널과 드라이버를 거쳐 네트워크 장치에 도착합니다.
         after_paragraph: 5
+      - file: assets/l04-daily-front-desk.svg
+        title: "프런트 창구로 부탁하기"
+        alt: "왼쪽은 손님이 있는 객실(User mode), 오른쪽은 직원과 수건 선반이 있는 설비 구역(Kernel mode)이고 그 사이 벽에 창구가 하나 나 있습니다. 손님이 잠긴 문으로 직접 들어가려다 막히고, 창구로 '수건 2장' 쪽지를 건네자 직원이 수건을 꺼내 창구로 돌려줍니다. 마지막에 손님은 Chrome, 창구는 시스템 콜, 직원은 커널로 표시됩니다."
+        caption: "애플리케이션은 커널 구역에 직접 들어가지 않고, 커널이 정해 둔 창구인 시스템 콜로만 요청합니다. 실제 일은 커널이 처리해 결과를 돌려줍니다."
+        after_paragraph: 4
     questions:
     - id: u1-04-user-and-kernel-mode-p02-q01
       kind: choice
@@ -243,6 +253,11 @@ pages:
         alt: 맨 아래 NIC 상자 위에 드라이버 블록이 끼워지고, 그 위에 TCP와 IP 블록이 차례로 쌓이는 장면입니다. 마지막에 위에서 내려온 데이터가 NIC를 통해 선으로 나갑니다.
         caption: OSI를 실제 구성 요소에 연결한 뒤, 장치 쪽의 드라이버와 NIC를 다시 확인합니다.
         after_paragraph: 18
+      - file: assets/l04-daily-elevator-guest.svg
+        title: "엘리베이터와 507호 손님"
+        alt: "왼쪽에서는 손님이 버튼을 누르자 관리실의 명령 없이 엘리베이터가 올라가고, 칸 안의 제어 보드가 펌웨어로, 관리실이 드라이버로 표시되며 L2의 일을 둘이 나눠 맡는다고 알려 줍니다. 오른쪽 507호에서는 수화기가 들리고, 그것을 든 것이 객실이 아니라 손님이었다는 것이 드러나며 손님은 프로세스, 수화기는 소켓으로 표시됩니다."
+        caption: "NIC 같은 장치 안에도 펌웨어라는 작은 소프트웨어가 있어 데이터 링크 계층의 일을 드라이버와 나눠 맡습니다. 소켓을 열고 닫는 주체는 실행 중인 프로그램, 곧 프로세스입니다."
+        after_paragraph: 20
     questions:
     - id: u1-04-user-and-kernel-mode-p03-q01
       kind: choice

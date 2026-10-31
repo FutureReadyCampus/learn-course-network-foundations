@@ -184,7 +184,12 @@ pages:
       - concept-basic-01-02
     illustration_after_paragraph:
       - 8
-    illustrations: []
+    illustrations:
+      - file: assets/l01-daily-trail-sign.svg
+        title: "등산로 입구의 안내판"
+        alt: "등산로 입구에 안내판이 서 있고, 그 옆에 등산객 한 명과 출발선, 산이 보입니다. 안내판에 비트·바이트부터 개념과 구현까지 여덟 항목이 차례로 나타나고, 등산객이 하나씩 확인하는 동안 낯선 ‘버퍼’ 항목만 주황색으로 남습니다. 등산객이 책을 들고 보충한 뒤 그 항목도 초록색으로 바뀌고, 등산객은 출발선을 넘어 산을 오릅니다."
+        caption: "선수 지식 목록은 시험이 아니라 출발선을 알려 주는 안내판입니다. 낯선 항목은 먼저 보충하고, 오를지는 읽는 사람이 정합니다."
+        after_paragraph: 3
   - concepts:
       - concept-basic-01-03
       - concept-basic-01-04
@@ -192,14 +197,24 @@ pages:
       - 2
       - 9
       - 11
-    illustrations: []
+    illustrations:
+      - file: assets/l01-daily-phone-number.svg
+        title: "전화번호처럼 끊어 읽기"
+        alt: "휴대폰 옆에 01012345678이 붙어서 나타났다가, 숫자 묶음이 벌어지며 010-1234-5678로 끊깁니다. 아래 칸에서는 컴퓨터 옆에 10110010이 나타나 가운데에서 1011과 0010 두 묶음으로 갈라집니다. 각 묶음 아래에 B와 2가 붙고, 오른쪽에 B2가 나타납니다."
+        caption: "전화번호를 끊어 읽듯 2진수도 끊어 읽습니다. 다만 16진수는 언제나 4비트씩 끊고, 한 묶음을 글자 하나로 바꿉니다."
+        after_paragraph: 8
   - concepts:
       - concept-basic-01-05
       - concept-basic-01-06
     illustration_after_paragraph:
       - 4
       - 13
-    illustrations: []
+    illustrations:
+      - file: assets/l01-daily-recipe-pot.svg
+        title: "요리책과 끓고 있는 냄비"
+        alt: "왼쪽 책장에 주황색 요리책이 꽂혀 있고 오른쪽 가스레인지는 꺼져 있습니다. 요리책에서 출발한 점이 레인지에 닿으면 냄비가 올라가 불이 붙고 김이 나며, 같은 요리책으로 두 번째 냄비도 올라갑니다. 두 냄비 위에 PID 4120과 PID 4388 번호표가 붙고, 두 번째 냄비의 불이 꺼져 치워진 뒤에도 요리책은 책장에 그대로 남아 있습니다."
+        caption: "설치된 프로그램은 책장 속 요리책, 실행 중인 프로세스는 불 위에서 끓는 냄비입니다. 같은 프로그램을 두 번 실행하면 프로세스가 둘 생기고, PID로 서로 구별합니다."
+        after_paragraph: 1
   - concepts:
       - concept-basic-01-07
       - concept-basic-01-08
@@ -212,6 +227,11 @@ pages:
           장치에 닿습니다.
         caption: 애플리케이션과 네트워크 장치 사이에서 운영체제와 드라이버가 일을 나눕니다.
         after_paragraph: 5
+      - file: assets/l01-daily-building-office.svg
+        title: "상가 건물과 관리사무소"
+        alt: "가게, 관리사무소, 전기·수도 설비가 층층이 놓인 건물이 보입니다. 가게에서 설비로 바로 내려가는 점선 길에 X 표시가 뜨고, 가게 사람의 신청서가 관리사무소 책상으로 내려갑니다. 설비 층의 밸브가 열리면 파란 관을 따라 물이 올라가 가게 진열창에 불이 켜지고, 마지막에 세 층 옆에 애플리케이션(User mode), 커널(Kernel mode), 하드웨어라는 이름이 붙습니다."
+        caption: "애플리케이션은 하드웨어를 직접 만지지 않고 커널에 부탁하며, 커널이 하드웨어를 다뤄 줍니다. 층 그림은 이해를 돕는 비유일 뿐이고, 실제 차이는 위치가 아니라 권한입니다."
+        after_paragraph: 2
   - concepts:
       - concept-basic-01-09
     illustration_after_paragraph: []
@@ -227,6 +247,11 @@ pages:
         alt: 맨 아래 NIC 상자 위에 드라이버 블록이 끼워지고, 그 위에 TCP와 IP 블록이 차례로 쌓이는 장면입니다.
         caption: ‘정보를 주고받는다’는 개념이 실제로는 여러 소프트웨어와 장치의 협력으로 구현됩니다.
         after_paragraph: 6
+      - file: assets/l01-daily-parcel-ways.svg
+        title: "택배는 같고, 옮기는 방법은 여러 가지"
+        alt: "위쪽에 ‘주소를 보고 찾아가 전달한다’는 개념 이름표가 있고, 왼쪽 집 앞에 택배 상자가, 오른쪽에 주소 팻말이 붙은 집이 있습니다. 트럭, 드론, 지하철이 차례로 상자를 싣고 오른쪽 집까지 갑니다. 마지막에 세 가지 운송 수단 옆에 각각 ‘구현’ 이름표가 붙습니다."
+        caption: "주소를 보고 찾아가 전달한다는 개념은 그대로이고, 트럭·드론·지하철처럼 실제로 옮기는 방법이 구현입니다. 구현은 바뀌어도 개념은 남습니다."
+        after_paragraph: 1
 animations_dir: units/01-before-networking/lessons/01-prerequisites/assets/animations
 ---
 ## 수강 전에 필요한 바탕과 비트·바이트

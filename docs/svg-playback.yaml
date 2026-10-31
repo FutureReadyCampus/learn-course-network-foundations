@@ -3,8 +3,20 @@ animations:
   l01-and-mask.svg: 14
   l01-binary-hex.svg: 14
   l01-bits-bytes.svg: 16
+  l01-daily-building-office.svg: 15
+  l01-daily-parcel-ways.svg: 15
+  l01-daily-phone-number.svg: 15
+  l01-daily-recipe-pot.svg: 15
+  l01-daily-trail-sign.svg: 15
+  l02-daily-kitchen-roles.svg: 12
+  l02-daily-school-stairs.svg: 15
   l02-layer-dependency.svg: 12
+  l03-daily-blueprint-house.svg: 15
+  l03-daily-phone-call.svg: 15
   l03-layers-dependency.svg: 14
+  l04-daily-elevator-guest.svg: 18
+  l04-daily-front-desk.svg: 15
+  l04-daily-hotel-floors.svg: 15
   l04-layer-map.svg: 16
   l04-nic-driver-stack.svg: 14
   l04-socket-handset.svg: 14
