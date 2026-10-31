@@ -57,6 +57,11 @@ page_metadata:
     answers:
     - network interface
     feedback: 정답은 network interface입니다.
+  animations:
+  - file: l08-nic-door.svg
+    title: "NIC는 컴퓨터의 문"
+    alt: "컴퓨터를 나타내는 네모 안에서 문서 작성과 계산 사이를 점이 오가며 집 안에서 끝나는 일을 보여 줍니다. 이어서 네모 가장자리에 NIC(LAN 카드)가 문처럼 나타나고, NIC가 네트워크와 맞닿는 자리에 인터페이스 점이 생기며, 주황 점이 그 연결 지점을 지나 네트워크로 나갑니다. 마지막에 ‘Realtek 무선 LAN’ 사양 문구에서 Realtek은 회사 이름, 무선 LAN은 NIC 종류라는 설명이 붙습니다."
+    caption: "NIC는 컴퓨터가 네트워크와 신호를 주고받는 장치이고, 인터페이스는 NIC가 네트워크와 맞닿는 연결 지점입니다. 사양표의 Realtek은 NIC를 만든 회사 이름입니다."
 - terms:
   - 호스트 (Host)
   - 액세스 포인트 (Access Point)
@@ -170,6 +175,11 @@ page_metadata:
     answers:
     - LAN
     feedback: 정답은 LAN입니다.
+  animations:
+  - file: l08-lan-man-wan.svg
+    title: "LAN, MAN, WAN"
+    alt: "집 공유기에 휴대전화와 태블릿은 Wi-Fi 점선으로, 데스크톱과 IPTV는 케이블 실선으로 연결되어 있습니다. 이 장치들을 LAN(마을) 테두리가 감싸고, 이웃 LAN을 포함한 MAN(도시) 테두리, 다른 도시와 먼 지역까지 포함한 WAN(더 넓은 지역) 테두리가 차례로 넓게 그려집니다. 마지막에 범위의 이름일 뿐 속도 순위가 아니라는 문구가 나옵니다."
+    caption: "LAN·MAN·WAN은 네트워크가 어느 정도 범위에 걸쳐 있는지를 나타내는 이름입니다. 범위가 넓다고 더 빠르거나 품질이 좋은 것은 아닙니다."
 - terms:
   - MAC 주소 (Media Access Control address)
   - 식별자 (identifier)
@@ -282,6 +292,11 @@ page_metadata:
     answers:
     - Frame
     feedback: 정답은 Frame입니다.
+  animations:
+  - file: l08-frame-per-link.svg
+    title: "NIC가 주고받는 L2 프레임"
+    alt: "기판에 끼우는 카드, USB 유선 어댑터, 무선 NIC 세 가지 모양이 먼저 나란히 보입니다. 노트북에서 주황 패킷이 준비되고, MAC 칸이 붙은 파란 Wi-Fi 프레임이 패킷을 감싼 채 무선 구간을 지나 공유기에 도착합니다. 공유기에서 포장이 민트색 Ethernet 프레임으로 바뀌고, 같은 패킷이 다음 장비로 이어집니다."
+    caption: "NIC는 모양이 달라도 같은 역할을 하며, 같은 링크의 이웃에게 보낼 때 L2 단위인 프레임을 씁니다. 프레임은 패킷을 감싸는 한 구간용 포장이라 구간마다 새로 쓰일 수 있습니다."
 - terms:
   - Ethernet
   - Jumbo Frame
@@ -335,6 +350,11 @@ page_metadata:
     answers:
     - Jumbo Frame
     feedback: 정답은 Jumbo Frame입니다.
+  animations:
+  - file: l08-frame-size.svg
+    title: "프레임 크기 세는 법"
+    alt: "MTU 1,500 표시 아래 데이터(payload) 칸이 놓이고, 앞에 헤더 14바이트, 뒤에 FCS 4바이트 칸이 붙습니다. 전체를 세면 1,518바이트, FCS 칸이 흐려지면 1,514바이트라는 괄호가 나타납니다. 이어서 큰 사진 파일이 프레임 여러 개로 나뉘고, 마지막에 데이터 칸이 더 긴 Jumbo Frame이 크기는 장비·설정마다 다르다는 설명과 함께 나옵니다."
+    caption: "일반 Ethernet의 1,500바이트는 데이터 부분의 최대 크기이고, 프레임 전체 크기는 헤더·FCS를 어떻게 세느냐에 따라 1,518 또는 1,514바이트로 적힙니다."
 - terms:
   - 비트 (bit)
   - 바이트 (Byte)
@@ -447,6 +467,11 @@ page_metadata:
     answers:
     - Ethernet
     feedback: 정답은 Ethernet입니다.
+  animations:
+  - file: l08-find-my-interface.svg
+    title: "내 컴퓨터에서 연결 지점 찾기"
+    alt: "명령 프롬프트 창에 ipconfig /all이 입력되고 무선 LAN 어댑터 Wi-Fi와 Ethernet 어댑터 항목이 나타납니다. 어댑터 이름 줄에는 인터페이스, Physical Address 줄에는 MAC 주소 꼬리표가 붙고, 두 어댑터가 모두 강조되어 인터페이스가 둘임을 보여 줍니다. 이어서 Mac 터미널의 ifconfig 화면에서 en0과 ether 값이 같은 방식으로 표시되고, 마지막에 전송률 866 Mbps를 8로 나눈 약 108 MB/s 카드가 나옵니다."
+    caption: "ipconfig /all이나 ifconfig 화면에서 Wi-Fi·Ethernet 같은 항목 이름이 인터페이스, Physical Address나 ether 값이 MAC 주소입니다. Mbps를 8로 나눈 값은 단위를 바꾼 어림값이지 실제 다운로드 속도가 아닙니다."
 animations_dir: units/03-layer2-switching/lessons/01-nic-l2-frame-lan-카드-그리고-mac-주소/assets/animations
 ---
 앞 Lesson에서는 택배가 여러 사람과 장소를 거쳐 받는 사람에게 가는 큰 흐름을 살펴봤습니다. 이번 Lesson에서는 그 여정에 참여하는 컴퓨터와 네트워크가 어디에서 맞닿는지, 그 연결 지점에 어떤 안내가 붙는지 알아봅니다. 컴퓨터를 집, 연결 지점을 문, 가까운 범위의 네트워크를 마을이라고 생각해 보세요. 비유가 실제 구조와 완전히 같지는 않으니, 각 용어가 무엇을 가리키는지만 차근차근 연결하면 됩니다.

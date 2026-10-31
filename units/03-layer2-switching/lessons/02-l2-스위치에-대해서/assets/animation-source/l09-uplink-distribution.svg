@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+  <rect width="960" height="540" fill="#0f1115"/>
+
+  <!-- 제목 + 고정 결론 -->
+  <text x="480" y="58" text-anchor="middle" font-size="34" font-weight="700" fill="#e6e8ec">업링크로 배포 스위치에 모으기</text>
+  <text x="480" y="100" text-anchor="middle" font-size="24" fill="#9aa3b2">액세스는 단말을 받고, 배포는 액세스를 모읍니다</text>
+
+  <line x1="300" y1="326" x2="300" y2="388" stroke="#3d4b60" stroke-width="3" ></line>
+  <line x1="440" y1="326" x2="440" y2="388" stroke="#3d4b60" stroke-width="3" ></line>
+  <line x1="620" y1="326" x2="620" y2="388" stroke="#3d4b60" stroke-width="3" ></line>
+  <line x1="760" y1="326" x2="760" y2="388" stroke="#3d4b60" stroke-width="3" ></line>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.62;0.64;0.8;0.82;1" dur="10s" repeatCount="indefinite"/><line x1="300" y1="326" x2="300" y2="388" stroke="#7ee7c7" stroke-width="5" ></line><text x="312" y="364" text-anchor="start" font-size="20" font-weight="700" fill="#7ee7c7">Link up</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.22;0.24;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><line x1="400" y1="274" x2="480" y2="196" stroke="#ffb454" stroke-width="5" ></line></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.42;0.44;0.62;0.64;1" dur="10s" repeatCount="indefinite"/><line x1="660" y1="274" x2="580" y2="196" stroke="#ffb454" stroke-width="5" ></line></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.624;0.644;0.8;0.82;1" dur="10s" repeatCount="indefinite"/><line x1="660" y1="274" x2="580" y2="196" stroke="#9aa3b2" stroke-width="4" stroke-dasharray="8 7"></line></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.81;0.83;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><line x1="660" y1="274" x2="580" y2="196" stroke="#ffb454" stroke-width="5" ></line></g>
+  <circle r="10" fill="#ffb454" opacity="0"><animateMotion path="M400,274 L480,196" keyPoints="0;0;1;1" keyTimes="0;0.27;0.34;1" calcMode="linear" dur="10s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.265;0.27;0.34;0.345;1" dur="10s" repeatCount="indefinite"/></circle>
+  <circle r="10" fill="#ffb454" opacity="0"><animateMotion path="M660,274 L580,196" keyPoints="0;0;1;1" keyTimes="0;0.47;0.54;1" calcMode="linear" dur="10s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.465;0.47;0.54;0.545;1" dur="10s" repeatCount="indefinite"/></circle>
+  <rect x="410" y="144" width="240" height="52" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"><animate attributeName="stroke" values="#3d4b60;#3d4b60;#7ee7c7;#7ee7c7;#3d4b60;#3d4b60" keyTimes="0;0.48;0.49;0.97;0.99;1" dur="10s" repeatCount="indefinite"/></rect><text x="530" y="177.92" text-anchor="middle" font-size="22" font-weight="700" fill="#e6e8ec">배포 스위치</text>
+  <rect x="260" y="274" width="220" height="52" rx="8" fill="#171a21" stroke="#6ea8fe" stroke-width="3"></rect><text x="370" y="307.2" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec">1층 액세스 스위치</text>
+  <rect x="580" y="274" width="220" height="52" rx="8" fill="#171a21" stroke="#6ea8fe" stroke-width="3"></rect><text x="690" y="307.2" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec">2층 액세스 스위치</text>
+  <rect x="250" y="388" width="100" height="44" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"></rect><text x="300" y="417.2" text-anchor="middle" font-size="20" fill="#e6e8ec">PC</text>
+  <rect x="390" y="388" width="100" height="44" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"></rect><text x="440" y="417.2" text-anchor="middle" font-size="20" fill="#e6e8ec">PC</text>
+  <rect x="570" y="388" width="100" height="44" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"></rect><text x="620" y="417.2" text-anchor="middle" font-size="20" fill="#e6e8ec">PC</text>
+  <rect x="710" y="388" width="100" height="44" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"></rect><text x="760" y="417.2" text-anchor="middle" font-size="20" fill="#e6e8ec">PC</text>
+  <text x="40" y="307" text-anchor="start" font-size="20" font-weight="700" fill="#6ea8fe">액세스 계층</text>
+  <text x="40" y="417" text-anchor="start" font-size="20" font-weight="700" fill="#9aa3b2">단말</text>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.49;0.51;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><text x="40" y="177" text-anchor="start" font-size="20" font-weight="700" fill="#7ee7c7">배포 계층</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.26;0.28;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="275" y="216" width="110" height="36" rx="18" fill="#ffb454" stroke="#ffb454" stroke-width="2"/><text x="330" y="242" text-anchor="middle" font-size="22" font-weight="700" fill="#0f1115">업링크</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.46;0.48;0.62;0.64;1" dur="10s" repeatCount="indefinite"/><rect x="675" y="216" width="110" height="36" rx="18" fill="#ffb454" stroke="#ffb454" stroke-width="2"/><text x="730" y="242" text-anchor="middle" font-size="22" font-weight="700" fill="#0f1115">업링크</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.624;0.644;0.8;0.82;1" dur="10s" repeatCount="indefinite"/><rect x="675" y="216" width="210" height="36" rx="18" fill="#0f1115" stroke="#9aa3b2" stroke-width="2"/><text x="780" y="242" text-anchor="middle" font-size="20" font-weight="700" fill="#9aa3b2">업링크 · Link down</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.81;0.83;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="675" y="216" width="110" height="36" rx="18" fill="#ffb454" stroke="#ffb454" stroke-width="2"/><text x="730" y="242" text-anchor="middle" font-size="22" font-weight="700" fill="#0f1115">업링크</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.82;0.84;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><text x="40" y="203" text-anchor="start" font-size="18" fill="#7ee7c7">여러 액세스를 모음</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.82;0.84;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><text x="40" y="333" text-anchor="start" font-size="18" fill="#6ea8fe">단말 연결을 받음</text></g>
+
+  <!-- 자막 바 -->
+  <rect x="0" y="478" width="960" height="62" fill="#171a21"/>
+  <g font-size="26" fill="#e6e8ec" text-anchor="middle">
+    <text x="480" y="518" opacity="1">층마다 액세스 스위치가 단말들을 연결합니다
+      <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.19;0.2;0.99;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">상위 장비 쪽으로 이어지는 연결이 <tspan fill="#ffb454" font-weight="700">업링크</tspan>입니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19;0.2;0.39;0.4;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0"><tspan fill="#7ee7c7" font-weight="700">배포 스위치</tspan>가 여러 액세스 스위치를 모읍니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.39;0.4;0.59;0.6;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">업링크는 역할, Link up/down은 연결 상태입니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.59;0.6;0.79;0.8;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">액세스는 단말을, 배포는 여러 액세스를 맡습니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.79;0.8;0.98;0.99;1" dur="10s" repeatCount="indefinite"/></text>
+  </g>
+<g aria-label="재생 단계"><rect x="40" y="28" width="88" height="40" rx="20" fill="#171a21" stroke="#3d4b60" stroke-width="2"/><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="1">1 / 5<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.19;0.2;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">2 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19;0.2;0.39;0.4;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">3 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.39;0.4;0.59;0.6;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">4 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.59;0.6;0.79;0.8;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">5 / 5<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.79;0.8;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text></g>
+</svg>

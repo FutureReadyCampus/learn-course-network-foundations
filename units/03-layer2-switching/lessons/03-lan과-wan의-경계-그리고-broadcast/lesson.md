@@ -56,6 +56,11 @@ page_metadata:
     answers:
     - Broadcast
     feedback: 정답은 Broadcast입니다.
+  animations:
+  - file: l10-unicast-vs-broadcast.svg
+    title: "Unicast와 Broadcast"
+    alt: "PC 1이 점선 구역 안의 PC 2~5와 연결되어 있습니다. 먼저 파란 Unicast가 PC 4 한 대에만 가고, 이어서 주황 Broadcast가 구역 안 네 대에 한꺼번에 퍼진 뒤 네 대 모두 내용 확인 표시가 켜집니다. 마지막에 구역이 브로드캐스트 도메인으로 표시되고, 구역 밖 PC에는 닿지 않는다는 문구가 나옵니다."
+    caption: "Unicast는 한 곳을 지정해 보내고, Broadcast는 같은 브로드캐스트 도메인 안의 모두에게 보냅니다. 받은 장치는 모두 내용을 확인해야 합니다."
 - terms:
   - 브로드캐스트 도메인 (Broadcast Domain)
   - LAN 구역
@@ -108,6 +113,11 @@ page_metadata:
     answers:
     - broadcast domain
     feedback: 정답은 broadcast domain입니다.
+  animations:
+  - file: l10-apartment-broadcast-zone.svg
+    title: "방송이 닿는 구역"
+    alt: "왼쪽 아파트에서 관리실이 방송하자 연결된 여덟 세대가 모두 켜지고, 이어서 구역이 둘로 나뉘어 구역 1의 세대만 방송을 듣습니다. 오른쪽에서는 PC 1의 방송을 받은 스위치가 PC 2~4로 전달해 모두 확인하고, 그 범위가 브로드캐스트 도메인으로 묶여 표시됩니다."
+    caption: "방송이 닿는 구역을 브로드캐스트 도메인이라고 합니다. 방송을 보낼 수 있는지만큼 어느 구역까지 들리게 할지가 중요합니다."
 - terms:
   - 16진수 (Hexadecimal)
   - 브로드캐스트 MAC 주소
@@ -276,6 +286,11 @@ page_metadata:
     answers:
     - bandwidth
     feedback: 정답은 bandwidth입니다.
+  animations:
+  - file: l10-broadcast-uses-links.svg
+    title: "방송이 잦으면 자원이 줄어든다"
+    alt: "스위치 A·B·C와 PC 1~6이 이어진 망에서 PC 4가 PC 5에게 파란 데이터를 계속 보냅니다. PC 1의 주황 방송이 모든 링크를 타고 모든 PC로 퍼지고, 방송이 잦아지자 왼쪽 위의 링크 대역폭·장치 처리 막대에서 주황 부분이 커지며 파란 데이터가 느려집니다. 마지막에 방송이 줄자 막대도 줄어듭니다."
+    caption: "방송 하나도 여러 링크와 장치의 자원을 씁니다. 방송량이 커지면 지연이나 성능 저하가 생길 수 있으니 필요할 때만 보내고 범위를 적절히 나눕니다."
 - terms:
   - L3 (Layer 3)
   - 라우팅 (Routing)
@@ -386,6 +401,11 @@ page_metadata:
     answers:
     - IP address
     feedback: 정답은 IP address입니다.
+  animations:
+  - file: l10-mac-changes-ip-stays.svg
+    title: "MAC은 링크마다, IP는 끝까지"
+    alt: "왼쪽에 물리 매체부터 HTTP까지 계층이 쌓여 있고, Ethernet 칸에는 목적지 MAC, IP 칸에는 목적지 IP가 표시됩니다. 오른쪽에서 PC가 라우터를 거쳐 서버로 보낼 때, 링크 1의 프레임은 목적지 MAC이 라우터이고 링크 2의 새 프레임은 목적지 MAC이 서버로 바뀌지만 목적지 IP는 두 프레임 모두 서버입니다. 마지막에 LAN=물리, WAN=논리라는 그림은 외우기 요령일 뿐이라는 안내가 나옵니다."
+    caption: "L2 Ethernet은 같은 링크에서 목적지 MAC을, L3 IP는 네트워크 사이에서 목적지 IP를 봅니다. 라우터를 지나면 프레임과 MAC은 새로 바뀌고 IP는 보통 그대로입니다."
 - terms:
   - 논리적 (Logical)
   questions:
@@ -437,6 +457,11 @@ page_metadata:
     answers:
     - abstraction
     feedback: 정답은 abstraction입니다.
+  animations:
+  - file: l10-cloud-over-cables.svg
+    title: "포인터와 구름: 논리적이라는 말"
+    alt: "왼쪽 모니터에서 마우스를 움직이면 화면의 포인터가 따라 움직이지만 책상 위에는 화살표가 없고, OS가 위치를 기억해 그린다는 표시가 붙습니다. 오른쪽에서는 PC와 서버 사이가 인터넷 구름으로 그려졌다가, 구름이 흐려지며 광섬유·해저 케이블·무선 구간과 라우터가 드러나고, 그 장비들 위로 PC에서 서버까지 가는 파란 경로가 표시되며 그 위의 주소·경로를 보는 관점이라는 문구가 나옵니다."
+    caption: "IP 네트워크는 물리 링크 위에서 주소와 규칙으로 구성된 연결을 보는 추상화입니다. 논리적이라는 말은 장비가 없다는 뜻이 아닙니다."
 - terms:
   - 가상화 (Virtualization)
   - 가상 머신 (Virtual Machine)
@@ -489,6 +514,11 @@ page_metadata:
     answers:
     - virtualization
     feedback: 정답은 virtualization입니다.
+  animations:
+  - file: l10-one-server-many-vms.svg
+    title: "한 대를 여러 대처럼: 가상화"
+    alt: "왼쪽에 CPU 시간·메모리·저장 공간·네트워크를 가진 실제 서버 한 대가 있고, 그 위에 가상화 소프트웨어가 놓인 뒤 자원이 세 색으로 나뉘어 VM 1~3에 배정됩니다. 오른쪽에서는 PC 네 대가 실제 스위치 하나에 케이블로 연결된 채 가상 네트워크 A와 B로 묶이고, 마지막에 실제 장비 위의 다른 규칙·경계라는 표시가 나옵니다."
+    caption: "가상화는 소프트웨어가 실제 자원을 나눠 여러 대처럼 쓰게 하는 기술입니다. 가상 네트워크도 실제 케이블과 스위치 위에서 동작하며, 다른 규칙과 경계로 관리합니다."
 - terms:
   - LAN (Local Area Network)
   - WAN (Wide Area Network)
@@ -541,6 +571,11 @@ page_metadata:
     answers:
     - WAN
     feedback: 정답은 WAN입니다.
+  animations:
+  - file: l10-lan-wan-summary.svg
+    title: "LAN·WAN 한 장으로 정리"
+    alt: "왼쪽 구역의 PC는 케이블로, 노트북은 Wi-Fi로 스위치에 연결되어 있고 그 링크 위로 파란 프레임이 오갑니다. 주황 방송은 왼쪽 구역 안에만 퍼지고 라우터에서 멈추며, 민트 IP 패킷은 라우터 두 개를 지나 오른쪽 구역의 PC까지 갑니다. 이어서 두 구역이 LAN, 전체가 WAN으로 묶이고, 마지막에 오른쪽 LAN의 VLAN 구분과 WAN의 광섬유·무선 구간, 범위·기술·운영 주체라는 판단 기준이 나타납니다."
+    caption: "링크 위로 MAC 프레임이 오가고, 그 위에서 IP 패킷이 네트워크 사이를 이동합니다. LAN과 WAN은 물리·논리만으로 나뉘지 않으니 범위·기술·운영 주체 같은 문맥으로 판단합니다."
 animations_dir: units/03-layer2-switching/lessons/03-lan과-wan의-경계-그리고-broadcast/assets/animations
 ---
 네트워크에서 “모두에게 알려야 하는 말”은 어떻게 전달될까? 그리고 그 말은 어디까지 퍼져도 괜찮을까? 아파트 안내 방송과 택배 송장, 손에 잡히지 않는 마우스 포인터를 떠올리며 Broadcast와 LAN·WAN의 관계를 살펴보자.

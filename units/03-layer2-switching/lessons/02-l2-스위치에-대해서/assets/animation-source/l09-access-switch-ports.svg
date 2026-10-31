@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+  <rect width="960" height="540" fill="#0f1115"/>
+
+  <!-- 제목 + 고정 결론 -->
+  <text x="480" y="58" text-anchor="middle" font-size="34" font-weight="700" fill="#e6e8ec">액세스 스위치에 단말 연결하기</text>
+  <text x="480" y="100" text-anchor="middle" font-size="24" fill="#9aa3b2">포트 수는 꽂을 수 있는 케이블 끝의 수입니다</text>
+
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.26;0.28;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><line x1="260" y1="298" x2="260" y2="376" stroke="#7ee7c7" stroke-width="4" ></line></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.45;0.47;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><line x1="420" y1="298" x2="420" y2="376" stroke="#7ee7c7" stroke-width="4" ></line></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.49;0.51;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><line x1="580" y1="298" x2="580" y2="376" stroke="#7ee7c7" stroke-width="4" ></line></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.65;0.67;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><line x1="660" y1="189" x2="660" y2="262" stroke="#6ea8fe" stroke-width="4" ></line></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.69;0.71;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><line x1="820" y1="189" x2="820" y2="262" stroke="#6ea8fe" stroke-width="4" ></line></g>
+  <rect x="210" y="240" width="660" height="80" rx="12" fill="#171a21" stroke="#6ea8fe" stroke-width="3"/>
+  <text x="115" y="272" text-anchor="middle" font-size="22" font-weight="700" fill="#e6e8ec">액세스</text><text x="115" y="300" text-anchor="middle" font-size="22" font-weight="700" fill="#e6e8ec">스위치</text>
+  <rect x="238" y="262" width="44" height="36" rx="4" fill="#0f1115" stroke="#9aa3b2" stroke-width="2"/><text x="260" y="287" text-anchor="middle" font-size="18" fill="#9aa3b2">1</text>
+  <rect x="318" y="262" width="44" height="36" rx="4" fill="#0f1115" stroke="#9aa3b2" stroke-width="2"/><text x="340" y="287" text-anchor="middle" font-size="18" fill="#9aa3b2">2</text>
+  <rect x="398" y="262" width="44" height="36" rx="4" fill="#0f1115" stroke="#9aa3b2" stroke-width="2"/><text x="420" y="287" text-anchor="middle" font-size="18" fill="#9aa3b2">3</text>
+  <rect x="478" y="262" width="44" height="36" rx="4" fill="#0f1115" stroke="#9aa3b2" stroke-width="2"/><text x="500" y="287" text-anchor="middle" font-size="18" fill="#9aa3b2">4</text>
+  <rect x="558" y="262" width="44" height="36" rx="4" fill="#0f1115" stroke="#9aa3b2" stroke-width="2"/><text x="580" y="287" text-anchor="middle" font-size="18" fill="#9aa3b2">5</text>
+  <rect x="638" y="262" width="44" height="36" rx="4" fill="#0f1115" stroke="#9aa3b2" stroke-width="2"/><text x="660" y="287" text-anchor="middle" font-size="18" fill="#9aa3b2">6</text>
+  <rect x="718" y="262" width="44" height="36" rx="4" fill="#0f1115" stroke="#9aa3b2" stroke-width="2"/><text x="740" y="287" text-anchor="middle" font-size="18" fill="#9aa3b2">7</text>
+  <rect x="798" y="262" width="44" height="36" rx="4" fill="#0f1115" stroke="#9aa3b2" stroke-width="2"/><text x="820" y="287" text-anchor="middle" font-size="18" fill="#9aa3b2">8</text>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.21;0.23;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="195" y="376" width="130" height="48" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"></rect><text x="260" y="407.92" text-anchor="middle" font-size="22" fill="#e6e8ec">노트북</text><text x="245" y="352" text-anchor="end" font-size="18" font-weight="700" fill="#7ee7c7">NIC</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.28;0.3;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="238" y="262" width="44" height="36" rx="4" fill="#7ee7c7"/><text x="260" y="287" text-anchor="middle" font-size="18" font-weight="700" fill="#0f1115">1</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.41;0.43;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="355" y="376" width="130" height="48" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"></rect><text x="420" y="407.92" text-anchor="middle" font-size="22" fill="#e6e8ec">프린터</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.45;0.47;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="515" y="376" width="130" height="48" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"></rect><text x="580" y="407.92" text-anchor="middle" font-size="22" fill="#e6e8ec">PC</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.47;0.49;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="398" y="262" width="44" height="36" rx="4" fill="#7ee7c7"/><text x="420" y="287" text-anchor="middle" font-size="18" font-weight="700" fill="#0f1115">3</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.51;0.53;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="558" y="262" width="44" height="36" rx="4" fill="#7ee7c7"/><text x="580" y="287" text-anchor="middle" font-size="18" font-weight="700" fill="#0f1115">5</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.52;0.54;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><text x="420" y="458" text-anchor="middle" font-size="20" font-weight="700" fill="#7ee7c7">단말 (Endpoint)</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.61;0.63;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="590" y="141" width="140" height="48" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"></rect><text x="660" y="172.92" text-anchor="middle" font-size="22" fill="#e6e8ec">무선 AP</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.65;0.67;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="750" y="141" width="140" height="48" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"></rect><text x="820" y="172.92" text-anchor="middle" font-size="22" fill="#e6e8ec">다른 스위치</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.67;0.69;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="638" y="262" width="44" height="36" rx="4" fill="#6ea8fe"/><text x="660" y="287" text-anchor="middle" font-size="18" font-weight="700" fill="#0f1115">6</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.71;0.73;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="798" y="262" width="44" height="36" rx="4" fill="#6ea8fe"/><text x="820" y="287" text-anchor="middle" font-size="18" font-weight="700" fill="#0f1115">8</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.72;0.74;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><text x="450" y="172" text-anchor="middle" font-size="20" font-weight="700" fill="#6ea8fe">네트워크 장비도 연결</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.82;0.84;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="232" y="254" width="616" height="52" rx="8" fill="none" stroke="#ffb454" stroke-width="3"/><rect x="670" y="376" width="240" height="48" rx="8" fill="#171a21" stroke="#ffb454" stroke-width="3"></rect><text x="790" y="407.2" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec">8포트 = 케이블 끝 8개</text></g>
+
+  <!-- 자막 바 -->
+  <rect x="0" y="478" width="960" height="62" fill="#171a21"/>
+  <g font-size="26" fill="#e6e8ec" text-anchor="middle">
+    <text x="480" y="518" opacity="1">액세스 스위치에는 케이블을 꽂는 포트가 여럿 있습니다
+      <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.19;0.2;0.99;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">노트북 NIC에서 나온 케이블을 1번 포트에 꽂습니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19;0.2;0.39;0.4;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">프린터와 PC도 각자 다른 포트에 연결됩니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.39;0.4;0.59;0.6;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">포트에는 무선 AP나 다른 스위치도 연결합니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.59;0.6;0.79;0.8;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">포트 수는 <tspan fill="#ffb454" font-weight="700">연결할 수 있는 케이블 끝의 수</tspan>입니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.79;0.8;0.98;0.99;1" dur="10s" repeatCount="indefinite"/></text>
+  </g>
+<g aria-label="재생 단계"><rect x="40" y="28" width="88" height="40" rx="20" fill="#171a21" stroke="#3d4b60" stroke-width="2"/><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="1">1 / 5<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.19;0.2;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">2 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19;0.2;0.39;0.4;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">3 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.39;0.4;0.59;0.6;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">4 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.59;0.6;0.79;0.8;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">5 / 5<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.79;0.8;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text></g>
+</svg>

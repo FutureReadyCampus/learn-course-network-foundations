@@ -31,13 +31,31 @@ animations:
   l07-switching-steps.svg: 15
   l07-what-to-read.svg: 12
   l08-bit-vs-byte-speed.svg: 12
+  l08-find-my-interface.svg: 18
+  l08-frame-per-link.svg: 15
+  l08-frame-size.svg: 18
   l08-host-two-nics.svg: 12
+  l08-lan-man-wan.svg: 15
   l08-mac-address-label.svg: 14
+  l08-nic-door.svg: 15
+  l09-access-switch-ports.svg: 15
+  l09-known-unicast.svg: 15
+  l09-l2-four-steps.svg: 12
   l09-l2-path.svg: 16
   l09-link-up-down.svg: 10
+  l09-mac-learning.svg: 15
+  l09-unknown-flooding.svg: 15
+  l09-uplink-distribution.svg: 15
+  l10-apartment-broadcast-zone.svg: 15
   l10-broadcast-flood-switches.svg: 18
   l10-broadcast-mac-all-ones.svg: 16
+  l10-broadcast-uses-links.svg: 15
+  l10-cloud-over-cables.svg: 15
   l10-l3-boundary-blocks-broadcast.svg: 14
+  l10-lan-wan-summary.svg: 18
+  l10-mac-changes-ip-stays.svg: 18
+  l10-one-server-many-vms.svg: 15
+  l10-unicast-vs-broadcast.svg: 15
   l11-ip-four-bytes.svg: 16
   l11-network-host-split.svg: 14
   l11-parcel-router.svg: 16

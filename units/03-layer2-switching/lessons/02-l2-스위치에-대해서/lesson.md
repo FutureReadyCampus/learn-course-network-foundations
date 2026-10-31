@@ -76,6 +76,11 @@ page_metadata:
     answers:
     - Access switch
     feedback: 정답은 Access switch입니다.
+  animations:
+  - file: l09-access-switch-ports.svg
+    title: "액세스 스위치에 단말 연결하기"
+    alt: "1번부터 8번까지 포트가 있는 액세스 스위치 아래로 노트북, 프린터, PC가 각각 1번, 3번, 5번 포트에 케이블로 연결되고 단말(Endpoint) 표시가 붙습니다. 이어서 스위치 위쪽의 무선 AP와 다른 스위치도 6번, 8번 포트에 연결됩니다. 마지막에 8개 포트 전체가 강조되며 8포트는 케이블 끝 8개를 꽂을 수 있다는 뜻이라고 정리합니다."
+    caption: "액세스 스위치는 단말 가까이에서 여러 기기를 네트워크에 연결합니다. 포트 하나에 PC만 꽂는 것은 아니므로, 포트 수는 연결할 수 있는 케이블 끝의 수로 이해합니다."
 - terms:
   - MAC 주소 테이블
   - 출발지 MAC 주소
@@ -148,6 +153,11 @@ page_metadata:
     answers:
     - MAC address table
     feedback: 정답은 MAC address table입니다.
+  animations:
+  - file: l09-mac-learning.svg
+    title: "출발지 MAC과 포트를 기억한다"
+    alt: "PC-A, PC-B, PC-C, PC-D가 L2 스위치의 1, 3, 5, 8번 포트에 연결되어 있고 오른쪽 MAC 주소 테이블은 비어 있습니다. PC-A의 프레임이 3번 포트로 들어오면 스위치가 출발지 MAC 02:00:00:00:00:0A와 들어온 포트 3번을 읽고, 테이블에 0A → 3번 줄을 적습니다. 이어서 PC-A의 케이블을 4번 포트로 옮겨 다시 프레임을 보내면 같은 줄의 포트가 4번으로 고쳐집니다."
+    caption: "스위치는 들어온 프레임의 출발지 MAC 주소를 그 프레임이 들어온 포트와 짝지어 기억합니다. 목적지 주소로 배우지 않으며, 장치가 포트를 옮기면 기록도 바뀝니다."
 - terms:
   - 목적지 MAC 주소
   - 유니캐스트 (Unicast)
@@ -219,6 +229,11 @@ page_metadata:
     answers:
     - destination MAC address
     feedback: 정답은 destination MAC address입니다.
+  animations:
+  - file: l09-known-unicast.svg
+    title: "목적지를 알면 그 포트로만"
+    alt: "MAC 주소 테이블에 PC-B의 주소 02:00:00:00:00:0B가 8번 포트로 적혀 있습니다. PC-A가 PC-B에게 보낸 프레임이 3번 포트로 들어오면 스위치가 먼저 출발지 0A를 3번 포트로 학습하고, 이어 목적지 0B를 테이블에서 찾아 8번 포트를 고릅니다. 프레임은 8번 포트로만 나가 PC-B가 받고, PC-C와 PC-D 쪽으로는 가지 않습니다."
+    caption: "스위치는 출발지 MAC으로 학습하고, 목적지 MAC을 테이블에서 찾아 해당 포트 하나로만 프레임을 보냅니다. 관련 없는 단말에는 복사하지 않습니다."
 - terms:
   - 알 수 없는 유니캐스트
   - 플러딩 (Flooding)
@@ -291,6 +306,11 @@ page_metadata:
     answers:
     - Unicast
     feedback: 정답은 Unicast입니다.
+  animations:
+  - file: l09-unknown-flooding.svg
+    title: "목적지를 모르면 플러딩"
+    alt: "MAC 주소 테이블이 비어 있고 PC-B는 아직 프레임을 보낸 적이 없습니다. PC-A가 PC-B에게 보낸 프레임이 3번 포트로 들어오면 스위치는 출발지 0A를 3번 포트로 학습하지만, 목적지 0B는 표에 없습니다. 스위치는 들어온 3번 포트만 빼고 1, 5, 8번 포트로 프레임을 복사해 보내고, 목적지 MAC이 자기 주소와 같은 PC-B만 받고 PC-C와 PC-D는 버립니다."
+    caption: "목적지 MAC을 테이블에서 찾지 못하면 스위치는 들어온 포트를 뺀 같은 LAN의 다른 포트들로 플러딩합니다. 각 PC는 목적지 MAC을 확인해 자기 주소일 때만 받아들입니다."
 - terms:
   - Link up (링크 업)
   - Link down (링크 다운)
@@ -439,6 +459,11 @@ page_metadata:
     answers:
     - Distribution layer
     feedback: 정답은 Distribution layer입니다.
+  animations:
+  - file: l09-uplink-distribution.svg
+    title: "업링크로 배포 스위치에 모으기"
+    alt: "1층과 2층 액세스 스위치에 PC가 두 대씩 연결되어 있고 위쪽에 배포 스위치가 있습니다. 1층 액세스 스위치에서 배포 스위치로 가는 주황 연결에 업링크 표시가 붙고, 2층 업링크도 이어지며 배포 계층 표시가 나타납니다. 이어서 PC 연결은 Link up인데 2층 업링크는 점선으로 Link down이 되는 장면으로 역할과 상태가 다르다는 점을 보여 주고, 마지막에 각 계층의 역할이 정리됩니다."
+    caption: "업링크는 액세스 스위치에서 상위 장비로 이어지는 연결의 역할이고, Link up·down은 그 연결이 성립했는지를 가리킵니다. 배포 스위치는 여러 액세스 스위치의 연결을 모읍니다."
 - terms:
   - L2 경로
   - 같은 LAN
@@ -587,6 +612,11 @@ page_metadata:
     answers:
     - forwarding
     feedback: 정답은 forwarding입니다.
+  animations:
+  - file: l09-l2-four-steps.svg
+    title: "L2 스위치 동작 네 단계"
+    alt: "PC-D의 케이블이 1번 포트에 연결되고, PC-A에게 보내는 프레임이 1번 포트로 들어옵니다. 스위치는 출발지 0D를 1번 포트로 테이블에 적고, 이미 아는 목적지 0A는 3번 포트로만 보냅니다. 이어서 PC-B에게 보낸 프레임은 목적지 0B가 표에 없어 1번을 뺀 3, 5, 8번 포트로 플러딩되고, PC-B만 받습니다. 오른쪽 아래에는 네 단계 목록이 하나씩 켜집니다."
+    caption: "연결된 PC가 프레임을 보내면 스위치는 출발지 MAC과 들어온 포트를 배우고, 목적지 MAC을 찾아 아는 포트 하나로 전달합니다. 모르는 목적지는 같은 LAN의 다른 포트들로 플러딩합니다."
 animations_dir: units/03-layer2-switching/lessons/02-l2-스위치에-대해서/assets/animations
 ---
 이 Lesson에서는 L2 스위치가 프레임을 전달하는 순서를 배웁니다. 먼저 PC가 스위치에 연결되는 모습을 보고, 스위치가 출발지 MAC 주소를 기억하는 방법을 알아봅니다. 그다음 목적지 MAC 주소를 이미 아는 경우와 아직 모르는 경우를 비교하고, 여러 스위치를 거치는 경로까지 따라갑니다.
