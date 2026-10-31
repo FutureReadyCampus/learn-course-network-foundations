@@ -5,11 +5,12 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 wiki_diagram: units/02-internet-basics/lessons/03-스위치가-하는-일과-비용/assets/diagrams/lesson-07.svg
 page_metadata:
 - terms: []
+  inline_questions_after: 2
   questions:
   - id: u2-l07-p01-q01
     kind: choice
     difficulty: easy
-    prompt: 네트워크에서 패킷은 보통 목적지까지 어떻게 이동하나요?
+    prompt: 서울에서 부산까지 여러 갈림길을 지나듯, 패킷은 보통 목적지까지 어떻게 이동하나요?
     choices:
     - id: a
       text: 여러 중간 장비를 거쳐 다음 구간씩 전달됩니다
@@ -60,11 +61,12 @@ page_metadata:
     alt: 노트북, 공유기, 라우터1, 라우터2, 라우터3, 웹 서버가 선으로 이어져 있습니다. 주황 패킷이 노트북에서 공유기, 라우터1, 라우터2를 거쳐 웹 서버까지 한 구간씩 이동하며 지나간 선이 주황으로 남습니다. 마지막에 파란 응답이 웹 서버에서 라우터3, 라우터1, 공유기를 거쳐 노트북으로 돌아옵니다.
     caption: 패킷은 출발지에서 목적지까지 한 번에 가지 않고, 장비마다 다음 한 구간을 정하며 이동합니다. 응답은 다른 장비를 거쳐 돌아올 수도 있습니다.
 - terms: []
+  inline_questions_after: 2
   questions:
   - id: u2-l07-p02-q01
     kind: choice
     difficulty: easy
-    prompt: 라우터는 다른 네트워크로 패킷을 보낼 때 주로 어떤 주소를 확인하나요?
+    prompt: 교차로에서 목적지를 보고 다음 길을 고르듯, 라우터는 주로 어떤 주소를 확인하나요?
     choices:
     - id: a
       text: 목적지 MAC 주소
@@ -118,6 +120,7 @@ page_metadata:
   - 스위치(Switch)
   - 인터페이스(Interface)
   - 스위칭(Switching)
+  inline_questions_after: 1
   questions:
   - id: u2-l07-p03-q01
     kind: choice
@@ -177,6 +180,7 @@ page_metadata:
   - 라우터(Router)
   - 라우팅 테이블(Routing Table)
   - 자료구조
+  inline_questions_after: 1
   animations:
   - file: l07-packet-routing-table.svg
     title: 라우터가 표를 보고 패킷의 길을 고른다
@@ -235,6 +239,7 @@ page_metadata:
   - MAC 주소
   - 포트 번호
   - HTTP
+  inline_questions_after: 1
   animations:
   - file: l07-switch-by-layer.svg
     title: 같은 패킷, 계층마다 다른 근거
@@ -291,6 +296,7 @@ page_metadata:
     feedback: 정답은 MAC address입니다.
 - terms:
   - 메트릭(Metric)
+  inline_questions_after: 1
   questions:
   - id: u2-l07-p06-q01
     kind: choice
@@ -348,6 +354,7 @@ page_metadata:
 - terms:
   - route print
   - 네트워크 마스크
+  inline_questions_after: 1
   questions:
   - id: u2-l07-p07-q01
     kind: choice
@@ -403,6 +410,7 @@ page_metadata:
     alt: 명령 프롬프트 창에 route print가 입력되고, Network Destination, Netmask, Gateway, Interface, Metric 열과 세 줄의 경로가 나타납니다. 목적지가 0.0.0.0인 두 줄이 강조되고 그 둘의 Metric 35와 291을 비교해 35가 더 낮다고 표시됩니다. 마지막에 목적지가 127.0.0.0인 줄의 331은 비교하지 않는다는 문구가 나옵니다.
     caption: route print 표에서는 먼저 목적지와 맞는 행을 찾고, 같은 목적지 후보끼리 Metric을 비교합니다. 출력값은 컴퓨터마다 다릅니다.
 - terms: []
+  inline_questions_after: 2
   questions:
   - id: u2-l07-p08-q01
     kind: choice
