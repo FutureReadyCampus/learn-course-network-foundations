@@ -112,11 +112,11 @@ pages:
       answer: a
     - id: u1-03-networking-concepts-p01-q03
       kind: short
-      prompt: '핵심 개념을 입력해 보세요: 네트워킹'
+      prompt: 컴퓨터 사이에 연결 관계가 있는 데서 그치지 않고, 실제로 정보를 주고받는 활동입니다. 어떤 개념일까요? (영어 단어로 답해주세요)
       answers:
+      - networking
       - 네트워킹
-      - 네트워킹
-      feedback: 정답은 네트워킹입니다.
+      feedback: 정답은 networking입니다.
   - concepts:
       - concept-basic-03-04
       - concept-basic-03-05
@@ -180,11 +180,11 @@ pages:
       answer: a
     - id: u1-03-networking-concepts-p02-q03
       kind: short
-      prompt: '핵심 개념을 입력해 보세요: 프로토콜'
+      prompt: 컴퓨터가 데이터를 주고받을 때 함께 따라야 하는 메시지 형식과 처리 규칙의 약속입니다. 어떤 개념일까요? (영어 단어로 답해주세요)
       answers:
+      - protocol
       - 프로토콜
-      - 프로토콜
-      feedback: 정답은 프로토콜입니다.
+      feedback: 정답은 protocol입니다.
 animations_dir: units/01-before-networking/lessons/03-networking-concepts/assets/animations
 ---
 
