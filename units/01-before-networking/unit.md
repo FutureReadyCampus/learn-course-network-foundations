@@ -1,12 +1,12 @@
 ---
 id: before-networking
-title: 들어가기에 앞서...
+title: 네트워크를 공부하기 전에
 status: draft
 lessons:
-  - path: lessons/01-prerequisites/lesson.md
-  - path: lessons/02-layered-structure/lesson.md
-  - path: lessons/03-networking-concepts/lesson.md
-  - path: lessons/04-user-and-kernel-mode/lesson.md
+- path: lessons/01-prerequisites/lesson.md
+- path: lessons/02-layered-structure/lesson.md
+- path: lessons/03-networking-concepts/lesson.md
+- path: lessons/04-user-and-kernel-mode/lesson.md
 ---
 # 들어가기에 앞서...
 
