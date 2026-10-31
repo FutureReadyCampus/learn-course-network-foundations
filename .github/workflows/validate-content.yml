@@ -23,7 +23,6 @@ on:
       - 'scripts/audit_svg_steps.py'
       - 'requirements.txt'
   workflow_dispatch:
-  workflow_dispatch:
 
 permissions:
   contents: read
