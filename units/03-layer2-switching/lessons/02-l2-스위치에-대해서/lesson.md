@@ -27,7 +27,55 @@ page_metadata:
     license_label: "CC BY-SA 4.0"
     license_url: "https://creativecommons.org/licenses/by-sa/4.0"
     after_paragraph: 1
-
+  questions:
+  - id: u3-02-p01-q01
+    kind: choice
+    difficulty: easy
+    prompt: 24포트 스위치의 포트 수가 직접 가리키는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: LAN의 개수
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: 프레임의 개수
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 연결할 수 있는 케이블 끝의 수
+      feedback: 맞아요. 연결할 수 있는 케이블 끝의 수.
+    - id: d
+      text: IP 네트워크 수
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 반드시 연결되는 PC 대수
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: c
+  - id: u3-02-p01-q02
+    kind: choice
+    difficulty: medium
+    prompt: 24포트 스위치의 포트 수를 가장 정확히 해석한 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 연결된 LAN의 개수를 뜻한다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: 전송할 수 있는 프레임의 개수다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 반드시 PC 24대만 연결할 수 있다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 24개의 IP 네트워크가 있다는 뜻이다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 연결할 수 있는 케이블 끝의 수이며, PC만 연결하는 것은 아니다
+      feedback: 맞아요. 연결할 수 있는 케이블 끝의 수이며, PC만 연결하는 것은 아니다.
+    answer: e
+  - id: u3-02-p01-q03
+    kind: short
+    prompt: PC나 프린터 같은 단말을 가까이에서 연결하는 스위치입니다. 영어로 무엇일까요?
+    answers:
+    - Access switch
+    feedback: 정답은 Access switch입니다.
 - terms:
   - MAC 주소 테이블
   - 출발지 MAC 주소
@@ -51,7 +99,55 @@ page_metadata:
     license_label: "CC0"
     license_url: "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
     after_paragraph: 1
-
+  questions:
+  - id: u3-02-p02-q01
+    kind: choice
+    difficulty: easy
+    prompt: 스위치가 MAC 주소 테이블을 배울 때 프레임에서 보는 주소는 무엇인가요?
+    choices:
+    - id: a
+      text: HTTP 경로
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: 출발지 MAC 주소
+      feedback: 맞아요. 출발지 MAC 주소.
+    - id: c
+      text: 목적지 IP 주소
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: Metric
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 목적지 MAC 주소만
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: b
+  - id: u3-02-p02-q02
+    kind: choice
+    difficulty: medium
+    prompt: 출발지 MAC 주소 02:00:00:00:00:0A 프레임이 3번 포트로 들어왔습니다. 스위치는 어떤 관계를 기록하나요?
+    choices:
+    - id: a
+      text: IP 주소와 웹 서비스 포트의 관계
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: 목적지 MAC 주소가 3번 포트에서 보였다는 관계
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 모든 MAC 주소를 모든 포트에 복사
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 프레임 전체를 3번 포트에 영구 저장
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 출발지 MAC 주소가 3번 포트에서 보였다는 관계
+      feedback: 맞아요. 출발지 MAC 주소가 3번 포트에서 보였다는 관계.
+    answer: e
+  - id: u3-02-p02-q03
+    kind: short
+    prompt: 스위치가 주소와 그 주소가 들어온 포트를 함께 기록해 둔 표입니다. 영어로 무엇일까요?
+    answers:
+    - MAC address table
+    feedback: 정답은 MAC address table입니다.
 - terms:
   - 목적지 MAC 주소
   - 유니캐스트 (Unicast)
@@ -74,7 +170,55 @@ page_metadata:
     license_label: "CC BY-SA 2.0"
     license_url: "https://creativecommons.org/licenses/by-sa/2.0"
     after_paragraph: 1
-
+  questions:
+  - id: u3-02-p03-q01
+    kind: choice
+    difficulty: easy
+    prompt: 스위치가 목적지 MAC 주소와 포트를 이미 알고 있다면 프레임을 어디로 보내나요?
+    choices:
+    - id: a
+      text: 그 목적지에 해당하는 포트
+      feedback: 맞아요. 그 목적지에 해당하는 포트.
+    - id: b
+      text: 라우터의 WAN 포트로 보낸다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 모든 포트에 항상 복사한다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 프레임이 들어온 포트로만 보낸다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 아무 포트로나 무작위 전송한다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: a
+  - id: u3-02-p03-q02
+    kind: choice
+    difficulty: medium
+    prompt: PC-A의 프레임이 3번 포트로 들어오고 PC-B가 8번 포트로 알려져 있습니다. 올바른 동작 순서는 무엇인가요?
+    choices:
+    - id: a
+      text: 출발지 주소를 지운 뒤 입력 포트로 되돌려 보낸다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: 목적지 MAC 대신 IP를 조회해 모든 포트로 보낸다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 출발지 A를 학습한 뒤 목적지 B를 찾아 8번 포트로 전달한다
+      feedback: 맞아요. 출발지 A를 학습한 뒤 목적지 B를 찾아 8번 포트로 전달한다.
+    - id: d
+      text: MAC 주소 테이블을 비우고 프레임을 폐기한다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 목적지 B로부터 출발지 A를 학습한 뒤 3번 포트로 보낸다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: c
+  - id: u3-02-p03-q03
+    kind: short
+    prompt: 프레임이 도착할 연결 지점을 식별하기 위해 확인하는 MAC 주소는 출발지와 목적지 중 어느 것인가요? (영어로 답해주세요)
+    answers:
+    - destination MAC address
+    feedback: 정답은 destination MAC address입니다.
 - terms:
   - 알 수 없는 유니캐스트
   - 플러딩 (Flooding)
@@ -98,7 +242,55 @@ page_metadata:
     license_label: "CC BY-SA 4.0"
     license_url: "https://creativecommons.org/licenses/by-sa/4.0"
     after_paragraph: 1
-
+  questions:
+  - id: u3-02-p04-q01
+    kind: choice
+    difficulty: easy
+    prompt: 목적지 MAC 주소를 테이블에서 찾지 못했을 때 스위치가 같은 LAN에 퍼뜨리는 동작은 무엇인가요?
+    choices:
+    - id: a
+      text: Unicast
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: Flooding
+      feedback: 맞아요. Flooding.
+    - id: c
+      text: Routing
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: Link up
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: Encapsulation
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: b
+  - id: u3-02-p04-q02
+    kind: choice
+    difficulty: medium
+    prompt: 알 수 없는 목적지 MAC 주소로 온 프레임을 플러딩할 때 스위치는 어디로 내보내나요?
+    choices:
+    - id: a
+      text: 들어온 포트를 제외한 같은 LAN의 나머지 포트들
+      feedback: 맞아요. 들어온 포트를 제외한 같은 LAN의 나머지 포트들.
+    - id: b
+      text: 들어온 포트를 포함한 인터넷의 모든 장치
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 스위치의 포트 수와 무관하게 항상 폐기
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 모든 라우터의 WAN 방향으로 전송
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 같은 LAN의 포트 하나만 무작위로 선택
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: a
+  - id: u3-02-p04-q03
+    kind: short
+    prompt: 보내는 이가 한 대의 특정 목적지를 지정하는 통신 방식입니다. 영어로 무엇일까요?
+    answers:
+    - Unicast
+    feedback: 정답은 Unicast입니다.
 - terms:
   - Link up (링크 업)
   - Link down (링크 다운)
@@ -127,7 +319,55 @@ page_metadata:
     license_label: "CC BY 2.0"
     license_url: "https://creativecommons.org/licenses/by/2.0"
     after_paragraph: 1
-
+  questions:
+  - id: u3-02-p05-q01
+    kind: choice
+    difficulty: easy
+    prompt: PC와 스위치 양쪽의 연결이 성립한 상태를 무엇이라고 하나요?
+    choices:
+    - id: a
+      text: Link down
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: Flooding
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: Distribution layer
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: Uplink
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: Link up
+      feedback: 맞아요. Link up.
+    answer: e
+  - id: u3-02-p05-q02
+    kind: choice
+    difficulty: medium
+    prompt: 포트 LED가 켜져 Link up으로 보여도 이 사실만으로 알 수 없는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 해당 장치에서 LED가 켜져 있다는 점
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: 물리 링크가 성립했을 가능성
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 포트가 데이터를 주고받을 연결 상태인지
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 연결 상태를 확인할 단서가 있다는 점
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: IP 설정이나 인터넷 연결까지 정상인지 여부
+      feedback: 맞아요. IP 설정이나 인터넷 연결까지 정상인지 여부.
+    answer: e
+  - id: u3-02-p05-q03
+    kind: short
+    prompt: 케이블 연결이 성립하지 않았거나 포트가 비활성인 상태를 가리키는 말은 무엇인가요?
+    answers:
+    - Link down
+    feedback: 정답은 Link down입니다.
 - terms:
   - 업링크 (Uplink)
   - 배포 스위치 (Distribution switch)
@@ -150,7 +390,55 @@ page_metadata:
     license_label: "CC BY-SA 3.0"
     license_url: "http://creativecommons.org/licenses/by-sa/3.0/"
     after_paragraph: 1
-
+  questions:
+  - id: u3-02-p06-q01
+    kind: choice
+    difficulty: easy
+    prompt: 액세스 스위치에서 상위 네트워크 장비 쪽으로 이어지는 연결을 무엇이라고 하나요?
+    choices:
+    - id: a
+      text: Frame
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: Link up
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: Uplink
+      feedback: 맞아요. Uplink.
+    - id: d
+      text: MAC address table
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: Broadcast domain
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: c
+  - id: u3-02-p06-q02
+    kind: choice
+    difficulty: medium
+    prompt: Uplink와 Link up의 차이를 가장 정확히 설명한 것은 무엇인가요?
+    choices:
+    - id: a
+      text: Uplink는 연결의 역할이고 Link up은 연결이 성립한 상태다
+      feedback: 맞아요. Uplink는 연결의 역할이고 Link up은 연결이 성립한 상태다.
+    - id: b
+      text: 둘 다 포트 LED의 색상 이름이다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: Uplink는 연결 상태, Link up은 스위치 계층이다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 두 용어는 항상 서로 바꿔 써도 된다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: Uplink는 단말 포트만 뜻하고 Link up은 광섬유만 뜻한다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: a
+  - id: u3-02-p06-q03
+    kind: short
+    prompt: 여러 액세스 스위치를 모아 상위로 연결하는 계층입니다. 영어로 무엇일까요?
+    answers:
+    - Distribution layer
+    feedback: 정답은 Distribution layer입니다.
 - terms:
   - L2 경로
   - 같은 LAN
@@ -178,7 +466,55 @@ page_metadata:
     license_label: "CC BY-SA 4.0"
     license_url: "https://creativecommons.org/licenses/by-sa/4.0"
     after_paragraph: 1
-
+  questions:
+  - id: u3-02-p07-q01
+    kind: choice
+    difficulty: easy
+    prompt: 서로 다른 LAN이나 IP 네트워크 사이의 통신에 필요한 L3 장비의 예는 무엇인가요?
+    choices:
+    - id: a
+      text: NIC
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: Access switch만
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: Router
+      feedback: 맞아요. Router.
+    - id: d
+      text: Ethernet frame
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: MAC address table
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: c
+  - id: u3-02-p07-q02
+    kind: choice
+    difficulty: medium
+    prompt: 두 PC가 같은 LAN에 있을 때 스위치들이 프레임을 전달하는 원리로 알맞은 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 매 스위치마다 목적지 IP를 보고 항상 라우팅한다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: 각 스위치가 목적지 MAC을 자기 테이블에서 찾아 다음 포트로 전달한다
+      feedback: 맞아요. 각 스위치가 목적지 MAC을 자기 테이블에서 찾아 다음 포트로 전달한다.
+    - id: c
+      text: 출발 PC가 인터넷 전체의 스위치 경로를 모두 지정한다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 프레임은 MAC 주소 없이 케이블을 따라 자동으로 목적지를 찾는다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 배포 스위치는 언제나 L3만 수행한다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: b
+  - id: u3-02-p07-q03
+    kind: short
+    prompt: 서로 다른 네트워크 사이에서 L3 라우팅을 수행할 수 있는 스위치입니다. 무엇일까요? (영어로 답해주세요)
+    answers:
+    - L3 switch
+    feedback: 정답은 L3 switch입니다.
 - terms:
   - MAC 주소 학습
   - 목적지 조회
@@ -202,6 +538,55 @@ page_metadata:
     license_label: "CC BY 2.0"
     license_url: "https://creativecommons.org/licenses/by/2.0"
     after_paragraph: 1
+  questions:
+  - id: u3-02-p08-q01
+    kind: choice
+    difficulty: easy
+    prompt: 스위치에서 프레임 전달의 첫 학습 단계에 해당하는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 모든 포트로 무조건 프레임 복제
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: 목적지 IP만 보고 인터넷 경로 계산
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 프레임 크기를 1,500바이트로 변경
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: LED 색에 따라 목적지 결정
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 출발지 MAC 주소와 들어온 포트 기록
+      feedback: 맞아요. 출발지 MAC 주소와 들어온 포트 기록.
+    answer: e
+  - id: u3-02-p08-q02
+    kind: choice
+    difficulty: medium
+    prompt: 목적지 MAC을 알고 있는 경우와 모르는 경우의 동작을 올바르게 비교한 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 알면 라우팅하고, 모르면 인터넷으로 폐기한다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: 알면 출발지 포트로 되돌리고, 모르면 테이블을 영구 보존한다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 알면 플러딩하고, 모르면 항상 링크를 끊는다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 알면 해당 포트로 전달하고, 모르면 같은 LAN의 다른 포트로 플러딩한다
+      feedback: 맞아요. 알면 해당 포트로 전달하고, 모르면 같은 LAN의 다른 포트로 플러딩한다.
+    - id: e
+      text: 둘 다 모든 포트로 무조건 전달한다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: d
+  - id: u3-02-p08-q03
+    kind: short
+    prompt: 같은 LAN 안에서 목적지 MAC 주소가 알려졌을 때 프레임을 보내는 포트의 방향을 무엇으로 정하나요? (영어 용어로 답해주세요)
+    answers:
+    - forwarding
+    feedback: 정답은 forwarding입니다.
 animations_dir: units/03-layer2-switching/lessons/02-l2-스위치에-대해서/assets/animations
 ---
 이 Lesson에서는 L2 스위치가 프레임을 전달하는 순서를 배웁니다. 먼저 PC가 스위치에 연결되는 모습을 보고, 스위치가 출발지 MAC 주소를 기억하는 방법을 알아봅니다. 그다음 목적지 MAC 주소를 이미 아는 경우와 아직 모르는 경우를 비교하고, 여러 스위치를 거치는 경로까지 따라갑니다.

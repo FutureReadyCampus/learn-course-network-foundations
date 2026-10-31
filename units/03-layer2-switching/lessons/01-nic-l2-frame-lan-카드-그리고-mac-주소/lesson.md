@@ -8,6 +8,55 @@ page_metadata:
   - NIC (Network Interface Card)
   - 인터페이스 (Interface)
   - 리얼텍 (Realtek)
+  questions:
+  - id: u3-01-p01-q01
+    kind: choice
+    difficulty: easy
+    prompt: 컴퓨터가 네트워크와 정보를 주고받도록 연결해 주는 장치는 무엇인가요?
+    choices:
+    - id: a
+      text: NIC
+      feedback: 맞아요. NIC.
+    - id: b
+      text: LAN
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: MAC 주소
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 프레임
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 라우터
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: a
+  - id: u3-01-p01-q02
+    kind: choice
+    difficulty: medium
+    prompt: NIC와 네트워크 인터페이스의 차이를 가장 정확히 설명한 것은 무엇인가요?
+    choices:
+    - id: a
+      text: NIC는 네트워크 주소이고, 인터페이스는 데이터 묶음이다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: NIC는 IP 네트워크이고, 인터페이스는 WAN이다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: NIC는 케이블 구멍만을 뜻하고 인터페이스는 프로그램 번호다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: NIC와 인터페이스는 언제나 서로 다른 장치 두 개다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: NIC는 연결 장치이고, 인터페이스는 네트워크와 맞닿는 연결 지점이다
+      feedback: 맞아요. NIC는 연결 장치이고, 인터페이스는 네트워크와 맞닿는 연결 지점이다.
+    answer: e
+  - id: u3-01-p01-q03
+    kind: short
+    prompt: 네트워크와 맞닿는 연결 지점을 장치와 구분해 부르는 말입니다. 영어로 답해주세요.
+    answers:
+    - network interface
+    feedback: 정답은 network interface입니다.
 - terms:
   - 호스트 (Host)
   - 액세스 포인트 (Access Point)
@@ -19,10 +68,108 @@ page_metadata:
       이어집니다. 마지막 장면에서도 점은 둘로 유지되고 ‘점 2개 = 인터페이스 2개’ 문구가 나옵니다.
     caption: 노트북 한 대에 무선 NIC와 USB 유선 NIC가 달리면 문이 두 개가 됩니다. 진한 점 하나가 인터페이스 하나이므로 점
       두 개는 인터페이스 두 개입니다.
+  questions:
+  - id: u3-01-p02-q01
+    kind: choice
+    difficulty: easy
+    prompt: 네트워크에 연결된 컴퓨터나 장치 한 대를 가리키는 말은 무엇인가요?
+    choices:
+    - id: a
+      text: Host
+      feedback: 맞아요. Host.
+    - id: b
+      text: Frame
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: Interface
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: Switch
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: WAN
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: a
+  - id: u3-01-p02-q02
+    kind: choice
+    difficulty: medium
+    prompt: USB 유선 네트워크 장치를 추가해 노트북에 연결 지점이 하나 더 생겼습니다. 이 상황을 가장 잘 설명한 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 인터페이스가 둘이면 Host도 반드시 두 대다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: Host는 케이블 구멍 하나만 가질 수 있다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 한 Host가 둘 이상의 네트워크 인터페이스를 가질 수 있다
+      feedback: 맞아요. 한 Host가 둘 이상의 네트워크 인터페이스를 가질 수 있다.
+    - id: d
+      text: 무선 인터페이스에는 네트워크 연결 지점이 없다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 포트 번호와 물리 연결 지점은 항상 같은 뜻이다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: c
+  - id: u3-01-p02-q03
+    kind: short
+    prompt: 일상적으로 케이블을 꽂는 물리적인 연결 구멍을 부르는 말입니다. 영어로 답해주세요.
+    answers:
+    - port
+    feedback: 정답은 port입니다.
 - terms:
   - LAN (Local Area Network)
   - MAN (Metropolitan Area Network)
   - WAN (Wide Area Network)
+  questions:
+  - id: u3-01-p03-q01
+    kind: choice
+    difficulty: easy
+    prompt: LAN, MAN, WAN은 주로 네트워크의 어떤 점을 설명하나요?
+    choices:
+    - id: a
+      text: MAC 주소의 길이
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: 네트워크가 걸쳐 있는 범위
+      feedback: 맞아요. 네트워크가 걸쳐 있는 범위.
+    - id: c
+      text: 프레임의 최대 크기
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 전송 속도의 순위
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 연결된 컴퓨터의 운영체제
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: b
+  - id: u3-01-p03-q02
+    kind: choice
+    difficulty: medium
+    prompt: LAN과 MAN을 구분하는 거리에 대해 이 페이지가 설명한 내용은 무엇인가요?
+    choices:
+    - id: a
+      text: 두 이름은 사용 장치의 수를 정확히 지정한다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: MAN은 언제나 LAN보다 빠르다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: LAN은 반드시 유선이고 MAN은 반드시 무선이다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 둘 사이에는 표준으로 정해진 하나의 고정 거리만 있다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 범위의 차이를 나타내지만 경계 거리가 딱 정해져 있지는 않다
+      feedback: 맞아요. 범위의 차이를 나타내지만 경계 거리가 딱 정해져 있지는 않다.
+    answer: e
+  - id: u3-01-p03-q03
+    kind: short
+    prompt: 집이나 사무실처럼 비교적 가까운 범위의 네트워크를 부르는 이름입니다. 영어 약어로 답해주세요.
+    answers:
+    - LAN
+    feedback: 정답은 LAN입니다.
 - terms:
   - MAC 주소 (Media Access Control address)
   - 식별자 (identifier)
@@ -33,14 +180,161 @@ page_metadata:
     title: NIC에 붙는 문패, MAC 주소
     alt: NIC마다 MAC 주소가 붙는 모습, 일반 주소에서 주소를 할당한 조직을 나타내는 앞부분, 무선 연결에서 개인 정보 보호를 위해 다른 주소를 사용할 수 있다는 점을 보여 줍니다.
     caption: 각 NIC에는 MAC 주소가 쓰입니다. 보통의 전역 주소와 무선 연결에서 쓰는 개인 정보 보호용 주소가 다를 수 있어, 앞부분만 보고 항상 제조사를 알아낼 수 있는 것은 아닙니다.
+  questions:
+  - id: u3-01-p04-q01
+    kind: choice
+    difficulty: easy
+    prompt: 네트워크 연결 지점을 구분하는 데 쓰는 주소는 무엇인가요?
+    choices:
+    - id: a
+      text: 프레임 크기
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: MAC 주소
+      feedback: 맞아요. MAC 주소.
+    - id: c
+      text: HTTP 주소
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: bps
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: Metric
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: b
+  - id: u3-01-p04-q02
+    kind: choice
+    difficulty: medium
+    prompt: Wi-Fi에서 개인 주소를 사용할 수 있다는 설명으로 맞는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 개인 주소를 쓰면 연결 지점에 주소가 필요 없다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: 모든 Wi-Fi 장치의 MAC 주소는 항상 제조사 이름을 그대로 담는다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 한 장치에는 NIC가 몇 개든 MAC 주소가 하나만 있다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 개인 주소는 IP 주소와 역할이 완전히 같다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 제품에 적힌 MAC 주소와 다른 네트워크별 주소를 사용할 수 있다
+      feedback: 맞아요. 제품에 적힌 MAC 주소와 다른 네트워크별 주소를 사용할 수 있다.
+    answer: e
+  - id: u3-01-p04-q03
+    kind: short
+    prompt: Wi-Fi에서 기기 고유 주소 대신 네트워크별로 사용할 수 있는 주소 유형입니다. 영어로 답해주세요.
+    answers:
+    - private address
+    feedback: 정답은 private address입니다.
 - terms:
   - 프레임 (Frame)
   - L2 (Layer 2, 계층 2)
   - 패킷 (Packet)
+  questions:
+  - id: u3-01-p05-q01
+    kind: choice
+    difficulty: easy
+    prompt: 다음 중 NIC의 형태로 볼 수 있는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: Host
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: WAN
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 기판 내장형, USB 유선형, 무선형 등 여러 형태
+      feedback: 맞아요. 기판 내장형, USB 유선형, 무선형 등 여러 형태.
+    - id: d
+      text: NIC
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: Metric
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: c
+  - id: u3-01-p05-q02
+    kind: choice
+    difficulty: medium
+    prompt: 패킷과 프레임의 관계를 가장 잘 설명한 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 패킷과 프레임은 크기와 역할이 늘 같다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: 프레임은 네트워크 장치이고 패킷은 케이블이다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 패킷은 목적지까지의 데이터이고 프레임은 가까운 링크 구간의 전달에 쓰인다
+      feedback: 맞아요. 패킷은 목적지까지의 데이터이고 프레임은 가까운 링크 구간의 전달에 쓰인다.
+    - id: d
+      text: 프레임에는 MAC 주소를 사용할 수 없다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 프레임은 항상 인터넷 전체를 한 번에 건넌다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: c
+  - id: u3-01-p05-q03
+    kind: short
+    prompt: 같은 L2 구간에서 데이터 전달에 사용하는 묶음을 영어로 무엇이라고 하나요?
+    answers:
+    - Frame
+    feedback: 정답은 Frame입니다.
 - terms:
   - Ethernet
   - Jumbo Frame
   - 바이트 (Byte)
+  questions:
+  - id: u3-01-p06-q01
+    kind: choice
+    difficulty: easy
+    prompt: 흔히 쓰는 Ethernet에서 데이터 부분의 최대 크기로 설명하는 값은 얼마인가요?
+    choices:
+    - id: a
+      text: 48바이트
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: 1,500바이트
+      feedback: 맞아요. 1,500바이트.
+    - id: c
+      text: 1,024바이트
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 10KB로 항상 고정
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 1,514바이트
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: b
+  - id: u3-01-p06-q02
+    kind: choice
+    difficulty: medium
+    prompt: Ethernet 프레임 크기가 문서에 따라 1,514바이트 또는 1,518바이트로 보일 수 있는 이유는 무엇인가요?
+    choices:
+    - id: a
+      text: 모든 장비가 Jumbo Frame을 사용하기 때문이다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: 한 값은 비트 단위이고 다른 값은 초 단위다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 두 수치는 LAN과 WAN의 거리 차이를 뜻한다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 프레임이 전송될 때마다 내용이 자동으로 두 배가 된다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 마지막 검사 값을 크기에 포함하는지 달라질 수 있다
+      feedback: 맞아요. 마지막 검사 값을 크기에 포함하는지 달라질 수 있다.
+    answer: e
+  - id: u3-01-p06-q03
+    kind: short
+    prompt: 일반 Ethernet 프레임보다 더 큰 프레임을 허용하는 기능을 가리키는 영어 용어는 무엇인가요?
+    answers:
+    - Jumbo Frame
+    feedback: 정답은 Jumbo Frame입니다.
 - terms:
   - 비트 (bit)
   - 바이트 (Byte)
@@ -52,12 +346,109 @@ page_metadata:
     alt: 작은 물방울 8개가 모여 병 하나가 되고, 그 아래 b와 B 글자가 나란히 놓입니다. 이어서 1Gbps 눈금이 약 125MB/s 눈금으로
       환산됩니다.
     caption: 8비트가 1바이트이므로 1Gbps는 초당 1GB가 아니라 약 0.125GB입니다.
+  questions:
+  - id: u3-01-p07-q01
+    kind: choice
+    difficulty: easy
+    prompt: bps에서 소문자 b는 무엇을 뜻하나요?
+    choices:
+    - id: a
+      text: Byte
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: Frame
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: second
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: bit
+      feedback: 맞아요. bit.
+    - id: e
+      text: Host
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: d
+  - id: u3-01-p07-q02
+    kind: choice
+    difficulty: medium
+    prompt: 1Gbps를 이론상 바이트 전송량으로 바꾸면 초당 약 얼마인가요?
+    choices:
+    - id: a
+      text: 125MB
+      feedback: 맞아요. 125MB.
+    - id: b
+      text: 1,000MB
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 1GB
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 1MB
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 8MB
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: a
+  - id: u3-01-p07-q03
+    kind: short
+    prompt: 8개의 bit가 모여 이루는 정보 용량 단위입니다. 영어 단어로 답해주세요.
+    answers:
+    - Byte
+    feedback: 정답은 Byte입니다.
 - terms:
   - 광섬유 케이블
   - 슬롯 (Slot)
+  questions:
+  - id: u3-01-p08-q01
+    kind: choice
+    difficulty: easy
+    prompt: Windows에서 네트워크 연결 지점과 설정을 자세히 확인하는 명령은 무엇인가요?
+    choices:
+    - id: a
+      text: ifconfig
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: mac print
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: ipconfig /all
+      feedback: 맞아요. ipconfig /all.
+    - id: d
+      text: route print
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: ping /all
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: c
+  - id: u3-01-p08-q02
+    kind: choice
+    difficulty: medium
+    prompt: Mac에서 연결 지점 이름과 ether 값을 확인할 때 사용할 수 있는 명령은 무엇인가요?
+    choices:
+    - id: a
+      text: network speed
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: ipconfig /all
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: route print
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: ether print
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: ifconfig
+      feedback: 맞아요. ifconfig.
+    answer: e
+  - id: u3-01-p08-q03
+    kind: short
+    prompt: 유선 LAN에서 널리 쓰이며 데이터 프레임과 연결되는 네트워크 기술입니다. 영어로 답해주세요.
+    answers:
+    - Ethernet
+    feedback: 정답은 Ethernet입니다.
 animations_dir: units/03-layer2-switching/lessons/01-nic-l2-frame-lan-카드-그리고-mac-주소/assets/animations
 ---
-
 앞 Lesson에서는 택배가 여러 사람과 장소를 거쳐 받는 사람에게 가는 큰 흐름을 살펴봤습니다. 이번 Lesson에서는 그 여정에 참여하는 컴퓨터와 네트워크가 어디에서 맞닿는지, 그 연결 지점에 어떤 안내가 붙는지 알아봅니다. 컴퓨터를 집, 연결 지점을 문, 가까운 범위의 네트워크를 마을이라고 생각해 보세요. 비유가 실제 구조와 완전히 같지는 않으니, 각 용어가 무엇을 가리키는지만 차근차근 연결하면 됩니다.
 
 ## NIC와 LAN 카드

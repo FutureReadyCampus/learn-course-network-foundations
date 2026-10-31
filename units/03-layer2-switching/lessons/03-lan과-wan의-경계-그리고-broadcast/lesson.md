@@ -7,9 +7,107 @@ page_metadata:
 - terms:
   - 유니캐스트 (Unicast)
   - 브로드캐스트 (Broadcast)
+  questions:
+  - id: u3-03-p01-q01
+    kind: choice
+    difficulty: easy
+    prompt: 한 장치가 특정 수신자 한 곳을 지정해 보내는 통신 방식은 무엇인가요?
+    choices:
+    - id: a
+      text: Jumbo Frame
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: Link up
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: Virtualization
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: Unicast
+      feedback: 맞아요. Unicast.
+    - id: e
+      text: Broadcast
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: d
+  - id: u3-03-p01-q02
+    kind: choice
+    difficulty: medium
+    prompt: Broadcast에서 “모두”가 가리키는 범위는 무엇인가요?
+    choices:
+    - id: a
+      text: 같은 제조사의 컴퓨터만
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: 전 세계 인터넷에 연결된 모든 장치
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 같은 스위치에 직접 꽂힌 PC만 항상
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 같은 브로드캐스트 도메인에 속한 장치들
+      feedback: 맞아요. 같은 브로드캐스트 도메인에 속한 장치들.
+    - id: e
+      text: 같은 IP 주소를 쓰는 장치만
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: d
+  - id: u3-03-p01-q03
+    kind: short
+    prompt: 같은 네트워크 범위 안의 모든 장치에게 전달되는 통신 방식입니다. 영어로 답해주세요.
+    answers:
+    - Broadcast
+    feedback: 정답은 Broadcast입니다.
 - terms:
   - 브로드캐스트 도메인 (Broadcast Domain)
   - LAN 구역
+  questions:
+  - id: u3-03-p02-q01
+    kind: choice
+    difficulty: easy
+    prompt: 브로드캐스트 범위를 미리 살펴야 하는 이유는 무엇인가요?
+    choices:
+    - id: a
+      text: MAC 주소의 앞부분에서 제조사를 항상 확인하기 때문
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: 프레임 크기를 자동으로 줄이기 때문
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 그 범위 안의 장치들이 방송을 받아 내용을 확인하기 때문
+      feedback: 맞아요. 그 범위 안의 장치들이 방송을 받아 내용을 확인하기 때문.
+    - id: d
+      text: 각 링크의 속도가 동일해지기 때문
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 방송이 전 세계 모든 인터넷 장치에 전달되기 때문
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: c
+  - id: u3-03-p02-q02
+    kind: choice
+    difficulty: medium
+    prompt: Ethernet 브로드캐스트를 받는 장치의 범위를 설명하는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 브로드캐스트 도메인의 크기와 경계
+      feedback: 맞아요. 브로드캐스트 도메인의 크기와 경계.
+    - id: b
+      text: 인터넷 회선의 속도만
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: Wi-Fi 신호가 닿는 거리와 항상 동일한 범위
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: MAC 주소의 제조사 정보
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 프레임 안의 데이터 크기만
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: a
+  - id: u3-03-p02-q03
+    kind: short
+    prompt: 브로드캐스트 프레임을 받아 확인하게 되는 네트워크 구역의 이름은 무엇인가요? (영어로 답해주세요)
+    answers:
+    - broadcast domain
+    feedback: 정답은 broadcast domain입니다.
 - terms:
   - 16진수 (Hexadecimal)
   - 브로드캐스트 MAC 주소
@@ -19,6 +117,55 @@ page_metadata:
     alt: 전구 8개가 모두 켜져 FF가 되고, 이것이 여섯 칸 이어져 FF:FF:FF:FF:FF:FF가 되어 봉투의 받는 사람 칸에 들어가는
       장면입니다.
     caption: FF는 켜진 전구 8개이고, 6칸이 모두 FF인 MAC 주소는 브로드캐스트를 뜻합니다.
+  questions:
+  - id: u3-03-p03-q01
+    kind: choice
+    difficulty: easy
+    prompt: 16진수 F 한 글자를 4비트 이진수로 쓰면 무엇인가요?
+    choices:
+    - id: a
+      text: FF:00:00:00:00:00
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: 10.0.0.255
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 00:00:00:00:00:00
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: '1111'
+      feedback: 맞아요. 1111.
+    - id: e
+      text: AA:BB:CC:11:22:33
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: d
+  - id: u3-03-p03-q02
+    kind: choice
+    difficulty: medium
+    prompt: FF:FF:FF:FF:FF:FF가 48비트 모두 1을 나타내는 이유는 무엇인가요?
+    choices:
+    - id: a
+      text: FF 쌍이 1비트씩 여섯 번 나타난다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: 콜론이 네트워크 범위를 나타내기 때문이다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: F 하나가 48비트를 뜻한다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 16진수 F 하나가 4개의 1이고 여섯 쌍이 48비트를 채운다
+      feedback: 맞아요. 16진수 F 하나가 4개의 1이고 여섯 쌍이 48비트를 채운다.
+    - id: e
+      text: 각 16진수 칸은 8비트여서 모두 6비트다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: d
+  - id: u3-03-p03-q03
+    kind: short
+    prompt: Ethernet 프레임에서 같은 브로드캐스트 구역 모두를 수신자로 지정하는 목적지 주소입니다. 영어로 답해주세요.
+    answers:
+    - broadcast MAC address
+    feedback: 정답은 broadcast MAC address입니다.
 - terms:
   - 프레임 (Frame)
   - 헤더 (Header)
@@ -28,9 +175,107 @@ page_metadata:
     title: 방송 프레임은 스위치마다 갈라져 퍼진다
     alt: PC 1이 방송 프레임을 보내자 스위치 A, 배포 스위치 C, 스위치 B를 거쳐 모든 PC로 프레임이 복사되어 퍼지는 장면입니다.
     caption: 받는 곳이 FF:FF:FF:FF:FF:FF인 프레임은 스위치를 지날 때마다 여러 갈래로 복사됩니다.
+  questions:
+  - id: u3-03-p04-q01
+    kind: choice
+    difficulty: easy
+    prompt: Ethernet 프레임 헤더에 들어가는 주소 정보 두 가지는 무엇인가요?
+    choices:
+    - id: a
+      text: 호스트 이름과 Metric
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: 출발지 IP와 목적지 URL
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 네트워크 속도와 프레임 크기
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 출발지 MAC 주소와 목적지 MAC 주소
+      feedback: 맞아요. 출발지 MAC 주소와 목적지 MAC 주소.
+    - id: e
+      text: 전원 상태와 포트 LED 색
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: d
+  - id: u3-03-p04-q02
+    kind: choice
+    difficulty: medium
+    prompt: 브로드캐스트 프레임이 액세스 스위치에 들어왔을 때 스위치가 퍼뜨리는 방식은 무엇인가요?
+    choices:
+    - id: a
+      text: 스위치가 프레임 내용을 새로 만들어 낸다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: L3 경계를 넘어 모든 IP 네트워크로 자동 전달한다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 들어온 포트를 제외한 여러 연결 방향으로 전달한다
+      feedback: 맞아요. 들어온 포트를 제외한 여러 연결 방향으로 전달한다.
+    - id: d
+      text: 받은 포트 하나로만 되돌려 보낸다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 목적지 MAC을 바꿔 PC 한 대에만 보낸다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: c
+  - id: u3-03-p04-q03
+    kind: short
+    prompt: Ethernet 프레임의 앞부분에서 출발지·목적지 주소 같은 전달 정보를 담는 부분입니다. 무엇일까요? (영어로 답해주세요)
+    answers:
+    - header
+    feedback: 정답은 header입니다.
 - terms:
   - 트래픽 (Traffic)
   - 호스트 (Host)
+  questions:
+  - id: u3-03-p05-q01
+    kind: choice
+    difficulty: easy
+    prompt: Broadcast 양이 커지면 네트워크에서 어떤 문제가 생길 수 있나요?
+    choices:
+    - id: a
+      text: 링크 대역폭과 장치 처리 자원을 사용해 지연이나 성능 저하를 일으킬 수 있다
+      feedback: 맞아요. 링크 대역폭과 장치 처리 자원을 사용해 지연이나 성능 저하를 일으킬 수 있다.
+    - id: b
+      text: 인터넷 케이블 길이가 짧아진다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: MAC 주소가 자동으로 IP 주소로 바뀐다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 각 스위치가 더 많은 포트를 갖게 된다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 모든 Unicast가 즉시 중단된다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: a
+  - id: u3-03-p05-q02
+    kind: choice
+    difficulty: medium
+    prompt: Broadcast가 여러 링크와 장치의 자원을 쓰는 이유로 맞는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 프레임이 전달될 때 항상 1,000배로 커지기 때문이다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: 한 프레임이 전 세계 모든 케이블로 반드시 전달되기 때문이다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 여러 스위치 방향으로 전달되고 범위 안 장치들이 확인하기 때문이다
+      feedback: 맞아요. 여러 스위치 방향으로 전달되고 범위 안 장치들이 확인하기 때문이다.
+    - id: d
+      text: 브로드캐스트는 데이터 없이 LED만 켜기 때문이다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 라우터가 매 프레임을 복제하기 때문이다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: c
+  - id: u3-03-p05-q03
+    kind: short
+    prompt: 링크에서 일정 시간 동안 데이터를 전달할 수 있는 용량을 가리키는 말은 무엇인가요? (영어로 답해주세요)
+    answers:
+    - bandwidth
+    feedback: 정답은 bandwidth입니다.
 - terms:
   - L3 (Layer 3)
   - 라우팅 (Routing)
@@ -40,20 +285,264 @@ page_metadata:
     title: 라우터는 L2 브로드캐스트를 전달하지 않는다
     alt: 서로 다른 IP 네트워크 사이에 있는 라우터가 왼쪽 네트워크에서 온 L2 브로드캐스트 프레임을 오른쪽으로 전달하지 않는 장면입니다.
     caption: Ethernet 브로드캐스트 프레임은 라우터를 지나 다른 IP 네트워크로 전달되지 않습니다.
+  questions:
+  - id: u3-03-p06-q01
+    kind: choice
+    difficulty: easy
+    prompt: 일반적인 Ethernet 브로드캐스트 프레임이 다른 IP 네트워크로 그대로 넘어가지 않게 하는 L3 장비는 무엇인가요?
+    choices:
+    - id: a
+      text: Ethernet frame
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: Router
+      feedback: 맞아요. Router.
+    - id: c
+      text: NIC
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: Access switch만
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: Host
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: b
+  - id: u3-03-p06-q02
+    kind: choice
+    difficulty: medium
+    prompt: 브로드캐스트가 L3 경계를 넘어야 할 때 사용할 수 있는 별도 기능의 예는 무엇인가요?
+    choices:
+    - id: a
+      text: Unicast flooding
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: Link up LED
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: Jumbo Frame
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: DHCP relay
+      feedback: 맞아요. DHCP relay.
+    - id: e
+      text: MAC address table aging
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: d
+  - id: u3-03-p06-q03
+    kind: short
+    prompt: Ethernet 방송이 다른 IP 네트워크로 그대로 넘어가지 않게 구역을 나누는 경계를 가리키는 말은 무엇일까요? (영어로 답해주세요)
+    answers:
+    - L3 boundary
+    feedback: 정답은 L3 boundary입니다.
 - terms:
   - MAC 주소
   - IP 주소
+  questions:
+  - id: u3-03-p07-q01
+    kind: choice
+    difficulty: easy
+    prompt: 라우터를 지나 다음 링크 구간으로 갈 때 보통 달라지는 정보는 무엇인가요?
+    choices:
+    - id: a
+      text: HTTP 내용이 반드시 MAC 주소로 바뀐다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: LAN이 WAN으로 이름만 바뀌면 패킷이 폐기된다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 출발지·목적지 IP 주소가 매 링크마다 반드시 새로 바뀐다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 전송 데이터 전체가 매 홉마다 사라진다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 프레임과 MAC 주소
+      feedback: 맞아요. 프레임과 MAC 주소.
+    answer: e
+  - id: u3-03-p07-q02
+    kind: choice
+    difficulty: medium
+    prompt: LAN과 WAN을 물리 네트워크와 논리 네트워크에 대응시키는 그림은 어떻게 이해해야 하나요?
+    choices:
+    - id: a
+      text: 처음 구조를 그리는 데 도움이 되는 요령이지 엄밀한 정의는 아니다
+      feedback: 맞아요. 처음 구조를 그리는 데 도움이 되는 요령이지 엄밀한 정의는 아니다.
+    - id: b
+      text: 두 이름은 프레임과 패킷의 크기를 뜻한다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: LAN에는 IP를 쓸 수 없고 WAN에만 쓸 수 있다는 뜻이다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: WAN은 장비 없이 소프트웨어만 있다는 의미다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: LAN은 언제나 물리적이고 WAN은 언제나 논리적이라는 정의다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: a
+  - id: u3-03-p07-q03
+    kind: short
+    prompt: 라우터를 지나도 보통 그대로 유지되는 네트워크 계층 주소입니다. 영어로 무엇일까요?
+    answers:
+    - IP address
+    feedback: 정답은 IP address입니다.
 - terms:
   - 논리적 (Logical)
+  questions:
+  - id: u3-03-p08-q01
+    kind: choice
+    difficulty: easy
+    prompt: IP 네트워크가 케이블 그 자체와 같은 물건이 아닌 이유는 무엇인가요?
+    choices:
+    - id: a
+      text: 모니터 포인터와 같이 화면에만 그려지기 때문이다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: IP 네트워크는 실제 장비 없이 마법처럼 통신하기 때문이다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 케이블이 있으면 IP 주소를 사용할 수 없기 때문이다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 논리 네트워크는 반드시 WAN에서만 쓰기 때문이다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 물리 링크 위에서 주소와 규칙으로 구성된 연결을 설명하는 추상화이기 때문이다
+      feedback: 맞아요. 물리 링크 위에서 주소와 규칙으로 구성된 연결을 설명하는 추상화이기 때문이다.
+    answer: e
+  - id: u3-03-p08-q02
+    kind: choice
+    difficulty: medium
+    prompt: 네트워크 그림에서 인터넷을 구름으로 표현할 때 주로 뜻하는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 모든 데이터가 무선 구간만 통과한다는 뜻
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: IP 네트워크가 프레임을 사용하지 않는다는 뜻
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 세부 물리 경로를 펼치지 않고 그 너머 네트워크와 통신한다는 표현
+      feedback: 맞아요. 세부 물리 경로를 펼치지 않고 그 너머 네트워크와 통신한다는 표현.
+    - id: d
+      text: 인터넷이 날씨에 따라 통신한다는 뜻
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 인터넷에는 물리 장비와 케이블이 없다는 사실
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: c
+  - id: u3-03-p08-q03
+    kind: short
+    prompt: 물리 링크 위에서 주소와 규칙으로 구성한 연결을 별도 관점으로 다루는 성질입니다. 영어로 무엇일까요?
+    answers:
+    - abstraction
+    feedback: 정답은 abstraction입니다.
 - terms:
   - 가상화 (Virtualization)
   - 가상 머신 (Virtual Machine)
+  questions:
+  - id: u3-03-p09-q01
+    kind: choice
+    difficulty: easy
+    prompt: 실제 서버 한 대가 여러 독립된 가상 머신 환경을 제공할 수 있게 하는 것은 무엇 덕분인가요?
+    choices:
+    - id: a
+      text: 한 서버에 네트워크 인터페이스가 하나뿐이기 때문
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: 각 가상 머신이 서로 다른 물리 서버를 반드시 사용하기 때문
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 모든 VM에 같은 메모리와 저장 공간을 복사하기 때문
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 소프트웨어가 물리 자원을 나누어 제공하기 때문
+      feedback: 맞아요. 소프트웨어가 물리 자원을 나누어 제공하기 때문.
+    - id: e
+      text: 물리 네트워크가 없어도 되기 때문
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: d
+  - id: u3-03-p09-q02
+    kind: choice
+    difficulty: medium
+    prompt: “논리적” 또는 “가상” 네트워크라는 말의 의미로 가장 알맞은 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 물리 장비가 전혀 없어서 실제 통신을 하지 않는다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: 모든 VM이 서로 같은 네트워크 주소를 써야 한다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: LAN은 반드시 가상이고 WAN은 반드시 물리적이다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 물리 자원 위에 다른 규칙과 경계를 만들어 표현하고 관리한다
+      feedback: 맞아요. 물리 자원 위에 다른 규칙과 경계를 만들어 표현하고 관리한다.
+    - id: e
+      text: 가짜 주소만 쓰고 실제 네트워크와 연결되지 않는다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: d
+  - id: u3-03-p09-q03
+    kind: short
+    prompt: 실제 컴퓨터 자원을 소프트웨어로 나누어 여러 가상 머신처럼 제공하는 기술입니다. 영어로 답해주세요.
+    answers:
+    - virtualization
+    feedback: 정답은 virtualization입니다.
 - terms:
   - LAN (Local Area Network)
   - WAN (Wide Area Network)
+  questions:
+  - id: u3-03-p10-q01
+    kind: choice
+    difficulty: easy
+    prompt: LAN과 WAN을 구분할 때 기본적으로 설명하는 기준은 무엇인가요?
+    choices:
+    - id: a
+      text: MAC 주소 길이
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: 네트워크가 걸쳐 있는 지리적 범위
+      feedback: 맞아요. 네트워크가 걸쳐 있는 지리적 범위.
+    - id: c
+      text: 물리 대 논리만으로 정해지는 구분
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 장치의 운영체제 종류
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: 프레임의 Ethernet 크기
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: b
+  - id: u3-03-p10-q02
+    kind: choice
+    difficulty: medium
+    prompt: LAN과 WAN에 관한 설명으로 정확한 것은 무엇인가요?
+    choices:
+    - id: a
+      text: LAN은 반드시 물리 연결이고 WAN은 반드시 논리 연결이다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: LAN도 논리적으로 나뉠 수 있고 WAN도 물리 장비 위에서 구현된다
+      feedback: 맞아요. LAN도 논리적으로 나뉠 수 있고 WAN도 물리 장비 위에서 구현된다.
+    - id: c
+      text: LAN은 MAC 주소를 쓰고 WAN은 IP 주소를 쓰지 않는다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: LAN과 WAN은 각각 하나의 고정 거리로만 구분된다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: e
+      text: WAN에는 케이블이나 라우터가 필요 없다
+      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    answer: b
+  - id: u3-03-p10-q03
+    kind: short
+    prompt: 제한된 지역보다 더 넓은 범위를 잇는 네트워크를 가리키는 영어 약어입니다. 무엇일까요?
+    answers:
+    - WAN
+    feedback: 정답은 WAN입니다.
 animations_dir: units/03-layer2-switching/lessons/03-lan과-wan의-경계-그리고-broadcast/assets/animations
 ---
-
 네트워크에서 “모두에게 알려야 하는 말”은 어떻게 전달될까? 그리고 그 말은 어디까지 퍼져도 괜찮을까? 아파트 안내 방송과 택배 송장, 손에 잡히지 않는 마우스 포인터를 떠올리며 Broadcast와 LAN·WAN의 관계를 살펴보자.
 
 ## Broadcast · 모두에게 보내기
