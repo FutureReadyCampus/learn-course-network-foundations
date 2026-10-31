@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+  <rect width="960" height="540" fill="#0f1115"/>
+
+  <!-- 제목 + 고정 결론 -->
+  <text x="480" y="58" text-anchor="middle" font-size="34" font-weight="700" fill="#e6e8ec">여러 사람이 이어받는 택배</text>
+  <text x="480" y="100" text-anchor="middle" font-size="24" fill="#9aa3b2">각자 맡은 일만 하고 다음 사람에게 넘깁니다</text>
+
+  <line x1="189" y1="278" x2="208" y2="278" stroke="#9aa3b2" stroke-width="3" ></line><polygon points="207,271 216,278 207,285" fill="#9aa3b2"/>
+  <line x1="374" y1="278" x2="393" y2="278" stroke="#9aa3b2" stroke-width="3" ></line><polygon points="392,271 401,278 392,285" fill="#9aa3b2"/>
+  <line x1="559" y1="278" x2="578" y2="278" stroke="#9aa3b2" stroke-width="3" ></line><polygon points="577,271 586,278 577,285" fill="#9aa3b2"/>
+  <line x1="744" y1="278" x2="763" y2="278" stroke="#9aa3b2" stroke-width="3" ></line><polygon points="762,271 771,278 762,285" fill="#9aa3b2"/>
+  <rect x="35" y="230" width="150" height="96" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="3"><animate attributeName="stroke" values="#ffb454;#ffb454;#7ee7c7;#7ee7c7;#ffb454" keyTimes="0;0.2;0.22;0.98;1" dur="15s" repeatCount="indefinite"/></rect><text x="110" y="270" text-anchor="middle" font-size="22" font-weight="700" fill="#e6e8ec">보내는 사람</text><text x="110" y="304" text-anchor="middle" font-size="20" fill="#9aa3b2">상자 준비</text>
+  <rect x="220" y="230" width="150" height="96" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="3"><animate attributeName="stroke" values="#3d4b60;#3d4b60;#ffb454;#ffb454;#7ee7c7;#7ee7c7;#3d4b60" keyTimes="0;0.2;0.22;0.4;0.42;0.98;1" dur="15s" repeatCount="indefinite"/></rect><text x="295" y="270" text-anchor="middle" font-size="22" font-weight="700" fill="#e6e8ec">접수</text><text x="295" y="304" text-anchor="middle" font-size="20" fill="#9aa3b2">상자 받기</text>
+  <rect x="405" y="230" width="150" height="96" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="3"><animate attributeName="stroke" values="#3d4b60;#3d4b60;#ffb454;#ffb454;#7ee7c7;#7ee7c7;#3d4b60" keyTimes="0;0.4;0.42;0.6;0.62;0.98;1" dur="15s" repeatCount="indefinite"/></rect><text x="480" y="270" text-anchor="middle" font-size="22" font-weight="700" fill="#e6e8ec">분류센터</text><text x="480" y="304" text-anchor="middle" font-size="20" fill="#9aa3b2">방향 정하기</text>
+  <rect x="590" y="230" width="150" height="96" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="3"><animate attributeName="stroke" values="#3d4b60;#3d4b60;#ffb454;#ffb454;#7ee7c7;#7ee7c7;#3d4b60" keyTimes="0;0.6;0.62;0.8;0.82;0.98;1" dur="15s" repeatCount="indefinite"/></rect><text x="665" y="270" text-anchor="middle" font-size="22" font-weight="700" fill="#e6e8ec">운송</text><text x="665" y="304" text-anchor="middle" font-size="20" fill="#9aa3b2">차로 옮기기</text>
+  <rect x="775" y="230" width="150" height="96" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="3"><animate attributeName="stroke" values="#3d4b60;#3d4b60;#ffb454;#ffb454;#3d4b60" keyTimes="0;0.8;0.82;0.98;1" dur="15s" repeatCount="indefinite"/></rect><text x="850" y="270" text-anchor="middle" font-size="22" font-weight="700" fill="#e6e8ec">배달원</text><text x="850" y="304" text-anchor="middle" font-size="20" fill="#9aa3b2">집 앞 전달</text>
+  <g><animateTransform attributeName="transform" type="translate" values="110,0;110,0;295,0;295,0;480,0;480,0;665,0;665,0;850,0;850,0;110,0" keyTimes="0;0.2;0.25;0.4;0.45;0.6;0.65;0.8;0.85;0.98;1" dur="15s" repeatCount="indefinite"/><rect x="-32" y="160" width="64" height="48" rx="4" fill="#ffb454"/><rect x="-6" y="160" width="12" height="48" fill="#0f1115" fill-opacity="0.25"/><rect x="-26" y="186" width="22" height="14" rx="2" fill="#e6e8ec"/></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.8;0.82;0.97;0.99;1" dur="15s" repeatCount="indefinite"/><rect x="320" y="372" width="320" height="36" rx="18" fill="#0f1115" stroke="#7ee7c7" stroke-width="2"/><text x="480" y="398" text-anchor="middle" font-size="22" font-weight="700" fill="#7ee7c7">처음부터 끝까지 같은 상자</text></g>
+
+  <!-- 자막 바 -->
+  <rect x="0" y="478" width="960" height="62" fill="#171a21"/>
+  <g font-size="26" fill="#e6e8ec" text-anchor="middle">
+    <text x="480" y="518" opacity="1">보내는 사람이 책을 상자에 넣고 주소를 적습니다
+      <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.19;0.2;0.99;1" dur="15s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">접수하는 사람이 상자를 받아 다음으로 넘깁니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19;0.2;0.39;0.4;1" dur="15s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">분류센터는 전국 주소를 다 보지 않고 다음 방향만 정합니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.39;0.4;0.59;0.6;1" dur="15s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">운전하는 사람이 정해진 방향으로 상자를 옮깁니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.59;0.6;0.79;0.8;1" dur="15s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">배달원이 집 앞까지 가져갑니다. 상자는 처음 그대로입니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.79;0.8;0.98;0.99;1" dur="15s" repeatCount="indefinite"/></text>
+  </g>
+<g aria-label="재생 단계"><rect x="40" y="28" width="88" height="40" rx="20" fill="#171a21" stroke="#3d4b60" stroke-width="2"/><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="1">1 / 5<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.19;0.2;1" calcMode="discrete" dur="15s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">2 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19;0.2;0.39;0.4;1" calcMode="discrete" dur="15s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">3 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.39;0.4;0.59;0.6;1" calcMode="discrete" dur="15s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">4 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.59;0.6;0.79;0.8;1" calcMode="discrete" dur="15s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">5 / 5<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.79;0.8;1" calcMode="discrete" dur="15s" repeatCount="indefinite"/></text></g>
+</svg>

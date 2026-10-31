@@ -54,6 +54,11 @@ page_metadata:
     answers:
     - packet
     feedback: 정답은 packet입니다.
+  animations:
+  - file: l07-hop-by-hop.svg
+    title: 한 구간씩 이동하는 패킷
+    alt: 노트북, 공유기, 라우터1, 라우터2, 라우터3, 웹 서버가 선으로 이어져 있습니다. 주황 패킷이 노트북에서 공유기, 라우터1, 라우터2를 거쳐 웹 서버까지 한 구간씩 이동하며 지나간 선이 주황으로 남습니다. 마지막에 파란 응답이 웹 서버에서 라우터3, 라우터1, 공유기를 거쳐 노트북으로 돌아옵니다.
+    caption: 패킷은 출발지에서 목적지까지 한 번에 가지 않고, 장비마다 다음 한 구간을 정하며 이동합니다. 응답은 다른 장비를 거쳐 돌아올 수도 있습니다.
 - terms: []
   questions:
   - id: u2-l07-p02-q01
@@ -104,6 +109,11 @@ page_metadata:
     answers:
     - router
     feedback: 정답은 router입니다.
+  animations:
+  - file: l07-what-to-read.svg
+    title: 무엇을 보고 출구를 고를까?
+    alt: 노트북이 L2 스위치에 연결되어 있고, 스위치 아래에는 프린터, 오른쪽에는 라우터와 인터넷 너머의 웹 서버가 있습니다. 프린터로 가는 파란 데이터는 L2 스위치가 목적지 MAC을 확인해 아래로 보내고, 웹 서버로 가는 주황 데이터는 라우터가 목적지 IP를 확인해 인터넷 쪽으로 보냅니다. 마지막에 판단 정보, 다음 출구, 계층을 정리한 표가 나타납니다.
+    caption: 같은 LAN의 프린터로 갈 때는 L2 스위치가 목적지 MAC을, 다른 네트워크의 서버로 갈 때는 라우터가 목적지 IP를 봅니다. 판단 정보, 다음 출구, 계층을 묶어 기억하세요.
 - terms:
   - 스위치(Switch)
   - 인터페이스(Interface)
@@ -157,6 +167,11 @@ page_metadata:
     answers:
     - interface
     feedback: 정답은 interface입니다.
+  animations:
+  - file: l07-switching-steps.svg
+    title: "스위칭: 다음 출구 고르기"
+    alt: 1번부터 4번까지 인터페이스가 있는 라우터 안에 라우팅 테이블이 들어 있습니다. 목적지 10.0.0.7 패킷이 1번 인터페이스로 들어오고, 라우터가 목적지 IP를 읽은 뒤 표의 10.0.0.x → 3번 줄이 강조되며, 패킷이 3번 인터페이스로 나가 10.0.0.x 쪽으로 향합니다.
+    caption: 스위칭은 들어온 데이터의 목적지 정보를 읽고, 표에서 방향을 찾아, 내보낼 인터페이스를 고르는 일입니다.
 - terms:
   - 패킷(Packet)
   - 라우터(Router)
@@ -325,6 +340,11 @@ page_metadata:
     answers:
     - metric
     feedback: 정답은 metric입니다.
+  animations:
+  - file: l07-metric-compare.svg
+    title: 경로를 비교하는 값, Metric
+    alt: 라우터에서 목적지 B망으로 가는 위쪽 길과 아래쪽 길이 있고, 각 길에 Metric 10과 Metric 50이 붙습니다. 10 < 50 비교 뒤 위쪽 길이 주황으로 켜지고 패킷이 그 길을 지나갑니다. 마지막에 다른 목적지 C망으로 가는 Metric 5 길이 나타나고, 목적지가 달라 비교하지 않는다는 문구가 붙습니다.
+    caption: Metric은 같은 목적지로 가는 후보 경로를 비교하는 값입니다. 이 단순한 예에서는 10이 50보다 낮은 비용이지만, 목적지가 다른 경로의 숫자와는 비교하지 않습니다.
 - terms:
   - route print
   - 네트워크 마스크
@@ -377,6 +397,11 @@ page_metadata:
     answers:
     - route print
     feedback: 정답은 route print입니다.
+  animations:
+  - file: l07-route-print.svg
+    title: route print로 표 읽기
+    alt: 명령 프롬프트 창에 route print가 입력되고, Network Destination, Netmask, Gateway, Interface, Metric 열과 세 줄의 경로가 나타납니다. 목적지가 0.0.0.0인 두 줄이 강조되고 그 둘의 Metric 35와 291을 비교해 35가 더 낮다고 표시됩니다. 마지막에 목적지가 127.0.0.0인 줄의 331은 비교하지 않는다는 문구가 나옵니다.
+    caption: route print 표에서는 먼저 목적지와 맞는 행을 찾고, 같은 목적지 후보끼리 Metric을 비교합니다. 출력값은 컴퓨터마다 다릅니다.
 - terms: []
   questions:
   - id: u2-l07-p08-q01
@@ -427,6 +452,11 @@ page_metadata:
     answers:
     - switching
     feedback: 정답은 switching입니다. 전달할 데이터의 정보를 보고 다음 인터페이스를 선택하는 동작입니다.
+  animations:
+  - file: l07-road-analogy.svg
+    title: 도로로 정리하는 라우팅
+    alt: 파란 자동차가 도로를 따라 교차로에 다가가고, 자동차에는 패킷, 교차로에는 라우터 꼬리표가 붙습니다. 갈림길 이정표에는 오른쪽 B망 Metric 10, 위쪽 B망 Metric 50이 적혀 있고 라우팅 테이블 꼬리표가 붙습니다. 10 < 50 비교 뒤 자동차가 오른쪽 길로 나가며 스위칭 꼬리표가 붙고, 다음 교차로에 다음 라우터 꼬리표가 나타납니다.
+    caption: 자동차는 패킷, 교차로는 라우터, 이정표는 라우팅 테이블, 출구를 골라 나가는 동작은 스위칭, 후보 경로를 비교하는 숫자는 Metric입니다. 다음 라우터에서도 같은 판단이 이어집니다.
 animations_dir: units/02-internet-basics/lessons/03-스위치가-하는-일과-비용/assets/animations
 ---
 핵심 개념을 주제별로 정리했다.

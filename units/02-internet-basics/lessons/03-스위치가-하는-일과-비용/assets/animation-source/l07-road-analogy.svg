@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+  <rect width="960" height="540" fill="#0f1115"/>
+
+  <!-- 제목 + 고정 결론 -->
+  <text x="480" y="58" text-anchor="middle" font-size="34" font-weight="700" fill="#e6e8ec">도로로 정리하는 라우팅</text>
+  <text x="480" y="100" text-anchor="middle" font-size="24" fill="#9aa3b2">패킷 · 라우터 · 라우팅 테이블 · 스위칭 · Metric</text>
+
+  <rect x="30" y="270" width="900" height="40" fill="#1d222b"/>
+  <rect x="460" y="130" width="40" height="160" fill="#1d222b"/>
+  <rect x="800" y="290" width="40" height="150" fill="#1d222b"/>
+  <line x1="30" y1="290" x2="930" y2="290" stroke="#3d4b60" stroke-width="2" stroke-dasharray="14 10"></line>
+  <line x1="480" y1="130" x2="480" y2="270" stroke="#3d4b60" stroke-width="2" stroke-dasharray="14 10"></line>
+  <line x1="330" y1="214" x2="330" y2="268" stroke="#9aa3b2" stroke-width="4" ></line>
+  <rect x="210" y="140" width="240" height="34" rx="6" fill="#171a21" stroke="#9aa3b2" stroke-width="2"/>
+  <rect x="210" y="180" width="240" height="34" rx="6" fill="#171a21" stroke="#9aa3b2" stroke-width="2"/>
+  <g font-size="20" fill="#e6e8ec" text-anchor="middle"><text x="330" y="164">→ B망 · Metric 10</text><text x="330" y="204">↑ B망 · Metric 50</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.52;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="210" y="140" width="240" height="34" rx="6" fill="none" stroke="#7ee7c7" stroke-width="3"/><text x="115" y="214" text-anchor="middle" font-size="24" font-weight="700" fill="#7ee7c7">10 &lt; 50</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.333;0.353;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="30" y="140" width="170" height="36" rx="18" fill="#ffb454" stroke="#ffb454" stroke-width="2"/><text x="115" y="166" text-anchor="middle" font-size="22" font-weight="700" fill="#0f1115">라우팅 테이블</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.167;0.187;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="430" y="322" width="100" height="36" rx="18" fill="#7ee7c7" stroke="#7ee7c7" stroke-width="2"/><text x="480" y="348" text-anchor="middle" font-size="22" font-weight="700" fill="#0f1115">라우터</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.667;0.687;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="565" y="322" width="110" height="36" rx="18" fill="#0f1115" stroke="#6ea8fe" stroke-width="2"/><text x="620" y="348" text-anchor="middle" font-size="22" font-weight="700" fill="#6ea8fe">스위칭</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.833;0.853;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="750" y="384" width="140" height="36" rx="18" fill="#7ee7c7" stroke="#7ee7c7" stroke-width="2"/><text x="820" y="410" text-anchor="middle" font-size="22" font-weight="700" fill="#0f1115">다음 라우터</text></g>
+  <g><animateTransform attributeName="transform" type="translate" values="40,0;40,0;360,0;360,0;640,0;640,0;730,0;730,0;40,0" keyTimes="0;0.02;0.137;0.687;0.797;0.853;0.953;0.98;1" dur="10s" repeatCount="indefinite"/><rect x="0" y="277" width="64" height="26" rx="8" fill="#6ea8fe"/><rect x="36" y="281" width="20" height="10" rx="2" fill="#0f1115"/><circle cx="14" cy="304" r="6" fill="#e6e8ec"/><circle cx="50" cy="304" r="6" fill="#e6e8ec"/><g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.167;0.187;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="-13" y="228" width="90" height="36" rx="18" fill="#6ea8fe" stroke="#6ea8fe" stroke-width="2"/><text x="32" y="254" text-anchor="middle" font-size="22" font-weight="700" fill="#0f1115">패킷</text></g></g>
+
+  <!-- 자막 바 -->
+  <rect x="0" y="478" width="960" height="62" fill="#171a21"/>
+  <g font-size="26" fill="#e6e8ec" text-anchor="middle">
+    <text x="480" y="518" opacity="1">자동차가 도로를 따라 교차로에 다가갑니다
+      <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.157;0.167;0.99;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">이동하는 자동차는 <tspan fill="#6ea8fe" font-weight="700">패킷</tspan>, 교차로는 <tspan fill="#7ee7c7" font-weight="700">라우터</tspan>입니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.157;0.167;0.323;0.333;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">갈림길의 이정표는 <tspan fill="#ffb454" font-weight="700">라우팅 테이블</tspan>입니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.323;0.333;0.49;0.5;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">같은 목적지 후보는 <tspan fill="#7ee7c7" font-weight="700">Metric</tspan>으로 비교합니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.49;0.5;0.657;0.667;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">표를 보고 출구를 골라 나가는 동작이 <tspan fill="#6ea8fe" font-weight="700">스위칭</tspan>입니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.657;0.667;0.823;0.833;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">다음 라우터에서도 같은 판단이 이어집니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.823;0.833;0.98;0.99;1" dur="10s" repeatCount="indefinite"/></text>
+  </g>
+<g aria-label="재생 단계"><rect x="40" y="28" width="88" height="40" rx="20" fill="#171a21" stroke="#3d4b60" stroke-width="2"/><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="1">1 / 6<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.157;0.167;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">2 / 6<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.157;0.167;0.323;0.333;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">3 / 6<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.323;0.333;0.49;0.5;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">4 / 6<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.49;0.5;0.657;0.667;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">5 / 6<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.657;0.667;0.823;0.833;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">6 / 6<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.823;0.833;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text></g>
+</svg>

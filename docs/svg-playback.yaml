@@ -8,8 +8,11 @@ animations:
   l04-layer-map.svg: 16
   l04-nic-driver-stack.svg: 14
   l04-socket-handset.svg: 14
+  l05-journey-split.svg: 12
   l05-mac-per-nic.svg: 14
   l05-osi-layer-stack.svg: 16
+  l05-parcel-labels.svg: 15
+  l05-parcel-relay.svg: 15
   l05-three-identifiers.svg: 14
   l06-client-server.svg: 10
   l06-endpoint-ends.svg: 12
@@ -19,8 +22,14 @@ animations:
   l06-router-next-hop.svg: 12
   l06-switch-infra.svg: 12
   l06-tap-aggregation.svg: 12
+  l07-hop-by-hop.svg: 15
+  l07-metric-compare.svg: 12
   l07-packet-routing-table.svg: 16
+  l07-road-analogy.svg: 18
+  l07-route-print.svg: 15
   l07-switch-by-layer.svg: 14
+  l07-switching-steps.svg: 15
+  l07-what-to-read.svg: 12
   l08-bit-vs-byte-speed.svg: 12
   l08-host-two-nics.svg: 12
   l08-mac-address-label.svg: 14
