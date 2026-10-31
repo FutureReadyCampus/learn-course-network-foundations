@@ -239,9 +239,11 @@
     state.pageIndex = Math.min(Math.max(0, state.pageIndex), Math.max(0, pages.length - 1));
     const page = pages[state.pageIndex] || { title: item.lesson.title, paragraphs: [] };
     const unitIndex = course.units.findIndex((unit) => unit.id === item.unit.id);
+    const unitLessonIndex = course.lessons.filter((lesson) => lesson.unit === item.unit.id).indexOf(item.lesson);
     state.unitIndex = unitIndex;
     byId.set(item.lesson.id, item);
     document.title = `${page.title} · ${item.unit.title} · 외워서 공부하는 네트워크`;
+    document.getElementById("topbar-location").textContent = `Unit ${String(unitIndex + 1).padStart(2, "0")} · Lesson ${String(unitLessonIndex + 1).padStart(2, "0")} · Page ${String(state.pageIndex + 1).padStart(2, "0")}`;
     const progress = `${state.lessonIndex + 1} / ${list.length} Lesson · Page ${state.pageIndex + 1} / ${pages.length}`;
     const nav = document.getElementById("network-nav");
     nav.innerHTML = `<a class="sidebar-course-title" href="${base}/">전체 학습과정 <span aria-hidden="true">›</span></a><p class="net-progress">${esc(progress)}</p>${course.units.map((unit, ui) => {
@@ -293,7 +295,6 @@
     });
     navFooter.append(prevPage, nextPage);
     main.append(navFooter);
-    const unitLessonIndex = course.lessons.filter((lesson) => lesson.unit === item.unit.id).indexOf(item.lesson);
     const url = routeFor(unitIndex, unitLessonIndex, state.pageIndex);
     history.replaceState({ ...state }, "", url);
     document.querySelectorAll(".lesson-link, .page-link").forEach((anchor) => anchor.addEventListener("click", (event) => {
@@ -331,6 +332,27 @@
       overlay.addEventListener("click", () => document.querySelector(".course-workspace").classList.remove("sidebar-open"));
       document.querySelector(".course-workspace").prepend(overlay);
       window.addEventListener("popstate", () => { state = parseRoute(course); render(course, state); });
+      window.addEventListener("keydown", (event) => {
+        if ((event.key !== "ArrowLeft" && event.key !== "ArrowRight") || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+        if (event.target.closest?.("input, textarea, select, button, a, [contenteditable='true'], object")) return;
+        const list = allItems(course);
+        const item = list[state.lessonIndex] || list[0];
+        const pages = item.lesson.pages || [];
+        const previous = state.pageIndex > 0 || state.lessonIndex > 0;
+        const next = state.pageIndex < pages.length - 1 || state.lessonIndex < list.length - 1;
+        if (event.key === "ArrowLeft" && previous) {
+          event.preventDefault();
+          const target = list[state.lessonIndex - 1];
+          if (state.pageIndex > 0) state.pageIndex--;
+          else { state.lessonIndex--; state.pageIndex = (target.lesson.pages || []).length - 1; }
+          visit(course, state);
+        } else if (event.key === "ArrowRight" && next) {
+          event.preventDefault();
+          if (state.pageIndex < pages.length - 1) state.pageIndex++;
+          else { state.lessonIndex++; state.pageIndex = 0; }
+          visit(course, state);
+        }
+      });
       render(course, state);
     })
     .catch(() => { document.getElementById("network-lesson").innerHTML = '<p class="empty">콘텐츠를 불러오지 못했습니다. 미리보기 빌드 상태를 확인해 주세요.</p>'; });
