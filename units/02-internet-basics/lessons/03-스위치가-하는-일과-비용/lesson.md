@@ -167,11 +167,26 @@ page_metadata:
       feedback: 화면 크기는 네트워크 경로와 관계없습니다.
     answer: a
   - id: u2-l07-p03-q03
-    kind: short
-    prompt: 네트워크 케이블이나 무선 연결이 장치와 만나는 접점으로, 데이터를 주고받는 출구를 가리키는 말입니다. 이 개념은 무엇일까요? (영어 단어로 답해주세요)
-    answers:
-    - interface
-    feedback: 정답은 interface입니다.
+    kind: choice
+    difficulty: medium
+    prompt: 네트워크 케이블이나 무선 연결이 장치와 만나는 접점으로, 데이터를 주고받는 출구를 가리키는 말은 무엇인가요?
+    choices:
+    - id: a
+      text: Interface(네트워크 인터페이스)
+      feedback: 맞아요. Interface는 장치가 네트워크에 연결되어 데이터를 주고받는 접점입니다.
+    - id: b
+      text: Protocol(프로토콜)
+      feedback: 프로토콜은 통신할 때 따르는 규칙입니다.
+    - id: c
+      text: Routing table(라우팅 테이블)
+      feedback: 라우팅 테이블은 라우터가 목적지에 맞는 경로를 찾을 때 참고합니다.
+    - id: d
+      text: Port number(포트 번호)
+      feedback: 포트 번호는 장치 안에서 통신할 프로그램을 구분합니다.
+    - id: e
+      text: Subnet mask(서브넷 마스크)
+      feedback: 서브넷 마스크는 IP 주소에서 네트워크 부분과 장치 부분을 구분하는 데 사용합니다.
+    answer: a
   animations:
   - file: l07-switching-steps.svg
     title: "라우터의 포워딩: 다음 출구 고르기"
