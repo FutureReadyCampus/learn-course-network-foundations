@@ -8,6 +8,17 @@ page_metadata:
   - 패킷 (packet)
   - 페이로드 (payload)
   - 헤더 (header)
+  illustrations:
+  - file: assets/animations/l14-daily-parcel-with-label.svg
+    title: "책에 송장을 붙여 택배로 보낸다"
+    alt: "아래에 철수의 집, 물류센터, 영희의 집이 있고 위쪽에 책이 놓입니다. 책 앞에 보내는 곳과 받는 곳이 적힌 송장이 붙고, 상자가 물류센터에서 받는 곳 주소를 확인한 뒤 영희의 집에 도착합니다."
+    caption: "내용물은 책이고, 겉의 송장이 어디로 보낼지 알려 줍니다."
+    after_paragraph: -1
+  - file: assets/animations/l14-packet-header-payload.svg
+    title: "패킷은 페이로드와 헤더로 이뤄진다"
+    alt: "아래에 내 PC, 라우터, 서버가 있고 위쪽에 보낼 데이터인 페이로드가 놓입니다. 앞에 출발지 IP와 목적지 IP가 든 헤더가 붙고, 패킷이 라우터에서 목적지 IP를 확인한 뒤 서버에 도착합니다."
+    caption: "이 Lesson의 패킷은 주로 L3의 IP 패킷입니다. 라우터는 헤더의 목적지 IP를 보고 다음 방향을 고릅니다."
+    after_paragraph: 2
   questions:
   - id: u4-l14-p01-q01
     kind: choice
@@ -89,6 +100,17 @@ page_metadata:
   - 호스트 (host)
   - IP 주소 (IP address)
   - 포트 번호 (port number)
+  illustrations:
+  - file: assets/animations/l14-daily-building-and-unit.svg
+    title: "건물 주소로 찾고 호수로 받을 사람 고르기"
+    alt: "택배가 건물 주소를 보고 영희네 아파트에 도착합니다. 건물 안에 101호, 102호, 103호가 나타나고, 호수 103호를 보고 영희가 선택됩니다."
+    caption: "주소는 건물까지, 호수는 건물 안의 수신자까지 찾아갑니다."
+    after_paragraph: -1
+  - file: assets/animations/l14-ip-host-port-program.svg
+    title: "IP 주소로 호스트, 포트로 프로그램"
+    alt: "패킷이 IP 주소를 보고 서버에 도착합니다. 서버 안에 웹 서버, 메신저, 게임 프로그램이 나타나고, 포트 443을 보고 웹 서버가 선택됩니다. 마지막에 포트는 물리적인 구멍이 아닌 숫자 표식이라고 표시됩니다."
+    caption: "IP 주소는 호스트를, 포트 번호는 호스트 안에서 데이터를 받을 프로그램을 구분합니다. 포트 번호 중 443 외에는 예시예요."
+    after_paragraph: 2
   questions:
   - id: u4-l14-p02-q01
     kind: choice
@@ -169,6 +191,17 @@ page_metadata:
   - 프로세스 (process)
   - 게이트웨이 (gateway)
   - 인터페이스 (interface)
+  illustrations:
+  - file: assets/animations/l14-daily-house-and-exit.svg
+    title: "집 안의 철수에서 동네 밖으로"
+    alt: "철수가 사는 집 안에서 현관문과 접수창구를 거쳐 다른 동네의 영희 집으로 이어지는 길이 있습니다. 집, 현관문, 처음 맡기는 곳이 차례로 강조되고, 같은 동네 이웃에게는 직접, 다른 동네에는 출구를 거쳐 간다고 표시됩니다."
+    caption: "철수는 프로세스, 집은 호스트, 현관문은 인터페이스, 처음 맡기는 곳은 기본 게이트웨이에 해당합니다."
+    after_paragraph: -1
+  - file: assets/animations/l14-process-host-gateway.svg
+    title: "프로세스에서 기본 게이트웨이까지"
+    alt: "내 PC 안의 브라우저에서 네트워크 인터페이스를 거쳐 기본 게이트웨이와 다른 네트워크의 서버로 이어지는 길이 있습니다. 호스트, 인터페이스, 기본 게이트웨이가 차례로 강조되고, 같은 네트워크 장비에는 직접, 다른 네트워크에는 게이트웨이를 거쳐 간다고 표시됩니다."
+    caption: "같은 네트워크 안의 목적지는 게이트웨이 없이 직접 전달되고, 다른 네트워크로 갈 때는 기본 게이트웨이로 먼저 보냅니다."
+    after_paragraph: 3
   questions:
   - id: u4-l14-p03-q01
     kind: choice
@@ -249,11 +282,17 @@ page_metadata:
 - terms:
   - IP 주소 (IP address)
   - 임시 포트 (ephemeral port)
-  animations:
-  - file: l14-ip-and-port.svg
-    title: IP 주소는 집, 포트는 집 안의 수신자
-    alt: 상자가 IP 주소 203.0.113.20이 적힌 집에 도착한 뒤, 80번이 적힌 문을 지나 웹 서버 프로세스에 전달되는 장면입니다.
-    caption: IP 주소로 호스트를 찾고 포트 번호로 해당 호스트의 수신 프로그램을 구분합니다.
+  illustrations:
+  - file: assets/animations/l14-daily-record-both-ends.svg
+    title: "접수 기록을 양쪽 끝으로 읽기"
+    alt: "접수 기록 한 줄에 ‘철수 집 : 번호표 7’과 ‘영희 집 : 101호’가 화살표로 이어져 있습니다. 내 쪽은 집 주소와 번호표, 받는 쪽은 집 주소와 호수라고 강조되고, 마지막에는 번호표만 8로 바뀝니다."
+    caption: "연결의 양쪽 끝은 각각 주소와 번호로 구별됩니다. 내 쪽 번호는 연결마다 달라질 수 있어요."
+    after_paragraph: -1
+  - file: assets/animations/l14-ip-port-both-ends.svg
+    title: "IP 주소:포트 번호를 양쪽 끝으로 읽기"
+    alt: "연결 목록 한 줄에 ‘192.0.2.15 : 51707’과 ‘203.0.113.20 : 443’이 화살표로 이어져 있습니다. 내 컴퓨터 쪽은 주소와 임시 포트, 서버 쪽은 주소와 보통 HTTPS를 뜻하는 443이라고 강조되고, 마지막에는 임시 포트만 51722로 바뀝니다."
+    caption: "왼쪽은 내 컴퓨터, 오른쪽은 원격 호스트의 주소와 포트입니다. 숫자는 설명용 예시예요."
+    after_paragraph: 2
   questions:
   - id: u4-l14-p04-q01
     kind: choice
@@ -332,6 +371,17 @@ page_metadata:
     after_paragraph: 2
 - terms:
   - 소켓 (socket)
+  illustrations:
+  - file: assets/animations/l14-daily-service-windows.svg
+    title: "접수 창구가 손님과 작업장을 잇는다"
+    alt: "손님 가와 손님 나가 각자 창구 1, 창구 2를 통해 우체국 작업장과 트럭 출구에 이어져 있습니다. 손님이 트럭을 직접 다루지 못한다는 표시가 나오고, 짐이 창구를 거쳐 작업장에서 트럭으로 나갑니다. 답이 오면 짐이 손님 가의 창구로만 돌아옵니다."
+    caption: "창구를 통해서만 작업장과 트럭을 쓰고, 돌아오는 짐은 맞는 창구로 갑니다."
+    after_paragraph: -1
+  - file: assets/animations/l14-socket-window.svg
+    title: "소켓은 프로그램과 운영체제를 잇는 창구"
+    alt: "브라우저와 메신저가 각자 소켓을 통해 운영체제와 네트워크 장치에 이어져 있습니다. 프로그램이 장치를 직접 다루지 못한다는 표시가 나오고, 요청이 소켓을 거쳐 커널의 TCP/IP 처리를 지나 장치로 나갑니다. 응답이 오면 브라우저의 소켓으로만 돌아옵니다."
+    caption: "소켓은 포트 번호 자체가 아니라, 프로그램이 운영체제의 네트워크 기능을 쓰는 통신 창구입니다."
+    after_paragraph: 2
   questions:
   - id: u4-l14-p05-q01
     kind: choice
@@ -413,11 +463,17 @@ page_metadata:
   - 패킷 (packet)
   - 프레임 (frame)
   - 페이로드 (payload)
-  animations:
-  - file: l14-encapsulation.svg
-    title: 데이터에서 프레임까지 계층별로 감싸기
-    alt: 작은 데이터 블록 앞에 TCP 헤더, IP 헤더, Ethernet 헤더가 차례로 붙으며 세그먼트, 패킷, 프레임이 만들어지는 장면입니다.
-    caption: TCP를 사용하는 예에서 데이터는 세그먼트, IP 패킷, Ethernet 프레임 안에 차례로 담깁니다.
+  illustrations:
+  - file: assets/animations/l14-daily-layered-labels.svg
+    title: "책에 겹겹이 정보를 붙여 간다"
+    alt: "책 하나에서 시작해 호수 라벨이 붙은 작은 상자, 건물 주소가 붙은 중간 상자, 구간 라벨과 봉인 테이프가 붙은 큰 상자가 차례로 만들어집니다."
+    caption: "겉으로 나올수록 정보가 더해져 더 큰 단위가 됩니다."
+    after_paragraph: -1
+  - file: assets/animations/l14-data-to-frame.svg
+    title: "데이터에서 프레임까지 차례로 만든다"
+    alt: "요청 데이터에서 시작해 TCP 헤더의 포트가 붙은 세그먼트, IP 주소가 붙은 IP 패킷, MAC 주소와 FCS가 붙은 프레임이 차례로 만들어집니다."
+    caption: "TCP를 쓰는 예입니다. 한 계층에서 완성된 단위는 바깥 계층의 페이로드로 실려 갑니다."
+    after_paragraph: 3
   questions:
   - id: u4-l14-p06-q01
     kind: choice
@@ -499,11 +555,17 @@ page_metadata:
   - 라우터 (router)
   - 다음 홉 (next hop)
   - NAT (network address translation)
-  animations:
-  - file: l14-delivery-flow.svg
-    title: 스위치와 라우터를 거쳐 호스트에 도착하기
-    alt: 왼쪽 호스트에서 나온 프레임이 L2 스위치와 라우터, 인터넷을 거쳐 오른쪽 호스트의 프로세스에 도착하는 장면입니다.
-    caption: 스위치는 현재 LAN 안에서 프레임을 전달하고 라우터는 패킷을 다음 네트워크 쪽으로 전달합니다.
+  illustrations:
+  - file: assets/animations/l14-daily-whole-trip.svg
+    title: "접수소와 물류센터를 거쳐 영희에게"
+    alt: "철수의 집에서 동네 접수소와 물류센터를 지나 영희네 아파트에 도착하는 길이 있습니다. 접수소는 이번 구간 인수자를, 물류센터는 건물 주소를 확인하고, 아파트에 도착하면 호수에 맞는 창구로 영희에게 전달됩니다."
+    caption: "각 곳은 자기가 맡은 정보만 확인하고, 건물 주소는 끝까지 그대로입니다."
+    after_paragraph: -1
+  - file: assets/animations/l14-whole-delivery.svg
+    title: "스위치와 라우터를 거쳐 웹 서버까지"
+    alt: "내 PC에서 스위치와 라우터를 지나 서버에 도착하는 길이 있습니다. 스위치는 목적지 MAC을, 라우터는 목적지 IP를 확인하고, 서버에서는 IP로 호스트를 찾은 뒤 포트와 소켓 정보로 웹 서버 프로세스에 전달됩니다."
+    caption: "NAT가 없는 일반적인 예입니다. 목적지 IP는 그대로이고, 프레임과 MAC은 구간마다 새로 정해집니다."
+    after_paragraph: 2
   questions:
   - id: u4-l14-p07-q01
     kind: choice

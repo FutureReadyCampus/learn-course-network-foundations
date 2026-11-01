@@ -10,6 +10,7 @@ from xml.sax.saxutils import escape
 
 BG, PANEL, LINE, TXT, MUTED = "#0f1115", "#171a21", "#3d4b60", "#e6e8ec", "#9aa3b2"
 GREEN, BLUE, ORANGE, RED = "#7ee7c7", "#6ea8fe", "#ffb454", "#ff7b72"
+VIOLET = "#c792ea"
 EPS = 0.015
 
 
@@ -197,6 +198,16 @@ def phone(x, y, label=None, stroke=BLUE):
          f'<rect x="{x - 15}" y="{y - 30}" width="30" height="50" rx="2" fill="{LINE}"/>'
          f'<circle cx="{x}" cy="{y + 28}" r="3" fill="{stroke}"/>')
     return s + (text(x, y + 62, label, 18, TXT, 700) if label else "")
+
+
+def eye(x, y):
+    return (f'<ellipse cx="{x}" cy="{y}" rx="26" ry="15" fill="{BG}" stroke="{ORANGE}" stroke-width="3"/>'
+            f'<circle cx="{x}" cy="{y}" r="7" fill="{ORANGE}"/>')
+
+
+def lock(x, y, c=MUTED):
+    return (f'<rect x="{x - 20}" y="{y - 4}" width="40" height="32" rx="5" fill="{PANEL}" stroke="{c}" stroke-width="3"/>'
+            f'<path d="M{x - 11} {y - 4} v-10 a11 11 0 0 1 22 0 v10" fill="none" stroke="{c}" stroke-width="3"/>')
 
 
 def write(out_dir, name, svg):
