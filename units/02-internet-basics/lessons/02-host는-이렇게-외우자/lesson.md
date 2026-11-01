@@ -15,20 +15,20 @@ page_metadata:
     prompt: 집 Wi-Fi로 동영상을 보는 스마트폰도 Host일까요?
     choices:
     - id: a
-      text: 네트워크와 연결되지 않은 책상
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      text: 아니요. 스마트폰은 컴퓨터가 아니니까요.
+      feedback: 스마트폰도 네트워크로 데이터를 주고받으므로 Host가 될 수 있어요.
     - id: b
       text: 네. 네트워크로 데이터를 주고받으니 Host가 될 수 있어요.
       feedback: 맞아요. 네트워크를 통해 데이터를 주고받는 스마트폰.
     - id: c
-      text: 전원이 꺼진 종이 상자
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      text: 상황에 따라 달라요. 큰 컴퓨터만 Host예요.
+      feedback: Host 여부는 크기나 성능이 아니라 네트워크 통신에서 맡는 역할로 판단해요.
     - id: d
-      text: 인터넷 선을 잇는 벽
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      text: 네트워크에 연결된 프린터는 Host가 될 수 없어요.
+      feedback: 프린터도 네트워크로 데이터를 주고받으면 Host가 될 수 있어요.
     - id: e
-      text: 와이파이 이름만 적힌 메모
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      text: Host는 서버에만 붙는 이름이에요.
+      feedback: 스마트폰처럼 서비스를 이용하는 장치도 Host가 될 수 있어요.
     answer: b
   - id: u2-l06-p01-q02
     kind: choice
@@ -36,21 +36,21 @@ page_metadata:
     prompt: 워크스테이션이라는 이름은 Host인지 판단하는 기준일까요?
     choices:
     - id: a
-      text: 컴퓨터의 크기가 큰가
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
-    - id: b
       text: 네. 워크스테이션만 Host가 될 수 있어요.
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
-    - id: c
-      text: 사용자 손에 들 수 있는가
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
-    - id: d
+      feedback: 워크스테이션도 Host가 될 수 있지만, 이름이나 성능이 Host의 기준은 아니에요.
+    - id: b
       text: 아니요. 통신의 끝에서 데이터를 주고받는지가 기준이에요.
       feedback: 맞아요. 워크스테이션이라는 이름이나 성능이 아니라 통신에서 맡는 위치로 판단해요.
+    - id: c
+      text: 상황에 따라 달라요. 큰 컴퓨터만 Host예요.
+      feedback: Host 여부는 크기나 성능이 아니라 네트워크 통신에서 맡는 역할로 판단해요.
+    - id: d
+      text: 만들어진 연도가 기준이에요.
+      feedback: 만들어진 연도는 Host인지 판단하는 기준이 아니에요.
     - id: e
-      text: 항상 서버 역할만 하는가
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
-    answer: d
+      text: 네. 항상 서버 역할을 해야 Host예요.
+      feedback: Host는 서버뿐 아니라 네트워크로 데이터를 주고받는 다양한 장치가 될 수 있어요.
+    answer: b
   - id: u2-l06-p01-q03
     kind: short
     prompt: 네트워크 통신의 끝에서 데이터를 주고받는 장치를 가리키는 말입니다. 어떤 개념일까요? (영어 단어로 답해주세요)
@@ -64,6 +64,7 @@ page_metadata:
     alt: 스마트폰, 태블릿, 웹 서버, 워크스테이션이 한 줄로 놓여 있다가 아래의 네트워크 띠에 선으로 연결되고, 데이터 점이 기기 사이를 오간 뒤
       네 기기 위에 모두 호스트 꼬리표가 붙는 장면입니다. 마지막에 가장 작은 스마트폰과 고성능 워크스테이션이 함께 강조됩니다.
     caption: 모양과 크기가 달라도 네트워크 통신의 끝에서 데이터를 주고받는 장치라면 호스트가 될 수 있습니다. 워크스테이션이라는 이름이나 성능이 기준은 아닙니다.
+  illustration_after_paragraph: [0, 0]
 - terms:
   - 스위치(Switch)
   - 인프라(Infrastructure)
@@ -87,16 +88,16 @@ page_metadata:
       feedback: 맞아요. L2 스위치는 같은 네트워크 안에서 여러 기기를 연결하는 중간 장비예요.
     - id: b
       text: 네트워크를 통해 영상을 보는 스마트폰만
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 스마트폰은 통신의 끝 장치입니다. 질문은 여러 기기 사이의 연결을 맡는 중간 장비를 묻습니다.
     - id: c
       text: 웹 페이지를 요청하는 브라우저만
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 브라우저는 웹을 이용하는 프로그램이지, 여러 기기의 연결을 맡는 네트워크 장비가 아닙니다.
     - id: d
       text: 네트워크를 사용하지 않는 모든 컴퓨터
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 네트워크와 연결되지 않은 컴퓨터는 네트워크 기기들을 연결할 수 없습니다.
     - id: e
       text: 파일을 보내는 사용자만
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 사용자는 장비가 아닙니다. 기기 사이의 연결을 이어 주는 장비를 골라야 합니다.
     answer: a
   - id: u2-l06-p02-q02
     kind: choice
@@ -108,16 +109,16 @@ page_metadata:
       feedback: 맞아요. L2 스위치는 같은 네트워크 안의 기기들을 연결해요.
     - id: b
       text: 웹 페이지를 요청하는 브라우저 역할을 해요.
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 브라우저는 웹 페이지를 요청하는 프로그램이고, 스위치는 네트워크 안에서 기기 연결을 이어 줍니다.
     - id: c
       text: 네트워크 통신의 끝에서 데이터를 주고받아요.
       feedback: 이 설명은 통신의 끝 장치에 해당해요. 스위치는 중간에서 연결을 이어 줍니다.
     - id: d
       text: 서비스를 이용하는 스마트폰 역할을 해요.
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 스마트폰은 네트워크를 이용하는 끝 장치입니다. 스위치는 그 사이에서 기기들을 연결합니다.
     - id: e
       text: 파일을 출력하는 프린터 역할을 해요.
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 프린터는 네트워크 통신의 끝 장치입니다. 스위치는 여러 기기의 연결을 이어 줍니다.
     answer: a
   - id: u2-l06-p02-q03
     kind: short
@@ -131,6 +132,7 @@ page_metadata:
     title: 네트워크의 중간 장비
     alt: PC 세 대와 프린터가 먼저 보이고, 그 위에 L2 스위치 두 대가 나타나 기기들을 잇습니다. 이어서 스위치들이 라우터로 모여 인터넷과 연결되고 데이터 점이 PC에서 인터넷까지 이동합니다. 마지막에 L2 스위치와 라우터는 중간 장비, PC와 프린터는 통신의 끝 장치로 구분됩니다.
     caption: L2 스위치는 같은 네트워크 안의 기기를 연결하고, 라우터는 네트워크 사이에서 패킷의 다음 방향을 고릅니다. 장비 종류는 다르지만 둘 다 단말 사이의 통신을 이어 주는 인프라 장비입니다.
+  illustration_after_paragraph: [0]
 - terms:
   - 엔드포인트(End point)
   - 단말·단말기
@@ -143,19 +145,19 @@ page_metadata:
     choices:
     - id: a
       text: 서버에 연결된 전원 케이블만
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 전원 케이블은 기기를 연결하지만, 통신의 끝에서 서비스를 주고받는 장치는 아닙니다.
     - id: b
       text: 네트워크 선로 중간의 커넥터
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 선로 중간의 커넥터는 연결의 일부이지 통신의 끝 장치가 아닙니다.
     - id: c
       text: 작동하지 않는 공유기 상자
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 공유기는 보통 통신 사이에서 데이터를 전달하는 중간 장비입니다.
     - id: d
       text: 서비스를 이용하는 스마트폰이나 서비스를 제공하는 서버
       feedback: 맞아요. 서비스를 이용하는 스마트폰이나 서비스를 제공하는 서버.
     - id: e
       text: 네트워크 그림의 화살표
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 화살표는 통신 방향을 나타내는 그림 기호이지 실제 네트워크 장치가 아닙니다.
     answer: d
   - id: u2-l06-p03-q02
     kind: choice
@@ -164,19 +166,19 @@ page_metadata:
     choices:
     - id: a
       text: 사용자 손에 들린 기기만 뜻하며 서버는 포함하지 않습니다
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: Endpoint는 사용자가 손에 든 기기만 뜻하지 않습니다. 서비스를 제공하는 서버도 통신의 한쪽 끝입니다.
     - id: b
       text: 서비스를 이용하거나 제공하는 통신의 끝단 장치입니다
       feedback: 맞아요. 서비스를 이용하거나 제공하는 통신의 끝단 장치입니다.
     - id: c
       text: 네트워크에 연결된 모든 중간 장비만 뜻합니다
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 중간 장비는 데이터를 전달하는 역할이고, Endpoint는 통신의 한쪽 끝에 있는 장치를 가리킵니다.
     - id: d
       text: 오직 무선으로 연결된 기기만 가리킵니다
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: Endpoint는 무선 기기로 한정되지 않습니다. 유선으로 연결된 서버나 프린터도 될 수 있습니다.
     - id: e
       text: 패킷이 지나가는 케이블만 가리킵니다
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 케이블은 기기 사이를 연결하지만, 통신의 끝에서 서비스를 주고받는 장치는 아닙니다.
     answer: b
   - id: u2-l06-p03-q03
     kind: short
@@ -190,6 +192,7 @@ page_metadata:
     title: 선의 끝에 있는 엔드포인트
     alt: 노트북, 스위치, 프린터가 한 줄로 연결되어 있습니다. 노트북에서 인쇄 요청 점이 스위치를 지나 프린터로 가고 프린터에서 종이가 나옵니다. 이어서 노트북과 프린터에 엔드포인트 꼬리표가, 스위치에는 중간 전달 꼬리표가 붙고, 마지막에 스위치가 흐려지며 양 끝이 강조됩니다.
     caption: 노트북은 인쇄를 요청하고 프린터는 출력합니다. 연결의 양 끝에서 서비스를 이용하거나 제공하는 두 기기가 엔드포인트이고, 중간 스위치는 요청을 전달할 뿐입니다.
+  illustration_after_paragraph: [0]
 - terms:
   - 클라이언트(Client)
   - 서버(Server)
@@ -212,21 +215,21 @@ page_metadata:
     prompt: 브라우저에서 웹 페이지를 열어 달라고 요청하는 쪽은 무엇인가요?
     choices:
     - id: a
-      text: 라우터
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      text: 웹 서버처럼 요청에 응답하는 쪽
+      feedback: 서버는 요청에 응답해요. 요청을 보내는 쪽은 Client예요.
     - id: b
-      text: 탭 스위치
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      text: 웹 페이지를 열어 달라고 요청하는 브라우저
+      feedback: 맞아요. 브라우저가 요청을 보내는 Client 역할을 합니다.
     - id: c
-      text: Client
-      feedback: 맞아요. Client.
+      text: 통신의 끝에서 데이터를 주고받는 Host
+      feedback: Host는 통신의 끝 장치입니다. 이번 질문은 웹 페이지를 요청하는 역할을 묻습니다.
     - id: d
-      text: Aggregation Switch
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      text: 같은 네트워크의 기기를 연결하는 Switch
+      feedback: Switch는 기기 사이의 연결을 이어 주는 중간 장비이지, 웹 페이지를 요청하는 쪽은 아닙니다.
     - id: e
-      text: 인터넷 케이블
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
-    answer: c
+      text: 특정 통신의 한쪽 끝에 있는 Endpoint
+      feedback: Endpoint는 통신의 한쪽 끝을 가리킵니다. 요청을 보내는 역할은 Client입니다.
+    answer: b
   - id: u2-l06-p04-q02
     kind: choice
     difficulty: medium
@@ -234,16 +237,16 @@ page_metadata:
     choices:
     - id: a
       text: 기기의 크기와 가격
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 기기의 크기나 가격은 누가 요청하고 응답하는지 정하지 않습니다.
     - id: b
       text: 기기가 항상 맡는 고정된 종류
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: Client와 Server는 기기에 고정된 종류가 아니라 통신마다 맡는 역할입니다.
     - id: c
       text: 유선인지 무선인지
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 유선·무선 여부는 연결 방식이고, 요청·응답 역할을 구분하는 기준은 아닙니다.
     - id: d
       text: 컴퓨터가 만들어진 연도
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 기기가 만들어진 연도는 통신에서 맡은 역할과 관계없습니다.
     - id: e
       text: 통신에서 누가 요청하고 누가 응답을 제공하는지
       feedback: 맞아요. 통신에서 누가 요청하고 누가 응답을 제공하는지.
@@ -254,6 +257,7 @@ page_metadata:
     answers:
     - server
     feedback: 정답은 Server입니다. Client가 요청하고 Server가 그 요청에 응답해요.
+  illustration_after_paragraph: [0]
 - terms:
   - P2P(Peer to Peer)
   - 피어(Peer)
@@ -273,16 +277,16 @@ page_metadata:
     choices:
     - id: a
       text: 요청을 절대 보내지 않는 서버
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 서버는 요청에 응답하는 역할입니다. Peer는 P2P에서 다른 참여자와 데이터를 주고받습니다.
     - id: b
       text: 라우터에만 붙이는 이름
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 라우터는 네트워크 사이에서 방향을 고르는 장비이고, Peer는 데이터를 주고받는 참여자입니다.
     - id: c
       text: 네트워크를 관찰하는 장비
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 트래픽을 관찰하는 장비는 통신 참여자 Peer와 다른 역할입니다.
     - id: d
       text: 항상 파일을 받기만 하는 컴퓨터
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: Peer는 받기만 하는 참여자가 아닙니다. 가진 조각을 다른 참여자에게 보낼 수도 있습니다.
     - id: e
       text: 다른 참여자와 데이터를 주고받는 참여자
       feedback: 맞아요. 다른 참여자와 데이터를 주고받는 참여자.
@@ -294,19 +298,19 @@ page_metadata:
     choices:
     - id: a
       text: 파일을 보내기만 하고 받을 수는 없습니다
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: Peer는 받기만 하지 않습니다. 가진 파일 조각을 다른 참여자에게 보낼 수도 있습니다.
     - id: b
       text: 조각을 받으면서 이미 가진 조각을 다른 참여자에게 보낼 수도 있습니다
       feedback: 맞아요. 조각을 받으면서 이미 가진 조각을 다른 참여자에게 보낼 수도 있습니다.
     - id: c
       text: 반드시 웹 서버처럼 고정된 한 역할만 수행합니다
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: Peer는 한 컴퓨터에 고정된 서버 역할이 아닙니다. 파일을 주고받는 참여자입니다.
     - id: d
       text: 네트워크와 연결을 끊어야 데이터를 주고받습니다
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 데이터를 주고받으려면 네트워크 연결이 필요합니다.
     - id: e
       text: 모든 조각을 한 번에 직접 만들기만 합니다
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: P2P 참여자는 다른 참여자에게서 조각을 받아 모읍니다. 모든 조각을 직접 만들지는 않습니다.
     answer: b
   - id: u2-l06-p05-q03
     kind: short
@@ -319,9 +323,10 @@ page_metadata:
     title: 받으면서 나눠 주는 피어
     alt: 피어 A, 나, 피어 B 세 컴퓨터 아래에 파일 조각 1부터 4까지 칸이 있습니다. 처음에는 A가 1과 2, 나는 3, B는 4만 가지고 있습니다. 나는 A에게서 조각 1을, B에게서 조각 4를 받고, 이어서 내가 가진 조각 3을 A와 B에게 보냅니다. 마지막에 세 컴퓨터 모두에 피어 꼬리표가 붙고 나에게 받기 + 주기 표시가 붙습니다.
     caption: P2P에서는 참여자끼리 파일 조각을 직접 주고받습니다. 나는 없는 조각을 받는 동시에 가진 조각을 나눠 주므로, 받는 쪽이자 주는 쪽인 피어입니다.
+  illustration_after_paragraph: [0]
 - terms:
   - 라우터(Router)
-  - IPS
+  - ISP(Internet Service Provider)
   - 공유기
   page_id: u2l2-router
   video:
@@ -338,19 +343,19 @@ page_metadata:
     choices:
     - id: a
       text: 클라이언트
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: Client는 통신에서 요청을 보내는 역할입니다. 서로 다른 네트워크 사이의 다음 방향을 고르는 장비는 라우터입니다.
     - id: b
       text: 웹 서버
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 웹 서버는 요청에 응답하는 끝 장치이고, 라우터는 네트워크 사이에서 패킷을 전달합니다.
     - id: c
       text: 라우터
       feedback: 맞아요. 라우터.
     - id: d
       text: 프린터
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 프린터는 네트워크 통신의 끝 장치이지 네트워크 사이의 경로를 고르는 장비가 아닙니다.
     - id: e
       text: 워크스테이션
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 워크스테이션은 컴퓨터의 한 종류를 가리키는 말이며, 경로를 고르는 네트워크 장비는 아닙니다.
     answer: c
   - id: u2-l06-p06-q02
     kind: choice
@@ -362,16 +367,16 @@ page_metadata:
       feedback: 맞아요. 목적지 IP 주소와 라우팅 정보.
     - id: b
       text: 사용자의 키보드 종류
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 키보드 종류는 라우터가 패킷을 전달할 방향을 정하는 정보가 아닙니다.
     - id: c
       text: 파일 이름의 알파벳 순서
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 파일 이름이 아니라 패킷의 목적지 IP와 라우팅 정보로 다음 방향을 정합니다.
     - id: d
       text: 컴퓨터 화면의 크기
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 화면 크기는 네트워크 경로 선택과 관계없습니다.
     - id: e
       text: 브라우저의 테마 색상
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 브라우저의 색상 설정은 패킷 전달 기준이 아닙니다.
     answer: a
   - id: u2-l06-p06-q03
     kind: short
@@ -384,6 +389,7 @@ page_metadata:
     title: 다음 길을 고르는 라우터
     alt: 노트북에서 목적지 203.0.113.5가 적힌 패킷이 라우터로 갑니다. 라우터 아래 라우팅 정보 표에서 203.0.113.x는 B망이라는 줄이 강조되고, 패킷은 A망, B망, C망 세 갈래 중 B망 쪽 연결로 나가 B망에 도착합니다. 마지막에 라우터 위에 L3 장비 꼬리표가 붙습니다.
     caption: 라우터는 패킷의 목적지 IP를 라우팅 정보와 맞춰 보고 다음에 보낼 연결을 고릅니다. IP가 L3 정보이므로 라우터를 대표적인 L3 장비라고 부릅니다.
+  illustration_after_paragraph: [0]
 - terms:
   - 탭 스위치(Tap Switch)
   - 애그리게이션 스위치(Aggregation Switch)
@@ -393,23 +399,23 @@ page_metadata:
   - id: u2-l06-p07-q01
     kind: choice
     difficulty: easy
-    prompt: 네트워크 문제를 살펴볼 때 Tap Switch가 분석 장비에 보내는 것은 무엇인가요?
+    prompt: 네트워크 문제를 살펴볼 때 Tap Switch가 분석 장비에 트래픽 복사본을 보내는 목적은 무엇인가요?
     choices:
     - id: a
       text: 사용자 대신 웹 페이지를 작성하기 위해
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: Tap은 웹 페이지를 작성하는 것이 아니라 지나가는 트래픽의 복사본을 분석 장비로 보냅니다.
     - id: b
       text: 보안·분석 장비가 네트워크 흐름을 관찰하도록 하기 위해
       feedback: 맞아요. 보안·분석 장비가 네트워크 흐름을 관찰하도록 하기 위해.
     - id: c
       text: IP 주소를 모두 지우기 위해
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: Tap은 IP 주소를 지우지 않습니다. 관찰할 수 있도록 트래픽 복사본을 보냅니다.
     - id: d
       text: 컴퓨터의 화면을 공유하기 위해
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 화면 공유가 아니라 네트워크 트래픽을 분석 장비가 관찰하도록 하는 기능입니다.
     - id: e
       text: 모든 연결을 무선으로 바꾸기 위해
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: Tap은 연결을 무선으로 바꾸지 않습니다. 지나가는 트래픽을 복사해 관찰하게 합니다.
     answer: b
   - id: u2-l06-p07-q02
     kind: choice
@@ -418,19 +424,19 @@ page_metadata:
     choices:
     - id: a
       text: 탭은 여러 연결을 모으고, 애그리게이션은 트래픽을 복사해 관찰합니다
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 두 장비의 역할을 바꾸어 적었습니다. Tap은 관찰용 복사본을 보내고, Aggregation은 여러 연결을 모읍니다.
     - id: b
       text: 둘 다 웹 요청을 시작하는 클라이언트입니다
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 두 장비는 네트워크 인프라 장비입니다. 웹 요청을 시작하는 Client 역할이 아닙니다.
     - id: c
       text: 둘 다 네트워크에 연결된 스마트폰입니다
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 스마트폰은 통신의 끝 장치입니다. Tap과 Aggregation은 네트워크 흐름을 다루는 장비입니다.
     - id: d
       text: 탭은 관찰할 트래픽을 복사하고, 애그리게이션은 여러 연결을 모읍니다
       feedback: 맞아요. 탭은 관찰할 트래픽을 복사하고, 애그리게이션은 여러 연결을 모읍니다.
     - id: e
       text: 탭은 IP 목적지를 정하고, 애그리게이션은 응답을 작성합니다
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: IP 목적지로 다음 방향을 고르는 일은 라우터의 역할입니다. Tap은 트래픽을 복사하고 Aggregation은 연결을 모읍니다.
     answer: d
   - id: u2-l06-p07-q03
     kind: choice
@@ -458,6 +464,7 @@ page_metadata:
     title: 탭은 복사, 애그리게이션은 모으기
     alt: 화면 왼쪽에서는 PC와 라우터 사이의 흐름이 탭을 지나가고, 탭에서 복사본 점이 아래 분석 장비로 내려갑니다. 오른쪽에서는 1층, 2층, 3층 스위치의 연결이 애그리게이션 스위치로 모인 뒤 상위 장비로 올라갑니다. 마지막에 왼쪽에는 관찰용 흐름 복사, 오른쪽에는 여러 연결 모으기 꼬리표가 붙습니다.
     caption: 탭 스위치는 지나가는 트래픽의 복사본을 보안·분석 장비로 보내 흐름을 관찰하게 하고, 애그리게이션 스위치는 여러 구간의 연결을 모아 상위 장비로 잇습니다. 둘 다 인프라 쪽 장비입니다.
+  illustration_after_paragraph: [0]
 - terms: []
   animations:
   - file: l06-host-roles.svg
@@ -473,16 +480,16 @@ page_metadata:
     choices:
     - id: a
       text: Client만 해당하고 Host나 Endpoint는 아닙니다
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 웹 사이트를 요청하는 노트북은 Client 역할뿐 아니라 통신의 끝인 Host와 Endpoint이기도 합니다.
     - id: b
       text: Router와 Tap Switch
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: Router와 Tap Switch는 중간 네트워크 장비이지 웹 사이트를 여는 노트북의 역할이 아닙니다.
     - id: c
       text: Server와 Aggregation Switch
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 웹 사이트를 여는 동안 노트북은 요청을 보내는 Client입니다. Server는 그 요청에 응답하는 쪽입니다.
     - id: d
       text: Host이지만 통신 역할은 맡지 않습니다
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 노트북은 Host와 Endpoint이면서, 웹 페이지를 요청하는 Client 역할도 맡습니다.
     - id: e
       text: Host이자 Endpoint이며 요청을 보내는 Client
       feedback: 맞아요. Host이자 Endpoint이며 요청을 보내는 Client.
@@ -494,19 +501,19 @@ page_metadata:
     choices:
     - id: a
       text: 기기가 여러 대로 복제되기 때문입니다
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 이름이 붙는다고 기기가 복제되는 것은 아닙니다. 각 이름이 서로 다른 기준을 설명합니다.
     - id: b
       text: 그 이름들이 같은 기준으로 같은 일을 뜻하기 때문입니다
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: 이 이름들은 같은 뜻이 아닙니다. 장치, 통신의 끝, 요청 역할을 각각 구분합니다.
     - id: c
       text: Host는 장치 종류, Endpoint는 특정 통신의 끝, Client는 요청 역할을 가리키기 때문입니다
       feedback: 맞아요. Host는 장치 종류, Endpoint는 특정 통신의 끝, Client/Server는 그 통신의 요청·응답 역할을 가리켜요.
     - id: d
       text: 기기는 항상 네트워크 장비이기 때문입니다
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: Host는 장치가 네트워크 통신에 참여하는지를 가리키며, 네트워크 인프라 장비라는 뜻은 아닙니다.
     - id: e
       text: Host라는 이름은 컴퓨터의 성능만 나타내기 때문입니다
-      feedback: 다시 생각해 보세요. 본문에서 설명한 기준을 확인해 보세요.
+      feedback: Host는 컴퓨터 성능이나 크기를 나타내는 이름이 아닙니다.
     answer: c
   - id: u2-l06-p08-q03
     kind: short
@@ -514,6 +521,8 @@ page_metadata:
     answers:
     - server
     feedback: 정답은 Server입니다. Client와 Server는 기기에 고정된 이름이 아니라 통신에서 맡는 역할이에요.
+  illustration_after_paragraph: [0]
+
 animations_dir: units/02-internet-basics/lessons/02-host는-이렇게-외우자/assets/animations
 ---
 통신에 참여하는 기기를 부르는 말과, 기기가 통신에서 맡는 역할을 구분해 봅니다.
@@ -558,7 +567,7 @@ P2P(Peer to Peer) 파일 공유에서는 참여자끼리 파일 조각을 직접
 
 Router(라우터)는 목적지 IP 주소와 경로 정보를 보고 패킷을 어느 네트워크 쪽으로 보낼지 고릅니다. L2 스위치가 같은 네트워크 안을 연결한다면, 라우터는 서로 다른 네트워크를 잇습니다.
 
-집에서 쓰는 공유기는 보통 Wi-Fi 연결과 라우터 기능을 한 장비에 함께 담습니다. 지금은 라우팅 표나 경로를 계산하는 세부 방법보다, **라우터는 네트워크 사이에서 다음 방향을 고른다**는 점을 기억하세요. 자세한 라우팅은 뒤에서 다시 배웁니다.
+집에서 쓰는 공유기는 보통 Wi-Fi 연결과 라우터 기능을 한 장비에 함께 담아 인터넷 서비스 제공자(ISP)의 망으로 연결해 줍니다. 지금은 라우팅 표나 경로를 계산하는 세부 방법보다, **라우터는 네트워크 사이에서 다음 방향을 고른다**는 점을 기억하세요. 자세한 라우팅은 뒤에서 다시 배웁니다.
 
 ## 특수 장비 · 지금은 용도만 알아두기
 

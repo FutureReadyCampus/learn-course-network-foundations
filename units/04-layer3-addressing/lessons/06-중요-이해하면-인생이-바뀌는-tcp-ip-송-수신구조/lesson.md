@@ -11,43 +11,130 @@ wiki_diagram: units/04-layer3-addressing/lessons/06-중요-이해하면-인생�
 page_metadata:
 - terms: []
   illustrations:
+  - file: assets/animations/l16-daily-parcel-journey.svg
+    title: "책 한 권이 오가는 전체 길"
+    alt: "왼쪽에 발송 담당자, 접수 창구, 포장, 송장 붙이기, 트럭에 싣기가 위에서 아래로 있고, 아래 가운데 물류센터와 도로를 지나 오른쪽의 도착한 트럭, 송장 확인, 포장 풀기, 도착지 보관함, 집주인이 아래에서 위로 이어집니다. 책이 이 길을 차례로 지나가고, 마지막에 보관함에 도착한 것과 집주인이 꺼내 읽은 것이 다르다고 표시됩니다."
+    caption: "택배는 접수에서 도착까지 여러 단계를 지나고, 보관함에 도착해도 집주인이 꺼내 읽어야 끝납니다."
+    after_paragraph: -1
   - file: assets/diagrams/l16-send-receive-overview.svg
-    title: 서버 프로그램에서 브라우저까지
-    alt: 왼쪽 서버 프로그램에서 소켓과 송신 버퍼를 거쳐 TCP, IP, 링크 순으로 내려가고, 가운데 네트워크를 지나 오른쪽에서 링크, IP, TCP, 수신 버퍼, 브라우저 순으로 올라가는 지도.
-    caption: 송신 쪽은 아래로 내려가며 나누고 포장한다. 수신 쪽은 위로 올라가며 포장을 처리한다. 수신 버퍼에 도착한 바이트는 브라우저가 읽어 간다.
+    title: "서버 프로그램에서 브라우저까지"
+    alt: "왼쪽 서버 프로그램에서 소켓과 송신 버퍼를 거쳐 TCP, IP, 링크 순으로 내려가고, 가운데 네트워크를 지나 오른쪽에서 링크, IP, TCP, 수신 버퍼, 브라우저 순으로 올라가는 지도."
+    caption: "송신 쪽은 아래로 내려가며 나누고 포장한다. 수신 쪽은 위로 올라가며 포장을 처리한다. 수신 버퍼에 도착한 바이트는 브라우저가 읽어 간다."
+    after_paragraph: 3
+  - file: assets/animations/l16-whole-map-walk.svg
+    title: "서버 프로그램에서 브라우저까지"
+    alt: "왼쪽에 서버 프로그램, 소켓과 송신 버퍼, TCP 세그먼트, IP 패킷, 링크 프레임이 위에서 아래로 있고, 아래 가운데 스위치·라우터·링크를 지나 오른쪽의 링크 프레임 처리, IP 패킷 처리, TCP 바이트 흐름, 소켓과 수신 버퍼, 브라우저 프로그램이 아래에서 위로 이어집니다. 데이터가 이 길을 단계별로 지나가며, 마지막에 수신 버퍼에 도착한 것과 브라우저가 읽은 것이 다르다고 표시됩니다."
+    caption: "앞의 지도를 따라 데이터가 지나가는 순서입니다. 수신 버퍼에 도착한 바이트는 브라우저가 읽어야 쓰입니다."
     after_paragraph: 3
 - terms:
   - 송신 측 / 수신 측
+  illustrations:
+  - file: assets/animations/l16-daily-direction-of-parcel.svg
+    title: "보내는 쪽과 받는 쪽은 방향이에요"
+    alt: "왼쪽 내 집과 오른쪽 서점 사이에 화살표가 나타납니다. 서점이 책을 보내면 서점이 송신 측, 내 집이 수신 측이고, 내가 책을 보내면 방향과 역할이 바뀝니다. 한 번의 주문에서는 짧은 주문서가 내 집에서, 책이 서점에서 오가고, 마지막으로 중간의 접수소와 물류센터가 구간마다 전달합니다."
+    caption: "보내는 쪽과 받는 쪽은 고정된 직업이 아니라 지금 따라가는 짐의 방향입니다."
+    after_paragraph: -1
+  - file: assets/animations/l16-sender-receiver-direction.svg
+    title: "송신 측과 수신 측은 방향이에요"
+    alt: "왼쪽 내 PC와 오른쪽 서버 사이에 화살표가 나타납니다. 사진을 내려받을 때는 서버가 송신 측, PC가 수신 측이고, 올릴 때는 반대가 됩니다. 한 번의 다운로드에서도 짧은 요청은 PC가, 사진 데이터는 서버가 보내며, 마지막으로 중간의 스위치와 라우터가 구간마다 전달합니다."
+    caption: "송신 측과 수신 측은 장비에 붙은 고정 직업이 아니라 데이터가 이동하는 방향입니다. 스위치는 링크 안, 라우터는 네트워크 사이의 전달을 맡습니다."
+    after_paragraph: 2
+  - file: assets/animations/l16-daily-split-heavy-load.svg
+    title: "큰 짐은 상자 한도에 맞춰 나눈다"
+    alt: "전집 30kg이 한도 14.6kg짜리 상자 칸 앞에서 한 번에는 안 들어간다고 표시됩니다. 한도는 15kg에서 포장 0.2kg과 송장 0.2kg을 뺀 값이고, 전집은 14.6kg, 14.6kg, 0.8kg 세 상자로 나뉩니다. 마지막에 큰 짐은 수많은 상자가 된다는 표시가 나타납니다."
+    caption: "큰 짐은 한 상자에 담을 수 없어 한도에 맞춰 여러 상자로 나눕니다."
+    after_paragraph: 3
+  - file: assets/animations/l16-why-split-data.svg
+    title: "큰 데이터를 나누는 이유"
+    alt: "3,000B 데이터가 TCP 데이터 한도 1,460B 앞에서 한 번에는 안 들어간다고 표시됩니다. 한도는 MTU 1,500B에서 IP 헤더 20B와 TCP 헤더 20B를 뺀 값이고, 데이터는 1,460B, 1,460B, 80B 세 세그먼트로 나뉩니다. 마지막에 큰 사진은 수많은 세그먼트가 된다는 표시가 나타납니다."
+    caption: "기본 IPv4와 TCP 헤더가 각각 20B이고 옵션이 없는 예입니다. 마지막 조각은 한도를 채우지 않아도 돼요."
+    after_paragraph: 6
 - terms:
   - 프로세스 (Process)
   - 소켓 (Socket)
   - 커널 (Kernel)
+  illustrations:
+  - file: assets/animations/l16-daily-staff-window-workshop.svg
+    title: "직원은 창구에 맡기고, 작업장이 나른다"
+    alt: "왼쪽 집주인의 집에는 직원 세 명과 각자의 창구, 우체국 작업장이 있고 오른쪽 서점에는 발송 담당자와 창구, 작업장이 있습니다. 직원, 창구, 작업장이 차례로 강조되고, 서점 창구에서 맡긴 짐이 작업장과 도로를 지나 집주인 쪽 창구에 도착합니다. 맡긴 것과 상대가 꺼내 읽는 것은 다르다고 표시됩니다."
+    caption: "건물에 짐이 도착해도 누구에게 줄지는 창구가 정합니다. 맡겼다고 상대가 읽은 것은 아니에요."
+    after_paragraph: -1
+  - file: assets/animations/l16-process-socket-kernel.svg
+    title: "프로세스는 소켓에 맡기고, 커널이 나른다"
+    alt: "왼쪽 내 PC에는 브라우저, 메신저, 게임 프로세스와 각각의 소켓, 커널이 있고 오른쪽 서버에는 웹 서버 프로세스와 소켓, 커널이 있습니다. 프로세스, 소켓, 커널이 차례로 강조되고, 서버의 send 요청이 소켓과 커널, 네트워크를 지나 PC의 소켓에 도착해 브라우저가 recv로 읽어야 한다고 표시됩니다."
+    caption: "프로세스는 소켓으로 데이터를 맡기고 받고, TCP/IP 처리는 커널이 맡습니다. send와 recv는 보내기와 받기 요청 이름이에요."
+    after_paragraph: 5
 - terms:
   - 버퍼 (Buffer)
   - 프로그램 버퍼
   - 송신 버퍼
+  illustrations:
+  - file: assets/animations/l16-daily-workbench-shelf.svg
+    title: "작업대와 발송 선반은 다른 공간"
+    alt: "창고, 작업대, 접수 창구, 발송 선반, 포장 담당이 한 줄로 이어져 있습니다. 창고에서 한 더미가 작업대로 오고 창구를 거쳐 발송 선반에 놓이며, 작업대는 다시 다음 한 더미를 가져옵니다. 포장 담당은 그 더미를 상자 한도에 맞춰 더 작게 나눕니다."
+    caption: "한 번에 가져오는 양과 상자 한 개의 한도는 별개입니다."
+    after_paragraph: -1
+  - file: assets/animations/l16-program-vs-send-buffer.svg
+    title: "프로그램 버퍼와 송신 버퍼는 다르다"
+    alt: "저장장치, 프로그램 버퍼, 소켓, 송신 버퍼, TCP가 한 줄로 이어져 있습니다. photo.bmp에서 4,096B를 읽어 프로그램 버퍼에 놓고, 소켓으로 맡기면 커널의 송신 버퍼에 쌓이며, 프로그램은 다음 4,096B를 읽어 같은 일을 반복합니다. TCP는 송신 버퍼의 바이트를 1,460B, 1,460B, 1,176B로 나눕니다."
+    caption: "4,096B는 프로그램이 이번에 읽는 양이지 MTU나 MSS가 아닙니다. 그림의 조각 크기는 예시예요."
+    after_paragraph: 5
 - terms:
   - 세그멘테이션 (Segmentation)
   - 세그먼트 (Segment)
-  animations:
-  - file: l16-tcp-segmentation.svg
-    title: 바이트 흐름을 세그먼트로 나누기
-    alt: 긴 데이터가 TCP를 통과하며 세 개의 조각으로 나뉜다. A, B, C는 설명용 조각 표기이며 실제 TCP 순서 번호가 아니다.
-    caption: TCP가 바이트 흐름을 세그먼트에 나누어 담는다. 그림의 A·B·C는 조각을 구별하는 표기일 뿐 실제 TCP 헤더의 순서 번호가 아니다.
+  illustrations:
+  - file: assets/animations/l16-daily-pile-into-boxes.svg
+    title: "작업대에서 가져온 횟수와 상자 수는 다르다"
+    alt: "작업대에서 책을 2,048권씩 두 번 가져온 모습이 나타납니다. 발송 선반에서는 4,096권이 하나로 이어진 더미가 되고, 상자 한도 1,460권씩으로 나뉘어 A, B, C 세 상자가 됩니다. 상자마다 송장이 붙고, 가져온 경계와 상자의 경계가 서로 다르다고 표시됩니다."
+    caption: "책을 가져온 횟수와 상자 수는 같지 않습니다. A·B·C는 이름표예요."
+    after_paragraph: -1
+  - file: assets/animations/l16-send-vs-segment-boundary.svg
+    title: "send 횟수와 세그먼트 수는 다르다"
+    alt: "프로그램이 send를 2,048B씩 두 번 호출한 모습이 나타납니다. 송신 버퍼에서는 4,096B가 하나로 이어진 바이트 흐름이 되고, MSS 1,460B씩으로 나뉘어 A 1,460B, B 1,460B, C 1,176B 세 조각이 됩니다. 조각마다 TCP 헤더가 붙고, send의 경계와 세그먼트의 경계가 서로 다르다고 표시됩니다."
+    caption: "한 번의 send와 세그먼트 하나는 같은 단위가 아닙니다. A·B·C는 조각을 구별하는 이름표이고 실제 TCP 순서 번호가 아니에요."
+    after_paragraph: 3
 - terms:
   - 페이로드 (Payload)
   - 캡슐화 (Encapsulation)
   - IP 패킷 (IP Packet)
   - 프레임 (Frame)
-  animations:
-  - file: l16-encapsulation-packing.svg
-    title: 패킷을 다음 구간의 프레임에 싣기
-    alt: 세그먼트 A에 IP 송장이 붙어 패킷 상자가 되고 프레임 트럭에 실린다. 구간 1과 구간 2에서 서로 다른 프레임 트럭이 상자를 나른다.
-    caption: TCP 세그먼트는 IP 패킷의 내용물이다. IP 패킷은 다시 프레임에 담긴다. 라우터는 다음 링크에 맞는 새 프레임으로 바꾸어 전달한다.
+  illustrations:
+  - file: assets/animations/l16-daily-truck-per-leg.svg
+    title: "상자는 그대로, 트럭은 구간마다 바뀐다"
+    alt: "서점에서 물류 허브를 거쳐 내 집으로 가는 길에 구간 1과 구간 2가 있습니다. 책 조각이 송장을 붙여 상자가 되고, 구간 1 트럭에 실립니다. 허브에서 상자를 내려 구간 2의 새 트럭에 옮겨 싣는데, 상자의 주소는 그대로이고 트럭만 바뀝니다."
+    caption: "상자는 목적지로 가는 단위이고, 트럭은 구간마다 상자를 나르는 단위입니다."
+    after_paragraph: -1
+  - file: assets/animations/l16-packet-frame-per-link.svg
+    title: "세그먼트는 패킷에, 패킷은 프레임에"
+    alt: "서버에서 라우터를 거쳐 내 PC로 가는 길에 링크 1과 링크 2가 있습니다. 세그먼트 A에 IP 헤더가 붙어 IP 패킷이 되고 링크 1용 프레임에 실립니다. 라우터가 패킷을 꺼내 링크 2용 새 프레임에 다시 담는데, IP 주소는 그대로이고 프레임만 새로 만들어집니다."
+    caption: "NAT 같은 주소 변환이 없는 예입니다. IP 패킷의 주소는 유지되고, 프레임은 링크마다 달라집니다. 그림의 IP 주소는 설명용 예시예요."
+    after_paragraph: 5
 - terms:
   - 역캡슐화 (Decapsulation)
+  illustrations:
+  - file: assets/animations/l16-daily-unload-outside-in.svg
+    title: "집 앞에 온 상자를 바깥부터 푼다"
+    alt: "아래에서 위로 트럭 도착, 송장 확인, 포장 풀기, 보관함 층이 차례로 나타납니다. 트럭의 라벨과 봉인을 확인하면 송장 붙은 상자가 올라오고, 송장을 확인하면 조각 라벨이 붙은 상자가, 조각 라벨을 확인하면 책 조각이 보관함에 준비됩니다. 책을 읽는 일은 집주인 몫이라고 표시됩니다."
+    caption: "바깥 라벨부터 처리하며 안쪽으로 들어가고, 마지막에 책 조각이 보관함에 준비됩니다."
+    after_paragraph: -1
+  - file: assets/animations/l16-decapsulation-floors.svg
+    title: "바깥 헤더부터 처리해 바이트를 꺼낸다"
+    alt: "아래에서 위로 링크 계층, IP 계층, TCP 계층, 소켓 층이 차례로 나타납니다. 링크 계층이 프레임 헤더와 FCS를 처리하면 IP 패킷이, IP 헤더를 확인하면 TCP 세그먼트가, TCP 헤더를 확인하면 사진의 일부 바이트가 소켓에 준비됩니다. 사진으로 해석하는 일은 브라우저 몫이라고 표시됩니다."
+    caption: "각 계층은 자기 계층의 헤더를 처리하고 안쪽 단위를 올립니다. 헤더를 처리하는 일은 사진을 해석하는 일이 아니에요."
+    after_paragraph: 3
 - terms:
   - 수신 버퍼
+  illustrations:
+  - file: assets/animations/l16-daily-parcel-locker.svg
+    title: "도착한 짐과 꺼내 간 짐은 다르다"
+    alt: "도착한 트럭과 택배 보관함 64칸, 집주인이 한 줄로 있습니다. 비어 있던 보관함에 트럭이 1칸을 넣으면 63칸이 남고, 집주인이 바쁘면 보관함이 차오르며, 집주인이 꺼내 가면 다시 자리가 생깁니다. 꺼낸 뒤에도 집 안에서 열어 보는 일이 남아 있다고 표시됩니다."
+    caption: "보관함에 도착한 시각과 집주인이 꺼내 쓰는 시각은 다릅니다. 칸 너비는 단순화한 비율이에요."
+    after_paragraph: -1
+  - file: assets/animations/l16-receive-buffer-fill.svg
+    title: "수신 버퍼에 도착한 일과 읽는 일"
+    alt: "TCP, 수신 버퍼 64,000B, 브라우저가 한 줄로 있습니다. 비어 있던 수신 버퍼에 1,460B가 도착하면 62,540B가 남고, 브라우저가 느리게 읽으면 버퍼가 쌓이며, 읽어 가면 다시 여유가 생깁니다. 읽은 뒤에도 브라우저 메모리에서 해석과 저장이 남아 있다고 표시됩니다."
+    caption: "수신 버퍼에 바이트가 도착한 일, 브라우저가 읽은 일, 읽은 내용을 처리하는 일은 서로 다른 순간입니다. 칸 너비는 단순화한 비율이에요."
+    after_paragraph: 3
 animations_dir: units/04-layer3-addressing/lessons/06-중요-이해하면-인생이-바뀌는-tcp-ip-송-수신구조/assets/animations
 ---
 

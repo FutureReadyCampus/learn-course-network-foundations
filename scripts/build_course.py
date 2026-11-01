@@ -395,6 +395,14 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
                     "alt": anim["alt"],
                     "caption": anim["caption"],
                 })
+        illustration_positions = page_meta.get("illustration_after_paragraph")
+        if illustration_positions is not None:
+            if len(illustration_positions) != len(illustrations):
+                raise ValueError(f"Illustration positions do not match Page assets in {path}, page {index + 1}")
+            for illustration, after_paragraph in zip(illustrations, illustration_positions):
+                if not isinstance(after_paragraph, int) or after_paragraph < -1 or after_paragraph >= len(page["paragraphs"]):
+                    raise ValueError(f"Illustration position is outside Page paragraphs in {path}, page {index + 1}")
+                illustration["after_paragraph"] = after_paragraph
         for extra in page_meta.get("illustrations", []):
             asset = lesson_asset(path, extra["file"], lesson_meta, animation_assets)
             after_paragraph = extra.get("after_paragraph", -1)
