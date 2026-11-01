@@ -47,6 +47,60 @@ page_metadata:
     title: 층을 지날 때마다 이름이 바뀌는 데이터
     alt: 작은 데이터 상자에 먼저 포트 봉투, 다음 IP 봉투, 마지막으로 MAC 봉투가 차례로 씌워지고, 각 단계마다 Segment, Packet, Frame 이름표가 붙습니다.
     caption: 같은 데이터가 포트, IP, MAC 순으로 겹겹이 감싸지며 Segment, Packet, Frame이 됩니다.
+  questions:
+  - id: u5-l25-p05-q01
+    kind: choice
+    difficulty: easy
+    prompt: TCP가 Stream을 나누어 보내는 전송 단위는 무엇인가요?
+    choices:
+    - id: a
+      text: Segment
+      feedback: 맞아요. TCP는 Stream을 나눈 조각에 TCP 헤더를 붙여 Segment로 보내요.
+    - id: b
+      text: Frame
+      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+    - id: c
+      text: Datagram
+      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+    - id: d
+      text: 포트 번호
+      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+    - id: e
+      text: MAC 주소
+      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+    answer: a
+  - id: u5-l25-p05-q02
+    kind: choice
+    difficulty: medium
+    prompt: Stream이 MSS보다 길고 길이가 MSS로 나누어 떨어지지 않을 때 TCP의 동작으로 맞는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: MSS에 맞춰 여러 Segment로 나누고, 마지막 조각은 짧을 수 있다
+      feedback: 맞아요. TCP는 MSS 기준으로 나누고 마지막 조각은 앞 조각보다 짧을 수 있어요.
+    - id: b
+      text: Segment 하나에 Stream 전체를 넣는다
+      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+    - id: c
+      text: 모든 Segment를 같은 크기로 맞추려고 데이터를 버린다
+      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+    - id: d
+      text: 마지막 조각은 보내지 않고 기다린다
+      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+    - id: e
+      text: Stream을 Datagram으로 바꿔 보낸다
+      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+    answer: a
+  - id: u5-l25-p05-q03
+    kind: short
+    prompt: 수신 측 TCP가 도착한 Segment를 다시 이어 애플리케이션에 넘겨 주는 연속된 바이트 흐름을 무엇이라고 하나요? (한글 또는 영어로 답해주세요)
+    answers:
+    - Stream
+    - stream
+    - 스트림
+    feedback: 정답은 Stream입니다. 수신 측 TCP는 Segment를 이어 연속된 Stream으로 넘겨 줘요.
+  question_placements:
+  - question_id: u5-l25-p05-q01
+    after_paragraph: 1
 - terms:
   - 포트 번호(Port number)
   - 소켓(socket)
@@ -142,6 +196,8 @@ TCP 연결은 두 컴퓨터 사이에 전선을 새로 깔거나 인터넷 경�
 ## TCP/IP 계층과 데이터 단위
 
 계층별 식별자는 L2의 MAC 주소, L3의 IP 주소, L4의 포트 번호다. 전송 계층의 포트 번호를 논한다면 L4 수준의 정보를 다루는 것이다. 데이터 단위는 Ethernet의 Frame, IP의 Packet, TCP의 Segment, UDP의 Datagram으로 구분한다. TCP 소켓을 사용하는 애플리케이션은 Stream, 즉 연속된 바이트 흐름을 다룬다. 사진 하나의 끝처럼 애플리케이션 메시지를 구분하는 규칙은 애플리케이션 프로토콜이 정한다. TCP 연결이 끝났다는 사실과 사진 한 장의 경계는 구별해야 한다. 웹 통신과의 연결은 뒤의 웹 Unit에서 살펴본다.
+
+TCP는 이 Stream을 한 번에 보내지 않고 MSS(Maximum Segment Size)에 맞춰 여러 Segment로 나눈다. 예를 들어 4MB 파일이라면 수많은 Segment가 된다. 길이가 MSS로 나누어 떨어지지 않으면 마지막 조각은 앞의 조각보다 짧을 수 있다. 수신 측 TCP는 도착한 Segment를 순서대로 다시 이어 애플리케이션에 연속된 Stream으로 넘겨 준다. MSS가 어떤 크기이고 어떻게 정해지는지는 다음 Lesson의 연결 과정에서 이어서 본다.
 
 ## 포트와 소켓으로 클라이언트와 서버를 연결한다
 

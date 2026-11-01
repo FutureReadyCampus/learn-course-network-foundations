@@ -28,6 +28,61 @@ page_metadata:
 - terms:
   - MSS
   - 바이트(byte)
+  questions:
+  - id: u5-l26-p06-q01
+    kind: choice
+    difficulty: easy
+    prompt: MSS는 무엇의 최대 크기인가요?
+    choices:
+    - id: a
+      text: TCP Segment 하나에 실을 수 있는 TCP 데이터
+      feedback: 맞아요. MSS는 TCP 데이터 부분의 최대 크기예요.
+    - id: b
+      text: IP 패킷 전체
+      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+    - id: c
+      text: Ethernet 프레임 전체
+      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+    - id: d
+      text: TCP 연결의 최대 개수
+      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+    - id: e
+      text: 한 번에 보낼 수 있는 파일 크기
+      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+    answer: a
+  - id: u5-l26-p06-q02
+    kind: choice
+    difficulty: medium
+    prompt: IPv4/TCP 헤더가 각각 20바이트이고 옵션이 없으며 MTU가 1,500바이트일 때, 예시 MSS는 얼마인가요?
+    choices:
+    - id: a
+      text: 1,500바이트
+      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+    - id: b
+      text: 1,480바이트
+      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+    - id: c
+      text: 1,460바이트
+      feedback: 맞아요. IP와 TCP 헤더 각 20바이트를 빼면 TCP 데이터 최대 크기 예시는 1,460바이트예요.
+    - id: d
+      text: 1,440바이트
+      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+    - id: e
+      text: 20바이트
+      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+    answer: c
+  - id: u5-l26-p06-q03
+    kind: short
+    prompt: 연결 과정에서 양쪽이 교환하는, TCP 데이터 부분의 최대 크기를 줄여 부르는 말은 무엇인가요? (영어 약자로 답해주세요)
+    answers:
+    - MSS
+    - mss
+    - Maximum Segment Size
+    - maximum segment size
+    feedback: 정답은 MSS입니다. MSS는 Maximum Segment Size의 약자예요.
+  question_placements:
+  - question_id: u5-l26-p06-q01
+    after_paragraph: 1
 - terms:
   - LISTEN
   - ESTABLISHED
@@ -69,6 +124,8 @@ TCP는 3-way handshake라는 절차를 거쳐 연결한다. 연결을 기다리�
 ## MSS 등 통신 조건 교환
 
 연결 과정에서는 순서번호 외에도 통신 조건을 교환한다. 대표적인 값은 MSS(Maximum Segment Size)다. 클라이언트와 서버가 모두 1,460을 사용한다면 그 조건으로 통신한다. 상대가 1,400까지만 받을 수 있다고 알리면 그 크기에 맞추어야 한다. 연결은 서로의 조건을 알고 전송 방식을 정하는 과정으로 이해할 수 있다.
+
+MSS와 MTU는 재는 범위가 다르다. MTU는 IP 패킷 전체의 상한이고, MSS는 그 안에서 TCP 데이터 부분만의 상한이다. 기본 IPv4 헤더 20바이트와 옵션이 없는 TCP 헤더 20바이트를 MTU 1,500바이트에서 빼면 `1,500 − 20 − 20 = 1,460`바이트가 MSS가 된다. 옵션이나 IP 버전에 따라 헤더 크기가 달라지면 MSS도 달라질 수 있다. 앞에서 본 Stream은 이렇게 정해진 MSS에 맞춰 여러 Segment로 나뉘어 전송된다.
 
 ## 연결 과정의 상태 변화
 
