@@ -7,6 +7,17 @@ page_metadata:
 - terms:
   - Encapsulation(캡슐화)
   - 헤더(Header)
+  illustrations:
+  - file: assets/animations/l13-daily-box-and-label.svg
+    title: "상자에 넣고 송장을 붙인다"
+    alt: "가운데 책 한 권이 있습니다. 책이 상자에 들어가고 겉면에 송장이 붙어 하나의 택배 상자가 됩니다. 마지막에 눈 모양이 송장만 살피고 상자를 열지 않은 채 다음 방향으로 보내는 표시가 나타납니다."
+    caption: "책을 상자에 넣고 송장을 붙이면 송장만 보고 배달할 수 있어요."
+    after_paragraph: -1
+  - file: assets/animations/l13-header-makes-unit.svg
+    title: "캡슐화는 정보를 더해 단위로 만든다"
+    alt: "가운데 ‘안녕’ 데이터가 있습니다. 데이터 앞에 헤더가 붙고 둘이 하나의 전송 단위로 묶입니다. 마지막에 눈 모양이 헤더만 살피고 다음 방향으로 보내는 표시가 나타납니다."
+    caption: "캡슐화는 데이터에 헤더를 더해 하나의 전송 단위로 만드는 일이에요. 실제 네트워크의 단위는 손에 잡히는 상자가 아니라 0과 1로 된 구조입니다."
+    after_paragraph: 1
   questions:
   - id: u4-l13-p01-q01
     kind: choice
@@ -87,6 +98,17 @@ page_metadata:
 - terms:
   - 단위화
   - 마트료시카
+  illustrations:
+  - file: assets/animations/l13-daily-unit-boxes.svg
+    title: "모양이 달라도 상자에 담으면 같은 단위"
+    alt: "책, 꽃, 텐트처럼 모양이 다른 물건 세 개가 있습니다. 각각 송장이 붙은 같은 크기의 상자에 담기고, 상자들이 함께 한 줄로 이동합니다. 마지막에 상자 속 내용물이 그대로 보이고 자물쇠에 금지 표시가 붙어, 포장이 암호화가 아님을 보여 줍니다."
+    caption: "포장은 다루기 쉬운 단위를 만들 뿐, 내용물을 숨기지는 않아요."
+    after_paragraph: -1
+  - file: assets/animations/l13-unit-not-encrypted.svg
+    title: "헤더를 붙이면 같은 형식의 단위"
+    alt: "문자, 사진, 영상처럼 종류가 다른 데이터 세 개가 있습니다. 각각 헤더가 붙은 같은 형식의 단위로 묶이고 함께 한 줄로 이동합니다. 마지막에 내용이 그대로 보이고 자물쇠에 금지 표시가 붙어, 캡슐화가 암호화가 아님을 보여 줍니다."
+    caption: "캡슐화 자체는 내용을 숨기지 않아요. 보호하려면 암호화 같은 별도 기능이 필요합니다."
+    after_paragraph: 2
   questions:
   - id: u4-l13-p02-q01
     kind: choice
@@ -170,11 +192,17 @@ page_metadata:
   - 패킷(Packet)
   - 프레임(Frame)
   - Payload(페이로드)
-  animations:
-  - file: l13-encapsulation-nesting.svg
-    title: 안쪽부터 감싸기 · 데이터가 프레임이 되기까지
-    alt: 가운데의 '안녕' 데이터 상자에 TCP 헤더, IP 헤더, 프레임 헤더가 차례로 붙으며 더 큰 상자가 이를 감싸는 장면입니다. 각 상자의 이름이 세그먼트, 패킷, 프레임으로 바뀝니다.
-    caption: '''안녕'' 데이터에 TCP, IP, 프레임 헤더가 차례로 덧붙으며 마트료시카처럼 겹겹이 감싸집니다.'
+  illustrations:
+  - file: assets/animations/l13-daily-boxes-nesting.svg
+    title: "안쪽 상자부터 차례로 감싼다"
+    alt: "가운데 책에서 시작해 작은 상자, 중간 상자, 큰 상자가 차례로 바깥을 감쌉니다. 상자마다 송장이 붙고, 가장 바깥 큰 상자에는 봉인 테이프도 붙습니다."
+    caption: "안쪽부터 바깥으로 감싸고, 한 겹이 끝날 때마다 하나의 상자가 완성돼요."
+    after_paragraph: -1
+  - file: assets/animations/l13-frame-packet-segment.svg
+    title: "프레임 안에 패킷, 패킷 안에 세그먼트"
+    alt: "가운데 ‘안녕’ 데이터에서 시작해 TCP 헤더가 붙은 세그먼트, IP 헤더가 붙은 IP 패킷, 프레임 헤더와 FCS가 붙은 프레임이 차례로 바깥을 감쌉니다."
+    caption: "L4에서 세그먼트, L3에서 IP 패킷, L2에서 프레임이 완성됩니다. 실제 필드와 크기는 프로토콜마다 달라요."
+    after_paragraph: 2
   questions:
   - id: u4-l13-p03-q01
     kind: choice
@@ -254,11 +282,17 @@ page_metadata:
 
 - terms:
   - Decapsulation(디캡슐레이션, 역캡슐화)
-  animations:
-  - file: l13-decapsulation-peel.svg
-    title: 바깥부터 풀기 · 프레임에서 데이터까지
-    alt: 서버에 도착한 가장 큰 프레임 상자에서 프레임 헤더, IP 헤더, TCP 헤더가 바깥부터 차례로 떨어져 나가고 마지막에 '안녕' 데이터만 남는 장면입니다.
-    caption: 서버에 도착한 프레임이 마트료시카처럼 겉부터 헤더를 하나씩 떼며 '안녕'이 나옵니다.
+  illustrations:
+  - file: assets/animations/l13-daily-unwrapping.svg
+    title: "바깥 상자부터 차례로 푼다"
+    alt: "큰 상자가 도착해 송장과 봉인 테이프가 확인됩니다. 큰 상자가 사라지고 중간 상자의 송장이 확인되고, 다시 작은 상자의 송장이 확인된 뒤 책만 남아 전달됩니다."
+    caption: "받는 쪽은 바깥 상자부터 풀고, 상자마다 자기 겉면의 송장만 확인해요."
+    after_paragraph: -1
+  - file: assets/animations/l13-decapsulation-order.svg
+    title: "바깥 헤더부터 처리해 안쪽을 꺼낸다"
+    alt: "프레임이 도착해 헤더와 FCS가 확인됩니다. 프레임이 벗겨지고 IP 헤더가 확인되고, 이어 세그먼트의 TCP 헤더가 확인된 뒤 데이터만 남아 전달됩니다."
+    caption: "각 계층은 자기 계층의 헤더만 읽고 안쪽 단위를 다음 계층에 넘겨요."
+    after_paragraph: 3
   questions:
   - id: u4-l13-p04-q01
     kind: choice
@@ -342,6 +376,17 @@ page_metadata:
   - Decapsulation(역캡슐화)
   - Header(헤더)
   - Payload(페이로드)
+  illustrations:
+  - file: assets/animations/l13-daily-view-and-order.svg
+    title: "누가 보느냐에 따라 달라지는 내용물"
+    alt: "송장과 내용물로 이뤄진 중간 상자가 보입니다. 큰 상자의 송장과 봉인 테이프가 둘러싸면 중간 상자 전체가 큰 상자의 내용물이 됩니다. 이어 책에서 큰 상자까지 감싸는 순서와, 큰 상자에서 책까지 푸는 순서가 차례로 나타납니다."
+    caption: "같은 상자도 보는 쪽에 따라 송장이 붙은 단위이거나 다른 상자의 내용물이 됩니다."
+    after_paragraph: -1
+  - file: assets/animations/l13-header-payload-by-layer.svg
+    title: "헤더와 페이로드는 계층에 따라 달라진다"
+    alt: "IP 헤더와 페이로드로 이뤄진 IP 패킷이 보입니다. 프레임 헤더와 FCS가 둘러싸면 IP 패킷 전체가 프레임의 페이로드가 됩니다. 이어 보낼 때는 데이터, 세그먼트, 패킷, 프레임 순서로, 받을 때는 그 반대 순서로 처리한다고 나타납니다."
+    caption: "IP 패킷은 L3에서는 헤더와 페이로드를 가진 패킷이고, L2 프레임 안에서는 페이로드예요."
+    after_paragraph: 2
   questions:
   - id: u4-l13-p05-q01
     kind: choice
