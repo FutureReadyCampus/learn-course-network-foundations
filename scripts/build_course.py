@@ -70,8 +70,8 @@ def page_questions(value, path: Path, page_number: int) -> list[dict]:
         raise ValueError(f"Page questions must be a list in {path}, page {page_number}")
     if not value:
         return []
-    if len(value) < 3:
-        raise ValueError(f"Page needs at least three questions in {path}, page {page_number}")
+    if len(value) < 2:
+        raise ValueError(f"Page needs at least two questions in {path}, page {page_number}")
     for index, question in enumerate(value, 1):
         where = f"{path}, page {page_number}, question {index}"
         if not isinstance(question, dict) or not isinstance(question.get("prompt"), str) or not question["prompt"].strip():

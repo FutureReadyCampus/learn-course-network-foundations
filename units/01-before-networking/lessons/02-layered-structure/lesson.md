@@ -110,14 +110,6 @@ pages:
         text: 통신 속도만 알 수 있습니다
         feedback: 다시 확인해 보세요. 요소와 요소 사이의 관계를 함께 볼 수 있습니다
       answer: a
-    - id: u1-02-layered-structure-p01-q03
-      kind: short
-      prompt: 여러 요소를 층처럼 쌓아 요소 사이의 관계까지 나타내는 구조를 무엇이라고 하나요?
-      answers:
-      - Layered 구조
-      - 계층 구조
-      - layered structure
-      feedback: Layered 구조(계층 구조)는 요소를 층처럼 쌓아 요소 사이의 관계까지 나타냅니다.
     questions:
     - id: u1-02-layered-structure-p01-q01
       kind: choice
@@ -161,14 +153,6 @@ pages:
         text: 통신 속도만 알 수 있습니다
         feedback: 다시 확인해 보세요. 요소와 요소 사이의 관계를 함께 볼 수 있습니다
       answer: a
-    - id: u1-02-layered-structure-p01-q03
-      kind: short
-      prompt: 여러 요소를 층처럼 쌓아 요소 사이의 관계까지 나타내는 구조를 무엇이라고 하나요?
-      answers:
-      - Layered 구조
-      - 계층 구조
-      - layered structure
-      feedback: Layered 구조(계층 구조)는 요소를 층처럼 쌓아 요소 사이의 관계까지 나타냅니다.
   - concepts:
       - concept-basic-02-04
       - concept-basic-02-05
