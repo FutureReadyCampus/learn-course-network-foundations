@@ -87,12 +87,6 @@ page_metadata:
       text: "Ethernet 케이블 번호"
       feedback: "다시 확인해 보세요. Ethernet 케이블 번호."
     answer: d
-  - id: u4-01-p01-q03
-    kind: short
-    prompt: "현재 연결 구간에서 Ethernet 프레임을 전달할 상대를 구별하는 주소는 무엇인가요? (영어 표현으로 답해주세요)"
-    answers:
-    - "MAC address"
-    feedback: "정답은 MAC address입니다."
   question_placements:
   - question_id: u4-01-p01-q01
     after_paragraph: 1
@@ -273,12 +267,6 @@ page_metadata:
       text: "168"
       feedback: "맞아요. 168입니다."
     answer: e
-  - id: u4-01-p03-q03
-    kind: short
-    prompt: "네트워크 어댑터의 IP 주소를 Windows 명령 프롬프트에서 확인할 때 실행하는 명령은 무엇인가요? (명령어로 답해주세요)"
-    answers:
-    - "ipconfig"
-    feedback: "정답은 ipconfig입니다."
   question_placements:
   - question_id: u4-01-p03-q01
     after_paragraph: 2
@@ -456,10 +444,12 @@ page_metadata:
     answer: c
   - id: u4-01-p05-q03
     kind: short
-    prompt: "IP 주소에서 장치가 속한 네트워크를 식별하는 부분을 무엇이라고 하나요? (Network ID 또는 Host ID 중 영어 표현으로 답해주세요)"
+    prompt: "IP 주소를 네트워크 부분과 호스트 부분으로 나눌 때, 장치가 속한 네트워크를 가리키는 부분은 무엇인가요? (한글 또는 영어로 답해주세요)"
     answers:
     - "Network ID"
     - "network id"
+    - "네트워크 ID"
+    - "네트워크 부분"
     feedback: "정답은 Network ID입니다."
   question_placements:
   - question_id: u4-01-p05-q01
@@ -546,10 +536,11 @@ page_metadata:
     answer: e
   - id: u4-01-p06-q03
     kind: short
-    prompt: "IP 주소에서 네트워크와 호스트의 경계를 나타내는 /24 같은 표기를 무엇이라고 하나요? (영어 표현으로 답해주세요)"
+    prompt: "IP 주소에서 네트워크와 호스트의 경계를 나타내는 /24 같은 표기를 무엇이라고 하나요? (한글 또는 영어로 답해주세요)"
     answers:
     - "prefix length"
     - "prefix-length"
+    - "프리픽스 길이"
     feedback: "정답은 prefix length입니다."
   - id: u4-01-p06-q04
     kind: choice
@@ -677,9 +668,10 @@ page_metadata:
     answer: b
   - id: u4-01-p07-q03
     kind: short
-    prompt: "목적지 IP와 경로 정보를 살펴 다음 네트워크 쪽으로 패킷을 전달하는 장치는 무엇인가요? (영어 단어로 답해주세요)"
+    prompt: "목적지 IP와 경로 정보를 살펴 다음 네트워크 쪽으로 패킷을 전달하는 장치는 무엇인가요? (한글 또는 영어로 답해주세요)"
     answers:
     - "router"
+    - "라우터"
     feedback: "정답은 router입니다."
   - id: u4-01-p07-q04
     kind: choice
