@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+  <rect width="960" height="540" fill="#0f1115"/>
+
+  <!-- 제목 + 고정 결론 -->
+  <text x="480" y="58" text-anchor="middle" font-size="34" font-weight="700" fill="#e6e8ec">상자 하나, 안내 세 가지</text>
+  <text x="480" y="100" text-anchor="middle" font-size="24" fill="#9aa3b2">안내마다 답하는 질문이 다릅니다</text>
+
+  <rect x="70" y="150" width="400" height="290" rx="10" fill="#171a21" stroke="#ffb454" stroke-width="3"/>
+  <rect x="245" y="150" width="50" height="290" fill="#ffb454" fill-opacity="0.18"/>
+  <rect x="105" y="215" width="330" height="170" rx="6" fill="#e6e8ec"/>
+  <text x="125" y="262" font-size="24" font-weight="700" fill="#0f1115">행복시 바다로 123</text>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2;0.22;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="115" y="233" width="310" height="40" rx="6" fill="none" stroke="#6ea8fe" stroke-width="4"/><line x1="425" y1="253" x2="530" y2="207" stroke="#6ea8fe" stroke-width="2" stroke-dasharray="6 5"></line><rect x="530" y="175" width="380" height="64" rx="10" fill="#171a21" stroke="#6ea8fe" stroke-width="3"/><text x="720" y="216" text-anchor="middle" font-size="24" fill="#e6e8ec">어느 집까지 가져갈까?</text></g>
+  <text x="125" y="310" font-size="24" font-weight="700" fill="#0f1115">B동 출입구</text>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.4;0.42;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="115" y="281" width="310" height="40" rx="6" fill="none" stroke="#7ee7c7" stroke-width="4"/><line x1="425" y1="301" x2="530" y2="307" stroke="#7ee7c7" stroke-width="2" stroke-dasharray="6 5"></line><rect x="530" y="275" width="380" height="64" rx="10" fill="#171a21" stroke="#7ee7c7" stroke-width="3"/><text x="720" y="316" text-anchor="middle" font-size="24" fill="#e6e8ec">어느 문으로 들어갈까?</text></g>
+  <text x="125" y="358" font-size="24" font-weight="700" fill="#0f1115">301호 김하늘</text>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.6;0.62;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="115" y="329" width="310" height="40" rx="6" fill="none" stroke="#ffb454" stroke-width="4"/><line x1="425" y1="349" x2="530" y2="407" stroke="#ffb454" stroke-width="2" stroke-dasharray="6 5"></line><rect x="530" y="375" width="380" height="64" rx="10" fill="#171a21" stroke="#ffb454" stroke-width="3"/><text x="720" y="416" text-anchor="middle" font-size="24" fill="#e6e8ec">안에서 누구에게 건넬까?</text></g>
+
+  <!-- 자막 바 -->
+  <rect x="0" y="478" width="960" height="62" fill="#171a21"/>
+  <g font-size="26" fill="#e6e8ec" text-anchor="middle">
+    <text x="480" y="518" opacity="1">상자 겉면에 안내가 여러 줄 적혀 있습니다
+      <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.19;0.2;0.99;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">건물 주소는 ‘어느 집까지 가져갈까?’에 답합니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19;0.2;0.39;0.4;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">출입구 표시는 ‘어느 문으로 들어갈까?’를 알려 줍니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.39;0.4;0.59;0.6;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">받는 사람·방 번호는 ‘누구에게 건넬까?’를 알려 줍니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.59;0.6;0.79;0.8;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">한 상자에 함께 적혀 있어도 맡은 일은 서로 다릅니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.79;0.8;0.98;0.99;1" dur="10s" repeatCount="indefinite"/></text>
+  </g>
+<g aria-label="재생 단계"><rect x="40" y="28" width="88" height="40" rx="20" fill="#171a21" stroke="#3d4b60" stroke-width="2"/><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="1">1 / 5<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.19;0.2;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">2 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19;0.2;0.39;0.4;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">3 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.39;0.4;0.59;0.6;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">4 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.59;0.6;0.79;0.8;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">5 / 5<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.79;0.8;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text></g>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+  <rect width="960" height="540" fill="#0f1115"/>
+
+  <!-- 제목 + 고정 결론 -->
+  <text x="480" y="58" text-anchor="middle" font-size="34" font-weight="700" fill="#e6e8ec">상가 건물과 관리사무소</text>
+  <text x="480" y="100" text-anchor="middle" font-size="24" fill="#9aa3b2">가게는 설비를 직접 만지지 않고 신청합니다</text>
+<rect x="100" y="124" width="500" height="104" rx="8" fill="#171a21" stroke="#6ea8fe" stroke-width="3"/>
+<rect x="100" y="240" width="500" height="104" rx="8" fill="#171a21" stroke="#7ee7c7" stroke-width="3"/>
+<rect x="100" y="356" width="500" height="104" rx="8" fill="#171a21" stroke="#ffb454" stroke-width="3"/>
+<text x="530" y="184" text-anchor="middle" font-size="22" font-weight="700" fill="#6ea8fe" >가게</text>
+<text x="530" y="300" text-anchor="middle" font-size="22" font-weight="700" fill="#7ee7c7" >관리사무소</text>
+<text x="530" y="416" text-anchor="middle" font-size="22" font-weight="700" fill="#ffb454" >설비</text>
+<circle cx="180" cy="160" r="14" fill="#6ea8fe"/><rect x="164" y="178" width="32" height="42" rx="12" fill="#6ea8fe"/>
+<circle cx="180" cy="276" r="14" fill="#7ee7c7"/><rect x="164" y="294" width="32" height="42" rx="12" fill="#7ee7c7"/>
+<rect x="230" y="146" width="150" height="62" rx="4" fill="#0f1115" stroke="#3d4b60" stroke-width="3"/>
+<path d="M222 146 h166 l-10 -14 h-146 z" fill="#6ea8fe"/>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.7;0.72;0.97;0.99;1" dur="15s" repeatCount="indefinite"/><rect x="236" y="152" width="138" height="50" rx="2" fill="#ffb454" fill-opacity="0.55"/></g>
+<rect x="220" y="304" width="110" height="14" rx="3" fill="#3d4b60"/><rect x="232" y="318" width="10" height="18" fill="#3d4b60"/><rect x="308" y="318" width="10" height="18" fill="#3d4b60"/>
+<line x1="140" y1="410" x2="410" y2="410" stroke="#9aa3b2" stroke-width="8" stroke-linecap="round"></line>
+<circle cx="270" cy="410" r="14" fill="#0f1115" stroke="#9aa3b2" stroke-width="4"><animate attributeName="stroke" values="#9aa3b2;#9aa3b2;#7ee7c7;#7ee7c7;#9aa3b2;#9aa3b2" keyTimes="0;0.6;0.62;0.97;0.99;1" dur="15s" repeatCount="indefinite"/></circle>
+<path d="M352 372 l-14 24 h12 l-8 22 l22 -30 h-12 l10 -16 z" fill="#ffb454"/>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.22;0.24;0.4;0.42;1" dur="15s" repeatCount="indefinite"/><line x1="440" y1="214" x2="440" y2="392" stroke="#ffb454" stroke-width="3" stroke-dasharray="8 6"></line><path d="M424 274 l32 32 M456 274 l-32 32" stroke="#ffb454" stroke-width="6" stroke-linecap="round"/></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.4;0.42;0.8;0.82;1" dur="15s" repeatCount="indefinite"/><g><animateTransform attributeName="transform" type="translate" values="212,190;212,190;275,288;275,288" keyTimes="0;0.42;0.52;1" dur="15s" repeatCount="indefinite"/><rect x="-12" y="-15" width="24" height="30" rx="2" fill="#e6e8ec"/><line x1="-6" y1="-6" x2="6" y2="-6" stroke="#0f1115" stroke-width="2"/><line x1="-6" y1="2" x2="6" y2="2" stroke="#0f1115" stroke-width="2"/></g></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.62;0.64;0.97;0.99;1" dur="15s" repeatCount="indefinite"/><line x1="410" y1="410" x2="410" y2="178" stroke="#6ea8fe" stroke-width="6" ></line><line x1="380" y1="178" x2="410" y2="178" stroke="#6ea8fe" stroke-width="6" ></line></g>
+<circle r="8" fill="#6ea8fe" opacity="0"><animateMotion path="M410 404 V180 H384" keyPoints="0;0;1;1" keyTimes="0;0.63;0.7;1" calcMode="linear" dur="15s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.625;0.63;0.7;0.705;1" dur="15s" repeatCount="indefinite"/></circle>
+<circle r="8" fill="#6ea8fe" opacity="0"><animateMotion path="M410 404 V180 H384" keyPoints="0;0;1;1" keyTimes="0;0.66;0.73;1" calcMode="linear" dur="15s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.655;0.66;0.73;0.735;1" dur="15s" repeatCount="indefinite"/></circle>
+<circle r="8" fill="#6ea8fe" opacity="0"><animateMotion path="M410 404 V180 H384" keyPoints="0;0;1;1" keyTimes="0;0.69;0.76;1" calcMode="linear" dur="15s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.685;0.69;0.76;0.765;1" dur="15s" repeatCount="indefinite"/></circle>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.8;0.82;0.97;0.99;1" dur="15s" repeatCount="indefinite"/><line x1="604" y1="172" x2="640" y2="172" stroke="#6ea8fe" stroke-width="3" ></line><text x="652" y="180" font-size="24" font-weight="700" fill="#6ea8fe">애플리케이션</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.8;0.82;0.97;0.99;1" dur="15s" repeatCount="indefinite"/><line x1="604" y1="288" x2="640" y2="288" stroke="#7ee7c7" stroke-width="3" ></line><text x="652" y="296" font-size="24" font-weight="700" fill="#7ee7c7">커널</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.8;0.82;0.97;0.99;1" dur="15s" repeatCount="indefinite"/><line x1="604" y1="404" x2="640" y2="404" stroke="#ffb454" stroke-width="3" ></line><text x="652" y="412" font-size="24" font-weight="700" fill="#ffb454">하드웨어</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.84;0.86;0.97;0.99;1" dur="15s" repeatCount="indefinite"/><text x="652" y="210" font-size="20" fill="#9aa3b2">User mode</text><text x="652" y="326" font-size="20" fill="#9aa3b2">Kernel mode</text></g>
+  <!-- 자막 바 -->
+  <rect x="0" y="478" width="960" height="62" fill="#171a21"/>
+  <g font-size="26" fill="#e6e8ec" text-anchor="middle">
+    <text x="480" y="518" opacity="1">가게, 관리사무소, 설비가 층층이 있는 건물입니다
+      <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.19;0.2;0.99;1" dur="15s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">가게가 배관을 직접 만지면 건물이 멈출 수 있어요
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19;0.2;0.39;0.4;1" dur="15s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">그래서 관리사무소에 신청서를 냅니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.39;0.4;0.59;0.6;1" dur="15s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">관리사무소가 설비를 열어 가게로 보내 줍니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.59;0.6;0.79;0.8;1" dur="15s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">컴퓨터에선 앱과 커널이 쓰는 권한이 다릅니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.79;0.8;0.98;0.99;1" dur="15s" repeatCount="indefinite"/></text>
+  </g>
+<g aria-label="재생 단계"><rect x="40" y="28" width="88" height="40" rx="20" fill="#171a21" stroke="#3d4b60" stroke-width="2"/><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="1">1 / 5<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.19;0.2;1" calcMode="discrete" dur="15s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">2 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19;0.2;0.39;0.4;1" calcMode="discrete" dur="15s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">3 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.39;0.4;0.59;0.6;1" calcMode="discrete" dur="15s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">4 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.59;0.6;0.79;0.8;1" calcMode="discrete" dur="15s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">5 / 5<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.79;0.8;1" calcMode="discrete" dur="15s" repeatCount="indefinite"/></text></g>
+</svg>

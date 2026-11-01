@@ -61,7 +61,12 @@ pages:
       - concept-basic-02-03
     illustration_after_paragraph:
       - 12
-    illustrations: []
+    illustrations:
+      - file: assets/l02-daily-kitchen-roles.svg
+        title: "요리 팀의 역할과 순서"
+        alt: "주방에 재료 손질, 불 담당, 접시 담기 세 사람이 나란히 섭니다. 순서를 정하지 않자 셋이 한 재료를 두고 머뭇거리고, 손질에서 불로, 불에서 담기로 가는 화살표가 생기자 재료가 차례로 넘어가 접시에 담깁니다."
+        caption: "역할(요소)을 나누고 누가 먼저인지(관계)를 정해야 주방이 돌아갑니다. 시스템 설계도 요소를 정하고 그 사이의 관계를 정하는 일입니다."
+        after_paragraph: 8
     questions:
     - id: u1-02-layered-structure-p01-q01
       kind: choice
@@ -181,6 +186,11 @@ pages:
           장면입니다.
         caption: OSI라는 설명 틀을 TCP, IP, 드라이버와 NIC의 구현 위치에 연결해 봅니다.
         after_paragraph: 12
+      - file: assets/l02-daily-school-stairs.svg
+        title: "한 칸씩 오르는 학교 과정"
+        alt: "초등학교, 중학교, 고등학교, 대학교가 계단 네 칸으로 놓이고 학생이 한 칸씩 올라 대학교 칸에서 학사모를 씁니다. 이어서 고등학교, 중학교, 초등학교 칸에 차례로 확인 표시가 붙고, 1부터 4까지 숫자가 한 줄로 이어집니다."
+        caption: "4는 3을, 3은 2를, 2는 1을 전제로 합니다. 이렇게 전제가 끊김 없이 한 줄로 이어진 모양을 계층 구조로 그립니다."
+        after_paragraph: 3
     questions:
     - id: u1-02-layered-structure-p02-q01
       kind: choice

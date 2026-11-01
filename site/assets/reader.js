@@ -126,19 +126,20 @@
       object.setAttribute("aria-label", illustration.alt || illustration.title || "");
       object.setAttribute("title", illustration.alt || illustration.title || "");
       object.addEventListener("load", () => {
-        try { object.contentDocument?.documentElement.unpauseAnimations?.(); } catch { /* Browser may block an inaccessible SVG document. */ }
+        try {
+          const root = object.contentDocument?.documentElement;
+          if (!root || !root.querySelector("animate, animateMotion, animateTransform, set")) return;
+          figure.classList.add("has-animation-control");
+          figure.append(controlFor(object));
+          root.unpauseAnimations?.();
+        } catch { /* Browser may block an inaccessible SVG document. */ }
       });
-      figure.append(object, controlFor(object));
+      figure.append(object);
     } else {
       const image = document.createElement("img");
       image.src = src;
       image.alt = illustration.alt || "";
       figure.append(image);
-    }
-    if (illustration.caption) {
-      const caption = document.createElement("figcaption");
-      caption.textContent = illustration.caption;
-      figure.append(caption);
     }
     if (illustration.credit || illustration.source_url || illustration.license_url) {
       const credit = document.createElement("p");
@@ -165,18 +166,15 @@
     }
     return figure;
   };
-  const renderQuiz = (questions) => {
+  const renderQuiz = (questions, startIndex = 0) => {
     const section = document.createElement("section");
     section.className = "page-quiz";
     section.setAttribute("aria-label", "이 페이지의 퀴즈");
-    const heading = document.createElement("h2");
-    heading.textContent = "개념 확인 퀴즈";
-    section.append(heading);
     questions.forEach((question, index) => {
       const card = document.createElement("fieldset");
       card.className = "page-quiz-question";
       const legend = document.createElement("legend");
-      legend.textContent = `${index + 1}. ${question.prompt}`;
+      legend.textContent = `${startIndex + index + 1}. ${question.prompt}`;
       card.append(legend);
       const result = document.createElement("p");
       result.className = "page-quiz-result";
@@ -267,9 +265,9 @@
     const inlineQuizzes = page.inline_quizzes || [];
     let nextPage;
     const prose = renderProse(page.paragraphs || [], page.illustrations || [], inlineQuizzes,
-      (quiz) => renderQuiz(quiz.questions));
+      (quiz) => renderQuiz(quiz.questions, quiz.start_index || 0));
     main.append(prose);
-    if (questions.length) main.append(renderQuiz(questions));
+    if (questions.length) main.append(renderQuiz(questions, page.question_start_index || 0));
     const previous = list[state.lessonIndex - 1];
     const next = list[state.lessonIndex + 1];
     const navFooter = document.createElement("nav");

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+  <rect width="960" height="540" fill="#0f1115"/>
+
+  <!-- 제목 + 고정 결론 -->
+  <text x="480" y="58" text-anchor="middle" font-size="34" font-weight="700" fill="#e6e8ec">Unicast와 Broadcast</text>
+  <text x="480" y="100" text-anchor="middle" font-size="24" fill="#9aa3b2">한 곳에 보내기 vs 범위 안 모두에게 보내기</text>
+
+  <rect x="40" y="128" width="620" height="336" rx="14" fill="#171a21" fill-opacity="0.4" stroke="#3d4b60" stroke-width="3" stroke-dasharray="10 8"><animate attributeName="stroke" values="#3d4b60;#3d4b60;#7ee7c7;#7ee7c7;#3d4b60" keyTimes="0;0.8;0.82;0.98;1" dur="10s" repeatCount="indefinite"/></rect>
+  <g opacity="1"><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.78;0.8;0.98;1" dur="10s" repeatCount="indefinite"/><text x="60" y="164" text-anchor="start" font-size="20" fill="#9aa3b2">같은 범위</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.8;0.82;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><text x="60" y="164" text-anchor="start" font-size="22" font-weight="700" fill="#7ee7c7">브로드캐스트 도메인</text></g>
+  <line x1="215" y1="296" x2="355" y2="176" stroke="#3d4b60" stroke-width="3" ></line>
+  <line x1="215" y1="296" x2="355" y2="256" stroke="#3d4b60" stroke-width="3" ></line>
+  <line x1="215" y1="296" x2="355" y2="336" stroke="#3d4b60" stroke-width="3" ></line>
+  <line x1="215" y1="296" x2="355" y2="416" stroke="#3d4b60" stroke-width="3" ></line>
+  <line x1="215" y1="296" x2="355" y2="336" stroke="#6ea8fe" stroke-width="5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.23;0.25;0.38;0.4;1" dur="10s" repeatCount="indefinite"/></line>
+  <circle r="10" fill="#6ea8fe" opacity="0"><animateMotion path="M215,296 L355,336" keyPoints="0;0;1;1" keyTimes="0;0.23;0.32;1" calcMode="linear" dur="10s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.225;0.23;0.32;0.325;1" dur="10s" repeatCount="indefinite"/></circle>
+  <line x1="215" y1="296" x2="355" y2="176" stroke="#ffb454" stroke-width="5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.43;0.45;0.97;0.99;1" dur="10s" repeatCount="indefinite"/></line>
+  <circle r="10" fill="#ffb454" opacity="0"><animateMotion path="M215,296 L355,176" keyPoints="0;0;1;1" keyTimes="0;0.43;0.52;1" calcMode="linear" dur="10s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.425;0.43;0.52;0.525;1" dur="10s" repeatCount="indefinite"/></circle>
+  <line x1="215" y1="296" x2="355" y2="256" stroke="#ffb454" stroke-width="5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.43;0.45;0.97;0.99;1" dur="10s" repeatCount="indefinite"/></line>
+  <circle r="10" fill="#ffb454" opacity="0"><animateMotion path="M215,296 L355,256" keyPoints="0;0;1;1" keyTimes="0;0.43;0.52;1" calcMode="linear" dur="10s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.425;0.43;0.52;0.525;1" dur="10s" repeatCount="indefinite"/></circle>
+  <line x1="215" y1="296" x2="355" y2="336" stroke="#ffb454" stroke-width="5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.43;0.45;0.97;0.99;1" dur="10s" repeatCount="indefinite"/></line>
+  <circle r="10" fill="#ffb454" opacity="0"><animateMotion path="M215,296 L355,336" keyPoints="0;0;1;1" keyTimes="0;0.43;0.52;1" calcMode="linear" dur="10s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.425;0.43;0.52;0.525;1" dur="10s" repeatCount="indefinite"/></circle>
+  <line x1="215" y1="296" x2="355" y2="416" stroke="#ffb454" stroke-width="5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.43;0.45;0.97;0.99;1" dur="10s" repeatCount="indefinite"/></line>
+  <circle r="10" fill="#ffb454" opacity="0"><animateMotion path="M215,296 L355,416" keyPoints="0;0;1;1" keyTimes="0;0.43;0.52;1" calcMode="linear" dur="10s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.425;0.43;0.52;0.525;1" dur="10s" repeatCount="indefinite"/></circle>
+  <rect x="85" y="270" width="130" height="52" rx="8" fill="#171a21" stroke="#ffb454" stroke-width="3"></rect><text x="150" y="303.92" text-anchor="middle" font-size="22" font-weight="700" fill="#e6e8ec">PC 1</text>
+  <rect x="355" y="150" width="130" height="52" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"><animate attributeName="stroke" values="#3d4b60;#3d4b60;#ffb454;#ffb454;#3d4b60" keyTimes="0;0.51;0.52;0.98;1" dur="10s" repeatCount="indefinite"/></rect><text x="420" y="183.92" text-anchor="middle" font-size="22" fill="#e6e8ec">PC 2</text>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.62;0.64;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><text x="500" y="183" text-anchor="start" font-size="20" font-weight="700" fill="#ffb454">내용 확인</text></g>
+  <rect x="355" y="230" width="130" height="52" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"><animate attributeName="stroke" values="#3d4b60;#3d4b60;#ffb454;#ffb454;#3d4b60" keyTimes="0;0.51;0.52;0.98;1" dur="10s" repeatCount="indefinite"/></rect><text x="420" y="263.92" text-anchor="middle" font-size="22" fill="#e6e8ec">PC 3</text>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.62;0.64;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><text x="500" y="263" text-anchor="start" font-size="20" font-weight="700" fill="#ffb454">내용 확인</text></g>
+  <rect x="355" y="310" width="130" height="52" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"><animate attributeName="stroke" values="#3d4b60;#3d4b60;#6ea8fe;#6ea8fe;#ffb454;#ffb454;#3d4b60" keyTimes="0;0.32;0.33;0.51;0.52;0.98;1" dur="10s" repeatCount="indefinite"/></rect><text x="420" y="343.92" text-anchor="middle" font-size="22" fill="#e6e8ec">PC 4</text>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.62;0.64;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><text x="500" y="343" text-anchor="start" font-size="20" font-weight="700" fill="#ffb454">내용 확인</text></g>
+  <rect x="355" y="390" width="130" height="52" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"><animate attributeName="stroke" values="#3d4b60;#3d4b60;#ffb454;#ffb454;#3d4b60" keyTimes="0;0.51;0.52;0.98;1" dur="10s" repeatCount="indefinite"/></rect><text x="420" y="423.92" text-anchor="middle" font-size="22" fill="#e6e8ec">PC 5</text>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.62;0.64;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><text x="500" y="423" text-anchor="start" font-size="20" font-weight="700" fill="#ffb454">내용 확인</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.32;0.34;0.38;0.4;1" dur="10s" repeatCount="indefinite"/><text x="500" y="343" text-anchor="start" font-size="20" font-weight="700" fill="#6ea8fe">받음</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.22;0.24;0.38;0.4;1" dur="10s" repeatCount="indefinite"/><rect x="75" y="360" width="150" height="36" rx="18" fill="#6ea8fe" stroke="#6ea8fe" stroke-width="2"/><text x="150" y="386" text-anchor="middle" font-size="22" font-weight="700" fill="#0f1115">Unicast</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.42;0.44;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="75" y="360" width="150" height="36" rx="18" fill="#ffb454" stroke="#ffb454" stroke-width="2"/><text x="150" y="386" text-anchor="middle" font-size="22" font-weight="700" fill="#0f1115">Broadcast</text></g>
+  <rect x="735" y="270" width="170" height="52" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"></rect><text x="820" y="303.92" text-anchor="middle" font-size="22" fill="#9aa3b2">도메인 밖 PC</text>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.8;0.82;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><text x="820" y="360" text-anchor="middle" font-size="20" fill="#9aa3b2">닿지 않음</text></g>
+
+  <!-- 자막 바 -->
+  <rect x="0" y="478" width="960" height="62" fill="#171a21"/>
+  <g font-size="26" fill="#e6e8ec" text-anchor="middle">
+    <text x="480" y="518" opacity="1">PC 1이 같은 범위의 장치들과 이어져 있습니다
+      <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.19;0.2;0.99;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0"><tspan fill="#6ea8fe" font-weight="700">Unicast</tspan>: 한 곳(PC 4)을 지정해 보냅니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19;0.2;0.39;0.4;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0"><tspan fill="#ffb454" font-weight="700">Broadcast</tspan>: 범위 안 모두에게 한꺼번에 보냅니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.39;0.4;0.59;0.6;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">받은 장치는 상관없어도 내용을 확인해야 합니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.59;0.6;0.79;0.8;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">‘모두’는 같은 브로드캐스트 도메인까지입니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.79;0.8;0.98;0.99;1" dur="10s" repeatCount="indefinite"/></text>
+  </g>
+<g aria-label="재생 단계"><rect x="40" y="28" width="88" height="40" rx="20" fill="#171a21" stroke="#3d4b60" stroke-width="2"/><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="1">1 / 5<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.19;0.2;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">2 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19;0.2;0.39;0.4;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">3 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.39;0.4;0.59;0.6;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">4 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.59;0.6;0.79;0.8;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">5 / 5<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.79;0.8;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text></g>
+</svg>

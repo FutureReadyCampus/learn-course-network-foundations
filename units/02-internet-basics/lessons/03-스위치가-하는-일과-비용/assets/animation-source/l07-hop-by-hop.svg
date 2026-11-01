@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+  <rect width="960" height="540" fill="#0f1115"/>
+
+  <!-- 제목 + 고정 결론 -->
+  <text x="480" y="58" text-anchor="middle" font-size="34" font-weight="700" fill="#e6e8ec">한 구간씩 이동하는 패킷</text>
+  <text x="480" y="100" text-anchor="middle" font-size="24" fill="#9aa3b2">각 장비는 다음 한 구간만 정합니다</text>
+
+  <line x1="95" y1="300" x2="250" y2="300" stroke="#3d4b60" stroke-width="3" ></line>
+  <line x1="250" y1="300" x2="420" y2="300" stroke="#3d4b60" stroke-width="3" ></line>
+  <line x1="420" y1="300" x2="610" y2="190" stroke="#3d4b60" stroke-width="3" ></line>
+  <line x1="420" y1="300" x2="610" y2="410" stroke="#3d4b60" stroke-width="3" ></line>
+  <line x1="610" y1="190" x2="820" y2="300" stroke="#3d4b60" stroke-width="3" ></line>
+  <line x1="610" y1="410" x2="820" y2="300" stroke="#3d4b60" stroke-width="3" ></line>
+  <line x1="95" y1="300" x2="250" y2="300" stroke="#ffb454" stroke-width="5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.14;0.16;0.97;0.99;1" dur="10s" repeatCount="indefinite"/></line>
+  <circle r="10" fill="#ffb454" opacity="0"><animateMotion path="M95,300 L250,300" keyPoints="0;0;1;1" keyTimes="0;0.02;0.14;1" calcMode="linear" dur="10s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.015;0.02;0.14;0.145;1" dur="10s" repeatCount="indefinite"/></circle>
+  <line x1="250" y1="300" x2="420" y2="300" stroke="#ffb454" stroke-width="5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.34;0.36;0.97;0.99;1" dur="10s" repeatCount="indefinite"/></line>
+  <circle r="10" fill="#ffb454" opacity="0"><animateMotion path="M250,300 L420,300" keyPoints="0;0;1;1" keyTimes="0;0.22;0.34;1" calcMode="linear" dur="10s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.215;0.22;0.34;0.345;1" dur="10s" repeatCount="indefinite"/></circle>
+  <line x1="420" y1="300" x2="610" y2="190" stroke="#ffb454" stroke-width="5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.54;0.56;0.97;0.99;1" dur="10s" repeatCount="indefinite"/></line>
+  <circle r="10" fill="#ffb454" opacity="0"><animateMotion path="M420,300 L610,190" keyPoints="0;0;1;1" keyTimes="0;0.42;0.54;1" calcMode="linear" dur="10s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.415;0.42;0.54;0.545;1" dur="10s" repeatCount="indefinite"/></circle>
+  <line x1="610" y1="190" x2="820" y2="300" stroke="#ffb454" stroke-width="5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.74;0.76;0.97;0.99;1" dur="10s" repeatCount="indefinite"/></line>
+  <circle r="10" fill="#ffb454" opacity="0"><animateMotion path="M610,190 L820,300" keyPoints="0;0;1;1" keyTimes="0;0.62;0.74;1" calcMode="linear" dur="10s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.615;0.62;0.74;0.745;1" dur="10s" repeatCount="indefinite"/></circle>
+  <line x1="820" y1="300" x2="610" y2="410" stroke="#6ea8fe" stroke-width="5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.84;0.86;0.97;0.99;1" dur="10s" repeatCount="indefinite"/></line>
+  <line x1="610" y1="410" x2="420" y2="300" stroke="#6ea8fe" stroke-width="5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.87;0.89;0.97;0.99;1" dur="10s" repeatCount="indefinite"/></line>
+  <line x1="420" y1="300" x2="250" y2="300" stroke="#6ea8fe" stroke-width="5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.9;0.92;0.97;0.99;1" dur="10s" repeatCount="indefinite"/></line>
+  <line x1="250" y1="300" x2="95" y2="300" stroke="#6ea8fe" stroke-width="5" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.93;0.95;0.97;0.99;1" dur="10s" repeatCount="indefinite"/></line>
+  <circle r="10" fill="#6ea8fe" opacity="0"><animateMotion path="M820,300 L610,410 L420,300 L250,300 L95,300" keyPoints="0;0;1;1" keyTimes="0;0.81;0.93;1" calcMode="linear" dur="10s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.805;0.81;0.93;0.935;1" dur="10s" repeatCount="indefinite"/></circle>
+  <rect x="35" y="276" width="120" height="48" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"></rect><text x="95" y="307.92" text-anchor="middle" font-size="22" fill="#e6e8ec">노트북</text>
+  <rect x="190" y="276" width="120" height="48" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"></rect><text x="250" y="307.92" text-anchor="middle" font-size="22" fill="#e6e8ec">공유기</text>
+  <rect x="360" y="276" width="120" height="48" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"></rect><text x="420" y="307.92" text-anchor="middle" font-size="22" fill="#e6e8ec">라우터1</text>
+  <rect x="550" y="166" width="120" height="48" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"></rect><text x="610" y="197.92" text-anchor="middle" font-size="22" fill="#e6e8ec">라우터2</text>
+  <rect x="550" y="386" width="120" height="48" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"></rect><text x="610" y="417.92" text-anchor="middle" font-size="22" fill="#e6e8ec">라우터3</text>
+  <rect x="760" y="276" width="120" height="48" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"></rect><text x="820" y="307.92" text-anchor="middle" font-size="22" fill="#e6e8ec">웹 서버</text>
+  <g opacity="1"><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.18;0.2;0.98;1" dur="10s" repeatCount="indefinite"/><text x="900" y="160" text-anchor="end" font-size="24" font-weight="700" fill="#ffb454">구간 1 이동</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.22;0.24;0.38;0.4;1" dur="10s" repeatCount="indefinite"/><text x="900" y="160" text-anchor="end" font-size="24" font-weight="700" fill="#ffb454">구간 2 이동</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.42;0.44;0.58;0.6;1" dur="10s" repeatCount="indefinite"/><text x="900" y="160" text-anchor="end" font-size="24" font-weight="700" fill="#ffb454">구간 3 이동</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.62;0.64;0.78;0.8;1" dur="10s" repeatCount="indefinite"/><text x="900" y="160" text-anchor="end" font-size="24" font-weight="700" fill="#ffb454">구간 4 이동</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.8;0.82;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><text x="900" y="160" text-anchor="end" font-size="24" font-weight="700" fill="#6ea8fe">응답은 다른 길로</text></g>
+
+  <!-- 자막 바 -->
+  <rect x="0" y="478" width="960" height="62" fill="#171a21"/>
+  <g font-size="26" fill="#e6e8ec" text-anchor="middle">
+    <text x="480" y="518" opacity="1">노트북이 패킷을 먼저 집 공유기로 보냅니다
+      <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.19;0.2;0.99;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">공유기가 다음 구간인 라우터1로 넘깁니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19;0.2;0.39;0.4;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">라우터1은 갈림길에서 라우터2 쪽을 고릅니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.39;0.4;0.59;0.6;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">구간을 하나씩 지나 웹 서버에 도착합니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.59;0.6;0.79;0.8;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">응답도 한 구간씩 돌아오며, 지나는 장비가 다를 수 있습니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.79;0.8;0.98;0.99;1" dur="10s" repeatCount="indefinite"/></text>
+  </g>
+<g aria-label="재생 단계"><rect x="40" y="28" width="88" height="40" rx="20" fill="#171a21" stroke="#3d4b60" stroke-width="2"/><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="1">1 / 5<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.19;0.2;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">2 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19;0.2;0.39;0.4;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">3 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.39;0.4;0.59;0.6;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">4 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.59;0.6;0.79;0.8;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">5 / 5<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.79;0.8;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text></g>
+</svg>

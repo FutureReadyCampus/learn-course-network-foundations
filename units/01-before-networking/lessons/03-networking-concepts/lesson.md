@@ -66,7 +66,12 @@ pages:
       - concept-basic-03-03
     illustration_after_paragraph:
       - 19
-    illustrations: []
+    illustrations:
+      - file: assets/l03-daily-phone-call.svg
+        title: "철수와 올리비아의 국제전화"
+        alt: "멀리 떨어진 철수와 올리비아 사이에 전화선이 이어지고, 목소리가 선을 따라 건너가지만 올리비아는 한국어 인사를 알아듣지 못합니다. 철수가 영어로 다시 말하자 답이 돌아오고, 아래의 물리·전달·언어 세 조건 칸이 모두 켜지며 대화가 성립합니다."
+        caption: "선이 이어지고(물리 조건), 목소리가 건너가고(전달 방식), 말이 통해야(언어) 대화가 됩니다. 셋 중 하나라도 빠지면 상호작용은 일어나지 않습니다."
+        after_paragraph: 13
     questions:
     - id: u1-03-networking-concepts-p01-q01
       kind: choice
@@ -135,6 +140,11 @@ pages:
           장면입니다.
         caption: TCP/IP의 역할을 익힌 뒤 실제 컴퓨터 안에서 어느 부분이 일을 맡는지 살펴봅니다.
         after_paragraph: 16
+      - file: assets/l03-daily-blueprint-house.svg
+        title: "설계도와 실제 집"
+        alt: "왼쪽 파란 설계도에 거실이 점선으로 그려져 있고, 찻잔을 그 거실에 올려 보지만 X 표시가 뜹니다. 오른쪽에 바닥과 벽과 지붕이 차례로 올라 실제 집이 서고, 찻잔이 그 집 거실 탁자에 놓이며 확인 표시가 뜹니다. 끝으로 설계도 아래에 개념·OSI 7 계층, 집 아래에 구현·TCP/IP 이름표가 붙습니다."
+        caption: "설계도는 집을 설명할 뿐 그 위에서 살 수는 없습니다. OSI 7 계층은 설계도 같은 개념이고, 실제로 만들어져 동작하는 TCP/IP는 구현입니다."
+        after_paragraph: 10
     questions:
     - id: u1-03-networking-concepts-p02-q01
       kind: choice

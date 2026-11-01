@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
+  <rect width="960" height="540" fill="#0f1115"/>
+
+  <!-- 제목 + 고정 결론 -->
+  <text x="480" y="58" text-anchor="middle" font-size="34" font-weight="700" fill="#e6e8ec">LAN, MAN, WAN</text>
+  <text x="480" y="100" text-anchor="middle" font-size="24" fill="#9aa3b2">네트워크가 걸친 범위를 나타내는 이름입니다</text>
+
+  <line x1="227" y1="332" x2="115" y2="252" stroke="#6ea8fe" stroke-width="3" stroke-dasharray="8 6"></line>
+  <line x1="227" y1="332" x2="339" y2="252" stroke="#6ea8fe" stroke-width="3" stroke-dasharray="8 6"></line>
+  <line x1="227" y1="332" x2="115" y2="412" stroke="#9aa3b2" stroke-width="3" ></line>
+  <line x1="227" y1="332" x2="339" y2="412" stroke="#9aa3b2" stroke-width="3" ></line>
+  <rect x="172" y="310" width="110" height="44" rx="8" fill="#171a21" stroke="#7ee7c7" stroke-width="3"></rect><text x="227" y="339.92" text-anchor="middle" font-size="22" font-weight="700" fill="#e6e8ec">공유기</text>
+  <rect x="65" y="232" width="100" height="40" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"></rect><text x="115" y="259.2" text-anchor="middle" font-size="20" fill="#e6e8ec">휴대전화</text>
+  <rect x="289" y="232" width="100" height="40" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"></rect><text x="339" y="259.2" text-anchor="middle" font-size="20" fill="#e6e8ec">태블릿</text>
+  <rect x="65" y="392" width="100" height="40" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"></rect><text x="115" y="419.2" text-anchor="middle" font-size="20" fill="#e6e8ec">데스크톱</text>
+  <rect x="289" y="392" width="100" height="40" rx="8" fill="#171a21" stroke="#3d4b60" stroke-width="3"></rect><text x="339" y="419.2" text-anchor="middle" font-size="20" fill="#e6e8ec">IPTV</text>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2;0.22;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="62" y="190" width="330" height="252" rx="12" fill="none" stroke="#7ee7c7" stroke-width="3" stroke-dasharray="10 7"></rect><text x="78" y="218" text-anchor="start" font-size="22" font-weight="700" fill="#7ee7c7" >LAN · 마을</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.4;0.42;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="46" y="152" width="560" height="304" rx="12" fill="none" stroke="#6ea8fe" stroke-width="3" stroke-dasharray="10 7"></rect><text x="62" y="180" text-anchor="start" font-size="22" font-weight="700" fill="#6ea8fe" >MAN · 도시</text><line x1="392" y1="316" x2="420" y2="262" stroke="#9aa3b2" stroke-width="3" ></line><line x1="392" y1="316" x2="420" y2="390" stroke="#9aa3b2" stroke-width="3" ></line><rect x="420" y="238" width="160" height="48" rx="8" fill="#171a21" stroke="#7ee7c7" stroke-width="3"></rect><text x="500" y="269.2" text-anchor="middle" font-size="20" fill="#e6e8ec">이웃 LAN</text><rect x="420" y="366" width="160" height="48" rx="8" fill="#171a21" stroke="#7ee7c7" stroke-width="3"></rect><text x="500" y="397.2" text-anchor="middle" font-size="20" fill="#e6e8ec">이웃 LAN</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.6;0.62;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="30" y="116" width="900" height="354" rx="12" fill="none" stroke="#ffb454" stroke-width="3" stroke-dasharray="10 7"></rect><text x="46" y="142" text-anchor="start" font-size="22" font-weight="700" fill="#ffb454" >WAN · 더 넓은 지역</text><line x1="606" y1="300" x2="660" y2="262" stroke="#9aa3b2" stroke-width="3" ></line><line x1="606" y1="330" x2="660" y2="390" stroke="#9aa3b2" stroke-width="3" ></line><rect x="660" y="238" width="220" height="48" rx="8" fill="#171a21" stroke="#6ea8fe" stroke-width="3"></rect><text x="770" y="269.2" text-anchor="middle" font-size="20" fill="#e6e8ec">다른 도시 (MAN)</text><rect x="660" y="366" width="220" height="48" rx="8" fill="#171a21" stroke="#7ee7c7" stroke-width="3"></rect><text x="770" y="397.2" text-anchor="middle" font-size="20" fill="#e6e8ec">먼 지역의 LAN</text></g>
+  <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.8;0.82;0.97;0.99;1" dur="10s" repeatCount="indefinite"/><rect x="620" y="128" width="300" height="36" rx="18" fill="#0f1115" stroke="#e6e8ec" stroke-width="2"/><text x="770" y="154" text-anchor="middle" font-size="22" font-weight="700" fill="#e6e8ec">범위의 이름 · 속도 순위 아님</text></g>
+
+  <!-- 자막 바 -->
+  <rect x="0" y="478" width="960" height="62" fill="#171a21"/>
+  <g font-size="26" fill="#e6e8ec" text-anchor="middle">
+    <text x="480" y="518" opacity="1">집 공유기에 Wi-Fi와 케이블로 장치가 연결됩니다
+      <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.19;0.2;0.99;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">연결 방식이 달라도 가까운 범위면 <tspan fill="#7ee7c7" font-weight="700">LAN</tspan>입니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19;0.2;0.39;0.4;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">도시 규모로 넓어지면 <tspan fill="#6ea8fe" font-weight="700">MAN</tspan>입니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.39;0.4;0.59;0.6;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">그보다 더 넓은 범위는 <tspan fill="#ffb454" font-weight="700">WAN</tspan>입니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.59;0.6;0.79;0.8;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="480" y="518" opacity="0">범위를 나눈 이름일 뿐, 속도·품질 순위가 아닙니다
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.79;0.8;0.98;0.99;1" dur="10s" repeatCount="indefinite"/></text>
+  </g>
+<g aria-label="재생 단계"><rect x="40" y="28" width="88" height="40" rx="20" fill="#171a21" stroke="#3d4b60" stroke-width="2"/><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="1">1 / 5<animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.19;0.2;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">2 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19;0.2;0.39;0.4;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">3 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.39;0.4;0.59;0.6;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">4 / 5<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.59;0.6;0.79;0.8;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">5 / 5<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.79;0.8;1" calcMode="discrete" dur="10s" repeatCount="indefinite"/></text></g>
+</svg>

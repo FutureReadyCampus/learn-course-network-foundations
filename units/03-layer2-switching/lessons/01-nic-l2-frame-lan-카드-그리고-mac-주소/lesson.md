@@ -57,6 +57,32 @@ page_metadata:
     answers:
     - network interface
     feedback: 정답은 network interface입니다.
+  - id: u3-01-p01-q04
+    kind: choice
+    difficulty: medium
+    prompt: "집의 문처럼 컴퓨터와 네트워크 사이에서 신호를 주고받게 해 주는 장치는 무엇인가요?"
+    choices:
+    - id: a
+      text: "스위치 포트"
+      feedback: "다시 본문을 확인해 보세요. 스위치 포트."
+    - id: b
+      text: "라우터"
+      feedback: "다시 본문을 확인해 보세요. 라우터."
+    - id: c
+      text: "프레임"
+      feedback: "다시 본문을 확인해 보세요. 프레임."
+    - id: d
+      text: "NIC"
+      feedback: "맞아요. NIC입니다."
+    - id: e
+      text: "IP 주소"
+      feedback: "다시 본문을 확인해 보세요. IP 주소."
+    answer: d
+  animations:
+  - file: l08-nic-door.svg
+    title: "NIC는 컴퓨터의 문"
+    alt: "컴퓨터를 나타내는 네모 안에서 문서 작성과 계산 사이를 점이 오가며 집 안에서 끝나는 일을 보여 줍니다. 이어서 네모 가장자리에 NIC(LAN 카드)가 문처럼 나타나고, NIC가 네트워크와 맞닿는 자리에 인터페이스 점이 생기며, 주황 점이 그 연결 지점을 지나 네트워크로 나갑니다. 마지막에 ‘Realtek 무선 LAN’ 사양 문구에서 Realtek은 회사 이름, 무선 LAN은 NIC 종류라는 설명이 붙습니다."
+    caption: "NIC는 컴퓨터가 네트워크와 신호를 주고받는 장치이고, 인터페이스는 NIC가 네트워크와 맞닿는 연결 지점입니다. 사양표의 Realtek은 NIC를 만든 회사 이름입니다."
 - terms:
   - 호스트 (Host)
   - 액세스 포인트 (Access Point)
@@ -117,6 +143,27 @@ page_metadata:
     answers:
     - port
     feedback: 정답은 port입니다.
+  - id: u3-01-p02-q04
+    kind: choice
+    difficulty: medium
+    prompt: "노트북 한 대에 Wi-Fi와 USB Ethernet 연결이 모두 있다면 가장 알맞은 설명은 무엇인가요?"
+    choices:
+    - id: a
+      text: "호스트 한 대에 네트워크 인터페이스가 두 개 있다"
+      feedback: "맞아요. 호스트 한 대에 네트워크 인터페이스가 두 개 있다입니다."
+    - id: b
+      text: "컴퓨터가 두 대의 호스트가 된다"
+      feedback: "다시 본문을 확인해 보세요. 컴퓨터가 두 대의 호스트가 된다."
+    - id: c
+      text: "두 NIC가 반드시 같은 MAC 주소를 쓴다"
+      feedback: "다시 본문을 확인해 보세요. 두 NIC가 반드시 같은 MAC 주소를 쓴다."
+    - id: d
+      text: "Wi-Fi는 인터페이스로 세지 않는다"
+      feedback: "다시 본문을 확인해 보세요. Wi-Fi는 인터페이스로 세지 않는다."
+    - id: e
+      text: "USB 어댑터가 액세스 스위치가 된다"
+      feedback: "다시 본문을 확인해 보세요. USB 어댑터가 액세스 스위치가 된다."
+    answer: a
 - terms:
   - LAN (Local Area Network)
   - MAN (Metropolitan Area Network)
@@ -170,6 +217,32 @@ page_metadata:
     answers:
     - LAN
     feedback: 정답은 LAN입니다.
+  - id: u3-01-p03-q04
+    kind: choice
+    difficulty: medium
+    prompt: "LAN, MAN, WAN을 나누는 주된 기준은 무엇인가요?"
+    choices:
+    - id: a
+      text: "전송 속도의 높고 낮음"
+      feedback: "다시 본문을 확인해 보세요. 전송 속도의 높고 낮음."
+    - id: b
+      text: "케이블과 무선 중 무엇을 쓰는지"
+      feedback: "다시 본문을 확인해 보세요. 케이블과 무선 중 무엇을 쓰는지."
+    - id: c
+      text: "네트워크가 아우르는 지리적 범위"
+      feedback: "맞아요. 네트워크가 아우르는 지리적 범위입니다."
+    - id: d
+      text: "연결된 컴퓨터의 개수만"
+      feedback: "다시 본문을 확인해 보세요. 연결된 컴퓨터의 개수만."
+    - id: e
+      text: "MAC 주소의 길이"
+      feedback: "다시 본문을 확인해 보세요. MAC 주소의 길이."
+    answer: c
+  animations:
+  - file: l08-lan-man-wan.svg
+    title: "LAN, MAN, WAN"
+    alt: "집 공유기에 휴대전화와 태블릿은 Wi-Fi 점선으로, 데스크톱과 IPTV는 케이블 실선으로 연결되어 있습니다. 이 장치들을 LAN(마을) 테두리가 감싸고, 이웃 LAN을 포함한 MAN(도시) 테두리, 다른 도시와 먼 지역까지 포함한 WAN(더 넓은 지역) 테두리가 차례로 넓게 그려집니다. 마지막에 범위의 이름일 뿐 속도 순위가 아니라는 문구가 나옵니다."
+    caption: "LAN·MAN·WAN은 네트워크가 어느 정도 범위에 걸쳐 있는지를 나타내는 이름입니다. 범위가 넓다고 더 빠르거나 품질이 좋은 것은 아닙니다."
 - terms:
   - MAC 주소 (Media Access Control address)
   - 식별자 (identifier)
@@ -229,6 +302,27 @@ page_metadata:
     answers:
     - private address
     feedback: 정답은 private address입니다.
+  - id: u3-01-p04-q04
+    kind: choice
+    difficulty: medium
+    prompt: "일반적인 MAC 주소는 보통 몇 비트인가요?"
+    choices:
+    - id: a
+      text: "8비트"
+      feedback: "다시 본문을 확인해 보세요. 8비트."
+    - id: b
+      text: "16비트"
+      feedback: "다시 본문을 확인해 보세요. 16비트."
+    - id: c
+      text: "32비트"
+      feedback: "다시 본문을 확인해 보세요. 32비트."
+    - id: d
+      text: "64비트"
+      feedback: "다시 본문을 확인해 보세요. 64비트."
+    - id: e
+      text: "48비트"
+      feedback: "맞아요. 48비트입니다."
+    answer: e
 - terms:
   - 프레임 (Frame)
   - L2 (Layer 2, 계층 2)
@@ -282,6 +376,32 @@ page_metadata:
     answers:
     - Frame
     feedback: 정답은 Frame입니다.
+  - id: u3-01-p05-q04
+    kind: choice
+    difficulty: medium
+    prompt: "패킷과 프레임의 관계를 가장 정확히 설명한 것은 무엇인가요?"
+    choices:
+    - id: a
+      text: "프레임은 인터넷 전체에서 변하지 않는 포장이다"
+      feedback: "다시 본문을 확인해 보세요. 프레임은 인터넷 전체에서 변하지 않는 포장이다."
+    - id: b
+      text: "패킷은 한 링크에서 전달되는 프레임의 데이터 부분에 실릴 수 있다"
+      feedback: "맞아요. 패킷은 한 링크에서 전달되는 프레임의 데이터 부분에 실릴 수 있다입니다."
+    - id: c
+      text: "패킷은 MAC 주소이고 프레임은 IP 주소다"
+      feedback: "다시 본문을 확인해 보세요. 패킷은 MAC 주소이고 프레임은 IP 주소다."
+    - id: d
+      text: "한 프레임에는 파일 하나만 들어간다"
+      feedback: "다시 본문을 확인해 보세요. 한 프레임에는 파일 하나만 들어간다."
+    - id: e
+      text: "프레임은 라우터 사이에서 쓰이지 않는다"
+      feedback: "다시 본문을 확인해 보세요. 프레임은 라우터 사이에서 쓰이지 않는다."
+    answer: b
+  animations:
+  - file: l08-frame-per-link.svg
+    title: "NIC가 주고받는 L2 프레임"
+    alt: "기판에 끼우는 카드, USB 유선 어댑터, 무선 NIC 세 가지 모양이 먼저 나란히 보입니다. 노트북에서 주황 패킷이 준비되고, MAC 칸이 붙은 파란 Wi-Fi 프레임이 패킷을 감싼 채 무선 구간을 지나 공유기에 도착합니다. 공유기에서 포장이 민트색 Ethernet 프레임으로 바뀌고, 같은 패킷이 다음 장비로 이어집니다."
+    caption: "NIC는 모양이 달라도 같은 역할을 하며, 같은 링크의 이웃에게 보낼 때 L2 단위인 프레임을 씁니다. 프레임은 패킷을 감싸는 한 구간용 포장이라 구간마다 새로 쓰일 수 있습니다."
 - terms:
   - Ethernet
   - Jumbo Frame
@@ -335,6 +455,32 @@ page_metadata:
     answers:
     - Jumbo Frame
     feedback: 정답은 Jumbo Frame입니다.
+  - id: u3-01-p06-q04
+    kind: choice
+    difficulty: medium
+    prompt: "일반 Ethernet에서 MTU 1,500바이트가 가리키는 것은 무엇인가요?"
+    choices:
+    - id: a
+      text: "헤더와 FCS를 포함한 프레임 전체 크기"
+      feedback: "다시 본문을 확인해 보세요. 헤더와 FCS를 포함한 프레임 전체 크기."
+    - id: b
+      text: "Ethernet 헤더만의 크기"
+      feedback: "다시 본문을 확인해 보세요. Ethernet 헤더만의 크기."
+    - id: c
+      text: "초당 전송 비트 수"
+      feedback: "다시 본문을 확인해 보세요. 초당 전송 비트 수."
+    - id: d
+      text: "프레임의 데이터(payload) 부분 최대 크기"
+      feedback: "맞아요. 프레임의 데이터(payload) 부분 최대 크기입니다."
+    - id: e
+      text: "MAC 주소의 크기"
+      feedback: "다시 본문을 확인해 보세요. MAC 주소의 크기."
+    answer: d
+  animations:
+  - file: l08-frame-size.svg
+    title: "프레임 크기 세는 법"
+    alt: "MTU 1,500 표시 아래 데이터(payload) 칸이 놓이고, 앞에 헤더 14바이트, 뒤에 FCS 4바이트 칸이 붙습니다. 전체를 세면 1,518바이트, FCS 칸이 흐려지면 1,514바이트라는 괄호가 나타납니다. 이어서 큰 사진 파일이 프레임 여러 개로 나뉘고, 마지막에 데이터 칸이 더 긴 Jumbo Frame이 크기는 장비·설정마다 다르다는 설명과 함께 나옵니다."
+    caption: "일반 Ethernet의 1,500바이트는 데이터 부분의 최대 크기이고, 프레임 전체 크기는 헤더·FCS를 어떻게 세느냐에 따라 1,518 또는 1,514바이트로 적힙니다."
 - terms:
   - 비트 (bit)
   - 바이트 (Byte)
@@ -395,6 +541,27 @@ page_metadata:
     answers:
     - Byte
     feedback: 정답은 Byte입니다.
+  - id: u3-01-p07-q04
+    kind: choice
+    difficulty: medium
+    prompt: "1Gbps를 바이트 단위의 이론상 전송량으로 바꾸면 초당 약 얼마인가요?"
+    choices:
+    - id: a
+      text: "125MB/s"
+      feedback: "맞아요. 125MB/s입니다."
+    - id: b
+      text: "1MB/s"
+      feedback: "다시 본문을 확인해 보세요. 1MB/s."
+    - id: c
+      text: "8MB/s"
+      feedback: "다시 본문을 확인해 보세요. 8MB/s."
+    - id: d
+      text: "1GB/s"
+      feedback: "다시 본문을 확인해 보세요. 1GB/s."
+    - id: e
+      text: "1,000MB/s"
+      feedback: "다시 본문을 확인해 보세요. 1,000MB/s."
+    answer: a
 - terms:
   - 광섬유 케이블
   - 슬롯 (Slot)
@@ -447,6 +614,33 @@ page_metadata:
     answers:
     - Ethernet
     feedback: 정답은 Ethernet입니다.
+  - id: u3-01-p08-q04
+    kind: choice
+    difficulty: medium
+    prompt: "구리 케이블과 광섬유 케이블의 신호 전달 방식에 대한 설명으로 맞는 것은 무엇인가요?"
+    choices:
+    - id: a
+      text: "구리와 광섬유 모두 반드시 전기 신호만 전달한다"
+      feedback: "다시 본문을 확인해 보세요. 구리와 광섬유 모두 반드시 전기 신호만 전달한다."
+    - id: b
+      text: "광섬유는 IP 패킷을 직접 전달하므로 NIC가 필요 없다"
+      feedback: "다시 본문을 확인해 보세요. 광섬유는 IP 패킷을 직접 전달하므로 NIC가 필요 없다."
+    - id: c
+      text: "구리 케이블은 전기 신호, 광섬유는 빛 신호를 전달한다"
+      feedback: "맞아요. 구리 케이블은 전기 신호, 광섬유는 빛 신호를 전달한다입니다."
+    - id: d
+      text: "10Gbps 연결은 반드시 광섬유를 써야 한다"
+      feedback: "다시 본문을 확인해 보세요. 10Gbps 연결은 반드시 광섬유를 써야 한다."
+    - id: e
+      text: "구리 케이블은 MAC 주소를 전달할 수 없다"
+      feedback: "다시 본문을 확인해 보세요. 구리 케이블은 MAC 주소를 전달할 수 없다."
+    answer: c
+
+  animations:
+  - file: l08-find-my-interface.svg
+    title: "내 컴퓨터에서 연결 지점 찾기"
+    alt: "명령 프롬프트 창에 ipconfig /all이 입력되고 무선 LAN 어댑터 Wi-Fi와 Ethernet 어댑터 항목이 나타납니다. 어댑터 이름 줄에는 인터페이스, Physical Address 줄에는 MAC 주소 꼬리표가 붙고, 두 어댑터가 모두 강조되어 인터페이스가 둘임을 보여 줍니다. 이어서 Mac 터미널의 ifconfig 화면에서 en0과 ether 값이 같은 방식으로 표시되고, 마지막에 전송률 866 Mbps를 8로 나눈 약 108 MB/s 카드가 나옵니다."
+    caption: "ipconfig /all이나 ifconfig 화면에서 Wi-Fi·Ethernet 같은 항목 이름이 인터페이스, Physical Address나 ether 값이 MAC 주소입니다. Mbps를 8로 나눈 값은 단위를 바꾼 어림값이지 실제 다운로드 속도가 아닙니다."
 animations_dir: units/03-layer2-switching/lessons/01-nic-l2-frame-lan-카드-그리고-mac-주소/assets/animations
 ---
 앞 Lesson에서는 택배가 여러 사람과 장소를 거쳐 받는 사람에게 가는 큰 흐름을 살펴봤습니다. 이번 Lesson에서는 그 여정에 참여하는 컴퓨터와 네트워크가 어디에서 맞닿는지, 그 연결 지점에 어떤 안내가 붙는지 알아봅니다. 컴퓨터를 집, 연결 지점을 문, 가까운 범위의 네트워크를 마을이라고 생각해 보세요. 비유가 실제 구조와 완전히 같지는 않으니, 각 용어가 무엇을 가리키는지만 차근차근 연결하면 됩니다.

@@ -3,13 +3,28 @@ animations:
   l01-and-mask.svg: 14
   l01-binary-hex.svg: 14
   l01-bits-bytes.svg: 16
+  l01-daily-building-office.svg: 15
+  l01-daily-parcel-ways.svg: 15
+  l01-daily-phone-number.svg: 15
+  l01-daily-recipe-pot.svg: 15
+  l01-daily-trail-sign.svg: 15
+  l02-daily-kitchen-roles.svg: 12
+  l02-daily-school-stairs.svg: 15
   l02-layer-dependency.svg: 12
+  l03-daily-blueprint-house.svg: 15
+  l03-daily-phone-call.svg: 15
   l03-layers-dependency.svg: 14
+  l04-daily-elevator-guest.svg: 18
+  l04-daily-front-desk.svg: 15
+  l04-daily-hotel-floors.svg: 15
   l04-layer-map.svg: 16
   l04-nic-driver-stack.svg: 14
   l04-socket-handset.svg: 14
+  l05-journey-split.svg: 12
   l05-mac-per-nic.svg: 14
   l05-osi-layer-stack.svg: 16
+  l05-parcel-labels.svg: 15
+  l05-parcel-relay.svg: 15
   l05-three-identifiers.svg: 14
   l06-client-server.svg: 10
   l06-endpoint-ends.svg: 12
@@ -19,16 +34,40 @@ animations:
   l06-router-next-hop.svg: 12
   l06-switch-infra.svg: 12
   l06-tap-aggregation.svg: 12
+  l07-hop-by-hop.svg: 15
+  l07-metric-compare.svg: 12
   l07-packet-routing-table.svg: 16
+  l07-road-analogy.svg: 18
+  l07-route-print.svg: 15
   l07-switch-by-layer.svg: 14
+  l07-switching-steps.svg: 15
+  l07-what-to-read.svg: 12
   l08-bit-vs-byte-speed.svg: 12
+  l08-find-my-interface.svg: 18
+  l08-frame-per-link.svg: 15
+  l08-frame-size.svg: 18
   l08-host-two-nics.svg: 12
+  l08-lan-man-wan.svg: 15
   l08-mac-address-label.svg: 14
+  l08-nic-door.svg: 15
+  l09-access-switch-ports.svg: 15
+  l09-known-unicast.svg: 15
+  l09-l2-four-steps.svg: 12
   l09-l2-path.svg: 16
   l09-link-up-down.svg: 10
+  l09-mac-learning.svg: 15
+  l09-unknown-flooding.svg: 15
+  l09-uplink-distribution.svg: 15
+  l10-apartment-broadcast-zone.svg: 15
   l10-broadcast-flood-switches.svg: 18
   l10-broadcast-mac-all-ones.svg: 16
+  l10-broadcast-uses-links.svg: 15
+  l10-cloud-over-cables.svg: 15
   l10-l3-boundary-blocks-broadcast.svg: 14
+  l10-lan-wan-summary.svg: 18
+  l10-mac-changes-ip-stays.svg: 18
+  l10-one-server-many-vms.svg: 15
+  l10-unicast-vs-broadcast.svg: 15
   l11-ip-four-bytes.svg: 16
   l11-network-host-split.svg: 14
   l11-parcel-router.svg: 16

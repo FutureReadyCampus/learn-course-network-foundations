@@ -121,6 +121,11 @@ page_metadata:
     answers:
     - handoff
     feedback: 정답은 handoff입니다. 각 단계는 일을 다음 단계에 넘겨 전달을 이어갑니다.
+  animations:
+  - file: l05-parcel-relay.svg
+    title: 여러 사람이 이어받는 택배
+    alt: 보내는 사람, 접수, 분류센터, 운송, 배달원 다섯 칸이 화살표로 이어져 있고, 주황 상자가 한 칸씩 오른쪽으로 옮겨 갑니다. 상자가 머무는 칸은 주황으로, 일을 마친 칸은 민트색으로 바뀌고, 마지막에 처음부터 끝까지 같은 상자라는 표시가 나타납니다.
+    caption: 한 사람이 처음부터 끝까지 옮기지 않습니다. 각자 맡은 일을 하고 다음 사람에게 넘기며, 상자는 처음 그대로 목적지로 갑니다.
 - terms: []
   questions:
   - id: u2-l05-p03-q01
@@ -172,6 +177,11 @@ page_metadata:
     - IP address
     - IP
     feedback: 정답은 IP address입니다. IP 주소는 데이터가 향할 네트워크상의 목적지를 나타냅니다.
+  animations:
+  - file: l05-parcel-labels.svg
+    title: 상자 하나, 안내 세 가지
+    alt: 상자에 붙은 안내 종이에 건물 주소, 출입구, 받는 사람과 방 번호 세 줄이 적혀 있습니다. 한 줄씩 색이 칠해지며 오른쪽에 어느 집까지 가져갈까, 어느 문으로 들어갈까, 안에서 누구에게 건넬까라는 질문 카드가 차례로 이어지고, 마지막에 세 카드가 함께 보입니다.
+    caption: 상자 하나에 적힌 안내라도 건물 주소, 출입구, 받는 사람은 서로 다른 질문에 답합니다.
 - animations:
   - file: l05-mac-per-nic.svg
     title: 한 컴퓨터에 연결된 여러 길
@@ -279,6 +289,11 @@ page_metadata:
     - layering
     - layered model
     feedback: 정답은 layering입니다. 계층화는 통신 기능을 여러 단계로 나눠 설명합니다.
+  animations:
+  - file: l05-journey-split.svg
+    title: 같은 여정, 두 가지 나눔
+    alt: 보내는 곳에서 받는 곳까지 이어진 길 위로 주황 상자가 지나갑니다. 길 위쪽에 접수, 분류, 장거리 이동, 가까운 지역, 마지막 전달 다섯 칸이, 아래쪽에 보내기, 이동하기, 받기 세 칸이 나타나고, 상자가 다시 지나갈 때 위아래 칸이 함께 주황으로 켜집니다.
+    caption: 같은 택배 여정도 다섯 단계로 자세히 나누거나 세 덩어리로 크게 묶을 수 있습니다. 나누는 방법이 달라도 상자가 가는 길은 같습니다.
 - terms: []
   animations:
   - file: l05-three-identifiers.svg
