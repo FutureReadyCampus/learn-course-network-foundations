@@ -16,6 +16,99 @@ PAGE_ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 YOUTUBE_ID_RE = re.compile(r"^[A-Za-z0-9_-]{11}$")
 PAGE_ID_MARKER_RE = re.compile(r"\A\s*<!--\s*learn-page-id:\s*([a-z0-9]+(?:-[a-z0-9]+)*)\s*-->\s*")
 
+TIERS = {"hero", "family", "none"}
+
+
+def page_term_exclude(meta: dict) -> dict:
+    return {"term_exclude": meta["term_exclude"]} if "term_exclude" in meta else {}
+
+
+def lesson_page_ids(path: Path) -> list[str | None]:
+    # ponytail: ignores page_groups (Page index = heading order); revisit if a glossary anchor lands in a grouped Lesson
+    _, source = read_front_matter(path)
+    sections = re.findall(r"^## (.+?)\s*\n(.*?)(?=^## |\Z)", source, re.M | re.S)
+    return [page_marker(body, path)[0] for _, body in sections]
+
+
+def build_glossary(root: Path, lessons: list[tuple[str, list]]) -> tuple[list[dict], dict] | None:
+    """lessons: [(lesson_id, [page_id or None, ...])] in course order. None when glossary/terms.yaml is absent."""
+    terms_path = root / "glossary" / "terms.yaml"
+    if not terms_path.is_file():
+        return None
+    entries = yaml.safe_load(terms_path.read_text(encoding="utf-8")) or []
+    lesson_ids = {lesson_id for lesson_id, _ in lessons}
+    order, counter = {}, 0
+    for lesson_id, page_ids in lessons:
+        for index, page_id in enumerate(page_ids):
+            counter += 1
+            order[(lesson_id, page_id)] = counter
+            order[(lesson_id, index + 1)] = counter
+    first_page = {lesson_id: order[(lesson_id, 1)] for lesson_id, page_ids in lessons if page_ids}
+    by_id, errors = {}, []
+
+    def fail(term_id, message):
+        errors.append(f"{terms_path}: term {term_id!r}: {message}")
+
+    for entry in entries:
+        term_id = entry.get("id")
+        if term_id in by_id:
+            fail(term_id, "duplicate id")
+        by_id[term_id] = entry
+    emojis = {}
+    glossary = []
+    for entry in entries:
+        term_id, tier = entry["id"], entry.get("tier")
+        out = dict(entry)
+        if tier not in TIERS:
+            fail(term_id, f"invalid tier {tier!r}")
+        elif tier == "hero":
+            if not entry.get("category") or not entry.get("emoji"):
+                fail(term_id, "hero needs category and emoji")
+            elif "\u200d" in entry["emoji"]:
+                fail(term_id, "emoji must not use ZWJ sequences")
+            elif entry["emoji"] in emojis:
+                fail(term_id, f"emoji {entry['emoji']} already used by {emojis[entry['emoji']]!r}")
+            else:
+                emojis[entry["emoji"]] = term_id
+        elif tier == "family":
+            parent = by_id.get(entry.get("parent"))
+            if parent is None or parent.get("tier") != "hero":
+                fail(term_id, f"parent {entry.get('parent')!r} is not a hero term")
+            else:
+                out["emoji"], out["category"] = parent.get("emoji"), parent.get("category")
+        for key in ("only_in", "not_in"):
+            for lesson_id in entry.get(key, []):
+                if lesson_id not in lesson_ids:
+                    fail(term_id, f"{key} names unknown Lesson {lesson_id!r}")
+        anchor = entry.get("anchor")
+        hint = entry.get("anchor_hint")
+        if anchor:
+            key = (anchor.get("lesson"), anchor.get("page"))
+            if key not in order:
+                fail(term_id, f"anchor {key} does not match a Lesson Page ID")
+            else:
+                out["anchor"] = {**anchor, "page_index": order[key] - first_page[key[0]] + 1}
+                out["order"] = order[key]
+        elif hint and hint.get("lesson") in first_page:
+            out["order"] = first_page[hint["lesson"]]
+        elif tier in {"hero", "family"}:
+            fail(term_id, "needs anchor or anchor_hint")
+        glossary.append(out)
+
+    def scope(entry):
+        return set(entry.get("only_in") or lesson_ids) - set(entry.get("not_in", []))
+
+    seen = {}
+    for entry in glossary:
+        for alias in entry.get("aliases", []):
+            for other in seen.get(alias.lower(), []):
+                if scope(entry) & scope(other):
+                    fail(entry["id"], f"alias {alias!r} collides with {other['id']!r}")
+            seen.setdefault(alias.lower(), []).append(entry)
+    if errors:
+        raise ValueError("Invalid glossary:\n" + "\n".join(errors))
+    return glossary, by_id
+
 
 def page_marker(body: str, path: Path) -> tuple[str | None, str]:
     match = PAGE_ID_MARKER_RE.match(body)
@@ -222,6 +315,7 @@ def authored_reading_pages(path: Path, lesson_meta: dict, animation_assets: dict
         }
         if page_id and page_id in anchored_metadata:
             page.update(validate_page_video(anchored_metadata[page_id], page_id, path))
+            page.update(page_term_exclude(anchored_metadata[page_id]))
         if inline_quizzes:
             page["inline_quizzes"] = inline_quizzes
         illustrations = []
@@ -375,6 +469,7 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
                 page["question_start_index"] = len(placed_ids)
         if page_id and page_id in anchored_metadata:
             page.update(validate_page_video(page_meta, page_id, path))
+            page.update(page_term_exclude(page_meta))
         illustrations = []
         if index == 0 and diagram_path and diagram_path.is_file():
             illustrations.append({
@@ -445,7 +540,7 @@ def build(source_revision: str = "local-draft", source_label: str = "local draft
             title, unit_id = item["title"], item["id"]
         units.append({"id": unit_id, "title": title})
 
-    lessons = []
+    lessons, page_ids, exclusions = [], [], []
     unit_order = {item["id"]: index for index, item in enumerate(course_meta["units"])}
     for unit_config in course_meta["units"]:
         unit_path = ROOT / unit_config["path"]
@@ -476,9 +571,17 @@ def build(source_revision: str = "local-draft", source_label: str = "local draft
                 "kind": "reading",
             }
             lessons.append((unit_order[unit_config["id"]], order, lesson))
+            page_ids.append((lesson["id"], lesson_page_ids(ROOT / lesson_path)))
+            exclusions.extend((lesson["id"], page) for page in lesson["pages"] if "term_exclude" in page)
     lessons = [lesson for _, _, lesson in sorted(lessons, key=lambda item: (item[0], item[1]))]
     active_units = {lesson["unit"] for lesson in lessons}
-    return {
+    built = build_glossary(ROOT, page_ids)
+    if built:
+        for lesson_id, page in exclusions:
+            for term_id in page["term_exclude"]:
+                if term_id not in built[1]:
+                    raise ValueError(f"term_exclude names unknown term {term_id!r} in {lesson_id}")
+    catalog = {
         "version": f"network-{source_revision}",
         "title": course_meta["course"]["title"],
         "units": [unit for unit in units if unit["id"] in active_units],
@@ -490,6 +593,9 @@ def build(source_revision: str = "local-draft", source_label: str = "local draft
             "url": f"https://github.com/FutureReadyCampus/learn-course-network-foundations/commit/{source_revision}",
         },
     }
+    if built:
+        catalog["glossary"] = built[0]
+    return catalog
 
 
 def main() -> None:
