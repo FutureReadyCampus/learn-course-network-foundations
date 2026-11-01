@@ -102,15 +102,15 @@ pages:
       - id: c
         text: 둘은 같은 말입니다
         feedback: 다시 확인해 보세요. 네트워크는 연결 관계이고 네트워킹은 그 위에서 정보를 주고받는 행동입니다
-      - id: a
-        text: 네트워크는 연결 관계이고 네트워킹은 그 위에서 정보를 주고받는 행동입니다
-        feedback: 맞아요. 네트워크는 연결 관계이고 네트워킹은 그 위에서 정보를 주고받는 행동입니다
       - id: e
         text: 네트워킹은 연결 없이도 항상 가능합니다
         feedback: 다시 확인해 보세요. 네트워크는 연결 관계이고 네트워킹은 그 위에서 정보를 주고받는 행동입니다
       - id: b
         text: 네트워크는 전송 행동이고 네트워킹은 연결 관계입니다
         feedback: 다시 확인해 보세요. 네트워크는 연결 관계이고 네트워킹은 그 위에서 정보를 주고받는 행동입니다
+      - id: a
+        text: 네트워크는 연결 관계이고 네트워킹은 그 위에서 정보를 주고받는 행동입니다
+        feedback: 맞아요. 네트워크는 연결 관계이고 네트워킹은 그 위에서 정보를 주고받는 행동입니다
       - id: d
         text: 네트워크는 장치, 네트워킹은 파일 크기입니다
         feedback: 다시 확인해 보세요. 네트워크는 연결 관계이고 네트워킹은 그 위에서 정보를 주고받는 행동입니다
@@ -120,7 +120,6 @@ pages:
       prompt: 컴퓨터 사이에 연결 관계가 있는 데서 그치지 않고, 실제로 정보를 주고받는 활동입니다. 어떤 개념일까요? (영어 단어로 답해주세요)
       answers:
       - networking
-      - 네트워킹
       feedback: 정답은 networking입니다.
   - concepts:
       - concept-basic-03-04
@@ -151,12 +150,12 @@ pages:
       difficulty: easy
       prompt: 컴퓨터들이 서로 통신할 때 함께 지키는 약속을 무엇이라고 하나요?
       choices:
-      - id: c
-        text: 하드웨어입니다
-        feedback: 다시 확인해 보세요. 프로토콜입니다
       - id: a
         text: 프로토콜입니다
         feedback: 맞아요. 프로토콜입니다
+      - id: c
+        text: 하드웨어입니다
+        feedback: 다시 확인해 보세요. 프로토콜입니다
       - id: e
         text: 버퍼입니다
         feedback: 다시 확인해 보세요. 프로토콜입니다
@@ -178,22 +177,21 @@ pages:
       - id: b
         text: 전체 구조를 외운 뒤 구체 기술을 전혀 보지 않습니다
         feedback: 다시 확인해 보세요. 구체적인 기술을 먼저 익히고 거기서 전체 구조를 짐작합니다
-      - id: a
-        text: 구체적인 기술을 먼저 익히고 거기서 전체 구조를 짐작합니다
-        feedback: 맞아요. 구체적인 기술을 먼저 익히고 거기서 전체 구조를 짐작합니다
       - id: e
         text: 규칙 없이 용어를 나열합니다
         feedback: 다시 확인해 보세요. 구체적인 기술을 먼저 익히고 거기서 전체 구조를 짐작합니다
       - id: c
         text: 장치를 분해해 부품 이름만 외웁니다
         feedback: 다시 확인해 보세요. 구체적인 기술을 먼저 익히고 거기서 전체 구조를 짐작합니다
+      - id: a
+        text: 구체적인 기술을 먼저 익히고 거기서 전체 구조를 짐작합니다
+        feedback: 맞아요. 구체적인 기술을 먼저 익히고 거기서 전체 구조를 짐작합니다
       answer: a
     - id: u1-03-networking-concepts-p02-q03
       kind: short
       prompt: 컴퓨터가 데이터를 주고받을 때 함께 따라야 하는 메시지 형식과 처리 규칙의 약속입니다. 어떤 개념일까요? (영어 단어로 답해주세요)
       answers:
       - protocol
-      - 프로토콜
       feedback: 정답은 protocol입니다.
 animations_dir: units/01-before-networking/lessons/03-networking-concepts/assets/animations
 page_metadata:

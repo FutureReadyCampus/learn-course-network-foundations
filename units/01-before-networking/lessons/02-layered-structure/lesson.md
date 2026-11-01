@@ -73,15 +73,15 @@ pages:
       difficulty: easy
       prompt: Layer(레이어)는 무슨 뜻인가요?
       choices:
+      - id: a
+        text: 층 또는 구성 요소 하나입니다
+        feedback: 맞아요. 층 또는 구성 요소 하나입니다
       - id: d
         text: 통신 속도
         feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
       - id: b
         text: 네트워크 주소
         feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
-      - id: a
-        text: 층 또는 구성 요소 하나입니다
-        feedback: 맞아요. 층 또는 구성 요소 하나입니다
       - id: e
         text: 실행 중인 프로그램
         feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
@@ -124,15 +124,15 @@ pages:
       difficulty: easy
       prompt: Layer(레이어)는 무슨 뜻인가요?
       choices:
+      - id: a
+        text: 층 또는 구성 요소 하나입니다
+        feedback: 맞아요. 층 또는 구성 요소 하나입니다
       - id: d
         text: 통신 속도
         feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
       - id: b
         text: 네트워크 주소
         feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
-      - id: a
-        text: 층 또는 구성 요소 하나입니다
-        feedback: 맞아요. 층 또는 구성 요소 하나입니다
       - id: e
         text: 실행 중인 프로그램
         feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
@@ -224,15 +224,15 @@ pages:
       - id: b
         text: 1입니다
         feedback: 다시 확인해 보세요. 3입니다
-      - id: a
-        text: 3입니다
-        feedback: 맞아요. 3입니다
       - id: e
         text: 전제조건은 없습니다
         feedback: 다시 확인해 보세요. 3입니다
       - id: c
         text: 2입니다
         feedback: 다시 확인해 보세요. 3입니다
+      - id: a
+        text: 3입니다
+        feedback: 맞아요. 3입니다
       answer: a
     - id: u1-02-layered-structure-p02-q03
       kind: short
@@ -274,15 +274,15 @@ pages:
       - id: b
         text: 1입니다
         feedback: 다시 확인해 보세요. 3입니다
-      - id: a
-        text: 3입니다
-        feedback: 맞아요. 3입니다
       - id: e
         text: 전제조건은 없습니다
         feedback: 다시 확인해 보세요. 3입니다
       - id: c
         text: 2입니다
         feedback: 다시 확인해 보세요. 3입니다
+      - id: a
+        text: 3입니다
+        feedback: 맞아요. 3입니다
       answer: a
     - id: u1-02-layered-structure-p02-q03
       kind: short
