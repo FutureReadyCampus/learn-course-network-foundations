@@ -85,7 +85,7 @@ page_metadata:
     answer: a
   - id: u4-l15-p01-q04
     kind: short
-    prompt: 'TCP가 다루는 전송 계층 단위를 무엇이라고 하나요? (힌트: Segment)'
+    prompt: 'TCP가 다루는 전송 계층 단위를 무엇이라고 하나요?'
     answers:
     - segment
     - 세그먼트
@@ -182,7 +182,7 @@ page_metadata:
     answer: e
   - id: u4-l15-p02-q04
     kind: short
-    prompt: 'TCP 소켓에서 다루는 연속된 데이터 흐름을 무엇이라고 하나요? (힌트: Stream)'
+    prompt: 'TCP 소켓에서 다루는 연속된 데이터 흐름을 무엇이라고 하나요?'
     answers:
     - stream
     - 스트림
@@ -273,7 +273,7 @@ page_metadata:
     answer: c
   - id: u4-l15-p03-q04
     kind: short
-    prompt: 'TCP Segment 하나에 담을 수 있는 데이터의 최대 크기 기준은 무엇인가요? (힌트: Maximum Segment Size)'
+    prompt: 'TCP Segment 하나에 담을 수 있는 데이터의 최대 크기 기준은 무엇인가요?'
     answers:
     - MSS
     - Maximum Segment Size
@@ -362,7 +362,7 @@ page_metadata:
     answer: b
   - id: u4-l15-p04-q04
     kind: short
-    prompt: '긴 Stream을 더 작은 전송 단위로 나누는 과정을 무엇이라고 하나요? (힌트: Segmentation)'
+    prompt: '긴 Stream을 더 작은 전송 단위로 나누는 과정을 무엇이라고 하나요?'
     answers:
     - segmentation
     - 세그멘테이션
@@ -453,7 +453,7 @@ page_metadata:
     answer: e
   - id: u4-l15-p05-q04
     kind: short
-    prompt: '데이터 링크 계층(L2)에서 IP 패킷을 감싸 링크로 전달하는 단위는 무엇인가요? (힌트: Frame)'
+    prompt: '데이터 링크 계층(L2)에서 IP 패킷을 감싸 링크로 전달하는 단위는 무엇인가요?'
     answers:
     - frame
     - 프레임
@@ -542,7 +542,7 @@ page_metadata:
       text: TCP=Segment, UDP=Datagram
       feedback: 맞아요. TCP는 Segment, UDP는 Datagram을 전송 계층 단위로 사용해요.
     answer: e
-  - prompt: 'UDP가 전송하는 하나의 데이터 덩어리를 무엇이라고 하나요? (힌트: Datagram)'
+  - prompt: 'UDP가 전송하는 하나의 데이터 덩어리를 무엇이라고 하나요?'
     answers:
     - datagram
     - 데이터그램

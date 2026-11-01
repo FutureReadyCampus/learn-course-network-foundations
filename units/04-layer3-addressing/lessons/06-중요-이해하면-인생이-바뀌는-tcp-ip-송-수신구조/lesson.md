@@ -90,16 +90,6 @@ page_metadata:
       text: IP 주소 → 브라우저 → 스위치 → TCP 연결 생성
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
     answer: c
-  - id: u4-l16-p01-q04
-    kind: short
-    prompt: TCP와 IP를 포함해 인터넷 통신에 쓰이는 프로토콜 묶음을 무엇이라고 하나요? (영어 또는 한글로 답해주세요)
-    answers:
-    - TCP/IP
-    - TCP/IP suite
-    - TCP IP suite
-    - TCP/IP 프로토콜 묶음
-    - TCP/IP 프로토콜군
-    feedback: TCP/IP는 이 Lesson에서 여러 계층의 전달을 연결하는 프로토콜 묶음이에요.
   question_placements:
   - question_id: u4-l16-p01-q01
     after_paragraph: 1
