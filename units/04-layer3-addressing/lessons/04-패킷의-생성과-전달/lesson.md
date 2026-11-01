@@ -4,65 +4,604 @@ title: 패킷은 어떻게 목적지 프로그램까지 전달될까?
 source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-14.md
 wiki_diagram: units/04-layer3-addressing/lessons/04-패킷의-생성과-전달/assets/diagrams/lesson-14.svg
 page_metadata:
-  - terms:
-      - 패킷 (packet)
-      - 페이로드 (payload)
-      - 헤더 (header)
-  - terms:
-      - 호스트 (host)
-      - IP 주소 (IP address)
-      - 포트 번호 (port number)
-  - terms:
-      - 프로세스 (process)
-      - 게이트웨이 (gateway)
-      - 인터페이스 (interface)
-  - terms:
-      - IP 주소 (IP address)
-      - 임시 포트 (ephemeral port)
-    animations:
-      - file: l14-ip-and-port.svg
-        title: IP 주소는 집, 포트는 집 안의 수신자
-        alt: 상자가 IP 주소 203.0.113.20이 적힌 집에 도착한 뒤, 80번이 적힌 문을 지나 웹 서버 프로세스에 전달되는 장면입니다.
-        caption: IP 주소로 호스트를 찾고 포트 번호로 해당 호스트의 수신 프로그램을 구분합니다.
-  - terms:
-      - 소켓 (socket)
-  - terms:
-      - 세그먼트 (segment)
-      - 패킷 (packet)
-      - 프레임 (frame)
-      - 페이로드 (payload)
-    animations:
-      - file: l14-encapsulation.svg
-        title: 데이터에서 프레임까지 계층별로 감싸기
-        alt: 작은 데이터 블록 앞에 TCP 헤더, IP 헤더, Ethernet 헤더가 차례로 붙으며 세그먼트, 패킷, 프레임이 만들어지는 장면입니다.
-        caption: TCP를 사용하는 예에서 데이터는 세그먼트, IP 패킷, Ethernet 프레임 안에 차례로 담깁니다.
-  - terms:
-      - L2 스위치 (L2 switch)
-      - 라우터 (router)
-      - 다음 홉 (next hop)
-      - NAT (network address translation)
-    animations:
-      - file: l14-delivery-flow.svg
-        title: 스위치와 라우터를 거쳐 호스트에 도착하기
-        alt: 왼쪽 호스트에서 나온 프레임이 L2 스위치와 라우터, 인터넷을 거쳐 오른쪽 호스트의 프로세스에 도착하는 장면입니다.
-        caption: 스위치는 현재 LAN 안에서 프레임을 전달하고 라우터는 패킷을 다음 네트워크 쪽으로 전달합니다.
+- terms:
+  - 패킷 (packet)
+  - 페이로드 (payload)
+  - 헤더 (header)
+  questions:
+  - id: u4-l14-p01-q01
+    kind: choice
+    difficulty: easy
+    prompt: 택배 상자 안에 들어 있는 책은 네트워크에서 무엇에 해당하나요?
+    choices:
+    - id: a
+      text: 송장
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: b
+      text: 전달할 데이터
+      feedback: 맞아요. 책처럼 실제로 보내려는 내용이 데이터예요.
+    - id: c
+      text: 라우터
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: d
+      text: 포트 번호
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: e
+      text: 네트워크 인터페이스
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    answer: b
+  - id: u4-l14-p01-q02
+    kind: choice
+    difficulty: easy
+    prompt: 택배 송장은 네트워크의 어떤 부분과 가장 비슷한가요?
+    choices:
+    - id: a
+      text: 페이로드
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: b
+      text: 케이블
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: c
+      text: 프로세스
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: d
+      text: 헤더
+      feedback: 맞아요. 송장처럼 헤더에는 전달에 필요한 정보가 담겨요.
+    - id: e
+      text: 소켓
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    answer: d
+  - id: u4-l14-p01-q03
+    kind: choice
+    difficulty: medium
+    prompt: IP 패킷의 헤더와 페이로드를 바르게 구분한 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 헤더는 실제 내용이고 페이로드는 주소 정보다
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: b
+      text: 헤더에는 전달 정보가, 페이로드에는 전달할 내용이 담긴다
+      feedback: 맞아요. 헤더는 전달에 필요한 정보를, 페이로드는 전달할 내용을 담아요.
+    - id: c
+      text: 둘 다 물리적인 포장 상자다
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: d
+      text: 페이로드는 항상 비어 있다
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: e
+      text: 헤더는 패킷을 받는 프로그램 이름만 담는다
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    answer: a
+  - id: u4-l14-p01-q04
+    kind: short
+    prompt: 'L3에서 헤더와 페이로드를 함께 담아 전달하는 네트워크 단위를 무엇이라고 하나요? (힌트: IP packet)'
+    answers:
+    - IP packet
+    - packet
+    - IP 패킷
+    feedback: IP 패킷은 IP 헤더와 페이로드를 담는 네트워크 계층의 단위예요.
+  question_placements:
+  - question_id: u4-l14-p01-q01
+    after_paragraph: 1
+  - question_id: u4-l14-p01-q02
+    after_paragraph: 2
+- terms:
+  - 호스트 (host)
+  - IP 주소 (IP address)
+  - 포트 번호 (port number)
+  questions:
+  - id: u4-l14-p02-q01
+    kind: choice
+    difficulty: easy
+    prompt: 택배의 집 주소처럼 IP 주소는 네트워크에서 무엇을 찾나요?
+    choices:
+    - id: a
+      text: 그 안의 특정 프로그램
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: b
+      text: 택배 기사
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: c
+      text: 호스트(컴퓨터나 서버)
+      feedback: 맞아요. IP 주소는 데이터를 받을 호스트를 찾아요.
+    - id: d
+      text: 운영체제의 커널
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: e
+      text: Ethernet 프레임
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    answer: c
+  - id: u4-l14-p02-q02
+    kind: choice
+    difficulty: easy
+    prompt: 한 호스트 안에서 브라우저와 메신저를 따로 구별할 때 필요한 정보는 무엇인가요?
+    choices:
+    - id: a
+      text: 집 주소만
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: b
+      text: 화면 크기
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: c
+      text: 전송 계층의 포트 번호
+      feedback: 맞아요. 포트 번호는 호스트 안에서 받을 통신 프로그램을 구분하는 데 쓰여요.
+    - id: d
+      text: MAC 주소만
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: e
+      text: 파일 이름
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    answer: a
+  - id: u4-l14-p02-q03
+    kind: choice
+    difficulty: medium
+    prompt: IP 주소와 포트 번호의 역할을 바르게 설명한 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 둘 다 호스트 자체만 찾는다
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: b
+      text: IP 주소는 프로그램만, 포트는 네트워크 케이블만 찾는다
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: c
+      text: 포트 번호가 집 주소이고 IP 주소가 사람 이름이다
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: d
+      text: 둘 다 웹 페이지의 파일 경로다
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: e
+      text: IP 주소는 호스트를, 포트 번호는 그 안의 수신 통신 끝점을 구분한다
+      feedback: 맞아요. IP 주소로 호스트를 찾고 포트 번호로 그 안의 수신 통신 끝점을 구분해요.
+    answer: e
+  - id: u4-l14-p02-q04
+    kind: short
+    prompt: '네트워크에서 IP 주소가 가리키는 컴퓨터나 서버를 무엇이라고 하나요? (힌트: Host)'
+    answers:
+    - host
+    - 호스트
+    feedback: Host(호스트)는 IP 주소가 가리키는 컴퓨터나 서버예요.
+  question_placements:
+  - question_id: u4-l14-p02-q01
+    after_paragraph: 1
+  - question_id: u4-l14-p02-q02
+    after_paragraph: 2
+- terms:
+  - 프로세스 (process)
+  - 게이트웨이 (gateway)
+  - 인터페이스 (interface)
+  questions:
+  - id: u4-l14-p03-q01
+    kind: choice
+    difficulty: easy
+    prompt: 데이터를 만들거나 받아서 통신에 참여하는 브라우저 같은 프로그램은 무엇이라고 하나요?
+    choices:
+    - id: a
+      text: 라우터
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: b
+      text: 프레임
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: c
+      text: 게이트웨이
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: d
+      text: 프로세스
+      feedback: 맞아요. 프로세스는 데이터를 만들거나 받는 실행 중인 프로그램이에요.
+    - id: e
+      text: 인터페이스
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    answer: d
+  - id: u4-l14-p03-q02
+    kind: choice
+    difficulty: easy
+    prompt: 컴퓨터가 유선 또는 무선 네트워크에 실제로 연결되는 지점은 무엇인가요?
+    choices:
+    - id: a
+      text: 기본 게이트웨이
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: b
+      text: 포트 번호
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: c
+      text: 네트워크 인터페이스
+      feedback: 맞아요. 네트워크 인터페이스가 호스트를 유선 또는 무선 네트워크에 연결해요.
+    - id: d
+      text: IP 페이로드
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: e
+      text: 수신 프로세스
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    answer: a
+  - id: u4-l14-p03-q03
+    kind: choice
+    difficulty: medium
+    prompt: 목적지가 다른 네트워크에 있을 때 호스트가 패킷을 처음 보내는 라우터는 무엇인가요?
+    choices:
+    - id: a
+      text: 목적지 호스트
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: b
+      text: 수신 프로세스
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: c
+      text: 기본 게이트웨이
+      feedback: 맞아요. 기본 게이트웨이는 다른 네트워크로 나갈 때 패킷을 보내는 첫 라우터예요.
+    - id: d
+      text: DNS 이름
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: e
+      text: Ethernet 트레일러
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    answer: c
+  - id: u4-l14-p03-q04
+    kind: short
+    prompt: '다른 네트워크로 나갈 때 호스트가 패킷을 처음 보내는 라우터를 무엇이라고 하나요? (힌트: Gateway)'
+    answers:
+    - gateway
+    - 기본 게이트웨이
+    - 게이트웨이
+    feedback: 기본 게이트웨이는 목적지가 다른 네트워크일 때 호스트가 패킷을 처음 보내는 라우터예요.
+  question_placements:
+  - question_id: u4-l14-p03-q01
+    after_paragraph: 1
+  - question_id: u4-l14-p03-q02
+    after_paragraph: 2
+- terms:
+  - IP 주소 (IP address)
+  - 임시 포트 (ephemeral port)
+  animations:
+  - file: l14-ip-and-port.svg
+    title: IP 주소는 집, 포트는 집 안의 수신자
+    alt: 상자가 IP 주소 203.0.113.20이 적힌 집에 도착한 뒤, 80번이 적힌 문을 지나 웹 서버 프로세스에 전달되는 장면입니다.
+    caption: IP 주소로 호스트를 찾고 포트 번호로 해당 호스트의 수신 프로그램을 구분합니다.
+  questions:
+  - id: u4-l14-p04-q01
+    kind: choice
+    difficulty: easy
+    prompt: 예시 `203.0.113.20:80`에서 `203.0.113.20`은 무엇을 찾는 값인가요?
+    choices:
+    - id: a
+      text: 프레임 안의 위치
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: b
+      text: 브라우저 탭
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: c
+      text: 호스트
+      feedback: 맞아요. 콜론 앞의 IP 주소는 데이터를 받을 호스트를 찾아요.
+    - id: d
+      text: 케이블
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: e
+      text: 프로세스의 파일 이름
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    answer: c
+  - id: u4-l14-p04-q02
+    kind: choice
+    difficulty: easy
+    prompt: 웹 연결에서 서버가 HTTPS 요청을 받을 때 흔히 쓰는 포트 번호는 무엇인가요?
+    choices:
+    - id: a
+      text: '21'
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: b
+      text: '53'
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: c
+      text: '80'
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: d
+      text: '51707'
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: e
+      text: '443'
+      feedback: 맞아요. HTTPS는 흔히 포트 443을 사용해요.
+    answer: e
+  - id: u4-l14-p04-q03
+    kind: choice
+    difficulty: medium
+    prompt: 연결 목록 `192.0.2.15:51707 → 203.0.113.20:443`에서 원격 서버 끝점은 무엇인가요?
+    choices:
+    - id: a
+      text: 192.0.2.15:51707
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: b
+      text: 203.0.113.20:443
+      feedback: 맞아요. 화살표 오른쪽의 IP와 포트가 원격 서버 쪽 끝점이에요.
+    - id: c
+      text: 51707만
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: d
+      text: 192.0.2.15만
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: e
+      text: 두 IP 주소를 더한 값
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    answer: a
+  - id: u4-l14-p04-q04
+    kind: short
+    prompt: '클라이언트가 통신할 때 임시로 배정받을 수 있는 포트를 무엇이라고 하나요? (힌트: ephemeral port)'
+    answers:
+    - ephemeral port
+    - 임시 포트
+    feedback: 임시 포트(ephemeral port)는 클라이언트 연결에 임시로 배정될 수 있어요.
+  question_placements:
+  - question_id: u4-l14-p04-q01
+    after_paragraph: 1
+  - question_id: u4-l14-p04-q02
+    after_paragraph: 2
+- terms:
+  - 소켓 (socket)
+  questions:
+  - id: u4-l14-p05-q01
+    kind: choice
+    difficulty: easy
+    prompt: 브라우저가 운영체제의 네트워크 기능을 이용해 데이터를 보내고 받는 창구는 무엇인가요?
+    choices:
+    - id: a
+      text: 포트 번호
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: b
+      text: 라우터
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: c
+      text: 프레임
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: d
+      text: 소켓
+      feedback: 맞아요. 소켓은 프로그램과 운영체제의 네트워크 기능을 잇는 통신 창구예요.
+    - id: e
+      text: 게이트웨이
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    answer: d
+  - id: u4-l14-p05-q02
+    kind: choice
+    difficulty: easy
+    prompt: 소켓에 대한 설명으로 맞는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 소켓은 케이블의 다른 이름이다
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: b
+      text: 소켓은 포트 번호 하나만을 뜻한다
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: c
+      text: 소켓은 프로그램이 운영체제에 네트워크 입출력을 요청하는 인터페이스다
+      feedback: 맞아요. 소켓은 프로그램이 운영체제의 네트워크 입출력을 이용하는 인터페이스예요.
+    - id: d
+      text: 소켓은 데이터를 암호화하는 알고리즘이다
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: e
+      text: 소켓은 라우터의 물리 포트다
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    answer: a
+  - id: u4-l14-p05-q03
+    kind: choice
+    difficulty: medium
+    prompt: 브라우저가 소켓으로 데이터를 넘긴 뒤 TCP/IP와 장치 처리를 맡는 운영체제의 핵심 부분은 무엇인가요?
+    choices:
+    - id: a
+      text: 스위치
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: b
+      text: 모니터
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: c
+      text: 웹 페이지
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: d
+      text: 임시 포트
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: e
+      text: 커널
+      feedback: 맞아요. 운영체제의 커널이 TCP/IP와 네트워크 장치 처리를 맡아요.
+    answer: e
+  - id: u4-l14-p05-q04
+    kind: short
+    prompt: '프로그램이 운영체제의 네트워크 입출력을 이용하는 통신 창구를 무엇이라고 하나요? (힌트: Socket)'
+    answers:
+    - socket
+    - 소켓
+    feedback: Socket(소켓)은 프로그램과 운영체제의 네트워크 기능을 잇는 인터페이스예요.
+  question_placements:
+  - question_id: u4-l14-p05-q01
+    after_paragraph: 1
+  - question_id: u4-l14-p05-q02
+    after_paragraph: 2
+- terms:
+  - 세그먼트 (segment)
+  - 패킷 (packet)
+  - 프레임 (frame)
+  - 페이로드 (payload)
+  animations:
+  - file: l14-encapsulation.svg
+    title: 데이터에서 프레임까지 계층별로 감싸기
+    alt: 작은 데이터 블록 앞에 TCP 헤더, IP 헤더, Ethernet 헤더가 차례로 붙으며 세그먼트, 패킷, 프레임이 만들어지는 장면입니다.
+    caption: TCP를 사용하는 예에서 데이터는 세그먼트, IP 패킷, Ethernet 프레임 안에 차례로 담깁니다.
+  questions:
+  - id: u4-l14-p06-q01
+    kind: choice
+    difficulty: easy
+    prompt: TCP가 포트 번호 같은 정보를 데이터에 붙여 만든 전송 계층 단위는 무엇인가요?
+    choices:
+    - id: a
+      text: 프레임
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: b
+      text: IP 주소
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: c
+      text: 게이트웨이
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: d
+      text: 소켓
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: e
+      text: 세그먼트
+      feedback: 맞아요. TCP 헤더와 데이터가 합쳐져 세그먼트가 돼요.
+    answer: e
+  - id: u4-l14-p06-q02
+    kind: choice
+    difficulty: easy
+    prompt: IP 헤더를 더해 만든 네트워크 계층 단위는 무엇인가요?
+    choices:
+    - id: a
+      text: Ethernet 프레임
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: b
+      text: 포트 번호
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: c
+      text: IP 패킷
+      feedback: 맞아요. IP 헤더와 페이로드를 묶은 단위가 IP 패킷이에요.
+    - id: d
+      text: 네트워크 인터페이스
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: e
+      text: 커널
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    answer: b
+  - id: u4-l14-p06-q03
+    kind: choice
+    difficulty: medium
+    prompt: TCP를 쓰고 Ethernet 링크로 보낼 때의 캡슐화 순서는 무엇인가요?
+    choices:
+    - id: a
+      text: 프레임 → 패킷 → 세그먼트 → 데이터
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: b
+      text: 데이터 → 프레임 → 세그먼트 → IP 패킷
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: c
+      text: IP 패킷 → 데이터 → 프레임 → 세그먼트
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: d
+      text: 데이터 → 세그먼트 → IP 패킷 → Ethernet 프레임
+      feedback: 맞아요. 데이터에 TCP, IP, Ethernet 정보를 차례로 더해 세그먼트, 패킷, 프레임이 돼요.
+    - id: e
+      text: 세그먼트 → 프레임 → 데이터 → 패킷
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    answer: d
+  - id: u4-l14-p06-q04
+    kind: short
+    prompt: 'Ethernet 링크에서 같은 링크 안으로 전달할 때 사용하는 데이터 단위는 무엇인가요? (힌트: Frame)'
+    answers:
+    - frame
+    - 프레임
+    feedback: Frame(프레임)은 데이터 링크에서 전달할 때 사용하는 단위예요.
+  question_placements:
+  - question_id: u4-l14-p06-q01
+    after_paragraph: 2
+  - question_id: u4-l14-p06-q02
+    after_paragraph: 3
+- terms:
+  - L2 스위치 (L2 switch)
+  - 라우터 (router)
+  - 다음 홉 (next hop)
+  - NAT (network address translation)
+  animations:
+  - file: l14-delivery-flow.svg
+    title: 스위치와 라우터를 거쳐 호스트에 도착하기
+    alt: 왼쪽 호스트에서 나온 프레임이 L2 스위치와 라우터, 인터넷을 거쳐 오른쪽 호스트의 프로세스에 도착하는 장면입니다.
+    caption: 스위치는 현재 LAN 안에서 프레임을 전달하고 라우터는 패킷을 다음 네트워크 쪽으로 전달합니다.
+  questions:
+  - id: u4-l14-p07-q01
+    kind: choice
+    difficulty: easy
+    prompt: 현재 LAN 안에서 프레임의 목적지 MAC 주소를 보고 전달 방향을 정하는 장치는 무엇인가요?
+    choices:
+    - id: a
+      text: 기본 게이트웨이
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: b
+      text: 브라우저
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: c
+      text: 커널
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: d
+      text: L2 스위치
+      feedback: 맞아요. L2 스위치는 MAC 주소를 보고 현재 LAN 안에서 프레임을 전달해요.
+    - id: e
+      text: 수신 포트
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    answer: d
+  - id: u4-l14-p07-q02
+    kind: choice
+    difficulty: easy
+    prompt: 다른 네트워크로 IP 패킷을 넘길 때 라우터가 고르는 다음 전달 경로의 다음 장비를 무엇이라고 하나요?
+    choices:
+    - id: a
+      text: 페이로드
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: b
+      text: 프로세스
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: c
+      text: 다음 홉
+      feedback: 맞아요. 라우터는 패킷을 넘길 다음 장비, 즉 다음 홉을 골라요.
+    - id: d
+      text: 임시 포트
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: e
+      text: 소켓
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    answer: a
+  - id: u4-l14-p07-q03
+    kind: choice
+    difficulty: medium
+    prompt: NAT가 없을 때 라우터가 다음 링크로 전달하면서 바꿀 수 있는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 모든 데이터의 내용을 지운다
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: b
+      text: 목적지 프로세스를 라우터의 프로세스로 바꾼다
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: c
+      text: IP 패킷을 항상 Ethernet 프레임 하나에 영구 저장한다
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: d
+      text: 웹 페이지의 주소를 포트 번호로 바꾼다
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: e
+      text: 최종 목적지 IP 주소는 그대로 두고 다음 링크의 프레임과 MAC 주소를 바꾼다
+      feedback: 맞아요. 각 링크의 프레임과 MAC 주소는 달라질 수 있지만, NAT가 없으면 최종 IP 목적지는 유지돼요.
+    answer: e
+  - id: u4-l14-p07-q04
+    kind: short
+    prompt: '사설 주소와 공인 주소 사이에서 IP 주소를 변환하는 기능을 무엇이라고 하나요? (힌트: Network Address Translation)'
+    answers:
+    - NAT
+    - network address translation
+    - 네트워크 주소 변환
+    feedback: NAT는 Network Address Translation, 즉 네트워크 주소 변환이에요.
+  question_placements:
+  - question_id: u4-l14-p07-q01
+    after_paragraph: 1
+  - question_id: u4-l14-p07-q02
+    after_paragraph: 2
 animations_dir: units/04-layer3-addressing/lessons/04-패킷의-생성과-전달/assets/animations
 additional_sources:
-  - https://github.com/physical-spark/course-network/blob/90a5cc40dec981b0e37fa334f3fae8ba673c8f32/studio/wiki/honja-network/01-3.md
-  - https://github.com/physical-spark/course-network/blob/90a5cc40dec981b0e37fa334f3fae8ba673c8f32/studio/wiki/honja-network/04-1.md
+- https://github.com/physical-spark/course-network/blob/90a5cc40dec981b0e37fa334f3fae8ba673c8f32/studio/wiki/honja-network/01-3.md
+- https://github.com/physical-spark/course-network/blob/90a5cc40dec981b0e37fa334f3fae8ba673c8f32/studio/wiki/honja-network/04-1.md
 ---
 
 웹 브라우저에서 사이트를 열면 요청은 브라우저 프로그램에서 출발해 서버 컴퓨터까지 가고, 그 안의 웹 서비스 프로그램에 도착해야 한다. IP 주소와 포트 번호는 각각 어디까지 찾는지 다르고, 소켓과 네트워크 계층은 프로그램의 데이터를 실제 링크로 내보내는 일을 이어 준다. 이 Lesson에서는 한 번의 웹 요청을 따라가며 데이터가 프로그램에서 프로그램까지 전달되는 과정을 살펴본다.
 
 ## 데이터와 전달 정보가 패킷에 담긴다
 
-철수가 영희에게 책을 택배로 보낸다고 해 보자. 책은 상자 안에 들어가는 내용물이고, 받는 주소와 보내는 주소는 겉에 붙이는 송장에 적는다. 네트워크에서도 실제로 보내려는 데이터에 전달에 필요한 정보가 더해진다. 계층 안에서 전달되는 실제 내용은 **페이로드(payload)**, 이를 어디로 어떻게 보낼지 해당 계층에 필요한 정보를 담은 부분은 **헤더(header)**라고 한다.
+철수가 영희에게 책을 택배로 보낸다고 해 보자. 책은 상자 안에 들어가는 내용물이다. 네트워크에서 책에 해당하는 것은 실제로 보내려는 데이터다.
+
+받는 주소와 보내는 주소는 겉에 붙이는 송장에 적는다. 네트워크에서도 데이터에 전달에 필요한 정보를 더한다. 계층 안에서 전달되는 실제 내용은 **페이로드(payload)**, 이를 어디로 어떻게 보낼지 해당 계층에 필요한 정보를 담은 부분은 **헤더(header)**라고 한다.
 
 이 Lesson에서 패킷이라고 부를 때는 주로 인터넷 계층(L3)의 IP 패킷을 뜻한다. IP 패킷에는 전달할 페이로드와 출발지·목적지 IP 주소 등이 담긴 헤더가 있다. 보내는 컴퓨터는 최종 목적지의 IP 주소를 지정하고, 중간에 있는 라우터는 그 주소를 보고 다음 전달 방향을 고른다. 택배 송장이 최종 목적지를 알려 주는 것과 비슷하지만, 실제 네트워크 장비가 택배 기사처럼 움직인다는 뜻은 아니다.
 
 ## IP 주소로 호스트를 찾고 포트 번호로 프로그램을 구별한다
 
-영희의 집에 도착한 택배가 있다고 해서 곧바로 받을 사람이 정해지는 것은 아니다. 집 주소는 어느 집인지 알려 주지만, 집 안에서 누가 받을지까지 알려 주지는 않는다. 네트워크에서도 IP 주소는 데이터를 받을 **호스트(host)**, 즉 컴퓨터나 서버를 찾는다. 하지만 한 호스트에는 웹 브라우저, 메신저, 게임처럼 여러 네트워크 프로그램이 함께 실행될 수 있다.
+영희의 집에 도착한 택배가 있다고 해 보자. 집 주소는 택배가 어느 집으로 가야 하는지 알려 준다.
+
+네트워크에서 IP 주소는 데이터를 받을 **호스트(host)**, 즉 컴퓨터나 서버를 찾는다. 하지만 한 호스트에는 웹 브라우저, 메신저, 게임처럼 여러 네트워크 프로그램이 함께 실행될 수 있다.
 
 그 호스트 안에서 데이터를 받을 애플리케이션을 구분하는 데 TCP나 UDP의 **포트 번호(port number)**가 쓰인다. 택배 비유로 보면 IP 주소는 건물 주소이고, 포트 번호는 그 건물 안에서 전달할 수신자를 가리키는 표식에 가깝다. 포트는 컴퓨터에 난 물리적인 구멍도, 프로그램이 실행되는 방 번호도 아니다. 전송 계층 헤더에 기록되는 숫자이며, 운영체제는 주소와 포트 등의 정보를 이용해 알맞은 통신 끝점으로 데이터를 전달한다.
 
@@ -80,7 +619,9 @@ additional_sources:
 
 ## IP 주소와 포트 번호를 함께 읽기
 
-IP 주소 뒤에 콜론과 포트 번호를 붙여 `IP 주소:포트 번호`처럼 적을 수 있다. 아래 애니메이션에서 `203.0.113.20`은 호스트를 찾는 IP 주소이고, `80`은 그 호스트에서 일반 웹(HTTP) 요청을 받을 프로그램을 가리킬 때 흔히 쓰는 포트 번호다. 암호화된 웹(HTTPS)을 받는 프로그램은 흔히 `443`번 포트를 사용한다. 이 번호들은 널리 쓰이는 약속이지만, 설정에 따라 다른 번호를 사용할 수도 있다.
+IP 주소 뒤에 콜론과 포트 번호를 붙여 `IP 주소:포트 번호`처럼 적을 수 있다. 아래 애니메이션에서 `203.0.113.20`은 호스트를 찾는 IP 주소이고, `80`은 그 호스트에서 일반 웹(HTTP) 요청을 받을 프로그램을 가리킬 때 흔히 쓰는 포트 번호다.
+
+암호화된 웹(HTTPS)을 받는 프로그램은 흔히 `443`번 포트를 사용한다. 이 번호들은 널리 쓰이는 약속이지만, 설정에 따라 다른 번호를 사용할 수도 있다.
 
 예를 들어 연결 목록에 `192.0.2.15:51707 → 203.0.113.20:443`이 보인다면, 왼쪽은 내 컴퓨터 쪽 주소와 포트, 오른쪽은 원격 호스트의 주소와 포트다. 웹 브라우저 같은 클라이언트에는 통신할 때 임시 포트가 배정될 수 있고, 서버 쪽 `443`은 보통 HTTPS 서비스를 가리킨다. 이 숫자들이 모든 브라우저나 연결에서 늘 같다는 뜻은 아니다.
 
@@ -88,19 +629,27 @@ Windows에서는 리소스 모니터의 **네트워크** 탭에서 프로세스�
 
 ## 소켓은 프로그램과 운영체제를 잇는 통신 창구다
 
-브라우저가 웹 요청을 보내려면 네트워크 장치의 세부 동작을 직접 처리하는 대신 운영체제에 네트워크 입출력을 요청한다. 이때 프로그램이 운영체제의 네트워크 기능을 이용하는 인터페이스가 **소켓(socket)**이다. 소켓은 포트 번호 그 자체도, 케이블이나 택배 상자도 아니다. 프로그램이 데이터를 보내고 받을 수 있도록 운영체제가 제공하는 통신 창구다.
+브라우저가 웹 요청을 보내려면 네트워크 장치의 세부 동작을 직접 처리하는 대신 운영체제에 네트워크 입출력을 요청한다.
+
+이때 프로그램이 운영체제의 네트워크 기능을 이용하는 인터페이스가 **소켓(socket)**이다. 소켓은 포트 번호 그 자체도, 케이블이나 택배 상자도 아니다. 프로그램이 데이터를 보내고 받을 수 있도록 운영체제가 제공하는 통신 창구다.
 
 예를 들어 브라우저가 소켓으로 요청 데이터를 운영체제에 넘기면, 운영체제의 핵심 제어부인 커널(kernel)이 TCP/IP와 네트워크 장치에 필요한 처리를 맡긴다. 응답이 돌아오면 운영체제는 연결 정보에 맞는 소켓을 통해 데이터를 브라우저에 전달한다. 같은 컴퓨터에서 브라우저와 메신저가 동시에 통신해도 각각의 연결을 구분할 수 있는 것은 소켓과 주소·포트 정보가 함께 쓰이기 때문이다.
 
 ## 데이터를 세그먼트와 패킷, 프레임으로 만들기
 
-TCP를 사용하는 예에서 프로그램이 보낼 데이터를 소켓에 넘기면, 운영체제는 계층을 거치며 전달에 필요한 정보를 덧붙인다. TCP는 포트 번호 등의 정보를 담은 헤더와 데이터를 묶어 **세그먼트(segment)**를 만든다. 인터넷 계층은 IP 주소 등을 담은 헤더를 더해 **IP 패킷(packet)**을 만든다. Ethernet 링크를 사용하는 데이터 링크 계층은 같은 링크 안에서 전달하기 위한 헤더와 오류 확인용 트레일러를 더해 **프레임(frame)**을 만든다.
+TCP를 사용하는 예에서 프로그램이 보낼 데이터를 소켓에 넘기면, 운영체제는 계층을 거치며 전달에 필요한 정보를 덧붙인다.
+
+TCP는 포트 번호 등의 정보를 담은 헤더와 데이터를 묶어 **세그먼트(segment)**를 만든다. 인터넷 계층은 IP 주소 등을 담은 헤더를 더해 **IP 패킷(packet)**을 만든다.
+
+Ethernet 링크를 사용하는 데이터 링크 계층은 같은 링크 안에서 전달하기 위한 헤더와 오류 확인용 트레일러를 더해 **프레임(frame)**을 만든다.
 
 아래 애니메이션처럼 한 계층에서 완성된 단위 전체는 바깥 계층의 페이로드로 실릴 수 있다. 보낼 때의 순서는 `데이터 → 세그먼트 → IP 패킷 → Ethernet 프레임`이다. 받은 쪽은 바깥 프레임의 정보를 먼저 처리하고 안쪽 단위로 올라가며 데이터를 꺼낸다. 캡슐화와 역캡슐화의 자세한 원리는 앞 Lesson에서 살펴본 내용이다.
 
 ## 스위치와 라우터를 거쳐 목적지에 도착하기
 
-이더넷 LAN을 지나는 예에서 프레임은 먼저 L2 스위치에 도착한다. 스위치는 프레임의 목적지 MAC 주소를 보고 현재 LAN 안에서 어느 쪽으로 전달할지 정한다. 목적지 호스트가 다른 네트워크에 있으면 라우터가 IP 패킷의 목적지 IP 주소를 확인해 패킷을 넘길 다음 경로, 즉 다음 홉(next hop)을 고른다.
+이더넷 LAN을 지나는 예에서 프레임은 먼저 L2 스위치에 도착한다. 스위치는 프레임의 목적지 MAC 주소를 보고 현재 LAN 안에서 어느 쪽으로 전달할지 정한다.
+
+목적지 호스트가 다른 네트워크에 있으면 라우터가 IP 패킷의 목적지 IP 주소를 확인해 패킷을 넘길 다음 경로, 즉 다음 홉(next hop)을 고른다.
 
 라우터는 들어온 링크의 프레임 정보를 처리하고, 다음 링크에서 사용할 새 프레임에 IP 패킷을 다시 담아 보낸다. 사설 IP 주소와 공인 IP 주소처럼 주소를 바꾸는 NAT(네트워크 주소 변환)가 없는 일반적인 예에서는 최종 목적지 IP 주소는 유지되지만, 각 링크에서 쓰는 프레임과 그 MAC 주소는 다음 구간에 맞게 달라진다. 받는 호스트에 도착하면 IP 주소로 호스트를 찾고, 포트 번호와 소켓 정보에 따라 웹 서버 프로세스에 데이터를 전달한다.
 
