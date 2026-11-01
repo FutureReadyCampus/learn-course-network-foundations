@@ -6,7 +6,7 @@ wiki_diagram: units/03-layer2-switching/lessons/01-nic-l2-frame-lan-카드-그�
 page_metadata:
 - terms:
   - NIC (Network Interface Card)
-  - 인터페이스 (Interface)
+  - 네트워크 인터페이스 (Network interface)
   - 리얼텍 (Realtek)
   inline_questions_after: 1
   questions:
@@ -57,7 +57,10 @@ page_metadata:
     prompt: 네트워크와 맞닿는 연결 지점을 장치와 구분해 부르는 말입니다. 영어로 답해주세요.
     answers:
     - network interface
-    feedback: 정답은 network interface입니다.
+    - interface
+    - 인터페이스
+    - 네트워크 인터페이스
+    feedback: 정답은 network interface(네트워크 인터페이스)입니다.
   - id: u3-01-p01-q04
     kind: choice
     difficulty: medium
@@ -108,7 +111,8 @@ page_metadata:
 - terms:
   - 호스트 (Host)
   - 액세스 포인트 (Access Point)
-  - 인터페이스와 케이블 구멍
+  - 포트 (Port)
+  - 네트워크 인터페이스 (Network interface)
   inline_questions_after: 1
   animations:
   - file: l08-host-two-nics.svg
@@ -124,19 +128,19 @@ page_metadata:
     prompt: 집 한 채에 문이 두 개 있어도 집은 한 채이듯, Wi-Fi와 유선 연결이 모두 있는 노트북은 Host 몇 대인가요?
     choices:
     - id: a
-      text: Host
-      feedback: 맞아요. Host.
+      text: 1대
+      feedback: 맞아요. 연결 지점은 둘이어도 노트북 Host는 한 대입니다.
     - id: b
-      text: Frame
+      text: 2대
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
     - id: c
-      text: Interface
+      text: 3대
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
     - id: d
-      text: Switch
+      text: 4대
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
     - id: e
-      text: WAN
+      text: 연결 지점 수와 같은 대수
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
     answer: a
   - id: u3-01-p02-q02
@@ -165,7 +169,10 @@ page_metadata:
     prompt: 일상적으로 케이블을 꽂는 물리적인 연결 구멍을 부르는 말입니다. 영어로 답해주세요.
     answers:
     - port
-    feedback: 정답은 port입니다.
+    - physical port
+    - 포트
+    - 물리 포트
+    feedback: 정답은 port(포트)입니다.
   - id: u3-01-p02-q04
     kind: choice
     difficulty: medium
@@ -187,6 +194,7 @@ page_metadata:
       text: "Wi-Fi 연결에는 포트 번호가 없다"
       feedback: "다시 본문을 확인해 보세요. 프로그램의 포트 번호는 유선과 무선 모두에서 쓰입니다."
     answer: b
+
   - id: u3-01-p02-q05
     kind: choice
     difficulty: medium
@@ -261,7 +269,10 @@ page_metadata:
     prompt: 집이나 사무실처럼 비교적 가까운 범위의 네트워크를 부르는 이름입니다. 영어 약어로 답해주세요.
     answers:
     - LAN
-    feedback: 정답은 LAN입니다.
+    - local area network
+    - 근거리 네트워크
+    - 근거리 통신망
+    feedback: 정답은 LAN(Local Area Network)입니다.
   - id: u3-01-p03-q04
     kind: choice
     difficulty: medium
@@ -313,7 +324,7 @@ page_metadata:
   - MAC 주소 (Media Access Control address)
   - 식별자 (identifier)
   - 16진수 (hexadecimal)
-  - 임시 MAC 주소
+  - 임시 MAC 주소 (Private Wi-Fi Address, Randomized MAC address)
   inline_questions_after: 1
   animations:
   - file: l08-mac-address-label.svg
@@ -345,7 +356,7 @@ page_metadata:
   - id: u3-01-p04-q02
     kind: choice
     difficulty: medium
-    prompt: Wi-Fi에서 개인 주소를 사용할 수 있다는 설명으로 맞는 것은 무엇인가요?
+    prompt: Wi-Fi에서 네트워크별 임시 MAC 주소를 사용할 수 있다는 설명으로 맞는 것은 무엇인가요?
     choices:
     - id: a
       text: 개인 주소를 쓰면 연결 지점에 주소가 필요 없다
@@ -365,10 +376,15 @@ page_metadata:
     answer: e
   - id: u3-01-p04-q03
     kind: short
-    prompt: Wi-Fi에서 기기 고유 주소 대신 네트워크별로 사용할 수 있는 주소 유형입니다. 영어로 답해주세요.
+    prompt: Wi-Fi에서 네트워크마다 다른 MAC 주소를 사용해 추적을 줄이는 기능의 glossary 용어는 무엇인가요? (영어 또는 한글)
     answers:
-    - private address
-    feedback: 정답은 private address입니다.
+    - private wi-fi address
+    - randomized mac address
+    - private mac address
+    - 임시 MAC 주소
+    - 임시 맥 주소
+    - 네트워크별 MAC 주소
+    feedback: 정답은 임시 MAC 주소(Private Wi-Fi Address 또는 Randomized MAC Address)입니다.
   - id: u3-01-p04-q04
     kind: choice
     difficulty: medium
@@ -463,8 +479,11 @@ page_metadata:
     kind: short
     prompt: 같은 L2 구간에서 데이터 전달에 사용하는 묶음을 영어로 무엇이라고 하나요?
     answers:
-    - Frame
-    feedback: 정답은 Frame입니다.
+    - frame
+    - ethernet frame
+    - 프레임
+    - Ethernet 프레임
+    feedback: 정답은 frame(Ethernet 프레임)입니다.
   - id: u3-01-p05-q04
     kind: choice
     difficulty: medium
@@ -564,8 +583,10 @@ page_metadata:
     kind: short
     prompt: 일반 Ethernet 프레임보다 더 큰 프레임을 허용하는 기능을 가리키는 영어 용어는 무엇인가요?
     answers:
-    - Jumbo Frame
-    feedback: 정답은 Jumbo Frame입니다.
+    - jumbo frame
+    - jumbo frames
+    - 점보 프레임
+    feedback: 정답은 Jumbo Frame(점보 프레임)입니다.
   - id: u3-01-p06-q04
     kind: choice
     difficulty: medium
@@ -672,8 +693,10 @@ page_metadata:
     kind: short
     prompt: 8개의 bit가 모여 이루는 정보 용량 단위입니다. 영어 단어로 답해주세요.
     answers:
-    - Byte
-    feedback: 정답은 Byte입니다.
+    - byte
+    - bytes
+    - 바이트
+    feedback: 정답은 byte(바이트)입니다.
   - id: u3-01-p07-q04
     kind: choice
     difficulty: medium
@@ -718,7 +741,7 @@ page_metadata:
     answer: e
 - terms:
   - 광섬유 케이블
-  - 슬롯 (Slot)
+  - Ethernet (이더넷)
   inline_questions_after: 1
   questions:
   - id: u3-01-p08-q01
@@ -767,8 +790,9 @@ page_metadata:
     kind: short
     prompt: 유선 LAN에서 널리 쓰이며 데이터 프레임과 연결되는 네트워크 기술입니다. 영어로 답해주세요.
     answers:
-    - Ethernet
-    feedback: 정답은 Ethernet입니다.
+    - ethernet
+    - 이더넷
+    feedback: 정답은 Ethernet(이더넷)입니다.
   - id: u3-01-p08-q04
     kind: choice
     difficulty: medium
@@ -837,7 +861,6 @@ animations_dir: units/03-layer2-switching/lessons/01-nic-l2-frame-lan-카드-그
 
 여기서 ‘포트’라는 말을 만나면 문맥을 살펴야 합니다. 컴퓨터 옆의 Ethernet 케이블 구멍도 일상적으로 포트라고 부르지만, 나중에 배울 TCP/UDP 포트 번호는 프로그램의 통신 통로를 구분하는 번호입니다. 구멍과 번호는 서로 다른 개념입니다. 또 서버를 제공하는 서비스도 ‘호스트’라 부르는 경우가 있지만, 이 Lesson에서는 네트워크에 연결된 장치 한 대라는 뜻으로 사용합니다.
 
-케이블을 꽂는 물리적인 구멍도 일상적으로 ‘포트’라고 부릅니다. 뒤에서 배울 통신 프로그램의 포트 번호와는 다른 뜻이니, 지금은 연결 지점과 케이블 구멍을 구분해 두면 됩니다.
 
 ## LAN과 네트워크 규모
 
@@ -853,7 +876,7 @@ LAN을 마을 하나, MAN을 도시, WAN을 더 넓은 지역으로 생각하면
 
 주소는 보통 `AA-BB-CC-11-22-33`처럼 두 글자씩 여섯 묶음으로 적습니다. 콜론으로 `AA:BB:CC:11:22:33`처럼 쓰기도 합니다. 한 글자는 0~9 또는 A~F를 쓰는 16진수 한 자리이고, 두 자리가 1바이트입니다. 여섯 묶음은 6바이트, 즉 48비트입니다. 이처럼 표기가 일정한 이유는 사람이 주소를 읽고 비교하기 쉽게 여러 덩어리로 나눴기 때문입니다.
 
-전역으로 할당된 일반적인 MAC 주소에서는 앞부분이 주소를 할당받은 조직을 식별하는 데 쓰입니다. 그렇다고 화면에 보이는 모든 MAC 주소에서 제조사를 알아낼 수 있는 것은 아닙니다. 스마트폰과 노트북은 Wi-Fi에서 개인정보 보호를 위해 기기 고유 주소 대신 네트워크별 개인 주소를 사용할 수 있습니다. 예를 들어 집 Wi-Fi와 카페 Wi-Fi에서 서로 다른 주소를 보일 수 있고, 제품 라벨에 적힌 주소와도 다를 수 있습니다. 따라서 MAC 주소는 ‘연결 지점을 구분하는 문패’로 기억하되, 문패가 언제나 공장에서 붙인 값 그대로라고 생각하지는 마세요.
+전역으로 할당된 일반적인 MAC 주소에서는 앞부분이 주소를 할당받은 조직을 식별하는 데 쓰입니다. 그렇다고 화면에 보이는 모든 MAC 주소에서 제조사를 알아낼 수 있는 것은 아닙니다. 스마트폰과 노트북은 Wi-Fi에서 개인정보 보호를 위해 기기 고유 주소 대신 네트워크별 임시 MAC 주소를 사용할 수 있습니다. 이 기능을 Private Wi-Fi Address 또는 Randomized MAC Address라고 부르기도 합니다. 예를 들어 집 Wi-Fi와 카페 Wi-Fi에서 서로 다른 주소를 보일 수 있고, 제품 라벨에 적힌 주소와도 다를 수 있습니다. 따라서 MAC 주소는 ‘연결 지점을 구분하는 문패’로 기억하되, 문패가 언제나 공장에서 붙인 값 그대로라고 생각하지는 마세요.
 
 노트북에 Wi-Fi와 USB Ethernet, 두 NIC가 있다면 각각의 인터페이스에 서로 다른 MAC 주소가 사용됩니다. 그래서 MAC 주소는 컴퓨터 한 대에 무조건 하나만 있는 값이 아닙니다. 또 MAC 주소와 IP 주소는 둘 다 주소처럼 보이지만 역할이 다릅니다. 지금은 MAC 주소를 가까운 네트워크 구간에서 연결 지점을 구별할 때 쓰는 문패로 기억하고, IP 주소와 두 주소가 함께 쓰이는 과정은 뒤에서 배웁니다.
 
