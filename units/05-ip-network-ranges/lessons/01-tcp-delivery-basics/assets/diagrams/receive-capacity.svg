@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 630" role="img" aria-labelledby="title desc" lang="ko"><title id="title">수신 버퍼를 읽으면 더 받을 공간이 늘어난다</title><desc id="desc">한 칸이 1000바이트인 8칸 버퍼에 처음에는 읽기 대기 데이터가 6칸, 빈 공간이 2칸이다. 브라우저가 2000바이트를 읽으면 데이터 4칸과 빈 공간 4칸이 된다.</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#7ee7c7" stroke-width="2"/></marker></defs>
+<style>text{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;fill:#edf2f7}.label{font-size:27px;font-weight:650}.detail{font-size:23px;fill:#bdcadc}.path{fill:none;stroke:#7ee7c7;stroke-width:3;marker-end:url(#arrow)}.box{fill:#172437;stroke:#4b6585;stroke-width:2}</style><rect width="1120" height="630" rx="18" fill="#0f1723"/>
+<text class="label" x="560" y="49" text-anchor="middle">수신 윈도: 더 받아 둘 수 있는 바이트 범위</text>
+<text class="detail" x="560" y="98" text-anchor="middle">예시 수신 버퍼 8,000바이트 · 한 칸은 1,000바이트</text>
+<text class="label" x="157" y="190" text-anchor="middle">읽기 전</text>
+<text class="detail" x="157" y="227" text-anchor="middle">6,000 대기 · 2,000 여유</text>
+<rect x="325" y="160" width="78" height="82" rx="8" fill="#315f9b" stroke="#8fbafb" stroke-width="2"/>
+<text x="364" y="208" font-family="sans-serif" font-size="20" text-anchor="middle">대기</text>
+<rect x="415" y="160" width="78" height="82" rx="8" fill="#315f9b" stroke="#8fbafb" stroke-width="2"/>
+<text x="454" y="208" font-family="sans-serif" font-size="20" text-anchor="middle">대기</text>
+<rect x="505" y="160" width="78" height="82" rx="8" fill="#315f9b" stroke="#8fbafb" stroke-width="2"/>
+<text x="544" y="208" font-family="sans-serif" font-size="20" text-anchor="middle">대기</text>
+<rect x="595" y="160" width="78" height="82" rx="8" fill="#315f9b" stroke="#8fbafb" stroke-width="2"/>
+<text x="634" y="208" font-family="sans-serif" font-size="20" text-anchor="middle">대기</text>
+<rect x="685" y="160" width="78" height="82" rx="8" fill="#315f9b" stroke="#8fbafb" stroke-width="2"/>
+<text x="724" y="208" font-family="sans-serif" font-size="20" text-anchor="middle">대기</text>
+<rect x="775" y="160" width="78" height="82" rx="8" fill="#315f9b" stroke="#8fbafb" stroke-width="2"/>
+<text x="814" y="208" font-family="sans-serif" font-size="20" text-anchor="middle">대기</text>
+<rect x="865" y="160" width="78" height="82" rx="8" fill="#172437" stroke="#71839c" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="904" y="208" font-family="sans-serif" font-size="20" text-anchor="middle">빈칸</text>
+<rect x="955" y="160" width="78" height="82" rx="8" fill="#172437" stroke="#71839c" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="994" y="208" font-family="sans-serif" font-size="20" text-anchor="middle">빈칸</text>
+<text class="detail" x="675" y="282" text-anchor="middle">받을 수 있는 양: 2,000바이트</text>
+<text class="label" x="157" y="385" text-anchor="middle">읽은 뒤</text>
+<text class="detail" x="157" y="422" text-anchor="middle">4,000 대기 · 4,000 여유</text>
+<rect x="325" y="355" width="78" height="82" rx="8" fill="#315f9b" stroke="#8fbafb" stroke-width="2"/>
+<text x="364" y="403" font-family="sans-serif" font-size="20" text-anchor="middle">대기</text>
+<rect x="415" y="355" width="78" height="82" rx="8" fill="#315f9b" stroke="#8fbafb" stroke-width="2"/>
+<text x="454" y="403" font-family="sans-serif" font-size="20" text-anchor="middle">대기</text>
+<rect x="505" y="355" width="78" height="82" rx="8" fill="#315f9b" stroke="#8fbafb" stroke-width="2"/>
+<text x="544" y="403" font-family="sans-serif" font-size="20" text-anchor="middle">대기</text>
+<rect x="595" y="355" width="78" height="82" rx="8" fill="#315f9b" stroke="#8fbafb" stroke-width="2"/>
+<text x="634" y="403" font-family="sans-serif" font-size="20" text-anchor="middle">대기</text>
+<rect x="685" y="355" width="78" height="82" rx="8" fill="#172437" stroke="#71839c" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="724" y="403" font-family="sans-serif" font-size="20" text-anchor="middle">빈칸</text>
+<rect x="775" y="355" width="78" height="82" rx="8" fill="#172437" stroke="#71839c" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="814" y="403" font-family="sans-serif" font-size="20" text-anchor="middle">빈칸</text>
+<rect x="865" y="355" width="78" height="82" rx="8" fill="#172437" stroke="#71839c" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="904" y="403" font-family="sans-serif" font-size="20" text-anchor="middle">빈칸</text>
+<rect x="955" y="355" width="78" height="82" rx="8" fill="#172437" stroke="#71839c" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="994" y="403" font-family="sans-serif" font-size="20" text-anchor="middle">빈칸</text>
+<text class="detail" x="675" y="477" text-anchor="middle">받을 수 있는 양: 4,000바이트</text>
+<text class="detail" x="675" y="316" text-anchor="middle">브라우저가 2,000바이트를 읽는다</text>
+<path class="path" d="M675 325 V343"/>
+<rect class="box" x="90" y="536" width="940" height="65" rx="14"/>
+<text class="label" x="560" y="578" text-anchor="middle">ACK는 받은 범위 · 수신 윈도는 더 받을 공간</text>
+</svg>
