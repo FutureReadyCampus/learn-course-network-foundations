@@ -180,6 +180,10 @@
     iframe.referrerPolicy = "strict-origin-when-cross-origin";
     iframe.allowFullscreen = true;
     section.append(iframe);
+    const note = document.createElement("p");
+    note.className = "page-video-note";
+    note.textContent = "[참고용] 가볍게 시청해 보세요.";
+    section.append(note);
     const details = [video.title, video.creator].filter(Boolean);
     if (Number.isSafeInteger(video.duration_seconds) && video.duration_seconds > 0) {
       const minutes = Math.floor(video.duration_seconds / 60);
