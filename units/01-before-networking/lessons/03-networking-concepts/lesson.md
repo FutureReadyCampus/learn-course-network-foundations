@@ -196,9 +196,23 @@ pages:
       - 프로토콜
       feedback: 정답은 protocol입니다.
 animations_dir: units/01-before-networking/lessons/03-networking-concepts/assets/animations
+page_metadata:
+  - page_id: u1l3-network-networking
+    video:
+      video_id: U2IX5JzgBis
+      title: "[네트워크 기초 강의] 1강. 컴퓨터 네트워크를 알아야 하는 이유"
+      creator: 한빛미디어
+      duration_seconds: 519
+  - page_id: u1l3-osi-protocol-tcpip
+    video:
+      video_id: 4LHEu_7k4FE
+      title: "[네트워크 기초 강의] 7강. 네트워크 미시적으로 살펴보기③ | 캡슐화와 역캡슐화"
+      creator: 한빛미디어
+      duration_seconds: 691
 ---
 
 ## Network·Networking과 대화의 조건
+<!-- learn-page-id: u1l3-network-networking -->
 
 ### Network는 관계, Networking은 상호작용
 
@@ -245,6 +259,7 @@ Network와 Networking의 차이도 이와 같습니다. 단어 끝에 ing 하나
 한 줄로 되짚으면, 아래 조건이 위 조건의 전제가 되어 층층이 쌓인 것이 계층 구조입니다.
 
 ## OSI·프로토콜과 TCP/IP 구현
+<!-- learn-page-id: u1l3-osi-protocol-tcpip -->
 
 ### 프로토콜은 상호작용의 규칙
 
