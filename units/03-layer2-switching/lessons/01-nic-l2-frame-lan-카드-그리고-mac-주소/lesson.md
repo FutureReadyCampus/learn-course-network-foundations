@@ -53,14 +53,26 @@ page_metadata:
       feedback: 맞아요. NIC는 연결 장치이고, 인터페이스는 네트워크와 맞닿는 연결 지점이다.
     answer: e
   - id: u3-01-p01-q03
-    kind: short
-    prompt: 네트워크와 맞닿는 연결 지점을 장치와 구분해 부르는 말입니다. 영어로 답해주세요.
-    answers:
-    - network interface
-    - interface
-    - 인터페이스
-    - 네트워크 인터페이스
-    feedback: 정답은 network interface(네트워크 인터페이스)입니다.
+    kind: choice
+    difficulty: medium
+    prompt: 네트워크와 맞닿는 연결 지점을 장치와 구분해 부르는 말은 무엇인가요?
+    choices:
+    - id: a
+      text: Network interface(네트워크 인터페이스)
+      feedback: 맞아요. 네트워크 인터페이스는 장치에서 네트워크와 맞닿는 연결 지점입니다.
+    - id: b
+      text: NIC(네트워크 연결 장치)
+      feedback: NIC는 네트워크에 연결하는 장치이고, 인터페이스는 네트워크와 맞닿는 연결 지점입니다.
+    - id: c
+      text: MAC address(MAC 주소)
+      feedback: MAC 주소는 네트워크 인터페이스를 식별하는 주소입니다.
+    - id: d
+      text: IP address(IP 주소)
+      feedback: IP 주소는 네트워크에서 목적지를 찾는 데 사용합니다.
+    - id: e
+      text: Port number(포트 번호)
+      feedback: 포트 번호는 장치 안에서 통신할 프로그램을 구분합니다.
+    answer: a
   - id: u3-01-p01-q04
     kind: choice
     difficulty: medium
@@ -374,17 +386,6 @@ page_metadata:
       text: 제품에 적힌 MAC 주소와 다른 네트워크별 주소를 사용할 수 있다
       feedback: 맞아요. 제품에 적힌 MAC 주소와 다른 네트워크별 주소를 사용할 수 있다.
     answer: e
-  - id: u3-01-p04-q03
-    kind: short
-    prompt: Wi-Fi에서 네트워크마다 다른 MAC 주소를 사용해 추적을 줄이는 기능의 glossary 용어는 무엇인가요? (영어 또는 한글)
-    answers:
-    - private wi-fi address
-    - randomized mac address
-    - private mac address
-    - 임시 MAC 주소
-    - 임시 맥 주소
-    - 네트워크별 MAC 주소
-    feedback: 정답은 임시 MAC 주소(Private Wi-Fi Address 또는 Randomized MAC Address)입니다.
   - id: u3-01-p04-q04
     kind: choice
     difficulty: medium
@@ -579,14 +580,6 @@ page_metadata:
       text: 마지막 검사 값을 크기에 포함하는지 달라질 수 있다
       feedback: 맞아요. 마지막 검사 값을 크기에 포함하는지 달라질 수 있다.
     answer: e
-  - id: u3-01-p06-q03
-    kind: short
-    prompt: 일반 Ethernet 프레임보다 더 큰 프레임을 허용하는 기능을 가리키는 영어 용어는 무엇인가요?
-    answers:
-    - jumbo frame
-    - jumbo frames
-    - 점보 프레임
-    feedback: 정답은 Jumbo Frame(점보 프레임)입니다.
   - id: u3-01-p06-q04
     kind: choice
     difficulty: medium

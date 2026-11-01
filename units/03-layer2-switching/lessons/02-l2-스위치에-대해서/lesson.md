@@ -313,15 +313,6 @@ page_metadata:
       text: VLAN 10, 출발지 MAC 주소, 3번 포트의 관계
       feedback: 맞아요. 스위치는 VLAN 안에서 출발지 MAC 주소와 들어온 포트를 연결해 기록합니다.
     answer: e
-  - id: u3-02-p03-q03
-    kind: short
-    prompt: 스위치가 주소와 그 주소가 들어온 포트를 함께 기록해 둔 표입니다. 영어로 무엇일까요?
-    answers:
-    - MAC address table
-    - MAC table
-    - MAC 주소 테이블
-    - MAC 테이블
-    feedback: 정답은 MAC address table(MAC 주소 테이블)입니다.
   - id: u3-02-p03-q04
     kind: choice
     difficulty: medium
@@ -435,15 +426,6 @@ page_metadata:
       text: 목적지 B로부터 출발지 A를 학습한 뒤 3번 포트로 보낸다
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
     answer: c
-  - id: u3-02-p04-q03
-    kind: short
-    prompt: 스위치가 프레임을 어느 연결 지점으로 보낼지 찾을 때 확인하는 주소의 영어 glossary 용어는 무엇인가요? (영어 또는 한글)
-    answers:
-    - destination MAC address
-    - destination MAC
-    - 목적지 MAC 주소
-    - 목적지 MAC
-    feedback: 정답은 destination MAC address(목적지 MAC 주소)입니다.
   - id: u3-02-p04-q04
     kind: choice
     difficulty: medium
@@ -803,14 +785,6 @@ page_metadata:
       text: Uplink는 단말 포트만 뜻하고 Link up은 광섬유만 뜻한다
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
     answer: a
-  - id: u3-02-p07-q03
-    kind: short
-    prompt: 여러 액세스 스위치를 모아 상위 네트워크로 연결하는 장비의 glossary 용어는 무엇인가요? (영어 또는 한글)
-    answers:
-    - distribution switch
-    - distribution-layer switch
-    - 배포 스위치
-    feedback: 정답은 distribution switch(배포 스위치)입니다.
   - id: u3-02-p07-q04
     kind: choice
     difficulty: medium
@@ -931,15 +905,6 @@ page_metadata:
       text: 배포 스위치는 언제나 L3만 수행한다
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
     answer: b
-  - id: u3-02-p08-q03
-    kind: short
-    prompt: 서로 다른 IP 네트워크 사이에서 L3 라우팅도 수행할 수 있는 스위치의 glossary 용어는 무엇인가요? (영어 또는 한글)
-    answers:
-    - L3 switch
-    - layer 3 switch
-    - L3스위치
-    - 레이어 3 스위치
-    feedback: 정답은 L3 switch(Layer 3 switch)입니다.
   - id: u3-02-p08-q04
     kind: choice
     difficulty: medium
