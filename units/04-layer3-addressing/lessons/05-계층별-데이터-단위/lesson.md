@@ -8,6 +8,17 @@ page_metadata:
   - Frame(프레임)
   - Packet(패킷)
   - Segment(세그먼트)
+  illustrations:
+  - file: assets/animations/l15-daily-name-by-box.svg
+    title: "같은 책, 보는 곳마다 달라지는 이름"
+    alt: "위에서 아래로 작은 상자, 중간 상자, 큰 상자가 한 줄씩 나타납니다. 책에 작은 라벨이 붙은 것이 작은 상자, 거기에 중간 라벨이 더해진 것이 중간 상자, 큰 라벨과 봉인이 더해진 것이 큰 상자입니다. 마지막 줄에는 트럭이 큰 상자를 그대로 싣고 도로를 달립니다."
+    caption: "겹쳐 포장될수록 바깥 상자의 이름으로 부릅니다. 트럭은 새 상자를 만들지 않고 큰 상자를 실어 나릅니다."
+    after_paragraph: -1
+  - file: assets/animations/l15-unit-names-by-layer.svg
+    title: "계층마다 달라지는 데이터 이름"
+    alt: "위에서 아래로 L4 세그먼트, L3 패킷, L2 프레임이 한 줄씩 나타납니다. 데이터에 TCP 헤더가 붙으면 세그먼트, IP 헤더가 더해지면 패킷, 프레임 헤더와 FCS가 더해지면 프레임입니다. 마지막 줄 L1에는 비트가 늘어서 있고, 새 단위가 아니라 프레임을 비트와 신호로 전달한다는 설명이 나타납니다."
+    caption: "같은 데이터가 어느 계층에서 보이느냐에 따라 세그먼트, 패킷, 프레임으로 불립니다. L1은 프레임을 비트와 신호로 전달해요."
+    after_paragraph: 1
   questions:
   - id: u4-l15-p01-q01
     kind: choice
@@ -88,6 +99,17 @@ page_metadata:
   - Socket(소켓)
   - Stream(스트림)
   - User mode(사용자 모드)
+  illustrations:
+  - file: assets/animations/l15-daily-hose-flow.svg
+    title: "호스로 이어지는 물줄기"
+    alt: "물 붓는 사람이 호스에 물을 세 번에 나눠 붓습니다. 호스 안에서는 하나로 이어진 물줄기가 되고, 물 받는 사람은 두 번에 나눠 받습니다. 마지막에 붓는 횟수와 받는 횟수가 같지 않아도 된다는 설명이 나타납니다."
+    caption: "나눠 붓는 횟수와 받는 횟수가 달라도 같은 물이 도착합니다."
+    after_paragraph: -1
+  - file: assets/animations/l15-stream-vs-write-read.svg
+    title: "소켓과 스트림"
+    alt: "보내는 앱이 데이터를 세 번에 나눠 씁니다. TCP 소켓 안에서는 이어진 하나의 바이트 흐름이 되고, 받는 앱은 두 번에 나눠 읽습니다. 마지막에 쓴 횟수와 읽은 횟수가 같지 않을 수 있다는 설명이 나타납니다."
+    caption: "TCP에서는 쓴 횟수와 읽은 횟수가 같다고 가정하면 안 되고, 메시지 경계는 애플리케이션이 약속해야 해요."
+    after_paragraph: 1
   questions:
   - id: u4-l15-p02-q01
     kind: choice
@@ -168,6 +190,17 @@ page_metadata:
   - MTU(Maximum Transmission Unit)
   - MSS(Maximum Segment Size)
   - Header(헤더)
+  illustrations:
+  - file: assets/animations/l15-daily-box-limit.svg
+    title: "상자 한도와 물건 한도는 다르다"
+    alt: "중간 상자 전체에 한도 15kg이 있습니다. 포장 0.2kg과 송장 0.2kg이 차례로 자리를 차지하고, 남은 물건 한도는 14.6kg이라고 표시됩니다. 마지막에 조건이 다르면 포장과 송장 무게도 달라진다는 설명이 나타납니다."
+    caption: "상자 전체의 한도에서 포장과 송장을 빼면 물건의 한도가 나옵니다."
+    after_paragraph: -1
+  - file: assets/animations/l15-mtu-vs-mss.svg
+    title: "MTU는 패킷 전체, MSS는 TCP 데이터"
+    alt: "IP 패킷 전체에 MTU 1,500B 상한이 있습니다. IP 헤더 20B와 TCP 헤더 20B가 차례로 자리를 차지하고, 남은 MSS가 1,500 − 20 − 20 = 1,460B라고 표시됩니다. 마지막에 헤더 옵션이나 IP 버전에 따라 달라질 수 있다는 설명이 나타납니다. 칸의 너비는 실제 비율이 아닙니다."
+    caption: "기본 IPv4와 TCP 헤더가 각각 20B이고 옵션이 없는 예입니다. 칸의 너비는 실제 비율이 아니에요."
+    after_paragraph: 2
   questions:
   - id: u4-l15-p03-q01
     kind: choice
@@ -246,11 +279,17 @@ page_metadata:
     after_paragraph: 2
 - terms:
   - Segmentation(분할)
-  animations:
-  - file: l15-segmentation.svg
-    title: 긴 데이터를 MSS 조각으로 나누기
-    alt: 왼쪽에서 길게 이어진 막대가 일정한 길이로 잘리고, 각 조각에 1번, 2번, 3번 번호표가 붙어 오른쪽으로 한 줄로 나가는 장면입니다. 마지막 조각만 짧습니다.
-    caption: 앞서 계산한 조건의 예시 MSS 1,460바이트를 기준으로, 긴 Stream이 TCP 데이터 조각들로 나뉩니다. 마지막 조각은 더 짧습니다.
+  illustrations:
+  - file: assets/animations/l15-daily-ribbon-cut.svg
+    title: "긴 리본을 한 칸 길이로 잘라 담는다"
+    alt: "아주 긴 리본에 한 칸 길이 눈금이 그어지고, 눈금대로 자르면 다섯 조각이 되며 마지막 조각은 짧습니다. 조각마다 송장이 붙어 상자에 담기고, 마지막에 받는 쪽에서 다시 이어 붙입니다."
+    caption: "나누어 떨어지지 않으면 마지막 조각은 더 짧아요."
+    after_paragraph: -1
+  - file: assets/animations/l15-stream-segmentation.svg
+    title: "긴 Stream을 Segment로 나눈다"
+    alt: "긴 Stream에 MSS 크기 눈금이 그어지고, 눈금대로 나누면 다섯 조각이 되며 마지막 조각은 짧습니다. 조각마다 TCP 헤더가 붙어 Segment가 되고, 마지막에 수신 TCP가 이어 붙여 연속된 Stream으로 줍니다."
+    caption: "세그멘테이션은 긴 Stream을 MSS에 맞는 조각으로 나누는 과정이에요. 그림의 조각 수는 예시예요."
+    after_paragraph: 2
   questions:
   - id: u4-l15-p04-q01
     kind: choice
@@ -331,11 +370,17 @@ page_metadata:
 - terms:
   - Encapsulation(캡슐화)
   - FCS(Frame Check Sequence)
-  animations:
-  - file: l15-encapsulation.svg
-    title: 세그먼트가 IP 패킷과 Ethernet 프레임에 담기는 과정
-    alt: 작은 데이터 상자에 TCP 헤더, IP 헤더, Ethernet 헤더와 FCS가 차례로 붙어 크기가 달라지고, 마지막에 케이블 위로 이동하는 장면입니다.
-    caption: 가정한 크기의 예에서 데이터에 TCP 헤더, IP 헤더, Ethernet 헤더와 FCS가 덧붙는 모습을 보여 줍니다.
+  illustrations:
+  - file: assets/animations/l15-daily-outer-box.svg
+    title: "큰 상자는 중간 상자 한도보다 크다"
+    alt: "중간 상자에 한도 15kg이 표시됩니다. 그 양옆에 큰 상자 송장과 봉인 테이프가 붙어 큰 상자 전체가 만들어지고, 큰 상자 전체는 중간 상자 한도와 같지 않다고 표시됩니다. 마지막에 이어진 리본, 조각 상자, 중간 상자, 큰 상자, 도로가 화살표로 이어집니다."
+    caption: "한도는 중간 상자에 적용되고, 큰 상자에는 송장과 봉인이 더 붙습니다."
+    after_paragraph: -1
+  - file: assets/animations/l15-frame-vs-mtu.svg
+    title: "프레임 전체 크기와 MTU는 다르다"
+    alt: "IP 패킷에 MTU 1,500B 상한이 표시됩니다. 그 양옆에 프레임 헤더와 FCS가 붙어 프레임 전체가 만들어지고, 프레임 전체 크기는 MTU와 같지 않다고 표시됩니다. 마지막에 Stream, Segment, IP Packet, Frame, 비트·신호가 화살표로 이어집니다."
+    caption: "MTU는 기본 예에서 IP 패킷의 상한이고, 프레임에는 링크 헤더와 FCS가 더 붙어요."
+    after_paragraph: 1
   questions:
   - id: u4-l15-p05-q01
     kind: choice
@@ -416,6 +461,17 @@ page_metadata:
   - Datagram(데이터그램)
   - Packet(패킷)
   - Segment(세그먼트)
+  illustrations:
+  - file: assets/animations/l15-daily-ribbon-postcard.svg
+    title: "리본 방식과 엽서 방식"
+    alt: "왼쪽에서는 이어진 리본이 조각 상자로 나뉘고, 오른쪽에서는 엽서가 낱장 하나씩 낱장 단위가 됩니다. 두 방식의 조각과 낱장이 모두 배달 상자 안에 담기고, 마지막에 일상에서는 모두 택배라 불러도 정확히는 이름이 다르다는 설명이 나타납니다."
+    caption: "이어진 흐름을 나누는 방식과 낱장을 그대로 보내는 방식은 이름이 다릅니다."
+    after_paragraph: -1
+  - file: assets/animations/l15-segment-vs-datagram.svg
+    title: "TCP 세그먼트와 UDP 데이터그램"
+    alt: "왼쪽에서는 TCP가 Stream을 나눈 Segment를 만들고, 오른쪽에서는 UDP가 메시지 하나를 Datagram으로 만듭니다. 둘 다 IP 패킷의 페이로드로 담기고, 마지막에 일상에서는 모두 패킷이라 불러도 정확히 말할 땐 이름을 구별한다는 설명이 나타납니다."
+    caption: "TCP의 L4 단위는 Segment, UDP의 L4 단위는 Datagram, IP의 L3 단위는 Packet입니다."
+    after_paragraph: 2
   questions:
   - id: u4-l15-p06-q01
     kind: choice
