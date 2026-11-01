@@ -41,7 +41,7 @@
   <!-- 서버 컴퓨터 -->
   <rect x="660" y="90" width="270" height="250" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="3"/>
   <text x="795" y="128" text-anchor="middle" font-size="26" font-weight="700" fill="#e6e8ec">서버</text>
-  <text x="795" y="162" text-anchor="middle" font-size="24" font-weight="700" fill="#7ee7c7">192.168.0.20</text>
+  <text x="795" y="162" text-anchor="middle" font-size="24" font-weight="700" fill="#7ee7c7">192.168.1.20</text>
   <rect x="690" y="185" width="210" height="80" rx="6" fill="#0f1115" stroke="#ffb454" stroke-width="3">
     <animate attributeName="stroke" dur="14s" repeatCount="indefinite" keyTimes="0;0.78;0.8;0.95;0.97;1" values="#ffb454;#ffb454;#7ee7c7;#7ee7c7;#ffb454;#ffb454" begin="2s"/>
     <animate attributeName="stroke-width" dur="14s" repeatCount="indefinite" keyTimes="0;0.78;0.8;0.95;0.97;1" values="3;3;6;6;3;3" begin="2s"/>
@@ -67,7 +67,7 @@
     <rect x="130" y="362" width="700" height="72" rx="10" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
     <rect x="152" y="381" width="48" height="34" rx="4" fill="#e6e8ec"/>
     <path d="M152,381 L176,402 L200,381" fill="none" stroke="#0f1115" stroke-width="2"/>
-    <text x="510" y="408" text-anchor="middle" font-size="27" font-weight="700" fill="#e6e8ec">192.168.0.10:<tspan fill="#ffb454">3000</tspan> → 192.168.0.20:<tspan fill="#ffb454">80</tspan></text>
+    <text x="510" y="408" text-anchor="middle" font-size="27" font-weight="700" fill="#e6e8ec">192.168.0.10:<tspan fill="#ffb454">3000</tspan> → 192.168.1.20:<tspan fill="#ffb454">80</tspan></text>
   </g>
 
   <!-- 결론 (8~10초) -->

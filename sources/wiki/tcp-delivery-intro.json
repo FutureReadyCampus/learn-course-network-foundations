@@ -2,7 +2,7 @@
   "source_url": "https://studio.futurereadycampus.com/course-network/wiki/oeweo-network/lesson-16.html",
   "retrieved_on": "2026-11-01",
   "source_kind": "Deployed Course Studio Wiki DOM",
-  "scope": "왕초보 길잡이 topics 9–10 as source material for U5 introductory ACK and receive-window concepts",
+  "scope": "왕초보 길잡이 topics 9–10 as source material for U7 introductory ACK and receive-window concepts",
   "reuse_authorization": "User authorizes adaptation and extended reuse of their AI-authored Wiki.",
   "adaptation_note": "Do not import chunk-based ACK numbers or imply one ACK per segment. ACK confirms TCP receipt, not application reading. Receive-window capacity is distinct from ACK confirmation and network speed. Detailed numbering and recovery remain in U8.",
   "topics": [
