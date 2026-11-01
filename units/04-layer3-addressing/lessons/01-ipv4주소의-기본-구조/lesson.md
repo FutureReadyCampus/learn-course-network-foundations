@@ -12,6 +12,17 @@ page_metadata:
   - MAC 주소 (Media Access Control address)
   - IP 주소 (Internet Protocol address)
   - 계층 (Layer)
+  illustrations:
+  - file: assets/animations/l11-daily-name-vs-address.svg
+    title: "이름만 적은 택배는 어디로 갈까?"
+    alt: "왼쪽 아파트 단지에 ‘나’와 ‘민수’의 집과 경비실이, 오른쪽 바다시 3동에 ‘지영’의 집과 경비실이 있고 가운데 물류센터가 두 동네를 잇습니다. 민수에게 보낸 상자는 경비실을 거쳐 바로 도착합니다. 이름만 적은 지영의 상자는 경비실에서 멈추고 ‘어느 동네로 보내지?’라는 물음이 뜹니다. 동네 주소를 적자 상자가 물류센터를 거쳐 바다시 3동 경비실에 닿고, 그곳에서 이름을 보고 지영의 집에 배달됩니다."
+    caption: "이름은 누구에게 줄지, 주소는 어느 동네로 갈지 알려 줍니다. 먼 곳으로 보내려면 둘 다 필요해요."
+    after_paragraph: -1
+  - file: assets/animations/l11-mac-vs-ip-reach.svg
+    title: "MAC 주소만으로 다른 LAN까지 갈까?"
+    alt: "왼쪽 우리 LAN에 노트북, 프린터, 스위치가, 오른쪽 다른 네트워크에 친구 PC, 다른 PC, 스위치가 있고 가운데 라우터가 두 네트워크를 잇습니다. 목적지 MAC이 프린터인 프레임은 스위치를 거쳐 프린터에 도착합니다. 친구 PC의 MAC만 적은 프레임은 ‘이 LAN에 없는 MAC’이라는 표시와 함께 스위치에 머뭅니다. 목적지 IP 10.1.2.7을 담은 패킷은 라우터를 거쳐 다른 네트워크의 스위치에 닿고, 그 LAN 안에서 친구 PC의 MAC으로 마지막 전달됩니다."
+    caption: "MAC 주소는 지금 연결 구간에서 받을 상대를, IP 주소는 목적지가 있는 네트워크를 가리킵니다. 실제 장치에는 두 주소가 함께 설정되어 각자 역할을 맡아요."
+    after_paragraph: 3
   questions:
   - id: u4-01-p01-q01
     kind: choice
@@ -64,12 +75,17 @@ page_metadata:
 - terms:
   - 비트 (bit)
   - 바이트 (byte)
-  animations:
-  - file: l11-ip-four-bytes.svg
-    title: 32비트를 8비트 네 칸으로
-    alt: 전등 스위치 32개가 한 줄로 늘어서 있다가 8개씩 네 칸으로 나뉘고, 각 칸 아래에 0~255 사이의 숫자가 점으로 이어진 IPv4
-      주소 형태로 나타납니다.
-    caption: 스위치 32개를 8개씩 네 칸으로 묶으면, 칸마다 0부터 255까지 읽힙니다.
+  illustrations:
+  - file: assets/animations/l11-daily-light-switches.svg
+    title: "스위치판 하나로 몇 가지를 만들까?"
+    alt: "전등 스위치 하나가 꺼짐에서 켜짐으로 바뀝니다. 이어 스위치 여덟 개가 나란히 놓이고, 모두 꺼진 판은 조합 번호 0, 모두 켜진 판은 조합 번호 255로 표시됩니다. 마지막에 스위치판 네 개가 나란히 걸리고, 각 판의 켜진 모양 아래에 192, 168, 0, 10이 적힙니다."
+    caption: "켜고 끄는 스위치 여덟 개로 256가지 모양을 만들 수 있어요. 0부터 세면 0~255입니다."
+    after_paragraph: -1
+  - file: assets/animations/l11-bits-to-ipv4.svg
+    title: "IPv4 주소는 32비트"
+    alt: "비트 한 칸이 0에서 1로 바뀝니다. 여덟 칸이 모두 0이면 0, 모두 1이면 255로 표시됩니다. 마지막에 8비트 묶음 네 개가 각각 192, 168, 0, 10으로 읽히고 점으로 이어집니다."
+    caption: "8비트 한 묶음은 0부터 255까지 나타내고, 그런 묶음 네 개가 모여 32비트 IPv4 주소 하나가 됩니다."
+    after_paragraph: 3
   questions:
   - id: u4-01-p02-q01
     kind: choice
@@ -122,6 +138,17 @@ page_metadata:
 - terms:
   - ipconfig
   - 사설 주소 (private address)
+  illustrations:
+  - file: assets/animations/l11-daily-weights.svg
+    title: "추 여덟 개로 무게 만들기"
+    alt: "128g, 64g, 32g, 16g, 8g, 4g, 2g, 1g 추가 한 줄로 놓여 있습니다. 128g과 64g 추가 주황색으로 바뀌어 192g, 이어서 128g·32g·8g 추가 바뀌어 168g이 표시됩니다. 마지막에 모든 추가 주황색이 되어 255g이 되고, 256g은 만들 수 없다는 표시가 나타납니다."
+    caption: "올린 추의 무게만 더하면 전체 무게가 나옵니다. 추 여덟 개로 만들 수 있는 가장 무거운 무게는 255g이에요."
+    after_paragraph: -1
+  - file: assets/animations/l11-byte-place-values.svg
+    title: "8비트 한 묶음을 10진수로 읽기"
+    alt: "자릿값 128부터 1까지 적힌 비트 여덟 칸이 있습니다. 11000000이 128 + 64 = 192로, 10101000이 128 + 32 + 8 = 168로 읽힙니다. 마지막에 11111111이 255로 읽히고, 192.168.0.256은 쓸 수 없다는 표시가 나타납니다."
+    caption: "1인 자리의 자릿값을 더하면 점 사이 숫자가 됩니다. 한 묶음의 가장 큰 값은 255예요."
+    after_paragraph: 2
   questions:
   - id: u4-01-p03-q01
     kind: choice
@@ -176,11 +203,17 @@ page_metadata:
   - Host ID (호스트 식별자)
   - 프리픽스 길이 (prefix length)
   - 호스트 (Host)
-  animations:
-  - file: l11-network-host-split.svg
-    title: /24 예에서 네트워크 부분과 호스트 부분
-    alt: 192.168.0.10/24에서 앞 24비트와 뒤 8비트를 색으로 나누어 보이고, 같은 네트워크의 주소와 다른 네트워크의 주소를 비교합니다.
-    caption: 이 그림은 /24라는 예입니다. 프리픽스 길이가 바뀌면 네트워크와 호스트의 경계도 달라집니다.
+  illustrations:
+  - file: assets/animations/l11-daily-shop-doors.svg
+    title: "가게는 하나, 문마다 주소가 있다"
+    alt: "가운데 가게 한 곳이 있습니다. 왼쪽 정문이 꽃길에 닿아 ‘꽃길 10’, 오른쪽 뒷문이 별길에 닿아 ‘별길 3’이라는 주소가 붙습니다. 마지막에 ‘꽃길 10’의 10에 테두리가 생기고, ‘가게 = 찾아가는 곳 자체’와 ‘10 = 주소 끝의 번지’가 서로 다르다는 표시가 나타납니다."
+    caption: "가게는 하나여도 길에 닿은 문마다 주소가 따로 있습니다. 주소 끝의 번지와 가게 자체는 다른 것이에요."
+    after_paragraph: -1
+  - file: assets/animations/l11-host-interfaces.svg
+    title: "호스트는 하나, 인터페이스마다 IP"
+    alt: "가운데 노트북 한 대가 있습니다. 왼쪽 유선 NIC는 유선 LAN에 연결되어 192.168.0.10을, 오른쪽 Wi-Fi NIC는 Wi-Fi 네트워크에 연결되어 10.0.0.7을 받습니다. 마지막에 192.168.0.10의 10에 테두리가 생기고, ‘호스트 = 노트북 장치’와 ‘Host ID = 주소 안의 10’이 다르다는 표시가 나타납니다."
+    caption: "IP 주소는 장치 전체가 아니라 각 네트워크 인터페이스에 설정됩니다. 호스트는 장치이고, Host ID는 주소의 뒷부분이에요. 이 그림은 /24를 가정합니다."
+    after_paragraph: 1
   questions:
   - id: u4-01-p04-q01
     kind: choice
@@ -232,6 +265,17 @@ page_metadata:
     feedback: "정답은 host입니다."
 - terms:
   - 목적지 (destination)
+  illustrations:
+  - file: assets/animations/l11-daily-apartment-unit.svg
+    title: "‘101동 1203호’를 두 단계로 읽기"
+    alt: "‘101동 1203호’라는 주소가 파란색 101동과 주황색 1203호로 나뉩니다. 101동 1204호는 같은 동, 102동 1203호는 다른 동으로 표시됩니다. 마지막에 구분 없이 ‘1011203’만 남자 10|11203, 101|1203, 1011|203 세 가지 끊는 방법에 물음표가 붙습니다."
+    caption: "동을 먼저 찾고 그 안에서 호를 찾습니다. 다만 구분 표시가 없으면 어디까지가 동인지 알 수 없어요."
+    after_paragraph: -1
+  - file: assets/animations/l11-network-host-id.svg
+    title: "IP 주소를 네트워크 부분과 호스트 부분으로"
+    alt: "192.168.0.10이 /24 기준으로 파란색 Network ID 192.168.0과 주황색 Host ID 10으로 나뉩니다. 192.168.0.11은 같은 네트워크, 192.168.1.10은 다른 네트워크로 표시됩니다. 마지막에 프리픽스 없이 주소만 남자 192|168.0.10, 192.168|0.10, 192.168.0|10 세 후보에 물음표가 붙습니다."
+    caption: "/24라는 기준이 있을 때 앞 24비트가 네트워크 부분, 뒤 8비트가 호스트 부분입니다. 주소 숫자만으로는 경계를 알 수 없어요."
+    after_paragraph: 2
   questions:
   - id: u4-01-p05-q01
     kind: choice
@@ -284,11 +328,17 @@ page_metadata:
     feedback: "정답은 Network ID입니다."
 - terms:
   - 라우터 (Router)
-  animations:
-  - file: l11-parcel-router.svg
-    title: 목적지 네트워크를 향해 전달하는 라우터
-    alt: 목적지 IP 주소가 적힌 데이터가 라우터들을 거쳐 목적지 네트워크 쪽으로 이동하고, 마지막 네트워크에서 목적지 장치로 전달됩니다.
-    caption: 라우터는 목적지 IP와 경로 정보를 보고 다음 네트워크로 전달합니다. 이 그림의 동네 구분은 /24를 가정한 단순한 예입니다.
+  illustrations:
+  - file: assets/animations/l11-daily-divider-rule.svg
+    title: "칸막이를 어디에 두느냐"
+    alt: "여덟 자리 번호 1, 0, 1, 2, 0, 3, 1, 5 위에 ‘규칙: 앞 6자리’ 칸막이가 서 있어 앞 여섯 칸은 파란색 동네 번호, 뒤 두 칸은 주황색 집 번호가 됩니다. 집 번호는 100가지라고 표시됩니다. 칸막이가 ‘앞 4자리’로 옮겨지면 집 번호가 네 자리가 되어 10,000가지가 됩니다. 마지막에 전체 지도, 동네 먼저, 그다음 집 순서가 화살표로 이어집니다."
+    caption: "칸막이를 어디에 두느냐에 따라 동네 번호와 집 번호의 경계가 달라지고, 구별할 수 있는 집의 수도 달라져요."
+    after_paragraph: -1
+  - file: assets/animations/l11-prefix-boundary.svg
+    title: "프리픽스 길이가 경계를 정한다"
+    alt: "192.168.0.10을 32비트로 펼친 칸 위에 /24 경계선이 있어 앞 24비트는 파란색 네트워크 부분, 뒤 8비트는 주황색 호스트 부분이 됩니다. 호스트 부분은 2⁸ = 256가지로 표시됩니다. 경계선이 /16으로 옮겨지면 호스트 부분이 16비트가 되어 2¹⁶ = 65,536가지가 됩니다. 마지막에 전체 주소 공간, 목적지 네트워크, 그 안의 인터페이스 순서가 화살표로 이어집니다."
+    caption: "프리픽스 길이가 네트워크와 호스트의 경계를 정합니다. 그림의 수는 비트 조합의 수이고, 실제로 쓸 수 있는 주소 수는 서브넷과 CIDR Lesson에서 계산해요."
+    after_paragraph: 3
   questions:
   - id: u4-01-p06-q01
     kind: choice
@@ -403,6 +453,17 @@ page_metadata:
       feedback: "맞아요. 호스트 부분은 해당 네트워크 안에서 인터페이스를 구별합니다."
     answer: e
 - terms: []
+  illustrations:
+  - file: assets/animations/l11-daily-parcel-hubs.svg
+    title: "물류센터를 거쳐 가는 택배"
+    alt: "출발 집, A 물류센터, B 물류센터, 바다시 3동의 7번지 집이 한 줄로 이어져 있습니다. 상자에는 ‘최종: 바다시 3동 7번지’ 스티커와 ‘이번 구간’ 스티커가 붙어 있습니다. 상자가 구간을 하나 지날 때마다 이번 구간 스티커는 A 센터, B 센터, 7번지 집으로 바뀌지만 최종 주소는 그대로입니다. 마지막에 두 스티커의 변화를 표로 보여 줍니다."
+    caption: "최종 주소는 끝까지 같고, 이번 구간에 받을 곳만 바뀝니다."
+    after_paragraph: -1
+  - file: assets/animations/l11-router-hops.svg
+    title: "라우터는 목적지 네트워크 쪽으로 전달한다"
+    alt: "192.168.0.10 노트북, 라우터 1, 라우터 2, 10.1.2.0/24 네트워크의 서버 10.1.2.7이 한 줄로 이어져 있습니다. 패킷에는 목적지 IP 10.1.2.7과 프레임의 목적지 MAC이 함께 표시됩니다. 구간을 하나 지날 때마다 목적지 MAC은 라우터 1, 라우터 2, 서버로 바뀌지만 목적지 IP는 그대로입니다. 마지막에 두 값의 변화를 표로 보여 줍니다."
+    caption: "목적지 IP는 최종 서버를 계속 가리키고, Ethernet 프레임의 목적지 MAC은 구간마다 다음 수신자로 바뀝니다. NAT 같은 주소 변환이 없는 경우예요."
+    after_paragraph: 3
   questions:
   - id: u4-01-p07-q01
     kind: choice

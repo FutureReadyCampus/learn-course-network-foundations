@@ -68,9 +68,23 @@ animations:
   l10-mac-changes-ip-stays.svg: 18
   l10-one-server-many-vms.svg: 15
   l10-unicast-vs-broadcast.svg: 15
+  l11-bits-to-ipv4.svg: 16
+  l11-byte-place-values.svg: 16
+  l11-daily-apartment-unit.svg: 15
+  l11-daily-divider-rule.svg: 15
+  l11-daily-light-switches.svg: 15
+  l11-daily-name-vs-address.svg: 15
+  l11-daily-parcel-hubs.svg: 15
+  l11-daily-shop-doors.svg: 15
+  l11-daily-weights.svg: 15
+  l11-host-interfaces.svg: 16
   l11-ip-four-bytes.svg: 16
+  l11-mac-vs-ip-reach.svg: 16
+  l11-network-host-id.svg: 16
   l11-network-host-split.svg: 14
   l11-parcel-router.svg: 16
+  l11-prefix-boundary.svg: 16
+  l11-router-hops.svg: 16
   l12-header-payload.svg: 12
   l12-hex-decode.svg: 16
   l12-three-addresses.svg: 15
