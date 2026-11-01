@@ -646,15 +646,6 @@ page_metadata:
       text: LAN은 언제나 물리적이고 WAN은 언제나 논리적이라는 정의다
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
     answer: a
-  - id: u3-03-p07-q03
-    kind: short
-    prompt: 라우터를 지나도 보통 그대로 유지되는 네트워크 계층 주소입니다. 영어로 무엇일까요?
-    answers:
-    - IP address
-    - Internet Protocol address
-    - IP
-    - IP 주소
-    feedback: 정답은 IP address(IP 주소)입니다.
   question_placements:
   - question_id: u3-03-p07-q01
     after_paragraph: 2
