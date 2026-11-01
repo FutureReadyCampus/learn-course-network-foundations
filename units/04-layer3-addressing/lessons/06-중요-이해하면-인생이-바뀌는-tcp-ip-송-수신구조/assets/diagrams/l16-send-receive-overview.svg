@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 630" role="img" aria-labelledby="overview-title overview-desc" lang="ko">
+<title id="overview-title">서버 프로그램에서 브라우저까지: 정상 송수신 전체 지도</title>
+<desc id="overview-desc">서버는 프로그램 버퍼, 소켓 송신 버퍼, TCP, IP, 링크 순으로 내려간다. 네트워크를 건너 PC에서 링크, IP, TCP, 수신 버퍼, 브라우저 프로그램 버퍼 순으로 올라간다. 수신 버퍼 도착과 프로그램 읽기는 별개다.</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#7ee7c7" stroke-width="2"/></marker></defs>
+<style>text{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;fill:#edf2f7}.label{font-size:26px;font-weight:650}.detail{font-size:22px;fill:#b7c5d8}.path{fill:none;stroke:#7ee7c7;stroke-width:3;marker-end:url(#arrow)}.box{fill:#172437;stroke:#4b6585;stroke-width:2}</style>
+<rect width="1120" height="630" rx="18" fill="#0f1723"/>
+<text x="560" y="37" font-size="30" font-weight="700" text-anchor="middle">사진 다운로드: 데이터가 오가는 길</text>
+<text x="255" y="73" class="detail" text-anchor="middle">보내는 서버 · 아래로 ↓</text><text x="865" y="73" class="detail" text-anchor="middle">받는 PC · 위로 ↑</text>
+<rect class="box" x="30" y="91" width="450" height="69" rx="12"/>
+<text class="label" x="255" y="120" text-anchor="middle">서버 프로그램</text>
+<text class="detail" x="255" y="147" text-anchor="middle">파일 → 프로그램 버퍼</text>
+<path class="path" d="M255 163 V177"/>
+<rect class="box" x="30" y="181" width="450" height="69" rx="12"/>
+<text class="label" x="255" y="210" text-anchor="middle">소켓 · 송신 버퍼</text>
+<text class="detail" x="255" y="237" text-anchor="middle">전송을 맡기고 기다린다</text>
+<path class="path" d="M255 253 V267"/>
+<rect class="box" x="30" y="271" width="450" height="69" rx="12"/>
+<text class="label" x="255" y="300" text-anchor="middle">TCP · 세그먼트</text>
+<text class="detail" x="255" y="327" text-anchor="middle">바이트 흐름을 나누어 담는다</text>
+<path class="path" d="M255 343 V357"/>
+<rect class="box" x="30" y="361" width="450" height="69" rx="12"/>
+<text class="label" x="255" y="390" text-anchor="middle">IP · 패킷</text>
+<text class="detail" x="255" y="417" text-anchor="middle">목적지 IP 정보를 붙인다</text>
+<path class="path" d="M255 433 V447"/>
+<rect class="box" x="30" y="451" width="450" height="69" rx="12"/>
+<text class="label" x="255" y="480" text-anchor="middle">링크 · 프레임</text>
+<text class="detail" x="255" y="507" text-anchor="middle">다음 장비로 전달한다</text>
+<rect class="box" x="640" y="91" width="450" height="69" rx="12"/>
+<text class="label" x="865" y="120" text-anchor="middle">브라우저 프로그램</text>
+<text class="detail" x="865" y="147" text-anchor="middle">프로그램 버퍼에서 사진 처리</text>
+<path class="path" d="M865 178 V164"/>
+<rect class="box" x="640" y="181" width="450" height="69" rx="12"/>
+<text class="label" x="865" y="210" text-anchor="middle">소켓 · 수신 버퍼</text>
+<text class="detail" x="865" y="237" text-anchor="middle">프로그램이 읽을 바이트를 둔다</text>
+<path class="path" d="M865 268 V254"/>
+<rect class="box" x="640" y="271" width="450" height="69" rx="12"/>
+<text class="label" x="865" y="300" text-anchor="middle">TCP · 바이트 흐름</text>
+<text class="detail" x="865" y="327" text-anchor="middle">소켓에 순서 있는 바이트를 제공한다</text>
+<path class="path" d="M865 358 V344"/>
+<rect class="box" x="640" y="361" width="450" height="69" rx="12"/>
+<text class="label" x="865" y="390" text-anchor="middle">IP · 패킷 처리</text>
+<text class="detail" x="865" y="417" text-anchor="middle">안쪽 TCP 세그먼트를 넘긴다</text>
+<path class="path" d="M865 448 V434"/>
+<rect class="box" x="640" y="451" width="450" height="69" rx="12"/>
+<text class="label" x="865" y="480" text-anchor="middle">링크 · 프레임 처리</text>
+<text class="detail" x="865" y="507" text-anchor="middle">안쪽 IP 패킷을 꺼낸다</text>
+<path class="path" d="M255 524 V568 H865 V525"/>
+<rect x="370" y="538" width="380" height="62" rx="12" fill="#16362e" stroke="#7ee7c7" stroke-width="2"/>
+<text x="560" y="565" class="label" text-anchor="middle">스위치 · 라우터 · 링크</text>
+<text x="560" y="590" class="detail" text-anchor="middle">각 구간을 지나 목적지 PC로</text>
+<text x="560" y="623" font-size="21" text-anchor="middle">수신 버퍼에 도착한 뒤, 브라우저가 읽는다.</text>
+</svg>
