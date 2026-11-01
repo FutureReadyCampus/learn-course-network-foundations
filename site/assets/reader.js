@@ -166,6 +166,34 @@
     }
     return figure;
   };
+  const renderVideo = (video) => {
+    if (!video || !/^[A-Za-z0-9_-]{11}$/.test(video.video_id || "")) return null;
+    const section = document.createElement("section");
+    section.className = "page-video";
+    section.setAttribute("aria-label", `보충 영상 · ${video.title || "YouTube"}`);
+    const iframe = document.createElement("iframe");
+    iframe.className = "page-video-player";
+    iframe.title = video.title || "YouTube 영상";
+    iframe.src = `https://www.youtube-nocookie.com/embed/${video.video_id}?autoplay=0&playsinline=1`;
+    iframe.loading = "lazy";
+    iframe.allow = "encrypted-media; picture-in-picture; fullscreen";
+    iframe.referrerPolicy = "strict-origin-when-cross-origin";
+    iframe.allowFullscreen = true;
+    section.append(iframe);
+    const details = [video.title, video.creator].filter(Boolean);
+    if (Number.isSafeInteger(video.duration_seconds) && video.duration_seconds > 0) {
+      const minutes = Math.floor(video.duration_seconds / 60);
+      const seconds = String(video.duration_seconds % 60).padStart(2, "0");
+      details.push(`${minutes}:${seconds}`);
+    }
+    if (details.length) {
+      const caption = document.createElement("p");
+      caption.className = "page-video-caption";
+      caption.textContent = details.join(" · ");
+      section.append(caption);
+    }
+    return section;
+  };
   const renderQuiz = (questions, startIndex = 0) => {
     const section = document.createElement("section");
     section.className = "page-quiz";
@@ -267,6 +295,8 @@
     const prose = renderProse(page.paragraphs || [], page.illustrations || [], inlineQuizzes,
       (quiz) => renderQuiz(quiz.questions, quiz.start_index || 0));
     main.append(prose);
+    const video = renderVideo(page.video);
+    if (video) main.append(video);
     if (questions.length) main.append(renderQuiz(questions, page.question_start_index || 0));
     const previous = list[state.lessonIndex - 1];
     const next = list[state.lessonIndex + 1];
