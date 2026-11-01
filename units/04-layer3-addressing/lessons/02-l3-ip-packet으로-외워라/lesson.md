@@ -9,6 +9,17 @@ page_metadata:
   - 데이터 (Data)
   - IP (Internet Protocol)
   - L3 (네트워크 계층)
+  illustrations:
+  - file: assets/animations/l12-daily-split-parcels.svg
+    title: "큰 물건은 작은 상자로 나눠 보낸다"
+    alt: "왼쪽에 ‘나’의 집, 오른쪽에 ‘친구’의 집이 있고 가운데에 큰 그림 한 점이 놓입니다. 그림이 작은 상자 네 개로 나뉘고, 상자마다 송장이 붙은 뒤 한 줄로 길을 따라 친구의 집으로 이동해 도착 표시가 나타납니다."
+    caption: "큰 물건도 작은 상자로 나누고, 상자마다 송장을 붙여서 보냅니다."
+    after_paragraph: -1
+  - file: assets/animations/l12-packet-split.svg
+    title: "데이터는 패킷이라는 작은 단위로 간다"
+    alt: "왼쪽에 내 휴대전화, 오른쪽에 친구 휴대전화가 있고 가운데에 큰 사진 파일이 놓입니다. 파일이 작은 패킷 네 개로 나뉘고, 패킷마다 헤더가 붙은 뒤 차례로 친구 휴대전화로 이동해 도착 표시가 나타납니다."
+    caption: "사진 한 장도 작은 패킷으로 나누고, 각 패킷에 헤더를 붙여 보냅니다. 사라진 패킷을 다시 보내는 일은 IP가 아니라 TCP 같은 전송 계층이 맡아요."
+    after_paragraph: 1
   questions:
   - id: u4-l12-p01-q01
     kind: choice
@@ -90,6 +101,17 @@ page_metadata:
   - 헤더 (Header)
   - 페이로드 (Payload)
   - 프레임 (Frame)
+  illustrations:
+  - file: assets/animations/l12-daily-box-in-box.svg
+    title: "송장 붙은 상자 안의 상자"
+    alt: "긴 상자의 왼쪽은 송장, 나머지는 내용물 칸입니다. 내용물 칸을 열자 안에서 송장과 내용물을 가진 작은 상자가 나타나고, 바깥은 큰 상자, 안쪽은 작은 상자라는 이름표가 붙습니다."
+    caption: "송장은 길 안내, 내용물은 실어 나르는 물건입니다. 작은 상자는 큰 상자의 내용물이기도 해요."
+    after_paragraph: -1
+  - file: assets/animations/l12-header-payload-nesting.svg
+    title: "패킷은 헤더와 페이로드로 이뤄진다"
+    alt: "이더넷 프레임이 헤더와 페이로드 칸으로 나뉘어 있습니다. 페이로드 칸을 열자 안에서 헤더와 페이로드를 가진 IP 패킷이 나타나고, 바깥은 이더넷 프레임, 안쪽은 IP 패킷이라는 이름표가 붙습니다."
+    caption: "헤더는 전달 정보, 페이로드는 내용입니다. 이더넷 프레임의 페이로드 안에 IP 패킷이 들어 있어요."
+    after_paragraph: 2
   questions:
   - id: u4-l12-p02-q01
     kind: choice
@@ -161,11 +183,6 @@ page_metadata:
     - 페이로드
     - payload
     feedback: 헤더는 전달에 필요한 정보를, 페이로드는 실제 실어 나르는 내용을 담아요.
-  animations:
-  - file: l12-header-payload.svg
-    title: 송장 붙은 상자, 헤더와 페이로드
-    alt: 기다란 직사각형 상자의 앞쪽에 헤더라는 송장 부분이 붙고 나머지가 페이로드로 채워집니다. 그 페이로드가 열리면 안에 헤더와 페이로드를 가진 작은 상자가 다시 나타납니다.
-    caption: 헤더는 길을 안내하는 송장, 페이로드는 상자 속 내용물입니다. 상자 안에 다시 상자가 들어 있을 수도 있습니다.
   question_placements:
   - question_id: u4-l12-p02-q01
     after_paragraph: 1
@@ -175,6 +192,17 @@ page_metadata:
 - terms:
   - MTU (Maximum Transmission Unit)
   - 바이트 (Byte)
+  illustrations:
+  - file: assets/animations/l12-daily-truck-limit.svg
+    title: "상자 크기에는 한계가 있다"
+    alt: "위쪽에 트럭 한 칸에 실을 수 있는 최대 크기를 나타내는 눈금이 있습니다. 작은 상자는 눈금 안에 들어가 통과하고, 눈금보다 큰 가구는 넘쳐서 안 됩니다. 큰 짐을 여러 상자로 나누면 각각 눈금 안에 들어갑니다. 마지막에 길마다 한계가 다를 수 있다는 점선 눈금이 나타납니다."
+    caption: "한계보다 큰 짐은 여러 상자로 나눠 싣습니다. 길마다 한계는 다를 수 있어요."
+    after_paragraph: -1
+  - file: assets/animations/l12-mtu-limit.svg
+    title: "MTU는 한 번에 보낼 크기의 한계다"
+    alt: "위쪽에 한 번에 보낼 수 있는 최대 크기(MTU) 눈금이 있습니다. 작은 메시지는 눈금 안에 들어가고, 큰 사진은 눈금을 넘어 한 패킷에 못 담깁니다. 여러 패킷으로 나누면 각각 눈금 안에 들어갑니다. 마지막에 연결마다 MTU가 다를 수 있다는 점선 눈금이 나타납니다."
+    caption: "예로 든 이더넷의 MTU 1,500바이트는 IP 패킷(헤더와 페이로드)의 최대 크기입니다. 연결마다 값이 다를 수 있어요."
+    after_paragraph: 1
   questions:
   - id: u4-l12-p03-q01
     kind: choice
@@ -257,6 +285,17 @@ page_metadata:
   - 와이어샤크 (Wireshark)
   - 16진수 (Hexadecimal)
   - Type (이더넷 타입)
+  illustrations:
+  - file: assets/animations/l12-daily-code-row.svg
+    title: "송장번호 한 줄을 칸으로 나눠 읽기"
+    alt: "숫자 열여섯 칸이 한 줄로 놓여 있고 어디가 무슨 뜻인지 물음표가 뜹니다. 앞 여섯 칸은 받는 곳, 다음 여섯 칸은 보낸 곳, 그다음 두 칸은 종류로 색이 나뉩니다. 종류 칸이 0800이면 뒤에 안쪽 송장이 이어진다고 표시되고, 마지막에 바깥 송장, 안쪽 송장, 내용물이 차례로 펼쳐집니다."
+    caption: "정해진 칸대로 나누어 읽으면 숫자의 의미가 보입니다. 이 숫자 값은 설명용 예시예요."
+    after_paragraph: -1
+  - file: assets/animations/l12-hex-fields.svg
+    title: "16진수 숫자 줄에서 헤더 읽기"
+    alt: "16진수 열여섯 칸이 한 줄로 놓여 있고 어디가 주소인지 물음표가 뜹니다. 앞 여섯 칸은 목적지 MAC, 다음 여섯 칸은 출발지 MAC, 그다음 두 칸은 Type으로 색이 나뉩니다. Type이 0800이면 뒤에 IPv4 패킷이 이어진다고 표시되고, 마지막에 이더넷, IP, TCP 또는 UDP가 차례로 펼쳐집니다."
+    caption: "Wireshark는 프로토콜 규칙대로 필드를 나누어 보여 줍니다. 그림의 숫자 값은 설명용 예시예요."
+    after_paragraph: 2
   questions:
   - id: u4-l12-p04-q01
     kind: choice
@@ -328,11 +367,6 @@ page_metadata:
     - 프로토콜
     - protocol
     feedback: 프로토콜은 통신 장치가 데이터를 주고받고 해석하는 규칙이에요.
-  animations:
-  - file: l12-hex-decode.svg
-    title: 16진수 숫자 줄을 헤더로 읽기
-    alt: 회색 16진수 숫자들이 가로로 늘어서 있고, 앞에서부터 색깔이 입혀지며 목적지 MAC, 출발지 MAC, Type 0800, IP 45, 출발지 IP c0 a8 00 0a라는 이름표가 차례로 붙습니다.
-    caption: 16진수의 줄을 프로토콜에 따라 읽으면 이더넷 헤더와 IP 헤더의 필드를 구분할 수 있습니다.
   page_id: wireshark-packet-inspection
   video:
     video_id: vBrQ3yzerMg
@@ -349,6 +383,17 @@ page_metadata:
   - MAC 주소 (Media Access Control address)
   - IP 주소 (Internet Protocol address)
   - 포트 번호 (Port number)
+  illustrations:
+  - file: assets/animations/l12-daily-three-wheres.svg
+    title: "배송에는 세 가지 ‘어디’가 있다"
+    alt: "왼쪽 집에서 가운데 물류센터를 거쳐 오른쪽 건물로 가는 길이 있고, 건물에는 101호와 102호가 있습니다. 먼저 이번 구간 인수자가 첫 구간을, 그다음 최종 주소 건물이 전체 길을, 마지막으로 호수가 건물 안의 받을 사람을 가리킨다고 강조됩니다."
+    caption: "구간 인수자, 최종 건물, 건물 안의 받을 사람은 서로 다른 범위를 가리킵니다."
+    after_paragraph: -1
+  - file: assets/animations/l12-mac-ip-port-scope.svg
+    title: "MAC·IP·포트는 범위가 달라요"
+    alt: "왼쪽 내 노트북에서 가운데 라우터를 거쳐 오른쪽 PC로 가는 길이 있고, PC에는 브라우저와 메신저가 있습니다. 먼저 MAC이 첫 링크를, 그다음 IP가 전체 길의 목적지를, 마지막으로 포트가 PC 안의 프로그램을 가리킨다고 강조됩니다."
+    caption: "MAC은 현재 링크, IP는 네트워크 사이의 목적지, 포트는 기기 안의 프로그램을 가리킵니다. 이 포트는 스위치의 물리 포트가 아니에요. 포트 번호는 예시예요."
+    after_paragraph: 3
   questions:
   - id: u4-l12-p05-q01
     kind: choice
@@ -420,12 +465,6 @@ page_metadata:
     - IP 주소
     - IP
     feedback: MAC은 링크의 인터페이스, IP는 네트워크 사이의 목적지, 포트는 컴퓨터 안의 프로그램을 가리켜요.
-  animations:
-  - file: l12-three-addresses.svg
-    title: 출발지와 도착지를 나타내는 세 가지 주소
-    alt: 한 통신의 세 계층 정보가 차례로 켜집니다. Ethernet 프레임의 MAC 주소는 현재 링크의 장치를, IP 헤더의 IP 주소는 네트워크 간 목적지를, TCP 또는 UDP 헤더의 포트 번호는 받는 프로그램을
-      가리킵니다.
-    caption: MAC은 Ethernet 헤더, IP는 IP 헤더, 포트 번호는 TCP/UDP 헤더에 있으며 각기 다른 범위를 가리킵니다.
   question_placements:
   - question_id: u4-l12-p05-q01
     after_paragraph: 2
@@ -433,6 +472,17 @@ page_metadata:
     after_paragraph: 4
 
 - terms: []
+  illustrations:
+  - file: assets/animations/l12-daily-tracking-log.svg
+    title: "배송 기록을 보고 문제를 찾는다"
+    alt: "왼쪽 집에서 오른쪽 받는 곳으로 가는 길 아래에 배송 기록판이 있습니다. 접수됨과 수령 확인이 차례로 기록되고, 한 번은 접수만 되고 이후 기록이 없어 물음표가 뜹니다. 마지막에 내 택배나 허가받은 기록만 조회해야 하고 남의 택배 정보는 안 된다고 표시됩니다."
+    caption: "기록을 보면 어디서 끊겼는지 좁힐 수 있지만, 남의 정보는 함부로 볼 수 없습니다."
+    after_paragraph: -1
+  - file: assets/animations/l12-capture-observe.svg
+    title: "캡처로 통신을 안전하게 관찰한다"
+    alt: "왼쪽 내 PC에서 오른쪽 서버로 가는 길 아래에 캡처 도구 화면이 있습니다. 요청 나감과 응답 도착이 차례로 기록되고, 한 번은 요청만 나가고 응답이 없어 서버 쪽에 물음표가 뜹니다. 마지막에 내 장비나 허가받은 네트워크에서만 관찰해야 하고 허가 없는 남의 통신은 안 된다고 표시됩니다."
+    caption: "캡처를 보면 요청과 응답을 확인해 문제 위치를 좁힐 수 있어요. 본인 장비나 허가받은 네트워크에서만 관찰하고, 파일을 공개하기 전에는 개인정보를 확인하세요."
+    after_paragraph: 1
   questions:
   - id: u4-l12-p06-q01
     kind: choice
