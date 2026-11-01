@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
 <rect width="960" height="540" fill="#0f1115"/>
-<text x="480" y="56" font-size="34" font-weight="700" fill="#e6e8ec" text-anchor="middle">MTU 1,500바이트 안의 헤더와 페이로드</text>
+<text x="480" y="56" font-size="34" font-weight="700" fill="#e6e8ec" text-anchor="middle">1,500바이트 상자의 속 나누기</text>
 
 <!-- ruler: MTU 1,500 -->
 <g stroke="#9aa3b2" stroke-width="2">
@@ -41,6 +41,14 @@
 <text x="430" y="336" font-size="36" font-weight="700" fill="#e6e8ec" text-anchor="middle"><tspan fill="#ffb454">20</tspan> + <tspan fill="#6ea8fe">1,480</tspan> = <tspan fill="#7ee7c7">1,500</tspan></text>
 </g>
 
+<!-- theoretical 65,515 tag (dashed, faint) -->
+<g opacity="0">
+<animate attributeName="opacity" values="0;0;0.6;0.6;0;0" keyTimes="0;0.53;0.59;0.8;0.85;1" dur="14s" repeatCount="indefinite" begin="2s"/>
+<rect x="790" y="150" width="140" height="120" rx="8" fill="none" stroke="#9aa3b2" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="860" y="196" font-size="24" fill="#9aa3b2" text-anchor="middle">이론상</text>
+<text x="860" y="238" font-size="28" font-weight="700" fill="#9aa3b2" text-anchor="middle">65,515</text>
+</g>
+
 <!-- solid 1,500 box glow -->
 <rect x="100" y="160" width="660" height="100" fill="none" stroke="#7ee7c7" stroke-width="5" opacity="0">
 <animate attributeName="opacity" values="0;0;1;0.3;1;0.3;1;1;0" keyTimes="0;0.82;0.84;0.86;0.88;0.9;0.92;0.95;1" dur="14s" repeatCount="indefinite" begin="2s"/>
@@ -55,9 +63,12 @@
 <text x="480" y="480" opacity="0">앞 20바이트는 헤더(송장), 나머지 1,480은 페이로드예요.
 <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18;0.2;0.48;0.5;1" dur="14s" repeatCount="indefinite" begin="2s"/>
 </text>
+<text x="480" y="480" opacity="0">형식상 65,515까지 가능하지만, 실제로는 MTU에 맞춰요.
+<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.48;0.5;0.78;0.8;1" dur="14s" repeatCount="indefinite" begin="2s"/>
+</text>
 <text x="480" y="480" opacity="0" fill="#7ee7c7" font-weight="700">패킷 = 헤더 20 + 페이로드 1,480 = 1,500바이트
 <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.78;0.8;0.95;1" dur="14s" repeatCount="indefinite" begin="2s"/>
 </text>
 </g>
 
-<g aria-label="재생 진행 막대" data-stage-count="4"><g class="progress-segment" data-stage="1"><rect x="40" y="532" width="214" height="6" rx="3" fill="#394554"/><rect x="40" y="532" width="0" height="6" rx="3" fill="#ff3434"><animate begin="2s" attributeName="width" values="0;214;214" keyTimes="0;0.190000;1" dur="14s" repeatCount="indefinite"/></rect></g><g class="progress-segment" data-stage="2"><rect x="262" y="532" width="214" height="6" rx="3" fill="#394554"/><rect x="262" y="532" width="0" height="6" rx="3" fill="#ff3434"><animate begin="2s" attributeName="width" values="0;0;214;214" keyTimes="0;0.190000;0.490000;1" dur="14s" repeatCount="indefinite"/></rect></g><g class="progress-segment" data-stage="3"><rect x="484" y="532" width="214" height="6" rx="3" fill="#394554"/><rect x="484" y="532" width="0" height="6" rx="3" fill="#ff3434"><animate begin="2s" attributeName="width" values="0;0;214;214" keyTimes="0;0.490000;0.790000;1" dur="14s" repeatCount="indefinite"/></rect></g><g class="progress-segment" data-stage="4"><rect x="706" y="532" width="214" height="6" rx="3" fill="#394554"/><rect x="706" y="532" width="0" height="6" rx="3" fill="#ff3434"><animate begin="2s" attributeName="width" values="0;0;214" keyTimes="0;0.790000;1" dur="14s" repeatCount="indefinite"/></rect></g></g><g id="title-intro"><rect x="0" y="0" width="960" height="540" fill="#0f1115"/><g opacity="0"><text x="480" y="292.277" text-anchor="middle" font-size="63.6496" font-weight="750" letter-spacing="-1" fill="#e6e8ec">MTU 1,500바이트 안의 헤더와 페이로드</text><animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.025000;0.106250;0.125000;1" dur="16s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="0 28;0 0;0 0;0 -32;0 -32" keyTimes="0;0.025000;0.106250;0.125000;1" dur="16s" repeatCount="indefinite"/></g><animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.106250;0.125000;1" dur="16s" repeatCount="indefinite"/></g></svg>
+<g aria-label="재생 진행 막대" data-stage-count="4"><g class="progress-segment" data-stage="1"><rect x="40" y="532" width="214" height="6" rx="3" fill="#394554"/><rect x="40" y="532" width="0" height="6" rx="3" fill="#ff3434"><animate begin="2s" attributeName="width" values="0;214;214" keyTimes="0;0.190000;1" dur="14s" repeatCount="indefinite"/></rect></g><g class="progress-segment" data-stage="2"><rect x="262" y="532" width="214" height="6" rx="3" fill="#394554"/><rect x="262" y="532" width="0" height="6" rx="3" fill="#ff3434"><animate begin="2s" attributeName="width" values="0;0;214;214" keyTimes="0;0.190000;0.490000;1" dur="14s" repeatCount="indefinite"/></rect></g><g class="progress-segment" data-stage="3"><rect x="484" y="532" width="214" height="6" rx="3" fill="#394554"/><rect x="484" y="532" width="0" height="6" rx="3" fill="#ff3434"><animate begin="2s" attributeName="width" values="0;0;214;214" keyTimes="0;0.490000;0.790000;1" dur="14s" repeatCount="indefinite"/></rect></g><g class="progress-segment" data-stage="4"><rect x="706" y="532" width="214" height="6" rx="3" fill="#394554"/><rect x="706" y="532" width="0" height="6" rx="3" fill="#ff3434"><animate begin="2s" attributeName="width" values="0;0;214" keyTimes="0;0.790000;1" dur="14s" repeatCount="indefinite"/></rect></g></g><g id="title-intro"><rect x="0" y="0" width="960" height="540" fill="#0f1115"/><g opacity="0"><text x="480" y="292.277" text-anchor="middle" font-size="63.6496" font-weight="750" letter-spacing="-1" fill="#e6e8ec">1,500바이트 상자의 속 나누기</text><animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.025000;0.106250;0.125000;1" dur="16s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="0 28;0 0;0 0;0 -32;0 -32" keyTimes="0;0.025000;0.106250;0.125000;1" dur="16s" repeatCount="indefinite"/></g><animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.106250;0.125000;1" dur="16s" repeatCount="indefinite"/></g></svg>
