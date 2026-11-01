@@ -248,3 +248,34 @@ def wire(lesson_md, rows):
             continue
         out.append(l); i += 1
     Path(lesson_md).write_text(head + "---\n" + "\n".join(out) + "---\n" + body, encoding="utf-8")
+
+
+def wire_items(lesson_md, pages):
+    """Replace each Page's `animations:`/`illustrations:` blocks with the given items.
+
+    pages[i] = [(file, title, alt, caption, after_paragraph), ...] for Page i+1, in display order.
+    `file` is a name under assets/animations/ (no slash) or a path relative to lesson.md.
+    """
+    q = lambda v: json.dumps(v, ensure_ascii=False)
+    head, fm, body = Path(lesson_md).read_text(encoding="utf-8").split("---\n", 2)
+    lines, out, page, i = fm.split("\n"), [], -1, 0
+    assert sum(l.startswith("- terms:") for l in lines) == len(pages), "page count != pages"
+    while i < len(lines):
+        l = lines[i]
+        if l.startswith("- terms:"):
+            page += 1
+            out.append(l); i += 1
+            while i < len(lines) and lines[i].startswith("  - ") and not lines[i].startswith("  - id:"):
+                out.append(lines[i]); i += 1
+            out.append("  illustrations:")
+            for f, t, a, c, ap in pages[page]:
+                path = f if "/" in f else f"assets/animations/{f}.svg"
+                out += [f"  - file: {path}", f"    title: {q(t)}", f"    alt: {q(a)}", f"    caption: {q(c)}", f"    after_paragraph: {ap}"]
+            continue
+        if page >= 0 and l in ("  animations:", "  illustrations:"):
+            i += 1
+            while i < len(lines) and lines[i].startswith(("  - file:", "    ")):
+                i += 1
+            continue
+        out.append(l); i += 1
+    Path(lesson_md).write_text(head + "---\n" + "\n".join(out) + "---\n" + body, encoding="utf-8")
