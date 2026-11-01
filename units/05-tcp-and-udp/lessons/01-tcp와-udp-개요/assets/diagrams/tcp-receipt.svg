@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 630" role="img" aria-labelledby="title desc" lang="ko"><title id="title">데이터와 확인 응답의 두 방향</title><desc id="desc">서버 TCP가 PC TCP로 데이터를 보내고 PC TCP가 받은 범위를 확인 응답으로 돌려보낸다. 브라우저가 읽는 것은 TCP 수신과 별개다.</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#7ee7c7" stroke-width="2"/></marker></defs>
+<style>text{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;fill:#edf2f7}.label{font-size:27px;font-weight:650}.detail{font-size:23px;fill:#bdcadc}.path{fill:none;stroke:#7ee7c7;stroke-width:3;marker-end:url(#arrow)}.box{fill:#172437;stroke:#4b6585;stroke-width:2}</style><rect width="1120" height="630" rx="18" fill="#0f1723"/>
+<text class="label" x="560" y="50" text-anchor="middle">보냈다는 사실과 받은 사실을 잇는 ACK</text>
+<rect class="box" x="30" y="130" width="290" height="230" rx="14"/>
+<rect class="box" x="800" y="130" width="290" height="230" rx="14"/>
+<text class="label" x="175" y="184" text-anchor="middle">서버의 TCP</text>
+<text class="detail" x="175" y="238" text-anchor="middle">보낸 데이터 중</text>
+<text class="detail" x="175" y="274" text-anchor="middle">확인받은 범위를 파악</text>
+<text class="label" x="945" y="184" text-anchor="middle">PC의 TCP</text>
+<text class="detail" x="945" y="238" text-anchor="middle">어디까지 받았는지</text>
+<text class="detail" x="945" y="274" text-anchor="middle">송신 측에 알림</text>
+<path class="path" d="M330 197 H787"/>
+<text class="detail" x="560" y="174" text-anchor="middle">사진 데이터 →</text>
+<path class="path" d="M790 319 H333"/>
+<text class="detail" x="560" y="296" text-anchor="middle">← 확인 응답(ACK)</text>
+<rect class="box" x="800" y="435" width="290" height="116" rx="14"/>
+<text class="label" x="945" y="479" text-anchor="middle">브라우저가 읽기</text>
+<text class="detail" x="945" y="519" text-anchor="middle">TCP 수신 확인과 별개</text>
+<path class="path" stroke-dasharray="7 7" d="M945 369 V423"/>
+<rect class="box" x="30" y="435" width="660" height="116" rx="14"/>
+<text class="detail" x="360" y="479" text-anchor="middle">송신 측은 확인되지 않은 바이트를 관리하고</text>
+<text class="label" x="360" y="519" text-anchor="middle">필요하면 다시 보낸다: 재전송</text>
+<text class="detail" x="560" y="606" text-anchor="middle">ACK는 사진 표시·저장 완료를 확인하는 응답이 아니다.</text>
+</svg>

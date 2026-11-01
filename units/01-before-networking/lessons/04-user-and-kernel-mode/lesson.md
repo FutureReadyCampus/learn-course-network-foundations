@@ -132,12 +132,12 @@ pages:
       - id: d
         text: 인터넷 주소의 한 종류입니다
         feedback: 다시 확인해 보세요. 컴퓨터를 네트워크에 연결해 주는 하드웨어입니다
-      - id: b
-        text: 실행 중인 네트워크 프로그램입니다
-        feedback: 다시 확인해 보세요. 컴퓨터를 네트워크에 연결해 주는 하드웨어입니다
       - id: a
         text: 컴퓨터를 네트워크에 연결해 주는 하드웨어입니다
         feedback: 맞아요. 컴퓨터를 네트워크에 연결해 주는 하드웨어입니다
+      - id: b
+        text: 실행 중인 네트워크 프로그램입니다
+        feedback: 다시 확인해 보세요. 컴퓨터를 네트워크에 연결해 주는 하드웨어입니다
       - id: e
         text: 화면을 그리는 운영체제 메뉴입니다
         feedback: 다시 확인해 보세요. 컴퓨터를 네트워크에 연결해 주는 하드웨어입니다
@@ -153,12 +153,12 @@ pages:
       - id: c
         text: 웹 브라우저입니다
         feedback: 다시 확인해 보세요. 장치 드라이버입니다
-      - id: a
-        text: 장치 드라이버입니다
-        feedback: 맞아요. 장치 드라이버입니다
       - id: e
         text: 바이트 변환기입니다
         feedback: 다시 확인해 보세요. 장치 드라이버입니다
+      - id: a
+        text: 장치 드라이버입니다
+        feedback: 맞아요. 장치 드라이버입니다
       - id: b
         text: 프로세스 스케줄러만을 뜻합니다
         feedback: 다시 확인해 보세요. 장치 드라이버입니다
@@ -168,7 +168,7 @@ pages:
       answer: a
     - id: u1-04-user-and-kernel-mode-p01-q03
       kind: short
-      prompt: 컴퓨터가 유선 또는 무선 네트워크에 접속할 수 있게 하는 하드웨어 장치입니다. 어떤 장치일까요? (영어 약어로 답해주세요)
+      prompt: 컴퓨터가 유선 또는 무선 네트워크에 접속할 수 있게 하는 하드웨어 장치입니다. 어떤 장치일까요? (영어 약어 또는 풀어 쓴 영어 이름으로 답해주세요)
       answers:
       - NIC
       - network interface card
@@ -199,12 +199,12 @@ pages:
       - id: c
         text: NIC mode입니다
         feedback: 다시 확인해 보세요. User mode입니다
-      - id: a
-        text: User mode입니다
-        feedback: 맞아요. User mode입니다
       - id: e
         text: OSI mode입니다
         feedback: 다시 확인해 보세요. User mode입니다
+      - id: a
+        text: User mode입니다
+        feedback: 맞아요. User mode입니다
       - id: b
         text: Kernel mode입니다
         feedback: 다시 확인해 보세요. User mode입니다
@@ -223,24 +223,16 @@ pages:
       - id: b
         text: 네트워크 주소 변환입니다
         feedback: 다시 확인해 보세요. 시스템 콜입니다
-      - id: a
-        text: 시스템 콜입니다
-        feedback: 맞아요. 시스템 콜입니다
       - id: e
         text: 비트 마스킹입니다
         feedback: 다시 확인해 보세요. 시스템 콜입니다
+      - id: a
+        text: 시스템 콜입니다
+        feedback: 맞아요. 시스템 콜입니다
       - id: c
         text: 드라이버 설치입니다
         feedback: 다시 확인해 보세요. 시스템 콜입니다
       answer: a
-    - id: u1-04-user-and-kernel-mode-p02-q03
-      kind: short
-      prompt: 애플리케이션이 커널에 작업을 요청할 때 사용하는 운영체제 인터페이스입니다. 어떤 개념일까요? (영어 용어로 답해주세요)
-      answers:
-      - system call
-      - syscall
-      - 시스템 콜
-      feedback: 정답은 system call입니다.
   - concepts:
       - concept-basic-04-05
       - concept-basic-04-06
@@ -264,15 +256,15 @@ pages:
       difficulty: easy
       prompt: OSI의 L4 전송 계층 프로토콜은 무엇인가요?
       choices:
+      - id: a
+        text: TCP입니다
+        feedback: 맞아요. TCP입니다
       - id: d
         text: 드라이버입니다
         feedback: 다시 확인해 보세요. TCP입니다
       - id: b
         text: IP입니다
         feedback: 다시 확인해 보세요. TCP입니다
-      - id: a
-        text: TCP입니다
-        feedback: 맞아요. TCP입니다
       - id: e
         text: 소켓입니다
         feedback: 다시 확인해 보세요. TCP입니다
@@ -288,9 +280,6 @@ pages:
       - id: c
         text: 둘 다 하드웨어 장치입니다
         feedback: 다시 확인해 보세요. TCP는 L4 전송, IP는 L3 네트워크 계층에서 주소 기반 전달을 다룹니다
-      - id: a
-        text: TCP는 L4 전송, IP는 L3 네트워크 계층에서 주소 기반 전달을 다룹니다
-        feedback: 맞아요. TCP는 L4 전송, IP는 L3 네트워크 계층에서 주소 기반 전달을 다룹니다
       - id: e
         text: 둘은 같은 프로토콜의 다른 이름입니다
         feedback: 다시 확인해 보세요. TCP는 L4 전송, IP는 L3 네트워크 계층에서 주소 기반 전달을 다룹니다
@@ -300,10 +289,13 @@ pages:
       - id: d
         text: TCP는 NIC 드라이버이고 IP는 애플리케이션입니다
         feedback: 다시 확인해 보세요. TCP는 L4 전송, IP는 L3 네트워크 계층에서 주소 기반 전달을 다룹니다
+      - id: a
+        text: TCP는 L4 전송, IP는 L3 네트워크 계층에서 주소 기반 전달을 다룹니다
+        feedback: 맞아요. TCP는 L4 전송, IP는 L3 네트워크 계층에서 주소 기반 전달을 다룹니다
       answer: a
     - id: u1-04-user-and-kernel-mode-p03-q03
       kind: short
-      prompt: 네트워크 계층에서 목적지 주소를 기준으로 패킷을 전달하는 인터넷 프로토콜의 약어입니다. 어떤 개념일까요? (영어 약어로 답해주세요)
+      prompt: 네트워크 계층에서 목적지 주소를 기준으로 패킷을 전달하는 인터넷 프로토콜의 약어입니다. 어떤 개념일까요? (영어 약어 또는 풀어 쓴 영어 이름으로 답해주세요)
       answers:
       - IP
       - Internet Protocol

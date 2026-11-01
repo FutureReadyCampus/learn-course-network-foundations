@@ -3,8 +3,8 @@
 <defs>
 <clipPath id="leftOfTcp"><rect x="0" y="0" width="480" height="540"/></clipPath>
 </defs>
-<text x="480" y="46" font-size="34" font-weight="700" fill="#e6e8ec" text-anchor="middle">큰 데이터를 번호 붙은 조각으로</text>
-<text x="480" y="88" font-size="24" fill="#9aa3b2" text-anchor="middle">TCP는 큰 데이터를 <tspan fill="#7ee7c7" font-weight="700">번호 붙은 조각</tspan>으로 나누어 IP에 넘긴다</text>
+<text x="480" y="46" font-size="34" font-weight="700" fill="#e6e8ec" text-anchor="middle">큰 데이터를 세그먼트로</text>
+<text x="480" y="88" font-size="24" fill="#9aa3b2" text-anchor="middle">TCP는 바이트 흐름을 <tspan fill="#7ee7c7" font-weight="700">세그먼트</tspan>로 나누어 IP에 넘긴다</text>
 
 <!-- IP layer (bottom) -->
 <rect x="390" y="360" width="550" height="70" rx="12" fill="#171a21" stroke="#3d4b60" stroke-width="3">
@@ -26,7 +26,7 @@
 <rect x="600" y="200" width="107" height="60" rx="6" fill="#6ea8fe"/>
 <text x="653" y="239" font-size="24" font-weight="700" fill="#0f1115" text-anchor="middle">1,460</text>
 <rect x="608" y="162" width="60" height="34" rx="6" fill="#ffb454"/>
-<text x="638" y="188" font-size="24" font-weight="700" fill="#0f1115" text-anchor="middle">1번</text>
+<text x="638" y="188" font-size="24" font-weight="700" fill="#0f1115" text-anchor="middle">A</text>
 </g>
 <g opacity="0">
 <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.6;0.601;0.93;0.95;1" dur="14s" repeatCount="indefinite" begin="2s"/>
@@ -34,7 +34,7 @@
 <rect x="715" y="200" width="107" height="60" rx="6" fill="#6ea8fe"/>
 <text x="768" y="239" font-size="24" font-weight="700" fill="#0f1115" text-anchor="middle">1,460</text>
 <rect x="723" y="162" width="60" height="34" rx="6" fill="#ffb454"/>
-<text x="753" y="188" font-size="24" font-weight="700" fill="#0f1115" text-anchor="middle">2번</text>
+<text x="753" y="188" font-size="24" font-weight="700" fill="#0f1115" text-anchor="middle">B</text>
 </g>
 <g opacity="0">
 <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.7;0.701;0.93;0.95;1" dur="14s" repeatCount="indefinite" begin="2s"/>
@@ -42,11 +42,11 @@
 <rect x="830" y="200" width="86" height="60" rx="6" fill="#6ea8fe"/>
 <text x="873" y="239" font-size="24" font-weight="700" fill="#0f1115" text-anchor="middle">1,176</text>
 <rect x="838" y="162" width="60" height="34" rx="6" fill="#ffb454"/>
-<text x="868" y="188" font-size="24" font-weight="700" fill="#0f1115" text-anchor="middle">3번</text>
+<text x="868" y="188" font-size="24" font-weight="700" fill="#0f1115" text-anchor="middle">C</text>
 </g>
 
 <!-- socket buffer label -->
-<text x="40" y="182" font-size="24" fill="#e6e8ec">소켓 버퍼 <tspan fill="#6ea8fe" font-weight="700">4,096바이트</tspan>
+<text x="40" y="182" font-size="24" fill="#e6e8ec">송신 버퍼 <tspan fill="#6ea8fe" font-weight="700">4,096바이트</tspan>
 <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.4;0.46;0.95;1" dur="14s" repeatCount="indefinite" begin="2s"/>
 </text>
 
@@ -74,18 +74,18 @@
 <rect x="0" y="458" width="960" height="82" fill="#171a21"/>
 <line x1="0" y1="458" x2="960" y2="458" stroke="#3d4b60" stroke-width="2"/>
 <g font-size="26" fill="#e6e8ec" text-anchor="middle">
-<text x="480" y="509">소켓 버퍼에 4,096바이트가 한 덩어리로 있어요
+<text x="480" y="509">송신 버퍼에 4,096바이트가 한 덩어리로 있어요
 <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.23;0.26;0.97;1" dur="14s" repeatCount="indefinite" begin="2s"/>
 </text>
 <text x="480" y="509" opacity="0">TCP가 1,460바이트씩 끊어 <tspan fill="#ffb454" font-weight="700">두 번 자릅니다</tspan>
 <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.26;0.29;0.47;0.5;1" dur="14s" repeatCount="indefinite" begin="2s"/>
 </text>
-<text x="480" y="509" opacity="0">조각마다 <tspan fill="#ffb454" font-weight="700">1번·2번·3번</tspan> 번호표를 붙여 줄 세워요
+<text x="480" y="509" opacity="0">그림의 <tspan fill="#ffb454" font-weight="700">A·B·C</tspan>는 조각 이름 · 실제 TCP 번호 아님
 <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.53;0.75;0.78;1" dur="14s" repeatCount="indefinite" begin="2s"/>
 </text>
-<text x="480" y="509" opacity="0"><tspan fill="#7ee7c7" font-weight="700">나누고 번호 붙이기</tspan> → 조각을 IP로 내려보내요
+<text x="480" y="509" opacity="0"><tspan fill="#7ee7c7" font-weight="700">세그먼트에 나누어 담기</tspan> → IP로 전달해요
 <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.78;0.8;0.95;0.97;1" dur="14s" repeatCount="indefinite" begin="2s"/>
 </text>
 </g>
 
-<g aria-label="재생 진행 막대" data-stage-count="4"><g class="progress-segment" data-stage="1"><rect x="40" y="532" width="214" height="6" rx="3" fill="#394554"/><rect x="40" y="532" width="0" height="6" rx="3" fill="#ff3434"><animate begin="2s" attributeName="width" values="0;214;214" keyTimes="0;0.280000;1" dur="14s" repeatCount="indefinite"/></rect></g><g class="progress-segment" data-stage="2"><rect x="262" y="532" width="214" height="6" rx="3" fill="#394554"/><rect x="262" y="532" width="0" height="6" rx="3" fill="#ff3434"><animate begin="2s" attributeName="width" values="0;0;214;214" keyTimes="0;0.280000;0.520000;1" dur="14s" repeatCount="indefinite"/></rect></g><g class="progress-segment" data-stage="3"><rect x="484" y="532" width="214" height="6" rx="3" fill="#394554"/><rect x="484" y="532" width="0" height="6" rx="3" fill="#ff3434"><animate begin="2s" attributeName="width" values="0;0;214;214" keyTimes="0;0.520000;0.790000;1" dur="14s" repeatCount="indefinite"/></rect></g><g class="progress-segment" data-stage="4"><rect x="706" y="532" width="214" height="6" rx="3" fill="#394554"/><rect x="706" y="532" width="0" height="6" rx="3" fill="#ff3434"><animate begin="2s" attributeName="width" values="0;0;214" keyTimes="0;0.790000;1" dur="14s" repeatCount="indefinite"/></rect></g></g><g id="title-intro"><rect x="0" y="0" width="960" height="540" fill="#0f1115"/><g opacity="0"><text x="480" y="291.894" text-anchor="middle" font-size="62.5538" font-weight="750" letter-spacing="-1" fill="#e6e8ec">큰 데이터를 번호 붙은 조각으로</text><animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.025000;0.106250;0.125000;1" dur="16s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="0 28;0 0;0 0;0 -32;0 -32" keyTimes="0;0.025000;0.106250;0.125000;1" dur="16s" repeatCount="indefinite"/></g><animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.106250;0.125000;1" dur="16s" repeatCount="indefinite"/></g></svg>
+<g aria-label="재생 진행 막대" data-stage-count="4"><g class="progress-segment" data-stage="1"><rect x="40" y="532" width="214" height="6" rx="3" fill="#394554"/><rect x="40" y="532" width="0" height="6" rx="3" fill="#ff3434"><animate begin="2s" attributeName="width" values="0;214;214" keyTimes="0;0.280000;1" dur="14s" repeatCount="indefinite"/></rect></g><g class="progress-segment" data-stage="2"><rect x="262" y="532" width="214" height="6" rx="3" fill="#394554"/><rect x="262" y="532" width="0" height="6" rx="3" fill="#ff3434"><animate begin="2s" attributeName="width" values="0;0;214;214" keyTimes="0;0.280000;0.520000;1" dur="14s" repeatCount="indefinite"/></rect></g><g class="progress-segment" data-stage="3"><rect x="484" y="532" width="214" height="6" rx="3" fill="#394554"/><rect x="484" y="532" width="0" height="6" rx="3" fill="#ff3434"><animate begin="2s" attributeName="width" values="0;0;214;214" keyTimes="0;0.520000;0.790000;1" dur="14s" repeatCount="indefinite"/></rect></g><g class="progress-segment" data-stage="4"><rect x="706" y="532" width="214" height="6" rx="3" fill="#394554"/><rect x="706" y="532" width="0" height="6" rx="3" fill="#ff3434"><animate begin="2s" attributeName="width" values="0;0;214" keyTimes="0;0.790000;1" dur="14s" repeatCount="indefinite"/></rect></g></g><g id="title-intro"><rect x="0" y="0" width="960" height="540" fill="#0f1115"/><g opacity="0"><text x="480" y="291.894" text-anchor="middle" font-size="62.5538" font-weight="750" letter-spacing="-1" fill="#e6e8ec">큰 데이터를 세그먼트로</text><animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.025000;0.106250;0.125000;1" dur="16s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="0 28;0 0;0 0;0 -32;0 -32" keyTimes="0;0.025000;0.106250;0.125000;1" dur="16s" repeatCount="indefinite"/></g><animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.106250;0.125000;1" dur="16s" repeatCount="indefinite"/></g></svg>

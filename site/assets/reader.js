@@ -244,6 +244,7 @@
         input.type = "text";
         input.maxLength = 80;
         input.autocomplete = "off";
+        input.value = question.answers?.[0] || "";
         input.setAttribute("aria-label", question.prompt);
         const submit = document.createElement("button");
         submit.type = "submit";

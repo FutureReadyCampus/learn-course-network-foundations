@@ -73,15 +73,15 @@ pages:
       difficulty: easy
       prompt: Layer(레이어)는 무슨 뜻인가요?
       choices:
+      - id: a
+        text: 층 또는 구성 요소 하나입니다
+        feedback: 맞아요. 층 또는 구성 요소 하나입니다
       - id: d
         text: 통신 속도
         feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
       - id: b
         text: 네트워크 주소
         feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
-      - id: a
-        text: 층 또는 구성 요소 하나입니다
-        feedback: 맞아요. 층 또는 구성 요소 하나입니다
       - id: e
         text: 실행 중인 프로그램
         feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
@@ -110,29 +110,21 @@ pages:
         text: 통신 속도만 알 수 있습니다
         feedback: 다시 확인해 보세요. 요소와 요소 사이의 관계를 함께 볼 수 있습니다
       answer: a
-    - id: u1-02-layered-structure-p01-q03
-      kind: short
-      prompt: 여러 요소를 층처럼 쌓아 요소 사이의 관계까지 나타내는 구조를 무엇이라고 하나요?
-      answers:
-      - Layered 구조
-      - 계층 구조
-      - layered structure
-      feedback: Layered 구조(계층 구조)는 요소를 층처럼 쌓아 요소 사이의 관계까지 나타냅니다.
     questions:
     - id: u1-02-layered-structure-p01-q01
       kind: choice
       difficulty: easy
       prompt: Layer(레이어)는 무슨 뜻인가요?
       choices:
+      - id: a
+        text: 층 또는 구성 요소 하나입니다
+        feedback: 맞아요. 층 또는 구성 요소 하나입니다
       - id: d
         text: 통신 속도
         feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
       - id: b
         text: 네트워크 주소
         feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
-      - id: a
-        text: 층 또는 구성 요소 하나입니다
-        feedback: 맞아요. 층 또는 구성 요소 하나입니다
       - id: e
         text: 실행 중인 프로그램
         feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
@@ -161,14 +153,6 @@ pages:
         text: 통신 속도만 알 수 있습니다
         feedback: 다시 확인해 보세요. 요소와 요소 사이의 관계를 함께 볼 수 있습니다
       answer: a
-    - id: u1-02-layered-structure-p01-q03
-      kind: short
-      prompt: 여러 요소를 층처럼 쌓아 요소 사이의 관계까지 나타내는 구조를 무엇이라고 하나요?
-      answers:
-      - Layered 구조
-      - 계층 구조
-      - layered structure
-      feedback: Layered 구조(계층 구조)는 요소를 층처럼 쌓아 요소 사이의 관계까지 나타냅니다.
   - concepts:
       - concept-basic-02-04
       - concept-basic-02-05
@@ -179,7 +163,7 @@ pages:
         title: 아래 층이 빠지면 위 층이 무너진다
         alt: 3층과 4층 두 개의 네모 상자가 위아래로 쌓여 있고, 4층에서 3층으로 화살표가 아래로 향합니다. 3층을 빼내자 4층이 아래로 내려앉으며 흐려집니다.
         caption: 아래의 전제가 있어야 위 단계가 성립하는 관계를 먼저 살펴보세요.
-        after_paragraph: -1
+        after_paragraph: 11
       - file: assets/l04-layer-map.svg
         title: OSI의 계층을 실제 기술과 연결하기
         alt: 왼쪽의 OSI 층 사다리가 오른쪽의 Chrome, TCP, IP, 드라이버, NIC 칸과 선으로 이어지고, User mode와 Kernel mode와 하드웨어 영역이 색으로 구분되는
@@ -224,23 +208,16 @@ pages:
       - id: b
         text: 1입니다
         feedback: 다시 확인해 보세요. 3입니다
-      - id: a
-        text: 3입니다
-        feedback: 맞아요. 3입니다
       - id: e
         text: 전제조건은 없습니다
         feedback: 다시 확인해 보세요. 3입니다
       - id: c
         text: 2입니다
         feedback: 다시 확인해 보세요. 3입니다
+      - id: a
+        text: 3입니다
+        feedback: 맞아요. 3입니다
       answer: a
-    - id: u1-02-layered-structure-p02-q03
-      kind: short
-      prompt: 다음 단계가 성립하기 전에 먼저 갖추어야 하는 조건을 가리키는 말입니다. 어떤 개념일까요? (영어 단어로 답해주세요)
-      answers:
-      - prerequisite
-      - precondition
-      feedback: 정답은 prerequisite입니다.
     questions:
     - id: u1-02-layered-structure-p02-q01
       kind: choice
@@ -274,23 +251,16 @@ pages:
       - id: b
         text: 1입니다
         feedback: 다시 확인해 보세요. 3입니다
-      - id: a
-        text: 3입니다
-        feedback: 맞아요. 3입니다
       - id: e
         text: 전제조건은 없습니다
         feedback: 다시 확인해 보세요. 3입니다
       - id: c
         text: 2입니다
         feedback: 다시 확인해 보세요. 3입니다
+      - id: a
+        text: 3입니다
+        feedback: 맞아요. 3입니다
       answer: a
-    - id: u1-02-layered-structure-p02-q03
-      kind: short
-      prompt: 다음 단계가 성립하기 전에 먼저 갖추어야 하는 조건을 가리키는 말입니다. 어떤 개념일까요? (영어 단어로 답해주세요)
-      answers:
-      - prerequisite
-      - precondition
-      feedback: 정답은 prerequisite입니다.
 animations_dir: units/01-before-networking/lessons/02-layered-structure/assets/animations
 ---
 

@@ -8,7 +8,6 @@ page_metadata:
   - 액세스 스위치 (Access switch)
   - 엔드포인트 (Endpoint)
   - 포트 (Port)
-  - 허브 (Hub)
   illustrations:
   - file: "assets/photos/switch-8-port.jpg"
     title: "8포트 데스크톱 스위치"
@@ -36,10 +35,10 @@ page_metadata:
     choices:
     - id: a
       text: 라우터
-      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+      feedback: 이 장비는 서로 다른 네트워크 사이의 경로를 연결합니다.
     - id: b
       text: 액세스 스위치
-      feedback: 맞아요. 액세스 스위치.
+      feedback: 맞아요. 액세스 스위치는 단말 가까이에서 여러 장치를 연결합니다.
     - id: c
       text: 모뎀
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
@@ -47,8 +46,8 @@ page_metadata:
       text: 키보드
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: e
-      text: 모니터
-      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+      text: 프린터
+      feedback: 프린터는 스위치에 연결되는 단말입니다.
     answer: b
   - id: u3-02-p01-q02
     kind: choice
@@ -73,29 +72,32 @@ page_metadata:
     answer: e
   - id: u3-02-p01-q03
     kind: short
-    prompt: PC나 프린터 같은 단말을 가까이에서 연결하는 스위치입니다. 영어로 무엇일까요?
+    prompt: 네트워크에 연결되어 데이터를 주고받는 끝 장치를 가리키는 glossary 용어는 무엇인가요? (영어 또는 한글)
     answers:
-    - Access switch
-    feedback: 정답은 Access switch입니다.
+    - Endpoint
+    - end device
+    - 엔드포인트
+    - 종단 장치
+    feedback: 정답은 Endpoint(끝 장치)입니다.
   - id: u3-02-p01-q04
     kind: choice
     difficulty: medium
-    prompt: 스위치의 포트 수를 올바르게 이해한 것은 무엇인가요?
+    prompt: 액세스 스위치 포트에는 PC 말고 어떤 장치도 연결할 수 있나요?
     choices:
     - id: a
-      text: 연결 가능한 케이블 끝의 수
-      feedback: 맞아요. 연결 가능한 케이블 끝의 수.
+      text: 다른 스위치나 무선 액세스 포인트
+      feedback: 맞아요. PC 외에도 다른 스위치나 액세스 포인트를 연결할 수 있습니다.
     - id: b
-      text: LAN의 개수
+      text: 케이블의 최대 길이
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: c
-      text: 연결 가능한 PC만의 수
+      text: 장치의 화면 크기
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: d
-      text: 전송 가능한 프레임 수
+      text: IP 주소의 개수
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: e
-      text: IP 네트워크 수
+      text: 인터넷 속도
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     answer: a
   - id: u3-02-p01-q05
@@ -193,33 +195,34 @@ page_metadata:
     answer: c
   - id: u3-02-p02-q03
     kind: short
-    prompt: VLAN이 가상 LAN이라고 불리는 까닭은 물리적인 장비를 새로 만드는 대신 LAN을 어떻게 나누기 때문인가요?
+    prompt: VLAN 10, VLAN 20처럼 스위치가 논리적 LAN 그룹을 구분할 때 쓰는 번호를 무엇이라고 하나요? (영어 또는 한글)
     answers:
-    - 논리적으로
-    - 논리적
-    - 논리
-    feedback: 정답은 실제 장비를 더하는 대신 논리적으로 구분하기 때문입니다.
+    - VLAN ID
+    - VLAN identifier
+    - VLAN 번호
+    - VLAN 식별자
+    feedback: 정답은 VLAN ID(가상 LAN 식별 번호)입니다.
   - id: u3-02-p02-q04
     kind: choice
     difficulty: medium
-    prompt: VLAN 10과 VLAN 20에 속한 두 PC가 통신하려면 어떤 기능이 필요할까요?
+    prompt: VLAN 10과 VLAN 20의 숫자는 무엇을 나타내나요?
     choices:
     - id: a
-      text: 같은 물리 스위치에 꽂기
+      text: 장치의 처리 속도 순위
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: b
-      text: MAC 주소를 같게 하기
-      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+      text: 각 VLAN을 구분하는 식별 번호
+      feedback: 맞아요. VLAN ID는 각 논리적 LAN 그룹을 구분하는 번호입니다.
     - id: c
-      text: 두 VLAN 사이의 라우터 또는 L3 스위치
-      feedback: 맞아요. 두 VLAN 사이의 라우터 또는 L3 스위치.
+      text: 연결된 케이블의 길이
+      feedback: 케이블 길이는 VLAN ID와 관계없습니다.
     - id: d
-      text: 스위치 재시작
+      text: 연결된 PC의 수
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: e
-      text: 더 긴 케이블
+      text: MAC 주소의 길이
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
-    answer: c
+    answer: b
   - id: u3-02-p02-q05
     kind: choice
     difficulty: medium
@@ -244,7 +247,7 @@ page_metadata:
   inline_questions_after: 1
 
 - terms:
-  - MAC 주소 테이블
+  - MAC 주소 테이블 (MAC address table)
   - 출발지 MAC 주소
   - 학습 (Learning)
   - 에이징 (Aging)
@@ -310,12 +313,6 @@ page_metadata:
       text: VLAN 10, 출발지 MAC 주소, 3번 포트의 관계
       feedback: 맞아요. 스위치는 VLAN 안에서 출발지 MAC 주소와 들어온 포트를 연결해 기록합니다.
     answer: e
-  - id: u3-02-p03-q03
-    kind: short
-    prompt: 스위치가 주소와 그 주소가 들어온 포트를 함께 기록해 둔 표입니다. 영어로 무엇일까요?
-    answers:
-    - MAC address table
-    feedback: 정답은 MAC address table입니다.
   - id: u3-02-p03-q04
     kind: choice
     difficulty: medium
@@ -429,12 +426,6 @@ page_metadata:
       text: 목적지 B로부터 출발지 A를 학습한 뒤 3번 포트로 보낸다
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
     answer: c
-  - id: u3-02-p04-q03
-    kind: short
-    prompt: 프레임이 도착할 연결 지점을 식별하기 위해 확인하는 MAC 주소는 출발지와 목적지 중 어느 것인가요? (영어로 답해주세요)
-    answers:
-    - destination MAC address
-    feedback: 정답은 destination MAC address입니다.
   - id: u3-02-p04-q04
     kind: choice
     difficulty: medium
@@ -485,6 +476,7 @@ page_metadata:
     caption: "스위치는 출발지 MAC으로 학습하고, 목적지 MAC을 테이블에서 찾아 해당 포트 하나로만 프레임을 보냅니다. 관련 없는 단말에는 복사하지 않습니다."
 - terms:
   - 알 수 없는 유니캐스트
+  - 유니캐스트 (Unicast)
   - 플러딩 (Flooding)
   - 브로드캐스트 (Broadcast)
   illustrations:
@@ -554,7 +546,9 @@ page_metadata:
     prompt: 보내는 이가 한 대의 특정 목적지를 지정하는 통신 방식입니다. 영어로 무엇일까요?
     answers:
     - Unicast
-    feedback: 정답은 Unicast입니다.
+    - unicast communication
+    - 유니캐스트
+    feedback: 정답은 Unicast(유니캐스트)입니다.
   - id: u3-02-p05-q04
     kind: choice
     difficulty: medium
@@ -680,7 +674,10 @@ page_metadata:
     prompt: 케이블 연결이 성립하지 않았거나 포트가 비활성인 상태를 가리키는 말은 무엇인가요?
     answers:
     - Link down
-    feedback: 정답은 Link down입니다.
+    - link-down
+    - 링크 다운
+    - 링크다운
+    feedback: 정답은 Link down(링크 다운)입니다.
   - id: u3-02-p06-q04
     kind: choice
     difficulty: medium
@@ -788,33 +785,27 @@ page_metadata:
       text: Uplink는 단말 포트만 뜻하고 Link up은 광섬유만 뜻한다
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
     answer: a
-  - id: u3-02-p07-q03
-    kind: short
-    prompt: 여러 액세스 스위치를 모아 상위로 연결하는 계층입니다. 영어로 무엇일까요?
-    answers:
-    - Distribution layer
-    feedback: 정답은 Distribution layer입니다.
   - id: u3-02-p07-q04
     kind: choice
     difficulty: medium
-    prompt: Uplink와 Link up의 차이를 바르게 설명한 것은 무엇인가요?
+    prompt: 액세스 스위치에서 배포 스위치로 이어지는 연결의 역할을 무엇이라고 하나요?
     choices:
     - id: a
-      text: 둘 다 연결이 끊긴 상태다
+      text: 업링크 (Uplink)
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: b
-      text: Uplink는 연결 역할, Link up은 연결 성립 상태다
-      feedback: 맞아요. Uplink는 연결 역할, Link up은 연결 성립 상태다.
+      text: VLAN
+      feedback: VLAN은 네트워크 그룹을 나누는 설정입니다.
     - id: c
-      text: Uplink는 VLAN 번호다
+      text: Link down
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: d
-      text: Link up은 상위 장비로 가는 케이블만 뜻한다
+      text: MAC 주소 테이블
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: e
-      text: 둘 다 MAC 주소 테이블이다
+      text: 광섬유 케이블이다
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
-    answer: b
+    answer: a
   - id: u3-02-p07-q05
     kind: choice
     difficulty: medium
@@ -836,7 +827,7 @@ page_metadata:
       text: 액세스 스위치는 업링크를 가질 수 없다
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     answer: b
-  inline_questions_after: 1
+  inline_questions_after: 2
   animations:
   - file: l09-uplink-distribution.svg
     title: "업링크로 배포 스위치에 모으기"
@@ -914,12 +905,6 @@ page_metadata:
       text: 배포 스위치는 언제나 L3만 수행한다
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
     answer: b
-  - id: u3-02-p08-q03
-    kind: short
-    prompt: 서로 다른 네트워크 사이에서 L3 라우팅을 수행할 수 있는 스위치입니다. 무엇일까요? (영어로 답해주세요)
-    answers:
-    - L3 switch
-    feedback: 정답은 L3 switch입니다.
   - id: u3-02-p08-q04
     kind: choice
     difficulty: medium
@@ -965,7 +950,7 @@ page_metadata:
 - terms:
   - MAC 주소 학습
   - 목적지 조회
-  - 프레임 전달
+  - 포워딩 (Forwarding)
   illustrations:
   - file: "assets/photos/switch-8-port.jpg"
     title: "8포트 스위치 다시 보기"
@@ -1010,30 +995,24 @@ page_metadata:
   - id: u3-02-p09-q02
     kind: choice
     difficulty: medium
-    prompt: 목적지 MAC을 알고 있는 경우와 모르는 경우의 동작을 올바르게 비교한 것은 무엇인가요?
+    prompt: VLAN 10에서 목적지 MAC 주소가 8번 포트에 있다고 테이블에 기록되어 있습니다. 3번 포트로 들어온 해당 프레임은 어디로 보내나요?
     choices:
     - id: a
-      text: 알면 라우팅하고, 모르면 인터넷으로 폐기한다
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 8번 포트
+      feedback: 맞아요. MAC 주소 테이블에 적힌 목적지의 8번 포트로 보냅니다.
     - id: b
-      text: 알면 출발지 포트로 되돌리고, 모르면 테이블을 영구 보존한다
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 3번 포트
+      feedback: 다시 확인해 보세요. 스위치는 목적지 MAC 주소를 조회합니다.
     - id: c
-      text: 알면 플러딩하고, 모르면 항상 링크를 끊는다
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 라우터의 인터넷 포트
+      feedback: 다시 확인해 보세요. 여기서는 스위치의 MAC 주소 테이블을 사용합니다.
     - id: d
-      text: 알면 해당 포트로 전달하고, 모르면 같은 LAN의 다른 포트로 플러딩한다
-      feedback: 맞아요. 알면 해당 포트로 전달하고, 모르면 같은 LAN의 다른 포트로 플러딩한다.
+      text: VLAN 10의 모든 포트
+      feedback: 목적지가 다른 포트에 있으므로 8번 포트로 전달합니다.
     - id: e
-      text: 둘 다 모든 포트로 무조건 전달한다
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
-    answer: d
-  - id: u3-02-p09-q03
-    kind: short
-    prompt: 같은 VLAN 안에서 목적지 MAC 주소가 알려졌을 때 프레임을 보내는 포트의 방향을 무엇으로 정하나요? (영어 용어로 답해주세요)
-    answers:
-    - forwarding
-    feedback: 정답은 forwarding입니다.
+      text: VLAN 20의 8번 포트
+      feedback: 다시 확인해 보세요. 목적지가 알려져 있으면 필요한 포트로만 전달합니다.
+    answer: a
   - id: u3-02-p09-q04
     kind: choice
     difficulty: medium
@@ -1114,17 +1093,16 @@ PC-A가 VLAN 10에 속해 있고 스위치의 3번 포트에 연결되어 있으
 
 프레임이 VLAN 10의 3번 포트로 들어오고 출발지 주소가 `02:00:00:00:00:0A`라면, 이 Lesson에서 단순화한 테이블에는 다음과 같은 관계가 생깁니다.
 
-이 프레임은 VLAN 10에서 출발지 MAC 주소 `02:00:00:00:00:0A`가 3번 포트로 들어온 경우입니다. 스위치는 이 세 정보를 연결해 기록합니다.
 
 스위치가 주소를 배우는 방향은 **들어온 프레임의 출발지**에서 **들어온 포트**로입니다. 목적지 주소를 보고 목적지가 있는 위치를 배우는 것은 아닙니다. 이 표는 VLAN별로 구분해 읽어야 합니다. 같은 장치 주소가 어느 VLAN에 속하는지에 따라 전달 범위가 달라지기 때문입니다.
 
-PC-A가 다른 포트로 옮겨가 프레임을 보내면, 스위치는 같은 출발지 MAC 주소가 이번에는 새 포트에서 들어온 것을 확인하고 테이블을 갱신할 수 있습니다. 한동안 보이지 않는 장치의 기록은 시간이 지나면 삭제될 수도 있습니다. 그러므로 이 표는 영구적인 주소록이 아니라, 최근 프레임을 통해 배운 연결 정보를 담은 표입니다.
+PC-A가 다른 포트로 옮겨가 프레임을 보내면, 스위치는 같은 출발지 MAC 주소가 이번에는 새 포트에서 들어온 것을 확인하고 테이블을 갱신할 수 있습니다. 한동안 보이지 않는 장치의 기록은 시간이 지나면 삭제될 수도 있습니다. 그러므로 이 오래된 기록을 일정 시간이 지나면 자동으로 지우는 동작을 에이징(Aging)이라고 합니다. 따라서 이 표는 영구적인 주소록이 아니라, 최근 프레임을 통해 배운 연결 정보를 담은 표입니다.
 
 **외울 문장:** 스위치는 프레임이 들어온 VLAN과 출발지 MAC 주소를 확인해, 그 프레임이 들어온 포트와 연결해 기억합니다.
 
 ## 목적지 MAC을 알면 그 포트로 보낸다
 
-이제 PC-A와 PC-B가 모두 VLAN 10에 있다고 하고, PC-A가 PC-B에게 프레임을 보낸다고 합시다. 스위치는 먼저 프레임의 출발지 MAC 주소와 들어온 포트를 VLAN 10의 테이블에 기록합니다. 이어 VLAN 10 안에서 목적지 MAC 주소를 찾습니다. PC-B가 8번 포트에 있다는 기록이 있다면, 스위치는 프레임을 8번 포트로 내보냅니다. 다른 포트로 같은 프레임을 모두 복사해 보내지 않습니다.
+이제 PC-A와 PC-B가 모두 VLAN 10에 있다고 하고, PC-A가 PC-B에게 프레임을 보낸다고 합시다. 특정 장치 한 대를 목적지로 지정해 보내는 통신을 유니캐스트(Unicast)라고 합니다. 스위치는 먼저 프레임의 출발지 MAC 주소와 들어온 포트를 VLAN 10의 테이블에 기록합니다. 이어 VLAN 10 안에서 목적지 MAC 주소를 찾습니다. PC-B가 8번 포트에 있다는 기록이 있다면, 스위치는 프레임을 8번 포트로 내보냅니다. 다른 포트로 같은 프레임을 모두 복사해 보내지 않습니다.
 
 이 동작 덕분에 PC-A와 PC-B 사이의 통신이 관련 없는 모든 단말에게 매번 전달되지 않습니다. 식당에서 특정 테이블로 음식을 가져다주는 상황과 비슷합니다. 받는 테이블을 알고 있다면 식당의 모든 테이블에 음식을 하나씩 놓을 필요가 없습니다. 스위치가 테이블에서 목적지 MAC 주소를 찾아 해당 포트 쪽으로 전달하는 것이지요.
 
