@@ -131,7 +131,15 @@
           if (!root || !root.querySelector("animate, animateMotion, animateTransform, set")) return;
           figure.classList.add("has-animation-control");
           figure.append(controlFor(object));
-          root.unpauseAnimations?.();
+          if (root.hasAttribute("data-replay-on-view")) {
+            root.pauseAnimations?.();
+            new IntersectionObserver(([entry]) => {
+              if (entry.isIntersecting) {
+                root.setCurrentTime(0);
+                root.unpauseAnimations?.();
+              } else root.pauseAnimations?.();
+            }).observe(figure);
+          } else root.unpauseAnimations?.();
         } catch { /* Browser may block an inaccessible SVG document. */ }
       });
       figure.append(object);
