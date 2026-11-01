@@ -553,15 +553,6 @@ page_metadata:
       text: MAC address table aging
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
     answer: d
-  - id: u3-03-p06-q03
-    kind: short
-    prompt: Ethernet 방송이 다른 IP 네트워크로 그대로 넘어가지 않게 구역을 나누는 경계를 가리키는 말은 무엇일까요? (영어로 답해주세요)
-    answers:
-    - L3 boundary
-    - Layer 3 boundary
-    - L3 경계
-    - Layer 3 경계
-    feedback: 정답은 L3 boundary(L3 경계)입니다.
   - id: u3-03-p06-q04
     kind: choice
     difficulty: medium
