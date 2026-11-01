@@ -65,13 +65,6 @@ page_metadata:
       text: 목적지는 전달 단계마다 달라집니다
       feedback: 다시 생각해 보세요. 상자는 처음 정한 목적지로 향합니다.
     answer: b
-  - id: u2-l05-p01-q03
-    kind: short
-    prompt: 상자가 여러 장소를 거쳐 받는 사람에게 도착하는 일을 무엇이라고 하나요? (한국어로 답해주세요)
-    answers:
-    - 전달
-    - 배송
-    feedback: 정답은 전달입니다. 네트워크에서도 여러 장치가 데이터를 목적지까지 이어서 보냅니다.
   illustration_after_paragraph: [0, 1]
   inline_questions_after: 1
 - terms: []
@@ -118,13 +111,6 @@ page_metadata:
       text: 앞 단계와 뒤 단계를 없애는 것
       feedback: 다시 확인해 보세요. 전달 단계들은 서로 이어집니다.
     answer: c
-  - id: u2-l05-p02-q03
-    kind: short
-    prompt: 택배 여정에서 앞 담당자가 하던 일을 받아 다음 담당자에게 넘기는 행동은 무엇인가요? (한국어로 답해주세요)
-    answers:
-    - 인계
-    - 이어받기
-    feedback: 정답은 인계입니다. 각 담당자가 일을 다음 담당자에게 넘겨 전달을 이어갑니다.
   animations:
   - file: l05-parcel-relay.svg
     title: 여러 사람이 이어받는 택배
@@ -182,14 +168,6 @@ page_metadata:
       text: 받는 사람 이름만으로 모든 배송이 끝나기 때문입니다
       feedback: 다시 확인해 보세요. 목적지와 받을 대상은 다른 정보입니다.
     answer: d
-  - id: u2-l05-p03-q03
-    kind: short
-    prompt: 데이터를 받을 목적지 장치를 가리키고, 라우터가 다음 방향을 고르는 데 쓰는 네트워크 주소는 무엇인가요? (영어 약어 또는 한글로 답해주세요)
-    answers:
-    - IP address
-    - IP
-    - IP 주소
-    feedback: 정답은 IP 주소입니다. 라우터는 목적지 IP를 보고 어느 네트워크 방향으로 보낼지 정합니다.
   animations:
   - file: l05-parcel-labels.svg
     title: 상자 하나, 안내 세 가지
@@ -247,13 +225,26 @@ page_metadata:
       feedback: 다시 확인해 보세요. 각 상자를 알맞은 대상에게 전달해야 합니다.
     answer: b
   - id: u2-l05-p04-q03
-    kind: short
-    prompt: 같은 네트워크 안에서 프레임을 전달할 때 네트워크 인터페이스를 구분하는 주소는 무엇인가요? (영어 약어 또는 한글로 답해주세요)
-    answers:
-    - MAC address
-    - MAC
-    - MAC 주소
-    feedback: 정답은 MAC 주소입니다. MAC 주소는 같은 네트워크 안에서 네트워크 인터페이스를 구분하는 데 쓰입니다.
+    kind: choice
+    difficulty: medium
+    prompt: 같은 네트워크 안에서 프레임을 전달할 때 네트워크 인터페이스를 구분하는 주소는 무엇인가요?
+    choices:
+    - id: a
+      text: MAC 주소
+      feedback: 맞아요. MAC 주소는 같은 네트워크 안에서 네트워크 인터페이스를 구분합니다.
+    - id: b
+      text: IP 주소
+      feedback: 다시 생각해 보세요. IP 주소는 목적지 네트워크를 찾는 데 사용합니다.
+    - id: c
+      text: 포트 번호
+      feedback: 다시 생각해 보세요. 포트 번호는 장치 안에서 통신할 프로그램을 구분합니다.
+    - id: d
+      text: 호스트 이름
+      feedback: 다시 생각해 보세요. 호스트 이름은 사람이 장치나 서비스를 알아보기 쉽게 부르는 이름입니다.
+    - id: e
+      text: 서브넷 마스크
+      feedback: 다시 생각해 보세요. 서브넷 마스크는 IP 주소에서 네트워크 부분과 장치 부분을 나누는 데 사용합니다.
+    answer: a
   illustration_after_paragraph: [0]
   inline_questions_after: 1
 - terms: []
@@ -300,15 +291,6 @@ page_metadata:
       text: 어느 설명이든 상자에 붙은 안내를 없애야 합니다
       feedback: 다시 확인해 보세요. 설명 방식은 안내를 없애지 않습니다.
     answer: c
-  - id: u2-l05-p05-q03
-    kind: short
-    prompt: 통신 기능을 여러 계층으로 나누어 각 계층의 역할을 설명하는 방식을 무엇이라고 하나요? (영어 단어 또는 한글로 답해주세요)
-    answers:
-    - layering
-    - layered model
-    - 계층화
-    - 계층 모델
-    feedback: 정답은 계층화(layering)입니다. 통신 기능을 계층으로 나누어 설명하는 방식입니다.
   animations:
   - file: l05-journey-split.svg
     title: 같은 여정, 두 가지 나눔
@@ -366,14 +348,6 @@ page_metadata:
       text: 상자가 어디로 가는지는 중요하지 않다고 생각합니다
       feedback: 다시 확인해 보세요. 처음 정한 목적지로 가는 것이 핵심입니다.
     answer: b
-  - id: u2-l05-p06-q03
-    kind: short
-    prompt: 택배가 마지막으로 도착해야 하는 곳을 무엇이라고 하나요? (한국어 또는 영어로 답해주세요)
-    answers:
-    - destination
-    - destination address
-    - 목적지
-    feedback: 정답은 목적지(destination)입니다. 데이터가 전달을 마치고 도착해야 하는 곳입니다.
   illustration_after_paragraph: [0]
   inline_questions_after: 1
 

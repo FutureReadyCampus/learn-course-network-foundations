@@ -218,13 +218,6 @@ pages:
         text: 3입니다
         feedback: 맞아요. 3입니다
       answer: a
-    - id: u1-02-layered-structure-p02-q03
-      kind: short
-      prompt: 다음 단계가 성립하기 전에 먼저 갖추어야 하는 조건을 가리키는 말입니다. 어떤 개념일까요? (영어 단어로 답해주세요)
-      answers:
-      - prerequisite
-      - precondition
-      feedback: 정답은 prerequisite입니다.
     questions:
     - id: u1-02-layered-structure-p02-q01
       kind: choice
@@ -268,13 +261,6 @@ pages:
         text: 3입니다
         feedback: 맞아요. 3입니다
       answer: a
-    - id: u1-02-layered-structure-p02-q03
-      kind: short
-      prompt: 다음 단계가 성립하기 전에 먼저 갖추어야 하는 조건을 가리키는 말입니다. 어떤 개념일까요? (영어 단어로 답해주세요)
-      answers:
-      - prerequisite
-      - precondition
-      feedback: 정답은 prerequisite입니다.
 animations_dir: units/01-before-networking/lessons/02-layered-structure/assets/animations
 ---
 

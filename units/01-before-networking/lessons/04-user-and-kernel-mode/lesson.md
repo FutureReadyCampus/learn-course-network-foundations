@@ -233,13 +233,6 @@ pages:
         text: 드라이버 설치입니다
         feedback: 다시 확인해 보세요. 시스템 콜입니다
       answer: a
-    - id: u1-04-user-and-kernel-mode-p02-q03
-      kind: short
-      prompt: 애플리케이션이 커널에 작업을 요청할 때 사용하는 운영체제 인터페이스입니다. 어떤 개념일까요? (영어 용어로 답해주세요)
-      answers:
-      - system call
-      - syscall
-      feedback: 정답은 system call입니다.
   - concepts:
       - concept-basic-04-05
       - concept-basic-04-06

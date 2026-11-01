@@ -115,12 +115,6 @@ pages:
         text: 네트워크는 장치, 네트워킹은 파일 크기입니다
         feedback: 다시 확인해 보세요. 네트워크는 연결 관계이고 네트워킹은 그 위에서 정보를 주고받는 행동입니다
       answer: a
-    - id: u1-03-networking-concepts-p01-q03
-      kind: short
-      prompt: 컴퓨터 사이에 연결 관계가 있는 데서 그치지 않고, 실제로 정보를 주고받는 활동입니다. 어떤 개념일까요? (영어 단어로 답해주세요)
-      answers:
-      - networking
-      feedback: 정답은 networking입니다.
   - concepts:
       - concept-basic-03-04
       - concept-basic-03-05
