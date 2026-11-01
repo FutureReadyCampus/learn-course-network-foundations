@@ -1013,15 +1013,6 @@ page_metadata:
       text: VLAN 20의 8번 포트
       feedback: 다시 확인해 보세요. 목적지가 알려져 있으면 필요한 포트로만 전달합니다.
     answer: a
-  - id: u3-02-p09-q03
-    kind: short
-    prompt: 목적지 MAC 주소를 알고 해당 출력 포트로 프레임을 내보내는 동작의 영어 glossary 용어는 무엇인가요? (영어 또는 한글)
-    answers:
-    - forwarding
-    - frame forwarding
-    - 포워딩
-    - 프레임 전달
-    feedback: 정답은 forwarding(프레임 전달)입니다.
   - id: u3-02-p09-q04
     kind: choice
     difficulty: medium
