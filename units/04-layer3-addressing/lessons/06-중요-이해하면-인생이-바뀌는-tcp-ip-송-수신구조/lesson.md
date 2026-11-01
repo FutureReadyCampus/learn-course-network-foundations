@@ -26,6 +26,86 @@ page_metadata:
     alt: "왼쪽에 서버 프로그램, 소켓과 송신 버퍼, TCP 세그먼트, IP 패킷, 링크 프레임이 위에서 아래로 있고, 아래 가운데 스위치·라우터·링크를 지나 오른쪽의 링크 프레임 처리, IP 패킷 처리, TCP 바이트 흐름, 소켓과 수신 버퍼, 브라우저 프로그램이 아래에서 위로 이어집니다. 데이터가 이 길을 단계별로 지나가며, 마지막에 수신 버퍼에 도착한 것과 브라우저가 읽은 것이 다르다고 표시됩니다."
     caption: "앞의 지도를 따라 데이터가 지나가는 순서입니다. 수신 버퍼에 도착한 바이트는 브라우저가 읽어야 쓰입니다."
     after_paragraph: 3
+  questions:
+  - id: u4-l16-p01-q01
+    kind: choice
+    difficulty: easy
+    prompt: 사진을 내려받을 때 서버 프로그램이 먼저 하는 일은 무엇인가요?
+    choices:
+    - id: a
+      text: 사진을 저장장치에서 읽고 운영체제에 전송을 요청한다
+      feedback: 맞아요. 서버 프로그램이 파일을 읽고 운영체제에 전송을 맡겨요.
+    - id: b
+      text: 라우터의 케이블을 직접 바꾼다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: c
+      text: 브라우저의 화면을 직접 그린다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: d
+      text: 모든 네트워크 장비의 주소를 새로 만든다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: e
+      text: 수신 버퍼에서 사진을 꺼낸다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    answer: a
+  - id: u4-l16-p01-q02
+    kind: choice
+    difficulty: easy
+    prompt: 송신 쪽과 수신 쪽을 구분하는 기준은 무엇인가요?
+    choices:
+    - id: a
+      text: 장비의 제조사
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: 데이터가 지금 이동하는 방향
+      feedback: 맞아요. 송신과 수신은 장비에 고정된 직업이 아니라 데이터 이동 방향에 따라 정해져요.
+    - id: c
+      text: 장비가 서버인지 PC인지
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: d
+      text: 케이블의 길이
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: e
+      text: IP 주소의 숫자 크기
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    answer: b
+  - id: u4-l16-p01-q03
+    kind: choice
+    difficulty: medium
+    prompt: 본문에서 설명한 데이터 흐름에 가장 가까운 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 브라우저 → TCP → 파일 → 서버 프로그램
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: 프레임 → 프로그램 → 저장장치 → 라우터
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: c
+      text: 프로그램 → 소켓/운영체제 → 네트워크 전달 단위 → 수신 프로그램
+      feedback: 맞아요. 보내는 프로그램의 요청이 운영체제와 네트워크 전달 단계를 거쳐 받는 프로그램에 도착해요.
+    - id: d
+      text: 라우터 → 파일 읽기 → 소켓 → 서버 저장장치
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: e
+      text: IP 주소 → 브라우저 → 스위치 → TCP 연결 생성
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    answer: c
+  - id: u4-l16-p01-q04
+    kind: short
+    prompt: TCP와 IP를 포함해 인터넷 통신에 쓰이는 프로토콜 묶음을 무엇이라고 하나요? (영어 또는 한글로 답해주세요)
+    answers:
+    - TCP/IP
+    - TCP/IP suite
+    - TCP IP suite
+    - TCP/IP 프로토콜 묶음
+    - TCP/IP 프로토콜군
+    feedback: TCP/IP는 이 Lesson에서 여러 계층의 전달을 연결하는 프로토콜 묶음이에요.
+  question_placements:
+  - question_id: u4-l16-p01-q01
+    after_paragraph: 1
+  - question_id: u4-l16-p01-q02
+    after_paragraph: 2
+
 - terms:
   - 송신 측 / 수신 측
   illustrations:
@@ -49,6 +129,76 @@ page_metadata:
     alt: "3,000B 데이터가 TCP 데이터 한도 1,460B 앞에서 한 번에는 안 들어간다고 표시됩니다. 한도는 MTU 1,500B에서 IP 헤더 20B와 TCP 헤더 20B를 뺀 값이고, 데이터는 1,460B, 1,460B, 80B 세 세그먼트로 나뉩니다. 마지막에 큰 사진은 수많은 세그먼트가 된다는 표시가 나타납니다."
     caption: "기본 IPv4와 TCP 헤더가 각각 20B이고 옵션이 없는 예입니다. 마지막 조각은 한도를 채우지 않아도 돼요."
     after_paragraph: 6
+  questions:
+  - id: u4-l16-p02-q01
+    kind: choice
+    difficulty: easy
+    prompt: 사진을 내려받는 동안 사진 데이터를 보내는 쪽은 어디인가요?
+    choices:
+    - id: a
+      text: 내 PC
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: 내 PC의 브라우저만
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: c
+      text: 중간 라우터
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: d
+      text: 서버
+      feedback: 맞아요. 이 예시에서는 서버가 사진 데이터를 보내므로 송신 측이에요.
+    - id: e
+      text: 인터넷 서비스 제공자
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    answer: d
+  - id: u4-l16-p02-q02
+    kind: choice
+    difficulty: easy
+    prompt: 같은 다운로드 중 짧은 사진 요청을 보내는 쪽은 어디인가요?
+    choices:
+    - id: a
+      text: 서버
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: 내 PC의 브라우저
+      feedback: 맞아요. 요청을 보낼 때는 브라우저가 송신 쪽이고, 사진 데이터가 돌아올 때는 서버가 송신 쪽이에요.
+    - id: c
+      text: 중간 스위치
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: d
+      text: 수신 버퍼
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: e
+      text: 라우터
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    answer: b
+  - id: u4-l16-p02-q03
+    kind: choice
+    difficulty: medium
+    prompt: 기본 IPv4/TCP 헤더가 각각 20바이트이고 MTU가 1,500바이트라면, 설명된 TCP 데이터 최대 크기(MSS)는 얼마인가요?
+    choices:
+    - id: a
+      text: 1,500바이트
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: 1,480바이트
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: c
+      text: 1,460바이트
+      feedback: 맞아요. 1,500에서 IP 헤더 20과 TCP 헤더 20을 빼면 1,460바이트예요.
+    - id: d
+      text: 1,440바이트
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: e
+      text: 1,400바이트
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    answer: c
+  question_placements:
+  - question_id: u4-l16-p02-q01
+    after_paragraph: 1
+  - question_id: u4-l16-p02-q02
+    after_paragraph: 2
+
 - terms:
   - 프로세스 (Process)
   - 소켓 (Socket)
@@ -64,6 +214,84 @@ page_metadata:
     alt: "왼쪽 내 PC에는 브라우저, 메신저, 게임 프로세스와 각각의 소켓, 커널이 있고 오른쪽 서버에는 웹 서버 프로세스와 소켓, 커널이 있습니다. 프로세스, 소켓, 커널이 차례로 강조되고, 서버의 send 요청이 소켓과 커널, 네트워크를 지나 PC의 소켓에 도착해 브라우저가 recv로 읽어야 한다고 표시됩니다."
     caption: "프로세스는 소켓으로 데이터를 맡기고 받고, TCP/IP 처리는 커널이 맡습니다. send와 recv는 보내기와 받기 요청 이름이에요."
     after_paragraph: 5
+  questions:
+  - id: u4-l16-p03-q01
+    kind: choice
+    difficulty: easy
+    prompt: 네트워크로 파일을 보내 달라고 운영체제에 요청하는 주체는 무엇인가요?
+    choices:
+    - id: a
+      text: 라우터
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: 스위치
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: c
+      text: 케이블
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: d
+      text: 실행 중인 서버 프로그램
+      feedback: 맞아요. 실행 중인 프로그램(프로세스)이 소켓을 사용해 운영체제에 요청해요.
+    - id: e
+      text: 수신 버퍼
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    answer: d
+  - id: u4-l16-p03-q02
+    kind: choice
+    difficulty: easy
+    prompt: 프로세스가 데이터를 보내고 받기 위해 사용하는 소프트웨어 접점은 무엇인가요?
+    choices:
+    - id: a
+      text: 프레임
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: 프로그램이 운영체제의 통신 기능에 데이터를 맡기고 받는 접점
+      feedback: 맞아요. 프로그램은 이 소프트웨어 접점을 통해 운영체제에 데이터를 보내거나 받도록 요청해요.
+    - id: c
+      text: 라우터
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: d
+      text: 송신 측
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: e
+      text: FCS
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    answer: b
+  - id: u4-l16-p03-q03
+    kind: choice
+    difficulty: medium
+    prompt: TCP/IP 처리를 맡고 네트워크 장치 사용을 관리하는 운영체제의 핵심 부분은 무엇인가요?
+    choices:
+    - id: a
+      text: 브라우저
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: 파일 시스템
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: c
+      text: 사용자 모드
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: d
+      text: 프로세스 버퍼
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: e
+      text: 커널
+      feedback: 맞아요. 커널은 TCP/IP 처리와 네트워크 장치 사용을 맡아요.
+    answer: e
+  - id: u4-l16-p03-q04
+    kind: short
+    prompt: 프로그램이 운영체제와 통신 데이터를 주고받을 때 사용하는 소프트웨어 접점을 무엇이라고 하나요? (영어 또는 한글로 답해주세요)
+    answers:
+    - socket
+    - 소켓
+    - network socket
+    feedback: 소켓은 프로그램이 운영체제의 통신 기능을 이용하는 접점이에요.
+  question_placements:
+  - question_id: u4-l16-p03-q01
+    after_paragraph: 1
+  - question_id: u4-l16-p03-q02
+    after_paragraph: 2
+
 - terms:
   - 버퍼 (Buffer)
   - 프로그램 버퍼
@@ -79,6 +307,86 @@ page_metadata:
     alt: "저장장치, 프로그램 버퍼, 소켓, 송신 버퍼, TCP가 한 줄로 이어져 있습니다. photo.bmp에서 4,096B를 읽어 프로그램 버퍼에 놓고, 소켓으로 맡기면 커널의 송신 버퍼에 쌓이며, 프로그램은 다음 4,096B를 읽어 같은 일을 반복합니다. TCP는 송신 버퍼의 바이트를 1,460B, 1,460B, 1,176B로 나눕니다."
     caption: "4,096B는 프로그램이 이번에 읽는 양이지 MTU나 MSS가 아닙니다. 그림의 조각 크기는 예시예요."
     after_paragraph: 5
+  questions:
+  - id: u4-l16-p04-q01
+    kind: choice
+    difficulty: easy
+    prompt: 컴퓨터에서 데이터를 잠시 보관해 다음 단계로 넘기는 메모리 공간은 무엇인가요?
+    choices:
+    - id: a
+      text: 라우터
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: 버퍼
+      feedback: 맞아요. 버퍼는 데이터를 잠시 보관하는 메모리 공간이에요.
+    - id: c
+      text: 포트 번호
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: d
+      text: 프레임
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: e
+      text: 프로세스
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    answer: b
+  - id: u4-l16-p04-q02
+    kind: choice
+    difficulty: easy
+    prompt: 파일에서 읽어 프로그램 안에 잠시 두는 공간과 커널이 전송 대기 데이터를 두는 공간은 어떤 관계인가요?
+    choices:
+    - id: a
+      text: 항상 같은 메모리 공간이다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: 둘 다 저장장치의 원본 파일이다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: c
+      text: 서로 다른 단계의 별도 버퍼다
+      feedback: 맞아요. 프로그램 버퍼와 커널의 송신 버퍼는 관리 주체와 쓰이는 단계가 달라요.
+    - id: d
+      text: 둘 다 라우터에 있다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: e
+      text: 프로그램 버퍼는 네트워크 케이블이다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    answer: c
+  - id: u4-l16-p04-q03
+    kind: choice
+    difficulty: medium
+    prompt: 프로그램이 4,096바이트를 한 번에 읽었다면, 이에 대해 맞는 설명은 무엇인가요?
+    choices:
+    - id: a
+      text: 그 값은 반드시 MTU와 MSS도 뜻한다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: TCP는 언제나 4,096바이트를 한 세그먼트로 보낸다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: c
+      text: 상대 프로그램이 4,096바이트를 이미 읽었다는 뜻이다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: d
+      text: 프로그램이 읽은 양이며 네트워크 세그먼트 크기와는 별개다
+      feedback: 맞아요. 프로그램이 읽는 양과 TCP가 세그먼트에 담는 양은 별개예요.
+    - id: e
+      text: 저장장치의 원본 파일이 삭제된다는 뜻이다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    answer: d
+  - id: u4-l16-p04-q04
+    kind: short
+    prompt: TCP가 내보낼 데이터를 프로그램의 요청을 받은 뒤 잠시 보관하는 커널 공간을 무엇이라고 하나요? (영어 또는 한글로 답해주세요)
+    answers:
+    - send buffer
+    - transmit buffer
+    - socket send buffer
+    - 송신 버퍼
+    - 소켓 송신 버퍼
+    feedback: 송신 버퍼는 커널이 네트워크로 내보낼 데이터를 잠시 보관하는 공간이에요.
+  question_placements:
+  - question_id: u4-l16-p04-q01
+    after_paragraph: 1
+  - question_id: u4-l16-p04-q02
+    after_paragraph: 2
+
 - terms:
   - 세그멘테이션 (Segmentation)
   - 세그먼트 (Segment)
@@ -93,6 +401,84 @@ page_metadata:
     alt: "프로그램이 send를 2,048B씩 두 번 호출한 모습이 나타납니다. 송신 버퍼에서는 4,096B가 하나로 이어진 바이트 흐름이 되고, MSS 1,460B씩으로 나뉘어 A 1,460B, B 1,460B, C 1,176B 세 조각이 됩니다. 조각마다 TCP 헤더가 붙고, send의 경계와 세그먼트의 경계가 서로 다르다고 표시됩니다."
     caption: "한 번의 send와 세그먼트 하나는 같은 단위가 아닙니다. A·B·C는 조각을 구별하는 이름표이고 실제 TCP 순서 번호가 아니에요."
     after_paragraph: 3
+  questions:
+  - id: u4-l16-p05-q01
+    kind: choice
+    difficulty: easy
+    prompt: TCP는 프로그램이 맡긴 사진 데이터를 어떤 흐름으로 다루나요?
+    choices:
+    - id: a
+      text: 순서 있는 바이트 흐름
+      feedback: 맞아요. TCP는 데이터를 순서 있는 바이트 스트림으로 다뤄요.
+    - id: b
+      text: 하나의 거대한 프레임
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: c
+      text: 라우터 주소 목록
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: d
+      text: 화면의 픽셀만
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: e
+      text: 저장장치 블록만
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    answer: a
+  - id: u4-l16-p05-q02
+    kind: choice
+    difficulty: easy
+    prompt: TCP가 바이트 흐름을 작은 전달 조각으로 나눌 때 생기는 결과로 알맞은 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 다음 네트워크 경로를 고르는 표
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: 바이트를 전송 크기에 맞춰 자른 조각들
+      feedback: 맞아요. TCP는 바이트 흐름을 전송 크기에 맞는 조각들로 나눠요.
+    - id: c
+      text: 케이블을 통과하는 전기 신호
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: d
+      text: 각 장치의 IP 주소 목록
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: e
+      text: 브라우저가 화면에 그린 사진
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    answer: b
+  - id: u4-l16-p05-q03
+    kind: choice
+    difficulty: medium
+    prompt: 한 번의 send 요청과 TCP 세그먼트 수의 관계로 맞는 설명은 무엇인가요?
+    choices:
+    - id: a
+      text: 항상 send 한 번마다 세그먼트 하나다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: send 호출은 TCP 세그먼트와 같은 경계가 아닐 수 있다
+      feedback: 맞아요. 프로그램의 send 경계와 TCP 세그먼트 경계는 일치한다고 보장되지 않아요.
+    - id: c
+      text: send 횟수는 사진 파일 크기와 같다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: d
+      text: 세그먼트는 IP 주소의 별칭이다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: e
+      text: 수신 프로그램은 send 횟수와 같은 횟수로만 읽는다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    answer: b
+  - id: u4-l16-p05-q04
+    kind: short
+    prompt: TCP가 바이트 흐름을 전송 크기에 맞춰 나누는 과정을 무엇이라고 하나요? (영어 또는 한글로 답해주세요)
+    answers:
+    - segmentation
+    - 세그멘테이션
+    - 분할
+    feedback: 세그멘테이션은 TCP 바이트 흐름을 전송 단위에 맞춰 나누는 과정이에요.
+  question_placements:
+  - question_id: u4-l16-p05-q01
+    after_paragraph: 1
+  - question_id: u4-l16-p05-q02
+    after_paragraph: 2
+
 - terms:
   - 페이로드 (Payload)
   - 캡슐화 (Encapsulation)
@@ -109,6 +495,83 @@ page_metadata:
     alt: "서버에서 라우터를 거쳐 내 PC로 가는 길에 링크 1과 링크 2가 있습니다. 세그먼트 A에 IP 헤더가 붙어 IP 패킷이 되고 링크 1용 프레임에 실립니다. 라우터가 패킷을 꺼내 링크 2용 새 프레임에 다시 담는데, IP 주소는 그대로이고 프레임만 새로 만들어집니다."
     caption: "NAT 같은 주소 변환이 없는 예입니다. IP 패킷의 주소는 유지되고, 프레임은 링크마다 달라집니다. 그림의 IP 주소는 설명용 예시예요."
     after_paragraph: 5
+  questions:
+  - id: u4-l16-p06-q01
+    kind: choice
+    difficulty: easy
+    prompt: IP 패킷 안에서 TCP 세그먼트는 어떤 역할을 하나요?
+    choices:
+    - id: a
+      text: 프레임을 나르는 케이블
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: 패킷에 담기는 내용물
+      feedback: 맞아요. IP는 TCP 세그먼트를 페이로드로 삼아 IP 헤더와 함께 패킷을 만들어요.
+    - id: c
+      text: 라우터의 전원
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: d
+      text: 수신 프로그램의 화면
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: e
+      text: IP 주소 그 자체
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    answer: b
+  - id: u4-l16-p06-q02
+    kind: choice
+    difficulty: easy
+    prompt: 링크 계층이 IP 패킷을 구간에서 운반할 때 사용하는 단위는 무엇인가요?
+    choices:
+    - id: a
+      text: 소켓
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: TCP 스트림
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: c
+      text: 프로세스
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: d
+      text: 프레임
+      feedback: 맞아요. 링크 계층은 IP 패킷을 프레임에 담아 링크에서 운반해요.
+    - id: e
+      text: 세그멘테이션
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    answer: d
+  - id: u4-l16-p06-q03
+    kind: choice
+    difficulty: medium
+    prompt: 라우터를 지나 다음 링크로 갈 때 일반적으로 어떤 일이 일어나나요?
+    choices:
+    - id: a
+      text: 기존 프레임을 그대로 모든 링크에 복사한다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: IP 패킷이 사라지고 TCP가 새로 시작된다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: c
+      text: 다음 링크에 맞는 새 프레임이 만들어지고 IP 패킷이 그 안에 담긴다
+      feedback: 맞아요. 라우터는 기존 프레임을 처리하고 IP 패킷을 다음 링크용 새 프레임에 담아요.
+    - id: d
+      text: 사진을 브라우저가 먼저 해석한다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: e
+      text: 출발지와 목적지의 IP 주소가 반드시 모두 새로 만들어진다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    answer: c
+  - id: u4-l16-p06-q04
+    kind: short
+    prompt: 각 계층이 전달 정보를 덧붙여 안쪽 데이터를 감싸는 과정을 무엇이라고 하나요? (영어 또는 한글로 답해주세요)
+    answers:
+    - encapsulation
+    - 캡슐화
+    feedback: 캡슐화는 각 계층이 전달 정보를 더해 안쪽 데이터를 감싸는 과정이에요.
+  question_placements:
+  - question_id: u4-l16-p06-q01
+    after_paragraph: 1
+  - question_id: u4-l16-p06-q02
+    after_paragraph: 2
+
 - terms:
   - 역캡슐화 (Decapsulation)
   illustrations:
@@ -122,6 +585,84 @@ page_metadata:
     alt: "아래에서 위로 링크 계층, IP 계층, TCP 계층, 소켓 층이 차례로 나타납니다. 링크 계층이 프레임 헤더와 FCS를 처리하면 IP 패킷이, IP 헤더를 확인하면 TCP 세그먼트가, TCP 헤더를 확인하면 사진의 일부 바이트가 소켓에 준비됩니다. 사진으로 해석하는 일은 브라우저 몫이라고 표시됩니다."
     caption: "각 계층은 자기 계층의 헤더를 처리하고 안쪽 단위를 올립니다. 헤더를 처리하는 일은 사진을 해석하는 일이 아니에요."
     after_paragraph: 3
+  questions:
+  - id: u4-l16-p07-q01
+    kind: choice
+    difficulty: easy
+    prompt: 수신 컴퓨터에서 데이터에 도달할 때 계층별 전달 정보를 처리하는 순서는 무엇인가요?
+    choices:
+    - id: a
+      text: TCP 세그먼트 → 프레임 → IP 패킷
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: 프레임 → IP 패킷 → TCP 세그먼트 → 바이트 흐름
+      feedback: 맞아요. 수신 측은 바깥 프레임부터 처리하고 안쪽 TCP 바이트 흐름으로 올라가요.
+    - id: c
+      text: 바이트 흐름 → 프레임 → IP 패킷
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: d
+      text: IP 패킷 → 사진 해석 → 프레임
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: e
+      text: 브라우저 → 라우터 → 프레임
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    answer: b
+  - id: u4-l16-p07-q02
+    kind: choice
+    difficulty: easy
+    prompt: 수신 쪽에서 바깥 전달 정보를 확인하고 안쪽 데이터를 다음 단계로 넘기는 일은 어떤 동작인가요?
+    choices:
+    - id: a
+      text: 데이터를 전송 크기의 조각으로 나누는 동작
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: 데이터를 보내기 전에 전달 정보를 덧붙이는 동작
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: c
+      text: 목적지까지 갈 다음 경로를 고르는 동작
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: d
+      text: 바깥 정보를 처리하고 안쪽 데이터를 꺼내 올리는 동작
+      feedback: 맞아요. 수신 쪽은 바깥 정보를 처리하며 안쪽 데이터를 다음 계층으로 넘겨요.
+    - id: e
+      text: 데이터를 잠시 메모리에 보관하는 동작
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    answer: d
+  - id: u4-l16-p07-q03
+    kind: choice
+    difficulty: medium
+    prompt: TCP/IP 계층이 헤더를 처리하면 사진의 장면까지 자동으로 해석하나요?
+    choices:
+    - id: a
+      text: 네, IP 헤더가 사진 형식을 읽는다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: 네, 라우터가 사진을 화면에 그린다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: c
+      text: 아니요. 애플리케이션이 바이트를 사진으로 해석한다
+      feedback: 맞아요. TCP/IP 전달 처리는 바이트를 전달하고, 사진 형식을 해석하는 일은 브라우저 같은 애플리케이션이 해요.
+    - id: d
+      text: 아니요. 그러면 사진 데이터가 모두 사라진다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: e
+      text: 네, 프레임의 FCS가 사진을 표시한다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    answer: c
+  - id: u4-l16-p07-q04
+    kind: short
+    prompt: 수신 측에서 각 계층의 전달 정보를 처리하고 안쪽 데이터를 꺼내는 과정을 무엇이라고 하나요? (영어 또는 한글로 답해주세요)
+    answers:
+    - decapsulation
+    - 역캡슐화
+    - 디캡슐화
+    feedback: 역캡슐화는 바깥 전달 정보를 처리하며 안쪽 데이터로 올라가는 과정이에요.
+  question_placements:
+  - question_id: u4-l16-p07-q01
+    after_paragraph: 1
+  - question_id: u4-l16-p07-q02
+    after_paragraph: 2
+
 - terms:
   - 수신 버퍼
   illustrations:
@@ -135,6 +676,75 @@ page_metadata:
     alt: "TCP, 수신 버퍼 64,000B, 브라우저가 한 줄로 있습니다. 비어 있던 수신 버퍼에 1,460B가 도착하면 62,540B가 남고, 브라우저가 느리게 읽으면 버퍼가 쌓이며, 읽어 가면 다시 여유가 생깁니다. 읽은 뒤에도 브라우저 메모리에서 해석과 저장이 남아 있다고 표시됩니다."
     caption: "수신 버퍼에 바이트가 도착한 일, 브라우저가 읽은 일, 읽은 내용을 처리하는 일은 서로 다른 순간입니다. 칸 너비는 단순화한 비율이에요."
     after_paragraph: 3
+  questions:
+  - id: u4-l16-p08-q01
+    kind: choice
+    difficulty: easy
+    prompt: TCP가 받은 바이트를 브라우저가 읽기 전까지 잠시 두는 곳은 어디인가요?
+    choices:
+    - id: a
+      text: 라우터의 전달표
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: 커널의 수신 버퍼
+      feedback: 맞아요. TCP가 전달한 바이트는 프로그램이 읽기 전까지 커널의 수신 버퍼에 준비돼요.
+    - id: c
+      text: 서버의 저장장치 원본
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: d
+      text: 이더넷 프레임 헤더
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: e
+      text: 브라우저 화면
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    answer: b
+  - id: u4-l16-p08-q02
+    kind: choice
+    difficulty: easy
+    prompt: 수신 버퍼에 데이터가 도착했다는 사실만으로 알 수 있는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 브라우저가 이미 사진 전체를 처리했다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: 사진 파일이 자동으로 저장됐다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: c
+      text: 브라우저가 그 바이트를 이미 읽었다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: d
+      text: 바이트가 도착했지만 브라우저는 아직 읽지 않았을 수도 있다
+      feedback: 맞아요. 버퍼 도착과 브라우저가 읽고 처리하는 일은 서로 다른 순간이에요.
+    - id: e
+      text: 서버의 원본이 삭제됐다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    answer: d
+  - id: u4-l16-p08-q03
+    kind: choice
+    difficulty: medium
+    prompt: 데이터가 들어오는 속도보다 브라우저가 읽는 속도가 느리면 어떤 일이 생길 수 있나요?
+    choices:
+    - id: a
+      text: 수신 버퍼에 아직 읽지 않은 바이트가 쌓인다
+      feedback: 맞아요. 프로그램이 늦게 읽으면 수신 버퍼에 읽지 않은 데이터가 더 쌓일 수 있어요.
+    - id: b
+      text: IP 주소가 프레임으로 바뀐다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: c
+      text: 저장장치의 원본이 즉시 지워진다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: d
+      text: 세그먼트가 모두 없어져도 브라우저는 자동 처리한다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: e
+      text: 송신 측과 수신 측이 같은 장비가 된다
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    answer: a
+  question_placements:
+  - question_id: u4-l16-p08-q01
+    after_paragraph: 1
+  - question_id: u4-l16-p08-q02
+    after_paragraph: 2
 animations_dir: units/04-layer3-addressing/lessons/06-중요-이해하면-인생이-바뀌는-tcp-ip-송-수신구조/assets/animations
 ---
 
