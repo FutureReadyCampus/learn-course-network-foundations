@@ -253,6 +253,19 @@ pages:
         caption: "주소를 보고 찾아가 전달한다는 개념은 그대로이고, 트럭·드론·지하철처럼 실제로 옮기는 방법이 구현입니다. 구현은 바뀌어도 개념은 남습니다."
         after_paragraph: 1
 animations_dir: units/01-before-networking/lessons/01-prerequisites/assets/animations
+page_metadata:
+  - page_id: u1l1-osi-reference-model
+    video:
+      video_id: H1Z4tnzs-HA
+      title: "[네트워크 기초 강의] 6강. 네트워크 미시적으로 살펴보기② | 네트워크 참조 모델"
+      creator: 한빛미디어
+      duration_seconds: 1080
+  - page_id: u1l1-concept-implementation
+    video:
+      video_id: hHg88sWPzus
+      title: "[네트워크 기초 강의] 16강. 네트워크 장비 직접 관찰하기(케이블, 허브, 스위치)"
+      creator: 한빛미디어
+      duration_seconds: 540
 ---
 ## 수강 전에 필요한 바탕과 비트·바이트
 
@@ -317,6 +330,7 @@ AND 마스크로 필요한 비트만 골라낼 수 있게 되면, 그 결과를 
 <!-- quiz: quiz-u1-l01-p02 -->
 
 ## 프로그램·프로세스와 OSI
+<!-- learn-page-id: u1l1-osi-reference-model -->
 
 ### 프로그램과 실행 중인 프로세스
 
@@ -385,6 +399,7 @@ User mode와 Kernel mode가 컴퓨터 안의 서로 다른 장소는 아닙니�
 <!-- quiz: quiz-u1-l01-p04 -->
 
 ## 개념과 구현
+<!-- learn-page-id: u1l1-concept-implementation -->
 
 ### 개념은 무엇을, 구현은 어떻게
 

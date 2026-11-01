@@ -156,6 +156,8 @@ def authored_reading_pages(path: Path, lesson_meta: dict, animation_assets: dict
     _, source = read_front_matter(path)
     sections = re.findall(r"^## (.+?)\s*\n(.*?)(?=^## |\Z)", source, re.M | re.S)
     pages_meta = lesson_meta.get("pages", [])
+    page_metadata = lesson_meta.get("page_metadata", [])
+    anchored_metadata = page_metadata_by_id(page_metadata, path)
     concepts = {item["id"]: item for item in lesson_meta.get("concepts", [])}
     quiz_file = lesson_meta.get("quiz_file")
     quiz_sets = {}
@@ -168,11 +170,24 @@ def authored_reading_pages(path: Path, lesson_meta: dict, animation_assets: dict
     if not sections or len(sections) != len(pages_meta):
         raise ValueError(f"Page metadata does not match Lesson headings in {path}")
 
+    marked_sections = []
+    seen_page_ids = set()
+    for heading, body in sections:
+        page_id, body = page_marker(body, path)
+        if page_id and page_id in seen_page_ids:
+            raise ValueError(f"Duplicate learn-page-id marker in {path}: {page_id}")
+        if page_id:
+            seen_page_ids.add(page_id)
+        marked_sections.append((heading, body, page_id))
+    missing_ids = set(anchored_metadata) - seen_page_ids
+    if missing_ids:
+        raise ValueError(f"Page metadata references unknown page_id in {path}: {', '.join(sorted(missing_ids))}")
+
     illustrated = set(lesson_meta.get("illustrated_concepts", []))
     diagram = lesson_meta.get("diagram", {}).get("file")
     pages = []
     used_quizzes = set()
-    for index, (heading, body) in enumerate(sections):
+    for index, (heading, body, page_id) in enumerate(marked_sections):
         metadata = pages_meta[index]
         concept_ids = metadata.get("concepts", [])
         missing = [concept_id for concept_id in concept_ids if concept_id not in concepts]
@@ -201,6 +216,8 @@ def authored_reading_pages(path: Path, lesson_meta: dict, animation_assets: dict
             )),
             "questions": page_questions(metadata.get("questions", []), path, index + 1),
         }
+        if page_id and page_id in anchored_metadata:
+            page.update(validate_page_video(anchored_metadata[page_id], page_id, path))
         if inline_quizzes:
             page["inline_quizzes"] = inline_quizzes
         illustrations = []

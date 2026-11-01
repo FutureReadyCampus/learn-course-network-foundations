@@ -8,11 +8,12 @@ page_metadata:
   - NIC (Network Interface Card)
   - 인터페이스 (Interface)
   - 리얼텍 (Realtek)
+  inline_questions_after: 1
   questions:
   - id: u3-01-p01-q01
     kind: choice
     difficulty: easy
-    prompt: 컴퓨터가 네트워크와 정보를 주고받도록 연결해 주는 장치는 무엇인가요?
+    prompt: 집의 문이 집과 바깥을 이어 주듯, 컴퓨터가 네트워크와 신호를 주고받게 해 주는 장치는 무엇인가요?
     choices:
     - id: a
       text: NIC
@@ -60,24 +61,45 @@ page_metadata:
   - id: u3-01-p01-q04
     kind: choice
     difficulty: medium
-    prompt: "집의 문처럼 컴퓨터와 네트워크 사이에서 신호를 주고받게 해 주는 장치는 무엇인가요?"
+    prompt: "사양표의 'Realtek 무선 LAN'에서 Realtek은 무엇을 가리키나요?"
     choices:
     - id: a
-      text: "스위치 포트"
-      feedback: "다시 본문을 확인해 보세요. 스위치 포트."
+      text: "무선 LAN을 만든 회사 이름"
+      feedback: "맞아요. Realtek은 회사 이름입니다."
     - id: b
-      text: "라우터"
-      feedback: "다시 본문을 확인해 보세요. 라우터."
+      text: "호스트의 네트워크 주소"
+      feedback: "다시 본문을 확인해 보세요. 호스트의 네트워크 주소."
     - id: c
-      text: "프레임"
-      feedback: "다시 본문을 확인해 보세요. 프레임."
+      text: "프레임을 보내는 통신 규칙"
+      feedback: "다시 본문을 확인해 보세요. 프레임을 보내는 통신 규칙."
     - id: d
-      text: "NIC"
-      feedback: "맞아요. NIC입니다."
+      text: "무선 네트워크의 연결 장치"
+      feedback: "다시 본문을 확인해 보세요. 무선 네트워크의 연결 장치."
     - id: e
-      text: "IP 주소"
-      feedback: "다시 본문을 확인해 보세요. IP 주소."
-    answer: d
+      text: "케이블 종류"
+      feedback: "다시 본문을 확인해 보세요. 케이블 종류."
+    answer: a
+  - id: u3-01-p01-q05
+    kind: choice
+    difficulty: medium
+    prompt: 노트북에 네트워크 카드가 따로 꽂혀 있지 않아도 네트워크에 연결될 수 있는 이유는 무엇인가요?
+    choices:
+    - id: a
+      text: NIC가 메인보드에 내장될 수도 있기 때문이다
+      feedback: 맞아요. NIC는 별도 카드가 아니라 메인보드에 내장될 수도 있습니다.
+    - id: b
+      text: 네트워크 연결에는 NIC가 필요 없기 때문이다
+      feedback: 네트워크와 신호를 주고받으려면 연결 장치가 필요합니다.
+    - id: c
+      text: 인터페이스가 컴퓨터 안에서 NIC 역할을 대신하기 때문이다
+      feedback: 인터페이스는 연결 지점이고, NIC는 연결 장치입니다.
+    - id: d
+      text: Realtek이 모든 컴퓨터의 NIC를 원격으로 제공하기 때문이다
+      feedback: Realtek은 예시에서 NIC 제조사 이름입니다.
+    - id: e
+      text: 무선 연결은 컴퓨터의 네트워크 연결이 아니기 때문이다
+      feedback: Wi-Fi도 네트워크와 신호를 주고받는 연결입니다.
+    answer: a
   animations:
   - file: l08-nic-door.svg
     title: "NIC는 컴퓨터의 문"
@@ -87,6 +109,7 @@ page_metadata:
   - 호스트 (Host)
   - 액세스 포인트 (Access Point)
   - 인터페이스와 케이블 구멍
+  inline_questions_after: 1
   animations:
   - file: l08-host-two-nics.svg
     title: 호스트 하나, 인터페이스 둘
@@ -98,7 +121,7 @@ page_metadata:
   - id: u3-01-p02-q01
     kind: choice
     difficulty: easy
-    prompt: 네트워크에 연결된 컴퓨터나 장치 한 대를 가리키는 말은 무엇인가요?
+    prompt: 집 한 채에 문이 두 개 있어도 집은 한 채이듯, Wi-Fi와 유선 연결이 모두 있는 노트북은 Host 몇 대인가요?
     choices:
     - id: a
       text: Host
@@ -146,33 +169,55 @@ page_metadata:
   - id: u3-01-p02-q04
     kind: choice
     difficulty: medium
-    prompt: "노트북 한 대에 Wi-Fi와 USB Ethernet 연결이 모두 있다면 가장 알맞은 설명은 무엇인가요?"
+    prompt: "컴퓨터 옆 케이블 구멍과 프로그램의 포트 번호에 대한 설명으로 맞는 것은 무엇인가요?"
     choices:
     - id: a
-      text: "호스트 한 대에 네트워크 인터페이스가 두 개 있다"
-      feedback: "맞아요. 호스트 한 대에 네트워크 인터페이스가 두 개 있다입니다."
+      text: "둘 다 케이블을 꽂는 물리적인 구멍이다"
+      feedback: "다시 본문을 확인해 보세요. 포트 번호는 프로그램 통신을 구분하는 번호입니다."
     - id: b
-      text: "컴퓨터가 두 대의 호스트가 된다"
-      feedback: "다시 본문을 확인해 보세요. 컴퓨터가 두 대의 호스트가 된다."
+      text: "케이블 구멍은 물리 연결, 포트 번호는 프로그램 통신을 구분한다"
+      feedback: "맞아요. 같은 '포트'라는 말이지만 문맥과 역할이 다릅니다."
     - id: c
-      text: "두 NIC가 반드시 같은 MAC 주소를 쓴다"
-      feedback: "다시 본문을 확인해 보세요. 두 NIC가 반드시 같은 MAC 주소를 쓴다."
+      text: "포트 번호는 네트워크 인터페이스의 MAC 주소다"
+      feedback: "다시 본문을 확인해 보세요. MAC 주소와 포트 번호는 다른 값입니다."
     - id: d
-      text: "Wi-Fi는 인터페이스로 세지 않는다"
-      feedback: "다시 본문을 확인해 보세요. Wi-Fi는 인터페이스로 세지 않는다."
+      text: "케이블 구멍은 프로그램을, 포트 번호는 케이블을 연결한다"
+      feedback: "다시 본문을 확인해 보세요. 두 의미가 뒤바뀌었습니다."
     - id: e
-      text: "USB 어댑터가 액세스 스위치가 된다"
-      feedback: "다시 본문을 확인해 보세요. USB 어댑터가 액세스 스위치가 된다."
-    answer: a
+      text: "Wi-Fi 연결에는 포트 번호가 없다"
+      feedback: "다시 본문을 확인해 보세요. 프로그램의 포트 번호는 유선과 무선 모두에서 쓰입니다."
+    answer: b
+  - id: u3-01-p02-q05
+    kind: choice
+    difficulty: medium
+    prompt: 노트북의 Wi-Fi가 무선 네트워크에 연결될 때 가까이에서 신호를 중계해 주는 장치는 무엇인가요?
+    choices:
+    - id: a
+      text: MAC 주소
+      feedback: MAC 주소는 연결 지점을 구분하는 값입니다.
+    - id: b
+      text: 프레임
+      feedback: 프레임은 한 링크에서 전달하는 데이터 단위입니다.
+    - id: c
+      text: 액세스 포인트
+      feedback: 맞아요. 액세스 포인트가 무선 연결을 중계합니다.
+    - id: d
+      text: TCP 포트 번호
+      feedback: 포트 번호는 프로그램의 통신 통로를 구분합니다.
+    - id: e
+      text: Host
+      feedback: Host는 네트워크에 연결된 장치입니다.
+    answer: c
 - terms:
   - LAN (Local Area Network)
   - MAN (Metropolitan Area Network)
   - WAN (Wide Area Network)
+  inline_questions_after: 1
   questions:
   - id: u3-01-p03-q01
     kind: choice
     difficulty: easy
-    prompt: LAN, MAN, WAN은 주로 네트워크의 어떤 점을 설명하나요?
+    prompt: 네트워크를 마을·도시·넓은 지역에 비유하면, LAN·MAN·WAN은 주로 무엇의 차이를 나타내나요?
     choices:
     - id: a
       text: MAC 주소의 길이
@@ -220,23 +265,44 @@ page_metadata:
   - id: u3-01-p03-q04
     kind: choice
     difficulty: medium
-    prompt: "LAN, MAN, WAN을 나누는 주된 기준은 무엇인가요?"
+    prompt: "LAN보다 넓은 범위를 가리키는 WAN을 볼 때 기억할 점은 무엇인가요?"
     choices:
     - id: a
-      text: "전송 속도의 높고 낮음"
-      feedback: "다시 본문을 확인해 보세요. 전송 속도의 높고 낮음."
+      text: "WAN이 언제나 LAN보다 빠르다"
+      feedback: "다시 본문을 확인해 보세요. 범위는 속도 순위를 뜻하지 않습니다."
     - id: b
-      text: "케이블과 무선 중 무엇을 쓰는지"
-      feedback: "다시 본문을 확인해 보세요. 케이블과 무선 중 무엇을 쓰는지."
+      text: "WAN은 LAN보다 품질이 항상 좋다"
+      feedback: "다시 본문을 확인해 보세요. 범위만으로 품질을 정할 수 없습니다."
     - id: c
-      text: "네트워크가 아우르는 지리적 범위"
-      feedback: "맞아요. 네트워크가 아우르는 지리적 범위입니다."
+      text: "WAN이라는 이름만으로 속도나 품질을 정할 수 없다"
+      feedback: "맞아요. 이름은 범위를 나타내며 속도나 품질 순위는 아닙니다."
     - id: d
-      text: "연결된 컴퓨터의 개수만"
-      feedback: "다시 본문을 확인해 보세요. 연결된 컴퓨터의 개수만."
+      text: "WAN에 연결된 컴퓨터 수는 항상 더 많다"
+      feedback: "다시 본문을 확인해 보세요. 이름이 장치 수를 정하지는 않습니다."
     - id: e
-      text: "MAC 주소의 길이"
-      feedback: "다시 본문을 확인해 보세요. MAC 주소의 길이."
+      text: "WAN은 반드시 광섬유를 사용한다"
+      feedback: "다시 본문을 확인해 보세요. LAN·MAN·WAN은 범위의 분류입니다."
+    answer: c
+  - id: u3-01-p03-q05
+    kind: choice
+    difficulty: medium
+    prompt: 집 안의 휴대전화가 Wi-Fi로, 데스크톱이 랜 케이블로 연결되어 있습니다. 둘이 같은 LAN에 있을 수 있는 이유는 무엇인가요?
+    choices:
+    - id: a
+      text: LAN은 케이블 방식만으로 정해지는 이름이기 때문에
+      feedback: LAN은 유선·무선 중 어떤 방식을 쓰는지로 정하지 않습니다.
+    - id: b
+      text: Wi-Fi는 네트워크 범위 분류에서 제외되기 때문에
+      feedback: Wi-Fi 장치도 가까운 LAN에 함께 연결될 수 있습니다.
+    - id: c
+      text: 장치의 연결 방식이 달라도 같은 가까운 범위의 네트워크일 수 있기 때문에
+      feedback: 맞아요. LAN은 가까운 범위를 말하며 유선과 무선을 함께 쓸 수 있습니다.
+    - id: d
+      text: 랜 케이블을 쓰는 데스크톱이 나머지 장치의 속도를 정하기 때문에
+      feedback: LAN은 속도나 특정 장치로 정하는 분류가 아닙니다.
+    - id: e
+      text: 무선 공유기가 두 장치의 MAC 주소를 하나로 합치기 때문에
+      feedback: MAC 주소와 네트워크 범위는 서로 다른 개념입니다.
     answer: c
   animations:
   - file: l08-lan-man-wan.svg
@@ -248,6 +314,7 @@ page_metadata:
   - 식별자 (identifier)
   - 16진수 (hexadecimal)
   - 임시 MAC 주소
+  inline_questions_after: 1
   animations:
   - file: l08-mac-address-label.svg
     title: NIC에 붙는 문패, MAC 주소
@@ -257,7 +324,7 @@ page_metadata:
   - id: u3-01-p04-q01
     kind: choice
     difficulty: easy
-    prompt: 네트워크 연결 지점을 구분하는 데 쓰는 주소는 무엇인가요?
+    prompt: 집집마다 문패로 구분하듯, 가까운 네트워크에서 연결 지점을 구분하는 주소는 무엇인가요?
     choices:
     - id: a
       text: 프레임 크기
@@ -323,31 +390,53 @@ page_metadata:
       text: "48비트"
       feedback: "맞아요. 48비트입니다."
     answer: e
+  - id: u3-01-p04-q05
+    kind: choice
+    difficulty: medium
+    prompt: Wi-Fi와 USB Ethernet NIC가 하나씩 있는 노트북의 MAC 주소를 어떻게 이해하면 좋나요?
+    choices:
+    - id: a
+      text: 노트북 한 대이므로 MAC 주소도 반드시 하나다
+      feedback: NIC가 여러 개면 연결 지점별 MAC 주소가 쓰일 수 있습니다.
+    - id: b
+      text: 두 인터페이스가 반드시 같은 MAC 주소를 쓴다
+      feedback: 인터페이스마다 다른 MAC 주소를 쓸 수 있습니다.
+    - id: c
+      text: 두 NIC 모두 MAC 주소 대신 포트 번호를 쓴다
+      feedback: 포트 번호와 MAC 주소는 다른 값입니다.
+    - id: d
+      text: 연결 지점마다 서로 다른 MAC 주소가 사용될 수 있다
+      feedback: 맞아요. MAC 주소는 컴퓨터가 아니라 연결 지점별로 쓰일 수 있습니다.
+    - id: e
+      text: MAC 주소는 인터넷 전체의 경로를 선택한다
+      feedback: MAC 주소는 가까운 네트워크에서 연결 지점을 구분합니다.
+    answer: d
 - terms:
   - 프레임 (Frame)
   - L2 (Layer 2, 계층 2)
   - 패킷 (Packet)
+  inline_questions_after: 2
   questions:
   - id: u3-01-p05-q01
     kind: choice
     difficulty: easy
-    prompt: 다음 중 NIC의 형태로 볼 수 있는 것은 무엇인가요?
+    prompt: 택배 내용물 자체와 한 구간에서 쓰는 포장을 구분하듯, 한 링크에서 데이터를 전달하는 포장은 무엇인가요?
     choices:
     - id: a
-      text: Host
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 패킷
+      feedback: 패킷은 목적지까지 운반되는 데이터입니다.
     - id: b
-      text: WAN
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
-    - id: c
-      text: 기판 내장형, USB 유선형, 무선형 등 여러 형태
-      feedback: 맞아요. 기판 내장형, USB 유선형, 무선형 등 여러 형태.
-    - id: d
       text: NIC
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      feedback: NIC는 네트워크 연결 장치입니다.
+    - id: c
+      text: 프레임
+      feedback: 맞아요. 프레임은 한 링크에서 데이터를 전달하는 포장에 비유할 수 있습니다.
+    - id: d
+      text: LAN
+      feedback: LAN은 네트워크의 범위를 나타냅니다.
     - id: e
-      text: Metric
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: MAC 주소
+      feedback: MAC 주소는 네트워크 연결 지점을 구분하는 값입니다.
     answer: c
   - id: u3-01-p05-q02
     kind: choice
@@ -379,24 +468,45 @@ page_metadata:
   - id: u3-01-p05-q04
     kind: choice
     difficulty: medium
-    prompt: "패킷과 프레임의 관계를 가장 정확히 설명한 것은 무엇인가요?"
+    prompt: "노트북에서 공유기를 지나 다음 네트워크로 갈 때 프레임은 어떻게 될 수 있나요?"
     choices:
     - id: a
-      text: "프레임은 인터넷 전체에서 변하지 않는 포장이다"
-      feedback: "다시 본문을 확인해 보세요. 프레임은 인터넷 전체에서 변하지 않는 포장이다."
+      text: "처음 만든 프레임을 목적지까지 그대로 사용한다"
+      feedback: "프레임은 한 링크 구간에 쓰이는 포장입니다."
     - id: b
-      text: "패킷은 한 링크에서 전달되는 프레임의 데이터 부분에 실릴 수 있다"
-      feedback: "맞아요. 패킷은 한 링크에서 전달되는 프레임의 데이터 부분에 실릴 수 있다입니다."
+      text: "다음 구간의 링크에 맞춰 새 프레임으로 바뀔 수 있다"
+      feedback: "맞아요. 링크 구간이 바뀌면 새 프레임을 사용할 수 있습니다."
     - id: c
-      text: "패킷은 MAC 주소이고 프레임은 IP 주소다"
-      feedback: "다시 본문을 확인해 보세요. 패킷은 MAC 주소이고 프레임은 IP 주소다."
+      text: "프레임을 쓰면 패킷은 사라진다"
+      feedback: "패킷은 프레임의 데이터 부분에 실릴 수 있습니다."
     - id: d
-      text: "한 프레임에는 파일 하나만 들어간다"
-      feedback: "다시 본문을 확인해 보세요. 한 프레임에는 파일 하나만 들어간다."
+      text: "공유기는 프레임을 전달하지 않는다"
+      feedback: "공유기를 지나는 각 링크에서 프레임을 사용할 수 있습니다."
     - id: e
-      text: "프레임은 라우터 사이에서 쓰이지 않는다"
-      feedback: "다시 본문을 확인해 보세요. 프레임은 라우터 사이에서 쓰이지 않는다."
+      text: "패킷과 프레임은 항상 크기와 역할이 같다"
+      feedback: "패킷은 목적지까지의 데이터이고 프레임은 한 링크용 포장입니다."
     answer: b
+  - id: u3-01-p05-q05
+    kind: choice
+    difficulty: medium
+    prompt: 기판 내장형, USB 유선형, 무선형 NIC는 모양과 연결 방식이 달라도 무엇이 같은가요?
+    choices:
+    - id: a
+      text: 네트워크와 정보를 주고받는 연결 역할
+      feedback: 맞아요. NIC는 모양과 연결 방식이 달라도 네트워크 연결 역할을 합니다.
+    - id: b
+      text: 반드시 같은 제조사가 만든다는 점
+      feedback: 제조사가 달라도 같은 연결 역할을 할 수 있습니다.
+    - id: c
+      text: 모두 케이블을 꽂는 구멍이 있다는 점
+      feedback: 무선 NIC에는 케이블 구멍이 없을 수 있습니다.
+    - id: d
+      text: 모두 컴퓨터 밖에 별도 부품으로 연결된다는 점
+      feedback: 메인보드 내장형 NIC도 있습니다.
+    - id: e
+      text: 모두 무선 신호만 사용한다는 점
+      feedback: 유선 NIC는 케이블로 연결될 수 있습니다.
+    answer: a
   animations:
   - file: l08-frame-per-link.svg
     title: "NIC가 주고받는 L2 프레임"
@@ -406,11 +516,12 @@ page_metadata:
   - Ethernet
   - Jumbo Frame
   - 바이트 (Byte)
+  inline_questions_after: 1
   questions:
   - id: u3-01-p06-q01
     kind: choice
     difficulty: easy
-    prompt: 흔히 쓰는 Ethernet에서 데이터 부분의 최대 크기로 설명하는 값은 얼마인가요?
+    prompt: 택배 상자의 전체 무게가 아니라 안에 담을 물건의 양에 해당하는 일반 Ethernet 데이터 크기 기준은 얼마인가요?
     choices:
     - id: a
       text: 48바이트
@@ -458,24 +569,45 @@ page_metadata:
   - id: u3-01-p06-q04
     kind: choice
     difficulty: medium
-    prompt: "일반 Ethernet에서 MTU 1,500바이트가 가리키는 것은 무엇인가요?"
+    prompt: "Jumbo Frame 크기에 대한 설명으로 맞는 것은 무엇인가요?"
     choices:
     - id: a
-      text: "헤더와 FCS를 포함한 프레임 전체 크기"
-      feedback: "다시 본문을 확인해 보세요. 헤더와 FCS를 포함한 프레임 전체 크기."
+      text: "모든 네트워크에서 똑같이 10KB로 고정된다"
+      feedback: "Jumbo Frame 크기는 장비와 설정에 따라 달라집니다."
     - id: b
-      text: "Ethernet 헤더만의 크기"
-      feedback: "다시 본문을 확인해 보세요. Ethernet 헤더만의 크기."
+      text: "장비와 설정에 따라 허용 크기가 달라질 수 있다"
+      feedback: "맞아요. 모든 네트워크가 같은 크기를 쓰지는 않습니다."
     - id: c
-      text: "초당 전송 비트 수"
-      feedback: "다시 본문을 확인해 보세요. 초당 전송 비트 수."
+      text: "항상 파일 하나를 프레임 하나에 담는 크기다"
+      feedback: "큰 파일은 여러 프레임에 나뉘어 전송될 수 있습니다."
     - id: d
-      text: "프레임의 데이터(payload) 부분 최대 크기"
-      feedback: "맞아요. 프레임의 데이터(payload) 부분 최대 크기입니다."
+      text: "무선 네트워크에만 사용하는 프레임이다"
+      feedback: "Jumbo Frame은 Ethernet의 큰 프레임을 허용하는 기능입니다."
     - id: e
-      text: "MAC 주소의 크기"
-      feedback: "다시 본문을 확인해 보세요. MAC 주소의 크기."
-    answer: d
+      text: "MAC 주소가 길어진다는 뜻이다"
+      feedback: "Jumbo Frame은 프레임 크기에 관한 말입니다."
+    answer: b
+  - id: u3-01-p06-q05
+    kind: choice
+    difficulty: medium
+    prompt: 프레임 크기와 1Gbps 같은 전송 속도는 어떻게 다른가요?
+    choices:
+    - id: a
+      text: 프레임 크기는 한 번에 담는 양, 속도는 시간당 보내는 양이다
+      feedback: 맞아요. 한 번의 양과 시간에 따른 양은 다른 기준입니다.
+    - id: b
+      text: 두 값은 모두 MAC 주소의 길이를 나타낸다
+      feedback: MAC 주소 길이와 프레임 크기·속도는 다릅니다.
+    - id: c
+      text: 프레임 크기는 초당 전송량이고 속도는 한 프레임의 크기다
+      feedback: 두 설명이 뒤바뀌었습니다.
+    - id: d
+      text: 1Gbps는 프레임 하나가 1기가바이트라는 뜻이다
+      feedback: Gbps는 초당 비트 수를 나타냅니다.
+    - id: e
+      text: 둘 다 네트워크 범위를 뜻한다
+      feedback: 네트워크 범위는 LAN·MAN·WAN과 관련된 분류입니다.
+    answer: a
   animations:
   - file: l08-frame-size.svg
     title: "프레임 크기 세는 법"
@@ -486,6 +618,7 @@ page_metadata:
   - 바이트 (Byte)
   - bps (bits per second)
   - 기가비트 (Gigabit)
+  inline_questions_after: 1
   animations:
   - file: l08-bit-vs-byte-speed.svg
     title: 소문자 b와 대문자 B, 8배의 차이
@@ -496,7 +629,7 @@ page_metadata:
   - id: u3-01-p07-q01
     kind: choice
     difficulty: easy
-    prompt: bps에서 소문자 b는 무엇을 뜻하나요?
+    prompt: 수도꼭지에서 1초 동안 흐르는 물의 양을 세듯, bps에서 소문자 b는 어떤 정보 단위를 뜻하나요?
     choices:
     - id: a
       text: Byte
@@ -520,8 +653,8 @@ page_metadata:
     prompt: 1Gbps를 이론상 바이트 전송량으로 바꾸면 초당 약 얼마인가요?
     choices:
     - id: a
-      text: 125MB
-      feedback: 맞아요. 125MB.
+      text: 125MB/s
+      feedback: 맞아요. 이론상 약 125MB/s입니다.
     - id: b
       text: 1,000MB
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
@@ -544,48 +677,70 @@ page_metadata:
   - id: u3-01-p07-q04
     kind: choice
     difficulty: medium
-    prompt: "1Gbps를 바이트 단위의 이론상 전송량으로 바꾸면 초당 약 얼마인가요?"
+    prompt: "이론상 1GB 파일을 125MB/s로 보내면 최소 얼마나 걸릴까요?"
     choices:
     - id: a
-      text: "125MB/s"
-      feedback: "맞아요. 125MB/s입니다."
+      text: "약 8초"
+      feedback: "맞아요. 1,000MB를 125MB/s로 나누면 약 8초입니다."
     - id: b
-      text: "1MB/s"
-      feedback: "다시 본문을 확인해 보세요. 1MB/s."
+      text: "약 1초"
+      feedback: "1,000MB를 125MB/s로 나누어 보세요."
     - id: c
-      text: "8MB/s"
-      feedback: "다시 본문을 확인해 보세요. 8MB/s."
+      text: "약 8분"
+      feedback: "1,000MB를 125MB/s로 나누면 초 단위가 나옵니다."
     - id: d
-      text: "1GB/s"
-      feedback: "다시 본문을 확인해 보세요. 1GB/s."
+      text: "약 80초"
+      feedback: "나눗셈을 다시 해 보세요. 1,000 ÷ 125입니다."
     - id: e
-      text: "1,000MB/s"
-      feedback: "다시 본문을 확인해 보세요. 1,000MB/s."
+      text: "약 800초"
+      feedback: "나눗셈을 다시 해 보세요. 1,000 ÷ 125입니다."
     answer: a
+  - id: u3-01-p07-q05
+    kind: choice
+    difficulty: medium
+    prompt: 실제 다운로드 속도가 1Gbps를 8로 나눈 값보다 낮을 수 있는 이유는 무엇인가요?
+    choices:
+    - id: a
+      text: Byte와 bit가 같은 단위라서
+      feedback: Byte는 8 bit입니다.
+    - id: b
+      text: bps는 초당 바이트 수라서
+      feedback: bps는 초당 비트 수입니다.
+    - id: c
+      text: 파일 크기가 항상 bit로만 표시되어서
+      feedback: 파일 크기 단위만으로 실제 속도가 정해지지는 않습니다.
+    - id: d
+      text: 1Gbps는 실제 전송 효율과 무관한 보장 속도라서
+      feedback: 1Gbps라는 표기만으로 실제 다운로드 속도가 보장되지는 않습니다.
+    - id: e
+      text: 추가 정보와 장비 처리, 네트워크 혼잡 등의 영향이 있어서
+      feedback: 맞아요. 실제 전송에는 여러 오버헤드와 환경 요인이 있습니다.
+    answer: e
 - terms:
   - 광섬유 케이블
   - 슬롯 (Slot)
+  inline_questions_after: 1
   questions:
   - id: u3-01-p08-q01
     kind: choice
     difficulty: easy
-    prompt: Windows에서 네트워크 연결 지점과 설정을 자세히 확인하는 명령은 무엇인가요?
+    prompt: 구리 케이블이 전기 신호를 나르는 선이라면, 광섬유 케이블은 무엇을 이용해 신호를 전달하나요?
     choices:
     - id: a
-      text: ifconfig
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 전기 신호만
+      feedback: 전기 신호는 구리 케이블에서 사용합니다.
     - id: b
-      text: mac print
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 전파 신호만
+      feedback: 이 페이지에서는 광섬유가 빛 신호를 전달한다고 설명합니다.
     - id: c
-      text: ipconfig /all
-      feedback: 맞아요. ipconfig /all.
+      text: 빛 신호
+      feedback: 맞아요. 광섬유는 빛 신호를 전달합니다.
     - id: d
-      text: route print
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 소리 신호
+      feedback: 이 페이지에서 설명한 신호 방식은 전기와 빛입니다.
     - id: e
-      text: ping /all
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 자석의 힘만
+      feedback: 이 페이지에서 설명한 신호 방식은 전기와 빛입니다.
     answer: c
   - id: u3-01-p08-q02
     kind: choice
@@ -617,24 +772,45 @@ page_metadata:
   - id: u3-01-p08-q04
     kind: choice
     difficulty: medium
-    prompt: "구리 케이블과 광섬유 케이블의 신호 전달 방식에 대한 설명으로 맞는 것은 무엇인가요?"
+    prompt: "Windows에서 네트워크 연결 지점과 MAC 주소를 자세히 확인할 때 사용할 수 있는 명령은 무엇인가요?"
     choices:
     - id: a
-      text: "구리와 광섬유 모두 반드시 전기 신호만 전달한다"
-      feedback: "다시 본문을 확인해 보세요. 구리와 광섬유 모두 반드시 전기 신호만 전달한다."
+      text: "ifconfig"
+      feedback: "이 Lesson에서는 Windows에서 ipconfig /all, Mac에서 ifconfig를 소개합니다."
     - id: b
-      text: "광섬유는 IP 패킷을 직접 전달하므로 NIC가 필요 없다"
-      feedback: "다시 본문을 확인해 보세요. 광섬유는 IP 패킷을 직접 전달하므로 NIC가 필요 없다."
+      text: "route print"
+      feedback: "route print는 경로 정보를 확인하는 명령입니다."
     - id: c
-      text: "구리 케이블은 전기 신호, 광섬유는 빛 신호를 전달한다"
-      feedback: "맞아요. 구리 케이블은 전기 신호, 광섬유는 빛 신호를 전달한다입니다."
+      text: "ipconfig /all"
+      feedback: "맞아요. Windows에서 ipconfig /all로 연결 항목과 주소를 확인할 수 있습니다."
     - id: d
-      text: "10Gbps 연결은 반드시 광섬유를 써야 한다"
-      feedback: "다시 본문을 확인해 보세요. 10Gbps 연결은 반드시 광섬유를 써야 한다."
+      text: "ping /all"
+      feedback: "이 Lesson에서 소개한 Windows 명령은 ipconfig /all입니다."
     - id: e
-      text: "구리 케이블은 MAC 주소를 전달할 수 없다"
-      feedback: "다시 본문을 확인해 보세요. 구리 케이블은 MAC 주소를 전달할 수 없다."
+      text: "mac print"
+      feedback: "이 Lesson에서 소개한 Windows 명령은 ipconfig /all입니다."
     answer: c
+  - id: u3-01-p08-q05
+    kind: choice
+    difficulty: medium
+    prompt: ipconfig /all 결과에서 'Physical Address' 또는 Mac의 ifconfig 결과에서 'ether' 옆에 보이는 값은 무엇인가요?
+    choices:
+    - id: a
+      text: 링크 속도
+      feedback: 링크 속도는 Mbps 등으로 표시됩니다.
+    - id: b
+      text: MAC 주소
+      feedback: 맞아요. 해당 항목이 인터페이스의 MAC 주소입니다.
+    - id: c
+      text: 프레임 크기
+      feedback: 프레임 크기는 이 출력의 Physical Address나 ether 값이 아닙니다.
+    - id: d
+      text: 포트 번호
+      feedback: 포트 번호는 프로그램 통신을 구분하는 값입니다.
+    - id: e
+      text: 네트워크 이름
+      feedback: 네트워크 이름은 Physical Address나 ether 값과 다릅니다.
+    answer: b
 
   animations:
   - file: l08-find-my-interface.svg
