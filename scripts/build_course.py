@@ -148,7 +148,12 @@ def lesson_asset(
     asset = next((candidate for candidate in candidates if candidate.is_file()), None)
     if asset is None:
         raise FileNotFoundError(f"Missing Lesson asset {filename} for {path}")
-    return asset
+    return asset.resolve()
+
+
+def repository_asset_path(path: Path) -> str:
+    """Return a normalized repository-relative path for a resolved asset."""
+    return path.resolve().relative_to(ROOT.resolve()).as_posix()
 
 
 def authored_reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list[dict]:
@@ -223,7 +228,7 @@ def authored_reading_pages(path: Path, lesson_meta: dict, animation_assets: dict
         if index == 0 and diagram:
             asset = lesson_asset(path, diagram, lesson_meta, animation_assets)
             illustrations.append({
-                "src": f"/api/v1/network-course-assets/{asset.relative_to(ROOT).as_posix()}",
+                "src": f"/api/v1/network-course-assets/{repository_asset_path(asset)}",
                 "title": f"{page['title']} · 학습 흐름",
                 "alt": f"{page['title']}의 개념 순서를 보여 주는 그림",
                 "caption": "개념이 이어지는 순서를 확인해 보세요.",
@@ -235,7 +240,7 @@ def authored_reading_pages(path: Path, lesson_meta: dict, animation_assets: dict
             for animation in animations:
                 asset = lesson_asset(path, animation["file"], lesson_meta, animation_assets, animated=True)
                 illustrations.append({
-                    "src": f"/api/v1/network-course-assets/{asset.relative_to(ROOT).as_posix()}",
+                    "src": f"/api/v1/network-course-assets/{repository_asset_path(asset)}",
                     "title": animation["title"],
                     "alt": animation["alt"],
                     "caption": animation["caption"],
@@ -254,7 +259,7 @@ def authored_reading_pages(path: Path, lesson_meta: dict, animation_assets: dict
             if after_paragraph < -1 or after_paragraph >= len(page["paragraphs"]):
                 raise ValueError(f"Illustration position is outside Page paragraphs in {path}, page {index + 1}")
             illustrations.append({
-                "src": f"/api/v1/network-course-assets/{asset.relative_to(ROOT).as_posix()}",
+                "src": f"/api/v1/network-course-assets/{repository_asset_path(asset)}",
                 "title": illustration.get("title", page["title"]),
                 "alt": illustration["alt"],
                 "caption": illustration["caption"],
@@ -373,7 +378,7 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
         illustrations = []
         if index == 0 and diagram_path and diagram_path.is_file():
             illustrations.append({
-                "src": f"/api/v1/network-course-assets/{diagram_path.relative_to(ROOT).as_posix()}",
+                "src": f"/api/v1/network-course-assets/{repository_asset_path(diagram_path)}",
                 "title": f"{title} · 학습 흐름",
                 "alt": f"{title}의 개념 순서와 강의 시점을 보여 주는 학습 흐름도",
                 "caption": "개념이 이어지는 순서를 확인해 보세요.",
@@ -390,7 +395,7 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
                 if asset is None:
                     raise FileNotFoundError(f"Missing SVG animation {anim['file']} for {path}")
                 illustrations.append({
-                    "src": f"/api/v1/network-course-assets/{asset.relative_to(ROOT).as_posix()}",
+                    "src": f"/api/v1/network-course-assets/{repository_asset_path(asset)}",
                     "title": anim["title"],
                     "alt": anim["alt"],
                     "caption": anim["caption"],
@@ -409,7 +414,7 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
             if after_paragraph < -1 or after_paragraph >= len(page["paragraphs"]):
                 raise ValueError(f"Illustration position is outside Page paragraphs in {path}, page {index + 1}")
             item = {
-                "src": f"/api/v1/network-course-assets/{asset.relative_to(ROOT).as_posix()}",
+                "src": f"/api/v1/network-course-assets/{repository_asset_path(asset)}",
                 "title": extra.get("title", title),
                 "alt": extra["alt"],
                 "caption": extra["caption"],
