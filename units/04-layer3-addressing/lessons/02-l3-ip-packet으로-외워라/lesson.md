@@ -35,6 +35,12 @@ page_metadata:
     alt: 회색 16진수 숫자들이 가로로 늘어서 있고, 앞에서부터 색깔이 입혀지며 목적지 MAC, 출발지 MAC, Type 0800, IP 45,
       출발지 IP c0 a8 00 0a라는 이름표가 차례로 붙습니다.
     caption: 16진수 숫자의 줄이 앞에서부터 이더넷 헤더, IP 헤더 순서로 의미가 붙어 갑니다.
+  page_id: wireshark-packet-inspection
+  video:
+    video_id: vBrQ3yzerMg
+    title: "[따라學IT] 01. 네트워크란 무엇인가? - 실습2(Wireshark)"
+    creator: 따라하면서 배우는 IT
+    duration_seconds: 512
 - terms:
   - 스니퍼 (Sniffer)
   - 분석기 (Analyzer)
@@ -89,8 +95,11 @@ animations_dir: units/04-layer3-addressing/lessons/02-l3-ip-packet으로-외워�
 앞에서 정한 이더넷 MTU 1,500바이트의 예에서는 IP 헤더와 페이로드를 합한 IP 패킷이 그 크기를 넘지 않아야 한다. 헤더는 어디서 어디로 가는지를 비롯한 처리 정보를 담고, 페이로드는 실어 나르는 내용물이다. 다음 페이지에서는 Wireshark에서 이 구조를 실제 데이터로 살펴본다.
 
 ## Wireshark에서 패킷 보기
+<!-- learn-page-id: wireshark-packet-inspection -->
 
 외국어로 쓴 두꺼운 책을 받았다고 해 보자. 글자를 알아보기 어렵지만 번역기를 켜면 한 줄씩 우리말로 뜻을 확인할 수 있다. 컴퓨터가 주고받는 데이터도 사람 눈에는 낯선 숫자다. 0과 1을 짧게 적기 위해 쓰는 16진수의 나열이기 때문이다. 이 숫자들을 프로토콜에 맞춰 읽도록 도와주는 프로그램이 Wireshark다. 패킷을 수집해 화면에 보여 주고, 캡처를 파일로 저장했다가 나중에 다시 열 수도 있다.
+
+아래 영상은 Wireshark 설치와 패킷 캡처, HTTP 필터, 프로토콜 구조를 보여 주는 보충 실습 데모다. IPv4 헤더 필드나 MTU를 자세히 설명하지 않으므로, 그 내용은 이 Page의 설명을 기준으로 살펴본다.
 
 Wireshark 화면 아래쪽의 16진수 줄은 이더넷 프레임 전체를 나타낸다. 이더넷 헤더에는 목적지 MAC 주소 6바이트, 출발지 MAC 주소 6바이트, 그리고 Type 값 2바이트가 차례로 놓인다. Type 값이 0800이면 뒤따르는 데이터가 IP 패킷이라는 뜻이다. 어떤 내용을 읽을지 알려 주는 표지판처럼 볼 수 있다.
 

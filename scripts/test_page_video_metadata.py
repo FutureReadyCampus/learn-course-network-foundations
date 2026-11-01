@@ -15,8 +15,8 @@ class PageVideoMetadataTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             path = Path(temporary) / "lesson.md"
             path.write_text(
-                "## Renamed Wireshark page\n<!-- learn-page-id: wireshark-packet-inspection -->\n\nPacket practice.\n\n"
-                "## Another page\n\nOther text.",
+                "## Another page\n\nOther text.\n\n"
+                "## Renamed Wireshark page\n<!-- learn-page-id: wireshark-packet-inspection -->\n\nPacket practice.",
                 encoding="utf-8",
             )
             metadata = [{"page_id": "wireshark-packet-inspection", "video": {
@@ -26,10 +26,10 @@ class PageVideoMetadataTests(unittest.TestCase):
 
             pages = build_course.reading_pages(path, {"title": "Lesson", "page_metadata": metadata}, {})
 
-        self.assertEqual(pages[0]["video"]["video_id"], "vBrQ3yzerMg")
-        self.assertEqual(pages[0]["title"], "Renamed Wireshark page")
-        self.assertEqual(pages[0]["paragraphs"], ["Packet practice."])
-        self.assertNotIn("video", pages[1])
+        self.assertNotIn("video", pages[0])
+        self.assertEqual(pages[1]["video"]["video_id"], "vBrQ3yzerMg")
+        self.assertEqual(pages[1]["title"], "Renamed Wireshark page")
+        self.assertEqual(pages[1]["paragraphs"], ["Packet practice."])
 
     def test_rejects_invalid_youtube_id_and_unknown_page_id(self):
         for video_id, expected in [("bad", "11-character"), ("vBrQ3yzerMg", "unknown page_id")]:
