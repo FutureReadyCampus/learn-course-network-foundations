@@ -503,12 +503,6 @@ page_metadata:
       text: 모든 네트워크 장비의 표를 합침 → 한 번에 최종 목적지로 이동
       feedback: 각 라우터가 자기 표로 다음 한 구간을 정합니다.
     answer: b
-  - id: u2-l07-p08-q03
-    kind: short
-    prompt: 라우터가 목적지와 경로 정보를 확인해 패킷을 다음 연결로 보내는 동작을 가리키는 용어입니다. 영어로 답해주세요.
-    answers:
-    - forwarding
-    feedback: 정답은 forwarding입니다. 라우터가 패킷을 다음 인터페이스로 전달하는 과정입니다.
   animations:
   - file: l07-road-analogy.svg
     title: 도로로 정리하는 라우팅
