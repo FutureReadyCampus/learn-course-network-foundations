@@ -311,15 +311,26 @@ page_metadata:
       feedback: 전원 상태는 계층별 전달 기준이 아닙니다.
     answer: d
   - id: u2-l07-p05-q03
-    kind: short
-    prompt: Ethernet 프레임을 같은 네트워크 안에서 전달할 때 목적지를 구분하는 주소입니다. 이 개념은 무엇일까요? (영어 용어 또는 한글로 답해주세요)
-    answers:
-    - MAC address
-    - MAC 주소
-    - MAC주소
-    - 맥 주소
-    - 맥주소
-    feedback: 정답은 MAC address(MAC 주소)입니다.
+    kind: choice
+    difficulty: medium
+    prompt: Ethernet 프레임을 같은 네트워크 안에서 전달할 때 목적지를 구분하는 주소는 무엇인가요?
+    choices:
+    - id: a
+      text: MAC 주소
+      feedback: 맞아요. Ethernet 프레임은 같은 네트워크 안의 목적지 MAC 주소를 사용해 전달합니다.
+    - id: b
+      text: IP 주소
+      feedback: IP 주소는 네트워크 사이에서 목적지를 찾는 데 사용합니다.
+    - id: c
+      text: 포트 번호
+      feedback: 포트 번호는 장치 안에서 통신할 프로그램을 구분합니다.
+    - id: d
+      text: 호스트 이름
+      feedback: 호스트 이름은 사람이 장치나 서비스를 알아보기 쉽게 부르는 이름입니다.
+    - id: e
+      text: 서브넷 마스크
+      feedback: 서브넷 마스크는 IP 주소의 네트워크 부분과 장치 부분을 나누는 데 사용합니다.
+    answer: a
   illustration_after_paragraph: [0]
 - terms:
   - 메트릭(Metric)
@@ -367,13 +378,6 @@ page_metadata:
       text: 목적지와 관계없이 모든 경로의 숫자를 한꺼번에 비교합니다
       feedback: 서로 다른 목적지에 적용되는 경로를 무조건 비교하면 안 됩니다.
     answer: a
-  - id: u2-l07-p06-q03
-    kind: short
-    prompt: 적용 가능한 경로 후보들을 비교할 때 비용처럼 사용하는 값입니다. 이 개념은 무엇일까요? (영어 용어 또는 한글로 답해주세요)
-    answers:
-    - metric
-    - 메트릭
-    feedback: 정답은 Metric(메트릭)입니다.
   animations:
   - file: l07-metric-compare.svg
     title: 경로를 비교하는 값, Metric
@@ -428,14 +432,26 @@ page_metadata:
       feedback: 모든 행을 합산하는 것이 아니라 적용 가능한 후보를 비교합니다.
     answer: b
   - id: u2-l07-p07-q03
-    kind: short
-    prompt: route print 결과에서 Gateway 열은 다음에 패킷을 넘길 대상을 가리킵니다. 그 대상은 무엇인가요? (한국어로 답해주세요)
-    answers:
-    - 다음 라우터
-    - 다음 홉
-    - 라우터
-    - 게이트웨이
-    feedback: 정답은 다음 라우터(다음 홉)입니다. Gateway 열은 패킷을 다음에 넘길 라우터를 나타냅니다.
+    kind: choice
+    difficulty: medium
+    prompt: route print 결과에서 Gateway 열이 가리키는 대상은 무엇인가요?
+    choices:
+    - id: a
+      text: 다음 라우터(다음 홉)
+      feedback: 맞아요. Gateway는 패킷을 다음에 넘길 라우터를 가리킵니다.
+    - id: b
+      text: 최종 목적지의 네트워크 주소
+      feedback: 목적지 주소와 Gateway는 역할이 다릅니다. Gateway는 다음 전달 대상을 가리킵니다.
+    - id: c
+      text: 패킷을 내보낼 네트워크 인터페이스
+      feedback: Interface 열은 이 컴퓨터에서 패킷이 나갈 연결 지점을 나타냅니다.
+    - id: d
+      text: 경로 후보를 비교하는 Metric 값
+      feedback: Metric은 경로 후보를 비교할 때 쓰는 값입니다.
+    - id: e
+      text: 목적지 장치의 애플리케이션
+      feedback: Gateway는 애플리케이션이 아니라 다음 네트워크 전달 장치를 가리킵니다.
+    answer: a
   animations:
   - file: l07-route-print.svg
     title: route print로 표 읽기
