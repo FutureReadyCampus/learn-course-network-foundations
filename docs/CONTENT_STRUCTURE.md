@@ -39,7 +39,7 @@ Public Network routes use `/m2-network/unit/{unit}/lesson/{lesson}/page/{page}`.
 <!-- learn-page-id: wireshark-packet-inspection -->
 ```
 
-Add a matching item to the Lesson's `page_metadata` front matter. Video metadata requires a `page_id`; the builder checks that the ID matches exactly one Page and that `video_id` is an 11-character YouTube ID. The learner-facing title is used as the iframe's accessible name. `creator` and `duration_seconds` are optional descriptive metadata.
+Add a matching item to the Lesson's `page_metadata` front matter. This applies both to legacy Lessons with a `page_metadata` list for ordered Page data and to authored Lessons whose Page groups live in `pages`. Video metadata requires a `page_id`; the builder checks that the ID matches exactly one Page and that `video_id` is an 11-character YouTube ID. The learner-facing title is used as the iframe's accessible name. `creator` and `duration_seconds` are optional descriptive metadata.
 
 ```yaml
 page_metadata:

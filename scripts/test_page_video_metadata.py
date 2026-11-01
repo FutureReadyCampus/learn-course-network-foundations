@@ -11,6 +11,25 @@ SPEC.loader.exec_module(build_course)
 
 
 class PageVideoMetadataTests(unittest.TestCase):
+    def test_video_follows_page_id_in_authored_pages_when_heading_changes(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / "lesson.md"
+            path.write_text(
+                "---\ntitle: Lesson\nconcepts: []\npages:\n  - concepts: []\n  - concepts: []\n"
+                "page_metadata:\n  - page_id: stable-video-page\n    video:\n"
+                "      video_id: vBrQ3yzerMg\n      title: Video\n---\n"
+                "## First page\n\nFirst text.\n\n"
+                "## Renamed second page\n<!-- learn-page-id: stable-video-page -->\n\nSecond text.",
+                encoding="utf-8",
+            )
+
+            pages = build_course.reading_pages(path, build_course.read_front_matter(path)[0], {})
+
+        self.assertNotIn("video", pages[0])
+        self.assertEqual(pages[1]["video"]["video_id"], "vBrQ3yzerMg")
+        self.assertEqual(pages[1]["title"], "Renamed second page")
+        self.assertEqual(pages[1]["paragraphs"], ["Second text."])
+
     def test_video_follows_page_id_when_title_and_order_change(self):
         with tempfile.TemporaryDirectory() as temporary:
             path = Path(temporary) / "lesson.md"
