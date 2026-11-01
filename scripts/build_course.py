@@ -72,17 +72,16 @@ def page_questions(value, path: Path, page_number: int) -> list[dict]:
         return []
     if len(value) < 3:
         raise ValueError(f"Page needs at least three questions in {path}, page {page_number}")
-    expected = [("choice", "easy"), ("choice", "medium")]
     for index, question in enumerate(value, 1):
         where = f"{path}, page {page_number}, question {index}"
         if not isinstance(question, dict) or not isinstance(question.get("prompt"), str) or not question["prompt"].strip():
             raise ValueError(f"Question needs a prompt in {where}")
         kind = question.get("kind")
-        if index <= len(expected) and (kind, question.get("difficulty")) != expected[index - 1]:
-            raise ValueError(f"Unexpected question kind or difficulty in slot {index} in {where}")
-        if index == 3 and (kind, question.get("difficulty")) not in {("short", None), ("choice", "medium")}:
-            raise ValueError(f"Unexpected question kind or difficulty in slot {index} in {where}")
+        if index == 1 and (kind, question.get("difficulty")) != ("choice", "easy"):
+            raise ValueError(f"The first Page question must be an easy choice question in {where}")
         if kind == "choice":
+            if question.get("difficulty") not in {"easy", "medium"}:
+                raise ValueError(f"Choice question difficulty must be easy or medium in {where}")
             choices = question.get("choices")
             if not isinstance(choices, list) or len(choices) != 5 or any(not isinstance(choice, dict) for choice in choices):
                 raise ValueError(f"Choice question needs exactly five choices in {where}")
@@ -323,26 +322,52 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
         page_meta = anchored_metadata.get(page_id, page_metadata[index] if index < len(page_metadata) else {})
         questions = page_questions(page_meta.get("questions", []), path, index + 1)
         inline_quizzes = []
-        inline_questions_after = page_meta.get("inline_questions_after")
-        if inline_questions_after is not None:
-            paragraph_count = len(split_paragraphs(body))
-            if not isinstance(inline_questions_after, int) or inline_questions_after < 1 or inline_questions_after >= paragraph_count:
-                raise ValueError(f"inline_questions_after must point between paragraphs in {path}, page {index + 1}")
-            inline_quizzes.append({
-                "id": f"{page_id or f'page-{index + 1}'}-checkpoint",
-                "after_paragraph": inline_questions_after,
-                "start_index": 0,
-                "questions": questions[:1],
-            })
+        paragraph_count = len(split_paragraphs(body))
+        placements = page_meta.get("question_placements")
+        legacy_inline_questions_after = page_meta.get("inline_questions_after")
+        if placements is not None and legacy_inline_questions_after is not None:
+            raise ValueError(f"Use question_placements or inline_questions_after, not both, in {path}, page {index + 1}")
+        if placements is None and legacy_inline_questions_after is not None:
+            if not questions:
+                raise ValueError(f"inline_questions_after requires at least one Page question in {path}, page {index + 1}")
+            placements = [{"question_id": questions[0]["id"], "after_paragraph": legacy_inline_questions_after}]
+        if placements is not None:
+            if not isinstance(placements, list) or not placements:
+                raise ValueError(f"question_placements must be a non-empty list in {path}, page {index + 1}")
+            questions_by_id = {question["id"]: (question_index, question) for question_index, question in enumerate(questions)}
+            placed_ids = set()
+            placed_indices = []
+            for placement_index, placement in enumerate(placements, 1):
+                if not isinstance(placement, dict):
+                    raise ValueError(f"Question placement must be an object in {path}, page {index + 1}")
+                question_id = placement.get("question_id")
+                after_paragraph = placement.get("after_paragraph")
+                if question_id not in questions_by_id or question_id in placed_ids:
+                    raise ValueError(f"Unknown or repeated question_id in placement {placement_index} in {path}, page {index + 1}")
+                if not isinstance(after_paragraph, int) or after_paragraph < 1 or after_paragraph >= paragraph_count:
+                    raise ValueError(f"after_paragraph must point between paragraphs in {path}, page {index + 1}")
+                question_index, question = questions_by_id[question_id]
+                placed_indices.append(question_index)
+                inline_quizzes.append({
+                    "id": f"{page_id or f'page-{index + 1}'}-checkpoint-{placement_index}",
+                    "after_paragraph": after_paragraph,
+                    "start_index": question_index,
+                    "questions": [question],
+                })
+                placed_ids.add(question_id)
+            if placed_indices != list(range(len(placements))):
+                raise ValueError(f"question_placements must place Page questions in order from the beginning in {path}, page {index + 1}")
+            questions = [question for question in questions if question["id"] not in placed_ids]
         page = {
             "title": title,
             "paragraphs": split_paragraphs(body),
             "terms": page_meta.get("terms", list(dict.fromkeys(item["term"] for concept in page_concepts for item in concept.get("terms", [])))),
-            "questions": questions[1:] if inline_quizzes else questions,
+            "questions": questions,
         }
         if inline_quizzes:
             page["inline_quizzes"] = inline_quizzes
-            page["question_start_index"] = 1
+            if questions:
+                page["question_start_index"] = len(placed_ids)
         if page_id and page_id in anchored_metadata:
             page.update(validate_page_video(page_meta, page_id, path))
         illustrations = []
