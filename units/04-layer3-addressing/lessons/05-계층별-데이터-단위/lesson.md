@@ -95,6 +95,12 @@ page_metadata:
     after_paragraph: 1
   - question_id: u4-l15-p01-q02
     after_paragraph: 2
+  page_id: u4l15-data-unit-names
+  video:
+    video_id: p6ASAAMwgd8
+    title: 네트워크 데이터 단위 정리 (매우 중요!)
+    creator: 널널한 개발자 TV
+    duration_seconds: 504
 - terms:
   - Socket(소켓)
   - Stream(스트림)
@@ -556,12 +562,15 @@ additional_sources:
 핵심 개념을 주제별로 정리했다.
 
 ## 계층마다 달라지는 데이터 이름
+<!-- learn-page-id: u4l15-data-unit-names -->
 
 택배로 책을 보낼 때 책은 내용물이지만, 상자에 담기면 운반 단위로 다뤄진다. 네트워크에서도 같은 정보가 계층을 지날 때마다 전달에 맞는 단위로 묶이고 이름이 달라진다.
 
 TCP/IP 통신에서는 TCP가 다루는 단위를 Segment(세그먼트), IP가 다루는 단위를 Packet(패킷), 데이터 링크 계층(L2)이 다루는 단위를 Frame(프레임)이라고 한다. 예를 들어 IP 패킷은 L3에서 하나의 단위이고, Ethernet 프레임 안에서는 페이로드로 실린다.
 
 물리 계층(L1)은 프레임을 새 단위로 다루는 계층이 아니라, L2 프레임을 비트와 신호로 실제 매체에 전달한다. 따라서 여기서는 L1은 비트, L2는 프레임이라고 구별하고, 계층별 이름은 같은 데이터의 전달 단위가 어디에서 어떻게 보이는지를 나타낸다고 기억하자.
+
+아래 영상은 **[참고용]**으로 가볍게 시청해 보자. 여기서는 Stream, Segment, Packet, Frame의 큰 흐름만 확인하고, TCP 분할이나 UDP Datagram의 세부 차이는 다음 Page들에서 살펴보자.
 
 ## Socket과 Stream
 

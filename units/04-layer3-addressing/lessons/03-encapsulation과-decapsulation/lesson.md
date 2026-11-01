@@ -279,6 +279,12 @@ page_metadata:
     after_paragraph: 1
   - question_id: u4-l13-p03-q02
     after_paragraph: 2
+  page_id: u4l13-encapsulation-pdu-sequence
+  video:
+    video_id: Coxcs47ZQjE
+    title: '[CCNA 입문 3-2강] OSI 7계층 vs TCP/IP 모델 완벽 비교｜데이터 캡슐화·PDU·역캡슐화 원리'
+    creator: Network History
+    duration_seconds: 629
 
 - terms:
   - Decapsulation(디캡슐레이션, 역캡슐화)
@@ -492,6 +498,7 @@ additional_sources:
 마트료시카는 처음부터 겹이 만들어져 있는 물건이다. 네트워크 데이터는 송신 과정에서 계층을 거치며 바깥쪽 정보를 차례로 붙인다는 차이가 있다.
 
 ## 프레임 안에 패킷, 패킷 안에 세그먼트
+<!-- learn-page-id: u4l13-encapsulation-pdu-sequence -->
 
 노트북에서 웹 서버로 ‘안녕’이라는 데이터를 보낸다고 해 보자. 먼저 전송 계층(L4)에서 TCP 헤더를 데이터 앞에 붙인다. TCP 헤더와 데이터가 합쳐져 하나의 단위가 되며, 이를 Segment(세그먼트)라고 한다.
 
@@ -500,6 +507,8 @@ additional_sources:
 마지막으로 링크 계층(L2)에서 IP 패킷을 실을 프레임을 만든다. Ethernet 환경에서는 프레임 헤더가 앞에 붙고, 프레임 끝에는 오류를 확인하기 위한 FCS 같은 트레일러 정보도 붙는다. 이때 IP 패킷 전체가 프레임의 Payload(페이로드), 즉 프레임에 실려 가는 내용물이다. 따라서 한 계층에서 완성한 단위가 바깥 계층에서는 Payload가 될 수 있다. IP 패킷은 L3에서 완성된 단위이지만 L2에서 바라보면 프레임 안에 실리는 내용물이다.
 
 위 애니메이션의 흐름을 글자로 펼쳐 보면 `프레임 헤더 | IP 헤더 | TCP 헤더 | 안녕 데이터 | 프레임 트레일러`처럼 생각할 수 있다. 실제 필드와 크기는 프로토콜에 따라 달라지므로, 이 모양은 각 계층의 관계를 이해하기 위한 간단한 그림이다.
+
+아래 영상은 **[참고용]**으로 가볍게 시청해 보자. OSI와 TCP/IP 모델 비교도 함께 다루므로, 여기서는 데이터·세그먼트·패킷·프레임이 안팎으로 이어지는 흐름만 살펴보면 된다.
 
 ## 역캡슐화: 겉에서부터 정보를 처리하기
 
