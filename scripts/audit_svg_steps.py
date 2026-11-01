@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check every course animation for a visible, upper-left step counter."""
+"""Check every animated course SVG for a title opening and segmented progress bar."""
 
 from __future__ import annotations
 
@@ -31,6 +31,28 @@ def has_step_badge(path: Path) -> tuple[bool, str]:
     animated = any(local_name(node) in ANIMATION_TAGS for node in root.iter())
     if not animated:
         return True, "static SVG (no playback stages)"
+
+    for node in root.iter():
+        if local_name(node) != "g" or node.get("aria-label") != "재생 진행 막대":
+            continue
+        try:
+            total = int(node.get("data-stage-count", ""))
+        except ValueError:
+            continue
+        segments = [child for child in node if local_name(child) == "g" and "progress-segment" in child.get("class", "").split()]
+        stages = []
+        for segment in segments:
+            try:
+                stages.append(int(segment.get("data-stage", "")))
+            except ValueError:
+                pass
+        if stages != list(range(1, total + 1)):
+            continue
+        if not any(local_name(child) == "g" and child.get("id") == "title-intro" for child in root):
+            continue
+        animated_widths = [child for segment in segments for child in segment.iter() if local_name(child) == "animate" and child.get("attributeName") == "width"]
+        if len(animated_widths) == total:
+            return True, f"{total} stages with title opening and segmented progress"
 
     groups = []
     for node in root.iter():
@@ -64,7 +86,7 @@ def has_step_badge(path: Path) -> tuple[bool, str]:
             continue
         return True, f"{total} stages at x=40, y=28"
 
-    return False, "animated SVG lacks a complete upper-left 1/N stage badge"
+    return False, "animated SVG lacks the title opening and complete segmented progress bar"
 
 
 def main() -> int:

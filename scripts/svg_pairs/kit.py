@@ -4,9 +4,13 @@ Animations are written with their final loop length (`Anim(n, dur)`), straight i
 Lesson's assets/animations/. They need no animation-source copy or svg-playback.yaml row.
 """
 import json
+import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from xml.sax.saxutils import escape
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from svg_opening import apply_opening
 
 BG, PANEL, LINE, TXT, MUTED = "#0f1115", "#171a21", "#3d4b60", "#e6e8ec", "#9aa3b2"
 GREEN, BLUE, ORANGE, RED = "#7ee7c7", "#6ea8fe", "#ffb454", "#ff7b72"
@@ -190,7 +194,7 @@ def frame(a, title, subtitle, captions, body):
                      f'dur="{a.dur:g}s" repeatCount="indefinite"/></text>')
     out.append('<g aria-label="재생 단계">' + "".join(badge) + "</g>")
     out.append("</svg>\n")
-    return "\n".join(out)
+    return apply_opening("\n".join(out), loop_seconds=a.dur, title=title)
 
 
 def phone(x, y, label=None, stroke=BLUE):

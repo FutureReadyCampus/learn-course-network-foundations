@@ -8,6 +8,10 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
+import sys
+sys.path.insert(0, str(ROOT / "scripts"))
+from svg_opening import apply_opening, lesson_title, scene_loop_seconds
+
 config = yaml.safe_load((ROOT / "course.yaml").read_text(encoding="utf-8"))["animation_assets"]
 durations = yaml.safe_load((ROOT / config["durations_file"]).read_text(encoding="utf-8"))["animations"]
 source_files = sorted(ROOT.glob("units/*/lessons/*/assets/animation-source/*.svg"))
@@ -22,6 +26,11 @@ for path in source_files:
     if not count:
         raise ValueError(f"No SMIL durations found in {path.name}")
     ET.fromstring(text)
+    text = apply_opening(
+        text,
+        loop_seconds=scene_loop_seconds(text),
+        title=lesson_title(path),
+    )
     destination = path.parent.parent / "animations" / path.name
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(text, encoding="utf-8")
