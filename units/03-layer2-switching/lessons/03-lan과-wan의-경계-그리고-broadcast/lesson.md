@@ -259,15 +259,6 @@ page_metadata:
       text: 각 16진수 칸은 8비트여서 모두 6비트다
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
     answer: d
-  - id: u3-03-p03-q03
-    kind: short
-    prompt: Ethernet 프레임에서 같은 브로드캐스트 구역 모두를 수신자로 지정하는 목적지 주소입니다. 영어로 답해주세요.
-    answers:
-    - broadcast MAC address
-    - broadcast mac
-    - 브로드캐스트 MAC 주소
-    - 브로드캐스트 맥 주소
-    feedback: 정답은 broadcast MAC address(브로드캐스트 MAC 주소)입니다.
   - id: u3-03-p03-q04
     kind: choice
     difficulty: medium
