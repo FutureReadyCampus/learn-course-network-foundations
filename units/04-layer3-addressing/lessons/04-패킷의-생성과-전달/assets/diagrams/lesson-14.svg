@@ -1,1 +1,57 @@
-<svg xmlns="http://www.w3.org/2000/svg" class="learning-flow" viewBox="0 0 1120 500" role="group" aria-labelledby="lesson-14-basic-export-title lesson-14-basic-export-desc" lang="ko"><title id="lesson-14-basic-export-title">패킷의 생성과 전달 · 학습 흐름</title><desc id="lesson-14-basic-export-desc">강의 설명을 읽는 순서와 각 개념의 제목을 보여 줍니다.</desc><defs><marker id="lesson-14-basic-export-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 1 L6 4 L0 7" fill="none" stroke="#7ee7c7" stroke-width="1.5"/></marker></defs><style>.learning-flow{background:#0f1115}.learning-flow text{font:500 20px -apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Segoe UI',sans-serif;fill:#e6e8ec}.learning-flow .flow-note{font-size:18px;fill:#9aa3b2}.learning-flow rect{fill:#171a21;stroke:#3d4b60;stroke-width:1.5}</style><g fill="none" stroke="#7ee7c7" stroke-width="2" marker-end="url(#lesson-14-basic-export-arrow)"><path d="M268 72.0 H292"/><path d="M546 72.0 H570"/><path d="M824 72.0 H848"/><path d="M977.0 128 V152.0 H143.0 V172"/><path d="M268 232.0 H292"/><path d="M546 232.0 H570"/><path d="M824 232.0 H848"/><path d="M977.0 288 V312.0 H143.0 V332"/></g><rect x="18" y="16" width="250" height="112" rx="10"/><text x="143.0" y="54" text-anchor="middle"><tspan x="143.0" dy="0">데이터로 택배 만들기</tspan></text><rect x="296" y="16" width="250" height="112" rx="10"/><text x="421.0" y="54" text-anchor="middle"><tspan x="421.0" dy="0">호스트까지 가는 주소</tspan></text><rect x="574" y="16" width="250" height="112" rx="10"/><text x="699.0" y="54" text-anchor="middle"><tspan x="699.0" dy="0">집 안의 수신자를</tspan><tspan x="699.0" dy="25">구별하기</tspan></text><rect x="852" y="16" width="250" height="112" rx="10"/><text x="977.0" y="54" text-anchor="middle"><tspan x="977.0" dy="0">수신 측에서 전달하기</tspan></text><rect x="18" y="176" width="250" height="112" rx="10"/><text x="143.0" y="214" text-anchor="middle"><tspan x="143.0" dy="0">송신 프로세스와</tspan><tspan x="143.0" dy="25">데이터</tspan></text><rect x="296" y="176" width="250" height="112" rx="10"/><text x="421.0" y="214" text-anchor="middle"><tspan x="421.0" dy="0">수신 프로세스와 포트</tspan></text><rect x="574" y="176" width="250" height="112" rx="10"/><text x="699.0" y="214" text-anchor="middle"><tspan x="699.0" dy="0">소켓을 통한 입출력</tspan></text><rect x="852" y="176" width="250" height="112" rx="10"/><text x="977.0" y="214" text-anchor="middle"><tspan x="977.0" dy="0">계층을 내려가며</tspan><tspan x="977.0" dy="25">포장하기</tspan></text><rect x="18" y="336" width="250" height="112" rx="10"/><text x="143.0" y="374" text-anchor="middle"><tspan x="143.0" dy="0">라우터를 거쳐</tspan><tspan x="143.0" dy="25">도착하기</tspan></text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" class="learning-flow" viewBox="0 0 1120 340" role="group" aria-labelledby="lesson-14-basic-export-title lesson-14-basic-export-desc" lang="ko">
+  <title id="lesson-14-basic-export-title">패킷은 어떻게 목적지 프로그램까지 전달될까? · 학습 흐름</title>
+  <desc id="lesson-14-basic-export-desc">프로그램이 만든 데이터가 목적지 호스트의 수신 프로그램까지 가는 순서를 보여 줍니다.</desc>
+  <defs>
+    <marker id="lesson-14-basic-export-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0 1 L6 4 L0 7" fill="none" stroke="#7ee7c7" stroke-width="1.5"/>
+    </marker>
+  </defs>
+  <style>
+    .learning-flow{background:#0f1115}
+    .learning-flow text{font:500 20px -apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Segoe UI',sans-serif;fill:#e6e8ec}
+    .learning-flow rect{fill:#171a21;stroke:#3d4b60;stroke-width:1.5}
+  </style>
+  <g fill="none" stroke="#7ee7c7" stroke-width="2" marker-end="url(#lesson-14-basic-export-arrow)">
+    <path d="M268 72 H292"/>
+    <path d="M546 72 H570"/>
+    <path d="M824 72 H848"/>
+    <path d="M977 128 V152 H282 V172"/>
+    <path d="M407 232 H431"/>
+    <path d="M685 232 H709"/>
+  </g>
+  <rect x="18" y="16" width="250" height="112" rx="10"/>
+  <text x="143" y="54" text-anchor="middle">
+    <tspan x="143" dy="0">데이터와 전달 정보</tspan>
+    <tspan x="143" dy="25">패킷에 담기</tspan>
+  </text>
+  <rect x="296" y="16" width="250" height="112" rx="10"/>
+  <text x="421" y="54" text-anchor="middle">
+    <tspan x="421" dy="0">IP 주소로 호스트</tspan>
+    <tspan x="421" dy="25">포트로 프로그램 찾기</tspan>
+  </text>
+  <rect x="574" y="16" width="250" height="112" rx="10"/>
+  <text x="699" y="54" text-anchor="middle">
+    <tspan x="699" dy="0">프로그램에서</tspan>
+    <tspan x="699" dy="25">인터페이스까지</tspan>
+  </text>
+  <rect x="852" y="16" width="250" height="112" rx="10"/>
+  <text x="977" y="54" text-anchor="middle">
+    <tspan x="977" dy="0">IP 주소:포트 번호</tspan>
+    <tspan x="977" dy="25">함께 읽기</tspan>
+  </text>
+  <rect x="157" y="176" width="250" height="112" rx="10"/>
+  <text x="282" y="214" text-anchor="middle">
+    <tspan x="282" dy="0">소켓으로 운영체제에</tspan>
+    <tspan x="282" dy="25">입출력 요청</tspan>
+  </text>
+  <rect x="435" y="176" width="250" height="112" rx="10"/>
+  <text x="560" y="214" text-anchor="middle">
+    <tspan x="560" dy="0">세그먼트·패킷·</tspan>
+    <tspan x="560" dy="25">프레임 만들기</tspan>
+  </text>
+  <rect x="713" y="176" width="250" height="112" rx="10"/>
+  <text x="838" y="214" text-anchor="middle">
+    <tspan x="838" dy="0">스위치와 라우터를 거쳐</tspan>
+    <tspan x="838" dy="25">목적지 프로그램 도착</tspan>
+  </text>
+</svg>
