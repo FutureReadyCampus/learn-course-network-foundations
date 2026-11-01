@@ -10,6 +10,10 @@ on:
       - 'scripts/build_course.py'
       - 'scripts/build_pages.py'
       - 'scripts/audit_svg_steps.py'
+      - 'scripts/svg_opening.py'
+      - 'scripts/apply_svg_opening.py'
+      - 'scripts/prepare_svg_playback.py'
+      - 'scripts/svg_pairs/kit.py'
       - 'requirements.txt'
       - '.github/workflows/validate-content.yml'
   push:
@@ -21,6 +25,10 @@ on:
       - 'scripts/build_course.py'
       - 'scripts/build_pages.py'
       - 'scripts/audit_svg_steps.py'
+      - 'scripts/svg_opening.py'
+      - 'scripts/apply_svg_opening.py'
+      - 'scripts/prepare_svg_playback.py'
+      - 'scripts/svg_pairs/kit.py'
       - 'requirements.txt'
   workflow_dispatch:
 

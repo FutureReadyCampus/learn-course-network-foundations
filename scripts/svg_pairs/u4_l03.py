@@ -11,17 +11,6 @@ ROOT = Path(__file__).resolve().parents[2]
 LESSON = next((ROOT / "units").glob("04-*/lessons/03-*"))
 OUT = LESSON / "assets" / "animations"
 DUR = {True: 15, False: 16}
-VIOLET = "#c792ea"
-
-
-def eye(x, y):
-    return (f'<ellipse cx="{x}" cy="{y}" rx="26" ry="15" fill="{BG}" stroke="{ORANGE}" stroke-width="3"/>'
-            f'<circle cx="{x}" cy="{y}" r="7" fill="{ORANGE}"/>')
-
-
-def lock(x, y, c=MUTED):
-    return (f'<rect x="{x - 20}" y="{y - 4}" width="40" height="32" rx="5" fill="{PANEL}" stroke="{c}" stroke-width="3"/>'
-            f'<path d="M{x - 11} {y - 4} v-10 a11 11 0 0 1 22 0 v10" fill="none" stroke="{c}" stroke-width="3"/>')
 
 
 # ---------- Page 1: content + label = one unit ----------

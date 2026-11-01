@@ -18,19 +18,19 @@
 
   <!-- 막힌 칸 아래는 어두워짐 (1,2,4번째) -->
   <g fill="#0f1115" opacity="0">
-    <animate attributeName="opacity" values="0;0;0;0.78;0.78;0" keyTimes="0;0.09259;0.43741;0.51;0.95463;1" dur="21.6s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;0;0.78;0.78;0" keyTimes="0;0.09259;0.43741;0.51;0.95463;1" dur="21.6s" repeatCount="indefinite" begin="2s"/>
     <rect x="338" y="248" width="84" height="76" rx="8"/>
     <rect x="442" y="248" width="84" height="76" rx="8"/>
     <rect x="650" y="248" width="84" height="76" rx="8"/>
   </g>
   <!-- 구멍 칸 아래는 밝게 빛남 (3번째) -->
   <rect x="548" y="250" width="80" height="72" rx="8" fill="#7ee7c7" fill-opacity="0.22" stroke="#7ee7c7" stroke-width="5" opacity="0">
-    <animate attributeName="opacity" values="0;0;0;1;0.6;1;1;0" keyTimes="0;0.09259;0.43741;0.51;0.56444;0.61889;0.95463;1" dur="21.6s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;0;1;0.6;1;1;0" keyTimes="0;0.09259;0.43741;0.51;0.56444;0.61889;0.95463;1" dur="21.6s" repeatCount="indefinite" begin="2s"/>
   </rect>
 
   <!-- 위: 가림판 0010 (내려와 얹힘) -->
   <g>
-    <animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 0;0 66;0 66;0 0" keyTimes="0;0.09259;0.27407;0.50093;0.95463;1" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0.4 0 0.2 1;0 0 1 1;0.4 0 0.2 1" dur="21.6s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 0;0 66;0 66;0 0" keyTimes="0;0.09259;0.27407;0.50093;0.95463;1" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0.4 0 0.2 1;0 0 1 1;0.4 0 0.2 1" dur="21.6s" repeatCount="indefinite" begin="2s"/>
     <text x="310" y="142" text-anchor="end" font-size="26" fill="#9aa3b2">가림판</text>
     <rect x="328" y="88" width="416" height="92" rx="12" fill="#3d4b60"/>
     <g fill="#2a3342">
@@ -55,24 +55,24 @@
   </g>
   <g font-size="36" font-weight="700" text-anchor="middle">
     <text x="380" y="408" fill="#9aa3b2" opacity="0">0
-      <animate attributeName="opacity" values="0;0;0;1;1;0" keyTimes="0;0.09259;0.5463;0.57352;0.95463;1" dur="21.6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0;0;1;1;0" keyTimes="0;0.09259;0.5463;0.57352;0.95463;1" dur="21.6s" repeatCount="indefinite" begin="2s"/>
     </text>
     <text x="484" y="408" fill="#9aa3b2" opacity="0">0
-      <animate attributeName="opacity" values="0;0;0;1;1;0" keyTimes="0;0.09259;0.60981;0.63704;0.95463;1" dur="21.6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0;0;1;1;0" keyTimes="0;0.09259;0.60981;0.63704;0.95463;1" dur="21.6s" repeatCount="indefinite" begin="2s"/>
     </text>
     <g opacity="0">
-      <animate attributeName="opacity" values="0;0;0;1;1;0" keyTimes="0;0.09259;0.67333;0.70056;0.95463;1" dur="21.6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0;0;1;1;0" keyTimes="0;0.09259;0.67333;0.70056;0.95463;1" dur="21.6s" repeatCount="indefinite" begin="2s"/>
       <rect x="548" y="364" width="80" height="62" rx="8" fill="#7ee7c7" fill-opacity="0.2" stroke="#7ee7c7" stroke-width="3"/>
       <text x="588" y="408" fill="#7ee7c7">1</text>
     </g>
     <text x="692" y="408" fill="#9aa3b2" opacity="0">0
-      <animate attributeName="opacity" values="0;0;0;1;1;0" keyTimes="0;0.09259;0.73685;0.76407;0.95463;1" dur="21.6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0;0;1;1;0" keyTimes="0;0.09259;0.73685;0.76407;0.95463;1" dur="21.6s" repeatCount="indefinite" begin="2s"/>
     </text>
   </g>
 
   <!-- 결론 한 줄 -->
   <text x="480" y="466" text-anchor="middle" font-size="28" font-weight="700" fill="#ffb454" opacity="0">AND = 둘 다 1일 때만 1
-    <animate attributeName="opacity" values="0;0;0;1;1;0" keyTimes="0;0.09259;0.81852;0.85481;0.95463;1" dur="21.6s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;0;1;1;0" keyTimes="0;0.09259;0.81852;0.85481;0.95463;1" dur="21.6s" repeatCount="indefinite" begin="2s"/>
   </text>
 
   <!-- 자막 바 -->
@@ -80,17 +80,17 @@
   <line x1="0" y1="484" x2="960" y2="484" stroke="#3d4b60" stroke-width="2"/>
   <g font-size="24" fill="#e6e8ec" text-anchor="middle">
     <text x="480" y="521">아래는 값 1011, 위는 셋째 칸만 구멍 뚫린 가림판 0010
-      <animate attributeName="opacity" values="1;1;1;0;0;1" keyTimes="0;0.09259;0.29222;0.31944;0.97278;1" dur="21.6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;1;1;0;0;1" keyTimes="0;0.09259;0.29222;0.31944;0.97278;1" dur="21.6s" repeatCount="indefinite" begin="2s"/>
     </text>
     <text x="480" y="521" opacity="0">가림판을 얹으면 구멍(1) 자리만 보이고 나머지는 가려진다
-      <animate attributeName="opacity" values="0;0;0;1;1;0;0" keyTimes="0;0.09259;0.29222;0.31944;0.51907;0.5463;1" dur="21.6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0;0;1;1;0;0" keyTimes="0;0.09259;0.29222;0.31944;0.51907;0.5463;1" dur="21.6s" repeatCount="indefinite" begin="2s"/>
     </text>
     <text x="480" y="521" opacity="0">칸마다 보면, 구멍이 있고 아래도 1인 셋째 칸만 1
-      <animate attributeName="opacity" values="0;0;0;1;1;0;0" keyTimes="0;0.09259;0.51907;0.5463;0.7913;0.81852;1" dur="21.6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0;0;1;1;0;0" keyTimes="0;0.09259;0.51907;0.5463;0.7913;0.81852;1" dur="21.6s" repeatCount="indefinite" begin="2s"/>
     </text>
     <text x="480" y="521" opacity="0">1011 AND 0010 = 0010 · 구멍 자리의 비트만 남았다
-      <animate attributeName="opacity" values="0;0;0;1;1;0;0" keyTimes="0;0.09259;0.7913;0.81852;0.95463;0.97278;1" dur="21.6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0;0;1;1;0;0" keyTimes="0;0.09259;0.7913;0.81852;0.95463;0.97278;1" dur="21.6s" repeatCount="indefinite" begin="2s"/>
     </text>
   </g>
-<g aria-label="재생 단계"><rect x="40" y="28" width="88" height="40" rx="20" fill="#171a21" stroke="#3d4b60" stroke-width="2"/><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="1">1 / 4<animate attributeName="opacity" values="1;1;1;0;0" keyTimes="0;0.09259;0.3013;0.31037;1" calcMode="discrete" dur="21.6s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">2 / 4<animate attributeName="opacity" values="0;0;0;1;1;0;0" keyTimes="0;0.09259;0.3013;0.31037;0.52815;0.53722;1" calcMode="discrete" dur="21.6s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">3 / 4<animate attributeName="opacity" values="0;0;0;1;1;0;0" keyTimes="0;0.09259;0.52815;0.53722;0.80037;0.80944;1" calcMode="discrete" dur="21.6s" repeatCount="indefinite"/></text><text x="84" y="55" text-anchor="middle" font-size="20" font-weight="700" fill="#e6e8ec" opacity="0">4 / 4<animate attributeName="opacity" values="0;0;0;1;1" keyTimes="0;0.09259;0.80037;0.80944;1" calcMode="discrete" dur="21.6s" repeatCount="indefinite"/></text></g>
-<g id="intro"><rect width="960" height="540" rx="24" fill="#0f1115"/><text x="480" y="220" text-anchor="middle" font-size="22" fill="#7ee7c7">이번 장면에서 볼 것</text><text x="480" y="290" text-anchor="middle" font-size="36" font-weight="700" fill="#e6e8ec">AND 마스크: 구멍(1) 자리의 비트만 남는다</text><animate attributeName="opacity" values="1;0" keyTimes="0;0.09259" calcMode="discrete" dur="21.6s" repeatCount="indefinite"/></g></svg>
+
+<g aria-label="재생 진행 막대" data-stage-count="4"><g class="progress-segment" data-stage="1"><rect x="40" y="532" width="214" height="6" rx="3" fill="#394554"/><rect x="40" y="532" width="0" height="6" rx="3" fill="#ff3434"><animate begin="2s" attributeName="width" values="0;214;214" keyTimes="0;0.310370;1" dur="21.6s" repeatCount="indefinite"/></rect></g><g class="progress-segment" data-stage="2"><rect x="262" y="532" width="214" height="6" rx="3" fill="#394554"/><rect x="262" y="532" width="0" height="6" rx="3" fill="#ff3434"><animate begin="2s" attributeName="width" values="0;0;214;214" keyTimes="0;0.310370;0.537220;1" dur="21.6s" repeatCount="indefinite"/></rect></g><g class="progress-segment" data-stage="3"><rect x="484" y="532" width="214" height="6" rx="3" fill="#394554"/><rect x="484" y="532" width="0" height="6" rx="3" fill="#ff3434"><animate begin="2s" attributeName="width" values="0;0;214;214" keyTimes="0;0.537220;0.809440;1" dur="21.6s" repeatCount="indefinite"/></rect></g><g class="progress-segment" data-stage="4"><rect x="706" y="532" width="214" height="6" rx="3" fill="#394554"/><rect x="706" y="532" width="0" height="6" rx="3" fill="#ff3434"><animate begin="2s" attributeName="width" values="0;0;214" keyTimes="0;0.809440;1" dur="21.6s" repeatCount="indefinite"/></rect></g></g><g id="title-intro"><rect x="0" y="0" width="960" height="540" fill="#0f1115"/><g opacity="0"><text x="480" y="298.7" text-anchor="middle" font-size="82" font-weight="750" letter-spacing="-1" fill="#e6e8ec">구멍 뚫린 가림판 AND</text><animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.016949;0.072034;0.084746;1" dur="23.6s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="0 28;0 0;0 0;0 -32;0 -32" keyTimes="0;0.016949;0.072034;0.084746;1" dur="23.6s" repeatCount="indefinite"/></g><animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.072034;0.084746;1" dur="23.6s" repeatCount="indefinite"/></g></svg>
