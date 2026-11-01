@@ -31,6 +31,27 @@ page_metadata:
       text: MTU
       feedback: 다시 생각해 보세요. 파일 전체를 한 번에 보내는 것이 아니라, 잘게 나눈 전달 단위를 생각해 보세요.
     answer: a
+  - id: u4-l12-p01-q04
+    kind: choice
+    difficulty: easy
+    prompt: 패킷 하나가 사라졌을 때, IP가 알아서 다시 보내 주나요?
+    choices:
+    - id: a
+      text: 네. 모든 IP 패킷은 반드시 두 번 보냅니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    - id: b
+      text: 아니요. IP 자체는 재전송을 보장하지 않으며, TCP 같은 전송 계층 기능이 손실을 확인하고 다시 보낼 수 있습니다.
+      feedback: 맞아요. 아니요. IP 자체는 재전송을 보장하지 않으며, TCP 같은 전송 계층 기능이 손실을 확인하고 다시 보낼 수 있습니다.입니다.
+    - id: c
+      text: 네. 라우터가 사진 파일 전체를 다시 만듭니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    - id: d
+      text: 아니요. 패킷은 사라져도 수신자가 항상 복구합니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    - id: e
+      text: 아니요. Ethernet 스위치가 인터넷 전체에서 재전송합니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    answer: b
   - id: u4-l12-p01-q02
     kind: choice
     difficulty: medium
@@ -59,6 +80,12 @@ page_metadata:
     - IP
     - Internet Protocol
     feedback: IP(Internet Protocol)는 네트워크 계층의 패킷 전달 규칙을 정해요.
+  question_placements:
+  - question_id: u4-l12-p01-q01
+    after_paragraph: 1
+  - question_id: u4-l12-p01-q04
+    after_paragraph: 2
+
 - terms:
   - 헤더 (Header)
   - 페이로드 (Payload)
@@ -85,6 +112,27 @@ page_metadata:
       text: 포트 번호
       feedback: 이 선택지는 다른 개념의 역할이에요. 본문에서 이 Page의 핵심 구분을 다시 확인해 보세요.
     answer: a
+  - id: u4-l12-p02-q04
+    kind: choice
+    difficulty: easy
+    prompt: 이더넷 프레임 안에 들어가는 IP 패킷에서, 실제 전달할 내용을 담은 부분은 무엇인가요?
+    choices:
+    - id: a
+      text: 헤더
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    - id: b
+      text: MAC 주소
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    - id: c
+      text: 포트 번호
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    - id: d
+      text: 페이로드
+      feedback: 맞아요. 페이로드입니다.
+    - id: e
+      text: MTU
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    answer: d
   - id: u4-l12-p02-q02
     kind: choice
     difficulty: medium
@@ -118,6 +166,12 @@ page_metadata:
     title: 송장 붙은 상자, 헤더와 페이로드
     alt: 기다란 직사각형 상자의 앞쪽에 헤더라는 송장 부분이 붙고 나머지가 페이로드로 채워집니다. 그 페이로드가 열리면 안에 헤더와 페이로드를 가진 작은 상자가 다시 나타납니다.
     caption: 헤더는 길을 안내하는 송장, 페이로드는 상자 속 내용물입니다. 상자 안에 다시 상자가 들어 있을 수도 있습니다.
+  question_placements:
+  - question_id: u4-l12-p02-q01
+    after_paragraph: 1
+  - question_id: u4-l12-p02-q04
+    after_paragraph: 3
+
 - terms:
   - MTU (Maximum Transmission Unit)
   - 바이트 (Byte)
@@ -142,6 +196,27 @@ page_metadata:
     - id: e
       text: Wireshark가 읽는 숫자의 개수
       feedback: 이 선택지는 다른 개념의 역할이에요. 본문에서 이 Page의 핵심 구분을 다시 확인해 보세요.
+    answer: c
+  - id: u4-l12-p03-q04
+    kind: choice
+    difficulty: easy
+    prompt: MTU가 1,500바이트인 예에서 모든 IP 패킷을 꼭 1,500바이트로 채워야 하나요?
+    choices:
+    - id: a
+      text: 네. 더 작은 패킷은 네트워크가 버립니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    - id: b
+      text: 네. 빈 부분을 항상 0으로 채워야 합니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    - id: c
+      text: 아니요. 1,500바이트는 최대값이므로 더 작은 패킷도 보낼 수 있습니다.
+      feedback: 맞아요. 아니요. 1,500바이트는 최대값이므로 더 작은 패킷도 보낼 수 있습니다.입니다.
+    - id: d
+      text: 아니요. MTU는 IP 주소의 길이만 말합니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    - id: e
+      text: 아니요. 1,500은 Ethernet 프레임 전체 크기를 뜻합니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
     answer: c
   - id: u4-l12-p03-q02
     kind: choice
@@ -172,6 +247,12 @@ page_metadata:
     - Maximum Transmission Unit
     - MTU
     feedback: 최대 전송 단위(MTU)는 한 번에 전달할 수 있는 단위의 최대 크기 기준이에요.
+  question_placements:
+  - question_id: u4-l12-p03-q01
+    after_paragraph: 1
+  - question_id: u4-l12-p03-q04
+    after_paragraph: 2
+
 - terms:
   - 와이어샤크 (Wireshark)
   - 16진수 (Hexadecimal)
@@ -197,6 +278,27 @@ page_metadata:
     - id: e
       text: 케이블을 통해 전기 신호를 보낸다
       feedback: 이 선택지는 다른 개념의 역할이에요. 본문에서 이 Page의 핵심 구분을 다시 확인해 보세요.
+    answer: a
+  - id: u4-l12-p04-q04
+    kind: choice
+    difficulty: easy
+    prompt: 이더넷 Type 필드가 0800일 때, 뒤에 오는 패킷은 무엇인가요?
+    choices:
+    - id: a
+      text: IPv4 패킷
+      feedback: 맞아요. IPv4 패킷입니다.
+    - id: b
+      text: IPv6 패킷
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    - id: c
+      text: TCP 세그먼트
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    - id: d
+      text: DNS 이름
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    - id: e
+      text: Wireshark 캡처 파일
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
     answer: a
   - id: u4-l12-p04-q02
     kind: choice
@@ -237,6 +339,12 @@ page_metadata:
     title: '[따라學IT] 01. 네트워크란 무엇인가? - 실습2(Wireshark)'
     creator: 따라하면서 배우는 IT
     duration_seconds: 512
+  question_placements:
+  - question_id: u4-l12-p04-q01
+    after_paragraph: 1
+  - question_id: u4-l12-p04-q04
+    after_paragraph: 3
+
 - terms:
   - MAC 주소 (Media Access Control address)
   - IP 주소 (Internet Protocol address)
@@ -262,6 +370,27 @@ page_metadata:
     - id: e
       text: MAC 주소
       feedback: 맞아요. MAC 주소는 현재 링크에서 프레임을 주고받을 인터페이스를 구분해요.
+    answer: e
+  - id: u4-l12-p05-q04
+    kind: choice
+    difficulty: easy
+    prompt: 한 컴퓨터에서 브라우저와 메신저를 구분해 데이터를 전달할 때 쓰는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: MAC 주소
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    - id: b
+      text: IP 네트워크 부분
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    - id: c
+      text: 이더넷 케이블 길이
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    - id: d
+      text: 프레임 검사 값
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    - id: e
+      text: 포트 번호
+      feedback: 맞아요. 포트 번호입니다.
     answer: e
   - id: u4-l12-p05-q02
     kind: choice
@@ -297,6 +426,12 @@ page_metadata:
     alt: 한 통신의 세 계층 정보가 차례로 켜집니다. Ethernet 프레임의 MAC 주소는 현재 링크의 장치를, IP 헤더의 IP 주소는 네트워크 간 목적지를, TCP 또는 UDP 헤더의 포트 번호는 받는 프로그램을
       가리킵니다.
     caption: MAC은 Ethernet 헤더, IP는 IP 헤더, 포트 번호는 TCP/UDP 헤더에 있으며 각기 다른 범위를 가리킵니다.
+  question_placements:
+  - question_id: u4-l12-p05-q01
+    after_paragraph: 2
+  - question_id: u4-l12-p05-q04
+    after_paragraph: 4
+
 - terms: []
   questions:
   - id: u4-l12-p06-q01
@@ -319,6 +454,27 @@ page_metadata:
     - id: e
       text: MAC 주소를 숨기면 허가 없이 관찰한다
       feedback: 이 선택지는 다른 개념의 역할이에요. 본문에서 이 Page의 핵심 구분을 다시 확인해 보세요.
+    answer: b
+  - id: u4-l12-p06-q04
+    kind: choice
+    difficulty: easy
+    prompt: 패킷 헤더는 주로 어떤 정보를 담나요?
+    choices:
+    - id: a
+      text: 사용자가 보는 화면의 색
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    - id: b
+      text: 전달하고 처리하는 데 필요한 안내 정보
+      feedback: 맞아요. 전달하고 처리하는 데 필요한 안내 정보입니다.
+    - id: c
+      text: 네트워크 케이블의 길이
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    - id: d
+      text: 전달할 실제 파일 내용만
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    - id: e
+      text: 컴퓨터의 키보드 설정
+      feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
     answer: b
   - id: u4-l12-p06-q02
     kind: choice
@@ -343,16 +499,22 @@ page_metadata:
     answer: e
   - id: u4-l12-p06-q03
     kind: short
-    prompt: 다른 사람의 네트워크 통신을 캡처하기 전에 필요한 것은 무엇인가요?
+    prompt: 캡처 파일을 다른 사람과 공유하기 전에 무엇을 확인해야 하나요?
     answers:
-    - 허가
-    - 권한
-    - 명시적 허가
-    feedback: 본인 장비나 허가받은 네트워크에서만 캡처해야 해요.
+    - 개인정보나 비밀 정보가 포함되지 않았는지
+    - 개인정보 또는 비밀 정보
+    feedback: 캡처 파일을 공유하기 전에는 개인정보나 비밀 정보가 담기지 않았는지 확인해요.
+  question_placements:
+  - question_id: u4-l12-p06-q01
+    after_paragraph: 2
+  - question_id: u4-l12-p06-q04
+    after_paragraph: 3
+
 animations_dir: units/04-layer3-addressing/lessons/02-l3-ip-packet으로-외워라/assets/animations
 additional_sources:
 - https://github.com/physical-spark/course-network/blob/90a5cc40dec981b0e37fa334f3fae8ba673c8f32/studio/wiki/honja-network/01-3.md
 - https://github.com/physical-spark/course-network/blob/90a5cc40dec981b0e37fa334f3fae8ba673c8f32/studio/wiki/honja-network/03-1.md
+
 ---
 
 ## 네트워크에서 데이터는 어떤 단위로 움직일까?
@@ -369,7 +531,9 @@ additional_sources:
 
 예를 들어 편지를 보내면 봉투 겉면의 주소가 우편물이 어디로 가야 하는지 알려주고, 봉투 안 종이에 편지 내용이 담긴다. 패킷에서도 헤더가 송장 역할을 하고 페이로드가 내용물 역할을 한다. 헤더가 단순히 주소만 담는 것은 아니다. 주소 외에도 패킷을 처리하는 데 필요한 여러 정보가 들어가며, 세부 필드는 다음 Unit의 Wireshark 실습에서 더 살펴본다.
 
-그림에서 큰 상자의 페이로드를 열면 작은 상자가 다시 나오는 모습을 보자. 큰 상자의 내용물이 작은 상자 전체일 수 있다는 뜻이다. 이더넷 프레임의 페이로드 안에는 IP 패킷이 들어가고, IP 패킷 안에는 다시 헤더와 페이로드가 있다. 같은 덩어리가 바깥 계층에서는 내용물, 안쪽 계층에서는 헤더와 내용물을 갖춘 전달 단위가 된다.
+그림에서 큰 상자의 페이로드를 열면 작은 상자가 다시 나오는 모습을 보자. 큰 상자의 내용물이 작은 상자 전체일 수 있다는 뜻이다. 이더넷 프레임의 페이로드 안에는 IP 패킷이 들어가고, IP 패킷 안에는 다시 헤더와 페이로드가 있다.
+
+같은 덩어리가 바깥 계층에서는 내용물, 안쪽 계층에서는 헤더와 내용물을 갖춘 전달 단위가 된다.
 
 ## MTU는 한 번에 보낼 패킷의 크기 한계다
 
@@ -394,7 +558,11 @@ IP 헤더의 Version이나 IHL 같은 필드를 16진수에서 손으로 계산�
 
 택배를 전달할 때 한 가지 정보만으로 모든 일을 처리하지 않는다. 현재 배송 구간에서 상자를 전달할 대상과, 최종 목적지, 건물 안에서 받을 사람을 나누어 생각하면 편하다. 네트워크 헤더의 MAC 주소, IP 주소, 포트 번호도 이름은 비슷하게 ‘어디로’를 나타내지만 맡은 범위가 다르다.
 
-**MAC 주소**는 Ethernet 헤더에 담겨 현재 링크에서 프레임을 주고받을 네트워크 인터페이스를 구분한다. **IP 주소**는 IP 헤더에 담겨 네트워크 사이에서 출발지와 목적지를 나타낸다. **포트 번호**는 TCP 또는 UDP 헤더에 담기는 전송 계층 정보로, 같은 기기 안에서 데이터를 받을 프로그램을 구분한다. 포트 번호는 IP 헤더가 아니라 TCP/UDP 헤더에 있다. 포트가 패킷 전달에서 어떻게 쓰이는지는 이 Unit의 Lesson 4에서, TCP와 UDP의 자세한 내용은 Unit 7 Lesson 1에서 살펴본다. 아래 그림은 이 세 식별자가 각기 다른 범위를 가리킨다는 점을 보여준다.
+**MAC 주소**는 Ethernet 헤더에 담겨 현재 링크에서 프레임을 주고받을 네트워크 인터페이스를 구분한다.
+
+**IP 주소**는 IP 헤더에 담겨 네트워크 사이에서 출발지와 목적지를 나타낸다.
+
+**포트 번호**는 TCP 또는 UDP 헤더에 담기는 전송 계층 정보로, 같은 기기 안에서 데이터를 받을 프로그램을 구분한다. 포트 번호는 IP 헤더가 아니라 TCP/UDP 헤더에 있다. 포트가 패킷 전달에서 어떻게 쓰이는지는 이 Unit의 Lesson 4에서, TCP와 UDP의 자세한 내용은 Unit 7 Lesson 1에서 살펴본다. 아래 그림은 이 세 식별자가 각기 다른 범위를 가리킨다는 점을 보여준다.
 
 예를 들어 한 기기에서 브라우저와 메신저가 함께 통신할 때, 포트 번호가 어느 프로그램으로 데이터를 전달할지 구분하는 데 쓰인다. 여기서 말하는 포트 번호는 소프트웨어상의 번호다. 스위치에 케이블을 꽂는 물리 포트와 같은 뜻이 아니다. MAC은 현재 링크의 인터페이스, IP는 네트워크 사이의 목적지, 포트는 기기 안의 프로그램을 가리킨다.
 
@@ -404,4 +572,6 @@ IP 헤더의 Version이나 IHL 같은 필드를 16진수에서 손으로 계산�
 
 캡처 화면에는 다른 사람의 통신이 포함될 수 있다. 그러므로 본인 장비나 명시적으로 허가받은 네트워크에서만 관찰하고, 캡처 파일을 공개하기 전에는 개인정보나 비밀 정보가 담기지 않았는지 확인해야 한다. 이 Lesson의 목적은 도구를 마음껏 들여다보는 데 있지 않고, 네트워크 통신을 안전하게 관찰하는 기본 태도까지 익히는 것이다.
 
-마지막으로 네 가지 연결을 정리해 보자. 패킷은 데이터를 옮기는 작은 단위이며, 헤더는 전달 정보를, 페이로드는 내용을 담는다. MTU는 한 번에 전달할 IP 패킷 크기의 상한을 나타낸다. Wireshark에서는 계층별 헤더를 차례로 펼쳐 읽을 수 있고, MAC·IP·포트는 링크·네트워크·프로그램이라는 서로 다른 범위에서 전달을 돕는다. 이 관계를 알면 화면에 낯선 숫자가 많아도 어느 계층의 어떤 정보를 보는지부터 차근차근 물을 수 있다.
+마지막으로 네 가지 연결을 정리해 보자. 패킷은 데이터를 옮기는 작은 단위이며, 헤더는 전달 정보를, 페이로드는 내용을 담는다.
+
+MTU는 한 번에 전달할 IP 패킷 크기의 상한을 나타낸다. Wireshark에서는 계층별 헤더를 차례로 펼쳐 읽을 수 있고, MAC·IP·포트는 링크·네트워크·프로그램이라는 서로 다른 범위에서 전달을 돕는다. 이 관계를 알면 화면에 낯선 숫자가 많아도 어느 계층의 어떤 정보를 보는지부터 차근차근 물을 수 있다.
