@@ -69,6 +69,12 @@ page_metadata:
   - 인프라(Infrastructure)
   - L2 스위치
   - 네트워크 중간 장비
+  page_id: u2l2-switch
+  video:
+    video_id: Q9yiKrR1lWI
+    title: "[네트워크 기초 강의] 15강. 스위치"
+    creator: 한빛미디어
+    duration_seconds: 1191
   inline_questions_after: 1
   questions:
   - id: u2-l06-p02-q01
@@ -187,6 +193,12 @@ page_metadata:
 - terms:
   - 클라이언트(Client)
   - 서버(Server)
+  page_id: u2l2-client-server
+  video:
+    video_id: R0YJ-r-qLNE
+    title: "서버란 무엇인가요?"
+    creator: 얄팍한 코딩사전
+    duration_seconds: 151
   animations:
   - file: l06-client-server.svg
     title: 요청하는 쪽, 답하는 쪽
@@ -246,6 +258,12 @@ page_metadata:
   - P2P(Peer to Peer)
   - 피어(Peer)
   - 비트토렌트(BitTorrent)
+  page_id: u2l2-peer
+  video:
+    video_id: bWcNEk0H4Y0
+    title: "WebRTC - 클라이언트끼리 소통하기"
+    creator: 얄팍한 코딩사전
+    duration_seconds: 518
   inline_questions_after: 1
   questions:
   - id: u2-l06-p05-q01
@@ -305,6 +323,12 @@ page_metadata:
   - 라우터(Router)
   - IPS
   - 공유기
+  page_id: u2l2-router
+  video:
+    video_id: GEQZ3f6Pji8
+    title: "[네트워크 기초 강의] 26강. 라우팅 테이블"
+    creator: 한빛미디어
+    duration_seconds: 822
   inline_questions_after: 1
   questions:
   - id: u2-l06-p06-q01
@@ -501,6 +525,7 @@ Host(호스트)는 네트워크 통신의 끝에서 데이터를 보내거나 �
 **기억할 말:** Host는 통신의 끝 장치입니다. 노트북과 웹 서버는 통신의 양 끝에 있으므로 둘 다 Host가 될 수 있습니다.
 
 ## Switch · 같은 네트워크의 기기를 연결하는 장비
+<!-- learn-page-id: u2l2-switch -->
 
 L2 스위치는 같은 네트워크 안에서 노트북, 프린터 같은 기기들이 서로 통신하도록 연결합니다. 스위치는 통신의 끝에서 서비스를 이용하는 기기가 아니라, 중간에서 연결을 이어 주는 장비입니다.
 
@@ -513,6 +538,7 @@ Endpoint(엔드포인트)는 특정 통신의 한쪽 끝에 있는 장치입니�
 Host는 통신의 끝 장치를 가리키고, Endpoint는 특정 통신에서 어느 쪽 끝에 있는지를 가리킵니다. 웹 서버도 서비스를 제공하는 통신의 한쪽 끝이므로 Endpoint가 될 수 있습니다. **기억할 말:** Endpoint는 특정 통신의 한쪽 끝입니다.
 
 ## Client와 Server · 요청하는 쪽과 응답하는 쪽
+<!-- learn-page-id: u2l2-client-server -->
 
 노트북에서 웹 페이지를 열면 브라우저가 페이지를 요청합니다. 요청하는 쪽이 Client(클라이언트), 요청을 받아 페이지를 제공하는 쪽이 Server(서버)입니다.
 
@@ -521,12 +547,14 @@ Host는 통신의 끝 장치를 가리키고, Endpoint는 특정 통신에서 �
 **기억할 말:** Client는 요청하고 Server는 응답합니다. 어떤 기기인지보다 이번 통신에서 누가 요청하고 응답하는지 살펴보세요.
 
 ## Peer · 받으면서 나누는 참여자
+<!-- learn-page-id: u2l2-peer -->
 
 P2P(Peer to Peer) 파일 공유에서는 참여자끼리 파일 조각을 직접 주고받습니다. 내 컴퓨터가 없는 조각을 내려받는 동시에, 이미 가진 조각을 다른 참여자에게 보낼 수 있습니다. 이렇게 보내기도 하고 받기도 하는 참여자를 Peer(피어)라고 합니다.
 
 웹 접속에서는 보통 Client가 요청하고 Server가 응답하지만, P2P에서는 한 참여자가 상황에 따라 받는 쪽도, 보내는 쪽도 될 수 있습니다. 모든 참여자가 항상 같은 양을 주고받는다는 뜻은 아닙니다. **기억할 말:** Peer는 P2P에서 데이터를 주고받는 참여자입니다.
 
 ## Router · 네트워크 사이에서 다음 방향을 고르는 장비
+<!-- learn-page-id: u2l2-router -->
 
 Router(라우터)는 목적지 IP 주소와 경로 정보를 보고 패킷을 어느 네트워크 쪽으로 보낼지 고릅니다. L2 스위치가 같은 네트워크 안을 연결한다면, 라우터는 서로 다른 네트워크를 잇습니다.
 

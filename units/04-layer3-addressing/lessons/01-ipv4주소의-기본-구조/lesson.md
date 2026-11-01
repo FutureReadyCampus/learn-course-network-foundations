@@ -12,6 +12,17 @@ page_metadata:
   - MAC 주소 (Media Access Control address)
   - IP 주소 (Internet Protocol address)
   - 계층 (Layer)
+  illustrations:
+  - file: assets/animations/l11-daily-name-vs-address.svg
+    title: "이름만 적은 택배는 어디로 갈까?"
+    alt: "왼쪽 아파트 단지에 ‘나’와 ‘민수’의 집과 경비실이, 오른쪽 바다시 3동에 ‘지영’의 집과 경비실이 있고 가운데 물류센터가 두 동네를 잇습니다. 민수에게 보낸 상자는 경비실을 거쳐 바로 도착합니다. 이름만 적은 지영의 상자는 경비실에서 멈추고 ‘어느 동네로 보내지?’라는 물음이 뜹니다. 동네 주소를 적자 상자가 물류센터를 거쳐 바다시 3동 경비실에 닿고, 그곳에서 이름을 보고 지영의 집에 배달됩니다."
+    caption: "이름은 누구에게 줄지, 주소는 어느 동네로 갈지 알려 줍니다. 먼 곳으로 보내려면 둘 다 필요해요."
+    after_paragraph: -1
+  - file: assets/animations/l11-mac-vs-ip-reach.svg
+    title: "MAC 주소만으로 다른 LAN까지 갈까?"
+    alt: "왼쪽 우리 LAN에 노트북, 프린터, 스위치가, 오른쪽 다른 네트워크에 친구 PC, 다른 PC, 스위치가 있고 가운데 라우터가 두 네트워크를 잇습니다. 목적지 MAC이 프린터인 프레임은 스위치를 거쳐 프린터에 도착합니다. 친구 PC의 MAC만 적은 프레임은 ‘이 LAN에 없는 MAC’이라는 표시와 함께 스위치에 머뭅니다. 목적지 IP 10.1.2.7을 담은 패킷은 라우터를 거쳐 다른 네트워크의 스위치에 닿고, 그 LAN 안에서 친구 PC의 MAC으로 마지막 전달됩니다."
+    caption: "MAC 주소는 지금 연결 구간에서 받을 상대를, IP 주소는 목적지가 있는 네트워크를 가리킵니다. 실제 장치에는 두 주소가 함께 설정되어 각자 역할을 맡아요."
+    after_paragraph: 3
   questions:
   - id: u4-01-p01-q01
     kind: choice
@@ -34,6 +45,27 @@ page_metadata:
       text: "호스트 이름"
       feedback: "다시 확인해 보세요. 호스트 이름."
     answer: b
+  - id: u4-01-p01-q04
+    kind: choice
+    difficulty: easy
+    prompt: 다른 네트워크에 있는 친구에게 데이터를 보내려면, MAC 주소와 함께 어떤 주소가 필요할까요?
+    choices:
+    - id: a
+      text: IP 주소
+      feedback: 맞아요. IP 주소입니다.
+    - id: b
+      text: 스위치 포트 번호
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: c
+      text: 케이블 이름
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: d
+      text: 호스트의 사용자 이름
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: e
+      text: 프레임 크기
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    answer: a
   - id: u4-01-p01-q02
     kind: choice
     difficulty: medium
@@ -61,15 +93,32 @@ page_metadata:
     answers:
     - "MAC address"
     feedback: "정답은 MAC address입니다."
+  question_placements:
+  - question_id: u4-01-p01-q01
+    after_paragraph: 1
+  - question_id: u4-01-p01-q04
+    after_paragraph: 2
+  page_id: u4l11-ip-address-overview
+  video:
+    video_id: GK3h936Co-k
+    title: 'IP주소를 알아봅시다! (Feat. 공인/사설/고정/유동IP, 포트포워딩, DMZ, DDNS)'
+    creator: 얄팍한 코딩사전
+    duration_seconds: 495
+
 - terms:
   - 비트 (bit)
   - 바이트 (byte)
-  animations:
-  - file: l11-ip-four-bytes.svg
-    title: 32비트를 8비트 네 칸으로
-    alt: 전등 스위치 32개가 한 줄로 늘어서 있다가 8개씩 네 칸으로 나뉘고, 각 칸 아래에 0~255 사이의 숫자가 점으로 이어진 IPv4
-      주소 형태로 나타납니다.
-    caption: 스위치 32개를 8개씩 네 칸으로 묶으면, 칸마다 0부터 255까지 읽힙니다.
+  illustrations:
+  - file: assets/animations/l11-daily-light-switches.svg
+    title: "스위치판 하나로 몇 가지를 만들까?"
+    alt: "전등 스위치 하나가 꺼짐에서 켜짐으로 바뀝니다. 이어 스위치 여덟 개가 나란히 놓이고, 모두 꺼진 판은 조합 번호 0, 모두 켜진 판은 조합 번호 255로 표시됩니다. 마지막에 스위치판 네 개가 나란히 걸리고, 각 판의 켜진 모양 아래에 192, 168, 0, 10이 적힙니다."
+    caption: "켜고 끄는 스위치 여덟 개로 256가지 모양을 만들 수 있어요. 0부터 세면 0~255입니다."
+    after_paragraph: -1
+  - file: assets/animations/l11-bits-to-ipv4.svg
+    title: "IPv4 주소는 32비트"
+    alt: "비트 한 칸이 0에서 1로 바뀝니다. 여덟 칸이 모두 0이면 0, 모두 1이면 255로 표시됩니다. 마지막에 8비트 묶음 네 개가 각각 192, 168, 0, 10으로 읽히고 점으로 이어집니다."
+    caption: "8비트 한 묶음은 0부터 255까지 나타내고, 그런 묶음 네 개가 모여 32비트 IPv4 주소 하나가 됩니다."
+    after_paragraph: 3
   questions:
   - id: u4-01-p02-q01
     kind: choice
@@ -92,6 +141,27 @@ page_metadata:
       text: "64비트"
       feedback: "다시 확인해 보세요. 64비트."
     answer: d
+  - id: u4-01-p02-q04
+    kind: choice
+    difficulty: easy
+    prompt: IPv4 주소에서 점 사이 숫자 하나는 몇 비트씩 묶은 값인가요?
+    choices:
+    - id: a
+      text: 8비트
+      feedback: 맞아요. 8비트입니다.
+    - id: b
+      text: 1비트
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: c
+      text: 4비트
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: d
+      text: 16비트
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: e
+      text: 32비트
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    answer: a
   - id: u4-01-p02-q02
     kind: choice
     difficulty: medium
@@ -119,9 +189,26 @@ page_metadata:
     answers:
     - "bit"
     feedback: "정답은 bit입니다."
+  question_placements:
+  - question_id: u4-01-p02-q01
+    after_paragraph: 1
+  - question_id: u4-01-p02-q04
+    after_paragraph: 3
+
 - terms:
   - ipconfig
   - 사설 주소 (private address)
+  illustrations:
+  - file: assets/animations/l11-daily-weights.svg
+    title: "추 여덟 개로 무게 만들기"
+    alt: "128g, 64g, 32g, 16g, 8g, 4g, 2g, 1g 추가 한 줄로 놓여 있습니다. 128g과 64g 추가 주황색으로 바뀌어 192g, 이어서 128g·32g·8g 추가 바뀌어 168g이 표시됩니다. 마지막에 모든 추가 주황색이 되어 255g이 되고, 256g은 만들 수 없다는 표시가 나타납니다."
+    caption: "올린 추의 무게만 더하면 전체 무게가 나옵니다. 추 여덟 개로 만들 수 있는 가장 무거운 무게는 255g이에요."
+    after_paragraph: -1
+  - file: assets/animations/l11-byte-place-values.svg
+    title: "8비트 한 묶음을 10진수로 읽기"
+    alt: "자릿값 128부터 1까지 적힌 비트 여덟 칸이 있습니다. 11000000이 128 + 64 = 192로, 10101000이 128 + 32 + 8 = 168로 읽힙니다. 마지막에 11111111이 255로 읽히고, 192.168.0.256은 쓸 수 없다는 표시가 나타납니다."
+    caption: "1인 자리의 자릿값을 더하면 점 사이 숫자가 됩니다. 한 묶음의 가장 큰 값은 255예요."
+    after_paragraph: 2
   questions:
   - id: u4-01-p03-q01
     kind: choice
@@ -143,6 +230,27 @@ page_metadata:
     - id: e
       text: "1~256"
       feedback: "다시 확인해 보세요. 1~256."
+    answer: a
+  - id: u4-01-p03-q04
+    kind: choice
+    difficulty: easy
+    prompt: 유선과 Wi-Fi 어댑터가 모두 연결된 컴퓨터에서 주소를 볼 때 함께 확인할 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 어느 네트워크 어댑터의 주소인지
+      feedback: 맞아요. 어느 네트워크 어댑터의 주소인지입니다.
+    - id: b
+      text: 모니터 크기
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: c
+      text: 키보드 언어
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: d
+      text: 폴더 이름
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: e
+      text: 화면 해상도
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
     answer: a
   - id: u4-01-p03-q02
     kind: choice
@@ -171,16 +279,28 @@ page_metadata:
     answers:
     - "ipconfig"
     feedback: "정답은 ipconfig입니다."
+  question_placements:
+  - question_id: u4-01-p03-q01
+    after_paragraph: 2
+  - question_id: u4-01-p03-q04
+    after_paragraph: 4
+
 - terms:
   - Network ID (네트워크 식별자)
   - Host ID (호스트 식별자)
   - 프리픽스 길이 (prefix length)
   - 호스트 (Host)
-  animations:
-  - file: l11-network-host-split.svg
-    title: /24 예에서 네트워크 부분과 호스트 부분
-    alt: 192.168.0.10/24에서 앞 24비트와 뒤 8비트를 색으로 나누어 보이고, 같은 네트워크의 주소와 다른 네트워크의 주소를 비교합니다.
-    caption: 이 그림은 /24라는 예입니다. 프리픽스 길이가 바뀌면 네트워크와 호스트의 경계도 달라집니다.
+  illustrations:
+  - file: assets/animations/l11-daily-shop-doors.svg
+    title: "가게는 하나, 문마다 주소가 있다"
+    alt: "가운데 가게 한 곳이 있습니다. 왼쪽 정문이 꽃길에 닿아 ‘꽃길 10’, 오른쪽 뒷문이 별길에 닿아 ‘별길 3’이라는 주소가 붙습니다. 마지막에 ‘꽃길 10’의 10에 테두리가 생기고, ‘가게 = 찾아가는 곳 자체’와 ‘10 = 주소 끝의 번지’가 서로 다르다는 표시가 나타납니다."
+    caption: "가게는 하나여도 길에 닿은 문마다 주소가 따로 있습니다. 주소 끝의 번지와 가게 자체는 다른 것이에요."
+    after_paragraph: -1
+  - file: assets/animations/l11-host-interfaces.svg
+    title: "호스트는 하나, 인터페이스마다 IP"
+    alt: "가운데 노트북 한 대가 있습니다. 왼쪽 유선 NIC는 유선 LAN에 연결되어 192.168.0.10을, 오른쪽 Wi-Fi NIC는 Wi-Fi 네트워크에 연결되어 10.0.0.7을 받습니다. 마지막에 192.168.0.10의 10에 테두리가 생기고, ‘호스트 = 노트북 장치’와 ‘Host ID = 주소 안의 10’이 다르다는 표시가 나타납니다."
+    caption: "IP 주소는 장치 전체가 아니라 각 네트워크 인터페이스에 설정됩니다. 호스트는 장치이고, Host ID는 주소의 뒷부분이에요. 이 그림은 /24를 가정합니다."
+    after_paragraph: 1
   questions:
   - id: u4-01-p04-q01
     kind: choice
@@ -203,6 +323,27 @@ page_metadata:
       text: "노트북"
       feedback: "맞아요. 노트북입니다."
     answer: e
+  - id: u4-01-p04-q04
+    kind: choice
+    difficulty: easy
+    prompt: 호스트(host)와 Host ID는 같은 것을 가리키나요?
+    choices:
+    - id: a
+      text: 아니요. 호스트는 장치이고 Host ID는 IP 주소의 한 부분입니다.
+      feedback: 맞아요. 아니요. 호스트는 장치이고 Host ID는 IP 주소의 한 부분입니다.입니다.
+    - id: b
+      text: 네. 둘 다 MAC 주소입니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: c
+      text: 네. 둘 다 라우터를 뜻합니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: d
+      text: 아니요. Host ID는 케이블 이름입니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: e
+      text: 아니요. 호스트는 네트워크 번호입니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    answer: a
   - id: u4-01-p04-q02
     kind: choice
     difficulty: medium
@@ -230,8 +371,25 @@ page_metadata:
     answers:
     - "host"
     feedback: "정답은 host입니다."
+  question_placements:
+  - question_id: u4-01-p04-q01
+    after_paragraph: 1
+  - question_id: u4-01-p04-q04
+    after_paragraph: 2
+
 - terms:
   - 목적지 (destination)
+  illustrations:
+  - file: assets/animations/l11-daily-apartment-unit.svg
+    title: "‘101동 1203호’를 두 단계로 읽기"
+    alt: "‘101동 1203호’라는 주소가 파란색 101동과 주황색 1203호로 나뉩니다. 101동 1204호는 같은 동, 102동 1203호는 다른 동으로 표시됩니다. 마지막에 구분 없이 ‘1011203’만 남자 10|11203, 101|1203, 1011|203 세 가지 끊는 방법에 물음표가 붙습니다."
+    caption: "동을 먼저 찾고 그 안에서 호를 찾습니다. 다만 구분 표시가 없으면 어디까지가 동인지 알 수 없어요."
+    after_paragraph: -1
+  - file: assets/animations/l11-network-host-id.svg
+    title: "IP 주소를 네트워크 부분과 호스트 부분으로"
+    alt: "192.168.0.10이 /24 기준으로 파란색 Network ID 192.168.0과 주황색 Host ID 10으로 나뉩니다. 192.168.0.11은 같은 네트워크, 192.168.1.10은 다른 네트워크로 표시됩니다. 마지막에 프리픽스 없이 주소만 남자 192|168.0.10, 192.168|0.10, 192.168.0|10 세 후보에 물음표가 붙습니다."
+    caption: "/24라는 기준이 있을 때 앞 24비트가 네트워크 부분, 뒤 8비트가 호스트 부분입니다. 주소 숫자만으로는 경계를 알 수 없어요."
+    after_paragraph: 2
   questions:
   - id: u4-01-p05-q01
     kind: choice
@@ -254,6 +412,27 @@ page_metadata:
       text: "기본 게이트웨이"
       feedback: "다시 확인해 보세요. 기본 게이트웨이."
     answer: c
+  - id: u4-01-p05-q04
+    kind: choice
+    difficulty: easy
+    prompt: 192.168.0.10/24와 192.168.0.11/24는 같은 네트워크에 속하나요?
+    choices:
+    - id: a
+      text: 네. /24 기준에서 앞의 24비트가 같습니다.
+      feedback: 맞아요. 네. /24 기준에서 앞의 24비트가 같습니다.입니다.
+    - id: b
+      text: 아니요. 마지막 숫자가 다르면 항상 다른 네트워크입니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: c
+      text: 아니요. IP 주소는 네트워크를 구분하지 않습니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: d
+      text: 네. 숫자가 네 개면 무조건 같은 네트워크입니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: e
+      text: 판단할 수 없습니다. MAC 주소가 같아야 합니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    answer: a
   - id: u4-01-p05-q02
     kind: choice
     difficulty: medium
@@ -282,13 +461,25 @@ page_metadata:
     - "Network ID"
     - "network id"
     feedback: "정답은 Network ID입니다."
+  question_placements:
+  - question_id: u4-01-p05-q01
+    after_paragraph: 1
+  - question_id: u4-01-p05-q04
+    after_paragraph: 2
+
 - terms:
   - 라우터 (Router)
-  animations:
-  - file: l11-parcel-router.svg
-    title: 목적지 네트워크를 향해 전달하는 라우터
-    alt: 목적지 IP 주소가 적힌 데이터가 라우터들을 거쳐 목적지 네트워크 쪽으로 이동하고, 마지막 네트워크에서 목적지 장치로 전달됩니다.
-    caption: 라우터는 목적지 IP와 경로 정보를 보고 다음 네트워크로 전달합니다. 이 그림의 동네 구분은 /24를 가정한 단순한 예입니다.
+  illustrations:
+  - file: assets/animations/l11-daily-divider-rule.svg
+    title: "칸막이를 어디에 두느냐"
+    alt: "여덟 자리 번호 1, 0, 1, 2, 0, 3, 1, 5 위에 ‘규칙: 앞 6자리’ 칸막이가 서 있어 앞 여섯 칸은 파란색 동네 번호, 뒤 두 칸은 주황색 집 번호가 됩니다. 집 번호는 100가지라고 표시됩니다. 칸막이가 ‘앞 4자리’로 옮겨지면 집 번호가 네 자리가 되어 10,000가지가 됩니다. 마지막에 전체 지도, 동네 먼저, 그다음 집 순서가 화살표로 이어집니다."
+    caption: "칸막이를 어디에 두느냐에 따라 동네 번호와 집 번호의 경계가 달라지고, 구별할 수 있는 집의 수도 달라져요."
+    after_paragraph: -1
+  - file: assets/animations/l11-prefix-boundary.svg
+    title: "프리픽스 길이가 경계를 정한다"
+    alt: "192.168.0.10을 32비트로 펼친 칸 위에 /24 경계선이 있어 앞 24비트는 파란색 네트워크 부분, 뒤 8비트는 주황색 호스트 부분이 됩니다. 호스트 부분은 2⁸ = 256가지로 표시됩니다. 경계선이 /16으로 옮겨지면 호스트 부분이 16비트가 되어 2¹⁶ = 65,536가지가 됩니다. 마지막에 전체 주소 공간, 목적지 네트워크, 그 안의 인터페이스 순서가 화살표로 이어집니다."
+    caption: "프리픽스 길이가 네트워크와 호스트의 경계를 정합니다. 그림의 수는 비트 조합의 수이고, 실제로 쓸 수 있는 주소 수는 서브넷과 CIDR Lesson에서 계산해요."
+    after_paragraph: 3
   questions:
   - id: u4-01-p06-q01
     kind: choice
@@ -310,6 +501,27 @@ page_metadata:
     - id: e
       text: "24개의 라우터가 있다는 뜻"
       feedback: "다시 확인해 보세요. 24개의 라우터가 있다는 뜻."
+    answer: a
+  - id: u4-01-p06-q07
+    kind: choice
+    difficulty: easy
+    prompt: 192.168.0.10/16에서 네트워크 부분은 어디까지인가요?
+    choices:
+    - id: a
+      text: '192.168'
+      feedback: 맞아요. 192.168입니다.
+    - id: b
+      text: '192'
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: c
+      text: 192.168.0
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: d
+      text: 192.168.0.10 전체
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: e
+      text: '10'
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
     answer: a
   - id: u4-01-p06-q02
     kind: choice
@@ -402,7 +614,24 @@ page_metadata:
       text: "그 네트워크 안의 장치 인터페이스"
       feedback: "맞아요. 호스트 부분은 해당 네트워크 안에서 인터페이스를 구별합니다."
     answer: e
+  question_placements:
+  - question_id: u4-01-p06-q01
+    after_paragraph: 1
+  - question_id: u4-01-p06-q07
+    after_paragraph: 2
+
 - terms: []
+  illustrations:
+  - file: assets/animations/l11-daily-parcel-hubs.svg
+    title: "물류센터를 거쳐 가는 택배"
+    alt: "출발 집, A 물류센터, B 물류센터, 바다시 3동의 7번지 집이 한 줄로 이어져 있습니다. 상자에는 ‘최종: 바다시 3동 7번지’ 스티커와 ‘이번 구간’ 스티커가 붙어 있습니다. 상자가 구간을 하나 지날 때마다 이번 구간 스티커는 A 센터, B 센터, 7번지 집으로 바뀌지만 최종 주소는 그대로입니다. 마지막에 두 스티커의 변화를 표로 보여 줍니다."
+    caption: "최종 주소는 끝까지 같고, 이번 구간에 받을 곳만 바뀝니다."
+    after_paragraph: -1
+  - file: assets/animations/l11-router-hops.svg
+    title: "라우터는 목적지 네트워크 쪽으로 전달한다"
+    alt: "192.168.0.10 노트북, 라우터 1, 라우터 2, 10.1.2.0/24 네트워크의 서버 10.1.2.7이 한 줄로 이어져 있습니다. 패킷에는 목적지 IP 10.1.2.7과 프레임의 목적지 MAC이 함께 표시됩니다. 구간을 하나 지날 때마다 목적지 MAC은 라우터 1, 라우터 2, 서버로 바뀌지만 목적지 IP는 그대로입니다. 마지막에 두 값의 변화를 표로 보여 줍니다."
+    caption: "목적지 IP는 최종 서버를 계속 가리키고, Ethernet 프레임의 목적지 MAC은 구간마다 다음 수신자로 바뀝니다. NAT 같은 주소 변환이 없는 경우예요."
+    after_paragraph: 3
   questions:
   - id: u4-01-p07-q01
     kind: choice
@@ -427,7 +656,7 @@ page_metadata:
     answer: d
   - id: u4-01-p07-q02
     kind: choice
-    difficulty: medium
+    difficulty: easy
     prompt: "다른 네트워크에 있는 서버로 보낼 때, 현재 LAN의 Ethernet 프레임은 보통 누구의 MAC 주소를 목적지로 사용하나요?"
     choices:
     - id: a
@@ -515,8 +744,15 @@ page_metadata:
       text: "보내는 장치의 MAC 주소"
       feedback: "다시 확인해 보세요. 목적지 네트워크 안에서 최종 목적지 인터페이스를 향합니다."
     answer: c
+  question_placements:
+  - question_id: u4-01-p07-q01
+    after_paragraph: 1
+  - question_id: u4-01-p07-q02
+    after_paragraph: 2
+
 ---
 ## MAC 주소만으로 다른 LAN까지 보낼 수 있을까?
+<!-- learn-page-id: u4l11-ip-address-overview -->
 
 같은 집의 노트북에서 같은 집의 프린터로 파일을 보낸다고 해 보자. 두 기기가 같은 LAN에 연결되어 있다면, Ethernet 프레임은 프린터의 네트워크 인터페이스가 가진 MAC 주소를 목적지로 삼아 전달될 수 있다. 이때 스위치는 프레임의 목적지 MAC 주소를 보고 어느 포트 쪽으로 보낼지 판단한다.
 
@@ -527,6 +763,8 @@ page_metadata:
 택배에 받는 사람 이름만 적으면 배송할 수 없는 것과 비슷하다. 받는 사람을 알아보는 정보와 실제로 찾아갈 주소가 모두 필요하다. MAC 주소는 네트워크 인터페이스에 연결된 L2 식별자이고, IP 주소는 L3에서 네트워크와 그 안의 목적지를 찾는 논리적 주소다. 둘 중 하나만 쓰는 것이 아니라, 하나의 장치가 통신할 때 둘 다 각자의 역할을 맡는다.
 
 층을 나눈 건물처럼 위쪽 통신도 아래쪽 통신의 도움을 받는다. IP 패킷을 실은 Ethernet 프레임이 스위치를 지나가고, 그 위에서 TCP나 UDP, TLS, HTTP 같은 기능이 동작할 수 있다. 택배 비유는 주소의 역할이 다르다는 점을 이해하는 데까지만 사용하자. 실제 장치에는 MAC 주소와 IP 주소가 함께 설정될 수 있고, 이 정보가 택배 상자처럼 붙는 것도 아니다.
+
+아래 영상은 **[참고용]**으로 가볍게 시청해 보자. 공인·사설 IP 같은 주변 개념도 함께 다루므로, 이 Lesson에서 배우는 IPv4 비트 구조와 프리픽스 경계를 대신하는 강의는 아니다.
 
 ## IPv4 주소는 32비트다
 
@@ -548,7 +786,9 @@ IPv4는 이런 비트 32개를 8개씩 네 묶음으로 나눠 적는다. `8 × 
 
 숫자 하나를 2진수로 읽어 보자. `192`는 `11000000`이다. 8자리의 자릿값은 왼쪽부터 `128, 64, 32, 16, 8, 4, 2, 1`이므로, 켜진 두 자리 `128 + 64`를 더하면 192가 된다. 두 번째 숫자 `168`은 `10101000`이고, `128 + 32 + 8 = 168`이다. 점 사이 네 숫자는 이런 8비트 묶음을 각각 10진수로 바꿔 적은 것이다.
 
-네트워크 어댑터가 여러 개라면 `ipconfig` 결과에도 여러 주소가 나올 수 있다. 유선 연결, 무선 연결, 가상 어댑터가 각자 주소를 가질 수 있기 때문이다. 주소를 볼 때는 숫자만 외우기보다 어느 어댑터에 속한 주소인지 함께 확인해 보자.
+네트워크 어댑터가 여러 개라면 `ipconfig` 결과에도 여러 주소가 나올 수 있다.
+
+유선 연결, 무선 연결, 가상 어댑터가 각자 주소를 가질 수 있기 때문이다. 주소를 볼 때는 숫자만 외우기보다 어느 어댑터에 속한 주소인지 함께 확인해 보자.
 
 ## 네트워크의 호스트와 주소의 Host ID
 

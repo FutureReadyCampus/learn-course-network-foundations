@@ -32,24 +32,24 @@ page_metadata:
   - id: u3-02-p01-q01
     kind: choice
     difficulty: easy
-    prompt: 24포트 스위치의 포트 수가 직접 가리키는 것은 무엇인가요?
+    prompt: 집에서 컴퓨터와 프린터를 유선으로 연결할 때, 여러 케이블을 한곳에 모아 주는 장비는 무엇인가요?
     choices:
     - id: a
-      text: LAN의 개수
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 라우터
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: b
-      text: 프레임의 개수
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 액세스 스위치
+      feedback: 맞아요. 액세스 스위치.
     - id: c
-      text: 연결할 수 있는 케이블 끝의 수
-      feedback: 맞아요. 연결할 수 있는 케이블 끝의 수.
+      text: 모뎀
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: d
-      text: IP 네트워크 수
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 키보드
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: e
-      text: 반드시 연결되는 PC 대수
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
-    answer: c
+      text: 모니터
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    answer: b
   - id: u3-02-p01-q02
     kind: choice
     difficulty: medium
@@ -80,24 +80,46 @@ page_metadata:
   - id: u3-02-p01-q04
     kind: choice
     difficulty: medium
-    prompt: "단말 가까이에서 PC나 프린터를 연결하는 스위치는 무엇인가요?"
+    prompt: 스위치의 포트 수를 올바르게 이해한 것은 무엇인가요?
     choices:
     - id: a
-      text: "배포 서버"
-      feedback: "다시 본문을 확인해 보세요. 배포 서버."
+      text: 연결 가능한 케이블 끝의 수
+      feedback: 맞아요. 연결 가능한 케이블 끝의 수.
     - id: b
-      text: "라우터"
-      feedback: "다시 본문을 확인해 보세요. 라우터."
+      text: LAN의 개수
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: c
-      text: "모뎀"
-      feedback: "다시 본문을 확인해 보세요. 모뎀."
+      text: 연결 가능한 PC만의 수
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: d
-      text: "무선 NIC"
-      feedback: "다시 본문을 확인해 보세요. 무선 NIC."
+      text: 전송 가능한 프레임 수
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: e
-      text: "액세스 스위치"
-      feedback: "맞아요. 액세스 스위치입니다."
-    answer: e
+      text: IP 네트워크 수
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    answer: a
+  - id: u3-02-p01-q05
+    kind: choice
+    difficulty: medium
+    prompt: 24포트 스위치에 연결할 수 있는 케이블 끝은 최대 몇 개인가요?
+    choices:
+    - id: a
+      text: 8개
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: b
+      text: 16개
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: c
+      text: 24개
+      feedback: 맞아요. 24개.
+    - id: d
+      text: 48개
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: e
+      text: 포트 수와 관계없다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    answer: c
+  inline_questions_after: 1
   animations:
   - file: l09-access-switch-ports.svg
     title: "액세스 스위치에 단말 연결하기"
@@ -130,23 +152,23 @@ page_metadata:
   - id: u3-02-p02-q01
     kind: choice
     difficulty: easy
-    prompt: VLAN에서 Virtual(가상)이 뜻하는 바를 가장 잘 설명한 것은 무엇인가요?
+    prompt: 교실 한 곳의 책상을 구역별로 나누듯, 스위치 한 대의 포트들을 설정으로 나눈 논리적 LAN은 무엇인가요?
     choices:
     - id: a
-      text: 실제로 존재하지 않아 프레임도 전달하지 않는 LAN
-      feedback: 다시 생각해 보세요. VLAN은 스위치의 실제 전달 동작에 적용되는 설정입니다.
+      text: 허브
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: b
-      text: 별도의 스위치 여러 대를 반드시 새로 사서 만드는 LAN
-      feedback: 다시 생각해 보세요. VLAN을 나누는 데 꼭 별도 스위치가 필요한 것은 아닙니다.
+      text: IP 주소
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: c
-      text: 한 대의 물리적 스위치를 설정으로 여러 논리적 LAN처럼 나눈 것
-      feedback: 맞아요. 물리 장비는 함께 쓰면서 네트워크를 논리적으로 구분합니다.
+      text: VLAN
+      feedback: 맞아요. VLAN.
     - id: d
-      text: 스위치의 포트에 붙이는 인터넷 속도 표시
-      feedback: 다시 생각해 보세요. VLAN은 속도 단위가 아닙니다.
+      text: 케이블
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: e
-      text: MAC 주소와 IP 주소를 합친 새 주소
-      feedback: 다시 생각해 보세요. VLAN은 주소를 합치는 방식이 아닙니다.
+      text: 인터넷 브라우저
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     answer: c
   - id: u3-02-p02-q02
     kind: choice
@@ -177,6 +199,50 @@ page_metadata:
     - 논리적
     - 논리
     feedback: 정답은 실제 장비를 더하는 대신 논리적으로 구분하기 때문입니다.
+  - id: u3-02-p02-q04
+    kind: choice
+    difficulty: medium
+    prompt: VLAN 10과 VLAN 20에 속한 두 PC가 통신하려면 어떤 기능이 필요할까요?
+    choices:
+    - id: a
+      text: 같은 물리 스위치에 꽂기
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: b
+      text: MAC 주소를 같게 하기
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: c
+      text: 두 VLAN 사이의 라우터 또는 L3 스위치
+      feedback: 맞아요. 두 VLAN 사이의 라우터 또는 L3 스위치.
+    - id: d
+      text: 스위치 재시작
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: e
+      text: 더 긴 케이블
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    answer: c
+  - id: u3-02-p02-q05
+    kind: choice
+    difficulty: medium
+    prompt: 한 스위치에서 포트 1~4는 VLAN 10, 포트 5~8은 VLAN 20입니다. 두 그룹의 관계는 무엇인가요?
+    choices:
+    - id: a
+      text: 서로 다른 논리적 LAN이다
+      feedback: 맞아요. 서로 다른 논리적 LAN이다.
+    - id: b
+      text: 반드시 서로 통신한다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: c
+      text: 서로 다른 IP 주소다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: d
+      text: 두 대의 물리 스위치다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: e
+      text: 포트 번호가 곧 MAC 주소다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    answer: a
+  inline_questions_after: 1
+
 - terms:
   - MAC 주소 테이블
   - 출발지 MAC 주소
@@ -205,24 +271,24 @@ page_metadata:
   - id: u3-02-p03-q01
     kind: choice
     difficulty: easy
-    prompt: 스위치가 MAC 주소 테이블을 배울 때 프레임에서 보는 주소는 무엇인가요?
+    prompt: 출석부에 “민수가 3번 자리에서 왔다”고 적듯, 스위치가 프레임에서 확인해 포트와 연결해 기억하는 주소는 무엇인가요?
     choices:
     - id: a
-      text: HTTP 경로
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 목적지 IP 주소
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: b
+      text: 웹사이트 주소
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: c
       text: 출발지 MAC 주소
       feedback: 맞아요. 출발지 MAC 주소.
-    - id: c
-      text: 목적지 IP 주소
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
     - id: d
-      text: Metric
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: VLAN 이름
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: e
-      text: 목적지 MAC 주소만
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
-    answer: b
+      text: 파일 이름
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    answer: c
   - id: u3-02-p03-q02
     kind: choice
     difficulty: medium
@@ -250,27 +316,49 @@ page_metadata:
     answers:
     - MAC address table
     feedback: 정답은 MAC address table입니다.
-  - id: u3-02-p02-q04
+  - id: u3-02-p03-q04
     kind: choice
     difficulty: medium
-    prompt: "스위치가 같은 MAC 주소를 새 포트에서 다시 학습하면 일반적으로 어떤 일이 일어나나요?"
+    prompt: VLAN 10에서 출발지 MAC 주소가 3번 포트로 들어왔습니다. 스위치가 기록하는 관계는 무엇인가요?
     choices:
     - id: a
-      text: "프레임의 IP 주소를 포트 번호로 바꾼다"
-      feedback: "다시 본문을 확인해 보세요. 프레임의 IP 주소를 포트 번호로 바꾼다."
+      text: 목적지 IP와 웹 포트
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: b
-      text: "MAC 주소 테이블의 포트 기록을 새 위치로 갱신한다"
-      feedback: "맞아요. MAC 주소 테이블의 포트 기록을 새 위치로 갱신한다입니다."
+      text: 출발지 MAC과 VLAN 10, 들어온 3번 포트
+      feedback: 맞아요. 출발지 MAC과 VLAN 10, 들어온 3번 포트.
     - id: c
-      text: "그 MAC 주소를 영구 차단한다"
-      feedback: "다시 본문을 확인해 보세요. 그 MAC 주소를 영구 차단한다."
+      text: 파일과 사용자 이름
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: d
-      text: "모든 스위치 포트를 비활성화한다"
-      feedback: "다시 본문을 확인해 보세요. 모든 스위치 포트를 비활성화한다."
+      text: 모든 MAC 주소와 모든 포트
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: e
-      text: "출발지 MAC 주소를 목적지 MAC 주소로 바꾼다"
-      feedback: "다시 본문을 확인해 보세요. 출발지 MAC 주소를 목적지 MAC 주소로 바꾼다."
+      text: 프레임 크기와 속도
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     answer: b
+  - id: u3-02-p03-q05
+    kind: choice
+    difficulty: medium
+    prompt: VLAN 10의 3번 포트에서 출발지 MAC 02:00:00:00:00:0A가 들어왔습니다. 표에 어떻게 적히나요?
+    choices:
+    - id: a
+      text: 목적지 주소가 3번 포트
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: b
+      text: VLAN 10의 출발지 MAC이 3번 포트에서 보임
+      feedback: 맞아요. VLAN 10의 출발지 MAC이 3번 포트에서 보임.
+    - id: c
+      text: 모든 VLAN의 주소가 3번 포트
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: d
+      text: 3번 포트의 IP 주소
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: e
+      text: 스위치의 속도
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    answer: b
+  inline_questions_after: 1
   animations:
   - file: l09-mac-learning.svg
     title: "출발지 MAC과 포트를 기억한다"
@@ -302,24 +390,24 @@ page_metadata:
   - id: u3-02-p04-q01
     kind: choice
     difficulty: easy
-    prompt: 스위치가 목적지 MAC 주소와 포트를 이미 알고 있다면 프레임을 어디로 보내나요?
+    prompt: 식당에서 손님이 앉은 테이블을 알고 음식을 그쪽으로 가져가듯, 스위치가 목적지 위치를 알 때 하는 일은 무엇인가요?
     choices:
     - id: a
-      text: 그 목적지에 해당하는 포트
-      feedback: 맞아요. 그 목적지에 해당하는 포트.
+      text: 모든 포트에 복사한다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: b
-      text: 라우터의 WAN 포트로 보낸다
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 프레임을 버린다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: c
-      text: 모든 포트에 항상 복사한다
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: IP 주소를 새로 만든다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: d
-      text: 프레임이 들어온 포트로만 보낸다
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 알고 있는 목적지 포트로 보낸다
+      feedback: 맞아요. 알고 있는 목적지 포트로 보낸다.
     - id: e
-      text: 아무 포트로나 무작위 전송한다
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
-    answer: a
+      text: 다른 VLAN에 보낸다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    answer: d
   - id: u3-02-p04-q02
     kind: choice
     difficulty: medium
@@ -347,27 +435,49 @@ page_metadata:
     answers:
     - destination MAC address
     feedback: 정답은 destination MAC address입니다.
-  - id: u3-02-p03-q04
+  - id: u3-02-p04-q04
     kind: choice
     difficulty: medium
-    prompt: "목적지 MAC 주소가 MAC 주소 테이블에 있고 8번 포트에 연결되어 있다면 스위치는 프레임을 어떻게 전달하나요?"
+    prompt: 목적지 MAC 주소가 VLAN 10의 8번 포트에 있다고 알려져 있다면 올바른 전달은 무엇인가요?
     choices:
     - id: a
-      text: "들어온 포트를 포함한 모든 포트로 항상 복사한다"
-      feedback: "다시 본문을 확인해 보세요. 들어온 포트를 포함한 모든 포트로 항상 복사한다."
+      text: VLAN 20으로 보낸다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: b
-      text: "라우터를 통해서만 보낸다"
-      feedback: "다시 본문을 확인해 보세요. 라우터를 통해서만 보낸다."
+      text: 같은 VLAN의 모든 포트로 복사한다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: c
-      text: "포트 번호를 무작위로 고른다"
-      feedback: "다시 본문을 확인해 보세요. 포트 번호를 무작위로 고른다."
+      text: 프레임을 버린다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: d
-      text: "8번 포트로 전달한다"
-      feedback: "맞아요. 8번 포트로 전달한다입니다."
+      text: VLAN 10의 8번 포트로 전달한다
+      feedback: 맞아요. VLAN 10의 8번 포트로 전달한다.
     - id: e
-      text: "프레임을 폐기한다"
-      feedback: "다시 본문을 확인해 보세요. 프레임을 폐기한다."
+      text: 라우터로만 보낸다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     answer: d
+  - id: u3-02-p04-q05
+    kind: choice
+    difficulty: medium
+    prompt: 같은 VLAN에서 목적지 MAC이 8번 포트에 있다고 알려졌습니다. 스위치의 동작은 무엇인가요?
+    choices:
+    - id: a
+      text: 3번 포트로 되돌려 보낸다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: b
+      text: VLAN 20으로 복사한다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: c
+      text: 8번 포트로 포워딩하고 불필요한 포트는 필터링한다
+      feedback: 맞아요. 8번 포트로 포워딩하고 불필요한 포트는 필터링한다.
+    - id: d
+      text: 모든 포트로 플러딩한다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: e
+      text: 목적지 MAC을 지운다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    answer: c
+  inline_questions_after: 1
   animations:
   - file: l09-known-unicast.svg
     title: "목적지를 알면 그 포트로만"
@@ -400,24 +510,24 @@ page_metadata:
   - id: u3-02-p05-q01
     kind: choice
     difficulty: easy
-    prompt: 목적지 MAC 주소를 테이블에서 찾지 못했을 때 스위치가 같은 VLAN에 퍼뜨리는 동작은 무엇인가요?
+    prompt: 우편물의 받는 주소를 아직 모르면 같은 동네의 가능한 집들에 확인하듯, 스위치가 알 수 없는 목적지로 하는 동작은 무엇인가요?
     choices:
     - id: a
-      text: Unicast
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 포트 학습
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: b
-      text: Flooding
-      feedback: 맞아요. Flooding.
+      text: VLAN 태깅
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: c
-      text: Routing
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 플러딩
+      feedback: 맞아요. 플러딩.
     - id: d
-      text: Link up
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 링크 다운
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: e
-      text: Encapsulation
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
-    answer: b
+      text: 라우팅
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    answer: c
   - id: u3-02-p05-q02
     kind: choice
     difficulty: medium
@@ -445,27 +555,49 @@ page_metadata:
     answers:
     - Unicast
     feedback: 정답은 Unicast입니다.
-  - id: u3-02-p04-q04
+  - id: u3-02-p05-q04
     kind: choice
     difficulty: medium
-    prompt: "목적지 MAC 주소를 모르는 프레임을 플러딩할 때 스위치의 동작으로 맞는 것은 무엇인가요?"
+    prompt: 알 수 없는 유니캐스트와 브로드캐스트의 공통점과 차이를 올바르게 말한 것은 무엇인가요?
     choices:
     - id: a
-      text: "들어온 포트를 제외한 같은 LAN의 포트들로 내보낸다"
-      feedback: "맞아요. 들어온 포트를 제외한 같은 LAN의 포트들로 내보낸다입니다."
+      text: 둘 다 목적지가 같다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: b
-      text: "들어온 포트로만 되돌려 보낸다"
-      feedback: "다시 본문을 확인해 보세요. 들어온 포트로만 되돌려 보낸다."
+      text: 둘 다 모든 VLAN에 전달된다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: c
-      text: "인터넷의 모든 네트워크로 전달한다"
-      feedback: "다시 본문을 확인해 보세요. 인터넷의 모든 네트워크로 전달한다."
+      text: 목적지는 다르지만 해당 VLAN 안에서 여러 포트로 퍼질 수 있다
+      feedback: 맞아요. 목적지는 다르지만 해당 VLAN 안에서 여러 포트로 퍼질 수 있다.
     - id: d
-      text: "목적지 IP 주소를 찾아 라우팅한다"
-      feedback: "다시 본문을 확인해 보세요. 목적지 IP 주소를 찾아 라우팅한다."
+      text: 브로드캐스트는 특정 한 포트만 쓴다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: e
-      text: "프레임을 항상 폐기한다"
-      feedback: "다시 본문을 확인해 보세요. 프레임을 항상 폐기한다."
-    answer: a
+      text: 알 수 없는 유니캐스트는 라우터가 항상 버린다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    answer: c
+  - id: u3-02-p05-q05
+    kind: choice
+    difficulty: medium
+    prompt: 알 수 없는 유니캐스트를 플러딩할 때 프레임이 전달되는 범위는 어디인가요?
+    choices:
+    - id: a
+      text: 입력 포트를 포함한 모든 VLAN
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: b
+      text: 입력 포트를 제외한 같은 VLAN의 포트들
+      feedback: 맞아요. 입력 포트를 제외한 같은 VLAN의 포트들.
+    - id: c
+      text: 다른 VLAN만
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: d
+      text: 라우터 이후 인터넷 전체
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: e
+      text: 관리 포트 하나
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    answer: b
+  inline_questions_after: 1
   animations:
   - file: l09-unknown-flooding.svg
     title: "목적지를 모르면 플러딩"
@@ -475,6 +607,7 @@ page_metadata:
   - Link up (링크 업)
   - Link down (링크 다운)
   - LED
+  inline_questions_after: 1
   animations:
   - file: l09-link-up-down.svg
     title: 케이블 연결과 링크 상태
@@ -503,24 +636,24 @@ page_metadata:
   - id: u3-02-p06-q01
     kind: choice
     difficulty: easy
-    prompt: PC와 스위치 양쪽의 연결이 성립한 상태를 무엇이라고 하나요?
+    prompt: 전등 스위치의 불이 켜져 전기 연결이 성립한 상태처럼, 케이블 양쪽 인터페이스의 연결이 올라온 상태는 무엇인가요?
     choices:
     - id: a
       text: Link down
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: b
-      text: Flooding
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
-    - id: c
-      text: Distribution layer
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
-    - id: d
-      text: Uplink
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
-    - id: e
       text: Link up
       feedback: 맞아요. Link up.
-    answer: e
+    - id: c
+      text: Uplink
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: d
+      text: VLAN
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: e
+      text: Flooding
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    answer: b
   - id: u3-02-p06-q02
     kind: choice
     difficulty: medium
@@ -548,27 +681,48 @@ page_metadata:
     answers:
     - Link down
     feedback: 정답은 Link down입니다.
-  - id: u3-02-p05-q04
+  - id: u3-02-p06-q04
     kind: choice
     difficulty: medium
-    prompt: "포트 LED에 Link up이 표시될 때 확인할 수 있는 사실은 무엇인가요?"
+    prompt: Link up 표시만으로 확인할 수 있는 것은 무엇인가요?
     choices:
     - id: a
-      text: "IP 주소 설정까지 정상이다"
-      feedback: "다시 본문을 확인해 보세요. IP 주소 설정까지 정상이다."
+      text: 인터넷이 반드시 된다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: b
-      text: "인터넷 연결이 반드시 정상이다"
-      feedback: "다시 본문을 확인해 보세요. 인터넷 연결이 반드시 정상이다."
+      text: IP 설정이 올바르다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: c
-      text: "해당 링크의 연결이 성립했다"
-      feedback: "맞아요. 해당 링크의 연결이 성립했다입니다."
+      text: 웹사이트가 열린다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: d
-      text: "DNS 조회가 성공했다"
-      feedback: "다시 본문을 확인해 보세요. DNS 조회가 성공했다."
+      text: 물리 연결이 성립했을 가능성이 높다
+      feedback: 맞아요. 물리 연결이 성립했을 가능성이 높다.
     - id: e
-      text: "모든 애플리케이션이 통신 가능하다"
-      feedback: "다시 본문을 확인해 보세요. 모든 애플리케이션이 통신 가능하다."
-    answer: c
+      text: 모든 VLAN 간 통신이 된다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    answer: d
+  - id: u3-02-p06-q05
+    kind: choice
+    difficulty: medium
+    prompt: 포트 LED가 꺼졌을 때 점검 순서로 적절한 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 웹 브라우저, DNS, 파일
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: b
+      text: 케이블 연결, 양쪽 장치 전원, 포트 상태
+      feedback: 맞아요. 케이블 연결, 양쪽 장치 전원, 포트 상태.
+    - id: c
+      text: VLAN 이름, MAC 제조사, 인터넷 요금
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: d
+      text: 키보드, 마우스, 모니터
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: e
+      text: IP 주소만 확인하고 끝낸다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    answer: b
 - terms:
   - 업링크 (Uplink)
   - 배포 스위치 (Distribution switch)
@@ -595,24 +749,24 @@ page_metadata:
   - id: u3-02-p07-q01
     kind: choice
     difficulty: easy
-    prompt: 액세스 스위치에서 상위 네트워크 장비 쪽으로 이어지는 연결을 무엇이라고 하나요?
+    prompt: 건물의 각 층에서 모인 길이 중앙 복도로 이어지듯, 액세스 스위치들을 상위에서 모으는 역할의 장비는 무엇인가요?
     choices:
     - id: a
-      text: Frame
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: Distribution switch
+      feedback: 맞아요. Distribution switch.
     - id: b
-      text: Link up
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 허브
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: c
-      text: Uplink
-      feedback: 맞아요. Uplink.
+      text: NIC
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: d
-      text: MAC address table
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 모뎀
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: e
-      text: Broadcast domain
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
-    answer: c
+      text: 프린터
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    answer: a
   - id: u3-02-p07-q02
     kind: choice
     difficulty: medium
@@ -640,27 +794,49 @@ page_metadata:
     answers:
     - Distribution layer
     feedback: 정답은 Distribution layer입니다.
-  - id: u3-02-p06-q04
+  - id: u3-02-p07-q04
     kind: choice
     difficulty: medium
-    prompt: "Uplink와 Link up을 구분한 설명으로 맞는 것은 무엇인가요?"
+    prompt: Uplink와 Link up의 차이를 바르게 설명한 것은 무엇인가요?
     choices:
     - id: a
-      text: "Uplink는 연결 상태이고 Link up은 연결 방향이다"
-      feedback: "다시 본문을 확인해 보세요. Uplink는 연결 상태이고 Link up은 연결 방향이다."
+      text: 둘 다 연결이 끊긴 상태다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: b
-      text: "두 용어 모두 목적지 MAC 주소를 뜻한다"
-      feedback: "다시 본문을 확인해 보세요. 두 용어 모두 목적지 MAC 주소를 뜻한다."
+      text: Uplink는 연결 역할, Link up은 연결 성립 상태다
+      feedback: 맞아요. Uplink는 연결 역할, Link up은 연결 성립 상태다.
     - id: c
-      text: "Uplink는 언제나 L3 라우팅만 뜻한다"
-      feedback: "다시 본문을 확인해 보세요. Uplink는 언제나 L3 라우팅만 뜻한다."
+      text: Uplink는 VLAN 번호다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: d
-      text: "Link up이면 인터넷 접속도 보장된다"
-      feedback: "다시 본문을 확인해 보세요. Link up이면 인터넷 접속도 보장된다."
+      text: Link up은 상위 장비로 가는 케이블만 뜻한다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: e
-      text: "Uplink는 상위 장비 쪽 연결의 역할이고 Link up은 연결 성립 상태다"
-      feedback: "맞아요. Uplink는 상위 장비 쪽 연결의 역할이고 Link up은 연결 성립 상태다입니다."
-    answer: e
+      text: 둘 다 MAC 주소 테이블이다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    answer: b
+  - id: u3-02-p07-q05
+    kind: choice
+    difficulty: medium
+    prompt: 액세스 계층과 배포 계층의 역할 관계로 가장 알맞은 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 배포는 단말만 연결하고 액세스는 모든 연결을 모은다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: b
+      text: 액세스는 단말을 연결하고 배포는 여러 액세스 연결을 모은다
+      feedback: 맞아요. 액세스는 단말을 연결하고 배포는 여러 액세스 연결을 모은다.
+    - id: c
+      text: 두 계층 모두 MAC 주소다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: d
+      text: 배포 스위치는 반드시 L2만 한다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: e
+      text: 액세스 스위치는 업링크를 가질 수 없다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    answer: b
+  inline_questions_after: 1
   animations:
   - file: l09-uplink-distribution.svg
     title: "업링크로 배포 스위치에 모으기"
@@ -670,6 +846,7 @@ page_metadata:
   - L2 경로
   - 같은 LAN과 VLAN
   - VLAN 사이의 L3 전달
+  inline_questions_after: 1
   animations:
   - file: l09-l2-path.svg
     title: 같은 LAN과 VLAN의 두 PC가 스위치를 거쳐 통신
@@ -698,23 +875,23 @@ page_metadata:
   - id: u3-02-p08-q01
     kind: choice
     difficulty: easy
-    prompt: 서로 다른 LAN이나 IP 네트워크 사이의 통신에 필요한 L3 장비의 예는 무엇인가요?
+    prompt: 같은 건물 안에서 안내 표지판을 따라 방까지 이동하듯, 같은 VLAN의 프레임을 목적지까지 넘기는 장비는 무엇인가요?
     choices:
     - id: a
-      text: NIC
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 브라우저
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: b
-      text: Access switch만
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 라우터만
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: c
-      text: Router
-      feedback: 맞아요. Router.
+      text: 액세스 스위치와 중간 스위치
+      feedback: 맞아요. 액세스 스위치와 중간 스위치.
     - id: d
-      text: Ethernet frame
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: DNS 서버
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: e
-      text: MAC address table
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 무선 NIC만
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     answer: c
   - id: u3-02-p08-q02
     kind: choice
@@ -743,27 +920,48 @@ page_metadata:
     answers:
     - L3 switch
     feedback: 정답은 L3 switch입니다.
-  - id: u3-02-p07-q04
+  - id: u3-02-p08-q04
     kind: choice
     difficulty: medium
-    prompt: "같은 LAN에 있는 두 PC 사이에서 여러 스위치가 프레임을 전달할 때 각 스위치는 무엇을 기준으로 다음 포트를 고르나요?"
+    prompt: 두 PC가 같은 VLAN일 때 각 스위치가 프레임을 다음 포트로 넘기는 기준은 무엇인가요?
     choices:
     - id: a
-      text: "출발지 PC가 전체 경로를 지정한다"
-      feedback: "다시 본문을 확인해 보세요. 출발지 PC가 전체 경로를 지정한다."
+      text: 웹 페이지 내용
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: b
-      text: "각 스위치의 MAC 주소 테이블에서 목적지 MAC 주소를 찾는다"
-      feedback: "맞아요. 각 스위치의 MAC 주소 테이블에서 목적지 MAC 주소를 찾는다입니다."
+      text: 목적지 MAC 주소와 VLAN별 MAC 주소 테이블
+      feedback: 맞아요. 목적지 MAC 주소와 VLAN별 MAC 주소 테이블.
     - id: c
-      text: "각 스위치가 목적지 IP로 인터넷 경로를 계산한다"
-      feedback: "다시 본문을 확인해 보세요. 각 스위치가 목적지 IP로 인터넷 경로를 계산한다."
+      text: IP 네트워크 개수만
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: d
-      text: "배포 스위치만 프레임을 전달한다"
-      feedback: "다시 본문을 확인해 보세요. 배포 스위치만 프레임을 전달한다."
+      text: 케이블 색
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: e
-      text: "각 PC의 화면 해상도를 비교한다"
-      feedback: "다시 본문을 확인해 보세요. 각 PC의 화면 해상도를 비교한다."
+      text: PC 이름의 가나다순
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     answer: b
+  - id: u3-02-p08-q05
+    kind: choice
+    difficulty: medium
+    prompt: 같은 VLAN의 PC 3에서 PC 5로 가는 프레임을 스위치들이 전달할 때, 각 스위치가 고르는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 자신의 MAC 주소 테이블에서 목적지 다음 포트
+      feedback: 맞아요. 자신의 MAC 주소 테이블에서 목적지 다음 포트.
+    - id: b
+      text: 인터넷 전체의 경로를 PC가 지정한 대로
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: c
+      text: DNS가 알려 준 포트
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: d
+      text: 프레임 본문의 웹 주소
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: e
+      text: 무작위 포트
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    answer: a
 - terms:
   - MAC 주소 학습
   - 목적지 조회
@@ -791,24 +989,24 @@ page_metadata:
   - id: u3-02-p09-q01
     kind: choice
     difficulty: easy
-    prompt: 스위치에서 프레임 전달의 첫 학습 단계에 해당하는 것은 무엇인가요?
+    prompt: 새로 온 사람의 이름과 자리를 차례로 적어 두듯, 스위치가 프레임 처리에 이용하는 표는 무엇인가요?
     choices:
     - id: a
-      text: 모든 포트로 무조건 프레임 복제
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: DNS 캐시
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: b
-      text: 목적지 IP만 보고 인터넷 경로 계산
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: MAC 주소 테이블
+      feedback: 맞아요. MAC 주소 테이블.
     - id: c
-      text: 프레임 크기를 1,500바이트로 변경
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 파일 목록
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: d
-      text: LED 색에 따라 목적지 결정
-      feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+      text: 라우팅 앱
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: e
-      text: 출발지 MAC 주소와 들어온 포트 기록
-      feedback: 맞아요. 출발지 MAC 주소와 들어온 포트 기록.
-    answer: e
+      text: 브라우저 기록
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    answer: b
   - id: u3-02-p09-q02
     kind: choice
     difficulty: medium
@@ -836,28 +1034,49 @@ page_metadata:
     answers:
     - forwarding
     feedback: 정답은 forwarding입니다.
-  - id: u3-02-p08-q04
+  - id: u3-02-p09-q04
     kind: choice
     difficulty: medium
-    prompt: "L2 스위치의 기본 프레임 처리 순서로 가장 알맞은 것은 무엇인가요?"
+    prompt: 목적지 MAC을 아직 모를 때와 알게 된 뒤의 동작을 올바르게 비교한 것은 무엇인가요?
     choices:
     - id: a
-      text: "목적지 IP를 학습하고, 모든 프레임을 라우터로 보낸다"
-      feedback: "다시 본문을 확인해 보세요. 목적지 IP를 학습하고, 모든 프레임을 라우터로 보낸다."
+      text: 모르면 같은 VLAN의 다른 포트로 플러딩하고, 알면 해당 포트로 전달한다
+      feedback: 맞아요. 모르면 같은 VLAN의 다른 포트로 플러딩하고, 알면 해당 포트로 전달한다.
     - id: b
-      text: "프레임을 먼저 플러딩하고, 출발지 MAC을 삭제한다"
-      feedback: "다시 본문을 확인해 보세요. 프레임을 먼저 플러딩하고, 출발지 MAC을 삭제한다."
+      text: 모르면 버리고, 알면 모든 포트로 보낸다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: c
-      text: "출발지 MAC으로 목적지 포트를 정하고, 입력 포트로 되돌린다"
-      feedback: "다시 본문을 확인해 보세요. 출발지 MAC으로 목적지 포트를 정하고, 입력 포트로 되돌린다."
+      text: 둘 다 VLAN 전체를 벗어나 보낸다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: d
-      text: "출발지 MAC과 입력 포트를 학습하고, 목적지 MAC을 조회해 알려진 포트로 전달하거나 모르면 플러딩한다"
-      feedback: "맞아요. 출발지 MAC과 입력 포트를 학습하고, 목적지 MAC을 조회해 알려진 포트로 전달하거나 모르면 플러딩한다입니다."
+      text: 모르면 라우팅하고, 알면 학습한다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: e
-      text: "Link up을 확인한 뒤 IP 주소를 바꾼다"
-      feedback: "다시 본문을 확인해 보세요. Link up을 확인한 뒤 IP 주소를 바꾼다."
-    answer: d
-
+      text: 둘 다 항상 입력 포트로 되돌려 보낸다
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    answer: a
+  - id: u3-02-p09-q05
+    kind: choice
+    difficulty: medium
+    prompt: PC-A가 처음 보낸 뒤 PC-B가 응답했습니다. 이때 스위치가 새로 배울 수 있는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: B의 출발지 MAC과 프레임이 들어온 포트
+      feedback: 맞아요. B의 출발지 MAC과 프레임이 들어온 포트.
+    - id: b
+      text: A의 목적지 IP와 웹사이트
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: c
+      text: VLAN 사이 라우팅 경로만
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: d
+      text: 케이블 제조사
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: e
+      text: 모든 장치의 비밀번호
+      feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    answer: a
+  inline_questions_after: 1
   animations:
   - file: l09-l2-four-steps.svg
     title: "L2 스위치 동작 네 단계"
