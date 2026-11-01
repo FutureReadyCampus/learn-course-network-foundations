@@ -72,27 +72,6 @@ quizzes:
         text: 두 입력이 모두 0이어야 합니다
         feedback: 다시 확인해 보세요. 두 입력이 모두 1이어야 합니다
       answer: a
-    - id: u1-01-prerequisites-p03-q01
-      kind: choice
-      difficulty: easy
-      prompt: 16진수에서 사용할 수 있는 기호는 무엇인가요?
-      choices:
-      - id: d
-        text: 0부터 9와 A부터 Z까지 사용합니다
-        feedback: 다시 확인해 보세요. 0부터 9와 A부터 F입니다
-      - id: b
-        text: 0과 1만 사용합니다
-        feedback: 다시 확인해 보세요. 0부터 9와 A부터 F입니다
-      - id: a
-        text: 0부터 9와 A부터 F입니다
-        feedback: 맞아요. 0부터 9와 A부터 F입니다
-      - id: e
-        text: 1부터 16까지의 숫자만 사용합니다
-        feedback: 다시 확인해 보세요. 0부터 9와 A부터 F입니다
-      - id: c
-        text: 0부터 7까지 사용합니다
-        feedback: 다시 확인해 보세요. 0부터 9와 A부터 F입니다
-      answer: a
     - id: u1-01-prerequisites-p02-q02
       kind: choice
       difficulty: medium
@@ -113,6 +92,35 @@ quizzes:
       - id: a
         text: '0010'
         feedback: 맞아요. 0010
+      answer: a
+    - id: u1-01-prerequisites-p02-q03
+      kind: short
+      prompt: AND 연산에서 필요한 비트 자리만 남기도록 1과 0으로 자리를 표시하는 값입니다. 다음 설명이 가리키는 개념은 무엇일까요? (영어 단어로 답해주세요)
+      answers:
+      - mask
+      feedback: 정답은 mask입니다.
+  quiz-u1-l01-p02-bases:
+    questions:
+    - id: u1-01-prerequisites-p03-q01
+      kind: choice
+      difficulty: easy
+      prompt: 16진수에서 사용할 수 있는 기호는 무엇인가요?
+      choices:
+      - id: d
+        text: 0부터 9와 A부터 Z까지 사용합니다
+        feedback: 다시 확인해 보세요. 0부터 9와 A부터 F입니다
+      - id: b
+        text: 0과 1만 사용합니다
+        feedback: 다시 확인해 보세요. 0부터 9와 A부터 F입니다
+      - id: a
+        text: 0부터 9와 A부터 F입니다
+        feedback: 맞아요. 0부터 9와 A부터 F입니다
+      - id: e
+        text: 1부터 16까지의 숫자만 사용합니다
+        feedback: 다시 확인해 보세요. 0부터 9와 A부터 F입니다
+      - id: c
+        text: 0부터 7까지 사용합니다
+        feedback: 다시 확인해 보세요. 0부터 9와 A부터 F입니다
       answer: a
     - id: u1-01-prerequisites-p03-q02
       kind: choice
@@ -177,12 +185,6 @@ quizzes:
         text: '512'
         feedback: 오른쪽에서 열 번째 자리의 값은 512입니다. 이 문제의 1은 아홉 번째 자리에 있습니다.
       answer: a
-    - id: u1-01-prerequisites-p02-q03
-      kind: short
-      prompt: AND 연산에서 필요한 비트 자리만 남기도록 1과 0으로 자리를 표시하는 값입니다. 다음 설명이 가리키는 개념은 무엇일까요? (영어 단어로 답해주세요)
-      answers:
-      - mask
-      feedback: 정답은 mask입니다.
   quiz-u1-l01-p03:
     questions:
     - id: u1-01-prerequisites-p03-q06
