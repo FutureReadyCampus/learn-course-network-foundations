@@ -45,6 +45,27 @@ page_metadata:
       text: "호스트 이름"
       feedback: "다시 확인해 보세요. 호스트 이름."
     answer: b
+  - id: u4-01-p01-q04
+    kind: choice
+    difficulty: easy
+    prompt: 다른 네트워크에 있는 친구에게 데이터를 보내려면, MAC 주소와 함께 어떤 주소가 필요할까요?
+    choices:
+    - id: a
+      text: IP 주소
+      feedback: 맞아요. IP 주소입니다.
+    - id: b
+      text: 스위치 포트 번호
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: c
+      text: 케이블 이름
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: d
+      text: 호스트의 사용자 이름
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: e
+      text: 프레임 크기
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    answer: a
   - id: u4-01-p01-q02
     kind: choice
     difficulty: medium
@@ -72,6 +93,12 @@ page_metadata:
     answers:
     - "MAC address"
     feedback: "정답은 MAC address입니다."
+  question_placements:
+  - question_id: u4-01-p01-q01
+    after_paragraph: 1
+  - question_id: u4-01-p01-q04
+    after_paragraph: 2
+
 - terms:
   - 비트 (bit)
   - 바이트 (byte)
@@ -108,6 +135,27 @@ page_metadata:
       text: "64비트"
       feedback: "다시 확인해 보세요. 64비트."
     answer: d
+  - id: u4-01-p02-q04
+    kind: choice
+    difficulty: easy
+    prompt: IPv4 주소에서 점 사이 숫자 하나는 몇 비트씩 묶은 값인가요?
+    choices:
+    - id: a
+      text: 8비트
+      feedback: 맞아요. 8비트입니다.
+    - id: b
+      text: 1비트
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: c
+      text: 4비트
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: d
+      text: 16비트
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: e
+      text: 32비트
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    answer: a
   - id: u4-01-p02-q02
     kind: choice
     difficulty: medium
@@ -135,6 +183,12 @@ page_metadata:
     answers:
     - "bit"
     feedback: "정답은 bit입니다."
+  question_placements:
+  - question_id: u4-01-p02-q01
+    after_paragraph: 1
+  - question_id: u4-01-p02-q04
+    after_paragraph: 3
+
 - terms:
   - ipconfig
   - 사설 주소 (private address)
@@ -171,6 +225,27 @@ page_metadata:
       text: "1~256"
       feedback: "다시 확인해 보세요. 1~256."
     answer: a
+  - id: u4-01-p03-q04
+    kind: choice
+    difficulty: easy
+    prompt: 유선과 Wi-Fi 어댑터가 모두 연결된 컴퓨터에서 주소를 볼 때 함께 확인할 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 어느 네트워크 어댑터의 주소인지
+      feedback: 맞아요. 어느 네트워크 어댑터의 주소인지입니다.
+    - id: b
+      text: 모니터 크기
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: c
+      text: 키보드 언어
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: d
+      text: 폴더 이름
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: e
+      text: 화면 해상도
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    answer: a
   - id: u4-01-p03-q02
     kind: choice
     difficulty: medium
@@ -198,6 +273,12 @@ page_metadata:
     answers:
     - "ipconfig"
     feedback: "정답은 ipconfig입니다."
+  question_placements:
+  - question_id: u4-01-p03-q01
+    after_paragraph: 2
+  - question_id: u4-01-p03-q04
+    after_paragraph: 4
+
 - terms:
   - Network ID (네트워크 식별자)
   - Host ID (호스트 식별자)
@@ -236,6 +317,27 @@ page_metadata:
       text: "노트북"
       feedback: "맞아요. 노트북입니다."
     answer: e
+  - id: u4-01-p04-q04
+    kind: choice
+    difficulty: easy
+    prompt: 호스트(host)와 Host ID는 같은 것을 가리키나요?
+    choices:
+    - id: a
+      text: 아니요. 호스트는 장치이고 Host ID는 IP 주소의 한 부분입니다.
+      feedback: 맞아요. 아니요. 호스트는 장치이고 Host ID는 IP 주소의 한 부분입니다.입니다.
+    - id: b
+      text: 네. 둘 다 MAC 주소입니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: c
+      text: 네. 둘 다 라우터를 뜻합니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: d
+      text: 아니요. Host ID는 케이블 이름입니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: e
+      text: 아니요. 호스트는 네트워크 번호입니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    answer: a
   - id: u4-01-p04-q02
     kind: choice
     difficulty: medium
@@ -263,6 +365,12 @@ page_metadata:
     answers:
     - "host"
     feedback: "정답은 host입니다."
+  question_placements:
+  - question_id: u4-01-p04-q01
+    after_paragraph: 1
+  - question_id: u4-01-p04-q04
+    after_paragraph: 2
+
 - terms:
   - 목적지 (destination)
   illustrations:
@@ -298,6 +406,27 @@ page_metadata:
       text: "기본 게이트웨이"
       feedback: "다시 확인해 보세요. 기본 게이트웨이."
     answer: c
+  - id: u4-01-p05-q04
+    kind: choice
+    difficulty: easy
+    prompt: 192.168.0.10/24와 192.168.0.11/24는 같은 네트워크에 속하나요?
+    choices:
+    - id: a
+      text: 네. /24 기준에서 앞의 24비트가 같습니다.
+      feedback: 맞아요. 네. /24 기준에서 앞의 24비트가 같습니다.입니다.
+    - id: b
+      text: 아니요. 마지막 숫자가 다르면 항상 다른 네트워크입니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: c
+      text: 아니요. IP 주소는 네트워크를 구분하지 않습니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: d
+      text: 네. 숫자가 네 개면 무조건 같은 네트워크입니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: e
+      text: 판단할 수 없습니다. MAC 주소가 같아야 합니다.
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    answer: a
   - id: u4-01-p05-q02
     kind: choice
     difficulty: medium
@@ -326,6 +455,12 @@ page_metadata:
     - "Network ID"
     - "network id"
     feedback: "정답은 Network ID입니다."
+  question_placements:
+  - question_id: u4-01-p05-q01
+    after_paragraph: 1
+  - question_id: u4-01-p05-q04
+    after_paragraph: 2
+
 - terms:
   - 라우터 (Router)
   illustrations:
@@ -360,6 +495,27 @@ page_metadata:
     - id: e
       text: "24개의 라우터가 있다는 뜻"
       feedback: "다시 확인해 보세요. 24개의 라우터가 있다는 뜻."
+    answer: a
+  - id: u4-01-p06-q07
+    kind: choice
+    difficulty: easy
+    prompt: 192.168.0.10/16에서 네트워크 부분은 어디까지인가요?
+    choices:
+    - id: a
+      text: '192.168'
+      feedback: 맞아요. 192.168입니다.
+    - id: b
+      text: '192'
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: c
+      text: 192.168.0
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: d
+      text: 192.168.0.10 전체
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: e
+      text: '10'
+      feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
     answer: a
   - id: u4-01-p06-q02
     kind: choice
@@ -452,6 +608,12 @@ page_metadata:
       text: "그 네트워크 안의 장치 인터페이스"
       feedback: "맞아요. 호스트 부분은 해당 네트워크 안에서 인터페이스를 구별합니다."
     answer: e
+  question_placements:
+  - question_id: u4-01-p06-q01
+    after_paragraph: 1
+  - question_id: u4-01-p06-q07
+    after_paragraph: 2
+
 - terms: []
   illustrations:
   - file: assets/animations/l11-daily-parcel-hubs.svg
@@ -488,7 +650,7 @@ page_metadata:
     answer: d
   - id: u4-01-p07-q02
     kind: choice
-    difficulty: medium
+    difficulty: easy
     prompt: "다른 네트워크에 있는 서버로 보낼 때, 현재 LAN의 Ethernet 프레임은 보통 누구의 MAC 주소를 목적지로 사용하나요?"
     choices:
     - id: a
@@ -576,6 +738,12 @@ page_metadata:
       text: "보내는 장치의 MAC 주소"
       feedback: "다시 확인해 보세요. 목적지 네트워크 안에서 최종 목적지 인터페이스를 향합니다."
     answer: c
+  question_placements:
+  - question_id: u4-01-p07-q01
+    after_paragraph: 1
+  - question_id: u4-01-p07-q02
+    after_paragraph: 2
+
 ---
 ## MAC 주소만으로 다른 LAN까지 보낼 수 있을까?
 
@@ -609,7 +777,9 @@ IPv4는 이런 비트 32개를 8개씩 네 묶음으로 나눠 적는다. `8 × 
 
 숫자 하나를 2진수로 읽어 보자. `192`는 `11000000`이다. 8자리의 자릿값은 왼쪽부터 `128, 64, 32, 16, 8, 4, 2, 1`이므로, 켜진 두 자리 `128 + 64`를 더하면 192가 된다. 두 번째 숫자 `168`은 `10101000`이고, `128 + 32 + 8 = 168`이다. 점 사이 네 숫자는 이런 8비트 묶음을 각각 10진수로 바꿔 적은 것이다.
 
-네트워크 어댑터가 여러 개라면 `ipconfig` 결과에도 여러 주소가 나올 수 있다. 유선 연결, 무선 연결, 가상 어댑터가 각자 주소를 가질 수 있기 때문이다. 주소를 볼 때는 숫자만 외우기보다 어느 어댑터에 속한 주소인지 함께 확인해 보자.
+네트워크 어댑터가 여러 개라면 `ipconfig` 결과에도 여러 주소가 나올 수 있다.
+
+유선 연결, 무선 연결, 가상 어댑터가 각자 주소를 가질 수 있기 때문이다. 주소를 볼 때는 숫자만 외우기보다 어느 어댑터에 속한 주소인지 함께 확인해 보자.
 
 ## 네트워크의 호스트와 주소의 Host ID
 
