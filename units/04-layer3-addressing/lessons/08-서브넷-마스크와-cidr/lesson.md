@@ -11,10 +11,68 @@ page_metadata:
   - 네트워크 부분(Network ID)
   - 호스트 부분(Host ID)
   - 서브넷 마스크(Subnet Mask)
+  questions:
+  - id: u5-l02-p01-q01
+    kind: choice
+    difficulty: easy
+    prompt: 같은 네트워크에 속한 장치들의 IP 주소에서 공통으로 같은 부분은 무엇인가요?
+    choices:
+    - id: a
+      text: 호스트 부분
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: b
+      text: 네트워크 부분
+      feedback: 맞아요. 같은 네트워크의 장치들은 네트워크 부분을 공유하고 호스트 부분으로 구분됩니다.
+    - id: c
+      text: 포트 번호
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: d
+      text: 기기 이름
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: e
+      text: 서브넷 크기
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    answer: b
+  - id: u5-l02-p01-q02
+    kind: choice
+    difficulty: medium
+    prompt: IP 주소만 보고 네트워크와 호스트의 경계를 알기 어려울 때 필요한 값은 무엇인가요?
+    choices:
+    - id: a
+      text: 서브넷 마스크
+      feedback: 맞아요. 서브넷 마스크가 IP 주소에서 네트워크 부분과 호스트 부분의 경계를 나타냅니다.
+    - id: b
+      text: 기기의 MAC 주소
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: c
+      text: DNS 서버 주소
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: d
+      text: 기기의 포트 번호
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: e
+      text: 이더넷 MTU
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    answer: a
+  - id: u5-l02-p01-q03
+    kind: short
+    prompt: IP 주소에서 네트워크 부분과 호스트 부분이 어디서 나뉘는지 알려 주는 값입니다. 이 용어를 적어 보세요.
+    answers:
+    - subnet mask
+    - 서브넷 마스크
+    - subnetmask
+    feedback: 정답은 서브넷 마스크(Subnet Mask)입니다. 주소의 네트워크 경계와 호스트 경계를 나타냅니다.
+  question_placements:
+  - question_id: u5-l02-p01-q01
+    after_paragraph: 2
+  - question_id: u5-l02-p01-q02
+    after_paragraph: 3
+
 - terms:
   - 비트(bit)
   - 2진수(binary)
   - 16진수(hexadecimal)
+  - 옥텟 (Octet)
   illustrations:
   - file: assets/animations/l18-daily-stencil-mask.svg
     title: "가림판을 올려 보이는 것만 남기기"
@@ -31,6 +89,61 @@ page_metadata:
     alt: "IP 주소의 옥텟 하나 10110101(181) 아래에 마스크 11110000(240)이 놓이고, 그 아래에 줄이 그어집니다. 세로 줄마다 두 비트를 곱해 1×1일 때만 1이 되어 결과 10110000(176)이 나옵니다. 마지막에 마스크의 1이 이어진 앞쪽 네 비트는 남는 쪽(네트워크 부분), 0이 이어진 뒤쪽 네 비트는 지워지는 쪽(호스트 부분)이라고 경계선이 그어집니다."
     caption: "AND는 비트를 세로로 곱하는 것과 같습니다. 이 8비트와 값은 설명용 예시이고, 실제 IPv4 마스크는 32비트로 쓰며 Page 3에서 이어집니다."
     after_paragraph: 1
+  questions:
+  - id: u5-l02-p02-q01
+    kind: choice
+    difficulty: easy
+    prompt: 8비트가 모두 1인 값은 10진수로 얼마인가요?
+    choices:
+    - id: a
+      text: '128'
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: b
+      text: '192'
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: c
+      text: '240'
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: d
+      text: '254'
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: e
+      text: '255'
+      feedback: 맞아요. 128+64+32+16+8+4+2+1을 더하면 255입니다.
+    answer: e
+  - id: u5-l02-p02-q02
+    kind: choice
+    difficulty: medium
+    prompt: 마스크 255.255.255.0에서 네트워크 부분을 나타내는 1비트는 모두 몇 개인가요?
+    choices:
+    - id: a
+      text: 8비트
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: b
+      text: 16비트
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: c
+      text: 24비트
+      feedback: 맞아요. 앞의 세 옥텟이 모두 1이므로 8×3, 총 24비트입니다.
+    - id: d
+      text: 30비트
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: e
+      text: 32비트
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    answer: c
+  - id: u5-l02-p02-q03
+    kind: short
+    prompt: 0부터 9까지와 A부터 F까지의 기호를 사용해 값을 나타내는 진법입니다. 이 진법의 이름을 영어 또는 한글로 적어 보세요.
+    answers:
+    - hexadecimal
+    - hex
+    - 16진수
+    feedback: 정답은 hexadecimal(16진수)입니다. 한 자리가 0부터 15까지의 값을 나타냅니다.
+  question_placements:
+  - question_id: u5-l02-p02-q01
+    after_paragraph: 3
+
 - terms:
   - AND 연산
   - 마스크 연산
@@ -41,6 +154,63 @@ page_metadata:
     alt: 위 줄에 IP 주소 192.168.0.10, 아래에 서브넷 마스크 255.255.255.0이 놓이고, 앞쪽 24칸은 구멍이 뚫린 가림판으로
       덮여 값이 그대로 결과 줄에 내려오며 마지막 8칸은 막혀 0000 0000으로 지워집니다. 결과 192.168.0.0이 다른 주소들과 비교됩니다.
     caption: 마스크가 1인 칸은 주소 값이 그대로 내려가고, 0인 칸은 지워져서 호스트 자리가 0이 됩니다.
+  questions:
+  - id: u5-l02-p03-q01
+    kind: choice
+    difficulty: easy
+    prompt: AND 연산에서 두 입력 비트가 모두 1일 때 결과는 무엇인가요?
+    choices:
+    - id: a
+      text: '0'
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: b
+      text: '1'
+      feedback: 맞아요. AND는 두 비트가 모두 1일 때만 1을 냅니다.
+    - id: c
+      text: 입력과 관계없이 항상 0
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: d
+      text: 입력과 관계없이 항상 1
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: e
+      text: 두 비트를 이어 쓴 값
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    answer: b
+  - id: u5-l02-p03-q02
+    kind: choice
+    difficulty: medium
+    prompt: 192.168.0.10에 255.255.255.0 마스크를 적용하면 네트워크 주소는 무엇인가요?
+    choices:
+    - id: a
+      text: 192.168.0.0
+      feedback: 맞아요. 마스크의 앞 24비트는 남고 호스트 부분인 마지막 옥텟은 0이 되어 192.168.0.0이 됩니다.
+    - id: b
+      text: 192.168.0.10
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: c
+      text: 192.168.1.0
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: d
+      text: 192.168.255.0
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: e
+      text: 255.255.255.0
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    answer: a
+  - id: u5-l02-p03-q03
+    kind: short
+    prompt: 두 비트가 모두 1일 때만 결과가 1이 되는 논리 연산입니다. 이 연산의 이름을 적어 보세요.
+    answers:
+    - and
+    - and 연산
+    - 논리곱
+    feedback: 정답은 AND 연산(논리곱)입니다. 두 입력이 모두 1일 때만 1을 냅니다.
+  question_placements:
+  - question_id: u5-l02-p03-q01
+    after_paragraph: 1
+  - question_id: u5-l02-p03-q02
+    after_paragraph: 4
+
 - terms:
   - 클래스(Class)
   - CIDR(사이더)
@@ -52,10 +222,122 @@ page_metadata:
       192.168.0.10과 192.168.0.77은 앞 24칸이 같아 초록 표시가, 192.168.1.5는 달라 빨강 표시가 뜹니다.
     caption: 255.255.255.0이라고 길게 쓰나 /24라고 짧게 쓰나 같은 경계를 가리키고, 앞 24비트만 비교하면 같은 네트워크인지
       알 수 있습니다.
+  questions:
+  - id: u5-l02-p04-q01
+    kind: choice
+    difficulty: easy
+    prompt: 본문의 단순한 예에서 300대 장치가 필요한 조직에 C 클래스 주소 묶음이 부족했던 이유는 무엇인가요?
+    choices:
+    - id: a
+      text: 사용 가능한 주소가 약 254개라서
+      feedback: 맞아요. 256개 주소에서 네트워크 주소와 브로드캐스트 주소를 빼면 일반적으로 254개를 장치에 배정할 수 있습니다.
+    - id: b
+      text: 주소가 300개씩 자동으로 생겨서
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: c
+      text: C 클래스에는 네트워크 부분이 없어서
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: d
+      text: 호스트 부분이 32비트라서
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: e
+      text: C 클래스는 IPv6 전용이라서
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    answer: a
+  - id: u5-l02-p04-q02
+    kind: choice
+    difficulty: medium
+    prompt: 두 주소가 모두 /24일 때 같은 네트워크인지 비교하는 기준은 무엇인가요?
+    choices:
+    - id: a
+      text: 마지막 옥텟이 같은지 비교한다
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: b
+      text: 첫 24비트가 같은지 비교한다
+      feedback: 맞아요. /24에서는 앞의 24비트가 네트워크 부분이므로 그 부분을 비교합니다.
+    - id: c
+      text: 주소 숫자의 합이 같은지 비교한다
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: d
+      text: 기기 이름이 같은지 확인한다
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: e
+      text: 두 주소의 포트 번호를 비교한다
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    answer: b
+  - id: u5-l02-p04-q03
+    kind: short
+    prompt: IP 주소 뒤에 /숫자를 붙여 네트워크 경계를 표시하는 표기 방식입니다. 영어 또는 한글 이름을 적어 보세요.
+    answers:
+    - cidr
+    - 사이더
+    - classless inter-domain routing
+    feedback: 정답은 CIDR(사이더)입니다. 주소 뒤의 프리픽스 길이로 네트워크 경계를 나타냅니다.
+  question_placements:
+  - question_id: u5-l02-p04-q01
+    after_paragraph: 1
+  - question_id: u5-l02-p04-q02
+    after_paragraph: 2
+
 - terms:
   - CIDR(사이더)
   - 프리픽스 길이(prefix length)
   - 네트워크 주소(Network address)
+  questions:
+  - id: u5-l02-p05-q01
+    kind: choice
+    difficulty: easy
+    prompt: /25에서 네트워크 부분은 몇 비트인가요?
+    choices:
+    - id: a
+      text: 7비트
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: b
+      text: 8비트
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: c
+      text: 24비트
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: d
+      text: 25비트
+      feedback: 맞아요. /25는 왼쪽부터 25비트가 네트워크 부분이라는 뜻입니다.
+    - id: e
+      text: 32비트
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    answer: d
+  - id: u5-l02-p05-q02
+    kind: choice
+    difficulty: medium
+    prompt: 192.168.0.130/25의 네트워크 주소는 무엇인가요?
+    choices:
+    - id: a
+      text: 192.168.0.0
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: b
+      text: 192.168.0.64
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: c
+      text: 192.168.0.128
+      feedback: 맞아요. 마지막 옥텟에서 130 AND 128은 128이므로 네트워크 주소는 192.168.0.128입니다.
+    - id: d
+      text: 192.168.0.130
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: e
+      text: 192.168.0.255
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    answer: c
+  - id: u5-l02-p05-q03
+    kind: short
+    prompt: CIDR에서 슬래시 뒤 숫자가 나타내는 네트워크 비트 수를 부르는 용어입니다. 영어 또는 한글로 적어 보세요.
+    answers:
+    - prefix length
+    - 프리픽스 길이
+    - prefix
+    feedback: 정답은 prefix length(프리픽스 길이)입니다. 예를 들어 /25의 25가 네트워크 비트 수입니다.
+  question_placements:
+  - question_id: u5-l02-p05-q01
+    after_paragraph: 2
+
 - terms:
   - 서브네팅(Subnetting)
   - 옥텟(octet)
@@ -64,6 +346,63 @@ page_metadata:
     title: 호스트 비트 수가 구별할 수 있는 값의 수를 정한다
     alt: 192.168.0.10을 32비트로 펼친 칸 위에 /24 경계선이 있어 앞 24비트는 네트워크 부분, 뒤 8비트는 호스트 부분이 되고 호스트 부분은 2⁸ = 256가지로 표시됩니다. 경계선이 /16으로 옮겨지면 호스트 부분이 16비트가 되어 2¹⁶ = 65,536가지가 됩니다.
     caption: 호스트 부분이 n비트면 2ⁿ가지를 구별합니다. 그림의 수는 비트 조합의 수이고, 실제로 쓸 수 있는 주소 수는 네트워크 주소와 브로드캐스트 주소를 뺀 값입니다.
+  questions:
+  - id: u5-l02-p06-q01
+    kind: choice
+    difficulty: easy
+    prompt: /24에서 네트워크 부분으로 2비트를 더 가져와 /26으로 나누면 만들 수 있는 조합은 몇 개인가요?
+    choices:
+    - id: a
+      text: 2개
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: b
+      text: 3개
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: c
+      text: 4개
+      feedback: 맞아요. 가져온 2비트는 00, 01, 10, 11의 네 조합을 만들 수 있습니다.
+    - id: d
+      text: 6개
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: e
+      text: 8개
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    answer: c
+  - id: u5-l02-p06-q02
+    kind: choice
+    difficulty: medium
+    prompt: /26 네트워크에서 호스트 부분이 6비트라면 주소 비트 조합은 몇 가지인가요?
+    choices:
+    - id: a
+      text: 6가지
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: b
+      text: 26가지
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: c
+      text: 32가지
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    - id: d
+      text: 64가지
+      feedback: 맞아요. 6비트로 만들 수 있는 조합은 2⁶, 즉 64가지입니다. 실제 배정 가능 주소 수는 별도로 계산합니다.
+    - id: e
+      text: 128가지
+      feedback: 본문의 예에서 네트워크 부분과 호스트 부분이 어떻게 나뉘는지 다시 확인해 보세요.
+    answer: d
+  - id: u5-l02-p06-q03
+    kind: short
+    prompt: 하나의 네트워크를 더 작은 네트워크 여러 개로 나누는 작업입니다. 이 용어를 영어 또는 한글로 적어 보세요.
+    answers:
+    - subnetting
+    - 서브네팅
+    - subnet
+    feedback: 정답은 Subnetting(서브네팅)입니다. 네트워크 경계를 옮겨 네트워크를 더 작은 단위로 나누는 작업입니다.
+  question_placements:
+  - question_id: u5-l02-p06-q01
+    after_paragraph: 1
+  - question_id: u5-l02-p06-q02
+    after_paragraph: 4
+
 animations_dir: units/04-layer3-addressing/lessons/08-서브넷-마스크와-cidr/assets/animations
 ---
 
