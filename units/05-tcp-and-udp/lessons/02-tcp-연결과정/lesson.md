@@ -35,21 +35,21 @@ page_metadata:
     prompt: MSS는 무엇의 최대 크기인가요?
     choices:
     - id: a
-      text: TCP Segment 하나에 실을 수 있는 TCP 데이터
-      feedback: 맞아요. MSS는 TCP 데이터 부분의 최대 크기예요.
-    - id: b
       text: IP 패킷 전체
-      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+      feedback: IP 패킷 전체의 상한은 MTU예요. MSS는 그 안에서 TCP 데이터 부분만 재요.
+    - id: b
+      text: TCP Segment 하나에 실을 수 있는 TCP 데이터
+      feedback: 맞아요. MSS는 헤더를 뺀 TCP 데이터 부분의 최대 크기예요.
     - id: c
       text: Ethernet 프레임 전체
-      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+      feedback: MSS는 헤더를 제외한 TCP 데이터만 재요. 프레임 전체를 재는 값이 아니에요.
     - id: d
       text: TCP 연결의 최대 개수
-      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+      feedback: 연결 개수와는 관계가 없어요. MSS는 Segment 하나에 담을 데이터 크기예요.
     - id: e
       text: 한 번에 보낼 수 있는 파일 크기
-      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
-    answer: a
+      feedback: 파일 전체 크기가 아니에요. 큰 파일도 MSS 이하의 여러 Segment로 나뉘어 전송돼요.
+    answer: b
   - id: u5-l26-p06-q02
     kind: choice
     difficulty: medium
@@ -57,29 +57,20 @@ page_metadata:
     choices:
     - id: a
       text: 1,500바이트
-      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+      feedback: 1,500은 MTU 값이에요. MSS는 여기서 IP·TCP 헤더를 빼야 해요.
     - id: b
       text: 1,480바이트
-      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+      feedback: IP 헤더 20바이트만 뺀 값이에요. TCP 헤더 20바이트도 함께 빼야 해요.
     - id: c
       text: 1,460바이트
       feedback: 맞아요. IP와 TCP 헤더 각 20바이트를 빼면 TCP 데이터 최대 크기 예시는 1,460바이트예요.
     - id: d
       text: 1,440바이트
-      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+      feedback: 헤더를 너무 많이 뺐어요. 이 예에서 빼는 값은 IP 20 + TCP 20 = 40바이트예요.
     - id: e
       text: 20바이트
-      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+      feedback: 헤더 하나의 크기예요. MSS는 MTU에서 헤더 둘을 뺀 나머지예요.
     answer: c
-  - id: u5-l26-p06-q03
-    kind: short
-    prompt: 연결 과정에서 양쪽이 교환하는, TCP 데이터 부분의 최대 크기를 줄여 부르는 말은 무엇인가요? (영어 약자로 답해주세요)
-    answers:
-    - MSS
-    - mss
-    - Maximum Segment Size
-    - maximum segment size
-    feedback: 정답은 MSS입니다. MSS는 Maximum Segment Size의 약자예요.
   question_placements:
   - question_id: u5-l26-p06-q01
     after_paragraph: 1

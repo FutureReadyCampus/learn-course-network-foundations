@@ -54,50 +54,42 @@ page_metadata:
     prompt: TCP가 Stream을 나누어 보내는 전송 단위는 무엇인가요?
     choices:
     - id: a
+      text: Frame
+      feedback: Frame은 Ethernet(L2)이 쓰는 데이터 단위예요. TCP가 Stream을 나눈 조각의 이름이 아니에요.
+    - id: b
+      text: Datagram
+      feedback: Datagram은 UDP의 데이터 단위예요. 이 문제는 TCP를 묻고 있어요.
+    - id: c
       text: Segment
       feedback: 맞아요. TCP는 Stream을 나눈 조각에 TCP 헤더를 붙여 Segment로 보내요.
-    - id: b
-      text: Frame
-      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
-    - id: c
-      text: Datagram
-      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
     - id: d
       text: 포트 번호
-      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+      feedback: 포트 번호는 데이터 조각이 아니라 L4에서 프로그램을 구분하는 식별자예요.
     - id: e
       text: MAC 주소
-      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
-    answer: a
+      feedback: MAC 주소는 L2에서 장치를 구분하는 식별자예요. 데이터 조각의 이름이 아니에요.
+    answer: c
   - id: u5-l25-p05-q02
     kind: choice
     difficulty: medium
     prompt: Stream이 MSS보다 길고 길이가 MSS로 나누어 떨어지지 않을 때 TCP의 동작으로 맞는 것은 무엇인가요?
     choices:
     - id: a
-      text: MSS에 맞춰 여러 Segment로 나누고, 마지막 조각은 짧을 수 있다
-      feedback: 맞아요. TCP는 MSS 기준으로 나누고 마지막 조각은 앞 조각보다 짧을 수 있어요.
-    - id: b
       text: Segment 하나에 Stream 전체를 넣는다
-      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
-    - id: c
+      feedback: MSS보다 긴 Stream은 Segment 하나에 담을 수 없어요. TCP는 MSS에 맞춰 나눠 보내요.
+    - id: b
       text: 모든 Segment를 같은 크기로 맞추려고 데이터를 버린다
-      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
-    - id: d
+      feedback: TCP는 데이터를 버리지 않아요. 남은 만큼을 짧은 마지막 조각으로 보내요.
+    - id: c
       text: 마지막 조각은 보내지 않고 기다린다
-      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
+      feedback: 마지막 조각도 그대로 보내요. 앞 조각과 같은 크기가 될 때까지 기다리지 않아요.
+    - id: d
+      text: MSS 크기로 나누고, 마지막 Segment는 더 짧을 수 있다
+      feedback: 맞아요. TCP는 MSS 기준으로 나누고 마지막 조각은 앞 조각보다 짧을 수 있어요.
     - id: e
       text: Stream을 Datagram으로 바꿔 보낸다
-      feedback: 다시 생각해 보세요. 본문에서 이 데이터 단위의 역할을 확인해 보세요.
-    answer: a
-  - id: u5-l25-p05-q03
-    kind: short
-    prompt: 수신 측 TCP가 도착한 Segment를 다시 이어 애플리케이션에 넘겨 주는 연속된 바이트 흐름을 무엇이라고 하나요? (한글 또는 영어로 답해주세요)
-    answers:
-    - Stream
-    - stream
-    - 스트림
-    feedback: 정답은 Stream입니다. 수신 측 TCP는 Segment를 이어 연속된 Stream으로 넘겨 줘요.
+      feedback: Datagram은 UDP의 단위예요. TCP는 Stream을 Segment로 나눠요.
+    answer: d
   question_placements:
   - question_id: u5-l25-p05-q01
     after_paragraph: 1
