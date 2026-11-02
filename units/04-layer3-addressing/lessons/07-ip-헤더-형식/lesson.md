@@ -1,4 +1,5 @@
 ---
+---
 id: u4-l17-ip-헤더-형식
 title: IP 헤더 형식
 source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-17.md
@@ -10,6 +11,61 @@ page_metadata:
   - IP 헤더 (IP header)
   - 페이로드 (Payload)
   - MTU (Maximum Transmission Unit)
+  questions:
+  - id: u5-l01-p01-q01
+    kind: choice
+    difficulty: easy
+    prompt: 택배 상자에서 실제 물건이 들어 있는 부분에 해당하는 IP 패킷의 부분은 무엇인가요?
+    choices:
+    - id: a
+      text: IP 헤더
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: b
+      text: 페이로드
+      feedback: 맞아요. 페이로드는 IP 헤더 뒤에 실리는 실제 내용입니다.
+    - id: c
+      text: MTU
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: d
+      text: Protocol
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: e
+      text: TTL
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    answer: b
+  - id: u5-l01-p01-q02
+    kind: choice
+    difficulty: medium
+    prompt: 이더넷 MTU가 1,500바이트이고 IPv4 헤더가 기본 길이 20바이트일 때, 페이로드에 쓸 수 있는 최대 크기는 얼마인가요?
+    choices:
+    - id: a
+      text: 1,480바이트
+      feedback: 맞아요. 이 예에서는 패킷 전체 한도 1,500바이트에서 헤더 20바이트를 빼면 1,480바이트입니다.
+    - id: b
+      text: 1,500바이트
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: c
+      text: 1,520바이트
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: d
+      text: 1,280바이트
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: e
+      text: 20바이트
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    answer: a
+  - id: u5-l01-p01-q03
+    kind: short
+    prompt: IP 헤더 뒤에 놓이며, TCP나 UDP 같은 안쪽 데이터가 실리는 부분입니다. 이 개념을 영어 또는 한글로 적어 보세요.
+    answers:
+    - payload
+    - 페이로드
+    feedback: 정답은 payload(페이로드)입니다. IP 패킷에서 헤더 뒤에 실제 데이터가 실리는 부분입니다.
+  question_placements:
+  - question_id: u5-l01-p01-q01
+    after_paragraph: 1
+  - question_id: u5-l01-p01-q02
+    after_paragraph: 5
   illustrations:
   - file: assets/animations/l17-daily-label-contents.svg
     title: "송장에는 받는 곳 말고도 적힌다"
@@ -30,6 +86,62 @@ page_metadata:
   - Version
   - IHL (Internet Header Length)
   - Total Length
+  questions:
+  - id: u5-l01-p02-q01
+    kind: choice
+    difficulty: easy
+    prompt: IPv4 첫 바이트가 0x45일 때, 앞쪽 4비트가 나타내는 값은 무엇인가요?
+    choices:
+    - id: a
+      text: 헤더 길이
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: b
+      text: Protocol 번호
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: c
+      text: IP 버전
+      feedback: 맞아요. 0x45의 앞 4비트 0100은 IPv4의 Version 4를 나타냅니다.
+    - id: d
+      text: TTL
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: e
+      text: 전체 패킷 길이
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    answer: c
+  - id: u5-l01-p02-q02
+    kind: choice
+    difficulty: medium
+    prompt: IHL 값이 6이라면 IPv4 헤더 길이는 얼마인가요?
+    choices:
+    - id: a
+      text: 6바이트
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: b
+      text: 16바이트
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: c
+      text: 20바이트
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: d
+      text: 24바이트
+      feedback: 맞아요. IHL의 한 단위는 4바이트이므로 6 × 4 = 24바이트입니다.
+    - id: e
+      text: 32바이트
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    answer: d
+  - id: u5-l01-p02-q03
+    kind: short
+    prompt: IPv4 헤더의 길이를 4바이트 단위로 나타내는 필드입니다. 이 필드의 이름을 적어 보세요.
+    answers:
+    - ihl
+    - internet header length
+    - 인터넷 헤더 길이
+    feedback: 정답은 IHL(Internet Header Length)입니다. 헤더 길이를 4바이트 단위로 나타내는 필드입니다.
+  question_placements:
+  - question_id: u5-l01-p02-q01
+    after_paragraph: 2
+  - question_id: u5-l01-p02-q02
+    after_paragraph: 3
   illustrations:
   - file: assets/animations/l17-daily-form-code-45.svg
     title: "두 자리 번호로 송장 길이를 읽는다"
@@ -46,6 +158,61 @@ page_metadata:
   - TTL (Time To Live)
   - 홉 (Hop)
   - 포트 번호 (Port number)
+  questions:
+  - id: u5-l01-p03-q01
+    kind: choice
+    difficulty: easy
+    prompt: IP 헤더의 Protocol 필드는 무엇을 알려 주나요?
+    choices:
+    - id: a
+      text: 패킷이 이동할 수 있는 라우터 수
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: b
+      text: IP 페이로드 안에 어떤 프로토콜 데이터가 있는지
+      feedback: 맞아요. Protocol은 페이로드 안에 TCP, UDP, ICMP 중 어떤 프로토콜 데이터가 있는지 가리킵니다.
+    - id: c
+      text: 목적지의 포트 번호
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: d
+      text: 이더넷 링크의 최대 크기
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: e
+      text: 패킷의 전체 바이트 수
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    answer: b
+  - id: u5-l01-p03-q02
+    kind: choice
+    difficulty: medium
+    prompt: TTL이 2인 패킷이 라우터를 두 번 거쳤고 그때까지 목적지에 도착하지 않았다면 어떻게 되나요?
+    choices:
+    - id: a
+      text: TTL이 2로 유지되어 계속 전달된다
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: b
+      text: TTL이 0이 되어 더 전달되지 않고 폐기된다
+      feedback: 맞아요. 라우터를 지날 때 TTL이 줄며 0이 되면 패킷은 더 전달되지 않습니다.
+    - id: c
+      text: Protocol이 UDP로 바뀐다
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: d
+      text: 포트 번호가 0이 된다
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: e
+      text: IP 헤더가 페이로드로 바뀐다
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    answer: b
+  - id: u5-l01-p03-q03
+    kind: short
+    prompt: 라우터를 지날 때 값이 줄어들며, 0이 되면 패킷을 더 전달하지 않도록 하는 IP 헤더 필드입니다. 이 필드의 이름을 적어 보세요.
+    answers:
+    - ttl
+    - time to live
+    feedback: 정답은 TTL(Time To Live)입니다. 라우터를 지날 때 줄어드는 전달 제한값입니다.
+  question_placements:
+  - question_id: u5-l01-p03-q01
+    after_paragraph: 1
+  - question_id: u5-l01-p03-q02
+    after_paragraph: 3
   illustrations:
   - file: assets/animations/l17-daily-kind-and-limit.svg
     title: "송장의 종류 표시와 이동 한도"
@@ -67,6 +234,61 @@ page_metadata:
   - Fragment Offset
   - DSCP/ECN
   - Header Checksum
+  questions:
+  - id: u5-l01-p04-q01
+    kind: choice
+    difficulty: easy
+    prompt: Wireshark에서 패킷의 원시 바이트와 함께 해석된 필드 목록을 볼 수 있습니다. 해석된 목록은 무엇을 보여 주나요?
+    choices:
+    - id: a
+      text: 원시 바이트를 규칙에 따라 읽어 낸 필드 값
+      feedback: 맞아요. Wireshark는 원시 바이트를 프로토콜 규칙에 따라 해석해 필드로 보여 줍니다.
+    - id: b
+      text: 패킷을 보낸 사람의 비밀번호
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: c
+      text: 네트워크 케이블의 물리 길이
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: d
+      text: 컴퓨터에 설치된 모든 프로그램
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: e
+      text: 이더넷 스위치의 포트 개수
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    answer: a
+  - id: u5-l01-p04-q02
+    kind: choice
+    difficulty: medium
+    prompt: IP 헤더가 20바이트이고 Total Length가 331바이트라면 IP 페이로드 크기는 얼마인가요?
+    choices:
+    - id: a
+      text: 20바이트
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: b
+      text: 311바이트
+      feedback: 맞아요. Total Length에는 헤더가 포함되므로 331에서 20을 빼면 페이로드는 311바이트입니다.
+    - id: c
+      text: 331바이트
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: d
+      text: 351바이트
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: e
+      text: 1,480바이트
+      feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    answer: b
+  - id: u5-l01-p04-q03
+    kind: short
+    prompt: IP 헤더와 페이로드를 합친 IP 패킷 전체의 바이트 수를 나타내는 필드입니다. 이 필드의 이름을 적어 보세요.
+    answers:
+    - total length
+    - 전체 길이
+    feedback: 정답은 Total Length입니다. 헤더와 페이로드를 합친 IP 패킷 전체 길이를 나타냅니다.
+  question_placements:
+  - question_id: u5-l01-p04-q01
+    after_paragraph: 1
+  - question_id: u5-l01-p04-q02
+    after_paragraph: 3
   illustrations:
   - file: assets/animations/l17-daily-lookup-screen.svg
     title: "송장 조회 화면에서 칸 찾기"
