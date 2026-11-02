@@ -55,13 +55,26 @@ page_metadata:
       feedback: IP 주소의 숫자만으로는 경계가 보이지 않을 수 있어요. 그 경계를 알려 주는 값을 확인해 보세요.
     answer: a
   - id: u5-l02-p01-q03
-    kind: short
-    prompt: IP 주소에서 네트워크 부분과 호스트 부분이 어디서 나뉘는지 알려 주는 값입니다. 이 용어를 적어 보세요.
-    answers:
-    - subnet mask
-    - 서브넷 마스크
-    - subnetmask
-    feedback: 정답은 서브넷 마스크(Subnet Mask)입니다. 주소의 네트워크 경계와 호스트 경계를 나타냅니다.
+    kind: choice
+    difficulty: easy
+    prompt: IP 주소에서 네트워크 부분과 호스트 부분이 어디서 나뉘는지 알려 주는 값은 무엇인가요?
+    choices:
+    - id: a
+      text: 네트워크 ID
+      feedback: 주소의 두 부분 사이의 경계를 표시하는 값이 무엇인지 떠올려 보세요.
+    - id: b
+      text: 서브넷 마스크
+      feedback: 맞아요. 서브넷 마스크가 네트워크 부분과 호스트 부분의 경계를 알려 줍니다.
+    - id: c
+      text: 호스트 ID
+      feedback: 주소의 두 부분 사이의 경계를 표시하는 값이 무엇인지 떠올려 보세요.
+    - id: d
+      text: 기본 게이트웨이
+      feedback: 주소의 두 부분 사이의 경계를 표시하는 값이 무엇인지 떠올려 보세요.
+    - id: e
+      text: DNS 서버
+      feedback: 주소의 두 부분 사이의 경계를 표시하는 값이 무엇인지 떠올려 보세요.
+    answer: b
   question_placements:
   - question_id: u5-l02-p01-q01
     after_paragraph: 2
@@ -133,13 +146,26 @@ page_metadata:
       feedback: 각 비트를 0 또는 1로 적어 8자리를 채워 보세요. 255는 여덟 자리 모두 1인 값입니다.
     answer: c
   - id: u5-l02-p02-q03
-    kind: short
-    prompt: 0부터 9까지와 A부터 F까지의 기호를 사용해 값을 나타내는 진법입니다. 이 진법의 이름을 영어 또는 한글로 적어 보세요.
-    answers:
-    - hexadecimal
-    - hex
-    - 16진수
-    feedback: 정답은 hexadecimal(16진수)입니다. 한 자리가 0부터 15까지의 값을 나타냅니다.
+    kind: choice
+    difficulty: easy
+    prompt: 0부터 9까지와 A부터 F까지를 사용해 한 자리에 0부터 15까지를 나타내는 진법은 무엇인가요?
+    choices:
+    - id: a
+      text: 2진수
+      feedback: 각 선택지가 사용하는 숫자 범위와 기호를 비교해 보세요.
+    - id: b
+      text: 10진수
+      feedback: 각 선택지가 사용하는 숫자 범위와 기호를 비교해 보세요.
+    - id: c
+      text: 8진수
+      feedback: 각 선택지가 사용하는 숫자 범위와 기호를 비교해 보세요.
+    - id: d
+      text: 16진수
+      feedback: 맞아요. 16진수는 한 자리에 0부터 15까지의 값을 나타내며 A부터 F까지도 사용합니다.
+    - id: e
+      text: 문자 코드
+      feedback: 각 선택지가 사용하는 숫자 범위와 기호를 비교해 보세요.
+    answer: d
   question_placements:
   - question_id: u5-l02-p02-q01
     after_paragraph: 3
@@ -198,13 +224,26 @@ page_metadata:
       feedback: 마스크가 1인 앞의 24비트는 남고, 호스트 부분인 마지막 옥텟은 0이 됩니다.
     answer: a
   - id: u5-l02-p03-q03
-    kind: short
-    prompt: 두 비트가 모두 1일 때만 결과가 1이 되는 논리 연산입니다. 이 연산의 이름을 적어 보세요.
-    answers:
-    - and
-    - and 연산
-    - 논리곱
-    feedback: 정답은 AND 연산(논리곱)입니다. 두 입력이 모두 1일 때만 1을 냅니다.
+    kind: choice
+    difficulty: easy
+    prompt: 두 입력 비트가 모두 1일 때만 결과가 1이 되는 연산은 무엇인가요?
+    choices:
+    - id: a
+      text: OR
+      feedback: 두 비트가 모두 1일 때만 1을 내는 규칙을 고르세요.
+    - id: b
+      text: XOR
+      feedback: 두 비트가 모두 1일 때만 1을 내는 규칙을 고르세요.
+    - id: c
+      text: AND
+      feedback: 맞아요. AND 연산은 두 입력이 모두 1일 때만 1을 냅니다.
+    - id: d
+      text: NOT
+      feedback: 두 비트가 모두 1일 때만 1을 내는 규칙을 고르세요.
+    - id: e
+      text: 덧셈
+      feedback: 두 비트가 모두 1일 때만 1을 내는 규칙을 고르세요.
+    answer: c
   question_placements:
   - question_id: u5-l02-p03-q01
     after_paragraph: 1
@@ -266,13 +305,26 @@ page_metadata:
       feedback: /24는 첫 24비트가 네트워크 부분이라는 뜻이므로, 두 주소의 그 부분을 비교하세요.
     answer: b
   - id: u5-l02-p04-q03
-    kind: short
-    prompt: IP 주소 뒤에 /숫자를 붙여 네트워크 경계를 표시하는 표기 방식입니다. 영어 또는 한글 이름을 적어 보세요.
-    answers:
-    - cidr
-    - 사이더
-    - classless inter-domain routing
-    feedback: 정답은 CIDR(사이더)입니다. 주소 뒤의 프리픽스 길이로 네트워크 경계를 나타냅니다.
+    kind: choice
+    difficulty: easy
+    prompt: IP 주소 뒤에 슬래시와 숫자를 붙여 네트워크 경계를 나타내는 표기 방식은 무엇인가요?
+    choices:
+    - id: a
+      text: 네트워크 주소
+      feedback: 주소 뒤에 /숫자를 붙이는 표기 방식을 확인해 보세요.
+    - id: b
+      text: 서브넷 마스크
+      feedback: 주소 뒤에 /숫자를 붙이는 표기 방식을 확인해 보세요.
+    - id: c
+      text: 클래스 기반 주소 방식
+      feedback: 주소 뒤에 /숫자를 붙이는 표기 방식을 확인해 보세요.
+    - id: d
+      text: IP 주소
+      feedback: 주소 뒤에 /숫자를 붙이는 표기 방식을 확인해 보세요.
+    - id: e
+      text: CIDR
+      feedback: 맞아요. CIDR은 주소 뒤의 프리픽스 길이로 네트워크 경계를 나타냅니다.
+    answer: e
   question_placements:
   - question_id: u5-l02-p04-q01
     after_paragraph: 1
@@ -327,13 +379,26 @@ page_metadata:
       feedback: 마지막 옥텟 130과 마스크 128을 이진수로 바꿔 비트별 AND를 해 보세요.
     answer: c
   - id: u5-l02-p05-q03
-    kind: short
-    prompt: CIDR에서 슬래시 뒤 숫자가 나타내는 네트워크 비트 수를 부르는 용어입니다. 영어 또는 한글로 적어 보세요.
-    answers:
-    - prefix length
-    - 프리픽스 길이
-    - prefix
-    feedback: 정답은 prefix length(프리픽스 길이)입니다. 예를 들어 /25의 25가 네트워크 비트 수입니다.
+    kind: choice
+    difficulty: easy
+    prompt: CIDR에서 슬래시 뒤 숫자가 나타내는 네트워크 비트 수를 부르는 용어는 무엇인가요?
+    choices:
+    - id: a
+      text: 옥텟
+      feedback: 슬래시 뒤 숫자가 가리키는 네트워크 비트 수의 이름을 고르세요.
+    - id: b
+      text: 호스트 ID
+      feedback: 슬래시 뒤 숫자가 가리키는 네트워크 비트 수의 이름을 고르세요.
+    - id: c
+      text: 프리픽스 길이
+      feedback: 맞아요. 프리픽스 길이는 네트워크 부분에 포함되는 비트 수입니다.
+    - id: d
+      text: 네트워크 주소
+      feedback: 슬래시 뒤 숫자가 가리키는 네트워크 비트 수의 이름을 고르세요.
+    - id: e
+      text: 서브넷 마스크
+      feedback: 슬래시 뒤 숫자가 가리키는 네트워크 비트 수의 이름을 고르세요.
+    answer: c
   question_placements:
   - question_id: u5-l02-p05-q01
     after_paragraph: 2
@@ -390,13 +455,26 @@ page_metadata:
       feedback: n개의 비트 조합은 2ⁿ가지입니다. 이 문항은 실제 배정 가능 수가 아니라 조합 수를 묻습니다.
     answer: d
   - id: u5-l02-p06-q03
-    kind: short
-    prompt: 하나의 네트워크를 더 작은 네트워크 여러 개로 나누는 작업입니다. 이 용어를 영어 또는 한글로 적어 보세요.
-    answers:
-    - subnetting
-    - 서브네팅
-    - subnet
-    feedback: 정답은 Subnetting(서브네팅)입니다. 네트워크 경계를 옮겨 네트워크를 더 작은 단위로 나누는 작업입니다.
+    kind: choice
+    difficulty: easy
+    prompt: 하나의 네트워크를 더 작은 네트워크 여러 개로 나누는 작업을 무엇이라고 하나요?
+    choices:
+    - id: a
+      text: 포워딩
+      feedback: 네트워크를 더 작은 네트워크들로 나누는 용어를 고르세요.
+    - id: b
+      text: 서브네팅
+      feedback: 맞아요. 서브네팅은 네트워크 경계를 옮겨 네트워크를 더 작은 단위로 나누는 작업입니다.
+    - id: c
+      text: 라우팅
+      feedback: 네트워크를 더 작은 네트워크들로 나누는 용어를 고르세요.
+    - id: d
+      text: VLAN 태깅
+      feedback: 네트워크를 더 작은 네트워크들로 나누는 용어를 고르세요.
+    - id: e
+      text: 마스크 연산
+      feedback: 네트워크를 더 작은 네트워크들로 나누는 용어를 고르세요.
+    answer: b
   question_placements:
   - question_id: u5-l02-p06-q01
     after_paragraph: 1
