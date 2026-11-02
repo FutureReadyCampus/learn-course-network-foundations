@@ -78,6 +78,7 @@ animations_dir: units/04-layer3-addressing/lessons/11-ttl과-단편화/assets/an
 아래 지도는 이번 Lesson의 순서다. 먼저 라우터와 Hop을 보고 TTL의 역할을 익힌 뒤, 링크별 MTU와 IPv4 단편화, 수신 측 재조립을 살펴본다. TCP 연결이나 재전송 절차를 다시 배우는 Lesson은 아니다.
 
 ## 라우터가 패킷을 다음 홉으로 전달한다
+<!-- learn-page-id: hop-count -->
 
 라우터는 자신에게 도착한 패킷을 읽고 목적지 IP 주소를 확인한다. 그리고 라우팅 테이블을 참고해 그 패킷을 어느 방향으로 넘길지 결정한다. 패킷의 최종 목적지가 라우터 자신이 아니라면, 라우터는 내용을 사용하지 않고 다음 장비로 전달한다. 이 동작을 **전달(Forwarding)**이라고 한다.
 
@@ -86,6 +87,7 @@ animations_dir: units/04-layer3-addressing/lessons/11-ttl과-단편화/assets/an
 라우터에서 다음 라우터로 한 번 넘어가는 이동을 **홉(Hop)**이라고 한다. PC에서 라우터 A, 라우터 B를 거쳐 서버로 갔다면 라우터를 두 번 거친 경로라고 셀 수 있다. 목적지까지 이어지는 전체 경로가 몇 Hop인지는 중간에 어떤 라우터를 거치는지에 따라 달라진다. [Unit 2 Lesson 3에서 본 다음 홉과 라우팅 테이블](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/2/lesson/3/page/4)을 떠올리면, 라우터가 한 번에 전체 경로를 외워서 달리는 것이 아니라 다음 전달 지점을 선택한다는 점이 연결된다.
 
 ## TTL은 패킷이 끝없이 돌지 않도록 한다
+<!-- learn-page-id: ttl-definition -->
 
 라우터들이 경로 정보를 잘못 배워 패킷을 라우터 A에서 B로, 다시 B에서 A로 보내는 상황을 생각해 보자. 이런 **라우팅 루프**가 생기면 패킷이 목적지에 도착하지 못한 채 네트워크 안을 계속 돌 수 있다. 그래서 IPv4 패킷에는 이동을 제한하는 값인 **TTL(Time To Live)**이 있다.
 
