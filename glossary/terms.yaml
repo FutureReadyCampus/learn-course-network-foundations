@@ -220,8 +220,8 @@
   - default gateway
   hover: 같은 LAN 밖으로 나갈 때 먼저 패킷을 맡기는 라우터 주소예요. 이 주소를 기본 게이트웨이라고 불러요.
   anchor:
-    lesson: u4-l11-ipv4주소의-기본-구조
-    page: gateway-definition
+    lesson: u4-l14-패킷의-생성과-전달
+    page: default-gateway-definition
 - id: subnet-mask
   tier: hero
   category: 표식
@@ -637,7 +637,7 @@
   hover: 통신의 일을 일곱 역할로 나누어 설명하는 참조 모델이에요. 실제 통신 규칙 자체와는 구별해요.
   anchor_hint:
     lesson: u1-networking
-    page_title: OSI·프로토콜과 TCP/IP 구현
+    page_title: 프로토콜·TCP/IP와 개념·구현
 - id: tcpip
   tier: family
   parent: layer
@@ -649,7 +649,7 @@
   hover: 통신 일을 응용·전송·인터넷·네트워크 연결 역할로 나누어 보는 모델이에요.
   anchor_hint:
     lesson: u1-networking
-    page_title: OSI·프로토콜과 TCP/IP 구현
+    page_title: 프로토콜·TCP/IP와 개념·구현
 - id: user-kernel-mode
   tier: family
   parent: layer
@@ -1352,7 +1352,7 @@
   hover: 비트는 0 또는 1 하나를 나타내고, 바이트는 비트 8개를 묶은 단위예요.
   anchor_hint:
     lesson: u1-prerequisites
-    page_title: 수강 전에 필요한 바탕과 비트·바이트
+    page_title: 네트워크를 공부하는 이유와 필요한 바탕
 - id: buffer
   tier: none
   ko: 버퍼
