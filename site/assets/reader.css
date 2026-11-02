@@ -73,6 +73,13 @@ button { color: inherit; }
 .net-prose p { margin: 0 0 20px; }
 .net-prose h2 { margin: 34px 0 14px; font-size: 1.35rem; line-height: 1.45; }
 .net-prose h3 { margin: 25px 0 10px; font-size: 1.12rem; line-height: 1.5; }
+.ral-summary { margin-block: 34px 28px; padding: 22px; border: 1px solid var(--border); border-inline-start: 4px solid var(--accent); border-radius: 14px; background: var(--surface-muted); }
+.ral-summary__items { display: grid; gap: 10px; margin: 0 !important; padding: 0 !important; list-style: none; }
+.ral-summary__item { display: grid; grid-template-columns: max-content minmax(0, 1fr); align-items: start; gap: 12px; margin: 0 !important; padding: 14px !important; border: 1px solid var(--border); border-radius: 11px; background: var(--surface); }
+.ral-summary__marker { display: inline-flex; align-items: center; justify-content: center; min-height: 32px; padding-inline: 11px; border: 1px solid var(--border); border-radius: 999px; color: var(--accent); background: var(--accent-soft); font-size: .8125rem; font-weight: 750; line-height: 1.2; }
+.ral-summary__content { min-width: 0; }
+.ral-summary__label { display: block; margin-block: 1px 3px; font-size: .9375rem; line-height: 1.5; }
+.ral-summary__detail { margin: 0 !important; font-size: .9375rem; line-height: 1.7; }
 .net-prose ul, .net-prose ol { margin: 0 0 22px; padding-inline-start: 1.5em; }
 .net-prose li { padding-inline-start: 3px; margin-block: 7px; }
 .net-table-scroll { max-width: 100%; margin: 22px 0 26px; overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
@@ -118,6 +125,10 @@ button { color: inherit; }
   .net-lesson > h1 { text-align: start; }
   .net-eyebrow, .net-sequence { text-align: start; }
   .net-prose { font-size: 1rem; line-height: 1.85; }
+  .ral-summary { margin-block: 28px 24px; padding: 16px; }
+  .ral-summary__item { gap: 9px; padding: 12px !important; }
+  .ral-summary__marker { min-height: 30px; padding-inline: 9px; }
+  .ral-summary__label, .ral-summary__detail { font-size: .9rem; }
   .net-table-hint { display: block; }
   .page-nav { gap: 8px; }
   .page-nav :is(a,button) { flex: 1; text-align: center; }

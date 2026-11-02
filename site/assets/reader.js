@@ -26,6 +26,19 @@
     const prose = document.createElement("div");
     prose.className = "net-prose";
     let list = [];
+    let ralSummary = null;
+    let ralList = null;
+    const ralLevel = (label) => ({
+      R: "R", "기억해 두기": "R", "기억하기 (Recall)": "R", "회상할 핵심": "R",
+      A: "A", "적용해 보기": "A", "적용하기 (Apply)": "A", "사례에 적용할 것": "A",
+      L: "L", "필요할 때 찾아보기": "L", "찾아보기 (Lookup)": "L", "필요할 때 찾아볼 것": "L",
+    })[label.trim().replace(/^[RAL]\s*·\s*/, "")] || null;
+    const parseRalLine = (item) => {
+      const match = item.match(/^(?:\*\*)?([^:*]+?)(?:\*\*)?:\s*([\s\S]+)$/);
+      if (!match) return null;
+      const level = ralLevel(match[1]);
+      return level ? { level, detail: match[2] } : null;
+    };
     const tableCells = (line) => line.trim().replace(/^\|/, "").replace(/\|$/, "").split("|").map((cell) => cell.trim());
     const isTable = (lines) => {
       if (lines.length < 2 || !lines[0].includes("|")) return false;
@@ -72,12 +85,40 @@
     const flush = () => {
       if (!list.length) return;
       const ul = document.createElement("ul");
-      list.forEach((item) => {
-        const li = document.createElement("li");
-        li.innerHTML = inline(item);
-        ul.append(li);
-      });
-      prose.append(ul);
+      const ralItems = list.map(parseRalLine);
+      if (ralSummary && ralItems.every(Boolean)) {
+        ralList ||= (() => {
+          const items = document.createElement("ul");
+          items.className = "ral-summary__items";
+          ralSummary.append(items);
+          return items;
+        })();
+        ralItems.forEach((match) => {
+          const { level, detail } = match;
+          const li = document.createElement("li");
+          li.className = "ral-summary__item";
+
+          const marker = document.createElement("span");
+          marker.className = "ral-summary__marker";
+          marker.textContent = ({ R: "Recall", A: "Apply", L: "Lookup" })[level];
+
+          const content = document.createElement("div");
+          content.className = "ral-summary__content";
+          const paragraph = document.createElement("p");
+          paragraph.className = "ral-summary__detail";
+          paragraph.innerHTML = inline(detail);
+          content.append(paragraph);
+          li.append(marker, content);
+          ralList.append(li);
+        });
+      } else {
+        list.forEach((item) => {
+          const li = document.createElement("li");
+          li.innerHTML = inline(item);
+          ul.append(li);
+        });
+        (ralSummary || prose).append(ul);
+      }
       list = [];
     };
     const byParagraph = new Map();
@@ -100,22 +141,45 @@
     };
     appendIllustrations(-1);
     appendQuizzes(0);
-    for (const [index, text] of paragraphs.entries()) {
+    const blocks = paragraphs.flatMap((text) => {
+      const headingAt = String(text).indexOf("\n### 이 Lesson에서 가져갈 것");
+      if (headingAt < 0) return [text];
+      return [String(text).slice(0, headingAt), "### 이 Lesson에서 가져갈 것"];
+    }).filter((text) => String(text).length > 0);
+    for (const [index, text] of blocks.entries()) {
       const lines = String(text).split("\n");
       const heading = lines.length === 1 ? text.match(/^(#{3,4})\s+(.+)$/) : null;
       if (heading) {
         flush();
         // ## is the page boundary and renders as the page H1; body ###/#### become H2/H3.
-        const element = document.createElement(heading[1].length === 3 ? "h2" : "h3");
-        element.innerHTML = inline(heading[2]);
-        prose.append(element);
+        if (heading[2].trim() === "이 Lesson에서 가져갈 것") {
+          const section = document.createElement("section");
+          section.className = "ral-summary";
+          section.setAttribute("aria-label", "Lesson recap: Recall, Apply, Lookup");
+          ralList = document.createElement("ul");
+          ralList.className = "ral-summary__items";
+          section.append(ralList);
+          prose.append(section);
+          ralSummary = section;
+        } else {
+          ralSummary = null;
+          const element = document.createElement(heading[1].length === 3 ? "h2" : "h3");
+          element.innerHTML = inline(heading[2]);
+          prose.append(element);
+        }
       } else if (isTable(lines)) {
         flush();
         prose.append(renderTable(lines));
+      } else if (lines.length === 1 && /^\s*[-*]\s+/.test(text) && ralSummary && parseRalLine(text.replace(/^\s*[-*]\s+/, ""))) {
+        const item = text.replace(/^\s*[-*]\s+/, "");
+        if (!list.length) list.push(item);
+        else list.push(item);
+        flush();
       } else if (lines.length > 1 && lines.every((line) => /^\s*(?:[-*]|\d+\.)\s+/.test(line))) {
         list.push(...lines.map((line) => line.replace(/^\s*(?:[-*]|\d+\.)\s+/, "")));
       } else {
         flush();
+        ralSummary = null;
         if (lines.length > 1) {
           const pre = document.createElement("pre");
           const code = document.createElement("code");
@@ -132,6 +196,7 @@
       appendQuizzes(index + 1);
     }
     flush();
+    if (ralSummary) prose.append(ralSummary);
     return prose;
   };
   const allItems = (course) => {
