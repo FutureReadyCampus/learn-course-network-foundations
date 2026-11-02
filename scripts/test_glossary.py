@@ -138,6 +138,39 @@ class GlossaryTests(unittest.TestCase):
             page = bc.reading_pages(path, metadata, {})[0]
         self.assertEqual(page["term_exclude"], ["host"])
 
+    def test_build_emits_resolved_glossary_and_page_exclusions(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / "units/u1").mkdir(parents=True)
+            (root / "glossary").mkdir()
+            (root / "course.yaml").write_text(yaml.safe_dump({
+                "course": {"title": "Test course"},
+                "units": [{"id": "u1", "title": "Unit", "path": "units/u1/unit.md"}],
+            }), encoding="utf-8")
+            (root / "units/u1/unit.md").write_text(
+                "---\nid: u1\ntitle: Unit\nlessons:\n  - path: lesson.md\n---\n", encoding="utf-8")
+            (root / "units/u1/lesson.md").write_text(
+                "---\nid: l1\ntitle: Lesson\npage_metadata:\n"
+                "  - page_id: intro\n    term_exclude: [host]\n---\n"
+                "## Intro\n<!-- learn-page-id: intro -->\n\nHost.\n"
+                "## Definition\n<!-- learn-page-id: host-def -->\n\nHost 호스트; Server 서버 means a network endpoint.",
+                encoding="utf-8",
+            )
+            family = {"id": "server", "tier": "family", "parent": "host", "ko": "서버",
+                      "aliases": ["Server"], "anchor": {"lesson": "l1", "page": "host-def"}}
+            (root / "glossary/terms.yaml").write_text(
+                yaml.safe_dump([HERO, family], allow_unicode=True), encoding="utf-8")
+            previous = bc.ROOT
+            bc.ROOT = root
+            try:
+                catalog = bc.build("test-sha", "test")
+            finally:
+                bc.ROOT = previous
+        self.assertEqual(catalog["glossary"][0]["order"], 2)
+        self.assertEqual(catalog["glossary"][0]["anchor"]["page_index"], 2)
+        self.assertEqual((catalog["glossary"][1]["emoji"], catalog["glossary"][1]["category"]), ("🏠", "등장인물"))
+        self.assertEqual(catalog["lessons"][0]["pages"][0]["term_exclude"], ["host"])
+
     def test_rejects_term_exclude_unknown_id(self):
         with self.assertRaisesRegex(ValueError, "unknown term"):
             bc.validate_term_excludes([("l1", ["missing"])], {"host"})
