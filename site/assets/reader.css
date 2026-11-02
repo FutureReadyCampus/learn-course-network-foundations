@@ -75,6 +75,13 @@ button { color: inherit; }
 .net-prose h3 { margin: 25px 0 10px; font-size: 1.12rem; line-height: 1.5; }
 .net-prose ul, .net-prose ol { margin: 0 0 22px; padding-inline-start: 1.5em; }
 .net-prose li { padding-inline-start: 3px; margin-block: 7px; }
+.net-table-scroll { max-width: 100%; margin: 22px 0 26px; overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
+.net-table-scroll:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.net-table-hint { display: none; margin: 0; padding: 8px 12px; color: var(--muted); font-size: .8em; }
+.net-table { width: 100%; min-width: 560px; border-collapse: collapse; line-height: 1.55; font-size: .9em; }
+.net-table th, .net-table td { padding: 12px 14px; border-block-end: 1px solid var(--border); text-align: start; vertical-align: top; }
+.net-table th { background: var(--surface-muted); font-weight: 700; }
+.net-table tbody tr:last-child td { border-block-end: 0; }
 .net-prose code { padding: .08em .28em; border: 1px solid var(--border); border-radius: 4px; background: var(--surface-muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .88em; overflow-wrap: anywhere; }
 .net-prose pre { overflow-x: auto; padding: 14px 16px; border: 1px solid var(--border); border-radius: 9px; background: var(--surface); line-height: 1.6; }
 .net-prose pre code { padding: 0; border: 0; background: transparent; }
@@ -111,6 +118,7 @@ button { color: inherit; }
   .net-lesson > h1 { text-align: start; }
   .net-eyebrow, .net-sequence { text-align: start; }
   .net-prose { font-size: 1rem; line-height: 1.85; }
+  .net-table-hint { display: block; }
   .page-nav { gap: 8px; }
   .page-nav :is(a,button) { flex: 1; text-align: center; }
 }

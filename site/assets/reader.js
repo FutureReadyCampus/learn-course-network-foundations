@@ -26,6 +26,49 @@
     const prose = document.createElement("div");
     prose.className = "net-prose";
     let list = [];
+    const tableCells = (line) => line.trim().replace(/^\|/, "").replace(/\|$/, "").split("|").map((cell) => cell.trim());
+    const isTable = (lines) => {
+      if (lines.length < 2 || !lines[0].includes("|")) return false;
+      const header = tableCells(lines[0]);
+      const separator = tableCells(lines[1]);
+      return header.length > 1 && separator.length === header.length && separator.every((cell) => /^:?-{3,}:?$/.test(cell));
+    };
+    const renderTable = (lines) => {
+      const wrapper = document.createElement("div");
+      wrapper.className = "net-table-scroll";
+      wrapper.tabIndex = 0;
+      wrapper.setAttribute("role", "region");
+      wrapper.setAttribute("aria-label", "비교 표를 가로로 살펴보기");
+      const hint = document.createElement("p");
+      hint.className = "net-table-hint";
+      hint.textContent = "좁은 화면에서는 표를 좌우로 움직여 전체 내용을 볼 수 있습니다.";
+      const table = document.createElement("table");
+      table.className = "net-table";
+      const head = document.createElement("thead");
+      const headRow = document.createElement("tr");
+      tableCells(lines[0]).forEach((cell) => {
+        const th = document.createElement("th");
+        th.scope = "col";
+        th.innerHTML = inline(cell);
+        headRow.append(th);
+      });
+      head.append(headRow);
+      table.append(head);
+      const body = document.createElement("tbody");
+      lines.slice(2).filter((line) => line.includes("|")).forEach((line) => {
+        const row = document.createElement("tr");
+        tableCells(line).forEach((cell) => {
+          const td = document.createElement("td");
+          td.innerHTML = inline(cell);
+          row.append(td);
+        });
+        body.append(row);
+      });
+      table.append(body);
+      wrapper.append(hint);
+      wrapper.append(table);
+      return wrapper;
+    };
     const flush = () => {
       if (!list.length) return;
       const ul = document.createElement("ul");
@@ -66,6 +109,9 @@
         const element = document.createElement(heading[1].length === 3 ? "h2" : "h3");
         element.innerHTML = inline(heading[2]);
         prose.append(element);
+      } else if (isTable(lines)) {
+        flush();
+        prose.append(renderTable(lines));
       } else if (lines.length > 1 && lines.every((line) => /^\s*(?:[-*]|\d+\.)\s+/.test(line))) {
         list.push(...lines.map((line) => line.replace(/^\s*(?:[-*]|\d+\.)\s+/, "")));
       } else {
