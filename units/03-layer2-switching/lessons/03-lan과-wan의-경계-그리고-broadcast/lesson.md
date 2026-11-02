@@ -176,6 +176,14 @@ page_metadata:
       text: 프레임 안의 데이터 크기만
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
     answer: a
+  - id: u3-03-p02-q03
+    kind: short
+    prompt: 같은 건물 안에서도 두 구역이 서로 다른 브로드캐스트 도메인으로 나뉘어 있습니다. 한쪽에서 보낸 Ethernet 브로드캐스트가 다른 쪽에도 직접 전달될까요? 예 또는 아니요로 답하세요.
+    answers:
+    - 아니요
+    - 아니오
+    - "no"
+    feedback: 정답은 아니요입니다. Ethernet 브로드캐스트는 보낸 쪽의 브로드캐스트 도메인 안에서 전달되며, 라우터는 기본적으로 이를 다른 도메인으로 전달하지 않습니다.
   question_placements:
   - question_id: u3-03-p02-q01
     after_paragraph: 1
@@ -646,6 +654,16 @@ page_metadata:
       text: LAN은 언제나 물리적이고 WAN은 언제나 논리적이라는 정의다
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
     answer: a
+  - id: u3-03-p07-q03
+    kind: short
+    prompt: PC에서 서버로 가는 패킷이 라우터를 지난 뒤 다음 링크에 맞게 프레임을 새로 만들 때, 일반적으로 유지되는 주소와 링크에 맞게 바뀌는 주소는 각각 무엇인가요? IP, MAC 순서로 답하세요.
+    answers:
+    - IP, MAC
+    - IP address, MAC address
+    - IP 주소, MAC 주소
+    - IP는 유지되고 MAC은 바뀜
+    - IP는 그대로이고 MAC은 바뀜
+    feedback: 정답은 IP 주소는 보통 유지되고 MAC 주소는 다음 링크에 맞게 바뀐다는 것입니다. NAT 같은 기능이 있으면 IP 주소도 바뀔 수 있습니다.
   question_placements:
   - question_id: u3-03-p07-q01
     after_paragraph: 2
