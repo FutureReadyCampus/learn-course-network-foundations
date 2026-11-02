@@ -1,4 +1,4 @@
-"""Shared two-second title cover and segmented playback bar for animated SVGs."""
+"""Shared segmented playback bar for animated SVGs (an optional two-second title cover is still supported)."""
 
 from __future__ import annotations
 
@@ -257,6 +257,27 @@ def _delay_animations(svg: str) -> str:
     return ANIMATE_TAG.sub(delay, svg)
 
 
+def _undelay_animations(svg: str) -> str:
+    """Undo `_delay_animations`: shift every `begin` back by the two-second cover."""
+    def undelay(match: re.Match[str]) -> str:
+        tag = match.group(0)
+        attrs = _attributes(tag)
+        begin = attrs.get("begin")
+        if begin is None:
+            return tag
+        drop = re.sub(r"\s+begin\s*=\s*(['\"]).*?\1", "", tag, count=1)
+        plain = re.fullmatch(r"([0-9]+(?:\.[0-9]+)?)s", begin)
+        if plain:
+            left = float(plain.group(1)) - 2
+            return drop if left <= 0 else re.sub(r"\bbegin\s*=\s*(['\"]).*?\1", f'begin="{left:g}s"', tag, count=1)
+        if begin.startswith("2s;"):
+            rest = begin[3:]
+            return re.sub(r"\bbegin\s*=\s*(['\"]).*?\1", f'begin="{rest}"', tag, count=1)
+        return tag
+
+    return ANIMATE_TAG.sub(undelay, svg)
+
+
 def _view_box(svg: str) -> tuple[float, float, float, float]:
     root_tag = re.search(r"<svg\b[^>]*>", svg)
     attrs = _attributes(root_tag.group(0)) if root_tag else {}
@@ -280,20 +301,27 @@ def apply_opening(
     loop_seconds: float | None = None,
     title: str | None = None,
     model: tuple[int, list[float]] | None = None,
+    cover: bool = False,
 ) -> str:
-    """Replace numeric stage badges with a synchronized title cover and progress bar."""
+    """Replace numeric stage badges with a synchronized progress bar (and, if `cover`, a title cover)."""
     model = model or stage_model(svg)
     if model is None:
         raise ValueError("animated SVG has no complete stage indicator")
     loop_seconds = loop_seconds or scene_loop_seconds(svg)
-    title = title or _title(svg, None)
     total, starts = model
-    end_time = loop_seconds + 2
+    had_cover = 'id="title-intro"' in svg
+    if cover:
+        title = title or _title(svg, None)
+    delay = 2 if cover else 0
+    end_time = loop_seconds + delay
     enter, hold, end = 0.4 / end_time, 1.7 / end_time, 2 / end_time
     x0, y0, width, height = _view_box(svg)
 
     svg = _strip_generated_groups(svg)
-    svg = _delay_animations(svg)
+    if cover:
+        svg = _delay_animations(svg)
+    elif had_cover:
+        svg = _undelay_animations(svg)
 
     margin = min(40.0, width * 0.08)
     gap = min(8.0, max(2.0, (width - 2 * margin) / max(total * 3, 1)))
@@ -320,10 +348,15 @@ def apply_opening(
             f'<g class="progress-segment" data-stage="{index + 1}">'
             f'<rect x="{x:g}" y="{bar_y:g}" width="{segment_width:g}" height="{bar_height:g}" rx="{bar_height / 2:g}" fill="#394554"/>'
             f'<rect x="{x:g}" y="{bar_y:g}" width="0" height="{bar_height:g}" rx="{bar_height / 2:g}" fill="#ff3434">'
-            f'<animate begin="2s" attributeName="width" values="{values}" keyTimes="{key_times}" dur="{loop_seconds:g}s" repeatCount="indefinite"/>'
+            f'<animate{' begin="2s"' if cover else ''} attributeName="width" values="{values}" keyTimes="{key_times}" dur="{loop_seconds:g}s" repeatCount="indefinite"/>'
             f'</rect></g>'
         )
     progress = f'<g aria-label="재생 진행 막대" data-stage-count="{total}">' + "".join(segments) + "</g>"
+
+    if not cover:
+        svg = re.sub(r"</svg\s*>\s*$", progress + "</svg>", svg, count=1)
+        ET.fromstring(svg)
+        return svg
 
     safe_title = html.escape(title, quote=False)
     font_size = _font_size(title, width)
