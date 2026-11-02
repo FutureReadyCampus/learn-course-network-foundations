@@ -257,10 +257,71 @@
   aliases:
   - 계층
   - Layer
-  hover: 통신에 필요한 일을 역할별 단계로 나눈 한 층이에요. 2계층(L2)은 같은 LAN 안에서 MAC 주소로 프레임을 전달하고, 3계층(L3)은 IP 주소로 패킷을 다른 네트워크까지 보내요.
+  hover: 통신에 필요한 일을 역할별 단계로 나눈 한 층이에요. 실제 장비가 층층이 쌓였다는 뜻은 아니에요.
   anchor:
     lesson: u1-layers
     page: layer-definition
+- id: l2
+  tier: hero
+  category: 약속
+  emoji: 2️⃣
+  ko: 2계층(L2)
+  en: Layer 2
+  aliases:
+  - L2
+  - Layer 2
+  - 2계층
+  - 데이터 링크 계층
+  hover: 같은 LAN 안에서 이웃한 장치끼리 프레임을 주고받는 계층이에요. MAC 주소를 보고 전달하고, 스위치가 여기서 일해요.
+  anchor:
+    lesson: u1-user-kernel
+    page: layer-numbers
+- id: l3
+  tier: hero
+  category: 약속
+  emoji: 3️⃣
+  ko: 3계층(L3)
+  en: Layer 3
+  aliases:
+  - L3
+  - Layer 3
+  - 3계층
+  - 네트워크 계층
+  hover: IP 주소를 보고 패킷을 다른 네트워크까지 보내는 계층이에요. 어느 길로 갈지 고르는 라우터가 여기서 일해요.
+  anchor:
+    lesson: u1-user-kernel
+    page: layer-numbers
+- id: l4
+  tier: hero
+  category: 약속
+  emoji: 4️⃣
+  ko: 4계층(L4)
+  en: Layer 4
+  aliases:
+  - L4
+  - Layer 4
+  - 4계층
+  - 전송 계층
+  hover: 포트 번호로 어느 프로그램에게 줄지 정하고, TCP나 UDP로 전달 방식을 고르는 계층이에요.
+  anchor:
+    lesson: u1-user-kernel
+    page: layer-numbers
+- id: l7
+  tier: hero
+  category: 약속
+  emoji: 7️⃣
+  ko: 7계층(L7)
+  en: Layer 7
+  aliases:
+  - L7
+  - Layer 7
+  - 7계층
+  - 응용 계층
+  - 애플리케이션 계층
+  hover: 웹 브라우저나 메일처럼 사용자가 쓰는 프로그램이 HTTP, DNS 같은 통신 규칙을 쓰는 계층이에요.
+  anchor:
+    lesson: u1-user-kernel
+    page: layer-numbers
 - id: broadcast
   tier: hero
   category: 동작과 값
