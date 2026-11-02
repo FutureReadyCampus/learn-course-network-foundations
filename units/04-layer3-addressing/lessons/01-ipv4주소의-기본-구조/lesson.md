@@ -492,14 +492,6 @@ page_metadata:
       text: "24개의 라우터가 있다는 뜻"
       feedback: "다시 확인해 보세요. 24개의 라우터가 있다는 뜻."
     answer: a
-  - id: u4-01-p06-q03
-    kind: short
-    prompt: "IP 주소에서 네트워크와 호스트의 경계를 나타내는 /24 같은 표기를 무엇이라고 하나요? (한글 또는 영어로 답해주세요)"
-    answers:
-    - "prefix length"
-    - "prefix-length"
-    - "프리픽스 길이"
-    feedback: "정답은 prefix length입니다."
   - id: u4-01-p06-q04
     kind: choice
     difficulty: medium
