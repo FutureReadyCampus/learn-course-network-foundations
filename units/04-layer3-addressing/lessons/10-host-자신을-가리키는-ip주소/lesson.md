@@ -13,6 +13,73 @@ page_metadata:
 - terms:
   - 원격지(Remote)
   - 호스트(Host)
+  questions:
+  - id: u5-l04-p01-q01
+    kind: choice
+    difficulty: easy
+    prompt: IP 주소가 네트워크에서 주로 찾는 대상은 무엇인가요?
+    choices:
+    - id: a
+      text: 실행 중인 프로그램 하나
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: b
+      text: 네트워크에 연결된 호스트
+      feedback: IP 주소는 네트워크에 연결된 호스트를 찾습니다.
+    - id: c
+      text: 웹 페이지의 파일 이름
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: d
+      text: 키보드의 입력 장치
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: e
+      text: 인터넷 서비스의 암호
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    answer: b
+  - id: u5-l04-p01-q02
+    kind: choice
+    difficulty: medium
+    prompt: 한 노트북에서 웹 서버와 브라우저를 함께 실행했습니다. 두 프로그램은 각각 무엇으로 동작하나요?
+    choices:
+    - id: a
+      text: 서로 다른 두 호스트
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: b
+      text: 하나의 프로세스
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: c
+      text: 서버와 클라이언트 역할을 하는 두 프로세스
+      feedback: 한 컴퓨터 안에서도 서버와 클라이언트 역할을 맡은 프로세스 두 개가 통신할 수 있습니다.
+    - id: d
+      text: 두 개의 네트워크 인터페이스
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: e
+      text: 라우터와 스위치
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    answer: c
+  - id: u5-l04-p01-q03
+    kind: choice
+    difficulty: medium
+    prompt: 이 Lesson에서 “원격지”라고 부르는 대상은 무엇인가요?
+    choices:
+    - id: a
+      text: 현재 컴퓨터 안의 다른 프로그램
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: b
+      text: 현재 컴퓨터와 떨어져 있는 상대 컴퓨터
+      feedback: 원격지는 현재 컴퓨터와 떨어져 있는 상대 컴퓨터를 가리킵니다.
+    - id: c
+      text: 현재 컴퓨터의 루프백 주소
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: d
+      text: 컴퓨터의 포트 번호
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: e
+      text: 브라우저가 저장한 웹 페이지
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    answer: b
+  question_placements:
+  - question_id: u5-l04-p01-q01
+    after_paragraph: 3
 - terms:
   - 프로세스(Process)
   - 소켓(Socket)
@@ -23,10 +90,144 @@ page_metadata:
     alt: 192.168.0.10이라는 이름표가 붙은 컴퓨터 안에 서버와 클라이언트 프로세스가 함께 있고, 클라이언트가 서버에 연결하는 장면입니다.
     caption: 서버와 클라이언트는 컴퓨터의 종류가 아니라 프로그램이 맡은 역할이므로, 한 컴퓨터 안에서도 서로 통신할 수 있습니다.
     after_paragraph: 2
+  questions:
+  - id: u5-l04-p02-q01
+    kind: choice
+    difficulty: easy
+    prompt: 실행 중인 프로그램 하나하나를 무엇이라고 하나요?
+    choices:
+    - id: a
+      text: 프로세스
+      feedback: 실행 중인 프로그램 하나하나를 프로세스라고 합니다.
+    - id: b
+      text: 포트
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: c
+      text: 호스트
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: d
+      text: 패킷
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: e
+      text: 인터페이스
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    answer: a
+  - id: u5-l04-p02-q02
+    kind: choice
+    difficulty: medium
+    prompt: 서버와 클라이언트의 역할을 바르게 설명한 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 서버는 항상 별도 컴퓨터이고 클라이언트는 항상 휴대전화다
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: b
+      text: 연결을 기다리는 쪽은 서버, 먼저 연결을 요청하는 쪽은 클라이언트다
+      feedback: 서버와 클라이언트는 장치 종류가 아니라 프로세스가 맡는 역할입니다.
+    - id: c
+      text: 서버는 포트 번호이고 클라이언트는 IP 주소다
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: d
+      text: 클라이언트만 데이터를 받을 수 있다
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: e
+      text: 한 컴퓨터에는 서버와 클라이언트가 함께 있을 수 없다
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    answer: b
+  - id: u5-l04-p02-q03
+    kind: choice
+    difficulty: medium
+    prompt: 프로세스가 네트워크 통신을 맡기고 데이터를 주고받는 통로는 무엇인가요?
+    choices:
+    - id: a
+      text: 프레임
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: b
+      text: 소켓
+      feedback: 프로세스가 통신을 위해 사용하는 통로를 소켓이라고 합니다.
+    - id: c
+      text: 호스트
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: d
+      text: 루프백
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: e
+      text: 네트워크 인터페이스
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    answer: b
+  question_placements:
+  - question_id: u5-l04-p02-q01
+    after_paragraph: 2
 - terms:
   - 루프백(Loopback) 주소
   - localhost
   - 네트워크 인터페이스(Network interface)
+  questions:
+  - id: u5-l04-p03-q01
+    kind: choice
+    difficulty: easy
+    prompt: IPv4 주소 127.0.0.1은 무엇을 가리키나요?
+    choices:
+    - id: a
+      text: 현재 컴퓨터 자신
+      feedback: 127.0.0.1은 현재 호스트 자신을 가리키는 대표적인 IPv4 루프백 주소입니다.
+    - id: b
+      text: 같은 Wi-Fi에 있는 모든 기기
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: c
+      text: 인터넷의 기본 경로
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: d
+      text: 항상 웹 서버가 실행 중인 컴퓨터
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: e
+      text: 공유기의 주소
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    answer: a
+  - id: u5-l04-p03-q02
+    kind: choice
+    difficulty: medium
+    prompt: localhost에 대한 설명으로 맞는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 항상 인터넷의 공용 서버를 뜻한다
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: b
+      text: 자기 컴퓨터를 가리킬 때 쓰는 이름이며, IPv6에서는 ::1 같은 주소가 쓰일 수 있다
+      feedback: localhost는 자기 컴퓨터를 가리키는 이름이며, 환경에 따라 IPv4 또는 IPv6 루프백 주소로 연결됩니다.
+    - id: c
+      text: Wi-Fi 인터페이스에만 설정되는 이름이다
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: d
+      text: 127.0.0.1과 달리 반드시 원격 네트워크로 나간다
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: e
+      text: 웹 서버가 없어도 웹 페이지를 자동으로 보여 준다
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    answer: b
+  - id: u5-l04-p03-q03
+    kind: choice
+    difficulty: medium
+    prompt: 노트북이 집의 Wi-Fi에서 카페 Wi-Fi로 바뀌어도 자기 자신을 가리키는 데 쓸 수 있는 주소는 무엇인가요?
+    choices:
+    - id: a
+      text: 카페 공유기의 주소
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: b
+      text: 집에서 받았던 사설 IP 주소
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: c
+      text: 127.0.0.1
+      feedback: 127.0.0.1은 특정 Wi-Fi 주소가 아니라 현재 컴퓨터 자신을 가리킵니다.
+    - id: d
+      text: 인터넷 서비스 제공자의 주소
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: e
+      text: 브로드캐스트 주소
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    answer: c
+  question_placements:
+  - question_id: u5-l04-p03-q01
+    after_paragraph: 1
 - terms:
   - 패킷(Packet)
   - 물리 네트워크(Physical network)
@@ -36,6 +237,73 @@ page_metadata:
     alt: 클라이언트 프로세스가 127.0.0.1로 보낸 패킷이 컴퓨터 안에서 방향을 바꾸어 서버 프로세스에 전달되고, 네트워크 카드와 케이블 쪽으로는 나가지 않는 장면입니다.
     caption: 운영체제의 네트워크 기능이 루프백 통신을 컴퓨터 안에서 처리하므로, 패킷은 물리 네트워크로 나가지 않습니다.
     after_paragraph: 2
+  questions:
+  - id: u5-l04-p04-q01
+    kind: choice
+    difficulty: easy
+    prompt: 127.0.0.1로 보낸 패킷은 일반적으로 어디에서 처리되나요?
+    choices:
+    - id: a
+      text: 인터넷의 모든 라우터를 거친 뒤
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: b
+      text: 현재 컴퓨터 안에서 처리되어 물리 네트워크로 나가지 않는다
+      feedback: 루프백 통신은 운영체제가 현재 컴퓨터 안에서 처리하므로 물리 네트워크로 나가지 않습니다.
+    - id: c
+      text: Wi-Fi 공유기에서만 처리된다
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: d
+      text: 다른 컴퓨터로 전송된 뒤 돌아온다
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: e
+      text: 웹 서버가 실행 중일 때만 생성된다
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    answer: b
+  - id: u5-l04-p04-q02
+    kind: choice
+    difficulty: medium
+    prompt: IPC(프로세스 간 통신)에 대한 설명으로 맞는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 항상 인터넷을 통해서만 일어난다
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: b
+      text: 루프백만이 프로세스 간 통신을 하는 유일한 방법이다
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: c
+      text: 같은 컴퓨터의 프로세스끼리 데이터를 주고받는 일이며, 공유 메모리 등 다른 방식도 있다
+      feedback: IPC는 프로세스 사이의 데이터 교환을 말하며, 루프백 외에도 공유 메모리 같은 방법이 있습니다.
+    - id: d
+      text: 웹 서버와 브라우저 사이에서만 쓰는 말이다
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: e
+      text: 물리 네트워크 케이블을 설치하는 과정이다
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    answer: c
+  - id: u5-l04-p04-q03
+    kind: choice
+    difficulty: medium
+    prompt: ping 127.0.0.1이 응답했을 때 확인할 수 있는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 인터넷에 연결되어 있다
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: b
+      text: 특정 웹 서버가 실행 중이다
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: c
+      text: 현재 컴퓨터의 IP 통신 기능이 루프백 요청을 처리한다
+      feedback: 이 확인은 현재 컴퓨터의 루프백 처리를 시험하며 인터넷이나 특정 웹 서버의 동작을 증명하지는 않습니다.
+    - id: d
+      text: 공유기의 Wi-Fi가 정상이다
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    - id: e
+      text: 원격 컴퓨터가 켜져 있다
+      feedback: 본문에서 설명한 역할과 주소가 가리키는 범위를 다시 구분해 보세요.
+    answer: c
+  question_placements:
+  - question_id: u5-l04-p04-q01
+    after_paragraph: 1
 - terms:
   - IPC(Inter Process Communication)
 animations_dir: units/04-layer3-addressing/lessons/10-host-자신을-가리키는-ip주소/assets/animations
