@@ -253,7 +253,8 @@ def wire(lesson_md, rows):
 def wire_items(lesson_md, pages):
     """Replace each Page's `animations:`/`illustrations:` blocks with the given items.
 
-    pages[i] = [(file, title, alt, caption, after_paragraph), ...] for Page i+1, in display order.
+    pages[i] = [(file, title, alt, caption, after_paragraph), ...] for Page i+1, in display order,
+    or None to leave that Page untouched.
     `file` is a name under assets/animations/ (no slash) or a path relative to lesson.md.
     """
     q = lambda v: json.dumps(v, ensure_ascii=False)
@@ -267,12 +268,14 @@ def wire_items(lesson_md, pages):
             out.append(l); i += 1
             while i < len(lines) and lines[i].startswith("  - ") and not lines[i].startswith("  - id:"):
                 out.append(lines[i]); i += 1
+            if pages[page] is None:  # leave this Page's media exactly as it is
+                continue
             out.append("  illustrations:")
             for f, t, a, c, ap in pages[page]:
                 path = f if "/" in f else f"assets/animations/{f}.svg"
                 out += [f"  - file: {path}", f"    title: {q(t)}", f"    alt: {q(a)}", f"    caption: {q(c)}", f"    after_paragraph: {ap}"]
             continue
-        if page >= 0 and l in ("  animations:", "  illustrations:"):
+        if page >= 0 and pages[page] is not None and l in ("  animations:", "  illustrations:"):
             i += 1
             while i < len(lines) and lines[i].startswith(("  - file:", "    ")):
                 i += 1
