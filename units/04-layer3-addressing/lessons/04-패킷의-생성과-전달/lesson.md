@@ -623,14 +623,6 @@ page_metadata:
       text: 최종 목적지 IP 주소는 그대로 두고 다음 링크의 프레임과 MAC 주소를 바꾼다
       feedback: 맞아요. 각 링크의 프레임과 MAC 주소는 달라질 수 있지만, NAT가 없으면 최종 IP 목적지는 유지돼요.
     answer: e
-  - id: u4-l14-p07-q04
-    kind: short
-    prompt: '사설 주소와 공인 주소 사이에서 IP 주소를 변환하는 기능을 무엇이라고 하나요?'
-    answers:
-    - NAT
-    - network address translation
-    - 네트워크 주소 변환
-    feedback: NAT는 Network Address Translation, 즉 네트워크 주소 변환이에요.
   question_placements:
   - question_id: u4-l14-p07-q01
     after_paragraph: 1
