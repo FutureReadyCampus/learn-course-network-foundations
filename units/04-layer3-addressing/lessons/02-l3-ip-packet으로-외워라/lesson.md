@@ -547,13 +547,6 @@ page_metadata:
       text: 요청이 나갔는지, 응답이 돌아왔는지
       feedback: 맞아요. 패킷 흐름을 보면 요청과 응답이 오갔는지 확인할 수 있어요.
     answer: e
-  - id: u4-l12-p06-q03
-    kind: short
-    prompt: 캡처 파일을 다른 사람과 공유하기 전에 무엇을 확인해야 하나요?
-    answers:
-    - 개인정보나 비밀 정보가 포함되지 않았는지
-    - 개인정보 또는 비밀 정보
-    feedback: 캡처 파일을 공유하기 전에는 개인정보나 비밀 정보가 담기지 않았는지 확인해요.
   question_placements:
   - question_id: u4-l12-p06-q01
     after_paragraph: 2

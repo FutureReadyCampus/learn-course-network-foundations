@@ -84,7 +84,7 @@ page_metadata:
     answer: a
   - id: u4-l13-p01-q04
     kind: short
-    prompt: '보낼 데이터를 필요한 정보와 함께 하나의 전송 단위로 감싸는 과정을 무엇이라고 하나요? (힌트: Encapsulation)'
+    prompt: '보낼 데이터를 필요한 정보와 함께 하나의 전송 단위로 감싸는 과정을 무엇이라고 하나요?'
     answers:
     - Encapsulation
     - 캡슐화
@@ -173,14 +173,6 @@ page_metadata:
       text: 네트워크에서는 바깥 계층이 안쪽 데이터보다 먼저 만들어진다
       feedback: 다시 생각해 보세요. 본문에서 이 부분의 역할을 다시 확인해 보세요.
     answer: b
-  - id: u4-l13-p02-q04
-    kind: short
-    prompt: '헤더를 붙여 캡슐화하는 것만으로 데이터가 읽히지 않도록 보호되나요? (힌트: 암호화)'
-    answers:
-    - 아니요
-    - 아니오
-    - 그렇지 않다
-    feedback: 아니요. 캡슐화는 그 자체로 데이터를 암호화하지 않아요.
   question_placements:
   - question_id: u4-l13-p02-q01
     after_paragraph: 1
@@ -269,7 +261,7 @@ page_metadata:
     answer: b
   - id: u4-l13-p03-q04
     kind: short
-    prompt: 'TCP 헤더와 데이터를 합친 전송 계층의 단위를 무엇이라고 하나요? (힌트: Segment)'
+    prompt: 'TCP 헤더와 데이터를 합친 전송 계층의 단위를 무엇이라고 하나요?'
     answers:
     - Segment
     - 세그먼트
@@ -365,7 +357,7 @@ page_metadata:
     answer: c
   - id: u4-l13-p04-q04
     kind: short
-    prompt: '받는 쪽에서 바깥 정보를 처리하며 안쪽 데이터를 꺼내는 과정의 이름은 무엇인가요? (힌트: Decapsulation)'
+    prompt: '받는 쪽에서 바깥 정보를 처리하며 안쪽 데이터를 꺼내는 과정의 이름은 무엇인가요?'
     answers:
     - Decapsulation
     - 역캡슐화
@@ -459,7 +451,7 @@ page_metadata:
     answer: c
   - id: u4-l13-p05-q04
     kind: short
-    prompt: '바깥 계층의 단위 안에 실려 가는 내용을 부르는 말은 무엇인가요? (힌트: Payload)'
+    prompt: '바깥 계층의 단위 안에 실려 가는 내용을 부르는 말은 무엇인가요?'
     answers:
     - Payload
     - 페이로드

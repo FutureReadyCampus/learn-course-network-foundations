@@ -103,6 +103,7 @@ animations:
   l17-ttl-hops.svg: 14
   l18-and-mask.svg: 14
   l18-cidr-slash.svg: 14
+  l18-host-bits-count.svg: 14
   l18-mask-boundary.svg: 16
   l19-broadcast-address.svg: 14
   l19-unicast-vs-broadcast.svg: 12

@@ -10,29 +10,49 @@ page_metadata:
   - IP 헤더 (IP header)
   - 페이로드 (Payload)
   illustrations:
+  - file: assets/animations/l17-daily-label-contents.svg
+    title: "송장에는 받는 곳 말고도 적힌다"
+    alt: "긴 상자 하나가 나타납니다. 상자의 앞쪽은 송장, 뒤쪽은 내용물로 나뉘고, 송장에서 받는 곳, 내용물 종류, 더 거칠 수 있는 횟수, 나눠 보낼 때 참고하는 정보 네 칸이 아래로 갈라져 나옵니다. 마지막에 송장과 내용물이 모여 상자 하나가 된다고 표시됩니다."
+    caption: "택배 상자의 송장에는 받는 곳만 적힌 게 아니라 여러 안내가 함께 적힙니다."
+    after_paragraph: -1
+  - file: assets/animations/l17-header-payload-parts.svg
+    title: "IP 헤더에는 전달 정보가 담긴다"
+    alt: "긴 IP 패킷 하나가 나타납니다. 앞부분은 IP 헤더, 뒤쪽은 페이로드로 나뉘고, 헤더에서 목적지 주소, 다음에 올 프로토콜, 전달 범위를 제한하는 TTL, 나눠 보낼 때 참고하는 정보 네 칸이 아래로 갈라져 나옵니다. 마지막에 헤더와 페이로드가 모여 IP 패킷 하나가 된다고 표시됩니다."
+    caption: "IP 헤더에는 목적지 주소 외에도 다음 프로토콜, 전달 범위 제한, 나눠 보낼 때 참고할 정보가 담깁니다."
+    after_paragraph: 0
   - file: assets/diagrams/ipv4-header-map.svg
-    title: IPv4 패킷의 헤더와 페이로드
-    alt: 32비트 폭의 IPv4 헤더 구조를 보여 준다. 첫 세 행에는 Version, IHL, DS 필드, Total Length, Identification, Flags, Fragment Offset, TTL, Protocol, Header Checksum이 있다. 다음 두 행에는 출발지와 목적지 IP 주소가 있다. Options와 Padding은 선택 항목이고, 헤더 뒤에는 페이로드가 놓인다.
-    caption: 이 그림은 RFC 791의 IPv4 헤더 배치를 입문용으로 다시 그린 것이다. 필드 전체를 외우기보다 지금 배울 Version·IHL·Protocol·TTL이 어디 있는지 찾아보자.
+    title: "IPv4 패킷의 헤더와 페이로드"
+    alt: "32비트 폭의 IPv4 헤더 구조를 보여 준다. 첫 세 행에는 Version, IHL, DS 필드, Total Length, Identification, Flags, Fragment Offset, TTL, Protocol, Header Checksum이 있다. 다음 두 행에는 출발지와 목적지 IP 주소가 있다. Options와 Padding은 선택 항목이고, 헤더 뒤에는 페이로드가 놓인다."
+    caption: "이 그림은 RFC 791의 IPv4 헤더 배치를 입문용으로 다시 그린 것이다. 필드 전체를 외우기보다 지금 배울 Version·IHL·Protocol·TTL이 어디 있는지 찾아보자."
     after_paragraph: 1
 - terms:
   - Version
   - IHL (Internet Header Length)
-  animations:
-  - file: l17-byte-45-split.svg
-    title: 첫 바이트 45에서 Version과 IHL 읽기
-    alt: 16진수 45가 8비트로 펼쳐진다. 앞의 네 비트 0100은 Version 4, 뒤의 네 비트 0101은 IHL 5이며, IHL 5는 4바이트 단위 다섯 개, 즉 20바이트 헤더를 뜻한다.
-    caption: 0x45를 4비트씩 나누면 Version 4와 IHL 5를 읽을 수 있다. IHL은 32비트 단위의 헤더 길이다.
+  illustrations:
+  - file: assets/animations/l17-daily-form-code-45.svg
+    title: "두 자리 번호로 송장 길이를 읽는다"
+    alt: "상자에 두 자리 번호 45가 적혀 있습니다. 앞 숫자 4는 양식 번호, 뒤 숫자 5는 줄 수로 나뉩니다. 송장은 4칸짜리 줄이 다섯 개이고, 5 곱하기 4로 송장 길이는 20칸입니다."
+    caption: "두 자리 번호의 앞 숫자는 양식, 뒤 숫자는 줄 수입니다. 송장 길이는 줄 수에 한 줄의 칸 수를 곱해 구해요."
+    after_paragraph: -1
+  - file: assets/animations/l17-version-ihl-length.svg
+    title: "첫 바이트 0x45로 헤더 길이 읽기"
+    alt: "첫 바이트 16진수 45가 4와 5로 나뉘고, 각각 2진수 0100과 0101로 펼쳐집니다. 앞의 네 비트는 Version 4, 뒤의 네 비트는 IHL 5입니다. IHL 5는 4바이트 단위 다섯 줄이므로 5 곱하기 4로 헤더 길이는 20바이트이고, 옵션이 없는 기본 헤더입니다."
+    caption: "0x45를 4비트씩 나누면 Version 4와 IHL 5를 읽을 수 있습니다. IHL은 4바이트(32비트) 단위의 개수이고, 5이면 헤더는 20바이트입니다."
     after_paragraph: 2
 - terms:
   - Protocol
   - TTL (Time To Live)
-  animations:
-  - file: l17-ttl-hops.svg
-    title: 라우터를 지날 때마다 줄어드는 TTL
-    alt: TTL 128인 패킷이 라우터를 통과할 때 값이 하나씩 줄어든다. TTL 1인 패킷은 다음 라우터에서 0이 되어 버려진다.
-    caption: TTL은 패킷이 네트워크를 끝없이 돌지 않게 제한한다. 라우터를 거칠 때마다 적어도 1씩 줄고, 0이 되면 폐기된다.
-    after_paragraph: 2
+  illustrations:
+  - file: assets/animations/l17-daily-kind-and-limit.svg
+    title: "송장의 종류 표시와 이동 한도"
+    alt: "위쪽에서는 상자의 송장에 내용물 종류 표시가 있고, 식품 창구, 서류 창구, 의류 창구 중 맞는 식품 창구가 켜집니다. 아래쪽에서는 출발 집에서 환승센터 세 곳을 지나며 이동 한도가 3, 2, 1로 줄고, 세 번째 환승센터에서 0이 되어 상자가 버려집니다."
+    caption: "송장의 종류 표시는 맞는 창구를 고르고, 이동 한도는 환승할 때마다 줄어 0이 되면 상자가 버려집니다. 한도 값은 예시예요."
+    after_paragraph: -1
+  - file: assets/animations/l17-protocol-ttl.svg
+    title: "Protocol과 TTL의 역할"
+    alt: "위쪽에서는 IP 헤더의 Protocol 값 6이 TCP 칸과 이어져 켜지고, UDP는 17, ICMP는 1입니다. 아래쪽에서는 PC에서 라우터 세 대를 지나며 TTL이 3, 2, 1로 줄고, 세 번째 라우터에서 0이 되어 패킷이 폐기됩니다."
+    caption: "Protocol은 다음에 해석할 프로토콜을 가리키고, 포트 번호와는 다릅니다. TTL은 라우터를 지날 때마다 줄고 0이 되면 폐기돼요. 그림의 TTL 값은 예시입니다."
+    after_paragraph: 1
 - terms:
   - Wireshark
   - Total Length
@@ -43,6 +63,17 @@ page_metadata:
   - Fragment Offset
   - DSCP/ECN
   - Header Checksum
+  illustrations:
+  - file: assets/animations/l17-daily-lookup-screen.svg
+    title: "송장 조회 화면에서 칸 찾기"
+    alt: "위쪽에는 송장 조회 화면의 풀이 줄 일곱 개(양식, 송장 길이, 전체 크기, 종류, 이동 한도, 보낸 곳, 받는 곳)가, 아래쪽에는 원래 번호 20칸이 있습니다. 첫 칸 45에서 양식과 줄 수를, 이어서 종류, 이동 한도, 보낸 곳, 받는 곳 칸을 찾고, 마지막으로 전체 크기 331에서 송장 20칸을 빼면 내용물 311이 남습니다."
+    caption: "조회 화면은 풀어 쓴 칸과 원래 번호를 함께 보여 줍니다. 번호와 크기 값은 설명용 예시예요."
+    after_paragraph: -1
+  - file: assets/animations/l17-wireshark-ip-fields.svg
+    title: "Wireshark에서 핵심 필드 찾기"
+    alt: "위쪽에는 Version, Header Length, Total Length, Protocol, TTL, Source, Destination 필드 일곱 줄이, 아래쪽에는 원시 바이트 20개가 있습니다. 첫 바이트 45에서 Version과 IHL을, 이어서 TTL, Protocol, 출발지와 목적지 주소 바이트를 찾고, 마지막으로 Total Length 331에서 헤더 20바이트를 빼면 페이로드 311바이트가 남습니다."
+    caption: "Wireshark는 원시 바이트와 해석된 필드를 함께 보여 줍니다. 그림의 바이트, 주소, TTL 값은 설명용 예시예요."
+    after_paragraph: 2
 animations_dir: units/04-layer3-addressing/lessons/07-ip-헤더-형식/assets/animations
 ---
 ## IP 패킷의 앞부분에는 전달 정보가 담긴다

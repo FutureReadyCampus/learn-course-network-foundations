@@ -85,7 +85,7 @@ page_metadata:
     answer: a
   - id: u4-l14-p01-q04
     kind: short
-    prompt: 'L3에서 헤더와 페이로드를 함께 담아 전달하는 네트워크 단위를 무엇이라고 하나요? (힌트: IP packet)'
+    prompt: 'L3에서 헤더와 페이로드를 함께 담아 전달하는 네트워크 단위를 무엇이라고 하나요?'
     answers:
     - IP packet
     - packet
@@ -177,7 +177,7 @@ page_metadata:
     answer: e
   - id: u4-l14-p02-q04
     kind: short
-    prompt: '네트워크에서 IP 주소가 가리키는 컴퓨터나 서버를 무엇이라고 하나요? (힌트: Host)'
+    prompt: '네트워크에서 IP 주소가 가리키는 컴퓨터나 서버를 무엇이라고 하나요?'
     answers:
     - host
     - 호스트
@@ -268,7 +268,7 @@ page_metadata:
     answer: c
   - id: u4-l14-p03-q04
     kind: short
-    prompt: '다른 네트워크로 나갈 때 호스트가 패킷을 처음 보내는 라우터를 무엇이라고 하나요? (힌트: Gateway)'
+    prompt: '다른 네트워크로 나갈 때 호스트가 패킷을 처음 보내는 라우터를 무엇이라고 하나요?'
     answers:
     - gateway
     - 기본 게이트웨이
@@ -359,7 +359,7 @@ page_metadata:
     answer: a
   - id: u4-l14-p04-q04
     kind: short
-    prompt: '클라이언트가 통신할 때 임시로 배정받을 수 있는 포트를 무엇이라고 하나요? (힌트: ephemeral port)'
+    prompt: '클라이언트가 통신할 때 임시로 배정받을 수 있는 포트를 무엇이라고 하나요?'
     answers:
     - ephemeral port
     - 임시 포트
@@ -448,7 +448,7 @@ page_metadata:
     answer: e
   - id: u4-l14-p05-q04
     kind: short
-    prompt: '프로그램이 운영체제의 네트워크 입출력을 이용하는 통신 창구를 무엇이라고 하나요? (힌트: Socket)'
+    prompt: '프로그램이 운영체제의 네트워크 입출력을 이용하는 통신 창구를 무엇이라고 하나요?'
     answers:
     - socket
     - 소켓
@@ -540,7 +540,7 @@ page_metadata:
     answer: d
   - id: u4-l14-p06-q04
     kind: short
-    prompt: 'Ethernet 링크에서 같은 링크 안으로 전달할 때 사용하는 데이터 단위는 무엇인가요? (힌트: Frame)'
+    prompt: 'Ethernet 링크에서 같은 링크 안으로 전달할 때 사용하는 데이터 단위는 무엇인가요?'
     answers:
     - frame
     - 프레임
@@ -632,7 +632,7 @@ page_metadata:
     answer: e
   - id: u4-l14-p07-q04
     kind: short
-    prompt: '사설 주소와 공인 주소 사이에서 IP 주소를 변환하는 기능을 무엇이라고 하나요? (힌트: Network Address Translation)'
+    prompt: '사설 주소와 공인 주소 사이에서 IP 주소를 변환하는 기능을 무엇이라고 하나요?'
     answers:
     - NAT
     - network address translation

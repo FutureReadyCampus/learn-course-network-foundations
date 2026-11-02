@@ -85,7 +85,7 @@ page_metadata:
     answer: a
   - id: u4-l15-p01-q04
     kind: short
-    prompt: 'TCP가 다루는 전송 계층 단위를 무엇이라고 하나요? (힌트: Segment)'
+    prompt: 'TCP가 다루는 전송 계층 단위를 무엇이라고 하나요?'
     answers:
     - segment
     - 세그먼트
@@ -159,30 +159,30 @@ page_metadata:
       text: Datagram
       feedback: 다시 생각해 보세요. 본문에서 이 계층 또는 데이터 단위의 역할을 확인해 보세요.
     answer: c
-  - id: u4-l15-p02-q03
+  - id: u4-l15-p02-q05
     kind: choice
     difficulty: medium
     prompt: TCP Stream에 대해 바르게 설명한 것은 무엇인가요?
     choices:
     - id: a
-      text: 항상 1,500바이트짜리 메시지 경계로만 나뉜다
+      text: 항상 1,500바이트짜리 메시지로 나뉜다
       feedback: 다시 생각해 보세요. 본문에서 이 계층 또는 데이터 단위의 역할을 확인해 보세요.
     - id: b
-      text: 한 번의 읽기가 항상 한 번의 쓰기와 정확히 일치한다
+      text: Ethernet 프레임의 다른 이름이다
       feedback: 다시 생각해 보세요. 본문에서 이 계층 또는 데이터 단위의 역할을 확인해 보세요.
     - id: c
-      text: Stream은 Ethernet 프레임의 다른 이름이다
+      text: UDP에만 있고 TCP에는 없다
       feedback: 다시 생각해 보세요. 본문에서 이 계층 또는 데이터 단위의 역할을 확인해 보세요.
     - id: d
-      text: Stream은 UDP에만 있고 TCP에는 없다
+      text: Segment 하나와 항상 같은 크기다
       feedback: 다시 생각해 보세요. 본문에서 이 계층 또는 데이터 단위의 역할을 확인해 보세요.
     - id: e
-      text: 연속된 데이터 흐름이며, 애플리케이션이 메시지 경계를 정할 수 있다
-      feedback: 맞아요. TCP Stream은 연속된 데이터 흐름이고 메시지 경계는 애플리케이션이 정할 수 있어요.
+      text: 연속된 데이터 흐름이다
+      feedback: 맞아요. TCP Stream은 연속된 데이터 흐름이에요.
     answer: e
   - id: u4-l15-p02-q04
     kind: short
-    prompt: 'TCP 소켓에서 다루는 연속된 데이터 흐름을 무엇이라고 하나요? (힌트: Stream)'
+    prompt: 'TCP 소켓에서 다루는 연속된 데이터 흐름을 무엇이라고 하나요?'
     answers:
     - stream
     - 스트림
@@ -199,13 +199,13 @@ page_metadata:
   illustrations:
   - file: assets/animations/l15-daily-box-limit.svg
     title: "상자 한도와 물건 한도는 다르다"
-    alt: "중간 상자 전체에 한도 15kg이 있습니다. 포장 0.2kg과 송장 0.2kg이 차례로 자리를 차지하고, 남은 물건 한도는 14.6kg이라고 표시됩니다. 마지막에 조건이 다르면 포장과 송장 무게도 달라진다는 설명이 나타납니다."
-    caption: "상자 전체의 한도에서 포장과 송장을 빼면 물건의 한도가 나옵니다."
+    alt: "중간 상자 전체에 한도 15kg이 있습니다. 포장과 송장이 차례로 자리를 차지하고, 마지막에 담을 수 있는 물건의 한도가 표시되며 물건 한도는 상자 한도보다 작다는 설명이 나타납니다."
+    caption: "상자 전체의 한도와 담을 수 있는 물건의 한도는 다릅니다."
     after_paragraph: -1
   - file: assets/animations/l15-mtu-vs-mss.svg
     title: "MTU는 패킷 전체, MSS는 TCP 데이터"
-    alt: "IP 패킷 전체에 MTU 1,500B 상한이 있습니다. IP 헤더 20B와 TCP 헤더 20B가 차례로 자리를 차지하고, 남은 MSS가 1,500 − 20 − 20 = 1,460B라고 표시됩니다. 마지막에 헤더 옵션이나 IP 버전에 따라 달라질 수 있다는 설명이 나타납니다. 칸의 너비는 실제 비율이 아닙니다."
-    caption: "기본 IPv4와 TCP 헤더가 각각 20B이고 옵션이 없는 예입니다. 칸의 너비는 실제 비율이 아니에요."
+    alt: "IP 패킷 전체에 MTU 1,500B 상한이 있습니다. IP 헤더와 TCP 헤더가 차례로 자리를 차지하고, 마지막에 남은 TCP 데이터 부분의 상한이 MSS로 표시되며 MSS는 MTU보다 작은 값이라는 설명이 나타납니다. 칸의 너비는 실제 비율이 아닙니다."
+    caption: "MTU는 IP 패킷 전체, MSS는 TCP 데이터 부분의 상한입니다. 계산은 Unit 7에서 해 봅니다. 칸의 너비는 실제 비율이 아니에요."
     after_paragraph: 2
   questions:
   - id: u4-l15-p03-q01
@@ -250,30 +250,30 @@ page_metadata:
       text: 네. Ethernet 프레임 전체가 언제나 정확히 그 크기입니다
       feedback: 다시 생각해 보세요. 본문에서 이 계층 또는 데이터 단위의 역할을 확인해 보세요.
     answer: d
-  - id: u4-l15-p03-q03
+  - id: u4-l15-p03-q05
     kind: choice
     difficulty: medium
-    prompt: IPv4/TCP 헤더가 각각 20바이트이고 옵션이 없으며 MTU가 1,500바이트일 때, 예시 MSS는 얼마인가요?
+    prompt: MTU와 MSS에 대한 설명으로 맞는 것은 무엇인가요?
     choices:
     - id: a
-      text: 1,500바이트
-      feedback: 다시 생각해 보세요. 본문에서 이 계층 또는 데이터 단위의 역할을 확인해 보세요.
+      text: MTU는 IP 패킷 전체의 상한이고, MSS는 TCP 데이터 조각의 상한이다
+      feedback: 맞아요. MTU는 IP 패킷 전체, MSS는 TCP 데이터의 상한이라 같은 값이 아니에요.
     - id: b
-      text: 1,480바이트
+      text: MTU와 MSS는 항상 같은 값이다
       feedback: 다시 생각해 보세요. 본문에서 이 계층 또는 데이터 단위의 역할을 확인해 보세요.
     - id: c
-      text: 1,460바이트
-      feedback: 맞아요. IP와 TCP 헤더 각 20바이트를 빼면 TCP 데이터 최대 크기 예시는 1,460바이트예요.
+      text: MSS는 Ethernet 프레임 전체의 상한이다
+      feedback: 다시 생각해 보세요. 본문에서 이 계층 또는 데이터 단위의 역할을 확인해 보세요.
     - id: d
-      text: 1,440바이트
+      text: MTU는 TCP 데이터만의 상한이다
       feedback: 다시 생각해 보세요. 본문에서 이 계층 또는 데이터 단위의 역할을 확인해 보세요.
     - id: e
-      text: 20바이트
+      text: MSS는 IP 주소의 길이다
       feedback: 다시 생각해 보세요. 본문에서 이 계층 또는 데이터 단위의 역할을 확인해 보세요.
-    answer: c
+    answer: a
   - id: u4-l15-p03-q04
     kind: short
-    prompt: 'TCP Segment 하나에 담을 수 있는 데이터의 최대 크기 기준은 무엇인가요? (힌트: Maximum Segment Size)'
+    prompt: 'TCP Segment 하나에 담을 수 있는 데이터의 최대 크기 기준은 무엇인가요?'
     answers:
     - MSS
     - Maximum Segment Size
@@ -362,7 +362,7 @@ page_metadata:
     answer: b
   - id: u4-l15-p04-q04
     kind: short
-    prompt: '긴 Stream을 더 작은 전송 단위로 나누는 과정을 무엇이라고 하나요? (힌트: Segmentation)'
+    prompt: '긴 Stream을 더 작은 전송 단위로 나누는 과정을 무엇이라고 하나요?'
     answers:
     - segmentation
     - 세그멘테이션
@@ -453,7 +453,7 @@ page_metadata:
     answer: e
   - id: u4-l15-p05-q04
     kind: short
-    prompt: '데이터 링크 계층(L2)에서 IP 패킷을 감싸 링크로 전달하는 단위는 무엇인가요? (힌트: Frame)'
+    prompt: '데이터 링크 계층(L2)에서 IP 패킷을 감싸 링크로 전달하는 단위는 무엇인가요?'
     answers:
     - frame
     - 프레임
@@ -542,7 +542,7 @@ page_metadata:
       text: TCP=Segment, UDP=Datagram
       feedback: 맞아요. TCP는 Segment, UDP는 Datagram을 전송 계층 단위로 사용해요.
     answer: e
-  - prompt: 'UDP가 전송하는 하나의 데이터 덩어리를 무엇이라고 하나요? (힌트: Datagram)'
+  - prompt: 'UDP가 전송하는 하나의 데이터 덩어리를 무엇이라고 하나요?'
     answers:
     - datagram
     - 데이터그램
@@ -576,7 +576,7 @@ TCP/IP 통신에서는 TCP가 다루는 단위를 Segment(세그먼트), IP가 �
 
 브라우저 같은 애플리케이션은 운영체제의 네트워크 기능을 소켓(Socket) 인터페이스로 이용한다. 프로그램이 소켓을 통해 TCP에 데이터를 전달하면, 애플리케이션은 보통 이를 처음부터 고정된 크기의 메시지 조각으로만 다루지 않는다.
 
-TCP 소켓에서 프로그램이 주고받는 연속된 데이터 흐름을 Stream(스트림)이라고 한다. 물이 이어져 흐르는 모습처럼 데이터가 이어진다는 뜻이다. 어디까지가 한 번의 메시지인지 애플리케이션이 약속을 정할 수 있고, 한 번의 읽기 동작이 보낸 한 번의 쓰기와 항상 정확히 일치한다고 가정해서는 안 된다.
+TCP 소켓에서 프로그램이 주고받는 연속된 데이터 흐름을 Stream(스트림)이라고 한다. 물이 이어져 흐르는 모습처럼 데이터가 이어진다는 뜻이다. 어디까지가 한 번의 메시지인지는 애플리케이션이 약속으로 정하며, 쓴 횟수와 읽은 횟수가 같다고 가정해서는 안 된다. 자세한 내용은 Unit 7 Lesson 1 「TCP와 UDP 개요」에서 다시 본다.
 
 하지만 링크가 한 번에 전달할 수 있는 패킷에는 최대 크기가 있다. 그래서 긴 Stream은 네트워크에서 전달할 수 있는 더 작은 단위들로 나뉘어 전송된다.
 
@@ -586,15 +586,15 @@ TCP 소켓에서 프로그램이 주고받는 연속된 데이터 흐름을 Stre
 
 TCP에는 하나의 Segment에 실을 수 있는 데이터 크기의 기준인 MSS(Maximum Segment Size)가 있다. MSS는 TCP 데이터의 최대 크기이고, MTU는 IP 패킷 전체의 최대 크기이므로 둘은 같은 값이 아니다.
 
-기본 IPv4와 TCP 헤더가 각각 20바이트이고 옵션이 없는 예라면 `1,500 - 20 - 20 = 1,460`바이트가 MSS가 된다. 실제 헤더 옵션이나 IP 버전 등 조건에 따라 달라질 수 있지만, 우선은 MTU가 바깥 IP 패킷의 상한이고 MSS가 TCP 데이터 조각의 상한이라는 점을 구별하자.
+MSS는 MTU에서 IP 헤더와 TCP 헤더 크기를 뺀 값이라는 계산은 Unit 7 Lesson 2 「TCP 연결과정」에서 해 본다. 우선은 MTU가 바깥 IP 패킷의 상한이고 MSS가 TCP 데이터 조각의 상한이라는 점을 구별하자.
 
 ## Stream을 Segment로 나누기
 
-하나의 Stream이 MSS보다 길면 TCP는 전달할 데이터를 MSS에 맞는 여러 조각으로 나눈다. 길이가 딱 나누어 떨어지지 않으면 마지막 조각은 앞의 조각보다 짧을 수 있다.
+하나의 Stream이 MSS보다 길면 TCP는 전달할 데이터를 MSS에 맞는 여러 조각으로 나눈다.
 
 긴 Stream을 작은 조각들로 분할하는 과정을 Segmentation(세그멘테이션, 분할)이라고 한다. TCP가 이 과정을 거치면 각각의 조각에 TCP 헤더가 더해져 Segment가 된다.
 
-예를 들어 파일 데이터가 4MB라고 해서 TCP가 이를 Segment 하나에 모두 넣지는 않는다. 링크의 MTU와 해당 연결의 MSS에 맞추어 여러 Segment로 나누어 보낸다. 수신 측 TCP는 이를 처리해 애플리케이션에 연속된 Stream으로 제공한다.
+예를 들어 파일 데이터가 4MB라고 해서 TCP가 이를 Segment 하나에 모두 넣지는 않는다. 링크의 MTU와 해당 연결의 MSS에 맞추어 여러 Segment로 나누어 보낸다. 수신 쪽에서 이를 다시 이어 주는 과정과 마지막 조각의 길이는 Unit 7 Lesson 1 「TCP와 UDP 개요」에서 본다.
 
 ## Packet과 Frame으로 보내기
 
