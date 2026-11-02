@@ -25,6 +25,49 @@ page_metadata:
 - terms:
   - 패킷(Packet)
   - 프레임(Frame)
+  questions:
+  - id: u4-l23-p08-q01
+    kind: choice
+    difficulty: easy
+    prompt: "PC가 ARP로 기본 게이트웨이의 MAC 주소를 알아낸 뒤, 외부 서버 3.3.3.3으로 IP 패킷을 보냅니다. 그 IP 패킷을 담은 Ethernet 프레임의 목적지 MAC 주소는 무엇인가요?"
+    choices:
+    - id: a
+      text: "외부 서버 3.3.3.3의 MAC 주소"
+      feedback: "인터넷 너머 서버의 MAC 주소를 이 LAN에서 직접 쓰지는 않아요. 현재 구간에서 다음으로 받을 장치의 MAC이 필요해요."
+    - id: b
+      text: "기본 게이트웨이의 MAC 주소"
+      feedback: "맞아요. IP 패킷은 3.3.3.3을 목적지로 유지하고, 현재 LAN의 프레임은 다음 전달자인 게이트웨이의 MAC을 목적지로 사용해요."
+    - id: c
+      text: "PC 자신의 MAC 주소"
+      feedback: "PC 자신의 MAC 주소는 프레임의 출발지에 사용돼요. 목적지에는 현재 구간에서 다음으로 받을 장치의 MAC이 들어가요."
+    - id: d
+      text: "DNS 서버의 MAC 주소"
+      feedback: "DNS는 도메인 이름에 대응하는 IP 주소를 찾는 데 쓰여요. 이 예에서 프레임은 게이트웨이로 전달돼요."
+    - id: e
+      text: "ARP 요청의 브로드캐스트 MAC 주소"
+      feedback: "ARP 요청은 브로드캐스트지만, 여기서 묻는 것은 ARP 응답을 받은 뒤 IP 패킷을 담아 보내는 프레임이에요."
+    answer: b
+  - id: u4-l23-p08-q02
+    kind: choice
+    difficulty: easy
+    prompt: "PC가 같은 LAN의 게이트웨이 192.168.0.1에 대한 MAC 주소를 모를 때, ARP Request로 무엇을 묻나요?"
+    choices:
+    - id: a
+      text: "외부 서버 3.3.3.3의 MAC 주소가 무엇인지"
+      feedback: "ARP는 현재 LAN에서 도달할 수 있는 IP의 MAC 주소를 찾는 데 써요. 외부 서버의 MAC을 이 LAN에서 묻지 않아요."
+    - id: b
+      text: "192.168.0.1을 사용하는 장치의 MAC 주소가 무엇인지"
+      feedback: "맞아요. ARP Request는 같은 LAN에 ‘192.168.0.1을 쓰는 장치는 자신의 MAC 주소를 알려 달라’고 브로드캐스트해요."
+    - id: c
+      text: "PC의 IP 주소를 어떤 값으로 바꿔야 하는지"
+      feedback: "ARP는 IP 설정을 바꾸지 않아요. 이미 알고 있는 IP 주소에 대응하는 MAC 주소를 찾습니다."
+    - id: d
+      text: "도메인 이름에 어떤 IP 주소가 대응하는지"
+      feedback: "그 역할은 DNS예요. ARP는 같은 LAN에서 IP 주소에 대응하는 MAC 주소를 찾습니다."
+    - id: e
+      text: "인터넷의 모든 장치가 가진 MAC 주소 목록이 무엇인지"
+      feedback: "ARP는 전 세계 MAC 목록을 조회하지 않아요. 현재 LAN 안에서 요청한 IP를 사용하는 장치를 찾습니다."
+    answer: b
   animations:
   - file: l23-packet-in-frame.svg
     title: IP 패킷을 프레임에 담기

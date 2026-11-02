@@ -684,6 +684,27 @@ page_metadata:
       text: "보내는 장치의 MAC 주소"
       feedback: "다시 확인해 보세요. 목적지 네트워크 안에서 최종 목적지 인터페이스를 향합니다."
     answer: c
+  - id: u4-01-p07-q07
+    kind: choice
+    difficulty: easy
+    prompt: "PC가 다른 네트워크에 있는 서버로 패킷을 보낼 때, 기본 게이트웨이는 어떤 역할을 하나요?"
+    choices:
+    - id: a
+      text: "최종 목적지 서버 대신 패킷을 받는다"
+      feedback: "서버는 최종 목적지로 남아요. 게이트웨이는 그곳으로 가기 위해 먼저 거치는 라우터예요."
+    - id: b
+      text: "PC가 다른 네트워크로 나가도록 패킷을 처음 전달받는 라우터다"
+      feedback: "맞아요. 기본 게이트웨이는 PC가 다른 네트워크로 보낼 때 처음 전달하는 라우터예요."
+    - id: c
+      text: "도메인 이름을 IP 주소로 바꾼다"
+      feedback: "그 일은 DNS가 해요. 게이트웨이는 다른 네트워크로 나가는 패킷을 전달해요."
+    - id: d
+      text: "같은 LAN의 모든 장치에 IP 주소를 나눠 준다"
+      feedback: "IP 주소를 자동으로 배정하는 일은 DHCP가 할 수 있어요. 게이트웨이는 패킷을 전달하는 라우터예요."
+    - id: e
+      text: "웹 서버에서 실행 중인 프로그램을 고른다"
+      feedback: "호스트 안의 통신 끝점은 포트 번호 등으로 구분해요. 게이트웨이는 다른 네트워크로 나가는 경로의 첫 라우터예요."
+    answer: b
   question_placements:
   - question_id: u4-01-p07-q01
     after_paragraph: 1
