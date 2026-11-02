@@ -863,6 +863,41 @@
   anchor:
     lesson: u6-l34-굵고-짧게-살펴보는-http
     page: http-request-response
+  not_in: &id001
+  - u1-prerequisites
+  - u1-layers
+  - u1-networking
+  - u1-user-kernel
+  - u2-l05-osi-7-layer와-식별자
+  - u2-l06-host는-이렇게-외우자
+  - u2-l07-스위치가-하는-일과-비용
+  - u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소
+  - u3-l09-l2-스위치에-대해서
+  - u3-l10-lan과-wan의-경계-그리고-broadcast
+  - u4-l11-ipv4주소의-기본-구조
+  - u4-l12-l3-ip-packet으로-외워라
+  - u4-l13-encapsulation과-decapsulation
+  - u4-l14-패킷의-생성과-전달
+  - u4-l15-계층별-데이터-단위
+  - u4-l16-중요-이해하면-인생이-바뀌는-tcp-ip-송-수신구조
+  - u4-l17-ip-헤더-형식
+  - u4-l18-서브넷-마스크와-cidr
+  - u4-l19-broadcast-ip주소
+  - u4-l20-host-자신을-가리키는-ip주소
+  - u4-l21-ttl과-단편화
+  - u4-l22-인터넷-설정-자동화를-위한-dhcp
+  - u4-l23-arp
+  - u4-l24-ping과-rtt
+  - u5-l25-tcp와-udp-개요
+  - u5-l26-tcp-연결과정
+  - u5-l27-tcp-연결종료-및-상태변화
+  - u8-tcp-ack-재전송과-window
+  - u5-l28-tcp-udp-헤더형식과-게임서버-특징
+  - u5-l29-tcp-연결-이라는-착각
+  - u5-l30-tcp-연결과-게임버그
+  - u6-l31-한-번에-끝내는-dns
+  - u6-l32-웹-기술-창시자와-대한민국-인터넷
+  - u6-l33-url과-uri
 - id: response
   tier: family
   parent: http
@@ -875,6 +910,7 @@
   anchor:
     lesson: u6-l34-굵고-짧게-살펴보는-http
     page: http-request-response
+  not_in: *id001
 - id: get-post
   tier: family
   parent: http
