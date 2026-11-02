@@ -14,11 +14,16 @@ page_metadata:
   - 네트워크 설정(Network configuration)
   - 클라이언트(Client)
   - 서버(Server)
-  animations:
-  - file: l22-dhcp-client-server.svg
-    title: DHCP 서버가 비어 있는 네트워크 설정을 채운다
-    alt: 네트워크 설정이 비어 있는 컴퓨터가 DHCP 서버에 요청하고, IP 주소·서브넷 마스크·게이트웨이·DNS 값이 채워집니다.
-    caption: DHCP 클라이언트는 설정을 요청하고, 서버는 사용할 설정을 알려 줍니다.
+  illustrations:
+  - file: assets/animations/l22-daily-welcome-card.svg
+    title: "새 입주자에게 안내 카드를 채워 준다"
+    alt: "새 입주자의 호수, 우리 동네 범위, 정문 위치, 안내 전화 칸이 모두 ?로 비어 있습니다. 직접 알아보는 것은 이사할 때마다 번거롭다는 표시가 나오고, 관리사무소가 입주 안내 카드의 값을 보내 칸이 채워집니다. 마지막에 카드를 받아도 길이 열려 있어야 한다고 표시됩니다."
+    caption: "관리사무소가 안내 카드를 채워 주듯, 설정은 자동으로 받지만 길이 열려 있어야 합니다."
+    after_paragraph: -1
+  - file: assets/animations/l22-dhcp-fills-settings.svg
+    title: "DHCP가 네트워크 설정을 채워 준다"
+    alt: "새 노트북의 IP 주소, 서브넷 마스크, 기본 게이트웨이, DNS 서버 칸이 모두 ?로 비어 있습니다. 직접 입력하면 바꿀 때마다 번거롭다는 표시가 나오고, DHCP 서버가 설정 값을 보내 칸이 채워집니다. 마지막에 설정 전달이 자동일 뿐 회선도 동작해야 인터넷이 된다고 표시됩니다."
+    caption: "‘자동’은 인터넷이 저절로 생긴다는 뜻이 아니라 필요한 설정을 받아 온다는 뜻입니다. 그림의 값은 예시예요."
     after_paragraph: 2
   questions:
   - id: u6-l02-p01-q01
@@ -93,6 +98,17 @@ page_metadata:
   - 기본 게이트웨이(Default gateway)
   - DNS 서버(DNS server)
   - DHCP 옵션(DHCP option)
+  illustrations:
+  - file: assets/animations/l22-daily-four-card-items.svg
+    title: "안내 카드 네 가지는 서로 다른 일을 한다"
+    alt: "왼쪽에 호수, 동네 경계, 정문, 안내 전화가 목록으로 있고, 오른쪽에 항목마다 장면이 나타납니다. 호수는 우리 집을 구별하고, 동네 경계는 같은 동네를 가르고, 정문은 다른 동네로 나가는 첫 문이며, 안내 전화는 이름을 호수로 알려 줍니다. 마지막에 관리사무소는 카드를 줄 뿐 배달과 안내는 하지 않는다고 표시됩니다."
+    caption: "카드의 네 항목은 각자 다른 일을 맡습니다."
+    after_paragraph: -1
+  - file: assets/animations/l22-four-settings.svg
+    title: "DHCP가 알려 주는 네 가지 설정"
+    alt: "왼쪽에 IP 주소, 서브넷 마스크, 기본 게이트웨이, DNS 서버가 목록으로 있고, 오른쪽에 항목마다 장면이 나타납니다. IP 주소는 내 인터페이스를 구별하고, 마스크는 같은 네트워크를 가르고, 게이트웨이는 다른 네트워크로 가는 첫 라우터이며, DNS 서버는 이름을 IP 주소로 알려 줍니다. 마지막에 DHCP는 설정을 전달할 뿐 패킷 운반이나 이름 변환은 하지 않는다고 표시됩니다."
+    caption: "DHCP는 설정을 전달하고, 운반은 라우팅이, 이름 변환은 DNS가 합니다. 그림의 값은 예시예요."
+    after_paragraph: 1
   questions:
   - id: u6-l02-p02-q01
     kind: choice
@@ -165,12 +181,17 @@ page_metadata:
   - 임대(Lease)
   - 동적 할당(Dynamic allocation)
   - 예약(Reservation)
-  animations:
-  - file: l22-dhcp-address-pool.svg
-    title: DHCP 서버는 주소 풀에서 임시로 쓸 주소를 고른다
-    alt: 서버의 주소 풀에서 192.168.0.100이 선택되어 게이트웨이, DNS, 서브넷 마스크와 함께 PC에 전달됩니다.
-    caption: 서버는 관리하는 주소 풀에서 사용할 주소를 빌려 주고, 필요한 네트워크 설정도 함께 제공합니다.
-    after_paragraph: 3
+  illustrations:
+  - file: assets/animations/l22-daily-room-lease.svg
+    title: "객실을 빌려 주고 기간을 관리한다"
+    alt: "객실 100호부터 200호까지의 방 목록이 있고, 손님 A와 B가 방을 하나씩 숙박 기간만큼 빌립니다. 기간이 끝나기 전에 연장하면 같은 방을 계속 쓰고, 마지막에 직원이 따로 쓰는 방을 손님에게 빌려 주면 충돌한다고 표시됩니다."
+    caption: "방을 빌리듯 주소도 기간을 두고 빌리며, 따로 쓰는 방은 빌려 주는 목록에서 뺍니다."
+    after_paragraph: -1
+  - file: assets/animations/l22-address-pool-lease.svg
+    title: "주소 풀에서 주소를 임대한다"
+    alt: "주소 풀 192.168.0.100부터 200까지의 칸이 한 줄로 있고, 노트북 A와 B가 주소를 하나씩 임대받으며 임대 기간 막대가 생깁니다. 갱신하면 같은 주소를 계속 쓰고, 마지막에 풀 안의 주소를 장치에 수동으로 설정하면 충돌한다고 표시됩니다."
+    caption: "풀의 범위와 값은 구조를 보여 주는 예시이고, 실제 범위는 네트워크마다 다릅니다."
+    after_paragraph: 2
   questions:
   - id: u6-l02-p03-q01
     kind: choice
@@ -244,12 +265,17 @@ page_metadata:
   - 브로드캐스트 도메인(Broadcast domain)
   - 0.0.0.0
   - 255.255.255.255
-  animations:
-  - file: l22-dhcp-discover-broadcast.svg
-    title: 서버 주소를 모를 때 Discover를 같은 범위에 방송한다
-    alt: IP 주소가 아직 없는 PC가 보낸 DHCP Discover가 스위치를 통해 같은 브로드캐스트 범위로 퍼지고, DHCP 서버가 응답을 준비합니다.
-    caption: DHCP 서버 주소를 모르는 클라이언트는 Discover를 브로드캐스트해 같은 범위의 서버를 찾습니다.
-    after_paragraph: 2
+  illustrations:
+  - file: assets/animations/l22-daily-shout-in-floor.svg
+    title: "처음 온 사람은 모두에게 물어본다"
+    alt: "새 입주자는 호수도 안내 데스크 위치도 모릅니다. ‘받는 사람: 모두’로 층 방송을 하면 방송 장치를 거쳐 같은 층의 이웃과 안내 데스크에 모두 들리고, 층 사이 문은 방송을 다른 층으로 넘기지 않습니다."
+    caption: "방송은 같은 층 안에서만 퍼집니다."
+    after_paragraph: -1
+  - file: assets/animations/l22-discover-broadcast.svg
+    title: "Discover는 모두에게 방송한다"
+    alt: "새 PC는 출발지 IP가 0.0.0.0이고, 목적지 IP 255.255.255.255와 목적지 MAC FF:FF:FF:FF:FF:FF로 Discover를 보냅니다. 스위치가 같은 범위의 PC 2와 DHCP 서버, 라우터 쪽으로 복사해 전달하고, 라우터는 다른 네트워크로 넘기지 않는다고 표시됩니다."
+    caption: "IP 브로드캐스트와 MAC 브로드캐스트는 서로 다른 계층의 주소이며 함께 쓰일 수 있습니다. 라우터는 기본적으로 브로드캐스트를 넘기지 않아요."
+    after_paragraph: 1
   questions:
   - id: u6-l02-p04-q01
     kind: choice
@@ -323,6 +349,17 @@ page_metadata:
   - DHCP Request
   - DHCP ACK
   - UDP(User Datagram Protocol)
+  illustrations:
+  - file: assets/animations/l22-daily-hotel-booking.svg
+    title: "호텔 방 배정은 네 번 오가요"
+    alt: "손님과 프런트 사이에 문의, 제안, 선택, 확인이 차례로 화살표로 나타납니다. 손님이 빈방을 묻고, 프런트가 방을 제안하고, 손님이 그 방을 고르고, 프런트가 배정을 확인합니다."
+    caption: "문의, 제안, 선택, 확인이 DORA와 같은 순서입니다."
+    after_paragraph: -1
+  - file: assets/animations/l22-dora-messages.svg
+    title: "DORA 네 메시지로 주소를 확정한다"
+    alt: "클라이언트와 DHCP 서버 사이에 Discover, Offer, Request, ACK가 차례로 화살표로 나타납니다. 클라이언트가 서버를 찾고, 서버가 주소를 제안하고, 클라이언트가 그 제안을 선택하고, 서버가 확인하면 임대가 시작됩니다. 마지막에 DHCP의 ACK는 TCP의 ACK와 다른 메시지라고 표시됩니다."
+    caption: "Discover와 Offer만으로 주소가 확정되지 않고 Request와 ACK까지 거칩니다. DHCP ACK와 TCP ACK는 이름만 같아요."
+    after_paragraph: 1
   questions:
   - id: u6-l02-p05-q01
     kind: choice
@@ -394,6 +431,17 @@ page_metadata:
   - DHCP 릴레이(DHCP relay)
   - IP 주소 충돌(IP address conflict)
   - 링크 로컬 주소(Link-local address)
+  illustrations:
+  - file: assets/animations/l22-daily-branch-receptionist.svg
+    title: "지점 접수원이 본사에 전달한다"
+    alt: "왼쪽 우리 지점의 새 직원이 외치는 소리가 지점 안에서만 퍼지고 밖으로 넘어가지 않습니다. 접수원이 대신 본사 안내센터로 전달하고, 본사의 답도 접수원이 가져와 새 직원에게 돌려줍니다."
+    caption: "접수원이 대신 전달해 주기 때문에 다른 건물의 안내센터를 쓸 수 있습니다."
+    after_paragraph: -1
+  - file: assets/animations/l22-dhcp-relay.svg
+    title: "릴레이가 다른 네트워크 서버에 잇는다"
+    alt: "왼쪽 클라이언트 네트워크의 새 PC가 Discover를 브로드캐스트하면 같은 네트워크 안에서만 퍼지고 라우터를 넘지 못합니다. 라우터에 설정된 DHCP 릴레이가 이를 받아 설정된 서버 네트워크의 DHCP 서버로 전달하고, 서버의 응답도 릴레이가 클라이언트 쪽으로 가져옵니다."
+    caption: "클라이언트가 직접 먼 서버를 브로드캐스트하는 것이 아니라, 관리자가 설정한 릴레이가 연결합니다."
+    after_paragraph: 1
   questions:
   - id: u6-l02-p06-q01
     kind: choice
@@ -467,6 +515,17 @@ page_metadata:
   - "`ipconfig /all`"
   - "`ipconfig getpacket`"
   - "`nmcli`"
+  illustrations:
+  - file: assets/animations/l22-daily-read-guide.svg
+    title: "안내서에서 받은 값을 찾아 읽기"
+    alt: "안내서 세 장 가운데 쓰는 것을 먼저 고릅니다. 호수, 동네, 정문 항목을 찾고, 배정해 준 곳과 계약 기간을 찾고, 안내 전화 항목까지 차례로 확인합니다. 마지막에 스스로 붙인 임시 번호는 관리사무소가 준 것이 아니라고 표시됩니다."
+    caption: "여러 장의 안내서가 있을 때는 지금 쓰는 것부터 찾습니다."
+    after_paragraph: -1
+  - file: assets/animations/l22-find-dhcp-settings.svg
+    title: "내 컴퓨터에서 DHCP 설정 찾기"
+    alt: "왼쪽에 Wi-Fi, Ethernet, 가상 어댑터가 있고 오른쪽에 ipconfig /all 출력 예시가 있습니다. 연결된 어댑터를 먼저 고르고, IPv4 주소와 서브넷 마스크와 기본 게이트웨이, 다음으로 DHCP 서버와 임대 시작·만료, 마지막으로 DNS 서버를 차례로 찾습니다. 마지막에 169.254.x.x는 DHCP가 준 주소가 아니라고 표시됩니다."
+    caption: "Windows 출력의 예시이고 운영체제마다 명령과 표기가 다릅니다. 그림의 주소 값은 예시예요."
+    after_paragraph: 3
   questions:
   - id: u6-l02-p07-q01
     kind: choice
@@ -538,6 +597,17 @@ page_metadata:
   - DHCP 자동 구성
   - 브로드캐스트 전달
   - IP 주소 갱신
+  illustrations:
+  - file: assets/animations/l22-daily-card-vs-road.svg
+    title: "안내 카드가 있어도 길이 막히면 안 돼요"
+    alt: "안내 카드를 받은 뒤 복도, 정문, 안내 전화, 가게로 이어지는 길이 나타납니다. 복도가 끊기거나 정문이나 안내 전화가 막히면 가게에 갈 수 없다고 표시되고, 마지막에 안내 카드와 문패 확인은 서로 다른 일이라는 두 카드가 나타납니다."
+    caption: "카드를 받은 것과 실제로 갈 수 있는 것은 다릅니다."
+    after_paragraph: -1
+  - file: assets/animations/l22-dhcp-limits.svg
+    title: "DHCP가 해결하는 일, 못 하는 일"
+    alt: "DHCP 설정을 받은 뒤 Wi-Fi 회선, 기본 게이트웨이, DNS 서버, 웹 사이트로 이어지는 길이 나타납니다. Wi-Fi가 끊기거나 게이트웨이나 DNS가 막히면 웹 사이트가 열리지 않는다고 표시되고, 마지막에 IP 설정은 DHCP가, 같은 LAN에서 MAC을 찾는 일은 ARP가 맡는다는 두 카드가 나타납니다."
+    caption: "IP 주소를 받았다는 것과 인터넷 통신이 모두 성공했다는 것은 다릅니다. ARP는 다음 Lesson에서 이어집니다."
+    after_paragraph: 1
   questions:
   - id: u6-l02-p08-q01
     kind: choice
