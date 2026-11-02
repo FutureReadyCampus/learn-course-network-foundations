@@ -53,7 +53,7 @@
     <text x="640" y="248" fill="#9aa3b2">192.168.0.1</text>
 
     <rect x="800" y="190" width="140" height="70" rx="10" fill="#0f1115" stroke="#3d4b60" stroke-width="3"/>
-    <text x="870" y="218" fill="#e6e8ec" font-weight="700">3.3.3.3</text>
+    <text x="870" y="218" fill="#e6e8ec" font-weight="700">203.0.113.5</text>
     <text x="870" y="248" fill="#9aa3b2">(가정)</text>
   </g>
 
@@ -106,7 +106,7 @@
   <g font-size="24">
     <g>
       <g fill="#6ea8fe" transform="translate(72,394)"><use href="#env"/></g>
-      <text x="106" y="403" fill="#9aa3b2">목적지 IP  <tspan fill="#e6e8ec" font-weight="700">3.3.3.3</tspan></text>
+      <text x="106" y="403" fill="#9aa3b2">목적지 IP  <tspan fill="#e6e8ec" font-weight="700">203.0.113.5</tspan></text>
       <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.48;0.5;0.96;1" dur="12s" repeatCount="indefinite"/>
     </g>
     <g opacity="0">
@@ -122,7 +122,7 @@
   <g font-size="26" text-anchor="middle">
     <text x="480" y="498" fill="#e6e8ec">목적지 주소가 패킷이 갈 곳을 정해요.
       <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.16;0.18;0.975;1" dur="12s" repeatCount="indefinite"/></text>
-    <text x="480" y="498" fill="#e6e8ec" opacity="0">3.3.3.3 앞 패킷은 게이트웨이를 지나 한 곳에만 가요.
+    <text x="480" y="498" fill="#e6e8ec" opacity="0">203.0.113.5 앞 패킷은 게이트웨이를 지나 한 곳에만 가요.
       <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18;0.2;0.46;0.48;1" dur="12s" repeatCount="indefinite"/></text>
     <text x="480" y="498" fill="#e6e8ec" opacity="0">192.168.0.255 앞 패킷은 단지 안 모두에게 복사돼요.
       <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.48;0.5;0.74;0.76;1" dur="12s" repeatCount="indefinite"/></text>
