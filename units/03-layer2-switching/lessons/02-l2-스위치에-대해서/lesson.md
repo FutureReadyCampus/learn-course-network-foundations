@@ -193,15 +193,6 @@ page_metadata:
       text: 스위치에 전원을 껐다 켠다
       feedback: 다시 확인해 보세요. 전원 재시작으로 VLAN 경계가 바뀌지는 않습니다.
     answer: c
-  - id: u3-02-p02-q03
-    kind: short
-    prompt: VLAN 10, VLAN 20처럼 스위치가 논리적 LAN 그룹을 구분할 때 쓰는 번호를 무엇이라고 하나요? (영어 또는 한글)
-    answers:
-    - VLAN ID
-    - VLAN identifier
-    - VLAN 번호
-    - VLAN 식별자
-    feedback: 정답은 VLAN ID(가상 LAN 식별 번호)입니다.
   - id: u3-02-p02-q04
     kind: choice
     difficulty: medium
