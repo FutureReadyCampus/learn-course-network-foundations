@@ -110,49 +110,6 @@ pages:
         text: 통신 속도만 알 수 있습니다
         feedback: 다시 확인해 보세요. 요소와 요소 사이의 관계를 함께 볼 수 있습니다
       answer: a
-    questions:
-    - id: u1-02-layered-structure-p01-q01
-      kind: choice
-      difficulty: easy
-      prompt: Layer(레이어)는 무슨 뜻인가요?
-      choices:
-      - id: a
-        text: 층 또는 구성 요소 하나입니다
-        feedback: 맞아요. 층 또는 구성 요소 하나입니다
-      - id: d
-        text: 통신 속도
-        feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
-      - id: b
-        text: 네트워크 주소
-        feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
-      - id: e
-        text: 실행 중인 프로그램
-        feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
-      - id: c
-        text: 파일의 크기
-        feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
-      answer: a
-    - id: u1-02-layered-structure-p01-q02
-      kind: choice
-      difficulty: medium
-      prompt: 계층 그림을 위아래로 쌓아 표현하면 무엇을 함께 볼 수 있나요?
-      choices:
-      - id: c
-        text: 각 요소의 실제 물리적 크기를 알 수 있습니다
-        feedback: 다시 확인해 보세요. 요소와 요소 사이의 관계를 함께 볼 수 있습니다
-      - id: a
-        text: 요소와 요소 사이의 관계를 함께 볼 수 있습니다
-        feedback: 맞아요. 요소와 요소 사이의 관계를 함께 볼 수 있습니다
-      - id: e
-        text: 요소가 만들어진 날짜를 알 수 있습니다
-        feedback: 다시 확인해 보세요. 요소와 요소 사이의 관계를 함께 볼 수 있습니다
-      - id: b
-        text: 요소의 이름만 볼 수 있습니다
-        feedback: 다시 확인해 보세요. 요소와 요소 사이의 관계를 함께 볼 수 있습니다
-      - id: d
-        text: 통신 속도만 알 수 있습니다
-        feedback: 다시 확인해 보세요. 요소와 요소 사이의 관계를 함께 볼 수 있습니다
-      answer: a
   - concepts:
       - concept-basic-02-04
       - concept-basic-02-05
@@ -168,49 +125,6 @@ pages:
         alt: "초등학교, 중학교, 고등학교, 대학교가 계단 네 칸으로 놓이고 학생이 한 칸씩 올라 대학교 칸에서 학사모를 씁니다. 이어서 고등학교, 중학교, 초등학교 칸에 차례로 확인 표시가 붙고, 1부터 4까지 숫자가 한 줄로 이어집니다."
         caption: "4는 3을, 3은 2를, 2는 1을 전제로 합니다. 이렇게 전제가 끊김 없이 한 줄로 이어진 모양을 계층 구조로 그립니다."
         after_paragraph: 3
-    questions:
-    - id: u1-02-layered-structure-p02-q01
-      kind: choice
-      difficulty: easy
-      prompt: 어떤 요소가 성립하기 전에 갖추어야 하는 조건은 무엇이라고 하나요?
-      choices:
-      - id: c
-        text: 프로세스
-        feedback: 다시 확인해 보세요. 전제 또는 전제조건입니다
-      - id: a
-        text: 전제 또는 전제조건입니다
-        feedback: 맞아요. 전제 또는 전제조건입니다
-      - id: e
-        text: 인터페이스
-        feedback: 다시 확인해 보세요. 전제 또는 전제조건입니다
-      - id: b
-        text: 구현 위치
-        feedback: 다시 확인해 보세요. 전제 또는 전제조건입니다
-      - id: d
-        text: 프로토콜
-        feedback: 다시 확인해 보세요. 전제 또는 전제조건입니다
-      answer: a
-    - id: u1-02-layered-structure-p02-q02
-      kind: choice
-      difficulty: medium
-      prompt: 학교 과정을 1부터 4까지 한 줄로 놓을 때 4가 성립하기 위한 바로 앞 전제조건은 무엇인가요?
-      choices:
-      - id: d
-        text: 4입니다
-        feedback: 다시 확인해 보세요. 3입니다
-      - id: b
-        text: 1입니다
-        feedback: 다시 확인해 보세요. 3입니다
-      - id: e
-        text: 전제조건은 없습니다
-        feedback: 다시 확인해 보세요. 3입니다
-      - id: c
-        text: 2입니다
-        feedback: 다시 확인해 보세요. 3입니다
-      - id: a
-        text: 3입니다
-        feedback: 맞아요. 3입니다
-      answer: a
     questions:
     - id: u1-02-layered-structure-p02-q01
       kind: choice
@@ -316,3 +230,8 @@ IT 기술을 설명하는 그림에도 이와 똑같은 모양이 자주 나옵�
 다만 전구 비유는 ‘한 줄로 이어졌다’는 점에서만 맞습니다. 전구는 전기가 흐르는 길이지만, 계층 구조는 무엇이 무엇의 조건이 되는지를 그린 것입니다. 한 줄로 되짚으면, 이 강의에서 Layered 구조는 아래 층이 위 층의 성립 조건이 되는 의존 관계가 한 줄로 이어진 그림입니다.
 
 OSI의 일곱 계층과 각 이름은 Lesson 4에서 실제 네트워크의 역할에 연결해 살펴봅니다.
+### 이 Lesson에서 가져갈 것
+
+- **R · 기억해 두기:** Layer는 층입니다. 계층 그림에서는 위층이 아래층에 기대어 있다고 읽습니다.
+- **A · 적용해 보기:** 계층 그림을 보고 어느 층이 다른 층의 조건이 되는지 말로 설명할 수 있습니다.
+- **L · 필요할 때 찾아보기:** 시스템 설계, 의존의 세부 종류와 정도, 직렬 구조, OSI의 깊은 설명은 다시 볼 때 찾아도 됩니다. `prerequisite`와 `precondition`의 영어 단어도 외우기보다 필요할 때 확인하면 됩니다.
