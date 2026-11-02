@@ -612,3 +612,9 @@ TCP 소켓에서 다루는 Stream은 연속된 바이트 흐름이고, Segment�
 UDP는 TCP처럼 연결된 Stream을 제공하지 않는다. UDP에서 전송하는 하나의 데이터 덩어리는 데이터그램(Datagram)이라고 부른다. 계층별 단위를 정확히 말할 때 TCP의 L4 단위는 Segment, UDP의 L4 단위는 Datagram, IP의 L3 단위는 Packet이다.
 
 실무나 대화에서는 세그먼트나 데이터그램을 포함해 전달 단위를 넓게 ‘패킷’이라고 부르는 경우도 있다. 하지만 계층의 역할을 설명하거나 TCP와 UDP를 비교할 때는 이름을 구별하면 혼동이 줄어든다. UDP 데이터그램도 IP 패킷의 페이로드에 담겨 전달된다.
+
+### 이 Lesson에서 가져갈 것
+
+- **R · 기억해 두기:** TCP는 연속된 Byte Stream을 다루고 Segment로 나누어 보냅니다. UDP는 Datagram 단위로 보내며, IP는 Packet을 전달하고 L2는 Frame을 사용합니다. Application message 경계와 TCP Segment 경계는 같다고 보장되지 않습니다.
+- **A · 적용해 보기:** TCP와 UDP가 각각 어떤 L4 단위를 사용하는지 구분하고, 각 단위가 IP Packet과 Frame에 실리는 순서를 설명합니다.
+- **L · 필요할 때 찾아보기:** 각 Header의 상세 field와 실제 packet capture에서 보이는 표기 방식은 프로토콜별 Lesson이나 Wireshark에서 확인합니다.
