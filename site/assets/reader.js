@@ -307,6 +307,90 @@
     });
     return section;
   };
+  // --- Glossary terms (#94): emoji, hover/focus/tap explanation, "더 자세히 보기" link. ---
+  const isWordChar = (ch) => /[A-Za-z0-9가-힣]/.test(ch || "");
+  const termAt = (text, alias) => {
+    // Earliest boundary-respecting match of alias (case-insensitive) in text, or -1.
+    const lower = text.toLowerCase(); const needle = alias.toLowerCase(); const ascii = /^[\x00-\x7f]+$/.test(needle);
+    for (let from = 0; ;) {
+      const at = lower.indexOf(needle, from);
+      if (at < 0) return -1;
+      const before = text[at - 1]; const after = text[at + needle.length];
+      if (!isWordChar(before) && (!ascii || !isWordChar(after))) return at;
+      from = at + 1;
+    }
+  };
+  const decorateTerms = (prose, course, item, page) => {
+    if (!course.glossary?.length) return;
+    const lessonId = item.lesson.id;
+    const excluded = new Set(page.term_exclude || []);
+    const position = new Map(); let offset = 0;
+    for (const entry of allItems(course)) { position.set(entry.lesson.id, offset); offset += (entry.lesson.pages || []).length; }
+    const here = position.get(lessonId) + (course.lessons.find((l) => l.id === lessonId)?.pages || []).indexOf(page);
+    const candidates = course.glossary.filter((term) => !excluded.has(term.id)
+      && (!term.only_in || term.only_in.includes(lessonId)) && !(term.not_in || []).includes(lessonId)
+      && (term.aliases || []).length);
+    const used = new Set();
+    const where = (term) => {
+      const a = term.anchor; const target = a && allItems(course).find((entry) => entry.lesson.id === a.lesson);
+      if (!target) return null;
+      const unitIndex = course.units.findIndex((unit) => unit.id === target.unit.id);
+      const lessonIndex = course.lessons.filter((l) => l.unit === target.unit.id).indexOf(target.lesson);
+      return { unitIndex, lessonIndex, pageIndex: a.page_index - 1, pos: position.get(a.lesson) + a.page_index - 1 };
+    };
+    const make = (term, text) => {
+      const dest = where(term); const later = dest && dest.pos > here;
+      const wrap = document.createElement("span"); wrap.className = "term-wrap";
+      const button = document.createElement("button"); button.type = "button";
+      button.className = `term${later ? " term--later" : ""}${term.emoji ? "" : " term--plain"}`;
+      if (term.emoji && !later) { const e = document.createElement("span"); e.className = "term-emoji"; e.setAttribute("aria-hidden", "true"); e.textContent = term.emoji; button.append(e); }
+      button.append(document.createTextNode(text));
+      const id = `term-pop-${term.id}`; button.setAttribute("aria-describedby", id);
+      const pop = document.createElement("span"); pop.className = "term-pop"; pop.id = id; pop.setAttribute("role", "note");
+      if (later) pop.textContent = `뒤에서 배워요 (Unit ${dest.unitIndex + 1} · Lesson ${dest.lessonIndex + 1} · Page ${dest.pageIndex + 1})`;
+      else {
+        pop.textContent = term.hover || "";
+        if (dest && dest.pos !== here) {
+          const link = document.createElement("a"); link.className = "term-more"; link.textContent = "더 자세히 보기";
+          link.href = routeFor(dest.unitIndex, dest.lessonIndex, dest.pageIndex); link.target = "_blank"; link.rel = "noopener";
+          pop.append(link);
+        }
+      }
+      wrap.append(button, pop);
+      const place = () => { pop.style.left = "0"; const r = pop.getBoundingClientRect(); const over = r.right - (document.documentElement.clientWidth - 8); if (over > 0) pop.style.left = `${-over}px`; };
+      const close = () => { wrap.classList.remove("open"); wrap.classList.remove("dismissed"); };
+      button.addEventListener("click", () => { wrap.classList.toggle("open"); wrap.classList.remove("dismissed"); place(); });
+      wrap.addEventListener("mouseenter", () => { wrap.classList.remove("dismissed"); place(); });
+      wrap.addEventListener("focusin", place);
+      wrap.addEventListener("mouseleave", () => wrap.classList.remove("dismissed"));
+      wrap.addEventListener("focusout", (event) => { if (!wrap.contains(event.relatedTarget)) close(); });
+      wrap.addEventListener("keydown", (event) => { if (event.key === "Escape") { wrap.classList.remove("open"); wrap.classList.add("dismissed"); button.focus(); event.stopPropagation(); } });
+      return wrap;
+    };
+    const nodes = [];
+    prose.querySelectorAll(":scope > p, :scope > ul > li").forEach((block) => {
+      const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
+      for (let node = walker.nextNode(); node; node = walker.nextNode()) if (!node.parentElement.closest("code, a, .term-wrap")) nodes.push(node);
+    });
+    for (let node of nodes) {
+      for (;;) {
+        const text = node.nodeValue; let best = null;
+        for (const term of candidates) {
+          if (used.has(term.id)) continue;
+          for (const alias of term.aliases) {
+            const at = termAt(text, alias);
+            if (at >= 0 && (!best || at < best.at || (at === best.at && alias.length > best.alias.length))) best = { term, alias, at };
+          }
+        }
+        if (!best) break;
+        used.add(best.term.id);
+        const matched = node.splitText(best.at); const rest = matched.splitText(best.alias.length);
+        const wrap = make(best.term, matched.nodeValue);
+        matched.replaceWith(wrap);
+        node = rest;
+      }
+    }
+  };
   const render = (course, state) => {
     const list = allItems(course);
     if (!list.length) return;
@@ -346,6 +430,7 @@
     const prose = renderProse(page.paragraphs || [], page.illustrations || [], inlineQuizzes,
       (quiz) => renderQuiz(quiz.questions, quiz.start_index || 0));
     main.append(prose);
+    decorateTerms(prose, course, item, page);
     const video = renderVideo(page.video);
     if (video) main.append(video);
     if (questions.length) main.append(renderQuiz(questions, page.question_start_index || 0));

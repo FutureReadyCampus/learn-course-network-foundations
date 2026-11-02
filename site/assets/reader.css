@@ -123,3 +123,14 @@ button { color: inherit; }
   .page-nav :is(a,button) { flex: 1; text-align: center; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+
+.term-wrap { position: relative; display: inline; }
+.term { display: inline; padding: 0 .12em; border: 0; border-bottom: 1.5px dotted var(--accent); border-radius: 3px; background: var(--accent-soft); color: inherit; font: inherit; line-height: inherit; cursor: help; }
+.term--plain { background: transparent; }
+.term--later { border-bottom-style: dashed; border-bottom-color: var(--muted); background: var(--surface-muted); }
+.term:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.term-emoji { margin-inline-end: .2em; }
+.term-pop { display: none; position: absolute; z-index: 15; inset-block-start: 100%; inset-inline-start: 0; width: max-content; max-width: min(19rem, calc(100vw - 32px)); padding: 10px 12px; border: 1px solid var(--control-border); border-radius: 9px; background: var(--surface); box-shadow: 0 6px 18px rgba(0,0,0,.14); font-size: .9375rem; line-height: 1.6; font-weight: 400; }
+.term-wrap:hover .term-pop, .term-wrap:focus-within .term-pop, .term-wrap.open .term-pop { display: block; }
+.term-wrap.dismissed .term-pop { display: none; }
+.term-more { display: block; margin-top: 6px; color: var(--accent); font-weight: 600; }
