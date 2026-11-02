@@ -10,6 +10,78 @@ page_metadata:
   - 브로드캐스트(broadcast)
   - MAC 브로드캐스트 주소(Broadcast MAC address)
   - 브로드캐스트 도메인(broadcast domain)
+  questions:
+  - id: u5-l03-p01-q01
+    kind: choice
+    difficulty: easy
+    prompt: 네트워크에서 브로드캐스트는 어떤 방식인가요?
+    choices:
+    - id: a
+      text: 특정한 한 장치만 목적지로 정해 보내기
+      feedback: 목적지가 한 곳인지, 정해진 범위 안의 여러 곳인지 구분해 보세요.
+    - id: b
+      text: 정해진 범위의 여러 장치에 한꺼번에 보내기
+      feedback: 맞아요. 브로드캐스트는 정해진 범위에 있는 여러 장치를 대상으로 보냅니다.
+    - id: c
+      text: 인터넷의 모든 장치에 반드시 보내기
+      feedback: 목적지가 한 곳인지, 정해진 범위 안의 여러 곳인지 구분해 보세요.
+    - id: d
+      text: 서버에만 파일을 저장하기
+      feedback: 목적지가 한 곳인지, 정해진 범위 안의 여러 곳인지 구분해 보세요.
+    - id: e
+      text: 장치의 주소를 바꾸기
+      feedback: 목적지가 한 곳인지, 정해진 범위 안의 여러 곳인지 구분해 보세요.
+    answer: b
+  - id: u5-l03-p01-q02
+    kind: choice
+    difficulty: medium
+    prompt: IP 브로드캐스트 주소를 만들 때 호스트 부분은 어떻게 하나요?
+    choices:
+    - id: a
+      text: 네트워크 부분과 함께 모두 0으로 둔다
+      feedback: 네트워크 부분은 유지하고, 호스트 부분만 어떻게 만드는지 확인하세요.
+    - id: b
+      text: 네트워크 부분도 모두 1로 바꾼다
+      feedback: 네트워크 부분은 유지하고, 호스트 부분만 어떻게 만드는지 확인하세요.
+    - id: c
+      text: 호스트 부분을 그대로 둔다
+      feedback: 네트워크 부분은 유지하고, 호스트 부분만 어떻게 만드는지 확인하세요.
+    - id: d
+      text: 네트워크 부분은 유지하고 호스트 부분을 모두 1로 채운다
+      feedback: 맞아요. IP 브로드캐스트 주소는 네트워크 부분을 유지하고 호스트 부분을 모두 1로 채웁니다.
+    - id: e
+      text: IP 주소 전체를 FF로 적는다
+      feedback: 네트워크 부분은 유지하고, 호스트 부분만 어떻게 만드는지 확인하세요.
+    answer: d
+  - id: u5-l03-p01-q03
+    kind: choice
+    difficulty: medium
+    prompt: Ethernet으로 IPv4 브로드캐스트 패킷을 보낼 때 두 주소가 놓이는 위치를 바르게 설명한 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 브로드캐스트 MAC은 프레임 목적지 MAC 칸에, 브로드캐스트 IP는 패킷 목적지 IP 칸에 놓인다
+      feedback: 맞아요. MAC 주소는 프레임의 목적지 MAC 칸에, IP 주소는 패킷의 목적지 IP 칸에 표시됩니다.
+    - id: b
+      text: 두 주소 모두 Ethernet 프레임의 출발지 MAC 칸에 놓인다
+      feedback: MAC 주소와 IP 주소가 각각 프레임과 패킷의 어느 목적지 칸에 들어가는지 나누어 보세요.
+    - id: c
+      text: 브로드캐스트 IP만 프레임의 목적지 MAC 칸에 놓인다
+      feedback: MAC 주소와 IP 주소가 각각 프레임과 패킷의 어느 목적지 칸에 들어가는지 나누어 보세요.
+    - id: d
+      text: 두 주소는 같은 값이므로 한 곳에만 적힌다
+      feedback: MAC 주소와 IP 주소가 각각 프레임과 패킷의 어느 목적지 칸에 들어가는지 나누어 보세요.
+    - id: e
+      text: 브로드캐스트 MAC은 IP 패킷의 목적지 IP 칸에 놓인다
+      feedback: MAC 주소와 IP 주소가 각각 프레임과 패킷의 어느 목적지 칸에 들어가는지 나누어 보세요.
+    answer: a
+  question_placements:
+  - question_id: u5-l03-p01-q01
+    after_paragraph: 1
+  - question_id: u5-l03-p01-q02
+    after_paragraph: 3
+  - question_id: u5-l03-p01-q03
+    after_paragraph: 4
+
 - terms:
   - 브로드캐스트 주소(broadcast address)
   - 서브넷 마스크(Subnet Mask)
@@ -20,6 +92,76 @@ page_metadata:
     alt: 192.168.0.0/24 주소에서 앞의 24비트는 고정되어 있고 마지막 8비트 칸이 하나씩 1로 켜지면서 255가 되고, 주소가
       192.168.0.255로 바뀌어 단지 전체에 방송이 퍼지는 장면입니다.
     caption: 192.168.0.0/24에서 마지막 8칸이 모두 1이 되면 192.168.0.255, 즉 이 단지의 브로드캐스트 주소가 됩니다.
+  questions:
+  - id: u5-l03-p02-q01
+    kind: choice
+    difficulty: easy
+    prompt: 192.168.0.0/24에서 호스트 부분은 몇 비트인가요?
+    choices:
+    - id: a
+      text: 4비트
+      feedback: IPv4 주소 전체의 32비트에서 네트워크 부분 24비트를 빼 보세요.
+    - id: b
+      text: 8비트
+      feedback: 맞아요. IPv4 주소는 32비트이고 /24가 네트워크 부분이므로 호스트 부분은 8비트입니다.
+    - id: c
+      text: 16비트
+      feedback: IPv4 주소 전체의 32비트에서 네트워크 부분 24비트를 빼 보세요.
+    - id: d
+      text: 24비트
+      feedback: IPv4 주소 전체의 32비트에서 네트워크 부분 24비트를 빼 보세요.
+    - id: e
+      text: 32비트
+      feedback: IPv4 주소 전체의 32비트에서 네트워크 부분 24비트를 빼 보세요.
+    answer: b
+  - id: u5-l03-p02-q02
+    kind: choice
+    difficulty: medium
+    prompt: 192.168.0.0/16 네트워크의 브로드캐스트 주소는 무엇인가요?
+    choices:
+    - id: a
+      text: 192.168.0.255
+      feedback: /16에서는 뒤의 두 옥텟이 호스트 부분이 됩니다. 그 부분을 모두 1로 채우세요.
+    - id: b
+      text: 192.168.255.0
+      feedback: /16에서는 뒤의 두 옥텟이 호스트 부분이 됩니다. 그 부분을 모두 1로 채우세요.
+    - id: c
+      text: 192.168.255.255
+      feedback: 맞아요. /16 뒤의 16비트가 호스트 부분이므로 모두 1로 채우면 192.168.255.255입니다.
+    - id: d
+      text: 192.168.0.0
+      feedback: /16에서는 뒤의 두 옥텟이 호스트 부분이 됩니다. 그 부분을 모두 1로 채우세요.
+    - id: e
+      text: 192.168.16.255
+      feedback: /16에서는 뒤의 두 옥텟이 호스트 부분이 됩니다. 그 부분을 모두 1로 채우세요.
+    answer: c
+  - id: u5-l03-p02-q03
+    kind: choice
+    difficulty: easy
+    prompt: 주소의 마지막 숫자가 255라는 사실만으로 브로드캐스트 주소라고 단정할 수 없는 이유는 무엇인가요?
+    choices:
+    - id: a
+      text: 모든 IPv4 주소에서 255는 사용할 수 없어서
+      feedback: 마지막 옥텟만 보지 말고 서브넷 마스크가 정하는 호스트 부분 전체를 살펴보세요.
+    - id: b
+      text: 브로드캐스트 주소에는 항상 0이 들어가서
+      feedback: 마지막 옥텟만 보지 말고 서브넷 마스크가 정하는 호스트 부분 전체를 살펴보세요.
+    - id: c
+      text: 마스크가 달라지면 호스트 부분의 경계도 달라질 수 있어서
+      feedback: 맞아요. 마스크가 달라지면 호스트 부분의 길이와 위치가 바뀌므로, 호스트 부분이 모두 1인지 확인해야 합니다.
+    - id: d
+      text: 마지막 숫자는 IP 주소에 포함되지 않아서
+      feedback: 마지막 옥텟만 보지 말고 서브넷 마스크가 정하는 호스트 부분 전체를 살펴보세요.
+    - id: e
+      text: 255는 MAC 주소에서만 쓸 수 있어서
+      feedback: 마지막 옥텟만 보지 말고 서브넷 마스크가 정하는 호스트 부분 전체를 살펴보세요.
+    answer: c
+  question_placements:
+  - question_id: u5-l03-p02-q01
+    after_paragraph: 1
+  - question_id: u5-l03-p02-q02
+    after_paragraph: 2
+
 - terms:
   - 유니캐스트(unicast)
   - 브로드캐스트(broadcast)
@@ -31,16 +173,300 @@ page_metadata:
     alt: PC에서 출발한 패킷이 외부의 설명용 주소 203.0.113.5로 가는 경우에는 게이트웨이를 거쳐 단지 밖으로 나가고,
       192.168.0.255로 가는 경우에는 같은 브로드캐스트 범위의 장치들이 받는 장면입니다.
     caption: 외부의 특정 주소로 가는 유니캐스트는 게이트웨이를 거치고, 192.168.0.255는 같은 네트워크의 브로드캐스트 주소입니다.
+  questions:
+  - id: u5-l03-p03-q01
+    kind: choice
+    difficulty: easy
+    prompt: 특정한 한 목적지를 정해 보내는 통신은 무엇인가요?
+    choices:
+    - id: a
+      text: 유니캐스트
+      feedback: 맞아요. 유니캐스트는 특정한 한 목적지를 지정해 보내는 통신입니다.
+    - id: b
+      text: 브로드캐스트
+      feedback: 한 곳을 대상으로 하는 방식과 여러 대상에게 보내는 방식을 구분해 보세요.
+    - id: c
+      text: 멀티캐스트
+      feedback: 한 곳을 대상으로 하는 방식과 여러 대상에게 보내는 방식을 구분해 보세요.
+    - id: d
+      text: 서브네팅
+      feedback: 한 곳을 대상으로 하는 방식과 여러 대상에게 보내는 방식을 구분해 보세요.
+    - id: e
+      text: 플러딩
+      feedback: 한 곳을 대상으로 하는 방식과 여러 대상에게 보내는 방식을 구분해 보세요.
+    answer: a
+  - id: u5-l03-p03-q02
+    kind: choice
+    difficulty: medium
+    prompt: 192.168.0.10/24 PC가 192.168.0.255를 목적지로 보내면 어디에 전달되나요?
+    choices:
+    - id: a
+      text: 인터넷의 모든 장치
+      feedback: 이 주소가 해당 /24의 브로드캐스트 주소인지 확인하고 전달 범위를 고르세요.
+    - id: b
+      text: 192.168.1.0 네트워크에만
+      feedback: 이 주소가 해당 /24의 브로드캐스트 주소인지 확인하고 전달 범위를 고르세요.
+    - id: c
+      text: 해당 PC 자신에게만
+      feedback: 이 주소가 해당 /24의 브로드캐스트 주소인지 확인하고 전달 범위를 고르세요.
+    - id: d
+      text: 같은 /24 브로드캐스트 범위 안의 장치들
+      feedback: 맞아요. 192.168.0.255는 이 /24 네트워크의 브로드캐스트 주소이므로 같은 브로드캐스트 범위의 장치들이 대상입니다.
+    - id: e
+      text: 게이트웨이의 관리 화면에만
+      feedback: 이 주소가 해당 /24의 브로드캐스트 주소인지 확인하고 전달 범위를 고르세요.
+    answer: d
+  - id: u5-l03-p03-q03
+    kind: choice
+    difficulty: medium
+    prompt: 브로드캐스트와 비교했을 때 멀티캐스트의 대상은 누구인가요?
+    choices:
+    - id: a
+      text: 네트워크의 모든 장치
+      feedback: 전체 범위와 지정된 그룹의 차이를 떠올려 보세요.
+    - id: b
+      text: 특정한 그룹에 속한 장치들
+      feedback: 맞아요. 멀티캐스트는 전체가 아니라 특정 그룹을 대상으로 합니다.
+    - id: c
+      text: 항상 한 대의 라우터
+      feedback: 전체 범위와 지정된 그룹의 차이를 떠올려 보세요.
+    - id: d
+      text: 인터넷에 연결된 모든 장치
+      feedback: 전체 범위와 지정된 그룹의 차이를 떠올려 보세요.
+    - id: e
+      text: 전원이 켜진 서버만
+      feedback: 전체 범위와 지정된 그룹의 차이를 떠올려 보세요.
+    answer: b
+  question_placements:
+  - question_id: u5-l03-p03-q01
+    after_paragraph: 1
+  - question_id: u5-l03-p03-q02
+    after_paragraph: 2
+  - question_id: u5-l03-p03-q03
+    after_paragraph: 3
+
 - terms:
   - 브로드캐스트 도메인(broadcast domain)
   - 라우터(router)
+  questions:
+  - id: u5-l03-p04-q01
+    kind: choice
+    difficulty: easy
+    prompt: 브로드캐스트가 지나치게 많아지면 어떤 일이 생길 수 있나요?
+    choices:
+    - id: a
+      text: 각 장치가 프레임을 확인하느라 처리 부담이 커질 수 있다
+      feedback: 맞아요. 같은 도메인의 장치들이 프레임을 확인하므로 불필요한 방송이 많으면 처리 부담이 늘 수 있습니다.
+    - id: b
+      text: IP 주소의 비트 수가 자동으로 늘어난다
+      feedback: 브로드캐스트를 받는 장치들이 무엇을 해야 하는지 생각해 보세요.
+    - id: c
+      text: 라우터가 모두 스위치로 바뀐다
+      feedback: 브로드캐스트를 받는 장치들이 무엇을 해야 하는지 생각해 보세요.
+    - id: d
+      text: 브로드캐스트 주소가 유니캐스트 주소가 된다
+      feedback: 브로드캐스트를 받는 장치들이 무엇을 해야 하는지 생각해 보세요.
+    - id: e
+      text: 네트워크 케이블이 더 길어진다
+      feedback: 브로드캐스트를 받는 장치들이 무엇을 해야 하는지 생각해 보세요.
+    answer: a
+  - id: u5-l03-p04-q02
+    kind: choice
+    difficulty: medium
+    prompt: 200대 장치가 있는 범위에서 초당 10개의 브로드캐스트가 발생한다고 가정합니다. 전체 장치의 프레임 확인 작업은 대략 초당 몇 회인가요?
+    choices:
+    - id: a
+      text: 10회
+      feedback: 각 장치가 확인하는 횟수에 장치 수를 곱해 보세요.
+    - id: b
+      text: 200회
+      feedback: 각 장치가 확인하는 횟수에 장치 수를 곱해 보세요.
+    - id: c
+      text: 1,000회
+      feedback: 각 장치가 확인하는 횟수에 장치 수를 곱해 보세요.
+    - id: d
+      text: 2,000회
+      feedback: 맞아요. 각 장치가 초당 10개를 확인하므로 200×10=2,000회의 장치별 확인 작업입니다.
+    - id: e
+      text: 20,000회
+      feedback: 각 장치가 확인하는 횟수에 장치 수를 곱해 보세요.
+    answer: d
+  - id: u5-l03-p04-q03
+    kind: choice
+    difficulty: medium
+    prompt: 일반적인 라우터가 브로드캐스트에 대해 하는 역할은 무엇인가요?
+    choices:
+    - id: a
+      text: 브로드캐스트를 인터넷 전체에 복제한다
+      feedback: 라우터가 네트워크 사이에서 만드는 경계의 역할을 확인해 보세요.
+    - id: b
+      text: 네트워크 경계를 만들어 다른 IP 네트워크로 그대로 번지지 않게 한다
+      feedback: 맞아요. 라우터는 보통 IP 네트워크 사이의 경계를 만들고 브로드캐스트가 다른 네트워크로 그대로 퍼지는 것을 막습니다.
+    - id: c
+      text: 브로드캐스트 IP 주소를 DNS 이름으로 바꾼다
+      feedback: 라우터가 네트워크 사이에서 만드는 경계의 역할을 확인해 보세요.
+    - id: d
+      text: 모든 브로드캐스트를 유니캐스트로 바꾼다
+      feedback: 라우터가 네트워크 사이에서 만드는 경계의 역할을 확인해 보세요.
+    - id: e
+      text: 장치마다 새 MAC 주소를 만든다
+      feedback: 라우터가 네트워크 사이에서 만드는 경계의 역할을 확인해 보세요.
+    answer: b
+  question_placements:
+  - question_id: u5-l03-p04-q01
+    after_paragraph: 1
+  - question_id: u5-l03-p04-q02
+    after_paragraph: 2
+
 - terms:
   - 네트워크 주소(network address)
   - 브로드캐스트 주소(broadcast address)
   - 예약된 주소(reserved address)
+  questions:
+  - id: u5-l03-p05-q01
+    kind: choice
+    difficulty: easy
+    prompt: 192.168.0.0/24에서 일반 장치에 할당하지 않는 두 주소는 무엇인가요?
+    choices:
+    - id: a
+      text: 192.168.0.1과 192.168.0.254
+      feedback: 네트워크 자체를 나타내는 주소와 네트워크에 방송하는 주소를 제외하세요.
+    - id: b
+      text: 192.168.0.0과 192.168.0.255
+      feedback: 맞아요. .0은 네트워크 주소이고 .255는 브로드캐스트 주소라 일반 장치에 할당하지 않습니다.
+    - id: c
+      text: 192.168.0.10과 192.168.0.77
+      feedback: 네트워크 자체를 나타내는 주소와 네트워크에 방송하는 주소를 제외하세요.
+    - id: d
+      text: 192.168.0.0과 192.168.0.1
+      feedback: 네트워크 자체를 나타내는 주소와 네트워크에 방송하는 주소를 제외하세요.
+    - id: e
+      text: 192.168.0.254와 192.168.0.255
+      feedback: 네트워크 자체를 나타내는 주소와 네트워크에 방송하는 주소를 제외하세요.
+    answer: b
+  - id: u5-l03-p05-q02
+    kind: choice
+    difficulty: medium
+    prompt: 일반적인 192.168.0.0/24에서 장치에 할당할 수 있는 주소는 몇 개인가요?
+    choices:
+    - id: a
+      text: 256개
+      feedback: 전체 조합에서 네트워크 주소와 브로드캐스트 주소 두 개를 제외하세요.
+    - id: b
+      text: 255개
+      feedback: 전체 조합에서 네트워크 주소와 브로드캐스트 주소 두 개를 제외하세요.
+    - id: c
+      text: 250개
+      feedback: 전체 조합에서 네트워크 주소와 브로드캐스트 주소 두 개를 제외하세요.
+    - id: d
+      text: 254개
+      feedback: 맞아요. 256개 조합 중 네트워크 주소와 브로드캐스트 주소를 제외하면 254개입니다.
+    - id: e
+      text: 24개
+      feedback: 전체 조합에서 네트워크 주소와 브로드캐스트 주소 두 개를 제외하세요.
+    answer: d
+  - id: u5-l03-p05-q03
+    kind: choice
+    difficulty: medium
+    prompt: 본문에서 '네트워크 주소'가 넓은 뜻과 좁은 뜻으로 쓰일 수 있다고 설명한 이유는 무엇인가요?
+    choices:
+    - id: a
+      text: 브로드캐스트 주소가 두 개라서
+      feedback: 넓은 뜻의 네트워크 부분과 좁은 뜻의 특정 주소를 구분하는 설명을 찾으세요.
+    - id: b
+      text: 네트워크 부분이라는 개념과 호스트 부분이 모두 0인 특수 주소를 구분하려고
+      feedback: 맞아요. 넓게는 네트워크 부분을 가리킬 수 있고, 좁게는 호스트 부분이 모두 0인 특정 주소를 뜻합니다.
+    - id: c
+      text: 게이트웨이 주소를 숨기려고
+      feedback: 넓은 뜻의 네트워크 부분과 좁은 뜻의 특정 주소를 구분하는 설명을 찾으세요.
+    - id: d
+      text: IP 주소와 MAC 주소가 같다는 뜻을 보이려고
+      feedback: 넓은 뜻의 네트워크 부분과 좁은 뜻의 특정 주소를 구분하는 설명을 찾으세요.
+    - id: e
+      text: 서브넷 마스크를 계산하지 않으려고
+      feedback: 넓은 뜻의 네트워크 부분과 좁은 뜻의 특정 주소를 구분하는 설명을 찾으세요.
+    answer: b
+  question_placements:
+  - question_id: u5-l03-p05-q01
+    after_paragraph: 1
+  - question_id: u5-l03-p05-q02
+    after_paragraph: 2
+
 - terms:
   - 사용 가능한 호스트 주소(usable host address)
   - 게이트웨이(gateway)
+  questions:
+  - id: u5-l03-p06-q01
+    kind: choice
+    difficulty: easy
+    prompt: /24에서 장치에 할당 가능한 주소가 254개여도 일반 PC가 모두 쓸 수 없는 이유는 무엇인가요?
+    choices:
+    - id: a
+      text: 게이트웨이나 관리용 장치에도 주소가 필요할 수 있어서
+      feedback: 맞아요. 게이트웨이와 서버·관리 인터페이스 같은 장치에도 주소를 배정할 수 있습니다.
+    - id: b
+      text: /24에는 호스트 부분이 없어서
+      feedback: 장치에 할당 가능한 주소를 일반 PC 외에 누가 사용할 수 있는지 생각해 보세요.
+    - id: c
+      text: 각 PC가 주소를 2개씩 가져서
+      feedback: 장치에 할당 가능한 주소를 일반 PC 외에 누가 사용할 수 있는지 생각해 보세요.
+    - id: d
+      text: 브로드캐스트 주소가 PC마다 필요해서
+      feedback: 장치에 할당 가능한 주소를 일반 PC 외에 누가 사용할 수 있는지 생각해 보세요.
+    - id: e
+      text: 라우터가 IP 주소를 사용할 수 없어서
+      feedback: 장치에 할당 가능한 주소를 일반 PC 외에 누가 사용할 수 있는지 생각해 보세요.
+    answer: a
+  - id: u5-l03-p06-q02
+    kind: choice
+    difficulty: medium
+    prompt: 254개 중 게이트웨이에 1개, 관리용 장치에 3개를 배정했다면 일반 PC용으로 남는 주소는 몇 개인가요?
+    choices:
+    - id: a
+      text: 254개
+      feedback: 전체 할당 가능 주소에서 게이트웨이와 관리용 주소를 빼세요.
+    - id: b
+      text: 253개
+      feedback: 전체 할당 가능 주소에서 게이트웨이와 관리용 주소를 빼세요.
+    - id: c
+      text: 251개
+      feedback: 전체 할당 가능 주소에서 게이트웨이와 관리용 주소를 빼세요.
+    - id: d
+      text: 247개
+      feedback: 전체 할당 가능 주소에서 게이트웨이와 관리용 주소를 빼세요.
+    - id: e
+      text: 250개
+      feedback: 맞아요. 254−1−3=250개가 남습니다.
+    answer: e
+  - id: u5-l03-p06-q03
+    kind: choice
+    difficulty: medium
+    prompt: 일반적인 /24에서 256과 254는 각각 무엇을 뜻하나요?
+    choices:
+    - id: a
+      text: 256은 호스트 비트 조합 수, 254는 네트워크·브로드캐스트 주소를 제외해 할당할 수 있는 수
+      feedback: 맞아요. 8비트 조합은 256가지이며, .0과 .255를 제외한 254개를 일반 장치에 할당할 수 있습니다.
+    - id: b
+      text: 256은 할당 가능한 PC 수, 254는 전체 비트 조합 수
+      feedback: 가능한 비트 조합 수와 두 특수 주소를 뺀 할당 가능 수를 나누어 보세요.
+    - id: c
+      text: 256은 네트워크 주소 수, 254는 브로드캐스트 주소 수
+      feedback: 가능한 비트 조합 수와 두 특수 주소를 뺀 할당 가능 수를 나누어 보세요.
+    - id: d
+      text: 256과 254는 모두 실제 PC에 남는 주소 수
+      feedback: 가능한 비트 조합 수와 두 특수 주소를 뺀 할당 가능 수를 나누어 보세요.
+    - id: e
+      text: 256은 서브넷 수, 254는 라우터 수
+      feedback: 가능한 비트 조합 수와 두 특수 주소를 뺀 할당 가능 수를 나누어 보세요.
+    answer: a
+  question_placements:
+  - question_id: u5-l03-p06-q01
+    after_paragraph: 1
+  - question_id: u5-l03-p06-q02
+    after_paragraph: 2
+  - question_id: u5-l03-p06-q03
+    after_paragraph: 3
+
 animations_dir: units/04-layer3-addressing/lessons/09-broadcast-ip주소/assets/animations
 ---
 
