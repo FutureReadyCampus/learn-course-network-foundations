@@ -494,11 +494,14 @@
     let nextPage;
     const prose = renderProse(page.paragraphs || [], page.illustrations || [], inlineQuizzes,
       (quiz) => renderQuiz(quiz.questions, quiz.start_index || 0));
+    const recap = prose.querySelector(":scope > .ral-summary");
     main.append(prose);
     decorateTerms(prose, course, item, page);
+    recap?.remove();
     const video = renderVideo(page.video);
     if (video) main.append(video);
     if (questions.length) main.append(renderQuiz(questions, page.question_start_index || 0));
+    if (recap) main.append(recap);
     const previous = list[state.lessonIndex - 1];
     const next = list[state.lessonIndex + 1];
     const navFooter = document.createElement("nav");
