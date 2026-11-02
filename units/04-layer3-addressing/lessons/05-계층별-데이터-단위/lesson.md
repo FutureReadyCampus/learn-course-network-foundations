@@ -605,6 +605,7 @@ MTU는 기본 예에서 IP 패킷의 최대 크기다. Ethernet 프레임에는 
 TCP를 쓰는 예의 흐름은 `Stream → Segment → IP Packet → Ethernet Frame`이다. 계층 이름으로 기억하면 소켓은 Stream, TCP는 Segment와 MSS, IP는 Packet과 MTU, Ethernet 데이터 링크는 Frame을 다룬다. 물리 계층은 그 프레임을 비트와 신호로 전달한다.
 
 ## UDP Datagram과 용어 구별
+<!-- learn-page-id: datagram-definition -->
 
 TCP 소켓에서 다루는 Stream은 연속된 바이트 흐름이고, Segment는 TCP가 그 흐름을 나누어 전송하는 단위다. 애플리케이션이 다루는 메시지의 경계와 Segment의 경계는 항상 같지는 않다.
 

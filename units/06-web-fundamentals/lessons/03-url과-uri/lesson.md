@@ -60,6 +60,7 @@ animations_dir: units/06-web-fundamentals/lessons/03-url과-uri/assets/animation
 이 이 절은 웹의 기본 자원을 파일로 설명한다. HTML 문서뿐 아니라 CSS 스타일시트, JPG 이미지, JS 파일 등도 웹에서 전달하는 자원이 될 수 있다. MS Word 문서처럼 저장된 파일의 위치를 지정한다고 생각하면 Resource Locator라는 표현을 이해하기 쉽다.
 
 ## 자원을 식별하고 특정하기
+<!-- learn-page-id: url-definition -->
 
 JSON을 비롯해 자원의 형태는 다양하다. URL은 URI라는 더 큰 범주에 포함되는 개념이다. URI는 자원을 식별한다는 넓은 의미이고, URL은 그 위치를 지정하는 방식으로 이해할 수 있다. 일상적으로 www.naver.com을 URL 주소라고 부르기도 하지만, 이후 설명에서는 이름과 경로, 자원을 함께 살펴보는 것이 중요하다.
 

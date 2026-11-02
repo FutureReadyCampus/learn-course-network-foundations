@@ -172,6 +172,7 @@ animations_dir: units/01-before-networking/lessons/02-layered-structure/assets/a
 ---
 
 ## 계층을 관계와 의존성으로 읽기
+<!-- learn-page-id: layer-definition -->
 
 ### 계층 그림은 요소와 관계를 함께 보여 준다
 
