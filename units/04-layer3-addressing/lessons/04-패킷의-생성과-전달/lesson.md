@@ -357,13 +357,6 @@ page_metadata:
       text: 두 IP 주소를 더한 값
       feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
     answer: a
-  - id: u4-l14-p04-q04
-    kind: short
-    prompt: '클라이언트가 통신할 때 임시로 배정받을 수 있는 포트를 무엇이라고 하나요?'
-    answers:
-    - ephemeral port
-    - 임시 포트
-    feedback: 임시 포트(ephemeral port)는 클라이언트 연결에 임시로 배정될 수 있어요.
   question_placements:
   - question_id: u4-l14-p04-q01
     after_paragraph: 1
