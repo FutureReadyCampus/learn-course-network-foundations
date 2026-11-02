@@ -267,14 +267,6 @@ page_metadata:
       text: 연결 방식과 무관하게 모든 네트워크에 적용된다
       feedback: 이 선택지는 다른 개념의 역할이에요. 본문에서 이 Page의 핵심 구분을 다시 확인해 보세요.
     answer: b
-  - id: u4-l12-p03-q03
-    kind: short
-    prompt: 한 번에 전달할 데이터 단위의 최대 크기를 정하는 기준을 무엇이라고 하나요?
-    answers:
-    - 최대 전송 단위
-    - Maximum Transmission Unit
-    - MTU
-    feedback: 최대 전송 단위(MTU)는 한 번에 전달할 수 있는 단위의 최대 크기 기준이에요.
   question_placements:
   - question_id: u4-l12-p03-q01
     after_paragraph: 1
