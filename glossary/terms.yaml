@@ -257,7 +257,7 @@
   aliases:
   - 계층
   - Layer
-  hover: 통신에서 큰 일을 역할별 단계로 나눈 한 층이에요. 실제 장비가 층층이 쌓였다는 뜻은 아니에요.
+  hover: 통신에 필요한 일을 역할별 단계로 나눈 한 층이에요. 2계층(L2)은 같은 LAN 안에서 MAC 주소로 프레임을 전달하고, 3계층(L3)은 IP 주소로 패킷을 다른 네트워크까지 보내요.
   anchor:
     lesson: u1-layers
     page: layer-definition
@@ -540,19 +540,6 @@
   anchor:
     lesson: u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론
     page: db-role
-- id: network
-  tier: hero
-  category: 장소
-  emoji: 🌐
-  ko: 네트워크
-  en: network
-  aliases:
-  - 네트워크
-  - network
-  hover: 정보를 주고받도록 장치들을 연결한 모임이에요. 가까운 LAN부터 서로 연결된 큰 범위까지 포함해요.
-  anchor:
-    lesson: u1-networking
-    page: u1l3-network-networking
 - id: process
   tier: family
   parent: host
@@ -922,7 +909,7 @@
     page: encapsulation-definition
 - id: wan
   tier: family
-  parent: network
+  parent: lan
   ko: WAN
   en: Wide Area Network
   aliases:
