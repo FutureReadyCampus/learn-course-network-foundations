@@ -362,15 +362,26 @@ page_metadata:
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
     answer: d
   - id: u4-l16-p04-q04
-    kind: short
-    prompt: TCP가 내보낼 데이터를 프로그램의 요청을 받은 뒤 잠시 보관하는 커널 공간을 무엇이라고 하나요? (영어 또는 한글로 답해주세요)
-    answers:
-    - send buffer
-    - transmit buffer
-    - socket send buffer
-    - 송신 버퍼
-    - 소켓 송신 버퍼
-    feedback: 송신 버퍼는 커널이 네트워크로 내보낼 데이터를 잠시 보관하는 공간이에요.
+    kind: choice
+    difficulty: medium
+    prompt: TCP가 내보낼 데이터를 프로그램의 요청을 받은 뒤 잠시 보관하는 커널 공간은 무엇인가요?
+    choices:
+    - id: a
+      text: 수신 버퍼(Receive buffer)
+      feedback: 수신 버퍼는 네트워크에서 받은 데이터를 프로그램이 읽기 전까지 보관해요.
+    - id: b
+      text: 송신 버퍼(Send buffer)
+      feedback: 맞아요. 송신 버퍼는 커널이 네트워크로 내보낼 데이터를 잠시 보관해요.
+    - id: c
+      text: 프로그램 버퍼(Program buffer)
+      feedback: 프로그램 버퍼는 프로그램이 파일에서 읽어 처리하는 데이터를 잠시 두는 공간이에요.
+    - id: d
+      text: TCP 세그먼트(TCP segment)
+      feedback: TCP 세그먼트는 데이터를 나누어 전송할 때 사용하는 단위이지, 대기 공간은 아니에요.
+    - id: e
+      text: 네트워크 인터페이스 카드(NIC)
+      feedback: NIC는 컴퓨터를 네트워크에 연결하는 장치예요. 데이터를 잠시 쌓아 두는 버퍼와는 역할이 달라요.
+    answer: b
   question_placements:
   - question_id: u4-l16-p04-q01
     after_paragraph: 1
