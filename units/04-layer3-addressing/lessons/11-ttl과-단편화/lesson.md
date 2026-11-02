@@ -13,6 +13,73 @@ page_metadata:
   - 라우터(Router)
   - IP 패킷(IP packet)
   - 네트워크 경로(Network path)
+  questions:
+  - id: u6-l01-p01-q01
+    kind: choice
+    difficulty: easy
+    prompt: 이 Lesson에서 다루는 두 가지 전달 한계는 무엇인가요?
+    choices:
+    - id: b
+      text: 패킷 이동 범위와 링크별 크기
+      feedback: TTL은 전달 범위를, MTU는 링크에서 보낼 패킷 크기를 다룹니다.
+    - id: a
+      text: 패킷의 색과 주소
+      feedback: 본문의 두 질문이 이동 한계와 크기 한계 중 무엇을 설명하는지 떠올려 보세요.
+    - id: c
+      text: 서버 수와 사용자 수
+      feedback: 본문의 두 질문이 이동 한계와 크기 한계 중 무엇을 설명하는지 떠올려 보세요.
+    - id: d
+      text: 무선 신호와 암호 길이
+      feedback: 본문의 두 질문이 이동 한계와 크기 한계 중 무엇을 설명하는지 떠올려 보세요.
+    - id: e
+      text: 프로세스 수와 포트 수
+      feedback: 본문의 두 질문이 이동 한계와 크기 한계 중 무엇을 설명하는지 떠올려 보세요.
+    answer: b
+  - id: u6-l01-p01-q02
+    kind: choice
+    difficulty: medium
+    prompt: 패킷이 출발지에서 목적지로 가는 동안 여러 라우터를 거치는 이유는 무엇인가요?
+    choices:
+    - id: b
+      text: 라우터가 패킷 내용을 최종 사용하기 때문
+      feedback: 라우터는 패킷을 소비하는 종착지가 아니라 다음 전달 지점을 고르는 장비입니다.
+    - id: c
+      text: 각 라우터가 패킷을 모두 저장해 두기 때문
+      feedback: 라우터는 패킷을 소비하는 종착지가 아니라 다음 전달 지점을 고르는 장비입니다.
+    - id: a
+      text: 각 라우터가 목적지 IP를 확인해 다음 전달 방향을 정하기 때문
+      feedback: 라우터는 목적지 IP와 경로 정보를 참고해 패킷을 다음 장비로 전달합니다.
+    - id: d
+      text: 패킷이 라우터마다 새로운 목적지를 받기 때문
+      feedback: 라우터는 패킷을 소비하는 종착지가 아니라 다음 전달 지점을 고르는 장비입니다.
+    - id: e
+      text: 라우터가 TCP 데이터를 다시 작성하기 때문
+      feedback: 라우터는 패킷을 소비하는 종착지가 아니라 다음 전달 지점을 고르는 장비입니다.
+    answer: a
+  - id: u6-l01-p01-q03
+    kind: choice
+    difficulty: medium
+    prompt: IP 단편화와 TCP 세그먼트 분할에 대한 설명으로 맞는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 둘 다 같은 계층에서 같은 단위로 일어난다
+      feedback: 두 작업이 각각 IP 패킷과 TCP 바이트 흐름 중 무엇을 다루는지 비교하세요.
+    - id: c
+      text: TCP 분할은 라우터만 수행한다
+      feedback: 두 작업이 각각 IP 패킷과 TCP 바이트 흐름 중 무엇을 다루는지 비교하세요.
+    - id: d
+      text: IP 단편화는 패킷의 목적지 주소를 없앤다
+      feedback: 두 작업이 각각 IP 패킷과 TCP 바이트 흐름 중 무엇을 다루는지 비교하세요.
+    - id: e
+      text: 둘 다 TTL 값을 나누는 작업이다
+      feedback: 두 작업이 각각 IP 패킷과 TCP 바이트 흐름 중 무엇을 다루는지 비교하세요.
+    - id: b
+      text: IP 단편화는 IP 패킷을, TCP 분할은 TCP의 바이트 흐름을 다룬다
+      feedback: IP 단편화와 TCP 데이터 분할은 계층과 다루는 단위가 다릅니다.
+    answer: b
+  question_placements:
+  - question_id: u6-l01-p01-q01
+    after_paragraph: 2
 - terms:
   - 전달(Forwarding)
   - 홉(Hop)
@@ -23,6 +90,73 @@ page_metadata:
     alt: PC에서 출발한 IP 패킷이 라우터를 차례로 지나 서버에 도착합니다. 각 라우터는 목적지 주소를 확인해 다음 라우터로 넘깁니다.
     caption: 라우터는 패킷을 최종 소비하지 않고 목적지 IP를 보고 다음 홉으로 전달합니다.
     after_paragraph: 2
+  questions:
+  - id: u6-l01-p02-q01
+    kind: choice
+    difficulty: easy
+    prompt: 라우터에서 다음 라우터로 한 번 넘어가는 이동을 무엇이라고 하나요?
+    choices:
+    - id: a
+      text: 세션
+      feedback: 경로 전체가 아니라 라우터 사이 한 번의 이동을 가리키는 용어를 찾으세요.
+    - id: c
+      text: 임대
+      feedback: 경로 전체가 아니라 라우터 사이 한 번의 이동을 가리키는 용어를 찾으세요.
+    - id: b
+      text: 홉(Hop)
+      feedback: 라우터에서 다음 라우터로 한 번 이동하는 것을 홉이라고 합니다.
+    - id: d
+      text: 단편
+      feedback: 경로 전체가 아니라 라우터 사이 한 번의 이동을 가리키는 용어를 찾으세요.
+    - id: e
+      text: 포트
+      feedback: 경로 전체가 아니라 라우터 사이 한 번의 이동을 가리키는 용어를 찾으세요.
+    answer: b
+  - id: u6-l01-p02-q02
+    kind: choice
+    difficulty: medium
+    prompt: 라우터가 패킷을 다음 방향으로 넘길 때 주로 확인하는 정보는 무엇인가요?
+    choices:
+    - id: b
+      text: 웹 페이지의 글꼴
+      feedback: 본문의 라우터 동작 순서에서 목적지 주소와 함께 참고하는 표를 확인하세요.
+    - id: c
+      text: 클라이언트의 화면 크기
+      feedback: 본문의 라우터 동작 순서에서 목적지 주소와 함께 참고하는 표를 확인하세요.
+    - id: d
+      text: 패킷 안의 파일 이름만
+      feedback: 본문의 라우터 동작 순서에서 목적지 주소와 함께 참고하는 표를 확인하세요.
+    - id: e
+      text: Wi-Fi 비밀번호
+      feedback: 본문의 라우터 동작 순서에서 목적지 주소와 함께 참고하는 표를 확인하세요.
+    - id: a
+      text: 목적지 IP 주소와 라우팅 테이블
+      feedback: 라우터는 목적지 IP를 확인하고 라우팅 테이블을 참고해 전달 방향을 정합니다.
+    answer: a
+  - id: u6-l01-p02-q03
+    kind: choice
+    difficulty: medium
+    prompt: 패킷의 최종 목적지가 라우터 자신이 아니라면 라우터는 보통 무엇을 하나요?
+    choices:
+    - id: a
+      text: 패킷 내용을 사용자에게 보여 준다
+      feedback: 중간 물류센터 비유에서 라우터가 상자를 어떻게 처리하는지 떠올려 보세요.
+    - id: b
+      text: 패킷을 다음 장비로 전달한다
+      feedback: 라우터는 최종 목적지가 아니라면 패킷을 다음 장비로 전달합니다.
+    - id: c
+      text: 패킷을 영구 보관한다
+      feedback: 중간 물류센터 비유에서 라우터가 상자를 어떻게 처리하는지 떠올려 보세요.
+    - id: d
+      text: 패킷의 IP 주소를 지운다
+      feedback: 중간 물류센터 비유에서 라우터가 상자를 어떻게 처리하는지 떠올려 보세요.
+    - id: e
+      text: 패킷을 항상 폐기한다
+      feedback: 중간 물류센터 비유에서 라우터가 상자를 어떻게 처리하는지 떠올려 보세요.
+    answer: b
+  question_placements:
+  - question_id: u6-l01-p02-q01
+    after_paragraph: 1
 - terms:
   - TTL(Time To Live)
   - IP 헤더(IP header)
@@ -33,14 +167,215 @@ page_metadata:
     alt: 패킷의 TTL이 128에서 127, 126으로 줄어듭니다. 값이 소진되면 라우터가 패킷을 더 전달하지 않고 버립니다.
     caption: TTL은 패킷이 경로에서 끝없이 돌지 않도록 전달 가능 범위를 제한합니다.
     after_paragraph: 2
+  questions:
+  - id: u6-l01-p03-q01
+    kind: choice
+    difficulty: easy
+    prompt: TTL은 IPv4 패킷에서 어떤 역할을 하나요?
+    choices:
+    - id: b
+      text: 한 링크의 최대 패킷 크기를 정한다
+      feedback: 이 페이지에서 TTL을 초시계 시간보다 어떤 한도로 설명하는지 떠올려 보세요.
+    - id: c
+      text: 도메인 이름을 IP 주소로 바꾼다
+      feedback: 이 페이지에서 TTL을 초시계 시간보다 어떤 한도로 설명하는지 떠올려 보세요.
+    - id: d
+      text: 패킷을 암호화한다
+      feedback: 이 페이지에서 TTL을 초시계 시간보다 어떤 한도로 설명하는지 떠올려 보세요.
+    - id: e
+      text: 서버의 포트 번호를 고른다
+      feedback: 이 페이지에서 TTL을 초시계 시간보다 어떤 한도로 설명하는지 떠올려 보세요.
+    - id: a
+      text: 패킷이 라우터를 거쳐 전달될 수 있는 범위를 제한한다
+      feedback: TTL은 전달이 끝없이 이어지지 않도록 패킷의 전달 범위를 제한합니다.
+    answer: a
+  - id: u6-l01-p03-q02
+    kind: choice
+    difficulty: medium
+    prompt: IPv4를 전달할 때 TTL 값은 보통 어떻게 되나요?
+    choices:
+    - id: b
+      text: 라우터를 지날 때마다 커진다
+      feedback: 자유 이용권의 도장 비유처럼 전달할 때마다 값이 줄어듭니다.
+    - id: a
+      text: 라우터를 지날 때마다 줄어든다
+      feedback: 라우터는 패킷을 전달할 때 TTL을 적어도 1 줄입니다.
+    - id: c
+      text: 목적지 이름으로 바뀐다
+      feedback: 자유 이용권의 도장 비유처럼 전달할 때마다 값이 줄어듭니다.
+    - id: d
+      text: 링크 MTU와 같아진다
+      feedback: 자유 이용권의 도장 비유처럼 전달할 때마다 값이 줄어듭니다.
+    - id: e
+      text: 항상 255로 다시 설정된다
+      feedback: 자유 이용권의 도장 비유처럼 전달할 때마다 값이 줄어듭니다.
+    answer: a
+  - id: u6-l01-p03-q03
+    kind: choice
+    difficulty: medium
+    prompt: TTL이라는 이름에 “시간”이 들어가지만, 일반적인 IPv4 전달에서 기억할 핵심은 무엇인가요?
+    choices:
+    - id: a
+      text: 실제 초 단위 시간을 매번 재는 값이다
+      feedback: 본문은 이름의 뜻과 실제로 학습할 동작을 구분합니다.
+    - id: c
+      text: DNS 응답을 기다리는 시간이다
+      feedback: 본문은 이름의 뜻과 실제로 학습할 동작을 구분합니다.
+    - id: d
+      text: 링크가 유지되는 시간이다
+      feedback: 본문은 이름의 뜻과 실제로 학습할 동작을 구분합니다.
+    - id: b
+      text: 라우터 전달 때마다 감소하는 한도다
+      feedback: 이 Lesson에서는 TTL을 실제 초시계보다 홉마다 줄어드는 전달 한도로 이해합니다.
+    - id: e
+      text: DHCP 임대 기간이다
+      feedback: 본문은 이름의 뜻과 실제로 학습할 동작을 구분합니다.
+    answer: b
+  question_placements:
+  - question_id: u6-l01-p03-q01
+    after_paragraph: 1
 - terms:
   - 폐기(Drop)
   - ICMP Time Exceeded
   - ICMP(Internet Control Message Protocol)
+  questions:
+  - id: u6-l01-p04-q01
+    kind: choice
+    difficulty: easy
+    prompt: TTL이 라우터에서 줄어 0이 되면 라우터는 보통 어떻게 하나요?
+    choices:
+    - id: b
+      text: TTL을 255로 바꾸어 계속 보낸다
+      feedback: TTL이 다 된 패킷을 계속 보내면 어떤 문제가 생기는지 생각해 보세요.
+    - id: a
+      text: 패킷을 더 전달하지 않고 폐기한다
+      feedback: TTL이 0이 되면 라우터는 패킷을 더 전달하지 않고 폐기합니다.
+    - id: c
+      text: 패킷을 DHCP 서버로 보낸다
+      feedback: TTL이 다 된 패킷을 계속 보내면 어떤 문제가 생기는지 생각해 보세요.
+    - id: d
+      text: 패킷을 항상 재조립한다
+      feedback: TTL이 다 된 패킷을 계속 보내면 어떤 문제가 생기는지 생각해 보세요.
+    - id: e
+      text: 목적지 MAC 주소를 새로 만든다
+      feedback: TTL이 다 된 패킷을 계속 보내면 어떤 문제가 생기는지 생각해 보세요.
+    answer: a
+  - id: u6-l01-p04-q02
+    kind: choice
+    difficulty: medium
+    prompt: TTL이 만료된 패킷을 폐기한 라우터가 출발지에 보낼 수 있는 안내 메시지는 무엇인가요?
+    choices:
+    - id: a
+      text: DHCP Offer
+      feedback: 이 페이지에서 TTL 만료 상황과 연결한 ICMP 메시지 이름을 확인하세요.
+    - id: c
+      text: DNS Query
+      feedback: 이 페이지에서 TTL 만료 상황과 연결한 ICMP 메시지 이름을 확인하세요.
+    - id: d
+      text: TCP ACK
+      feedback: 이 페이지에서 TTL 만료 상황과 연결한 ICMP 메시지 이름을 확인하세요.
+    - id: b
+      text: ICMP Time Exceeded
+      feedback: 가능한 경우 ICMP Time Exceeded로 TTL 만료를 알릴 수 있습니다.
+    - id: e
+      text: ARP Reply
+      feedback: 이 페이지에서 TTL 만료 상황과 연결한 ICMP 메시지 이름을 확인하세요.
+    answer: b
+  - id: u6-l01-p04-q03
+    kind: choice
+    difficulty: medium
+    prompt: TTL 만료 안내 응답이 보이지 않을 때 알맞은 해석은 무엇인가요?
+    choices:
+    - id: b
+      text: 라우터나 방화벽이 안내 메시지를 보내지 않았을 수도 있다
+      feedback: 라우터나 방화벽 설정에 따라 ICMP 안내를 보내지 않을 수 있습니다.
+    - id: a
+      text: 패킷이 반드시 목적지에 도착했다
+      feedback: 응답이 없다는 사실만으로 패킷의 도착 여부를 단정하지 마세요.
+    - id: c
+      text: TTL 기능이 항상 꺼져 있다
+      feedback: 응답이 없다는 사실만으로 패킷의 도착 여부를 단정하지 마세요.
+    - id: d
+      text: MTU가 0이라는 뜻이다
+      feedback: 응답이 없다는 사실만으로 패킷의 도착 여부를 단정하지 마세요.
+    - id: e
+      text: DHCP 임대가 만료되었다
+      feedback: 응답이 없다는 사실만으로 패킷의 도착 여부를 단정하지 마세요.
+    answer: b
+  question_placements:
+  - question_id: u6-l01-p04-q01
+    after_paragraph: 1
 - terms:
   - MTU(Maximum Transmission Unit)
   - 링크(Link)
   - 패킷 크기
+  questions:
+  - id: u6-l01-p05-q01
+    kind: choice
+    difficulty: easy
+    prompt: MTU가 제한하는 것은 무엇인가요?
+    choices:
+    - id: b
+      text: 패킷이 지날 수 있는 라우터의 수
+      feedback: TTL과 비교할 때 MTU는 전달 횟수가 아니라 무엇의 한계인지 확인하세요.
+    - id: c
+      text: 한 호스트의 프로세스 수
+      feedback: TTL과 비교할 때 MTU는 전달 횟수가 아니라 무엇의 한계인지 확인하세요.
+    - id: d
+      text: DNS 이름의 글자 수
+      feedback: TTL과 비교할 때 MTU는 전달 횟수가 아니라 무엇의 한계인지 확인하세요.
+    - id: a
+      text: 한 링크에서 한 번에 보낼 수 있는 IP 패킷의 크기
+      feedback: MTU는 링크 하나에서 보낼 수 있는 IP 패킷 크기의 상한입니다.
+    - id: e
+      text: DHCP 임대 기간
+      feedback: TTL과 비교할 때 MTU는 전달 횟수가 아니라 무엇의 한계인지 확인하세요.
+    answer: a
+  - id: u6-l01-p05-q02
+    kind: choice
+    difficulty: medium
+    prompt: 한 경로 중간에 MTU 1,400바이트인 링크가 있다면 1,500바이트 IP 패킷에 어떤 문제가 생기나요?
+    choices:
+    - id: a
+      text: 그 링크에 그대로 실을 수 없다
+      feedback: 1,500바이트 패킷은 MTU 1,400바이트 링크에 그대로 실을 수 없습니다.
+    - id: b
+      text: TTL이 자동으로 1,400이 된다
+      feedback: MTU는 경로 전체의 평균이 아니라 각 링크의 크기 한도입니다.
+    - id: c
+      text: 목적지 IP가 지워진다
+      feedback: MTU는 경로 전체의 평균이 아니라 각 링크의 크기 한도입니다.
+    - id: d
+      text: 패킷은 무조건 더 작아진다
+      feedback: MTU는 경로 전체의 평균이 아니라 각 링크의 크기 한도입니다.
+    - id: e
+      text: 라우터가 이를 웹 페이지로 바꾼다
+      feedback: MTU는 경로 전체의 평균이 아니라 각 링크의 크기 한도입니다.
+    answer: a
+  - id: u6-l01-p05-q03
+    kind: choice
+    difficulty: medium
+    prompt: 이 Lesson에서 말하는 MTU의 패킷 크기에는 무엇이 포함되나요?
+    choices:
+    - id: b
+      text: 데이터 부분만
+      feedback: MTU 한도를 데이터 부분만의 크기로 오해하지 않도록 본문 설명을 떠올리세요.
+    - id: c
+      text: Ethernet 케이블 길이
+      feedback: MTU 한도를 데이터 부분만의 크기로 오해하지 않도록 본문 설명을 떠올리세요.
+    - id: a
+      text: IP 헤더와 데이터(페이로드)를 합친 전체 IP 패킷
+      feedback: MTU는 IP 헤더와 데이터가 포함된 IP 패킷 전체의 크기를 제한합니다.
+    - id: d
+      text: IP 주소의 글자 수
+      feedback: MTU 한도를 데이터 부분만의 크기로 오해하지 않도록 본문 설명을 떠올리세요.
+    - id: e
+      text: TCP 포트 번호만
+      feedback: MTU 한도를 데이터 부분만의 크기로 오해하지 않도록 본문 설명을 떠올리세요.
+    answer: a
+  question_placements:
+  - question_id: u6-l01-p05-q01
+    after_paragraph: 1
 - terms:
   - IPv4 단편화(IPv4 fragmentation)
   - 페이로드(Payload)
@@ -51,16 +386,217 @@ page_metadata:
     alt: 1,500바이트 IP 패킷이 MTU 1,400바이트인 좁은 구간을 만나 페이로드 조각 두 개를 담은 더 작은 IPv4 패킷들로 나뉩니다.
     caption: IPv4 단편화에서는 페이로드를 나누고 각 조각에 IP 헤더를 붙여 다음 링크의 MTU에 맞춥니다.
     after_paragraph: 3
+  questions:
+  - id: u6-l01-p06-q01
+    kind: choice
+    difficulty: easy
+    prompt: IPv4 단편화는 어떤 작업인가요?
+    choices:
+    - id: a
+      text: MTU보다 큰 IPv4 패킷을 더 작은 IP 패킷 조각들로 나누는 일
+      feedback: IPv4 단편화는 큰 패킷의 페이로드를 나누고 각 조각에 IP 헤더를 붙입니다.
+    - id: b
+      text: TTL을 여러 값으로 복사하는 일
+      feedback: 단편화가 다루는 단위가 IP 패킷이라는 점을 확인하세요.
+    - id: c
+      text: TCP 연결을 여러 서버로 나누는 일
+      feedback: 단편화가 다루는 단위가 IP 패킷이라는 점을 확인하세요.
+    - id: d
+      text: IP 주소를 MAC 주소로 바꾸는 일
+      feedback: 단편화가 다루는 단위가 IP 패킷이라는 점을 확인하세요.
+    - id: e
+      text: 라우터 경로를 암호화하는 일
+      feedback: 단편화가 다루는 단위가 IP 패킷이라는 점을 확인하세요.
+    answer: a
+  - id: u6-l01-p06-q02
+    kind: choice
+    difficulty: medium
+    prompt: 단편화된 각 조각에 IP 헤더를 붙이는 이유는 무엇인가요?
+    choices:
+    - id: b
+      text: 조각마다 새 웹 사이트를 만들기 위해
+      feedback: 본문에서 조각마다 반복해 붙는 정보가 무엇인지 살펴보세요.
+    - id: c
+      text: TTL을 제거하기 위해
+      feedback: 본문에서 조각마다 반복해 붙는 정보가 무엇인지 살펴보세요.
+    - id: a
+      text: 각 조각이 링크를 통해 전달될 수 있도록 패킷 정보가 필요하기 때문
+      feedback: 각 조각은 IP 헤더를 갖고 다음 링크의 MTU 안에 들어가도록 전달됩니다.
+    - id: d
+      text: MAC 주소를 인터넷 주소로 바꾸기 위해
+      feedback: 본문에서 조각마다 반복해 붙는 정보가 무엇인지 살펴보세요.
+    - id: e
+      text: DHCP 임대를 갱신하기 위해
+      feedback: 본문에서 조각마다 반복해 붙는 정보가 무엇인지 살펴보세요.
+    answer: a
+  - id: u6-l01-p06-q03
+    kind: choice
+    difficulty: medium
+    prompt: DF(Don’t Fragment) 표시가 “켜져” 단편화가 금지된 패킷이 더 작은 MTU 링크를 만나면 어떻게 되나요?
+    choices:
+    - id: b
+      text: 라우터가 항상 두 배 크기로 만든다
+      feedback: DF는 이름 그대로 조각내지 말라는 표시입니다.
+    - id: c
+      text: 클라이언트가 새 DHCP 주소를 받는다
+      feedback: DF는 이름 그대로 조각내지 말라는 표시입니다.
+    - id: d
+      text: TTL이 자동으로 늘어난다
+      feedback: DF는 이름 그대로 조각내지 말라는 표시입니다.
+    - id: e
+      text: 패킷은 제한 없이 그대로 전달된다
+      feedback: DF는 이름 그대로 조각내지 말라는 표시입니다.
+    - id: a
+      text: 라우터가 임의로 단편화하지 않고 전달하지 못할 수 있다
+      feedback: DF가 단편화를 금지하면 라우터가 임의로 조각내지 못해 패킷이 폐기될 수 있습니다.
+    answer: a
+  question_placements:
+  - question_id: u6-l01-p06-q01
+    after_paragraph: 1
 - terms:
   - Identification(식별 값)
   - Flags(플래그)
   - Fragment Offset(단편 오프셋)
   - IP 재조립(IP reassembly)
+  questions:
+  - id: u6-l01-p07-q01
+    kind: choice
+    difficulty: easy
+    prompt: 보통 IP 조각을 다시 모아 원래 패킷을 복원하는 곳은 어디인가요?
+    choices:
+    - id: a
+      text: 각 중간 라우터
+      feedback: 중간 라우터가 매 구간마다 조각을 합치는 동작은 기본이 아닙니다.
+    - id: c
+      text: 첫 번째 스위치
+      feedback: 중간 라우터가 매 구간마다 조각을 합치는 동작은 기본이 아닙니다.
+    - id: b
+      text: 최종 수신 호스트
+      feedback: IP 조각의 재조립은 보통 최종 수신 호스트에서 이뤄집니다.
+    - id: d
+      text: DNS 서버
+      feedback: 중간 라우터가 매 구간마다 조각을 합치는 동작은 기본이 아닙니다.
+    - id: e
+      text: DHCP 릴레이
+      feedback: 중간 라우터가 매 구간마다 조각을 합치는 동작은 기본이 아닙니다.
+    answer: b
+  - id: u6-l01-p07-q02
+    kind: choice
+    difficulty: medium
+    prompt: IP 단편 중 하나가 목적지에 도착하지 않으면 어떤 일이 생길 수 있나요?
+    choices:
+    - id: b
+      text: 라우터가 자동으로 누락 조각을 다시 요청한다
+      feedback: IP 자체가 빠진 조각을 다시 요청하는 기능을 한다고 본문에서 설명했는지 확인하세요.
+    - id: c
+      text: 누락된 조각을 DHCP가 만들어 준다
+      feedback: IP 자체가 빠진 조각을 다시 요청하는 기능을 한다고 본문에서 설명했는지 확인하세요.
+    - id: d
+      text: TTL이 원래 값으로 돌아온다
+      feedback: IP 자체가 빠진 조각을 다시 요청하는 기능을 한다고 본문에서 설명했는지 확인하세요.
+    - id: e
+      text: 다른 조각이 자동으로 두 배 크기가 된다
+      feedback: IP 자체가 빠진 조각을 다시 요청하는 기능을 한다고 본문에서 설명했는지 확인하세요.
+    - id: a
+      text: 수신 호스트가 원래 IP 패킷을 완성하지 못한다
+      feedback: 한 조각이라도 빠지면 수신 측은 원래 IP 패킷을 완성하지 못할 수 있습니다.
+    answer: a
+  - id: u6-l01-p07-q03
+    kind: choice
+    difficulty: medium
+    prompt: IP 패킷이 복원된 뒤 그 안에 들어 있던 TCP 세그먼트는 어떻게 되나요?
+    choices:
+    - id: b
+      text: 다시 Ethernet 프레임으로 바뀌어 라우터에서 재조립된다
+      feedback: IP 재조립과 TCP가 데이터를 다루는 순서를 연결해 보세요.
+    - id: a
+      text: 상위 계층으로 전달되어 TCP가 별도 규칙을 처리한다
+      feedback: IP 패킷 복원과 TCP 바이트 흐름 처리는 계층이 다른 작업입니다.
+    - id: c
+      text: DHCP 서버로 전달된다
+      feedback: IP 재조립과 TCP가 데이터를 다루는 순서를 연결해 보세요.
+    - id: d
+      text: TTL 값으로 바뀐다
+      feedback: IP 재조립과 TCP가 데이터를 다루는 순서를 연결해 보세요.
+    - id: e
+      text: 폐기되어 응용 프로그램과 무관해진다
+      feedback: IP 재조립과 TCP가 데이터를 다루는 순서를 연결해 보세요.
+    answer: a
+  question_placements:
+  - question_id: u6-l01-p07-q01
+    after_paragraph: 1
 - terms:
   - TCP 세그먼트(TCP segment)
   - IP 단편(IP fragment)
   - 터널링(Tunneling)
   - VPN(Virtual Private Network)
+  questions:
+  - id: u6-l01-p08-q01
+    kind: choice
+    difficulty: easy
+    prompt: TTL과 MTU의 차이를 바르게 설명한 것은 무엇인가요?
+    choices:
+    - id: b
+      text: TTL은 패킷 크기, MTU는 DNS 시간을 다룬다
+      feedback: 두 값이 각각 이동 한계와 크기 한계 중 무엇을 나타내는지 구분하세요.
+    - id: c
+      text: 둘 다 IP 주소를 자동 배정한다
+      feedback: 두 값이 각각 이동 한계와 크기 한계 중 무엇을 나타내는지 구분하세요.
+    - id: d
+      text: TTL은 링크 종류, MTU는 라우터 개수를 센다
+      feedback: 두 값이 각각 이동 한계와 크기 한계 중 무엇을 나타내는지 구분하세요.
+    - id: e
+      text: 두 값은 서로 바꾸어 쓸 수 있다
+      feedback: 두 값이 각각 이동 한계와 크기 한계 중 무엇을 나타내는지 구분하세요.
+    - id: a
+      text: TTL은 전달 범위, MTU는 링크별 패킷 크기 한계를 다룬다
+      feedback: TTL은 전달이 끝없이 이어지는 일을, MTU는 한 링크의 크기 초과를 다룹니다.
+    answer: a
+  - id: u6-l01-p08-q02
+    kind: choice
+    difficulty: medium
+    prompt: TTL이 남아 있어도 패킷이 전달되지 않을 수 있는 상황은 무엇인가요?
+    choices:
+    - id: b
+      text: IP 패킷에 목적지 주소가 있는 경우
+      feedback: 전달 횟수 한도와 링크 크기 한도는 독립적으로 확인해야 합니다.
+    - id: a
+      text: 패킷이 경로 링크의 MTU보다 크고 처리 가능한 방법이 없는 경우
+      feedback: TTL과 별개로 링크의 MTU보다 패킷이 크면 그 구간에서 처리할 방법이 필요합니다.
+    - id: c
+      text: 라우터가 다음 홉을 아는 경우
+      feedback: 전달 횟수 한도와 링크 크기 한도는 독립적으로 확인해야 합니다.
+    - id: d
+      text: 패킷 크기가 링크 MTU 안에 들어가는 경우
+      feedback: 전달 횟수 한도와 링크 크기 한도는 독립적으로 확인해야 합니다.
+    - id: e
+      text: 목적지가 네트워크에 연결된 경우
+      feedback: 전달 횟수 한도와 링크 크기 한도는 독립적으로 확인해야 합니다.
+    answer: a
+  - id: u6-l01-p08-q03
+    kind: choice
+    difficulty: medium
+    prompt: MTU보다 큰 IPv4 패킷이 링크를 만나면 어떤 설명이 맞나요?
+    choices:
+    - id: b
+      text: 항상 그대로 전달된다
+      feedback: 본문의 DF와 단편화 설명을 함께 떠올려 보세요.
+    - id: c
+      text: TTL이 자동으로 늘어나 전달된다
+      feedback: 본문의 DF와 단편화 설명을 함께 떠올려 보세요.
+    - id: d
+      text: DHCP가 패킷을 나누어 준다
+      feedback: 본문의 DF와 단편화 설명을 함께 떠올려 보세요.
+    - id: a
+      text: 단편화가 허용되면 조각으로 나눌 수 있고, 금지되면 전달되지 않을 수 있다
+      feedback: IPv4 단편화 허용 여부에 따라 조각을 만들거나 전달하지 못할 수 있습니다.
+    - id: e
+      text: 모든 라우터가 반드시 조각을 재조립한다
+      feedback: 본문의 DF와 단편화 설명을 함께 떠올려 보세요.
+    answer: a
+  question_placements:
+  - question_id: u6-l01-p08-q01
+    after_paragraph: 1
 - terms:
   - 홉 수(Hop count)
   - MTU
@@ -78,6 +614,7 @@ animations_dir: units/04-layer3-addressing/lessons/11-ttl과-단편화/assets/an
 아래 지도는 이번 Lesson의 순서다. 먼저 라우터와 Hop을 보고 TTL의 역할을 익힌 뒤, 링크별 MTU와 IPv4 단편화, 수신 측 재조립을 살펴본다. TCP 연결이나 재전송 절차를 다시 배우는 Lesson은 아니다.
 
 ## 라우터가 패킷을 다음 홉으로 전달한다
+<!-- learn-page-id: hop-count -->
 
 라우터는 자신에게 도착한 패킷을 읽고 목적지 IP 주소를 확인한다. 그리고 라우팅 테이블을 참고해 그 패킷을 어느 방향으로 넘길지 결정한다. 패킷의 최종 목적지가 라우터 자신이 아니라면, 라우터는 내용을 사용하지 않고 다음 장비로 전달한다. 이 동작을 **전달(Forwarding)**이라고 한다.
 
@@ -86,6 +623,7 @@ animations_dir: units/04-layer3-addressing/lessons/11-ttl과-단편화/assets/an
 라우터에서 다음 라우터로 한 번 넘어가는 이동을 **홉(Hop)**이라고 한다. PC에서 라우터 A, 라우터 B를 거쳐 서버로 갔다면 라우터를 두 번 거친 경로라고 셀 수 있다. 목적지까지 이어지는 전체 경로가 몇 Hop인지는 중간에 어떤 라우터를 거치는지에 따라 달라진다. [Unit 2 Lesson 3에서 본 다음 홉과 라우팅 테이블](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/2/lesson/3/page/4)을 떠올리면, 라우터가 한 번에 전체 경로를 외워서 달리는 것이 아니라 다음 전달 지점을 선택한다는 점이 연결된다.
 
 ## TTL은 패킷이 끝없이 돌지 않도록 한다
+<!-- learn-page-id: ttl-definition -->
 
 라우터들이 경로 정보를 잘못 배워 패킷을 라우터 A에서 B로, 다시 B에서 A로 보내는 상황을 생각해 보자. 이런 **라우팅 루프**가 생기면 패킷이 목적지에 도착하지 못한 채 네트워크 안을 계속 돌 수 있다. 그래서 IPv4 패킷에는 이동을 제한하는 값인 **TTL(Time To Live)**이 있다.
 

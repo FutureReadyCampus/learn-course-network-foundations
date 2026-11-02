@@ -304,6 +304,7 @@ animations_dir: units/01-before-networking/lessons/04-user-and-kernel-mode/asset
 ---
 
 ## 하드웨어·소프트웨어와 NIC·드라이버
+<!-- learn-page-id: nic-kernel-mode -->
 
 ### 하드웨어와 소프트웨어의 역할
 
@@ -336,6 +337,7 @@ animations_dir: units/01-before-networking/lessons/04-user-and-kernel-mode/asset
 한 줄로 되짚으면, 드라이버는 운영체제가 하는 공통의 말을 특정 NIC의 말로 바꿔 주는 통역사이고, 그 위에 TCP와 IP 소프트웨어가 얹혀 있습니다.
 
 ## 애플리케이션·커널과 소켓
+<!-- learn-page-id: socket-definition -->
 
 ### 애플리케이션은 커널에 요청한다
 
@@ -368,6 +370,7 @@ Chrome 같은 애플리케이션이 주소창에 naver.com을 입력받으면 �
 한 줄로 되짚으면, 소켓은 TCP/IP라는 복잡한 일을 파일처럼 열고 쓰고 닫는 단순한 동작으로 바꿔 준 창구입니다.
 
 ## OSI에서 TCP/IP·장치까지
+<!-- learn-page-id: layer-numbers -->
 
 ### OSI의 층과 실제 구현 위치
 

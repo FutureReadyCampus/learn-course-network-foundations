@@ -90,6 +90,7 @@ ARP는 Address Resolution Protocol이다. 이 단원의 IPv4 예에서 IP 주소
 IP 주소와 MAC 주소를 쌍으로 관리할 수 있다. 일반적인 기업 PC에서는 NIC를 자주 바꾸지 않으므로 이 관계를 관리 정보로 활용한다. USB 인터페이스나 이동 기기 등에서는 상황이 달라질 수 있다. IP 주소는 L3 정보, MAC 주소는 L2 정보다. L3 통신을 하더라도 실제로 지나가는 L2 구간에서는 해당 구간의 MAC 주소가 필요하다.
 
 ## ARP · IP로 MAC을 알아내기
+<!-- learn-page-id: arp-definition -->
 
 ARP는 IP 주소를 바탕으로 MAC 주소를 알아내려 할 때 사용한다. 대표적인 예는 외부 인터넷으로 나가기 위해 게이트웨이의 MAC 주소를 알아내는 상황이다.
 
