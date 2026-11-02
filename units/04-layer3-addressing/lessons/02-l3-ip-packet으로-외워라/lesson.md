@@ -451,12 +451,26 @@ page_metadata:
       feedback: 이 선택지는 다른 개념의 역할이에요. 본문에서 이 Page의 핵심 구분을 다시 확인해 보세요.
     answer: c
   - id: u4-l12-p05-q03
-    kind: short
+    kind: choice
+    difficulty: medium
     prompt: 네트워크 사이의 출발지와 최종 목적지를 나타내는 주소는 무엇인가요?
-    answers:
-    - IP 주소
-    - IP
-    feedback: MAC은 링크의 인터페이스, IP는 네트워크 사이의 목적지, 포트는 컴퓨터 안의 프로그램을 가리켜요.
+    choices:
+    - id: a
+      text: MAC 주소
+      feedback: MAC 주소는 현재 링크에서 프레임을 주고받을 인터페이스를 구분해요.
+    - id: b
+      text: IP 주소
+      feedback: 맞아요. IP 주소는 네트워크 사이에서 출발지와 최종 목적지를 나타내요.
+    - id: c
+      text: 포트 번호
+      feedback: 포트 번호는 같은 기기 안에서 데이터를 받을 프로그램을 구분해요.
+    - id: d
+      text: MTU
+      feedback: MTU는 한 번에 전달할 수 있는 데이터 단위의 최대 크기를 정해요.
+    - id: e
+      text: EtherType
+      feedback: EtherType은 Ethernet 프레임에 어떤 종류의 패킷이 담겼는지 나타내요.
+    answer: b
   question_placements:
   - question_id: u4-l12-p05-q01
     after_paragraph: 2
