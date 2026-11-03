@@ -34,10 +34,10 @@
       L: "L", "필요할 때 찾아보기": "L", "찾아보기 (Lookup)": "L", "필요할 때 찾아볼 것": "L",
     })[label.trim().replace(/^[RAL]\s*·\s*/, "")] || null;
     const parseRalLine = (item) => {
-      const match = item.match(/^(?:\*\*)?([^:*]+?)(?:\*\*)?:\s*([\s\S]+)$/);
+      const match = item.match(/^(?:\*\*([^:*]+):\*\*|\*\*([^:*]+)\*\*:|([^:]+):)\s*([\s\S]+)$/);
       if (!match) return null;
-      const level = ralLevel(match[1]);
-      return level ? { level, detail: match[2] } : null;
+      const level = ralLevel(match[1] || match[2] || match[3]);
+      return level ? { level, detail: match[4] } : null;
     };
     const tableCells = (line) => line.trim().replace(/^\|/, "").replace(/\|$/, "").split("|").map((cell) => cell.trim());
     const isTable = (lines) => {
