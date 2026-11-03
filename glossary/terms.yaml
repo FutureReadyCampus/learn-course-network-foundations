@@ -635,9 +635,9 @@
   - OSI 7 layer
   - OSI 모델
   hover: 통신의 일을 일곱 역할로 나누어 설명하는 참조 모델이에요. 실제 통신 규칙 자체와는 구별해요.
-  anchor_hint:
-    lesson: u1-networking
-    page_title: 프로토콜·TCP/IP와 개념·구현
+  anchor:
+    lesson: u1-user-kernel
+    page: layer-numbers
 - id: tcpip
   tier: family
   parent: layer
@@ -647,9 +647,9 @@
   - TCP/IP
   - TCP/IP model
   hover: 통신 일을 응용·전송·인터넷·네트워크 연결 역할로 나누어 보는 모델이에요.
-  anchor_hint:
-    lesson: u1-networking
-    page_title: 프로토콜·TCP/IP와 개념·구현
+  anchor:
+    lesson: u1-user-kernel
+    page: layer-numbers
 - id: user-kernel-mode
   tier: family
   parent: layer
