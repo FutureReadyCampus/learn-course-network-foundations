@@ -8,34 +8,123 @@ page_metadata:
   - FIN
   - ACK
   - 반쪽 닫기(half-close)
+  illustrations:
+  - file: assets/animations/l27-daily-one-side-done.svg
+    title: "말을 마쳐도 상대는 남았을 수 있어요"
+    alt: "두 사람이 이야기를 주고받습니다. 내가 “저는 할 말 다 했어요” 하고 알려 한 방향이 막히지만, 상대는 “아직 할 말이 남았어요” 하며 계속 말합니다. 한쪽 방향만 먼저 닫을 수 있다고 표시됩니다."
+    caption: "한 사람이 말을 마쳐도 상대는 계속 말할 수 있습니다. FIN으로 한쪽 방향만 닫는 것과 같습니다."
+    after_paragraph: -1
+  - file: assets/animations/l27-fin-half-close.svg
+    title: "FIN은 한 방향의 송신 끝"
+    alt: "클라이언트와 서버가 양방향으로 데이터를 주고받습니다. 클라이언트가 FIN을 보내 자기 방향의 송신이 끝났다고 알려도 서버는 아직 보낼 데이터가 있으면 계속 보낼 수 있으며, 이렇게 한쪽 방향만 먼저 닫는 것을 half-close라고 합니다."
+    caption: "FIN은 한 방향의 송신이 끝났음을 알립니다. 반대 방향은 계속 보낼 수 있습니다."
+    after_paragraph: 3
 - terms:
   - 4-way handshake
   - FIN_WAIT_1
   - FIN_WAIT_2
-  animations:
-  - file: l27-tcp-four-way-close.svg
-    title: 각 방향의 FIN과 ACK로 TCP 연결을 끝내기
-    alt: 왼쪽 클라이언트와 오른쪽 서버 사이로 FIN과 ACK 메시지가 차례로 오가고, 각 컴퓨터 위의 상태 이름표가 ESTABLISHED에서 FIN_WAIT, CLOSE_WAIT, TIME_WAIT 등으로 바뀝니다.
-    caption: 클라이언트가 “내 쪽은 끝났어요”라고 알리고, 서버도 자기 송신을 마친 뒤 끝났다고 알립니다. 각 방향의 FIN을 상대가 ACK로 확인합니다.
+  illustrations:
+  - file: assets/animations/l27-daily-hangup-two-pairs.svg
+    title: "끊을 때도 두 쌍의 인사"
+    alt: "나와 상대가 네 번 인사를 주고받습니다. 내가 “저는 다 했어요”, 상대가 “알겠어요”, 상대가 “저도 이제 끝났어요”, 내가 “알겠어요” 하고 말하며 각자 끝났다고 말하고 상대가 알겠다고 답하는 두 쌍이 됩니다."
+    caption: "각자 끝났다고 말하고 상대가 알겠다고 답하는 두 쌍, 모두 네 번의 인사입니다."
+    after_paragraph: -1
+  - file: assets/animations/l27-tcp-four-way-close.svg
+    title: "연결을 끝내는 네 번의 메시지"
+    alt: "클라이언트가 FIN 1000을 보내고 서버가 ACK 1001로 답하는 첫 쌍, 서버가 FIN 5000을 보내고 클라이언트가 ACK 5001로 답하는 둘째 쌍이 차례로 오가며 두 쌍, 네 번의 메시지가 됩니다. 두 컴퓨터의 상태 이름도 단계마다 바뀝니다."
+    caption: "FIN과 ACK가 이쪽에서 한 쌍, 저쪽에서 한 쌍 오가 네 번의 메시지가 됩니다."
+    after_paragraph: 3
 - terms:
   - CLOSE_WAIT
   - LAST_ACK
+  illustrations:
+  - file: assets/animations/l27-daily-still-tidying.svg
+    title: "끝났다는 말을 듣고도 정리가 남아요"
+    alt: "상대가 “저는 끝났어요” 하고 알리면 나는 “알겠어요” 하고 답하지만 아직 남은 이야기와 정리가 있습니다. 정리를 마치면 “저도 끝났어요” 하고 알리고, 상대가 확인해 주면 통화가 끝납니다."
+    caption: "상대의 말을 들은 뒤에도 내 쪽 정리가 남아 있을 수 있습니다."
+    after_paragraph: -1
+  - file: assets/animations/l27-close-wait-tidy.svg
+    title: "CLOSE_WAIT는 정리 중인 상태"
+    alt: "서버가 클라이언트의 FIN을 ACK로 확인하고 CLOSE_WAIT가 됩니다. 서버 프로그램이 남은 응답과 정리를 마치고 소켓을 닫으면 서버도 FIN을 보내 LAST_ACK가 되고, 마지막 ACK가 오면 종료 절차가 끝납니다."
+    caption: "CLOSE_WAIT는 상대 FIN을 확인했지만 내 쪽 정리는 끝나지 않은 상태입니다. 오래 남을 때는 소켓을 닫았는지 로그와 함께 확인합니다."
+    after_paragraph: 1
 - terms:
   - TIME_WAIT
   - MSL
   - 2MSL
   - 소켓(socket)
-  animations:
-  - file: l27-time-wait-socket-slot.svg
-    title: 연결이 끝나도 관리 상태는 잠시 남습니다
-    alt: 연결 관리 칸을 단순화해 100개로 그린 격자에서 한 연결이 TIME_WAIT 동안 남아 있다가 CLOSED 후 정리되는 모습을 보여 줍니다. 실제 운영체제의 고정된 소켓 칸을 뜻하지는 않습니다.
-    caption: 100칸은 설명용 비유입니다. 애플리케이션이 소켓을 닫아도 커널의 TCP 연결 상태는 TIME_WAIT가 끝날 때까지 남을 수 있습니다.
+  illustrations:
+  - file: assets/animations/l27-daily-hold-the-phone.svg
+    title: "끊은 뒤에도 잠깐 수화기를 들고 있어요"
+    alt: "내가 마지막으로 보낸 “네”가 도중에 사라지자 상대가 “끝났어요”를 다시 말하고, 아직 수화기를 들고 있던 내가 다시 “네” 하고 답합니다. 마지막에는 이전 통화의 늦은 말이 같은 번호의 새 통화에 섞이지 않게 막는다고 표시됩니다."
+    caption: "먼저 끊은 쪽이 잠깐 더 기다리면 마지막 확인이 사라져도 다시 답할 수 있고, 이전 통화의 늦은 말이 섞이지 않습니다."
+    after_paragraph: -1
+  - file: assets/animations/l27-time-wait-reasons.svg
+    title: "TIME_WAIT가 남는 두 가지 이유"
+    alt: "클라이언트가 보낸 마지막 ACK가 사라지면 서버가 FIN을 다시 보내고, TIME_WAIT 상태의 클라이언트가 ACK를 한 번 더 보냅니다. 또한 이전 연결의 늦은 세그먼트가 같은 IP와 포트를 쓰는 새 연결에 섞이지 않게 막습니다."
+    caption: "TIME_WAIT는 마지막 ACK가 사라졌을 때 다시 응답하고 이전 연결의 늦은 세그먼트가 새 연결에 섞이지 않게 합니다. 대기 시간은 운영체제 구현에 따라 다릅니다."
+    after_paragraph: 1
 - terms:
   - 자원 회수
+  illustrations:
+  - file: assets/animations/l27-daily-hotel-room-cleaning.svg
+    title: "객실은 바로 비지 않아요"
+    alt: "객실 100개가 모두 찬 호텔에서 손님이 체크아웃해도 청소와 점검이 끝날 때까지 기다리고, 점검이 끝나 정리되면 다음 손님을 받아 사용 중인 객실이 99에서 다시 찹니다."
+    caption: "체크아웃 뒤에도 청소와 점검이 끝나야 다음 손님을 받습니다. 객실 100개는 설명용입니다."
+    after_paragraph: -1
+  - file: assets/animations/l27-time-wait-socket-slot.svg
+    title: "끊었다고 바로 빈칸이 되지는 않습니다"
+    alt: "연결 상태 칸 100개가 모두 차 있고, 내 연결의 칸은 끊은 뒤에도 TIME_WAIT 동안 남아 있다가 CLOSED가 되면 정리되어 99가 되며 새 연결이 그 자리에 기록될 수 있습니다."
+    caption: "TIME_WAIT 동안에는 연결 상태 기록이 남아 있고, 정리된 뒤에 새 연결이 그 자리를 쓸 수 있습니다. 칸 100개는 설명용 비유입니다."
+    after_paragraph: 1
 - terms: []
+  illustrations:
+  - file: assets/animations/l27-daily-who-hangs-up-first.svg
+    title: "누가 먼저 끊어도 괜찮아요"
+    alt: "왼쪽 칸에서는 내가 먼저 끊고 내가 잠깐 더 수화기를 들고 있고, 오른쪽 칸에서는 상대가 먼저 끊고 상대가 잠깐 더 들고 있습니다. 먼저 끊은 쪽이 마지막에 기다린다고 표시됩니다."
+    caption: "먼저 끊은 쪽이 마지막에 잠깐 기다립니다. 누가 먼저 끊을지는 정해져 있지 않습니다."
+    after_paragraph: -1
+  - file: assets/animations/l27-who-closes-first.svg
+    title: "먼저 닫는 쪽은 정해져 있지 않아요"
+    alt: "왼쪽 칸에서는 클라이언트가 먼저 FIN을 보내 클라이언트가 TIME_WAIT를 거치고, 오른쪽 칸에서는 서버가 먼저 FIN을 보내 서버가 TIME_WAIT를 거칩니다. 먼저 FIN을 보낸 쪽이 TIME_WAIT를 거친다고 표시됩니다."
+    caption: "능동 종료와 수동 종료는 클라이언트·서버의 고정된 역할이 아니라 누가 먼저 FIN을 보냈는지로 정해집니다."
+    after_paragraph: 0
 - terms: []
+  illustrations:
+  - file: assets/animations/l27-daily-three-groups-call.svg
+    title: "전화 상태는 세 무리로 읽어요"
+    alt: "전화 상태를 세 무리로 묶습니다. 전화를 내려놓거나 벨을 기다리는 무리, 거는 중·벨 울림·통화 중인 무리, 끝났다고 알리고 기다리며 정리하는 끊는 중 무리입니다."
+    caption: "하나하나 외우기보다 어느 무리인지 읽습니다."
+    after_paragraph: -1
+  - file: assets/animations/l27-state-three-groups.svg
+    title: "TCP 상태는 세 무리로 읽어요"
+    alt: "TCP 상태를 세 무리로 묶습니다. CLOSED와 LISTEN의 연결 전·기다림 무리, SYN_SENT·SYN_RECEIVED·ESTABLISHED의 시작·통신 무리, FIN_WAIT_1·FIN_WAIT_2·CLOSE_WAIT·LAST_ACK·TIME_WAIT·CLOSING의 정리 중 무리입니다."
+    caption: "이름 전체보다 어느 단계의 역할인지 기억합니다. 자세한 전이는 상태도에서 찾아봅니다."
+    after_paragraph: 1
 - terms: []
+  illustrations:
+  - file: assets/animations/l27-daily-hangup-step-by-step.svg
+    title: "끊는 순서를 처음부터 끝까지"
+    alt: "내가 먼저 “저는 다 했어요”, 상대가 “알겠어요”, 상대가 “저도 끝났어요”, 내가 “알겠어요” 하고 말하는 네 마디가 오가며 양쪽 상태가 바뀌고, 마지막에는 내가 잠깐 더 들고 있다가 정리됩니다."
+    caption: "내가 먼저 끊는 흔한 예에서 네 마디가 오가며 상태가 바뀝니다."
+    after_paragraph: -1
+  - file: assets/animations/l27-fin-ack-steps.svg
+    title: "FIN과 ACK 네 단계"
+    alt: "클라이언트가 FIN을 보내 FIN_WAIT_1, 서버가 ACK를 보내 CLOSE_WAIT, 서버가 FIN을 보내 LAST_ACK, 클라이언트가 ACK를 보내 서버가 CLOSED가 되는 순서입니다. 클라이언트는 TIME_WAIT 대기 뒤 CLOSED가 됩니다."
+    caption: "흔한 종료 순서입니다. 실제로는 ACK와 FIN이 한 세그먼트에 함께 실릴 수도 있습니다."
+    after_paragraph: 4
 - terms: []
+  illustrations:
+  - file: assets/animations/l27-daily-three-to-remember.svg
+    title: "끊는 일에서 기억할 세 가지"
+    alt: "카드 세 장이 차례로 나타납니다. 한쪽이 먼저 끝내고, 상대도 남은 말을 마치고 끝내며, 먼저 끝낸 쪽이 마지막에 잠깐 기다린다는 내용입니다."
+    caption: "먼저 끊은 쪽이 마지막에 잠깐 기다립니다."
+    after_paragraph: -1
+  - file: assets/animations/l27-close-three-points.svg
+    title: "연결 종료에서 기억할 세 가지"
+    alt: "카드 세 장이 차례로 나타납니다. 한쪽이 FIN으로 자기 송신을 끝내고, 상대가 남은 송신을 마친 뒤 자기 FIN을 보내며, 먼저 FIN을 보낸 쪽이 TIME_WAIT에서 기다린다는 내용입니다."
+    caption: "TIME_WAIT는 먼저 FIN을 보낸 쪽에 남습니다. 서버가 먼저 FIN을 보냈다면 서버 쪽입니다."
+    after_paragraph: 2
 animations_dir: units/05-tcp-and-udp/lessons/03-tcp-연결종료-및-상태변화/assets/animations
 additional_sources:
 - https://studio.futurereadycampus.com/course-network/wiki/oeweo-network/lesson-27.html
