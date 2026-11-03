@@ -316,6 +316,12 @@ IP 헤더는 목적지 주소만 적는 칸이 아니다. 받는 컴퓨터의 IP
 
 이 Lesson에서는 Version과 IHL을 직접 읽고, Protocol·TTL을 실제 전달 흐름에 연결한 뒤, 나머지는 Wireshark에서 찾아본다. 단편화의 자세한 동작은 Unit 6 Lesson 1 「TTL과 단편화」에서 배운다.
 
+### 이 Lesson에서 가져갈 것
+
+- **기억하기 (Recall):** IPv4 Header에는 주소와 패킷 처리에 필요한 필드가 들어 있다.
+- **적용하기 (Apply):** Wireshark에서 IPv4 헤더와 Ethernet 헤더를 분리해 읽는다.
+- **찾아보기 (Lookup):** Header 필드 순서와 길이는 IPv4 표준 문서에서 확인한다.
+
 ## Version과 IHL로 헤더의 길이를 읽는다
 
 IPv4 헤더의 맨 앞 1바이트는 **Version**과 **IHL(Internet Header Length)** 두 값으로 나뉜다. 바이트는 8비트이고, 이 바이트의 앞 4비트가 Version, 뒤 4비트가 IHL이다. IPv4에서 Version 값은 4다. IP 헤더 그림에서 첫 줄이 32비트 단위로 그려져 있다는 점을 기억하면, “한 바이트의 위쪽 절반과 아래쪽 절반을 따로 읽는다”고 이해할 수 있다.
@@ -328,6 +334,12 @@ IHL은 헤더 길이를 바이트로 직접 쓰는 값이 아니라, **32비트(
 
 **Total Length**는 뒤에서 볼 또 다른 길이 값이다. IHL이 헤더 길이를 알려 준다면 Total Length는 헤더와 페이로드를 합친 IP 패킷 전체 길이를 알려 준다. 둘을 같은 값으로 착각하지 말자. 마지막 페이지의 Wireshark 예시에서 두 길이를 실제로 비교한다. 패킷이 링크에서 통과할 수 있는 MTU보다 크다면 전달 과정에서 단편화가 필요할 수 있지만, 그 판단과 조각을 처리하는 방법은 Unit 6 Lesson 1에서 배운다.
 
+### 이 Lesson에서 가져갈 것
+
+- **기억하기 (Recall):** Version은 IPv4를 표시하고 IHL은 헤더 길이를 32비트 단위로 나타낸다.
+- **적용하기 (Apply):** 옵션 유무에 따라 IPv4 헤더 길이가 달라질 수 있음을 계산한다.
+- **찾아보기 (Lookup):** IHL 값의 최소·최대 범위는 IPv4 형식표에서 찾아본다.
+
 ## Protocol과 TTL은 전달 중의 역할을 알려 준다
 
 IP 패킷이 도착하면 수신 측은 먼저 IP 헤더를 읽는다. 그중 **Protocol** 필드는 IP 페이로드 안에 어떤 프로토콜의 데이터가 들어 있는지 알려 준다. 대표적인 값은 `6`이 TCP, `17`이 UDP, `1`이 ICMP다. IP는 이 값으로 안쪽 데이터를 다음에 어느 프로토콜이 해석해야 하는지 구분한다.
@@ -339,6 +351,12 @@ Protocol 번호와 **포트 번호**는 서로 다른 질문에 답한다. Proto
 TTL이 없다고 상상해 보자. 잘못된 경로 정보 때문에 패킷이 라우터 사이를 빙빙 돌면, 계속 네트워크 자원을 차지할 수 있다. TTL은 이런 패킷이 무한히 남지 않게 하는 안전장치다. TTL이 0이 된 사실을 보낸 쪽에 알리는 방식과 실제 라우팅 상황은 Unit 6 Lesson 1에서 이어서 다룬다.
 
 첫 페이지의 헤더 그림에서 Protocol과 TTL의 위치를 다시 찾아보자. **Protocol은 안쪽 데이터의 해석 담당을, TTL은 전달 가능한 범위를 알려 준다.** 이 둘의 역할을 구분해 기억하면, 나머지 필드를 Wireshark에서 볼 때도 헤더가 단순한 숫자 나열이 아니라 전달을 위한 안내라는 점이 보인다.
+
+### 이 Lesson에서 가져갈 것
+
+- **기억하기 (Recall):** Protocol은 상위 프로토콜 종류, TTL은 전달 가능한 홉 제한을 나타낸다.
+- **적용하기 (Apply):** Protocol 번호와 TTL 값을 구분해 패킷의 상위 데이터와 남은 전달 수를 읽는다.
+- **찾아보기 (Lookup):** Protocol 번호 할당 목록은 IANA에서 조회한다.
 
 ## Wireshark에서 핵심 필드를 찾아본다
 
@@ -358,6 +376,6 @@ Total Length는 페이로드만의 크기가 아니다. IP 헤더 20바이트를
 
 ### 이 Lesson에서 가져갈 것
 
-- **회상할 핵심:** IP 헤더에는 목적지 전달 정보가 담기고, 페이로드는 그 뒤에 실린 데이터다. Protocol은 다음에 해석할 프로토콜을 가리키며 TTL은 패킷이 전달될 수 있는 범위를 제한한다.
-- **사례에 적용할 것:** 첫 바이트 `0x45`에서 Version 4와 IHL 5를 나누어 읽고, 기본 헤더 길이가 20바이트임을 설명해 보자. Wireshark에서 Protocol과 TTL이 뜻하는 바도 찾아보자.
-- **필요할 때 찾아볼 것:** Total Length, Identification·Flags·Fragment Offset, DSCP/ECN, Header Checksum의 뜻과 Protocol 번호 목록은 그림·Wireshark·RFC/IANA 목록에서 확인한다. 다음 Lesson에서는 IP 주소의 네트워크 부분을 CIDR로 구분하는 법을 배운다.
+- **기억하기 (Recall):** Wireshark 패킷 세부 정보에서 Version·TTL·Protocol·주소를 찾는다.
+- **적용하기 (Apply):** 캡처 한 건의 필드를 펼쳐 이름과 값을 직접 대응한다.
+- **찾아보기 (Lookup):** Display filter 문법과 필드 전체 목록은 Wireshark 문서를 참조한다.

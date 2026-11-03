@@ -260,9 +260,24 @@ def wire_items(lesson_md, pages):
     q = lambda v: json.dumps(v, ensure_ascii=False)
     head, fm, body = Path(lesson_md).read_text(encoding="utf-8").split("---\n", 2)
     lines, out, page, i = fm.split("\n"), [], -1, 0
-    assert sum(l.startswith("- terms:") for l in lines) == len(pages), "page count != pages"
+    assert sum(l.startswith(("- terms:", "- page_id:")) for l in lines) == len(pages), "page count != pages"
     while i < len(lines):
         l = lines[i]
+        emit = lambda: ["  illustrations:"] + [x for f, t, a, c, ap in pages[page] for x in (
+            f"  - file: {f if '/' in f else f'assets/animations/{f}.svg'}", f"    title: {q(t)}", f"    alt: {q(a)}",
+            f"    caption: {q(c)}", f"    after_paragraph: {ap}")]
+        if l.startswith("- page_id:"):  # Page with an id: terms are nested one level deeper
+            page += 1
+            out.append(l); i += 1
+            while i < len(lines) and lines[i].startswith("  ") and not lines[i].startswith(("  illustrations:", "  animations:")):
+                out.append(lines[i]); i += 1
+            if pages[page] is not None:
+                out += emit()
+                if i < len(lines) and lines[i] in ("  illustrations:", "  animations:"):
+                    i += 1
+                    while i < len(lines) and lines[i].startswith(("  - file:", "    ")):
+                        i += 1
+            continue
         if l.startswith("- terms:"):
             page += 1
             out.append(l); i += 1
@@ -270,10 +285,7 @@ def wire_items(lesson_md, pages):
                 out.append(lines[i]); i += 1
             if pages[page] is None:  # leave this Page's media exactly as it is
                 continue
-            out.append("  illustrations:")
-            for f, t, a, c, ap in pages[page]:
-                path = f if "/" in f else f"assets/animations/{f}.svg"
-                out += [f"  - file: {path}", f"    title: {q(t)}", f"    alt: {q(a)}", f"    caption: {q(c)}", f"    after_paragraph: {ap}"]
+            out += emit()
             continue
         if page >= 0 and pages[page] is not None and l in ("  animations:", "  illustrations:"):
             i += 1
