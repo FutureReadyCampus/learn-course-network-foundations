@@ -102,6 +102,8 @@ page_metadata:
 - terms:
   - 비트 (bit)
   - 바이트 (byte)
+  page_id: ip-address-32bit
+  term_exclude: [switch]
   illustrations:
   - file: assets/animations/l11-daily-light-switches.svg
     title: "스위치판 하나로 몇 가지를 만들까?"
