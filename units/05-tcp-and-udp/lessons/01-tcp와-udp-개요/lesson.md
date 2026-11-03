@@ -7,6 +7,17 @@ page_metadata:
 - terms:
   - 프로토콜(protocol)
   - L4
+  illustrations:
+  - file: assets/animations/l25-daily-bell-vs-delivered.svg
+    title: "벨에 대답해도 서류가 전달됐을까?"
+    alt: "나와 회사 건물이 있습니다. 안내데스크 벨을 누르면 안내데스크가 대답하지만 담당 직원이 서류를 받았는지는 물음표로 남습니다. 마지막에 담당 직원에게 전달하는 방법이 따로 있다고 표시됩니다."
+    caption: "건물에 사람이 있다는 것과 담당 직원이 받았다는 것은 다릅니다."
+    after_paragraph: -1
+  - file: assets/animations/l25-ping-vs-program.svg
+    title: "ping 응답과 프로그램 전달은 달라요"
+    alt: "내 PC와 서버 컴퓨터가 있습니다. ping 요청에 서버의 ICMP 응답이 돌아오지만 웹 서버 프로그램이 요청을 받았는지는 물음표입니다. 마지막에 프로그램 사이의 전달은 TCP와 UDP가 맡는다고 표시됩니다."
+    caption: "ping 응답은 서버가 응답했다는 뜻이고, 프로그램 사이의 데이터 전달은 TCP와 UDP가 맡습니다."
+    after_paragraph: 2
   questions:
   - id: u7-l01-p01-q01
     kind: choice
@@ -79,10 +90,20 @@ page_metadata:
   - 확인 응답(ACK)
   - 재전송(Retransmission)
   illustrations:
+  - file: assets/animations/l25-daily-parcel-receipt-resend.svg
+    title: "받았다는 소식이 돌아와요"
+    alt: "판매자가 택배를 보내면 집에서 받았다는 문자가 돌아옵니다. 다음 택배는 도중에 사라지고 소식이 오지 않아 판매자가 같은 물건을 다시 보내고 집에 도착합니다."
+    caption: "받았다는 소식이 없으면 같은 물건을 다시 보낼 수 있습니다."
+    after_paragraph: -1
+  - file: assets/animations/l25-ack-and-retransmit.svg
+    title: "ACK는 받은 범위를 알려 줘요"
+    alt: "서버가 PC로 데이터를 보내면 PC의 TCP가 받은 범위를 ACK로 돌려보냅니다. 다음 데이터는 도중에 사라져 확인이 오지 않고, 서버가 확인되지 않은 데이터를 다시 보내 PC에 도착합니다."
+    caption: "ACK는 상대 TCP가 받은 범위를 알리고, 확인되지 않은 데이터는 재전송할 수 있습니다."
+    after_paragraph: 3
   - file: assets/diagrams/tcp-receipt.svg
-    title: 데이터를 보내는 방향과 확인 응답이 돌아오는 방향
-    alt: 서버에서 PC의 TCP로 사진 데이터가 가고, 반대 방향으로 TCP 확인 응답이 돌아온다. PC의 TCP 수신과 브라우저가 읽는 단계는 별도로 표시되어 있다.
-    caption: ACK는 상대 TCP가 받은 범위를 알려 준다. 브라우저가 사진을 읽거나 저장했다는 확인은 아니다.
+    title: "데이터를 보내는 방향과 확인 응답이 돌아오는 방향"
+    alt: "서버에서 PC의 TCP로 사진 데이터가 가고, 반대 방향으로 TCP 확인 응답이 돌아온다. PC의 TCP 수신과 브라우저가 읽는 단계는 별도로 표시되어 있다."
+    caption: "ACK는 상대 TCP가 받은 범위를 알려 준다. 브라우저가 사진을 읽거나 저장했다는 확인은 아니다."
     after_paragraph: 3
   questions:
   - id: u7-l01-p02-q01
@@ -156,10 +177,20 @@ page_metadata:
   - 수신 윈도(Receive Window)
   - 흐름 제어(Flow Control)
   illustrations:
+  - file: assets/animations/l25-daily-locker-slots.svg
+    title: "보관함에 남은 자리를 알려 줘요"
+    alt: "8칸 보관함에 택배 6칸이 차 있고 남은 자리는 2칸입니다. 주인이 2칸을 꺼내 가면 택배는 4칸, 남은 자리는 4칸이 되고 이 소식을 판매자에게 알립니다."
+    caption: "주인이 꺼내 가면 남은 자리가 늘어납니다. 한 칸은 설명용 단위입니다."
+    after_paragraph: -1
+  - file: assets/animations/l25-receive-window-slots.svg
+    title: "수신 윈도는 남은 버퍼 공간이에요"
+    alt: "수신 버퍼 8칸 중 읽지 않은 데이터가 6칸이고 수신 윈도는 2칸입니다. 브라우저가 2칸을 읽으면 데이터는 4칸, 수신 윈도는 4칸이 되어 서버에 알립니다."
+    caption: "수신 윈도는 더 받아 둘 수 있는 바이트 범위입니다. 한 칸은 예시로 1,000바이트입니다."
+    after_paragraph: 2
   - file: assets/diagrams/receive-capacity.svg
-    title: 프로그램이 읽으면 수신 버퍼의 여유가 늘어난다
-    alt: 8칸의 수신 버퍼에 데이터 6칸과 빈칸 2칸이 있다. 브라우저가 2칸을 읽은 뒤에는 데이터 4칸과 빈칸 4칸이 된다. 한 칸은 예시로 1,000바이트를 뜻한다.
-    caption: 수신 윈도는 더 받아 둘 수 있는 바이트 범위를 알린다. 그림은 수신 버퍼의 용량과 읽기의 관계를 단순화한 예시이며, 회선 속도나 세그먼트 하나의 크기를 뜻하지 않는다.
+    title: "프로그램이 읽으면 수신 버퍼의 여유가 늘어난다"
+    alt: "8칸의 수신 버퍼에 데이터 6칸과 빈칸 2칸이 있다. 브라우저가 2칸을 읽은 뒤에는 데이터 4칸과 빈칸 4칸이 된다. 한 칸은 예시로 1,000바이트를 뜻한다."
+    caption: "수신 윈도는 더 받아 둘 수 있는 바이트 범위를 알린다. 그림은 수신 버퍼의 용량과 읽기의 관계를 단순화한 예시이며, 회선 속도나 세그먼트 하나의 크기를 뜻하지 않는다."
     after_paragraph: 3
   questions:
   - id: u7-l01-p03-q01
@@ -235,11 +266,17 @@ page_metadata:
   - 세그먼트(Segment)
   - 바이트(byte)
   - 상태(State)
-  animations:
-  - file: l25-tcp-connection-vs-udp.svg
-    title: 연결이 있는 TCP, 연결이 없는 UDP
-    alt: 화면 왼쪽에서는 두 컴퓨터 사이에 점선 통로가 생기고 확인 신호가 오갑니다. 오른쪽에서는 두 컴퓨터 사이에 아무 통로 없이 엽서 모양 짐이 한 방향으로 날아갑니다.
-    caption: TCP는 먼저 연결을 맺고 확인을 주고받으며, UDP는 연결 없이 그냥 보냅니다.
+  illustrations:
+  - file: assets/animations/l25-daily-call-vs-postcard.svg
+    title: "연결 있는 전화, 연결 없는 엽서"
+    alt: "왼쪽 전화 통화 칸에서는 두 전화기가 연결되어 서로 기억하고 ‘들려요’가 돌아옵니다. 오른쪽 엽서 칸에서는 연결 없이 엽서가 한 방향으로 가고 돌아오는 대답이 없습니다."
+    caption: "전화는 연결을 기억하고, 엽서에는 연결이 없습니다."
+    after_paragraph: -1
+  - file: assets/animations/l25-tcp-connection-vs-udp.svg
+    title: "연결이 있는 TCP, 연결이 없는 UDP"
+    alt: "화면 왼쪽에서는 두 컴퓨터 사이에 점선 통로가 생기고 확인 신호가 오갑니다. 오른쪽에서는 두 컴퓨터 사이에 아무 통로 없이 엽서 모양 짐이 한 방향으로 날아갑니다."
+    caption: "TCP는 먼저 연결을 맺고 확인을 주고받으며, UDP는 연결 없이 그냥 보냅니다."
+    after_paragraph: 3
   questions:
   - id: u7-l01-p04-q01
     kind: choice
@@ -310,11 +347,17 @@ page_metadata:
 - terms:
   - Frame · Packet · Segment · Datagram
   - Stream
-  animations:
-  - file: l25-layers-data-units.svg
-    title: 층을 지날 때마다 이름이 바뀌는 데이터
-    alt: 작은 데이터 상자에 먼저 포트 봉투, 다음 IP 봉투, 마지막으로 MAC 봉투가 차례로 씌워지고, 각 단계마다 Segment, Packet, Frame 이름표가 붙습니다.
-    caption: 같은 데이터가 포트, IP, MAC 순으로 겹겹이 감싸지며 Segment, Packet, Frame이 됩니다.
+  illustrations:
+  - file: assets/animations/l25-daily-address-layers.svg
+    title: "겹겹이 붙는 주소"
+    alt: "보낼 내용에 책상 번호, 건물 주소, 이번 구간 인수자가 차례로 겹겹이 붙습니다. 겹이 늘 때마다 해당 행이 강조됩니다."
+    caption: "같은 내용도 어떤 겹을 붙였는지에 따라 이름이 달라집니다."
+    after_paragraph: -1
+  - file: assets/animations/l25-layers-data-units.svg
+    title: "층을 지날 때마다 이름이 바뀌는 데이터"
+    alt: "작은 데이터 상자에 먼저 포트 봉투, 다음 IP 봉투, 마지막으로 MAC 봉투가 차례로 씌워지고, 각 단계마다 Segment, Packet, Frame 이름표가 붙습니다."
+    caption: "같은 데이터가 포트, IP, MAC 순으로 겹겹이 감싸지며 Segment, Packet, Frame이 됩니다."
+    after_paragraph: 0
   questions:
   - id: u5-l25-p05-q01
     kind: choice
@@ -387,11 +430,17 @@ page_metadata:
   - 소켓(socket)
   - 클라이언트(Client)와 서버(Server)
   - PID(Process ID)
-  animations:
-  - file: l25-client-server-ports.svg
-    title: 클라이언트의 3000번에서 서버의 80번으로
-    alt: 왼쪽의 클라이언트(192.168.0.10, 포트 3000)에서 오른쪽의 서버(192.168.1.20, 포트 80)로 요청 봉투가 스위치와 라우터를 거쳐 이동하는 장면입니다.
-    caption: 각 호스트의 IP 주소와 포트 번호로 연결의 양 끝을 구분합니다. 이 예에서는 서로 다른 /24 네트워크 사이를 라우터가 연결합니다.
+  illustrations:
+  - file: assets/animations/l25-daily-counter-80.svg
+    title: "3000번 번호표에서 80번 창구로"
+    alt: "A동 12호의 내가 번호표 3000을 받고, 요청이 경비실과 물류센터를 지나 B동 20호의 80번 창구로 갑니다. 건물 주소와 창구 번호가 하나의 길을 만든다고 표시됩니다."
+    caption: "건물 주소와 창구 번호가 함께 받는 곳을 구분합니다."
+    after_paragraph: -1
+  - file: assets/animations/l25-client-server-ports.svg
+    title: "클라이언트의 3000번에서 서버의 80번으로"
+    alt: "왼쪽의 클라이언트(192.168.0.10, 포트 3000)에서 오른쪽의 서버(192.168.1.20, 포트 80)로 요청 봉투가 스위치와 라우터를 거쳐 이동하는 장면입니다."
+    caption: "각 호스트의 IP 주소와 포트 번호로 연결의 양 끝을 구분합니다. 이 예에서는 서로 다른 /24 네트워크 사이를 라우터가 연결합니다."
+    after_paragraph: 3
   questions:
   - id: u7-l01-p06-q01
     kind: choice
@@ -461,6 +510,17 @@ page_metadata:
     after_paragraph: 2
 - terms:
   - Listen
+  illustrations:
+  - file: assets/animations/l25-daily-open-counter.svg
+    title: "문을 연 창구만 손님을 받아요"
+    alt: "가게에 80번 창구는 영업 중이고 81번 창구는 닫혀 있습니다. 손님이 80번에 가면 받아 주고, 닫힌 창구에 가면 받을 사람이 없다고 표시됩니다."
+    caption: "연결을 받으려면 서버가 먼저 기다리는 상태여야 합니다."
+    after_paragraph: -1
+  - file: assets/animations/l25-listen-socket.svg
+    title: "Listen은 연결을 기다리는 상태예요"
+    alt: "서버 컴퓨터의 80번 소켓은 Listen 상태이고 8080번에는 기다리는 소켓이 없습니다. 클라이언트의 연결 요청은 80번에서는 받아지고, 기다리는 소켓이 없는 포트에서는 받을 수 없습니다. 포트 번호는 예시입니다."
+    caption: "서버는 포트에서 Listen 상태로 연결을 기다립니다. 그림의 포트 번호는 예시입니다."
+    after_paragraph: 0
   questions:
   - id: u7-l01-p07-q01
     kind: choice
@@ -526,6 +586,17 @@ page_metadata:
       feedback: 호스트를 찾는 정보와 그 안의 서비스 끝점을 찾는 정보를 함께 보세요.
     answer: b
 - terms: []
+  illustrations:
+  - file: assets/animations/l25-daily-postcards-separate.svg
+    title: "엽서는 따로따로 가요"
+    alt: "내가 엽서 A와 B를 연결 없이 차례로 보냅니다. A는 도중에 사라지고 B만 친구에게 도착하지만 A가 어떻게 됐는지는 아무도 알려 주지 않습니다. 필요하면 보내는 사람이 직접 확인해야 한다고 표시됩니다."
+    caption: "엽서는 따로 가며 보낸 뒤 확인해 주는 사람이 없습니다."
+    after_paragraph: -1
+  - file: assets/animations/l25-udp-datagrams.svg
+    title: "UDP는 데이터그램을 따로 보내요"
+    alt: "송신 프로그램이 데이터그램 1과 2를 연결 없이 차례로 보냅니다. 데이터그램 1은 도중에 사라지고 2만 수신 프로그램에 도착하지만 1에 대한 알림은 없습니다. 확인, 재전송, 윈도가 없으므로 필요하면 프로그램이 마련해야 합니다."
+    caption: "UDP 자체에는 수신 확인, 재전송, 수신 윈도 흐름 제어가 없습니다."
+    after_paragraph: 0
   questions:
   - id: u7-l01-p08-q01
     kind: choice
