@@ -7,6 +7,73 @@ page_metadata:
 - terms:
   - 프로토콜(protocol)
   - L4
+  questions:
+  - id: u7-l01-p01-q01
+    kind: choice
+    difficulty: easy
+    prompt: TCP와 UDP가 IP 위에서 맡는 역할에 가장 가까운 설명은 무엇인가요?
+    choices:
+    - id: a
+      text: 프로그램 사이의 데이터 전달 방식을 정하는 전송 계층 규칙
+      feedback: TCP와 UDP는 IP 위에서 프로그램 사이 통신을 돕는 전송 계층 프로토콜입니다.
+    - id: b
+      text: 같은 LAN에서 MAC 주소를 찾는 일
+      feedback: IP 주소 전달과 프로그램 사이 데이터 통신의 역할을 구분하세요.
+    - id: c
+      text: 웹 페이지의 이름을 IP로 바꾸는 일
+      feedback: IP 주소 전달과 프로그램 사이 데이터 통신의 역할을 구분하세요.
+    - id: d
+      text: 라우터의 물리 포트를 연결하는 일
+      feedback: IP 주소 전달과 프로그램 사이 데이터 통신의 역할을 구분하세요.
+    - id: e
+      text: 컴퓨터에 Wi-Fi 비밀번호를 저장하는 일
+      feedback: IP 주소 전달과 프로그램 사이 데이터 통신의 역할을 구분하세요.
+    answer: a
+  - id: u7-l01-p01-q02
+    kind: choice
+    difficulty: medium
+    prompt: TCP와 UDP가 모두 사용하는 정보는 무엇인가요?
+    choices:
+    - id: a
+      text: 둘 다 반드시 연결을 먼저 맺는다
+      feedback: 공통점과 차이점을 구분하세요. 포트 번호는 공통점입니다.
+    - id: b
+      text: 둘 다 데이터 도착을 보장한다
+      feedback: 공통점과 차이점을 구분하세요. 포트 번호는 공통점입니다.
+    - id: c
+      text: 포트 번호로 통신 끝점을 구분한다
+      feedback: TCP와 UDP는 모두 포트 번호를 사용하지만 데이터 처리 방식은 다릅니다.
+    - id: d
+      text: 둘 다 MAC 주소만으로 프로그램을 구분한다
+      feedback: 공통점과 차이점을 구분하세요. 포트 번호는 공통점입니다.
+    - id: e
+      text: 둘 다 TCP 세그먼트로 데이터를 보낸다
+      feedback: 공통점과 차이점을 구분하세요. 포트 번호는 공통점입니다.
+    answer: c
+  - id: u7-l01-p01-q03
+    kind: choice
+    difficulty: medium
+    prompt: TCP와 UDP의 큰 차이를 바르게 설명한 것은 무엇인가요?
+    choices:
+    - id: a
+      text: TCP는 연결이 없고 UDP는 항상 연결을 맺는다
+      feedback: TCP의 연결·바이트 흐름과 UDP의 데이터그램을 대조하세요.
+    - id: b
+      text: 둘 다 수신 확인과 재전송을 같은 방식으로 제공한다
+      feedback: TCP의 연결·바이트 흐름과 UDP의 데이터그램을 대조하세요.
+    - id: c
+      text: UDP는 IP 위에서 쓸 수 없다
+      feedback: TCP의 연결·바이트 흐름과 UDP의 데이터그램을 대조하세요.
+    - id: d
+      text: TCP는 파일만, UDP는 웹 페이지 이름만 보낸다
+      feedback: TCP의 연결·바이트 흐름과 UDP의 데이터그램을 대조하세요.
+    - id: e
+      text: TCP는 연결을 맺고 순서 있는 바이트 흐름을 제공하며 UDP는 연결 절차 없이 데이터그램을 보낸다
+      feedback: TCP와 UDP는 연결과 데이터 단위 처리 방식이 다릅니다.
+    answer: e
+  question_placements:
+  - question_id: u7-l01-p01-q01
+    after_paragraph: 3
 - page_id: u7-tcp-delivery-confirmation
   terms:
   - 확인 응답(ACK)
@@ -17,6 +84,73 @@ page_metadata:
     alt: 서버에서 PC의 TCP로 사진 데이터가 가고, 반대 방향으로 TCP 확인 응답이 돌아온다. PC의 TCP 수신과 브라우저가 읽는 단계는 별도로 표시되어 있다.
     caption: ACK는 상대 TCP가 받은 범위를 알려 준다. 브라우저가 사진을 읽거나 저장했다는 확인은 아니다.
     after_paragraph: 3
+  questions:
+  - id: u7-l01-p02-q01
+    kind: choice
+    difficulty: easy
+    prompt: IP 패킷을 목적지로 보냈다는 사실만으로 알 수 없는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: IP 패킷에 목적지 주소가 있었는지
+      feedback: IP의 전달과 수신 데이터 확인은 같은 일인지 생각해 보세요.
+    - id: b
+      text: IP가 전달을 시도했는지
+      feedback: IP의 전달과 수신 데이터 확인은 같은 일인지 생각해 보세요.
+    - id: c
+      text: 상대 프로그램이 사진의 모든 바이트를 받았는지
+      feedback: IP 자체는 상대가 어디까지 받았는지 확인하거나 누락 데이터를 다시 보내지 않습니다.
+    - id: d
+      text: 패킷을 보낼 출발지가 있었는지
+      feedback: IP의 전달과 수신 데이터 확인은 같은 일인지 생각해 보세요.
+    - id: e
+      text: 네트워크 계층이 사용되었는지
+      feedback: IP의 전달과 수신 데이터 확인은 같은 일인지 생각해 보세요.
+    answer: c
+  - id: u7-l01-p02-q02
+    kind: choice
+    difficulty: medium
+    prompt: TCP의 ACK가 알려 주는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 브라우저가 사진을 화면에 띄웠는지
+      feedback: ACK가 확인하는 주체는 브라우저가 아니라 상대 TCP입니다.
+    - id: b
+      text: 사용자가 파일을 열었는지
+      feedback: ACK가 확인하는 주체는 브라우저가 아니라 상대 TCP입니다.
+    - id: c
+      text: 서버가 전원을 껐는지
+      feedback: ACK가 확인하는 주체는 브라우저가 아니라 상대 TCP입니다.
+    - id: d
+      text: DNS가 도메인을 등록했는지
+      feedback: ACK가 확인하는 주체는 브라우저가 아니라 상대 TCP입니다.
+    - id: e
+      text: 수신 측 TCP가 어디까지 빠짐없이 받았는지
+      feedback: ACK는 수신 측 TCP가 받은 범위를 송신 측 TCP에 알립니다.
+    answer: e
+  - id: u7-l01-p02-q03
+    kind: choice
+    difficulty: medium
+    prompt: TCP가 보낸 데이터 중 확인받지 못한 부분에 문제가 있다고 판단하면 할 수 있는 일은 무엇인가요?
+    choices:
+    - id: a
+      text: 수신 버퍼를 강제로 지운다
+      feedback: 재전송은 새 데이터를 만드는 것이 아니라 확인받지 못한 데이터를 다시 보내는 동작입니다.
+    - id: b
+      text: 해당 바이트를 다시 전송한다
+      feedback: TCP는 확인되지 않은 데이터를 재전송할 수 있습니다.
+    - id: c
+      text: IP 주소를 MAC 주소로 바꾼다
+      feedback: 재전송은 새 데이터를 만드는 것이 아니라 확인받지 못한 데이터를 다시 보내는 동작입니다.
+    - id: d
+      text: 모든 데이터를 UDP로 바꾼다
+      feedback: 재전송은 새 데이터를 만드는 것이 아니라 확인받지 못한 데이터를 다시 보내는 동작입니다.
+    - id: e
+      text: 서버의 웹 페이지를 삭제한다
+      feedback: 재전송은 새 데이터를 만드는 것이 아니라 확인받지 못한 데이터를 다시 보내는 동작입니다.
+    answer: b
+  question_placements:
+  - question_id: u7-l01-p02-q01
+    after_paragraph: 6
 - page_id: u7-tcp-receive-capacity
   terms:
   - 수신 윈도(Receive Window)
@@ -26,6 +160,73 @@ page_metadata:
     title: 프로그램이 읽으면 수신 버퍼의 여유가 늘어난다
     alt: 8칸의 수신 버퍼에 데이터 6칸과 빈칸 2칸이 있다. 브라우저가 2칸을 읽은 뒤에는 데이터 4칸과 빈칸 4칸이 된다. 한 칸은 예시로 1,000바이트를 뜻한다.
     caption: 수신 윈도는 더 받아 둘 수 있는 바이트 범위를 알린다. 그림은 수신 버퍼의 용량과 읽기의 관계를 단순화한 예시이며, 회선 속도나 세그먼트 하나의 크기를 뜻하지 않는다.
+    after_paragraph: 3
+  questions:
+  - id: u7-l01-p03-q01
+    kind: choice
+    difficulty: easy
+    prompt: 수신 버퍼는 어떤 역할을 하나요?
+    choices:
+    - id: a
+      text: 도메인 이름과 IP 주소를 영구 저장한다
+      feedback: 데이터 도착과 프로그램이 데이터를 읽는 시점은 다를 수 있습니다.
+    - id: b
+      text: 인터넷 경로를 독점한다
+      feedback: 데이터 도착과 프로그램이 데이터를 읽는 시점은 다를 수 있습니다.
+    - id: c
+      text: 모든 Ethernet 프레임을 암호화한다
+      feedback: 데이터 도착과 프로그램이 데이터를 읽는 시점은 다를 수 있습니다.
+    - id: d
+      text: 송신자의 DHCP 임대를 연장한다
+      feedback: 데이터 도착과 프로그램이 데이터를 읽는 시점은 다를 수 있습니다.
+    - id: e
+      text: TCP가 받은 바이트를 애플리케이션이 읽기 전까지 잠시 보관한다
+      feedback: 수신 버퍼는 받은 바이트를 프로그램이 읽기 전까지 보관합니다.
+    answer: e
+  - id: u7-l01-p03-q02
+    kind: choice
+    difficulty: medium
+    prompt: 수신 윈도(Receive Window)는 주로 어떤 정보를 알려 주나요?
+    choices:
+    - id: a
+      text: 이미 화면에 표시한 사진의 크기
+      feedback: 받은 범위(ACK)와 추가로 받을 공간(수신 윈도)을 나누어 생각하세요.
+    - id: b
+      text: 수신 측이 앞으로 더 받아 둘 수 있는 바이트 범위
+      feedback: 수신 윈도는 수신 측이 더 받아 둘 수 있는 공간을 송신 측에 알립니다.
+    - id: c
+      text: 초당 인터넷 전송 속도
+      feedback: 받은 범위(ACK)와 추가로 받을 공간(수신 윈도)을 나누어 생각하세요.
+    - id: d
+      text: 세그먼트 하나의 최대 크기만
+      feedback: 받은 범위(ACK)와 추가로 받을 공간(수신 윈도)을 나누어 생각하세요.
+    - id: e
+      text: 라우터까지의 거리
+      feedback: 받은 범위(ACK)와 추가로 받을 공간(수신 윈도)을 나누어 생각하세요.
+    answer: b
+  - id: u7-l01-p03-q03
+    kind: choice
+    difficulty: medium
+    prompt: 수신 윈도가 2,000바이트라는 말의 뜻은 무엇인가요?
+    choices:
+    - id: a
+      text: 초당 2,000바이트로만 전송한다는 뜻
+      feedback: 용량, 속도, 세그먼트 크기를 구별하세요.
+    - id: b
+      text: MSS가 정확히 2,000바이트라는 뜻
+      feedback: 용량, 속도, 세그먼트 크기를 구별하세요.
+    - id: c
+      text: 이미 2,000바이트를 브라우저가 화면에 표시했다는 뜻
+      feedback: 용량, 속도, 세그먼트 크기를 구별하세요.
+    - id: d
+      text: 더 받아 둘 수 있는 바이트 범위가 2,000바이트라는 뜻이지 초당 속도가 아니다
+      feedback: 수신 윈도는 추가 수용 공간이지 전송 속도나 MSS를 뜻하지 않습니다.
+    - id: e
+      text: 패킷이 2,000개의 라우터를 지난다는 뜻
+      feedback: 용량, 속도, 세그먼트 크기를 구별하세요.
+    answer: d
+  question_placements:
+  - question_id: u7-l01-p03-q01
     after_paragraph: 3
 - terms:
   - 연결 지향(Connection-oriented)
@@ -39,6 +240,73 @@ page_metadata:
     title: 연결이 있는 TCP, 연결이 없는 UDP
     alt: 화면 왼쪽에서는 두 컴퓨터 사이에 점선 통로가 생기고 확인 신호가 오갑니다. 오른쪽에서는 두 컴퓨터 사이에 아무 통로 없이 엽서 모양 짐이 한 방향으로 날아갑니다.
     caption: TCP는 먼저 연결을 맺고 확인을 주고받으며, UDP는 연결 없이 그냥 보냅니다.
+  questions:
+  - id: u7-l01-p04-q01
+    kind: choice
+    difficulty: easy
+    prompt: TCP를 연결 지향 프로토콜이라고 하는 이유는 무엇인가요?
+    choices:
+    - id: a
+      text: 인터넷에 전용 전선을 깔기 때문이다
+      feedback: 논리적 상태 관리와 물리적 전용 회선을 혼동하지 마세요.
+    - id: b
+      text: 통신 전에 양 끝 TCP가 연결 상태와 관련 정보를 관리한다
+      feedback: TCP는 데이터를 주고받기 전에 연결을 만들고 양쪽 상태를 관리합니다.
+    - id: c
+      text: 모든 경로의 라우터를 독점하기 때문이다
+      feedback: 논리적 상태 관리와 물리적 전용 회선을 혼동하지 마세요.
+    - id: d
+      text: 서버와 클라이언트가 같은 컴퓨터여야 하기 때문이다
+      feedback: 논리적 상태 관리와 물리적 전용 회선을 혼동하지 마세요.
+    - id: e
+      text: UDP보다 항상 빠르기 때문이다
+      feedback: 논리적 상태 관리와 물리적 전용 회선을 혼동하지 마세요.
+    answer: b
+  - id: u7-l01-p04-q02
+    kind: choice
+    difficulty: medium
+    prompt: TCP 연결에 대한 설명으로 맞는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 두 컴퓨터 사이에 전용 케이블을 새로 설치한다
+      feedback: 본문에서 TCP 연결이 의미하지 않는 것으로 전용 전선과 경로 독점을 설명합니다.
+    - id: b
+      text: 중간 라우터가 연결 상태를 모두 관리한다
+      feedback: 본문에서 TCP 연결이 의미하지 않는 것으로 전용 전선과 경로 독점을 설명합니다.
+    - id: c
+      text: 연결 중에는 IP 주소가 필요 없다
+      feedback: 본문에서 TCP 연결이 의미하지 않는 것으로 전용 전선과 경로 독점을 설명합니다.
+    - id: d
+      text: 양 끝 TCP가 관리하는 논리적 연결이며 인터넷 경로를 독점하지 않는다
+      feedback: TCP 연결은 양 끝 TCP가 상대와의 상태를 관리하는 논리적 약속입니다.
+    - id: e
+      text: TCP 연결은 UDP에도 같은 절차로 적용된다
+      feedback: 본문에서 TCP 연결이 의미하지 않는 것으로 전용 전선과 경로 독점을 설명합니다.
+    answer: d
+  - id: u7-l01-p04-q03
+    kind: choice
+    difficulty: medium
+    prompt: TCP가 연결 상태를 관리하면 도움이 되는 이유는 무엇인가요?
+    choices:
+    - id: a
+      text: 보낸 범위, 받은 범위, 연결 진행 상태를 추적할 수 있다
+      feedback: TCP는 어떤 바이트를 보내고 확인받았는지 등 통신 상태를 관리합니다.
+    - id: b
+      text: 인터넷 경로의 모든 장치를 끌 수 있다
+      feedback: ACK와 흐름 제어가 연결 상태와 어떻게 이어지는지 생각하세요.
+    - id: c
+      text: 포트 번호가 필요 없어 진다
+      feedback: ACK와 흐름 제어가 연결 상태와 어떻게 이어지는지 생각하세요.
+    - id: d
+      text: 데이터그램 경계를 보존한다
+      feedback: ACK와 흐름 제어가 연결 상태와 어떻게 이어지는지 생각하세요.
+    - id: e
+      text: 모든 응용 프로그램이 같은 PID를 쓰게 된다
+      feedback: ACK와 흐름 제어가 연결 상태와 어떻게 이어지는지 생각하세요.
+    answer: a
+  question_placements:
+  - question_id: u7-l01-p04-q01
+    after_paragraph: 1
 - terms:
   - Frame · Packet · Segment · Datagram
   - Stream
@@ -90,6 +358,27 @@ page_metadata:
       text: Stream을 Datagram으로 바꿔 보낸다
       feedback: Datagram은 UDP의 단위예요. TCP는 Stream을 Segment로 나눠요.
     answer: d
+  - id: u7-l01-p05-q03
+    kind: choice
+    difficulty: medium
+    prompt: TCP Segment를 받은 쪽 TCP가 데이터를 애플리케이션에 제공할 때 어떤 형태로 볼 수 있나요?
+    choices:
+    - id: a
+      text: 항상 송신자가 나눈 메시지 경계 그대로
+      feedback: TCP Stream의 읽기 경계가 송신 요청 경계와 항상 같지는 않습니다.
+    - id: b
+      text: Ethernet Frame의 목록만
+      feedback: TCP Stream의 읽기 경계가 송신 요청 경계와 항상 같지는 않습니다.
+    - id: c
+      text: 순서가 이어진 바이트 Stream
+      feedback: TCP 수신 측은 Segment를 순서대로 이어 애플리케이션에 Stream으로 제공합니다.
+    - id: d
+      text: MAC 주소 문자열
+      feedback: TCP Stream의 읽기 경계가 송신 요청 경계와 항상 같지는 않습니다.
+    - id: e
+      text: DHCP 옵션 목록
+      feedback: TCP Stream의 읽기 경계가 송신 요청 경계와 항상 같지는 않습니다.
+    answer: c
   question_placements:
   - question_id: u5-l25-p05-q01
     after_paragraph: 1
@@ -103,9 +392,207 @@ page_metadata:
     title: 클라이언트의 3000번에서 서버의 80번으로
     alt: 왼쪽의 클라이언트(192.168.0.10, 포트 3000)에서 오른쪽의 서버(192.168.1.20, 포트 80)로 요청 봉투가 스위치와 라우터를 거쳐 이동하는 장면입니다.
     caption: 각 호스트의 IP 주소와 포트 번호로 연결의 양 끝을 구분합니다. 이 예에서는 서로 다른 /24 네트워크 사이를 라우터가 연결합니다.
+  questions:
+  - id: u7-l01-p06-q01
+    kind: choice
+    difficulty: easy
+    prompt: 전송 계층의 포트 번호는 무엇을 구분하는 데 쓰이나요?
+    choices:
+    - id: a
+      text: 한 호스트 안의 통신 끝점
+      feedback: IP 주소가 호스트를 가리키고 포트 번호는 그 호스트 안의 통신 끝점을 구분합니다.
+    - id: b
+      text: 서로 다른 건물의 물리 주소
+      feedback: IP 주소와 포트 번호가 구분하는 범위를 나누어 생각하세요.
+    - id: c
+      text: 컴퓨터의 화면 해상도
+      feedback: IP 주소와 포트 번호가 구분하는 범위를 나누어 생각하세요.
+    - id: d
+      text: 라우터를 지난 홉 수
+      feedback: IP 주소와 포트 번호가 구분하는 범위를 나누어 생각하세요.
+    - id: e
+      text: Ethernet 케이블 길이
+      feedback: IP 주소와 포트 번호가 구분하는 범위를 나누어 생각하세요.
+    answer: a
+  - id: u7-l01-p06-q02
+    kind: choice
+    difficulty: medium
+    prompt: TCP/UDP 포트 번호와 스위치의 물리 포트가 다른 점은 무엇인가요?
+    choices:
+    - id: a
+      text: 둘 다 반드시 케이블 접속구다
+      feedback: 문맥이 TCP/UDP 헤더인지 장비인지 확인하세요.
+    - id: b
+      text: TCP/UDP 포트는 MAC 주소다
+      feedback: 문맥이 TCP/UDP 헤더인지 장비인지 확인하세요.
+    - id: c
+      text: TCP/UDP 포트는 헤더의 번호이고 스위치 포트는 케이블을 꽂는 접속구다
+      feedback: 같은 “포트”라도 전송 계층에서는 번호, 스위치에서는 물리 접속구를 뜻할 수 있습니다.
+    - id: d
+      text: 물리 포트는 프로세스의 PID다
+      feedback: 문맥이 TCP/UDP 헤더인지 장비인지 확인하세요.
+    - id: e
+      text: 두 표현은 항상 같은 뜻이다
+      feedback: 문맥이 TCP/UDP 헤더인지 장비인지 확인하세요.
+    answer: c
+  - id: u7-l01-p06-q03
+    kind: choice
+    difficulty: medium
+    prompt: 이 Lesson의 예에서 192.168.0.10:3000은 무엇을 뜻하나요?
+    choices:
+    - id: a
+      text: 서버의 MAC 주소와 VLAN 번호
+      feedback: 콜론 앞 IP와 뒤 포트가 각각 무엇을 가리키는지 확인하세요.
+    - id: b
+      text: 두 라우터의 물리 포트
+      feedback: 콜론 앞 IP와 뒤 포트가 각각 무엇을 가리키는지 확인하세요.
+    - id: c
+      text: 웹 페이지의 파일 크기
+      feedback: 콜론 앞 IP와 뒤 포트가 각각 무엇을 가리키는지 확인하세요.
+    - id: d
+      text: TCP의 순서 번호와 ACK 번호
+      feedback: 콜론 앞 IP와 뒤 포트가 각각 무엇을 가리키는지 확인하세요.
+    - id: e
+      text: 클라이언트 호스트의 IP 주소와 임시 포트 번호
+      feedback: IP 주소와 포트 번호를 함께 써서 호스트와 통신 끝점을 나타냅니다.
+    answer: e
+  question_placements:
+  - question_id: u7-l01-p06-q01
+    after_paragraph: 2
 - terms:
   - Listen
+  questions:
+  - id: u7-l01-p07-q01
+    kind: choice
+    difficulty: easy
+    prompt: 서버 프로세스가 특정 포트에서 연결을 기다리는 상태를 무엇이라고 하나요?
+    choices:
+    - id: a
+      text: Retransmission
+      feedback: 서버가 연결을 기다리는 상태 이름을 확인하세요.
+    - id: b
+      text: Broadcast
+      feedback: 서버가 연결을 기다리는 상태 이름을 확인하세요.
+    - id: c
+      text: Listen
+      feedback: 서버 소켓은 사용할 포트를 지정하고 Listen 상태로 연결을 기다릴 수 있습니다.
+    - id: d
+      text: Fragmentation
+      feedback: 서버가 연결을 기다리는 상태 이름을 확인하세요.
+    - id: e
+      text: Loopback
+      feedback: 서버가 연결을 기다리는 상태 이름을 확인하세요.
+    answer: c
+  - id: u7-l01-p07-q02
+    kind: choice
+    difficulty: medium
+    prompt: 클라이언트가 서버 포트로 접속을 요청했는데 그 포트를 기다리는 서버 소켓이 없다면 어떻게 될 수 있나요?
+    choices:
+    - id: a
+      text: 요청이 자동으로 다른 웹 사이트로 간다
+      feedback: 포트 번호만 열려 있다고 응용 프로그램이 자동으로 실행되는 것은 아닙니다.
+    - id: b
+      text: DHCP가 새 포트를 만든다
+      feedback: 포트 번호만 열려 있다고 응용 프로그램이 자동으로 실행되는 것은 아닙니다.
+    - id: c
+      text: 클라이언트의 IP가 서버 IP로 바뀐다
+      feedback: 포트 번호만 열려 있다고 응용 프로그램이 자동으로 실행되는 것은 아닙니다.
+    - id: d
+      text: 모든 라우터가 Listen 상태가 된다
+      feedback: 포트 번호만 열려 있다고 응용 프로그램이 자동으로 실행되는 것은 아닙니다.
+    - id: e
+      text: 서버의 TCP가 연결을 받을 수 없다고 응답할 수 있다
+      feedback: 연결을 받을 프로세스나 소켓이 없으면 운영체제가 받을 수 없다는 응답을 처리할 수 있습니다.
+    answer: e
+  - id: u7-l01-p07-q03
+    kind: choice
+    difficulty: medium
+    prompt: 서버에 접속하려는 클라이언트가 알아야 할 정보로 본문이 제시한 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 상대 프로세스의 화면 밝기와 PID
+      feedback: 호스트를 찾는 정보와 그 안의 서비스 끝점을 찾는 정보를 함께 보세요.
+    - id: b
+      text: 상대 IP 주소와 서비스 포트 번호
+      feedback: 접속하려는 쪽은 상대 IP 주소와 서비스 포트 번호를 알아야 합니다.
+    - id: c
+      text: 서버의 DHCP 임대 만료 시각만
+      feedback: 호스트를 찾는 정보와 그 안의 서비스 끝점을 찾는 정보를 함께 보세요.
+    - id: d
+      text: 라우터의 모든 MAC 주소
+      feedback: 호스트를 찾는 정보와 그 안의 서비스 끝점을 찾는 정보를 함께 보세요.
+    - id: e
+      text: 서버가 쓰는 Ethernet 케이블 길이
+      feedback: 호스트를 찾는 정보와 그 안의 서비스 끝점을 찾는 정보를 함께 보세요.
+    answer: b
 - terms: []
+  questions:
+  - id: u7-l01-p08-q01
+    kind: choice
+    difficulty: easy
+    prompt: UDP가 TCP와 다른 점으로 본문에 맞는 설명은 무엇인가요?
+    choices:
+    - id: a
+      text: 항상 연결을 맺고 바이트 Stream으로 보낸다
+      feedback: 연결 유무와 데이터 단위를 함께 비교하세요.
+    - id: b
+      text: 데이터 도착과 순서를 자체적으로 보장한다
+      feedback: 연결 유무와 데이터 단위를 함께 비교하세요.
+    - id: c
+      text: 포트 번호를 사용할 수 없다
+      feedback: 연결 유무와 데이터 단위를 함께 비교하세요.
+    - id: d
+      text: 데이터를 IP 패킷에 넣지 않는다
+      feedback: 연결 유무와 데이터 단위를 함께 비교하세요.
+    - id: e
+      text: TCP와 같은 연결 절차 없이 데이터그램 단위로 보낸다
+      feedback: UDP는 TCP와 같은 연결 절차 없이 데이터그램 단위로 보냅니다.
+    answer: e
+  - id: u7-l01-p08-q02
+    kind: choice
+    difficulty: medium
+    prompt: UDP로 두 개의 데이터그램을 보내면 수신 프로그램에서 어떤 점이 유지되나요?
+    choices:
+    - id: a
+      text: 두 데이터그램이 항상 하나의 TCP Stream이 된다
+      feedback: UDP의 메시지 경계 유지와 전달 보장은 서로 다른 속성입니다.
+    - id: b
+      text: 각 데이터그램이 별개의 메시지 경계로 다뤄진다
+      feedback: UDP는 프로그램이 보낸 데이터그램의 경계를 유지합니다.
+    - id: c
+      text: 각 데이터그램은 반드시 순서가 보장된다
+      feedback: UDP의 메시지 경계 유지와 전달 보장은 서로 다른 속성입니다.
+    - id: d
+      text: 첫 데이터그램만 전달된다
+      feedback: UDP의 메시지 경계 유지와 전달 보장은 서로 다른 속성입니다.
+    - id: e
+      text: 수신 측 포트가 사라진다
+      feedback: UDP의 메시지 경계 유지와 전달 보장은 서로 다른 속성입니다.
+    answer: b
+  - id: u7-l01-p08-q03
+    kind: choice
+    difficulty: medium
+    prompt: UDP 자체가 보장하지 않는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 포트 번호의 사용
+      feedback: UDP 자체의 보장과 애플리케이션이 별도로 마련할 수 있는 기능을 구분하세요.
+    - id: b
+      text: 데이터그램 단위로 보낸다는 점
+      feedback: UDP 자체의 보장과 애플리케이션이 별도로 마련할 수 있는 기능을 구분하세요.
+    - id: c
+      text: 소켓을 통한 사용
+      feedback: UDP 자체의 보장과 애플리케이션이 별도로 마련할 수 있는 기능을 구분하세요.
+    - id: d
+      text: 데이터그램의 도착과 순서
+      feedback: UDP 자체는 데이터그램의 도착이나 순서를 보장하지 않습니다.
+    - id: e
+      text: IP 위에서 동작한다는 점
+      feedback: UDP 자체의 보장과 애플리케이션이 별도로 마련할 수 있는 기능을 구분하세요.
+    answer: d
+  question_placements:
+  - question_id: u7-l01-p08-q01
+    after_paragraph: 1
 animations_dir: units/05-tcp-and-udp/lessons/01-tcp와-udp-개요/assets/animations
 additional_sources:
 - https://github.com/FutureReadyCampus/course-network/blob/90a5cc40dec981b0e37fa334f3fae8ba673c8f32/studio/wiki/honja-network/04-1.md
