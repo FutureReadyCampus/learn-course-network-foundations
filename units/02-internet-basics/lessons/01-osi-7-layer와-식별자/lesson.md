@@ -21,7 +21,7 @@ page_metadata:
   - file: l05-osi-layer-stack.svg
     title: 앞으로 만날 여러 단계의 지도
     alt: 통신을 여러 단계로 나눈 그림. 각 단계의 이름과 데이터가 이동하는 방향이 표시되어 있습니다.
-    caption: 앞으로 배울 내용을 미리 보여 주는 그림입니다. 안에 있는 이름은 지금 이해하거나 외우지 않아도 괜찮아요.
+    caption: OSI 계층 이름과 순서는 Unit 1에서 본 지도입니다. 여기서는 이름을 외우기보다 택배가 여러 단계를 거쳐 도착하는 흐름을 따라가 보세요.
   questions:
   - id: u2-l05-p01-q01
     kind: choice
@@ -179,8 +179,7 @@ page_metadata:
   - file: l05-mac-per-nic.svg
     title: 한 컴퓨터에 연결된 여러 길
     alt: 컴퓨터와 연결 지점마다 서로 다른 표기가 붙는 모습을 보여 주는 그림입니다.
-    caption: 그림에 낯선 이름과 숫자가 있어도 괜찮아요. 자세한 내용은 뒤에서 다시 만나고, 지금은 건물 주소와 출입구, 받는 사람 안내가
-      서로 다르다는 비유만 살펴보면 됩니다.
+    caption: 그림의 MAC 주소는 Unit 3, IP 주소는 Unit 4, 포트 번호는 Unit 7에서 다시 살펴봅니다. 지금은 주소·출입구·받는 사람 안내가 서로 다른 정보를 가리킨다는 비유에 집중하세요.
   questions:
   - id: u2-l05-p04-q01
     kind: choice
@@ -303,8 +302,7 @@ page_metadata:
   - file: l05-three-identifiers.svg
     title: 택배에 붙는 여러 안내와 비교해 보기
     alt: 서로 다른 세 가지 네트워크 표기가 각각 다른 대상을 가리키는 그림입니다.
-    caption: 뒤에서 자세히 배울 내용이 담긴 그림입니다. 지금은 택배의 주소와 출입구, 받는 사람 안내가 서로 다르다는 비유만 기억해도
-      충분해요.
+    caption: MAC 주소는 Unit 3, IP 주소는 Unit 4, 포트 번호는 Unit 7에서 자세히 배웁니다. 지금은 택배의 주소·출입구·받는 사람 안내가 서로 다른 정보를 가리킨다는 점만 연결해 보세요.
   questions:
   - id: u2-l05-p06-q01
     kind: choice
