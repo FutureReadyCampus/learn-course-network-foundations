@@ -264,8 +264,8 @@ def page_questions(value, path: Path, page_number: int) -> list[dict]:
         if index == 1 and (kind, question.get("difficulty")) != ("choice", "easy"):
             raise ValueError(f"The first Page question must be an easy choice question in {where}")
         if kind == "choice":
-            if question.get("difficulty") not in {"easy", "medium"}:
-                raise ValueError(f"Choice question difficulty must be easy or medium in {where}")
+            if question.get("difficulty") not in {"easy", "medium", "hard"}:
+                raise ValueError(f"Choice question difficulty must be easy, medium, or hard in {where}")
             choices = question.get("choices")
             if not isinstance(choices, list) or len(choices) != 5 or any(not isinstance(choice, dict) for choice in choices):
                 raise ValueError(f"Choice question needs exactly five choices in {where}")
