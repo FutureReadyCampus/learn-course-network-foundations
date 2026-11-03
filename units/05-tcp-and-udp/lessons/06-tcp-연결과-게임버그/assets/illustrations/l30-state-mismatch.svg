@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 420" role="img" aria-labelledby="title desc" lang="ko">
+  <title id="title">플레이어 화면과 서버 상태의 차이</title>
+  <desc id="desc">철수 화면에는 아이템이 손에 있지만 서버는 아이템을 바닥에 둔 상태이고, 영희 화면도 바닥의 아이템을 보여 줍니다. 세 곳의 상태가 일치하지 않는 개념 예시입니다.</desc>
+  <rect width="1080" height="420" rx="20" fill="#0f1115"/>
+  <text x="540" y="54" text-anchor="middle" font-family="sans-serif" font-size="30" font-weight="700" fill="#e6e8ec">한 시점의 상태가 서로 다를 수 있다</text>
+  <g font-family="sans-serif" text-anchor="middle">
+    <rect x="45" y="100" width="300" height="250" rx="16" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+    <text x="195" y="145" font-size="26" font-weight="700" fill="#e6e8ec">철수 화면</text>
+    <circle cx="195" cy="220" r="35" fill="#7ee7c7"/>
+    <path d="M195 255 v50 M170 280 h50" stroke="#7ee7c7" stroke-width="12" stroke-linecap="round"/>
+    <path d="M240 220 l45 -20 M238 224 l48 16" stroke="#ffb454" stroke-width="7" stroke-linecap="round"/>
+    <text x="195" y="330" font-size="20" fill="#ffcf86">검을 들고 있음</text>
+
+    <rect x="390" y="100" width="300" height="250" rx="16" fill="#171a21" stroke="#ffb454" stroke-width="2"/>
+    <text x="540" y="145" font-size="26" font-weight="700" fill="#e6e8ec">게임 서버</text>
+    <path d="M485 290 h110" stroke="#9aa3b2" stroke-width="5"/>
+    <path d="M520 270 l50 -18 M520 278 l50 18" stroke="#ffb454" stroke-width="7" stroke-linecap="round"/>
+    <text x="540" y="330" font-size="20" fill="#ffcf86">검이 바닥에 있음</text>
+
+    <rect x="735" y="100" width="300" height="250" rx="16" fill="#171a21" stroke="#3d4b60" stroke-width="2"/>
+    <text x="885" y="145" font-size="26" font-weight="700" fill="#e6e8ec">영희 화면</text>
+    <circle cx="885" cy="220" r="35" fill="#a9b8ff"/>
+    <path d="M885 255 v50 M860 280 h50" stroke="#a9b8ff" stroke-width="12" stroke-linecap="round"/>
+    <path d="M845 290 l50 -18 M845 298 l50 18" stroke="#ffb454" stroke-width="7" stroke-linecap="round"/>
+    <text x="885" y="330" font-size="20" fill="#ffcf86">검이 바닥에 있음</text>
+  </g>
+  <text x="540" y="390" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#9aa3b2">설명용 개념 예시 · 실제 사건의 원인을 확정하지 않습니다</text>
+</svg>
