@@ -794,38 +794,92 @@ animations_dir: units/04-layer3-addressing/lessons/13-arp/assets/animations
 
 ARP를 이해하려면 먼저 IP 주소와 MAC 주소가 맡는 범위를 떠올리면 된다. [앞에서 본 IP 주소와 MAC 주소의 역할](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/4/lesson/1/page/1)에서처럼 IP 주소는 목적지가 있는 네트워크를 찾고, MAC 주소는 현재 연결된 링크에서 프레임을 받을 인터페이스를 가리킨다. 이번 Lesson은 알고 있는 IP 주소에 대응하는 MAC 주소를 같은 LAN에서 찾는 과정을 다룬다.
 
+### 이 Lesson에서 가져갈 것
+
+- **기억하기 (Recall):** IP는 네트워크 간 목적지를, MAC은 같은 링크에서 프레임 수신자를 찾는다.
+- **적용하기 (Apply):** 원격 서버에 보낼 IP Packet과 게이트웨이에 보낼 Frame 주소를 분리한다.
+- **찾아보기 (Lookup):** MAC/IP 주소 역할은 주소·ARP Page를 다시 참조한다.
+
 ## 바뀔 수 있는 주소와 식별자
 
 IP 주소와 MAC 주소는 같은 장치에 설정되어 함께 쓰이지만, 역할과 바뀌는 조건은 다르다. IP 주소는 네트워크 설정이나 이동에 따라 달라질 수 있고, MAC 주소는 네트워크 인터페이스(NIC)에 연결된 식별자다. 실제 프레임을 보낼 때는 IP 주소만으로는 부족하다. 지금 연결된 L2 링크에서 어느 인터페이스에 프레임을 건넬지도 알아야 한다.
+
+### 이 Lesson에서 가져갈 것
+
+- **기억하기 (Recall):** IP 주소는 설정에 따라 바뀔 수 있고 MAC은 인터페이스 식별에 쓰인다.
+- **적용하기 (Apply):** 노트북이 다른 Wi-Fi로 이동해도 같은 NIC와 다른 IP를 가질 수 있음을 설명한다.
+- **찾아보기 (Lookup):** MAC randomization과 DHCP lease의 실제 설정은 기기에서 확인한다.
 
 ## ARP · IP로 MAC을 알아내기
 <!-- learn-page-id: arp-definition -->
 
 ARP(Address Resolution Protocol)는 같은 LAN에서 목적지 IPv4 주소에 대응하는 MAC 주소를 알아낼 때 쓰인다. 예를 들어 노트북이 같은 LAN의 프린터 `192.168.0.30`에 인쇄 데이터를 보내려는데 프린터의 MAC 주소를 모른다면, “`192.168.0.30`을 사용하는 장치가 누구인가?”라고 LAN에 물어볼 수 있다. IP는 알지만 프레임의 받는 사람은 모르는 상황을 ARP가 이어 준다.
 
+### 이 Lesson에서 가져갈 것
+
+- **기억하기 (Recall):** ARP는 같은 LAN에서 목표 IPv4 주소에 대응하는 MAC을 알아낸다.
+- **적용하기 (Apply):** 같은 서브넷 프린터에 보낼 때 Request와 Reply를 연결한다.
+- **찾아보기 (Lookup):** ARP packet opcode와 형식은 표준 문서나 캡처에서 확인한다.
+
 ## Gateway의 MAC이 필요한 이유
 
 이 Ethernet 예에서 인터넷으로 나가려면 게이트웨이의 MAC 주소를 알아야 한다. 게이트웨이를 192.168.0.1, 부팅 후 DHCP로 설정을 받은 PC를 192.168.0.100이라고 하자. PC는 DHCP 설정을 통해 자신의 게이트웨이가 192.168.0.1이라는 사실은 알고 있다. 그러나 이 IP에 대응하는 MAC 주소는 별도로 알아내야 한다.
+
+### 이 Lesson에서 가져갈 것
+
+- **기억하기 (Recall):** 원격 목적지에 보낼 때 PC는 서버 MAC이 아니라 게이트웨이 MAC을 사용한다.
+- **적용하기 (Apply):** IP 목적지는 원격 서버로 유지되고 Ethernet 목적지는 게이트웨이인 이유를 말한다.
+- **찾아보기 (Lookup):** 기본 게이트웨이의 IP·MAC 관계는 ARP cache에서 확인한다.
 
 ## 외부 사이트로 접속하는 경로
 
 네이버의 IP 주소를 설명용으로 3.3.3.3이라고 가정한다. 실제 주소라는 뜻은 아니다. 여기서는 목적지 IP를 이미 알고 있다고 가정하며, 도메인 이름에서 IP 주소를 찾는 과정은 뒤의 Unit 9에서 다룬다. 외부 사이트에 접속할 때 PC가 알아야 하는 MAC 주소는 인터넷 너머 서버의 것이 아니라 같은 구간에서 다음으로 패킷을 받을 게이트웨이의 것이다.
 
+### 이 Lesson에서 가져갈 것
+
+- **기억하기 (Recall):** 외부 사이트로 향하는 Frame은 목적지 IP와 목적지 MAC이 다를 수 있다.
+- **적용하기 (Apply):** DNS로 목적지 IP를 알아낸 뒤 다음 홉 MAC을 구하는 순서를 설명한다.
+- **찾아보기 (Lookup):** 실제 DNS 질의와 ARP 교환은 패킷 캡처에서 찾아본다.
+
 ## 브로드캐스트로 MAC 질의
 
 PC는 ARP Request를 브로드캐스트로 보내 ‘192.168.0.1을 사용하는 호스트’를 찾는다. 다른 호스트들은 그 주소의 주인이 아니므로 응답하지 않는다. 해당 IP 주소를 사용하는 게이트웨이는 자신을 찾는 요청이라는 사실을 알 수 있다.
+
+### 이 Lesson에서 가져갈 것
+
+- **기억하기 (Recall):** ARP Request는 같은 브로드캐스트 도메인에 IP 소유자를 묻는다.
+- **적용하기 (Apply):** 요청을 받은 여러 Host 중 대상 주소의 장치가 응답할 조건을 판별한다.
+- **찾아보기 (Lookup):** ARP broadcast 주소와 cache 상태는 `arp -a`/`ip neigh`로 확인한다.
 
 ## 해당 장치의 응답
 
 게이트웨이는 ARP Reply로 자신의 IP 주소와 MAC 주소를 알려 준다. PC는 192.168.0.1에 대응하는 48비트 MAC 주소를 얻는다. 이제 외부 사이트에 접속하기 위해 만든 IP 패킷을 어떤 L2 목적지로 보낼지 결정할 수 있다.
 
+### 이 Lesson에서 가져갈 것
+
+- **기억하기 (Recall):** ARP Reply는 요청된 IP에 대응하는 인터페이스 MAC을 알려 준다.
+- **적용하기 (Apply):** 응답에서 얻은 주소가 Ethernet Frame 목적지가 되는 과정을 말한다.
+- **찾아보기 (Lookup):** gratuitous ARP와 중복 주소 감지는 관련 장비 문서에서 찾아본다.
+
 ## IP Packet을 Frame에 담기
 
 IP 패킷의 출발지는 PC인 192.168.0.100, 목적지는 외부 사이트를 가정한 3.3.3.3이다. 이를 담은 Ethernet 프레임의 출발지 MAC은 PC의 NIC 주소, 목적지 MAC은 게이트웨이의 주소다. IP 목적지는 “최종적으로 누구에게 보낼까?”, 프레임의 목적지 MAC은 “이번 LAN에서 누구에게 맡길까?”에 답한다. [Unit 4 Lesson 1의 주소 역할 설명](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/4/lesson/1/page/1)과 이어서 기억하자. 프레임은 먼저 게이트웨이에 전달하고, 게이트웨이가 IP 헤더의 목적지를 보고 다음 경로로 라우팅한다.
 
+### 이 Lesson에서 가져갈 것
+
+- **기억하기 (Recall):** Ethernet Frame의 MAC 목적지는 이번 링크의 다음 수신자다.
+- **적용하기 (Apply):** 원격 Packet을 게이트웨이 Frame에 넣어 최종 IP와 구간 MAC을 구분한다.
+- **찾아보기 (Lookup):** 스위치에서 Frame 헤더 값은 Wireshark 캡처로 확인한다.
+
 ## ARP Cache에 남기는 정보
 
 DHCP는 게이트웨이의 IP 주소를 알려 주지만, 그 IP에 대응하는 MAC 주소까지 알려 주지는 않는다. 따라서 PC는 통신이 필요할 때 ARP로 해당 IP의 MAC 주소를 구한다. 이렇게 알아낸 대응 관계는 **ARP 캐시(ARP cache)**에 잠시 저장되어, 다음 통신에서 매번 다시 물어보지 않도록 돕는다.
+
+### 이 Lesson에서 가져갈 것
+
+- **기억하기 (Recall):** ARP cache는 IP-MAC 대응을 잠시 저장해 반복 질의를 줄인다.
+- **적용하기 (Apply):** 통신 직후 cache entry가 생기고 시간이 지나 사라질 수 있음을 설명한다.
+- **찾아보기 (Lookup):** cache 만료 시간은 OS와 네트워크 장비에서 확인한다.
 
 ## arp -a로 확인하기
 
@@ -833,6 +887,6 @@ Windows와 macOS에서는 `arp -a`, Linux에서는 `ip neigh` 명령으로 현�
 
 ### 이 Lesson에서 가져갈 것
 
-- **기억하기 (Recall):** ARP는 같은 LAN에서 알고 있는 IPv4 주소에 대응하는 MAC 주소를 찾는다.
-- **적용하기 (Apply):** 외부 IP로 보내는 프레임의 목적지 MAC은 보통 현재 LAN의 기본 게이트웨이라는 점을 설명한다.
-- **찾아보기 (Lookup):** 내 컴퓨터의 ARP 캐시는 Windows·macOS에서 `arp -a`, Linux에서 `ip neigh`로 확인한다.
+- **기억하기 (Recall):** `arp -a` 또는 `ip neigh`로 최근에 학습한 IP-MAC 관계를 확인한다.
+- **적용하기 (Apply):** 게이트웨이와 통신한 전후에 cache 항목이 달라지는지 비교한다.
+- **찾아보기 (Lookup):** OS별 상태·삭제 옵션은 명령 도움말에서 확인한다.
