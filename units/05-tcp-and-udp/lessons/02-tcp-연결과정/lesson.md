@@ -17,6 +17,70 @@ page_metadata:
     alt: "클라이언트와 서버 사이에서 SYN, SYN+ACK, ACK 세 메시지가 차례로 오가며 연결 준비가 끝납니다."
     caption: "TCP 연결 준비는 연결 요청, 요청 확인과 서버의 요청, 마지막 확인의 세 메시지로 이루어집니다."
     after_paragraph: 2
+  questions:
+  - id: u7-l02-p01-q01
+    kind: choice
+    difficulty: easy
+    prompt: TCP 연결을 시작할 때 먼저 하는 일은 무엇인가요?
+    choices:
+    - id: a
+      text: 양쪽 TCP가 서로 메시지를 주고받을 수 있는지 확인하고 연결 정보를 알린다
+      feedback: 3-way handshake는 데이터를 보내기 전에 연결을 준비하는 절차입니다.
+    - id: b
+      text: 웹 페이지의 파일을 먼저 전부 보낸다
+      feedback: 연결 준비와 애플리케이션 데이터 전송은 별도 단계입니다.
+    - id: c
+      text: 라우터 사이에 전용 케이블을 깐다
+      feedback: 연결 준비와 애플리케이션 데이터 전송은 별도 단계입니다.
+    - id: d
+      text: DNS에 새 도메인을 등록한다
+      feedback: 연결 준비와 애플리케이션 데이터 전송은 별도 단계입니다.
+    - id: e
+      text: 수신 버퍼를 비운다
+      feedback: 연결 준비와 애플리케이션 데이터 전송은 별도 단계입니다.
+    answer: a
+  - id: u7-l02-p01-q02
+    kind: choice
+    difficulty: medium
+    prompt: TCP 3-way handshake의 메시지 순서는 무엇인가요?
+    choices:
+    - id: a
+      text: ACK → SYN → SYN+ACK
+      feedback: 세 메시지의 방향과 순서를 전화 비유와 함께 확인하세요.
+    - id: b
+      text: SYN+ACK → ACK → SYN
+      feedback: 세 메시지의 방향과 순서를 전화 비유와 함께 확인하세요.
+    - id: c
+      text: SYN → SYN+ACK → ACK
+      feedback: TCP 연결 준비는 SYN, SYN+ACK, ACK 순서로 진행됩니다.
+    - id: d
+      text: SYN → ACK → FIN
+      feedback: 세 메시지의 방향과 순서를 전화 비유와 함께 확인하세요.
+    - id: e
+      text: FIN → SYN → ACK
+      feedback: 세 메시지의 방향과 순서를 전화 비유와 함께 확인하세요.
+    answer: c
+  - id: u7-l02-p01-q03
+    kind: choice
+    difficulty: medium
+    prompt: 3-way handshake가 끝났다는 사실만으로 보장되지 않는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 양쪽 TCP가 연결 정보를 교환했다는 것
+      feedback: TCP 연결 준비와 앱의 처리 성공을 구분하세요.
+    - id: b
+      text: 클라이언트가 연결 요청을 보냈다는 것
+      feedback: TCP 연결 준비와 앱의 처리 성공을 구분하세요.
+    - id: c
+      text: 서버가 연결 요청에 응답했다는 것
+      feedback: TCP 연결 준비와 앱의 처리 성공을 구분하세요.
+    - id: d
+      text: 세 메시지가 오갔다는 것
+      feedback: TCP 연결 준비와 앱의 처리 성공을 구분하세요.
+    - id: e
+      text: 웹 서버가 실제 요청을 처리했거나 파일 전송이 성공했다는 것
+      feedback: 연결 수립은 웹 서버가 요청을 처리하거나 파일 전송이 성공했다는 뜻은 아닙니다.
+    answer: e
 - terms:
   - RTT
   - 포트(port)
@@ -31,6 +95,70 @@ page_metadata:
     alt: "노트북이 192.168.0.20의 포트 80으로 연결을 요청합니다. 서버로 가는 데 25ms, 돌아오는 데 25ms가 걸려 RTT는 50ms이고, 서버 처리 시간은 0으로 둔 단순한 예시입니다."
     caption: "RTT는 요청을 보내고 응답이 돌아오기까지의 왕복 시간입니다. 25ms씩 나눈 것은 이 예를 위한 단순화입니다."
     after_paragraph: 2
+  questions:
+  - id: u7-l02-p02-q01
+    kind: choice
+    difficulty: easy
+    prompt: RTT는 무엇을 뜻하나요?
+    choices:
+    - id: a
+      text: 한 방향으로만 가는 거리
+      feedback: 편도 시간과 왕복 시간을 구분하세요.
+    - id: b
+      text: MSS의 데이터 크기
+      feedback: 편도 시간과 왕복 시간을 구분하세요.
+    - id: c
+      text: 메시지를 보내고 응답이 돌아오기까지의 왕복 시간
+      feedback: RTT는 Round Trip Time, 즉 메시지를 보내고 응답이 돌아오는 왕복 시간입니다.
+    - id: d
+      text: 서버가 연결을 기다리는 상태
+      feedback: 편도 시간과 왕복 시간을 구분하세요.
+    - id: e
+      text: 포트 번호의 길이
+      feedback: 편도 시간과 왕복 시간을 구분하세요.
+    answer: c
+  - id: u7-l02-p02-q02
+    kind: choice
+    difficulty: medium
+    prompt: RTT를 50ms로 가정하고 편도 시간이 양쪽 모두 같다고 단순화하면 한 방향은 얼마인가요?
+    choices:
+    - id: a
+      text: 약 50ms
+      feedback: 이 Lesson의 그림은 양방향 시간이 같고 서버 처리 시간이 0인 예시입니다.
+    - id: b
+      text: 약 100ms
+      feedback: 이 Lesson의 그림은 양방향 시간이 같고 서버 처리 시간이 0인 예시입니다.
+    - id: c
+      text: 약 5ms
+      feedback: 이 Lesson의 그림은 양방향 시간이 같고 서버 처리 시간이 0인 예시입니다.
+    - id: d
+      text: 계산할 수 없고 항상 0ms다
+      feedback: 이 Lesson의 그림은 양방향 시간이 같고 서버 처리 시간이 0인 예시입니다.
+    - id: e
+      text: 약 25ms
+      feedback: 이 단순한 예에서는 왕복 50ms를 편도 약 25ms씩으로 나눕니다.
+    answer: e
+  - id: u7-l02-p02-q03
+    kind: choice
+    difficulty: medium
+    prompt: 현실의 RTT에 대해 맞는 설명은 무엇인가요?
+    choices:
+    - id: a
+      text: 항상 편도 시간이 정확히 같고 서버 처리 시간은 0이다
+      feedback: 예시의 가정과 실제 네트워크를 구분하세요.
+    - id: b
+      text: 양방향 경로 시간과 서버 처리 시간이 달라질 수 있어 RTT를 항상 정확히 반으로 나눌 수는 없다
+      feedback: 25ms씩 나눈 값은 설명을 위한 단순화이며 실제 경로와 처리 시간은 다를 수 있습니다.
+    - id: c
+      text: RTT는 네트워크와 관계없이 일정하다
+      feedback: 예시의 가정과 실제 네트워크를 구분하세요.
+    - id: d
+      text: RTT는 MSS와 같은 크기 단위다
+      feedback: 예시의 가정과 실제 네트워크를 구분하세요.
+    - id: e
+      text: RTT가 길면 연결을 만들 수 없다
+      feedback: 예시의 가정과 실제 네트워크를 구분하세요.
+    answer: b
 - terms:
   - SYN
   - Payload(페이로드)
@@ -46,6 +174,70 @@ page_metadata:
     alt: "TCP 세그먼트가 IP 헤더, TCP 헤더, Payload로 나뉘어 있습니다. TCP 헤더의 SYN 표시가 켜지고 초기 순서번호 1000이 담기며 Payload는 비어 있습니다."
     caption: "SYN 세그먼트는 연결 준비만 하며 Payload가 없습니다. 초기 순서번호 1000은 예시입니다."
     after_paragraph: 1
+  questions:
+  - id: u7-l02-p03-q01
+    kind: choice
+    difficulty: easy
+    prompt: TCP 연결 요청도 어떤 데이터 단위에 담겨 전달되나요?
+    choices:
+    - id: a
+      text: Ethernet Frame만
+      feedback: 세그먼트가 오가더라도 파일 내용이 아니라 제어 정보를 담을 수 있습니다.
+    - id: b
+      text: DNS 레코드
+      feedback: 세그먼트가 오가더라도 파일 내용이 아니라 제어 정보를 담을 수 있습니다.
+    - id: c
+      text: DHCP Offer
+      feedback: 세그먼트가 오가더라도 파일 내용이 아니라 제어 정보를 담을 수 있습니다.
+    - id: d
+      text: MAC 주소
+      feedback: 세그먼트가 오가더라도 파일 내용이 아니라 제어 정보를 담을 수 있습니다.
+    - id: e
+      text: TCP Segment
+      feedback: 연결 요청도 TCP 세그먼트에 담깁니다.
+    answer: e
+  - id: u7-l02-p03-q02
+    kind: choice
+    difficulty: medium
+    prompt: 이 Lesson의 SYN 연결 요청 예에서 애플리케이션 Payload는 어떤 상태인가요?
+    choices:
+    - id: a
+      text: 파일 내용으로 항상 가득하다
+      feedback: 연결 준비용 메시지와 웹 요청 본문을 구분하세요.
+    - id: b
+      text: 비어 있으며 연결 준비 정보가 담긴다
+      feedback: 예시의 SYN 세그먼트에는 연결 제어 정보가 있고 애플리케이션 Payload는 없습니다.
+    - id: c
+      text: 라우터가 대신 채운다
+      feedback: 연결 준비용 메시지와 웹 요청 본문을 구분하세요.
+    - id: d
+      text: MSS와 같은 숫자가 들어간다
+      feedback: 연결 준비용 메시지와 웹 요청 본문을 구분하세요.
+    - id: e
+      text: SYN 비트가 Payload로 바뀐다
+      feedback: 연결 준비용 메시지와 웹 요청 본문을 구분하세요.
+    answer: b
+  - id: u7-l02-p03-q03
+    kind: choice
+    difficulty: medium
+    prompt: SYN 표시는 어떤 뜻에 가까운가요?
+    choices:
+    - id: a
+      text: 파일 전송이 완료되었다는 알림
+      feedback: SYN은 제어 비트이며 애플리케이션의 용건 자체가 아닙니다.
+    - id: b
+      text: 서버가 웹 페이지를 읽었다는 확인
+      feedback: SYN은 제어 비트이며 애플리케이션의 용건 자체가 아닙니다.
+    - id: c
+      text: IP 주소가 바뀌었다는 뜻
+      feedback: SYN은 제어 비트이며 애플리케이션의 용건 자체가 아닙니다.
+    - id: d
+      text: 연결을 시작하고 순서번호 흐름을 맞추자는 제어 표시
+      feedback: SYN은 연결을 시작하고 순서번호를 맞추기 위한 제어 표시입니다.
+    - id: e
+      text: 수신 버퍼가 가득 찼다는 경고
+      feedback: SYN은 제어 비트이며 애플리케이션의 용건 자체가 아닙니다.
+    answer: d
 - terms:
   - ACK
   illustrations:
@@ -59,6 +251,70 @@ page_metadata:
     alt: "순서번호 999부터 1003이 한 줄로 있습니다. 클라이언트가 SYN 1000을 보내면 SYN이 한 자리를 차지하고, 서버는 다음에 받고 싶은 1001을 ACK로 알려 줍니다."
     caption: "ACK 번호는 방금 받은 번호가 아니라 다음에 받고 싶은 순서번호입니다. 번호는 예시입니다."
     after_paragraph: 1
+  questions:
+  - id: u7-l02-p04-q01
+    kind: choice
+    difficulty: easy
+    prompt: 클라이언트가 SYN과 함께 초기 순서번호 1000을 보냈다면 서버가 확인 번호로 알려 줄 값은 무엇인가요?
+    choices:
+    - id: a
+      text: '1000'
+      feedback: SYN이 한 자리를 차지하는 점을 반영하세요.
+    - id: b
+      text: '1001'
+      feedback: SYN은 순서번호 흐름에서 한 자리를 차지하므로 다음 번호 1001을 확인합니다.
+    - id: c
+      text: '999'
+      feedback: SYN이 한 자리를 차지하는 점을 반영하세요.
+    - id: d
+      text: '4000'
+      feedback: SYN이 한 자리를 차지하는 점을 반영하세요.
+    - id: e
+      text: '1500'
+      feedback: SYN이 한 자리를 차지하는 점을 반영하세요.
+    answer: b
+  - id: u7-l02-p04-q02
+    kind: choice
+    difficulty: medium
+    prompt: 예시에서 서버가 자신의 초기 순서번호를 4000으로 알리면 클라이언트는 그 SYN을 확인할 다음 번호로 무엇을 보낼까요?
+    choices:
+    - id: a
+      text: '4000'
+      feedback: 각 방향의 초기 번호를 따로 확인하고 SYN이 한 자리를 차지함을 기억하세요.
+    - id: b
+      text: '1001'
+      feedback: 각 방향의 초기 번호를 따로 확인하고 SYN이 한 자리를 차지함을 기억하세요.
+    - id: c
+      text: '3999'
+      feedback: 각 방향의 초기 번호를 따로 확인하고 SYN이 한 자리를 차지함을 기억하세요.
+    - id: d
+      text: '4001'
+      feedback: 서버의 SYN 번호 4000 다음 번호는 4001입니다.
+    - id: e
+      text: '1460'
+      feedback: 각 방향의 초기 번호를 따로 확인하고 SYN이 한 자리를 차지함을 기억하세요.
+    answer: d
+  - id: u7-l02-p04-q03
+    kind: choice
+    difficulty: medium
+    prompt: TCP 초기 순서번호에 대한 설명으로 맞는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 1000과 4000은 절차를 따라가기 위한 예시이며 항상 고정된 값은 아니다
+      feedback: 1000과 4000은 설명을 위한 예시 번호입니다.
+    - id: b
+      text: 모든 TCP 연결은 반드시 1000과 4000으로 시작한다
+      feedback: 예시 숫자와 프로토콜이 정한 고정값을 구별하세요.
+    - id: c
+      text: 순서번호는 서버 포트 번호다
+      feedback: 예시 숫자와 프로토콜이 정한 고정값을 구별하세요.
+    - id: d
+      text: 순서번호는 RTT를 밀리초로 표시한다
+      feedback: 예시 숫자와 프로토콜이 정한 고정값을 구별하세요.
+    - id: e
+      text: 초기 순서번호는 DHCP 서버가 정한다
+      feedback: 예시 숫자와 프로토콜이 정한 고정값을 구별하세요.
+    answer: a
 - terms:
   - SYN+ACK
   illustrations:
@@ -72,6 +328,70 @@ page_metadata:
     alt: "클라이언트가 SYN과 순서번호 1000을 보내고, 서버가 SYN+ACK로 순서번호 4000과 확인 번호 1001을 돌려주며, 클라이언트가 확인 번호 4001의 ACK를 보내 양쪽이 서로의 시작 번호를 확인하는 과정입니다."
     caption: "첫 메시지는 연결을 요청하고, 두 번째는 요청을 확인하면서 서버의 시작 번호를 알리며, 세 번째는 그 번호를 확인합니다."
     after_paragraph: 3
+  questions:
+  - id: u7-l02-p05-q01
+    kind: choice
+    difficulty: easy
+    prompt: SYN+ACK 메시지가 함께 하는 일은 무엇인가요?
+    choices:
+    - id: a
+      text: 파일 전체를 전송하고 연결을 닫는다
+      feedback: SYN+ACK는 확인과 서버 측 연결 요청의 두 기능을 함께 합니다.
+    - id: b
+      text: DHCP 주소를 갱신한다
+      feedback: SYN+ACK는 확인과 서버 측 연결 요청의 두 기능을 함께 합니다.
+    - id: c
+      text: 서버의 MAC 주소를 방송한다
+      feedback: SYN+ACK는 확인과 서버 측 연결 요청의 두 기능을 함께 합니다.
+    - id: d
+      text: 클라이언트의 SYN을 확인하고 서버 자신의 SYN도 알린다
+      feedback: 두 번째 메시지는 클라이언트 요청을 확인하면서 서버의 시작 번호도 알립니다.
+    - id: e
+      text: RTT를 항상 0으로 설정한다
+      feedback: SYN+ACK는 확인과 서버 측 연결 요청의 두 기능을 함께 합니다.
+    answer: d
+  - id: u7-l02-p05-q02
+    kind: choice
+    difficulty: medium
+    prompt: 서버가 순서번호 4000으로 SYN을 보냈다면 클라이언트가 그 번호를 받았다고 알리는 값은 무엇인가요?
+    choices:
+    - id: a
+      text: ACK 4001
+      feedback: SYN은 한 자리를 차지하므로 다음 번호인 4001을 ACK로 알립니다.
+    - id: b
+      text: ACK 4000
+      feedback: ACK 번호는 방금 받은 번호가 아니라 다음에 받고 싶은 순서번호입니다.
+    - id: c
+      text: SYN 4001
+      feedback: ACK 번호는 방금 받은 번호가 아니라 다음에 받고 싶은 순서번호입니다.
+    - id: d
+      text: MSS 4000
+      feedback: ACK 번호는 방금 받은 번호가 아니라 다음에 받고 싶은 순서번호입니다.
+    - id: e
+      text: RTT 4001
+      feedback: ACK 번호는 방금 받은 번호가 아니라 다음에 받고 싶은 순서번호입니다.
+    answer: a
+  - id: u7-l02-p05-q03
+    kind: choice
+    difficulty: medium
+    prompt: 세 번째 ACK가 서버에 도착하면 handshake 절차에서 무엇을 확인하게 되나요?
+    choices:
+    - id: a
+      text: 브라우저가 파일을 저장했다는 것
+      feedback: handshake는 양쪽 TCP의 연결 정보를 확인하지만 앱 처리까지 확인하지 않습니다.
+    - id: b
+      text: 웹 서버가 요청 내용을 처리했다는 것
+      feedback: handshake는 양쪽 TCP의 연결 정보를 확인하지만 앱 처리까지 확인하지 않습니다.
+    - id: c
+      text: 클라이언트가 서버의 연결 요청과 시작 번호를 받았다는 것
+      feedback: 세 번째 메시지는 서버의 SYN이 클라이언트에 도착했음을 확인합니다.
+    - id: d
+      text: 모든 네트워크 패킷이 손실되지 않았다는 것
+      feedback: handshake는 양쪽 TCP의 연결 정보를 확인하지만 앱 처리까지 확인하지 않습니다.
+    - id: e
+      text: DHCP 임대가 시작되었다는 것
+      feedback: handshake는 양쪽 TCP의 연결 정보를 확인하지만 앱 처리까지 확인하지 않습니다.
+    answer: c
 - terms:
   - MSS
   - 바이트(byte)
@@ -129,6 +449,27 @@ page_metadata:
       text: 20바이트
       feedback: 헤더 하나의 크기예요. MSS는 MTU에서 헤더 둘을 뺀 나머지예요.
     answer: c
+  - id: u7-l02-p06-q03
+    kind: choice
+    difficulty: medium
+    prompt: MSS와 MTU의 차이를 바르게 설명한 것은 무엇인가요?
+    choices:
+    - id: a
+      text: MSS는 IP 패킷 전체, MTU는 TCP 데이터만 잰다
+      feedback: 포함되는 헤더 범위가 서로 다릅니다.
+    - id: b
+      text: 둘 다 왕복 시간을 나타낸다
+      feedback: 포함되는 헤더 범위가 서로 다릅니다.
+    - id: c
+      text: 두 값은 항상 같은 숫자다
+      feedback: 포함되는 헤더 범위가 서로 다릅니다.
+    - id: d
+      text: MSS는 Ethernet 프레임의 목적지 주소다
+      feedback: 포함되는 헤더 범위가 서로 다릅니다.
+    - id: e
+      text: MTU는 IP 패킷 전체의 상한이고 MSS는 TCP 데이터 부분의 상한이다
+      feedback: MTU는 IP 패킷 전체, MSS는 그 안의 TCP 데이터 크기를 제한합니다.
+    answer: e
   question_placements:
   - question_id: u5-l26-p06-q01
     after_paragraph: 1
@@ -147,6 +488,70 @@ page_metadata:
     alt: "서버는 LISTEN에서 시작하고, 클라이언트가 SYN을 보내면 SYN_SENT, 서버는 SYN_RECEIVED가 됩니다. 클라이언트는 SYN+ACK를 받고 먼저 ESTABLISHED가 되며 서버는 마지막 ACK가 닿은 뒤 ESTABLISHED가 됩니다."
     caption: "클라이언트는 SYN_SENT에서 ESTABLISHED로, 서버는 LISTEN과 SYN_RECEIVED를 거쳐 ESTABLISHED로 바뀝니다."
     after_paragraph: 2
+  questions:
+  - id: u7-l02-p07-q01
+    kind: choice
+    difficulty: easy
+    prompt: 클라이언트가 SYN을 보낸 뒤 서버의 응답을 기다리는 상태는 무엇인가요?
+    choices:
+    - id: a
+      text: LISTEN
+      feedback: 클라이언트와 서버의 상태 이름을 구분하세요.
+    - id: b
+      text: ESTABLISHED
+      feedback: 클라이언트와 서버의 상태 이름을 구분하세요.
+    - id: c
+      text: SYN_SENT
+      feedback: 클라이언트는 SYN을 보내면 SYN_SENT 상태로 바뀝니다.
+    - id: d
+      text: CLOSED
+      feedback: 클라이언트와 서버의 상태 이름을 구분하세요.
+    - id: e
+      text: TIME_WAIT
+      feedback: 클라이언트와 서버의 상태 이름을 구분하세요.
+    answer: c
+  - id: u7-l02-p07-q02
+    kind: choice
+    difficulty: medium
+    prompt: TCP 서버는 보통 연결 요청을 기다리는 상태에서 시작합니다. 그 상태는 무엇인가요?
+    choices:
+    - id: a
+      text: SYN_SENT
+      feedback: LISTEN은 서버 쪽에서 연결을 기다리는 상태입니다.
+    - id: b
+      text: ESTABLISHED
+      feedback: LISTEN은 서버 쪽에서 연결을 기다리는 상태입니다.
+    - id: c
+      text: SYN_RECEIVED
+      feedback: LISTEN은 서버 쪽에서 연결을 기다리는 상태입니다.
+    - id: d
+      text: FIN_WAIT
+      feedback: LISTEN은 서버 쪽에서 연결을 기다리는 상태입니다.
+    - id: e
+      text: LISTEN
+      feedback: 서버는 보통 LISTEN 상태에서 연결 요청을 기다립니다.
+    answer: e
+  - id: u7-l02-p07-q03
+    kind: choice
+    difficulty: medium
+    prompt: 예시 handshake에서 서버가 ESTABLISHED로 바뀌는 시점은 언제인가요?
+    choices:
+    - id: a
+      text: 클라이언트가 첫 SYN을 보내기 전
+      feedback: 클라이언트와 서버가 ESTABLISHED가 되는 시점이 조금 다를 수 있습니다.
+    - id: b
+      text: 마지막 ACK가 서버에 도착한 뒤
+      feedback: 서버는 마지막 ACK가 도착한 뒤 ESTABLISHED 상태가 됩니다.
+    - id: c
+      text: 서버가 LISTEN에 들어가기 전
+      feedback: 클라이언트와 서버가 ESTABLISHED가 되는 시점이 조금 다를 수 있습니다.
+    - id: d
+      text: MSS 값을 정하기 전
+      feedback: 클라이언트와 서버가 ESTABLISHED가 되는 시점이 조금 다를 수 있습니다.
+    - id: e
+      text: 첫 SYN이 도착하자마자
+      feedback: 클라이언트와 서버가 ESTABLISHED가 되는 시점이 조금 다를 수 있습니다.
+    answer: b
 - terms:
   - Virtual Circuit(가상 회선)
   illustrations:
@@ -160,6 +565,70 @@ page_metadata:
     alt: "클라이언트와 서버 사이에 여러 라우터가 있습니다. 양 끝은 ESTABLISHED 상태와 상대 주소·포트, 순서번호, MSS를 기록하지만 새 케이블이나 전용선은 생기지 않고, 데이터는 기존 네트워크로 갑니다. 연결 수립이 앱의 처리 성공을 뜻하지는 않습니다."
     caption: "TCP 연결은 양 끝이 상태를 기록해 둔 논리적 관계입니다. 연결이 수립되었다고 앱이 데이터를 처리했다는 뜻은 아닙니다."
     after_paragraph: 1
+  questions:
+  - id: u7-l02-p08-q01
+    kind: choice
+    difficulty: easy
+    prompt: TCP 연결은 무엇을 뜻하나요?
+    choices:
+    - id: a
+      text: 두 컴퓨터 사이에 새 전용 케이블을 놓는 것
+      feedback: 물리적 전용선과 TCP의 논리적 연결을 혼동하지 마세요.
+    - id: b
+      text: 인터넷 경로를 해당 앱이 독점하는 것
+      feedback: 물리적 전용선과 TCP의 논리적 연결을 혼동하지 마세요.
+    - id: c
+      text: 웹 페이지의 사진 한 장을 뜻하는 것
+      feedback: 물리적 전용선과 TCP의 논리적 연결을 혼동하지 마세요.
+    - id: d
+      text: 라우터가 모든 애플리케이션 데이터를 읽는 것
+      feedback: 물리적 전용선과 TCP의 논리적 연결을 혼동하지 마세요.
+    - id: e
+      text: 양 끝 TCP가 연결 상태와 주소·포트 등 통신 정보를 관리하는 논리적 관계
+      feedback: TCP 연결은 양 끝이 관련 상태를 관리하는 논리적인 관계입니다.
+    answer: e
+  - id: u7-l02-p08-q02
+    kind: choice
+    difficulty: medium
+    prompt: TCP 연결이 수립되어도 확정되지 않는 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 양쪽 TCP가 연결 정보를 교환했다는 것
+      feedback: 연결 수립과 애플리케이션의 업무 완료는 다른 단계입니다.
+    - id: b
+      text: 애플리케이션이 요청 데이터를 처리했다는 것
+      feedback: TCP 연결 수립만으로 앱이 데이터를 처리했다는 뜻은 아닙니다.
+    - id: c
+      text: 통신에 사용할 상태를 관리한다는 것
+      feedback: 연결 수립과 애플리케이션의 업무 완료는 다른 단계입니다.
+    - id: d
+      text: 연결 준비 메시지가 오갔다는 것
+      feedback: 연결 수립과 애플리케이션의 업무 완료는 다른 단계입니다.
+    - id: e
+      text: 상대 주소와 포트가 연결 정보에 포함될 수 있다는 것
+      feedback: 연결 수립과 애플리케이션의 업무 완료는 다른 단계입니다.
+    answer: b
+  - id: u7-l02-p08-q03
+    kind: choice
+    difficulty: medium
+    prompt: 이 Lesson에서 “Virtual Circuit”을 비유로 쓸 때 기억할 점은 무엇인가요?
+    choices:
+    - id: a
+      text: 실제 인터넷 회선이 하나 새로 설치된다
+      feedback: 비유의 도움 되는 점과 실제로 일어나지 않는 일을 나누어 보세요.
+    - id: b
+      text: 라우터가 TCP 연결을 모두 종단한다
+      feedback: 비유의 도움 되는 점과 실제로 일어나지 않는 일을 나누어 보세요.
+    - id: c
+      text: UDP가 TCP 연결을 대신한다
+      feedback: 비유의 도움 되는 점과 실제로 일어나지 않는 일을 나누어 보세요.
+    - id: d
+      text: 양쪽 TCP가 연결 상태를 기록하지만 새 전용 경로나 케이블이 생기는 것은 아니다
+      feedback: Virtual Circuit은 논리적인 연결을 설명하는 비유이며 실제 전용선이 생기는 것은 아닙니다.
+    - id: e
+      text: 웹 서버가 파일을 반드시 전송한다
+      feedback: 비유의 도움 되는 점과 실제로 일어나지 않는 일을 나누어 보세요.
+    answer: d
 animations_dir: units/05-tcp-and-udp/lessons/02-tcp-연결과정/assets/animations
 additional_sources:
 - https://studio.futurereadycampus.com/course-network/wiki/oeweo-network/lesson-26.html
