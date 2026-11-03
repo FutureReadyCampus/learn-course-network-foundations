@@ -77,9 +77,9 @@ TCP 제어 플래그에는 앞서 본 SYN, FIN, ACK가 있다. 연결 요청과 
 - **적용하기 (Apply):** 연결 수립·종료·강제 초기화 패킷의 flag를 비교한다.
 - **찾아보기 (Lookup):** flag 조합과 reserved bit는 TCP Header 사양을 찾아본다.
 
-## Window · 수신 버퍼의 여유
+## 윈도(Window) · 수신 버퍼의 여유
 
-Window Size 필드에는 앞 Lesson에서 본 수신 윈도우, 곧 수신 버퍼의 여유 공간이 담긴다. 이 값이 0이면 Zero Window다. Window에 맞춰 보내는 양을 조절하는 것이 흐름 제어라면, 앞 Lesson의 Loss, Retransmission, Duplicate ACK 같은 신호를 바탕으로 네트워크 상황에 맞춰 전송량을 조절하는 것은 혼잡 제어와 연결된다. 세부 제어 알고리즘은 이 과정의 범위를 벗어난다. Checksum은 전송한 데이터에 손상이 있는지 확인하는 검사합이다. TCP의 세부 제어는 복잡하므로 여기서는 헤더의 전체 구성을 익힌다.
+윈도 크기(Window Size) 필드에는 앞 Lesson에서 본 수신 윈도우, 곧 수신 버퍼의 여유 공간이 담긴다. 이 값이 0이면 제로 윈도(Zero Window)다. 윈도에 맞춰 보내는 양을 조절하는 것이 흐름 제어라면, 앞 Lesson의 Loss, Retransmission, Duplicate ACK 같은 신호를 바탕으로 네트워크 상황에 맞춰 전송량을 조절하는 것은 혼잡 제어와 연결된다. 세부 제어 알고리즘은 이 과정의 범위를 벗어난다. Checksum은 전송한 데이터에 손상이 있는지 확인하는 검사합이다. TCP의 세부 제어는 복잡하므로 여기서는 헤더의 전체 구성을 익힌다.
 
 ### 이 Lesson에서 가져갈 것
 
