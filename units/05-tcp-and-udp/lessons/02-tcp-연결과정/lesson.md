@@ -6,25 +6,86 @@ wiki_diagram: units/05-tcp-and-udp/lessons/02-tcp-연결과정/assets/diagrams/l
 page_metadata:
 - terms:
   - 3-way handshake
+  illustrations:
+  - file: assets/animations/l26-daily-hello-3-steps.svg
+    title: "여보세요, 네 들려요, 네"
+    alt: "나와 가게 사이에서 먼저 “여보세요?”, 이어서 “네, 들려요. 그쪽도 들리나요?”, 마지막으로 “네, 들립니다”가 차례로 오갑니다. 세 마디가 오가야 서로 들린다고 알게 된다고 표시됩니다."
+    caption: "전화는 세 마디로 서로 들리는지 확인합니다. TCP의 세 메시지도 요청, 응답 겸 요청, 마지막 확인으로 이어집니다."
+    after_paragraph: -1
+  - file: assets/animations/l26-syn-synack-ack.svg
+    title: "SYN, SYN+ACK, ACK"
+    alt: "클라이언트와 서버 사이에서 SYN, SYN+ACK, ACK 세 메시지가 차례로 오가며 연결 준비가 끝납니다."
+    caption: "TCP 연결 준비는 연결 요청, 요청 확인과 서버의 요청, 마지막 확인의 세 메시지로 이루어집니다."
+    after_paragraph: 2
 - terms:
   - RTT
   - 포트(port)
+  illustrations:
+  - file: assets/animations/l26-daily-call-round-trip.svg
+    title: "말을 건네고 대답이 오기까지"
+    alt: "나와 가게가 있습니다. 가게 번호와 내선 80번으로 걸면 내 목소리가 가는 데 25ms, 대답이 돌아오는 데 25ms가 걸리고 전체가 왕복 시간 50ms라고 표시됩니다."
+    caption: "말을 건네고 대답을 들을 때까지가 왕복 시간입니다. 25ms씩이라는 값은 예시입니다."
+    after_paragraph: -1
+  - file: assets/animations/l26-rtt-50ms.svg
+    title: "RTT는 왕복 시간이에요"
+    alt: "노트북이 192.168.0.20의 포트 80으로 연결을 요청합니다. 서버로 가는 데 25ms, 돌아오는 데 25ms가 걸려 RTT는 50ms이고, 서버 처리 시간은 0으로 둔 단순한 예시입니다."
+    caption: "RTT는 요청을 보내고 응답이 돌아오기까지의 왕복 시간입니다. 25ms씩 나눈 것은 이 예를 위한 단순화입니다."
+    after_paragraph: 2
 - terms:
   - SYN
   - Payload(페이로드)
   - 순서번호
+  illustrations:
+  - file: assets/animations/l26-daily-note-without-body.svg
+    title: "용건 없는 첫 마디"
+    alt: "쪽지 한 장에 받는 곳·보내는 곳, 말머리, 용건 칸이 있습니다. 말머리에서 연결을 시작한다는 표시와 내 시작 번호 1000이 켜지고 용건 칸은 비어 있어 연결 준비만 한다고 표시됩니다."
+    caption: "첫 “여보세요?”에는 용건이 들어 있지 않고 연결 준비만 합니다. 1000은 예시 번호입니다."
+    after_paragraph: -1
+  - file: assets/animations/l26-syn-segment-no-payload.svg
+    title: "연결 요청도 세그먼트예요"
+    alt: "TCP 세그먼트가 IP 헤더, TCP 헤더, Payload로 나뉘어 있습니다. TCP 헤더의 SYN 표시가 켜지고 초기 순서번호 1000이 담기며 Payload는 비어 있습니다."
+    caption: "SYN 세그먼트는 연결 준비만 하며 Payload가 없습니다. 초기 순서번호 1000은 예시입니다."
+    after_paragraph: 1
 - terms:
   - ACK
+  illustrations:
+  - file: assets/animations/l26-daily-bookmark-next-page.svg
+    title: "다음에 펼칠 쪽을 알려 줘요"
+    alt: "쪽번호 999부터 1003이 한 줄로 있습니다. 내 시작은 1000쪽이고 그 신호도 한 쪽을 차지하며, 상대는 방금 읽은 쪽이 아니라 다음에 펼칠 1001쪽을 알려 줍니다."
+    caption: "책갈피는 방금 읽은 쪽이 아니라 다음에 펼칠 쪽에 꽂습니다. 번호는 예시입니다."
+    after_paragraph: -1
+  - file: assets/animations/l26-ack-next-number.svg
+    title: "ACK 번호는 다음 순서번호"
+    alt: "순서번호 999부터 1003이 한 줄로 있습니다. 클라이언트가 SYN 1000을 보내면 SYN이 한 자리를 차지하고, 서버는 다음에 받고 싶은 1001을 ACK로 알려 줍니다."
+    caption: "ACK 번호는 방금 받은 번호가 아니라 다음에 받고 싶은 순서번호입니다. 번호는 예시입니다."
+    after_paragraph: 1
 - terms:
   - SYN+ACK
-  animations:
-  - file: l26-three-way-handshake.svg
-    title: SYN, SYN+ACK, ACK로 시작하는 TCP 연결
-    alt: 클라이언트가 순서번호 1000의 SYN을 보내고, 서버가 순서번호 4000의 SYN과 확인 번호 1001을 담은 SYN+ACK를 보낸 뒤, 클라이언트가 확인 번호 4001의 ACK로 응답하는 세 단계를 보여 줍니다. 숫자는 설명을 위한 예시입니다.
-    caption: 첫 메시지는 연결을 요청하고, 두 번째는 요청을 확인하면서 서버의 시작 번호를 알리며, 세 번째는 그 번호를 확인합니다.
+  illustrations:
+  - file: assets/animations/l26-daily-numbers-call.svg
+    title: "여보세요, 번호를 서로 알려 줘요"
+    alt: "나와 가게가 번호를 주고받습니다. 내가 번호 1000을 말하고, 가게가 1001을 기다리며 자기 번호 4000을 알리고, 내가 4000을 잘 들었다며 다음 4001을 말하면 양쪽이 서로의 번호를 알게 됩니다."
+    caption: "세 마디가 오가면 양쪽이 서로의 시작 번호를 알고 확인합니다. 1000과 4000은 예시입니다."
+    after_paragraph: -1
+  - file: assets/animations/l26-three-way-handshake.svg
+    title: "SYN, SYN+ACK, ACK로 시작하는 TCP 연결"
+    alt: "클라이언트가 SYN과 순서번호 1000을 보내고, 서버가 SYN+ACK로 순서번호 4000과 확인 번호 1001을 돌려주며, 클라이언트가 확인 번호 4001의 ACK를 보내 양쪽이 서로의 시작 번호를 확인하는 과정입니다."
+    caption: "첫 메시지는 연결을 요청하고, 두 번째는 요청을 확인하면서 서버의 시작 번호를 알리며, 세 번째는 그 번호를 확인합니다."
+    after_paragraph: 3
 - terms:
   - MSS
   - 바이트(byte)
+  illustrations:
+  - file: assets/animations/l26-daily-text-length-limit.svg
+    title: "한 통에 보낼 수 있는 길이"
+    alt: "나와 친구가 각자 “나한테는 한 통에 70자 이하로”, “나한테는 60자 이하로” 하고 알립니다. 긴 내용은 상대가 정한 길이에 맞춰 나눠 보내며 방향마다 길이가 달라도 됩니다."
+    caption: "문자는 상대가 알린 길이에 맞춰 나눠 보냅니다. 70자와 60자는 예시입니다."
+    after_paragraph: -1
+  - file: assets/animations/l26-mss-exchange.svg
+    title: "MSS는 한 세그먼트의 데이터 크기"
+    alt: "클라이언트가 SYN에 MSS 1460을, 서버가 SYN+ACK에 MSS 1400을 담아 알립니다. 각자 상대가 알린 MSS 이하로 데이터를 나눠 보내며 방향마다 값이 달라도 됩니다."
+    caption: "MSS는 한 TCP 세그먼트에 실을 수 있는 TCP 데이터의 최대 크기입니다. 1460과 1400은 예시입니다."
+    after_paragraph: 1
   questions:
   - id: u5-l26-p06-q01
     kind: choice
@@ -75,15 +136,30 @@ page_metadata:
   - LISTEN
   - ESTABLISHED
   - 소켓(socket)
-  animations:
-  - file: l26-tcp-states.svg
-    title: 연결 상태가 바뀌는 순서
-    alt: 클라이언트와 서버 양쪽에 상태 이름표가 있고, 메시지가 오갈 때마다 이름표가 SYN_SENT, SYN_RECEIVED, ESTABLISHED로
-      바뀝니다.
-    caption: 클라이언트는 SYN_SENT에서 ESTABLISHED로, 서버는 LISTEN과 SYN_RECEIVED를 거쳐 ESTABLISHED로
-      갑니다.
+  illustrations:
+  - file: assets/animations/l26-daily-call-states.svg
+    title: "전화 상태가 바뀌어요"
+    alt: "가게는 벨 기다림 상태이고, 내가 걸면 나는 거는 중, 가게는 벨 울림이 됩니다. “들려요”를 받은 내가 먼저 통화 중이 되고 마지막 대답이 닿으면 가게도 통화 중이 됩니다."
+    caption: "받는 쪽은 마지막 대답이 닿은 뒤에 통화 중이 됩니다."
+    after_paragraph: -1
+  - file: assets/animations/l26-tcp-states.svg
+    title: "연결 상태가 바뀌는 순서"
+    alt: "서버는 LISTEN에서 시작하고, 클라이언트가 SYN을 보내면 SYN_SENT, 서버는 SYN_RECEIVED가 됩니다. 클라이언트는 SYN+ACK를 받고 먼저 ESTABLISHED가 되며 서버는 마지막 ACK가 닿은 뒤 ESTABLISHED가 됩니다."
+    caption: "클라이언트는 SYN_SENT에서 ESTABLISHED로, 서버는 LISTEN과 SYN_RECEIVED를 거쳐 ESTABLISHED로 바뀝니다."
+    after_paragraph: 2
 - terms:
   - Virtual Circuit(가상 회선)
+  illustrations:
+  - file: assets/animations/l26-daily-no-new-wire.svg
+    title: "통화 중은 새 전선이 아니에요"
+    alt: "나와 친구 사이에 여러 기지국이 있습니다. 양쪽이 통화 중이라고 기록하지만 새 전용선은 깔리지 않고 목소리는 이미 있는 통신망을 지나가며, 통화 중이라는 것이 용건 처리를 뜻하지는 않는다고 표시됩니다."
+    caption: "통화 중은 새 전선이 아니라 양쪽이 기록해 둔 상태입니다."
+    after_paragraph: -1
+  - file: assets/animations/l26-virtual-circuit.svg
+    title: "TCP 연결은 논리적인 관계예요"
+    alt: "클라이언트와 서버 사이에 여러 라우터가 있습니다. 양 끝은 ESTABLISHED 상태와 상대 주소·포트, 순서번호, MSS를 기록하지만 새 케이블이나 전용선은 생기지 않고, 데이터는 기존 네트워크로 갑니다. 연결 수립이 앱의 처리 성공을 뜻하지는 않습니다."
+    caption: "TCP 연결은 양 끝이 상태를 기록해 둔 논리적 관계입니다. 연결이 수립되었다고 앱이 데이터를 처리했다는 뜻은 아닙니다."
+    after_paragraph: 1
 animations_dir: units/05-tcp-and-udp/lessons/02-tcp-연결과정/assets/animations
 additional_sources:
 - https://studio.futurereadycampus.com/course-network/wiki/oeweo-network/lesson-26.html
