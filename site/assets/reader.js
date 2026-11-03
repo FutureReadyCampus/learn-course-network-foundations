@@ -381,7 +381,7 @@
       const at = lower.indexOf(needle, from);
       if (at < 0) return -1;
       const before = text[at - 1]; const after = text[at + needle.length];
-      if (!isWordChar(before) && (!ascii || !isWordChar(after))) return at;
+      if (!isWordChar(before) && (!ascii || !/[A-Za-z0-9]/.test(after || ""))) return at;
       from = at + 1;
     }
   };
