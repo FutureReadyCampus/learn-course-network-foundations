@@ -48,6 +48,7 @@ animations_dir: units/05-tcp-and-udp/lessons/03-tcp-연결종료-및-상태변�
 핵심 개념을 주제별로 정리했다.
 
 ## FIN · 연결을 끝내자는 요청
+<!-- learn-page-id: fin-definition -->
 
 연결을 맺은 뒤에는 종료 절차도 필요하다. 기본 예에서는 클라이언트가 먼저 종료를 요청하는 4-way handshake를 살펴본다. 서버가 먼저 종료를 시작하는 경우에는 상태 전이가 달라진다. 클라이언트는 연결된 상태에서 FIN(Finish)과 ACK를 보내 종료 의사를 알린다. 서버도 연결된 상태에서 이 요청을 받는다.
 

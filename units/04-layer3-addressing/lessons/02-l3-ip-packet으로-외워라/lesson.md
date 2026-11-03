@@ -267,14 +267,6 @@ page_metadata:
       text: 연결 방식과 무관하게 모든 네트워크에 적용된다
       feedback: 이 선택지는 다른 개념의 역할이에요. 본문에서 이 Page의 핵심 구분을 다시 확인해 보세요.
     answer: b
-  - id: u4-l12-p03-q03
-    kind: short
-    prompt: 한 번에 전달할 데이터 단위의 최대 크기를 정하는 기준을 무엇이라고 하나요?
-    answers:
-    - 최대 전송 단위
-    - Maximum Transmission Unit
-    - MTU
-    feedback: 최대 전송 단위(MTU)는 한 번에 전달할 수 있는 단위의 최대 크기 기준이에요.
   question_placements:
   - question_id: u4-l12-p03-q01
     after_paragraph: 1
@@ -459,12 +451,26 @@ page_metadata:
       feedback: 이 선택지는 다른 개념의 역할이에요. 본문에서 이 Page의 핵심 구분을 다시 확인해 보세요.
     answer: c
   - id: u4-l12-p05-q03
-    kind: short
+    kind: choice
+    difficulty: medium
     prompt: 네트워크 사이의 출발지와 최종 목적지를 나타내는 주소는 무엇인가요?
-    answers:
-    - IP 주소
-    - IP
-    feedback: MAC은 링크의 인터페이스, IP는 네트워크 사이의 목적지, 포트는 컴퓨터 안의 프로그램을 가리켜요.
+    choices:
+    - id: a
+      text: MAC 주소
+      feedback: MAC 주소는 현재 링크에서 프레임을 주고받을 인터페이스를 구분해요.
+    - id: b
+      text: IP 주소
+      feedback: 맞아요. IP 주소는 네트워크 사이에서 출발지와 최종 목적지를 나타내요.
+    - id: c
+      text: 포트 번호
+      feedback: 포트 번호는 같은 기기 안에서 데이터를 받을 프로그램을 구분해요.
+    - id: d
+      text: MTU
+      feedback: MTU는 한 번에 전달할 수 있는 데이터 단위의 최대 크기를 정해요.
+    - id: e
+      text: EtherType
+      feedback: EtherType은 Ethernet 프레임에 어떤 종류의 패킷이 담겼는지 나타내요.
+    answer: b
   question_placements:
   - question_id: u4-l12-p05-q01
     after_paragraph: 2
@@ -569,6 +575,7 @@ additional_sources:
 패킷은 네트워크에서 데이터를 전달하는 단위다. IP(Internet Protocol)는 OSI 3계층(L3), 즉 네트워크 계층에서 패킷을 전달할 때 따르는 규칙을 정한 프로토콜이다. 패킷의 안쪽이 어떻게 나뉘는지는 다음 페이지에서 헤더와 페이로드로 나누어 살펴보자.
 
 ## 패킷은 안내 정보와 내용물로 이루어진다
+<!-- learn-page-id: header-payload-definition -->
 
 택배 상자에는 받는 곳을 찾는 데 필요한 송장이 붙고, 안에는 실제로 전달할 물건이 들어 있다. IP 패킷도 크게 두 부분으로 생각할 수 있다. **헤더(Header)**는 전달과 처리에 필요한 정보를 담고, **페이로드(Payload)**는 실제로 실어 나르는 내용을 담는다.
 
@@ -579,6 +586,7 @@ additional_sources:
 같은 덩어리가 바깥 계층에서는 내용물, 안쪽 계층에서는 헤더와 내용물을 갖춘 전달 단위가 된다.
 
 ## MTU는 한 번에 보낼 패킷의 크기 한계다
+<!-- learn-page-id: mtu-definition -->
 
 택배 운송 수단에는 실을 수 있는 상자 크기의 한계가 있다. 네트워크 연결에도 한 번에 전달할 수 있는 단위의 크기 기준이 있는데, 이를 **MTU(Maximum Transmission Unit, 최대 전송 단위)**라고 한다. 이 Lesson에서는 흔한 이더넷 환경의 MTU인 **1,500바이트(약 1.5KB)**를 예로 든다. 연결 방식과 설정에 따라 다른 값도 있다.
 
@@ -618,3 +626,9 @@ IP 헤더의 Version이나 IHL 같은 필드를 16진수에서 손으로 계산�
 마지막으로 네 가지 연결을 정리해 보자. 패킷은 데이터를 옮기는 작은 단위이며, 헤더는 전달 정보를, 페이로드는 내용을 담는다.
 
 MTU는 한 번에 전달할 IP 패킷 크기의 상한을 나타낸다. Wireshark에서는 계층별 헤더를 차례로 펼쳐 읽을 수 있고, MAC·IP·포트는 링크·네트워크·프로그램이라는 서로 다른 범위에서 전달을 돕는다. 이 관계를 알면 화면에 낯선 숫자가 많아도 어느 계층의 어떤 정보를 보는지부터 차근차근 물을 수 있다.
+
+### 이 Lesson에서 가져갈 것
+
+- **R · 기억해 두기:** IP packet의 Header는 전달 정보를 담고 Payload는 실을 데이터를 담습니다. MTU는 링크에서 전달할 수 있는 IP packet 크기의 상한입니다. MAC·IP·Port는 각각 링크·네트워크·통신 끝점을 구별합니다.
+- **A · 적용해 보기:** Wireshark에서 frame부터 IP header와 payload를 차례로 펼쳐 보고, MAC·IP·Port가 어느 범위의 전달을 돕는지 구분합니다.
+- **L · 필요할 때 찾아보기:** IP header의 모든 field와 packet capture filter, 세부적인 MTU 처리 방식은 Wireshark나 프로토콜 자료에서 필요할 때 확인합니다.

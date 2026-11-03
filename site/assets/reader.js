@@ -26,15 +26,99 @@
     const prose = document.createElement("div");
     prose.className = "net-prose";
     let list = [];
+    let ralSummary = null;
+    let ralList = null;
+    const ralLevel = (label) => ({
+      R: "R", "기억해 두기": "R", "기억하기 (Recall)": "R", "회상할 핵심": "R",
+      A: "A", "적용해 보기": "A", "적용하기 (Apply)": "A", "사례에 적용할 것": "A",
+      L: "L", "필요할 때 찾아보기": "L", "찾아보기 (Lookup)": "L", "필요할 때 찾아볼 것": "L",
+    })[label.trim().replace(/^[RAL]\s*·\s*/, "")] || null;
+    const parseRalLine = (item) => {
+      const match = item.match(/^(?:\*\*)?([^:*]+?)(?:\*\*)?:\s*([\s\S]+)$/);
+      if (!match) return null;
+      const level = ralLevel(match[1]);
+      return level ? { level, detail: match[2] } : null;
+    };
+    const tableCells = (line) => line.trim().replace(/^\|/, "").replace(/\|$/, "").split("|").map((cell) => cell.trim());
+    const isTable = (lines) => {
+      if (lines.length < 2 || !lines[0].includes("|")) return false;
+      const header = tableCells(lines[0]);
+      const separator = tableCells(lines[1]);
+      return header.length > 1 && separator.length === header.length && separator.every((cell) => /^:?-{3,}:?$/.test(cell));
+    };
+    const renderTable = (lines) => {
+      const wrapper = document.createElement("div");
+      wrapper.className = "net-table-scroll";
+      wrapper.tabIndex = 0;
+      wrapper.setAttribute("role", "region");
+      wrapper.setAttribute("aria-label", "비교 표를 가로로 살펴보기");
+      const hint = document.createElement("p");
+      hint.className = "net-table-hint";
+      hint.textContent = "좁은 화면에서는 표를 좌우로 움직여 전체 내용을 볼 수 있습니다.";
+      const table = document.createElement("table");
+      table.className = "net-table";
+      const head = document.createElement("thead");
+      const headRow = document.createElement("tr");
+      tableCells(lines[0]).forEach((cell) => {
+        const th = document.createElement("th");
+        th.scope = "col";
+        th.innerHTML = inline(cell);
+        headRow.append(th);
+      });
+      head.append(headRow);
+      table.append(head);
+      const body = document.createElement("tbody");
+      lines.slice(2).filter((line) => line.includes("|")).forEach((line) => {
+        const row = document.createElement("tr");
+        tableCells(line).forEach((cell) => {
+          const td = document.createElement("td");
+          td.innerHTML = inline(cell);
+          row.append(td);
+        });
+        body.append(row);
+      });
+      table.append(body);
+      wrapper.append(hint);
+      wrapper.append(table);
+      return wrapper;
+    };
     const flush = () => {
       if (!list.length) return;
       const ul = document.createElement("ul");
-      list.forEach((item) => {
-        const li = document.createElement("li");
-        li.innerHTML = inline(item);
-        ul.append(li);
-      });
-      prose.append(ul);
+      const ralItems = list.map(parseRalLine);
+      if (ralSummary && ralItems.every(Boolean)) {
+        ralList ||= (() => {
+          const items = document.createElement("ul");
+          items.className = "ral-summary__items";
+          ralSummary.append(items);
+          return items;
+        })();
+        ralItems.forEach((match) => {
+          const { level, detail } = match;
+          const li = document.createElement("li");
+          li.className = "ral-summary__item";
+
+          const marker = document.createElement("span");
+          marker.className = "ral-summary__marker";
+          marker.textContent = ({ R: "Recall", A: "Apply", L: "Lookup" })[level];
+
+          const content = document.createElement("div");
+          content.className = "ral-summary__content";
+          const paragraph = document.createElement("p");
+          paragraph.className = "ral-summary__detail";
+          paragraph.innerHTML = inline(detail);
+          content.append(paragraph);
+          li.append(marker, content);
+          ralList.append(li);
+        });
+      } else {
+        list.forEach((item) => {
+          const li = document.createElement("li");
+          li.innerHTML = inline(item);
+          ul.append(li);
+        });
+        (ralSummary || prose).append(ul);
+      }
       list = [];
     };
     const byParagraph = new Map();
@@ -57,19 +141,45 @@
     };
     appendIllustrations(-1);
     appendQuizzes(0);
-    for (const [index, text] of paragraphs.entries()) {
+    const blocks = paragraphs.flatMap((text) => {
+      const headingAt = String(text).indexOf("\n### 이 Lesson에서 가져갈 것");
+      if (headingAt < 0) return [text];
+      return [String(text).slice(0, headingAt), "### 이 Lesson에서 가져갈 것"];
+    }).filter((text) => String(text).length > 0);
+    for (const [index, text] of blocks.entries()) {
       const lines = String(text).split("\n");
       const heading = lines.length === 1 ? text.match(/^(#{3,4})\s+(.+)$/) : null;
       if (heading) {
         flush();
         // ## is the page boundary and renders as the page H1; body ###/#### become H2/H3.
-        const element = document.createElement(heading[1].length === 3 ? "h2" : "h3");
-        element.innerHTML = inline(heading[2]);
-        prose.append(element);
+        if (heading[2].trim() === "이 Lesson에서 가져갈 것") {
+          const section = document.createElement("section");
+          section.className = "ral-summary";
+          section.setAttribute("aria-label", "Lesson recap: Recall, Apply, Lookup");
+          ralList = document.createElement("ul");
+          ralList.className = "ral-summary__items";
+          section.append(ralList);
+          prose.append(section);
+          ralSummary = section;
+        } else {
+          ralSummary = null;
+          const element = document.createElement(heading[1].length === 3 ? "h2" : "h3");
+          element.innerHTML = inline(heading[2]);
+          prose.append(element);
+        }
+      } else if (isTable(lines)) {
+        flush();
+        prose.append(renderTable(lines));
+      } else if (lines.length === 1 && /^\s*[-*]\s+/.test(text) && ralSummary && parseRalLine(text.replace(/^\s*[-*]\s+/, ""))) {
+        const item = text.replace(/^\s*[-*]\s+/, "");
+        if (!list.length) list.push(item);
+        else list.push(item);
+        flush();
       } else if (lines.length > 1 && lines.every((line) => /^\s*(?:[-*]|\d+\.)\s+/.test(line))) {
         list.push(...lines.map((line) => line.replace(/^\s*(?:[-*]|\d+\.)\s+/, "")));
       } else {
         flush();
+        ralSummary = null;
         if (lines.length > 1) {
           const pre = document.createElement("pre");
           const code = document.createElement("code");
@@ -86,6 +196,7 @@
       appendQuizzes(index + 1);
     }
     flush();
+    if (ralSummary) prose.append(ralSummary);
     return prose;
   };
   const allItems = (course) => {
@@ -261,6 +372,90 @@
     });
     return section;
   };
+  // --- Glossary terms (#94): emoji, hover/focus/tap explanation, "더 자세히 보기" link. ---
+  const isWordChar = (ch) => /[A-Za-z0-9가-힣]/.test(ch || "");
+  const termAt = (text, alias) => {
+    // Earliest boundary-respecting match of alias (case-insensitive) in text, or -1.
+    const lower = text.toLowerCase(); const needle = alias.toLowerCase(); const ascii = /^[\x00-\x7f]+$/.test(needle);
+    for (let from = 0; ;) {
+      const at = lower.indexOf(needle, from);
+      if (at < 0) return -1;
+      const before = text[at - 1]; const after = text[at + needle.length];
+      if (!isWordChar(before) && (!ascii || !isWordChar(after))) return at;
+      from = at + 1;
+    }
+  };
+  const decorateTerms = (prose, course, item, page) => {
+    if (!course.glossary?.length) return;
+    const lessonId = item.lesson.id;
+    const excluded = new Set(page.term_exclude || []);
+    const position = new Map(); let offset = 0;
+    for (const entry of allItems(course)) { position.set(entry.lesson.id, offset); offset += (entry.lesson.pages || []).length; }
+    const here = position.get(lessonId) + (course.lessons.find((l) => l.id === lessonId)?.pages || []).indexOf(page);
+    const candidates = course.glossary.filter((term) => !excluded.has(term.id)
+      && (!term.only_in || term.only_in.includes(lessonId)) && !(term.not_in || []).includes(lessonId)
+      && (term.aliases || []).length);
+    const used = new Set();
+    const where = (term) => {
+      const a = term.anchor; const target = a && allItems(course).find((entry) => entry.lesson.id === a.lesson);
+      if (!target) return null;
+      const unitIndex = course.units.findIndex((unit) => unit.id === target.unit.id);
+      const lessonIndex = course.lessons.filter((l) => l.unit === target.unit.id).indexOf(target.lesson);
+      return { unitIndex, lessonIndex, pageIndex: a.page_index - 1, pos: position.get(a.lesson) + a.page_index - 1 };
+    };
+    const make = (term, text) => {
+      const dest = where(term); const later = dest && dest.pos > here;
+      const wrap = document.createElement("span"); wrap.className = "term-wrap";
+      const button = document.createElement("button"); button.type = "button";
+      button.className = `term${later ? " term--later" : ""}${term.emoji ? "" : " term--plain"}`;
+      if (term.emoji && !later) { const e = document.createElement("span"); e.className = "term-emoji"; e.setAttribute("aria-hidden", "true"); e.textContent = term.emoji; button.append(e); }
+      button.append(document.createTextNode(text));
+      const id = `term-pop-${term.id}`; button.setAttribute("aria-describedby", id);
+      const pop = document.createElement("span"); pop.className = "term-pop"; pop.id = id; pop.setAttribute("role", "note");
+      if (later) pop.textContent = `뒤에서 배워요 (Unit ${dest.unitIndex + 1} · Lesson ${dest.lessonIndex + 1} · Page ${dest.pageIndex + 1})`;
+      else {
+        pop.textContent = term.hover || "";
+        if (dest && dest.pos !== here) {
+          const link = document.createElement("a"); link.className = "term-more"; link.textContent = "더 자세히 보기";
+          link.href = routeFor(dest.unitIndex, dest.lessonIndex, dest.pageIndex); link.target = "_blank"; link.rel = "noopener";
+          pop.append(link);
+        }
+      }
+      wrap.append(button, pop);
+      const place = () => { pop.style.left = "0"; const r = pop.getBoundingClientRect(); const over = r.right - (document.documentElement.clientWidth - 8); if (over > 0) pop.style.left = `${-over}px`; };
+      const close = () => { wrap.classList.remove("open"); wrap.classList.remove("dismissed"); };
+      button.addEventListener("click", () => { wrap.classList.toggle("open"); wrap.classList.remove("dismissed"); place(); });
+      wrap.addEventListener("mouseenter", () => { wrap.classList.remove("dismissed"); place(); });
+      wrap.addEventListener("focusin", place);
+      wrap.addEventListener("mouseleave", () => wrap.classList.remove("dismissed"));
+      wrap.addEventListener("focusout", (event) => { if (!wrap.contains(event.relatedTarget)) close(); });
+      wrap.addEventListener("keydown", (event) => { if (event.key === "Escape") { wrap.classList.remove("open"); wrap.classList.add("dismissed"); button.focus(); event.stopPropagation(); } });
+      return wrap;
+    };
+    const nodes = [];
+    prose.querySelectorAll(":scope > p, :scope > ul > li").forEach((block) => {
+      const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
+      for (let node = walker.nextNode(); node; node = walker.nextNode()) if (!node.parentElement.closest("code, a, .term-wrap")) nodes.push(node);
+    });
+    for (let node of nodes) {
+      for (;;) {
+        const text = node.nodeValue; let best = null;
+        for (const term of candidates) {
+          if (used.has(term.id)) continue;
+          for (const alias of term.aliases) {
+            const at = termAt(text, alias);
+            if (at >= 0 && (!best || at < best.at || (at === best.at && alias.length > best.alias.length))) best = { term, alias, at };
+          }
+        }
+        if (!best) break;
+        used.add(best.term.id);
+        const matched = node.splitText(best.at); const rest = matched.splitText(best.alias.length);
+        const wrap = make(best.term, matched.nodeValue);
+        matched.replaceWith(wrap);
+        node = rest;
+      }
+    }
+  };
   const render = (course, state) => {
     const list = allItems(course);
     if (!list.length) return;
@@ -299,10 +494,14 @@
     let nextPage;
     const prose = renderProse(page.paragraphs || [], page.illustrations || [], inlineQuizzes,
       (quiz) => renderQuiz(quiz.questions, quiz.start_index || 0));
+    const recap = prose.querySelector(":scope > .ral-summary");
     main.append(prose);
+    decorateTerms(prose, course, item, page);
+    recap?.remove();
     const video = renderVideo(page.video);
     if (video) main.append(video);
     if (questions.length) main.append(renderQuiz(questions, page.question_start_index || 0));
+    if (recap) main.append(recap);
     const previous = list[state.lessonIndex - 1];
     const next = list[state.lessonIndex + 1];
     const navFooter = document.createElement("nav");
