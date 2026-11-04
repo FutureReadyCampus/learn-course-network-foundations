@@ -19,6 +19,101 @@ page_metadata:
     alt: "클라이언트와 서버가 양방향으로 데이터를 주고받습니다. 클라이언트가 FIN을 보내 자기 방향의 송신이 끝났다고 알려도 서버는 아직 보낼 데이터가 있으면 계속 보낼 수 있으며, 이렇게 한쪽 방향만 먼저 닫는 것을 half-close라고 합니다."
     caption: "FIN은 한 방향의 송신이 끝났음을 알립니다. 반대 방향은 계속 보낼 수 있습니다."
     after_paragraph: 3
+
+  questions:
+  - id: u7-l03-p01-q01
+    kind: choice
+    difficulty: easy
+    prompt: "TCP 연결에서 데이터는 보통 어느 방향으로 오갈 수 있나요?"
+    choices:
+    - id: a
+      text: "양쪽 방향"
+      feedback: "TCP 연결은 양쪽 방향으로 데이터를 주고받을 수 있습니다."
+    - id: b
+      text: "한쪽 방향으로만"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: c
+      text: "서버에서 클라이언트로만"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: d
+      text: "클라이언트에서 서버로만"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: e
+      text: "연결을 시작할 때만"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    answer: a
+  - id: u7-l03-p01-q02
+    kind: choice
+    difficulty: easy
+    prompt: "전화에서 한 사람이 말을 마쳐도 상대에게 남아 있을 수 있는 것은 무엇인가요?"
+    choices:
+    - id: a
+      text: "새 전화번호"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: b
+      text: "답할 말"
+      feedback: "한쪽이 말을 마쳐도 상대가 답할 일이 남아 있을 수 있습니다."
+    - id: c
+      text: "네트워크 주소"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: d
+      text: "연결 암호"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: e
+      text: "다른 통화"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    answer: b
+  - id: u7-l03-p01-q03
+    kind: choice
+    difficulty: easy
+    prompt: "능동 종료 측은 무엇으로 정해지나요?"
+    choices:
+    - id: a
+      text: "항상 클라이언트"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: b
+      text: "항상 서버"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: c
+      text: "먼저 FIN을 보내는 쪽"
+      feedback: "능동 종료는 먼저 FIN을 보낸 쪽을 가리킵니다."
+    - id: d
+      text: "IP 주소가 더 작은 쪽"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: e
+      text: "먼저 연결된 쪽"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    answer: c
+  - id: u7-l03-p01-q04
+    kind: choice
+    difficulty: easy
+    prompt: "상대가 FIN을 보낸 뒤에도 내 쪽에서 보낼 데이터가 남았다면 어떻게 되나요?"
+    choices:
+    - id: a
+      text: "연결이 즉시 완전히 끊긴다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: b
+      text: "데이터가 자동으로 삭제된다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: c
+      text: "상대가 보낸 FIN이 취소된다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: d
+      text: "반대 방향으로 계속 보낼 수 있다"
+      feedback: "FIN은 한 방향의 송신 종료를 알리므로 반대 방향은 계속 열려 있을 수 있습니다."
+    - id: e
+      text: "TCP가 새 연결을 만든다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    answer: d
+  question_placements:
+  - question_id: u7-l03-p01-q01
+    after_paragraph: 1
+  - question_id: u7-l03-p01-q02
+    after_paragraph: 2
+  - question_id: u7-l03-p01-q03
+    after_paragraph: 3
+  - question_id: u7-l03-p01-q04
+    after_paragraph: 4
 - terms:
   - 4-way handshake
   - FIN_WAIT_1
@@ -34,6 +129,101 @@ page_metadata:
     alt: "클라이언트가 FIN 1000을 보내고 서버가 ACK 1001로 답하는 첫 쌍, 서버가 FIN 5000을 보내고 클라이언트가 ACK 5001로 답하는 둘째 쌍이 차례로 오가며 두 쌍, 네 번의 메시지가 됩니다. 두 컴퓨터의 상태 이름도 단계마다 바뀝니다."
     caption: "FIN과 ACK가 이쪽에서 한 쌍, 저쪽에서 한 쌍 오가 네 번의 메시지가 됩니다."
     after_paragraph: 3
+
+  questions:
+  - id: u7-l03-p02-q01
+    kind: choice
+    difficulty: easy
+    prompt: "먼저 FIN을 보낸 뒤 처음 들어가는 상태는 무엇인가요?"
+    choices:
+    - id: a
+      text: "FIN_WAIT_2"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: b
+      text: "CLOSE_WAIT"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: c
+      text: "LAST_ACK"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: d
+      text: "TIME_WAIT"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: e
+      text: "FIN_WAIT_1"
+      feedback: "FIN을 보낸 쪽은 먼저 FIN_WAIT_1에서 확인을 기다립니다."
+    answer: e
+  - id: u7-l03-p02-q02
+    kind: choice
+    difficulty: easy
+    prompt: "FIN을 보낸 쪽은 상대의 ACK를 받은 뒤 어떤 상태에서 상대 FIN을 기다리나요?"
+    choices:
+    - id: a
+      text: "FIN_WAIT_2"
+      feedback: "ACK를 받으면 FIN_WAIT_2에서 상대가 자기 FIN을 보낼 때까지 기다립니다."
+    - id: b
+      text: "FIN_WAIT_1"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: c
+      text: "CLOSE_WAIT"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: d
+      text: "LISTEN"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: e
+      text: "CLOSED"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    answer: a
+  - id: u7-l03-p02-q03
+    kind: choice
+    difficulty: easy
+    prompt: "클라이언트가 FIN을 보낸 뒤에도 서버에 응답이 남아 있으면 서버는 무엇을 할 수 있나요?"
+    choices:
+    - id: a
+      text: "즉시 전원을 끈다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: b
+      text: "응답 데이터를 더 보낼 수 있다"
+      feedback: "한쪽 FIN 뒤에도 반대 방향의 송신은 계속될 수 있습니다."
+    - id: c
+      text: "클라이언트의 FIN을 지운다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: d
+      text: "새 IP 주소를 만든다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: e
+      text: "반드시 연결을 다시 시작한다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    answer: b
+  - id: u7-l03-p02-q04
+    kind: choice
+    difficulty: easy
+    prompt: "종료 애니메이션에 적힌 숫자는 이 Lesson에서 어떤 역할을 하나요?"
+    choices:
+    - id: a
+      text: "모든 TCP 연결에서 정해진 고정 번호입니다."
+      feedback: "숫자는 예시이며 실제 연결마다 달라질 수 있습니다."
+    - id: b
+      text: "패킷 크기를 정합니다."
+      feedback: "여기서는 크기가 아니라 메시지 흐름을 보여 줍니다."
+    - id: c
+      text: "동작을 설명하기 위한 예시입니다."
+      feedback: "숫자는 동작 설명용 예시이며, 순서번호 계산은 이 페이지의 목표가 아닙니다."
+    - id: d
+      text: "서버의 포트 번호를 뜻합니다."
+      feedback: "숫자는 포트 번호가 아니라 설명용 순서번호 예시입니다."
+    - id: e
+      text: "먼저 닫는 쪽을 정합니다."
+      feedback: "먼저 닫는 쪽은 누가 먼저 FIN을 보내는지로 정해집니다."
+    answer: c
+  question_placements:
+  - question_id: u7-l03-p02-q01
+    after_paragraph: 1
+  - question_id: u7-l03-p02-q02
+    after_paragraph: 2
+  - question_id: u7-l03-p02-q03
+    after_paragraph: 3
+  - question_id: u7-l03-p02-q04
+    after_paragraph: 4
 - terms:
   - CLOSE_WAIT
   - LAST_ACK
@@ -48,6 +238,78 @@ page_metadata:
     alt: "서버가 클라이언트의 FIN을 ACK로 확인하고 CLOSE_WAIT가 됩니다. 서버 프로그램이 남은 응답과 정리를 마치고 소켓을 닫으면 서버도 FIN을 보내 LAST_ACK가 되고, 마지막 ACK가 오면 종료 절차가 끝납니다."
     caption: "CLOSE_WAIT는 상대 FIN을 확인했지만 내 쪽 정리는 끝나지 않은 상태입니다. 오래 남을 때는 소켓을 닫았는지 로그와 함께 확인합니다."
     after_paragraph: 1
+
+  questions:
+  - id: u7-l03-p03-q01
+    kind: choice
+    difficulty: easy
+    prompt: "상대의 FIN을 받은 쪽은 먼저 무엇을 보내 확인하나요?"
+    choices:
+    - id: a
+      text: "SYN"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: b
+      text: "새 FIN 두 개"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: c
+      text: "RST만"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: d
+      text: "ACK"
+      feedback: "상대 FIN을 받으면 ACK로 확인합니다."
+    - id: e
+      text: "DNS 요청"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    answer: d
+  - id: u7-l03-p03-q02
+    kind: choice
+    difficulty: easy
+    prompt: "상대 FIN을 ACK한 뒤, 내 프로그램의 송신이 아직 끝나지 않은 상태는 무엇인가요?"
+    choices:
+    - id: a
+      text: "FIN_WAIT_1"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: b
+      text: "FIN_WAIT_2"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: c
+      text: "TIME_WAIT"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: d
+      text: "LISTEN"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: e
+      text: "CLOSE_WAIT"
+      feedback: "CLOSE_WAIT는 상대 FIN은 확인했지만 내 쪽 정리는 남은 상태입니다."
+    answer: e
+  - id: u7-l03-p03-q03
+    kind: choice
+    difficulty: easy
+    prompt: "내 프로그램이 남은 일을 마치고 소켓을 닫으면 이쪽은 무엇을 보내나요?"
+    choices:
+    - id: a
+      text: "FIN"
+      feedback: "남은 처리가 끝나면 자기 방향의 종료를 알리는 FIN을 보냅니다."
+    - id: b
+      text: "SYN"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: c
+      text: "DNS 응답"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: d
+      text: "새 IP 주소"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: e
+      text: "MTU"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    answer: a
+  question_placements:
+  - question_id: u7-l03-p03-q01
+    after_paragraph: 1
+  - question_id: u7-l03-p03-q02
+    after_paragraph: 2
+  - question_id: u7-l03-p03-q03
+    after_paragraph: 3
 - terms:
   - TIME_WAIT
   - MSL
@@ -64,6 +326,78 @@ page_metadata:
     alt: "클라이언트가 보낸 마지막 ACK가 사라지면 서버가 FIN을 다시 보내고, TIME_WAIT 상태의 클라이언트가 ACK를 한 번 더 보냅니다. 또한 이전 연결의 늦은 세그먼트가 같은 IP와 포트를 쓰는 새 연결에 섞이지 않게 막습니다."
     caption: "TIME_WAIT는 마지막 ACK가 사라졌을 때 다시 응답하고 이전 연결의 늦은 세그먼트가 새 연결에 섞이지 않게 합니다. 대기 시간은 운영체제 구현에 따라 다릅니다."
     after_paragraph: 1
+
+  questions:
+  - id: u7-l03-p04-q01
+    kind: choice
+    difficulty: easy
+    prompt: "보통 마지막 ACK를 보낸 뒤 먼저 FIN을 보낸 쪽이 들어가는 상태는 무엇인가요?"
+    choices:
+    - id: a
+      text: "CLOSE_WAIT"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: b
+      text: "TIME_WAIT"
+      feedback: "먼저 FIN을 보낸 쪽은 마지막 ACK 뒤 TIME_WAIT를 거치는 것이 일반적입니다."
+    - id: c
+      text: "LISTEN"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: d
+      text: "ESTABLISHED"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: e
+      text: "SYN_SENT"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    answer: b
+  - id: u7-l03-p04-q02
+    kind: choice
+    difficulty: easy
+    prompt: "마지막 ACK가 사라져 상대 FIN이 다시 오면 TIME_WAIT 쪽은 무엇을 할 수 있나요?"
+    choices:
+    - id: a
+      text: "새 연결을 강제로 닫는다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: b
+      text: "FIN을 다른 포트로 옮긴다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: c
+      text: "ACK를 다시 보낼 수 있다"
+      feedback: "TIME_WAIT는 다시 도착한 FIN에 ACK를 보낼 수 있도록 남습니다."
+    - id: d
+      text: "상대 데이터를 삭제한다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: e
+      text: "IP 주소를 바꾼다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    answer: c
+  - id: u7-l03-p04-q03
+    kind: choice
+    difficulty: easy
+    prompt: "TIME_WAIT가 이전 연결의 늦은 데이터를 새 연결에 섞이지 않게 할 때 구분에 쓰이는 조합은 무엇인가요?"
+    choices:
+    - id: a
+      text: "화면 크기와 해상도"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: b
+      text: "케이블 색과 길이"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: c
+      text: "사용자 이름과 암호"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: d
+      text: "IP 주소와 포트"
+      feedback: "연결의 두 끝점은 IP 주소와 포트 조합으로 구분됩니다."
+    - id: e
+      text: "파일 이름과 확장자"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    answer: d
+  question_placements:
+  - question_id: u7-l03-p04-q01
+    after_paragraph: 1
+  - question_id: u7-l03-p04-q02
+    after_paragraph: 2
+  - question_id: u7-l03-p04-q03
+    after_paragraph: 3
 - terms:
   - 자원 회수
   illustrations:
@@ -77,6 +411,78 @@ page_metadata:
     alt: "연결 상태 칸 100개가 모두 차 있고, 내 연결의 칸은 끊은 뒤에도 TIME_WAIT 동안 남아 있다가 CLOSED가 되면 정리되어 99가 되며 새 연결이 그 자리에 기록될 수 있습니다."
     caption: "TIME_WAIT 동안에는 연결 상태 기록이 남아 있고, 정리된 뒤에 새 연결이 그 자리를 쓸 수 있습니다. 칸 100개는 설명용 비유입니다."
     after_paragraph: 1
+
+  questions:
+  - id: u7-l03-p05-q01
+    kind: choice
+    difficulty: easy
+    prompt: "호텔 비유에서 체크아웃한 객실을 바로 다음 손님에게 주지 않는 이유는 무엇인가요?"
+    choices:
+    - id: a
+      text: "객실 번호를 바꾸려고"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: b
+      text: "손님이 다시 체크인할 때까지"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: c
+      text: "호텔 인터넷을 끄려고"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: d
+      text: "방 크기를 늘리려고"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: e
+      text: "청소와 점검이 남아 있어서"
+      feedback: "체크아웃 뒤 정리가 끝나야 다음 손님을 받을 수 있다는 비유입니다."
+    answer: e
+  - id: u7-l03-p05-q02
+    kind: choice
+    difficulty: easy
+    prompt: "애니메이션의 100칸은 무엇을 설명하는 비유인가요?"
+    choices:
+    - id: a
+      text: "연결 관리 자원이 정리되는 시점"
+      feedback: "칸의 수는 설명용이며 실제 고정 소켓 개수를 뜻하지 않습니다."
+    - id: b
+      text: "실제 운영체제에 고정된 소켓 100개"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: c
+      text: "서버가 받을 수 있는 정확한 사용자 수"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: d
+      text: "포트 번호의 최댓값"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: e
+      text: "호텔의 실제 객실 수"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    answer: a
+  - id: u7-l03-p05-q03
+    kind: choice
+    difficulty: easy
+    prompt: "TIME_WAIT가 보인다는 사실 하나만으로 장애라고 할 수 있나요?"
+    choices:
+    - id: a
+      text: "그렇다. 항상 장애다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: b
+      text: "아니다. 주변 상황도 함께 봐야 한다"
+      feedback: "상태만으로 장애를 단정하지 말고 연결량, 한도, 오류와 지연을 함께 봅니다."
+    - id: c
+      text: "그렇다. 서버를 즉시 재부팅해야 한다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: d
+      text: "아니다. 연결이 없다는 뜻이다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: e
+      text: "그렇다. 인터넷이 끊겼다는 뜻이다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    answer: b
+  question_placements:
+  - question_id: u7-l03-p05-q01
+    after_paragraph: 1
+  - question_id: u7-l03-p05-q02
+    after_paragraph: 2
+  - question_id: u7-l03-p05-q03
+    after_paragraph: 3
 - terms: []
   illustrations:
   - file: assets/animations/l27-daily-who-hangs-up-first.svg
@@ -89,6 +495,55 @@ page_metadata:
     alt: "왼쪽 칸에서는 클라이언트가 먼저 FIN을 보내 클라이언트가 TIME_WAIT를 거치고, 오른쪽 칸에서는 서버가 먼저 FIN을 보내 서버가 TIME_WAIT를 거칩니다. 먼저 FIN을 보낸 쪽이 TIME_WAIT를 거친다고 표시됩니다."
     caption: "능동 종료와 수동 종료는 클라이언트·서버의 고정된 역할이 아니라 누가 먼저 FIN을 보냈는지로 정해집니다."
     after_paragraph: 0
+
+  questions:
+  - id: u7-l03-p06-q01
+    kind: choice
+    difficulty: easy
+    prompt: "능동 종료 측은 클라이언트와 서버 중 누구로 고정되나요?"
+    choices:
+    - id: a
+      text: "항상 클라이언트"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: b
+      text: "항상 서버"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: c
+      text: "고정되지 않는다"
+      feedback: "누가 먼저 FIN을 보냈는지에 따라 능동 종료 측이 정해집니다."
+    - id: d
+      text: "항상 라우터"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: e
+      text: "항상 웹 브라우저"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    answer: c
+  - id: u7-l03-p06-q02
+    kind: choice
+    difficulty: easy
+    prompt: "직접 통신 규칙을 설계할 때 종료 시점을 정하는 이유는 무엇인가요?"
+    choices:
+    - id: a
+      text: "항상 클라이언트만 종료하게 하려고"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: b
+      text: "포트 번호를 없애려고"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: c
+      text: "IP 주소를 새로 받으려고"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: d
+      text: "양쪽이 데이터를 마친 뒤 정리하도록 하려고"
+      feedback: "프로토콜은 대화 순서와 종료 조건을 정해 양쪽이 안전하게 정리하도록 합니다."
+    - id: e
+      text: "응답 데이터를 건너뛰려고"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    answer: d
+  question_placements:
+  - question_id: u7-l03-p06-q01
+    after_paragraph: 1
+  - question_id: u7-l03-p06-q02
+    after_paragraph: 2
 - terms: []
   illustrations:
   - file: assets/animations/l27-daily-three-groups-call.svg
@@ -101,6 +556,78 @@ page_metadata:
     alt: "TCP 상태를 세 무리로 묶습니다. CLOSED와 LISTEN의 연결 전·기다림 무리, SYN_SENT·SYN_RECEIVED·ESTABLISHED의 시작·통신 무리, FIN_WAIT_1·FIN_WAIT_2·CLOSE_WAIT·LAST_ACK·TIME_WAIT·CLOSING의 정리 중 무리입니다."
     caption: "이름 전체보다 어느 단계의 역할인지 기억합니다. 자세한 전이는 상태도에서 찾아봅니다."
     after_paragraph: 1
+
+  questions:
+  - id: u7-l03-p07-q01
+    kind: choice
+    difficulty: easy
+    prompt: "TCP 상태를 크게 묶어 볼 때 연결 전이나 대기 중의 예는 무엇인가요?"
+    choices:
+    - id: a
+      text: "FIN_WAIT_1과 FIN_WAIT_2"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: b
+      text: "CLOSE_WAIT와 LAST_ACK"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: c
+      text: "TIME_WAIT와 CLOSING"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: d
+      text: "ESTABLISHED와 TIME_WAIT"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: e
+      text: "CLOSED와 LISTEN"
+      feedback: "CLOSED와 LISTEN은 아직 연결되지 않았거나 연결 요청을 기다리는 큰 무리에 속합니다."
+    answer: e
+  - id: u7-l03-p07-q02
+    kind: choice
+    difficulty: easy
+    prompt: "ESTABLISHED는 어떤 단계의 상태인가요?"
+    choices:
+    - id: a
+      text: "연결이 수립되어 통신하는 단계"
+      feedback: "ESTABLISHED는 연결이 수립된 상태입니다."
+    - id: b
+      text: "연결 전 대기 단계"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: c
+      text: "종료 뒤 자원 정리 단계"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: d
+      text: "네트워크 주소를 찾는 단계"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: e
+      text: "케이블 연결을 검사하는 단계"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    answer: a
+  - id: u7-l03-p07-q03
+    kind: choice
+    difficulty: easy
+    prompt: "낯선 TCP 상태 이름을 만났을 때 이 Lesson의 쉬운 방법은 무엇인가요?"
+    choices:
+    - id: a
+      text: "이름을 전부 외우기 전에는 넘어가지 않는다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: b
+      text: "먼저 큰 연결 단계 중 어디에 속하는지 본다"
+      feedback: "먼저 연결 전, 통신 중, 종료 중 어느 큰 단계인지 살펴봅니다."
+    - id: c
+      text: "항상 서버 오류라고 판단한다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: d
+      text: "상태 이름을 포트 번호로 바꾼다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: e
+      text: "FIN과 ACK를 무시한다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    answer: b
+  question_placements:
+  - question_id: u7-l03-p07-q01
+    after_paragraph: 2
+  - question_id: u7-l03-p07-q02
+    after_paragraph: 3
+  - question_id: u7-l03-p07-q03
+    after_paragraph: 3
 - terms: []
   illustrations:
   - file: assets/animations/l27-daily-hangup-step-by-step.svg
@@ -113,6 +640,78 @@ page_metadata:
     alt: "클라이언트가 FIN을 보내 FIN_WAIT_1, 서버가 ACK를 보내 CLOSE_WAIT, 서버가 FIN을 보내 LAST_ACK, 클라이언트가 ACK를 보내 서버가 CLOSED가 되는 순서입니다. 클라이언트는 TIME_WAIT 대기 뒤 CLOSED가 됩니다."
     caption: "흔한 종료 순서입니다. 실제로는 ACK와 FIN이 한 세그먼트에 함께 실릴 수도 있습니다."
     after_paragraph: 4
+
+  questions:
+  - id: u7-l03-p08-q01
+    kind: choice
+    difficulty: easy
+    prompt: "흔한 종료 예에서 첫 번째로 FIN을 보내는 쪽은 누구인가요?"
+    choices:
+    - id: a
+      text: "항상 서버"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: b
+      text: "라우터"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: c
+      text: "클라이언트"
+      feedback: "이 예시는 클라이언트가 먼저 종료를 시작하는 경우를 따라갑니다."
+    - id: d
+      text: "DNS 서버"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: e
+      text: "스위치"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    answer: c
+  - id: u7-l03-p08-q02
+    kind: choice
+    difficulty: easy
+    prompt: "첫 FIN을 ACK한 뒤 서버에 보낼 데이터가 남으면 어떻게 되나요?"
+    choices:
+    - id: a
+      text: "서버 데이터가 즉시 지워진다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: b
+      text: "클라이언트가 새 FIN을 대신 보낸다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: c
+      text: "연결이 즉시 CLOSED가 된다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: d
+      text: "서버가 데이터를 더 보낼 수 있다"
+      feedback: "첫 FIN은 클라이언트 방향의 송신 종료만 알리므로 서버는 남은 데이터를 보낼 수 있습니다."
+    - id: e
+      text: "TIME_WAIT가 서버에 바로 생긴다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    answer: d
+  - id: u7-l03-p08-q03
+    kind: choice
+    difficulty: easy
+    prompt: "ACK와 FIN이 실제 통신에서 한 세그먼트에 함께 실릴 수 있나요?"
+    choices:
+    - id: a
+      text: "아니다. TCP는 ACK만 보낼 수 있다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: b
+      text: "아니다. FIN은 IP 헤더에만 있다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: c
+      text: "그렇다. 단 UDP에서만 가능하다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: d
+      text: "아니다. 세그먼트에는 한 비트만 있다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: e
+      text: "그렇다"
+      feedback: "ACK와 FIN은 실제로 한 세그먼트에 함께 실릴 수 있습니다."
+    answer: e
+  question_placements:
+  - question_id: u7-l03-p08-q01
+    after_paragraph: 1
+  - question_id: u7-l03-p08-q02
+    after_paragraph: 2
+  - question_id: u7-l03-p08-q03
+    after_paragraph: 3
 - terms: []
   illustrations:
   - file: assets/animations/l27-daily-three-to-remember.svg
@@ -125,6 +724,77 @@ page_metadata:
     alt: "카드 세 장이 차례로 나타납니다. 한쪽이 FIN으로 자기 송신을 끝내고, 상대가 남은 송신을 마친 뒤 자기 FIN을 보내며, 먼저 FIN을 보낸 쪽이 TIME_WAIT에서 기다린다는 내용입니다."
     caption: "TIME_WAIT는 먼저 FIN을 보낸 쪽에 남습니다. 서버가 먼저 FIN을 보냈다면 서버 쪽입니다."
     after_paragraph: 2
+  questions:
+  - id: u7-l03-p09-q01
+    kind: choice
+    difficulty: easy
+    prompt: "보통 TIME_WAIT를 거치는 쪽은 누구인가요?"
+    choices:
+    - id: a
+      text: "먼저 FIN을 보낸 쪽"
+      feedback: "흔한 종료 흐름에서는 능동 종료 측, 즉 먼저 FIN을 보낸 쪽이 TIME_WAIT를 거칩니다."
+    - id: b
+      text: "항상 서버"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: c
+      text: "항상 클라이언트"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: d
+      text: "마지막 데이터를 받은 쪽"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: e
+      text: "IP 주소가 큰 쪽"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    answer: a
+  - id: u7-l03-p09-q02
+    kind: choice
+    difficulty: easy
+    prompt: "서버가 먼저 FIN을 보냈다면 TIME_WAIT는 어느 쪽에 생길 수 있나요?"
+    choices:
+    - id: a
+      text: "항상 클라이언트 쪽"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: b
+      text: "서버 쪽"
+      feedback: "누가 먼저 FIN을 보냈는지에 따라 서버도 TIME_WAIT를 거칠 수 있습니다."
+    - id: c
+      text: "라우터 쪽"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: d
+      text: "DNS 서버 쪽"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: e
+      text: "양쪽 모두 반드시 같은 시간 동안"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    answer: b
+  - id: u7-l03-p09-q03
+    kind: choice
+    difficulty: easy
+    prompt: "전체 종료 흐름을 가장 잘 요약한 것은 무엇인가요?"
+    choices:
+    - id: a
+      text: "클라이언트가 서버의 모든 데이터를 삭제한다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: b
+      text: "서버만 FIN을 보내면 양쪽이 즉시 끝난다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: c
+      text: "각자 FIN으로 송신을 끝내고 상대가 ACK로 확인한다"
+      feedback: "각 방향의 송신은 FIN으로 끝을 알리고 상대의 ACK로 확인합니다."
+    - id: d
+      text: "먼저 FIN을 보낸 쪽은 기다리지 않는다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: e
+      text: "ACK는 연결 시작에만 사용된다"
+      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    answer: c
+  question_placements:
+  - question_id: u7-l03-p09-q01
+    after_paragraph: 1
+  - question_id: u7-l03-p09-q02
+    after_paragraph: 2
+  - question_id: u7-l03-p09-q03
+    after_paragraph: 3
 animations_dir: units/05-tcp-and-udp/lessons/03-tcp-연결종료-및-상태변화/assets/animations
 additional_sources:
 - https://studio.futurereadycampus.com/course-network/wiki/oeweo-network/lesson-27.html
