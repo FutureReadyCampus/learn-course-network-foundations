@@ -104,7 +104,6 @@ page_metadata:
 - terms:
   - Socket(소켓)
   - Stream(스트림)
-  - User mode(사용자 모드)
   illustrations:
   - file: assets/animations/l15-daily-hose-flow.svg
     title: "호스로 이어지는 물줄기"
@@ -375,7 +374,6 @@ page_metadata:
     after_paragraph: 2
 - terms:
   - Encapsulation(캡슐화)
-  - FCS(Frame Check Sequence)
   illustrations:
   - file: assets/animations/l15-daily-outer-box.svg
     title: "큰 상자는 중간 상자 한도보다 크다"
@@ -559,7 +557,7 @@ additional_sources:
 - https://github.com/physical-spark/course-network/blob/90a5cc40dec981b0e37fa334f3fae8ba673c8f32/studio/wiki/honja-network/01-3.md
 - https://github.com/physical-spark/course-network/blob/90a5cc40dec981b0e37fa334f3fae8ba673c8f32/studio/wiki/honja-network/03-1.md
 ---
-핵심 개념을 주제별로 정리했다.
+같은 파일을 보내는데 왜 어떤 곳에서는 Stream, 다른 곳에서는 Segment·Packet·Frame이라고 부를까? 이번 Lesson에서는 프로그램이 다루는 데이터 흐름과 계층별 전달 단위의 이름을 연결한다. 크기 계산과 TCP의 상세 동작은 뒤에서 배우고, 여기서는 무엇을 나누고 무엇을 감싸는지 구별해 보자.
 
 ## 계층마다 달라지는 데이터 이름
 <!-- learn-page-id: u4l15-data-unit-names -->
@@ -598,12 +596,12 @@ TCP 소켓에서 프로그램이 주고받는 연속된 데이터 흐름을 스�
 
 TCP에는 하나의 Segment에 실을 수 있는 데이터 크기의 기준인 MSS(Maximum Segment Size)가 있다. MSS는 TCP 데이터의 최대 크기이고, MTU는 IP 패킷 전체의 최대 크기이므로 둘은 같은 값이 아니다.
 
-MSS는 MTU에서 IP 헤더와 TCP 헤더 크기를 뺀 값이라는 계산은 Unit 7 Lesson 2 「TCP 연결과정」에서 해 본다. 우선은 MTU가 바깥 IP 패킷의 상한이고 MSS가 TCP 데이터 조각의 상한이라는 점을 구별하자.
+MTU와 헤더 길이로 MSS를 추정하는 계산은 [Unit 7 Lesson 2의 MSS 설명](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/7/lesson/2/page/6)에서 해 본다. 우선은 MTU가 바깥 IP 패킷의 상한이고 MSS가 TCP 데이터 조각의 상한이라는 점을 구별하자.
 
 ### 이 Lesson에서 가져갈 것
 
 - **기억하기 (Recall):** MTU는 링크 IP Packet 한도, MSS는 TCP Segment 안의 데이터 크기 기준이다.
-- **적용하기 (Apply):** Ethernet MTU에서 IP·TCP 헤더를 빼 MSS를 추정한다.
+- **적용하기 (Apply):** MTU는 IP 패킷 전체, MSS는 TCP 데이터 부분의 크기라는 차이를 구별한다.
 - **찾아보기 (Lookup):** 옵션이 있는 TCP 헤더와 경로 MTU 반영은 TCP 문서에서 확인한다.
 
 ## Stream을 Segment로 나누기
@@ -626,12 +624,12 @@ TCP Segment에는 TCP 헤더가 붙고, IP 계층은 그 전체를 페이로드�
 
 MTU는 기본 예에서 IP 패킷의 최대 크기다. Ethernet 프레임에는 IP 패킷 바깥의 링크 헤더와 트레일러가 더해지므로, 프레임 전체 크기와 MTU를 같은 값으로 보면 안 된다. IP 패킷이 실제 링크로 나갈 때에는 그 링크에서 쓸 프레임에 담긴다.
 
-TCP를 쓰는 예의 흐름은 `Stream → Segment → IP Packet → Ethernet Frame`이다. 계층 이름으로 기억하면 소켓은 Stream, TCP는 Segment와 MSS, IP는 Packet과 MTU, Ethernet 데이터 링크는 Frame을 다룬다. 물리 계층은 그 프레임을 비트와 신호로 전달한다.
+TCP를 쓰는 예의 흐름은 `Stream → Segment → IP Packet → Ethernet Frame`이다. 계층 이름으로 기억하면 소켓은 Stream, TCP는 Segment와 MSS, IP는 Packet과 MTU, Ethernet 데이터 링크는 Frame을 다룬다. 물리 계층은 그 프레임을 비트와 신호로 전달한다. 이름 사이의 포함 관계가 헷갈리면 [Lesson 3의 캡슐화 정의](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/4/lesson/3/page/2)와 [역캡슐화 정의](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/4/lesson/3/page/4)를 다시 확인하자.
 
 ### 이 Lesson에서 가져갈 것
 
 - **기억하기 (Recall):** IP Packet은 Segment를, Ethernet Frame은 Packet을 페이로드로 담는다.
-- **적용하기 (Apply):** MTU가 프레임 전체가 아닌 IP Packet 기준인 점을 적용해 크기를 계산한다.
+- **적용하기 (Apply):** MTU가 프레임 전체가 아닌 IP 패킷 기준임을 구별한다.
 - **찾아보기 (Lookup):** VLAN 태그와 링크별 MTU 차이는 장비 규격에서 확인한다.
 
 ## UDP Datagram과 용어 구별
