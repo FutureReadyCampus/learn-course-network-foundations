@@ -13,7 +13,7 @@ wiki_diagram: units/07-network-devices/lessons/01-강의소개-및-교육목표/
 
 ## 먼저 살펴볼 기초 개념
 
-패킷의 생성 원리와 User mode·Kernel mode의 구분은 장비 구조를 이해하는 데 도움이 된다. 이 개념이 낯설다면 Unit 1–6의 관련 설명을 먼저 읽고, 여기의 장치 구조와 연결해 살펴본다. 그림을 볼 때는 각 장치가 어느 계층에서 어떤 데이터를 처리하는지 따라간다.
+패킷의 생성 원리와 User mode·Kernel mode의 구분은 장비 구조를 이해하는 데 도움이 된다. 이 개념이 낯설다면 기본편 Unit 1~10 중 [Unit 1의 User mode·Kernel mode 설명](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/1/lesson/4/page/1)과 [Unit 4의 데이터 전달 단위](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/4/lesson/5/page/1)를 먼저 읽고, 여기의 장치 구조와 연결해 살펴본다. 그림을 볼 때는 각 장치가 어느 계층에서 어떤 데이터를 처리하는지 따라간다.
 
 ## 공유기 설정을 찾아보는 경험
 
