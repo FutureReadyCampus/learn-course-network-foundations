@@ -261,6 +261,21 @@
   anchor:
     lesson: u1-layers
     page: layer-definition
+- id: l1
+  tier: hero
+  category: 약속
+  emoji: 1️⃣
+  ko: 1계층(L1)
+  en: Layer 1
+  aliases:
+  - L1
+  - Layer 1
+  - 1계층
+  - 물리 계층
+  hover: 전기 신호나 빛·전파로 비트를 실제 매체에 실어 나르는 계층이에요. 케이블과 NIC의 물리 부분이 여기서 일해요.
+  anchor:
+    lesson: u1-user-kernel
+    page: layer-numbers
 - id: l2
   tier: hero
   category: 약속
@@ -272,6 +287,7 @@
   - Layer 2
   - 2계층
   - 데이터 링크 계층
+  - 링크 계층
   hover: 같은 LAN 안에서 이웃한 장치끼리 프레임을 주고받는 계층이에요. MAC 주소를 보고 전달하고, 스위치가 여기서 일해요.
   anchor:
     lesson: u1-user-kernel
@@ -287,6 +303,7 @@
   - Layer 3
   - 3계층
   - 네트워크 계층
+  - 인터넷 계층
   hover: IP 주소를 보고 패킷을 다른 네트워크까지 보내는 계층이에요. 어느 길로 갈지 고르는 라우터가 여기서 일해요.
   anchor:
     lesson: u1-user-kernel
@@ -303,6 +320,36 @@
   - 4계층
   - 전송 계층
   hover: 포트 번호로 어느 프로그램에게 줄지 정하고, TCP나 UDP로 전달 방식을 고르는 계층이에요.
+  anchor:
+    lesson: u1-user-kernel
+    page: layer-numbers
+- id: l5
+  tier: hero
+  category: 약속
+  emoji: 5️⃣
+  ko: 5계층(L5)
+  en: Layer 5
+  aliases:
+  - L5
+  - Layer 5
+  - 5계층
+  - 세션 계층
+  hover: OSI에서 통신의 시작과 끝, 대화 상태(세션)를 관리하는 계층이에요. 이 과정에서는 L7과 함께 응용 쪽 기능으로 묶어 다뤄요.
+  anchor:
+    lesson: u1-user-kernel
+    page: layer-numbers
+- id: l6
+  tier: hero
+  category: 약속
+  emoji: 6️⃣
+  ko: 6계층(L6)
+  en: Layer 6
+  aliases:
+  - L6
+  - Layer 6
+  - 6계층
+  - 표현 계층
+  hover: OSI에서 데이터를 주고받기 좋은 형태로 바꾸는 계층이에요. 인코딩이나 암호화가 여기에 속해요. 이 과정에서는 L7과 함께 응용 쪽 기능으로 묶어 다뤄요.
   anchor:
     lesson: u1-user-kernel
     page: layer-numbers
