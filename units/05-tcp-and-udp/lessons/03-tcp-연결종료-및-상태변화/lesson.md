@@ -131,7 +131,6 @@ additional_sources:
 - https://github.com/FutureReadyCampus/course-network/blob/90a5cc40dec981b0e37fa334f3fae8ba673c8f32/studio/wiki/honja-network/04-2.md
 - https://www.rfc-editor.org/rfc/rfc9293.html
 ---
-
 앞 Lesson에서는 SYN, SYN+ACK, ACK로 TCP 연결을 시작하는 과정을 살펴봤다. 이번에는 데이터 송수신을 마친 뒤 양쪽이 어떻게 각자 보낼 일을 끝내고 연결 상태를 정리하는지 따라간다. 먼저 끊자고 한 쪽과 요청을 받은 쪽의 역할은 클라이언트·서버라는 이름으로 고정되지 않는다.
 
 ## FIN · 연결을 끝내자는 요청
@@ -222,6 +221,7 @@ TCP 표준은 이 대기 시간을 2 MSL(Maximum Segment Lifetime, 세그먼트�
 - **찾아보기 (Lookup):** 서비스가 연결을 닫는 시점은 애플리케이션 프로토콜과 구현 문서에서 확인한다.
 
 ## TCP 상태는 세 무리로 읽자
+<!-- learn-page-id: tcp-state-definition -->
 
 상태 이름이 많아 보여도 연결의 큰 흐름으로 묶으면 읽기 쉽다. 아래 표는 상태도를 대신하는 전체 그림이 아니라, 이름을 세 단계로 분류해 기억하기 위한 요약이다.
 

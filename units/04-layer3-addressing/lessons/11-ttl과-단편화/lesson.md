@@ -604,7 +604,6 @@ page_metadata:
   - 재조립(Reassembly)
 animations_dir: units/04-layer3-addressing/lessons/11-ttl과-단편화/assets/animations
 ---
-
 ## 패킷은 경로를 따라 이동하고, 크기에도 한계가 있다
 
 웹 페이지를 열면 IP 패킷은 내 컴퓨터에서 출발해 여러 라우터를 거쳐 서버로 간다. 이때 패킷은 목적지에 도착하기 전까지 무한히 떠돌아서는 안 되고, 지나가는 링크마다 한 번에 실을 수 있는 크기도 다를 수 있다. 이 Lesson에서는 두 질문을 따라간다. **패킷은 경로에서 얼마나 오래 전달될 수 있을까?** 그리고 **중간 구간이 패킷을 다 실을 수 없으면 어떻게 될까?**
@@ -678,6 +677,7 @@ TTL이 이동 횟수의 한도라면, **MTU(Maximum Transmission Unit)**는 한 
 - **찾아보기 (Lookup):** Path MTU discovery 동작은 IPv4·IPv6 환경별 문서에서 확인한다.
 
 ## IPv4 단편화는 큰 패킷의 페이로드를 나누는 일이다
+<!-- learn-page-id: fragmentation-definition -->
 
 **IPv4 단편화(Fragmentation)**는 MTU보다 큰 IPv4 패킷을 더 작은 IP 패킷 조각들로 나누는 일이다. 위 예에서 1,500바이트 패킷이 MTU 1,400바이트인 링크에 도착하면, IPv4 라우터는 단편화가 허용된 경우 원래 패킷의 페이로드를 여러 부분으로 나누고 각 부분에 새 IP 헤더를 붙여 보낼 수 있다.
 
