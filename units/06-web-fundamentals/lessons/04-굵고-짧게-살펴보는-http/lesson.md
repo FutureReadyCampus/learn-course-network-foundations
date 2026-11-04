@@ -48,7 +48,7 @@ animations_dir: units/06-web-fundamentals/lessons/04-굵고-짧게-살펴보는-
 ## HTTP와 TCP Stream
 <!-- learn-page-id: http-definition -->
 
-HTTP는 HTML 문서를 주고받기 위해 만들어진 L7 애플리케이션 프로토콜이다. 여기서는 TCP 소켓의 Stream 위에서 동작하는 HTTP를 살펴본다. IP 패킷처럼 일정한 크기의 단위만 보면 내용을 해석할 수 있는 구조와 달리, Stream에서는 어디까지가 하나의 메시지인지 규칙에 따라 해석해야 한다. 여기서 다루는 HTTP 메시지는 헤더까지 문자열로 표현되어 비교적 직접 읽기 쉽다.
+HTTP는 HTML 문서를 주고받기 위해 만들어진 L7 애플리케이션 프로토콜이다. 여기서는 TCP 소켓의 스트림(Stream) 위에서 동작하는 HTTP를 살펴본다. IP 패킷처럼 일정한 크기의 단위만 보면 내용을 해석할 수 있는 구조와 달리, Stream에서는 어디까지가 하나의 메시지인지 규칙에 따라 해석해야 한다. 여기서 다루는 HTTP 메시지는 헤더까지 문자열로 표현되어 비교적 직접 읽기 쉽다.
 
 ### 이 Lesson에서 가져갈 것
 
@@ -63,7 +63,7 @@ HTTP의 요청과 응답 헤더는 문자열로 된 항목과 값으로 구성�
 ### 이 Lesson에서 가져갈 것
 
 - **기억하기 (Recall):** HTTP 메시지는 문법과 의미를 갖는 요청·응답 단위다.
-- **적용하기 (Apply):** 임의 문자열과 유효한 HTTP 요청을 start-line/header 기준으로 구분한다.
+- **적용하기 (Apply):** 임의 문자열과 유효한 HTTP 요청을 start-line/헤더(header) 기준으로 구분한다.
 - **찾아보기 (Lookup):** 현재 HTTP 버전의 메시지 문법은 RFC에서 찾아본다.
 
 ## Request와 Response
@@ -73,7 +73,7 @@ HTTP의 요청과 응답 헤더는 문자열로 된 항목과 값으로 구성�
 
 ### 이 Lesson에서 가져갈 것
 
-- **기억하기 (Recall):** Request는 Client가 보내고 Response는 Server가 결과와 상태를 돌려준다.
+- **기억하기 (Recall):** Request는 클라이언트(Client)가 보내고 Response는 서버(Server)가 결과와 상태를 돌려준다.
 - **적용하기 (Apply):** 하나의 페이지 요청에 여러 자원 요청이 생기는 구조를 설명한다.
 - **찾아보기 (Lookup):** 브라우저 DevTools에서 요청 순서·상태를 확인한다.
 
@@ -93,13 +93,13 @@ User-Agent에는 예시의 Mozilla 5.0, Windows NT 6.1, WOW64, Gecko 등 클라�
 
 ### 이 Lesson에서 가져갈 것
 
-- **기억하기 (Recall):** Request Header는 Host·Accept·Cookie 같은 요청 부가 정보를 담는다.
+- **기억하기 (Recall):** Request Header는 호스트(Host)·Accept·쿠키(Cookie) 같은 요청 부가 정보를 담는다.
 - **적용하기 (Apply):** 브라우저가 원하는 형식이나 인증 관련 정보를 보내는 위치를 찾는다.
 - **찾아보기 (Lookup):** Header별 의미와 보안 영향은 HTTP 표준에서 확인한다.
 
 ## 응답 Header와 Cookie
 
-응답의 200 OK는 처리 결과를 나타낸다. 응답 헤더에는 HTML이라는 내용 형식, UTF-8 같은 문자 집합, gzip 같은 압축 방식, 날짜와 Cookie 등의 정보가 올 수 있다. Content-Length는 뒤에 오는 내용의 바이트 길이를 해석하는 데 사용한다. 클라이언트는 이런 정보를 바탕으로 응답을 나누고 내용을 처리한다. 직접 구현하려면 파싱 규칙을 따라야 하지만, 보통은 이미 구현된 서버와 라이브러리를 활용한다. Cookie는 이후 구조 설명에서 다시 다룬다.
+응답의 200 OK는 처리 결과를 나타낸다. 응답 헤더에는 HTML이라는 내용 형식, UTF-8 같은 문자 집합, gzip 같은 압축 방식, 날짜와 쿠키(Cookie) 등의 정보가 올 수 있다. Content-Length는 뒤에 오는 내용의 바이트 길이를 해석하는 데 사용한다. 클라이언트는 이런 정보를 바탕으로 응답을 나누고 내용을 처리한다. 직접 구현하려면 파싱 규칙을 따라야 하지만, 보통은 이미 구현된 서버와 라이브러리를 활용한다. Cookie는 이후 구조 설명에서 다시 다룬다.
 
 ### 이 Lesson에서 가져갈 것
 
@@ -114,7 +114,7 @@ HTTP 응답 코드 200은 정상 처리를 나타낸다. 404 Not Found는 요청
 
 ### 이 Lesson에서 가져갈 것
 
-- **기억하기 (Recall):** HTTP status code는 요청 처리 결과를 세 자리 숫자로 나타낸다.
+- **기억하기 (Recall):** HTTP 상태 코드(status code)는 요청 처리 결과를 세 자리 숫자로 나타낸다.
 - **적용하기 (Apply):** 2xx·3xx·4xx·5xx 응답을 결과 범주로 구분한다.
 - **찾아보기 (Lookup):** 특정 상태 코드의 의미와 사용은 IANA registry에서 확인한다.
 
@@ -135,5 +135,5 @@ GET은 자원을 요청할 때, POST는 파일 업로드나 로그인 정보를 
 ### 이 Lesson에서 가져갈 것
 
 - **기억하기 (Recall):** HTTP Request가 WAS·API로 이어지는 흐름은 다음 Unit의 웹 서비스 구조로 연결된다.
-- **적용하기 (Apply):** Client 요청에서 웹 Server와 애플리케이션 처리 단계를 그린다.
+- **적용하기 (Apply):** 클라이언트(Client) 요청에서 웹 서버(Server)와 애플리케이션 처리 단계를 그린다.
 - **찾아보기 (Lookup):** WAS와 API의 역할·경계는 Unit 10에서 다시 확인한다.
