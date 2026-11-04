@@ -3,6 +3,8 @@ id: u4-l20-host-자신을-가리키는-ip주소
 title: "내 컴퓨터 안을 가리키는 IP 주소: 127.0.0.1"
 source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-20.md
 additional_sources:
+- https://www.rfc-editor.org/rfc/rfc1122#section-3.2.1.3
+- https://www.rfc-editor.org/rfc/rfc1812#section-5.2.4.3
   - https://studio.futurereadycampus.com/course-network/wiki/oeweo-network/lesson-20.html
   - https://www.rfc-editor.org/rfc/rfc1122.html
   - https://www.rfc-editor.org/rfc/rfc6761.html
@@ -370,6 +372,12 @@ IPv4에서 `127.0.0.1`은 자기 호스트를 가리키는 대표적인 **루프
 
 개발자는 브라우저에서 로컬 웹 서버를 시험하거나, 한 컴퓨터의 웹 프로그램과 데이터베이스 프로그램을 연결할 때 루프백 주소를 자주 쓴다. 브라우저에서 페이지를 열 때에는 서버 프로세스가 요청을 기다리고 있어야 한다. 주소만 입력한다고 서버가 저절로 생기는 것은 아니다.
 
+
+### 찾아보기: 0.0.0.0은 어디에 적혔는지 보자
+
+`127.0.0.1`은 자기 컴퓨터를 가리키지만, `0.0.0.0`은 쓰인 자리와 함께 읽어야 한다. 아직 IPv4 주소를 받지 못한 컴퓨터는 주소를 요청하는 DHCP 메시지의 **출발지 IP**에 `0.0.0.0`을 쓸 수 있다. 이때는 “아직 내 주소를 정하지 못했다”는 뜻이다. 실제 메시지는 [Unit 6 Lesson 2 Page 4 「Discover 브로드캐스트로 DHCP 서버를 찾는다」](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/6/lesson/2/page/4)에서 다시 본다.
+
+반면 **라우팅 표의 목적지**에 쓰인 `0.0.0.0/0`은 모든 IPv4 목적지를 포함하는 기본 경로다. `/0`은 비교할 네트워크 비트가 0개라는 뜻이므로 어느 목적지와도 일치한다. 더 구체적으로 맞는 경로가 없을 때 이 경로를 사용한다. 여기서 `0.0.0.0`은 실제로 접속할 서버 한 대의 주소가 아니다. 같은 숫자라도 DHCP의 출발지 주소인지, 라우팅 표의 목적지와 마스크인지부터 확인하자.
 
 이제 같은 호스트 안의 프로그램 통신과 루프백 주소를 살펴보았다. 다음 Unit 6에서는 새 컴퓨터가 IP 설정을 얻는 방법과, 같은 네트워크의 상대를 찾는 과정을 이어서 배운다.
 

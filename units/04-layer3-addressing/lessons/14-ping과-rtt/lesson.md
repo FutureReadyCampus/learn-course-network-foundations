@@ -3,6 +3,9 @@ id: u4-l24-ping과-rtt
 title: Ping과 RTT
 source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-24.md
 additional_sources:
+- https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ping
+- https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/tracert
+- https://man7.org/linux/man-pages/man8/ping.8.html
   - https://studio.futurereadycampus.com/course-network/wiki/oeweo-network/lesson-24.html
   - https://www.rfc-editor.org/rfc/rfc792.html
 wiki_diagram: units/04-layer3-addressing/lessons/14-ping과-rtt/assets/diagrams/lesson-24.svg
@@ -500,10 +503,9 @@ page_metadata:
     after_paragraph: 1
 animations_dir: units/04-layer3-addressing/lessons/14-ping과-rtt/assets/animations
 ---
-
 ## 게임에서 느끼는 지연
 
-온라인 게임에서는 여러 사용자가 같은 공간의 상태를 일관되게 보도록 동기화해야 한다. 철수·영희·길동이 같은 게임에 참여하는데 서로 다른 상태를 본다면 원활한 진행이 어렵다. 게임에서 ‘핑’이라고 부르는 값은 서버와 데이터를 주고받을 때의 지연을 가리킨다. 네트워크에서는 목적지까지 왕복하는 시간(RTT)으로 지연을 측정할 수 있다.
+같은 게임에 접속했는데 왜 어떤 사람은 반응이 늦게 보일까? 온라인 게임에서는 여러 사용자가 같은 공간의 상태를 일관되게 보도록 동기화해야 한다. 철수·영희·길동이 같은 게임에 참여하는데 서로 다른 상태를 본다면 원활한 진행이 어렵다. 게임에서 ‘핑’이라고 부르는 값은 서버와 데이터를 주고받을 때의 지연을 가리킨다. 네트워크에서는 목적지까지 왕복하는 시간(RTT)으로 지연을 측정할 수 있다.
 
 ### 이 Lesson에서 가져갈 것
 
@@ -545,10 +547,17 @@ Ping은 네트워크 연결을 살펴보는 간단한 진단 도구다. 예를 �
 - **찾아보기 (Lookup):** 방화벽이 Echo를 차단하는 경우는 대상 정책과 OS 설정을 확인한다.
 
 ## 어느 구간의 문제인지 좁히기
+<!-- learn-page-id: tracert-definition -->
 
 인터넷이 안 될 때 먼저 실제 네트워크 설정에 표시된 기본 게이트웨이 주소로 Ping을 보낼 수 있다. Windows에서는 `ping -n 4 192.168.0.1`, macOS와 Linux에서는 `ping -c 4 192.168.0.1`처럼 네 번 요청한다. 주소는 내 환경의 게이트웨이 값으로 바꿔야 한다. 응답 줄의 `time`은 왕복 시간(ms), `TTL`은 돌아온 응답 패킷의 남은 전달 한도이며, 마지막 통계의 손실률은 응답하지 않은 요청의 비율이다. Ping 결과의 TTL은 왕복 시간이나 정확한 거리 값이 아니며, 앞 Lesson에서 본 IP TTL과 연결되는 필드다.
 
-게이트웨이는 로컬 네트워크에 가까워 1ms 이내에 응답하는 예도 있다. 더 먼 인터넷 서버와 비교하면 어느 범위에서 문제가 나타나는지 좁혀 볼 수 있다.
+게이트웨이는 로컬 네트워크에 가까워 1ms 이내에 응답하는 예도 있다. 더 먼 인터넷 서버와 비교하면 어느 범위에서 문제가 나타나는지 좁혀 볼 수 있다. 같은 명령에서 주소를 실제 원격 서버의 IPv4 주소로 바꿔 네 번 더 측정하면 두 결과를 비교할 수 있다.
+
+출력에서 먼저 볼 것은 **응답 여부, 왕복 시간, 손실률** 세 가지다. Windows의 한국어 출력에서는 `시간=2ms`, 영어 출력에서는 `time=2ms`처럼 표시될 수 있고, macOS·Linux에서는 `time=2.0 ms` 같은 값을 찾는다. 이 값들은 읽는 모양을 보여 주는 가상 예시이며 내 PC의 측정값이 아니다. 실제 주소·시간·TTL은 환경과 측정 시점마다 다를 수 있다. 응답이 없을 때는 아래 ICMP Echo Page의 해석 주의도 함께 확인하자.
+
+### 찾아보기: 중간 홉을 보고 싶다면
+
+Windows의 `tracert`, macOS·Linux의 `traceroute`는 목적지까지의 중간 홉을 살펴보는 도구다. 앞 Lesson의 TTL을 작은 값부터 늘려 보내고 돌아오는 메시지를 이용한다. 출력의 앞 번호는 홉 순서이며, `*`는 정해진 시간 안에 해당 탐색 요청의 응답을 받지 못했다는 표시다. 그 라우터가 반드시 고장 났다는 뜻은 아니다. 운영체제마다 탐색 패킷 방식과 옵션이 다르므로 실제 명령 옵션은 도움말에서 찾아본다.
 
 ### 이 Lesson에서 가져갈 것
 
@@ -558,7 +567,7 @@ Ping은 네트워크 연결을 살펴보는 간단한 진단 도구다. 예를 �
 
 ## 거리와 지연의 관계
 
-서버 A와 B에 각각 Ping을 보내 RTT를 비교할 수 있다. 물리적인 거리뿐 아니라 회선 상태와 전달 속도도 함께 보아야 한다고 설명한다. 예를 들어 PC와 서버 A가 서울에 있고 서버 B가 미국에 있다면, 먼 경로에서 왕복 시간이 길어질 가능성을 생각할 수 있다. 다만 거리만으로 값을 결정할 수는 없으며 실제 경로와 연결 조건을 함께 살펴야 한다.
+서버 A와 B에 각각 Ping을 보내 RTT를 비교할 수 있다. 이때 물리적인 거리뿐 아니라 회선 상태와 전달 속도도 함께 보아야 한다. 예를 들어 PC와 서버 A가 서울에 있고 서버 B가 미국에 있다면, 먼 경로에서 왕복 시간이 길어질 가능성을 생각할 수 있다. 다만 거리만으로 값을 결정할 수는 없으며 실제 경로와 연결 조건을 함께 살펴야 한다.
 
 ### 이 Lesson에서 가져갈 것
 

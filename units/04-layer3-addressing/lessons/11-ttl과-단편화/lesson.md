@@ -604,7 +604,6 @@ page_metadata:
   - 재조립(Reassembly)
 animations_dir: units/04-layer3-addressing/lessons/11-ttl과-단편화/assets/animations
 ---
-
 ## 패킷은 경로를 따라 이동하고, 크기에도 한계가 있다
 
 웹 페이지를 열면 IP 패킷은 내 컴퓨터에서 출발해 여러 라우터를 거쳐 서버로 간다. 이때 패킷은 목적지에 도착하기 전까지 무한히 떠돌아서는 안 되고, 지나가는 링크마다 한 번에 실을 수 있는 크기도 다를 수 있다. 이 Lesson에서는 두 질문을 따라간다. **패킷은 경로에서 얼마나 오래 전달될 수 있을까?** 그리고 **중간 구간이 패킷을 다 실을 수 없으면 어떻게 될까?**
@@ -626,7 +625,7 @@ animations_dir: units/04-layer3-addressing/lessons/11-ttl과-단편화/assets/an
 
 택배를 예로 들면, 중간 물류센터는 상자를 열어 물건을 쓰는 곳이 아니다. 송장의 목적지를 확인해 다음 물류센터로 보내는 곳이다. 다만 실제 라우터는 물건을 며칠씩 보관하는 창고가 아니라, 패킷을 매우 짧은 시간 동안 처리해 다음 경로로 넘기는 네트워크 장비다.
 
-라우터에서 다음 라우터로 한 번 넘어가는 이동을 **홉(Hop)**이라고 한다. PC에서 라우터 A, 라우터 B를 거쳐 서버로 갔다면 라우터를 두 번 거친 경로라고 셀 수 있다. 목적지까지 이어지는 전체 경로가 몇 Hop인지는 중간에 어떤 라우터를 거치는지에 따라 달라진다. [Unit 2 Lesson 3에서 본 다음 홉과 라우팅 테이블](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/2/lesson/3/page/4)을 떠올리면, 라우터가 한 번에 전체 경로를 외워서 달리는 것이 아니라 다음 전달 지점을 선택한다는 점이 연결된다.
+이 Lesson에서는 패킷이 라우터를 한 번 거치는 전달을 **홉(Hop)**으로 센다. PC에서 라우터 A, 라우터 B를 거쳐 서버로 갔다면 라우터를 두 번 거친 경로라고 셀 수 있다. 목적지까지 이어지는 전체 경로가 몇 Hop인지는 중간에 어떤 라우터를 거치는지에 따라 달라진다. [Unit 2 Lesson 3에서 본 다음 홉과 라우팅 테이블](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/2/lesson/3/page/4)을 떠올리면, 라우터가 한 번에 전체 경로를 외워서 달리는 것이 아니라 다음 전달 지점을 선택한다는 점이 연결된다.
 
 ### 이 Lesson에서 가져갈 것
 
@@ -655,7 +654,7 @@ TTL이 라우터에서 줄어 0이 되면 그 라우터는 패킷을 더 전달�
 
 폐기한 라우터가 출발지에 이유를 알려 주기도 한다. 이때 사용하는 안내 메시지의 한 종류가 **ICMP Time Exceeded**다. ICMP는 IP 통신에서 오류나 상태를 알리는 데 쓰이는 프로토콜이다. 다만 라우터나 방화벽 설정에 따라 안내 메시지를 보내지 않을 수도 있으므로, 응답이 없다고 해서 반드시 패킷이 목적지에 도착했다고 볼 수는 없다.
 
-이 메시지는 Unit 5 Lesson 1에서 IP 헤더의 Protocol 칸을 읽을 때 본 ICMP와 연결된다. 뒤의 Ping Lesson에서 다룰 Echo 요청·응답과는 목적이 다른 ICMP 메시지다. 하나는 시간이 다 된 패킷을 알리고, 다른 하나는 왕복 응답을 확인하는 데 쓰인다.
+이 메시지는 [Unit 5 Lesson 1의 Protocol·TTL 설명](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/5/lesson/1/page/3)에서 본 ICMP와 연결된다. 뒤의 Ping Lesson에서 다룰 Echo 요청·응답과는 목적이 다른 ICMP 메시지다. 하나는 시간이 다 된 패킷을 알리고, 다른 하나는 왕복 응답을 확인하는 데 쓰인다.
 
 ### 이 Lesson에서 가져갈 것
 
@@ -665,7 +664,7 @@ TTL이 라우터에서 줄어 0이 되면 그 라우터는 패킷을 더 전달�
 
 ## MTU는 링크마다 한 번에 보낼 IP 패킷 크기를 제한한다
 
-TTL이 이동 횟수의 한도라면, **MTU(Maximum Transmission Unit)**는 한 링크가 한 번에 실을 수 있는 IP 패킷 크기의 상한이다. Unit 4에서 본 이더넷 MTU 1,500바이트는 익숙한 예다. 이는 링크 하나의 한도이므로 경로의 다른 링크에서 값이 더 작을 수도 있다.
+TTL이 이동 횟수의 한도라면, **MTU(Maximum Transmission Unit)**는 한 링크가 한 번에 실을 수 있는 IP 패킷 크기의 상한이다. [Unit 4 Lesson 2에서 본 MTU](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/4/lesson/2/page/3)의 이더넷 1,500바이트는 익숙한 예다. 이는 링크 하나의 한도이므로 경로의 다른 링크에서 값이 더 작을 수도 있다.
 
 예를 들어 출발지에서 1,500바이트까지 전달할 수 있어도, 경로 중간에 MTU가 1,400바이트인 링크가 있다면 1,500바이트 패킷을 그 링크에 그대로 실을 수 없다. 여기서 MTU는 IP 헤더와 데이터를 합친 패킷 전체를 가리키므로 데이터 부분만 1,400바이트까지 보내도 된다는 뜻이 아니다. 경로를 따라 통과하는 한도가 달라질 수 있다는 점이 중요하다.
 
@@ -678,12 +677,13 @@ TTL이 이동 횟수의 한도라면, **MTU(Maximum Transmission Unit)**는 한 
 - **찾아보기 (Lookup):** Path MTU discovery 동작은 IPv4·IPv6 환경별 문서에서 확인한다.
 
 ## IPv4 단편화는 큰 패킷의 페이로드를 나누는 일이다
+<!-- learn-page-id: fragmentation-definition -->
 
 **IPv4 단편화(Fragmentation)**는 MTU보다 큰 IPv4 패킷을 더 작은 IP 패킷 조각들로 나누는 일이다. 위 예에서 1,500바이트 패킷이 MTU 1,400바이트인 링크에 도착하면, IPv4 라우터는 단편화가 허용된 경우 원래 패킷의 페이로드를 여러 부분으로 나누고 각 부분에 새 IP 헤더를 붙여 보낼 수 있다.
 
 원래 패킷의 IP 헤더는 조각마다 반복해서 붙는다. 그 결과 각 조각의 전체 크기는 해당 링크의 MTU 안에 들어간다. 단편화가 금지된 패킷이라면 라우터가 임의로 나누지 않고 패킷을 폐기하며, 가능한 경우 출발지에 MTU 문제를 알린다. IP 헤더의 DF(Don't Fragment) 표시는 “조각내지 말라”는 뜻이다.
 
-여기서 나누는 대상은 **IP 패킷의 페이로드**다. Unit 4 Lesson 5에서 본 TCP 세그먼트 분할은 TCP가 바이트 흐름을 다루는 별도 작업이다. 두 경우 모두 ‘나눈다’고 말하지만, 계층과 단위가 다르다. U5L1에서 이름을 본 Identification, Flags, Fragment Offset은 IP 조각들이 같은 원래 패킷에 속하는지와 원래 데이터의 어느 부분인지 표시하는 칸이다. 이 Lesson에서는 역할만 연결하고 오프셋 계산은 요구하지 않는다.
+여기서 나누는 대상은 **IP 패킷의 페이로드**다. Unit 4 Lesson 5에서 본 TCP 세그먼트 분할은 TCP가 바이트 흐름을 다루는 별도 작업이다. 두 경우 모두 ‘나눈다’고 말하지만, 계층과 단위가 다르다. [Unit 5 Lesson 1에서 본 Identification·Flags·Fragment Offset](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/5/lesson/1/page/4)은 IP 조각들이 같은 원래 패킷에 속하는지와 원래 데이터의 어느 부분인지 표시하는 칸이다. 이 Lesson에서는 역할만 연결하고 오프셋 계산은 요구하지 않는다.
 
 ### 이 Lesson에서 가져갈 것
 

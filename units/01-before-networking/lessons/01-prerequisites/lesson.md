@@ -241,6 +241,7 @@ page_metadata:
       duration_seconds: 540
 ---
 ## 네트워크를 공부하는 이유와 필요한 바탕
+<!-- learn-page-id: bit-byte-definition -->
 
 웹페이지를 열고 앱에서 정보를 불러올 때 내 기기와 다른 기기는 네트워크로 데이터를 주고받습니다. 프로그램을 만들거나 운영할 때 이 흐름을 알면 연결이 끊기거나 응답이 늦을 때 어느 단계에서 문제가 생겼는지 좁혀 볼 수 있습니다. 이 Unit에서는 통신에 필요한 기초를 확인하고, 일을 계층으로 나누어 설명하는 이유와 네트워크·프로토콜의 뜻, 앱에서 장치까지 이어지는 흐름을 차례로 살펴봅니다. 처음에는 용어를 외우기보다 각 역할이 왜 나뉘는지 따라가 보세요.
 
@@ -353,6 +354,7 @@ Windows에서 Git Bash를 쓸 수 있다면 직접 확인해 보세요. `where.e
 - **찾아보기 (Lookup):** OSI 각 계층의 이름과 순서는 계층 표를 찾아 확인한다.
 
 ## User mode·Kernel mode와 버퍼
+<!-- learn-page-id: buffer-definition -->
 
 ### User mode와 Kernel mode 미리 보기
 

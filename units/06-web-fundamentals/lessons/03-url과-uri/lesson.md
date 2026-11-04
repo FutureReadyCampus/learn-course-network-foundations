@@ -48,10 +48,10 @@ page_metadata:
   - 기본 포트
 animations_dir: units/06-web-fundamentals/lessons/03-url과-uri/assets/animations
 ---
-
 핵심 개념을 주제별로 정리했다.
 
 ## URL과 URI의 이름
+<!-- learn-page-id: uri-definition -->
 
 웹을 이해하려면 URL과 URI를 구별해야 한다. 앞서 www.naver.com에서 www를 호스트 이름, naver.com을 도메인 이름으로 나누어 보았다. URL과 URI의 앞부분은 Uniform Resource이며, 끝의 L은 Locator, I는 Identifier를 뜻한다. 위치를 나타내는 것과 대상을 식별하는 것의 차이를 보기 전에 Resource가 무엇인지 살펴보자.
 
@@ -98,7 +98,7 @@ URI에는 Scheme, Authority, Path, Query, Fragment 등을 기술하는 문법이
 
 ### 이 Lesson에서 가져갈 것
 
-- **기억하기 (Recall):** Scheme은 접근 방식, Host는 대상 이름, Port는 서비스 연결 번호를 나타낼 수 있다.
+- **기억하기 (Recall):** Scheme은 접근 방식, 호스트(Host)는 대상 이름, Port는 서비스 연결 번호를 나타낼 수 있다.
 - **적용하기 (Apply):** `https://example.com:8443`을 구성 요소별로 해석한다.
 - **찾아보기 (Lookup):** 기본 Port 생략 규칙은 URL 및 프로토콜 설명에서 확인한다.
 
@@ -118,7 +118,7 @@ Path는 파일 경로에 비유할 수 있다. 예를 들어 C 드라이브의 P
 
 ### 이 Lesson에서 가져갈 것
 
-- **기억하기 (Recall):** 웹 Server의 document root와 기본 문서 설정이 경로 요청을 파일에 대응한다.
+- **기억하기 (Recall):** 웹 서버(Server)의 document root와 기본 문서 설정이 경로 요청을 파일에 대응한다.
 - **적용하기 (Apply):** `/` 요청이 index 문서로 연결되는 구성을 설명한다.
 - **찾아보기 (Lookup):** 서버별 root/index 설정은 Apache·Nginx 등 공식 문서를 확인한다.
 
@@ -148,6 +148,6 @@ Query는 물음표 뒤에 적으며, 여러 매개변수는 &로 구분한다. �
 
 ### 이 Lesson에서 가져갈 것
 
-- **기억하기 (Recall):** Port 번호는 Host 안의 서비스 연결점을 나타내며 URL authority 일부다.
+- **기억하기 (Recall):** Port 번호는 호스트(Host) 안의 서비스 연결점을 나타내며 URL authority 일부다.
 - **적용하기 (Apply):** 명시적 Port와 scheme 기본 Port를 구분한다.
-- **찾아보기 (Lookup):** 실제 Server가 Listen 중인 Port는 OS 소켓 목록에서 확인한다.
+- **찾아보기 (Lookup):** 실제 서버(Server)가 Listen 중인 Port는 OS 소켓 목록에서 확인한다.

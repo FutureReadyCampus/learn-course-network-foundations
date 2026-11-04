@@ -875,7 +875,7 @@ Unit 4에서 우리는 IP 주소, 패킷의 헤더와 페이로드, 캡슐화, �
 
 IP는 TCP 세그먼트 전체를 **페이로드(Payload, 실어 나르는 내용물)**로 삼고 IP 헤더를 붙여 IP 패킷을 만든다. 사진 데이터만 패킷 안에 들어가는 것이 아니라 TCP 헤더도 함께 들어간다. 이어서 링크 계층은 IP 패킷 전체를 프레임 안에 담는다. 이더넷에서는 앞쪽의 헤더와 뒤쪽의 오류 확인용 값인 FCS(Frame Check Sequence)가 패킷을 감싼다.
 
-Unit 4 Lesson 3에서 본 **캡슐화(Encapsulation)**가 바로 이 과정이다. TCP가 바이트 흐름을 나누는 일은 ‘분할’이고, 각 계층이 전달 정보를 덧붙여 안쪽 단위를 감싸는 일은 ‘포장’이다. 둘을 함께 보되 같은 동작으로 생각하지 말자. 원리가 헷갈리면 [캡슐화와 역캡슐화 Lesson](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/4/lesson/3/page/1)을 되짚어도 좋다.
+Unit 4 Lesson 3에서 본 **캡슐화(Encapsulation)**가 바로 이 과정이다. TCP가 바이트 흐름을 나누는 일은 ‘분할’이고, 각 계층이 전달 정보를 덧붙여 안쪽 단위를 감싸는 일은 ‘포장’이다. 둘을 함께 보되 같은 동작으로 생각하지 말자. 원리가 헷갈리면 [캡슐화 정의](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/4/lesson/3/page/2)와 [역캡슐화 정의](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/4/lesson/3/page/4)를 되짚어도 좋다.
 
 ### 상자는 목적지로, 트럭은 다음 구간으로
 

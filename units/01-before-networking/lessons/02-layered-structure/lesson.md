@@ -85,9 +85,6 @@ pages:
       - id: e
         text: 실행 중인 프로그램
         feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
-      - id: c
-        text: 파일의 크기
-        feedback: 다시 확인해 보세요. 층 또는 구성 요소 하나입니다
       answer: a
     - id: u1-02-layered-structure-p01-q02
       kind: choice
@@ -106,10 +103,14 @@ pages:
       - id: b
         text: 요소의 이름만 볼 수 있습니다
         feedback: 다시 확인해 보세요. 요소와 요소 사이의 관계를 함께 볼 수 있습니다
-      - id: d
-        text: 통신 속도만 알 수 있습니다
-        feedback: 다시 확인해 보세요. 요소와 요소 사이의 관계를 함께 볼 수 있습니다
       answer: a
+    - id: u1-02-layered-structure-p01-q03
+      kind: short
+      prompt: 아래 요소가 없으면 위 요소 자체가 성립하지 않는 관계를 무엇이라고 하나요?
+      answers:
+      - 존립에 대한 의존 관계
+      - 존립 의존 관계
+      feedback: 아래가 없으면 위 요소 자체가 성립하지 않는 관계를 존립에 대한 의존 관계라고 해요.
   - concepts:
       - concept-basic-02-04
       - concept-basic-02-05
@@ -137,9 +138,6 @@ pages:
       - id: a
         text: 전제 또는 전제조건입니다
         feedback: 맞아요. 전제 또는 전제조건입니다
-      - id: e
-        text: 인터페이스
-        feedback: 다시 확인해 보세요. 전제 또는 전제조건입니다
       - id: b
         text: 구현 위치
         feedback: 다시 확인해 보세요. 전제 또는 전제조건입니다
@@ -158,9 +156,6 @@ pages:
       - id: b
         text: 1입니다
         feedback: 다시 확인해 보세요. 3입니다
-      - id: e
-        text: 전제조건은 없습니다
-        feedback: 다시 확인해 보세요. 3입니다
       - id: c
         text: 2입니다
         feedback: 다시 확인해 보세요. 3입니다
@@ -168,9 +163,16 @@ pages:
         text: 3입니다
         feedback: 맞아요. 3입니다
       answer: a
+    - id: u1-02-layered-structure-p02-q03
+      kind: short
+      prompt: 앞 단계가 뒤 단계가 성립하기 전에 갖추어야 할 조건을 무엇이라고 하나요?
+      answers:
+      - 전제
+      - 전제조건
+      - prerequisite
+      feedback: 앞 단계가 뒤 단계의 바탕이 되어야 한다는 조건을 전제라고 해요.
 animations_dir: units/01-before-networking/lessons/02-layered-structure/assets/animations
 ---
-
 ## 계층을 관계와 의존성으로 읽기
 <!-- learn-page-id: layer-definition -->
 
@@ -215,6 +217,7 @@ IT 기술을 설명하는 그림에도 이와 똑같은 모양이 자주 나옵�
 - **찾아보기 (Lookup):** 계층 구조의 의존 관계는 이어지는 학교 과정 예시를 확인한다.
 
 ## 학교 과정으로 보는 계층 구조
+<!-- learn-page-id: prerequisite-definition -->
 
 대학교를 졸업해 학사 학위를 받았다는 사람을 만났다고 해 보겠습니다. 우리는 그 사람이 고등학교도 다녔을 것이라고 별 의심 없이 생각합니다. 말하지 않았는데도 그렇게 짐작하는 까닭은, 대학 과정이 고등학교 과정을 마쳤다는 전제 위에서 시작되기 때문입니다.
 

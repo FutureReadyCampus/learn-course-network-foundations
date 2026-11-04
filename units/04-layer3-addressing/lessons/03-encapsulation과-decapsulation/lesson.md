@@ -96,8 +96,8 @@ page_metadata:
     after_paragraph: 2
 
 - terms:
+  - 캡슐화(Encapsulation)
   - 단위화
-  - 마트료시카
   illustrations:
   - file: assets/animations/l13-daily-unit-boxes.svg
     title: "모양이 달라도 상자에 담으면 같은 단위"

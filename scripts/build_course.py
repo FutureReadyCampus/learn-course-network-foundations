@@ -267,11 +267,11 @@ def page_questions(value, path: Path, page_number: int) -> list[dict]:
             if question.get("difficulty") not in {"easy", "medium", "hard"}:
                 raise ValueError(f"Choice question difficulty must be easy, medium, or hard in {where}")
             choices = question.get("choices")
-            if not isinstance(choices, list) or len(choices) != 5 or any(not isinstance(choice, dict) for choice in choices):
-                raise ValueError(f"Choice question needs exactly five choices in {where}")
+            if not isinstance(choices, list) or len(choices) not in {4, 5} or any(not isinstance(choice, dict) for choice in choices):
+                raise ValueError(f"Choice question needs four choices (or five for legacy content) in {where}")
             ids = [choice.get("id") for choice in choices]
-            if any(not isinstance(choice_id, str) or not choice_id.strip() for choice_id in ids) or len(set(ids)) != 5 or question.get("answer") not in ids:
-                raise ValueError(f"Choice question needs five unique choices and a valid answer in {where}")
+            if any(not isinstance(choice_id, str) or not choice_id.strip() for choice_id in ids) or len(set(ids)) != len(choices) or question.get("answer") not in ids:
+                raise ValueError(f"Choice question needs unique choices and a valid answer in {where}")
             if any(not isinstance(choice.get("text"), str) or not choice["text"].strip()
                    or not isinstance(choice.get("feedback"), str) or not choice["feedback"].strip()
                    for choice in choices):
