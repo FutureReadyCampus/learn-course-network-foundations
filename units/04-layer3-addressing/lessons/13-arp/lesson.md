@@ -791,7 +791,7 @@ animations_dir: units/04-layer3-addressing/lessons/13-arp/assets/animations
 ---
 ## IP 주소와 MAC 주소 복습
 
-ARP를 이해하려면 먼저 IP 주소와 MAC 주소가 맡는 범위를 떠올리면 된다. [앞에서 본 IP 주소와 MAC 주소의 역할](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/4/lesson/1/page/1)에서처럼 IP 주소는 목적지가 있는 네트워크를 찾고, MAC 주소는 현재 연결된 링크에서 프레임을 받을 인터페이스를 가리킨다. 이번 Lesson은 알고 있는 IP 주소에 대응하는 MAC 주소를 같은 LAN에서 찾는 과정을 다룬다.
+상대의 IP 주소를 알고 있는데도, 프레임을 보내려면 왜 MAC 주소를 따로 찾아야 할까? [앞에서 본 IP 주소와 MAC 주소의 역할](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/4/lesson/1/page/1)에서처럼 IP 주소는 목적지가 있는 네트워크를 찾고, MAC 주소는 현재 연결된 링크에서 프레임을 받을 인터페이스를 가리킨다. 이번 Lesson은 알고 있는 IP 주소에 대응하는 MAC 주소를 같은 LAN에서 찾는 과정을 다룬다.
 
 ### 이 Lesson에서 가져갈 것
 
@@ -822,7 +822,7 @@ ARP(Address Resolution Protocol)는 같은 LAN에서 목적지 IPv4 주소에 �
 
 ## Gateway의 MAC이 필요한 이유
 
-이 Ethernet 예에서 인터넷으로 나가려면 게이트웨이의 MAC 주소를 알아야 한다. 게이트웨이를 192.168.0.1, 부팅 후 DHCP로 설정을 받은 PC를 192.168.0.100이라고 하자. PC는 DHCP 설정을 통해 자신의 게이트웨이가 192.168.0.1이라는 사실은 알고 있다. 그러나 이 IP에 대응하는 MAC 주소는 별도로 알아내야 한다.
+이 Ethernet 예에서 인터넷으로 나가려면 게이트웨이의 MAC 주소를 알아야 한다. 게이트웨이를 192.168.0.1, 부팅 후 DHCP로 설정을 받은 PC를 192.168.0.100이라고 하자. PC는 DHCP 설정을 통해 자신의 게이트웨이가 192.168.0.1이라는 사실은 알고 있다. 그러나 이 IP에 대응하는 MAC 주소는 별도로 알아내야 한다. [Unit 5 Lesson 2의 서브넷 경계](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/5/lesson/2/page/1)로 목적지가 같은 네트워크인지 판단하고, 밖이라면 [Unit 4 Lesson 4에서 배운 기본 게이트웨이](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/4/lesson/4/page/3)에 전달을 맡긴다.
 
 ### 이 Lesson에서 가져갈 것
 
@@ -842,7 +842,7 @@ ARP(Address Resolution Protocol)는 같은 LAN에서 목적지 IPv4 주소에 �
 
 ## 브로드캐스트로 MAC 질의
 
-PC는 ARP Request를 브로드캐스트로 보내 ‘192.168.0.1을 사용하는 호스트’를 찾는다. 다른 호스트들은 그 주소의 주인이 아니므로 응답하지 않는다. 해당 IP 주소를 사용하는 게이트웨이는 자신을 찾는 요청이라는 사실을 알 수 있다.
+PC는 ARP Request를 브로드캐스트로 보내 ‘192.168.0.1을 사용하는 호스트’를 찾는다. 다른 호스트들은 그 주소의 주인이 아니므로 응답하지 않는다. 해당 IP 주소를 사용하는 게이트웨이는 자신을 찾는 요청이라는 사실을 알 수 있다. [Unit 3 Lesson 3의 브로드캐스트 범위](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/3/lesson/3/page/1)를 떠올리자. 이 요청은 같은 LAN의 Ethernet 방송이며, 외부 서버까지 IP 패킷을 방송하는 과정은 아니다.
 
 ### 이 Lesson에서 가져갈 것
 
@@ -884,6 +884,8 @@ DHCP는 게이트웨이의 IP 주소를 알려 주지만, 그 IP에 대응하는
 ## arp -a로 확인하기
 
 Windows와 macOS에서는 `arp -a`, Linux에서는 `ip neigh` 명령으로 현재 ARP 캐시를 볼 수 있다. 출력에서 IP 주소와 MAC 주소가 한 쌍으로 표시되는지, 게이트웨이 주소가 있는지 살펴보자. 통신한 지 오래됐거나 아직 해당 장치에 말을 건 적이 없다면 항목이 없을 수 있다. 이때는 게이트웨이에 한 번 통신을 시도한 뒤 다시 확인하면 새 기록이 생기는지 볼 수 있다.
+
+먼저 내 네트워크 설정에서 실제 게이트웨이 주소를 확인한 다음, 그 주소에 대응하는 행을 찾아보자. 내 PC의 IP·MAC 주소와 캐시 항목은 본문 예시와 다를 수 있다. 캐시는 최근 통신과 만료 시간에 따라 달라지는 기록이므로, 다른 PC와 행 수가 다르거나 처음에 비어 있다고 바로 고장으로 판단하지 않는다.
 
 ### 이 Lesson에서 가져갈 것
 
