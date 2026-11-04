@@ -100,6 +100,7 @@ page_metadata:
     duration_seconds: 495
 
 - terms:
+  - IPv4 주소 (IPv4 address)
   - 비트 (bit)
   - 바이트 (byte)
   page_id: ip-address-32bit
@@ -276,10 +277,8 @@ page_metadata:
     after_paragraph: 4
 
 - terms:
-  - Network ID (네트워크 식별자)
-  - Host ID (호스트 식별자)
-  - 프리픽스 길이 (prefix length)
   - 호스트 (Host)
+  - 호스트 부분 (Host ID)
   illustrations:
   - file: assets/animations/l11-daily-shop-doors.svg
     title: "가게는 하나, 문마다 주소가 있다"
@@ -368,7 +367,8 @@ page_metadata:
     after_paragraph: 2
 
 - terms:
-  - 목적지 (destination)
+  - 네트워크 부분 (Network ID)
+  - 호스트 부분 (Host ID)
   illustrations:
   - file: assets/animations/l11-daily-apartment-unit.svg
     title: "‘101동 1203호’를 두 단계로 읽기"
@@ -460,7 +460,7 @@ page_metadata:
     after_paragraph: 2
 
 - terms:
-  - 라우터 (Router)
+  - 프리픽스 길이 (prefix length)
   illustrations:
   - file: assets/animations/l11-daily-divider-rule.svg
     title: "칸막이를 어디에 두느냐"
@@ -778,7 +778,7 @@ IPv4는 이런 비트 32개를 8개씩 네 묶음으로 나눠 적는다. `8 × 
 
 이름이 비슷해 헷갈리지만, 호스트(host)와 Host ID는 같은 말이 아니다. 호스트는 네트워크에 연결된 컴퓨터나 장치를 가리키고, Host ID는 IP 주소 안에서 네트워크 부분과 나눈 나머지 부분을 가리킨다. 실제 주소는 장치 전체보다는 통신에 사용하는 네트워크 인터페이스에 설정된다고 생각하면 더 정확하다.
 
-IP 주소는 직접 설정할 수도 있고, DHCP 같은 프로토콜로 자동으로 받을 수도 있다. 네트워크를 바꾸거나 설정이 달라지면 IP 주소도 달라질 수 있다. 반면 MAC 주소는 네트워크 인터페이스를 구별하는 L2 주소다. 둘은 크기와 역할이 다르며, MAC 주소가 있다고 해서 IP 주소가 필요 없어지는 것은 아니다.
+IP 주소는 직접 설정할 수도 있고, 네트워크 설정을 서버에서 받아오는 [DHCP](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/6/lesson/2/page/2)로 자동으로 받을 수도 있다. 네트워크를 바꾸거나 설정이 달라지면 IP 주소도 달라질 수 있다. 반면 MAC 주소는 네트워크 인터페이스를 구별하는 L2 주소다. 둘은 크기와 역할이 다르며, MAC 주소가 있다고 해서 IP 주소가 필요 없어지는 것은 아니다.
 
 ### 이 Lesson에서 가져갈 것
 
@@ -823,7 +823,7 @@ IP 주소 한 줄에는 ‘어느 네트워크인가’와 ‘그 네트워크 �
 
 택배 앱에서 상자의 배송 경로를 따라가 보면, 상자가 목적지 집으로 곧장 오지 않고 여러 물류센터를 거칠 수 있다. 센터에서 동네별 상자를 나누어 다음 지역으로 보내고, 목적지 지역에 도착한 뒤에는 개별 주소를 보고 마지막 배송을 한다. 네트워크에서도 라우터가 목적지 IP 주소와 자신이 가진 경로 정보를 보고 다음 네트워크 쪽으로 패킷을 전달한다.
 
-노트북 `192.168.0.10/24`에서 다른 네트워크에 있는 서버로 데이터를 보내는 경우를 보자. 노트북은 목적지 IP가 자기 네트워크에 있는지 확인한다. 다른 네트워크라면 보통 기본 게이트웨이인 라우터로 먼저 프레임을 보낸다. 이 Ethernet 프레임의 목적지 MAC은 먼 서버의 MAC 주소가 아니라, 현재 LAN에서 다음으로 받을 라우터의 MAC 주소다.
+노트북 `192.168.0.10/24`에서 다른 네트워크에 있는 서버로 데이터를 보내는 경우를 보자. 노트북은 목적지 IP가 자기 네트워크에 있는지 확인한다. 다른 네트워크라면 보통 [기본 게이트웨이](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/4/lesson/4/page/3)로 먼저 프레임을 보낸다. 이는 내 네트워크 밖으로 나갈 때 패킷을 먼저 맡기도록 설정한 라우터의 주소다. 이 Ethernet 프레임의 목적지 MAC은 먼 서버의 MAC 주소가 아니라, 현재 LAN에서 다음으로 받을 라우터의 MAC 주소다.
 
 라우터는 상자에 적힌 ‘최종 주소’를 읽고, 자신이 가진 경로 정보에서 그 목적지 네트워크로 갈 다음 방향을 고른다. 이처럼 목적지 IP와 경로 정보를 바탕으로 패킷의 다음 전달 방향을 결정하는 일을 라우팅이라고 한다. 네트워크 중간에 라우터가 여러 개 있으면 패킷은 여러 구간을 지나며, 각 라우터는 자기에게 도착한 패킷을 다음 방향으로 넘긴다.
 

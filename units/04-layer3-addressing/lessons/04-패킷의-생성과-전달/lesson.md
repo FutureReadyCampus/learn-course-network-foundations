@@ -826,7 +826,7 @@ TCP는 포트 번호 등의 정보를 담은 헤더와 데이터를 묶어 **세
 
 Ethernet 링크를 사용하는 데이터 링크 계층은 같은 링크 안에서 전달하기 위한 헤더와 오류 확인용 트레일러를 더해 **프레임(frame)**을 만든다.
 
-아래 애니메이션처럼 한 계층에서 완성된 단위 전체는 바깥 계층의 페이로드로 실릴 수 있다. 보낼 때의 순서는 `데이터 → 세그먼트 → IP 패킷 → Ethernet 프레임`이다. 받은 쪽은 바깥 프레임의 정보를 먼저 처리하고 안쪽 단위로 올라가며 데이터를 꺼낸다. 캡슐화와 역캡슐화의 자세한 원리는 앞 Lesson에서 살펴본 내용이다.
+아래 애니메이션처럼 한 계층에서 완성된 단위 전체는 바깥 계층의 페이로드로 실릴 수 있다. 보낼 때의 순서는 `데이터 → 세그먼트 → IP 패킷 → Ethernet 프레임`이다. 받은 쪽은 바깥 프레임의 정보를 먼저 처리하고 안쪽 단위로 올라가며 데이터를 꺼낸다. 원리가 헷갈리면 [Lesson 3의 캡슐화 정의](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/4/lesson/3/page/2)와 [역캡슐화 정의](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/4/lesson/3/page/4)로 돌아가 확인하자.
 
 ### 이 Lesson에서 가져갈 것
 
