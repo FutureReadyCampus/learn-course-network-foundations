@@ -738,27 +738,6 @@ page_metadata:
       text: "RTT가 0이 될 때"
       feedback: "바로 앞 문단의 설명에서 이 부분을 다시 확인해 보세요."
     answer: b
-  - id: u7-l02-p05-extra-hard
-    kind: choice
-    difficulty: easy
-    prompt: "단순 예시에서 SYN+ACK가 약 50ms에 도착한 뒤, 마지막 ACK가 서버에 가는 데 더 걸리는 시간은 얼마인가요?"
-    choices:
-    - id: a
-      text: "25ms"
-      feedback: "왕복 50ms를 반으로 나눈 예시라 마지막 편도에 약 25ms가 더 걸립니다."
-    - id: b
-      text: "50ms"
-      feedback: "바로 앞 문단의 설명에서 이 부분을 다시 확인해 보세요."
-    - id: c
-      text: "75ms"
-      feedback: "바로 앞 문단의 설명에서 이 부분을 다시 확인해 보세요."
-    - id: d
-      text: "100ms"
-      feedback: "바로 앞 문단의 설명에서 이 부분을 다시 확인해 보세요."
-    - id: e
-      text: "0ms"
-      feedback: "바로 앞 문단의 설명에서 이 부분을 다시 확인해 보세요."
-    answer: a
   question_placements:
   - question_id: u7-l02-p05-extra-easy-1
     after_paragraph: 1
@@ -770,8 +749,6 @@ page_metadata:
     after_paragraph: 2
   - question_id: u7-l02-p05-q03
     after_paragraph: 3
-  - question_id: u7-l02-p05-extra-hard
-    after_paragraph: 4
 - terms:
   - MSS
   - 바이트(byte)
