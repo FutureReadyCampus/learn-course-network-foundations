@@ -725,9 +725,9 @@ DHCP 서버는 배정할 수 있는 주소들의 목록을 관리한다. 이를 
 
 네트워크에 처음 연결한 기기는 자기 IP 주소도 DHCP 서버의 주소도 모를 수 있다. 주소를 모르는 서버에게 바로 유니캐스트로 요청할 수 없으므로, 클라이언트는 **DHCP Discover** 메시지를 보낸다. IPv4 주소를 아직 받지 못한 DHCP 클라이언트는 출발지 IP에 `0.0.0.0`을 쓰고, IPv4 제한 브로드캐스트 주소 `255.255.255.255`로 메시지를 보낼 수 있다. 이때 이더넷 프레임의 목적지 MAC 주소도 `FF:FF:FF:FF:FF:FF` 브로드캐스트가 된다.
 
-Unit 3에서 본 액세스 스위치는 이 프레임을 같은 브로드캐스트 범위의 포트들로 전달한다. 여기서 IP 브로드캐스트 주소와 MAC 브로드캐스트 주소는 서로 다른 계층의 주소지만, Discover를 같은 LAN에 전달하는 과정에서 함께 사용될 수 있다. [Unit 5 Lesson 3의 비교표](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/5/lesson/3/page/1)를 떠올리면, IP의 목적지와 프레임의 목적지가 둘 다 브로드캐스트라고 불리는 이유를 구분할 수 있다.
+[Unit 3 Lesson 3에서 본 브로드캐스트](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/3/lesson/3/page/1)처럼 액세스 스위치는 이 프레임을 같은 브로드캐스트 범위의 포트들로 전달한다. 여기서 IP 브로드캐스트 주소와 MAC 브로드캐스트 주소는 서로 다른 계층의 주소지만, Discover를 같은 LAN에 전달하는 과정에서 함께 사용될 수 있다. [Unit 5 Lesson 3의 비교표](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/5/lesson/3/page/1)를 떠올리면, IP의 목적지와 프레임의 목적지가 둘 다 브로드캐스트라고 불리는 이유를 구분할 수 있다.
 
-기본적으로 라우터는 이런 브로드캐스트를 다른 네트워크로 그대로 전달하지 않는다. 그래서 DHCP 서버가 같은 브로드캐스트 도메인에 있으면 바로 발견할 수 있지만, 다른 네트워크에 서버가 있다면 릴레이 기능이 필요하다. 다음 페이지에서 그 과정을 보자.
+기본적으로 라우터는 이런 브로드캐스트를 다른 네트워크로 그대로 전달하지 않는다. 그래서 DHCP 서버가 같은 브로드캐스트 도메인에 있으면 바로 발견할 수 있지만, 다른 네트워크에 서버가 있다면 릴레이 기능이 필요하다. 다음 Page에서 주소가 확정되는 네 메시지를 살펴보고, 이어서 릴레이가 다른 네트워크의 서버에 요청을 전달하는 과정을 보자.
 
 ### 이 Lesson에서 가져갈 것
 
