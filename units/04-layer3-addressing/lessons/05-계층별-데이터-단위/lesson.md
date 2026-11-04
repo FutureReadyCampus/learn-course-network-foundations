@@ -8,6 +8,7 @@ page_metadata:
   - Frame(프레임)
   - Packet(패킷)
   - Segment(세그먼트)
+  - 물리 계층 (Physical layer)
   illustrations:
   - file: assets/animations/l15-daily-name-by-box.svg
     title: "같은 책, 보는 곳마다 달라지는 이름"
@@ -562,27 +563,32 @@ additional_sources:
 ## 계층마다 달라지는 데이터 이름
 <!-- learn-page-id: u4l15-data-unit-names -->
 
-택배로 책을 보낼 때 책은 내용물이지만, 상자에 담기면 운반 단위로 다뤄진다. 네트워크에서도 같은 정보가 계층을 지날 때마다 전달에 맞는 단위로 묶이고 이름이 달라진다.
+앞 Lesson에서는 계층을 지날 때 데이터에 헤더가 더해져 바깥 단위가 되는 과정을 살펴봤다. 여기서는 그 단위를 **어느 계층에서 보느냐에 따라 이름이 달라진다**는 점을 정리한다.
 
-TCP/IP 통신에서는 TCP가 다루는 단위를 세그먼트(Segment), IP가 다루는 단위를 패킷(Packet), 데이터 링크 계층(L2)이 다루는 단위를 프레임(Frame)이라고 한다. 예를 들어 IP 패킷은 L3에서 하나의 단위이고, Ethernet 프레임 안에서는 페이로드로 실린다.
+| 계층 | 대표 단위 이름 | 이 계층에서 다루는 것 |
+|---|---|---|
+| 전송 계층(L4, TCP) | 세그먼트(Segment) | TCP 헤더와 그 안의 데이터를 묶은 단위 |
+| 인터넷 계층(L3, IP) | 패킷(Packet) | IP 헤더와 페이로드를 묶은 단위 |
+| 데이터 링크 계층(L2, Ethernet) | 프레임(Frame) | 한 링크에서 전달할 헤더·내용물·오류 확인 정보 |
+| 물리 계층(L1) | 비트와 신호 | 프레임의 0과 1을 전기·빛·무선 신호로 매체에 실어 보냄 |
 
-물리 계층(L1)은 프레임을 새 단위로 다루는 계층이 아니라, L2 프레임을 비트와 신호로 실제 매체에 전달한다. 따라서 여기서는 L1은 비트, L2는 프레임이라고 구별하고, 계층별 이름은 같은 데이터의 전달 단위가 어디에서 어떻게 보이는지를 나타낸다고 기억하자.
+예를 들어 IP 패킷은 L3에서 하나의 전달 단위지만, L2 Ethernet에서는 프레임의 페이로드로 실린다. L1은 프레임 바깥에 또 다른 ‘상자’를 만드는 것이 아니라, 프레임의 비트를 실제 신호로 바꾸어 보낸다. 그러므로 세그먼트·패킷·프레임은 서로 무관한 물건 세 개가 아니라, 계층별로 다르게 부르는 포장 단위다.
 
 아래 영상은 **[참고용]**으로 가볍게 시청해 보자. 여기서는 Stream, Segment, Packet, Frame의 큰 흐름만 확인하고, TCP 분할이나 UDP Datagram의 세부 차이는 다음 Page들에서 살펴보자.
 
 ### 이 Lesson에서 가져갈 것
 
-- **기억하기 (Recall):** Segment·Packet·Frame은 계층별 전달 단위 이름이다.
-- **적용하기 (Apply):** 같은 애플리케이션 데이터가 계층을 지나며 이름과 포장이 달라짐을 설명한다.
+- **기억하기 (Recall):** TCP는 Segment, IP는 Packet, Ethernet은 Frame을 다룬다.
+- **적용하기 (Apply):** IP 패킷이 L3에서는 단위이고 L2에서는 페이로드인 이유를 설명한다.
 - **찾아보기 (Lookup):** TCP/UDP별 단위 이름은 전송 계층 표에서 찾아본다.
 
 ## Socket과 Stream
 
-브라우저 같은 애플리케이션은 운영체제의 네트워크 기능을 소켓(Socket) 인터페이스로 이용한다. 프로그램이 소켓을 통해 TCP에 데이터를 전달하면, 애플리케이션은 보통 이를 처음부터 고정된 크기의 메시지 조각으로만 다루지 않는다.
+브라우저 같은 프로그램은 운영체제의 네트워크 기능을 **소켓(Socket)**이라는 소프트웨어 통신 창구로 이용한다. **스트림(Stream)**은 TCP 소켓을 통해 주고받는 바이트가 한 줄로 이어진 흐름이라는 뜻이다. 소켓은 통신을 이용하는 창구이고, 스트림은 그 창구로 오가는 데이터의 모습이다.
 
-TCP 소켓에서 프로그램이 주고받는 연속된 데이터 흐름을 스트림(Stream)이라고 한다. 물이 이어져 흐르는 모습처럼 데이터가 이어진다는 뜻이다. 어디까지가 한 번의 메시지인지는 애플리케이션이 약속으로 정하며, 쓴 횟수와 읽은 횟수가 같다고 가정해서는 안 된다. 자세한 내용은 Unit 7 Lesson 1 「TCP와 UDP 개요」에서 다시 본다.
+예를 들어 프로그램이 `ABC`를 보내고 이어서 `DEF`를 보내도, TCP는 이를 `ABCDEF`라는 연속된 바이트 흐름으로 다룬다. 받는 프로그램은 한 번에 `ABCDEF`를 읽을 수도 있고, `AB`와 `CDEF`처럼 나누어 읽을 수도 있다. TCP는 프로그램의 `send` 한 번을 메시지 경계 표시로 보존하지 않으므로, 어디까지가 한 메시지인지는 애플리케이션이 별도 약속으로 정한다. 이 동작을 더 자세히 다루는 내용은 Unit 7 Lesson 1 「TCP와 UDP 개요」에서 다시 본다.
 
-하지만 링크가 한 번에 전달할 수 있는 패킷에는 최대 크기가 있다. 그래서 긴 Stream은 네트워크에서 전달할 수 있는 더 작은 단위들로 나뉘어 전송된다.
+이 연속된 흐름은 네트워크 링크가 한 번에 전달할 수 있는 크기를 넘을 수 있다. 그래서 TCP는 긴 흐름을 더 작은 전송 단위로 나누어 보낸다. 다음 페이지에서 그 단위의 크기와 링크의 크기 한계를 비교한다.
 
 ### 이 Lesson에서 가져갈 것
 
@@ -592,57 +598,73 @@ TCP 소켓에서 프로그램이 주고받는 연속된 데이터 흐름을 스�
 
 ## MSS와 MTU
 
-네트워크 링크가 한 번에 전달할 수 있는 IP 패킷의 최대 크기를 MTU(Maximum Transmission Unit)라고 한다. 이 단원의 기본 Ethernet 예에서는 MTU를 1,500바이트로 둔다. 이는 패킷이 반드시 1,500바이트라는 뜻이 아니라, 이보다 커지지 않아야 한다는 상한이다.
+네트워크 링크가 전달할 수 있는 IP 패킷 전체의 최대 크기를 **MTU(Maximum Transmission Unit)**라고 한다. 이 Lesson의 기본 Ethernet 예에서는 MTU가 1,500바이트다. 패킷이 늘 1,500바이트라는 뜻이 아니라, 이보다 커지지 않아야 한다는 상한이다.
 
-TCP에는 하나의 Segment에 실을 수 있는 데이터 크기의 기준인 MSS(Maximum Segment Size)가 있다. MSS는 TCP 데이터의 최대 크기이고, MTU는 IP 패킷 전체의 최대 크기이므로 둘은 같은 값이 아니다.
+TCP에는 한 세그먼트에 실을 수 있는 데이터의 최대 크기 기준인 **MSS(Maximum Segment Size)**가 있다. 이름에 Segment가 들어가지만 MSS가 세그먼트 전체 크기를 뜻하는 것은 아니다. MSS는 **TCP 페이로드, 즉 TCP 헤더 뒤에 실리는 애플리케이션 데이터만** 센다.
 
-MTU와 헤더 길이로 MSS를 추정하는 계산은 [Unit 7 Lesson 2의 MSS 설명](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/7/lesson/2/page/6)에서 해 본다. 우선은 MTU가 바깥 IP 패킷의 상한이고 MSS가 TCP 데이터 조각의 상한이라는 점을 구별하자.
+| 값 | 무엇의 크기 한도인가? | 포함되는 내용 |
+|---|---|---|
+| MTU | 링크를 지나는 IP 패킷 전체 | IP 헤더 + TCP 헤더 + TCP 데이터 |
+| MSS | TCP 세그먼트 안의 데이터 부분 | TCP 데이터만; TCP·IP 헤더는 제외 |
+
+따라서 MTU가 1,500바이트라면 그 안에는 IP 헤더와 TCP 헤더가 들어갈 자리도 남겨야 하므로, MSS는 MTU보다 작다. 이번에는 크기 관계만 이해하고, 헤더 길이를 빼서 MSS를 계산하는 예는 [Unit 7 Lesson 2의 MSS 설명](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/7/lesson/2/page/6)에서 확인한다.
 
 ### 이 Lesson에서 가져갈 것
 
-- **기억하기 (Recall):** MTU는 링크 IP Packet 한도, MSS는 TCP Segment 안의 데이터 크기 기준이다.
-- **적용하기 (Apply):** MTU는 IP 패킷 전체, MSS는 TCP 데이터 부분의 크기라는 차이를 구별한다.
+- **기억하기 (Recall):** MTU는 IP 패킷 전체, MSS는 TCP 데이터 부분의 크기 한도다.
+- **적용하기 (Apply):** MTU에 TCP/IP 헤더가 포함되지만 MSS에는 TCP 헤더가 포함되지 않는 이유를 설명한다.
 - **찾아보기 (Lookup):** 옵션이 있는 TCP 헤더와 경로 MTU 반영은 TCP 문서에서 확인한다.
 
 ## Stream을 Segment로 나누기
 
-하나의 Stream이 MSS보다 길면 TCP는 전달할 데이터를 MSS에 맞는 여러 조각으로 나눈다.
+하나의 Stream이 MSS보다 길면 TCP는 데이터를 여러 조각으로 분할(Segmentation)한다. 각 조각에 TCP 헤더를 붙인 전송 단위가 **세그먼트(Segment)**다. MSS는 세그먼트 안의 데이터 부분에 적용되므로, TCP 헤더를 더한 세그먼트 전체는 MSS보다 클 수 있다.
 
-긴 Stream을 작은 조각들로 분할하는 과정을 분할(Segmentation, 세그멘테이션)이라고 한다. TCP가 이 과정을 거치면 각각의 조각에 TCP 헤더가 더해져 Segment가 된다.
+간단한 계산을 보자. 전송할 데이터가 **1,900바이트**이고 이 예에서 MSS를 **500바이트**로 가정하면, TCP는 데이터 부분을 `500 + 500 + 500 + 400`바이트로 나누어 네 개의 세그먼트에 담는다. 마지막 세그먼트는 남은 데이터만 담으므로 앞의 세 개보다 작다. 실제 연결의 MSS는 상대와 경로 조건에 따라 정해지며, 여기의 500은 분할 원리를 보여 주는 가정값이다.
 
-예를 들어 파일 데이터가 4MB라고 해서 TCP가 이를 Segment 하나에 모두 넣지는 않는다. 링크의 MTU와 해당 연결의 MSS에 맞추어 여러 Segment로 나누어 보낸다. 수신 쪽에서 이를 다시 이어 주는 과정과 마지막 조각의 길이는 Unit 7 Lesson 1 「TCP와 UDP 개요」에서 본다.
+수신 쪽 TCP가 세그먼트에서 데이터를 꺼내 이어진 Stream으로 제공하는 흐름은 Unit 7 Lesson 1 「TCP와 UDP 개요」에서 다시 살펴본다. 이 페이지에서는 긴 Stream이 MSS를 기준으로 여러 전송 단위가 된다는 점을 익히자.
 
 ### 이 Lesson에서 가져갈 것
 
-- **기억하기 (Recall):** Segmentation은 긴 TCP Stream을 MSS 크기 기준으로 나누는 과정이다.
-- **적용하기 (Apply):** 큰 파일이 여러 TCP Segment로 보내지는 이유를 말한다.
+- **기억하기 (Recall):** TCP는 Stream을 MSS 이하의 데이터 조각으로 나누고 각 조각에 TCP 헤더를 붙인다.
+- **적용하기 (Apply):** 1,900바이트를 MSS 500바이트 예로 나누어 세그먼트 수와 마지막 조각 크기를 말한다.
 - **찾아보기 (Lookup):** 실제 세그먼트 크기는 캡처나 TCP 협상 값에서 확인한다.
 
 ## Packet과 Frame으로 보내기
 
-TCP Segment에는 TCP 헤더가 붙고, IP 계층은 그 전체를 페이로드로 담아 IP 헤더를 더해 Packet을 만든다. Ethernet 데이터 링크 계층은 IP 패킷을 페이로드로 받아 프레임 헤더와 오류 확인용 정보를 더해 Frame으로 감싼다.
+TCP 세그먼트와 IP 패킷, Ethernet 프레임은 모두 데이터를 전달하지만 같은 단위는 아니다. 바깥 계층이 앞 단계의 단위를 내용물로 담아 다음 단위를 만든다.
 
-MTU는 기본 예에서 IP 패킷의 최대 크기다. Ethernet 프레임에는 IP 패킷 바깥의 링크 헤더와 트레일러가 더해지므로, 프레임 전체 크기와 MTU를 같은 값으로 보면 안 된다. IP 패킷이 실제 링크로 나갈 때에는 그 링크에서 쓸 프레임에 담긴다.
+| 단위 | 무엇으로 이루어지는가? | 어떤 크기 기준이 적용되는가? |
+|---|---|---|
+| TCP Segment | TCP 헤더 + TCP 페이로드(애플리케이션 데이터) | MSS는 페이로드 크기만 제한한다. |
+| IP Packet | IP 헤더 + 페이로드(여기서는 TCP 세그먼트 전체) | MTU는 IP 패킷 전체 크기를 제한한다. |
+| Ethernet Frame | Ethernet 헤더 + 페이로드(IP 패킷 전체) + FCS 트레일러 | 프레임에는 IP 패킷 바깥의 링크 정보도 더해진다. |
 
-TCP를 쓰는 예의 흐름은 `Stream → Segment → IP Packet → Ethernet Frame`이다. 계층 이름으로 기억하면 소켓은 Stream, TCP는 Segment와 MSS, IP는 Packet과 MTU, Ethernet 데이터 링크는 Frame을 다룬다. 물리 계층은 그 프레임을 비트와 신호로 전달한다. 이름 사이의 포함 관계가 헷갈리면 [Lesson 3의 캡슐화 정의](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/4/lesson/3/page/2)와 [역캡슐화 정의](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/4/lesson/3/page/4)를 다시 확인하자.
+따라서 이더넷에서 MTU가 1,500바이트라는 말은 IP 패킷이 최대 1,500바이트라는 뜻이지, Ethernet 프레임 전체가 1,500바이트라는 뜻은 아니다. 프레임의 헤더와 FCS까지 세면 프레임은 더 커질 수 있다. TCP를 쓰는 예의 흐름은 `Stream → Segment → IP Packet → Ethernet Frame`이며, 물리 계층은 프레임의 비트를 신호로 전달한다. 이름과 포함 관계를 함께 기억하자.
 
 ### 이 Lesson에서 가져갈 것
 
-- **기억하기 (Recall):** IP Packet은 Segment를, Ethernet Frame은 Packet을 페이로드로 담는다.
-- **적용하기 (Apply):** MTU가 프레임 전체가 아닌 IP 패킷 기준임을 구별한다.
-- **찾아보기 (Lookup):** VLAN 태그와 링크별 MTU 차이는 장비 규격에서 확인한다.
+- **기억하기 (Recall):** IP 패킷 전체가 Ethernet 프레임의 페이로드이고, MTU는 IP 패킷 크기에 적용된다.
+- **적용하기 (Apply):** Ethernet 프레임의 전체 길이가 MTU보다 클 수 있는 이유를 설명한다.
+- **찾아보기 (Lookup):** TCP/IP/Ethernet 헤더의 실제 길이와 필드는 각 프로토콜 형식에서 확인한다.
 
 ## UDP Datagram과 용어 구별
 <!-- learn-page-id: datagram-definition -->
 
-TCP 소켓에서 다루는 Stream은 연속된 바이트 흐름이고, Segment는 TCP가 그 흐름을 나누어 전송하는 단위다. 애플리케이션이 다루는 메시지의 경계와 Segment의 경계는 항상 같지는 않다.
+TCP와 UDP는 모두 L4에서 애플리케이션 데이터를 전달하지만, 프로그램이 주고받는 단위가 다르다.
 
-UDP는 TCP처럼 연결된 Stream을 제공하지 않는다. UDP에서 전송하는 하나의 데이터 덩어리는 데이터그램(Datagram)이라고 부른다. 계층별 단위를 정확히 말할 때 TCP의 L4 단위는 Segment, UDP의 L4 단위는 Datagram, IP의 L3 단위는 Packet이다.
+| 구분 | TCP | UDP |
+|---|---|---|
+| 프로그램이 다루는 모습 | 이어진 바이트 Stream | 따로 구분되는 메시지 |
+| L4 단위 이름 | Segment | Datagram |
+| 메시지 경계 | `ABC`와 `DEF`를 따로 보내도 받는 쪽은 `ABCDEF`로 읽거나 나누어 읽을 수 있다. | `ABC`와 `DEF`를 각각 Datagram으로 보내며, 도착하면 두 메시지의 경계가 유지된다. |
+| 도착에 대한 약속 | 순서 있는 바이트 흐름을 제공한다. 자세한 보장 방식은 뒤 Unit에서 다룬다. | Datagram의 도착이나 순서를 보장하지 않는다. |
 
-실무나 대화에서는 세그먼트나 데이터그램을 포함해 전달 단위를 넓게 ‘패킷’이라고 부르는 경우도 있다. 하지만 계층의 역할을 설명하거나 TCP와 UDP를 비교할 때는 이름을 구별하면 혼동이 줄어든다. UDP 데이터그램도 IP 패킷의 페이로드에 담겨 전달된다.
+UDP는 TCP처럼 하나의 이어진 Stream을 제공하지 않는다. 각각의 **데이터그램(Datagram)**은 UDP 헤더와 그 메시지 데이터로 이루어지며, IP 계층에서는 데이터그램 전체가 IP 패킷의 페이로드가 된다. TCP에서는 같은 자리에 TCP 세그먼트가 실린다.
+
+계층의 단위를 정확히 구분할 때 L4의 이름은 TCP **Segment** 또는 UDP **Datagram**, L3는 IP **Packet**, L2는 Ethernet **Frame**이다. 일상적인 네트워크 대화에서 ‘패킷’은 여러 전달 단위를 넓게 가리킬 때도 있지만, 계층을 비교할 때는 구체적인 이름을 쓰면 혼동이 줄어든다.
 
 ### 이 Lesson에서 가져갈 것
 
-- **기억하기 (Recall):** UDP는 연결된 바이트 Stream 대신 데이터그램 단위로 메시지를 전한다.
-- **적용하기 (Apply):** UDP 메시지 경계와 TCP 바이트 흐름의 차이를 사용하는 앱에 적용한다.
+- **기억하기 (Recall):** TCP는 Stream/Segment, UDP는 메시지/Datagram 단위를 사용한다.
+- **적용하기 (Apply):** `ABC`와 `DEF` 두 데이터를 TCP와 UDP가 어떻게 구분해 전달하는지 설명한다.
 - **찾아보기 (Lookup):** UDP 헤더 길이와 최대 데이터 크기는 UDP/IP 표준에서 확인한다.
