@@ -1143,8 +1143,6 @@ additional_sources:
 - https://github.com/FutureReadyCampus/course-network/blob/90a5cc40dec981b0e37fa334f3fae8ba673c8f32/studio/wiki/honja-network/04-2.md
 - https://www.rfc-editor.org/rfc/rfc9293.html
 ---
-
-
 앞 Lesson에서 TCP와 UDP의 역할을 비교했다. 이번 Lesson에서는 웹 서버에 접속하는 예를 따라가며 TCP 연결이 어떤 메시지로 시작되는지 살펴본다. 먼저 세 메시지 전체를 보고, 이어서 RTT·순서번호·MSS·연결 상태를 차례로 읽는다.
 
 ## 3-way handshake의 의미
@@ -1265,6 +1263,7 @@ TCP는 연결 절차가 어디까지 진행되었는지 상태 이름으로 기�
 - **찾아보기 (Lookup):** SYN_SENT와 SYN_RECEIVED의 전체 전이는 상태도나 운영체제 도구에서 확인한다.
 
 ## 연결의 의미 정리
+<!-- learn-page-id: virtual-circuit-definition -->
 세 번의 메시지를 주고받으면 TCP 양 끝은 서로의 연결 시작 번호를 알고, 연결 상태를 관리하기 시작한다. 이때 “연결되었다”는 말은 두 컴퓨터 사이에 새 케이블을 연결하거나 통신 전용 선로를 예약했다는 뜻이 아니다.
 
 TCP 연결은 이미 있는 네트워크를 통해 두 끝점이 통신에 필요한 상태를 기록해 두는 논리적인 관계다. 양쪽 운영체제의 TCP가 상대 주소와 포트, 순서번호와 협의한 전송 조건 등을 연결 상태로 관리한다. 이처럼 물리적인 전선이 아니라 양 끝의 규칙과 기록으로 성립하는 연결을 Virtual Circuit(가상 회선) 또는 논리적 연결이라고 부르기도 한다.

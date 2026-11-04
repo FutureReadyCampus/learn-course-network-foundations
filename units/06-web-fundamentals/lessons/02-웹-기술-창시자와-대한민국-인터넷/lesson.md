@@ -46,7 +46,6 @@ page_metadata:
 - terms: []
 animations_dir: units/06-web-fundamentals/lessons/02-웹-기술-창시자와-대한민국-인터넷/assets/animations
 ---
-
 핵심 개념을 주제별로 정리했다.
 
 ## 웹 기술의 출발
@@ -70,6 +69,7 @@ animations_dir: units/06-web-fundamentals/lessons/02-웹-기술-창시자와-대
 - **찾아보기 (Lookup):** 최초 제안서·브라우저 연혁은 CERN 공식 기록을 찾아본다.
 
 ## Hypertext와 링크
+<!-- learn-page-id: html-definition -->
 
 독립된 문서의 내용뿐 아니라 문서와 문서 사이의 연결을 표현한 것이 Hypertext다. 링크를 클릭하면 다른 문서로 이동하는 방식이다. 오늘날에는 익숙하지만 인터넷 사용이 제한적이던 1990년대 초반에는 새로운 정보 접근 방식이었다. HTML은 이러한 문서를 표현하는 기술과 연결된다.
 

@@ -48,10 +48,10 @@ page_metadata:
   - 기본 포트
 animations_dir: units/06-web-fundamentals/lessons/03-url과-uri/assets/animations
 ---
-
 핵심 개념을 주제별로 정리했다.
 
 ## URL과 URI의 이름
+<!-- learn-page-id: uri-definition -->
 
 웹을 이해하려면 URL과 URI를 구별해야 한다. 앞서 www.naver.com에서 www를 호스트 이름, naver.com을 도메인 이름으로 나누어 보았다. URL과 URI의 앞부분은 Uniform Resource이며, 끝의 L은 Locator, I는 Identifier를 뜻한다. 위치를 나타내는 것과 대상을 식별하는 것의 차이를 보기 전에 Resource가 무엇인지 살펴보자.
 

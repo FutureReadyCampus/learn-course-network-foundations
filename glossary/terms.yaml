@@ -1086,8 +1086,9 @@
   - AND 마스크
   - AND mask
   hover: 두 비트가 모두 1인 자리만 1로 남기는 계산이에요. 주소의 필요한 부분을 가릴 때 쓸 수 있어요.
-  anchor_hint:
+  anchor:
     lesson: u1-prerequisites
+    page: hexadecimal-notation
 - id: not-xor
   tier: none
   ko: NOT·XOR
@@ -1096,8 +1097,9 @@
   - NOT
   - XOR
   hover: NOT은 0과 1을 뒤집고, XOR은 두 입력이 다를 때 1이 되는 계산이에요.
-  anchor_hint:
+  anchor:
     lesson: u1-prerequisites
+    page: hexadecimal-notation
 - id: driver
   tier: none
   ko: 드라이버
@@ -1106,8 +1108,9 @@
   - 드라이버
   - driver
   hover: 운영체제가 장치와 주고받을 수 있도록 연결해 주는 프로그램이에요.
-  anchor_hint:
+  anchor:
     lesson: u1-user-kernel
+    page: nic-kernel-mode
 - id: firmware
   tier: none
   ko: 펌웨어
@@ -1116,8 +1119,9 @@
   - 펌웨어
   - firmware
   hover: 장치 안에서 기본 동작을 맡도록 저장된 프로그램이에요.
-  anchor_hint:
+  anchor:
     lesson: u1-user-kernel
+    page: layer-numbers
 - id: pid
   tier: none
   ko: 프로세스 ID
@@ -1126,8 +1130,9 @@
   - 프로세스 ID
   - PID
   hover: 실행 중인 프로세스를 구별하기 위해 붙이는 번호예요.
-  anchor_hint:
+  anchor:
     lesson: u1-prerequisites
+    page: u1l1-osi-reference-model
 - id: system-call
   tier: none
   ko: 시스템 콜
@@ -1136,8 +1141,9 @@
   - 시스템 콜
   - system call
   hover: 프로그램이 운영체제 커널에 기능을 요청하는 방식이에요.
-  anchor_hint:
+  anchor:
     lesson: u1-user-kernel
+    page: socket-definition
 - id: networking
   tier: none
   ko: 네트워킹
@@ -1146,8 +1152,9 @@
   - 네트워킹
   - networking
   hover: 장치들이 연결되어 정보를 주고받도록 하는 일과 그 기술을 가리켜요.
-  anchor_hint:
+  anchor:
     lesson: u1-networking
+    page: u1l3-network-networking
 - id: prerequisite
   tier: none
   ko: 전제조건
@@ -1157,8 +1164,9 @@
   - prerequisite
   - precondition
   hover: 어떤 내용을 배우거나 수행하기 전에 먼저 갖춰야 하는 지식이나 조건이에요.
-  anchor_hint:
+  anchor:
     lesson: u1-layers
+    page: prerequisite-definition
 - id: metric
   tier: none
   ko: 메트릭
@@ -1167,8 +1175,9 @@
   - 메트릭
   - metric
   hover: 라우터가 여러 경로 중 어느 쪽이 나은지 비교할 때 쓰는 값이에요. 속도나 거리 하나만을 뜻하지는 않아요.
-  anchor_hint:
+  anchor:
     lesson: u2-l07-스위치가-하는-일과-비용
+    page: route-table-definition
 - id: route-print
   tier: none
   ko: 라우팅 표 출력 명령
@@ -1177,8 +1186,9 @@
   - 라우팅 표 출력 명령
   - route print
   hover: 컴퓨터의 라우팅 테이블을 화면에 표시하는 명령이에요. 정확한 사용법은 운영체제에 따라 달라요.
-  anchor_hint:
+  anchor:
     lesson: u2-l07-스위치가-하는-일과-비용
+    page: route-print-definition
   check: true
 - id: network-mask
   tier: none
@@ -1188,8 +1198,9 @@
   - 네트워크 마스크
   - network mask
   hover: IP 주소에서 네트워크 부분의 경계를 나타내는 마스크예요. 서브넷 마스크와 같은 뜻으로 쓰여요.
-  anchor_hint:
+  anchor:
     lesson: u2-l07-스위치가-하는-일과-비용
+    page: route-print-definition
 - id: next-hop-interface
   tier: none
   ko: 다음 홉 인터페이스
@@ -1198,8 +1209,9 @@
   - 다음 홉 인터페이스
   - next-hop interface
   hover: 패킷을 다음 홉으로 보낼 때 사용할 네트워크 연결 지점이에요.
-  anchor_hint:
+  anchor:
     lesson: u2-l07-스위치가-하는-일과-비용
+    page: route-table-definition
 - id: vlan
   tier: none
   ko: VLAN
@@ -1208,9 +1220,9 @@
   - VLAN
   - Virtual LAN
   hover: 한 스위치의 네트워크를 설정으로 나눈 논리적인 LAN 구역이에요.
-  anchor_hint:
+  anchor:
     lesson: u3-l09-l2-스위치에-대해서
-    page_title: VLAN · 한 대의 스위치를 여러 LAN처럼 나누기
+    page: vlan-definition
 - id: uplink
   tier: none
   ko: 업링크
@@ -1219,9 +1231,9 @@
   - 업링크
   - uplink
   hover: 스위치를 상위 스위치나 네트워크 쪽에 연결하는 링크예요.
-  anchor_hint:
+  anchor:
     lesson: u3-l09-l2-스위치에-대해서
-    page_title: Uplink와 Distribution switch · 스위치를 이어 붙이기
+    page: uplink-definition
 - id: wireshark
   tier: none
   ko: Wireshark
@@ -1229,8 +1241,9 @@
   aliases:
   - Wireshark
   hover: 네트워크에서 오가는 패킷 기록을 살펴보는 프로그램이에요.
-  anchor_hint:
+  anchor:
     lesson: u4-l12-l3-ip-packet으로-외워라
+    page: header-payload-definition
 - id: arp-cache
   tier: none
   ko: ARP 캐시
@@ -1239,8 +1252,9 @@
   - ARP 캐시
   - ARP cache
   hover: 알아낸 IP 주소와 MAC 주소의 짝을 잠시 보관한 기록이에요.
-  anchor_hint:
+  anchor:
     lesson: u4-l23-arp
+    page: arp-cache-definition
 - id: fragmentation
   tier: none
   ko: 단편화
@@ -1249,8 +1263,9 @@
   - 단편화
   - fragmentation
   hover: 전달할 수 있는 크기를 넘는 IP 패킷을 더 작은 조각으로 나누는 일이에요.
-  anchor_hint:
+  anchor:
     lesson: u4-l21-ttl과-단편화
+    page: fragmentation-definition
 - id: tracert
   tier: none
   ko: tracert
@@ -1259,8 +1274,9 @@
   - tracert
   - traceroute
   hover: 목적지까지 거치는 라우터(홉)와 각 단계의 응답 시간을 보여 주는 명령이에요.
-  anchor_hint:
+  anchor:
     lesson: u4-l24-ping과-rtt
+    page: tracert-definition
 - id: echo
   tier: none
   ko: Echo 요청·응답
@@ -1271,8 +1287,9 @@
   - Echo reply
   - Echo 응답
   hover: ICMP에서 상대에게 보내는 확인 요청과 그에 대한 응답이에요. 응답이 오면 도달 가능성을 확인할 수 있어요.
-  anchor_hint:
+  anchor:
     lesson: u4-l24-ping과-rtt
+    page: icmp-echo
   check: true
 - id: connectionless
   tier: none
@@ -1282,8 +1299,9 @@
   - 비연결형
   - connectionless
   hover: UDP 자체는 TCP처럼 보내기 전에 연결 상태를 만들지 않는 성질이에요. 전달 확인도 별도로 하지 않아요.
-  anchor_hint:
+  anchor:
     lesson: u5-l25-tcp와-udp-개요
+    page: tcp-udp-overview
 - id: virtual-circuit
   tier: none
   ko: 가상 회선
@@ -1292,8 +1310,9 @@
   - 가상 회선
   - Virtual Circuit
   hover: TCP가 연결된 통신처럼 보이게 하는 논리적인 경로를 설명하는 표현이에요. 실제 전용 회선은 아니에요.
-  anchor_hint:
+  anchor:
     lesson: u5-l26-tcp-연결과정
+    page: virtual-circuit-definition
   check: true
 - id: tcp-session
   tier: none
@@ -1304,8 +1323,9 @@
   - TCP Session
   - TCP 연결 세션
   hover: TCP 연결의 양 끝과 그 상태를 가리키는 말이에요. 앱이 관리하는 웹 세션과는 다른 층의 개념이에요.
-  anchor_hint:
+  anchor:
     lesson: u5-l25-tcp와-udp-개요
+    page: tcp-session-definition
   only_in:
   - u5-l25-tcp와-udp-개요
 - id: tcp-state
@@ -1317,8 +1337,9 @@
   - ESTABLISHED
   - TIME_WAIT
   hover: TCP 연결 과정에서 현재 단계를 나타내는 상태예요. 예를 들어 연결됨이나 종료를 기다리는 상태가 있어요.
-  anchor_hint:
+  anchor:
     lesson: u5-l27-tcp-연결종료-및-상태변화
+    page: tcp-state-definition
   check: true
 - id: html
   tier: none
@@ -1328,8 +1349,9 @@
   - HTML
   - HyperText Markup Language
   hover: 웹 문서의 구조와 내용을 표시하는 마크업 언어예요. 화면 모양을 꾸미는 CSS와 역할이 달라요.
-  anchor_hint:
+  anchor:
     lesson: u6-l32-웹-기술-창시자와-대한민국-인터넷
+    page: html-definition
 - id: uri
   tier: none
   ko: URI
@@ -1338,8 +1360,9 @@
   - URI
   - Uniform Resource Identifier
   hover: 자원을 식별하는 이름이에요. URL은 자원의 위치와 접근 방법을 나타내는 URI의 한 종류예요.
-  anchor_hint:
+  anchor:
     lesson: u6-l33-url과-uri
+    page: uri-definition
 - id: bit-byte
   tier: none
   ko: 비트·바이트
@@ -1350,9 +1373,9 @@
   - bit
   - byte
   hover: 비트는 0 또는 1 하나를 나타내고, 바이트는 비트 8개를 묶은 단위예요.
-  anchor_hint:
+  anchor:
     lesson: u1-prerequisites
-    page_title: 네트워크를 공부하는 이유와 필요한 바탕
+    page: bit-byte-definition
 - id: buffer
   tier: none
   ko: 버퍼
@@ -1361,9 +1384,9 @@
   - 버퍼
   - buffer
   hover: 데이터를 잠시 담아 두는 메모리 공간이에요. 도착과 사용 속도가 다를 때 중간에서 받아 둬요.
-  anchor_hint:
+  anchor:
     lesson: u1-prerequisites
-    page_title: User mode·Kernel mode와 버퍼
+    page: buffer-definition
 - id: kernel-interface
   tier: none
   ko: 커널 창구 인터페이스
@@ -1373,7 +1396,8 @@
   - kernel interface
   - 커널 인터페이스
   hover: 앱이 운영체제 커널에 기능을 요청하는 창구를 뜻하는 표현이에요. NIC의 네트워크 인터페이스와는 다른 뜻이에요.
-  anchor_hint:
+  anchor:
     lesson: u1-user-kernel
+    page: socket-definition
   only_in:
   - u1-user-kernel

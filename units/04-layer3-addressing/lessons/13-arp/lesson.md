@@ -789,7 +789,6 @@ page_metadata:
     after_paragraph: 1
 animations_dir: units/04-layer3-addressing/lessons/13-arp/assets/animations
 ---
-
 ## IP 주소와 MAC 주소 복습
 
 ARP를 이해하려면 먼저 IP 주소와 MAC 주소가 맡는 범위를 떠올리면 된다. [앞에서 본 IP 주소와 MAC 주소의 역할](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/4/lesson/1/page/1)에서처럼 IP 주소는 목적지가 있는 네트워크를 찾고, MAC 주소는 현재 연결된 링크에서 프레임을 받을 인터페이스를 가리킨다. 이번 Lesson은 알고 있는 IP 주소에 대응하는 MAC 주소를 같은 LAN에서 찾는 과정을 다룬다.
@@ -872,6 +871,7 @@ IP 패킷의 출발지는 PC인 192.168.0.100, 목적지는 외부 사이트를 
 - **찾아보기 (Lookup):** 스위치에서 Frame 헤더 값은 Wireshark 캡처로 확인한다.
 
 ## ARP Cache에 남기는 정보
+<!-- learn-page-id: arp-cache-definition -->
 
 DHCP는 게이트웨이의 IP 주소를 알려 주지만, 그 IP에 대응하는 MAC 주소까지 알려 주지는 않는다. 따라서 PC는 통신이 필요할 때 ARP로 해당 IP의 MAC 주소를 구한다. 이렇게 알아낸 대응 관계는 **ARP 캐시(ARP cache)**에 잠시 저장되어, 다음 통신에서 매번 다시 물어보지 않도록 돕는다.
 
