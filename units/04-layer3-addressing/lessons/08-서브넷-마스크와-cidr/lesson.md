@@ -97,11 +97,6 @@ page_metadata:
     alt: "32개의 전구가 8개씩 네 묶음으로 놓여 있고, 왼쪽 세 묶음은 켜지고 마지막 묶음은 꺼진 채로 남아 그 사이에 경계선이 그어집니다. 192.168.0.10 주소가 이 선을 기준으로 192.168.0과 10으로 갈라집니다."
     caption: "255.255.255.0은 앞의 24칸이 켜지고 뒤의 8칸이 꺼진 32칸 표시이며, 켜진 칸이 끝나는 곳이 경계선입니다."
     after_paragraph: -1
-  - file: assets/animations/l18-and-mask-column.svg
-    title: "마스크는 8비트를 세로로 곱해요"
-    alt: "IP 주소의 옥텟 하나 10110101(181) 아래에 마스크 11110000(240)이 놓이고, 그 아래에 줄이 그어집니다. 세로 줄마다 두 비트를 곱해 1×1일 때만 1이 되어 결과 10110000(176)이 나옵니다. 마지막에 마스크의 1이 이어진 앞쪽 네 비트는 남는 쪽(네트워크 부분), 0이 이어진 뒤쪽 네 비트는 지워지는 쪽(호스트 부분)이라고 경계선이 그어집니다."
-    caption: "AND는 비트를 세로로 곱하는 것과 같습니다. 이 8비트와 값은 설명용 예시이고, 실제 IPv4 마스크는 32비트로 쓰며 Page 3에서 이어집니다."
-    after_paragraph: 1
   questions:
   - id: u5-l02-p02-q01
     kind: choice
@@ -172,6 +167,63 @@ page_metadata:
 
 - terms:
   - AND 연산
+  - 2진수(binary)
+  illustrations:
+  - file: assets/animations/l18-and-mask-column.svg
+    title: "8비트에서도 같은 방식으로 계산해요"
+    alt: "IP 주소의 옥텟 하나 10110101(181) 아래에 마스크 11110000(240)이 놓이고, 그 아래에 줄이 그어집니다. 세로 줄마다 두 비트를 곱해 1×1일 때만 1이 되어 결과 10110000(176)이 나옵니다. 마지막에 마스크의 1이 이어진 앞쪽 네 비트는 남는 쪽(네트워크 부분), 0이 이어진 뒤쪽 네 비트는 지워지는 쪽(호스트 부분)이라고 경계선이 그어집니다."
+    caption: "3비트로 익힌 규칙을 8비트에 적용한 예입니다. 실제 IPv4 계산은 다음 페이지에서 주소와 마스크로 이어서 봅니다."
+    after_paragraph: 5
+  questions:
+  - id: u5-l02-and-practice-q01
+    kind: choice
+    difficulty: easy
+    prompt: AND 연산의 결과가 1이 되려면 두 입력 비트는 어떻게 되어야 하나요?
+    choices:
+    - id: a
+      text: 둘 다 1이어야 한다
+      feedback: 맞아요. AND는 두 입력이 모두 1일 때만 결과가 1입니다.
+    - id: b
+      text: 둘 중 하나만 1이어야 한다
+      feedback: 이 조건은 한 비트만 1이어도 결과가 1인 OR 연산에 가깝습니다.
+    - id: c
+      text: 둘 다 0이어야 한다
+      feedback: 두 입력이 0이면 AND 결과도 0입니다.
+    - id: d
+      text: 두 비트가 서로 달라야 한다
+      feedback: 두 입력이 서로 다를 때 1이 되는 것은 XOR 규칙입니다.
+    - id: e
+      text: 첫 번째 비트만 1이면 된다
+      feedback: AND에서는 두 번째 입력도 1이어야 결과가 1입니다.
+    answer: a
+  - id: u5-l02-and-practice-q02
+    kind: choice
+    difficulty: medium
+    prompt: 3비트 주소 101에 마스크 110을 적용하면 AND 결과는 무엇인가요?
+    choices:
+    - id: a
+      text: "101"
+      feedback: 마스크의 마지막 비트가 0이므로 결과의 마지막 자리도 0이어야 합니다.
+    - id: b
+      text: "110"
+      feedback: 결과는 마스크를 복사하는 게 아니라 각 자리의 두 비트에 AND를 적용합니다.
+    - id: c
+      text: "111"
+      feedback: 111은 각 자리에 OR를 적용했을 때 나오는 결과입니다.
+    - id: d
+      text: "010"
+      feedback: 각 자리를 세로로 맞춰 두 입력이 모두 1인 자리만 남겨 보세요.
+    - id: e
+      text: "100"
+      feedback: 맞아요. 1×1은 1이고, 0이 포함된 자리는 0이므로 101 AND 110은 100입니다.
+    answer: e
+  question_placements:
+  - question_id: u5-l02-and-practice-q01
+    after_paragraph: 2
+  - question_id: u5-l02-and-practice-q02
+    after_paragraph: 5
+
+- terms:
   - 마스크 연산
   - 네트워크 주소(Network address)
   animations:
@@ -181,27 +233,27 @@ page_metadata:
       덮여 값이 그대로 결과 줄에 내려오며 마지막 8칸은 막혀 0000 0000으로 지워집니다. 결과 192.168.0.0이 다른 주소들과 비교됩니다.
     caption: 마스크가 1인 칸은 주소 값이 그대로 내려가고, 0인 칸은 지워져서 호스트 자리가 0이 됩니다.
   questions:
-  - id: u5-l02-p03-q01
+  - id: u5-l02-p03-mask-q01
     kind: choice
     difficulty: easy
-    prompt: AND 연산에서 두 입력 비트가 모두 1일 때 결과는 무엇인가요?
+    prompt: "255.255.255.0 마스크를 적용해 네트워크 주소를 구할 때, 마지막 옥텟은 어떻게 되나요?"
     choices:
     - id: a
-      text: '0'
-      feedback: AND는 두 입력이 모두 1일 때만 결과가 1입니다.
+      text: 원래 주소의 마지막 옥텟을 그대로 유지한다
+      feedback: 마스크의 마지막 옥텟은 0이므로 그 자리에 있는 주소 비트는 결과에서 0이 됩니다.
     - id: b
-      text: '1'
-      feedback: 맞아요. AND는 두 비트가 모두 1일 때만 1을 냅니다.
+      text: 항상 255가 된다
+      feedback: 255는 앞의 마스크 옥텟 값입니다. 마지막 마스크 옥텟은 0입니다.
     - id: c
-      text: 입력과 관계없이 항상 0
-      feedback: AND는 두 입력이 모두 1일 때만 결과가 1입니다.
+      text: 마지막 옥텟의 모든 비트를 뒤집는다
+      feedback: AND는 비트를 뒤집지 않습니다. 같은 자리의 두 비트가 모두 1인지 확인합니다.
     - id: d
-      text: 입력과 관계없이 항상 1
-      feedback: AND는 두 입력이 모두 1일 때만 결과가 1입니다.
+      text: 0이 된다
+      feedback: 맞아요. 마지막 마스크 옥텟의 모든 비트가 0이므로 AND 결과도 0입니다.
     - id: e
-      text: 두 비트를 이어 쓴 값
-      feedback: AND는 두 입력이 모두 1일 때만 결과가 1입니다.
-    answer: b
+      text: 항상 1이 된다
+      feedback: 두 번째 입력 비트가 0이면 AND 결과도 0입니다.
+    answer: d
   - id: u5-l02-p03-q02
     kind: choice
     difficulty: medium
@@ -223,30 +275,9 @@ page_metadata:
       text: 255.255.255.0
       feedback: 마스크가 1인 앞의 24비트는 남고, 호스트 부분인 마지막 옥텟은 0이 됩니다.
     answer: a
-  - id: u5-l02-p03-q03
-    kind: choice
-    difficulty: easy
-    prompt: 두 입력 비트가 모두 1일 때만 결과가 1이 되는 연산은 무엇인가요?
-    choices:
-    - id: a
-      text: OR
-      feedback: 두 비트가 모두 1일 때만 1을 내는 규칙을 고르세요.
-    - id: b
-      text: XOR
-      feedback: 두 비트가 모두 1일 때만 1을 내는 규칙을 고르세요.
-    - id: c
-      text: AND
-      feedback: 맞아요. AND 연산은 두 입력이 모두 1일 때만 1을 냅니다.
-    - id: d
-      text: NOT
-      feedback: 두 비트가 모두 1일 때만 1을 내는 규칙을 고르세요.
-    - id: e
-      text: 덧셈
-      feedback: 두 비트가 모두 1일 때만 1을 내는 규칙을 고르세요.
-    answer: c
   question_placements:
-  - question_id: u5-l02-p03-q01
-    after_paragraph: 1
+  - question_id: u5-l02-p03-mask-q01
+    after_paragraph: 2
   - question_id: u5-l02-p03-q02
     after_paragraph: 4
 
@@ -517,9 +548,38 @@ IPv4 주소는 0과 1, 32개의 비트(bit)로 이루어진다. 읽기 쉽게 8�
 - **적용하기 (Apply):** `255.255.255.0`과 `/24`가 같은 경계를 뜻하는지 확인한다.
 - **찾아보기 (Lookup):** 비연속 마스크 등 특수 구성은 표준·장비 문서에서 찾아본다.
 
+## AND 연산은 비트를 세로로 맞춰 계산한다
+<!-- learn-page-id: and-bitwise-practice -->
+
+AND 연산은 두 비트를 한 자리씩 비교하는 규칙이다. 먼저 두 입력을 나란히 놓고, 같은 자리에 있는 비트끼리 결과를 낸다. 이때 두 입력이 모두 1인 자리만 결과가 1이 된다.
+
+| 첫 번째 비트 | 두 번째 비트 | AND 결과 |
+| --- | --- | --- |
+| 0 | 0 | 0 |
+| 0 | 1 | 0 |
+| 1 | 0 | 0 |
+| 1 | 1 | 1 |
+
+표의 규칙을 세 자리 숫자에 적용해 보자. 주소는 `101`, 마스크는 `110`이라고 하자. 각 자리에서 두 비트를 곱하듯 비교한다. `1×1`만 1이고, 0이 하나라도 있으면 결과는 0이다.
+
+```text
+주소       1 0 1
+마스크     1 1 0
+           -----
+AND 결과   1 0 0
+```
+
+마스크의 첫 두 자리가 1이므로 주소의 첫 두 비트가 결과에 남는다. 마지막 마스크 자리는 0이므로 주소의 마지막 비트가 1이어도 결과는 0이다. 이 3비트 예시는 AND 계산 순서를 익히기 위한 단순한 모형이다. 실제 IPv4 주소는 32비트지만, 자릿수마다 같은 계산을 반복한다. 먼저 작은 예시에서 세로로 맞추어 계산하는 순서를 익히고, 다음 페이지에서 실제 주소와 서브넷 마스크에 적용해 보자.
+
+### 이 Lesson에서 가져갈 것
+
+- **기억하기 (Recall):** AND는 같은 자리에 있는 두 비트가 모두 1일 때만 결과를 1로 만든다.
+- **적용하기 (Apply):** `101 AND 110`을 자릿수별로 계산한다.
+- **찾아보기 (Lookup):** 32비트 주소 전체에 적용하는 예시는 다음 페이지에서 확인한다.
+
 ## AND 연산으로 네트워크 주소를 구한다
 
-서브넷 마스크를 이용해 IP 주소에서 네트워크 부분만 남기는 계산이 AND 연산이다. AND는 두 비트가 모두 1일 때만 1을 내고, 나머지 경우에는 0을 낸다. [Unit 1 Lesson 1 Page 2 「논리 연산·마스크와 진법」](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/1/lesson/1/page/2)에서 가림판 비유로 본 규칙을 IPv4 주소에 적용해 보자.
+앞 페이지에서는 세 비트 예시로 AND를 한 자리씩 계산했다. 이제 같은 규칙을 32비트 IPv4 주소에 적용해 보자. [Unit 1 Lesson 1 Page 2 「논리 연산·마스크와 진법」](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/1/lesson/1/page/2)에서 본 가림판처럼, 마스크가 1인 자리는 주소 비트를 남기고 0인 자리는 결과를 0으로 만든다.
 
 `192.168.0.10`에 `255.255.255.0`을 적용하면 아래처럼 된다. 마스크가 1인 앞의 24비트는 남고, 0인 마지막 8비트는 지워진다.
 
