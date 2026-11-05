@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 630" role="img" aria-labelledby="title desc" lang="ko">
+  <title id="title">TCP와 UDP 헤더의 정보 비교</title>
+  <desc id="desc">TCP 헤더에는 포트, 순서·확인 정보, 제어 플래그, 수신 Window, 검사합 등이 있고, UDP 헤더에는 출발지·목적지 포트, 길이, 검사합이 있습니다. 두 헤더 뒤에 앱 데이터가 이어집니다.</desc>
+  <style>
+    text{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;fill:#172033}
+    .title{font-size:28px;font-weight:700}.head{font-size:24px;font-weight:700}.field{font-size:20px;font-weight:600}.note{font-size:17px;fill:#48566c}
+    .panel{fill:#f7f9fc;stroke:#c7d2e1;stroke-width:2}.tcp{fill:#dceafe;stroke:#4d7fc1;stroke-width:1.5}.udp{fill:#dcf5ea;stroke:#368b66;stroke-width:1.5}.data{fill:#fff1cc;stroke:#c59023;stroke-width:1.5}
+  </style>
+  <rect width="1120" height="630" rx="24" fill="#ffffff"/>
+  <text class="title" x="560" y="52" text-anchor="middle">헤더는 전달에 필요한 안내 정보, 데이터는 앱이 보낼 내용</text>
+  <rect class="panel" x="28" y="82" width="654" height="500" rx="18"/>
+  <rect class="panel" x="700" y="82" width="392" height="500" rx="18"/>
+  <text class="head" x="355" y="124" text-anchor="middle">TCP 헤더</text>
+  <text class="head" x="896" y="124" text-anchor="middle">UDP 헤더</text>
+
+  <rect class="tcp" x="52" y="148" width="292" height="54" rx="8"/>
+  <rect class="tcp" x="354" y="148" width="304" height="54" rx="8"/>
+  <text class="field" x="198" y="182" text-anchor="middle">출발지 포트</text>
+  <text class="field" x="506" y="182" text-anchor="middle">목적지 포트</text>
+  <rect class="tcp" x="52" y="210" width="606" height="46" rx="8"/>
+  <text class="field" x="355" y="240" text-anchor="middle">순서 번호 · 바이트 흐름의 위치</text>
+  <rect class="tcp" x="52" y="264" width="606" height="46" rx="8"/>
+  <text class="field" x="355" y="294" text-anchor="middle">확인 응답 번호 · 다음에 기대하는 위치</text>
+  <rect class="tcp" x="52" y="318" width="296" height="54" rx="8"/>
+  <rect class="tcp" x="356" y="318" width="302" height="54" rx="8"/>
+  <text class="field" x="200" y="351" text-anchor="middle">Data Offset · 헤더 끝</text>
+  <text class="field" x="507" y="351" text-anchor="middle">제어 플래그 · 상태 신호</text>
+  <rect class="tcp" x="52" y="380" width="606" height="46" rx="8"/>
+  <text class="field" x="355" y="410" text-anchor="middle">Window · 받을 수 있는 범위</text>
+  <rect class="tcp" x="52" y="434" width="606" height="46" rx="8"/>
+  <text class="field" x="355" y="464" text-anchor="middle">Checksum · 손상 확인</text>
+  <rect class="tcp" x="52" y="488" width="606" height="38" rx="8"/>
+  <text class="note" x="355" y="513" text-anchor="middle">옵션이 붙으면 헤더가 더 길어질 수 있음</text>
+  <rect class="data" x="52" y="534" width="606" height="34" rx="8"/>
+  <text class="note" x="355" y="557" text-anchor="middle">그 뒤에 앱 데이터가 이어짐</text>
+
+  <rect class="udp" x="724" y="148" width="168" height="54" rx="8"/>
+  <rect class="udp" x="900" y="148" width="168" height="54" rx="8"/>
+  <text class="field" x="808" y="182" text-anchor="middle">출발지 포트</text>
+  <text class="field" x="984" y="182" text-anchor="middle">목적지 포트</text>
+  <rect class="udp" x="724" y="210" width="168" height="54" rx="8"/>
+  <rect class="udp" x="900" y="210" width="168" height="54" rx="8"/>
+  <text class="field" x="808" y="244" text-anchor="middle">길이</text>
+  <text class="field" x="984" y="244" text-anchor="middle">Checksum</text>
+  <rect class="note" x="724" y="278" width="344" height="2"/>
+  <text class="note" x="896" y="312" text-anchor="middle">고정된 8바이트 헤더</text>
+  <rect class="data" x="724" y="534" width="344" height="34" rx="8"/>
+  <text class="note" x="896" y="557" text-anchor="middle">그 뒤에 앱 데이터</text>
+  <text class="note" x="896" y="370" text-anchor="middle">기본 헤더는 짧지만,</text>
+  <text class="note" x="896" y="397" text-anchor="middle">순서·재전송 같은 처리는</text>
+  <text class="note" x="896" y="424" text-anchor="middle">UDP 자체가 제공하지 않음</text>
+  <text class="note" x="560" y="610" text-anchor="middle">단순화한 구조도 · 필드의 정확한 크기나 옵션을 외우기 위한 그림은 아닙니다</text>
+</svg>
