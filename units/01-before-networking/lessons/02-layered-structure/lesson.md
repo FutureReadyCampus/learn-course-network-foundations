@@ -104,13 +104,6 @@ pages:
         text: 요소의 이름만 볼 수 있습니다
         feedback: 다시 확인해 보세요. 요소와 요소 사이의 관계를 함께 볼 수 있습니다
       answer: a
-    - id: u1-02-layered-structure-p01-q03
-      kind: short
-      prompt: 아래 요소가 없으면 위 요소 자체가 성립하지 않는 관계를 무엇이라고 하나요?
-      answers:
-      - 존립에 대한 의존 관계
-      - 존립 의존 관계
-      feedback: 아래가 없으면 위 요소 자체가 성립하지 않는 관계를 존립에 대한 의존 관계라고 해요.
   - concepts:
       - concept-basic-02-04
       - concept-basic-02-05
