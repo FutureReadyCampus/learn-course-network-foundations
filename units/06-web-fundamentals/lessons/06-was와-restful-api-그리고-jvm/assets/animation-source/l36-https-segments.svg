@@ -12,11 +12,11 @@
   <rect x="60" y="222" width="140" height="36" rx="5" fill="#0f1115" stroke="#3d4b60"/>
   <text x="130" y="248" text-anchor="middle" font-size="24" fill="#e6e8ec">●●●●●●</text>
 
-  <!-- SSL 장비 -->
+  <!-- TLS 처리 장비 -->
   <rect x="380" y="120" width="200" height="160" rx="10" fill="#171a21" stroke="#3d4b60" stroke-width="3">
     <animate attributeName="stroke" values="#3d4b60;#3d4b60;#ffb454;#ffb454;#3d4b60;#3d4b60" keyTimes="0;0.47;0.49;0.56;0.58;1" dur="14s" repeatCount="indefinite"/>
   </rect>
-  <text x="480" y="162" text-anchor="middle" font-size="28" font-weight="700" fill="#e6e8ec">SSL 장비</text>
+  <text x="480" y="162" text-anchor="middle" font-size="28" font-weight="700" fill="#e6e8ec">TLS 처리 장비</text>
   <text x="480" y="204" text-anchor="middle" font-size="24" fill="#9aa3b2">자물쇠를</text>
   <text x="480" y="238" text-anchor="middle" font-size="24" fill="#9aa3b2">여는 곳</text>
 
