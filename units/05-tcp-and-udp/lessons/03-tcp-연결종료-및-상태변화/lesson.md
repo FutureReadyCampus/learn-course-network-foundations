@@ -645,73 +645,73 @@ page_metadata:
   - id: u7-l03-p08-q01
     kind: choice
     difficulty: easy
-    prompt: "흔한 종료 예에서 첫 번째로 FIN을 보내는 쪽은 누구인가요?"
+    prompt: "흔한 종료 과정에서 클라이언트가 첫 FIN을 보내는 뜻은 무엇인가요?"
     choices:
     - id: a
-      text: "항상 서버"
-      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+      text: "클라이언트가 보낼 데이터가 끝났다고 알립니다"
+      feedback: "FIN은 보내는 쪽이 자기 방향의 데이터 전송을 마쳤다고 알립니다."
     - id: b
-      text: "라우터"
-      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+      text: "서버가 보낼 데이터까지 모두 끝났다고 알립니다"
+      feedback: "첫 FIN은 보낸 쪽의 송신이 끝났다는 뜻입니다. 서버는 자기 데이터를 더 보낼 수 있습니다."
     - id: c
-      text: "클라이언트"
-      feedback: "이 예시는 클라이언트가 먼저 종료를 시작하는 경우를 따라갑니다."
+      text: "서버가 보낸 FIN을 받았다고 확인합니다"
+      feedback: "FIN은 송신 종료를 알리고, ACK는 받은 것을 확인합니다."
     - id: d
-      text: "DNS 서버"
-      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+      text: "TCP 연결 상태를 즉시 모두 지웁니다"
+      feedback: "FIN을 보내도 연결 정리 상태가 바로 사라지는 것은 아닙니다."
     - id: e
-      text: "스위치"
-      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
-    answer: c
+      text: "서버가 모든 데이터를 받았다고 확인합니다"
+      feedback: "FIN은 받았다는 확인이 아니라, 보내는 쪽의 송신 종료 알림입니다."
+    answer: a
   - id: u7-l03-p08-q02
     kind: choice
     difficulty: easy
-    prompt: "첫 FIN을 ACK한 뒤 서버에 보낼 데이터가 남으면 어떻게 되나요?"
+    prompt: "클라이언트의 FIN을 확인한 뒤 서버에 보낼 데이터가 남아 있으면 어떻게 하나요?"
     choices:
     - id: a
-      text: "서버 데이터가 즉시 지워진다"
-      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+      text: "남은 데이터를 버리고 바로 종료합니다"
+      feedback: "클라이언트의 FIN은 클라이언트 쪽 송신 종료를 알립니다."
     - id: b
-      text: "클라이언트가 새 FIN을 대신 보낸다"
-      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+      text: "클라이언트가 서버의 데이터를 대신 보냅니다"
+      feedback: "각 컴퓨터는 자기 쪽에서 보낼 데이터를 직접 보냅니다."
     - id: c
-      text: "연결이 즉시 CLOSED가 된다"
-      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+      text: "라우터가 서버의 남은 응답을 만들어 보냅니다"
+      feedback: "라우터는 서버의 응답 내용을 대신 만들지 않습니다."
     - id: d
-      text: "서버가 데이터를 더 보낼 수 있다"
-      feedback: "첫 FIN은 클라이언트 방향의 송신 종료만 알리므로 서버는 남은 데이터를 보낼 수 있습니다."
+      text: "서버는 남은 데이터를 계속 보낼 수 있습니다"
+      feedback: "첫 FIN은 클라이언트 쪽 송신만 끝냈다는 뜻입니다."
     - id: e
-      text: "TIME_WAIT가 서버에 바로 생긴다"
-      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+      text: "양쪽이 곧바로 CLOSED가 됩니다"
+      feedback: "서버가 더 보낼 데이터가 있다면 종료는 아직 끝나지 않았습니다."
     answer: d
   - id: u7-l03-p08-q03
     kind: choice
     difficulty: easy
-    prompt: "ACK와 FIN이 실제 통신에서 한 세그먼트에 함께 실릴 수 있나요?"
+    prompt: "클라이언트가 마지막 ACK를 보내 서버가 이를 받은 뒤, 양쪽 연결 상태는 어떻게 정리되나요?"
     choices:
     - id: a
-      text: "아니다. TCP는 ACK만 보낼 수 있다"
-      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+      text: "서버가 TIME_WAIT를 거치고 클라이언트는 바로 CLOSED가 됩니다"
+      feedback: "이 흔한 예에서는 먼저 FIN을 보낸 클라이언트 쪽에 TIME_WAIT가 남습니다."
     - id: b
-      text: "아니다. FIN은 IP 헤더에만 있다"
-      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+      text: "양쪽 모두 마지막 ACK 직후 바로 CLOSED가 됩니다"
+      feedback: "클라이언트는 마지막 ACK를 보낸 뒤에도 TIME_WAIT를 거칩니다."
     - id: c
-      text: "그렇다. 단 UDP에서만 가능하다"
-      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+      text: "서버는 ACK 뒤 CLOSED, 클라이언트는 TIME_WAIT 뒤 CLOSED가 됩니다"
+      feedback: "마지막 ACK를 받은 서버는 종료하고, 클라이언트는 TIME_WAIT 대기 뒤 정리됩니다."
     - id: d
-      text: "아니다. 세그먼트에는 한 비트만 있다"
-      feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+      text: "클라이언트는 ESTABLISHED에 남고 서버는 CLOSED가 됩니다"
+      feedback: "이 예에서는 클라이언트가 TIME_WAIT를 거친 뒤 CLOSED로 정리됩니다."
     - id: e
-      text: "그렇다"
-      feedback: "ACK와 FIN은 실제로 한 세그먼트에 함께 실릴 수 있습니다."
-    answer: e
+      text: "서버는 새 연결이 올 때까지 LAST_ACK에 남습니다"
+      feedback: "서버가 마지막 ACK를 받으면 종료 절차를 마치고 CLOSED로 갑니다."
+    answer: c
   question_placements:
   - question_id: u7-l03-p08-q01
     after_paragraph: 1
   - question_id: u7-l03-p08-q02
     after_paragraph: 2
   - question_id: u7-l03-p08-q03
-    after_paragraph: 3
+    after_paragraph: 4
 - terms: []
   illustrations:
   - file: assets/animations/l27-daily-three-to-remember.svg
