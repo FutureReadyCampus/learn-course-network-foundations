@@ -14,6 +14,9 @@ on:
       - 'scripts/apply_svg_opening.py'
       - 'scripts/prepare_svg_playback.py'
       - 'scripts/svg_pairs/kit.py'
+      - 'scripts/test_glossary.py'
+      - 'glossary/**'
+      - 'site/**'
       - 'requirements.txt'
       - '.github/workflows/validate-content.yml'
   push:
@@ -29,6 +32,8 @@ on:
       - 'scripts/apply_svg_opening.py'
       - 'scripts/prepare_svg_playback.py'
       - 'scripts/svg_pairs/kit.py'
+      - 'scripts/test_glossary.py'
+      - 'glossary/**'
       - 'requirements.txt'
   workflow_dispatch:
 
@@ -51,6 +56,7 @@ jobs:
           python scripts/build_course.py --output "$RUNNER_TEMP/course.json" \
             --source-revision "$GITHUB_SHA" --source-label "pull request"
           python scripts/audit_svg_steps.py
+          python scripts/test_glossary.py
       - name: Build static preview
         run: |
           python scripts/build_pages.py --output "$RUNNER_TEMP/network-reader" \

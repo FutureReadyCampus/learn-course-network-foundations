@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" font-family="-apple-system,'Apple SD Gothic Neo','Segoe UI',sans-serif">
   <rect width="960" height="540" fill="#0f1115"/>
-  <text x="480" y="56" text-anchor="middle" font-size="34" font-weight="700" fill="#e6e8ec"><tspan fill="#7ee7c7">ACK 3</tspan> = 1·2번 받았으니 3번 주세요</text>
+  <text x="480" y="56" text-anchor="middle" font-size="34" font-weight="700" fill="#e6e8ec"><tspan fill="#7ee7c7">ACK 3</tspan> = 1·2번까지 연속해서 받았어요</text>
   <!-- road -->
   <rect x="230" y="140" width="500" height="260" fill="#13161c"/>
   <line x1="230" y1="340" x2="730" y2="340" stroke="#3d4b60" stroke-width="2" stroke-dasharray="14 10"/>
