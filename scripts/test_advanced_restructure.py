@@ -44,6 +44,9 @@ class AdvancedRestructureTest(unittest.TestCase):
                          [len(l["pages"]) for l in self.plan["lessons"]])
         self.assertEqual(self.plan["counts"]["technical_pages"], 194)
         self.assertEqual(self.plan["counts"]["source_assets"], 22)
+        self.assertEqual(self.plan["counts"]["source_catalog_pages"], 462)
+        self.assertEqual(self.plan["counts"]["aliases_by_namespace"], {
+            "content-stage-14": 462, "learn-v2": 462, "learn-unversioned": 456})
         self.assertFalse(self.plan["runtime_ready"])
 
     def test_resources_are_separate_and_not_required(self):

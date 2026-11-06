@@ -161,7 +161,11 @@ def make_plan(snapshot, contract, catalog, legacy_units, source_root=ROOT):
             "lessons": lessons, "resources": resources, "aliases": aliases,
             "counts": {"target_lessons": len(lessons), "technical_pages": 194,
                        "resource_pages": sum(len(r["pages"]) for r in resources),
-                       "source_assets": len(snapshot["source_asset_sha256"]), "aliases": len(aliases)}}
+                       "source_assets": len(snapshot["source_asset_sha256"]),
+                       "source_catalog_pages": sum(len(l["pages"]) for l in catalog["lessons"]),
+                       "aliases_by_namespace": {namespace: sum(a["namespace"] == namespace for a in aliases)
+                                                for namespace in ("content-stage-14", "learn-v2", "learn-unversioned")},
+                       "aliases": len(aliases)}}
 
 
 def completion_preflight(plan, rows, published_source_ids, reviewed_versions):
