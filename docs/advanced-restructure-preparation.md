@@ -2,6 +2,8 @@
 
 이 문서는 [콘텐츠 #163](https://github.com/FutureReadyCampus/learn-course-network-foundations/issues/163)의 **준비 단계 결과**다. 승인된 목차는 5 Unit·20개 기술 Lesson이다. 실제 목차·원고·Learn 데이터는 변경하지 않았다. [Learn #223](https://github.com/FutureReadyCampus/learn/issues/223)의 4 Unit·18 Lesson 설명은 이 승인안으로 갱신해야 한다. 구조 적용과 본문 개선은 각각 후속 작업이다.
 
+후속 [자료·주소·기록 적용 전 계약](advanced-restructure-contract.md)은 명시적 Lesson ID, 비이수 자료 payload, 페이지별 주소 대응과 합성 완료 검증을 구체화한다. 이 역시 읽기 전용 준비 결과이며 현재 builder·Learn 서비스가 소비하는 계약은 아니다.
+
 ## 조사 기준과 스냅샷
 
 - 콘텐츠 stage: `4269969b0021fa85a3ab55c73c1dde6a66334c75`.
