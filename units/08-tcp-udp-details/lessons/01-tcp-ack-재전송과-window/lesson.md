@@ -7,17 +7,6 @@ page_metadata:
 - terms:
   - 확인 응답 (ACK, Acknowledgment)
   - 순서 번호 (Sequence Number)
-  illustrations:
-  - file: assets/animations/l16-daily-next-box-number.svg
-    title: "다음에 받을 번호를 알려 줘요"
-    alt: "보내는 사람이 1번, 2번 상자를 보내면 받는 사람 칸에 도착하고, 받는 사람이 “3번 주세요”라는 수령 문자를 돌려보냅니다. 앞은 받았으니 3번 상자가 출발합니다."
-    caption: "수령 문자의 ‘3번 주세요’는 1·2번까지 연속해서 받았다는 뜻입니다. 확인을 기다리지 않고 여러 상자를 보내도 됩니다."
-    after_paragraph: -1
-  - file: assets/animations/l16-tcp-ack.svg
-    title: "ACK는 다음에 받을 바이트 위치를 가리켜요"
-    alt: "왼쪽 송신 측에서 1번과 2번 상자가 오른쪽 수신 측으로 가고, ACK 3이라고 적힌 말풍선이 돌아옵니다. 이어 3번 상자가 출발하는 단순화된 누적 확인 예시입니다."
-    caption: "그림에서 ACK 3은 앞의 두 조각을 연속해서 받았다는 뜻입니다. 실제 번호는 바이트 기준이고, 송신 측은 여러 조각을 동시에 보낼 수 있습니다."
-    after_paragraph: 2
   question_placements:
   - question_id: u8-l01-p01-q01
     after_paragraph: 1
@@ -66,22 +55,23 @@ page_metadata:
       text: "2001"
       feedback: 맞아요. 2000번까지 받았으므로 다음에 기다리는 바이트는 2001번입니다.
     answer: e
+  illustrations:
+  - file: assets/animations/l16-daily-next-box-number.svg
+    title: "다음에 받을 번호를 알려 줘요"
+    alt: "보내는 사람이 1번, 2번 상자를 보내면 받는 사람 칸에 도착하고, 받는 사람이 “3번 주세요”라는 수령 문자를 돌려보냅니다. 앞은 받았으니 3번 상자가 출발합니다."
+    caption: "수령 문자의 ‘3번 주세요’는 1·2번까지 연속해서 받았다는 뜻입니다. 확인을 기다리지 않고 여러 상자를 보내도 됩니다."
+    after_paragraph: 0
+  - file: assets/animations/l16-tcp-ack.svg
+    title: "ACK는 다음에 받을 바이트 위치를 가리켜요"
+    alt: "왼쪽 송신 측에서 1번과 2번 상자가 오른쪽 수신 측으로 가고, ACK 3이라고 적힌 말풍선이 돌아옵니다. 이어 3번 상자가 출발하는 단순화된 누적 확인 예시입니다."
+    caption: "그림에서 ACK 3은 앞의 두 조각을 연속해서 받았다는 뜻입니다. 실제 번호는 바이트 기준이고, 송신 측은 여러 조각을 동시에 보낼 수 있습니다."
+    after_paragraph: 2
+  illustration_after_paragraph: [-1]
 - terms:
   - 수신 윈도 (Receive Window)
   - 수신 버퍼 (Receive Buffer)
   - 흐름 제어 (Flow Control)
   - 혼잡 제어 (Congestion Control)
-  illustrations:
-  - file: assets/animations/l16-daily-tray-free-slots.svg
-    title: "트레이에 남은 자리를 알려 줘요"
-    alt: "서류 트레이 8칸 중 3칸이 차 있고 남은 자리는 5칸입니다. 처리가 늦으면 6칸이 차서 남은 자리가 2칸이 되고, 처리해 가면 다시 늘어납니다. 마지막에 받는 쪽 자리와 길이 감당하는 양은 다른 문제라고 표시됩니다."
-    caption: "남은 자리가 있는 만큼만 더 받을 수 있습니다. 한 칸은 설명용 단위입니다."
-    after_paragraph: -1
-  - file: assets/animations/l16-receive-window-free-space.svg
-    title: "수신 윈도는 남은 버퍼 공간"
-    alt: "수신 버퍼 8칸 중 3칸이 차 있고 윈도는 5칸입니다. 프로그램이 늦게 읽으면 윈도가 2칸으로 줄고, 읽으면 다시 늘어납니다. 흐름 제어는 받는 쪽 공간을, 혼잡 제어는 경로가 감당할 수 있는지를 살핍니다."
-    caption: "수신 윈도는 더 받아 둘 수 있는 바이트 범위입니다. 한 칸은 설명용 단위이며 속도나 세그먼트 크기가 아닙니다."
-    after_paragraph: 1
   question_placements:
   - question_id: u8-l01-p02-q01
     after_paragraph: 1
@@ -130,22 +120,22 @@ page_metadata:
       text: 재전송 타임아웃만 살펴본다. 혼잡은 항상 데이터 손실을 뜻하기 때문이다
       feedback: 혼잡이 항상 손실을 뜻하는 것은 아닙니다. 경로가 감당할 수 있는 양을 다루는 혼잡 제어를 살펴보세요.
     answer: b
+  illustrations:
+  - file: assets/animations/l16-daily-tray-free-slots.svg
+    title: "트레이에 남은 자리를 알려 줘요"
+    alt: "서류 트레이 8칸 중 3칸이 차 있고 남은 자리는 5칸입니다. 처리가 늦으면 6칸이 차서 남은 자리가 2칸이 되고, 처리해 가면 다시 늘어납니다. 마지막에 받는 쪽 자리와 길이 감당하는 양은 다른 문제라고 표시됩니다."
+    caption: "남은 자리가 있는 만큼만 더 받을 수 있습니다. 한 칸은 설명용 단위입니다."
+    after_paragraph: 0
+  - file: assets/animations/l16-receive-window-free-space.svg
+    title: "수신 윈도는 남은 버퍼 공간"
+    alt: "수신 버퍼 8칸 중 3칸이 차 있고 윈도는 5칸입니다. 프로그램이 늦게 읽으면 윈도가 2칸으로 줄고, 읽으면 다시 늘어납니다. 흐름 제어는 받는 쪽 공간을, 혼잡 제어는 경로가 감당할 수 있는지를 살핍니다."
+    caption: "수신 윈도는 더 받아 둘 수 있는 바이트 범위입니다. 한 칸은 설명용 단위이며 속도나 세그먼트 크기가 아닙니다."
+    after_paragraph: 1
 - terms:
   - 손실 (Loss)
   - 재전송 (Retransmission)
   - 중복 ACK (Duplicate ACK)
   - 재전송 타임아웃 (Retransmission Timeout, RTO)
-  illustrations:
-  - file: assets/animations/l16-daily-no-news-resend.svg
-    title: "소식이 없으면 기다렸다 다시 보내요"
-    alt: "1번 상자가 도중에 사라지고 받았다는 소식이 오지 않아 시간이 흐릅니다. 기다릴 시간이 지나면 같은 번호의 상자를 다시 보내 받는 집에 도착합니다."
-    caption: "정해진 시간이 지나도 소식이 없으면 같은 상자를 다시 보냅니다."
-    after_paragraph: -1
-  - file: assets/animations/l16-rto-resend.svg
-    title: "RTO가 지나면 다시 전송해요"
-    alt: "순서 번호 1001~1500의 세그먼트가 도중에 사라지고 ACK가 오지 않아 RTO를 기다립니다. RTO가 만료되면 같은 순서 번호 범위를 다시 보내고, RTO는 RTT 표본 등으로 조정되며 ping 결과와 같은 값은 아닙니다."
-    caption: "타임아웃은 손실 확정이 아니라 확인을 기다릴 시간이 지났다는 뜻입니다. 번호는 예시입니다."
-    after_paragraph: 0
   question_placements:
   - question_id: u8-l01-p03-q01
     after_paragraph: 1
@@ -194,19 +184,19 @@ page_metadata:
       text: 네. RTO는 모든 TCP 연결에서 ping 값으로 정해진다
       feedback: 본문은 RTO가 모든 연결에서 같은 고정값이 아니며 RTT 표본 등을 바탕으로 조정된다고 설명합니다.
     answer: d
+  illustrations:
+  - file: assets/animations/l16-daily-no-news-resend.svg
+    title: "소식이 없으면 기다렸다 다시 보내요"
+    alt: "1번 상자가 도중에 사라지고 받았다는 소식이 오지 않아 시간이 흐릅니다. 기다릴 시간이 지나면 같은 번호의 상자를 다시 보내 받는 집에 도착합니다."
+    caption: "정해진 시간이 지나도 소식이 없으면 같은 상자를 다시 보냅니다."
+    after_paragraph: 0
+  - file: assets/animations/l16-rto-resend.svg
+    title: "RTO가 지나면 다시 전송해요"
+    alt: "순서 번호 1001~1500의 세그먼트가 도중에 사라지고 ACK가 오지 않아 RTO를 기다립니다. RTO가 만료되면 같은 순서 번호 범위를 다시 보내고, RTO는 RTT 표본 등으로 조정되며 ping 결과와 같은 값은 아닙니다."
+    caption: "타임아웃은 손실 확정이 아니라 확인을 기다릴 시간이 지났다는 뜻입니다. 번호는 예시입니다."
+    after_paragraph: 1
 - terms:
   - 순서가 어긋난 데이터 (Out of order)
-  illustrations:
-  - file: assets/animations/l16-daily-later-box-first.svg
-    title: "뒤쪽 상자가 먼저 와도 건너뛰지 않아요"
-    alt: "1번 상자가 사라지고 2번 상자가 먼저 도착해 보관되지만 1번을 건너뛰어 전달하지는 못합니다. 받는 사람은 “다음은 1번이에요”를 반복해 보내고, 1번이 도착해 이어지면 한꺼번에 전달합니다."
-    caption: "빈 구간이 채워져야 순서대로 전달합니다."
-    after_paragraph: -1
-  - file: assets/animations/l16-out-of-order-dup-ack.svg
-    title: "뒤쪽 데이터가 먼저 와도 기다려요"
-    alt: "1001~1500이 사라지고 1501~2000이 먼저 도착해 보관되지만 앞 구간을 건너뛰어 프로그램에 전달하지 못합니다. 수신 측은 ACK 1001을 반복하고(중복 ACK), 빠진 구간이 도착해 이어지면 ACK 2001과 함께 연속 데이터로 전달합니다."
-    caption: "중복 ACK는 빠진 구간이 있을 수 있다는 단서입니다. 번호는 예시입니다."
-    after_paragraph: 0
   question_placements:
   - question_id: u8-l01-p04-q01
     after_paragraph: 1
@@ -255,20 +245,20 @@ page_metadata:
       text: 수신 측이 다음에 기다리는 바이트 위치가 계속 같다는 뜻
       feedback: 맞아요. 같은 ACK가 반복되면 수신 측이 아직 같은 다음 바이트를 기다린다는 뜻일 수 있습니다.
     answer: e
+  illustrations:
+  - file: assets/animations/l16-daily-later-box-first.svg
+    title: "뒤쪽 상자가 먼저 와도 건너뛰지 않아요"
+    alt: "1번 상자가 사라지고 2번 상자가 먼저 도착해 보관되지만 1번을 건너뛰어 전달하지는 못합니다. 받는 사람은 “다음은 1번이에요”를 반복해 보내고, 1번이 도착해 이어지면 한꺼번에 전달합니다."
+    caption: "빈 구간이 채워져야 순서대로 전달합니다."
+    after_paragraph: 0
+  - file: assets/animations/l16-out-of-order-dup-ack.svg
+    title: "뒤쪽 데이터가 먼저 와도 기다려요"
+    alt: "1001~1500이 사라지고 1501~2000이 먼저 도착해 보관되지만 앞 구간을 건너뛰어 프로그램에 전달하지 못합니다. 수신 측은 ACK 1001을 반복하고(중복 ACK), 빠진 구간이 도착해 이어지면 ACK 2001과 함께 연속 데이터로 전달합니다."
+    caption: "중복 ACK는 빠진 구간이 있을 수 있다는 단서입니다. 번호는 예시입니다."
+    after_paragraph: 1
 - terms:
   - 윈도 크기 (Window Size)
   - 제로 윈도 (Zero Window)
-  illustrations:
-  - file: assets/animations/l16-daily-cup-full-pause.svg
-    title: "컵이 가득 차면 잠시 멈춰요"
-    alt: "컵에 물이 많이 차 있다가 가득 차면 물 따르기를 잠시 멈추고, 마시면 자리가 생겨 다시 따릅니다. 마지막에 연결을 닫은 것이 아니라고 표시됩니다."
-    caption: "컵이 가득 차면 잠시 멈추고 자리가 생기면 다시 따릅니다."
-    after_paragraph: -1
-  - file: assets/animations/l16-zero-window-pause.svg
-    title: "제로 윈도는 잠시 멈추라는 뜻"
-    alt: "수신 버퍼가 가득 차 윈도 0을 알리면 송신 측이 새 데이터를 잠시 멈추고, 프로그램이 읽어 공간이 생기면 윈도가 다시 열려 전송이 이어집니다. 연결을 닫은 것이 아닙니다."
-    caption: "제로 윈도는 이 수신 측에 지금 새 데이터를 받을 공간이 없다는 알림이며 연결 종료와 다릅니다."
-    after_paragraph: 0
   question_placements:
   - question_id: u8-l01-p05-q01
     after_paragraph: 1
@@ -317,20 +307,20 @@ page_metadata:
       text: FIN을 보내지 않아도 연결이 종료된 것으로 처리된다
       feedback: 제로 윈도는 종료 신호가 아닙니다. FIN과 달리 공간이 생기면 전송이 다시 이어질 수 있습니다.
     answer: b
+  illustrations:
+  - file: assets/animations/l16-daily-cup-full-pause.svg
+    title: "컵이 가득 차면 잠시 멈춰요"
+    alt: "컵에 물이 많이 차 있다가 가득 차면 물 따르기를 잠시 멈추고, 마시면 자리가 생겨 다시 따릅니다. 마지막에 연결을 닫은 것이 아니라고 표시됩니다."
+    caption: "컵이 가득 차면 잠시 멈추고 자리가 생기면 다시 따릅니다."
+    after_paragraph: 0
+  - file: assets/animations/l16-zero-window-pause.svg
+    title: "제로 윈도는 잠시 멈추라는 뜻"
+    alt: "수신 버퍼가 가득 차 윈도 0을 알리면 송신 측이 새 데이터를 잠시 멈추고, 프로그램이 읽어 공간이 생기면 윈도가 다시 열려 전송이 이어집니다. 연결을 닫은 것이 아닙니다."
+    caption: "제로 윈도는 이 수신 측에 지금 새 데이터를 받을 공간이 없다는 알림이며 연결 종료와 다릅니다."
+    after_paragraph: 1
 - terms:
   - 손실 세그먼트 (Lost Segment)
   - 패킷 캡처 (Packet Capture)
-  illustrations:
-  - file: assets/animations/l16-daily-tracking-marks.svg
-    title: "배송 조회 표식, 무엇을 물을까"
-    alt: "분실이 의심돼요, 다시 배송됐어요, 순서가 뒤바뀌어 도착해요, 같은 소식이 반복돼요, 받을 자리가 가득해요의 다섯 표식이 차례로 나타나고 각각 먼저 확인할 질문이 옆에 붙습니다. 표식 하나만으로 원인을 단정하지는 않는다고 표시됩니다."
-    caption: "표식마다 먼저 확인할 질문이 다릅니다."
-    after_paragraph: -1
-  - file: assets/animations/l16-capture-marks-questions.svg
-    title: "캡처 표식마다 질문을 골라요"
-    alt: "손실 세그먼트, 재전송, 순서가 어긋난 데이터, 중복 ACK, 제로 윈도의 다섯 캡처 표식이 차례로 나타나고 각각 먼저 확인할 질문이 옆에 붙습니다. 표식 하나만으로 원인을 단정하지는 않는다고 표시됩니다."
-    caption: "표식 하나만으로 문제가 네트워크 경로인지 애플리케이션인지 단정할 수는 없습니다."
-    after_paragraph: 1
   question_placements:
   - question_id: u8-l01-p06-q01
     after_paragraph: 2
@@ -379,6 +369,17 @@ page_metadata:
       text: 캡처 표식 하나만 보고 애플리케이션 문제로 결론낸다
       feedback: 표식 하나만으로 애플리케이션 문제라고 단정할 수 없습니다. 캡처 위치와 프로그램 상태 등 추가 단서를 확인하세요.
     answer: c
+  illustrations:
+  - file: assets/animations/l16-daily-tracking-marks.svg
+    title: "배송 조회 표식, 무엇을 물을까"
+    alt: "분실이 의심돼요, 다시 배송됐어요, 순서가 뒤바뀌어 도착해요, 같은 소식이 반복돼요, 받을 자리가 가득해요의 다섯 표식이 차례로 나타나고 각각 먼저 확인할 질문이 옆에 붙습니다. 표식 하나만으로 원인을 단정하지는 않는다고 표시됩니다."
+    caption: "표식마다 먼저 확인할 질문이 다릅니다."
+    after_paragraph: 0
+  - file: assets/animations/l16-capture-marks-questions.svg
+    title: "캡처 표식마다 질문을 골라요"
+    alt: "손실 세그먼트, 재전송, 순서가 어긋난 데이터, 중복 ACK, 제로 윈도의 다섯 캡처 표식이 차례로 나타나고 각각 먼저 확인할 질문이 옆에 붙습니다. 표식 하나만으로 원인을 단정하지는 않는다고 표시됩니다."
+    caption: "표식 하나만으로 문제가 네트워크 경로인지 애플리케이션인지 단정할 수는 없습니다."
+    after_paragraph: 2
 animations_dir: units/08-tcp-udp-details/lessons/01-tcp-ack-재전송과-window/assets/animations
 ---
 

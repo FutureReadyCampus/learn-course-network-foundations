@@ -70,12 +70,13 @@ page_metadata:
     title: "편지의 내용과 봉투"
     alt: "나와 가게 사이에서 로그인 화면을 달라는 편지의 내용이 먼저 쓰이고, 봉투에 담겨 우체국을 지나 가게에 도착하며, 가게가 내용을 읽고 답장을 보냅니다. 내용을 쓰는 일과 나르는 일은 다르다고 표시됩니다."
     caption: "편지의 내용과 봉투가 다르듯, HTTP 요청의 의미와 그것을 전달하는 네트워크의 역할은 서로 다른 층에 있습니다."
-    after_paragraph: -1
+    after_paragraph: 1
   - file: assets/animations/l35-http-over-tcpip.svg
     title: "HTTP 요청과 TCP/IP 전달"
     alt: "브라우저가 GET /login 요청을 만들고, TCP/IP가 그 요청을 데이터로 감싸 네트워크를 지나 서버에 전달하며, 서버가 요청을 읽고 응답을 돌려보냅니다. 요청의 의미(HTTP)와 전달(TCP/IP)은 서로 다른 층이라고 표시됩니다."
     caption: "HTTP는 요청과 응답의 규칙이고 TCP/IP는 데이터를 전달합니다. 서버에 도착한 뒤의 웹 서버, WAS, DB 구조는 이어지는 페이지에서 살펴봅니다."
     after_paragraph: 3
+  illustration_after_paragraph: [-1]
 - terms:
   - 도메인 이름(Domain Name)
   - DNS(Domain Name System)
@@ -163,12 +164,13 @@ page_metadata:
     title: "친구에게 전화하는 네 걸음"
     alt: "나와 친구 사이에서 먼저 연락처에서 친구 이름에 맞는 전화번호를 찾고, 전화를 걸어 대표번호와 내선 번호로 통로를 잇고, 필요한 말을 건네고, 친구의 대답을 듣습니다."
     caption: "연락처에서 번호를 찾고, 연결하고, 말을 건네고, 대답을 듣는 것은 웹 접속의 네 걸음과 닮았습니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l35-dns-tcp-get-response.svg
     title: "이름 찾기, 연결, 요청, 응답"
     alt: "브라우저가 DNS에 shop.example의 IP 주소를 묻고 예시 주소 203.0.113.10을 받은 뒤, 웹 서버와 IP 주소와 포트로 TCP 연결을 준비하고, GET /login 요청을 보내면 서버가 상태 코드와 헤더와 HTML 본문이 담긴 응답을 돌려줍니다."
     caption: "DNS가 돌려주는 것은 서버를 찾을 주소이고, 이어서 연결 준비, 요청, 응답이 서로 다른 일로 이어집니다. 주소와 포트 번호는 예시입니다."
     after_paragraph: 3
+  illustration_after_paragraph: [-1]
 - terms:
   - HTML(HyperText Markup Language)
   - CSS(Cascading Style Sheets)
@@ -226,7 +228,7 @@ page_metadata:
     title: "메뉴판의 내용과 모양"
     alt: "메뉴판에 음식 이름과 가격이 적혀 있고, 모양 규칙 A를 입히면 제목이 크고 빨갛게 보이며, 모양 규칙 B로 바꿔도 내용은 그대로이고, 모양만으로 없던 메뉴가 생기지는 않는다고 표시됩니다."
     caption: "같은 메뉴판 내용도 모양 규칙에 따라 다르게 보일 수 있지만, 모양만으로 없던 내용이 생기지는 않습니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l35-html-content-css-style.svg
     title: "HTML은 구조, CSS는 모양"
     alt: "같은 HTML의 제목과 링크에 CSS A를 적용하면 제목이 크고 파랗게, CSS B를 적용하면 작고 검게 보입니다. 내용과 링크는 그대로이며 CSS만으로 없던 상품 정보가 생기지는 않는다고 표시됩니다."
@@ -289,12 +291,12 @@ page_metadata:
     title: "배달된 재료를 내 주방에서"
     alt: "재료 업체가 레시피 카드, 플레이팅 규칙, 반응 지침을 내 주방으로 보내고, 내 주방에서 레시피를 읽고 규칙대로 접시를 완성하며, 호출벨을 누르면 안내하는 반응 지침도 받은 곳이 아니라 내 주방에서 실행됩니다. 사진 같은 자원은 따로 주문할 수 있습니다."
     caption: "받은 자원을 읽고 모양을 입히고 실행하는 일은 모두 내 주방에서 일어납니다. 다운로드한 곳과 실행되는 곳은 다릅니다."
-    after_paragraph: -1
+    after_paragraph: 1
   - file: assets/animations/l35-browser-render-js-runs-here.svg
     title: "브라우저가 읽고 그리고 실행해요"
     alt: "서버가 HTML, CSS, JavaScript를 보내면 브라우저가 HTML을 읽고 CSS를 적용해 화면을 그리고(렌더링), 버튼을 누르면 JavaScript가 서버가 아닌 브라우저에서 실행되어 안내 문구를 보여 줍니다. 이미지 같은 외부 자원도 브라우저가 요청합니다."
     caption: "JavaScript를 서버에서 내려받았다는 사실만으로 그 코드가 서버에서 실행되는 것은 아닙니다. 다운로드한 곳과 실행되는 곳은 구별해야 합니다."
-    after_paragraph: 1
+    after_paragraph: 2
 - terms:
   - HTTP 메서드(Method)
   - GET
@@ -354,7 +356,7 @@ page_metadata:
     title: "조회 창구와 접수 창구"
     alt: "나는 조회 창구에서 목록을 보여 달라고 하여 서류를 받고, 접수 창구에서는 내가 쓴 서류를 내면 우체국이 확인해 처리한 뒤 승인 또는 반려를 알려 줍니다."
     caption: "목록을 보는 일과 내가 쓴 서류를 내서 처리하는 일은 다르며, 어떻게 처리할지는 받는 쪽이 정합니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l35-get-vs-post.svg
     title: "GET은 가져오기, POST는 제출"
     alt: "브라우저가 GET /items로 문서를 가져오고, POST /login으로 입력 내용을 제출하면 서버가 입력을 확인해 처리한 뒤 성공 화면이나 오류 안내를 응답합니다."
@@ -442,7 +444,7 @@ page_metadata:
     title: "기록하지 않는 가게"
     alt: "손님이 처음 방문해 로그인했다고 말해도 가게는 기록을 남기지 않아 다음 방문에서는 알아보지 못합니다. 가게가 보관증을 건네고 손님이 보관해 두었다가 보여 주면 손님을 구별할 수 있습니다."
     caption: "기록을 남기지 않는 가게는 손님을 알아보지 못하지만, 보관증이 있으면 구별할 수 있습니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l35-stateless-then-cookie.svg
     title: "HTTP는 요청을 자동으로 기억하지 않아요"
     alt: "브라우저가 POST /login으로 로그인하고 서버가 확인하지만, 다음 GET /next 요청에는 앞의 내용이 자동으로 붙지 않아 서버가 요청을 구별하지 못합니다. TCP 연결이 이어져 있어도 HTTP가 기억하는 것은 아닙니다. 서버가 Set-Cookie로 식별 표식을 저장하라고 하면 브라우저가 보관했다가 이후 요청의 Cookie 헤더에 실어 보냅니다."
@@ -529,7 +531,7 @@ page_metadata:
     title: "번호표와 회원 장부"
     alt: "손님이 로그인하면 가게가 자격을 확인하고 장부에 기록한 뒤 번호표를 건네며, 다음에 손님이 번호표를 보여 주면 가게가 번호표로 회원 장부를 찾아 확인합니다. 번호표는 손님이 가진 표식이고 장부는 가게가 보관하는 기록입니다."
     caption: "번호표는 손님이 가진 표식이고 장부는 가게가 보관하는 기록이라는 점에서 쿠키와 세션에 대응합니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l35-session-id-cookie.svg
     title: "세션 ID로 로그인 상태 잇기"
     alt: "로그인 요청이 오면 서버가 자격을 확인해 세션을 만들고 세션 ID를 Set-Cookie로 전달하며, 브라우저가 이후 요청의 Cookie에 세션 ID를 실어 보내면 서버가 ID로 자신이 보관한 세션을 찾아 응답합니다. 쿠키는 브라우저가 보내는 표식이고 세션은 서버가 보관하는 상태입니다. 세션 ID a1b2c3은 예시입니다."
@@ -617,7 +619,7 @@ page_metadata:
     title: "담당 직원이 장부에 물어봐요"
     alt: "손님의 신청서가 접수 창구를 거쳐 담당 직원에게 가고, 담당 직원이 회원 장부실에 이름이 있는지 물어 있음 또는 없음을 듣고, 결과를 손님에게 돌려줍니다."
     caption: "신청서는 접수 창구와 담당 직원을 거쳐 장부 확인을 마친 뒤 결과로 돌아옵니다."
-    after_paragraph: -1
+    after_paragraph: 2
   - file: assets/animations/l35-was-asks-db.svg
     title: "WAS가 DB에 묻고 응답을 만들어요"
     alt: "브라우저의 로그인 요청이 웹 서버를 거쳐 WAS에 넘어가고, WAS가 DB의 users 표에서 계정 정보를 조회하면 DB가 계정 정보나 없음을 돌려주며, WAS가 성공 또는 실패 응답을 만들어 웹 서버와 네트워크를 거쳐 돌려보냅니다. DB에는 비밀번호 원문이 아닌 확인값이 보관됩니다."
@@ -710,12 +712,13 @@ page_metadata:
     title: "홀, 주방, 창고의 역할"
     alt: "손님의 주문을 홀이 받고, 메뉴판은 홀이 바로 주지만 요리는 주방이 창고의 재료로 만들며, 작은 가게는 한 사람이 여러 일을 맡고 큰 가게는 역할마다 담당을 나눈다고 표시됩니다."
     caption: "역할을 나누는 것과 사람 수는 별개입니다. 작은 가게는 한 사람이 여러 일을 맡을 수 있습니다."
-    after_paragraph: -1
+    after_paragraph: 2
   - file: assets/animations/l35-roles-vs-machines.svg
     title: "역할 구분과 장비 수는 달라요"
     alt: "웹 서버는 접수와 정적 파일, WAS는 처리와 응답 만들기, DB는 자료 저장과 조회를 맡습니다. 정적 파일은 웹 서버가 바로 보내고 처리가 필요하면 WAS와 DB가 맡으며, 작은 서비스는 한 서버에서 여러 역할을 맡고 서비스가 커지면 여러 장비나 가상 서버로 나눌 수 있습니다."
     caption: "논리적인 역할 구분과 물리적인 장비 개수는 같은 말이 아닙니다. 모든 웹 서비스가 서로 다른 컴퓨터 세 대를 쓰는 것은 아닙니다."
     after_paragraph: 2
+  illustration_after_paragraph: [1]
 ---
 
 ## 웹 접속 한 번, 네트워크부터 서버까지 되짚기

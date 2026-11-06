@@ -80,12 +80,13 @@ page_metadata:
     title: "주문이 늦으면 어디서 늦었는지 봐요"
     alt: "손님 주문이 홀, 주방, 창고를 차례로 거치고, 구간마다 걸린 시간을 막대로 나눠 보면 이 예에서는 창고에서 재료를 기다린 시간이 가장 깁니다. 시간 기록표는 단서일 뿐 원인은 함께 확인해야 한다고 표시됩니다."
     caption: "일을 나누면 늦어진 곳을 따로 볼 수 있습니다. 구간별 시간은 설명을 위한 가정입니다."
-    after_paragraph: -1
+    after_paragraph: 2
   - file: assets/animations/l36-three-tier-time-split.svg
     title: "3초를 구간별로 나눠 보기"
     alt: "브라우저의 요청이 웹 서버, WAS, DB를 차례로 거치고, 화면이 뜨기까지 3초 중 네트워크 왕복 0.1초, WAS 처리 0.4초, DB 응답 대기 2.5초로 나뉩니다. 이 예에서는 DB 대기가 가장 길고, APM은 조사할 단서를 주며 원인은 로그와 함께 확인합니다."
     caption: "3초와 0.1초, 0.4초, 2.5초는 설명을 위한 가정입니다. 전체 시간이 길다는 사실만으로 어느 구성요소가 느린지 단정할 수는 없습니다."
-    after_paragraph: 2
+    after_paragraph: 3
+  illustration_after_paragraph: [-1, 0]
 - terms:
   - 런타임(runtime)
   - JVM(Java Virtual Machine)
@@ -170,12 +171,12 @@ page_metadata:
     title: "극장의 배우와 무대 뒤 운영자"
     alt: "공연장 안에서 악보는 연주자를 거쳐 소리가 되고, 무대 뒤 운영자는 배우가 언제 무대에 올라오고 장면마다 연기하고 내려오는지를 관리합니다. 공연장, 연주자, 운영자는 같은 말이 아니라고 표시됩니다."
     caption: "배우는 맡은 장면을 연기하고, 운영자는 그 시작부터 끝까지를 관리합니다. 실제 무대는 프로그램 실행 환경을 뜻합니다."
-    after_paragraph: -1
+    after_paragraph: 5
   - file: assets/animations/l36-was-jvm-container.svg
     title: "WAS, JVM, Servlet 컨테이너"
     alt: "WAS는 요청을 처리하는 서버 쪽 환경이고, 그 안에서 Java 코드가 바이트코드가 되어 JVM에서 실행되며, Servlet 컨테이너는 Servlet의 시작, 요청마다 실행, 종료를 관리합니다. WAS, JVM, 컨테이너는 서로 다른 역할이라고 표시됩니다."
     caption: "WAS는 요청 처리 환경, JVM은 Java 실행 기반, Servlet 컨테이너는 Java 웹 요청과 Servlet을 이어 주는 관리자입니다. 제품에 따라 한 프로그램에 함께 들어갈 수 있습니다."
-    after_paragraph: 3
+    after_paragraph: 6
 - terms:
   - 프런트엔드(frontend)
   - JSON
@@ -239,12 +240,13 @@ page_metadata:
     title: "완성품 배달과 밀키트 배달"
     alt: "재료 업체가 완성된 요리를 보내면 내 주방에서 그대로 차리고, 재료와 조리법을 보내면 내 식탁에서 조립합니다. 두 방법 모두 널리 쓰이며, 내 식탁에서 바꿔도 업체의 실제 가격은 그대로입니다."
     caption: "누가 마지막 조립을 하는지가 다른 두 방식입니다. 둘 다 널리 쓰입니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l36-html-vs-json-screen.svg
     title: "HTML을 받거나 JSON을 받거나"
     alt: "서버가 완성한 HTML 문서를 보내면 브라우저가 그대로 그리고, 서버가 JSON 자료를 보내면 브라우저의 JavaScript가 화면을 조립합니다. 두 방식 모두 널리 쓰이며 화면의 가격을 바꿔도 서버의 실제 가격은 그대로입니다."
     caption: "JSON을 받는다고 해서 특정 프레임워크가 반드시 필요한 것은 아닙니다. 서버가 HTML을 완성해 보내는 사이트도 널리 쓰입니다."
     after_paragraph: 2
+  illustration_after_paragraph: [1]
 - terms:
   - API(Application Programming Interface)
   - URI(Uniform Resource Identifier)
@@ -326,7 +328,7 @@ page_metadata:
     title: "도서관 창구에서 요청하기"
     alt: "손님이 도서관 창구에서 7번 서가의 책 정보를 조회하고 새 신청서를 내 새 처리를 요청합니다. 대상은 서가 번호로, 동작은 신청 종류로 나타내며 실제 처리는 도서관 안내문이 정한다고 표시됩니다."
     caption: "무엇을 대상으로 어떤 일을 할지 말하는 창구와 같이, API는 요청의 대상과 종류를 나타냅니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l36-api-uri-method.svg
     title: "URI는 대상, 메서드는 동작"
     alt: "브라우저가 GET /products/7로 7번 상품 정보를 읽어 달라고 하고 POST /orders로 주문 자료를 보내 새 처리를 요청합니다. REST에서는 대상을 주소로, 동작을 메서드로 나타내는 방식을 흔히 쓰고 /getProducts처럼 동작 이름을 주소에 넣는 설계도 볼 수 있으며, 실제 동작은 API 명세가 정합니다."
@@ -396,12 +398,13 @@ page_metadata:
     title: "잠금 가방은 어디까지 갈까"
     alt: "짐이 가방 검사대와 로비 데스크를 지나 사무실로 가고, 로비 데스크에서 가방을 열면 그 뒤는 열린 채일 수 있으며, 열고 나서 새 가방에 다시 잠그는 방법도 있습니다. 잠금 표시만으로 모든 구간을 단정하면 안 된다고 표시됩니다."
     caption: "가방이 열리는 곳에 따라 보호되는 구간이 달라집니다."
-    after_paragraph: -1
+    after_paragraph: 1
   - file: assets/animations/l36-tls-ends-where.svg
     title: "TLS가 어디서 끝나는지 보기"
     alt: "브라우저의 요청이 IPS·WAF 같은 보안 장비와 TLS 처리 장비를 지나 WAS로 갑니다. 구성 A는 장비까지만 TLS로 잠그고 그 뒤는 평문일 수 있으며, 구성 B는 장비에서 WAS까지 다시 TLS로 암호화합니다. HTTPS 표시만으로 모든 내부 구간을 단정할 수 없습니다."
     caption: "TLS를 처리하는 지점에 따라 보호되는 구간이 달라집니다. 장비의 종류와 배치는 제품과 네트워크 구성에 따라 다릅니다."
     after_paragraph: 2
+  illustration_after_paragraph: [-1]
 - terms:
   - 클라이언트 검증(client-side validation)
   - 서버 검증(server-side validation)
@@ -459,7 +462,7 @@ page_metadata:
     title: "접수 안내와 심사실"
     alt: "접수 안내 창구는 빈 칸이나 글자 수를 바로 알려 주고, 창구를 거치지 않고 직접 낸 서류도 올 수 있어 심사실이 직접 확인합니다. 양식 칸과 쓴 내용을 섞지 않고 따로 다루며, 보관증 번호도 심사실이 장부와 대조합니다."
     caption: "안내 창구는 편의를, 심사실은 처리를 지키는 최종 확인을 맡습니다."
-    after_paragraph: -1
+    after_paragraph: 1
   - file: assets/animations/l36-browser-and-server-checks.svg
     title: "브라우저 검사와 서버 검증"
     alt: "브라우저는 이름 길이와 나이 범위를 확인해 틀린 입력을 바로 알려 주지만, 직접 만든 요청도 서버에 올 수 있어 서버가 길이와 범위와 필수 항목을 다시 검사합니다. SQL은 명령과 입력 자료를 분리해 다루고 이어 붙이지 않으며, 쿠키 값도 입력이라 서버가 세션 정보와 대조합니다."
@@ -524,7 +527,7 @@ page_metadata:
     title: "식당 예약 전화로 이어 보기"
     alt: "손님이 전화번호부에서 식당 번호를 찾아 전화를 연결해 주문을 전하고, 홀이 받아 주방이 만들며 창고에서 재료를 꺼내 확인하고, 완성된 요리가 손님 식탁으로 돌아옵니다. 잠금 가방이 어디서 열리는지에 따라 보호 구간이 달라질 수 있다고 표시됩니다."
     caption: "로그인 한 번이 식당 예약 전화와 같은 길을 지납니다. 홀은 웹 서버, 주방은 WAS, 창고는 DB에 빗댈 수 있습니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l36-login-end-to-end.svg
     title: "로그인 요청 하나로 전체 흐름 잇기"
     alt: "브라우저가 DNS로 서버의 IP 주소를 찾고, TCP/IP로 연결해 HTTP 요청을 보내면, 웹 서버가 받고 WAS가 입력을 확인해 DB에서 자료를 조회한 뒤, 응답으로 HTML 또는 JSON이 돌아와 브라우저가 화면을 만듭니다. HTTPS여도 TLS를 처리하는 지점에 따라 보호 구간이 달라집니다."
