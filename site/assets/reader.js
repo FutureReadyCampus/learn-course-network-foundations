@@ -148,6 +148,12 @@
     }).filter((text) => String(text).length > 0);
     for (const [index, text] of blocks.entries()) {
       const lines = String(text).split("\n");
+      if (lines.length === 1 && /^\s*<!--(?:[\s\S]*)-->\s*$/.test(text)) {
+        // Source and authoring comments belong in Markdown, not in the learner view.
+        appendIllustrations(index);
+        appendQuizzes(index + 1);
+        continue;
+      }
       const heading = lines.length === 1 ? text.match(/^(#{3,4})\s+(.+)$/) : null;
       if (heading) {
         flush();
