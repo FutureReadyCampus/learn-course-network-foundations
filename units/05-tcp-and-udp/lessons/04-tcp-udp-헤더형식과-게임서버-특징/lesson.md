@@ -5,22 +5,6 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 wiki_diagram: units/05-tcp-and-udp/lessons/04-tcp-udp-헤더형식과-게임서버-특징/assets/diagrams/lesson-28.svg
 page_metadata:
 - terms: []
-  illustrations:
-  - file: assets/illustrations/tcp-udp-header-overview.svg
-    title: TCP와 UDP 헤더의 정보 비교
-    alt: TCP는 포트, 순서 번호, 확인 응답, 제어 플래그, Window와 검사합 등을 담고, UDP는 출발지 포트·목적지 포트·길이·검사합을 담는 구조 비교 그림입니다.
-    caption: TCP와 UDP 헤더를 나란히 보고, 각 필드가 답하는 질문을 뒤 페이지에서 하나씩 살펴봅니다.
-    after_paragraph: 0
-  - file: assets/animations/l28-daily-waybill-fields.svg
-    title: "송장은 상자 겉에 붙는 안내예요"
-    alt: "상자 속 물건과 겉에 붙는 송장이 구분되고, 송장의 받는 곳, 접수·수령 번호, 보관함 여유, 파손 점검 스티커 칸이 각각 누구에게 가는지, 어디까지 받았는지, 얼마나 더 받을 수 있는지, 가다가 상했는지에 답한다고 표시됩니다."
-    caption: "송장은 상자 속 내용이 아니라 겉에 붙는 안내입니다. 칸마다 하나의 질문에 답하며 모든 칸을 외우는 표가 아닙니다."
-    after_paragraph: -1
-  - file: assets/animations/l28-header-fields-questions.svg
-    title: "헤더 칸은 질문에 답해요"
-    alt: "내용 앞에 붙는 헤더의 칸을 포트 번호, 순서 번호·ACK, Window, Checksum 순서로 보며 각각 어느 프로그램으로 가는지, 바이트 흐름이 어디까지인지, 얼마나 더 받을 수 있는지, 전송 중 손상됐는지에 답하는 칸으로 연결합니다."
-    caption: "헤더는 외울 표가 아니라 전송에 필요한 안내 정보를 찾아 읽는 지도입니다. 어떤 질문에 답하는 칸인지 알면 됩니다."
-    after_paragraph: 1
   question_placements:
   - question_id: u8-l02-p01-q01
     after_paragraph: 1
@@ -69,6 +53,23 @@ page_metadata:
       text: 포트와 순서 번호는 모두 데이터가 손상됐는지만 확인합니다
       feedback: 손상 확인은 Checksum의 역할입니다. 포트는 프로그램을 찾고 순서 번호·ACK는 바이트 진행을 나타냅니다.
     answer: d
+  illustrations:
+  - file: assets/illustrations/tcp-udp-header-overview.svg
+    title: TCP와 UDP 헤더의 정보 비교
+    alt: TCP는 포트, 순서 번호, 확인 응답, 제어 플래그, Window와 검사합 등을 담고, UDP는 출발지 포트·목적지 포트·길이·검사합을 담는 구조 비교 그림입니다.
+    caption: TCP와 UDP 헤더를 나란히 보고, 각 필드가 답하는 질문을 뒤 페이지에서 하나씩 살펴봅니다.
+    after_paragraph: 0
+  - file: assets/animations/l28-daily-waybill-fields.svg
+    title: "송장은 상자 겉에 붙는 안내예요"
+    alt: "상자 속 물건과 겉에 붙는 송장이 구분되고, 송장의 받는 곳, 접수·수령 번호, 보관함 여유, 파손 점검 스티커 칸이 각각 누구에게 가는지, 어디까지 받았는지, 얼마나 더 받을 수 있는지, 가다가 상했는지에 답한다고 표시됩니다."
+    caption: "송장은 상자 속 내용이 아니라 겉에 붙는 안내입니다. 칸마다 하나의 질문에 답하며 모든 칸을 외우는 표가 아닙니다."
+    after_paragraph: 1
+  - file: assets/animations/l28-header-fields-questions.svg
+    title: "헤더 칸은 질문에 답해요"
+    alt: "내용 앞에 붙는 헤더의 칸을 포트 번호, 순서 번호·ACK, Window, Checksum 순서로 보며 각각 어느 프로그램으로 가는지, 바이트 흐름이 어디까지인지, 얼마나 더 받을 수 있는지, 전송 중 손상됐는지에 답하는 칸으로 연결합니다."
+    caption: "헤더는 외울 표가 아니라 전송에 필요한 안내 정보를 찾아 읽는 지도입니다. 어떤 질문에 답하는 칸인지 알면 됩니다."
+    after_paragraph: 1
+  illustration_after_paragraph: [-1]
 - terms:
   - 포트 번호 (Port Number)
   - Well-known Port
@@ -130,12 +131,13 @@ page_metadata:
     title: "답장에서는 보낸 호수와 받는 호수가 바뀌어요"
     alt: "건물은 컴퓨터를, 호수는 그 안의 프로그램을 가리킵니다. 요청은 우리 집 1203호에서 가게 502호로 가고, 답장에서는 가게 502호가 보낸 곳, 1203호가 받는 곳이 됩니다. 대표 호수는 약속이라 다른 번호를 쓸 수도 있습니다."
     caption: "IP 주소는 컴퓨터를, 포트 번호는 그 안의 프로그램을 찾습니다. 호수 번호는 예시입니다."
-    after_paragraph: -1
+    after_paragraph: 2
   - file: assets/animations/l28-ports-swap-on-reply.svg
     title: "응답에서는 출발지와 목적지 포트가 바뀌어요"
     alt: "클라이언트의 포트 51514에서 웹 서버의 포트 443으로 요청이 가고, 응답에서는 443이 출발지, 51514가 목적지가 됩니다. 80과 443은 HTTP와 HTTPS의 흔한 기본 포트이고 다른 번호도 설정할 수 있다고 표시됩니다."
     caption: "응답에서는 요청의 출발지 포트가 목적지 포트가 됩니다. 포트 51514와 443은 예시입니다."
     after_paragraph: 2
+  illustration_after_paragraph: [0]
 - terms:
   - Sequence Number
   - ACK (Acknowledgement)
@@ -219,12 +221,12 @@ page_metadata:
     title: "쪽번호와 신호 카드"
     alt: "원고 1000쪽부터 100쪽을 보내면 다음에 받을 쪽은 1100쪽이고, 신호 카드로 시작, 마침, 확인, 처음부터 다시를 알립니다. 안내문이 끝나는 곳을 표시하는 표지와 파손 점검 스티커가 있지만 스티커는 도착을 보장하지 않습니다."
     caption: "1000쪽부터 100쪽을 보내면 모두 받았다는 확인은 다음 쪽인 1100을 가리킵니다. 숫자는 예시입니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l28-seq-ack-flags-checksum.svg
     title: "순서 번호, ACK, 제어 플래그"
     alt: "1000번 바이트부터 100바이트를 보내면 1000~1099를 차지하고 모두 받았다는 ACK는 다음 위치인 1100을 가리킵니다. 이어 SYN, FIN, ACK, RST 제어 플래그와, 헤더가 끝나는 곳을 알리는 Data Offset, 손상을 점검하지만 도착이나 의미를 보장하지 않는 Checksum이 나옵니다."
     caption: "순서 번호는 바이트의 위치, ACK는 다음에 기대하는 위치를 나타냅니다. 숫자는 설명을 위한 예시입니다."
-    after_paragraph: 0
+    after_paragraph: 2
 - terms:
   - 흐름 제어 (Flow Control)
   - 수신 윈도 (Receive Window)
@@ -287,12 +289,13 @@ page_metadata:
     title: "서빙대에 접시를 둘 자리가 있을까"
     alt: "서빙대에 빈자리가 많으면 접시를 계속 내고, 빈자리가 줄면 알리는 여유도 작아지며, 자리가 없으면 새 접시 내기를 멈췄다가 자리가 나면 알리고 다시 냅니다."
     caption: "받는 쪽의 여유에 맞춰 접시를 냅니다. 칸 수는 설명용입니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l28-window-shrinks-to-zero.svg
     title: "수신 윈도가 줄어 0이 되는 과정"
     alt: "수신 버퍼에 여유가 많으면 윈도가 크고, 버퍼가 차면 알리는 윈도 값이 작아지며, 가득 차면 Zero Window로 새 데이터를 멈추게 합니다. 프로그램이 읽어 공간이 생기면 알리고 전송을 이어 갑니다."
     caption: "흐름 제어는 받는 쪽이 데이터를 받아 둘 여유를 살핍니다. 칸 수는 설명용입니다."
     after_paragraph: 1
+  illustration_after_paragraph: [1]
 - terms:
   - 혼잡 제어 (Congestion Control)
   question_placements:
@@ -348,12 +351,12 @@ page_metadata:
     title: "받는 쪽 자리와 도로의 붐빔은 달라요"
     alt: "주방에서 서빙대로 가는 길에서 서빙대의 빈자리는 받는 쪽의 여유이고 좁은 도로의 붐빔은 길의 상태입니다. 둘 다 내는 양을 조절하지만 하나는 받는 쪽을, 하나는 함께 쓰는 길을 보호하며 접시 하나가 늦었다고 길이 막혔다고 단정하지는 않습니다."
     caption: "받는 쪽의 자리와 길의 붐빔은 서로 다른 문제입니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l28-flow-vs-congestion.svg
     title: "흐름 제어와 혼잡 제어"
     alt: "송신 측에서 수신 측으로 가는 길에서 흐름 제어는 받는 쪽 수신 버퍼의 여유를, 혼잡 제어는 데이터가 지나는 네트워크 경로의 혼잡을 살핍니다. 각각 받는 프로그램과 컴퓨터, 공유하는 경로를 보호하며 패킷 하나가 늦었다고 혼잡이라고 단정할 수는 없습니다."
     caption: "흐름 제어는 받는 쪽, 혼잡 제어는 네트워크 경로를 살핍니다. 혼잡 제어의 구체적 알고리즘은 이 Lesson의 범위가 아닙니다."
-    after_paragraph: 0
+    after_paragraph: 1
 - terms:
   - TCP 헤더 (TCP Header)
   - UDP 헤더 (UDP Header)
@@ -410,7 +413,7 @@ page_metadata:
     title: "같은 물건에 붙는 송장 길이"
     alt: "같은 크기의 물건에 짧은 송장은 보낸 호수, 받는 호수, 크기, 파손 점검의 네 칸만 있고, 상세 송장은 확인과 순서 칸이 더해져 더 깁니다. 송장 길이만으로 좋고 나쁨을 정하지 않는다고 표시됩니다."
     caption: "짧은 송장과 상세 송장은 해 주는 일이 다릅니다. 길이만으로 판단하지 않습니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l28-udp-8-tcp-20-header-size.svg
     title: "UDP 헤더 8바이트, TCP 헤더 20바이트 이상"
     alt: "같은 크기의 데이터 앞에 UDP 헤더는 출발지 포트, 목적지 포트, 길이, Checksum 네 칸의 8바이트이고 TCP 헤더는 옵션이 없어도 최소 20바이트이며 옵션이 붙으면 더 깁니다. 헤더 길이만이 아니라 필요한 전달 기능을 함께 봐야 합니다."
@@ -501,12 +504,13 @@ page_metadata:
     title: "늦은 옛 위치보다 제때 온 새 위치"
     alt: "배달 기사 위치 알림 3, 4, 5번이 가다가 3번이 늦거나 사라집니다. 한쪽은 3번을 기다리며 보여 주고 다른 쪽은 5번을 바로 보여 주며, 어느 방식이 맞는지는 앱이 정하는 규칙이라고 표시됩니다."
     caption: "늦은 옛 정보보다 제때 온 새 정보를 택할 수 있지만 그 선택은 앱이 합니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l28-lost-update-wait-or-latest.svg
     title: "위치 갱신 3번이 사라졌을 때"
     alt: "위치 갱신 3, 4, 5번을 보내다 3번이 늦거나 사라지면, 순서를 지키는 흐름은 4, 5번도 앱에 전달되기 전에 3번을 기다릴 수 있고, 앱이 번호를 보고 낡은 값을 버리면 최신 5번을 바로 반영할 수 있습니다. UDP가 스스로 고르는 것이 아니라 앱이 규칙을 정합니다."
     caption: "UDP는 도착과 순서를 보장하지 않으며, 최신 값을 고르거나 중요한 행동을 확인받는 규칙은 앱이 정합니다. 모든 게임이 UDP만 쓰는 것은 아닙니다."
-    after_paragraph: 1
+    after_paragraph: 2
+  illustration_after_paragraph: [1]
 - terms:
   - HTTP/3
   - QUIC
@@ -563,7 +567,7 @@ page_metadata:
     title: "등기 우편과 엽서, 상황에 맞춰 골라요"
     alt: "등기 우편은 받았다고 확인하고 빠진 것은 다시 보내며 엽서는 그냥 보내고 확인은 보낸 사람이 정합니다. 빠짐없이 가야 하는지 제때 보는지가 기준이고, 엽서 위에 확인 규칙을 더한 서비스도 있습니다."
     caption: "어느 쪽이 더 좋은지는 내용에 따라 달라집니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l28-choose-tcp-udp-quic.svg
     title: "TCP와 UDP는 상황에 맞춰 골라요"
     alt: "TCP는 순서 있는 바이트 흐름과 확인·재전송을, UDP는 데이터그램을 보내는 기본 기능을 제공합니다. 빠짐없는 전달과 최신 상태 처리 중 무엇이 중요한지가 기준이며, HTTP/3는 UDP 위의 QUIC이 연결·암호화·흐름 제어·혼잡 제어를 제공하므로 UDP를 쓴다고 신뢰성이나 혼잡 제어가 전혀 없다는 뜻은 아닙니다."

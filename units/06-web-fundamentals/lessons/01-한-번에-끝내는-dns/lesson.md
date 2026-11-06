@@ -65,12 +65,13 @@ page_metadata:
     title: "친구 이름과 교실 위치"
     alt: "나는 친구 민수의 이름만 알고 교실 위치는 모릅니다. 안내 데스크에 민수 교실이 어디인지 묻고 3층 2반이라는 위치를 들은 뒤, 그 위치를 따라 교실로 찾아갑니다."
     caption: "이름만 알아서는 찾아갈 수 없고, 위치를 알아야 찾아갈 수 있습니다."
-    after_paragraph: -1
+    after_paragraph: 1
   - file: assets/animations/l31-dns-name-to-ip.svg
     title: "DNS는 이름을 IP 주소로 바꿔요"
     alt: "브라우저에 example.com을 입력하면 컴퓨터가 DNS에 이 이름의 IP 주소를 묻고, 예시 주소 203.0.113.10을 받아 그 주소의 서버로 데이터를 보냅니다. 한 이름이 여러 주소를 쓰거나 주소를 바꿀 수도 있다고 표시됩니다."
     caption: "데이터를 보내려면 IP 주소가 필요하고, DNS는 이름에 맞는 주소를 찾아 줍니다. 주소는 예시입니다."
-    after_paragraph: 0
+    after_paragraph: 1
+  illustration_after_paragraph: [0]
 - terms:
   - 계층
   - 분산
@@ -132,12 +133,13 @@ page_metadata:
     title: "큰 범위에서 작은 범위로"
     alt: "대한민국, 서울시, 한빛학교가 차례로 강조되며 큰 상자 안에 더 작은 상자가 하나씩 들어갑니다. 마지막에는 나라와 서울시가 각 범위를 맡아 관리한다고 표시됩니다."
     caption: "주소는 큰 범위에서 작은 범위로 좁혀 가며, 범위마다 맡아 관리하는 곳이 따로 있습니다."
-    after_paragraph: -1
+    after_paragraph: 1
   - file: assets/animations/l31-domain-name-scope.svg
     title: "도메인 이름은 오른쪽이 큰 범위"
     alt: "www.example.com에서 오른쪽의 com, 그 안의 example, 마지막으로 www가 차례로 강조되며 큰 상자 안에 작은 상자가 들어갑니다. 마지막에는 com과 example.com을 각각 다른 담당 서버가 나누어 맡는다고 표시됩니다."
     caption: "도메인 이름은 오른쪽이 큰 범위이고, DNS 정보는 여러 서버가 범위를 나누어 관리합니다."
-    after_paragraph: 0
+    after_paragraph: 1
+  illustration_after_paragraph: [0]
 - terms:
   - hosts 파일
   - DNS Cache
@@ -193,12 +195,12 @@ page_metadata:
     title: "먼저 내 수첩부터 봐요"
     alt: "나는 먼저 직접 적어 둔 수첩을 보고, 다음으로 전에 들은 답을 적은 최근 메모를 봅니다. 둘 다 없어서 동네 안내소에 묻고, 들은 답을 메모에 잠시 남깁니다."
     caption: "직접 적어 둔 수첩과 전에 들은 답을 적은 메모를 먼저 보고, 없으면 밖에 묻습니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l31-hosts-cache-first.svg
     title: "hosts 파일과 DNS 캐시 먼저"
     alt: "컴퓨터가 먼저 직접 적은 이름과 주소의 목록인 hosts 파일을 보고, 다음으로 최근 조회한 답이 있는 DNS 캐시를 봅니다. 둘 다 없어서 지정된 DNS 서버에 묻고, 받은 답을 DNS 캐시에 잠시 기억합니다."
     caption: "hosts는 직접 적은 값이고 캐시는 조회 결과입니다. 확인 순서는 운영체제와 설정에 따라 다를 수 있습니다."
-    after_paragraph: 0
+    after_paragraph: 1
 - terms:
   - DNS 서버 주소
   - 공유기
@@ -254,12 +256,12 @@ page_metadata:
     title: "동네 안내소에 물어봐요"
     alt: "나는 한빛학교가 어디인지 묻고, 경비실이 그 질문을 동네 안내소에 전해 줍니다. 동네 안내소는 알면 바로, 모르면 다른 안내소에 물어 답을 찾아오고, 본관 3층이라는 답을 나에게 알려 줍니다."
     caption: "질문은 내가 시작하고, 경비실은 전해 주기만 할 수 있으며, 답은 안내소가 찾아 줍니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l31-local-dns-server-query.svg
     title: "지정된 DNS 서버에 질의해요"
     alt: "컴퓨터가 이름의 IP 주소를 묻는 질의를 시작하고, 공유기가 이 질의를 지정된 DNS 서버에 전달합니다. 지정된 DNS 서버는 알면 바로 답하고 모르면 다른 DNS 서버에 물어 답을 찾은 뒤, 예시 주소 203.0.113.10을 컴퓨터에 돌려줍니다."
     caption: "컴퓨터는 질의를 시작하고, 지정된 DNS 서버가 답을 돌려줍니다. 공유기는 질의를 전달만 할 수도 있습니다."
-    after_paragraph: 0
+    after_paragraph: 1
 - terms:
   - 루트 DNS 서버
   - TLD
@@ -316,12 +318,12 @@ page_metadata:
     title: "안내소를 따라 좁혀 가요"
     alt: "답을 모르는 동네 안내소가 전국 안내소에 물으면 서울시 안내소를 알려 주고, 서울시 안내소는 한빛학교 교무실을 알려 주며, 한빛학교 교무실이 2반은 본관 3층이라고 정확히 알려 줍니다."
     caption: "앞 단계의 안내소는 방향만 알려 주고, 마지막 담당 교무실이 정확한 답을 줍니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l31-root-tld-authoritative.svg
     title: "루트부터 담당 DNS 서버까지"
     alt: "지정된 DNS 서버가 루트 DNS 서버에 물으면 .com 서버를 안내받고, .com 서버는 example.com 담당 서버를 안내하며, example.com 담당 DNS 서버가 www.example.com의 예시 주소 203.0.113.10을 알려 줍니다."
     caption: "앞 단계의 서버는 다음에 물을 서버를 알려 주고, 담당 DNS 서버가 최종 답을 줍니다. 주소는 예시입니다."
-    after_paragraph: 0
+    after_paragraph: 1
 - terms:
   - DNS 캐시
   - TTL(Time To Live)
@@ -382,12 +384,13 @@ page_metadata:
     title: "메모에 유효 시간을 적어요"
     alt: "동네 안내소가 교무실의 답을 5분 동안 쓸 수 있다고 메모하고, 같은 질문이 오면 메모를 보고 바로 답합니다. 5분이 지나면 그 메모를 더 쓰지 않고, 다시 물어 새 답을 받고 시간을 새로 셉니다."
     caption: "메모에 유효 시간을 적어 두면 빨리 답할 수 있고, 시간이 지나면 다시 물어봅니다."
-    after_paragraph: -1
+    after_paragraph: 1
   - file: assets/animations/l31-cache-ttl-expiry.svg
     title: "DNS 캐시와 TTL"
     alt: "지정된 DNS 서버가 담당 서버의 답을 TTL 300초와 함께 캐시에 넣고, 같은 이름을 다시 물으면 캐시에서 바로 답합니다. TTL이 0초가 되면 그 답은 만료되어 더 쓰지 않고, 다시 조회해 새 답을 받으면 TTL을 새로 셉니다."
     caption: "DNS 캐시는 조회를 빠르게 하고, TTL은 답을 기억할 시간을 정합니다. 300초는 예시입니다."
-    after_paragraph: 0
+    after_paragraph: 1
+  illustration_after_paragraph: [0]
 - terms:
   - DNS 변조
   - 주 DNS
@@ -444,12 +447,12 @@ page_metadata:
     title: "안내가 막히거나 틀리면"
     alt: "주 안내소가 대답하지 않으면 위치를 알 수 없고, 보조 안내소가 대신 알려 줄 수 있습니다. 가짜 안내를 믿으면 한빛학교가 아닌 엉뚱한 건물로 가게 됩니다. 마지막에는 위치 알아내기와 찾아가기가 두 단계로 나뉘어 표시됩니다."
     caption: "위치를 알아내는 단계와 찾아가는 단계를 나누어 보면 어디서 막혔는지 알 수 있습니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l31-dns-failure-split.svg
     title: "DNS 문제와 연결 문제 구분"
     alt: "주 DNS 서버가 응답하지 않으면 이름 조회가 막히고, 보조 DNS 서버가 대신 응답을 도울 수 있습니다. DNS 변조가 일어나면 정상처럼 보이는 답을 믿고 진짜 서버가 아닌 엉뚱한 서버로 연결됩니다. 마지막에는 이름을 주소로 바꾸는 단계와 주소로 연결하는 단계가 나뉘어 표시됩니다."
     caption: "사이트 이름이 열리지 않으면 DNS 조회와 그 뒤의 연결을 나누어 살펴봅니다."
-    after_paragraph: 0
+    after_paragraph: 1
 animations_dir: units/06-web-fundamentals/lessons/01-한-번에-끝내는-dns/assets/animations
 ---
 

@@ -63,12 +63,13 @@ page_metadata:
     title: "주문서 약속과 배달 길"
     alt: "손님은 약속된 주문서로 분식집에 주문하고 가게는 음식으로 답합니다. 아래 배달 길은 짐을 이어진 흐름으로 나르고, 주문서 양식 덕분에 주문 1과 주문 2를 나누어 읽습니다."
     caption: "주문하는 약속과 나르는 길은 서로 다른 일입니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l34-http-and-tcp-roles.svg
     title: "HTTP와 TCP/IP의 역할"
     alt: "브라우저가 HTTP 요청을 보내고 서버가 HTTP 응답을 돌려줍니다. 아래 TCP/IP는 데이터를 이어진 흐름으로 옮기고, HTTP 규칙에 맞춰 흐름 속 요청 1과 요청 2의 경계를 나눕니다."
     caption: "HTTP는 웹 자원을 주고받는 약속이고, TCP/IP는 데이터를 옮기는 데 쓰입니다."
-    after_paragraph: 0
+    after_paragraph: 1
+  illustration_after_paragraph: [-1, 1]
 - terms:
   - 헤더(header)
   questions:
@@ -122,7 +123,7 @@ page_metadata:
     title: "주문서와 답을 줄마다 읽어요"
     alt: "왼쪽 주문서와 오른쪽 답에서 첫 줄, 가게 이름 같은 덧붙인 정보, 빈 줄, 떡볶이가 담긴 상자가 차례로 강조됩니다."
     caption: "첫 줄은 요약, 다음 줄들은 덧붙인 정보, 빈 줄 뒤가 실제 내용입니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l34-message-parts.svg
     title: "HTTP 메시지의 모양"
     alt: "요청의 GET /example-page HTTP/1.1과 Host: www.example.com, 응답의 HTTP/1.1 200 OK와 Content-Type 헤더, 빈 줄, <h1>안녕, 웹!</h1> 본문이 차례로 강조됩니다."
@@ -187,12 +188,13 @@ page_metadata:
     title: "주문하면 가게가 답해요"
     alt: "손님이 떡볶이를 주문하고 가게가 주문 완료와 함께 떡볶이를 내줍니다. 이어서 단무지, 음료, 수저도 따로 부탁하고 각각 답을 받습니다."
     caption: "한 번 방문에도 주문과 답이 여러 번 오갈 수 있습니다."
-    after_paragraph: -1
+    after_paragraph: 1
   - file: assets/animations/l34-many-requests-one-page.svg
     title: "Request와 Response"
     alt: "브라우저가 GET /example-page 요청을 보내고 서버가 200 OK와 HTML로 응답합니다. 이어서 logo.png, style.css, app.js도 각각 요청하고 응답을 받습니다."
     caption: "Request는 클라이언트에서 서버로, Response는 서버에서 클라이언트로 오가며 페이지 하나에도 여러 번 생깁니다."
-    after_paragraph: 0
+    after_paragraph: 1
+  illustration_after_paragraph: [0]
 - terms:
   - 개발자 도구(Developer Tools)
   - Network 탭
@@ -248,12 +250,12 @@ page_metadata:
     title: "내 주문 내역 살펴보기"
     alt: "앱의 내 주문 내역에서 떡볶이 주문 하나를 골라 주문 종류, 결과, 메모, 받은 것을 확인합니다. 마지막에 내 주문만 보고 남의 주문은 엿보지 않는다고 표시됩니다."
     caption: "내 주문 하나를 골라 무엇을 부탁했고 무엇을 받았는지 봅니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l34-devtools-network.svg
     title: "개발자 도구의 Network 탭"
     alt: "Network 탭의 요청 목록에서 example-page를 골라 Method GET, 상태 200 OK, 요청 헤더, HTML 응답 본문을 확인합니다. 마지막에 내가 연 페이지의 요청만 본다고 표시됩니다."
     caption: "Network 탭에서 요청 하나를 고르면 브라우저가 보낸 것과 서버가 답한 것을 볼 수 있습니다."
-    after_paragraph: 0
+    after_paragraph: 1
 - terms:
   - User-Agent
   - Accept 계열
@@ -309,12 +311,12 @@ page_metadata:
     title: "주문서에 붙이는 메모"
     alt: "주문서의 받을 형태, 원하는 말, 눌러 담기 메모가 차례로 강조되고, 마지막에 주문 기기와 가려진 회원 카드 번호가 표시됩니다."
     caption: "메모는 주문에 덧붙인 설명이고, 민감한 번호는 가립니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l34-request-headers.svg
     title: "요청 Header"
     alt: "요청 헤더 Accept: text/html, Accept-Language: ko, Accept-Encoding: gzip이 차례로 강조되고, 마지막에 User-Agent와 값이 가려진 Cookie가 표시됩니다."
     caption: "요청 헤더는 원하는 응답 형식과 요청에 필요한 부가 정보를 전달합니다. 민감한 값은 가립니다."
-    after_paragraph: 0
+    after_paragraph: 1
 - terms:
   - Content-Length
   - Cookie(쿠키)
@@ -370,12 +372,12 @@ page_metadata:
     title: "음식 상자에 붙은 라벨"
     alt: "음식 상자 라벨의 내용물, 무게, 적립 도장 안내가 차례로 강조되고, 손님이 라벨을 보고 음식을 알맞게 다룹니다."
     caption: "라벨은 내용물이 무엇인지와 어떻게 다룰지 알려 줍니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l34-response-headers.svg
     title: "응답 Header"
     alt: "응답 헤더 Content-Type이 본문은 HTML이라고, Content-Length가 본문 크기를 알려 주고, Set-Cookie가 브라우저에 쿠키 저장을 알립니다. 마지막에 브라우저가 헤더를 참고해 응답을 처리합니다."
     caption: "응답 헤더는 본문이 어떤 내용인지와 브라우저가 어떻게 다룰지 설명합니다."
-    after_paragraph: 0
+    after_paragraph: 1
 - terms:
   - 응답 코드(status code)
   - 404 Not Found
@@ -430,12 +432,12 @@ page_metadata:
     title: "주문 결과 한마디"
     alt: "떡볶이 주문에는 주문 완료, 메뉴 이름 오타에는 그런 메뉴는 없다는 답, 주방 고장에는 만들 수 없다는 답이 차례로 나타납니다."
     caption: "가게의 첫마디는 결과의 단서일 뿐 원인을 모두 말하지는 않습니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l34-status-codes.svg
     title: "상태 코드"
     alt: "GET /example-page에는 200 OK, 오타가 난 GET /exmaple-page에는 404 Not Found, 서버 처리 문제에는 500 Internal Server Error가 차례로 돌아옵니다."
     caption: "200은 성공, 404는 자원을 찾지 못함, 5xx는 서버 처리 문제의 단서입니다."
-    after_paragraph: 0
+    after_paragraph: 1
 - terms:
   - GET / POST
   - HEAD / PUT / DELETE
@@ -490,12 +492,12 @@ page_metadata:
     title: "부탁의 종류"
     alt: "메뉴판 보기, 회원 가입서 제출, 가격만 묻기, 주문 바꾸기·취소 부탁이 차례로 나타나고, 마지막에 남의 가게 주문을 함부로 바꾸지 않는다고 표시됩니다."
     caption: "부탁마다 원하는 일이 다르고, 가능한 일은 가게가 정해 둡니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l34-http-methods.svg
     title: "HTTP Method"
     alt: "GET은 자원 조회, POST는 로그인 양식 같은 정보 제출, HEAD는 본문 없이 헤더만, PUT과 DELETE는 만들기·바꾸기와 삭제를 나타내며 차례로 나타납니다."
     caption: "GET은 주로 조회, POST는 주로 제출에 쓰이며, Method는 요청의 의도를 나타내는 표준 이름입니다."
-    after_paragraph: 0
+    after_paragraph: 2
 - terms: []
   questions:
   - id: u9-l04-p09-q01
@@ -548,12 +550,12 @@ page_metadata:
     title: "가게 이름에서 음식까지"
     alt: "가게 이름으로 지도 앱에서 위치를 찾고, 가게까지 길을 잇고, 떡볶이를 주문해 받은 뒤 먹는 단계가 차례로 나타납니다."
     caption: "찾기, 가기, 주문, 받기는 단계마다 하는 일이 다릅니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l34-url-to-response-flow.svg
     title: "URL에서 응답까지"
     alt: "URL과 DNS가 www.example.com의 예시 IP 주소를 찾고, TCP 연결을 만든 뒤, HTTP로 GET /example-page를 보내 200 OK와 HTML을 받고, 브라우저가 화면에 표시합니다."
     caption: "URL 선택 → DNS가 IP 찾기 → TCP 연결 → HTTP 요청·응답 → 브라우저 표시. IP 주소는 예시입니다."
-    after_paragraph: 0
+    after_paragraph: 1
 animations_dir: units/06-web-fundamentals/lessons/04-굵고-짧게-살펴보는-http/assets/animations
 ---
 

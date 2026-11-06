@@ -58,12 +58,13 @@ page_metadata:
     title: "도로와 그 위를 달리는 차"
     alt: "도로가 먼저 강조되고, 그 위에 도서관 버스, 우편차, 놀이 버스가 차례로 나타납니다. 마지막에는 도로는 기반이고 버스는 그 위의 한 가지라고 표시됩니다."
     caption: "도로는 여러 차가 함께 쓰는 기반이고, 차마다 하는 일이 다릅니다."
-    after_paragraph: -1
+    after_paragraph: 1
   - file: assets/animations/l32-web-on-internet.svg
     title: "웹은 인터넷 위의 서비스"
     alt: "인터넷 연결 기반이 먼저 강조되고, 그 위에 웹, 이메일, 온라인 게임이 차례로 나타납니다. 마지막에는 웹이 인터넷을 이용하는 여러 서비스 중 하나라고 표시됩니다."
     caption: "인터넷은 연결 기반이고, 웹은 그 위에서 문서와 링크를 주고받는 서비스입니다."
-    after_paragraph: 0
+    after_paragraph: 1
+  illustration_after_paragraph: [-1]
 - terms:
   - CERN
   - 참고문헌
@@ -118,12 +119,12 @@ page_metadata:
     title: "참고한 책을 바로 찾고 싶어요"
     alt: "보고서의 참고 표시를 보고 책장 여기저기를 다니며 책 B를 찾다가, 보고서에 책 B로 바로 가는 쪽지를 붙입니다. 마지막에는 누구나 쪽지를 따라 바로 찾는다고 표시됩니다."
     caption: "책과 책을 이어 두면 찾기와 나누기가 쉬워집니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l32-cern-linked-papers.svg
     title: "CERN에서 시작된 문서 연결"
     alt: "CERN 연구자가 논문 A의 참고문헌을 보고 다른 논문을 직접 찾아다니다가, 문서를 서로 연결하자는 제안으로 논문 B까지 바로 이어집니다. 마지막에는 연결된 자료를 함께 찾고 공유한다고 표시됩니다."
     caption: "연구 자료를 연결하고 공유하려는 필요가 초기 웹의 출발점이 되었습니다."
-    after_paragraph: 0
+    after_paragraph: 1
 - terms:
   - 하이퍼텍스트(Hypertext)
   - 링크(Link)
@@ -184,12 +185,13 @@ page_metadata:
     title: "표시를 따라 다른 책으로"
     alt: "과학책을 앞에서 뒤로 읽다가, 책 속 표시를 따라 용어 사전으로, 다시 사전 속 표시를 따라 동물 도감으로 건너갑니다. 마지막에는 표시로 이어진 책 묶음과 표시 하나가 구분되어 표시됩니다."
     caption: "표시로 이어진 묶음 전체와 건너갈 지점 하나를 구분합니다."
-    after_paragraph: -1
+    after_paragraph: 1
   - file: assets/animations/l32-hypertext-structure.svg
     title: "하이퍼텍스트와 링크"
     alt: "문서 A를 위에서 아래로 읽다가 링크를 눌러 문서 B로, 다시 B의 링크를 따라 문서 C로 이동합니다. 마지막에는 전체 연결 구조가 하이퍼텍스트, 누르는 지점이 링크라고 표시됩니다."
     caption: "하이퍼텍스트는 링크로 이어진 문서 구조이고, 링크는 다른 자료로 이동하는 연결 지점입니다."
-    after_paragraph: 0
+    after_paragraph: 1
+  illustration_after_paragraph: [0]
 - terms:
   - HTML 문서
   - HTTP
@@ -250,12 +252,13 @@ page_metadata:
     title: "편지 내용, 약속, 그리고 길"
     alt: "나는 도서관에 소개 편지를 부탁하고, 도서관은 제목·문단·다른 글 안내를 갖춘 편지를 씁니다. 답장은 길을 따라 나에게 오고, 마지막에는 내용, 주고받는 약속, 길이 따로 표시됩니다."
     caption: "편지의 내용과 주고받는 약속, 편지가 다니는 길은 각자 다른 일입니다."
-    after_paragraph: -1
+    after_paragraph: 1
   - file: assets/animations/l32-html-http-roles.svg
     title: "HTML, HTTP, 인터넷의 역할"
     alt: "브라우저가 HTTP 요청 GET /index.html을 보내고, 서버에는 제목·문단·링크 구조를 표시한 HTML 문서가 있습니다. HTTP 응답이 인터넷(TCP/IP)을 따라 브라우저에 오고, 마지막에는 HTML, HTTP, 전달 기반이 따로 표시됩니다."
     caption: "HTML은 문서 구조, HTTP는 요청·응답 규칙, 인터넷은 데이터가 이동할 기반입니다."
-    after_paragraph: 0
+    after_paragraph: 1
+  illustration_after_paragraph: [0]
 - terms:
   - 개방된 표준
   - 상호운용성
@@ -310,7 +313,7 @@ page_metadata:
     title: "누구나 맞는 공통 규격"
     alt: "A사 휴대폰의 회사 전용 플러그는 충전기에 맞지 않다가, 모두가 볼 수 있는 공통 규격이 공개됩니다. 규격을 따르자 A, B, C사 휴대폰이 모두 충전기에 연결됩니다."
     caption: "규칙이 없는 것이 아니라 모두가 아는 공개 규칙이 있어서 함께 쓸 수 있습니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l32-open-standard-interop.svg
     title: "공개 표준과 상호운용성"
     alt: "A사 브라우저의 회사 전용 비밀 규칙은 웹 서버가 알아듣지 못하다가, HTML·HTTP 같은 공개 표준을 함께 쓰자 A, B, C사 브라우저가 모두 웹 서버와 연결됩니다. 마지막에는 상호운용성이 표시됩니다."
@@ -369,7 +372,7 @@ page_metadata:
     title: "아이디어에서 상까지"
     alt: "책 나눔함 아이디어, 직접 만들어 시험하기, 친구들이 함께 쓰며 고치기, 상 받기가 차례로 나타납니다. 마지막에는 상이 기여를 인정할 뿐 혼자 다 만들었다는 뜻은 아니라고 표시됩니다."
     caption: "아이디어만으로는 완성되지 않고, 만들고 고치는 과정이 이어져야 합니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l32-turing-award-path.svg
     title: "웹의 발전과 튜링상"
     alt: "웹 제안, 초기 웹 구현, 여러 사람의 발전, 튜링상이 차례로 나타납니다. 마지막에는 상이 기여를 인정할 뿐 혼자 다 만들었다는 뜻은 아니라고 표시됩니다."
@@ -429,12 +432,12 @@ page_metadata:
     title: "길을 놓은 사람, 도서관을 만든 사람"
     alt: "왼쪽에는 마을과 마을을 잇는 길, 오른쪽에는 그 길 위를 다니는 이동 도서관의 책들이 차례로 나타납니다. 마지막에는 둘 다 상을 받았지만 역할은 다르다고 표시됩니다."
     caption: "함께 상을 받아도 길 놓기와 도서관 만들기는 서로 다른 일입니다."
-    after_paragraph: -1
+    after_paragraph: 1
   - file: assets/animations/l32-two-contributions.svg
     title: "전길남과 팀 버너스리"
     alt: "왼쪽에는 전길남의 서울과 구미 사이 연결 기반, 오른쪽에는 팀 버너스리의 링크로 이어진 웹 문서가 차례로 나타납니다. 마지막에는 두 사람이 인터넷 명예의 전당에 함께 언급되지만 역할은 다르다고 표시됩니다."
     caption: "인터넷 연결 기반의 구축과 웹 문서 서비스의 발전은 서로 다른 기여입니다."
-    after_paragraph: 0
+    after_paragraph: 1
 - terms:
   - 초기 인터넷 연결
   - 라우터
@@ -494,12 +497,13 @@ page_metadata:
     title: "안내판을 직접 만들어 길을 이어요"
     alt: "두 마을 사이를 이으려는데 갈림길 안내판을 구하기 어려워서, 직접 만든 안내판을 세우고 짐을 마을 A에서 마을 B로 보냅니다. 마지막에는 길이 생긴 것과 모두가 버스를 타는 것은 다르다고 표시됩니다."
     caption: "필요한 장비가 없으면 직접 만들어 길을 잇기도 합니다."
-    after_paragraph: -1
+    after_paragraph: 1
   - file: assets/animations/l32-1982-software-router.svg
     title: "1982년 서울대–구미 연구망"
     alt: "서울대학교와 구미 전자기술연구소를 이으려는데 라우터 장비를 구하기 어려워서, 소프트웨어로 만든 라우터가 길을 골라 데이터를 보냅니다. 마지막에는 초기 연구망과 대중 인터넷 서비스가 다르다고 표시됩니다."
     caption: "1982년 연구망은 라우터 기능을 소프트웨어로 구현한 국내 초기 네트워크 구축 사례입니다."
-    after_paragraph: 0
+    after_paragraph: 1
+  illustration_after_paragraph: [0]
 - terms: []
   questions:
   - id: u9-l02-p09-q01
@@ -552,12 +556,12 @@ page_metadata:
     title: "책 내용, 신청 약속, 배달 길"
     alt: "나는 신청서로 도서관에 책을 부탁하고, 도서관은 약속대로 책을 보냅니다. 책은 배달 길을 따라 오고, 책 속 다른 책 표시를 보면 다시 신청합니다."
     caption: "책 내용, 신청 약속, 배달 길은 각자 다른 역할을 맡습니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l32-web-page-flow.svg
     title: "문서·규칙·연결로 나누어 보기"
     alt: "브라우저가 HTTP 요청을 보내고, 서버가 HTML 문서를 HTTP 응답으로 돌려줍니다. 데이터는 인터넷과 TCP/IP를 통해 오가고, 문서 속 링크를 누르면 다시 요청이 시작됩니다."
     caption: "HTML이 문서를 만들고, HTTP가 주고받으며, 인터넷이 연결을 제공합니다."
-    after_paragraph: 0
+    after_paragraph: 1
 animations_dir: units/06-web-fundamentals/lessons/02-웹-기술-창시자와-대한민국-인터넷/assets/animations
 ---
 ## 웹은 인터넷을 이용하는 문서 서비스다

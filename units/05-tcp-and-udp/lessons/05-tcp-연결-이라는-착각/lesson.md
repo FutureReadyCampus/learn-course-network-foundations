@@ -63,6 +63,7 @@ page_metadata:
     after_paragraph: 1
   - question_id: u8-l03-p01-q02
     after_paragraph: 1
+  illustration_after_paragraph: [-1, 0]
 - terms:
   - Heartbeat(하트비트)
   questions:
@@ -171,6 +172,7 @@ page_metadata:
     after_paragraph: 1
   - question_id: u8-l03-p03-q02
     after_paragraph: 2
+  illustration_after_paragraph: [1]
 - terms:
   - 버퍼(Buffer)
   - 애플리케이션 상태
@@ -227,6 +229,7 @@ page_metadata:
     after_paragraph: 1
   - question_id: u8-l03-p04-q02
     after_paragraph: 2
+  illustration_after_paragraph: [1]
 - terms: []
   questions:
   - id: u8-l03-p05-q01

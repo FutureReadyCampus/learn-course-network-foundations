@@ -58,12 +58,13 @@ page_metadata:
     title: "이름표와 위치 쪽지"
     alt: "책을 가리키는 이름표라는 큰 상자 안에, 찾아갈 위치와 방법까지 적은 쪽지라는 작은 상자가 나타나고 그 안에 도서관 쪽지 예시가 보입니다."
     caption: "위치 쪽지는 이름표의 한 종류이고, 이름표가 더 큰 범위입니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l33-uri-url-scope.svg
     title: "URI와 URL의 범위"
     alt: "URI라는 큰 범주 상자 안에 URL 상자가 나타나고, 그 안에 예시 주소 https://www.test.co.kr:8080/data/index.html?search_keyword=Test#result가 보입니다. 마지막에는 URL이 URI 안에 들어간다고 표시됩니다."
     caption: "URI는 자원을 식별하는 큰 범주이고, URL은 위치와 접근 방법을 나타내는 URI입니다."
-    after_paragraph: 0
+    after_paragraph: 1
+  illustration_after_paragraph: [-1]
 - terms:
   - 자원(Resource)
   - HTML · CSS · JS
@@ -118,12 +119,12 @@ page_metadata:
     title: "도서관에서 받을 수 있는 것"
     alt: "책, 사진집, 지도, DVD가 차례로 나타나고, 사서가 그때 뽑아 만드는 대출 목록이 이어서 나타납니다. 마지막에는 필요한 것을 각각 받아 모읍니다."
     caption: "도서관에서는 책뿐 아니라 여러 가지를 따로 받아 볼 수 있습니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l33-web-resources.svg
     title: "웹 자원의 여러 모습"
     alt: "HTML 문서, CSS 디자인 파일, JavaScript 코드, JPG 사진, API가 그때 만드는 JSON 데이터가 차례로 나타나고, 마지막에 브라우저가 이 자원들을 모아 화면을 만듭니다."
     caption: "문서, 파일, 이미지, API 데이터처럼 웹에서 식별해 다룰 수 있는 것이 자원입니다."
-    after_paragraph: 0
+    after_paragraph: 1
 - terms:
   - JSON
   - 식별(identify)과 특정(locate)
@@ -178,12 +179,12 @@ page_metadata:
     title: "누구인지와 어디 있는지"
     alt: "민수라는 친구를 가운데 두고, 왼쪽에는 누구인지 알려 주는 이름과 신분 번호, 오른쪽에는 어디서 만날지 알려 주는 집 주소가 차례로 나타납니다."
     caption: "이름은 누구인지, 주소는 어디 있는지에 답합니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l33-identify-vs-locate.svg
     title: "식별과 위치 지정"
     alt: "자원 하나를 가운데 두고, 왼쪽에는 어떤 자원인지 식별하는 URI, 오른쪽에는 어디서 어떻게 가져올지 알려 주는 URL이 차례로 나타납니다."
     caption: "자원은 대상이고, URI는 대상을 식별하며, URL은 접근할 위치를 알려 줍니다. 사람 비유는 이해를 돕기 위한 것입니다."
-    after_paragraph: 0
+    after_paragraph: 1
 - terms:
   - Scheme(스킴)
   - Authority · Path · Query · Fragment
@@ -244,12 +245,13 @@ page_metadata:
     title: "도서관 쪽지를 칸으로 나눠요"
     alt: "도서관 쪽지 한 줄을 방법, 건물, 창구, 서가와 책, 조건, 책 속 위치 칸으로 나누고, 마지막에 창구 번호와 책 속 위치가 빠질 수 있다고 표시합니다."
     caption: "한 줄을 통째로 외우지 않고 칸마다 나누어 읽습니다."
-    after_paragraph: -1
+    after_paragraph: 1
   - file: assets/animations/l33-url-part-split.svg
     title: "주소를 부분으로 나누어 읽기"
     alt: "예시 주소 https://www.test.co.kr:8080/data/index.html?search_keyword=Test#result에서 구분 기호를 찾고, scheme, host와 port를 묶은 authority, path, query, fragment로 나눕니다. 마지막에 port와 fragment가 생략될 수 있다고 표시됩니다."
     caption: "구분 기호를 따라 scheme·authority·path·query·fragment로 나누어 읽습니다."
-    after_paragraph: 0
+    after_paragraph: 1
+  illustration_after_paragraph: [0]
 - terms:
   - 프로토콜(protocol)
   - 호스트(host)
@@ -305,12 +307,12 @@ page_metadata:
     title: "방법, 건물, 창구"
     alt: "도서관 쪽지에서 빌리기라는 방법, 한빛도서관이라는 건물, 8번 창구가 차례로 강조되고, 기본 창구라면 번호를 빼고 적는다고 표시됩니다."
     caption: "어떻게 요청할지, 어느 곳에 갈지, 어느 창구에서 볼지를 나누어 봅니다."
-    after_paragraph: -1
+    after_paragraph: 3
   - file: assets/animations/l33-scheme-host-port.svg
     title: "Scheme, Host, Port"
     alt: "예시 주소에서 scheme https, host www.test.co.kr, port 8080이 차례로 강조되며 각각 요청 방식, 서버 이름, 서비스 번호로 설명됩니다. 마지막에 HTTPS 기본 포트 443이면 생략한다고 표시됩니다."
     caption: "Host는 서버 이름, Port는 서비스 번호, Path는 요청할 자원을 가리킵니다."
-    after_paragraph: 0
+    after_paragraph: 4
 - terms:
   - 절대 경로(absolute path)
   - 상대 경로(relative path)
@@ -365,7 +367,7 @@ page_metadata:
     title: "지금 자리에서, 또는 입구에서"
     alt: "과학 서가의 공룡책 앞에서 한 단계 위로 나간 뒤 사진 서가의 지도책으로 찾아가고, 마지막에는 도서관 입구부터 같은 지도책까지 가는 길이 표시됩니다."
     caption: "지금 위치에서 출발하는 길과 입구에서 출발하는 길을 구분합니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l33-relative-absolute-path.svg
     title: "상대 경로와 절대 경로"
     alt: "/data/index.html에서 ../로 한 단계 위 폴더로 간 뒤 images/logo.png를 찾아가고, 마지막에는 /images/logo.png처럼 사이트 기준점에서 바로 출발하는 경로가 표시됩니다."
@@ -431,12 +433,13 @@ page_metadata:
     title: "공개된 열람실 안에서 찾아요"
     alt: "도서관 건물 안에서 직원실은 닫혀 있고 열람실만 공개됩니다. 과학 서가/공룡책 요청은 열람실 안에서 찾고, 그냥 온 손님에게는 도서관이 정한 안내 책자를 줍니다."
     caption: "손님의 요청은 공개된 열람실 안에서 찾습니다."
-    after_paragraph: -1
+    after_paragraph: 1
   - file: assets/animations/l33-document-root-default.svg
     title: "웹 서버의 문서 루트"
     alt: "서버 디스크 전체 가운데 비공개 파일은 닫혀 있고 문서 루트만 공개됩니다. /data/index.html 요청은 루트 아래 data 폴더에서 찾고, / 요청에는 서버 설정이 정한 기본 문서 index.html을 줍니다."
     caption: "브라우저 경로는 서버가 공개한 웹 루트에서 시작하고, / 요청의 기본 문서는 서버가 정합니다."
-    after_paragraph: 0
+    after_paragraph: 1
+  illustration_after_paragraph: [0]
 - terms:
   - 동적 처리
   - 클라이언트(client)
@@ -491,12 +494,12 @@ page_metadata:
     title: "꺼내 주기와 만들어 주기"
     alt: "사진집을 부탁하면 서가에 꽂힌 것을 그대로 건네주고, 17번 회원 목록을 부탁하면 꽂힌 책이 없어서 사서가 그때 목록을 만들어 건네줍니다."
     caption: "부탁하는 말이 늘 꽂혀 있는 책 이름과 같지는 않습니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l33-path-not-file.svg
     title: "URL 경로와 실제 파일"
     alt: "클라이언트가 /images/logo.png를 요청하면 서버가 저장된 파일을 그대로 보내고, /products/17을 요청하면 같은 이름의 파일 없이 프로그램이 HTML이나 JSON 응답을 만들어 보냅니다."
     caption: "URL의 경로는 요청 주소이고, 서버가 파일을 보내거나 프로그램으로 결과를 만들 수 있습니다."
-    after_paragraph: 0
+    after_paragraph: 1
 - terms:
   - Query(쿼리)
   - 매개변수(Parameter)와 값(Value)
@@ -551,12 +554,12 @@ page_metadata:
     title: "물음표 뒤에 조건을 적어요"
     alt: "쪽지의 ?검색어=공룡에서 검색어는 이름, 공룡은 값으로 나뉘고, &쪽=2가 이어 붙습니다. 마지막에 사서가 서가 위치와 따로 두 조건을 받습니다."
     caption: "? 뒤에는 이름=값 모양으로 원하는 조건을 적습니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l33-query-name-value.svg
     title: "Query: 물음표 뒤의 조건"
     alt: "예시 주소의 ?search_keyword=Test에서 search_keyword는 매개변수, Test는 값으로 나뉘고, &page=2가 이어 붙습니다. 마지막에 서버가 path와 따로 두 조건을 받습니다."
     caption: "? 뒤는 Query이고, 이름=값 쌍으로 서버에 조건을 전달합니다."
-    after_paragraph: 0
+    after_paragraph: 1
 - terms:
   - Fragment(프래그먼트)
   - 문서 내 위치
@@ -611,12 +614,12 @@ page_metadata:
     title: "빌린 책에서 3장을 펼쳐요"
     alt: "쪽지의 #3장이 강조되고, 사서에게는 공룡책만 빌려 달라고 합니다. 책을 받은 뒤 내가 책 안의 3장을 펼칩니다."
     caption: "책 속 위치는 책을 받은 뒤 내가 찾습니다."
-    after_paragraph: -1
+    after_paragraph: 0
   - file: assets/animations/l33-fragment-in-page.svg
     title: "Fragment: 문서 안의 위치"
     alt: "예시 주소의 #result가 강조되고, 서버에는 /data/index.html?search_keyword=Test로 문서를 요청합니다. 문서를 받은 뒤 브라우저가 문서 안의 result 위치로 이동합니다."
     caption: "# 뒤의 fragment는 문서 안의 위치를 가리킬 수 있습니다."
-    after_paragraph: 0
+    after_paragraph: 1
 animations_dir: units/06-web-fundamentals/lessons/03-url과-uri/assets/animations
 ---
 웹 주소를 읽을 때는 먼저 무엇을 가리키는지, 어느 서버에 요청하는지, 서버 안에서 어떤 자원을 찾는지 나누어 보면 됩니다. 아래에서는 한 가지 예시 주소를 여러 조각으로 나누어 읽습니다.

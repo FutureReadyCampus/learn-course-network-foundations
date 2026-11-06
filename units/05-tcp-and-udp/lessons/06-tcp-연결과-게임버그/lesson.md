@@ -63,16 +63,12 @@ page_metadata:
     after_paragraph: 1
   - question_id: u8-l04-p01-q02
     after_paragraph: 1
+  illustration_after_paragraph: [-1, 0]
 - terms:
   - 온라인 게임
   - 서버(server)와 클라이언트(client)
   - 동기화(synchronization)
   - 아이템 복제 버그
-  illustrations:
-  - file: assets/illustrations/l30-state-mismatch.svg
-    title: 플레이어 화면과 서버 상태의 차이
-    alt: 철수 화면에는 아이템이 손에 있지만 서버에는 바닥에 있고, 영희 화면은 이전 상태를 보여 주는 세 칸의 개념도입니다.
-    caption: 화면과 서버 상태가 어긋날 수 있음을 보여 주는 설명용 예시입니다.
   questions:
   - id: u8-l04-p02-q01
     kind: choice
@@ -121,6 +117,12 @@ page_metadata:
     after_paragraph: 1
   - question_id: u8-l04-p02-q02
     after_paragraph: 3
+  illustrations:
+  - file: assets/illustrations/l30-state-mismatch.svg
+    title: 플레이어 화면과 서버 상태의 차이
+    alt: 철수 화면에는 아이템이 손에 있지만 서버에는 바닥에 있고, 영희 화면은 이전 상태를 보여 주는 세 칸의 개념도입니다.
+    caption: 화면과 서버 상태가 어긋날 수 있음을 보여 주는 설명용 예시입니다.
+    after_paragraph: 0
 - terms:
   - 세션(Session)
   - SYN
