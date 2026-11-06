@@ -11,6 +11,54 @@ page_metadata:
     alt: TCP는 포트, 순서 번호, 확인 응답, 제어 플래그, Window와 검사합 등을 담고, UDP는 출발지 포트·목적지 포트·길이·검사합을 담는 구조 비교 그림입니다.
     caption: TCP와 UDP 헤더를 나란히 보고, 각 필드가 답하는 질문을 뒤 페이지에서 하나씩 살펴봅니다.
     after_paragraph: 0
+  question_placements:
+  - question_id: u8-l02-p01-q01
+    after_paragraph: 1
+  - question_id: u8-l02-p01-q02
+    after_paragraph: 2
+  questions:
+  - id: u8-l02-p01-q01
+    kind: choice
+    difficulty: easy
+    prompt: TCP나 UDP 헤더는 전송할 데이터와 어떤 관계인가요?
+    choices:
+    - id: a
+      text: 헤더는 내용 앞에 붙는 안내 정보이고, 사진이나 문서 내용 자체는 따로 있습니다
+      feedback: 맞아요. 헤더는 전달에 필요한 정보를 담고 사진·문서 같은 내용 그 자체와 구분됩니다.
+    - id: b
+      text: 헤더는 사진이나 문서의 내용을 압축해 저장한 부분입니다
+      feedback: 본문은 헤더를 압축된 내용이 아니라 전달에 필요한 안내 정보로 설명합니다.
+    - id: c
+      text: 헤더는 데이터가 도착한 뒤 수신 프로그램이 새로 붙이는 표시입니다
+      feedback: 헤더는 전송할 데이터 앞에 붙어 함께 전달됩니다. 도착한 뒤 수신 프로그램이 만드는 정보가 아닙니다.
+    - id: d
+      text: 헤더와 데이터는 같은 내용을 두 번 적어 둔 것입니다
+      feedback: 둘은 같은 내용을 반복하지 않습니다. 헤더는 전달 정보를, 데이터는 실제 내용을 담습니다.
+    - id: e
+      text: 헤더는 목적지 컴퓨터의 화면에 표시되는 제목입니다
+      feedback: 헤더는 화면 제목이 아니라 통신에 필요한 정보를 담는 부분입니다.
+    answer: a
+  - id: u8-l02-p01-q02
+    kind: choice
+    difficulty: medium
+    prompt: 헤더의 각 정보가 답하는 질문을 올바르게 연결한 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 포트 번호는 바이트의 순서를, 순서 번호와 ACK는 받을 프로그램을 가리킵니다
+      feedback: 두 역할이 뒤바뀌었습니다. 포트는 통신 프로그램을 구분하고 순서 번호·ACK는 바이트 흐름을 나타냅니다.
+    - id: b
+      text: 포트 번호는 내용의 종류를, 순서 번호는 목적지 컴퓨터를 가리킵니다
+      feedback: 본문은 포트 번호를 받을 프로그램과 연결하고, 순서 번호를 바이트 흐름의 진행과 연결합니다.
+    - id: c
+      text: 순서 번호는 사진 파일의 이름을, ACK는 데이터의 암호화 여부를 나타냅니다
+      feedback: 본문에서 순서 번호와 ACK는 TCP 바이트 흐름의 위치와 다음에 기대하는 위치를 나타냅니다.
+    - id: d
+      text: 포트 번호는 받을 프로그램을, 순서 번호와 ACK는 바이트 흐름의 진행을 나타냅니다
+      feedback: 맞아요. 뒤 페이지에서 이 안내 정보들이 포트와 TCP 바이트 순서에서 어떻게 쓰이는지 살펴봅니다.
+    - id: e
+      text: 포트와 순서 번호는 모두 데이터가 손상됐는지만 확인합니다
+      feedback: 손상 확인은 Checksum의 역할입니다. 포트는 프로그램을 찾고 순서 번호·ACK는 바이트 진행을 나타냅니다.
+    answer: d
 - terms:
   - 포트 번호 (Port Number)
   - Well-known Port
@@ -19,6 +67,54 @@ page_metadata:
     title: IP는 건물, 포트는 호수
     alt: 데이터 상자가 건물 모양 컴퓨터에 도착한 뒤, 목적지 포트 80이 적힌 호수의 문으로 들어가는 장면입니다.
     caption: IP 주소가 컴퓨터를 찾으면 포트 번호가 그 컴퓨터 안에서 받을 프로그램을 구분합니다.
+  question_placements:
+  - question_id: u8-l02-p02-q01
+    after_paragraph: 1
+  - question_id: u8-l02-p02-q02
+    after_paragraph: 3
+  questions:
+  - id: u8-l02-p02-q01
+    kind: choice
+    difficulty: easy
+    prompt: IP 주소가 컴퓨터에 도착한 뒤 포트 번호는 무엇을 찾는 데 쓰이나요?
+    choices:
+    - id: a
+      text: 컴퓨터가 연결된 건물의 실제 위치
+      feedback: 네트워크에서 컴퓨터를 찾는 데는 IP 주소를 씁니다. 포트 번호는 그 컴퓨터 안의 통신 프로그램을 구분합니다.
+    - id: b
+      text: 그 컴퓨터에서 데이터를 받을 통신 프로그램
+      feedback: 맞아요. IP 주소가 컴퓨터를 찾으면 포트 번호가 그 안에서 받을 프로그램을 구분합니다.
+    - id: c
+      text: 데이터가 바이트 흐름에서 차지하는 순서
+      feedback: 바이트의 위치는 TCP 순서 번호와 관련됩니다. 포트 번호는 받을 프로그램을 찾습니다.
+    - id: d
+      text: 네트워크 경로가 현재 붐비는 정도
+      feedback: 경로의 혼잡은 혼잡 제어가 살피는 문제입니다. 포트 번호는 통신 프로그램을 구분합니다.
+    - id: e
+      text: 데이터 내용이 전송 중 바뀌었는지 여부
+      feedback: 데이터 손상 확인에는 Checksum이 쓰입니다. 포트 번호는 컴퓨터 안에서 프로그램을 구분합니다.
+    answer: b
+  - id: u8-l02-p02-q02
+    kind: choice
+    difficulty: medium
+    prompt: 브라우저가 임시 포트 51514에서 HTTPS 서버 포트 443으로 요청을 보냈다면, 응답의 목적지 포트는 보통 무엇이 되나요?
+    choices:
+    - id: a
+      text: 응답에서도 서버의 목적지였던 443입니다
+      feedback: 응답을 보낼 때 양 끝의 역할이 반대로 보입니다. 응답의 목적지는 요청을 보낸 브라우저 쪽 포트입니다.
+    - id: b
+      text: 출발지와 목적지 포트가 모두 443입니다
+      feedback: 응답은 브라우저의 통신 포트로 돌아가므로 두 포트가 모두 443이 되는 것은 아닙니다.
+    - id: c
+      text: 매번 고정되는 HTTP 포트 80입니다
+      feedback: 포트 80은 HTTP에서 흔히 쓰는 기본값입니다. 이 사례의 HTTPS 응답은 브라우저가 사용한 포트로 돌아갑니다.
+    - id: d
+      text: 포트 번호가 필요하지 않으므로 값이 없습니다
+      feedback: 포트는 컴퓨터 안의 통신 프로그램을 구분합니다. 응답도 요청을 보낸 프로그램에 전달되어야 합니다.
+    - id: e
+      text: 요청에서 브라우저가 사용한 51514입니다
+      feedback: 맞아요. 요청에서 출발지였던 브라우저 포트가 응답에서는 목적지가 됩니다.
+    answer: e
 - terms:
   - Sequence Number
   - ACK (Acknowledgement)
@@ -26,6 +122,77 @@ page_metadata:
   - 제어 플래그 (Control Flag)
   - RST (Reset)
   - Checksum (검사합)
+  question_placements:
+  - question_id: u8-l02-p03-q01
+    after_paragraph: 1
+  - question_id: u8-l02-p03-q02
+    after_paragraph: 2
+  - question_id: u8-l02-p03-q03
+    after_paragraph: 3
+  questions:
+  - id: u8-l02-p03-q01
+    kind: choice
+    difficulty: easy
+    prompt: TCP 헤더의 순서 번호(Sequence Number)는 무엇을 나타내나요?
+    choices:
+    - id: a
+      text: 다음에 데이터를 받을 프로그램의 포트
+      feedback: 받을 프로그램은 포트 번호로 구분합니다. 순서 번호는 보낸 바이트 흐름의 위치를 나타냅니다.
+    - id: b
+      text: 전체 데이터가 상대에게 도착할 때까지 걸린 시간
+      feedback: 순서 번호는 시간을 나타내지 않습니다. 바이트 흐름에서 데이터가 시작하는 위치를 나타냅니다.
+    - id: c
+      text: 보낸 데이터가 바이트 흐름에서 시작하는 위치
+      feedback: 맞아요. 순서 번호는 보낸 데이터가 바이트 흐름의 어디에서 시작하는지 나타냅니다.
+    - id: d
+      text: 수신 버퍼에 남아 있는 빈 공간의 양
+      feedback: 수신 버퍼의 여유는 Window 값으로 알립니다. 순서 번호는 바이트 흐름의 위치를 나타냅니다.
+    - id: e
+      text: 데이터가 전송 중 손상됐는지 확인한 결과
+      feedback: 손상 확인에는 Checksum을 씁니다. 순서 번호는 바이트 흐름의 위치를 나타냅니다.
+    answer: c
+  - id: u8-l02-p03-q02
+    kind: choice
+    difficulty: medium
+    prompt: 설명을 위해 1000번 바이트부터 100바이트를 보냈습니다. 모두 받았다는 TCP ACK는 다음에 기대하는 몇 번 바이트를 가리킬 수 있나요?
+    choices:
+    - id: a
+      text: 1100번
+      feedback: 맞아요. 1000번부터 1099번까지 받았으므로 다음에 기대하는 바이트는 1100번입니다.
+    - id: b
+      text: 1000번
+      feedback: 1000번은 이 데이터의 첫 바이트입니다. 모두 받았다면 다음에 기대하는 위치는 1100번입니다.
+    - id: c
+      text: 1099번
+      feedback: 1099번은 받은 범위의 마지막 바이트입니다. ACK는 그다음에 기대하는 1100번을 가리킬 수 있습니다.
+    - id: d
+      text: 100번
+      feedback: 100은 보낸 바이트 수입니다. ACK는 길이가 아니라 다음에 기대하는 바이트 위치를 나타냅니다.
+    - id: e
+      text: ACK에는 순서 위치가 아니라 포트 번호만 들어갑니다
+      feedback: ACK 번호는 다음에 기대하는 바이트 위치를 나타냅니다. 포트 번호와는 다른 헤더 정보입니다.
+    answer: a
+  - id: u8-l02-p03-q03
+    kind: choice
+    difficulty: medium
+    prompt: TCP Checksum(검사합)이 확인하는 범위에 대해 맞는 설명은 무엇인가요?
+    choices:
+    - id: a
+      text: 확인 응답을 받았으므로 데이터가 상대 앱에서 올바르게 처리됐는지 보장합니다
+      feedback: Checksum은 손상 확인에 쓰이며, 상대 앱이 데이터를 올바르게 처리했는지까지 보장하지는 않습니다.
+    - id: b
+      text: 데이터가 목적지에 반드시 도착했는지 확인합니다
+      feedback: 도착 자체를 보장하지 않습니다. Checksum은 전송 중 손상 여부를 확인하는 데 쓰입니다.
+    - id: c
+      text: 바이트의 순서와 다음에 기대하는 위치를 정합니다
+      feedback: 바이트 위치는 순서 번호와 ACK가 나타냅니다. Checksum은 손상 확인에 쓰입니다.
+    - id: d
+      text: 헤더와 데이터가 전송 중 손상됐는지 확인하는 데 쓰입니다
+      feedback: 맞아요. Checksum은 손상 여부를 확인하는 데 쓰이지만 도착이나 의미까지 보장하지는 않습니다.
+    - id: e
+      text: 수신 버퍼에 남은 공간을 송신 측에 알립니다
+      feedback: 수신 버퍼 여유는 Window가 알립니다. Checksum은 헤더와 데이터의 손상 확인에 쓰입니다.
+    answer: d
 - terms:
   - 흐름 제어 (Flow Control)
   - 수신 윈도 (Receive Window)
@@ -35,11 +202,155 @@ page_metadata:
     title: 받을 자리를 알리는 Window
     alt: 수신 버퍼 칸이 데이터로 차오르며 Window 숫자가 줄어 0이 되는 장면입니다.
     caption: 프로그램이 데이터를 가져가는 속도보다 도착이 빠르면 수신 버퍼가 차고 알릴 수 있는 Window가 줄어듭니다.
+  question_placements:
+  - question_id: u8-l02-p04-q01
+    after_paragraph: 1
+  - question_id: u8-l02-p04-q02
+    after_paragraph: 2
+  questions:
+  - id: u8-l02-p04-q01
+    kind: choice
+    difficulty: easy
+    prompt: 흐름 제어(Flow Control)는 주로 무엇의 여유를 살피나요?
+    choices:
+    - id: a
+      text: 인터넷 경로에 동시에 지나가는 장치의 수
+      feedback: 경로가 붐비는지는 혼잡 제어가 살핍니다. 흐름 제어는 받는 쪽의 수신 버퍼 여유를 살핍니다.
+    - id: b
+      text: 받는 컴퓨터의 수신 버퍼에 데이터를 받아 둘 공간
+      feedback: 맞아요. 흐름 제어는 받는 쪽의 여유를 보내는 쪽에 알려 버퍼가 넘치지 않게 돕습니다.
+    - id: c
+      text: 송신 프로그램이 사용할 수 있는 목적지 포트
+      feedback: 포트 번호는 통신 프로그램을 구분합니다. 흐름 제어는 수신 버퍼의 여유를 살핍니다.
+    - id: d
+      text: TCP 헤더에 옵션이 추가될 수 있는 공간
+      feedback: 헤더 옵션과 길이는 Data Offset과 관련됩니다. 흐름 제어는 받는 쪽의 버퍼 여유를 다룹니다.
+    - id: e
+      text: 데이터가 수신 컴퓨터에 도착하기까지의 시간
+      feedback: 도착까지 걸리는 시간은 지연입니다. 흐름 제어는 수신 버퍼의 여유를 살핍니다.
+    answer: b
+  - id: u8-l02-p04-q02
+    kind: choice
+    difficulty: medium
+    prompt: 수신 측이 Zero Window를 알렸다면 어떤 상황을 뜻하나요?
+    choices:
+    - id: a
+      text: 네트워크 경로에 혼잡이 전혀 없다는 뜻입니다
+      feedback: Zero Window는 네트워크 경로가 아니라 수신 측이 알릴 수 있는 버퍼 여유와 관련됩니다.
+    - id: b
+      text: 수신 측에서 더는 데이터를 받을 수 없도록 연결을 영구 종료했다는 뜻입니다
+      feedback: Zero Window는 연결 종료 신호가 아닙니다. 수신 버퍼 여유가 없어 새 데이터 전송을 조절해야 한다는 뜻입니다.
+    - id: c
+      text: 송신 측 포트 번호가 0으로 바뀌었다는 뜻입니다
+      feedback: 포트 번호와 Window 값은 다른 정보입니다. Zero Window는 수신 측 버퍼 여유가 없음을 알립니다.
+    - id: d
+      text: TCP가 데이터를 모두 받아 앱에 전달했다는 뜻입니다
+      feedback: 데이터 완료를 뜻하는 신호가 아닙니다. 수신 버퍼에 공간이 없는 동안 송신 측은 전송을 조절합니다.
+    - id: e
+      text: 수신 버퍼 여유가 없어 송신 측이 새 데이터 전송을 조절해야 한다는 뜻입니다
+      feedback: 맞아요. 송신 측은 수신 측에 공간이 생기는지 살피며 전송을 조절할 수 있습니다.
+    answer: e
 - terms:
   - 혼잡 제어 (Congestion Control)
+  question_placements:
+  - question_id: u8-l02-p05-q01
+    after_paragraph: 1
+  - question_id: u8-l02-p05-q02
+    after_paragraph: 2
+  questions:
+  - id: u8-l02-p05-q01
+    kind: choice
+    difficulty: easy
+    prompt: 흐름 제어와 혼잡 제어가 각각 살피는 곳을 바르게 구분한 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 흐름 제어는 네트워크 경로를, 혼잡 제어는 수신 버퍼를 살핍니다
+      feedback: 두 역할이 뒤바뀌었습니다. 흐름 제어는 받는 쪽을, 혼잡 제어는 네트워크 경로를 살핍니다.
+    - id: b
+      text: 둘 다 수신 프로그램의 버퍼만 살핍니다
+      feedback: 흐름 제어는 수신 버퍼를 살피지만, 혼잡 제어는 네트워크 경로의 붐빔을 살핍니다.
+    - id: c
+      text: 흐름 제어는 받는 쪽의 여유를, 혼잡 제어는 네트워크 경로의 붐빔을 살핍니다
+      feedback: 맞아요. 둘 다 보내는 양을 조절하지만 살피는 대상이 다릅니다.
+    - id: d
+      text: 흐름 제어는 포트 번호를, 혼잡 제어는 데이터 내용을 살핍니다
+      feedback: 포트는 프로그램을 구분합니다. 이 페이지는 흐름 제어의 수신 여유와 혼잡 제어의 경로 상태를 구분합니다.
+    - id: e
+      text: 흐름 제어는 데이터 손상을, 혼잡 제어는 바이트 순서를 살핍니다
+      feedback: 데이터 손상과 바이트 순서를 살피는 구분이 아닙니다. 흐름 제어는 받는 쪽, 혼잡 제어는 경로를 살핍니다.
+    answer: c
+  - id: u8-l02-p05-q02
+    kind: choice
+    difficulty: medium
+    prompt: 패킷 하나가 늦거나 사라졌다면 그 이유를 곧바로 네트워크 혼잡이라고 판단해도 될까요?
+    choices:
+    - id: a
+      text: 아니요. 여러 원인이 있을 수 있어 그 사실만으로 혼잡을 확정할 수 없습니다
+      feedback: 맞아요. 손실이나 지연은 여러 원인으로 생길 수 있어 혼잡이라고 단정할 수 없습니다.
+    - id: b
+      text: 네. 패킷이 하나라도 늦으면 경로가 반드시 가득 찬 것입니다
+      feedback: 지연만으로 경로가 혼잡하다고 확정할 수 없습니다. 다른 원인도 살펴야 합니다.
+    - id: c
+      text: 네. 수신 버퍼가 비어 있으면 경로가 혼잡하다는 뜻입니다
+      feedback: 수신 버퍼 여유는 흐름 제어의 대상입니다. 경로 혼잡과 같은 뜻이 아닙니다.
+    - id: d
+      text: 아니요. TCP는 손실이나 지연을 감지할 수 없습니다
+      feedback: 본문은 송신 측이 혼잡 신호를 바탕으로 양을 조절한다고 설명합니다. 다만 단일 지연·손실만으로 원인을 확정하지 않습니다.
+    - id: e
+      text: 네. 포트 번호가 바뀌면 혼잡이 발생했다고 볼 수 있습니다
+      feedback: 포트 번호 변화는 경로 혼잡을 증명하지 않습니다. 지연이나 손실도 여러 원인에서 생길 수 있습니다.
+    answer: a
 - terms:
   - TCP 헤더 (TCP Header)
   - UDP 헤더 (UDP Header)
+  question_placements:
+  - question_id: u8-l02-p06-q01
+    after_paragraph: 1
+  - question_id: u8-l02-p06-q02
+    after_paragraph: 2
+  questions:
+  - id: u8-l02-p06-q01
+    kind: choice
+    difficulty: easy
+    prompt: TCP 옵션이 없을 때와 UDP 헤더의 크기를 바르게 비교한 것은 무엇인가요?
+    choices:
+    - id: a
+      text: TCP는 8바이트이고 UDP는 최소 20바이트입니다
+      feedback: 크기를 서로 바꿔 썼습니다. TCP는 옵션이 없어도 최소 20바이트이고 UDP는 8바이트입니다.
+    - id: b
+      text: TCP와 UDP 헤더는 모두 항상 20바이트입니다
+      feedback: UDP 헤더는 8바이트이며, TCP는 옵션이 없을 때도 최소 20바이트입니다.
+    - id: c
+      text: TCP는 항상 20바이트로 고정되고 UDP는 옵션에 따라 더 길어집니다
+      feedback: TCP 헤더는 옵션이 있으면 더 길어질 수 있습니다. UDP 헤더는 이 페이지에서 8바이트로 설명합니다.
+    - id: d
+      text: TCP는 옵션이 없어도 최소 20바이트이고 UDP는 8바이트입니다
+      feedback: 맞아요. TCP는 옵션이 붙으면 더 길어질 수 있고 UDP 헤더는 네 칸, 8바이트입니다.
+    - id: e
+      text: UDP는 20바이트이고 TCP는 데이터 크기에 따라 8바이트입니다
+      feedback: TCP 헤더의 최소 크기와 UDP 헤더 크기가 뒤바뀌고 데이터 크기와도 혼동했습니다.
+    answer: d
+  - id: u8-l02-p06-q02
+    kind: choice
+    difficulty: medium
+    prompt: UDP 헤더가 TCP 헤더보다 짧다는 사실만으로 내 상황에서 UDP가 더 낫다고 결론 내릴 수 있나요?
+    choices:
+    - id: a
+      text: 네. 헤더가 짧으면 모든 앱에서 항상 더 빠르고 좋습니다
+      feedback: 헤더 길이만으로 모든 상황의 성능이나 적합성을 결론 내릴 수 없습니다. 필요한 전달 기능도 봐야 합니다.
+    - id: b
+      text: 아니요. 필요한 순서·재전송 같은 기능과 앱이 맡을 동작을 함께 따져야 합니다
+      feedback: 맞아요. TCP와 UDP 선택은 헤더 길이뿐 아니라 필요한 전달 기능과 앱의 책임을 함께 고려해야 합니다.
+    - id: c
+      text: 네. UDP는 기본적으로 모든 데이터를 확인하고 다시 전송합니다
+      feedback: UDP 자체는 데이터그램의 도착이나 순서를 보장하지 않습니다. 필요한 동작은 앱이나 그 위의 프로토콜이 정합니다.
+    - id: d
+      text: 아니요. UDP는 헤더가 짧아서 포트 번호를 사용할 수 없습니다
+      feedback: UDP 헤더에도 출발지·목적지 포트가 있습니다. 선택할 때는 포트 유무가 아니라 필요한 전달 기능을 봅니다.
+    - id: e
+      text: 네. TCP의 순서 있는 바이트 흐름은 어떤 앱에도 도움이 되지 않습니다
+      feedback: 파일처럼 순서와 재전송이 필요한 경우 TCP 기능이 도움이 될 수 있습니다. 앱의 요구를 고려해야 합니다.
+    answer: b
 - terms:
   - UDP (User Datagram Protocol)
   - 동기화
@@ -49,9 +360,128 @@ page_metadata:
     title: 기다리는 TCP, 최신 상태를 고르는 UDP 앱
     alt: 위치 데이터 하나가 빠졌을 때 TCP의 바이트 흐름은 빠진 데이터를 기다리고, UDP를 쓰는 앱은 새 위치를 적용하는 장면입니다.
     caption: UDP 자체가 빠진 데이터를 건너뛰는 것은 아닙니다. 앱이 오래된 위치 대신 최신 상태를 고를 수 있습니다.
+  question_placements:
+  - question_id: u8-l02-p07-q01
+    after_paragraph: 1
+  - question_id: u8-l02-p07-q02
+    after_paragraph: 2
+  - question_id: u8-l02-p07-q03
+    after_paragraph: 3
+  questions:
+  - id: u8-l02-p07-q01
+    kind: choice
+    difficulty: easy
+    prompt: TCP에서 중간 바이트가 빠졌을 때 뒤의 데이터가 앱에 바로 전달되지 않을 수 있는 이유는 무엇인가요?
+    choices:
+    - id: a
+      text: TCP 헤더가 UDP보다 짧아서 뒤 데이터를 보관할 공간이 없습니다
+      feedback: 헤더 길이가 이유가 아닙니다. TCP는 바이트를 순서 있는 흐름으로 제공하므로 빠진 부분을 기다릴 수 있습니다.
+    - id: b
+      text: 서버가 모든 오래된 위치 업데이트를 의도적으로 버리기 때문입니다
+      feedback: 이 페이지는 앱의 최신 위치 선택과 TCP의 순서 있는 바이트 전달을 구분합니다.
+    - id: c
+      text: 위치 업데이트에는 TCP에서 사용할 순서 번호가 없기 때문입니다
+      feedback: TCP 순서 번호는 바이트 흐름의 위치를 나타냅니다. 지연은 빠진 바이트를 기다리는 특성에서 생길 수 있습니다.
+    - id: d
+      text: UDP가 TCP 연결을 종료해 버리기 때문입니다
+      feedback: UDP가 TCP 연결을 종료하지 않습니다. TCP 자체의 순서 있는 바이트 흐름 때문에 기다릴 수 있습니다.
+    - id: e
+      text: TCP는 바이트를 순서 있는 흐름으로 제공하므로 빠진 부분을 기다릴 수 있습니다
+      feedback: 맞아요. 빠진 바이트를 기다리는 동안 뒤의 바이트가 앱에 전달되기 전 지연될 수 있습니다.
+    answer: e
+  - id: u8-l02-p07-q02
+    kind: choice
+    difficulty: medium
+    prompt: 위치 갱신을 UDP로 보낼 때, 늦게 도착한 오래된 값 대신 최신 값만 사용하려면 어떻게 해야 하나요?
+    choices:
+    - id: a
+      text: 빠진 3번 데이터를 만들어 5번보다 먼저 전달합니다
+      feedback: UDP가 빠진 데이터를 만들지는 않습니다. 앱이 번호나 시간을 이용해 어떤 값을 쓸지 정할 수 있습니다.
+    - id: b
+      text: 오래된 3번을 반드시 받은 뒤에만 5번을 앱에 전달합니다
+      feedback: 순서 있는 바이트 흐름으로 기다리는 동작은 TCP의 특성입니다. UDP는 데이터그램 순서를 보장하지 않습니다.
+    - id: c
+      text: UDP는 자동으로 골라주지 않으므로 앱이 업데이트 번호나 시간을 확인해 최신 값만 적용합니다
+      feedback: 맞아요. UDP는 최신 값 선택을 대신하지 않으며 앱이 오래된 값을 버리고 새 값을 적용할 수 있습니다.
+    - id: d
+      text: 위치 값을 재전송해 게임 화면을 이전 상태로 되돌립니다
+      feedback: UDP 자체가 손실된 위치를 재전송하거나 화면을 되돌리지는 않습니다. 그런 동작은 앱이 정해야 합니다.
+    - id: e
+      text: 목적지 포트를 바꾸어 오래된 위치를 제거합니다
+      feedback: 포트 번호는 프로그램을 구분합니다. 오래된 업데이트를 적용할지는 앱의 규칙으로 정합니다.
+    answer: c
+  - id: u8-l02-p07-q03
+    kind: choice
+    difficulty: medium
+    prompt: 게임에서 위치는 최신 값이 중요하고 중요한 행동은 확인이 필요하다면, 본문에 맞는 설계는 무엇인가요?
+    choices:
+    - id: a
+      text: 위치 갱신에는 UDP와 앱의 최신 값 선택을 쓰고, 중요한 행동은 확인받도록 설계할 수 있습니다
+      feedback: 맞아요. 데이터의 성격에 따라 최신 상태를 택하거나 확인을 요구하도록 앱이 규칙을 정할 수 있습니다.
+    - id: b
+      text: 모든 데이터를 UDP로 보내면 UDP가 위치와 중요한 행동을 자동 확인합니다
+      feedback: UDP는 도착이나 순서를 보장하지 않습니다. 중요한 행동의 확인이 필요하면 앱이 그 동작을 구현해야 합니다.
+    - id: c
+      text: 모든 위치 값을 TCP로 보내면 과거 위치를 기다리지 않고 최신 값만 자동 전달합니다
+      feedback: TCP는 순서 있는 바이트 흐름을 제공하므로 빠진 부분을 기다릴 수 있습니다. 최신 값만 고르는 기능은 앱이 정합니다.
+    - id: d
+      text: UDP는 손실이 없으므로 앱은 위치 번호를 확인할 필요가 없습니다
+      feedback: UDP는 손실이나 순서를 보장하지 않습니다. 앱이 번호나 시간을 이용해 최신 값을 고를 수 있습니다.
+    - id: e
+      text: TCP와 UDP는 같은 방식으로 모든 데이터의 도착과 순서를 보장합니다
+      feedback: 두 방식의 전달 특성이 다릅니다. TCP는 순서 있는 바이트 흐름을 제공하고 UDP는 도착·순서를 보장하지 않습니다.
+    answer: a
 - terms:
   - HTTP/3
   - QUIC
+  question_placements:
+  - question_id: u8-l02-p08-q01
+    after_paragraph: 1
+  - question_id: u8-l02-p08-q02
+    after_paragraph: 2
+  questions:
+  - id: u8-l02-p08-q01
+    kind: choice
+    difficulty: easy
+    prompt: TCP와 UDP 중 어떤 방식이 맞는지는 무엇을 보고 판단해야 하나요?
+    choices:
+    - id: a
+      text: 언제나 헤더가 더 짧은 쪽을 고릅니다
+      feedback: 헤더 길이만으로 고르지 않습니다. 모든 바이트가 필요한지 최신 상태를 제때 처리하는 일이 중요한지 살펴야 합니다.
+    - id: b
+      text: 게임이나 웹 같은 앱 이름만 보고 항상 같은 방식을 고릅니다
+      feedback: 앱 이름만으로 결정되지 않습니다. 해당 데이터에 필요한 전달 특성을 따져야 합니다.
+    - id: c
+      text: 목적지 컴퓨터가 더 가까워 보이는 쪽을 고릅니다
+      feedback: 목적지 거리만으로 TCP와 UDP의 적합성이 정해지지 않습니다. 데이터의 순서·완전성·시의성을 봅니다.
+    - id: d
+      text: 데이터가 빠짐없이 순서대로 필요한지, 최신 상태를 제때 다루는 게 중요한지 봅니다
+      feedback: 맞아요. 데이터가 요구하는 전달 특성에 따라 TCP와 UDP가 다른 선택이 될 수 있습니다.
+    - id: e
+      text: 프로그램이 사용하는 포트 번호가 짝수인지 홀수인지 봅니다
+      feedback: 포트의 짝수·홀수는 선택 기준이 아닙니다. 데이터에 필요한 순서·확인·시의성을 고려합니다.
+    answer: d
+  - id: u8-l02-p08-q02
+    kind: choice
+    difficulty: medium
+    prompt: HTTP/3가 UDP 위에서 동작한다는 설명을 바르게 이해한 것은 무엇인가요?
+    choices:
+    - id: a
+      text: UDP 자체가 연결·암호화·흐름 제어를 모두 보장하므로 QUIC은 필요하지 않습니다
+      feedback: UDP 자체가 이 기능을 보장하는 것은 아닙니다. HTTP/3는 UDP 위에서 필요한 기능을 제공하는 QUIC을 사용합니다.
+    - id: b
+      text: HTTP/3는 UDP 위에서 QUIC을 사용해 연결·암호화·흐름 제어 같은 기능을 제공합니다
+      feedback: 맞아요. UDP를 사용하더라도 QUIC이 필요한 기능을 제공하므로 신뢰성이나 혼잡 제어가 전혀 없다는 뜻은 아닙니다.
+    - id: c
+      text: HTTP/3는 UDP를 쓰지 않고 TCP 헤더 안에 QUIC을 넣습니다
+      feedback: 본문은 HTTP/3가 UDP 위에서 QUIC을 사용한다고 설명합니다.
+    - id: d
+      text: HTTP/3는 QUIC을 사용해 모든 데이터의 도착과 순서를 UDP 자체에 맡깁니다
+      feedback: UDP 자체는 도착이나 순서를 보장하지 않습니다. QUIC은 UDP 위에서 필요한 전달 기능을 제공합니다.
+    - id: e
+      text: HTTP/3는 브라우저의 포트 번호를 QUIC으로 변환하는 이름 규칙입니다
+      feedback: QUIC은 포트 이름을 바꾸는 규칙이 아니라 UDP 위에서 연결과 보안 등 필요한 기능을 제공하는 프로토콜입니다.
+    answer: b
 animations_dir: units/05-tcp-and-udp/lessons/04-tcp-udp-헤더형식과-게임서버-특징/assets/animations
 ---
 
@@ -74,7 +504,7 @@ IP 주소는 목적지 컴퓨터를 찾고, 포트 번호는 그 컴퓨터에서
 | 출발지 포트 | 데이터를 보낸 프로그램 | 브라우저가 임시로 사용한 포트 `51514` |
 | 목적지 포트 | 데이터를 받을 프로그램 | 웹 서버의 HTTPS 포트 `443` |
 
-응답을 보낼 때는 각 끝의 역할이 반대로 보인다. 아까 서버의 목적지였던 포트 `51514`가 응답에서는 목적지 포트가 된다. 포트 `80`은 HTTP, `443`은 HTTPS에서 흔히 쓰는 기본 포트다. 기본값은 약속이므로 다른 번호를 설정할 수도 있고, 그 경우 접속할 때 번호를 지정해야 한다. Well-known Port는 여러 서비스가 널리 사용하는 대표 번호를 말한다.
+응답을 보낼 때는 각 끝의 역할이 반대로 보인다. 아까 요청의 출발지였던 브라우저 포트 `51514`가 응답에서는 목적지 포트가 된다. 포트 `80`은 HTTP, `443`은 HTTPS에서 흔히 쓰는 기본 포트다. 기본값은 약속이므로 다른 번호를 설정할 수도 있고, 그 경우 접속할 때 번호를 지정해야 한다. Well-known Port는 여러 서비스가 널리 사용하는 대표 번호를 말한다.
 
 **기억할 점:** IP 주소는 컴퓨터를, 포트 번호는 그 컴퓨터 안의 통신 프로그램을 찾는다.
 
