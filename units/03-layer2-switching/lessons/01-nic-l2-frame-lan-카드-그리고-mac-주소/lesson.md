@@ -332,6 +332,52 @@ page_metadata:
     alt: "집 공유기에 휴대전화와 태블릿은 Wi-Fi 점선으로, 데스크톱과 IPTV는 케이블 실선으로 연결되어 있습니다. 이 장치들을 LAN(마을) 테두리가 감싸고, 이웃 LAN을 포함한 MAN(도시) 테두리, 다른 도시와 먼 지역까지 포함한 WAN(더 넓은 지역) 테두리가 차례로 넓게 그려집니다. 마지막에 범위의 이름일 뿐 속도 순위가 아니라는 문구가 나옵니다."
     caption: "LAN·MAN·WAN은 네트워크가 어느 정도 범위에 걸쳐 있는지를 나타내는 이름입니다. 범위가 넓다고 더 빠르거나 품질이 좋은 것은 아닙니다."
 - terms:
+  - OSI 7계층 (OSI 7 layers)
+  inline_questions_after: 1
+  questions:
+  - id: u3-01-osi-q01
+    kind: choice
+    difficulty: easy
+    prompt: OSI 7계층을 위에서 아래로 바르게 나열한 것은 무엇인가요?
+    choices:
+    - id: a
+      text: 응용 → 표현 → 세션 → 전송 → 네트워크 → 데이터 링크 → 물리
+      feedback: 맞아요. 이 순서를 먼저 익히고, 각 층의 자세한 동작은 뒤에서 배웁니다.
+    - id: b
+      text: 물리 → 데이터 링크 → 네트워크 → 전송 → 세션 → 표현 → 응용
+      feedback: 이 순서는 아래에서 위로 읽은 것입니다. 문제는 위에서 아래 순서를 물었습니다.
+    - id: c
+      text: 응용 → 세션 → 표현 → 네트워크 → 전송 → 물리 → 데이터 링크
+      feedback: 두 번째와 세 번째, 네 번째와 다섯 번째의 순서를 다시 확인해 보세요.
+    - id: d
+      text: 응용 → 전송 → 표현 → 세션 → 데이터 링크 → 네트워크 → 물리
+      feedback: 전송 계층 아래에는 네트워크 계층이 옵니다. 표의 위에서 아래로 읽어 보세요.
+    - id: e
+      text: 세션 → 응용 → 표현 → 전송 → 네트워크 → 데이터 링크 → 물리
+      feedback: 가장 위에는 응용 계층이 옵니다. 표의 위에서 아래로 읽어 보세요.
+    answer: a
+  - id: u3-01-osi-q02
+    kind: choice
+    difficulty: easy
+    prompt: 바로 이어진 네트워크 구간에서 프레임을 전달하는 계층은 무엇인가요?
+    choices:
+    - id: a
+      text: 네트워크 계층
+      feedback: 네트워크 계층은 목적지까지 갈 경로를 찾습니다. 바로 이웃 구간의 프레임 전달은 데이터 링크 계층의 일입니다.
+    - id: b
+      text: 데이터 링크 계층
+      feedback: 맞아요. 데이터 링크 계층은 바로 이어진 구간에서 프레임을 전달합니다.
+    - id: c
+      text: 전송 계층
+      feedback: 전송 계층은 두 끝의 프로그램 사이에서 데이터를 전달합니다.
+    - id: d
+      text: 응용 계층
+      feedback: 응용 계층은 네트워크를 쓰는 프로그램이 제공할 일을 정합니다.
+    - id: e
+      text: 표현 계층
+      feedback: 표현 계층은 데이터의 표현 형식을 맞추고 필요하면 바꾸거나 보호합니다.
+    answer: b
+- terms:
   - MAC 주소 (Media Access Control address)
   - 식별자 (identifier)
   - 16진수 (hexadecimal)
@@ -343,7 +389,7 @@ page_metadata:
     alt: NIC마다 MAC 주소가 붙는 모습, 일반 주소에서 주소를 할당한 조직을 나타내는 앞부분, 무선 연결에서 개인 정보 보호를 위해 다른 주소를 사용할 수 있다는 점을 보여 줍니다.
     caption: 각 NIC에는 MAC 주소가 쓰입니다. 보통의 전역 주소와 무선 연결에서 쓰는 개인 정보 보호용 주소가 다를 수 있어, 앞부분만 보고 항상 제조사를 알아낼 수 있는 것은 아닙니다.
   questions:
-  - id: u3-01-p04-q01
+  - id: u3-01-p05-q01
     kind: choice
     difficulty: easy
     prompt: 집집마다 문패로 구분하듯, 가까운 네트워크에서 연결 지점을 구분하는 주소는 무엇인가요?
@@ -364,7 +410,7 @@ page_metadata:
       text: Metric
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
     answer: b
-  - id: u3-01-p04-q02
+  - id: u3-01-p05-q02
     kind: choice
     difficulty: medium
     prompt: Wi-Fi에서 네트워크별 임시 MAC 주소를 사용할 수 있다는 설명으로 맞는 것은 무엇인가요?
@@ -385,7 +431,7 @@ page_metadata:
       text: 제품에 적힌 MAC 주소와 다른 네트워크별 주소를 사용할 수 있다
       feedback: 맞아요. 제품에 적힌 MAC 주소와 다른 네트워크별 주소를 사용할 수 있다.
     answer: e
-  - id: u3-01-p04-q04
+  - id: u3-01-p05-q04
     kind: choice
     difficulty: medium
     prompt: "일반적인 MAC 주소는 보통 몇 비트인가요?"
@@ -406,7 +452,7 @@ page_metadata:
       text: "48비트"
       feedback: "맞아요. 48비트입니다."
     answer: e
-  - id: u3-01-p04-q05
+  - id: u3-01-p05-q05
     kind: choice
     difficulty: medium
     prompt: Wi-Fi와 USB Ethernet NIC가 하나씩 있는 노트북의 MAC 주소를 어떻게 이해하면 좋나요?
@@ -433,7 +479,7 @@ page_metadata:
   - 패킷 (Packet)
   inline_questions_after: 2
   questions:
-  - id: u3-01-p05-q01
+  - id: u3-01-p06-q01
     kind: choice
     difficulty: easy
     prompt: 택배 내용물 자체와 한 구간에서 쓰는 포장을 구분하듯, 한 링크에서 데이터를 전달하는 포장은 무엇인가요?
@@ -454,7 +500,7 @@ page_metadata:
       text: MAC 주소
       feedback: MAC 주소는 네트워크 연결 지점을 구분하는 값입니다.
     answer: c
-  - id: u3-01-p05-q02
+  - id: u3-01-p06-q02
     kind: choice
     difficulty: medium
     prompt: 패킷과 프레임의 관계를 가장 잘 설명한 것은 무엇인가요?
@@ -475,7 +521,7 @@ page_metadata:
       text: 프레임은 항상 인터넷 전체를 한 번에 건넌다
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
     answer: c
-  - id: u3-01-p05-q03
+  - id: u3-01-p06-q03
     kind: short
     prompt: 같은 L2 구간에서 데이터 전달에 사용하는 묶음을 영어로 무엇이라고 하나요?
     answers:
@@ -484,7 +530,7 @@ page_metadata:
     - 프레임
     - Ethernet 프레임
     feedback: 정답은 frame(Ethernet 프레임)입니다.
-  - id: u3-01-p05-q04
+  - id: u3-01-p06-q04
     kind: choice
     difficulty: medium
     prompt: "노트북에서 공유기를 지나 다음 네트워크로 갈 때 프레임은 어떻게 될 수 있나요?"
@@ -505,7 +551,7 @@ page_metadata:
       text: "패킷과 프레임은 항상 크기와 역할이 같다"
       feedback: "패킷은 목적지까지의 데이터이고 프레임은 한 링크용 포장입니다."
     answer: b
-  - id: u3-01-p05-q05
+  - id: u3-01-p06-q05
     kind: choice
     difficulty: medium
     prompt: 기판 내장형, USB 유선형, 무선형 NIC는 모양과 연결 방식이 달라도 무엇이 같은가요?
@@ -539,7 +585,7 @@ page_metadata:
   - 바이트 (Byte)
   inline_questions_after: 1
   questions:
-  - id: u3-01-p06-q01
+  - id: u3-01-p07-q01
     kind: choice
     difficulty: easy
     prompt: 일반 Ethernet의 MTU는 프레임 안에 담기는 데이터의 최대 크기를 얼마로 정하나요?
@@ -560,7 +606,7 @@ page_metadata:
       text: 1,514바이트
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
     answer: b
-  - id: u3-01-p06-q02
+  - id: u3-01-p07-q02
     kind: choice
     difficulty: medium
     prompt: Ethernet 프레임 크기가 문서에 따라 1,514바이트 또는 1,518바이트로 보일 수 있는 이유는 무엇인가요?
@@ -581,7 +627,7 @@ page_metadata:
       text: 마지막 검사 값을 크기에 포함하는지 달라질 수 있다
       feedback: 맞아요. 마지막 검사 값을 크기에 포함하는지 달라질 수 있다.
     answer: e
-  - id: u3-01-p06-q04
+  - id: u3-01-p07-q04
     kind: choice
     difficulty: medium
     prompt: "Jumbo Frame 크기에 대한 설명으로 맞는 것은 무엇인가요?"
@@ -602,7 +648,7 @@ page_metadata:
       text: "MAC 주소가 길어진다는 뜻이다"
       feedback: "Jumbo Frame은 프레임 크기에 관한 말입니다."
     answer: b
-  - id: u3-01-p06-q05
+  - id: u3-01-p07-q05
     kind: choice
     difficulty: medium
     prompt: 프레임 크기와 1Gbps 같은 전송 속도는 어떻게 다른가요?
@@ -641,7 +687,7 @@ page_metadata:
       환산됩니다.
     caption: 8비트가 1바이트이므로 1Gbps는 초당 1GB가 아니라 약 0.125GB입니다.
   questions:
-  - id: u3-01-p07-q01
+  - id: u3-01-p08-q01
     kind: choice
     difficulty: easy
     prompt: 수도꼭지에서 1초 동안 흐르는 물의 양을 세듯, bps에서 소문자 b는 어떤 정보 단위를 뜻하나요?
@@ -662,7 +708,7 @@ page_metadata:
       text: Host
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
     answer: d
-  - id: u3-01-p07-q02
+  - id: u3-01-p08-q02
     kind: choice
     difficulty: medium
     prompt: 1Gbps를 이론상 바이트 전송량으로 바꾸면 초당 약 얼마인가요?
@@ -683,7 +729,7 @@ page_metadata:
       text: 8MB
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
     answer: a
-  - id: u3-01-p07-q03
+  - id: u3-01-p08-q03
     kind: short
     prompt: 8개의 bit가 모여 이루는 정보 용량 단위입니다. 영어 단어로 답해주세요.
     answers:
@@ -691,7 +737,7 @@ page_metadata:
     - bytes
     - 바이트
     feedback: 정답은 byte(바이트)입니다.
-  - id: u3-01-p07-q04
+  - id: u3-01-p08-q04
     kind: choice
     difficulty: medium
     prompt: "이론상 1GB 파일을 125MB/s로 보내면 최소 얼마나 걸릴까요?"
@@ -712,7 +758,7 @@ page_metadata:
       text: "약 800초"
       feedback: "나눗셈을 다시 해 보세요. 1,000 ÷ 125입니다."
     answer: a
-  - id: u3-01-p07-q05
+  - id: u3-01-p08-q05
     kind: choice
     difficulty: medium
     prompt: 실제 다운로드 속도가 1Gbps를 8로 나눈 값보다 낮을 수 있는 이유는 무엇인가요?
@@ -738,7 +784,7 @@ page_metadata:
   - Ethernet (이더넷)
   inline_questions_after: 1
   questions:
-  - id: u3-01-p08-q01
+  - id: u3-01-p09-q01
     kind: choice
     difficulty: easy
     prompt: 구리 케이블이 전기 신호를 나르는 선이라면, 광섬유 케이블은 무엇을 이용해 신호를 전달하나요?
@@ -759,7 +805,7 @@ page_metadata:
       text: 자석의 힘만
       feedback: 이 페이지에서 설명한 신호 방식은 전기와 빛입니다.
     answer: c
-  - id: u3-01-p08-q02
+  - id: u3-01-p09-q02
     kind: choice
     difficulty: medium
     prompt: Mac에서 연결 지점 이름과 ether 값을 확인할 때 사용할 수 있는 명령은 무엇인가요?
@@ -780,14 +826,14 @@ page_metadata:
       text: ifconfig
       feedback: 맞아요. ifconfig.
     answer: e
-  - id: u3-01-p08-q03
+  - id: u3-01-p09-q03
     kind: short
     prompt: 유선 LAN에서 널리 쓰이며 데이터 프레임과 연결되는 네트워크 기술입니다. 영어로 답해주세요.
     answers:
     - ethernet
     - 이더넷
     feedback: 정답은 Ethernet(이더넷)입니다.
-  - id: u3-01-p08-q04
+  - id: u3-01-p09-q04
     kind: choice
     difficulty: medium
     prompt: "Windows에서 네트워크 연결 지점과 MAC 주소를 자세히 확인할 때 사용할 수 있는 명령은 무엇인가요?"
@@ -808,7 +854,7 @@ page_metadata:
       text: "mac print"
       feedback: "이 Lesson에서 소개한 Windows 명령은 ipconfig /all입니다."
     answer: c
-  - id: u3-01-p08-q05
+  - id: u3-01-p09-q05
     kind: choice
     difficulty: medium
     prompt: ipconfig /all 결과에서 'Physical Address' 또는 Mac의 ifconfig 결과에서 'ether' 옆에 보이는 값은 무엇인가요?
@@ -882,6 +928,31 @@ LAN을 마을 하나, MAN을 도시, WAN을 더 넓은 지역으로 생각하면
 - **기억하기 (Recall):** LAN·MAN·WAN은 연결 범위의 크기를 설명하는 구분이다.
 - **적용하기 (Apply):** 집·도시·광역 연결 사례를 범위에 따라 구분한다.
 - **찾아보기 (Lookup):** 공유기에서 LAN과 WAN이라고 표시된 연결을 찾아보고, 장비의 포트 이름과 네트워크 범위의 뜻을 구별한다.
+
+## 택배 여정으로 기억하는 OSI 7계층
+<!-- learn-page-id: osi-seven-layer-order -->
+
+Unit 1에서 계층을 층층이 그린 지도를 봤고, Unit 2에서는 상자가 여러 장소와 사람을 거쳐 도착하는 택배 여정을 따라갔습니다. 이제 그 지도를 네트워크 통신에 적용해 봅니다. OSI 7계층은 통신에서 필요한 일을 일곱 역할로 나누어 설명하는 모델입니다. 아래 표를 택배 여정과 함께 읽으며 먼저 이름과 순서를 익혀 보세요.
+
+| 위에서 아래 | 이름 | 하는 일 한 줄 | 택배에서 떠올릴 장면 |
+|---|---|---|---|
+| 7 | 응용(Application) | 네트워크를 쓰는 프로그램이 제공할 일을 정한다 | 보내려는 물건이나 요청을 정한다 |
+| 6 | 표현(Presentation) | 데이터의 표현 형식을 맞추고 필요하면 바꾸거나 보호한다 | 내용을 읽을 수 있는 형식으로 준비한다 |
+| 5 | 세션(Session) | 통신 대화를 시작하고 이어 가고 마친다 | 배송에 필요한 대화를 열고 마무리한다 |
+| 4 | 전송(Transport) | 두 끝의 프로그램 사이에서 데이터를 전달한다 | 보낸 쪽과 받을 쪽 사이의 배송을 맡긴다 |
+| 3 | 네트워크(Network) | 목적지까지 갈 경로를 찾는다 | 주소를 보고 지역과 경로를 정한다 |
+| 2 | 데이터 링크(Data Link) | 바로 이어진 네트워크 구간에서 프레임을 전달한다 | 이웃한 분류 장소 사이에서 상자를 넘긴다 |
+| 1 | 물리(Physical) | 비트를 전기·빛·무선 신호로 실어 보낸다 | 도로와 차량처럼 실제 이동 수단을 떠올린다 |
+
+위에서 아래로 읽으면 **응용 → 표현 → 세션 → 전송 → 네트워크 → 데이터 링크 → 물리**입니다. 짧게 소리 내어 “응·표·세 / 전·네 / 데·물”로 끊어 읽어도 좋아요. 이 이름과 순서가 오늘의 기억 목표입니다. 각 계층에서 실제로 어떤 프로토콜과 장치가 쓰이는지는 뒤 Unit에서 하나씩 만납니다.
+
+택배 장면은 각 계층의 이름과 역할을 떠올리게 하는 기억 보조입니다. 실제 인터넷 통신이 택배 회사의 일곱 부서처럼 정확히 나뉘거나, 매번 같은 순서의 담당자를 거친다는 뜻은 아닙니다. OSI도 현실의 모든 프로토콜이 꼭 한 층씩 깔끔하게 들어맞는다는 규칙이 아니라 통신 기능을 설명하고 비교하는 참조 모델입니다. 여기서는 비유의 세부를 외우기보다 일곱 역할의 순서를 기억하세요.
+
+### 이 Lesson에서 가져갈 것
+
+- **기억하기 (Recall):** OSI 7계층을 위에서 아래로 응용·표현·세션·전송·네트워크·데이터 링크·물리 순서로 말한다.
+- **적용하기 (Apply):** 네트워크 장치나 기술을 살펴볼 때 어느 계층의 역할과 관련 있는지 뒤의 학습과 연결한다.
+- **찾아보기 (Lookup):** 계층별 구체적인 프로토콜과 데이터 단위는 뒤 Unit의 해당 Page에서 확인한다.
 
 ## MAC 주소 · NIC의 식별자
 <!-- learn-page-id: mac-address-definition -->
