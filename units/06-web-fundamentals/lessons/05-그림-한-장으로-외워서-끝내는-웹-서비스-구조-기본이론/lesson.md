@@ -1,6 +1,6 @@
 ---
 id: u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론
-title: 그림 한 장으로 외워서 끝내는 웹 서비스 구조 기본이론
+title: 웹 서버·WAS·DB는 어떻게 나누어 일할까?
 source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-35.md
 animations_dir: units/06-web-fundamentals/lessons/05-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론/assets/animations
 additional_sources:
@@ -718,7 +718,7 @@ page_metadata:
     after_paragraph: 2
 ---
 
-## 웹 접속 한 번, 아래층부터 되짚기
+## 웹 접속 한 번, 네트워크부터 서버까지 되짚기
 
 브라우저에서 `https://shop.example/login`을 열었다고 하자. 브라우저가 서버의 IP 주소를 알아내고 TCP 연결을 준비한 뒤 HTTP 요청을 보내는 흐름은 앞 단원에서 배웠다. 이 Lesson은 그 요청이 서버에 도착한 뒤 어떤 구성요소를 만나고, 응답이 어떻게 화면으로 이어지는지에 초점을 둔다.
 
