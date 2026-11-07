@@ -144,15 +144,15 @@ page_metadata:
     - id: b
       text: 화면 크기
       feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
-    - id: c
-      text: 전송 계층의 포트 번호
-      feedback: 맞아요. 포트 번호는 호스트 안에서 받을 통신 프로그램을 구분하는 데 쓰여요.
     - id: d
       text: MAC 주소만
       feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
     - id: e
       text: 파일 이름
       feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: c
+      text: 전송 계층의 포트 번호
+      feedback: 맞아요. 포트 번호는 호스트 안에서 받을 통신 프로그램을 구분하는 데 쓰여요.
     answer: c
   - id: u4-l14-p02-q03
     kind: choice
@@ -168,12 +168,12 @@ page_metadata:
     - id: c
       text: 포트 번호가 집 주소이고 IP 주소가 사람 이름이다
       feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
-    - id: d
-      text: 둘 다 웹 페이지의 파일 경로다
-      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
     - id: e
       text: IP 주소는 호스트를, 포트 번호는 그 안의 수신 통신 끝점을 구분한다
       feedback: 맞아요. IP 주소로 호스트를 찾고 포트 번호로 그 안의 수신 통신 끝점을 구분해요.
+    - id: d
+      text: 둘 다 웹 페이지의 파일 경로다
+      feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
     answer: e
   - id: u4-l14-p02-q04
     kind: short
@@ -226,9 +226,6 @@ page_metadata:
     - id: a
       text: 목적지 서버에 직접
       feedback: 다른 네트워크의 서버에는 현재 LAN에서 직접 닿을 수 없어요. 먼저 기본 게이트웨이에 맡겨요.
-    - id: b
-      text: 기본 게이트웨이 `192.168.0.1`에
-      feedback: 맞아요. 호스트는 목적지 서버로 가는 패킷을 먼저 기본 게이트웨이에 전달해요.
     - id: c
       text: 같은 LAN의 아무 PC에나
       feedback: 다른 PC가 목적지 경로를 대신 찾아 주지는 않아요. 기본 게이트웨이에 전달해요.
@@ -238,6 +235,9 @@ page_metadata:
     - id: e
       text: 인터넷의 모든 라우터에 동시에
       feedback: 호스트는 패킷을 모든 라우터에 보내지 않아요. 먼저 기본 게이트웨이에 전달해요.
+    - id: b
+      text: 기본 게이트웨이 `192.168.0.1`에
+      feedback: 맞아요. 호스트는 목적지 서버로 가는 패킷을 먼저 기본 게이트웨이에 전달해요.
     answer: b
   - id: u4-l14-gateway-p03-q03
     kind: choice
@@ -331,15 +331,15 @@ page_metadata:
     - id: b
       text: 수신 프로세스
       feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
-    - id: c
-      text: 기본 게이트웨이
-      feedback: 맞아요. 기본 게이트웨이는 다른 네트워크로 나갈 때 패킷을 보내는 첫 라우터예요.
     - id: d
       text: DNS 이름
       feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
     - id: e
       text: Ethernet 트레일러
       feedback: 다시 생각해 보세요. 본문에서 각 정보와 장치의 역할을 다시 확인해 보세요.
+    - id: c
+      text: 기본 게이트웨이
+      feedback: 맞아요. 기본 게이트웨이는 다른 네트워크로 나갈 때 패킷을 보내는 첫 라우터예요.
     answer: c
   - id: u4-l14-p03-q04
     kind: choice

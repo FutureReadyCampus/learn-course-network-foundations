@@ -188,9 +188,6 @@ page_metadata:
     - id: a
       text: TTL이 2로 유지되어 계속 전달된다
       feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
-    - id: b
-      text: TTL이 0이 되어 더 전달되지 않고 폐기된다
-      feedback: 맞아요. 라우터를 지날 때 TTL이 줄며 0이 되면 패킷은 더 전달되지 않습니다.
     - id: c
       text: Protocol이 UDP로 바뀐다
       feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
@@ -200,6 +197,9 @@ page_metadata:
     - id: e
       text: IP 헤더가 페이로드로 바뀐다
       feedback: 다시 본문에서 해당 필드가 답하는 질문과 역할을 확인해 보세요.
+    - id: b
+      text: TTL이 0이 되어 더 전달되지 않고 폐기된다
+      feedback: 맞아요. 라우터를 지날 때 TTL이 줄며 0이 되면 패킷은 더 전달되지 않습니다.
     answer: b
   - id: u5-l01-p03-q03
     kind: short

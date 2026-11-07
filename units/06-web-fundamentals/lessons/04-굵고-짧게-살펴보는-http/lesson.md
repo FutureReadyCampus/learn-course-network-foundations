@@ -471,9 +471,6 @@ page_metadata:
     - id: a
       text: 조회에는 POST만, 양식 제출에는 GET만 써야 한다
       feedback: 본문의 일반적인 쓰임은 GET 조회, POST 제출입니다.
-    - id: b
-      text: 조회에는 GET, 양식 제출에는 POST를 흔히 쓰며 실제 서버 동작도 확인한다
-      feedback: 맞아요. 조회와 제출을 구별하되 메서드 의미는 서버 동작과 표준 규칙 안에서 이해합니다.
     - id: c
       text: 회원가입은 파일 업로드가 아니므로 POST를 쓸 수 없다
       feedback: POST를 업로드로만 외우면 정보 제출 같은 실제 쓰임을 놓칩니다.
@@ -483,6 +480,9 @@ page_metadata:
     - id: e
       text: 어떤 서버든 메서드 이름만 같으면 내부 동작까지 모두 같다
       feedback: 실제 동작은 서버와 표준 규칙 안에서 정해지므로 이름만으로 내부 동작을 모두 단정하지 않습니다.
+    - id: b
+      text: 조회에는 GET, 양식 제출에는 POST를 흔히 쓰며 실제 서버 동작도 확인한다
+      feedback: 맞아요. 조회와 제출을 구별하되 메서드 의미는 서버 동작과 표준 규칙 안에서 이해합니다.
     answer: b
   question_placements:
   - question_id: u9-l04-p08-q01
@@ -532,12 +532,12 @@ page_metadata:
     - id: b
       text: URL을 다시 정해야만 TCP 연결을 시작할 수 있다
       feedback: 주어진 상황은 이미 연결을 만든 뒤 요청을 보내는 단계입니다.
-    - id: c
-      text: HTTP 규칙으로 자원을 요청하고 서버의 처리 결과를 받는다
-      feedback: 맞아요. 주소를 찾는 DNS와 연결을 만드는 TCP를 거쳐 HTTP 요청·응답 단계로 이어집니다.
     - id: d
       text: TCP가 HTML 내용을 직접 만들어 브라우저로 응답한다
       feedback: HTML 응답은 서버가 요청을 처리해 보내며 TCP 자체가 내용을 만드는 것이 아닙니다.
+    - id: c
+      text: HTTP 규칙으로 자원을 요청하고 서버의 처리 결과를 받는다
+      feedback: 맞아요. 주소를 찾는 DNS와 연결을 만드는 TCP를 거쳐 HTTP 요청·응답 단계로 이어집니다.
     - id: e
       text: 서버 응답 없이 브라우저가 요청한 문서를 확정해 표시한다
       feedback: 본문의 예시는 서버가 HTML을 응답한 뒤 브라우저가 그 문서를 표시합니다.

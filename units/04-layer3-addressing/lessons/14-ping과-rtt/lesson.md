@@ -418,12 +418,12 @@ page_metadata:
     - id: c
       text: 시간이 ms로 표시되었다는 것
       feedback: 측정된 사실과 원인에 관한 설명을 구별하세요.
-    - id: d
-      text: Ping 응답이 돌아왔다는 것
-      feedback: 측정된 사실과 원인에 관한 설명을 구별하세요.
     - id: e
       text: 물리적 거리가 RTT 차이의 유일한 원인이라고 단정하는 것
       feedback: 거리만으로 RTT가 결정되지는 않아 단일 원인으로 단정하기 어렵습니다.
+    - id: d
+      text: Ping 응답이 돌아왔다는 것
+      feedback: 측정된 사실과 원인에 관한 설명을 구별하세요.
     answer: e
 - terms:
   - 에코(Echo)
@@ -446,12 +446,12 @@ page_metadata:
     - id: b
       text: Ping과 ICMP는 같은 장치이고 RTT는 주소다
       feedback: 세 용어를 도구·약속·측정값으로 나누어 기억하세요.
-    - id: c
-      text: Ping은 프로그램, ICMP는 이용하는 프로토콜, RTT는 측정하는 값이다
-      feedback: Ping은 프로그램, ICMP는 프로토콜, RTT는 왕복 시간 값입니다.
     - id: d
       text: ICMP는 프로그램, Ping은 IP 주소다
       feedback: 세 용어를 도구·약속·측정값으로 나누어 기억하세요.
+    - id: c
+      text: Ping은 프로그램, ICMP는 이용하는 프로토콜, RTT는 측정하는 값이다
+      feedback: Ping은 프로그램, ICMP는 프로토콜, RTT는 왕복 시간 값입니다.
     - id: e
       text: 세 용어는 모두 같은 뜻이다
       feedback: 세 용어를 도구·약속·측정값으로 나누어 기억하세요.
@@ -461,6 +461,9 @@ page_metadata:
     difficulty: medium
     prompt: Ping 응답이 없을 때 대상 장치가 반드시 꺼져 있다고 할 수 없는 이유는 무엇인가요?
     choices:
+    - id: e
+      text: 방화벽이나 장치 설정이 ICMP를 막을 수 있기 때문
+      feedback: 방화벽이나 장치 설정이 ICMP를 막을 수 있어 무응답만으로 장치가 꺼졌다고 단정할 수 없습니다.
     - id: a
       text: Ping은 인터넷을 사용하지 않기 때문
       feedback: 측정 도구가 응답을 받지 못한 것과 장치 자체가 꺼진 것을 구분하세요.
@@ -473,9 +476,6 @@ page_metadata:
     - id: d
       text: DHCP는 응답을 금지하기 때문
       feedback: 측정 도구가 응답을 받지 못한 것과 장치 자체가 꺼진 것을 구분하세요.
-    - id: e
-      text: 방화벽이나 장치 설정이 ICMP를 막을 수 있기 때문
-      feedback: 방화벽이나 장치 설정이 ICMP를 막을 수 있어 무응답만으로 장치가 꺼졌다고 단정할 수 없습니다.
     answer: e
   - id: u6-l04-p07-q03
     kind: choice

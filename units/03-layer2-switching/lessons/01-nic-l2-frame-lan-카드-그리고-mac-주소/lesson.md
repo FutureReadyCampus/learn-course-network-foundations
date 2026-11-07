@@ -77,12 +77,12 @@ page_metadata:
     difficulty: medium
     prompt: "사양표의 'Realtek 무선 LAN'에서 Realtek은 무엇을 가리키나요?"
     choices:
-    - id: a
-      text: "무선 LAN을 만든 회사 이름"
-      feedback: "맞아요. Realtek은 회사 이름입니다."
     - id: b
       text: "호스트의 네트워크 주소"
       feedback: "다시 본문을 확인해 보세요. 호스트의 네트워크 주소."
+    - id: a
+      text: "무선 LAN을 만든 회사 이름"
+      feedback: "맞아요. Realtek은 회사 이름입니다."
     - id: c
       text: "프레임을 보내는 통신 규칙"
       feedback: "다시 본문을 확인해 보세요. 프레임을 보내는 통신 규칙."
@@ -316,12 +316,12 @@ page_metadata:
     - id: b
       text: Wi-Fi는 네트워크 범위 분류에서 제외되기 때문에
       feedback: Wi-Fi 장치도 가까운 LAN에 함께 연결될 수 있습니다.
-    - id: c
-      text: 장치의 연결 방식이 달라도 같은 가까운 범위의 네트워크일 수 있기 때문에
-      feedback: 맞아요. LAN은 가까운 범위를 말하며 유선과 무선을 함께 쓸 수 있습니다.
     - id: d
       text: 랜 케이블을 쓰는 데스크톱이 나머지 장치의 속도를 정하기 때문에
       feedback: LAN은 속도나 특정 장치로 정하는 분류가 아닙니다.
+    - id: c
+      text: 장치의 연결 방식이 달라도 같은 가까운 범위의 네트워크일 수 있기 때문에
+      feedback: 맞아요. LAN은 가까운 범위를 말하며 유선과 무선을 함께 쓸 수 있습니다.
     - id: e
       text: 무선 공유기가 두 장치의 MAC 주소를 하나로 합치기 때문에
       feedback: MAC 주소와 네트워크 범위는 서로 다른 개념입니다.
@@ -445,12 +445,12 @@ page_metadata:
     - id: c
       text: "32비트"
       feedback: "다시 본문을 확인해 보세요. 32비트."
-    - id: d
-      text: "64비트"
-      feedback: "다시 본문을 확인해 보세요. 64비트."
     - id: e
       text: "48비트"
       feedback: "맞아요. 48비트입니다."
+    - id: d
+      text: "64비트"
+      feedback: "다시 본문을 확인해 보세요. 64비트."
     answer: e
   - id: u3-01-p05-q05
     kind: choice
@@ -466,12 +466,12 @@ page_metadata:
     - id: c
       text: 두 NIC 모두 MAC 주소 대신 포트 번호를 쓴다
       feedback: 포트 번호와 MAC 주소는 다른 값입니다.
-    - id: d
-      text: 연결 지점마다 서로 다른 MAC 주소가 사용될 수 있다
-      feedback: 맞아요. MAC 주소는 컴퓨터가 아니라 연결 지점별로 쓰일 수 있습니다.
     - id: e
       text: MAC 주소는 인터넷 전체의 경로를 선택한다
       feedback: MAC 주소는 가까운 네트워크에서 연결 지점을 구분합니다.
+    - id: d
+      text: 연결 지점마다 서로 다른 MAC 주소가 사용될 수 있다
+      feedback: 맞아요. MAC 주소는 컴퓨터가 아니라 연결 지점별로 쓰일 수 있습니다.
     answer: d
 - terms:
   - 프레임 (Frame)
@@ -511,12 +511,12 @@ page_metadata:
     - id: b
       text: 프레임은 네트워크 장치이고 패킷은 케이블이다
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
-    - id: c
-      text: 패킷은 목적지까지의 데이터이고 프레임은 가까운 링크 구간의 전달에 쓰인다
-      feedback: 맞아요. 패킷은 목적지까지의 데이터이고 프레임은 가까운 링크 구간의 전달에 쓰인다.
     - id: d
       text: 프레임에는 MAC 주소를 사용할 수 없다
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: c
+      text: 패킷은 목적지까지의 데이터이고 프레임은 가까운 링크 구간의 전달에 쓰인다
+      feedback: 맞아요. 패킷은 목적지까지의 데이터이고 프레임은 가까운 링크 구간의 전달에 쓰인다.
     - id: e
       text: 프레임은 항상 인터넷 전체를 한 번에 건넌다
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
@@ -742,15 +742,15 @@ page_metadata:
     difficulty: medium
     prompt: "이론상 1GB 파일을 125MB/s로 보내면 최소 얼마나 걸릴까요?"
     choices:
-    - id: a
-      text: "약 8초"
-      feedback: "맞아요. 1,000MB를 125MB/s로 나누면 약 8초입니다."
     - id: b
       text: "약 1초"
       feedback: "1,000MB를 125MB/s로 나누어 보세요."
     - id: c
       text: "약 8분"
       feedback: "1,000MB를 125MB/s로 나누면 초 단위가 나옵니다."
+    - id: a
+      text: "약 8초"
+      feedback: "맞아요. 1,000MB를 125MB/s로 나누면 약 8초입니다."
     - id: d
       text: "약 80초"
       feedback: "나눗셈을 다시 해 보세요. 1,000 ÷ 125입니다."

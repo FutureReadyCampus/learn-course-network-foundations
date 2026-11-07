@@ -90,9 +90,6 @@ page_metadata:
     difficulty: medium
     prompt: 같은 LAN의 프린터로 프레임을 전달할 때 L2 스위치는 주로 무엇을 보고 보낼 곳을 찾나요?
     choices:
-    - id: a
-      text: 목적지 MAC 주소와 학습한 정보
-      feedback: 맞아요. L2 스위치는 이를 이용해 프레임을 보낼 쪽을 찾습니다.
     - id: b
       text: 목적지 IP 주소만으로 인터넷 전체 경로
       feedback: 목적지 IP로 다른 네트워크 방향을 고르는 역할은 L3 라우팅입니다.
@@ -102,6 +99,9 @@ page_metadata:
     - id: d
       text: 목적지 IP 주소를 보고 다른 네트워크로 나갈 길을 정합니다
       feedback: 목적지 IP를 보고 네트워크 사이의 경로를 고르는 일은 라우터의 역할입니다.
+    - id: a
+      text: 목적지 MAC 주소와 학습한 정보
+      feedback: 맞아요. L2 스위치는 이를 이용해 프레임을 보낼 쪽을 찾습니다.
     - id: e
       text: 패킷의 출발지 프로그램 이름
       feedback: L2 전달의 기본 기준은 목적지 MAC 주소입니다.
@@ -132,12 +132,12 @@ page_metadata:
     - id: a
       text: 장치의 전원을 켜고 끄는 일
       feedback: 이 Lesson에서는 라우터가 경로 정보를 보고 패킷을 다음 연결로 전달하는 과정을 살펴봅니다.
-    - id: b
-      text: 필요한 정보를 확인해 패킷을 다음 연결로 전달하는 일
-      feedback: 맞아요. 라우터는 목적지와 경로 정보를 바탕으로 다음 연결로 패킷을 전달합니다.
     - id: c
       text: 패킷 내용을 항상 암호화하는 일
       feedback: 암호화는 패킷을 다음 연결로 전달하는 과정과 다른 기능입니다.
+    - id: b
+      text: 필요한 정보를 확인해 패킷을 다음 연결로 전달하는 일
+      feedback: 맞아요. 라우터는 목적지와 경로 정보를 바탕으로 다음 연결로 패킷을 전달합니다.
     - id: d
       text: 모든 네트워크 경로를 한 장비에 저장하는 일
       feedback: 각 라우터는 자신이 가진 경로 정보를 참고해 다음 구간을 정합니다.
@@ -150,9 +150,6 @@ page_metadata:
     difficulty: medium
     prompt: 라우터에 목적지 IP가 10.0.0.7인 패킷이 도착했습니다. 라우터는 다음 방향을 고르기 위해 무엇을 참고하나요?
     choices:
-    - id: a
-      text: 라우팅 테이블에서 목적지에 맞는 항목
-      feedback: 맞아요. 목적지와 맞는 경로 항목을 찾아 다음 홉이나 인터페이스를 선택합니다.
     - id: b
       text: 목적지와 관계없이 가장 가까운 케이블
       feedback: 라우터는 목적지와 경로 정보를 참고합니다.
@@ -162,6 +159,9 @@ page_metadata:
     - id: d
       text: 임의로 고른 출력 인터페이스
       feedback: 라우터는 경로 정보를 바탕으로 출구를 선택합니다.
+    - id: a
+      text: 라우팅 테이블에서 목적지에 맞는 항목
+      feedback: 맞아요. 목적지와 맞는 경로 항목을 찾아 다음 홉이나 인터페이스를 선택합니다.
     - id: e
       text: 출발 컴퓨터의 화면 크기
       feedback: 화면 크기는 네트워크 경로와 관계없습니다.
@@ -171,9 +171,6 @@ page_metadata:
     difficulty: medium
     prompt: 네트워크 케이블이나 무선 연결이 장치와 만나는 접점으로, 데이터를 주고받는 출구를 가리키는 말은 무엇인가요?
     choices:
-    - id: a
-      text: Interface(네트워크 인터페이스)
-      feedback: 맞아요. Interface는 장치가 네트워크에 연결되어 데이터를 주고받는 접점입니다.
     - id: b
       text: Protocol(프로토콜)
       feedback: 프로토콜은 통신할 때 따르는 규칙입니다.
@@ -186,6 +183,9 @@ page_metadata:
     - id: e
       text: Subnet mask(서브넷 마스크)
       feedback: 서브넷 마스크는 IP 주소에서 네트워크 부분과 장치 부분을 구분하는 데 사용합니다.
+    - id: a
+      text: Interface(네트워크 인터페이스)
+      feedback: 맞아요. Interface는 장치가 네트워크에 연결되어 데이터를 주고받는 접점입니다.
     answer: a
   animations:
   - file: l07-switching-steps.svg
@@ -213,15 +213,15 @@ page_metadata:
     - id: a
       text: 사용자 계정의 비밀번호 목록
       feedback: 라우팅 테이블은 네트워크 경로 정보를 담습니다.
-    - id: b
-      text: 목적지와 다음 전달 방향을 연결한 경로 정보
-      feedback: 맞아요. 목적지 범위와 다음 홉 또는 인터페이스 등을 기록합니다.
     - id: c
       text: 웹 페이지의 색상과 글꼴
       feedback: 웹 디자인 정보는 라우팅 테이블에 들어가지 않습니다.
     - id: d
       text: 모든 패킷의 실제 내용을 영구 보관한 기록
       feedback: 라우팅 테이블은 경로를 결정하는 데 쓰입니다.
+    - id: b
+      text: 목적지와 다음 전달 방향을 연결한 경로 정보
+      feedback: 맞아요. 목적지 범위와 다음 홉 또는 인터페이스 등을 기록합니다.
     - id: e
       text: 연결된 장치의 전원 사용량만 모은 표
       feedback: 전원 사용량 표가 아니라 목적지 경로 정보를 담습니다.
@@ -234,9 +234,6 @@ page_metadata:
     - id: a
       text: 목적지와 맞는 항목을 찾기 전에 숫자부터 비교합니다
       feedback: 목적지에 적용되는 항목을 먼저 찾아야 합니다.
-    - id: b
-      text: 목적지에 맞는 경로 항목을 찾고 다음 홉이나 인터페이스를 확인합니다
-      feedback: 맞아요. 목적지 범위에 맞는 경로를 찾아 다음 방향을 결정합니다.
     - id: c
       text: 모든 라우터의 테이블을 합쳐 하나의 인터넷 표를 만듭니다
       feedback: 각 라우터는 자신이 가진 경로 정보를 이용합니다.
@@ -246,6 +243,9 @@ page_metadata:
     - id: e
       text: 표를 보지 않고 가장 왼쪽 포트로 보냅니다
       feedback: 라우터는 경로 정보를 바탕으로 출구를 정합니다.
+    - id: b
+      text: 목적지에 맞는 경로 항목을 찾고 다음 홉이나 인터페이스를 확인합니다
+      feedback: 맞아요. 목적지 범위에 맞는 경로를 찾아 다음 방향을 결정합니다.
     answer: b
   - id: u2-l07-p04-q03
     kind: short
@@ -275,15 +275,15 @@ page_metadata:
     difficulty: easy
     prompt: L2 스위치가 같은 LAN에서 프레임을 전달할 때 주로 보는 주소는 무엇인가요?
     choices:
-    - id: a
-      text: 목적지 MAC 주소
-      feedback: 맞아요. L2 전달에서는 MAC 주소가 중요한 기준입니다.
     - id: b
       text: 목적지 IP 주소만
       feedback: 목적지 IP는 L3 경로 선택에서 중요합니다.
     - id: c
       text: TCP 포트 번호만
       feedback: 포트 번호는 L4 정보입니다.
+    - id: a
+      text: 목적지 MAC 주소
+      feedback: 맞아요. L2 전달에서는 MAC 주소가 중요한 기준입니다.
     - id: d
       text: HTTP URL 경로
       feedback: URL 경로는 응용 계층 정보입니다.
@@ -317,15 +317,15 @@ page_metadata:
     difficulty: medium
     prompt: Ethernet 프레임을 같은 네트워크 안에서 전달할 때 목적지를 구분하는 주소는 무엇인가요?
     choices:
-    - id: a
-      text: MAC 주소
-      feedback: 맞아요. Ethernet 프레임은 같은 네트워크 안의 목적지 MAC 주소를 사용해 전달합니다.
     - id: b
       text: IP 주소
       feedback: IP 주소는 네트워크 사이에서 목적지를 찾는 데 사용합니다.
     - id: c
       text: 포트 번호
       feedback: 포트 번호는 장치 안에서 통신할 프로그램을 구분합니다.
+    - id: a
+      text: MAC 주소
+      feedback: 맞아요. Ethernet 프레임은 같은 네트워크 안의 목적지 MAC 주소를 사용해 전달합니다.
     - id: d
       text: 호스트 이름
       feedback: 호스트 이름은 사람이 장치나 서비스를 알아보기 쉽게 부르는 이름입니다.
@@ -364,9 +364,6 @@ page_metadata:
     difficulty: medium
     prompt: 같은 목적지에 적용되는 두 경로 후보의 Metric이 10과 50일 때, 이 Lesson의 단순한 비용 비교에서는 무엇을 알 수 있나요?
     choices:
-    - id: a
-      text: Metric 10인 후보가 더 낮은 비용입니다
-      feedback: 맞아요. 이 비교에서는 10이 50보다 낮은 비용입니다.
     - id: b
       text: Metric 50인 후보가 반드시 더 빠릅니다
       feedback: Metric 숫자만으로 실제 속도를 단정할 수 없습니다.
@@ -379,6 +376,9 @@ page_metadata:
     - id: e
       text: 목적지와 관계없이 모든 경로의 숫자를 한꺼번에 비교합니다
       feedback: 서로 다른 목적지에 적용되는 경로를 무조건 비교하면 안 됩니다.
+    - id: a
+      text: Metric 10인 후보가 더 낮은 비용입니다
+      feedback: 맞아요. 이 비교에서는 10이 50보다 낮은 비용입니다.
     answer: a
   animations:
   - file: l07-metric-compare.svg
@@ -396,9 +396,6 @@ page_metadata:
     difficulty: easy
     prompt: Windows에서 현재 컴퓨터의 라우팅 테이블을 확인할 때 사용하는 명령은 무엇인가요?
     choices:
-    - id: a
-      text: route print
-      feedback: 맞아요. route print는 Windows의 경로 정보를 표시합니다.
     - id: b
       text: page show
       feedback: 라우팅 테이블을 보는 Windows 명령은 route print입니다.
@@ -408,6 +405,9 @@ page_metadata:
     - id: d
       text: packet start
       feedback: 라우팅 테이블 확인 명령이 아닙니다.
+    - id: a
+      text: route print
+      feedback: 맞아요. route print는 Windows의 경로 정보를 표시합니다.
     - id: e
       text: network paint
       feedback: 라우팅 테이블 확인 명령이 아닙니다.
@@ -420,9 +420,6 @@ page_metadata:
     - id: a
       text: 표에 나온 모든 Metric 중 가장 작은 값을 바로 고릅니다
       feedback: 목적지 범위가 다른 행의 Metric을 무조건 비교하면 안 됩니다.
-    - id: b
-      text: 같은 목적지에 적용되는 후보끼리 비교합니다
-      feedback: 맞아요. 먼저 목적지와 맞는 경로를 찾고, 그 후보끼리 Metric을 비교합니다.
     - id: c
       text: Gateway 열은 무시하고 숫자만 더합니다
       feedback: 목적지 범위와 경로 항목을 먼저 살펴야 합니다.
@@ -432,15 +429,15 @@ page_metadata:
     - id: e
       text: 모든 행의 Metric을 합산합니다
       feedback: 모든 행을 합산하는 것이 아니라 적용 가능한 후보를 비교합니다.
+    - id: b
+      text: 같은 목적지에 적용되는 후보끼리 비교합니다
+      feedback: 맞아요. 먼저 목적지와 맞는 경로를 찾고, 그 후보끼리 Metric을 비교합니다.
     answer: b
   - id: u2-l07-p07-q03
     kind: choice
     difficulty: medium
     prompt: route print 결과에서 Gateway 열이 가리키는 대상은 무엇인가요?
     choices:
-    - id: a
-      text: 다음 라우터(다음 홉)
-      feedback: 맞아요. Gateway는 패킷을 다음에 넘길 라우터를 가리킵니다.
     - id: b
       text: 최종 목적지의 네트워크 주소
       feedback: 목적지 주소와 Gateway는 역할이 다릅니다. Gateway는 다음 전달 대상을 가리킵니다.
@@ -450,6 +447,9 @@ page_metadata:
     - id: d
       text: 경로 후보를 비교하는 Metric 값
       feedback: Metric은 경로 후보를 비교할 때 쓰는 값입니다.
+    - id: a
+      text: 다음 라우터(다음 홉)
+      feedback: 맞아요. Gateway는 패킷을 다음에 넘길 라우터를 가리킵니다.
     - id: e
       text: 목적지 장치의 애플리케이션
       feedback: Gateway는 애플리케이션이 아니라 다음 네트워크 전달 장치를 가리킵니다.
@@ -468,15 +468,15 @@ page_metadata:
     difficulty: easy
     prompt: 패킷이 라우터에 도착한 뒤 라우터가 먼저 확인하는 주소는 무엇인가요?
     choices:
-    - id: a
-      text: 목적지 IP 주소
-      feedback: 맞아요. 목적지 IP를 확인해 경로 항목을 찾습니다.
     - id: b
       text: 사용자의 이메일 주소
       feedback: 이메일 주소는 라우팅의 기본 판단 정보가 아닙니다.
     - id: c
       text: 웹 페이지의 제목
       feedback: 일반적인 라우팅은 웹 페이지 제목을 기준으로 하지 않습니다.
+    - id: a
+      text: 목적지 IP 주소
+      feedback: 맞아요. 목적지 IP를 확인해 경로 항목을 찾습니다.
     - id: d
       text: 컴퓨터의 화면 해상도
       feedback: 화면 해상도는 경로 선택과 관계없습니다.
@@ -492,9 +492,6 @@ page_metadata:
     - id: a
       text: Metric 선택 → 패킷 생성 → 목적지 확인 → 테이블 삭제
       feedback: 목적지와 경로를 확인한 다음 전달합니다.
-    - id: b
-      text: 목적지 IP 확인 → 라우팅 테이블에서 경로 찾기 → 다음 인터페이스로 전달
-      feedback: 맞아요. 목적지를 확인하고 경로 정보를 찾아 다음 구간으로 보냅니다.
     - id: c
       text: 인터페이스 선택 → 목적지 변경 → 출발 컴퓨터 검색
       feedback: 목적지 정보로 경로를 찾고 출력 인터페이스를 고릅니다.
@@ -504,6 +501,9 @@ page_metadata:
     - id: e
       text: 모든 네트워크 장비의 표를 합침 → 한 번에 최종 목적지로 이동
       feedback: 각 라우터가 자기 표로 다음 한 구간을 정합니다.
+    - id: b
+      text: 목적지 IP 확인 → 라우팅 테이블에서 경로 찾기 → 다음 인터페이스로 전달
+      feedback: 맞아요. 목적지를 확인하고 경로 정보를 찾아 다음 구간으로 보냅니다.
     answer: b
   animations:
   - file: l07-road-analogy.svg

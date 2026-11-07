@@ -183,12 +183,12 @@ page_metadata:
     - id: b
       text: 두 PC의 케이블을 같은 물리 스위치에 꽂기만 하면 된다
       feedback: 다시 확인해 보세요. 같은 장비에 연결되어도 VLAN이 다르면 논리적으로 분리됩니다.
-    - id: c
-      text: 두 VLAN 사이의 통신을 맡도록 설정한 라우터나 L3 스위치
-      feedback: 맞아요. 서로 다른 VLAN 사이에는 L3 라우팅이 필요합니다.
     - id: d
       text: 두 PC의 MAC 주소를 같게 바꾼다
       feedback: 다시 확인해 보세요. MAC 주소를 같게 만들면 안 됩니다.
+    - id: c
+      text: 두 VLAN 사이의 통신을 맡도록 설정한 라우터나 L3 스위치
+      feedback: 맞아요. 서로 다른 VLAN 사이에는 L3 라우팅이 필요합니다.
     - id: e
       text: 스위치에 전원을 껐다 켠다
       feedback: 다시 확인해 보세요. 전원 재시작으로 VLAN 경계가 바뀌지는 않습니다.
@@ -333,15 +333,15 @@ page_metadata:
     - id: a
       text: 목적지 주소가 3번 포트
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
-    - id: b
-      text: VLAN 10의 출발지 MAC이 3번 포트에서 보임
-      feedback: 맞아요. VLAN 10의 출발지 MAC이 3번 포트에서 보임.
     - id: c
       text: 모든 VLAN의 주소가 3번 포트
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: d
       text: 3번 포트의 IP 주소
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: b
+      text: VLAN 10의 출발지 MAC이 3번 포트에서 보임
+      feedback: 맞아요. VLAN 10의 출발지 MAC이 3번 포트에서 보임.
     - id: e
       text: 스위치의 속도
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
@@ -762,9 +762,6 @@ page_metadata:
     difficulty: medium
     prompt: Uplink와 Link up의 차이를 가장 정확히 설명한 것은 무엇인가요?
     choices:
-    - id: a
-      text: Uplink는 연결의 역할이고 Link up은 연결이 성립한 상태다
-      feedback: 맞아요. Uplink는 연결의 역할이고 Link up은 연결이 성립한 상태다.
     - id: b
       text: 둘 다 포트 LED의 색상 이름이다
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
@@ -774,6 +771,9 @@ page_metadata:
     - id: d
       text: 두 용어는 항상 서로 바꿔 써도 된다
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: a
+      text: Uplink는 연결의 역할이고 Link up은 연결이 성립한 상태다
+      feedback: 맞아요. Uplink는 연결의 역할이고 Link up은 연결이 성립한 상태다.
     - id: e
       text: Uplink는 단말 포트만 뜻하고 Link up은 광섬유만 뜻한다
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
@@ -906,15 +906,15 @@ page_metadata:
     - id: a
       text: 웹 페이지 내용
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
-    - id: b
-      text: 목적지 MAC 주소와 VLAN별 MAC 주소 테이블
-      feedback: 맞아요. 목적지 MAC 주소와 VLAN별 MAC 주소 테이블.
     - id: c
       text: IP 네트워크 개수만
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
     - id: d
       text: 케이블 색
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: b
+      text: 목적지 MAC 주소와 VLAN별 MAC 주소 테이블
+      feedback: 맞아요. 목적지 MAC 주소와 VLAN별 MAC 주소 테이블.
     - id: e
       text: PC 이름의 가나다순
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
@@ -1011,9 +1011,6 @@ page_metadata:
     difficulty: medium
     prompt: 목적지 MAC을 아직 모를 때와 알게 된 뒤의 동작을 올바르게 비교한 것은 무엇인가요?
     choices:
-    - id: a
-      text: 모르면 같은 VLAN의 다른 포트로 플러딩하고, 알면 해당 포트로 전달한다
-      feedback: 맞아요. 모르면 같은 VLAN의 다른 포트로 플러딩하고, 알면 해당 포트로 전달한다.
     - id: b
       text: 모르면 버리고, 알면 모든 포트로 보낸다
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
@@ -1026,6 +1023,9 @@ page_metadata:
     - id: e
       text: 둘 다 항상 입력 포트로 되돌려 보낸다
       feedback: 다시 생각해 보세요. 페이지에서 설명한 역할을 떠올려 보세요.
+    - id: a
+      text: 모르면 같은 VLAN의 다른 포트로 플러딩하고, 알면 해당 포트로 전달한다
+      feedback: 맞아요. 모르면 같은 VLAN의 다른 포트로 플러딩하고, 알면 해당 포트로 전달한다.
     answer: a
   - id: u3-02-p09-q05
     kind: choice

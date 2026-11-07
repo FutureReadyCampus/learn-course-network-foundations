@@ -502,15 +502,15 @@ page_metadata:
     difficulty: easy
     prompt: "능동 종료 측은 클라이언트와 서버 중 누구로 고정되나요?"
     choices:
+    - id: c
+      text: "고정되지 않는다"
+      feedback: "누가 먼저 FIN을 보냈는지에 따라 능동 종료 측이 정해집니다."
     - id: a
       text: "항상 클라이언트"
       feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
     - id: b
       text: "항상 서버"
       feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
-    - id: c
-      text: "고정되지 않는다"
-      feedback: "누가 먼저 FIN을 보냈는지에 따라 능동 종료 측이 정해집니다."
     - id: d
       text: "항상 라우터"
       feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
@@ -689,15 +689,15 @@ page_metadata:
     difficulty: easy
     prompt: "클라이언트가 마지막 ACK를 보내 서버가 이를 받은 뒤, 양쪽 연결 상태는 어떻게 정리되나요?"
     choices:
+    - id: c
+      text: "서버는 ACK 뒤 CLOSED, 클라이언트는 TIME_WAIT 뒤 CLOSED가 됩니다"
+      feedback: "마지막 ACK를 받은 서버는 종료하고, 클라이언트는 TIME_WAIT 대기 뒤 정리됩니다."
     - id: a
       text: "서버가 TIME_WAIT를 거치고 클라이언트는 바로 CLOSED가 됩니다"
       feedback: "이 흔한 예에서는 먼저 FIN을 보낸 클라이언트 쪽에 TIME_WAIT가 남습니다."
     - id: b
       text: "양쪽 모두 마지막 ACK 직후 바로 CLOSED가 됩니다"
       feedback: "클라이언트는 마지막 ACK를 보낸 뒤에도 TIME_WAIT를 거칩니다."
-    - id: c
-      text: "서버는 ACK 뒤 CLOSED, 클라이언트는 TIME_WAIT 뒤 CLOSED가 됩니다"
-      feedback: "마지막 ACK를 받은 서버는 종료하고, 클라이언트는 TIME_WAIT 대기 뒤 정리됩니다."
     - id: d
       text: "클라이언트는 ESTABLISHED에 남고 서버는 CLOSED가 됩니다"
       feedback: "이 예에서는 클라이언트가 TIME_WAIT를 거친 뒤 CLOSED로 정리됩니다."
@@ -754,15 +754,15 @@ page_metadata:
     - id: a
       text: "항상 클라이언트 쪽"
       feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
-    - id: b
-      text: "서버 쪽"
-      feedback: "누가 먼저 FIN을 보냈는지에 따라 서버도 TIME_WAIT를 거칠 수 있습니다."
     - id: c
       text: "라우터 쪽"
       feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
     - id: d
       text: "DNS 서버 쪽"
       feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
+    - id: b
+      text: "서버 쪽"
+      feedback: "누가 먼저 FIN을 보냈는지에 따라 서버도 TIME_WAIT를 거칠 수 있습니다."
     - id: e
       text: "양쪽 모두 반드시 같은 시간 동안"
       feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
@@ -772,15 +772,15 @@ page_metadata:
     difficulty: easy
     prompt: "전체 종료 흐름을 가장 잘 요약한 것은 무엇인가요?"
     choices:
+    - id: c
+      text: "각자 FIN으로 송신을 끝내고 상대가 ACK로 확인한다"
+      feedback: "각 방향의 송신은 FIN으로 끝을 알리고 상대의 ACK로 확인합니다."
     - id: a
       text: "클라이언트가 서버의 모든 데이터를 삭제한다"
       feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
     - id: b
       text: "서버만 FIN을 보내면 양쪽이 즉시 끝난다"
       feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
-    - id: c
-      text: "각자 FIN으로 송신을 끝내고 상대가 ACK로 확인한다"
-      feedback: "각 방향의 송신은 FIN으로 끝을 알리고 상대의 ACK로 확인합니다."
     - id: d
       text: "먼저 FIN을 보낸 쪽은 기다리지 않는다"
       feedback: "바로 앞 문단의 설명을 다시 확인해 보세요."
