@@ -68,52 +68,7 @@ page_metadata:
 - terms:
   - CERN
   - 참고문헌
-  questions:
-  - id: u9-l02-p02-q01
-    kind: choice
-    difficulty: easy
-    prompt: CERN에서 초기 웹을 제안하게 된 필요는 무엇이었나요?
-    choices:
-    - id: a
-      text: 연구 문서를 서로 분리해 보관하기
-      feedback: 자료를 분리하기보다 문서 사이를 쉽게 이동하려 했습니다.
-    - id: b
-      text: 연구 문서를 서로 연결해 자료를 찾고 공유하기
-      feedback: 맞아요. 논문에서 참고문헌으로 쉽게 이동하려는 필요가 출발점이었습니다.
-    - id: c
-      text: 논문에 참고문헌을 싣지 않게 하기
-      feedback: 참고문헌을 없애는 대신 다른 논문을 쉽게 찾아가려 했습니다.
-    - id: d
-      text: 모든 연구자가 한 문서만 읽게 하기
-      feedback: 다양한 연구 문서를 서로 이어 읽도록 하려 했습니다.
-    - id: e
-      text: 자료 공유를 중단하고 혼자 연구하기
-      feedback: 웹의 출발에는 자료 연결과 공유의 필요가 있었습니다.
-    answer: b
-  - id: u9-l02-p02-q02
-    kind: choice
-    difficulty: medium
-    prompt: 초기 웹의 탄생을 설명하는 문장으로 알맞은 것은 무엇인가요?
-    choices:
-    - id: a
-      text: 한 사람이 다른 사람의 기여 없이 모든 것을 완성했다
-      feedback: 본문은 한 사람이 혼자 모든 것을 만든 이야기로 보지 않습니다.
-    - id: b
-      text: 연구 자료를 공유하려는 필요와는 관계없었다
-      feedback: 연구 문서를 연결하고 공유하려는 필요가 중요한 출발점입니다.
-    - id: c
-      text: 제안만 있었고 초기 웹을 구현하는 일은 없었다
-      feedback: 팀 버너스리는 제안과 초기 웹을 만드는 데 핵심 역할을 했습니다.
-    - id: d
-      text: 문서를 서로 연결하지 않으려는 시도에서 시작했다
-      feedback: 다른 문서로 쉽게 이어 가려는 시도에서 시작했습니다.
-    - id: e
-      text: 자료 연결의 필요와 이를 구현·발전시킨 사람들의 일이 함께했다
-      feedback: 맞아요. 팀 버너스리의 핵심 역할과 여러 사람의 기여를 함께 이해해야 합니다.
-    answer: e
-  question_placements:
-  - question_id: u9-l02-p02-q01
-    after_paragraph: 1
+  questions: []
   illustrations:
   - file: assets/animations/l32-daily-reference-note.svg
     title: "참고한 책을 바로 찾고 싶어요"
@@ -321,52 +276,7 @@ page_metadata:
     after_paragraph: 1
 - terms:
   - 튜링상
-  questions:
-  - id: u9-l02-p06-q01
-    kind: choice
-    difficulty: easy
-    prompt: 튜링상은 어떤 일을 인정하는 상인가요?
-    choices:
-    - id: a
-      text: 컴퓨터 과학 분야의 중요한 공헌
-      feedback: 맞아요. 본문은 컴퓨터 과학에 큰 기여를 한 사람에게 주는 상으로 설명합니다.
-    - id: b
-      text: 웹 문서를 가장 많이 읽은 기록
-      feedback: 문서 열람량이 아니라 컴퓨터 과학의 공헌을 인정합니다.
-    - id: c
-      text: 컴퓨터를 가장 많이 보유한 기록
-      feedback: 기기 보유량이 아니라 중요한 기여를 인정합니다.
-    - id: d
-      text: 논문 참고문헌을 가장 많이 모은 기록
-      feedback: 자료 수집량보다 컴퓨터 과학에 미친 공헌이 기준입니다.
-    - id: e
-      text: 인터넷을 가장 오래 이용한 기록
-      feedback: 이용 기간이 아니라 중요한 공헌을 한 점을 인정합니다.
-    answer: a
-  - id: u9-l02-p06-q02
-    kind: choice
-    difficulty: medium
-    prompt: 팀 버너스리의 튜링상 수상을 어떻게 이해하면 좋을까요?
-    choices:
-    - id: a
-      text: 웹은 다른 사람의 도움 없이 혼자 완성한 기술이다
-      feedback: 수상 사실이 기술을 혼자 만들었다는 뜻은 아닙니다.
-    - id: b
-      text: 기술은 아이디어만 있으면 구현 없이 완성된다
-      feedback: 본문은 구현과 오랜 발전도 필요하다고 설명합니다.
-    - id: c
-      text: 웹을 만들고 발전시킨 그의 기여가 크게 인정받았다
-      feedback: 맞아요. 수상은 기여의 중요성을 인정하며 다른 사람의 기여를 부정하지 않습니다.
-    - id: d
-      text: 상을 받은 뒤에야 웹을 만드는 일이 시작되었다
-      feedback: 본문은 웹을 만들고 발전시킨 공로로 상을 받았다고 설명합니다.
-    - id: e
-      text: 상을 받았으므로 이후 기술 발전은 필요 없어졌다
-      feedback: 수상은 공헌을 인정하는 일이며 발전이 끝났다는 뜻이 아닙니다.
-    answer: c
-  question_placements:
-  - question_id: u9-l02-p06-q01
-    after_paragraph: 2
+  questions: []
   illustrations:
   - file: assets/animations/l32-daily-idea-to-award.svg
     title: "아이디어에서 상까지"
@@ -381,52 +291,7 @@ page_metadata:
 - terms:
   - 전길남
   - 인터넷 명예의 전당
-  questions:
-  - id: u9-l02-p07-q01
-    kind: choice
-    difficulty: easy
-    prompt: 전길남 박사는 이 페이지에서 어떤 기여를 한 연구자로 소개되나요?
-    choices:
-    - id: a
-      text: CERN에서 초기 웹 문서 서비스를 제안
-      feedback: CERN의 초기 웹 제안은 팀 버너스리의 역할로 소개됩니다.
-    - id: b
-      text: 대한민국 초기 컴퓨터 네트워크 연구와 연결 구축
-      feedback: 맞아요. 전길남의 기여는 국내 인터넷 연결 기반을 마련하는 맥락입니다.
-    - id: c
-      text: 웹과 인터넷을 같은 말로 통일
-      feedback: 본문은 웹 서비스와 인터넷 연결 기반을 구분합니다.
-    - id: d
-      text: 한국의 네트워크 연결 연구를 중단
-      feedback: 연결 연구와 구축에 기여했다고 설명합니다.
-    - id: e
-      text: 연결 기반 없이 웹을 사용하도록 개발
-      feedback: 인터넷을 쓰려면 연결 연구와 통신 기반이 필요합니다.
-    answer: b
-  - id: u9-l02-p07-q02
-    kind: choice
-    difficulty: medium
-    prompt: 팀 버너스리와 전길남의 기여를 비교하는 설명은 무엇인가요?
-    choices:
-    - id: a
-      text: 둘 다 같은 장소에서 같은 웹 제안만 했다
-      feedback: 각각 웹과 국내 인터넷 기반이라는 다른 맥락에서 기여했습니다.
-    - id: b
-      text: 둘 다 인터넷과 무관한 분야에서만 활동했다
-      feedback: 본문은 웹 발전과 인터넷 연결 구축의 기여를 소개합니다.
-    - id: c
-      text: 전길남은 CERN의 웹, 팀 버너스리는 국내 연결을 맡았다
-      feedback: 본문에서 소개한 두 사람의 역할이 뒤바뀌었습니다.
-    - id: d
-      text: 같은 명예의 전당에 올랐으므로 기여도 똑같다
-      feedback: 함께 언급된다고 구체적인 역할과 기여가 같아지는 것은 아닙니다.
-    - id: e
-      text: 웹의 문서 서비스 발전과 국내 인터넷 연결 구축이라는 다른 기여다
-      feedback: 맞아요. 관련된 역사라도 서비스와 연결 기반의 역할을 구분해야 합니다.
-    answer: e
-  question_placements:
-  - question_id: u9-l02-p07-q01
-    after_paragraph: 1
+  questions: []
   illustrations:
   - file: assets/animations/l32-daily-road-vs-library.svg
     title: "길을 놓은 사람, 도서관을 만든 사람"
@@ -471,27 +336,29 @@ page_metadata:
   - id: u9-l02-p08-q02
     kind: choice
     difficulty: medium
-    prompt: 1982년 서울대와 구미 연구소의 연결을 설명한 것으로 알맞은 것은 무엇인가요?
+    prompt: 전용 라우터 장비가 없더라도 다른 네트워크로 데이터를 전달할 수 있었던 이유는 무엇인가요?
     choices:
     - id: a
-      text: 라우터 기능을 소프트웨어로 구현한 초기 연구망 구축 사례다
-      feedback: 맞아요. 장비를 구하기 어려워 기능을 직접 구현했으며 대중 서비스 확산과는 구분합니다.
+      text: DNS가 라우터 대신 패킷의 경로를 모두 결정하기 때문입니다
+      feedback: DNS는 이름을 IP 주소로 찾는 데 쓰이며, 라우터의 전달 기능을 대신하지 않습니다.
     - id: b
-      text: 누구나 이용하는 대중 웹 서비스가 완성된 사건이다
-      feedback: 초기 연구망 연결은 대중 인터넷 서비스 확산과 같은 사건이 아닙니다.
+      text: 스위치가 항상 서로 다른 네트워크 사이의 경로를 고르기 때문입니다
+      feedback: 스위치는 주로 같은 네트워크 안에서 장치를 연결하며, 서로 다른 네트워크 사이의 전달은 라우팅 기능과 관련됩니다.
     - id: c
-      text: 라우터 기능이 없어도 연결 장비와 규칙은 필요 없었다
-      feedback: 연결에는 장비와 규칙이 필요했고 라우터 기능도 구현했습니다.
+      text: 데이터가 네트워크를 지날 때 경로 선택이 필요하지 않기 때문입니다
+      feedback: 다른 네트워크로 데이터를 보내려면 목적지에 맞는 경로를 선택해야 합니다.
     - id: d
-      text: 라우터를 구하기 어려워 두 기관의 연결을 포기했다
-      feedback: 필요한 기능을 소프트웨어로 구현해 연결했습니다.
+      text: IP 주소가 없어도 라우터가 목적지를 자동으로 알기 때문입니다
+      feedback: 라우터는 목적지 정보를 확인해 전달할 방향을 판단합니다.
     - id: e
-      text: 연구망을 만들었다는 것은 모든 국민이 웹을 썼다는 뜻이다
-      feedback: 연구 기반 구축과 누구나 쓰는 서비스 확산을 구분해야 합니다.
-    answer: a
+      text: 라우터의 경로 선택과 전달 기능을 소프트웨어로 구현할 수 있기 때문입니다
+      feedback: 맞아요. 라우터는 전용 장비로만 가능한 것이 아니라, 필요한 경로 선택과 전달 기능을 소프트웨어로 구현할 수도 있습니다.
+    answer: e
   question_placements:
   - question_id: u9-l02-p08-q01
     after_paragraph: 1
+  - question_id: u9-l02-p08-q02
+    after_paragraph: 2
   illustrations:
   - file: assets/animations/l32-daily-handmade-sign.svg
     title: "안내판을 직접 만들어 길을 이어요"
