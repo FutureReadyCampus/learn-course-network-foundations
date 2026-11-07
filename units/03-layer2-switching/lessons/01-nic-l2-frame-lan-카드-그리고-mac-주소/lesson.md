@@ -333,50 +333,138 @@ page_metadata:
     caption: "LAN·MAN·WAN은 네트워크가 어느 정도 범위에 걸쳐 있는지를 나타내는 이름입니다. 범위가 넓다고 더 빠르거나 품질이 좋은 것은 아닙니다."
 - terms:
   - OSI 7계층 (OSI 7 layers)
-  inline_questions_after: 1
+  animations:
+  - file: l08-osi-layer-stack.svg
+    title: 일곱 층으로 나눠 보는 통신
+    alt: 위에서 아래로 7 응용, 6 표현, 5 세션, 4 전송, 3 네트워크, 2 데이터 링크, 1 물리 계층이 쌓여 있습니다. 아래를 가리키는 화살표와 함께 계층이 차례로 강조됩니다.
+    caption: 계층 이름과 순서를 그림으로 다시 확인한 뒤 아래 퀴즈를 풀어 보세요.
   questions:
   - id: u3-01-osi-q01
     kind: choice
     difficulty: easy
-    prompt: OSI 7계층을 위에서 아래로 바르게 나열한 것은 무엇인가요?
+    prompt: 목적지 IP 주소를 바탕으로 데이터가 어느 네트워크와 경로를 거쳐 갈지 찾습니다. 이 역할을 하는 계층은 무엇인가요?
     choices:
     - id: a
-      text: 응용 → 표현 → 세션 → 전송 → 네트워크 → 데이터 링크 → 물리
-      feedback: 맞아요. 이 순서를 먼저 익히고, 각 층의 자세한 동작은 뒤에서 배웁니다.
+      text: 전송 계층
+      feedback: 전송 계층은 두 끝의 프로그램 사이에서 데이터를 전달합니다. 목적지 네트워크로 갈 경로를 찾는 역할은 네트워크 계층입니다.
     - id: b
-      text: 물리 → 데이터 링크 → 네트워크 → 전송 → 세션 → 표현 → 응용
-      feedback: 이 순서는 아래에서 위로 읽은 것입니다. 문제는 위에서 아래 순서를 물었습니다.
+      text: 표현 계층
+      feedback: 표현 계층은 데이터 표현 형식을 맞추거나 바꾸고 보호하는 역할입니다.
     - id: c
-      text: 응용 → 세션 → 표현 → 네트워크 → 전송 → 물리 → 데이터 링크
-      feedback: 두 번째와 세 번째, 네 번째와 다섯 번째의 순서를 다시 확인해 보세요.
+      text: 네트워크 계층
+      feedback: 맞아요. 네트워크 계층은 IP 주소를 바탕으로 목적지 쪽 경로를 찾습니다.
     - id: d
-      text: 응용 → 전송 → 표현 → 세션 → 데이터 링크 → 네트워크 → 물리
-      feedback: 전송 계층 아래에는 네트워크 계층이 옵니다. 표의 위에서 아래로 읽어 보세요.
-    - id: e
-      text: 세션 → 응용 → 표현 → 전송 → 네트워크 → 데이터 링크 → 물리
-      feedback: 가장 위에는 응용 계층이 옵니다. 표의 위에서 아래로 읽어 보세요.
-    answer: a
+      text: 물리 계층
+      feedback: 물리 계층은 비트를 전기·빛·무선 신호로 실어 보냅니다.
+    answer: c
   - id: u3-01-osi-q02
     kind: choice
-    difficulty: easy
-    prompt: 바로 이어진 네트워크 구간에서 프레임을 전달하는 계층은 무엇인가요?
+    difficulty: medium
+    prompt: 비트를 케이블의 전기 신호, 광섬유의 빛, 무선 신호로 바꾸어 전달합니다. 이 역할을 하는 계층은 무엇인가요?
+    choices:
+    - id: a
+      text: 데이터 링크 계층
+      feedback: 데이터 링크 계층은 바로 이어진 구간에서 프레임을 전달합니다.
+    - id: b
+      text: 응용 계층
+      feedback: 응용 계층은 프로그램이 네트워크로 이용하는 기능을 다룹니다.
+    - id: c
+      text: 네트워크 계층
+      feedback: 네트워크 계층은 목적지까지 갈 경로를 찾습니다.
+    - id: d
+      text: 물리 계층
+      feedback: 맞아요. 물리 계층은 비트를 전기·빛·무선 신호로 실어 매체를 통해 전달합니다.
+    answer: d
+  - id: u3-01-osi-q03
+    kind: choice
+    difficulty: medium
+    prompt: 통신을 시작하고 이어 가며 마칠 수 있도록 두 프로그램 사이의 대화 상태를 다룹니다. 이 역할을 하는 계층은 무엇인가요?
+    choices:
+    - id: a
+      text: 세션 계층
+      feedback: 맞아요. 세션 계층은 통신 대화를 시작하고 이어 가고 마치는 역할을 맡습니다.
+    - id: b
+      text: 표현 계층
+      feedback: 표현 계층은 데이터 표현 형식을 맞추고 필요하면 변환하거나 보호합니다.
+    - id: c
+      text: 전송 계층
+      feedback: 전송 계층은 끝에 있는 프로그램 사이로 데이터를 전달합니다.
+    - id: d
+      text: 데이터 링크 계층
+      feedback: 데이터 링크 계층은 바로 이어진 네트워크 구간에서 프레임을 전달합니다.
+    answer: a
+  - id: u3-01-osi-q04
+    kind: choice
+    difficulty: medium
+    prompt: 같은 네트워크 구간에서 바로 이웃한 장치 사이로 프레임을 전달합니다. 이 역할을 하는 계층은 무엇인가요?
     choices:
     - id: a
       text: 네트워크 계층
-      feedback: 네트워크 계층은 목적지까지 갈 경로를 찾습니다. 바로 이웃 구간의 프레임 전달은 데이터 링크 계층의 일입니다.
+      feedback: 네트워크 계층은 목적지까지 갈 경로를 찾습니다.
     - id: b
       text: 데이터 링크 계층
-      feedback: 맞아요. 데이터 링크 계층은 바로 이어진 구간에서 프레임을 전달합니다.
+      feedback: 맞아요. 데이터 링크 계층은 한 구간에서 이웃한 장치 사이로 프레임을 전달합니다.
     - id: c
+      text: 물리 계층
+      feedback: 물리 계층은 프레임의 비트를 신호로 실어 매체를 통해 보냅니다.
+    - id: d
       text: 전송 계층
       feedback: 전송 계층은 두 끝의 프로그램 사이에서 데이터를 전달합니다.
+    answer: b
+  - id: u3-01-osi-q05
+    kind: choice
+    difficulty: medium
+    prompt: 웹 요청이나 이름 조회처럼 프로그램이 네트워크를 이용해 제공하거나 사용하는 기능을 다룹니다. 이 역할을 하는 계층은 무엇인가요?
+    choices:
+    - id: a
+      text: 세션 계층
+      feedback: 세션 계층은 프로그램 사이의 통신 대화를 시작하고 이어 가고 마칩니다.
+    - id: b
+      text: 물리 계층
+      feedback: 물리 계층은 비트를 전기·빛·무선 신호로 실어 보냅니다.
+    - id: c
+      text: 표현 계층
+      feedback: 표현 계층은 데이터가 표현되는 형식과 변환을 다룹니다.
     - id: d
       text: 응용 계층
-      feedback: 응용 계층은 네트워크를 쓰는 프로그램이 제공할 일을 정합니다.
-    - id: e
+      feedback: 맞아요. 응용 계층은 프로그램이 네트워크로 이용하는 기능과 규칙을 다룹니다.
+    answer: d
+  - id: u3-01-osi-q06
+    kind: choice
+    difficulty: medium
+    prompt: 출발지와 목적지의 프로그램 끝점 사이에서 데이터를 전달합니다. 이 역할을 하는 계층은 무엇인가요?
+    choices:
+    - id: a
+      text: 전송 계층
+      feedback: 맞아요. 전송 계층은 통신하는 두 끝의 프로그램 사이로 데이터를 전달합니다.
+    - id: b
+      text: 네트워크 계층
+      feedback: 네트워크 계층은 IP 주소를 바탕으로 목적지 네트워크와 경로를 찾습니다.
+    - id: c
+      text: 응용 계층
+      feedback: 응용 계층은 프로그램이 네트워크를 이용해 제공하거나 사용하는 기능을 다룹니다.
+    - id: d
+      text: 데이터 링크 계층
+      feedback: 데이터 링크 계층은 바로 이웃한 장치 사이의 한 구간에서 프레임을 전달합니다.
+    answer: a
+  - id: u3-01-osi-q07
+    kind: choice
+    difficulty: medium
+    prompt: 데이터를 서로 다른 형식으로 표현하는 방식을 맞추고, 필요한 경우 형식을 변환하거나 암호화·압축합니다. 이 역할을 하는 계층은 무엇인가요?
+    choices:
+    - id: a
+      text: 데이터 링크 계층
+      feedback: 데이터 링크 계층은 같은 구간에서 프레임을 전달합니다.
+    - id: b
+      text: 네트워크 계층
+      feedback: 네트워크 계층은 목적지까지 갈 경로를 찾습니다.
+    - id: c
       text: 표현 계층
-      feedback: 표현 계층은 데이터의 표현 형식을 맞추고 필요하면 바꾸거나 보호합니다.
-    answer: b
+      feedback: 맞아요. 표현 계층은 데이터의 표현 형식과 필요한 변환을 다룹니다.
+    - id: d
+      text: 세션 계층
+      feedback: 세션 계층은 통신 대화를 시작하고 이어 가고 마칩니다.
+    answer: c
 - terms:
   - MAC 주소 (Media Access Control address)
   - 식별자 (identifier)
