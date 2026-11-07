@@ -1,4 +1,3 @@
-# 용어 파일 (설계 #76). 필드 설명은 README.md.
 - id: host
   tier: hero
   category: 등장인물
@@ -618,7 +617,7 @@
   - Cookie
   hover: 서버가 브라우저에 저장하게 하고, 브라우저가 다음 요청에 함께 보내는 작은 데이터예요.
   anchor:
-    lesson: u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론
+    lesson: u10-l02-login-and-session-state
     page: cookie-session
 - id: was
   tier: hero
@@ -632,7 +631,7 @@
   - Web Application Server
   hover: 요청을 받아 프로그램으로 처리하고 웹 응답을 만드는 서버예요. 정적 파일을 전달하는 웹 서버와 역할을 나눌 수 있어요.
   anchor:
-    lesson: u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론
+    lesson: u10-l03-web-application-architecture
     page: was-role
 - id: db
   tier: hero
@@ -646,7 +645,7 @@
   - Database
   hover: 데이터를 저장하고 요청에 따라 찾아 주는 시스템이에요.
   anchor:
-    lesson: u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론
+    lesson: u10-l03-web-application-architecture
     page: db-role
 - id: process
   tier: family
@@ -998,9 +997,9 @@
   - 세션
   hover: 웹 앱이 여러 요청에 걸쳐 로그인 같은 상태를 이어 관리하는 문맥이에요. TCP 세션과는 다른 뜻이에요.
   only_in:
-  - u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론
+  - u10-l02-login-and-session-state
   anchor:
-    lesson: u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론
+    lesson: u10-l02-login-and-session-state
     page: cookie-session
 - id: https
   tier: family
@@ -1012,7 +1011,7 @@
   - Hypertext Transfer Protocol Secure
   hover: HTTP 요청과 응답을 TLS로 보호해 주고받는 방식이에요. 웹사이트의 모든 안전을 보증하는 뜻은 아니에요.
   anchor:
-    lesson: u6-l36-was와-restful-api-그리고-jvm
+    lesson: u10-l04-api-and-web-security
     page: https-section
 - id: endpoint
   tier: family
@@ -1073,7 +1072,7 @@
   - Stateless
   hover: HTTP가 각 요청을 이전 요청의 상태를 자동으로 기억하지 않고 처리하는 성질이에요. 앱은 쿠키나 세션 등으로 상태를 이어갈 수 있어요.
   anchor:
-    lesson: u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론
+    lesson: u10-l02-login-and-session-state
     page: http-stateless
 - id: icmp
   tier: family
