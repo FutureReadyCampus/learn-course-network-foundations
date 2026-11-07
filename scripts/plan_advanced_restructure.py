@@ -36,9 +36,9 @@ def make_plan(snapshot, contract, catalog, legacy_units, source_root=ROOT):
     require(len(set(ids.values())) == 20, "Duplicate target Lesson ID")
     require(all(isinstance(value, str) and 0 < len(value) <= 100 for value in ids.values()),
             "Lesson IDs must fit the current API")
-    require(contract["resource_ids"] == [item["target_key"] for item in snapshot["resources"]],
-            "Resource IDs differ")
-    require(not set(ids.values()) & set(contract["resource_ids"]), "Resource is a Lesson")
+    excluded_sources = set(contract.get("excluded_source_keys", []))
+    require(excluded_sources == {item["source"] for item in snapshot["resources"]},
+            "Excluded source list differs")
     source_lessons = {item["id"]: item for item in catalog["lessons"]}
     source_pages, sources = {}, {}
     assigned = []
@@ -66,17 +66,21 @@ def make_plan(snapshot, contract, catalog, legacy_units, source_root=ROOT):
                 "source_wiki": source["source_wiki"], "payload": copy.deepcopy(page),
                 "role": old["destination"]["role"],
             }
-            if old["destination"]["kind"] == "resource":
-                assigned.append(old["audit_page_key"])
+    excluded_pages = {page["audit_page_key"] for source in snapshot["sources"]
+                      if source["source_key"] in excluded_sources for page in source["pages"]}
+    assigned.extend(excluded_pages)
     require(len(assigned) == len(set(assigned)) == len(source_pages) == 203,
-            "Pages must be assigned once, including resources")
+            "Every source Page must be assigned once or explicitly excluded")
     require(set(assigned) == set(source_pages), "Unknown or missing source Page")
-    require(len({p["page_id"] for p in source_pages.values()}) == 203, "Duplicate Page ID")
+    technical_pages = set(source_pages) - excluded_pages
+    require(len(technical_pages) == 194, "Technical Page total changed")
+    require(len({source_pages[key]["page_id"] for key in technical_pages}) == 194,
+            "Duplicate technical Page ID")
     for path, expected in snapshot["source_asset_sha256"].items():
         require(hashlib.sha256((source_root / path).read_bytes()).hexdigest() == expected,
                 f"Asset changed: {path}")
 
-    lessons, resources, destinations = [], [], {}
+    lessons, destinations = [], {}
     source_uses = {}
     for key, target in targets.items():
         for audit_key in target["source_pages"]:
@@ -106,28 +110,16 @@ def make_plan(snapshot, contract, catalog, legacy_units, source_root=ROOT):
                 "path": f"/m2-network/v3/unit/{target['unit_number']}/lesson/{lesson_number}/page/{number}",
             }
         lessons.append(lesson)
-    for resource in snapshot["resources"]:
-        source = next(s for s in snapshot["sources"] if s["source_key"] == resource["source"])
-        item = {"id": resource["target_key"], "kind": "guide" if resource["source"] == "U11L1" else "materials",
-                "title": resource["title"], "required": False, "source_lesson_id": source["lesson_id"],
-                "source_wiki": source["source_wiki"], "links": resource.get("links", []), "pages": []}
-        for old in source["pages"]:
-            page = source_pages[old["audit_page_key"]]
-            require(not page["payload"]["questions"], "Resource cannot contain required questions")
-            item["pages"].append({**page["payload"], "id": page["page_id"],
-                                  "source_content_sha256": page["content_sha256"]})
-            destinations[(source["lesson_id"], old["source_page"])] = {
-                "kind": "resource", "id": item["id"], "page_id": page["page_id"],
-                "page": old["source_page"],
-                "path": f"/m2-network/resources/{item['id']}/page/{old['source_page']}",
-            }
-        resources.append(item)
 
     # Freeze all old positions, including basic Units; never feed old numbers into v3.
     aliases = []
+    excluded_lesson_ids = {source["lesson_id"] for source in snapshot["sources"]
+                           if source["source_key"] in excluded_sources}
     for unit_number, unit in enumerate(catalog["units"], 1):
         siblings = [l for l in catalog["lessons"] if l["unit"] == unit["id"]]
         for lesson_number, lesson in enumerate(siblings, 1):
+            if lesson["id"] in excluded_lesson_ids:
+                continue
             for number in range(1, len(lesson["pages"]) + 1):
                 destination = destinations.get((lesson["id"], number)) or {
                     "kind": "lesson", "id": lesson["id"], "page": number,
@@ -143,29 +135,37 @@ def make_plan(snapshot, contract, catalog, legacy_units, source_root=ROOT):
         for lesson_number, lesson_id in enumerate(group, 1):
             require(lesson_id in source_lessons, f"Unknown legacy Lesson: {lesson_id}")
             for number in range(1, len(source_lessons[lesson_id]["pages"]) + 1):
-                canonical = next(a for a in aliases if a["namespace"] == "learn-v2"
-                                 and a["source_lesson_id"] == lesson_id and a["source_page"] == number)
+                canonical = next((a for a in aliases if a["namespace"] == "learn-v2"
+                                  and a["source_lesson_id"] == lesson_id and a["source_page"] == number), None)
+                if canonical is None:
+                    continue
                 aliases.append({**canonical, "namespace": "learn-unversioned",
                                 "path": f"/m2-network/unit/{unit_number}/lesson/{lesson_number}/page/{number}"})
     require(len({(a['namespace'], a['path']) for a in aliases}) == len(aliases), "Ambiguous alias")
     current_v2 = {a["path"]: (a["source_lesson_id"], a["source_page"])
                   for a in aliases if a["namespace"] == "learn-v2"}
     for source in snapshot["sources"]:
+        if source["source_key"] in excluded_sources:
+            continue
         for page in source["pages"]:
             require(current_v2.get(page["learn_v2_path"]) == (source["lesson_id"], page["source_page"]),
                     "Source positions changed before preflight")
     require(sum(len(l["pages"]) for l in lessons) == 194, "Technical Page total changed")
+    require(not any(alias["source_lesson_id"] in {s["lesson_id"] for s in snapshot["sources"]
+                                                  if s["source_key"] in excluded_sources}
+                    for alias in aliases), "Excluded source received a route alias")
     return {"schema": "advanced-restructure-preflight-v1", "mode": "read-only",
             "runtime_ready": False, "source_catalog_version": catalog["version"],
             "snapshot_sha256": digest(snapshot), "contract_sha256": digest(contract),
-            "lessons": lessons, "resources": resources, "aliases": aliases,
+            "lessons": lessons, "excluded_source_lessons": [s["lesson_id"] for s in snapshot["sources"]
+                if s["source_key"] in excluded_sources], "aliases": aliases,
             "counts": {"target_lessons": len(lessons), "technical_pages": 194,
-                       "resource_pages": sum(len(r["pages"]) for r in resources),
+                       "excluded_pages": len(excluded_pages),
                        "source_assets": len(snapshot["source_asset_sha256"]),
                        "source_catalog_pages": sum(len(l["pages"]) for l in catalog["lessons"]),
                        "aliases_by_namespace": {namespace: sum(a["namespace"] == namespace for a in aliases)
                                                 for namespace in ("content-stage-14", "learn-v2", "learn-unversioned")},
-                       "aliases": len(aliases)}}
+            "aliases": len(aliases)}}
 
 
 def completion_preflight(plan, rows, published_source_ids, reviewed_versions):

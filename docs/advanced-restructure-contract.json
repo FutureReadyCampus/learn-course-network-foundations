@@ -86,9 +86,9 @@
       "lesson_id": "advanced-intrusion-and-logs"
     }
   ],
-  "resource_ids": [
-    "advanced-guide",
-    "advanced-materials"
+  "excluded_source_keys": [
+    "U11L1",
+    "U11L4"
   ],
   "learn_legacy_units": [
     [

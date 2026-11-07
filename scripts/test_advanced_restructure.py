@@ -21,10 +21,53 @@ class AdvancedRestructureTest(unittest.TestCase):
         cls.contract = json.loads((ROOT / "docs/advanced-restructure-contract.json").read_text())
         cls.snapshot = json.loads((ROOT / "docs/advanced-restructure-snapshot.json").read_text())
         sha = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
-        cls.catalog = build_course.build(sha, "synthetic preflight")
+        current = build_course.build(sha, "synthetic preflight")
+        cls.applied_catalog = current
+        cls.catalog = cls.source_catalog(current)
         cls.version = cls.catalog["version"]
         cls.plan = cls.create_plan()
         cls.by_key = {l["target_key"]: l for l in cls.plan["lessons"]}
+
+    @classmethod
+    def source_catalog(cls, current):
+        """Rebuild the audited 14-Unit source edition from preserved originals."""
+        if len(current["units"]) == 14:
+            return current
+        basics = [unit for unit in current["units"] if unit["id"] not in {
+            "network-devices", "router-and-nat", "load-balancing", "vpn-and-security",
+            "network-security-solutions",
+        }]
+        basic_ids = {unit["id"] for unit in basics}
+        lessons = [lesson for lesson in current["lessons"] if lesson["unit"] in basic_ids]
+        course_meta = __import__("yaml").safe_load((ROOT / "course.yaml").read_text(encoding="utf-8"))
+        advanced_unit_ids = {11: "network-devices", 12: "router-and-nat",
+                             13: "load-balancing", 14: "vpn-and-security"}
+        for source in cls.snapshot["sources"]:
+            match = __import__("re").fullmatch(r"U(\d+)L(\d+)", source["source_key"])
+            if not match:
+                raise AssertionError(f"Unexpected source key: {source['source_key']}")
+            unit_number = int(match.group(1))
+            if unit_number not in advanced_unit_ids:
+                continue
+            path = ROOT / source["path"]
+            metadata, _ = build_course.read_front_matter(path)
+            lessons.append({"id": metadata["id"], "unit": advanced_unit_ids[unit_number],
+                            "title": metadata["title"], "pages": build_course.reading_pages(
+                                path, metadata, course_meta.get("animation_assets", {}))})
+        lessons.sort(key=lambda lesson: (
+            next((i for i, unit in enumerate(basics + [
+                {"id": advanced_unit_ids[n]} for n in range(11, 15)
+            ]) if unit["id"] == lesson["unit"]), 99),
+            int(next((s["source_key"].split("L")[1] for s in cls.snapshot["sources"]
+                      if s["lesson_id"] == lesson["id"]), "0"))
+            if lesson["unit"] in advanced_unit_ids.values() else 0,
+        ))
+        units = basics + [{"id": "network-devices", "title": "심화 네트워크 장치의 구조"},
+                          {"id": "router-and-nat", "title": "심화 인터넷 공유기 작동원리"},
+                          {"id": "load-balancing", "title": "심화 부하분산 시스템 작동원리"},
+                          {"id": "vpn-and-security", "title": "심화 VPN과 네트워크 보안 솔루션"}]
+        return {"version": f"network-{cls.snapshot['content_source_sha']}",
+                "units": units, "lessons": lessons}
 
     @classmethod
     def create_plan(cls, contract=None, catalog=None):
@@ -43,19 +86,40 @@ class AdvancedRestructureTest(unittest.TestCase):
         self.assertEqual([6, 9, 10, 20, 5, 9, 11, 24, 8, 8, 7, 4, 11, 9, 13, 20, 5, 4, 4, 7],
                          [len(l["pages"]) for l in self.plan["lessons"]])
         self.assertEqual(self.plan["counts"]["technical_pages"], 194)
+        self.assertEqual(self.plan["counts"]["excluded_pages"], 9)
         self.assertEqual(self.plan["counts"]["source_assets"], 22)
         self.assertEqual(self.plan["counts"]["source_catalog_pages"], 462)
         self.assertEqual(self.plan["counts"]["aliases_by_namespace"], {
-            "content-stage-14": 462, "learn-v2": 462, "learn-unversioned": 456})
+            "content-stage-14": 453, "learn-v2": 453, "learn-unversioned": 447})
         self.assertFalse(self.plan["runtime_ready"])
 
-    def test_resources_are_separate_and_not_required(self):
-        resources = self.plan["resources"]
-        self.assertEqual([8, 1], [len(r["pages"]) for r in resources])
-        self.assertFalse(any(r["required"] for r in resources))
-        self.assertFalse({r["id"] for r in resources} & {l["id"] for l in self.plan["lessons"]})
-        self.assertEqual(len(resources[1]["links"]), 2)
-        self.assertEqual(resources[1]["links"], self.snapshot["resources"][1]["links"])
+    def test_applied_course_has_fifteen_units_and_twenty_advanced_lessons(self):
+        unit_ids = [unit["id"] for unit in self.applied_catalog["units"]]
+        self.assertEqual(len(unit_ids), 15)
+        self.assertEqual(unit_ids[10:], ["network-devices", "router-and-nat", "load-balancing",
+                                         "vpn-and-security", "network-security-solutions"])
+        advanced_ids = [lesson["id"] for lesson in self.applied_catalog["lessons"]
+                        if lesson["unit"] in set(unit_ids[10:])]
+        self.assertEqual(advanced_ids, [item["id"] for item in self.plan["lessons"]])
+        self.assertEqual(sum(len(lesson["pages"]) for lesson in self.applied_catalog["lessons"]
+                             if lesson["unit"] in set(unit_ids[10:])), 194)
+        self.assertEqual(len(self.applied_catalog["route_aliases"]), 1353)
+        self.assertEqual(self.applied_catalog["advanced_completion_migration"], {
+            "schema": "network-advanced-completion-v1",
+            "from_version": "network-b01c8869a5d35f0cf79d827a49d32d4ce51d99ed",
+            "target_unit_ids": ["network-devices", "router-and-nat", "load-balancing",
+                                "vpn-and-security", "network-security-solutions"],
+            "aliases_sha256": "c6eb0ea44764cc45335415cb1e240d0667f4cf387ec496d5e703b77d412c9927",
+        })
+
+    def test_guide_and_print_material_are_excluded_from_the_new_course(self):
+        excluded = set(self.plan["excluded_source_lessons"])
+        self.assertEqual(excluded, {
+            "u7-advanced-01-강의소개-및-교육목표",
+            "u7-advanced-04-강의자료-인쇄용",
+        })
+        self.assertFalse(any(alias["source_lesson_id"] in excluded for alias in self.plan["aliases"]))
+        self.assertTrue(all(lesson["id"] not in excluded for lesson in self.plan["lessons"]))
 
     def test_unchanged_ids_survive_and_composite_ids_are_new(self):
         old_ids = {s["lesson_id"] for s in self.snapshot["sources"]}
@@ -83,17 +147,20 @@ class AdvancedRestructureTest(unittest.TestCase):
                 f"/m2-network/v2/unit/13/lesson/1/page/{page}")
             self.assertEqual(mapped["id"], "advanced-service-redundancy")
 
-    def test_guide_and_material_bookmarks_reach_resources(self):
-        for lesson, page, resource in [(1, 8, "advanced-guide"), (4, 1, "advanced-materials")]:
+    def test_guide_and_print_material_bookmarks_are_not_redirected_into_learning_pages(self):
+        for lesson, page in [(1, 8), (4, 1)]:
             mapped = resolve_saved_location(self.plan, "learn-v2",
                 f"/m2-network/v2/unit/11/lesson/{lesson}/page/{page}")
-            self.assertEqual((mapped["kind"], mapped["id"], mapped["page"]), ("resource", resource, page))
+            self.assertIsNone(mapped)
 
     def test_stage_and_learn_unversioned_are_different_namespaces(self):
         path = "/m2-network/unit/7/lesson/1/page/1"
         stage = resolve_saved_location(self.plan, "content-stage-14", path)
         learn = resolve_saved_location(self.plan, "learn-unversioned", path)
-        self.assertNotEqual(stage["id"], learn["id"])
+        # This legacy slot belonged to the removed introduction; don't silently
+        # point it at the unrelated Lesson occupying the same numeric slot now.
+        self.assertIsNotNone(stage)
+        self.assertIsNone(learn)
         self.assertIsNone(resolve_saved_location(self.plan, "unknown", path))
         self.assertIsNone(resolve_saved_location(self.plan, "learn-v2",
                             "/m2-network/v2/unit/11/lesson/7/page/999"))

@@ -645,6 +645,8 @@ def build(source_revision: str = "local-draft", source_label: str = "local draft
                 "id": lesson_meta["id"],
                 "unit": unit_config["id"],
                 "title": lesson_meta["title"],
+                **({"source_lesson_ids": lesson_meta["source_lesson_ids"]}
+                   if lesson_meta.get("source_lesson_ids") else {}),
                 "terms": [],
                 "pages": reading_pages(ROOT / lesson_path, lesson_meta, course_meta.get("animation_assets", {})),
                 "source": "oeweo-network-wiki",
@@ -681,6 +683,21 @@ def build(source_revision: str = "local-draft", source_label: str = "local draft
             "url": f"https://github.com/FutureReadyCampus/learn-course-network-foundations/commit/{source_revision}",
         },
     }
+    route_aliases = course_meta.get("route_aliases")
+    if course_meta.get("route_aliases_file"):
+        alias_path = (ROOT / course_meta["route_aliases_file"]).resolve()
+        if not alias_path.is_relative_to(ROOT.resolve()):
+            raise ValueError("route_aliases_file must stay inside the repository")
+        route_aliases = json.loads(alias_path.read_text(encoding="utf-8"))
+    if route_aliases is not None:
+        if not isinstance(route_aliases, list):
+            raise ValueError("route_aliases must be a list")
+        catalog["route_aliases"] = route_aliases
+    completion_migration = course_meta.get("advanced_completion_migration")
+    if completion_migration is not None:
+        if not isinstance(completion_migration, dict):
+            raise ValueError("advanced_completion_migration must be a mapping")
+        catalog["advanced_completion_migration"] = completion_migration
     if built:
         catalog["glossary"] = built[0]
     return catalog
