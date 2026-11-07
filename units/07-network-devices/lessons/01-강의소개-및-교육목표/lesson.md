@@ -2,6 +2,63 @@
 id: "u7-advanced-01-강의소개-및-교육목표"
 title: "내 서비스가 커질 때 필요한 네트워크"
 source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-01.md
+page_metadata:
+- terms: []
+  illustrations:
+  - file: assets/animations/u11-intro-works-on-my-laptop.svg
+    title: "내 컴퓨터에서는 잘 되는데"
+    alt: "내 컴퓨터와 같은 와이파이 친구에게는 신청 사이트가 잘 열리지만, 친구가 집으로 돌아가자 “나는 안 열리는데?”라는 말풍선이 나오고, 사람이 몰리면, 서버를 늘리면, 관리 화면은이라는 질문이 이어집니다."
+    caption: "내 컴퓨터에서는 잘 되던 사이트가 집 밖에서는 열리지 않는 데서 이야기가 시작됩니다."
+    after_paragraph: 0
+- terms: []
+  illustrations:
+  - file: assets/animations/u11-intro-basics-come-back.svg
+    title: "“안 열려”만으로는 알 수 없어요"
+    alt: "친구의 “안 열려”라는 말만으로는 길 위에서 막혔는지 도착했지만 서버 프로그램이 못 받았는지 알 수 없고, IP 주소, 포트, 패킷, 소켓이 살펴볼 단서가 되며 중간 장치를 만나면 무엇을 보고 어디로 넘기는지 묻습니다."
+    caption: "기본편의 IP 주소, 포트, 패킷, 소켓은 비슷해 보이는 상황을 나누어 볼 단서입니다."
+    after_paragraph: 0
+- terms: []
+  illustrations:
+  - file: assets/animations/u11-intro-between-service-and-internet.svg
+    title: "서비스와 인터넷 사이에는 무엇이 있을까"
+    alt: "집 안 네트워크에서는 내 서버와 안쪽 친구가 연결되지만 집 밖의 친구는 사설 IP 주소만으로 찾아올 수 없고, 안과 밖의 경계에 공유기가 있으며 공유기가 있다는 사실만으로 원인을 정하지는 않는다고 표시됩니다."
+    caption: "같은 내부 네트워크와 인터넷을 건너는 상황은 경로가 다르며, 경계에서 자주 만나는 장치가 공유기입니다."
+    after_paragraph: 0
+- terms: []
+  illustrations:
+  - file: assets/animations/u11-intro-three-structures.svg
+    title: "길에서 처리하고, 옆에서 보고, 대신 연결하고"
+    alt: "Inline은 데이터가 지나가는 경로 위의 장치에서 처리하고, Out of path는 경로 밖의 센서가 복사본을 관찰하며, Proxy는 양쪽과 따로 연결을 맺어 중계합니다. 이름보다 데이터와 어떻게 만나는지를 물어본다고 표시됩니다."
+    caption: "Inline, Out of path, Proxy는 장치를 세 상자에 가두는 규칙이 아니라 데이터와 만나는 방식을 구별하는 질문입니다."
+    after_paragraph: 0
+- terms: []
+  illustrations:
+  - file: assets/animations/u11-intro-out-and-in.svg
+    title: "밖으로 나가는 길, 밖에서 들어오는 길"
+    alt: "내 컴퓨터에서 먼저 시작한 접속은 공유기가 주소와 포트를 바꿔 이어 주어 응답이 돌아오지만, 밖에서 먼저 들어오는 접속은 어느 안쪽 컴퓨터로 보낼지 기준이 더 필요하고 포트 포워딩은 길 안내 규칙 하나일 뿐이라고 표시됩니다."
+    caption: "가정용 IPv4 공유기는 보통 NAT를 쓰며, 포트 포워딩 하나로 모든 접속 문제가 해결되지는 않습니다."
+    after_paragraph: 0
+- terms: []
+  illustrations:
+  - file: assets/animations/u11-intro-scale-up.svg
+    title: "신청자가 몰려 서버를 늘렸어요"
+    alt: "신청 시작 시간에 사람이 몰려 서버 한 대의 응답이 느려지자 서버를 세 대로 늘리고, 하나의 대표 접점이 요청을 나누어 주며, 응답하지 않는 서버는 빼고 보냅니다."
+    caption: "서버를 늘렸다면 누가 요청을 나누고 장애가 나면 어느 경로로 보낼지가 새 질문이 됩니다. 요청을 나눠도 모든 지연이 사라지지는 않습니다."
+    after_paragraph: 0
+- terms: []
+  illustrations:
+  - file: assets/animations/u11-intro-manage-from-anywhere.svg
+    title: "어디서든 관리하되, 아무에게나 열지는 않기"
+    alt: "관리 화면을 아무에게나 열어 두면 위험하므로 허용된 운영자만 암호화 터널로 들어오고, 방화벽과 IPS가 통신을 허용할지 정하며, VPN으로 연결되어도 모든 권한이 생기는 것은 아니라고 표시됩니다."
+    caption: "원격 접속과 접근 통제는 함께 생각해야 하며, VPN 연결이 곧 모든 자원에 대한 권한은 아닙니다."
+    after_paragraph: 0
+- terms: []
+  illustrations:
+  - file: assets/animations/u11-intro-where-and-what.svg
+    title: "이제 장비의 이름보다 위치와 역할이 보여요"
+    alt: "친구에서 내 서비스까지 이어진 길 위에 Unit 11의 중간 장치, Unit 12의 공유기 안팎 접속, Unit 13의 요청 나누기, Unit 14의 원격 접속과 보안이 차례로 나타나며 이름보다 위치와 역할이 보인다고 표시됩니다."
+    caption: "표는 구축 순서가 아니라 심화편에서 어떤 질문을 어디서 다룰지 찾아보는 지도입니다."
+    after_paragraph: 0
 ---
 
 ## 내 컴퓨터에서는 잘 되는데
