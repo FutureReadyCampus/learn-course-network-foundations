@@ -31,7 +31,7 @@
 
 ## 원고 범위
 
-기준은 콘텐츠 stage `4269969b0021fa85a3ab55c73c1dde6a66334c75`의 감사 스냅샷이다. 기존 구 Unit 번호는 원고 출처를 뜻하고 새 Unit 번호는 목표 위치다.
+기준은 콘텐츠 stage `da8d4393c7ef2ba06cb4b46b2ab2f9a55e3017d7`의 감사 스냅샷이다. 기존 구 Unit 번호는 원고 출처를 뜻하고 새 Unit 번호는 목표 위치다.
 
 - U11L2→새 U11L1, U11L3→새 U11L2, U11L5→새 U11L3.
 - U11L6·L7·L9→새 U11L4. 우회·보호·감시·PC 도구 사례를 보존하고 클라이언트 편 중계라는 공통 원리로 연결한다.
@@ -53,8 +53,8 @@
 
 ## 감사 기준과 검증
 
-스냅샷은 기존 심화 원고 23개, 전체 203 Page, SVG 22개의 해시를 보존한다. 이 중 기술 원고 194 Page만 20개 목표 Lesson에 각각 한 번 배정한다. 소개 8 Page와 인쇄자료 1 Page는 audit-only 제외 항목이다. 최신 stage 기준 원고 카탈로그는 457 Page이며, 콘텐츠 stage 및 Learn v2 원고 경로 별칭은 각각 448개, 구판 unversioned 경로 별칭은 442개다(기술 출처에만 연결). 준비 계약에서 사용하던 462/456 및 총 1,380 별칭은 소개·자료 URL까지 목적지에 보내던 과거 제안이며 현재 계약에서는 폐기했다.
+스냅샷은 기존 심화 원고 23개, 전체 203 Page, SVG 30개의 해시(원래 다이어그램 22개와 안내 원고의 그림 8개)를 보존한다. 이 중 기술 원고 194 Page만 20개 목표 Lesson에 각각 한 번 배정한다. 소개 8 Page와 인쇄자료 1 Page는 audit-only 제외 항목이다. 최신 stage 기준 원고 카탈로그는 457 Page이며, 콘텐츠 stage 및 Learn v2 원고 경로 별칭은 각각 448개, 구판 unversioned 경로 별칭은 442개다(기술 출처에만 연결). 준비 계약에서 사용하던 462/456 및 총 1,380 별칭은 소개·자료 URL까지 목적지에 보내던 과거 제안이며 현재 계약에서는 폐기했다.
 
-`python3 scripts/plan_advanced_restructure.py`의 합성 테스트는 194개 기술 Page, 제외된 9개 Page, 22개 자산 해시, 주소 offset, 병합·분할 경계, 공개 조건 및 부분 완료 fail-closed를 확인한다. `python3 scripts/test_advanced_restructure.py -v`가 통과해야 한다.
+`python3 scripts/plan_advanced_restructure.py`의 합성 테스트는 194개 기술 Page, 제외된 9개 Page, 30개 자산 해시, 주소 offset, 병합·분할 경계, 공개 조건 및 부분 완료 fail-closed를 확인한다. `python3 scripts/test_advanced_restructure.py -v`가 통과해야 한다.
 
-Learn #223을 먼저 `main`에 반영하고 Deploy 및 관련 동작을 확인한다. 그 다음 구조 PR을 `stage`에 병합하고 콘텐츠 빌드·자산 참조·20 Lesson·라우트 별칭·기존 순차 제한을 검증한다. Stage의 실제 게시 SHA와 대표 Lesson/Page를 확인한 이후에만 #164~#167 및 #184의 본문 개선을 시작한다.
+Learn #223을 먼저 `main`에 반영하고 Deploy 및 관련 동작을 확인한다. 그 다음 구조 PR을 `stage`에 병합하고 콘텐츠 빌드·자산 참조·20 Lesson·라우트 별칭·기존 순차 제한을 검증한다. 사용자 요청에 따라 구조는 페이지별 퀴즈 완성 전 stage에 먼저 게시해 별도 퀴즈 작성 세션이 작업할 수 있게 한다. 퀴즈가 없는 Page는 잠금 규칙이 충족되지 않을 수 있으므로, 퀴즈 AI 세션이 모든 최종 Page의 퀴즈를 추가한 뒤 순차 잠금 및 게시 상태를 확인한다. 본문 개선은 구조 게시 SHA와 대표 Lesson/Page를 확인한 다음 #164~#167 및 #184 순서로 시작한다.

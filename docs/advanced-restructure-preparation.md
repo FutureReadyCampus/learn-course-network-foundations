@@ -4,7 +4,7 @@
 
 ## 고정한 기존 원고
 
-- 콘텐츠 stage 기준: `4269969b0021fa85a3ab55c73c1dde6a66334c75`
+- 콘텐츠 stage 기준: `da8d4393c7ef2ba06cb4b46b2ab2f9a55e3017d7`
 - Learn 조사 당시 기준: `f0b56c641919e9aa25fe421375b9553e05935dfa`
 - 기존 심화 23개 원고 파일, 203개 source Page(기술 194, 소개 8, 인쇄자료 1), SVG 22개의 해시를 [감사 스냅샷](advanced-restructure-snapshot.json)에 기록했다.
 - 스냅샷의 `resources` 필드는 당시 audit 분류 이름으로 남아 있다. 이는 현행 과정에 자료를 게시하라는 뜻이 아니며, 현재 계약에서는 해당 9 Page를 audit-only 제외 항목으로 취급한다.

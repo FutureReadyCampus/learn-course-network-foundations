@@ -87,7 +87,7 @@ class AdvancedRestructureTest(unittest.TestCase):
                          [len(l["pages"]) for l in self.plan["lessons"]])
         self.assertEqual(self.plan["counts"]["technical_pages"], 194)
         self.assertEqual(self.plan["counts"]["excluded_pages"], 9)
-        self.assertEqual(self.plan["counts"]["source_assets"], 22)
+        self.assertEqual(self.plan["counts"]["source_assets"], 30)
         self.assertEqual(self.plan["counts"]["source_catalog_pages"], 457)
         self.assertEqual(self.plan["counts"]["aliases_by_namespace"], {
             "content-stage-14": 448, "learn-v2": 448, "learn-unversioned": 442})
