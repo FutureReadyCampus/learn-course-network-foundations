@@ -35,98 +35,33 @@ page_metadata:
     after_paragraph: 1
   illustration_after_paragraph: [1]
 - terms: [응용 계층 (Application layer)]
-  illustrations:
-  - file: assets/animations/u3l01-osi-p2-application.svg
-    title: "응용 계층: 무엇을 보낼까"
-    alt: "7계층이 강조된 계층 목록에서 위에서 내려온 택배 상자가 응용 계층에 머물고, 보내는 사람이 “이 책 한 권 보내 주세요”라고 부탁하는 장면과 웹 페이지 요청, 이름 주소 묻기 예시가 나옵니다. 상자는 아래 표현 계층으로 넘어가고 받는 쪽에서는 위로 올라옵니다."
-    caption: "응용 계층은 프로그램이 주고받을 일을 다룹니다. 택배 앱이나 배달원 자체를 뜻하지는 않습니다."
+  question_placements:
+  - question_id: u3-osi-layer-q08
     after_paragraph: 1
-- terms: [표현 계층 (Presentation layer)]
-  illustrations:
-  - file: assets/animations/u3l01-osi-p3-presentation.svg
-    title: "표현 계층: 어떤 형식일까"
-    alt: "6계층이 강조된 계층 목록에서 택배 상자가 표현 계층에 머물고, 안녕하세요와 Hello 문서가 읽을 수 있는 형식으로 맞춰지고 필요하면 압축이나 암호화가 되는 봉투 장면이 나옵니다. 상자는 아래 세션 계층으로 넘어갑니다."
-    caption: "표현 계층은 데이터의 형식과 필요한 변환을 다룹니다. 실제 변환이나 암호화가 항상 별도의 한 계층에서만 일어나는 것은 아닙니다."
-    after_paragraph: 1
-- terms: [세션 계층 (Session layer)]
-  illustrations:
-  - file: assets/animations/u3l01-osi-p4-session.svg
-    title: "세션 계층: 대화를 이어 가요"
-    alt: "5계층이 강조된 계층 목록에서 택배 상자가 세션 계층에 머물고, 배송 시작, 이동 중, 배송 완료 알림처럼 대화가 시작되고 이어지고 마치는 장면이 나옵니다. 택배에 딱 맞는 담당자는 없다고 표시됩니다."
-    caption: "세션 계층은 통신 대화의 시작, 유지, 마무리를 다룹니다. 택배에는 정확히 같은 담당자가 없고 대화 흐름을 붙잡는 비유일 뿐입니다."
-    after_paragraph: 1
-- terms: [전송 계층 (Transport layer)]
-  illustrations:
-  - file: assets/animations/u3l01-osi-p5-transport.svg
-    title: "전송 계층: 어느 프로그램까지"
-    alt: "4계층이 강조된 계층 목록에서 택배 상자가 전송 계층에 머물고, 보내는 사람의 상자가 받는 컴퓨터 안의 브라우저, 게임, 메신저 중 알맞은 프로그램에 닿는 장면이 나옵니다."
-    caption: "전송 계층은 통신 양 끝의 프로그램 사이에서 데이터를 전달합니다. 장치까지는 3계층, 그 안의 프로그램까지는 4계층입니다."
-    after_paragraph: 1
-- terms: [네트워크 계층 (Network layer)]
-  illustrations:
-  - file: assets/animations/u3l01-osi-p6-network.svg
-    title: "네트워크 계층: 어느 네트워크로"
-    alt: "3계층이 강조된 계층 목록에서 택배 상자가 네트워크 계층에 머물고, 주소를 읽고 여러 지역 가운데 출발에서 목적지까지의 분류 경로를 고르는 장면이 나옵니다."
-    caption: "네트워크 계층은 IP 주소를 바탕으로 목적지 네트워크까지의 경로를 찾습니다. 한 구간 전달을 맡는 데이터 링크 계층과 범위가 다릅니다."
-    after_paragraph: 1
-- terms: [데이터 링크 계층 (Data Link layer)]
-  illustrations:
-  - file: assets/animations/u3l01-osi-p7-data-link.svg
-    title: "데이터 링크: 다음 이웃에게"
-    alt: "2계층이 강조된 계층 목록에서 택배 상자가 데이터 링크 계층에 머물고, 노트북에서 공유기로 건네는 한 구간이 강조되고 그 뒤 목적지까지는 점선으로 표시됩니다."
-    caption: "데이터 링크 계층은 같은 네트워크 구간에서 이웃한 장치 사이로 프레임을 전달합니다. 최종 목적지까지의 전체 경로와는 범위가 다릅니다."
-    after_paragraph: 1
-- terms: [물리 계층 (Physical layer)]
-  illustrations:
-  - file: assets/animations/u3l01-osi-p8-physical.svg
-    title: "물리 계층: 신호로 실어 보내요"
-    alt: "1계층이 강조된 계층 목록에서 택배 상자가 물리 계층에 머물고, 구리선, 광섬유, 무선 세 길 위에서 비트가 전기, 빛, 전파 신호로 실려 가는 장면이 나옵니다."
-    caption: "물리 계층은 비트를 전기, 빛, 무선 신호로 바꾸어 케이블, 광섬유, 공기를 통해 전달합니다."
-    after_paragraph: 1
-- terms: [OSI 7계층 (OSI 7 layers)]
+  - question_id: u3-osi-review-q03
+    after_paragraph: 2
   questions:
-  - id: u3-osi-review-q01
+  - id: u3-osi-layer-q08
     kind: choice
     difficulty: easy
-    prompt: 같은 네트워크 구간에서 바로 이웃한 장치로 프레임을 건넵니다. 어느 계층의 역할일까요?
+    prompt: 응용 계층은 어떤 일을 하나요?
     choices:
     - id: a
-      text: 데이터 링크 계층
-      feedback: 맞아요. 데이터 링크 계층은 한 구간에서 이웃한 장치 사이로 프레임을 전달합니다.
+      text: 프로그램이 네트워크로 주고받을 기능이나 요청을 다룹니다.
+      feedback: 맞아요. 응용 계층은 프로그램이 네트워크로 이용하는 기능과 요청을 다룹니다.
     - id: b
-      text: 네트워크 계층
-      feedback: 네트워크 계층은 목적지 네트워크 쪽 경로를 찾습니다.
+      text: 데이터가 서로 읽히도록 표현 형식을 맞추거나 바꿉니다.
+      feedback: 이 설명은 표현 계층에 가깝습니다. 응용 계층은 프로그램이 주고받을 기능이나 요청을 다룹니다.
     - id: c
-      text: 전송 계층
-      feedback: 전송 계층은 통신 양 끝의 프로그램 사이에서 데이터를 전달합니다.
+      text: 통신 대화를 시작하고 이어 가다가 마칩니다.
+      feedback: 이 설명은 세션 계층에 가깝습니다. 응용 계층은 프로그램이 주고받을 기능이나 요청을 다룹니다.
     - id: d
-      text: 물리 계층
-      feedback: 물리 계층은 비트를 실제 신호로 실어 보냅니다.
+      text: 통신 양 끝의 프로그램 사이로 데이터를 전달합니다.
+      feedback: 이 설명은 전송 계층에 가깝습니다. 응용 계층은 프로그램이 주고받을 기능이나 요청을 다룹니다.
     - id: e
-      text: 세션 계층
-      feedback: 세션 계층은 통신 대화의 흐름을 다룹니다.
+      text: IP 주소를 바탕으로 목적지 네트워크까지의 경로를 찾습니다.
+      feedback: 이 설명은 네트워크 계층에 가깝습니다. 응용 계층은 프로그램이 주고받을 기능이나 요청을 다룹니다.
     answer: a
-  - id: u3-osi-review-q02
-    kind: choice
-    difficulty: easy
-    prompt: 배송 상황을 서로 주고받으며 대화를 시작하고 이어 가고 마칩니다. OSI에서 이 기능에 가까운 계층은 무엇일까요?
-    choices:
-    - id: a
-      text: 표현 계층
-      feedback: 표현 계층은 데이터 표현 형식과 변환을 다룹니다.
-    - id: b
-      text: 세션 계층
-      feedback: 맞아요. 세션 계층은 통신 대화를 시작하고 이어 가고 마치는 역할입니다.
-    - id: c
-      text: 응용 계층
-      feedback: 응용 계층은 프로그램이 네트워크로 이용하는 기능을 다룹니다.
-    - id: d
-      text: 데이터 링크 계층
-      feedback: 데이터 링크 계층은 바로 이웃한 장치 사이에서 프레임을 전달합니다.
-    - id: e
-      text: 전송 계층
-      feedback: 전송 계층은 양 끝 프로그램 사이의 데이터 전달을 맡습니다.
-    answer: b
   - id: u3-osi-review-q03
     kind: choice
     difficulty: easy
@@ -148,69 +83,40 @@ page_metadata:
       text: 세션 계층
       feedback: 세션 계층은 통신 대화가 이어지고 마무리되는 흐름을 다룹니다.
     answer: c
-  - id: u3-osi-review-q04
+  illustrations:
+  - file: assets/animations/u3l01-osi-p2-application.svg
+    title: "응용 계층: 무엇을 보낼까"
+    alt: "7계층이 강조된 계층 목록에서 위에서 내려온 택배 상자가 응용 계층에 머물고, 보내는 사람이 “이 책 한 권 보내 주세요”라고 부탁하는 장면과 웹 페이지 요청, 이름 주소 묻기 예시가 나옵니다. 상자는 아래 표현 계층으로 넘어가고 받는 쪽에서는 위로 올라옵니다."
+    caption: "응용 계층은 프로그램이 주고받을 일을 다룹니다. 택배 앱이나 배달원 자체를 뜻하지는 않습니다."
+    after_paragraph: 1
+- terms: [표현 계층 (Presentation layer)]
+  question_placements:
+  - question_id: u3-osi-layer-q09
+    after_paragraph: 1
+  - question_id: u3-osi-review-q07
+    after_paragraph: 2
+  questions:
+  - id: u3-osi-layer-q09
     kind: choice
     difficulty: easy
-    prompt: 상자를 실은 차량이 도로를 달리듯, 비트를 전기·빛·무선 신호로 실어 보냅니다. 어느 계층일까요?
+    prompt: 표현 계층은 어떤 일을 하나요?
     choices:
     - id: a
-      text: 전송 계층
-      feedback: 전송 계층은 통신 양 끝의 프로그램 사이에서 데이터를 전달합니다.
+      text: 프로그램이 네트워크로 주고받을 기능이나 요청을 다룹니다.
+      feedback: 이 설명은 응용 계층에 가깝습니다. 표현 계층은 데이터의 형식과 변환을 다룹니다.
     - id: b
-      text: 데이터 링크 계층
-      feedback: 데이터 링크 계층은 한 구간에서 프레임을 주고받습니다.
+      text: 통신 대화를 시작하고 이어 가다가 마칩니다.
+      feedback: 이 설명은 세션 계층에 가깝습니다. 표현 계층은 데이터의 형식과 변환을 다룹니다.
     - id: c
-      text: 네트워크 계층
-      feedback: 네트워크 계층은 목적지 네트워크로 갈 경로를 찾습니다.
+      text: 통신 양 끝의 프로그램 사이로 데이터를 전달합니다.
+      feedback: 이 설명은 전송 계층에 가깝습니다. 표현 계층은 데이터의 형식과 변환을 다룹니다.
     - id: d
-      text: 물리 계층
-      feedback: 맞아요. 물리 계층은 비트를 매체를 따라가는 신호로 전달합니다.
+      text: IP 주소를 바탕으로 목적지 네트워크까지의 경로를 찾습니다.
+      feedback: 이 설명은 네트워크 계층에 가깝습니다. 표현 계층은 데이터의 형식과 변환을 다룹니다.
     - id: e
-      text: 세션 계층
-      feedback: 세션 계층은 통신 대화를 이어 가는 흐름을 다룹니다.
-    answer: d
-  - id: u3-osi-review-q05
-    kind: choice
-    difficulty: easy
-    prompt: 보낸 쪽의 프로그램에서 받을 쪽의 프로그램까지 데이터를 전달합니다. 어느 계층의 역할일까요?
-    choices:
-    - id: a
-      text: 세션 계층
-      feedback: 세션 계층은 통신 대화가 이어지는 일을 다룹니다.
-    - id: b
-      text: 네트워크 계층
-      feedback: 네트워크 계층은 IP 주소를 바탕으로 목적지 쪽 경로를 찾습니다.
-    - id: c
-      text: 데이터 링크 계층
-      feedback: 데이터 링크 계층은 바로 이웃한 장치 사이의 한 구간을 맡습니다.
-    - id: d
-      text: 응용 계층
-      feedback: 응용 계층은 프로그램이 네트워크로 이용하는 기능을 다룹니다.
-    - id: e
-      text: 전송 계층
-      feedback: 맞아요. 전송 계층은 통신 양 끝의 프로그램 사이에서 데이터를 전달합니다.
+      text: 데이터 형식을 맞추고 필요하면 변환하거나 압축·암호화합니다.
+      feedback: 맞아요. 표현 계층은 데이터가 읽히는 형식과 필요한 변환을 다룹니다.
     answer: e
-  - id: u3-osi-review-q06
-    kind: choice
-    difficulty: easy
-    prompt: 주소를 보고 상자가 어느 지역과 경로를 거쳐 갈지 정합니다. 네트워크에서 목적지 쪽 경로를 찾는 계층은 무엇일까요?
-    choices:
-    - id: a
-      text: 네트워크 계층
-      feedback: 맞아요. 네트워크 계층은 IP 주소를 바탕으로 목적지까지 갈 경로를 찾습니다.
-    - id: b
-      text: 표현 계층
-      feedback: 표현 계층은 데이터의 표현 형식을 맞추거나 바꿉니다.
-    - id: c
-      text: 물리 계층
-      feedback: 물리 계층은 비트를 실제 신호로 실어 보냅니다.
-    - id: d
-      text: 데이터 링크 계층
-      feedback: 데이터 링크 계층은 바로 다음 이웃 장치까지 프레임을 전달합니다.
-    - id: e
-      text: 전송 계층
-      feedback: 전송 계층은 끝에 있는 프로그램 사이에서 데이터를 전달합니다.
-    answer: a
   - id: u3-osi-review-q07
     kind: choice
     difficulty: easy
@@ -232,6 +138,288 @@ page_metadata:
       text: 전송 계층
       feedback: 전송 계층은 양 끝 프로그램 사이의 전달을 맡습니다.
     answer: b
+  illustrations:
+  - file: assets/animations/u3l01-osi-p3-presentation.svg
+    title: "표현 계층: 어떤 형식일까"
+    alt: "6계층이 강조된 계층 목록에서 택배 상자가 표현 계층에 머물고, 안녕하세요와 Hello 문서가 읽을 수 있는 형식으로 맞춰지고 필요하면 압축이나 암호화가 되는 봉투 장면이 나옵니다. 상자는 아래 세션 계층으로 넘어갑니다."
+    caption: "표현 계층은 데이터의 형식과 필요한 변환을 다룹니다. 실제 변환이나 암호화가 항상 별도의 한 계층에서만 일어나는 것은 아닙니다."
+    after_paragraph: 1
+- terms: [세션 계층 (Session layer)]
+  question_placements:
+  - question_id: u3-osi-layer-q10
+    after_paragraph: 1
+  - question_id: u3-osi-review-q02
+    after_paragraph: 2
+  questions:
+  - id: u3-osi-layer-q10
+    kind: choice
+    difficulty: easy
+    prompt: 세션 계층은 어떤 일을 하나요?
+    choices:
+    - id: a
+      text: 프로그램이 네트워크로 주고받을 기능이나 요청을 다룹니다.
+      feedback: 이 설명은 응용 계층에 가깝습니다. 세션 계층은 통신 대화의 흐름을 다룹니다.
+    - id: b
+      text: 데이터 형식을 맞추고 필요하면 변환하거나 보호합니다.
+      feedback: 이 설명은 표현 계층에 가깝습니다. 세션 계층은 통신 대화의 흐름을 다룹니다.
+    - id: c
+      text: 통신 양 끝의 프로그램 사이로 데이터를 전달합니다.
+      feedback: 이 설명은 전송 계층에 가깝습니다. 세션 계층은 통신 대화의 흐름을 다룹니다.
+    - id: d
+      text: 통신 대화를 시작하고 이어 가다가 마칩니다.
+      feedback: 맞아요. 세션 계층은 통신 대화의 시작·유지·마무리를 다룹니다.
+    - id: e
+      text: 같은 네트워크 구간에서 이웃한 장치 사이로 프레임을 전달합니다.
+      feedback: 이 설명은 데이터 링크 계층에 가깝습니다. 세션 계층은 통신 대화의 흐름을 다룹니다.
+    answer: d
+  - id: u3-osi-review-q02
+    kind: choice
+    difficulty: easy
+    prompt: 배송 상황을 서로 주고받으며 대화를 시작하고 이어 가고 마칩니다. OSI에서 이 기능에 가까운 계층은 무엇일까요?
+    choices:
+    - id: a
+      text: 표현 계층
+      feedback: 표현 계층은 데이터 표현 형식과 변환을 다룹니다.
+    - id: b
+      text: 세션 계층
+      feedback: 맞아요. 세션 계층은 통신 대화를 시작하고 이어 가고 마치는 역할입니다.
+    - id: c
+      text: 응용 계층
+      feedback: 응용 계층은 프로그램이 네트워크로 이용하는 기능을 다룹니다.
+    - id: d
+      text: 데이터 링크 계층
+      feedback: 데이터 링크 계층은 바로 이웃한 장치 사이에서 프레임을 전달합니다.
+    - id: e
+      text: 전송 계층
+      feedback: 전송 계층은 양 끝 프로그램 사이의 데이터 전달을 맡습니다.
+    answer: b
+  illustrations:
+  - file: assets/animations/u3l01-osi-p4-session.svg
+    title: "세션 계층: 대화를 이어 가요"
+    alt: "5계층이 강조된 계층 목록에서 택배 상자가 세션 계층에 머물고, 배송 시작, 이동 중, 배송 완료 알림처럼 대화가 시작되고 이어지고 마치는 장면이 나옵니다. 택배에 딱 맞는 담당자는 없다고 표시됩니다."
+    caption: "세션 계층은 통신 대화의 시작, 유지, 마무리를 다룹니다. 택배에는 정확히 같은 담당자가 없고 대화 흐름을 붙잡는 비유일 뿐입니다."
+    after_paragraph: 1
+- terms: [전송 계층 (Transport layer)]
+  question_placements:
+  - question_id: u3-osi-layer-q11
+    after_paragraph: 1
+  - question_id: u3-osi-review-q05
+    after_paragraph: 2
+  questions:
+  - id: u3-osi-layer-q11
+    kind: choice
+    difficulty: easy
+    prompt: 전송 계층은 어떤 일을 하나요?
+    choices:
+    - id: a
+      text: 프로그램이 네트워크로 주고받을 기능이나 요청을 다룹니다.
+      feedback: 이 설명은 응용 계층에 가깝습니다. 전송 계층은 양 끝의 프로그램 사이 전달을 다룹니다.
+    - id: b
+      text: 데이터 형식을 맞추고 필요하면 변환하거나 보호합니다.
+      feedback: 이 설명은 표현 계층에 가깝습니다. 전송 계층은 양 끝의 프로그램 사이 전달을 다룹니다.
+    - id: c
+      text: 통신 양 끝의 프로그램 사이에서 데이터를 전달합니다.
+      feedback: 맞아요. 전송 계층은 통신하는 양 끝의 프로그램 사이에서 데이터를 전달합니다.
+    - id: d
+      text: 통신 대화를 시작하고 이어 가다가 마칩니다.
+      feedback: 이 설명은 세션 계층에 가깝습니다. 전송 계층은 양 끝의 프로그램 사이 전달을 다룹니다.
+    - id: e
+      text: IP 주소를 바탕으로 목적지 네트워크까지의 경로를 찾습니다.
+      feedback: 이 설명은 네트워크 계층에 가깝습니다. 전송 계층은 양 끝의 프로그램 사이 전달을 다룹니다.
+    answer: c
+  - id: u3-osi-review-q05
+    kind: choice
+    difficulty: easy
+    prompt: 보낸 쪽의 프로그램에서 받을 쪽의 프로그램까지 데이터를 전달합니다. 어느 계층의 역할일까요?
+    choices:
+    - id: a
+      text: 세션 계층
+      feedback: 세션 계층은 통신 대화가 이어지는 일을 다룹니다.
+    - id: b
+      text: 네트워크 계층
+      feedback: 네트워크 계층은 IP 주소를 바탕으로 목적지 쪽 경로를 찾습니다.
+    - id: c
+      text: 데이터 링크 계층
+      feedback: 데이터 링크 계층은 바로 이웃한 장치 사이의 한 구간을 맡습니다.
+    - id: d
+      text: 응용 계층
+      feedback: 응용 계층은 프로그램이 네트워크로 이용하는 기능을 다룹니다.
+    - id: e
+      text: 전송 계층
+      feedback: 맞아요. 전송 계층은 통신 양 끝의 프로그램 사이에서 데이터를 전달합니다.
+    answer: e
+  illustrations:
+  - file: assets/animations/u3l01-osi-p5-transport.svg
+    title: "전송 계층: 어느 프로그램까지"
+    alt: "4계층이 강조된 계층 목록에서 택배 상자가 전송 계층에 머물고, 보내는 사람의 상자가 받는 컴퓨터 안의 브라우저, 게임, 메신저 중 알맞은 프로그램에 닿는 장면이 나옵니다."
+    caption: "전송 계층은 통신 양 끝의 프로그램 사이에서 데이터를 전달합니다. 장치까지는 3계층, 그 안의 프로그램까지는 4계층입니다."
+    after_paragraph: 1
+- terms: [네트워크 계층 (Network layer)]
+  question_placements:
+  - question_id: u3-osi-layer-q12
+    after_paragraph: 1
+  - question_id: u3-osi-review-q06
+    after_paragraph: 2
+  questions:
+  - id: u3-osi-layer-q12
+    kind: choice
+    difficulty: easy
+    prompt: 네트워크 계층은 어떤 일을 하나요?
+    choices:
+    - id: a
+      text: 통신 양 끝의 프로그램 사이에서 데이터를 전달합니다.
+      feedback: 이 설명은 전송 계층에 가깝습니다. 네트워크 계층은 목적지 네트워크까지의 경로를 찾습니다.
+    - id: b
+      text: 통신 대화를 시작하고 이어 가다가 마칩니다.
+      feedback: 이 설명은 세션 계층에 가깝습니다. 네트워크 계층은 목적지 네트워크까지의 경로를 찾습니다.
+    - id: c
+      text: 같은 구간에서 이웃한 장치 사이로 프레임을 전달합니다.
+      feedback: 이 설명은 데이터 링크 계층에 가깝습니다. 네트워크 계층은 목적지 네트워크까지의 경로를 찾습니다.
+    - id: d
+      text: IP 주소를 바탕으로 목적지 네트워크까지의 경로를 찾습니다.
+      feedback: 맞아요. 네트워크 계층은 목적지 네트워크와 그곳까지의 경로를 다룹니다.
+    - id: e
+      text: 비트를 전기·빛·무선 신호로 바꾸어 전달합니다.
+      feedback: 이 설명은 물리 계층에 가깝습니다. 네트워크 계층은 목적지 네트워크까지의 경로를 찾습니다.
+    answer: d
+  - id: u3-osi-review-q06
+    kind: choice
+    difficulty: easy
+    prompt: 주소를 보고 상자가 어느 지역과 경로를 거쳐 갈지 정합니다. 네트워크에서 목적지 쪽 경로를 찾는 계층은 무엇일까요?
+    choices:
+    - id: a
+      text: 네트워크 계층
+      feedback: 맞아요. 네트워크 계층은 IP 주소를 바탕으로 목적지까지 갈 경로를 찾습니다.
+    - id: b
+      text: 표현 계층
+      feedback: 표현 계층은 데이터의 표현 형식을 맞추거나 바꿉니다.
+    - id: c
+      text: 물리 계층
+      feedback: 물리 계층은 비트를 실제 신호로 실어 보냅니다.
+    - id: d
+      text: 데이터 링크 계층
+      feedback: 데이터 링크 계층은 바로 다음 이웃 장치까지 프레임을 전달합니다.
+    - id: e
+      text: 전송 계층
+      feedback: 전송 계층은 끝에 있는 프로그램 사이에서 데이터를 전달합니다.
+    answer: a
+  illustrations:
+  - file: assets/animations/u3l01-osi-p6-network.svg
+    title: "네트워크 계층: 어느 네트워크로"
+    alt: "3계층이 강조된 계층 목록에서 택배 상자가 네트워크 계층에 머물고, 주소를 읽고 여러 지역 가운데 출발에서 목적지까지의 분류 경로를 고르는 장면이 나옵니다."
+    caption: "네트워크 계층은 IP 주소를 바탕으로 목적지 네트워크까지의 경로를 찾습니다. 한 구간 전달을 맡는 데이터 링크 계층과 범위가 다릅니다."
+    after_paragraph: 1
+- terms: [데이터 링크 계층 (Data Link layer)]
+  question_placements:
+  - question_id: u3-osi-layer-q13
+    after_paragraph: 1
+  - question_id: u3-osi-review-q01
+    after_paragraph: 2
+  questions:
+  - id: u3-osi-layer-q13
+    kind: choice
+    difficulty: easy
+    prompt: 데이터 링크 계층은 어떤 일을 하나요?
+    choices:
+    - id: a
+      text: IP 주소를 바탕으로 목적지 네트워크까지의 경로를 찾습니다.
+      feedback: 이 설명은 네트워크 계층에 가깝습니다. 데이터 링크 계층은 이웃한 장치 사이의 한 구간을 다룹니다.
+    - id: b
+      text: 같은 네트워크 구간에서 이웃한 장치 사이로 프레임을 전달합니다.
+      feedback: 맞아요. 데이터 링크 계층은 바로 이웃한 장치 사이의 한 구간에서 프레임을 전달합니다.
+    - id: c
+      text: 통신 양 끝의 프로그램 사이에서 데이터를 전달합니다.
+      feedback: 이 설명은 전송 계층에 가깝습니다. 데이터 링크 계층은 이웃한 장치 사이의 한 구간을 다룹니다.
+    - id: d
+      text: 비트를 전기·빛·무선 신호로 바꾸어 전달합니다.
+      feedback: 이 설명은 물리 계층에 가깝습니다. 데이터 링크 계층은 프레임을 한 구간 전달합니다.
+    - id: e
+      text: 통신 대화를 시작하고 이어 가다가 마칩니다.
+      feedback: 이 설명은 세션 계층에 가깝습니다. 데이터 링크 계층은 이웃한 장치 사이의 한 구간을 다룹니다.
+    answer: b
+  - id: u3-osi-review-q01
+    kind: choice
+    difficulty: easy
+    prompt: 같은 네트워크 구간에서 바로 이웃한 장치로 프레임을 건넵니다. 어느 계층의 역할일까요?
+    choices:
+    - id: a
+      text: 데이터 링크 계층
+      feedback: 맞아요. 데이터 링크 계층은 한 구간에서 이웃한 장치 사이로 프레임을 전달합니다.
+    - id: b
+      text: 네트워크 계층
+      feedback: 네트워크 계층은 목적지 네트워크 쪽 경로를 찾습니다.
+    - id: c
+      text: 전송 계층
+      feedback: 전송 계층은 통신 양 끝의 프로그램 사이에서 데이터를 전달합니다.
+    - id: d
+      text: 물리 계층
+      feedback: 물리 계층은 비트를 실제 신호로 실어 보냅니다.
+    - id: e
+      text: 세션 계층
+      feedback: 세션 계층은 통신 대화의 흐름을 다룹니다.
+    answer: a
+  illustrations:
+  - file: assets/animations/u3l01-osi-p7-data-link.svg
+    title: "데이터 링크: 다음 이웃에게"
+    alt: "2계층이 강조된 계층 목록에서 택배 상자가 데이터 링크 계층에 머물고, 노트북에서 공유기로 건네는 한 구간이 강조되고 그 뒤 목적지까지는 점선으로 표시됩니다."
+    caption: "데이터 링크 계층은 같은 네트워크 구간에서 이웃한 장치 사이로 프레임을 전달합니다. 최종 목적지까지의 전체 경로와는 범위가 다릅니다."
+    after_paragraph: 1
+- terms: [물리 계층 (Physical layer)]
+  question_placements:
+  - question_id: u3-osi-layer-q14
+    after_paragraph: 1
+  - question_id: u3-osi-review-q04
+    after_paragraph: 2
+  questions:
+  - id: u3-osi-layer-q14
+    kind: choice
+    difficulty: easy
+    prompt: 물리 계층은 어떤 일을 하나요?
+    choices:
+    - id: a
+      text: 프로그램이 네트워크로 주고받을 기능이나 요청을 다룹니다.
+      feedback: 이 설명은 응용 계층에 가깝습니다. 물리 계층은 비트를 실제 신호로 전달합니다.
+    - id: b
+      text: 통신 대화를 시작하고 이어 가다가 마칩니다.
+      feedback: 이 설명은 세션 계층에 가깝습니다. 물리 계층은 비트를 실제 신호로 전달합니다.
+    - id: c
+      text: IP 주소를 바탕으로 목적지 네트워크까지의 경로를 찾습니다.
+      feedback: 이 설명은 네트워크 계층에 가깝습니다. 물리 계층은 비트를 실제 신호로 전달합니다.
+    - id: d
+      text: 같은 네트워크 구간에서 이웃한 장치 사이로 프레임을 전달합니다.
+      feedback: 이 설명은 데이터 링크 계층에 가깝습니다. 물리 계층은 비트를 실제 신호로 전달합니다.
+    - id: e
+      text: 비트를 전기·빛·무선 신호로 바꾸어 매체를 통해 전달합니다.
+      feedback: 맞아요. 물리 계층은 비트를 실제 신호로 실어 보냅니다.
+    answer: e
+  - id: u3-osi-review-q04
+    kind: choice
+    difficulty: easy
+    prompt: 상자를 실은 차량이 도로를 달리듯, 비트를 전기·빛·무선 신호로 실어 보냅니다. 어느 계층일까요?
+    choices:
+    - id: a
+      text: 전송 계층
+      feedback: 전송 계층은 통신 양 끝의 프로그램 사이에서 데이터를 전달합니다.
+    - id: b
+      text: 데이터 링크 계층
+      feedback: 데이터 링크 계층은 한 구간에서 프레임을 주고받습니다.
+    - id: c
+      text: 네트워크 계층
+      feedback: 네트워크 계층은 목적지 네트워크로 갈 경로를 찾습니다.
+    - id: d
+      text: 물리 계층
+      feedback: 맞아요. 물리 계층은 비트를 매체를 따라가는 신호로 전달합니다.
+    - id: e
+      text: 세션 계층
+      feedback: 세션 계층은 통신 대화를 이어 가는 흐름을 다룹니다.
+    answer: d
+  illustrations:
+  - file: assets/animations/u3l01-osi-p8-physical.svg
+    title: "물리 계층: 신호로 실어 보내요"
+    alt: "1계층이 강조된 계층 목록에서 택배 상자가 물리 계층에 머물고, 구리선, 광섬유, 무선 세 길 위에서 비트가 전기, 빛, 전파 신호로 실려 가는 장면이 나옵니다."
+    caption: "물리 계층은 비트를 전기, 빛, 무선 신호로 바꾸어 케이블, 광섬유, 공기를 통해 전달합니다."
+    after_paragraph: 1
+- terms: [OSI 7계층 (OSI 7 layers)]
   illustrations:
   - file: assets/animations/u3l01-osi-p9-order-recap.svg
     title: "응·표·세 / 전·네 / 데·물"
