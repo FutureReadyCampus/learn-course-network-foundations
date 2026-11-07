@@ -486,13 +486,12 @@
         return `<li><a class="lesson-link" data-lesson="${li}" href="${routeFor(ui, localIndex, 0)}" ${active ? 'aria-current="page"' : ""}><span class="nav-number">${String(localIndex + 1).padStart(2, "0")}</span><span>${esc(lesson.title)}</span></a>${active ? `<ol class="sidebar-steps">${steps.map((step, si) => `<li><a class="page-link" data-lesson="${li}" data-page="${si}" href="${routeFor(ui, localIndex, si)}" ${si === state.pageIndex ? 'aria-current="page"' : ""}>${esc(step.title)}</a></li>`).join("")}</ol>` : ""}</li>`;
       }).join("")}</ol></section>`;
     }).join("")}`;
-    const selected = nav.querySelector('[aria-current="page"]');
+    const selected = nav.querySelector('.page-link[aria-current="page"]')
+      || nav.querySelector('.lesson-link[aria-current="page"]');
     if (selected) {
       const navBounds = nav.getBoundingClientRect();
       const selectedBounds = selected.getBoundingClientRect();
-      if (selectedBounds.top < navBounds.top || selectedBounds.bottom > navBounds.bottom) {
-        nav.scrollTop += selectedBounds.top - navBounds.top - (nav.clientHeight - selectedBounds.height) / 2;
-      }
+      nav.scrollTop += selectedBounds.top - navBounds.top;
     }
     const banner = document.getElementById("source-banner");
     const sha = course.preview_source?.sha || "local draft";
