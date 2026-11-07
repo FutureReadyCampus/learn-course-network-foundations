@@ -115,6 +115,9 @@ def make_plan(snapshot, contract, catalog, legacy_units, source_root=ROOT):
     aliases = []
     excluded_lesson_ids = {source["lesson_id"] for source in snapshot["sources"]
                            if source["source_key"] in excluded_sources}
+    learn_v2_unmapped = set(contract.get("learn_v2_unmapped_lesson_ids", []))
+    require(learn_v2_unmapped.issubset(source_lessons),
+            "Learn v2 Unit 10 exclusions must name current source Lessons")
     for unit_number, unit in enumerate(catalog["units"], 1):
         siblings = [l for l in catalog["lessons"] if l["unit"] == unit["id"]]
         for lesson_number, lesson in enumerate(siblings, 1):
@@ -127,12 +130,19 @@ def make_plan(snapshot, contract, catalog, legacy_units, source_root=ROOT):
                 }
                 for namespace, prefix in [("content-stage-14", "/m2-network"),
                                           ("learn-v2", "/m2-network/v2")]:
+                    if namespace == "learn-v2" and lesson["id"] in learn_v2_unmapped:
+                        continue
                     aliases.append({"namespace": namespace,
                                     "path": f"{prefix}/unit/{unit_number}/lesson/{lesson_number}/page/{number}",
                                     "source_lesson_id": lesson["id"], "source_page": number,
                                     "destination": destination})
+    intentionally_unmapped = set(contract.get("legacy_unmapped_lesson_ids", []))
+    require(intentionally_unmapped.isdisjoint(source_lessons),
+            "Intentionally unmapped legacy Lessons must not be treated as current source Lessons")
     for unit_number, group in enumerate(legacy_units, 1):
         for lesson_number, lesson_id in enumerate(group, 1):
+            if lesson_id in intentionally_unmapped:
+                continue
             require(lesson_id in source_lessons, f"Unknown legacy Lesson: {lesson_id}")
             for number in range(1, len(source_lessons[lesson_id]["pages"]) + 1):
                 canonical = next((a for a in aliases if a["namespace"] == "learn-v2"
@@ -159,6 +169,8 @@ def make_plan(snapshot, contract, catalog, legacy_units, source_root=ROOT):
             "snapshot_sha256": digest(snapshot), "contract_sha256": digest(contract),
             "lessons": lessons, "excluded_source_lessons": [s["lesson_id"] for s in snapshot["sources"]
                 if s["source_key"] in excluded_sources], "aliases": aliases,
+            "unmapped_legacy_lessons": sorted(intentionally_unmapped),
+            "unmapped_learn_v2_lessons": sorted(learn_v2_unmapped),
             "counts": {"target_lessons": len(lessons), "technical_pages": 194,
                        "excluded_pages": len(excluded_pages),
                        "source_assets": len(snapshot["source_asset_sha256"]),

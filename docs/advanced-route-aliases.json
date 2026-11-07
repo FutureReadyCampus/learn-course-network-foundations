@@ -818,11 +818,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/1/page/1",
-    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+    "source_lesson_id": "u3-l01-osi-seven-layers",
     "source_page": 1,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+      "id": "u3-l01-osi-seven-layers",
       "page": 1,
       "path": "/m2-network/v3/unit/3/lesson/1/page/1"
     }
@@ -830,11 +830,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/1/page/1",
-    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+    "source_lesson_id": "u3-l01-osi-seven-layers",
     "source_page": 1,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+      "id": "u3-l01-osi-seven-layers",
       "page": 1,
       "path": "/m2-network/v3/unit/3/lesson/1/page/1"
     }
@@ -842,11 +842,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/1/page/2",
-    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+    "source_lesson_id": "u3-l01-osi-seven-layers",
     "source_page": 2,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+      "id": "u3-l01-osi-seven-layers",
       "page": 2,
       "path": "/m2-network/v3/unit/3/lesson/1/page/2"
     }
@@ -854,11 +854,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/1/page/2",
-    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+    "source_lesson_id": "u3-l01-osi-seven-layers",
     "source_page": 2,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+      "id": "u3-l01-osi-seven-layers",
       "page": 2,
       "path": "/m2-network/v3/unit/3/lesson/1/page/2"
     }
@@ -866,11 +866,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/1/page/3",
-    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+    "source_lesson_id": "u3-l01-osi-seven-layers",
     "source_page": 3,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+      "id": "u3-l01-osi-seven-layers",
       "page": 3,
       "path": "/m2-network/v3/unit/3/lesson/1/page/3"
     }
@@ -878,11 +878,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/1/page/3",
-    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+    "source_lesson_id": "u3-l01-osi-seven-layers",
     "source_page": 3,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+      "id": "u3-l01-osi-seven-layers",
       "page": 3,
       "path": "/m2-network/v3/unit/3/lesson/1/page/3"
     }
@@ -890,11 +890,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/1/page/4",
-    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+    "source_lesson_id": "u3-l01-osi-seven-layers",
     "source_page": 4,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+      "id": "u3-l01-osi-seven-layers",
       "page": 4,
       "path": "/m2-network/v3/unit/3/lesson/1/page/4"
     }
@@ -902,11 +902,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/1/page/4",
-    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+    "source_lesson_id": "u3-l01-osi-seven-layers",
     "source_page": 4,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+      "id": "u3-l01-osi-seven-layers",
       "page": 4,
       "path": "/m2-network/v3/unit/3/lesson/1/page/4"
     }
@@ -914,11 +914,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/1/page/5",
-    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+    "source_lesson_id": "u3-l01-osi-seven-layers",
     "source_page": 5,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+      "id": "u3-l01-osi-seven-layers",
       "page": 5,
       "path": "/m2-network/v3/unit/3/lesson/1/page/5"
     }
@@ -926,11 +926,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/1/page/5",
-    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+    "source_lesson_id": "u3-l01-osi-seven-layers",
     "source_page": 5,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+      "id": "u3-l01-osi-seven-layers",
       "page": 5,
       "path": "/m2-network/v3/unit/3/lesson/1/page/5"
     }
@@ -938,11 +938,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/1/page/6",
-    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+    "source_lesson_id": "u3-l01-osi-seven-layers",
     "source_page": 6,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+      "id": "u3-l01-osi-seven-layers",
       "page": 6,
       "path": "/m2-network/v3/unit/3/lesson/1/page/6"
     }
@@ -950,11 +950,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/1/page/6",
-    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+    "source_lesson_id": "u3-l01-osi-seven-layers",
     "source_page": 6,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+      "id": "u3-l01-osi-seven-layers",
       "page": 6,
       "path": "/m2-network/v3/unit/3/lesson/1/page/6"
     }
@@ -962,11 +962,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/1/page/7",
-    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+    "source_lesson_id": "u3-l01-osi-seven-layers",
     "source_page": 7,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+      "id": "u3-l01-osi-seven-layers",
       "page": 7,
       "path": "/m2-network/v3/unit/3/lesson/1/page/7"
     }
@@ -974,11 +974,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/1/page/7",
-    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+    "source_lesson_id": "u3-l01-osi-seven-layers",
     "source_page": 7,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+      "id": "u3-l01-osi-seven-layers",
       "page": 7,
       "path": "/m2-network/v3/unit/3/lesson/1/page/7"
     }
@@ -986,11 +986,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/1/page/8",
-    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+    "source_lesson_id": "u3-l01-osi-seven-layers",
     "source_page": 8,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+      "id": "u3-l01-osi-seven-layers",
       "page": 8,
       "path": "/m2-network/v3/unit/3/lesson/1/page/8"
     }
@@ -998,11 +998,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/1/page/8",
-    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+    "source_lesson_id": "u3-l01-osi-seven-layers",
     "source_page": 8,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+      "id": "u3-l01-osi-seven-layers",
       "page": 8,
       "path": "/m2-network/v3/unit/3/lesson/1/page/8"
     }
@@ -1010,11 +1010,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/1/page/9",
-    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+    "source_lesson_id": "u3-l01-osi-seven-layers",
     "source_page": 9,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+      "id": "u3-l01-osi-seven-layers",
       "page": 9,
       "path": "/m2-network/v3/unit/3/lesson/1/page/9"
     }
@@ -1022,11 +1022,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/1/page/9",
-    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+    "source_lesson_id": "u3-l01-osi-seven-layers",
     "source_page": 9,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+      "id": "u3-l01-osi-seven-layers",
       "page": 9,
       "path": "/m2-network/v3/unit/3/lesson/1/page/9"
     }
@@ -1034,11 +1034,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/2/page/1",
-    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
+    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
     "source_page": 1,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l09-l2-스위치에-대해서",
+      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 1,
       "path": "/m2-network/v3/unit/3/lesson/2/page/1"
     }
@@ -1046,11 +1046,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/2/page/1",
-    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
+    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
     "source_page": 1,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l09-l2-스위치에-대해서",
+      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 1,
       "path": "/m2-network/v3/unit/3/lesson/2/page/1"
     }
@@ -1058,11 +1058,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/2/page/2",
-    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
+    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
     "source_page": 2,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l09-l2-스위치에-대해서",
+      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 2,
       "path": "/m2-network/v3/unit/3/lesson/2/page/2"
     }
@@ -1070,11 +1070,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/2/page/2",
-    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
+    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
     "source_page": 2,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l09-l2-스위치에-대해서",
+      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 2,
       "path": "/m2-network/v3/unit/3/lesson/2/page/2"
     }
@@ -1082,11 +1082,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/2/page/3",
-    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
+    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
     "source_page": 3,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l09-l2-스위치에-대해서",
+      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 3,
       "path": "/m2-network/v3/unit/3/lesson/2/page/3"
     }
@@ -1094,11 +1094,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/2/page/3",
-    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
+    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
     "source_page": 3,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l09-l2-스위치에-대해서",
+      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 3,
       "path": "/m2-network/v3/unit/3/lesson/2/page/3"
     }
@@ -1106,11 +1106,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/2/page/4",
-    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
+    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
     "source_page": 4,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l09-l2-스위치에-대해서",
+      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 4,
       "path": "/m2-network/v3/unit/3/lesson/2/page/4"
     }
@@ -1118,11 +1118,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/2/page/4",
-    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
+    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
     "source_page": 4,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l09-l2-스위치에-대해서",
+      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 4,
       "path": "/m2-network/v3/unit/3/lesson/2/page/4"
     }
@@ -1130,11 +1130,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/2/page/5",
-    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
+    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
     "source_page": 5,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l09-l2-스위치에-대해서",
+      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 5,
       "path": "/m2-network/v3/unit/3/lesson/2/page/5"
     }
@@ -1142,11 +1142,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/2/page/5",
-    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
+    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
     "source_page": 5,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l09-l2-스위치에-대해서",
+      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 5,
       "path": "/m2-network/v3/unit/3/lesson/2/page/5"
     }
@@ -1154,11 +1154,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/2/page/6",
-    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
+    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
     "source_page": 6,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l09-l2-스위치에-대해서",
+      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 6,
       "path": "/m2-network/v3/unit/3/lesson/2/page/6"
     }
@@ -1166,11 +1166,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/2/page/6",
-    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
+    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
     "source_page": 6,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l09-l2-스위치에-대해서",
+      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 6,
       "path": "/m2-network/v3/unit/3/lesson/2/page/6"
     }
@@ -1178,11 +1178,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/2/page/7",
-    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
+    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
     "source_page": 7,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l09-l2-스위치에-대해서",
+      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 7,
       "path": "/m2-network/v3/unit/3/lesson/2/page/7"
     }
@@ -1190,11 +1190,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/2/page/7",
-    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
+    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
     "source_page": 7,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l09-l2-스위치에-대해서",
+      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 7,
       "path": "/m2-network/v3/unit/3/lesson/2/page/7"
     }
@@ -1202,11 +1202,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/2/page/8",
-    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
+    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
     "source_page": 8,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l09-l2-스위치에-대해서",
+      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 8,
       "path": "/m2-network/v3/unit/3/lesson/2/page/8"
     }
@@ -1214,47 +1214,23 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/2/page/8",
-    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
+    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
     "source_page": 8,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l09-l2-스위치에-대해서",
+      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 8,
       "path": "/m2-network/v3/unit/3/lesson/2/page/8"
     }
   },
   {
     "namespace": "content-stage-14",
-    "path": "/m2-network/unit/3/lesson/2/page/9",
-    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
-    "source_page": 9,
-    "destination": {
-      "kind": "lesson",
-      "id": "u3-l09-l2-스위치에-대해서",
-      "page": 9,
-      "path": "/m2-network/v3/unit/3/lesson/2/page/9"
-    }
-  },
-  {
-    "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/3/lesson/2/page/9",
-    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
-    "source_page": 9,
-    "destination": {
-      "kind": "lesson",
-      "id": "u3-l09-l2-스위치에-대해서",
-      "page": 9,
-      "path": "/m2-network/v3/unit/3/lesson/2/page/9"
-    }
-  },
-  {
-    "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/3/page/1",
-    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
     "source_page": 1,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "id": "u3-l09-l2-스위치에-대해서",
       "page": 1,
       "path": "/m2-network/v3/unit/3/lesson/3/page/1"
     }
@@ -1262,11 +1238,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/3/page/1",
-    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
     "source_page": 1,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "id": "u3-l09-l2-스위치에-대해서",
       "page": 1,
       "path": "/m2-network/v3/unit/3/lesson/3/page/1"
     }
@@ -1274,11 +1250,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/3/page/2",
-    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
     "source_page": 2,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "id": "u3-l09-l2-스위치에-대해서",
       "page": 2,
       "path": "/m2-network/v3/unit/3/lesson/3/page/2"
     }
@@ -1286,11 +1262,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/3/page/2",
-    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
     "source_page": 2,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "id": "u3-l09-l2-스위치에-대해서",
       "page": 2,
       "path": "/m2-network/v3/unit/3/lesson/3/page/2"
     }
@@ -1298,11 +1274,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/3/page/3",
-    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
     "source_page": 3,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "id": "u3-l09-l2-스위치에-대해서",
       "page": 3,
       "path": "/m2-network/v3/unit/3/lesson/3/page/3"
     }
@@ -1310,11 +1286,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/3/page/3",
-    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
     "source_page": 3,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "id": "u3-l09-l2-스위치에-대해서",
       "page": 3,
       "path": "/m2-network/v3/unit/3/lesson/3/page/3"
     }
@@ -1322,11 +1298,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/3/page/4",
-    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
     "source_page": 4,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "id": "u3-l09-l2-스위치에-대해서",
       "page": 4,
       "path": "/m2-network/v3/unit/3/lesson/3/page/4"
     }
@@ -1334,11 +1310,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/3/page/4",
-    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
     "source_page": 4,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "id": "u3-l09-l2-스위치에-대해서",
       "page": 4,
       "path": "/m2-network/v3/unit/3/lesson/3/page/4"
     }
@@ -1346,11 +1322,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/3/page/5",
-    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
     "source_page": 5,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "id": "u3-l09-l2-스위치에-대해서",
       "page": 5,
       "path": "/m2-network/v3/unit/3/lesson/3/page/5"
     }
@@ -1358,11 +1334,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/3/page/5",
-    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
     "source_page": 5,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "id": "u3-l09-l2-스위치에-대해서",
       "page": 5,
       "path": "/m2-network/v3/unit/3/lesson/3/page/5"
     }
@@ -1370,11 +1346,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/3/page/6",
-    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
     "source_page": 6,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "id": "u3-l09-l2-스위치에-대해서",
       "page": 6,
       "path": "/m2-network/v3/unit/3/lesson/3/page/6"
     }
@@ -1382,11 +1358,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/3/page/6",
-    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
     "source_page": 6,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "id": "u3-l09-l2-스위치에-대해서",
       "page": 6,
       "path": "/m2-network/v3/unit/3/lesson/3/page/6"
     }
@@ -1394,11 +1370,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/3/page/7",
-    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
     "source_page": 7,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "id": "u3-l09-l2-스위치에-대해서",
       "page": 7,
       "path": "/m2-network/v3/unit/3/lesson/3/page/7"
     }
@@ -1406,11 +1382,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/3/page/7",
-    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
     "source_page": 7,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "id": "u3-l09-l2-스위치에-대해서",
       "page": 7,
       "path": "/m2-network/v3/unit/3/lesson/3/page/7"
     }
@@ -1418,11 +1394,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/3/page/8",
-    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
     "source_page": 8,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "id": "u3-l09-l2-스위치에-대해서",
       "page": 8,
       "path": "/m2-network/v3/unit/3/lesson/3/page/8"
     }
@@ -1430,11 +1406,11 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/3/page/8",
-    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
     "source_page": 8,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "id": "u3-l09-l2-스위치에-대해서",
       "page": 8,
       "path": "/m2-network/v3/unit/3/lesson/3/page/8"
     }
@@ -1442,11 +1418,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/3/page/9",
-    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
     "source_page": 9,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "id": "u3-l09-l2-스위치에-대해서",
       "page": 9,
       "path": "/m2-network/v3/unit/3/lesson/3/page/9"
     }
@@ -1454,37 +1430,253 @@
   {
     "namespace": "learn-v2",
     "path": "/m2-network/v2/unit/3/lesson/3/page/9",
-    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_lesson_id": "u3-l09-l2-스위치에-대해서",
     "source_page": 9,
     "destination": {
       "kind": "lesson",
-      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "id": "u3-l09-l2-스위치에-대해서",
       "page": 9,
       "path": "/m2-network/v3/unit/3/lesson/3/page/9"
     }
   },
   {
     "namespace": "content-stage-14",
-    "path": "/m2-network/unit/3/lesson/3/page/10",
+    "path": "/m2-network/unit/3/lesson/4/page/1",
     "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
-    "source_page": 10,
+    "source_page": 1,
     "destination": {
       "kind": "lesson",
       "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
-      "page": 10,
-      "path": "/m2-network/v3/unit/3/lesson/3/page/10"
+      "page": 1,
+      "path": "/m2-network/v3/unit/3/lesson/4/page/1"
     }
   },
   {
     "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/3/lesson/3/page/10",
+    "path": "/m2-network/v2/unit/3/lesson/4/page/1",
+    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_page": 1,
+    "destination": {
+      "kind": "lesson",
+      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "page": 1,
+      "path": "/m2-network/v3/unit/3/lesson/4/page/1"
+    }
+  },
+  {
+    "namespace": "content-stage-14",
+    "path": "/m2-network/unit/3/lesson/4/page/2",
+    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_page": 2,
+    "destination": {
+      "kind": "lesson",
+      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "page": 2,
+      "path": "/m2-network/v3/unit/3/lesson/4/page/2"
+    }
+  },
+  {
+    "namespace": "learn-v2",
+    "path": "/m2-network/v2/unit/3/lesson/4/page/2",
+    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_page": 2,
+    "destination": {
+      "kind": "lesson",
+      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "page": 2,
+      "path": "/m2-network/v3/unit/3/lesson/4/page/2"
+    }
+  },
+  {
+    "namespace": "content-stage-14",
+    "path": "/m2-network/unit/3/lesson/4/page/3",
+    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_page": 3,
+    "destination": {
+      "kind": "lesson",
+      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "page": 3,
+      "path": "/m2-network/v3/unit/3/lesson/4/page/3"
+    }
+  },
+  {
+    "namespace": "learn-v2",
+    "path": "/m2-network/v2/unit/3/lesson/4/page/3",
+    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_page": 3,
+    "destination": {
+      "kind": "lesson",
+      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "page": 3,
+      "path": "/m2-network/v3/unit/3/lesson/4/page/3"
+    }
+  },
+  {
+    "namespace": "content-stage-14",
+    "path": "/m2-network/unit/3/lesson/4/page/4",
+    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_page": 4,
+    "destination": {
+      "kind": "lesson",
+      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "page": 4,
+      "path": "/m2-network/v3/unit/3/lesson/4/page/4"
+    }
+  },
+  {
+    "namespace": "learn-v2",
+    "path": "/m2-network/v2/unit/3/lesson/4/page/4",
+    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_page": 4,
+    "destination": {
+      "kind": "lesson",
+      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "page": 4,
+      "path": "/m2-network/v3/unit/3/lesson/4/page/4"
+    }
+  },
+  {
+    "namespace": "content-stage-14",
+    "path": "/m2-network/unit/3/lesson/4/page/5",
+    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_page": 5,
+    "destination": {
+      "kind": "lesson",
+      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "page": 5,
+      "path": "/m2-network/v3/unit/3/lesson/4/page/5"
+    }
+  },
+  {
+    "namespace": "learn-v2",
+    "path": "/m2-network/v2/unit/3/lesson/4/page/5",
+    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_page": 5,
+    "destination": {
+      "kind": "lesson",
+      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "page": 5,
+      "path": "/m2-network/v3/unit/3/lesson/4/page/5"
+    }
+  },
+  {
+    "namespace": "content-stage-14",
+    "path": "/m2-network/unit/3/lesson/4/page/6",
+    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_page": 6,
+    "destination": {
+      "kind": "lesson",
+      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "page": 6,
+      "path": "/m2-network/v3/unit/3/lesson/4/page/6"
+    }
+  },
+  {
+    "namespace": "learn-v2",
+    "path": "/m2-network/v2/unit/3/lesson/4/page/6",
+    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_page": 6,
+    "destination": {
+      "kind": "lesson",
+      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "page": 6,
+      "path": "/m2-network/v3/unit/3/lesson/4/page/6"
+    }
+  },
+  {
+    "namespace": "content-stage-14",
+    "path": "/m2-network/unit/3/lesson/4/page/7",
+    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_page": 7,
+    "destination": {
+      "kind": "lesson",
+      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "page": 7,
+      "path": "/m2-network/v3/unit/3/lesson/4/page/7"
+    }
+  },
+  {
+    "namespace": "learn-v2",
+    "path": "/m2-network/v2/unit/3/lesson/4/page/7",
+    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_page": 7,
+    "destination": {
+      "kind": "lesson",
+      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "page": 7,
+      "path": "/m2-network/v3/unit/3/lesson/4/page/7"
+    }
+  },
+  {
+    "namespace": "content-stage-14",
+    "path": "/m2-network/unit/3/lesson/4/page/8",
+    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_page": 8,
+    "destination": {
+      "kind": "lesson",
+      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "page": 8,
+      "path": "/m2-network/v3/unit/3/lesson/4/page/8"
+    }
+  },
+  {
+    "namespace": "learn-v2",
+    "path": "/m2-network/v2/unit/3/lesson/4/page/8",
+    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_page": 8,
+    "destination": {
+      "kind": "lesson",
+      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "page": 8,
+      "path": "/m2-network/v3/unit/3/lesson/4/page/8"
+    }
+  },
+  {
+    "namespace": "content-stage-14",
+    "path": "/m2-network/unit/3/lesson/4/page/9",
+    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_page": 9,
+    "destination": {
+      "kind": "lesson",
+      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "page": 9,
+      "path": "/m2-network/v3/unit/3/lesson/4/page/9"
+    }
+  },
+  {
+    "namespace": "learn-v2",
+    "path": "/m2-network/v2/unit/3/lesson/4/page/9",
+    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_page": 9,
+    "destination": {
+      "kind": "lesson",
+      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "page": 9,
+      "path": "/m2-network/v3/unit/3/lesson/4/page/9"
+    }
+  },
+  {
+    "namespace": "content-stage-14",
+    "path": "/m2-network/unit/3/lesson/4/page/10",
     "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
     "source_page": 10,
     "destination": {
       "kind": "lesson",
       "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
       "page": 10,
-      "path": "/m2-network/v3/unit/3/lesson/3/page/10"
+      "path": "/m2-network/v3/unit/3/lesson/4/page/10"
+    }
+  },
+  {
+    "namespace": "learn-v2",
+    "path": "/m2-network/v2/unit/3/lesson/4/page/10",
+    "source_lesson_id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+    "source_page": 10,
+    "destination": {
+      "kind": "lesson",
+      "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
+      "page": 10,
+      "path": "/m2-network/v3/unit/3/lesson/4/page/10"
     }
   },
   {
@@ -5714,23 +5906,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/10/lesson/1/page/1",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
+    "source_lesson_id": "u10-l01-web-browser-and-document",
     "source_page": 1,
     "destination": {
       "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-      "page": 1,
-      "path": "/m2-network/v3/unit/10/lesson/1/page/1"
-    }
-  },
-  {
-    "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/10/lesson/1/page/1",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-    "source_page": 1,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
+      "id": "u10-l01-web-browser-and-document",
       "page": 1,
       "path": "/m2-network/v3/unit/10/lesson/1/page/1"
     }
@@ -5738,23 +5918,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/10/lesson/1/page/2",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
+    "source_lesson_id": "u10-l01-web-browser-and-document",
     "source_page": 2,
     "destination": {
       "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-      "page": 2,
-      "path": "/m2-network/v3/unit/10/lesson/1/page/2"
-    }
-  },
-  {
-    "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/10/lesson/1/page/2",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-    "source_page": 2,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
+      "id": "u10-l01-web-browser-and-document",
       "page": 2,
       "path": "/m2-network/v3/unit/10/lesson/1/page/2"
     }
@@ -5762,23 +5930,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/10/lesson/1/page/3",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
+    "source_lesson_id": "u10-l01-web-browser-and-document",
     "source_page": 3,
     "destination": {
       "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-      "page": 3,
-      "path": "/m2-network/v3/unit/10/lesson/1/page/3"
-    }
-  },
-  {
-    "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/10/lesson/1/page/3",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-    "source_page": 3,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
+      "id": "u10-l01-web-browser-and-document",
       "page": 3,
       "path": "/m2-network/v3/unit/10/lesson/1/page/3"
     }
@@ -5786,23 +5942,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/10/lesson/1/page/4",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
+    "source_lesson_id": "u10-l01-web-browser-and-document",
     "source_page": 4,
     "destination": {
       "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-      "page": 4,
-      "path": "/m2-network/v3/unit/10/lesson/1/page/4"
-    }
-  },
-  {
-    "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/10/lesson/1/page/4",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-    "source_page": 4,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
+      "id": "u10-l01-web-browser-and-document",
       "page": 4,
       "path": "/m2-network/v3/unit/10/lesson/1/page/4"
     }
@@ -5810,143 +5954,23 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/10/lesson/1/page/5",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
+    "source_lesson_id": "u10-l01-web-browser-and-document",
     "source_page": 5,
     "destination": {
       "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
+      "id": "u10-l01-web-browser-and-document",
       "page": 5,
       "path": "/m2-network/v3/unit/10/lesson/1/page/5"
-    }
-  },
-  {
-    "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/10/lesson/1/page/5",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-    "source_page": 5,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-      "page": 5,
-      "path": "/m2-network/v3/unit/10/lesson/1/page/5"
-    }
-  },
-  {
-    "namespace": "content-stage-14",
-    "path": "/m2-network/unit/10/lesson/1/page/6",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-    "source_page": 6,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-      "page": 6,
-      "path": "/m2-network/v3/unit/10/lesson/1/page/6"
-    }
-  },
-  {
-    "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/10/lesson/1/page/6",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-    "source_page": 6,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-      "page": 6,
-      "path": "/m2-network/v3/unit/10/lesson/1/page/6"
-    }
-  },
-  {
-    "namespace": "content-stage-14",
-    "path": "/m2-network/unit/10/lesson/1/page/7",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-    "source_page": 7,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-      "page": 7,
-      "path": "/m2-network/v3/unit/10/lesson/1/page/7"
-    }
-  },
-  {
-    "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/10/lesson/1/page/7",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-    "source_page": 7,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-      "page": 7,
-      "path": "/m2-network/v3/unit/10/lesson/1/page/7"
-    }
-  },
-  {
-    "namespace": "content-stage-14",
-    "path": "/m2-network/unit/10/lesson/1/page/8",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-    "source_page": 8,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-      "page": 8,
-      "path": "/m2-network/v3/unit/10/lesson/1/page/8"
-    }
-  },
-  {
-    "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/10/lesson/1/page/8",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-    "source_page": 8,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-      "page": 8,
-      "path": "/m2-network/v3/unit/10/lesson/1/page/8"
-    }
-  },
-  {
-    "namespace": "content-stage-14",
-    "path": "/m2-network/unit/10/lesson/1/page/9",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-    "source_page": 9,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-      "page": 9,
-      "path": "/m2-network/v3/unit/10/lesson/1/page/9"
-    }
-  },
-  {
-    "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/10/lesson/1/page/9",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-    "source_page": 9,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-      "page": 9,
-      "path": "/m2-network/v3/unit/10/lesson/1/page/9"
     }
   },
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/10/lesson/2/page/1",
-    "source_lesson_id": "u6-l36-was와-restful-api-그리고-jvm",
+    "source_lesson_id": "u10-l02-login-and-session-state",
     "source_page": 1,
     "destination": {
       "kind": "lesson",
-      "id": "u6-l36-was와-restful-api-그리고-jvm",
-      "page": 1,
-      "path": "/m2-network/v3/unit/10/lesson/2/page/1"
-    }
-  },
-  {
-    "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/10/lesson/2/page/1",
-    "source_lesson_id": "u6-l36-was와-restful-api-그리고-jvm",
-    "source_page": 1,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l36-was와-restful-api-그리고-jvm",
+      "id": "u10-l02-login-and-session-state",
       "page": 1,
       "path": "/m2-network/v3/unit/10/lesson/2/page/1"
     }
@@ -5954,23 +5978,11 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/10/lesson/2/page/2",
-    "source_lesson_id": "u6-l36-was와-restful-api-그리고-jvm",
+    "source_lesson_id": "u10-l02-login-and-session-state",
     "source_page": 2,
     "destination": {
       "kind": "lesson",
-      "id": "u6-l36-was와-restful-api-그리고-jvm",
-      "page": 2,
-      "path": "/m2-network/v3/unit/10/lesson/2/page/2"
-    }
-  },
-  {
-    "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/10/lesson/2/page/2",
-    "source_lesson_id": "u6-l36-was와-restful-api-그리고-jvm",
-    "source_page": 2,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l36-was와-restful-api-그리고-jvm",
+      "id": "u10-l02-login-and-session-state",
       "page": 2,
       "path": "/m2-network/v3/unit/10/lesson/2/page/2"
     }
@@ -5978,121 +5990,109 @@
   {
     "namespace": "content-stage-14",
     "path": "/m2-network/unit/10/lesson/2/page/3",
-    "source_lesson_id": "u6-l36-was와-restful-api-그리고-jvm",
+    "source_lesson_id": "u10-l02-login-and-session-state",
     "source_page": 3,
     "destination": {
       "kind": "lesson",
-      "id": "u6-l36-was와-restful-api-그리고-jvm",
-      "page": 3,
-      "path": "/m2-network/v3/unit/10/lesson/2/page/3"
-    }
-  },
-  {
-    "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/10/lesson/2/page/3",
-    "source_lesson_id": "u6-l36-was와-restful-api-그리고-jvm",
-    "source_page": 3,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l36-was와-restful-api-그리고-jvm",
+      "id": "u10-l02-login-and-session-state",
       "page": 3,
       "path": "/m2-network/v3/unit/10/lesson/2/page/3"
     }
   },
   {
     "namespace": "content-stage-14",
-    "path": "/m2-network/unit/10/lesson/2/page/4",
-    "source_lesson_id": "u6-l36-was와-restful-api-그리고-jvm",
+    "path": "/m2-network/unit/10/lesson/3/page/1",
+    "source_lesson_id": "u10-l03-web-application-architecture",
+    "source_page": 1,
+    "destination": {
+      "kind": "lesson",
+      "id": "u10-l03-web-application-architecture",
+      "page": 1,
+      "path": "/m2-network/v3/unit/10/lesson/3/page/1"
+    }
+  },
+  {
+    "namespace": "content-stage-14",
+    "path": "/m2-network/unit/10/lesson/3/page/2",
+    "source_lesson_id": "u10-l03-web-application-architecture",
+    "source_page": 2,
+    "destination": {
+      "kind": "lesson",
+      "id": "u10-l03-web-application-architecture",
+      "page": 2,
+      "path": "/m2-network/v3/unit/10/lesson/3/page/2"
+    }
+  },
+  {
+    "namespace": "content-stage-14",
+    "path": "/m2-network/unit/10/lesson/3/page/3",
+    "source_lesson_id": "u10-l03-web-application-architecture",
+    "source_page": 3,
+    "destination": {
+      "kind": "lesson",
+      "id": "u10-l03-web-application-architecture",
+      "page": 3,
+      "path": "/m2-network/v3/unit/10/lesson/3/page/3"
+    }
+  },
+  {
+    "namespace": "content-stage-14",
+    "path": "/m2-network/unit/10/lesson/3/page/4",
+    "source_lesson_id": "u10-l03-web-application-architecture",
     "source_page": 4,
     "destination": {
       "kind": "lesson",
-      "id": "u6-l36-was와-restful-api-그리고-jvm",
+      "id": "u10-l03-web-application-architecture",
       "page": 4,
-      "path": "/m2-network/v3/unit/10/lesson/2/page/4"
+      "path": "/m2-network/v3/unit/10/lesson/3/page/4"
     }
   },
   {
-    "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/10/lesson/2/page/4",
-    "source_lesson_id": "u6-l36-was와-restful-api-그리고-jvm",
+    "namespace": "content-stage-14",
+    "path": "/m2-network/unit/10/lesson/4/page/1",
+    "source_lesson_id": "u10-l04-api-and-web-security",
+    "source_page": 1,
+    "destination": {
+      "kind": "lesson",
+      "id": "u10-l04-api-and-web-security",
+      "page": 1,
+      "path": "/m2-network/v3/unit/10/lesson/4/page/1"
+    }
+  },
+  {
+    "namespace": "content-stage-14",
+    "path": "/m2-network/unit/10/lesson/4/page/2",
+    "source_lesson_id": "u10-l04-api-and-web-security",
+    "source_page": 2,
+    "destination": {
+      "kind": "lesson",
+      "id": "u10-l04-api-and-web-security",
+      "page": 2,
+      "path": "/m2-network/v3/unit/10/lesson/4/page/2"
+    }
+  },
+  {
+    "namespace": "content-stage-14",
+    "path": "/m2-network/unit/10/lesson/4/page/3",
+    "source_lesson_id": "u10-l04-api-and-web-security",
+    "source_page": 3,
+    "destination": {
+      "kind": "lesson",
+      "id": "u10-l04-api-and-web-security",
+      "page": 3,
+      "path": "/m2-network/v3/unit/10/lesson/4/page/3"
+    }
+  },
+  {
+    "namespace": "content-stage-14",
+    "path": "/m2-network/unit/10/lesson/4/page/4",
+    "source_lesson_id": "u10-l04-api-and-web-security",
     "source_page": 4,
     "destination": {
       "kind": "lesson",
-      "id": "u6-l36-was와-restful-api-그리고-jvm",
+      "id": "u10-l04-api-and-web-security",
       "page": 4,
-      "path": "/m2-network/v3/unit/10/lesson/2/page/4"
-    }
-  },
-  {
-    "namespace": "content-stage-14",
-    "path": "/m2-network/unit/10/lesson/2/page/5",
-    "source_lesson_id": "u6-l36-was와-restful-api-그리고-jvm",
-    "source_page": 5,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l36-was와-restful-api-그리고-jvm",
-      "page": 5,
-      "path": "/m2-network/v3/unit/10/lesson/2/page/5"
-    }
-  },
-  {
-    "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/10/lesson/2/page/5",
-    "source_lesson_id": "u6-l36-was와-restful-api-그리고-jvm",
-    "source_page": 5,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l36-was와-restful-api-그리고-jvm",
-      "page": 5,
-      "path": "/m2-network/v3/unit/10/lesson/2/page/5"
-    }
-  },
-  {
-    "namespace": "content-stage-14",
-    "path": "/m2-network/unit/10/lesson/2/page/6",
-    "source_lesson_id": "u6-l36-was와-restful-api-그리고-jvm",
-    "source_page": 6,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l36-was와-restful-api-그리고-jvm",
-      "page": 6,
-      "path": "/m2-network/v3/unit/10/lesson/2/page/6"
-    }
-  },
-  {
-    "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/10/lesson/2/page/6",
-    "source_lesson_id": "u6-l36-was와-restful-api-그리고-jvm",
-    "source_page": 6,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l36-was와-restful-api-그리고-jvm",
-      "page": 6,
-      "path": "/m2-network/v3/unit/10/lesson/2/page/6"
-    }
-  },
-  {
-    "namespace": "content-stage-14",
-    "path": "/m2-network/unit/10/lesson/2/page/7",
-    "source_lesson_id": "u6-l36-was와-restful-api-그리고-jvm",
-    "source_page": 7,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l36-was와-restful-api-그리고-jvm",
-      "page": 7,
-      "path": "/m2-network/v3/unit/10/lesson/2/page/7"
-    }
-  },
-  {
-    "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/10/lesson/2/page/7",
-    "source_lesson_id": "u6-l36-was와-restful-api-그리고-jvm",
-    "source_page": 7,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l36-was와-restful-api-그리고-jvm",
-      "page": 7,
-      "path": "/m2-network/v3/unit/10/lesson/2/page/7"
+      "path": "/m2-network/v3/unit/10/lesson/4/page/4"
     }
   },
   {
@@ -11556,7 +11556,7 @@
       "kind": "lesson",
       "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 1,
-      "path": "/m2-network/v3/unit/3/lesson/1/page/1"
+      "path": "/m2-network/v3/unit/3/lesson/2/page/1"
     }
   },
   {
@@ -11568,7 +11568,7 @@
       "kind": "lesson",
       "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 2,
-      "path": "/m2-network/v3/unit/3/lesson/1/page/2"
+      "path": "/m2-network/v3/unit/3/lesson/2/page/2"
     }
   },
   {
@@ -11580,7 +11580,7 @@
       "kind": "lesson",
       "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 3,
-      "path": "/m2-network/v3/unit/3/lesson/1/page/3"
+      "path": "/m2-network/v3/unit/3/lesson/2/page/3"
     }
   },
   {
@@ -11592,7 +11592,7 @@
       "kind": "lesson",
       "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 4,
-      "path": "/m2-network/v3/unit/3/lesson/1/page/4"
+      "path": "/m2-network/v3/unit/3/lesson/2/page/4"
     }
   },
   {
@@ -11604,7 +11604,7 @@
       "kind": "lesson",
       "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 5,
-      "path": "/m2-network/v3/unit/3/lesson/1/page/5"
+      "path": "/m2-network/v3/unit/3/lesson/2/page/5"
     }
   },
   {
@@ -11616,7 +11616,7 @@
       "kind": "lesson",
       "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 6,
-      "path": "/m2-network/v3/unit/3/lesson/1/page/6"
+      "path": "/m2-network/v3/unit/3/lesson/2/page/6"
     }
   },
   {
@@ -11628,7 +11628,7 @@
       "kind": "lesson",
       "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 7,
-      "path": "/m2-network/v3/unit/3/lesson/1/page/7"
+      "path": "/m2-network/v3/unit/3/lesson/2/page/7"
     }
   },
   {
@@ -11640,19 +11640,7 @@
       "kind": "lesson",
       "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
       "page": 8,
-      "path": "/m2-network/v3/unit/3/lesson/1/page/8"
-    }
-  },
-  {
-    "namespace": "learn-unversioned",
-    "path": "/m2-network/unit/3/lesson/1/page/9",
-    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
-    "source_page": 9,
-    "destination": {
-      "kind": "lesson",
-      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
-      "page": 9,
-      "path": "/m2-network/v3/unit/3/lesson/1/page/9"
+      "path": "/m2-network/v3/unit/3/lesson/2/page/8"
     }
   },
   {
@@ -11664,7 +11652,7 @@
       "kind": "lesson",
       "id": "u3-l09-l2-스위치에-대해서",
       "page": 1,
-      "path": "/m2-network/v3/unit/3/lesson/2/page/1"
+      "path": "/m2-network/v3/unit/3/lesson/3/page/1"
     }
   },
   {
@@ -11676,7 +11664,7 @@
       "kind": "lesson",
       "id": "u3-l09-l2-스위치에-대해서",
       "page": 2,
-      "path": "/m2-network/v3/unit/3/lesson/2/page/2"
+      "path": "/m2-network/v3/unit/3/lesson/3/page/2"
     }
   },
   {
@@ -11688,7 +11676,7 @@
       "kind": "lesson",
       "id": "u3-l09-l2-스위치에-대해서",
       "page": 3,
-      "path": "/m2-network/v3/unit/3/lesson/2/page/3"
+      "path": "/m2-network/v3/unit/3/lesson/3/page/3"
     }
   },
   {
@@ -11700,7 +11688,7 @@
       "kind": "lesson",
       "id": "u3-l09-l2-스위치에-대해서",
       "page": 4,
-      "path": "/m2-network/v3/unit/3/lesson/2/page/4"
+      "path": "/m2-network/v3/unit/3/lesson/3/page/4"
     }
   },
   {
@@ -11712,7 +11700,7 @@
       "kind": "lesson",
       "id": "u3-l09-l2-스위치에-대해서",
       "page": 5,
-      "path": "/m2-network/v3/unit/3/lesson/2/page/5"
+      "path": "/m2-network/v3/unit/3/lesson/3/page/5"
     }
   },
   {
@@ -11724,7 +11712,7 @@
       "kind": "lesson",
       "id": "u3-l09-l2-스위치에-대해서",
       "page": 6,
-      "path": "/m2-network/v3/unit/3/lesson/2/page/6"
+      "path": "/m2-network/v3/unit/3/lesson/3/page/6"
     }
   },
   {
@@ -11736,7 +11724,7 @@
       "kind": "lesson",
       "id": "u3-l09-l2-스위치에-대해서",
       "page": 7,
-      "path": "/m2-network/v3/unit/3/lesson/2/page/7"
+      "path": "/m2-network/v3/unit/3/lesson/3/page/7"
     }
   },
   {
@@ -11748,7 +11736,7 @@
       "kind": "lesson",
       "id": "u3-l09-l2-스위치에-대해서",
       "page": 8,
-      "path": "/m2-network/v3/unit/3/lesson/2/page/8"
+      "path": "/m2-network/v3/unit/3/lesson/3/page/8"
     }
   },
   {
@@ -11760,7 +11748,7 @@
       "kind": "lesson",
       "id": "u3-l09-l2-스위치에-대해서",
       "page": 9,
-      "path": "/m2-network/v3/unit/3/lesson/2/page/9"
+      "path": "/m2-network/v3/unit/3/lesson/3/page/9"
     }
   },
   {
@@ -11772,7 +11760,7 @@
       "kind": "lesson",
       "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
       "page": 1,
-      "path": "/m2-network/v3/unit/3/lesson/3/page/1"
+      "path": "/m2-network/v3/unit/3/lesson/4/page/1"
     }
   },
   {
@@ -11784,7 +11772,7 @@
       "kind": "lesson",
       "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
       "page": 2,
-      "path": "/m2-network/v3/unit/3/lesson/3/page/2"
+      "path": "/m2-network/v3/unit/3/lesson/4/page/2"
     }
   },
   {
@@ -11796,7 +11784,7 @@
       "kind": "lesson",
       "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
       "page": 3,
-      "path": "/m2-network/v3/unit/3/lesson/3/page/3"
+      "path": "/m2-network/v3/unit/3/lesson/4/page/3"
     }
   },
   {
@@ -11808,7 +11796,7 @@
       "kind": "lesson",
       "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
       "page": 4,
-      "path": "/m2-network/v3/unit/3/lesson/3/page/4"
+      "path": "/m2-network/v3/unit/3/lesson/4/page/4"
     }
   },
   {
@@ -11820,7 +11808,7 @@
       "kind": "lesson",
       "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
       "page": 5,
-      "path": "/m2-network/v3/unit/3/lesson/3/page/5"
+      "path": "/m2-network/v3/unit/3/lesson/4/page/5"
     }
   },
   {
@@ -11832,7 +11820,7 @@
       "kind": "lesson",
       "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
       "page": 6,
-      "path": "/m2-network/v3/unit/3/lesson/3/page/6"
+      "path": "/m2-network/v3/unit/3/lesson/4/page/6"
     }
   },
   {
@@ -11844,7 +11832,7 @@
       "kind": "lesson",
       "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
       "page": 7,
-      "path": "/m2-network/v3/unit/3/lesson/3/page/7"
+      "path": "/m2-network/v3/unit/3/lesson/4/page/7"
     }
   },
   {
@@ -11856,7 +11844,7 @@
       "kind": "lesson",
       "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
       "page": 8,
-      "path": "/m2-network/v3/unit/3/lesson/3/page/8"
+      "path": "/m2-network/v3/unit/3/lesson/4/page/8"
     }
   },
   {
@@ -11868,7 +11856,7 @@
       "kind": "lesson",
       "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
       "page": 9,
-      "path": "/m2-network/v3/unit/3/lesson/3/page/9"
+      "path": "/m2-network/v3/unit/3/lesson/4/page/9"
     }
   },
   {
@@ -11880,7 +11868,7 @@
       "kind": "lesson",
       "id": "u3-l10-lan과-wan의-경계-그리고-broadcast",
       "page": 10,
-      "path": "/m2-network/v3/unit/3/lesson/3/page/10"
+      "path": "/m2-network/v3/unit/3/lesson/4/page/10"
     }
   },
   {
@@ -13921,198 +13909,6 @@
       "id": "u6-l34-굵고-짧게-살펴보는-http",
       "page": 9,
       "path": "/m2-network/v3/unit/9/lesson/4/page/9"
-    }
-  },
-  {
-    "namespace": "learn-unversioned",
-    "path": "/m2-network/unit/6/lesson/5/page/1",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-    "source_page": 1,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-      "page": 1,
-      "path": "/m2-network/v3/unit/10/lesson/1/page/1"
-    }
-  },
-  {
-    "namespace": "learn-unversioned",
-    "path": "/m2-network/unit/6/lesson/5/page/2",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-    "source_page": 2,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-      "page": 2,
-      "path": "/m2-network/v3/unit/10/lesson/1/page/2"
-    }
-  },
-  {
-    "namespace": "learn-unversioned",
-    "path": "/m2-network/unit/6/lesson/5/page/3",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-    "source_page": 3,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-      "page": 3,
-      "path": "/m2-network/v3/unit/10/lesson/1/page/3"
-    }
-  },
-  {
-    "namespace": "learn-unversioned",
-    "path": "/m2-network/unit/6/lesson/5/page/4",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-    "source_page": 4,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-      "page": 4,
-      "path": "/m2-network/v3/unit/10/lesson/1/page/4"
-    }
-  },
-  {
-    "namespace": "learn-unversioned",
-    "path": "/m2-network/unit/6/lesson/5/page/5",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-    "source_page": 5,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-      "page": 5,
-      "path": "/m2-network/v3/unit/10/lesson/1/page/5"
-    }
-  },
-  {
-    "namespace": "learn-unversioned",
-    "path": "/m2-network/unit/6/lesson/5/page/6",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-    "source_page": 6,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-      "page": 6,
-      "path": "/m2-network/v3/unit/10/lesson/1/page/6"
-    }
-  },
-  {
-    "namespace": "learn-unversioned",
-    "path": "/m2-network/unit/6/lesson/5/page/7",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-    "source_page": 7,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-      "page": 7,
-      "path": "/m2-network/v3/unit/10/lesson/1/page/7"
-    }
-  },
-  {
-    "namespace": "learn-unversioned",
-    "path": "/m2-network/unit/6/lesson/5/page/8",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-    "source_page": 8,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-      "page": 8,
-      "path": "/m2-network/v3/unit/10/lesson/1/page/8"
-    }
-  },
-  {
-    "namespace": "learn-unversioned",
-    "path": "/m2-network/unit/6/lesson/5/page/9",
-    "source_lesson_id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-    "source_page": 9,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
-      "page": 9,
-      "path": "/m2-network/v3/unit/10/lesson/1/page/9"
-    }
-  },
-  {
-    "namespace": "learn-unversioned",
-    "path": "/m2-network/unit/6/lesson/6/page/1",
-    "source_lesson_id": "u6-l36-was와-restful-api-그리고-jvm",
-    "source_page": 1,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l36-was와-restful-api-그리고-jvm",
-      "page": 1,
-      "path": "/m2-network/v3/unit/10/lesson/2/page/1"
-    }
-  },
-  {
-    "namespace": "learn-unversioned",
-    "path": "/m2-network/unit/6/lesson/6/page/2",
-    "source_lesson_id": "u6-l36-was와-restful-api-그리고-jvm",
-    "source_page": 2,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l36-was와-restful-api-그리고-jvm",
-      "page": 2,
-      "path": "/m2-network/v3/unit/10/lesson/2/page/2"
-    }
-  },
-  {
-    "namespace": "learn-unversioned",
-    "path": "/m2-network/unit/6/lesson/6/page/3",
-    "source_lesson_id": "u6-l36-was와-restful-api-그리고-jvm",
-    "source_page": 3,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l36-was와-restful-api-그리고-jvm",
-      "page": 3,
-      "path": "/m2-network/v3/unit/10/lesson/2/page/3"
-    }
-  },
-  {
-    "namespace": "learn-unversioned",
-    "path": "/m2-network/unit/6/lesson/6/page/4",
-    "source_lesson_id": "u6-l36-was와-restful-api-그리고-jvm",
-    "source_page": 4,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l36-was와-restful-api-그리고-jvm",
-      "page": 4,
-      "path": "/m2-network/v3/unit/10/lesson/2/page/4"
-    }
-  },
-  {
-    "namespace": "learn-unversioned",
-    "path": "/m2-network/unit/6/lesson/6/page/5",
-    "source_lesson_id": "u6-l36-was와-restful-api-그리고-jvm",
-    "source_page": 5,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l36-was와-restful-api-그리고-jvm",
-      "page": 5,
-      "path": "/m2-network/v3/unit/10/lesson/2/page/5"
-    }
-  },
-  {
-    "namespace": "learn-unversioned",
-    "path": "/m2-network/unit/6/lesson/6/page/6",
-    "source_lesson_id": "u6-l36-was와-restful-api-그리고-jvm",
-    "source_page": 6,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l36-was와-restful-api-그리고-jvm",
-      "page": 6,
-      "path": "/m2-network/v3/unit/10/lesson/2/page/6"
-    }
-  },
-  {
-    "namespace": "learn-unversioned",
-    "path": "/m2-network/unit/6/lesson/6/page/7",
-    "source_lesson_id": "u6-l36-was와-restful-api-그리고-jvm",
-    "source_page": 7,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l36-was와-restful-api-그리고-jvm",
-      "page": 7,
-      "path": "/m2-network/v3/unit/10/lesson/2/page/7"
     }
   },
   {

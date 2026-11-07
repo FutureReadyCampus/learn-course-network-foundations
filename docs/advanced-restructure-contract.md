@@ -44,6 +44,7 @@
 ## 주소와 기록 호환
 
 - 주소의 단원·Lesson 숫자를 새 순서에 바로 대입하지 않는다. 고정된 원본 경로 별칭을 원 Lesson/Page로 해석한 뒤 새 Lesson/Page로 바꾼다. U11L7 P2는 새 U11L4 P9다.
+- 사용자가 결정한 예외로, Unit 10의 주소 호환성은 이번 적용에서 보장하지 않는다. Learn에 남은 과거 두 Lesson(`u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론`, `u6-l36-was와-restful-api-그리고-jvm`)의 unversioned 별칭과 학습 기록 이관은 만들지 않는다. 현재 stage의 Unit 10 네 Lesson 경로도 Learn v2 별칭으로 내보내지 않는다. Unit 10은 새 원고·새 경로로 시작한다.
 - 새 5 Unit 판본은 `/m2-network/v3/...` 주소를 쓴다. 이전 Learn `/v2` 주소와 콘텐츠 stage의 버전 없는 주소는 별도 namespace로 정확히 대응한다.
 - 소개·자료 원고의 URL은 새 기술 Lesson으로 보내지 않는다. 매핑이 없거나 제외된 원고라면 잘못된 기술 내용을 조용히 열지 않고 해석 실패로 남긴다.
 - 이전 `NetworkState`, 답안, 이벤트, 완료 기록은 삭제하거나 새 Lesson에 근거 없이 복사하지 않는다. 완전한 원 Lesson 완료 증거가 없으면 병합 Lesson의 완료를 추론하지 않는다. 기록을 바꾸는 승계는 아카이브와 원자적 처리 근거가 있을 때만 수행한다.
@@ -53,7 +54,7 @@
 
 ## 감사 기준과 검증
 
-스냅샷은 기존 심화 원고 23개, 전체 203 Page, SVG 30개의 해시(원래 다이어그램 22개와 안내 원고의 그림 8개)를 보존한다. 이 중 기술 원고 194 Page만 20개 목표 Lesson에 각각 한 번 배정한다. 소개 8 Page와 인쇄자료 1 Page는 audit-only 제외 항목이다. 최신 stage 기준 원고 카탈로그는 457 Page이며, 콘텐츠 stage 및 Learn v2 원고 경로 별칭은 각각 448개, 구판 unversioned 경로 별칭은 442개다(기술 출처에만 연결). 준비 계약에서 사용하던 462/456 및 총 1,380 별칭은 소개·자료 URL까지 목적지에 보내던 과거 제안이며 현재 계약에서는 폐기했다.
+스냅샷은 기존 심화 원고 23개, 전체 203 Page, SVG 30개의 해시(원래 다이어그램 22개와 안내 원고의 그림 8개)를 보존한다. 이 중 기술 원고 194 Page만 20개 목표 Lesson에 각각 한 번 배정한다. 소개 8 Page와 인쇄자료 1 Page는 audit-only 제외 항목이다. 현재 작업본 기준 원고 카탈로그는 465 Page다. 주소 별칭은 콘텐츠 stage 456개, Learn v2 440개, unversioned 425개다. Unit 10의 과거 Learn Lesson 두 개와 현재 stage의 네 Lesson은 의도적으로 Learn v2/unversioned 간 별칭 대응에서 제외한다. 준비 계약에서 사용하던 462/456 및 총 1,380 별칭은 소개·자료 URL까지 목적지에 보내던 과거 제안이며 현재 계약에서는 폐기했다.
 
 `python3 scripts/plan_advanced_restructure.py`의 합성 테스트는 194개 기술 Page, 제외된 9개 Page, 30개 자산 해시, 주소 offset, 병합·분할 경계, 공개 조건 및 부분 완료 fail-closed를 확인한다. `python3 scripts/test_advanced_restructure.py -v`가 통과해야 한다.
 

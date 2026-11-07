@@ -90,6 +90,16 @@
     "U11L1",
     "U11L4"
   ],
+  "legacy_unmapped_lesson_ids": [
+    "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
+    "u6-l36-was와-restful-api-그리고-jvm"
+  ],
+  "learn_v2_unmapped_lesson_ids": [
+    "u10-l01-web-browser-and-document",
+    "u10-l02-login-and-session-state",
+    "u10-l03-web-application-architecture",
+    "u10-l04-api-and-web-security"
+  ],
   "learn_legacy_units": [
     [
       "u1-prerequisites",

@@ -88,10 +88,29 @@ class AdvancedRestructureTest(unittest.TestCase):
         self.assertEqual(self.plan["counts"]["technical_pages"], 194)
         self.assertEqual(self.plan["counts"]["excluded_pages"], 9)
         self.assertEqual(self.plan["counts"]["source_assets"], 30)
-        self.assertEqual(self.plan["counts"]["source_catalog_pages"], 457)
+        self.assertEqual(self.plan["counts"]["source_catalog_pages"], 465)
         self.assertEqual(self.plan["counts"]["aliases_by_namespace"], {
-            "content-stage-14": 448, "learn-v2": 448, "learn-unversioned": 442})
+            "content-stage-14": 456, "learn-v2": 440, "learn-unversioned": 425})
         self.assertFalse(self.plan["runtime_ready"])
+
+    def test_unit10_old_lessons_are_intentionally_unmapped(self):
+        old_unit10 = set(self.contract["legacy_unmapped_lesson_ids"])
+        self.assertEqual(old_unit10, {
+            "u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론",
+            "u6-l36-was와-restful-api-그리고-jvm",
+        })
+        self.assertTrue(old_unit10.isdisjoint({lesson["id"] for lesson in self.applied_catalog["lessons"]}))
+        self.assertFalse(any(alias["namespace"] == "learn-unversioned"
+                             and alias["source_lesson_id"] in old_unit10
+                             for alias in self.plan["aliases"]))
+        current_stage_unit10 = set(self.contract["learn_v2_unmapped_lesson_ids"])
+        self.assertEqual(current_stage_unit10, {
+            "u10-l01-web-browser-and-document", "u10-l02-login-and-session-state",
+            "u10-l03-web-application-architecture", "u10-l04-api-and-web-security",
+        })
+        self.assertFalse(any(alias["namespace"] == "learn-v2"
+                             and alias["source_lesson_id"] in current_stage_unit10
+                             for alias in self.plan["aliases"]))
 
     def test_applied_course_has_fifteen_units_and_twenty_advanced_lessons(self):
         unit_ids = [unit["id"] for unit in self.applied_catalog["units"]]
@@ -103,13 +122,13 @@ class AdvancedRestructureTest(unittest.TestCase):
         self.assertEqual(advanced_ids, [item["id"] for item in self.plan["lessons"]])
         self.assertEqual(sum(len(lesson["pages"]) for lesson in self.applied_catalog["lessons"]
                              if lesson["unit"] in set(unit_ids[10:])), 194)
-        self.assertEqual(len(self.applied_catalog["route_aliases"]), 1338)
+        self.assertEqual(len(self.applied_catalog["route_aliases"]), 1321)
         self.assertEqual(self.applied_catalog["advanced_completion_migration"], {
             "schema": "network-advanced-completion-v1",
             "from_version": "network-1f62c2b58554ec7c73365fc47409710d3cdca621",
             "target_unit_ids": ["network-devices", "router-and-nat", "load-balancing",
                                 "vpn-and-security", "network-security-solutions"],
-            "aliases_sha256": "c6eb0ea44764cc45335415cb1e240d0667f4cf387ec496d5e703b77d412c9927",
+            "aliases_sha256": "dd4b57b65e7ebdceeff0403cef62b8a9e7290080fb4e68d731f4edc625e29995",
         })
 
     def test_guide_and_print_material_are_excluded_from_the_new_course(self):
