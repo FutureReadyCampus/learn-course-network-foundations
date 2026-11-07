@@ -2,7 +2,7 @@
 id: u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소
 title: 네트워크 연결 지점과 MAC 주소, 프레임
 source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/lesson-08.md
-wiki_diagram: units/03-layer2-switching/lessons/01-nic-l2-frame-lan-카드-그리고-mac-주소/assets/diagrams/lesson-08.svg
+wiki_diagram: units/03-layer2-switching/lessons/02-nic-l2-frame-lan-카드-그리고-mac-주소/assets/diagrams/lesson-08.svg
 page_metadata:
 - terms:
   - NIC (Network Interface Card)
@@ -331,140 +331,6 @@ page_metadata:
     title: "LAN, MAN, WAN"
     alt: "집 공유기에 휴대전화와 태블릿은 Wi-Fi 점선으로, 데스크톱과 IPTV는 케이블 실선으로 연결되어 있습니다. 이 장치들을 LAN(마을) 테두리가 감싸고, 이웃 LAN을 포함한 MAN(도시) 테두리, 다른 도시와 먼 지역까지 포함한 WAN(더 넓은 지역) 테두리가 차례로 넓게 그려집니다. 마지막에 범위의 이름일 뿐 속도 순위가 아니라는 문구가 나옵니다."
     caption: "LAN·MAN·WAN은 네트워크가 어느 정도 범위에 걸쳐 있는지를 나타내는 이름입니다. 범위가 넓다고 더 빠르거나 품질이 좋은 것은 아닙니다."
-- terms:
-  - OSI 7계층 (OSI 7 layers)
-  animations:
-  - file: l08-osi-layer-stack.svg
-    title: 일곱 층으로 나눠 보는 통신
-    alt: 위에서 아래로 7 응용, 6 표현, 5 세션, 4 전송, 3 네트워크, 2 데이터 링크, 1 물리 계층이 쌓여 있습니다. 아래를 가리키는 화살표와 함께 계층이 차례로 강조됩니다.
-    caption: 계층 이름과 순서를 그림으로 다시 확인한 뒤 아래 퀴즈를 풀어 보세요.
-  questions:
-  - id: u3-01-osi-q01
-    kind: choice
-    difficulty: easy
-    prompt: 목적지 IP 주소를 바탕으로 데이터가 어느 네트워크와 경로를 거쳐 갈지 찾습니다. 이 역할을 하는 계층은 무엇인가요?
-    choices:
-    - id: a
-      text: 전송 계층
-      feedback: 전송 계층은 두 끝의 프로그램 사이에서 데이터를 전달합니다. 목적지 네트워크로 갈 경로를 찾는 역할은 네트워크 계층입니다.
-    - id: b
-      text: 표현 계층
-      feedback: 표현 계층은 데이터 표현 형식을 맞추거나 바꾸고 보호하는 역할입니다.
-    - id: c
-      text: 네트워크 계층
-      feedback: 맞아요. 네트워크 계층은 IP 주소를 바탕으로 목적지 쪽 경로를 찾습니다.
-    - id: d
-      text: 물리 계층
-      feedback: 물리 계층은 비트를 전기·빛·무선 신호로 실어 보냅니다.
-    answer: c
-  - id: u3-01-osi-q02
-    kind: choice
-    difficulty: medium
-    prompt: 비트를 케이블의 전기 신호, 광섬유의 빛, 무선 신호로 바꾸어 전달합니다. 이 역할을 하는 계층은 무엇인가요?
-    choices:
-    - id: a
-      text: 데이터 링크 계층
-      feedback: 데이터 링크 계층은 바로 이어진 구간에서 프레임을 전달합니다.
-    - id: b
-      text: 응용 계층
-      feedback: 응용 계층은 프로그램이 네트워크로 이용하는 기능을 다룹니다.
-    - id: c
-      text: 네트워크 계층
-      feedback: 네트워크 계층은 목적지까지 갈 경로를 찾습니다.
-    - id: d
-      text: 물리 계층
-      feedback: 맞아요. 물리 계층은 비트를 전기·빛·무선 신호로 실어 매체를 통해 전달합니다.
-    answer: d
-  - id: u3-01-osi-q03
-    kind: choice
-    difficulty: medium
-    prompt: 통신을 시작하고 이어 가며 마칠 수 있도록 두 프로그램 사이의 대화 상태를 다룹니다. 이 역할을 하는 계층은 무엇인가요?
-    choices:
-    - id: a
-      text: 세션 계층
-      feedback: 맞아요. 세션 계층은 통신 대화를 시작하고 이어 가고 마치는 역할을 맡습니다.
-    - id: b
-      text: 표현 계층
-      feedback: 표현 계층은 데이터 표현 형식을 맞추고 필요하면 변환하거나 보호합니다.
-    - id: c
-      text: 전송 계층
-      feedback: 전송 계층은 끝에 있는 프로그램 사이로 데이터를 전달합니다.
-    - id: d
-      text: 데이터 링크 계층
-      feedback: 데이터 링크 계층은 바로 이어진 네트워크 구간에서 프레임을 전달합니다.
-    answer: a
-  - id: u3-01-osi-q04
-    kind: choice
-    difficulty: medium
-    prompt: 같은 네트워크 구간에서 바로 이웃한 장치 사이로 프레임을 전달합니다. 이 역할을 하는 계층은 무엇인가요?
-    choices:
-    - id: a
-      text: 네트워크 계층
-      feedback: 네트워크 계층은 목적지까지 갈 경로를 찾습니다.
-    - id: b
-      text: 데이터 링크 계층
-      feedback: 맞아요. 데이터 링크 계층은 한 구간에서 이웃한 장치 사이로 프레임을 전달합니다.
-    - id: c
-      text: 물리 계층
-      feedback: 물리 계층은 프레임의 비트를 신호로 실어 매체를 통해 보냅니다.
-    - id: d
-      text: 전송 계층
-      feedback: 전송 계층은 두 끝의 프로그램 사이에서 데이터를 전달합니다.
-    answer: b
-  - id: u3-01-osi-q05
-    kind: choice
-    difficulty: medium
-    prompt: 웹 요청이나 이름 조회처럼 프로그램이 네트워크를 이용해 제공하거나 사용하는 기능을 다룹니다. 이 역할을 하는 계층은 무엇인가요?
-    choices:
-    - id: a
-      text: 세션 계층
-      feedback: 세션 계층은 프로그램 사이의 통신 대화를 시작하고 이어 가고 마칩니다.
-    - id: b
-      text: 물리 계층
-      feedback: 물리 계층은 비트를 전기·빛·무선 신호로 실어 보냅니다.
-    - id: c
-      text: 표현 계층
-      feedback: 표현 계층은 데이터가 표현되는 형식과 변환을 다룹니다.
-    - id: d
-      text: 응용 계층
-      feedback: 맞아요. 응용 계층은 프로그램이 네트워크로 이용하는 기능과 규칙을 다룹니다.
-    answer: d
-  - id: u3-01-osi-q06
-    kind: choice
-    difficulty: medium
-    prompt: 출발지와 목적지의 프로그램 끝점 사이에서 데이터를 전달합니다. 이 역할을 하는 계층은 무엇인가요?
-    choices:
-    - id: a
-      text: 전송 계층
-      feedback: 맞아요. 전송 계층은 통신하는 두 끝의 프로그램 사이로 데이터를 전달합니다.
-    - id: b
-      text: 네트워크 계층
-      feedback: 네트워크 계층은 IP 주소를 바탕으로 목적지 네트워크와 경로를 찾습니다.
-    - id: c
-      text: 응용 계층
-      feedback: 응용 계층은 프로그램이 네트워크를 이용해 제공하거나 사용하는 기능을 다룹니다.
-    - id: d
-      text: 데이터 링크 계층
-      feedback: 데이터 링크 계층은 바로 이웃한 장치 사이의 한 구간에서 프레임을 전달합니다.
-    answer: a
-  - id: u3-01-osi-q07
-    kind: choice
-    difficulty: medium
-    prompt: 데이터를 서로 다른 형식으로 표현하는 방식을 맞추고, 필요한 경우 형식을 변환하거나 암호화·압축합니다. 이 역할을 하는 계층은 무엇인가요?
-    choices:
-    - id: a
-      text: 데이터 링크 계층
-      feedback: 데이터 링크 계층은 같은 구간에서 프레임을 전달합니다.
-    - id: b
-      text: 네트워크 계층
-      feedback: 네트워크 계층은 목적지까지 갈 경로를 찾습니다.
-    - id: c
-      text: 표현 계층
-      feedback: 맞아요. 표현 계층은 데이터의 표현 형식과 필요한 변환을 다룹니다.
-    - id: d
-      text: 세션 계층
-      feedback: 세션 계층은 통신 대화를 시작하고 이어 가고 마칩니다.
-    answer: c
 - terms:
   - MAC 주소 (Media Access Control address)
   - 식별자 (identifier)
@@ -969,9 +835,9 @@ page_metadata:
     title: "내 컴퓨터에서 연결 지점 찾기"
     alt: "명령 프롬프트 창에 ipconfig /all이 입력되고 무선 LAN 어댑터 Wi-Fi와 Ethernet 어댑터 항목이 나타납니다. 어댑터 이름 줄에는 인터페이스, Physical Address 줄에는 MAC 주소 꼬리표가 붙고, 두 어댑터가 모두 강조되어 인터페이스가 둘임을 보여 줍니다. 이어서 Mac 터미널의 ifconfig 화면에서 en0과 ether 값이 같은 방식으로 표시되고, 마지막에 전송률 866 Mbps를 8로 나눈 약 108 MB/s 카드가 나옵니다."
     caption: "ipconfig /all이나 ifconfig 화면에서 Wi-Fi·Ethernet 같은 항목 이름이 인터페이스, Physical Address나 ether 값이 MAC 주소입니다. Mbps를 8로 나눈 값은 단위를 바꾼 어림값이지 실제 다운로드 속도가 아닙니다."
-animations_dir: units/03-layer2-switching/lessons/01-nic-l2-frame-lan-카드-그리고-mac-주소/assets/animations
+animations_dir: units/03-layer2-switching/lessons/02-nic-l2-frame-lan-카드-그리고-mac-주소/assets/animations
 ---
-앞 Lesson에서는 택배가 여러 사람과 장소를 거쳐 받는 사람에게 가는 큰 흐름을 살펴봤습니다. 이번 Lesson에서는 그 여정에 참여하는 컴퓨터와 네트워크가 어디에서 맞닿는지, 그 연결 지점에 어떤 안내가 붙는지 알아봅니다. 컴퓨터를 집, 연결 지점을 문, 가까운 범위의 네트워크를 마을이라고 생각해 보세요. 비유가 실제 구조와 완전히 같지는 않으니, 각 용어가 무엇을 가리키는지만 차근차근 연결하면 됩니다.
+앞 Lesson에서는 택배 여정에 빗대어 네트워크 통신의 역할과 OSI 7계층 순서를 훑어봤습니다. 이번 Lesson에서는 그중 가까운 네트워크 구간과 맞닿는 컴퓨터의 연결 지점, 그 지점에 붙는 안내를 살펴봅니다. 컴퓨터를 집, 연결 지점을 문, 가까운 범위의 네트워크를 마을이라고 생각해 보세요. 비유가 실제 구조와 완전히 같지는 않으니, 각 용어가 무엇을 가리키는지만 차근차근 연결하면 됩니다.
 
 ## NIC와 LAN 카드
 <!-- learn-page-id: interface-definition -->
@@ -1016,31 +882,6 @@ LAN을 마을 하나, MAN을 도시, WAN을 더 넓은 지역으로 생각하면
 - **기억하기 (Recall):** LAN·MAN·WAN은 연결 범위의 크기를 설명하는 구분이다.
 - **적용하기 (Apply):** 집·도시·광역 연결 사례를 범위에 따라 구분한다.
 - **찾아보기 (Lookup):** 공유기에서 LAN과 WAN이라고 표시된 연결을 찾아보고, 장비의 포트 이름과 네트워크 범위의 뜻을 구별한다.
-
-## 택배 여정으로 기억하는 OSI 7계층
-<!-- learn-page-id: osi-seven-layer-order -->
-
-Unit 1에서 계층을 층층이 그린 지도를 봤고, Unit 2에서는 상자가 여러 장소와 사람을 거쳐 도착하는 택배 여정을 따라갔습니다. 이제 그 지도를 네트워크 통신에 적용해 봅니다. OSI 7계층은 통신에서 필요한 일을 일곱 역할로 나누어 설명하는 모델입니다. 아래 표를 택배 여정과 함께 읽으며 먼저 이름과 순서를 익혀 보세요.
-
-| 위에서 아래 | 이름 | 하는 일 한 줄 | 택배에서 떠올릴 장면 |
-|---|---|---|---|
-| 7 | 응용(Application) | 네트워크를 쓰는 프로그램이 제공할 일을 정한다 | 보내려는 물건이나 요청을 정한다 |
-| 6 | 표현(Presentation) | 데이터의 표현 형식을 맞추고 필요하면 바꾸거나 보호한다 | 내용을 읽을 수 있는 형식으로 준비한다 |
-| 5 | 세션(Session) | 통신 대화를 시작하고 이어 가고 마친다 | 배송에 필요한 대화를 열고 마무리한다 |
-| 4 | 전송(Transport) | 두 끝의 프로그램 사이에서 데이터를 전달한다 | 보낸 쪽과 받을 쪽 사이의 배송을 맡긴다 |
-| 3 | 네트워크(Network) | 목적지까지 갈 경로를 찾는다 | 주소를 보고 지역과 경로를 정한다 |
-| 2 | 데이터 링크(Data Link) | 바로 이어진 네트워크 구간에서 프레임을 전달한다 | 이웃한 분류 장소 사이에서 상자를 넘긴다 |
-| 1 | 물리(Physical) | 비트를 전기·빛·무선 신호로 실어 보낸다 | 도로와 차량처럼 실제 이동 수단을 떠올린다 |
-
-위에서 아래로 읽으면 **응용 → 표현 → 세션 → 전송 → 네트워크 → 데이터 링크 → 물리**입니다. 짧게 소리 내어 “응·표·세 / 전·네 / 데·물”로 끊어 읽어도 좋아요. 이 이름과 순서가 오늘의 기억 목표입니다. 각 계층에서 실제로 어떤 프로토콜과 장치가 쓰이는지는 뒤 Unit에서 하나씩 만납니다.
-
-택배 장면은 각 계층의 이름과 역할을 떠올리게 하는 기억 보조입니다. 실제 인터넷 통신이 택배 회사의 일곱 부서처럼 정확히 나뉘거나, 매번 같은 순서의 담당자를 거친다는 뜻은 아닙니다. OSI도 현실의 모든 프로토콜이 꼭 한 층씩 깔끔하게 들어맞는다는 규칙이 아니라 통신 기능을 설명하고 비교하는 참조 모델입니다. 여기서는 비유의 세부를 외우기보다 일곱 역할의 순서를 기억하세요.
-
-### 이 Lesson에서 가져갈 것
-
-- **기억하기 (Recall):** OSI 7계층을 위에서 아래로 응용·표현·세션·전송·네트워크·데이터 링크·물리 순서로 말한다.
-- **적용하기 (Apply):** 네트워크 장치나 기술을 살펴볼 때 어느 계층의 역할과 관련 있는지 뒤의 학습과 연결한다.
-- **찾아보기 (Lookup):** 계층별 구체적인 프로토콜과 데이터 단위는 뒤 Unit의 해당 Page에서 확인한다.
 
 ## MAC 주소 · NIC의 식별자
 <!-- learn-page-id: mac-address-definition -->
