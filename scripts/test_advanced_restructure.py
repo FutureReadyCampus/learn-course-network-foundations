@@ -88,9 +88,9 @@ class AdvancedRestructureTest(unittest.TestCase):
         self.assertEqual(self.plan["counts"]["technical_pages"], 194)
         self.assertEqual(self.plan["counts"]["excluded_pages"], 9)
         self.assertEqual(self.plan["counts"]["source_assets"], 22)
-        self.assertEqual(self.plan["counts"]["source_catalog_pages"], 462)
+        self.assertEqual(self.plan["counts"]["source_catalog_pages"], 457)
         self.assertEqual(self.plan["counts"]["aliases_by_namespace"], {
-            "content-stage-14": 453, "learn-v2": 453, "learn-unversioned": 447})
+            "content-stage-14": 448, "learn-v2": 448, "learn-unversioned": 442})
         self.assertFalse(self.plan["runtime_ready"])
 
     def test_applied_course_has_fifteen_units_and_twenty_advanced_lessons(self):
@@ -103,10 +103,10 @@ class AdvancedRestructureTest(unittest.TestCase):
         self.assertEqual(advanced_ids, [item["id"] for item in self.plan["lessons"]])
         self.assertEqual(sum(len(lesson["pages"]) for lesson in self.applied_catalog["lessons"]
                              if lesson["unit"] in set(unit_ids[10:])), 194)
-        self.assertEqual(len(self.applied_catalog["route_aliases"]), 1353)
+        self.assertEqual(len(self.applied_catalog["route_aliases"]), 1338)
         self.assertEqual(self.applied_catalog["advanced_completion_migration"], {
             "schema": "network-advanced-completion-v1",
-            "from_version": "network-b01c8869a5d35f0cf79d827a49d32d4ce51d99ed",
+            "from_version": "network-1f62c2b58554ec7c73365fc47409710d3cdca621",
             "target_unit_ids": ["network-devices", "router-and-nat", "load-balancing",
                                 "vpn-and-security", "network-security-solutions"],
             "aliases_sha256": "c6eb0ea44764cc45335415cb1e240d0667f4cf387ec496d5e703b77d412c9927",

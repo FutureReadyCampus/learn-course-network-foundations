@@ -1009,6 +1009,30 @@
   },
   {
     "namespace": "content-stage-14",
+    "path": "/m2-network/unit/3/lesson/1/page/9",
+    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+    "source_page": 9,
+    "destination": {
+      "kind": "lesson",
+      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+      "page": 9,
+      "path": "/m2-network/v3/unit/3/lesson/1/page/9"
+    }
+  },
+  {
+    "namespace": "learn-v2",
+    "path": "/m2-network/v2/unit/3/lesson/1/page/9",
+    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+    "source_page": 9,
+    "destination": {
+      "kind": "lesson",
+      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+      "page": 9,
+      "path": "/m2-network/v3/unit/3/lesson/1/page/9"
+    }
+  },
+  {
+    "namespace": "content-stage-14",
     "path": "/m2-network/unit/3/lesson/2/page/1",
     "source_lesson_id": "u3-l09-l2-스위치에-대해서",
     "source_page": 1,
@@ -5013,150 +5037,6 @@
       "id": "u6-l31-한-번에-끝내는-dns",
       "page": 7,
       "path": "/m2-network/v3/unit/9/lesson/1/page/7"
-    }
-  },
-  {
-    "namespace": "content-stage-14",
-    "path": "/m2-network/unit/9/lesson/1/page/8",
-    "source_lesson_id": "u6-l31-한-번에-끝내는-dns",
-    "source_page": 8,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l31-한-번에-끝내는-dns",
-      "page": 8,
-      "path": "/m2-network/v3/unit/9/lesson/1/page/8"
-    }
-  },
-  {
-    "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/9/lesson/1/page/8",
-    "source_lesson_id": "u6-l31-한-번에-끝내는-dns",
-    "source_page": 8,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l31-한-번에-끝내는-dns",
-      "page": 8,
-      "path": "/m2-network/v3/unit/9/lesson/1/page/8"
-    }
-  },
-  {
-    "namespace": "content-stage-14",
-    "path": "/m2-network/unit/9/lesson/1/page/9",
-    "source_lesson_id": "u6-l31-한-번에-끝내는-dns",
-    "source_page": 9,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l31-한-번에-끝내는-dns",
-      "page": 9,
-      "path": "/m2-network/v3/unit/9/lesson/1/page/9"
-    }
-  },
-  {
-    "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/9/lesson/1/page/9",
-    "source_lesson_id": "u6-l31-한-번에-끝내는-dns",
-    "source_page": 9,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l31-한-번에-끝내는-dns",
-      "page": 9,
-      "path": "/m2-network/v3/unit/9/lesson/1/page/9"
-    }
-  },
-  {
-    "namespace": "content-stage-14",
-    "path": "/m2-network/unit/9/lesson/1/page/10",
-    "source_lesson_id": "u6-l31-한-번에-끝내는-dns",
-    "source_page": 10,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l31-한-번에-끝내는-dns",
-      "page": 10,
-      "path": "/m2-network/v3/unit/9/lesson/1/page/10"
-    }
-  },
-  {
-    "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/9/lesson/1/page/10",
-    "source_lesson_id": "u6-l31-한-번에-끝내는-dns",
-    "source_page": 10,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l31-한-번에-끝내는-dns",
-      "page": 10,
-      "path": "/m2-network/v3/unit/9/lesson/1/page/10"
-    }
-  },
-  {
-    "namespace": "content-stage-14",
-    "path": "/m2-network/unit/9/lesson/1/page/11",
-    "source_lesson_id": "u6-l31-한-번에-끝내는-dns",
-    "source_page": 11,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l31-한-번에-끝내는-dns",
-      "page": 11,
-      "path": "/m2-network/v3/unit/9/lesson/1/page/11"
-    }
-  },
-  {
-    "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/9/lesson/1/page/11",
-    "source_lesson_id": "u6-l31-한-번에-끝내는-dns",
-    "source_page": 11,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l31-한-번에-끝내는-dns",
-      "page": 11,
-      "path": "/m2-network/v3/unit/9/lesson/1/page/11"
-    }
-  },
-  {
-    "namespace": "content-stage-14",
-    "path": "/m2-network/unit/9/lesson/1/page/12",
-    "source_lesson_id": "u6-l31-한-번에-끝내는-dns",
-    "source_page": 12,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l31-한-번에-끝내는-dns",
-      "page": 12,
-      "path": "/m2-network/v3/unit/9/lesson/1/page/12"
-    }
-  },
-  {
-    "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/9/lesson/1/page/12",
-    "source_lesson_id": "u6-l31-한-번에-끝내는-dns",
-    "source_page": 12,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l31-한-번에-끝내는-dns",
-      "page": 12,
-      "path": "/m2-network/v3/unit/9/lesson/1/page/12"
-    }
-  },
-  {
-    "namespace": "content-stage-14",
-    "path": "/m2-network/unit/9/lesson/1/page/13",
-    "source_lesson_id": "u6-l31-한-번에-끝내는-dns",
-    "source_page": 13,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l31-한-번에-끝내는-dns",
-      "page": 13,
-      "path": "/m2-network/v3/unit/9/lesson/1/page/13"
-    }
-  },
-  {
-    "namespace": "learn-v2",
-    "path": "/m2-network/v2/unit/9/lesson/1/page/13",
-    "source_lesson_id": "u6-l31-한-번에-끝내는-dns",
-    "source_page": 13,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l31-한-번에-끝내는-dns",
-      "page": 13,
-      "path": "/m2-network/v3/unit/9/lesson/1/page/13"
     }
   },
   {
@@ -11765,6 +11645,18 @@
   },
   {
     "namespace": "learn-unversioned",
+    "path": "/m2-network/unit/3/lesson/1/page/9",
+    "source_lesson_id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+    "source_page": 9,
+    "destination": {
+      "kind": "lesson",
+      "id": "u3-l08-nic-l2-frame-lan-카드-그리고-mac-주소",
+      "page": 9,
+      "path": "/m2-network/v3/unit/3/lesson/1/page/9"
+    }
+  },
+  {
+    "namespace": "learn-unversioned",
     "path": "/m2-network/unit/3/lesson/2/page/1",
     "source_lesson_id": "u3-l09-l2-스위치에-대해서",
     "source_page": 1,
@@ -13693,78 +13585,6 @@
       "id": "u6-l31-한-번에-끝내는-dns",
       "page": 7,
       "path": "/m2-network/v3/unit/9/lesson/1/page/7"
-    }
-  },
-  {
-    "namespace": "learn-unversioned",
-    "path": "/m2-network/unit/6/lesson/1/page/8",
-    "source_lesson_id": "u6-l31-한-번에-끝내는-dns",
-    "source_page": 8,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l31-한-번에-끝내는-dns",
-      "page": 8,
-      "path": "/m2-network/v3/unit/9/lesson/1/page/8"
-    }
-  },
-  {
-    "namespace": "learn-unversioned",
-    "path": "/m2-network/unit/6/lesson/1/page/9",
-    "source_lesson_id": "u6-l31-한-번에-끝내는-dns",
-    "source_page": 9,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l31-한-번에-끝내는-dns",
-      "page": 9,
-      "path": "/m2-network/v3/unit/9/lesson/1/page/9"
-    }
-  },
-  {
-    "namespace": "learn-unversioned",
-    "path": "/m2-network/unit/6/lesson/1/page/10",
-    "source_lesson_id": "u6-l31-한-번에-끝내는-dns",
-    "source_page": 10,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l31-한-번에-끝내는-dns",
-      "page": 10,
-      "path": "/m2-network/v3/unit/9/lesson/1/page/10"
-    }
-  },
-  {
-    "namespace": "learn-unversioned",
-    "path": "/m2-network/unit/6/lesson/1/page/11",
-    "source_lesson_id": "u6-l31-한-번에-끝내는-dns",
-    "source_page": 11,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l31-한-번에-끝내는-dns",
-      "page": 11,
-      "path": "/m2-network/v3/unit/9/lesson/1/page/11"
-    }
-  },
-  {
-    "namespace": "learn-unversioned",
-    "path": "/m2-network/unit/6/lesson/1/page/12",
-    "source_lesson_id": "u6-l31-한-번에-끝내는-dns",
-    "source_page": 12,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l31-한-번에-끝내는-dns",
-      "page": 12,
-      "path": "/m2-network/v3/unit/9/lesson/1/page/12"
-    }
-  },
-  {
-    "namespace": "learn-unversioned",
-    "path": "/m2-network/unit/6/lesson/1/page/13",
-    "source_lesson_id": "u6-l31-한-번에-끝내는-dns",
-    "source_page": 13,
-    "destination": {
-      "kind": "lesson",
-      "id": "u6-l31-한-번에-끝내는-dns",
-      "page": 13,
-      "path": "/m2-network/v3/unit/9/lesson/1/page/13"
     }
   },
   {

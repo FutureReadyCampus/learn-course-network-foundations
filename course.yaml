@@ -7,7 +7,7 @@ animation_assets:
   durations_file: docs/svg-playback.yaml
 advanced_completion_migration:
   schema: network-advanced-completion-v1
-  from_version: network-b01c8869a5d35f0cf79d827a49d32d4ce51d99ed
+  from_version: network-1f62c2b58554ec7c73365fc47409710d3cdca621
   target_unit_ids:
   - network-devices
   - router-and-nat
