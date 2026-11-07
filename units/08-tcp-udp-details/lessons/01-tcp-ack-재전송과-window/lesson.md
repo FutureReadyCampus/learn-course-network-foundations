@@ -375,9 +375,29 @@ page_metadata:
     alt: "분실이 의심돼요, 다시 배송됐어요, 순서가 뒤바뀌어 도착해요, 같은 소식이 반복돼요, 받을 자리가 가득해요의 다섯 표식이 차례로 나타나고 각각 먼저 확인할 질문이 옆에 붙습니다. 표식 하나만으로 원인을 단정하지는 않는다고 표시됩니다."
     caption: "표식마다 먼저 확인할 질문이 다릅니다."
     after_paragraph: 0
+  - file: assets/animations/l16-recap-path-with-marks.svg
+    title: "송수신 길 위에 캡처 표식 놓기"
+    alt: "송신 프로그램, 송신 TCP, 네트워크 경로, 수신 TCP, 수신 버퍼가 한 줄로 있고, 재전송과 손실 세그먼트, 순서 어긋남과 중복 ACK, 제로 윈도 표식이 각각 어디를 살펴보라는 단서인지 차례로 놓입니다."
+    caption: "표식은 앞에서 배운 길 위에서 어디를 살펴볼지 짚어 주는 단서입니다."
+    after_paragraph: 0
   - file: assets/animations/l16-capture-marks-questions.svg
     title: "캡처 표식마다 질문을 골라요"
     alt: "손실 세그먼트, 재전송, 순서가 어긋난 데이터, 중복 ACK, 제로 윈도의 다섯 캡처 표식이 차례로 나타나고 각각 먼저 확인할 질문이 옆에 붙습니다. 표식 하나만으로 원인을 단정하지는 않는다고 표시됩니다."
+    caption: "표식 하나만으로 문제가 네트워크 경로인지 애플리케이션인지 단정할 수는 없습니다."
+    after_paragraph: 1
+  - file: assets/animations/l16-daily-tracking-log-read.svg
+    title: "배송 기록표를 한 줄씩 읽어요"
+    alt: "배송 기록표의 네 줄이 차례로 강조됩니다. 2번 상자가 먼저 도착, “1번 주세요” 반복, 1번 상자 재도착, “3번 주세요” 확인이며 줄마다 먼저 확인할 질문이 나옵니다."
+    caption: "기록표의 표식을 보고 먼저 물을 질문을 고릅니다. 상자 번호는 예시입니다."
+    after_paragraph: 1
+  - file: assets/animations/l16-capture-walkthrough.svg
+    title: "캡처 목록을 한 줄씩 읽어요"
+    alt: "캡처 목록 네 줄이 차례로 강조됩니다. Seq 1501~2000이 먼저 도착한 Out of order, ACK 1001의 Duplicate ACK, Seq 1001~1500의 Retransmission, ACK 2001의 정상 확인이며 줄마다 먼저 확인할 질문이 나옵니다."
+    caption: "캡처 표식마다 먼저 확인할 질문이 다릅니다. 번호는 설명을 위한 예시이고 캡처 위치에 따라 보이는 모양이 다를 수 있습니다."
+    after_paragraph: 2
+  - file: assets/animations/l16-one-mark-many-causes.svg
+    title: "표식 하나, 가능한 이유는 여럿"
+    alt: "재전송, 제로 윈도, 중복 ACK 세 표식이 각각 가능한 이유와 함께 볼 것을 보여 줍니다. 재전송은 데이터가 사라졌거나 ACK가 늦었을 수 있고, 제로 윈도는 수신 프로그램이 늦게 읽을 수 있으며 연결 종료가 아니고, 중복 ACK는 빠진 구간이 있을 수 있다는 단서입니다."
     caption: "표식 하나만으로 문제가 네트워크 경로인지 애플리케이션인지 단정할 수는 없습니다."
     after_paragraph: 2
 animations_dir: units/08-tcp-udp-details/lessons/01-tcp-ack-재전송과-window/assets/animations
