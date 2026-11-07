@@ -27,13 +27,62 @@ page_metadata:
     title: 위에서 아래로 쌓인 OSI 7계층
     alt: 위에서 아래로 7 응용, 6 표현, 5 세션, 4 전송, 3 네트워크, 2 데이터 링크, 1 물리 계층이 쌓여 있습니다. 아래 방향 화살표와 함께 계층이 차례로 강조됩니다.
     caption: 먼저 순서의 모양만 살펴보세요. 다음 페이지부터 각 역할을 택배 여정에 기대어 짧게 확인합니다.
+  illustrations:
+  - file: assets/animations/u3l01-osi-p1-parcel-seven-roles.svg
+    title: "택배 여정을 일곱 역할로"
+    alt: "위에서 아래로 응용, 표현, 세션, 전송, 네트워크, 데이터 링크, 물리가 쌓여 있고 각 줄 옆에 무엇을 보낼지, 포장, 배송 안내, 보내는 사람에서 받는 사람, 주소와 분류, 가까운 구간 인계, 실제 이동 수단이 나타납니다. 택배 상자가 위에서 아래로 내려가고 받는 쪽에서는 아래에서 위로 올라옵니다."
+    caption: "택배 장면은 낯선 역할을 기억하기 위한 비유이며, 택배와 네트워크가 일곱 부서로 똑같이 움직인다는 뜻은 아닙니다."
+    after_paragraph: 1
+  illustration_after_paragraph: [1]
 - terms: [응용 계층 (Application layer)]
+  illustrations:
+  - file: assets/animations/u3l01-osi-p2-application.svg
+    title: "응용 계층: 무엇을 보낼까"
+    alt: "7계층이 강조된 계층 목록에서 위에서 내려온 택배 상자가 응용 계층에 머물고, 보내는 사람이 “이 책 한 권 보내 주세요”라고 부탁하는 장면과 웹 페이지 요청, 이름 주소 묻기 예시가 나옵니다. 상자는 아래 표현 계층으로 넘어가고 받는 쪽에서는 위로 올라옵니다."
+    caption: "응용 계층은 프로그램이 주고받을 일을 다룹니다. 택배 앱이나 배달원 자체를 뜻하지는 않습니다."
+    after_paragraph: 1
 - terms: [표현 계층 (Presentation layer)]
+  illustrations:
+  - file: assets/animations/u3l01-osi-p3-presentation.svg
+    title: "표현 계층: 어떤 형식일까"
+    alt: "6계층이 강조된 계층 목록에서 택배 상자가 표현 계층에 머물고, 안녕하세요와 Hello 문서가 읽을 수 있는 형식으로 맞춰지고 필요하면 압축이나 암호화가 되는 봉투 장면이 나옵니다. 상자는 아래 세션 계층으로 넘어갑니다."
+    caption: "표현 계층은 데이터의 형식과 필요한 변환을 다룹니다. 실제 변환이나 암호화가 항상 별도의 한 계층에서만 일어나는 것은 아닙니다."
+    after_paragraph: 1
 - terms: [세션 계층 (Session layer)]
+  illustrations:
+  - file: assets/animations/u3l01-osi-p4-session.svg
+    title: "세션 계층: 대화를 이어 가요"
+    alt: "5계층이 강조된 계층 목록에서 택배 상자가 세션 계층에 머물고, 배송 시작, 이동 중, 배송 완료 알림처럼 대화가 시작되고 이어지고 마치는 장면이 나옵니다. 택배에 딱 맞는 담당자는 없다고 표시됩니다."
+    caption: "세션 계층은 통신 대화의 시작, 유지, 마무리를 다룹니다. 택배에는 정확히 같은 담당자가 없고 대화 흐름을 붙잡는 비유일 뿐입니다."
+    after_paragraph: 1
 - terms: [전송 계층 (Transport layer)]
+  illustrations:
+  - file: assets/animations/u3l01-osi-p5-transport.svg
+    title: "전송 계층: 어느 프로그램까지"
+    alt: "4계층이 강조된 계층 목록에서 택배 상자가 전송 계층에 머물고, 보내는 사람의 상자가 받는 컴퓨터 안의 브라우저, 게임, 메신저 중 알맞은 프로그램에 닿는 장면이 나옵니다."
+    caption: "전송 계층은 통신 양 끝의 프로그램 사이에서 데이터를 전달합니다. 장치까지는 3계층, 그 안의 프로그램까지는 4계층입니다."
+    after_paragraph: 1
 - terms: [네트워크 계층 (Network layer)]
+  illustrations:
+  - file: assets/animations/u3l01-osi-p6-network.svg
+    title: "네트워크 계층: 어느 네트워크로"
+    alt: "3계층이 강조된 계층 목록에서 택배 상자가 네트워크 계층에 머물고, 주소를 읽고 여러 지역 가운데 출발에서 목적지까지의 분류 경로를 고르는 장면이 나옵니다."
+    caption: "네트워크 계층은 IP 주소를 바탕으로 목적지 네트워크까지의 경로를 찾습니다. 한 구간 전달을 맡는 데이터 링크 계층과 범위가 다릅니다."
+    after_paragraph: 1
 - terms: [데이터 링크 계층 (Data Link layer)]
+  illustrations:
+  - file: assets/animations/u3l01-osi-p7-data-link.svg
+    title: "데이터 링크: 다음 이웃에게"
+    alt: "2계층이 강조된 계층 목록에서 택배 상자가 데이터 링크 계층에 머물고, 노트북에서 공유기로 건네는 한 구간이 강조되고 그 뒤 목적지까지는 점선으로 표시됩니다."
+    caption: "데이터 링크 계층은 같은 네트워크 구간에서 이웃한 장치 사이로 프레임을 전달합니다. 최종 목적지까지의 전체 경로와는 범위가 다릅니다."
+    after_paragraph: 1
 - terms: [물리 계층 (Physical layer)]
+  illustrations:
+  - file: assets/animations/u3l01-osi-p8-physical.svg
+    title: "물리 계층: 신호로 실어 보내요"
+    alt: "1계층이 강조된 계층 목록에서 택배 상자가 물리 계층에 머물고, 구리선, 광섬유, 무선 세 길 위에서 비트가 전기, 빛, 전파 신호로 실려 가는 장면이 나옵니다."
+    caption: "물리 계층은 비트를 전기, 빛, 무선 신호로 바꾸어 케이블, 광섬유, 공기를 통해 전달합니다."
+    after_paragraph: 1
 - terms: [OSI 7계층 (OSI 7 layers)]
   questions:
   - id: u3-osi-review-q01
@@ -183,6 +232,12 @@ page_metadata:
       text: 전송 계층
       feedback: 전송 계층은 양 끝 프로그램 사이의 전달을 맡습니다.
     answer: b
+  illustrations:
+  - file: assets/animations/u3l01-osi-p9-order-recap.svg
+    title: "응·표·세 / 전·네 / 데·물"
+    alt: "일곱 계층이 응·표·세, 전·네, 데·물 세 묶음으로 차례로 강조되고, 보내는 쪽은 위에서 아래로 받는 쪽은 아래에서 위로 읽는 화살표가 나옵니다. 택배는 기억을 돕는 장면일 뿐이라고 표시됩니다."
+    caption: "응용, 표현, 세션, 전송, 네트워크, 데이터 링크, 물리를 위에서 아래로 끊어 읽으면 기억하기 쉽습니다. 택배 비유는 실제 네트워크와 일대일로 대응하지 않습니다."
+    after_paragraph: 0
 animations_dir: units/03-layer2-switching/lessons/01-osi-seven-layers/assets/animations
 ---
 Unit 1에서 층층이 그려진 통신 지도를 봤고, Unit 2에서는 택배 한 상자가 여러 장소와 사람을 거쳐 도착하는 여정을 따라갔습니다. 이제 그 익숙한 택배 여정을 일곱 역할로 나눠, OSI 계층의 이름과 순서를 먼저 훑어보겠습니다. 오늘은 프로토콜이나 장치의 세부 동작을 외우지 않아도 됩니다.
