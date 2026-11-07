@@ -9,11 +9,11 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-source-02-page-01
   illustrations:
-  - file: assets/diagrams/source-02.svg
-    title: Inline·Out of path·Proxy · 원고 그림
-    alt: Inline·Out of path·Proxy에서 원고가 함께 제공한 개념 그림
-    caption: 기존 원고의 그림을 참고해 구조와 용어를 확인한다.
-    after_paragraph: -1
+  - file: assets/animations/u11-structures-preview.svg
+    title: "중간 장치가 하는 세 가지 일"
+    alt: "내 컴퓨터와 서버 사이 길 위에서 검문하는 Inline, 길 옆에서 복사본을 보는 Out of path, 대신 연결해 주는 Proxy를 차례로 미리 보여 줍니다."
+    caption: "Inline, Out of path, Proxy를 일상 비유로 미리 살펴봅니다."
+    after_paragraph: 0
   questions:
   - id: u11-l01-p01-q01
     kind: choice
@@ -58,6 +58,12 @@ page_metadata:
       feedback: 본문은 이 분류를 서로 완전히 배타적인 제품 종류로 보지 말라고 설명해요.
     answer: c
 - page_id: advanced-source-02-page-02
+  illustrations:
+  - file: assets/animations/u11-structures-inline.svg
+    title: "Inline · 통과와 차단"
+    alt: "길 한가운데 놓인 검문소가 허용된 패킷은 통과시키고 차단 규칙에 맞는 패킷은 버리는 모습입니다."
+    caption: "Inline 장치는 패킷을 통과시키거나 버립니다."
+    after_paragraph: 0
   questions:
   - id: u11-l01-p02-q01
     kind: choice
@@ -102,6 +108,12 @@ page_metadata:
       feedback: 경로 바깥에서 복사본을 보는 센서는 원래 패킷을 직접 전달하거나 차단하지 않아요.
     answer: d
 - page_id: advanced-source-02-page-03
+  illustrations:
+  - file: assets/animations/u11-structures-out-of-path.svg
+    title: "Out of path · 관찰과 수집"
+    alt: "원래 통신은 서버로 계속 가고, 길 옆 Tapping Point에서 복사본을 받은 센서가 분석해 알려 주는 모습입니다."
+    caption: "Out of path 센서는 복사본만 분석하고 원래 통신은 그대로 둡니다."
+    after_paragraph: 0
   questions:
   - id: u11-l01-p03-q01
     kind: choice
@@ -146,6 +158,12 @@ page_metadata:
       feedback: 맞아요. Out of path 센서는 복사본을 분석하고 원래 패킷 전달은 원래 경로의 장치들이 이어 가요.
     answer: e
 - page_id: advanced-source-02-page-04
+  illustrations:
+  - file: assets/animations/u11-structures-proxy.svg
+    title: "Proxy · 대신 연결해 주는 대리인"
+    alt: "내 컴퓨터와 대리인, 대리인과 서버 사이에 연결을 따로 맺고 이어진 Stream을 읽는 모습입니다."
+    caption: "Proxy는 양쪽과 따로 연결을 맺어 Stream을 중계합니다."
+    after_paragraph: 0
   questions:
   - id: u11-l01-p04-q01
     kind: choice
@@ -190,6 +208,12 @@ page_metadata:
       feedback: Stream 처리의 이점은 애플리케이션 데이터 흐름을 다룬다는 점이지, 파일 전체나 암호 내용을 언제나 자동으로 얻는다는 뜻은 아니에요.
     answer: a
 - page_id: advanced-source-02-page-05
+  illustrations:
+  - file: assets/animations/u11-structures-classify.svg
+    title: "장치를 구조로 나눠 보기"
+    alt: "Inline은 경로 안·패킷, Out of path는 경로 밖 복사본·패킷, Proxy는 중간 대리·소켓 Stream으로 구분하는 표입니다."
+    caption: "위치와 처리 단위 두 가지로 장치를 나눕니다."
+    after_paragraph: 0
   questions:
   - id: u11-l01-p05-q01
     kind: choice
@@ -234,6 +258,12 @@ page_metadata:
       feedback: 계층 이름은 기준을 보여 줄 뿐, 모든 제품의 기능을 보장하지는 않아요.
     answer: b
 - page_id: advanced-source-02-page-06
+  illustrations:
+  - file: assets/animations/u11-structures-combined.svg
+    title: "여러 구조가 한 장치에"
+    alt: "보안 장비 한 대가 Inline과 Proxy 기능을 함께 가질 수 있어 경로 안인가, 패킷인가 Stream인가를 묻는다는 그림입니다."
+    caption: "한 장치가 여러 구조를 결합할 수 있습니다."
+    after_paragraph: 0
   questions:
   - id: u11-l01-p06-q01
     kind: choice
