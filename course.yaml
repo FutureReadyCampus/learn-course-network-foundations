@@ -5,6 +5,16 @@ course:
   status: draft
 animation_assets:
   durations_file: docs/svg-playback.yaml
+advanced_completion_migration:
+  schema: network-advanced-completion-v1
+  from_version: network-1f62c2b58554ec7c73365fc47409710d3cdca621
+  target_unit_ids:
+  - network-devices
+  - router-and-nat
+  - load-balancing
+  - vpn-and-security
+  - network-security-solutions
+  aliases_sha256: dd4b57b65e7ebdceeff0403cef62b8a9e7290080fb4e68d731f4edc625e29995
 units:
 - id: before-networking
   title: 네트워크를 공부하기 전에
@@ -37,14 +47,18 @@ units:
   title: 웹 서비스의 구조
   path: units/10-web-service-structure/unit.md
 - id: network-devices
-  title: 심화 네트워크 장치의 구조
+  title: 네트워크 장치의 배치와 프록시
   path: units/07-network-devices/unit.md
 - id: router-and-nat
-  title: 심화 인터넷 공유기 작동원리
+  title: 공유기와 NAT의 동작
   path: units/08-router-and-nat/unit.md
 - id: load-balancing
-  title: 심화 부하분산 시스템 작동원리
+  title: 부하 분산과 서비스 가용성
   path: units/09-load-balancing/unit.md
 - id: vpn-and-security
-  title: 심화 VPN과 네트워크 보안 솔루션
+  title: VPN과 원격 네트워크 연결
   path: units/10-vpn-and-security/unit.md
+- id: network-security-solutions
+  title: 네트워크 보안 솔루션
+  path: units/15-network-security-solutions/unit.md
+route_aliases_file: docs/advanced-route-aliases.json
