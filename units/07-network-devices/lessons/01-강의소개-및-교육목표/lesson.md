@@ -18,7 +18,7 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 
 IP 주소는 어느 호스트로 가는지, 포트는 그 호스트의 어떤 통신 끝점으로 가는지 구별하는 데 쓰입니다. 네트워크에서 전달되는 패킷과 프로그램이 소켓을 통해 주고받는 데이터도 함께 떠올려 봅시다. 중간 장치를 만났을 때도 “이 장치는 어떤 정보를 보고, 데이터를 어디로 넘길까?”라고 물으면 기본편의 개념을 동작에 연결할 수 있습니다.
 
-예를 들어 패킷을 다른 인터페이스로 전달하는 장치와, 프로그램이 소켓으로 연결을 받아 데이터를 중계하는 장치는 처리 경로가 다릅니다. 이 차이를 이해할 때 User mode와 Kernel mode의 구분이 다시 등장합니다. 필요하면 [Unit 1의 User mode·Kernel mode 설명](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/1/lesson/4/page/1)과 [Unit 4의 데이터 전달 단위](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/4/lesson/5/page/1)로 돌아가 확인할 수 있습니다. 이제 이 단서들을 가지고 서비스와 친구 사이의 경로를 살펴봅시다.
+예를 들어 패킷을 다른 인터페이스로 전달하는 장치와, 프로그램이 소켓으로 연결을 받아 데이터를 중계하는 장치는 처리 경로가 다릅니다. 이 차이를 이해할 때 User mode와 Kernel mode의 구분이 다시 등장합니다. 필요하면 [Unit 1의 User mode·Kernel mode 설명](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/1/lesson/4/page/2)과 [Unit 4의 데이터 전달 단위](https://futurereadycampus.github.io/learn-course-network-foundations/m2-network/unit/4/lesson/5/page/1)로 돌아가 확인할 수 있습니다. 이제 이 단서들을 가지고 서비스와 친구 사이의 경로를 살펴봅시다.
 
 ## 서비스와 인터넷 사이에는 무엇이 있을까
 
