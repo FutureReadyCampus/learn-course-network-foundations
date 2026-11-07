@@ -8,10 +8,12 @@ wiki_diagram: units/08-router-and-nat/lessons/01-공유기-작동원리-및-개�
 핵심 개념을 주제별로 정리했다.
 
 ## 공유기에 적용된 NAT
+<!-- learn-page-id: nat-definition -->
 
 인터넷 공유기는 여러 호스트가 하나의 IP 주소를 함께 이용하도록 하는 장치다. 여기서는 NAT(Network Address Translation)를 이용하는 구조를 설명한다. IP에는 일반 호스트 주소 외에도 Loopback, Multicast, Broadcast 등 용도가 다른 주소가 있다. 여기에 Public과 Private이라는 또 다른 구분을 더해 살펴본다.
 
 ## Public IP와 Private IP
+<!-- learn-page-id: public-private-ip -->
 
 Public IP는 Global IP라고도 부르며, 공용 인터넷에서 사용하는 주소다. Private IP는 별도로 정한 사설 주소 범위로, 공용 인터넷에서 그대로 유통하는 주소가 아니다. NAT 기반 공유기의 안쪽에서는 사설 주소를 사용하고, 밖으로 나갈 때 주소를 변환한다. 좋고 나쁜 목적의 차이와 별개로 기술적으로는 헤더의 값을 바꾸는 작업이라는 점에 주목하면 된다.
 

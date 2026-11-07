@@ -1448,3 +1448,109 @@
     page: socket-definition
   only_in:
   - u1-user-kernel
+
+- id: vpn
+  tier: none
+  ko: VPN
+  en: Virtual Private Network
+  aliases:
+  - VPN
+  - 가상 사설망
+  hover: 인터넷 같은 공용 네트워크를 이용해 떨어진 장치나 사설망을 연결하는 기술이에요. 연결을 허용할 범위는 별도 정책으로 정해야 해요.
+  anchor:
+    lesson: u10-advanced-19-pn과-vpn
+    page: vpn-definition
+- id: vpn-tunnel
+  tier: none
+  ko: VPN 터널
+  en: VPN tunnel
+  aliases:
+  - VPN 터널
+  - 터널링
+  - Tunneling
+  hover: 원래 통신 데이터를 다른 전달 정보로 감싸 두 지점 사이로 보내는 방식이에요. 터널링과 암호화는 서로 다른 기능이에요.
+  anchor:
+    lesson: u10-advanced-20-ipsec-vpn과-터널링-개념
+    page: vpn-tunnel-definition
+- id: encryption
+  tier: none
+  ko: 암호화
+  en: encryption
+  aliases:
+  - 암호화
+  - encryption
+  hover: 데이터를 열쇠에 해당하는 키 없이는 읽기 어렵게 바꾸는 일이에요. 통신 상대가 믿을 만한지 확인하는 일과는 달라요.
+  anchor:
+    lesson: u10-advanced-19-pn과-vpn
+    page: encryption-definition
+- id: firewall
+  tier: none
+  ko: 방화벽
+  en: firewall
+  aliases:
+  - 방화벽
+  - firewall
+  hover: 통신을 정해 둔 규칙에 따라 허용하거나 차단하는 기능이에요. 모든 공격을 자동으로 막아 주는 것은 아니에요.
+  anchor:
+    lesson: u10-advanced-23-네트워크-보안-솔루션-종류
+    page: firewall-definition
+- id: dns-ttl
+  only_in:
+  - u6-l31-한-번에-끝내는-dns
+  tier: none
+  ko: DNS TTL
+  en: DNS TTL
+  aliases:
+  - DNS TTL
+  - DNS의 TTL
+  - TTL
+  hover: DNS에서 찾은 답을 얼마 동안 보관해 다시 쓸 수 있는지 나타내는 시간이에요. IP 패킷이 거칠 수 있는 라우터 수를 제한하는 TTL과 달라요.
+  anchor:
+    lesson: u6-l31-한-번에-끝내는-dns
+    page: dns-cache-ttl
+- id: nat
+  tier: none
+  ko: NAT
+  en: Network Address Translation
+  aliases:
+  - NAT
+  - 주소 변환
+  hover: 패킷을 전달하면서 IP 주소를 다른 주소로 바꾸는 기능이에요. 공유기는 보통 포트 번호도 함께 바꿔 내부 연결들을 구별해요.
+  anchor:
+    lesson: u8-advanced-10-공유기-작동원리-및-개요
+    page: nat-definition
+- id: private-ip
+  tier: none
+  ko: 사설 IP
+  en: Private IP
+  aliases:
+  - 사설 IP
+  - 사설 주소
+  - Private IP
+  hover: 내부 네트워크에서 쓰도록 정해진 범위의 IP 주소예요. 서로 다른 사설망에서는 같은 주소를 쓸 수 있어요.
+  anchor:
+    lesson: u8-advanced-10-공유기-작동원리-및-개요
+    page: public-private-ip
+- id: public-ip
+  tier: none
+  ko: 공인 IP
+  en: Public IP
+  aliases:
+  - 공인 IP
+  - 공인 주소
+  - Public IP
+  hover: 인터넷에서 사용하는 전역 주소예요. 주소가 공인 주소여도 방화벽 등으로 접속이 제한될 수 있어요.
+  anchor:
+    lesson: u8-advanced-10-공유기-작동원리-및-개요
+    page: public-private-ip
+- id: subnetting
+  tier: none
+  ko: 서브네팅
+  en: subnetting
+  aliases:
+  - 서브네팅
+  - subnetting
+  hover: 하나의 IP 네트워크 범위를 더 작은 여러 범위로 나누는 일이에요. 각 범위의 경계는 서브넷 마스크나 CIDR로 나타내요.
+  anchor:
+    lesson: u4-l18-서브넷-마스크와-cidr
+    page: subnetting-definition
