@@ -9,6 +9,8 @@ wiki_diagram: units/07-network-devices/lessons/02-세-가지-네트워크-장치
 
 ## Inline·Out of path·Proxy
 
+동아리 신청 서비스 앞에 장치를 두려면, 그 장치가 통신에 어떻게 참여할지부터 정해야 합니다. 같은 서비스의 경로에 Inline·Out of path·Proxy를 각각 배치한다고 생각하며 비교해 봅시다.
+
 네트워크 장치를 처음 접하면 먼저 Inline, Out of path, Proxy 중 어떤 구조인지 살펴보는 것이 좋다. 한 장치가 여러 구조를 함께 가질 수도 있으므로 하나만 고집해 분류할 필요는 없다. Inline과 Out of path는 패킷 단위로, Proxy는 소켓의 Stream 수준으로 데이터를 다룬다는 차이가 있다.
 
 ## Inline · 통과와 차단
@@ -30,3 +32,5 @@ Proxy는 대리자다. 애플리케이션의 Stream이 대리자를 지나가므
 ## 여러 구조가 결합되는 경우
 
 패킷 수준에서 HTTP를 분석하는 것도 불가능한 것은 아니지만, 패킷 조립과 해석 등 추가 과정이 필요하다. 따라서 Inline·Out of path는 Packet과, User mode의 Application Proxy는 Socket·Stream과 연결해 기억하면 된다. 이후에는 각 구조의 구체적인 동작을 살펴본다. L2 프레임만을 다루는 특수한 사례는 이 과정에서 거의 다루지 않는다.
+
+이제 우리 서비스의 원래 패킷이 직접 통과하는 경우부터 자세히 살펴봅시다. 다음 Lesson에서는 Inline 장치 안에서 데이터가 어떻게 전달되는지 따라갑니다.

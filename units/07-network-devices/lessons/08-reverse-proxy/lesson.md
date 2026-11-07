@@ -9,6 +9,8 @@ wiki_diagram: units/07-network-devices/lessons/08-reverse-proxy/assets/diagrams/
 
 ## Client 보호와 Server 보호
 
+동아리 신청 사이트 앞에서 사용자의 연결을 먼저 받는 장치를 두었다고 합시다. 사용자가 접속하는 대상과 실제 신청을 처리하는 서버를 나누어 보면 Reverse Proxy의 역할을 이해할 수 있습니다.
+
 앞의 Proxy가 클라이언트의 접속을 대신하는 관점이었다면, Reverse Proxy는 서버 앞에서 요청을 대신 받는 관점이다. 서버를 보호하기 위해 여러 방어 장치를 함께 배치할 수 있다. 인터넷에서 웹 서버에 바로 접근하게 하기보다 앞단의 장치가 먼저 요청을 받는 구조를 살펴보자.
 
 ## IPS · 앞단에서의 방어
@@ -26,3 +28,5 @@ WAF(Web Application Firewall)는 웹 요청을 보고 서버 공격 여부를 �
 ## Reverse Proxy로 서버 보호
 
 이처럼 서버 앞에서 요청을 대리하고 보호하는 구성을 Reverse Proxy라고 한다. 장치와 웹 서버의 설정에 따라 HTTP Proxy 등의 형태로 운영할 수 있으며, Transparent 방식도 함께 언급한다. 이 경우에도 Application Proxy, Socket, Stream이라는 관계는 같다. 서버 쪽을 대리한다는 방향과 목적을 추가해 이해하면 된다.
+
+서버 앞에서 연결을 대신 받는 구조를 확인했습니다. 다음에는 중계 프로그램이 별도 장비가 아니라 운영자의 PC 안에 있을 때도 같은 원리가 성립하는지 살펴봅시다.
