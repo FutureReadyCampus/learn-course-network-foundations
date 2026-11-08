@@ -486,7 +486,7 @@
         return `<li><a class="lesson-link" data-lesson="${li}" href="${routeFor(ui, localIndex, 0)}" ${active ? 'aria-current="page"' : ""}><span class="nav-number">${String(localIndex + 1).padStart(2, "0")}</span><span>${esc(lesson.title)}</span></a>${active ? `<ol class="sidebar-steps">${steps.map((step, si) => `<li><a class="page-link" data-lesson="${li}" data-page="${si}" href="${routeFor(ui, localIndex, si)}" ${si === state.pageIndex ? 'aria-current="page"' : ""}>${esc(step.title)}</a></li>`).join("")}</ol>` : ""}</li>`;
       }).join("")}</ol></section>`;
     }).join("")}`;
-    const selected = nav.querySelector('.lesson-link[aria-current="page"]');
+    const selected = nav.querySelector('.lesson-link[aria-current="page"]')?.closest('.unit-nav');
     if (selected) {
       const navBounds = nav.getBoundingClientRect();
       const selectedBounds = selected.getBoundingClientRect();
