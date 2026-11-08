@@ -23,6 +23,12 @@ source_wikis:
 source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-11.md
 page_metadata:
 - page_id: advanced-source-11-page-01
+  illustrations:
+  - file: assets/animations/u12-nat-table-intro.svg
+    title: "주소와 포트를 함께 바꾸기"
+    alt: "집 PC 192.168.0.10:3000이 웹 서버 203.0.113.80:443에 접속하고, 공유기가 변환표에 기록해 두는 모습입니다."
+    caption: "공유기는 나갈 때 기록하고 돌아올 때 그 기록을 찾습니다."
+    after_paragraph: 0
   question_placements:
   - question_id: u12-l02-p01-q01
     after_paragraph: 1
@@ -71,13 +77,13 @@ page_metadata:
       text: 3000은 전송 순서이며 NAT는 이 순서만 기록합니다
       feedback: 3000은 패킷 순서가 아니라 포트입니다. NAT는 안쪽과 바깥쪽의 주소·포트 관계를 기록합니다.
     answer: a
-  illustrations:
-  - file: assets/diagrams/source-11.svg
-    title: Lesson의 11개 페이지 학습 흐름
-    alt: NAT 변환표 소개부터 요청과 응답, 여러 PC의 통신 구별, Local·Remote·External 정리까지 11개 학습 단계를 제목과 화살표로 보여 주는 흐름도
-    caption: NAT 변환표를 읽는 11개 주제가 어떤 순서로 이어지는지 보여 준다.
-    after_paragraph: -1
 - page_id: advanced-source-11-page-02
+  illustrations:
+  - file: assets/animations/u12-nat-table-inside-outside.svg
+    title: "내부 사설망과 외부 공인망"
+    alt: "내부 사설망의 노트북, 안쪽 192.168.0.1과 바깥 198.51.100.25를 가진 공유기, 외부 공인망의 서버를 보여 주고 Local이 노트북의 값임을 강조합니다."
+    caption: "Local은 공유기 주소가 아니라 통신을 시작한 기기의 값입니다."
+    after_paragraph: 0
   question_placements:
   - question_id: u12-l02-p02-q01
     after_paragraph: 1
@@ -127,6 +133,12 @@ page_metadata:
       feedback: 맞아요. 바깥 주소와 서버 주소는 예시용이며, 이 Page는 추가 NAT가 없는 단순한 구성을 가정합니다.
     answer: e
 - page_id: advanced-source-11-page-03
+  illustrations:
+  - file: assets/animations/u12-nat-table-start.svg
+    title: "내부 PC가 연결을 시작"
+    alt: "운영체제가 고른 출발 포트 3000과 HTTPS 서버 포트 443이 적힌 첫 패킷이 공유기로 가는 모습입니다."
+    caption: "패킷에는 출발지와 목적지 주소·포트가 함께 적힙니다."
+    after_paragraph: 0
   question_placements:
   - question_id: u12-l02-p03-q01
     after_paragraph: 1
@@ -176,6 +188,12 @@ page_metadata:
       feedback: 출발지와 목적지는 서로 다른 기기와 통신을 가리킬 수 있습니다. 같은 IP·포트여야 하는 규칙은 아닙니다.
     answer: d
 - page_id: advanced-source-11-page-04
+  illustrations:
+  - file: assets/animations/u12-nat-table-outbound.svg
+    title: "Outbound · 출발지 변환"
+    alt: "공유기를 지나며 출발지 192.168.0.10:3000이 198.51.100.25:53001로 바뀌고 목적지는 그대로인 두 패킷 카드를 비교합니다."
+    caption: "Outbound에서는 출발지 주소·포트만 바뀝니다."
+    after_paragraph: 0
   question_placements:
   - question_id: u12-l02-p04-q01
     after_paragraph: 1
@@ -225,6 +243,12 @@ page_metadata:
       feedback: 이 예의 표에서는 출발지 포트도 3000에서 53001로 바뀌었습니다.
     answer: c
 - page_id: advanced-source-11-page-05
+  illustrations:
+  - file: assets/animations/u12-nat-table-server-view.svg
+    title: "웹 서버가 보는 접속 주체"
+    alt: "웹 서버는 198.51.100.25:53001에서 온 요청으로 보고, 집 안 사설 주소는 모르며 사용자 구별은 로그인·쿠키로 한다는 그림입니다."
+    caption: "서버는 NAT가 바깥에 보여 준 주소·포트를 봅니다."
+    after_paragraph: 0
   question_placements:
   - question_id: u12-l02-p05-q01
     after_paragraph: 1
@@ -274,6 +298,12 @@ page_metadata:
       feedback: 443은 서버의 서비스 포트입니다. 같은 서비스에 접속한다고 같은 사용자가 되지는 않습니다.
     answer: b
 - page_id: advanced-source-11-page-06
+  illustrations:
+  - file: assets/animations/u12-nat-table-row.svg
+    title: "NAT Table에 남기는 기록"
+    alt: "프로토콜, 내부, 상대, 바깥 네 칸으로 된 변환표 한 줄을 읽고, 자동 행은 시간이 지나면 사라질 수 있음을 보여 줍니다."
+    caption: "변환표 한 줄은 내부 통신과 바깥 통신을 잇습니다."
+    after_paragraph: 0
   question_placements:
   - question_id: u12-l02-p06-q01
     after_paragraph: 3
@@ -323,6 +353,12 @@ page_metadata:
       feedback: 인터넷 전체가 공유하는 목록이 아니라 해당 장비가 내부적으로 유지하는 기록입니다.
     answer: a
 - page_id: advanced-source-11-page-07
+  illustrations:
+  - file: assets/animations/u12-nat-table-reply.svg
+    title: "서버에서 응답이 돌아오기"
+    alt: "응답이 바깥 주소·포트로 공유기에 도착해 변환표와 필터링 규칙을 거치고, 맞는 행이 없으면 전달되지 않는 모습입니다."
+    caption: "응답은 변환표에서 짝을 찾아야 안으로 들어갑니다."
+    after_paragraph: 0
   question_placements:
   - question_id: u12-l02-p07-q01
     after_paragraph: 1
@@ -372,6 +408,12 @@ page_metadata:
       feedback: 이 상황에서는 행이 있는지와 별도로, 필터링 규칙이 외부 상대를 확인하는지를 살펴야 합니다. 임의로 다른 기기에 보내지는 않습니다.
     answer: b
 - page_id: advanced-source-11-page-08
+  illustrations:
+  - file: assets/animations/u12-nat-table-inbound.svg
+    title: "Inbound · 원래 PC로 되돌리기"
+    alt: "공유기가 응답의 목적지 198.51.100.25:53001을 192.168.0.10:3000으로 되돌려 노트북에 전달하는 모습입니다."
+    caption: "Inbound에서는 목적지를 기록된 내부 주소·포트로 복원합니다."
+    after_paragraph: 0
   question_placements:
   - question_id: u12-l02-p08-q01
     after_paragraph: 1
@@ -421,6 +463,12 @@ page_metadata:
       feedback: 응답은 요청과 무관하게 나누지 않습니다. 같은 기록으로 원래 내부 통신에 연결합니다.
     answer: c
 - page_id: advanced-source-11-page-09
+  illustrations:
+  - file: assets/animations/u12-nat-table-two-pcs.svg
+    title: "다른 PC의 연결도 구분하기"
+    alt: "두 PC의 통신이 같은 바깥 IP를 쓰지만 53001과 53002로 다른 변환표 행에 기록되는 모습입니다."
+    caption: "포트와 변환표 기록으로 여러 기기의 통신을 나눕니다."
+    after_paragraph: 0
   question_placements:
   - question_id: u12-l02-p09-q01
     after_paragraph: 2
@@ -470,6 +518,12 @@ page_metadata:
       feedback: 맞아요. 53002에 대응하는 변환표 행을 따라 두 번째 PC의 원래 통신으로 보냅니다.
     answer: e
 - page_id: advanced-source-11-page-10
+  illustrations:
+  - file: assets/animations/u12-nat-table-two-servers.svg
+    title: "서버가 구별하는 연결"
+    alt: "같은 PC가 서로 다른 두 서버에 접속할 때 이 예시에서는 바깥 포트가 53001과 53003으로 달라지는 모습입니다."
+    caption: "외부 상대에 따라 매핑이 달라질 수 있지만 모든 NAT가 그렇지는 않습니다."
+    after_paragraph: 0
   question_placements:
   - question_id: u12-l02-p10-q01
     after_paragraph: 2
@@ -519,6 +573,12 @@ page_metadata:
       feedback: 본문은 TCP와 UDP의 요구사항이 프로토콜별 표준 문서에서 설명된다고 안내합니다. 이름만으로 같다고 단정하지 않습니다.
     answer: d
 - page_id: advanced-source-11-page-11
+  illustrations:
+  - file: assets/animations/u12-nat-table-terms.svg
+    title: "Local · Remote · External"
+    alt: "Local, Remote, External 세 칸과 이 예의 값, 확인할 질문을 차례로 보여 주고 매핑이 Local과 External을 잇는다고 정리합니다."
+    caption: "Local, Remote, External을 구분해 변환표를 읽습니다."
+    after_paragraph: 0
   question_placements:
   - question_id: u12-l02-p11-q01
     after_paragraph: 1
