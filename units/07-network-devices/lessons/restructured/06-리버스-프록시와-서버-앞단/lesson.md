@@ -143,21 +143,42 @@ page_metadata:
     prompt: HTTPS 검사 구성에서 필요한 준비로 알맞은 것은 무엇인가요?
     choices:
     - id: a
-      text: Loopback 주소만 지정하기
-      feedback: 본문에서 tLS 검사에는 별도의 적절한 인증서와 클라이언트 신뢰 구성이 필요할 수 있습니다. 확인해 보세요.
+      text: 서버 인증서를 준비하되 클라이언트의 신뢰 설정은 확인하지 않기
+      feedback: 검사 Proxy가 제시하는 인증서를 클라이언트가 신뢰하는지 등 연결과 신뢰 설정을 함께 준비해야 합니다.
     - id: b
-      text: 모든 인증서 검증 무시하기
-      feedback: 본문에서 tLS 검사에는 별도의 적절한 인증서와 클라이언트 신뢰 구성이 필요할 수 있습니다. 확인해 보세요.
+      text: 브라우저의 인증서 경고를 무시하도록 안내하기
+      feedback: 인증서 경고를 무시하는 것은 신뢰 구성을 준비하는 것과 다릅니다.
     - id: c
       text: 인증서와 신뢰·연결 설정 등 운영 준비
       feedback: TLS 검사에는 별도의 적절한 인증서와 클라이언트 신뢰 구성이 필요할 수 있습니다.
     - id: d
-      text: DNS 서버 전원 끄기
-      feedback: 본문에서 tLS 검사에는 별도의 적절한 인증서와 클라이언트 신뢰 구성이 필요할 수 있습니다. 확인해 보세요.
+      text: 내부 서버까지 같은 TLS 연결이 이어진다고 가정하기
+      feedback: Proxy에서 TLS를 종료하면 내부 서버로 가는 연결은 별도로 만들어집니다.
     - id: e
       text: 패킷 복사만 켜기
-      feedback: 본문에서 tLS 검사에는 별도의 적절한 인증서와 클라이언트 신뢰 구성이 필요할 수 있습니다. 확인해 보세요.
+      feedback: 본문에서 TLS 검사에는 별도의 적절한 인증서와 클라이언트 신뢰 구성이 필요할 수 있습니다. 확인해 보세요.
     answer: c
+  - id: u11-l05-p03-q03
+    kind: choice
+    difficulty: medium
+    prompt: 앞단 Proxy에서 클라이언트의 TLS 연결을 종료한 뒤 내부 서버로 전달할 때, 내부 구간에 대해 결정할 점은 무엇인가요?
+    choices:
+    - id: a
+      text: 클라이언트 연결이 HTTPS였으므로 내부 구간도 자동으로 암호화된다고 본다
+      feedback: Proxy가 TLS를 종료한 뒤 서버와 만드는 연결은 별도이므로 내부 구간의 보호를 따로 살펴야 합니다.
+    - id: b
+      text: 내부 서버의 주소를 지우면 요청 내용이 보호되는지 확인한다
+      feedback: 서버 주소와 내부 구간의 암호화 여부는 다른 문제입니다.
+    - id: c
+      text: 클라이언트 인증서를 내부 서버로 반드시 복사한다
+      feedback: 본문은 내부 구간에서 다시 암호화할지 보안 요구와 경계를 기준으로 결정한다고 설명합니다.
+    - id: d
+      text: Proxy에서 TLS를 종료하면 내부 서버로 요청을 전달할 수 없다
+      feedback: TLS 종단 Proxy는 요청을 복호화한 뒤 내부 서버로 전달할 수 있습니다.
+    - id: e
+      text: 내부 연결도 다시 암호화할지 보안 요구와 네트워크 경계를 기준으로 정한다
+      feedback: 앞단에서 TLS를 종료해도 내부 구간을 어떻게 보호할지는 별도로 결정해야 합니다.
+    answer: e
 - page_id: advanced-source-08-page-04
   illustrations:
   - file: assets/animations/u11-reverse-waf.svg
@@ -172,20 +193,20 @@ page_metadata:
     prompt: WAF가 주로 검사하는 대상은 무엇인가요?
     choices:
     - id: a
-      text: 랜선의 색상
-      feedback: 본문에서 wAF는 웹 요청에 나타나는 애플리케이션 공격 패턴을 검사합니다. 확인해 보세요.
+      text: TLS 인증서의 서명 방식
+      feedback: 인증서 검증은 TLS 신뢰와 관련되고, WAF는 웹 요청의 애플리케이션 계층 내용을 검사합니다.
     - id: b
       text: 웹 애플리케이션 요청
       feedback: WAF는 웹 요청에 나타나는 애플리케이션 공격 패턴을 검사합니다.
     - id: c
-      text: 모니터 밝기
-      feedback: 본문에서 wAF는 웹 요청에 나타나는 애플리케이션 공격 패턴을 검사합니다. 확인해 보세요.
+      text: IP 패킷의 목적지 경로
+      feedback: 목적지 경로는 라우팅의 판단 대상이고, WAF는 웹 요청의 애플리케이션 계층 내용을 검사합니다.
     - id: d
-      text: 전원 공급 장치의 전압만
-      feedback: 본문에서 wAF는 웹 요청에 나타나는 애플리케이션 공격 패턴을 검사합니다. 확인해 보세요.
+      text: TCP 연결의 순서 번호
+      feedback: TCP 순서 번호는 전송 계층의 정보이며, WAF는 웹 요청의 애플리케이션 계층 내용을 검사합니다.
     - id: e
-      text: DNS 서버의 운영체제만
-      feedback: 본문에서 wAF는 웹 요청에 나타나는 애플리케이션 공격 패턴을 검사합니다. 확인해 보세요.
+      text: Ethernet 프레임의 MAC 주소
+      feedback: MAC 주소는 링크 구간 전달에 쓰이며, WAF는 웹 요청의 애플리케이션 계층 내용을 검사합니다.
     answer: b
   - id: u11-l05-p04-q02
     kind: choice
@@ -222,20 +243,20 @@ page_metadata:
     prompt: Forward Proxy와 Reverse Proxy의 주요 구분 기준은 무엇인가요?
     choices:
     - id: a
-      text: 장비의 외관 색상
-      feedback: 본문에서 두 용어는 대리하는 방향과 배치 관점이 다릅니다. 확인해 보세요.
+      text: TLS 연결이 Proxy에서 종료되는지 내부 서버까지 이어지는지
+      feedback: TLS 종료 위치는 구성에 영향을 주지만 Forward와 Reverse Proxy의 대리 방향을 구분하는 기준은 아니에요.
     - id: b
-      text: 장비 제조 국가
-      feedback: 본문에서 두 용어는 대리하는 방향과 배치 관점이 다릅니다. 확인해 보세요.
+      text: 두 Proxy가 모두 서버의 응답을 대신 만드는지
+      feedback: 두 Proxy 모두 요청을 중계할 수 있지만, 누구를 대신하는지와 배치가 다릅니다.
     - id: c
       text: 클라이언트 측 요청을 대리하는지 서버 앞에서 요청을 받는지
       feedback: 두 용어는 대리하는 방향과 배치 관점이 다릅니다.
     - id: d
-      text: 서버 파일의 크기
-      feedback: 본문에서 두 용어는 대리하는 방향과 배치 관점이 다릅니다. 확인해 보세요.
+      text: 두 Proxy가 모두 클라이언트의 접속을 대신하는지
+      feedback: Forward Proxy는 클라이언트 측을, Reverse Proxy는 서버 앞단을 대리합니다.
     - id: e
-      text: DNS 이름 글자 수
-      feedback: 본문에서 두 용어는 대리하는 방향과 배치 관점이 다릅니다. 확인해 보세요.
+      text: 두 Proxy가 같은 방향에서 같은 대상을 대리하는지
+      feedback: Forward와 Reverse Proxy는 서로 다른 쪽을 대리하는 구조입니다.
     answer: c
   - id: u11-l05-p05-q02
     kind: choice

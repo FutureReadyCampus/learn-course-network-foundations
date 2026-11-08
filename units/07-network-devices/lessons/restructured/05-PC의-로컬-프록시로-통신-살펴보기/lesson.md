@@ -71,20 +71,20 @@ page_metadata:
     prompt: Fiddler나 Burp Suite를 로컬 Proxy로 쓸 때 브라우저는 어디로 요청을 보내나요?
     choices:
     - id: a
-      text: 항상 DNS 루트 서버
-      feedback: 본문에서 브라우저 Proxy 설정이 로컬 도구로 연결됩니다. 확인해 보세요.
+      text: 목적지 웹사이트에 직접 요청을 보낸다
+      feedback: 브라우저는 먼저 같은 PC의 로컬 Proxy 도구로 요청을 보내요.
     - id: b
-      text: 스위치의 복사 포트
-      feedback: 본문에서 브라우저 Proxy 설정이 로컬 도구로 연결됩니다. 확인해 보세요.
+      text: 기본 게이트웨이에 요청을 보낸다
+      feedback: 브라우저는 먼저 같은 PC의 로컬 Proxy 도구로 요청을 보내요.
     - id: c
-      text: 프린터
-      feedback: 본문에서 브라우저 Proxy 설정이 로컬 도구로 연결됩니다. 확인해 보세요.
+      text: DNS 서버에 요청 내용을 보낸다
+      feedback: 브라우저는 먼저 같은 PC의 로컬 Proxy 도구로 요청을 보내요.
     - id: d
       text: 같은 PC에서 실행 중인 Proxy 도구
       feedback: 브라우저 Proxy 설정이 로컬 도구로 연결됩니다.
     - id: e
-      text: 서버의 저장 장치
-      feedback: 본문에서 브라우저 Proxy 설정이 로컬 도구로 연결됩니다. 확인해 보세요.
+      text: 외부 웹 서버에 먼저 요청을 보낸다
+      feedback: 브라우저는 먼저 같은 PC의 로컬 Proxy 도구로 요청을 보내요.
     answer: d
   - id: u11-l04-p16-q02
     kind: choice
@@ -193,19 +193,19 @@ page_metadata:
     choices:
     - id: a
       text: Loopback 주소만 지정하면 항상 가능하다
-      feedback: 본문에서 tLS 암호화는 단순한 Proxy 경유만으로 해제되지 않습니다. 확인해 보세요.
+      feedback: 본문에서 TLS 암호화는 단순한 Proxy 경유만으로 해제되지 않습니다. 확인해 보세요.
     - id: b
       text: 포트 번호를 443으로 바꾸면 된다
-      feedback: 본문에서 tLS 암호화는 단순한 Proxy 경유만으로 해제되지 않습니다. 확인해 보세요.
+      feedback: 본문에서 TLS 암호화는 단순한 Proxy 경유만으로 해제되지 않습니다. 확인해 보세요.
     - id: c
       text: 적절한 TLS 중계 구성과 신뢰 설정이 갖춰져야 한다
       feedback: TLS 암호화는 단순한 Proxy 경유만으로 해제되지 않습니다.
     - id: d
       text: 패킷 복사만 켜면 된다
-      feedback: 본문에서 tLS 암호화는 단순한 Proxy 경유만으로 해제되지 않습니다. 확인해 보세요.
+      feedback: 본문에서 TLS 암호화는 단순한 Proxy 경유만으로 해제되지 않습니다. 확인해 보세요.
     - id: e
       text: 모든 TLS는 평문으로 전송된다
-      feedback: 본문에서 tLS 암호화는 단순한 Proxy 경유만으로 해제되지 않습니다. 확인해 보세요.
+      feedback: 본문에서 TLS 암호화는 단순한 Proxy 경유만으로 해제되지 않습니다. 확인해 보세요.
     answer: c
 - page_id: advanced-source-09-page-05
   illustrations:
@@ -289,20 +289,20 @@ page_metadata:
   - id: u11-l04-p20-q02
     kind: choice
     difficulty: medium
-    prompt: Proxy를 평가할 때 제품 이름 외에 살펴볼 것은 무엇인가요?
+    prompt: Proxy의 역할과 정보 흐름을 판단할 때 제품 이름 외에 살펴볼 것은 무엇인가요?
     choices:
     - id: a
-      text: 색상과 크기
-      feedback: 본문에서 어디에 놓이고 무엇을 중계하는지에 따라 역할과 영향이 달라집니다. 확인해 보세요.
+      text: Proxy가 지원하는 운영체제와 제품 버전만
+      feedback: 이 요소들은 각각 참고가 되지만, Proxy의 역할과 정보 흐름을 보려면 배치·연결 방향·기능 설정·운영 정책을 함께 살펴야 해요.
     - id: b
-      text: 회사 이름만
-      feedback: 본문에서 어디에 놓이고 무엇을 중계하는지에 따라 역할과 영향이 달라집니다. 확인해 보세요.
+      text: Proxy의 처리량과 저장 용량만
+      feedback: 이 요소들은 각각 참고가 되지만, Proxy의 역할과 정보 흐름을 보려면 배치·연결 방향·기능 설정·운영 정책을 함께 살펴야 해요.
     - id: c
-      text: 가격만
-      feedback: 본문에서 어디에 놓이고 무엇을 중계하는지에 따라 역할과 영향이 달라집니다. 확인해 보세요.
+      text: TLS 연결을 종료하는지 여부만
+      feedback: 이 요소들은 각각 참고가 되지만, Proxy의 역할과 정보 흐름을 보려면 배치·연결 방향·기능 설정·운영 정책을 함께 살펴야 해요.
     - id: d
-      text: 브라우저 테마
-      feedback: 본문에서 어디에 놓이고 무엇을 중계하는지에 따라 역할과 영향이 달라집니다. 확인해 보세요.
+      text: 로그 파일의 형식만
+      feedback: 이 요소들은 각각 참고가 되지만, Proxy의 역할과 정보 흐름을 보려면 배치·연결 방향·기능 설정·운영 정책을 함께 살펴야 해요.
     - id: e
       text: 배치, 연결 방향, 기능 설정과 운영 정책
       feedback: 어디에 놓이고 무엇을 중계하는지에 따라 역할과 영향이 달라집니다.
