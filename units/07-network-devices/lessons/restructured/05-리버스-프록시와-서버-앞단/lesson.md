@@ -10,11 +10,11 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-source-08-page-01
   illustrations:
-  - file: assets/diagrams/source-08.svg
-    title: Client 보호와 Server 보호 · 원고 그림
-    alt: Client 보호와 Server 보호에서 원고가 함께 제공한 개념 그림
-    caption: 기존 원고의 그림을 참고해 구조와 용어를 확인한다.
-    after_paragraph: -1
+  - file: assets/animations/u11-reverse-front.svg
+    title: "Client 보호와 Server 보호"
+    alt: "사용자가 서비스 이름으로 접속하면 DNS가 알려 준 앞단 Proxy가 요청을 받아 안쪽 서버로 전달하는 모습입니다."
+    caption: "Reverse Proxy는 서버 앞에서 요청을 먼저 받습니다."
+    after_paragraph: 0
   questions:
   - id: u11-l05-p01-q01
     kind: choice
@@ -59,6 +59,12 @@ page_metadata:
       feedback: 본문에서 클라이언트는 앞단 주소에 접속하고 Proxy가 안쪽 서버를 대리합니다. 확인해 보세요.
     answer: a
 - page_id: advanced-source-08-page-02
+  illustrations:
+  - file: assets/animations/u11-reverse-ips.svg
+    title: "IPS · 앞단에서의 방어"
+    alt: "서버 앞 IPS가 정상 패킷은 통과시키고 공격 패턴은 차단하며, 암호화된 HTTPS 본문은 그대로 읽기 어렵다는 그림입니다."
+    caption: "IPS가 볼 수 있는 정보는 위치와 암호화에 따라 달라집니다."
+    after_paragraph: 0
   questions:
   - id: u11-l05-p02-q01
     kind: choice
@@ -103,6 +109,12 @@ page_metadata:
       feedback: 본문에서 연결 정보가 일부 보여도 TLS Payload의 평문 내용을 읽는 것과는 다릅니다. 확인해 보세요.
     answer: b
 - page_id: advanced-source-08-page-03
+  illustrations:
+  - file: assets/animations/u11-reverse-tls.svg
+    title: "SSL Accelerator와 복호화"
+    alt: "브라우저가 앞단 Proxy와 TLS 연결을 맺고, Proxy가 내부 서버로 요청을 전달하는 모습입니다."
+    caption: "TLS 종단 Proxy는 서버 대신 HTTPS 연결을 받습니다."
+    after_paragraph: 0
   questions:
   - id: u11-l05-p03-q01
     kind: choice
@@ -147,6 +159,12 @@ page_metadata:
       feedback: 본문에서 tLS 검사에는 별도의 적절한 인증서와 클라이언트 신뢰 구성이 필요할 수 있습니다. 확인해 보세요.
     answer: c
 - page_id: advanced-source-08-page-04
+  illustrations:
+  - file: assets/animations/u11-reverse-waf.svg
+    title: "WAF · 웹 요청을 검사"
+    alt: "WAF가 정상 요청은 서버로 전달하고 웹 공격 패턴은 차단하지만 모든 공격을 찾지는 못한다는 그림입니다."
+    caption: "WAF는 웹 요청의 내용을 보고 허용하거나 차단합니다."
+    after_paragraph: 0
   questions:
   - id: u11-l05-p04-q01
     kind: choice
@@ -191,6 +209,12 @@ page_metadata:
       feedback: 본문에서 규칙은 애플리케이션에 맞춰 관리해야 하며 완벽한 방어를 보장하지 않습니다. 확인해 보세요.
     answer: d
 - page_id: advanced-source-08-page-05
+  illustrations:
+  - file: assets/animations/u11-reverse-compare.svg
+    title: "Reverse Proxy로 서버 보호"
+    alt: "Forward Proxy는 클라이언트를 대신하고 Reverse Proxy는 서버를 대신하며, 이번 Unit의 세 가지 구조를 정리하는 표입니다."
+    caption: "Forward와 Reverse는 대신하는 방향이 다릅니다."
+    after_paragraph: 0
   questions:
   - id: u11-l05-p05-q01
     kind: choice

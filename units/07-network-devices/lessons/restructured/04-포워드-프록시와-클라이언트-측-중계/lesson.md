@@ -14,11 +14,11 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-source-06-page-01
   illustrations:
-  - file: assets/diagrams/source-06.svg
-    title: Proxy를 사용하는 관점 · 원고 그림
-    alt: Proxy를 사용하는 관점에서 원고가 함께 제공한 개념 그림
-    caption: 기존 원고의 그림을 참고해 구조와 용어를 확인한다.
-    after_paragraph: -1
+  - file: assets/animations/u11-fwd-06-01-forward-view.svg
+    title: "Proxy를 사용하는 관점"
+    alt: "Proxy를 사용하는 관점: 처음엔 컴퓨터마다 직접 인터넷으로 나갈 수 있어요 → 한 중계 서버를 거치게 할 수도 있어요 → 클라이언트가 고른 중계자가 대신 전달해요 → 캐시·정책·기록은 그 위에 얹는 기능이에요"
+    caption: "직접 나갈까, 한 곳을 거칠까?"
+    after_paragraph: 0
   questions:
   - id: u11-l04-p01-q01
     kind: choice
@@ -63,6 +63,12 @@ page_metadata:
       feedback: 본문에서 부가 기능은 Proxy의 기본 중계 위에 목적에 따라 더해집니다. 확인해 보세요.
     answer: a
 - page_id: advanced-source-06-page-02
+  illustrations:
+  - file: assets/animations/u11-fwd-06-02-direct-vs-proxy.svg
+    title: "직접 가는 길과 돌아가는 길"
+    alt: "직접 가는 길과 돌아가는 길: 직접 접속하면 서버는 내 쪽 주소를 봐요 → Proxy를 지정하면 먼저 Proxy에 연결해요 → 서버에는 Proxy 쪽 주소가 보일 수 있어요 → 헤더로 원래 정보가 전달될 수도 있어요"
+    caption: "서버에 보이는 주소가 달라질 수 있어요"
+    after_paragraph: 0
   questions:
   - id: u11-l04-p02-q01
     kind: choice
@@ -107,6 +113,12 @@ page_metadata:
       feedback: 본문에서 출구 주소가 바뀌어도 전달 정보와 Proxy 기록은 별도로 고려해야 합니다. 확인해 보세요.
     answer: b
 - page_id: advanced-source-06-page-03
+  illustrations:
+  - file: assets/animations/u11-fwd-06-03-proxy-settings.svg
+    title: "접속 주체를 대신하기"
+    alt: "접속 주체를 대신하기: 브라우저에 Proxy 주소와 포트를 입력해요 → 브라우저는 먼저 Proxy에 요청을 맡겨요 → Proxy가 목적지와 별도 연결을 맺어요 → 프로그램별 설정은 따로 확인해요"
+    caption: "브라우저가 먼저 Proxy에 말을 걸어요"
+    after_paragraph: 0
   questions:
   - id: u11-l04-p03-q01
     kind: choice
@@ -151,6 +163,12 @@ page_metadata:
       feedback: 본문에서 앱별 Proxy 지원과 네트워크 정책을 확인해야 합니다. 확인해 보세요.
     answer: c
 - page_id: advanced-source-06-page-04
+  illustrations:
+  - file: assets/animations/u11-fwd-06-04-bypass.svg
+    title: "Proxy를 통한 우회"
+    alt: "Proxy를 통한 우회: 한국에서 해외 Proxy를 거쳐 접속해요 → 요청이 Proxy를 지나 사이트로 가요 → 사이트에는 Proxy의 출구 주소가 보여요 → 운영자는 기록을 볼 수 있어요"
+    caption: "다른 나라의 출구로 나가 봐요"
+    after_paragraph: 0
   questions:
   - id: u11-l04-p04-q01
     kind: choice
@@ -195,6 +213,12 @@ page_metadata:
       feedback: 본문에서 중계는 신원을 숨기거나 정책을 항상 우회한다고 보장하지 않습니다. 확인해 보세요.
     answer: d
 - page_id: advanced-source-06-page-05
+  illustrations:
+  - file: assets/animations/u11-fwd-06-05-speed-cost.svg
+    title: "우회에 따른 속도와 비용"
+    alt: "우회에 따른 속도와 비용: 직접 가면 한 번에 도착해요 → Proxy를 거치면 단계가 늘어요 → Proxy가 멈추면 모두 영향을 받아요 → 잘 두면 오히려 도움이 될 수도 있어요"
+    caption: "편리하지만 거치는 길이 늘어요"
+    after_paragraph: 0
   questions:
   - id: u11-l04-p05-q01
     kind: choice
@@ -239,6 +263,12 @@ page_metadata:
       feedback: 중계 지점의 가용성과 대체 경로를 고려해야 합니다.
     answer: e
 - page_id: advanced-source-06-page-06
+  illustrations:
+  - file: assets/animations/u11-fwd-06-06-two-sockets.svg
+    title: "두 Socket 사이의 중계"
+    alt: "두 Socket 사이의 중계: 클라이언트와 이야기하는 연결 하나 → 서버와 이야기하는 연결 하나 → 한쪽에서 받은 흐름을 다른 쪽에 이어 줘요 → 한쪽이 끊기면 Proxy가 처리해요"
+    caption: "Proxy에는 연결이 두 개 생겨요"
+    after_paragraph: 0
   questions:
   - id: u11-l04-p06-q01
     kind: choice
@@ -283,6 +313,12 @@ page_metadata:
       feedback: 본문에서 소켓 연결 사이에서 요청과 응답을 중계하는 것이 기본 역할입니다. 확인해 보세요.
     answer: a
 - page_id: advanced-source-06-page-07
+  illustrations:
+  - file: assets/animations/u11-fwd-06-07-bypass-summary.svg
+    title: "우회 목적의 Proxy 정리"
+    alt: "우회 목적의 Proxy 정리: Proxy는 요청을 받아 다른 서버에 접속해요 → 무엇을 전달·기록하는지에 따라 달라져요 → 그래서 대리 접속이 익명성을 보장하진 않아요 → 같은 구조를 여러 목적에 응용해요"
+    caption: "핵심은 요청을 대신 전달한다는 점이에요"
+    after_paragraph: 0
   questions:
   - id: u11-l04-p07-q01
     kind: choice
@@ -328,11 +364,11 @@ page_metadata:
     answer: b
 - page_id: advanced-source-07-page-01
   illustrations:
-  - file: assets/diagrams/source-07.svg
-    title: 회사에서 직접 접속을 제한하기 · 원고 그림
-    alt: 회사에서 직접 접속을 제한하기에서 원고가 함께 제공한 개념 그림
-    caption: 기존 원고의 그림을 참고해 구조와 용어를 확인한다.
-    after_paragraph: -1
+  - file: assets/animations/u11-fwd-07-01-limit-direct.svg
+    title: "회사에서 직접 접속 제한"
+    alt: "회사에서 직접 접속 제한: 공용 PC가 바로 인터넷으로 나가지 못하게 해요 → PC는 먼저 내부 Proxy로 요청해요 → Proxy가 외부 서버에 접속해요 → 관리자는 한 지점에서 정책을 적용해요"
+    caption: "내부 Proxy를 거쳐서만 나가요"
+    after_paragraph: 0
   questions:
   - id: u11-l04-p08-q01
     kind: choice
@@ -377,6 +413,12 @@ page_metadata:
       feedback: 본문에서 브라우저 설정과 네트워크의 허용 정책을 함께 맞춰야 우회 연결을 제한할 수 있습니다. 확인해 보세요.
     answer: c
 - page_id: advanced-source-07-page-02
+  illustrations:
+  - file: assets/animations/u11-fwd-07-02-firewall-rule.svg
+    title: "Proxy를 통한 외부 접속"
+    alt: "Proxy를 통한 외부 접속: 공용 PC의 직접 외부 연결은 차단해요 → Proxy가 시작한 연결만 허용해요 → 접속이 한곳으로 모여 관리하기 쉬워요 → Proxy 자체의 보안·용량도 챙겨요"
+    caption: "직접 연결은 막고 Proxy만 열어요"
+    after_paragraph: 0
   questions:
   - id: u11-l04-p09-q01
     kind: choice
@@ -421,6 +463,12 @@ page_metadata:
       feedback: 본문에서 중앙 중계 지점의 성능과 안정성을 계획해야 합니다. 확인해 보세요.
     answer: d
 - page_id: advanced-source-07-page-03
+  illustrations:
+  - file: assets/animations/u11-fwd-07-03-proxy-log.svg
+    title: "중간에서 알 수 있는 것"
+    alt: "중간에서 알 수 있는 것: PC의 요청이 Proxy를 거쳐 가요 → 누가 언제 어디로 갔는지 알 수 있어요 → 암호화된 내용은 설정 없이는 읽지 못해요 → 기록하기 전에 목적과 범위를 정해요"
+    caption: "Proxy는 접속 기록을 남길 수 있어요"
+    after_paragraph: 0
   questions:
   - id: u11-l04-p10-q01
     kind: choice
@@ -465,6 +513,12 @@ page_metadata:
       feedback: 필요한 정보만 적절히 관리하는 정책이 중요합니다.
     answer: e
 - page_id: advanced-source-07-page-04
+  illustrations:
+  - file: assets/animations/u11-fwd-07-04-file-scan.svg
+    title: "악성 파일 검사"
+    alt: "악성 파일 검사: 자료 사이트에서 PDF를 내려받아요 → 파일이 Proxy를 지나가요 → 구성에 따라 검사 시스템이 확인해요 → 문제가 있으면 전달하지 않아요"
+    caption: "내려받는 파일을 Proxy에서 살펴봐요"
+    after_paragraph: 0
   questions:
   - id: u11-l04-p11-q01
     kind: choice
@@ -509,6 +563,12 @@ page_metadata:
       feedback: 파일 크기와 접속 시각은 메타데이터이며, 그 자체로 내용 검사 범위를 결정하지 않습니다.
     answer: a
 - page_id: advanced-source-07-page-05
+  illustrations:
+  - file: assets/animations/u11-fwd-07-05-virus-wall.svg
+    title: "Virus Wall과 내부 보호"
+    alt: "Virus Wall과 내부 보호: 밖에서 파일 두 개가 들어와요 → 안전한 파일은 안으로 전달돼요 → 위험한 파일은 벽에서 멈춰요 → IPS와 Proxy는 역할이 겹칠 수 있어요"
+    caption: "웹 통신을 중계하며 파일을 걸러요"
+    after_paragraph: 0
   questions:
   - id: u11-l04-p12-q01
     kind: choice
@@ -553,6 +613,12 @@ page_metadata:
       feedback: 본문에서 proxy와 파일 검사를 결합해 유입을 관리하는 예입니다. 확인해 보세요.
     answer: b
 - page_id: advanced-source-07-page-06
+  illustrations:
+  - file: assets/animations/u11-fwd-07-06-combined-box.svg
+    title: "보호 기능을 함께 두기"
+    alt: "보호 기능을 함께 두기: 물리적으로는 한 장비예요 → 어떤 기능은 패킷을 경로에서 검사하고 → 어떤 기능은 연결을 받아 중계해요 → 경로를 도식으로 그려 보면 정확해요"
+    caption: "한 장비 안에 여러 기능이 들어가요"
+    after_paragraph: 0
   questions:
   - id: u11-l04-p13-q01
     kind: choice
@@ -597,6 +663,12 @@ page_metadata:
       feedback: 본문에서 역할과 데이터 흐름을 기능별로 확인해야 합니다. 확인해 보세요.
     answer: c
 - page_id: advanced-source-07-page-07
+  illustrations:
+  - file: assets/animations/u11-fwd-07-07-monitoring.svg
+    title: "내부 사용자의 통신 감시"
+    alt: "내부 사용자의 통신 감시: 모든 요청이 내부 Proxy로 모여요 → 운영자는 접속 흐름을 점검할 수 있어요 → 하지만 개인 검색까지 남으면 사생활 문제예요 → 목적·범위·안내를 함께 정해요"
+    caption: "점검과 감시는 한 끗 차이예요"
+    after_paragraph: 0
   questions:
   - id: u11-l04-p14-q01
     kind: choice
@@ -642,11 +714,11 @@ page_metadata:
     answer: d
 - page_id: advanced-source-09-page-01
   illustrations:
-  - file: assets/diagrams/source-09.svg
-    title: 암호화된 패킷을 보는 한계 · 원고 그림
-    alt: 암호화된 패킷을 보는 한계에서 원고가 함께 제공한 개념 그림
-    caption: 기존 원고의 그림을 참고해 구조와 용어를 확인한다.
-    after_paragraph: -1
+  - file: assets/animations/u11-fwd-09-01-encrypted-packet.svg
+    title: "암호화된 패킷의 한계"
+    alt: "암호화된 패킷의 한계: PC의 패킷을 캡처해 봐요 → IP·TCP 정보는 볼 수 있어요 → HTTPS 내용은 암호화되어 있어요 → 그래서 별도의 중계 지점을 만들어요"
+    caption: "잡았다고 읽을 수 있는 건 아니에요"
+    after_paragraph: 0
   questions:
   - id: u11-l04-p15-q01
     kind: choice
@@ -691,6 +763,12 @@ page_metadata:
       feedback: 중계 지점에서 권한 범위 내의 요청과 응답을 분석할 수 있습니다.
     answer: e
 - page_id: advanced-source-09-page-02
+  illustrations:
+  - file: assets/animations/u11-fwd-09-02-local-proxy.svg
+    title: "PC에 설치하는 Proxy"
+    alt: "PC에 설치하는 Proxy: 브라우저는 내 PC 안에 있어요 → 분석 도구가 PC 안에서 Proxy로 동작해요 → 브라우저의 요청이 도구로 먼저 가요 → 도구가 서버로 전달하고 내용을 보여 줘요"
+    caption: "내 PC 안에 중계 도구를 둬요"
+    after_paragraph: 0
   questions:
   - id: u11-l04-p16-q01
     kind: choice
@@ -735,6 +813,12 @@ page_metadata:
       feedback: 본문에서 분석 기능은 다른 사람의 통신을 볼 권한을 자동으로 주지 않습니다. 확인해 보세요.
     answer: a
 - page_id: advanced-source-09-page-03
+  illustrations:
+  - file: assets/animations/u11-fwd-09-03-loopback.svg
+    title: "Loopback에 Proxy 설정"
+    alt: "Loopback에 Proxy 설정: 브라우저에 127.0.0.1:8080을 적어요 → 연결은 같은 PC 안에서만 오가요 → 포트 8080이 어느 프로그램인지 가려 줘요 → 도구가 꺼져 있으면 연결할 수 없어요"
+    caption: "127.0.0.1은 내 컴퓨터를 가리켜요"
+    after_paragraph: 0
   questions:
   - id: u11-l04-p17-q01
     kind: choice
@@ -779,6 +863,12 @@ page_metadata:
       feedback: 본문에서 포트 번호는 호스트 안에서 어느 서비스로 연결할지 구분합니다. 확인해 보세요.
     answer: b
 - page_id: advanced-source-09-page-04
+  illustrations:
+  - file: assets/animations/u11-fwd-09-04-local-path.svg
+    title: "로컬 Proxy를 통과하는 경로"
+    alt: "로컬 Proxy를 통과하는 경로: 브라우저와 Proxy 사이의 연결이 있어요 → Proxy와 서버 사이의 연결이 따로 있어요 → HTTPS는 구간별로 따로 암호화될 수 있어요 → 허가 없이 복호화해서는 안 돼요"
+    caption: "두 개의 구간을 차례로 따라가요"
+    after_paragraph: 0
   questions:
   - id: u11-l04-p18-q01
     kind: choice
@@ -823,6 +913,12 @@ page_metadata:
       feedback: 본문에서 tLS 암호화는 단순한 Proxy 경유만으로 해제되지 않습니다. 확인해 보세요.
     answer: c
 - page_id: advanced-source-09-page-05
+  illustrations:
+  - file: assets/animations/u11-fwd-09-05-stream.svg
+    title: "Stream 수준의 해석"
+    alt: "Stream 수준의 해석: 패킷은 조각으로 도착해요 → 조각을 이어야 요청 전체가 보여요 → 소켓에서는 이어진 흐름으로 읽어요 → TLS 내용은 별도 설정이 있어야 보여요"
+    caption: "조각난 패킷을 하나의 요청으로 봐요"
+    after_paragraph: 0
   questions:
   - id: u11-l04-p19-q01
     kind: choice
@@ -867,6 +963,12 @@ page_metadata:
       feedback: 본문에서 stream 처리와 TLS 복호화는 별개의 문제입니다. 확인해 보세요.
     answer: d
 - page_id: advanced-source-09-page-06
+  illustrations:
+  - file: assets/animations/u11-fwd-09-06-wrap-up.svg
+    title: "Fiddler와 Proxy 활용 정리"
+    alt: "Fiddler와 Proxy 활용 정리: 외부 출구로 연결하는 우회 사례 → 조직이 관리하는 정책·검사 지점 → 내 PC 안의 로컬 분석 도구 → 공통 원리는 대신 전달하는 중계예요"
+    caption: "목적은 달라도 중계 원리는 같아요"
+    after_paragraph: 0
   questions:
   - id: u11-l04-p20-q01
     kind: choice

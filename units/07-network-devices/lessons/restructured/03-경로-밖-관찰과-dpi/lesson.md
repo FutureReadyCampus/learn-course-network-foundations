@@ -9,11 +9,11 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-source-05-page-01
   illustrations:
-  - file: assets/diagrams/source-05.svg
-    title: Sensor · 경로 밖에서 관찰 · 원고 그림
-    alt: Sensor · 경로 밖에서 관찰에서 원고가 함께 제공한 개념 그림
-    caption: 기존 원고의 그림을 참고해 구조와 용어를 확인한다.
-    after_paragraph: -1
+  - file: assets/animations/u11-oop-sensor.svg
+    title: "Sensor · 경로 밖에서 관찰"
+    alt: "길 옆 센서가 복사본으로 트래픽을 살피고 원래 통신은 그대로 서버에 도착하는 모습입니다."
+    caption: "센서는 복사본만 보고 원래 경로는 바꾸지 않습니다."
+    after_paragraph: 0
   questions:
   - id: u11-l03-p01-q01
     kind: choice
@@ -58,6 +58,12 @@ page_metadata:
       feedback: 본문에서 센서의 기본 역할은 경로 밖에서 복사본을 관찰하는 것입니다. 확인해 보세요.
     answer: a
 - page_id: advanced-source-05-page-02
+  illustrations:
+  - file: assets/animations/u11-oop-mirroring.svg
+    title: "Mirroring · 패킷을 복사하기"
+    alt: "스위치가 원본 패킷은 서버로 보내고 같은 내용을 관찰용 포트의 분석 장치로 복사하는 모습입니다."
+    caption: "포트 미러링은 복사본을 분석 장치로 보냅니다."
+    after_paragraph: 0
   questions:
   - id: u11-l03-p02-q01
     kind: choice
@@ -102,6 +108,12 @@ page_metadata:
       feedback: 본문에서 복사본이 많으면 장비와 관찰 포트의 용량이 부족해질 수 있습니다. 확인해 보세요.
     answer: b
 - page_id: advanced-source-05-page-03
+  illustrations:
+  - file: assets/animations/u11-oop-read-only.svg
+    title: "Read only와 차단의 차이"
+    alt: "센서가 이상한 패킷을 발견해도 원본은 서버로 가고, 차단은 경로 안 Inline 장치가 맡는 모습입니다."
+    caption: "발견하는 일과 차단하는 일은 다릅니다."
+    after_paragraph: 0
   questions:
   - id: u11-l03-p03-q01
     kind: choice
@@ -146,6 +158,12 @@ page_metadata:
       feedback: 본문에서 경로 밖 관찰만으로 원본을 자동 차단하지는 않습니다. 확인해 보세요.
     answer: c
 - page_id: advanced-source-05-page-04
+  illustrations:
+  - file: assets/animations/u11-oop-intervene.svg
+    title: "경로 밖에서 접속에 개입하기"
+    alt: "센서가 연결을 감지해 이용자에게 별도 경고 응답을 보내는 능동 개입을 보여 줍니다."
+    caption: "관찰 외에 별도 응답을 보내는 것은 능동 개입입니다."
+    after_paragraph: 0
   questions:
   - id: u11-l03-p04-q01
     kind: choice
@@ -190,6 +208,12 @@ page_metadata:
       feedback: 본문에서 능동 개입은 복사본 관찰과 구별되는 추가 동작입니다. 확인해 보세요.
     answer: d
 - page_id: advanced-source-05-page-05
+  illustrations:
+  - file: assets/animations/u11-oop-tcp-reply.svg
+    title: "TCP 응답을 이용한 개입"
+    alt: "센서가 TCP 연결의 한쪽인 척 패킷을 보내도 번호가 맞지 않으면 단말이 무시할 수 있음을 보여 줍니다."
+    caption: "TCP 응답 개입은 연결 상태가 맞아야 통합니다."
+    after_paragraph: 0
   questions:
   - id: u11-l03-p05-q01
     kind: choice
@@ -234,6 +258,12 @@ page_metadata:
       feedback: 관찰과 연결에 영향을 주는 대응 기능을 구분해야 합니다.
     answer: e
 - page_id: advanced-source-05-page-06
+  illustrations:
+  - file: assets/animations/u11-oop-dpi.svg
+    title: "DPI · Payload까지 살펴보기"
+    alt: "패킷을 송장(헤더)과 내용물(Payload)로 나누어 헤더만 보는 SPI와 안쪽까지 보는 DPI를 비교합니다."
+    caption: "DPI는 헤더를 넘어 Payload까지 검사합니다."
+    after_paragraph: 0
   questions:
   - id: u11-l03-p06-q01
     kind: choice
@@ -278,6 +308,12 @@ page_metadata:
       feedback: 본문에서 암호화된 Payload와 관찰 가능한 헤더 정보를 구별해야 합니다. 확인해 보세요.
     answer: a
 - page_id: advanced-source-05-page-07
+  illustrations:
+  - file: assets/animations/u11-oop-privacy.svg
+    title: "망중립과 사생활의 문제"
+    alt: "통신 내용을 열어 보면 악성 단서와 사적 정보가 함께 보이므로 목적·범위·기간·권한을 정해야 한다는 그림입니다."
+    caption: "검사 범위는 목적과 권한에 맞춰 정해야 합니다."
+    after_paragraph: 0
   questions:
   - id: u11-l03-p07-q01
     kind: choice
@@ -322,6 +358,12 @@ page_metadata:
       feedback: 본문에서 가능성과 적절성은 다른 질문이며 목적·권한·절차를 따져야 합니다. 확인해 보세요.
     answer: b
 - page_id: advanced-source-05-page-08
+  illustrations:
+  - file: assets/animations/u11-oop-dropped.svg
+    title: "놓치지 않고 수집하는 문제"
+    alt: "몰리는 패킷을 센서가 못 따라가면 일부가 누락될 수 있음을 보여 줍니다."
+    caption: "복사본이 전부 수집된다고 보장되지는 않습니다."
+    after_paragraph: 0
   questions:
   - id: u11-l03-p08-q01
     kind: choice
@@ -366,6 +408,12 @@ page_metadata:
       feedback: 본문에서 허용 가능한 누락률은 관찰의 목적과 요구 정확도에 따라 달라집니다. 확인해 보세요.
     answer: c
 - page_id: advanced-source-05-page-09
+  illustrations:
+  - file: assets/animations/u11-oop-storage.svg
+    title: "저장과 분석의 부하"
+    alt: "받기, 분석, 저장 세 단계 중 어느 단계든 느리면 누락이 생기고 1Gbps는 초당 약 125MB라는 점을 보여 줍니다."
+    caption: "수집·분석·저장 전체 처리 용량을 봐야 합니다."
+    after_paragraph: 0
   questions:
   - id: u11-l03-p09-q01
     kind: choice
@@ -410,6 +458,12 @@ page_metadata:
       feedback: 본문에서 수집 이후의 분석과 기록 단계도 병목이 될 수 있습니다. 확인해 보세요.
     answer: d
 - page_id: advanced-source-05-page-10
+  illustrations:
+  - file: assets/animations/u11-oop-compare.svg
+    title: "Inline과 Out of path 비교"
+    alt: "Inline은 실시간 차단에, Out of path는 영향 없는 사후 분석에 알맞다는 비교입니다."
+    caption: "목적에 따라 알맞은 구조가 다릅니다."
+    after_paragraph: 0
   questions:
   - id: u11-l03-p10-q01
     kind: choice
