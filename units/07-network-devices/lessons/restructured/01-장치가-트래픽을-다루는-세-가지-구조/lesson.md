@@ -133,8 +133,8 @@ page_metadata:
       text: 서버의 비밀번호 파일
       feedback: 센서는 복사된 패킷을 받습니다. 원래 패킷은 원래 경로에서 계속 전달돼요.
     - id: e
-      text: 스위치가 복사해 센서 포트로 보낸 패킷
-      feedback: 센서는 복사된 패킷을 받습니다. 원래 패킷은 원래 경로에서 계속 전달돼요.
+      text: 라우터가 다음 홉을 고를 때 참조하는 경로 정보
+      feedback: 경로 정보는 라우터가 전달 방향을 정할 때 쓰며, Out of path 센서는 미러링된 패킷을 분석해요.
     answer: c
   - id: u11-l01-p03-q02
     kind: choice
