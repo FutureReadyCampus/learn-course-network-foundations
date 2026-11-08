@@ -9,11 +9,11 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-source-03-page-01
   illustrations:
-  - file: assets/diagrams/source-03.svg
-    title: Inline · 지나가는 경로에 놓기 · 원고 그림
-    alt: Inline · 지나가는 경로에 놓기에서 원고가 함께 제공한 개념 그림
-    caption: 기존 원고의 그림을 참고해 구조와 용어를 확인한다.
-    after_paragraph: -1
+  - file: assets/animations/u11-inline-path.svg
+    title: "Inline · 지나가는 길목에 놓기"
+    alt: "서버로 가는 길목에 놓인 장치를 모든 요청 패킷이 지나가며 검사받는 모습입니다."
+    caption: "Inline 장치는 패킷이 지나가는 길목에 놓입니다."
+    after_paragraph: 0
   questions:
   - id: u11-l02-p01-q01
     kind: choice
@@ -58,6 +58,12 @@ page_metadata:
       feedback: Inline은 제품명이 아니라 통신 경로에 놓이는 구조를 설명합니다.
     answer: e
 - page_id: advanced-source-03-page-02
+  illustrations:
+  - file: assets/animations/u11-inline-bypass-drop.svg
+    title: "Packet의 통과와 차단"
+    alt: "허용된 패킷은 Bypass로 내보내고 차단 규칙에 맞는 패킷은 Drop으로 멈추는 모습입니다."
+    caption: "장치는 패킷을 통과시키거나 멈춥니다."
+    after_paragraph: 0
   questions:
   - id: u11-l02-p02-q01
     kind: choice
@@ -102,6 +108,12 @@ page_metadata:
       feedback: 이 페이지의 설명에서 bypass는 문맥에 따라 통과 또는 장애 시 우회 기능을 가리킬 수 있습니다. 다시 확인해 보세요.
     answer: b
 - page_id: advanced-source-03-page-03
+  illustrations:
+  - file: assets/animations/u11-inline-position.svg
+    title: "망 구성에서 위치 찾기"
+    alt: "내 컴퓨터에서 서버까지 여러 장치가 이어진 지도에서 검사 장치를 놓을 길목을 고르는 모습입니다."
+    caption: "지도에서 패킷이 반드시 지나는 곳을 찾습니다."
+    after_paragraph: 0
   questions:
   - id: u11-l02-p03-q01
     kind: choice
@@ -146,6 +158,12 @@ page_metadata:
       feedback: 이 페이지의 설명에서 경로 위치는 공통점이지만 라우팅과 보안 정책은 서로 다른 역할입니다. 다시 확인해 보세요.
     answer: d
 - page_id: advanced-source-03-page-04
+  illustrations:
+  - file: assets/animations/u11-inline-interface.svg
+    title: "Interface와 안쪽·바깥쪽"
+    alt: "내부망 쪽 A 인터페이스로 들어온 패킷이 인터넷 쪽 B 인터페이스로 나가는 모습입니다."
+    caption: "포트를 인터페이스로 부르며 안쪽과 바깥쪽을 나눕니다."
+    after_paragraph: 0
   questions:
   - id: u11-l02-p04-q01
     kind: choice
@@ -190,6 +208,12 @@ page_metadata:
       feedback: 소켓은 응용 프로그램과 통신 스택 사이의 접점입니다. 이 예의 요청은 A에서 들어와 B 방향으로 나갑니다.
     answer: a
 - page_id: advanced-source-03-page-05
+  illustrations:
+  - file: assets/animations/u11-inline-nic.svg
+    title: "커널·드라이버의 구현"
+    alt: "NIC 두 개와 라우팅 소프트웨어가 있는 범용 컴퓨터가 드라이버로 이어져 네트워크 장치처럼 동작하는 모습입니다."
+    caption: "NIC 여러 개와 소프트웨어로 장치를 구현합니다."
+    after_paragraph: 0
   questions:
   - id: u11-l02-p05-q01
     kind: choice
@@ -234,6 +258,12 @@ page_metadata:
       feedback: 이 페이지의 설명에서 본문은 프레임, 패킷, 소켓이 서로 다른 위치와 역할의 개념이라고 구분합니다. 다시 확인해 보세요.
     answer: c
 - page_id: advanced-source-03-page-06
+  illustrations:
+  - file: assets/animations/u11-inline-forward.svg
+    title: "들어온 패킷을 넘겨 보내기"
+    alt: "분류장처럼 A로 들어온 요청을 B로 넘기고 응답은 반대 방향으로 돌려 보내는 모습입니다."
+    caption: "요청은 A에서 B로, 응답은 B에서 A로 전달됩니다."
+    after_paragraph: 0
   questions:
   - id: u11-l02-p06-q01
     kind: choice
@@ -278,6 +308,12 @@ page_metadata:
       feedback: 커널 경로는 구현에 따라 복사와 전환 비용을 줄이는 데 활용될 수 있습니다.
     answer: e
 - page_id: advanced-source-03-page-07
+  illustrations:
+  - file: assets/animations/u11-inline-speed.svg
+    title: "처리 속도와 전체 성능"
+    alt: "요청이 몰리자 길목 장치 앞에 패킷이 줄지어 서고 서버만 키워도 소용없는 모습입니다."
+    caption: "길목 장치의 처리 속도가 전체 성능을 좌우합니다."
+    after_paragraph: 0
   questions:
   - id: u11-l02-p07-q01
     kind: choice
@@ -322,6 +358,12 @@ page_metadata:
       feedback: 이 페이지의 설명에서 중간 장치의 처리 한계가 경로 전체의 병목이 될 수 있습니다. 다시 확인해 보세요.
     answer: b
 - page_id: advanced-source-03-page-08
+  illustrations:
+  - file: assets/animations/u11-inline-filter.svg
+    title: "필터링과 고성능 구현"
+    alt: "주소와 포트만 보는 규칙은 빠르고 내용까지 보면 더 오래 걸리는 차이를 보여 줍니다."
+    caption: "무엇을 보느냐에 따라 처리 속도가 달라집니다."
+    after_paragraph: 0
   questions:
   - id: u11-l02-p08-q01
     kind: choice
@@ -366,6 +408,12 @@ page_metadata:
       feedback: 이 페이지의 설명에서 공통된 배치와 중심 기능을 구분해야 하며 한 제품에 복수 기능이 있을 수 있습니다. 다시 확인해 보세요.
     answer: d
 - page_id: advanced-source-03-page-09
+  illustrations:
+  - file: assets/animations/u11-inline-hw-sw.svg
+    title: "소프트웨어·하드웨어의 구현"
+    alt: "전용 장비 상자와 범용 컴퓨터에 소프트웨어를 올린 경우 모두 패킷을 전달하는 모습입니다."
+    caption: "장치의 역할은 상자 모양이 아니라 하는 일로 정해집니다."
+    after_paragraph: 0
   questions:
   - id: u11-l02-p09-q01
     kind: choice
