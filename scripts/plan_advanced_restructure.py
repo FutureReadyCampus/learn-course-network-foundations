@@ -30,10 +30,14 @@ def make_plan(snapshot, contract, catalog, legacy_units, source_root=ROOT):
     require(len(catalog["units"]) == 14, "Preflight expects the unchanged 14 Unit source edition")
     require(legacy_units == contract["learn_legacy_units"], "Reviewed legacy route table changed")
     targets = {item["target_key"]: item for item in snapshot["targets"]}
+    for override in contract.get("target_overrides", []):
+        targets[override["target_key"]] = override
     ids = {item["target_key"]: item["lesson_id"] for item in contract["lesson_ids"]}
-    require(len(ids) == len(contract["lesson_ids"]) == 20 and set(ids) == set(targets),
-            "Exactly 20 distinct targets required")
-    require(len(set(ids.values())) == 20, "Duplicate target Lesson ID")
+    targets = {item["target_key"]: targets[item["target_key"]]
+               for item in contract["lesson_ids"]}
+    require(len(ids) == len(contract["lesson_ids"]) == 21 and set(ids) == set(targets),
+            "Exactly 21 distinct targets required")
+    require(len(set(ids.values())) == 21, "Duplicate target Lesson ID")
     require(all(isinstance(value, str) and 0 < len(value) <= 100 for value in ids.values()),
             "Lesson IDs must fit the current API")
     excluded_sources = set(contract.get("excluded_source_keys", []))
@@ -66,6 +70,14 @@ def make_plan(snapshot, contract, catalog, legacy_units, source_root=ROOT):
                 "source_wiki": source["source_wiki"], "payload": copy.deepcopy(page),
                 "role": old["destination"]["role"],
             }
+    baseline_targets = {page: target["target_key"] for target in snapshot["targets"]
+                        for page in target["source_pages"]}
+    current_targets = {page: target["target_key"] for target in targets.values()
+                       for page in target["source_pages"]}
+    remapped_pages = {page: target for page, target in current_targets.items()
+                      if baseline_targets.get(page) != target}
+    require(remapped_pages == contract.get("source_page_remapping", {}),
+            "Target changes must be recorded in source_page_remapping")
     excluded_pages = {page["audit_page_key"] for source in snapshot["sources"]
                       if source["source_key"] in excluded_sources for page in source["pages"]}
     assigned.extend(excluded_pages)
@@ -102,8 +114,13 @@ def make_plan(snapshot, contract, catalog, legacy_units, source_root=ROOT):
             page = source_pages[audit_key]
             original = next(p for p in sources[page["source_lesson_id"]]["pages"]
                             if p["audit_page_key"] == audit_key)
-            require(original["destination"]["target_key"] == key
-                    and original["destination"]["source_order"] == number, "Page destination/order changed")
+            if audit_key in contract.get("source_page_remapping", {}):
+                require(contract["source_page_remapping"][audit_key] == key,
+                        "Remapped source Page has the wrong target")
+            else:
+                require(original["destination"]["target_key"] == key
+                        and original["destination"]["source_order"] == number,
+                        "Page destination/order changed")
             lesson["pages"].append({k: v for k, v in page.items() if k != "payload"})
             destinations[(page["source_lesson_id"], page["source_page"])] = {
                 "kind": "lesson", "id": ids[key], "page_id": page["page_id"], "page": number,
