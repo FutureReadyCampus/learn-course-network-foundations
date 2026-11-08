@@ -298,17 +298,17 @@ page_metadata:
       text: 한쪽 요청을 받아 다른 쪽으로 전달하고 응답을 되돌린다
       feedback: 소켓 연결 사이에서 요청과 응답을 중계하는 것이 기본 역할입니다.
     - id: b
-      text: IP 주소를 파일로 저장한다
-      feedback: 본문에서 소켓 연결 사이에서 요청과 응답을 중계하는 것이 기본 역할입니다. 확인해 보세요.
+      text: Proxy는 양쪽 연결을 하나의 연결로 합쳐 중계하지 않는다
+      feedback: Proxy는 클라이언트 쪽과 서버 쪽 연결을 이어 요청과 응답을 중계해요.
     - id: c
-      text: 패킷을 반드시 모두 폐기한다
-      feedback: 본문에서 소켓 연결 사이에서 요청과 응답을 중계하는 것이 기본 역할입니다. 확인해 보세요.
+      text: Proxy는 반드시 모든 요청을 차단하고 응답을 전달하지 않는다
+      feedback: Proxy는 클라이언트 쪽과 서버 쪽 연결을 이어 요청과 응답을 중계해요.
     - id: d
-      text: 클라이언트의 화면을 렌더링한다
-      feedback: 본문에서 소켓 연결 사이에서 요청과 응답을 중계하는 것이 기본 역할입니다. 확인해 보세요.
+      text: Proxy가 브라우저 화면을 다시 그려 서버로 보낸다
+      feedback: Proxy는 클라이언트 쪽과 서버 쪽 연결을 이어 요청과 응답을 중계해요.
     - id: e
-      text: 전원 신호를 변환한다
-      feedback: 본문에서 소켓 연결 사이에서 요청과 응답을 중계하는 것이 기본 역할입니다. 확인해 보세요.
+      text: 복사본을 Out of path 센서로 보내기만 한다
+      feedback: Proxy는 클라이언트 쪽과 서버 쪽 연결을 이어 요청과 응답을 중계해요.
     answer: a
 - page_id: advanced-source-06-page-07
   illustrations:
@@ -345,20 +345,20 @@ page_metadata:
     prompt: Proxy의 익명성과 보안을 판단할 때 확인할 것은 무엇인가요?
     choices:
     - id: a
-      text: 제품 이름만
-      feedback: 본문에서 이름만으로 정보 노출이나 안전성을 단정할 수 없습니다. 확인해 보세요.
+      text: 목적지 서버가 보는 출발지 주소만
+      feedback: 목적지에 보이는 정보는 한 요소일 뿐입니다. 운영자에게 보이는 정보와 기록 정책도 살펴야 합니다.
     - id: b
       text: 배치, 전달 정보, 기록 정책과 운영 주체
       feedback: 이름만으로 정보 노출이나 안전성을 단정할 수 없습니다.
     - id: c
-      text: 장비 외관 색깔
-      feedback: 본문에서 이름만으로 정보 노출이나 안전성을 단정할 수 없습니다. 확인해 보세요.
+      text: Proxy가 어떤 요청 정보를 전달하는지
+      feedback: 전달 정보는 중요하지만, 익명성과 보안을 판단하려면 기록 정책과 운영 주체도 확인해야 합니다.
     - id: d
-      text: 브라우저 글꼴
-      feedback: 본문에서 이름만으로 정보 노출이나 안전성을 단정할 수 없습니다. 확인해 보세요.
+      text: Proxy가 남기는 기록과 이를 관리하는 주체
+      feedback: 기록과 운영 주체는 중요한 요소지만, 배치와 전달 정보도 함께 봐야 합니다.
     - id: e
-      text: 도메인의 철자 수
-      feedback: 본문에서 이름만으로 정보 노출이나 안전성을 단정할 수 없습니다. 확인해 보세요.
+      text: Proxy가 있는 네트워크의 전체 장치 수
+      feedback: 장치 수만으로는 Proxy가 어떤 정보를 전달하고 기록하는지 알 수 없습니다.
     answer: b
 - page_id: advanced-source-07-page-01
   illustrations:
@@ -510,6 +510,27 @@ page_metadata:
       text: 필요한 범위, 접근 권한과 보관 기간
       feedback: 필요한 정보만 적절히 관리하는 정책이 중요합니다.
     answer: e
+  - id: u11-l04-p10-q03
+    kind: choice
+    difficulty: medium
+    prompt: Proxy 기록에서 HTTPS 페이지의 구체적인 내용을 확인하려면 무엇을 추가로 확인해야 하나요?
+    choices:
+    - id: a
+      text: 목적지 주소 기록만으로 암호화된 요청 본문도 확인할 수 있는지
+      feedback: 목적지 기록과 HTTPS Payload의 평문 내용은 서로 다른 정보입니다.
+    - id: b
+      text: TLS 검사 구성과 필요한 기록 범위·접근 조건이 정해졌는지
+      feedback: 암호화된 내용은 적절한 TLS 구성 없이는 읽을 수 없으며, 기록 범위와 접근도 관리해야 합니다.
+    - id: c
+      text: Proxy 로그를 오래 보관하면 암호화가 자동으로 풀리는지
+      feedback: 보관 기간은 암호화를 해제하지 않으며, 내용 확인에는 별도 TLS 구성이 필요합니다.
+    - id: d
+      text: 모든 HTTPS 요청을 제한 없이 저장해도 되는지
+      feedback: 기술적으로 볼 수 있는 내용과 기록해도 되는 범위는 별도로 따져야 합니다.
+    - id: e
+      text: TLS 설정과 무관하게 Proxy가 모든 브라우저 화면을 기록하는지
+      feedback: 본문은 Proxy가 관찰하는 범위가 기능·설정에 달려 있으며 암호화 내용은 자동으로 보이지 않는다고 설명합니다.
+    answer: b
 - page_id: advanced-source-07-page-04
   illustrations:
   - file: assets/animations/u11-fwd-07-04-file-scan.svg
@@ -645,20 +666,20 @@ page_metadata:
     prompt: 복합 장비를 그릴 때 우선 살펴볼 것은 무엇인가요?
     choices:
     - id: a
-      text: 장비 상자의 외관 색상
-      feedback: 본문에서 역할과 데이터 흐름을 기능별로 확인해야 합니다. 확인해 보세요.
+      text: 장비를 구성하는 물리 서버의 개수
+      feedback: 물리 장비 수만으로 기능의 결합 방식이나 데이터 흐름을 알 수 없습니다.
     - id: b
-      text: 운영자의 키보드 종류
-      feedback: 본문에서 역할과 데이터 흐름을 기능별로 확인해야 합니다. 확인해 보세요.
+      text: 각 기능이 검사하는 데이터의 종류만
+      feedback: 검사 대상도 중요하지만, 데이터가 어디로 들어와 어떤 기능을 거치는지 함께 살펴야 합니다.
     - id: c
       text: 데이터의 진입·처리 경로와 기능별 역할
       feedback: 역할과 데이터 흐름을 기능별로 확인해야 합니다.
     - id: d
-      text: 제품 화면의 글꼴
-      feedback: 본문에서 역할과 데이터 흐름을 기능별로 확인해야 합니다. 확인해 보세요.
+      text: 기능 이름과 제조사의 제품 분류만
+      feedback: 제품 이름만으로는 실제 데이터의 진입·처리 경로와 각 기능의 역할이 드러나지 않습니다.
     - id: e
-      text: 랜선의 길이만
-      feedback: 본문에서 역할과 데이터 흐름을 기능별로 확인해야 합니다. 확인해 보세요.
+      text: 장비에 연결된 인터페이스 수만
+      feedback: 인터페이스 수만 확인하기보다 데이터가 통과하는 경로와 기능별 처리를 함께 그려야 합니다.
     answer: c
 - page_id: advanced-source-07-page-07
   illustrations:
@@ -674,20 +695,20 @@ page_metadata:
     prompt: 내부 Proxy에서 웹 내용을 검사하는 구성에 필요한 것은 무엇인가요?
     choices:
     - id: a
-      text: 브라우저 화면 크기만
-      feedback: 본문에서 hTTPS 내용을 검사하려면 적절한 승인과 별도 TLS 구성이 필요합니다. 확인해 보세요.
+      text: 브라우저가 Proxy를 사용하도록 설정하는 것만
+      feedback: Proxy 설정이나 패킷 복사만으로는 HTTPS 내용을 읽을 수 없고, TLS 검사에 필요한 구성과 권한을 준비해야 해요.
     - id: b
       text: 목적과 권한에 맞는 TLS 검사 설정 등 추가 운영 절차
       feedback: HTTPS 내용을 검사하려면 적절한 승인과 별도 TLS 구성이 필요합니다.
     - id: c
-      text: 서버 주소를 삭제하는 것
-      feedback: 본문에서 hTTPS 내용을 검사하려면 적절한 승인과 별도 TLS 구성이 필요합니다. 확인해 보세요.
+      text: 목적지 서버의 주소를 기록에서 지우는 것
+      feedback: Proxy 설정이나 패킷 복사만으로는 HTTPS 내용을 읽을 수 없고, TLS 검사에 필요한 구성과 권한을 준비해야 해요.
     - id: d
-      text: 모든 인증서를 무시하는 것
-      feedback: 본문에서 hTTPS 내용을 검사하려면 적절한 승인과 별도 TLS 구성이 필요합니다. 확인해 보세요.
+      text: 인증서 검증을 사용하지 않도록 설정하는 것
+      feedback: Proxy 설정이나 패킷 복사만으로는 HTTPS 내용을 읽을 수 없고, TLS 검사에 필요한 구성과 권한을 준비해야 해요.
     - id: e
-      text: 패킷 복사만 켜는 것
-      feedback: 본문에서 hTTPS 내용을 검사하려면 적절한 승인과 별도 TLS 구성이 필요합니다. 확인해 보세요.
+      text: 패킷 미러링만 켜는 것
+      feedback: Proxy 설정이나 패킷 복사만으로는 HTTPS 내용을 읽을 수 없고, TLS 검사에 필요한 구성과 권한을 준비해야 해요.
     answer: b
   - id: u11-l04-p14-q02
     kind: choice
@@ -710,6 +731,27 @@ page_metadata:
       text: 기록 보관 기간은 중요하지 않다
       feedback: 본문에서 기술적 가능성과 수집의 적절성은 구분해야 합니다. 확인해 보세요.
     answer: d
+  - id: u11-l04-p14-q03
+    kind: choice
+    difficulty: medium
+    prompt: 내부 Proxy에서 TLS 검사를 운영할 때 본문이 강조하는 구분은 무엇인가요?
+    choices:
+    - id: a
+      text: 조직의 승인·정책을 확인하고 필요한 범위만 검사한다
+      feedback: 본문은 기술적 가능성과 조직의 권한·정책을 구별하고 수집 목적과 범위를 함께 정하라고 설명합니다.
+    - id: b
+      text: 인증서를 설치하면 모든 요청을 기록할 권한도 자동으로 생긴다
+      feedback: 기술적 설정만으로 조직의 승인이나 정책이 정해지는 것은 아닙니다.
+    - id: c
+      text: 요청 본문은 목적지 주소보다 덜 민감하므로 제한 없이 저장한다
+      feedback: 본문은 요청 본문과 응답 내용이 목적지 기록보다 민감할 수 있다고 설명합니다.
+    - id: d
+      text: 공용 PC의 접속은 개인 정보와 관계가 없다고 본다
+      feedback: 공용 PC의 기록에도 개인 검색 내용이 포함될 수 있어 사생활을 고려해야 합니다.
+    - id: e
+      text: TLS 검사를 적용하면 보관 기간과 접근 권한은 더는 필요하지 않다
+      feedback: TLS 검사 여부와 별개로 기록의 목적, 범위, 이용 안내와 접근 관리가 필요합니다.
+    answer: a
 ---
 ## Proxy를 사용하는 관점
 
