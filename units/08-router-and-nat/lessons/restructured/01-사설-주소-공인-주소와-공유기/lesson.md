@@ -15,6 +15,12 @@ source_wikis:
 source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-10.md
 page_metadata:
 - page_id: advanced-source-10-page-01
+  illustrations:
+  - file: assets/animations/u12-router-door.svg
+    title: "공유기는 인터넷 출입구"
+    alt: "휴대폰과 노트북이 집 안 네트워크(LAN)에서 공유기를 거쳐 바깥(WAN)의 인터넷 회사로 이어지는 모습입니다."
+    caption: "여러 기기가 공유기 하나를 통해 인터넷을 함께 씁니다."
+    after_paragraph: 0
   question_placements:
   - question_id: u12-l01-p01-q01
     after_paragraph: 1
@@ -63,13 +69,13 @@ page_metadata:
       text: 바깥과 통신하도록 주소를 바꾸는 기능
       feedback: 맞아요. 여러 기능이 한 공유기에 들어 있어도 NAT는 네트워크 주소 변환을 뜻합니다.
     answer: e
-  illustrations:
-  - file: assets/diagrams/source-10.svg
-    title: 사설 주소와 공인 주소 사이에서 동작하는 NAT
-    alt: 집 안 기기의 사설 IP 주소가 공유기를 지나 외부에 보이는 주소로 바뀌는 흐름
-    caption: 여러 기기가 공유기 하나를 거쳐 인터넷을 이용하는 큰 흐름을 살펴본다.
-    after_paragraph: -1
 - page_id: advanced-source-10-page-02
+  illustrations:
+  - file: assets/animations/u12-router-public-private.svg
+    title: "사설 IP와 공인 IP"
+    alt: "서로 다른 두 집에서 같은 사설 주소 192.168.0.25를 써도 괜찮고, 인터넷에서는 공인 주소로 구분하는 그림입니다."
+    caption: "사설 주소는 각 집 안에서만 의미가 있습니다."
+    after_paragraph: 0
   question_placements:
   - question_id: u12-l01-p02-q01
     after_paragraph: 1
@@ -119,6 +125,12 @@ page_metadata:
       feedback: 공인과 사설은 주소의 사용 범위 구분이지 안전과 위험의 등급이 아닙니다.
     answer: d
 - page_id: advanced-source-10-page-03
+  illustrations:
+  - file: assets/animations/u12-router-nat.svg
+    title: "NAT가 주소를 바꿔 줘요"
+    alt: "노트북의 요청 출발지 주소를 공유기가 바깥 주소로 바꾸고, 돌아온 응답을 기록에 따라 노트북으로 전달하는 모습입니다."
+    caption: "공유기는 나갈 때 주소를 바꾸고 응답은 기록대로 돌려줍니다."
+    after_paragraph: 0
   question_placements:
   - question_id: u12-l01-p03-q01
     after_paragraph: 1
@@ -168,6 +180,12 @@ page_metadata:
       feedback: 본문의 웹사이트는 공유기 쪽 주소를 봅니다. 내부 통신 구별은 공유기의 기록을 이용합니다.
     answer: a
 - page_id: advanced-source-10-page-04
+  illustrations:
+  - file: assets/animations/u12-router-firewall.svg
+    title: "NAT ≠ 방화벽"
+    alt: "기록에 없는 바깥 패킷이 전달되지 않는 효과가 있지만 NAT는 주소 변환이고 방화벽은 규칙에 따른 허용·차단임을 구분하는 그림입니다."
+    caption: "NAT와 방화벽은 목적이 다릅니다."
+    after_paragraph: 0
   question_placements:
   - question_id: u12-l01-p04-q01
     after_paragraph: 1
@@ -217,6 +235,12 @@ page_metadata:
       feedback: NAT는 주소 변환, 방화벽은 보안 규칙에 따른 허용·차단을 담당합니다.
     answer: b
 - page_id: advanced-source-10-page-05
+  illustrations:
+  - file: assets/animations/u12-router-nat-types.svg
+    title: "NAT의 동작은 한 가지가 아니에요"
+    alt: "바깥 주소·포트를 어떻게 정하는지, 외부 패킷을 어떤 조건에 들여보내는지 두 질문으로 NAT를 나누는 그림입니다."
+    caption: "NAT 동작은 두 질문으로 구분합니다."
+    after_paragraph: 0
   question_placements:
   - question_id: u12-l01-p05-q01
     after_paragraph: 1
@@ -266,6 +290,12 @@ page_metadata:
       feedback: 바깥 주소 결정과 어떤 외부 패킷을 받아들이는가는 서로 구분할 기준입니다.
     answer: c
 - page_id: advanced-source-10-page-06
+  illustrations:
+  - file: assets/animations/u12-router-lan-wan.svg
+    title: "안쪽(LAN)과 바깥쪽(WAN)"
+    alt: "공유기 안쪽 LAN에는 사설 주소의 기기가, 바깥쪽 WAN에는 인터넷 회사가 준 주소가 있는 모습입니다."
+    caption: "LAN은 공유기 안쪽, WAN은 바깥쪽 연결입니다."
+    after_paragraph: 0
   question_placements:
   - question_id: u12-l01-p06-q01
     after_paragraph: 1
@@ -315,6 +345,12 @@ page_metadata:
       feedback: 맞아요. 안쪽과 바깥쪽은 다른 네트워크이며, 주소 할당과 NAT 구성에 따라 달라집니다.
     answer: e
 - page_id: advanced-source-10-page-07
+  illustrations:
+  - file: assets/animations/u12-router-private-ranges.svg
+    title: "사설 IPv4는 세 범위"
+    alt: "10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 세 사설 범위와 예시 주소를 보여 주는 표입니다."
+    caption: "자주 보는 사설 대역은 세 가지입니다."
+    after_paragraph: 0
   question_placements:
   - question_id: u12-l01-p07-q01
     after_paragraph: 2
@@ -364,6 +400,12 @@ page_metadata:
       feedback: 표의 사설 범위는 172.16부터 시작합니다. 제시한 범위는 그보다 앞에 있습니다.
     answer: a
 - page_id: advanced-source-10-page-08
+  illustrations:
+  - file: assets/animations/u12-router-cgnat.svg
+    title: "주소를 한 번 더 바꾸는 CGNAT"
+    alt: "집 공유기의 NAT 뒤에 통신사 NAT가 한 번 더 있어 포트 포워딩만으로 외부 접속이 안 될 수 있음을 보여 줍니다."
+    caption: "통신사 NAT가 있으면 주소 변환이 두 번 일어날 수 있습니다."
+    after_paragraph: 0
   question_placements:
   - question_id: u12-l01-p08-q01
     after_paragraph: 1
@@ -413,6 +455,12 @@ page_metadata:
       feedback: 본문은 주소 대역 하나만으로 모든 인터넷 연결 문제를 설명할 수는 없다고 덧붙입니다.
     answer: b
 - page_id: advanced-source-10-page-09
+  illustrations:
+  - file: assets/animations/u12-router-summary.svg
+    title: "공유기와 NAT 한눈에 정리"
+    alt: "사설 주소의 노트북 요청이 공유기와 NAT를 거쳐 웹사이트로 가고 응답이 같은 기록을 따라 돌아오는 정리 그림입니다."
+    caption: "사설 IP, 공인 IP, 공유기, NAT의 역할을 구분합니다."
+    after_paragraph: 0
   question_placements:
   - question_id: u12-l01-p09-q01
     after_paragraph: 1
