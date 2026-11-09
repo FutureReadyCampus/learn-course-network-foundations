@@ -592,12 +592,12 @@ page_metadata:
     difficulty: easy
     prompt: "PC가 같은 LAN의 게이트웨이 192.168.0.1에 대한 MAC 주소를 모를 때, ARP Request로 무엇을 묻나요?"
     choices:
-    - id: a
-      text: "외부 서버 3.3.3.3의 MAC 주소가 무엇인지"
-      feedback: "ARP는 현재 LAN에서 도달할 수 있는 IP의 MAC 주소를 찾는 데 써요. 외부 서버의 MAC을 이 LAN에서 묻지 않아요."
     - id: b
       text: "192.168.0.1을 사용하는 장치의 MAC 주소가 무엇인지"
       feedback: "맞아요. ARP Request는 같은 LAN에 ‘192.168.0.1을 쓰는 장치는 자신의 MAC 주소를 알려 달라’고 브로드캐스트해요."
+    - id: a
+      text: "외부 서버 3.3.3.3의 MAC 주소가 무엇인지"
+      feedback: "ARP는 현재 LAN에서 도달할 수 있는 IP의 MAC 주소를 찾는 데 써요. 외부 서버의 MAC을 이 LAN에서 묻지 않아요."
     - id: c
       text: "PC의 IP 주소를 어떤 값으로 바꿔야 하는지"
       feedback: "ARP는 IP 설정을 바꾸지 않아요. 이미 알고 있는 IP 주소에 대응하는 MAC 주소를 찾습니다."

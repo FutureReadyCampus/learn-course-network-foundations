@@ -1,0 +1,3894 @@
+{
+  "format": "advanced-restructure-audit-v1",
+  "status": "preparation-only; not consumed by builders or Learn",
+  "content_source_sha": "da8d4393c7ef2ba06cb4b46b2ab2f9a55e3017d7",
+  "learn_inspected_sha": "f0b56c641919e9aa25fe421375b9553e05935dfa",
+  "units": [
+    {
+      "number": 11,
+      "title": "네트워크 장치의 배치와 프록시"
+    },
+    {
+      "number": 12,
+      "title": "공유기와 NAT의 동작"
+    },
+    {
+      "number": 13,
+      "title": "부하 분산과 서비스 가용성"
+    },
+    {
+      "number": 14,
+      "title": "VPN과 원격 네트워크 연결"
+    },
+    {
+      "number": 15,
+      "title": "네트워크 보안 솔루션"
+    }
+  ],
+  "targets": [
+    {
+      "target_key": "u11-l01",
+      "unit_number": 11,
+      "title": "장치가 트래픽을 다루는 세 가지 구조",
+      "source_pages": [
+        "adv-source-02-p01",
+        "adv-source-02-p02",
+        "adv-source-02-p03",
+        "adv-source-02-p04",
+        "adv-source-02-p05",
+        "adv-source-02-p06"
+      ]
+    },
+    {
+      "target_key": "u11-l02",
+      "unit_number": 11,
+      "title": "인라인 구조와 트래픽 처리",
+      "source_pages": [
+        "adv-source-03-p01",
+        "adv-source-03-p02",
+        "adv-source-03-p03",
+        "adv-source-03-p04",
+        "adv-source-03-p05",
+        "adv-source-03-p06",
+        "adv-source-03-p07",
+        "adv-source-03-p08",
+        "adv-source-03-p09"
+      ]
+    },
+    {
+      "target_key": "u11-l03",
+      "unit_number": 11,
+      "title": "경로 밖 관찰과 DPI",
+      "source_pages": [
+        "adv-source-05-p01",
+        "adv-source-05-p02",
+        "adv-source-05-p03",
+        "adv-source-05-p04",
+        "adv-source-05-p05",
+        "adv-source-05-p06",
+        "adv-source-05-p07",
+        "adv-source-05-p08",
+        "adv-source-05-p09",
+        "adv-source-05-p10"
+      ]
+    },
+    {
+      "target_key": "u11-l04",
+      "unit_number": 11,
+      "title": "포워드 프록시와 클라이언트 측 중계",
+      "source_pages": [
+        "adv-source-06-p01",
+        "adv-source-06-p02",
+        "adv-source-06-p03",
+        "adv-source-06-p04",
+        "adv-source-06-p05",
+        "adv-source-06-p06",
+        "adv-source-06-p07",
+        "adv-source-07-p01",
+        "adv-source-07-p02",
+        "adv-source-07-p03",
+        "adv-source-07-p04",
+        "adv-source-07-p05",
+        "adv-source-07-p06",
+        "adv-source-07-p07",
+        "adv-source-09-p01",
+        "adv-source-09-p02",
+        "adv-source-09-p03",
+        "adv-source-09-p04",
+        "adv-source-09-p05",
+        "adv-source-09-p06"
+      ]
+    },
+    {
+      "target_key": "u11-l05",
+      "unit_number": 11,
+      "title": "리버스 프록시와 서버 앞단",
+      "source_pages": [
+        "adv-source-08-p01",
+        "adv-source-08-p02",
+        "adv-source-08-p03",
+        "adv-source-08-p04",
+        "adv-source-08-p05"
+      ]
+    },
+    {
+      "target_key": "u12-l01",
+      "unit_number": 12,
+      "title": "사설 주소·공인 주소와 공유기",
+      "source_pages": [
+        "adv-source-10-p01",
+        "adv-source-10-p02",
+        "adv-source-10-p03",
+        "adv-source-10-p04",
+        "adv-source-10-p05",
+        "adv-source-10-p06",
+        "adv-source-10-p07",
+        "adv-source-10-p08",
+        "adv-source-10-p09"
+      ]
+    },
+    {
+      "target_key": "u12-l02",
+      "unit_number": 12,
+      "title": "NAT 변환표로 통신 따라가기",
+      "source_pages": [
+        "adv-source-11-p01",
+        "adv-source-11-p02",
+        "adv-source-11-p03",
+        "adv-source-11-p04",
+        "adv-source-11-p05",
+        "adv-source-11-p06",
+        "adv-source-11-p07",
+        "adv-source-11-p08",
+        "adv-source-11-p09",
+        "adv-source-11-p10",
+        "adv-source-11-p11"
+      ]
+    },
+    {
+      "target_key": "u12-l03",
+      "unit_number": 12,
+      "title": "NAT의 매핑과 수신 허용 방식",
+      "source_pages": [
+        "adv-source-12-p01",
+        "adv-source-12-p02",
+        "adv-source-12-p03",
+        "adv-source-12-p04",
+        "adv-source-12-p05",
+        "adv-source-12-p06",
+        "adv-source-12-p07",
+        "adv-source-12-p08",
+        "adv-source-12-p09",
+        "adv-source-13-p01",
+        "adv-source-13-p02",
+        "adv-source-13-p03",
+        "adv-source-13-p04",
+        "adv-source-13-p05",
+        "adv-source-13-p06",
+        "adv-source-14-p01",
+        "adv-source-14-p02",
+        "adv-source-14-p03",
+        "adv-source-14-p04",
+        "adv-source-14-p05",
+        "adv-source-14-p06",
+        "adv-source-14-p07",
+        "adv-source-14-p08",
+        "adv-source-14-p09"
+      ]
+    },
+    {
+      "target_key": "u12-l04",
+      "unit_number": 12,
+      "title": "포트 포워딩으로 내부 서비스 연결하기",
+      "source_pages": [
+        "adv-source-15-p01",
+        "adv-source-15-p02",
+        "adv-source-15-p03",
+        "adv-source-15-p04",
+        "adv-source-15-p05",
+        "adv-source-15-p06",
+        "adv-source-15-p07",
+        "adv-source-15-p08"
+      ]
+    },
+    {
+      "target_key": "u12-l05",
+      "unit_number": 12,
+      "title": "UPnP와 자동 포트 설정",
+      "source_pages": [
+        "adv-source-16-p01",
+        "adv-source-16-p02",
+        "adv-source-16-p03",
+        "adv-source-16-p04",
+        "adv-source-16-p05",
+        "adv-source-16-p06",
+        "adv-source-16-p07",
+        "adv-source-16-p08"
+      ]
+    },
+    {
+      "target_key": "u13-l01",
+      "unit_number": 13,
+      "title": "L4 부하 분산과 서버 상태 확인",
+      "source_pages": [
+        "adv-source-17-p01",
+        "adv-source-17-p02",
+        "adv-source-17-p03",
+        "adv-source-17-p04",
+        "adv-source-17-p05",
+        "adv-source-17-p06",
+        "adv-source-17-p07"
+      ]
+    },
+    {
+      "target_key": "u13-l02",
+      "unit_number": 13,
+      "title": "이중화로 장애에 대비하기",
+      "source_pages": [
+        "adv-source-17-p08",
+        "adv-source-17-p09",
+        "adv-source-17-p10",
+        "adv-source-17-p11"
+      ]
+    },
+    {
+      "target_key": "u13-l03",
+      "unit_number": 13,
+      "title": "DNS 기반 부하 분산과 GSLB",
+      "source_pages": [
+        "adv-source-18-p01",
+        "adv-source-18-p02",
+        "adv-source-18-p03",
+        "adv-source-18-p04",
+        "adv-source-18-p05",
+        "adv-source-18-p06",
+        "adv-source-18-p07",
+        "adv-source-18-p08",
+        "adv-source-18-p09",
+        "adv-source-18-p10",
+        "adv-source-18-p11"
+      ]
+    },
+    {
+      "target_key": "u14-l01",
+      "unit_number": 14,
+      "title": "사설망을 인터넷으로 연결하는 VPN",
+      "source_pages": [
+        "adv-source-19-p01",
+        "adv-source-19-p02",
+        "adv-source-19-p03",
+        "adv-source-19-p04",
+        "adv-source-19-p05",
+        "adv-source-19-p06",
+        "adv-source-19-p07",
+        "adv-source-19-p08",
+        "adv-source-19-p09"
+      ]
+    },
+    {
+      "target_key": "u14-l02",
+      "unit_number": 14,
+      "title": "IPsec과 터널링",
+      "source_pages": [
+        "adv-source-20-p01",
+        "adv-source-20-p02",
+        "adv-source-20-p03",
+        "adv-source-20-p04",
+        "adv-source-20-p05",
+        "adv-source-20-p06",
+        "adv-source-20-p07",
+        "adv-source-20-p08",
+        "adv-source-20-p09",
+        "adv-source-20-p10",
+        "adv-source-20-p11",
+        "adv-source-20-p12",
+        "adv-source-20-p13"
+      ]
+    },
+    {
+      "target_key": "u14-l03",
+      "unit_number": 14,
+      "title": "원격 접속 VPN과 사용 시 주의",
+      "source_pages": [
+        "adv-source-21-p01",
+        "adv-source-21-p02",
+        "adv-source-21-p03",
+        "adv-source-21-p04",
+        "adv-source-21-p05",
+        "adv-source-21-p06",
+        "adv-source-21-p07",
+        "adv-source-21-p08",
+        "adv-source-21-p09",
+        "adv-source-21-p10",
+        "adv-source-22-p01",
+        "adv-source-22-p02",
+        "adv-source-22-p03",
+        "adv-source-22-p04",
+        "adv-source-22-p05",
+        "adv-source-22-p06",
+        "adv-source-22-p07",
+        "adv-source-22-p08",
+        "adv-source-22-p09",
+        "adv-source-22-p10"
+      ]
+    },
+    {
+      "target_key": "u15-l01",
+      "unit_number": 15,
+      "title": "보안 장치의 배치와 역할",
+      "source_pages": [
+        "adv-source-23-p01",
+        "adv-source-23-p02",
+        "adv-source-23-p03",
+        "adv-source-23-p04",
+        "adv-source-23-p05"
+      ]
+    },
+    {
+      "target_key": "u15-l02",
+      "unit_number": 15,
+      "title": "NAC와 네트워크 접근 통제",
+      "source_pages": [
+        "adv-source-23-p06",
+        "adv-source-23-p07",
+        "adv-source-23-p08",
+        "adv-source-23-p09"
+      ]
+    },
+    {
+      "target_key": "u15-l03",
+      "unit_number": 15,
+      "title": "방화벽과 연결 상태 추적",
+      "source_pages": [
+        "adv-source-23-p10",
+        "adv-source-23-p11",
+        "adv-source-23-p12",
+        "adv-source-23-p13"
+      ]
+    },
+    {
+      "target_key": "u15-l04",
+      "unit_number": 15,
+      "title": "침입 탐지·차단과 보안 로그 분석",
+      "source_pages": [
+        "adv-source-23-p14",
+        "adv-source-23-p15",
+        "adv-source-23-p16",
+        "adv-source-23-p17",
+        "adv-source-23-p18",
+        "adv-source-23-p19",
+        "adv-source-23-p20"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "target_key": "advanced-guide",
+      "title": "심화 과정 학습 안내",
+      "source": "U11L1",
+      "required": false
+    },
+    {
+      "target_key": "advanced-materials",
+      "title": "심화 과정 참고 자료",
+      "source": "U11L4",
+      "required": false,
+      "links": [
+        "https://github.com/FutureReadyCampus/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/originals/print.pdf",
+        "https://github.com/FutureReadyCampus/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/originals/slides.pdf"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source_key": "U11L1",
+      "lesson_id": "u7-advanced-01-강의소개-및-교육목표",
+      "title": "강의소개 및 교육목표",
+      "path": "units/07-network-devices/lessons/01-강의소개-및-교육목표/lesson.md",
+      "file_sha256": "d0c3f8c545c1a0e50d4539cc4d422c72eb34d1bdb11969f0ff1ec5e0fb5be295",
+      "source_wiki": "https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-01.md",
+      "pages": [
+        {
+          "source_page": 1,
+          "audit_page_key": "adv-source-01-p01",
+          "existing_page_id": null,
+          "title": "응용 단원 길잡이",
+          "content_sha256": "fc9968c9cb240d3c3a43b477b5419f549410ad27e5cfa37cf7ab4f44078e9706",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/1/page/1",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/1/page/1",
+          "destination": {
+            "kind": "resource",
+            "target_key": "advanced-guide",
+            "role": "non-learning"
+          }
+        },
+        {
+          "source_page": 2,
+          "audit_page_key": "adv-source-01-p02",
+          "existing_page_id": null,
+          "title": "먼저 살펴볼 기초 개념",
+          "content_sha256": "7bb6259c67fdeabf60429965bd493dea1b8803bf7f440ca17ad9ff800e9ce4ea",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/1/page/2",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/1/page/2",
+          "destination": {
+            "kind": "resource",
+            "target_key": "advanced-guide",
+            "role": "non-learning"
+          }
+        },
+        {
+          "source_page": 3,
+          "audit_page_key": "adv-source-01-p03",
+          "existing_page_id": null,
+          "title": "공유기 설정을 찾아보는 경험",
+          "content_sha256": "6794f7cbc46384e18309f37e9de1cabaf0dec5ca54803da387b3025f640c297a",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/1/page/3",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/1/page/3",
+          "destination": {
+            "kind": "resource",
+            "target_key": "advanced-guide",
+            "role": "non-learning"
+          }
+        },
+        {
+          "source_page": 4,
+          "audit_page_key": "adv-source-01-p04",
+          "existing_page_id": null,
+          "title": "세 가지 네트워크 장치 구조",
+          "content_sha256": "d9c388be6bcc849e5321d079860d85ea54c4d98f8d563ba58416a4d613fba1a6",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/1/page/4",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/1/page/4",
+          "destination": {
+            "kind": "resource",
+            "target_key": "advanced-guide",
+            "role": "non-learning"
+          }
+        },
+        {
+          "source_page": 5,
+          "audit_page_key": "adv-source-01-p05",
+          "existing_page_id": null,
+          "title": "NAT와 공유기",
+          "content_sha256": "b5314d22da8cb4cd2dac4eedb17aa0a647b5be42c24a3c1fef5cc085a105f61d",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/1/page/5",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/1/page/5",
+          "destination": {
+            "kind": "resource",
+            "target_key": "advanced-guide",
+            "role": "non-learning"
+          }
+        },
+        {
+          "source_page": 6,
+          "audit_page_key": "adv-source-01-p06",
+          "existing_page_id": null,
+          "title": "부하분산의 원리",
+          "content_sha256": "e37e7c38766b2229425a64a649b1a373bb69c7e1fed1420c6457c1b06a0504da",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/1/page/6",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/1/page/6",
+          "destination": {
+            "kind": "resource",
+            "target_key": "advanced-guide",
+            "role": "non-learning"
+          }
+        },
+        {
+          "source_page": 7,
+          "audit_page_key": "adv-source-01-p07",
+          "existing_page_id": null,
+          "title": "VPN과 보안 장치",
+          "content_sha256": "5b29a9d6f14afc0dd9ae0d4c215af5f1c015f1ae4d43019dc243b6df5f2e79b9",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/1/page/7",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/1/page/7",
+          "destination": {
+            "kind": "resource",
+            "target_key": "advanced-guide",
+            "role": "non-learning"
+          }
+        },
+        {
+          "source_page": 8,
+          "audit_page_key": "adv-source-01-p08",
+          "existing_page_id": null,
+          "title": "학습 목표와 활용",
+          "content_sha256": "6e71212f0d885990e4114849ffb90bc61373691fa92bc62392d9878ba48a8c1e",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/1/page/8",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/1/page/8",
+          "destination": {
+            "kind": "resource",
+            "target_key": "advanced-guide",
+            "role": "non-learning"
+          }
+        }
+      ]
+    },
+    {
+      "source_key": "U11L2",
+      "lesson_id": "u7-advanced-02-세-가지-네트워크-장치-구조",
+      "title": "세 가지 네트워크 장치 구조",
+      "path": "units/07-network-devices/lessons/02-세-가지-네트워크-장치-구조/lesson.md",
+      "file_sha256": "a5ec85b2609ef2f1ecf7bb04331e34b0623351e035cac00127e1c199581923da",
+      "source_wiki": "https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-02.md",
+      "pages": [
+        {
+          "source_page": 1,
+          "audit_page_key": "adv-source-02-p01",
+          "existing_page_id": null,
+          "title": "Inline·Out of path·Proxy",
+          "content_sha256": "5f890596741d800302ec45a2795706a5fd075a81e5e073c17218fb29f91b5e3d",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/2/page/1",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/2/page/1",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l01",
+            "source_order": 1,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 2,
+          "audit_page_key": "adv-source-02-p02",
+          "existing_page_id": null,
+          "title": "Inline · 통과와 차단",
+          "content_sha256": "c8884ea80aa474afad2e103b97d3766a5d8f43d76c00285d88a922d253c388a0",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/2/page/2",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/2/page/2",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l01",
+            "source_order": 2,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 3,
+          "audit_page_key": "adv-source-02-p03",
+          "existing_page_id": null,
+          "title": "Out of path · 관찰과 수집",
+          "content_sha256": "3b797b46b846b27fa8ae7a39093c230cb84afb7f14f807525fd2b4f9d5e6665d",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/2/page/3",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/2/page/3",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l01",
+            "source_order": 3,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 4,
+          "audit_page_key": "adv-source-02-p04",
+          "existing_page_id": null,
+          "title": "Proxy · Socket Stream 처리",
+          "content_sha256": "6c80e1d442510f457ca3f4dac85ac487e1d7bc138308488dfe37e4f3457fa13b",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/2/page/4",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/2/page/4",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l01",
+            "source_order": 4,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 5,
+          "audit_page_key": "adv-source-02-p05",
+          "existing_page_id": null,
+          "title": "장치를 구조로 분류하기",
+          "content_sha256": "981cac238d93fe5593d1e7bc9bb78dbbb278ea65bced53c6889c242db1d1426a",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/2/page/5",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/2/page/5",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l01",
+            "source_order": 5,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 6,
+          "audit_page_key": "adv-source-02-p06",
+          "existing_page_id": null,
+          "title": "여러 구조가 결합되는 경우",
+          "content_sha256": "3a98f03505f93c2132ef71be73d18af6d941932075c0773c70541449253325ee",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/2/page/6",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/2/page/6",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l01",
+            "source_order": 6,
+            "role": "main"
+          }
+        }
+      ]
+    },
+    {
+      "source_key": "U11L3",
+      "lesson_id": "u7-advanced-03-inline-구조-강의자료-포함",
+      "title": "Inline 구조 (강의자료 포함)",
+      "path": "units/07-network-devices/lessons/03-inline-구조-강의자료-포함/lesson.md",
+      "file_sha256": "653cda93a391eb2c71a3ee5e363e77d00fbd843f42723d5d6dee9d36000aa765",
+      "source_wiki": "https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-03.md",
+      "pages": [
+        {
+          "source_page": 1,
+          "audit_page_key": "adv-source-03-p01",
+          "existing_page_id": null,
+          "title": "Inline · 지나가는 경로에 놓기",
+          "content_sha256": "1bff50863bb18f519b842c49c2e452c51caf9b53e84935a8d8b9b8f3d24881b7",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/3/page/1",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/3/page/1",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l02",
+            "source_order": 1,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 2,
+          "audit_page_key": "adv-source-03-p02",
+          "existing_page_id": null,
+          "title": "Packet의 통과와 차단",
+          "content_sha256": "9b3e2e070fe21c2d02cd240f4be2b548c01a330ff52c2321a54fd650f9ba8c52",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/3/page/2",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/3/page/2",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l02",
+            "source_order": 2,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 3,
+          "audit_page_key": "adv-source-03-p03",
+          "existing_page_id": null,
+          "title": "망 구성에서 위치 찾기",
+          "content_sha256": "f9369af6891e9b61a83e68bb912777f669d57e59a40f3cdbf92c41e027f261c0",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/3/page/3",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/3/page/3",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l02",
+            "source_order": 3,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 4,
+          "audit_page_key": "adv-source-03-p04",
+          "existing_page_id": null,
+          "title": "Interface와 안쪽·바깥쪽",
+          "content_sha256": "4544ca3e59273778ddfd703b77f00f050f49bce307cda09cb6a8d4cd94e05bcc",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/3/page/4",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/3/page/4",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l02",
+            "source_order": 4,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 5,
+          "audit_page_key": "adv-source-03-p05",
+          "existing_page_id": null,
+          "title": "커널·드라이버의 구현",
+          "content_sha256": "4828b55171851961d7d8da7ba2f4a6d21ee02cf426341b81e253dcdf8eaa74d8",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/3/page/5",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/3/page/5",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l02",
+            "source_order": 5,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 6,
+          "audit_page_key": "adv-source-03-p06",
+          "existing_page_id": null,
+          "title": "들어온 패킷을 넘겨 보내기",
+          "content_sha256": "dbbddb5a9ddf52991a5464d8c7a8b98667f9dd5786e722551af3b0ef9b4c48d9",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/3/page/6",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/3/page/6",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l02",
+            "source_order": 6,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 7,
+          "audit_page_key": "adv-source-03-p07",
+          "existing_page_id": null,
+          "title": "처리 속도와 전체 성능",
+          "content_sha256": "eaf5f57ff33116be1dd2ff22060afdaf66ac730a2116011159697ea9f75ef051",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/3/page/7",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/3/page/7",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l02",
+            "source_order": 7,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 8,
+          "audit_page_key": "adv-source-03-p08",
+          "existing_page_id": null,
+          "title": "필터링과 고성능 구현",
+          "content_sha256": "ebdaf438770e3bbd96c45c976aa7b8ba309ba9d389f14df787ebb3011dc2b477",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/3/page/8",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/3/page/8",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l02",
+            "source_order": 8,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 9,
+          "audit_page_key": "adv-source-03-p09",
+          "existing_page_id": null,
+          "title": "소프트웨어·하드웨어의 구현 방식",
+          "content_sha256": "b2ff7c4244e6a5d984e9cb0265dd1d7ab2f2c61a01d3b4616304a8de3490ccd9",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/3/page/9",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/3/page/9",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l02",
+            "source_order": 9,
+            "role": "main"
+          }
+        }
+      ]
+    },
+    {
+      "source_key": "U11L4",
+      "lesson_id": "u7-advanced-04-강의자료-인쇄용",
+      "title": "강의자료 - 인쇄용",
+      "path": "units/07-network-devices/lessons/04-강의자료-인쇄용/lesson.md",
+      "file_sha256": "bf4563fe82f7502213eaa2b2e37bf3126fcfec7c232600646cdea6a0e565f7c6",
+      "source_wiki": "https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-04.md",
+      "pages": [
+        {
+          "source_page": 1,
+          "audit_page_key": "adv-source-04-p01",
+          "existing_page_id": null,
+          "title": "강의자료 - 인쇄용",
+          "content_sha256": "e1ebd87b9438b0f7d5fa1f2e09477691863e9bda8e463ac51f70aafd227b35db",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/4/page/1",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/4/page/1",
+          "destination": {
+            "kind": "resource",
+            "target_key": "advanced-materials",
+            "role": "non-learning"
+          }
+        }
+      ]
+    },
+    {
+      "source_key": "U11L5",
+      "lesson_id": "u7-advanced-05-out-of-path-구조와-dpi-그리고-망중립",
+      "title": "Out of path 구조와 DPI 그리고 망중립",
+      "path": "units/07-network-devices/lessons/05-out-of-path-구조와-dpi-그리고-망중립/lesson.md",
+      "file_sha256": "24d74e0a4e40106d72a1a61a969b29e95b14c7d17744fd2f3f6d4de448c0e451",
+      "source_wiki": "https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-05.md",
+      "pages": [
+        {
+          "source_page": 1,
+          "audit_page_key": "adv-source-05-p01",
+          "existing_page_id": null,
+          "title": "Sensor · 경로 밖에서 관찰",
+          "content_sha256": "0262b8e261d9ee4eac9acae29f40f5901af63b5f19dc77ad92ebd0f4a8b7a094",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/5/page/1",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/5/page/1",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l03",
+            "source_order": 1,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 2,
+          "audit_page_key": "adv-source-05-p02",
+          "existing_page_id": null,
+          "title": "Mirroring · 패킷을 복사하기",
+          "content_sha256": "7c611b445e6b6b17abcc95b3a14ffcdd3e0a986d8120303b4b50af154111c5e2",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/5/page/2",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/5/page/2",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l03",
+            "source_order": 2,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 3,
+          "audit_page_key": "adv-source-05-p03",
+          "existing_page_id": null,
+          "title": "Read only와 차단의 차이",
+          "content_sha256": "31ef6351c4d75c42bd5d8ebb6888abe728ea1b101ea08dc13816698f094547c6",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/5/page/3",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/5/page/3",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l03",
+            "source_order": 3,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 4,
+          "audit_page_key": "adv-source-05-p04",
+          "existing_page_id": null,
+          "title": "경로 밖에서 접속에 개입하기",
+          "content_sha256": "080c670d858b557b79bed15a606b2734e43f2fdf8b2a6ebf7f23d93623b5f409",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/5/page/4",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/5/page/4",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l03",
+            "source_order": 4,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 5,
+          "audit_page_key": "adv-source-05-p05",
+          "existing_page_id": null,
+          "title": "TCP 응답을 이용한 개입",
+          "content_sha256": "f08f98a11655b06036aac59702d55b612724d3d0c378a005ebc4c1781fed4704",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/5/page/5",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/5/page/5",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l03",
+            "source_order": 5,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 6,
+          "audit_page_key": "adv-source-05-p06",
+          "existing_page_id": null,
+          "title": "DPI · Payload까지 살펴보기",
+          "content_sha256": "fd17820cdf91f07a4b15e0d7e7cf50f841b77652d56e6561df67405f339162fc",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/5/page/6",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/5/page/6",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l03",
+            "source_order": 6,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 7,
+          "audit_page_key": "adv-source-05-p07",
+          "existing_page_id": null,
+          "title": "망중립과 사생활의 문제",
+          "content_sha256": "6a3266a6d808fe9c6ea9404d9452f917d9093fff10ba3aaf23fbf34e1502c7f7",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/5/page/7",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/5/page/7",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l03",
+            "source_order": 7,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 8,
+          "audit_page_key": "adv-source-05-p08",
+          "existing_page_id": null,
+          "title": "놓치지 않고 수집하는 문제",
+          "content_sha256": "85313373d478e627d840cb9bc4eaf45c8b90f3385f99b98c6949fb8e64dd5602",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/5/page/8",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/5/page/8",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l03",
+            "source_order": 8,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 9,
+          "audit_page_key": "adv-source-05-p09",
+          "existing_page_id": null,
+          "title": "저장과 분석의 부하",
+          "content_sha256": "a9a35e13bd22cf2739abaaa87ed40c5a813afb41c3a2de80aa937cf4e0f61108",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/5/page/9",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/5/page/9",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l03",
+            "source_order": 9,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 10,
+          "audit_page_key": "adv-source-05-p10",
+          "existing_page_id": null,
+          "title": "Inline과 Out of path 비교",
+          "content_sha256": "52f56f2a696734d11f2af96e1073c23f3c073799b232a1366f7c33dab795b650",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/5/page/10",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/5/page/10",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l03",
+            "source_order": 10,
+            "role": "main"
+          }
+        }
+      ]
+    },
+    {
+      "source_key": "U11L6",
+      "lesson_id": "u7-advanced-06-proxy-우회",
+      "title": "Proxy - 우회",
+      "path": "units/07-network-devices/lessons/06-proxy-우회/lesson.md",
+      "file_sha256": "820c9017fd17dc5a29bcf5a2d42c5ec4c85e55d394a9adae938c7bec68374537",
+      "source_wiki": "https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-06.md",
+      "pages": [
+        {
+          "source_page": 1,
+          "audit_page_key": "adv-source-06-p01",
+          "existing_page_id": null,
+          "title": "Proxy를 사용하는 관점",
+          "content_sha256": "27dd38c9aae1197d66e2ee31b961641c760bc7fddec042a92a0351da5f80ade0",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/6/page/1",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/6/page/1",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l04",
+            "source_order": 1,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 2,
+          "audit_page_key": "adv-source-06-p02",
+          "existing_page_id": null,
+          "title": "직접 가는 경로와 돌아가는 경로",
+          "content_sha256": "b357f58c56498e28d99fdff6fc98acc320dc07db373d5d0b409af4cba3f57f65",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/6/page/2",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/6/page/2",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l04",
+            "source_order": 2,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 3,
+          "audit_page_key": "adv-source-06-p03",
+          "existing_page_id": null,
+          "title": "접속 주체를 대신하기",
+          "content_sha256": "b2e72ea773229f8138180b99d1be5a036f85392b9d507ea1a8fd1a0e4208cd12",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/6/page/3",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/6/page/3",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l04",
+            "source_order": 3,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 4,
+          "audit_page_key": "adv-source-06-p04",
+          "existing_page_id": null,
+          "title": "Proxy를 통한 우회",
+          "content_sha256": "04b934915e01af3816d2fcba98052b5341c5bc39c95dc79863735f997b4d9ddf",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/6/page/4",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/6/page/4",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l04",
+            "source_order": 4,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 5,
+          "audit_page_key": "adv-source-06-p05",
+          "existing_page_id": null,
+          "title": "우회에 따른 속도와 비용",
+          "content_sha256": "22b2be85c3f6687c1bdbb7d8b9b2e0047bf7a32f54f89a2461aac819e299fcb6",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/6/page/5",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/6/page/5",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l04",
+            "source_order": 5,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 6,
+          "audit_page_key": "adv-source-06-p06",
+          "existing_page_id": null,
+          "title": "두 Socket 사이의 중계",
+          "content_sha256": "6ab1998741e4f0e60591164214bc29a29a60337a613f196bc1429fbc43448068",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/6/page/6",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/6/page/6",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l04",
+            "source_order": 6,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 7,
+          "audit_page_key": "adv-source-06-p07",
+          "existing_page_id": null,
+          "title": "우회 목적의 Proxy 정리",
+          "content_sha256": "0c9ceb2bef58ba0cf3d6421a04c72ef973a556a5ce7c6a36f0eabce3e147fbf8",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/6/page/7",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/6/page/7",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l04",
+            "source_order": 7,
+            "role": "main"
+          }
+        }
+      ]
+    },
+    {
+      "source_key": "U11L7",
+      "lesson_id": "u7-advanced-07-proxy-보호와-감시",
+      "title": "Proxy - 보호와 감시",
+      "path": "units/07-network-devices/lessons/07-proxy-보호와-감시/lesson.md",
+      "file_sha256": "c5e321497945097b957b0ecb743ad03114e31592ca4534a3df1ee9283b7668d9",
+      "source_wiki": "https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-07.md",
+      "pages": [
+        {
+          "source_page": 1,
+          "audit_page_key": "adv-source-07-p01",
+          "existing_page_id": null,
+          "title": "회사에서 직접 접속을 제한하기",
+          "content_sha256": "7cee3a47e469c2eecc5c2c16508812100a8fb65885937aa004e74e68e15135fd",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/7/page/1",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/7/page/1",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l04",
+            "source_order": 8,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 2,
+          "audit_page_key": "adv-source-07-p02",
+          "existing_page_id": null,
+          "title": "Proxy를 통한 외부 접속",
+          "content_sha256": "8d8f8c147c42ad173b76def134a714e254277e7160313d9d53f7308118035e8d",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/7/page/2",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/7/page/2",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l04",
+            "source_order": 9,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 3,
+          "audit_page_key": "adv-source-07-p03",
+          "existing_page_id": null,
+          "title": "중간에서 내용을 볼 수 있는 이유",
+          "content_sha256": "386631db84361711f222a5192009378cceca4edc2c9bc5d090bf19a480340c63",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/7/page/3",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/7/page/3",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l04",
+            "source_order": 10,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 4,
+          "audit_page_key": "adv-source-07-p04",
+          "existing_page_id": null,
+          "title": "악성 파일 검사",
+          "content_sha256": "c2c1a0b9e58e50fa42b48b1a37cfff2a9254473f5a0735b3167d9cf9caa32203",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/7/page/4",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/7/page/4",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l04",
+            "source_order": 11,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 5,
+          "audit_page_key": "adv-source-07-p05",
+          "existing_page_id": null,
+          "title": "Virus Wall과 내부 보호",
+          "content_sha256": "c821a7a33c5e6fc8ea44b2b4e51f5a5a6c8bd3ff1cc14631e13feaf0ae295e2a",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/7/page/5",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/7/page/5",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l04",
+            "source_order": 12,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 6,
+          "audit_page_key": "adv-source-07-p06",
+          "existing_page_id": null,
+          "title": "보호 기능을 함께 두기",
+          "content_sha256": "ff1a274fe553d2772cbabd4d82563bd221ecc73b0e337a2238fd14d42662aa76",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/7/page/6",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/7/page/6",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l04",
+            "source_order": 13,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 7,
+          "audit_page_key": "adv-source-07-p07",
+          "existing_page_id": null,
+          "title": "내부 사용자의 통신 감시",
+          "content_sha256": "3ea5c21975a2bcdab55b74f1646b62d01f2c4329601862298d4d3d0065f4b0ce",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/7/page/7",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/7/page/7",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l04",
+            "source_order": 14,
+            "role": "main"
+          }
+        }
+      ]
+    },
+    {
+      "source_key": "U11L8",
+      "lesson_id": "u7-advanced-08-reverse-proxy",
+      "title": "Reverse Proxy",
+      "path": "units/07-network-devices/lessons/08-reverse-proxy/lesson.md",
+      "file_sha256": "e045a1dda0e43a6423e8e21b29611e4d793556a00d0be87821f457f77238fa8a",
+      "source_wiki": "https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-08.md",
+      "pages": [
+        {
+          "source_page": 1,
+          "audit_page_key": "adv-source-08-p01",
+          "existing_page_id": null,
+          "title": "Client 보호와 Server 보호",
+          "content_sha256": "6de40fb01befa5a973e7b82d8a5e22055e4383d9f96d6f8837ce096b8a1b8d8c",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/8/page/1",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/8/page/1",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l05",
+            "source_order": 1,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 2,
+          "audit_page_key": "adv-source-08-p02",
+          "existing_page_id": null,
+          "title": "IPS · 앞단에서의 방어",
+          "content_sha256": "00ffaca9151af45284b0154195de7330192be123be499b2eb493f5001b203bbd",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/8/page/2",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/8/page/2",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l05",
+            "source_order": 2,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 3,
+          "audit_page_key": "adv-source-08-p03",
+          "existing_page_id": null,
+          "title": "SSL Accelerator와 복호화",
+          "content_sha256": "f7ae0042f7a49d9303badeb77951212b98e7ab1bc43661b1b9ac84d0f3effdc5",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/8/page/3",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/8/page/3",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l05",
+            "source_order": 3,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 4,
+          "audit_page_key": "adv-source-08-p04",
+          "existing_page_id": null,
+          "title": "WAF · 웹 요청을 검사",
+          "content_sha256": "2c4a6ecaa6fb0d87d51f64a66ea6744c01befd7f254b42574e7b6f9a0faaacb4",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/8/page/4",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/8/page/4",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l05",
+            "source_order": 4,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 5,
+          "audit_page_key": "adv-source-08-p05",
+          "existing_page_id": null,
+          "title": "Reverse Proxy로 서버 보호",
+          "content_sha256": "fb4f6191f4f297d3ffed04514508b196ba397990a95b524f372f3166fe95365e",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/8/page/5",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/8/page/5",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l05",
+            "source_order": 5,
+            "role": "main"
+          }
+        }
+      ]
+    },
+    {
+      "source_key": "U11L9",
+      "lesson_id": "u7-advanced-09-pc에-설치하는-proxy",
+      "title": "PC에 설치하는 Proxy",
+      "path": "units/07-network-devices/lessons/09-pc에-설치하는-proxy/lesson.md",
+      "file_sha256": "237890122a4ef8fe687010d224f1d6d814f0ff698763f677ab3c7c489cdb23ab",
+      "source_wiki": "https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-09.md",
+      "pages": [
+        {
+          "source_page": 1,
+          "audit_page_key": "adv-source-09-p01",
+          "existing_page_id": null,
+          "title": "암호화된 패킷을 보는 한계",
+          "content_sha256": "d4133ff1aef5db09615b868dce3f04e2da0002eaa813134b9c8e590da56ada09",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/9/page/1",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/9/page/1",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l04",
+            "source_order": 15,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 2,
+          "audit_page_key": "adv-source-09-p02",
+          "existing_page_id": null,
+          "title": "PC에 설치하는 Proxy",
+          "content_sha256": "f9179526f34d4d96d7373954ae2fe9f34da710523db5949afa4ef7bafcb608d0",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/9/page/2",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/9/page/2",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l04",
+            "source_order": 16,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 3,
+          "audit_page_key": "adv-source-09-p03",
+          "existing_page_id": null,
+          "title": "Loopback에 Proxy 설정",
+          "content_sha256": "801e381b224496c08d849799d58a33611d3e4edb475ffadbf712b02eaea7dde8",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/9/page/3",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/9/page/3",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l04",
+            "source_order": 17,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 4,
+          "audit_page_key": "adv-source-09-p04",
+          "existing_page_id": null,
+          "title": "로컬 Proxy를 통과하는 경로",
+          "content_sha256": "4927ba4d26cd8c4b1ed63ad2ba402e2781eef92b6e9055b8918e516d9096655f",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/9/page/4",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/9/page/4",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l04",
+            "source_order": 18,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 5,
+          "audit_page_key": "adv-source-09-p05",
+          "existing_page_id": null,
+          "title": "Stream 수준의 해석과 분석",
+          "content_sha256": "9221fdf7e4383e3c8604485fa829cc2d04c87114adc3cd763af567d36fd48aa0",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/9/page/5",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/9/page/5",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l04",
+            "source_order": 19,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 6,
+          "audit_page_key": "adv-source-09-p06",
+          "existing_page_id": null,
+          "title": "Fiddler와 Proxy 활용 정리",
+          "content_sha256": "561095d2299f25a2e106d013c502d8bb1230241de59dad47d5543769795f41e9",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/11/lesson/9/page/6",
+          "learn_v2_path": "/m2-network/v2/unit/11/lesson/9/page/6",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u11-l04",
+            "source_order": 20,
+            "role": "main"
+          }
+        }
+      ]
+    },
+    {
+      "source_key": "U12L1",
+      "lesson_id": "u8-advanced-10-공유기-작동원리-및-개요",
+      "title": "공유기 작동원리 및 개요",
+      "path": "units/08-router-and-nat/lessons/01-공유기-작동원리-및-개요/lesson.md",
+      "file_sha256": "f578ee09fed9a24c047fbc858938133132bdac3bcc13eb4629026f175dca0900",
+      "source_wiki": "https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-10.md",
+      "pages": [
+        {
+          "source_page": 1,
+          "audit_page_key": "adv-source-10-p01",
+          "existing_page_id": null,
+          "title": "공유기에 적용된 NAT",
+          "content_sha256": "4d2a1df69ebb657092fda2c7a96d0025423f2385c71ea2bd70a722a79b391167",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/1/page/1",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/1/page/1",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l01",
+            "source_order": 1,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 2,
+          "audit_page_key": "adv-source-10-p02",
+          "existing_page_id": null,
+          "title": "Public IP와 Private IP",
+          "content_sha256": "8bc2c00b3b2c0884ef8cfe238f7699af6ca5b55dcd8d8165eec596302720ece8",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/1/page/2",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/1/page/2",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l01",
+            "source_order": 2,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 3,
+          "audit_page_key": "adv-source-10-p03",
+          "existing_page_id": null,
+          "title": "주소 변환과 보안 효과",
+          "content_sha256": "2a9b69707424efeb0c0887dc94772ab2166505785041b5fb0c12beb13ff1dc42",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/1/page/3",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/1/page/3",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l01",
+            "source_order": 3,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 4,
+          "audit_page_key": "adv-source-10-p04",
+          "existing_page_id": null,
+          "title": "PC 방화벽과 함께 보기",
+          "content_sha256": "e800043c4d36b7f790dc25f24440f58d78344fc56283fbd4ed64d4b51c6f9072",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/1/page/4",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/1/page/4",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l01",
+            "source_order": 4,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 5,
+          "audit_page_key": "adv-source-10-p05",
+          "existing_page_id": null,
+          "title": "Cone NAT와 Symmetric NAT",
+          "content_sha256": "05021f0f20ca244f8d9e85a0a21ece0995be0d051dd8619f99f1e0befdeed714",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/1/page/5",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/1/page/5",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l01",
+            "source_order": 5,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 6,
+          "audit_page_key": "adv-source-10-p06",
+          "existing_page_id": null,
+          "title": "내부·외부 주소의 구분",
+          "content_sha256": "3c7b93f4e5541fba76984758486d48edd02f036133cf3bbcbc84c6c093a6ee9e",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/1/page/6",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/1/page/6",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l01",
+            "source_order": 6,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 7,
+          "audit_page_key": "adv-source-10-p07",
+          "existing_page_id": null,
+          "title": "사설 주소의 예",
+          "content_sha256": "98b63c307a3b6c0f5daa79bdfeef7e5d40c4ff2a9435476c19c95a3cfbcc602b",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/1/page/7",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/1/page/7",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l01",
+            "source_order": 7,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 8,
+          "audit_page_key": "adv-source-10-p08",
+          "existing_page_id": null,
+          "title": "ISP와 공유기의 역할",
+          "content_sha256": "a7b20ac187b2150b179a80fd972f1e34a66b33eb08bf92c251491c0c3d39d3b8",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/1/page/8",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/1/page/8",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l01",
+            "source_order": 8,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 9,
+          "audit_page_key": "adv-source-10-p09",
+          "existing_page_id": null,
+          "title": "공유기 구조 정리",
+          "content_sha256": "f92cd5398b690e09ce0ecfafd0cbce155ecc1bb25e35cf220b3477380b4ba261",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/1/page/9",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/1/page/9",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l01",
+            "source_order": 9,
+            "role": "main"
+          }
+        }
+      ]
+    },
+    {
+      "source_key": "U12L2",
+      "lesson_id": "u8-advanced-11-symmetric-nat-방식",
+      "title": "Symmetric NAT 방식",
+      "path": "units/08-router-and-nat/lessons/02-symmetric-nat-방식/lesson.md",
+      "file_sha256": "48ffdea8927366455deadaa47a57033e84a72fc864f65b419fd93d7e14b8fd95",
+      "source_wiki": "https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-11.md",
+      "pages": [
+        {
+          "source_page": 1,
+          "audit_page_key": "adv-source-11-p01",
+          "existing_page_id": null,
+          "title": "주소와 포트를 함께 바꾸기",
+          "content_sha256": "d73f12881775439ce292ba39caeb8f90cc64ae1549f1c66c3bb022eaa922337c",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/2/page/1",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/2/page/1",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l02",
+            "source_order": 1,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 2,
+          "audit_page_key": "adv-source-11-p02",
+          "existing_page_id": null,
+          "title": "내부 사설망과 외부 공인망",
+          "content_sha256": "fd268a6bc0ad13692bbc6a6c995cd1e2533631e158f955b6dec3b3287c53247f",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/2/page/2",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/2/page/2",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l02",
+            "source_order": 2,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 3,
+          "audit_page_key": "adv-source-11-p03",
+          "existing_page_id": null,
+          "title": "내부 PC가 연결을 시작",
+          "content_sha256": "0618c486e8801b649c8839c711fc5a6ba1272f36d8af2f41ceddfb3e6ea1f74f",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/2/page/3",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/2/page/3",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l02",
+            "source_order": 3,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 4,
+          "audit_page_key": "adv-source-11-p04",
+          "existing_page_id": null,
+          "title": "Outbound · 출발지 주소·포트 변환",
+          "content_sha256": "e158375a5c0ddfa1e852b3622d0fc9a56b0a3a75fe7ae5bfda2007ed4fded2c4",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/2/page/4",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/2/page/4",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l02",
+            "source_order": 4,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 5,
+          "audit_page_key": "adv-source-11-p05",
+          "existing_page_id": null,
+          "title": "웹 서버가 보는 접속 주체",
+          "content_sha256": "4959fed663487bb71d7a631ff6549b0563d8a4249300b03e5b2972da9dc3de9b",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/2/page/5",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/2/page/5",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l02",
+            "source_order": 5,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 6,
+          "audit_page_key": "adv-source-11-p06",
+          "existing_page_id": null,
+          "title": "NAT Table에 남기는 기록",
+          "content_sha256": "5232be1200bd266779bec49c10fb3a7c1ba57dd24ff619ad857212edabb571c8",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/2/page/6",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/2/page/6",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l02",
+            "source_order": 6,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 7,
+          "audit_page_key": "adv-source-11-p07",
+          "existing_page_id": null,
+          "title": "서버에서 응답이 돌아오기",
+          "content_sha256": "323b118d19572b011f4b13a8502259b59e0481701022eb8ef13539d982832aef",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/2/page/7",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/2/page/7",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l02",
+            "source_order": 7,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 8,
+          "audit_page_key": "adv-source-11-p08",
+          "existing_page_id": null,
+          "title": "Inbound · 원래 PC로 되돌리기",
+          "content_sha256": "50414f8eaede7e76cc4202f75d3786e20dfa52a5afa63ca14fec659d15ab2e19",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/2/page/8",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/2/page/8",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l02",
+            "source_order": 8,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 9,
+          "audit_page_key": "adv-source-11-p09",
+          "existing_page_id": null,
+          "title": "다른 PC의 연결도 구분하기",
+          "content_sha256": "6e3e8a2ea93fcae233216592f12e11c7d732a3522672104cd74738866a292118",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/2/page/9",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/2/page/9",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l02",
+            "source_order": 9,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 10,
+          "audit_page_key": "adv-source-11-p10",
+          "existing_page_id": null,
+          "title": "서버가 구별하는 연결",
+          "content_sha256": "b5cb1232a82f48b1037e4534c41b0ae59c19013adb18e0458cd1c1b857bd7be9",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/2/page/10",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/2/page/10",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l02",
+            "source_order": 10,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 11,
+          "audit_page_key": "adv-source-11-p11",
+          "existing_page_id": null,
+          "title": "Local·Remote·External 용어 정리",
+          "content_sha256": "d566b96ae806452354ff95d1391b36192a30ebd8179013b2451b81a9bedb7779",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/2/page/11",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/2/page/11",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l02",
+            "source_order": 11,
+            "role": "main"
+          }
+        }
+      ]
+    },
+    {
+      "source_key": "U12L3",
+      "lesson_id": "u8-advanced-12-full-cone-방식과-내부-네트워크-접속-문제",
+      "title": "Full Cone 방식과 내부 네트워크 접속 문제",
+      "path": "units/08-router-and-nat/lessons/03-full-cone-방식과-내부-네트워크-접속-문제/lesson.md",
+      "file_sha256": "848162553d4518f12c3c00c5c0d1e68f350226d021e1cc7406176e65ecf2ce4a",
+      "source_wiki": "https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-12.md",
+      "pages": [
+        {
+          "source_page": 1,
+          "audit_page_key": "adv-source-12-p01",
+          "existing_page_id": null,
+          "title": "Symmetric NAT의 접속 제한",
+          "content_sha256": "97338cf65e0c828f1124bd74e8f1ea706e7aba1b456eeafea2e571970616eb65",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/3/page/1",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/3/page/1",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 1,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 2,
+          "audit_page_key": "adv-source-12-p02",
+          "existing_page_id": null,
+          "title": "바깥에서 먼저 접속하려는 경우",
+          "content_sha256": "91d2616cd08d88d6fe8be662060bd03fc25fdf2bf1a28da219689e00464e02d9",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/3/page/2",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/3/page/2",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 2,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 3,
+          "audit_page_key": "adv-source-12-p03",
+          "existing_page_id": null,
+          "title": "사설 주소로 직접 접근하기 어려운 이유",
+          "content_sha256": "7e5b578096c188213251e74d8027d710e25bfe93881dc2ac75513c1311f06903",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/3/page/3",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/3/page/3",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 3,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 4,
+          "audit_page_key": "adv-source-12-p04",
+          "existing_page_id": null,
+          "title": "게임과 P2P의 연결 문제",
+          "content_sha256": "59b0d2017b71e84e6ba6e3b35de837713b18d507264f01ec5791dceda56e9aef",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/3/page/4",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/3/page/4",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 4,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 5,
+          "audit_page_key": "adv-source-12-p05",
+          "existing_page_id": null,
+          "title": "Cone NAT로 관점 바꾸기",
+          "content_sha256": "e0c1666e77759e360b14e34060fc57cbd08c99a41372d329c318f35c8c2a3fb0",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/3/page/5",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/3/page/5",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 5,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 6,
+          "audit_page_key": "adv-source-12-p06",
+          "existing_page_id": null,
+          "title": "Host·Port와 외부 Port의 매핑",
+          "content_sha256": "bdfb5e62156e82cd98200cb27dc8e70d54de51c961bcaeb200392627701ef0f6",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/3/page/6",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/3/page/6",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 6,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 7,
+          "audit_page_key": "adv-source-12-p07",
+          "existing_page_id": null,
+          "title": "외부에서 내부로 들어오는 통신",
+          "content_sha256": "b11f0fccd05c20dc6845ca52bb2b43012dc1e17646f579b5869ac22d63b05144",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/3/page/7",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/3/page/7",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 7,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 8,
+          "audit_page_key": "adv-source-12-p08",
+          "existing_page_id": null,
+          "title": "Full Cone의 편의와 보안",
+          "content_sha256": "cafefaf16d07a1d511d53a0adeee5d75701818e0478161641e83c37568871113",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/3/page/8",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/3/page/8",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 8,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 9,
+          "audit_page_key": "adv-source-12-p09",
+          "existing_page_id": null,
+          "title": "두 방식의 차이 정리",
+          "content_sha256": "39a91313121fc8826c8a34a749fd14e27bee78c0825398ad6d9bee9ae3706333",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/3/page/9",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/3/page/9",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 9,
+            "role": "main"
+          }
+        }
+      ]
+    },
+    {
+      "source_key": "U12L4",
+      "lesson_id": "u8-advanced-13-restricted-cone-방식",
+      "title": "Restricted Cone 방식",
+      "path": "units/08-router-and-nat/lessons/04-restricted-cone-방식/lesson.md",
+      "file_sha256": "41f3571b52ecbfc24fc1c63e2138ff96e08bcfad288356898ddc903b34ec5bb4",
+      "source_wiki": "https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-13.md",
+      "pages": [
+        {
+          "source_page": 1,
+          "audit_page_key": "adv-source-13-p01",
+          "existing_page_id": null,
+          "title": "Full Cone에 제한을 더하기",
+          "content_sha256": "daabebded898397c71cd32e0afd2b3c72eaca6ad1930fcb10c8ced9104d8a3cd",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/4/page/1",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/4/page/1",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 10,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 2,
+          "audit_page_key": "adv-source-13-p02",
+          "existing_page_id": null,
+          "title": "외부 포트를 열었을 때의 문제",
+          "content_sha256": "f43b17f593fcad93dd12d8df35f974c6f4352e4123ec2f6fb0b172a6bd6d2dcc",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/4/page/2",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/4/page/2",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 11,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 3,
+          "audit_page_key": "adv-source-13-p03",
+          "existing_page_id": null,
+          "title": "Remote IP 주소를 확인",
+          "content_sha256": "88101410f937f98ce52e51ab95a5795479fca3d14926fefc1c2a09a57957d626",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/4/page/3",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/4/page/3",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 12,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 4,
+          "audit_page_key": "adv-source-13-p04",
+          "existing_page_id": null,
+          "title": "기록이 없는 Host는 차단",
+          "content_sha256": "a2221ba481f428d5bc0d10548cb8af191e940f389f7dd207f747cdcb51ed1cc5",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/4/page/4",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/4/page/4",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 13,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 5,
+          "audit_page_key": "adv-source-13-p05",
+          "existing_page_id": null,
+          "title": "같은 Host의 다른 Port",
+          "content_sha256": "79d00813611f386abf6e5e27f019536b9e0138b0a1d8117b21663793ffad01bd",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/4/page/5",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/4/page/5",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 14,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 6,
+          "audit_page_key": "adv-source-13-p06",
+          "existing_page_id": null,
+          "title": "Restricted Cone 정리",
+          "content_sha256": "9073274671ec9746d9f1d8e46bfdab1ebdb6443bfe923d7b9665b95943c797b7",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/4/page/6",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/4/page/6",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 15,
+            "role": "main"
+          }
+        }
+      ]
+    },
+    {
+      "source_key": "U12L5",
+      "lesson_id": "u8-advanced-14-port-restricted-cone-방식",
+      "title": "Port Restricted Cone 방식",
+      "path": "units/08-router-and-nat/lessons/05-port-restricted-cone-방식/lesson.md",
+      "file_sha256": "bb07ac8c07e3b4bc65bb70e5a6af9f808faba5b6b5ac5200f523accece45c5a6",
+      "source_wiki": "https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-14.md",
+      "pages": [
+        {
+          "source_page": 1,
+          "audit_page_key": "adv-source-14-p01",
+          "existing_page_id": null,
+          "title": "제한을 더하면 달라지는 것",
+          "content_sha256": "d77ce4066d80d3895b42c38d5100066ecab75a83cb113633bda053761a977509",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/5/page/1",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/5/page/1",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 16,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 2,
+          "audit_page_key": "adv-source-14-p02",
+          "existing_page_id": null,
+          "title": "IP와 Port를 함께 확인",
+          "content_sha256": "bcbda9ff30a794695c87e49fe67d53bb17d3ec2d391bc569cfa373932a28a518",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/5/page/2",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/5/page/2",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 17,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 3,
+          "audit_page_key": "adv-source-14-p03",
+          "existing_page_id": null,
+          "title": "다른 Port에서 온 통신",
+          "content_sha256": "80210dcf03b38349bc6465cad2a2b1a7ae395a3adb21dda24d88c8fc47d913d7",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/5/page/3",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/5/page/3",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 18,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 4,
+          "audit_page_key": "adv-source-14-p04",
+          "existing_page_id": null,
+          "title": "Port와 서비스의 관계",
+          "content_sha256": "80896adba3f009425c17015123481b36ddbb670bb1fb7a12ff4fed7e1dbf0da3",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/5/page/4",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/5/page/4",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 19,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 5,
+          "audit_page_key": "adv-source-14-p05",
+          "existing_page_id": null,
+          "title": "P2P를 가로막는 NAT",
+          "content_sha256": "7d9f5a0126fdff9b5291f9eba9289bdf3e3970e249738e2233a35de4281a40d2",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/5/page/5",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/5/page/5",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 20,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 6,
+          "audit_page_key": "adv-source-14-p06",
+          "existing_page_id": null,
+          "title": "연결을 성립시키려는 방법",
+          "content_sha256": "1165ac286490413af370dd448a4070ec26bc9996a4fdc84962e541955572607a",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/5/page/6",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/5/page/6",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 21,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 7,
+          "audit_page_key": "adv-source-14-p07",
+          "existing_page_id": null,
+          "title": "Symmetric NAT와 비교",
+          "content_sha256": "4783c2de3e1e286bbe6c262acb175d8f4b665585d702a16d51041102736ac02c",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/5/page/7",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/5/page/7",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 22,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 8,
+          "audit_page_key": "adv-source-14-p08",
+          "existing_page_id": null,
+          "title": "실시간 통신과 중계의 비용",
+          "content_sha256": "7bbd6e40f02b3f2b3f2cd4b7b2f21646fd0b93cf2f896d69217bde19237bc622",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/5/page/8",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/5/page/8",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 23,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 9,
+          "audit_page_key": "adv-source-14-p09",
+          "existing_page_id": null,
+          "title": "NAT 방식 정리",
+          "content_sha256": "7567da6096dc8c57e790ed9cf86fdc3d5f4d3bec2e32325915b2a710efda1988",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/5/page/9",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/5/page/9",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l03",
+            "source_order": 24,
+            "role": "main"
+          }
+        }
+      ]
+    },
+    {
+      "source_key": "U12L6",
+      "lesson_id": "u8-advanced-15-포트-포워딩",
+      "title": "포트 포워딩",
+      "path": "units/08-router-and-nat/lessons/06-포트-포워딩/lesson.md",
+      "file_sha256": "7bd9a3d9405eac73daff625eb0148cca6f02efbf1ca51e02fecc710f1659da46",
+      "source_wiki": "https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-15.md",
+      "pages": [
+        {
+          "source_page": 1,
+          "audit_page_key": "adv-source-15-p01",
+          "existing_page_id": null,
+          "title": "NAT Table의 자동 매핑 복습",
+          "content_sha256": "4b46ec24fac534a04bb10b3b8e84b4c24e8352b7422784ae3a62ed808d123666",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/6/page/1",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/6/page/1",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l04",
+            "source_order": 1,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 2,
+          "audit_page_key": "adv-source-15-p02",
+          "existing_page_id": null,
+          "title": "정적 매핑을 직접 추가",
+          "content_sha256": "a90f66bff9705eabcd8b3fe9313639067917cd95bc978c5978f76f5b7bbb1f9f",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/6/page/2",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/6/page/2",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l04",
+            "source_order": 2,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 3,
+          "audit_page_key": "adv-source-15-p03",
+          "existing_page_id": null,
+          "title": "공유기의 포트 포워딩 설정",
+          "content_sha256": "a82bb1a7269e04661f9f7f6d3fdd8f72a37465de80c8f9b2912c804316c08ce3",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/6/page/3",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/6/page/3",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l04",
+            "source_order": 3,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 4,
+          "audit_page_key": "adv-source-15-p04",
+          "existing_page_id": null,
+          "title": "내부 웹 서버를 공개하는 상황",
+          "content_sha256": "23468613cf2a21316547e1033a20762d08848d37d83359bec271ccadba2092c3",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/6/page/4",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/6/page/4",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l04",
+            "source_order": 4,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 5,
+          "audit_page_key": "adv-source-15-p05",
+          "existing_page_id": null,
+          "title": "바깥에서 접속할 주소",
+          "content_sha256": "2c1b466a1c93d4a4553032b53b3b82b4ef9306cea558fd9628c5daba3c9f5bef",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/6/page/5",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/6/page/5",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l04",
+            "source_order": 5,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 6,
+          "audit_page_key": "adv-source-15-p06",
+          "existing_page_id": null,
+          "title": "내부·외부 접속 결과",
+          "content_sha256": "4b8ee8e20771dbc7e7f8c232a1216cc1a73d18ead54edbd4b6cdda749c72769c",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/6/page/6",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/6/page/6",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l04",
+            "source_order": 6,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 7,
+          "audit_page_key": "adv-source-15-p07",
+          "existing_page_id": null,
+          "title": "여러 서비스와 Port를 열기",
+          "content_sha256": "9f0f2dd964801cb7850ab12a8f3037b18cd22678b8c108a66ede3420f8451857",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/6/page/7",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/6/page/7",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l04",
+            "source_order": 7,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 8,
+          "audit_page_key": "adv-source-15-p08",
+          "existing_page_id": null,
+          "title": "매번 설정해야 하는 불편",
+          "content_sha256": "84473bdc9452f68858473ffa1f6a46af74eff961ed47a59bdcbaaf76b5447f19",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/6/page/8",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/6/page/8",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l04",
+            "source_order": 8,
+            "role": "main"
+          }
+        }
+      ]
+    },
+    {
+      "source_key": "U12L7",
+      "lesson_id": "u8-advanced-16-upnp와-nat",
+      "title": "UPnP와 NAT",
+      "path": "units/08-router-and-nat/lessons/07-upnp와-nat/lesson.md",
+      "file_sha256": "6a79e402a4aa86bf0d4ead184e9b5ea4e203a50b1ea47e84d6eb96b0ec4860e7",
+      "source_wiki": "https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-16.md",
+      "pages": [
+        {
+          "source_page": 1,
+          "audit_page_key": "adv-source-16-p01",
+          "existing_page_id": null,
+          "title": "Torrent와 P2P",
+          "content_sha256": "9657588679ba1bd3a683bf5095384142200b25a3c305042ecc29d339b7618cce",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/7/page/1",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/7/page/1",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l05",
+            "source_order": 1,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 2,
+          "audit_page_key": "adv-source-16-p02",
+          "existing_page_id": null,
+          "title": "UPnP라는 기능",
+          "content_sha256": "9c745f2e6a68842e15ae69690f597701f5c8ab570ff67ff199aaf57f58ec3149",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/7/page/2",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/7/page/2",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l05",
+            "source_order": 2,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 3,
+          "audit_page_key": "adv-source-16-p03",
+          "existing_page_id": null,
+          "title": "Plug and Play의 배경",
+          "content_sha256": "03a3931e0d8730e7b024347324ea46bd7a077cef6eff576e3e4ca4f8a82159ea",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/7/page/3",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/7/page/3",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l05",
+            "source_order": 3,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 4,
+          "audit_page_key": "adv-source-16-p04",
+          "existing_page_id": null,
+          "title": "P2P가 여러 상대와 만나는 구조",
+          "content_sha256": "72ef184321e50ecadbc5b96fa0d2143c2e22bba8373b55651a43bb36a42a6f51",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/7/page/4",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/7/page/4",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l05",
+            "source_order": 4,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 5,
+          "audit_page_key": "adv-source-16-p05",
+          "existing_page_id": null,
+          "title": "NAT가 가로막는 접속",
+          "content_sha256": "3b9234e020d3821d19c527767e0ae2c9f55d783de708f1f554e40cb13f130894",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/7/page/5",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/7/page/5",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l05",
+            "source_order": 5,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 6,
+          "audit_page_key": "adv-source-16-p06",
+          "existing_page_id": null,
+          "title": "프로그램이 매핑을 요청하기",
+          "content_sha256": "eea2d4f85ac3fd6bab66410a6b4fa49bfff07f19d68f70678c420f5246e2a024",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/7/page/6",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/7/page/6",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l05",
+            "source_order": 6,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 7,
+          "audit_page_key": "adv-source-16-p07",
+          "existing_page_id": null,
+          "title": "UPnP와 NAT를 함께 살펴보기",
+          "content_sha256": "fa439d808efc3b9be63c9880d8de3874d95c91385324abcee4a8a17766a7deca",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/7/page/7",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/7/page/7",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l05",
+            "source_order": 7,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 8,
+          "audit_page_key": "adv-source-16-p08",
+          "existing_page_id": null,
+          "title": "P2P 프로그램 개발로 이어 보기",
+          "content_sha256": "14468523bba184867252b44f4ab4fe3d51dd1f60224f732220ba835ac1e431d5",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/12/lesson/7/page/8",
+          "learn_v2_path": "/m2-network/v2/unit/12/lesson/7/page/8",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u12-l05",
+            "source_order": 8,
+            "role": "main"
+          }
+        }
+      ]
+    },
+    {
+      "source_key": "U13L1",
+      "lesson_id": "u9-advanced-17-l4-부하분산과-무정지-시스템",
+      "title": "L4 부하분산과 무정지 시스템",
+      "path": "units/09-load-balancing/lessons/01-l4-부하분산과-무정지-시스템/lesson.md",
+      "file_sha256": "9e641187b0b76151a7f1df3eeae8948364954a23a1c1bd58d46bb168e08d02c9",
+      "source_wiki": "https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-17.md",
+      "pages": [
+        {
+          "source_page": 1,
+          "audit_page_key": "adv-source-17-p01",
+          "existing_page_id": null,
+          "title": "NAT 원리에서 부하분산으로",
+          "content_sha256": "b315bf87ad28fd5e67e647fb637aa2cc458d62edfd198b3a40c3d831a6a3b14a",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/13/lesson/1/page/1",
+          "learn_v2_path": "/m2-network/v2/unit/13/lesson/1/page/1",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u13-l01",
+            "source_order": 1,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 2,
+          "audit_page_key": "adv-source-17-p02",
+          "existing_page_id": null,
+          "title": "하나의 서비스 주소로 접속",
+          "content_sha256": "8395ff4f883f9569474863d080364d288af14192cffed52aac709c81ec029747",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/13/lesson/1/page/2",
+          "learn_v2_path": "/m2-network/v2/unit/13/lesson/1/page/2",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u13-l01",
+            "source_order": 2,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 3,
+          "audit_page_key": "adv-source-17-p03",
+          "existing_page_id": null,
+          "title": "여러 웹 서버에 연결 배분",
+          "content_sha256": "3823f5e65f8e861b7858fe1a3e7957629bc5dce7225a5919d7ba08b680996d22",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/13/lesson/1/page/3",
+          "learn_v2_path": "/m2-network/v2/unit/13/lesson/1/page/3",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u13-l01",
+            "source_order": 3,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 4,
+          "audit_page_key": "adv-source-17-p04",
+          "existing_page_id": null,
+          "title": "순서와 정책으로 서버 선택",
+          "content_sha256": "919e2bebad6f4f932bff88fe85993c73f3e121b79e6ea7cdc31317c430ba123f",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/13/lesson/1/page/4",
+          "learn_v2_path": "/m2-network/v2/unit/13/lesson/1/page/4",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u13-l01",
+            "source_order": 4,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 5,
+          "audit_page_key": "adv-source-17-p05",
+          "existing_page_id": null,
+          "title": "L4와 NAT의 관계",
+          "content_sha256": "ef6c38b8e0eee3fc80312074813b576069049934fd6587dd88bf0b06abeb0645",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/13/lesson/1/page/5",
+          "learn_v2_path": "/m2-network/v2/unit/13/lesson/1/page/5",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u13-l01",
+            "source_order": 5,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 6,
+          "audit_page_key": "adv-source-17-p06",
+          "existing_page_id": null,
+          "title": "서버의 부하를 고려하기",
+          "content_sha256": "ef3d38689eff49b509868741d3f0ff4edcd67336938cc89afbede7807b3e8cac",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/13/lesson/1/page/6",
+          "learn_v2_path": "/m2-network/v2/unit/13/lesson/1/page/6",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u13-l01",
+            "source_order": 6,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 7,
+          "audit_page_key": "adv-source-17-p07",
+          "existing_page_id": null,
+          "title": "Health Check와 장애 서버",
+          "content_sha256": "e8d76516190bf7cc354c437c95ddd36119d8d09338bfc1ed76ab66a318ab5ef4",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/13/lesson/1/page/7",
+          "learn_v2_path": "/m2-network/v2/unit/13/lesson/1/page/7",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u13-l01",
+            "source_order": 7,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 8,
+          "audit_page_key": "adv-source-17-p08",
+          "existing_page_id": null,
+          "title": "장비를 이중으로 두기",
+          "content_sha256": "b4867d18525c2ce998dc09c2e7cd87c918fba49fd4a31d4d0aff87c6ecc1ee1c",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/13/lesson/1/page/8",
+          "learn_v2_path": "/m2-network/v2/unit/13/lesson/1/page/8",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u13-l02",
+            "source_order": 1,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 9,
+          "audit_page_key": "adv-source-17-p09",
+          "existing_page_id": null,
+          "title": "무정지 시스템의 구성",
+          "content_sha256": "0a0922390f873def2564d22992fac96bb99e5188b799f20ef48875a5bf588ae6",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/13/lesson/1/page/9",
+          "learn_v2_path": "/m2-network/v2/unit/13/lesson/1/page/9",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u13-l02",
+            "source_order": 2,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 10,
+          "audit_page_key": "adv-source-17-p10",
+          "existing_page_id": null,
+          "title": "클라우드와 확장",
+          "content_sha256": "0c8b76a06d99efeddadac95bc2fbe4d1f3971f8771575959c364c7091d6b8fcf",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/13/lesson/1/page/10",
+          "learn_v2_path": "/m2-network/v2/unit/13/lesson/1/page/10",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u13-l02",
+            "source_order": 3,
+            "role": "reference"
+          }
+        },
+        {
+          "source_page": 11,
+          "audit_page_key": "adv-source-17-p11",
+          "existing_page_id": null,
+          "title": "VM·Container로 이어 보기",
+          "content_sha256": "4f27ef85ab38ba4f193d2b4f3f8e3892a1476e78c538535219cd3bf0f0cef6ce",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/13/lesson/1/page/11",
+          "learn_v2_path": "/m2-network/v2/unit/13/lesson/1/page/11",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u13-l02",
+            "source_order": 4,
+            "role": "reference"
+          }
+        }
+      ]
+    },
+    {
+      "source_key": "U13L2",
+      "lesson_id": "u9-advanced-18-대규모-부하분산을-위한-gslb",
+      "title": "대규모 부하분산을 위한 GSLB",
+      "path": "units/09-load-balancing/lessons/02-대규모-부하분산을-위한-gslb/lesson.md",
+      "file_sha256": "2ab62a091d6a7555000e4c42140c9a1d20c9149c0f7cfcc1b715d5118254c2bd",
+      "source_wiki": "https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-18.md",
+      "pages": [
+        {
+          "source_page": 1,
+          "audit_page_key": "adv-source-18-p01",
+          "existing_page_id": null,
+          "title": "L4 한 대의 범위를 넘어서",
+          "content_sha256": "55e6ed17d98bd54c037e5ab173ff6acda477685b7a501369ee3d29ba2da66ce6",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/13/lesson/2/page/1",
+          "learn_v2_path": "/m2-network/v2/unit/13/lesson/2/page/1",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u13-l03",
+            "source_order": 1,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 2,
+          "audit_page_key": "adv-source-18-p02",
+          "existing_page_id": null,
+          "title": "DNS를 이용한 부하분산",
+          "content_sha256": "72e97b32574a91d3f286e29186869069f134f793ff9e45d4a7d71b00aa545db1",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/13/lesson/2/page/2",
+          "learn_v2_path": "/m2-network/v2/unit/13/lesson/2/page/2",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u13-l03",
+            "source_order": 2,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 3,
+          "audit_page_key": "adv-source-18-p03",
+          "existing_page_id": null,
+          "title": "접속자의 위치를 고려",
+          "content_sha256": "74dd47688201c16da9a6608a47635cdd72f2d53461d07ef6711804e82bc3bb10",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/13/lesson/2/page/3",
+          "learn_v2_path": "/m2-network/v2/unit/13/lesson/2/page/3",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u13-l03",
+            "source_order": 3,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 4,
+          "audit_page_key": "adv-source-18-p04",
+          "existing_page_id": null,
+          "title": "여러 망에 나뉜 서버 구성",
+          "content_sha256": "b9f0951759884b7120162da1c79e83171929e7f2db5296762cefc88fd5760d65",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/13/lesson/2/page/4",
+          "learn_v2_path": "/m2-network/v2/unit/13/lesson/2/page/4",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u13-l03",
+            "source_order": 4,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 5,
+          "audit_page_key": "adv-source-18-p05",
+          "existing_page_id": null,
+          "title": "CNAME과 서버 선택",
+          "content_sha256": "5aef089915fcbd771d967a78a31639b9b26b4e8f0796adb41a2e073bd302a290",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/13/lesson/2/page/5",
+          "learn_v2_path": "/m2-network/v2/unit/13/lesson/2/page/5",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u13-l03",
+            "source_order": 5,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 6,
+          "audit_page_key": "adv-source-18-p06",
+          "existing_page_id": null,
+          "title": "질의한 쪽에 따라 다른 응답",
+          "content_sha256": "c2a1f205d850a85fd5c227097a693b33060cfd85ef8faf0f3e482367d69ed536",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/13/lesson/2/page/6",
+          "learn_v2_path": "/m2-network/v2/unit/13/lesson/2/page/6",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u13-l03",
+            "source_order": 6,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 7,
+          "audit_page_key": "adv-source-18-p07",
+          "existing_page_id": null,
+          "title": "CDN과 콘텐츠 동기화",
+          "content_sha256": "045f2fbd1894858e693a86d1309c7cf3ecd8622365d0a8d1dfcd0eabf8c64935",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/13/lesson/2/page/7",
+          "learn_v2_path": "/m2-network/v2/unit/13/lesson/2/page/7",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u13-l03",
+            "source_order": 7,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 8,
+          "audit_page_key": "adv-source-18-p08",
+          "existing_page_id": null,
+          "title": "지역 안의 L4 부하분산",
+          "content_sha256": "6cd4d2edd3c04f57fa598bf184764d0ef992ddc1dd4be3a3981c58cb7fda6055",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/13/lesson/2/page/8",
+          "learn_v2_path": "/m2-network/v2/unit/13/lesson/2/page/8",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u13-l03",
+            "source_order": 8,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 9,
+          "audit_page_key": "adv-source-18-p09",
+          "existing_page_id": null,
+          "title": "IP 주소로 위치 판단",
+          "content_sha256": "c2a865f75966eeaf03b1f182f66ae2c6fe36b3cf3ac33c59e0c5610e64bdd214",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/13/lesson/2/page/9",
+          "learn_v2_path": "/m2-network/v2/unit/13/lesson/2/page/9",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u13-l03",
+            "source_order": 9,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 10,
+          "audit_page_key": "adv-source-18-p10",
+          "existing_page_id": null,
+          "title": "위치 정보와 운영 조건",
+          "content_sha256": "5ce9178135456107c6c5c370150aa3fa4e4374c839f9dfdff7ddeb56ce5d64b0",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/13/lesson/2/page/10",
+          "learn_v2_path": "/m2-network/v2/unit/13/lesson/2/page/10",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u13-l03",
+            "source_order": 10,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 11,
+          "audit_page_key": "adv-source-18-p11",
+          "existing_page_id": null,
+          "title": "GSLB의 선택 기준 정리",
+          "content_sha256": "c1c171096f4a59a596c062ead3cfd3541c6b82c74fcfed17e4496107c9ba2f7a",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/13/lesson/2/page/11",
+          "learn_v2_path": "/m2-network/v2/unit/13/lesson/2/page/11",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u13-l03",
+            "source_order": 11,
+            "role": "main"
+          }
+        }
+      ]
+    },
+    {
+      "source_key": "U14L1",
+      "lesson_id": "u10-advanced-19-pn과-vpn",
+      "title": "PN과 VPN",
+      "path": "units/10-vpn-and-security/lessons/01-pn과-vpn/lesson.md",
+      "file_sha256": "df32dac57edbb1a87c6610024227004ba86e4f6136da413a348ee6a2c27f2b16",
+      "source_wiki": "https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-19.md",
+      "pages": [
+        {
+          "source_page": 1,
+          "audit_page_key": "adv-source-19-p01",
+          "existing_page_id": null,
+          "title": "Private Network와 VPN",
+          "content_sha256": "51db88eb2f072e135208922d6d3014d438f5dbd138895db895f5aa667fb84826",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/1/page/1",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/1/page/1",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l01",
+            "source_order": 1,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 2,
+          "audit_page_key": "adv-source-19-p02",
+          "existing_page_id": null,
+          "title": "가정의 사설 네트워크",
+          "content_sha256": "ab74c5f564a9f7b9186f12d71d917253a5a528f81f7e588cf42ef317fa3af20a",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/1/page/2",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/1/page/2",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l01",
+            "source_order": 2,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 3,
+          "audit_page_key": "adv-source-19-p03",
+          "existing_page_id": null,
+          "title": "공개된 공간에서 사적으로 통신",
+          "content_sha256": "746700d30c23068d6d8b3d12ce7c099a642a59f0e880c39d3d40542bbb95f4bb",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/1/page/3",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/1/page/3",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l01",
+            "source_order": 3,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 4,
+          "audit_page_key": "adv-source-19-p04",
+          "existing_page_id": null,
+          "title": "본사와 지사가 생긴 상황",
+          "content_sha256": "002053fe2e8752b1d2cc69344ddddb1605e31ac91b3c9654347eede529736e82",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/1/page/4",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/1/page/4",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l01",
+            "source_order": 4,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 5,
+          "audit_page_key": "adv-source-19-p05",
+          "existing_page_id": null,
+          "title": "전용 회선으로 연결하는 방법",
+          "content_sha256": "96869104343b5253b1a093de496435b9c3d3b9088618900f7d608110c5f91252",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/1/page/5",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/1/page/5",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l01",
+            "source_order": 5,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 6,
+          "audit_page_key": "adv-source-19-p06",
+          "existing_page_id": null,
+          "title": "인터넷 위에서 사설망 연결",
+          "content_sha256": "f7622b26ec443501226c9c88b852071c0818aad77a239713448e855f2281cc3d",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/1/page/6",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/1/page/6",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l01",
+            "source_order": 6,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 7,
+          "audit_page_key": "adv-source-19-p07",
+          "existing_page_id": null,
+          "title": "암호화로 통신을 보호",
+          "content_sha256": "00ac81e0f000753c06efaab87713ad81b295d01dbf86e6b505d4945e01a20a81",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/1/page/7",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/1/page/7",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l01",
+            "source_order": 7,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 8,
+          "audit_page_key": "adv-source-19-p08",
+          "existing_page_id": null,
+          "title": "비용과 운영의 이점",
+          "content_sha256": "087e06d193feec87e85e8aa9ee5f402f54d305f4b5579fcc043125c3bf5e352e",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/1/page/8",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/1/page/8",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l01",
+            "source_order": 8,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 9,
+          "audit_page_key": "adv-source-19-p09",
+          "existing_page_id": null,
+          "title": "사설망과 보안의 한계",
+          "content_sha256": "01888fd22b30114be88a930864dfd4819153ec112cef0e6dda20d634ea6dc564",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/1/page/9",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/1/page/9",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l01",
+            "source_order": 9,
+            "role": "main"
+          }
+        }
+      ]
+    },
+    {
+      "source_key": "U14L2",
+      "lesson_id": "u10-advanced-20-ipsec-vpn과-터널링-개념",
+      "title": "IPSec VPN과 터널링 개념",
+      "path": "units/10-vpn-and-security/lessons/02-ipsec-vpn과-터널링-개념/lesson.md",
+      "file_sha256": "93c4a6d5b14f8b4a69a98286cd589c8d636d13021729fb9859fc82cbd4264d17",
+      "source_wiki": "https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-20.md",
+      "pages": [
+        {
+          "source_page": 1,
+          "audit_page_key": "adv-source-20-p01",
+          "existing_page_id": null,
+          "title": "VPN과 IPSec",
+          "content_sha256": "a67f156ced74852d39792680531de9894a6ff9f435b41b164721f2f8bbc2d00b",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/2/page/1",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/2/page/1",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l02",
+            "source_order": 1,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 2,
+          "audit_page_key": "adv-source-20-p02",
+          "existing_page_id": null,
+          "title": "Gateway·End point의 연결 유형",
+          "content_sha256": "807fcb0aaf87f0631f62c543b576ab74d7a8b92aedc35f4e5754158e9e8d25b6",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/2/page/2",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/2/page/2",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l02",
+            "source_order": 2,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 3,
+          "audit_page_key": "adv-source-20-p03",
+          "existing_page_id": null,
+          "title": "Tunneling을 이해하는 비유",
+          "content_sha256": "58f57bafc22ec571f5276b64e0bf0d0a9c417f3f896d38b8c1afffde70706f9b",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/2/page/3",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/2/page/3",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l02",
+            "source_order": 3,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 4,
+          "audit_page_key": "adv-source-20-p04",
+          "existing_page_id": null,
+          "title": "ISAKMP · 키와 보안 협상",
+          "content_sha256": "abd7ba04c065611754b6edde653dcebbbdd4121cdc2e00f77254a0a77b12f458",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/2/page/4",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/2/page/4",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l02",
+            "source_order": 4,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 5,
+          "audit_page_key": "adv-source-20-p05",
+          "existing_page_id": null,
+          "title": "AH와 ESP의 역할",
+          "content_sha256": "92c975cece29336d29c1595bbfe393f2dceab1c5feb45dafb4d6b52ac0692243",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/2/page/5",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/2/page/5",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l02",
+            "source_order": 5,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 6,
+          "audit_page_key": "adv-source-20-p06",
+          "existing_page_id": null,
+          "title": "IP Header를 다시 씌우기",
+          "content_sha256": "0a07e7f93c01fdb8e6c0c14d3cd4c8e8d8b7eb8b05391498eb6403f35b51c709",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/2/page/6",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/2/page/6",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l02",
+            "source_order": 6,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 7,
+          "audit_page_key": "adv-source-20-p07",
+          "existing_page_id": null,
+          "title": "본사·지사의 네트워크 구성",
+          "content_sha256": "2ba35fe06447db5bde9f190f4fde8fbe87a53ffda8b72009de8e8e739ebee95e",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/2/page/7",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/2/page/7",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l02",
+            "source_order": 7,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 8,
+          "audit_page_key": "adv-source-20-p08",
+          "existing_page_id": null,
+          "title": "Gateway 사이의 터널",
+          "content_sha256": "102b1af26c1203928fd5439d9f6b98ca3f05e2235998714ad5dc18d6bdce60f6",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/2/page/8",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/2/page/8",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l02",
+            "source_order": 8,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 9,
+          "audit_page_key": "adv-source-20-p09",
+          "existing_page_id": null,
+          "title": "안쪽 주소와 바깥쪽 주소",
+          "content_sha256": "4f371e68df12f50976a18ba8a37327e7459496ded17d5ff0fa69fe41800377b9",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/2/page/9",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/2/page/9",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l02",
+            "source_order": 9,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 10,
+          "audit_page_key": "adv-source-20-p10",
+          "existing_page_id": null,
+          "title": "Packet을 포장해 전송",
+          "content_sha256": "fafc5abbc54b0995897cd962249f3c4310a8842a5c4c8a79ba0e224754549028",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/2/page/10",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/2/page/10",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l02",
+            "source_order": 10,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 11,
+          "audit_page_key": "adv-source-20-p11",
+          "existing_page_id": null,
+          "title": "반대편에서 원본을 꺼내기",
+          "content_sha256": "be8e6e9d7597b8ebd2881922932195ba85bfda5e32cde089bb28e7062ba86a93",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/2/page/11",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/2/page/11",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l02",
+            "source_order": 11,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 12,
+          "audit_page_key": "adv-source-20-p12",
+          "existing_page_id": null,
+          "title": "구매 대행으로 다시 이해하기",
+          "content_sha256": "1419c6c3569471c436db7f1df87d5e955dab42d662febb4fe1994b54a3f30f4e",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/2/page/12",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/2/page/12",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l02",
+            "source_order": 12,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 13,
+          "audit_page_key": "adv-source-20-p13",
+          "existing_page_id": null,
+          "title": "L3 Tunneling 정리",
+          "content_sha256": "e8871854b1fcb79c631d485c237de0f55ed587b865e7dd43da98a937ee435a60",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/2/page/13",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/2/page/13",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l02",
+            "source_order": 13,
+            "role": "main"
+          }
+        }
+      ]
+    },
+    {
+      "source_key": "U14L3",
+      "lesson_id": "u10-advanced-21-vpn과-재택근무",
+      "title": "VPN과 재택근무",
+      "path": "units/10-vpn-and-security/lessons/03-vpn과-재택근무/lesson.md",
+      "file_sha256": "dc52e8781046f8d0804b7c88d83b8961e1666cf7e2c11666a07e4899e80057ec",
+      "source_wiki": "https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-21.md",
+      "pages": [
+        {
+          "source_page": 1,
+          "audit_page_key": "adv-source-21-p01",
+          "existing_page_id": null,
+          "title": "VPN과 재택근무의 상황",
+          "content_sha256": "9ee20a89e0d0e266b9c52b8602f0161cf8c7aa04293b0f9f54e7bcb3b803df0d",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/3/page/1",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/3/page/1",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l03",
+            "source_order": 1,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 2,
+          "audit_page_key": "adv-source-21-p02",
+          "existing_page_id": null,
+          "title": "외부 직원의 사내 접속",
+          "content_sha256": "12cdf5bc86d0c3947ae26adacfad68380f508a23c1126d7c8cd35629652bd955",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/3/page/2",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/3/page/2",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l03",
+            "source_order": 2,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 3,
+          "audit_page_key": "adv-source-21-p03",
+          "existing_page_id": null,
+          "title": "VPN Client와 접속 설정",
+          "content_sha256": "797c3963048886687773f2663d907b54449764d51179fa08a8a905ab9bcd3e22",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/3/page/3",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/3/page/3",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l03",
+            "source_order": 3,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 4,
+          "audit_page_key": "adv-source-21-p04",
+          "existing_page_id": null,
+          "title": "Secure Gateway와 인증",
+          "content_sha256": "064c9baafd512f911f64f7dfb61fb965968e99ed662c2b4a5c31ac8138784ab7",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/3/page/4",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/3/page/4",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l03",
+            "source_order": 4,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 5,
+          "audit_page_key": "adv-source-21-p05",
+          "existing_page_id": null,
+          "title": "사내에서 사용할 주소 할당",
+          "content_sha256": "4f25d4a68319d454fbbf645b144884d1f5c3d78cb790f6eede56147609aab309",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/3/page/5",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/3/page/5",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l03",
+            "source_order": 5,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 6,
+          "audit_page_key": "adv-source-21-p06",
+          "existing_page_id": null,
+          "title": "터널을 지나는 통신",
+          "content_sha256": "5d406343f37733cf2e12266d61517bba5b5f9a8ec17590bfb86e397a023a3166",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/3/page/6",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/3/page/6",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l03",
+            "source_order": 6,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 7,
+          "audit_page_key": "adv-source-21-p07",
+          "existing_page_id": null,
+          "title": "사내 서버까지의 경로",
+          "content_sha256": "bb52fa05692af259afe38fd513158107ba637402ec04fc9101c9a916216996da",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/3/page/7",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/3/page/7",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l03",
+            "source_order": 7,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 8,
+          "audit_page_key": "adv-source-21-p08",
+          "existing_page_id": null,
+          "title": "출발지 주소와 내부 접속",
+          "content_sha256": "6236cde9a8456ddde4c79cf25ebb6a46e2ccb2c96c5edce982b596bfb39686dd",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/3/page/8",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/3/page/8",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l03",
+            "source_order": 8,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 9,
+          "audit_page_key": "adv-source-21-p09",
+          "existing_page_id": null,
+          "title": "밖에서도 사내처럼 일하기",
+          "content_sha256": "ccfda2f27fb5e9fe2cd306998e44257397f49c1e6396555269aa5b211310236c",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/3/page/9",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/3/page/9",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l03",
+            "source_order": 9,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 10,
+          "audit_page_key": "adv-source-21-p10",
+          "existing_page_id": null,
+          "title": "재택근무 구성 정리",
+          "content_sha256": "b26ad2cc91c6c3ac1d2da695d3d4dc7d3f6a733a18a2890c4bbabaf8199fb1eb",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/3/page/10",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/3/page/10",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l03",
+            "source_order": 10,
+            "role": "main"
+          }
+        }
+      ]
+    },
+    {
+      "source_key": "U14L4",
+      "lesson_id": "u10-advanced-22-vpn-악용",
+      "title": "VPN 악용",
+      "path": "units/10-vpn-and-security/lessons/04-vpn-악용/lesson.md",
+      "file_sha256": "b733c1ad921e9ef973eceff204b82cd09febd2f1362ddd13537f58555d9778c9",
+      "source_wiki": "https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-22.md",
+      "pages": [
+        {
+          "source_page": 1,
+          "audit_page_key": "adv-source-22-p01",
+          "existing_page_id": null,
+          "title": "VPN이 바꾸는 접속 위치",
+          "content_sha256": "4560ea03b6d8ef166de2b233c6a7188ce2cd7aaf910cd1e6be9234b49870f076",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/4/page/1",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/4/page/1",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l03",
+            "source_order": 11,
+            "role": "reference"
+          }
+        },
+        {
+          "source_page": 2,
+          "audit_page_key": "adv-source-22-p02",
+          "existing_page_id": null,
+          "title": "서버가 보는 접속 IP",
+          "content_sha256": "95e6b1f0871a68f3cdc55b738e07cc9a039106588eda2afeba04664f85a5ecc5",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/4/page/2",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/4/page/2",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l03",
+            "source_order": 12,
+            "role": "reference"
+          }
+        },
+        {
+          "source_page": 3,
+          "audit_page_key": "adv-source-22-p03",
+          "existing_page_id": null,
+          "title": "지역에 따른 접근 차이",
+          "content_sha256": "77219c0210548ec469c0f0cf4c8ccdffe48cd3f65eca0728860c29b4cd904fe5",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/4/page/3",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/4/page/3",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l03",
+            "source_order": 13,
+            "role": "reference"
+          }
+        },
+        {
+          "source_page": 4,
+          "audit_page_key": "adv-source-22-p04",
+          "existing_page_id": null,
+          "title": "다른 출구로 트래픽 보내기",
+          "content_sha256": "dfddb487c2b12a438c511a1c5d8631f5dd8a4e442a0dfd36d7baa8e5524a6996",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/4/page/4",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/4/page/4",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l03",
+            "source_order": 14,
+            "role": "reference"
+          }
+        },
+        {
+          "source_page": 5,
+          "audit_page_key": "adv-source-22-p05",
+          "existing_page_id": null,
+          "title": "우회의 문제점",
+          "content_sha256": "80c9881e54d1cf77960723f62fea49dc8a00e36802df8f62f2ceec782c915ef8",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/4/page/5",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/4/page/5",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l03",
+            "source_order": 15,
+            "role": "reference"
+          }
+        },
+        {
+          "source_page": 6,
+          "audit_page_key": "adv-source-22-p06",
+          "existing_page_id": null,
+          "title": "IP에 대한 판단과 평판",
+          "content_sha256": "3deeb79f9915851f3dd8f53341d5e5be020d37310c618a641ab83f1779fbc98d",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/4/page/6",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/4/page/6",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l03",
+            "source_order": 16,
+            "role": "reference"
+          }
+        },
+        {
+          "source_page": 7,
+          "audit_page_key": "adv-source-22-p07",
+          "existing_page_id": null,
+          "title": "여러 경로로 이어지는 통신",
+          "content_sha256": "98d63554619b243f10f1f0f6dfa6db6ef8bdb46dcb1758ad21073ddbadcb965a",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/4/page/7",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/4/page/7",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l03",
+            "source_order": 17,
+            "role": "reference"
+          }
+        },
+        {
+          "source_page": 8,
+          "audit_page_key": "adv-source-22-p08",
+          "existing_page_id": null,
+          "title": "장악된 PC와 악용",
+          "content_sha256": "9a362b78af0ba834fc0f6c2758fb361a1f92f8dbe7e22ecfbf9ae39fe94ba63e",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/4/page/8",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/4/page/8",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l03",
+            "source_order": 18,
+            "role": "reference"
+          }
+        },
+        {
+          "source_page": 9,
+          "audit_page_key": "adv-source-22-p09",
+          "existing_page_id": null,
+          "title": "제한을 우회하려는 사례",
+          "content_sha256": "d58cd282a118840b3fce45e552163915f2d3b3b44a3861ae0eaa48cf1cc3cdd0",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/4/page/9",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/4/page/9",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l03",
+            "source_order": 19,
+            "role": "reference"
+          }
+        },
+        {
+          "source_page": 10,
+          "audit_page_key": "adv-source-22-p10",
+          "existing_page_id": null,
+          "title": "접속 IP만으로 판단하는 한계",
+          "content_sha256": "b3b656923eae60010085f303d540de88c26b54b840b04640e50a9042d0b76185",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/4/page/10",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/4/page/10",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u14-l03",
+            "source_order": 20,
+            "role": "reference"
+          }
+        }
+      ]
+    },
+    {
+      "source_key": "U14L5",
+      "lesson_id": "u10-advanced-23-네트워크-보안-솔루션-종류",
+      "title": "네트워크 보안 솔루션 종류",
+      "path": "units/10-vpn-and-security/lessons/05-네트워크-보안-솔루션-종류/lesson.md",
+      "file_sha256": "63b7e67c6142f5c644c865e7859b4e667f5bf840ecb3d1b31255efe451da9a72",
+      "source_wiki": "https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-23.md",
+      "pages": [
+        {
+          "source_page": 1,
+          "audit_page_key": "adv-source-23-p01",
+          "existing_page_id": null,
+          "title": "보안 장치를 세 가지 구조로 보기",
+          "content_sha256": "cfa2a830e30beaa49787a0af905b3a55e148d75e00e86cf58d4cb21bd2bf3bbc",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/5/page/1",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/5/page/1",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u15-l01",
+            "source_order": 1,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 2,
+          "audit_page_key": "adv-source-23-p02",
+          "existing_page_id": null,
+          "title": "PC 방화벽과 NAC",
+          "content_sha256": "262ae9bf8c858ad21eb6922f370a55b6a204a986287f4663103550ddea26a720",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/5/page/2",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/5/page/2",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u15-l01",
+            "source_order": 2,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 3,
+          "audit_page_key": "adv-source-23-p03",
+          "existing_page_id": null,
+          "title": "방화벽·IPS·망분리의 배치",
+          "content_sha256": "3f9eae63a91c1f6e8180bba135cab0e6b31e2aba0fe9e481f6fd3622528252ce",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/5/page/3",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/5/page/3",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u15-l01",
+            "source_order": 3,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 4,
+          "audit_page_key": "adv-source-23-p04",
+          "existing_page_id": null,
+          "title": "NIDS와 Proxy 기반 보호",
+          "content_sha256": "e2b66bdc19989606c12b7377e095416e60c0a150ac8780304ff0e5bb9dbf5670",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/5/page/4",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/5/page/4",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u15-l01",
+            "source_order": 4,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 5,
+          "audit_page_key": "adv-source-23-p05",
+          "existing_page_id": null,
+          "title": "OSI 계층에 장치를 놓아 보기",
+          "content_sha256": "cb681de096fbe2b669fcc0a8c77f7fb05d2af4e79f59d831f21459bebbc8299e",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/5/page/5",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/5/page/5",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u15-l01",
+            "source_order": 5,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 6,
+          "audit_page_key": "adv-source-23-p06",
+          "existing_page_id": null,
+          "title": "NAC · 네트워크 접근통제",
+          "content_sha256": "74eb8843e6cefeaa5b4eaa986d7118b27da4afa7ab14f5f359c3c91005bcd94c",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/5/page/6",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/5/page/6",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u15-l02",
+            "source_order": 1,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 7,
+          "audit_page_key": "adv-source-23-p07",
+          "existing_page_id": null,
+          "title": "ARP를 이용한 접근 유도",
+          "content_sha256": "6537f92297939dfc246153d3885e0ca9fa9e852964dd6e701168cd7c6c62e10c",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/5/page/7",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/5/page/7",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u15-l02",
+            "source_order": 2,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 8,
+          "audit_page_key": "adv-source-23-p08",
+          "existing_page_id": null,
+          "title": "HTTP Redirect 방식",
+          "content_sha256": "7f3c950a7f19fe9e765827afcd1be68cfb35637ec4a2fa8ea42a4076a0f153f7",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/5/page/8",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/5/page/8",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u15-l02",
+            "source_order": 3,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 9,
+          "audit_page_key": "adv-source-23-p09",
+          "existing_page_id": null,
+          "title": "무선·단말 접근통제",
+          "content_sha256": "6cdefb5143270d2f6a942118892ef40bf10be977d86e13d7cce068d09b668a83",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/5/page/9",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/5/page/9",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u15-l02",
+            "source_order": 4,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 10,
+          "audit_page_key": "adv-source-23-p10",
+          "existing_page_id": null,
+          "title": "Packet Filtering과 방화벽",
+          "content_sha256": "a0e945dd87f04ba476d6f9b854bb51f949c9f92943f973d05f79e8f4ad229c22",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/5/page/10",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/5/page/10",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u15-l03",
+            "source_order": 1,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 11,
+          "audit_page_key": "adv-source-23-p11",
+          "existing_page_id": null,
+          "title": "세션 관리와 Hybrid 방화벽",
+          "content_sha256": "15d52609557218dda4e8c1a2858a4e7f7a92b352e8dd6072b411eaba9808aab2",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/5/page/11",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/5/page/11",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u15-l03",
+            "source_order": 2,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 12,
+          "audit_page_key": "adv-source-23-p12",
+          "existing_page_id": null,
+          "title": "VPN·SSL VPN",
+          "content_sha256": "29e3798f928be32e1694fc981e6b3fe967981d26c6808e11176fbbc5b57c277c",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/5/page/12",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/5/page/12",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u15-l03",
+            "source_order": 3,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 13,
+          "audit_page_key": "adv-source-23-p13",
+          "existing_page_id": null,
+          "title": "기본 필터링에서 능동적 탐지로",
+          "content_sha256": "4aae7ce1be03123e4b423a99ebf0d98f65b0893e76f845a013eb959c08232095",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/5/page/13",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/5/page/13",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u15-l03",
+            "source_order": 4,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 14,
+          "audit_page_key": "adv-source-23-p14",
+          "existing_page_id": null,
+          "title": "IPS와 NIDS",
+          "content_sha256": "ca385acfb1e6e0d958827ab8ad282418e947ed0da305e504d6d82b59a3244bba",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/5/page/14",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/5/page/14",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u15-l04",
+            "source_order": 1,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 15,
+          "audit_page_key": "adv-source-23-p15",
+          "existing_page_id": null,
+          "title": "DPI와 Signature 검사",
+          "content_sha256": "bd12527af5fe4b318231c8be79a965ff6c4b818122ca4b209ac8014a14f2706a",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/5/page/15",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/5/page/15",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u15-l04",
+            "source_order": 2,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 16,
+          "audit_page_key": "adv-source-23-p16",
+          "existing_page_id": null,
+          "title": "Reputation · 평판을 활용",
+          "content_sha256": "243b0f6f0ca44886855700c3d4e92d8c0bc456798696ef5d85b889da8e620f02",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/5/page/16",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/5/page/16",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u15-l04",
+            "source_order": 3,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 17,
+          "audit_page_key": "adv-source-23-p17",
+          "existing_page_id": null,
+          "title": "ESM · 로그를 모아 분석",
+          "content_sha256": "578c1a7f7936bdb07495e846281b025be5f4c1daea7bd78ed38e8530877b4510",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/5/page/17",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/5/page/17",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u15-l04",
+            "source_order": 4,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 18,
+          "audit_page_key": "adv-source-23-p18",
+          "existing_page_id": null,
+          "title": "NIDS 탐지 규칙 읽기",
+          "content_sha256": "905a784ef167073310b2243703b1af95b7810906460db7fd52de005e16f7d782",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/5/page/18",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/5/page/18",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u15-l04",
+            "source_order": 5,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 19,
+          "audit_page_key": "adv-source-23-p19",
+          "existing_page_id": null,
+          "title": "여러 보안 기능의 결합",
+          "content_sha256": "ba6d3078e742eb8b56b3a26b6edee6450287af5a7e5fe9e2f300180ef270615e",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/5/page/19",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/5/page/19",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u15-l04",
+            "source_order": 6,
+            "role": "main"
+          }
+        },
+        {
+          "source_page": 20,
+          "audit_page_key": "adv-source-23-p20",
+          "existing_page_id": null,
+          "title": "구조별 역할 정리",
+          "content_sha256": "a394c1ea966458863880f65326c733da08ba4a72380d48a9d85805395b27ba76",
+          "question_ids": [],
+          "stage_path": "/m2-network/unit/14/lesson/5/page/20",
+          "learn_v2_path": "/m2-network/v2/unit/14/lesson/5/page/20",
+          "destination": {
+            "kind": "lesson",
+            "target_key": "u15-l04",
+            "source_order": 7,
+            "role": "main"
+          }
+        }
+      ]
+    }
+  ],
+  "source_asset_sha256": {
+    "units/07-network-devices/lessons/01-강의소개-및-교육목표/assets/diagrams/lesson-01.svg": "dc17d433faff9ffc475deeaa9644273d2a97e5dff805e00de0502e56c4264276",
+    "units/07-network-devices/lessons/02-세-가지-네트워크-장치-구조/assets/diagrams/lesson-02.svg": "39c49a24b4cea838d0063227b8671eefcdbea62c2c86125b4ea593093460d050",
+    "units/07-network-devices/lessons/03-inline-구조-강의자료-포함/assets/diagrams/lesson-03.svg": "1228e3403d37368b9a42fea91a065abf4db571a5895e091817703cde9de3a6b4",
+    "units/07-network-devices/lessons/05-out-of-path-구조와-dpi-그리고-망중립/assets/diagrams/lesson-05.svg": "a3bbb7bb2dd5158ed10fbbe695b9b2a7c1108b7525d1bb93e657f651c01e442f",
+    "units/07-network-devices/lessons/06-proxy-우회/assets/diagrams/lesson-06.svg": "88cfb46d307aba62fd2bcee9298cd4cbeda15d5716ac845d3a4f05fe506cedfc",
+    "units/07-network-devices/lessons/07-proxy-보호와-감시/assets/diagrams/lesson-07.svg": "ebc8b180346efa2bf5365d4c4110a87016dbf4471469ac8c6736d26c933cbea3",
+    "units/07-network-devices/lessons/08-reverse-proxy/assets/diagrams/lesson-08.svg": "d72c6bf6c0351227b4eedae07aa3ebe50ecb944ee32a0d87025630d60294ae25",
+    "units/07-network-devices/lessons/09-pc에-설치하는-proxy/assets/diagrams/lesson-09.svg": "a6920a50224b98d8647d5e2097e375e350626876fd478663b22b3222ea2a6653",
+    "units/08-router-and-nat/lessons/01-공유기-작동원리-및-개요/assets/diagrams/lesson-10.svg": "becfd9ee187c94e4ac6ee613705e5a120a2f07b2204c7da14b22ab22c08d3761",
+    "units/08-router-and-nat/lessons/02-symmetric-nat-방식/assets/diagrams/lesson-11.svg": "b9804d56e6108bcc5d39307b51c9cf2b1260caa2268220b398a22c2eb0d9e4e1",
+    "units/08-router-and-nat/lessons/03-full-cone-방식과-내부-네트워크-접속-문제/assets/diagrams/lesson-12.svg": "5300520e2108c9726e39c5a810bef403d5cb9da7fb2afb5726d69de52588f8ce",
+    "units/08-router-and-nat/lessons/04-restricted-cone-방식/assets/diagrams/lesson-13.svg": "13b299fea3d44e22e816cb433d829427eb3056970a932575b78f973fbb035efe",
+    "units/08-router-and-nat/lessons/05-port-restricted-cone-방식/assets/diagrams/lesson-14.svg": "5ecdb9552e7df1512534500f46537d4039c0e93cdf9e68b40eb712486accb3b2",
+    "units/08-router-and-nat/lessons/06-포트-포워딩/assets/diagrams/lesson-15.svg": "e6e8c164670ed76cda8ac8c52f89018cc7a27735cc2c39e2d20e65790549e599",
+    "units/08-router-and-nat/lessons/07-upnp와-nat/assets/diagrams/lesson-16.svg": "8e72b97b2df5f32140215f4953443eed6def2b2ba0636c515e0a44c7e3ad69a2",
+    "units/09-load-balancing/lessons/01-l4-부하분산과-무정지-시스템/assets/diagrams/lesson-17.svg": "3bd83a65cadf5fc5ae722835df458e67451b4a91fb544740b77bd3c709f00852",
+    "units/09-load-balancing/lessons/02-대규모-부하분산을-위한-gslb/assets/diagrams/lesson-18.svg": "a55421f1b569b551d716f23f80a93898d856caa1b990a017488f6769abffaad9",
+    "units/10-vpn-and-security/lessons/01-pn과-vpn/assets/diagrams/lesson-19.svg": "06cda2336c0abc9f37180c6407750dabd361ac16aebc34053083a38f811c6b36",
+    "units/10-vpn-and-security/lessons/02-ipsec-vpn과-터널링-개념/assets/diagrams/lesson-20.svg": "80b0b43ffb682083e18aecc3773e6299ce4d7fef54c2d1eb41c17823700b3ac7",
+    "units/10-vpn-and-security/lessons/03-vpn과-재택근무/assets/diagrams/lesson-21.svg": "39dd45752b1062135941f31657ef04b749e8c4c1fd63047431dcc65e3ddf6d63",
+    "units/10-vpn-and-security/lessons/04-vpn-악용/assets/diagrams/lesson-22.svg": "56e9836865eab425dcb4ad46f7457effe63a2a33802d879a119c1f08c1f04eb9",
+    "units/10-vpn-and-security/lessons/05-네트워크-보안-솔루션-종류/assets/diagrams/lesson-23.svg": "10e681212531d2e8840ae3f71dd9fbadf1bf22692bb31d9522f13ca47adb7837",
+    "units/07-network-devices/lessons/01-강의소개-및-교육목표/assets/animations/u11-intro-basics-come-back.svg": "75020a016275db626aee6e0f4818fe6322edcb9420a1984ad82c837b4dd4c106",
+    "units/07-network-devices/lessons/01-강의소개-및-교육목표/assets/animations/u11-intro-between-service-and-internet.svg": "974af150091df13a25024605cfe3b39c70a104a38be4b9932f885f2342e0fc54",
+    "units/07-network-devices/lessons/01-강의소개-및-교육목표/assets/animations/u11-intro-manage-from-anywhere.svg": "1aa597ed334a43094023e9ff7590b71371b01c216201a69ea81fd27f425a0dce",
+    "units/07-network-devices/lessons/01-강의소개-및-교육목표/assets/animations/u11-intro-out-and-in.svg": "520523792feab5269c2c3b349368b0377334851a3c21956c3608e1cb6e87a4f3",
+    "units/07-network-devices/lessons/01-강의소개-및-교육목표/assets/animations/u11-intro-scale-up.svg": "a7eebbb41f313f98367bde64500a5c3889cf79b3b1defb1fa025f57ab5dfdbf2",
+    "units/07-network-devices/lessons/01-강의소개-및-교육목표/assets/animations/u11-intro-three-structures.svg": "d7d84367d74a01836171577a7d3e8e92d9586cd108dfd3baca5aa3ee64e256e6",
+    "units/07-network-devices/lessons/01-강의소개-및-교육목표/assets/animations/u11-intro-where-and-what.svg": "ece8fcfd861210879f7c001cd9ff4cc06f4cbb386fd1d04f58a2ef108a69e712",
+    "units/07-network-devices/lessons/01-강의소개-및-교육목표/assets/animations/u11-intro-works-on-my-laptop.svg": "4829216320a56f2d7d45022311e4d7900afcf21e9da5c1a15604556203350110"
+  },
+  "counts": {
+    "source_lessons": 23,
+    "source_rendered_pages": 203,
+    "technical_source_pages": 194,
+    "guide_pages": 8,
+    "materials_pages": 1,
+    "target_lessons": 20,
+    "target_units": 5
+  }
+}

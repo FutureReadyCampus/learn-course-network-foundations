@@ -1,4 +1,3 @@
-# 용어 파일 (설계 #76). 필드 설명은 README.md.
 - id: host
   tier: hero
   category: 등장인물
@@ -618,7 +617,7 @@
   - Cookie
   hover: 서버가 브라우저에 저장하게 하고, 브라우저가 다음 요청에 함께 보내는 작은 데이터예요.
   anchor:
-    lesson: u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론
+    lesson: u10-l02-login-and-session-state
     page: cookie-session
 - id: was
   tier: hero
@@ -632,7 +631,7 @@
   - Web Application Server
   hover: 요청을 받아 프로그램으로 처리하고 웹 응답을 만드는 서버예요. 정적 파일을 전달하는 웹 서버와 역할을 나눌 수 있어요.
   anchor:
-    lesson: u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론
+    lesson: u10-l03-web-application-architecture
     page: was-role
 - id: db
   tier: hero
@@ -646,7 +645,7 @@
   - Database
   hover: 데이터를 저장하고 요청에 따라 찾아 주는 시스템이에요.
   anchor:
-    lesson: u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론
+    lesson: u10-l03-web-application-architecture
     page: db-role
 - id: process
   tier: family
@@ -998,9 +997,9 @@
   - 세션
   hover: 웹 앱이 여러 요청에 걸쳐 로그인 같은 상태를 이어 관리하는 문맥이에요. TCP 세션과는 다른 뜻이에요.
   only_in:
-  - u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론
+  - u10-l02-login-and-session-state
   anchor:
-    lesson: u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론
+    lesson: u10-l02-login-and-session-state
     page: cookie-session
 - id: https
   tier: family
@@ -1012,7 +1011,7 @@
   - Hypertext Transfer Protocol Secure
   hover: HTTP 요청과 응답을 TLS로 보호해 주고받는 방식이에요. 웹사이트의 모든 안전을 보증하는 뜻은 아니에요.
   anchor:
-    lesson: u6-l36-was와-restful-api-그리고-jvm
+    lesson: u10-l04-api-and-web-security
     page: https-section
 - id: endpoint
   tier: family
@@ -1073,7 +1072,7 @@
   - Stateless
   hover: HTTP가 각 요청을 이전 요청의 상태를 자동으로 기억하지 않고 처리하는 성질이에요. 앱은 쿠키나 세션 등으로 상태를 이어갈 수 있어요.
   anchor:
-    lesson: u6-l35-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론
+    lesson: u10-l02-login-and-session-state
     page: http-stateless
 - id: icmp
   tier: family
@@ -1459,7 +1458,7 @@
   hover: 인터넷 같은 공용 네트워크를 이용해 떨어진 장치나 사설망을 연결하는 기술이에요. 연결을 허용할 범위는 별도 정책으로 정해야 해요.
   anchor:
     lesson: u10-advanced-19-pn과-vpn
-    page: vpn-definition
+    page: advanced-source-19-page-06
 - id: vpn-tunnel
   tier: none
   ko: VPN 터널
@@ -1471,7 +1470,7 @@
   hover: 원래 통신 데이터를 다른 전달 정보로 감싸 두 지점 사이로 보내는 방식이에요. 터널링과 암호화는 서로 다른 기능이에요.
   anchor:
     lesson: u10-advanced-20-ipsec-vpn과-터널링-개념
-    page: vpn-tunnel-definition
+    page: advanced-source-20-page-06
 - id: encryption
   tier: none
   ko: 암호화
@@ -1482,7 +1481,7 @@
   hover: 데이터를 열쇠에 해당하는 키 없이는 읽기 어렵게 바꾸는 일이에요. 통신 상대가 믿을 만한지 확인하는 일과는 달라요.
   anchor:
     lesson: u10-advanced-19-pn과-vpn
-    page: encryption-definition
+    page: advanced-source-19-page-07
 - id: firewall
   tier: none
   ko: 방화벽
@@ -1492,8 +1491,8 @@
   - firewall
   hover: 통신을 정해 둔 규칙에 따라 허용하거나 차단하는 기능이에요. 모든 공격을 자동으로 막아 주는 것은 아니에요.
   anchor:
-    lesson: u10-advanced-23-네트워크-보안-솔루션-종류
-    page: firewall-definition
+    lesson: advanced-stateful-firewall
+    page: advanced-source-23-page-10
 - id: dns-ttl
   only_in:
   - u6-l31-한-번에-끝내는-dns
@@ -1518,7 +1517,7 @@
   hover: 패킷을 전달하면서 IP 주소를 다른 주소로 바꾸는 기능이에요. 공유기는 보통 포트 번호도 함께 바꿔 내부 연결들을 구별해요.
   anchor:
     lesson: u8-advanced-10-공유기-작동원리-및-개요
-    page: nat-definition
+    page: advanced-source-10-page-03
 - id: private-ip
   tier: none
   ko: 사설 IP
@@ -1530,7 +1529,7 @@
   hover: 내부 네트워크에서 쓰도록 정해진 범위의 IP 주소예요. 서로 다른 사설망에서는 같은 주소를 쓸 수 있어요.
   anchor:
     lesson: u8-advanced-10-공유기-작동원리-및-개요
-    page: public-private-ip
+    page: advanced-source-10-page-02
 - id: public-ip
   tier: none
   ko: 공인 IP
@@ -1542,7 +1541,7 @@
   hover: 인터넷에서 사용하는 전역 주소예요. 주소가 공인 주소여도 방화벽 등으로 접속이 제한될 수 있어요.
   anchor:
     lesson: u8-advanced-10-공유기-작동원리-및-개요
-    page: public-private-ip
+    page: advanced-source-10-page-02
 - id: subnetting
   tier: none
   ko: 서브네팅

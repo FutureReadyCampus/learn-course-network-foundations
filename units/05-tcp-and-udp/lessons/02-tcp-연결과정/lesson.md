@@ -395,9 +395,6 @@ page_metadata:
     difficulty: easy
     prompt: "SYN에는 보내는 쪽의 어떤 번호가 함께 담기나요?"
     choices:
-    - id: a
-      text: "초기 순서번호"
-      feedback: "SYN은 보내는 쪽의 초기 순서번호를 알립니다."
     - id: b
       text: "포트 번호"
       feedback: "바로 앞 문단의 설명에서 이 부분을 다시 확인해 보세요."
@@ -407,6 +404,9 @@ page_metadata:
     - id: d
       text: "파일 크기"
       feedback: "바로 앞 문단의 설명에서 이 부분을 다시 확인해 보세요."
+    - id: a
+      text: "초기 순서번호"
+      feedback: "SYN은 보내는 쪽의 초기 순서번호를 알립니다."
     - id: e
       text: "DNS 번호"
       feedback: "바로 앞 문단의 설명에서 이 부분을 다시 확인해 보세요."
@@ -1140,9 +1140,6 @@ page_metadata:
     difficulty: easy
     prompt: "전화의 “통화 중” 비유에서 실제로 새로 생기지 않는 것은 무엇인가요?"
     choices:
-    - id: a
-      text: "전용 케이블"
-      feedback: "통화 중이어도 두 전화기 사이에 전용 케이블이 새로 깔리지는 않습니다."
     - id: b
       text: "통화 상태"
       feedback: "바로 앞 문단의 설명에서 이 부분을 다시 확인해 보세요."
@@ -1155,6 +1152,9 @@ page_metadata:
     - id: e
       text: "기존 통신망 사용"
       feedback: "바로 앞 문단의 설명에서 이 부분을 다시 확인해 보세요."
+    - id: a
+      text: "전용 케이블"
+      feedback: "통화 중이어도 두 전화기 사이에 전용 케이블이 새로 깔리지는 않습니다."
     answer: a
   - id: u7-l02-p08-q03
     kind: choice

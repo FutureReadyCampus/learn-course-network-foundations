@@ -148,6 +148,12 @@
     }).filter((text) => String(text).length > 0);
     for (const [index, text] of blocks.entries()) {
       const lines = String(text).split("\n");
+      if (lines.length === 1 && /^\s*<!--(?:[\s\S]*)-->\s*$/.test(text)) {
+        // Source and authoring comments belong in Markdown, not in the learner view.
+        appendIllustrations(index);
+        appendQuizzes(index + 1);
+        continue;
+      }
       const heading = lines.length === 1 ? text.match(/^(#{3,4})\s+(.+)$/) : null;
       if (heading) {
         flush();
@@ -480,6 +486,12 @@
         return `<li><a class="lesson-link" data-lesson="${li}" href="${routeFor(ui, localIndex, 0)}" ${active ? 'aria-current="page"' : ""}><span class="nav-number">${String(localIndex + 1).padStart(2, "0")}</span><span>${esc(lesson.title)}</span></a>${active ? `<ol class="sidebar-steps">${steps.map((step, si) => `<li><a class="page-link" data-lesson="${li}" data-page="${si}" href="${routeFor(ui, localIndex, si)}" ${si === state.pageIndex ? 'aria-current="page"' : ""}>${esc(step.title)}</a></li>`).join("")}</ol>` : ""}</li>`;
       }).join("")}</ol></section>`;
     }).join("")}`;
+    const selected = nav.querySelector('.lesson-link[aria-current="page"]')?.closest('.unit-nav');
+    if (selected) {
+      const navBounds = nav.getBoundingClientRect();
+      const selectedBounds = selected.getBoundingClientRect();
+      nav.scrollTop += selectedBounds.top - navBounds.top;
+    }
     const banner = document.getElementById("source-banner");
     const sha = course.preview_source?.sha || "local draft";
     const sourceUrl = course.preview_source?.url;

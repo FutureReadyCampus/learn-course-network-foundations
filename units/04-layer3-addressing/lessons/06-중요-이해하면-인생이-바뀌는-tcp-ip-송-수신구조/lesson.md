@@ -149,9 +149,6 @@ page_metadata:
     - id: a
       text: 서버
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
-    - id: b
-      text: 내 PC의 브라우저
-      feedback: 맞아요. 요청을 보낼 때는 브라우저가 송신 쪽이고, 사진 데이터가 돌아올 때는 서버가 송신 쪽이에요.
     - id: c
       text: 중간 스위치
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
@@ -161,6 +158,9 @@ page_metadata:
     - id: e
       text: 라우터
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: 내 PC의 브라우저
+      feedback: 맞아요. 요청을 보낼 때는 브라우저가 송신 쪽이고, 사진 데이터가 돌아올 때는 서버가 송신 쪽이에요.
     answer: b
   - id: u4-l16-p02-q03
     kind: choice
@@ -234,9 +234,6 @@ page_metadata:
     - id: a
       text: 프레임
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
-    - id: b
-      text: 프로그램이 운영체제의 통신 기능에 데이터를 맡기고 받는 접점
-      feedback: 맞아요. 프로그램은 이 소프트웨어 접점을 통해 운영체제에 데이터를 보내거나 받도록 요청해요.
     - id: c
       text: 라우터
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
@@ -246,12 +243,18 @@ page_metadata:
     - id: e
       text: FCS
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: 프로그램이 운영체제의 통신 기능에 데이터를 맡기고 받는 접점
+      feedback: 맞아요. 프로그램은 이 소프트웨어 접점을 통해 운영체제에 데이터를 보내거나 받도록 요청해요.
     answer: b
   - id: u4-l16-p03-q03
     kind: choice
     difficulty: medium
     prompt: TCP/IP 처리를 맡고 네트워크 장치 사용을 관리하는 운영체제의 핵심 부분은 무엇인가요?
     choices:
+    - id: e
+      text: 커널
+      feedback: 맞아요. 커널은 TCP/IP 처리와 네트워크 장치 사용을 맡아요.
     - id: a
       text: 브라우저
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
@@ -264,9 +267,6 @@ page_metadata:
     - id: d
       text: 프로세스 버퍼
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
-    - id: e
-      text: 커널
-      feedback: 맞아요. 커널은 TCP/IP 처리와 네트워크 장치 사용을 맡아요.
     answer: e
   - id: u4-l16-p03-q04
     kind: short
@@ -306,15 +306,15 @@ page_metadata:
     - id: a
       text: 라우터
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
-    - id: b
-      text: 버퍼
-      feedback: 맞아요. 버퍼는 데이터를 잠시 보관하는 메모리 공간이에요.
     - id: c
       text: 포트 번호
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
     - id: d
       text: 프레임
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: 버퍼
+      feedback: 맞아요. 버퍼는 데이터를 잠시 보관하는 메모리 공간이에요.
     - id: e
       text: 프로세스
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
@@ -369,9 +369,6 @@ page_metadata:
     - id: a
       text: 수신 버퍼(Receive buffer)
       feedback: 수신 버퍼는 네트워크에서 받은 데이터를 프로그램이 읽기 전까지 보관해요.
-    - id: b
-      text: 송신 버퍼(Send buffer)
-      feedback: 맞아요. 송신 버퍼는 커널이 네트워크로 내보낼 데이터를 잠시 보관해요.
     - id: c
       text: 프로그램 버퍼(Program buffer)
       feedback: 프로그램 버퍼는 프로그램이 파일에서 읽어 처리하는 데이터를 잠시 두는 공간이에요.
@@ -381,6 +378,9 @@ page_metadata:
     - id: e
       text: 네트워크 인터페이스 카드(NIC)
       feedback: NIC는 컴퓨터를 네트워크에 연결하는 장치예요. 데이터를 잠시 쌓아 두는 버퍼와는 역할이 달라요.
+    - id: b
+      text: 송신 버퍼(Send buffer)
+      feedback: 맞아요. 송신 버퍼는 커널이 네트워크로 내보낼 데이터를 잠시 보관해요.
     answer: b
   question_placements:
   - question_id: u4-l16-p04-q01
@@ -432,9 +432,6 @@ page_metadata:
     - id: a
       text: 다음 네트워크 경로를 고르는 표
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
-    - id: b
-      text: 바이트를 전송 크기에 맞춰 자른 조각들
-      feedback: 맞아요. TCP는 바이트 흐름을 전송 크기에 맞는 조각들로 나눠요.
     - id: c
       text: 케이블을 통과하는 전기 신호
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
@@ -444,6 +441,9 @@ page_metadata:
     - id: e
       text: 브라우저가 화면에 그린 사진
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: 바이트를 전송 크기에 맞춰 자른 조각들
+      feedback: 맞아요. TCP는 바이트 흐름을 전송 크기에 맞는 조각들로 나눠요.
     answer: b
   - id: u4-l16-p05-q03
     kind: choice
@@ -453,15 +453,15 @@ page_metadata:
     - id: a
       text: 항상 send 한 번마다 세그먼트 하나다
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
-    - id: b
-      text: send 호출은 TCP 세그먼트와 같은 경계가 아닐 수 있다
-      feedback: 맞아요. 프로그램의 send 경계와 TCP 세그먼트 경계는 일치한다고 보장되지 않아요.
     - id: c
       text: send 횟수는 사진 파일 크기와 같다
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
     - id: d
       text: 세그먼트는 IP 주소의 별칭이다
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: send 호출은 TCP 세그먼트와 같은 경계가 아닐 수 있다
+      feedback: 맞아요. 프로그램의 send 경계와 TCP 세그먼트 경계는 일치한다고 보장되지 않아요.
     - id: e
       text: 수신 프로그램은 send 횟수와 같은 횟수로만 읽는다
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
@@ -502,12 +502,12 @@ page_metadata:
     difficulty: easy
     prompt: IP 패킷 안에서 TCP 세그먼트는 어떤 역할을 하나요?
     choices:
-    - id: a
-      text: 프레임을 나르는 케이블
-      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
     - id: b
       text: 패킷에 담기는 내용물
       feedback: 맞아요. IP는 TCP 세그먼트를 페이로드로 삼아 IP 헤더와 함께 패킷을 만들어요.
+    - id: a
+      text: 프레임을 나르는 케이블
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
     - id: c
       text: 라우터의 전원
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
@@ -595,9 +595,6 @@ page_metadata:
     - id: a
       text: TCP 세그먼트 → 프레임 → IP 패킷
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
-    - id: b
-      text: 프레임 → IP 패킷 → TCP 세그먼트 → 바이트 흐름
-      feedback: 맞아요. 수신 측은 바깥 프레임부터 처리하고 안쪽 TCP 바이트 흐름으로 올라가요.
     - id: c
       text: 바이트 흐름 → 프레임 → IP 패킷
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
@@ -607,6 +604,9 @@ page_metadata:
     - id: e
       text: 브라우저 → 라우터 → 프레임
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: b
+      text: 프레임 → IP 패킷 → TCP 세그먼트 → 바이트 흐름
+      feedback: 맞아요. 수신 측은 바깥 프레임부터 처리하고 안쪽 TCP 바이트 흐름으로 올라가요.
     answer: b
   - id: u4-l16-p07-q02
     kind: choice
@@ -640,15 +640,15 @@ page_metadata:
     - id: b
       text: 네, 라우터가 사진을 화면에 그린다
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
-    - id: c
-      text: 아니요. 애플리케이션이 바이트를 사진으로 해석한다
-      feedback: 맞아요. TCP/IP 전달 처리는 바이트를 전달하고, 사진 형식을 해석하는 일은 브라우저 같은 애플리케이션이 해요.
     - id: d
       text: 아니요. 그러면 사진 데이터가 모두 사라진다
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
     - id: e
       text: 네, 프레임의 FCS가 사진을 표시한다
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: c
+      text: 아니요. 애플리케이션이 바이트를 사진으로 해석한다
+      feedback: 맞아요. TCP/IP 전달 처리는 바이트를 전달하고, 사진 형식을 해석하는 일은 브라우저 같은 애플리케이션이 해요.
     answer: c
   - id: u4-l16-p07-q04
     kind: short
@@ -683,12 +683,12 @@ page_metadata:
     difficulty: easy
     prompt: TCP가 받은 바이트를 브라우저가 읽기 전까지 잠시 두는 곳은 어디인가요?
     choices:
-    - id: a
-      text: 라우터의 전달표
-      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
     - id: b
       text: 커널의 수신 버퍼
       feedback: 맞아요. TCP가 전달한 바이트는 프로그램이 읽기 전까지 커널의 수신 버퍼에 준비돼요.
+    - id: a
+      text: 라우터의 전달표
+      feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
     - id: c
       text: 서버의 저장장치 원본
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
@@ -713,12 +713,12 @@ page_metadata:
     - id: c
       text: 브라우저가 그 바이트를 이미 읽었다
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
-    - id: d
-      text: 바이트가 도착했지만 브라우저는 아직 읽지 않았을 수도 있다
-      feedback: 맞아요. 버퍼 도착과 브라우저가 읽고 처리하는 일은 서로 다른 순간이에요.
     - id: e
       text: 서버의 원본이 삭제됐다
       feedback: 다시 본문에서 각 단계의 역할과 데이터 흐름을 확인해 보세요.
+    - id: d
+      text: 바이트가 도착했지만 브라우저는 아직 읽지 않았을 수도 있다
+      feedback: 맞아요. 버퍼 도착과 브라우저가 읽고 처리하는 일은 서로 다른 순간이에요.
     answer: d
   - id: u4-l16-p08-q03
     kind: choice

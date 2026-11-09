@@ -38,15 +38,15 @@ page_metadata:
     - id: a
       text: Unicast
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
-    - id: b
-      text: Broadcast
-      feedback: 맞아요. Broadcast.
     - id: c
       text: Routing
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
     - id: d
       text: Header
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
+    - id: b
+      text: Broadcast
+      feedback: 맞아요. Broadcast.
     - id: e
       text: Virtualization
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
@@ -65,12 +65,12 @@ page_metadata:
     - id: c
       text: 같은 스위치에 직접 꽂힌 PC만 항상
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
-    - id: d
-      text: 같은 브로드캐스트 도메인에 속한 장치들
-      feedback: 맞아요. 같은 브로드캐스트 도메인에 속한 장치들.
     - id: e
       text: 같은 IP 주소를 쓰는 장치만
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: d
+      text: 같은 브로드캐스트 도메인에 속한 장치들
+      feedback: 맞아요. 같은 브로드캐스트 도메인에 속한 장치들.
     answer: d
   - id: u3-03-p01-q03
     kind: short
@@ -240,12 +240,12 @@ page_metadata:
     - id: c
       text: AA:BB:CC:11:22:33
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
-    - id: d
-      text: FF:FF:FF:FF:FF:FF
-      feedback: 맞아요. FF:FF:FF:FF:FF:FF.
     - id: e
       text: 01:00:5E:00:00:01
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
+    - id: d
+      text: FF:FF:FF:FF:FF:FF
+      feedback: 맞아요. FF:FF:FF:FF:FF:FF.
     answer: d
   - id: u3-03-p03-q02
     kind: choice
@@ -336,15 +336,15 @@ page_metadata:
     - id: b
       text: 프레임을 항상 버린다
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
-    - id: c
-      text: 입력 포트를 제외한 여러 포트로 전달한다
-      feedback: 맞아요. 입력 포트를 제외한 여러 포트로 전달한다.
     - id: d
       text: IP 주소를 바꾼다
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
     - id: e
       text: 다른 IP 네트워크로 라우팅한다
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
+    - id: c
+      text: 입력 포트를 제외한 여러 포트로 전달한다
+      feedback: 맞아요. 입력 포트를 제외한 여러 포트로 전달한다.
     answer: c
   - id: u3-03-p04-q03
     kind: short
@@ -414,15 +414,15 @@ page_metadata:
     - id: a
       text: 화면과 저장 공간
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
-    - id: b
-      text: 링크 대역폭과 장치 처리 시간
-      feedback: 맞아요. 링크 대역폭과 장치 처리 시간.
     - id: c
       text: IP 주소와 MAC 주소의 길이
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
     - id: d
       text: 키보드와 마우스
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
+    - id: b
+      text: 링크 대역폭과 장치 처리 시간
+      feedback: 맞아요. 링크 대역폭과 장치 처리 시간.
     - id: e
       text: 케이블과 포트 색상
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
@@ -525,9 +525,6 @@ page_metadata:
     difficulty: easy
     prompt: 브로드캐스트 구역을 더 작게 나누면 운영자가 추가로 감당할 일은 무엇인가요?
     choices:
-    - id: a
-      text: 추가 구성과 관리
-      feedback: 맞아요. 추가 구성과 관리.
     - id: b
       text: 컴퓨터 화면 교체
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
@@ -540,6 +537,9 @@ page_metadata:
     - id: e
       text: IP 주소 삭제
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
+    - id: a
+      text: 추가 구성과 관리
+      feedback: 맞아요. 추가 구성과 관리.
     answer: a
   - id: u3-03-p06-q02
     kind: choice
@@ -567,9 +567,6 @@ page_metadata:
     difficulty: medium
     prompt: L3 경계에 대한 정확한 설명은 무엇인가요?
     choices:
-    - id: a
-      text: 일반 Ethernet 브로드캐스트는 다른 IP 네트워크로 그대로 가지 않지만, 모든 IP·멀티캐스트 트래픽이 똑같이 막힌다는 뜻은 아니다
-      feedback: 맞아요. 일반 Ethernet 브로드캐스트는 다른 IP 네트워크로 그대로 가지 않지만, 모든 IP·멀티캐스트 트래픽이 똑같이 막힌다는 뜻은 아니다.
     - id: b
       text: 모든 IP 패킷을 항상 차단한다
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
@@ -582,6 +579,9 @@ page_metadata:
     - id: e
       text: 브로드캐스트 MAC을 IP 주소로 바꾼다
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
+    - id: a
+      text: 일반 Ethernet 브로드캐스트는 다른 IP 네트워크로 그대로 가지 않지만, 모든 IP·멀티캐스트 트래픽이 똑같이 막힌다는 뜻은 아니다
+      feedback: 맞아요. 일반 Ethernet 브로드캐스트는 다른 IP 네트워크로 그대로 가지 않지만, 모든 IP·멀티캐스트 트래픽이 똑같이 막힌다는 뜻은 아니다.
     answer: a
   question_placements:
   - question_id: u3-03-p06-q01
@@ -624,24 +624,21 @@ page_metadata:
     - id: b
       text: 원래 보낸 파일
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
-    - id: c
-      text: Ethernet 프레임과 구간별 MAC 주소
-      feedback: 맞아요. Ethernet 프레임과 구간별 MAC 주소.
     - id: d
       text: 목적지 네트워크
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
     - id: e
       text: TCP 연결의 의미
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
+    - id: c
+      text: Ethernet 프레임과 구간별 MAC 주소
+      feedback: 맞아요. Ethernet 프레임과 구간별 MAC 주소.
     answer: c
   - id: u3-03-p07-q02
     kind: choice
     difficulty: medium
     prompt: LAN과 WAN을 물리 네트워크와 논리 네트워크에 대응시키는 그림은 어떻게 이해해야 하나요?
     choices:
-    - id: a
-      text: 처음 구조를 그리는 데 도움이 되는 요령이지 엄밀한 정의는 아니다
-      feedback: 맞아요. 처음 구조를 그리는 데 도움이 되는 요령이지 엄밀한 정의는 아니다.
     - id: b
       text: 두 이름은 프레임과 패킷의 크기를 뜻한다
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
@@ -651,6 +648,9 @@ page_metadata:
     - id: d
       text: WAN은 장비 없이 소프트웨어만 있다는 의미다
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: a
+      text: 처음 구조를 그리는 데 도움이 되는 요령이지 엄밀한 정의는 아니다
+      feedback: 맞아요. 처음 구조를 그리는 데 도움이 되는 요령이지 엄밀한 정의는 아니다.
     - id: e
       text: LAN은 언제나 물리적이고 WAN은 언제나 논리적이라는 정의다
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
@@ -683,9 +683,6 @@ page_metadata:
     difficulty: easy
     prompt: 마우스 포인터는 책상 위에 작은 화살표 부품으로 놓여 있나요?
     choices:
-    - id: a
-      text: 아니요, 포인터는 화면에 그려지는 표시입니다
-      feedback: 맞아요. 포인터는 화면에 표시되며 책상 위의 물체가 아닙니다.
     - id: b
       text: 네, 실제 화살표 부품이 책상 위에 놓여 있습니다
       feedback: 포인터는 책상 위에 놓인 물체가 아닙니다.
@@ -698,15 +695,15 @@ page_metadata:
     - id: e
       text: 네, 포인터는 모니터 바깥에 붙은 스티커입니다
       feedback: 포인터는 화면에 그려지는 표시입니다.
+    - id: a
+      text: 아니요, 포인터는 화면에 그려지는 표시입니다
+      feedback: 맞아요. 포인터는 화면에 표시되며 책상 위의 물체가 아닙니다.
     answer: a
   - id: u3-03-p08-q05
     kind: choice
     difficulty: easy
     prompt: “논리적 네트워크”라고 해도 실제 인터넷에서 그대로 쓰이는 것은 무엇인가요?
     choices:
-    - id: a
-      text: 광섬유·케이블·라우터 같은 물리 기반
-      feedback: 맞아요. 광섬유·케이블·라우터 같은 물리 기반.
     - id: b
       text: 인터넷 주소
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
@@ -716,6 +713,9 @@ page_metadata:
     - id: d
       text: 연결된 장치
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
+    - id: a
+      text: 광섬유·케이블·라우터 같은 물리 기반
+      feedback: 맞아요. 광섬유·케이블·라우터 같은 물리 기반.
     - id: e
       text: 전송되는 데이터
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
@@ -761,9 +761,6 @@ page_metadata:
     difficulty: easy
     prompt: 실제 서버 한 대에 가상 머신을 만들면, 소프트웨어는 어떤 자원을 나누어 제공하나요?
     choices:
-    - id: a
-      text: CPU 시간·메모리·저장 공간과 네트워크 인터페이스
-      feedback: 맞아요. CPU 시간·메모리·저장 공간과 네트워크 인터페이스.
     - id: b
       text: 화면 픽셀만
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
@@ -776,6 +773,9 @@ page_metadata:
     - id: e
       text: 키보드의 키만
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
+    - id: a
+      text: CPU 시간·메모리·저장 공간과 네트워크 인터페이스
+      feedback: 맞아요. CPU 시간·메모리·저장 공간과 네트워크 인터페이스.
     answer: a
   - id: u3-03-p09-q02
     kind: choice
@@ -806,9 +806,6 @@ page_metadata:
     - id: a
       text: 서버 안에 같은 수의 물리 컴퓨터를 추가 설치한다
       feedback: 다시 본문을 확인해 보세요. 서버 안에 같은 수의 물리 컴퓨터를 추가 설치한다.
-    - id: b
-      text: 소프트웨어가 실제 컴퓨터 자원을 나누어 각 가상 머신에 제공한다
-      feedback: 맞아요. 소프트웨어가 실제 컴퓨터 자원을 나누어 각 가상 머신에 제공한다입니다.
     - id: c
       text: 각 가상 머신이 별도의 인터넷을 물리적으로 만든다
       feedback: 다시 본문을 확인해 보세요. 각 가상 머신이 별도의 인터넷을 물리적으로 만든다.
@@ -818,6 +815,9 @@ page_metadata:
     - id: e
       text: 가상 머신은 네트워크 인터페이스를 사용할 수 없다
       feedback: 다시 본문을 확인해 보세요. 가상 머신은 네트워크 인터페이스를 사용할 수 없다.
+    - id: b
+      text: 소프트웨어가 실제 컴퓨터 자원을 나누어 각 가상 머신에 제공한다
+      feedback: 맞아요. 소프트웨어가 실제 컴퓨터 자원을 나누어 각 가상 머신에 제공한다입니다.
     answer: b
   question_placements:
   - question_id: u3-03-p09-q05
@@ -836,9 +836,6 @@ page_metadata:
     difficulty: easy
     prompt: 건물 안내 방송 비유에서 라우터 경계는 무엇을 막나요?
     choices:
-    - id: a
-      text: 한 구역의 방송이 다른 네트워크까지 그대로 퍼지는 것
-      feedback: 맞아요. 한 구역의 방송이 다른 네트워크까지 그대로 퍼지는 것.
     - id: b
       text: 한 PC에서 다른 PC로 가는 Unicast
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
@@ -851,6 +848,9 @@ page_metadata:
     - id: e
       text: 모든 IP 통신을 차단하는 것
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
+    - id: a
+      text: 한 구역의 방송이 다른 네트워크까지 그대로 퍼지는 것
+      feedback: 맞아요. 한 구역의 방송이 다른 네트워크까지 그대로 퍼지는 것.
     answer: a
   - id: u3-03-p10-q05
     kind: choice
@@ -860,12 +860,12 @@ page_metadata:
     - id: a
       text: 아니요, WAN은 실제 장비가 필요 없다
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
-    - id: b
-      text: 네, WAN도 실제 전송 장비와 링크를 사용한다
-      feedback: 맞아요. WAN도 실제 전송 장비와 링크를 사용합니다.
     - id: c
       text: 맞다. LAN에만 케이블이 있다
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
+    - id: b
+      text: 네, WAN도 실제 전송 장비와 링크를 사용한다
+      feedback: 맞아요. WAN도 실제 전송 장비와 링크를 사용합니다.
     - id: d
       text: 아니다. WAN은 MAC 주소만 사용한다
       feedback: 다시 생각해 보세요. 방금 읽은 예시를 떠올려 보세요.
@@ -881,15 +881,15 @@ page_metadata:
     - id: a
       text: LAN은 반드시 물리 연결이고 WAN은 반드시 논리 연결이다
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
-    - id: b
-      text: LAN도 논리적으로 나뉠 수 있고 WAN도 물리 장비 위에서 구현된다
-      feedback: 맞아요. LAN도 논리적으로 나뉠 수 있고 WAN도 물리 장비 위에서 구현된다.
     - id: c
       text: LAN은 MAC 주소를 쓰고 WAN은 IP 주소를 쓰지 않는다
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
     - id: d
       text: LAN과 WAN은 각각 하나의 고정 거리로만 구분된다
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.
+    - id: b
+      text: LAN도 논리적으로 나뉠 수 있고 WAN도 물리 장비 위에서 구현된다
+      feedback: 맞아요. LAN도 논리적으로 나뉠 수 있고 WAN도 물리 장비 위에서 구현된다.
     - id: e
       text: WAN에는 케이블이나 라우터가 필요 없다
       feedback: 다시 확인해 보세요. 이 페이지에서 다룬 내용을 기준으로 생각해 보세요.

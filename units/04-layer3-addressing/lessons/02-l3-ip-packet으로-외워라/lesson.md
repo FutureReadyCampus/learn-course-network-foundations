@@ -236,12 +236,12 @@ page_metadata:
     - id: b
       text: 네. 빈 부분을 항상 0으로 채워야 합니다.
       feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
-    - id: c
-      text: 아니요. 1,500바이트는 최대값이므로 더 작은 패킷도 보낼 수 있습니다.
-      feedback: 맞아요. 아니요. 1,500바이트는 최대값이므로 더 작은 패킷도 보낼 수 있습니다.입니다.
     - id: d
       text: 아니요. MTU는 IP 주소의 길이만 말합니다.
       feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    - id: c
+      text: 아니요. 1,500바이트는 최대값이므로 더 작은 패킷도 보낼 수 있습니다.
+      feedback: 맞아요. 아니요. 1,500바이트는 최대값이므로 더 작은 패킷도 보낼 수 있습니다.입니다.
     - id: e
       text: 아니요. 1,500은 Ethernet 프레임 전체 크기를 뜻합니다.
       feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
@@ -315,9 +315,6 @@ page_metadata:
     difficulty: easy
     prompt: 이더넷 Type 필드가 0800일 때, 뒤에 오는 패킷은 무엇인가요?
     choices:
-    - id: a
-      text: IPv4 패킷
-      feedback: 맞아요. IPv4 패킷입니다.
     - id: b
       text: IPv6 패킷
       feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
@@ -330,6 +327,9 @@ page_metadata:
     - id: e
       text: Wireshark 캡처 파일
       feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    - id: a
+      text: IPv4 패킷
+      feedback: 맞아요. IPv4 패킷입니다.
     answer: a
   - id: u4-l12-p04-q02
     kind: choice
@@ -416,6 +416,9 @@ page_metadata:
     - id: a
       text: MAC 주소
       feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    - id: e
+      text: 포트 번호
+      feedback: 맞아요. 포트 번호입니다.
     - id: b
       text: IP 네트워크 부분
       feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
@@ -425,9 +428,6 @@ page_metadata:
     - id: d
       text: 프레임 검사 값
       feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
-    - id: e
-      text: 포트 번호
-      feedback: 맞아요. 포트 번호입니다.
     answer: e
   - id: u4-l12-p05-q02
     kind: choice
@@ -519,12 +519,12 @@ page_metadata:
     - id: a
       text: 사용자가 보는 화면의 색
       feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
-    - id: b
-      text: 전달하고 처리하는 데 필요한 안내 정보
-      feedback: 맞아요. 전달하고 처리하는 데 필요한 안내 정보입니다.
     - id: c
       text: 네트워크 케이블의 길이
       feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.
+    - id: b
+      text: 전달하고 처리하는 데 필요한 안내 정보
+      feedback: 맞아요. 전달하고 처리하는 데 필요한 안내 정보입니다.
     - id: d
       text: 전달할 실제 파일 내용만
       feedback: 다시 생각해 보세요. 바로 앞의 설명에서 그 역할을 확인해 보세요.

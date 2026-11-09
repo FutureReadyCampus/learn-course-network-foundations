@@ -164,12 +164,12 @@ page_metadata:
     difficulty: medium
     prompt: "IPv4 주소를 점으로 구분해 네 숫자로 적을 때, 각 숫자는 몇 비트 묶음을 나타내나요?"
     choices:
-    - id: a
-      text: "8비트"
-      feedback: "맞아요. 8비트입니다."
     - id: b
       text: "4비트"
       feedback: "다시 확인해 보세요. 4비트."
+    - id: a
+      text: "8비트"
+      feedback: "맞아요. 8비트입니다."
     - id: c
       text: "16비트"
       feedback: "다시 확인해 보세요. 16비트."
@@ -232,15 +232,15 @@ page_metadata:
     difficulty: easy
     prompt: 유선과 Wi-Fi 어댑터가 모두 연결된 컴퓨터에서 주소를 볼 때 함께 확인할 것은 무엇인가요?
     choices:
-    - id: a
-      text: 어느 네트워크 어댑터의 주소인지
-      feedback: 맞아요. 어느 네트워크 어댑터의 주소인지입니다.
     - id: b
       text: 모니터 크기
       feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
     - id: c
       text: 키보드 언어
       feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
+    - id: a
+      text: 어느 네트워크 어댑터의 주소인지
+      feedback: 맞아요. 어느 네트워크 어댑터의 주소인지입니다.
     - id: d
       text: 폴더 이름
       feedback: 다시 생각해 보세요. 바로 앞의 예시와 설명을 떠올려 보세요.
@@ -498,9 +498,6 @@ page_metadata:
     difficulty: medium
     prompt: "192.168.0.10/24에서 네트워크 부분에 해당하는 것은 무엇인가요?"
     choices:
-    - id: a
-      text: "192.168.0"
-      feedback: "맞아요. /24는 앞의 24비트인 192.168.0을 네트워크 부분으로 정합니다."
     - id: b
       text: "마지막 숫자 10"
       feedback: "다시 생각해 보세요. /24에서는 마지막 8비트가 호스트 부분입니다."
@@ -513,6 +510,9 @@ page_metadata:
     - id: e
       text: "10.0"
       feedback: "주소의 네트워크 경계와 각 숫자를 비교해 다시 확인해 보세요."
+    - id: a
+      text: "192.168.0"
+      feedback: "맞아요. /24는 앞의 24비트인 192.168.0을 네트워크 부분으로 정합니다."
     answer: a
   - id: u4-01-p06-q05
     kind: choice

@@ -6,8 +6,10 @@ source:
   commit: d1b650e39cb0fd01f4b67adb76926172dbd517c9
   path: studio/wiki/oeweo-network/catalog.json
 lessons:
-- path: ../06-web-fundamentals/lessons/05-그림-한-장으로-외워서-끝내는-웹-서비스-구조-기본이론/lesson.md
-- path: ../06-web-fundamentals/lessons/06-was와-restful-api-그리고-jvm/lesson.md
+- path: lessons/01-브라우저-요청과-화면/lesson.md
+- path: lessons/02-로그인-요청과-세션/lesson.md
+- path: lessons/03-웹-서버-was-db-구조/lesson.md
+- path: lessons/04-api-요청과-웹-보안/lesson.md
 ---
 
 # 웹 서비스의 구조

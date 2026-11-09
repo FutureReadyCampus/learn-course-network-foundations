@@ -1,0 +1,28 @@
+name: Validate advanced restructure contract
+
+on:
+  pull_request:
+    branches: [main, stage]
+    paths:
+      - 'docs/advanced-restructure-*.json'
+      - 'docs/advanced-restructure-*.md'
+      - 'scripts/plan_advanced_restructure.py'
+      - 'scripts/test_advanced_restructure.py'
+      - '.github/workflows/validate-advanced-contract.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - name: Check immutable source mapping and synthetic completion rules
+        run: python scripts/test_advanced_restructure.py -v
