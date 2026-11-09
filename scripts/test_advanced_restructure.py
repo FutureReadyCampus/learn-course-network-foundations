@@ -120,8 +120,10 @@ class AdvancedRestructureTest(unittest.TestCase):
         advanced_ids = [lesson["id"] for lesson in self.applied_catalog["lessons"]
                         if lesson["unit"] in set(unit_ids[10:])]
         self.assertEqual(advanced_ids, [item["id"] for item in self.plan["lessons"]])
+        # Unit 12 Lesson 3 was deliberately rewritten from its 24 source pages into 7 (#209),
+        # so the applied course carries 17 fewer pages than the preserved source plan.
         self.assertEqual(sum(len(lesson["pages"]) for lesson in self.applied_catalog["lessons"]
-                             if lesson["unit"] in set(unit_ids[10:])), 194)
+                             if lesson["unit"] in set(unit_ids[10:])), 194 - 17)
         self.assertEqual(len(self.applied_catalog["route_aliases"]), 1321)
         self.assertEqual(self.applied_catalog["route_aliases"], self.plan["aliases"])
         self.assertEqual(self.applied_catalog["advanced_completion_migration"], {
