@@ -507,44 +507,44 @@ page_metadata:
   - id: u9-l03-p09-q01
     kind: choice
     difficulty: easy
-    prompt: ?keyword=dns에서 매개변수 이름과 값을 바르게 고른 것은 무엇인가요?
+    prompt: Query는 주소에서 어느 기호 뒤에 시작하나요?
     choices:
     - id: a
-      text: 이름은 keyword, 값은 dns다
-      feedback: 맞아요. 이름=값 쌍에서 등호 앞이 매개변수 이름이고 뒤가 값입니다.
+      text: 물음표(?) 뒤
+      feedback: 맞아요. 이 페이지에서는 Query가 물음표 뒤에 붙는다고 설명합니다.
     - id: b
-      text: 이름은 dns, 값은 keyword다
-      feedback: 이름과 값이 반대입니다. 등호 앞 keyword가 이름입니다.
+      text: 앰퍼샌드(&) 뒤
+      feedback: '&는 추가 매개변수를 이을 때 쓰고, Query는 물음표 뒤에 시작합니다.'
     - id: c
-      text: 이름은 ?, 값은 keyword다
-      feedback: ?는 query를 시작하는 기호이며 매개변수 이름이 아닙니다.
+      text: 등호(=) 뒤
+      feedback: =는 매개변수 이름과 값을 짝짓습니다. Query는 물음표 뒤에 시작합니다.
     - id: d
-      text: 이름은 keyword=dns, 값은 없다
-      feedback: keyword=dns 전체가 한 쌍이며 dns라는 값이 있습니다.
+      text: 경로 슬래시(/) 뒤
+      feedback: /search 같은 경로와 Query는 다른 부분입니다. Query는 ? 뒤에 적습니다.
     - id: e
-      text: 이름은 없고 keyword와 dns가 모두 값이다
-      feedback: 등호 앞 keyword는 조건을 구분하는 매개변수 이름입니다.
+      text: 콜론(:) 뒤
+      feedback: 이 주소의 콜론은 Query를 시작하지 않습니다. Query는 물음표 뒤에 적습니다.
     answer: a
   - id: u9-l03-p09-q02
     kind: choice
     difficulty: medium
-    prompt: 검색 경로 /search에 검색어 dns와 페이지 번호 2를 함께 전달하려 합니다. 알맞은 주소는 무엇인가요?
+    prompt: '`?search_keyword=Test&page=2`에서 이름·값과 구분 기호를 바르게 설명한 것은 무엇인가요?'
     choices:
     - id: a
-      text: /search?keyword=dns?page=2
-      feedback: 조건을 추가할 때는 ?를 반복하지 않고 &로 이어야 합니다.
+      text: search_keyword와 page가 값이고 Test와 2가 이름이며, ?는 두 쌍을 구분합니다
+      feedback: 이름과 값이 뒤바뀌었고, ?는 Query를 시작합니다. 두 매개변수는 &로 나눕니다.
     - id: b
-      text: /search?dns=keyword&2=page
-      feedback: 이름과 값을 뒤집었습니다. keyword와 page가 매개변수 이름입니다.
+      text: search_keyword는 값이고 Test는 이름이며, &는 경로를 시작합니다
+      feedback: = 앞 search_keyword가 이름이고 뒤 Test가 값입니다. &는 추가 매개변수를 구분합니다.
     - id: c
-      text: /search/keyword=dns/page=2
-      feedback: 이는 조건을 query 대신 경로에 넣은 형태입니다. 본문의 query 형식은 ? 뒤에 씁니다.
+      text: search_keyword=Test는 Query 쌍이고 page=2는 경로라서 &로 이을 수 없습니다
+      feedback: page=2도 &로 이어지는 두 번째 이름=값 매개변수입니다. 경로는 /search처럼 별도로 적습니다.
     - id: d
-      text: /search?keyword=dns&page
-      feedback: 페이지 번호를 값으로 전달하려면 page=2처럼 이름과 값을 적어야 합니다.
+      text: search_keyword는 이름, Test는 값이며, page=2는 경로입니다
+      feedback: page=2도 &로 이어진 Query 매개변수입니다. 경로 /search와 구분하세요.
     - id: e
-      text: /search?keyword=dns&page=2
-      feedback: 맞아요. ?로 query를 시작하고 &로 두 이름=값 조건을 이었습니다.
+      text: search_keyword는 이름, Test는 값이고 page=2도 매개변수이며 &가 둘을 구분합니다
+      feedback: 맞아요. ?로 Query를 시작하고, 각 매개변수의 이름=값을 &로 구분합니다.
     answer: e
   question_placements:
   - question_id: u9-l03-p09-q01
