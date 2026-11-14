@@ -76,7 +76,7 @@ Learn #223을 먼저 `main`에 반영하고 Deploy 및 관련 동작을 확인�
 
 Unit 11 재설계에 따라 새 U11L4의 14 Page를 원고 경계에서 다시 나눈다. 기존 U11L6에 해당하는 7 Page는 U11L4 `advanced-forward-proxy`에, 기존 U11L7에 해당하는 7 Page는 새 U11L5 `advanced-forward-proxy-inspection` 「회사 프록시의 검사와 기록」에 둔다. PC 로컬 프록시는 U11L6, 리버스 프록시는 U11L7로 이동한다. Unit 11은 7 Lesson, 전체 기술 과정은 22 Lesson이 된다. 두 프록시 Lesson은 원고 하나를 통째로 담지만 재작성된 Lesson이므로 원본 Lesson ID를 물려받지 않는다. 계약 JSON의 `target_overrides`에 `"identity": "new"`로 이 예외를 기록하고, 원고 대응은 `source_page_remapping`에 기록한다.
 
-라우트 별칭의 목적지 Page 번호는 기존과 같이 목표 Lesson 안의 원고 순서를 따른다. 재작성된 Page 번호로 다시 매기는 작업은 Learn #223 후속으로 남긴다(U12L3 #209와 같은 처리).
+라우트 별칭의 목적지 Page 번호는 아래 2026-11-14 Unit 12~15 재설계 절의 `alias_page_destinations`로 다시 매겼다(Learn #223 후속 처리 완료).
 
 ## 2026-11-14 Unit 12~15 재설계 반영
 
@@ -89,4 +89,10 @@ Unit 12~15 재설계에 따라 기술 과정은 24 Lesson(Unit 11~15에 7·5·3�
 
 `"identity": "preserved"`는 Page가 옮겨진 Lesson이 기여 원고 중 하나의 ID를 유지한다는 검토된 결정을 뜻한다. 완료 승계는 여전히 모든 기여 원고의 완료 증거를 요구한다. 계획 검사는 목표 Lesson이 바뀌지 않은 원고 Page의 상대 순서만 확인하므로, 다른 Page가 들어오거나 빠져 번호가 밀리는 것은 허용하고 같은 Lesson 안의 순서 바꿈은 거부한다.
 
-라우트 별칭은 1,321개 그대로이며 목적지 Page 번호는 목표 Lesson 안의 원고 순서를 따른다. 재작성된 Lesson의 Page 수를 넘는 목적지 번호를 다시 매기는 작업은 Learn #223 후속으로 남긴다.
+### 별칭 목적지 Page 재매핑 (Learn #223 후속)
+
+라우트 별칭은 1,321개 그대로이고 `docs/advanced-route-aliases.json`의 `aliases_sha256`만 바뀐다(`6bc57c79...`). 이전에는 목적지 Page 번호가 목표 Lesson 안의 원고 순서라서, 재작성으로 Page 수가 줄어든 Lesson에서는 153개의 옛 주소가 마지막 Page를 넘었고 범위 안의 번호도 다른 내용에 닿는 일이 많았다. 계약 JSON에 선택 필드 `alias_page_destinations`를 추가했다. 원고 Page 194개마다 `{target_key, page, page_id}`를 담으며, 별칭의 `destination.page`·`page_id`·경로만 이 값을 쓴다. `lessons[].pages`의 순서와 완료 승계 검사는 그대로 원고 순서를 따른다.
+
+- 옛 `learn-page-id`를 그대로 가진 새 Page(126개)는 현재 빌드된 Lesson의 그 Page로 간다. 테스트가 `lesson_page_ids`로 이를 대조한다.
+- 흡수·삭제된 68개 Page는 `u12~u15-mapping-applied.md`와 `debate/u11~u15-editor.md`에 적힌 흡수 Page로, 문서에 번호가 없으면 제목·주제로 판단한 Page로 보낸다. 이 변경으로 목적지 Page 번호가 바뀐 별칭은 세 namespace를 합쳐 447개이고, 범위를 넘는 별칭은 153개에서 0개가 되었다. 테스트가 1,321개 전부의 번호가 목표 Lesson Page 수 이하임을 확인한다.
+- 흡수한 Page가 없는 삭제 Page는 없어 "같은 주제의 직전 Page" 규칙은 쓰지 않았다. 문서에 번호가 없어 주제로 정한 경우(옛 원고 기준 표기): U11L3의 P3 위치 찾기 → 11-2 p1, P5 커널·드라이버와 P9 소프트웨어·하드웨어 구현 → 처리량 Page 11-2 p4(편집자 결정이 한 문장을 옮겼다고 적음), P6 패킷 넘기기 → 11-2 p2, U11L5의 P4·P5 → 11-3 p3, P9 저장·분석 부하 → 11-3 p6, U11L6 P4 프록시 우회 → 11-4 p5, U11L7 P2 → 11-5 p1. 옛 U12L3~L5(Full Cone·Restricted·Port Restricted 24 Page)는 12-5로 합쳐졌고 새 Page와 일대일 대응이 없어 주제별로 나눴다(소개·연결 곤란은 p1, 매핑은 p2·p3, 필터링 좁힘은 p4, 이름 정리는 p5, 홀 펀칭은 p6, 중계 비용은 p7). U15에서 지운 23-03·23-07·23-17은 각각 15-4 p4(배치 지도)·15-1 p3(포트 차단·ARP)·15-4 p1(로그 모으기)로 간다.

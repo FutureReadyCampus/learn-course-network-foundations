@@ -6,6 +6,8 @@ import json
 import subprocess
 import unittest
 
+import yaml
+
 import build_course
 from plan_advanced_restructure import (
     ROOT,
@@ -123,7 +125,8 @@ class AdvancedRestructureTest(unittest.TestCase):
         self.assertEqual(advanced_ids, [item["id"] for item in self.plan["lessons"]])
         # The 2026-11 redesign rewrote Units 11-15 from 194 source-plan pages into 157:
         # Unit 11 50 -> 43, Unit 12 60 -> 33, Unit 13 22 -> 22, Unit 14 42 -> 34,
-        # Unit 15 20 -> 25. Aliases still follow source order (Learn #223 follow-up).
+        # Unit 15 20 -> 25. Route aliases point at the Page that absorbed each old Page
+        # (contract alias_page_destinations).
         self.assertEqual(sum(len(lesson["pages"]) for lesson in self.applied_catalog["lessons"]
                              if lesson["unit"] in set(unit_ids[10:])), 157)
         self.assertEqual(len(self.applied_catalog["route_aliases"]), 1321)
@@ -133,8 +136,84 @@ class AdvancedRestructureTest(unittest.TestCase):
             "from_version": "network-1f62c2b58554ec7c73365fc47409710d3cdca621",
             "target_unit_ids": ["network-devices", "router-and-nat", "load-balancing",
                                 "vpn-and-security", "network-security-solutions"],
-            "aliases_sha256": "1c6df30881d85487ff2d7798dfe628552121207758f15b33fd5002a353ed3036",
+            "aliases_sha256": "6bc57c798786e1ff38cb8c8a37f3a4f7dbe2f3908054f04242e6447191d3bbdc",
         })
+
+    @classmethod
+    def built_page_ids(cls):
+        """Lesson id -> ordered page_id list of the Pages the course really builds."""
+        result = {}
+        course = yaml.safe_load((ROOT / "course.yaml").read_text(encoding="utf-8"))
+        for item in course["units"]:
+            unit_path = ROOT / item["path"]
+            if not unit_path.exists():
+                continue
+            for ref in build_course.read_front_matter(unit_path)[0].get("lessons", []):
+                path = unit_path.parent / ref["path"]
+                result[build_course.read_front_matter(path)[0]["id"]] = \
+                    build_course.lesson_page_ids(path)[0]
+        return result
+
+    def alias_destination(self, path):
+        mapped = resolve_saved_location(self.plan, "learn-v2", path)
+        return mapped["id"], mapped["page"]
+
+    def test_every_alias_lands_on_an_existing_page_of_the_rewritten_lesson(self):
+        counts = {l["id"]: len(l["pages"]) for l in self.applied_catalog["lessons"]}
+        built = self.built_page_ids()
+        self.assertEqual(len(self.plan["aliases"]), 1321)
+        for alias in self.plan["aliases"]:
+            destination = alias["destination"]
+            self.assertTrue(1 <= destination["page"] <= counts[destination["id"]], alias["path"])
+            if destination["id"] in built and "page_id" in destination:
+                self.assertEqual(destination["page_id"], built[destination["id"]][destination["page"] - 1],
+                                 alias["path"])
+        # The explicit table is complete and names real Pages of the destination Lesson.
+        table = self.contract["alias_page_destinations"]
+        self.assertEqual(len(table), 194)
+        ids = {i["target_key"]: i["lesson_id"] for i in self.contract["lesson_ids"]}
+        for key, entry in table.items():
+            self.assertEqual(built[ids[entry["target_key"]]][entry["page"] - 1], entry["page_id"], key)
+
+    def test_alias_destinations_follow_the_page_that_absorbed_the_old_page(self):
+        inspection = "advanced-forward-proxy-inspection"
+        # Old forward-proxy Lesson Pages 8-14 (U11L7 Pages 1-7) -> inspection Lesson Pages.
+        self.assertEqual([self.alias_destination(f"/m2-network/v2/unit/11/lesson/7/page/{p}")
+                          for p in range(1, 8)],
+                         [(inspection, n) for n in [1, 1, 2, 4, 4, 5, 6]])
+        # Old U13 L2 (GSLB) P3/P4 merge into the first Page; P10/P11 into the later ones.
+        gslb = "u9-advanced-18-대규모-부하분산을-위한-gslb"
+        self.assertEqual([self.alias_destination(f"/m2-network/v2/unit/13/lesson/2/page/{p}")
+                          for p in (1, 3, 4, 5, 10, 11)], [(gslb, n) for n in (1, 1, 1, 3, 5, 8)])
+        # Old U14 L3 and L4 are split between the new 14-4 and 14-5.
+        self.assertEqual(self.alias_destination("/m2-network/v2/unit/14/lesson/3/page/2"),
+                         ("advanced-remote-access-vpn", 1))
+        self.assertEqual(self.alias_destination("/m2-network/v2/unit/14/lesson/3/page/10"),
+                         ("advanced-remote-access-vpn", 7))
+        self.assertEqual(self.alias_destination("/m2-network/v2/unit/14/lesson/4/page/4"),
+                         ("advanced-vpn-ip-trust-limits", 2))
+        # Unit 15 Pages removed in the debate point at the Page that absorbed them.
+        for old, target in [(3, ("advanced-security-placement", 4)),
+                            (7, ("advanced-network-access-control", 3)),
+                            (17, ("advanced-security-placement", 1))]:
+            self.assertEqual(self.alias_destination(f"/m2-network/v2/unit/14/lesson/5/page/{old}"), target)
+        # The three removed Unit 11 Pages fold into the same Lesson's neighbour.
+        self.assertEqual(self.alias_destination("/m2-network/v2/unit/11/lesson/3/page/5"),
+                         ("u7-advanced-03-inline-구조-강의자료-포함", 4))
+        self.assertEqual(self.alias_destination("/m2-network/v2/unit/11/lesson/5/page/4"),
+                         ("u7-advanced-05-out-of-path-구조와-dpi-그리고-망중립", 3))
+        self.assertEqual(self.alias_destination("/m2-network/v2/unit/11/lesson/7/page/5"),
+                         (inspection, 4))
+
+    def test_alias_page_destinations_fail_closed(self):
+        changed = copy.deepcopy(self.contract)
+        changed["alias_page_destinations"]["adv-source-23-p17"]["target_key"] = "u15-l01"
+        with self.assertRaisesRegex(ValueError, "Invalid alias Page destination"):
+            self.create_plan(contract=changed)
+        changed = copy.deepcopy(self.contract)
+        changed["alias_page_destinations"]["adv-source-00-p00"] = {}
+        with self.assertRaisesRegex(ValueError, "unknown source Page"):
+            self.create_plan(contract=changed)
 
     def test_guide_and_print_material_are_excluded_from_the_new_course(self):
         excluded = set(self.plan["excluded_source_lessons"])
@@ -152,12 +231,13 @@ class AdvancedRestructureTest(unittest.TestCase):
             self.assertEqual(lesson["id"] in old_ids, lesson["identity"] == "preserved")
 
     def test_forward_proxy_sources_do_not_open_wrong_lesson(self):
-        for old_lesson, lesson_id in [(6, "advanced-forward-proxy"),
-                                      (7, "advanced-forward-proxy-inspection")]:
-            for page in [1, 2, 7]:
+        for old_lesson, lesson_id, pages in [
+                (6, "advanced-forward-proxy", {1: 1, 2: 4, 7: 5}),
+                (7, "advanced-forward-proxy-inspection", {1: 1, 2: 1, 7: 6})]:
+            for page, new_page in pages.items():
                 mapped = resolve_saved_location(self.plan, "learn-v2",
                     f"/m2-network/v2/unit/11/lesson/{old_lesson}/page/{page}")
-                self.assertEqual((mapped["id"], mapped["page"]), (lesson_id, page))
+                self.assertEqual((mapped["id"], mapped["page"]), (lesson_id, new_page))
 
     def test_forward_proxy_split_routes_local_proxy_and_reverse_proxy(self):
         expected = [
@@ -172,12 +252,12 @@ class AdvancedRestructureTest(unittest.TestCase):
                 lesson_id, page, f"/m2-network/v3/unit/11/lesson/{lesson_number}/page/{page}"))
 
     def test_split_boundaries_and_reference_pages(self):
-        for old_page, target, new_page in [(2, "advanced-network-access-control", 2),
-                (3, "advanced-security-placement", 1), (5, "advanced-security-placement", 3),
-                (6, "advanced-network-access-control", 3), (9, "advanced-network-access-control", 6),
-                (10, "advanced-stateful-firewall", 1), (13, "advanced-stateful-firewall", 4),
-                (14, "advanced-intrusion-and-logs", 1), (16, "advanced-intrusion-and-logs", 3),
-                (17, "advanced-security-placement", 4), (20, "advanced-security-placement", 7)]:
+        for old_page, target, new_page in [(2, "advanced-network-access-control", 1),
+                (3, "advanced-security-placement", 4), (5, "advanced-security-placement", 5),
+                (6, "advanced-network-access-control", 2), (9, "advanced-network-access-control", 6),
+                (10, "advanced-stateful-firewall", 1), (13, "advanced-stateful-firewall", 2),
+                (14, "advanced-intrusion-and-logs", 2), (16, "advanced-intrusion-and-logs", 6),
+                (17, "advanced-security-placement", 1), (20, "advanced-security-placement", 6)]:
             mapped = resolve_saved_location(self.plan, "learn-v2",
                 f"/m2-network/v2/unit/14/lesson/5/page/{old_page}")
             self.assertEqual((mapped["id"], mapped["page"]), (target, new_page))
@@ -189,8 +269,8 @@ class AdvancedRestructureTest(unittest.TestCase):
 
     def test_unit12_and_unit14_reorders_route_to_new_positions(self):
         expected = [
-            ("12/lesson/6/page/2", "u8-advanced-15-포트-포워딩", "12/lesson/3/page/2"),
-            ("12/lesson/1/page/8", "u8-advanced-15-포트-포워딩", "12/lesson/3/page/1"),
+            ("12/lesson/6/page/2", "u8-advanced-15-포트-포워딩", "12/lesson/3/page/1"),
+            ("12/lesson/1/page/8", "u8-advanced-15-포트-포워딩", "12/lesson/3/page/6"),
             ("12/lesson/3/page/1", "advanced-nat-mapping-filtering", "12/lesson/5/page/3"),
             ("14/lesson/2/page/1", "advanced-vpn-ipsec-agreement", "14/lesson/3/page/1"),
             ("14/lesson/3/page/1", "advanced-remote-access-vpn", "14/lesson/4/page/1"),

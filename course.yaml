@@ -14,7 +14,7 @@ advanced_completion_migration:
   - load-balancing
   - vpn-and-security
   - network-security-solutions
-  aliases_sha256: 1c6df30881d85487ff2d7798dfe628552121207758f15b33fd5002a353ed3036
+  aliases_sha256: 6bc57c798786e1ff38cb8c8a37f3a4f7dbe2f3908054f04242e6447191d3bbdc
 units:
 - id: before-networking
   title: 네트워크를 공부하기 전에

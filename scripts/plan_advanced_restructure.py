@@ -92,6 +92,9 @@ def make_plan(snapshot, contract, catalog, legacy_units, source_root=ROOT):
         require(hashlib.sha256((source_root / path).read_bytes()).hexdigest() == expected,
                 f"Asset changed: {path}")
 
+    # Optional reviewed Page-level destinations in the rewritten Lessons (aliases only).
+    alias_pages = contract.get("alias_page_destinations", {})
+    require(set(alias_pages).issubset(source_pages), "Alias Page destination names an unknown source Page")
     lessons, destinations = [], {}
     source_uses = {}
     for key, target in targets.items():
@@ -129,9 +132,18 @@ def make_plan(snapshot, contract, catalog, legacy_units, source_root=ROOT):
                         "Page destination/order changed")
                 kept_order = original["destination"]["source_order"]
             lesson["pages"].append({k: v for k, v in page.items() if k != "payload"})
+            dest_page = {"page_id": page["page_id"], "page": number}
+            if audit_key in alias_pages:
+                dest_page = alias_pages[audit_key]
+                require(dest_page["target_key"] == key and dest_page["page"] >= 1
+                        and re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", dest_page["page_id"]),
+                        f"Invalid alias Page destination: {audit_key}")
+                dest_page = {"page_id": dest_page["page_id"], "page": dest_page["page"]}
+            # Lesson Pages/completion above keep source order; only route aliases use dest_page.
             destinations[(page["source_lesson_id"], page["source_page"])] = {
-                "kind": "lesson", "id": ids[key], "page_id": page["page_id"], "page": number,
-                "path": f"/m2-network/v3/unit/{target['unit_number']}/lesson/{lesson_number}/page/{number}",
+                "kind": "lesson", "id": ids[key], "page_id": dest_page["page_id"], "page": dest_page["page"],
+                "path": f"/m2-network/v3/unit/{target['unit_number']}/lesson/{lesson_number}"
+                        f"/page/{dest_page['page']}",
             }
         lessons.append(lesson)
 
