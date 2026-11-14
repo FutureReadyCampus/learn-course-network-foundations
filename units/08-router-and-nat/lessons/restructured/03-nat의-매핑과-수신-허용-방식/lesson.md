@@ -16,6 +16,12 @@ source_wikis:
 source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-12.md
 page_metadata:
 - page_id: advanced-nat-mapping-filtering-page-01
+  illustrations:
+  - file: assets/animations/u12-mapping-peers.svg
+    title: "NAT 뒤의 피어끼리 만나기"
+    alt: "공유기 뒤의 A와 B 중 B가 먼저 보낸 패킷이 A의 공유기에서 어느 기기로 보낼지 몰라 막히는 모습입니다."
+    caption: "직접 통신에는 매핑과 허용 조건이 모두 맞아야 합니다."
+    after_paragraph: 0
   questions:
   - id: u12-l03-p01-q01
     kind: choice
@@ -67,6 +73,12 @@ page_metadata:
     - question_id: u12-l03-p01-q02
       after_paragraph: 3
 - page_id: advanced-nat-mapping-filtering-page-02
+  illustrations:
+  - file: assets/animations/u12-mapping-vs-filtering.svg
+    title: "매핑과 필터링은 다른 질문"
+    alt: "왼쪽은 안쪽 192.168.0.10:3000을 바깥 203.0.113.8:42000에 짝짓는 매핑, 오른쪽은 15.15.15.15:5555에서 온 패킷을 받는 필터링을 나란히 보여 줍니다."
+    caption: "매핑은 나가는 주소, 필터링은 받을 상대를 정합니다."
+    after_paragraph: 0
   questions:
   - id: u12-l03-p02-q01
     kind: choice
@@ -118,6 +130,12 @@ page_metadata:
     - question_id: u12-l03-p02-q02
       after_paragraph: 3
 - page_id: advanced-nat-mapping-filtering-page-03
+  illustrations:
+  - file: assets/animations/u12-mapping-eim.svg
+    title: "매핑은 상대에 따라 달라질 수 있어요"
+    alt: "같은 A가 9.9.9.9와 새로 통신할 때 목적지 독립 매핑은 :42000을 재사용하고 목적지 종속 매핑은 다른 바깥 포트를 쓰는 것을 비교합니다."
+    caption: "상대가 바뀌어도 같은 바깥 주소를 쓰는지 봅니다."
+    after_paragraph: 0
   questions:
   - id: u12-l03-p03-q01
     kind: choice
@@ -169,6 +187,12 @@ page_metadata:
     - question_id: u12-l03-p03-q02
       after_paragraph: 4
 - page_id: advanced-nat-mapping-filtering-page-04
+  illustrations:
+  - file: assets/animations/u12-mapping-filtering.svg
+    title: "필터링은 받을 상대를 정해요"
+    alt: "15.15.15.15:7777에서 패킷이 오면 EIF와 ADF는 허용할 수 있고 포트까지 비교하는 APDF는 막을 수 있음을 보여 줍니다."
+    caption: "필터링은 누구든, 같은 IP, 같은 IP·포트 순으로 좁아집니다."
+    after_paragraph: 0
   questions:
   - id: u12-l03-p04-q01
     kind: choice
@@ -220,6 +244,12 @@ page_metadata:
     - question_id: u12-l03-p04-q02
       after_paragraph: 3
 - page_id: advanced-nat-mapping-filtering-page-05
+  illustrations:
+  - file: assets/animations/u12-mapping-cone.svg
+    title: "옛 Cone 이름 풀어 읽기"
+    alt: "Full Cone, Restricted Cone, Port Restricted, Symmetric 이름을 매핑 칸과 필터링 칸으로 나누어 차례로 풀어 읽는 표입니다."
+    caption: "옛 이름은 매핑과 필터링 두 기준으로 나누어 읽습니다."
+    after_paragraph: 0
   questions:
   - id: u12-l03-p05-q01
     kind: choice
@@ -271,6 +301,12 @@ page_metadata:
     - question_id: u12-l03-p05-q02
       after_paragraph: 3
 - page_id: advanced-nat-mapping-filtering-page-06
+  illustrations:
+  - file: assets/animations/u12-mapping-hole-punching.svg
+    title: "UDP 홀 펀칭"
+    alt: "A와 B가 소개 서버에 연락하고, 서버가 서로의 바깥 주소를 알려 준 뒤, 두 피어가 동시에 서로에게 패킷을 보내 직접 연결되는 모습입니다."
+    caption: "양쪽이 먼저 보낸 패킷으로 직접 경로를 시도합니다."
+    after_paragraph: 0
   questions:
   - id: u12-l03-p06-q01
     kind: choice
@@ -322,6 +358,12 @@ page_metadata:
     - question_id: u12-l03-p06-q02
       after_paragraph: 7
 - page_id: advanced-nat-mapping-filtering-page-07
+  illustrations:
+  - file: assets/animations/u12-mapping-relay.svg
+    title: "직접이 안 되면 중계로"
+    alt: "A가 B에게 직접 보낸 패킷이 막히자 TURN 서버를 거쳐 B에게 전달되는 중계 경로를 위아래로 비교합니다."
+    caption: "직접 연결이 안 되면 TURN 같은 중계 서버를 씁니다."
+    after_paragraph: 0
   questions:
   - id: u12-l03-p07-q01
     kind: choice

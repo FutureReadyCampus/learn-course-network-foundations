@@ -9,11 +9,60 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-source-15-page-01
   illustrations:
-  - file: assets/diagrams/source-15.svg
-    title: NAT Table의 자동 매핑 복습 · 원고 그림
-    alt: NAT Table의 자동 매핑 복습에서 원고가 함께 제공한 개념 그림
-    caption: 기존 원고의 그림을 참고해 구조와 용어를 확인한다.
-    after_paragraph: -1
+  - file: assets/animations/u12-fwd-auto-review.svg
+    title: "자동 매핑은 안에서 시작할 때만"
+    alt: "위쪽은 내 PC가 먼저 접속해 NAT Table에 자동 기록이 생기고 응답이 오는 모습, 아래쪽은 바깥에서 먼저 온 패킷이 기록이 없어 막히는 모습을 나란히 보여 줍니다."
+    caption: "바깥에서 먼저 접속하려면 매핑을 직접 지정해야 합니다."
+    after_paragraph: 0
+- page_id: advanced-source-15-page-02
+  illustrations:
+  - file: assets/animations/u12-fwd-static.svg
+    title: "정적 매핑을 직접 추가"
+    alt: "왼쪽은 Outbound로 자동 생기는 동적 매핑, 오른쪽은 관리자가 외부 80 → 192.168.0.12:80 규칙을 직접 넣어 바깥 요청이 전달되는 정적 매핑입니다."
+    caption: "직접 넣은 정적 매핑이 포트 포워딩입니다."
+    after_paragraph: 0
+- page_id: advanced-source-15-page-03
+  illustrations:
+  - file: assets/animations/u12-fwd-settings.svg
+    title: "공유기의 포트 포워딩 설정"
+    alt: "공유기 관리 화면에 외부 포트 80, 내부 IP 192.168.0.12, 내부 포트 80, 원격지 제한 없음 규칙이 추가되고 여러 바깥 사용자가 들어올 수 있는 모습입니다."
+    caption: "포트 포워딩 규칙 한 줄로 외부 포트를 내부 서버와 잇습니다."
+    after_paragraph: 0
+- page_id: advanced-source-15-page-04
+  illustrations:
+  - file: assets/animations/u12-fwd-private-fail.svg
+    title: "내부 웹 서버를 공개하는 상황"
+    alt: "집 안 웹 서버 192.168.0.12:80의 주소를 친구에게 알려 줘도 바깥에서 보낸 요청이 도착하지 못하는 모습입니다."
+    caption: "사설 주소만으로는 바깥에서 접속할 수 없습니다."
+    after_paragraph: 0
+- page_id: advanced-source-15-page-05
+  illustrations:
+  - file: assets/animations/u12-fwd-public-address.svg
+    title: "바깥에서 접속할 주소"
+    alt: "친구가 공인 주소 3.3.3.3:80으로 보낸 요청이 공유기 규칙에 따라 목적지가 192.168.0.12:80으로 바뀌어 내부 웹 서버에 도착하는 모습입니다."
+    caption: "공유기는 목적지를 바꿔 내부 서버로 전달합니다."
+    after_paragraph: 0
+- page_id: advanced-source-15-page-06
+  illustrations:
+  - file: assets/animations/u12-fwd-response.svg
+    title: "내부·외부 접속 결과"
+    alt: "내부 웹 서버가 만든 응답이 공유기를 거쳐 친구에게 가고, 친구에게는 3.3.3.3이 답한 것처럼 보이는 모습입니다."
+    caption: "응답을 만드는 주체는 내부 서버입니다."
+    after_paragraph: 0
+- page_id: advanced-source-15-page-07
+  illustrations:
+  - file: assets/animations/u12-fwd-two-homes.svg
+    title: "여러 서비스와 Port를 열기"
+    alt: "두 집의 공유기에 각각 30000번을 PC 1로, 40000번을 PC 2로 보내는 규칙을 넣어 P2P 통신이 이어지는 모습입니다."
+    caption: "포트와 공유기마다 포워딩 규칙이 필요합니다."
+    after_paragraph: 0
+- page_id: advanced-source-15-page-08
+  illustrations:
+  - file: assets/animations/u12-fwd-manual-pain.svg
+    title: "매번 설정해야 하는 불편"
+    alt: "게임 방에 들어갈 때마다 메뉴 찾기, 포트 입력, 재시작을 반복해야 하는 번거로움과 이를 자동화하는 UPnP로 이어지는 흐름입니다."
+    caption: "반복 설정을 자동화하는 방법으로 UPnP가 등장합니다."
+    after_paragraph: 0
 ---
 
 ## NAT Table의 자동 매핑 복습
