@@ -1,17 +1,22 @@
 ---
 id: u8-advanced-11-symmetric-nat-방식
-title: NAT 변환표로 통신 따라가기
+title: '답장은 어떻게 제자리로 돌아올까: NAT 변환표'
 source_lesson_ids:
 - u8-advanced-11-symmetric-nat-방식
+- u8-advanced-15-포트-포워딩
 source_wikis:
 - https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-11.md
+- https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-15.md
+- https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/honja-network/04-1.md#p199-b01
 - https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/honja-network/04-1.md#p199-b02
+- https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/honja-network/04-1.md#p199-b06
 - https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/honja-network/04-1.md#p199-b09
 - https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/honja-network/04-1.md#p199-b10
 - https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/honja-network/04-1.md#p199-b14
 - https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/honja-network/04-1.md#p200-b03
 - https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/honja-network/04-1.md#p200-b08
 - https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/honja-network/04-1.md#p200-b12
+- https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/honja-network/04-1.md#p200-b14
 - https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/honja-network/04-1.md#p200-b15
 - https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/honja-network/04-1.md#p201-b02
 - https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/honja-network/04-1.md#p201-b03
@@ -23,763 +28,468 @@ source_wikis:
 source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-11.md
 page_metadata:
 - page_id: advanced-source-11-page-01
-  illustrations:
-  - file: assets/animations/u12-nat-table-intro.svg
-    title: "주소와 포트를 함께 바꾸기"
-    alt: "집 PC 192.168.0.10:3000이 웹 서버 203.0.113.80:443에 접속하고, 공유기가 변환표에 기록해 두는 모습입니다."
-    caption: "공유기는 나갈 때 기록하고 돌아올 때 그 기록을 찾습니다."
-    after_paragraph: 0
-  question_placements:
-  - question_id: u12-l02-p01-q01
-    after_paragraph: 1
-  - question_id: u12-l02-p01-q02
-    after_paragraph: 2
   questions:
   - id: u12-l02-p01-q01
     kind: choice
     difficulty: easy
-    prompt: NAT 변환표는 무엇을 연결해 두는 기록인가요?
+    prompt: '`192.168.10.41:3000`에서 `:3000`이 뜻하는 것은 무엇인가?'
     choices:
     - id: a
-      text: 외부 웹 서버와 그 서버가 쓰는 포트만
-      feedback: 외부 상대만으로는 안쪽의 어느 통신에 응답을 보낼지 알 수 없습니다. 안쪽과 바깥쪽 통신을 연결해야 합니다.
+      text: 공유기가 접속을 기다리는 서비스 포트
+      feedback: 3000은 지우 PC가 요청을 보낼 때 고른 번호다. 공유기와는 상관이 없다.
     - id: b
-      text: 집 안 모든 기기와 같은 사설 주소 하나
-      feedback: 여러 기기의 통신이 섞이지 않도록 각각의 안쪽 통신과 바깥쪽 통신을 연결합니다.
+      text: 그 PC 안에서 이 통신을 구별하는 포트 번호
+      feedback: 맞다. 주소가 기기를 가리킨다면 포트는 그 기기 안에서 통신을 구별하는 창구 번호다.
     - id: c
-      text: 서버가 직접 관리하는 집 안 사설 주소 목록
-      feedback: 변환표는 공유기나 NAT 장비가 안쪽과 바깥쪽 통신을 연결해 두는 기록입니다. 서버가 관리하는 내부 주소 목록이 아닙니다.
+      text: AI API 서버가 제공하는 서비스의 종류(HTTPS)
+      feedback: 서비스 포트는 목적지의 `443`이다. 3000은 출발지 쪽 번호다.
     - id: d
-      text: 안쪽 통신과 바깥에서 보이는 통신
-      feedback: 맞아요. 요청 때 만든 대응 기록을 이용해 응답을 원래 안쪽 기기로 돌려보냅니다.
+      text: PC의 서브넷 마스크를 줄여 쓴 값
+      feedback: 서브넷 마스크는 `/24` 같은 별도의 정보다. `:3000`은 포트다.
     - id: e
-      text: 응답이 올 때마다 내부 기기를 새로 고르는 순서
-      feedback: 응답마다 기기를 새로 고르는 것이 아니라 요청 때 만든 대응 기록을 찾아 원래 안쪽 기기로 돌려보냅니다.
-    answer: d
+      text: 통신이 끊기기 전까지 허용된 시간(초)
+      feedback: 포트 번호는 시간과 무관한 구별용 번호다.
+    answer: b
+    feedback: '`주소:포트`는 어느 기기의 어느 창구인지를 함께 가리키는 표기이고, 변환표의 한 줄도 이 짝으로 적힌다.'
   - id: u12-l02-p01-q02
     kind: choice
     difficulty: medium
-    prompt: 192.168.0.10:3000이라는 표기에서 3000의 의미와 NAT 처리에 대한 설명으로 맞는 것은 무엇인가요?
+    prompt: 공유기 관리 화면에는 LAN `192.168.10.1`과 WAN `198.51.100.25`가 보이고, 디자인팀 PC `192.168.10.43:51515`가 이미지 생성 API를 호출한다. 이 요청이 공유기를 나갈 때 바꿔야 할 '출발지'로 알맞은 것은?
     choices:
     - id: a
-      text: 3000은 포트이며 NAT는 주소와 함께 포트도 바꿔 기록할 수 있습니다
-      feedback: 맞아요. 콜론 뒤 숫자는 포트이며, NAT는 주소뿐 아니라 포트도 변환해 통신을 구별할 수 있습니다.
+      text: 공유기 자신의 LAN 주소 `192.168.10.1`과 포트 51515
+      feedback: 공유기의 LAN 주소는 변환 대상이 아니다. 변환되는 것은 통신을 시작한 기기의 값이다.
     - id: b
-      text: 3000은 IP 주소의 마지막 부분이며 포트는 따로 없습니다
-      feedback: IPv4 주소는 콜론 앞의 192.168.0.10입니다. 콜론 뒤 3000은 포트 번호입니다.
+      text: 공유기의 WAN 주소 `198.51.100.25`
+      feedback: WAN 주소는 바뀐 뒤에 바깥에서 보이는 값이다. 바뀌기 전의 출발지는 아니다.
     - id: c
-      text: 3000은 포트이며 NAT는 어떤 경우에도 포트를 바꾸지 않습니다
-      feedback: 본문은 NAT가 IP뿐 아니라 TCP·UDP 통신을 구별하는 포트도 바꿔 기록할 수 있다고 설명합니다.
+      text: 이미지 생성 API 서버의 주소
+      feedback: API 서버는 목적지다. 목적지는 그대로 두고 출발지만 바꾼다.
     - id: d
-      text: 3000은 접속한 기기 수이며 NAT는 기기 수를 변환합니다
-      feedback: 콜론 뒤 숫자는 기기 수가 아니라 해당 IP에서 통신을 구별하는 포트입니다.
+      text: 통신을 시작한 PC의 `192.168.10.43:51515`
+      feedback: 맞다. 변환 대상은 공유기가 아니라 통신을 시작한 기기의 주소와 포트다.
     - id: e
-      text: 3000은 전송 순서이며 NAT는 이 순서만 기록합니다
-      feedback: 3000은 패킷 순서가 아니라 포트입니다. NAT는 안쪽과 바깥쪽의 주소·포트 관계를 기록합니다.
-    answer: a
-- page_id: advanced-source-11-page-02
-  illustrations:
-  - file: assets/animations/u12-nat-table-inside-outside.svg
-    title: "내부 사설망과 외부 공인망"
-    alt: "내부 사설망의 노트북, 안쪽 192.168.0.1과 바깥 198.51.100.25를 가진 공유기, 외부 공인망의 서버를 보여 주고 Local이 노트북의 값임을 강조합니다."
-    caption: "Local은 공유기 주소가 아니라 통신을 시작한 기기의 값입니다."
-    after_paragraph: 0
+      text: LAN 주소와 WAN 주소 둘 다
+      feedback: 두 주소는 공유기가 가진 값이고, 바뀌기 전 출발지는 PC의 값이다.
+    answer: d
+    feedback: '🧩 쪼개기: ''공유기가 가진 주소''와 ''통신을 시작한 기기의 주소''를 나누면 무엇이 바뀌는 칸인지 분명해진다.'
   question_placements:
-  - question_id: u12-l02-p02-q01
-    after_paragraph: 1
-  - question_id: u12-l02-p02-q02
-    after_paragraph: 3
+  - question_id: u12-l02-p01-q01
+    after_paragraph: 2
+- page_id: advanced-source-11-page-03
   questions:
   - id: u12-l02-p02-q01
     kind: choice
     difficulty: easy
-    prompt: 이 예에서 노트북이 기본 게이트웨이로 이용하는 것은 무엇인가요?
+    prompt: 공유기를 안쪽에서 바깥쪽으로 나가는 Outbound 패킷에서 NAT가 바꾸는 것은 무엇인가?
     choices:
     - id: a
-      text: 사설 주소가 192.168.0.10인 노트북 자신
-      feedback: 192.168.0.10은 통신을 시작하는 노트북입니다. 예시의 기본 게이트웨이는 공유기입니다.
+      text: 출발지 주소(포트도 바뀔 수 있음)
+      feedback: 맞다. 출발지를 바꾸고 목적지는 그대로 둔다. 그래야 서버가 공유기 바깥 주소로 응답할 수 있다.
     - id: b
-      text: 외부 웹 서버 203.0.113.80
-      feedback: 웹 서버는 통신 상대입니다. 집 안 노트북이 먼저 이용하는 기본 게이트웨이는 공유기입니다.
+      text: 목적지 주소와 목적지 포트
+      feedback: 목적지를 바꾸면 요청이 엉뚱한 곳으로 간다. 목적지는 그대로 둔다.
     - id: c
-      text: 안쪽 주소가 192.168.0.1인 공유기
-      feedback: 맞아요. 노트북은 공유기를 다음 길을 알려 주는 기본 게이트웨이로 이용합니다.
+      text: 패킷에 실린 질문 내용
+      feedback: NAT는 주소와 포트만 바꾸고 실린 내용은 건드리지 않는다.
     - id: d
-      text: 공유기를 건너뛴 인터넷 회사 장비
-      feedback: 본문의 노트북은 공유기를 거쳐 ISP 쪽으로 이동합니다. 공유기를 건너뛰는 예시가 아닙니다.
+      text: 사용하는 프로토콜(TCP를 UDP로)
+      feedback: 프로토콜은 바뀌지 않는다.
     - id: e
-      text: 집 안의 다른 노트북
-      feedback: 본문은 다른 노트북이 아니라 안쪽 주소 192.168.0.1인 공유기를 기본 게이트웨이로 가정합니다.
-    answer: c
+      text: 출발지와 목적지의 주소 모두
+      feedback: 목적지 주소는 바뀌지 않는다.
+    answer: a
+    feedback: Outbound에서는 출발지만 바꾸고, 바꾼 짝을 표에 기록해 응답을 되돌릴 수 있게 한다.
   - id: u12-l02-p02-q02
     kind: choice
     difficulty: medium
-    prompt: 이 Page의 네트워크 예시를 읽을 때 옳은 해석은 무엇인가요?
+    prompt: 디자인팀 PC(`192.168.10.43:4000`)가 음성 받아쓰기 API(`203.0.113.90:443`)에 요청한다. 공유기를 지난 바깥쪽 패킷에서 값이 바뀌어 있는 칸은?
     choices:
     - id: a
-      text: 두 문서용 주소에 접속하면 실제 예시 서버를 사용할 수 있습니다
-      feedback: 198.51.100.25와 203.0.113.80은 문서 예시용 주소이며 실제 서비스 접속 주소가 아닙니다.
+      text: 목적지 주소와 목적지 포트
+      feedback: 목적지는 바뀌지 않는다.
     - id: b
-      text: 공유기 바깥 주소와 웹 서버 주소는 같은 위치의 주소입니다
-      feedback: 바깥 주소는 공유기 쪽, 웹 서버 주소는 외부 통신 상대 쪽입니다. 위치를 구분해야 합니다.
+      text: 어느 칸도 바뀌지 않고 안쪽과 똑같다
+      feedback: 바뀌지 않으면 사설 주소가 인터넷으로 나가게 되어 응답이 돌아올 수 없다.
     - id: c
-      text: 모든 실제 가정에는 공유기와 통신사 NAT가 각각 하나씩 있습니다
-      feedback: 이 예시는 공유기 하나이며 추가 통신사 NAT가 없다고 가정합니다. 모든 가정을 일반화하지 않습니다.
+      text: 출발지 주소와 목적지 주소 두 칸
+      feedback: 출발지만 바뀌고 목적지 주소는 그대로다.
     - id: d
-      text: 노트북은 공유기를 거치지 않고 문서용 서버로 바로 나갑니다
-      feedback: 본문의 패킷은 노트북에서 공유기로, 공유기에서 ISP 쪽으로 이동합니다.
+      text: 프로토콜과 패킷 길이
+      feedback: 프로토콜과 길이는 이 변환에서 바뀌지 않는다.
     - id: e
-      text: 문서용 주소로 공유기 하나와 통신사 추가 NAT가 없는 구성을 설명합니다
-      feedback: 맞아요. 바깥 주소와 서버 주소는 예시용이며, 이 Page는 추가 NAT가 없는 단순한 구성을 가정합니다.
+      text: 출발지 주소(와 출발지 포트)
+      feedback: 맞다. 목적지는 그대로이고 출발지가 공유기 바깥 주소로 바뀐다.
     answer: e
-- page_id: advanced-source-11-page-03
-  illustrations:
-  - file: assets/animations/u12-nat-table-start.svg
-    title: "내부 PC가 연결을 시작"
-    alt: "운영체제가 고른 출발 포트 3000과 HTTPS 서버 포트 443이 적힌 첫 패킷이 공유기로 가는 모습입니다."
-    caption: "패킷에는 출발지와 목적지 주소·포트가 함께 적힙니다."
-    after_paragraph: 0
+    feedback: '📋 순서대로 확인하기: 안쪽 → 공유기 → 바깥쪽 순으로 출발지와 목적지 칸을 한 줄씩 비교하면 바뀐 곳이 보인다.'
   question_placements:
-  - question_id: u12-l02-p03-q01
-    after_paragraph: 1
-  - question_id: u12-l02-p03-q02
+  - question_id: u12-l02-p02-q01
     after_paragraph: 3
+- page_id: advanced-source-11-page-05
   questions:
   - id: u12-l02-p03-q01
     kind: choice
     difficulty: easy
-    prompt: 이 Page의 PC가 처음 만든 요청 패킷에서 출발지와 목적지는 무엇인가요?
+    prompt: 외부 AI 서비스 서버가 접속 기록에 남기는 출발지 주소는 무엇인가?
     choices:
     - id: a
-      text: 출발지 203.0.113.80:443, 목적지 192.168.0.10:3000
-      feedback: 요청은 PC에서 서버로 갑니다. 두 값을 반대로 놓으면 요청의 방향이 바뀝니다.
+      text: 직원 PC의 사설 주소 `192.168.10.41`
+      feedback: 사설 주소는 인터넷으로 나오기 전에 바뀌므로 서버에는 닿지 않는다.
     - id: b
-      text: 출발지 192.168.0.10:3000, 목적지 203.0.113.80:443
-      feedback: 맞아요. PC가 고른 출발지 포트와 서버의 HTTPS 목적지 포트를 구별해야 합니다.
+      text: 직원이 로그인한 이름
+      feedback: 이름은 IP 주소가 아니라 애플리케이션이 따로 주고받는 정보다.
     - id: c
-      text: 출발지 192.168.0.10:443, 목적지 203.0.113.80:3000
-      feedback: 예시에서 PC의 출발지 포트는 3000이고 서버의 목적지 포트는 443입니다.
+      text: NAT를 지난 공유기 바깥 주소와 포트
+      feedback: 맞다. 서버가 보는 것은 NAT가 바꿔 단 바깥 주소와 포트다.
     - id: d
-      text: 출발지 192.168.0.10:3000, 목적지 192.168.0.10:443
-      feedback: 목적지는 PC 자신이 아니라 외부 서버 203.0.113.80입니다.
+      text: GPU PC의 주소 `192.168.10.50`
+      feedback: GPU PC는 이 접속과 관계가 없고, 사설 주소는 서버에 보이지 않는다.
     - id: e
-      text: 출발지 203.0.113.80:3000, 목적지 203.0.113.80:443
-      feedback: 출발지 IP는 요청을 시작하는 PC의 192.168.0.10입니다.
-    answer: b
+      text: 공유기 안쪽 주소 `192.168.10.1`
+      feedback: 공유기의 안쪽 주소도 사설 주소라 서버에 보이지 않는다.
+    answer: c
+    feedback: 서버가 보는 출발지는 NAT 뒤의 바깥 주소·포트이고, 사람 구별은 계정·키·쿠키가 맡는다.
   - id: u12-l02-p03-q02
     kind: choice
     difficulty: medium
-    prompt: PC가 HTTPS 서버에 접속하려는데 출발지 포트가 3000입니다. 서버 포트 443과 다르므로 잘못된 연결일까요?
+    prompt: AI API 업체가 "접속을 허용할 IP를 등록하라"고 안내했다. 지우가 등록할 주소로 알맞은 것은?
     choices:
     - id: a
-      text: 맞습니다. HTTPS라면 양쪽 포트가 반드시 443이어야 합니다
-      feedback: 443은 이 예에서 서버가 받는 목적지 포트입니다. PC의 출발지 포트까지 같아야 하지는 않습니다.
+      text: 지우 PC의 주소 `192.168.10.41`
+      feedback: 사설 주소는 업체 서버에 보이지 않아 등록해도 소용없다.
     - id: b
-      text: 맞습니다. 서버가 자신의 서비스 포트를 3000으로 바꿔야 합니다
-      feedback: PC의 출발지 포트와 서버의 서비스 포트는 역할이 다릅니다. 이 예의 서버는 443을 사용합니다.
+      text: 공유기 바깥 주소 `198.51.100.25`
+      feedback: 맞다. 업체 서버가 보는 출발지가 이 주소이므로 이것을 등록해야 한다.
     - id: c
-      text: 아닙니다. IP만 있으면 어느 통신인지 구별되므로 포트는 필요 없습니다
-      feedback: 본문은 IP가 기기를, 포트가 기기 안의 통신을 구별한다고 설명합니다. 포트는 함께 기록해야 합니다.
+      text: 공유기의 안쪽 주소 `192.168.10.1`
+      feedback: 안쪽 주소도 사설 주소라 업체 서버가 볼 수 없다.
     - id: d
-      text: 아닙니다. 출발지와 서비스 포트는 역할이 달라 서로 달라도 됩니다
-      feedback: 맞아요. 운영체제가 고른 출발지 포트가 서버 서비스 포트와 같아야 하는 것은 아닙니다.
+      text: API 서버 자신의 주소 `203.0.113.80`
+      feedback: 접속을 허용할 대상은 우리 쪽 출발지이고, 서버 주소가 아니다.
     - id: e
-      text: 맞습니다. PC는 서버와 같은 IP와 포트를 사용해야 합니다
-      feedback: 출발지와 목적지는 서로 다른 기기와 통신을 가리킬 수 있습니다. 같은 IP·포트여야 하는 규칙은 아닙니다.
-    answer: d
-- page_id: advanced-source-11-page-04
-  illustrations:
-  - file: assets/animations/u12-nat-table-outbound.svg
-    title: "Outbound · 출발지 변환"
-    alt: "공유기를 지나며 출발지 192.168.0.10:3000이 198.51.100.25:53001로 바뀌고 목적지는 그대로인 두 패킷 카드를 비교합니다."
-    caption: "Outbound에서는 출발지 주소·포트만 바뀝니다."
-    after_paragraph: 0
+      text: 직원 PC 사설 주소 40개를 모두 등록한다
+      feedback: 사설 주소는 서버에 닿지 않고, 하나만 등록하면 되는 편리함도 사라진다.
+    answer: b
+    feedback: '🧩 쪼개기: ''내 PC가 쓰는 주소''와 ''서버가 보는 주소''를 나누면 어느 주소를 등록해야 하는지 보인다.'
   question_placements:
-  - question_id: u12-l02-p04-q01
-    after_paragraph: 1
-  - question_id: u12-l02-p04-q02
-    after_paragraph: 3
+  - question_id: u12-l02-p03-q01
+    after_paragraph: 2
+- page_id: advanced-source-11-page-06
   questions:
   - id: u12-l02-p04-q01
     kind: choice
     difficulty: easy
-    prompt: 이 Page에서 Outbound는 어느 방향의 패킷 이동인가요?
+    prompt: NAT 변환표의 Local 칸에 적히는 값으로 알맞은 것은 무엇인가?
     choices:
     - id: a
-      text: 공유기 안쪽에서 바깥쪽으로 나가는 이동
-      feedback: 맞아요. 이 방향에서 예시의 출발지 주소와 필요한 경우 포트를 바꿉니다.
+      text: 공유기 자신의 LAN 주소 `192.168.10.1`과 포트 51515
+      feedback: Local은 공유기 주소가 아니라 통신을 시작한 기기의 값이다.
     - id: b
-      text: 공유기 바깥쪽에서 안쪽으로 들어오는 이동
-      feedback: Outbound는 안쪽에서 바깥쪽으로 나가는 방향입니다.
+      text: 통신 상대인 서버의 주소와 포트
+      feedback: 그것은 Remote 칸이다.
     - id: c
-      text: 공유기를 거치지 않는 내부 PC끼리의 이동
-      feedback: 본문에서 Outbound는 공유기의 안쪽과 바깥쪽 경계를 넘어 나가는 이동을 가리킵니다.
+      text: 바깥에서 보이는 공유기 주소와 포트
+      feedback: 그것은 External 칸이다.
     - id: d
-      text: 웹 서버 내부에서만 이루어지는 이동
-      feedback: 이 Page는 웹 서버 내부가 아니라 공유기 안쪽에서 바깥쪽으로 나가는 패킷을 설명합니다.
+      text: 관리자가 지정한 규칙의 이름
+      feedback: 변환표 열은 주소와 포트를 적는 칸이고, 규칙의 이름이 아니다.
     - id: e
-      text: 공유기 안쪽과 바깥쪽의 모든 방향 이동
-      feedback: Outbound는 모든 방향을 한꺼번에 부르는 말이 아니라 바깥으로 나가는 방향입니다.
-    answer: a
+      text: 변환 전, 통신을 시작한 내부 기기의 주소와 포트
+      feedback: 맞다. Local은 안쪽에서 통신을 시작한 기기의 값이다.
+    answer: e
+    feedback: Local은 안쪽 기기, Remote는 통신 상대, External은 바깥에서 보이는 값이다.
   - id: u12-l02-p04-q02
     kind: choice
     difficulty: medium
-    prompt: 표에서 출발지가 198.51.100.25:53001로 바뀐 요청을 어떻게 읽어야 하나요?
+    prompt: 오래 켜 둔 원격 접속 프로그램이 한동안 아무것도 주고받지 않다가 갑자기 끊겼다. 변환표 관점에서 가장 그럴듯한 원인은?
     choices:
     - id: a
-      text: 서버의 서비스 포트도 443에서 53001로 바뀌었습니다
-      feedback: 표의 목적지 203.0.113.80:443은 그대로입니다. 바뀐 것은 출발지 포트입니다.
+      text: 자동으로 만든 행이 유휴 시간이 지나 지워졌다
+      feedback: 맞다. 자동 행은 연결이 끝나거나 유휴 시간이 지나면 사라질 수 있다.
     - id: b
-      text: 공유기에서 53001 포트로 앱이 접속을 기다린다는 뜻입니다
-      feedback: 본문은 배정된 변환 포트가 앱처럼 접속을 기다린다는 뜻은 아니라고 설명합니다.
+      text: External 포트 번호가 너무 커서 공유기가 끊었다
+      feedback: 포트 번호의 크기 때문에 끊기는 것이 아니다.
     - id: c
-      text: 출발지만 변환되었고 서버 목적지 203.0.113.80:443은 그대로입니다
-      feedback: 맞아요. 53001은 이 예의 변환 포트이며, 공유기 앱의 대기 포트나 서버 포트를 뜻하지 않습니다.
+      text: 공유기가 Local 주소를 공유기 LAN 주소로 바꿔 버렸다
+      feedback: Local은 통신을 시작한 기기의 값이고, 임의로 바뀌지 않는다.
     - id: d
-      text: 요청의 목적지가 공유기의 바깥쪽 주소로 바뀌었습니다
-      feedback: 공유기 바깥 주소는 변환 후 출발지입니다. 요청 목적지는 웹 서버입니다.
+      text: 원격 접속 프로그램은 NAT 뒤에서는 반드시 끊어진다
+      feedback: 바깥으로 나가는 연결은 NAT 뒤에서도 정상적으로 유지된다.
     - id: e
-      text: IP만 바뀌었고 출발지 포트 3000은 그대로 남았습니다
-      feedback: 이 예의 표에서는 출발지 포트도 3000에서 53001로 바뀌었습니다.
-    answer: c
-- page_id: advanced-source-11-page-05
-  illustrations:
-  - file: assets/animations/u12-nat-table-server-view.svg
-    title: "웹 서버가 보는 접속 주체"
-    alt: "웹 서버는 198.51.100.25:53001에서 온 요청으로 보고, 집 안 사설 주소는 모르며 사용자 구별은 로그인·쿠키로 한다는 그림입니다."
-    caption: "서버는 NAT가 바깥에 보여 준 주소·포트를 봅니다."
-    after_paragraph: 0
+      text: 누군가 고정 규칙을 지웠기 때문이다
+      feedback: 고정 규칙은 원격 접속이 안쪽에서 시작한 연결과 관계가 없다.
+    answer: a
+    feedback: '🧩 쪼개기: ''자동 행''과 ''고정 규칙''을 나누면 오래 쉰 연결이 끊긴 이유가 유휴 시간 쪽에 있음을 알 수 있다.'
   question_placements:
-  - question_id: u12-l02-p05-q01
-    after_paragraph: 1
-  - question_id: u12-l02-p05-q02
+  - question_id: u12-l02-p04-q01
     after_paragraph: 3
+- page_id: advanced-source-11-page-07
   questions:
   - id: u12-l02-p05-q01
     kind: choice
     difficulty: easy
-    prompt: 웹 서버가 이 요청 패킷의 출발지로 보는 값은 무엇인가요?
+    prompt: Inbound, 곧 바깥에서 안쪽으로 응답이 돌아올 때 NAT가 바꾸는 것은 무엇인가?
     choices:
     - id: a
-      text: 192.168.0.10:3000
-      feedback: 이 값은 변환 전 내부 통신입니다. 서버는 NAT를 지난 바깥쪽 출발지를 봅니다.
+      text: 출발지 주소를 공유기 LAN 주소 `192.168.10.1`로 바꾼다
+      feedback: 출발지는 그대로 둔다. 응답의 출발지는 AI API 서버다.
     - id: b
-      text: 198.51.100.25:3000
-      feedback: 바깥 IP는 맞지만 예시에서는 출발지 포트도 53001로 변환되었습니다.
+      text: 출발지와 목적지를 모두 지운다
+      feedback: 주소를 지우면 전달할 수 없다.
     - id: c
-      text: 203.0.113.80:443
-      feedback: 이 값은 요청을 받는 서버의 목적지이지, 서버가 보는 요청의 출발지가 아닙니다.
+      text: 목적지를 DNS로 다시 조회한다
+      feedback: DNS는 이 과정에 쓰이지 않는다. 변환표만 본다.
     - id: d
-      text: 192.168.0.10:53001
-      feedback: 내부 IP와 변환 후 포트를 섞었습니다. 서버가 보는 출발지는 바깥 IP와 변환 포트의 조합입니다.
+      text: 목적지 주소와 포트를 변환표의 Local 값으로 되돌린다
+      feedback: 맞다. 나갈 때 바꾼 출발지를 응답에서는 목적지로 되돌린다.
     - id: e
-      text: 198.51.100.25:53001
-      feedback: 맞아요. 서버에 도착하기 전에 NAT가 출발지 주소와 포트를 바꿨습니다.
-    answer: e
+      text: 아무것도 바꾸지 않고 모든 PC에 복사해 보낸다
+      feedback: 변환표로 한 곳을 정해서 보낸다.
+    answer: d
+    feedback: Inbound에서는 External로 행을 찾아 목적지를 Local 값으로 되돌린다. 출발지는 그대로다.
   - id: u12-l02-p05-q02
     kind: choice
     difficulty: medium
-    prompt: 같은 NAT 바깥 주소로 접속한 두 사용자를 웹 서비스가 반드시 같은 사람으로 판단할까요?
+    prompt: 지우가 공유기를 재부팅한 직후, 재부팅 전에 보낸 AI 요청의 응답이 도착했다. 재부팅으로 자동 행이 지워졌다면 이 응답은 어떻게 될까?
     choices:
     - id: a
-      text: 그렇습니다. 같은 바깥 IP면 로그인 정보도 항상 같습니다
-      feedback: 같은 바깥 IP가 같은 로그인 사용자를 뜻하지 않습니다. 로그인 정보는 별도로 구별할 수 있습니다.
+      text: 공유기가 지우 PC를 추측해 전달한다
+      feedback: 공유기는 추측하지 않는다. 변환표에 적힌 대응만 쓴다.
     - id: b
-      text: 아닙니다. 로그인 정보나 쿠키 등으로 사용자를 구별할 수 있습니다
-      feedback: 맞아요. 패킷의 출발지 정보와 서비스가 사용자를 식별하는 방법은 구별해야 합니다.
+      text: 안쪽 모든 PC에 복사해서 보낸다
+      feedback: 여러 PC에 복사해 보내지 않는다. 행이 없으면 전달하지 않는다.
     - id: c
-      text: 그렇습니다. NAT를 지나면 쿠키도 모두 같은 값이 됩니다
-      feedback: 본문은 쿠키 같은 다른 방법으로 사용자를 구별할 수 있다고 설명합니다. NAT가 쿠키를 같게 만든다는 뜻이 아닙니다.
+      text: 대응하는 행이 없어서 안쪽으로 전달되지 못하고 버려진다
+      feedback: 맞다. 나갈 때 적어 둔 기록이 없으면 돌아온 패킷을 보낼 곳을 알 수 없다.
     - id: d
-      text: 아닙니다. 서버는 패킷 출발지에서 두 기기의 사설 IP를 직접 봅니다
-      feedback: 서버가 패킷에서 보는 출발지는 NAT 바깥쪽 정보입니다. 사용자 구별에는 로그인·쿠키 등을 쓸 수 있습니다.
+      text: 서버가 요청을 취소하고 새 행이 자동으로 만들어진다
+      feedback: 행은 안쪽에서 나가는 요청이 만든다. 서버의 응답으로는 생기지 않는다.
     - id: e
-      text: 그렇습니다. 서버 포트 443을 함께 쓰면 같은 사용자입니다
-      feedback: 443은 서버의 서비스 포트입니다. 같은 서비스에 접속한다고 같은 사용자가 되지는 않습니다.
-    answer: b
-- page_id: advanced-source-11-page-06
-  illustrations:
-  - file: assets/animations/u12-nat-table-row.svg
-    title: "NAT Table에 남기는 기록"
-    alt: "프로토콜, 내부, 상대, 바깥 네 칸으로 된 변환표 한 줄을 읽고, 자동 행은 시간이 지나면 사라질 수 있음을 보여 줍니다."
-    caption: "변환표 한 줄은 내부 통신과 바깥 통신을 잇습니다."
-    after_paragraph: 0
+      text: '`192.168.10.1`이 응답을 대신 받아 지우 PC에 넘긴다'
+      feedback: 공유기 LAN 주소는 이 응답의 대응 상대가 아니다.
+    answer: c
+    feedback: '📋 순서대로 확인하기: ''나갈 때 기록 → 올 때 조회'' 순서에서 기록이 사라지면 조회가 실패한다.'
   question_placements:
-  - question_id: u12-l02-p06-q01
+  - question_id: u12-l02-p05-q01
     after_paragraph: 3
-  - question_id: u12-l02-p06-q02
-    after_paragraph: 5
+- page_id: advanced-source-11-page-09
   questions:
   - id: u12-l02-p06-q01
     kind: choice
     difficulty: easy
-    prompt: 표의 External 열에 적힌 198.51.100.25:53001은 무엇을 나타내나요?
+    prompt: 두 PC가 같은 서버에 동시에 요청해도 응답이 섞이지 않는 까닭은 무엇인가?
     choices:
     - id: a
-      text: 내부 PC의 원래 주소와 포트
-      feedback: 원래 내부 통신은 Local 열의 192.168.0.10:3000입니다.
+      text: PC마다 서로 다른 공인 IP를 배정하기 때문이다
+      feedback: 공인 주소는 하나이고, 그것을 함께 쓴다.
     - id: b
-      text: 외부 웹 서버의 주소와 서비스 포트
-      feedback: 외부 상대는 Remote 열의 203.0.113.80:443입니다. External과 구분해야 합니다.
+      text: 서버가 응답할 때 PC의 이름을 물어보기 때문이다
+      feedback: 서버는 PC의 이름을 묻지 않는다. 주소와 포트만 본다.
     - id: c
-      text: 이 통신이 바깥에서 보이는 주소와 포트
-      feedback: 맞아요. External은 내부 통신이 NAT를 지난 뒤 바깥에서 어떻게 보이는지 나타냅니다.
+      text: 먼저 요청한 PC에게만 응답이 가고 나머지는 다시 요청해야 한다
+      feedback: 동시에 요청해도 각각 응답을 받는다.
     - id: d
-      text: 공유기 안쪽 기기 전체가 똑같이 사용하는 통신 값
-      feedback: 바깥 IP가 같아도 포트와 기록으로 여러 통신을 구별합니다. 모든 통신이 같은 값인 것은 아닙니다.
+      text: 응답이 모든 PC로 가고 각 PC가 자기 것만 골라 쓴다
+      feedback: 공유기가 행으로 한 곳을 정해서 보낸다.
     - id: e
-      text: 인터넷 전체가 공동으로 관리하는 기기 등록 정보
-      feedback: NAT 변환표는 해당 NAT 장비가 내부적으로 유지하는 대응표입니다.
-    answer: c
+      text: 같은 바깥 IP를 쓰더라도 External 포트와 변환표 행이 달라서 응답을 구별할 수 있다
+      feedback: 맞다. 주소는 같아도 포트와 행이 다르므로 응답이 각자의 PC로 간다.
+    answer: e
+    feedback: NAPT는 같은 바깥 주소에 External 포트를 달리 붙여 통신을 구별한다.
   - id: u12-l02-p06-q02
     kind: choice
     difficulty: medium
-    prompt: 통신 중 자동으로 만들어진 NAT 변환 행은 언제까지 남는다고 이해하면 좋을까요?
+    prompt: 변환표에 `192.168.10.43:51000`↔`:53011`, `192.168.10.44:51000`↔`:53012`, `192.168.10.45:52000`↔`:53013`이 있다. 이미지 생성 API의 응답이 `198.51.100.25:53012`로 도착했다. 이 응답이 가야 할 PC는?
     choices:
     - id: a
-      text: 통신 방식과 장비의 시간 조건에 따라 사라질 수 있습니다
-      feedback: 맞아요. 자동 변환 행은 통신 방식과 장비의 시간 조건에 따라 사라질 수 있습니다. 사용자가 등록한 포트 포워딩 같은 고정 규칙과는 구별해야 합니다.
+      text: '`192.168.10.44`'
+      feedback: 맞다. 응답의 목적지 포트 `53012`를 External 칸에서 찾으면 `.44`의 행이다.
     - id: b
-      text: 한 번 기록되면 어떤 경우에도 영구히 남습니다
-      feedback: 자동으로 만들어진 변환 행은 정리될 수 있지만, 사용자가 등록한 고정 규칙은 다르게 취급합니다.
+      text: '`192.168.10.43`. 내부 포트가 같은 51000이라서'
+      feedback: 내부 포트가 같아도 응답은 External 포트로 찾는다. `53012`는 `.44`의 행이다.
     - id: c
-      text: 모든 장비에서 같은 시간 뒤에 반드시 지워집니다
-      feedback: 제거 시점은 통신 방식과 장비에 따라 다릅니다. 모든 장비가 같은 시간을 쓰지는 않습니다.
+      text: '`192.168.10.45`'
+      feedback: '`.45`의 External 포트는 `53013`이다.'
     - id: d
-      text: 요청을 내보내는 즉시 지워지므로 응답에는 쓸 수 없습니다
-      feedback: 응답이 돌아올 때 맞는 기록을 찾도록 연결 상태를 유지합니다. 요청 직후 무조건 지우는 기록이 아닙니다.
+      text: 세 PC 모두에 보낸다
+      feedback: 행을 찾아 한 곳으로 보낸다.
     - id: e
-      text: 인터넷 전체 목록에 옮긴 뒤 공유기에서는 유지하지 않습니다
-      feedback: 인터넷 전체가 공유하는 목록이 아니라 해당 장비가 내부적으로 유지하는 기록입니다.
+      text: 정할 수 없어서 버린다
+      feedback: External 포트로 행을 하나 찾을 수 있다.
     answer: a
-- page_id: advanced-source-11-page-07
-  illustrations:
-  - file: assets/animations/u12-nat-table-reply.svg
-    title: "서버에서 응답이 돌아오기"
-    alt: "응답이 바깥 주소·포트로 공유기에 도착해 변환표와 필터링 규칙을 거치고, 맞는 행이 없으면 전달되지 않는 모습입니다."
-    caption: "응답은 변환표에서 짝을 찾아야 안으로 들어갑니다."
-    after_paragraph: 0
+    feedback: '🔁 같은 모양 찾기: 응답의 목적지는 나갈 때 출발지를 거꾸로 읽은 것이므로, 같은 행을 반대 방향에서 찾으면 된다.'
   question_placements:
-  - question_id: u12-l02-p07-q01
-    after_paragraph: 1
-  - question_id: u12-l02-p07-q02
+  - question_id: u12-l02-p06-q01
     after_paragraph: 3
+- page_id: advanced-source-15-page-01
+  illustrations:
+  - file: assets/animations/u12-fwd-auto-review.svg
+    title: 자동 매핑은 안에서 시작할 때만
+    alt: 안쪽 PC가 먼저 바깥 서버에 접속하면 변환표에 자동으로 기록되지만, 바깥에서 먼저 오면 기록이 없어 막힌다는 그림입니다.
+    caption: 나갈 때 적은 기록이 있어야 응답이 들어옵니다.
+    after_paragraph: 0
   questions:
   - id: u12-l02-p07-q01
     kind: choice
     difficulty: easy
-    prompt: 이 예에서 웹 서버가 돌려보낸 응답의 목적지는 무엇인가요?
+    prompt: 바깥에서 먼저 도착한 요청이 공유기에서 전달되지 못하는 까닭으로 알맞은 것은 무엇인가?
     choices:
     - id: a
-      text: 192.168.0.10:3000
-      feedback: 인터넷에서 노트북의 사설 주소로 직접 돌아가는 것이 아니라 NAT 바깥 주소로 응답합니다.
+      text: 공유기가 8080번 포트를 쓰지 못하게 제조사가 막아 두어서
+      feedback: 제조사가 막은 것이 아니라 행이 없어서 전달할 곳을 모르는 것이다.
     - id: b
-      text: 203.0.113.80:443
-      feedback: 이 값은 응답의 출발지인 웹 서버입니다. 목적지와 방향을 구별해야 합니다.
+      text: 그 요청에 맞는 변환표 행이 없어서 어느 안쪽 기기로 보낼지 모른다
+      feedback: 맞다. 자동 행은 안쪽에서 나갈 때 만들어지므로 바깥에서 먼저 온 요청에는 행이 없다.
     - id: c
-      text: 198.51.100.25:443
-      feedback: 공유기 바깥 IP는 맞지만 응답 목적지 포트는 서버 포트 443이 아니라 변환 포트 53001입니다.
+      text: 공인 주소로는 사설 주소 기기에 패킷을 보낼 수 없다는 규칙 때문에
+      feedback: 주소 규칙이 아니라 대응하는 기록이 없다는 문제다.
     - id: d
-      text: 198.51.100.25:53001
-      feedback: 맞아요. 서버는 요청 때 바깥에 보였던 주소·포트를 응답 목적지로 삼습니다.
+      text: GPU PC가 외부 요청을 거부하도록 기본 설정되어 있어서
+      feedback: 요청은 GPU PC에 도달하기 전에 공유기에서 멈춘다.
     - id: e
-      text: 192.168.0.10:53001
-      feedback: 사설 IP와 바깥 변환 포트를 섞었습니다. 인터넷으로 돌아오는 응답은 바깥 주소·포트를 향합니다.
-    answer: d
+      text: 응답이 너무 늦게 와서 행이 지워졌기 때문에
+      feedback: 요청이 먼저 온 상황이라 지워질 행이 애초에 없다.
+    answer: b
+    feedback: 자동 행은 안에서 시작한 통신만 만들므로, 바깥에서 먼저 오는 요청은 사람이 미리 적은 줄이 있어야 전달된다.
   - id: u12-l02-p07-q02
     kind: choice
     difficulty: medium
-    prompt: 외부 상대(Remote)까지 허용 조건에 넣는 필터링 규칙이 있다면, 목적지는 맞지만 다른 서버에서 온 패킷도 통과할까요?
+    prompt: 고객사가 납품 도면을 사무실 PC로 '밀어 넣는' 방식은 계속 실패하고, 사무실 PC가 고객사 서버에서 도면을 '가져오는' 방식은 성공한다. 차이를 만든 원인은?
     choices:
     - id: a
-      text: 그렇습니다. 바깥 목적지 IP만 맞으면 상대는 확인하지 않습니다
-      feedback: 이 예시의 필터링 규칙은 외부 상대 주소와 포트까지 확인합니다.
+      text: 가져올 때만 도면 파일 용량이 허용되기 때문이다
+      feedback: 용량의 차이가 아니라 연결을 시작한 방향의 차이다.
     - id: b
-      text: 아닙니다. 허용된 Remote와 다르면 패킷을 통과시키지 않을 수 있습니다
-      feedback: 맞아요. 목적지에 맞는 변환 행이 있어도 필터링 규칙이 허용한 외부 상대와 다르면 통과하지 않을 수 있습니다. 매핑과 필터링은 별개의 기준입니다.
+      text: 고객사 서버가 사설 주소를 쓰고 있기 때문이다
+      feedback: 그렇다면 두 방식 모두 실패해야 한다. 방향이 다르다.
     - id: c
-      text: 그렇습니다. 바깥 목적지 포트만 같으면 어떤 서버든 같은 응답입니다
-      feedback: 이 예의 필터링 규칙은 목적지 포트뿐 아니라 외부 상대도 확인합니다.
+      text: 가져오는 방식은 암호화되고 밀어 넣는 방식은 평문이기 때문이다
+      feedback: 암호화 여부로 NAT 행이 만들어지지 않는다.
     - id: d
-      text: 아닙니다. NAT는 서버에서 돌아온 응답을 전부 막습니다
-      feedback: 기록과 맞는 응답은 처리할 수 있습니다. 문제는 외부 통신 전체가 아니라 맞는 행을 찾는 조건입니다.
+      text: 누가 먼저 연결을 시작했는가. 안쪽에서 시작해야 행이 생긴다
+      feedback: 맞다. 가져오는 방식은 안쪽에서 연결을 시작해 행이 생기고, 밀어 넣는 방식은 행이 없다.
     - id: e
-      text: 그렇습니다. 행이 없으면 아무 내부 기기에 새로 배정합니다
-      feedback: 이 상황에서는 행이 있는지와 별도로, 필터링 규칙이 외부 상대를 확인하는지를 살펴야 합니다. 임의로 다른 기기에 보내지는 않습니다.
-    answer: b
-- page_id: advanced-source-11-page-08
-  illustrations:
-  - file: assets/animations/u12-nat-table-inbound.svg
-    title: "Inbound · 원래 PC로 되돌리기"
-    alt: "공유기가 응답의 목적지 198.51.100.25:53001을 192.168.0.10:3000으로 되돌려 노트북에 전달하는 모습입니다."
-    caption: "Inbound에서는 목적지를 기록된 내부 주소·포트로 복원합니다."
-    after_paragraph: 0
-  question_placements:
-  - question_id: u12-l02-p08-q01
-    after_paragraph: 1
-  - question_id: u12-l02-p08-q02
-    after_paragraph: 3
-  questions:
-  - id: u12-l02-p08-q01
-    kind: choice
-    difficulty: easy
-    prompt: 일치하는 변환표 행을 찾은 Inbound 처리에서는 응답 패킷의 어느 정보를 바꾸나요?
-    choices:
-    - id: a
-      text: 서버 출발지 주소·포트를 내부 PC 주소·포트로 바꿉니다
-      feedback: Inbound의 이 예는 목적지를 바꾸며, 응답 출발지인 서버 정보는 그대로 둡니다.
-    - id: b
-      text: 서버 출발지와 바깥쪽 목적지를 서로 맞바꿉니다
-      feedback: 방향을 뒤집는 것이 아니라 목적지를 변환표의 내부 주소·포트로 복원합니다.
-    - id: c
-      text: 응답 목적지를 서버 주소·포트로 바꿉니다
-      feedback: 응답은 서버로 되돌아가는 것이 아니라 원래 내부 PC로 전달되어야 합니다.
-    - id: d
-      text: 아무 정보도 바꾸지 않고 바깥쪽 목적지를 유지합니다
-      feedback: 내부 PC로 보내기 위해 바깥 목적지 198.51.100.25:53001을 내부 목적지로 되돌립니다.
-    - id: e
-      text: 바깥쪽 목적지 주소·포트를 원래 내부 목적지로 바꿉니다
-      feedback: 맞아요. 응답이 원래 PC에 도착하도록 목적지를 복원하고 서버 출발지는 그대로 둡니다.
-    answer: e
-  - id: u12-l02-p08-q02
-    kind: choice
-    difficulty: medium
-    prompt: 요청이 나갈 때와 응답이 돌아올 때 NAT 처리를 함께 설명한 것으로 맞는 것은 무엇인가요?
-    choices:
-    - id: a
-      text: 요청과 응답 모두 출발지만 바꾸며 서로 다른 기록을 임의로 씁니다
-      feedback: 이 예에서는 요청의 출발지와 응답의 목적지가 바뀌고 같은 변환 기록을 이용합니다.
-    - id: b
-      text: 요청 때만 바꾸고 기록하지 않아도 응답을 원래 PC로 보낼 수 있습니다
-      feedback: 요청 때 만든 기록이 있어야 돌아온 응답을 어느 PC에 연결할지 판단할 수 있습니다.
-    - id: c
-      text: 요청의 출발지와 응답의 목적지를 같은 변환 기록으로 연결합니다
-      feedback: 맞아요. 나갈 때와 돌아올 때 바꾸는 쪽은 다르지만 같은 기록으로 하나의 통신을 이어 줍니다.
-    - id: d
-      text: 요청과 응답 모두 목적지만 바꾸며 서버를 내부 PC로 교체합니다
-      feedback: 요청 때에는 출발지를, 응답 때에는 목적지를 바꿉니다. 서버를 다른 기기로 교체하는 흐름이 아닙니다.
-    - id: e
-      text: 응답마다 새 내부 PC를 골라 이전 요청과 무관하게 전달합니다
-      feedback: 응답은 요청과 무관하게 나누지 않습니다. 같은 기록으로 원래 내부 통신에 연결합니다.
-    answer: c
-- page_id: advanced-source-11-page-09
-  illustrations:
-  - file: assets/animations/u12-nat-table-two-pcs.svg
-    title: "다른 PC의 연결도 구분하기"
-    alt: "두 PC의 통신이 같은 바깥 IP를 쓰지만 53001과 53002로 다른 변환표 행에 기록되는 모습입니다."
-    caption: "포트와 변환표 기록으로 여러 기기의 통신을 나눕니다."
-    after_paragraph: 0
-  question_placements:
-  - question_id: u12-l02-p09-q01
-    after_paragraph: 2
-  - question_id: u12-l02-p09-q02
-    after_paragraph: 3
-  questions:
-  - id: u12-l02-p09-q01
-    kind: choice
-    difficulty: easy
-    prompt: 표의 두 PC 통신이 바깥에서 함께 사용하는 값은 무엇인가요?
-    choices:
-    - id: a
-      text: IP 주소 198.51.100.25
-      feedback: 맞아요. 바깥 IP는 함께 쓰지만 포트 53001과 53002 및 변환표 행은 다릅니다.
-    - id: b
-      text: 포트 번호 53001
-      feedback: 첫 통신은 53001, 둘째는 53002이므로 바깥 포트는 다릅니다.
-    - id: c
-      text: 포트 번호 53002
-      feedback: 53002는 두 번째 통신의 바깥 포트입니다. 첫 번째는 53001을 사용합니다.
-    - id: d
-      text: IP와 포트를 합친 198.51.100.25:53001
-      feedback: 두 통신이 공유하는 것은 바깥 IP입니다. 두 번째 통신의 포트는 53002입니다.
-    - id: e
-      text: IP와 포트를 합친 198.51.100.25:53002
-      feedback: 이 조합은 두 번째 통신입니다. 첫 번째의 바깥 포트는 53001입니다.
-    answer: a
-  - id: u12-l02-p09-q02
-    kind: choice
-    difficulty: medium
-    prompt: 웹 서버의 응답이 198.51.100.25:53002로 돌아왔다면, 표에 따라 어디로 전달해야 하나요?
-    choices:
-    - id: a
-      text: 첫 번째 PC의 192.168.0.10:3000
-      feedback: 첫 번째 PC는 바깥 포트 53001에 대응합니다. 53002는 두 번째 행을 찾아야 합니다.
-    - id: b
-      text: 두 번째 PC의 192.168.0.11:53002
-      feedback: 53002는 바깥 포트입니다. 안쪽으로 전달할 때는 기록의 원래 포트 4000을 사용합니다.
-    - id: c
-      text: 첫 번째 PC의 192.168.0.10:4000
-      feedback: 첫 번째 IP와 두 번째 포트를 섞었습니다. 53002의 행 전체를 따라가야 합니다.
-    - id: d
-      text: 두 PC 모두의 내부 주소와 포트
-      feedback: 같은 바깥 IP라도 변환표 행으로 구별합니다. 두 기기에 모두 전달하는 방식이 아닙니다.
-    - id: e
-      text: 두 번째 PC의 192.168.0.11:4000
-      feedback: 맞아요. 53002에 대응하는 변환표 행을 따라 두 번째 PC의 원래 통신으로 보냅니다.
-    answer: e
-- page_id: advanced-source-11-page-10
-  illustrations:
-  - file: assets/animations/u12-nat-table-two-servers.svg
-    title: "서버가 구별하는 연결"
-    alt: "같은 PC가 서로 다른 두 서버에 접속할 때 이 예시에서는 바깥 포트가 53001과 53003으로 달라지는 모습입니다."
-    caption: "외부 상대에 따라 매핑이 달라질 수 있지만 모든 NAT가 그렇지는 않습니다."
-    after_paragraph: 0
-  question_placements:
-  - question_id: u12-l02-p10-q01
-    after_paragraph: 2
-  - question_id: u12-l02-p10-q02
-    after_paragraph: 4
-  questions:
-  - id: u12-l02-p10-q01
-    kind: choice
-    difficulty: easy
-    prompt: 이 Page의 표에서 Local은 같은데 외부 서버가 달라졌을 때 달라지는 값은 무엇인가요?
-    choices:
-    - id: a
-      text: 내부 PC의 IP가 192.168.0.10에서 다른 IP로 바뀝니다
-      feedback: 표의 두 행은 내부 IP가 모두 192.168.0.10입니다. 외부 상대와 바깥 포트가 다릅니다.
-    - id: b
-      text: 바깥 포트가 53001과 53003으로 달라집니다
-      feedback: 맞아요. 이 예시는 같은 내부 통신도 외부 상대에 따라 별도 바깥 매핑을 사용할 수 있음을 보여 줍니다.
-    - id: c
-      text: 내부 출발지 포트가 3000에서 443으로 바뀝니다
-      feedback: Local은 두 행 모두 192.168.0.10:3000입니다. 443은 두 서버의 서비스 포트입니다.
-    - id: d
-      text: 공유기의 바깥 IP가 두 개로 나뉩니다
-      feedback: 두 행의 바깥 IP는 모두 198.51.100.25이고 바깥 포트가 달라집니다.
-    - id: e
-      text: 서버의 서비스 포트가 443에서 3000으로 바뀝니다
-      feedback: 서버 주소는 다르지만 표의 Remote 서비스 포트는 두 행 모두 443입니다.
-    answer: b
-  - id: u12-l02-p10-q02
-    kind: choice
-    difficulty: medium
-    prompt: 이 Symmetric NAT 예시를 실제 장비에 적용할 때 알맞은 판단은 무엇인가요?
-    choices:
-    - id: a
-      text: 다음 연결은 모든 NAT에서 반드시 53004를 사용합니다
-      feedback: 본문은 포트 숫자가 예시일 뿐 실제 장비가 순서대로 배정하지는 않는다고 설명합니다.
-    - id: b
-      text: 이 이름이면 모든 현대 NAT의 동작과 보안 수준이 같습니다
-      feedback: 옛 유형 이름은 모든 장비의 실제 동작이나 보안 수준을 나타내는 보편적 등급이 아닙니다.
-    - id: c
-      text: 바깥 포트를 정하는 방식만 알면 수신 허용 조건도 확정됩니다
-      feedback: 주소·포트를 정하는 매핑과 외부 패킷을 받아들이는 필터링은 구분해야 합니다.
-    - id: d
-      text: 예시 숫자를 일반화하지 않고 매핑과 필터링을 나누어 봅니다
-      feedback: 맞아요. 포트가 순서대로 배정된다는 보장도, 옛 유형 이름이 모든 장비 동작을 대표한다는 보장도 없습니다.
-    - id: e
-      text: TCP와 UDP의 NAT 요구사항은 프로토콜과 무관하게 모두 같습니다
-      feedback: 본문은 TCP와 UDP의 요구사항이 프로토콜별 표준 문서에서 설명된다고 안내합니다. 이름만으로 같다고 단정하지 않습니다.
+      text: 공유기가 업로드와 다운로드 속도를 다르게 제한하기 때문이다
+      feedback: 속도 제한이 아니라 행의 유무 문제다.
     answer: d
-- page_id: advanced-source-11-page-11
-  illustrations:
-  - file: assets/animations/u12-nat-table-terms.svg
-    title: "Local · Remote · External"
-    alt: "Local, Remote, External 세 칸과 이 예의 값, 확인할 질문을 차례로 보여 주고 매핑이 Local과 External을 잇는다고 정리합니다."
-    caption: "Local, Remote, External을 구분해 변환표를 읽습니다."
-    after_paragraph: 0
+    feedback: '📋 순서대로 확인하기: 누가 먼저 시작했는지, 그때 기록이 생겼는지 순서대로 따라가면 방향의 차이가 원인임이 보인다.'
   question_placements:
-  - question_id: u12-l02-p11-q01
-    after_paragraph: 1
-  - question_id: u12-l02-p11-q02
-    after_paragraph: 4
-  questions:
-  - id: u12-l02-p11-q01
-    kind: choice
-    difficulty: easy
-    prompt: 이 Lesson에서 NAT 표의 Remote는 어느 쪽을 가리키나요?
-    choices:
-    - id: a
-      text: 공유기 안쪽 기기와 그 통신 포트
-      feedback: 공유기 안쪽의 원래 통신은 이 Lesson에서 Local이라고 부릅니다.
-    - id: b
-      text: NAT 뒤 바깥에서 보이는 주소와 포트
-      feedback: 바깥에서 보이는 통신은 External입니다. Remote는 통신 상대 서버입니다.
-    - id: c
-      text: 통신 상대인 외부 서버와 그 포트
-      feedback: 맞아요. Remote는 상대 서버이고, Local은 내부 기기, External은 바깥에 보이는 통신입니다.
-    - id: d
-      text: 공유기를 이용하는 모든 내부 기기의 주소 묶음
-      feedback: Remote는 내부 기기 목록이 아니라 요청이 향하는 외부 상대 서버와 포트입니다.
-    - id: e
-      text: 공유기와 외부 서버의 주소를 합친 하나의 IP
-      feedback: 표는 서로 다른 위치의 값을 나눠 적습니다. Remote는 외부 서버와 그 포트입니다.
-    answer: c
-  - id: u12-l02-p11-q02
-    kind: choice
-    difficulty: medium
-    prompt: 제품 화면의 열 순서가 이 Lesson의 표와 다릅니다. 요청과 응답의 연결을 확인하는 적절한 방법은 무엇인가요?
-    choices:
-    - id: a
-      text: 각 값의 위치 역할을 확인하고 기록된 Local·Remote·External 관계를 따라갑니다
-      feedback: 맞아요. 제품마다 이름·배치가 달라도 내부 통신, 상대, 바깥 매핑의 관계로 읽으면 응답 경로를 찾을 수 있습니다.
-    - id: b
-      text: 열 순서는 항상 같으므로 첫 열을 무조건 Local로 읽습니다
-      feedback: 본문은 제품마다 용어와 열 배치가 다를 수 있다고 설명합니다. 값이 어느 쪽인지 확인해야 합니다.
-    - id: c
-      text: 같은 바깥 IP를 쓰는 모든 Local을 하나의 내부 통신으로 합칩니다
-      feedback: 여러 Local이 하나의 바깥 IP를 공유할 수 있지만, 포트와 상대를 포함한 기록으로 통신을 나눕니다.
-    - id: d
-      text: Remote를 내부 PC로 보고 그 서버 주소를 집 안 목적지로 씁니다
-      feedback: Remote는 외부 상대입니다. 응답은 기록의 관계를 반대로 따라 Local 통신으로 전달합니다.
-    - id: e
-      text: External 포트만 외우고 상대와 내부 값은 버립니다
-      feedback: 변환표는 세 값의 관계를 기록합니다. 내부 통신과 상대를 버리면 응답이 어디로 연결되는지 읽기 어렵습니다.
-    answer: a
+  - question_id: u12-l02-p07-q01
+    after_paragraph: 2
 ---
-
-## 주소와 포트를 함께 바꾸기
+## AI API의 답장은 어떻게 내 PC를 찾을까?
 
 <!-- learn-page-id: advanced-source-11-page-01 -->
 
-NAT 변환표는 공유기나 NAT 장비가 통신의 안쪽 주소와 바깥 주소를 어떻게 연결했는지 적어 두는 기록이다. 요청이 바깥으로 나갈 때 이 기록을 만들고, 응답이 돌아올 때 기록을 찾아 안쪽 기기에 돌려보낸다. 장비는 이 기록이 있어야 여러 기기의 통신을 섞지 않고 처리할 수 있다.
+디자인팀 PC 여러 대가 동시에 외부 AI API에 시안 설명을 요청해도 답이 서로 섞이지 않는다. 그런데 박 팀장이 바깥에서 공유기 주소로 보낸 요청은 공유기에서 사라졌다. 이 두 현상은 공유기 안의 표 하나, NAT 변환표로 함께 설명된다. 먼저 쉬운 쪽부터 따라가 보자. 지우 PC(`192.168.10.41`)가 외부 AI API(`203.0.113.80:443`)를 부르면 답은 공유기 바깥 주소 `198.51.100.25`로 온다. 지우 PC의 사설 주소는 인터넷에서 쓸 수 없는데, 답은 어떻게 지우 PC까지 올까?
 
-이번 Lesson에서는 집 안 PC `192.168.0.10`이 외부 웹 서버 `203.0.113.80`에 접속하는 예를 따라간다. IPv4 주소 뒤의 콜론과 숫자는 포트 번호다. 예를 들어 `192.168.0.10:3000`은 IP 주소 `192.168.0.10`의 포트 `3000`을 뜻한다. NAT는 IP 주소뿐 아니라 TCP나 UDP 통신을 구별하는 포트도 함께 바꿔 기록할 수 있다.
+먼저 표기부터 짚자. `주소:포트`는 편지 봉투에 건물 주소와 호수를 함께 적는 것과 같다. 주소는 어느 기기인지를, 포트는 그 기기 안의 어느 창구인지를 가리킨다. `192.168.10.41:3000`은 지우 PC의 3000번 창구이고, `203.0.113.80:443`은 AI API 서버의 HTTPS 창구다. 3000은 지우 PC의 운영체제가 요청마다 임시로 고르는 번호이고, 443은 서버가 서비스를 받는 번호다.
 
-이번 Lesson에서는 같은 내부 기기가 접속하는 외부 상대에 따라 바깥쪽 주소·포트 연결이 달라질 수 있는 변환표 예시를 따라간다. 과거 자료에서는 이런 동작을 Symmetric NAT라고 부르기도 했다. 이 이름이 모든 공유기의 동작을 대표하는 것은 아니다. 여기서는 변환표를 읽는 한 가지 예로만 살펴보고, 여러 NAT 동작을 구분하는 기준은 다음 Lesson에서 설명한다.
+지우 PC는 인터넷 쪽 목적지로 가는 패킷을 기본 게이트웨이, 곧 공유기 `192.168.10.1`에 넘긴다. 공유기는 안쪽과 바깥쪽의 경계에 서 있어서 이곳을 지나는 패킷의 주소를 바꿀 수 있다. 이때 바꾸는 대상은 공유기 자신의 주소가 아니라 통신을 시작한 기기의 주소와 포트다. 이 점이 뒤의 변환표를 읽을 때 헷갈리기 쉬운 부분이다.
 
-**기억할 점:** NAT 변환표는 안쪽의 통신과 바깥쪽에 보이는 통신을 이어 주는 기록이다.
+그래서 이 Lesson에서는 변환표 한 줄을 처음부터 끝까지 따라가 본다. 요청이 나가는 길에서 무엇이 바뀌고 무엇이 기록되는지, 응답이 돌아오는 길에서 그 기록이 어떻게 쓰이는지를 차례로 볼 것이다. 한 줄만 제대로 읽으면 나머지 줄도 똑같이 읽힌다.
 
-## 내부 사설망과 외부 공인망
-
-<!-- learn-page-id: advanced-source-11-page-02 -->
-
-공유기 안쪽에는 집 안 기기가 연결된 내부 네트워크가 있고, 바깥쪽은 인터넷 서비스 제공자(ISP)를 거쳐 인터넷으로 이어진다. 노트북 `192.168.0.10`은 공유기 안에서 쓰는 사설 주소다. 공유기의 안쪽 주소를 `192.168.0.1`이라고 가정하면, 노트북은 이 공유기를 다음 길을 알려 주는 기본 게이트웨이로 이용한다.
-
-공유기의 바깥쪽 주소는 ISP가 연결에 배정한다. NAT 변환표에서 Local은 보통 변환 전 내부 기기의 통신 주소·포트를, External은 변환 뒤 바깥에서 보이는 주소·포트를 가리킨다. 여기서 Local은 공유기 자체의 안쪽 주소 `192.168.0.1`이 아니라 노트북처럼 통신을 시작한 기기의 값이다. 이 예에서는 설명을 위해 `198.51.100.25`를 사용한다. 외부 웹 서버 주소 `203.0.113.80`도 예시용 주소다. 두 주소는 문서에서 예제로 쓰도록 예약된 대역의 주소이며 실제 서비스에 접속할 주소가 아니다. 집 안 기기 주소, 공유기 주소, 공유기의 바깥 주소, 웹 서버 주소가 서로 다른 위치의 값이라는 점을 구별하자.
-
-밖으로 나가는 패킷은 노트북에서 공유기로, 공유기에서 ISP 쪽으로 이동한다. 주소 변환은 바로 이 경계에서 일어난다. 다만 이 예에서는 통신사 쪽에 추가 NAT가 없고 공유기가 하나라는 단순한 구성을 가정한다. 공유기 뒤에 통신사 NAT가 더 있을 수 있는 경우는 앞 Lesson에서 살펴봤다.
-
-**기억할 점:** Local은 NAT 변환 전 내부 기기의 통신 주소·포트이고, External은 변환 뒤 바깥에서 보이는 주소·포트다. Local은 공유기 자체의 LAN 주소를 뜻하지 않는다.
-
-## 내부 PC가 연결을 시작
+## 공유기를 나설 때 패킷의 무엇이 바뀔까?
 
 <!-- learn-page-id: advanced-source-11-page-03 -->
 
-웹 브라우저가 HTTPS 서버에 연결한다고 하자. 서버는 예시 주소 `203.0.113.80`의 포트 `443`에서 HTTPS 요청을 받는다. PC의 운영체제는 이 연결에 쓸 출발지 포트를 하나 고른다. 여기서는 설명을 위해 `3000`이라고 하자. PC에서 처음 만들어진 패킷에는 출발지 `192.168.0.10:3000`, 목적지 `203.0.113.80:443`이 적힌다.
+지우 PC가 `203.0.113.80:443`으로 요청을 보냈다. 공유기 안쪽에서 이 패킷을 보면 출발지가 `192.168.10.41:3000`인데, 공유기 바깥쪽에서 보면 `198.51.100.25:53001`로 달라져 있다. 같은 요청인데 숫자가 다르다. 도대체 어디가 바뀐 것일까?
 
-IP 주소는 어느 기기와 통신하는지를 나타내고, 포트 번호는 그 기기 안의 어느 통신에 해당하는지를 구별하는 데 쓰인다. 노트북에서 브라우저가 여러 웹사이트에 동시에 접속할 때 각 통신에는 서로 다른 포트 조합이 사용될 수 있다. 따라서 NAT가 여러 통신을 구별하려면 안쪽 IP만 적어 두지 않고 포트도 함께 기록한다.
-
-이때 `3000`은 예를 들어 든 출발지 포트이고, `443`은 HTTPS 서버가 주로 사용하는 목적지 포트다. 둘은 역할이 다르다. 또 웹 요청을 보낼 때 운영체제가 고른 출발지 포트가 서버가 제공하는 서비스의 포트와 같아야 하는 것은 아니다.
-
-**기억할 점:** 패킷에는 출발지와 목적지가 있고, 양쪽 주소 뒤의 포트로 통신을 더 자세히 구별한다.
-
-## Outbound · 출발지 주소·포트 변환
-
-<!-- learn-page-id: advanced-source-11-page-04 -->
-
-패킷이 공유기의 안쪽에서 바깥쪽으로 나가는 일을 Outbound라고 부른다. 공유기는 출발지 주소 `192.168.0.10`을 바깥쪽 주소 `198.51.100.25`로 바꾼다. 여러 안쪽 통신이 같은 바깥 IP를 함께 쓸 때는 응답을 각각의 통신에 돌려보낼 수 있도록 구별해야 한다. NAT 장비는 상황에 따라 출발지 포트를 그대로 유지하거나 다른 번호를 배정할 수 있다. 이 예에서는 `3000`을 `53001`로 바꿨다고 하자. `53001`은 이 예에서 장비가 배정한 번호일 뿐, 공유기가 그 포트에서 앱처럼 접속을 기다린다는 뜻은 아니다.
+우편물을 생각해 보자. 직원이 쓴 편지의 보내는 사람 칸을 회사 대표 주소와 접수번호로 고쳐 쓰고, 받는 사람 칸은 그대로 두어 내보낸다. NAT도 이렇게 한다. 패킷이 안쪽에서 바깥쪽으로 나가는 방향을 Outbound라고 부르는데, 이때 공유기는 출발지 주소 `192.168.10.41`을 바깥 주소 `198.51.100.25`로 바꾼다. 여러 통신이 같은 바깥 주소를 함께 쓰므로 응답을 구별하려고 출발지 포트도 공유기가 정한 번호로 바꿀 수 있다. 이 예에서는 `3000`이 `53001`이 되었다.
 
 | 구간 | 출발지 | 목적지 |
 | --- | --- | --- |
-| 공유기 안쪽 | `192.168.0.10:3000` | `203.0.113.80:443` |
+| 공유기 안쪽 | `192.168.10.41:3000` | `203.0.113.80:443` |
 | 공유기 바깥쪽 | `198.51.100.25:53001` | `203.0.113.80:443` |
 
-표에서 보듯 NAT가 바꾼 것은 요청의 출발지 주소와 포트다. 목적지인 웹 서버의 주소와 서비스 포트는 그대로다. 이 변환으로 인터넷 쪽에서는 사설 IP 주소 대신 공유기의 바깥 주소를 향해 응답할 수 있다.
+표에서 바뀐 것은 출발지뿐이고 목적지인 서버의 주소와 서비스 포트는 그대로다. 그래서 서버는 사설 주소를 몰라도 `198.51.100.25:53001`로 응답할 수 있다. 한 가지 주의할 점은 `53001`이 공유기가 그 포트에서 접속을 기다린다는 뜻이 아니라는 것이다. 응답을 구별하려고 장비가 적어 두는 번호일 뿐이며, 장비에 따라 원래 포트를 그대로 둘 수도 있다.
 
-**기억할 점:** Outbound에서는 안쪽 출발지 정보를 바깥에서 사용할 주소·포트로 바꾸고 그 짝을 기록한다.
+그리고 이렇게 바꾸는 것만으로는 부족하다. 바뀐 짝, 곧 `192.168.10.41:3000`과 `198.51.100.25:53001`의 대응을 공유기가 표에 적어 둬야 나중에 응답이 왔을 때 원래 PC를 찾을 수 있다. 다음 Page들에서 그 표를 읽는 법을 본다.
 
-## 웹 서버가 보는 접속 주체
+## AI 서비스는 누가 접속했다고 볼까?
 
 <!-- learn-page-id: advanced-source-11-page-05 -->
 
-웹 서버가 요청을 받았을 때 출발지로 보는 값은 `192.168.0.10:3000`이 아니라 `198.51.100.25:53001`이다. 요청은 이미 NAT를 거쳐 출발지 주소와 포트가 바뀌었기 때문이다. 그래서 웹 서버는 집 안의 노트북 주소를 직접 알지 못하고, 공유기 바깥에서 보이는 연결 정보를 이용해 응답을 보낸다.
+외부 AI API 관리 화면을 열어 본 서 이사가 고개를 갸웃한다. 접속 기록의 출발지가 직원 전원 똑같이 `198.51.100.25`로 찍혀 있다. "이 IP로 누가 썼는지 알 수 있나요? 도면을 올린 사람이 누구인지요."
 
-이것은 웹 서버가 모든 사용자를 똑같은 한 사람으로 본다는 뜻은 아니다. 브라우저나 서비스는 로그인 정보나 웹 브라우저에 저장되어 다음 요청에 함께 보낼 수 있는 작은 정보인 쿠키 등으로 사용자를 구별할 수 있다. 여기서 확인하는 것은 IP 네트워크 경로에서 서버가 받은 패킷의 출발지 주소와 포트다.
+회사 대표 전화로 걸려 온 통화 기록을 떠올리자. 기록에는 대표번호만 남고, 내선 몇 번 직원이 걸었는지는 상대방 통신사가 모른다. AI 서비스 서버도 마찬가지다. 서버가 보는 출발지는 NAT를 지난 뒤의 바깥 주소와 포트다. 지우 PC의 `192.168.10.41`은 인터넷에 나오지 못하므로 서버에는 한결디자인 공유기에서 왔다는 정보까지만 닿는다.
 
-또 “공유기가 포트를 바꿨다”는 말은 서버의 포트를 변경했다는 뜻이 아니다. 이 예에서 서버가 사용하는 목적지 포트 `443`은 그대로이고, 바뀐 것은 요청의 출발지 포트 `3000`이다. 어느 쪽 포트인지 혼동하지 않도록 출발지와 목적지를 함께 읽는다.
+그러면 사용자는 무엇으로 구별할까? IP가 아니라 로그인 계정, API 키, 쿠키처럼 애플리케이션이 따로 주고받는 정보다. 서 이사가 알고 싶은 "누가 썼나"는 IP가 아니라 이 정보로 답해야 한다. IP는 어디서 왔는지, 곧 한결디자인 회선 쪽이라는 것만 알려 준다. 결국 서버 기록의 IP는 회사 단위의 흔적일 뿐 직원 단위의 흔적이 아니다. 사람별 사용 내역을 남기고 싶다면 직원마다 계정이나 키를 발급해야 한다.
 
-**기억할 점:** 서버는 NAT가 바깥쪽에 표시한 출발지 주소·포트를 본다.
+AI 서비스 중에는 접속을 허용할 IP를 미리 등록하게 하는 곳이 있다. 이때는 직원 PC 주소를 일일이 적을 필요 없이 회사 바깥 주소 `198.51.100.25` 하나만 등록하면 되어 편하다. 대신 대가가 따른다. IP로는 직원을 구별할 수 없으니 사람별 키나 계정을 따로 써야 하고, 회선 계약에 따라 바깥 주소가 바뀌면 허용 목록도 고쳐야 한다. 고정 IP인지 확인하는 이유다.
 
-## NAT Table에 남기는 기록
+## 변환표 한 줄에는 무엇이 적힐까?
 
 <!-- learn-page-id: advanced-source-11-page-06 -->
 
-공유기는 안쪽 통신과 바깥에 보이는 통신을 이어 주는 매핑을 내부적으로 유지한다. 이 Lesson의 표에는 외부 상대도 함께 적어, 어떤 서버와 통신하는 사례인지 알아보기 쉽게 했다. 실제 장비가 화면에 보여 주는 열이나 내부 기록 방식은 다를 수 있다. 요청이 나간 뒤 응답이 돌아오면 공유기는 바깥 주소·포트와 연결된 기록을 찾는다.
+공유기 관리 화면에서 NAT 세션 목록을 열어 본 지우는 열 이름이 낯설다. Local, Remote, External. 무엇이 어디에 적히는지 알아야 문제가 생겼을 때 표를 읽을 수 있다. 택배 접수 대장에 비유하면 이해가 쉽다. 대장 한 줄에는 보낸 사람, 받을 곳, 그리고 회사 대표 접수번호가 적힌다.
 
-이번 예의 표를 간단히 적으면 다음과 같다.
+변환표 한 줄도 이렇게 세 가지를 잇는다. Local은 변환 전의 내부 기기 주소와 포트, Remote는 통신 상대의 주소와 포트, External은 바깥에서 보이는 주소와 포트다. Local이 공유기 자신의 LAN 주소가 아니라 통신을 시작한 기기의 값이라는 점에 주의하자.
 
-| 프로토콜 | 내부 통신(Local) | 외부 상대(Remote) | 바깥 통신(External) |
+| 프로토콜 | Local | Remote | External |
 | --- | --- | --- | --- |
-| TCP | `192.168.0.10:3000` | `203.0.113.80:443` | `198.51.100.25:53001` |
+| TCP | `192.168.10.41:3000` | `203.0.113.80:443` | `198.51.100.25:53001` |
 
-한 줄은 “이 내부 통신이 NAT를 지나 바깥에서 어떤 주소·포트로 보이는가”를 나타낸다. Remote 열에는 통신 상대가 기록되어 있지만, 이 열이 있다고 해서 바깥쪽 매핑이 반드시 상대 서버마다 달라지는 것은 아니다. 여러 내부 기기가 같은 공유기 바깥 주소를 사용하더라도 외부 포트와 기록을 다르게 두면 통신을 구별할 수 있다. 주소 하나만 갈아 끼우는 표가 아니라, 통신의 어느 쪽과 연결되는지 적은 표라고 생각하면 된다.
+실제 매핑은 Local과 External을 잇는다. Remote 열은 어떤 상대와 통신 중인지 알려 주고, 필터링이 상대를 가리는 방식일 때 수신 허용 조건으로 쓰인다. 장비에 따라 화면의 열 이름과 배치는 다를 수 있으니 이름을 외우기보다 각 값이 어느 쪽에 있는지를 묻자. 안쪽 기기인가, 통신 상대인가, 바깥에서 보이는 값인가.
 
-통신 중 자동으로 만들어진 변환 행은 연결이 끝나거나 장비의 유휴 시간이 지나면 사라질 수 있다. UDP처럼 명시적인 연결 종료 절차가 없는 통신은 장비의 타이머가 중요한 역할을 한다. 사용자가 직접 등록한 포트 포워딩 같은 고정 규칙은 자동 생성된 행과 다르게 취급한다. 따라서 자동 변환 행과 사용자가 설정한 고정 규칙을 구별해서 보아야 한다.
+또 하나 알아 둘 것이 있다. 이 줄은 통신 중에 자동으로 만들어진 행이라 연결이 끝나거나 유휴 시간이 지나면 사라진다. UDP처럼 끝내는 절차가 없는 통신은 장비의 타이머가 더 중요하다. 반면 관리자가 직접 적어 넣은 고정 규칙은 자동 행과 다르게 다뤄진다. 두 종류를 구별해서 읽어야 한다.
 
-**기억할 점:** NAT 변환표 한 줄을 읽을 때는 내부 주소, 외부 상대, 바깥쪽 주소를 함께 본다.
-
-## 서버에서 응답이 돌아오기
+## 돌아온 답장은 어느 PC로 갈까?
 
 <!-- learn-page-id: advanced-source-11-page-07 -->
 
-웹 서버가 응답을 보내면 패킷의 출발지는 `203.0.113.80:443`, 목적지는 요청 때 바깥에 보였던 `198.51.100.25:53001`이다. 응답의 목적지는 노트북의 사설 주소가 아니라 NAT가 정한 바깥쪽 주소다. 인터넷에는 `192.168.0.10`으로 직접 돌아가는 경로가 없기 때문이다.
+AI API 서버가 응답을 보낸다. 이 응답의 목적지는 지우 PC의 사설 주소가 아니라 `198.51.100.25:53001`이다. 응답을 보내는 쪽은 사설 주소를 알 수 없고 알 필요도 없다. 그러면 공유기는 이 응답을 어떻게 지우 PC로 돌려보낼까?
 
-공유기에 응답이 도착하면 먼저 목적지 주소와 포트를 이용해 바깥쪽 매핑 기록을 찾는다. 여기서 매핑은 안쪽 통신과 바깥에서 보이는 주소·포트를 짝지어 기록하는 방식이다. 그다음 이 응답을 받아들일지는 외부 상대를 확인하는 필터링 규칙에 달려 있다. 필터링은 외부에서 온 패킷을 어떤 조건으로 통과시킬지 정하는 방식이다. 상대 서버 주소와 포트까지 확인하는 필터링이라면, 이 예의 응답 출발지 `203.0.113.80:443`도 허용 조건에 맞아야 한다. 이 예에서는 요청에 사용한 같은 서버의 정상 응답이 돌아온다고 가정한다. 모든 NAT가 같은 조건을 쓰지는 않으며, 다음 Lesson에서 이 두 기준을 나누어 살펴본다.
+택배 회신을 생각해 보자. 회신 봉투에는 대표 접수번호 53001이 적혀 있고, 안내 데스크는 접수 대장에서 그 번호를 찾아 보낸 직원에게 돌려준다. 공유기가 하는 일도 같은 순서다. 먼저 응답의 목적지 주소·포트로 변환표의 External 칸을 찾는다. 찾으면 필터링 규칙, 곧 어느 출발지에서 온 패킷을 받을지에 대한 조건을 적용한다(마지막 Lesson에서 자세히 본다). 통과하면 목적지를 Local 값 `192.168.10.41:3000`으로 되돌려 안쪽으로 보낸다. 이 방향을 Inbound라고 한다.
 
-만약 표에서 맞는 행을 찾지 못하면 공유기는 어느 안쪽 기기로 보낼지 알 수 없다. 그러면 응답이 안쪽에 전달되지 않을 수 있다. 이것은 어떤 NAT든 같은 방식으로 처리한다는 뜻은 아니다. 실제 허용 조건은 다음 Lesson에서 매핑과 필터링을 나누어 살펴본다.
+| 구간 | 출발지 | 목적지 |
+| --- | --- | --- |
+| 공유기 바깥쪽 | `203.0.113.80:443` | `198.51.100.25:53001` |
+| 공유기 안쪽 | `203.0.113.80:443` | `192.168.10.41:3000` |
 
-**기억할 점:** 돌아온 응답은 주소만 대충 보고 보내는 것이 아니라 변환표에서 통신 짝을 찾아간다.
+표에서 보듯 Inbound에서 바뀌는 것은 목적지이고 출발지는 그대로다. 나갈 때 출발지를 바꾼 것을 응답이 올 때 목적지에서 거꾸로 되돌리는 셈이다.
 
-## Inbound · 원래 PC로 되돌리기
+여기서 중요한 점이 하나 있다. 이 되돌림은 나갈 때 적어 둔 기록이 있어야만 가능하다. 지우가 공유기를 재부팅하면 자동 행이 모두 사라질 수 있고, 그 직후에 재부팅 전에 보낸 요청의 응답이 도착하면 공유기는 찾을 행이 없다. 기록이 없으면 돌아온 패킷을 보낼 곳도 없다.
 
-<!-- learn-page-id: advanced-source-11-page-08 -->
-
-변환표에서 일치하는 행을 찾으면 공유기는 응답 패킷의 목적지를 바꾼다. 바깥쪽 목적지 `198.51.100.25:53001`을 안쪽 목적지 `192.168.0.10:3000`으로 되돌린다. 이를 Inbound, 즉 바깥에서 안쪽으로 들어오는 방향의 처리라고 부른다. 응답의 출발지 `203.0.113.80:443`은 그대로 둔다.
-
-요청을 보낼 때 내 PC는 패킷의 출발지였지만, 응답을 돌려받을 때는 패킷이 향하는 목적지가 된다. 그래서 요청 때에는 출발지 정보가 바뀌고 응답 때에는 목적지 정보가 바뀐다. 바꾸는 자리는 다르지만 공유기는 같은 변환표 기록을 이용해 응답을 원래 PC로 돌려보낸다. 요청이 지나갈 때 기록이 만들어지지 않았다면, 나중에 온 응답을 어느 PC로 보내야 하는지 판단하기 어렵다.
-
-따라서 NAT는 “나갈 때 주소를 바꾸는 것”으로 끝나지 않는다. 바꾼 값을 기록해 두고 돌아오는 응답을 원래의 내부 통신과 연결하는 과정까지 이어진다.
-
-**기억할 점:** Inbound에서는 바깥 주소·포트를 변환표에 기록된 내부 목적지로 복원한다.
-
-## 다른 PC의 연결도 구분하기
+## 동시에 물어도 답이 왜 안 섞일까?
 
 <!-- learn-page-id: advanced-source-11-page-09 -->
 
-이번에는 같은 웹 서버에 다른 PC `192.168.0.11`도 접속한다고 하자. 이 PC가 `4000` 포트에서 요청을 시작하면 내부 통신은 `192.168.0.11:4000 → 203.0.113.80:443`이다. 공유기는 앞서 본 첫 번째 통신과 구별되는 변환표 기록을 만든다. 예를 들어 바깥에서는 `198.51.100.25:53002`로 표시할 수 있다.
+지우 PC(`192.168.10.41`)와 디자인팀 PC(`192.168.10.43`)가 같은 외부 AI API에 동시에 요청을 보낸다. 서버가 보는 출발지 주소는 둘 다 `198.51.100.25`로 똑같다. 그런데도 응답은 서로 섞이지 않고 각자의 PC로 간다. 어떻게 구별하는 걸까?
 
-| 내부 통신(Local) | 외부 상대(Remote) | 바깥 통신(External) |
-| --- | --- | --- |
-| `192.168.0.10:3000` | `203.0.113.80:443` | `198.51.100.25:53001` |
-| `192.168.0.11:4000` | `203.0.113.80:443` | `198.51.100.25:53002` |
+같은 대표번호로 걸어도 접수번호가 다르면 대장에서 구별된다. 공유기도 두 통신에 서로 다른 External 포트를 붙여 구별한다. 두 줄을 함께 놓고 보면 이렇다.
 
-두 통신은 공유기의 바깥 IP 주소를 함께 쓰지만 외부 포트와 변환표 항목이 다르다. 웹 서버에서 응답이 각각의 외부 포트로 돌아오면 공유기는 대응하는 행을 찾아 올바른 PC에 전달한다. NAT가 여러 내부 통신을 하나의 바깥 주소와 연결할 수 있는 이유를 이 표에서 확인할 수 있다. 여러 내부 기기의 IP 주소와 포트를 하나의 바깥 IP 주소와 포트들로 바꾸어 함께 통신하게 하는 방식을 NAPT(Network Address and Port Translation)라고 한다. PAT라는 이름도 사용된다.
+| 프로토콜 | Local | Remote | External |
+| --- | --- | --- | --- |
+| TCP | `192.168.10.41:3000` | `203.0.113.80:443` | `198.51.100.25:53001` |
+| TCP | `192.168.10.43:4000` | `203.0.113.80:443` | `198.51.100.25:53002` |
 
-**기억할 점:** 여러 기기가 바깥 IP 하나를 공유해도 포트와 변환표 기록으로 각 통신을 나눌 수 있다.
+주소는 같지만 External 포트가 `53001`과 `53002`로 다르다. 응답이 `:53002`로 오면 두 번째 줄을 찾아 `192.168.10.43:4000`으로 돌려보낸다. 이렇게 주소와 포트를 함께 변환해 바깥 주소 하나를 여러 PC가 나눠 쓰게 하는 방식을 NAPT(또는 PAT)라고 한다. 혼공네트 04-1이 포트 기반 NAT라고 소개한 방식이 바로 이것이고, 일반 공유기의 N:1 공유가 이렇게 가능하다.
 
-## 서버가 구별하는 연결
+포트 번호는 TCP, UDP 각각 65,536개뿐이라 한 바깥 주소로 동시에 유지할 수 있는 변환 행에는 한계가 있다. 40명 규모의 사무실에서는 여유가 넘친다. 바깥 주소 하나를 아끼는 대신 지는 대가다.
 
-<!-- learn-page-id: advanced-source-11-page-10 -->
+## 박 팀장의 요청은 왜 공유기에서 사라질까?
 
-이제 첫 번째 PC `192.168.0.10:3000`이 웹 서버뿐 아니라 다른 서버 `203.0.113.81:443`에도 접속한다고 하자. 오래된 Symmetric NAT 설명에서는 같은 내부 통신이라도 외부 상대가 달라지면 별도의 바깥 포트와 변환표 행을 사용할 수 있다고 가정한다. 이 사례는 바깥쪽 매핑이 상대에 따라 달라질 수 있는 한 가지 동작을 보여 주는 예다. TCP·UDP NAT 행동 표준은 같은 내부 주소·포트에서 다른 상대와 통신할 때도 같은 바깥 매핑을 재사용하는 동작을 요구한다. 외부 상대를 제한하는지는 필터링에서 따로 다룬다. 그러므로 아래 표는 표준을 따르는 모든 NAT의 기본 동작이 아니라, 과거 Symmetric 분류에서 설명하던 사례다.
+<!-- learn-page-id: advanced-source-15-page-01 -->
 
-| 내부 통신(Local) | 외부 상대(Remote) | 바깥 통신(External) |
-| --- | --- | --- |
-| `192.168.0.10:3000` | `203.0.113.80:443` | `198.51.100.25:53001` |
-| `192.168.0.10:3000` | `203.0.113.81:443` | `198.51.100.25:53003` |
+지우가 이번에는 공유기 바깥 주소를 알려 줬다. 박 팀장이 고객사에서 `198.51.100.25:8080`으로 접속해 보지만 여전히 열리지 않는다. 이제 요청은 우리 공유기에 분명히 도착하는데도 AI 서버 화면은 나타나지 않는다. 지우는 앞에서 익힌 변환표로 이 문제를 풀어 보기로 한다.
 
-이 방식에서는 NAT가 응답을 받을 때 외부 상대까지 확인해 어느 행에 대응하는지 구별할 수 있다. 단, 표의 포트 숫자는 설명을 위한 예시이며 실제 장비가 꼭 이처럼 순서대로 배정하지 않는다. NAT는 사용 중인 포트를 피해 다른 값을 고를 수 있다.
+지금까지 본 변환표의 줄은 모두 안쪽 PC가 먼저 요청을 보낼 때 공유기가 자동으로 만든 것이다. 박 팀장의 요청은 반대로 바깥에서 먼저 도착한다. 이 요청에 맞는 행은 어디에도 없다. 공유기는 이것을 GPU PC(`192.168.10.50`)로 보내야 할지, 지우 PC로 보내야 할지 알 수 없으므로 전달하지 않고 버린다.
 
-“Symmetric NAT”라는 이름은 과거 자료에서 여러 동작을 한데 묶어 부르던 표현이다. 모든 현대 장비의 동작이나 보안 수준을 나타내는 보편적 등급으로 외우면 안 된다. 매핑은 안쪽 통신과 바깥 주소·포트를 연결하는 방식이고, 필터링은 외부에서 온 패킷을 어떤 조건으로 통과시킬지 정하는 방식이다. 현대의 동작 기준은 이 둘을 나누어 살핀다. 다음 Lesson에서 각각의 기준을 비교한다.
+안내 데스크 비유로 돌아가면, 대장에는 안쪽 직원이 먼저 연락한 손님만 적혀 있다. 박 팀장이 찾아온다는 기록은 없으니 안내 데스크는 어느 방으로 보낼지 모른다. 대장에 적는 사람은 지금까지 안내 데스크 자신이었지만, 바깥에서 먼저 찾아오는 손님은 안쪽에서 연락한 적이 없으니 자동으로 적을 기회가 없다.
 
-**기억할 점:** 예전 Symmetric 예시의 핵심은 “외부 상대가 바뀌면 매핑도 달라질 수 있다”는 것이며 모든 NAT가 그렇다는 뜻은 아니다.
+첫 Lesson에서 NAT는 방화벽처럼 일부러 막는 것이 아니라고 했다. 막는 규칙이 아니라 갈 곳을 몰라서 못 가는 것이므로, 갈 곳을 알려 주는 줄 하나만 있으면 길이 열린다. 길이 열린다는 것은 곧 노출이 된다는 뜻이기도 해서, 그 대가는 다음 Lesson에서 따진다.
 
-## Local·Remote·External 용어 정리
+해결은 간단하다. 그 줄을 사람이 미리 적어 두면 된다. "바깥 8080으로 오는 요청은 `192.168.10.50:8080`으로 보내라"는 한 줄을 공유기에 넣는 것이다. 이것이 포트 포워딩이고, 다음 Lesson에서 직접 해 본다.
 
-<!-- learn-page-id: advanced-source-11-page-11 -->
+### 이 Lesson에서 가져갈 것
 
-앞에서 요청과 응답을 따라가며 본 세 가지 정보는 NAT 변환표를 설명할 때 Local, Remote, External이라는 이름으로 정리할 수 있다. 이 이름들은 새 동작을 뜻하는 것이 아니라, 내부 통신·통신 상대·바깥에서 보이는 통신을 구분하는 표의 항목이다. 이 Lesson에서는 **Local**을 변환 전 내부 기기의 주소와 포트, **Remote**를 통신 상대 서버와 포트, **External**을 변환 뒤 바깥 네트워크에서 보이는 주소·포트로 사용했다. Local은 공유기 자체의 LAN 주소가 아니다. 제품에 따라 실제 관리 화면의 이름과 열 배치가 다를 수 있으므로 이름만 외우기보다 각 값이 어느 쪽에 있는지 확인한다.
+- **기억하기 (Recall):** 변환표는 Local(통신을 시작한 내부 기기), Remote(통신 상대), External(바깥에서 보이는 주소·포트)을 이어 응답을 제자리로 돌려보낸다. 자동 행은 안쪽에서 먼저 시작한 통신만 만든다.
+- **적용하기 (Apply):** 요청이 나갈 때와 응답이 돌아올 때를 한 칸씩 따라가며 응답의 목적지 포트로 External 칸을 찾아 Local로 읽는다. 외부 서비스의 IP 허용 목록에는 공유기 바깥 주소를 쓰되, 사람 구별은 계정·키로 한다.
+- **찾아보기 (Lookup):** 공유기 관리 화면의 NAT 세션(변환표) 메뉴와 유휴 시간 설정, NAPT의 정의(혼공네트 04-1, RFC 3022)는 필요할 때 직접 찾아본다.
 
-| 이름 | 이 예에서 가리키는 값 | 확인할 질문 |
-| --- | --- | --- |
-| Local | `192.168.0.10:3000` | 집 안에서 요청을 시작한 기기와 통신 포트는 무엇인가? |
-| Remote | `203.0.113.80:443` | 요청이 향한 외부 서버와 서비스 포트는 무엇인가? |
-| External | `198.51.100.25:53001` | 바깥쪽에서 이 통신을 어떤 주소·포트로 보는가? |
+### 🧠 이번에 쓴 생각법
 
-이 Lesson의 표에서는 요청의 Local, 통신 상대인 Remote, 바깥에서 보이는 External을 나란히 비교한다. 실제 NAT 매핑은 Local과 External을 연결하며, Remote는 필터링 조건이나 통신 기록을 설명할 때 따로 고려할 수 있다. Remote가 표에 있다고 해서 모든 NAT가 이를 바깥 매핑을 정하는 기준으로 사용한다는 뜻은 아니다. 응답이 돌아오면 변환표에서 매핑을 찾고 해당 장비의 필터링 규칙도 적용한다. 여러 Local 통신은 하나의 외부 IP 주소를 공유할 수 있다.
-
-이번 Lesson에서는 변환표 한 행을 따라 요청이 나가고 응답이 돌아오는 흐름을 살펴봤다. 다음 Lesson에서는 변환표를 만드는 매핑 방식과 외부 패킷을 허용하는 필터링 조건이 어떻게 다른지 비교한다. 예전 유형 이름만으로 실제 장비를 판단하지 말고, “주소·포트는 어떻게 매핑하는가?”와 “어떤 외부 패킷을 통과시키는가?”를 각각 살펴보자.
-
-**한 줄 정리:** NAT 변환표는 내부 통신(Local), 통신 상대(Remote), 바깥에서 보이는 통신(External)을 연결해 응답을 제자리로 돌려보낸다.
+- 📋 **순서대로 확인하기**: 요청이 나갈 때와 응답이 돌아올 때를 한 칸씩 따라가며 어디서 기록이 생기고 어디서 쓰이는지 확인했다.
+- 🧩 **쪼개기**: 변환표를 Local·Remote·External으로 나누고, 공유기가 가진 주소와 통신을 시작한 기기의 주소를 구별했다.
+- 🔁 **같은 모양 찾기**: 나갈 때는 출발지를, 돌아올 때는 목적지를 바꾸는 것이 같은 줄을 거꾸로 읽는 일임을 알아보았다.

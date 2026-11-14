@@ -1,530 +1,530 @@
 ---
 id: advanced-nat-mapping-filtering
-title: NAT의 매핑과 수신 허용 방식
+title: '포트를 안 열어도 화상회의가 되는 이유: NAT 통과'
 source_lesson_ids:
 - u8-advanced-12-full-cone-방식과-내부-네트워크-접속-문제
 - u8-advanced-13-restricted-cone-방식
 - u8-advanced-14-port-restricted-cone-방식
+- u8-advanced-10-공유기-작동원리-및-개요
+- u8-advanced-11-symmetric-nat-방식
 source_wikis:
 - https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-12.md
 - https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-13.md
 - https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-14.md
+- https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-10.md
+- https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-11.md
 - https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/honja-network/03-2.md#p158-b18
 - https://www.rfc-editor.org/rfc/rfc4787.html
 - https://www.rfc-editor.org/rfc/rfc5128.html
+- https://www.rfc-editor.org/rfc/rfc8489.html
 - https://www.rfc-editor.org/rfc/rfc8656.html
 source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-12.md
 page_metadata:
 - page_id: advanced-nat-mapping-filtering-page-01
   illustrations:
   - file: assets/animations/u12-mapping-peers.svg
-    title: "NAT 뒤의 피어끼리 만나기"
-    alt: "공유기 뒤의 A와 B 중 B가 먼저 보낸 패킷이 A의 공유기에서 어느 기기로 보낼지 몰라 막히는 모습입니다."
-    caption: "직접 통신에는 매핑과 허용 조건이 모두 맞아야 합니다."
+    title: NAT 뒤의 피어끼리 만나기
+    alt: 양쪽이 각자 공유기 뒤에 있어 한쪽이 먼저 보낸 패킷을 상대 공유기가 어느 기기로 보낼지 모르는 상황을 보여 주는 그림입니다.
+    caption: 직접 통신에는 매핑과 허용 조건이 모두 필요합니다.
     after_paragraph: 0
   questions:
-  - id: u12-l03-p01-q01
+  - id: u12-l05-p01-q01
     kind: choice
     difficulty: easy
-    prompt: NAT 뒤의 두 기기가 인터넷에서 서로 직접 통신하기 어려울 수 있는 주된 이유는 무엇인가요?
+    prompt: P2P 통신에 대한 설명으로 알맞은 것은 무엇인가?
     choices:
     - id: a
-      text: 두 기기가 같은 사설 IP 주소를 항상 사용하기 때문
-      feedback: 사설 주소가 겹칠 수는 있지만, 여기서 핵심은 외부에서 보낸 패킷을 어느 내부 기기로 전달할지 NAT가 알 수 있는 기록과 조건이 필요하다는 점이다.
+      text: 두 기기가 서로 직접 데이터를 주고받는 방식
+      feedback: 맞다. 소개 서버가 상대를 알려 주더라도 데이터는 직접 오갈 수 있다.
     - id: b
-      text: 외부에서 먼저 온 패킷을 어느 내부 주소로 보낼지 NAT가 모를 수 있기 때문
-      feedback: 맞다. 외부에서 먼저 온 패킷은 해당 통신을 내부의 어느 기기로 연결할지 알려 주는 매핑이 없을 수 있다.
+      text: 모든 데이터가 반드시 중앙 서버를 거치는 방식
+      feedback: 그것은 중계 방식이다. P2P는 두 기기가 직접 주고받는다.
     - id: c
-      text: NAT가 인터넷의 모든 패킷을 암호화하기 때문
-      feedback: NAT는 주소와 포트를 변환하고 통신 기록을 관리한다. 모든 패킷을 암호화하는 장비라는 뜻은 아니다.
+      text: 공유기가 두 기기의 데이터를 대신 전달해 주는 방식
+      feedback: 공유기는 주소를 바꿔 전달할 뿐 데이터를 대신 만들거나 중계하지 않는다.
     - id: d
-      text: P2P 프로그램은 TCP만 사용할 수 있기 때문
-      feedback: P2P는 여러 전송 방식을 이용할 수 있다. 여기서는 NAT를 통과해 서로 직접 통신하는 조건을 살펴본다.
+      text: NAT를 끄고 두 기기가 공인 주소만 쓰는 방식
+      feedback: P2P도 NAT 뒤에서 시도하는 경우가 많다.
     - id: e
-      text: 각 기기에 공인 IP가 직접 할당되지 않으면 P2P가 불가능하기 때문
-      feedback: 공인 IP가 각 기기에 직접 할당되지 않아도 NAT 통과 조건이 맞으면 직접 통신을 시도할 수 있다. 성공 여부는 매핑과 필터링에 달려 있다.
-    answer: b
-    feedback: NAT의 매핑과 필터링 조건이 맞으면 직접 통신할 수 있지만, 외부에서 온 패킷을 내부로 전달할 근거가 없으면 어려울 수 있다.
-  - id: u12-l03-p01-q02
+      text: 한쪽 기기가 서버 역할을 하고 다른 쪽이 접속만 하는 방식
+      feedback: 양쪽이 대등하게 직접 통신하는 것이 P2P다.
+    answer: a
+    feedback: P2P는 두 피어가 직접 주고받는 방식이고, 소개 서버는 상대를 알려 주는 역할에 가깝다.
+  - id: u12-l05-p01-q02
     kind: choice
     difficulty: medium
-    prompt: P2P 통신에 대한 설명으로 가장 알맞은 것은 무엇인가요?
+    prompt: 지우와 재택 중인 박 팀장의 PC를 원격 지원 앱으로 연결했다. 앱에 소개 서버가 있다면 모든 화면 데이터가 반드시 그 서버를 지날까?
     choices:
     - id: a
-      text: 모든 데이터가 반드시 중앙 서버를 거쳐야 하는 통신
-      feedback: P2P는 피어끼리 직접 데이터를 주고받는 방식이다. 연결을 소개하거나 설정하는 서버가 함께 쓰일 수는 있다.
+      text: 그렇다. 소개 서버가 모든 데이터를 중계한다
+      feedback: 소개 서버가 항상 중계까지 하는 것은 아니다.
     - id: b
-      text: NAT를 사용하지 않는 기기에서만 가능한 통신
-      feedback: NAT 뒤의 기기끼리도 조건이 맞으면 직접 통신을 시도할 수 있다. 다만 성공이 보장되지는 않는다.
+      text: 그렇다. NAT 뒤 기기는 서버를 거쳐야만 통신할 수 있다
+      feedback: 홀 펀칭 같은 방법으로 직접 연결할 수도 있다.
     - id: c
-      text: 공유기가 내부 기기의 사설 주소를 인터넷에 그대로 공개하는 통신
-      feedback: 사설 주소는 일반적으로 인터넷에서 직접 라우팅되지 않는다. NAT 환경에서는 외부에서 보이는 주소와 포트를 이용한다.
+      text: 아니다. 소개 서버가 없어도 상대의 바깥 주소를 미리 알 수 있기 때문이다
+      feedback: 상대의 바깥 주소는 서버가 관찰해 알려 주어야 알 수 있다.
     - id: d
-      text: 두 피어가 직접 데이터를 주고받는 통신 방식
-      feedback: 맞다. 중간 서버는 상대를 소개하거나 연결 정보를 전달할 수 있지만, P2P에서는 데이터가 피어 사이를 직접 오갈 수 있다.
+      text: 아니다. 데이터는 항상 통신사 장비를 통해 직접 전달된다
+      feedback: 통신사 장비가 데이터를 직접 연결해 주지 않는다.
     - id: e
-      text: 피어끼리 통신하려면 반드시 같은 공인 IP 주소를 사용해야 하는 방식
-      feedback: 피어가 같은 공인 IP를 쓸 필요는 없다. 서로의 외부 주소·포트를 알아내고 NAT 조건이 맞으면 직접 통신을 시도한다.
-    answer: d
-    feedback: P2P는 피어 간 직접 데이터 교환을 뜻하며, 연결 설정을 돕는 서버가 있어도 데이터 경로는 직접일 수 있다.
+      text: 아니다. 소개 서버는 상대를 알려 줄 뿐 직접 경로면 지나지 않는다
+      feedback: 맞다. 소개와 데이터 전달은 별개의 일이다.
+    answer: e
+    feedback: '🧩 쪼개기: ''상대를 소개하는 일''과 ''데이터를 나르는 일''을 나누면 서버가 꼭 데이터를 지나는 것은 아님을 알 수 있다.'
   question_placements:
-    - question_id: u12-l03-p01-q01
-      after_paragraph: 1
-    - question_id: u12-l03-p01-q02
-      after_paragraph: 3
+  - question_id: u12-l05-p01-q01
+    after_paragraph: 3
 - page_id: advanced-nat-mapping-filtering-page-02
   illustrations:
-  - file: assets/animations/u12-mapping-vs-filtering.svg
-    title: "매핑과 필터링은 다른 질문"
-    alt: "왼쪽은 안쪽 192.168.0.10:3000을 바깥 203.0.113.8:42000에 짝짓는 매핑, 오른쪽은 15.15.15.15:5555에서 온 패킷을 받는 필터링을 나란히 보여 줍니다."
-    caption: "매핑은 나가는 주소, 필터링은 받을 상대를 정합니다."
+  - file: assets/animations/u12-router-nat-types.svg
+    title: NAT의 동작은 한 가지가 아니다
+    alt: NAT의 동작을 바깥 주소·포트를 정하는 질문과 바깥 패킷을 들여보낼 조건을 정하는 질문 둘로 나누어 보여 주는 그림입니다.
+    caption: 유형 이름보다 이 두 질문을 기억합니다.
     after_paragraph: 0
   questions:
-  - id: u12-l03-p02-q01
+  - id: u12-l05-p02-q01
     kind: choice
     difficulty: easy
-    prompt: NAT에서 매핑(Mapping)이 답하는 질문은 무엇인가요?
+    prompt: NAT의 매핑과 필터링을 바르게 설명한 것은 무엇인가?
     choices:
     - id: a
-      text: 어느 서비스에 로그인할 수 있도록 허용할까?
-      feedback: 로그인 권한은 애플리케이션의 인증 기능이다. NAT 매핑은 IP 주소와 포트를 연결한다.
+      text: 매핑은 어떤 출발지의 패킷을 받을지를, 필터링은 바깥에 보이는 주소·포트를 정한다
+      feedback: 두 개념을 서로 바꾸어 이해한 것이다.
     - id: b
-      text: 다음 패킷을 어느 공유기 인터페이스로 내보낼까?
-      feedback: 패킷을 어느 출구로 전달할지는 경로 선택에 관한 질문이다. NAT의 매핑은 내부와 외부의 통신 주소·포트를 연결한다.
+      text: 매핑과 필터링은 방화벽 규칙을 부르는 두 가지 이름이다
+      feedback: 둘 다 NAT 동작을 설명하는 기준이다.
     - id: c
-      text: 어느 외부 출발지의 패킷을 내부로 들여보낼까?
-      feedback: 이는 들어오는 패킷을 허용할 조건, 즉 필터링이 답하는 질문이다. 매핑은 내부와 외부 주소·포트를 연결한다.
+      text: 매핑은 바깥에 보이는 주소·포트를, 필터링은 어떤 출발지의 패킷을 받을지를 정한다
+      feedback: 맞다. 두 질문은 서로 독립적이다.
     - id: d
-      text: 어떤 DNS 이름을 어느 서버 IP로 바꿀까?
-      feedback: DNS 이름 조회는 NAT 매핑과 다른 기능이다. 매핑은 내부·외부의 통신 주소와 포트를 짝짓는다.
+      text: 매핑은 TCP에만, 필터링은 UDP에만 적용된다
+      feedback: 두 기준은 프로토콜별 구분이 아니다.
     - id: e
-      text: 어떤 내부 주소·포트와 어떤 외부 주소·포트를 서로 연결할까?
-      feedback: 맞다. 매핑은 내부 통신의 주소·포트를 NAT 바깥에서 보이는 주소·포트와 짝짓는다.
-    answer: e
-    feedback: 예를 들어 내부 192.168.0.10:3000을 외부에서 보이는 203.0.113.8:42000과 연결하는 것이 매핑이다.
-  - id: u12-l03-p02-q02
-    kind: choice
-    difficulty: medium
-    prompt: 매핑과 필터링을 구분한 설명으로 옳은 것은 무엇인가요?
-    choices:
-    - id: a
-      text: 매핑은 외부 상대를 허용하고, 필터링은 내부 포트를 정한다
-      feedback: 두 개념의 역할이 뒤바뀌었다. 매핑은 내부와 외부 주소·포트의 연결이고, 필터링은 외부에서 온 패킷을 허용할 조건이다.
-    - id: b
-      text: 매핑과 필터링은 모두 패킷의 암호화 방식이다
-      feedback: 둘 다 암호화 방식이 아니다. 주소·포트 연결과 수신 조건을 각각 설명하는 NAT 동작이다.
-    - id: c
-      text: 매핑은 목적지 서버의 주소이고, 필터링은 DNS 이름이다
-      feedback: 매핑은 서버의 목적지 주소를 뜻하지 않고 내부·외부 통신을 연결한다. 필터링도 DNS 이름을 뜻하지 않는다.
-    - id: d
-      text: 매핑은 TCP에만 있고 필터링은 UDP에만 있다
-      feedback: 이 Lesson의 세부 행동 유형은 주로 UDP NAT를 설명하지만, 용어의 역할을 TCP와 UDP로 나누는 것은 아니다.
-    - id: e
-      text: 매핑은 주소 관계, 필터링은 허용할 외부 출발지 조건을 다룬다
-      feedback: 맞다. 매핑이 내부 통신을 외부 주소·포트에 연결하고, 필터링이 그 매핑으로 어떤 외부 출발지의 패킷을 받을지 정한다.
-    answer: e
-    feedback: 두 질문을 따로 보면 동작이 선명해진다. “어떤 외부 주소를 쓰나?”는 매핑, “어떤 외부 발신자를 받나?”는 필터링이다.
-  question_placements:
-    - question_id: u12-l03-p02-q01
-      after_paragraph: 1
-    - question_id: u12-l03-p02-q02
-      after_paragraph: 3
-- page_id: advanced-nat-mapping-filtering-page-03
-  illustrations:
-  - file: assets/animations/u12-mapping-eim.svg
-    title: "매핑은 상대에 따라 달라질 수 있어요"
-    alt: "같은 A가 9.9.9.9와 새로 통신할 때 목적지 독립 매핑은 :42000을 재사용하고 목적지 종속 매핑은 다른 바깥 포트를 쓰는 것을 비교합니다."
-    caption: "상대가 바뀌어도 같은 바깥 주소를 쓰는지 봅니다."
-    after_paragraph: 0
-  questions:
-  - id: u12-l03-p03-q01
-    kind: choice
-    difficulty: easy
-    prompt: Endpoint-Independent Mapping에서는 같은 내부 주소·포트가 다른 외부 상대와 통신할 때 보통 어떻게 매핑되나요?
-    choices:
-    - id: a
-      text: 외부 상대가 바뀔 때마다 항상 다른 외부 포트를 쓴다
-      feedback: 이는 목적지에 따라 매핑을 다르게 만드는 동작에 가깝다. Endpoint-Independent Mapping은 외부 상대와 관계없이 같은 외부 매핑을 유지한다.
-    - id: b
-      text: 외부 상대의 도메인 이름을 내부 포트로 복사한다
-      feedback: 매핑은 도메인 이름을 복사하지 않는다. 내부 주소·포트에 대응하는 외부 주소·포트를 정한다.
-    - id: c
-      text: 같은 내부 주소·포트라면 목적지와 무관하게 같은 외부 매핑을 재사용한다
-      feedback: 맞다. Endpoint-Independent Mapping(EIM)은 목적지 IP나 포트가 바뀌어도 같은 내부 endpoint에 같은 외부 매핑을 사용한다.
-    - id: d
-      text: 내부 포트가 같으면 외부 목적지와 관계없이 다른 외부 포트를 배정한다
-      feedback: EIM은 같은 내부 endpoint에 대해 외부 목적지가 바뀌어도 같은 외부 매핑을 사용한다. 목적지마다 다른 포트를 쓰는 동작은 목적지 종속 매핑에 가깝다.
-    - id: e
-      text: 목적지 웹 서버의 포트 번호를 내부 포트로 복사한다
-      feedback: 목적지 포트가 내부 포트로 복사되는 것은 EIM의 정의가 아니다. EIM은 내부 endpoint에 대응하는 바깥 endpoint가 목적지와 무관하게 유지되는 동작이다.
+      text: 매핑은 공유기 안쪽에서, 필터링은 AI 서버에서 처리한다
+      feedback: 둘 다 NAT 장비의 동작이다.
     answer: c
-    feedback: EIM의 핵심은 외부 목적지가 달라져도 같은 내부 endpoint의 외부 매핑이 유지된다는 점이다.
-  - id: u12-l03-p03-q02
+    feedback: 매핑은 바깥에 어떻게 보이는지, 필터링은 누구의 패킷을 받을지라는 서로 다른 질문이다.
+  - id: u12-l05-p02-q02
     kind: choice
     difficulty: medium
-    prompt: 같은 내부 주소·포트가 서로 다른 외부 목적지와 통신할 때 외부 매핑이 목적지에 따라 달라진다면, 무엇을 나타내는 동작인가요?
+    prompt: 지우의 메모에 "우리 공유기는 Port Restricted라서 화상회의가 안 될 거야"라고 적혀 있다. 이 메모를 고치려면 무엇을 따로 확인해야 할까?
     choices:
     - id: a
-      text: Endpoint-Independent Mapping
-      feedback: EIM은 같은 내부 endpoint에 대해 외부 목적지와 무관하게 같은 매핑을 사용한다.
+      text: 공유기의 제조사와 모델명이 무엇인지
+      feedback: 모델명만으로는 동작을 알 수 없다.
     - id: b
-      text: Endpoint-Independent Filtering
-      feedback: EIF는 들어오는 패킷을 어떤 외부 출발지에서 허용할지에 관한 필터링 동작이다. 매핑을 만드는 기준이 아니다.
+      text: 바깥 포트가 상대마다 바뀌는지와 받는 출발지
+      feedback: 맞다. 매핑과 필터링을 각각 확인해야 연결 가능성을 판단할 수 있다.
     - id: c
-      text: Address-and-Port-Dependent Filtering
-      feedback: 이는 외부에서 온 패킷의 출발지 IP와 포트를 확인하는 필터링 유형이다. 질문은 외부 목적지에 따라 매핑이 달라지는 동작을 묻는다.
+      text: AI 서버의 8080번 포트가 열려 있는지 여부
+      feedback: 화상회의의 연결 가능성과는 다른 문제다.
     - id: d
-      text: Endpoint-Dependent Mapping
-      feedback: 맞다. Endpoint-Dependent Mapping에서는 외부 목적지 주소 또는 목적지 endpoint가 달라질 때 다른 외부 매핑을 사용할 수 있다.
+      text: 공유기 WAN 주소가 공인 주소인지
+      feedback: WAN 주소가 공인이어도 매핑과 필터링은 별개로 정해진다.
     - id: e
-      text: Address-Dependent Filtering
-      feedback: ADF는 외부에서 온 패킷의 출발지 IP를 확인하는 필터링 유형이다. 질문은 외부 목적지에 따라 매핑이 달라지는 동작을 묻는다.
-    answer: d
-    feedback: 이 동작은 목적지에 의존하는 매핑이다. 예전 Symmetric NAT라는 이름에서 핵심 차이로 다루던 부분이지만, 요즘은 매핑과 필터링을 따로 설명하는 편이 명확하다.
+      text: UPnP가 꺼져 있는지
+      feedback: UPnP 여부는 NAT의 매핑·필터링 동작을 대신 설명하지 못한다.
+    answer: b
+    feedback: '🗺️ 필요한 것만 남기기: 옛 유형 이름 대신 ''매핑''과 ''필터링'' 두 기준만 남기면 판단할 수 있다.'
   question_placements:
-    - question_id: u12-l03-p03-q01
-      after_paragraph: 2
-    - question_id: u12-l03-p03-q02
-      after_paragraph: 4
-- page_id: advanced-nat-mapping-filtering-page-04
-  illustrations:
-  - file: assets/animations/u12-mapping-filtering.svg
-    title: "필터링은 받을 상대를 정해요"
-    alt: "15.15.15.15:7777에서 패킷이 오면 EIF와 ADF는 허용할 수 있고 포트까지 비교하는 APDF는 막을 수 있음을 보여 줍니다."
-    caption: "필터링은 누구든, 같은 IP, 같은 IP·포트 순으로 좁아집니다."
-    after_paragraph: 0
+  - question_id: u12-l05-p02-q01
+    after_paragraph: 3
+- page_id: advanced-nat-mapping-filtering-page-03
   questions:
-  - id: u12-l03-p04-q01
+  - id: u12-l05-p03-q01
     kind: choice
     difficulty: easy
-    prompt: Address-Dependent Filtering은 어느 외부 패킷을 허용하나요?
+    prompt: 상대와 무관한 매핑(EIM)이란 무엇인가?
     choices:
     - id: a
-      text: 이전에 통신한 원격 IP 주소에서 온 패킷
-      feedback: 맞다. 원격 IP가 이전 목적지 IP와 같으면 허용할 수 있고, 그 IP의 출발지 포트는 달라도 된다.
+      text: 상대마다 바깥 포트를 새로 정하는 매핑
+      feedback: 그것은 상대에 따라 달라지는 매핑이다.
     - id: b
-      text: 이전에 보낸 적 없는 모든 IP와 포트에서 온 패킷
-      feedback: Address-Dependent Filtering은 아무 출발지나 허용하지 않는다. 이전에 통신한 원격 IP 주소를 확인한다.
+      text: 바깥에서 온 모든 패킷을 허용하는 필터링
+      feedback: 허용 범위는 필터링의 문제이고 매핑과는 별개다.
     - id: c
-      text: 원격 IP 주소는 같고 출발지 포트만 다른 패킷
-      feedback: 이 경우는 Address-Dependent Filtering에서 허용할 수 있다. 질문의 유형은 그보다 좁게 원격 IP와 포트를 모두 확인한다.
+      text: 안쪽 주소를 공인 주소로 영구히 고정하는 매핑
+      feedback: 주소를 영구히 고정하는 것이 아니라 같은 바깥 endpoint를 재사용하는 동작이다.
     - id: d
-      text: 원격 IP와 포트가 모두 이전 기록과 같은 패킷만
-      feedback: IP와 포트 모두 확인하는 것은 Address-and-Port-Dependent Filtering이다. Address-Dependent Filtering은 IP 주소만 비교한다.
+      text: 상대가 바뀌어도 같은 바깥 주소·포트를 쓰는 매핑
+      feedback: 맞다. 서버가 관찰한 바깥 주소를 다른 상대에게도 쓸 수 있다.
     - id: e
-      text: 다른 원격 IP에서 왔지만 출발지 포트가 같은 패킷
-      feedback: 포트만 같다고 허용되는 것은 아니다. Address-Dependent Filtering은 IP를, Address-and-Port-Dependent Filtering은 IP와 포트를 함께 확인한다.
-    answer: a
-    feedback: 원격 IP 주소가 기록과 같으면 허용하는 유형이다. 출발지 포트까지 맞아야 하는 것은 아니다.
-  - id: u12-l03-p04-q02
+      text: TCP 연결이 끊기면 포트를 바로 반납하는 매핑
+      feedback: 포트 반납 시점은 EIM의 정의가 아니다.
+    answer: d
+    feedback: EIM은 같은 내부 endpoint가 어느 상대와 통신하든 같은 바깥 endpoint를 쓰는 동작이다.
+  - id: u12-l05-p03-q02
     kind: choice
     difficulty: medium
-    prompt: 내부 기기가 15.15.15.15:5555로 먼저 패킷을 보냈습니다. Address-and-Port-Dependent Filtering에서 15.15.15.15:7777의 패킷은 어떻게 처리될 수 있나요?
+    prompt: 주소 확인 서버는 박 팀장 집 공유기를 `192.0.2.123:40001`로 봤는데, 협력사로 보낼 때는 `:40017`로 나간다. 어떤 매핑이며 직접 연결에 어떤 영향이 있을까?
     choices:
     - id: a
-      text: 무조건 허용된다. 같은 IP이면 포트는 확인하지 않는다
-      feedback: 이 설명은 Address-Dependent Filtering에 해당한다. Address-and-Port-Dependent Filtering은 IP와 포트를 함께 확인한다.
+      text: 상대와 무관한 매핑이라 알려 준 주소가 그대로 맞아 연결이 쉽다
+      feedback: 상대와 무관한 매핑이라면 포트가 같아야 한다. 이 경우 포트가 달라졌다.
     - id: b
-      text: 출발지 IP가 같아도 포트가 다르므로 허용되지 않을 수 있다
-      feedback: 맞다. 이 유형은 이전에 통신한 원격 IP와 원격 포트가 모두 맞는지 확인한다.
+      text: 필터링이 막은 것이라 포트 번호와는 무관하다
+      feedback: 필터링이 아니라 매핑의 차이로 포트 번호가 달라졌다.
     - id: c
-      text: 내부 기기의 포트를 7777로 바꾸어 패킷을 전달한다
-      feedback: 필터링은 내부 포트를 7777로 고쳐 주는 동작이 아니다. 외부에서 온 패킷의 출발지 조건이 기록과 맞는지 검사한다.
+      text: UPnP 매핑이라서 항상 안정적으로 연결된다
+      feedback: UPnP와 무관한 상황이다.
     - id: d
-      text: 같은 IP에서 왔으므로 포트와 관계없이 허용된다
-      feedback: 같은 IP만 보는 것은 Address-Dependent Filtering의 기준이다. Address-and-Port-Dependent Filtering은 포트도 비교한다.
+      text: 포트가 바뀐 것은 오류이므로 공유기를 교체해야 한다
+      feedback: 상대에 따라 포트가 달라지는 것은 장비의 동작 방식 중 하나다.
     - id: e
-      text: 내부 기기가 응답 패킷을 먼저 다시 보내야만 NAT가 출발지 포트를 확인한다
-      feedback: 필터링은 들어오는 패킷의 출발지 정보를 기존 허용 조건과 비교한다. 이 문제에서는 원격 IP와 포트가 다르므로 통과하지 않을 수 있다.
-    answer: b
-    feedback: IP는 같지만 포트가 다르다. 주소와 포트에 종속된 필터링에서는 기존 통신 상대 endpoint와 다르므로 허용되지 않을 수 있다.
+      text: 상대에 따라 달라지는 매핑이라 알려 준 주소가 협력사에게 맞지 않는다
+      feedback: 맞다. 상대마다 바깥 포트가 다르면 소개받은 주소로는 연결하기 어렵다.
+    answer: e
+    feedback: '🧩 쪼개기: 같은 통신을 ''서버에게 보일 때''와 ''협력사에게 보일 때''로 나누면 바깥 포트가 달라졌음이 보인다.'
   question_placements:
-    - question_id: u12-l03-p04-q01
-      after_paragraph: 2
-    - question_id: u12-l03-p04-q02
-      after_paragraph: 3
+  - question_id: u12-l05-p03-q01
+    after_paragraph: 3
+- page_id: advanced-nat-mapping-filtering-page-04
+  questions:
+  - id: u12-l05-p04-q01
+    kind: choice
+    difficulty: easy
+    prompt: 같은 IP만 받음(ADF) 필터링은 어떤 패킷을 받아 주는가?
+    choices:
+    - id: a
+      text: 이전에 통신한 원격 IP에서 온 패킷
+      feedback: 맞다. IP가 같으면 포트가 달라도 받는다.
+    - id: b
+      text: 이전에 통신한 IP와 포트가 모두 같은 패킷만
+      feedback: 그것은 APDF의 기준이다.
+    - id: c
+      text: 바깥의 모든 출발지에서 온 패킷
+      feedback: 그것은 EIF의 기준이다.
+    - id: d
+      text: 같은 사설 대역 안에서 온 패킷만
+      feedback: 필터링은 바깥에서 온 패킷을 대상으로 한다.
+    - id: e
+      text: TCP로 온 패킷만
+      feedback: 프로토콜 종류가 아니라 출발지를 비교하는 기준이다.
+    answer: a
+    feedback: 필터링은 EIF(누구든) → ADF(같은 IP) → APDF(같은 IP와 포트) 순으로 받아 주는 범위가 좁아진다.
+  - id: u12-l05-p04-q02
+    kind: choice
+    difficulty: medium
+    prompt: 지우 PC가 협력사 서버 `203.0.113.15:6000`에 UDP 패킷을 먼저 보냈다. 이후 같은 IP의 `:6001`에서 패킷이 도착했다. 사무실 NAT가 같은 IP만 받음(ADF)일 때와 같은 IP·포트만 받음(APDF)일 때의 결과는?
+    choices:
+    - id: a
+      text: ADF는 받지 않고 APDF는 받아 준다
+      feedback: 두 방식을 서로 바꾸어 이해한 것이다.
+    - id: b
+      text: 둘 다 IP가 같으므로 받아 준다
+      feedback: APDF는 포트까지 같아야 받는다.
+    - id: c
+      text: 둘 다 포트가 달라서 받지 않는다
+      feedback: ADF는 IP만 비교하므로 받아 준다.
+    - id: d
+      text: ADF는 받아 주고 APDF는 받지 않는다
+      feedback: 맞다. IP만 보면 같고, 포트까지 보면 다르다.
+    - id: e
+      text: 포트 포워딩 규칙이 있어야만 어느 쪽이든 받아 준다
+      feedback: 규칙 없이도 먼저 나간 통신의 상대에게서 온 패킷은 필터링 기준으로 판단한다.
+    answer: d
+    feedback: '🧩 쪼개기: 출발지를 IP와 포트로 쪼개 이전 통신 상대와 하나씩 비교하면 방식별 결과가 갈린다.'
+  question_placements:
+  - question_id: u12-l05-p04-q01
+    after_paragraph: 3
 - page_id: advanced-nat-mapping-filtering-page-05
   illustrations:
   - file: assets/animations/u12-mapping-cone.svg
-    title: "옛 Cone 이름 풀어 읽기"
-    alt: "Full Cone, Restricted Cone, Port Restricted, Symmetric 이름을 매핑 칸과 필터링 칸으로 나누어 차례로 풀어 읽는 표입니다."
-    caption: "옛 이름은 매핑과 필터링 두 기준으로 나누어 읽습니다."
+    title: 옛 Cone 이름 풀어 읽기
+    alt: Full Cone, Restricted Cone, Port Restricted Cone, Symmetric 이름을 매핑과 필터링 두 기준으로 나누어 보여 주는 그림입니다.
+    caption: 이름보다 두 기준을 따로 확인합니다.
     after_paragraph: 0
   questions:
-  - id: u12-l03-p05-q01
+  - id: u12-l05-p05-q01
     kind: choice
     difficulty: easy
-    prompt: 전통적인 Cone NAT 분류에서 Port Restricted Cone을 이해하는 핵심은 무엇인가요?
+    prompt: Cone이라는 옛 이름을 바르게 이해한 것은 무엇인가?
     choices:
     - id: a
-      text: 외부에서 오는 패킷의 출발지 IP와 포트 조건을 모두 확인한다
-      feedback: 맞다. 전통적 설명에서 Port Restricted Cone은 이전에 통신한 외부 IP뿐 아니라 포트도 확인한다.
+      text: Symmetric은 필터링이 가장 강한 NAT를 뜻하는 현재의 표준 등급이다
+      feedback: Symmetric의 핵심은 매핑이 목적지에 따라 달라진다는 점이고, 등급이 아니다.
     - id: b
-      text: 패킷의 출발지 IP와 포트를 전혀 확인하지 않는다
-      feedback: 이는 Full Cone의 전통적 설명에 가깝다. Port Restricted Cone은 외부 출발지 IP와 포트를 함께 제한한다.
+      text: Full Cone이면 어떤 상대와도 항상 연결에 성공한다
+      feedback: 연결은 양쪽 조건과 방화벽에도 달려 있다.
     - id: c
-      text: 이전에 통신한 원격 IP 주소만 확인하고 포트는 무시한다
-      feedback: 이는 Address-Dependent Filtering의 설명이다. Port Restricted Cone의 전통적 설명은 원격 IP와 포트를 함께 확인한다.
+      text: 옛 분류이므로 실제 동작은 매핑과 필터링을 따로 확인한다
+      feedback: 맞다. 이름보다 두 기준을 확인하는 것이 정확하다.
     - id: d
-      text: 내부 포트마다 별도의 공인 IP 주소를 새로 신청한다
-      feedback: 이 분류는 공인 IP 신청 절차를 뜻하지 않는다. NAT 매핑과 외부 출발지 허용 조건을 설명한다.
+      text: Cone 이름은 공유기의 처리 속도 등급이다
+      feedback: 속도와 무관한 NAT 동작의 분류다.
     - id: e
-      text: 내부에서 시작한 모든 통신을 외부 상대와 상관없이 같은 기준으로 받아들인다
-      feedback: 외부 상대와 무관하게 받아들이는 설명은 Full Cone의 전통적 필터링 특성에 가깝다. Port Restricted Cone은 IP와 포트를 확인한다.
-    answer: a
-    feedback: 전통적 용어에서는 외부에서 온 출발지 IP와 포트가 이전에 통신한 상대와 맞는지 확인한다.
-  - id: u12-l03-p05-q02
+      text: Restricted Cone은 목적지마다 매핑이 달라진다
+      feedback: Restricted Cone은 보통 매핑이 목적지와 무관하다고 설명한다.
+    answer: c
+    feedback: 옛 Cone 이름은 두 기준을 묶은 말이므로 매핑 이야기인지 필터링 이야기인지 나눠 읽는다.
+  - id: u12-l05-p05-q02
     kind: choice
     difficulty: medium
-    prompt: Full Cone, Restricted Cone, Port Restricted Cone이라는 이름을 오늘날 NAT 동작을 설명할 때 다루는 방법으로 가장 알맞은 것은 무엇인가요?
+    prompt: 회사 공유기를 바꾸려는데 한 제품 설명에 "Full Cone 지원, P2P에 최적"이라고 적혀 있다. 서 이사에게 할 알맞은 조언은?
     choices:
     - id: a
-      text: 세 이름만 알면 모든 공유기 동작을 정확히 예측할 수 있다
-      feedback: 실제 구현은 다양하며 이름만으로 모든 동작을 예측할 수 없다. 매핑과 필터링을 따로 보는 편이 더 분명하다.
+      text: Full Cone이면 가장 안전하므로 바로 구매한다
+      feedback: 넓게 받아 준다는 것은 오히려 노출이 크다는 뜻이다.
     - id: b
-      text: 이 세 이름만으로 매핑과 필터링 동작을 각각 정확히 구분할 수 있다
-      feedback: 세 이름은 여러 동작을 한데 묶은 전통적 분류다. 정확히 비교하려면 매핑과 필터링을 각각 확인해야 한다.
+      text: 이름 대신 매핑·필터링 동작을 확인하고 노출도 따진다
+      feedback: 맞다. 연결이 쉬워지는 대가로 노출이 늘어난다.
     - id: c
-      text: 오늘날의 모든 NAT 표준에서 이 세 이름을 필수로 사용한다
-      feedback: 현재의 행동 요구사항은 매핑과 필터링 기준을 구분해 기술한다. Cone 용어는 오래된 통합 분류로 다룬다.
+      text: Cone이라는 이름이 붙은 제품은 방화벽이 필요 없다
+      feedback: NAT 동작과 방화벽 정책은 별개다.
     - id: d
-      text: 매핑과 필터링의 차이를 익힌 뒤 과거 분류와 연결해 읽는다
-      feedback: 맞다. 이 이름은 두 동작 기준을 함께 묶어 설명한 전통적 분류로 소개하고, 모든 장비에 그대로 적용하지 않는다.
+      text: 광고 문구이므로 무시하고 가장 싼 제품을 산다
+      feedback: P2P 연결이 업무에 필요하다면 동작을 확인할 이유가 있다.
     - id: e
-      text: 포트 포워딩과 같은 관리자의 고정 전달 규칙을 뜻한다
-      feedback: Cone 이름은 NAT의 매핑·필터링 동작을 설명하던 분류다. 관리자가 만든 포트 포워딩 규칙과는 다른 개념이다.
-    answer: d
-    feedback: Cone 이름을 외우는 것보다 매핑과 필터링이 각각 어떤 기준으로 동작하는지 이해하는 것이 중요하다.
+      text: Symmetric이라고 적힌 제품이 가장 안전하니 그것만 본다
+      feedback: Symmetric은 보안 등급이 아니다.
+    answer: b
+    feedback: '⚖️ 대가 따지기: P2P가 쉬워지는 편리함과 바깥에 더 열리는 노출을 함께 저울질한다.'
   question_placements:
-    - question_id: u12-l03-p05-q01
-      after_paragraph: 2
-    - question_id: u12-l03-p05-q02
-      after_paragraph: 3
+  - question_id: u12-l05-p05-q01
+    after_paragraph: 3
 - page_id: advanced-nat-mapping-filtering-page-06
   illustrations:
   - file: assets/animations/u12-mapping-hole-punching.svg
-    title: "UDP 홀 펀칭"
-    alt: "A와 B가 소개 서버에 연락하고, 서버가 서로의 바깥 주소를 알려 준 뒤, 두 피어가 동시에 서로에게 패킷을 보내 직접 연결되는 모습입니다."
-    caption: "양쪽이 먼저 보낸 패킷으로 직접 경로를 시도합니다."
+    title: UDP 홀 펀칭
+    alt: 두 기기가 소개 서버를 통해 서로의 바깥 주소를 알고 동시에 먼저 보내 각자의 공유기에 매핑을 만드는 모습을 보여 주는 그림입니다.
+    caption: 양쪽이 먼저 보내 길을 엽니다.
     after_paragraph: 0
   questions:
-  - id: u12-l03-p06-q01
+  - id: u12-l05-p06-q01
     kind: choice
     difficulty: easy
-    prompt: UDP 홀 펀칭이 시도하는 일은 무엇인가요?
+    prompt: 홀 펀칭에서 양쪽이 서로에게 먼저 패킷을 보내는 이유는 무엇인가?
     choices:
     - id: a
-      text: 두 피어가 서로의 사설 주소만 사용해 인터넷 라우터를 우회한다
-      feedback: 사설 주소는 보통 인터넷에서 직접 찾아갈 수 없다. 피어들은 외부에서 보이는 주소와 포트를 교환해 연결을 시도한다.
+      text: 공유기에 포트 포워딩 규칙을 자동으로 저장하려는 것
+      feedback: 영구 규칙이 아니라 임시 상태를 만드는 것이다.
     - id: b
-      text: 두 피어가 서로에게 먼저 UDP 패킷을 보내 NAT에 매핑을 만들고, 그 매핑을 이용해 직접 통신을 시도한다
-      feedback: 맞다. 양쪽이 먼저 바깥으로 패킷을 보내면 NAT에 매핑이 생기고, 필터링 조건도 허용할 때 직접 통신을 시도할 수 있다.
+      text: 소개 서버에게 데이터를 대신 전달하도록 알리려는 것
+      feedback: 그것은 중계 방식이고 홀 펀칭은 직접 경로를 만드는 방법이다.
     - id: c
-      text: STUN 서버가 게임 영상 전체를 대신 전송한다
-      feedback: STUN은 외부에서 관찰되는 주소 정보를 알아내는 데 도움을 준다. 데이터를 계속 전달하는 중계는 TURN 같은 별도 역할이다.
+      text: 방화벽을 일시적으로 꺼 두려는 것
+      feedback: 방화벽을 끄는 것이 아니라 NAT의 상태를 이용하는 것이다.
     - id: d
-      text: 각 피어가 소개 서버에만 패킷을 보내고 상대에게는 패킷을 보내지 않는다
-      feedback: 소개 서버와 통신하는 것만으로 직접 P2P 경로가 생기지는 않는다. 각 피어가 상대의 외부 주소·포트로도 패킷을 보내야 한다.
+      text: 상대 공유기의 관리자 암호를 얻으려는 것
+      feedback: 암호를 얻는 것과는 관계가 없다.
     - id: e
-      text: 연결 시도 뒤에도 상대가 바깥에서 보이는 주소를 알 필요가 없다
-      feedback: 피어가 서로의 외부 주소·포트를 알아야 해당 주소로 패킷을 보낼 수 있다. 홀 펀칭은 이 정보와 NAT 상태를 이용한다.
-    answer: b
-    feedback: 양쪽이 외부 주소로 패킷을 보내고 응답을 주고받아 직접 경로를 만들 수 있는지 확인한다. 성공이 항상 보장되지는 않는다.
-  - id: u12-l03-p06-q02
+      text: 각자의 NAT에 상대를 향한 허용 상태를 만들려는 것
+      feedback: 맞다. 먼저 보낸 기록이 있어야 상대의 패킷을 받아 줄 수 있다.
+    answer: e
+    feedback: 먼저 보낸 패킷이 NAT에 '이 상대와 통신 중'이라는 상태를 만들어 상대의 패킷을 받아 준다.
+  - id: u12-l05-p06-q02
     kind: choice
     difficulty: medium
-    prompt: P2P 연결을 소개하거나 외부에서 보이는 주소를 알려 주는 서버가 있다고 해서, 그 서버가 항상 데이터도 중계한다고 볼 수 있나요?
+    prompt: 박 팀장 집 PC와 지우 PC가 서로의 바깥 주소를 받았는데 박 팀장 쪽만 패킷을 보냈다. 지우 쪽 NAT가 같은 IP·포트만 받는 방식일 때 연결이 실패할 수 있는 이유는?
     choices:
     - id: a
-      text: 그렇다. 주소를 알려 주는 서버는 반드시 영상과 음성도 모두 전달한다
-      feedback: 연결 정보를 알려 주는 역할과 실제 데이터를 중계하는 역할은 다를 수 있다. 직접 연결에 성공하면 데이터는 피어 사이로 흐를 수 있다.
+      text: 소개 서버가 느려서 주소가 만료되었다
+      feedback: 주소 만료가 아니라 상대 NAT의 상태 문제다.
     - id: b
-      text: 그렇다. NAT가 있으면 어떤 방식에서도 직접 통신할 수 없다
-      feedback: NAT가 있어도 조건이 맞으면 직접 통신을 시도할 수 있다. 단, 실패할 수 있으므로 중계 대안도 준비할 수 있다.
+      text: 박 팀장 쪽 NAT는 패킷을 바깥으로 보낼 수 없다
+      feedback: 나가는 패킷은 문제없이 나간다.
     - id: c
-      text: 아니다. 소개 서버와 데이터 중계 서버는 역할이 다르며, 연결이 직접 되면 데이터는 피어 사이로 흐를 수 있다
-      feedback: 맞다. Rendezvous/signaling 서버는 상대와 연결 정보를 교환하도록 돕고, TURN 서버는 직접 경로가 안 될 때 데이터를 릴레이한다.
+      text: 지우 쪽 NAT에 박 팀장을 향해 나간 행이 없어 첫 패킷이 막힐 수 있다
+      feedback: 맞다. 양쪽이 먼저 보내야 각자의 NAT가 상대를 받아 줄 상태가 된다.
     - id: d
-      text: 아니다. 소개 서버와 데이터 경로가 분리되면 피어는 연결 정보를 교환하고 직접 데이터를 보낼 수 있다
-      feedback: 이 설명이 맞다. 소개 서버가 연결 정보를 전달해도 실제 데이터가 항상 그 서버를 지나는 것은 아니다.
+      text: UDP는 한쪽만 보내면 항상 성공한다
+      feedback: 한쪽만 보내면 상대 NAT가 막을 수 있다.
     - id: e
-      text: 아니다. Rendezvous 서버는 연결 정보를 전달할 수 있지만, 직접 연결이 안 되면 별도의 중계가 필요할 수 있다
-      feedback: 역할을 잘 구분했다. 소개 서버는 피어를 연결하도록 돕고, 직접 연결이 실패하면 TURN 같은 서버가 실제 데이터를 전달할 수 있다.
+      text: 바깥 주소는 한 번 받으면 영구적이라 문제가 없다
+      feedback: 바깥 주소와 매핑은 시간이 지나면 바뀔 수 있다.
     answer: c
-    feedback: 소개·주소 확인과 실제 데이터 전달은 다른 역할이다. 이 차이를 알아야 P2P와 TURN 중계를 구분할 수 있다.
+    feedback: '📋 순서대로 확인하기: 소개 → 주소 교환 → 양쪽이 먼저 보내기라는 순서가 지켜져야 길이 열린다.'
   question_placements:
-    - question_id: u12-l03-p06-q01
-      after_paragraph: 6
-    - question_id: u12-l03-p06-q02
-      after_paragraph: 7
+  - question_id: u12-l05-p06-q01
+    after_paragraph: 3
 - page_id: advanced-nat-mapping-filtering-page-07
   illustrations:
   - file: assets/animations/u12-mapping-relay.svg
-    title: "직접이 안 되면 중계로"
-    alt: "A가 B에게 직접 보낸 패킷이 막히자 TURN 서버를 거쳐 B에게 전달되는 중계 경로를 위아래로 비교합니다."
-    caption: "직접 연결이 안 되면 TURN 같은 중계 서버를 씁니다."
+    title: 직접이 안 되면 중계로
+    alt: 직접 연결이 막히면 TURN 서버가 데이터를 대신 전달하는 모습을 보여 주는 그림입니다.
+    caption: 중계는 비용이 들지만 연결을 이어 줍니다.
     after_paragraph: 0
   questions:
-  - id: u12-l03-p07-q01
+  - id: u12-l05-p07-q01
     kind: choice
     difficulty: easy
-    prompt: 홀 펀칭을 시도해도 직접 P2P 연결이 되지 않을 때 데이터를 전달할 대안은 무엇인가요?
+    prompt: STUN과 TURN의 역할 차이로 알맞은 것은 무엇인가?
     choices:
     - id: a
-      text: TURN 같은 중계 서버
-      feedback: 맞다. TURN은 직접 통신 경로를 만들기 어려울 때 서버가 피어 사이의 데이터를 중계하도록 한다.
+      text: STUN은 바깥 주소를 알아내도록 돕고, TURN은 데이터를 대신 전달한다
+      feedback: 맞다. 주소 확인과 데이터 중계는 서로 다른 일이다.
     - id: b
-      text: DHCP 서버
-      feedback: DHCP는 네트워크 기기에 주소 설정을 제공한다. 피어 사이의 데이터를 이어 주는 중계 서버가 아니다.
+      text: STUN은 데이터를 대신 전달하고, TURN은 바깥 주소를 알려 준다
+      feedback: 두 역할을 서로 바꾸어 이해한 것이다.
     - id: c
-      text: STUN 서버
-      feedback: STUN은 외부에서 보이는 주소를 알아내는 데 도움을 주지만, 일반적으로 직접 연결 실패 뒤 데이터를 대신 전달하는 역할은 TURN이 맡는다.
+      text: 둘 다 통신 내용을 암호화하는 프로토콜이다
+      feedback: 암호화가 주된 역할이 아니다.
     - id: d
-      text: 포트 포워딩 규칙
-      feedback: 포트 포워딩은 관리자가 특정 외부 포트를 내부 주소·포트에 연결하는 설정이다. 서로 다른 NAT 환경의 피어 데이터를 중계하는 서버는 아니다.
+      text: STUN은 포트 포워딩 규칙을 만들고 TURN은 UPnP 줄을 지운다
+      feedback: 두 기술은 공유기 설정을 바꾸지 않는다.
     - id: e
-      text: UPnP 요청
-      feedback: UPnP는 프로그램이 공유기에 포트 설정을 요청할 수 있게 돕지만, 여러 NAT를 건너 피어 사이 데이터를 전달하는 중계 서버는 아니다.
+      text: 둘 다 공유기 안에서 동작하는 NAT 기능이다
+      feedback: 두 기술은 보통 바깥의 서버에서 동작한다.
     answer: a
-    feedback: TURN은 중계 주소를 제공해 직접 연결이 어려운 두 피어의 트래픽을 이어 준다.
-  - id: u12-l03-p07-q02
+    feedback: STUN은 내 바깥 주소를 알려 주고, TURN은 직접 경로가 안 될 때 데이터를 중계한다.
+  - id: u12-l05-p07-q02
     kind: choice
     difficulty: medium
-    prompt: 홀 펀칭과 TURN에 대한 설명으로 옳은 것은 무엇인가요?
+    prompt: 한결디자인 방화벽에 "외부로 나가는 UDP 차단" 규칙이 추가된 주부터 외부 영상 통화 서비스의 화질이 떨어지고 지연이 늘었다. 서비스 쪽에서는 중계 경로 사용이 늘었다는 통계가 나왔다. 가장 그럴듯한 연결 고리는?
     choices:
     - id: a
-      text: 둘 다 모든 NAT 구성에서 직접 통신을 보장한다
-      feedback: 홀 펀칭은 매핑과 필터링, 네트워크 구성에 따라 실패할 수 있다. TURN은 실패한 경우 데이터를 중계하는 대안이다.
+      text: 중계 서버가 UPnP로 포트를 열어 통화가 느려졌다
+      feedback: UPnP가 트래픽을 늘리지 않는다.
     - id: b
-      text: TURN은 외부 주소를 알려 주기만 하고 데이터를 전달하지 않는다
-      feedback: 외부 주소를 알아내는 역할과 달리 TURN은 실제 피어 간 데이터를 릴레이한다.
+      text: UDP를 막으면 영상 통화가 자동으로 더 많이 시작된다
+      feedback: 통화 시도가 늘어난다는 근거가 없다.
     - id: c
-      text: 직접 연결이 실패하면 TURN이 데이터를 중계할 수 있지만 서버 자원이 더 든다
-      feedback: 맞다. 중계는 연결 가능성을 높이는 대안이지만 서버가 트래픽을 전달하므로 전송량과 자원이 든다.
+      text: 방화벽 규칙과 트래픽 증가는 서로 무관한 우연이다
+      feedback: UDP 차단은 직접 경로를 막아 중계로 넘어가게 하는 원인이 될 수 있다.
     - id: d
-      text: 홀 펀칭은 포트 포워딩과 같은 수동 설정이다
-      feedback: 홀 펀칭은 애플리케이션이 통신을 시도해 NAT의 동적 상태를 활용한다. 포트 포워딩은 관리자가 규칙을 직접 등록한다.
+      text: 직접 UDP 경로가 막혀 중계로 넘어가 지연이 늘었다
+      feedback: 맞다. 직접 경로가 막히면 연결은 이어지지만 중계를 거쳐 지연과 서버 부담이 는다.
     - id: e
-      text: TURN은 NAT의 매핑이나 필터링과 관계없는 암호화 방식이다
-      feedback: TURN은 NAT traversal을 위한 중계 프로토콜이다. 데이터 암호화 방식 자체를 뜻하지 않는다.
-    answer: c
-    feedback: 직접 경로를 우선 시도하고, 만들 수 없으면 TURN 중계로 전환할 수 있다. 어느 방식도 네트워크 조건을 무시하지는 않는다.
+      text: NAT 변환표가 가득 차서 중계가 생겼다
+      feedback: 변환표 용량과 중계의 사용은 관련이 없다.
+    answer: d
+    feedback: '⚖️ 대가 따지기: 직접 경로가 막히면 연결은 이어지지만 중계 서버의 트래픽과 비용이라는 대가를 치른다.'
   question_placements:
-    - question_id: u12-l03-p07-q01
-      after_paragraph: 2
-    - question_id: u12-l03-p07-q02
-      after_paragraph: 3
+  - question_id: u12-l05-p07-q01
+    after_paragraph: 2
 ---
-
-## NAT 뒤에서 피어끼리 만나기 어려운 이유
+## 포트를 안 열었는데 화상회의는 어떻게 될까?
 
 <!-- learn-page-id: advanced-nat-mapping-filtering-page-01 -->
 
-Unit 12 Lesson 2에서는 내부 기기가 먼저 통신을 시작하면 NAT가 안쪽 주소·포트와 바깥에서 보이는 주소·포트를 연결해 기록하는 과정을 살펴봤다. 웹처럼 기기가 서버에 먼저 요청하는 통신은 이 기록을 이용해 응답을 되돌릴 수 있다. 그런데 두 기기가 서로 데이터를 주고받는 P2P(peer-to-peer, 피어 간 통신)에서는 한쪽이 보낸 첫 패킷을 상대의 NAT가 받아들일지 문제가 된다.
+UPnP를 끈 다음 날, 박 팀장이 걱정스레 묻는다. "해외 협력사랑 화상회의를 하다가 끊기면 어떡해요?" 그런데 회의는 멀쩡하다. 양쪽 모두 공유기 뒤에 있고 아무도 포트를 열어 주지 않았는데, 영상과 음성이 오간다. 바깥에서 먼저 온 요청은 막혀서 포트 포워딩이 필요했는데, 이 연결은 어떻게 된 걸까?
 
-P2P는 중앙 서버가 모든 데이터를 전달하는 대신, 두 피어가 직접 데이터를 주고받는 방식이다. 게임의 상태 정보나 음성·영상처럼 양쪽이 자주 데이터를 교환하는 서비스에서 직접 경로를 만들면 중계 서버의 부담을 줄일 수 있다. 다만 연결을 시작할 때 상대를 소개하거나 주소 정보를 알려 주는 서버를 함께 사용할 수 있으며, 그런 서버가 있다고 해서 모든 데이터가 반드시 그 서버를 지난다는 뜻은 아니다.
+가장 흔한 답은 양쪽이 모두 서비스의 서버로 안쪽에서 바깥으로 먼저 연결하는 방식이다. 앞에서 본 대로 안쪽에서 먼저 나간 통신에는 자동 행이 생기므로, 영상과 음성이 서비스 서버를 거쳐 오가면 포트를 열 일이 없다. 이것이 가장 단순한 경우다.
 
-각 피어는 보통 공유기나 NAT 뒤에 있어 내부 사설 주소만으로는 인터넷의 상대가 바로 찾아오기 어렵다. NAT는 안쪽에서 먼저 만들어진 통신 기록을 보고 응답을 되돌릴 수 있지만, 외부에서 갑자기 도착한 패킷은 어느 내부 기기로 보내야 할지 모를 수 있다. 이때 패킷을 받아들이는 기준은 공유기마다 다를 수 있다. NAT는 주소 변환 기능이며, 그 존재만으로 내부 네트워크의 안전이 보장되는 것은 아니다.
+일부 영상 통화나 원격 지원 앱은 지연을 줄이려고 두 기기(피어)가 서버를 거치지 않고 직접 주고받는 P2P 방식을 먼저 시도한다. 앱의 소개 서버는 상대의 바깥 주소를 알려 줄 뿐이고 데이터는 나르지 않는다. 그런데 직접 통신에는 걸림돌이 있다. 박 팀장이 상대 공유기로 먼저 보낸 패킷은 맞는 행이 없어 막힐 수 있다. 두 사람이 서로 다른 건물의 안내 데스크 뒤에 있고, 양쪽 데스크가 모두 "우리 직원이 먼저 연락한 손님만 들인다"고 하는 상황과 같다.
 
-**기억할 점:** NAT 뒤의 피어끼리 직접 통신하려면 외부 주소·포트의 매핑과 외부 패킷을 허용하는 조건이 모두 맞아야 한다.
+그래서 직접 통신이 되려면 두 가지가 맞아야 한다. 내 쪽 공유기가 바깥에 어떤 주소·포트로 보이느냐와, 상대가 보낸 첫 패킷을 받아 주느냐다. 다음 Page에서 이 두 질문을 하나씩 살펴보자.
 
-## 매핑과 필터링은 서로 다른 질문이다
+## NAT에게 꼭 따로 물어야 할 두 가지는?
 
 <!-- learn-page-id: advanced-nat-mapping-filtering-page-02 -->
 
-NAT의 동작을 이해할 때는 먼저 두 질문을 분리한다. **매핑(mapping)**은 내부 기기의 주소·포트에 바깥에서 보이는 어떤 주소·포트를 짝지을지 정한다. **필터링(filtering)**은 그 바깥 주소·포트로 들어온 패킷 가운데 어떤 외부 출발지에서 온 것을 통과시킬지 정한다. Lesson 2에서 변환표의 한 행을 읽었다면, 이제 그 행을 어떻게 만들고 어떤 응답을 받아들이는지 따로 보는 것이다.
+지우가 장애 메모를 쓴다. "우리 공유기는 Port Restricted라서 화상회의가 안 될 거야." 그런데 회의는 잘 되고 있다. 이름 하나로 연결 가능성을 판단한 것이 틀린 까닭은 NAT의 동작이 한 가지가 아니기 때문이다.
 
-예를 들어 내부 `192.168.0.10:3000`이 외부 서버 `15.15.15.15:5555`로 UDP 패킷을 보냈고 NAT가 이를 `203.0.113.8:42000`으로 내보냈다고 하자. 매핑을 보면 안쪽 endpoint와 바깥 endpoint가 어떻게 연결됐는지 알 수 있다. 필터링을 보면 `203.0.113.8:42000`으로 돌아오는 패킷을 `15.15.15.15`에서만 받을지, 그 IP의 `5555` 포트까지 맞아야 받을지 판단할 수 있다.
+NAT에게는 서로 독립적인 두 가지를 물어야 한다. 첫째는 매핑이다. 안쪽 기기의 통신이 바깥에는 어떤 주소·포트로 보이는가, 상대가 달라져도 같은 번호를 쓰는가를 묻는다. 둘째는 필터링이다. 바깥에서 도착한 패킷을 누가 보낸 것까지 받아 주는가를 묻는다. 변환표로 말하면 매핑은 External 칸을 정하는 일이고, 필터링은 응답을 안쪽으로 돌려보내기 전에 적용하는 조건이다.
 
-| 구분 | 답하는 질문 | 이 예에서 보는 것 |
-|---|---|---|
-| 매핑 | 안쪽 통신을 바깥에서 어떤 주소·포트로 보이게 할까? | `192.168.0.10:3000` ↔ `203.0.113.8:42000` |
-| 필터링 | 바깥에서 어떤 출발지의 패킷을 받아들일까? | `15.15.15.15`인지, 그중 `:5555`까지 같은지 |
+| 질문 | 무엇을 묻나 | 변환표에서 |
+| --- | --- | --- |
+| 매핑 | 안쪽 통신이 바깥에 어떤 주소·포트로 보이나 | External 칸을 정하는 방식 |
+| 필터링 | 바깥의 누가 보낸 패킷까지 받아 주나 | 응답을 들여보내기 전의 조건 |
 
-**기억할 점:** 매핑은 “어떤 바깥 주소로 나가나?”, 필터링은 “누가 보낸 패킷을 받나?”에 답한다. 둘을 하나의 NAT 종류 이름으로 뭉뚱그리면 실제 차이를 놓치기 쉽다.
+안내 데스크로 바꿔 말하면, 첫째 질문은 직원이 편지를 보낼 때 접수번호를 수신처마다 새로 붙이는지 같은 번호를 쓰는지이고, 둘째 질문은 돌아오는 우편을 이전에 편지를 받은 그 사람 것만 받는지 누구 것이든 받는지다. 두 질문은 따로 답할 수 있으므로, 한 단어 이름으로는 연결 가능성을 알 수 없다. 옛 이름이 두 질문을 어떻게 묶어 불렀는지는 뒤의 Page에서 풀어 읽는다.
 
-## 매핑은 외부 상대에 따라 달라질 수 있다
+그래서 지우는 메모를 이렇게 고친다. "매핑과 필터링을 따로 확인한다."
+
+## 상대가 바뀌면 바깥 포트도 바뀔까?
 
 <!-- learn-page-id: advanced-nat-mapping-filtering-page-03 -->
 
-**endpoint**는 IP 주소와 포트의 한 쌍을 말한다. 내부 기기의 같은 UDP endpoint가 외부 목적지를 바꾸어 통신할 때 NAT가 같은 바깥 endpoint를 계속 쓸 수도 있고, 목적지에 따라 다른 바깥 endpoint를 배정할 수도 있다. 이처럼 내부 endpoint를 바깥 endpoint에 연결하는 기준을 매핑 동작이라고 한다.
+박 팀장이 집 PC(`192.168.0.20`)에서 화상회의 앱을 켠다. 주소 확인 서버(`203.0.113.60`)는 이 PC를 집 공유기의 바깥 주소 `192.0.2.123:40001`로 봤고, 앱이 그 주소를 협력사 담당자에게 알려 줬다. 그런데 협력사가 그 주소로 보낸 패킷이 도착하지 않는다. 주소는 맞게 전달됐는데 왜 안 될까?
 
-**Endpoint-Independent Mapping(EIM, 목적지 독립 매핑)**에서는 같은 내부 IP·포트가 같은 외부 IP·포트에 연결된다. 목적지가 `15.15.15.15:5555`에서 `9.9.9.9:40000`으로 바뀌어도 같은 외부 매핑을 재사용할 수 있다. 반대로 **Endpoint-Dependent Mapping(목적지 종속 매핑)**에서는 목적지 IP 또는 IP와 포트 조합에 따라 다른 외부 매핑을 쓸 수 있다. “외부 서버가 바뀌면 항상 포트가 바뀐다”는 뜻은 아니며, NAT가 매핑을 정하는 동작을 구분하는 말이다.
+핵심은 매핑이 상대에 따라 달라질 수 있다는 점이다. 같은 내부 통신이 어느 상대와 통신하든 같은 바깥 주소·포트를 쓰는 것을 상대와 무관한 매핑(EIM)이라 하고, 상대마다 다른 바깥 포트를 배정하는 것을 상대에 따라 달라지는 매핑이라 한다(상대의 IP만 볼지, IP·포트를 모두 볼지는 장비마다 다르다). 같은 직원이 편지를 보낼 때 접수번호를 늘 같게 쓰는지, 수신처마다 새로 붙이는지의 차이다. 집 PC `192.168.0.20:3000`이 주소 확인 서버와 협력사에 차례로 보내는 경우를 보자.
 
-이 차이는 P2P 연결 시도에 영향을 준다. 피어가 중계·소개 서버와 통신할 때 얻은 외부 주소가 다른 피어에게 보낼 때도 그대로 유효하면 직접 연결을 시도하기 쉽다. 목적지가 바뀌면 외부 매핑도 달라지는 장비에서는 소개 서버가 관찰한 주소를 다른 피어에게 그대로 알려도 맞지 않을 수 있다.
+| 상대 | 상대와 무관한 매핑 | 상대에 따라 달라지는 매핑 |
+| --- | --- | --- |
+| 주소 확인 서버 `203.0.113.60:3478` | `192.0.2.123:40001` | `192.0.2.123:40001` |
+| 협력사 `203.0.113.99:40000` | `192.0.2.123:40001` | `192.0.2.123:40017` |
 
-RFC 4787은 UDP NAT 동작을 설명하며 목적지와 무관한 매핑을 요구사항으로 둔다. 실제 장비와 네트워크 설정은 서로 다를 수 있으므로, 오래된 Cone 분류의 이름만 보고 지금 사용하는 공유기의 동작을 단정하지 않는다. 이 Lesson의 매핑·필터링 표는 UDP 통신을 이해하기 위한 기준이다.
+상대와 무관하면 서버가 본 `:40001`이 협력사에게도 맞으므로 소개한 주소가 그대로 통한다. 상대에 따라 달라지면 협력사에게는 `:40017`로 나가서, 서버가 알려 준 주소가 협력사와의 통신에는 맞지 않는다. 표준(RFC 4787)은 UDP NAT에 상대와 무관한 매핑을 요구하지만 모든 장비가 따르는 것은 아니다.
 
-**기억할 점:** 매핑을 비교할 때는 “같은 내부 통신이 다른 외부 상대와 통신해도 같은 바깥 주소·포트를 쓰는가?”를 묻는다.
+그러니 연결이 안 될 때는 먼저 이렇게 묻는다. "같은 내부 통신이 다른 상대에게도 같은 바깥 주소·포트를 쓰는가?" 답이 아니오라면 소개 서버가 알려 준 주소만으로는 연결하기 어렵다.
 
-## 필터링은 허용할 외부 출발지를 정한다
+## 누가 보낸 패킷까지 받아 줄까?
 
 <!-- learn-page-id: advanced-nat-mapping-filtering-page-04 -->
 
-필터링은 NAT의 외부 주소·포트로 들어온 패킷을 어느 원격 출발지에서 받게 할지 정한다. 세 가지 대표 동작을 같은 예로 비교해 보자. 내부 `192.168.0.10:3000`이 `15.15.15.15:5555`에 먼저 UDP 패킷을 보냈고, 나중에 외부 주소 `203.0.113.8:42000`에 패킷이 도착했다고 가정한다.
+같은 협력사 서버 IP에서 왔는데도 어떤 패킷은 지우의 공유기를 통과하고 어떤 패킷은 막힌다. 이번에는 매핑이 아니라 필터링의 문제다. 필터링은 바깥에서 도착한 패킷을 어떤 출발지까지 받아 줄지 정하는 기준이다.
 
-| 필터링 동작 | 들어오는 패킷의 허용 기준 | 예: `15.15.15.15:7777`에서 도착 |
-|---|---|---|
-| Endpoint-Independent Filtering (EIF) | 원격 IP·포트와 관계없이 매핑으로 향하는 패킷 허용 | 허용할 수 있음 |
-| Address-Dependent Filtering (ADF) | 이전에 통신한 원격 IP가 같으면 허용, 포트는 달라도 됨 | 허용할 수 있음 |
-| Address-and-Port-Dependent Filtering (APDF) | 이전에 통신한 원격 IP와 포트가 모두 같아야 허용 | 허용되지 않을 수 있음 |
+세 가지를 같은 예로 비교해 보자. 지우 PC `192.168.10.41:3000`이 협력사 서버 `203.0.113.15:5555`에 UDP 패킷을 먼저 보냈고, 바깥 매핑은 `198.51.100.25:42000`이다. 이후 이 바깥 주소로 두 패킷이 도착한다.
 
-이 표에서 중요한 비교는 마지막 두 줄이다. 두 패킷은 모두 `15.15.15.15`에서 왔지만 출발지 포트가 다르다. ADF는 IP 주소만 비교하므로 허용할 수 있지만, APDF는 포트까지 확인하므로 통과시키지 않을 수 있다. `9.9.9.9:40000`처럼 다른 IP에서 온 패킷은 ADF와 APDF 모두 이전 조건과 맞지 않는다.
+| 필터링 방식 | 받아 주는 기준 | `203.0.113.15:7777`에서 도착 | `203.0.113.99:40000`에서 도착 |
+| --- | --- | --- | --- |
+| 누구든 받음(EIF) | 출발지를 가리지 않음 | 받음 | 받음 |
+| 같은 IP만 받음(ADF) | 이전에 통신한 IP면 받음 | 받음 | 받지 않음 |
+| 같은 IP·포트만 받음(APDF) | IP와 포트가 모두 같아야 받음 | 받지 않음 | 받지 않음 |
 
-이들은 NAT의 수신 허용 동작을 설명하는 기준이지, 전체 방화벽 정책이나 앱의 로그인 여부를 설명하는 것은 아니다. 또한 필터링 기준과 매핑 기준은 독립적으로 조합될 수 있다. 특정 장비가 실제로 어떤 동작을 하는지는 표준 이름 하나만 보고 추측하지 말고 구현과 설정을 확인해야 한다.
+가운데 줄이 핵심 비교다. 두 패킷 중 `203.0.113.15`에서 온 쪽은 출발지 포트만 다르다. 같은 IP만 받는 방식은 IP만 보므로 받아 주고, 같은 IP·포트만 받는 방식은 포트까지 보므로 받지 않는다. 우편을 이전에 편지를 주고받은 건물 번지만 보고 받는지, 호수까지 같아야 받는지의 차이다.
 
-**기억할 점:** 필터링 조건은 원격 출발지를 얼마나 자세히 비교하는가에 따라 “누구든지”, “같은 IP”, “같은 IP와 포트”로 좁아진다.
+누구든 받는 쪽은 앞 Lesson의 원격지 제한 없는 포워딩과 닮았지만, 안쪽이 먼저 보내 만든 매핑이 살아 있는 동안만 해당한다. 또 필터링은 NAT가 수신을 허용하는 기준일 뿐 방화벽 정책이나 앱의 로그인을 대신하지 않는다. 장비마다 구현이 다르므로 이름 하나로 추측하지 말고 확인해야 한다.
 
-## 전통적인 Cone 이름은 두 기준을 묶어 부른다
+## Full Cone, Symmetric은 어떻게 읽을까?
 
 <!-- learn-page-id: advanced-nat-mapping-filtering-page-05 -->
 
-예전 자료에서 자주 보이는 Full Cone, Restricted Cone, Port Restricted Cone, Symmetric NAT는 매핑과 필터링의 동작을 함께 묶어 설명한 분류다. 이 이름은 NAT의 모든 구현을 빠짐없이 구별하는 현재의 공통 표준 분류로 외우기보다, 오래된 설명에서 어떤 기준을 뜻했는지 읽는 데 사용한다. 요즘 동작을 비교할 때는 앞 페이지처럼 매핑과 필터링을 나누어 말하는 편이 정확하다.
+공유기 교체를 검토하던 지우가 한 제품의 설명서에서 "Full Cone 지원, P2P에 최적"이라는 문구를 보았다. 서 이사가 묻는다. "Full Cone이 뭐예요? 좋은 건가요?" 블로그와 제품 설명에는 이런 옛 이름이 아직 많은데, 이름만으로는 실제 동작을 알 수 없다.
 
-| 전통적인 이름 | 전통적 설명에서의 매핑 | 전통적 설명에서의 필터링 |
-|---|---|---|
-| Full Cone | 보통 목적지 독립적으로 설명 | 매핑된 외부 주소·포트로 들어오는 모든 원격 출발지를 허용 |
-| Restricted Cone | 보통 목적지 독립적으로 설명 | 이전에 통신한 원격 IP 주소를 확인 |
-| Port Restricted Cone | 보통 목적지 독립적으로 설명 | 이전에 통신한 원격 IP와 포트를 함께 확인 |
-| Symmetric NAT | 목적지 endpoint에 따라 매핑이 달라질 수 있음 | 보통 목적지 endpoint와 연관된 허용 조건으로 설명 |
+Full Cone 같은 이름은 매핑과 필터링을 묶어 부르던 옛 분류다(STUN 초판인 RFC 3489의 용어이고, 현재 표준 RFC 4787은 둘을 따로 설명한다). 앞의 두 Page를 연결하면 이름이 풀린다.
 
-Cone 세 이름은 매핑이 어떻게 만들어지는지보다 외부 패킷을 누구에게서 받을지 차례로 제한하는 모습을 강조한다. 반면 옛 Symmetric NAT 설명은 매핑이 외부 목적지에 따라 달라질 수 있다는 점도 함께 강조한다. 따라서 “Symmetric은 필터링이 가장 강한 한 종류”라고 외우면 매핑 차이를 놓치게 된다.
+| 옛 이름 | 매핑 | 필터링 |
+| --- | --- | --- |
+| Full Cone | 상대와 무관 | 누구든 받음 |
+| Restricted Cone | 상대와 무관 | 같은 IP만 받음 |
+| Port Restricted Cone | 상대와 무관 | 같은 IP·포트만 받음 |
+| Symmetric | 상대에 따라 달라짐 | 상대와 연관된 조건 |
 
-이 표는 용어를 읽기 위한 전통적 요약이며 모든 공유기의 실제 동작을 보장하지 않는다. 특히 Symmetric이라는 단어가 어떤 문서에서 쓰였는지 확인하고, 그 문서가 매핑을 말하는지 필터링을 말하는지 따로 읽는다.
+Symmetric의 핵심은 매핑이 상대에 따라 달라진다는 점이다. 그래서 "필터링이 가장 강한 것"으로 외우면 매핑의 차이를 놓친다. 이 표는 용어를 읽기 위한 전통적 요약이고 모든 공유기의 동작을 보장하지 않는다.
 
-**기억할 점:** Cone 이름은 옛 분류로 이해하고, 실제 동작은 매핑 기준과 필터링 기준을 따로 확인한다.
+서 이사에게는 이렇게 답할 수 있다. 이름을 보면 매핑 이야기인지 필터링 이야기인지부터 나눠 읽는다. 대가도 따진다. Full Cone도 안쪽이 먼저 보낸 매핑에 한해서만 열리지만, 그 매핑이 살아 있는 동안은 누구든 보낼 수 있다. P2P 연결이 쉬워지는 만큼 바깥에 더 열려 있다.
 
-## UDP 홀 펀칭으로 직접 연결을 시도한다
+## 양쪽에서 먼저 보내면 길이 열릴까?
 
 <!-- learn-page-id: advanced-nat-mapping-filtering-page-06 -->
 
-게임이나 음성·영상 앱은 중앙 서버가 두 피어를 소개하되, 이후 데이터는 직접 주고받고 싶을 수 있다. 이때 소개 서버(signaling 또는 rendezvous server)가 양쪽 피어가 서로를 찾도록 연결 정보를 전달한다. STUN 서버는 각 피어가 NAT 바깥에서 어떤 IP·포트로 관찰되는지 알아내는 데 도움을 준다. 소개 서버와 STUN 서버는 역할이 겹칠 수 있지만, 이름만으로 같은 기능이라고 단정하지 않는다.
+박 팀장 집 PC와 지우 PC가 서로의 바깥 주소를 알게 되었다. 그런데 박 팀장 쪽이 먼저 패킷을 보내면 지우 쪽 공유기가 상대를 가려 받는 방식(같은 IP만, 같은 IP·포트만)일 때 그 패킷을 막을 수 있다. 우리 쪽에서 먼저 나간 기록이 없기 때문이다. 상대를 가리지 않고 받는 장비라면 통과하므로, 앞 Page의 필터링에 달린 일이다.
 
-간단한 UDP 홀 펀칭 흐름은 다음과 같다.
+소개해 준 친구 덕분에 서로 모르는 두 사람이 동시에 인사하는 장면을 떠올려 보자. 양쪽이 동시에 먼저 인사하면 서로 상대가 먼저 말을 건 셈이 된다. 이 방법이 UDP 홀 펀칭이다. 여기서 STUN은 "내 바깥 주소가 어떻게 보이는지 알려 주는 서버"다. 홀 펀칭은 세 단계로 진행된다.
 
-1. 피어 A와 B가 각각 소개·주소 확인 서버에 UDP 패킷을 보낸다.
-2. 서버는 각 피어의 바깥에서 보이는 주소·포트를 관찰해 상대에게 알려 준다.
-3. A와 B는 서로의 바깥 주소·포트로 UDP 패킷을 보낸다. 이 바깥 방향 패킷이 각 NAT에 매핑을 만든다.
-4. 각 NAT의 필터링 조건이 상대 패킷을 허용하면, 두 피어가 직접 데이터를 주고받을 수 있다.
+| 단계 | 일어나는 일 |
+| --- | --- |
+| ① | 양쪽이 STUN 서버(`203.0.113.60`)에 연락해 자기 바깥 주소·포트를 알아낸다 |
+| ② | 앱의 소개 서버가 각자의 바깥 주소·포트를 상대에게 알려 준다 |
+| ③ | 양쪽이 서로에게 거의 동시에 먼저 보내, 각자의 NAT에 상대를 향한 임시 변환표 행이 만들어진다 |
 
-“구멍을 뚫는다”는 표현은 장비에 영구 구멍을 내거나 모든 보안 규칙을 끄는 뜻이 아니다. 양쪽이 보낸 패킷으로 생긴 매핑과 필터링 상태를 이용해 응답 경로를 열 수 있는지 시도하는 비유다. 외부 주소를 얻었다고 해서 연결이 반드시 성공하는 것은 아니다.
+③에서 먼저 도착한 첫 패킷은 상대 쪽 NAT에 아직 이쪽을 향한 행이 없어 버려질 수 있다. 그래도 그 패킷을 보낸 순간 보낸 쪽 NAT에는 상대를 향한 행이 생겼다. 양쪽이 계속 보내면 곧 양쪽 모두에 행이 있게 되고, 그 뒤에 도착하는 패킷은 응답처럼 받아 준다. 첫 패킷은 버려져도 이후 패킷은 통과하는 이유다. 이 행은 UPnP 줄과 달리 관리자가 남긴 영구 규칙이 아니라 임시 행이라, 한동안 통신이 없으면 사라진다.
 
-**기억할 점:** 홀 펀칭은 두 피어의 바깥 주소를 알려 주고 양쪽에서 먼저 패킷을 보내 직접 경로를 시도한다.
+다만 성공이 보장되지는 않는다. 상대에 따라 바깥 포트가 바뀌는 매핑이면 서버가 알려 준 주소가 틀리고, 방화벽이 UDP를 막아도 실패한다. 그럴 때의 대안은 다음 Page에서 본다.
 
-## 직접 연결이 안 되면 중계 경로를 쓴다
+## 직접 못 만나면 누가 대신 전해 줄까?
 
 <!-- learn-page-id: advanced-nat-mapping-filtering-page-07 -->
 
-홀 펀칭은 NAT의 매핑 동작과 필터링 조건, 양쪽 네트워크의 정책에 따라 실패할 수 있다. 예를 들어 목적지에 따라 매핑이 달라지는 NAT에서는 소개 서버에서 관찰한 바깥 주소를 피어 통신에도 재사용하지 못할 수 있다. 회사·학교 방화벽이 직접 UDP 통신을 막거나 NAT가 여러 겹인 경우도 연결을 어렵게 한다. 그러므로 “Full Cone이면 항상 연결되고 Symmetric이면 절대 연결되지 않는다”처럼 단정하지 않는다.
+홀 펀칭이 항상 성공하지는 않는다. 상대에 따라 매핑이 달라지는 NAT, 회사 방화벽의 UDP 차단, 통신사 NAT가 여러 겹인 환경이 겹치면 직접 경로를 만들 수 없다. 직접 연결에 실패한 두 사람은 어떻게 대화를 이어 갈까?
 
-직접 경로를 만들 수 없으면 TURN 같은 중계 서버가 데이터를 대신 전달할 수 있다. 이때 두 피어의 데이터가 중계 서버를 지나므로 서버의 네트워크 사용량과 운영 비용이 늘지만, 직접 경로가 막힌 환경에서도 통신을 이어갈 가능성이 생긴다. STUN은 바깥에서 보이는 주소를 알아내는 데 도움을 주고, TURN은 실제 데이터를 릴레이한다는 역할 차이를 기억한다.
+직접 전화가 안 되면 교환원을 거쳐 통화한다. 이 교환원 역할을 하는 것이 TURN 같은 중계 서버다. STUN은 바깥 주소를 알려 주고, TURN은 실제 데이터를 중계한다. 대가는 서버가 모든 데이터를 지나게 하는 데서 생긴다. 서버 비용이 늘고 경로가 길어져 지연도 커진다. UDP가 막힌 환경에서는 TCP/TLS(443)로 중계하는 경우가 많다.
 
-Lesson 4에서 배울 포트 포워딩은 관리자가 외부 포트를 내부 서비스로 연결하는 규칙을 직접 등록하는 방식이다. 홀 펀칭은 앱이 패킷을 먼저 보내 동적 매핑을 이용해 피어 간 경로를 시도한다. 둘 다 외부에서 내부로 이어지는 길과 관련 있지만, 설정 주체와 동작 방식이 다르다.
+앞의 방법들과 합쳐 보면 선택지는 셋이다. 가장 흔한 것은 처음에 말한 서비스 서버 경유이고, 직접 경로를 먼저 시도하는 앱은 홀 펀칭에 실패할 때만 중계로 넘어간다.
 
-| 연결 방법 | 누가 설정을 시작하나? | 핵심 역할 |
-|---|---|---|
-| 홀 펀칭 | 통신하는 앱과 피어 | NAT 매핑·필터링 상태를 이용해 직접 경로를 시도 |
-| 포트 포워딩 | 공유기 관리자 | 정해 둔 외부 포트를 내부 주소·포트로 전달 |
-| TURN 중계 | 앱과 중계 서버 | 직접 연결이 어려울 때 중계 서버가 데이터를 전달 |
+| 방법 | 데이터가 가는 길 | 대가 |
+| --- | --- | --- |
+| 서비스 서버 경유 | 양쪽이 서버로 먼저 연결해 서버가 전달 | 서버 부담, 서비스에 의존 |
+| P2P 직접(홀 펀칭) | 두 기기가 직접 | 성공이 보장되지 않음 |
+| TURN 중계 | 양쪽이 중계 서버로 연결 | 서버 비용, 지연 |
 
-**기억할 점:** 매핑은 바깥 주소를 정하고, 필터링은 받을 상대를 정한다. 두 피어의 조건이 맞으면 직접 연결을 시도하고, 실패하면 TURN 같은 중계를 사용할 수 있다.
+어느 방법도 우리 공유기에 포트 개방 규칙이 필요 없다. 박 팀장의 화상회의가 끊기지 않은 것은 포트가 열려서가 아니라 이 셋 중 하나로 이어졌기 때문이다. 지우는 앱의 연결 정보나 로그에서 이번 회의가 어느 방식이었는지 확인해 박 팀장에게 알려 주기로 한다.
+
+### 이 Lesson에서 가져갈 것
+
+- **기억하기 (Recall):** NAT의 동작은 매핑(바깥에 어떤 주소·포트로 보이나)과 필터링(누가 보낸 패킷을 받나)이라는 두 질문으로 나눠 본다. 화상회의는 서비스 서버 경유가 가장 흔하고, P2P 앱은 홀 펀칭으로 직접 연결을 시도하다 안 되면 TURN 같은 중계를 쓴다.
+- **적용하기 (Apply):** 연결 문제를 만나면 옛 Cone 이름 대신 매핑과 필터링을 따로 확인한다. 직접 경로가 안 되는 환경(UDP 차단, 통신사 NAT)에서는 중계 비용까지 따진다.
+- **찾아보기 (Lookup):** NAT 동작 요구사항(RFC 4787), STUN(RFC 8489)과 TURN(RFC 8656) 문서, 쓰는 화상회의·원격 지원 서비스의 네트워크 요구사항은 필요할 때 직접 찾아본다.
+
+### 🧠 이번에 쓴 생각법
+
+- 🧩 **쪼개기**: NAT의 동작을 매핑과 필터링 두 질문으로 나누고, 소개하는 일과 데이터를 나르는 일도 나누어 보았다.
+- 🗺️ **필요한 것만 남기기**: Full Cone 같은 옛 이름은 두 기준으로 풀어 읽고, 연결 가능성에 필요한 기준만 남겼다.
+- ⚖️ **대가 따지기**: 직접 경로는 비용이 적지만 성공이 보장되지 않고, 중계는 확실하지만 서버 비용이 드는 선택을 따졌다.
+
+이 Unit은 포트를 열고 닫는 방법에서 시작해 포트를 열지 않고도 연결하는 방법까지 왔다. 모두 주소와 포트를 바꿔 안쪽과 바깥쪽을 이어 주는 변환표 원리 위에 있다. 시연을 마친 8080 규칙은 이미 지웠고, 이제 서 이사가 새 계획을 꺼낸다. AI 상담 챗봇 「한결봇」을 고객에게 공개하자는 것이다. 한결봇은 사내 AI 서버(`192.168.10.50:8080`)를 열어 두는 방식이 아니라, 별도의 공개 주소(`203.0.113.10:443`)와 별도 서비스 구역의 서버 풀(`192.168.20.11`~`.13`)로 새로 연다. 고객이 몰려오면 포트 포워딩 한 줄과 서버 한 대로는 감당할 수 없다. 요청을 여러 서버에 나눠 보내는 장치가 다음 Unit의 L4 부하 분산기다.
+
+그 뒤의 일도 하나 남았다. 지우는 매주 공유기 화면의 포트 매핑과 UPnP 목록을 열어, 승인 기록에 없는 줄이 생겼는지 눈으로 대조한다. 이 손작업이 반복되면 놓치기 쉽다. 이런 대조를 자동으로 하고 이상한 줄이 생기면 알려 주는 방법은 Module 4(이상탐지 자동화)에서 다룬다.
