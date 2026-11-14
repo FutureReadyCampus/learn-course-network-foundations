@@ -57,6 +57,12 @@ page_metadata:
   question_placements:
   - question_id: u15-l03-p01-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u15-l03-p1-beyond-firewall.svg
+    title: "방화벽을 통과한 공격"
+    alt: "방화벽이 헤더만 보고 허용한 443 요청의 Payload 안에 든 공격이 AI 서버까지 도착하고, 방화벽과 IPS·NIDS가 보는 것이 다름을 비교합니다."
+    caption: "방화벽은 헤더로 정책을 정하고 IPS·NIDS는 Payload를 보고 공격을 찾습니다."
+    after_paragraph: 3
 - page_id: advanced-source-23-page-14
   questions:
   - id: u15-l03-p02-q01
@@ -106,6 +112,12 @@ page_metadata:
   question_placements:
   - question_id: u15-l03-p02-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u15-l03-p2-ips-vs-nids.svg
+    title: "막을까, 알리기만 할까"
+    alt: "경로 안의 IPS는 공격 요청을 바로 차단하고, 경로 밖 NIDS는 복사본으로 경보만 내며 고장 때의 영향이 다른 모습을 좌우로 비교합니다."
+    caption: "IPS는 바로 차단할 수 있지만 고장 시 통신이 끊길 수 있고, NIDS는 서비스를 유지하지만 경보를 낼 뿐입니다."
+    after_paragraph: 1
 - page_id: advanced-source-23-page-15
   questions:
   - id: u15-l03-p03-q01
@@ -155,6 +167,12 @@ page_metadata:
   question_placements:
   - question_id: u15-l03-p03-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u15-l03-p3-signature.svg
+    title: "공격의 지문 찾기"
+    alt: "TLS 종료 뒤 IPS의 규칙이 알려진 공격 패턴과 일치하면 탐지하고, 새 공격은 놓치며, TLS 종료 앞 암호문 구간에서는 패턴을 읽지 못하는 모습입니다."
+    caption: "시그니처 검사는 알려진 패턴만 찾고, 검사 범위는 센서 위치와 TLS 종료 위치가 정합니다."
+    after_paragraph: 1
 - page_id: u15-l03-page-04
   questions:
   - id: u15-l03-p04-q01
@@ -204,6 +222,12 @@ page_metadata:
   question_placements:
   - question_id: u15-l03-p04-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u15-l03-p4-false-positive.svg
+    title: "정상 요청이 공격으로"
+    alt: "박 팀장의 교육 자료가 공격 예시 문자열 때문에 IPS에 막히는 오탐을 보고, 경보만 내는 기간과 좁은 예외로 해결하는 모습입니다."
+    caption: "규칙은 경보만 내는 기간을 거치고 예외는 좁게 두며 주기적으로 다시 확인합니다."
+    after_paragraph: 1
 - page_id: u15-l03-page-05
   questions:
   - id: u15-l03-p05-q01
@@ -252,6 +276,12 @@ page_metadata:
     feedback: "⚖️ 대가 따지기: 오래 관찰할수록 놓칠 가능성은 줄지만 전달이 늦어진다. 빠름과 철저함 사이에서 균형을 잡는다."
   question_placements:
   - question_id: u15-l03-p05-q01
+    after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u15-l03-p5-sandbox.svg
+    title: "처음 보는 악성 파일"
+    alt: "시그니처에 걸리지 않은 첨부 파일을 보안 장비가 샌드박스로 보내 전달을 보류하고, 격리된 방에서 낯선 주소로 접속하려는 이상 행동을 찾아 차단하는 모습입니다."
+    caption: "샌드박스는 모르는 파일을 격리된 곳에서 먼저 실행해 보지만 느리고 얌전한 파일은 놓칠 수 있습니다."
     after_paragraph: 2
 - page_id: advanced-source-23-page-16
   questions:
@@ -302,6 +332,12 @@ page_metadata:
   question_placements:
   - question_id: u15-l03-p06-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u15-l03-p6-reputation.svg
+    title: "남들이 이미 아는 악성일까"
+    alt: "파일 요약값을 평판 정보로 조회해 알려진 악성은 차단하고, 모르는 파일은 샌드박스로 넘기며, 접속 주소에는 주소 평판과 다른 신호를 쓰는 모습입니다."
+    caption: "평판은 외부 정보를 빌려 알려진 악성을 거르고, 샌드박스는 파일에만 씁니다."
+    after_paragraph: 1
 ---
 
 ## 방화벽을 통과한 공격은 누가 볼까?

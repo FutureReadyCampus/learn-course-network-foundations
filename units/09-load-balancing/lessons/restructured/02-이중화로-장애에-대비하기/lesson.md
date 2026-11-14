@@ -15,6 +15,12 @@ source_wikis:
 source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-17.md
 page_metadata:
 - page_id: advanced-source-17-page-07
+  illustrations:
+  - file: assets/animations/u13-l02-p1-spof.svg
+    title: "서버는 멀쩡한데 왜 멈췄을까?"
+    alt: "서버 세 대는 정상인데 앞의 로드 밸런서 한 대가 멈추면 손님이 서버에 닿지 못해, 한 곳이 멈추면 전체가 멈추는 단일 장애점이 됩니다."
+    caption: "한 곳이 멈추면 전체가 멈추는 지점이 단일 장애점(SPOF)입니다."
+    after_paragraph: 1
   questions:
   - id: u13-l02-p01-q01
     kind: choice
@@ -64,6 +70,12 @@ page_metadata:
   - question_id: u13-l02-p01-q01
     after_paragraph: 3
 - page_id: advanced-source-17-page-08
+  illustrations:
+  - file: assets/animations/u13-l02-p2-active.svg
+    title: "예비 장비는 쉬게 둘까, 같이 일하게 할까?"
+    alt: "왼쪽 액티브/스탠바이는 장비 A가 고장 나면 대기하던 B가 이어받고, 오른쪽 액티브/액티브는 평소 60%씩 쓰다 한 대가 빠지면 남은 한 대가 120%로 넘치는 모습입니다."
+    caption: "액티브/액티브는 한 대가 빠져도 버틸 여유까지 포함해 용량을 잡아야 합니다."
+    after_paragraph: 2
   questions:
   - id: u13-l02-p02-q01
     kind: choice
@@ -113,6 +125,12 @@ page_metadata:
   - question_id: u13-l02-p02-q01
     after_paragraph: 3
 - page_id: advanced-source-17-page-09
+  illustrations:
+  - file: assets/animations/u13-l02-p3-vip.svg
+    title: "장비가 바뀌어도 같은 주소로"
+    alt: "일하는 장비 A가 VIP를 맡고 하트비트를 보내다 멈추면 신호가 끊기고, 장비 B가 VIP 203.0.113.10:443을 넘겨받아 손님은 같은 주소를 계속 쓰는 모습입니다."
+    caption: "VIP와 하트비트 덕분에 장비가 바뀌어도 바깥에서는 같은 주소로 이어집니다."
+    after_paragraph: 2
   questions:
   - id: u13-l02-p03-q01
     kind: choice
@@ -162,6 +180,12 @@ page_metadata:
   - question_id: u13-l02-p03-q01
     after_paragraph: 3
 - page_id: u13-l02-page-04
+  illustrations:
+  - file: assets/animations/u13-l02-p4-common.svg
+    title: "두 대를 뒀는데 왜 같이 멈췄을까?"
+    alt: "왼쪽은 로드 밸런서 두 대가 같은 스위치 한 대에 연결돼 스위치가 멈추면 둘 다 끊기고, 오른쪽은 스위치를 둘로 나눠 한 대는 이어 가는 모습입니다."
+    caption: "이중화의 핵심은 장비 개수가 아니라 공통 지점 없이 따로 고장 나는가입니다."
+    after_paragraph: 2
   questions:
   - id: u13-l02-p04-q01
     kind: choice
@@ -211,6 +235,12 @@ page_metadata:
   - question_id: u13-l02-p04-q01
     after_paragraph: 3
 - page_id: u13-l02-page-05
+  illustrations:
+  - file: assets/animations/u13-l02-p5-vm.svg
+    title: "수리를 5일이나 기다려야 할까?"
+    alt: "서버 .11이 고장 나 수리에 5일이 걸리는 동안, VM 이미지로 새 서버를 만들어 헬스 체크를 통과시킨 뒤 서버 풀에 넣는 모습입니다."
+    caption: "VM 이미지로 서버를 복제하면 수리를 기다리는 시간을 줄일 수 있습니다."
+    after_paragraph: 3
   questions:
   - id: u13-l02-p05-q01
     kind: choice
@@ -260,6 +290,12 @@ page_metadata:
   - question_id: u13-l02-p05-q01
     after_paragraph: 3
 - page_id: advanced-source-17-page-10
+  illustrations:
+  - file: assets/animations/u13-l02-p6-cloud.svg
+    title: "몰리는 시간에만 서버를 늘릴 수 있을까?"
+    alt: "점심에 우리 서버가 100%로 차면 넘치는 몫만 클라우드의 컨테이너를 헬스 체크를 거쳐 서버 풀에 붙이고, 비용·시차·데이터 위치를 대가로 짚는 모습입니다."
+    caption: "넘치는 몫만 클라우드로 늘리되 준비 확인을 통과한 서버만 붙입니다."
+    after_paragraph: 2
   questions:
   - id: u13-l02-p06-q01
     kind: choice

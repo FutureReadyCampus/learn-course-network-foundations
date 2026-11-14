@@ -60,6 +60,12 @@ page_metadata:
   question_placements:
   - question_id: u14-l01-p01-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u14-l01-p1-private-boundary.svg
+    title: "사설망의 경계"
+    alt: "집 노트북이 사내 AI 192.168.10.50:8080 으로 보낸 요청이 본사 경계에서 막혀 응답이 없는 모습입니다."
+    caption: "사내 AI에 닿지 못하는 이유는 서버가 아니라 사설망의 경계입니다."
+    after_paragraph: 3
 - page_id: advanced-source-19-page-03
   questions:
   - id: u14-l01-p02-q01
@@ -108,6 +114,12 @@ page_metadata:
     feedback: 요구 목록을 세 갈래로 쪼개 보면 빠진 칸이 보인다. 이것이 🧩 쪼개기다.
   question_placements:
   - question_id: u14-l01-p02-q01
+    after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u14-l01-p2-three-needs.svg
+    title: "요구를 세 가지로 쪼개기"
+    alt: "쇼룸과 박 팀장의 요청을 닿을 것, 노출 금지, 내용 보호로 쪼개고 각각 지키지 못하면 생기는 문제를 보여 줍니다."
+    caption: "한 덩어리 요청은 닿을 것, 노출 금지, 내용 보호로 나눠 따집니다."
     after_paragraph: 2
 - page_id: advanced-source-19-page-05
   questions:
@@ -158,6 +170,12 @@ page_metadata:
   question_placements:
   - question_id: u14-l01-p03-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u14-l01-p3-leased-line.svg
+    title: "전용 회선"
+    alt: "서울 본사와 도쿄 쇼룸을 전용 회선으로 잇고, 현장 사무소가 늘면 회선과 요금이 함께 늘어나는 모습입니다."
+    caption: "전용 회선은 안전하지만 비싸고 늘리기 어렵습니다."
+    after_paragraph: 2
 - page_id: advanced-source-19-page-06
   questions:
   - id: u14-l01-p04-q01
@@ -207,6 +225,12 @@ page_metadata:
   question_placements:
   - question_id: u14-l01-p04-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u14-l01-p4-open-internet.svg
+    title: "인터넷을 그냥 쓰면"
+    alt: "공용 인터넷을 지나는 견적서에 엿보기, 바꿔치기, 남인 척하기 세 걱정이 있고 각각 기밀성, 무결성, 인증으로 지킨다는 그림입니다."
+    caption: "공용망의 세 걱정은 기밀성, 무결성, 인증으로 따로 점검합니다."
+    after_paragraph: 1
 - page_id: advanced-source-19-page-07
   questions:
   - id: u14-l01-p05-q01
@@ -256,6 +280,12 @@ page_metadata:
   question_placements:
   - question_id: u14-l01-p05-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u14-l01-p5-vpn-tunnel.svg
+    title: "VPN은 인터넷 위의 터널"
+    alt: "도쿄 SG와 서울 SG 사이의 같은 인터넷 길 위에 터널을 만들면 안의 내용이 가려지는 모습입니다."
+    caption: "VPN은 새 선이 아니라 기존 인터넷 위의 논리적 통로입니다."
+    after_paragraph: 1
 - page_id: advanced-source-19-page-08
   questions:
   - id: u14-l01-p06-q01
@@ -304,6 +334,12 @@ page_metadata:
     feedback: 연결 대상이 한 대인지 사무실 전체인지로 나눠 방식을 고르면 된다. 이것이 🧩 쪼개기다.
   question_placements:
   - question_id: u14-l01-p06-q01
+    after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u14-l01-p6-gg-ge.svg
+    title: "지사용과 재택용 VPN"
+    alt: "왼쪽은 도쿄 SG와 본사 SG가 망과 망을 잇는 G-to-G, 오른쪽은 박 팀장 노트북이 본사 SG에 붙는 G-to-E입니다."
+    caption: "지사는 G-to-G, 재택은 G-to-E로 잇습니다."
     after_paragraph: 3
 - page_id: advanced-source-19-page-09
   questions:
@@ -354,6 +390,12 @@ page_metadata:
   question_placements:
   - question_id: u14-l01-p07-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u14-l01-p7-vpn-vs-leased.svg
+    title: "VPN은 전용 회선만큼 안전할까"
+    alt: "전용 회선은 독립된 방의 금고처럼 길이 분리되고, VPN은 로비의 금고처럼 키와 계정 관리에 보호가 달려 있음을 비교합니다."
+    caption: "VPN은 키와 계정 관리가 무너지면 보호도 무너집니다."
+    after_paragraph: 1
 ---
 
 ## 사내 AI는 왜 사무실 밖에선 안 보일까?

@@ -13,16 +13,11 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-source-03-page-01
   illustrations:
-  - file: assets/animations/u11-inline-path.svg
-    title: Inline · 지나가는 길목에 놓기
-    alt: 서버로 가는 길목에 놓인 장치를 모든 요청 패킷이 지나가며 검사받는 모습입니다.
-    caption: Inline 장치는 패킷이 지나가는 길목에 놓입니다.
+  - file: assets/animations/u11-l02-p01-office-path.svg
+    title: "AI 요청이 지나는 길목"
+    alt: "박 팀장 노트북의 요청이 스위치와 본사 게이트웨이, ISP 라우터를 지나 AI 서비스로 가고, 게이트웨이에서 이 목적지만 막히는 모습입니다."
+    caption: "지나가는 장치는 모두 Inline이며, 이 서비스만 안 열리면 출구 장치를 먼저 의심합니다."
     after_paragraph: 1
-  - file: assets/animations/u11-inline-position.svg
-    title: 망 구성에서 위치 찾기
-    alt: 내 컴퓨터에서 서버까지 여러 장치가 이어진 지도에서 검사 장치를 놓을 길목을 고르는 모습입니다.
-    caption: 지도에서 패킷이 반드시 지나는 곳을 찾습니다.
-    after_paragraph: 2
   questions:
   - id: u11-l02-p01-q01
     kind: choice
@@ -292,6 +287,12 @@ page_metadata:
   - question_id: u11-l02-p06-q01
     after_paragraph: 3
 - page_id: u11-l02-page-07
+  illustrations:
+  - file: assets/animations/u11-l02-p06-reboot-spof.svg
+    title: "길목 장치가 멈추면?"
+    alt: "본사 게이트웨이를 재부팅하자 사무실 PC 전체의 인터넷이 끊기고, 장치를 두 대 두는 이중화가 대안으로 나오는 모습입니다."
+    caption: "Inline 장치는 단일 장애점이 될 수 있어 이중화나 Bypass로 대비하되 각각 대가가 있습니다."
+    after_paragraph: 2
   questions:
   - id: u11-l02-p07-q01
     kind: choice

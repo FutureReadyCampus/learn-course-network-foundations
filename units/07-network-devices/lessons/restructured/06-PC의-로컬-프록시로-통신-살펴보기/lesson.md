@@ -13,11 +13,11 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-source-09-page-01
   illustrations:
-  - file: assets/animations/u11-fwd-09-01-encrypted-packet.svg
-    title: "암호화된 패킷의 한계"
-    alt: "암호화된 패킷의 한계: PC의 패킷을 캡처해 봐요 → IP·TCP 정보는 볼 수 있어요 → HTTPS 내용은 암호화되어 있어요 → 그래서 별도의 중계 지점을 만들어요"
-    caption: "잡았다고 읽을 수 있는 건 아니에요"
-    after_paragraph: 1
+  - file: assets/animations/u11-l06-p01-capture-limit.svg
+    title: "패킷은 잡았는데 왜 못 읽을까?"
+    alt: "지우 PC의 플러그인 요청을 패킷 캡처하면 IP·TCP 헤더는 보이지만 HTTPS Payload는 암호문이라 읽을 수 없는 모습입니다."
+    caption: "패킷을 잡는 것과 내용을 읽는 것은 다르며, 내용을 보려면 중계 지점이 필요합니다."
+    after_paragraph: 2
   questions:
   - id: u11-l06-p01-q01
     kind: choice
@@ -68,10 +68,10 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-09-page-02
   illustrations:
-  - file: assets/animations/u11-fwd-09-02-local-proxy.svg
-    title: "PC에 설치하는 Proxy"
-    alt: "PC에 설치하는 Proxy: 브라우저는 내 PC 안에 있어요 → 분석 도구가 PC 안에서 Proxy로 동작해요 → 브라우저의 요청이 도구로 먼저 가요 → 도구가 서버로 전달하고 내용을 보여 줘요"
-    caption: "내 PC 안에 중계 도구를 둬요"
+  - file: assets/animations/u11-l06-p02-local-proxy.svg
+    title: "내 PC 안에 중계소 세우기"
+    alt: "지우 PC 안에 로컬 프록시 127.0.0.1:8080을 세우면 AI 플러그인의 요청이 먼저 도착해 한 건씩 목록으로 보이는 모습입니다."
+    caption: "로컬 프록시는 내 PC 안의 포워드 프록시이며, 내 통신이거나 승인된 범위만 봅니다."
     after_paragraph: 1
   questions:
   - id: u11-l06-p02-q01
@@ -288,11 +288,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-09-page-06
   illustrations:
-  - file: assets/animations/u11-fwd-09-06-wrap-up.svg
-    title: "로컬 프록시 도구와 Proxy 활용 정리"
-    alt: "로컬 프록시 도구와 Proxy 활용 정리: 외부 출구로 연결하는 우회 사례 → 조직이 관리하는 정책·검사 지점 → 내 PC 안의 로컬 분석 도구 → 공통 원리는 대신 전달하는 중계예요"
-    caption: "목적은 달라도 중계 원리는 같아요"
-    after_paragraph: 3
+  - file: assets/animations/u11-l06-p06-three-proxies.svg
+    title: "우회 · 회사 · 로컬, 같은 모양일까?"
+    alt: "무료 우회 프록시, 회사 프록시, 로컬 프록시가 같은 뼈대이고 놓인 자리와 관리자가 다른 것을 비교합니다."
+    caption: "프록시의 성격은 어디에 있고 누가 관리하는지가 정합니다."
+    after_paragraph: 2
   questions:
   - id: u11-l06-p06-q01
     kind: choice

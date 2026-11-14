@@ -58,6 +58,12 @@ page_metadata:
   question_placements:
   - question_id: u14-l05-p01-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u14-l05-p1-service-view.svg
+    title: "AI 서비스는 내가 어디 있다고 볼까?"
+    alt: "출장지 IP 192.0.2.150에서 외부 AI 서비스로 요청이 가면 서비스가 IP 위치 DB와 맞춰 접속 위치를 짐작하지만 그것은 사실이 아닌 추정이라는 흐름을 보여 줍니다."
+    caption: "서비스가 보는 위치는 출발지 IP로 짐작한 추정치입니다."
+    after_paragraph: 1
 - page_id: advanced-source-22-page-03
   questions:
   - id: u14-l05-p02-q01
@@ -107,6 +113,12 @@ page_metadata:
   question_placements:
   - question_id: u14-l05-p02-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u14-l05-p2-exit-changes.svg
+    title: "VPN을 켜면 왜 출구가 바뀔까?"
+    alt: "왼쪽은 VPN을 끈 노트북의 출발지 192.0.2.150, 오른쪽은 전체 터널을 켜서 SG를 거쳐 서비스에 출발지 198.51.100.25로 보이는 모습을 비교합니다."
+    caption: "전체 터널을 켜면 서비스는 출장지가 아니라 회사 출구 주소를 봅니다."
+    after_paragraph: 1
 - page_id: advanced-source-22-page-05
   questions:
   - id: u14-l05-p03-q01
@@ -155,6 +167,12 @@ page_metadata:
     feedback: 우회의 이득과 계정·데이터·책임이라는 대가를 견주는 ⚖️ 대가 따지기다.
   question_placements:
   - question_id: u14-l05-p03-q01
+    after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u14-l05-p3-region-risk.svg
+    title: "지역 제한을 VPN으로 넘으면"
+    alt: "직원이 고객 도면 업무 자료를 개인 VPN 중계를 거쳐 지역 제한 서비스로 보내면 계정 정지와 자료 유출 위험이 생기고, 회사는 공식 지원 지역과 기업 계약을 먼저 확인한다는 점을 보여 줍니다."
+    caption: "지역 제한을 출구로 넘는 일은 계정·데이터·책임의 위험을 낳습니다."
     after_paragraph: 2
 - page_id: advanced-source-22-page-06
   questions:
@@ -205,6 +223,12 @@ page_metadata:
   question_placements:
   - question_id: u14-l05-p04-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u14-l05-p4-ip-reputation.svg
+    title: "IP 주소에도 평판이 있다?"
+    alt: "본사 PC들이 NAT 출구 198.51.100.25 하나로 나가므로 감염 PC의 스팸 때문에 출구 평판이 깎이고 정상 메일도 의심받는 모습입니다."
+    caption: "출구를 함께 쓰면 남의 행동의 평판도 함께 떠안습니다."
+    after_paragraph: 1
 - page_id: advanced-source-22-page-07
   questions:
   - id: u14-l05-p05-q01
@@ -253,6 +277,12 @@ page_metadata:
     feedback: 비밀번호, 계정·기능 정리, 업데이트 순으로 하나씩 하는 📋 순서대로 확인하기다.
   question_placements:
   - question_id: u14-l05-p05-q01
+    after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u14-l05-p5-router-vpn.svg
+    title: "공유기 VPN 기능의 위험"
+    alt: "박 팀장 집 공유기에 켜져 있던 VPN 서버 기능이 기본 비밀번호와 옛 펌웨어 때문에 낯선 계정을 허용하게 되고, 비밀번호 변경·기능 끄기·업데이트 순서로 막는 모습입니다."
+    caption: "쓰지 않는 공유기 기능은 끄고 관리자 비밀번호와 펌웨어부터 챙깁니다."
     after_paragraph: 2
 - page_id: advanced-source-22-page-08
   questions:
@@ -303,6 +333,12 @@ page_metadata:
   question_placements:
   - question_id: u14-l05-p06-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u14-l05-p6-relay.svg
+    title: "내 공유기가 남의 중계소라면?"
+    alt: "제3자가 장악된 한결디자인 공유기를 거쳐 외부 AI API에 요청을 보내면 API 업체 로그에 198.51.100.25가 남아 명의자와 행위자가 달라지는 모습입니다."
+    caption: "이 IP에서 왔다는 말은 이 사람이 했다는 말과 다릅니다."
+    after_paragraph: 1
 - page_id: advanced-source-22-page-09
   questions:
   - id: u14-l05-p07-q01
@@ -352,6 +388,12 @@ page_metadata:
   question_placements:
   - question_id: u14-l05-p07-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u14-l05-p7-hard-to-trace.svg
+    title: "여러 번 거친 접속은 왜 추적이 어려울까?"
+    alt: "직원 PC가 개인 VPN 암호화 터널로 필터가 막은 사이트에 접속하면 회사 필터는 암호화된 통신만 보고, 구간마다 기록이 달라 추적이 끊긴다는 흐름입니다."
+    caption: "통제는 터널 안이 아니라 어떤 터널을 허용할지 정하는 쪽에서 이루어집니다."
+    after_paragraph: 1
 - page_id: advanced-source-22-page-10
   questions:
   - id: u14-l05-p08-q01
@@ -400,6 +442,12 @@ page_metadata:
     feedback: IP, 계정, 기기, 행동 신호로 신원을 나눠 보는 🧩 쪼개기다.
   question_placements:
   - question_id: u14-l05-p08-q01
+    after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u14-l05-p8-ip-only.svg
+    title: "IP만 보고 믿어도 될까?"
+    alt: "사내 AI가 VPN 풀 10.10.99.0/24 주소를 모두 허용하면 유출된 계정으로 붙은 사람도 통과하므로, IP에 계정·기기·행동 신호를 더해 확인해야 한다는 흐름입니다."
+    caption: "신원은 IP 하나가 아니라 계정, 기기, 행동 신호로 나눠 확인합니다."
     after_paragraph: 2
 ---
 

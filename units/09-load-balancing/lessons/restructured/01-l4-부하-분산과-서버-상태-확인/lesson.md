@@ -16,6 +16,12 @@ source_wikis:
 source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-17.md
 page_metadata:
 - page_id: u13-l01-page-01
+  illustrations:
+  - file: assets/animations/u13-l01-p1-slow.svg
+    title: "한결봇은 왜 느려졌을까?"
+    alt: "점심시간 요청이 서버 한 대로 몰려 회선 사용률은 30%인데 GPU는 100%가 되고, 한 대의 한계라 여러 대로 나눠야 한다는 흐름입니다."
+    caption: "회선이 아니라 서버 한 대의 처리 한계가 느림의 원인입니다."
+    after_paragraph: 2
   questions:
   - id: u13-l01-p01-q01
     kind: choice
@@ -65,6 +71,12 @@ page_metadata:
   - question_id: u13-l01-p01-q01
     after_paragraph: 3
 - page_id: advanced-source-17-page-01
+  illustrations:
+  - file: assets/animations/u13-l01-p2-forwarding.svg
+    title: "포트 포워딩을 서버 여러 대로 늘리면?"
+    alt: "왼쪽은 외부 443이 서버 .11 한 대에만 연결돼 .12 규칙이 거부되고, 오른쪽은 로드 밸런서가 연결마다 서버 .11~.13 중 하나를 고르는 모습입니다."
+    caption: "포트 포워딩은 목적지가 한 대뿐이고, L4 로드 밸런서는 연결마다 서버를 고릅니다."
+    after_paragraph: 2
   questions:
   - id: u13-l01-p02-q01
     kind: choice
@@ -114,6 +126,12 @@ page_metadata:
   - question_id: u13-l01-p02-q01
     after_paragraph: 3
 - page_id: advanced-source-17-page-02
+  illustrations:
+  - file: assets/animations/u13-l01-p3-vip.svg
+    title: "손님은 주소 하나만 알면 돼요"
+    alt: "손님이 bot.hangyeol.example을 풀어 VIP 203.0.113.10:443을 받고, 로드 밸런서가 서버 풀 192.168.20.11~.13 중 하나로 넘기는 모습입니다."
+    caption: "VIP는 로드 밸런서의 주소라서 서버가 늘거나 줄어도 손님이 쓰는 주소는 같습니다."
+    after_paragraph: 2
   questions:
   - id: u13-l01-p03-q01
     kind: choice
@@ -163,6 +181,12 @@ page_metadata:
   - question_id: u13-l01-p03-q01
     after_paragraph: 3
 - page_id: advanced-source-17-page-03
+  illustrations:
+  - file: assets/animations/u13-l01-p4-session.svg
+    title: "대화 중에 앞말을 잊는다면?"
+    alt: "첫 요청은 서버 .11이 기억하지만 다음 요청이 서버 .12로 가면 앞말을 모르고, 공유 저장소에 두면 어느 서버든 같은 기록을 읽는 모습입니다."
+    caption: "대화 기록을 서버 밖 공유 저장소에 두면 어느 서버가 받아도 맥락이 이어집니다."
+    after_paragraph: 2
   questions:
   - id: u13-l01-p04-q01
     kind: choice
@@ -212,6 +236,12 @@ page_metadata:
   - question_id: u13-l01-p04-q01
     after_paragraph: 4
 - page_id: advanced-source-17-page-04
+  illustrations:
+  - file: assets/animations/u13-l01-p5-policy.svg
+    title: "차례대로 나눠 주면 공평할까?"
+    alt: "라운드 로빈은 순서대로 나누지만 긴 요청이 걸린 서버 .12만 막히고 .13은 놀며, 최소 연결은 한가한 서버를 고르는 모습입니다."
+    caption: "라운드 로빈은 개수만 세므로 요청 처리 시간이 들쭉날쭉하면 최소 연결이 어울립니다."
+    after_paragraph: 1
   questions:
   - id: u13-l01-p05-q01
     kind: choice
@@ -261,6 +291,12 @@ page_metadata:
   - question_id: u13-l01-p05-q01
     after_paragraph: 4
 - page_id: u13-l01-page-06
+  illustrations:
+  - file: assets/animations/u13-l01-p6-l7.svg
+    title: "도면 질문만 큰 GPU로?"
+    alt: "왼쪽 L4는 IP와 포트만 봐서 도면 요청을 가르지 못하고, 오른쪽 L7은 /api/drawing 경로를 읽어 큰 GPU 서버로 보내는 모습입니다."
+    caption: "경로나 쿠키로 나누려면 요청 내용을 읽는 L7 로드 밸런서가 필요합니다."
+    after_paragraph: 2
   questions:
   - id: u13-l01-p06-q01
     kind: choice
@@ -310,6 +346,12 @@ page_metadata:
   - question_id: u13-l01-p06-q01
     after_paragraph: 3
 - page_id: advanced-source-17-page-05
+  illustrations:
+  - file: assets/animations/u13-l01-p7-health.svg
+    title: "모델을 싣는 서버로 왜 갔을까?"
+    alt: "ping에는 정상으로 답하지만 모델을 싣는 중인 서버 .12로 요청이 가 오류가 나고, /health로 준비 여부를 물으면 풀에서 제외되는 모습입니다."
+    caption: "헬스 체크는 서버가 켜졌는지가 아니라 서비스가 준비됐는지를 확인해야 합니다."
+    after_paragraph: 2
   questions:
   - id: u13-l01-p07-q01
     kind: choice
@@ -359,6 +401,12 @@ page_metadata:
   - question_id: u13-l01-p07-q01
     after_paragraph: 3
 - page_id: advanced-source-17-page-06
+  illustrations:
+  - file: assets/animations/u13-l01-p8-drain.svg
+    title: "서버 한 대를 빼도 손님이 모르게"
+    alt: "오류가 잦은 서버 .11을 새 연결에서 먼저 빼면 남은 두 대가 90%씩 맡는 모습으로, 평소 여유가 있어야 버틴다는 뜻입니다."
+    caption: "서버를 뺄 때는 새 연결에서 먼저 빼고 남은 서버의 여유를 따져야 합니다."
+    after_paragraph: 2
   questions:
   - id: u13-l01-p08-q01
     kind: choice

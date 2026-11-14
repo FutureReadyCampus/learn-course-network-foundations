@@ -65,6 +65,12 @@ page_metadata:
   question_placements:
   - question_id: u15-l01-p01-q01
     after_paragraph: 4
+  illustrations:
+  - file: assets/animations/u15-l01-p1-four-questions.svg
+    title: "보안 점검, 무엇부터?"
+    alt: "회의실 랜 포트의 박 팀장 노트북이 확인 없이 주소를 받아 AI 서버 관리 화면까지 닿고, 점검을 네 질문으로 쪼개 첫 질문 NAC부터 보는 모습입니다."
+    caption: "점검을 네 질문으로 쪼개면 첫 질문은 누가 들어오나, 곧 NAC입니다."
+    after_paragraph: 1
 - page_id: advanced-source-23-page-06
   questions:
   - id: u15-l01-p02-q01
@@ -113,6 +119,12 @@ page_metadata:
     feedback: "🧩 쪼개기: \"막혔다\"를 \"무엇으로 알아봤나\"로 나누니 IP·MAC 쌍이 어긋난 것이 원인임이 보인다."
   question_placements:
   - question_id: u15-l01-p02-q01
+    after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u15-l01-p2-ledger-probe.svg
+    title: "회사 기기인지 알아보기"
+    alt: "IP·MAC 장부에 적은 회사 PC와 달리, Probe가 경로 밖에서 본 장부에 없는 쌍을 미허가 기기로 보는 모습입니다."
+    caption: "장부와 Probe로 미등록 기기를 알아보지만 MAC은 바꿀 수 있어 보조 도구입니다."
     after_paragraph: 2
 - page_id: u15-l01-page-03
   questions:
@@ -163,6 +175,12 @@ page_metadata:
   question_placements:
   - question_id: u15-l01-p03-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u15-l01-p3-port-down.svg
+    title: "포트를 내리면 끝일까?"
+    alt: "NAC가 스위치에 포트를 내리라고 지시하면 링크가 끊기고, 같은 포트 뒤의 정상 기기까지 함께 끊기는 대가를 보여 줍니다."
+    caption: "포트 차단은 확실하지만 포트 뒤 기기가 모두 끊기고 이유를 알리지 못합니다."
+    after_paragraph: 2
 - page_id: advanced-source-23-page-08
   questions:
   - id: u15-l01-p05-q01
@@ -212,6 +230,12 @@ page_metadata:
   question_placements:
   - question_id: u15-l01-p05-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u15-l01-p4-redirect-page.svg
+    title: "접속하자마자 안내 페이지"
+    alt: "Probe가 웹 요청에 먼저 안내 페이지 응답을 보내 박 팀장 노트북에 기기 등록 안내가 뜨는 모습입니다."
+    caption: "안내 페이지 방식은 사용자 안내에는 강하지만 HTTPS와 앱 통신에는 약합니다."
+    after_paragraph: 1
 - page_id: u15-l01-page-06
   questions:
   - id: u15-l01-p06-q01
@@ -261,6 +285,12 @@ page_metadata:
   question_placements:
   - question_id: u15-l01-p06-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u15-l01-p5-8021x.svg
+    title: "들어오기 전에 신분 확인"
+    alt: "노트북이 신원을 내면 스위치가 RADIUS 서버에 확인하고, 통과하면 포트가 열려 사내망에 들어갑니다."
+    caption: "802.1X는 인증을 마친 기기만 사내망에 들입니다."
+    after_paragraph: 3
 - page_id: advanced-source-23-page-09
   questions:
   - id: u15-l01-p07-q01
@@ -309,6 +339,12 @@ page_metadata:
     feedback: "🧩 쪼개기: 유선 접속과 무선 전파를 나눠 보니, 전파 쪽은 WIPS가 맡는 별도 질문임이 보인다."
   question_placements:
   - question_id: u15-l01-p07-q01
+    after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u15-l01-p6-wips.svg
+    title: "몰래 켠 와이파이"
+    alt: "사내 PC가 랜과 핫스팟에 동시에 붙어 생긴 샛길을 WIPS 센서가 전파로 찾아 경보하는 모습입니다."
+    caption: "허가 없는 무선 사용은 WIPS가 찾고, 경보는 사람이 확인할 후보입니다."
     after_paragraph: 3
 ---
 

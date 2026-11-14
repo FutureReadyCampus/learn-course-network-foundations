@@ -12,6 +12,12 @@ source_wikis:
 source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-05.md
 page_metadata:
 - page_id: advanced-source-05-page-01
+  illustrations:
+  - file: assets/animations/u11-l03-p01-sensor-copy.svg
+    title: "센서에 복사본 보내기"
+    alt: "지우 PC에서 게이트웨이로 가는 통신은 그대로 두고, 스위치의 복사본만 관리 주소 192.168.10.250의 센서로 보내는 모습입니다."
+    caption: "센서를 쓰려면 복사 경로가 필요하고, 센서는 관찰만 할 뿐 막지는 못합니다."
+    after_paragraph: 2
   questions:
   - id: u11-l03-p01-q01
     kind: choice

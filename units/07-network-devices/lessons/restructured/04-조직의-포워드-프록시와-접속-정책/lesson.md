@@ -70,10 +70,10 @@ page_metadata:
     after_paragraph: 4
 - page_id: advanced-source-06-page-03
   illustrations:
-  - file: assets/animations/u11-fwd-06-03-proxy-settings.svg
-    title: 접속 주체를 대신하기
-    alt: '접속 주체를 대신하기: 브라우저에 Proxy 주소와 포트를 입력해요 → 브라우저는 먼저 Proxy에 요청을 맡겨요 → Proxy가 목적지와 별도 연결을 맺어요 → 프로그램별 설정은 따로 확인해요'
-    caption: 브라우저가 먼저 Proxy에 말을 걸어요
+  - file: assets/animations/u11-l04-p02-browser-proxy.svg
+    title: "브라우저에 프록시 주소 넣기"
+    alt: "지우 PC 브라우저에 프록시 192.168.10.5 포트 8080을 넣으면 요청이 프록시를 거쳐 AI 서비스로 가고, 설정을 읽지 않는 회의록 앱은 기록 없이 바로 나가는 모습입니다."
+    caption: "프록시 설정은 그것을 읽는 프로그램에만 통합니다."
     after_paragraph: 1
   questions:
   - id: u11-l04-p02-q01
@@ -180,11 +180,11 @@ page_metadata:
     after_paragraph: 4
 - page_id: advanced-source-06-page-02
   illustrations:
-  - file: assets/animations/u11-fwd-06-02-direct-vs-proxy.svg
-    title: 직접 가는 길과 돌아가는 길
-    alt: '직접 가는 길과 돌아가는 길: 직접 접속하면 서버는 내 쪽 주소를 봐요 → Proxy를 지정하면 먼저 Proxy에 연결해요 → 서버에는 Proxy 쪽 주소가 보일 수 있어요 → 프록시 기록에 누가 보냈는지 남아요'
-    caption: 서버에 보이는 주소가 달라질 수 있어요
-    after_paragraph: 1
+  - file: assets/animations/u11-l04-p04-seen-address.svg
+    title: "AI 서비스에는 누구 주소가 보일까?"
+    alt: "직접 접속과 회사 프록시 경유는 본사 공인 주소 198.51.100.25로, 해외 우회 프록시 경유는 그 서버의 주소로 보이는 것을 비교합니다."
+    caption: "주소가 바뀌어도 로그인하면 신원이 감춰지지 않으며, 어느 PC인지는 회사 프록시 기록에서 찾습니다."
+    after_paragraph: 3
   questions:
   - id: u11-l04-p04-q01
     kind: choice

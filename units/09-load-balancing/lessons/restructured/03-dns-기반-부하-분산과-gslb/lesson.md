@@ -12,6 +12,12 @@ source_wikis:
 source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-18.md
 page_metadata:
 - page_id: advanced-source-18-page-01
+  illustrations:
+  - file: assets/animations/u13-l03-p1-latency.svg
+    title: "일본 고객에게만 왜 느릴까?"
+    alt: "서울 사이트의 서버는 한산한데 일본 고객의 요청이 왕복 50ms를 20~30번 오가 첫 화면이 1~1.5초 더 걸리고, 도쿄 사이트를 두면 가까워지는 모습입니다."
+    caption: "서버 대수가 아니라 손님과 서버 사이의 거리와 망 경로가 느림의 원인일 수 있습니다."
+    after_paragraph: 1
   questions:
   - id: u13-l03-p01-q01
     kind: choice
@@ -61,6 +67,12 @@ page_metadata:
   - question_id: u13-l03-p01-q01
     after_paragraph: 3
 - page_id: advanced-source-18-page-02
+  illustrations:
+  - file: assets/animations/u13-l03-p2-dns-rr.svg
+    title: "DNS가 주소를 둘 알려 주면?"
+    alt: "이름 하나에 서울과 도쿄 주소를 둘 다 등록했지만 도쿄 사이트가 점검 중이어도 DNS는 몰라서 손님을 도쿄로 안내하다 막히는 모습입니다."
+    caption: "DNS 라운드 로빈은 살아 있는지 확인하지 않으므로 상태를 보는 GSLB가 필요합니다."
+    after_paragraph: 1
   questions:
   - id: u13-l03-p02-q01
     kind: choice
@@ -110,6 +122,12 @@ page_metadata:
   - question_id: u13-l03-p02-q01
     after_paragraph: 3
 - page_id: advanced-source-18-page-05
+  illustrations:
+  - file: assets/animations/u13-l03-p3-cname.svg
+    title: "이름 하나로 지역마다 다른 주소를"
+    alt: "bot.hangyeol.example이 CNAME jp.bot.gslb.example을 거쳐 도쿄 주소 203.0.113.20으로 풀리는 세 단계 흐름입니다."
+    caption: "지역 선택은 GSLB가 관리하는 이름을 푸는 단계에서 일어납니다."
+    after_paragraph: 1
   questions:
   - id: u13-l03-p03-q01
     kind: choice
@@ -159,6 +177,12 @@ page_metadata:
   - question_id: u13-l03-p03-q01
     after_paragraph: 2
 - page_id: advanced-source-18-page-06
+  illustrations:
+  - file: assets/animations/u13-l03-p4-resolver.svg
+    title: "DNS는 손님 위치를 어떻게 알까?"
+    alt: "도쿄 쇼룸의 노트북은 수동으로 적은 서울 쪽 공개 DNS를 써 서울로 안내되고, 다른 PC는 DHCP로 받은 도쿄 쪽 리졸버를 써 도쿄로 안내되는 비교입니다."
+    caption: "권한 DNS는 손님이 아니라 질문을 대신 보낸 리졸버의 위치를 봅니다."
+    after_paragraph: 1
   questions:
   - id: u13-l03-p04-q01
     kind: choice
@@ -208,6 +232,12 @@ page_metadata:
   - question_id: u13-l03-p04-q01
     after_paragraph: 3
 - page_id: advanced-source-18-page-09
+  illustrations:
+  - file: assets/animations/u13-l03-p5-geoip.svg
+    title: "IP 주소만 보고 나라를 알 수 있을까?"
+    alt: "IP 위치 DB가 손님 IP 192.0.2.77을 일본·도쿄로 추정하지만, VPN을 쓰면 출구 위치로 보이는 한계를 함께 보여 줍니다."
+    caption: "IP 위치는 가까운 지역 안내에만 쓰는 추정값이고 정확해야 하는 판단에는 다른 근거가 필요합니다."
+    after_paragraph: 1
   questions:
   - id: u13-l03-p05-q01
     kind: choice
@@ -257,6 +287,12 @@ page_metadata:
   - question_id: u13-l03-p05-q01
     after_paragraph: 3
 - page_id: u13-l03-page-06
+  illustrations:
+  - file: assets/animations/u13-l03-p6-sync.svg
+    title: "서울과 도쿄가 다른 답을 한다면?"
+    alt: "서울은 최신 지식 문서 버전이고 도쿄는 하루 전 버전이라 일본 고객이 예전 단가를 받다가, 서울 원본을 도쿄로 복사해 맞추는 모습입니다."
+    caption: "여러 사이트의 내용은 한 곳을 원본으로 배포하고 버전 번호로 어긋남을 확인합니다."
+    after_paragraph: 1
   questions:
   - id: u13-l03-p06-q01
     kind: choice
@@ -306,6 +342,12 @@ page_metadata:
   - question_id: u13-l03-p06-q01
     after_paragraph: 3
 - page_id: advanced-source-18-page-07
+  illustrations:
+  - file: assets/animations/u13-l03-p7-cdn.svg
+    title: "사진과 화면은 더 가까이 둘 수 없을까?"
+    alt: "도쿄 손님이 서울 원본에서 3MB 사진을 받다가 도쿄 에지에 사본을 저장해 두고 이후 가까운 에지에서 바로 받으며, 개인 응답은 캐시하지 않는 모습입니다."
+    caption: "CDN은 누구에게나 같은 정적 파일만 가까이 캐시하고 개인 응답은 캐시하지 않습니다."
+    after_paragraph: 2
   questions:
   - id: u13-l03-p07-q01
     kind: choice
@@ -355,6 +397,12 @@ page_metadata:
   - question_id: u13-l03-p07-q01
     after_paragraph: 3
 - page_id: advanced-source-18-page-08
+  illustrations:
+  - file: assets/animations/u13-l03-p8-two-layers.svg
+    title: "지역을 고른 뒤엔 누가 서버를 고를까?"
+    alt: "GSLB가 도쿄 지역을 고르고 도쿄 안의 L4가 서버를 고르며, 서버 한 대 고장은 L4가 빼고 서울 전체 장애는 GSLB가 도쿄로 돌리는 모습입니다."
+    caption: "서버 한 대 고장은 지역 안 L4가, 사이트 전체 장애는 GSLB가 처리합니다."
+    after_paragraph: 2
   questions:
   - id: u13-l03-p08-q01
     kind: choice

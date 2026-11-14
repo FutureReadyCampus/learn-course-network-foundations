@@ -22,10 +22,10 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-nat-mapping-filtering-page-01
   illustrations:
-  - file: assets/animations/u12-mapping-peers.svg
-    title: NAT 뒤의 피어끼리 만나기
-    alt: 양쪽이 각자 공유기 뒤에 있어 한쪽이 먼저 보낸 패킷을 상대 공유기가 어느 기기로 보낼지 모르는 상황을 보여 주는 그림입니다.
-    caption: 직접 통신에는 매핑과 허용 조건이 모두 필요합니다.
+  - file: assets/animations/u12-l05-p01-video-call-no-port.svg
+    title: "포트를 안 열었는데 화상회의는?"
+    alt: "박 팀장과 협력사가 모두 공유기 뒤에 있어도 둘 다 화상회의 서버로 먼저 연결하면 포트를 열지 않아도 영상과 음성이 오가고, 일부 앱은 서버 없이 직접 연결도 시도한다는 그림입니다."
+    caption: "안쪽에서 바깥으로 먼저 나가는 연결에는 포트 개방이 필요 없습니다."
     after_paragraph: 0
   questions:
   - id: u12-l05-p01-q01
@@ -77,10 +77,10 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-nat-mapping-filtering-page-02
   illustrations:
-  - file: assets/animations/u12-router-nat-types.svg
-    title: NAT의 동작은 한 가지가 아니다
-    alt: NAT의 동작을 바깥 주소·포트를 정하는 질문과 바깥 패킷을 들여보낼 조건을 정하는 질문 둘로 나누어 보여 주는 그림입니다.
-    caption: 유형 이름보다 이 두 질문을 기억합니다.
+  - file: assets/animations/u12-l05-p02-two-questions.svg
+    title: "NAT에게 꼭 따로 물어야 할 두 가지"
+    alt: "지우의 메모를 이름만 보고 판단한 것에서 매핑과 필터링을 따로 확인하는 것으로 고치고, 매핑은 External 칸, 필터링은 응답을 들여보내기 전의 조건이라는 두 질문을 보여 줍니다."
+    caption: "NAT는 매핑과 필터링을 따로 확인합니다."
     after_paragraph: 0
   questions:
   - id: u12-l05-p02-q01
@@ -179,6 +179,12 @@ page_metadata:
   question_placements:
   - question_id: u12-l05-p03-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u12-l05-p03-mapping-by-peer.svg
+    title: "상대가 바뀌면 바깥 포트도 바뀔까?"
+    alt: "박 팀장 PC 192.168.0.20이 STUN 서버 203.0.113.60에는 192.0.2.123:40001로 보였지만 협력사에는 상대마다 다른 매핑이면 :40017로 보여 소개한 주소가 맞지 않는다는 비교입니다."
+    caption: "소개 서버가 알려 준 주소가 맞으려면 매핑이 상대와 무관해야 합니다."
+    after_paragraph: 0
 - page_id: advanced-nat-mapping-filtering-page-04
   questions:
   - id: u12-l05-p04-q01
@@ -228,12 +234,18 @@ page_metadata:
   question_placements:
   - question_id: u12-l05-p04-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u12-l05-p04-filtering.svg
+    title: "누가 보낸 패킷까지 받아 줄까?"
+    alt: "지우 PC가 203.0.113.15:5555로 먼저 보낸 뒤 바깥 매핑 198.51.100.25:42000으로 203.0.113.15:7777과 203.0.113.99:40000의 패킷이 도착할 때 누구든, 같은 IP만, 같은 IP·포트만 받는 방식이 어떻게 다른지 보여 줍니다."
+    caption: "필터링이 꼼꼼할수록 받는 상대의 범위가 좁아집니다."
+    after_paragraph: 0
 - page_id: advanced-nat-mapping-filtering-page-05
   illustrations:
-  - file: assets/animations/u12-mapping-cone.svg
-    title: 옛 Cone 이름 풀어 읽기
-    alt: Full Cone, Restricted Cone, Port Restricted Cone, Symmetric 이름을 매핑과 필터링 두 기준으로 나누어 보여 주는 그림입니다.
-    caption: 이름보다 두 기준을 따로 확인합니다.
+  - file: assets/animations/u12-l05-p05-cone-names.svg
+    title: "Full Cone, Symmetric은 어떻게 읽을까?"
+    alt: "Full Cone, Restricted Cone, Port Restricted Cone은 매핑이 상대와 무관하고 필터링만 다르며, Symmetric은 매핑이 상대에 따라 달라진다는 옛 이름 풀이표입니다."
+    caption: "옛 Cone 이름은 매핑과 필터링으로 풀어 읽습니다."
     after_paragraph: 0
   questions:
   - id: u12-l05-p05-q01
@@ -285,10 +297,10 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-nat-mapping-filtering-page-06
   illustrations:
-  - file: assets/animations/u12-mapping-hole-punching.svg
-    title: UDP 홀 펀칭
-    alt: 두 기기가 소개 서버를 통해 서로의 바깥 주소를 알고 동시에 먼저 보내 각자의 공유기에 매핑을 만드는 모습을 보여 주는 그림입니다.
-    caption: 양쪽이 먼저 보내 길을 엽니다.
+  - file: assets/animations/u12-l05-p06-hole-punching.svg
+    title: "양쪽에서 먼저 보내면 길이 열릴까?"
+    alt: "박 팀장과 지우 PC가 STUN 서버 203.0.113.60으로 바깥 주소를 알아내고 소개 서버가 서로 알려 준 뒤 동시에 먼저 보내 임시 줄을 만들어 직접 연결하는 UDP 홀 펀칭 과정입니다."
+    caption: "UDP 홀 펀칭은 조건이 맞을 때 직접 연결을 만듭니다."
     after_paragraph: 0
   questions:
   - id: u12-l05-p06-q01
@@ -340,10 +352,10 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-nat-mapping-filtering-page-07
   illustrations:
-  - file: assets/animations/u12-mapping-relay.svg
-    title: 직접이 안 되면 중계로
-    alt: 직접 연결이 막히면 TURN 서버가 데이터를 대신 전달하는 모습을 보여 주는 그림입니다.
-    caption: 중계는 비용이 들지만 연결을 이어 줍니다.
+  - file: assets/animations/u12-l05-p07-relay.svg
+    title: "직접 못 만나면 누가 대신 전해 줄까?"
+    alt: "직접 연결이 UDP 차단, 상대별 매핑, 통신사 NAT 때문에 막히면 양쪽이 TURN 서버 203.0.113.60으로 연결해 데이터를 중계받고, 확실한 대신 서버 비용과 지연이 든다는 그림입니다."
+    caption: "중계는 직접 연결이 안 될 때의 확실한 대안이며 비용과 지연이 따릅니다."
     after_paragraph: 0
   questions:
   - id: u12-l05-p07-q01

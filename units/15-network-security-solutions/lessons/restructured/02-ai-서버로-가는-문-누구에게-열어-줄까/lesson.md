@@ -58,6 +58,12 @@ page_metadata:
   question_placements:
   - question_id: u15-l02-p01-q01
     after_paragraph: 4
+  illustrations:
+  - file: assets/animations/u15-l02-p1-packet-filter.svg
+    title: "방화벽은 무엇을 보고 막을까"
+    alt: "시연 고객 192.0.2.77에게만 AI 서버 8080을 허용하고 SSH 22번과 나머지는 차단하는 방화벽 규칙표와 통신 흐름입니다."
+    caption: "패킷 필터링 방화벽은 헤더로 판단하며 허용한 것 외에는 모두 차단하는 것이 기본입니다."
+    after_paragraph: 1
 - page_id: advanced-source-23-page-13
   questions:
   - id: u15-l02-p02-q01
@@ -106,6 +112,12 @@ page_metadata:
     feedback: "📋 순서대로 확인하기: 패킷을 위에서부터 한 줄씩 대조해 보면 어느 줄에서 멈추는지가 드러난다."
   question_placements:
   - question_id: u15-l02-p02-q01
+    after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u15-l02-p2-server-zone.svg
+    title: "AI 서버가 같은 구역이라면"
+    alt: "같은 LAN 안의 PC와 AI 서버는 방화벽을 지나지 않지만, 서버를 192.168.40.50 서버 구역으로 옮기면 모든 접속이 방화벽을 지나 기록되는 모습입니다."
+    caption: "AI 서버를 방화벽 전용 포트 뒤 서버 구역으로 옮겨 사내 PC의 접속도 규칙과 기록의 대상으로 만듭니다."
     after_paragraph: 2
 - page_id: u15-l02-page-03
   questions:
@@ -156,6 +168,12 @@ page_metadata:
   question_placements:
   - question_id: u15-l02-p03-q01
     after_paragraph: 4
+  illustrations:
+  - file: assets/animations/u15-l02-p3-stateful.svg
+    title: "돌아오는 응답은 왜 통과할까"
+    alt: "박 팀장 PC가 외부 AI API로 보낸 요청을 방화벽 상태 표에 적어 두고, 그 응답만 들어오게 하며 장부에 없는 출발지는 막는 모습입니다."
+    caption: "상태 추적 방화벽은 안에서 시작한 연결을 기억해 응답만 통과시킵니다."
+    after_paragraph: 2
 - page_id: advanced-source-23-page-11
   questions:
   - id: u15-l02-p04-q01
@@ -205,6 +223,12 @@ page_metadata:
   question_placements:
   - question_id: u15-l02-p04-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u15-l02-p4-session-table.svg
+    title: "세션 표가 가득 차면"
+    alt: "이벤트 날 세션 표가 가득 차 이미 연결된 고객은 괜찮지만 새 연결이 거절되고, 동시 세션 한도와 유휴 시간을 확인하는 모습입니다."
+    caption: "상태 표 크기, 곧 동시 세션 한도가 방화벽 성능의 기준 중 하나입니다."
+    after_paragraph: 1
 - page_id: u15-l02-page-05
   questions:
   - id: u15-l02-p05-q01
@@ -253,6 +277,12 @@ page_metadata:
     feedback: "🔁 같은 모양 찾기: Unit 11의 포워드 프록시처럼 대신 연결하면 접속 대상의 이름을 보고 정책을 적용할 수 있다."
   question_placements:
   - question_id: u15-l02-p05-q01
+    after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u15-l02-p5-port-443.svg
+    title: "443이면 모두 웹 요청일까"
+    alt: "패킷 필터가 443을 허용해 웹이 아닌 통신도 통과하고 로그에는 IP와 포트만 남으며, 내용 해석은 Proxy형이 맡는 모습입니다."
+    caption: "포트 번호는 관례일 뿐이라 내용을 이해해야 하는 판단은 Proxy형에 맡깁니다."
     after_paragraph: 2
 - page_id: u15-l02-page-06
   questions:
@@ -303,6 +333,12 @@ page_metadata:
   question_placements:
   - question_id: u15-l02-p06-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u15-l02-p6-utm.svg
+    title: "한 대에 다 넣으면"
+    alt: "방화벽·VPN·IPS·웹 필터를 UTM 한 대로 합치면 저렴하지만 기능을 켤수록 성능이 떨어지고 그 한 대가 멈추면 모두 멈추는 모습입니다."
+    caption: "UTM은 중소 규모에 알맞은 출발점이지만 성능 저하와 단일 장애 지점이 대가입니다."
+    after_paragraph: 1
 - page_id: advanced-source-23-page-12
   questions:
   - id: u15-l02-p07-q01
@@ -352,6 +388,12 @@ page_metadata:
   question_placements:
   - question_id: u15-l02-p07-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u15-l02-p7-vpn-rules.svg
+    title: "VPN으로 들어와도 규칙이 필요"
+    alt: "재택 박 팀장의 VPN 주소 풀 10.10.99.0/24에서 AI 서버 8080만 허용하고 나머지 사내 192.168.0.0/16은 차단하는 모습입니다."
+    caption: "VPN은 길만 이어 주므로 필요한 만큼만 여는 방화벽 규칙이 따로 필요합니다."
+    after_paragraph: 1
 ---
 
 ## 방화벽은 패킷의 무엇을 보고 막을까?

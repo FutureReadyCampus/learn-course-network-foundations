@@ -61,6 +61,12 @@ page_metadata:
   question_placements:
   - question_id: u14-l02-p01-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u14-l02-p1-first-hop.svg
+    title: "지사 PC의 질문은 어디로"
+    alt: "쇼룸 PC 10.20.0.15가 목적지 192.168.10.50 패킷을 도쿄 SG로 보내고, SG 규칙에 따라 본사 목적지는 터널로, 다른 목적지는 일반 경로로 가는 모습입니다."
+    caption: "SG에는 어떤 목적지를 터널로 보낼지 정한 규칙이 있습니다."
+    after_paragraph: 4
 - page_id: advanced-source-20-page-06
   questions:
   - id: u14-l02-p02-q01
@@ -109,6 +115,12 @@ page_metadata:
     feedback: 택배 이중 포장과 터널은 같은 모양이다. 이 구조를 알아보는 것이 🔁 같은 모양 찾기다.
   question_placements:
   - question_id: u14-l02-p02-q01
+    after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u14-l02-p2-private-wrap.svg
+    title: "사설 주소 패킷은 왜 못 건널까"
+    alt: "원본 패킷은 사설 주소라 인터넷에서 버려지지만, 도쿄 SG가 198.51.100.20에서 198.51.100.25로 가는 새 IP 헤더를 씌우면 건너갈 수 있습니다."
+    caption: "사설 주소 패킷은 새 바깥 IP 헤더에 감싸야 인터넷을 건넙니다."
     after_paragraph: 3
 - page_id: advanced-source-20-page-10
   questions:
@@ -159,6 +171,12 @@ page_metadata:
   question_placements:
   - question_id: u14-l02-p03-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u14-l02-p3-inner-outer.svg
+    title: "안쪽 IP와 바깥 IP"
+    alt: "바깥 IP 헤더(도쿄 SG에서 서울 SG), IPsec 헤더, 안쪽 IP 헤더(10.20.0.15에서 192.168.10.50), 데이터가 겹쳐진 패킷에서 라우터는 바깥만 읽습니다."
+    caption: "누가 누구에게는 안쪽 IP, 어느 터널로는 바깥 IP를 봅니다."
+    after_paragraph: 2
 - page_id: advanced-source-20-page-11
   questions:
   - id: u14-l02-p04-q01
@@ -208,6 +226,12 @@ page_metadata:
   question_placements:
   - question_id: u14-l02-p04-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u14-l02-p4-unwrap.svg
+    title: "본사 SG는 포장을 어떻게 풀까"
+    alt: "서울 SG가 바깥 헤더를 벗기고 복호화해 안쪽 패킷을 서버로 보내며, 허용 규칙이 없으면 서버가 응답하지 못하는 모습입니다."
+    caption: "터널이 연결돼도 본사 허용 규칙이 없으면 AI는 응답하지 않습니다."
+    after_paragraph: 3
 - page_id: advanced-source-20-page-13
   questions:
   - id: u14-l02-p05-q01
@@ -256,6 +280,12 @@ page_metadata:
     feedback: 바깥 헤더와 통신 사실만 남고 안쪽은 가려진다. 보이는 범위를 정확히 짚는 🗺️ 필요한 것만 남기기다.
   question_placements:
   - question_id: u14-l02-p05-q01
+    after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u14-l02-p5-visible.svg
+    title: "터널 밖에서는 무엇이 보일까"
+    alt: "통신사에게는 두 SG 주소와 패킷 크기·시간이 보이고, 안쪽 주소와 AI 질문 내용은 암호화되어 보이지 않음을 좌우로 비교합니다."
+    caption: "내용은 가려지지만 서울과 도쿄 사이에 통신이 있다는 사실은 보입니다."
     after_paragraph: 3
 - page_id: u14-l02-page-06
   questions:
@@ -306,6 +336,12 @@ page_metadata:
   question_placements:
   - question_id: u14-l02-p06-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u14-l02-p6-mtu.svg
+    title: "포장 한 겹의 대가"
+    alt: "꽉 찬 패킷에 터널 헤더가 붙으면 MTU 1,500바이트 한계를 넘고, SG가 원본 크기를 미리 줄이면 한계 안에 들어가는 모습입니다."
+    caption: "터널 헤더만큼 패킷 크기 여유와 장비 연산을 내어 줍니다."
+    after_paragraph: 1
 ---
 
 ## 지사 PC의 질문은 어디로 출발할까?

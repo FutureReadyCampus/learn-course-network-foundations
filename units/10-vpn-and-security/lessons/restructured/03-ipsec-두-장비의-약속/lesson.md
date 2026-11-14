@@ -63,6 +63,12 @@ page_metadata:
   question_placements:
   - question_id: u14-l03-p01-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u14-l03-p1-four-pieces.svg
+    title: "IPsec의 네 조각"
+    alt: "터널이 안 설 때 IKE 협상(UDP 500), NAT-T(UDP 4500), 협상 내용, 상대 확인 순서로 앞에서부터 확인한다는 점검 순서입니다."
+    caption: "터널이 안 서면 IKE, NAT-T, 협상 내용, 상대 확인 순으로 확인합니다."
+    after_paragraph: 3
 - page_id: advanced-source-20-page-04
   questions:
   - id: u14-l03-p02-q01
@@ -112,6 +118,12 @@ page_metadata:
   question_placements:
   - question_id: u14-l03-p02-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u14-l03-p2-ike-sa.svg
+    title: "IKE 협상과 SA"
+    alt: "도쿄 SG와 서울 SG가 UDP 500으로 암호 방식·키·수명을 제안해 합의하고, 결과를 각자 SA로 기억하는 모습입니다."
+    caption: "IKE는 공통 조건을 협상해 SA로 남기며, 공통 조건이 없으면 실패합니다."
+    after_paragraph: 2
 - page_id: u14-l03-page-03
   questions:
   - id: u14-l03-p03-q01
@@ -161,6 +173,12 @@ page_metadata:
   question_placements:
   - question_id: u14-l03-p03-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u14-l03-p3-auth.svg
+    title: "상대가 진짜 본사 SG일까"
+    alt: "왼쪽은 양쪽이 같은 비밀값을 아는지로 믿는 사전 공유 키, 오른쪽은 인증 기관이 보증한 인증서를 서로 보여 주는 방식입니다."
+    caption: "상대 확인은 사전 공유 키나 인증서로 하며, 암호화와는 다른 일입니다."
+    after_paragraph: 1
 - page_id: advanced-source-20-page-05
   questions:
   - id: u14-l03-p04-q01
@@ -210,6 +228,12 @@ page_metadata:
   question_placements:
   - question_id: u14-l03-p04-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u14-l03-p4-esp-ah.svg
+    title: "ESP와 AH는 뭘 지켜 줄까"
+    alt: "기밀성, 무결성, 인증 세 가지 중 ESP는 모두, AH는 기밀성을 뺀 둘만 지켜 준다는 표 형태의 비교입니다."
+    caption: "내용이 비밀인 자료는 기밀성이 있는 ESP로 맞춥니다."
+    after_paragraph: 2
 - page_id: u14-l03-page-05
   questions:
   - id: u14-l03-p05-q01
@@ -259,6 +283,12 @@ page_metadata:
   question_placements:
   - question_id: u14-l03-p05-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u14-l03-p5-nat-t.svg
+    title: "집 공유기를 만나도 지나갈까"
+    alt: "박 팀장 노트북의 ESP 패킷이 포트 번호가 없어 집 공유기(NAT)에서 막히지만, NAT-T가 UDP 4500으로 한 번 더 감싸 서울 SG까지 지나가는 모습입니다."
+    caption: "NAT가 있으면 ESP를 UDP 4500으로 감싸는 NAT-T를 씁니다."
+    after_paragraph: 2
 - page_id: u14-l03-page-06
   questions:
   - id: u14-l03-p06-q01
@@ -308,6 +338,12 @@ page_metadata:
   question_placements:
   - question_id: u14-l03-p06-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u14-l03-p6-ssl-vpn.svg
+    title: "브라우저로 붙는 SSL VPN"
+    alt: "호텔 와이파이에서 IPsec의 UDP 500·4500은 막히고 TLS 기반 SSL VPN은 TCP 443으로 본사 SG까지 지나가는 모습입니다."
+    caption: "웹만 열린 환경에서는 TCP 443을 쓰는 SSL VPN이 대개 통과합니다."
+    after_paragraph: 1
 ---
 
 ## VPN 만드는 방법은 하나뿐일까?

@@ -15,6 +15,12 @@ source_wikis:
 source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-08.md
 page_metadata:
 - page_id: advanced-source-08-page-01
+  illustrations:
+  - file: assets/animations/u11-l07-p01-front-flow.svg
+    title: "고객 요청은 앞단에서 받아요"
+    alt: "고객이 ai.hangyeol.example을 조회해 공인 주소 198.51.100.25의 앞단에 연결하면, 앞단이 안쪽 AI 서버 192.168.10.50:8080과 새로 연결해 응답을 돌려주는 모습입니다."
+    caption: "리버스 프록시는 접속 주소와 처리 서버를 나누지만 구조만으로 보안이 보장되지는 않습니다."
+    after_paragraph: 3
   questions:
   - id: u11-l07-p01-q01
     kind: choice
@@ -229,6 +235,12 @@ page_metadata:
   - question_id: u11-l07-p04-q01
     after_paragraph: 2
 - page_id: advanced-source-08-page-05
+  illustrations:
+  - file: assets/animations/u11-l07-p05-single-front.svg
+    title: "앞단 한 대에 기대면?"
+    alt: "모든 시연 요청이 지나는 앞단 한 대가 멈추면 AI 서버가 멀쩡해도 서비스 전체가 멈추고, 앞단을 이중화해 대비하는 모습입니다."
+    caption: "앞단은 단일 장애점이므로 이중화가 필요하고 그만큼 비용과 설정이 늘어납니다."
+    after_paragraph: 2
   questions:
   - id: u11-l07-p05-q01
     kind: choice

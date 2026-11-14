@@ -13,10 +13,10 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-source-07-page-01
   illustrations:
-  - file: assets/animations/u11-fwd-07-02-firewall-rule.svg
-    title: Proxy를 통한 외부 접속
-    alt: 'Proxy를 통한 외부 접속: 공용 PC의 직접 외부 연결은 차단해요 → Proxy가 시작한 연결만 허용해요 → 접속이 한곳으로 모여 관리하기 쉬워요 → Proxy 자체의 보안·용량도 챙겨요'
-    caption: 직접 연결은 막고 Proxy만 열어요
+  - file: assets/animations/u11-l05-p01-fw-rules.svg
+    title: "프록시만 밖으로 나가게 하기"
+    alt: "방화벽 규칙으로 사내 PC 192.168.10.0/24의 직접 외부 연결은 막고 프록시 192.168.10.5의 연결만 허용하는 모습입니다."
+    caption: "프록시 설정만으로는 직접 길이 남으므로 방화벽이 그 길을 막고, 좁은 허용 규칙을 위에 둡니다."
     after_paragraph: 3
   questions:
   - id: u11-l05-p01-q01
@@ -68,11 +68,11 @@ page_metadata:
     after_paragraph: 4
 - page_id: advanced-source-07-page-03
   illustrations:
-  - file: assets/animations/u11-fwd-07-03-proxy-log.svg
-    title: 중간에서 알 수 있는 것
-    alt: '중간에서 알 수 있는 것: PC의 요청이 Proxy를 거쳐 가요 → 누가 언제 어디로 갔는지 알 수 있어요 → 암호화된 내용은 설정 없이는 읽지 못해요 → 기록하기 전에 목적과 범위를 정해요'
-    caption: Proxy는 접속 기록을 남길 수 있어요
-    after_paragraph: 1
+  - file: assets/animations/u11-l05-p02-proxy-log.svg
+    title: "프록시 기록에는 무엇이 남을까?"
+    alt: "박 팀장 PC 192.168.10.42의 AI 접속이 프록시 기록 한 줄로 남지만 올린 내용은 암호문이라 알 수 없는 모습입니다."
+    caption: "기록은 누가·언제·어디로·얼마나까지 알려 주고, 내용과 사람은 따로 확인해야 합니다."
+    after_paragraph: 2
   questions:
   - id: u11-l05-p02-q01
     kind: choice
@@ -122,6 +122,12 @@ page_metadata:
   - question_id: u11-l05-p02-q01
     after_paragraph: 4
 - page_id: u11-l05-page-03
+  illustrations:
+  - file: assets/animations/u11-l05-p03-tls-inspect.svg
+    title: "암호화된 AI 대화 열어 보기"
+    alt: "프록시가 PC와 AI 서비스 사이의 TLS를 둘로 나눠 맺고, 풀린 요청에서 휴대전화 번호 형식을 찾아 업로드를 막는 모습입니다."
+    caption: "TLS 검사는 회사 CA 신뢰가 있을 때만 되며 키 관리와 경고 무시 금지가 따릅니다."
+    after_paragraph: 2
   questions:
   - id: u11-l05-p03-q01
     kind: choice
@@ -172,11 +178,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-07-page-04
   illustrations:
-  - file: assets/animations/u11-fwd-07-04-file-scan.svg
-    title: 악성 파일 검사
-    alt: '악성 파일 검사: 자료 사이트에서 PDF를 내려받아요 → 파일이 Proxy를 지나가요 → 구성에 따라 검사 시스템이 확인해요 → 문제가 있으면 전달하지 않아요'
-    caption: 내려받는 파일을 Proxy에서 살펴봐요
-    after_paragraph: 1
+  - file: assets/animations/u11-l05-p04-file-scan.svg
+    title: "받는 파일을 프록시에서 검사"
+    alt: "외부 사이트의 플러그인 설치 파일이 프록시에서 알려진 악성코드와 비교되어 안전하면 PC로, 문제가 있으면 차단되는 모습입니다."
+    caption: "프록시의 파일 검사는 시그니처, 압축 암호, TLS 검사 여부에 따라 범위가 달라집니다."
+    after_paragraph: 2
   questions:
   - id: u11-l05-p04-q01
     kind: choice
@@ -282,11 +288,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-07-page-07
   illustrations:
-  - file: assets/animations/u11-fwd-07-07-monitoring.svg
-    title: 내부 사용자의 통신 감시
-    alt: '내부 사용자의 통신 감시: 모든 요청이 내부 Proxy로 모여요 → 운영자는 접속 흐름을 점검할 수 있어요 → 하지만 개인 검색까지 남으면 사생활 문제예요 → 목적·범위·안내를 함께 정해요'
-    caption: 점검과 감시는 한 끗 차이예요
-    after_paragraph: 1
+  - file: assets/animations/u11-l05-p06-log-scope.svg
+    title: "AI 대화, 어디까지 남길까?"
+    alt: "대화 전문을 1년 보관하는 안과 차단 사건만 시각·PC·규칙 이름으로 남기는 안을 비교하는 모습입니다."
+    caption: "수집 범위는 목표에서 거꾸로 정하며, 대화 전문 저장은 사생활 부담이 큽니다."
+    after_paragraph: 4
   questions:
   - id: u11-l05-p07-q01
     kind: choice

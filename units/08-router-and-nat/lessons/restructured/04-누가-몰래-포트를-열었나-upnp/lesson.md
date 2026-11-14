@@ -60,12 +60,18 @@ page_metadata:
   question_placements:
   - question_id: u12-l04-p01-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u12-l04-p01-unknown-ports.svg
+    title: "내가 연 적 없는 포트가 열려 있다?"
+    alt: "수동 포트 포워딩 목록은 비었는데 UPnP 목록에 192.168.10.37, .44, .38을 가리키는 TCP 6881, UDP 27015, UDP 50001 줄이 있고 지우는 만든 적이 없다는 그림입니다."
+    caption: "수동 포워딩 목록과 UPnP 목록은 따로 점검합니다."
+    after_paragraph: 0
 - page_id: advanced-source-15-page-08
   illustrations:
-  - file: assets/animations/u12-fwd-manual-pain.svg
-    title: 매번 설정해야 하는 불편
-    alt: 게임이나 P2P 프로그램을 쓸 때마다 공유기 메뉴를 찾아 포트를 입력하고 재시작해야 하는 불편함을 보여 주는 그림입니다.
-    caption: 설정이 매번 필요하면 사용자가 지칩니다.
+  - file: assets/animations/u12-l04-p02-why-programs-open.svg
+    title: "프로그램은 왜 포트를 열고 싶어 할까?"
+    alt: "P2P 전송 프로그램을 쓰는 PC 192.168.10.37로 협력사의 연결이 바깥에서 먼저 오면 줄이 없어 막히고, 사용자가 직접 설정하기 번거로워 프로그램이 대신 부탁하는 UPnP가 나왔다는 설명입니다."
+    caption: "바깥에서 먼저 오는 연결을 받으려는 프로그램이 UPnP를 사용합니다."
     after_paragraph: 0
   questions:
   - id: u12-l04-p02-q01
@@ -117,10 +123,10 @@ page_metadata:
     after_paragraph: 2
 - page_id: advanced-source-16-page-02
   illustrations:
-  - file: assets/animations/u12-upnp-history.svg
-    title: Plug and Play의 배경
-    alt: 예전에는 사람이 드라이버를 설치하고 설정했지만 PnP 이후에는 장치를 자동으로 인식하고 준비한다는 점을 비교한 그림입니다.
-    caption: 사람이 하던 설정을 기계가 대신합니다.
+  - file: assets/animations/u12-l04-p03-plug-and-play.svg
+    title: "꽂기만 하면 되는 편리함, 네트워크로"
+    alt: "USB를 꽂으면 설정 없이 바로 쓰이는 PnP와, 프로그램이 공유기에 포워딩 줄을 자동으로 만드는 UPnP를 나란히 보여 주고 편해진 만큼 설정이 눈에서 멀어진다고 짚습니다."
+    caption: "UPnP는 PnP의 자동화 발상을 공유기 설정으로 넓힌 기능입니다."
     after_paragraph: 0
   questions:
   - id: u12-l04-p03-q01
@@ -172,10 +178,10 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-16-page-05
   illustrations:
-  - file: assets/animations/u12-upnp-manual-vs-auto.svg
-    title: NAT가 가로막는 접속
-    alt: 수동 포트 포워딩은 사용자가 직접 입력하고 UPnP는 프로그램이 SSDP로 공유기를 찾아 대신 설정하는 모습을 비교한 그림입니다.
-    caption: UPnP에서는 프로그램이 공유기를 찾아 설정을 대신 요청합니다.
+  - file: assets/animations/u12-l04-p04-ask-router.svg
+    title: "프로그램은 공유기에 어떻게 부탁할까?"
+    alt: "프로그램이 공유기를 찾는 발견, 6881번 매핑을 요청하는 단계, 변환표에 줄이 생기는 결과를 차례로 보여 주고 요청 성공이 바깥 도달을 보장하지 않는다고 짚습니다."
+    caption: "UPnP는 발견, 요청, 결과 순서이며 요청이 받아들여져도 길이 열렸다는 보장은 아닙니다."
     after_paragraph: 0
   questions:
   - id: u12-l04-p04-q01
@@ -274,12 +280,18 @@ page_metadata:
   question_placements:
   - question_id: u12-l04-p05-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u12-l04-p05-no-password.svg
+    title: "비밀번호도 없이 포트를 열어 준다고?"
+    alt: "감염된 PC 192.168.10.38이 UPnP로 UDP 50001을 열어 달라고 하면 관리자 로그인 기록 없이 공유기가 줄을 만들고 바깥 공격자가 그 길로 들어올 수 있다는 그림입니다."
+    caption: "UPnP는 같은 LAN 안의 요청을 인증 없이 받아 주는 경우가 많습니다."
+    after_paragraph: 0
 - page_id: advanced-source-16-page-08
   illustrations:
-  - file: assets/animations/u12-upnp-compare.svg
-    title: UPnP와 NAT를 함께 보기
-    alt: 수동 설정은 사용자가 직접 입력하고 UPnP는 프로그램이 대신 요청해 같은 포워딩이 만들어진다는 점을 비교한 그림입니다.
-    caption: 같은 포워딩이라도 입력하는 주체가 다릅니다.
+  - file: assets/animations/u12-l04-p06-on-or-off.svg
+    title: "UPnP, 켜 둘까 꺼 둘까?"
+    alt: "UPnP를 켜 두면 편하지만 열린 줄을 목록으로 확인해야 하고, 끄면 일부 프로그램이 불편하지만 신청과 기록으로 통제할 수 있다는 비교와 한결디자인의 선택입니다."
+    caption: "한결디자인은 UPnP를 끄고 필요한 포트만 신청받아 열고 기록합니다."
     after_paragraph: 0
   questions:
   - id: u12-l04-p06-q01

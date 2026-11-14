@@ -76,6 +76,12 @@ page_metadata:
   question_placements:
   - question_id: u12-l02-p01-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u12-l02-p01-reply-finds-pc.svg
+    title: "AI API의 답장은 어디로?"
+    alt: "지우 PC 192.168.10.41이 외부 AI API 203.0.113.80:443을 부르면 요청은 공유기를 지나고, 답은 198.51.100.25로 오는데 공유기의 변환표가 짝을 기억해 둔다는 그림입니다."
+    caption: "응답이 원래 PC를 찾는 열쇠는 공유기의 NAT 변환표입니다."
+    after_paragraph: 0
 - page_id: advanced-source-11-page-03
   questions:
   - id: u12-l02-p02-q01
@@ -125,6 +131,12 @@ page_metadata:
   question_placements:
   - question_id: u12-l02-p02-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u12-l02-p02-outbound.svg
+    title: "공유기를 나설 때 바뀌는 것"
+    alt: "공유기 안쪽에서는 출발지가 192.168.10.41:3000이고 바깥쪽에서는 198.51.100.25:53001로 바뀌며, 목적지 203.0.113.80:443은 그대로임을 두 개의 패킷 카드로 보여 줍니다."
+    caption: "Outbound에서는 출발지 주소와 포트만 바뀝니다."
+    after_paragraph: 0
 - page_id: advanced-source-11-page-05
   questions:
   - id: u12-l02-p03-q01
@@ -174,6 +186,12 @@ page_metadata:
   question_placements:
   - question_id: u12-l02-p03-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u12-l02-p03-who-connected.svg
+    title: "AI 서비스는 누가 접속했다고 볼까?"
+    alt: "직원 PC 세 대의 요청이 공유기를 지나 AI API 접속 기록에는 모두 출발지 198.51.100.25로 남고, 사람 구별은 계정이나 API 키로 한다는 설명입니다."
+    caption: "서비스가 보는 IP는 직원이 아니라 회사 회선의 흔적입니다."
+    after_paragraph: 0
 - page_id: advanced-source-11-page-06
   questions:
   - id: u12-l02-p04-q01
@@ -223,6 +241,12 @@ page_metadata:
   question_placements:
   - question_id: u12-l02-p04-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u12-l02-p04-table-row.svg
+    title: "변환표 한 줄에는 무엇이 적힐까?"
+    alt: "NAT 세션 목록 한 줄에서 Local 192.168.10.41:3000, Remote 203.0.113.80:443, External 198.51.100.25:53001이 각각 무엇을 뜻하는지 차례로 짚습니다."
+    caption: "매핑은 Local과 External을 잇고, 자동 행은 시간이 지나면 사라집니다."
+    after_paragraph: 0
 - page_id: advanced-source-11-page-07
   questions:
   - id: u12-l02-p05-q01
@@ -272,6 +296,12 @@ page_metadata:
   question_placements:
   - question_id: u12-l02-p05-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u12-l02-p05-inbound.svg
+    title: "돌아온 답장은 어느 PC로 갈까?"
+    alt: "AI API의 응답 목적지 198.51.100.25:53001을 변환표에서 찾아 192.168.10.41:3000으로 되돌려 지우 PC에 전달하는 Inbound 과정입니다."
+    caption: "Inbound에서는 목적지가 바뀌고, 나갈 때 적은 기록이 있어야 가능합니다."
+    after_paragraph: 0
 - page_id: advanced-source-11-page-09
   questions:
   - id: u12-l02-p06-q01
@@ -321,12 +351,18 @@ page_metadata:
   question_placements:
   - question_id: u12-l02-p06-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u12-l02-p06-two-pcs.svg
+    title: "동시에 물어도 답이 안 섞이는 이유"
+    alt: "지우 PC와 디자인팀 PC의 요청이 같은 바깥 주소 198.51.100.25에 포트 53001과 53002로 따로 기록되어 응답이 각자 PC로 돌아가는 NAPT 방식입니다."
+    caption: "주소와 포트를 함께 바꿔 바깥 주소 하나를 여러 PC가 나눠 씁니다."
+    after_paragraph: 0
 - page_id: advanced-source-15-page-01
   illustrations:
-  - file: assets/animations/u12-fwd-auto-review.svg
-    title: 자동 매핑은 안에서 시작할 때만
-    alt: 안쪽 PC가 먼저 바깥 서버에 접속하면 변환표에 자동으로 기록되지만, 바깥에서 먼저 오면 기록이 없어 막힌다는 그림입니다.
-    caption: 나갈 때 적은 기록이 있어야 응답이 들어옵니다.
+  - file: assets/animations/u12-l02-p07-no-row-dropped.svg
+    title: "박 팀장의 요청은 왜 사라질까?"
+    alt: "박 팀장이 198.51.100.25:8080으로 보낸 요청이 도착해도 변환표에 맞는 줄이 없어 GPU PC로 갈지 지우 PC로 갈지 몰라 버려지고, 줄을 미리 적어 두면 길이 열립니다."
+    caption: "바깥에서 먼저 온 요청은 미리 적은 줄이 있어야 안쪽으로 전달됩니다."
     after_paragraph: 0
   questions:
   - id: u12-l02-p07-q01

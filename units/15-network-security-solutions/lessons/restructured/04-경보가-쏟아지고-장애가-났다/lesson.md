@@ -56,6 +56,12 @@ page_metadata:
   question_placements:
   - question_id: u15-l04-p02-q01
     after_paragraph: 5
+  illustrations:
+  - file: assets/animations/u15-l04-p1-siem-timeline.svg
+    title: "흩어진 로그를 이으면"
+    alt: "NAC 02:41, 방화벽 02:45, IPS 02:49 세 장비의 로그를 SIEM이 시간순으로 엮어 한 사건으로 읽고 회의실 포트까지 역추적하며, 장비 시각이 맞아야 한다는 전제를 보여 줍니다."
+    caption: "SIEM은 여러 장비의 로그를 모아 시간순으로 엮어 사건을 추적하며 장비 시각 동기화가 전제입니다."
+    after_paragraph: 4
 - page_id: advanced-source-23-page-18
   questions:
   - id: u15-l04-p03-q01
@@ -104,6 +110,12 @@ page_metadata:
     feedback: "🧩 쪼개기: 규칙을 동작·프로토콜·출발지·목적지·내용으로 나눠 읽으면, 무엇을 보고 무엇을 하는 규칙인지 한 칸씩 확인된다."
   question_placements:
   - question_id: u15-l04-p03-q01
+    after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u15-l04-p2-rule-reading.svg
+    title: "이 경보는 어떤 규칙이 울렸을까"
+    alt: "alert tcp any any -> any 80 규칙 한 줄을 누가 어디로, 무엇을 찾나, 찾으면 무엇을 하나의 순서로 나눠 읽는 모습입니다."
+    caption: "규칙은 괄호 앞의 통신 조건, 괄호 안의 검사 내용, 맨 앞 동작 순으로 읽고, 단순한 규칙은 오탐이 많습니다."
     after_paragraph: 3
 - page_id: advanced-source-23-page-19
   questions:
@@ -154,6 +166,12 @@ page_metadata:
   question_placements:
   - question_id: u15-l04-p04-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u15-l04-p3-rule-change.svg
+    title: "규칙 하나 바꿨는데 장애가"
+    alt: "IPS 규칙 갱신 뒤 도면 업로드가 실패하자 변경 기록으로 최근 바뀐 것을 확인하고, 경로 안 IPS를 의심해 규칙을 되돌려 해결하는 모습입니다."
+    caption: "변경 기록과 장치 위치로 의심 대상을 줄이고 한 번에 하나씩 되돌려 확인합니다."
+    after_paragraph: 2
 - page_id: advanced-source-23-page-04
   questions:
   - id: u15-l04-p06-q01
@@ -203,6 +221,12 @@ page_metadata:
   question_placements:
   - question_id: u15-l04-p06-q01
     after_paragraph: 5
+  illustrations:
+  - file: assets/animations/u15-l04-p4-device-map.svg
+    title: "한 장의 지도에 요청 하나를"
+    alt: "해외 고객 192.0.2.77의 요청이 공개 주소 203.0.113.10:443에서 UTM, TLS 종료, WAF, IPS, 서버 풀 192.168.20.11–.13까지 지나고 NIDS가 옆에서 복사본만 보는 지도입니다."
+    caption: "장치 이름이 아니라 경로 안·대신 연결·경로 밖의 위치로 읽으면 보이는 것과 할 수 있는 일이 정해집니다."
+    after_paragraph: 2
 - page_id: advanced-source-23-page-05
   questions:
   - id: u15-l04-p07-q01
@@ -252,6 +276,12 @@ page_metadata:
   question_placements:
   - question_id: u15-l04-p07-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u15-l04-p5-layers.svg
+    title: "장치마다 보는 층"
+    alt: "L2 MAC, L3 IP, L4 포트, 소켓 위 URL로 층마다 보는 식별자와 대표 장치를 표로 놓고, MAC 차단과 URL 차단 요청을 맡을 장치를 가르는 모습입니다."
+    caption: "요청의 정보가 어느 층에 있는지 보고 그 층을 볼 수 있는 장치에 맡깁니다."
+    after_paragraph: 1
 - page_id: advanced-source-23-page-20
   questions:
   - id: u15-l04-p08-q01
@@ -301,6 +331,12 @@ page_metadata:
   question_placements:
   - question_id: u15-l04-p08-q01
     after_paragraph: 4
+  illustrations:
+  - file: assets/animations/u15-l04-p6-unit-map.svg
+    title: "장치 지도로 점검을 되짚기"
+    alt: "NAC, 방화벽, 서버 구역의 IPS·NIDS, 모든 장치의 로그를 모으는 SIEM을 한 장의 장치 지도에 놓고, 안전하다는 말 대신 네 가지 점검으로 답하는 모습입니다."
+    caption: "점검은 네 질문으로 쪼개고, 장치는 이름이 아니라 위치와 역할로 읽습니다."
+    after_paragraph: 2
 ---
 
 ## 흩어진 로그를 이으면 무엇이 보일까?

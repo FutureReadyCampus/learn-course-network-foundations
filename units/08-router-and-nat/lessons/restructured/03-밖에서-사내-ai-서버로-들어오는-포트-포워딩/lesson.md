@@ -66,6 +66,12 @@ page_metadata:
   question_placements:
   - question_id: u12-l03-p01-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u12-l03-p01-static-mapping.svg
+    title: "변환표에 줄을 미리 적어 두면?"
+    alt: "자동으로 생기는 동적 매핑과 관리자가 미리 적는 정적 매핑을 비교하고, 외부 TCP 8080을 192.168.10.50:8080으로 보내는 포트 포워딩 한 줄을 보여 줍니다."
+    caption: "포트 포워딩은 직접 적어 넣는 정적 매핑입니다."
+    after_paragraph: 0
 - page_id: advanced-source-15-page-03
   questions:
   - id: u12-l03-p02-q01
@@ -115,6 +121,12 @@ page_metadata:
   question_placements:
   - question_id: u12-l03-p02-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u12-l03-p02-settings-form.svg
+    title: "포트 포워딩 설정 화면"
+    alt: "공유기 포트 포워딩 화면의 외부 포트 8080, 프로토콜 TCP, 내부 IP 192.168.10.50, 내부 포트 8080, 원격지 비움 칸을 바깥 값과 안쪽 값으로 나누어 채웁니다."
+    caption: "칸마다 바깥 값인지 안쪽 값인지 구별해 채웁니다."
+    after_paragraph: 0
 - page_id: advanced-source-15-page-05
   questions:
   - id: u12-l03-p03-q01
@@ -164,12 +176,18 @@ page_metadata:
   question_placements:
   - question_id: u12-l03-p03-q01
     after_paragraph: 3
+  illustrations:
+  - file: assets/animations/u12-l03-p03-public-address.svg
+    title: "박 팀장은 어떤 주소로 접속할까?"
+    alt: "박 팀장의 요청이 198.51.100.25:8080으로 도착하면 공유기가 8080 규칙으로 목적지를 192.168.10.50:8080으로 바꿔 AI 서버에 전달하고 응답은 바깥 주소가 답한 것처럼 보입니다."
+    caption: "바깥에서는 공유기의 바깥 주소로 접속하고 공유기가 목적지를 바꿔 줍니다."
+    after_paragraph: 0
 - page_id: advanced-source-15-page-07
   illustrations:
-  - file: assets/animations/u12-fwd-two-homes.svg
-    title: 여러 서비스와 Port를 열기
-    alt: 두 집의 PC가 각각 다른 포트를 쓰는 P2P 프로그램을 위해 각 공유기에 포워딩 규칙을 넣는 모습입니다.
-    caption: 포트마다, 공유기마다 규칙이 필요합니다.
+  - file: assets/animations/u12-l03-p04-two-services.svg
+    title: "서비스가 둘이면 규칙도 둘일까?"
+    alt: "AI 서버는 외부 8080, 도면 NAS 192.168.10.30은 외부 5001로 나누어야 하고 같은 외부 8080을 두 곳에 쓰면 충돌합니다."
+    caption: "서비스마다 외부 포트를 나누어 규칙을 추가합니다."
     after_paragraph: 0
   questions:
   - id: u12-l03-p04-q01
@@ -268,12 +286,18 @@ page_metadata:
   question_placements:
   - question_id: u12-l03-p05-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u12-l03-p05-hairpin.svg
+    title: "사무실에서 공인 주소로 시험하면?"
+    alt: "사무실 PC가 공유기의 바깥 주소 198.51.100.25:8080으로 접속하면 공유기가 안쪽으로 되돌려 보내야 하는 헤어핀 NAT가 필요하며 장비에 따라 안 될 수 있고, 휴대폰 데이터 같은 바깥 회선에서 시험하면 확인됩니다."
+    caption: "포트 포워딩 시험은 사무실 밖 회선에서 합니다."
+    after_paragraph: 0
 - page_id: advanced-source-10-page-08
   illustrations:
-  - file: assets/animations/u12-router-cgnat.svg
-    title: 주소를 한 번 더 바꾸는 CGNAT
-    alt: 집 공유기 뒤에 통신사 NAT가 한 번 더 있어 공유기 포트 포워딩만으로는 바깥 접속이 어려울 수 있다는 그림입니다.
-    caption: 통신사 NAT가 한 겹 더 있으면 공유기 규칙만으로는 길이 이어지지 않습니다.
+  - file: assets/animations/u12-l03-p06-not-open-checklist.svg
+    title: "포워딩했는데 왜 밖에서 안 열릴까?"
+    alt: "서버 수신 주소, GPU PC 방화벽, 규칙의 내부 IP·포트·프로토콜, 공유기 WAN 주소를 가까운 곳부터 확인하고 방화벽의 8080을 허용해 해결하는 점검표입니다."
+    caption: "확인 순서를 정해 하나씩 지워 갑니다."
     after_paragraph: 0
   questions:
   - id: u12-l03-p06-q01
@@ -372,6 +396,12 @@ page_metadata:
   question_placements:
   - question_id: u12-l03-p07-q01
     after_paragraph: 2
+  illustrations:
+  - file: assets/animations/u12-l03-p07-open-port-risk.svg
+    title: "포트를 열어도 정말 괜찮을까?"
+    alt: "원격지를 비운 8080은 누구에게나 열리지만 원격지를 고객사 주소 192.0.2.77로 제한하면 낯선 출발지는 막히고, 시연 기간만 열고 로그인과 기록을 남긴다는 정책입니다."
+    caption: "열린 포트는 원격지 제한, 기간 한정, 기록으로 노출을 줄입니다."
+    after_paragraph: 0
 ---
 ## 변환표에 줄을 미리 적어 두면 어떨까?
 
