@@ -9,11 +9,60 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-source-16-page-01
   illustrations:
-  - file: assets/diagrams/source-16.svg
-    title: Torrent와 P2P · 원고 그림
-    alt: Torrent와 P2P에서 원고가 함께 제공한 개념 그림
-    caption: 기존 원고의 그림을 참고해 구조와 용어를 확인한다.
-    after_paragraph: -1
+  - file: assets/animations/u12-upnp-torrent.svg
+    title: "Torrent와 P2P"
+    alt: "공유기의 UPnP가 켜진 상태에서 바깥 상대의 연결이 공유기를 지나 집 PC의 Torrent까지 도착하는 모습입니다."
+    caption: "UPnP가 있으면 수동 설정 없이 P2P 연결이 이어질 수 있습니다."
+    after_paragraph: 0
+- page_id: advanced-source-16-page-02
+  illustrations:
+  - file: assets/animations/u12-upnp-pnp.svg
+    title: "UPnP라는 기능"
+    alt: "USB 저장장치를 PC에 꽂으면 설정 없이 바로 쓰이는 모습으로 Plug and Play를 설명합니다."
+    caption: "UPnP는 Plug and Play의 생각을 네트워크로 넓힌 기능입니다."
+    after_paragraph: 0
+- page_id: advanced-source-16-page-03
+  illustrations:
+  - file: assets/animations/u12-upnp-history.svg
+    title: "Plug and Play의 배경"
+    alt: "예전에는 프린터 드라이버를 직접 설치·설정해야 했고, PnP 이후에는 자동으로 인식·준비되는 것을 나란히 비교합니다."
+    caption: "사람이 하던 설정을 자동화하는 것이 PnP와 UPnP의 공통점입니다."
+    after_paragraph: 0
+- page_id: advanced-source-16-page-04
+  illustrations:
+  - file: assets/animations/u12-upnp-coupon.svg
+    title: "밖에서 집 안 프린터까지"
+    alt: "홈쇼핑 쿠폰 인쇄 요청이 집으로 오지만 NAT 공유기에서 막혀 PC와 프린터에 닿지 못하는 모습입니다."
+    caption: "NAT 뒤 PC로는 바깥에서 먼저 시작한 연결이 바로 들어오지 못합니다."
+    after_paragraph: 0
+- page_id: advanced-source-16-page-05
+  illustrations:
+  - file: assets/animations/u12-upnp-manual-vs-auto.svg
+    title: "NAT가 가로막는 접속"
+    alt: "왼쪽은 사용자가 설정 화면에 직접 입력하는 수동 포트 포워딩, 오른쪽은 프로그램이 SSDP로 공유기를 찾아 자동 설정하는 UPnP를 비교합니다."
+    caption: "UPnP는 포트 포워딩 설정을 프로그램이 대신하게 합니다."
+    after_paragraph: 0
+- page_id: advanced-source-16-page-06
+  illustrations:
+  - file: assets/animations/u12-upnp-mapping-request.svg
+    title: "프로그램이 매핑을 요청하기"
+    alt: "Torrent가 자동 설정 서비스를 찾고 6881번 매핑을 요청하면 공유기 표에 198.51.100.25:6881 → 192.168.0.10:6881이 생기고 바깥 연결이 PC까지 들어옵니다."
+    caption: "프로그램이 필요한 포트 포워딩을 공유기와 협의해 자동으로 설정합니다."
+    after_paragraph: 0
+- page_id: advanced-source-16-page-07
+  illustrations:
+  - file: assets/animations/u12-upnp-compare.svg
+    title: "UPnP와 NAT를 함께 보기"
+    alt: "수동 설정은 사용자가, UPnP는 프로그램이 입력한다는 비교표와 공유기 지원·설정이 전제라는 조건을 보여 줍니다."
+    caption: "UPnP는 사용자의 입력 부담을 줄여 P2P 연결을 돕습니다."
+    after_paragraph: 0
+- page_id: advanced-source-16-page-08
+  illustrations:
+  - file: assets/animations/u12-upnp-dev.svg
+    title: "P2P 프로그램 개발로"
+    alt: "P2P 프로그램을 만들 때 서비스 발견, 매핑 요청, 주소·포트 매핑 이해를 차례로 챙기는 체크리스트입니다."
+    caption: "서비스 발견과 매핑 요청은 NAT 환경 P2P 설계의 기본입니다."
+    after_paragraph: 0
 ---
 
 ## Torrent와 P2P
