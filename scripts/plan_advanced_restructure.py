@@ -35,9 +35,9 @@ def make_plan(snapshot, contract, catalog, legacy_units, source_root=ROOT):
     ids = {item["target_key"]: item["lesson_id"] for item in contract["lesson_ids"]}
     targets = {item["target_key"]: targets[item["target_key"]]
                for item in contract["lesson_ids"]}
-    require(len(ids) == len(contract["lesson_ids"]) == 21 and set(ids) == set(targets),
-            "Exactly 21 distinct targets required")
-    require(len(set(ids.values())) == 21, "Duplicate target Lesson ID")
+    require(len(ids) == len(contract["lesson_ids"]) == 24 and set(ids) == set(targets),
+            "Exactly 24 distinct targets required")
+    require(len(set(ids.values())) == 24, "Duplicate target Lesson ID")
     require(all(isinstance(value, str) and 0 < len(value) <= 100 for value in ids.values()),
             "Lesson IDs must fit the current API")
     excluded_sources = set(contract.get("excluded_source_keys", []))
@@ -92,6 +92,9 @@ def make_plan(snapshot, contract, catalog, legacy_units, source_root=ROOT):
         require(hashlib.sha256((source_root / path).read_bytes()).hexdigest() == expected,
                 f"Asset changed: {path}")
 
+    # Optional reviewed Page-level destinations in the rewritten Lessons (aliases only).
+    alias_pages = contract.get("alias_page_destinations", {})
+    require(set(alias_pages).issubset(source_pages), "Alias Page destination names an unknown source Page")
     lessons, destinations = [], {}
     source_uses = {}
     for key, target in targets.items():
@@ -101,11 +104,16 @@ def make_plan(snapshot, contract, catalog, legacy_units, source_root=ROOT):
     for key, target in targets.items():
         contributors = list(dict.fromkeys(source_pages[p]["source_lesson_id"]
                                           for p in target["source_pages"]))
-        preserve = (len(contributors) == 1 and len(source_uses[contributors[0]]) == 1
-                    and len(target["source_pages"]) == len(sources[contributors[0]]["pages"]))
-        require((ids[key] == contributors[0]) if preserve else ids[key] not in source_lessons,
+        # "identity": "new" drops a whole-source ID; "preserved" records a reviewed decision
+        # to keep a contributing source's ID although Pages moved in or out.
+        preserve = target.get("identity") == "preserved" or (
+            len(contributors) == 1 and len(source_uses[contributors[0]]) == 1
+            and len(target["source_pages"]) == len(sources[contributors[0]]["pages"])
+            and target.get("identity") != "new")
+        require((ids[key] in contributors) if preserve else ids[key] not in source_lessons,
                 f"Unchanged Lessons keep IDs; merged/split Lessons use new IDs: {key}")
         lesson_number = int(key.rsplit("l", 1)[1])
+        kept_order = 0
         lesson = {"id": ids[key], "target_key": key, "title": target["title"],
                   "unit_number": target["unit_number"], "lesson_number": lesson_number,
                   "identity": "preserved" if preserve else "new",
@@ -118,13 +126,24 @@ def make_plan(snapshot, contract, catalog, legacy_units, source_root=ROOT):
                 require(contract["source_page_remapping"][audit_key] == key,
                         "Remapped source Page has the wrong target")
             else:
+                # Remapped Pages may shift numbers, but staying Pages keep their relative order.
                 require(original["destination"]["target_key"] == key
-                        and original["destination"]["source_order"] == number,
+                        and original["destination"]["source_order"] > kept_order,
                         "Page destination/order changed")
+                kept_order = original["destination"]["source_order"]
             lesson["pages"].append({k: v for k, v in page.items() if k != "payload"})
+            dest_page = {"page_id": page["page_id"], "page": number}
+            if audit_key in alias_pages:
+                dest_page = alias_pages[audit_key]
+                require(dest_page["target_key"] == key and dest_page["page"] >= 1
+                        and re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", dest_page["page_id"]),
+                        f"Invalid alias Page destination: {audit_key}")
+                dest_page = {"page_id": dest_page["page_id"], "page": dest_page["page"]}
+            # Lesson Pages/completion above keep source order; only route aliases use dest_page.
             destinations[(page["source_lesson_id"], page["source_page"])] = {
-                "kind": "lesson", "id": ids[key], "page_id": page["page_id"], "page": number,
-                "path": f"/m2-network/v3/unit/{target['unit_number']}/lesson/{lesson_number}/page/{number}",
+                "kind": "lesson", "id": ids[key], "page_id": dest_page["page_id"], "page": dest_page["page"],
+                "path": f"/m2-network/v3/unit/{target['unit_number']}/lesson/{lesson_number}"
+                        f"/page/{dest_page['page']}",
             }
         lessons.append(lesson)
 

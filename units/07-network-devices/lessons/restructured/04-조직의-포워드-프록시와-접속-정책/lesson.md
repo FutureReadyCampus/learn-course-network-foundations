@@ -1,894 +1,478 @@
 ---
 id: advanced-forward-proxy
-title: 조직의 포워드 프록시와 접속 정책
+title: 'AI에 대신 다녀오는 심부름꾼: 포워드 프록시'
 source_lesson_ids:
 - u7-advanced-06-proxy-우회
-- u7-advanced-07-proxy-보호와-감시
 source_wikis:
 - https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-06.md
-- https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-07.md
 - https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/honja-network/07-1.md#p391-b03
+- https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/honja-network/07-1.md#p391-b13
+- https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/honja-network/07-1.md#p383-b01
+- https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/honja-network/07-1.md#p384-b12
+- https://www.rfc-editor.org/rfc/rfc9110.html
+- https://www.rfc-editor.org/rfc/rfc7239.html
 source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0fd01f4b67adb76926172dbd517c9/studio/wiki/oeweo-network/advanced/lesson-06.md
 page_metadata:
 - page_id: advanced-source-06-page-01
   illustrations:
   - file: assets/animations/u11-fwd-06-01-forward-view.svg
-    title: "Proxy를 사용하는 관점"
-    alt: "Proxy를 사용하는 관점: 처음엔 컴퓨터마다 직접 인터넷으로 나갈 수 있어요 → 한 중계 서버를 거치게 할 수도 있어요 → 클라이언트가 고른 중계자가 대신 전달해요 → 캐시·정책·기록은 그 위에 얹는 기능이에요"
-    caption: "직접 나갈까, 한 곳을 거칠까?"
-    after_paragraph: 0
+    title: Proxy를 사용하는 관점
+    alt: 'Proxy를 사용하는 관점: 처음엔 컴퓨터마다 직접 인터넷으로 나갈 수 있어요 → 한 중계 서버를 거치게 할 수도 있어요 → 클라이언트가 고른 중계자가 대신 전달해요 → 캐시·정책·기록은 그 위에 얹는 기능이에요'
+    caption: 직접 나갈까, 한 곳을 거칠까?
+    after_paragraph: 3
   questions:
   - id: u11-l04-p01-q01
     kind: choice
     difficulty: easy
-    prompt: Forward Proxy의 기본 역할은 무엇인가요?
+    prompt: RFC 9110의 정의로 보면 포워드 프록시는 무엇인가요?
     choices:
     - id: a
-      text: 패킷 복사본만 모으는 Sensor
-      feedback: 본문에서 forward Proxy는 클라이언트 측 요청을 대신 전달하는 중계자입니다. 확인해 보세요.
+      text: 지나가는 패킷의 복사본만 받아 기록하는 센서
+      feedback: 복사본을 받아 보는 것은 경로 밖 장치의 방식이다. 프록시는 요청을 직접 받아 목적지에 새로 연결한다.
     - id: b
-      text: 서버의 데이터베이스
-      feedback: 본문에서 forward Proxy는 클라이언트 측 요청을 대신 전달하는 중계자입니다. 확인해 보세요.
+      text: 클라이언트가 선택해 요청을 맡기는 메시지 전달 대리자
+      feedback: 맞다. 클라이언트가 고른 대리자가 요청을 받아 목적지에 대신 연결하고 응답을 돌려준다.
     - id: c
-      text: 브라우저 화면을 그리는 기능
-      feedback: 본문에서 forward Proxy는 클라이언트 측 요청을 대신 전달하는 중계자입니다. 확인해 보세요.
+      text: 목적지 서버 앞에서 서버 대신 요청을 받는 경비
+      feedback: 서버 쪽에서 요청을 대신 받는 것은 게이트웨이, 곧 리버스 프록시다. 포워드 프록시는 클라이언트 쪽 심부름꾼이다.
     - id: d
-      text: 클라이언트 요청을 받아 다른 서버로 전달하는 중계자
-      feedback: Forward Proxy는 클라이언트 측 요청을 대신 전달하는 중계자입니다.
+      text: 패킷을 손대지 않고 그대로 흘려보내는 케이블 같은 장치
+      feedback: 프록시는 데이터를 흘려보내지 않고, 요청을 받은 뒤 자기가 목적지에 새로 연결한다.
     - id: e
-      text: 케이블 신호 증폭기
-      feedback: 본문에서 forward Proxy는 클라이언트 측 요청을 대신 전달하는 중계자입니다. 확인해 보세요.
-    answer: d
+      text: 모든 웹 요청을 자동으로 암호화해 주는 장치
+      feedback: 암호화는 프록시의 기본 역할이 아니다. 기본 역할은 요청을 대신 전달하는 중계다.
+    answer: b
+    feedback: 포워드 프록시의 핵심은 '클라이언트가 고른다'와 '대신 연결한다' 두 가지다.
   - id: u11-l04-p01-q02
     kind: choice
     difficulty: medium
-    prompt: Proxy의 부가 기능으로 볼 수 있는 것은 무엇인가요?
+    prompt: 지우가 서 이사에게 보고서를 쓴다. "중계 서버를 들이면 바로 되는 것과, 따로 설정해야 생기는 것"을 바르게 구별한 문장은 무엇인가요?
     choices:
     - id: a
-      text: 캐시·접근 정책·기록·검사 기능
-      feedback: 부가 기능은 Proxy의 기본 중계 위에 목적에 따라 더해집니다.
+      text: 서버를 설치하자마자 고객 도면이 담긴 업로드가 자동으로 막힌다
+      feedback: 업로드 검사·차단은 중계 위에 얹는 기능이다. 정책을 설정하지 않으면 생기지 않는다.
     - id: b
-      text: 반드시 주소를 숨기는 기능
-      feedback: 본문에서 부가 기능은 Proxy의 기본 중계 위에 목적에 따라 더해집니다. 확인해 보세요.
+      text: 중계 서버를 들이면 PC가 인터넷으로 바로 나가는 길이 저절로 사라진다
+      feedback: 중계 서버를 세워도 PC의 직접 경로는 그대로 남는다. 직접 경로를 막는 일은 따로 해야 한다.
     - id: c
-      text: 반드시 바이러스를 완벽히 차단하는 기능
-      feedback: 본문에서 부가 기능은 Proxy의 기본 중계 위에 목적에 따라 더해집니다. 확인해 보세요.
+      text: "중계 서버는 PC마다 한 대씩 설치해야 하므로 관리해야 할 지점이 오히려 늘어난다"
+      feedback: 중계 서버 한 대를 여러 PC가 함께 거치는 구조다. 그래서 관리 지점이 한곳으로 모인다.
     - id: d
-      text: 모든 네트워크의 DNS 교체
-      feedback: 본문에서 부가 기능은 Proxy의 기본 중계 위에 목적에 따라 더해집니다. 확인해 보세요.
+      text: "기본은 요청을 대신 연결해 줄 뿐이고, 기록·차단은 정책 설정이 있어야 생긴다"
+      feedback: 맞다. 기본 동작(대신 연결)과 그 위에 얹는 기능을 나눠 본 것이 🗺️ 필요한 것만 남기기다.
     - id: e
-      text: 모든 TLS 암호화 해제
-      feedback: 본문에서 부가 기능은 Proxy의 기본 중계 위에 목적에 따라 더해집니다. 확인해 보세요.
-    answer: a
-- page_id: advanced-source-06-page-02
+      text: 대신 연결해 주므로 AI 서비스의 응답이 언제나 더 빨라진다
+      feedback: 프록시를 거치면 오히려 단계가 하나 늘어난다. 캐시로 빨라지는 경우도 조건이 맞을 때뿐이다.
+    answer: d
+    feedback: 중계 서버가 무엇을 하는지는 '기본 동작'과 '설정한 기능'으로 나눠 보면 과장 없이 설명할 수 있다.
+  question_placements:
+  - question_id: u11-l04-p01-q01
+    after_paragraph: 4
+- page_id: advanced-source-06-page-03
   illustrations:
-  - file: assets/animations/u11-fwd-06-02-direct-vs-proxy.svg
-    title: "직접 가는 길과 돌아가는 길"
-    alt: "직접 가는 길과 돌아가는 길: 직접 접속하면 서버는 내 쪽 주소를 봐요 → Proxy를 지정하면 먼저 Proxy에 연결해요 → 서버에는 Proxy 쪽 주소가 보일 수 있어요 → 헤더로 원래 정보가 전달될 수도 있어요"
-    caption: "서버에 보이는 주소가 달라질 수 있어요"
-    after_paragraph: 0
+  - file: assets/animations/u11-l04-p02-browser-proxy.svg
+    title: "브라우저에 프록시 주소 넣기"
+    alt: "지우 PC 브라우저에 프록시 192.168.10.5 포트 8080을 넣으면 요청이 프록시를 거쳐 AI 서비스로 가고, 설정을 읽지 않는 회의록 앱은 기록 없이 바로 나가는 모습입니다."
+    caption: "프록시 설정은 그것을 읽는 프로그램에만 통합니다."
+    after_paragraph: 1
   questions:
   - id: u11-l04-p02-q01
     kind: choice
     difficulty: easy
-    prompt: 클라이언트가 Proxy를 통해 서버에 접속할 때 서버가 관찰할 수 있는 주소는 무엇인가요?
+    prompt: 브라우저에 프록시 192.168.10.5:8080을 설정한 뒤 외부 AI 서비스를 열면, 브라우저가 가장 먼저 연결하는 곳은 어디인가요?
     choices:
     - id: a
-      text: 항상 사용자의 집 주소만
-      feedback: 본문에서 proxy가 목적지와 별도의 연결을 맺는 구성에서는 그 연결의 상대 주소가 보일 수 있습니다. 확인해 보세요.
+      text: 프록시 192.168.10.5:8080
+      feedback: 맞다. 브라우저는 프록시에 먼저 연결해 목적지와 요청을 넘기고, 프록시가 목적지에 새로 연결한다.
     - id: b
-      text: 항상 Loopback 주소
-      feedback: 본문에서 proxy가 목적지와 별도의 연결을 맺는 구성에서는 그 연결의 상대 주소가 보일 수 있습니다. 확인해 보세요.
+      text: 외부 AI 서비스 203.0.113.80:443
+      feedback: 프록시를 설정하지 않았을 때의 동작이다. 설정 뒤에는 브라우저가 프록시에 먼저 말을 건다.
     - id: c
-      text: 서버의 자기 주소만
-      feedback: 본문에서 proxy가 목적지와 별도의 연결을 맺는 구성에서는 그 연결의 상대 주소가 보일 수 있습니다. 확인해 보세요.
+      text: 회사 게이트웨이의 관리 화면 192.168.10.1
+      feedback: 게이트웨이는 패킷이 지나가는 길일 뿐, 브라우저가 요청을 맡기는 상대가 아니다.
     - id: d
-      text: DNS 서버의 주소만
-      feedback: 본문에서 proxy가 목적지와 별도의 연결을 맺는 구성에서는 그 연결의 상대 주소가 보일 수 있습니다. 확인해 보세요.
+      text: AI 서비스의 이름을 알려 주는 DNS 서버의 웹 화면
+      feedback: DNS는 이름을 주소로 바꿔 줄 뿐 웹 요청을 대신 전달하지 않는다. 설정된 프록시가 요청을 받는다.
     - id: e
-      text: Proxy 쪽 연결 주소가 보일 수 있다
-      feedback: Proxy가 목적지와 별도의 연결을 맺는 구성에서는 그 연결의 상대 주소가 보일 수 있습니다.
-    answer: e
+      text: 지우 PC 자신의 8080번 포트
+      feedback: 자기 PC 안의 프록시를 쓰는 경우라면 그렇다. 여기서는 사무실의 프록시 서버 주소를 넣었다.
+    answer: a
+    feedback: 프록시 설정은 브라우저가 처음 연결할 상대를 바꾼다. 원래 목적지는 요청 안에 담겨 프록시에게 전달된다.
   - id: u11-l04-p02-q02
     kind: choice
     difficulty: medium
-    prompt: Proxy를 쓴다고 익명성이 보장되지 않는 이유는 무엇인가요?
+    prompt: 프록시 설정을 전사에 배포한 다음 주, 브라우저로 쓴 AI 사용은 프록시 기록에 잘 남는다. 그런데 디자인팀이 쓰는 데스크톱 AI 이미지 생성 앱은 정상 작동하는데도 기록이 0건이다. 경로 밖 센서 보고서에는 그 앱이 외부 AI 서비스로 연결한 흔적이 보인다. 가장 그럴듯한 원인은 무엇인가요?
     choices:
     - id: a
-      text: Proxy는 서버에 연결하지 않기 때문에
-      feedback: 본문에서 출구 주소가 바뀌어도 전달 정보와 Proxy 기록은 별도로 고려해야 합니다. 확인해 보세요.
+      text: 프록시가 HTTPS 요청은 아예 기록하지 않기 때문이다
+      feedback: 브라우저의 HTTPS 요청도 기록에 남고 있다. 통로(CONNECT) 요청에도 목적지와 시각은 남는다.
     - id: b
-      text: Proxy가 원래 사용자 정보를 전달하거나 접속 기록을 남길 수 있다
-      feedback: 출구 주소가 바뀌어도 전달 정보와 Proxy 기록은 별도로 고려해야 합니다.
+      text: "앱 요청이 프록시를 거쳤지만 브라우저 요청과 합쳐서 한 줄로 기록됐기 때문이다"
+      feedback: 센서에 앱의 외부 연결이 따로 보인다. 프록시를 거쳤다면 프록시 기록에 목적지가 남아야 한다.
     - id: c
-      text: TCP는 IP 주소를 사용하지 않기 때문에
-      feedback: 본문에서 출구 주소가 바뀌어도 전달 정보와 Proxy 기록은 별도로 고려해야 합니다. 확인해 보세요.
+      text: 앱이 외부가 아니라 사내 서버와만 통신하기 때문이다
+      feedback: 센서 보고서에 외부 AI 서비스로 가는 연결이 보이므로 외부와 통신하고 있다.
     - id: d
-      text: 브라우저는 모든 기록을 지우기 때문에
-      feedback: 본문에서 출구 주소가 바뀌어도 전달 정보와 Proxy 기록은 별도로 고려해야 합니다. 확인해 보세요.
+      text: 배포한 설정이 그 PC들에 아예 적용되지 않았기 때문이다
+      feedback: 같은 PC의 브라우저 기록은 남고 있으니 운영체제 설정은 적용됐다고 보는 편이 맞다.
     - id: e
-      text: Proxy는 반드시 암호화하지 않기 때문에
-      feedback: 본문에서 출구 주소가 바뀌어도 전달 정보와 Proxy 기록은 별도로 고려해야 합니다. 확인해 보세요.
-    answer: b
-- page_id: advanced-source-06-page-03
+      text: 앱이 운영체제 프록시 설정을 따르지 않고 게이트웨이로 바로 나가기 때문이다
+      feedback: 맞다. 같은 PC 안에서도 프로그램별로 나눠 본 것이 🧩 쪼개기다. 다음으로 앱 자체의 프록시 설정을 확인한다.
+    answer: e
+    feedback: 같은 PC라도 프로그램마다 프록시 설정을 읽는 곳이 다르다. 기록이 없는 프로그램은 설정을 따르지 않는지부터 확인한다.
+  question_placements:
+  - question_id: u11-l04-p02-q01
+    after_paragraph: 2
+- page_id: advanced-source-06-page-06
   illustrations:
-  - file: assets/animations/u11-fwd-06-03-proxy-settings.svg
-    title: "접속 주체를 대신하기"
-    alt: "접속 주체를 대신하기: 브라우저에 Proxy 주소와 포트를 입력해요 → 브라우저는 먼저 Proxy에 요청을 맡겨요 → Proxy가 목적지와 별도 연결을 맺어요 → 프로그램별 설정은 따로 확인해요"
-    caption: "브라우저가 먼저 Proxy에 말을 걸어요"
-    after_paragraph: 0
+  - file: assets/animations/u11-fwd-06-06-two-sockets.svg
+    title: 두 Socket 사이의 중계
+    alt: '두 Socket 사이의 중계: 클라이언트와 이야기하는 연결 하나 → 서버와 이야기하는 연결 하나 → 한쪽에서 받은 흐름을 다른 쪽에 이어 줘요 → 한쪽이 끊기면 Proxy가 처리해요'
+    caption: Proxy에는 연결이 두 개 생겨요
+    after_paragraph: 2
   questions:
   - id: u11-l04-p03-q01
     kind: choice
     difficulty: easy
-    prompt: 브라우저가 Proxy를 설정한 뒤 먼저 연결하는 대상은 누구인가요?
+    prompt: 박 팀장 PC가 프록시를 거쳐 외부 AI 서비스에 접속할 때, 프록시의 TCP 연결에 대한 설명으로 옳은 것은 무엇인가요?
     choices:
     - id: a
-      text: 설정된 Proxy 서버
-      feedback: 브라우저는 먼저 Proxy에 요청을 맡깁니다.
+      text: PC와 AI 서비스 사이의 TCP 연결 하나를 프록시가 가운데서 복사해 본다
+      feedback: 연결 하나를 복사해 보는 것은 경로 밖 장치의 방식이다. 프록시는 연결을 직접 받는다.
     - id: b
-      text: 원래 웹 서버만
-      feedback: 본문에서 브라우저는 먼저 Proxy에 요청을 맡깁니다. 확인해 보세요.
+      text: "PC와 프록시 사이에만 연결이 있고, AI 서비스로는 연결을 맺지 않고 패킷만 보낸다"
+      feedback: 프록시도 AI 서비스와 TCP 연결을 새로 맺어야 요청을 보낼 수 있다.
     - id: c
-      text: DNS의 최상위 서버
-      feedback: 본문에서 브라우저는 먼저 Proxy에 요청을 맡깁니다. 확인해 보세요.
+      text: "PC↔프록시, 프록시↔서버 두 연결이 따로 있고 프록시가 둘 사이를 잇는다"
+      feedback: 맞다. 서버 측 소켓과 클라이언트 측 소켓이 각각 독립된 연결을 맡는다.
     - id: d
-      text: 스위치의 관리 화면
-      feedback: 본문에서 브라우저는 먼저 Proxy에 요청을 맡깁니다. 확인해 보세요.
+      text: 두 연결은 출발지와 목적지 포트가 같아서 사실상 하나의 연결이다
+      feedback: ① 구간은 프록시의 8080번, ② 구간은 AI 서비스의 443번으로 가는 서로 다른 연결이다.
     - id: e
-      text: 동아리 데이터베이스의 디스크
-      feedback: 본문에서 브라우저는 먼저 Proxy에 요청을 맡깁니다. 확인해 보세요.
-    answer: a
+      text: 프록시는 TCP 연결 없이 IP 패킷의 목적지 주소만 바꿔 보낸다
+      feedback: 주소만 바꿔 넘기는 것은 NAT에 가까운 설명이다. 프록시는 연결을 끝내고 새로 맺는다.
+    answer: c
+    feedback: 프록시에는 연결이 두 개다. 그래서 오류도 어느 구간에서 났는지 나눠 볼 수 있다.
   - id: u11-l04-p03-q02
     kind: choice
     difficulty: medium
-    prompt: 브라우저의 Proxy 설정에 대한 설명으로 옳은 것은 무엇인가요?
+    prompt: 마케팅팀 PC(192.168.10.63)의 AI API 호출 스크립트가 프록시 경유로 실패한다. 프록시 기록에는 그 PC의 요청이 들어와 있고, 옆에 "203.0.113.80:443 연결 시간 초과, 504"가 찍혀 있다. 같은 PC의 브라우저 검색은 정상이다. 문제 구간과 다음 확인으로 알맞은 것은 무엇인가요?
     choices:
     - id: a
-      text: 모든 컴퓨터의 연결을 자동으로 바꾼다
-      feedback: 본문에서 앱별 Proxy 지원과 네트워크 정책을 확인해야 합니다. 확인해 보세요.
+      text: "프록시↔API 구간이다. 그 연결이 왜 시간 초과인지 확인한다"
+      feedback: 맞다. 요청이 프록시까지 왔으니 ①은 정상이고, ② 구간을 확인하면 된다. 구간을 나눈 것이 🧩 쪼개기다.
     - id: b
-      text: 항상 모든 프로토콜을 지원한다
-      feedback: 본문에서 앱별 Proxy 지원과 네트워크 정책을 확인해야 합니다. 확인해 보세요.
+      text: PC↔프록시 구간이다. 스크립트의 프록시 주소를 다시 입력한다
+      feedback: 프록시 기록에 요청이 들어왔다면 PC에서 프록시까지는 닿은 것이다.
     - id: c
-      text: 설정을 지원하거나 따르는 프로그램의 연결에 적용된다
-      feedback: 앱별 Proxy 지원과 네트워크 정책을 확인해야 합니다.
+      text: 마케팅팀 PC의 랜선 문제다. 케이블부터 바꾼다
+      feedback: 같은 PC의 브라우저 요청이 정상이고 프록시까지 요청이 왔으니 케이블 문제로 보기 어렵다.
     - id: d
-      text: 서버의 IP 주소를 변경한다
-      feedback: 본문에서 앱별 Proxy 지원과 네트워크 정책을 확인해야 합니다. 확인해 보세요.
+      text: 프록시 프로그램 전체가 멈췄다. 프록시 서버를 다시 시작한다
+      feedback: 프록시가 멈췄다면 브라우저 검색도 실패하고, 504 응답을 남기지도 못했을 것이다.
     - id: e
-      text: Proxy가 꺼져 있어도 요청을 전달한다
-      feedback: 본문에서 앱별 Proxy 지원과 네트워크 정책을 확인해야 합니다. 확인해 보세요.
-    answer: c
-- page_id: advanced-source-06-page-04
+      text: 스크립트가 프록시를 거치지 않고 바로 나갔다. 방화벽 기록부터 본다
+      feedback: 프록시 기록에 이 PC의 요청이 남아 있으므로 스크립트는 프록시를 거쳤다.
+    answer: a
+    feedback: 프록시의 502·504는 '프록시까지는 왔다'는 뜻이기도 하다. 그다음 구간을 확인하면 된다.
+  question_placements:
+  - question_id: u11-l04-p03-q01
+    after_paragraph: 4
+- page_id: advanced-source-06-page-02
   illustrations:
-  - file: assets/animations/u11-fwd-06-04-bypass.svg
-    title: "Proxy를 통한 우회"
-    alt: "Proxy를 통한 우회: 한국에서 해외 Proxy를 거쳐 접속해요 → 요청이 Proxy를 지나 사이트로 가요 → 사이트에는 Proxy의 출구 주소가 보여요 → 운영자는 기록을 볼 수 있어요"
-    caption: "다른 나라의 출구로 나가 봐요"
-    after_paragraph: 0
+  - file: assets/animations/u11-l04-p04-seen-address.svg
+    title: "AI 서비스에는 누구 주소가 보일까?"
+    alt: "직접 접속과 회사 프록시 경유는 본사 공인 주소 198.51.100.25로, 해외 우회 프록시 경유는 그 서버의 주소로 보이는 것을 비교합니다."
+    caption: "주소가 바뀌어도 로그인하면 신원이 감춰지지 않으며, 어느 PC인지는 회사 프록시 기록에서 찾습니다."
+    after_paragraph: 3
   questions:
   - id: u11-l04-p04-q01
     kind: choice
     difficulty: easy
-    prompt: Proxy를 거쳐 접속하면 목적지에서 달라질 수 있는 것은 무엇인가요?
+    prompt: 한결디자인 PC가 회사 프록시(192.168.10.5)를 거쳐 외부 AI 서비스에 접속하면, AI 서비스에 보이는 출발지 주소는 무엇인가요?
     choices:
     - id: a
-      text: 웹페이지의 언어가 항상 바뀐다
-      feedback: 본문에서 목적지가 보는 연결 상대가 Proxy일 경우 출구 주소가 달라질 수 있습니다. 확인해 보세요.
+      text: 각 직원 PC의 사설 주소(192.168.10.41 등)
+      feedback: 사설 주소는 인터넷으로 나갈 때 경계 장비에서 공인 주소로 바뀐다. 게다가 연결 상대는 프록시다.
     - id: b
-      text: TCP 연결의 출구 주소
-      feedback: 목적지가 보는 연결 상대가 Proxy일 경우 출구 주소가 달라질 수 있습니다.
+      text: 프록시의 사설 주소 192.168.10.5
+      feedback: AI 서비스와 연결을 맺는 상대는 프록시가 맞지만, 프록시의 사설 주소도 경계에서 공인 주소로 바뀐다.
     - id: c
-      text: 사용자 계정의 비밀번호
-      feedback: 본문에서 목적지가 보는 연결 상대가 Proxy일 경우 출구 주소가 달라질 수 있습니다. 확인해 보세요.
+      text: 외부 AI 서비스 자신의 주소 203.0.113.80
+      feedback: 203.0.113.80은 목적지 주소다. 출발지로 보이는 주소가 아니다.
     - id: d
-      text: 서버의 운영체제
-      feedback: 본문에서 목적지가 보는 연결 상대가 Proxy일 경우 출구 주소가 달라질 수 있습니다. 확인해 보세요.
+      text: 본사 공인 주소 198.51.100.25
+      feedback: 맞다. 연결 상대는 프록시이고, 프록시가 밖으로 나갈 때 출발지가 본사 공인 주소로 바뀐다.
     - id: e
-      text: 도메인 이름의 철자
-      feedback: 본문에서 목적지가 보는 연결 상대가 Proxy일 경우 출구 주소가 달라질 수 있습니다. 확인해 보세요.
-    answer: b
+      text: 박 팀장이 쓰던 해외 우회 프록시의 주소
+      feedback: 회사 프록시는 사무실 안에 있다. 해외 서버를 거치지 않으므로 해외 주소가 보일 이유가 없다.
+    answer: d
+    feedback: 목적지는 자신과 연결을 맺은 상대의 주소를 본다. 회사 안의 프록시는 결국 회사 출구 주소로 나간다.
   - id: u11-l04-p04-q02
     kind: choice
     difficulty: medium
-    prompt: 주소가 달라지는 것만으로 보장되지 않는 것은 무엇인가요?
+    prompt: 디자인팀 직원 5명이 회사 프록시를 거쳐 같은 외부 AI 서비스를 썼다. AI 서비스 운영사 기록에는 어떻게 보이고, 그 가운데 어느 PC가 보냈는지는 어디서 찾아야 하나요?
     choices:
     - id: a
-      text: Proxy가 목적지에 접속한다는 사실
-      feedback: 본문에서 중계는 신원을 숨기거나 정책을 항상 우회한다고 보장하지 않습니다. 확인해 보세요.
+      text: "5명이 각자 다른 공인 주소로 보이므로, 어느 PC가 보냈는지는 운영사 기록에서 찾는다"
+      feedback: 회사 프록시를 거치면 5명 모두 같은 공인 주소로 보인다. 운영사 기록만으로는 사람을 가릴 수 없다.
     - id: b
-      text: 경로에 중계 호스트가 있다는 점
-      feedback: 본문에서 중계는 신원을 숨기거나 정책을 항상 우회한다고 보장하지 않습니다. 확인해 보세요.
+      text: "5명 모두 198.51.100.25로 보이므로, 어느 PC가 보냈는지는 회사 프록시 기록에서 찾는다"
+      feedback: 맞다. 운영사에는 출처가 하나로 보이고, 어느 PC가 보냈는지는 회사 프록시 기록에 남는다.
     - id: c
-      text: 연결 상대 주소가 다를 수 있다는 점
-      feedback: 본문에서 중계는 신원을 숨기거나 정책을 항상 우회한다고 보장하지 않습니다. 확인해 보세요.
+      text: "5명 모두 프록시의 사설 주소 192.168.10.5로 보이므로, 어느 PC가 보냈는지는 운영사에 요청하면 안다"
+      feedback: 사설 주소는 경계에서 공인 주소로 바뀌어 나간다. 운영사가 보는 주소는 192.168.10.5가 아니다.
     - id: d
-      text: 익명성과 모든 차단 정책의 우회
-      feedback: 중계는 신원을 숨기거나 정책을 항상 우회한다고 보장하지 않습니다.
+      text: "프록시를 거치면 운영사 기록에 주소가 남지 않으므로, 어느 PC가 보냈는지 알 수 없다"
+      feedback: 운영사 기록에는 공인 주소 198.51.100.25가 남는다. 사람을 가리는 근거가 회사 쪽 기록에 있을 뿐이다.
     - id: e
-      text: 요청이 중계될 수 있다는 점
-      feedback: 본문에서 중계는 신원을 숨기거나 정책을 항상 우회한다고 보장하지 않습니다. 확인해 보세요.
-    answer: d
-- page_id: advanced-source-06-page-05
+      text: 5명 모두 198.51.100.25로 보이고, 운영사가 각 PC의 사설 주소를 따로 기록해 둔다
+      feedback: 운영사는 사설 주소를 볼 수 없다. 보내는 쪽 기록이 아니라면 PC 구분은 회사에서 해야 한다.
+    answer: b
+    feedback: 직원 모두가 198.51.100.25 하나로 보이므로 어느 PC가 보냈는지는 AI 서비스가 아니라 회사 프록시 기록에서 찾는다. PC 주소만으로 사람을 단정하지 않는다.
+  question_placements:
+  - question_id: u11-l04-p04-q01
+    after_paragraph: 4
+- page_id: advanced-source-06-page-07
   illustrations:
-  - file: assets/animations/u11-fwd-06-05-speed-cost.svg
-    title: "우회에 따른 속도와 비용"
-    alt: "우회에 따른 속도와 비용: 직접 가면 한 번에 도착해요 → Proxy를 거치면 단계가 늘어요 → Proxy가 멈추면 모두 영향을 받아요 → 잘 두면 오히려 도움이 될 수도 있어요"
-    caption: "편리하지만 거치는 길이 늘어요"
-    after_paragraph: 0
+  - file: assets/animations/u11-fwd-06-07-bypass-summary.svg
+    title: 우회 목적의 Proxy 정리
+    alt: '우회 목적의 Proxy 정리: Proxy는 요청을 받아 다른 서버에 접속해요 → 무엇을 전달·기록하는지에 따라 달라져요 → 그래서 대리 접속이 익명성을 보장하진 않아요 → 같은 구조를 여러 목적에 응용해요'
+    caption: 핵심은 요청을 대신 전달한다는 점이에요
+    after_paragraph: 5
   questions:
   - id: u11-l04-p05-q01
     kind: choice
     difficulty: easy
-    prompt: Proxy 경유로 생길 수 있는 성능 비용은 무엇인가요?
+    prompt: 박 팀장이 우회 프록시를 거쳐 HTTPS AI 사이트에 접속했고, 브라우저에는 인증서 경고가 전혀 없었다. 우회 프록시 운영자에 대한 설명으로 옳은 것은 무엇인가요?
     choices:
     - id: a
-      text: IP 주소가 없어지는 것
-      feedback: 본문에서 proxy까지 갔다가 목적지로 향하므로 추가 지연이 생길 수 있습니다. 확인해 보세요.
+      text: 운영자는 이 접속에 대해 아무 정보도 알 수 없다
+      feedback: 운영자는 자기 서버로 들어온 연결의 출발지, 시각, 목적지, 데이터 양을 알 수 있다.
     - id: b
-      text: 서버가 멈추는 것
-      feedback: 본문에서 proxy까지 갔다가 목적지로 향하므로 추가 지연이 생길 수 있습니다. 확인해 보세요.
+      text: 운영자는 박 팀장이 AI에 입력한 질문을 모두 읽을 수 있다
+      feedback: 경고 없이 정상 연결된 HTTPS라면 암호화는 브라우저와 AI 서비스 사이에서 맺어져 운영자가 내용을 읽지 못한다.
     - id: c
-      text: 경로와 처리 단계가 늘어 응답 지연이 커질 수 있다
-      feedback: Proxy까지 갔다가 목적지로 향하므로 추가 지연이 생길 수 있습니다.
+      text: 운영자는 AI 서비스의 개인 키를 자동으로 받아 내용을 푼다
+      feedback: 서비스의 개인 키는 서비스만 가진다. 중계한다고 개인 키가 넘어오지 않는다.
     - id: d
-      text: 모든 패킷이 자동 압축되는 것
-      feedback: 본문에서 proxy까지 갔다가 목적지로 향하므로 추가 지연이 생길 수 있습니다. 확인해 보세요.
+      text: 운영자는 박 팀장 PC의 사설 주소 192.168.10.42를 그대로 본다
+      feedback: 운영자에게 보이는 것은 회사 경계에서 바뀐 공인 주소 198.51.100.25다.
     - id: e
-      text: DNS가 필요 없어지는 것
-      feedback: 본문에서 proxy까지 갔다가 목적지로 향하므로 추가 지연이 생길 수 있습니다. 확인해 보세요.
-    answer: c
+      text: 출발지 주소·시각·목적지·데이터 양은 알지만, 대화 내용은 읽지 못한다
+      feedback: 맞다. 연결 정보는 운영자에게 남지만, 신뢰 설정을 바꾸지 않은 HTTPS 내용은 보이지 않는다.
+    answer: e
+    feedback: 우회 프록시 운영자가 무엇을 알 수 있는지는 HTTP인지 HTTPS인지, 인증서 신뢰를 바꿨는지에 따라 달라진다.
   - id: u11-l04-p05-q02
     kind: choice
     difficulty: medium
-    prompt: Proxy에 장애가 생겼을 때의 영향은 무엇인가요?
+    prompt: 신입 디자이너가 브라우저 확장형 무료 우회 프록시를 설치해, 회사가 막아 둔 AI 이미지 사이트를 쓰고 있다. 이 확장은 설치할 때 '모든 웹사이트의 데이터 읽기·변경' 권한을 요구했다. 회사가 실제로 걱정해야 할 위험을 바르게 고른 것은 무엇인가요?
     choices:
     - id: a
-      text: 모든 인터넷 연결이 자동 복구된다
-      feedback: 본문에서 중계 지점의 가용성과 대체 경로를 고려해야 합니다. 확인해 보세요.
+      text: 디자이너의 PC만 회사 프록시보다 빨라져 사무실 네트워크가 불안정해진다
+      feedback: 우회 도구를 쓴다고 네트워크가 불안정해지는 것이 핵심 위험은 아니다. 문제는 자료가 어디로 가느냐다.
     - id: b
-      text: 목적지 서버가 항상 대신 Proxy가 된다
-      feedback: 본문에서 중계 지점의 가용성과 대체 경로를 고려해야 합니다. 확인해 보세요.
+      text: 확장이 HTTPS로 통신하므로 회사가 걱정할 위험은 없다
+      feedback: HTTPS여도 운영자는 연결 정보를 알고, 확장은 받은 권한으로 브라우저 안의 내용에 접근할 수 있다.
     - id: c
-      text: 브라우저가 자동으로 캐시를 영구 삭제한다
-      feedback: 본문에서 중계 지점의 가용성과 대체 경로를 고려해야 합니다. 확인해 보세요.
+      text: "업무 자료가 회사 기록 밖으로 나가고, 확장 권한으로 브라우저 안 정보까지 보일 수 있다"
+      feedback: 맞다. 편리함의 대가로 무엇을 넘겨주는지 따져 본 것이 ⚖️ 대가 따지기다.
     - id: d
-      text: TCP가 주소를 바꾼다
-      feedback: 본문에서 중계 지점의 가용성과 대체 경로를 고려해야 합니다. 확인해 보세요.
+      text: "우회 프록시를 쓰면 디자이너의 신원이 완전히 감춰져 회사가 어떤 조사도 할 수 없게 된다"
+      feedback: 우회 프록시는 익명성을 보장하지 않는다. 운영자 기록, 로그인 정보 같은 다른 흔적이 남는다.
     - id: e
-      text: 그 Proxy에 의존하는 연결이 영향을 받을 수 있다
-      feedback: 중계 지점의 가용성과 대체 경로를 고려해야 합니다.
-    answer: e
-- page_id: advanced-source-06-page-06
+      text: 확장형 도구는 프록시가 아니므로 이 Page에서 본 위험과 관계없다
+      feedback: 확장형 도구도 요청을 다른 서버가 대신 전달하게 만드는 같은 구조다. 오히려 권한 문제가 더해진다.
+    answer: c
+    feedback: 우회 도구의 위험은 '막힌 사이트가 열린다'보다 '업무 자료와 권한을 낯선 운영자에게 넘긴다'에 있다.
+  question_placements:
+  - question_id: u11-l04-p05-q01
+    after_paragraph: 4
+- page_id: advanced-source-06-page-05
   illustrations:
-  - file: assets/animations/u11-fwd-06-06-two-sockets.svg
-    title: "두 Socket 사이의 중계"
-    alt: "두 Socket 사이의 중계: 클라이언트와 이야기하는 연결 하나 → 서버와 이야기하는 연결 하나 → 한쪽에서 받은 흐름을 다른 쪽에 이어 줘요 → 한쪽이 끊기면 Proxy가 처리해요"
-    caption: "Proxy에는 연결이 두 개 생겨요"
-    after_paragraph: 0
+  - file: assets/animations/u11-fwd-06-05-speed-cost.svg
+    title: 우회에 따른 속도와 비용
+    alt: '우회에 따른 속도와 비용: 직접 가면 한 번에 도착해요 → Proxy를 거치면 단계가 늘어요 → Proxy가 멈추면 모두 영향을 받아요 → 잘 두면 오히려 도움이 될 수도 있어요'
+    caption: 편리하지만 거치는 길이 늘어요
+    after_paragraph: 2
   questions:
   - id: u11-l04-p06-q01
     kind: choice
     difficulty: easy
-    prompt: Forward Proxy가 일반적으로 사용할 수 있는 연결 구성은 무엇인가요?
+    prompt: 회사 직원 모두가 프록시 한 대를 거치게 했을 때 생기는 가장 직접적인 위험은 무엇인가요?
     choices:
     - id: a
-      text: 클라이언트와 서버 사이의 연결 하나만 있고 Proxy는 연결되지 않는다
-      feedback: 본문에서 proxy가 각 연결을 맺고 그 사이에서 데이터를 전달할 수 있습니다. 확인해 보세요.
+      text: 프록시가 멈추면 직원들의 웹 요청이 한꺼번에 막히는 단일 장애점이 생긴다
+      feedback: 맞다. 모두가 한 대에 의존하므로 그 한 대의 장애나 용량 부족이 전체 문제가 된다.
     - id: b
-      text: 두 개의 DNS 응답만
-      feedback: 본문에서 proxy가 각 연결을 맺고 그 사이에서 데이터를 전달할 수 있습니다. 확인해 보세요.
+      text: AI 서비스가 회사의 공인 주소를 알 수 없게 된다
+      feedback: 프록시를 거쳐도 AI 서비스에는 본사 공인 주소 198.51.100.25가 보인다.
     - id: c
-      text: 하나의 소켓을 모든 호스트가 공유한다
-      feedback: 본문에서 proxy가 각 연결을 맺고 그 사이에서 데이터를 전달할 수 있습니다. 확인해 보세요.
+      text: PC마다 다른 출구 주소가 생겨 관리가 어려워진다
+      feedback: 프록시를 거치면 오히려 요청이 한곳으로 모인다. PC마다 출구가 달라지지 않는다.
     - id: d
-      text: 클라이언트와 Proxy, Proxy와 서버 사이의 별도 연결 두 개
-      feedback: Proxy가 각 연결을 맺고 그 사이에서 데이터를 전달할 수 있습니다.
+      text: 처리 단계가 줄어들어 응답이 언제나 빨라진다
+      feedback: 프록시를 거치면 처리 단계가 늘어난다. 빨라지는 경우는 캐시 조건이 맞을 때뿐이다.
     - id: e
-      text: 패킷 복사본만 있고 연결은 없다
-      feedback: 본문에서 proxy가 각 연결을 맺고 그 사이에서 데이터를 전달할 수 있습니다. 확인해 보세요.
-    answer: d
+      text: "프록시가 요청을 대신 보내면서 PC의 사설 주소를 인터넷에 그대로 공개한다"
+      feedback: 사설 주소는 경계에서 공인 주소로 바뀐다. 프록시를 둔다고 사설 주소가 공개되지는 않는다.
+    answer: a
+    feedback: 중앙에 모으면 관리하기 쉬운 만큼, 그 중앙이 멈출 때의 영향도 커진다.
   - id: u11-l04-p06-q02
     kind: choice
     difficulty: medium
-    prompt: Proxy 프로그램이 두 연결을 이어 줄 때 하는 일은 무엇인가요?
+    prompt: 월요일 오전, 프록시 서버의 디스크가 접속 기록으로 가득 차 프록시 프로그램이 멈췄다. 사무실 전체에서 웹과 AI 서비스가 끊겼다. 원인 진단과 대비책을 바르게 짝지은 것은 무엇인가요?
     choices:
     - id: a
-      text: 한쪽 요청을 받아 다른 쪽으로 전달하고 응답을 되돌린다
-      feedback: 소켓 연결 사이에서 요청과 응답을 중계하는 것이 기본 역할입니다.
+      text: AI 서비스에 장애가 났다. AI 서비스 운영사에 문의한다
+      feedback: 웹 전체가 함께 끊겼고 원인이 프록시 디스크로 확인됐다. AI 서비스만의 문제가 아니다.
     - id: b
-      text: Proxy는 양쪽 연결을 하나의 연결로 합쳐 중계하지 않는다
-      feedback: Proxy는 클라이언트 쪽과 서버 쪽 연결을 이어 요청과 응답을 중계해요.
+      text: 직원 PC에 악성코드가 퍼졌다. 모든 PC를 다시 설치한다
+      feedback: PC가 아니라 모든 PC가 의존하는 프록시가 멈춘 것이 원인이다.
     - id: c
-      text: Proxy는 반드시 모든 요청을 차단하고 응답을 전달하지 않는다
-      feedback: Proxy는 클라이언트 쪽과 서버 쪽 연결을 이어 요청과 응답을 중계해요.
+      text: "프록시가 원인이니 프록시를 없애고 PC마다 직접 나가게 설정을 되돌린다"
+      feedback: 장애는 사라질지 몰라도 정책과 기록도 함께 잃는다. 원인에 맞는 대비가 아니다.
     - id: d
-      text: Proxy가 브라우저 화면을 다시 그려 서버로 보낸다
-      feedback: Proxy는 클라이언트 쪽과 서버 쪽 연결을 이어 요청과 응답을 중계해요.
+      text: "프록시가 단일 장애점이었다. 디스크 감시를 정하고 이중화한다"
+      feedback: 맞다. 중앙 관리의 이점은 지키면서 그 대가를 줄이는 쪽을 고른 것이 ⚖️ 대가 따지기다.
     - id: e
-      text: 복사본을 Out of path 센서로 보내기만 한다
-      feedback: Proxy는 클라이언트 쪽과 서버 쪽 연결을 이어 요청과 응답을 중계해요.
-    answer: a
-- page_id: advanced-source-06-page-07
-  illustrations:
-  - file: assets/animations/u11-fwd-06-07-bypass-summary.svg
-    title: "우회 목적의 Proxy 정리"
-    alt: "우회 목적의 Proxy 정리: Proxy는 요청을 받아 다른 서버에 접속해요 → 무엇을 전달·기록하는지에 따라 달라져요 → 그래서 대리 접속이 익명성을 보장하진 않아요 → 같은 구조를 여러 목적에 응용해요"
-    caption: "핵심은 요청을 대신 전달한다는 점이에요"
-    after_paragraph: 0
-  questions:
-  - id: u11-l04-p07-q01
-    kind: choice
-    difficulty: easy
-    prompt: Proxy 활용 사례가 달라도 공통으로 나타나는 원리는 무엇인가요?
-    choices:
-    - id: a
-      text: 모든 트래픽을 암호 해제하는 것
-      feedback: 본문에서 활용 목적과 관계없이 중계 연결이 기본 구조입니다. 확인해 보세요.
-    - id: b
-      text: 항상 다른 국가에서 나가는 것
-      feedback: 본문에서 활용 목적과 관계없이 중계 연결이 기본 구조입니다. 확인해 보세요.
-    - id: c
-      text: 서버의 디스크를 복사하는 것
-      feedback: 본문에서 활용 목적과 관계없이 중계 연결이 기본 구조입니다. 확인해 보세요.
-    - id: d
-      text: 원본 패킷만 수집하는 것
-      feedback: 본문에서 활용 목적과 관계없이 중계 연결이 기본 구조입니다. 확인해 보세요.
-    - id: e
-      text: 요청을 받아 다른 연결로 전달하는 중계
-      feedback: 활용 목적과 관계없이 중계 연결이 기본 구조입니다.
-    answer: e
-  - id: u11-l04-p07-q02
-    kind: choice
-    difficulty: medium
-    prompt: Proxy의 익명성과 보안을 판단할 때 확인할 것은 무엇인가요?
-    choices:
-    - id: a
-      text: 목적지 서버가 보는 출발지 주소만
-      feedback: 목적지에 보이는 정보는 한 요소일 뿐입니다. 운영자에게 보이는 정보와 기록 정책도 살펴야 합니다.
-    - id: b
-      text: 배치, 전달 정보, 기록 정책과 운영 주체
-      feedback: 이름만으로 정보 노출이나 안전성을 단정할 수 없습니다.
-    - id: c
-      text: Proxy가 어떤 요청 정보를 전달하는지
-      feedback: 전달 정보는 중요하지만, 익명성과 보안을 판단하려면 기록 정책과 운영 주체도 확인해야 합니다.
-    - id: d
-      text: Proxy가 남기는 기록과 이를 관리하는 주체
-      feedback: 기록과 운영 주체는 중요한 요소지만, 배치와 전달 정보도 함께 봐야 합니다.
-    - id: e
-      text: Proxy가 있는 네트워크의 전체 장치 수
-      feedback: 장치 수만으로는 Proxy가 어떤 정보를 전달하고 기록하는지 알 수 없습니다.
-    answer: b
-- page_id: advanced-source-07-page-01
-  illustrations:
-  - file: assets/animations/u11-fwd-07-01-limit-direct.svg
-    title: "회사에서 직접 접속 제한"
-    alt: "회사에서 직접 접속 제한: 공용 PC가 바로 인터넷으로 나가지 못하게 해요 → PC는 먼저 내부 Proxy로 요청해요 → Proxy가 외부 서버에 접속해요 → 관리자는 한 지점에서 정책을 적용해요"
-    caption: "내부 Proxy를 거쳐서만 나가요"
-    after_paragraph: 0
-  questions:
-  - id: u11-l04-p08-q01
-    kind: choice
-    difficulty: easy
-    prompt: 조직이 내부 Proxy를 두는 목적에 가까운 것은 무엇인가요?
-    choices:
-    - id: a
-      text: 내부 사용자의 외부 접속에 정책을 적용하고 운영한다
-      feedback: 내부 Proxy는 관리하는 네트워크의 접속 통제 지점이 될 수 있습니다.
-    - id: b
-      text: 다른 나라의 위치를 흉내 낸다
-      feedback: 본문에서 내부 Proxy는 관리하는 네트워크의 접속 통제 지점이 될 수 있습니다. 확인해 보세요.
-    - id: c
-      text: 원본 트래픽 복사본만 수집한다
-      feedback: 본문에서 내부 Proxy는 관리하는 네트워크의 접속 통제 지점이 될 수 있습니다. 확인해 보세요.
-    - id: d
-      text: 웹 서버 대신 신청을 승인한다
-      feedback: 본문에서 내부 Proxy는 관리하는 네트워크의 접속 통제 지점이 될 수 있습니다. 확인해 보세요.
-    - id: e
-      text: 케이블을 무선으로 바꾼다
-      feedback: 본문에서 내부 Proxy는 관리하는 네트워크의 접속 통제 지점이 될 수 있습니다. 확인해 보세요.
-    answer: a
-  - id: u11-l04-p08-q02
-    kind: choice
-    difficulty: medium
-    prompt: 내부 Proxy만 사용하도록 구성하려면 무엇이 함께 필요할 수 있나요?
-    choices:
-    - id: a
-      text: 모든 PC에서 방화벽을 끄는 것
-      feedback: 본문에서 브라우저 설정과 네트워크의 허용 정책을 함께 맞춰야 우회 연결을 제한할 수 있습니다. 확인해 보세요.
-    - id: b
-      text: DNS 기록을 삭제하는 것
-      feedback: 본문에서 브라우저 설정과 네트워크의 허용 정책을 함께 맞춰야 우회 연결을 제한할 수 있습니다. 확인해 보세요.
-    - id: c
-      text: 직접 외부 연결을 제한하는 네트워크 정책
-      feedback: 브라우저 설정과 네트워크의 허용 정책을 함께 맞춰야 우회 연결을 제한할 수 있습니다.
-    - id: d
-      text: 사이트의 서버를 끄는 것
-      feedback: 본문에서 브라우저 설정과 네트워크의 허용 정책을 함께 맞춰야 우회 연결을 제한할 수 있습니다. 확인해 보세요.
-    - id: e
-      text: Loopback을 공인 IP로 바꾸는 것
-      feedback: 본문에서 브라우저 설정과 네트워크의 허용 정책을 함께 맞춰야 우회 연결을 제한할 수 있습니다. 확인해 보세요.
-    answer: c
-- page_id: advanced-source-07-page-02
-  illustrations:
-  - file: assets/animations/u11-fwd-07-02-firewall-rule.svg
-    title: "Proxy를 통한 외부 접속"
-    alt: "Proxy를 통한 외부 접속: 공용 PC의 직접 외부 연결은 차단해요 → Proxy가 시작한 연결만 허용해요 → 접속이 한곳으로 모여 관리하기 쉬워요 → Proxy 자체의 보안·용량도 챙겨요"
-    caption: "직접 연결은 막고 Proxy만 열어요"
-    after_paragraph: 0
-  questions:
-  - id: u11-l04-p09-q01
-    kind: choice
-    difficulty: easy
-    prompt: 내부 Proxy 경유 정책의 예로 알맞은 것은 무엇인가요?
-    choices:
-    - id: a
-      text: 모든 연결을 항상 허용한다
-      feedback: 본문에서 proxy를 정책 지점으로 만들려면 네트워크 규칙이 함께 적용되어야 합니다. 확인해 보세요.
-    - id: b
-      text: PC의 직접 외부 연결은 제한하고 Proxy의 허용된 외부 연결은 통과시킨다
-      feedback: Proxy를 정책 지점으로 만들려면 네트워크 규칙이 함께 적용되어야 합니다.
-    - id: c
-      text: Proxy 서버도 외부와 연결하지 못하게 한다
-      feedback: 본문에서 proxy를 정책 지점으로 만들려면 네트워크 규칙이 함께 적용되어야 합니다. 확인해 보세요.
-    - id: d
-      text: DNS 요청만 브라우저로 바꾼다
-      feedback: 본문에서 proxy를 정책 지점으로 만들려면 네트워크 규칙이 함께 적용되어야 합니다. 확인해 보세요.
-    - id: e
-      text: 허용 여부와 관계없이 모든 패킷을 복사한다
-      feedback: 본문에서 proxy를 정책 지점으로 만들려면 네트워크 규칙이 함께 적용되어야 합니다. 확인해 보세요.
-    answer: b
-  - id: u11-l04-p09-q02
-    kind: choice
-    difficulty: medium
-    prompt: 내부 Proxy를 중앙 지점으로 만들 때 생길 수 있는 부담은 무엇인가요?
-    choices:
-    - id: a
-      text: 포트 번호가 사라진다
-      feedback: 본문에서 중앙 중계 지점의 성능과 안정성을 계획해야 합니다. 확인해 보세요.
-    - id: b
-      text: 웹 요청이 필요 없어 진다
-      feedback: 본문에서 중앙 중계 지점의 성능과 안정성을 계획해야 합니다. 확인해 보세요.
-    - id: c
-      text: TLS가 자동 해제된다
-      feedback: 본문에서 중앙 중계 지점의 성능과 안정성을 계획해야 합니다. 확인해 보세요.
-    - id: d
-      text: 장애·보안 위험과 처리 용량이 한곳에 집중될 수 있다
-      feedback: 중앙 중계 지점의 성능과 안정성을 계획해야 합니다.
-    - id: e
-      text: 모든 PC의 NIC가 제거된다
-      feedback: 본문에서 중앙 중계 지점의 성능과 안정성을 계획해야 합니다. 확인해 보세요.
+      text: 회사 공인 주소가 바뀌었다. 경계 장비 설정을 되돌린다
+      feedback: 공인 주소와 관련된 단서는 없다. 원인은 프록시 서버의 디스크다.
     answer: d
-- page_id: advanced-source-07-page-03
-  illustrations:
-  - file: assets/animations/u11-fwd-07-03-proxy-log.svg
-    title: "중간에서 알 수 있는 것"
-    alt: "중간에서 알 수 있는 것: PC의 요청이 Proxy를 거쳐 가요 → 누가 언제 어디로 갔는지 알 수 있어요 → 암호화된 내용은 설정 없이는 읽지 못해요 → 기록하기 전에 목적과 범위를 정해요"
-    caption: "Proxy는 접속 기록을 남길 수 있어요"
-    after_paragraph: 0
-  questions:
-  - id: u11-l04-p10-q01
-    kind: choice
-    difficulty: easy
-    prompt: 내부 Proxy가 관찰할 수 있는 정보는 무엇인가요?
-    choices:
-    - id: a
-      text: 항상 모든 암호화 본문
-      feedback: 본문에서 기록 가능 범위는 설정, 프로토콜과 TLS 처리 여부에 달려 있습니다. 확인해 보세요.
-    - id: b
-      text: 사용자의 화면 모든 픽셀
-      feedback: 본문에서 기록 가능 범위는 설정, 프로토콜과 TLS 처리 여부에 달려 있습니다. 확인해 보세요.
-    - id: c
-      text: 클라이언트와 접속 시각·목적지 정보 등 설정된 범위의 기록
-      feedback: 기록 가능 범위는 설정, 프로토콜과 TLS 처리 여부에 달려 있습니다.
-    - id: d
-      text: 네트워크에 없는 파일
-      feedback: 본문에서 기록 가능 범위는 설정, 프로토콜과 TLS 처리 여부에 달려 있습니다. 확인해 보세요.
-    - id: e
-      text: 모든 앱의 비밀번호 평문
-      feedback: 본문에서 기록 가능 범위는 설정, 프로토콜과 TLS 처리 여부에 달려 있습니다. 확인해 보세요.
-    answer: c
-  - id: u11-l04-p10-q02
-    kind: choice
-    difficulty: medium
-    prompt: 접속 기록을 운영할 때 고려할 점은 무엇인가요?
-    choices:
-    - id: a
-      text: 가능한 모든 내용을 무기한 저장한다
-      feedback: 본문에서 필요한 정보만 적절히 관리하는 정책이 중요합니다. 확인해 보세요.
-    - id: b
-      text: Proxy 이름만 공개한다
-      feedback: 본문에서 필요한 정보만 적절히 관리하는 정책이 중요합니다. 확인해 보세요.
-    - id: c
-      text: 기록을 누구나 보게 한다
-      feedback: 본문에서 필요한 정보만 적절히 관리하는 정책이 중요합니다. 확인해 보세요.
-    - id: d
-      text: 기록 목적은 고려하지 않는다
-      feedback: 본문에서 필요한 정보만 적절히 관리하는 정책이 중요합니다. 확인해 보세요.
-    - id: e
-      text: 필요한 범위, 접근 권한과 보관 기간
-      feedback: 필요한 정보만 적절히 관리하는 정책이 중요합니다.
-    answer: e
-  - id: u11-l04-p10-q03
-    kind: choice
-    difficulty: medium
-    prompt: Proxy 기록에서 HTTPS 페이지의 구체적인 내용을 확인하려면 무엇을 추가로 확인해야 하나요?
-    choices:
-    - id: a
-      text: 목적지 주소 기록만으로 암호화된 요청 본문도 확인할 수 있는지
-      feedback: 목적지 기록과 HTTPS Payload의 평문 내용은 서로 다른 정보입니다.
-    - id: b
-      text: TLS 검사 구성과 필요한 기록 범위·접근 조건이 정해졌는지
-      feedback: 암호화된 내용은 적절한 TLS 구성 없이는 읽을 수 없으며, 기록 범위와 접근도 관리해야 합니다.
-    - id: c
-      text: Proxy 로그를 오래 보관하면 암호화가 자동으로 풀리는지
-      feedback: 보관 기간은 암호화를 해제하지 않으며, 내용 확인에는 별도 TLS 구성이 필요합니다.
-    - id: d
-      text: 모든 HTTPS 요청을 제한 없이 저장해도 되는지
-      feedback: 기술적으로 볼 수 있는 내용과 기록해도 되는 범위는 별도로 따져야 합니다.
-    - id: e
-      text: TLS 설정과 무관하게 Proxy가 모든 브라우저 화면을 기록하는지
-      feedback: 본문은 Proxy가 관찰하는 범위가 기능·설정에 달려 있으며 암호화 내용은 자동으로 보이지 않는다고 설명합니다.
-    answer: b
-- page_id: advanced-source-07-page-04
-  illustrations:
-  - file: assets/animations/u11-fwd-07-04-file-scan.svg
-    title: "악성 파일 검사"
-    alt: "악성 파일 검사: 자료 사이트에서 PDF를 내려받아요 → 파일이 Proxy를 지나가요 → 구성에 따라 검사 시스템이 확인해요 → 문제가 있으면 전달하지 않아요"
-    caption: "내려받는 파일을 Proxy에서 살펴봐요"
-    after_paragraph: 0
-  questions:
-  - id: u11-l04-p11-q01
-    kind: choice
-    difficulty: easy
-    prompt: Proxy를 파일 검사 지점으로 활용하는 이유는 무엇인가요?
-    choices:
-    - id: a
-      text: Proxy가 파일을 자동으로 안전하다고 보장하기 때문
-      feedback: 본문에서 중계 지점이 데이터를 검사 시스템에 전달하도록 구성할 수 있습니다. 확인해 보세요.
-    - id: b
-      text: DNS가 파일을 분석하기 때문
-      feedback: 본문에서 중계 지점이 데이터를 검사 시스템에 전달하도록 구성할 수 있습니다. 확인해 보세요.
-    - id: c
-      text: 브라우저가 다운로드를 중지하기 때문
-      feedback: 본문에서 중계 지점이 데이터를 검사 시스템에 전달하도록 구성할 수 있습니다. 확인해 보세요.
-    - id: d
-      text: 다운로드 데이터가 중계 지점을 통과할 수 있기 때문
-      feedback: 중계 지점이 데이터를 검사 시스템에 전달하도록 구성할 수 있습니다.
-    - id: e
-      text: 패킷에 파일이 실리지 않기 때문
-      feedback: 본문에서 중계 지점이 데이터를 검사 시스템에 전달하도록 구성할 수 있습니다. 확인해 보세요.
-    answer: d
-  - id: u11-l04-p11-q02
-    kind: choice
-    difficulty: medium
-    prompt: 다운로드 검사의 범위에 영향을 주는 것은 무엇인가요?
-    choices:
-    - id: a
-      text: TLS 처리, 지원 파일 형식과 암호화·압축 여부
-      feedback: 복호화와 형식 지원 등에 따라 검사할 수 있는 데이터가 달라집니다.
-    - id: b
-      text: 파일 확장자 이름만 보기
-      feedback: 확장자만으로 암호화 여부나 실제 파일 내용을 모두 검사할 수 있는 것은 아닙니다.
-    - id: c
-      text: 다운로드 속도 수치만 보기
-      feedback: 전송 속도만으로 TLS 복호화 여부나 검사할 수 있는 파일 형식이 달라지지는 않습니다.
-    - id: d
-      text: 접속한 도메인의 이름만 보기
-      feedback: 도메인만으로 파일 내용까지 검사할 수 있는 것은 아닙니다. TLS 처리와 파일 형식 지원도 확인해야 합니다.
-    - id: e
-      text: 파일 크기와 접속 시각만 보기
-      feedback: 파일 크기와 접속 시각은 메타데이터이며, 그 자체로 내용 검사 범위를 결정하지 않습니다.
-    answer: a
-- page_id: advanced-source-07-page-05
-  illustrations:
-  - file: assets/animations/u11-fwd-07-05-virus-wall.svg
-    title: "Virus Wall과 내부 보호"
-    alt: "Virus Wall과 내부 보호: 밖에서 파일 두 개가 들어와요 → 안전한 파일은 안으로 전달돼요 → 위험한 파일은 벽에서 멈춰요 → IPS와 Proxy는 역할이 겹칠 수 있어요"
-    caption: "웹 통신을 중계하며 파일을 걸러요"
-    after_paragraph: 0
-  questions:
-  - id: u11-l04-p12-q01
-    kind: choice
-    difficulty: easy
-    prompt: Proxy와 IPS의 처리에 관한 설명으로 알맞은 것은 무엇인가요?
-    choices:
-    - id: a
-      text: IPS는 언제나 패킷만 보고 Proxy는 언제나 모든 파일을 읽는다
-      feedback: 본문에서 기능을 단정하지 말고 실제 장비의 처리 경로와 설정을 확인합니다. 확인해 보세요.
-    - id: b
-      text: 두 장치는 항상 같은 구조로만 동작한다
-      feedback: 본문에서 기능을 단정하지 말고 실제 장비의 처리 경로와 설정을 확인합니다. 확인해 보세요.
-    - id: c
-      text: Proxy는 보안 기능을 가질 수 없다
-      feedback: 본문에서 기능을 단정하지 말고 실제 장비의 처리 경로와 설정을 확인합니다. 확인해 보세요.
-    - id: d
-      text: IPS는 어떤 트래픽도 차단할 수 없다
-      feedback: 본문에서 기능을 단정하지 말고 실제 장비의 처리 경로와 설정을 확인합니다. 확인해 보세요.
-    - id: e
-      text: 서로 다른 방식이 많지만 기능은 제품·배치에 따라 겹칠 수 있다
-      feedback: 기능을 단정하지 말고 실제 장비의 처리 경로와 설정을 확인합니다.
-    answer: e
-  - id: u11-l04-p12-q02
-    kind: choice
-    difficulty: medium
-    prompt: Virus Wall 사례의 중심은 무엇인가요?
-    choices:
-    - id: a
-      text: 내부 PC의 화면을 녹화하는 기능
-      feedback: 본문에서 proxy와 파일 검사를 결합해 유입을 관리하는 예입니다. 확인해 보세요.
-    - id: b
-      text: 웹 중계 지점에서 들어오는 파일을 검사하는 구성
-      feedback: Proxy와 파일 검사를 결합해 유입을 관리하는 예입니다.
-    - id: c
-      text: 라우터가 도메인 이름을 만드는 기능
-      feedback: 본문에서 proxy와 파일 검사를 결합해 유입을 관리하는 예입니다. 확인해 보세요.
-    - id: d
-      text: 패킷을 복사하지 않는 Wi-Fi
-      feedback: 본문에서 proxy와 파일 검사를 결합해 유입을 관리하는 예입니다. 확인해 보세요.
-    - id: e
-      text: 서버의 데이터베이스 복제
-      feedback: 본문에서 proxy와 파일 검사를 결합해 유입을 관리하는 예입니다. 확인해 보세요.
-    answer: b
-- page_id: advanced-source-07-page-06
-  illustrations:
-  - file: assets/animations/u11-fwd-07-06-combined-box.svg
-    title: "보호 기능을 함께 두기"
-    alt: "보호 기능을 함께 두기: 물리적으로는 한 장비예요 → 어떤 기능은 패킷을 경로에서 검사하고 → 어떤 기능은 연결을 받아 중계해요 → 경로를 도식으로 그려 보면 정확해요"
-    caption: "한 장비 안에 여러 기능이 들어가요"
-    after_paragraph: 0
-  questions:
-  - id: u11-l04-p13-q01
-    kind: choice
-    difficulty: easy
-    prompt: 한 물리 장비에 여러 네트워크 기능이 함께 있을 수 있나요?
-    choices:
-    - id: a
-      text: 그렇다. 패킷 처리와 Proxy 중계 기능이 결합될 수 있다
-      feedback: 물리적 장비 수와 논리적 기능 수는 같지 않을 수 있습니다.
-    - id: b
-      text: 아니다. 장비는 한 기능만 가질 수 있다
-      feedback: 본문에서 물리적 장비 수와 논리적 기능 수는 같지 않을 수 있습니다. 확인해 보세요.
-    - id: c
-      text: 아니다. 소프트웨어는 네트워크에 쓰이지 않는다
-      feedback: 본문에서 물리적 장비 수와 논리적 기능 수는 같지 않을 수 있습니다. 확인해 보세요.
-    - id: d
-      text: 그렇다. 그러면 모든 연결이 자동 암호 해제된다
-      feedback: 본문에서 물리적 장비 수와 논리적 기능 수는 같지 않을 수 있습니다. 확인해 보세요.
-    - id: e
-      text: 그렇다. 그러면 정책 설정이 필요 없다
-      feedback: 본문에서 물리적 장비 수와 논리적 기능 수는 같지 않을 수 있습니다. 확인해 보세요.
-    answer: a
-  - id: u11-l04-p13-q02
-    kind: choice
-    difficulty: medium
-    prompt: 복합 장비를 그릴 때 우선 살펴볼 것은 무엇인가요?
-    choices:
-    - id: a
-      text: 장비를 구성하는 물리 서버의 개수
-      feedback: 물리 장비 수만으로 기능의 결합 방식이나 데이터 흐름을 알 수 없습니다.
-    - id: b
-      text: 각 기능이 검사하는 데이터의 종류만
-      feedback: 검사 대상도 중요하지만, 데이터가 어디로 들어와 어떤 기능을 거치는지 함께 살펴야 합니다.
-    - id: c
-      text: 데이터의 진입·처리 경로와 기능별 역할
-      feedback: 역할과 데이터 흐름을 기능별로 확인해야 합니다.
-    - id: d
-      text: 기능 이름과 제조사의 제품 분류만
-      feedback: 제품 이름만으로는 실제 데이터의 진입·처리 경로와 각 기능의 역할이 드러나지 않습니다.
-    - id: e
-      text: 장비에 연결된 인터페이스 수만
-      feedback: 인터페이스 수만 확인하기보다 데이터가 통과하는 경로와 기능별 처리를 함께 그려야 합니다.
-    answer: c
-- page_id: advanced-source-07-page-07
-  illustrations:
-  - file: assets/animations/u11-fwd-07-07-monitoring.svg
-    title: "내부 사용자의 통신 감시"
-    alt: "내부 사용자의 통신 감시: 모든 요청이 내부 Proxy로 모여요 → 운영자는 접속 흐름을 점검할 수 있어요 → 하지만 개인 검색까지 남으면 사생활 문제예요 → 목적·범위·안내를 함께 정해요"
-    caption: "점검과 감시는 한 끗 차이예요"
-    after_paragraph: 0
-  questions:
-  - id: u11-l04-p14-q01
-    kind: choice
-    difficulty: easy
-    prompt: 내부 Proxy에서 웹 내용을 검사하는 구성에 필요한 것은 무엇인가요?
-    choices:
-    - id: a
-      text: 브라우저가 Proxy를 사용하도록 설정하는 것만
-      feedback: Proxy 설정이나 패킷 복사만으로는 HTTPS 내용을 읽을 수 없고, TLS 검사에 필요한 구성과 권한을 준비해야 해요.
-    - id: b
-      text: 목적과 권한에 맞는 TLS 검사 설정 등 추가 운영 절차
-      feedback: HTTPS 내용을 검사하려면 적절한 승인과 별도 TLS 구성이 필요합니다.
-    - id: c
-      text: 목적지 서버의 주소를 기록에서 지우는 것
-      feedback: Proxy 설정이나 패킷 복사만으로는 HTTPS 내용을 읽을 수 없고, TLS 검사에 필요한 구성과 권한을 준비해야 해요.
-    - id: d
-      text: 인증서 검증을 사용하지 않도록 설정하는 것
-      feedback: Proxy 설정이나 패킷 복사만으로는 HTTPS 내용을 읽을 수 없고, TLS 검사에 필요한 구성과 권한을 준비해야 해요.
-    - id: e
-      text: 패킷 미러링만 켜는 것
-      feedback: Proxy 설정이나 패킷 복사만으로는 HTTPS 내용을 읽을 수 없고, TLS 검사에 필요한 구성과 권한을 준비해야 해요.
-    answer: b
-  - id: u11-l04-p14-q02
-    kind: choice
-    difficulty: medium
-    prompt: Proxy 기록에 대해 옳은 설명은 무엇인가요?
-    choices:
-    - id: a
-      text: 기록이 가능하면 무제한 감시가 정당하다
-      feedback: 본문에서 기술적 가능성과 수집의 적절성은 구분해야 합니다. 확인해 보세요.
-    - id: b
-      text: 기록은 암호화된 모든 내용을 자동 수집한다
-      feedback: 본문에서 기술적 가능성과 수집의 적절성은 구분해야 합니다. 확인해 보세요.
-    - id: c
-      text: Proxy는 개인정보와 관계가 없다
-      feedback: 본문에서 기술적 가능성과 수집의 적절성은 구분해야 합니다. 확인해 보세요.
-    - id: d
-      text: 기록 지점이 생기므로 사생활과 접근 권한도 고려해야 한다
-      feedback: 기술적 가능성과 수집의 적절성은 구분해야 합니다.
-    - id: e
-      text: 기록 보관 기간은 중요하지 않다
-      feedback: 본문에서 기술적 가능성과 수집의 적절성은 구분해야 합니다. 확인해 보세요.
-    answer: d
-  - id: u11-l04-p14-q03
-    kind: choice
-    difficulty: medium
-    prompt: 내부 Proxy에서 TLS 검사를 운영할 때 본문이 강조하는 구분은 무엇인가요?
-    choices:
-    - id: a
-      text: 조직의 승인·정책을 확인하고 필요한 범위만 검사한다
-      feedback: 본문은 기술적 가능성과 조직의 권한·정책을 구별하고 수집 목적과 범위를 함께 정하라고 설명합니다.
-    - id: b
-      text: 인증서를 설치하면 모든 요청을 기록할 권한도 자동으로 생긴다
-      feedback: 기술적 설정만으로 조직의 승인이나 정책이 정해지는 것은 아닙니다.
-    - id: c
-      text: 요청 본문은 목적지 주소보다 덜 민감하므로 제한 없이 저장한다
-      feedback: 본문은 요청 본문과 응답 내용이 목적지 기록보다 민감할 수 있다고 설명합니다.
-    - id: d
-      text: 공용 PC의 접속은 개인 정보와 관계가 없다고 본다
-      feedback: 공용 PC의 기록에도 개인 검색 내용이 포함될 수 있어 사생활을 고려해야 합니다.
-    - id: e
-      text: TLS 검사를 적용하면 보관 기간과 접근 권한은 더는 필요하지 않다
-      feedback: TLS 검사 여부와 별개로 기록의 목적, 범위, 이용 안내와 접근 관리가 필요합니다.
-    answer: a
+    feedback: 프록시 장애는 '프록시를 없앤다'가 아니라 '프록시가 멈춰도 버티게 한다'로 대비한다.
+  question_placements:
+  - question_id: u11-l04-p06-q01
+    after_paragraph: 4
 ---
-## Proxy를 사용하는 관점
+## AI 요청을 누군가 대신 보내 준다면?
 
 <!-- learn-page-id: advanced-source-06-page-01 -->
 
-동아리원이 행사 신청 페이지뿐 아니라 외부 자료 사이트에도 접속해야 합니다. 모든 컴퓨터가 제각각 인터넷으로 나가게 둘지, 한 중계 서버를 거치게 할지 운영자가 고민합니다. 클라이언트가 선택하거나 설정한 중계자가 요청을 받아 다른 서버로 전달할 때 이를 **Forward Proxy(포워드 프록시)**라고 합니다.
+지난 Lesson에서 지우가 세운 센서는 "어느 PC가 언제 어느 서버 쪽으로 데이터를 얼마나 보냈는지"까지만 알려 줬다. 보고서를 받아 든 서 이사는 "그래서 그 PC에서 누가 어느 AI에 무엇을 하려 했는지는 모르는 거죠?"라고 묻는다. 답을 찾던 지우는 박 팀장의 브라우저에서 낯선 설정을 하나 발견한다. 처음 보는 서버 주소가 '프록시' 칸에 적혀 있었다. 요청을 누군가에게 맡겨 대신 보내는 이 구조는 회사의 관리 도구도 되고 보안 구멍도 된다. 이 Lesson에서는 그 구조를 하나씩 뜯어본다.
 
-프록시는 단순히 케이블처럼 데이터를 통과시키는 장치가 아닙니다. 한쪽 연결의 요청을 받아 목적지에 새 연결을 만들고, 응답도 다시 요청한 쪽으로 전달할 수 있습니다. 그래서 클라이언트 관점에서 프록시는 다른 서버와의 대화를 대신해 주는 대리자입니다. 캐시, 접근 정책, 기록, 콘텐츠 검사 등은 이 기본 중계 구조 위에 추가되는 기능입니다.
+지금 한결디자인의 PC 40대는 각자 회사 게이트웨이(192.168.10.1)를 지나 인터넷으로 바로 나간다. 누가 어느 서비스에 요청을 보내는지 한곳에서 볼 수 없고, 정책을 바꾸려면 PC마다 손을 대야 한다. 출입문은 하나지만 직원마다 각자 외출해 볼일을 보는 셈이다. 지우는 "볼일을 대신 봐 주는 사람을 한 명 두면 어떨까?" 하고 생각한다.
 
-이 Lesson에서는 먼저 외부 경로를 이용하는 사례를 살핀 뒤, 조직이 내부 사용자의 접속을 관리하는 경우를 봅니다. 두 사례 모두 클라이언트 측 연결을 중계하지만 운영 목적과 신뢰 관계는 다릅니다.
+이런 중간 서버를 흔히 심부름꾼에 빗댄다. HTTP 표준 문서 RFC 9110은 프록시(Proxy)를 "클라이언트가 선택한 메시지 전달 대리자"라고 정의한다. 핵심은 '클라이언트가 고른다'는 점이다. 직원의 PC가 "이 요청은 저 심부름꾼에게 맡기겠다"고 정해서 보내므로, 프록시는 보통 목적지 서버보다 클라이언트 가까이에 놓인다. 이렇게 클라이언트 쪽에서 요청을 대신 내보내는 프록시를 **포워드 프록시(Forward Proxy)**라고 부른다.
 
-## 직접 가는 경로와 돌아가는 경로
+포워드 프록시는 케이블처럼 데이터를 그냥 흘려보내지 않는다. PC의 요청을 일단 받은 다음, 자기가 목적지에 새로 연결해 요청을 보내고, 받은 응답을 다시 PC에 돌려준다. 그래서 외부 AI 서비스 입장에서는 요청한 상대가 PC가 아니라 프록시다. 앞에서 본 인라인 장치가 지나가는 패킷을 통과시키거나 막는 길목이었다면, 프록시는 대신 연결하는 대리인이다.
 
-<!-- learn-page-id: advanced-source-06-page-02 -->
+| 프록시의 기본 동작 | 그 위에 얹을 수 있는 기능 |
+| --- | --- |
+| 요청을 받아 목적지에 새로 연결하고, 응답을 돌려준다 | 캐시, 접근 정책(허용·차단), 접속 기록, 내용 검사 |
 
-브라우저가 신청 사이트에 직접 접속하면, 사이트는 자신과 TCP 연결을 맺은 상대의 네트워크 주소를 관찰할 수 있습니다. 다른 네트워크를 거쳐 접속하고 싶다면 클라이언트가 중간 서버를 지정할 수 있습니다. 이때 브라우저는 원래 웹 서버 대신 먼저 Proxy에 연결합니다.
+캐시, 접근 정책, 기록, 내용 검사는 모두 이 기본 중계 위에 얹는 기능이다. 대신 받아서 대신 보내니, 그 사이에 "이 요청은 보내도 되나?", "누가 보냈는지 적어 둘까?" 같은 단계를 끼워 넣을 수 있다. 거꾸로 말하면 중계만 하는 프록시는 아무것도 막거나 기록하지 않는다. 기능은 설치하고 설정한 만큼만 생긴다.
 
-목적지 서버가 네트워크 연결의 상대 주소를 보는 상황이라면, 서버에는 Proxy 쪽의 연결 주소가 보일 수 있습니다. 하지만 Proxy가 요청 헤더나 다른 식별 정보를 추가해 원래 사용자 정보를 전달할 수도 있습니다. 따라서 목적지에서 Proxy의 IP가 보일 수 있다는 사실은 사용자의 신원이나 활동이 항상 감춰진다는 보장이 아닙니다.
+지우는 사무실 안에 중계 서버 한 대(192.168.10.5, 포트 8080)를 두는 안을 적어 본다. 모든 PC가 이 서버를 거치면 AI 요청이 한곳으로 모이고, 정책과 기록도 한곳에서 다룰 수 있다. 하지만 모든 요청이 한 번 더 들렀다 가므로, 이 서버가 느려지거나 멈추면 회사 전체가 영향을 받는다. 그 대가는 이 Lesson 마지막 Page에서 따져 보고, 먼저 PC가 어떻게 프록시에 요청을 맡기는지부터 보자.
 
-그림에서 보이는 IP 주소는 설명을 위한 예시입니다. 실제로 어느 주소가 보이는지는 연결 방식, Proxy 설정, 전달 헤더와 목적지의 처리에 따라 달라집니다. 다음에는 클라이언트가 Proxy 주소를 설정해 요청을 전달하는 순서를 따라가 보겠습니다.
-
-## 접속 주체를 대신하기
+## 브라우저에 프록시 주소를 넣으면?
 
 <!-- learn-page-id: advanced-source-06-page-03 -->
 
-브라우저 설정에 Proxy의 주소와 포트를 입력했다고 합시다. 사용자가 `example.net`을 열면 브라우저는 먼저 그 Proxy에 연결해 목적지와 요청을 전달합니다. Proxy는 요청을 받아 목적지 서버와 별도 연결을 맺고 응답을 다시 브라우저에 돌려줍니다.
+지우는 시험 삼아 192.168.10.5에 프록시 프로그램을 띄우고, 자기 PC(192.168.10.41) 브라우저의 프록시 설정에 주소 `192.168.10.5`, 포트 `8080`을 넣었다. 브라우저로 외부 AI 채팅 서비스를 열자 프록시 화면에 접속 기록이 한 줄씩 쌓인다. 그런데 같은 PC에서 돌린 AI 회의록 앱의 요청은 기록에 하나도 없다. 같은 PC인데 어떤 요청은 프록시를 거치고, 어떤 요청은 거치지 않은 것이다.
 
-이때 클라이언트가 접속하도록 선택한 중계 서버와, 브라우저가 원래 열려던 서버는 서로 다릅니다. 브라우저는 Proxy에 요청을 맡기고, Proxy가 그 요청의 다음 단계를 수행합니다. 회사 네트워크에서 중앙 Proxy 주소를 배포하는 것처럼, 관리자가 사용자의 브라우저 설정을 정책으로 지정하는 환경도 있습니다.
+프록시 설정은 "앞으로 볼일은 저 심부름꾼에게 맡겨라"라는 메모와 같다. 메모를 받은 브라우저는 외부 AI 서비스(203.0.113.80)에 바로 연결하지 않고, 먼저 프록시 192.168.10.5:8080에 연결한다. 그리고 "ai-chat.example의 이 페이지를 가져다 달라"고 목적지와 요청을 함께 넘긴다. 프록시는 요청을 읽고 목적지에 새로 연결한 뒤, 받은 응답을 브라우저에 돌려준다. 브라우저가 처음 말을 거는 상대와 원래 가려던 서버가 다르다는 점이 핵심이다.
 
-Proxy 설정만으로 모든 애플리케이션의 연결이 자동으로 Proxy를 거치는 것은 아닙니다. 프로그램별 설정과 프로토콜 지원, 네트워크 정책을 확인해야 합니다. 다음 Page에서는 중간 서버를 거쳤을 때 목적지에서 보이는 출구 주소가 달라질 수 있는 이유를 살펴봅니다.
+HTTPS 주소라면 모양이 조금 다르다. 브라우저는 프록시에 "ai-chat.example의 443번 포트로 통로를 이어 달라"고 부탁한다. HTTP 표준이 정한 CONNECT 요청이다. 통로가 열리면 그 안에서 브라우저와 AI 서비스가 직접 TLS 암호화를 맺는다. 그래서 프록시는 어느 서버의 어느 포트로 통로를 열었는지는 알지만, 따로 설정하지 않는 한 통로 안의 대화 내용은 읽지 못한다.
 
-## Proxy를 통한 우회
+40대 PC에 일일이 설정을 넣을 수는 없으니, 회사는 운영체제의 프록시 설정이나 자동 구성 파일을 관리 도구로 한꺼번에 배포하기도 한다. 하지만 이 설정은 메모를 읽기로 한 프로그램에만 통한다. 프로그램마다 프록시 설정을 어디서 읽는지가 다르기 때문이다.
 
-<!-- learn-page-id: advanced-source-06-page-04 -->
+| 프로그램 | 프록시 설정을 어디서 읽나 |
+| --- | --- |
+| 브라우저 | 대개 운영체제 설정을 따른다 |
+| 데스크톱 앱 | 앱 자체 설정을 쓰거나, 운영체제 설정을 따르기도 한다 |
+| 명령줄 도구·스크립트 | 환경 변수나 도구의 옵션을 본다 |
+| 프록시를 지원하지 않는 앱 | 읽지 않는다. 게이트웨이로 바로 나간다 |
 
-사용자가 한국에서 해외 Proxy를 거쳐 동아리 자료 사이트에 접속한다고 합시다. 사이트와 맺은 연결의 상대가 Proxy라면 사이트는 그 Proxy의 출구 주소를 관찰할 수 있습니다. Proxy의 위치나 출구가 바뀌면 목적지에서 보이는 연결 주소도 달라질 수 있습니다. 이를 다른 네트워크 경로를 이용하는 우회와 연결해 설명할 수 있습니다.
+지우가 회의록 앱의 설정 화면을 열어 보니 프록시 항목이 따로 있었다. 같은 주소를 넣자 그제야 기록이 남기 시작했다. 프록시를 쓰는 회사라면 "어떤 앱이 어떤 설정을 따르는지" 목록을 만들어 두어야 한다. 다만 설정을 지운 PC나 프록시를 모르는 앱이 그냥 직접 나가 버리는 문제는 설정만으로 막을 수 없다. 이 길을 막는 방법은 다음 Lesson에서 방화벽과 함께 다룬다.
 
-다만 주소가 달라진다고 해서 모든 차단 정책을 피할 수 있거나 익명성이 보장되는 것은 아닙니다. Proxy 운영자는 연결 시각과 요청 내용을 볼 수 있고, 목적지에 사용자를 식별할 정보를 전달할 수도 있습니다. 학교나 회사의 정책, 서비스 이용 조건에도 따라야 합니다.
-
-따라서 Proxy는 “흔적을 없애는 장치”라기보다 “요청을 다른 호스트가 대신 전달하는 구조”로 이해해야 합니다. 다음에는 그 대리 접속에 어떤 성능 비용과 운영상 의존성이 생기는지 보겠습니다.
-
-## 우회에 따른 속도와 비용
-
-<!-- learn-page-id: advanced-source-06-page-05 -->
-
-Proxy를 쓰면 클라이언트에서 목적지까지 한 번에 가는 대신, 먼저 Proxy에 도착하고 거기서 목적지로 다시 이동합니다. 경로와 처리 단계가 늘어나므로 응답 지연이 커질 수 있습니다. Proxy의 용량이 부족하거나 장애가 나면 그 Proxy에 의존하는 사용자들의 접속이 영향을 받습니다.
-
-반대로 Proxy가 가까운 곳에 있고 응답을 캐시하거나 정책을 중앙 관리한다면 특정 운영 목적에 도움이 될 수 있습니다. 이점은 구성과 사용 방식에 달려 있습니다. Proxy를 설치했다는 사실만으로 네트워크가 항상 빨라지거나 안전해지는 것은 아닙니다.
-
-서비스 운영자는 Proxy의 가용성, 연결 용량, 기록 정책과 장애 시 대안을 함께 살펴야 합니다. 다음에는 한 Proxy가 두 연결을 맺는다는 말을 소켓 관점에서 구체적으로 설명하겠습니다.
-
-## 두 Socket 사이의 중계
+## 프록시 안에는 연결이 몇 개일까?
 
 <!-- learn-page-id: advanced-source-06-page-06 -->
 
-Proxy는 브라우저에서 오는 연결을 받는 소켓과 목적지 서버로 나가는 별도 연결을 만드는 소켓을 사용할 수 있습니다. 쉽게 말해 프록시에는 클라이언트와 이야기하는 연결 하나, 서버와 이야기하는 연결 하나가 생깁니다. 두 연결은 같은 TCP 연결이 아니라 서로 독립적으로 맺어진 연결입니다.
+프록시를 시험 운영한 지 사흘째 아침, 박 팀장이 화면을 캡처해 보낸다. 외부 AI 채팅 서비스가 열리지 않고 "프록시 터널 연결에 실패했다"는 브라우저 오류만 뜬다는 것이다. 다른 사이트는 잘 열리고, 지우 PC에서도 그 AI 서비스만 열리지 않는다. 박 팀장은 "프록시가 고장 났나 봐요"라고 말한다. 정말 프록시가 고장 난 걸까?
 
-클라이언트는 목적지를 요청하고 Proxy는 그 요청을 읽어 서버로 전달합니다. 서버의 응답이 오면 Proxy가 다시 클라이언트에게 보냅니다. Proxy 프로그램은 한 소켓에서 받은 데이터 흐름을 다른 소켓에 이어 주면서 정책 적용이나 애플리케이션 수준 처리를 할 수 있습니다.
+통역사를 사이에 둔 전화를 떠올려 보자. 나는 통역사와 한 통화를 하고, 통역사는 상대방과 또 한 통화를 한다. 두 통화는 따로 걸려 있어서, 상대방이 전화를 받지 않으면 통역사가 나에게 "상대가 응답하지 않습니다"라고 전해 준다. 프록시는 이렇게 두 통화를 동시에 붙잡고 있는 통역사와 같다.
 
-이런 중계는 데이터의 전달 주체를 나누고 관찰 지점을 만들어 주지만, 양쪽 연결을 관리할 책임도 생깁니다. 서버가 응답하지 않거나 한쪽 연결이 끊기면 Proxy가 그 상태를 처리해야 합니다. 다음에는 Proxy가 우회뿐 아니라 내부 접속 정책에 쓰이는 사례로 바꾸어 보겠습니다.
+기본편에서 배운 소켓(Socket)으로 보면 더 정확하다. 프록시는 PC의 연결을 받아들이는 서버 측 소켓과, 목적지로 접속하는 클라이언트 측 소켓을 따로 쓴다. 박 팀장 PC와 프록시 사이에 TCP 연결 하나, 프록시와 외부 AI 서비스 사이에 TCP 연결 하나가 생긴다. 두 연결은 출발지·목적지 주소와 포트가 모두 다른, 서로 독립된 연결이다. 프록시 프로그램은 한쪽 소켓으로 받은 데이터 흐름(Stream)을 읽어 다른 쪽 소켓에 이어 쓴다.
 
-## 우회 목적의 Proxy 정리
+| 구간 | 출발지 | 목적지 | 맡는 소켓 |
+| --- | --- | --- | --- |
+| ① PC ↔ 프록시 | 192.168.10.42:임시 포트 | 192.168.10.5:8080 | 프록시의 서버 측 소켓 |
+| ② 프록시 ↔ AI 서비스 | 192.168.10.5:임시 포트 | 203.0.113.80:443 | 프록시의 클라이언트 측 소켓 |
+
+연결이 둘이니 고장도 구간별로 난다. ① 구간에 문제가 있으면 브라우저는 프록시에 닿지 못해 "프록시 서버에 연결할 수 없다"는 오류를 보인다. ①은 멀쩡한데 프록시가 ② 연결을 제때 맺지 못하면, 프록시가 스스로 HTTP 오류 응답을 만들어 ①로 돌려보낸다. 504 Gateway Timeout은 "다음 서버의 응답을 기다리다 시간이 다 됐다", 502 Bad Gateway는 "다음 서버에 연결하지 못했거나 제대로 된 응답을 받지 못했다"는 뜻의 상태 코드다. 평문 HTTP 사이트라면 프록시가 쓴 오류 화면이 그대로 보이고, HTTPS 통로를 요청했을 때는 브라우저가 이를 '터널 연결 실패'처럼 자기 말로 바꿔 보여 주기도 한다.
+
+지우는 프록시 기록부터 연다. 박 팀장 PC의 요청이 들어와 있으니 ① 구간은 정상이다. 그 옆에 "ai-chat.example:443 연결 시간 초과, 504"가 찍혀 있다. 문제는 ② 구간이었고, 확인해 보니 그 시각 AI 서비스가 점검 중이었다. 프록시는 고장 난 게 아니라 고장 소식을 전한 통역사였던 셈이다. 다만 두 연결을 대신 관리하는 만큼, 프록시는 양쪽 연결의 상태와 대기 시간을 책임져야 한다. 대기 시간을 길게 잡으면 오류는 줄지만, 응답 없는 연결을 오래 붙잡아 프록시 자원을 더 쓰게 된다.
+
+## AI 서비스에는 누구 주소가 보일까?
+
+<!-- learn-page-id: advanced-source-06-page-02 -->
+
+점심시간에 박 팀장이 지우에게 묻는다. "내가 쓰는 우회 프록시는 해외 서버라서, AI 서비스 쪽에서는 내가 해외에서 접속한 걸로 보인대요. 그럼 회사에서 쓴 건지 아무도 모르는 거죠?" 지우는 바로 답하지 못한다. 직접 접속할 때, 회사 프록시를 거칠 때, 해외 우회 프록시를 거칠 때 AI 서비스가 보는 주소는 각각 무엇일까?
+
+택배를 떠올려 보자. 내가 직접 부치면 받는 사람은 보낸 곳 칸에서 내 주소를 본다. 대행업체에 맡기면 상자에는 대행업체 주소가 찍힌다. 그런데 대행업체가 송장 메모란에 "원래 보낸 사람: 한결디자인 박 팀장"이라고 적어 줄 수도 있다. 보낸 곳 주소가 바뀌는 것과 보낸 사람이 감춰지는 것은 다른 이야기다.
+
+네트워크에서도 목적지 서버는 자신과 TCP 연결을 맺은 상대의 주소를 본다. 한결디자인 PC는 사설 주소(192.168.10.x)를 쓰므로, 인터넷으로 나갈 때 회사 경계 장비가 출발지를 본사 공인 주소 198.51.100.25로 바꿔 보낸다. 이 원리는 Unit 12에서 자세히 다룬다. 그래서 직접 접속하든 회사 프록시(192.168.10.5)를 거치든, AI 서비스에 찍히는 주소는 똑같이 198.51.100.25다. 달라지는 점은 프록시를 거치면 직원들의 요청이 모두 프록시 한 대의 연결로 들어온다는 것이다. 해외 우회 프록시를 거치면 AI 서비스와 연결을 맺는 상대가 그 해외 서버이므로, 해외 서버의 주소가 보인다.
+
+| 접속 방법 | AI 서비스와 연결을 맺는 상대 | AI 서비스에 보이는 주소 |
+| --- | --- | --- |
+| 직접 접속 | 박 팀장 PC (경계에서 주소가 바뀜) | 본사 공인 주소 198.51.100.25 |
+| 회사 프록시 경유 | 프록시 192.168.10.5 (경계에서 주소가 바뀜) | 198.51.100.25 (모든 직원이 같은 출처) |
+| 해외 우회 프록시 경유 | 해외 프록시 서버 | 해외 프록시 서버의 주소 |
+
+그렇다고 신원이 감춰지는 것은 아니다. AI 서비스에 회사 계정으로 로그인했다면 서비스는 주소와 상관없이 누가 접속했는지 안다. 그리고 우회 프록시 운영자는 박 팀장 쪽 출발지(198.51.100.25)와 접속 시각을 그대로 본다.
+
+지우는 박 팀장에게 두 가지를 나눠 설명한다. "AI 서비스에 보이는 주소가 바뀐다"는 맞지만, "누가 접속했는지 감춰진다"는 보장이 없다. 회사 입장에서도 같은 구분이 필요하다. AI 서비스 기록에는 직원 모두가 198.51.100.25 하나로 보이므로, 어느 PC가 보냈는지는 AI 서비스가 아니라 회사 프록시 기록에서 찾아야 한다. 주소 하나만 보고 사람을 단정하지 않는 습관이 이 구분에서 시작된다.
+
+## '무료 우회 프록시', 써도 괜찮을까?
 
 <!-- learn-page-id: advanced-source-06-page-07 -->
 
-지금까지 본 우회 사례에서 핵심은 Proxy가 클라이언트의 요청을 받아 다른 서버에 접속한다는 것입니다. Proxy가 어느 정보를 목적지에 전달하는지, 어떤 기록을 보관하는지에 따라 서버와 운영자에게 드러나는 정보가 달라집니다. 따라서 대리 접속은 익명성을 자동으로 보장하지 않습니다.
+지우는 서 이사에게 박 팀장 사례를 보고한다. 박 팀장은 인터넷에서 찾은 무료 우회 프록시 주소를 브라우저에 넣고, 회사가 막아 둔 외부 AI 사이트를 써 왔다. 서 이사는 "막아 둔 걸 돌아간 것도 문제지만, 그 무료 서버는 대체 누가 운영하는 거예요?"라고 묻는다. 지우는 우회 프록시가 무엇을 바꾸고 무엇을 바꾸지 못하는지, 그 대가로 무엇을 넘겨주는지 정리하기로 한다.
 
-그렇더라도 이 연결 구조는 여러 목적으로 유용합니다. 중계 서버가 클라이언트와 목적지 사이에서 요청을 전달한다는 기본 원리는 캐시, 접근 통제, 악성 파일 검사, 개발 중 트래픽 분석에 응용할 수 있습니다. 어디에 설치하고 누가 관리하는지가 목적을 크게 바꿉니다.
+먼저 우회 프록시로 사이트가 열리는지는 회사가 어떻게 막았는지에 달려 있다. 회사 방화벽이 AI 서비스 주소로 가는 연결만 막았다면, 해외 프록시로 가는 연결은 막히지 않아 그 길로 열릴 수 있다. 반대로 회사가 바깥 프록시로 가는 연결이나 직접 외부 접속 자체를 막았다면 우회 프록시에도 닿지 못한다. 우회가 되는지는 차단 방식과 네트워크 환경에 따라 달라지며 어디서나 통하지는 않는다. 회사 쪽에서 보면 우회 사례는 차단 정책에 빈틈이 있다는 신호다.
 
-외부에 있는 Proxy는 다른 출구를 통해 목적지에 연결하는 데 이용될 수 있습니다. 이제 동아리 공용 PC의 외부 접속을 내부 운영자가 관리하는 상황을 보며, 내부 Proxy가 어떤 정책 지점이 되는지 살펴보겠습니다.
+더 큰 문제는 심부름꾼이 낯선 사람이라는 점이다. 우회 프록시 운영자는 적어도 박 팀장 쪽 출발지 주소, 접속 시각, 목적지, 주고받은 데이터 양을 안다. 평문 HTTP 요청이라면 페이지 경로, 입력한 내용, 로그인 쿠키까지 그대로 읽고 바꿀 수도 있다. HTTPS 요청은 통로(CONNECT) 안에서 브라우저와 AI 서비스가 직접 암호화하므로, 브라우저가 경고 없이 연결됐다면 운영자는 내용을 읽지 못한다. 하지만 "인증서를 설치해야 잘 된다"며 운영자의 인증서를 믿게 만드는 서비스라면, 그때부터는 HTTPS 내용도 열어 볼 수 있다. 이 신뢰 구조는 Lesson 11-5에서 자세히 본다.
 
-## 회사에서 직접 접속을 제한하기
+| 우회 프록시 운영자가 알 수 있는 것 | 조건 |
+| --- | --- |
+| 출발지 주소, 접속 시각, 목적지, 데이터 양 | 거의 언제나 |
+| 페이지 경로, 입력 내용, 쿠키 | 평문 HTTP일 때 |
+| HTTPS 대화 내용 | 사용자가 운영자의 인증서를 신뢰하도록 설정했을 때 |
 
-<!-- learn-page-id: advanced-source-07-page-01 -->
+익명성도 보장되지 않는다. 운영자가 기록을 얼마나 남기고 누구와 공유하는지 회사는 알 길이 없다. 브라우저 확장형 우회 도구라면 브라우저 안의 다른 정보에 접근할 권한까지 요구하기도 한다. 회사 입장에서 핵심 위험은 정책으로 막아 둔 서비스에 업무 자료가 흘러가고, 그 경로가 회사 기록 어디에도 남지 않는다는 것이다.
 
-동아리 공용 PC에서 외부 웹사이트에 접속할 때 악성 파일이 내려오거나 업무와 무관한 사이트에 접속하는 일이 걱정된다고 합시다. 운영자는 PC들이 인터넷으로 직접 나가지 못하게 하고, 내부 Proxy를 거쳐서만 접속하도록 설계할 수 있습니다. 여기서 Proxy는 다른 나라의 출구가 아니라 조직이 직접 관리하는 내부 중계자입니다.
+지우의 결론은 "우회 도구를 쓰지 말자"는 규칙 하나로 끝나지 않는다. 박 팀장이 우회까지 한 이유는 업무에 AI가 필요했기 때문이다. 그래서 지우는 우회 도구 사용 금지를 정책으로 알리면서, 업무에 필요한 AI 서비스는 승인된 경로로 쓸 수 있게 하자고 제안한다. 여기서 같은 모양이 보인다. 요청을 대신 보내 주는 중계 서버라는 구조는 그대로인데, 낯선 사람이 밖에서 운영하면 보안 구멍이 되고 회사가 안에서 운영하면 정책과 기록을 거는 통제 지점이 된다. 캐시, 접근 통제, 파일 검사, 개발 중 통신 분석도 모두 이 한 구조를 어디에 두고 누가 관리하느냐의 차이다.
 
-PC에서 외부 서버로 가는 직접 연결은 방화벽 정책으로 제한하고, 내부 Proxy의 외부 연결은 허용합니다. 브라우저는 Proxy로 요청을 보내고 Proxy가 외부 서버에 접속합니다. 관리자는 하나의 중계 지점에서 정책 적용과 운영 기록을 수행할 수 있습니다.
+## 한 번 더 돌아가면 무엇을 잃을까?
 
-모든 프로그램이 브라우저의 Proxy 설정을 따르는 것은 아니므로, 실제로는 애플리케이션 지원과 방화벽 정책을 맞춰야 합니다. 이 구조를 어떻게 운영하느냐가 다음 단계의 핵심입니다. 다음 Page에서는 직접 연결을 막고 Proxy 연결만 통과시키는 규칙을 구분해 보겠습니다.
+<!-- learn-page-id: advanced-source-06-page-05 -->
 
-## Proxy를 통한 외부 접속
+회사 프록시를 정식으로 쓴 지 2주가 지났다. 박 팀장은 "AI 답이 예전보다 살짝 늦게 뜨는 것 같다"고 말한다. 그리고 금요일 오후, 프록시 서버가 운영체제 업데이트 뒤 다시 켜지지 않자 사무실 전체에서 웹 사이트와 AI 서비스가 한꺼번에 끊겼다. 프록시 하나로 얻은 편리함에는 어떤 값이 붙어 있었던 걸까?
 
-<!-- learn-page-id: advanced-source-07-page-02 -->
+심부름꾼을 두면 내가 직접 가는 것보다 단계가 하나 늘어난다. 심부름꾼이 바로 옆자리에 있어도 접수하고 다시 출발하는 시간은 든다. 그리고 회사 전체가 심부름꾼 한 명에게만 볼일을 맡기면, 그 사람이 아픈 날은 아무도 볼일을 볼 수 없다.
 
-내부 Proxy를 제대로 사용하려면 PC가 Proxy를 건너뛰어 외부로 직접 연결하지 못하게 하는 정책이 필요할 수 있습니다. 예를 들어 방화벽은 공용 PC의 직접 외부 연결을 차단하고, Proxy 서버에서 시작한 외부 연결은 필요한 대상과 포트에 한해 허용합니다. 사용자는 내부 Proxy를 통해 외부 웹서비스를 이용합니다.
+프록시를 거치면 요청은 PC에서 프록시로, 다시 프록시에서 AI 서비스로 두 구간을 지난다. 연결을 두 번 맺고, 요청을 읽어 정책을 확인하고, 기록을 남기는 처리 단계도 늘어난다. 프록시가 사무실 안에 있으면 늘어나는 지연은 대개 작지만, 사람이 몰려 프록시가 바빠지면 그 대기 시간이 모든 요청에 더해진다. 해외 우회 프록시처럼 멀리 돌아가면 이동 거리까지 늘어 더 느려질 수 있다.
 
-이렇게 하면 접속이 한곳으로 모여 정책을 적용하기 쉬워질 수 있습니다. 하지만 Proxy 서버 자체의 보안, 용량, 장애 대응을 잘못 관리하면 중앙의 한 지점이 위험이나 병목이 됩니다. 직접 연결을 막았다고 모든 위협이 사라지는 것도 아닙니다.
+더 큰 대가는 의존이다. 브라우저 설정이 모두 프록시를 가리키고 있으니, 프록시가 멈추면 직원들의 웹 요청은 갈 곳을 잃는다. 프록시도 Lesson 11-2에서 본 단일 장애점(SPOF)이다. 프록시의 CPU, 메모리, 동시 연결 수, 디스크가 부족할 때도 같은 일이 천천히 일어난다.
 
-정책은 브라우저의 설정뿐 아니라 네트워크 장비의 허용 규칙과 일치해야 합니다. 다음에는 Proxy가 중간에서 어떤 접속 정보를 알 수 있는지, 기록과 감시가 왜 별도 관리 문제인지 살펴보겠습니다.
+반대로 이점도 있다. 여러 직원이 똑같은 파일을 받는다면, 프록시가 응답을 캐시해 두었다가 바로 돌려줄 수 있다. 다만 프록시가 내용을 볼 수 없는 HTTPS 통로는 캐시할 수 없고, AI 대화처럼 사람마다 다른 응답은 캐시로 얻을 것이 거의 없다. "프록시를 두면 빨라진다"는 말은 구성과 사용 방식에 따라 맞기도 하고 틀리기도 하다.
 
-## 중간에서 내용을 볼 수 있는 이유
+| 얻는 것 | 치르는 것 |
+| --- | --- |
+| 정책과 기록을 한곳에서 관리 | 처리 단계만큼 늘어나는 지연 |
+| 같은 응답의 캐시(조건이 맞을 때) | 프록시가 멈추면 전체 웹이 멈춤 |
+| 우회 도구 대신 승인된 경로 | 용량·디스크·보안 업데이트 관리 부담 |
 
-<!-- learn-page-id: advanced-source-07-page-03 -->
+지우는 Lesson 11-2의 이중화를 떠올린다. 프록시를 두 대로 늘려 한 대가 멈춰도 다른 한 대가 요청을 받게 하고, CPU·연결 수·디스크 사용량을 평소에 지켜본다. 업데이트는 한 대씩 돌아가며 하고, 장애가 나면 누가 어떤 순서로 복구할지도 미리 적어 둔다. 프록시를 한 대 더 들이고 감시하는 비용이 들지만, 회사 전체의 볼일을 심부름꾼에게 맡긴 이상 피할 수 없는 값이다. 다음 Lesson에서는 이 프록시를 실제 통제 지점으로 쓰는 법을 본다.
 
-Proxy가 요청을 받아 외부 서버와 새 연결을 맺으면, Proxy는 어느 클라이언트가 언제 어떤 목적지에 요청했는지 관찰할 수 있습니다. 운영자는 이 정보를 장애를 찾거나 보안 정책을 점검하는 데 사용할 수 있습니다. 요청의 종류와 기록 범위는 Proxy의 기능과 설정에 따라 다릅니다.
+### 이 Lesson에서 가져갈 것
 
-접속 주소만 기록하는 것과 요청의 구체적인 내용을 저장하는 것은 개인정보 영향이 다릅니다. 특히 HTTPS 내용은 적절한 TLS 종료·검사 구성이 없다면 Proxy도 암호화된 Payload를 그대로 읽을 수 없습니다. 기록을 활용하려면 어떤 정보가 필요한지 먼저 정하고, 접근 권한과 보관 기간을 제한해야 합니다.
+- **기억하기 (Recall):** 포워드 프록시는 클라이언트가 고른 대리자로, 요청을 받아 목적지에 새로 연결한다. 그래서 PC↔프록시, 프록시↔서버 두 연결이 따로 있다.
+- **적용하기 (Apply):** 프록시 오류가 나면 어느 연결 구간이 문제인지 나누고, "보이는 주소가 바뀐다"와 "신원이 감춰진다"를 구별해 판단한다.
+- **찾아보기 (Lookup):** 내 PC의 운영체제·브라우저 프록시 설정 화면을 열어, 어떤 프로그램이 이 설정을 따르는지 확인해 본다.
 
-기록이 가능하다는 사실은 무제한 감시가 바람직하거나 허용된다는 뜻이 아닙니다. 보안 목적과 개인의 사생활을 함께 고려해야 합니다. 다음 Page에서는 외부에서 내려받은 문서를 검사하는 과정을 보며, Proxy가 파일 검사 지점이 되는 이유를 살펴보겠습니다.
+### 🧠 이번에 쓴 생각법
 
-## 악성 파일 검사
-
-<!-- learn-page-id: advanced-source-07-page-04 -->
-
-동아리원이 외부 자료 사이트에서 신청 안내용 PDF를 내려받는다고 합시다. 다운로드가 Proxy를 지나면, 구성에 따라 파일 데이터를 검사 시스템에 전달해 악성코드가 알려진 패턴과 일치하는지 확인할 수 있습니다. 문제가 발견되면 정책에 따라 전송을 차단하거나 운영자에게 알릴 수 있습니다.
-
-파일을 검사하려면 Proxy 또는 연동한 보안 기능이 파일 데이터를 사용할 수 있어야 합니다. HTTPS라면 TLS가 어디서 종료되는지, 파일이 지원되는 형식인지, 압축 파일이나 암호화 파일을 어떻게 처리하는지에 따라 검사 범위가 달라집니다. 모든 파일을 완벽히 판별한다고 보장할 수는 없습니다.
-
-따라서 Proxy를 통과시킨다는 것과 모든 악성 파일을 막는다는 것은 다른 주장입니다. 검사 방식과 예외 처리, 차단 시 안내가 함께 필요합니다. 다음 Page에서는 이런 HTTP 기반 보호 구성을 Virus Wall이라고 부르는 맥락과 IPS의 패킷 분석을 비교합니다.
-
-## Virus Wall과 내부 보호
-
-<!-- learn-page-id: advanced-source-07-page-05 -->
-
-외부에서 안으로 들어오는 웹 다운로드를 Proxy에서 검사하고, 위험한 파일을 내부 PC에 전달하지 않도록 하는 구성을 이 자료는 **Virus Wall** 사례로 소개합니다. 이름처럼 내부망의 파일 유입을 막는 보호 지점으로 생각할 수 있습니다. 핵심은 웹 통신을 중계하는 곳에 파일 검사 기능을 결합한다는 점입니다.
-
-IPS도 네트워크 트래픽의 이상 패턴을 탐지하거나 차단할 수 있습니다. 많은 IPS는 경로에서 패킷과 프로토콜 정보를 처리하며, Proxy는 연결을 중계해 소켓 Stream과 애플리케이션 데이터를 다룰 수 있습니다. 그러나 제품 기능은 서로 겹칠 수 있고 실제 검사 범위는 배치와 설정에 달려 있습니다. 한쪽이 언제나 패킷만 보고 다른 쪽이 언제나 파일 전체를 읽는다고 단정하지 않습니다.
-
-검사 지점을 만들면 보안 기능을 적용할 기회가 늘지만 처리 지연과 용량 부담도 생깁니다. 다음 Page에서는 여러 보안 기능이 한 장비에 결합될 때에도 역할과 경로를 각각 살펴야 한다는 점을 확인하겠습니다.
-
-## 보호 기능을 함께 두기
-
-<!-- learn-page-id: advanced-source-07-page-06 -->
-
-실제 네트워크 장비에는 IPS와 Proxy 같은 여러 기능이 한 상자 안에 함께 들어갈 수 있습니다. 물리적으로 한 장비라고 해서 논리적 동작도 하나인 것은 아닙니다. 어떤 기능은 패킷을 경로에서 검사하고, 다른 기능은 애플리케이션 연결을 받아 중계할 수 있습니다.
-
-동아리 공용 PC의 웹 요청을 한 장비가 받아 보안 규칙을 적용하고 외부 서버로 전달하는 구성을 생각해 보세요. 이 장비는 정책에 따라 허용·차단하는 기능과 Proxy 연결을 동시에 가질 수 있습니다. 장애 대응과 성능 계획에서는 각 기능의 처리 경로와 상태를 따로 확인해야 합니다.
-
-장비 이름이나 외관보다 데이터가 어디로 들어오고 어떤 기능을 거쳐 나가는지 도식으로 그려 보는 것이 더 정확합니다. 다음 Page에서는 내부 Proxy의 기록 기능이 사용자 감시와 사생활 쟁점을 함께 만드는 이유를 다룹니다.
-
-## 내부 사용자의 통신 감시
-
-<!-- learn-page-id: advanced-source-07-page-07 -->
-
-관리되는 공용 PC의 트래픽은 내부 Proxy에 집중되므로, 운영자는 접속 흐름과 정책 위반을 점검할 수 있습니다. 하지만 같은 지점이 직원이나 동아리원의 개인적인 검색 내용까지 기록할 수 있다면 사생활 문제가 생깁니다. 정보보호와 감시는 수집 목적과 범위, 이용자에게 알리는 방식까지 함께 다뤄야 합니다.
-
-특히 요청 본문이나 응답 내용을 검사하는 구성은 단순히 목적지 주소만 기록하는 것보다 민감도가 높습니다. TLS 검사를 적용하려면 조직의 승인과 적절한 인증서·단말 설정 등 별도의 운영 절차가 필요합니다. 기술적인 가능성과 조직의 권한·정책은 구별해야 합니다.
-
-여기서는 법률 결론을 내리기보다 Proxy가 기록 지점이 되는 구조와 그 책임을 살펴봅니다. 이제 시선을 공용 PC에서 운영자의 개인 PC로 옮겨, 개발·분석을 위해 로컬 Proxy를 사용하는 경우를 보겠습니다.
+- 🔁 **같은 모양 찾기:** 박 팀장의 무료 우회 프록시와 회사 프록시는 "대신 연결한다"는 같은 구조였고, 누가 어디서 운영하느냐만 달랐다.
+- ⚖️ **대가 따지기:** 정책과 기록을 한곳에 모으는 대신 지연과 단일 장애점이라는 값을 치렀고, 이중화로 그 값을 줄였다.

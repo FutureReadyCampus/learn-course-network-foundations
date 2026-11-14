@@ -93,7 +93,7 @@ def main() -> int:
     errors = []
     asset_files = sorted(
         path
-        for path in (ROOT / "units").glob("*/lessons/*/assets/**/*.svg")
+        for path in (ROOT / "units").glob("*/lessons/**/assets/**/*.svg")
         if any(directory in path.parts for directory in ("diagrams", "animations", "animation-source"))
     )
     for path in asset_files:
