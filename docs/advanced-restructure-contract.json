@@ -43,15 +43,15 @@
     },
     {
       "target_key": "u12-l03",
-      "lesson_id": "advanced-nat-mapping-filtering"
-    },
-    {
-      "target_key": "u12-l04",
       "lesson_id": "u8-advanced-15-포트-포워딩"
     },
     {
-      "target_key": "u12-l05",
+      "target_key": "u12-l04",
       "lesson_id": "u8-advanced-16-upnp와-nat"
+    },
+    {
+      "target_key": "u12-l05",
+      "lesson_id": "advanced-nat-mapping-filtering"
     },
     {
       "target_key": "u13-l01",
@@ -75,23 +75,31 @@
     },
     {
       "target_key": "u14-l03",
+      "lesson_id": "advanced-vpn-ipsec-agreement"
+    },
+    {
+      "target_key": "u14-l04",
       "lesson_id": "advanced-remote-access-vpn"
     },
     {
-      "target_key": "u15-l01",
-      "lesson_id": "advanced-security-placement"
+      "target_key": "u14-l05",
+      "lesson_id": "advanced-vpn-ip-trust-limits"
     },
     {
-      "target_key": "u15-l02",
+      "target_key": "u15-l01",
       "lesson_id": "advanced-network-access-control"
     },
     {
-      "target_key": "u15-l03",
+      "target_key": "u15-l02",
       "lesson_id": "advanced-stateful-firewall"
     },
     {
-      "target_key": "u15-l04",
+      "target_key": "u15-l03",
       "lesson_id": "advanced-intrusion-and-logs"
+    },
+    {
+      "target_key": "u15-l04",
+      "lesson_id": "advanced-security-placement"
     }
   ],
   "excluded_source_keys": [
@@ -244,6 +252,259 @@
         "adv-source-08-p04",
         "adv-source-08-p05"
       ]
+    },
+    {
+      "target_key": "u12-l01",
+      "unit_number": 12,
+      "title": "사설 주소·공인 주소와 공유기",
+      "identity": "preserved",
+      "source_pages": [
+        "adv-source-10-p01",
+        "adv-source-10-p02",
+        "adv-source-10-p03",
+        "adv-source-10-p04",
+        "adv-source-10-p06",
+        "adv-source-10-p07",
+        "adv-source-10-p09",
+        "adv-source-15-p04"
+      ]
+    },
+    {
+      "target_key": "u12-l02",
+      "unit_number": 12,
+      "title": "NAT 변환표로 통신 따라가기",
+      "identity": "preserved",
+      "source_pages": [
+        "adv-source-11-p01",
+        "adv-source-11-p02",
+        "adv-source-11-p03",
+        "adv-source-11-p04",
+        "adv-source-11-p05",
+        "adv-source-11-p06",
+        "adv-source-11-p07",
+        "adv-source-11-p08",
+        "adv-source-11-p09",
+        "adv-source-11-p11",
+        "adv-source-15-p01"
+      ]
+    },
+    {
+      "target_key": "u12-l03",
+      "unit_number": 12,
+      "title": "포트 포워딩으로 내부 서비스 연결하기",
+      "identity": "preserved",
+      "source_pages": [
+        "adv-source-10-p08",
+        "adv-source-15-p02",
+        "adv-source-15-p03",
+        "adv-source-15-p05",
+        "adv-source-15-p06",
+        "adv-source-15-p07"
+      ]
+    },
+    {
+      "target_key": "u12-l04",
+      "unit_number": 12,
+      "title": "UPnP와 자동 포트 설정",
+      "identity": "preserved",
+      "source_pages": [
+        "adv-source-15-p08",
+        "adv-source-16-p01",
+        "adv-source-16-p02",
+        "adv-source-16-p03",
+        "adv-source-16-p04",
+        "adv-source-16-p05",
+        "adv-source-16-p06",
+        "adv-source-16-p07",
+        "adv-source-16-p08"
+      ]
+    },
+    {
+      "target_key": "u12-l05",
+      "unit_number": 12,
+      "title": "NAT의 매핑과 수신 허용 방식",
+      "source_pages": [
+        "adv-source-10-p05",
+        "adv-source-11-p10",
+        "adv-source-12-p01",
+        "adv-source-12-p02",
+        "adv-source-12-p03",
+        "adv-source-12-p04",
+        "adv-source-12-p05",
+        "adv-source-12-p06",
+        "adv-source-12-p07",
+        "adv-source-12-p08",
+        "adv-source-12-p09",
+        "adv-source-13-p01",
+        "adv-source-13-p02",
+        "adv-source-13-p03",
+        "adv-source-13-p04",
+        "adv-source-13-p05",
+        "adv-source-13-p06",
+        "adv-source-14-p01",
+        "adv-source-14-p02",
+        "adv-source-14-p03",
+        "adv-source-14-p04",
+        "adv-source-14-p05",
+        "adv-source-14-p06",
+        "adv-source-14-p07",
+        "adv-source-14-p08",
+        "adv-source-14-p09"
+      ]
+    },
+    {
+      "target_key": "u13-l01",
+      "unit_number": 13,
+      "title": "L4 부하 분산과 서버 상태 확인",
+      "source_pages": [
+        "adv-source-17-p01",
+        "adv-source-17-p02",
+        "adv-source-17-p03",
+        "adv-source-17-p04",
+        "adv-source-17-p05",
+        "adv-source-17-p06"
+      ]
+    },
+    {
+      "target_key": "u13-l02",
+      "unit_number": 13,
+      "title": "이중화로 장애에 대비하기",
+      "source_pages": [
+        "adv-source-17-p07",
+        "adv-source-17-p08",
+        "adv-source-17-p09",
+        "adv-source-17-p10",
+        "adv-source-17-p11"
+      ]
+    },
+    {
+      "target_key": "u14-l01",
+      "unit_number": 14,
+      "title": "사설망을 인터넷으로 연결하는 VPN",
+      "identity": "preserved",
+      "source_pages": [
+        "adv-source-19-p01",
+        "adv-source-19-p02",
+        "adv-source-19-p03",
+        "adv-source-19-p04",
+        "adv-source-19-p05",
+        "adv-source-19-p06",
+        "adv-source-19-p07",
+        "adv-source-19-p08",
+        "adv-source-19-p09",
+        "adv-source-20-p02",
+        "adv-source-20-p03"
+      ]
+    },
+    {
+      "target_key": "u14-l02",
+      "unit_number": 14,
+      "title": "터널을 지나는 패킷",
+      "identity": "preserved",
+      "source_pages": [
+        "adv-source-20-p06",
+        "adv-source-20-p07",
+        "adv-source-20-p08",
+        "adv-source-20-p09",
+        "adv-source-20-p10",
+        "adv-source-20-p11",
+        "adv-source-20-p12",
+        "adv-source-20-p13"
+      ]
+    },
+    {
+      "target_key": "u14-l03",
+      "unit_number": 14,
+      "title": "IPsec 터널을 여는 약속",
+      "source_pages": [
+        "adv-source-20-p01",
+        "adv-source-20-p04",
+        "adv-source-20-p05"
+      ]
+    },
+    {
+      "target_key": "u14-l04",
+      "unit_number": 14,
+      "title": "원격 접속 VPN",
+      "identity": "new",
+      "source_pages": [
+        "adv-source-21-p01",
+        "adv-source-21-p02",
+        "adv-source-21-p03",
+        "adv-source-21-p04",
+        "adv-source-21-p05",
+        "adv-source-21-p06",
+        "adv-source-21-p07",
+        "adv-source-21-p08",
+        "adv-source-21-p09",
+        "adv-source-21-p10"
+      ]
+    },
+    {
+      "target_key": "u14-l05",
+      "unit_number": 14,
+      "title": "VPN과 IP로 판단하는 한계",
+      "identity": "new",
+      "source_pages": [
+        "adv-source-22-p01",
+        "adv-source-22-p02",
+        "adv-source-22-p03",
+        "adv-source-22-p04",
+        "adv-source-22-p05",
+        "adv-source-22-p06",
+        "adv-source-22-p07",
+        "adv-source-22-p08",
+        "adv-source-22-p09",
+        "adv-source-22-p10"
+      ]
+    },
+    {
+      "target_key": "u15-l01",
+      "unit_number": 15,
+      "title": "NAC와 네트워크 접근 통제",
+      "source_pages": [
+        "adv-source-23-p01",
+        "adv-source-23-p02",
+        "adv-source-23-p06",
+        "adv-source-23-p07",
+        "adv-source-23-p08",
+        "adv-source-23-p09"
+      ]
+    },
+    {
+      "target_key": "u15-l02",
+      "unit_number": 15,
+      "title": "방화벽과 연결 상태 추적",
+      "source_pages": [
+        "adv-source-23-p10",
+        "adv-source-23-p11",
+        "adv-source-23-p12",
+        "adv-source-23-p13"
+      ]
+    },
+    {
+      "target_key": "u15-l03",
+      "unit_number": 15,
+      "title": "침입 탐지·차단과 악성 파일 검사",
+      "source_pages": [
+        "adv-source-23-p14",
+        "adv-source-23-p15",
+        "adv-source-23-p16"
+      ]
+    },
+    {
+      "target_key": "u15-l04",
+      "unit_number": 15,
+      "title": "보안 로그 분석과 장치 배치",
+      "source_pages": [
+        "adv-source-23-p03",
+        "adv-source-23-p04",
+        "adv-source-23-p05",
+        "adv-source-23-p17",
+        "adv-source-23-p18",
+        "adv-source-23-p19",
+        "adv-source-23-p20"
+      ]
     }
   ],
   "source_page_remapping": {
@@ -264,6 +525,88 @@
     "adv-source-08-p02": "u11-l07",
     "adv-source-08-p03": "u11-l07",
     "adv-source-08-p04": "u11-l07",
-    "adv-source-08-p05": "u11-l07"
+    "adv-source-08-p05": "u11-l07",
+    "adv-source-15-p04": "u12-l01",
+    "adv-source-15-p01": "u12-l02",
+    "adv-source-10-p08": "u12-l03",
+    "adv-source-15-p02": "u12-l03",
+    "adv-source-15-p03": "u12-l03",
+    "adv-source-15-p05": "u12-l03",
+    "adv-source-15-p06": "u12-l03",
+    "adv-source-15-p07": "u12-l03",
+    "adv-source-16-p01": "u12-l04",
+    "adv-source-16-p02": "u12-l04",
+    "adv-source-16-p03": "u12-l04",
+    "adv-source-16-p04": "u12-l04",
+    "adv-source-16-p05": "u12-l04",
+    "adv-source-16-p06": "u12-l04",
+    "adv-source-16-p07": "u12-l04",
+    "adv-source-16-p08": "u12-l04",
+    "adv-source-10-p05": "u12-l05",
+    "adv-source-11-p10": "u12-l05",
+    "adv-source-12-p01": "u12-l05",
+    "adv-source-12-p02": "u12-l05",
+    "adv-source-12-p03": "u12-l05",
+    "adv-source-12-p04": "u12-l05",
+    "adv-source-12-p05": "u12-l05",
+    "adv-source-12-p06": "u12-l05",
+    "adv-source-12-p07": "u12-l05",
+    "adv-source-12-p08": "u12-l05",
+    "adv-source-12-p09": "u12-l05",
+    "adv-source-13-p01": "u12-l05",
+    "adv-source-13-p02": "u12-l05",
+    "adv-source-13-p03": "u12-l05",
+    "adv-source-13-p04": "u12-l05",
+    "adv-source-13-p05": "u12-l05",
+    "adv-source-13-p06": "u12-l05",
+    "adv-source-14-p01": "u12-l05",
+    "adv-source-14-p02": "u12-l05",
+    "adv-source-14-p03": "u12-l05",
+    "adv-source-14-p04": "u12-l05",
+    "adv-source-14-p05": "u12-l05",
+    "adv-source-14-p06": "u12-l05",
+    "adv-source-14-p07": "u12-l05",
+    "adv-source-14-p08": "u12-l05",
+    "adv-source-14-p09": "u12-l05",
+    "adv-source-17-p07": "u13-l02",
+    "adv-source-20-p02": "u14-l01",
+    "adv-source-20-p03": "u14-l01",
+    "adv-source-20-p01": "u14-l03",
+    "adv-source-20-p04": "u14-l03",
+    "adv-source-20-p05": "u14-l03",
+    "adv-source-21-p01": "u14-l04",
+    "adv-source-21-p02": "u14-l04",
+    "adv-source-21-p03": "u14-l04",
+    "adv-source-21-p04": "u14-l04",
+    "adv-source-21-p05": "u14-l04",
+    "adv-source-21-p06": "u14-l04",
+    "adv-source-21-p07": "u14-l04",
+    "adv-source-21-p08": "u14-l04",
+    "adv-source-21-p09": "u14-l04",
+    "adv-source-21-p10": "u14-l04",
+    "adv-source-22-p01": "u14-l05",
+    "adv-source-22-p02": "u14-l05",
+    "adv-source-22-p03": "u14-l05",
+    "adv-source-22-p04": "u14-l05",
+    "adv-source-22-p05": "u14-l05",
+    "adv-source-22-p06": "u14-l05",
+    "adv-source-22-p07": "u14-l05",
+    "adv-source-22-p08": "u14-l05",
+    "adv-source-22-p09": "u14-l05",
+    "adv-source-22-p10": "u14-l05",
+    "adv-source-23-p06": "u15-l01",
+    "adv-source-23-p07": "u15-l01",
+    "adv-source-23-p08": "u15-l01",
+    "adv-source-23-p09": "u15-l01",
+    "adv-source-23-p10": "u15-l02",
+    "adv-source-23-p11": "u15-l02",
+    "adv-source-23-p12": "u15-l02",
+    "adv-source-23-p13": "u15-l02",
+    "adv-source-23-p14": "u15-l03",
+    "adv-source-23-p15": "u15-l03",
+    "adv-source-23-p16": "u15-l03",
+    "adv-source-23-p03": "u15-l04",
+    "adv-source-23-p04": "u15-l04",
+    "adv-source-23-p05": "u15-l04"
   }
 }

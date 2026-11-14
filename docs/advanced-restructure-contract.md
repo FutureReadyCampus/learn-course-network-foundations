@@ -1,6 +1,6 @@
 # 심화 과정 Unit 11~15 구조 적용 계약
 
-이 문서는 승인된 **5 Unit·22개 기술 Lesson** 구조를 실제 콘텐츠와 Learn에 적용하기 위한 계약이다. 기존 「강의소개 및 교육목표」 8페이지와 인쇄 자료 1페이지는 새 과정 항목으로 만들지 않는다. 감사 스냅샷에는 옛 원고를 보존하지만, 필요한 기술 설명만 관련 Lesson 본문에 옮기고 나머지는 새 목차에서 제외한다. 별도 PDF, 자료 화면, `resources` 카탈로그 필드를 추가하지 않는다.
+이 문서는 승인된 **5 Unit·24개 기술 Lesson** 구조를 실제 콘텐츠와 Learn에 적용하기 위한 계약이다. 기존 「강의소개 및 교육목표」 8페이지와 인쇄 자료 1페이지는 새 과정 항목으로 만들지 않는다. 감사 스냅샷에는 옛 원고를 보존하지만, 필요한 기술 설명만 관련 Lesson 본문에 옮기고 나머지는 새 목차에서 제외한다. 별도 PDF, 자료 화면, `resources` 카탈로그 필드를 추가하지 않는다.
 
 새 Lesson은 Unit 11→15, 각 Unit 안에서는 Lesson 순서로 기존 전체 순차 잠금에 참여한다. Unit 자유 진입 예외는 만들지 않는다. 이번 구조 PR에서는 기존 Page 본문을 재배치하고 필요한 연결만 최소 수정한다. 충분한 본문 집필은 구조가 `stage`에 게시된 것을 확인한 뒤 기존 Unit별 이슈에서 Lesson 하나씩 진행한다.
 
@@ -17,19 +17,21 @@
 |  | 리버스 프록시와 서버 앞단 | `u7-advanced-08-reverse-proxy` |
 | 12 공유기와 NAT의 동작 | 사설 주소·공인 주소와 공유기 | `u8-advanced-10-공유기-작동원리-및-개요` |
 |  | NAT 변환표로 통신 따라가기 | `u8-advanced-11-symmetric-nat-방식` |
-|  | NAT의 매핑과 수신 허용 방식 | `advanced-nat-mapping-filtering` |
 |  | 포트 포워딩으로 내부 서비스 연결하기 | `u8-advanced-15-포트-포워딩` |
 |  | UPnP와 자동 포트 설정 | `u8-advanced-16-upnp와-nat` |
+|  | NAT의 매핑과 수신 허용 방식 | `advanced-nat-mapping-filtering` |
 | 13 부하 분산과 서비스 가용성 | L4 부하 분산과 서버 상태 확인 | `advanced-l4-load-balancing` |
 |  | 이중화로 장애에 대비하기 | `advanced-service-redundancy` |
 |  | DNS 기반 부하 분산과 GSLB | `u9-advanced-18-대규모-부하분산을-위한-gslb` |
 | 14 VPN과 원격 네트워크 연결 | 사설망을 인터넷으로 연결하는 VPN | `u10-advanced-19-pn과-vpn` |
-|  | IPsec과 터널링 | `u10-advanced-20-ipsec-vpn과-터널링-개념` |
-|  | 원격 접속 VPN과 사용 시 주의 | `advanced-remote-access-vpn` |
-| 15 네트워크 보안 솔루션 | 보안 장치의 배치와 역할 | `advanced-security-placement` |
-|  | NAC와 네트워크 접근 통제 | `advanced-network-access-control` |
+|  | 터널을 지나는 패킷 | `u10-advanced-20-ipsec-vpn과-터널링-개념` |
+|  | IPsec 터널을 여는 약속 | `advanced-vpn-ipsec-agreement` |
+|  | 원격 접속 VPN | `advanced-remote-access-vpn` |
+|  | VPN과 IP로 판단하는 한계 | `advanced-vpn-ip-trust-limits` |
+| 15 네트워크 보안 솔루션 | NAC와 네트워크 접근 통제 | `advanced-network-access-control` |
 |  | 방화벽과 연결 상태 추적 | `advanced-stateful-firewall` |
-|  | 침입 탐지·차단과 보안 로그 분석 | `advanced-intrusion-and-logs` |
+|  | 침입 탐지·차단과 악성 파일 검사 | `advanced-intrusion-and-logs` |
+|  | 보안 로그 분석과 장치 배치 | `advanced-security-placement` |
 
 ## 원고 범위
 
@@ -41,10 +43,10 @@
 - U11L9→새 U11L6. PC 로컬 Proxy, Loopback 설정, Stream 분석과 도구 사용을 다룬다.
 - U11L8→새 U11L7. 리버스 프록시의 기존 Page ID와 순서는 보존한다.
 - U11L1 소개 8페이지와 U11L4 인쇄자료 1페이지는 새 Lesson이 아니다.
-- U12L1→새 U12L1, U12L2→새 U12L2, U12L3·L4·L5→새 U12L3, U12L6→새 U12L4, U12L7→새 U12L5.
-- U13L1 P1~7→새 U13L1, P8~9→새 U13L2. P10~11은 이중화 Lesson의 참고 원고로 기록하되 구조 PR에서 자동 본문으로 합치지 않는다. U13L2→새 U13L3.
-- U14L1→새 U14L1, U14L2→새 U14L2, U14L3·L4→새 U14L3.
-- U14L5 P1~5 / P6~9 / P10~13 / P14~20→새 U15L1 / L2 / L3 / L4.
+- U12L1 P1~4·6·7·9와 U12L6 P4→새 U12L1. U12L2 P1~9·11과 U12L6 P1→새 U12L2. U12L1 P8과 U12L6 P2·3·5~7→새 U12L3. U12L6 P8과 U12L7→새 U12L4. U12L1 P5, U12L2 P10, U12L3·L4·L5→새 U12L5.
+- U13L1 P1~6→새 U13L1, P7~9→새 U13L2. P10~11은 이중화 Lesson의 참고 원고로 기록하되 구조 PR에서 자동 본문으로 합치지 않는다. U13L2→새 U13L3.
+- U14L1과 U14L2 P2·3→새 U14L1, U14L2 P6~13→새 U14L2, U14L2 P1·4·5→새 U14L3, U14L3→새 U14L4, U14L4→새 U14L5.
+- U14L5 P1·2·6~9 / P10~13 / P14~16 / P3~5·17~20→새 U15L1 / L2 / L3 / L4.
 
 ## 주소와 기록 호환
 
@@ -55,15 +57,15 @@
 - 이전 `NetworkState`, 답안, 이벤트, 완료 기록은 삭제하거나 새 Lesson에 근거 없이 복사하지 않는다. 완전한 원 Lesson 완료 증거가 없으면 병합 Lesson의 완료를 추론하지 않는다. 기록을 바꾸는 승계는 아카이브와 원자적 처리 근거가 있을 때만 수행한다.
 - 완료 Page 승계의 source version은 구조 적용 직전 Learn 카탈로그 `network-1f62c2b58554ec7c73365fc47409710d3cdca621`으로 고정한다. 다른 판본 상태는 별도 검토와 테스트 없이 승계하지 않는다.
 - 하나의 공개 원고를 여러 새 Lesson으로 분할할 때는 그 원고가 공개된 경우 각 분할 결과도 공개 후보가 된다. 병합 Lesson은 모든 원고 기여 범위가 공개된 경우에만 공개한다.
-- Learn의 순차 완료 검사는 공개된 22개 기술 Lesson에 기존처럼 적용한다. 자료 항목은 없으며 선행 잠금 체인에도 포함되지 않는다.
+- Learn의 순차 완료 검사는 공개된 24개 기술 Lesson에 기존처럼 적용한다. 자료 항목은 없으며 선행 잠금 체인에도 포함되지 않는다.
 
 ## 감사 기준과 검증
 
-스냅샷은 기존 심화 원고 23개, 전체 203 Page, SVG 30개의 해시(원래 다이어그램 22개와 안내 원고의 그림 8개)를 보존한다. 이 중 기술 원고 194 Page만 22개 목표 Lesson에 각각 한 번 배정한다. 소개 8 Page와 인쇄자료 1 Page는 audit-only 제외 항목이다. 현재 작업본 기준 원고 카탈로그는 465 Page다. 주소 별칭은 콘텐츠 stage 456개, Learn v2 440개, unversioned 425개다. Unit 10의 과거 Learn Lesson 두 개와 현재 stage의 네 Lesson은 의도적으로 Learn v2/unversioned 간 별칭 대응에서 제외한다. 준비 계약에서 사용하던 462/456 및 총 1,380 별칭은 소개·자료 URL까지 목적지에 보내던 과거 제안이며 현재 계약에서는 폐기했다.
+스냅샷은 기존 심화 원고 23개, 전체 203 Page, SVG 30개의 해시(원래 다이어그램 22개와 안내 원고의 그림 8개)를 보존한다. 이 중 기술 원고 194 Page만 24개 목표 Lesson에 각각 한 번 배정한다. 소개 8 Page와 인쇄자료 1 Page는 audit-only 제외 항목이다. 현재 작업본 기준 원고 카탈로그는 465 Page다. 주소 별칭은 콘텐츠 stage 456개, Learn v2 440개, unversioned 425개다. Unit 10의 과거 Learn Lesson 두 개와 현재 stage의 네 Lesson은 의도적으로 Learn v2/unversioned 간 별칭 대응에서 제외한다. 준비 계약에서 사용하던 462/456 및 총 1,380 별칭은 소개·자료 URL까지 목적지에 보내던 과거 제안이며 현재 계약에서는 폐기했다.
 
 `python3 scripts/plan_advanced_restructure.py`의 합성 테스트는 194개 기술 Page, 제외된 9개 Page, 30개 자산 해시, 주소 offset, 병합·분할 경계, 공개 조건 및 부분 완료 fail-closed를 확인한다. `python3 scripts/test_advanced_restructure.py -v`가 통과해야 한다.
 
-Learn #223을 먼저 `main`에 반영하고 Deploy 및 관련 동작을 확인한다. 그 다음 구조 PR을 `stage`에 병합하고 콘텐츠 빌드·자산 참조·22 Lesson·라우트 별칭·기존 순차 제한을 검증한다. 사용자 요청에 따라 구조는 페이지별 퀴즈 완성 전 stage에 먼저 게시해 별도 퀴즈 작성 세션이 작업할 수 있게 한다. 퀴즈가 없는 Page는 잠금 규칙이 충족되지 않을 수 있으므로, 퀴즈 AI 세션이 모든 최종 Page의 퀴즈를 추가한 뒤 순차 잠금 및 게시 상태를 확인한다. 본문 개선은 구조 게시 SHA와 대표 Lesson/Page를 확인한 다음 #164~#167 및 #184 순서로 시작한다.
+Learn #223을 먼저 `main`에 반영하고 Deploy 및 관련 동작을 확인한다. 그 다음 구조 PR을 `stage`에 병합하고 콘텐츠 빌드·자산 참조·24 Lesson·라우트 별칭·기존 순차 제한을 검증한다. 사용자 요청에 따라 구조는 페이지별 퀴즈 완성 전 stage에 먼저 게시해 별도 퀴즈 작성 세션이 작업할 수 있게 한다. 퀴즈가 없는 Page는 잠금 규칙이 충족되지 않을 수 있으므로, 퀴즈 AI 세션이 모든 최종 Page의 퀴즈를 추가한 뒤 순차 잠금 및 게시 상태를 확인한다. 본문 개선은 구조 게시 SHA와 대표 Lesson/Page를 확인한 다음 #164~#167 및 #184 순서로 시작한다.
 
 
 ## 2026-11-08 Unit 11 Lesson 4 분리
@@ -75,3 +77,16 @@ Learn #223을 먼저 `main`에 반영하고 Deploy 및 관련 동작을 확인�
 Unit 11 재설계에 따라 새 U11L4의 14 Page를 원고 경계에서 다시 나눈다. 기존 U11L6에 해당하는 7 Page는 U11L4 `advanced-forward-proxy`에, 기존 U11L7에 해당하는 7 Page는 새 U11L5 `advanced-forward-proxy-inspection` 「회사 프록시의 검사와 기록」에 둔다. PC 로컬 프록시는 U11L6, 리버스 프록시는 U11L7로 이동한다. Unit 11은 7 Lesson, 전체 기술 과정은 22 Lesson이 된다. 두 프록시 Lesson은 원고 하나를 통째로 담지만 재작성된 Lesson이므로 원본 Lesson ID를 물려받지 않는다. 계약 JSON의 `target_overrides`에 `"identity": "new"`로 이 예외를 기록하고, 원고 대응은 `source_page_remapping`에 기록한다.
 
 라우트 별칭의 목적지 Page 번호는 기존과 같이 목표 Lesson 안의 원고 순서를 따른다. 재작성된 Page 번호로 다시 매기는 작업은 Learn #223 후속으로 남긴다(U12L3 #209와 같은 처리).
+
+## 2026-11-14 Unit 12~15 재설계 반영
+
+Unit 12~15 재설계에 따라 기술 과정은 24 Lesson(Unit 11~15에 7·5·3·5·4)이 된다. 재작성된 본문은 157 Page이고, 원고 기준 배정은 그대로 194 Page다. 원고 Page는 Unit별 `docs/advanced-redesign/u12-mapping-applied.md`~`u15-mapping-applied.md`에서 그 원고를 흡수한 새 Lesson에 배정하고, 목표 Lesson이 바뀐 82 Page를 `source_page_remapping`에 더한다(Unit 11 포함 100 Page). Unit 15에서 삭제한 세 Page(`advanced-source-23-page-03`·`-07`·`-17`, `docs/advanced-redesign/debate/u15-editor.md`)는 내용을 흡수한 같은 Lesson(U15L4·L1·L4)에 남긴다.
+
+- Unit 12: 포트 포워딩(`u8-advanced-15-포트-포워딩`)이 U12L3, UPnP가 U12L4, NAT 매핑(`advanced-nat-mapping-filtering`)이 U12L5로 이동한다. U12L1~L4는 다른 원고 Page를 받거나 내보내지만 기존 Lesson ID를 유지하기로 한 결정에 따라 `"identity": "preserved"`로 기록한다.
+- Unit 13: U13L1 P7(부하 분산 장치 자체의 정지)이 이중화 Lesson U13L2로 이동한다. Lesson ID는 그대로다.
+- Unit 14: 3 Lesson이 5 Lesson이 된다. U14L2 P1·4·5는 새 U14L3 `advanced-vpn-ipsec-agreement`로, P2·3은 U14L1로 이동한다. U14L1·L2는 기존 ID를 유지하므로 `"identity": "preserved"`로 기록한다. 원고 하나씩을 통째로 담는 U14L4 `advanced-remote-access-vpn`(U14L3 원고)과 새 U14L5 `advanced-vpn-ip-trust-limits`(U14L4 원고)는 `"identity": "new"`로 기록한다.
+- Unit 15: Lesson ID는 그대로이고 순서를 NAC → 방화벽 → 침입 탐지 → 로그·배치로 바꾼다. 배치 원고 P1·2는 U15L1, P3~5는 U15L4로 간다.
+
+`"identity": "preserved"`는 Page가 옮겨진 Lesson이 기여 원고 중 하나의 ID를 유지한다는 검토된 결정을 뜻한다. 완료 승계는 여전히 모든 기여 원고의 완료 증거를 요구한다. 계획 검사는 목표 Lesson이 바뀌지 않은 원고 Page의 상대 순서만 확인하므로, 다른 Page가 들어오거나 빠져 번호가 밀리는 것은 허용하고 같은 Lesson 안의 순서 바꿈은 거부한다.
+
+라우트 별칭은 1,321개 그대로이며 목적지 Page 번호는 목표 Lesson 안의 원고 순서를 따른다. 재작성된 Lesson의 Page 수를 넘는 목적지 번호를 다시 매기는 작업은 Learn #223 후속으로 남긴다.

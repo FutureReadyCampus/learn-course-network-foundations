@@ -83,7 +83,8 @@ class AdvancedRestructureTest(unittest.TestCase):
                 "state": json.dumps({"check": {"complete": True}})}
 
     def test_all_source_pages_and_assets_are_preserved(self):
-        self.assertEqual([6, 9, 10, 7, 7, 6, 5, 9, 11, 24, 8, 8, 7, 4, 11, 9, 13, 20, 5, 4, 4, 7],
+        self.assertEqual([6, 9, 10, 7, 7, 6, 5, 8, 11, 6, 9, 26, 6, 5, 11, 11, 8, 3, 10, 10,
+                          6, 4, 3, 7],
                          [len(l["pages"]) for l in self.plan["lessons"]])
         self.assertEqual(self.plan["counts"]["technical_pages"], 194)
         self.assertEqual(self.plan["counts"]["excluded_pages"], 9)
@@ -112,7 +113,7 @@ class AdvancedRestructureTest(unittest.TestCase):
                              and alias["source_lesson_id"] in current_stage_unit10
                              for alias in self.plan["aliases"]))
 
-    def test_applied_course_has_fifteen_units_and_twenty_two_advanced_lessons(self):
+    def test_applied_course_has_fifteen_units_and_twenty_four_advanced_lessons(self):
         unit_ids = [unit["id"] for unit in self.applied_catalog["units"]]
         self.assertEqual(len(unit_ids), 15)
         self.assertEqual(unit_ids[10:], ["network-devices", "router-and-nat", "load-balancing",
@@ -120,11 +121,11 @@ class AdvancedRestructureTest(unittest.TestCase):
         advanced_ids = [lesson["id"] for lesson in self.applied_catalog["lessons"]
                         if lesson["unit"] in set(unit_ids[10:])]
         self.assertEqual(advanced_ids, [item["id"] for item in self.plan["lessons"]])
-        # Unit 12 Lesson 3 was deliberately rewritten from its 24 source pages into 7 (#209),
-        # and the Unit 11 redesign rewrote its 50 source-plan pages into 46, so the applied
-        # course carries 17 + 4 fewer pages than the preserved source plan.
+        # The 2026-11 redesign rewrote Units 11-15 from 194 source-plan pages into 157:
+        # Unit 11 50 -> 43, Unit 12 60 -> 33, Unit 13 22 -> 22, Unit 14 42 -> 34,
+        # Unit 15 20 -> 25. Aliases still follow source order (Learn #223 follow-up).
         self.assertEqual(sum(len(lesson["pages"]) for lesson in self.applied_catalog["lessons"]
-                             if lesson["unit"] in set(unit_ids[10:])), 194 - 21)
+                             if lesson["unit"] in set(unit_ids[10:])), 157)
         self.assertEqual(len(self.applied_catalog["route_aliases"]), 1321)
         self.assertEqual(self.applied_catalog["route_aliases"], self.plan["aliases"])
         self.assertEqual(self.applied_catalog["advanced_completion_migration"], {
@@ -132,7 +133,7 @@ class AdvancedRestructureTest(unittest.TestCase):
             "from_version": "network-1f62c2b58554ec7c73365fc47409710d3cdca621",
             "target_unit_ids": ["network-devices", "router-and-nat", "load-balancing",
                                 "vpn-and-security", "network-security-solutions"],
-            "aliases_sha256": "7a7e9cfc71351301eca1a19332f76e9ca6f64b2bb5ce9583b1e6f97843efe1dc",
+            "aliases_sha256": "1c6df30881d85487ff2d7798dfe628552121207758f15b33fd5002a353ed3036",
         })
 
     def test_guide_and_print_material_are_excluded_from_the_new_course(self):
@@ -171,17 +172,33 @@ class AdvancedRestructureTest(unittest.TestCase):
                 lesson_id, page, f"/m2-network/v3/unit/11/lesson/{lesson_number}/page/{page}"))
 
     def test_split_boundaries_and_reference_pages(self):
-        for old_page, target, new_page in [(5, "advanced-security-placement", 5),
-                (6, "advanced-network-access-control", 1), (9, "advanced-network-access-control", 4),
+        for old_page, target, new_page in [(2, "advanced-network-access-control", 2),
+                (3, "advanced-security-placement", 1), (5, "advanced-security-placement", 3),
+                (6, "advanced-network-access-control", 3), (9, "advanced-network-access-control", 6),
                 (10, "advanced-stateful-firewall", 1), (13, "advanced-stateful-firewall", 4),
-                (14, "advanced-intrusion-and-logs", 1), (20, "advanced-intrusion-and-logs", 7)]:
+                (14, "advanced-intrusion-and-logs", 1), (16, "advanced-intrusion-and-logs", 3),
+                (17, "advanced-security-placement", 4), (20, "advanced-security-placement", 7)]:
             mapped = resolve_saved_location(self.plan, "learn-v2",
                 f"/m2-network/v2/unit/14/lesson/5/page/{old_page}")
             self.assertEqual((mapped["id"], mapped["page"]), (target, new_page))
-        for page in [10, 11]:
+        for page, target in [(6, "advanced-l4-load-balancing"), (7, "advanced-service-redundancy"),
+                             (10, "advanced-service-redundancy"), (11, "advanced-service-redundancy")]:
             mapped = resolve_saved_location(self.plan, "learn-v2",
                 f"/m2-network/v2/unit/13/lesson/1/page/{page}")
-            self.assertEqual(mapped["id"], "advanced-service-redundancy")
+            self.assertEqual(mapped["id"], target)
+
+    def test_unit12_and_unit14_reorders_route_to_new_positions(self):
+        expected = [
+            ("12/lesson/6/page/2", "u8-advanced-15-포트-포워딩", "12/lesson/3/page/2"),
+            ("12/lesson/1/page/8", "u8-advanced-15-포트-포워딩", "12/lesson/3/page/1"),
+            ("12/lesson/3/page/1", "advanced-nat-mapping-filtering", "12/lesson/5/page/3"),
+            ("14/lesson/2/page/1", "advanced-vpn-ipsec-agreement", "14/lesson/3/page/1"),
+            ("14/lesson/3/page/1", "advanced-remote-access-vpn", "14/lesson/4/page/1"),
+            ("14/lesson/4/page/1", "advanced-vpn-ip-trust-limits", "14/lesson/5/page/1"),
+        ]
+        for old, lesson_id, new in expected:
+            mapped = resolve_saved_location(self.plan, "learn-v2", f"/m2-network/v2/unit/{old}")
+            self.assertEqual((mapped["id"], mapped["path"]), (lesson_id, f"/m2-network/v3/unit/{new}"))
 
     def test_guide_and_print_material_bookmarks_are_not_redirected_into_learning_pages(self):
         for lesson, page in [(1, 8), (4, 1)]:
@@ -210,20 +227,20 @@ class AdvancedRestructureTest(unittest.TestCase):
         self.assertFalse(self.evaluate(rows)[lesson["id"]]["completion_eligible"])
 
     def test_partial_merge_and_partial_publication_do_not_expand(self):
-        lesson = self.by_key["u12-l03"]
+        lesson = self.by_key["u12-l05"]
         sources = lesson["source_lesson_ids"]
         rows = {sources[0]: self.completed_row()}
         before = copy.deepcopy(rows)
         result = self.evaluate(rows, sources[:1])[lesson["id"]]
         self.assertFalse(result["completion_eligible"])
         self.assertFalse(result["publication_eligible"])
-        self.assertEqual(len(result["missing_completion_evidence"]), 2)
+        self.assertEqual(len(result["missing_completion_evidence"]), 4)
         self.assertEqual(rows, before)
         rows.update({s: self.completed_row() for s in sources[1:]})
         result = self.evaluate(rows, sources)[lesson["id"]]
         self.assertTrue(result["completion_eligible"])
         self.assertTrue(result["publication_eligible"])
-        self.assertEqual(len(result["source_evidence"]), 3)
+        self.assertEqual(len(result["source_evidence"]), 5)
 
     def test_explicit_whole_completion_can_cover_unchanged_split_ranges(self):
         source = self.by_key["u15-l01"]["source_lesson_ids"][0]
@@ -245,6 +262,15 @@ class AdvancedRestructureTest(unittest.TestCase):
         changed = copy.deepcopy(self.contract)
         changed["lesson_ids"][1]["lesson_id"] = changed["lesson_ids"][0]["lesson_id"]
         with self.assertRaisesRegex(ValueError, "Duplicate target"):
+            self.create_plan(contract=changed)
+        changed = copy.deepcopy(self.contract)
+        override = next(o for o in changed["target_overrides"] if o["target_key"] == "u14-l02")
+        override["source_pages"][:2] = override["source_pages"][1::-1]
+        with self.assertRaisesRegex(ValueError, "Page destination/order changed"):
+            self.create_plan(contract=changed)
+        del override["identity"]
+        override["source_pages"][:2] = override["source_pages"][1::-1]
+        with self.assertRaisesRegex(ValueError, "keep IDs"):
             self.create_plan(contract=changed)
 
     def test_basic_bookmarks_keep_lesson_and_page(self):
