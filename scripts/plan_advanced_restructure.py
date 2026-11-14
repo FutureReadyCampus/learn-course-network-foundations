@@ -35,9 +35,9 @@ def make_plan(snapshot, contract, catalog, legacy_units, source_root=ROOT):
     ids = {item["target_key"]: item["lesson_id"] for item in contract["lesson_ids"]}
     targets = {item["target_key"]: targets[item["target_key"]]
                for item in contract["lesson_ids"]}
-    require(len(ids) == len(contract["lesson_ids"]) == 21 and set(ids) == set(targets),
-            "Exactly 21 distinct targets required")
-    require(len(set(ids.values())) == 21, "Duplicate target Lesson ID")
+    require(len(ids) == len(contract["lesson_ids"]) == 22 and set(ids) == set(targets),
+            "Exactly 22 distinct targets required")
+    require(len(set(ids.values())) == 22, "Duplicate target Lesson ID")
     require(all(isinstance(value, str) and 0 < len(value) <= 100 for value in ids.values()),
             "Lesson IDs must fit the current API")
     excluded_sources = set(contract.get("excluded_source_keys", []))
@@ -102,7 +102,8 @@ def make_plan(snapshot, contract, catalog, legacy_units, source_root=ROOT):
         contributors = list(dict.fromkeys(source_pages[p]["source_lesson_id"]
                                           for p in target["source_pages"]))
         preserve = (len(contributors) == 1 and len(source_uses[contributors[0]]) == 1
-                    and len(target["source_pages"]) == len(sources[contributors[0]]["pages"]))
+                    and len(target["source_pages"]) == len(sources[contributors[0]]["pages"])
+                    and target.get("identity") != "new")
         require((ids[key] == contributors[0]) if preserve else ids[key] not in source_lessons,
                 f"Unchanged Lessons keep IDs; merged/split Lessons use new IDs: {key}")
         lesson_number = int(key.rsplit("l", 1)[1])

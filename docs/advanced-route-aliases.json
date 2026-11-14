@@ -6934,10 +6934,10 @@
     "source_page": 1,
     "destination": {
       "kind": "lesson",
-      "id": "advanced-forward-proxy",
+      "id": "advanced-forward-proxy-inspection",
       "page_id": "advanced-source-07-page-01",
-      "page": 8,
-      "path": "/m2-network/v3/unit/11/lesson/4/page/8"
+      "page": 1,
+      "path": "/m2-network/v3/unit/11/lesson/5/page/1"
     }
   },
   {
@@ -6947,10 +6947,10 @@
     "source_page": 1,
     "destination": {
       "kind": "lesson",
-      "id": "advanced-forward-proxy",
+      "id": "advanced-forward-proxy-inspection",
       "page_id": "advanced-source-07-page-01",
-      "page": 8,
-      "path": "/m2-network/v3/unit/11/lesson/4/page/8"
+      "page": 1,
+      "path": "/m2-network/v3/unit/11/lesson/5/page/1"
     }
   },
   {
@@ -6960,10 +6960,10 @@
     "source_page": 2,
     "destination": {
       "kind": "lesson",
-      "id": "advanced-forward-proxy",
+      "id": "advanced-forward-proxy-inspection",
       "page_id": "advanced-source-07-page-02",
-      "page": 9,
-      "path": "/m2-network/v3/unit/11/lesson/4/page/9"
+      "page": 2,
+      "path": "/m2-network/v3/unit/11/lesson/5/page/2"
     }
   },
   {
@@ -6973,10 +6973,10 @@
     "source_page": 2,
     "destination": {
       "kind": "lesson",
-      "id": "advanced-forward-proxy",
+      "id": "advanced-forward-proxy-inspection",
       "page_id": "advanced-source-07-page-02",
-      "page": 9,
-      "path": "/m2-network/v3/unit/11/lesson/4/page/9"
+      "page": 2,
+      "path": "/m2-network/v3/unit/11/lesson/5/page/2"
     }
   },
   {
@@ -6986,10 +6986,10 @@
     "source_page": 3,
     "destination": {
       "kind": "lesson",
-      "id": "advanced-forward-proxy",
+      "id": "advanced-forward-proxy-inspection",
       "page_id": "advanced-source-07-page-03",
-      "page": 10,
-      "path": "/m2-network/v3/unit/11/lesson/4/page/10"
+      "page": 3,
+      "path": "/m2-network/v3/unit/11/lesson/5/page/3"
     }
   },
   {
@@ -6999,10 +6999,10 @@
     "source_page": 3,
     "destination": {
       "kind": "lesson",
-      "id": "advanced-forward-proxy",
+      "id": "advanced-forward-proxy-inspection",
       "page_id": "advanced-source-07-page-03",
-      "page": 10,
-      "path": "/m2-network/v3/unit/11/lesson/4/page/10"
+      "page": 3,
+      "path": "/m2-network/v3/unit/11/lesson/5/page/3"
     }
   },
   {
@@ -7012,10 +7012,10 @@
     "source_page": 4,
     "destination": {
       "kind": "lesson",
-      "id": "advanced-forward-proxy",
+      "id": "advanced-forward-proxy-inspection",
       "page_id": "advanced-source-07-page-04",
-      "page": 11,
-      "path": "/m2-network/v3/unit/11/lesson/4/page/11"
+      "page": 4,
+      "path": "/m2-network/v3/unit/11/lesson/5/page/4"
     }
   },
   {
@@ -7025,10 +7025,10 @@
     "source_page": 4,
     "destination": {
       "kind": "lesson",
-      "id": "advanced-forward-proxy",
+      "id": "advanced-forward-proxy-inspection",
       "page_id": "advanced-source-07-page-04",
-      "page": 11,
-      "path": "/m2-network/v3/unit/11/lesson/4/page/11"
+      "page": 4,
+      "path": "/m2-network/v3/unit/11/lesson/5/page/4"
     }
   },
   {
@@ -7038,10 +7038,10 @@
     "source_page": 5,
     "destination": {
       "kind": "lesson",
-      "id": "advanced-forward-proxy",
+      "id": "advanced-forward-proxy-inspection",
       "page_id": "advanced-source-07-page-05",
-      "page": 12,
-      "path": "/m2-network/v3/unit/11/lesson/4/page/12"
+      "page": 5,
+      "path": "/m2-network/v3/unit/11/lesson/5/page/5"
     }
   },
   {
@@ -7051,10 +7051,10 @@
     "source_page": 5,
     "destination": {
       "kind": "lesson",
-      "id": "advanced-forward-proxy",
+      "id": "advanced-forward-proxy-inspection",
       "page_id": "advanced-source-07-page-05",
-      "page": 12,
-      "path": "/m2-network/v3/unit/11/lesson/4/page/12"
+      "page": 5,
+      "path": "/m2-network/v3/unit/11/lesson/5/page/5"
     }
   },
   {
@@ -7064,10 +7064,10 @@
     "source_page": 6,
     "destination": {
       "kind": "lesson",
-      "id": "advanced-forward-proxy",
+      "id": "advanced-forward-proxy-inspection",
       "page_id": "advanced-source-07-page-06",
-      "page": 13,
-      "path": "/m2-network/v3/unit/11/lesson/4/page/13"
+      "page": 6,
+      "path": "/m2-network/v3/unit/11/lesson/5/page/6"
     }
   },
   {
@@ -7077,10 +7077,10 @@
     "source_page": 6,
     "destination": {
       "kind": "lesson",
-      "id": "advanced-forward-proxy",
+      "id": "advanced-forward-proxy-inspection",
       "page_id": "advanced-source-07-page-06",
-      "page": 13,
-      "path": "/m2-network/v3/unit/11/lesson/4/page/13"
+      "page": 6,
+      "path": "/m2-network/v3/unit/11/lesson/5/page/6"
     }
   },
   {
@@ -7090,10 +7090,10 @@
     "source_page": 7,
     "destination": {
       "kind": "lesson",
-      "id": "advanced-forward-proxy",
+      "id": "advanced-forward-proxy-inspection",
       "page_id": "advanced-source-07-page-07",
-      "page": 14,
-      "path": "/m2-network/v3/unit/11/lesson/4/page/14"
+      "page": 7,
+      "path": "/m2-network/v3/unit/11/lesson/5/page/7"
     }
   },
   {
@@ -7103,10 +7103,10 @@
     "source_page": 7,
     "destination": {
       "kind": "lesson",
-      "id": "advanced-forward-proxy",
+      "id": "advanced-forward-proxy-inspection",
       "page_id": "advanced-source-07-page-07",
-      "page": 14,
-      "path": "/m2-network/v3/unit/11/lesson/4/page/14"
+      "page": 7,
+      "path": "/m2-network/v3/unit/11/lesson/5/page/7"
     }
   },
   {
@@ -7119,7 +7119,7 @@
       "id": "u7-advanced-08-reverse-proxy",
       "page_id": "advanced-source-08-page-01",
       "page": 1,
-      "path": "/m2-network/v3/unit/11/lesson/6/page/1"
+      "path": "/m2-network/v3/unit/11/lesson/7/page/1"
     }
   },
   {
@@ -7132,7 +7132,7 @@
       "id": "u7-advanced-08-reverse-proxy",
       "page_id": "advanced-source-08-page-01",
       "page": 1,
-      "path": "/m2-network/v3/unit/11/lesson/6/page/1"
+      "path": "/m2-network/v3/unit/11/lesson/7/page/1"
     }
   },
   {
@@ -7145,7 +7145,7 @@
       "id": "u7-advanced-08-reverse-proxy",
       "page_id": "advanced-source-08-page-02",
       "page": 2,
-      "path": "/m2-network/v3/unit/11/lesson/6/page/2"
+      "path": "/m2-network/v3/unit/11/lesson/7/page/2"
     }
   },
   {
@@ -7158,7 +7158,7 @@
       "id": "u7-advanced-08-reverse-proxy",
       "page_id": "advanced-source-08-page-02",
       "page": 2,
-      "path": "/m2-network/v3/unit/11/lesson/6/page/2"
+      "path": "/m2-network/v3/unit/11/lesson/7/page/2"
     }
   },
   {
@@ -7171,7 +7171,7 @@
       "id": "u7-advanced-08-reverse-proxy",
       "page_id": "advanced-source-08-page-03",
       "page": 3,
-      "path": "/m2-network/v3/unit/11/lesson/6/page/3"
+      "path": "/m2-network/v3/unit/11/lesson/7/page/3"
     }
   },
   {
@@ -7184,7 +7184,7 @@
       "id": "u7-advanced-08-reverse-proxy",
       "page_id": "advanced-source-08-page-03",
       "page": 3,
-      "path": "/m2-network/v3/unit/11/lesson/6/page/3"
+      "path": "/m2-network/v3/unit/11/lesson/7/page/3"
     }
   },
   {
@@ -7197,7 +7197,7 @@
       "id": "u7-advanced-08-reverse-proxy",
       "page_id": "advanced-source-08-page-04",
       "page": 4,
-      "path": "/m2-network/v3/unit/11/lesson/6/page/4"
+      "path": "/m2-network/v3/unit/11/lesson/7/page/4"
     }
   },
   {
@@ -7210,7 +7210,7 @@
       "id": "u7-advanced-08-reverse-proxy",
       "page_id": "advanced-source-08-page-04",
       "page": 4,
-      "path": "/m2-network/v3/unit/11/lesson/6/page/4"
+      "path": "/m2-network/v3/unit/11/lesson/7/page/4"
     }
   },
   {
@@ -7223,7 +7223,7 @@
       "id": "u7-advanced-08-reverse-proxy",
       "page_id": "advanced-source-08-page-05",
       "page": 5,
-      "path": "/m2-network/v3/unit/11/lesson/6/page/5"
+      "path": "/m2-network/v3/unit/11/lesson/7/page/5"
     }
   },
   {
@@ -7236,7 +7236,7 @@
       "id": "u7-advanced-08-reverse-proxy",
       "page_id": "advanced-source-08-page-05",
       "page": 5,
-      "path": "/m2-network/v3/unit/11/lesson/6/page/5"
+      "path": "/m2-network/v3/unit/11/lesson/7/page/5"
     }
   },
   {
@@ -7249,7 +7249,7 @@
       "id": "u7-advanced-09-pc에-설치하는-proxy",
       "page_id": "advanced-source-09-page-01",
       "page": 1,
-      "path": "/m2-network/v3/unit/11/lesson/5/page/1"
+      "path": "/m2-network/v3/unit/11/lesson/6/page/1"
     }
   },
   {
@@ -7262,7 +7262,7 @@
       "id": "u7-advanced-09-pc에-설치하는-proxy",
       "page_id": "advanced-source-09-page-01",
       "page": 1,
-      "path": "/m2-network/v3/unit/11/lesson/5/page/1"
+      "path": "/m2-network/v3/unit/11/lesson/6/page/1"
     }
   },
   {
@@ -7275,7 +7275,7 @@
       "id": "u7-advanced-09-pc에-설치하는-proxy",
       "page_id": "advanced-source-09-page-02",
       "page": 2,
-      "path": "/m2-network/v3/unit/11/lesson/5/page/2"
+      "path": "/m2-network/v3/unit/11/lesson/6/page/2"
     }
   },
   {
@@ -7288,7 +7288,7 @@
       "id": "u7-advanced-09-pc에-설치하는-proxy",
       "page_id": "advanced-source-09-page-02",
       "page": 2,
-      "path": "/m2-network/v3/unit/11/lesson/5/page/2"
+      "path": "/m2-network/v3/unit/11/lesson/6/page/2"
     }
   },
   {
@@ -7301,7 +7301,7 @@
       "id": "u7-advanced-09-pc에-설치하는-proxy",
       "page_id": "advanced-source-09-page-03",
       "page": 3,
-      "path": "/m2-network/v3/unit/11/lesson/5/page/3"
+      "path": "/m2-network/v3/unit/11/lesson/6/page/3"
     }
   },
   {
@@ -7314,7 +7314,7 @@
       "id": "u7-advanced-09-pc에-설치하는-proxy",
       "page_id": "advanced-source-09-page-03",
       "page": 3,
-      "path": "/m2-network/v3/unit/11/lesson/5/page/3"
+      "path": "/m2-network/v3/unit/11/lesson/6/page/3"
     }
   },
   {
@@ -7327,7 +7327,7 @@
       "id": "u7-advanced-09-pc에-설치하는-proxy",
       "page_id": "advanced-source-09-page-04",
       "page": 4,
-      "path": "/m2-network/v3/unit/11/lesson/5/page/4"
+      "path": "/m2-network/v3/unit/11/lesson/6/page/4"
     }
   },
   {
@@ -7340,7 +7340,7 @@
       "id": "u7-advanced-09-pc에-설치하는-proxy",
       "page_id": "advanced-source-09-page-04",
       "page": 4,
-      "path": "/m2-network/v3/unit/11/lesson/5/page/4"
+      "path": "/m2-network/v3/unit/11/lesson/6/page/4"
     }
   },
   {
@@ -7353,7 +7353,7 @@
       "id": "u7-advanced-09-pc에-설치하는-proxy",
       "page_id": "advanced-source-09-page-05",
       "page": 5,
-      "path": "/m2-network/v3/unit/11/lesson/5/page/5"
+      "path": "/m2-network/v3/unit/11/lesson/6/page/5"
     }
   },
   {
@@ -7366,7 +7366,7 @@
       "id": "u7-advanced-09-pc에-설치하는-proxy",
       "page_id": "advanced-source-09-page-05",
       "page": 5,
-      "path": "/m2-network/v3/unit/11/lesson/5/page/5"
+      "path": "/m2-network/v3/unit/11/lesson/6/page/5"
     }
   },
   {
@@ -7379,7 +7379,7 @@
       "id": "u7-advanced-09-pc에-설치하는-proxy",
       "page_id": "advanced-source-09-page-06",
       "page": 6,
-      "path": "/m2-network/v3/unit/11/lesson/5/page/6"
+      "path": "/m2-network/v3/unit/11/lesson/6/page/6"
     }
   },
   {
@@ -7392,7 +7392,7 @@
       "id": "u7-advanced-09-pc에-설치하는-proxy",
       "page_id": "advanced-source-09-page-06",
       "page": 6,
-      "path": "/m2-network/v3/unit/11/lesson/5/page/6"
+      "path": "/m2-network/v3/unit/11/lesson/6/page/6"
     }
   },
   {
@@ -14334,10 +14334,10 @@
     "source_page": 1,
     "destination": {
       "kind": "lesson",
-      "id": "advanced-forward-proxy",
+      "id": "advanced-forward-proxy-inspection",
       "page_id": "advanced-source-07-page-01",
-      "page": 8,
-      "path": "/m2-network/v3/unit/11/lesson/4/page/8"
+      "page": 1,
+      "path": "/m2-network/v3/unit/11/lesson/5/page/1"
     }
   },
   {
@@ -14347,10 +14347,10 @@
     "source_page": 2,
     "destination": {
       "kind": "lesson",
-      "id": "advanced-forward-proxy",
+      "id": "advanced-forward-proxy-inspection",
       "page_id": "advanced-source-07-page-02",
-      "page": 9,
-      "path": "/m2-network/v3/unit/11/lesson/4/page/9"
+      "page": 2,
+      "path": "/m2-network/v3/unit/11/lesson/5/page/2"
     }
   },
   {
@@ -14360,10 +14360,10 @@
     "source_page": 3,
     "destination": {
       "kind": "lesson",
-      "id": "advanced-forward-proxy",
+      "id": "advanced-forward-proxy-inspection",
       "page_id": "advanced-source-07-page-03",
-      "page": 10,
-      "path": "/m2-network/v3/unit/11/lesson/4/page/10"
+      "page": 3,
+      "path": "/m2-network/v3/unit/11/lesson/5/page/3"
     }
   },
   {
@@ -14373,10 +14373,10 @@
     "source_page": 4,
     "destination": {
       "kind": "lesson",
-      "id": "advanced-forward-proxy",
+      "id": "advanced-forward-proxy-inspection",
       "page_id": "advanced-source-07-page-04",
-      "page": 11,
-      "path": "/m2-network/v3/unit/11/lesson/4/page/11"
+      "page": 4,
+      "path": "/m2-network/v3/unit/11/lesson/5/page/4"
     }
   },
   {
@@ -14386,10 +14386,10 @@
     "source_page": 5,
     "destination": {
       "kind": "lesson",
-      "id": "advanced-forward-proxy",
+      "id": "advanced-forward-proxy-inspection",
       "page_id": "advanced-source-07-page-05",
-      "page": 12,
-      "path": "/m2-network/v3/unit/11/lesson/4/page/12"
+      "page": 5,
+      "path": "/m2-network/v3/unit/11/lesson/5/page/5"
     }
   },
   {
@@ -14399,10 +14399,10 @@
     "source_page": 6,
     "destination": {
       "kind": "lesson",
-      "id": "advanced-forward-proxy",
+      "id": "advanced-forward-proxy-inspection",
       "page_id": "advanced-source-07-page-06",
-      "page": 13,
-      "path": "/m2-network/v3/unit/11/lesson/4/page/13"
+      "page": 6,
+      "path": "/m2-network/v3/unit/11/lesson/5/page/6"
     }
   },
   {
@@ -14412,10 +14412,10 @@
     "source_page": 7,
     "destination": {
       "kind": "lesson",
-      "id": "advanced-forward-proxy",
+      "id": "advanced-forward-proxy-inspection",
       "page_id": "advanced-source-07-page-07",
-      "page": 14,
-      "path": "/m2-network/v3/unit/11/lesson/4/page/14"
+      "page": 7,
+      "path": "/m2-network/v3/unit/11/lesson/5/page/7"
     }
   },
   {
@@ -14428,7 +14428,7 @@
       "id": "u7-advanced-08-reverse-proxy",
       "page_id": "advanced-source-08-page-01",
       "page": 1,
-      "path": "/m2-network/v3/unit/11/lesson/6/page/1"
+      "path": "/m2-network/v3/unit/11/lesson/7/page/1"
     }
   },
   {
@@ -14441,7 +14441,7 @@
       "id": "u7-advanced-08-reverse-proxy",
       "page_id": "advanced-source-08-page-02",
       "page": 2,
-      "path": "/m2-network/v3/unit/11/lesson/6/page/2"
+      "path": "/m2-network/v3/unit/11/lesson/7/page/2"
     }
   },
   {
@@ -14454,7 +14454,7 @@
       "id": "u7-advanced-08-reverse-proxy",
       "page_id": "advanced-source-08-page-03",
       "page": 3,
-      "path": "/m2-network/v3/unit/11/lesson/6/page/3"
+      "path": "/m2-network/v3/unit/11/lesson/7/page/3"
     }
   },
   {
@@ -14467,7 +14467,7 @@
       "id": "u7-advanced-08-reverse-proxy",
       "page_id": "advanced-source-08-page-04",
       "page": 4,
-      "path": "/m2-network/v3/unit/11/lesson/6/page/4"
+      "path": "/m2-network/v3/unit/11/lesson/7/page/4"
     }
   },
   {
@@ -14480,7 +14480,7 @@
       "id": "u7-advanced-08-reverse-proxy",
       "page_id": "advanced-source-08-page-05",
       "page": 5,
-      "path": "/m2-network/v3/unit/11/lesson/6/page/5"
+      "path": "/m2-network/v3/unit/11/lesson/7/page/5"
     }
   },
   {
@@ -14493,7 +14493,7 @@
       "id": "u7-advanced-09-pc에-설치하는-proxy",
       "page_id": "advanced-source-09-page-01",
       "page": 1,
-      "path": "/m2-network/v3/unit/11/lesson/5/page/1"
+      "path": "/m2-network/v3/unit/11/lesson/6/page/1"
     }
   },
   {
@@ -14506,7 +14506,7 @@
       "id": "u7-advanced-09-pc에-설치하는-proxy",
       "page_id": "advanced-source-09-page-02",
       "page": 2,
-      "path": "/m2-network/v3/unit/11/lesson/5/page/2"
+      "path": "/m2-network/v3/unit/11/lesson/6/page/2"
     }
   },
   {
@@ -14519,7 +14519,7 @@
       "id": "u7-advanced-09-pc에-설치하는-proxy",
       "page_id": "advanced-source-09-page-03",
       "page": 3,
-      "path": "/m2-network/v3/unit/11/lesson/5/page/3"
+      "path": "/m2-network/v3/unit/11/lesson/6/page/3"
     }
   },
   {
@@ -14532,7 +14532,7 @@
       "id": "u7-advanced-09-pc에-설치하는-proxy",
       "page_id": "advanced-source-09-page-04",
       "page": 4,
-      "path": "/m2-network/v3/unit/11/lesson/5/page/4"
+      "path": "/m2-network/v3/unit/11/lesson/6/page/4"
     }
   },
   {
@@ -14545,7 +14545,7 @@
       "id": "u7-advanced-09-pc에-설치하는-proxy",
       "page_id": "advanced-source-09-page-05",
       "page": 5,
-      "path": "/m2-network/v3/unit/11/lesson/5/page/5"
+      "path": "/m2-network/v3/unit/11/lesson/6/page/5"
     }
   },
   {
@@ -14558,7 +14558,7 @@
       "id": "u7-advanced-09-pc에-설치하는-proxy",
       "page_id": "advanced-source-09-page-06",
       "page": 6,
-      "path": "/m2-network/v3/unit/11/lesson/5/page/6"
+      "path": "/m2-network/v3/unit/11/lesson/6/page/6"
     }
   },
   {

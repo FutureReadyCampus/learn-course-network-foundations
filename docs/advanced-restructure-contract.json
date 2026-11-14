@@ -23,10 +23,14 @@
     },
     {
       "target_key": "u11-l05",
-      "lesson_id": "u7-advanced-09-pc에-설치하는-proxy"
+      "lesson_id": "advanced-forward-proxy-inspection"
     },
     {
       "target_key": "u11-l06",
+      "lesson_id": "u7-advanced-09-pc에-설치하는-proxy"
+    },
+    {
+      "target_key": "u11-l07",
       "lesson_id": "u7-advanced-08-reverse-proxy"
     },
     {
@@ -190,6 +194,7 @@
       "target_key": "u11-l04",
       "unit_number": 11,
       "title": "조직의 포워드 프록시와 접속 정책",
+      "identity": "new",
       "source_pages": [
         "adv-source-06-p01",
         "adv-source-06-p02",
@@ -197,7 +202,15 @@
         "adv-source-06-p04",
         "adv-source-06-p05",
         "adv-source-06-p06",
-        "adv-source-06-p07",
+        "adv-source-06-p07"
+      ]
+    },
+    {
+      "target_key": "u11-l05",
+      "unit_number": 11,
+      "title": "회사 프록시의 검사와 기록",
+      "identity": "new",
+      "source_pages": [
         "adv-source-07-p01",
         "adv-source-07-p02",
         "adv-source-07-p03",
@@ -208,7 +221,7 @@
       ]
     },
     {
-      "target_key": "u11-l05",
+      "target_key": "u11-l06",
       "unit_number": 11,
       "title": "PC의 로컬 프록시로 통신 살펴보기",
       "source_pages": [
@@ -221,7 +234,7 @@
       ]
     },
     {
-      "target_key": "u11-l06",
+      "target_key": "u11-l07",
       "unit_number": 11,
       "title": "리버스 프록시와 서버 앞단",
       "source_pages": [
@@ -234,16 +247,23 @@
     }
   ],
   "source_page_remapping": {
-    "adv-source-09-p01": "u11-l05",
-    "adv-source-09-p02": "u11-l05",
-    "adv-source-09-p03": "u11-l05",
-    "adv-source-09-p04": "u11-l05",
-    "adv-source-09-p05": "u11-l05",
-    "adv-source-09-p06": "u11-l05",
-    "adv-source-08-p01": "u11-l06",
-    "adv-source-08-p02": "u11-l06",
-    "adv-source-08-p03": "u11-l06",
-    "adv-source-08-p04": "u11-l06",
-    "adv-source-08-p05": "u11-l06"
+    "adv-source-07-p01": "u11-l05",
+    "adv-source-07-p02": "u11-l05",
+    "adv-source-07-p03": "u11-l05",
+    "adv-source-07-p04": "u11-l05",
+    "adv-source-07-p05": "u11-l05",
+    "adv-source-07-p06": "u11-l05",
+    "adv-source-07-p07": "u11-l05",
+    "adv-source-09-p01": "u11-l06",
+    "adv-source-09-p02": "u11-l06",
+    "adv-source-09-p03": "u11-l06",
+    "adv-source-09-p04": "u11-l06",
+    "adv-source-09-p05": "u11-l06",
+    "adv-source-09-p06": "u11-l06",
+    "adv-source-08-p01": "u11-l07",
+    "adv-source-08-p02": "u11-l07",
+    "adv-source-08-p03": "u11-l07",
+    "adv-source-08-p04": "u11-l07",
+    "adv-source-08-p05": "u11-l07"
   }
 }

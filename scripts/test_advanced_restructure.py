@@ -83,7 +83,7 @@ class AdvancedRestructureTest(unittest.TestCase):
                 "state": json.dumps({"check": {"complete": True}})}
 
     def test_all_source_pages_and_assets_are_preserved(self):
-        self.assertEqual([6, 9, 10, 14, 6, 5, 9, 11, 24, 8, 8, 7, 4, 11, 9, 13, 20, 5, 4, 4, 7],
+        self.assertEqual([6, 9, 10, 7, 7, 6, 5, 9, 11, 24, 8, 8, 7, 4, 11, 9, 13, 20, 5, 4, 4, 7],
                          [len(l["pages"]) for l in self.plan["lessons"]])
         self.assertEqual(self.plan["counts"]["technical_pages"], 194)
         self.assertEqual(self.plan["counts"]["excluded_pages"], 9)
@@ -112,7 +112,7 @@ class AdvancedRestructureTest(unittest.TestCase):
                              and alias["source_lesson_id"] in current_stage_unit10
                              for alias in self.plan["aliases"]))
 
-    def test_applied_course_has_fifteen_units_and_twenty_one_advanced_lessons(self):
+    def test_applied_course_has_fifteen_units_and_twenty_two_advanced_lessons(self):
         unit_ids = [unit["id"] for unit in self.applied_catalog["units"]]
         self.assertEqual(len(unit_ids), 15)
         self.assertEqual(unit_ids[10:], ["network-devices", "router-and-nat", "load-balancing",
@@ -121,9 +121,10 @@ class AdvancedRestructureTest(unittest.TestCase):
                         if lesson["unit"] in set(unit_ids[10:])]
         self.assertEqual(advanced_ids, [item["id"] for item in self.plan["lessons"]])
         # Unit 12 Lesson 3 was deliberately rewritten from its 24 source pages into 7 (#209),
-        # so the applied course carries 17 fewer pages than the preserved source plan.
+        # and the Unit 11 redesign rewrote its 50 source-plan pages into 46, so the applied
+        # course carries 17 + 4 fewer pages than the preserved source plan.
         self.assertEqual(sum(len(lesson["pages"]) for lesson in self.applied_catalog["lessons"]
-                             if lesson["unit"] in set(unit_ids[10:])), 194 - 17)
+                             if lesson["unit"] in set(unit_ids[10:])), 194 - 21)
         self.assertEqual(len(self.applied_catalog["route_aliases"]), 1321)
         self.assertEqual(self.applied_catalog["route_aliases"], self.plan["aliases"])
         self.assertEqual(self.applied_catalog["advanced_completion_migration"], {
@@ -131,7 +132,7 @@ class AdvancedRestructureTest(unittest.TestCase):
             "from_version": "network-1f62c2b58554ec7c73365fc47409710d3cdca621",
             "target_unit_ids": ["network-devices", "router-and-nat", "load-balancing",
                                 "vpn-and-security", "network-security-solutions"],
-            "aliases_sha256": "e4e4c41082b2b7142c0ca5b1b27673c52b47e9ee3afaa0948e5ae40bd908359a",
+            "aliases_sha256": "7a7e9cfc71351301eca1a19332f76e9ca6f64b2bb5ce9583b1e6f97843efe1dc",
         })
 
     def test_guide_and_print_material_are_excluded_from_the_new_course(self):
@@ -149,22 +150,25 @@ class AdvancedRestructureTest(unittest.TestCase):
         for lesson in self.plan["lessons"]:
             self.assertEqual(lesson["id"] in old_ids, lesson["identity"] == "preserved")
 
-    def test_merged_page_offsets_do_not_open_wrong_source(self):
-        for old_page, new_page in [(1, 8), (2, 9), (7, 14)]:
-            mapped = resolve_saved_location(self.plan, "learn-v2",
-                f"/m2-network/v2/unit/11/lesson/7/page/{old_page}")
-            self.assertEqual(mapped["id"], "advanced-forward-proxy")
-            self.assertEqual(mapped["page"], new_page)
+    def test_forward_proxy_sources_do_not_open_wrong_lesson(self):
+        for old_lesson, lesson_id in [(6, "advanced-forward-proxy"),
+                                      (7, "advanced-forward-proxy-inspection")]:
+            for page in [1, 2, 7]:
+                mapped = resolve_saved_location(self.plan, "learn-v2",
+                    f"/m2-network/v2/unit/11/lesson/{old_lesson}/page/{page}")
+                self.assertEqual((mapped["id"], mapped["page"]), (lesson_id, page))
 
     def test_forward_proxy_split_routes_local_proxy_and_reverse_proxy(self):
         expected = [
-            ("/m2-network/v2/unit/11/lesson/9/page/1", "u7-advanced-09-pc에-설치하는-proxy", 1),
-            ("/m2-network/v2/unit/11/lesson/9/page/6", "u7-advanced-09-pc에-설치하는-proxy", 6),
-            ("/m2-network/v2/unit/11/lesson/8/page/1", "u7-advanced-08-reverse-proxy", 1),
+            ("/m2-network/v2/unit/11/lesson/7/page/1", "advanced-forward-proxy-inspection", 5, 1),
+            ("/m2-network/v2/unit/11/lesson/9/page/1", "u7-advanced-09-pc에-설치하는-proxy", 6, 1),
+            ("/m2-network/v2/unit/11/lesson/9/page/6", "u7-advanced-09-pc에-설치하는-proxy", 6, 6),
+            ("/m2-network/v2/unit/11/lesson/8/page/1", "u7-advanced-08-reverse-proxy", 7, 1),
         ]
-        for path, lesson_id, page in expected:
+        for path, lesson_id, lesson_number, page in expected:
             mapped = resolve_saved_location(self.plan, "learn-v2", path)
-            self.assertEqual((mapped["id"], mapped["page"]), (lesson_id, page))
+            self.assertEqual((mapped["id"], mapped["page"], mapped["path"]), (
+                lesson_id, page, f"/m2-network/v3/unit/11/lesson/{lesson_number}/page/{page}"))
 
     def test_split_boundaries_and_reference_pages(self):
         for old_page, target, new_page in [(5, "advanced-security-placement", 5),
@@ -206,20 +210,20 @@ class AdvancedRestructureTest(unittest.TestCase):
         self.assertFalse(self.evaluate(rows)[lesson["id"]]["completion_eligible"])
 
     def test_partial_merge_and_partial_publication_do_not_expand(self):
-        lesson = self.by_key["u11-l04"]
+        lesson = self.by_key["u12-l03"]
         sources = lesson["source_lesson_ids"]
         rows = {sources[0]: self.completed_row()}
         before = copy.deepcopy(rows)
         result = self.evaluate(rows, sources[:1])[lesson["id"]]
         self.assertFalse(result["completion_eligible"])
         self.assertFalse(result["publication_eligible"])
-        self.assertEqual(len(result["missing_completion_evidence"]), 1)
+        self.assertEqual(len(result["missing_completion_evidence"]), 2)
         self.assertEqual(rows, before)
         rows.update({s: self.completed_row() for s in sources[1:]})
         result = self.evaluate(rows, sources)[lesson["id"]]
         self.assertTrue(result["completion_eligible"])
         self.assertTrue(result["publication_eligible"])
-        self.assertEqual(len(result["source_evidence"]), 2)
+        self.assertEqual(len(result["source_evidence"]), 3)
 
     def test_explicit_whole_completion_can_cover_unchanged_split_ranges(self):
         source = self.by_key["u15-l01"]["source_lesson_ids"][0]
