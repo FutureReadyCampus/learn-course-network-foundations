@@ -18,6 +18,11 @@ page_metadata:
     alt: "방화벽 규칙으로 사내 PC 192.168.10.0/24의 직접 외부 연결은 막고 프록시 192.168.10.5의 연결만 허용하는 모습입니다."
     caption: "프록시 설정만으로는 직접 길이 남으므로 방화벽이 그 길을 막고, 좁은 허용 규칙을 위에 둡니다."
     after_paragraph: 3
+  - file: assets/animations/u11-l05-p1b-rule-order.svg
+    title: "방화벽 규칙은 위에서부터 읽어요"
+    alt: "프록시 192.168.10.5의 요청이 차단 규칙이 위에 있으면 PC 대역 규칙에 먼저 맞아 막히고, 좁은 허용 규칙이 위에 있으면 허용되는 모습입니다."
+    caption: "규칙은 위에서부터 처음 맞는 줄을 쓰므로, 프록시를 허용하는 좁은 규칙을 위에 둡니다."
+    after_paragraph: 4
   questions:
   - id: u11-l05-p01-q01
     kind: choice
@@ -128,6 +133,11 @@ page_metadata:
     alt: "프록시가 PC와 AI 서비스 사이의 TLS를 둘로 나눠 맺고, 풀린 요청에서 휴대전화 번호 형식을 찾아 업로드를 막는 모습입니다."
     caption: "TLS 검사는 회사 CA 신뢰가 있을 때만 되며 키 관리와 경고 무시 금지가 따릅니다."
     after_paragraph: 2
+  - file: assets/animations/u11-l05-p3b-trust-list.svg
+    title: "회사 CA를 믿는 PC만 열려요"
+    alt: "프록시가 회사 CA 서명 인증서를 내밀면, 회사 CA가 신뢰 목록에 있는 사내 PC는 연결되고 회사 CA가 없는 기기는 인증서 경고를 보는 모습입니다."
+    caption: "회사 CA를 신뢰 목록에 설치한 PC만 프록시의 인증서를 받아들이고, 없는 기기는 경고를 봅니다."
+    after_paragraph: 3
   questions:
   - id: u11-l05-p03-q01
     kind: choice
@@ -233,10 +243,10 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-07-page-06
   illustrations:
-  - file: assets/animations/u11-fwd-07-06-combined-box.svg
-    title: 보호 기능을 함께 두기
-    alt: '보호 기능을 함께 두기: 물리적으로는 한 장비예요 → 어떤 기능은 패킷을 경로에서 검사하고 → 어떤 기능은 연결을 받아 중계해요 → 경로를 도식으로 그려 보면 정확해요'
-    caption: 한 장비 안에 여러 기능이 들어가요
+  - file: assets/animations/u11-l05-p5-combined-box.svg
+    title: "한 상자에 IPS와 프록시가 같이 있다면?"
+    alt: "통합 보안 장비 한 대 안에서 웹·AI 요청은 방화벽과 프록시를, 메일·화상 회의는 방화벽과 IPS를 거치고, 프록시 기능만 바빠지면 웹·AI만 느려지는 모습입니다."
+    caption: "한 상자여도 기능마다 처리 경로가 달라서, 느려지는 트래픽도 기능별로 갈립니다."
     after_paragraph: 2
   questions:
   - id: u11-l05-p06-q01

@@ -68,11 +68,16 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-09-page-02
   illustrations:
-  - file: assets/animations/u11-l06-p02-local-proxy.svg
+  - file: assets/animations/u11-l06-p02-local-relay.svg
     title: "내 PC 안에 중계소 세우기"
-    alt: "지우 PC 안에 로컬 프록시 127.0.0.1:8080을 세우면 AI 플러그인의 요청이 먼저 도착해 한 건씩 목록으로 보이는 모습입니다."
-    caption: "로컬 프록시는 내 PC 안의 포워드 프록시이며, 내 통신이거나 승인된 범위만 봅니다."
+    alt: "지우 PC에서 플러그인이 AI 서비스로 바로 보내던 요청이, PC 안에 로컬 프록시가 생기면 먼저 도착해 한 건씩 목록으로 남는 모습입니다."
+    caption: "PC 안에 프록시가 하나 더 생기는 구조입니다."
     after_paragraph: 1
+  - file: assets/animations/u11-l06-p02b-scope.svg
+    title: "봐도 되는 통신은 어디까지?"
+    alt: "지우의 테스트 PC에서 가짜 데이터를 보는 것은 괜찮고, 박 팀장 PC에 몰래 도구를 설치하는 것은 안 된다는 비교입니다."
+    caption: "봐도 되는 통신은 내 것이거나 조직이 승인한 범위뿐입니다."
+    after_paragraph: 3
   questions:
   - id: u11-l06-p02-q01
     kind: choice
@@ -123,11 +128,16 @@ page_metadata:
     after_paragraph: 2
 - page_id: advanced-source-09-page-03
   illustrations:
-  - file: assets/animations/u11-fwd-09-03-loopback.svg
-    title: "Loopback에 Proxy 설정"
-    alt: "Loopback에 Proxy 설정: 브라우저에 127.0.0.1:8080을 적어요 → 연결은 같은 PC 안에서만 오가요 → 포트 8080이 어느 프로그램인지 가려 줘요 → 도구가 꺼져 있으면 연결할 수 없어요"
-    caption: "127.0.0.1은 내 컴퓨터를 가리켜요"
+  - file: assets/animations/u11-l06-p03-loopback-port.svg
+    title: "127.0.0.1:8080은 어디로 갈까?"
+    alt: "브라우저 프록시 칸의 127.0.0.1:8080은 PC 밖으로 나가지 않고 이 PC의 8080번 포트로 가며, 도구가 꺼져 있으면 그 포트가 비어 연결이 거절됩니다."
+    caption: "127.0.0.1은 이 PC 자신이고 8080은 도구가 기다리는 포트입니다."
     after_paragraph: 2
+  - file: assets/animations/u11-l06-p03b-upstream.svg
+    title: "도구 뒤에 회사 프록시 잇기"
+    alt: "사무실 PC에서 프록시 도구가 바로 외부로 나가는 길은 막혀 있어, 도구의 상위 프록시 칸에 회사 프록시를 적어 그 뒤로 AI API에 연결합니다."
+    caption: "프록시 도구 뒤에 회사 프록시를 한 번 더 잇습니다."
+    after_paragraph: 3
   questions:
   - id: u11-l06-p03-q01
     kind: choice
@@ -178,11 +188,16 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-09-page-04
   illustrations:
-  - file: assets/animations/u11-fwd-09-04-local-path.svg
-    title: "로컬 Proxy를 통과하는 경로"
-    alt: "로컬 Proxy를 통과하는 경로: 브라우저와 Proxy 사이의 연결이 있어요 → Proxy와 서버 사이의 연결이 따로 있어요 → HTTPS는 구간별로 따로 암호화될 수 있어요 → 허가 없이 복호화해서는 안 돼요"
-    caption: "두 개의 구간을 차례로 따라가요"
+  - file: assets/animations/u11-l06-p04-two-tls.svg
+    title: "HTTPS를 여는 방법: 연결 둘"
+    alt: "처음엔 암호문을 그대로 전달하던 도구가, 앱과 AI 서비스 두 연결에서 TLS를 따로 맺으면 도구 안에서만 평문이 보이는 과정입니다."
+    caption: "내용을 보려면 도구가 두 연결에서 TLS를 따로 맺어야 합니다."
     after_paragraph: 1
+  - file: assets/animations/u11-l06-p04b-root-trust.svg
+    title: "경고는 TLS가 일하는 증거"
+    alt: "도구가 자기 루트 인증서로 서명한 인증서를 내밀면 앱이 모르는 발급자라며 경고하고, PC 주인이 루트 인증서를 신뢰 목록에 올리면 받아들이며 분석이 끝나면 지웁니다."
+    caption: "도구가 HTTPS를 여는 힘은 PC 주인이 준 신뢰에서 나옵니다."
+    after_paragraph: 3
   questions:
   - id: u11-l06-p04-q01
     kind: choice
@@ -233,11 +248,16 @@ page_metadata:
     after_paragraph: 4
 - page_id: advanced-source-09-page-05
   illustrations:
-  - file: assets/animations/u11-fwd-09-05-stream.svg
-    title: "Stream 수준의 해석"
-    alt: "Stream 수준의 해석: 패킷은 조각으로 도착해요 → 조각을 이어야 요청 전체가 보여요 → 소켓에서는 이어진 흐름으로 읽어요 → TLS 내용은 별도 설정이 있어야 보여요"
-    caption: "조각난 패킷을 하나의 요청으로 봐요"
-    after_paragraph: 1
+  - file: assets/animations/u11-l06-p05-stream-view.svg
+    title: "조각 대신 요청 한 건으로"
+    alt: "요청 한 건이 여러 패킷 조각으로 나뉘어 가고, 캡처 도구는 조각을 그대로 보지만 로컬 프록시는 이어 붙인 Stream을 요청 한 건으로 보며, 이어 붙여도 TLS 암호문이면 읽을 수 없는 모습입니다."
+    caption: "Stream을 이어 붙이는 것과 TLS 암호를 푸는 것은 별개입니다."
+    after_paragraph: 3
+  - file: assets/animations/u11-l06-p05b-base64-size.svg
+    title: "요청 본문 4MB의 정체"
+    alt: "3MB 가짜 평면도가 base64 글자로 바뀌어 약 4MB 요청 본문이 되고, 되돌리면 원본 도면과 같아 도면 파일 전체가 외부 AI API로 가는 것을 보여 줍니다."
+    caption: "크기가 약 4/3배가 된 것은 base64 때문이며 본문은 도면 전체입니다."
+    after_paragraph: 4
   questions:
   - id: u11-l06-p05-q01
     kind: choice

@@ -71,11 +71,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-08-page-02
   illustrations:
-  - file: assets/animations/u11-reverse-ips.svg
-    title: "IPS · 앞단에서의 방어"
-    alt: "서버 앞 IPS가 정상 패킷은 통과시키고 공격 패턴은 차단하며, 암호화된 HTTPS 본문은 그대로 읽기 어렵다는 그림입니다."
-    caption: "IPS가 볼 수 있는 정보는 위치와 암호화에 따라 달라집니다."
-    after_paragraph: 1
+  - file: assets/animations/u11-l07-p02-ips-pass-block.svg
+    title: "IPS는 대역·포트로 걸러요"
+    alt: "외부 출발지의 요청은 IPS를 통과하고 처음 보는 해외 대역은 막히지만, HTTPS로 암호화된 요청 속 내용은 IPS가 읽지 못해 내용 검사는 TLS를 푼 뒤로 넘기는 모습입니다."
+    caption: "IPS는 대역·포트로 거르고, 요청 내용 검사는 TLS를 푼 뒤로 넘깁니다."
+    after_paragraph: 3
   questions:
   - id: u11-l07-p02-q01
     kind: choice
@@ -126,10 +126,10 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-08-page-03
   illustrations:
-  - file: assets/animations/u11-reverse-tls.svg
-    title: "SSL Accelerator와 복호화"
-    alt: "브라우저가 앞단 Proxy와 TLS 연결을 맺고, Proxy가 내부 서버로 요청을 전달하는 모습입니다."
-    caption: "TLS 종단 Proxy는 서버 대신 HTTPS 연결을 받아 그 자리에서 암호를 풉니다."
+  - file: assets/animations/u11-l07-p03-tls-ends-at-front.svg
+    title: "TLS는 앞단에서 끝나요"
+    alt: "고객 브라우저가 앞단 198.51.100.25:443과 TLS 연결을 맺으면 앞단이 그 연결을 끝내고, 풀린 요청을 AI 서버 192.168.10.50:8080으로 넘겨 뒤의 검사 장치가 내용을 볼 수 있게 되는 모습입니다."
+    caption: "앞단이 TLS를 끝내야 그 뒤에서 요청 내용을 볼 수 있습니다."
     after_paragraph: 1
   questions:
   - id: u11-l07-p03-q01
@@ -181,11 +181,16 @@ page_metadata:
     after_paragraph: 2
 - page_id: advanced-source-08-page-04
   illustrations:
-  - file: assets/animations/u11-reverse-waf.svg
-    title: "WAF · 웹 요청을 검사"
-    alt: "WAF가 정상 요청은 서버로 전달하고 웹 공격 패턴은 차단하지만 모든 공격을 찾지는 못한다는 그림입니다."
-    caption: "WAF는 웹 요청의 내용을 보고 허용하거나 차단합니다."
+  - file: assets/animations/u11-l07-p04-waf-reads-request.svg
+    title: "WAF는 풀린 요청의 내용을 봐요"
+    alt: "TLS가 풀린 뒤에 놓인 WAF가 정상 요청 /history?customer=1042는 AI 서버로 넘기고 customer=1042' OR '1'='1 같은 공격 요청은 막지만, 규칙이 맞지 않으면 오탐과 미탐이 생기는 모습입니다."
+    caption: "WAF는 풀린 요청의 내용을 읽고 허용하거나 차단합니다."
     after_paragraph: 1
+  - file: assets/animations/u11-l07-p04b-front-order.svg
+    title: "앞단 장치는 순서가 중요해요"
+    alt: "고객 요청이 IPS, TLS 종단 프록시, WAF, AI 서버 순서로 지나며 각 장치가 대역·포트, TLS 연결, 풀린 요청 내용, 질문 처리처럼 서로 다른 것을 보는 모습입니다."
+    caption: "장치마다 볼 수 있는 것이 달라서 설계도에 순서를 적습니다."
+    after_paragraph: 3
   questions:
   - id: u11-l07-p04-q01
     kind: choice
@@ -241,6 +246,11 @@ page_metadata:
     alt: "모든 시연 요청이 지나는 앞단 한 대가 멈추면 AI 서버가 멀쩡해도 서비스 전체가 멈추고, 앞단을 이중화해 대비하는 모습입니다."
     caption: "앞단은 단일 장애점이므로 이중화가 필요하고 그만큼 비용과 설정이 늘어납니다."
     after_paragraph: 2
+  - file: assets/animations/u11-l07-p05b-client-address.svg
+    title: "서버 기록에는 누구 주소가 남을까?"
+    alt: "AI 서버가 연결을 받는 상대는 앞단이라 서버 기록에 고객 주소가 보이지 않지만, 앞단이 X-Forwarded-For 헤더로 고객 192.0.2.77을 덧붙여 넘기면 기록에 남는 모습입니다."
+    caption: "앞단이 원래 고객 주소를 헤더에 덧붙여야 서버 기록에 남습니다."
+    after_paragraph: 3
   questions:
   - id: u11-l07-p05-q01
     kind: choice
@@ -291,11 +301,16 @@ page_metadata:
     after_paragraph: 2
 - page_id: u11-l07-page-06
   illustrations:
-  - file: assets/animations/u11-reverse-compare.svg
-    title: "Reverse Proxy로 서버 보호"
-    alt: "Forward Proxy는 클라이언트를 대신하고 Reverse Proxy는 서버를 대신하며, 이번 Unit의 세 가지 구조를 정리하는 표입니다."
-    caption: "Forward와 Reverse는 대신하는 방향이 다릅니다."
+  - file: assets/animations/u11-l07-p06-forward-vs-reverse.svg
+    title: "누구 편에 서 있느냐가 달라요"
+    alt: "포워드 프록시는 직원 PC 편에서 안쪽 연결을 받아 바깥 AI 서비스로 내보내고, 리버스 프록시는 서버 편에서 고객의 바깥 연결을 받아 사내 AI 서버로 넘기는 같은 모양의 두 구조입니다."
+    caption: "포워드와 리버스는 연결을 두 개 맺는 같은 모양이고, 누구 편인지만 다릅니다."
     after_paragraph: 1
+  - file: assets/animations/u11-l07-p06b-next-unit12.svg
+    title: "다음 이야기: 앞단은 아직 종이 위"
+    alt: "설계한 앞단은 아직 종이 위에 있고, 고객사에서는 사설 주소 192.168.10.50:8080에 닿지 않아서 공인 주소 198.51.100.25로 온 연결이 사무실 안까지 닿는 방법을 Unit 12에서 따지는 모습입니다."
+    caption: "공인 주소로 온 연결이 사무실 안 서버까지 닿는 길은 Unit 12에서 따집니다."
+    after_paragraph: 14
   questions:
   - id: u11-l07-p06-q01
     kind: choice

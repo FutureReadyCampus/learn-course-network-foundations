@@ -68,11 +68,16 @@ page_metadata:
       after_paragraph: 2
 - page_id: advanced-source-05-page-02
   illustrations:
-  - file: assets/animations/u11-oop-mirroring.svg
-    title: "Mirroring · 패킷을 복사하기"
-    alt: "스위치가 원본 패킷은 서버로 보내고 같은 내용을 관찰용 포트의 분석 장치로 복사하는 모습입니다."
-    caption: "포트 미러링은 복사본을 분석 장치로 보냅니다."
-    after_paragraph: 0
+  - file: assets/animations/u11-l03-p02-mirroring-tap.svg
+    title: "복사본 만드는 두 방법"
+    alt: "지우 PC의 통신 중 게이트웨이 쪽 포트를 스위치가 복사해 원본은 게이트웨이로, 복사본은 센서로 보내고, TAP은 회선에 끼워 복사본을 여러 장비에 나눠 주는 모습입니다."
+    caption: "포트 미러링은 스위치가, TAP은 복사 전용 장비가 복사본을 만듭니다."
+    after_paragraph: 2
+  - file: assets/animations/u11-l03-p02b-copy-point.svg
+    title: "복사 지점에 따라 보이는 주소"
+    alt: "게이트웨이 안쪽에서 복사하면 PC마다 다른 사설 주소가 보이고, 바깥에서 복사하면 모두 본사 공인 주소 198.51.100.25로 보이는 모습입니다."
+    caption: "복사 지점은 알고 싶은 것에 맞춰 정합니다."
+    after_paragraph: 4
   questions:
   - id: u11-l03-p02-q01
     kind: choice
@@ -123,11 +128,16 @@ page_metadata:
       after_paragraph: 2
 - page_id: advanced-source-05-page-03
   illustrations:
-  - file: assets/animations/u11-oop-read-only.svg
-    title: "Read only와 차단의 차이"
-    alt: "센서가 이상한 패킷을 발견해도 원본은 서버로 가고, 차단은 경로 안 Inline 장치가 맡는 모습입니다."
-    caption: "발견하는 일과 차단하는 일은 다릅니다."
-    after_paragraph: 2
+  - file: assets/animations/u11-l03-p03-read-only-gap.svg
+    title: "봤는데 왜 못 막았을까"
+    alt: "박 팀장 PC의 원본은 피싱 사이트로 곧장 가고 복사본만 센서로 가서, 센서가 경보를 울릴 때는 이미 도착해 있으므로 위험 주소를 경로 안 차단 규칙에 넣어야 막는다는 그림입니다."
+    caption: "센서는 발견하고, 막는 일은 경로 안 차단 규칙이 합니다."
+    after_paragraph: 3
+  - file: assets/animations/u11-l03-p03b-rst-race.svg
+    title: "경로 밖에서 끊어 보기"
+    alt: "센서가 서버인 척 보낸 가짜 RST가 진짜 응답보다 먼저 도착하면 연결이 끊기지만, 진짜 응답이 먼저 오면 실패하는 모습입니다."
+    caption: "RST 끼어들기는 이길 보장이 없는 보조 수단입니다."
+    after_paragraph: 4
   questions:
   - id: u11-l03-p03-q01
     kind: choice
@@ -178,11 +188,16 @@ page_metadata:
       after_paragraph: 2
 - page_id: advanced-source-05-page-06
   illustrations:
-  - file: assets/animations/u11-oop-dpi.svg
-    title: "DPI · Payload까지 살펴보기"
-    alt: "패킷을 송장(헤더)과 내용물(Payload)로 나누어 헤더만 보는 SPI와 안쪽까지 보는 DPI를 비교합니다."
-    caption: "DPI는 헤더를 넘어 Payload까지 검사합니다."
-    after_paragraph: 1
+  - file: assets/animations/u11-l03-p04-dpi-payload.svg
+    title: "송장과 내용물, DPI"
+    alt: "패킷을 송장(헤더)과 내용물(Payload)로 나누어, 주소·포트만 보는 얕은 검사와 Payload 안까지 보는 DPI를 견주고, TLS로 암호화된 Payload는 센서가 읽지 못한다는 그림입니다."
+    caption: "DPI는 Payload까지 보지만 TLS 암호는 열쇠 없이 못 읽습니다."
+    after_paragraph: 3
+  - file: assets/animations/u11-l03-p04b-https-view.svg
+    title: "HTTPS에서 센서가 보는 것"
+    alt: "센서는 헤더의 주소·포트·시각·전송량은 보고, SNI 서버 이름은 평문일 때만 보며, TLS로 암호화된 질문 내용은 읽지 못한다는 그림입니다."
+    caption: "센서가 알 수 있는 것은 누가 언제 어디로 얼마나까지입니다."
+    after_paragraph: 4
   questions:
   - id: u11-l03-p05-q01
     kind: choice
@@ -233,11 +248,16 @@ page_metadata:
       after_paragraph: 3
 - page_id: advanced-source-05-page-07
   illustrations:
-  - file: assets/animations/u11-oop-privacy.svg
-    title: "망중립과 사생활의 문제"
-    alt: "통신 내용을 열어 보면 악성 단서와 사적 정보가 함께 보이므로 목적·범위·기간·권한을 정해야 한다는 그림입니다."
-    caption: "검사 범위는 목적과 권한에 맞춰 정해야 합니다."
+  - file: assets/animations/u11-l03-p05-save-everything.svg
+    title: "다 저장하면 생기는 일"
+    alt: "업무 통신과 사적인 통신이 함께 지나가는 회선의 복사본을 통째로 저장하면 사생활을 건드리므로, 주소·SNI·시각·전송량처럼 필요한 것만 남기도록 범위를 좁히는 모습입니다."
+    caption: "볼 수 있다고 모두 저장하지 않고 필요한 것만 남깁니다."
     after_paragraph: 1
+  - file: assets/animations/u11-l03-p05b-net-neutral.svg
+    title: "회사 센서와 망중립성"
+    alt: "회사 업무망에서 직원 통신을 보는 일은 사내 규정과 동의의 문제이고, 사업자가 특정 서비스를 차별하는 일은 망중립성이라는 별개의 논의라는 그림입니다."
+    caption: "회사 센서의 수집과 사업자의 서비스 차별은 서로 다른 논의입니다."
+    after_paragraph: 2
   questions:
   - id: u11-l03-p06-q01
     kind: choice
@@ -288,11 +308,16 @@ page_metadata:
       after_paragraph: 5
 - page_id: advanced-source-05-page-08
   illustrations:
-  - file: assets/animations/u11-oop-storage.svg
-    title: "저장과 분석의 부하"
-    alt: "받기, 분석, 저장 세 단계 중 어느 단계든 느리면 누락이 생기고 1Gbps는 초당 약 125MB라는 점을 보여 줍니다."
-    caption: "수집·분석·저장 전체 처리 용량을 봐야 합니다."
-    after_paragraph: 2
+  - file: assets/animations/u11-l03-p06-port-overflow.svg
+    title: "관찰용 포트가 넘칠 때"
+    alt: "보내기·받기 양방향을 합친 최대 2Gbps의 복사본이 1Gbps 관찰용 포트로 몰리면 넘친 만큼 스위치에서 버려져 센서 기록에만 빈틈이 생기고 원본 통신은 그대로라는 그림입니다."
+    caption: "복사본이 관찰용 포트를 넘치면 센서 기록만 비고 원본은 영향이 없습니다."
+    after_paragraph: 1
+  - file: assets/animations/u11-l03-p06b-sensor-stages.svg
+    title: "센서 안에서 기록이 비는 곳"
+    alt: "센서 안에서 NIC, 메모리 버퍼, 캡처·CPU, 디스크 어느 단계가 느려도 패킷이 버려지거나 기록이 끊기며, 1Gbps는 초당 약 125MB라는 점을 보여 줍니다."
+    caption: "NIC에서 디스크까지 어느 한 단계만 느려도 기록에 빈틈이 생깁니다."
+    after_paragraph: 3
   questions:
   - id: u11-l03-p07-q01
     kind: choice
@@ -343,11 +368,11 @@ page_metadata:
       after_paragraph: 4
 - page_id: advanced-source-05-page-10
   illustrations:
-  - file: assets/animations/u11-oop-compare.svg
-    title: "Inline과 Out of path 비교"
-    alt: "Inline은 실시간 차단에, Out of path는 영향 없는 사후 분석에 알맞다는 비교입니다."
-    caption: "목적에 따라 알맞은 구조가 다릅니다."
-    after_paragraph: 1
+  - file: assets/animations/u11-l03-p07-request-split.svg
+    title: "요청마다 알맞은 자리"
+    alt: "랜섬웨어 주소 즉시 차단은 경로 안 게이트웨이 규칙에, AI 서비스 사용 통계와 사고 증거 찾기는 경로 밖 센서에 맡기고 증거는 누락이 없게 여유를 두는 그림입니다."
+    caption: "요청마다 원본에 개입해야 하는지, 누락을 허용하는지로 자리를 나눕니다."
+    after_paragraph: 2
   questions:
   - id: u11-l03-p08-q01
     kind: choice

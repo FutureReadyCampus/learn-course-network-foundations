@@ -15,11 +15,16 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-source-06-page-01
   illustrations:
-  - file: assets/animations/u11-fwd-06-01-forward-view.svg
-    title: Proxy를 사용하는 관점
-    alt: 'Proxy를 사용하는 관점: 처음엔 컴퓨터마다 직접 인터넷으로 나갈 수 있어요 → 한 중계 서버를 거치게 할 수도 있어요 → 클라이언트가 고른 중계자가 대신 전달해요 → 캐시·정책·기록은 그 위에 얹는 기능이에요'
-    caption: 직접 나갈까, 한 곳을 거칠까?
+  - file: assets/animations/u11-l04-p1-client-chooses.svg
+    title: "PC가 요청을 프록시에 맡겨요"
+    alt: "PC 40대가 게이트웨이를 지나 바로 나가던 것을 → PC가 요청을 프록시에 맡기고 → 프록시가 AI 서비스에 새로 연결하며 → AI 서비스가 보는 상대는 프록시라는 것을 보여 줍니다."
+    caption: "클라이언트가 고른 대리자가 대신 연결합니다."
     after_paragraph: 3
+  - file: assets/animations/u11-l04-p1b-features-on-demand.svg
+    title: "기능은 설정한 만큼만 생겨요"
+    alt: "막 설치한 프록시는 기능이 모두 꺼져 있어 요청을 그대로 전달하고 → 접속 기록을 켜면 한 줄이 남고 → 접근 정책을 켜면 요청을 막을 수 있습니다."
+    caption: "기본은 대신 연결이고, 기록·차단은 켜야 생깁니다."
+    after_paragraph: 5
   questions:
   - id: u11-l04-p01-q01
     kind: choice
@@ -125,11 +130,16 @@ page_metadata:
     after_paragraph: 2
 - page_id: advanced-source-06-page-06
   illustrations:
-  - file: assets/animations/u11-fwd-06-06-two-sockets.svg
-    title: 두 Socket 사이의 중계
-    alt: '두 Socket 사이의 중계: 클라이언트와 이야기하는 연결 하나 → 서버와 이야기하는 연결 하나 → 한쪽에서 받은 흐름을 다른 쪽에 이어 줘요 → 한쪽이 끊기면 Proxy가 처리해요'
-    caption: Proxy에는 연결이 두 개 생겨요
-    after_paragraph: 2
+  - file: assets/animations/u11-l04-p3-two-connections.svg
+    title: "프록시에는 연결이 두 개예요"
+    alt: "박 팀장 PC와 프록시 사이의 연결 ①, 프록시와 AI 서비스 사이의 연결 ②가 따로 맺어지고 → 프록시가 흐름을 이어 쓰며 → 도착지가 다른 독립된 연결임을 보여 줍니다."
+    caption: "프록시 앞뒤로 서로 독립된 연결이 둘 있습니다."
+    after_paragraph: 3
+  - file: assets/animations/u11-l04-p3b-which-leg.svg
+    title: "어느 구간이 문제일까?"
+    alt: "① 구간이 끊기면 브라우저가 프록시에 닿지 못하고, ② 구간이 끊기면 프록시가 504 오류를 돌려주며, 프록시 기록에 요청이 있으면 ①은 정상입니다."
+    caption: "프록시 기록에 요청이 있으면 ② 구간을 확인합니다."
+    after_paragraph: 5
   questions:
   - id: u11-l04-p03-q01
     kind: choice
@@ -180,11 +190,16 @@ page_metadata:
     after_paragraph: 4
 - page_id: advanced-source-06-page-02
   illustrations:
-  - file: assets/animations/u11-l04-p04-seen-address.svg
-    title: "AI 서비스에는 누구 주소가 보일까?"
-    alt: "직접 접속과 회사 프록시 경유는 본사 공인 주소 198.51.100.25로, 해외 우회 프록시 경유는 그 서버의 주소로 보이는 것을 비교합니다."
-    caption: "주소가 바뀌어도 로그인하면 신원이 감춰지지 않으며, 어느 PC인지는 회사 프록시 기록에서 찾습니다."
-    after_paragraph: 3
+  - file: assets/animations/u11-l04-p4-seen-address.svg
+    title: "AI 서비스에 보이는 주소는?"
+    alt: "직접 접속과 회사 프록시 경유는 본사 공인 주소 198.51.100.25로 보이고, 해외 프록시 경유는 그 서버 주소로 보이며, 주소가 바뀌어도 로그인하면 누구인지 압니다."
+    caption: "보이는 주소가 바뀌는 것과 신원이 감춰지는 것은 다릅니다."
+    after_paragraph: 4
+  - file: assets/animations/u11-l04-p4b-who-sent.svg
+    title: "어느 PC가 보냈는지는?"
+    alt: "직원 PC 여러 대가 회사 프록시를 거치면 AI 서비스 기록에는 모두 같은 주소로 남지만, 회사 프록시 기록에는 PC별로 구분됩니다."
+    caption: "어느 PC가 보냈는지는 회사 프록시 기록에서 찾습니다."
+    after_paragraph: 5
   questions:
   - id: u11-l04-p04-q01
     kind: choice
@@ -235,11 +250,11 @@ page_metadata:
     after_paragraph: 4
 - page_id: advanced-source-06-page-07
   illustrations:
-  - file: assets/animations/u11-fwd-06-07-bypass-summary.svg
-    title: 우회 목적의 Proxy 정리
-    alt: '우회 목적의 Proxy 정리: Proxy는 요청을 받아 다른 서버에 접속해요 → 무엇을 전달·기록하는지에 따라 달라져요 → 그래서 대리 접속이 익명성을 보장하진 않아요 → 같은 구조를 여러 목적에 응용해요'
-    caption: 핵심은 요청을 대신 전달한다는 점이에요
-    after_paragraph: 5
+  - file: assets/animations/u11-l04-p5-stranger-operator.svg
+    title: "낯선 운영자는 무엇을 볼까?"
+    alt: "박 팀장이 무료 우회 프록시를 거치면 운영자는 연결 정보를 알고, 경고 없는 HTTPS 내용은 읽지 못하지만, 업무 자료가 회사 기록 밖으로 나가 회사 프록시 기록에는 남지 않습니다."
+    caption: "무료 우회 프록시의 운영자는 낯선 사람입니다."
+    after_paragraph: 4
   questions:
   - id: u11-l04-p05-q01
     kind: choice
@@ -290,11 +305,16 @@ page_metadata:
     after_paragraph: 4
 - page_id: advanced-source-06-page-05
   illustrations:
-  - file: assets/animations/u11-fwd-06-05-speed-cost.svg
-    title: 우회에 따른 속도와 비용
-    alt: '우회에 따른 속도와 비용: 직접 가면 한 번에 도착해요 → Proxy를 거치면 단계가 늘어요 → Proxy가 멈추면 모두 영향을 받아요 → 잘 두면 오히려 도움이 될 수도 있어요'
-    caption: 편리하지만 거치는 길이 늘어요
+  - file: assets/animations/u11-l04-p6-extra-steps.svg
+    title: "프록시를 거치면 길이 늘어요"
+    alt: "직접 가면 한 구간이지만 프록시를 거치면 두 구간이 되고, 프록시가 읽고 확인하고 기록하는 처리가 더해져 사람이 몰리면 모든 요청이 더 기다립니다."
+    caption: "프록시를 거치면 구간과 처리 단계가 늘어납니다."
     after_paragraph: 2
+  - file: assets/animations/u11-l04-p6b-spof.svg
+    title: "프록시가 멈추면 모두 멈춰요"
+    alt: "모든 PC가 프록시 한 대를 지나다가 그 프록시가 멈추면 사무실 전체가 끊기고, 프록시를 두 대로 두면 한 대가 멈춰도 다른 한 대가 요청을 받습니다."
+    caption: "프록시도 단일 장애점이라 두 대로 대비합니다."
+    after_paragraph: 6
   questions:
   - id: u11-l04-p06-q01
     kind: choice

@@ -10,11 +10,16 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-source-02-page-01
   illustrations:
-  - file: assets/animations/u11-structures-preview.svg
-    title: 중간 장치가 하는 세 가지 일
-    alt: 내 컴퓨터와 서버 사이 길 위에서 검문하는 Inline, 길 옆에서 복사본을 보는 Out of path, 대신 연결해 주는 Proxy를 차례로 미리 보여 줍니다.
-    caption: Inline, Out of path, Proxy를 일상 비유로 미리 살펴봅니다.
-    after_paragraph: 2
+  - file: assets/animations/u11-l01-p01-three-structures.svg
+    title: "장치가 길에서 일하는 세 가지 방식"
+    alt: "박 팀장의 AI 요청이 길을 따라 서비스로 가는 중에, 길 위의 톨게이트는 Inline, 길 옆 감시카메라는 Out of path, 대신 다녀오는 심부름꾼은 Proxy라는 그림입니다."
+    caption: "요청이 지나는 길 위, 옆, 대신 연결 세 자리로 구조를 나눕니다."
+    after_paragraph: 3
+  - file: assets/animations/u11-l01-p01b-five-memos.svg
+    title: "고민 메모 다섯 장을 세 갈래로"
+    alt: "지우의 고민 메모 다섯 장이 길 위의 Inline, 경로 옆 복사본의 Out of path, 대신 연결하는 Proxy 세 갈래로 나뉘는 그림입니다."
+    caption: "메모마다 붙는 자리를 정하면 풀 장치가 보입니다."
+    after_paragraph: 5
   questions:
   - id: u11-l01-p01-q01
     kind: choice
@@ -65,11 +70,11 @@ page_metadata:
     after_paragraph: 5
 - page_id: advanced-source-02-page-02
   illustrations:
-  - file: assets/animations/u11-structures-inline.svg
-    title: Inline · 통과와 차단
-    alt: 길 한가운데 놓인 검문소가 허용된 패킷은 통과시키고 차단 규칙에 맞는 패킷은 버리는 모습입니다.
-    caption: Inline 장치는 패킷을 통과시키거나 버립니다.
-    after_paragraph: 1
+  - file: assets/animations/u11-l01-p02-inline-drop.svg
+    title: "길 한가운데서 막는 장치"
+    alt: "지우 PC와 박 팀장 PC의 요청이 모두 본사 게이트웨이를 지나고, 목적지 203.0.113.80에 Drop 규칙을 걸면 그 자리에서 버려지며, 게이트웨이가 꺼지면 통신도 끊기는 그림입니다."
+    caption: "Inline 장치는 지나가는 패킷을 통과시키거나 버리고, 꺼지면 통신도 끊깁니다."
+    after_paragraph: 2
   questions:
   - id: u11-l01-p02-q01
     kind: choice
@@ -120,11 +125,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-02-page-03
   illustrations:
-  - file: assets/animations/u11-structures-out-of-path.svg
-    title: Out of path · 관찰과 수집
-    alt: 원래 통신은 서버로 계속 가고, 길 옆 Tapping Point에서 복사본을 받은 센서가 분석해 알려 주는 모습입니다.
-    caption: Out of path 센서는 복사본만 분석하고 원래 통신은 그대로 둡니다.
-    after_paragraph: 1
+  - file: assets/animations/u11-l01-p03-out-of-path-copy.svg
+    title: "길 옆에서 복사본만 보는 장치"
+    alt: "Tapping Point가 복사본을 센서로 보내 센서가 누가 어디로 갔는지 기록하고, 센서가 꺼져도 원래 통신은 서비스에 그대로 도착하는 그림입니다."
+    caption: "Out of path 센서는 복사본만 보므로 꺼져도 통신은 이어지지만 막지는 못합니다."
+    after_paragraph: 3
   questions:
   - id: u11-l01-p03-q01
     kind: choice
@@ -175,11 +180,16 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-02-page-04
   illustrations:
-  - file: assets/animations/u11-structures-proxy.svg
-    title: Proxy · 대신 연결해 주는 대리인
-    alt: 내 컴퓨터와 대리인, 대리인과 서버 사이에 연결을 따로 맺고 이어진 Stream을 읽는 모습입니다.
-    caption: Proxy는 양쪽과 따로 연결을 맺어 Stream을 중계합니다.
-    after_paragraph: 1
+  - file: assets/animations/u11-l01-p04-proxy-two-connections.svg
+    title: "대신 접속해 주는 프록시"
+    alt: "박 팀장 PC와 프록시, 프록시와 AI 서비스 사이에 연결을 따로 맺고, 프록시가 조각난 패킷을 이어 붙인 Stream으로 도면 내용을 읽는 그림입니다."
+    caption: "프록시는 연결을 두 번 맺고 이어진 Stream으로 내용을 읽습니다."
+    after_paragraph: 2
+  - file: assets/animations/u11-l01-p04b-https-ca.svg
+    title: "HTTPS는 설정이 있어야 읽혀요"
+    alt: "HTTPS라 프록시가 읽은 바이트는 암호문이고, 회사 CA를 깔아도 아직 읽히지 않으며, 프록시에 TLS 검사 설정을 켜야 내용이 읽히는 그림입니다."
+    caption: "프록시도 회사 CA 설치와 TLS 검사 설정이 있어야 HTTPS 내용을 읽습니다."
+    after_paragraph: 3
   questions:
   - id: u11-l01-p04-q01
     kind: choice
@@ -230,11 +240,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-02-page-05
   illustrations:
-  - file: assets/animations/u11-structures-classify.svg
-    title: 장치를 구조로 나눠 보기
-    alt: Inline은 경로 안·패킷, Out of path는 경로 밖 복사본·패킷, Proxy는 중간 대리·소켓 Stream으로 구분하는 표입니다.
-    caption: 위치와 처리 단위 두 가지로 장치를 나눕니다.
-    after_paragraph: 4
+  - file: assets/animations/u11-l01-p05-header-vs-content.svg
+    title: "패킷을 볼까, 대화를 볼까?"
+    alt: "패킷 장치는 송장에 해당하는 헤더에서 주소와 포트를, Proxy는 편지에 해당하는 내용에서 URL과 본문을 읽으며, 알고 싶은 층에 맞는 장치를 고른다는 그림입니다."
+    caption: "송장(헤더)만 읽을지 편지(내용)까지 읽을지에 따라 장치를 고릅니다."
+    after_paragraph: 2
   questions:
   - id: u11-l01-p05-q01
     kind: choice
@@ -285,11 +295,11 @@ page_metadata:
     after_paragraph: 4
 - page_id: advanced-source-02-page-06
   illustrations:
-  - file: assets/animations/u11-structures-combined.svg
-    title: 여러 구조가 한 장치에
-    alt: 보안 장비 한 대가 Inline과 Proxy 기능을 함께 가질 수 있어 경로 안인가, 패킷인가 Stream인가를 묻는다는 그림입니다.
-    caption: 한 장치가 여러 구조를 결합할 수 있습니다.
-    after_paragraph: 1
+  - file: assets/animations/u11-l01-p06-one-box-three.svg
+    title: "한 상자 안의 세 구조"
+    alt: "새 보안 장비 한 대의 외부 사이트 차단은 Inline, 접속 기록은 관찰, 웹 필터링은 Proxy이고, 한 상자가 멈추면 세 기능이 모두 멈추는 그림입니다."
+    caption: "구조는 상자가 아니라 기능마다 따지고, 한 상자에 모으면 멈출 때도 함께 멈춥니다."
+    after_paragraph: 3
   questions:
   - id: u11-l01-p06-q01
     kind: choice
