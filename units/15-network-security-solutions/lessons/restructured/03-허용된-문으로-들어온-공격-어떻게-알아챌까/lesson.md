@@ -115,9 +115,14 @@ page_metadata:
   illustrations:
   - file: assets/animations/u15-l03-p2-ips-vs-nids.svg
     title: "막을까, 알리기만 할까"
-    alt: "경로 안의 IPS는 공격 요청을 바로 차단하고, 경로 밖 NIDS는 복사본으로 경보만 내며 고장 때의 영향이 다른 모습을 좌우로 비교합니다."
-    caption: "IPS는 바로 차단할 수 있지만 고장 시 통신이 끊길 수 있고, NIDS는 서비스를 유지하지만 경보를 낼 뿐입니다."
+    alt: "경로 안의 IPS는 공격 요청을 바로 차단하고, 경로 밖 NIDS는 복사본으로 탐지해 경보만 내며 원본은 서버로 그대로 가는 모습을 위아래 두 줄로 비교합니다."
+    caption: "IPS는 막을 수 있고, 복사본을 보는 NIDS는 경보가 기본이라 확실히 막지 못합니다."
     after_paragraph: 1
+  - file: assets/animations/u15-l03-p2b-failure.svg
+    title: "장비가 고장 나면"
+    alt: "평소에는 두 줄 모두 요청이 서버까지 가다가 장비가 고장 나면, 경로 안 IPS 줄은 통신이 끊길 수 있고 경로 밖 NIDS 줄은 서비스가 계속되며 탐지만 멈추는 모습입니다."
+    caption: "IPS는 고장 나면 통신이 끊길 수 있고, NIDS는 서비스는 계속되지만 탐지가 멈춥니다."
+    after_paragraph: 2
 - page_id: advanced-source-23-page-15
   questions:
   - id: u15-l03-p03-q01
@@ -170,9 +175,14 @@ page_metadata:
   illustrations:
   - file: assets/animations/u15-l03-p3-signature.svg
     title: "공격의 지문 찾기"
-    alt: "TLS 종료 뒤 IPS의 규칙이 알려진 공격 패턴과 일치하면 탐지하고, 새 공격은 놓치며, TLS 종료 앞 암호문 구간에서는 패턴을 읽지 못하는 모습입니다."
-    caption: "시그니처 검사는 알려진 패턴만 찾고, 검사 범위는 센서 위치와 TLS 종료 위치가 정합니다."
-    after_paragraph: 1
+    alt: "규칙에 적힌 패턴 A가 든 공격은 IPS가 탐지하고, 규칙에 없는 패턴 B의 새 공격은 놓치며, 새 공격이 알려지면 규칙을 갱신해야 하는 모습입니다."
+    caption: "시그니처 검사는 규칙에 적힌 알려진 패턴만 찾습니다."
+    after_paragraph: 2
+  - file: assets/animations/u15-l03-p3b-tls-position.svg
+    title: "TLS가 풀리는 위치"
+    alt: "TLS 종료 앞에 둔 IPS는 암호문만 보아 내용 패턴을 못 읽고, TLS 종료 뒤 서버 구역 입구의 IPS는 풀린 평문 요청에서 패턴을 읽는 모습을 위아래 두 줄로 비교합니다."
+    caption: "센서가 TLS 종료 앞에 있는지 뒤에 있는지가 시그니처 검사 범위를 정합니다."
+    after_paragraph: 5
 - page_id: u15-l03-page-04
   questions:
   - id: u15-l03-p04-q01
@@ -223,11 +233,16 @@ page_metadata:
   - question_id: u15-l03-p04-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u15-l03-p4b-outcomes.svg
+    title: "울렸나, 안 울렸나"
+    alt: "같은 IPS에 공격 요청이 울리면 정탐, 정상 요청이 울리면 오탐, 공격 요청이 안 울리면 미탐이고, 규칙이 느슨하면 오탐이 줄고 미탐이 늘며 엄격하면 반대인 모습입니다."
+    caption: "요청과 경보의 조합에 따라 정탐·오탐·미탐이 갈립니다."
+    after_paragraph: 2
   - file: assets/animations/u15-l03-p4-false-positive.svg
     title: "정상 요청이 공격으로"
     alt: "박 팀장의 교육 자료가 공격 예시 문자열 때문에 IPS에 막히는 오탐을 보고, 경보만 내는 기간과 좁은 예외로 해결하는 모습입니다."
     caption: "규칙은 경보만 내는 기간을 거치고 예외는 좁게 두며 주기적으로 다시 확인합니다."
-    after_paragraph: 1
+    after_paragraph: 5
 - page_id: u15-l03-page-05
   questions:
   - id: u15-l03-p05-q01
@@ -280,7 +295,7 @@ page_metadata:
   illustrations:
   - file: assets/animations/u15-l03-p5-sandbox.svg
     title: "처음 보는 악성 파일"
-    alt: "시그니처에 걸리지 않은 첨부 파일을 보안 장비가 샌드박스로 보내 전달을 보류하고, 격리된 방에서 낯선 주소로 접속하려는 이상 행동을 찾아 차단하는 모습입니다."
+    alt: "시그니처에 걸리지 않은 첨부 파일의 복사본을 보안 장비가 샌드박스로 보내 실행하고 원본 전달은 보류하며, 복사본이 낯선 주소로 접속하려 하면 막고 경보를 내지만 느리고 얌전한 파일은 놓칠 수 있습니다."
     caption: "샌드박스는 모르는 파일을 격리된 곳에서 먼저 실행해 보지만 느리고 얌전한 파일은 놓칠 수 있습니다."
     after_paragraph: 2
 - page_id: advanced-source-23-page-16
@@ -335,9 +350,9 @@ page_metadata:
   illustrations:
   - file: assets/animations/u15-l03-p6-reputation.svg
     title: "남들이 이미 아는 악성일까"
-    alt: "파일 요약값을 평판 정보로 조회해 알려진 악성은 차단하고, 모르는 파일은 샌드박스로 넘기며, 접속 주소에는 주소 평판과 다른 신호를 쓰는 모습입니다."
+    alt: "파일 요약값을 평판 정보로 조회해 알려진 악성은 막고, 모르는 파일은 샌드박스로 넘기며, 접속 주소는 주소 평판을 보되 모르면 이상 행위·로그 같은 다른 신호와 함께 보는 모습입니다."
     caption: "평판은 외부 정보를 빌려 알려진 악성을 거르고, 샌드박스는 파일에만 씁니다."
-    after_paragraph: 1
+    after_paragraph: 4
 ---
 
 ## 방화벽을 통과한 공격은 누가 볼까?
