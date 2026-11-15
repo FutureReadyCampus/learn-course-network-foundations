@@ -67,11 +67,16 @@ page_metadata:
   - question_id: u12-l03-p01-q01
     after_paragraph: 3
   illustrations:
-  - file: assets/animations/u12-l03-p01-static-mapping.svg
+  - file: assets/animations/u12-l03-p01-table-lines.svg
     title: "변환표에 줄을 미리 적어 두면?"
-    alt: "자동으로 생기는 동적 매핑과 관리자가 미리 적는 정적 매핑을 비교하고, 외부 TCP 8080을 192.168.10.50:8080으로 보내는 포트 포워딩 한 줄을 보여 줍니다."
+    alt: "공유기 변환표에 나갈 때 자동으로 생긴 동적 매핑 줄만 있다가, 지우가 외부 8080을 192.168.10.50:8080으로 보내는 줄을 직접 적으면 바깥 8080 요청이 그 줄로 가고, 직접 적은 줄이 정적 매핑인 포트 포워딩임을 보여 줍니다."
     caption: "포트 포워딩은 직접 적어 넣는 정적 매핑입니다."
-    after_paragraph: 0
+    after_paragraph: 2
+  - file: assets/animations/u12-l03-p01b-translate-not-allow.svg
+    title: "규칙을 적으면 바로 들어올 수 있을까?"
+    alt: "공유기의 8080 변환 규칙은 목적지만 GPU PC 주소로 바꿔 줄 뿐이라 방화벽이 8080을 막으면 요청이 닿지 못하고, 방화벽에서 허용을 따로 열어야 들어갑니다."
+    caption: "주소를 바꾸는 변환 규칙과 들여보내는 허용은 따로입니다."
+    after_paragraph: 3
 - page_id: advanced-source-15-page-03
   questions:
   - id: u12-l03-p02-q01
@@ -126,7 +131,12 @@ page_metadata:
     title: "포트 포워딩 설정 화면"
     alt: "공유기 포트 포워딩 화면의 외부 포트 8080, 프로토콜 TCP, 내부 IP 192.168.10.50, 내부 포트 8080, 원격지 비움 칸을 바깥 값과 안쪽 값으로 나누어 채웁니다."
     caption: "칸마다 바깥 값인지 안쪽 값인지 구별해 채웁니다."
-    after_paragraph: 0
+    after_paragraph: 2
+  - file: assets/animations/u12-l03-p02b-dhcp-reservation.svg
+    title: "GPU PC 주소가 바뀌면 규칙은?"
+    alt: "규칙이 GPU PC의 192.168.10.50을 가리키다가 재부팅으로 주소가 192.168.10.57로 바뀌면 규칙은 옛 주소를 가리켜 닿지 못하고, DHCP 예약으로 MAC 주소에 192.168.10.50을 묶어 두면 해결됩니다."
+    caption: "내부 IP가 바뀌지 않게 DHCP 예약으로 묶어 둡니다."
+    after_paragraph: 3
 - page_id: advanced-source-15-page-05
   questions:
   - id: u12-l03-p03-q01
@@ -177,18 +187,18 @@ page_metadata:
   - question_id: u12-l03-p03-q01
     after_paragraph: 3
   illustrations:
-  - file: assets/animations/u12-l03-p03-public-address.svg
+  - file: assets/animations/u12-l03-p03-dest-rewrite.svg
     title: "박 팀장은 어떤 주소로 접속할까?"
-    alt: "박 팀장의 요청이 198.51.100.25:8080으로 도착하면 공유기가 8080 규칙으로 목적지를 192.168.10.50:8080으로 바꿔 AI 서버에 전달하고 응답은 바깥 주소가 답한 것처럼 보입니다."
+    alt: "박 팀장의 요청이 198.51.100.25:8080으로 도착하면 공유기가 8080 규칙으로 목적지를 192.168.10.50:8080으로 바꿔 GPU PC에 전달하고, 응답은 198.51.100.25:8080이 답한 것처럼 돌아옵니다."
     caption: "바깥에서는 공유기의 바깥 주소로 접속하고 공유기가 목적지를 바꿔 줍니다."
-    after_paragraph: 0
+    after_paragraph: 2
 - page_id: advanced-source-15-page-07
   illustrations:
-  - file: assets/animations/u12-l03-p04-two-services.svg
+  - file: assets/animations/u12-l03-p04-one-port-one-target.svg
     title: "서비스가 둘이면 규칙도 둘일까?"
-    alt: "AI 서버는 외부 8080, 도면 NAS 192.168.10.30은 외부 5001로 나누어야 하고 같은 외부 8080을 두 곳에 쓰면 충돌합니다."
+    alt: "AI 서버는 외부 8080으로 이미 연결돼 있고, 도면 NAS도 같은 외부 8080으로 적으면 충돌하므로 NAS는 외부 5001처럼 외부 포트를 나누어 규칙을 추가합니다."
     caption: "서비스마다 외부 포트를 나누어 규칙을 추가합니다."
-    after_paragraph: 0
+    after_paragraph: 1
   questions:
   - id: u12-l03-p04-q01
     kind: choice
@@ -287,18 +297,23 @@ page_metadata:
   - question_id: u12-l03-p05-q01
     after_paragraph: 2
   illustrations:
-  - file: assets/animations/u12-l03-p05-hairpin.svg
+  - file: assets/animations/u12-l03-p05-hairpin-loop.svg
     title: "사무실에서 공인 주소로 시험하면?"
-    alt: "사무실 PC가 공유기의 바깥 주소 198.51.100.25:8080으로 접속하면 공유기가 안쪽으로 되돌려 보내야 하는 헤어핀 NAT가 필요하며 장비에 따라 안 될 수 있고, 휴대폰 데이터 같은 바깥 회선에서 시험하면 확인됩니다."
+    alt: "사무실 PC가 공유기의 바깥 주소 198.51.100.25:8080으로 접속하면 공유기가 안쪽으로 되돌려 보내는 헤어핀 NAT가 필요하지만 장비에 따라 안 될 수 있어서, 휴대폰 데이터 같은 바깥 회선에서 시험합니다."
     caption: "포트 포워딩 시험은 사무실 밖 회선에서 합니다."
-    after_paragraph: 0
+    after_paragraph: 1
 - page_id: advanced-source-10-page-08
   illustrations:
   - file: assets/animations/u12-l03-p06-not-open-checklist.svg
     title: "포워딩했는데 왜 밖에서 안 열릴까?"
     alt: "서버 수신 주소, GPU PC 방화벽, 규칙의 내부 IP·포트·프로토콜, 공유기 WAN 주소를 가까운 곳부터 확인하고 방화벽의 8080을 허용해 해결하는 점검표입니다."
     caption: "확인 순서를 정해 하나씩 지워 갑니다."
-    after_paragraph: 0
+    after_paragraph: 2
+  - file: assets/animations/u12-l03-p06b-wan-cgnat.svg
+    title: "WAN 주소로 앞단을 알아낼 수 있을까?"
+    alt: "공유기 WAN 주소가 100.64.0.0/10 안이면 통신사 NAT(CGNAT), 192.168.x.x 사설 주소면 앞단 공유기(이중 NAT)라서 규칙이 인터넷에 닿지 않고, 공인 주소 198.51.100.25면 NAT가 더 없어 규칙이 닿습니다."
+    caption: "WAN 주소를 보면 CGNAT, 이중 NAT, 공인 주소를 구별할 수 있습니다."
+    after_paragraph: 3
   questions:
   - id: u12-l03-p06-q01
     kind: choice

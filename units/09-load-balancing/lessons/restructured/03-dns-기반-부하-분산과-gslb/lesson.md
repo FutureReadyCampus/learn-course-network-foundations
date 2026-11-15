@@ -73,6 +73,11 @@ page_metadata:
     alt: "이름 하나에 서울과 도쿄 주소를 둘 다 등록했지만 도쿄 사이트가 점검 중이어도 DNS는 몰라서 손님을 도쿄로 안내하다 막히는 모습입니다."
     caption: "DNS 라운드 로빈은 살아 있는지 확인하지 않으므로 상태를 보는 GSLB가 필요합니다."
     after_paragraph: 1
+  - file: assets/animations/u13-l03-p2b-ttl.svg
+    title: "TTL 때문에 예전 주소가 남아요"
+    alt: "리졸버 캐시가 도쿄 주소를 TTL 3600초 동안 보관하는 중에 DNS 레코드에서 도쿄 주소를 빼도 캐시가 예전 주소를 알려 점검 중인 곳으로 가고, 점검 전에 TTL을 미리 낮추면 금방 바뀐다는 모습입니다."
+    caption: "DNS 레코드를 바꿔도 캐시는 TTL이 끝날 때까지 예전 주소를 알려 주므로 TTL을 미리 낮춰 둡니다."
+    after_paragraph: 2
   questions:
   - id: u13-l03-p02-q01
     kind: choice
@@ -123,10 +128,10 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-18-page-05
   illustrations:
-  - file: assets/animations/u13-l03-p3-cname.svg
+  - file: assets/animations/u13-l03-p3-cname-steps.svg
     title: "이름 하나로 지역마다 다른 주소를"
-    alt: "bot.hangyeol.example이 CNAME jp.bot.gslb.example을 거쳐 도쿄 주소 203.0.113.20으로 풀리는 세 단계 흐름입니다."
-    caption: "지역 선택은 GSLB가 관리하는 이름을 푸는 단계에서 일어납니다."
+    alt: "손님이 bot.hangyeol.example을 물으면 GSLB의 이름 jp.bot.gslb.example(CNAME)을 거쳐 도쿄 주소 203.0.113.20이 나오고, 같은 이름도 한국 쪽 손님에게는 서울 주소가 돌아간다는 흐름입니다."
+    caption: "지역 선택은 GSLB가 이름을 풀어 주는 단계에서 일어납니다."
     after_paragraph: 1
   questions:
   - id: u13-l03-p03-q01
@@ -178,11 +183,16 @@ page_metadata:
     after_paragraph: 2
 - page_id: advanced-source-18-page-06
   illustrations:
-  - file: assets/animations/u13-l03-p4-resolver.svg
-    title: "DNS는 손님 위치를 어떻게 알까?"
-    alt: "도쿄 쇼룸의 노트북은 수동으로 적은 서울 쪽 공개 DNS를 써 서울로 안내되고, 다른 PC는 DHCP로 받은 도쿄 쪽 리졸버를 써 도쿄로 안내되는 비교입니다."
-    caption: "권한 DNS는 손님이 아니라 질문을 대신 보낸 리졸버의 위치를 봅니다."
-    after_paragraph: 1
+  - file: assets/animations/u13-l03-p4-resolver-ip.svg
+    title: "권한 DNS는 누구의 위치를 볼까?"
+    alt: "손님 PC가 서울 쪽 리졸버에게 묻고 리졸버가 권한 DNS에 대신 물으면 권한 DNS는 리졸버의 위치를 보고 서울 주소를 돌려주며, ECS를 보내는 리졸버라면 손님 주소 앞부분으로 도쿄 주소를 고르는 모습입니다."
+    caption: "권한 DNS는 손님 PC가 아니라 질문을 대신 보낸 리졸버의 주소를 기본으로 봅니다."
+    after_paragraph: 2
+  - file: assets/animations/u13-l03-p4b-resolver-fix.svg
+    title: "노트북 한 대만 서울로 가는 이유"
+    alt: "도쿄 쇼룸의 노트북은 수동으로 적은 서울 쪽 공개 DNS를 써서 서울로, 다른 PC는 DHCP로 받은 도쿄 쪽 리졸버를 써서 도쿄로 안내되고, 노트북을 자동으로 되돌리면 도쿄로 안내되는 모습입니다."
+    caption: "리졸버를 같은 지역의 것으로 맞추면 도쿄 쇼룸 손님이 도쿄 사이트로 갑니다."
+    after_paragraph: 3
   questions:
   - id: u13-l03-p04-q01
     kind: choice
@@ -233,11 +243,16 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-18-page-09
   illustrations:
-  - file: assets/animations/u13-l03-p5-geoip.svg
+  - file: assets/animations/u13-l03-p5-geoip-steps.svg
     title: "IP 주소만 보고 나라를 알 수 있을까?"
-    alt: "IP 위치 DB가 손님 IP 192.0.2.77을 일본·도쿄로 추정하지만, VPN을 쓰면 출구 위치로 보이는 한계를 함께 보여 줍니다."
-    caption: "IP 위치는 가까운 지역 안내에만 쓰는 추정값이고 정확해야 하는 판단에는 다른 근거가 필요합니다."
-    after_paragraph: 1
+    alt: "IP 위치 DB가 손님 IP 192.0.2.77을 일본·도쿄로 추정하지만 VPN을 쓰는 손님은 출구 위치로 추정돼 틀릴 수 있다는 흐름입니다."
+    caption: "IP 위치 정보는 가까운 지역 안내에 쓰는 추정값입니다."
+    after_paragraph: 2
+  - file: assets/animations/u13-l03-p5b-guide-vs-block.svg
+    title: "같은 위치 정보, 쓰임은 다르게"
+    alt: "같은 IP 위치 추정값이 틀렸을 때 첫 화면 안내는 조금 느릴 뿐이지만 약관 표시는 엉뚱한 약관을 보게 되므로, 손님이 직접 고른 국가 설정 같은 다른 근거를 더한다는 비교입니다."
+    caption: "틀렸을 때의 손해가 크면 IP 위치 말고 다른 근거를 함께 씁니다."
+    after_paragraph: 4
   questions:
   - id: u13-l03-p05-q01
     kind: choice
@@ -288,11 +303,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: u13-l03-page-06
   illustrations:
-  - file: assets/animations/u13-l03-p6-sync.svg
+  - file: assets/animations/u13-l03-p6-sync-steps.svg
     title: "서울과 도쿄가 다른 답을 한다면?"
-    alt: "서울은 최신 지식 문서 버전이고 도쿄는 하루 전 버전이라 일본 고객이 예전 단가를 받다가, 서울 원본을 도쿄로 복사해 맞추는 모습입니다."
-    caption: "여러 사이트의 내용은 한 곳을 원본으로 배포하고 버전 번호로 어긋남을 확인합니다."
-    after_paragraph: 1
+    alt: "서울은 최신 지식 문서 버전이고 도쿄는 하루 전 버전이라 일본 손님이 예전 단가를 받다가, 서울 원본을 도쿄로 복사해 맞추고 응답에 버전 번호를 남겨 어긋남을 확인하는 모습입니다."
+    caption: "한 곳을 원본으로 배포하고 응답에 버전 번호를 남겨 어긋난 곳을 찾습니다."
+    after_paragraph: 3
   questions:
   - id: u13-l03-p06-q01
     kind: choice
@@ -348,6 +363,11 @@ page_metadata:
     alt: "도쿄 손님이 서울 원본에서 3MB 사진을 받다가 도쿄 에지에 사본을 저장해 두고 이후 가까운 에지에서 바로 받으며, 개인 응답은 캐시하지 않는 모습입니다."
     caption: "CDN은 누구에게나 같은 정적 파일만 가까이 캐시하고 개인 응답은 캐시하지 않습니다."
     after_paragraph: 2
+  - file: assets/animations/u13-l03-p7b-stale-copy.svg
+    title: "고친 사진이 왜 예전 그대로일까?"
+    alt: "도쿄 에지가 hero.jpg 사본을 갖고 있는 상태에서 서울 원본의 사진을 고쳐도 같은 이름이면 에지가 예전 사본을 주고, 파일 이름에 버전을 붙여 hero-v2.jpg로 바꾸면 에지가 새로 받아 오는 모습입니다."
+    caption: "CDN 사본이 오래 남아 고친 파일이 늦게 보이면 캐시 시간과 파일 이름의 버전, 삭제 요청으로 관리합니다."
+    after_paragraph: 4
   questions:
   - id: u13-l03-p07-q01
     kind: choice
@@ -398,11 +418,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-18-page-08
   illustrations:
-  - file: assets/animations/u13-l03-p8-two-layers.svg
+  - file: assets/animations/u13-l03-p8-two-layers-rev.svg
     title: "지역을 고른 뒤엔 누가 서버를 고를까?"
-    alt: "GSLB가 도쿄 지역을 고르고 도쿄 안의 L4가 서버를 고르며, 서버 한 대 고장은 L4가 빼고 서울 전체 장애는 GSLB가 도쿄로 돌리는 모습입니다."
+    alt: "GSLB가 한국 손님은 서울, 일본 손님은 도쿄로 고르고 도쿄 안의 L4가 서버를 고르며, 서버 한 대 고장은 L4가 빼고 서울 전체 장애는 GSLB가 한국 손님을 도쿄로 돌리는 모습입니다."
     caption: "서버 한 대 고장은 지역 안 L4가, 사이트 전체 장애는 GSLB가 처리합니다."
-    after_paragraph: 2
+    after_paragraph: 3
   questions:
   - id: u13-l03-p08-q01
     kind: choice

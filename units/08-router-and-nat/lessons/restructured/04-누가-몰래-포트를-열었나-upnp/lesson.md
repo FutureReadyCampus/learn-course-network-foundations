@@ -61,9 +61,9 @@ page_metadata:
   - question_id: u12-l04-p01-q01
     after_paragraph: 3
   illustrations:
-  - file: assets/animations/u12-l04-p01-unknown-ports.svg
+  - file: assets/animations/u12-l04-p01-three-unknown-lines.svg
     title: "내가 연 적 없는 포트가 열려 있다?"
-    alt: "수동 포트 포워딩 목록은 비었는데 UPnP 목록에 192.168.10.37, .44, .38을 가리키는 TCP 6881, UDP 27015, UDP 50001 줄이 있고 지우는 만든 적이 없다는 그림입니다."
+    alt: "수동 포워딩 목록은 비었는데 UPnP 목록에 192.168.10.37, .44, .38을 가리키는 TCP 6881, UDP 27015, UDP 50001 줄이 세 개 있고 지우의 기억에는 모두 없다는 그림입니다."
     caption: "수동 포워딩 목록과 UPnP 목록은 따로 점검합니다."
     after_paragraph: 0
 - page_id: advanced-source-15-page-08
@@ -123,7 +123,7 @@ page_metadata:
     after_paragraph: 2
 - page_id: advanced-source-16-page-02
   illustrations:
-  - file: assets/animations/u12-l04-p03-plug-and-play.svg
+  - file: assets/animations/u12-l04-p03-plug-to-network.svg
     title: "꽂기만 하면 되는 편리함, 네트워크로"
     alt: "USB를 꽂으면 설정 없이 바로 쓰이는 PnP와, 프로그램이 공유기에 포워딩 줄을 자동으로 만드는 UPnP를 나란히 보여 주고 편해진 만큼 설정이 눈에서 멀어진다고 짚습니다."
     caption: "UPnP는 PnP의 자동화 발상을 공유기 설정으로 넓힌 기능입니다."
@@ -178,11 +178,16 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-16-page-05
   illustrations:
-  - file: assets/animations/u12-l04-p04-ask-router.svg
+  - file: assets/animations/u12-l04-p04-discover-request-result.svg
     title: "프로그램은 공유기에 어떻게 부탁할까?"
-    alt: "프로그램이 공유기를 찾는 발견, 6881번 매핑을 요청하는 단계, 변환표에 줄이 생기는 결과를 차례로 보여 주고 요청 성공이 바깥 도달을 보장하지 않는다고 짚습니다."
-    caption: "UPnP는 발견, 요청, 결과 순서이며 요청이 받아들여져도 길이 열렸다는 보장은 아닙니다."
+    alt: "PC 192.168.10.37의 프로그램이 공유기를 찾는 발견, 6881번 매핑을 요청하는 단계, 변환표에 줄이 생기는 결과를 차례로 보여 주고 사람이 입력하지 않아도 줄이 생긴다고 짚습니다."
+    caption: "UPnP는 발견, 요청, 결과의 세 단계로 사람의 입력 없이 줄을 만듭니다."
     after_paragraph: 0
+  - file: assets/animations/u12-l04-p4b-accepted-not-reachable.svg
+    title: "요청이 성공해도 닿는다는 보장은 없다"
+    alt: "공유기 변환표에 6881번 줄이 생겨 요청은 성공했지만 협력사 PC의 연결은 통신사 NAT, 방화벽, 기다리지 않는 프로그램 중 한 곳에서 막힐 수 있어 요청 성공과 길이 열린 것은 별개라는 그림입니다."
+    caption: "매핑 요청이 받아들여진 것과 바깥에서 실제로 닿는 것은 별개입니다."
+    after_paragraph: 3
   questions:
   - id: u12-l04-p04-q01
     kind: choice
@@ -281,14 +286,14 @@ page_metadata:
   - question_id: u12-l04-p05-q01
     after_paragraph: 3
   illustrations:
-  - file: assets/animations/u12-l04-p05-no-password.svg
+  - file: assets/animations/u12-l04-p05-no-login-no-check.svg
     title: "비밀번호도 없이 포트를 열어 준다고?"
-    alt: "감염된 PC 192.168.10.38이 UPnP로 UDP 50001을 열어 달라고 하면 관리자 로그인 기록 없이 공유기가 줄을 만들고 바깥 공격자가 그 길로 들어올 수 있다는 그림입니다."
+    alt: "관리자 로그인 기록이 없는데 감염된 PC 192.168.10.38의 UPnP 요청으로 공유기가 UDP 50001 줄을 만들었고, 같은 LAN 요청이면 신분을 묻지 않아 바깥에서 닿는 환경이면 노출된다는 그림입니다."
     caption: "UPnP는 같은 LAN 안의 요청을 인증 없이 받아 주는 경우가 많습니다."
     after_paragraph: 0
 - page_id: advanced-source-16-page-08
   illustrations:
-  - file: assets/animations/u12-l04-p06-on-or-off.svg
+  - file: assets/animations/u12-l04-p06-on-or-off-cost.svg
     title: "UPnP, 켜 둘까 꺼 둘까?"
     alt: "UPnP를 켜 두면 편하지만 열린 줄을 목록으로 확인해야 하고, 끄면 일부 프로그램이 불편하지만 신청과 기록으로 통제할 수 있다는 비교와 한결디자인의 선택입니다."
     caption: "한결디자인은 UPnP를 끄고 필요한 포트만 신청받아 열고 기록합니다."
