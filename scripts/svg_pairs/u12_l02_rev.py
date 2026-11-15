@@ -1,0 +1,193 @@
+#!/usr/bin/env python3
+"""Unit 12 Lesson 2 (NAT 변환표) SVG review: 16px+ labels, 택배 접수 대장 words from the body, one change per step.
+Run from repo root: python3 scripts/svg_pairs/u12_l02_rev.py  (--svg-only skips the lesson.md edit)."""
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+from u12_new_common import *  # noqa: F401,F403
+from u12_new_l02_nat_table import PC1, PC3, API, L1, E1, L3, E3, line3, OUT, LESSON  # noqa: F401
+
+TXT16 = 16
+
+
+def card2(x, y, a, b, c=BLUE, w=360):
+    """봉투 카드: 보내는 사람 / 받는 사람 두 줄."""
+    return (box(x, y, w, 80, c, PANEL, 8, sw=3) + text(x + 14, y + 32, "보내는 사람 " + a, 17, TXT, anchor="start")
+            + text(x + 14, y + 64, "받는 사람 " + b, 17, TXT, anchor="start"))
+
+
+def cl2(x, y, i, w=360):
+    return (x + 6, y + 12 + i * 32, w - 12, 28)
+
+
+def p1():
+    p = Pg("AI API의 답장은 어디로?", "사설 주소는 인터넷에 나갈 수 없는데 답은 어떻게 올까",
+           ["지우 PC가 외부 AI API를 불러요", "요청은 기본 게이트웨이인 공유기를 지나가요",
+            "답은 198.51.100.25로 오는데 사설 주소는 못 써요", "공유기 안의 변환표가 짝을 기억해요"])
+    p.base(laptop(110, 290, "지우 PC"), rt(480, 290), dsrv(850, 290, "외부 AI API"), line3(290),
+           pill(110, 385, PC1, GREEN, 16, False, 170), pill(850, 385, API, BLUE, 16, False, 190))
+    p.fly(packet(0, 0, BLUE), [(190, 290), (430, 290)], 1, 0.1, 0.9)
+    p.fly(packet(0, 0, BLUE), [(530, 290), (780, 290)], 2, 0.1, 0.9)
+    p.at(pill(480, 205, "게이트웨이 192.168.10.1", ORANGE, 16, True, 230), 2, 2, mark=(365, 187, 230, 36))
+    p.fly(packet(0, 0, GREEN), [(780, 290), (530, 290)], 3, 0.1, 0.9)
+    p.at(ask(330, 250) + pill(480, 385, "답은 " + WAN + "로 와요", BLUE, 16, False, 250), 3, 3, mark=(308, 228, 44, 44))
+    p.at(cell(330, 188, 300, 44, PC1 + " ↔ " + WAN, ORANGE, 16) + pill(480, 440, "NAT 변환표가 짝을 기억해요", ORANGE, 17, True, 300), 4, 4,
+         mark=(330, 188, 300, 44))
+    return p.render()
+
+
+def p2():
+    p = Pg("공유기를 나설 때 바뀌는 것", "보내는 사람 칸(출발지)만 바뀌고 받는 사람 칸은 그대로예요",
+           ["안쪽에서 본 패킷의 출발지는 사설 주소예요", "공유기를 지나며 보내는 사람 칸을 고쳐 써요",
+            "바깥에서는 198.51.100.25:53001로 보여요", "받는 사람 칸(목적지)은 그대로예요"])
+    p.base(laptop(110, 340, "지우 PC"), rt(480, 340), dsrv(850, 340, "외부 AI API"), line3(340))
+    p.at(lbl(220, 135, "공유기 안쪽") + card2(40, 148, L1, API, GREEN), 1)
+    p.fly(packet(0, 0, BLUE), [(190, 340), (415, 340)], 2, 0.05, 0.5)
+    p.fly(packet(0, 0, ORANGE), [(530, 340), (790, 340)], 2, 0.55, 0.95)
+    p.at(pill(480, 270, "보내는 사람 칸만 고쳐 써요", ORANGE, 16, True, 260), 2, 2, mark=(350, 254, 260, 32))
+    p.at(lbl(740, 135, "공유기 바깥쪽") + card2(560, 148, E1, API, ORANGE), 3, mark=cl2(560, 148, 0))
+    p.at(pill(480, 440, "받는 사람 칸 " + API + "는 그대로", GREEN, 17, True, 400), 4, 4, mark=cl2(560, 148, 1))
+    return p.render()
+
+
+def p3():
+    p = Pg("AI 서비스는 누가 접속했다고 볼까?", "서비스가 보는 출발지는 회사 주소 하나예요",
+           ["직원 PC 여러 대가 같은 AI API를 써요", "요청이 공유기를 지나 서비스로 가요",
+            "접속 기록의 출발지는 모두 198.51.100.25예요", "누가 썼는지는 계정이나 키로 구별해요"])
+    ys = (200, 300, 400)
+    p.base(net(40, 125, 200, 345, "사무실", GREEN), rt(480, 300), line(240, 300, 450, 300, LINE, 4, "8 6"),
+           *[pc(140, y, f"192.168.10.{41 + i}") for i, y in enumerate(ys)],
+           box(620, 125, 320, 345, BLUE, PANEL, 12, sw=3) + lbl(780, 158, "AI API 접속 기록", BLUE, 18),
+           line(510, 300, 620, 300, LINE, 4, "8 6"))
+    p.at(text(780, 305, "아직 기록이 없어요", 16, MUTED), 1, 2)
+    for y in ys:
+        p.fly(packet(0, 0, BLUE), [(200, y), (410, 300)], 2, 0.05, 0.5)
+    for y in ys:
+        p.fly(packet(0, 0, ORANGE), [(535, 300), (590, 300)], 2, 0.55, 0.95)
+    p.at("".join(cell(632, y - 20, 200, 40, "출발지 " + WAN, GREEN, 16) for y in ys), 3, mark=(632, 180, 200, 240))
+    p.at(pill(480, 230, "대표번호처럼 하나뿐", ORANGE, 16, True, 210), 3, 3)
+    p.at("".join(pill(886, y, f"API 키 {k}", ORANGE, 16, False, 92) for y, k in zip(ys, "ABC")), 4, 4, mark=(840, 180, 92, 240))
+    return p.render()
+
+
+def tbl(x, y, heads, row, widths, c=GREEN, fs=16):
+    hx = [x + sum(widths[:i]) for i in range(len(widths))]
+    head = "".join(cell(hx[i], y, widths[i] - 6, 36, h, MUTED, fs, BG) for i, h in enumerate(heads))
+    body = "".join(cell(hx[i], y + 44, widths[i] - 6, 42, v, c, fs) for i, v in enumerate(row))
+    return head, body
+
+
+def p4():
+    p = Pg("변환표 한 줄에는 무엇이 적힐까?", "택배 접수 대장 한 줄처럼 세 칸을 이어요",
+           ["공유기의 NAT 세션 목록에 한 줄이 있어요", "Local은 보낸 사람, 통신을 시작한 기기예요",
+            "Remote는 받을 곳, 통신 상대예요", "External은 대표 접수번호, 바깥에서 보이는 값이에요"])
+    head, body = tbl(55, 200, ["프로토콜", "Local", "Remote", "External"], ["TCP", L1, API, E1], [110, 250, 230, 260])
+    p.base(head, pill(480, 150, "NAT 세션 목록 한 줄 = 접수 대장 한 줄", BLUE, 17, True, 400))
+    p.at(body, 1, mark=(55, 244, 844, 42))
+    p.at(pill(287, 335, "보낸 사람: 통신을 시작한 안쪽 기기", GREEN, 16, False, 290), 2, 2, mark=(165, 244, 244, 42))
+    p.at(pill(527, 335, "받을 곳: 통신 상대", BLUE, 16, False, 180), 3, 3, mark=(415, 244, 224, 42))
+    p.at(pill(772, 335, "대표 접수번호: 바깥에서 보이는 값", ORANGE, 16, False, 300) + pill(480, 410, "한 줄이 Local과 External을 이어요", ORANGE, 17, True, 340),
+         4, 4, mark=(645, 244, 254, 42))
+    return p.render()
+
+
+def p4b():
+    p = Pg("변환표의 줄은 언제까지 남을까?", "자동으로 생긴 줄은 통신이 끊기면 사라져요",
+           ["지우 PC가 통신을 시작해요", "공유기가 줄을 자동으로 만들어요",
+            "끝나거나 한동안 조용하면 줄이 사라져요", "자동 행과 사람이 적은 고정 규칙은 구별해요"])
+    ROW = L1 + " ↔ " + E1
+    p.base(laptop(110, 230, "지우 PC"), rt(480, 230), dsrv(850, 230, "외부 AI API"), line(170, 230, 450, 230, LINE, 4, "8 6"),
+           line(510, 230, 800, 230, LINE, 4, "8 6"), lbl(480, 345, "공유기 변환표", MUTED))
+    p.fly(packet(0, 0, BLUE), [(190, 230), (430, 230)], 1, 0.1, 0.9)
+    p.at(cell(240, 375, 480, 44, ROW, BLUE, 17), 2, 2, mark=(240, 375, 480, 44))
+    p.at(box(240, 375, 480, 44, LINE, BG, 6, dash=True, sw=3) + text(480, 403, "줄 없음", 17, MUTED, 700)
+         + pill(480, 452, "연결이 끝났거나 유휴 시간이 지났어요", ORANGE, 17, True, 370), 3, 3, mark=(240, 375, 480, 44))
+    p.at(cell(40, 375, 420, 44, "자동 행: 통신하면 만들어져요", BLUE, 16) + cell(500, 375, 420, 44, "고정 규칙: 관리자가 직접 적어요", VIOLET, 16), 4, 4,
+         mark=(40, 375, 880, 44))
+    return p.render()
+
+
+def p5():
+    p = Pg("돌아온 답장은 어느 PC로 갈까?", "나갈 때 적은 줄을 거꾸로 읽어요",
+           ["AI API의 답은 바깥 주소·포트로 도착해요", "공유기가 대장에서 53001번 줄을 찾아요",
+            "받는 사람 칸을 지우 PC의 Local 값으로 되돌려요", "기록이 없으면 보낼 곳도 몰라요"])
+    p.base(pc(110, 340, "지우 PC"), rt(480, 340), dsrv(850, 340, "외부 AI API"), line3(340))
+    p.at(lbl(740, 135, "공유기 바깥쪽") + card2(560, 148, API, E1, BLUE), 1, mark=cl2(560, 148, 1))
+    p.fly(packet(0, 0, GREEN), [(780, 340), (540, 340)], 1, 0.1, 0.9)
+    p.at(cell(310, 250, 340, 42, "대장: 53001 → " + L1, ORANGE, 16), 2, 3, mark=(310, 250, 340, 42))
+    p.at(lbl(220, 135, "공유기 안쪽") + card2(40, 148, API, L1, GREEN), 3, 3, mark=cl2(40, 148, 1))
+    p.fly(packet(0, 0, GREEN), [(430, 340), (190, 340)], 3, 0.1, 0.9)
+    p.at(check(110, 275), 3, 3)
+    p.at(cell(310, 250, 340, 42, "대장에 53001번 줄이 없어요", RED, 16) + pill(480, 440, "기록이 없으면 보낼 곳도 몰라요", ORANGE, 17, True, 360), 4, 4,
+         mark=(310, 250, 340, 42))
+    return p.render()
+
+
+def p6():
+    p = Pg("동시에 물어도 답이 안 섞이는 이유", "같은 대표번호라도 접수번호(포트)가 달라요",
+           ["지우 PC와 디자인팀 PC가 동시에 요청해요", "첫 줄: 지우 PC가 53001번이에요",
+            "둘째 줄: 디자인팀 PC가 53002번이에요", "응답은 포트로 찾아 각자 PC로 가요"])
+    ty = 350
+    p.base(pc(110, 160, "지우 PC"), pc(110, 280, "디자인팀 PC"), rt(480, 225), dsrv(850, 225, "외부 AI API"),
+           line(170, 160, 450, 222, LINE, 4, "8 6"), line(170, 280, 450, 228, LINE, 4, "8 6"), line(510, 225, 800, 225, LINE, 4, "8 6"),
+           cell(215, ty, 240, 32, "Local", MUTED, 16, BG) + cell(465, ty, 240, 32, "External", MUTED, 16, BG))
+    p.fly(packet(0, 0, BLUE), [(200, 165), (395, 208)], 1, 0.05, 0.9)
+    p.fly(packet(0, 0, GREEN), [(200, 285), (395, 240)], 1, 0.05, 0.9)
+    p.at(cell(215, ty + 38, 240, 34, L1, BLUE, 16) + cell(465, ty + 38, 240, 34, E1, BLUE, 16), 2, mark=(215, ty + 38, 490, 34))
+    p.at(cell(215, ty + 78, 240, 34, L3, GREEN, 16) + cell(465, ty + 78, 240, 34, E3, GREEN, 16), 3, mark=(215, ty + 78, 490, 34))
+    p.fly(packet(0, 0, BLUE), [(395, 208), (200, 165)], 4, 0.05, 0.9)
+    p.fly(packet(0, 0, GREEN), [(395, 240), (200, 285)], 4, 0.05, 0.9)
+    p.at(pill(815, 440, "포트로 구분 = NAPT", ORANGE, 17, True, 210), 4, 4)
+    return p.render()
+
+
+def p7():
+    p = Pg("박 팀장의 요청은 왜 사라질까?", "바깥에서 먼저 온 요청에는 맞는 줄이 없어요",
+           ["박 팀장이 198.51.100.25:8080으로 접속해요", "요청이 공유기 바깥쪽에 도착해요",
+            "맞는 줄이 없어 어느 기기로 갈지 몰라요", "줄을 미리 적어 두면 길이 열려요"])
+    p.base(net(40, 125, 300, 250, "사무실 LAN", GREEN), dsrv(115, 235, "GPU PC"), pc(255, 235, "지우 PC"), rt(480, 235),
+           laptop(850, 235, "박 팀장"), line(340, 235, 450, 235, LINE, 4, "8 6"), line(510, 235, 800, 235, LINE, 4, "8 6"))
+    p.at(pill(820, 330, f"{WAN}:{AI_PORT}", BLUE, 16, False, 230), 1, mark=(705, 314, 230, 32))
+    p.fly(packet(0, 0, BLUE), [(800, 235), (550, 235)], 2, 0.1, 0.9)
+    p.at(cross(555, 235) + cell(350, 148, 300, 42, f"대장에 {AI_PORT}번 줄이 없어요", RED, 16)
+         + pill(480, 425, "어느 기기로 보낼지 몰라 버려져요", RED, 17, False, 340), 3, 3, mark=(350, 148, 300, 42))
+    p.at(cell(350, 148, 300, 42, f"바깥 {AI_PORT} → {AI}:{AI_PORT}", GREEN, 16) + check(115, 170), 4, 4, mark=(350, 148, 300, 42))
+    return p.render()
+
+
+ITEMS = [  # (file, fn, title, alt, caption, after_paragraph) per Page; Page 4 has two
+    [("u12-l02-p01-reply-finds-pc", p1, "AI API의 답장은 어디로?",
+      "지우 PC 192.168.10.41이 외부 AI API 203.0.113.80:443을 부르면 요청은 기본 게이트웨이인 공유기를 지나고, 답은 198.51.100.25로 오는데 사설 주소는 쓸 수 없어, 공유기 안의 변환표가 192.168.10.41과 198.51.100.25의 짝을 기억한다는 그림입니다.",
+      "답장이 원래 PC를 찾는 열쇠는 공유기의 NAT 변환표입니다.", 2)],
+    [("u12-l02-p02-outbound", p2, "공유기를 나설 때 바뀌는 것",
+      "공유기 안쪽 패킷은 보내는 사람 칸(출발지)이 192.168.10.41:3000이고, 공유기를 지나면 198.51.100.25:53001로 고쳐 쓰이며, 받는 사람 칸(목적지) 203.0.113.80:443은 그대로임을 두 장의 봉투 카드로 보여 줍니다.",
+      "Outbound에서는 보내는 사람 칸, 곧 출발지의 주소와 포트만 바뀝니다.", 2)],
+    [("u12-l02-p03-who-connected", p3, "AI 서비스는 누가 접속했다고 볼까?",
+      "직원 PC 세 대의 요청이 공유기를 지나면 AI API 접속 기록에는 모두 출발지 198.51.100.25 하나만 남고, 누가 썼는지는 API 키나 계정으로 구별한다는 그림입니다.",
+      "접속 기록에는 회사 대표번호 같은 주소 하나만 남고, 사람은 키나 계정으로 구별합니다.", 1)],
+    [("u12-l02-p04-table-row", p4, "변환표 한 줄에는 무엇이 적힐까?",
+      "NAT 세션 목록 한 줄에서 Local 192.168.10.41:3000은 보낸 사람, Remote 203.0.113.80:443은 받을 곳, External 198.51.100.25:53001은 대표 접수번호에 해당함을 차례로 짚습니다.",
+      "변환표 한 줄은 접수 대장처럼 보낸 사람(Local), 받을 곳(Remote), 대표 접수번호(External)를 잇습니다.", 2),
+     ("u12-l02-p04b-row-lifetime", p4b, "변환표의 줄은 언제까지 남을까?",
+      "지우 PC가 통신을 시작하면 공유기가 변환표에 줄을 자동으로 만들고, 연결이 끝나거나 유휴 시간이 지나면 그 줄이 사라지며, 자동 행과 관리자가 직접 적은 고정 규칙은 구별해서 읽는다는 그림입니다.",
+      "자동 행은 통신이 끝나거나 유휴 시간이 지나면 사라집니다.", 4)],
+    [("u12-l02-p05-inbound", p5, "돌아온 답장은 어느 PC로 갈까?",
+      "AI API의 답장은 받는 사람 칸이 198.51.100.25:53001로 도착하고, 공유기가 대장에서 53001번 줄을 찾아 192.168.10.41:3000으로 되돌려 지우 PC에 전달하며, 줄이 없으면 보낼 곳을 모른다는 그림입니다.",
+      "Inbound에서는 받는 사람 칸(목적지)이 바뀌고, 나갈 때 적은 기록이 있어야 가능합니다.", 4)],
+    [("u12-l02-p06-two-pcs", p6, "동시에 물어도 답이 안 섞이는 이유",
+      "지우 PC와 디자인팀 PC의 요청이 같은 바깥 주소 198.51.100.25에 포트 53001과 53002로 따로 기록되어, 응답이 포트로 각자 PC에 돌아가는 NAPT 방식입니다.",
+      "주소와 포트를 함께 바꿔 바깥 주소 하나를 여러 PC가 나눠 씁니다.", 3)],
+    [("u12-l02-p07-no-row-dropped", p7, "박 팀장의 요청은 왜 사라질까?",
+      "박 팀장이 198.51.100.25:8080으로 보낸 요청이 공유기에 도착해도 대장에 맞는 줄이 없어 어느 기기로 갈지 몰라 버려지고, 바깥 8080을 192.168.10.50:8080으로 보내는 줄을 미리 적어 두면 길이 열립니다.",
+      "바깥에서 먼저 온 요청은 미리 적은 줄이 있어야 안쪽으로 전달됩니다.", 4)],
+]
+
+if __name__ == "__main__":
+    OUT.mkdir(parents=True, exist_ok=True)
+    for page in ITEMS:
+        for f, fn, *_ in page:
+            done(OUT, f, fn)
+    if "--svg-only" not in sys.argv:
+        wire_items(LESSON / "lesson.md", [[(f, t, al, c, ap) for f, _, t, al, c, ap in page] for page in ITEMS])
+    print("ok", sum(map(len, ITEMS)), "svgs")

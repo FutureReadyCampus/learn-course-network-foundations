@@ -21,10 +21,10 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-source-10-page-01
   illustrations:
-  - file: assets/animations/u12-l01-p01-outside-fail.svg
+  - file: assets/animations/u12-l01-p01-office-vs-outside.svg
     title: "사무실에서만 열리는 AI 서버"
-    alt: "사무실 안에서는 192.168.10.50:8080이 열리지만, 고객사의 박 팀장이 같은 주소를 입력하면 공유기 바깥에서는 갈 길이 없어 실패하는 모습입니다."
-    caption: "같은 사설 주소도 공유기 안쪽에서만 통합니다."
+    alt: "사무실 안에서는 192.168.10.50:8080이 열리지만, 고객사의 박 팀장이 공유기 바깥에서 같은 주소를 입력하면 갈 길이 없어 화면이 뜨지 않는 모습입니다."
+    caption: "이 주소는 공유기 안쪽에서만 뜻이 있습니다."
     after_paragraph: 0
   questions:
   - id: u12-l01-p01-q01
@@ -124,11 +124,11 @@ page_metadata:
   - question_id: u12-l01-p02-q01
     after_paragraph: 2
   illustrations:
-  - file: assets/animations/u12-l01-p02-private-public.svg
+  - file: assets/animations/u12-l01-p02-private-public-path.svg
     title: "사설 주소와 공인 주소"
-    alt: "왼쪽 AI 서버의 사설 주소 192.168.10.50은 사무실 안에서만 통하고, 오른쪽 공유기의 공인 주소 198.51.100.25는 인터넷에서 전달된다는 비교입니다."
+    alt: "사무실에는 사설 주소 192.168.10.50과 공인 주소 198.51.100.25가 있고, 다른 회사에도 같은 사설 주소가 있을 수 있어 인터넷은 사설 주소로는 길을 안내하지 않으며 공인 주소로 보내야 공유기까지 전달된다는 설명입니다."
     caption: "박 팀장은 사설 주소가 아니라 바깥 주소로 가야 합니다."
-    after_paragraph: 0
+    after_paragraph: 1
 - page_id: advanced-source-10-page-07
   questions:
   - id: u12-l01-p03-q01
@@ -179,16 +179,16 @@ page_metadata:
   - question_id: u12-l01-p03-q01
     after_paragraph: 3
   illustrations:
-  - file: assets/animations/u12-l01-p03-address-range.svg
+  - file: assets/animations/u12-l01-p03-range-table-check.svg
     title: "이 주소, 사설일까 공인일까?"
-    alt: "박 팀장 노트북의 172.20.4.31을 사설 범위표에 대 보면 172.16.0.0/12 안이라 사설이고, IP 확인 사이트의 192.0.2.77은 NAT를 거친 바깥 주소라는 설명입니다."
+    alt: "박 팀장 노트북 설정의 172.20.4.31을 사설 범위표에 대 보면 172.16.0.0/12 안이라 사설이고, 내 IP 확인 사이트의 192.0.2.77은 공유기가 바꿔 단 바깥 주소라는 설명입니다."
     caption: "주소는 범위표에 대 보고, 어디에서 확인한 값인지 함께 적습니다."
     after_paragraph: 0
 - page_id: advanced-source-10-page-03
   illustrations:
-  - file: assets/animations/u12-l01-p04-many-pcs-one-address.svg
+  - file: assets/animations/u12-l01-p04-source-swapped.svg
     title: "40명이 주소 하나로 나가요"
-    alt: "지우 PC 192.168.10.41과 박 팀장 PC 192.168.10.42가 외부 AI 서비스에 접속하면 공유기가 출발지를 198.51.100.25로 바꿔 서비스는 한 곳에서 온 것으로 봅니다."
+    alt: "지우 PC 192.168.10.41과 박 팀장 PC 192.168.10.42가 외부 AI 서비스에 접속하면 공유기가 출발지를 198.51.100.25로 바꿔 기록하고, 서비스는 한 곳에서 온 것으로 봅니다."
     caption: "NAT 덕분에 PC 수만큼 공인 주소를 사지 않아도 됩니다."
     after_paragraph: 0
   questions:
@@ -241,11 +241,16 @@ page_metadata:
     after_paragraph: 2
 - page_id: advanced-source-10-page-04
   illustrations:
-  - file: assets/animations/u12-l01-p05-nat-not-firewall.svg
+  - file: assets/animations/u12-l01-p05-no-record-not-firewall.svg
     title: "NAT 뒤라서 안전할까?"
-    alt: "바깥의 낯선 요청이 공유기에 도착하지만 변환 기록이 없어 전달되지 않는 것은 부수 효과이며, 허용·차단은 방화벽 규칙이 따로 정한다는 그림입니다."
+    alt: "바깥의 낯선 요청이 공유기에 도착해도 변환 기록이 없어 전달되지 않는 것은 부수 효과이고, 허용·차단은 방화벽 규칙이 따로 정한다는 그림입니다."
     caption: "NAT 때문에 막히는 효과를 보안 장치로 착각하지 않습니다."
-    after_paragraph: 0
+    after_paragraph: 1
+  - file: assets/animations/u12-l01-p05b-infected-pc-outbound.svg
+    title: "NAT는 안에서 나가는 것도 막을까?"
+    alt: "감염된 PC가 밖으로 도면 파일을 보내면 NAT는 평소처럼 기록하고 내보내 외부 서버에 도착하며, 막으려면 방화벽 규칙을 따로 정해야 한다는 그림입니다."
+    caption: "안쪽에서 먼저 나가는 통신은 NAT가 막지 않습니다."
+    after_paragraph: 2
   questions:
   - id: u12-l01-p05-q01
     kind: choice

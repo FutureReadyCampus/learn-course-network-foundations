@@ -79,9 +79,9 @@ page_metadata:
   illustrations:
   - file: assets/animations/u12-l02-p01-reply-finds-pc.svg
     title: "AI API의 답장은 어디로?"
-    alt: "지우 PC 192.168.10.41이 외부 AI API 203.0.113.80:443을 부르면 요청은 공유기를 지나고, 답은 198.51.100.25로 오는데 공유기의 변환표가 짝을 기억해 둔다는 그림입니다."
-    caption: "응답이 원래 PC를 찾는 열쇠는 공유기의 NAT 변환표입니다."
-    after_paragraph: 0
+    alt: "지우 PC 192.168.10.41이 외부 AI API 203.0.113.80:443을 부르면 요청은 기본 게이트웨이인 공유기를 지나고, 답은 198.51.100.25로 오는데 사설 주소는 쓸 수 없어, 공유기 안의 변환표가 192.168.10.41과 198.51.100.25의 짝을 기억한다는 그림입니다."
+    caption: "답장이 원래 PC를 찾는 열쇠는 공유기의 NAT 변환표입니다."
+    after_paragraph: 2
 - page_id: advanced-source-11-page-03
   questions:
   - id: u12-l02-p02-q01
@@ -134,9 +134,9 @@ page_metadata:
   illustrations:
   - file: assets/animations/u12-l02-p02-outbound.svg
     title: "공유기를 나설 때 바뀌는 것"
-    alt: "공유기 안쪽에서는 출발지가 192.168.10.41:3000이고 바깥쪽에서는 198.51.100.25:53001로 바뀌며, 목적지 203.0.113.80:443은 그대로임을 두 개의 패킷 카드로 보여 줍니다."
-    caption: "Outbound에서는 출발지 주소와 포트만 바뀝니다."
-    after_paragraph: 0
+    alt: "공유기 안쪽 패킷은 보내는 사람 칸(출발지)이 192.168.10.41:3000이고, 공유기를 지나면 198.51.100.25:53001로 고쳐 쓰이며, 받는 사람 칸(목적지) 203.0.113.80:443은 그대로임을 두 장의 봉투 카드로 보여 줍니다."
+    caption: "Outbound에서는 보내는 사람 칸, 곧 출발지의 주소와 포트만 바뀝니다."
+    after_paragraph: 2
 - page_id: advanced-source-11-page-05
   questions:
   - id: u12-l02-p03-q01
@@ -189,9 +189,9 @@ page_metadata:
   illustrations:
   - file: assets/animations/u12-l02-p03-who-connected.svg
     title: "AI 서비스는 누가 접속했다고 볼까?"
-    alt: "직원 PC 세 대의 요청이 공유기를 지나 AI API 접속 기록에는 모두 출발지 198.51.100.25로 남고, 사람 구별은 계정이나 API 키로 한다는 설명입니다."
-    caption: "서비스가 보는 IP는 직원이 아니라 회사 회선의 흔적입니다."
-    after_paragraph: 0
+    alt: "직원 PC 세 대의 요청이 공유기를 지나면 AI API 접속 기록에는 모두 출발지 198.51.100.25 하나만 남고, 누가 썼는지는 API 키나 계정으로 구별한다는 그림입니다."
+    caption: "접속 기록에는 회사 대표번호 같은 주소 하나만 남고, 사람은 키나 계정으로 구별합니다."
+    after_paragraph: 1
 - page_id: advanced-source-11-page-06
   questions:
   - id: u12-l02-p04-q01
@@ -244,9 +244,14 @@ page_metadata:
   illustrations:
   - file: assets/animations/u12-l02-p04-table-row.svg
     title: "변환표 한 줄에는 무엇이 적힐까?"
-    alt: "NAT 세션 목록 한 줄에서 Local 192.168.10.41:3000, Remote 203.0.113.80:443, External 198.51.100.25:53001이 각각 무엇을 뜻하는지 차례로 짚습니다."
-    caption: "매핑은 Local과 External을 잇고, 자동 행은 시간이 지나면 사라집니다."
-    after_paragraph: 0
+    alt: "NAT 세션 목록 한 줄에서 Local 192.168.10.41:3000은 보낸 사람, Remote 203.0.113.80:443은 받을 곳, External 198.51.100.25:53001은 대표 접수번호에 해당함을 차례로 짚습니다."
+    caption: "변환표 한 줄은 접수 대장처럼 보낸 사람(Local), 받을 곳(Remote), 대표 접수번호(External)를 잇습니다."
+    after_paragraph: 2
+  - file: assets/animations/u12-l02-p04b-row-lifetime.svg
+    title: "변환표의 줄은 언제까지 남을까?"
+    alt: "지우 PC가 통신을 시작하면 공유기가 변환표에 줄을 자동으로 만들고, 연결이 끝나거나 유휴 시간이 지나면 그 줄이 사라지며, 자동 행과 관리자가 직접 적은 고정 규칙은 구별해서 읽는다는 그림입니다."
+    caption: "자동 행은 통신이 끝나거나 유휴 시간이 지나면 사라집니다."
+    after_paragraph: 4
 - page_id: advanced-source-11-page-07
   questions:
   - id: u12-l02-p05-q01
@@ -299,9 +304,9 @@ page_metadata:
   illustrations:
   - file: assets/animations/u12-l02-p05-inbound.svg
     title: "돌아온 답장은 어느 PC로 갈까?"
-    alt: "AI API의 응답 목적지 198.51.100.25:53001을 변환표에서 찾아 192.168.10.41:3000으로 되돌려 지우 PC에 전달하는 Inbound 과정입니다."
-    caption: "Inbound에서는 목적지가 바뀌고, 나갈 때 적은 기록이 있어야 가능합니다."
-    after_paragraph: 0
+    alt: "AI API의 답장은 받는 사람 칸이 198.51.100.25:53001로 도착하고, 공유기가 대장에서 53001번 줄을 찾아 192.168.10.41:3000으로 되돌려 지우 PC에 전달하며, 줄이 없으면 보낼 곳을 모른다는 그림입니다."
+    caption: "Inbound에서는 받는 사람 칸(목적지)이 바뀌고, 나갈 때 적은 기록이 있어야 가능합니다."
+    after_paragraph: 4
 - page_id: advanced-source-11-page-09
   questions:
   - id: u12-l02-p06-q01
@@ -354,16 +359,16 @@ page_metadata:
   illustrations:
   - file: assets/animations/u12-l02-p06-two-pcs.svg
     title: "동시에 물어도 답이 안 섞이는 이유"
-    alt: "지우 PC와 디자인팀 PC의 요청이 같은 바깥 주소 198.51.100.25에 포트 53001과 53002로 따로 기록되어 응답이 각자 PC로 돌아가는 NAPT 방식입니다."
+    alt: "지우 PC와 디자인팀 PC의 요청이 같은 바깥 주소 198.51.100.25에 포트 53001과 53002로 따로 기록되어, 응답이 포트로 각자 PC에 돌아가는 NAPT 방식입니다."
     caption: "주소와 포트를 함께 바꿔 바깥 주소 하나를 여러 PC가 나눠 씁니다."
-    after_paragraph: 0
+    after_paragraph: 3
 - page_id: advanced-source-15-page-01
   illustrations:
   - file: assets/animations/u12-l02-p07-no-row-dropped.svg
     title: "박 팀장의 요청은 왜 사라질까?"
-    alt: "박 팀장이 198.51.100.25:8080으로 보낸 요청이 도착해도 변환표에 맞는 줄이 없어 GPU PC로 갈지 지우 PC로 갈지 몰라 버려지고, 줄을 미리 적어 두면 길이 열립니다."
+    alt: "박 팀장이 198.51.100.25:8080으로 보낸 요청이 공유기에 도착해도 대장에 맞는 줄이 없어 어느 기기로 갈지 몰라 버려지고, 바깥 8080을 192.168.10.50:8080으로 보내는 줄을 미리 적어 두면 길이 열립니다."
     caption: "바깥에서 먼저 온 요청은 미리 적은 줄이 있어야 안쪽으로 전달됩니다."
-    after_paragraph: 0
+    after_paragraph: 4
   questions:
   - id: u12-l02-p07-q01
     kind: choice
