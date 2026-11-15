@@ -68,11 +68,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-03-page-02
   illustrations:
-  - file: assets/animations/u11-inline-bypass-drop.svg
-    title: Packet의 통과와 차단
-    alt: 허용된 패킷은 통과시켜 내보내고 차단 규칙에 맞는 패킷은 Drop으로 멈추는 모습입니다.
-    caption: 장치는 패킷을 통과시키거나 멈춥니다.
-    after_paragraph: 1
+  - file: assets/animations/u11-l02-p2-drop-wait.svg
+    title: "통과시킬까, 버릴까?"
+    alt: "노트북의 요청이 출구 장치의 차단 규칙에 걸려 Drop되고, 응답을 받지 못한 노트북이 한참 기다리는 모습입니다."
+    caption: "조용히 Drop하면 보낸 쪽은 응답 없이 기다리고, 거부 응답을 받으면 바로 실패합니다."
+    after_paragraph: 2
   questions:
   - id: u11-l02-p02-q01
     kind: choice
@@ -123,11 +123,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-03-page-04
   illustrations:
-  - file: assets/animations/u11-inline-interface.svg
-    title: Interface와 안쪽·바깥쪽
-    alt: 내부망 쪽 A 인터페이스로 들어온 패킷이 인터넷 쪽 B 인터페이스로 나가는 모습입니다.
-    caption: 포트를 인터페이스로 부르며 안쪽과 바깥쪽을 나눕니다.
-    after_paragraph: 2
+  - file: assets/animations/u11-l02-p3-interface-direction.svg
+    title: "인터페이스로 방향을 읽기"
+    alt: "본사 게이트웨이의 요청은 A로 들어와 B로 나가 Outbound, 응답은 B로 들어와 A로 나가 Inbound로 읽는 모습입니다."
+    caption: "방향은 장치의 인터페이스 기준이라 A→B처럼 풀어 읽습니다."
+    after_paragraph: 3
   questions:
   - id: u11-l02-p03-q01
     kind: choice
@@ -178,10 +178,15 @@ page_metadata:
     after_paragraph: 4
 - page_id: advanced-source-03-page-07
   illustrations:
-  - file: assets/animations/u11-inline-hw-sw.svg
-    title: 소프트웨어·하드웨어의 구현
-    alt: 전용 장비 상자와 범용 컴퓨터에 소프트웨어를 올린 경우 모두 패킷을 전달하는 모습입니다.
-    caption: 장치의 역할은 상자 모양이 아니라 하는 일로 정해집니다.
+  - file: assets/animations/u11-l02-p4-bottleneck.svg
+    title: "회선을 늘려도 느린 이유"
+    alt: "회선을 300Mbps에서 1Gbps로 넓혀도 처리량 150Mbps인 방화벽 앞에서 패킷이 몰려 속도가 그대로인 모습입니다."
+    caption: "가장 좁은 구간인 방화벽 처리량이 전체 속도의 상한입니다."
+    after_paragraph: 2
+  - file: assets/animations/u11-l02-p4b-hw-sw-tradeoff.svg
+    title: "하드웨어와 소프트웨어 구현"
+    alt: "전용 하드웨어·가속기는 처리가 빠르지만 바꾸기 어렵고, 범용 컴퓨터와 소프트웨어는 바꾸기 쉽지만 느릴 수 있는 모습입니다."
+    caption: "어느 구현이든 장점과 대가를 맞바꾸는 절충입니다."
     after_paragraph: 4
   questions:
   - id: u11-l02-p05-q01
@@ -233,11 +238,16 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-03-page-08
   illustrations:
-  - file: assets/animations/u11-inline-filter.svg
-    title: 필터링과 고성능 구현
-    alt: 주소와 포트만 보는 규칙은 빠르고 내용까지 보면 더 오래 걸리는 차이를 보여 줍니다.
-    caption: 무엇을 보느냐에 따라 처리 속도가 달라집니다.
-    after_paragraph: 2
+  - file: assets/animations/u11-l02-p5-inspect-depth.svg
+    title: "주소만 볼까, 내용까지 볼까?"
+    alt: "헤더의 주소와 포트만 읽으면 빠르고, 내용까지 읽으면 더 정확하지만 느려지는 모습입니다."
+    caption: "막을 기준을 정하고 그 기준에 필요한 깊이만 봅니다."
+    after_paragraph: 3
+  - file: assets/animations/u11-l02-p5b-address-limits.svg
+    title: "주소 목록 차단의 한계"
+    alt: "AI 서비스 주소를 막아도 서비스가 새 주소로 옮기면 통과하고, 그 주소를 쓰는 다른 서비스가 대신 막히는 모습입니다."
+    caption: "목적지 주소는 서비스 이름표가 아닙니다."
+    after_paragraph: 4
   questions:
   - id: u11-l02-p06-q01
     kind: choice
@@ -288,11 +298,16 @@ page_metadata:
     after_paragraph: 3
 - page_id: u11-l02-page-07
   illustrations:
-  - file: assets/animations/u11-l02-p06-reboot-spof.svg
+  - file: assets/animations/u11-l02-p6-reboot-spof.svg
     title: "길목 장치가 멈추면?"
-    alt: "본사 게이트웨이를 재부팅하자 사무실 PC 전체의 인터넷이 끊기고, 장치를 두 대 두는 이중화가 대안으로 나오는 모습입니다."
-    caption: "Inline 장치는 단일 장애점이 될 수 있어 이중화나 Bypass로 대비하되 각각 대가가 있습니다."
+    alt: "본사 게이트웨이를 재부팅하자 사무실 PC 전체의 인터넷이 끊기고, 같은 역할의 장치를 한 대 더 두면 이어받는 모습입니다."
+    caption: "Inline 장치는 단일 장애점이 될 수 있어 같은 역할의 장치를 두어 대비합니다."
     after_paragraph: 2
+  - file: assets/animations/u11-l02-p6b-failover-bypass.svg
+    title: "멈춤에 대비하는 두 방법"
+    alt: "장치가 멈추면 이중화는 다른 장치가 이어받아 검사를 계속하고, 장애 시 우회는 검사 없이 통과시켜 대가가 서로 다른 모습입니다."
+    caption: "이중화는 비용이 늘고, 장애 시 우회는 검사와 기록이 빠집니다."
+    after_paragraph: 4
   questions:
   - id: u11-l02-p07-q01
     kind: choice
