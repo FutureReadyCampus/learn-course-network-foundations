@@ -1,2 +1,4 @@
 /preview/
 /site/dist/
+__pycache__/
+*.pyc

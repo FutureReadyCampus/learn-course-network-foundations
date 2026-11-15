@@ -66,9 +66,9 @@ page_metadata:
   - question_id: u15-l01-p01-q01
     after_paragraph: 4
   illustrations:
-  - file: assets/animations/u15-l01-p1-four-questions.svg
+  - file: assets/animations/u15-l01-p1-four-questions-rev.svg
     title: "보안 점검, 무엇부터?"
-    alt: "회의실 랜 포트의 박 팀장 노트북이 확인 없이 주소를 받아 AI 서버 관리 화면까지 닿고, 점검을 네 질문으로 쪼개 첫 질문 NAC부터 보는 모습입니다."
+    alt: "회의실 랜 포트의 박 팀장 노트북이 확인 없이 주소를 받아 AI 서버 관리 화면까지 닿고, 그 장면에서 점검의 첫 질문 누가 들어오나, 곧 NAC를 짚는 모습입니다."
     caption: "점검을 네 질문으로 쪼개면 첫 질문은 누가 들어오나, 곧 NAC입니다."
     after_paragraph: 1
 - page_id: advanced-source-23-page-06
@@ -121,9 +121,9 @@ page_metadata:
   - question_id: u15-l01-p02-q01
     after_paragraph: 2
   illustrations:
-  - file: assets/animations/u15-l01-p2-ledger-probe.svg
+  - file: assets/animations/u15-l01-p2-ledger-probe-rev.svg
     title: "회사 기기인지 알아보기"
-    alt: "IP·MAC 장부에 적은 회사 PC와 달리, Probe가 경로 밖에서 본 장부에 없는 쌍을 미허가 기기로 보는 모습입니다."
+    alt: "IP·MAC 장부에 적은 회사 PC와 달리, Probe가 경로 밖에서 받은 복사본에서 장부에 없는 쌍을 미허가 기기로 보는 모습입니다."
     caption: "장부와 Probe로 미등록 기기를 알아보지만 MAC은 바꿀 수 있어 보조 도구입니다."
     after_paragraph: 2
 - page_id: u15-l01-page-03
@@ -176,9 +176,9 @@ page_metadata:
   - question_id: u15-l01-p03-q01
     after_paragraph: 2
   illustrations:
-  - file: assets/animations/u15-l01-p3-port-down.svg
+  - file: assets/animations/u15-l01-p3-port-down-rev.svg
     title: "포트를 내리면 끝일까?"
-    alt: "NAC가 스위치에 포트를 내리라고 지시하면 링크가 끊기고, 같은 포트 뒤의 정상 기기까지 함께 끊기는 대가를 보여 줍니다."
+    alt: "Probe가 찾은 미등록 노트북의 포트를 NAC가 내리면 링크가 끊기고, 같은 포트 뒤 소형 스위치에 물린 정상 PC까지 함께 끊깁니다."
     caption: "포트 차단은 확실하지만 포트 뒤 기기가 모두 끊기고 이유를 알리지 못합니다."
     after_paragraph: 2
 - page_id: advanced-source-23-page-08
@@ -341,9 +341,9 @@ page_metadata:
   - question_id: u15-l01-p07-q01
     after_paragraph: 3
   illustrations:
-  - file: assets/animations/u15-l01-p6-wips.svg
+  - file: assets/animations/u15-l01-p6-wips-rev.svg
     title: "몰래 켠 와이파이"
-    alt: "사내 PC가 랜과 핫스팟에 동시에 붙어 생긴 샛길을 WIPS 센서가 전파로 찾아 경보하는 모습입니다."
+    alt: "랜에 꽂힌 사내 PC가 핫스팟에도 붙어 샛길이 생기면, 천장 WIPS 센서가 전파로 허가 밖 연결을 찾아 경보하고 사람이 확인할 후보로 올리는 모습입니다."
     caption: "허가 없는 무선 사용은 WIPS가 찾고, 경보는 사람이 확인할 후보입니다."
     after_paragraph: 3
 ---

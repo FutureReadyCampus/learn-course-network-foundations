@@ -64,9 +64,9 @@ page_metadata:
   - question_id: u14-l03-p01-q01
     after_paragraph: 2
   illustrations:
-  - file: assets/animations/u14-l03-p1-four-pieces.svg
-    title: "IPsec의 네 조각"
-    alt: "터널이 안 설 때 IKE 협상(UDP 500), NAT-T(UDP 4500), 협상 내용, 상대 확인 순서로 앞에서부터 확인한다는 점검 순서입니다."
+  - file: assets/animations/u14-l03-p1-check-order.svg
+    title: "터널이 안 뜰 때 확인 순서"
+    alt: "터널이 안 서면 IKE 협상(UDP 500), NAT 통과(NAT-T, UDP 4500), 협상 내용, 상대 확인 순서로 앞에서부터 확인하고, 공유기가 있으면 2번이 3·4번보다 먼저 막힌다는 점검 순서입니다."
     caption: "터널이 안 서면 IKE, NAT-T, 협상 내용, 상대 확인 순으로 확인합니다."
     after_paragraph: 3
 - page_id: advanced-source-20-page-04
@@ -119,11 +119,16 @@ page_metadata:
   - question_id: u14-l03-p02-q01
     after_paragraph: 3
   illustrations:
-  - file: assets/animations/u14-l03-p2-ike-sa.svg
+  - file: assets/animations/u14-l03-p2-ike-sa-memo.svg
     title: "IKE 협상과 SA"
-    alt: "도쿄 SG와 서울 SG가 UDP 500으로 암호 방식·키·수명을 제안해 합의하고, 결과를 각자 SA로 기억하는 모습입니다."
-    caption: "IKE는 공통 조건을 협상해 SA로 남기며, 공통 조건이 없으면 실패합니다."
+    alt: "도쿄 SG와 서울 SG가 UDP 500으로 암호 방식·키·수명을 제안해 합의하고, 결과를 방향마다 따로 SA 메모로 기억하는 모습입니다."
+    caption: "IKE는 공통 조건을 협상해 SA로 남기며 SA는 방향마다 따로 생깁니다."
     after_paragraph: 2
+  - file: assets/animations/u14-l03-p2b-ike-fail.svg
+    title: "공통 조건이 없으면 협상 실패"
+    alt: "새 도쿄 SG는 구형 암호 방식만, 본사 SG는 강한 암호 방식만 허용해 공통 조건이 없으므로 SA가 생기지 않고 협상이 실패하는 모습입니다."
+    caption: "공통 조건이 없으면 IKE 협상이 실패하니 양쪽 제안부터 대조합니다."
+    after_paragraph: 4
 - page_id: u14-l03-page-03
   questions:
   - id: u14-l03-p03-q01
@@ -174,9 +179,9 @@ page_metadata:
   - question_id: u14-l03-p03-q01
     after_paragraph: 2
   illustrations:
-  - file: assets/animations/u14-l03-p3-auth.svg
+  - file: assets/animations/u14-l03-p3-auth-who.svg
     title: "상대가 진짜 본사 SG일까"
-    alt: "왼쪽은 양쪽이 같은 비밀값을 아는지로 믿는 사전 공유 키, 오른쪽은 인증 기관이 보증한 인증서를 서로 보여 주는 방식입니다."
+    alt: "본사 SG인 척하는 장비를 막기 위해, 왼쪽은 양쪽이 같은 비밀값을 아는지로 믿는 사전 공유 키, 오른쪽은 인증 기관이 보증한 인증서를 서로 보여 주는 방식입니다."
     caption: "상대 확인은 사전 공유 키나 인증서로 하며, 암호화와는 다른 일입니다."
     after_paragraph: 1
 - page_id: advanced-source-20-page-05
@@ -229,9 +234,9 @@ page_metadata:
   - question_id: u14-l03-p04-q01
     after_paragraph: 3
   illustrations:
-  - file: assets/animations/u14-l03-p4-esp-ah.svg
+  - file: assets/animations/u14-l03-p4-esp-ah-envelope.svg
     title: "ESP와 AH는 뭘 지켜 줄까"
-    alt: "기밀성, 무결성, 인증 세 가지 중 ESP는 모두, AH는 기밀성을 뺀 둘만 지켜 준다는 표 형태의 비교입니다."
+    alt: "기밀성, 무결성, 인증 세 가지 중 불투명 봉투 같은 ESP는 모두, 투명 봉투에 밀봉만 한 AH는 기밀성을 뺀 둘만 지켜 준다는 비교입니다."
     caption: "내용이 비밀인 자료는 기밀성이 있는 ESP로 맞춥니다."
     after_paragraph: 2
 - page_id: u14-l03-page-05
@@ -284,9 +289,14 @@ page_metadata:
   - question_id: u14-l03-p05-q01
     after_paragraph: 3
   illustrations:
-  - file: assets/animations/u14-l03-p5-nat-t.svg
+  - file: assets/animations/u14-l03-p5-ah-nat.svg
+    title: "AH는 NAT를 못 지나가요"
+    alt: "박 팀장 노트북의 AH 패킷이 집 공유기(NAT)를 지나며 출발 주소가 바뀌면, 서울 SG가 변조로 보고 버려서 NAT 뒤에서는 ESP를 써야 하는 모습입니다."
+    caption: "AH는 NAT가 주소를 바꾸면 변조로 보고 버립니다."
+    after_paragraph: 1
+  - file: assets/animations/u14-l03-p5b-nat-t.svg
     title: "집 공유기를 만나도 지나갈까"
-    alt: "박 팀장 노트북의 ESP 패킷이 포트 번호가 없어 집 공유기(NAT)에서 막히지만, NAT-T가 UDP 4500으로 한 번 더 감싸 서울 SG까지 지나가는 모습입니다."
+    alt: "ESP에는 포트 번호가 없어 NAT가 구분하지 못하지만, NAT-T가 ESP를 UDP 4500으로 한 번 더 감싸 서울 SG까지 지나가는 모습이며 AH는 구제하지 못합니다."
     caption: "NAT가 있으면 ESP를 UDP 4500으로 감싸는 NAT-T를 씁니다."
     after_paragraph: 2
 - page_id: u14-l03-page-06
@@ -339,11 +349,16 @@ page_metadata:
   - question_id: u14-l03-p06-q01
     after_paragraph: 2
   illustrations:
-  - file: assets/animations/u14-l03-p6-ssl-vpn.svg
-    title: "브라우저로 붙는 SSL VPN"
-    alt: "호텔 와이파이에서 IPsec의 UDP 500·4500은 막히고 TLS 기반 SSL VPN은 TCP 443으로 본사 SG까지 지나가는 모습입니다."
-    caption: "웹만 열린 환경에서는 TCP 443을 쓰는 SSL VPN이 대개 통과합니다."
+  - file: assets/animations/u14-l03-p6-ssl-tls-vpn.svg
+    title: "브라우저로 붙는 SSL/TLS VPN"
+    alt: "호텔 와이파이에서 IPsec의 UDP 500·4500은 막히고 TLS 기반 SSL/TLS VPN은 TCP 443으로 본사 SG까지 지나가는 모습입니다."
+    caption: "웹만 열린 환경에서는 TCP 443을 쓰는 SSL/TLS VPN이 대개 통과합니다."
     after_paragraph: 1
+  - file: assets/animations/u14-l03-p6b-which-vpn.svg
+    title: "누구에게 어떤 VPN을 쓸까"
+    alt: "지사끼리 망 전체를 이을 때는 IPsec, 출장·재택 한 명은 필요한 앱만 SSL/TLS VPN, 외주 작업자에게는 웹 한 곳만 웹 포털로 열어 주는 선택입니다."
+    caption: "대상과 환경을 보고 IPsec과 SSL/TLS VPN을 나눠 씁니다."
+    after_paragraph: 3
 ---
 
 ## VPN 만드는 방법은 하나뿐일까?

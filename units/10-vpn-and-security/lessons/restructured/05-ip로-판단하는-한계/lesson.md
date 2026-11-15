@@ -59,9 +59,9 @@ page_metadata:
   - question_id: u14-l05-p01-q01
     after_paragraph: 3
   illustrations:
-  - file: assets/animations/u14-l05-p1-service-view.svg
+  - file: assets/animations/u14-l05-p1-service-view-rev.svg
     title: "AI 서비스는 내가 어디 있다고 볼까?"
-    alt: "출장지 IP 192.0.2.150에서 외부 AI 서비스로 요청이 가면 서비스가 IP 위치 DB와 맞춰 접속 위치를 짐작하지만 그것은 사실이 아닌 추정이라는 흐름을 보여 줍니다."
+    alt: "출장지의 박 팀장 요청이 외부 AI 서버에 닿으면 서버는 출발지 IP 192.0.2.150만 확실히 알고 실제 위치는 모른 채, IP 위치 데이터베이스와 맞춰 현지 접속이라고 짐작하므로 위치는 추정치라는 흐름입니다."
     caption: "서비스가 보는 위치는 출발지 IP로 짐작한 추정치입니다."
     after_paragraph: 1
 - page_id: advanced-source-22-page-03
@@ -114,9 +114,9 @@ page_metadata:
   - question_id: u14-l05-p02-q01
     after_paragraph: 2
   illustrations:
-  - file: assets/animations/u14-l05-p2-exit-changes.svg
+  - file: assets/animations/u14-l05-p2-exit-changes-rev.svg
     title: "VPN을 켜면 왜 출구가 바뀔까?"
-    alt: "왼쪽은 VPN을 끈 노트북의 출발지 192.0.2.150, 오른쪽은 전체 터널을 켜서 SG를 거쳐 서비스에 출발지 198.51.100.25로 보이는 모습을 비교합니다."
+    alt: "같은 노트북 192.0.2.150에서 왼쪽은 VPN을 끈 채 바로, 오른쪽은 전체 터널로 SG를 거쳐 외부 AI에 보내면 서비스에 보이는 출발지가 192.0.2.150과 198.51.100.25로 달라지는 비교입니다."
     caption: "전체 터널을 켜면 서비스는 출장지가 아니라 회사 출구 주소를 봅니다."
     after_paragraph: 1
 - page_id: advanced-source-22-page-05
@@ -169,9 +169,9 @@ page_metadata:
   - question_id: u14-l05-p03-q01
     after_paragraph: 2
   illustrations:
-  - file: assets/animations/u14-l05-p3-region-risk.svg
+  - file: assets/animations/u14-l05-p3-region-risk-rev.svg
     title: "지역 제한을 VPN으로 넘으면"
-    alt: "직원이 고객 도면 업무 자료를 개인 VPN 중계를 거쳐 지역 제한 서비스로 보내면 계정 정지와 자료 유출 위험이 생기고, 회사는 공식 지원 지역과 기업 계약을 먼저 확인한다는 점을 보여 줍니다."
+    alt: "직원이 고객 도면 업무로 지역 제한 서비스를 열려고 개인 VPN을 거치면 출구만 바뀌고 약관·계약은 그대로여서 계정 정지와 도면 유출 위험이 생기고, 회사는 공식 지원 지역과 기업 계약부터 확인한다는 흐름입니다."
     caption: "지역 제한을 출구로 넘는 일은 계정·데이터·책임의 위험을 낳습니다."
     after_paragraph: 2
 - page_id: advanced-source-22-page-06
@@ -224,9 +224,9 @@ page_metadata:
   - question_id: u14-l05-p04-q01
     after_paragraph: 2
   illustrations:
-  - file: assets/animations/u14-l05-p4-ip-reputation.svg
+  - file: assets/animations/u14-l05-p4-ip-reputation-rev.svg
     title: "IP 주소에도 평판이 있다?"
-    alt: "본사 PC들이 NAT 출구 198.51.100.25 하나로 나가므로 감염 PC의 스팸 때문에 출구 평판이 깎이고 정상 메일도 의심받는 모습입니다."
+    alt: "본사 PC들이 NAT 출구 198.51.100.25 하나로 나가므로 감염된 PC의 스팸 때문에 출구 평판이 깎이고 정상 메일도 의심받아서, 출구 뒤 장비를 점검하고 차단 해제를 요청하는 모습입니다."
     caption: "출구를 함께 쓰면 남의 행동의 평판도 함께 떠안습니다."
     after_paragraph: 1
 - page_id: advanced-source-22-page-07
@@ -279,9 +279,9 @@ page_metadata:
   - question_id: u14-l05-p05-q01
     after_paragraph: 2
   illustrations:
-  - file: assets/animations/u14-l05-p5-router-vpn.svg
+  - file: assets/animations/u14-l05-p5-router-vpn-rev.svg
     title: "공유기 VPN 기능의 위험"
-    alt: "박 팀장 집 공유기에 켜져 있던 VPN 서버 기능이 기본 비밀번호와 옛 펌웨어 때문에 낯선 계정을 허용하게 되고, 비밀번호 변경·기능 끄기·업데이트 순서로 막는 모습입니다."
+    alt: "박 팀장 집 공유기에 켜져 있던 VPN 서버 기능이 기본 비밀번호와 오래된 펌웨어 때문에 낯선 계정을 허용하게 되고, 비밀번호 변경·기능 끄기·펌웨어 업데이트 순서로 막는 모습입니다."
     caption: "쓰지 않는 공유기 기능은 끄고 관리자 비밀번호와 펌웨어부터 챙깁니다."
     after_paragraph: 2
 - page_id: advanced-source-22-page-08
@@ -334,10 +334,10 @@ page_metadata:
   - question_id: u14-l05-p06-q01
     after_paragraph: 2
   illustrations:
-  - file: assets/animations/u14-l05-p6-relay.svg
+  - file: assets/animations/u14-l05-p6-relay-rev.svg
     title: "내 공유기가 남의 중계소라면?"
-    alt: "제3자가 장악된 한결디자인 공유기를 거쳐 외부 AI API에 요청을 보내면 API 업체 로그에 198.51.100.25가 남아 명의자와 행위자가 달라지는 모습입니다."
-    caption: "이 IP에서 왔다는 말은 이 사람이 했다는 말과 다릅니다."
+    alt: "공격자가 장악된 한결디자인 공유기를 거쳐 API 업체에 요청을 보내면 로그에 198.51.100.25가 남아 이 IP에서 왔다는 사실만 확인되고 이 사람이 했다는 것은 이어지지 않는 모습입니다."
+    caption: "이 IP에서 왔다는 말과 이 사람이 했다는 말은 다릅니다."
     after_paragraph: 1
 - page_id: advanced-source-22-page-09
   questions:
@@ -389,11 +389,16 @@ page_metadata:
   - question_id: u14-l05-p07-q01
     after_paragraph: 2
   illustrations:
-  - file: assets/animations/u14-l05-p7-hard-to-trace.svg
-    title: "여러 번 거친 접속은 왜 추적이 어려울까?"
-    alt: "직원 PC가 개인 VPN 암호화 터널로 필터가 막은 사이트에 접속하면 회사 필터는 암호화된 통신만 보고, 구간마다 기록이 달라 추적이 끊긴다는 흐름입니다."
-    caption: "통제는 터널 안이 아니라 어떤 터널을 허용할지 정하는 쪽에서 이루어집니다."
+  - file: assets/animations/u14-l05-p7-filter-blind-rev.svg
+    title: "개인 VPN 안은 필터가 볼 수 없어요"
+    alt: "직원 PC가 개인 VPN으로 필터가 막아 둔 파일 공유 사이트에 접속하면 회사 필터에는 암호화된 통신만 보여 막지 못하고, 통제는 허용할 터널을 정하는 일로 한다는 흐름입니다."
+    caption: "회사 필터는 암호화된 터널 안을 볼 수 없습니다."
     after_paragraph: 1
+  - file: assets/animations/u14-l05-p7b-trace-chain.svg
+    title: "여러 번 거친 접속은 왜 추적이 어려울까?"
+    alt: "공격이 해외 VPN 업체, 감염된 가정 공유기, 한결디자인 순으로 들어오고 구간마다 기록이 다른 조직에 있어, 거슬러 올라가다 기록이 없는 구간에서 역추적이 멈추는 모습입니다."
+    caption: "중계 지점이 늘수록 기록이 흩어져 한 곳만 끊겨도 추적이 멈춥니다."
+    after_paragraph: 2
 - page_id: advanced-source-22-page-10
   questions:
   - id: u14-l05-p08-q01
@@ -444,10 +449,15 @@ page_metadata:
   - question_id: u14-l05-p08-q01
     after_paragraph: 2
   illustrations:
-  - file: assets/animations/u14-l05-p8-ip-only.svg
+  - file: assets/animations/u14-l05-p8-ip-only-rev.svg
     title: "IP만 보고 믿어도 될까?"
-    alt: "사내 AI가 VPN 풀 10.10.99.0/24 주소를 모두 허용하면 유출된 계정으로 붙은 사람도 통과하므로, IP에 계정·기기·행동 신호를 더해 확인해야 한다는 흐름입니다."
-    caption: "신원은 IP 하나가 아니라 계정, 기기, 행동 신호로 나눠 확인합니다."
+    alt: "사내 AI가 VPN 풀 10.10.99.0/24 주소를 모두 허용하면 비밀번호가 유출된 계정으로 붙은 공격자도 풀 주소를 받아 통과하므로 IP는 신원이 아니라 관찰 지점이라는 흐름입니다."
+    caption: "주소만 보는 규칙은 유출된 계정의 사용자를 가려내지 못합니다."
+    after_paragraph: 0
+  - file: assets/animations/u14-l05-p8b-add-signals.svg
+    title: "IP에 무엇을 더 확인할까?"
+    alt: "같은 공격자가 같은 VPN 주소로 다시 시도해도 IP 규칙 외에 추가 인증, 기기 상태, 평소와 다른 행동을 확인하면 걸러지고, 확인이 늘수록 불편과 오탐도 늘며 기기 통제는 Unit 15의 NAC로 이어집니다."
+    caption: "IP에 계정·기기·행동 신호를 더하고, 기기 통제는 Unit 15에서 이어집니다."
     after_paragraph: 2
 ---
 
