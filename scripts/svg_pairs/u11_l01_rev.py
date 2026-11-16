@@ -3,7 +3,7 @@
 Run from repo root: python3 scripts/svg_pairs/u11_l01_rev.py   (--svg-only skips the lesson.md edit).
 
 Colour language of this Lesson: Inline = BLUE, Out of path = VIOLET, Proxy = GREEN; ORANGE only marks what just changed.
-Running example: 박 팀장 PC 192.168.10.42 / 지우 PC .41 -> 본사 게이트웨이 192.168.10.1 -> 외부 AI 서비스 203.0.113.80:443.
+Running example: 박 팀장 PC 192.168.10.42 / 지우 PC .41 -> 본사 게이트웨이 192.168.10.1 -> 외부 사이트 203.0.113.80:443.
 Moving packets are drawn before the device icons so they pass *behind* them."""
 import sys
 from u11_new_common import *  # noqa: F401,F403
@@ -26,7 +26,7 @@ def P(x, y, s, c, filled=False, fs=18, w=None):
     return pill(x, y, s, c, fs, filled, w)
 
 
-def server(x, y, label="외부 AI 서비스", sub="203.0.113.80:443", c=GREEN):  # shadows the common helper: 16px address line
+def server(x, y, label="외부 사이트", sub="203.0.113.80:443", c=GREEN):  # shadows the common helper: 16px address line
     return (f'<rect x="{x - 34}" y="{y - 40}" width="68" height="80" rx="8" fill="{PANEL}" stroke="{c}" stroke-width="3"/>'
             + "".join(f'<rect x="{x - 24}" y="{y - 30 + i * 24}" width="48" height="16" rx="3" fill="{c}" fill-opacity="0.45"/>' for i in range(3))
             + text(x, y + 62, label, 18, TXT, 700) + L(x, y + 84, sub))
@@ -63,19 +63,19 @@ def p1():
             pkt(1), pkt(2), pkt(3),
             mv(a, packet(0, 0), [(190, Y), (640, Y)], 4, 4, 4.5, 0.05, 0.5),
             mv(a, packet(0, 0, GREEN), [(700, Y), (800, Y)], 4, 4.5, 4, 0.55, 0.95),
-            dev2("박 팀장 PC", 100, Y, "192.168.10.42", laptop), server(860, Y, "외부 AI 서비스", "203.0.113.80:443"),
-            a.vis(P(215, 215, "시안 설명문, 다듬어 줘", BLUE), 1, 1), mark(a, 48, 264, 104, 62, 1),
+            dev2("박 팀장 PC", 100, Y, "192.168.10.42", laptop), server(860, Y, "외부 사이트", "203.0.113.80:443"),
+            a.vis(P(215, 215, "특정 사이트 접속", BLUE), 1, 1), mark(a, 48, 264, 104, 62, 1),
             a.vis(toll(290, Y) + P(290, 205, "Inline · 경로 위", IN, True), 2, 4), mark(a, 244, 250, 92, 100, 2),
             a.vis(line(480, 224, 480, 288, OUT, 3, "6 6") + f'<circle cx="480" cy="{Y}" r="12" fill="{OUT}"/>' + camera(480, 200), 3, 4),
             a.vis(P(480, 150, "Out of path · 경로 옆", OUT, True), 3, 4), mark(a, 448, 180, 64, 40, 3),
             a.vis(courier(670, Y) + P(670, 205, "Proxy · 대신 연결", PX, True), 4, 4), mark(a, 615, 260, 110, 80, 4)]
-    caps = ["박 팀장의 AI 요청은 길을 따라 서비스로 가요", "길 위에서 모두 세워 확인하면 Inline이에요", "길 옆에서 복사본만 보면 Out of path예요", "대신 연결해 다녀오면 Proxy예요"]
-    return frame(a, "장치가 길에서 일하는 세 가지 방식", "박 팀장의 AI 요청이 지나가는 길이에요", caps, "".join(body))
+    caps = ["박 팀장 PC의 요청은 길을 따라 사이트로 가요", "길 위에서 모두 세워 확인하면 Inline이에요", "길 옆에서 복사본만 보면 Out of path예요", "대신 연결해 다녀오면 Proxy예요"]
+    return frame(a, "장치가 길에서 일하는 세 가지 방식", "박 팀장 PC의 요청이 지나가는 길이에요", caps, "".join(body))
 
 
 # ---------------------------------------------------------------- Page 1 (b): five memos -> three structures
-MEMOS = ["회사에서만 AI 사이트가 안 열려요", "고객 도면을 AI에 붙여넣으면요?", "누가 어떤 AI를 쓰는지 알 수 있어요?",
-         "이 AI 플러그인이 뭘 보내는지 알아요?", "AI 서버를 밖에 열어 두면 안전해요?"]
+MEMOS = ["회사에서만 특정 사이트가 안 열려요", "누가 어떤 사이트를 많이 쓰나요?", "자료가 개인 클라우드로 가나요?",
+         "새 프로그램이 뭘 보내나요?", "서버를 밖에 열어 두면 안전해요?"]
 
 
 def p1b():
@@ -94,19 +94,19 @@ def p1b():
 
     for m in MEMOS:
         assert tw(m, 18) <= 410, m
-    grp = {0: IN, 2: OUT, 1: PX, 3: PX, 4: PX}
+    grp = {0: IN, 1: OUT, 2: PX, 3: PX, 4: PX}
     body = [a.vis("".join(chip(i) for i in range(5)), 1, 1),
             a.vis(chip(0, IN) + "".join(chip(i) for i in (1, 2, 3, 4)), 2, 2),
-            a.vis(chip(0, IN) + chip(2, OUT) + "".join(chip(i) for i in (1, 3, 4)), 3, 3),
+            a.vis(chip(0, IN) + chip(1, OUT) + "".join(chip(i) for i in (2, 3, 4)), 3, 3),
             a.vis("".join(chip(i, grp[i]) for i in range(5)), 4, 4),
             a.vis(box(560, 150, 360, 250, LINE, PANEL, 14, dash=True) + text(740, 250, "경로의 어디에 붙나?", 26, TXT, 700)
                   + text(740, 292, "이 기준 하나로 나눠 봐요", 18, MUTED) + text(740, 334, "(장비 이름은 잠시 잊어요)", 17, MUTED), 1, 1),
             a.vis(legend(0, "Inline", "경로 위 · Lesson 11-2", IN), 2, 4), mark(a, 560, 140, 360, 84, 2), mark(a, 40, 128, 480, 52, 2),
-            a.vis(legend(1, "Out of path", "경로 옆 복사본 · Lesson 11-3", OUT), 3, 4), mark(a, 560, 244, 360, 84, 3), mark(a, 40, 264, 480, 52, 3),
+            a.vis(legend(1, "Out of path", "경로 옆 복사본 · Lesson 11-3", OUT), 3, 4), mark(a, 560, 244, 360, 84, 3), mark(a, 40, 196, 480, 52, 3),
             a.vis(legend(2, "Proxy", "대신 연결 · Lesson 11-4 이후", PX), 4, 4), mark(a, 560, 348, 360, 84, 4),
-            mark(a, 40, 196, 480, 52, 4), mark(a, 40, 332, 480, 52, 4), mark(a, 40, 400, 480, 52, 4)]
-    caps = ["지우의 모니터에 고민 메모 다섯 장이 붙었어요", "길 위에서 막는 문제는 Inline이에요", "복사본으로 지켜보는 문제는 Out of path예요", "나머지는 Proxy예요. 서버 앞에는 Inline도 써요"]
-    return frame(a, "고민 메모 다섯 장을 세 갈래로", "장비 이름 대신 붙는 자리로 나눠요", caps, "".join(body))
+            mark(a, 40, 264, 480, 52, 4), mark(a, 40, 332, 480, 52, 4), mark(a, 40, 400, 480, 52, 4)]
+    caps = ["지우의 모니터에 티켓 다섯 건이 쌓였어요", "길 위에서 막는 문제는 Inline이에요", "복사본으로 지켜보는 문제는 Out of path예요", "나머지 셋은 Proxy로 이어져요"]
+    return frame(a, "티켓 다섯 건을 세 갈래로", "장비 이름 대신 붙는 자리로 나눠요", caps, "".join(body))
 
 
 # ---------------------------------------------------------------- Page 2: Inline passes or drops
@@ -117,7 +117,7 @@ def p2():
             mv(a, packet(0, 0), [(190, 222), (430, 284)], 1, 1, 1.5, 0.05, 0.45), mv(a, packet(0, 0), [(190, 378), (430, 316)], 1, 1, 1.5, 0.05, 0.45),
             mv(a, packet(0, 0), [(530, Y), (790, Y)], 1, 1.5, 1, 0.55, 0.95),
             mv(a, packet(0, 0), [(190, 378), (340, 322)], 3, 3, 3, 0.1, 0.6),
-            dev2("지우 PC", 100, 215, "192.168.10.41", pc), dev2("박 팀장 PC", 100, 385, "192.168.10.42", pc), server(850, Y, "외부 AI 서비스", "203.0.113.80:443"),
+            dev2("지우 PC", 100, 215, "192.168.10.41", pc), dev2("박 팀장 PC", 100, 385, "192.168.10.42", pc), server(850, Y, "외부 사이트", "203.0.113.80:443"),
             a.vis(gw(), 1, 3), a.vis(gw(MUTED, "게이트웨이 꺼짐"), 4, 4),
             a.vis(P(480, 190, "모든 요청이 게이트웨이를 지나요", IN), 1, 1), mark(a, 380, 260, 200, 80, 1),
             a.vis(P(480, 205, "목적지 203.0.113.80 → Drop", RED, True), 2, 3), mark(a, 380, 260, 200, 80, 2),
@@ -135,7 +135,7 @@ def p3():
     body = [road(),
             mv(a, packet(0, 0, OUT), [(290, 296), (290, 252)], 2, 2, 2, 0.3, 0.8),
             pkt(1), pkt(2), pkt(3), pkt(4),
-            dev2("박 팀장 PC", 100, Y, "192.168.10.42", laptop), node(530, Y, "출구 장치", "192.168.10.1", 150, 70, IN), server(860, Y, "외부 AI 서비스", "203.0.113.80:443"),
+            dev2("박 팀장 PC", 100, Y, "192.168.10.42", laptop), node(530, Y, "출구 장치", "192.168.10.1", 150, 70, IN), server(860, Y, "외부 사이트", "203.0.113.80:443"),
             a.vis(P(480, 170, "서 이사: 업무는 멈추지 않게 보고만 싶어요", BLUE), 1, 1), mark(a, 48, 264, 104, 62, 1),
             a.vis(dot + line(290, 224, 290, 288, OUT, 3, "6 6") + camera(290, 195), 2, 3),
             a.vis(L(290, 345, "Tapping Point", OUT, 16, 700) + P(380, 255, "복사본", OUT, True, 16), 2, 2), mark(a, 258, 280, 64, 40, 2),
@@ -144,7 +144,7 @@ def p3():
             mark(a, 400, 160, 360, 72, 3),
             a.vis(dot + line(290, 224, 290, 288, MUTED, 3, "6 6") + camera(290, 195, MUTED) + L(290, 162, "센서 꺼짐", MUTED, 17, 700), 4, 4), mark(a, 258, 175, 64, 40, 4),
             a.vis(check(860, 235) + P(540, 430, "원래 통신은 그대로 도착해요", GREEN, False), 4, 4)]
-    caps = ["박 팀장의 요청은 평소처럼 서비스로 가요", "길 옆 Tapping Point가 복사본을 센서로 보내요", "센서는 복사본으로 누가 어디 갔는지 알아내요", "센서가 꺼져도 통신은 그대로, 막지는 못해요"]
+    caps = ["박 팀장의 요청은 평소처럼 사이트로 가요", "길 옆 Tapping Point가 복사본을 센서로 보내요", "센서는 복사본으로 누가 어디 갔는지 알아내요", "센서가 꺼져도 통신은 그대로, 막지는 못해요"]
     return frame(a, "길 옆에서 복사본만 보는 장치", "Out of path는 통신에 손대지 않고 지켜봐요", caps, "".join(body))
 
 
@@ -153,15 +153,15 @@ def p4():
     a = new()
     px = lambda: node(480, Y, "프록시", "192.168.10.5:8080", 150, 80, PX)
     cells = "".join(f'<rect x="{230 + i * 36}" y="396" width="30" height="26" rx="4" fill="none" stroke="{OUT}" stroke-width="3"/>' for i in range(6))
-    body = [dev2("박 팀장 PC", 100, Y, "192.168.10.42", pc), px(), server(860, Y, "외부 AI 서비스", "203.0.113.80:443"),
-            a.vis(doc(100, 215) + text(128, 221, "고객 도면", 16, TXT, 700, "start"), 1, 1),
-            a.vis(P(480, 160, "서 이사: 도면을 AI에 올리면 어떡하죠?", BLUE), 1, 1), mark(a, 84, 195, 32, 40, 1),
+    body = [dev2("박 팀장 PC", 100, Y, "192.168.10.42", pc), px(), server(860, Y, "클라우드 저장소", "203.0.113.80:443"),
+            a.vis(doc(100, 215) + text(128, 221, "거래처 자료", 16, TXT, 700, "start"), 1, 1),
+            a.vis(P(480, 160, "서 이사: 자료가 개인 클라우드에 올라가나요?", BLUE), 1, 1), mark(a, 84, 195, 32, 40, 1),
             a.vis(line(170, Y, 405, Y, PX, 5) + P(290, 262, "연결 ①", PX, True, 17), 2, 4), mark(a, 247, 246, 86, 33, 2),
             a.vis(line(555, Y, 810, Y, PX, 5) + P(680, 262, "연결 ②", PX, True, 17), 3, 4), mark(a, 637, 246, 86, 33, 3),
             a.vis(cells + f'<rect x="496" y="396" width="200" height="26" rx="4" fill="{OUT}"/>' + arrow(448, 486, 409, MUTED, 3)
                   + L(463, 456, "조각난 패킷을 이어 붙인 Stream을 읽어요", TXT, 17, 700), 4, 4), mark(a, 230, 396, 466, 26, 4)]
     body += [mv(a, packet(0, 0), [(200, Y), (380, Y)], 2, 2, 2, 0.1, 0.7), mv(a, packet(0, 0, GREEN), [(590, Y), (770, Y)], 3, 3, 3, 0.1, 0.7)]
-    caps = ["고객 도면 파일을 AI에 올리려는 상황이에요", "먼저 PC와 프록시 사이에 연결 ①을 맺어요", "프록시가 서비스와 연결 ②를 따로 맺어요", "프록시는 이어진 Stream으로 내용을 읽어요"]
+    caps = ["거래처 자료 파일을 저장소에 올리려는 상황이에요", "먼저 PC와 프록시 사이에 연결 ①을 맺어요", "프록시가 저장소와 연결 ②를 따로 맺어요", "프록시는 이어진 Stream으로 내용을 읽어요"]
     return frame(a, "대신 접속해 주는 프록시", "양쪽과 따로 연결을 맺는 대리인이에요", caps, "".join(body))
 
 
@@ -171,8 +171,8 @@ def p4b():
     cipher = lambda: "".join(cell(315 + i * 56, 385, 50, 34, s, MUTED, 17) for i, s in enumerate(["7#", "q9", "$k", "Zx", "@2", "m!"]))
     plain = lambda: "".join(cell(315 + i * 56, 385, 50, 34, s, OUT, 17) for i, s in enumerate(["P", "O", "S", "T", "", "/"]))
     body = [line(170, Y, 405, Y, PX, 5), line(555, Y, 810, Y, PX, 5), lock(290, 250, MUTED),
-            dev2("박 팀장 PC", 100, Y, "192.168.10.42", laptop), node(480, Y, "프록시", "192.168.10.5:8080", 150, 80, PX), server(860, Y, "외부 AI 서비스", "203.0.113.80:443"),
-            a.vis(P(480, 165, "AI 서비스는 HTTPS를 써요", BLUE), 1, 1), mark(a, 270, 236, 40, 46, 1),
+            dev2("박 팀장 PC", 100, Y, "192.168.10.42", laptop), node(480, Y, "프록시", "192.168.10.5:8080", 150, 80, PX), server(860, Y, "외부 사이트", "203.0.113.80:443"),
+            a.vis(P(480, 165, "외부 사이트는 HTTPS를 써요", BLUE), 1, 1), mark(a, 270, 236, 40, 46, 1),
             a.vis(cipher() + cross(700, 402) + L(480, 450, "프록시가 읽은 바이트는 암호문이에요", TXT, 17, 700), 1, 2),
             a.vis(P(100, 215, "회사 CA 설치", BLUE, True), 2, 4), mark(a, 30, 198, 140, 34, 2),
             a.vis(P(480, 215, "TLS 검사 설정", PX, True), 3, 4), mark(a, 390, 198, 180, 34, 3),
@@ -195,11 +195,11 @@ def p5():
     dev_l = box(40, 150, 200, 76, IN, PANEL, 12, sw=3) + text(140, 182, "패킷을 보는 장치", 18, IN, 700) + text(140, 208, "Inline · Out of path", 16, MUTED)
     dev_r = box(720, 252, 200, 76, PX, PANEL, 12, sw=3) + text(820, 284, "Proxy", 20, PX, 700) + text(820, 310, "소켓 Stream", 16, MUTED)
     body = [card, top(MUTED), bot(MUTED),
-            a.vis(P(480, 410, "서 이사: 이 플러그인이 어디로, 뭘 보내요?", BLUE), 1, 1), mark(a, 300, 128, 360, 228, 1),
+            a.vis(P(480, 410, "서 이사: 이 프로그램이 어디로, 뭘 보내요?", BLUE), 1, 1), mark(a, 300, 128, 360, 228, 1),
             a.vis(top(IN) + dev_l + arrow(240, 300, 188, IN, 4) + check(270, 150) + L(140, 258, "어느 주소·포트로 가나", TXT, 17, 700), 2, 4), mark(a, 312, 140, 336, 100, 2),
             a.vis(bot(PX) + dev_r + arrow(720, 660, 290, PX, 4) + check(690, 252) + L(820, 360, "어떤 URL·본문을 보냈나", TXT, 17, 700), 3, 4), mark(a, 312, 248, 336, 100, 3),
             a.vis(P(480, 410, "알고 싶은 층에 맞는 장치를 골라요", GREEN, True), 4, 4)]
-    caps = ["플러그인의 요청은 송장과 편지로 이뤄져요", "주소와 포트는 송장만 봐도 알 수 있어요", "URL과 본문은 편지를 열어야 알 수 있어요", "알고 싶은 층에 맞춰 장치를 골라요"]
+    caps = ["프로그램의 요청은 송장과 편지로 이뤄져요", "주소와 포트는 송장만 봐도 알 수 있어요", "URL과 본문은 편지를 열어야 알 수 있어요", "알고 싶은 층에 맞춰 장치를 골라요"]
     return frame(a, "패킷을 볼까, 대화를 볼까?", "송장만 읽을지, 편지까지 읽을지 정해요", caps, "".join(body))
 
 
@@ -226,19 +226,19 @@ def p6():
 
 PAGES = [
     ("u11-l01-p01-three-structures", "장치가 길에서 일하는 세 가지 방식",
-     "박 팀장의 AI 요청이 길을 따라 서비스로 가는 중에, 길 위의 톨게이트는 Inline, 길 옆 감시카메라는 Out of path, 대신 다녀오는 심부름꾼은 Proxy라는 그림입니다.",
-     "요청이 지나는 길 위, 옆, 대신 연결 세 자리로 구조를 나눕니다.", 3, p1),
-    ("u11-l01-p01b-five-memos", "고민 메모 다섯 장을 세 갈래로",
-     "지우의 고민 메모 다섯 장이 길 위의 Inline, 경로 옆 복사본의 Out of path, 대신 연결하는 Proxy 세 갈래로 나뉘는 그림입니다.",
-     "메모마다 붙는 자리를 정하면 풀 장치가 보입니다.", 5, p1b),
+     "박 팀장 PC의 요청이 길을 따라 외부 사이트로 가는 중에, 길 위의 톨게이트는 Inline, 길 옆 감시카메라는 Out of path, 대신 다녀오는 심부름꾼은 Proxy라는 그림입니다.",
+     "통신이 지나는 길 위, 옆, 대신 연결 세 자리로 구조를 나눕니다.", 3, p1),
+    ("u11-l01-p01b-five-memos", "티켓 다섯 건을 세 갈래로",
+     "지우의 티켓 다섯 건이 길 위의 Inline, 경로 옆 복사본의 Out of path, 대신 연결하는 Proxy 세 갈래로 나뉘는 그림입니다.",
+     "티켓마다 붙는 자리를 정하면 풀 장치가 보입니다.", 5, p1b),
     ("u11-l01-p02-inline-drop", "길 한가운데서 막는 장치",
      "지우 PC와 박 팀장 PC의 요청이 모두 본사 게이트웨이를 지나고, 목적지 203.0.113.80에 Drop 규칙을 걸면 그 자리에서 버려지며, 게이트웨이가 꺼지면 통신도 끊기는 그림입니다.",
      "Inline 장치는 지나가는 패킷을 통과시키거나 버리고, 꺼지면 통신도 끊깁니다.", 2, p2),
     ("u11-l01-p03-out-of-path-copy", "길 옆에서 복사본만 보는 장치",
-     "Tapping Point가 복사본을 센서로 보내 센서가 누가 어디로 갔는지 기록하고, 센서가 꺼져도 원래 통신은 서비스에 그대로 도착하는 그림입니다.",
+     "Tapping Point가 복사본을 센서로 보내 센서가 누가 어디로 갔는지 기록하고, 센서가 꺼져도 원래 통신은 사이트에 그대로 도착하는 그림입니다.",
      "Out of path 센서는 복사본만 보므로 꺼져도 통신은 이어지지만 막지는 못합니다.", 3, p3),
     ("u11-l01-p04-proxy-two-connections", "대신 접속해 주는 프록시",
-     "박 팀장 PC와 프록시, 프록시와 AI 서비스 사이에 연결을 따로 맺고, 프록시가 조각난 패킷을 이어 붙인 Stream으로 도면 내용을 읽는 그림입니다.",
+     "박 팀장 PC와 프록시, 프록시와 클라우드 저장소 사이에 연결을 따로 맺고, 프록시가 조각난 패킷을 이어 붙인 Stream으로 자료 내용을 읽는 그림입니다.",
      "프록시는 연결을 두 번 맺고 이어진 Stream으로 내용을 읽습니다.", 2, p4),
     ("u11-l01-p04b-https-ca", "HTTPS는 설정이 있어야 읽혀요",
      "HTTPS라 프록시가 읽은 바이트는 암호문이고, 회사 CA를 깔아도 아직 읽히지 않으며, 프록시에 TLS 검사 설정을 켜야 내용이 읽히는 그림입니다.",
