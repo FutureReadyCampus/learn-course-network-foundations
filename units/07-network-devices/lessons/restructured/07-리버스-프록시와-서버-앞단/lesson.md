@@ -16,6 +16,11 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-source-08-page-01
   illustrations:
+  - file: assets/animations/u11-l07-p01-story-open-server.svg
+    title: "서 이사의 걱정: 밖에 열면 공격받지 않을까"
+    alt: "서 이사가 시연 때 밖에서도 보여 주려면 열어야 하지 않느냐고 걱정하고, 지우는 아직 띄우지 않은 AI 서버 앞에 무엇을 세울지 설계도부터 그리기로 하는 장면입니다."
+    caption: "시연 때문에 서버를 열어야 하는데, 서 이사는 공격이 걱정이에요."
+    after_paragraph: 0
   - file: assets/animations/u11-l07-p01-front-flow.svg
     title: "고객 요청은 앞단에서 받아요"
     alt: "고객이 ai.hangyeol.example을 조회해 공인 주소 198.51.100.25의 앞단에 연결하면, 앞단이 안쪽 AI 서버 192.168.10.50:8080과 새로 연결해 응답을 돌려주는 모습입니다."
@@ -71,6 +76,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-08-page-02
   illustrations:
+  - file: assets/animations/u11-l07-p02-story-gate-flood.svg
+    title: "서버를 열면 연결 시도가 쏟아져요"
+    alt: "지우가 서버를 열었을 때를 그려 보니 해외 대역에서 443번 포트로 연결 시도가 쏟아지고, 전부 안쪽까지 들이면 금방 지칠 것 같아 문 앞에서 먼저 거를 수 없을지 묻는 장면입니다."
+    caption: "공개된 서버에는 처음 보는 대역의 연결 시도가 쏟아져요."
+    after_paragraph: 0
   - file: assets/animations/u11-l07-p02-ips-pass-block.svg
     title: "IPS는 대역·포트로 걸러요"
     alt: "외부 출발지의 요청은 IPS를 통과하고 처음 보는 해외 대역은 막히지만, HTTPS로 암호화된 요청 속 내용은 IPS가 읽지 못해 내용 검사는 TLS를 푼 뒤로 넘기는 모습입니다."
@@ -126,6 +136,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-08-page-03
   illustrations:
+  - file: assets/animations/u11-l07-p03-story-who-decrypts.svg
+    title: "TLS는 AI 서버가 풀어야 할까"
+    alt: "요청 내용을 검사하려면 TLS를 풀어야 하는데, AI 서버가 직접 풀면 서버를 늘릴 때마다 인증서를 설치하고 갱신해야 해서 지우가 더 나은 자리가 없는지 고민하는 장면입니다."
+    caption: "서버가 직접 TLS를 풀면 서버마다 인증서 일이 따라와요."
+    after_paragraph: 0
   - file: assets/animations/u11-l07-p03-tls-ends-at-front.svg
     title: "TLS는 앞단에서 끝나요"
     alt: "고객 브라우저가 앞단 198.51.100.25:443과 TLS 연결을 맺으면 앞단이 그 연결을 끝내고, 풀린 요청을 AI 서버 192.168.10.50:8080으로 넘겨 뒤의 검사 장치가 내용을 볼 수 있게 되는 모습입니다."
@@ -181,6 +196,11 @@ page_metadata:
     after_paragraph: 2
 - page_id: advanced-source-08-page-04
   illustrations:
+  - file: assets/animations/u11-l07-p04-story-odd-request.svg
+    title: "평범해 보이는 이상한 요청"
+    alt: "지우가 상담 이력 조회 주소를 보안 점검하다 customer=1042' OR '1'='1 같은 공격 요청을 보고, 주소·포트·TLS가 평범해 패킷만 보는 검문소로는 거를 수 없다고 깨닫는 장면입니다."
+    caption: "출발지도 포트도 TLS도 평범한 공격 요청이 와요."
+    after_paragraph: 0
   - file: assets/animations/u11-l07-p04-waf-reads-request.svg
     title: "WAF는 풀린 요청의 내용을 봐요"
     alt: "TLS가 풀린 뒤에 놓인 WAF가 정상 요청 /history?customer=1042는 AI 서버로 넘기고 customer=1042' OR '1'='1 같은 공격 요청은 막지만, 규칙이 맞지 않으면 오탐과 미탐이 생기는 모습입니다."
@@ -241,6 +261,11 @@ page_metadata:
     after_paragraph: 2
 - page_id: advanced-source-08-page-05
   illustrations:
+  - file: assets/animations/u11-l07-p05-story-front-fails.svg
+    title: "서 이사의 질문: 앞단이 고장 나면요"
+    alt: "설계도를 보던 서 이사가 시연 요청이 전부 앞단 하나를 지나느냐고 묻고 고장 나면 어떻게 되느냐고 하자, 지우가 AI 서버가 멀쩡해도 앞단이 멈추면 어떻게 될지 바로 답하지 못하는 장면입니다."
+    caption: "시연 요청이 모두 앞단 한 대를 지나면 어떻게 될까요?"
+    after_paragraph: 0
   - file: assets/animations/u11-l07-p05-single-front.svg
     title: "앞단 한 대에 기대면?"
     alt: "모든 시연 요청이 지나는 앞단 한 대가 멈추면 AI 서버가 멀쩡해도 서비스 전체가 멈추고, 앞단을 이중화해 대비하는 모습입니다."
@@ -306,6 +331,11 @@ page_metadata:
     alt: "포워드 프록시는 직원 PC 편에서 안쪽 연결을 받아 바깥 AI 서비스로 내보내고, 리버스 프록시는 서버 편에서 고객의 바깥 연결을 받아 사내 AI 서버로 넘기는 같은 모양의 두 구조입니다."
     caption: "포워드와 리버스는 연결을 두 개 맺는 같은 모양이고, 누구 편인지만 다릅니다."
     after_paragraph: 1
+  - file: assets/animations/u11-l07-p06-story-handoff.svg
+    title: "고객사에서는 서버에 닿지 않아요"
+    alt: "설계도는 완성됐지만 앞단은 아직 종이 위인데, 고객사의 박 팀장이 사내 AI 서버에 닿지 못해 지우가 가장 빠른 길과 노출을 함께 따지고, 공인 주소 198.51.100.25로 온 연결이 어떻게 서버까지 닿는지는 Unit 12에서 알아보게 되는 장면입니다."
+    caption: "앞단은 아직 종이 위, 밖에서 온 연결의 길은 Unit 12에서 찾아요."
+    after_paragraph: 14
   - file: assets/animations/u11-l07-p06b-next-unit12.svg
     title: "다음 이야기: 앞단은 아직 종이 위"
     alt: "설계한 앞단은 아직 종이 위에 있고, 고객사에서는 사설 주소 192.168.10.50:8080에 닿지 않아서 공인 주소 198.51.100.25로 온 연결이 사무실 안까지 닿는 방법을 Unit 12에서 따지는 모습입니다."

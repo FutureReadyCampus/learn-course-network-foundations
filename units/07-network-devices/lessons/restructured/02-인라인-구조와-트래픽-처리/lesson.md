@@ -13,6 +13,11 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-source-03-page-01
   illustrations:
+  - file: assets/animations/u11-l02-p1-story-office-path.svg
+    title: "박 팀장이 월요일 아침 사무실에서 AI 연결 오류를 말한다"
+    alt: "월요일 아침 사무실에서 박 팀장의 노트북에 연결할 수 없음이 뜨고, 집에서는 잘 됐다는 말에 지우가 바뀐 것은 장소뿐이라고 생각하며, 이 Page에서 요청이 어떤 장치를 거치는지 알아봅니다."
+    caption: "집에서는 됐는데 회사에서만 안 되는 상황입니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l02-p01-office-path.svg
     title: "AI 요청이 지나는 길목"
     alt: "박 팀장 노트북의 요청이 스위치와 본사 게이트웨이, ISP 라우터를 지나 AI 서비스로 가고, 게이트웨이에서 이 목적지만 막히는 모습입니다."
@@ -68,6 +73,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-03-page-02
   illustrations:
+  - file: assets/animations/u11-l02-p2-story-silent-drop.svg
+    title: "박 팀장 화면이 한참 돌다가 실패한다"
+    alt: "박 팀장 노트북 화면이 한참 돌다 연결할 수 없음을 띄우고, 지우가 왜 이렇게 오래 기다렸는지 의문을 품으며, 장치가 패킷을 통과시킬지 버릴지를 알아봅니다."
+    caption: "오류가 바로 뜨지 않고 한참 뒤에야 떴습니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l02-p2-drop-wait.svg
     title: "통과시킬까, 버릴까?"
     alt: "노트북의 요청이 출구 장치의 차단 규칙에 걸려 Drop되고, 응답을 받지 못한 노트북이 한참 기다리는 모습입니다."
@@ -123,6 +133,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-03-page-04
   illustrations:
+  - file: assets/animations/u11-l02-p3-story-rule-direction.svg
+    title: "지우가 규칙표의 Inbound와 Outbound 앞에서 멈칫한다"
+    alt: "지우가 방화벽 규칙표를 열자 Inbound, Outbound, 인터페이스 표기가 섞여 있고, 나가는 요청과 들어오는 답 사이에서 헷갈려 하며, 방화벽이 방향을 어떻게 아는지 알아봅니다."
+    caption: "규칙표를 읽다 보면 방향이 헷갈립니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l02-p3-interface-direction.svg
     title: "인터페이스로 방향을 읽기"
     alt: "본사 게이트웨이의 요청은 A로 들어와 B로 나가 Outbound, 응답은 B로 들어와 A로 나가 Inbound로 읽는 모습입니다."
@@ -178,6 +193,11 @@ page_metadata:
     after_paragraph: 4
 - page_id: advanced-source-03-page-07
   illustrations:
+  - file: assets/animations/u11-l02-p4-story-bottleneck.svg
+    title: "회선을 올려도 업로드가 그대로 느리다"
+    alt: "오후마다 업로드가 느려 서 이사가 회선을 300Mbps에서 1Gbps로 올렸지만 속도가 그대로여서 의문을 품으며, 왜 그대로 느린지 알아봅니다."
+    caption: "돈을 들였는데도 속도는 그대로입니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l02-p4-bottleneck.svg
     title: "회선을 늘려도 느린 이유"
     alt: "회선을 300Mbps에서 1Gbps로 넓혀도 처리량 150Mbps인 방화벽 앞에서 패킷이 몰려 속도가 그대로인 모습입니다."
@@ -238,6 +258,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-03-page-08
   illustrations:
+  - file: assets/animations/u11-l02-p5-story-block-criteria.svg
+    title: "서 이사와 박 팀장이 AI 사이트 차단 범위를 두고 맞선다"
+    alt: "회의실에서 서 이사는 외부 AI 사이트를 전부 막자고 하고 박 팀장은 허락된 서비스를 열어 두자고 하며, 지우가 무엇을 기준으로 막을 수 있는지 정리하고, 주소만 볼지 내용까지 볼지 알아봅니다."
+    caption: "차단 범위를 두고 두 사람의 의견이 갈립니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l02-p5-inspect-depth.svg
     title: "주소만 볼까, 내용까지 볼까?"
     alt: "헤더의 주소와 포트만 읽으면 빠르고, 내용까지 읽으면 더 정확하지만 느려지는 모습입니다."
@@ -298,6 +323,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: u11-l02-page-07
   illustrations:
+  - file: assets/animations/u11-l02-p6-story-reboot-outage.svg
+    title: "방화벽 재부팅에 사무실 인터넷이 끊긴다"
+    alt: "토요일 오전 지우가 방화벽을 재부팅하자 사무실 인터넷이 끊겨 출근한 박 팀장의 AI 작업이 멈추고, 지우가 평일이었다면 어땠을지 걱정하며, 길목 장치가 멈추면 인터넷도 멈추는지 알아봅니다."
+    caption: "재부팅 몇 분 동안 인터넷이 끊겼습니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l02-p6-reboot-spof.svg
     title: "길목 장치가 멈추면?"
     alt: "본사 게이트웨이를 재부팅하자 사무실 PC 전체의 인터넷이 끊기고, 같은 역할의 장치를 한 대 더 두면 이어받는 모습입니다."

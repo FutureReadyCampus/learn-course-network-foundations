@@ -10,6 +10,11 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-source-02-page-01
   illustrations:
+  - file: assets/animations/u11-l01-p01-story-first-week.svg
+    title: "한결디자인의 첫 주 장면"
+    alt: "박 팀장이 AI로 시안 설명문을 다듬고 지우 모니터에 메모 다섯 장이 붙자, 박 팀장과 서 이사의 고민이 이어지고 이 Page에서 다섯 고민을 세 갈래로 나눠 본다는 그림입니다."
+    caption: "지우, 박 팀장, 서 이사의 첫 주와 메모 다섯 장입니다."
+    after_paragraph: 1
   - file: assets/animations/u11-l01-p01-three-structures.svg
     title: "장치가 길에서 일하는 세 가지 방식"
     alt: "박 팀장의 AI 요청이 길을 따라 서비스로 가는 중에, 길 위의 톨게이트는 Inline, 길 옆 감시카메라는 Out of path, 대신 다녀오는 심부름꾼은 Proxy라는 그림입니다."
@@ -70,6 +75,11 @@ page_metadata:
     after_paragraph: 5
 - page_id: advanced-source-02-page-02
   illustrations:
+  - file: assets/animations/u11-l01-p02-story-block-request.svg
+    title: "AI 사이트를 막을 수 있냐는 질문"
+    alt: "사무실 PC 40대의 요청이 모두 출구 장치로 나가는데 서 이사가 특정 AI 사이트를 막을 수 있냐고 묻고, 이 Page에서 길 한가운데서 막는 장치를 알아본다는 그림입니다."
+    caption: "모든 요청이 지나는 출구 장치에 서 이사의 질문이 닿습니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l01-p02-inline-drop.svg
     title: "길 한가운데서 막는 장치"
     alt: "지우 PC와 박 팀장 PC의 요청이 모두 본사 게이트웨이를 지나고, 목적지 203.0.113.80에 Drop 규칙을 걸면 그 자리에서 버려지며, 게이트웨이가 꺼지면 통신도 끊기는 그림입니다."
@@ -125,6 +135,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-02-page-03
   illustrations:
+  - file: assets/animations/u11-l01-p03-story-just-watch.svg
+    title: "막기보다 먼저 알고 싶다는 서 이사"
+    alt: "서 이사가 당장 막자는 게 아니라 누가 어떤 AI를 쓰는지 알고 싶다고 하고 지우는 업무가 멈추면 안 된다는 서 이사의 조건을 떠올리며, 이 Page에서 지켜보는 장치를 알아본다는 그림입니다."
+    caption: "서 이사는 막기보다 먼저 알고 싶어 합니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l01-p03-out-of-path-copy.svg
     title: "길 옆에서 복사본만 보는 장치"
     alt: "Tapping Point가 복사본을 센서로 보내 센서가 누가 어디로 갔는지 기록하고, 센서가 꺼져도 원래 통신은 서비스에 그대로 도착하는 그림입니다."
@@ -180,6 +195,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-02-page-04
   illustrations:
+  - file: assets/animations/u11-l01-p04-story-drawing-worry.svg
+    title: "고객 도면 걱정과 쪼개진 패킷"
+    alt: "서 이사가 고객 도면을 AI에 붙여넣으면 어떡하냐고 걱정하고, 파일 하나가 수천 개의 패킷 조각으로 오니 지우가 조립을 떠올리며, 이 Page에서 대신 접속해 주는 장치를 알아본다는 그림입니다."
+    caption: "도면 파일 하나가 수천 개의 패킷으로 쪼개져 옵니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l01-p04-proxy-two-connections.svg
     title: "대신 접속해 주는 프록시"
     alt: "박 팀장 PC와 프록시, 프록시와 AI 서비스 사이에 연결을 따로 맺고, 프록시가 조각난 패킷을 이어 붙인 Stream으로 도면 내용을 읽는 그림입니다."
@@ -240,6 +260,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-02-page-05
   illustrations:
+  - file: assets/animations/u11-l01-p05-story-plugin-question.svg
+    title: "새 플러그인이 보내는 것"
+    alt: "서 이사가 새 AI 플러그인이 어디로 뭘 보내는지 묻고 지우가 어느 주소로 가는지와 어떤 요청을 보냈는지 두 질문을 알아채며, 이 Page에서 패킷과 대화 중 무엇을 볼지 알아본다는 그림입니다."
+    caption: "서 이사의 한 문장에는 질문이 두 개 들어 있습니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l01-p05-header-vs-content.svg
     title: "패킷을 볼까, 대화를 볼까?"
     alt: "패킷 장치는 송장에 해당하는 헤더에서 주소와 포트를, Proxy는 편지에 해당하는 내용에서 URL과 본문을 읽으며, 알고 싶은 층에 맞는 장치를 고른다는 그림입니다."
@@ -295,6 +320,11 @@ page_metadata:
     after_paragraph: 4
 - page_id: advanced-source-02-page-06
   illustrations:
+  - file: assets/animations/u11-l01-p06-story-new-box.svg
+    title: "새 보안 장비 설명서"
+    alt: "서 이사가 건넨 새 보안 장비 설명서에 외부 사이트 차단, 접속 기록, 웹 필터링이 나란히 적혀 지우가 어느 구조인지 헷갈리고, 이 Page에서 한 상자에 세 구조가 있는 경우를 알아본다는 그림입니다."
+    caption: "한 장비 설명서에 세 기능이 한 줄로 적혀 있습니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l01-p06-one-box-three.svg
     title: "한 상자 안의 세 구조"
     alt: "새 보안 장비 한 대의 외부 사이트 차단은 Inline, 접속 기록은 관찰, 웹 필터링은 Proxy이고, 한 상자가 멈추면 세 기능이 모두 멈추는 그림입니다."

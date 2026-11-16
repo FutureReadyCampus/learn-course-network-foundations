@@ -13,6 +13,11 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-source-05-page-01
   illustrations:
+  - file: assets/animations/u11-l03-p01-story-ai-usage.svg
+    title: "서 이사가 AI 사용 현황을 묻는 장면"
+    alt: "본사 사무실에서 서 이사가 직원의 외부 AI 서비스 사용 현황을 알고 싶지만 업무 속도는 늦추면 안 된다고 하고, 지우가 통신은 그대로 두고 옆에서 지켜볼 방법을 찾기로 합니다."
+    caption: "서 이사는 업무는 그대로 두고 누가 AI를 쓰는지 알고 싶어 합니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l03-p01-sensor-copy.svg
     title: "센서에 복사본 보내기"
     alt: "지우 PC에서 게이트웨이로 가는 통신은 그대로 두고, 스위치의 복사본만 관리 주소 192.168.10.250의 센서로 보내는 모습입니다."
@@ -68,6 +73,11 @@ page_metadata:
       after_paragraph: 2
 - page_id: advanced-source-05-page-02
   illustrations:
+  - file: assets/animations/u11-l03-p02-story-what-to-copy.svg
+    title: "무엇을 복사해 달라고 할지 고민하는 장면"
+    alt: "센서를 코어 스위치 옆에 들인 지우가 직원 PC에서 외부 AI 서비스로 나가는 통신이 알고 싶다며, 그 통신을 누가 어떻게 복사해 줄지 고민합니다."
+    caption: "센서는 들였는데 무엇을, 누가 복사해 줄지 정해야 합니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l03-p02-mirroring-tap.svg
     title: "복사본 만드는 두 방법"
     alt: "지우 PC의 통신 중 게이트웨이 쪽 포트를 스위치가 복사해 원본은 게이트웨이로, 복사본은 센서로 보내고, TAP은 회선에 끼워 복사본을 여러 장비에 나눠 주는 모습입니다."
@@ -128,6 +138,11 @@ page_metadata:
       after_paragraph: 2
 - page_id: advanced-source-05-page-03
   illustrations:
+  - file: assets/animations/u11-l03-p03-story-phishing-alert.svg
+    title: "피싱 접속 경보가 떴는데 못 막은 장면"
+    alt: "센서를 켠 지 사흘째 박 팀장 PC가 피싱 사이트에 접속했다는 경보가 뜨고, 이미 계정을 입력한 뒤라는 걸 안 서 이사가 센서가 봤는데 왜 못 막았느냐고 묻습니다."
+    caption: "경보는 떴지만 이미 계정을 입력한 뒤였고, 서 이사가 왜 못 막았느냐고 묻습니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l03-p03-read-only-gap.svg
     title: "봤는데 왜 못 막았을까"
     alt: "박 팀장 PC의 원본은 피싱 사이트로 곧장 가고 복사본만 센서로 가서, 센서가 경보를 울릴 때는 이미 도착해 있으므로 위험 주소를 경로 안 차단 규칙에 넣어야 막는다는 그림입니다."
@@ -188,6 +203,11 @@ page_metadata:
       after_paragraph: 2
 - page_id: advanced-source-05-page-06
   illustrations:
+  - file: assets/animations/u11-l03-p04-story-ask-content.svg
+    title: "질문 내용까지 볼 수 있느냐는 부탁 장면"
+    alt: "센서 보고서를 받은 서 이사가 직원이 AI에 무엇을 물어봤는지, 고객 도면을 붙여넣었는지도 센서로 보여 줄 수 있느냐고 묻고, 지우는 센서가 볼 수 있는 부분과 없는 부분을 나눠야 한다고 생각합니다."
+    caption: "서 이사는 직원이 AI에 무엇을 물었는지까지 센서로 알고 싶어 합니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l03-p04-dpi-payload.svg
     title: "송장과 내용물, DPI"
     alt: "패킷을 송장(헤더)과 내용물(Payload)로 나누어, 주소·포트만 보는 얕은 검사와 Payload 안까지 보는 DPI를 견주고, TLS로 암호화된 Payload는 센서가 읽지 못한다는 그림입니다."
@@ -248,6 +268,11 @@ page_metadata:
       after_paragraph: 3
 - page_id: advanced-source-05-page-07
   illustrations:
+  - file: assets/animations/u11-l03-p05-story-save-all.svg
+    title: "통신을 통째로 저장하자는 의견 장면"
+    alt: "회의에서 직원 통신을 통째로 저장해 두자는 의견이 나오자 박 팀장이 병원 예약이나 은행 알림 같은 사적인 통신도 지나간다며 고개를 젓습니다."
+    caption: "통신을 통째로 저장하자는 의견에 박 팀장이 사적인 통신을 걱정합니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l03-p05-save-everything.svg
     title: "다 저장하면 생기는 일"
     alt: "업무 통신과 사적인 통신이 함께 지나가는 회선의 복사본을 통째로 저장하면 사생활을 건드리므로, 주소·SNI·시각·전송량처럼 필요한 것만 남기도록 범위를 좁히는 모습입니다."
@@ -308,6 +333,11 @@ page_metadata:
       after_paragraph: 5
 - page_id: advanced-source-05-page-08
   illustrations:
+  - file: assets/animations/u11-l03-p06-story-missing-records.svg
+    title: "금요일 오후 센서 기록이 빈 장면"
+    alt: "금요일 오후 디자인팀이 결과물을 한꺼번에 올리는 시간에 지우가 센서 기록에서 끝이 없거나 중간이 빈 연결을 발견하고, 미러링은 켜져 있는데 무엇이 빠졌는지 의아해합니다."
+    caption: "미러링은 켜져 있는데 금요일 오후 기록에는 빈 곳이 있습니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l03-p06-port-overflow.svg
     title: "관찰용 포트가 넘칠 때"
     alt: "보내기·받기 양방향을 합친 최대 2Gbps의 복사본이 1Gbps 관찰용 포트로 몰리면 넘친 만큼 스위치에서 버려져 센서 기록에만 빈틈이 생기고 원본 통신은 그대로라는 그림입니다."
@@ -368,6 +398,11 @@ page_metadata:
       after_paragraph: 4
 - page_id: advanced-source-05-page-10
   illustrations:
+  - file: assets/animations/u11-l03-p07-story-three-requests.svg
+    title: "서 이사가 요청 세 가지를 들고 온 장면"
+    alt: "센서를 한 달 운영한 뒤 서 이사가 즉시 막기, AI 사용 통계, 사고 증거 찾기 요청 세 가지를 들고 오고, 지우는 요청마다 경로 안과 경로 밖 중 어디서 처리할지 정해야 합니다."
+    caption: "서 이사의 요청 세 가지를 지우가 어디서 처리할지 정해야 합니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l03-p07-request-split.svg
     title: "요청마다 알맞은 자리"
     alt: "랜섬웨어 주소 즉시 차단은 경로 안 게이트웨이 규칙에, AI 서비스 사용 통계와 사고 증거 찾기는 경로 밖 센서에 맡기고 증거는 누락이 없게 여유를 두는 그림입니다."

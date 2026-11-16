@@ -13,6 +13,11 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-source-07-page-01
   illustrations:
+  - file: assets/animations/u11-l05-p1-story-block-bypass.svg
+    title: "박 팀장의 도면 이야기"
+    alt: "월요일 회의에서 서 이사가 박 팀장의 도면 업로드 소식에 걱정하고, 지우가 프록시를 통해서만 나가게 바꾸기로 하며 건너뛰는 길을 막는 방법을 알아보는 장면입니다."
+    caption: "박 팀장의 도면 업로드 소식에서 시작해 프록시를 건너뛰는 길을 막을 방법을 찾아봅니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l05-p01-fw-rules.svg
     title: "프록시만 밖으로 나가게 하기"
     alt: "방화벽 규칙으로 사내 PC 192.168.10.0/24의 직접 외부 연결은 막고 프록시 192.168.10.5의 연결만 허용하는 모습입니다."
@@ -73,6 +78,11 @@ page_metadata:
     after_paragraph: 4
 - page_id: advanced-source-07-page-03
   illustrations:
+  - file: assets/animations/u11-l05-p2-story-log-question.svg
+    title: "서 이사의 기록 부탁"
+    alt: "프록시를 쓰기 시작한 다음 날 서 이사가 박 팀장이 올린 것을 찾아 달라고 하고, 지우가 연 기록에 그 내용이 있을지 궁금해하며 기록에 남는 것을 알아보는 장면입니다."
+    caption: "서 이사가 올린 내용을 찾아 달라고 하자 지우가 기록을 열어 봅니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l05-p02-proxy-log.svg
     title: "프록시 기록에는 무엇이 남을까?"
     alt: "박 팀장 PC 192.168.10.42의 AI 접속이 프록시 기록 한 줄로 남지만 올린 내용은 암호문이라 알 수 없는 모습입니다."
@@ -128,6 +138,11 @@ page_metadata:
     after_paragraph: 4
 - page_id: u11-l05-page-03
   illustrations:
+  - file: assets/animations/u11-l05-p3-story-open-chat.svg
+    title: "암호 속에 있는 내용"
+    alt: "서 이사가 올라가는 순간 막을 수 있는지 묻고, 박 팀장 PC와 AI 서비스 사이 내용이 암호 속에 있어 지우가 회사가 그 암호를 열려면 무엇이 필요한지 알아보는 장면입니다."
+    caption: "내용은 PC와 AI 서비스만 푸는 암호 속에 있어서 회사가 열 방법을 묻습니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l05-p03-tls-inspect.svg
     title: "암호화된 AI 대화 열어 보기"
     alt: "프록시가 PC와 AI 서비스 사이의 TLS를 둘로 나눠 맺고, 풀린 요청에서 휴대전화 번호 형식을 찾아 업로드를 막는 모습입니다."
@@ -188,6 +203,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-07-page-04
   illustrations:
+  - file: assets/animations/u11-l05-p4-story-plugin-download.svg
+    title: "설치 전에 물어 온 파일"
+    alt: "직원이 처음 보는 사이트에서 받은 설치 파일이 괜찮은지 묻고 서 이사가 회사가 먼저 걸러 줄 수 없는지 물어, 받은 파일의 악성코드를 알아보는 장면입니다."
+    caption: "직원이 받은 설치 파일이 괜찮은지 묻고 서 이사는 먼저 걸러 주길 바랍니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l05-p04-file-scan.svg
     title: "받는 파일을 프록시에서 검사"
     alt: "외부 사이트의 플러그인 설치 파일이 프록시에서 알려진 악성코드와 비교되어 안전하면 PC로, 문제가 있으면 차단되는 모습입니다."
@@ -243,6 +263,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-07-page-06
   illustrations:
+  - file: assets/animations/u11-l05-p5-story-one-box.svg
+    title: "웹만 느린 한 상자"
+    alt: "서 이사가 방화벽·IPS·프록시가 한 상자에 든 장비 견적을 받아 왔는데 시험에서 웹과 AI만 느리고 메일·화상 회의는 멀쩡해 지우가 이유를 궁금해하는 장면입니다."
+    caption: "장비는 한 대인데 웹과 AI만 느린 까닭을 지우가 궁금해합니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l05-p5-combined-box.svg
     title: "한 상자에 IPS와 프록시가 같이 있다면?"
     alt: "통합 보안 장비 한 대 안에서 웹·AI 요청은 방화벽과 프록시를, 메일·화상 회의는 방화벽과 IPS를 거치고, 프록시 기능만 바빠지면 웹·AI만 느려지는 모습입니다."
@@ -298,6 +323,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-07-page-07
   illustrations:
+  - file: assets/animations/u11-l05-p6-story-monitoring-limit.svg
+    title: "대화 전문 보관 의견"
+    alt: "회의에서 AI 대화 전문을 1년 보관하자는 의견에 서 이사는 솔깃하지만 지우는 시험 화면의 개인적인 대화가 마음에 걸려 어디까지 봐도 되는지 따져 보는 장면입니다."
+    caption: "대화 전문 보관 의견 앞에서 지우는 개인적인 내용이 섞인 것이 마음에 걸립니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l05-p06-log-scope.svg
     title: "AI 대화, 어디까지 남길까?"
     alt: "대화 전문을 1년 보관하는 안과 차단 사건만 시각·PC·규칙 이름으로 남기는 안을 비교하는 모습입니다."
