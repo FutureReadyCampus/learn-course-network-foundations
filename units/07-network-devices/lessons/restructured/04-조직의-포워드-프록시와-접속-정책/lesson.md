@@ -15,6 +15,11 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-source-06-page-01
   illustrations:
+  - file: assets/animations/u11-l04-p1-story-ai-request.svg
+    title: "서 이사의 질문과 낯선 프록시 설정"
+    alt: "서 이사가 센서 보고서를 받아 들고, 지우가 박 팀장 브라우저의 프록시 칸에서 처음 보는 서버 주소를 찾았다는 것, 서 이사가 누가 어느 AI에 무엇을 하려 했는지 모르는 거냐고 묻는다는 것, 그래서 요청을 누군가 대신 보내 주면 어떻게 되는지 알아본다는 것을 보여 줍니다."
+    caption: "서 이사의 질문과 박 팀장 브라우저의 낯선 프록시 설정입니다."
+    after_paragraph: 1
   - file: assets/animations/u11-l04-p1-client-chooses.svg
     title: "PC가 요청을 프록시에 맡겨요"
     alt: "PC 40대가 게이트웨이를 지나 바로 나가던 것을 → PC가 요청을 프록시에 맡기고 → 프록시가 AI 서비스에 새로 연결하며 → AI 서비스가 보는 상대는 프록시라는 것을 보여 줍니다."
@@ -75,6 +80,11 @@ page_metadata:
     after_paragraph: 4
 - page_id: advanced-source-06-page-03
   illustrations:
+  - file: assets/animations/u11-l04-p2-story-proxy-field.svg
+    title: "지우가 브라우저에 프록시 주소를 넣었어요"
+    alt: "지우가 브라우저의 프록시 설정에 192.168.10.5와 포트 8080을 넣고 → AI 채팅 서비스를 열자 프록시에 접속 기록이 쌓이지만 → AI 회의록 앱의 요청은 기록에 하나도 없어 지우가 의아해하고 → 같은 PC인데 왜 어떤 요청만 프록시를 거치는지 알아본다는 것을 보여 줍니다."
+    caption: "같은 PC인데 어떤 요청만 프록시 기록에 남았습니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l04-p02-browser-proxy.svg
     title: "브라우저에 프록시 주소 넣기"
     alt: "지우 PC 브라우저에 프록시 192.168.10.5 포트 8080을 넣으면 요청이 프록시를 거쳐 AI 서비스로 가고, 설정을 읽지 않는 회의록 앱은 기록 없이 바로 나가는 모습입니다."
@@ -130,6 +140,11 @@ page_metadata:
     after_paragraph: 2
 - page_id: advanced-source-06-page-06
   illustrations:
+  - file: assets/animations/u11-l04-p3-story-tunnel-fail.svg
+    title: "박 팀장 화면에 터널 연결 실패가 떠요"
+    alt: "박 팀장과 지우가 사무실에 있고 → 박 팀장 화면에 프록시 터널 연결 실패만 뜨며 → 박 팀장은 프록시가 고장 났나 보다고 말하고 지우는 자기 PC에서도 그 AI 서비스만 안 열린다고 생각하고 → 정말 프록시가 고장 난 건지 알아본다는 것을 보여 줍니다."
+    caption: "프록시 때문에 AI 서비스만 안 열리는 아침입니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l04-p3-two-connections.svg
     title: "프록시에는 연결이 두 개예요"
     alt: "박 팀장 PC와 프록시 사이의 연결 ①, 프록시와 AI 서비스 사이의 연결 ②가 따로 맺어지고 → 프록시가 흐름을 이어 쓰며 → 도착지가 다른 독립된 연결임을 보여 줍니다."
@@ -190,6 +205,11 @@ page_metadata:
     after_paragraph: 4
 - page_id: advanced-source-06-page-02
   illustrations:
+  - file: assets/animations/u11-l04-p4-story-seen-address.svg
+    title: "점심시간에 박 팀장이 주소를 물어요"
+    alt: "점심시간에 박 팀장과 지우가 이야기하고 → 박 팀장이 회사에서 쓴 건지 아무도 모르는 거냐고 물으며 → 지우는 직접 접속, 회사 프록시, 해외 프록시일 때를 따져 보려 하고 → AI 서비스에 누구 주소가 보이는지 알아본다는 것을 보여 줍니다."
+    caption: "박 팀장의 질문에서 AI 서비스에 보이는 주소 문제가 시작됩니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l04-p4-seen-address.svg
     title: "AI 서비스에 보이는 주소는?"
     alt: "직접 접속과 회사 프록시 경유는 본사 공인 주소 198.51.100.25로 보이고, 해외 프록시 경유는 그 서버 주소로 보이며, 주소가 바뀌어도 로그인하면 누구인지 압니다."
@@ -250,6 +270,11 @@ page_metadata:
     after_paragraph: 4
 - page_id: advanced-source-06-page-07
   illustrations:
+  - file: assets/animations/u11-l04-p5-story-free-proxy.svg
+    title: "서 이사가 무료 서버 운영자를 걱정해요"
+    alt: "지우가 서 이사에게 박 팀장 사례를 보고하고 → 박 팀장이 회사가 막아 둔 AI 사이트를 써 왔다는 것이 드러나며 → 서 이사가 그 무료 서버를 누가 운영하는지 묻고 → 낯선 중계 서버에 무엇을 넘겨주게 되는지 알아본다는 것을 보여 줍니다."
+    caption: "낯선 운영자의 무료 서버에 대한 서 이사의 걱정입니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l04-p5-stranger-operator.svg
     title: "낯선 운영자는 무엇을 볼까?"
     alt: "박 팀장이 무료 우회 프록시를 거치면 운영자는 연결 정보를 알고, 경고 없는 HTTPS 내용은 읽지 못하지만, 업무 자료가 회사 기록 밖으로 나가 회사 프록시 기록에는 남지 않습니다."
@@ -305,6 +330,11 @@ page_metadata:
     after_paragraph: 4
 - page_id: advanced-source-06-page-05
   illustrations:
+  - file: assets/animations/u11-l04-p6-story-extra-hop.svg
+    title: "프록시를 쓴 지 2주 뒤의 일이에요"
+    alt: "프록시를 정식으로 쓴 지 2주가 지났고 → 박 팀장이 AI 답이 예전보다 살짝 늦게 뜬다고 말하며 → 금요일 오후 프록시가 업데이트 뒤 다시 켜지지 않아 웹과 AI가 끊기고 → 프록시 하나로 얻은 편리함에 어떤 값이 붙어 있었는지 알아본다는 것을 보여 줍니다."
+    caption: "느려진 AI 답과 금요일 오후의 프록시 정지입니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l04-p6-extra-steps.svg
     title: "프록시를 거치면 길이 늘어요"
     alt: "직접 가면 한 구간이지만 프록시를 거치면 두 구간이 되고, 프록시가 읽고 확인하고 기록하는 처리가 더해져 사람이 몰리면 모든 요청이 더 기다립니다."

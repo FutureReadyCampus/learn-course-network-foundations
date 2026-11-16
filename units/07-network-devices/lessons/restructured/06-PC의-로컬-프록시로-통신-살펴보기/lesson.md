@@ -13,6 +13,11 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-source-09-page-01
   illustrations:
+  - file: assets/animations/u11-l06-p01-story-unreadable-capture.svg
+    title: "서 이사의 걱정, 지우의 숙제"
+    alt: "박 팀장이 AI 자동 배치 플러그인을 깔자 서 이사가 고객 도면이 밖으로 가는지 묻고, 지우는 확실히 답할 방법을 찾으며, 이 Page에서 패킷을 잡으면 내용도 읽히는지 알아봅니다."
+    caption: "서 이사의 질문에 지우가 확실하게 답하려는 장면입니다."
+    after_paragraph: 1
   - file: assets/animations/u11-l06-p01-capture-limit.svg
     title: "패킷은 잡았는데 왜 못 읽을까?"
     alt: "지우 PC의 플러그인 요청을 패킷 캡처하면 IP·TCP 헤더는 보이지만 HTTPS Payload는 암호문이라 읽을 수 없는 모습입니다."
@@ -68,6 +73,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-09-page-02
   illustrations:
+  - file: assets/animations/u11-l06-p02-story-local-relay.svg
+    title: "요청을 내가 볼 수 있다면"
+    alt: "지우의 테스트용 PC에서 플러그인 요청이 AI 서비스로 바로 나가는 것을 보고, 지우가 들여다볼 누군가를 먼저 거치게 하고 싶어 하며, 이 Page에서 내 PC 안에 중계소를 세워 봅니다."
+    caption: "지우는 요청을 볼 수 있도록 중간에 거칠 곳을 만들고 싶어 합니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l06-p02-local-relay.svg
     title: "내 PC 안에 중계소 세우기"
     alt: "지우 PC에서 플러그인이 AI 서비스로 바로 보내던 요청이, PC 안에 로컬 프록시가 생기면 먼저 도착해 한 건씩 목록으로 남는 모습입니다."
@@ -128,6 +138,11 @@ page_metadata:
     after_paragraph: 2
 - page_id: advanced-source-09-page-03
   illustrations:
+  - file: assets/animations/u11-l06-p03-story-proxy-down.svg
+    title: "모든 사이트가 안 열려요"
+    alt: "지우가 브라우저 프록시 칸에 주소를 적고 도구를 켜지 않은 채 열었더니 모든 사이트가 막혀 의아해하며, 이 Page에서 그 주소가 어디로 가는지 알아봅니다."
+    caption: "도구 하나가 꺼졌을 뿐인데 모든 사이트가 막힌 이유를 지우가 궁금해합니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l06-p03-loopback-port.svg
     title: "127.0.0.1:8080은 어디로 갈까?"
     alt: "브라우저 프록시 칸의 127.0.0.1:8080은 PC 밖으로 나가지 않고 이 PC의 8080번 포트로 가며, 도구가 꺼져 있으면 그 포트가 비어 연결이 거절됩니다."
@@ -188,6 +203,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-09-page-04
   illustrations:
+  - file: assets/animations/u11-l06-p04-story-cert-warning.svg
+    title: "인증서 경고가 떴어요"
+    alt: "설정을 맞추자 도구 목록에 요청이 찍히지만 내용을 푸는 옵션을 켜자 인증서 경고가 떠서 지우가 까닭을 궁금해하며, 이 Page에서 로컬 프록시가 HTTPS를 여는 방법을 알아봅니다."
+    caption: "내용을 푸는 옵션을 켜자 뜬 인증서 경고의 까닭을 지우가 묻습니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l06-p04-two-tls.svg
     title: "HTTPS를 여는 방법: 연결 둘"
     alt: "처음엔 암호문을 그대로 전달하던 도구가, 앱과 AI 서비스 두 연결에서 TLS를 따로 맺으면 도구 안에서만 평문이 보이는 과정입니다."
@@ -248,6 +268,11 @@ page_metadata:
     after_paragraph: 4
 - page_id: advanced-source-09-page-05
   illustrations:
+  - file: assets/animations/u11-l06-p05-story-two-screens.svg
+    title: "두 화면을 나란히 놓으면"
+    alt: "지우가 같은 순간을 캡처 도구와 프록시 도구로 나란히 보니 수천 줄 대 한 줄이어서 어느 쪽이 도면 전송 여부에 답하기 쉬운지 생각하며, 이 Page에서 요청 한 건으로 보는 법을 알아봅니다."
+    caption: "같은 순간이 수천 줄의 패킷과 요청 한 줄로 다르게 보입니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l06-p05-stream-view.svg
     title: "조각 대신 요청 한 건으로"
     alt: "요청 한 건이 여러 패킷 조각으로 나뉘어 가고, 캡처 도구는 조각을 그대로 보지만 로컬 프록시는 이어 붙인 Stream을 요청 한 건으로 보며, 이어 붙여도 TLS 암호문이면 읽을 수 없는 모습입니다."
@@ -308,6 +333,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-09-page-06
   illustrations:
+  - file: assets/animations/u11-l06-p06-story-three-proxies.svg
+    title: "프록시를 세 번 만났어요"
+    alt: "분석 결과를 정리하던 지우가 무료 우회 프록시, 회사 프록시, 로컬 프록시를 만났음을 떠올리고 셋이 다른 물건인지 의문을 가지며, 이 Page에서 셋을 견줘 봅니다."
+    caption: "이름도 쓰임도 다른 세 프록시가 정말 다른 물건인지 지우가 묻습니다."
+    after_paragraph: 0
   - file: assets/animations/u11-l06-p06-three-proxies.svg
     title: "우회 · 회사 · 로컬, 같은 모양일까?"
     alt: "무료 우회 프록시, 회사 프록시, 로컬 프록시가 같은 뼈대이고 놓인 자리와 관리자가 다른 것을 비교합니다."
