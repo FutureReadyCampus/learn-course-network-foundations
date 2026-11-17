@@ -504,7 +504,12 @@
     const questions = page.questions || [];
     const inlineQuizzes = page.inline_quizzes || [];
     let nextPage;
-    const prose = renderProse(page.paragraphs || [], page.illustrations || [], inlineQuizzes,
+    let prose;
+    if (page.html) {  // exercise pages: HTML rendered at build time from first-party Markdown
+      prose = document.createElement("div");
+      prose.className = "net-prose";
+      prose.innerHTML = page.html;
+    } else prose = renderProse(page.paragraphs || [], page.illustrations || [], inlineQuizzes,
       (quiz) => renderQuiz(quiz.questions, quiz.start_index || 0));
     const recap = prose.querySelector(":scope > .ral-summary");
     main.append(prose);

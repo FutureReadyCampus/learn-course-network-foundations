@@ -146,3 +146,8 @@ button { color: inherit; }
 .term-wrap:hover .term-pop, .term-wrap:focus-within .term-pop, .term-wrap.open .term-pop { display: block; }
 .term-wrap.dismissed .term-pop { display: none; }
 .term-more { display: block; margin-top: 6px; color: var(--accent); font-weight: 600; }
+
+.net-prose blockquote { margin: 1em 0; padding: .1em 1em; border-left: 4px solid var(--border); color: var(--muted, inherit); }
+.net-prose table { display: block; overflow-x: auto; border-collapse: collapse; }
+.net-prose th, .net-prose td { padding: 6px 10px; border: 1px solid var(--border); }
+.net-prose mark { background: var(--accent-soft); color: inherit; }
