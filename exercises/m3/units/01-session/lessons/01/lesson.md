@@ -39,7 +39,7 @@ Unit 1은 ① 정하기 단계의 시작입니다.
    pwd
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치를 보여 줌
-3. **[터미널]** Module 3 폴더 `access_control` 과 그 안의 설정 폴더 `config` 를 만들고, Module 폴더로 들어갑니다. Unit 1부터 Module 3의 파일은 모두 이 폴더에 둡니다.
+3. **[터미널]** Module 3의 작업 폴더 `access_control` 과 그 안의 설정 폴더 `config` 를 만들고, `access_control` 폴더로 들어갑니다. Unit 1부터 Module 3의 파일은 모두 이 폴더에 둡니다.
    ```bash
    mkdir -p access_control/config
    cd access_control
