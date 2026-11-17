@@ -485,7 +485,7 @@ Module 3이 끝나면 `access_control` 폴더는 아래 모양이어야 합니�
 security-agent-toolkit/
   .env
   .gitignore
-  agent_core/                Module 1
+  agent_core/
   network_zt/
   access_control/ (바로 아래 파일 76개 + config 11개 = 87개)    Module 3  ← 여기서 작업
     config/ (11개)           ← JSON 설정만

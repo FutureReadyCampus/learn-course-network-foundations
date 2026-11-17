@@ -17,11 +17,11 @@ source:
 
 - **Exercise 6-1**: 알림 한 건으로 담당자가 즉시 판단할 수 있는 **티켓을 생성**(ticketing, 티케팅: 알림을 추적 가능한 티켓으로 등록하는 일)합니다. 티켓에는 응답 기한(SLA)을 계산해 기재합니다. 사후 검증에 실패한 조치는 수동 확인 대상으로 별도 표시합니다(`ticketing.py`).
 - **Exercise 6-2**: 같은 사건의 알림을 티켓 한 장으로 **병합**(merge)합니다. 병합하면 중복 제거(deduplication: 같은 사건의 알림을 한 건으로 처리하는 일)가 됩니다. 예를 들어 `dami` 의 알림 네 건이 TCK-1 한 장에 병합됩니다. 이어서 허용된 순서로만 티켓 **상태를 전이**(status transition: 상태를 정해진 규칙에 따라 다른 값으로 바꾸는 일)합니다(`ticket_merge.py`).
-- **Exercise 6-3**: 등급에 맞는 수신자에게 알림을 **전파**(notification, 노티피케이션: 사건 발생을 담당자에게 통지하는 일)합니다. 이때 Module 1에서 만든 알림 함수를 가져와 사용(import)합니다. 같은 티켓에 알림을 보내는 간격을 제한해 알림 피로(alert fatigue, 얼럿 퍼티그: 알림이 지나치게 많아 담당자가 반응하지 않게 되는 현상)를 줄입니다. 전송에 실패하면 **재시도**(retry, 리트라이: 실패한 전송을 다시 시도하는 일)합니다(`ticket_notice.py`).
+- **Exercise 6-3**: 등급에 맞는 수신자에게 알림을 **전파**(notification, 노티피케이션: 사건 발생을 담당자에게 통지하는 일)합니다. 이때 `notifier.py` 의 알림 함수를 가져와 사용(import)합니다. 같은 티켓에 알림을 보내는 간격을 제한해 알림 피로(alert fatigue, 얼럿 퍼티그: 알림이 지나치게 많아 담당자가 반응하지 않게 되는 현상)를 줄입니다. 전송에 실패하면 **재시도**(retry, 리트라이: 실패한 전송을 다시 시도하는 일)합니다(`ticket_notice.py`).
 
 깃허브에 올리는 일은 Unit 7의 Exercise 7-2 마지막에 합니다. 새 문법은 Exercise 6-2의 `return None` 과 `is None` 두 가지입니다(`None` 값 자체는 Unit 2에서 나왔습니다). 보고서의 [핵심 질문] 표시가 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 코드를 쓸 때는 들여쓰기를 미리 채운 줄에 맞추고, 각 번호 주석 바로 아래에 한 줄을 씁니다. <mark style="background:#ffc4d6">주석은 지우지 않습니다</mark>.
 
- **이전 파일**: 이번 Unit에서 가져와 사용(import)하는 파일은 두 묶음입니다. 하나는 <mark style="background:#e0d4ff">Unit 1에서 만든 `incident.py` 의 `load_json` · `save_json`</mark> 입니다. 다른 하나는 <mark style="background:#e0d4ff">Module 1에서 만든 `notifier.py` · `alert_server.py`</mark> 입니다. 없는 파일은 아래 시작하기의 「 이전 파일이 없을 때」 코드 상자로 만듭니다.
+ **이전 파일**: 이번 Unit에서 가져와 사용(import)하는 파일은 두 묶음입니다. 하나는 <mark style="background:#e0d4ff">Unit 1에서 만든 `incident.py` 의 `load_json` · `save_json`</mark> 입니다. 다른 하나는 <mark style="background:#e0d4ff">`agent_core` 폴더의 `notifier.py` · `alert_server.py`</mark> 입니다. 없는 파일은 아래 시작하기의 「 이전 파일이 없을 때」 코드 상자로 만듭니다.
 
  **줄임말 이름 안내**: 이 문서의 코드와 파일에는 줄임말로 된 이름이 있습니다. 처음 보면 뜻을 알기 어려워서 아래에 풀어 둡니다. 이미 배포한 파일과 맞추기 위해 이름은 그대로 쓰고 뜻만 설명합니다.
   - `acked_at` 의 `acked` 는 acknowledged(확인했다)의 줄임말입니다. `acked_at` 은 담당자가 티켓을 처음 확인한 시각(분)입니다.
@@ -100,7 +100,7 @@ source:
 }
 ```
 
-5. **[터미널]** Module 1에서 만든 알림 파일 두 개를 이 폴더로 복사합니다.
+5. **[터미널]** `agent_core` 폴더의 알림 파일 두 개를 이 폴더로 복사합니다.
    ```bash
    cp ../agent_core/notifier.py .
    cp ../agent_core/alert_server.py .
@@ -117,7 +117,7 @@ source:
    python -c "import notifier; print('notifier 불러오기 성공')"
    ```
 
-## 이전 파일이 없을 때 (Unit 1 · Module 1 파일)
+## 이전 파일이 없을 때 (Unit 1 · 알림 파일)
 
 Unit 1을 하지 못했거나 파일을 지운 경우에만 만듭니다. **이미 있는 파일은 건너뜁니다.** 먼저 **[터미널]** 에서 빈 파일을 만듭니다. 이미 있는 파일은 `touch` 가 그대로 둡니다.
 
@@ -152,7 +152,7 @@ def save_json(data, path):                                   # 저장할 값과 
         json.dump(data, file, ensure_ascii=False, indent=2)  # 한글은 그대로, 줄을 나눠 저장한다
 ```
 
-**`notifier.py`** — Module 1 알림 함수 `notify` 입니다. 메시지를 알림 서버로 보냅니다.
+**`notifier.py`** — 알림 함수 `notify` 입니다. 메시지를 알림 서버로 보냅니다.
 
 ```python
 import requests                                                # 인터넷으로 요청을 보내는 도구 (9/30)
@@ -167,7 +167,7 @@ def notify(message, url):                                      # 메시지를 �
         return False                                           # 못 보냈다 — 부른 쪽은 계속 간다
 ```
 
-**`alert_server.py`** — Module 1 알림 서버입니다. Exercise 6-3과 Unit 7의 Exercise 7-1에서 알림을 받는 쪽입니다.
+**`alert_server.py`** — 알림 서버입니다. Exercise 6-3과 Unit 7의 Exercise 7-1에서 알림을 받는 쪽입니다.
 
 ```python
 from flask import Flask, request        # 10/2 에 쓴 웹 서버 도구

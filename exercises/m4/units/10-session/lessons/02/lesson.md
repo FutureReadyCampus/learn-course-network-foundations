@@ -179,7 +179,7 @@ print(slash_text)               # 이어 붙인 글자를 출력한다
 
 ```python
 import json                                             # JSON 파일을 읽기 위해 json 을 불러온다
-from llm_client import call_llm                         # Module 1에서 만든 LLM 호출 함수를 불러온다
+from llm_client import call_llm                         # LLM 호출 함수를 불러온다
 
 RISK_PATH = "unit05_risk_scores.json"                    # 읽을 점수 파일 이름(Unit 7에서 저장한 파일)
 SUMMARY_LIMIT = 3                                       # AI 에게 요약을 시킬 대상의 최대 수
