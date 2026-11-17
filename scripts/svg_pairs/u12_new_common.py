@@ -45,7 +45,7 @@ class Pg:
         return frame(self.a, self.title, self.sub, self.caps, "".join(self.parts))
 
 
-def dsrv(x, y, label="AI 서버", c=GREEN):
+def dsrv(x, y, label="그룹웨어 서버", c=GREEN):
     return (f'<rect x="{x - 34}" y="{y - 40}" width="68" height="80" rx="8" fill="{PANEL}" stroke="{c}" stroke-width="3"/>'
             + "".join(f'<rect x="{x - 24}" y="{y - 30 + i * 24}" width="48" height="16" rx="3" fill="{c}" fill-opacity="0.45"/>' for i in range(3))
             + text(x, y + 62, label, 18, TXT, 700))

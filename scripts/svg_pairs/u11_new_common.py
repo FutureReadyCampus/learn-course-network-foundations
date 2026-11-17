@@ -40,7 +40,7 @@ def node(x, y, label, sub=None, w=150, h=70, c=BLUE, fs=18):
     return s + (lbl(x, y + h / 2 + 22, sub) if sub else "")
 
 
-def server(x, y, label="AI 서비스", sub=None, c=GREEN):
+def server(x, y, label="외부 클라우드 저장소", sub=None, c=GREEN):
     s = (f'<rect x="{x - 34}" y="{y - 40}" width="68" height="80" rx="8" fill="{PANEL}" stroke="{c}" stroke-width="3"/>'
          + "".join(f'<rect x="{x - 24}" y="{y - 30 + i * 24}" width="48" height="16" rx="3" fill="{c}" fill-opacity="0.45"/>' for i in range(3))
          + text(x, y + 62, label, 18, TXT, 700))

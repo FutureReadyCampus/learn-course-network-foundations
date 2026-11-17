@@ -1,6 +1,6 @@
 ---
 id: router-and-nat
-title: '사내 AI 서버를 밖에서 쓰려면: 공유기와 NAT'
+title: '사내 그룹웨어를 밖에서 쓰려면: 공유기와 NAT'
 source:
   repository: physical-spark/course-network
   commit: d1b650e39cb0fd01f4b67adb76926172dbd517c9

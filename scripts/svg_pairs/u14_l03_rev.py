@@ -120,7 +120,7 @@ def p4():
             a.vis("".join(check(ex, y + 25) for y in ys), 2, 4), mark(ex - 45, 250, 90, 178, 2),
             a.vis(cross(ax, ys[0] + 25) + check(ax, ys[1] + 25) + check(ax, ys[2] + 25), 3, 4), mark(ax - 45, 250, 90, 178, 3),
             a.vis(pill(480, 456, "비밀 자료는 양쪽 모두 ESP로 맞춰요", GREEN, 18, True), 4, 4)]
-    caps = ["보호 세 가지를 ESP와 AH가 어디까지 지킬까요", "ESP는 암호화로 세 가지를 모두 켤 수 있어요", "AH는 무결성·인증만 주고 내용은 그대로 보여요", "도면 같은 비밀 자료는 ESP를 골라요"]
+    caps = ["보호 세 가지를 ESP와 AH가 어디까지 지킬까요", "ESP는 암호화로 세 가지를 모두 켤 수 있어요", "AH는 무결성·인증만 주고 내용은 그대로 보여요", "거래처 자료 같은 비밀 자료는 ESP를 골라요"]
     return frame(a, "ESP와 AH는 뭘 지켜 줄까", "봉투로 떠올리면 쉬워요", caps, "".join(body))
 
 
@@ -185,9 +185,9 @@ def p6b():
     a = new()
     ys = [124, 222, 320]
     H = 90
-    data = [(house, "지사끼리", "도쿄 쇼룸 ↔ 서울 본사", "IPsec", VIOLET, "망 전체 연결", "IP 계층에서 통째로 이어요"),
+    data = [(house, "지사끼리", "도쿄 지사 ↔ 서울 본사", "IPsec", VIOLET, "망 전체 연결", "IP 계층에서 통째로 이어요"),
             (laptop, "출장·재택 한 명", "서 이사 노트북", "SSL/TLS VPN", GREEN, "필요한 앱 몇 개", "앱별로 좁게 열어요"),
-            (laptop, "외주 작업자", "도면 열람 웹 한 곳, 2주만", "SSL/TLS VPN 웹 포털", GREEN, "웹 한 곳만", "클라이언트 설치가 거의 없어요")]
+            (laptop, "외주 작업자", "그룹웨어 웹 한 곳, 2주만", "SSL/TLS VPN 웹 포털", GREEN, "웹 한 곳만", "클라이언트 설치가 거의 없어요")]
     body = ["".join(box(40, y, 880, H, LINE, PANEL, 10, sw=1) for y in ys)]
     for i, (ic, who, sub, how, c, scope, ssub) in enumerate(data):
         y = ys[i]

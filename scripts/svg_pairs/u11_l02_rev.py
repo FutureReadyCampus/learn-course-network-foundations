@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unit 11 Lesson 2 (인라인 구조와 트래픽 처리) SVG review pass: Pages 2-6 (Page 1 kept as is).
 Run from repo root: python3 scripts/svg_pairs/u11_l02_rev.py   (--svg-only skips the lesson.md edit).
-Running example: 박 팀장 노트북 192.168.10.42 -> 본사 게이트웨이(192.168.10.1 / 198.51.100.25) -> AI 서비스 203.0.113.80."""
+Running example: 박 팀장 노트북 192.168.10.42 -> 본사 게이트웨이(192.168.10.1 / 198.51.100.25) -> 외부 클라우드 저장소 203.0.113.80."""
 import sys
 from u11_new_common import *  # noqa: F401,F403
 
@@ -24,7 +24,7 @@ def spinner(x, y):
 # ---- Page 2: 통과시킬까, 버릴까? ----
 def p2():
     a = new()
-    body = [dev("노트북", 110, Yc, "192.168.10.42", laptop), router(480, Yc, "출구 장치"), server(850, Yc, "AI 서비스", "203.0.113.80"),
+    body = [dev("노트북", 110, Yc, "192.168.10.42", laptop), router(480, Yc, "출구 장치"), server(850, Yc, "클라우드 저장소", "203.0.113.80"),
             line(165, Yc, 445, Yc, LINE, 4, "10 8"), line(515, Yc, 805, Yc, LINE, 4, "10 8"),
             mv(a, packet(0, 0), [(190, Yc), (410, Yc)], 1, 1, 2, 0.15, 0.85),
             mark(a, 58, Yc - 38, 104, 66, 1),
@@ -44,7 +44,7 @@ def p2():
 def p3():
     a = new()
     gx0, gx1 = 380, 580
-    body = [dev("노트북", 100, Yc, "192.168.10.42", laptop), server(860, Yc, "AI 서비스", "203.0.113.80"),
+    body = [dev("노트북", 100, Yc, "192.168.10.42", laptop), server(860, Yc, "클라우드 저장소", "203.0.113.80"),
             line(160, Yc, gx0, Yc, LINE, 4, "10 8"), line(gx1, Yc, 815, Yc, LINE, 4, "10 8"),
             mv(a, packet(0, 0, BLUE), [(190, Yc), (770, Yc)], 2, 2, 2, 0.08, 0.92),
             mv(a, packet(0, 0, GREEN), [(770, Yc), (190, Yc)], 3, 3, 3, 0.08, 0.92),
@@ -67,7 +67,7 @@ def p4():
     a = new()
     wall = lambda c: (f'<rect x="300" y="{Yc - 90}" width="40" height="72" fill="{c}"/><rect x="300" y="{Yc + 18}" width="40" height="72" fill="{c}"/>')
     pipe = lambda h, c: f'<rect x="350" y="{Yc - h / 2}" width="430" height="{h}" rx="8" fill="{c}" fill-opacity="0.3" stroke="{c}" stroke-width="3"/>'
-    body = [dev("디자이너 PC", 90, Yc, None, pc), server(870, Yc, "AI 서비스"), line(150, Yc, 300, Yc, LINE, 4, "10 8"),
+    body = [dev("사내 PC", 90, Yc, None, pc), server(870, Yc, "클라우드 저장소"), line(150, Yc, 300, Yc, LINE, 4, "10 8"),
             a.vis(pipe(72, BLUE), 1, 1), a.vis(pipe(130, BLUE), 2, 4), wall(ORANGE),
             lbl(320, Yc + 118, "방화벽", ORANGE, 18, 700), lbl(320, Yc + 142, "처리량 150Mbps", ORANGE, 17),
             a.vis(lbl(565, Yc - 56, "회선 300Mbps", BLUE, 18, 700), 1, 1), a.vis(lbl(565, Yc - 84, "회선 1Gbps", BLUE, 18, 700), 2, 4),
@@ -140,8 +140,8 @@ def p5b():
             router(310, Yc, "출구 장치"),
             pill(310, 200, "차단 규칙: 203.0.113.80", RED, 17, False, 270),
             card(210, "203.0.113.80", "", GREEN, 1, 4), card(390, "새 주소", "", GREEN, 2, 4),
-            a.vis(pill(730, 224, "AI 서비스", GREEN, 16, False, 130), 1, 1),
-            a.vis(pill(730, 404, "AI 서비스", GREEN, 16, False, 130), 2, 4),
+            a.vis(pill(730, 224, "파일 공유", GREEN, 16, False, 130), 1, 1),
+            a.vis(pill(730, 404, "파일 공유", GREEN, 16, False, 130), 2, 4),
             a.vis(pill(730, 224, "다른 서비스", ORANGE, 16, False, 140), 3, 4),
             a.vis(cross(310, Yc - 52), 1, 1), a.vis(check(860, 345), 2, 2), a.vis(cross(310, Yc - 52), 3, 3),
             mark(a, 175, 183, 270, 34, 1), mark(a, 600, 345, 260, 90, 2), mark(a, 660, 208, 140, 32, 3),
@@ -149,7 +149,7 @@ def p5b():
             tag(a, 330, 435, "새 주소로 옮기면 통과돼요", ORANGE, 2, w=320),
             tag(a, 330, 435, "그 주소의 다른 서비스가 막혀요", RED, 3, w=350),
             tag(a, 330, 435, "주소는 서비스 이름표가 아니에요", GREEN, 4, w=360)]
-    caps = ["AI 서비스 주소를 규칙으로 막았어요", "서비스가 새 주소로 옮기면 규칙이 소용없어요", "그 주소를 쓰는 다른 서비스가 대신 막혀요", "목적지 주소는 서비스 이름표가 아니에요"]
+    caps = ["파일 공유 서비스 주소를 규칙으로 막았어요", "서비스가 새 주소로 옮기면 규칙이 소용없어요", "그 주소를 쓰는 다른 서비스가 대신 막혀요", "목적지 주소는 서비스 이름표가 아니에요"]
     return frame(a, "주소 목록 차단의 한계", "주소로 서비스를 막으면 빗나갈 수 있어요", caps, "".join(body))
 
 
@@ -223,7 +223,7 @@ def lesson_items():
               "헤더의 주소와 포트만 읽으면 빠르고, 내용까지 읽으면 더 정확하지만 느려지는 모습입니다.",
               "막을 기준을 정하고 그 기준에 필요한 깊이만 봅니다.", 3),
              ("u11-l02-p5b-address-limits", "주소 목록 차단의 한계",
-              "AI 서비스 주소를 막아도 서비스가 새 주소로 옮기면 통과하고, 그 주소를 쓰는 다른 서비스가 대신 막히는 모습입니다.",
+              "파일 공유 서비스 주소를 막아도 서비스가 새 주소로 옮기면 통과하고, 그 주소를 쓰는 다른 서비스가 대신 막히는 모습입니다.",
               "목적지 주소는 서비스 이름표가 아닙니다.", 4)],
             [("u11-l02-p6-reboot-spof", "길목 장치가 멈추면?",
               "본사 게이트웨이를 재부팅하자 사무실 PC 전체의 인터넷이 끊기고, 같은 역할의 장치를 한 대 더 두면 이어받는 모습입니다.",

@@ -2,7 +2,7 @@
 """Unit 15 Lesson 3 점검본: p2 p2b p3 p3b p4b p5 p6 (p1·p4는 기존 그림 유지). Run from repo root:
 python3 scripts/svg_pairs/u15_l03_rev.py   (--svg-only: lesson.md는 건드리지 않음)
 
-한 가지 예: 서버 구역 입구의 IPS·NIDS가 AI 서버(192.168.40.50:8080)로 가는 요청을 본다. 방어 장면만."""
+한 가지 예: 서버 구역 입구의 IPS·NIDS가 그룹웨어 서버(192.168.40.50:8080)로 가는 요청을 본다. 방어 장면만."""
 import sys
 from pathlib import Path
 
@@ -12,7 +12,7 @@ from u15_l00_common import mvi, bb
 
 LESSON = lesson_dir(3)
 OUT = LESSON / "assets" / "animations"
-AI = "192.168.40.50:8080"
+GW = "192.168.40.50:8080"
 
 
 def req(x, y, label, c=RED):
@@ -38,8 +38,8 @@ def lanes(a, fail=False):
     lines = (line(158, y1, 360, y1, LINE, 3, "6 5") + line(440, y1, 766, y1, LINE, 3, "6 5")
              + line(158, y2, 328, y2, LINE, 3, "6 5") + line(452, y2, 766, y2, LINE, 3, "6 5")
              + line(400, 320, 400, y2 - 20, VIOLET, 3, "6 5"))
-    devs = (cloudi(90, y1, "인터넷") + node(400, y1, "IPS", GREEN, 90, 56) + server(800, y1, "AI 서버")
-            + cloudi(90, y2, "인터넷") + switch(400, y2, "스위치") + node(400, 298, "NIDS", VIOLET, 100, 44) + server(800, y2, "AI 서버")
+    devs = (cloudi(90, y1, "인터넷") + node(400, y1, "IPS", GREEN, 90, 56) + server(800, y1, "그룹웨어 서버")
+            + cloudi(90, y2, "인터넷") + switch(400, y2, "스위치") + node(400, 298, "NIDS", VIOLET, 100, 44) + server(800, y2, "그룹웨어 서버")
             + text(40, 128, "IPS: 경로 안(Inline)", 17, GREEN, 700, "start") + text(40, 295, "NIDS: 경로 밖(Out of path)", 17, VIOLET, 700, "start")
             + pill(495, 345, "복사본", VIOLET, 16, False, 80))
     return y1, y2, lines, devs
@@ -86,10 +86,10 @@ def pk_():
 def p3():
     a, Y = new(), 345
     lines = line(158, Y, 435, Y, LINE, 3, "6 5") + line(525, Y, 766, Y, LINE, 3, "6 5") + line(480, 212, 480, Y - 30, VIOLET, 2, "6 5")
-    card = (box(330, 128, 300, 84, VIOLET, PANEL, 8, sw=3) + text(480, 154, "규칙: 대상 " + AI, 15, TXT, 700)
+    card = (box(330, 128, 300, 84, VIOLET, PANEL, 8, sw=3) + text(480, 154, "규칙: 대상 " + GW, 15, TXT, 700)
             + a.vis(text(480, 190, "찾을 패턴: 패턴 A", 16, VIOLET, 700), 1, 3)
             + a.vis(text(480, 190, "패턴 A · 패턴 B", 16, VIOLET, 700), 4, 4))
-    devs = cloudi(90, Y, "인터넷") + node(480, Y, "IPS", GREEN, 90, 56) + server(830, Y, "AI 서버", sub=AI)
+    devs = cloudi(90, Y, "인터넷") + node(480, Y, "IPS", GREEN, 90, 56) + server(830, Y, "그룹웨어 서버", sub=GW)
     body = [lines, a.vis(mvi(a, 2, req(0, 0, "패턴 A"), [(230, Y), (385, Y)], 0.1, 0.8), 2, 2),
             a.vis(mvi(a, 3, req(0, 0, "패턴 B"), [(230, Y), (720, Y)], 0.1, 0.9), 3, 3),
             devs, st(a, 1, card, bb(480, 170, 300, 84)),
@@ -108,7 +108,7 @@ def p3b():
     def row(Y, order):
         mid = {"ips": node(0, 0, "IPS", GREEN, 90, 56), "tls": node(0, 0, "TLS 종료", BLUE, 96, 56, 16)}
         xs = (380, 600)
-        s = cloudi(90, Y, "인터넷") + server(840, Y, "AI 서버")
+        s = cloudi(90, Y, "인터넷") + server(840, Y, "그룹웨어 서버")
         for x, k in zip(xs, order):
             s += f'<g transform="translate({x},{Y})">{mid[k]}</g>'
         return s
@@ -132,7 +132,7 @@ def p3b():
 def p4b():
     a, Y = new(), 290
     lines = line(158, Y, 435, Y, LINE, 3, "6 5") + line(525, Y, 766, Y, LINE, 3, "6 5")
-    devs = node(90, Y, "요청", BLUE, 100, 56) + node(480, Y, "IPS", GREEN, 90, 56) + server(830, Y, "AI 서버")
+    devs = node(90, Y, "요청", BLUE, 100, 56) + node(480, Y, "IPS", GREEN, 90, 56) + server(830, Y, "그룹웨어 서버")
     body = [lines,
             a.vis(mvi(a, 1, req(0, 0, "공격"), [(220, Y), (385, Y)], 0.1, 0.8), 1, 1),
             a.vis(mvi(a, 2, req(0, 0, "정상", GREEN), [(220, Y), (385, Y)], 0.1, 0.8), 2, 2),

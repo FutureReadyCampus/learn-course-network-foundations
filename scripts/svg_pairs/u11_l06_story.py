@@ -5,6 +5,9 @@ Writes assets/animations/u11-l06-p{P}-story-<slug>.svg only; lesson.md illustrat
 from pathlib import Path
 
 from hangyeol_cast import *  # noqa: F401,F403
+from hangyeol_cast import ROLES
+
+ROLES.update({"지우": "신입 네트워크 관리자", "박 팀장": "팀장", "서 이사": "경영진"})  # admin-tutorial roles (shared dict, this process only)
 
 OUT = Path(__file__).resolve().parents[2] / "units/07-network-devices/lessons/restructured/06-PC의-로컬-프록시로-통신-살펴보기/assets/animations"
 
@@ -20,9 +23,9 @@ def pm(a, x, y, t):
 
 def p1():
     a = new()
-    q = "그거 고객 도면을 통째로 밖에 보내는 거 아니에요?"
+    q = "그 프로그램이 뭘 밖으로\n보내는지 확인해 주실래요?"
     body = [who(a, 130, 235, "박 팀장", [("happy", 1, 4)]),
-            a.vis(monitor(310, 290, "ok", "AI 자동 배치"), 1, 4),
+            a.vis(monitor(310, 290, "ok", "파일 동기화"), 1, 4),
             who(a, 610, 235, "서 이사", [("normal", 1, 1), ("worried", 2, 4)], "left"),
             who(a, 840, 235, "지우", [("normal", 1, 2), ("thinking", 3, 4)], "left"),
             pm(a, 130, 235, 1),
@@ -31,24 +34,24 @@ def p1():
             a.vis(thought(745, 168, "이 요청에 이것이\n들어 있었다고 답하자", tail_to=(832, 208), color=BLUE), 3, 3),
             mark(a, 745 - 160, 130, 320, 78, 3),
             question(a, "패킷을 잡으면 내용도 읽힐까?")]
-    caps = ["박 팀장이 AI 자동 배치 플러그인을 깔았어요", "서 이사가 고객 도면이 밖으로 가는지 물어요",
+    caps = ["박 팀장 PC에 파일 동기화 프로그램이 깔렸어요", "서 이사가 밖으로 뭘 보내는지 확인을 요청해요",
             "지우는 확실하게 답할 방법을 찾고 싶어요", "이 Page에서 패킷 캡처로 확인해 봐요"]
-    return scene(a, "플러그인이 도면을 보낼까요?", "서 이사가 지우를 불러 물었어요", caps, "".join(body), bg="office")
+    return scene(a, "동기화 프로그램은 뭘 보낼까요?", "네 번째 티켓이 지우에게 왔어요", caps, "".join(body), bg="office")
 
 
 def p2():
     a = new()
     body = [who(a, 150, 235, "지우", [("normal", 1, 2), ("thinking", 3, 4)]),
             pill(150, 395, "테스트용 PC", MUTED, 17),
-            a.vis(monitor(350, 290, "ok", "AI 플러그인"), 1, 4),
-            a.vis(box(690, 230, 210, 110, MUTED, PANEL, 12, sw=3) + text(795, 292, "AI 서비스", 18, TXT, 700), 2, 4),
+            a.vis(monitor(350, 290, "ok", "파일 동기화"), 1, 4),
+            a.vis(box(690, 230, 210, 110, MUTED, PANEL, 12, sw=3) + text(795, 292, "클라우드 저장소", 18, TXT, 700), 2, 4),
             a.vis(line(450, 285, 685, 285, LINE, 4, "10 8") + packet(570, 285), 2, 2),
             mark(a, 450, 255, 235, 60, 2),
             a.vis(line(450, 285, 685, 285, LINE, 4, "10 8") + ask(570, 285), 3, 4),
             a.vis(thought(380, 160, "내가 볼 수 있는 누군가를\n먼저 거치게 하자", tail_to=(200, 205), color=BLUE), 3, 3),
             mark(a, 380 - 150, 122, 300, 78, 3),
             question(a, "내 PC 안에 중계소를 세운다면?")]
-    caps = ["지우는 테스트용 PC에서 플러그인을 써요", "플러그인 요청이 AI 서비스로 바로 나가요",
+    caps = ["지우는 테스트용 PC에서 프로그램을 써요", "프로그램 요청이 저장소로 바로 나가요",
             "지우가 들여다볼 누군가를 거치게 하고 싶어요", "이 Page에서 그 중계소를 세워 봐요"]
     return scene(a, "요청을 내가 볼 수 있다면", "한 건 한 건의 주소·헤더·본문이 궁금해요", caps, "".join(body), bg="office")
 
@@ -90,12 +93,12 @@ def p5():
             a.vis(monitor(230, 290, "ok", "같은 순간"), 1, 1), a.vis(monitor(730, 290, "ok", "같은 순간"), 1, 1),
             a.vis(monitor(230, 290, "ok", "수천 줄의 패킷"), 2, 4), a.vis(monitor(730, 290, "ok", "요청 한 줄"), 2, 4),
             mark(a, 135, 232, 190, 118, 2), mark(a, 635, 232, 190, 118, 2),
-            a.vis(thought(480, 155, "도면을 통째로 보내는지\n답하기 쉬운 쪽은?", tail_to=(480, 207), color=BLUE), 3, 3),
+            a.vis(thought(480, 155, "견적서를 통째로 보내는지\n답하기 쉬운 쪽은?", tail_to=(480, 207), color=BLUE), 3, 3),
             mark(a, 480 - 150, 116, 300, 78, 3),
             question(a, "패킷 조각 대신 요청 한 건으로 보려면?")]
     caps = ["지우가 두 도구 화면을 나란히 놓아요", "같은 순간이 수천 줄 대 한 줄로 보여요",
-            "도면을 통째로 보내는지 답하기 쉬운 쪽은요", "이 Page에서 요청 한 건으로 봐요"]
-    return scene(a, "두 화면을 나란히 놓으면", "가짜 평면도를 올린 같은 순간이에요", caps, "".join(body), bg="office")
+            "견적서를 통째로 보내는지 답하기 쉬운 쪽은요", "이 Page에서 요청 한 건으로 봐요"]
+    return scene(a, "두 화면을 나란히 놓으면", "가짜 견적서를 올린 같은 순간이에요", caps, "".join(body), bg="office")
 
 
 def p6():
