@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" role="img">
+<title>사실만 보면 되는 퇴사·만료는 코드가 거르고, 사람은 규칙 밖의 권한에 시간을 쓴다</title>
+<desc>퇴사한 사람의 권한과 기간이 끝난 예외는 파일에 적힌 사실만 보고 걸러 낼 수 있어 코드에 맡깁니다. 규칙으로 걸리지 않는 권한은 사람이 판단하며 다음 실습에서 다룹니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">왜 규칙으로 먼저 걸러 내는가</text>
+<rect x="210" y="50" width="300" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="78.928" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">현황의 권한</text>
+<rect x="20" y="140" width="330" height="120" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="185" y="174.128" font-size="16" fill="#1f7a4a" text-anchor="middle" font-weight="700">파일에 적힌 사실로 판단</text>
+<text x="185" y="195.52" font-size="15" fill="#292929" text-anchor="middle">퇴사 · 기간 만료</text>
+<text x="185" y="216.52" font-size="15" fill="#292929" text-anchor="middle">→ 코드가 규칙으로 걸러 낸다</text>
+<text x="185" y="236.512" font-size="14" fill="#666660" text-anchor="middle">실습 6-2</text>
+<rect x="370" y="140" width="330" height="120" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="535" y="174.128" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">사실만으로는 판단 못 함</text>
+<text x="535" y="195.52" font-size="15" fill="#292929" text-anchor="middle">규칙에 안 걸리는 권한</text>
+<text x="535" y="216.52" font-size="15" fill="#292929" text-anchor="middle">→ 사람이 시간을 쓴다</text>
+<text x="535" y="236.512" font-size="14" fill="#666660" text-anchor="middle">실습 6-3</text>
+<polyline points="300,98 185,137" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="420,98 535,137" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+</g>
+</svg>

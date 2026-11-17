@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>실습 8-2 정리: == 와 isin 두 조건을 &amp; 로 합치고, ~ 로 남길 알림을 고릅니다</title>
+<desc>rule 열을 IP_RULE 과 == 로 비교하고, ip 열은 isin 으로 TRUSTED_IPS 안에 있는지 구합니다. 두 조건을 &amp; 로 합친 is_removed 를 ~ 로 뒤집어 남길 알림을 고르고, 빠진 알림의 사용자는 unique 로 한 번씩만 꺼냅니다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 8-2 정리</text>
+<rect x="20" y="56" width="230" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="135.0" y="89.0" font-size="14" fill="#292929" text-anchor="middle">rule == IP_RULE</text>
+<rect x="20" y="124" width="230" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="135.0" y="157.0" font-size="14" fill="#292929" text-anchor="middle">ip.isin(TRUSTED_IPS)</text>
+<rect x="290" y="88" width="170" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="375.0" y="112.2" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">&amp;</text>
+<text x="375.0" y="131.8" font-size="14" fill="#292929" text-anchor="middle">is_removed</text>
+<polyline points="250,84 286,106" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<polyline points="250,152 286,128" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="500" y="56" width="200" height="56" rx="8" fill="#f1f1ef" stroke="#666660" stroke-width="1.5"/>
+<text x="600.0" y="89.0" font-size="14" fill="#292929" text-anchor="middle">alerts[is_removed]</text>
+<rect x="500" y="124" width="200" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="600.0" y="157.0" font-size="14" fill="#292929" text-anchor="middle">alerts[~is_removed]</text>
+<polyline points="460,106 496,84" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<polyline points="460,128 496,152" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="20" y="214" width="330" height="96" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="185.0" y="257.2" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">같은 값을 한 번씩만</text>
+<text x="185.0" y="276.8" font-size="14" fill="#292929" text-anchor="middle">removed_alerts["user"].unique()</text>
+<rect x="370" y="214" width="330" height="96" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="535.0" y="257.2" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">빠진 진짜 문제 확인</text>
+<text x="535.0" y="276.8" font-size="14" fill="#292929" text-anchor="middle">removed_alerts[is_real_removed]</text>
+</g>
+</svg>

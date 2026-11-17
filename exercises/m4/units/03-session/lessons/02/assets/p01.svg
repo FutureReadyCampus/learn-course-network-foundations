@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>이벤트 파일 57개를 표로 읽어 성공·실패와 소스별 실패 개수를 세는 목표</title>
+<desc>입력은 normalized_events.json 의 이벤트 57개입니다. events_basic.py 가 표로 읽고 실패만 걸러 세어, 성공·실패 개수와 소스별 실패 개수를 냅니다.</desc>
+<defs><marker id="a-0302-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">목표: 실패 이벤트를 소스별로 세기</text>
+<rect x="24" y="84" width="230" height="130" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="139.0" y="133.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">입력</text>
+<text x="139.0" y="154.2" font-size="15" fill="#292929" text-anchor="middle">normalized_events.json</text>
+<text x="139.0" y="175.2" font-size="15" fill="#666660" text-anchor="middle">이벤트 57개</text>
+<rect x="290" y="84" width="190" height="130" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="385.0" y="122.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">events_basic.py</text>
+<text x="385.0" y="143.8" font-size="15" fill="#666660" text-anchor="middle">표로 읽기</text>
+<text x="385.0" y="164.8" font-size="15" fill="#666660" text-anchor="middle">실패만 걸러 내기</text>
+<text x="385.0" y="185.8" font-size="15" fill="#666660" text-anchor="middle">값별로 세기</text>
+<rect x="516" y="84" width="180" height="130" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="606.0" y="133.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">출력</text>
+<text x="606.0" y="154.2" font-size="15" fill="#666660" text-anchor="middle">성공 · 실패 개수</text>
+<text x="606.0" y="175.2" font-size="15" fill="#666660" text-anchor="middle">실패의 소스별 개수</text>
+<line x1="257" y1="149" x2="287" y2="149" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p01)"/>
+<line x1="483" y1="149" x2="513" y2="149" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p01)"/>
+<text x="24" y="248" font-size="15" fill="#666660" text-anchor="start">실패를 나눠 세는 소스 세 가지</text>
+<rect x="24" y="260" width="208.0" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="128.0" y="287.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">web · 웹 서버</text>
+<line x1="235.0" y1="282.0" x2="253.0" y2="282.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p01)"/>
+<rect x="256.0" y="260" width="208.0" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="287.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">server · 판정 서버</text>
+<line x1="467.0" y1="282.0" x2="485.0" y2="282.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p01)"/>
+<rect x="488.0" y="260" width="208.0" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="592.0" y="287.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">saas · SaaS</text>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>판정 서버 한 줄과 SaaS 한 행이 직접 쓰는 1~6번을 거쳐 공통 이벤트가 된다</title>
+<desc>판정 서버 쪽은 시각을 바꾸고(1·2번) allowed 를 ALLOWED_MAP 으로 바꿉니다(3번). SaaS 쪽은 메일 주소를 @로 나눠 이름을 꺼내고(4·5번) outcome 을 RESULT_MAP 으로 바꿉니다(6번).</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 2-2: 두 로그가 지나가는 길</text>
+<rect x="24" y="56" width="324" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="186" y="82.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">판정 서버 한 줄 (JSON)</text>
+<line x1="186" y1="102" x2="186" y2="116" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="24" y="120" width="324" height="62" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="186" y="145.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">convert_server_time</text>
+<text x="186" y="165.9" font-size="14" text-anchor="middle" fill="#666660">1 · 2번: 시각 모양 바꾸기</text>
+<line x1="186" y1="184" x2="186" y2="198" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="24" y="202" width="324" height="62" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="186" y="227.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">ALLOWED_MAP[allowed]</text>
+<text x="186" y="247.9" font-size="14" text-anchor="middle" fill="#666660">3번: 성공 · 실패</text>
+<line x1="186" y1="266" x2="186" y2="280" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="24" y="284" width="324" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="186" y="310.4" font-size="15" text-anchor="middle" fill="#292929">공통 이벤트 · ip 는 None</text>
+<rect x="372" y="56" width="324" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="534" y="82.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">SaaS 한 행 (CSV)</text>
+<line x1="534" y1="102" x2="534" y2="116" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="372" y="120" width="324" height="62" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="534" y="145.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">split("@") → [0]</text>
+<text x="534" y="165.9" font-size="14" text-anchor="middle" fill="#666660">4 · 5번: 이름만 꺼내기</text>
+<line x1="534" y1="184" x2="534" y2="198" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="372" y="202" width="324" height="62" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="534" y="227.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">RESULT_MAP[outcome]</text>
+<text x="534" y="247.9" font-size="14" text-anchor="middle" fill="#666660">6번: 성공 · 실패</text>
+<line x1="534" y1="266" x2="534" y2="280" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="372" y="284" width="324" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="534" y="310.4" font-size="15" text-anchor="middle" fill="#292929">공통 이벤트 · user 는 이름</text>
+<line x1="186" y1="330" x2="300" y2="356" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<line x1="534" y1="330" x2="420" y2="356" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="24" y="360" width="672" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="386.1" font-size="14" text-anchor="middle" fill="#292929">exercise2-2_run.py → 단계 1 판정 서버 수 / 단계 2 SaaS 수 / 단계 3 첫 이벤트</text>
+</g>
+</svg>

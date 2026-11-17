@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
+<title>코드 한 줄 변경도 테스트로 확인하면 빠뜨림 없이 규칙이 지켜지는지 압니다</title>
+<desc>접근통제 코드는 한 줄만 바뀌어도 막아야 할 것이 열릴 수 있습니다. 사람이 반복 확인하면 빠뜨리지만, assert 테스트는 AssertionError 없이 끝나면 적어 둔 규칙이 모두 지켜진다는 뜻입니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+<text x="24" y="34" font-size="19" font-weight="700">왜 규칙을 테스트로 적어 두는가</text>
+<rect x="220" y="56" width="280" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="87.4" font-size="16" text-anchor="middle" font-weight="700">접근통제 코드 한 줄 변경</text>
+<rect x="24" y="148" width="320" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="184" y="181.4" font-size="15" text-anchor="middle">사람이 같은 확인을 반복</text>
+<rect x="24" y="236" width="320" height="56" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="184" y="269.4" font-size="15" text-anchor="middle">빠뜨림 → 막을 것이 열림</text>
+<rect x="376" y="148" width="320" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="536" y="181.4" font-size="15" text-anchor="middle">assert 테스트를 실행</text>
+<rect x="376" y="236" width="320" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="536" y="269" font-size="14" text-anchor="middle">AssertionError 없이 끝 = 지켜짐</text>
+<path d="M300,108 L184,146" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<path d="M420,108 L536,146" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<path d="M184,204 L184,234" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<path d="M536,204 L536,234" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<text x="24" y="334" font-size="15" fill="#666660">평가기준: 4가지 테스트 케이스가 모두 예상대로 동작하는가</text>
+</g>
+</svg>

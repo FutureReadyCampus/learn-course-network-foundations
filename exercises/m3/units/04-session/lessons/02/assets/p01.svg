@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>실습 4-1은 요청 일곱 건을 create_request 로 접수해 접수 네 건과 접수 안 됨 세 건으로 나눈다</title>
+<desc>들어온 요청 일곱 건(INBOX)이 req_create.py 의 create_request 를 거칩니다. 접수된 요청서는 REQUESTS 에 reviewing 상태로 쌓이고, 잘못된 요청은 (False, 이유)로 돌려받습니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">실습 4-1에서 만드는 것: 요청서 접수 함수</text>
+<rect x="30" y="70" width="190" height="160" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="125" y="112.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">입력</text>
+<text x="125" y="133.6" font-size="15" fill="#292929" text-anchor="middle">INBOX</text>
+<text x="125" y="154.6" font-size="15" fill="#292929" text-anchor="middle">요청 일곱 건</text>
+<text x="125" y="175.6" font-size="15" fill="#292929" text-anchor="middle">(요청자 · 권한 ·</text>
+<text x="125" y="196.6" font-size="15" fill="#292929" text-anchor="middle">만료 · 이유 · 시각)</text>
+<line x1="220" y1="150" x2="258" y2="150" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p01)"/>
+<rect x="260" y="70" width="210" height="160" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="365" y="112.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">프로그램</text>
+<text x="365" y="133.6" font-size="15" fill="#292929" text-anchor="middle">req_create.py</text>
+<text x="365" y="154.6" font-size="15" fill="#292929" text-anchor="middle">create_request</text>
+<text x="365" y="175.6" font-size="15" fill="#292929" text-anchor="middle">요청 하나를</text>
+<text x="365" y="196.6" font-size="15" fill="#292929" text-anchor="middle">요청서 한 장으로</text>
+<line x1="470" y1="120" x2="488" y2="112" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p01)"/>
+<line x1="470" y1="180" x2="488" y2="192" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p01)"/>
+<rect x="490" y="62" width="210" height="84" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="595" y="87.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">접수됨</text>
+<text x="595" y="108.6" font-size="15" fill="#292929" text-anchor="middle">REQUESTS 에 추가</text>
+<text x="595" y="129.6" font-size="15" fill="#292929" text-anchor="middle">status: "reviewing"</text>
+<rect x="490" y="154" width="210" height="84" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="595" y="179.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">접수 안 됨</text>
+<text x="595" y="200.6" font-size="15" fill="#292929" text-anchor="middle">(False, 이유)</text>
+<text x="595" y="221.6" font-size="15" fill="#292929" text-anchor="middle">리스트에 넣지 않음</text>
+<rect x="30" y="258" width="670" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="365" y="284.6" font-size="15" fill="#292929" text-anchor="middle">끝나면 보고서 실습 4-1 (가) · (나) 답을 씁니다</text>
+</svg>

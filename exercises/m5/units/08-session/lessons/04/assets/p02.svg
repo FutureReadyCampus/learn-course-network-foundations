@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img">
+<title>오탐 대응 네 단계: 영향 확인 → 되돌리기 → 복구 확인 → 규칙 조정 제안</title>
+<desc>네 단계마다 list_changes, rollback_incident, find_not_recovered, make_tuning_note를 씁니다. 바뀌지 않은 기록은 영향 확인에서 빼고, 세션 종료는 되돌릴 수 없으며, 복구 시간은 45분에서 신고 시각을 뺍니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p02r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p02g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p02b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">오탐 대응의 네 단계 (위에서 아래 순서)</tspan></text>
+<rect x="20" y="52" width="160" height="40" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="100.0" y="76.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="100.0" font-weight="bold">1. 영향 확인</tspan></text>
+<rect x="190" y="52" width="240" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="310.0" y="76.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="310.0" font-size="14">list_changes · 1 · 2번</tspan></text>
+<rect x="440" y="52" width="260" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="570.0" y="76.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="570.0" font-size="14">before ≠ after 인 기록만</tspan></text>
+<rect x="20" y="102" width="160" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="100.0" y="126.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="100.0" font-weight="bold">2. 되돌리기</tspan></text>
+<rect x="190" y="102" width="240" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="310.0" y="126.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="310.0" font-size="14">rollback_incident · 7번</tspan></text>
+<rect x="440" y="102" width="260" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="570.0" y="126.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="570.0" font-size="14">Unit 5 함수로 롤백</tspan></text>
+<rect x="20" y="152" width="160" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="100.0" y="176.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="100.0" font-weight="bold">3. 복구 확인</tspan></text>
+<rect x="190" y="152" width="240" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="310.0" y="176.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="310.0" font-size="14">find_not_recovered · 3 · 4번</tspan></text>
+<rect x="440" y="152" width="260" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="570.0" y="176.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="570.0" font-size="14">남은 대상 = [] 이면 끝</tspan></text>
+<rect x="20" y="202" width="160" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="100.0" y="226.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="100.0" font-weight="bold">4. 규칙 조정 제안</tspan></text>
+<rect x="190" y="202" width="240" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="310.0" y="226.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="310.0" font-size="14">make_tuning_note · 5 · 6번</tspan></text>
+<rect x="440" y="202" width="260" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="570.0" y="226.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="570.0" font-size="14">IP → 허용 목록 · 계정 → 규칙 예외</tspan></text>
+<rect x="20" y="266" width="680" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="36" y="292.5" font-size="15" text-anchor="start" fill="#292929"><tspan x="36" font-size="14">INC-301 의 198.51.100.120 차단 기록은 before · after 모두 「변경 없음」 → 제외</tspan></text>
+<rect x="20" y="320" width="680" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="36" y="346.5" font-size="15" text-anchor="start" fill="#292929"><tspan x="36" font-size="14">세션 종료는 되돌릴 수 없음 → 「되돌리기 불가」 기록, 다시 로그인 안내</tspan></text>
+<rect x="20" y="374" width="680" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="36" y="400.5" font-size="15" text-anchor="start" fill="#292929"><tspan x="36" font-size="14">복구 시간 = 지금(45분) − 신고 시각 · INC-301: 45 − 20 = 25분 ≤ 30분</tspan></text>
+</g>
+</svg>

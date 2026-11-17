@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img">
+<title>실습 2-3 정답: 소스별 28·15·14개, 빈 값 수, gaeun 의 시간순 이벤트</title>
+<desc>저장된 이벤트는 web 28, server 15, saas 14 로 57개이고 user 가 빈 것은 웹 28개, ip 가 빈 것은 판정 서버 15개입니다. gaeun 은 판정 서버 실패와 SaaS 로그인이 번갈아 나옵니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 2-3 정답</text>
+<rect x="24" y="56" width="108" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="78" y="87.2" font-size="22" text-anchor="middle" fill="#292929" font-weight="700">28</text>
+<text x="78" y="111.0" font-size="14" text-anchor="middle" fill="#666660">web</text>
+<rect x="144" y="56" width="108" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="198" y="87.2" font-size="22" text-anchor="middle" fill="#292929" font-weight="700">15</text>
+<text x="198" y="111.0" font-size="14" text-anchor="middle" fill="#666660">server</text>
+<rect x="264" y="56" width="108" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="318" y="87.2" font-size="22" text-anchor="middle" fill="#292929" font-weight="700">14</text>
+<text x="318" y="111.0" font-size="14" text-anchor="middle" fill="#666660">saas</text>
+<rect x="384" y="56" width="108" height="70" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="438" y="87.2" font-size="22" text-anchor="middle" fill="#292929" font-weight="700">57</text>
+<text x="438" y="111.0" font-size="14" text-anchor="middle" fill="#666660">저장</text>
+<rect x="504" y="56" width="192" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="600" y="85.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">user 빈 값 28개</text>
+<text x="600" y="105.9" font-size="14" text-anchor="middle" fill="#666660">웹 서버 전부</text>
+<text x="24" y="160" font-size="16" text-anchor="start" fill="#292929" font-weight="700">gaeun 의 이벤트 (시간순)</text>
+<line x1="40" y1="232" x2="680" y2="232" stroke="#666660" stroke-width="2"/>
+<rect x="30" y="176" width="124" height="48" rx="4" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="92" y="204.1" font-size="14" text-anchor="middle" fill="#292929">server</text>
+<circle cx="92" cy="232" r="5" fill="#666660"/>
+<text x="92" y="258" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">10:05</text>
+<text x="92" y="278" font-size="14" text-anchor="middle" fill="#666660">실패</text>
+<rect x="164" y="176" width="124" height="48" rx="4" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="226" y="204.1" font-size="14" text-anchor="middle" fill="#292929">server</text>
+<circle cx="226" cy="232" r="5" fill="#666660"/>
+<text x="226" y="258" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">10:09</text>
+<text x="226" y="278" font-size="14" text-anchor="middle" fill="#666660">실패</text>
+<rect x="298" y="176" width="124" height="48" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360" y="204.1" font-size="14" text-anchor="middle" fill="#292929">saas 로그인</text>
+<circle cx="360" cy="232" r="5" fill="#666660"/>
+<text x="360" y="258" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">10:12</text>
+<text x="360" y="278" font-size="14" text-anchor="middle" fill="#666660">성공</text>
+<rect x="432" y="176" width="124" height="48" rx="4" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="494" y="204.1" font-size="14" text-anchor="middle" fill="#292929">server</text>
+<circle cx="494" cy="232" r="5" fill="#666660"/>
+<text x="494" y="258" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">10:14</text>
+<text x="494" y="278" font-size="14" text-anchor="middle" fill="#666660">실패</text>
+<rect x="566" y="176" width="124" height="48" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="628" y="204.1" font-size="14" text-anchor="middle" fill="#292929">server</text>
+<circle cx="628" cy="232" r="5" fill="#666660"/>
+<text x="628" y="258" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">16:10</text>
+<text x="628" y="278" font-size="14" text-anchor="middle" fill="#666660">성공</text>
+<text x="24" y="312" font-size="14" text-anchor="start" fill="#666660">판정 서버와 SaaS 의 일이 번갈아 나옵니다. 순서만으로 원인을 알 수는 없습니다.</text>
+<rect x="24" y="330" width="672" height="92" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="360" y="360.1" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">자주 틀리는 곳: events = events.sort(key=get_time)</text>
+<text x="360" y="380.8" font-size="14" text-anchor="middle" fill="#292929">→ events 가 None</text>
+<text x="360" y="401.1" font-size="14" text-anchor="middle" fill="#292929">→ TypeError: 'NoneType' object is not iterable</text>
+</g>
+</svg>

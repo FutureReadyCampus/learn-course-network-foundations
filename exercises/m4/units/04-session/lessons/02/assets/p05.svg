@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 310" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>실습 4-1 정리: read_csv → 열 꺼내기 → mean·max → maximum + 1</title>
+<desc>pd.read_csv 로 표를 읽고 failed_logins 열을 꺼냅니다. mean 으로 평균, max 로 최댓값을 구하고 최댓값에 1을 더해 알림 기준을 정합니다.</desc>
+<defs><marker id="a-0402-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">실습 4-1 정리</text>
+<rect x="24" y="70" width="160" height="104" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="104.0" y="117.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">CSV 읽기</text>
+<text x="104.0" y="136.7" font-size="14" fill="#666660" text-anchor="middle">pd.read_csv(path)</text>
+<line x1="187" y1="122.0" x2="205" y2="122.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0402-p05)"/>
+<rect x="208" y="70" width="170" height="104" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="293.0" y="107.3" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">열 꺼내기</text>
+<text x="293.0" y="126.9" font-size="14" fill="#666660" text-anchor="middle">daily[...]</text>
+<text x="293.0" y="146.5" font-size="14" fill="#666660" text-anchor="middle">"failed_logins"</text>
+<line x1="381" y1="122.0" x2="399" y2="122.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0402-p05)"/>
+<rect x="402" y="70" width="150" height="104" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="477.0" y="107.3" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">평균 · 최댓값</text>
+<text x="477.0" y="126.9" font-size="14" fill="#666660" text-anchor="middle">.mean()</text>
+<text x="477.0" y="146.5" font-size="14" fill="#666660" text-anchor="middle">.max()</text>
+<line x1="555" y1="122.0" x2="573" y2="122.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0402-p05)"/>
+<rect x="576" y="70" width="120" height="104" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="636.0" y="117.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">알림 기준</text>
+<text x="636.0" y="136.7" font-size="14" fill="#666660" text-anchor="middle">maximum + 1</text>
+<rect x="24" y="210" width="672" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="241.2" font-size="15" fill="#292929" text-anchor="middle">평균 2.4 · 최댓값 4 → 알림 기준 5번 이상 (값은 고정)</text>
+</svg>

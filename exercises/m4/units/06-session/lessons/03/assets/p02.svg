@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
+<title>SaaS 이상 사용 규칙 세 개는 기준이 서로 달라 각각 따로 찾는다</title>
+<desc>업무 시간 밖 로그인은 시가 8 보다 작거나 20 보다 큰 로그인이다. 평소와 다른 IP 는 사용자별 평소 IP 와 비교하며 gaeun 은 이 규칙에서만 뺀다. 대량 다운로드는 5번 이상이다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
+<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">규칙 세 개를 따로 찾는 이유 · 기준이 다름</text>
+<rect x="30" y="60" width="200" height="170" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="130" y="118.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">업무 시간 밖 로그인</text>
+<text x="130" y="139.8" font-size="15" fill="#292929" text-anchor="middle">시가 8 보다 작거나</text>
+<text x="130" y="160.8" font-size="15" fill="#292929" text-anchor="middle">20 보다 큰 로그인</text>
+<text x="130" y="181.8" font-size="15" fill="#292929" text-anchor="middle">20시대는 업무 시간 안</text>
+<rect x="260" y="60" width="200" height="170" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="118.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">평소와 다른 IP</text>
+<text x="360" y="139.8" font-size="15" fill="#292929" text-anchor="middle">사용자별 평소 IP 와</text>
+<text x="360" y="160.8" font-size="15" fill="#292929" text-anchor="middle">다른 IP 로 로그인</text>
+<text x="360" y="181.8" font-size="15" fill="#292929" text-anchor="middle">gaeun 은 여기서만 뺌</text>
+<rect x="490" y="60" width="200" height="170" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="590" y="118.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">대량 다운로드</text>
+<text x="590" y="139.8" font-size="15" fill="#292929" text-anchor="middle">파일을 5번 이상</text>
+<text x="590" y="160.8" font-size="15" fill="#292929" text-anchor="middle">내려받음</text>
+<text x="590" y="181.8" font-size="15" fill="#292929" text-anchor="middle">미리 채워져 있음</text>
+<rect x="30" y="260" width="660" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="295.2" font-size="15" fill="#292929" text-anchor="middle">규칙에 해당 = 먼저 확인할 대상 (계정 도용 확정이 아님)</text>
+</g>
+</svg>

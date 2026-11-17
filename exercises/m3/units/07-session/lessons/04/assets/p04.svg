@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>정답 마무리: git status 로 .env 와 .venv 가 없는지 본 뒤에 올립니다</title>
+<desc>cd .. 부터 git push 까지 여섯 명령을 차례로 칩니다. git status 에 .env 나 .venv 가 보이면 .gitignore 에 한 줄 적고 다시 확인합니다. cd .. 는 한 번만 치고 pwd 로 위치를 봅니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">정답 마무리 — 올리기 전에 올라갈 파일을 확인</text>
+<rect x="20" y="70" width="100" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="70" y="102.9" font-size="14" fill="#292929" text-anchor="middle">cd ..</text>
+<path d="M120 98 L134 98" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="136" y="70" width="100" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="186" y="102.9" font-size="14" fill="#292929" text-anchor="middle">pwd</text>
+<path d="M236 98 L250 98" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="252" y="70" width="100" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="302" y="102.9" font-size="14" fill="#292929" text-anchor="middle">git status</text>
+<path d="M352 98 L366 98" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="368" y="70" width="100" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="418" y="102.9" font-size="14" fill="#292929" text-anchor="middle">git add .</text>
+<path d="M468 98 L482 98" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="484" y="70" width="100" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="534" y="102.9" font-size="14" fill="#292929" text-anchor="middle">git commit</text>
+<path d="M584 98 L598 98" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="600" y="70" width="100" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="650" y="102.9" font-size="14" fill="#292929" text-anchor="middle">git push</text>
+<path d="M302 126 L302 163" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="160" y="165" width="280" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="300" y="198.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">.env · .venv 가 보이나?</text>
+<path d="M300 221 L300 253" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<text x="310" y="243" font-size="14" fill="#666660" text-anchor="start">보이면</text>
+<rect x="160" y="255" width="280" height="64" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="300" y="281.8" font-size="15" fill="#292929" text-anchor="middle">.gitignore 에 한 줄 적고</text>
+<text x="300" y="302.8" font-size="15" fill="#292929" text-anchor="middle">git status 다시</text>
+<path d="M440 193 L478 193" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<text x="444" y="181" font-size="14" fill="#666660" text-anchor="start">없으면</text>
+<rect x="480" y="165" width="220" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="590" y="198.2" font-size="15" fill="#292929" text-anchor="middle">git add . 로 진행</text>
+<rect x="480" y="255" width="220" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="590" y="281.8" font-size="15" fill="#292929" text-anchor="middle">cd .. 는 한 번만</text>
+<text x="590" y="302.8" font-size="15" fill="#292929" text-anchor="middle">pwd 로 위치 확인</text>
+</g>
+</svg>

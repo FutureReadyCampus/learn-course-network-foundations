@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>리포트 1~6절마다 읽는 사람이 알고 싶은 것과 만드는 방법</title>
+<desc>1절과 6절은 미리 채워져 있고, 2~5절은 value_counts, 그룹별 평균, 두 열 비교, not in 대조로 직접 만듭니다. 평균 전에는 acked_at이 -1인 미확인 티켓을 뺍니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p02r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p02g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p02b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">리포트 1~6절과 만드는 방법</tspan></text>
+<rect x="20" y="52" width="260" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="79.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="32">1. 티켓별 초동 대응</tspan></text>
+<rect x="296" y="52" width="270" height="46" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="431.0" y="79.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="431.0">티켓 한 장씩 한 줄</tspan></text>
+<rect x="582" y="52" width="118" height="46" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="641.0" y="79.5" font-size="14" text-anchor="middle" fill="#292929"><tspan x="641.0">미리 채움</tspan></text>
+<rect x="20" y="106" width="260" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="133.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="32">2. 규칙별 티켓 수</tspan></text>
+<rect x="296" y="106" width="270" height="46" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="431.0" y="133.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="431.0">value_counts()</tspan></text>
+<rect x="582" y="106" width="118" height="46" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="641.0" y="133.5" font-size="14" text-anchor="middle" fill="#292929"><tspan x="641.0">2 · 8번</tspan></text>
+<rect x="20" y="160" width="260" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="187.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="32">3. 등급별 평균 확인 시간</tspan></text>
+<rect x="296" y="160" width="270" height="46" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="431.0" y="187.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="431.0">확인한 티켓만 → mean()</tspan></text>
+<rect x="582" y="160" width="118" height="46" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="641.0" y="187.5" font-size="14" text-anchor="middle" fill="#292929"><tspan x="641.0">1 · 3 · 4번</tspan></text>
+<rect x="20" y="214" width="260" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="241.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="32">4. 기한 넘겨 확인한 티켓</tspan></text>
+<rect x="296" y="214" width="270" height="46" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="431.0" y="241.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="431.0">acked_at &gt; sla_due</tspan></text>
+<rect x="582" y="214" width="118" height="46" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="641.0" y="241.5" font-size="14" text-anchor="middle" fill="#292929"><tspan x="641.0">5번</tspan></text>
+<rect x="20" y="268" width="260" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="295.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="32">5. 티켓이 없는 조치</tspan></text>
+<rect x="296" y="268" width="270" height="46" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="431.0" y="295.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="431.0">not in covered</tspan></text>
+<rect x="582" y="268" width="118" height="46" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="641.0" y="295.5" font-size="14" text-anchor="middle" fill="#292929"><tspan x="641.0">6 · 7번</tspan></text>
+<rect x="20" y="322" width="260" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="349.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="32">6. high 티켓 처리 경위</tspan></text>
+<rect x="296" y="322" width="270" height="46" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="431.0" y="349.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="431.0">생성 → 확인 → 해결</tspan></text>
+<rect x="582" y="322" width="118" height="46" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="641.0" y="349.5" font-size="14" text-anchor="middle" fill="#292929"><tspan x="641.0">미리 채움</tspan></text>
+<text x="360" y="392" font-size="14" text-anchor="middle" fill="#666660"><tspan x="360">acked_at 이 -1(미확인)인 행은 평균 전에 뺀다 · 안 빼면 TCK-2 는 −4분</tspan></text>
+</g>
+</svg>

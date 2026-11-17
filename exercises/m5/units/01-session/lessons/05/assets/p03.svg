@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>실습 1-2 보고서는 출력과 개수, INC-005 처리, INC-002 기록, git status 칸을 채운다</title>
+<desc>실습 1-2와 마무리 보고서에서 채울 칸 체크리스트다. (가) 출력 전체와 네 가지 개수, (나) INC-005 처리 방식과 단계 3·4·5 근거, (다) INC-002 기록에서 일어난 일과 일어나지 않은 일, 마무리 (가) .env·.venv 확인이다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 1-2 · 마무리 보고서에서 채울 칸</text>
+<rect x="20" y="52" width="680" height="82" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="77.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0" font-weight="700">(가)</tspan><tspan x="360.0" dy="21.0">① 출력 전체 (코드 상자)  ② 잠긴 계정  ③ 차단한 IP</tspan><tspan x="360.0" dy="21.0">④ 티켓 수  ⑤ 승인 대기 건수</tspan></text>
+<rect x="20" y="146" width="680" height="82" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="171.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0" font-weight="700">(나) [핵심 질문]</tspan><tspan x="360.0" dy="21.0">① 실행기가 INC-005 를 처리한 방식</tspan><tspan x="360.0" dy="21.0">② 단계 3 · 4 · 5 에서 찾은 근거  ③ 그 이유</tspan></text>
+<rect x="20" y="240" width="680" height="82" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="265.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0" font-weight="700">(다) [핵심 질문]</tspan><tspan x="360.0" dy="21.0">① INC-002 에 일어난 일  ② 일어나지 않은 일</tspan><tspan x="360.0" dy="21.0">③ 기록이 현업에서 필요한 이유</tspan></text>
+<rect x="20" y="334" width="680" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text y="360.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0" font-weight="700">마무리 (가)</tspan><tspan x="360.0" dy="21.0">① .env · .venv 가 보였는지  ② 보였다면 한 조치</tspan></text>
+</svg>

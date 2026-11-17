@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>Unit 8 마무리: 오탐 4 → 2, 미탐 2 → 1 로 줄인 과정을 정리합니다</title>
+<desc>실습 8-1에서 알림 7개 중 오탐 4개, 진짜 문제 5개 중 미탐 2개를 셌습니다. 실습 8-2의 예외 규칙으로 오탐을 2개로 줄이고, 실습 8-3에서 로그인 규칙 알림을 합쳐 미탐을 1개로 줄였습니다. 다음은 Unit 9 도커 컴포즈입니다.</desc>
+<defs><marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">이번 Unit 마무리</text>
+<rect x="20" y="62" width="210" height="130" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="125.0" y="100.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">실습 8-1</text>
+<text x="125.0" y="121.9" font-size="15" fill="#292929" text-anchor="middle">세기</text>
+<text x="125.0" y="142.9" font-size="15" fill="#292929" text-anchor="middle"></text>
+<text x="125.0" y="165.0" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">오탐 4 · 미탐 2</text>
+<polyline points="230,127 251,127" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p07)"/>
+<rect x="255" y="62" width="210" height="130" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360.0" y="100.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">실습 8-2</text>
+<text x="360.0" y="121.9" font-size="15" fill="#292929" text-anchor="middle">예외 규칙</text>
+<text x="360.0" y="142.9" font-size="15" fill="#292929" text-anchor="middle"></text>
+<text x="360.0" y="165.0" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">오탐 4 → 2</text>
+<polyline points="465,127 486,127" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p07)"/>
+<rect x="490" y="62" width="210" height="130" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="595.0" y="100.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">실습 8-3</text>
+<text x="595.0" y="121.9" font-size="15" fill="#292929" text-anchor="middle">알림 합치기</text>
+<text x="595.0" y="142.9" font-size="15" fill="#292929" text-anchor="middle"></text>
+<text x="595.0" y="165.0" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">미탐 2 → 1</text>
+<rect x="20" y="222" width="680" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="255.0" font-size="14" fill="#292929" text-anchor="middle">진짜 문제도 지워지지 않았음을 확인하고, 결과를 한 문장으로 요약했습니다</text>
+<text x="20" y="316" font-size="15" fill="#666660">다음: Unit 9 에서 도커 컴포즈로 서버를 켜고 로그를 만듭니다.</text>
+</g>
+</svg>

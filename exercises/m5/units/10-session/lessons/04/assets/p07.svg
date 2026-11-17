@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
+<title>Unit 10 요점: 통합 엔진, 탐지 결과 연결, 정책 준수 점검과 회고·깃허브</title>
+<desc>실습 10-1 은 알림 8건을 승인 게이트를 거쳐 처리하는 통합 엔진(자동 실행 2 · 승인 대기 2 · 차단 금지 1)입니다. 실습 10-2 는 Module 4 탐지 결과 5건을 알림 5건으로 바꿔 엔진에 넣고(자동 실행 2 · 조치 없음 3 · 실패 0), 실습 10-3 은 엔진 로그를 정책 네 가지로 점검하고 회고 문서를 써서 깃허브에 올립니다.</desc>
+<defs><marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="bold">이번 Unit 마무리: 세 실습이 하나의 흐름으로 이어진다</text>
+<rect x="20" y="56" width="210" height="150" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="125.0" y="104.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="bold">실습 10-1</text>
+<text x="125.0" y="126.4" font-size="15" fill="#292929" text-anchor="middle">알림 8건 처리</text>
+<text x="125.0" y="147.4" font-size="15" fill="#292929" text-anchor="middle">승인 게이트 → 조치</text>
+<text x="125.0" y="168.4" font-size="15" fill="#292929" text-anchor="middle">→ 티켓 · 실패 격리</text>
+<rect x="20" y="220" width="210" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="125.0" y="247.1" font-size="14" fill="#292929" text-anchor="middle">자동 실행 2 · 승인 대기 2</text>
+<text x="125.0" y="266.7" font-size="14" fill="#292929" text-anchor="middle">차단 금지 1</text>
+<line x1="232" y1="131" x2="253" y2="131" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<rect x="255" y="56" width="210" height="150" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360.0" y="104.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="bold">실습 10-2</text>
+<text x="360.0" y="126.4" font-size="15" fill="#292929" text-anchor="middle">Module 4 결과 5건</text>
+<text x="360.0" y="147.4" font-size="15" fill="#292929" text-anchor="middle">모양 점검 → 알림 5건</text>
+<text x="360.0" y="168.4" font-size="15" fill="#292929" text-anchor="middle">→ 엔진 → 운영 요약</text>
+<rect x="255" y="220" width="210" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="247.1" font-size="14" fill="#292929" text-anchor="middle">자동 실행 2 · 조치 없음 3</text>
+<text x="360.0" y="266.7" font-size="14" fill="#292929" text-anchor="middle">실패 0</text>
+<line x1="467" y1="131" x2="488" y2="131" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<rect x="490" y="56" width="210" height="150" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="595.0" y="104.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="bold">실습 10-3 · 마무리</text>
+<text x="595.0" y="126.4" font-size="15" fill="#292929" text-anchor="middle">엔진 로그 3개</text>
+<text x="595.0" y="147.4" font-size="15" fill="#292929" text-anchor="middle">정책 네 가지 점검</text>
+<text x="595.0" y="168.4" font-size="15" fill="#292929" text-anchor="middle">→ 회고 문서 · 깃허브</text>
+<rect x="490" y="220" width="210" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="595.0" y="247.1" font-size="14" fill="#292929" text-anchor="middle">점검 12개 중</text>
+<text x="595.0" y="266.7" font-size="14" fill="#292929" text-anchor="middle">FAIL 2개</text>
+<rect x="20" y="300" width="680" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="326.9" font-size="14" fill="#292929" text-anchor="middle">평가 기준: Module 4 탐지부터 Module 5 대응까지 종단간 동작 · 게이트 정확성 · 모듈 연결</text>
+</g>
+</svg>

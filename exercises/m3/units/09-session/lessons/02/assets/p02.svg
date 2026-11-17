@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
+<title>기본 판정은 누가 어떤 권한을 가졌나만 보고, 조건기반 정책은 언제 어디서도 본다</title>
+<desc>지금까지의 evaluate_access 는 권한이 있으면 새벽이든 외부든 허용했다. 조건기반 정책은 기본 판정이 허용이어도 업무 시간과 접속 위치 조건에 어긋나면 거부하고, 조건은 config/conditions.json 에 적는다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">같은 요청, 두 가지 판정</text>
+<rect x="20" y="52" width="680" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="85.2" font-size="15" fill="#292929" text-anchor="middle">예: 권한이 있는 직원이 새벽에 외부 공용 와이파이에서 요청</text>
+<rect x="20" y="136" width="330" height="150" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="185" y="183.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">지금까지: evaluate_access</text>
+<text x="185" y="206.9" font-size="15" fill="#292929" text-anchor="middle">누가 어떤 권한을 갖고 있나</text>
+<text x="185" y="228.7" font-size="15" fill="#292929" text-anchor="middle">만 본다</text>
+<text x="185" y="250.4" font-size="15" fill="#292929" text-anchor="middle">→ 권한이 있으니 허용</text>
+<rect x="370" y="136" width="330" height="150" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="535" y="183.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">이번: 조건기반 정책</text>
+<text x="535" y="206.9" font-size="15" fill="#292929" text-anchor="middle">누가 + 언제 + 어디서</text>
+<text x="535" y="228.7" font-size="15" fill="#292929" text-anchor="middle">시간 · 접속 위치에 어긋나면</text>
+<text x="535" y="250.4" font-size="15" fill="#292929" text-anchor="middle">→ 거부</text>
+<polyline points="185,109 185,135" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="535,109 535,135" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="185" y="312" font-size="18" fill="#1f7a4a" text-anchor="middle" font-weight="700">허용</text>
+<text x="535" y="312" font-size="18" fill="#e0442e" text-anchor="middle" font-weight="700">거부</text>
+<text x="20" y="344" font-size="15" fill="#666660">조건은 코드 안이 아니라 config/conditions.json 파일에 적습니다.</text>
+</g>
+</svg>

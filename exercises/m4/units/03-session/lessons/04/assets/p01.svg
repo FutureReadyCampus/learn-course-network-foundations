@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>정답은 한 예이고, 내 답의 핵심이 같으면 맞습니다</title>
+<desc>설명하는 답은 표현이 달라도 됩니다. 내 답을 정답 예와 비교해 핵심이 같은지 봅니다.</desc>
+<defs><marker id="a-0304-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">정답을 읽는 방법</text>
+<rect x="24" y="84" width="200.0" height="92" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="124.0" y="135.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">내 답</text>
+<line x1="227.0" y1="130.0" x2="257.0" y2="130.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0304-p01)"/>
+<rect x="260.0" y="84" width="200.0" height="92" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="124.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">정답은 한 예</text>
+<text x="360.0" y="145.8" font-size="15" fill="#666660" text-anchor="middle">핵심이 같은가?</text>
+<line x1="463.0" y1="130.0" x2="493.0" y2="130.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0304-p01)"/>
+<rect x="496.0" y="84" width="200.0" height="92" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="596.0" y="135.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">같으면 맞음</text>
+<text x="24" y="232" font-size="14" fill="#666660" text-anchor="start">설명하는 답은 표현이 달라도 핵심이 같으면 맞습니다</text>
+</svg>

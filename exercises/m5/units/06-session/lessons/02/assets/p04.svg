@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>실습 6-1 정리: 번호마다 쓰는 코드 모양</title>
+<desc>1번은 문자열을 이어 붙이고, 2번은 키가 없으면 기본값을 주며 읽는다. 3·4번은 확인 실패가 있으면 True, 5·6번은 응답 기한 시각을 계산하고, 7~9번은 티켓을 저장하고 모으고 센다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<text x="20" y="30" font-size="18" fill="#292929" font-weight="700">실습 6-1 정리 · 번호별 코드</text>
+<rect x="20" y="48" width="680" height="36" fill="#f1f1ef" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="71.04" font-size="14" fill="#292929" font-weight="700">번호</text>
+<text x="120" y="71.04" font-size="14" fill="#292929" font-weight="700">하는 일</text>
+<text x="320" y="71.04" font-size="14" fill="#292929" font-weight="700">코드 모양</text>
+<rect x="20" y="84" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="107.04" font-size="14" fill="#292929">1</text>
+<text x="120" y="107.04" font-size="14" fill="#292929">문자열 이어 붙이기</text>
+<text x="320" y="107.04" font-size="14" fill="#292929">return "[" + grade + "] " + entity + …</text>
+<rect x="20" y="120" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="143.04" font-size="14" fill="#292929">2</text>
+<text x="120" y="143.04" font-size="14" fill="#292929">키가 없으면 기본값</text>
+<text x="320" y="143.04" font-size="14" fill="#292929">return next_steps.get(status, DEFAULT_…)</text>
+<rect x="20" y="156" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="179.04" font-size="14" fill="#292929">3 · 4</text>
+<text x="120" y="179.04" font-size="14" fill="#292929">문자열 안에 있으면</text>
+<text x="320" y="179.04" font-size="14" fill="#292929">if "확인 실패" in text:  return True</text>
+<rect x="20" y="192" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="215.04" font-size="14" fill="#292929">5</text>
+<text x="120" y="215.04" font-size="14" fill="#292929">등급의 기한 읽기</text>
+<text x="320" y="215.04" font-size="14" fill="#292929">sla_minutes = sla_table[alert["grade"]]</text>
+<rect x="20" y="228" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="251.04" font-size="14" fill="#292929">6</text>
+<text x="120" y="251.04" font-size="14" fill="#292929">더해서 저장</text>
+<text x="320" y="251.04" font-size="14" fill="#292929">sla_due = alert["minute"] + sla_minutes</text>
+<rect x="20" y="264" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="287.04" font-size="14" fill="#292929">7 · 8</text>
+<text x="120" y="287.04" font-size="14" fill="#292929">만들고 모으기</text>
+<text x="320" y="287.04" font-size="14" fill="#292929">ticket = make_ticket(…) · tickets.append(ticket)</text>
+<rect x="20" y="300" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="323.04" font-size="14" fill="#292929">9</text>
+<text x="120" y="323.04" font-size="14" fill="#292929">1 늘리기</text>
+<text x="320" y="323.04" font-size="14" fill="#292929">manual_count = manual_count + 1</text>
+<line x1="110" y1="48" x2="110" y2="336" stroke="#dededb" stroke-width="1"/>
+<line x1="310" y1="48" x2="310" y2="336" stroke="#dededb" stroke-width="1"/>
+</svg>

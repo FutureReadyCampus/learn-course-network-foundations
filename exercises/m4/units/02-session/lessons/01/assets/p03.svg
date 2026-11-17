@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 370" role="img">
+<title>오류가 나면 증상별로 위치 · log_parse.py · 들여쓰기를 확인하고 고친다</title>
+<desc>네 줄의 증상 · 확인 · 고치기 순서입니다. No module named log_parse 는 이 폴더에 log_parse.py 가 없다는 뜻이라 앞 Unit 파일 완성본으로 만듭니다.</desc>
+<defs><marker id="a-m4u02l01-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker><marker id="a-m4u02l01-p03-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0442e"/></marker></defs>
+<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
+<text x="24" y="32" font-size="15" fill="#666660" font-weight="700">증상</text>
+<text x="250" y="32" font-size="15" fill="#666660" font-weight="700">확인</text>
+<text x="486" y="32" font-size="15" fill="#666660" font-weight="700">고치기</text>
+<rect x="24" y="44" width="200" height="64" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="124.0" y="81.2" font-size="15" fill="#292929" text-anchor="middle">파일을 못 찾음</text>
+<line x1="224" y1="76.0" x2="246" y2="76.0" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u02l01-p03)"/>
+<rect x="250" y="44" width="210" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="355.0" y="70.8" font-size="15" fill="#292929" text-anchor="middle">pwd · ls 로</text>
+<text x="355.0" y="91.8" font-size="15" fill="#292929" text-anchor="middle">위치와 이름 확인</text>
+<line x1="460" y1="76.0" x2="482" y2="76.0" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u02l01-p03)"/>
+<rect x="486" y="44" width="210" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="591.0" y="70.8" font-size="15" fill="#292929" text-anchor="middle">문서와 같은</text>
+<text x="591.0" y="91.8" font-size="15" fill="#292929" text-anchor="middle">이름 · 위치로</text>
+<rect x="24" y="120" width="200" height="64" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="124.0" y="146.8" font-size="15" fill="#292929" text-anchor="middle">No module named</text>
+<text x="124.0" y="167.8" font-size="15" fill="#292929" text-anchor="middle">'log_parse'</text>
+<line x1="224" y1="152.0" x2="246" y2="152.0" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u02l01-p03)"/>
+<rect x="250" y="120" width="210" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="355.0" y="146.8" font-size="15" fill="#292929" text-anchor="middle">이 폴더에</text>
+<text x="355.0" y="167.8" font-size="15" fill="#292929" text-anchor="middle">log_parse.py 가 없음</text>
+<line x1="460" y1="152.0" x2="482" y2="152.0" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u02l01-p03)"/>
+<rect x="486" y="120" width="210" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="591.0" y="146.8" font-size="15" fill="#292929" text-anchor="middle">「앞 Unit 파일</text>
+<text x="591.0" y="167.8" font-size="15" fill="#292929" text-anchor="middle">완성본」으로 만들기</text>
+<rect x="24" y="196" width="200" height="64" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="124.0" y="222.8" font-size="15" fill="#292929" text-anchor="middle">IndentationError</text>
+<text x="124.0" y="243.8" font-size="15" fill="#292929" text-anchor="middle">NameError</text>
+<line x1="224" y1="228.0" x2="246" y2="228.0" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u02l01-p03)"/>
+<rect x="250" y="196" width="210" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="355.0" y="222.8" font-size="15" fill="#292929" text-anchor="middle">직접 쓴 줄의</text>
+<text x="355.0" y="243.8" font-size="15" fill="#292929" text-anchor="middle">들여쓰기 · 빠진 줄</text>
+<line x1="460" y1="228.0" x2="482" y2="228.0" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u02l01-p03)"/>
+<rect x="486" y="196" width="210" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="591.0" y="222.8" font-size="15" fill="#292929" text-anchor="middle">미리 채운 줄에</text>
+<text x="591.0" y="243.8" font-size="15" fill="#292929" text-anchor="middle">들여쓰기 맞추기</text>
+<rect x="24" y="272" width="200" height="64" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="124.0" y="309.2" font-size="15" fill="#292929" text-anchor="middle">그래도 안 풀림</text>
+<line x1="224" y1="304.0" x2="246" y2="304.0" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u02l01-p03)"/>
+<rect x="250" y="272" width="210" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="355.0" y="298.8" font-size="15" fill="#292929" text-anchor="middle">AI 에게 묻기</text>
+<text x="355.0" y="319.8" font-size="15" fill="#292929" text-anchor="middle">(.env · API 키 지움)</text>
+<line x1="460" y1="304.0" x2="482" y2="304.0" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u02l01-p03)"/>
+<rect x="486" y="272" width="210" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="591.0" y="298.8" font-size="15" fill="#292929" text-anchor="middle">정답 보기 → 답:에</text>
+<text x="591.0" y="319.8" font-size="15" fill="#292929" text-anchor="middle">「모름 — 막힌 곳: …」</text>
+</g>
+</svg>

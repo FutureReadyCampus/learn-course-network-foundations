@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>Unit 8에서 확인한 세 실습과 Unit 9에서 이어지는 일</title>
+<desc>실습 8-1 리포트, 실습 8-2 승인 게이트, 실습 8-3 오탐 처리를 확인합니다. Unit 9에서는 운영 위험 평가 문서를 쓰고, Unit 8 파일 세 개를 가져와 한 번에 점검합니다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p05r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p05g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p05b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">이번 Unit 마무리 → Unit 9</tspan></text>
+<rect x="20" y="54" width="420" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="36" y="77" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<path d="M40 86.0 l4.5 4.5 l7.2 -9.0" fill="none" stroke="#1f7a4a" stroke-width="2.5"/>
+<text x="66" y="81" font-size="15" text-anchor="start" fill="#292929"><tspan x="66">실습 8-1 · 티켓과 조치 기록 대조</tspan><tspan x="66" dy="18.2" font-size="14">리포트 파일 + 티켓이 없는 조치</tspan></text>
+<rect x="20" y="130" width="420" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="36" y="153" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<path d="M40 162.0 l4.5 4.5 l7.2 -9.0" fill="none" stroke="#1f7a4a" stroke-width="2.5"/>
+<text x="66" y="157" font-size="15" text-anchor="start" fill="#292929"><tspan x="66">실습 8-2 · 위험 점수로 분류</tspan><tspan x="66" dy="18.2" font-size="14">자동 · 승인 필요 · 차단 금지</tspan></text>
+<rect x="20" y="206" width="420" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="36" y="229" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<path d="M40 238.0 l4.5 4.5 l7.2 -9.0" fill="none" stroke="#1f7a4a" stroke-width="2.5"/>
+<text x="66" y="233" font-size="15" text-anchor="start" fill="#292929"><tspan x="66">실습 8-3 · 오탐 신고 처리</tspan><tspan x="66" dy="18.2" font-size="14">영향 확인 · 롤백 · 복구 확인 · 규칙 조정</tspan></text>
+<line x1="442" y1="168" x2="478" y2="168" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<rect x="480" y="54" width="220" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="590.0" y="88.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="590.0" font-weight="bold">실습 9-1</tspan><tspan x="590.0" dy="21.0">운영 위험 평가</tspan><tspan x="590.0" dy="19.6" font-size="14">risk_assessment.md</tspan></text>
+<rect x="480" y="174" width="220" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="590.0" y="212.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="590.0" font-weight="bold">실습 9-2</tspan><tspan x="590.0" dy="21.0">Unit 8 파일 세 개를</tspan><tspan x="590.0" dy="21.0">가져와 한 번에 점검</tspan></text>
+<text x="360" y="318" font-size="14" text-anchor="middle" fill="#666660"><tspan x="360">report.py · approval_gate.py · false_positive.py 를 Unit 9에서 다시 씀</tspan></text>
+</g>
+</svg>

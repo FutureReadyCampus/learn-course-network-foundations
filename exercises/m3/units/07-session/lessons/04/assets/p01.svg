@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img">
+<title>내 답을 정답의 한 예와 견주어, 핵심이 같으면 맞는 답입니다</title>
+<desc>내 답을 정답의 한 예와 비교하는 순서입니다. 핵심이 같으면 표현이 달라도 맞고, 다르면 정답의 「왜」를 다시 읽습니다. 출력과 건수는 정답의 출력과 비교합니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">정답은 한 예입니다 — 핵심이 같으면 맞습니다</text>
+<rect x="20" y="70" width="170" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="105" y="96.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">내 답</text>
+<text x="105" y="117.8" font-size="15" fill="#292929" text-anchor="middle">(보고서에 쓴 답)</text>
+<path d="M190 102 L226 102" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="230" y="70" width="200" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="330" y="96.8" font-size="15" fill="#292929" text-anchor="middle">정답의 한 예와</text>
+<text x="330" y="117.8" font-size="15" fill="#292929" text-anchor="middle">견주어 보기</text>
+<path d="M430 102 L466 102" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="470" y="70" width="230" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="585" y="107.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">핵심이 같은가?</text>
+<path d="M520 134 L420 198" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<text x="452" y="170" font-size="14" fill="#666660" text-anchor="start">예</text>
+<path d="M650 134 L625 198" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<text x="648" y="170" font-size="14" fill="#666660" text-anchor="start">아니오</text>
+<rect x="250" y="200" width="280" height="70" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="390" y="229.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">맞음</text>
+<text x="390" y="250.8" font-size="15" fill="#292929" text-anchor="middle">표현 · 줄 수는 달라도 됩니다</text>
+<rect x="550" y="200" width="150" height="70" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="625" y="229.8" font-size="15" fill="#292929" text-anchor="middle">정답의 「왜」를</text>
+<text x="625" y="250.8" font-size="15" fill="#292929" text-anchor="middle">다시 읽기</text>
+<path d="M105 134 L105 198" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="20" y="200" width="210" height="70" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="125" y="229.8" font-size="15" fill="#292929" text-anchor="middle">출력 · 건수는</text>
+<text x="125" y="250.8" font-size="15" fill="#292929" text-anchor="middle">정답 출력과 비교</text>
+</g>
+</svg>

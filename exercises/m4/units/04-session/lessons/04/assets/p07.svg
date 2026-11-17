@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img">
+<title>Unit 4: 평소 기준을 정하고, 로그인 실패 주소를 찾고, 유형별로 센 뒤 Unit 5로</title>
+<desc>실습 4-1에서 지난 7일로 알림 기준 5번을 정하고, 실습 4-2에서 5번 이상 실패한 주소를 찾고, 실습 4-3에서 유형을 정해 셉니다. Unit 5에서는 트래픽 급증을 찾고 알림을 한 파일로 모읍니다.</desc>
+<defs><marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">이번 Unit 마무리</text>
+<rect x="20" y="64" width="150" height="116" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="95.0" y="107" font-size="15" text-anchor="middle" fill="#292929"><tspan x="95.0" dy="0" font-weight="700">실습 4-1</tspan><tspan x="95.0" dy="20">지난 7일로</tspan><tspan x="95.0" dy="20">알림 기준 5번</tspan></text>
+<rect x="195" y="64" width="150" height="116" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="270.0" y="107" font-size="15" text-anchor="middle" fill="#292929"><tspan x="270.0" dy="0" font-weight="700">실습 4-2</tspan><tspan x="270.0" dy="20">로그인 실패</tspan><tspan x="270.0" dy="20">5번 이상 주소</tspan></text>
+<rect x="370" y="64" width="150" height="116" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="445.0" y="107" font-size="15" text-anchor="middle" fill="#292929"><tspan x="445.0" dy="0" font-weight="700">실습 4-3</tspan><tspan x="445.0" dy="20">이벤트 유형</tspan><tspan x="445.0" dy="20">정하고 세기</tspan></text>
+<rect x="545" y="64" width="150" height="116" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="620.0" y="107" font-size="15" text-anchor="middle" fill="#292929"><tspan x="620.0" dy="0" font-weight="700">Unit 5</tspan><tspan x="620.0" dy="20">트래픽 급증</tspan><tspan x="620.0" dy="20">알림 한 파일로</tspan></text>
+<polyline points="173,122.0 191,122.0" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<polyline points="348,122.0 366,122.0" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<polyline points="523,122.0 541,122.0" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<rect x="20" y="214" width="680" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="249" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0">평소를 구해 기준을 정하고 → 그 기준으로 찾고 → 유형을 붙여 센다</tspan></text>
+</g>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>approval_gate.py의 세 함수와 실행 파일이 요청 한 건을 처리하는 흐름</title>
+<desc>decide_gate는 is_allowlisted로 허용 목록을 먼저 보고, risk_score로 점수를 받아 3점 기준과 비교합니다. 실행 파일은 요청마다 결정을 받아 결정별로 세고 gate_results.json에 저장합니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p03r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p03g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p03b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">approval_gate.py 흐름 (직접 쓰는 곳 1~9번)</tspan></text>
+<rect x="20" y="160" width="120" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="80.0" y="186.3" font-size="15" text-anchor="middle" fill="#292929"><tspan x="80.0">요청</tspan><tspan x="80.0" dy="21.0">한 건</tspan></text>
+<rect x="170" y="52" width="360" height="308" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="2"/>
+<text x="350" y="78" font-size="15" text-anchor="middle" fill="#292929" font-weight="bold"><tspan x="350">decide_gate · 5 · 6 · 7번</tspan></text>
+<line x1="142" y1="192" x2="188" y2="124" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="190" y="94" width="320" height="60" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="350.0" y="119.7" font-size="15" text-anchor="middle" fill="#292929"><tspan x="350.0">is_allowlisted · 1번</tspan><tspan x="350.0" dy="18.2" font-size="14">허용 목록이면 → 차단 금지</tspan></text>
+<line x1="350" y1="156" x2="350" y2="176" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="190" y="178" width="320" height="80" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="350.0" y="204.6" font-size="15" text-anchor="middle" fill="#292929"><tspan x="350.0">risk_score · 2 · 3 · 4번</tspan><tspan x="350.0" dy="18.2" font-size="14">등급 점수 + VIP 점수</tspan><tspan x="350.0" dy="18.2" font-size="14">+ 공유 IP · 대상 수 (미리 채움)</tspan></text>
+<line x1="350" y1="260" x2="350" y2="280" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="190" y="282" width="320" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="350.0" y="307.7" font-size="15" text-anchor="middle" fill="#292929"><tspan x="350.0">score &gt;= 3 이면 승인 필요</tspan><tspan x="350.0" dy="18.2" font-size="14">아니면 자동</tspan></text>
+<rect x="560" y="112" width="140" height="140" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="630.0" y="157.1" font-size="15" text-anchor="middle" fill="#292929"><tspan x="630.0" font-size="14">exercise8-2</tspan><tspan x="630.0" dy="19.6" font-size="14">_run.py</tspan><tspan x="630.0" dy="19.6" font-size="14">8번 결정 받기</tspan><tspan x="630.0" dy="19.6" font-size="14">9번 결정별 +1</tspan></text>
+<line x1="532" y1="182" x2="558" y2="182" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="630" y1="254" x2="630" y2="284" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="560" y="286" width="140" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="630.0" y="310.7" font-size="15" text-anchor="middle" fill="#292929"><tspan x="630.0" font-size="14">gate_results</tspan><tspan x="630.0" dy="19.6" font-size="14">.json · 8건</tspan></text>
+</g>
+</svg>

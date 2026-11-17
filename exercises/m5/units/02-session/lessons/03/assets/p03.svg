@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>routing.py 가 경로와 이유를 정하고 실행 파일이 언패킹해 경로별 건수를 센다</title>
+<desc>입력 알림에 맥락을 붙인 뒤 routing.py 의 두 함수로 경로와 이유를 정한다. exercise2-2_run.py 가 두 값을 언패킹해 받고 경로별 건수를 세어 단계 1 · 2 로 출력한다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 2-2 에서 만드는 것: 경로를 정하고 경로별로 센다</text>
+<rect x="20" y="70" width="170" height="110" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="105" y="97.015" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">입력</text>
+<text x="105" y="119.2" font-size="15" fill="#292929" text-anchor="middle">알림 5건</text>
+<text x="105" y="140.95" font-size="15" fill="#292929" text-anchor="middle">+ 맥락 붙이기</text>
+<text x="105" y="162.7" font-size="15" fill="#292929" text-anchor="middle">(enrich_incident)</text>
+<rect x="230" y="60" width="260" height="130" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="86.14" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">routing.py</text>
+<text x="360" y="108.325" font-size="15" fill="#292929" text-anchor="middle">is_only_ip_related (1~3번)</text>
+<text x="360" y="130.075" font-size="15" fill="#292929" text-anchor="middle">decide_route (4~7번)</text>
+<text x="360" y="151.825" font-size="15" fill="#292929" text-anchor="middle">→ 경로, 이유 두 값 리턴</text>
+<text x="360" y="173.575" font-size="15" fill="#292929" text-anchor="middle">apply_route (미리 채움)</text>
+<rect x="230" y="220" width="260" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="247.015" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">exercise2-2_run.py</text>
+<text x="360" y="269.2" font-size="15" fill="#292929" text-anchor="middle">route, reason =</text>
+<text x="360" y="290.95" font-size="15" fill="#292929" text-anchor="middle">decide_route(incident) (8번)</text>
+<text x="360" y="312.7" font-size="15" fill="#292929" text-anchor="middle">route_counts 1 늘리기 (9번)</text>
+<rect x="530" y="60" width="170" height="130" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="615" y="86.14" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">출력</text>
+<text x="615" y="108.325" font-size="15" fill="#292929" text-anchor="middle">단계 1</text>
+<text x="615" y="130.075" font-size="15" fill="#292929" text-anchor="middle">알림마다</text>
+<text x="615" y="151.825" font-size="15" fill="#292929" text-anchor="middle">경로 · 이유 · 상태</text>
+<text x="615" y="173.575" font-size="15" fill="#292929" text-anchor="middle">(5줄)</text>
+<rect x="530" y="220" width="170" height="110" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="615" y="247.015" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">출력</text>
+<text x="615" y="269.2" font-size="15" fill="#292929" text-anchor="middle">단계 2</text>
+<text x="615" y="290.95" font-size="15" fill="#292929" text-anchor="middle">경로별 건수</text>
+<text x="615" y="312.7" font-size="15" fill="#292929" text-anchor="middle">(3줄)</text>
+<polyline points="192,125 228,125" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<polyline points="360,192 360,218" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<polyline points="492,125 528,125" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<polyline points="492,275 528,275" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="20" y="364" font-size="14" fill="#666660">경로 세 가지: 승인 필요 · 오탐 종료 · 기본 — Unit 3 의 실습 3-1 이후에도 쓴다</text>
+</g>
+</svg>

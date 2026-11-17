@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img">
+<title>규칙 1번부터 차례로 확인해 처음 충족하는 규칙의 유형 이름을 붙이고 멈춘다</title>
+<desc>규칙 1(실패이고 POST /login)이면 비정상 로그인, 규칙 2(실패이고 /admin 포함)이면 비인가 접근, 규칙 3(실패)이면 기타 실패, 그 밖은 정상입니다. 예에서 멈추고 다음 규칙은 보지 않습니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">규칙 1번부터 차례로, 처음 충족하면 멈춘다</text>
+<rect x="20" y="56" width="300" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="170.0" y="80" font-size="15" text-anchor="middle" fill="#292929"><tspan x="170.0" dy="0" font-weight="700">규칙 1: 결과가 실패이고</tspan><tspan x="170.0" dy="20">행동이 POST /login ?</tspan></text>
+<rect x="420" y="56" width="280" height="58" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="560.0" y="90" font-size="15" text-anchor="middle" fill="#292929"><tspan x="560.0" dy="0" font-weight="700">비정상 로그인</tspan></text>
+<polyline points="323,85 416,85" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<text x="369" y="78" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">예</text>
+<polyline points="170,116 170,138" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<text x="182" y="132" font-size="14" text-anchor="start" fill="#666660">아니오</text>
+<rect x="20" y="142" width="300" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="170.0" y="166" font-size="15" text-anchor="middle" fill="#292929"><tspan x="170.0" dy="0" font-weight="700">규칙 2: 결과가 실패이고</tspan><tspan x="170.0" dy="20">행동에 /admin 이 있나?</tspan></text>
+<rect x="420" y="142" width="280" height="58" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="560.0" y="166" font-size="15" text-anchor="middle" fill="#292929"><tspan x="560.0" dy="0" font-weight="700">비인가 접근</tspan><tspan x="560.0" dy="20">"/admin" in action</tspan></text>
+<polyline points="323,171 416,171" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<text x="369" y="164" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">예</text>
+<polyline points="170,202 170,224" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<text x="182" y="218" font-size="14" text-anchor="start" fill="#666660">아니오</text>
+<rect x="20" y="228" width="300" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="170.0" y="262" font-size="15" text-anchor="middle" fill="#292929"><tspan x="170.0" dy="0" font-weight="700">규칙 3: 결과가 실패?</tspan></text>
+<rect x="420" y="228" width="280" height="58" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="560.0" y="262" font-size="15" text-anchor="middle" fill="#292929"><tspan x="560.0" dy="0" font-weight="700">기타 실패</tspan></text>
+<polyline points="323,257 416,257" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<text x="369" y="250" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">예</text>
+<polyline points="170,288 170,310" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<text x="182" y="304" font-size="14" text-anchor="start" fill="#666660">아니오</text>
+<rect x="20" y="314" width="300" height="58" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="170.0" y="348" font-size="15" text-anchor="middle" fill="#292929"><tspan x="170.0" dy="0" font-weight="700">규칙 4: 그 밖 (성공)</tspan></text>
+<rect x="420" y="314" width="280" height="58" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="560.0" y="348" font-size="15" text-anchor="middle" fill="#292929"><tspan x="560.0" dy="0" font-weight="700">정상</tspan></text>
+<polyline points="323,343 416,343" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<text x="20" y="405" font-size="14" text-anchor="start" fill="#666660">로그인에 1번만 실패해도 「비정상 로그인」 · 알림 여부는 횟수로 따로 정한다</text>
+<text x="20" y="428" font-size="14" text-anchor="start" fill="#666660">「정상」은 결과가 성공이라는 이름일 뿐, 공격이 아니라는 뜻이 아니다</text>
+</g>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" role="img">
+<title>정답 보는 법: 내 답과 정답 예시를 비교해 핵심이 같으면 맞다</title>
+<desc>글로 쓰는 답은 한 예입니다. 내 답과 정답 예시의 핵심이 같으면 맞습니다. 코드는 줄 수가 달라도 주석이 말한 일을 하면 맞습니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">정답 보는 법</text>
+<rect x="20" y="60" width="180" height="90" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="99.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">내 답</text>
+<text x="110" y="120.1" font-size="15" fill="#666660" text-anchor="middle">보고서에 쓴 글</text>
+<rect x="20" y="170" width="180" height="90" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="209.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">정답 예시</text>
+<text x="110" y="230.1" font-size="15" fill="#666660" text-anchor="middle">한 예일 뿐</text>
+<rect x="250" y="105" width="200" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="350" y="143.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">핵심이 같은가?</text>
+<text x="350" y="164.6" font-size="15" fill="#666660" text-anchor="middle">글자가 달라도</text>
+<text x="350" y="185.6" font-size="15" fill="#666660" text-anchor="middle">뜻이 같으면 됨</text>
+<polyline points="200,105 246,140" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="200,215 246,180" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="500" y="60" width="200" height="90" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="600" y="99.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">맞음</text>
+<text x="600" y="120.1" font-size="15" fill="#292929" text-anchor="middle">글로 쓴 답</text>
+<rect x="500" y="170" width="200" height="90" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="600" y="200" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">코드도 맞음</text>
+<text x="600" y="220" font-size="14" fill="#292929" text-anchor="middle">줄 수가 달라도</text>
+<text x="600" y="239.6" font-size="14" fill="#292929" text-anchor="middle">주석이 말한 일을 하면</text>
+<polyline points="450,140 496,105" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="450,180 496,215" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+</g>
+</svg>

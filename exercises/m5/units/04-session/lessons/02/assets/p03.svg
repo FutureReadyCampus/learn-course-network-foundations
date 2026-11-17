@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>lock_account 는 VIP와 이미 잠김을 먼저 거르고, 잠근 뒤 실제로 잠겼는지 확인합니다</title>
+<desc>lock_account 는 check_policy 로 VIP 를 거르고, 이미 잠긴 계정은 바꾸지 않고 기록합니다. 그 밖에는 잠금 리스트에 추가한 뒤 verify_locked 로 확인해 잠김 또는 확인 실패를 기록합니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 4-1: lock_account 의 판단 순서</text>
+<rect x="24" y="66" width="196" height="60" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="122.0" y="90.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="122.0" dy="0" font-weight="700">check_policy</tspan><tspan x="122.0" dy="21.0">VIP 인가? (3 · 4번)</tspan></text>
+<rect x="500" y="66" width="196" height="60" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="598.0" y="90.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="598.0" dy="0" font-weight="700">변경 없음 → 변경 없음</tspan><tspan x="598.0" dy="21.0">gaeun</tspan></text>
+<line x1="220" y1="96" x2="498" y2="96" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="300" y="88" font-size="14" text-anchor="start" fill="#666660">예 · 이유 기록</text>
+<rect x="24" y="156" width="196" height="60" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="122.0" y="180.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="122.0" dy="0" font-weight="700">이미 잠겨 있나?</tspan><tspan x="122.0" dy="21.0">locked_users 확인</tspan></text>
+<rect x="500" y="156" width="196" height="60" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="598.0" y="180.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="598.0" dy="0" font-weight="700">잠김 → 잠김</tspan><tspan x="598.0" dy="21.0">junho</tspan></text>
+<line x1="220" y1="186" x2="498" y2="186" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="300" y="178" font-size="14" text-anchor="start" fill="#666660">예 · 변경 없음</text>
+<line x1="122" y1="126" x2="122" y2="154" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="130" y="146" font-size="14" text-anchor="start" fill="#666660">아니오</text>
+<rect x="24" y="246" width="196" height="60" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="122.0" y="270.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="122.0" dy="0" font-weight="700">잠금 리스트에 추가</tspan><tspan x="122.0" dy="21.0">(6번, append)</tspan></text>
+<line x1="122" y1="216" x2="122" y2="244" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="130" y="236" font-size="14" text-anchor="start" fill="#666660">아니오</text>
+<rect x="262" y="246" width="196" height="60" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="270.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">verify_locked</tspan><tspan x="360.0" dy="21.0">실제로 있나? (5번)</tspan></text>
+<line x1="220" y1="276" x2="260" y2="276" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<rect x="500" y="236" width="196" height="46" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="598.0" y="264.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="598.0" dy="0" font-weight="700">잠기지 않음 → 잠김</tspan></text>
+<rect x="500" y="296" width="196" height="60" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="598.0" y="320.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="598.0" dy="0" font-weight="700">잠기지 않음</tspan><tspan x="598.0" dy="21.0">(확인 실패)</tspan></text>
+<line x1="458" y1="268" x2="498" y2="259" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<line x1="458" y1="286" x2="498" y2="320" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="24" y="386" font-size="15" text-anchor="start" fill="#666660">기록은 append_log 로 containment_log.json 에 한 건씩 더합니다 (9번).</text>
+</g>
+</svg>

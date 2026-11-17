@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>실습 2-1 정답: 채운 코드 흐름과 결과 28개·실패 2줄·성공 15·실패 13</title>
+<desc>왼쪽은 convert_time 세 줄과 convert_result 판정, 오른쪽은 실행 결과 숫자입니다. 아래는 strptime 에 공통 형식을 넣어 ValueError 가 나는 자주 틀리는 곳입니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 2-1 정답</text>
+<rect x="24" y="56" width="360" height="150" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="204" y="104.9" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">convert_time</text>
+<text x="204" y="125.6" font-size="14" text-anchor="middle" fill="#292929">strptime(time_text, NGINX_TIME_FORMAT)</text>
+<text x="204" y="145.9" font-size="14" text-anchor="middle" fill="#292929">→ replace(tzinfo=None)</text>
+<text x="204" y="166.2" font-size="14" text-anchor="middle" fill="#292929">→ strftime(COMMON_TIME_FORMAT)</text>
+<rect x="24" y="222" width="360" height="86" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="204" y="249.0" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">convert_result</text>
+<text x="204" y="269.8" font-size="14" text-anchor="middle" fill="#292929">status &gt;= 400 → "실패"</text>
+<text x="204" y="290.1" font-size="14" text-anchor="middle" fill="#292929">그 밖에는 → "성공"</text>
+<rect x="404" y="56" width="140" height="112" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="474" y="109.4" font-size="26" text-anchor="middle" fill="#292929" font-weight="700">28개</text>
+<text x="474" y="134.9" font-size="14" text-anchor="middle" fill="#666660">정규화한 이벤트</text>
+<rect x="554" y="56" width="140" height="112" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="624" y="109.4" font-size="26" text-anchor="middle" fill="#292929" font-weight="700">2줄</text>
+<text x="624" y="134.9" font-size="14" text-anchor="middle" fill="#666660">읽기 실패</text>
+<rect x="404" y="182" width="140" height="112" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="474" y="235.4" font-size="26" text-anchor="middle" fill="#292929" font-weight="700">15</text>
+<text x="474" y="260.9" font-size="14" text-anchor="middle" fill="#666660">성공</text>
+<rect x="554" y="182" width="140" height="112" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="624" y="235.4" font-size="26" text-anchor="middle" fill="#292929" font-weight="700">13</text>
+<text x="624" y="260.9" font-size="14" text-anchor="middle" fill="#666660">실패</text>
+<rect x="24" y="326" width="672" height="76" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="360" y="358.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">자주 틀리는 곳: strptime 에 COMMON_TIME_FORMAT 을 넣음</text>
+<text x="360" y="378.9" font-size="14" text-anchor="middle" fill="#292929">→ ValueError: … does not match format</text>
+</g>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 322" role="img">
+<title>Unit 9 확인 세 가지를 마치면 Unit 10 통합 실습에서 저장한 로그를 쓴다</title>
+<desc>컴포즈로 두 대 켜기, 서버별 접속 범위 적용, 깃허브에 올리기 세 가지를 확인한다. Unit 9에서 저장한 로그 파일은 Unit 10 통합 실습에서 다시 쓴다.</desc>
+<defs><marker id="a-p10" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">이번 Unit 마무리</text>
+<rect x="12" y="56" width="450" height="68.95" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="24" y="72.5" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="46" y="85.12" font-size="16" text-anchor="start" fill="#292929" font-weight="700">실습 9-1</text>
+<text x="46" y="107.25" font-size="15" text-anchor="start" fill="#292929">컴포즈 파일로 서버 두 대를 켜고 두 서버의 응답을 확인했다</text>
+<rect x="12" y="136.95" width="450" height="90.7" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="24" y="153.45" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="46" y="166.07" font-size="16" text-anchor="start" fill="#292929" font-weight="700">실습 9-2</text>
+<text x="46" y="188.2" font-size="15" text-anchor="start" fill="#292929">서버마다 접속 범위를 정해 적용했고, 바뀐 서버만 다시</text>
+<text x="46" y="209.95" font-size="15" text-anchor="start" fill="#292929">켜지는 것을 봤다</text>
+<rect x="12" y="239.65" width="450" height="68.95" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="24" y="256.15" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="46" y="268.77" font-size="16" text-anchor="start" fill="#292929" font-weight="700">마무리</text>
+<text x="46" y="290.9" font-size="15" text-anchor="start" fill="#292929">Unit 9에서 만든 파일과 보고서를 깃허브에 올렸다</text>
+<rect x="500" y="56" width="208" height="252.6" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="604" y="144.32" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">다음: Unit 10</text>
+<text x="604" y="166.45" font-size="15" text-anchor="middle" fill="#292929">지금까지 만든 탐지를 한</text>
+<text x="604" y="188.2" font-size="15" text-anchor="middle" fill="#292929">번에 돌리는 통합 실습.</text>
+<text x="604" y="209.95" font-size="15" text-anchor="middle" fill="#292929">Unit 9의 로그 파일을 다시</text>
+<text x="604" y="231.7" font-size="15" text-anchor="middle" fill="#292929">쓴다.</text>
+<line x1="464" y1="182.3" x2="498" y2="182.3" stroke="#666660" stroke-width="2" marker-end="url(#a-p10)"/>
+</g>
+</svg>

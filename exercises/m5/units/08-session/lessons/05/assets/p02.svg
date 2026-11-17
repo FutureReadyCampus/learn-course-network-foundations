@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>실습 8-1 정답 출력: 규칙별 수 · 등급별 평균 · 기한 넘김 · 티켓 없는 조치</title>
+<desc>퇴사한 계정과 경로 스캔이 2장씩 가장 많고, 평균 확인 시간은 high 10.0분 · mid 85.0분입니다. TCK-3 · TCK-4가 기한을 넘겼고 INC-212는 티켓이 없으며 리포트는 32줄입니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p02r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p02g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p02b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">실습 8-1 정답: 출력에서 볼 값</tspan></text>
+<rect x="20" y="52" width="330" height="170" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="36" y="89.3" font-size="15" text-anchor="start" fill="#292929"><tspan x="36" font-weight="bold">단계 2 · 규칙별 티켓 수</tspan><tspan x="36" dy="21.0">퇴사한 계정 : 2장</tspan><tspan x="36" dy="21.0">경로 스캔 : 2장</tspan><tspan x="36" dy="21.0">규칙은 허용인데 서버가 거절 : 1장</tspan><tspan x="36" dy="21.0">대량 다운로드 : 1장</tspan><tspan x="36" dy="21.0">업무 시간 밖 로그인 : 1장</tspan></text>
+<rect x="370" y="52" width="330" height="170" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="386" y="101.2" font-size="15" text-anchor="start" fill="#292929"><tspan x="386" font-weight="bold">단계 3 · 등급별 평균 확인 시간</tspan><tspan x="386" dy="21.0">high : 10.0분</tspan><tspan x="386" dy="21.0">mid : 85.0분</tspan><tspan x="386" dy="19.6" font-size="14">low 없음: acked_at 이 둘 다 -1</tspan><tspan x="386" dy="19.6" font-size="14">3번 필터가 없으면 low −17.5분</tspan></text>
+<rect x="20" y="238" width="330" height="116" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="36" y="279.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="36" font-weight="bold">단계 4 · 기한 넘겨 확인 2장</tspan><tspan x="36" dy="21.0">TCK-3 · 기한 68분 · 확인 80분</tspan><tspan x="36" dy="21.0">TCK-4 · 기한 72분 · 확인 140분</tspan></text>
+<rect x="370" y="238" width="330" height="116" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="386" y="280.5" font-size="15" text-anchor="start" fill="#292929"><tspan x="386" font-weight="bold">단계 4 · 티켓이 없는 조치 1건</tspan><tspan x="386" dy="21.0">INC-212 · 계정 잠금 · yuna</tspan><tspan x="386" dy="19.6" font-size="14">covered(INC-201~211)에 없음</tspan></text>
+<rect x="20" y="370" width="680" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360.0" y="394.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" font-size="14">단계 5 · incident_report_20261112.md · 32줄 (8번을 비우면 27줄)</tspan></text>
+</g>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>세 데이터 파일을 조회해 알림에 context 다섯 키를 붙이는 것이 보강이다 (gaeun 예)</title>
+<desc>왼쪽 세 파일에서 lookup_account와 lookup_source_ip가 값을 찾고, enrich_incident가 합쳐 incident의 context에 붙인다. 오른쪽은 VIP 계정 gaeun의 context 다섯 키 값이다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">보강: 알림에 context(맥락)를 붙인다</text>
+<rect x="20" y="72" width="160" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text y="101.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="100.0" dy="0.0">users_info.json</tspan></text>
+<rect x="20" y="196" width="160" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text y="225.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="100.0" dy="0.0">source_ips.json</tspan></text>
+<rect x="20" y="276" width="160" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text y="305.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="100.0" dy="0.0">trusted_ips.json</tspan></text>
+<rect x="200" y="64" width="170" height="66" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="92.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="285.0" dy="0.0" font-weight="700">lookup_account</tspan><tspan x="285.0" dy="19.6">1 ~ 3번</tspan></text>
+<rect x="200" y="222" width="170" height="66" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="250.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="285.0" dy="0.0" font-weight="700">lookup_source_ip</tspan><tspan x="285.0" dy="19.6">4 ~ 6번</tspan></text>
+<line x1="182" y1="97" x2="196" y2="97" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<line x1="182" y1="221" x2="196" y2="244" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<line x1="182" y1="301" x2="196" y2="270" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="400" y="136" width="124" height="80" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text y="171.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="462.0" dy="0.0" font-weight="700">enrich_incident</tspan><tspan x="462.0" dy="19.6">(미리 채움)</tspan></text>
+<line x1="372" y1="100" x2="404" y2="132" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<line x1="372" y1="252" x2="404" y2="220" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<line x1="526" y1="176" x2="546" y2="176" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="550" y="52" width="150" height="34" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text y="73.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="625.0" dy="0.0" font-weight="700">gaeun 의 context</tspan></text>
+<rect x="550" y="92" width="150" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="112.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="625.0" dy="0.0" font-weight="700">account_known</tspan><tspan x="625.0" dy="19.6">True</tspan></text>
+<rect x="550" y="148" width="150" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="168.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="625.0" dy="0.0" font-weight="700">employed</tspan><tspan x="625.0" dy="19.6">True (재직)</tspan></text>
+<rect x="550" y="204" width="150" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="224.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="625.0" dy="0.0" font-weight="700">vip</tspan><tspan x="625.0" dy="19.6">True (VIP)</tspan></text>
+<rect x="550" y="260" width="150" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="280.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="625.0" dy="0.0" font-weight="700">source_ip</tspan><tspan x="625.0" dy="19.6">198.51.100.77</tspan></text>
+<rect x="550" y="316" width="150" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="336.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="625.0" dy="0.0" font-weight="700">ip_trusted</tspan><tspan x="625.0" dy="19.6">False (없음)</tspan></text>
+<text x="20" y="406" font-size="15" fill="#666660">정보를 못 찾으면 초기값(False · None) 그대로 = 「확인할 수 없음」</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>web·server·saas 세 로그를 같은 키 여섯 개로 맞춘 정규화 이벤트</title>
+<desc>웹 서버, 권한 판정 서버, SaaS 로그 한 줄을 정규화해 time, source, user, ip, action, result 여섯 키로 맞춥니다. 원래 로그에 없는 값은 채우지 않고 null 로 둡니다.</desc>
+<defs><marker id="a-0302-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">1.1 세 로그 → 같은 키 여섯 개</text>
+<rect x="24" y="72" width="200" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="124.0" y="95.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">web</text>
+<text x="124.0" y="116.8" font-size="15" fill="#666660" text-anchor="middle">웹 서버(nginx)</text>
+<line x1="227" y1="101" x2="262" y2="175" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p03)"/>
+<rect x="24" y="144" width="200" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="124.0" y="167.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">server</text>
+<text x="124.0" y="188.8" font-size="15" fill="#666660" text-anchor="middle">권한 판정 서버</text>
+<line x1="227" y1="173" x2="262" y2="175" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p03)"/>
+<rect x="24" y="216" width="200" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="124.0" y="239.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">saas</text>
+<text x="124.0" y="260.8" font-size="15" fill="#666660" text-anchor="middle">SaaS 서비스</text>
+<line x1="227" y1="245" x2="262" y2="175" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p03)"/>
+<rect x="266" y="120" width="150" height="110" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="341.0" y="159.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">정규화</text>
+<text x="341.0" y="180.2" font-size="15" fill="#666660" text-anchor="middle">같은 키로</text>
+<text x="341.0" y="201.2" font-size="15" fill="#666660" text-anchor="middle">맞추기</text>
+<line x1="419" y1="175" x2="452" y2="175" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p03)"/>
+<rect x="456" y="72" width="240" height="202" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="576.0" y="146.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">이벤트 키 6개</text>
+<text x="576.0" y="167.8" font-size="15" fill="#666660" text-anchor="middle">time · source</text>
+<text x="576.0" y="188.8" font-size="15" fill="#666660" text-anchor="middle">user · ip</text>
+<text x="576.0" y="209.8" font-size="15" fill="#666660" text-anchor="middle">action · result</text>
+<rect x="24" y="296" width="672" height="46" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="324.2" font-size="15" fill="#292929" text-anchor="middle">없는 값은 null: web 은 user 없음 · server 는 ip 없음</text>
+</svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 359" role="img">
+<title>실습 9-2 보고서: ps 출력 두 개, 접속 범위 차이, up -d 출력, 마무리를 채운다</title>
+<desc>실습 9-2 보고서의 (가) (나) (다)와 마무리 (가)에 채울 내용을 체크리스트로 보여 준다. 마무리 칸은 깃허브에 올리기 전에 채운다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 9-2 · 채울 칸</text>
+<rect x="12" y="54" width="165" height="47.2" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="94.5" y="83.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">(가) ps 출력</text>
+<rect x="12" y="111.2" width="165" height="41.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="22.0" y="125.7" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="44" y="137.25" font-size="15" text-anchor="start" fill="#292929">1번 출력</text>
+<rect x="12" y="160.95" width="165" height="41.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="22.0" y="175.45" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="44" y="187" font-size="15" text-anchor="start" fill="#292929">5번 출력</text>
+<rect x="12" y="210.7" width="165" height="63.5" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="22.0" y="225.2" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="44" y="236.75" font-size="15" text-anchor="start" fill="#292929">접속 범위가 바뀐</text>
+<text x="44" y="258.5" font-size="15" text-anchor="start" fill="#292929">기존 서비스</text>
+<rect x="12" y="282.2" width="165" height="63.5" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="22.0" y="296.7" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="44" y="308.25" font-size="15" text-anchor="start" fill="#292929">새로 추가된</text>
+<text x="44" y="330" font-size="15" text-anchor="start" fill="#292929">서비스</text>
+<rect x="189" y="54" width="165" height="47.2" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="271.5" y="83.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">(나) [핵심 질문]</text>
+<rect x="189" y="111.2" width="165" height="107" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="199.0" y="125.7" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="221" y="137.25" font-size="15" text-anchor="start" fill="#292929">"8081:80" 과</text>
+<text x="221" y="159" font-size="15" text-anchor="start" fill="#292929">앞에 127.0.0.1:</text>
+<text x="221" y="180.75" font-size="15" text-anchor="start" fill="#292929">을 붙인 줄의 접속</text>
+<text x="221" y="202.5" font-size="15" text-anchor="start" fill="#292929">차이</text>
+<rect x="189" y="226.2" width="165" height="85.25" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="199.0" y="240.7" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="221" y="252.25" font-size="15" text-anchor="start" fill="#292929">관리 화면 ·</text>
+<text x="221" y="274" font-size="15" text-anchor="start" fill="#292929">데이터베이스를</text>
+<text x="221" y="295.75" font-size="15" text-anchor="start" fill="#292929">이렇게 두는 이유</text>
+<rect x="366" y="54" width="165" height="47.2" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="448.5" y="83.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">(다) [핵심 질문]</text>
+<rect x="366" y="111.2" width="165" height="107" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="376.0" y="125.7" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="398" y="137.25" font-size="15" text-anchor="start" fill="#292929">Running ·</text>
+<text x="398" y="159" font-size="15" text-anchor="start" fill="#292929">Recreated ·</text>
+<text x="398" y="180.75" font-size="15" text-anchor="start" fill="#292929">Created 로 다른</text>
+<text x="398" y="202.5" font-size="15" text-anchor="start" fill="#292929">이유</text>
+<rect x="366" y="226.2" width="165" height="63.5" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="376.0" y="240.7" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="398" y="252.25" font-size="15" text-anchor="start" fill="#292929">서버를 끊지 않고</text>
+<text x="398" y="274" font-size="15" text-anchor="start" fill="#292929">바꾸는 쓸모</text>
+<rect x="543" y="54" width="165" height="47.2" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="625.5" y="83.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">마무리 (가)</text>
+<rect x="543" y="111.2" width="165" height="85.25" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="553.0" y="125.7" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="575" y="137.25" font-size="15" text-anchor="start" fill="#292929">git status 에</text>
+<text x="575" y="159" font-size="15" text-anchor="start" fill="#292929">.env · .venv 가</text>
+<text x="575" y="180.75" font-size="15" text-anchor="start" fill="#292929">보였는지</text>
+<rect x="543" y="204.45" width="165" height="41.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="553.0" y="218.95" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="575" y="230.5" font-size="15" text-anchor="start" fill="#292929">보였다면 한 조치</text>
+</g>
+</svg>

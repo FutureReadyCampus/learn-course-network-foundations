@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>알림 8건을 한 번에 판단·조치하고 기록 요약과 담당자 확인 목록을 만든다</title>
+<desc>왼쪽은 교대 직전에 들어온 알림 8건이다. 가운데에서 알림마다 판단, 조치, 기록을 거치고, 오른쪽에 근무 보고 요약과 사람이 확인할 건 목록이 나온다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<text x="130" y="28" font-size="18" fill="#292929" text-anchor="middle" font-weight="700">알림 8건</text>
+<rect x="20" y="42" width="220" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="130" y="62.24" font-size="14" fill="#292929" text-anchor="middle">INC-001 · dami</text>
+<text x="130" y="81.84" font-size="14" fill="#292929" text-anchor="middle">퇴사한 계정</text>
+<rect x="20" y="100" width="220" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="130" y="120.24" font-size="14" fill="#292929" text-anchor="middle">INC-002 · seoyeon</text>
+<text x="130" y="139.84" font-size="14" fill="#292929" text-anchor="middle">연결된 조치 없음</text>
+<rect x="20" y="158" width="220" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="130" y="178.24" font-size="14" fill="#292929" text-anchor="middle">INC-003 · INC-010</text>
+<text x="130" y="197.84" font-size="14" fill="#292929" text-anchor="middle">gaeun (VIP)</text>
+<rect x="20" y="216" width="220" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="130" y="236.24" font-size="14" fill="#292929" text-anchor="middle">INC-004 · jiwoo</text>
+<text x="130" y="255.84" font-size="14" fill="#292929" text-anchor="middle">정상 접속(오탐)</text>
+<rect x="20" y="274" width="220" height="70" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="130" y="294.44" font-size="14" fill="#292929" text-anchor="middle">INC-005 · 008 · 009</text>
+<text x="130" y="314.04" font-size="14" fill="#292929" text-anchor="middle">경로 스캔 세 건</text>
+<text x="130" y="333.64" font-size="14" fill="#292929" text-anchor="middle">(INC-005 방화벽 끊김)</text>
+<rect x="280" y="110" width="160" height="160" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="142.9" font-size="15" fill="#292929" text-anchor="middle">알림마다</text>
+<text x="360" y="163.9" font-size="15" fill="#292929" text-anchor="middle">판단</text>
+<text x="360" y="184.9" font-size="15" fill="#292929" text-anchor="middle">↓</text>
+<text x="360" y="205.9" font-size="15" fill="#292929" text-anchor="middle">조치</text>
+<text x="360" y="226.9" font-size="15" fill="#292929" text-anchor="middle">↓</text>
+<text x="360" y="247.9" font-size="15" fill="#292929" text-anchor="middle">기록</text>
+<line x1="244" y1="190" x2="274" y2="190" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<line x1="446" y1="160" x2="476" y2="120" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<line x1="446" y1="220" x2="476" y2="260" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="480" y="60" width="220" height="110" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="590" y="88.9" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">근무 보고 요약</text>
+<text x="590" y="109.9" font-size="15" fill="#292929" text-anchor="middle">변경됨 2</text>
+<text x="590" y="130.9" font-size="15" fill="#292929" text-anchor="middle">변경 없음 2</text>
+<text x="590" y="151.9" font-size="15" fill="#292929" text-anchor="middle">확인 실패 1</text>
+<rect x="480" y="210" width="220" height="110" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="590" y="249.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">담당자 확인 목록</text>
+<text x="590" y="270.4" font-size="15" fill="#292929" text-anchor="middle">4건</text>
+<text x="590" y="291.4" font-size="15" fill="#292929" text-anchor="middle">(승인 대기 · 확인 실패)</text>
+<text x="360" y="368" font-size="15" fill="#666660" text-anchor="middle">교대하는 사람은 요약과 확인 목록만 함께 보면 된다</text>
+</svg>

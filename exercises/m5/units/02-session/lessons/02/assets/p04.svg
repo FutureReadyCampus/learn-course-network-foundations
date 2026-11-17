@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>실습 2-1 요점: in으로 키 확인, 중첩 딕셔너리 값 꺼내 저장, 포함 여부 저장, 1 늘리기</title>
+<desc>실습 2-1에서 쓴 코드 조각을 일의 순서대로 모은 요점 지도다. 키 확인, 중첩 값 꺼내기, 값 저장, 리스트 포함 여부 저장, 함수 호출, 1 늘려 다시 저장하기다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 2-1 정리</text>
+<rect x="20" y="52" width="150" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="78.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="95.0" dy="0.0" font-weight="700">키가 있는지</tspan></text>
+<rect x="180" y="52" width="520" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="78.9" font-size="14" fill="#292929"><tspan x="192" dy="0.0">if entity in users_info:</tspan></text>
+<rect x="20" y="106" width="150" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="132.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="95.0" dy="0.0" font-weight="700">안쪽 값 꺼내기</tspan></text>
+<rect x="180" y="106" width="520" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="132.9" font-size="14" fill="#292929"><tspan x="192" dy="0.0">users_info[entity]["employed"]</tspan></text>
+<rect x="20" y="160" width="150" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="186.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="95.0" dy="0.0" font-weight="700">값 저장하기</tspan></text>
+<rect x="180" y="160" width="520" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="186.9" font-size="14" fill="#292929"><tspan x="192" dy="0.0">account["vip"] = users_info[entity]["vip"]</tspan></text>
+<rect x="20" y="214" width="150" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="240.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="95.0" dy="0.0" font-weight="700">포함 여부 저장</tspan></text>
+<rect x="180" y="214" width="520" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="240.9" font-size="14" fill="#292929"><tspan x="192" dy="0.0">ip_info["ip_trusted"] = source_ips[entity] in trusted_ips</tspan></text>
+<rect x="20" y="268" width="150" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="294.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="95.0" dy="0.0" font-weight="700">함수 호출하기</tspan></text>
+<rect x="180" y="268" width="520" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="294.9" font-size="14" fill="#292929"><tspan x="192" dy="0.0">enrich_incident(incident, users_info, source_ips, trusted_ips)</tspan></text>
+<rect x="20" y="322" width="150" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text y="348.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="95.0" dy="0.0" font-weight="700">1 늘려 저장</tspan></text>
+<rect x="180" y="322" width="520" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="348.9" font-size="14" fill="#292929"><tspan x="192" dy="0.0">vip_count = vip_count + 1</tspan></text>
+<text x="20" y="394" font-size="15" fill="#666660">users_info["gaeun"]["vip"] 는 True</text>
+</svg>

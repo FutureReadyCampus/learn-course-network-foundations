@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img">
+<title>오류가 나면 증상을 보고 원인을 확인한 뒤 고친다</title>
+<desc>No module named pandas 는 가상환경을 활성화하고 pandas 를 설치합니다. No module named login_detection 은 Unit 4 파일을 다시 만듭니다. 그 밖의 오류는 pwd 와 ls 를 확인하고 오류 전체를 AI 에 묻습니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">오류가 나면: 증상 → 확인 → 고치기</text>
+<text x="125" y="66" font-size="15" text-anchor="middle" fill="#666660" font-weight="700">증상</text>
+<text x="360" y="66" font-size="15" text-anchor="middle" fill="#666660" font-weight="700">확인</text>
+<text x="595" y="66" font-size="15" text-anchor="middle" fill="#666660" font-weight="700">고치기</text>
+<rect x="20" y="78" width="210" height="88" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="125.0" y="117" font-size="14" text-anchor="middle" fill="#292929"><tspan x="125.0" dy="0">No module named</tspan><tspan x="125.0" dy="19">'pandas'</tspan></text>
+<rect x="255" y="78" width="210" height="88" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="117" font-size="14" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0">가상환경이</tspan><tspan x="360.0" dy="19">활성화되지 않음</tspan></text>
+<rect x="490" y="78" width="210" height="88" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="595.0" y="100" font-size="14" text-anchor="middle" fill="#292929"><tspan x="595.0" dy="0">source .venv/</tspan><tspan x="595.0" dy="18">Scripts/activate</tspan><tspan x="595.0" dy="18">python -m pip</tspan><tspan x="595.0" dy="18">install pandas</tspan></text>
+<polyline points="232,122 251,122" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<polyline points="467,122 486,122" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="20" y="182" width="210" height="88" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="125.0" y="221" font-size="14" text-anchor="middle" fill="#292929"><tspan x="125.0" dy="0">No module named</tspan><tspan x="125.0" dy="19">'login_detection'</tspan></text>
+<rect x="255" y="182" width="210" height="88" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="221" font-size="14" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0">Unit 4 파일이 없거나</tspan><tspan x="360.0" dy="19">함수 이름이 다름</tspan></text>
+<rect x="490" y="182" width="210" height="88" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="595.0" y="213" font-size="14" text-anchor="middle" fill="#292929"><tspan x="595.0" dy="0">시작하기 표의</tspan><tspan x="595.0" dy="18">「없거나 안 풀렸을 때」</tspan><tspan x="595.0" dy="18">대로 다시 만들기</tspan></text>
+<polyline points="232,226 251,226" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<polyline points="467,226 486,226" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="20" y="286" width="210" height="88" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="125.0" y="335" font-size="14" text-anchor="middle" fill="#292929"><tspan x="125.0" dy="0">그 밖의 오류</tspan></text>
+<rect x="255" y="286" width="210" height="88" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="316" font-size="14" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0">pwd 끝이</tspan><tspan x="360.0" dy="19">anomaly_detection 인지</tspan><tspan x="360.0" dy="19">ls 의 파일 이름</tspan></text>
+<rect x="490" y="286" width="210" height="88" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="595.0" y="326" font-size="14" text-anchor="middle" fill="#292929"><tspan x="595.0" dy="0">오류 전체를 AI 에 묻기</tspan><tspan x="595.0" dy="18">.env · API 키는 지움</tspan></text>
+<polyline points="232,330 251,330" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<polyline points="467,330 486,330" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<text x="20" y="398" font-size="14" text-anchor="start" fill="#666660">실행은 VS Code 실행 단추가 아니라 터미널에서 한다</text>
+</g>
+</svg>

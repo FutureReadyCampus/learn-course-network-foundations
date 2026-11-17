@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 370" role="img">
+<title>보고서 쓰는 다섯 가지 방법: 쓸 내용을 보고 답: 뒤에 근거까지 쓴다</title>
+<desc>문제를 풀 때마다 그 제목 아래 질문에 답합니다. 쓸 내용을 보고 답: 뒤에 쓰고, 출력은 빈 코드 상자에 붙여 넣습니다. 왜를 묻는 질문은 근거까지 쓰고, 모르면 모름 — 막힌 곳을 적습니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">보고서 쓰는 방법</text>
+<circle cx="44" cy="80" r="16" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="44" y="86" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">1</text>
+<rect x="76" y="56" width="624" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="88" y="84.62" font-size="15" fill="#292929">문제를 풀 때마다 그 문제 제목 아래 질문에 답한다</text>
+<circle cx="44" cy="140" r="16" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="44" y="146" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">2</text>
+<rect x="76" y="116" width="624" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="88" y="144.62" font-size="15" fill="#292929">「쓸 내용:」에 적힌 것을 「답:」 뒤에 쓴다</text>
+<circle cx="44" cy="200" r="16" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="44" y="206" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">3</text>
+<rect x="76" y="176" width="624" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="88" y="204.62" font-size="15" fill="#292929">출력 · 코드는 「답:」 아래 빈 코드 상자에 붙여 넣는다</text>
+<circle cx="44" cy="260" r="16" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="44" y="266" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">4</text>
+<rect x="76" y="236" width="624" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="88" y="264.62" font-size="15" fill="#292929">「왜」는 내 화면에서 본 값 · 배운 내용을 근거로 이유까지</text>
+<circle cx="44" cy="320" r="16" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="44" y="326" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">5</text>
+<rect x="76" y="296" width="624" height="48" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="88" y="324.62" font-size="15" fill="#292929">[핵심 질문]을 못 풀면 「모름 — 막힌 곳: …」</text>
+</g>
+</svg>

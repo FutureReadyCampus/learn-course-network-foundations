@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>Unit 2는 알림 보강, 조건 분기, 안전장치로 자동 대응의 판단 단계를 만든다</title>
+<desc>알림이 보강(실습 2-1), 분기(실습 2-2), 안전장치(실습 2-3)를 거쳐 조치로 이어지는 흐름이다. 실습 2-2에서는 튜플 리턴과 언패킹, 실습 2-3에서는 startswith를 새로 배운다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">이번 Unit: 조치 전에 판단하는 단계</text>
+<rect x="20.0" y="60" width="118.4" height="130" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="130.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="79.2" dy="0.0" font-weight="700">알림</tspan></text>
+<rect x="160.4" y="60" width="118.4" height="130" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="98.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="219.60000000000002" dy="0.0" font-weight="700">실습 2-1</tspan><tspan x="219.60000000000002" dy="21.0">보강</tspan><tspan x="219.60000000000002" dy="21.0">판단에 필요한</tspan><tspan x="219.60000000000002" dy="21.0">정보 추가</tspan></text>
+<line x1="141.4" y1="125.0" x2="156.4" y2="125.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="300.8" y="60" width="118.4" height="130" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="98.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0" font-weight="700">실습 2-2</tspan><tspan x="360.0" dy="21.0">분기</tspan><tspan x="360.0" dy="21.0">조건에 따라</tspan><tspan x="360.0" dy="21.0">경로 나누기</tspan></text>
+<line x1="281.8" y1="125.0" x2="296.8" y2="125.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="441.2" y="60" width="118.4" height="130" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="98.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="500.4" dy="0.0" font-weight="700">실습 2-3</tspan><tspan x="500.4" dy="21.0">안전장치</tspan><tspan x="500.4" dy="21.0">잘못 실행돼도</tspan><tspan x="500.4" dy="21.0">피해 제한</tspan></text>
+<line x1="422.2" y1="125.0" x2="437.2" y2="125.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="581.6" y="60" width="118.4" height="130" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text y="130.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="640.8000000000001" dy="0.0" font-weight="700">조치</tspan></text>
+<line x1="562.6" y1="125.0" x2="577.6" y2="125.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<text x="20" y="232" font-size="16" fill="#292929" font-weight="700">새 문법</text>
+<rect x="20" y="244" width="330" height="70" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="273.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="185.0" dy="0.0" font-weight="700">실습 2-2: 튜플 리턴과 언패킹</tspan><tspan x="185.0" dy="21.0">두 값을 한 번에 리턴하고 받기</tspan></text>
+<rect x="370" y="244" width="330" height="70" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="273.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="535.0" dy="0.0" font-weight="700">실습 2-3: startswith</tspan><tspan x="535.0" dy="21.0">어떤 문자열로 시작하는지 확인</tspan></text>
+<text x="20" y="344" font-size="15" fill="#666660">깃허브 업로드는 Unit 3 의 실습 3-2 마지막에 한다</text>
+</svg>

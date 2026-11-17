@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img"><title>Unit 6 마무리: 보고서 세 칸의 답과 access_control 폴더의 파일을 확인한다</title><desc>보고서 실습 6-1·6-2·6-3 칸에서 답: 뒤가 비어 있지 않은지 본다. ls 로 Unit 6 파일 여섯 개를, ls config 로 새로 만든 access_log.json 을 확인한다.</desc><defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">Unit 6 마무리 확인</text>
+<rect x="20" y="56" width="330" height="280" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="36" y="84" font-size="16" fill="#292929" font-weight="700">access_control/   (ls)</text>
+<text x="52" y="116" font-size="15" fill="#292929">review_list.py</text>
+<text x="52" y="144" font-size="15" fill="#292929">review_rules.py</text>
+<text x="52" y="172" font-size="15" fill="#292929">review_unused.py</text>
+<text x="52" y="200" font-size="15" fill="#292929">exercise6-1_run.py</text>
+<text x="52" y="228" font-size="15" fill="#292929">exercise6-2_run.py</text>
+<text x="52" y="256" font-size="15" fill="#292929">exercise6-3_run.py</text>
+<text x="36" y="290" font-size="16" fill="#292929" font-weight="700">config/   (ls config)</text>
+<text x="52" y="318" font-size="15" fill="#292929">access_log.json  ← 새로 생김</text>
+<text x="380" y="84" font-size="16" fill="#292929" font-weight="700">보고서 Unit 6</text>
+<rect x="380" y="100" width="320" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="2"/>
+<text x="540" y="129.25" font-size="15" fill="#292929" text-anchor="middle">실습 6-1 칸 · 답: 뒤가 채워졌나</text>
+<rect x="380" y="160" width="320" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="2"/>
+<text x="540" y="189.25" font-size="15" fill="#292929" text-anchor="middle">실습 6-2 칸 · 답: 뒤가 채워졌나</text>
+<rect x="380" y="220" width="320" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="2"/>
+<text x="540" y="249.25" font-size="15" fill="#292929" text-anchor="middle">실습 6-3 칸 · 답: 뒤가 채워졌나</text>
+<rect x="380" y="284" width="320" height="52" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="2"/>
+<text x="540" y="304.75" font-size="15" fill="#292929" text-anchor="middle">다음: Unit 7 과다권한 리포트</text>
+<text x="540" y="325.75" font-size="14" fill="#666660" text-anchor="middle">git 올리기는 실습 7-2 마지막</text>
+</g>
+</svg>

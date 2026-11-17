@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>TCK-3 으로 본 세 지표: 확인 시간 72분, 해결 시간 112분, 68분 기한을 넘겨 위반</title>
+<desc>TCK-3 은 8분에 만들어져 80분에 확인되고 120분에 해결됐다. 확인 시간 72분은 MTTA 의 재료, 해결 시간 112분은 MTTR 의 재료이고, 확인 시각 80분이 sla_due 68분보다 늦어 기한 위반이다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">TCK-3 으로 보는 세 지표 (분)</text>
+<line x1="392.8" y1="80" x2="392.8" y2="200" stroke="#e0442e" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="392.8" y="74" font-size="14" font-weight="bold" fill="#292929" text-anchor="middle">sla_due 68</text>
+<rect x="116.8" y="88" width="331.2" height="36" rx="4" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="282.4" y="111.2" font-size="15" fill="#292929" text-anchor="middle">확인 시간 80 − 8 = 72분</text>
+<rect x="116.8" y="138" width="515.2" height="36" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="374.4" y="161.2" font-size="15" fill="#292929" text-anchor="middle">해결 시간 120 − 8 = 112분</text>
+<line x1="60" y1="200" x2="690" y2="200" stroke="#666660" stroke-width="2"/>
+<circle cx="116.8" cy="200" r="5" fill="#292929"/>
+<text x="116.8" y="224" font-size="14" fill="#292929" text-anchor="middle">생성 8</text>
+<circle cx="448.0" cy="200" r="5" fill="#292929"/>
+<text x="448.0" y="224" font-size="14" fill="#292929" text-anchor="middle">확인 80</text>
+<circle cx="632.0" cy="200" r="5" fill="#292929"/>
+<text x="632.0" y="224" font-size="14" fill="#292929" text-anchor="middle">해결 120</text>
+<rect x="20" y="250" width="213" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="126.5" y="292.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">MTTA</text>
+<text x="126.5" y="313.8" font-size="15" fill="#292929" text-anchor="middle">(확인 − 생성)의 평균</text>
+<rect x="253" y="250" width="213" height="96" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="359.5" y="292.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">MTTR</text>
+<text x="359.5" y="313.8" font-size="15" fill="#292929" text-anchor="middle">(해결 − 생성)의 평균</text>
+<rect x="486" y="250" width="214" height="96" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="593.0" y="292.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">기한 위반</text>
+<text x="593.0" y="313.8" font-size="15" fill="#292929" text-anchor="middle">확인 시각 &gt; sla_due</text>
+<text x="20" y="378" font-size="14" fill="#666660">미확인 · 미해결 티켓은 평균에서 뺀다 · 미확인 티켓의 위반은 지금 시각으로 판정</text>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
+<title>실습 5-2 정리: 저장은 with open 과 json.dump, 건수는 counts.get 으로 센다</title>
+<desc>save_requests 는 쓰기 모드로 파일을 열어 json.dump 로 쓰고 저장한 건수를 돌려줍니다. count_by_status 는 counts.get(상태, 0) 에 1을 더해 셉니다. 저장했는지는 load_json 으로 다시 읽어 확인합니다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">실습 5-2 정리</text>
+<text x="20" y="64" font-size="16" fill="#9a6200" font-weight="700">save_requests</text>
+<text x="380" y="64" font-size="16" fill="#9a6200" font-weight="700">count_by_status</text>
+<rect x="20" y="76" width="330" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="185" y="104.312" font-size="14" fill="#292929" text-anchor="middle">with open(path, "w", encoding="utf-8")</text>
+<rect x="20" y="146" width="330" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="185" y="172.512" font-size="14" fill="#292929" text-anchor="middle">json.dump(requests, f,</text>
+<text x="185" y="192.112" font-size="14" fill="#292929" text-anchor="middle">ensure_ascii=False, indent=2)</text>
+<rect x="20" y="232" width="330" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="185" y="258.312" font-size="14" fill="#292929" text-anchor="middle">return len(requests)</text>
+<rect x="380" y="76" width="320" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="540" y="104.312" font-size="14" fill="#292929" text-anchor="middle">old_count = counts.get(status, 0)</text>
+<rect x="380" y="146" width="320" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="540" y="172.512" font-size="14" fill="#292929" text-anchor="middle">counts[status] = old_count + 1</text>
+<text x="540" y="192.112" font-size="14" fill="#666660" text-anchor="middle">요청서마다 되풀이</text>
+<rect x="380" y="232" width="320" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="540" y="258.312" font-size="14" fill="#292929" text-anchor="middle">return counts</text>
+<polyline points="185,124 185,143" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<polyline points="185,210 185,229" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<polyline points="540,124 540,143" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<polyline points="540,210 540,229" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<text x="20" y="306" font-size="15" fill="#666660">확인: load_json("requests.json", []) 로 다시 읽어 건수를 본다</text>
+</g>
+</svg>

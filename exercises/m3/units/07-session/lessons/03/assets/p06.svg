@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img"><title>git status 로 .env 가 없는지 본 뒤 add, commit, push 로 깃허브에 올린다</title><desc>security-agent-toolkit 폴더로 옮겨 git status 를 보고, .env 나 .venv 가 보이면 멈추고 .gitignore 에 적는다. 보고서를 채운 뒤 git add, commit, push 하고, 거절되면 git pull 뒤 다시 push 한다.</desc><defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">마무리 · 깃허브에 올리기</text>
+<rect x="20" y="52" width="40" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
+<text x="40" y="83.6" font-size="16" fill="#292929" text-anchor="middle">1</text>
+<rect x="70" y="52" width="330" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="235" y="83.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">cd .. → pwd</text>
+<rect x="410" y="52" width="290" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="555" y="83.25" font-size="15" fill="#292929" text-anchor="middle">…/security-agent-toolkit</text>
+<rect x="20" y="116" width="40" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
+<text x="40" y="147.6" font-size="16" fill="#292929" text-anchor="middle">2</text>
+<rect x="70" y="116" width="330" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="235" y="147.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">git status</text>
+<rect x="410" y="116" width="290" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="555" y="147.25" font-size="15" fill="#292929" text-anchor="middle">.env · .venv 가 보이면 멈춤</text>
+<rect x="20" y="180" width="40" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
+<text x="40" y="211.6" font-size="16" fill="#292929" text-anchor="middle">3</text>
+<rect x="70" y="180" width="330" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="235" y="211.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">보고서 채우기</text>
+<rect x="410" y="180" width="290" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="555" y="211.25" font-size="15" fill="#292929" text-anchor="middle">Untracked files: 줄 수 적기</text>
+<rect x="20" y="244" width="40" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
+<text x="40" y="275.6" font-size="16" fill="#292929" text-anchor="middle">4</text>
+<rect x="70" y="244" width="330" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="235" y="275.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">git add . → git commit → git push</text>
+<rect x="410" y="244" width="290" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="555" y="275.25" font-size="15" fill="#292929" text-anchor="middle">바뀐 파일을 담고 기록하고 올림</text>
+<rect x="20" y="308" width="40" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
+<text x="40" y="339.6" font-size="16" fill="#292929" text-anchor="middle">5</text>
+<rect x="70" y="308" width="330" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="235" y="339.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">브라우저에서 확인</text>
+<rect x="410" y="308" width="290" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="555" y="339.25" font-size="15" fill="#292929" text-anchor="middle">access_control 파일이 다 보이나</text>
+</g>
+</svg>

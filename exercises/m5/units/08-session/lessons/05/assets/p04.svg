@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 404" role="img">
+<title>실습 8-3 정답: 신고 두 건의 영향 확인 · 되돌리기 · 복구 확인 · 제안</title>
+<desc>INC-301은 jiwoo의 세션 종료와 계정 잠금이 바뀌었고, 세션은 되돌리기 불가로 남은 채 25분 만에 복구됩니다. INC-202는 IP 차단을 풀고 5분 만에 복구되며 허용 목록 추가 검토를 제안합니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p04r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p04g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p04b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">실습 8-3 정답: 신고마다 네 줄</tspan></text>
+<text x="185" y="64" font-size="15" text-anchor="middle" fill="#292929" font-weight="bold"><tspan x="185">[INC-301] 영업팀장 신고</tspan></text>
+<rect x="20" y="76" width="330" height="58" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="185.0" y="99.7" font-size="15" text-anchor="middle" fill="#292929"><tspan x="185.0" font-size="14" fill="#666660">영향 확인</tspan><tspan x="185.0" dy="19.5">세션 종료 · 계정 잠금 jiwoo</tspan></text>
+<line x1="185" y1="136" x2="185" y2="148" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="20" y="150" width="330" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="185.0" y="173.7" font-size="15" text-anchor="middle" fill="#292929"><tspan x="185.0" font-size="14" fill="#666660">되돌리기</tspan><tspan x="185.0" dy="19.5">되돌리기 불가 jiwoo · 계정 해제</tspan></text>
+<line x1="185" y1="210" x2="185" y2="222" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="20" y="224" width="330" height="58" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="185.0" y="247.7" font-size="15" text-anchor="middle" fill="#292929"><tspan x="185.0" font-size="14" fill="#666660">복구 확인</tspan><tspan x="185.0" dy="19.5">남은 대상 [] · 25분 · True</tspan></text>
+<line x1="185" y1="284" x2="185" y2="296" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="20" y="298" width="330" height="58" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="185.0" y="321.7" font-size="15" text-anchor="middle" fill="#292929"><tspan x="185.0" font-size="14" fill="#666660">규칙 조정 제안</tspan><tspan x="185.0" dy="19.5">탐지 규칙 예외 검토: jiwoo</tspan></text>
+<text x="535" y="64" font-size="15" text-anchor="middle" fill="#292929" font-weight="bold"><tspan x="535">[INC-202] 인프라팀 신고</tspan></text>
+<rect x="370" y="76" width="330" height="58" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="535.0" y="99.7" font-size="15" text-anchor="middle" fill="#292929"><tspan x="535.0" font-size="14" fill="#666660">영향 확인</tspan><tspan x="535.0" dy="19.5">IP 차단 198.51.100.90</tspan></text>
+<line x1="535" y1="136" x2="535" y2="148" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="370" y="150" width="330" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="535.0" y="173.7" font-size="15" text-anchor="middle" fill="#292929"><tspan x="535.0" font-size="14" fill="#666660">되돌리기</tspan><tspan x="535.0" dy="19.5">IP 해제 198.51.100.90</tspan></text>
+<line x1="535" y1="210" x2="535" y2="222" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="370" y="224" width="330" height="58" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="535.0" y="247.7" font-size="15" text-anchor="middle" fill="#292929"><tspan x="535.0" font-size="14" fill="#666660">복구 확인</tspan><tspan x="535.0" dy="19.5">남은 대상 [] · 5분 · True</tspan></text>
+<line x1="535" y1="284" x2="535" y2="296" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="370" y="298" width="330" height="58" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="535.0" y="321.7" font-size="15" text-anchor="middle" fill="#292929"><tspan x="535.0" font-size="14" fill="#666660">규칙 조정 제안</tspan><tspan x="535.0" dy="19.5">허용 목록에 추가 검토</tspan></text>
+<text x="360" y="384" font-size="14" text-anchor="middle" fill="#666660"><tspan x="360">처리 뒤 잠긴 계정: junho · dami (dami 는 정탐이라 그대로)</tspan></text>
+</g>
+</svg>

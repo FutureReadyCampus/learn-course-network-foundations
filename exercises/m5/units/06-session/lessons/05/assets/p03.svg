@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>실습 6-2 정답: 같은 대상·규칙, 해결 아님, 60분 이내면 병합해 티켓 7장</title>
+<desc>알림마다 세 조건을 차례로 확인한다. 같은 대상과 규칙인지, 해결되지 않았는지, 마지막 갱신 뒤 60분 이하인지 모두 맞으면 병합하고 하나라도 아니면 새 티켓을 만든다. 그 결과 알림 11건이 티켓 7장이 된다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">실습 6-2 정답 · 병합할지 정하는 순서</text>
+<rect x="20" y="60" width="210" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="125.0" y="89.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">1번</text>
+<text x="125.0" y="110.8" font-size="15" fill="#292929" text-anchor="middle">같은 대상 · 같은 규칙?</text>
+<rect x="255" y="60" width="210" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="89.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">미리 채운 줄</text>
+<text x="360.0" y="110.8" font-size="15" fill="#292929" text-anchor="middle">해결이 아닌가?</text>
+<rect x="490" y="60" width="210" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="595.0" y="89.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">2 · 3번</text>
+<text x="595.0" y="110.8" font-size="15" fill="#292929" text-anchor="middle">gap ≤ 60분?</text>
+<line x1="232" y1="95" x2="253" y2="95" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="467" y1="95" x2="488" y2="95" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<text x="236" y="84" font-size="14" fill="#666660">예</text>
+<text x="471" y="84" font-size="14" fill="#666660">예</text>
+<rect x="20" y="175" width="445" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="242.5" y="208.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">아니오 → 새 티켓 (make_ticket)</text>
+<rect x="490" y="175" width="210" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="595.0" y="208.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">예 → 병합 (4~6번)</text>
+<line x1="125" y1="132" x2="125" y2="173" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="360" y1="132" x2="360" y2="173" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="595" y1="132" x2="595" y2="173" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="20" y="260" width="680" height="116" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="34" y="291.8" font-size="15" font-weight="bold" fill="#292929">TCK-1 의 마지막 갱신 시각으로 잰다</text>
+<text x="34" y="312.8" font-size="15" fill="#292929">INC-210: 95 − 40 = 55분 → 병합 (갱신 시각 95분)</text>
+<text x="34" y="333.8" font-size="15" fill="#292929">INC-211: 160 − 95 = 65분 → 새 티켓 TCK-7</text>
+<text x="34" y="354.8" font-size="15" fill="#292929">결과: 알림 11건 → 티켓 7장</text>
+</svg>

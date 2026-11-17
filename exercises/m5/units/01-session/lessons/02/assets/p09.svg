@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>실습 1-1 요점: 4요소, 등록 키, 승인 값, 액션 고르기, JSON 쉼표</title>
+<desc>실습 1-1에서 정리할 다섯 가지를 한 장에 모은 요점 지도다. 플레이북 4요소, 등록 파일 키, 승인 값 두 가지, 대상에 맞는 액션, JSON 쉼표 규칙이다.</desc>
+<defs><marker id="a-p09" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 1-1 정리</text>
+<rect x="20" y="52" width="330" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="84.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="185.0" dy="0.0" font-weight="700">플레이북 4요소</tspan><tspan x="185.0" dy="21.0">트리거(언제) · 조건(어떤 것만)</tspan><tspan x="185.0" dy="21.0">액션(무엇을) · 승인(허락?)</tspan></text>
+<rect x="370" y="52" width="330" height="96" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="85.3" font-size="14" fill="#292929" text-anchor="middle"><tspan x="535.0" dy="0.0" font-weight="700">등록 파일의 키</tspan><tspan x="535.0" dy="19.6">id · name · trigger_rule · min_grade</tspan><tspan x="535.0" dy="19.6">actions · approval · reason</tspan></text>
+<rect x="20" y="164" width="330" height="96" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text y="196.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="185.0" dy="0.0" font-weight="700">승인 값 두 가지</tspan><tspan x="185.0" dy="21.0">자동</tspan><tspan x="185.0" dy="21.0">담당자 승인 필요</tspan></text>
+<rect x="370" y="164" width="330" height="96" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="197.3" font-size="14" fill="#292929" text-anchor="middle"><tspan x="535.0" dy="0.0" font-weight="700">액션을 고르는 기준</tspan><tspan x="535.0" dy="19.6">사용자 → 계정 잠금 · IP → IP 차단</tspan><tspan x="535.0" dy="19.6">모두 → 티켓 생성 · 담당자 알림</tspan></text>
+<rect x="20" y="276" width="680" height="104" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="312.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0" font-weight="700">JSON 쉼표</tspan><tspan x="360.0" dy="21.0">플레이북과 플레이북 사이: 쉼표 있음  { … },  { … }</tspan><tspan x="360.0" dy="21.0">마지막 플레이북 뒤: 쉼표 없음  { … } ]</tspan></text>
+</svg>

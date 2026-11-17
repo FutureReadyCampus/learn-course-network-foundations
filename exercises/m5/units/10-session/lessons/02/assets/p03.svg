@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img"><title>실습 10-1 함수 호출 흐름: run_all → 파이프라인 → 게이트 → 조치</title><desc>run_all 이 알림마다 run_soar_pipeline 을 부르고 오류는 실패로 기록합니다. 파이프라인은 게이트를 거칠 조치만 run_step 으로 보내고, run_step 은 make_request 와 decide_gate 를 거쳐 자동이면 execute_action 을 실행합니다.</desc><defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="28" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">실습 10-1 · 직접 쓰는 아홉 군데</text>
+<rect x="20" y="50" width="200" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="120.0" y="82" font-size="15" fill="#292929" text-anchor="middle">run_all</text>
+<text x="120.0" y="104" font-size="15" fill="#292929" text-anchor="middle">처리 (7번) · 오류 (8번)</text>
+<rect x="260" y="50" width="200" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360.0" y="82" font-size="15" fill="#292929" text-anchor="middle">run_soar_pipeline</text>
+<text x="360.0" y="104" font-size="15" fill="#292929" text-anchor="middle">게이트 조치만 (6번)</text>
+<rect x="500" y="50" width="200" height="76" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="600.0" y="82" font-size="15" fill="#292929" text-anchor="middle">open_ticket</text>
+<text x="600.0" y="104" font-size="15" fill="#292929" text-anchor="middle">(미리 채움)</text>
+<line x1="222" y1="88" x2="256" y2="88" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="462" y1="88" x2="496" y2="88" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="260" y="160" width="200" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360.0" y="192" font-size="15" fill="#292929" text-anchor="middle">run_step</text>
+<text x="360.0" y="214" font-size="15" fill="#292929" text-anchor="middle">게이트 4번 · 자동 5번</text>
+<line x1="360" y1="128" x2="360" y2="156" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="20" y="270" width="200" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="120.0" y="302" font-size="15" fill="#292929" text-anchor="middle">make_request</text>
+<text x="120.0" y="324" font-size="15" fill="#292929" text-anchor="middle">계정 수 세기 (1번)</text>
+<rect x="260" y="270" width="200" height="76" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="302" font-size="15" fill="#292929" text-anchor="middle">decide_gate</text>
+<text x="360.0" y="324" font-size="15" fill="#292929" text-anchor="middle">Unit 8</text>
+<rect x="500" y="270" width="200" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="600.0" y="302" font-size="15" fill="#292929" text-anchor="middle">execute_action</text>
+<text x="600.0" y="324" font-size="15" fill="#292929" text-anchor="middle">잠금 (2번) · 차단 (3번)</text>
+<line x1="300" y1="238" x2="140" y2="266" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="360" y1="238" x2="360" y2="266" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="420" y1="238" x2="580" y2="266" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="20" y="370" width="680" height="54" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="402" font-size="15" fill="#292929" text-anchor="middle">exercise10-1_run.py : 처리 결과별 알림 수 세기 (9번) → 단계 1 ~ 4 출력</text>
+</g></svg>

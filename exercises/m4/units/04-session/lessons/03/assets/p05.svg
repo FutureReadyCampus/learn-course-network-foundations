@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
+<title>실습 4-2 정리: 두 조건을 &amp;로 이어 고르고, 주소별 횟수에서 기준 이상만 남긴다</title>
+<desc>is_login 과 is_fail 을 &amp; 로 합친 both_true 로 events 에서 로그인 실패만 남깁니다. 주소별 횟수를 limit 과 &gt;= 로 비교한 is_many 로 alert_ips 를 만듭니다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 4-2 정리: &amp;로 이어 고르고, 기준 이상만 남긴다</text>
+<rect x="20" y="56" width="190" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="115.0" y="79" font-size="14" text-anchor="middle" fill="#292929"><tspan x="115.0" dy="0" font-weight="700">is_login</tspan><tspan x="115.0" dy="19">POST /login 인 행</tspan></text>
+<rect x="20" y="132" width="190" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="115.0" y="155" font-size="14" text-anchor="middle" fill="#292929"><tspan x="115.0" dy="0" font-weight="700">is_fail</tspan><tspan x="115.0" dy="19">"실패" 인 행</tspan></text>
+<rect x="250" y="94" width="170" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="335.0" y="117" font-size="14" text-anchor="middle" fill="#292929"><tspan x="335.0" dy="0" font-weight="700">both_true</tspan><tspan x="335.0" dy="19">is_login &amp; is_fail</tspan></text>
+<rect x="460" y="94" width="240" height="56" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="580.0" y="117" font-size="14" text-anchor="middle" fill="#292929"><tspan x="580.0" dy="0" font-weight="700">login_failures</tspan><tspan x="580.0" dy="19">events[both_true]</tspan></text>
+<polyline points="212,84 246,112" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<polyline points="212,160 246,132" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<polyline points="423,122 456,122" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<polyline points="580,153 580,196 115,196 115,222" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<rect x="20" y="226" width="190" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="115.0" y="256" font-size="14" text-anchor="middle" fill="#292929"><tspan x="115.0" dy="0" font-weight="700">count_by_ip</tspan><tspan x="115.0" dy="19">주소별 실패 횟수</tspan></text>
+<rect x="250" y="226" width="170" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="335.0" y="256" font-size="14" text-anchor="middle" fill="#292929"><tspan x="335.0" dy="0" font-weight="700">is_many</tspan><tspan x="335.0" dy="19">횟수 &gt;= limit</tspan></text>
+<rect x="460" y="226" width="240" height="70" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="580.0" y="247" font-size="14" text-anchor="middle" fill="#292929"><tspan x="580.0" dy="0" font-weight="700">alert_ips</tspan><tspan x="580.0" dy="19">ip_login_fail_counts</tspan><tspan x="580.0" dy="19">[is_many]</tspan></text>
+<polyline points="212,261 246,261" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<polyline points="423,261 456,261" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+</g>
+</svg>

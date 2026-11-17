@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img">
+<title>Unit 1 · 4 · 5 파일이 서로 가져와 쓰는 순서</title>
+<desc>rollback.py는 undo_actions.py와 containment_store.py를, undo_actions.py는 계정 · IP 조치 파일을 가져와 씁니다. 맨 아래는 Unit 1의 incident.py입니다. 실습 8-1 · 8-2는 incident.py만, 실습 8-3은 여섯 개 모두 필요합니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p03r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p03g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p03b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">이전 파일이 없을 때: 필요한 여섯 파일</tspan></text>
+<text x="700" y="32" font-size="14" text-anchor="end" fill="#666660"><tspan x="700">화살표 = 가져와 사용(import)</tspan></text>
+<rect x="260" y="52" width="220" height="46" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="370.0" y="79.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="370.0">rollback.py · Unit 5</tspan></text>
+<rect x="260" y="126" width="220" height="46" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="370.0" y="153.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="370.0">undo_actions.py · Unit 5</tspan></text>
+<rect x="110" y="200" width="220" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="220.0" y="219.1" font-size="14" text-anchor="middle" fill="#292929"><tspan x="220.0">account_actions.py</tspan><tspan x="220.0" dy="16.8">Unit 4</tspan></text>
+<rect x="410" y="200" width="220" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="520.0" y="227.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="520.0">ip_actions.py · Unit 4</tspan></text>
+<rect x="260" y="274" width="220" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="370.0" y="293.1" font-size="14" text-anchor="middle" fill="#292929"><tspan x="370.0">containment_store.py</tspan><tspan x="370.0" dy="16.8">Unit 4</tspan></text>
+<rect x="260" y="348" width="220" height="46" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="370.0" y="375.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="370.0">incident.py · Unit 1</tspan></text>
+<line x1="370" y1="100" x2="370" y2="124" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="330" y1="174" x2="260" y2="198" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="410" y1="174" x2="480" y2="198" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="260" y1="248" x2="330" y2="272" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="480" y1="248" x2="410" y2="272" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="370" y1="322" x2="370" y2="346" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<path d="M482 75 H675 V297 H484" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="20" y="52" width="220" height="120" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="130.0" y="85.3" font-size="15" text-anchor="middle" fill="#292929"><tspan x="130.0" font-weight="bold">실습 8-1 · 8-2</tspan><tspan x="130.0" dy="21.0">incident.py 만</tspan><tspan x="130.0" dy="21.0" font-weight="bold">실습 8-3</tspan><tspan x="130.0" dy="21.0">여섯 개 모두</tspan></text>
+<rect x="20" y="338" width="220" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="130.0" y="364.7" font-size="14" text-anchor="middle" fill="#292929"><tspan x="130.0">이미 있는 파일은</tspan><tspan x="130.0" dy="19.6">붙여 넣지 않고 건너뜀</tspan></text>
+</g>
+</svg>

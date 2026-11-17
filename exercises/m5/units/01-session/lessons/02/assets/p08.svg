@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>PB-003을 등록 파일에 추가하고 INC-001·INC-005를 system_state.json에서 직접 처리한다</title>
+<desc>세 단계 흐름이다. 등록 파일에 PB-001, PB-002를 붙이고 PB-003을 더한 뒤 확인 명령을 친다. 이어서 system_state.json에서 INC-001과 INC-005를 손으로 고치고 고친 곳 수를 센다.</desc>
+<defs><marker id="a-p08" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 1-1: 플레이북 쓰고 두 건 수동 처리</text>
+<rect x="20.0" y="52" width="206.7" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="82.5" font-size="14" fill="#292929" text-anchor="middle"><tspan x="123.35" dy="0.0" font-weight="700">1. 등록 파일 쓰기</tspan><tspan x="123.35" dy="19.6">playbook_registry.json</tspan><tspan x="123.35" dy="19.6">PB-001 · PB-002 붙여 넣기</tspan><tspan x="123.35" dy="19.6">+ PB-003 직접 쓰기</tspan></text>
+<rect x="256.7" y="52" width="206.7" height="110" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="82.5" font-size="14" fill="#292929" text-anchor="middle"><tspan x="360.04999999999995" dy="0.0" font-weight="700">2. 확인 명령</tspan><tspan x="360.04999999999995" dy="19.6">['PB-001', 'PB-002',</tspan><tspan x="360.04999999999995" dy="19.6">'PB-003']</tspan><tspan x="360.04999999999995" dy="19.6">이 나오면 성공</tspan></text>
+<line x1="229.7" y1="107.0" x2="252.7" y2="107.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p08)"/>
+<rect x="493.3" y="52" width="206.7" height="110" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="82.5" font-size="14" fill="#292929" text-anchor="middle"><tspan x="596.65" dy="0.0" font-weight="700">3. 수동 처리</tspan><tspan x="596.65" dy="19.6">VS Code 로</tspan><tspan x="596.65" dy="19.6">system_state.json</tspan><tspan x="596.65" dy="19.6">을 열어 직접 입력</tspan></text>
+<line x1="466.3" y1="107.0" x2="489.3" y2="107.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p08)"/>
+<text x="20" y="196" font-size="16" fill="#292929" font-weight="700">system_state.json 에서 고칠 곳</text>
+<rect x="20" y="208" width="330" height="108" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="246.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="185.0" dy="0.0" font-weight="700">INC-001 (dami) · PB-001 자동</tspan><tspan x="185.0" dy="21.0">locked_users 에 "dami"</tspan><tspan x="185.0" dy="21.0">tickets 에 TCK-1</tspan></text>
+<rect x="370" y="208" width="330" height="108" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="246.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="535.0" dy="0.0" font-weight="700">INC-005 (198.51.100.90) · PB-003</tspan><tspan x="535.0" dy="21.0">내가 정한 액션대로 고치기</tspan><tspan x="535.0" dy="21.0">티켓 번호는 TCK-2</tspan></text>
+<rect x="20" y="332" width="680" height="70" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text y="362.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0">확인 출력 예 (IP 차단 · 티켓 생성을 고른 경우): ['dami'] ['198.51.100.90'] 2</tspan><tspan x="360.0" dy="19.6">고친 곳이 모두 몇 군데인지 세어 두기 → 보고서 (나)</tspan></text>
+</svg>

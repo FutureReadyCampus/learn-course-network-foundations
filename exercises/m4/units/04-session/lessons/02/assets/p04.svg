@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>실습 4-1: baseline.py 네 함수와 exercise4-1_run.py 의 네 단계 출력</title>
+<desc>baseline_logins.csv 를 load_daily_failures 가 읽고, average_failures 와 maximum_failures 가 평균과 최댓값을, make_limit 이 알림 기준을 구합니다. 직접 쓰는 곳은 1~6번입니다.</desc>
+<defs><marker id="a-0402-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">실습 4-1: baseline.py 와 실행 파일</text>
+<rect x="24" y="70" width="200" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="124.0" y="93.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">baseline_logins.csv</text>
+<text x="124.0" y="112.7" font-size="14" fill="#666660" text-anchor="middle">7일 · 하루 한 행</text>
+<line x1="227" y1="98" x2="255" y2="98" stroke="#666660" stroke-width="2" marker-end="url(#a-0402-p04)"/>
+<rect x="24" y="150" width="200" height="132" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="124.0" y="201.3" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">exercise4-1_run.py</text>
+<text x="124.0" y="220.9" font-size="14" fill="#666660" text-anchor="middle">그대로 붙여 넣기</text>
+<text x="124.0" y="240.5" font-size="14" fill="#666660" text-anchor="middle">함수를 차례로 부름</text>
+<rect x="258" y="70" width="212" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="364.0" y="93.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">load_daily_failures</text>
+<text x="364.0" y="112.7" font-size="14" fill="#666660" text-anchor="middle">1번 · read_csv</text>
+<line x1="473" y1="98" x2="503" y2="98" stroke="#666660" stroke-width="2" marker-end="url(#a-0402-p04)"/>
+<rect x="506" y="70" width="190" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="601.0" y="93.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">단계 1</text>
+<text x="601.0" y="112.7" font-size="14" fill="#666660" text-anchor="middle">지난 7일 표</text>
+<rect x="258" y="144" width="212" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="364.0" y="167.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">average_failures</text>
+<text x="364.0" y="186.7" font-size="14" fill="#666660" text-anchor="middle">2 · 3번 · .mean()</text>
+<line x1="473" y1="172" x2="503" y2="172" stroke="#666660" stroke-width="2" marker-end="url(#a-0402-p04)"/>
+<rect x="506" y="144" width="190" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="601.0" y="167.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">단계 2</text>
+<text x="601.0" y="186.7" font-size="14" fill="#666660" text-anchor="middle">하루 평균</text>
+<rect x="258" y="218" width="212" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="364.0" y="241.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">maximum_failures</text>
+<text x="364.0" y="260.7" font-size="14" fill="#666660" text-anchor="middle">4 · 5번 · .max()</text>
+<line x1="473" y1="246" x2="503" y2="246" stroke="#666660" stroke-width="2" marker-end="url(#a-0402-p04)"/>
+<rect x="506" y="218" width="190" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="601.0" y="241.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">단계 3</text>
+<text x="601.0" y="260.7" font-size="14" fill="#666660" text-anchor="middle">하루 최대</text>
+<rect x="258" y="292" width="212" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="364.0" y="315.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">make_limit</text>
+<text x="364.0" y="334.7" font-size="14" fill="#666660" text-anchor="middle">6번 · maximum + 1</text>
+<line x1="473" y1="320" x2="503" y2="320" stroke="#666660" stroke-width="2" marker-end="url(#a-0402-p04)"/>
+<rect x="506" y="292" width="190" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="601.0" y="315.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">단계 4</text>
+<text x="601.0" y="334.7" font-size="14" fill="#666660" text-anchor="middle">알림 기준</text>
+<rect x="24" y="371" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200"/>
+<text x="48" y="384" font-size="14" fill="#666660" text-anchor="start">직접 쓰는 곳</text>
+<rect x="154.4" y="371" width="16" height="16" rx="3" fill="#e4f3ea" stroke="#1f7a4a"/>
+<text x="178.4" y="384" font-size="14" fill="#666660" text-anchor="start">출력</text>
+</svg>

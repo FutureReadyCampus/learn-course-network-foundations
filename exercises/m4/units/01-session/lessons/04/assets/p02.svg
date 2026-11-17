@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img">
+<title>실습 1-1 정답: 30줄 중 28줄 읽기 성공, 2줄 실패, 같은 404 라도 다른 일</title>
+<desc>위는 실행 결과로 30줄 중 28줄이 딕셔너리가 되고 큰따옴표가 부족한 2줄은 실패합니다. 아래는 한 번의 404 와 같은 주소에서 연달아 난 404 를 비교합니다.</desc>
+<defs><marker id="a-m4u01l04-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker><marker id="a-m4u01l04-p02-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0442e"/></marker></defs>
+<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
+<text x="24" y="30" font-size="19" fill="#292929" font-weight="700">실습 1-1 정답 흐름</text>
+<rect x="24" y="56" width="180" height="110" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="114.0" y="105.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">access_sample.log</text>
+<text x="114.0" y="126.8" font-size="15" fill="#292929" text-anchor="middle">전체 30줄</text>
+<line x1="204" y1="90" x2="236" y2="78" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l04-p02)"/>
+<line x1="204" y1="132" x2="236" y2="144" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l04-p02)"/>
+<rect x="240" y="48" width="210" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="345.0" y="81.2" font-size="15" fill="#1f7a4a" text-anchor="middle" font-weight="700">읽기 성공 28줄</text>
+<rect x="470" y="48" width="226" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="583.0" y="81.2" font-size="15" fill="#292929" text-anchor="middle">딕셔너리로 바뀜</text>
+<rect x="240" y="116" width="210" height="56" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="345.0" y="149.2" font-size="15" fill="#b32a17" text-anchor="middle" font-weight="700">읽기 실패 2줄</text>
+<rect x="470" y="116" width="226" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="583.0" y="138.8" font-size="15" fill="#292929" text-anchor="middle">잘린 /board/5 줄</text>
+<text x="583.0" y="159.8" font-size="15" fill="#292929" text-anchor="middle">- 하나만 있는 줄</text>
+<text x="24" y="214" font-size="17" fill="#292929" font-weight="700">(다) 같은 404 라도 다른 일</text>
+<rect x="24" y="230" width="324" height="120" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="186.0" y="274.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">198.51.100.21</text>
+<text x="186.0" y="295.2" font-size="15" fill="#292929" text-anchor="middle">GET /board/99 → 404</text>
+<text x="186.0" y="316.2" font-size="15" fill="#292929" text-anchor="middle">한 번의 오류일 수 있음</text>
+<rect x="372" y="230" width="324" height="120" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="534.0" y="263.8" font-size="15" fill="#b32a17" text-anchor="middle" font-weight="700">198.51.100.90 · curl</text>
+<text x="534.0" y="284.8" font-size="15" fill="#292929" text-anchor="middle">/.env → /wp-login.php →</text>
+<text x="534.0" y="305.8" font-size="15" fill="#292929" text-anchor="middle">/phpmyadmin 모두 404</text>
+<text x="534.0" y="326.8" font-size="15" fill="#292929" text-anchor="middle">1초 간격으로 차례로 탐색</text>
+<text x="24" y="386" font-size="15" fill="#666660">한 줄만 보면 둘 다 404 입니다. 같은 주소를 시간순으로 묶어 봐야 보입니다.</text>
+</g>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>실습 10-3 정답: 상황 8개를 데이터 · 규칙 · 운영 설정 문제로 나눈다</title>
+<desc>데이터 문제는 상황 2 · 3 · 6, 규칙 문제는 상황 1 · 4 · 5 · 7, 운영 설정 문제는 상황 8 입니다. 원인을 먼저 가려야 고칠 곳이 정해집니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 10-3 정답 · 원인으로 나누기</text>
+<rect x="20" y="52" width="214" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="127" y="78.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">데이터 문제</text>
+<rect x="20" y="106" width="214" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="30" y="132.3" font-size="14" fill="#292929">2 · 깨진 로그 2줄</text>
+<rect x="20" y="158" width="214" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="30" y="184.3" font-size="14" fill="#292929">3 · 웹 로그에 user 없음</text>
+<rect x="20" y="210" width="214" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="30" y="236.3" font-size="14" fill="#292929">6 · 알림 파일이 따로</text>
+<rect x="253" y="52" width="214" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360" y="78.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">규칙 문제</text>
+<rect x="253" y="106" width="214" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="263" y="132.3" font-size="14" fill="#292929">1 · 의심 조건이 좁음</text>
+<rect x="253" y="158" width="214" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="263" y="184.3" font-size="14" fill="#292929">4 · 하루 전체 span</text>
+<rect x="253" y="210" width="214" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="263" y="236.3" font-size="14" fill="#292929">5 · 믿는 IP 예외 없음</text>
+<rect x="253" y="262" width="214" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="263" y="288.3" font-size="14" fill="#292929">7 · REPEAT_LIMIT 미달</text>
+<rect x="486" y="52" width="214" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="593" y="78.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">운영 설정 문제</text>
+<rect x="486" y="106" width="214" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="496" y="132.3" font-size="14" fill="#292929">8 · ports 가 열림</text>
+<rect x="486" y="158" width="214" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="496" y="184.3" font-size="14" fill="#292929">8 · volumes 없음</text>
+<rect x="20" y="330" width="680" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="352.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">상황마다 쓰는 순서</text>
+<text x="360" y="373.1" font-size="15" fill="#292929" text-anchor="middle">원인 → 고칠 파일 → 어떻게(추가 · 수정 · 삭제) → 고친 뒤 확인</text>
+</g>
+</svg>

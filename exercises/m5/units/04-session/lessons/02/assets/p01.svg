@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>잠금 요청 3건 중 dami 만 새로 잠기고, gaeun 과 junho 는 다르게 기록됩니다</title>
+<desc>실습 4-1의 잠금 요청 3건입니다. 퇴사한 dami 는 새로 잠기고, VIP 인 gaeun 은 잠기지 않으며, 이미 잠긴 junho 는 잠김에서 잠김으로 기록됩니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 4-1 목표: 요청 3건, 결과는 서로 다르다</text>
+<rect x="24" y="70" width="180" height="66" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="114.0" y="97.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="114.0" dy="0" font-weight="700">INC-001 dami</tspan><tspan x="114.0" dy="21.0">퇴사한 계정</tspan></text>
+<rect x="254" y="70" width="160" height="66" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="334.0" y="97.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="334.0" dy="0">lock_account</tspan><tspan x="334.0" dy="21.0">+ 사후 검증</tspan></text>
+<rect x="464" y="70" width="232" height="66" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="580.0" y="97.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="580.0" dy="0" font-weight="700">before → after</tspan><tspan x="580.0" dy="21.0">잠기지 않음 → 잠김</tspan></text>
+<line x1="204" y1="103" x2="252" y2="103" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<line x1="414" y1="103" x2="462" y2="103" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="24" y="154" width="180" height="66" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="114.0" y="181.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="114.0" dy="0" font-weight="700">INC-003 gaeun</tspan><tspan x="114.0" dy="21.0">VIP · 계정 관리자</tspan></text>
+<rect x="254" y="154" width="160" height="66" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="334.0" y="181.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="334.0" dy="0">lock_account</tspan><tspan x="334.0" dy="21.0">+ 사후 검증</tspan></text>
+<rect x="464" y="154" width="232" height="66" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="580.0" y="181.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="580.0" dy="0" font-weight="700">before → after</tspan><tspan x="580.0" dy="21.0">변경 없음 → 변경 없음</tspan></text>
+<line x1="204" y1="187" x2="252" y2="187" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<line x1="414" y1="187" x2="462" y2="187" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="24" y="238" width="180" height="66" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="114.0" y="265.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="114.0" dy="0" font-weight="700">INC-006 junho</tspan><tspan x="114.0" dy="21.0">수업 전부터 잠김</tspan></text>
+<rect x="254" y="238" width="160" height="66" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="334.0" y="265.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="334.0" dy="0">lock_account</tspan><tspan x="334.0" dy="21.0">+ 사후 검증</tspan></text>
+<rect x="464" y="238" width="232" height="66" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="580.0" y="265.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="580.0" dy="0" font-weight="700">before → after</tspan><tspan x="580.0" dy="21.0">잠김 → 잠김</tspan></text>
+<line x1="204" y1="271" x2="252" y2="271" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<line x1="414" y1="271" x2="462" y2="271" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<text x="24" y="330" font-size="15" text-anchor="start" fill="#666660">before 를 남겨야 오탐 롤백 때 원래 잠겨 있던 junho 를 빼고 풀 수 있습니다.</text>
+</g>
+</svg>

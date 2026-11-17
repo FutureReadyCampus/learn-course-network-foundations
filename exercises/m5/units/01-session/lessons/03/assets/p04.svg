@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>run_playbook에 직접 쓰는 여섯 줄: 승인 확인, 대기 기록, 끝내기, 실행, 기록, 상태 옮기기</title>
+<desc>직접 쓰는 1~6번을 위에서 아래 순서로 적은 요점 지도다. 1~3번은 승인 확인 부분, 4~5번은 for 안의 실행과 기록, 6번은 상태를 조치됨으로 옮기는 줄이다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 1-2 정리: 직접 쓰는 여섯 곳</text>
+<rect x="20" y="52" width="44" height="42" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="78.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="42.0" dy="0.0" font-weight="700">1</tspan></text>
+<rect x="74" y="52" width="456" height="42" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="77.9" font-size="14" fill="#292929"><tspan x="86" dy="0.0">if playbook["approval"] != "자동":</tspan></text>
+<text x="546" y="78" font-size="15" fill="#666660">값이 다르면</text>
+<rect x="20" y="104" width="44" height="42" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text y="130.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="42.0" dy="0.0" font-weight="700">2</tspan></text>
+<rect x="74" y="104" width="456" height="42" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="129.9" font-size="14" fill="#292929"><tspan x="86" dy="0.0">action_log.append(make_log_entry(…, "승인 대기"))</tspan></text>
+<text x="546" y="130" font-size="15" fill="#666660">리스트에 추가</text>
+<rect x="20" y="156" width="44" height="42" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text y="182.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="42.0" dy="0.0" font-weight="700">3</tspan></text>
+<rect x="74" y="156" width="456" height="42" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="181.9" font-size="14" fill="#292929"><tspan x="86" dy="0.0">return False</tspan></text>
+<text x="546" y="182" font-size="15" fill="#666660">여기서 끝내기</text>
+<rect x="20" y="208" width="44" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="234.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="42.0" dy="0.0" font-weight="700">4</tspan></text>
+<rect x="74" y="208" width="456" height="42" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="233.9" font-size="14" fill="#292929"><tspan x="86" dy="0.0">result = run_action(action, incident, state)</tspan></text>
+<text x="546" y="234" font-size="15" fill="#666660">실행하고 결과 받기</text>
+<rect x="20" y="260" width="44" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="286.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="42.0" dy="0.0" font-weight="700">5</tspan></text>
+<rect x="74" y="260" width="456" height="42" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="285.9" font-size="14" fill="#292929"><tspan x="86" dy="0.0">action_log.append(make_log_entry(…, action, result))</tspan></text>
+<text x="546" y="286" font-size="15" fill="#666660">기록 추가</text>
+<rect x="20" y="312" width="44" height="42" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text y="338.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="42.0" dy="0.0" font-weight="700">6</tspan></text>
+<rect x="74" y="312" width="456" height="42" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="337.9" font-size="14" fill="#292929"><tspan x="86" dy="0.0">change_status(incident, "조치됨")</tspan></text>
+<text x="546" y="338" font-size="15" fill="#666660">상태 옮기기</text>
+<text x="20" y="380" font-size="15" fill="#666660">들여쓰기: 1 · 6번은 공백 4개, 2 · 3 · 4 · 5번은 공백 8개</text>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img"><title>실습 7-1 정리: 식별 키를 만들고 두 결과의 이유를 모아 후보를 만든다</title><desc>식별 키는 source 까지 이어 붙여 만든다. 규칙 결과는 딕셔너리, 미사용 결과는 리스트에 식별 키로 담고, 이유가 하나라도 있으면 권한을 복사해 reasons 키를 적는다.</desc><defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">실습 7-1 정리</text>
+<rect x="20" y="52" width="180" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="77.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">식별 키 만들기</text>
+<rect x="214" y="52" width="486" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="457" y="77.25" font-size="15" fill="#292929" text-anchor="middle">key = key + ":" + entry["source"]</text>
+<rect x="20" y="100" width="180" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="125.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">걸린 이유 담기</text>
+<rect x="214" y="100" width="486" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="457" y="125.25" font-size="15" fill="#292929" text-anchor="middle">stale_reason[item_key] = item["reason"]</text>
+<rect x="20" y="148" width="180" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="173.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">안 쓴 키 담기</text>
+<rect x="214" y="148" width="486" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="457" y="173.25" font-size="15" fill="#292929" text-anchor="middle">unused_keys.append(item_key)</text>
+<rect x="20" y="196" width="180" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="221.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">규칙에 걸렸나</text>
+<rect x="214" y="196" width="486" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
+<text x="457" y="221.25" font-size="15" fill="#292929" text-anchor="middle">if key in stale_reason: → reasons.append(…)</text>
+<rect x="20" y="244" width="180" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="269.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">90일 넘게 안 썼나</text>
+<rect x="214" y="244" width="486" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
+<text x="457" y="269.25" font-size="15" fill="#292929" text-anchor="middle">if key in unused_keys: → reasons.append(…)</text>
+<rect x="20" y="292" width="180" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="317.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">이유가 있나</text>
+<rect x="214" y="292" width="486" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
+<text x="457" y="317.25" font-size="15" fill="#292929" text-anchor="middle">if len(reasons) &gt; 0:</text>
+<rect x="20" y="340" width="180" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="365.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">후보 만들기</text>
+<rect x="214" y="340" width="486" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="2"/>
+<text x="457" y="365.25" font-size="15" fill="#292929" text-anchor="middle">finding = entry.copy() → finding["reasons"] = reasons</text>
+</g>
+</svg>

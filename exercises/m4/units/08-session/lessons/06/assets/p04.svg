@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 305" role="img">
+<title>실습 8-3 보고서: 알림을 합친 뒤 놓친 문제 수, P4와 P5를 채운다</title>
+<desc>실습 8-3 보고서의 세 칸에 채울 내용을 체크리스트로 보여 준다. 로그인 규칙 알림을 합쳐 잡힌 P4와 아직 놓친 P5를 묻는다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 8-3 · 채울 칸</text>
+<rect x="12" y="54" width="224" height="70.4" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="124" y="94.72" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">(가) 출력과 요약</text>
+<rect x="12" y="134.4" width="224" height="41.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="22.0" y="148.9" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="44" y="160.45" font-size="15" text-anchor="start" fill="#292929">출력 전체를 코드 상자에</text>
+<rect x="12" y="184.15" width="224" height="41.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="22.0" y="198.65" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="44" y="210.2" font-size="15" text-anchor="start" fill="#292929">한 문장 요약</text>
+<rect x="248" y="54" width="224" height="70.4" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="83.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">(나) [핵심 질문] 합친</text>
+<text x="360" y="106.32" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">결과</text>
+<rect x="248" y="134.4" width="224" height="41.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="258.0" y="148.9" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="280" y="160.45" font-size="15" text-anchor="start" fill="#292929">놓친 문제가 줄어든 개수</text>
+<rect x="248" y="184.15" width="224" height="41.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="258.0" y="198.65" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="280" y="210.2" font-size="15" text-anchor="start" fill="#292929">P4 가 잡힌 이유</text>
+<rect x="248" y="233.9" width="224" height="41.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="258.0" y="248.4" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="280" y="259.95" font-size="15" text-anchor="start" fill="#292929">오탐이 늘지 않은 이유</text>
+<rect x="484" y="54" width="224" height="70.4" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="596" y="94.72" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">(다) [핵심 질문] 남은 P5</text>
+<rect x="484" y="134.4" width="224" height="85.25" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="494.0" y="148.9" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="516" y="160.45" font-size="15" text-anchor="start" fill="#292929">P5(seoyeon, 권한 없는</text>
+<text x="516" y="182.2" font-size="15" text-anchor="start" fill="#292929">정산 조회 시도)를 찾을</text>
+<text x="516" y="203.95" font-size="15" text-anchor="start" fill="#292929">규칙</text>
+<rect x="484" y="227.65" width="224" height="63.5" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="494.0" y="242.15" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="516" y="253.7" font-size="15" text-anchor="start" fill="#292929">그 규칙을 더하면 오탐이</text>
+<text x="516" y="275.45" font-size="15" text-anchor="start" fill="#292929">늘 수 있는 이유</text>
+</g>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img"><title>실습 9-1 보고서 칸: 출력, 세션 종료의 통제 갭, 담당자 알림 등급</title><desc>(가)는 출력 전체와 높음 조치, 보완할 조치 2개를 씁니다. (나)와 (다)는 핵심 질문으로 세션 종료의 통제 갭과 담당자 알림이 보통인 이유를 씁니다.</desc><defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">실습 9-1 보고서 · 채울 칸</text>
+<rect x="20" y="55" width="90" height="110" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="65.0" y="115" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">(가)</text>
+<rect x="120" y="55" width="580" height="110" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="132" y="93" font-size="15" fill="#292929">□ 출력 전체 (코드 상자)</text>
+<text x="132" y="115" font-size="15" fill="#292929">□ 등급이 높음인 조치</text>
+<text x="132" y="137" font-size="15" fill="#292929">□ 바로 보완할 조치 2개</text>
+<rect x="20" y="179" width="90" height="110" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="65.0" y="239" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">(나)</text>
+<rect x="120" y="179" width="580" height="110" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="132" y="217" font-size="15" fill="#292929">□ 세 조치의 controls</text>
+<text x="132" y="239" font-size="15" fill="#292929">□ 세션 종료만 통제 갭이 있는 이유</text>
+<text x="132" y="261" font-size="15" fill="#292929">□ 승인 게이트가 필요한 이유 (Unit 5 되돌리기)</text>
+<rect x="20" y="303" width="90" height="84" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="65.0" y="350" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">(다)</text>
+<rect x="120" y="303" width="580" height="84" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="132" y="339" font-size="15" fill="#292929">□ 담당자 알림의 점수 계산 · 보통인 이유</text>
+<text x="132" y="361" font-size="15" fill="#292929">□ 감사 기록이 없을 때 확인할 수 없는 것</text>
+</g></svg>

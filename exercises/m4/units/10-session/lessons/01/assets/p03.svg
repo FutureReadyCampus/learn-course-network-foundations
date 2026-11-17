@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 384" role="img">
+<title>.env 가 없으면 키를 만들고 확인한 뒤 .env 에 넣고 .gitignore 로 막는다</title>
+<desc>먼저 ls -a .. 로 .env 와 .gitignore 가 있는지 본다. 없으면 AI Studio 에서 키 만들기, curl 로 확인, .env 만들기, .gitignore 로 막기, True 확인의 다섯 단계를 한다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">API 키와 .env 다시 받기</text>
+<rect x="12" y="52" width="420" height="45.75" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="222" y="80.05" font-size="15" text-anchor="middle" fill="#292929">ls -a .. 에 .env 와 .gitignore 가 둘 다 있나?</text>
+<line x1="434" y1="74" x2="476" y2="74" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="478" y="52" width="230" height="45.75" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="593" y="80.05" font-size="15" text-anchor="middle" fill="#292929">있으면 이 절은 건너뜀</text>
+<line x1="222" y1="98" x2="222" y2="116" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="12" y="118" width="696" height="39.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="21" y="143.05" font-size="15" text-anchor="start" fill="#292929">1단계 · 키 만들기 — AI Studio › Create API key. 보통 AIza 로 시작. 결제 정보는 넣지 않는다</text>
+<rect x="12" y="165.75" width="696" height="39.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="21" y="190.8" font-size="15" text-anchor="start" fill="#292929">2단계 · 키 확인 — curl 로 요청해 "models" 목록이 나오면 맞는 키</text>
+<rect x="12" y="213.5" width="696" height="61.5" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="21" y="238.55" font-size="15" text-anchor="start" fill="#292929">3단계 · .env 만들기 — security-agent-toolkit 에 GEMINI_API_KEY=키 한 줄 (빈칸 ·</text>
+<text x="21" y="260.3" font-size="15" text-anchor="start" fill="#292929">따옴표 없이)</text>
+<rect x="12" y="283" width="696" height="39.75" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="21" y="308.05" font-size="15" text-anchor="start" fill="#292929">4단계 · 깃허브 막기 — .gitignore 에 .env 한 줄. git status 에 .env 가 안 보이면 OK</text>
+<rect x="12" y="330.75" width="696" height="39.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="21" y="355.8" font-size="15" text-anchor="start" fill="#292929">5단계 · 읽히는지 확인 — anomaly_detection 에서 read_api_key → True</text>
+</g>
+</svg>

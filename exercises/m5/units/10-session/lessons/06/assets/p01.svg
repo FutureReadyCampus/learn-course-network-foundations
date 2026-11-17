@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>보고서는 문제마다 질문의 쓸 내용을 보고 답 뒤에 근거와 함께 씁니다</title>
+<desc>문제를 풀 때마다 그 문제 제목 아래 질문에 답합니다. 쓸 내용을 보고 답 뒤에 쓰고, 출력과 코드는 빈 코드 상자에 붙여 넣습니다. 왜를 묻는 질문은 내 화면의 값을 근거로 이유까지 쓰고, 못 찾으면 모름 — 막힌 곳을 씁니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="bold">보고서 쓰는 법: 질문 하나를 채우는 순서</text>
+<rect x="20" y="54" width="210" height="80" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="125.0" y="88.8" font-size="15" fill="#292929" text-anchor="middle">1. 문제 하나를 풀면</text>
+<text x="125.0" y="109.8" font-size="15" fill="#292929" text-anchor="middle">그 제목 아래 질문으로</text>
+<line x1="232" y1="94" x2="253" y2="94" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="255" y="54" width="210" height="80" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360.0" y="88.8" font-size="15" fill="#292929" text-anchor="middle">2. 「쓸 내용:」을</text>
+<text x="360.0" y="109.8" font-size="15" fill="#292929" text-anchor="middle">읽고 「답:」 뒤에 쓰기</text>
+<line x1="467" y1="94" x2="488" y2="94" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="490" y="54" width="210" height="80" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="595.0" y="88.8" font-size="15" fill="#292929" text-anchor="middle">3. 출력 · 코드는</text>
+<text x="595.0" y="109.8" font-size="15" fill="#292929" text-anchor="middle">빈 코드 상자에 붙이기</text>
+<rect x="20" y="160" width="330" height="96" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="185.0" y="183.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="bold">「왜」를 묻는 질문</text>
+<text x="185.0" y="204.5" font-size="14" fill="#292929" text-anchor="middle">한 단어로 끝내지 않고</text>
+<text x="185.0" y="224.1" font-size="14" fill="#292929" text-anchor="middle">내 화면의 값이나 배운 내용을</text>
+<text x="185.0" y="243.7" font-size="14" fill="#292929" text-anchor="middle">근거로 이유까지 씁니다</text>
+<rect x="370" y="160" width="330" height="96" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="535.0" y="183.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="bold">[핵심 질문] · 모를 때</text>
+<text x="535.0" y="204.5" font-size="14" fill="#292929" text-anchor="middle">[핵심 질문]은 꼭 알아야 할 질문</text>
+<text x="535.0" y="224.1" font-size="14" fill="#292929" text-anchor="middle">답을 못 찾았으면 표시와 상관없이</text>
+<text x="535.0" y="243.7" font-size="14" fill="#292929" text-anchor="middle">「모름 — 막힌 곳: …」 이라고 씁니다</text>
+<rect x="20" y="280" width="680" height="80" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="314.8" font-size="15" fill="#292929" text-anchor="start">예: (나) 답: INC-402 는 KeyError: 'grade' 로 실패했지만</text>
+<text x="32" y="335.8" font-size="15" fill="#292929" text-anchor="start">except 가 받아서 INC-403 부터 계속 처리됐습니다.</text>
+</g>
+</svg>

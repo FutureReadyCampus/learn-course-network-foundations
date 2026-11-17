@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 414" role="img">
+<title>실습 9-2에서 쓴 설정과 명령을 하려는 일 여섯 가지로 정리했다</title>
+<desc>접속 범위 정하기, 다른 컴포즈 파일 적용, PORTS 읽기, 로그 연결, grep 으로 세고 저장하기, 모두 끄기를 명령과 짝지은 요점 지도다.</desc>
+<defs><marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 9-2 정리</text>
+<text x="117" y="64" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">하려는 일</text>
+<text x="478" y="64" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">명령 · 설정</text>
+<rect x="12" y="78" width="210" height="41.75" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="117" y="104.05" font-size="15" text-anchor="middle" fill="#292929">내 PC 에서만 접속하게</text>
+<rect x="248" y="78" width="460" height="41.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="478" y="104.05" font-size="15" text-anchor="middle" fill="#292929">"127.0.0.1:8081:80"</text>
+<line x1="225" y1="98.875" x2="245" y2="98.875" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<rect x="12" y="129.75" width="210" height="41.75" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="117" y="155.8" font-size="15" text-anchor="middle" fill="#292929">다른 컴포즈 파일로 적용</text>
+<rect x="248" y="129.75" width="460" height="41.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="478" y="155.8" font-size="15" text-anchor="middle" fill="#292929">docker compose -f compose.secure.yaml up -d</text>
+<line x1="225" y1="150.625" x2="245" y2="150.625" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<rect x="12" y="181.5" width="210" height="41.75" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="117" y="207.55" font-size="15" text-anchor="middle" fill="#292929">접속 범위 읽기</text>
+<rect x="248" y="181.5" width="460" height="41.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="478" y="207.55" font-size="15" text-anchor="middle" fill="#292929">-f compose.secure.yaml ps 의 PORTS</text>
+<line x1="225" y1="202.375" x2="245" y2="202.375" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<rect x="12" y="233.25" width="210" height="41.75" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="117" y="259.3" font-size="15" text-anchor="middle" fill="#292929">로그를 내 폴더에 연결</text>
+<rect x="248" y="233.25" width="460" height="41.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="478" y="259.3" font-size="15" text-anchor="middle" fill="#292929">volumes: - ./logs:/var/log/nginx</text>
+<line x1="225" y1="254.125" x2="245" y2="254.125" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<rect x="12" y="285" width="210" height="63.5" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="117" y="321.925" font-size="15" text-anchor="middle" fill="#292929">찾고 세기 · 저장</text>
+<rect x="248" y="285" width="460" height="63.5" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="478" y="311.05" font-size="15" text-anchor="middle" fill="#292929">grep " 404 " logs/access.log | wc -l · … &gt;</text>
+<text x="478" y="332.8" font-size="15" text-anchor="middle" fill="#292929">logs/web_404.log</text>
+<line x1="225" y1="316.75" x2="245" y2="316.75" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<rect x="12" y="358.5" width="210" height="41.75" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="117" y="384.55" font-size="15" text-anchor="middle" fill="#292929">모두 끄고 지우기</text>
+<rect x="248" y="358.5" width="460" height="41.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="478" y="384.55" font-size="15" text-anchor="middle" fill="#292929">docker compose -f compose.secure.yaml down</text>
+<line x1="225" y1="379.375" x2="245" y2="379.375" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+</g>
+</svg>

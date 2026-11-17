@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 370" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>평소를 모르고 정한 알림 기준: 너무 낮으면 무시되고 너무 높으면 놓친다</title>
+<desc>기준이 너무 낮으면 평범한 날에도 알림이 나서 담당자가 알림을 무시하게 됩니다. 너무 높으면 비밀번호를 바꿔 가며 계속 시도해도 알림이 나지 않습니다. 그래서 평소 기준을 먼저 구합니다.</desc>
+<defs><marker id="a-0402-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">왜 평소 기준이 먼저 필요한가</text>
+<rect x="24" y="66" width="204.0" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="126.0" y="106.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">너무 낮은 기준</text>
+<line x1="231.0" y1="101.0" x2="255.0" y2="101.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0402-p02)"/>
+<rect x="258.0" y="66" width="204.0" height="70" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="95.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">평범한 날에도</text>
+<text x="360.0" y="116.8" font-size="15" fill="#666660" text-anchor="middle">알림이 남</text>
+<line x1="465.0" y1="101.0" x2="489.0" y2="101.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0402-p02)"/>
+<rect x="492.0" y="66" width="204.0" height="70" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="594.0" y="95.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">담당자가</text>
+<text x="594.0" y="116.8" font-size="15" fill="#666660" text-anchor="middle">알림을 무시</text>
+<rect x="24" y="156" width="204.0" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="126.0" y="196.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">너무 높은 기준</text>
+<line x1="231.0" y1="191.0" x2="255.0" y2="191.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0402-p02)"/>
+<rect x="258.0" y="156" width="204.0" height="70" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="185.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">비밀번호를 바꿔 가며</text>
+<text x="360.0" y="206.8" font-size="15" fill="#666660" text-anchor="middle">계속 시도해도</text>
+<line x1="465.0" y1="191.0" x2="489.0" y2="191.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0402-p02)"/>
+<rect x="492.0" y="156" width="204.0" height="70" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="594.0" y="185.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">알림이</text>
+<text x="594.0" y="206.8" font-size="15" fill="#666660" text-anchor="middle">나지 않음</text>
+<line x1="360" y1="238" x2="360" y2="266" stroke="#666660" stroke-width="2" marker-end="url(#a-0402-p02)"/>
+<rect x="24" y="270" width="672" height="74" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360.0" y="301.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">해결: 지난 며칠의 숫자(평소 기준)를 먼저 구하고</text>
+<text x="360.0" y="322.8" font-size="15" fill="#666660" text-anchor="middle">거기서 알림 기준 숫자를 정합니다</text>
+</svg>

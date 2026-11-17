@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" role="img"><title>정답의 설명은 한 예이고, 내 답의 핵심이 같으면 맞은 것이다</title><desc>정답 문서의 설명하는 답은 여러 답 가운데 한 예다. 내 답과 정답 예를 비교해 핵심이 같으면 맞은 답으로 본다.</desc><defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">정답을 보는 방법</text>
+<rect x="40" y="80" width="180" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
+<text x="130" y="109.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">내 답</text>
+<text x="130" y="130.75" font-size="14" fill="#666660" text-anchor="middle">보고서에 쓴 것</text>
+<rect x="40" y="170" width="180" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="130" y="199.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">정답의 답</text>
+<text x="130" y="220.75" font-size="14" fill="#666660" text-anchor="middle">한 예일 뿐</text>
+<rect x="280" y="120" width="180" height="76" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="370" y="152.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">핵심이 같은가?</text>
+<text x="370" y="173.75" font-size="14" fill="#666660" text-anchor="middle">표현은 달라도 된다</text>
+<line x1="224" y1="115" x2="276" y2="145" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<line x1="224" y1="205" x2="276" y2="175" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<line x1="464" y1="158" x2="506" y2="158" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<text x="485" y="144" font-size="14" fill="#666660" text-anchor="middle">같다</text>
+<rect x="510" y="124" width="170" height="68" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="2"/>
+<text x="595" y="163.25" font-size="15" fill="#292929" text-anchor="middle">맞은 답</text>
+</g>
+</svg>

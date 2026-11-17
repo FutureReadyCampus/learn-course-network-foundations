@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img"><title>자동 조치 6가지의 위험을 평가해 리스크 평가 문서를 만드는 흐름</title><desc>입력 파일 automation_risks.json 의 자동 조치 6가지를 risk_assessment.py 가 점수·등급·통제 갭으로 평가합니다. 결과는 16줄짜리 risk_assessment.md 이고, 바로 보완할 조치는 2개입니다.</desc><defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">실습 9-1 · 무엇을 만드나</text>
+<rect x="20" y="60" width="200" height="150" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="120.0" y="108" font-size="16" fill="#666660" text-anchor="middle" font-weight="700">입력</text>
+<text x="120.0" y="131" font-size="15" fill="#292929" text-anchor="middle">자동 조치 6가지</text>
+<text x="120.0" y="153" font-size="15" fill="#292929" text-anchor="middle">영향도 · 발생 가능성</text>
+<text x="120.0" y="174" font-size="15" fill="#292929" text-anchor="middle">지금 있는 통제</text>
+<text x="120" y="232" font-size="14" fill="#666660" text-anchor="middle">automation_risks.json</text>
+<rect x="260" y="60" width="200" height="150" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360.0" y="108" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">프로그램</text>
+<text x="360.0" y="131" font-size="15" fill="#292929" text-anchor="middle">① 위험 점수 산출</text>
+<text x="360.0" y="153" font-size="15" fill="#292929" text-anchor="middle">② 등급 분류</text>
+<text x="360.0" y="174" font-size="15" fill="#292929" text-anchor="middle">③ 통제 갭 찾기</text>
+<text x="360" y="232" font-size="14" fill="#666660" text-anchor="middle">risk_assessment.py</text>
+<rect x="500" y="60" width="200" height="150" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="600.0" y="108" font-size="16" fill="#1f7a4a" text-anchor="middle" font-weight="700">출력</text>
+<text x="600.0" y="131" font-size="15" fill="#292929" text-anchor="middle">리스크 평가 문서</text>
+<text x="600.0" y="153" font-size="15" fill="#292929" text-anchor="middle">16줄</text>
+<text x="600.0" y="174" font-size="15" fill="#292929" text-anchor="middle">바로 보완할 조치 2개</text>
+<text x="600" y="232" font-size="14" fill="#666660" text-anchor="middle">risk_assessment.md</text>
+<line x1="222" y1="135" x2="256" y2="135" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<line x1="462" y1="135" x2="496" y2="135" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="20" y="260" width="680" height="80" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="360.0" y="283" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">오늘 샘플의 통제 갭</text>
+<text x="360.0" y="307" font-size="15" fill="#292929" text-anchor="middle">세션 종료 → 승인 게이트 추가</text>
+<text x="360.0" y="328" font-size="15" fill="#292929" text-anchor="middle">담당자 알림 → 감사 기록 추가</text>
+</g></svg>

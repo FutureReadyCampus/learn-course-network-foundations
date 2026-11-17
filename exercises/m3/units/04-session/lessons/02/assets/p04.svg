@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>create_request 는 사용자·이유·만료 시각을 차례로 확인하고 통과한 요청만 접수한다</title>
+<desc>세 가지 확인 중 하나라도 걸리면 (False, 이유)를 리턴하고 오른쪽으로 빠집니다. 세 확인을 모두 통과하면 요청서를 만들어 REQUESTS 에 추가하고 (True, 요청서)를 리턴합니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">접수할 수 없는 요청을 거르는 순서</text>
+<rect x="40" y="48" width="340" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="210" y="72.6" font-size="15" fill="#292929" text-anchor="middle">create_request(user, …, received_at)</text>
+<line x1="210" y1="88" x2="210" y2="110" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p04)"/>
+<rect x="40" y="112" width="340" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="210" y="141.6" font-size="15" fill="#292929" text-anchor="middle">user 가 USERS 에 있나?</text>
+<line x1="380" y1="137" x2="458" y2="137" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p04)"/>
+<text x="419" y="130" font-size="14" fill="#666660" text-anchor="middle">없음</text>
+<rect x="460" y="112" width="240" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="580" y="131.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">False</text>
+<text x="580" y="151.4" font-size="15" fill="#292929" text-anchor="middle">"등록되지 않은 사용자"</text>
+<line x1="210" y1="162" x2="210" y2="190" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p04)"/>
+<text x="222" y="182" font-size="14" fill="#666660" text-anchor="start">있음</text>
+<rect x="40" y="192" width="340" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="210" y="221.6" font-size="15" fill="#292929" text-anchor="middle">reason 이 빈 문자열인가?</text>
+<line x1="380" y1="217" x2="458" y2="217" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p04)"/>
+<text x="419" y="210" font-size="14" fill="#666660" text-anchor="middle">빈 문자열</text>
+<rect x="460" y="192" width="240" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="580" y="211.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">False</text>
+<text x="580" y="231.4" font-size="15" fill="#292929" text-anchor="middle">"이유가 없음"</text>
+<line x1="210" y1="242" x2="210" y2="270" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p04)"/>
+<text x="222" y="262" font-size="14" fill="#666660" text-anchor="start">아님</text>
+<rect x="40" y="272" width="340" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="210" y="301.6" font-size="15" fill="#292929" text-anchor="middle">until 이 received_at 보다 늦은가?</text>
+<line x1="380" y1="297" x2="458" y2="297" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p04)"/>
+<text x="419" y="290" font-size="14" fill="#666660" text-anchor="middle">늦지 않음</text>
+<rect x="460" y="272" width="240" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="580" y="291.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">False</text>
+<text x="580" y="311.4" font-size="15" fill="#292929" text-anchor="middle">"만료 시각이 이미 지났음"</text>
+<line x1="210" y1="322" x2="210" y2="350" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p04)"/>
+<text x="222" y="342" font-size="14" fill="#666660" text-anchor="start">늦음</text>
+<rect x="40" y="352" width="340" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="210" y="376.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">REQUESTS 에 추가</text>
+<text x="210" y="397.1" font-size="15" fill="#292929" text-anchor="middle">(True, 요청서) · "reviewing"</text>
+<rect x="460" y="352" width="240" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="580" y="376.4" font-size="15" fill="#292929" text-anchor="middle">퇴사 · 이미 가진 권한은</text>
+<text x="580" y="396.4" font-size="15" fill="#292929" text-anchor="middle">실습 4-3에서 확인</text>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>올리기 전에 git status 로 .env 를 확인하고 add, commit, push 후 브라우저로 봅니다</title>
+<desc>마무리로 오늘 만든 파일을 깃허브에 올리는 순서입니다. 단계마다 오른쪽에 확인할 점을 적었습니다. .env 나 .venv 가 보이면 .gitignore 에 적고 다시 확인합니다.</desc>
+<defs><marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+<text x="24" y="34" font-size="19" font-weight="700">마무리 · 깃허브에 올리는 순서</text>
+<rect x="24" y="52" width="330" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="189" y="83.4" font-size="15" text-anchor="middle">1. cd .. → pwd</text>
+<rect x="384" y="52" width="312" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="540" y="73.2" font-size="14" text-anchor="middle">…/security-agent-toolkit</text>
+<text x="540" y="92.8" font-size="14" text-anchor="middle">로 끝나는지</text>
+<line x1="354" y1="78" x2="384" y2="78" stroke="#666660" stroke-width="1.5"/>
+<rect x="24" y="120" width="330" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="189" y="151.4" font-size="15" text-anchor="middle">2. git status</text>
+<rect x="384" y="120" width="312" height="52" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="540" y="141.2" font-size="14" text-anchor="middle">.env · .venv 가 보이면 멈춤</text>
+<text x="540" y="160.8" font-size="14" text-anchor="middle">→ .gitignore 에 한 줄</text>
+<line x1="354" y1="146" x2="384" y2="146" stroke="#666660" stroke-width="1.5"/>
+<path d="M189,104 L189,118" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p07)"/>
+<rect x="24" y="188" width="330" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="189" y="219.4" font-size="15" text-anchor="middle">3. 보고서 (가) 채우기</text>
+<rect x="384" y="188" width="312" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="540" y="209.2" font-size="14" text-anchor="middle">Untracked 줄 수와</text>
+<text x="540" y="228.8" font-size="14" text-anchor="middle">.env · .venv 유무</text>
+<line x1="354" y1="214" x2="384" y2="214" stroke="#666660" stroke-width="1.5"/>
+<path d="M189,172 L189,186" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p07)"/>
+<rect x="24" y="256" width="330" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="189" y="287.4" font-size="15" text-anchor="middle">4. git add . → commit → push</text>
+<rect x="384" y="256" width="312" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="540" y="277.2" font-size="14" text-anchor="middle">rejected 면 git pull</text>
+<text x="540" y="296.8" font-size="14" text-anchor="middle">뒤에 다시 push</text>
+<line x1="354" y1="282" x2="384" y2="282" stroke="#666660" stroke-width="1.5"/>
+<path d="M189,240 L189,254" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p07)"/>
+<rect x="24" y="324" width="330" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="189" y="355.4" font-size="15" text-anchor="middle">5. 브라우저에서 확인</text>
+<rect x="384" y="324" width="312" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="540" y="345.2" font-size="14" text-anchor="middle">ls access_control 의</text>
+<text x="540" y="364.8" font-size="14" text-anchor="middle">파일이 모두 보이는지</text>
+<line x1="354" y1="350" x2="384" y2="350" stroke="#666660" stroke-width="1.5"/>
+<path d="M189,308 L189,322" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p07)"/>
+</g>
+</svg>

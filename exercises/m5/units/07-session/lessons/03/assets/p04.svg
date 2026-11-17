@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 450" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>실습 7-2 에서 직접 쓰는 코드를 함수별로 묶은 요점 지도</title>
+<desc>왼쪽은 함수 이름, 오른쪽은 그 함수에서 직접 쓰는 줄이다. 개수가 0 이면, 합계를 개수로 나누기, -1 이 아니면, 리스트에 추가, 보다 늦으면, 1 늘리기, 결과 저장을 모았다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">실습 7-2 정리 · 함수별로 쓰는 줄</text>
+<rect x="20" y="60" width="220" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="130.0" y="101.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">average</text>
+<rect x="260" y="60" width="440" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="274" y="91.1" font-size="14" fill="#292929">if len(numbers) == 0:</text>
+<text x="274" y="110.7" font-size="14" fill="#292929">return sum(numbers) / len(numbers)</text>
+<line x1="242" y1="96.0" x2="258" y2="96.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="20" y="144" width="220" height="94" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="130.0" y="196.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">collect_response_times</text>
+<rect x="260" y="144" width="440" height="94" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="274" y="176.3" font-size="14" fill="#292929">if ticket["acked_at"] != -1:</text>
+<text x="274" y="195.9" font-size="14" fill="#292929">times.append(ticket["acked_at"]</text>
+<text x="274" y="215.5" font-size="14" fill="#292929">    - ticket["created_at"])</text>
+<line x1="242" y1="191.0" x2="258" y2="191.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="20" y="250" width="220" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="130.0" y="291.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">count_sla_breaches</text>
+<rect x="260" y="250" width="440" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="274" y="281.1" font-size="14" fill="#292929">if checked_time &gt; ticket["sla_due"]:</text>
+<text x="274" y="300.7" font-size="14" fill="#292929">late = late + 1</text>
+<line x1="242" y1="286.0" x2="258" y2="286.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="20" y="334" width="220" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="130.0" y="375.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">exercise7-2_run.py</text>
+<rect x="260" y="334" width="440" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="274" y="365.1" font-size="14" fill="#292929">ack_times = collect_response_times(tickets)</text>
+<text x="274" y="384.7" font-size="14" fill="#292929">mean_ack_minutes = average(ack_times)</text>
+<line x1="242" y1="370.0" x2="258" y2="370.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+</svg>

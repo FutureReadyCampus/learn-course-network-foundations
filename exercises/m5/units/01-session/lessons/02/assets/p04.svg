@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>알림에 번호와 처리 상태를 붙이면 인시던트가 되고 같은 번호로 추적한다</title>
+<desc>알림의 정보에 번호 id와 상태 status를 더하면 인시던트 INC-001이 된다. 상태는 탐지됨, 분류됨, 조치됨으로 바뀌고, 계정 잠금과 티켓, 감사 기록에 같은 번호가 들어간다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">인시던트 = 알림 + 번호 + 처리 상태</text>
+<rect x="20" y="56" width="200" height="118" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="88.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="120.0" dy="0.0" font-weight="700">알림 (Module 4)</tspan><tspan x="120.0" dy="21.0">entity: dami</tspan><tspan x="120.0" dy="21.0">grade: high</tspan><tspan x="120.0" dy="21.0">score: 60</tspan></text>
+<text x="240" y="122" font-size="24" fill="#292929" text-anchor="middle" font-weight="700">+</text>
+<rect x="260" y="56" width="170" height="118" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="99.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="345.0" dy="0.0" font-weight="700">더하는 것</tspan><tspan x="345.0" dy="21.0">id: INC-001</tspan><tspan x="345.0" dy="21.0">status: 탐지됨</tspan></text>
+<line x1="436" y1="115" x2="466" y2="115" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="470" y="56" width="230" height="118" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="88.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="585.0" dy="0.0" font-weight="700">인시던트</tspan><tspan x="585.0" dy="21.0">처리할 일 한 건</tspan><tspan x="585.0" dy="21.0">대응이 끝날 때까지</tspan><tspan x="585.0" dy="21.0">이 번호로 추적</tspan></text>
+<text x="20" y="214" font-size="16" fill="#292929" font-weight="700">상태가 바뀌는 순서</text>
+<rect x="20.0" y="226" width="186.7" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="256.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="113.35" dy="0.0" font-weight="700">탐지됨</tspan></text>
+<rect x="266.7" y="226" width="186.7" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="256.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.04999999999995" dy="0.0" font-weight="700">분류됨</tspan></text>
+<line x1="209.7" y1="251.0" x2="262.7" y2="251.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="513.3" y="226" width="186.7" height="50" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text y="256.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="606.65" dy="0.0" font-weight="700">조치됨</tspan></text>
+<line x1="456.3" y1="251.0" x2="509.3" y2="251.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<text x="20" y="314" font-size="16" fill="#292929" font-weight="700">같은 번호 INC-001 이 들어가는 곳</text>
+<rect x="20.0" y="326" width="206.7" height="54" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text y="358.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="123.35" dy="0.0" font-weight="700">계정 잠금</tspan></text>
+<rect x="256.7" y="326" width="206.7" height="54" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text y="358.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.04999999999995" dy="0.0" font-weight="700">티켓 incident 값</tspan></text>
+<rect x="493.3" y="326" width="206.7" height="54" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text y="358.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="596.65" dy="0.0" font-weight="700">감사 기록</tspan></text>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img"><title>후보 10건을 회수 제외 리스트로 회수 대상과 회수 제외로 나눈다</title><desc>실습 7-1 리포트의 후보 10건과 config/exclude_list.json 을 split_by_exclude 에 넣는다. 가은 ACCOUNT:CHANGE 와 서연 SALES:CHANGE 처럼 평소에 안 써도 되는 권한은 회수 제외로 간다.</desc><defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">실습 7-2 · 무엇을 만드는가</text>
+<rect x="20" y="64" width="214" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="127" y="93.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">리포트 후보</text>
+<text x="127" y="114.75" font-size="14" fill="#666660" text-anchor="middle">실습 7-1 · 10건</text>
+<rect x="20" y="160" width="214" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="127" y="189.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">회수 제외 리스트</text>
+<text x="127" y="210.75" font-size="14" fill="#666660" text-anchor="middle">config/exclude_list.json</text>
+<rect x="272" y="104" width="168" height="86" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
+<text x="356" y="131.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">split_by_exclude</text>
+<text x="356" y="152.25" font-size="14" fill="#666660" text-anchor="middle">퇴사한 계정은</text>
+<text x="356" y="173.25" font-size="14" fill="#666660" text-anchor="middle">제외하지 않는다</text>
+<line x1="238" y1="99" x2="268" y2="130" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<line x1="238" y1="195" x2="268" y2="164" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="490" y="56" width="210" height="72" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="2"/>
+<text x="595" y="86.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">회수 대상</text>
+<text x="595" y="107.75" font-size="14" fill="#666660" text-anchor="middle">Unit 8에서 회수</text>
+<rect x="490" y="156" width="210" height="110" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="2"/>
+<text x="595" y="175.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">회수 제외</text>
+<text x="595" y="195.9" font-size="14" fill="#666660" text-anchor="middle">gaeun ACCOUNT:CHANGE</text>
+<text x="595" y="215.9" font-size="14" fill="#666660" text-anchor="middle">(사고 때만 씀)</text>
+<text x="595" y="235.9" font-size="14" fill="#666660" text-anchor="middle">seoyeon SALES:CHANGE</text>
+<text x="595" y="255.9" font-size="14" fill="#666660" text-anchor="middle">(반년 결산 때만 씀)</text>
+<line x1="444" y1="132" x2="486" y2="96" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<line x1="444" y1="162" x2="486" y2="200" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<text x="20" y="300" font-size="15" fill="#666660">후보를 전부 회수하면 필요한 날 일을 못 한다 → 회수 전에 제외를 먼저 가린다</text>
+</g>
+</svg>
