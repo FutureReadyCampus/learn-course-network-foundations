@@ -41,7 +41,7 @@ python exercise6-1_run.py
 
 ```python
     parts = action.split(":")                         # ":" 로 나눠 두 조각의 리스트로 만든다
-    is_allowed, reason = check_permission(user, resource, permission_action)  # 3과목(접근통제) 판정 결과를 허용 여부와 이유로 나눠 받는다
+    is_allowed, reason = check_permission(user, resource, permission_action)  # Module 3(접근통제) 판정 결과를 허용 여부와 이유로 나눠 받는다
     priority = PRIORITY.get(reason, 4)                # 이유의 우선순위를 꺼낸다(없으면 4)
 ```
 
@@ -64,14 +64,14 @@ python exercise6-1_run.py
 3 규칙은 허용인데 서버가 거절 gaeun ACCOUNT:CHANGE 2026-11-02 10:14:00
 ```
 
-- (나) ① dami 의 실패 4개는 3과목(접근통제) 규칙으로 <mark>「퇴사한 계정」</mark>으로 판정됩니다.
+- (나) ① dami 의 실패 4개는 Module 3(접근통제) 규칙으로 <mark>「퇴사한 계정」</mark>으로 판정됩니다.
   - 퇴사한 계정이 서버에 4번 요청했다는 것은 <mark>계정이 정리되지 않았다는 뜻이라 1순위</mark>입니다.
   - 실패 4번은 `SALES:QUERY` 3번과 `SALES:CHANGE` 1번이고, 모두 11:02 ~ 11:08 에 있습니다.
 - ② gaeun 의 `ACCOUNT:CHANGE` 실패 3개는 규칙으로는 <mark>「허용」</mark>입니다(역할 `account_admin` 에 `ACCOUNT:CHANGE` 가 있습니다).
   - 규칙과 서버의 판단이 어긋난 것이라 <mark>공격이라고 확정할 수 없습니다.</mark>
   - 먼저 서버가 이 요청을 거절한 이유(서버 설정 · 다른 조건)를 확인합니다.
 - (다) seoyeon 의 서버 실패는 11:40 `SETTLE:QUERY` 와 18:20 `SALES:CHANGE` 두 번이라 <mark>반복 기준(3번)에 못 미쳐서</mark> 먼저 확인할 이벤트에서 빠졌습니다.
-  - 놓칠 수 있는 경우: 11:40 `SETTLE:QUERY`(정산 조회)는 3과목(접근통제) 규칙으로 「권한 없음」이었습니다. 정산처럼 중요한 자원을 권한 없이 건드렸는데 <mark>횟수 기준만 보면 한 번씩이라서 놓칩니다.</mark>
+  - 놓칠 수 있는 경우: 11:40 `SETTLE:QUERY`(정산 조회)는 Module 3(접근통제) 규칙으로 「권한 없음」이었습니다. 정산처럼 중요한 자원을 권한 없이 건드렸는데 <mark>횟수 기준만 보면 한 번씩이라서 놓칩니다.</mark>
   - 그래서 현업에서는 횟수 기준과 함께 민감한 행동을 따로 보는 규칙을 더합니다.
 
 **왜**

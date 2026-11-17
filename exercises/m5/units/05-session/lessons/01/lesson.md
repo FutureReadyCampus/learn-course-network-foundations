@@ -28,7 +28,7 @@ Unit 4에서 계정 잠금 · IP 차단 · 세션 종료(세션, session: 로그
 ## 이전 조치 기록 확인하기
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** 5과목 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `containment_log.json` 과 `containment_state.json` 이 보이면</mark> 됩니다. 없으면 Unit 4의 Exercise 4-3 실행 파일을 한 번 실행하면 생깁니다.
+2. **[터미널]** Module 5 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `containment_log.json` 과 `containment_state.json` 이 보이면</mark> 됩니다. 없으면 Unit 4의 Exercise 4-3 실행 파일을 한 번 실행하면 생깁니다.
    ```bash
    pwd
    cd soar_response

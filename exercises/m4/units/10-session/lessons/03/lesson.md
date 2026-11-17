@@ -292,11 +292,11 @@ run_pipeline()                     # 읽기부터 보고서 저장까지 한 번
 | 시리즈를 딕셔너리로 | `source_count_dict = source_event_counts.to_dict()` |
 | 보고서 딕셔너리 | `report = {"date": REPORT_DATE, … "summaries": summaries}` |
 
-## 4과목 폴더 구조 한눈에 보기
+## Module 4 폴더 구조 한눈에 보기
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
-4과목이 끝나면 `anomaly_detection` 폴더에 Unit별로 아래 파일이 있어야 합니다. 파일을 어디에 저장했는지 헷갈리면 내 VS Code 왼쪽 목록과 비교합니다.
+Module 4가 끝나면 `anomaly_detection` 폴더에 Unit별로 아래 파일이 있어야 합니다. 파일을 어디에 저장했는지 헷갈리면 내 VS Code 왼쪽 목록과 비교합니다.
 
 - **`config/` 안에는 JSON 설정 파일만** 둡니다. Unit 6에서 만든 `users.json` · `roles.json` 입니다.
 - **그 밖의 파일은 모두 `anomaly_detection/` 바로 아래**에 둡니다. 코드(`.py`), 실행 파일(`exerciseU-n_…_run.py`), 데이터, 안내와 보고서(`.md`), 컴포즈 파일이 해당합니다. `logs/` 는 Unit 9에서 컴포즈로 만든 접속 기록 폴더입니다.
@@ -306,10 +306,10 @@ run_pipeline()                     # 읽기부터 보고서 저장까지 한 번
 security-agent-toolkit/
   .env
   .gitignore
-  agent_core/                       1과목
-  network_zt/                       2과목
-  access_control/                   3과목
-  anomaly_detection/                4과목   ← 여기서 작업
+  agent_core/                       Module 1
+  network_zt/                       Module 2
+  access_control/                   Module 3
+  anomaly_detection/                Module 4   ← 여기서 작업
     config/                         ← JSON 설정만
       roles.json
       users.json

@@ -26,7 +26,7 @@ Unit 3까지는 판단 단계(맥락 보강 · 처리 경로 분기 · 안전장
 ## 설정 파일 세 개 만들기
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** 5과목 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `config` 와 `incident.py` 가 보이면</mark> 됩니다.
+2. **[터미널]** Module 5 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `config` 와 `incident.py` 가 보이면</mark> 됩니다.
    ```bash
    pwd
    cd soar_response

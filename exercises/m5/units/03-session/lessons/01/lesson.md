@@ -34,7 +34,7 @@ Unit 2에서 알림에 맥락을 붙이고(`enrichment.py`), 처리 경로를 �
 ## Unit 2 파일 확인하고 데이터 파일 만들기
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** 5과목 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `config` · `incident.py` · `incident_samples.json` · `enrichment.py` · `routing.py` · `safe_runner.py` · `users_info.json` · `source_ips.json` · `trusted_ips.json` 이 보이면</mark> 됩니다.
+2. **[터미널]** Module 5 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `config` · `incident.py` · `incident_samples.json` · `enrichment.py` · `routing.py` · `safe_runner.py` · `users_info.json` · `source_ips.json` · `trusted_ips.json` 이 보이면</mark> 됩니다.
    ```bash
    pwd
    cd soar_response

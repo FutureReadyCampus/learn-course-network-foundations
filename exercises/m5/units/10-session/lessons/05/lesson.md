@@ -307,8 +307,8 @@ python exercise10-2_run.py
 **전체 모양 — `find_schema_problem`**
 
 ```python
-def find_schema_problem(record):                      # 4과목 결과 기록 한 건을 받는 함수
-    """엔진이 읽을 수 없는 기록이면 그 이유 문장을, 문제가 없으면 빈 문자열("")를 리턴한다. 4과목 파일의 모양이 바뀌었을 때 엔진이 오류를 내기 전에 걸러 낼 때 쓴다."""
+def find_schema_problem(record):                      # Module 4 결과 기록 한 건을 받는 함수
+    """엔진이 읽을 수 없는 기록이면 그 이유 문장을, 문제가 없으면 빈 문자열("")를 리턴한다. Module 4 파일의 모양이 바뀌었을 때 엔진이 오류를 내기 전에 걸러 낼 때 쓴다."""
     for key in REQUIRED_KEYS:                         # 필수 키를 하나씩 꺼낸다 — 미리 채운 줄
         if key not in record:                         # 필수 키가 기록에 없으면
             return "필수 키 없음: " + key             # 어떤 키가 없는지 이유로 리턴한다 — 미리 채운 줄
@@ -322,7 +322,7 @@ def find_schema_problem(record):                      # 4과목 결과 기록 �
 **전체 모양 — `split_records`**
 
 ```python
-def split_records(records):                                          # 4과목 결과 기록 리스트를 받는 함수
+def split_records(records):                                          # Module 4 결과 기록 리스트를 받는 함수
     """기록마다 모양을 점검해 엔진에 넣을 알림 리스트와 거절한 기록 리스트를 만들고 두 리스트를 함께 리턴한다. 거절한 기록을 이유와 함께 남겨 기록 없이 빠지지 않게 할 때 쓴다."""
     alerts = []                                                      # 엔진에 넣을 알림을 모을 빈 리스트 — 미리 채운 줄
     rejected = []                                                    # 거절한 기록과 이유를 모을 빈 리스트 — 미리 채운 줄
@@ -371,7 +371,7 @@ results = run_all(alerts, context)  # 알림을 하나씩 엔진으로 처리한
 - (가) 출력은 다음과 같습니다. 단계 5 의 처리 결과는 자동 실행 <mark style="background:#bde3ff">**2건**</mark> · 승인 대기 <mark style="background:#bde3ff">**0건**</mark> · 차단 금지 <mark style="background:#bde3ff">**0건**</mark> · 조치 없음 <mark style="background:#bde3ff">**3건**</mark> · 실패 <mark style="background:#bde3ff">**0건**</mark>이고, 실제로 실행한 조치는 <mark style="background:#bde3ff">`INC-501` 의 `dami` 계정 잠금 · `INC-505` 의 `198.51.100.90` 차단</mark>입니다.
 
 ```
---- 단계 1: 4과목 탐지 결과 5 건
+--- 단계 1: Module 4 탐지 결과 5 건
 --- 단계 2: 모양 점검 시험 (일부러 틀린 기록)
 hana → 필수 키 없음: grade
 minsu → 알 수 없는 등급: critical
@@ -397,7 +397,7 @@ INC-505 IP 차단 198.51.100.90: 차단되지 않음 → 차단됨
 
 - (나) `seoyeon`(`INC-502`)은 플레이북 `PB-002`(대량 다운로드)가 맞지만, 그 플레이북의 액션이 `담당자 알림` · `티켓 생성` 뿐이라 승인 게이트를 거칠 조치(계정 잠금 · IP 차단)가 없습니다. `gaeun`(`INC-503`)과 `jiwoo`(`INC-504`)는 단계 4 의 플레이북 번호가 <mark style="background:#bde3ff">「없음」</mark>입니다. Unit 1 플레이북 3개의 트리거 규칙은 퇴사한 계정 · 대량 다운로드 · 경로 스캔이고, 두 대상의 이유(`규칙은 허용인데 서버가 거절` · `여러 로그 연결` / `업무 시간 밖 로그인` · `평소와 다른 IP`)는 그 규칙에 없기 때문입니다.
   - 티켓이 없으면 세 알림은 엔진이 한 일도 남은 기록도 없어서 담당자가 알 방법이 없습니다. <mark style="background:#ffc4d6">티켓이 조치 없는 알림을 사람에게 넘기는 유일한 경로입니다.</mark> 세 알림의 티켓(`TCK-2` ~ `TCK-4`)에는 다음 할 일로 「자동 조치가 없는 알림이니 직접 보고 조치가 필요한지 정한다」가 적힙니다.
-- (다) `minsu` 기록은 등급이 `critical` 이라 엔진이 아는 등급(`GRADES`: high · mid · low)에 없어서 <mark style="background:#bde3ff">`알 수 없는 등급: critical`</mark> 로 거절됩니다. 거절하면 거절 리스트에 이유가 남아 4과목 쪽을 고칠 수 있습니다.
+- (다) `minsu` 기록은 등급이 `critical` 이라 엔진이 아는 등급(`GRADES`: high · mid · low)에 없어서 <mark style="background:#bde3ff">`알 수 없는 등급: critical`</mark> 로 거절됩니다. 거절하면 거절 리스트에 이유가 남아 Module 4 쪽을 고칠 수 있습니다.
   - 거절 없이 엔진에 넣으면 `match_playbooks` 가 `GRADE_ORDER["critical"]` 을 찾다가 오류를 내고, Exercise 10-1 `INC-402` 처럼 그 알림만 실패로 기록됩니다. 조치도 티켓도 없고 원인은 오류 문장에만 남습니다. 아래는 그렇게 실행한 결과입니다.
 
 ```
@@ -412,7 +412,7 @@ INC-505 IP 차단 198.51.100.90: 차단되지 않음 → 차단됨
 
 아래 결과는 해당 번호의 줄을 비우고 실행한 것입니다(비운 줄의 주석은 남겨 둔 상태입니다).
 
-- 1번을 비워 두면 오류 없이 <mark style="background:#ffc4d6">**모든 기록이 「필수 키 없음: entity」로 거절됩니다.**</mark> `return` 줄이 `if` 없이 첫 번째 키에서 바로 실행되기 때문입니다. 4과목 기록 5건이 모두 거절되어 엔진에 넣을 알림이 0건입니다.
+- 1번을 비워 두면 오류 없이 <mark style="background:#ffc4d6">**모든 기록이 「필수 키 없음: entity」로 거절됩니다.**</mark> `return` 줄이 `if` 없이 첫 번째 키에서 바로 실행되기 때문입니다. Module 4 기록 5건이 모두 거절되어 엔진에 넣을 알림이 0건입니다.
 
 ```
 hana → 필수 키 없음: entity

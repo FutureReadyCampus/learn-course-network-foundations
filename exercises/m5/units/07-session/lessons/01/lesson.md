@@ -24,7 +24,7 @@ Unit 6에서는 세 가지를 했습니다. 알림으로 티켓(ticket, 티켓: 
 
 깃허브에 올리는 일은 Exercise 7-2 마지막에 합니다. 새 문법은 Exercise 7-2의 `sum()` 과 `%` 둘이고, 나눗셈 `/` 는 문법 상자에서 풀이합니다. 보고서의 [핵심 질문] 표시가 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기는 미리 채운 줄에 맞춥니다. 각 번호 주석 바로 아래에 한 줄을 씁니다. <mark style="background:#ffc4d6">주석은 지우지 않습니다</mark>.
 
- **이전 파일**: Unit 6에서 만든 `ticketing.py` · `ticket_merge.py` · `ticket_notice.py` 와 데이터 `alerts_thu.json` · `config/escalation_rules.json`, <mark style="background:#e0d4ff">Unit 1의 `incident.py`</mark>, <mark style="background:#e0d4ff">1과목의 `notifier.py` · `alert_server.py`</mark> 를 씁니다. Exercise 7-1에서는 Unit 6의 Exercise 6-3에서 저장한 `tickets_unit09.json` 도 읽습니다. Exercise 7-2에서는 Exercise 7-1에서 만든 `escalation.py` 도 씁니다. 없는 파일은 `complete_files.md` 에서 복사합니다(Unit 6 파일은 6절, `escalation.py` 는 7절). `incident.py` · `notifier.py` · `alert_server.py` 는 Unit 6 안내의 시작하기에 있는 「 이전 파일이 없을 때」 코드 상자로 만듭니다.
+ **이전 파일**: Unit 6에서 만든 `ticketing.py` · `ticket_merge.py` · `ticket_notice.py` 와 데이터 `alerts_thu.json` · `config/escalation_rules.json`, <mark style="background:#e0d4ff">Unit 1의 `incident.py`</mark>, <mark style="background:#e0d4ff">Module 1의 `notifier.py` · `alert_server.py`</mark> 를 씁니다. Exercise 7-1에서는 Unit 6의 Exercise 6-3에서 저장한 `tickets_unit09.json` 도 읽습니다. Exercise 7-2에서는 Exercise 7-1에서 만든 `escalation.py` 도 씁니다. 없는 파일은 `complete_files.md` 에서 복사합니다(Unit 6 파일은 6절, `escalation.py` 는 7절). `incident.py` · `notifier.py` · `alert_server.py` 는 Unit 6 안내의 시작하기에 있는 「 이전 파일이 없을 때」 코드 상자로 만듭니다.
 
  **줄임말 이름 안내**: 이 문서의 코드와 파일에는 줄임말로 된 이름이 있습니다. 처음 보면 뜻을 알기 어려워서 아래에 풀어 둡니다. 이미 배포한 파일과 맞추기 위해 이름은 그대로 쓰고 뜻만 설명합니다.
   - `ack` · `acked` 는 acknowledge(확인하다) · acknowledged(확인했다)의 줄임말입니다. 담당자가 티켓을 처음 확인했다는 뜻입니다.
