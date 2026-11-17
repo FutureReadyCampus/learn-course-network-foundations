@@ -77,6 +77,11 @@ page_metadata:
   - question_id: u12-l02-p01-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u12-l02-p01-story-reply-ticket.svg
+    title: "티켓 두 건이 올라왔어요"
+    alt: "지우, 박 팀장, 서 이사가 한 사무실에 있고, 지우의 모니터에 서 이사의 질문과 박 팀장의 요청 티켓이 올라오며, 박 팀장은 공유기 주소로 보낸 요청이 사라졌다고 하고 서 이사는 동시에 올려도 답이 안 섞이는 이유를 궁금해해, 이 Page에서 답장이 내 PC를 찾는 길을 알아본다는 그림입니다."
+    caption: "티켓 두 건이 지우에게 왔어요."
+    after_paragraph: 0
   - file: assets/animations/u12-l02-p01-reply-finds-pc.svg
     title: "클라우드 저장소의 답장은 어디로?"
     alt: "지우 PC 192.168.10.41이 외부 클라우드 저장소 203.0.113.80:443을 부르면 요청은 기본 게이트웨이인 공유기를 지나고, 답은 198.51.100.25로 오는데 사설 주소는 쓸 수 없어, 공유기 안의 변환표가 192.168.10.41과 198.51.100.25의 짝을 기억한다는 그림입니다."
@@ -132,6 +137,11 @@ page_metadata:
   - question_id: u12-l02-p02-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u12-l02-p02-story-numbers-differ.svg
+    title: "같은 요청인데 숫자가 달라요"
+    alt: "지우 PC가 클라우드 저장소로 보낸 요청의 출발지가 공유기 안쪽에서는 192.168.10.41:3000인데 바깥쪽에서는 198.51.100.25:53001로 달라 보여, 지우가 어디가 바뀐 건지 궁금해하는 그림입니다."
+    caption: "안쪽과 바깥쪽의 출발지 숫자가 달라 보여요."
+    after_paragraph: 0
   - file: assets/animations/u12-l02-p02-outbound.svg
     title: "공유기를 나설 때 바뀌는 것"
     alt: "공유기 안쪽 패킷은 보내는 사람 칸(출발지)이 192.168.10.41:3000이고, 공유기를 지나면 198.51.100.25:53001로 고쳐 쓰이며, 받는 사람 칸(목적지) 203.0.113.80:443은 그대로임을 두 장의 봉투 카드로 보여 줍니다."
@@ -187,6 +197,11 @@ page_metadata:
   - question_id: u12-l02-p03-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u12-l02-p03-story-same-ip-log.svg
+    title: "접속 기록이 전부 똑같아요"
+    alt: "서 이사가 클라우드 저장소 접속 기록을 열어 보니 직원 전원의 출발지가 198.51.100.25로 똑같아서, 이 IP로 누가 썼는지 알 수 있냐고 묻는 그림입니다."
+    caption: "서 이사가 접속 기록을 보고 고개를 갸웃해요."
+    after_paragraph: 0
   - file: assets/animations/u12-l02-p03-who-connected.svg
     title: "클라우드 저장소는 누가 접속했다고 볼까?"
     alt: "직원 PC 세 대의 요청이 공유기를 지나면 클라우드 저장소 접속 기록에는 모두 출발지 198.51.100.25 하나만 남고, 누가 썼는지는 로그인 계정으로 구별한다는 그림입니다."
@@ -242,6 +257,11 @@ page_metadata:
   - question_id: u12-l02-p04-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u12-l02-p04-story-table-columns.svg
+    title: "열 이름이 낯설어요"
+    alt: "지우가 공유기 관리 화면의 NAT 세션 목록을 열자 Local, Remote, External이라는 열 이름이 보이고, 무엇이 어디에 적히는지 몰라 낯설어하는 그림입니다."
+    caption: "지우가 낯선 열 이름 앞에서 멈췄어요."
+    after_paragraph: 0
   - file: assets/animations/u12-l02-p04-table-row.svg
     title: "변환표 한 줄에는 무엇이 적힐까?"
     alt: "NAT 세션 목록 한 줄에서 Local 192.168.10.41:3000은 보낸 사람, Remote 203.0.113.80:443은 받을 곳, External 198.51.100.25:53001은 대표 접수번호에 해당함을 차례로 짚습니다."
@@ -302,6 +322,11 @@ page_metadata:
   - question_id: u12-l02-p05-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u12-l02-p05-story-reply-arrives.svg
+    title: "답장이 공유기에 도착했어요"
+    alt: "클라우드 저장소가 보낸 응답의 목적지가 지우 PC의 주소가 아니라 198.51.100.25:53001이라, 지우가 공유기가 이 응답을 어떻게 지우 PC로 돌려보낼지 궁금해하는 그림입니다."
+    caption: "응답의 목적지는 바깥 주소와 포트예요."
+    after_paragraph: 0
   - file: assets/animations/u12-l02-p05-inbound.svg
     title: "돌아온 답장은 어느 PC로 갈까?"
     alt: "클라우드 저장소의 답장은 받는 사람 칸이 198.51.100.25:53001로 도착하고, 공유기가 대장에서 53001번 줄을 찾아 192.168.10.41:3000으로 되돌려 지우 PC에 전달하며, 줄이 없으면 보낼 곳을 모른다는 그림입니다."
@@ -357,6 +382,11 @@ page_metadata:
   - question_id: u12-l02-p06-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u12-l02-p06-story-two-pcs.svg
+    title: "동시에 물어도 답이 안 섞여요"
+    alt: "지우 PC와 동료 PC가 같은 클라우드 저장소에 동시에 요청하면 저장소가 보는 출발지는 둘 다 198.51.100.25로 똑같은데, 지우가 응답이 어떻게 서로 안 섞이는지 궁금해하는 그림입니다."
+    caption: "출발지가 똑같은데 답은 섞이지 않아요."
+    after_paragraph: 0
   - file: assets/animations/u12-l02-p06-two-pcs.svg
     title: "동시에 물어도 답이 안 섞이는 이유"
     alt: "지우 PC와 동료 PC의 요청이 같은 바깥 주소 198.51.100.25에 포트 53001과 53002로 따로 기록되어, 응답이 포트로 각자 PC에 돌아가는 NAPT 방식입니다."
@@ -364,6 +394,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-15-page-01
   illustrations:
+  - file: assets/animations/u12-l02-p07-story-groupware-blocked.svg
+    title: "박 팀장의 화면이 열리지 않아요"
+    alt: "박 팀장이 거래처에서 198.51.100.25:8080으로 그룹웨어에 접속해도 화면이 열리지 않고, 지우는 요청이 공유기에 도착하는데 왜 안 나타나는지 생각하는 그림입니다."
+    caption: "요청은 도착하는데 화면은 열리지 않아요."
+    after_paragraph: 0
   - file: assets/animations/u12-l02-p07-no-row-dropped.svg
     title: "박 팀장의 요청은 왜 사라질까?"
     alt: "박 팀장이 198.51.100.25:8080으로 보낸 요청이 공유기에 도착해도 대장에 맞는 줄이 없어 어느 기기로 갈지 몰라 버려지고, 바깥 8080을 192.168.10.50:8080으로 보내는 줄을 미리 적어 두면 길이 열립니다."

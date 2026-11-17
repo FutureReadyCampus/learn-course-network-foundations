@@ -21,6 +21,11 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-source-10-page-01
   illustrations:
+  - file: assets/animations/u12-l01-p01-story-office-vs-outside.svg
+    title: "사무실에선 열리는데 밖에선 안 떠요"
+    alt: "사무실에서는 그룹웨어가 열리는데, 거래처에 간 박 팀장의 화면은 안 뜨고 서 이사도 밖에서 못 쓰면 곤란하다고 하여, 안 열리는 이유부터 묻게 되는 상황입니다."
+    caption: "박 팀장의 티켓이 들어왔어요."
+    after_paragraph: 0
   - file: assets/animations/u12-l01-p01-office-vs-outside.svg
     title: "사무실에서만 열리는 그룹웨어"
     alt: "사무실 안에서는 192.168.10.50:8080이 열리지만, 고객사의 박 팀장이 공유기 바깥에서 같은 주소를 입력하면 갈 길이 없어 화면이 뜨지 않는 모습입니다."
@@ -124,6 +129,11 @@ page_metadata:
   - question_id: u12-l01-p02-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u12-l01-p02-story-same-address-fails.svg
+    title: "주소는 맞게 입력했는데"
+    alt: "지우가 알려 준 192.168.10.50을 입력한 고객사 노트북에서 응답이 없어 박 팀장은 억울하고 지우도 이유를 몰라 주소의 종류를 알아보게 됩니다."
+    caption: "주소를 정확히 입력했는데 응답이 없어요."
+    after_paragraph: 0
   - file: assets/animations/u12-l01-p02-private-public-path.svg
     title: "사설 주소와 공인 주소"
     alt: "사무실에는 사설 주소 192.168.10.50과 공인 주소 198.51.100.25가 있고, 다른 회사에도 같은 사설 주소가 있을 수 있어 인터넷은 사설 주소로는 길을 안내하지 않으며 공인 주소로 보내야 공유기까지 전달된다는 설명입니다."
@@ -179,6 +189,11 @@ page_metadata:
   - question_id: u12-l01-p03-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u12-l01-p03-story-two-addresses.svg
+    title: "내 주소가 둘이래요"
+    alt: "박 팀장의 노트북 설정에는 172.20.4.31, 내 IP 확인 사이트에는 192.0.2.77이 나와 어느 게 진짜냐고 지우에게 전화로 물어, 두 주소가 어디가 다른지 알아보게 됩니다."
+    caption: "박 팀장이 주소가 둘이라며 전화를 걸었어요."
+    after_paragraph: 0
   - file: assets/animations/u12-l01-p03-range-table-check.svg
     title: "이 주소, 사설일까 공인일까?"
     alt: "박 팀장 노트북 설정의 172.20.4.31을 사설 범위표에 대 보면 172.16.0.0/12 안이라 사설이고, 내 IP 확인 사이트의 192.0.2.77은 공유기가 바꿔 단 바깥 주소라는 설명입니다."
@@ -186,6 +201,11 @@ page_metadata:
     after_paragraph: 0
 - page_id: advanced-source-10-page-03
   illustrations:
+  - file: assets/animations/u12-l01-p04-story-forty-pcs-one-address.svg
+    title: "주소가 40개 필요할까"
+    alt: "직원 40명이 외부 클라우드 저장소를 쓰는데 회사의 바깥 주소는 하나뿐이어서, 서 이사가 주소를 40개 사야 하는지 비용을 묻고, 지우는 주소 하나로 가능한 이유를 알아보게 됩니다."
+    caption: "서 이사가 주소 40개 비용을 물어요."
+    after_paragraph: 0
   - file: assets/animations/u12-l01-p04-source-swapped.svg
     title: "40명이 주소 하나로 나가요"
     alt: "지우 PC 192.168.10.41과 박 팀장 PC 192.168.10.42가 외부 클라우드 저장소에 접속하면 공유기가 출발지를 198.51.100.25로 바꿔 기록하고, 서비스는 한 곳에서 온 것으로 봅니다."
@@ -241,6 +261,11 @@ page_metadata:
     after_paragraph: 2
 - page_id: advanced-source-10-page-04
   illustrations:
+  - file: assets/animations/u12-l01-p05-story-nat-safe-question.svg
+    title: "NAT 뒤라서 안전하겠죠?"
+    alt: "점심시간에 공유기 이야기를 들은 서 이사가 밖에서 먼저는 못 들어온다면서 NAT 뒤 서버가 안전하니 방화벽 비용을 아껴도 되겠냐고 묻고, 지우는 그 추론의 빈틈을 찾아보게 됩니다."
+    caption: "서 이사가 방화벽 비용을 아껴도 되냐고 물어요."
+    after_paragraph: 0
   - file: assets/animations/u12-l01-p05-no-record-not-firewall.svg
     title: "NAT 뒤라서 안전할까?"
     alt: "바깥의 낯선 요청이 공유기에 도착해도 변환 기록이 없어 전달되지 않는 것은 부수 효과이고, 허용·차단은 방화벽 규칙이 따로 정한다는 그림입니다."
@@ -349,6 +374,11 @@ page_metadata:
   - question_id: u12-l01-p06-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u12-l01-p06-story-explain-to-park.svg
+    title: "박 팀장에게 뭐라고 설명할까"
+    alt: "고객사 일정이 코앞인 박 팀장에게, 지우가 티켓 메모의 원인 두 가지를 한 번에 설명할 방법을 고민하며 공유기와 NAT를 구분해 보게 됩니다."
+    caption: "원인 두 칸을 한 번에 설명해야 해요."
+    after_paragraph: 0
   - file: assets/animations/u12-l01-p06-explain-to-park.svg
     title: "박 팀장에게 뭐라고 설명할까?"
     alt: "박 팀장이 사설 주소를 쓴 것이 첫째 원인, 바깥 주소로 와도 공유기가 그룹웨어 서버로 보낼지 모르는 것이 둘째 원인이며 공유기 한 상자에 NAT·DHCP·방화벽이 함께 있다는 정리입니다."

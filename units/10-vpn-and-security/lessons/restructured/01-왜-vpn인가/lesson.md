@@ -61,6 +61,11 @@ page_metadata:
   - question_id: u14-l01-p01-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u14-l01-p1-story-groupware-ticket.svg
+    title: "도쿄 지사와 재택 요청"
+    alt: "월요일 아침 지우의 티켓함에 도쿄 지사 여섯 명의 요청이 올라오고 박 팀장이 재택에서도 전자결재를 올릴 수 있냐고 묻는 장면을 보여 줍니다."
+    caption: "월요일, 지사와 재택 요청이 한꺼번에 들어왔어요."
+    after_paragraph: 0
   - file: assets/animations/u14-l01-p1-private-boundary-scope.svg
     title: "사설망의 경계"
     alt: "집 노트북이 사내 그룹웨어 192.168.10.50:8080 으로 보낸 요청이 본사 경계에서 방화벽에 막히고, 사설망은 우리가 통제하는 범위임을 짚습니다."
@@ -116,6 +121,11 @@ page_metadata:
   - question_id: u14-l01-p02-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u14-l01-p2-story-three-needs.svg
+    title: "지사와 본사 사이"
+    alt: "도쿄 지사 직원과 본사 사이에 공용 인터넷뿐이라는 것을 확인한 지우가 ‘그냥 쓰게 해 주세요’가 세 가지가 뭉친 요구임을 알아채는 장면입니다."
+    caption: "지사와 본사 사이에는 공용 인터넷뿐이에요."
+    after_paragraph: 0
   - file: assets/animations/u14-l01-p2-three-needs-actors.svg
     title: "요구를 세 가지로 쪼개기"
     alt: "지사 직원과 박 팀장의 요청을 닿을 것, 노출 금지, 내용 보호로 쪼개고 각각 지키지 못하면 생기는 문제를 보여 줍니다."
@@ -171,6 +181,11 @@ page_metadata:
   - question_id: u14-l01-p03-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u14-l01-p3-story-leased-line-ask.svg
+    title: "서 이사의 전용 선 질문"
+    alt: "회의에서 서 이사가 전용 선을 깔면 안전하지 않냐고 묻고, 지점이 늘면 감당이 안 되겠다고 고개를 갸웃하는 장면입니다."
+    caption: "서 이사가 전용 선을 묻고 걱정해요."
+    after_paragraph: 0
   - file: assets/animations/u14-l01-p3-leased-line-cost.svg
     title: "전용 회선"
     alt: "서울 본사와 도쿄 지사을 전용 회선으로 잇고, 현장 사무소가 늘면 회선과 요금이 함께 늘어나는 모습입니다."
@@ -226,6 +241,11 @@ page_metadata:
   - question_id: u14-l01-p04-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u14-l01-p4-story-internet-worry.svg
+    title: "인터넷으로 지사를 잇자면"
+    alt: "전용 회선이 비싸다면 싸고 빠른 인터넷에 서 이사가 솔깃해하고, 지우가 견적서가 인터넷에서 어떻게 보일지 묻는 장면입니다."
+    caption: "인터넷은 싸지만 지우는 견적서가 걱정돼요."
+    after_paragraph: 0
   - file: assets/animations/u14-l01-p4-open-internet-flow.svg
     title: "인터넷을 그냥 쓰면"
     alt: "공용 인터넷을 지나는 견적서에 엿보기, 바꿔치기, 남인 척하기 세 걱정이 있고 각각 기밀성, 무결성, 인증으로 지킨다는 그림입니다."
@@ -281,6 +301,11 @@ page_metadata:
   - question_id: u14-l01-p05-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u14-l01-p5-story-vpn-question.svg
+    title: "박 팀장의 VPN 질문"
+    alt: "박 팀장이 VPN을 켜면 회선이 하나 더 생기는지, 통신사에 따로 신청해야 하는지 지우에게 묻는 장면입니다."
+    caption: "박 팀장이 VPN이 새 회선인지 물어요."
+    after_paragraph: 0
   - file: assets/animations/u14-l01-p5-vpn-tunnel-road.svg
     title: "VPN은 인터넷 위의 터널"
     alt: "서울 본사와 도쿄 지사 사이의 같은 인터넷 길 위에 터널을 만들면 안의 내용이 가려지는 모습입니다."
@@ -336,6 +361,11 @@ page_metadata:
   - question_id: u14-l01-p06-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u14-l01-p6-story-two-vpns.svg
+    title: "지사와 노트북"
+    alt: "연결할 대상이 도쿄 지사와 박 팀장의 노트북 한 대로 다르다는 것을 보고 지우가 둘을 구분하는 말부터 정하려는 장면입니다."
+    caption: "지사와 노트북은 규모가 달라요."
+    after_paragraph: 0
   - file: assets/animations/u14-l01-p6-gg-ge-setup.svg
     title: "지사용과 재택용 VPN"
     alt: "왼쪽은 도쿄 SG와 본사 SG가 망과 망을 잇는 G-to-G, 오른쪽은 박 팀장 노트북이 본사 SG에 붙는 G-to-E입니다."
@@ -391,6 +421,11 @@ page_metadata:
   - question_id: u14-l01-p07-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u14-l01-p7-story-safe-as-leased.svg
+    title: "서 이사의 정리"
+    alt: "서 이사가 싸면서 전용 회선만큼 안전하냐고 정리하자 지우가 반은 맞고 반은 틀린 말이라 잠깐 망설이는 장면입니다."
+    caption: "서 이사의 정리에 지우가 망설여요."
+    after_paragraph: 0
   - file: assets/animations/u14-l01-p7-vpn-vs-leased.svg
     title: "VPN은 전용 회선만큼 안전할까"
     alt: "전용 회선은 독립된 방의 금고처럼 길이 분리되고, VPN은 로비의 금고처럼 키와 계정 관리에 보호가 달려 있음을 비교합니다."

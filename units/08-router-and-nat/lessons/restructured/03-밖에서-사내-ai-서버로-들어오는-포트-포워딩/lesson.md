@@ -67,6 +67,11 @@ page_metadata:
   - question_id: u12-l03-p01-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u12-l03-p01-story-rule-line.svg
+    title: "출장 중에도 결재하고 싶어요"
+    alt: "박 팀장은 출장 중에도 결재를 하고 싶고, 지우가 공유기에 한 줄을 적기로 하자 서 이사가 아무나 들어오는 거 아니냐고 묻는 장면입니다."
+    caption: "박 팀장의 요청과 서 이사의 걱정이에요."
+    after_paragraph: 0
   - file: assets/animations/u12-l03-p01-table-lines.svg
     title: "변환표에 줄을 미리 적어 두면?"
     alt: "공유기 변환표에 나갈 때 자동으로 생긴 동적 매핑 줄만 있다가, 지우가 외부 8080을 192.168.10.50:8080으로 보내는 줄을 직접 적으면 바깥 8080 요청이 그 줄로 가고, 직접 적은 줄이 정적 매핑인 포트 포워딩임을 보여 줍니다."
@@ -127,6 +132,11 @@ page_metadata:
   - question_id: u12-l03-p02-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u12-l03-p02-story-form-fields.svg
+    title: "설정 화면의 칸 채우기"
+    alt: "지우가 포트 포워딩 메뉴를 열자 채울 칸 다섯 개가 보이고, 한 칸이라도 잘못 채우면 엉뚱한 곳으로 가거나 어디로도 가지 않을까 걱정하는 장면입니다."
+    caption: "포트 포워딩 메뉴를 연 지우예요."
+    after_paragraph: 0
   - file: assets/animations/u12-l03-p02-settings-form.svg
     title: "포트 포워딩 설정 화면"
     alt: "공유기 포트 포워딩 화면의 외부 포트 8080, 프로토콜 TCP, 내부 IP 192.168.10.50, 내부 포트 8080, 원격지 비움 칸을 바깥 값과 안쪽 값으로 나누어 채웁니다."
@@ -187,6 +197,11 @@ page_metadata:
   - question_id: u12-l03-p03-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u12-l03-p03-story-which-address.svg
+    title: "박 팀장에게 어떤 주소를?"
+    alt: "규칙은 넣었지만 사설 주소는 바깥에서 통하지 않아, 지우가 박 팀장에게 어떤 주소를 알려 줄지 고민하는 장면입니다."
+    caption: "규칙을 넣은 뒤 알려 줄 주소를 고민해요."
+    after_paragraph: 0
   - file: assets/animations/u12-l03-p03-dest-rewrite.svg
     title: "박 팀장은 어떤 주소로 접속할까?"
     alt: "박 팀장의 요청이 198.51.100.25:8080으로 도착하면 공유기가 8080 규칙으로 목적지를 192.168.10.50:8080으로 바꿔 그룹웨어 서버에 전달하고, 응답은 198.51.100.25:8080이 답한 것처럼 돌아옵니다."
@@ -194,6 +209,11 @@ page_metadata:
     after_paragraph: 2
 - page_id: advanced-source-15-page-07
   illustrations:
+  - file: assets/animations/u12-l03-p04-story-second-request.svg
+    title: "요청이 하나 더 들어왔어요"
+    alt: "그룹웨어 서버를 열고 나니 직원들이 공유 자료 NAS도 밖에서 열어 달라고 하고, 지우가 규칙을 하나 더 넣으면 될 것 같다고 생각하는 장면입니다."
+    caption: "그룹웨어 다음은 공유 자료 NAS예요."
+    after_paragraph: 0
   - file: assets/animations/u12-l03-p04-one-port-one-target.svg
     title: "서비스가 둘이면 규칙도 둘일까?"
     alt: "그룹웨어 서버는 외부 8080으로 이미 연결돼 있고, 공유 자료 NAS도 같은 외부 8080으로 적으면 충돌하므로 NAS는 외부 5001처럼 외부 포트를 나누어 규칙을 추가합니다."
@@ -297,6 +317,11 @@ page_metadata:
   - question_id: u12-l03-p05-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u12-l03-p05-story-office-test.svg
+    title: "사무실에서만 안 열려요"
+    alt: "지우가 사무실 자리에서 공인 주소를 쳐 봐도 화면이 뜨지 않는데 같은 규칙으로 집에서 시험한 직원은 열린다고 하는 장면입니다."
+    caption: "같은 규칙인데 시험하는 자리가 달라요."
+    after_paragraph: 0
   - file: assets/animations/u12-l03-p05-hairpin-loop.svg
     title: "사무실에서 공인 주소로 시험하면?"
     alt: "사무실 PC가 공유기의 바깥 주소 198.51.100.25:8080으로 접속하면 공유기가 안쪽으로 되돌려 보내는 헤어핀 NAT가 필요하지만 장비에 따라 안 될 수 있어서, 휴대폰 데이터 같은 바깥 회선에서 시험합니다."
@@ -304,6 +329,11 @@ page_metadata:
     after_paragraph: 1
 - page_id: advanced-source-10-page-08
   illustrations:
+  - file: assets/animations/u12-l03-p06-story-still-closed.svg
+    title: "밖에서도 안 열려요"
+    alt: "지우가 휴대폰 데이터로 시험해도 열리지 않아, 규칙은 분명히 넣었는데 하며 걱정하는 장면입니다."
+    caption: "휴대폰 데이터로 시험해도 안 열려요."
+    after_paragraph: 0
   - file: assets/animations/u12-l03-p06-not-open-checklist.svg
     title: "포워딩했는데 왜 밖에서 안 열릴까?"
     alt: "서버 수신 주소, 그룹웨어 서버 방화벽, 규칙의 내부 IP·포트·프로토콜, 공유기 WAN 주소를 가까운 곳부터 확인하고 방화벽의 8080을 허용해 해결하는 점검표입니다."
@@ -412,6 +442,11 @@ page_metadata:
   - question_id: u12-l03-p07-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u12-l03-p07-story-who-comes-in.svg
+    title: "열어 두면 누가 들어올까"
+    alt: "규칙을 모두 점검한 지우에게 서 이사가 8080을 열면 박 팀장만 들어오느냐고 묻고, 지우는 그 질문을 다시 떠올리는 장면입니다."
+    caption: "점검을 끝낸 지우와 서 이사예요."
+    after_paragraph: 0
   - file: assets/animations/u12-l03-p07-open-port-risk.svg
     title: "포트를 열어도 정말 괜찮을까?"
     alt: "원격지를 비운 8080은 누구에게나 열리지만 원격지를 거래처 주소 192.0.2.77로 제한하면 낯선 출발지는 막히고, 출장 기간만 열고 로그인과 기록을 남긴다는 정책입니다."

@@ -66,6 +66,11 @@ page_metadata:
   - question_id: u15-l01-p01-q01
     after_paragraph: 4
   illustrations:
+  - file: assets/animations/u15-l01-p1-story-four-questions.svg
+    title: "서 이사의 점검 요청"
+    alt: "서 이사가 우리 회사가 안전한지 묻고, 점검 첫날 박 팀장 노트북이 그룹웨어 서버 관리 화면까지 닿는 것을 지우가 보고, 점검을 어떤 질문으로 쪼갤지 정하는 장면입니다."
+    caption: "서 이사의 질문에서 점검이 시작돼요."
+    after_paragraph: 1
   - file: assets/animations/u15-l01-p1-four-questions-rev.svg
     title: "보안 점검, 무엇부터?"
     alt: "회의실 랜 포트의 박 팀장 노트북이 확인 없이 주소를 받아 그룹웨어 서버 관리 화면까지 닿고, 그 장면에서 점검의 첫 질문 누가 들어오나, 곧 NAC를 짚는 모습입니다."
@@ -121,6 +126,11 @@ page_metadata:
   - question_id: u15-l01-p02-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u15-l01-p2-story-ledger.svg
+    title: "지우의 IP·MAC 장부"
+    alt: "지우가 엑셀 장부에 사무실 PC의 IP·MAC을 적자 회의실 노트북이 장부에 없다는 것이 드러나고, 무엇으로 회사 기기를 알아볼지 묻는 장면입니다."
+    caption: "장부에 없는 노트북이 눈에 띄어요."
+    after_paragraph: 2
   - file: assets/animations/u15-l01-p2-ledger-probe-rev.svg
     title: "회사 기기인지 알아보기"
     alt: "IP·MAC 장부에 적은 회사 PC와 달리, Probe가 경로 밖에서 받은 복사본에서 장부에 없는 쌍을 미허가 기기로 보는 모습입니다."
@@ -176,6 +186,11 @@ page_metadata:
   - question_id: u15-l01-p03-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u15-l01-p3-story-port-down.svg
+    title: "포트가 내려간 노트북"
+    alt: "회의실 노트북의 포트가 내려가 화면에 케이블 표시만 뜨고, 박 팀장이 왜 끊겼는지 어디에 물어야 할지 몰라 하는 장면입니다."
+    caption: "막힌 사람은 이유를 알 수 없어요."
+    after_paragraph: 2
   - file: assets/animations/u15-l01-p3-port-down-rev.svg
     title: "포트를 내리면 끝일까?"
     alt: "Probe가 찾은 미등록 노트북의 포트를 NAC가 내리면 링크가 끊기고, 같은 포트 뒤 소형 스위치에 물린 정상 PC까지 함께 끊깁니다."
@@ -231,6 +246,11 @@ page_metadata:
   - question_id: u15-l01-p05-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u15-l01-p4-story-notice-page.svg
+    title: "열 때마다 뜨는 안내 페이지"
+    alt: "박 팀장이 웹사이트를 열 때마다 기기 등록 안내 페이지가 뜨자 누가 가로챈 것 같다고 놀라는 장면입니다."
+    caption: "막힌 게 아니라 안내를 받았어요."
+    after_paragraph: 0
   - file: assets/animations/u15-l01-p4-redirect-page.svg
     title: "접속하자마자 안내 페이지"
     alt: "Probe가 웹 요청에 먼저 안내 페이지 응답을 보내 박 팀장 노트북에 기기 등록 안내가 뜨는 모습입니다."
@@ -286,6 +306,11 @@ page_metadata:
   - question_id: u15-l01-p06-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u15-l01-p5-story-before-entry.svg
+    title: "한발 늦는 방식"
+    alt: "지금까지의 방식은 이미 들어온 기기를 쫓아내는 쪽이라, 서 이사가 애초에 확인된 기기만 들어오게 할 수 없는지 묻는 장면입니다."
+    caption: "이미 들어온 뒤에는 늦어요."
+    after_paragraph: 0
   - file: assets/animations/u15-l01-p5-8021x.svg
     title: "들어오기 전에 신분 확인"
     alt: "노트북이 신원을 내면 스위치가 RADIUS 서버에 확인하고, 통과하면 포트가 열려 사내망에 들어갑니다."
@@ -341,6 +366,11 @@ page_metadata:
   - question_id: u15-l01-p07-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u15-l01-p6-story-side-path.svg
+    title: "랜에 꽂고 핫스팟도 켠 PC"
+    alt: "직원이 사내 PC를 랜에 꽂은 채 휴대폰 핫스팟에도 붙어 바깥으로 샛길이 생기고, 지우가 유선 포트만 지키는 NAC는 이를 못 본다고 깨닫는 장면입니다."
+    caption: "유선만 지켜서는 샛길을 못 봐요."
+    after_paragraph: 0
   - file: assets/animations/u15-l01-p6-wips-rev.svg
     title: "몰래 켠 와이파이"
     alt: "랜에 꽂힌 사내 PC가 핫스팟에도 붙어 샛길이 생기면, 천장 WIPS 센서가 전파로 허가 밖 연결을 찾아 경보하고 사람이 확인할 후보로 올리는 모습입니다."

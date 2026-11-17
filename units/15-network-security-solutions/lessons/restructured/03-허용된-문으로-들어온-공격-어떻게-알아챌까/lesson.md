@@ -58,6 +58,11 @@ page_metadata:
   - question_id: u15-l03-p01-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u15-l03-p1-story-passed-firewall.svg
+    title: "방화벽을 통과한 요청 상황"
+    alt: "지우의 모니터에 방화벽 로그는 허용이지만 그룹웨어 서버 로그에는 수상한 경로 요청이 찍히고, 서 이사가 문은 잠갔다면서 왜 이러냐고 묻는 상황을 단계별로 보여 주며 이 Page에서 허용된 문으로 온 공격을 누가 볼지 알아볼 것을 제시합니다."
+    caption: "방화벽은 허용했는데 로그엔 수상한 요청이 찍혀요."
+    after_paragraph: 0
   - file: assets/animations/u15-l03-p1-beyond-firewall.svg
     title: "방화벽을 통과한 공격"
     alt: "방화벽이 헤더만 보고 허용한 443 요청의 Payload 안에 든 공격이 그룹웨어 서버까지 도착하고, 방화벽과 IPS·NIDS가 보는 것이 다름을 비교합니다."
@@ -113,6 +118,11 @@ page_metadata:
   - question_id: u15-l03-p02-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u15-l03-p2-story-block-or-alert.svg
+    title: "막을까 알릴까 고민하는 상황"
+    alt: "탐지 장비를 둘 자리로 서버 앞 경로 한가운데와 스위치 미러링 복사본을 놓고 고민하는 지우에게 서 이사가 막아 주는 게 당연히 좋지 않냐고 묻고, 이 Page에서 막을지 알리기만 할지 알아볼 것을 제시합니다."
+    caption: "서 이사는 막는 게 당연하다고 해요."
+    after_paragraph: 0
   - file: assets/animations/u15-l03-p2-ips-vs-nids.svg
     title: "막을까, 알리기만 할까"
     alt: "경로 안의 IPS는 공격 요청을 바로 차단하고, 경로 밖 NIDS는 복사본으로 탐지해 경보만 내며 원본은 서버로 그대로 가는 모습을 위아래 두 줄로 비교합니다."
@@ -173,6 +183,11 @@ page_metadata:
   - question_id: u15-l03-p03-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u15-l03-p3-story-fingerprint.svg
+    title: "공격의 지문을 떠올리는 상황"
+    alt: "지우가 알려진 공격 요청에 비슷한 문자열이 반복됨을 떠올리고 지문을 대조하는 수사관을 생각하며, 이 Page에서 공격의 지문을 찾는 방법을 알아볼 것을 제시합니다."
+    caption: "지우는 지문을 대조하는 수사관을 떠올려요."
+    after_paragraph: 0
   - file: assets/animations/u15-l03-p3-signature.svg
     title: "공격의 지문 찾기"
     alt: "규칙에 적힌 패턴 A가 든 공격은 IPS가 탐지하고, 규칙에 없는 패턴 B의 새 공격은 놓치며, 새 공격이 알려지면 규칙을 갱신해야 하는 모습입니다."
@@ -233,6 +248,11 @@ page_metadata:
   - question_id: u15-l03-p04-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u15-l03-p4-story-false-alarm.svg
+    title: "정상 자료가 막힌 상황"
+    alt: "박 팀장이 올린 보안 교육 자료를 IPS가 막고 박 팀장이 교육 자료인데 공격이라니요라며 억울해하는 모습을 단계별로 보여 주며, 이 Page에서 정상 요청이 공격으로 찍혔을 때를 알아볼 것을 제시합니다."
+    caption: "교육 자료가 공격으로 찍혀 막혔어요."
+    after_paragraph: 0
   - file: assets/animations/u15-l03-p4b-outcomes.svg
     title: "울렸나, 안 울렸나"
     alt: "같은 IPS에 공격 요청이 울리면 정탐, 정상 요청이 울리면 오탐, 공격 요청이 안 울리면 미탐이고, 규칙이 느슨하면 오탐이 줄고 미탐이 늘며 엄격하면 반대인 모습입니다."
@@ -293,6 +313,11 @@ page_metadata:
   - question_id: u15-l03-p05-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u15-l03-p5-story-unknown-file.svg
+    title: "시그니처에 걸리지 않는 파일 상황"
+    alt: "박 팀장에게 온 설치 파일이 시그니처에 걸리지 않자 지우가 걸리지 않는다고 안전한 걸까 의문을 갖고, 이 Page에서 처음 보는 악성 파일을 잡는 방법을 알아볼 것을 제시합니다."
+    caption: "걸리는 게 없어도 안전한지 지우는 의심해요."
+    after_paragraph: 0
   - file: assets/animations/u15-l03-p5-sandbox.svg
     title: "처음 보는 악성 파일"
     alt: "시그니처에 걸리지 않은 첨부 파일의 복사본을 보안 장비가 샌드박스로 보내 실행하고 원본 전달은 보류하며, 복사본이 낯선 주소로 접속하려 하면 막고 경보를 내지만 느리고 얌전한 파일은 놓칠 수 있습니다."
@@ -348,6 +373,11 @@ page_metadata:
   - question_id: u15-l03-p06-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u15-l03-p6-story-ask-others.svg
+    title: "남의 경험을 빌리려는 상황"
+    alt: "샌드박스를 거쳐도 애매한 파일과 접속 주소가 남자 지우가 장비 하나로는 다 알 수 없다고 느끼고 식당 후기처럼 남의 경험을 떠올리며, 이 Page에서 남들이 이미 아는 악성인지 알아볼 것을 제시합니다."
+    caption: "후기를 찾듯 남들의 경험을 빌려요."
+    after_paragraph: 0
   - file: assets/animations/u15-l03-p6-reputation.svg
     title: "남들이 이미 아는 악성일까"
     alt: "파일 요약값을 평판 정보로 조회해 알려진 악성은 막고, 모르는 파일은 샌드박스로 넘기며, 접속 주소는 주소 평판을 보되 모르면 이상 행위·로그 같은 다른 신호와 함께 보는 모습입니다."

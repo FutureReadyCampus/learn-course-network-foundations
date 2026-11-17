@@ -22,6 +22,11 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-nat-mapping-filtering-page-01
   illustrations:
+  - file: assets/animations/u12-l05-p01-story-outbound-ticket.svg
+    title: "박 팀장의 회의 티켓"
+    alt: "박 팀장이 회의가 끊길까 걱정하며 티켓을 올렸고 지우가 보니 회의는 멀쩡해서, 포트를 아무도 안 열었는데 어떻게 연결됐는지 궁금해하는 그림입니다."
+    caption: "박 팀장의 티켓, 그런데 회의는 멀쩡합니다."
+    after_paragraph: 0
   - file: assets/animations/u12-l05-p01-outbound-first.svg
     title: "포트를 안 열었는데 화상회의는?"
     alt: "박 팀장과 협력사가 모두 공유기 뒤에서 포트를 닫아 둔 채 서비스 서버로 먼저 연결하면, 영상과 음성이 서버를 거쳐 오가고 먼저 나간 통신에 행이 생겨 포트를 열 일이 없다는 그림입니다."
@@ -82,6 +87,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-nat-mapping-filtering-page-02
   illustrations:
+  - file: assets/animations/u12-l05-p02-story-wrong-memo.svg
+    title: "지우의 틀린 확인 메모"
+    alt: "지우가 안 될 거라는 확인 메모를 썼는데 회의는 잘 되고 있어서, 이름 하나로 판단한 메모가 틀렸음을 알아채고 NAT에게 물을 두 가지를 알아보는 그림입니다."
+    caption: "안 될 거라 썼는데 회의는 잘 됩니다."
+    after_paragraph: 0
   - file: assets/animations/u12-l05-p02-two-questions-table.svg
     title: "NAT에게 꼭 따로 물어야 할 두 가지"
     alt: "지우의 메모는 이름만 보고 안 될 거라 판단했지만, 공유기의 변환표에서 매핑은 External 칸에 바깥 주소·포트를 정하는 일이고 필터링은 바깥에서 온 패킷을 들여보내기 전의 조건이라서, 두 질문을 따로 확인한다고 고치는 그림입니다."
@@ -185,6 +195,11 @@ page_metadata:
   - question_id: u12-l05-p03-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u12-l05-p03-story-address-not-arrive.svg
+    title: "알려 준 주소로 패킷이 안 온다"
+    alt: "박 팀장이 집 PC에서 회의 앱을 켜고 앱이 바깥 주소를 협력사 담당자에게 알려 줬는데 패킷이 도착하지 않아, 상대가 바뀌면 바깥 포트도 바뀌는지 알아보는 그림입니다."
+    caption: "주소는 전달됐는데 패킷이 오지 않습니다."
+    after_paragraph: 0
   - file: assets/animations/u12-l05-p03-mapping-by-peer-net.svg
     title: "상대가 바뀌면 바깥 포트도 바뀔까?"
     alt: "주소 확인 서버가 본 박 팀장 공유기의 바깥 주소 192.0.2.123:40001을 협력사에 알려 줬는데, 상대와 무관한 매핑은 협력사에도 :40001을 쓰지만 상대에 따라 달라지는 매핑은 협력사에는 :40017을 써서 소개한 주소가 맞지 않는다는 비교입니다."
@@ -240,6 +255,11 @@ page_metadata:
   - question_id: u12-l05-p04-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u12-l05-p04-story-same-ip-different.svg
+    title: "같은 IP인데 결과가 다르다"
+    alt: "지우의 공유기로 같은 협력사 IP에서 온 패킷 중 하나는 통과하고 하나는 막혀, 지우가 까닭을 궁금해하며 누가 보낸 패킷까지 받아 주는지 알아보는 그림입니다."
+    caption: "같은 IP에서 왔는데 통과와 막힘이 갈립니다."
+    after_paragraph: 0
   - file: assets/animations/u12-l05-p04-filtering-gate.svg
     title: "누가 보낸 패킷까지 받아 줄까?"
     alt: "지우 PC가 203.0.113.15:5555로 먼저 보내 바깥 매핑 198.51.100.25:42000이 생긴 뒤, 203.0.113.15:7777과 203.0.113.99:40000에서 온 패킷을 누구든 받음은 둘 다 받고, 같은 IP만 받음은 앞의 것만 받고, 같은 IP·포트만 받음은 둘 다 받지 않는 비교입니다."
@@ -247,6 +267,11 @@ page_metadata:
     after_paragraph: 2
 - page_id: advanced-nat-mapping-filtering-page-05
   illustrations:
+  - file: assets/animations/u12-l05-p05-story-old-name-question.svg
+    title: "설명서의 옛 이름과 서 이사의 질문"
+    alt: "지우가 제품 설명서에서 Full Cone 지원이라는 옛 이름을 보았고 서 이사가 그 뜻과 좋은 점을 물어, 옛 이름을 어떻게 읽을지 알아보는 그림입니다."
+    caption: "Full Cone이 뭐예요? 좋은 건가요?"
+    after_paragraph: 0
   - file: assets/animations/u12-l05-p05-cone-grid.svg
     title: "Full Cone, Symmetric은 어떻게 읽을까?"
     alt: "제품 설명서의 Full Cone 같은 옛 이름을 매핑과 필터링 두 칸으로 풀면, Full Cone·Restricted Cone·Port Restricted Cone은 매핑이 상대와 무관하고 필터링만 다르며 Symmetric은 매핑이 상대에 따라 달라지고, 넓게 받는 이름일수록 노출도 커진다는 표입니다."
@@ -302,6 +327,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-nat-mapping-filtering-page-06
   illustrations:
+  - file: assets/animations/u12-l05-p06-story-blocked-first-packet.svg
+    title: "먼저 보낸 패킷이 막힌다"
+    alt: "박 팀장 쪽이 먼저 보낸 패킷이 지우 쪽 공유기에서 먼저 나간 기록이 없어 막힐 수 있어, 양쪽에서 먼저 보내면 길이 열리는지 알아보는 그림입니다."
+    caption: "먼저 나간 기록이 없으면 막힐 수 있습니다."
+    after_paragraph: 0
   - file: assets/animations/u12-l05-p06-learn-addresses.svg
     title: "서로의 바깥 주소를 어떻게 알까?"
     alt: "박 팀장과 지우 PC가 서로의 바깥 주소를 모르는 상태에서, 양쪽이 STUN 서버에 물어 자기 바깥 주소를 알고, 소개 서버가 그 주소를 상대에게 알려 주어 먼저 보내 볼 준비가 되는 과정입니다."
@@ -362,6 +392,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-nat-mapping-filtering-page-07
   illustrations:
+  - file: assets/animations/u12-l05-p07-story-direct-fails.svg
+    title: "직접 연결이 안 되는 환경"
+    alt: "직접 연결이 안 되는 환경이 겹칠 수 있고 지우가 이번 회의가 어느 방식이었는지 확인하기로 하며, 직접 못 만나면 누가 대신 전해 주는지 알아보는 그림입니다."
+    caption: "직접 연결이 안 되면 어떻게 이어질까요?"
+    after_paragraph: 0
   - file: assets/animations/u12-l05-p07-relay.svg
     title: "직접 못 만나면 누가 대신 전해 줄까?"
     alt: "직접 연결이 UDP 차단, 상대별 매핑, 통신사 NAT 때문에 막히면 양쪽이 TURN 서버 203.0.113.60으로 연결해 데이터를 중계받고, 확실한 대신 서버 비용과 지연이 든다는 그림입니다."

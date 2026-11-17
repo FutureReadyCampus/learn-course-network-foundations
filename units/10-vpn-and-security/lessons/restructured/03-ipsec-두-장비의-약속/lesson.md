@@ -64,6 +64,11 @@ page_metadata:
   - question_id: u14-l03-p01-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u14-l03-p1-story-tool-screen.svg
+    title: "새 장비 설정 화면"
+    alt: "도쿄 지사 SG 교체 날, 지우가 새 장비 설정 화면을 열면 IKE·SA·ESP·NAT-T가 보이고 낯선 단어라 고민하며 IPsec을 네 조각으로 나눠 볼 질문을 만난다."
+    caption: "낯선 단어가 가득한 설정 화면 앞의 지우예요."
+    after_paragraph: 0
   - file: assets/animations/u14-l03-p1-check-order.svg
     title: "터널이 안 뜰 때 확인 순서"
     alt: "터널이 안 서면 IKE 협상(UDP 500), NAT 통과(NAT-T, UDP 4500), 협상 내용, 상대 확인 순서로 앞에서부터 확인하고, 공유기가 있으면 2번이 3·4번보다 먼저 막힌다는 점검 순서입니다."
@@ -119,6 +124,11 @@ page_metadata:
   - question_id: u14-l03-p02-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u14-l03-p2-story-negotiation-fail.svg
+    title: "터널이 협상 실패에서 멈춤"
+    alt: "서울 본사 SG와 새 도쿄 지사 SG 사이 터널이 협상 실패로 멈추고, 연결 자체는 확인한 지우가 처음 만난 두 장비가 무엇을 정할지 묻는다."
+    caption: "두 SG 사이 터널이 협상 실패에서 멈췄어요."
+    after_paragraph: 0
   - file: assets/animations/u14-l03-p2-ike-sa-memo.svg
     title: "IKE 협상과 SA"
     alt: "도쿄 SG와 서울 SG가 UDP 500으로 암호 방식·키·수명을 제안해 합의하고, 결과를 방향마다 따로 SA 메모로 기억하는 모습입니다."
@@ -179,6 +189,11 @@ page_metadata:
   - question_id: u14-l03-p03-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u14-l03-p3-story-fake-sg.svg
+    title: "누가 본사 SG인 척하면"
+    alt: "서 이사가 누가 본사 SG인 척하면 어쩌냐고 묻고, 지우는 끝의 상대가 가짜라면 소용없다고 생각하며 상대 확인 방법을 알아본다."
+    caption: "서 이사의 날카로운 질문을 들은 지우예요."
+    after_paragraph: 0
   - file: assets/animations/u14-l03-p3-auth-who.svg
     title: "상대가 진짜 본사 SG일까"
     alt: "본사 SG인 척하는 장비를 막기 위해, 왼쪽은 양쪽이 같은 비밀값을 아는지로 믿는 사전 공유 키, 오른쪽은 인증 기관이 보증한 인증서를 서로 보여 주는 방식입니다."
@@ -234,6 +249,11 @@ page_metadata:
   - question_id: u14-l03-p04-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u14-l03-p4-story-esp-ah-choice.svg
+    title: "보호 방식 고르기"
+    alt: "지우가 SG 설정 화면에서 ESP와 AH 중 보호 방식을 고르라는 요구를 받고 세 가지 보호 중 어디에 해당하는지 따져 보며 둘이 지키는 것을 알아본다."
+    caption: "설정 화면이 ESP와 AH 중 고르라고 해요."
+    after_paragraph: 0
   - file: assets/animations/u14-l03-p4-esp-ah-envelope.svg
     title: "ESP와 AH는 뭘 지켜 줄까"
     alt: "기밀성, 무결성, 인증 세 가지 중 불투명 봉투 같은 ESP는 모두, 투명 봉투에 밀봉만 한 AH는 기밀성을 뺀 둘만 지켜 준다는 비교입니다."
@@ -289,6 +309,11 @@ page_metadata:
   - question_id: u14-l03-p05-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u14-l03-p5-story-home-router.svg
+    title: "집에서 켠 VPN이 멈춤"
+    alt: "박 팀장이 집에서 VPN을 켰더니 연결이 멈췄다가 시간 초과가 나고, 두 장비 사이에 집 공유기가 끼어 있어 공유기의 영향을 알아본다."
+    caption: "집 공유기를 지나는 VPN이 시간 초과로 멈췄어요."
+    after_paragraph: 0
   - file: assets/animations/u14-l03-p5-ah-nat.svg
     title: "AH는 NAT를 못 지나가요"
     alt: "박 팀장 노트북의 AH 패킷이 집 공유기(NAT)를 지나며 출발 주소가 바뀌면, 서울 SG가 변조로 보고 버려서 NAT 뒤에서는 ESP를 써야 하는 모습입니다."
@@ -349,6 +374,11 @@ page_metadata:
   - question_id: u14-l03-p06-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u14-l03-p6-story-hotel-wifi.svg
+    title: "호텔에서 VPN이 안 붙음"
+    alt: "서 이사가 출장지 호텔 와이파이에서 IPsec VPN을 쓰지 못하지만 웹사이트는 잘 열려 브라우저로 붙는 SSL VPN을 알아본다."
+    caption: "호텔에서 웹은 열리는데 VPN만 안 돼요."
+    after_paragraph: 0
   - file: assets/animations/u14-l03-p6-ssl-tls-vpn.svg
     title: "브라우저로 붙는 SSL/TLS VPN"
     alt: "호텔 와이파이에서 IPsec의 UDP 500·4500은 막히고 TLS 기반 SSL/TLS VPN은 TCP 443으로 본사 SG까지 지나가는 모습입니다."

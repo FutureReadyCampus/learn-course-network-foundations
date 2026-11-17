@@ -61,6 +61,11 @@ page_metadata:
   - question_id: u12-l04-p01-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u12-l04-p01-story-unknown-lines.svg
+    title: "내가 연 적 없는 포트, 지우의 화면"
+    alt: "포트 포워딩 목록은 비었는데 UPnP 목록에 지우가 만든 적 없는 줄 세 개가 있어 서 이사가 놀라고, 이 줄의 정체를 알아본다는 상황 그림입니다."
+    caption: "지우가 만든 적 없는 줄 세 개를 보고 서 이사가 놀랍니다."
+    after_paragraph: 0
   - file: assets/animations/u12-l04-p01-three-unknown-lines.svg
     title: "내가 연 적 없는 포트가 열려 있다?"
     alt: "수동 포워딩 목록은 비었는데 UPnP 목록에 192.168.10.37, .44, .38을 가리키는 TCP 6881, UDP 27015, UDP 50001 줄이 세 개 있고 지우의 기억에는 모두 없다는 그림입니다."
@@ -68,6 +73,11 @@ page_metadata:
     after_paragraph: 0
 - page_id: advanced-source-15-page-08
   illustrations:
+  - file: assets/animations/u12-l04-p02-story-owner-found.svg
+    title: "줄의 주인을 찾아갔더니"
+    alt: "지우가 줄의 주인을 찾아가니 박 팀장 PC의 P2P 전송 프로그램이었고 박 팀장이 협력사와 견적 자료를 주고받으려고 깔았다고 말하며, 프로그램이 왜 포트를 열고 싶어 하는지 알아본다는 상황 그림입니다."
+    caption: "박 팀장의 PC에서 파일 전송 프로그램이 나왔습니다."
+    after_paragraph: 0
   - file: assets/animations/u12-l04-p02-why-programs-open.svg
     title: "프로그램은 왜 포트를 열고 싶어 할까?"
     alt: "P2P 전송 프로그램을 쓰는 PC 192.168.10.37로 협력사의 연결이 바깥에서 먼저 오면 줄이 없어 막히고, 사용자가 직접 설정하기 번거로워 프로그램이 대신 부탁하는 UPnP가 나왔다는 설명입니다."
@@ -123,6 +133,11 @@ page_metadata:
     after_paragraph: 2
 - page_id: advanced-source-16-page-02
   illustrations:
+  - file: assets/animations/u12-l04-p03-story-what-is-upnp.svg
+    title: "UPnP가 대체 뭐죠?"
+    alt: "서 이사가 지우의 티켓 메모를 보고 UPnP가 뭔지 묻자 지우가 꽂으면 바로 쓰는 방식이라는 이름의 뜻을 떠올리고, 편해진 설정을 누가 지켜볼지 알아본다는 상황 그림입니다."
+    caption: "서 이사가 UPnP가 뭔지 묻습니다."
+    after_paragraph: 0
   - file: assets/animations/u12-l04-p03-plug-to-network.svg
     title: "꽂기만 하면 되는 편리함, 네트워크로"
     alt: "USB를 꽂으면 설정 없이 바로 쓰이는 PnP와, 프로그램이 공유기에 포워딩 줄을 자동으로 만드는 UPnP를 나란히 보여 주고 편해진 만큼 설정이 눈에서 멀어진다고 짚습니다."
@@ -178,6 +193,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-16-page-05
   illustrations:
+  - file: assets/animations/u12-l04-p04-story-how-to-ask.svg
+    title: "프로그램은 어떻게 부탁할까"
+    alt: "PC의 프로그램이 공유기 주소도 모르는데 어떻게 부탁하는지 지우가 의문을 갖고, 경비실을 찾는 비유처럼 부탁의 순서를 알아본다는 상황 그림입니다."
+    caption: "공유기 주소를 모르는 프로그램이 어떻게 부탁하는지 묻습니다."
+    after_paragraph: 0
   - file: assets/animations/u12-l04-p04-discover-request-result.svg
     title: "프로그램은 공유기에 어떻게 부탁할까?"
     alt: "PC 192.168.10.37의 프로그램이 공유기를 찾는 발견, 6881번 매핑을 요청하는 단계, 변환표에 줄이 생기는 결과를 차례로 보여 주고 사람이 입력하지 않아도 줄이 생긴다고 짚습니다."
@@ -286,6 +306,11 @@ page_metadata:
   - question_id: u12-l04-p05-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u12-l04-p05-story-who-allowed.svg
+    title: "누가 허락한 거예요?"
+    alt: "서 이사가 누가 허락했는지 묻고 지우가 관리자 로그인 기록을 찾아보지만 없어, 비밀번호도 없이 열린 까닭을 알아본다는 상황 그림입니다."
+    caption: "서 이사가 누가 허락했는지 묻고 로그인 기록은 없습니다."
+    after_paragraph: 0
   - file: assets/animations/u12-l04-p05-no-login-no-check.svg
     title: "비밀번호도 없이 포트를 열어 준다고?"
     alt: "관리자 로그인 기록이 없는데 감염된 PC 192.168.10.38의 UPnP 요청으로 공유기가 UDP 50001 줄을 만들었고, 같은 LAN 요청이면 신분을 묻지 않아 바깥에서 닿는 환경이면 노출된다는 그림입니다."
@@ -293,6 +318,11 @@ page_metadata:
     after_paragraph: 0
 - page_id: advanced-source-16-page-08
   illustrations:
+  - file: assets/animations/u12-l04-p06-story-on-or-off.svg
+    title: "UPnP, 끄면 안전할까"
+    alt: "서 이사가 끄면 쓰던 프로그램이 불편해진다는 민원을 걱정하고 지우는 켜면 편하지만 통제가 안 되고 끄면 통제되지만 불편하다고 생각하며, 켜 둘지 꺼 둘지 알아본다는 상황 그림입니다."
+    caption: "서 이사가 UPnP를 끄면 생길 민원을 걱정합니다."
+    after_paragraph: 0
   - file: assets/animations/u12-l04-p06-on-or-off-cost.svg
     title: "UPnP, 켜 둘까 꺼 둘까?"
     alt: "UPnP를 켜 두면 편하지만 열린 줄을 목록으로 확인해야 하고, 끄면 일부 프로그램이 불편하지만 신청과 기록으로 통제할 수 있다는 비교와 우리 회사의 선택입니다."

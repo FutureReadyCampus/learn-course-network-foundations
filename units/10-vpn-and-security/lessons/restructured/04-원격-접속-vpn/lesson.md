@@ -60,6 +60,11 @@ page_metadata:
   - question_id: u14-l04-p01-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u14-l04-p1-story-cant-open.svg
+    title: "집에서 안 열려요"
+    alt: "재택 첫날 박 팀장의 노트북은 그룹웨어에 응답을 받지 못하고, 박 팀장이 티켓으로 알리자 지우는 집에는 어떤 입구가 필요한지 고민합니다."
+    caption: "박 팀장이 재택 첫날 그룹웨어가 안 열린다고 알려요."
+    after_paragraph: 0
   - file: assets/animations/u14-l04-p1-private-no-route.svg
     title: "집에서는 왜 안 열릴까?"
     alt: "박 팀장 노트북의 사내 그룹웨어 요청이 사설 주소라 인터넷에서 길을 찾지 못하고, 해결 방향은 서버를 열지 않고 인증한 노트북을 사내망으로 들이는 것임을 보여 줍니다."
@@ -120,6 +125,11 @@ page_metadata:
   - question_id: u14-l04-p02-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u14-l04-p2-story-server-address.svg
+    title: "서버 주소 칸에 뭘 적을까"
+    alt: "지우가 설치한 VPN 클라이언트 설정 화면에 서버 주소 칸이 있고, 지우는 그룹웨어 주소를 적고 싶지만 그곳은 목적지가 아님을 떠올립니다."
+    caption: "지우 앞의 VPN 설정에 서버 주소 칸이 있어요."
+    after_paragraph: 0
   - file: assets/animations/u14-l04-p2-server-address-box.svg
     title: "VPN 클라이언트가 말을 거는 곳"
     alt: "VPN 서버 주소 칸에 그룹웨어 서버 주소를 적으면 길이 없고, SG의 공인 주소 198.51.100.25를 적으면 SG가 사용자를 확인한다는 순서를 보여 줍니다."
@@ -175,6 +185,11 @@ page_metadata:
   - question_id: u14-l04-p03-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u14-l04-p3-story-two-addresses.svg
+    title: "주소가 두 개라 놀란 박 팀장"
+    alt: "VPN을 켠 박 팀장의 네트워크 화면에 처음 보는 주소가 하나 더 보이자 박 팀장이 해킹당한 건 아닌지 지우에게 묻습니다."
+    caption: "박 팀장이 새 주소를 보고 걱정해요."
+    after_paragraph: 0
   - file: assets/animations/u14-l04-p3-two-addresses-card.svg
     title: "노트북에 주소가 두 개"
     alt: "노트북이 집 공유기에서 받은 집 구간 주소 192.168.0.20에 더해 SG의 주소 풀 10.10.99.0/24에서 10.10.99.23을 받는 과정을 보여 줍니다."
@@ -230,6 +245,11 @@ page_metadata:
   - question_id: u14-l04-p04-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u14-l04-p4-story-who-packs.svg
+    title: "누가 포장할까"
+    alt: "집과 본사 사이에 SG가 하나뿐이어서 노트북 쪽에는 포장해 줄 SG가 없고, 지우는 지사에서는 도쿄 SG가 대신 포장했음을 떠올립니다."
+    caption: "집에는 포장해 줄 SG가 없어요."
+    after_paragraph: 0
   - file: assets/animations/u14-l04-p4-header-card-path.svg
     title: "집에서 나간 패킷의 포장"
     alt: "안쪽 10.10.99.23에서 192.168.10.50 패킷을 노트북이 포장하고, 집 공유기가 바깥 출발지를 192.0.2.123으로 바꾸어 SG 198.51.100.25로 보내며, 호텔에서 접속해도 목적지는 같은 SG임을 보여 줍니다."
@@ -285,6 +305,11 @@ page_metadata:
   - question_id: u14-l04-p05-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u14-l04-p5-story-slow-profile.svg
+    title: "그룹웨어가 느려요"
+    alt: "서울 집의 박 팀장 노트북에서 그룹웨어가 유난히 느리고, 지난달 출장 때 쓰던 접속 프로필이 남아 있어 지우가 이유를 찾습니다."
+    caption: "그룹웨어가 느려서 지우가 프로필을 살펴요."
+    after_paragraph: 0
   - file: assets/animations/u14-l04-p5-tokyo-detour.svg
     title: "다른 지사 SG에 붙으면"
     alt: "서울 집의 노트북이 남아 있는 도쿄 프로필로 도쿄 SG를 거쳐 서울 SG로 가면 길이 돌아가 느려지고, 프로필을 서울 SG로 바꾸면 직접 접속하는 모습을 보여 줍니다."
@@ -340,6 +365,11 @@ page_metadata:
   - question_id: u14-l04-p06-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u14-l04-p6-story-who-is-this.svg
+    title: "로그의 출발지는 누구일까"
+    alt: "지우가 그룹웨어 접속 로그에서 재택하는 날의 출발지 10.10.99.23을 보고 이게 누구인지 질문을 받습니다."
+    caption: "로그의 낯선 출발지가 누구인지 물어요."
+    after_paragraph: 0
   - file: assets/animations/u14-l04-p6-server-log-view.svg
     title: "서버는 박 팀장을 누구로 볼까?"
     alt: "사내 그룹웨어 서버 로그에는 출발지 10.10.99.23이 남고 192.0.2.123은 남지 않으며, 서버는 사내 PC처럼 응답하고 누구인지는 VPN 접속 기록과 맞춰 확인하는 모습입니다."
@@ -400,6 +430,11 @@ page_metadata:
   - question_id: u14-l04-p07-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u14-l04-p7-story-video-cuts.svg
+    title: "VPN을 켜자 회의가 끊겨요"
+    alt: "VPN을 켜도 그룹웨어는 열리지만 화상회의가 끊기고 영상 사이트도 느려져, 박 팀장이 켜기 전에는 잘 되던 건데 하고 말합니다."
+    caption: "VPN을 켜자 화상회의가 끊긴다는 새 티켓이에요."
+    after_paragraph: 0
   - file: assets/animations/u14-l04-p7-full-vs-split.svg
     title: "전체 터널과 분할 터널"
     alt: "왼쪽 전체 터널은 외부 사이트 트래픽도 SG를 거치고, 오른쪽 분할 터널은 사내 서버 트래픽만 SG로 보내고 외부 사이트는 집 인터넷으로 바로 나가는 모습을 비교합니다."

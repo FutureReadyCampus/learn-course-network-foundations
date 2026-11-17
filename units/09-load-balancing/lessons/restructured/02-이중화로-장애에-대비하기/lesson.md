@@ -16,6 +16,11 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-source-17-page-07
   illustrations:
+  - file: assets/animations/u13-l02-p1-story-friday-outage.svg
+    title: "금요일 저녁, 서버는 멀쩡한데 사이트가 멈췄어요"
+    alt: "서 이사와 지우가 금요일 저녁 정상인 서버 세 대를 보지만 예약·문의 사이트가 열리지 않고, 서 이사가 장비를 두 대씩 사면 되는지 물으며, 이 Page에서 무엇을 얼마나 겹칠지 따져 봅니다."
+    caption: "서 이사가 장비를 두 대씩 사면 되는지, 얼마나 드는지 묻습니다."
+    after_paragraph: 0
   - file: assets/animations/u13-l02-p1-spof.svg
     title: "서버는 멀쩡한데 왜 멈췄을까?"
     alt: "서버 세 대는 정상인데 앞의 로드 밸런서 한 대가 멈추면 손님이 서버에 닿지 못해, 한 곳이 멈추면 전체가 멈추는 단일 장애점이 됩니다."
@@ -76,6 +81,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-17-page-08
   illustrations:
+  - file: assets/animations/u13-l02-p2-story-double-speed.svg
+    title: "서 이사가 두 대 사면 두 배 빨라지는지 물어요"
+    alt: "서 이사가 이중화 견적서를 보며 로드 밸런서를 두 대 사면 처리 속도도 두 배가 되는지 묻고, 지우는 구성 방식에 따라 답이 달라진다고 생각하며, 이 Page에서 쉬게 둘지 같이 일하게 할지 견줍니다."
+    caption: "서 이사가 견적서를 보고 속도가 두 배가 되는지 묻습니다."
+    after_paragraph: 0
   - file: assets/animations/u13-l02-p2-standby.svg
     title: "예비 장비는 평소에 쉬게 둘까?"
     alt: "액티브/스탠바이에서 일하던 장비 A가 고장 나면 쉬던 장비 B가 일을 넘겨받지만(페일오버), 처리 성능은 한 대와 같습니다."
@@ -136,6 +146,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-17-page-09
   illustrations:
+  - file: assets/animations/u13-l02-p3-story-old-address.svg
+    title: "예비 장비가 넘겨받았는데 문제가 남았어요"
+    alt: "예비 로드 밸런서가 일을 넘겨받았지만 이웃 장비가 옛 장비의 주소로 계속 보내고, 지우는 넘겨받는 것과 주소는 별개라고 알아채며, 이 Page에서 장비가 바뀌어도 같은 주소가 이어지는 방법을 알아봅니다."
+    caption: "일을 넘겨받아도 이웃 장비가 옛 주소로 보내는 문제가 남았습니다."
+    after_paragraph: 0
   - file: assets/animations/u13-l02-p3-vip.svg
     title: "장비가 바뀌어도 같은 주소로"
     alt: "일하는 장비 A가 VIP를 맡고 하트비트를 보내다 멈추면 신호가 끊기고, 장비 B가 VIP 203.0.113.10:443을 넘겨받아 손님은 같은 주소를 계속 쓰는 모습입니다."
@@ -196,6 +211,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: u13-l02-page-04
   illustrations:
+  - file: assets/animations/u13-l02-p4-story-both-down.svg
+    title: "두 대를 뒀는데 같이 끊겼어요"
+    alt: "로드 밸런서를 두 대로 이중화했지만 스위치 펌웨어를 올리던 날 두 대가 동시에 끊기고, 박 팀장이 돈이 아깝다고 하며, 이 Page에서 같이 멈춘 원인을 찾습니다."
+    caption: "펌웨어를 올리던 날 두 대가 동시에 끊겨 박 팀장이 아깝다고 합니다."
+    after_paragraph: 0
   - file: assets/animations/u13-l02-p4-common.svg
     title: "두 대를 뒀는데 왜 같이 멈췄을까?"
     alt: "장비 두 대가 같은 스위치에 연결돼 스위치가 멈추면 둘 다 끊기고, 스위치를 나눈 구성에서는 스위치 하나가 멈춰도 장비 B가 이어 가는 모습입니다."
@@ -251,6 +271,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: u13-l02-page-05
   illustrations:
+  - file: assets/animations/u13-l02-p5-story-five-days.svg
+    title: "서버 수리를 5일 기다려야 할까요"
+    alt: "서버 한 대가 고장 나 부품을 5일 기다려야 하고, 지우는 새로 만들려면 처음부터 설치해야 해 시간이 걸린다고 생각하며, 이 Page에서 5일을 기다리지 않는 길을 찾아봅니다."
+    caption: "서버가 고장 나 부품을 기다리는 5일 동안 손님 대기가 길어집니다."
+    after_paragraph: 0
   - file: assets/animations/u13-l02-p5-vm.svg
     title: "수리를 5일이나 기다려야 할까?"
     alt: "서버 .11이 고장 나 수리에 5일이 걸리는 동안, VM 이미지로 새 서버 .14를 만들어 헬스 체크를 통과시킨 뒤 서버 풀에 넣는 모습입니다."
@@ -306,6 +331,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-17-page-10
   illustrations:
+  - file: assets/animations/u13-l02-p6-story-peak-hours.svg
+    title: "점심시간과 월말에만 서버를 늘릴 수 있을까요"
+    alt: "예약·문의 사이트가 평소에는 잘 돌아가다 점심시간과 월말 마감 때 몰리고, 서 이사가 필요할 때만 늘릴 수 없는지 물으며, 이 Page에서 늘리는 방법을 알아봅니다."
+    caption: "서 이사가 필요할 때만 서버를 늘릴 수 없는지 묻습니다."
+    after_paragraph: 0
   - file: assets/animations/u13-l02-p6-cloud.svg
     title: "몰리는 시간에만 서버를 늘릴 수 있을까?"
     alt: "점심에 우리 서버가 100%로 차면 클라우드의 컨테이너를 헬스 체크를 거쳐 서버 풀에 붙여 넘치던 몫을 나눠 맡고, 사용률이 60%로 내려갑니다(가정)."
