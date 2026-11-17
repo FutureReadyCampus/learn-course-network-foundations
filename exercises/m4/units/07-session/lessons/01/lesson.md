@@ -13,7 +13,7 @@ source:
 
 ## 개요
 
-오전에는 판정 서버 · SaaS · 웹 로그에서 먼저 확인할 것을 따로 탐지했습니다. 오후에는 **같은 사용자의 서로 다른 로그에서 짧은 시간 안에 이벤트가 확인되는 사건**(함께 살펴볼 관련 기록)을 찾아 하나의 사건으로 연결하고(상관분석, correlation, 코렐레이션: 서로 다른 로그를 같은 기준으로 연결해 분석하는 것), 탐지된 규칙마다 **점수**를 매겨 high · mid · low 로 나눠 `day03_risk_scores.json` 한 파일에 저장합니다. 파일 이름의 `day03` 은 강의계획서가 정한 이름이라 그대로 씁니다.
+오전에는 판정 서버 · SaaS · 웹 로그에서 먼저 확인할 것을 따로 탐지했습니다. 오후에는 **같은 사용자의 서로 다른 로그에서 짧은 시간 안에 이벤트가 확인되는 사건**(함께 살펴볼 관련 기록)을 찾아 하나의 사건으로 연결하고(상관분석, correlation, 코렐레이션: 서로 다른 로그를 같은 기준으로 연결해 분석하는 것), 탐지된 규칙마다 **점수**를 매겨 high · mid · low 로 나눠 `unit05_risk_scores.json` 한 파일에 저장합니다. 파일 이름의 `day03` 은 강의계획서가 정한 이름이라 그대로 씁니다.
 
 - **Exercise 7-1**: 웹 로그에는 사용자가 없어서 SaaS 성공 로그인의 IP 로 사용자를 찾고, 서버 · SaaS · 웹 로그를 한 표로 합쳐 사용자 · 시각 순으로 놓은 뒤 60분 안에 모인 사건을 찾습니다.
 - **Exercise 7-2**: 오전 탐지와 Exercise 7-1 결과에서 탐지된 규칙을 모으고, 규칙마다 점수를 더해 등급과 이유를 파일로 저장합니다.
@@ -29,11 +29,11 @@ source:
 
 | 파일 | 만든 곳 | 쓰는 곳 | 없거나 완성하지 못했을 때 |
 |---|---|---|---|
-| `normalized_events.json` · `rbac.py` · `config/users.json` · `config/roles.json` | 오전 안내(`day04_am_suspicious_logs.md`) 시작하기 6번 | 5 · Exercise 7-2 | 그 안내 시작하기 6번의 내용으로 파일을 만듭니다 |
+| `normalized_events.json` · `rbac.py` · `config/users.json` · `config/roles.json` | 오전 안내(Unit 6) 시작하기 6번 | 5 · Exercise 7-2 | 그 안내 시작하기 6번의 내용으로 파일을 만듭니다 |
 | `access_detection.py` | 오전 Exercise 6-1 Exercise Exercise 7-2 | 5 · Exercise 7-2가 불러옵니다 | 이 안내 맨 아래 「부록」의 완성본으로 파일을 만듭니다 |
 | `saas_detection.py` | 오전 Exercise 6-2 Exercise Exercise 7-2 | 5 · Exercise 7-2가 불러옵니다 | 이 안내 맨 아래 「부록」의 완성본으로 파일을 만듭니다 |
 | `malicious_detection.py` | 오전 Exercise 6-3 Exercise Exercise 7-2 | 5 · Exercise 7-2가 불러옵니다 | 이 안내 맨 아래 「부록」의 완성본으로 파일을 만듭니다 |
-| `correlation.py` | 오늘 Exercise 7-1 Exercise 7-1 | Exercise 7-2 `day04_6-1_run.py` 가 불러옵니다 | 이 안내 Exercise 7-1 의 코드 칸에 「Exercise 7-1 정답」의 「채운 코드」를 넣어 완성합니다 |
+| `correlation.py` | 오늘 Exercise 7-1 Exercise 7-1 | Exercise 7-2 `exercise7-2_run.py` 가 불러옵니다 | 이 안내 Exercise 7-1 의 코드 칸에 「Exercise 7-1 정답」의 「채운 코드」를 넣어 완성합니다 |
 
 ## 개요
 
@@ -44,7 +44,7 @@ source:
    pwd
    ls
    ```
-3. **오늘 받은 파일 두 개**(`day04_pm_correlation_risk.md`, `day04_pm_report.md`)를 <mark>`다운로드` 폴더에서 `anomaly_detection` 폴더로 끌어다 놓습니다</mark>(안 되면 **File › Save As…**). 이미 있으면 건너뜁니다.
+3. **오늘 받은 파일 두 개**(Unit 7, Unit 7)를 <mark>`다운로드` 폴더에서 `anomaly_detection` 폴더로 끌어다 놓습니다</mark>(안 되면 **File › Save As…**). 이미 있으면 건너뜁니다.
 4. **[VS Code]** 보고서 맨 위 제목 `(이름 · 2026-11-05(목))` 의 <mark>`이름` 을 내 이름으로 바꿉니다</mark>. 안내 파일은 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다.
 5. **[터미널]** 오전 함수가 잘 불러와지는지 확인합니다. <mark>세 줄 모두 아무 오류도 나오지 않으면</mark> 됩니다. 오류가 나면 그 줄의 파일이 문제입니다.
    ```bash

@@ -123,7 +123,7 @@ source:
 
 ** 할 일**
 
-1. `checklist.py` · `day06_2-1_run.py` 두 파일을 만들고, `checklist.py` 의 `check_employed` · `check_expired` · `check_dept` 에서 직접 쓰는 곳 세 군데를 씁니다.
+1. `checklist.py` · `exercise10-1_run.py` 두 파일을 만들고, `checklist.py` 의 `check_employed` · `check_expired` · `check_dept` 에서 직접 쓰는 곳 세 군데를 씁니다.
 2. 실행해서 <mark>점검 대상의 수</mark>(단계 1: 점검 대상)와 <mark>점검 세 가지의 결과</mark>(단계 2: 점검 결과)를 읽습니다.
 
 **`checklist.py`**
@@ -204,7 +204,7 @@ def run_checklist(state, now):                                   # 읽은 데이
 - 6번의 `role_dept[info["role"]]` 는 키가 `info["role"]` 인 값을 찾습니다. 사용자의 역할이 `finance` 이면 `"재무"` 가 나옵니다.
 - 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다(파이썬 버전에 따라 뒤에 `after 'for' statement on line …` 가 붙습니다). `for` 아래에 실행할 줄이 아직 없기 때문입니다.
 
-**`day06_2-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 데이터 파일을 읽고 점검을 실행해 결과를 출력합니다.
+**`exercise10-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 데이터 파일을 읽고 점검을 실행해 결과를 출력합니다.
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
@@ -232,15 +232,15 @@ for result in results:                                           # 점검 결과
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `checklist.py` · `day06_2-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code 또는 터미널]** 파일 `checklist.py` · `exercise10-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `checklist.py` 에서 직접 쓰는 곳 세 군데를 씁니다. 1.1 의 표와 그림을 보고 씁니다.
 3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python day06_2-1_run.py
+   python exercise10-1_run.py
    ```
 4. 출력은 두 단계입니다. 단계 1은 한 줄, 단계 2는 점검 이름 세 줄입니다.
-5. **[보고서]** `day06_am_report.md` 의 `## Exercise 10-1` › `### Exercise 10-1` 아래를 채웁니다.
+5. **[보고서]** Unit 10 의 `## Exercise 10-1` › `### Exercise 10-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 통과한 점검과 실패한 점검, 실패한 점검에서 나온 사용자 이름이나 예외 번호를 적어 주세요.
    - (나) [핵심 질문] 만료 예외 점검은 「통과」인데, 예외 3번은 퇴사한 dami 의 예외입니다. 「통과」를 「문제 없음」으로만 읽으면 안 되는 이유와, 이 예외를 볼 때 함께 읽어야 하는 다른 점검을 적어 주세요.
    - (다) [핵심 질문] 점검은 junho 가 영업 부서인데 역할은 `finance` 라고 알려 줍니다. 점검 코드가 알려 주는 것과 알려 주지 못하는 것을 구분하고, 이 결과를 받은 담당자가 무엇을 확인해야 하는지, 코드가 바로 권한을 회수하면 안 되는 이유가 무엇인지 적어 주세요.

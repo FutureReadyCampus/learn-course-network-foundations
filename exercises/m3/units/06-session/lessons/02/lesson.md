@@ -128,7 +128,7 @@ print(first_list)                                                # first_list �
 
 ** 할 일**
 
-1. `review_list.py` 와 `day04_2-1_run.py` 두 파일을 만들고, `build_access_list` 본문을 직접 씁니다.
+1. `review_list.py` 와 `exercise6-1_run.py` 두 파일을 만들고, `build_access_list` 본문을 직접 씁니다.
 2. 실행해서 <mark>부여돼 있는 권한 현황</mark>(단계 1: 현황)과 <mark>사용자별 권한 개수</mark>(단계 2: 점검)를 읽습니다.
 
 **`review_list.py`**
@@ -179,7 +179,7 @@ def build_access_list():                                         # 지금 부여
 - 10번의 딕셔너리는 한 줄에 쓰거나, `{ }` 안에서 `,` 뒤에 줄을 바꿔 써도 됩니다.
 - 채우기 전에 실행하면 `TypeError: object of type 'NoneType' has no len()` 오류가 납니다. 함수가 아무것도 리턴하지 않아 `len(access_list)` 를 셀 수 없기 때문입니다.
 
-**`day04_2-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 단계 1은 현황을 한 줄씩 출력하고, 단계 2는 사용자별 권한 개수를 셉니다.
+**`exercise6-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 단계 1은 현황을 한 줄씩 출력하고, 단계 2는 사용자별 권한 개수를 셉니다.
 
 ```python
 from review_list import build_access_list                        # 방금 만든 현황 함수를 불러온다
@@ -205,20 +205,20 @@ print(counts)                                                    # 사용자별 
    - **방법 1 · VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
      2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `review_list.py` · `day04_2-1_run.py` 입니다.
+     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `review_list.py` · `exercise6-1_run.py` 입니다.
      4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
-   - **방법 2 · touch 로 만들기**: 터미널에서 파일마다 한 줄씩 치고, 각각 VS Code 에서 열어 붙여넣기: `touch review_list.py` → `touch day04_2-1_run.py`
-   - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim review_list.py` → `vim day04_2-1_run.py` (각각 `i` → 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
+   - **방법 2 · touch 로 만들기**: 터미널에서 파일마다 한 줄씩 치고, 각각 VS Code 에서 열어 붙여넣기: `touch review_list.py` → `touch exercise6-1_run.py`
+   - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim review_list.py` → `vim exercise6-1_run.py` (각각 `i` → 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
 2. **[VS Code]** `review_list.py` 의 `build_access_list` 본문을 직접 씁니다. 1.1 의 표와 그림을 보고 씁니다.
 3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 이어서 실행합니다.
    ```bash
    pwd
-   python day04_2-1_run.py
+   python exercise6-1_run.py
    ```
-   - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `day04_2-1_run.py` 실행할 파일
-   - 맥북은 `python3 day04_2-1_run.py` 로 칩니다.
+   - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `exercise6-1_run.py` 실행할 파일
+   - 맥북은 `python3 exercise6-1_run.py` 로 칩니다.
 4. 출력은 두 단계입니다. 단계 1은 `부여돼 있는 권한 N 건` 한 줄과 현황 리스트이고, 단계 2는 사용자별 권한 개수 딕셔너리 한 줄입니다.
-5. **[보고서]** `day04_am_report.md` 의 `## Exercise 6-1` › `### Exercise Exercise 5-2` 아래를 채웁니다.
+5. **[보고서]** Unit 6 의 `## Exercise 6-1` › `### Exercise Exercise 5-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 부여돼 있는 권한이 모두 몇 건인지, 그중 예외로 받은 권한이 몇 건인지, 현황에 권한이 하나도 없는 사용자가 있다면 누구이고 그 이유는 무엇인지 적어 주세요.
      - 현황에 권한이 하나도 없는 사용자는 `config/users.json` 의 사용자와 출력의 사용자를 비교해 찾고, 이유는 그 사용자의 역할이 `config/roles.json` 에 있는지 열어 확인합니다.
    - (나) [핵심 질문] 현황 리스트에는 판정 함수(`check_permission` · `evaluate_access`)가 이미 거부하는 권한도 들어 있습니다. 어떤 권한이 그런지 예를 하나 들고, 거부되는 권한을 리스트에서 빼지 않고 남겨 두는 것이 점검에 왜 필요한지 적어 주세요.

@@ -23,7 +23,7 @@ source:
 
 ```bash
 pwd
-python day05_2-1_run.py
+python exercise10-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -50,7 +50,7 @@ python day05_2-1_run.py
         lines.append("- " + rule + ": " + str(count) + "장")        # 규칙 한 줄을 추가한다
 ```
 
-`day05_2-1_run.py` 의 9번입니다.
+`exercise10-1_run.py` 의 9번입니다.
 
 ```python
 # 9. make_ticket_table(tickets) 의 결과를 table 에 저장한다
@@ -186,7 +186,7 @@ NameError: name 'table' is not defined
 
 ```bash
 pwd
-python day05_3-1_run.py
+python exercise10-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -253,7 +253,7 @@ def decide_gate(request, policy):                 # 조치 요청 한 건과 승
     return "자동", reasons                        # 기준보다 낮으면 자동으로 실행한다 — 미리 채운 줄
 ```
 
-`day05_3-1_run.py` 의 8 · 9번입니다.
+`exercise10-2_run.py` 의 8 · 9번입니다.
 
 ```python
     # 8. decide_gate(request, policy) 의 두 결과를 decision, reasons 에 저장한다
@@ -365,7 +365,7 @@ NameError: name 'decision' is not defined
 
 ```bash
 pwd
-python day05_4-1_run.py
+python exercise10-3_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -410,7 +410,7 @@ def find_not_recovered(changes, state):                                         
     return remaining                                                             # 복구되지 않은 대상 리스트를 리턴한다 — 미리 채운 줄
 ```
 
-`day05_4-1_run.py` 의 8 · 9번입니다.
+`exercise10-3_run.py` 의 8 · 9번입니다.
 
 ```python
     # 8. handle_false_positive(report, log, state, NOW) 의 결과를 result 에 저장한다

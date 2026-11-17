@@ -42,7 +42,7 @@ source:
 session_actions.py  terminate_sessions  : 계정의 세션 리스트를 비운다 (1번)
                     find_open_sessions  : 잠긴 계정 중 열린 세션이 남은 계정을 모은다 (2 · 3번)
 containment.py      contain_account     : 계정을 잠그고 (4번), 잠금이 확인되면 (5번) 세션을 종료한다 (6번)
-실행 파일           day03_4-1_run.py    : 요청마다 contain_account 를 호출하고 (7번), 다시 점검하고 (8번), 상태를 저장한다 (9번)
+실행 파일           exercise6-3_run.py    : 요청마다 contain_account 를 호출하고 (7번), 다시 점검하고 (8번), 상태를 저장한다 (9번)
 ```
 
 > **여기부터 문제입니다.**
@@ -52,7 +52,7 @@ containment.py      contain_account     : 계정을 잠그고 (4번), 잠금이 
 ** 이런 상황이 있습니다**
 
 - **지금은**: <mark>계정만 잠그면 활성 세션이 잔존하고, 잔존 여부를 확인하는 점검도 없습니다</mark>.
-- **만드는 것**: 세션 종료와 빈틈 점검(`session_actions.py`), 잠금 → 세션 종료를 순서대로 수행하는 통합 함수(`containment.py`), 호출 · 재점검 · 저장(`day03_4-1_run.py`).
+- **만드는 것**: 세션 종료와 빈틈 점검(`session_actions.py`), 잠금 → 세션 종료를 순서대로 수행하는 통합 함수(`containment.py`), 호출 · 재점검 · 저장(`exercise6-3_run.py`).
 - **실행하면**: <mark>단계 1: 수업 전부터 잠겨 있는데 세션이 열려 있던 계정, 단계 2: 잠금과 세션 종료 기록, 단계 3: 조치 후 재점검, 단계 4: 저장한 파일에서 읽은 값이 나옵니다.</mark>
 
 ** 할 일**: 파일 세 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 1 ~ 3 을 읽습니다.
@@ -107,7 +107,7 @@ def contain_account(user, state, vip_accounts, incident_id, reason):  # 계정 �
     return records                                                    # 조치 기록 리스트를 리턴한다
 ```
 
-**`day03_4-1_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. Exercise 4-1의 `containment_store.py` 와 `account_actions.py` 가 같은 폴더에 있어야 합니다.
+**`exercise6-3_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. Exercise 4-1의 `containment_store.py` 와 `account_actions.py` 가 같은 폴더에 있어야 합니다.
 
 ```python
 from incident import load_json                                                          # 월요일 파일의 함수를 불러온다
@@ -148,16 +148,16 @@ print("조치 기록:", len(load_json("containment_log.json")), "건")          
 1. **[터미널]** 파일 세 개를 만들고 붙여 넣습니다.
    ```bash
    pwd
-   touch session_actions.py containment.py day03_4-1_run.py
+   touch session_actions.py containment.py exercise6-3_run.py
    ls
    ```
-2. **[VS Code]** `session_actions.py` 1 ~ 3번, `containment.py` 4 ~ 6번, `day03_4-1_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「Exercise 4-3 한눈에」를 봅니다.
+2. **[VS Code]** `session_actions.py` 1 ~ 3번, `containment.py` 4 ~ 6번, `exercise6-3_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「Exercise 4-3 한눈에」를 봅니다.
 3. **[터미널]** 실행합니다(맥북은 `python3`).
    ```bash
-   python day03_4-1_run.py
+   python exercise6-3_run.py
    ```
 4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 1줄, 단계 2 는 5줄, 단계 3 은 2줄, 단계 4 는 2줄입니다.
-5. **[보고서]** `day03_am_report.md` 의 `## Exercise 4-3` 아래를 채웁니다.
+5. **[보고서]** Unit 4 의 `## Exercise 4-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 단계 3 에서 빈틈이 남은 계정과 단계 4 의 잠긴 계정을 적어 주세요.
    - (나) [핵심 질문] 단계 1 에서 `junho` 가 점검에서 발견된 이유를 적어 주세요. 그리고 `dami` 가 단계 2 에서 받은 두 가지 조치와, 잠금만 했다면 유효하게 남았을 접속(세션)을 적어 주세요.
    - (다) [핵심 질문] `gaeun` 은 잠금도 세션 종료도 받지 않았습니다. `containment.py` 5번의 `if` 조건과 단계 2 의 출력 줄을 근거로 그 이유를 적어 주세요. 그리고 잠금이 적용되지 않은 계정의 세션을 종료하면 안 되는 이유도 적어 주세요.

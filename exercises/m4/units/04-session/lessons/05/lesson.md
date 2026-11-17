@@ -23,9 +23,9 @@ source:
 
 ```bash
 pwd
-python day03_2-1_run.py
+python exercise4-1_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day03_2-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise4-1_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 네 함수입니다.
 
@@ -97,7 +97,7 @@ KeyError: 'failed_login'
 The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
-  File "…/anomaly_detection/day03_2-1_run.py", line 7, in <module>
+  File "…/anomaly_detection/exercise4-1_run.py", line 7, in <module>
     average = average_failures(daily)  # 하루 평균을 구한다
   File "…/anomaly_detection/baseline.py", line 22, in average_failures
     daily_failed_logins = daily["failed_login"]  # 열 이름을 잘못 썼다
@@ -119,9 +119,9 @@ KeyError: 'failed_login'
 
 ```bash
 pwd
-python day03_3-1_run.py
+python exercise4-2_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day03_3-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise4-2_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 두 함수입니다.
 
@@ -179,7 +179,7 @@ dtype: int64
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day03_3-1_run.py", line 4, in <module>
+  File "…/anomaly_detection/exercise4-2_run.py", line 4, in <module>
     login_failures = pick_login_failures(events)  # 로그인 실패 이벤트만 골라낸다
   File "…/anomaly_detection/login_detection.py", line 29, in pick_login_failures
     both_true = is_login and is_fail  # & 대신 and 를 썼다
@@ -201,9 +201,9 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 
 ```bash
 pwd
-python day03_4-1_run.py
+python exercise4-3_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day03_4-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise4-3_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 두 함수입니다.
 
@@ -255,7 +255,7 @@ python day03_4-1_run.py
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day03_4-1_run.py", line 4, in <module>
+  File "…/anomaly_detection/exercise4-3_run.py", line 4, in <module>
     type_event_counts = count_types(events)  # 유형별로 센다
   File "…/anomaly_detection/classify.py", line 42, in count_types
     action = event["action"]  # 그 이벤트의 행동

@@ -42,7 +42,7 @@ source:
    - <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나야</mark> 합니다.
    - 설치가 끝나면 <mark>`Successfully installed …` 또는 `Requirement already satisfied` 가 나옵니다.</mark> 마지막에 `WARNING: You are using pip version …` 이 나와도 무시합니다.
    - <mark>마지막 명령에서 점이 든 숫자(예: `2.3.3`)가 나오면</mark> 판다스를 쓸 수 있습니다.
-4. **오늘 받은 파일 두 개**(`day02_pm_pandas_basics.md`, `day02_pm_report.md`)를 `다운로드` 폴더에서 `anomaly_detection` 폴더로 끌어다 놓습니다(안 되면 **File › Save As…**). 이미 있으면 건너뜁니다.
+4. **오늘 받은 파일 두 개**(Unit 3, Unit 3)를 `다운로드` 폴더에서 `anomaly_detection` 폴더로 끌어다 놓습니다(안 되면 **File › Save As…**). 이미 있으면 건너뜁니다.
 5. **[VS Code]** 보고서 맨 위 제목 `(이름 · 2026-11-03(화))` 의 `이름` 을 내 이름으로 바꿉니다. 안내 파일은 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다.
 6. **[VS Code 또는 터미널]** `anomaly_detection` 폴더에 `normalized_events.json` 파일을 만들어 아래 내용을 그대로 붙여 넣습니다(터미널에서는 `touch normalized_events.json` 후 VS Code 에서 엽니다).
 

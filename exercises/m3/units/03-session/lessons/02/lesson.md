@@ -96,7 +96,7 @@ source:
 ** 할 일**
 
 1. `config_loader.py` 를 만들고 `load_json` 본문을 직접 씁니다.
-2. 깨진 파일 `config/users_broken.json` 과 시험 파일 `day02_5-1_broken.py` 를 만듭니다.
+2. 깨진 파일 `config/users_broken.json` 과 시험 파일 `exercise3-1_broken.py` 를 만듭니다.
 3. 실행해서 <mark>세 경로의 결과</mark>를 읽습니다.
 
 **`config_loader.py`**
@@ -132,7 +132,7 @@ def load_json(path, default):                                    # 파일 경로
 }
 ```
 
-**`day02_5-1_broken.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 1.2 의 세 경로를 `load_json` 으로 읽어 결과를 출력합니다.
+**`exercise3-1_broken.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 1.2 의 세 경로를 `load_json` 으로 읽어 결과를 출력합니다.
 
 ```python
 from config_loader import load_json                              # 5-1 의 안전한 읽기 함수를 불러온다
@@ -168,19 +168,19 @@ for path in PATHS:                                               # 경로를 하
    - **방법 1 · VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
      2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `config/users_broken.json` · `day02_5-1_broken.py` 입니다. 앞에 폴더가 붙은 이름은 폴더도 함께 만들어집니다.
+     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `config/users_broken.json` · `exercise3-1_broken.py` 입니다. 앞에 폴더가 붙은 이름은 폴더도 함께 만들어집니다.
      4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
-   - **방법 2 · touch 로 만들기**: 터미널에서 파일마다 한 줄씩 치고, 각각 VS Code 에서 열어 붙여넣기: `touch config/users_broken.json` → `touch day02_5-1_broken.py`
-   - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim config/users_broken.json` → `vim day02_5-1_broken.py` (각각 `i` → 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
+   - **방법 2 · touch 로 만들기**: 터미널에서 파일마다 한 줄씩 치고, 각각 VS Code 에서 열어 붙여넣기: `touch config/users_broken.json` → `touch exercise3-1_broken.py`
+   - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim config/users_broken.json` → `vim exercise3-1_broken.py` (각각 `i` → 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
 4. **[터미널]** 위치가 `…/access_control` 인지 확인하고 실행합니다.
    ```bash
    pwd
-   python day02_5-1_broken.py
+   python exercise3-1_broken.py
    ```
-   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `day02_5-1_broken.py` 실행할 파일
-   맥북: `python3 day02_5-1_broken.py`
+   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise3-1_broken.py` 실행할 파일
+   맥북: `python3 exercise3-1_broken.py`
 5. 세 경로의 결과 다섯 줄이 나옵니다. 경고 두 줄이 어느 경로에서 나왔는지 봅니다.
-6. **[보고서]** `day02_pm_report.md` 의 `## Exercise 3-1` › `### Exercise Exercise 2-2` 아래를 채웁니다.
+6. **[보고서]** Unit 3 의 `## Exercise 3-1` › `### Exercise Exercise 2-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 경고 두 줄이 각각 어떤 오류 때문에 나왔는지 적어 주세요.
    - (나) [핵심 질문] 실패했을 때 프로그램을 멈추지 않고 빈 설정을 리턴하는 것이, 오류로 멈추는 것보다 왜 안전한가요? 「멈춘 뒤 현장에서 생기는 일」을 넣어 적어 주세요.
    - (다) [핵심 질문] 설정 파일이 깨져서 모두 거부되면 정산 업무가 멈춥니다. 운영자가 이 상황을 빨리 알고 복구하려면 판정 프로그램에 무엇을 추가하겠습니까? 두 가지 이상 적고, 그중 가장 먼저 할 것을 고른 이유를 적어 주세요.

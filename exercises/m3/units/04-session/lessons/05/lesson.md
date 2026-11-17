@@ -22,7 +22,7 @@ source:
  **터미널에 입력합니다.**
 
 ```bash
-python day03_2-1_run.py
+python exercise4-1_run.py
 ```
 
 **채운 코드** (한 예)
@@ -100,7 +100,7 @@ gaeun ACCOUNT QUERY -> 접수 안 됨: 만료 시각이 이미 지났음
  **터미널에 입력합니다.**
 
 ```bash
-python day03_3-1_run.py
+python exercise4-2_run.py
 ```
 
 **채운 코드** (한 예)
@@ -175,7 +175,7 @@ python day03_3-1_run.py
  **터미널에 입력합니다.**
 
 ```bash
-python day03_4-1_run.py
+python exercise4-3_run.py
 ```
 
 **채운 코드** (한 예)

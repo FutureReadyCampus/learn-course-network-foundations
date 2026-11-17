@@ -16,8 +16,8 @@ source:
 <mark style="background:#e0d4ff">지난주에는 플레이북 찾기(월) · 계정 잠금과 IP 차단(수) · 티켓(목) · 승인 게이트(금)</mark>를 단계마다 따로 구현했습니다. 오늘 오전에는 <mark>**이 모듈들을 하나의 엔진으로 연결해 알림 한 건을 처음부터 끝까지 처리하고, 4과목의 탐지 결과를 입력으로 받아 실행하고, 엔진이 정책을 지켰는지 로그로 점검하는 부분**</mark>을 구현합니다. 통합 엔진(orchestration engine, 오케스트레이션 엔진: 여러 모듈을 정해진 순서로 호출해 하나의 흐름으로 실행하는 프로그램)은 SOAR(Security Orchestration, Automation and Response, 쏘아: 보안 오케스트레이션 · 자동화 · 대응) 제품의 핵심 부분입니다.
 
 - **Exercise 10-1**: 알림 한 건을 <mark>플레이북 찾기 → 승인 게이트 → 조치 실행 → 티켓</mark> 순서로 처리하는 엔진을 만듭니다. 알림 하나에서 오류가 나도 그 알림만 실패(failure)로 기록하고 나머지 알림을 계속 처리합니다(`soar_engine.py`).
-- **Exercise 10-2**: 4과목이 저장한 탐지 결과 `day03_risk_scores.json` 을 엔진이 읽는 알림으로 바꾸고, 파일 모양을 엔진 앞에서 점검합니다. 엔진 실행 결과는 운영 요약(operations summary: 처리 결과별 알림 수 · 티켓 수 · 실제로 실행한 조치를 한 번에 보여 주는 요약)으로 정리합니다(`engine_input.py`). 종단간(end-to-end: 처음 입력부터 마지막 결과까지 중간에 끊기지 않고 한 흐름으로 이어지는 것) 연결입니다.
-- **Exercise 10-3**: 엔진이 남긴 로그로 <mark>정책 준수 점검</mark>(policy compliance check: 승인 게이트와 허용 목록 같은 통제가 실제로 지켜졌는지 확인하는 일)을 하고, 5일간의 회고 문서 `day05_final_retrospective.md` 를 쓴 뒤 깃허브에 올립니다(`policy_check.py`).
+- **Exercise 10-2**: 4과목이 저장한 탐지 결과 `unit07_risk_scores.json` 을 엔진이 읽는 알림으로 바꾸고, 파일 모양을 엔진 앞에서 점검합니다. 엔진 실행 결과는 운영 요약(operations summary: 처리 결과별 알림 수 · 티켓 수 · 실제로 실행한 조치를 한 번에 보여 주는 요약)으로 정리합니다(`engine_input.py`). 종단간(end-to-end: 처음 입력부터 마지막 결과까지 중간에 끊기지 않고 한 흐름으로 이어지는 것) 연결입니다.
+- **Exercise 10-3**: 엔진이 남긴 로그로 <mark>정책 준수 점검</mark>(policy compliance check: 승인 게이트와 허용 목록 같은 통제가 실제로 지켜졌는지 확인하는 일)을 하고, 5일간의 회고 문서 `unit10_final_retrospective.md` 를 쓴 뒤 깃허브에 올립니다(`policy_check.py`).
 
 새 문법은 Exercise 10-1의 `except Exception as error` 하나입니다. 이 수업에서는 판다스를 쓰지 않습니다. 보고서의 [핵심 질문] 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기(줄 앞의 빈칸)는 각 번호 주석과 같은 위치에서 시작합니다. 각 번호 주석 바로 아래에 직접 쓰고(Exercise 10-2 4번만 딕셔너리라서 여러 줄), 주석은 지우지 않습니다.
 
@@ -31,7 +31,7 @@ source:
 | `ip_users.json` | 수요일 | IP 별로 그 IP 를 쓰는 계정 리스트 | Exercise 10-1 |
 | `ticketing.py` · `config/escalation_rules.json` | 목요일 | `make_ticket` · 등급별 응답 기한(`sla_minutes`) | Exercise 10-1 |
 | `approval_gate.py` · `config/approval_policy.json` | 금요일 | `decide_gate` · 승인 정책 | 2 · Exercise 10-3 |
-| `day03_risk_scores.json` | 4과목 11/5(목) 오후 | 대상별 점수 · 등급 · 이유 5건 | Exercise 10-2 |
+| `unit07_risk_scores.json` | 4과목 11/5(목) 오후 | 대상별 점수 · 등급 · 이유 5건 | Exercise 10-2 |
 
 ## 개요
 
@@ -45,7 +45,7 @@ source:
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
-3. 오늘 받은 파일 두 개(`day06_am_soar_engine.md`, `day06_am_report.md`)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
+3. 오늘 받은 파일 두 개(Unit 10, Unit 10)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
 4. **[터미널]** 월요일의 플레이북 등록 값을 점검합니다(맥북은 `python3`). 엔진은 이 파일의 `actions` · 트리거 규칙 · 최소 등급을 읽으므로, <mark>아래 출력과 같아야</mark> 오늘 출력이 문서와 일치합니다. 다르면 아래 「」의 `config/playbook_registry.json` 으로 덮어씁니다.
    ```bash
    python -c "import json; print([(p['id'], p['trigger_rule'], p['min_grade'], p['actions']) for p in json.load(open('config/playbook_registry.json', encoding='utf-8'))])"

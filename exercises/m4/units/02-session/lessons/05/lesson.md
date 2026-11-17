@@ -23,9 +23,9 @@ source:
 
 ```bash
 pwd
-python day02_2-1_run.py
+python exercise2-1_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day02_2-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise2-1_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 두 함수입니다.
 
@@ -95,7 +95,7 @@ False
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day02_2-1_run.py", line 7, in <module>
+  File "…/anomaly_detection/exercise2-1_run.py", line 7, in <module>
     event = normalize_web(line)  # 한 줄을 공통 이벤트로 바꾼다
   File "…/anomaly_detection/normalize_web.py", line 57, in normalize_web
     time_out = convert_time(time_text)  # 공통 모양의 시각으로 바꾼다
@@ -119,9 +119,9 @@ ValueError: time data '02/Nov/2026:09:01:05 +0900' does not match format '%Y-%m-
 
 ```bash
 pwd
-python day02_3-1_run.py
+python exercise2-2_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day02_3-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise2-2_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
 
@@ -180,7 +180,7 @@ python day02_3-1_run.py
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day02_3-1_run.py", line 3, in <module>
+  File "…/anomaly_detection/exercise2-2_run.py", line 3, in <module>
     server_events = load_server("server_log.jsonl")  # 판정 서버 로그를 공통 이벤트로 바꾼다
   File "…/anomaly_detection/normalize_json_csv.py", line 78, in load_server
     event = normalize_server(line)  # 공통 이벤트로 바꾼다
@@ -203,9 +203,9 @@ KeyError: True
 
 ```bash
 pwd
-python day02_4-1_run.py
+python exercise2-3_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day02_4-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise2-3_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
 
@@ -269,7 +269,7 @@ ip 가 비어 있는 이벤트 15 개
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day02_4-1_run.py", line 24, in <module>
+  File "…/anomaly_detection/exercise2-3_run.py", line 24, in <module>
     source_event_counts = count_by_source(events)  # 소스별 개수를 센다
   File "…/anomaly_detection/normalize.py", line 45, in count_by_source
     for event in events:  # 이벤트를 하나씩 꺼낸다

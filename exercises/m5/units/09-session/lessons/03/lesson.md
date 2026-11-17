@@ -18,7 +18,7 @@ source:
 > - **상황**: <mark style="background:#e0d4ff">오늘 오전에 리포트 · 승인 게이트 · 오탐 복구를 따로 구현하고</mark> 하나씩 실행해 출력을 사람이 읽어 검증했습니다(수동 검증). 강의계획서의 Unit 9 평가 기준은 <mark style="background:#ffdcb0">① 2 · 3일 차 데이터가 리포트에 빠짐없이 들어갔는가 ② 위험에 따라 자동 · 승인이 맞게 나뉘는가 ③ 오탐 복구가 신속하고 완전한가</mark>, 세 가지입니다. 오늘 점검 프로그램은 ①을 「티켓 번호와 티켓 없는 조치의 인시던트 번호가 리포트에 들어 있는가」로 판정합니다.
 > - **문제**: 출력을 사람이 읽는 수동 검증만으로는 승인 기준 숫자를 바꾸거나 리포트 틀을 고친 뒤에 <mark style="background:#ffc4d6">무엇이 달라졌는지 놓치기 쉽습니다.</mark> 예를 들어 <mark style="background:#ffdcb0">승인 기준을 3점에서 4점으로 올리면</mark> `REQ-5`(함께 쓰는 IP, 3점)의 결정이 승인 필요에서 「자동」으로 바뀌는데, 출력 8줄을 다시 읽어야 알 수 있습니다. 변경 뒤에는 같은 점검을 다시 실행해 결과를 비교하는 방법이 필요합니다.
 > - **부탁**: 세 기준을 한 번에 검증하는 점검 프로그램을 만들어 주세요. 승인 게이트는 <mark>기대한 결정(기대 결과)을 미리 적어 둔 시험 사례 7개로 검증해 주세요.</mark>
-> - **바뀌는 점**: 실행 한 번으로 점검 목록 `day4_checklist.md` 5줄이 생성되고, 오늘 샘플에서는 <mark style="background:#bde3ff">세 기준이 모두 「통과」</mark>입니다. 기준을 지키지 못하면 <mark style="background:#ffc4d6">「확인 필요」와 문제 문장</mark>이 나옵니다. 상황과 숫자는 설명을 위한 예시입니다.
+> - **바뀌는 점**: 실행 한 번으로 점검 목록 `unit09_checklist.md` 5줄이 생성되고, 오늘 샘플에서는 <mark style="background:#bde3ff">세 기준이 모두 「통과」</mark>입니다. 기준을 지키지 못하면 <mark style="background:#ffc4d6">「확인 필요」와 문제 문장</mark>이 나옵니다. 상황과 숫자는 설명을 위한 예시입니다.
 
 > **읽을거리 — 문제가 아닙니다.** 읽고 이해만 합니다.
 
@@ -52,11 +52,11 @@ source:
 함수 네 개와 실행 파일 가운데 직접 쓰는 곳은 **아홉 군데**입니다.
 
 ```
-day4_check.py   check_report    : 있어야 할 번호가 리포트에 없으면 (1번) 추가한다 (2번)
+unit09_check.py   check_report    : 있어야 할 번호가 리포트에 없으면 (1번) 추가한다 (2번)
                 check_gate      : 사례마다 결정을 받아 (3번) 기대와 다르면 (4번) 남긴다
                 check_recovery  : 시간 안에 끝나지 않았거나 (5번) 진짜 공격 계정이 풀렸으면 (6 · 7번) 남긴다
                 mark            : 문제가 없으면 「통과」, 있으면 「확인 필요」를 리턴한다 (미리 채움)
-실행 파일       day05_6-1_run.py : 리포트 점검 결과 (8번) · 오탐 복구 점검 결과 (9번)를 받아 점검 목록을 쓴다
+실행 파일       exercise9-2_run.py : 리포트 점검 결과 (8번) · 오탐 복구 점검 결과 (9번)를 받아 점검 목록을 쓴다
 ```
 
 > **여기부터 문제입니다.**
@@ -66,12 +66,12 @@ day4_check.py   check_report    : 있어야 할 번호가 리포트에 없으면
 ** 이런 상황이 있습니다**
 
 - **지금은**: <mark>리포트 · 승인 게이트 · 오탐 복구가 기준을 충족하는지 사람이 출력을 하나씩 읽어 수동으로 검증합니다</mark>.
-- **만드는 것**: 리포트 반영 · 승인 게이트 분기 · 오탐 복구 점검 함수(`day4_check.py`), 점검 목록 출력과 저장(`day05_6-1_run.py`).
+- **만드는 것**: 리포트 반영 · 승인 게이트 분기 · 오탐 복구 점검 함수(`unit09_check.py`), 점검 목록 출력과 저장(`exercise9-2_run.py`).
 - **실행하면**: <mark style="background:#bde3ff">단계 1: 점검 재료의 수, 단계 2: 기준마다 「통과」 또는 「확인 필요」와 문제 수, 단계 3: 저장한 점검 목록이 나옵니다.</mark>
 
 ** 할 일**: 데이터 파일 하나와 코드 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 를 읽습니다.
 
-**`day4_check.py`** — 점검 함수 모음입니다. 직접 쓰는 곳은 1 ~ 7번입니다.
+**`unit09_check.py`** — 점검 함수 모음입니다. 직접 쓰는 곳은 1 ~ 7번입니다.
 
 - 4번과 5번은 `if` 한 줄만 씁니다. 그 아래 미리 채운 `append` 줄이 `if` 안쪽입니다.
 
@@ -136,19 +136,19 @@ def mark(problems):                                              # 문제 리스
     return "확인 필요"                                           # 문제가 있으면 확인 필요를 리턴한다
 ```
 
-**`day05_6-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+**`exercise9-2_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
 from incident import load_json                                                              # 월요일 파일의 JSON 읽기 함수를 불러온다
 from false_positive import handle_false_positive                                            # 오전 Exercise 8-3의 오탐 처리 함수를 불러온다
-from day4_check import check_report, check_gate, check_recovery, mark                       # 방금 만든 점검 함수를 불러온다
+from unit09_check import check_report, check_gate, check_recovery, mark                       # 방금 만든 점검 함수를 불러온다
 
 REPORT_PATH = "incident_report_20261112.md"                                                 # 오전 Exercise 8-1가 만든 리포트 파일 이름
 TRUE_POSITIVE_USERS = ["dami"]                                                              # 진짜 공격으로 확인된 계정 (오탐 처리로 풀면 안 된다)
 NOW = 45                                                                                    # 오탐 신고를 처리하는 지금 시각(분)
 
-tickets = load_json("day05_tickets.json")                                                   # 목요일 근무의 티켓 파일을 읽는다
-actions = load_json("day05_actions.json")                                                   # 목요일 근무의 조치 기록 파일을 읽는다
+tickets = load_json("unit10_tickets.json")                                                   # 목요일 근무의 티켓 파일을 읽는다
+actions = load_json("unit10_actions.json")                                                   # 목요일 근무의 조치 기록 파일을 읽는다
 policy = load_json("config/approval_policy.json")                                           # 승인 정책 파일을 읽는다
 cases = load_json("gate_cases.json")                                                        # 승인 게이트 시험 사례 파일을 읽는다
 print("--- 단계 1: 점검 재료 · 티켓", len(tickets), "장 · 조치 기록", len(actions), "건 · 시험 사례", len(cases), "개")  # 단계 1 시작을 알리는 줄
@@ -183,9 +183,9 @@ for check in checks:                                                            
         lines.append("  - " + problem)                                                      # 점검 문서에 문제를 추가한다
 
 text = "\n".join(lines) + "\n"                                                              # 줄 리스트를 줄바꿈으로 이어 한 문자열로 만든다
-with open("day4_checklist.md", "w", encoding="utf-8") as check_file:                        # 점검 문서 파일을 쓰기 모드("w")로 연다
+with open("unit09_checklist.md", "w", encoding="utf-8") as check_file:                        # 점검 문서 파일을 쓰기 모드("w")로 연다
     check_file.write(text)                                                                  # 점검 문서를 파일에 쓴다
-print("--- 단계 3: day4_checklist.md", len(lines), "줄 저장")                               # 단계 3 시작을 알리는 줄과 저장한 줄 수
+print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")                               # 단계 3 시작을 알리는 줄과 저장한 줄 수
 ```
 
 **순서**
@@ -193,19 +193,19 @@ print("--- 단계 3: day4_checklist.md", len(lines), "줄 저장")              
 1. **[터미널]** 파일 세 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
    ```bash
    pwd
-   touch gate_cases.json day4_check.py day05_6-1_run.py
+   touch gate_cases.json unit09_check.py exercise9-2_run.py
    ls
    ```
-2. **[VS Code]** `day4_check.py` 1 ~ 7번, `day05_6-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 9-2 한눈에」를 봅니다.
+2. **[VS Code]** `unit09_check.py` 1 ~ 7번, `exercise9-2_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 9-2 한눈에」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
-   python day05_6-1_run.py
+   python exercise9-2_run.py
    ```
 4. 출력은 세 단계입니다. 제목 줄은 줄 수에 넣지 않습니다.
    - 단계 1 과 단계 3 은 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
    - 단계 2 는 기준마다 한 줄씩 3줄입니다. 문제가 있으면 문제마다 한 줄이 더 나옵니다.
-5. **[보고서]** `day05_pm_report.md` 의 `## Exercise 9-2` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 세 기준의 결과와 `day4_checklist.md` 의 줄 수를 적어 주세요.
+5. **[보고서]** Unit 9 의 `## Exercise 9-2` 아래를 채웁니다.
+   - (가) 실행한 출력 전체를 붙여 넣고, 세 기준의 결과와 `unit09_checklist.md` 의 줄 수를 적어 주세요.
    - (나) [핵심 질문] `gate_cases.json` 에는 「대상 3개」와 「대상 4개」 사례가 함께 있습니다. 두 사례의 점수와 기대한 결정을 근거로, 경계값 분석에 따라 기준 숫자 바로 앞뒤 값(경계값)의 사례를 함께 넣는 이유를 적어 주세요.
    - (다) [핵심 질문] ③ 기준은 오탐 신고를 처리한 뒤에도 정탐 계정 `dami` 의 잠금이 유지되는지 확인합니다. 오탐 복구 점검에 이 확인이 없으면 어떤 실수를 놓칠 수 있는지 적어 주세요. 수요일의 `rollback_incident`(오전 Exercise 8-3가 가져와 사용(import)하는 함수)가 어떻게 동작할 때 그 실수가 생기는지도 함께 적어 주세요.
 
@@ -231,11 +231,11 @@ print("--- 단계 3: day4_checklist.md", len(lines), "줄 저장")              
 
 - **지금은**: <mark>팀장이 「오늘 만든 리포트 · 승인 게이트 · 오탐 복구 · 리스크 평가 · 점검 코드와 문서를 저장소에 남겨 달라」고 합니다</mark>.
 - **그래서 하는 것**: `git status` 로 올라갈 파일을 확인한 뒤(`.env` 같은 비밀 키 파일이 섞이면 안 됩니다) `git add` → `git commit` → `git push` 순서로 올립니다.
-- **끝나면**: 깃허브 저장소의 `soar_response` 폴더에 `report.py` · `approval_gate.py` · `false_positive.py` · `risk_assessment.py` · `day4_check.py` 와 `incident_report_20261112.md` · `risk_assessment.md` · `day4_checklist.md` 가 보입니다.
+- **끝나면**: 깃허브 저장소의 `soar_response` 폴더에 `report.py` · `approval_gate.py` · `false_positive.py` · `risk_assessment.py` · `unit09_check.py` 와 `incident_report_20261112.md` · `risk_assessment.md` · `unit09_checklist.md` 가 보입니다.
 
 **순서**
 
-0. **[터미널]** 오늘 만든 파일이 있는지 `soar_response` 폴더에서 확인합니다. 두 명령을 하나씩 칩니다. `day05_am_report.md` 와 `day05_pm_report.md` 의 모든 질문에서 `답:` 뒤와 코드 상자가 모두 채워졌는지도 확인합니다(마무리 (가)는 3번에서 채웁니다).
+0. **[터미널]** 오늘 만든 파일이 있는지 `soar_response` 폴더에서 확인합니다. 두 명령을 하나씩 칩니다. Unit 8 와 Unit 9 의 모든 질문에서 `답:` 뒤와 코드 상자가 모두 채워졌는지도 확인합니다(마무리 (가)는 3번에서 채웁니다).
 
    ① 지금 위치를 확인합니다.
 
@@ -253,7 +253,7 @@ print("--- 단계 3: day4_checklist.md", len(lines), "줄 저장")              
    ```
 
    - 하는 일: 폴더 안의 파일 이름을 보여 줍니다.
-   - 나오는 것: `report.py` · `approval_gate.py` · `false_positive.py` · `risk_assessment.py` · `day4_check.py` · `incident_report_20261112.md` · `risk_assessment.md` · `day4_checklist.md` · `config` 가 보이면 됩니다.
+   - 나오는 것: `report.py` · `approval_gate.py` · `false_positive.py` · `risk_assessment.py` · `unit09_check.py` · `incident_report_20261112.md` · `risk_assessment.md` · `unit09_checklist.md` · `config` 가 보이면 됩니다.
 
 1. **[터미널]** `security-agent-toolkit` 폴더로 이동합니다. 0번의 `pwd` 결과가 `soar_response` 로 끝날 때만 `cd ..` 를 칩니다. 이미 `…/security-agent-toolkit` 으로 끝나면 `cd ..` 는 건너뛰고 `pwd` 만 칩니다.
 
@@ -290,7 +290,7 @@ print("--- 단계 3: day4_checklist.md", len(lines), "줄 저장")              
      - `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
    - `soar_response/__pycache__/` (파이썬이 실행하면서 자동으로 만드는 임시 폴더)가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 봅니다.
 
-3. **[보고서]** `day05_pm_report.md` 의 `### 마무리 · 오늘 만든 것을 깃허브에 올리기` 아래를 채웁니다. <mark>올리기 전에 채워야</mark> 깃허브에 빈칸 없이 올라갑니다.
+3. **[보고서]** Unit 9 의 `### 마무리 · 오늘 만든 것을 깃허브에 올리기` 아래를 채웁니다. <mark>올리기 전에 채워야</mark> 깃허브에 빈칸 없이 올라갑니다.
    - (가) `git status` 를 쳤을 때 `.env` 나 `.venv` 가 보였는지, 보였다면 어떻게 했는지 적어 주세요.
    - <mark>앞 Exercise에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.</mark> 올린 뒤에 이어서 적어 다시 올려도 됩니다.
 4. **[터미널]** 바뀐 파일을 모두 올릴 목록에 추가하고(`add`), 기록하고(`commit`), 올립니다(`push`). 세 명령을 순서대로 하나씩 칩니다.

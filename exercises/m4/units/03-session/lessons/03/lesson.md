@@ -345,7 +345,7 @@ failed.to_csv("failed_events.csv", index=False)  # 표를 failed_events.csv 파�
 
 ** 할 일**
 
-1. **`events_time.py` · `day02_6-1_run.py` 두 파일**을 만들고, `events_time.py` 의 `count_by_user` · `count_by_hour` 에서 직접 쓰는 곳을 씁니다.
+1. **`events_time.py` · `exercise3-2_run.py` 두 파일**을 만들고, `events_time.py` 의 `count_by_user` · `count_by_hour` 에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>사용자별 실패 횟수</mark>(단계 1), <mark>시간대별 실패 횟수</mark>(단계 2), <mark>저장한 파일의 행 수</mark>(단계 3)를 읽습니다.
 
 **`events_time.py`**
@@ -417,7 +417,7 @@ def save_failed(failed, path):              # 표와 저장할 파일 이름을 
 - 번호 주석이 연달아 붙어 있어도(예: 1 · 2 · 3번), <mark>주석 1번 아래에 코드 한 줄, 주석 2번 아래에 코드 한 줄을 씁니다</mark>.
 - **채우기 전에 실행하면 `NameError: name 'sorted_user_fail_counts' is not defined` 오류가 납니다.** 3번까지 쓰지 않았기 때문입니다.
 
-**`day02_6-1_run.py`** — <mark>그대로 붙여 넣습니다.</mark> 학생이 쓰는 줄은 없습니다. 이벤트를 읽어 실패만 골라 묶고 저장한 뒤 **세 단계**로 출력합니다. 단계 3에서 `pd.read_csv(파일)` 은 저장한 CSV 를 다시 표로 읽고, `len(표)` 는 그 표의 행 수입니다. 저장이 잘 됐는지 행 수로 확인하는 줄이라 읽기만 합니다.
+**`exercise3-2_run.py`** — <mark>그대로 붙여 넣습니다.</mark> 학생이 쓰는 줄은 없습니다. 이벤트를 읽어 실패만 골라 묶고 저장한 뒤 **세 단계**로 출력합니다. 단계 3에서 `pd.read_csv(파일)` 은 저장한 CSV 를 다시 표로 읽고, `len(표)` 는 그 표의 행 수입니다. 저장이 잘 됐는지 행 수로 확인하는 줄이라 읽기만 합니다.
 
 ```python
 import pandas as pd                            # 저장한 파일을 다시 읽을 수 있게 판다스를 불러온다
@@ -444,17 +444,17 @@ print("저장된 행", saved_count, "개")          # 저장된 행 수를 출�
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 **`events_time.py` · `day02_6-1_run.py`** 를 만들어 위 코드를 붙여 넣습니다(터미널에서는 `touch events_time.py day02_6-1_run.py` 후 VS Code 에서 엽니다).
+1. **[VS Code 또는 터미널]** 파일 **`events_time.py` · `exercise3-2_run.py`** 를 만들어 위 코드를 붙여 넣습니다(터미널에서는 `touch events_time.py exercise3-2_run.py` 후 VS Code 에서 엽니다).
 2. **[VS Code]** `events_time.py` 에서 **직접 쓰는 곳 다섯 군데**를 씁니다. 2.1 의 판다스 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python day02_6-1_run.py
+   python exercise3-2_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day02_6-1_run.py` 파이썬으로 실행 파일 실행
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise3-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **세 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1은 6줄, 단계 2는 7줄, 단계 3은 1줄입니다.
 5. **[VS Code]** 새로 생긴 `failed_events.csv` 를 열어 첫 줄이 열 이름(`time,source,user,ip,action,result,hour`)인지 보고, <mark>`hour` 가 9 인 행의 `source` 를 봅니다</mark>.
-6. **[보고서]** `day02_pm_report.md` 의 `## Exercise 3-2` › `### Exercise Exercise 2-2` 아래를 채웁니다.
+6. **[보고서]** Unit 3 의 `## Exercise 3-2` › `### Exercise Exercise 2-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 실패가 가장 많은 사용자와 횟수, 실패가 가장 많이 난 시간대와 횟수, 저장된 행 수를 적어 주세요.
    - (나) [핵심 질문] 시간대별 결과에서 실패가 가장 많이 난 시간대의 개수를 보세요. 이 개수는 Exercise 3-1 단계 3의 어느 소스 개수와 같은가요? 그 실패가 어느 소스에서 났는지 적고(근거는 숫자가 같다는 것까지 쓰면 됩니다), 이어서 확인할 것도 적어 주세요.
    - (다) [핵심 질문] 사용자별 실패 횟수를 모두 더하면 실패한 이벤트 전체보다 적습니다. 몇 개가 모자라고 왜 모자란지 적어 주세요. 그리고 이 차이를 모르고 사용자별 숫자만 보면 어떤 잘못된 판단을 할 수 있을지도 적어 주세요.
@@ -484,12 +484,12 @@ print("저장된 행", saved_count, "개")          # 저장된 행 수를 출�
 
 **순서**
 
-0. **[터미널]** 오늘 만든 파일이 있는지 `anomaly_detection` 폴더에서 확인합니다. `day02_pm_report.md` 의 5 · Exercise 3-2 칸에서 `답:` 뒤가 비어 있는 질문이 없는지도 봅니다.
+0. **[터미널]** 오늘 만든 파일이 있는지 `anomaly_detection` 폴더에서 확인합니다. Unit 3 의 5 · Exercise 3-2 칸에서 `답:` 뒤가 비어 있는 질문이 없는지도 봅니다.
    ```bash
    ls
    ```
    - 명령 풀이: `ls` 폴더 안의 파일 이름 보기
-   - `normalized_events.json` · `events_basic.py` · `events_time.py` · `day02_5-1_run.py` · `day02_6-1_run.py` · `failed_events.csv` 와 이 안내 · 보고서 두 파일이 보여야 합니다.
+   - `normalized_events.json` · `events_basic.py` · `events_time.py` · `exercise3-1_run.py` · `exercise3-2_run.py` · `failed_events.csv` 와 이 안내 · 보고서 두 파일이 보여야 합니다.
 1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. <mark>결과가 `…/security-agent-toolkit` 으로 끝나야</mark> 합니다.
    ```bash
    cd ..

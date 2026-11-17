@@ -304,7 +304,7 @@ print(failed_shape)                              # (23, 6) — 실패한 이벤�
 
 ** 할 일**
 
-1. **`events_basic.py` · `day02_5-1_run.py` 두 파일**을 만들고, `events_basic.py` 의 `load_events` · `describe_events` · `count_values` 에서 직접 쓰는 곳을 씁니다.
+1. **`events_basic.py` · `exercise3-1_run.py` 두 파일**을 만들고, `events_basic.py` 의 `load_events` · `describe_events` · `count_values` 에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>표 크기(행 수, 열 수)와 처음 3개 시각</mark>(단계 1), <mark>성공 · 실패 개수</mark>(단계 2), <mark>실패한 이벤트의 소스별 개수</mark>(단계 3), <mark>전체 이벤트의 소스별 개수</mark>(단계 4)를 읽습니다.
 
 **`events_basic.py`**
@@ -360,7 +360,7 @@ def count_values(table, column):        # 표와 열 이름을 받는 함수
 - **채우기 전에 실행하면 `NameError: name 'events' is not defined` 오류가 납니다.** `events` 를 만드는 1번 줄이 비어 있기 때문입니다. 다른 번호가 비어 있어도 비슷한 오류가 납니다.
 - 2번의 `events["time"]` 과 3번의 `table[column]` 은 같은 열 꺼내기이고, 3번은 열 이름을 `column` 이라는 변수로 받는 것이 다릅니다.
 
-**`day02_5-1_run.py`** — <mark>그대로 붙여 넣습니다.</mark> 학생이 쓰는 줄은 없습니다. 이벤트 파일을 읽어 **네 단계**로 출력합니다. `len(표)` 는 표의 행 수입니다.
+**`exercise3-1_run.py`** — <mark>그대로 붙여 넣습니다.</mark> 학생이 쓰는 줄은 없습니다. 이벤트 파일을 읽어 **네 단계**로 출력합니다. `len(표)` 는 표의 행 수입니다.
 
 ```python
 from events_basic import load_events, describe_events, pick_failed, count_values, EVENTS_PATH  # 방금 만든 함수를 불러온다
@@ -389,16 +389,16 @@ print(source_event_counts)                                                      
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 **`events_basic.py` · `day02_5-1_run.py`** 를 만들어 위 코드를 붙여 넣습니다(터미널에서는 `touch events_basic.py day02_5-1_run.py` 후 VS Code 에서 엽니다).
+1. **[VS Code 또는 터미널]** 파일 **`events_basic.py` · `exercise3-1_run.py`** 를 만들어 위 코드를 붙여 넣습니다(터미널에서는 `touch events_basic.py exercise3-1_run.py` 후 VS Code 에서 엽니다).
 2. **[VS Code]** `events_basic.py` 에서 **직접 쓰는 곳 네 군데**를 씁니다. 1.2 의 판다스 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python day02_5-1_run.py
+   python exercise3-1_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day02_5-1_run.py` 파이썬으로 실행 파일 실행
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise3-1_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **네 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1은 4줄, 단계 2는 4줄, 단계 3은 5줄, 단계 4는 5줄입니다.
-5. **[보고서]** `day02_pm_report.md` 의 `## Exercise 3-1` › `### Exercise Exercise 2-2` 아래를 채웁니다.
+5. **[보고서]** Unit 3 의 `## Exercise 3-1` › `### Exercise Exercise 2-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 표의 행 수와 열 수, 성공과 실패 개수, 실패한 이벤트의 소스별 개수를 적어 주세요.
    - (나) [핵심 질문] 실패 개수만 보면 web 이 가장 많습니다. 그렇다면 web 이 가장 문제가 큰 소스라고 말할 수 있을까요? 단계 4의 전체 이벤트 수와 함께 보고 이유를 적어 주세요.
    - (다) [핵심 질문] web 이벤트에는 `user` 가 비어 있습니다. 사용자 이름으로 실패를 세려 할 때 web 의 실패 13개는 어떻게 될지 예상하고, 사용자 대신 어떤 열을 보면 같은 대상이 반복했는지 알 수 있을지 이유와 함께 적어 주세요.

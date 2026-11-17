@@ -22,7 +22,7 @@ source:
  **터미널에 입력합니다.**
 
 ```bash
-python day02_2-1_run.py
+python exercise2-1_run.py
 ```
 
 **채운 코드** (한 예)
@@ -83,7 +83,7 @@ junho SETTLE QUERY -> False 퇴사한 계정
  **터미널에 입력합니다.**
 
 ```bash
-python day02_3-1_run.py
+python exercise2-2_run.py
 ```
 
 **`config/exceptions.json` 의 4번 · 5번 예외** (한 예)
@@ -145,7 +145,7 @@ seoyeon ACCOUNT:CHANGE -> (False, None)
  **터미널에 입력합니다.**
 
 ```bash
-python day02_4-1_run.py
+python exercise2-3_run.py
 ```
 
 **채운 코드** (한 예)
@@ -189,11 +189,11 @@ python day02_4-1_run.py
   - 18:05 `seoyeon` 의 정산 조회: 예외 1번이 18:00 에 끝난 뒤의 시도.
   `dami` 10:00 요청은 `[역할 판정]` 에서 「퇴사한 계정」으로 거부되어 「권한 없음」이 아니므로 예외 리스트를 보지 않습니다. 사람 자체가 거부 대상이라 예외가 남아 있어도 만료 뒤 시도로 보지 않습니다.
 - (나) **허용**됩니다. `dami` 는 `[역할 판정]` 에서 「퇴사한 계정」으로 거부되지만, 골격의 3번 주석(`# 3. …`)이 없으면 바로 `[예외 판정]` 으로 가서 예외 3번(10/31(토) 까지)을 찾아 「예외 3번」으로 허용됩니다. 현업에서는 퇴사자가 남은 예외로 영업 자료를 조회하고, 로그에는 정상 허용으로 남아 아무도 눈치채지 못하는 사고로 이어질 수 있습니다. 감사에서는 퇴사자 계정이 사용된 기록으로 지적됩니다.
-- (다) 그림은 다음과 같고, 핵심(누가 누구를 호출하는가)이 같으면 맞습니다. `config/exceptions.json` 이 깨지면 `policy.py` 가 `exception_policy.py` 를 불러오는 맨 위의 `import` 에서 멈추고(`JSONDecodeError`), `day02_4-1_run.py` 는 요청을 한 건도 판정하기 전에 끝납니다.
+- (다) 그림은 다음과 같고, 핵심(누가 누구를 호출하는가)이 같으면 맞습니다. `config/exceptions.json` 이 깨지면 `policy.py` 가 `exception_policy.py` 를 불러오는 맨 위의 `import` 에서 멈추고(`JSONDecodeError`), `exercise2-3_run.py` 는 요청을 한 건도 판정하기 전에 끝납니다.
 
 ```
 +------------------+
-| day02_4-1_run.py |
+| exercise2-3_run.py |
 +------------------+
    |
    +--> evaluate_access(user, resource, action, now) 호출
@@ -228,7 +228,7 @@ python day02_4-1_run.py
    |    (허용 여부, 이유) 를 리턴
    |       |
    |       v
-   |    day02_4-1_run.py 가 건수를 세고 출력  (EXCEPTIONS 도 exception_policy.py 에서 가져옴)
+   |    exercise2-3_run.py 가 건수를 세고 출력  (EXCEPTIONS 도 exception_policy.py 에서 가져옴)
 ```
 
 **왜** — 여러 규칙을 합칠 때는 「사람이 유효한가」를 먼저 보고, 그다음 「무엇으로 허용하나」를 봅니다. 예외는 역할 권한을 보충할 뿐 사람 검사를 건너뛰게 하면 안 됩니다. 허용을 「역할」과 「예외」로 나눠 세고 예외 번호별로 쓰인 횟수를 세면, 예외로 열리는 일이 얼마나 되는지 숫자로 보입니다.

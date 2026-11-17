@@ -134,7 +134,7 @@ print(text)                                                      # 쓴 파일을
 
 ** 할 일**
 
-1. `request_flow.py` 와 `day03_6-1_run.py` 두 파일을 만들고, `save_requests` 와 `count_by_status` 본문을 직접 씁니다.
+1. `request_flow.py` 와 `exercise5-2_run.py` 두 파일을 만들고, `save_requests` 와 `count_by_status` 본문을 직접 씁니다.
 2. 실행해서 <mark>처리 결과</mark>(단계 1: 처리), <mark>상태별 건수와 SLA 초과</mark>(단계 2: 점검), <mark>저장 결과</mark>(단계 3: 저장)를 읽습니다. `requests.json` 파일도 열어 봅니다.
 
 **`request_flow.py`**
@@ -169,7 +169,7 @@ def count_by_status(requests):                                   # 요청서 리
 - 본문은 모두 함수 안이라 4칸으로 쓰고, `with` 와 `for` 안쪽은 4칸 더(8칸) 들어갑니다. 각 주석 바로 아래 줄에 씁니다. `save_requests` 의 `return len(requests)` 는 `with` 와 같은 4칸입니다.
 - 채우기 전에 처음 실행하면(`requests.json` 이 아직 없을 때) 단계 2의 첫 줄이 `None` 으로 나옵니다. `count_by_status` 가 아무것도 리턴하지 않기 때문입니다. 이어서 단계 3에서 `저장 함수가 리턴한 건수: None` 과 `[경고] 설정 파일 없음: requests.json` 이 나온 뒤 `IndexError` 가 납니다. `save_requests` 가 파일을 만들지 않았기 때문입니다.
 
-**`day03_6-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 요청 여섯 건을 접수하고 처리한 뒤, 단계 1은 승인 · 반려 · 부여 결과를 출력하고 단계 2는 상태별 건수와 SLA 초과 요청을 출력하고 단계 3은 `requests.json` 으로 저장해 다시 읽어 확인합니다.
+**`exercise5-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 요청 여섯 건을 접수하고 처리한 뒤, 단계 1은 승인 · 반려 · 부여 결과를 출력하고 단계 2는 상태별 건수와 SLA 초과 요청을 출력하고 단계 3은 `requests.json` 으로 저장해 다시 읽어 확인합니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
@@ -224,22 +224,22 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
    - **방법 1 · VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
      2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `request_flow.py` · `day03_6-1_run.py` 입니다.
+     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `request_flow.py` · `exercise5-2_run.py` 입니다.
      4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
-   - **방법 2 · touch 로 만들기**: 터미널에서 파일마다 한 줄씩 치고, 각각 VS Code 에서 열어 붙여넣기: `touch request_flow.py` → `touch day03_6-1_run.py`
-   - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim request_flow.py` → `vim day03_6-1_run.py` (각각 `i` → 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
+   - **방법 2 · touch 로 만들기**: 터미널에서 파일마다 한 줄씩 치고, 각각 VS Code 에서 열어 붙여넣기: `touch request_flow.py` → `touch exercise5-2_run.py`
+   - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim request_flow.py` → `vim exercise5-2_run.py` (각각 `i` → 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
 2. **[VS Code]** `request_flow.py` 의 두 함수 본문을 직접 씁니다. 2.1 의 표와 문법 상자를 보고 씁니다.
 3. **[터미널]** 위치가 `…/access_control` 인지 확인하고 실행합니다.
    ```bash
    pwd
-   python day03_6-1_run.py
+   python exercise5-2_run.py
    ```
-   - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `day03_6-1_run.py` 실행할 파일
-   - 맥북은 `python3 day03_6-1_run.py` 로 칩니다.
+   - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `exercise5-2_run.py` 실행할 파일
+   - 맥북은 `python3 exercise5-2_run.py` 로 칩니다.
 4. 출력은 세 단계입니다. 단계 1은 요청 여섯 건의 처리 결과(여섯 줄), 단계 2는 상태별 건수와 SLA 초과 요청 번호, 단계 3은 저장 함수가 리턴한 건수와 저장 결과입니다.
    - Exercise 5-1에서는 SLA 초과가 1번과 5번이었지만 여기서는 5번만 나옵니다. 이 실행에서는 1번이 승인 · 부여까지 끝나 더 이상 `reviewing` 이 아니기 때문입니다.
 5. **[VS Code]** 왼쪽 목록에 새로 생긴 `requests.json` 을 열어 요청서가 한글 그대로 저장됐는지 봅니다.
-6. **[보고서]** `day03_pm_report.md` 의 `## Exercise 5-2` › `### Exercise Exercise 5-1` 아래를 채웁니다.
+6. **[보고서]** Unit 5 의 `## Exercise 5-2` › `### Exercise Exercise 5-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, `requests.json` 에 저장된 요청서가 몇 건인지와 상태별 건수를 적어 주세요.
    - (나) [핵심 질문] 반려된 요청서(`rejected`)나 승인은 됐지만 부여하지 않은 요청서(`approved`)도 지우지 않고 `requests.json` 에 남기는 이유는 무엇인가요?
    - (다) [핵심 질문] 상태별 건수가 `granted` 1 · `rejected` 1 · `approved` 2 · `reviewing` 2 로 나왔습니다. 이 숫자를 매일 아침 보면 처리 흐름의 어디가 막혀 있는지 어떻게 알 수 있나요?

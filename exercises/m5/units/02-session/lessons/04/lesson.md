@@ -58,7 +58,7 @@ print(result_text.startswith("실행"))
 safe_runner.py   find_skip_reason : 이미 잠긴 계정이면 (1 · 2번), 잠근 계정 수가 한도 이상이면 (3 · 4번) 건너뛸 이유를 리턴한다
                  safe_run_action  : 이유가 있으면 그 이유를 리턴하고 (5 · 6번), 없으면 어제의 run_action 으로 실행한다 (7번)
                  run_playbook_safe · process_safe : 결과를 이미 처리됨 · 승인 대기 · 일부 건너뜀 · 실행 완료로 나누고, 결과마다 몇 건인지 센다 (미리 채움)
-실행 파일        day02_4-1_run.py : 기록에서 「건너뜀」으로 시작하는 결과만 골라 출력한다 (8 · 9번)
+실행 파일        exercise4-3_run.py : 기록에서 「건너뜀」으로 시작하는 결과만 골라 출력한다 (8 · 9번)
 ```
 
 > **여기부터 문제입니다.**
@@ -68,7 +68,7 @@ safe_runner.py   find_skip_reason : 이미 잠긴 계정이면 (1 · 2번), 잠�
 ** 이런 상황이 있습니다**
 
 - **지금은**: <mark>같은 알림을 두 번 처리하면 계정이 두 번 잠기고, 인사 오류 알림이 몰리면 모든 계정이 잠깁니다</mark>.
-- **만드는 것**: 건너뛰는 사유 판정과 안전장치를 적용한 액션 실행(`safe_runner.py`), 건너뛴 액션 선별 출력(`day02_4-1_run.py`).
+- **만드는 것**: 건너뛰는 사유 판정과 안전장치를 적용한 액션 실행(`safe_runner.py`), 건너뛴 액션 선별 출력(`exercise4-3_run.py`).
 - **실행하면**: <mark>단계 1 ~ 2: 어제 방식의 결과, 단계 3 ~ 4: 안전한 방식의 결과, 마지막에 건너뛴 액션과 이유가 나옵니다.</mark>
 
 ** 할 일**: 파일 세 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 어제 방식과 안전한 방식의 차이를 읽습니다.
@@ -161,7 +161,7 @@ def process_safe(incidents, registry, state, action_log):                       
     return counts                                                                   # 결과별 건수를 리턴한다
 ```
 
-**`day02_4-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 어제 `playbook_runner.py` 의 완성된 `run_playbook` 이 필요합니다.
+**`exercise4-3_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 어제 `playbook_runner.py` 의 완성된 `run_playbook` 이 필요합니다.
 
 ```python
 from incident import load_json, match_playbooks, INCIDENTS_PATH, REGISTRY_PATH           # 월요일 파일의 함수를 불러온다
@@ -241,16 +241,16 @@ for entry in action_log:                                                        
 1. **[터미널]** 파일 세 개를 만들고 붙여 넣습니다.
    ```bash
    pwd
-   touch bulk_incidents.json safe_runner.py day02_4-1_run.py
+   touch bulk_incidents.json safe_runner.py exercise4-3_run.py
    ls
    ```
-2. **[VS Code]** `safe_runner.py` 1 ~ 7번, `day02_4-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 2-3 한눈에」를 봅니다.
+2. **[VS Code]** `safe_runner.py` 1 ~ 7번, `exercise4-3_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 2-3 한눈에」를 봅니다.
 3. **[터미널]** 실행합니다(맥북은 `python3`).
    ```bash
-   python day02_4-1_run.py
+   python exercise4-3_run.py
    ```
 4. 출력은 네 단계와 건너뛴 이유입니다. 단계 1 은 2줄, 단계 2 는 1줄, 단계 3 은 14줄(「첫 번째 처리」 · 「두 번째 처리」 제목 2줄과 결과 10줄, 마지막의 잠긴 계정 · 티켓 2줄), 단계 4 는 알림 7건의 결과 7줄과 요약 3줄(잠긴 계정 · 결과별 건수 · 티켓)입니다. 마지막 `건너뛴 액션과 이유:` 아래는 건너뛴 액션만큼 줄이 나옵니다.
-5. **[보고서]** `day02_am_report.md` 의 `## Exercise 2-3` 아래를 채웁니다.
+5. **[보고서]** Unit 2 의 `## Exercise 2-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 단계 1 · 3 · 4 의 잠긴 계정과 티켓 수를 적어 주세요.
    - (나) [핵심 질문] 단계 1(어제 방식)에서는 `dami` 가 두 번 잠기고 티켓이 2건 생성되었는데, 단계 3(안전한 방식)에서는 1건입니다. 단계 3 의 「두 번째 처리」 줄을 근거로 어떤 안전장치가 두 번째 실행을 차단했는지 적어 주세요.
    - (다) [핵심 질문] 단계 4 에서 잠긴 계정 3개 가운데 `users_info.json` 의 `employed` 값으로 볼 때 잘못 잠긴 계정이 있는지 적고, 한도가 없을 때와 비교해 잘못 잠긴 계정이 몇 개 감소했는지 적어 주세요. 한도로 방지하지 못하는 문제가 무엇인지도 적어 주세요. 마지막으로, Exercise 2-1의 맥락(보강)과 Exercise 2-2의 경로 분기 중 무엇을 적용하면 잘못 잠긴 계정을 줄일 수 있는지 적어 주세요.

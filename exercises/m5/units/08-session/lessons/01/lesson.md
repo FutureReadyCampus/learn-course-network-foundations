@@ -40,7 +40,7 @@ source:
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
-3. 오늘 받은 파일 두 개(`day05_am_report_gate.md`, `day05_am_report.md`)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
+3. 오늘 받은 파일 두 개(Unit 8, Unit 8)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
 4. **[터미널]** 판다스를 불러올 수 있는지 확인합니다(맥북은 `python3`). <mark>`판다스 불러오기 성공` 이 나와야</mark> 합니다.
    ```bash
    python -c "import pandas; print('판다스 불러오기 성공')"
@@ -48,11 +48,11 @@ source:
    - `No module named 'pandas'`(판다스가 설치되어 있지 않다는 뜻)가 나오면 터미널(가상환경이 켜진 상태)에서 `pip install pandas`(판다스를 설치하는 명령)를 입력한 뒤 다시 확인합니다.
 5. **[터미널]** Exercise 8-1 데이터 파일 두 개를 만들고 **[VS Code]** 에서 열어 아래 내용을 붙여 넣습니다.
    ```bash
-   touch day05_tickets.json day05_actions.json
+   touch unit10_tickets.json unit10_actions.json
    ls
    ```
 
-**`day05_tickets.json`** — 어제(11/12(목)) 근무 3시간이 끝났을 때의 티켓 7장입니다.
+**`unit10_tickets.json`** — 어제(11/12(목)) 근무 3시간이 끝났을 때의 티켓 7장입니다.
 
 - **무엇인가**:
   - 어제 Exercise 7-2가 저장한 `shift_tickets.json` 에서 리포트에 쓰는 키만 남긴 것입니다.
@@ -72,7 +72,7 @@ source:
 ]
 ```
 
-**`day05_actions.json`** — 어제 자동 대응이 남긴 조치 기록 9건에, 설명을 위해 만든 `INC-212` 1건을 더한 10건입니다.
+**`unit10_actions.json`** — 어제 자동 대응이 남긴 조치 기록 9건에, 설명을 위해 만든 `INC-212` 1건을 더한 10건입니다.
 
 - **무엇인가**:
   - <mark style="background:#e0d4ff">수요일에 만든 조치 기록</mark>(감사 기록, audit log: 조치를 순서대로 남긴 기록)에서 `reason` 키만 뺀 꼴입니다. `before` 는 조치 전 상태, `after` 는 조치 후 상태입니다.
@@ -96,7 +96,7 @@ source:
 
 6. **[터미널]** 파일이 정상인지 확인합니다(맥북은 `python3`). <mark>`7 10` 이 나와야</mark> 합니다.
    ```bash
-   python -c "import json; print(len(json.load(open('day05_tickets.json', encoding='utf-8'))), len(json.load(open('day05_actions.json', encoding='utf-8'))))"
+   python -c "import json; print(len(json.load(open('unit10_tickets.json', encoding='utf-8'))), len(json.load(open('unit10_actions.json', encoding='utf-8'))))"
    ```
 
 ## 이전 파일이 없을 때 (월요일 · 수요일 파일)

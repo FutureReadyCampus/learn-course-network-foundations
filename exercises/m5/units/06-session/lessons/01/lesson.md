@@ -39,7 +39,7 @@ source:
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
-3. 오늘 받은 파일 두 개(`day04_am_ticket_notice.md`, `day04_am_report.md`)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
+3. 오늘 받은 파일 두 개(Unit 6, Unit 6)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
 4. **[터미널]** 데이터 파일과 설정 파일을 만들고 **[VS Code]** 에서 열어 아래 내용을 붙여 넣습니다.
    ```bash
    mkdir -p config

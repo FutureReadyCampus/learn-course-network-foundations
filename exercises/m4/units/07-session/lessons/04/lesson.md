@@ -23,9 +23,9 @@ source:
 
 ```bash
 pwd
-python day04_5-1_run.py
+python exercise7-1_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day04_5-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise7-1_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
 
@@ -87,7 +87,7 @@ gaeun 의 이벤트 (시각 · 로그 · 행동 · 결과)
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day04_5-1_run.py", line 18, in <module>
+  File "…/anomaly_detection/exercise7-1_run.py", line 18, in <module>
     timeline = build_timeline(server_part, saas_part, web_part)  # 세 로그를 합쳐 사용자 · 시각 순으로 정렬한다
   File "…/anomaly_detection/correlation.py", line 45, in build_timeline
     timeline = pd.concat(server_part, saas_part, web_part)  # 세 표를 위아래로 연결해 표 하나로 만든다
@@ -109,9 +109,9 @@ TypeError: concat() takes 1 positional argument but 3 were given
 
 ```bash
 pwd
-python day04_6-1_run.py
+python exercise7-2_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day04_6-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise7-2_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
 
@@ -151,7 +151,7 @@ gaeun            40
 jiwoo            35
 198.51.100.90    30
 Name: points, dtype: int64
---- 단계 3: day03_risk_scores.json 에 5 건 저장
+--- 단계 3: unit05_risk_scores.json 에 5 건 저장
 --- 단계 4: 등급 · 대상 · 점수 · 이유
 high dami 60 ['퇴사한 계정']
 mid seoyeon 45 ['평소와 다른 IP', '대량 다운로드']
@@ -176,7 +176,7 @@ low 198.51.100.90 30 ['경로 스캔']
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day04_6-1_run.py", line 11, in <module>
+  File "…/anomaly_detection/exercise7-2_run.py", line 11, in <module>
     totals = score_findings(findings)                      # 대상마다 점수를 더한다
   File "…/anomaly_detection/risk_scores.py", line 74, in score_findings
     totals = totals.sort_values(ascending=False)       # 점수가 높은 순으로 정렬한다 — 미리 채운 줄

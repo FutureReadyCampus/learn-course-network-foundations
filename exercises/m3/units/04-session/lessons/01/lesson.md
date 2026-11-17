@@ -32,11 +32,11 @@ source:
    python -c "from datetime import datetime; from policy import evaluate_access; from exception_policy import EXCEPTIONS; print('어제 파일 정상', len(EXCEPTIONS)); print(evaluate_access('dami', 'SALES', 'QUERY', datetime(2026, 10, 23, 10, 0)))"
    ```
    - 맥북은 `python` 을 `python3` 로 바꿔 칩니다. 마지막 두 줄에 `어제 파일 정상 5` 와 `(False, '퇴사한 계정')` 이 나와야 합니다.
-   - 파일이 없거나 결과가 다르면 수업 자료의 `day02_recovery` 폴더 파일을 `access_control` 폴더에 넣고(`config` 안의 파일은 `config` 폴더에) 마지막 줄을 다시 칩니다.
+   - 파일이 없거나 결과가 다르면 수업 자료의 `unit03_recovery` 폴더 파일을 `access_control` 폴더에 넣고(`config` 안의 파일은 `config` 폴더에) 마지막 줄을 다시 칩니다.
 3. **오늘 받은 파일 두 개를 `access_control` 폴더에 둡니다.** 이미 있으면 건너뜁니다. `다운로드` 폴더에서 VS Code 왼쪽의 그 폴더 위로 끌어다 놓습니다(안 되면 파일을 열어 **File › Save As…** 로 저장).
-   - `day03_am_request.md` (이 파일) — 오전 실습 안내. 읽기만 합니다.
-   - `day03_am_report.md` — **오전 보고서.** 2 · 3 · Exercise 4-3 답을 여기에 적습니다.
-4. **[VS Code]** 안내 파일을 열고 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다. 보고서 `day03_am_report.md` 는 오른쪽 클릭 › **Open to the Side** 로 옆에 열고, 맨 위 제목 `(이름 · 2026-10-23(금))` 의 `이름` 만 내 이름으로 바꿉니다.
+   - Unit 4 (이 파일) — 오전 실습 안내. 읽기만 합니다.
+   - Unit 4 — **오전 보고서.** 2 · 3 · Exercise 4-3 답을 여기에 적습니다.
+4. **[VS Code]** 안내 파일을 열고 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다. 보고서 Unit 4 는 오른쪽 클릭 › **Open to the Side** 로 옆에 열고, 맨 위 제목 `(이름 · 2026-10-23(금))` 의 `이름` 만 내 이름으로 바꿉니다.
 5. 문제는 **할 일 → 순서**대로 하고, `[창 이름]` 이 지금 쓸 창입니다. 코드를 채울 때는 주석이 말하는 일을 하면 몇 줄이든 맞고, 막히면 맨 아래 「정답」을 봅니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 **터미널**에서 합니다(맥북은 `python3`). **어제까지 만든 파일은 고치지 않습니다.** 오늘 만드는 파일은 모두 새 파일입니다. 앞 Exercise 파일이 없으면 문서 맨 아래 「앞 Exercise 파일 완성본」으로 먼저 만듭니다.

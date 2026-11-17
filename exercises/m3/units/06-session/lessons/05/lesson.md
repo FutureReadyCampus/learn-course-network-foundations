@@ -22,7 +22,7 @@ source:
  **터미널에 입력합니다.**
 
 ```bash
-python day04_2-1_run.py
+python exercise6-1_run.py
 ```
 
 **채운 코드** (한 예)
@@ -100,7 +100,7 @@ gaeun SETTLE:QUERY <- 예외 5번 | 재직 True
  **터미널에 입력합니다.**
 
 ```bash
-python day04_3-1_run.py
+python exercise6-2_run.py
 ```
 
 **채운 코드** (한 예)
@@ -167,7 +167,7 @@ KeyError: 'expires'
  **터미널에 입력합니다.**
 
 ```bash
-python day04_4-1_run.py
+python exercise6-3_run.py
 ```
 
 **채운 코드** (한 예)

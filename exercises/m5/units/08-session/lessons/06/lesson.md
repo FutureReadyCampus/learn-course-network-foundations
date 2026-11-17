@@ -36,7 +36,7 @@ source:
 
 ```
 
-- (나) [핵심 질문] 단계 3 에 low 등급이 없습니다. `day05_tickets.json` 의 low 티켓 두 장(`TCK-2` · `TCK-5`)의 `acked_at` 을 근거로 그 이유를 적어 주세요. 또 `report.py` 3번(확인한 티켓만 필터링하는 줄)이 없으면 low 의 평균 확인 시간(MTTA)이 얼마로 나오는지도 적어 주세요.
+- (나) [핵심 질문] 단계 3 에 low 등급이 없습니다. `unit10_tickets.json` 의 low 티켓 두 장(`TCK-2` · `TCK-5`)의 `acked_at` 을 근거로 그 이유를 적어 주세요. 또 `report.py` 3번(확인한 티켓만 필터링하는 줄)이 없으면 low 의 평균 확인 시간(MTTA)이 얼마로 나오는지도 적어 주세요.
   - 쓸 내용: ① TCK-2 · TCK-5 의 `acked_at` ② low 가 없는 이유 ③ 확인한 티켓만 필터링하지 않을 때 low 의 평균 확인 시간(MTTA)
   - 답:
 

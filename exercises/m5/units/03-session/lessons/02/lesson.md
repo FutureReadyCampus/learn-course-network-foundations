@@ -53,7 +53,7 @@ approvals.py    is_authorized     : 승인한 사람이 권한 목록에 있는�
                 execute_actions   : 액션을 하나씩 실행한다 (3번)
                 apply_decision    : 권한이 없으면 기록만 남기고 멈춘다 (4 · 5번)
                 finish_decision   : 승인이면 실행하고 끝낸다 (6 · 7번) / 아니면 종료하고 거절 사유를 기록한다 (미리 채움)
-실행 파일       day02_5-1_run.py  : 대기 건마다 결정이 있으면 apply_decision 을 호출한다 (8 · 9번)
+실행 파일       exercise5-2_run.py  : 대기 건마다 결정이 있으면 apply_decision 을 호출한다 (8 · 9번)
 ```
 
 > **여기부터 문제입니다.**
@@ -63,7 +63,7 @@ approvals.py    is_authorized     : 승인한 사람이 권한 목록에 있는�
 ** 이런 상황이 있습니다**
 
 - **지금은**: <mark>승인 대기 3건이 멈춰 있고, 담당자 결정 3건(승인 · 거절 · 권한 없는 승인)이 들어와 있습니다</mark>.
-- **만드는 것**: 기록 한 건 만들기(`audit.py`), 권한 확인 · 실행 · 종료(`approvals.py`), 결정을 적용하는 함수를 부르는 실행 파일(`day02_5-1_run.py`).
+- **만드는 것**: 기록 한 건 만들기(`audit.py`), 권한 확인 · 실행 · 종료(`approvals.py`), 결정을 적용하는 함수를 부르는 실행 파일(`exercise5-2_run.py`).
 - **실행하면**: <mark>단계 1: 승인 대기 건, 단계 2: 결정 적용 결과, 단계 3: 처리 뒤 연습용 시스템 상태, 단계 4: 감사 기록이 나옵니다.</mark>
 
 ** 할 일**: 파일 세 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 ~ 4 를 읽습니다.
@@ -153,7 +153,7 @@ def finish_decision(item, decision, state, action_log):                         
     return "거절 처리"                                                                   # 거절 처리를 리턴한다 — 미리 채운 줄
 ```
 
-**`day02_5-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실행하면 결과를 출력합니다.
+**`exercise5-2_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실행하면 결과를 출력합니다.
 
 ```python
 from incident import load_json                                                              # 어제 파일의 함수를 불러온다
@@ -191,16 +191,16 @@ for entry in action_log:                                                        
 1. **[터미널]** 파일 세 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
    ```bash
    pwd
-   touch audit.py approvals.py day02_5-1_run.py
+   touch audit.py approvals.py exercise5-2_run.py
    ls
    ```
-2. **[VS Code]** `audit.py` 1번, `approvals.py` 2 ~ 7번, `day02_5-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 3-1 한눈에」를 봅니다.
+2. **[VS Code]** `audit.py` 1번, `approvals.py` 2 ~ 7번, `exercise5-2_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 3-1 한눈에」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
-   python day02_5-1_run.py
+   python exercise5-2_run.py
    ```
 4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 3줄, 단계 2 도 3줄, 단계 3 은 3줄, 단계 4 는 감사 기록 4줄입니다.
-5. **[보고서]** `day02_pm_report.md` 의 `## Exercise 3-1` 아래를 채웁니다.
+5. **[보고서]** Unit 3 의 `## Exercise 3-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 처리 뒤 티켓 수 · 담당자 알림 수 · `분류됨` 으로 남은 알림의 번호를 각각 적어 주세요.
    - (나) [핵심 질문] INC-005 는 결정이 `승인` 인데 실행되지 않았습니다. 단계 2 와 단계 4 의 출력을 근거로 그 이유를 적어 주세요. 그리고 권한 확인이 없을 때 생길 위험도 적어 주세요.
    - (다) [핵심 질문] INC-003 이 승인 대기가 된 이유(단계 1), 거절된 뒤의 상태, 감사 기록에 남은 내용을 각각 적어 주세요.

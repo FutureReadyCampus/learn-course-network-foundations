@@ -47,7 +47,7 @@ source:
             records.append(undo_record(record, state))  # 되돌리고 해제 기록을 모은다
 ```
 
-`day03_5-1_run.py` 의 9번입니다.
+`exercise7-1_run.py` 의 9번입니다.
 
 ```python
 # 9. load_json(LOG_PATH) 의 결과를 log 에 저장한다 (Exercise 5-1가 저장한 조치 기록을 읽는다)
@@ -166,7 +166,7 @@ NameError: name 'log' is not defined
         counts[kind] = counts[kind] + 1         # 그 종류의 건수를 1 늘린다
 ```
 
-`day03_6-1_run.py` 의 9번입니다.
+`exercise7-2_run.py` 의 9번입니다.
 
 ```python
     # 9. handle_incident(incident, state, refs) 가 리턴한 두 값을 status 와 records 에 한 번에 받는다

@@ -23,7 +23,7 @@ source:
 
 ```bash
 pwd
-python day05_2-1_run.py
+python exercise8-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -94,7 +94,7 @@ Name: count, dtype: int64
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day05_2-1_run.py", line 14, in <module>
+  File "…/anomaly_detection/exercise8-1_run.py", line 14, in <module>
   File "…/anomaly_detection/evaluation.py", line 31, in find_false_alarms
 ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
 ```
@@ -115,7 +115,7 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 
 ```bash
 pwd
-python day05_3-1_run.py
+python exercise8-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -209,7 +209,7 @@ python day05_3-1_run.py
 
 ```bash
 pwd
-python day05_4-1_run.py
+python exercise8-3_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -275,7 +275,7 @@ python day05_4-1_run.py
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day05_4-1_run.py", line 14, in <module>
+  File "…/anomaly_detection/exercise8-3_run.py", line 14, in <module>
   File "…/anomaly_detection/final_check.py", line 37, in merge_alerts
 TypeError: concat() takes 1 positional argument but 2 were given
 ```
@@ -286,7 +286,7 @@ TypeError: concat() takes 1 positional argument but 2 were given
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day05_4-1_run.py", line 19, in <module>
+  File "…/anomaly_detection/exercise8-3_run.py", line 19, in <module>
   File "…/anomaly_detection/final_check.py", line 53, in evaluate
 TypeError: only list-like objects are allowed to be passed to isin(), you passed a `method`
 ```

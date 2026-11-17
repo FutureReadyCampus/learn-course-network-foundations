@@ -63,7 +63,7 @@ print("다음 줄도 실행됨")
 retry_runner.py     run_with_retry          : 실행해 보고(1번), 성공하면 시도 횟수를 붙여 리턴한다(2번) / 연결 오류면 오류 문장을 기억한다(3번)
 flow.py             run_playbook_with_retry : 결과가 「실패」로 시작하면 실패 표시를 한다 (4 · 5번)
 failure_report.py   collect_failures        : 기록에서 「실패」로 시작하는 것만 모은다 (6 · 7번)
-실행 파일           day02_6-1_run.py        : 실패 목록을 받고(8번) 출력한다(9번)
+실행 파일           exercise5-3_run.py        : 실패 목록을 받고(8번) 출력한다(9번)
 
 하루 흐름(flow.py 의 run_day_flow, 미리 채움) : 알림 하나가 아래 순서로 지나갑니다
   ① 맥락 붙이기(오전 Exercise 2-1) → ② 경로 정하기(오전 Exercise 2-2)
@@ -77,7 +77,7 @@ failure_report.py   collect_failures        : 기록에서 「실패」로 시�
 ** 이런 상황이 있습니다**
 
 - **지금은**: <mark>티켓 서비스가 잠깐 멈추면 프로그램이 그대로 멈추고, 실패한 일이 어디에도 남지 않습니다</mark>.
-- **만드는 것**: 재시도(`retry_runner.py`), 실패 표시(`flow.py`), 실패 목록(`failure_report.py`), 목록 출력(`day02_6-1_run.py`).
+- **만드는 것**: 재시도(`retry_runner.py`), 실패 표시(`flow.py`), 실패 목록(`failure_report.py`), 목록 출력(`exercise5-3_run.py`).
 - **실행하면**: <mark>단계 1: 일시 장애, 단계 2: 서비스 중단, 단계 3: 하루 흐름, 단계 4: 담당자 결정 처리, 단계 5: 하루가 끝난 뒤 연습용 시스템 상태, 단계 6: 담당자 확인이 필요한 건의 목록이 나옵니다.</mark>
 
 ** 할 일**: 파일 네 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 1 · 2 와 단계 6 을 읽습니다.
@@ -192,7 +192,7 @@ def collect_failures(action_log):  # 감사 기록 리스트를 받는 함수
     return failures                # 실패한 기록 리스트를 리턴한다
 ```
 
-**`day02_6-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+**`exercise5-3_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
 from incident import load_json, INCIDENTS_PATH                                              # 어제 파일의 함수를 불러온다
@@ -264,16 +264,16 @@ for item in pending:                                                            
 1. **[터미널]** 파일 네 개를 만들고 붙여 넣습니다. <mark>Exercise 3-1의 `audit.py` · `approvals.py` 가 완성돼 있어야(`flow.py` 가 이 두 파일을 불러오기 때문)</mark> 합니다.
    ```bash
    pwd
-   touch retry_runner.py flow.py failure_report.py day02_6-1_run.py
+   touch retry_runner.py flow.py failure_report.py exercise5-3_run.py
    ls
    ```
-2. **[VS Code]** `retry_runner.py` 1 ~ 3번, `flow.py` 4 · 5번, `failure_report.py` 6 · 7번, `day02_6-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 3-2 한눈에」를 봅니다.
+2. **[VS Code]** `retry_runner.py` 1 ~ 3번, `flow.py` 4 · 5번, `failure_report.py` 6 · 7번, `exercise5-3_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 3-2 한눈에」를 봅니다.
 3. **[터미널]** 실행합니다(맥북은 `python3`).
    ```bash
-   python day02_6-1_run.py
+   python exercise5-3_run.py
    ```
 4. 출력은 여섯 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 2줄, 단계 2 도 2줄, 단계 3 은 5줄, 단계 4 는 3줄, 단계 5 는 3줄, 단계 6 은 2줄입니다.
-5. **[보고서]** `day02_pm_report.md` 의 `## Exercise 3-2` 아래를 채웁니다.
+5. **[보고서]** Unit 3 의 `## Exercise 3-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 단계 3 에서 `일부 실패` · `승인 대기` · `오탐 종료`(오탐: 위험하지 않은데 위험하다고 잘못 알린 경우) 인 알림의 번호를 각각 적어 주세요.
    - (나) [핵심 질문] 단계 1 과 2 는 같은 `run_with_retry` 인데 결과가 다릅니다. 두 단계의 `fail_plan` 값을 근거로 이유를 적어 주세요. 그리고 최대 횟수가 없으면 서비스가 계속 멈춰 있을 때 어떤 문제가 생기는지도 적어 주세요.
    - (다) [핵심 질문] 단계 3 에서 INC-001 은 계정은 잠겼는데 상태가 `조치됨` 이 아닙니다. 그 이유를 적어 주세요. 또 단계 6 의 출력이 담당자에게 무엇을 알려 주는지 적어 주세요. 마지막으로, 같은 `state` 로 다시 처리해도 `dami` 가 두 번 잠기지 않는 이유를 오전 Exercise 2-3에서 만든 장치와 연결해 적어 주세요.
@@ -302,7 +302,7 @@ for item in pending:                                                            
 
 **순서**
 
-0. **[터미널]** 오늘 만든 파일이 있는지 `soar_response` 폴더에서 확인합니다. 두 명령을 하나씩 칩니다. `day02_am_report.md` 와 `day02_pm_report.md` 의 모든 질문에서 `답:` 뒤와 코드 상자가 모두 채워져 있는지도 봅니다. 단, 마무리 (가)는 3번에서 채우니 지금은 비어 있어도 됩니다.
+0. **[터미널]** 오늘 만든 파일이 있는지 `soar_response` 폴더에서 확인합니다. 두 명령을 하나씩 칩니다. Unit 2 와 Unit 3 의 모든 질문에서 `답:` 뒤와 코드 상자가 모두 채워져 있는지도 봅니다. 단, 마무리 (가)는 3번에서 채우니 지금은 비어 있어도 됩니다.
 
    ① 지금 위치를 확인합니다.
 
@@ -357,7 +357,7 @@ for item in pending:                                                            
      - `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
    - `soar_response/__pycache__/` (파이썬이 실행하면서 자동으로 만드는 임시 폴더)가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 봅니다.
 
-3. **[보고서]** `day02_pm_report.md` 의 `### 마무리 · 오늘 만든 것을 깃허브에 올리기` 아래를 채웁니다. <mark>올리기 전에 채워야</mark> 깃허브에 빈칸 없이 올라갑니다.
+3. **[보고서]** Unit 3 의 `### 마무리 · 오늘 만든 것을 깃허브에 올리기` 아래를 채웁니다. <mark>올리기 전에 채워야</mark> 깃허브에 빈칸 없이 올라갑니다.
    - (가) `git status` 를 쳤을 때 `.env` 나 `.venv` 가 보였는지, 보였다면 어떻게 했는지 적어 주세요.
    - <mark>앞 Exercise에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.</mark> 올린 뒤에 이어서 적어 다시 올려도 됩니다.
 4. **[터미널]** 바뀐 파일을 올릴 목록에 추가하고(`add`), 설명을 붙여 저장하고(`commit`), 깃허브로 올립니다(`push`). 세 명령을 순서대로 하나씩 칩니다.

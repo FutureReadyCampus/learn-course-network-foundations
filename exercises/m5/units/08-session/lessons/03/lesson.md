@@ -45,7 +45,7 @@ source:
 approval_gate.py   is_allowlisted  : 대상이 허용 목록에 있는지 리턴한다 (1번)
                    risk_score      : 등급 점수로 시작해 (2번), VIP 이면 (3번) 점수를 더한다 (4번). 함께 쓰는 IP · 대상 수는 미리 채움
                    decide_gate     : 허용 목록이면 차단 금지 (5번), 점수를 받아 (6번), 기준 이상이면 승인 필요 (7번)
-실행 파일          day05_3-1_run.py : 요청마다 결정을 받아 (8번) 결정별로 센다 (9번)
+실행 파일          exercise10-2_run.py : 요청마다 결정을 받아 (8번) 결정별로 센다 (9번)
 ```
 
 > **여기부터 문제입니다.**
@@ -55,7 +55,7 @@ approval_gate.py   is_allowlisted  : 대상이 허용 목록에 있는지 리턴
 ** 이런 상황이 있습니다**
 
 - **지금은**: <mark>승인이 필요한지는 플레이북마다 정한 값 하나로만 정해지고, 기준이 코드 안에 있습니다</mark>.
-- **만드는 것**: 허용 목록 확인 · 위험 점수 · 결정(`approval_gate.py`), 요청마다 결정하고 세기(`day05_3-1_run.py`).
+- **만드는 것**: 허용 목록 확인 · 위험 점수 · 결정(`approval_gate.py`), 요청마다 결정하고 세기(`exercise10-2_run.py`).
 - **실행하면**: <mark>단계 1: 불러온 요청 수와 기준 점수, 단계 2: 요청마다 결정과 이유, 단계 3: 결정별 요청 수, 단계 4: 담당자에게 보낼 승인 요청, 단계 5: 저장한 결정 수가 나옵니다.</mark>
 
 ** 할 일**: 데이터 파일 두 개와 코드 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 ~ 4 를 읽습니다.
@@ -139,7 +139,7 @@ def decide_gate(request, policy):                                           # �
     return "자동", reasons                                                  # 기준보다 낮으면 자동으로 실행한다 — 미리 채운 줄
 ```
 
-**`day05_3-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+**`exercise10-2_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
 from incident import load_json, save_json                           # 월요일 파일의 JSON 읽기 · 쓰기 함수를 불러온다
@@ -179,19 +179,19 @@ print("--- 단계 5: gate_results.json 에", len(results), "건 저장")  # 단�
    ```bash
    pwd
    mkdir -p config
-   touch config/approval_policy.json gate_requests.json approval_gate.py day05_3-1_run.py
+   touch config/approval_policy.json gate_requests.json approval_gate.py exercise10-2_run.py
    ls config
    ```
    - 명령 풀이: `mkdir -p config` 는 `config` 폴더가 없을 때만 만듭니다(이미 있으면 그대로 둡니다).
-2. **[VS Code]** `approval_gate.py` 1 ~ 7번, `day05_3-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 8-2 한눈에」를 봅니다.
+2. **[VS Code]** `approval_gate.py` 1 ~ 7번, `exercise10-2_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 8-2 한눈에」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
-   python day05_3-1_run.py
+   python exercise10-2_run.py
    ```
 4. 출력은 다섯 단계입니다. 제목 줄은 줄 수에 넣지 않습니다.
    - 단계 1 과 단계 5 는 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
    - 단계 2 는 8줄, 단계 3 은 3줄, 단계 4 는 3줄입니다.
-5. **[보고서]** `day05_am_report.md` 의 `## Exercise 8-2` 아래를 채웁니다.
+5. **[보고서]** Unit 8 의 `## Exercise 8-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 결정별 요청 수를 적고, 승인 필요인 요청 번호도 적어 주세요.
    - (나) [핵심 질문] `REQ-1`(`dami`)과 `REQ-6`(`minsu`)은 둘 다 high 등급의 계정 잠금인데 결정이 다릅니다. 단계 2 의 이유를 근거로 결정이 달라진 이유를 적어 주세요. 그리고 대상 수(영향 범위)를 위험 점수에 반영해야 하는 이유도 적어 주세요.
    - (다) [핵심 질문] `REQ-3` 은 high 등급이고 함께 쓰는 IP 인데 차단 금지입니다. `decide_gate` 가 허용 목록을 점수보다 먼저 확인하는 이유를 적고, 승인 기준(임계값)을 코드가 아니라 설정 파일로 분리하면 무엇이 좋은지 적어 주세요.

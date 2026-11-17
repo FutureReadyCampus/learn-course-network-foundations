@@ -23,9 +23,9 @@ source:
 
 ```bash
 pwd
-python day01_5-1_run.py
+python exercise1-1_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day01_5-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise1-1_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 다섯 함수입니다.
 
@@ -101,7 +101,7 @@ python day01_5-1_run.py
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day01_5-1_run.py", line 10, in <module>
+  File "…/anomaly_detection/exercise1-1_run.py", line 10, in <module>
     entry = parse_line(line)  # 한 줄을 읽어 딕셔너리로 바꾼다
   File "…/anomaly_detection/log_parse.py", line 43, in parse_line
     prefix, request_text, suffix = split_request(line)  # 세 조각으로 나눈다
@@ -125,9 +125,9 @@ ValueError: too many values to unpack (expected 3)
 
 ```bash
 pwd
-python day01_6-1_run.py
+python exercise1-2_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day01_6-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise1-2_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
 
@@ -209,7 +209,7 @@ python day01_6-1_run.py
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day01_6-1_run.py", line 23, in <module>
+  File "…/anomaly_detection/exercise1-2_run.py", line 23, in <module>
     labeled = label_entries(entries)  # 요청마다 분류를 적는다
   File "…/anomaly_detection/log_classify.py", line 38, in label_entries
     item["group"] = classify_line(entry)  # 분류를 복사본에 적는다

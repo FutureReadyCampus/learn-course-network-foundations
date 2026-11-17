@@ -23,7 +23,7 @@ source:
 
 ```bash
 pwd
-python day04_2-1_run.py
+python exercise6-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -86,7 +86,7 @@ python day04_2-1_run.py
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day04_2-1_run.py", line 10, in <module>
+  File "…/anomaly_detection/exercise6-1_run.py", line 10, in <module>
     suspicious = pick_suspicious(server_failures)                # 먼저 확인할 실패 이벤트만 골라낸다
   File "…/anomaly_detection/access_detection.py", line 41, in pick_suspicious
     repeated_names = repeated_users.index()  # 반복된 사용자의 이름들(인덱스)을 꺼낸다
@@ -107,7 +107,7 @@ TypeError: 'Index' object is not callable
 
 ```bash
 pwd
-python day04_3-1_run.py
+python exercise6-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -161,7 +161,7 @@ python day04_3-1_run.py
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day04_3-1_run.py", line 7, in <module>
+  File "…/anomaly_detection/exercise6-2_run.py", line 7, in <module>
     off_hours_logins = find_off_hours_logins(logins)             # 업무 시간 밖 로그인만 골라낸다
   File "…/anomaly_detection/saas_detection.py", line 49, in find_off_hours_logins
     is_off_hours = not is_business_hour  # True 와 False 를 뒤집어 업무 시간 밖인 행을 True 로 만든다
@@ -183,7 +183,7 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 
 ```bash
 pwd
-python day04_4-1_run.py
+python exercise6-3_run.py
 python advanced_detection.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
@@ -253,7 +253,7 @@ SaaS: 업무 시간 밖 ['jiwoo'] · 평소와 다른 IP ['jiwoo', 'seoyeon'] ·
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day04_4-1_run.py", line 8, in <module>
+  File "…/anomaly_detection/exercise6-3_run.py", line 8, in <module>
     scan_ips, scan_counts = find_scan_ips(web_failures)          # 스캔 IP 와 IP 별 요청 횟수를 찾는다
   File "…/anomaly_detection/malicious_detection.py", line 36, in find_scan_ips
     is_scanner = actions.contains(SCANNER_PATTERN)  # 각 행에 스캐너 경로가 들어 있는지 구해 True 또는 False 를 만든다

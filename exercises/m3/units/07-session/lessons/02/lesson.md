@@ -29,7 +29,7 @@ source:
 
 1. 규칙으로 찾은 결과와 90일 넘게 안 쓴 권한을 찾은 결과가 따로 나오면, 담당자가 같은 권한이 두 곳에 나오는지 직접 맞춰 봐야 합니다. 두 결과를 합쳐 모은 것이 **후보**이고, 후보는 업무에 필요한 것보다 많이 가진 권한, 곧 **과다권한**(over-privilege · 오버 프리빌리지)일 수 있는 권한입니다.
 2. 후보 하나에 걸린 **이유**를 붙여 한곳에 모읍니다.
-3. 오늘 리포트는 **리포트 한 장 = 딕셔너리 하나**입니다. 여기서 「리포트」는 프로그램이 만드는 점검 결과이고, 「보고서」는 내가 답을 적는 `day04_pm_report.md` 입니다.
+3. 오늘 리포트는 **리포트 한 장 = 딕셔너리 하나**입니다. 여기서 「리포트」는 프로그램이 만드는 점검 결과이고, 「보고서」는 내가 답을 적는 Unit 7 입니다.
 4. 오전 Exercise 6-3에서는 규칙에 걸린 권한을 빼고 안 쓴 권한을 찾았지만, 오늘은 **전체 현황**에 두 점검을 따로 돌립니다. 그래서 권한 한 건이 두 이유에 모두 걸릴 수 있고, 안 쓴 권한도 오전보다 더 많이 나옵니다. 코드가 틀려서가 아니라 규칙에 걸린 권한도 함께 검사하기 때문입니다.
 
 ## 읽기 · 1.1 리포트의 모양
@@ -143,7 +143,7 @@ source:
 
 ** 할 일**
 
-1. `overprivilege.py` 와 `day04_5-1_run.py` 두 파일을 만들고, `entry_key` · `make_stale_reason` · `make_unused_keys` · `collect_reasons` · `generate_report` 에서 직접 쓰는 곳 다섯 군데를 씁니다.
+1. `overprivilege.py` 와 `exercise7-1_run.py` 두 파일을 만들고, `entry_key` · `make_stale_reason` · `make_unused_keys` · `collect_reasons` · `generate_report` 에서 직접 쓰는 곳 다섯 군데를 씁니다.
 2. 실행해서 <mark>리포트 요약과 후보</mark>(단계 1: 요약)와 <mark>후보가 아닌 권한</mark>(단계 2: 확인)을 읽습니다.
 
 **`overprivilege.py`**
@@ -232,7 +232,7 @@ def generate_report(access_list, stale, unused, days, generated_at):   # 현황 
   - `generate_report` 안: 미리 채운 `for` 안쪽이라 8번 `if` 는 8개, 그 안쪽(9 ~ 11번)은 4개 더(12개)입니다.
 - 채우기 전에 실행해도 오류는 나지 않고 후보가 `0 건` 으로 나옵니다. 아직 이유를 모으지 않았기 때문입니다.
 
-**`day04_5-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 오전 함수로 현황과 규칙 결과, 안 쓴 결과를 만든 뒤 `generate_report` 로 리포트를 만들어 출력합니다.
+**`exercise7-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 오전 함수로 현황과 규칙 결과, 안 쓴 결과를 만든 뒤 `generate_report` 로 리포트를 만들어 출력합니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
@@ -271,17 +271,17 @@ print(names)                                                     # 후보가 아
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `overprivilege.py` · `day04_5-1_run.py` 를 만들어 위 코드를 붙여 넣습니다. 만드는 법은 둘 중 하나를 고릅니다.
+1. **[VS Code 또는 터미널]** 파일 `overprivilege.py` · `exercise7-1_run.py` 를 만들어 위 코드를 붙여 넣습니다. 만드는 법은 둘 중 하나를 고릅니다.
    - VS Code: `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력합니다.
    - 터미널: `pwd` 로 `access_control` 인지 확인하고 `touch 이름` 으로 만든 뒤 VS Code 에서 열어 붙여 넣습니다(`vim 이름` → `i` → 붙여넣기 → `Esc` → `:wq` 도 됩니다).
 2. **[VS Code]** `overprivilege.py` 에서 직접 쓰는 곳 다섯 군데(`entry_key` · `make_stale_reason` · `make_unused_keys` · `collect_reasons` · `generate_report`)를 씁니다. 1.1 의 표와 그림을 보고 씁니다.
 3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python day04_5-1_run.py
+   python exercise7-1_run.py
    ```
 4. 출력은 두 단계입니다. 단계 1은 요약 한 줄과 후보 한 줄씩, 단계 2는 후보가 아닌 권한 리스트 한 줄입니다.
-5. **[보고서]** `day04_pm_report.md` 의 `## Exercise 7-1` › `### Exercise Exercise 1-3` 아래를 채웁니다.
+5. **[보고서]** Unit 7 의 `## Exercise 7-1` › `### Exercise Exercise 1-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 후보가 모두 몇 건인지, 이유가 둘인 후보가 몇 건인지, 후보가 아닌 권한은 무엇인지 적어 주세요.
    - (나) [핵심 질문] 출력에서 이유가 둘인 후보를 하나 고르고, 이유가 둘이라는 것이 담당자가 처리 순서를 정할 때 어떤 도움이 되는지 적어 주세요. 이유를 문자열 하나가 아니라 리스트(`reasons`)로 담으면 어떤 점이 좋은지도 적어 주세요.
    - (다) [핵심 질문] 프로그램이 만든 리포트에는 후보만 담고, 후보가 아닌 권한은 전체 건수(`total`)로만 남겼습니다. 후보가 아닌 권한까지 모두 담는 방법과 비교해 담당자 입장에서 어느 쪽이 나은지 이유와 함께 적어 주세요.

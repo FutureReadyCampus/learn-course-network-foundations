@@ -54,7 +54,7 @@ escalation.py   overdue_minutes   : 응답 기한을 넘긴 시간(분)을 구�
                 needs_escalation  : 열림 상태이고 기한이 지났으면 True 를 리턴한다 (2 ~ 4번)
                 pick_level        : 넘긴 시간에 해당하는 가장 높은 올림 단계를 고른다 (5 · 6번)
                 escalate_ticket   : 그 단계의 상급자에게 알리고 올린 단계를 적는다 (미리 채움)
-실행 파일       day04_5-1_run.py  : 점검 시각마다 올릴 티켓을 찾고 (7번), 올리고 (8번), 올린 횟수를 센다 (9번)
+실행 파일       exercise9-1_run.py  : 점검 시각마다 올릴 티켓을 찾고 (7번), 올리고 (8번), 올린 횟수를 센다 (9번)
 ```
 
 > **여기부터 문제입니다.**
@@ -64,7 +64,7 @@ escalation.py   overdue_minutes   : 응답 기한을 넘긴 시간(분)을 구�
 ** 이런 상황이 있습니다**
 
 - **지금은**: <mark>티켓이 확인되지 않은 채 응답 기한을 초과해도 상급자에게 에스컬레이션되지 않습니다</mark>.
-- **만드는 것**: 두 파일을 만듭니다. `escalation.py` 는 응답 기한 초과 시간을 산출하고, 에스컬레이션 대상 티켓을 판별하고, 에스컬레이션 단계를 선택합니다. `day04_5-1_run.py` 는 점검 시각마다 대상 티켓을 에스컬레이션하고 실행 횟수를 집계합니다. 상급자에게 통보하는 함수는 미리 채워져 있습니다.
+- **만드는 것**: 두 파일을 만듭니다. `escalation.py` 는 응답 기한 초과 시간을 산출하고, 에스컬레이션 대상 티켓을 판별하고, 에스컬레이션 단계를 선택합니다. `exercise9-1_run.py` 는 점검 시각마다 대상 티켓을 에스컬레이션하고 실행 횟수를 집계합니다. 상급자에게 통보하는 함수는 미리 채워져 있습니다.
 - **실행하면**: <mark>출력은 세 단계입니다. 단계 1 은 불러온 티켓 수와 올림 단계 수입니다. 단계 2 는 점검 시각마다 올린 티켓입니다. 단계 3 은 올린 결과 요약입니다.</mark>
 
 ** 할 일**: 두 파일을 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 알림 서버를 실행한 상태에서 프로그램을 실행합니다. 그리고 단계 2 · 3 의 출력과 서버 터미널의 수신 로그를 해석합니다.
@@ -126,14 +126,14 @@ def escalate_ticket(ticket, now, rules):                                        
     return "올림"                                                                          # 「올림」을 리턴한다
 ```
 
-**`day04_5-1_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 7번 아래에는 `if` 한 줄을, 8번 아래에는 한 단계 더 들여쓴 줄을, 9번 아래에는 또 한 단계 들여쓴 줄을 씁니다. 그 사이의 미리 채운 줄은 그대로 둡니다.
+**`exercise9-1_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 7번 아래에는 `if` 한 줄을, 8번 아래에는 한 단계 더 들여쓴 줄을, 9번 아래에는 또 한 단계 들여쓴 줄을 씁니다. 그 사이의 미리 채운 줄은 그대로 둡니다.
 
 ```python
 from incident import load_json                                                       # 월요일 파일의 JSON 읽기 함수를 불러온다
 from ticket_merge import change_ticket_status                                        # Exercise 6-2에 만든 상태 바꾸기 함수를 불러온다
 from escalation import overdue_minutes, needs_escalation, escalate_ticket            # 방금 만든 함수를 불러온다
 
-tickets = load_json("tickets_day4.json")                                             # 오전 Exercise 6-3가 저장한 티켓을 읽는다
+tickets = load_json("tickets_unit09.json")                                             # 오전 Exercise 6-3가 저장한 티켓을 읽는다
 rules = load_json("config/escalation_rules.json")                                    # 규칙 파일을 읽는다
 steps_count = len(rules["escalation_steps"])                                         # 올림 단계가 몇 개인지 센다
 print("--- 단계 1: 불러온 티켓", len(tickets), "장 · 올림 단계", steps_count, "개")  # 단계 1 시작을 알리는 줄
@@ -165,16 +165,16 @@ for ticket in tickets:                                                          
 1. **[터미널]** 처음 쓰던 터미널에서 파일 두 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
    ```bash
    pwd
-   touch escalation.py day04_5-1_run.py
+   touch escalation.py exercise9-1_run.py
    ls
    ```
-2. **[VS Code]** `escalation.py` 1 ~ 6번, `day04_5-1_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「Exercise 7-1 한눈에」를 봅니다.
+2. **[VS Code]** `escalation.py` 1 ~ 6번, `exercise9-1_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「Exercise 7-1 한눈에」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`). 알림 서버 터미널은 켜 둡니다.
    ```bash
-   python day04_5-1_run.py
+   python exercise9-1_run.py
    ```
 4. 출력은 세 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 제목 줄 하나만 나옵니다(숫자가 제목 줄 안에 함께 나옵니다). 단계 2 는 제목 아래 8줄입니다. 단계 3 은 제목 아래 4줄입니다(올린 횟수는 제목 줄 안에 있습니다). <mark>알림 서버 터미널에는 `[알림 받음]` 줄이 4개 찍힙니다.</mark>
-5. **[보고서]** `day04_pm_report.md` 의 `## Exercise 7-1` 아래를 채웁니다.
+5. **[보고서]** Unit 7 의 `## Exercise 7-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣어 주세요. 그리고 알림 서버 터미널에 출력된 `[알림 받음]` 줄 수와 단계 3 의 올린 횟수(에스컬레이션 실행 횟수)를 적어 주세요.
    - (나) [핵심 질문] `TCK-1` 은 20분 점검에서 1단계로 에스컬레이션되었지만, 60분 점검에서는 에스컬레이션되지 않았습니다. 그 이유를 설명해 주세요. 이때 25분에 변경된 상태와 `needs_escalation` 의 조건을 근거로 쓰고, 이 조건이 없을 때 발생하는 문제도 함께 설명해 주세요.
    - (다) [핵심 질문] 110분 점검에서 `TCK-3` 은 2단계로, `TCK-6` 은 1단계로 에스컬레이션되었습니다. 두 티켓의 응답 기한과 초과 시간을 근거로 단계가 달라진 이유를 설명해 주세요. 또한 등급 low 인 `TCK-2` 가 에스컬레이션되지 않은 이유도 설명해 주세요.

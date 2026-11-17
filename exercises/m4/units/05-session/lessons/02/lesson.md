@@ -180,7 +180,7 @@ Name: count, dtype: int64
 
 ** 할 일**
 
-1. `traffic_detection.py` · `day03_5-1_run.py` **두 파일**을 만들고, `traffic_detection.py` 의 **네 함수**에서 직접 쓰는 곳을 씁니다.
+1. `traffic_detection.py` · `exercise5-1_run.py` **두 파일**을 만들고, `traffic_detection.py` 의 **네 함수**에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>시각과 분의 차이</mark>(단계 1), <mark>분당 요청 수</mark>(단계 2), <mark>급증 기준</mark>(단계 3), <mark>요청이 급증한 분</mark>(단계 4)를 읽습니다.
 
 **`traffic_detection.py`**
@@ -249,7 +249,7 @@ def pick_spike_minutes(minute_request_counts, limit):            # 분마다 요
 - 번호 주석이 연달아 붙어 있어도(예: 5 · 6번), <mark>주석 사이마다 줄을 끼워 넣어 각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark>
 - 채우기 전에 실행하면 `NameError: name 'minutes' is not defined` 오류가 납니다. 1번을 아직 안 써서 `minutes` 가 없기 때문입니다.
 
-**`day03_5-1_run.py`** — **그대로 붙여 넣습니다.** 학생이 쓰는 줄은 없습니다. `.head(3)` 는 열의 처음 3개만 꺼냅니다.
+**`exercise5-1_run.py`** — **그대로 붙여 넣습니다.** 학생이 쓰는 줄은 없습니다. `.head(3)` 는 열의 처음 3개만 꺼냅니다.
 
 ```python
 from traffic_detection import load_events, add_minute_column, count_web_per_minute, make_traffic_limit, pick_spike_minutes, EVENTS_PATH, TRAFFIC_PATH, SPIKE_MULTIPLE  # 방금 만든 함수를 불러온다
@@ -278,16 +278,16 @@ print(spike_minutes)                                                            
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `traffic_detection.py` · `day03_5-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code 또는 터미널]** 파일 `traffic_detection.py` · `exercise5-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `traffic_detection.py` 에서 직접 쓰는 곳 **여섯 군데**를 씁니다. 위 판다스 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python day03_5-1_run.py
+   python exercise5-1_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day03_5-1_run.py` 파이썬으로 실행 파일 실행
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise5-1_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **네 단계**입니다. `--- 단계` 제목 줄은 세지 않습니다. 단계 1은 시각 4줄과 분 4줄(각각 마지막은 `Name:` 줄), 단계 2는 16줄(`minute` 줄 · 분마다 14줄 · `dtype:` 줄), 단계 3은 제목 줄에 숫자가 함께 나오고, 단계 4는 3줄(`minute` 줄 · 급증한 분 한 줄 · `dtype:` 줄)입니다. (나) · (다)에서 이벤트를 찾을 때는 VS Code 로 `normalized_events.json` 을 열고 `Ctrl + F`(맥북은 `Cmd + F`)로 `09:12` 또는 `09:20` 을 검색하고, `source` 가 `web` 인 줄만 셉니다. 이벤트 하나의 키는 `time · source · user · ip · action · result` 입니다.
-5. **[보고서]** `day03_pm_report.md` 의 `## Exercise 5-1` › `### Exercise Exercise 5-1` 아래를 채웁니다.
+5. **[보고서]** Unit 5 의 `## Exercise 5-1` › `### Exercise Exercise 5-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 급증 기준과 요청이 급증한 분(시각과 요청 수)을 적어 주세요.
    - (나) [핵심 질문] `normalized_events.json` 에서 `time` 이 `2026-11-02 09:12` 로 시작하는 웹 서버(`source` 가 `web`) 줄을 찾아, ① 요청을 보낸 IP 주소와 ② 행동(`action`)별 횟수를 적어 주세요. 그리고 ③ 이 급증을 공격이라고 확정할 수 있는지 이유와 함께 적어 주세요.
    - (다) [핵심 질문] 09:20 에도 웹 서버 요청이 3개 있었지만 급증으로 탐지되지 않았습니다. ① 3개를 급증 기준과 비교해 왜 탐지되지 않았는지 적고, ② `normalized_events.json` 에서 09:20 의 `web` 줄 3개가 어떤 요청(IP 주소 · 행동 · 결과)인지 적고, ③ 요청 수만 보는 급증 규칙이 이 요청들을 놓치는 이유를 적어 주세요.

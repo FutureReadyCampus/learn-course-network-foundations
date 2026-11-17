@@ -23,7 +23,7 @@ source:
 
 ```bash
 pwd
-python day03_5-1_run.py
+python exercise5-1_run.py
 ```
 
 **채운 코드** (한 예)
@@ -86,7 +86,7 @@ python day03_5-1_run.py
 
 ```bash
 pwd
-python day03_6-1_run.py
+python exercise5-2_run.py
 ```
 
 **채운 코드** (한 예)

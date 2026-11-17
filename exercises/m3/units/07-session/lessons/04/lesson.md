@@ -23,7 +23,7 @@ source:
 
 ```bash
 pwd
-python day04_5-1_run.py
+python exercise7-1_run.py
 ```
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 다섯 함수입니다.
@@ -131,7 +131,7 @@ junho SALES:QUERY <- 역할 finance | 90일 넘게 안 씀(이력 없음 포함)
 
 ```bash
 pwd
-python day04_6-1_run.py
+python exercise7-2_run.py
 ```
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 네 함수입니다.

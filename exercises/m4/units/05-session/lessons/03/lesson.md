@@ -167,7 +167,7 @@ print(message)                                               # 이어 붙인 글
 
 ** 할 일**
 
-1. `alerts.py` · `day03_6-1_run.py` **두 파일**을 만들고, `alerts.py` 의 **네 함수**에서 직접 쓰는 곳을 씁니다.
+1. `alerts.py` · `exercise5-2_run.py` **두 파일**을 만들고, `alerts.py` 의 **네 함수**에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>알림 건수</mark>(단계 1 ~ 3)와 <mark>저장된 알림</mark>(단계 4)을 확인하고, 새로 생긴 `alerts.json` 을 VS Code 에서 열어 봅니다.
 
 **`alerts.py`**
@@ -229,7 +229,7 @@ def save_alerts(alerts, path):                                                  
 - 번호 주석이 연달아 붙어 있어도(예: 3 · 4번), <mark>주석 사이마다 줄을 끼워 넣어 각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark>
 - 채우기 전에 실행하면 `NameError: name 'alert' is not defined` 오류가 납니다. 2번을 아직 안 써서 `alert` 가 만들어지지 않았기 때문입니다.
 
-**`day03_6-1_run.py`** — **그대로 붙여 넣습니다.** 학생이 쓰는 줄은 없습니다. 오전 `login_detection.py` 와 Exercise 5-1 `traffic_detection.py` 의 함수를 불러와 오늘의 알림을 만듭니다. `load_events` 는 두 파일에 같은 이름으로 있어서, <mark>여기서는 오전 파일 것 하나만 불러옵니다.</mark>
+**`exercise5-2_run.py`** — **그대로 붙여 넣습니다.** 학생이 쓰는 줄은 없습니다. 오전 `login_detection.py` 와 Exercise 5-1 `traffic_detection.py` 의 함수를 불러와 오늘의 알림을 만듭니다. `load_events` 는 두 파일에 같은 이름으로 있어서, <mark>여기서는 오전 파일 것 하나만 불러옵니다.</mark>
 
 ```python
 import json                                                                          # 저장한 파일을 다시 읽기 위해 json 을 불러온다
@@ -266,17 +266,17 @@ for alert in saved_alerts:                                                      
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `alerts.py` · `day03_6-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code 또는 터미널]** 파일 `alerts.py` · `exercise5-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `alerts.py` 에서 직접 쓰는 곳 **여섯 군데**를 씁니다. 위 알림 한 건의 모양 표와 판다스 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python day03_6-1_run.py
+   python exercise5-2_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day03_6-1_run.py` 파이썬으로 실행 파일 실행
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise5-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **네 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1 ~ 3은 제목 줄에 숫자가 함께 나오고, 단계 4는 알림 한 건이 한 줄씩 2줄입니다.
 5. **[VS Code]** 새로 생긴 `alerts.json` 을 열어 <mark>알림 두 건이 보이는지</mark> 확인합니다.
-6. **[보고서]** `day03_pm_report.md` 의 `## Exercise 5-2` › `### Exercise Exercise 5-1` 아래를 채웁니다.
+6. **[보고서]** Unit 5 의 `## Exercise 5-2` › `### Exercise Exercise 5-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, `alerts.json` 의 내용도 붙여 넣은 뒤 알림이 모두 몇 건인지 적어 주세요.
    - (나) [핵심 질문] ① 203.0.113.50 이 `normalized_events.json` 의 `source` 가 `web` 인 줄에 몇 시에 나오는지 찾고, ② 그 시각이 급증 알림의 분(09:12)과 같은지 비교하고, ③ 두 알림이 같은 일과 관련이 있는지 적고, 담당자가 두 건을 한 건으로 합쳐 조사할지 따로 조사할지 고른 이유를 적어 주세요.
    - (다) [핵심 질문] 203.0.113.50 알림을 조사해 보니 직원이 비밀번호를 잊어 반복해서 입력한 것이었습니다. ① `status` 를 어떤 값으로 바꿀지(안내 문서 2.1 의 처리 상태 순서를 참고), ② `note` 에 무엇을 더 적을지, ③ 알림을 지우지 않고 남겨 두는 편이 좋은 이유를 적어 주세요. 코드는 고치지 않고 글로만 적습니다.
@@ -304,13 +304,13 @@ for alert in saved_alerts:                                                      
 
 **순서**
 
-0. **[터미널]** 오늘 만든 파일이 있는지 `anomaly_detection` 폴더에서 확인합니다. `day03_pm_report.md` 의 5 · Exercise 5-2 칸에서 <mark>`답:` 뒤와 코드 상자가 비어 있는 질문이 없는지도 봅니다</mark>(마무리 (가)는 3번에서 채웁니다).
+0. **[터미널]** 오늘 만든 파일이 있는지 `anomaly_detection` 폴더에서 확인합니다. Unit 5 의 5 · Exercise 5-2 칸에서 <mark>`답:` 뒤와 코드 상자가 비어 있는 질문이 없는지도 봅니다</mark>(마무리 (가)는 3번에서 채웁니다).
    ```bash
    pwd
    ls
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
-   - <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나야 합니다.</mark> 파일은 `baseline.py` · `login_detection.py` · `classify.py` · `traffic_detection.py` · `alerts.py` · `day03_2-1_run.py` ~ `day03_6-1_run.py` 다섯 개 · `normalized_events.json` · `baseline_logins.csv` · `baseline_traffic.csv` · `alerts.json` 과 안내 · 보고서 네 파일(`day03_am_baseline_login.md` · `day03_am_report.md` · `day03_pm_traffic_alerts.md` · `day03_pm_report.md`)이 보여야 합니다. `__pycache__` 폴더는 파이썬이 만든 임시 폴더라 있어도 됩니다. 빠진 파일이 있으면 그 문제를 다시 풀어 만들고, `pwd` 가 `security-agent-toolkit` 로 나오면 `cd anomaly_detection` 을 먼저 칩니다.
+   - <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나야 합니다.</mark> 파일은 `baseline.py` · `login_detection.py` · `classify.py` · `traffic_detection.py` · `alerts.py` · `exercise4-1_run.py` ~ `exercise5-2_run.py` 다섯 개 · `normalized_events.json` · `baseline_logins.csv` · `baseline_traffic.csv` · `alerts.json` 과 안내 · 보고서 네 파일(Unit 4 · Unit 4 · Unit 5 · Unit 5)이 보여야 합니다. `__pycache__` 폴더는 파이썬이 만든 임시 폴더라 있어도 됩니다. 빠진 파일이 있으면 그 문제를 다시 풀어 만들고, `pwd` 가 `security-agent-toolkit` 로 나오면 `cd anomaly_detection` 을 먼저 칩니다.
 1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. <mark>결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.</mark>
    ```bash
    cd ..

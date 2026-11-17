@@ -35,7 +35,7 @@ source:
    pwd
    python --version
    ```
-3. **오늘 받은 파일 두 개**(`day01_pm_log_basics.md`, `day01_pm_report.md`)를 `다운로드` 폴더에서 `anomaly_detection` 폴더로 끌어다 놓습니다(안 되면 **File › Save As…**). 이미 있으면 건너뜁니다.
+3. **오늘 받은 파일 두 개**(Unit 1, Unit 1)를 `다운로드` 폴더에서 `anomaly_detection` 폴더로 끌어다 놓습니다(안 되면 **File › Save As…**). 이미 있으면 건너뜁니다.
 4. **[VS Code]** 보고서 맨 위 제목 `(이름 · 2026-11-02(월))` 의 `이름` 을 내 이름으로 바꿉니다. 안내 파일은 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다.
 5. **[VS Code 또는 터미널]** `anomaly_detection` 폴더에 `access_sample.log` 파일을 만들어 아래 내용을 그대로 붙여 넣습니다(터미널에서는 `touch access_sample.log` 후 VS Code 에서 엽니다).
 

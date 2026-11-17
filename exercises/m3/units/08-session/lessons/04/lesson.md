@@ -53,7 +53,7 @@ source:
   - `execute_revocation` 이 바꾼 `USERS` · `ROLES` · `EXCEPTIONS` 를 `evaluate_access` 도 같은 것으로 읽기 때문입니다.
   - `evaluate_access(사용자, 자원, 행위, 시각)` 는 `(허용 여부, 이유)` 두 값을 리턴합니다(10/22(목)).
 - `apply_plan` 은 승인 상태를 보지 않습니다. 승인 상태를 보고 실행할지 정하는 것은 `execute_revocation` 이 하는 일입니다.
-- `day05_4-1_run.py` 는 회수 전과 후에 계획마다 `evaluate_access` 로 같은 사용자 · 권한을 판정해 「허용(이유)」 또는 「거부(이유)」 문자열로 비교합니다.
+- `exercise8-3_run.py` 는 회수 전과 후에 계획마다 `evaluate_access` 로 같은 사용자 · 권한을 판정해 「허용(이유)」 또는 「거부(이유)」 문자열로 비교합니다.
 
 ```
 +----------------------------------------------------------+
@@ -110,7 +110,7 @@ log 를 리턴한다
 
 ** 할 일**
 
-1. `revoke.py` 와 `day05_4-1_run.py` 두 파일을 만들고, `remove_exception` · `apply_plan` · `execute_revocation` 에서 직접 쓰는 곳 다섯 군데를 씁니다.
+1. `revoke.py` 와 `exercise8-3_run.py` 두 파일을 만들고, `remove_exception` · `apply_plan` · `execute_revocation` 에서 직접 쓰는 곳 다섯 군데를 씁니다.
 2. 실행해서 <mark>회수 결과</mark>(단계 1: 실행), <mark>회수 전후의 판정</mark>(단계 2: 확인), <mark>저장한 이력</mark>(단계 3: 저장)을 읽고, 새로 생긴 `revocation_log.json` 파일도 열어 봅니다.
 
 **`revoke.py`**
@@ -190,7 +190,7 @@ def execute_revocation(plans, users, roles, exceptions, now):    # 계획 · 사
   - 나머지 줄은 미리 채워 두었으니 그대로 둡니다.
 - 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다(파이썬 버전에 따라 뒤에 `after 'if' statement on line …` 가 붙습니다). `remove_exception` 의 `for` 아래에 실행할 줄이 아직 없기 때문입니다.
 
-**`day05_4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. Exercise 8-2까지의 계획과 승인 상태를 만든 뒤 회수 전 판정을 모으고, `execute_revocation` 으로 회수하고, 회수 후 판정을 모아 비교하고, 이력을 저장합니다.
+**`exercise8-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. Exercise 8-2까지의 계획과 승인 상태를 만든 뒤 회수 전 판정을 모으고, `execute_revocation` 으로 회수하고, 회수 후 판정을 모아 비교하고, 이력을 저장합니다.
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
@@ -262,18 +262,18 @@ print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `revoke.py` · `day05_4-1_run.py` 를 만들어 위 코드를 붙여 넣습니다. 만드는 법은 둘 중 하나를 고릅니다.
+1. **[VS Code 또는 터미널]** 파일 `revoke.py` · `exercise8-3_run.py` 를 만들어 위 코드를 붙여 넣습니다. 만드는 법은 둘 중 하나를 고릅니다.
    - VS Code: `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력합니다.
    - 터미널: `pwd` 로 `access_control` 인지 확인하고 `touch 이름` 으로 만든 뒤 VS Code 에서 열어 붙여 넣습니다(`vim 이름` → `i` → 붙여넣기 → `Esc` → `:wq` 도 됩니다).
 2. **[VS Code]** `revoke.py` 에서 `remove_exception` · `apply_plan` · `execute_revocation` 의 직접 쓰는 곳 다섯 군데를 씁니다. 3.1 의 표와 그림을 보고 씁니다.
 3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python day05_4-1_run.py
+   python exercise8-3_run.py
    ```
 4. 출력은 세 단계입니다. 단계 1은 계획 여덟 줄과 `실행 N 건, 대기 N 건`, 단계 2는 판정 비교 여덟 줄, 단계 3은 저장 한 줄입니다.
 5. **[VS Code]** 왼쪽 목록에 새로 생긴 `revocation_log.json` 을 열어 한글이 그대로 저장됐는지 봅니다.
-6. **[보고서]** `day05_am_report.md` 의 `## Exercise 8-3` › `### Exercise 8-3` 아래를 채웁니다.
+6. **[보고서]** Unit 8 의 `## Exercise 8-3` › `### Exercise 8-3` 아래를 채웁니다.
    - (가) 출력 전체를 붙여 넣고, 이력의 결과가 「실행」인 건수와 「대기」인 건수, 회수 전후 판정이 바뀐 권한, 저장한 이력 건수를 적어 주세요.
    - (나) [핵심 질문] 회수를 실행한 7건 가운데 회수 전후 판정이 바뀐 것은 일부입니다. 바뀌지 않은 권한이 그대로인 이유와, 그래도 회수하고 이력을 남기는 이유를 적어 주세요.
    - (다) [핵심 질문] 회수 이력에는 시각 · 사용자 · 권한 · 방법 · 승인 상태 · 결과가 들어 있습니다. 반년 뒤 감사(점검 기록을 검토받는 일)에서 「이 권한이 왜 없어졌나요?」라고 물으면 이 이력만으로 답할 수 있을까요? 이력에 없는 정보가 있다면 무엇인지, 어떤 키를 추가하면 되는지 적어 주세요.
@@ -294,14 +294,14 @@ print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력
 
 ## 오전 마무리 — 보고서 2 · 3 · Exercise 8-3 칸 확인
 
-`day05_am_report.md` 의 2 · 3 · Exercise 8-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. `access_control` 폴더에 오늘 만든 파일이 있는지 확인합니다.
+Unit 8 의 2 · 3 · Exercise 8-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. `access_control` 폴더에 오늘 만든 파일이 있는지 확인합니다.
 
 ```bash
 ls
 ls config
 ```
 
-- `revoke_input.py` · `revoke_plan.py` · `revoke_approve.py` · `revoke.py` · `day05_2-1_run.py` · `day05_3-1_run.py` · `day05_4-1_run.py` · `revocation_log.json` 이 보여야 합니다.
+- `revoke_input.py` · `revoke_plan.py` · `revoke_approve.py` · `revoke.py` · `exercise8-1_run.py` · `exercise8-2_run.py` · `exercise8-3_run.py` · `revocation_log.json` 이 보여야 합니다.
   - `config` 안에는 `sensitive.json` 이 새로 보여야 합니다.
 
 오후에는 회수한 뒤에도 조건을 따져 접근을 판단하는 **조건기반 정책**과 판정 함수를 서버로 여는 수업을 합니다. 올리기(git)는 오후 Exercise 7-2 마지막에 한 번에 합니다.

@@ -89,7 +89,7 @@ source:
 
 ```
 +------------------+
-| day02_2-1_run.py |
+| exercise2-1_run.py |
 +------------------+
    |
    +--> 1. check_permission() 호출
@@ -126,7 +126,7 @@ source:
 ** 할 일**
 
 1. `policy.py` 를 만들고 `evaluate_access` 본문을 직접 씁니다.
-2. `day02_4-1_run.py` 를 실행해서 <mark>아홉 건의 결과</mark>, <mark>만료 뒤 시도</mark>, <mark>예외 번호별 사용 건수</mark>를 읽습니다.
+2. `exercise2-3_run.py` 를 실행해서 <mark>아홉 건의 결과</mark>, <mark>만료 뒤 시도</mark>, <mark>예외 번호별 사용 건수</mark>를 읽습니다.
 
 **`policy.py`**
 
@@ -147,7 +147,7 @@ def evaluate_access(user, resource, action, now):                # 사용자 · 
     # 5. found 이면 True, f"예외 {found_exception_id}번" 을 리턴한다
     # 6. 여기까지 왔으면 False, "권한 없음" 을 리턴한다
 ```
-**`day02_4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 오늘 요청 아홉 건을 그 시각대로 `evaluate_access` 로 판정하고, 3.2 의 순서로 방식별 건수와 예외 번호별 사용 건수를 세고, 예외가 끝난 뒤의 시도를 알립니다.
+**`exercise2-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 오늘 요청 아홉 건을 그 시각대로 `evaluate_access` 로 판정하고, 3.2 의 순서로 방식별 건수와 예외 번호별 사용 건수를 세고, 예외가 끝난 뒤의 시도를 알립니다.
 
 ```python
 from datetime import datetime                                    # 요청 시각을 만드는 데 쓴다
@@ -202,19 +202,19 @@ print("예외 사용", used)                                          # 예외 �
 **순서**
 
 1. **[VS Code 또는 터미널]** 두 파일을 만들고 각각 붙여 넣습니다.
-   - 만드는 방법은 Exercise 2-1 1번과 같습니다(VS Code 새 파일 아이콘 · `touch` · `vim` 중 하나). 만들 파일 이름은 차례로 `policy.py` · `day02_4-1_run.py` 입니다. 붙여 넣을 내용은 위 코드 상자입니다.
+   - 만드는 방법은 Exercise 2-1 1번과 같습니다(VS Code 새 파일 아이콘 · `touch` · `vim` 중 하나). 만들 파일 이름은 차례로 `policy.py` · `exercise2-3_run.py` 입니다. 붙여 넣을 내용은 위 코드 상자입니다.
 2. **[VS Code]** `policy.py` 의 `evaluate_access` 본문을 직접 씁니다. 3.1 의 그림을 보고 씁니다.
 3. **[터미널]** 실행합니다.
    ```bash
-   python day02_4-1_run.py
+   python exercise2-3_run.py
    ```
-   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `day02_4-1_run.py` 실행할 파일
-   맥북: `python3 day02_4-1_run.py`
+   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise2-3_run.py` 실행할 파일
+   맥북: `python3 exercise2-3_run.py`
 4. 요청 아홉 건의 결과 사이에 `[만료 뒤 시도]` 줄이 중간에 섞여 나오고, 마지막 두 줄이 방식별 건수와 예외 번호별 사용 건수입니다.
-5. **[보고서]** `day02_am_report.md` 의 `## Exercise 2-3` › `### Exercise Exercise 2-1` 아래를 채웁니다.
+5. **[보고서]** Unit 2 의 `## Exercise 2-3` › `### Exercise Exercise 2-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, `[만료 뒤 시도]` 로 출력된 세 건의 사용자와 끝난 예외 번호, 마지막 줄 「예외 사용」에서 예외 1번이 쓰인 횟수를 적어 주세요.
    - (나) [핵심 질문] 역할 판정에서 「권한 없음」이 아닌 이유(퇴사 · 없는 사용자 · 역할이 없음)로 거부되면 예외를 보지 않게 했습니다. 골격의 3번 주석(`# 3. …`)이 없다고 가정하면 퇴사자 `dami` 의 영업 실적 조회는 어떻게 판정되나요? 코드를 지우지 말고 생각해서 답합니다. 3.1 의 그림으로 설명하고, 현업에서 이런 허점이 어떤 사고로 이어질 수 있는지 적어 주세요.
-   - (다) [핵심 질문] 오늘 Exercise 2-3까지 만든 파일들이 서로 어떻게 이어지는지 그려 보세요. `day02_4-1_run.py` 에서 출발해, 파일 이름 · 함수 이름 · 읽는 설정 파일을 상자와 화살표(`+---+` · `|` · `v` · `+-->`)로 이어 글자로 그립니다(3.3 의 본보기를 참고). 그린 뒤, `config/exceptions.json` 이 깨졌을 때 이 그림의 어느 화살표에서 멈추는지 적어 주세요.
+   - (다) [핵심 질문] 오늘 Exercise 2-3까지 만든 파일들이 서로 어떻게 이어지는지 그려 보세요. `exercise2-3_run.py` 에서 출발해, 파일 이름 · 함수 이름 · 읽는 설정 파일을 상자와 화살표(`+---+` · `|` · `v` · `+-->`)로 이어 글자로 그립니다(3.3 의 본보기를 참고). 그린 뒤, `config/exceptions.json` 이 깨졌을 때 이 그림의 어느 화살표에서 멈추는지 적어 주세요.
 
 ## Exercise 2-3 한눈에
 
@@ -231,14 +231,14 @@ print("예외 사용", used)                                          # 예외 �
 
 ## 오전 마무리 — 보고서 2 · 3 · Exercise 2-3 칸 확인
 
-`day02_am_report.md` 의 2 · 3 · Exercise 2-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. `access_control` 폴더에 오늘 만든 파일이 있는지 확인합니다.
+Unit 2 의 2 · 3 · Exercise 2-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. `access_control` 폴더에 오늘 만든 파일이 있는지 확인합니다.
 
 ```bash
 ls
 ls config
 ```
 
-- `role_admin.py` · `exception_policy.py` · `policy.py` · `day02_2-1_run.py` · `day02_3-1_run.py` · `day02_4-1_run.py` 가 보여야 합니다. `config` 안에는 `exceptions.json` 이 새로 보여야 합니다(`users.json` · `roles.json` 은 어제 그대로입니다).
+- `role_admin.py` · `exception_policy.py` · `policy.py` · `exercise2-1_run.py` · `exercise2-2_run.py` · `exercise2-3_run.py` 가 보여야 합니다. `config` 안에는 `exceptions.json` 이 새로 보여야 합니다(`users.json` · `roles.json` 은 어제 그대로입니다).
 
 오늘 오후에는 설정 파일이 없거나 깨졌을 때도 안전하게 거부하도록 만들고, 오늘 만든 정책을 테스트 네 가지로 검증합니다. 올리기(git)는 오후 Exercise 1-2 마지막에 한 번에 합니다.
 

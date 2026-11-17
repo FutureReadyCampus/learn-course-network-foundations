@@ -302,7 +302,7 @@ print("6 통과")                                                  # 6번 assert
    - 명령 풀이: `python` 파이썬으로 파일을 실행 · `test_policy_extra.py` 실행할 파일
    맥북: `python3 test_policy_extra.py`
    - 오류 메시지에서 `line` 뒤의 숫자(몇 번째 줄인지)와 맨 마지막 줄 `AssertionError: …` 의 설명을 읽습니다(2.2).
-6. **[보고서]** `day02_pm_report.md` 의 `## Exercise 3-2` › `### Exercise Exercise 2-2` 아래를 채웁니다.
+6. **[보고서]** Unit 3 의 `## Exercise 3-2` › `### Exercise Exercise 2-2` 아래를 채웁니다.
    - (가) `test_policy_extra.py` 를 실행한 출력 전체를 붙여 넣고, 실패한 줄 번호와 `AssertionError:` 뒤에 나온 글자를 적어 주세요.
    - (나) [핵심 질문] 그 실패는 코드가 틀렸다는 뜻인가요, 제안이 우리가 정한 만료 규칙과 다르다는 뜻인가요? 근거를 적어 주세요.
    - (다) [핵심 질문] 정책 코드를 바꿀 때마다 `test_policy.py` 의 1 ~ 4번 테스트를 돌리지 않으면 어떤 사고가 날 수 있나요? 네 개 중 하나를 골라, 그 테스트가 막아 주는 사고를 구체적인 장면으로 적어 주세요.

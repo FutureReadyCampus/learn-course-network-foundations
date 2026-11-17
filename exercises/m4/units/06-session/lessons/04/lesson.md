@@ -141,7 +141,7 @@ print(scanner_df)            # 남은 요청을 출력한다
 
 ** 할 일**
 
-1. `malicious_detection.py` · `day04_4-1_run.py` 두 파일을 만들고, `malicious_detection.py` 의 두 함수에서 직접 쓰는 곳을 씁니다.
+1. `malicious_detection.py` · `exercise6-3_run.py` 두 파일을 만들고, `malicious_detection.py` 의 두 함수에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>웹 실패 수</mark>(단계 1), <mark>스캐너 경로를 요청한 IP</mark>(단계 2), <mark>스캔으로 본 IP</mark>(단계 3), <mark>제외한 IP</mark>(단계 4)를 읽습니다.
 3. 마지막으로 `advanced_detection.py` 를 만들어 오전 탐지 3개를 한 번에 돌려 봅니다.
 
@@ -202,7 +202,7 @@ def explain_scan(ip, request_count):                  # IP 와 스캐너 경로 
 - 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
 - 채우기 전에 실행하면 `NameError: name 'scan_counts' is not defined` 오류가 납니다. 1 ~ 4번을 아직 안 썼기 때문입니다.
 
-**`day04_4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
+**`exercise6-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
 
 ```python
 from malicious_detection import load_events, pick_web_failures, find_scan_ips, explain_scan, EVENTS_PATH  # 방금 만든 함수를 불러온다
@@ -258,17 +258,17 @@ print("웹 서버: 스캔으로 본 IP", scan_ips)                   # 웹 탐�
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `malicious_detection.py` · `day04_4-1_run.py` · `advanced_detection.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code 또는 터미널]** 파일 `malicious_detection.py` · `exercise6-3_run.py` · `advanced_detection.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `malicious_detection.py` 에서 <mark>직접 쓰는 곳 여섯 군데를 씁니다</mark>. 3.1 의 판다스 문법 상자와 표를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python day04_4-1_run.py
+   python exercise6-3_run.py
    python advanced_detection.py
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
-4. 출력은 **두 번** 나옵니다. `day04_4-1_run.py` 는 네 단계입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않고, 단계 1은 숫자가 제목 줄에 함께 나오며, 단계 2는 3줄, 단계 3은 1줄, 단계 4는 4줄입니다. `advanced_detection.py` 는 3줄입니다.
-5. **[보고서]** `day04_am_report.md` 의 `## Exercise 6-3` › `### Exercise Exercise 5-2` 아래를 채웁니다.
+4. 출력은 **두 번** 나옵니다. `exercise6-3_run.py` 는 네 단계입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않고, 단계 1은 숫자가 제목 줄에 함께 나오며, 단계 2는 3줄, 단계 3은 1줄, 단계 4는 4줄입니다. `advanced_detection.py` 는 3줄입니다.
+5. **[보고서]** Unit 6 의 `## Exercise 6-3` › `### Exercise Exercise 5-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 스캔으로 본 IP 와 이유를 적어 주세요.
    - (나) [핵심 질문] 203.0.113.50 은 실패한 요청이 7번 있지만 스캔에서 제외됐습니다. 제외된 이유와, 제외하지 않으면 담당자에게 어떤 일이 생기는지 적어 주세요.
    - (다) [핵심 질문] 198.51.100.21 의 `GET /board/99` 실패 1건은 이 규칙에서 어떤 조건 때문에 제외되나요? 그리고 해킹 도구가 `SCANNER_PATTERN` 에 없는 경로(예: `/backup.zip`)를 요청하면 이 규칙이 탐지하지 못한다는 점을 설명해 주세요.
@@ -296,8 +296,8 @@ print("웹 서버: 스캔으로 본 IP", scan_ips)                   # 웹 탐�
    ls
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
-   - `access_detection.py` · `saas_detection.py` · `malicious_detection.py` · `advanced_detection.py` · `day04_2-1_run.py` · `day04_3-1_run.py` · `day04_4-1_run.py` · `rbac.py` · `config` 폴더 · `normalized_events.json` 과 이 안내 · 보고서 두 파일이 보여야 합니다.
-2. **[보고서]** `day04_am_report.md` 의 2 · 3 · Exercise 6-3 칸에서 <mark>`답:` 뒤가 비어 있는 질문이 없는지</mark> 봅니다. 못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.
+   - `access_detection.py` · `saas_detection.py` · `malicious_detection.py` · `advanced_detection.py` · `exercise6-1_run.py` · `exercise6-2_run.py` · `exercise6-3_run.py` · `rbac.py` · `config` 폴더 · `normalized_events.json` 과 이 안내 · 보고서 두 파일이 보여야 합니다.
+2. **[보고서]** Unit 6 의 2 · 3 · Exercise 6-3 칸에서 <mark>`답:` 뒤가 비어 있는 질문이 없는지</mark> 봅니다. 못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.
 
 ---
 

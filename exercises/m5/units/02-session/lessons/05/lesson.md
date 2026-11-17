@@ -23,7 +23,7 @@ source:
 
 ```bash
 pwd
-python day02_2-1_run.py
+python exercise4-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -44,7 +44,7 @@ python day02_2-1_run.py
         ip_info["ip_trusted"] = source_ips[entity] in trusted_ips  # 신뢰 IP 안에 있는지 확인한 결과를 담는다
 ```
 
-`day02_2-1_run.py` 의 7 ~ 9번입니다.
+`exercise4-1_run.py` 의 7 ~ 9번입니다.
 
 ```python
     # 7. enrich_incident(incident, users_info, source_ips, trusted_ips) 를 호출한다 (인시던트에 맥락이 붙는다)
@@ -138,7 +138,7 @@ VIP 계정 알림 0 건
 
 ```bash
 pwd
-python day02_3-1_run.py
+python exercise4-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -161,7 +161,7 @@ python day02_3-1_run.py
         return "오탐 종료", "신뢰 IP 에서 온 IP 관련 규칙뿐이라 정상 접속으로 봄"  # 경로와 이유를 함께 리턴한다
 ```
 
-`day02_3-1_run.py` 의 8 · 9번입니다.
+`exercise4-2_run.py` 의 8 · 9번입니다.
 
 ```python
     # 8. decide_route(incident) 가 리턴한 두 값을 route 와 reason 에 한 번에 받는다
@@ -260,7 +260,7 @@ NameError: name 'route' is not defined
 
 ```bash
 pwd
-python day02_4-1_run.py
+python exercise4-3_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -283,7 +283,7 @@ python day02_4-1_run.py
     return run_action(action, incident, state)                                     # 이유가 없으면 어제의 방식대로 실행한 결과를 리턴한다
 ```
 
-`day02_4-1_run.py` 의 8 · 9번입니다.
+`exercise4-3_run.py` 의 8 · 9번입니다.
 
 ```python
     # 8. result_text 가 "건너뜀" 으로 시작하면 (if, startswith)

@@ -45,7 +45,7 @@ source:
         return execute_actions(item, state, action_log, approver)  # 액션을 실행하고 그 결과를 리턴한다
 ```
 
-`day02_5-1_run.py` 의 8 · 9번입니다.
+`exercise5-2_run.py` 의 8 · 9번입니다.
 
 ```python
     # 8. item["id"] 가 decisions 안에 있으면 (if, in)
@@ -199,7 +199,7 @@ INC-005 198.51.100.90 -> 결정 없음 (상태: 분류됨)
             failures.append(entry)              # 실패한 기록을 리스트에 추가한다
 ```
 
-`day02_6-1_run.py` 의 8 · 9번입니다.
+`exercise5-3_run.py` 의 8 · 9번입니다.
 
 ```python
 # 8. collect_failures(action_log) 의 결과를 failures 에 담는다

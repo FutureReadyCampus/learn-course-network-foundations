@@ -64,7 +64,7 @@ account_actions.py    check_policy      : VIP 계정이면 자동 조치를 막�
                       verify_locked     : 실제로 잠긴 계정 리스트에 있는지 확인한다 (5번)
                       lock_account      : 잠그고, 확인하고, 기록을 만든다 (6번이 잠그는 줄)
                       unlock_account    : 해제하고, 확인하고, 기록을 만든다 (7번이 해제하는 줄)
-실행 파일             day03_2-1_run.py  : 잠금 요청마다 잠그고 (8번) 기록을 남긴다 (9번)
+실행 파일             exercise6-1_run.py  : 잠금 요청마다 잠그고 (8번) 기록을 남긴다 (9번)
 ```
 
 > **여기부터 문제입니다.**
@@ -74,7 +74,7 @@ account_actions.py    check_policy      : VIP 계정이면 자동 조치를 막�
 ** 이런 상황이 있습니다**
 
 - **지금은**: <mark>잠금 호출만 있고 사후 검증도 조치 전 상태 기록도 없어서, 「잠갔다」는 기록이 실제 상태를 입증하지 못합니다</mark>.
-- **만드는 것**: 조치 기록 생성과 기록 파일 추가(`containment_store.py`), VIP 정책 검사 · 잠금 사후 검증 · 잠금 · 해제(`account_actions.py`), 잠금 요청 처리(`day03_2-1_run.py`).
+- **만드는 것**: 조치 기록 생성과 기록 파일 추가(`containment_store.py`), VIP 정책 검사 · 잠금 사후 검증 · 잠금 · 해제(`account_actions.py`), 잠금 요청 처리(`exercise6-1_run.py`).
 - **실행하면**: <mark>단계 1: 조치 전 잠긴 계정, 단계 2: 잠금 요청 3건의 조치 전 → 후, 단계 3: 해제, 단계 4: 파일에 저장해 둔 잠긴 계정과 조치 기록 수를 다시 읽은 결과가 나옵니다.</mark>
 
 ** 할 일**: 파일 세 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 ~ 4 를 읽습니다.
@@ -201,7 +201,7 @@ def unlock_account(user, state, incident_id, reason):                           
     return make_record("계정 해제", user, incident_id, "잠김", after, reason)         # 조치 전 · 후 상태와 함께 기록한다 — 미리 채운 줄
 ```
 
-**`day03_2-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+**`exercise6-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
 from incident import load_json                                                          # 월요일 파일의 함수를 불러온다
@@ -241,16 +241,16 @@ print("조치 기록:", len(saved_log), "건")                                  
 1. **[터미널]** 파일 세 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
    ```bash
    pwd
-   touch containment_store.py account_actions.py day03_2-1_run.py
+   touch containment_store.py account_actions.py exercise6-1_run.py
    ls
    ```
-2. **[VS Code]** `containment_store.py` 1 · 2번, `account_actions.py` 3 ~ 7번, `day03_2-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 4-1 한눈에」를 봅니다.
+2. **[VS Code]** `containment_store.py` 1 · 2번, `account_actions.py` 3 ~ 7번, `exercise6-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 4-1 한눈에」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
-   python day03_2-1_run.py
+   python exercise6-1_run.py
    ```
 4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 1줄, 단계 2 는 3줄, 단계 3 은 1줄, 단계 4 는 2줄입니다. 실행하면 `containment_state.json` 과 `containment_log.json` 이 생깁니다.
-5. **[보고서]** `day03_am_report.md` 의 `## Exercise 4-1` 아래를 채웁니다.
+5. **[보고서]** Unit 4 의 `## Exercise 4-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 단계 4 의 잠긴 계정과 조치 기록 수를 적어 주세요.
    - (나) [핵심 질문] INC-003 의 `gaeun` 은 잠기지 않았습니다. 단계 2 의 줄을 근거로 이유를 적어 주세요. 그리고 어제 Exercise 4-2의 경로가 VIP 계정을 이미 `승인 필요` 경로로 분기했는데도 조치 함수가 정책을 한 번 더 검사하는 이유도 적어 주세요.
    - (다) [핵심 질문] INC-006 의 `junho` 는 `잠김 → 잠김` 으로 기록됐고, 단계 3 에서 해제한 `dami` 는 `잠김 → 잠기지 않음` 입니다. `before` 를 남기면 롤백할 때 어떤 판단이 가능해지는지 적어 주세요. 그리고 잠금 뒤 사후 검증(`verify_locked`)이 없으면 어떤 문제가 생기는지도 적어 주세요.

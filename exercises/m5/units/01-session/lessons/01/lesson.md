@@ -47,7 +47,7 @@ source:
    ```
    - 명령 풀이: `mkdir 폴더이름` 새 폴더 만들기 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 이름 보기
    - <mark>`config` 폴더가 보이면</mark> 됩니다. `config` 에는 JSON 설정 파일만 둡니다.
-4. **오늘 받은 파일 두 개**(`day01_pm_playbook_incident.md`, `day01_pm_report.md`)를 <mark>`다운로드` 폴더에서 `soar_response` 폴더로 끌어다 놓습니다</mark>(안 되면 **File › Save As…**). 그리고 **[VS Code]** 보고서 맨 위 제목 `(이름 · 2026-11-09(월))` 의 <mark>`이름` 을 내 이름으로 바꿉니다</mark>. 안내 파일은 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다.
+4. **오늘 받은 파일 두 개**(Unit 1, Unit 1)를 <mark>`다운로드` 폴더에서 `soar_response` 폴더로 끌어다 놓습니다</mark>(안 되면 **File › Save As…**). 그리고 **[VS Code]** 보고서 맨 위 제목 `(이름 · 2026-11-09(월))` 의 <mark>`이름` 을 내 이름으로 바꿉니다</mark>. 안내 파일은 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다.
 5. **[터미널]** 오늘 쓸 파일 두 개를 만들고 **[VS Code]** 에서 열어 아래 내용을 그대로 붙여 넣습니다.
    ```bash
    touch incident_samples.json system_state.json

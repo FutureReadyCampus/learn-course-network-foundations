@@ -20,7 +20,7 @@ source:
 
 깃허브에 올리는 일은 Exercise 7-2 마지막에 합니다. 새 문법은 Exercise 7-2의 `sum()` 과 `%` 둘이고, 나눗셈 `/` 는 문법 상자에서 풀이합니다. 보고서의 [핵심 질문] 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기는 미리 채운 줄에 맞춥니다. 각 번호 주석 바로 아래에 한 줄을 씁니다. <mark style="background:#ffc4d6">주석은 지우지 않습니다</mark>.
 
- **이전 파일**: 오전에 만든 `ticketing.py` · `ticket_merge.py` · `ticket_notice.py` 와 데이터 `alerts_thu.json` · `config/escalation_rules.json`, <mark style="background:#e0d4ff">월요일의 `incident.py`</mark>, <mark style="background:#e0d4ff">1과목의 `notifier.py` · `alert_server.py`</mark> 를 씁니다. Exercise 7-1는 오전 Exercise 6-3가 저장한 `tickets_day4.json` 도 읽습니다. Exercise 7-2는 Exercise 7-1에서 만든 `escalation.py` 도 씁니다. 없는 파일은 `complete_files.md` 에서 복사합니다(오전 파일은 6절, `escalation.py` 는 7절). `incident.py` · `notifier.py` · `alert_server.py` 는 오전 안내 시작하기의 「 이전 파일이 없을 때」 코드 상자로 만듭니다.
+ **이전 파일**: 오전에 만든 `ticketing.py` · `ticket_merge.py` · `ticket_notice.py` 와 데이터 `alerts_thu.json` · `config/escalation_rules.json`, <mark style="background:#e0d4ff">월요일의 `incident.py`</mark>, <mark style="background:#e0d4ff">1과목의 `notifier.py` · `alert_server.py`</mark> 를 씁니다. Exercise 7-1는 오전 Exercise 6-3가 저장한 `tickets_unit09.json` 도 읽습니다. Exercise 7-2는 Exercise 7-1에서 만든 `escalation.py` 도 씁니다. 없는 파일은 `complete_files.md` 에서 복사합니다(오전 파일은 6절, `escalation.py` 는 7절). `incident.py` · `notifier.py` · `alert_server.py` 는 오전 안내 시작하기의 「 이전 파일이 없을 때」 코드 상자로 만듭니다.
 
  **줄임말 이름 안내**: 이 문서의 코드와 파일에는 줄임말로 된 이름이 있습니다. 처음 보면 뜻을 알기 어려워서 아래에 풀어 둡니다. 이미 배포한 파일과 맞추기 위해 이름은 그대로 쓰고 뜻만 설명합니다.
   - `ack` · `acked` 는 acknowledge(확인하다) · acknowledged(확인했다)의 줄임말입니다. 담당자가 티켓을 처음 확인했다는 뜻입니다.
@@ -31,7 +31,7 @@ source:
 ## 개요
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** 5과목 폴더로 들어가 파일을 확인합니다. <mark style="background:#bde3ff">`ls` 결과에 `ticketing.py` · `ticket_merge.py` · `ticket_notice.py` · `tickets_day4.json` 이 보이면</mark> 됩니다.
+2. **[터미널]** 5과목 폴더로 들어가 파일을 확인합니다. <mark style="background:#bde3ff">`ls` 결과에 `ticketing.py` · `ticket_merge.py` · `ticket_notice.py` · `tickets_unit09.json` 이 보이면</mark> 됩니다.
    ```bash
    pwd
    cd soar_response
@@ -39,8 +39,8 @@ source:
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다. `cd` 가 안 되면 `ls` 로 `soar_response` 폴더가 보이는지 확인합니다.
-   - `tickets_day4.json` 이 없으면 먼저 아래 6번(알림 서버 켜기)을 합니다. 그다음 이 터미널에서 오전 Exercise 6-3 실행 파일(`day04_4-1_run.py`)을 한 번 실행하면 `tickets_day4.json` 이 생깁니다. 오전 Exercise 6-3 안내 문서의 `day04_4-1_run.py` 코드로 파일을 만들어 실행합니다(`ticketing.py` 같은 오전 코드 파일은 `complete_files.md` 6절에서 복사합니다). 이 경우 서버 터미널에 오전 Exercise 6-3의 `[알림 받음]` 9줄이 먼저 나오므로, Exercise 7-1의 4줄은 그 아래부터 셉니다.
-3. 오늘 받은 파일 두 개(`day04_pm_escalation_metrics.md`, `day04_pm_report.md`)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
+   - `tickets_unit09.json` 이 없으면 먼저 아래 6번(알림 서버 켜기)을 합니다. 그다음 이 터미널에서 오전 Exercise 6-3 실행 파일(`exercise8-3_run.py`)을 한 번 실행하면 `tickets_unit09.json` 이 생깁니다. 오전 Exercise 6-3 안내 문서의 `exercise8-3_run.py` 코드로 파일을 만들어 실행합니다(`ticketing.py` 같은 오전 코드 파일은 `complete_files.md` 6절에서 복사합니다). 이 경우 서버 터미널에 오전 Exercise 6-3의 `[알림 받음]` 9줄이 먼저 나오므로, Exercise 7-1의 4줄은 그 아래부터 셉니다.
+3. 오늘 받은 파일 두 개(Unit 7, Unit 7)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
 4. **[터미널]** 담당자 동작 파일을 만들고 **[VS Code]** 에서 열어 아래 내용을 붙여 넣습니다.
    ```bash
    touch status_events.json
@@ -67,7 +67,7 @@ source:
 
 5. **[터미널]** 파일이 정상인지 확인합니다(맥북은 `python3`). <mark style="background:#bde3ff">`7 8` 이 나와야</mark> 합니다.
    ```bash
-   python -c "import json; print(len(json.load(open('tickets_day4.json', encoding='utf-8'))), len(json.load(open('status_events.json', encoding='utf-8'))))"
+   python -c "import json; print(len(json.load(open('tickets_unit09.json', encoding='utf-8'))), len(json.load(open('status_events.json', encoding='utf-8'))))"
    ```
 6. **[터미널]** 알림 서버를 시작합니다. VS Code 터미널 창 오른쪽 위의 `+` 로 **새 터미널**을 하나 더 열고 서버를 실행합니다(맥북은 `python3`). <mark style="background:#bde3ff">`Running on http://127.0.0.1:5001` 이 보이면</mark> 됩니다. 이 터미널은 오후 내내 그대로 둡니다.
    ```bash
@@ -82,6 +82,6 @@ source:
 - 출력에 `[알림 실패] ConnectionError`(연결 오류)가 나오면 <mark style="background:#ffc4d6">알림 서버가 실행 중이 아니라는 뜻</mark>입니다. 6번을 다시 실행합니다.
 - 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 막히면 맨 아래 「정답」을 보고, 풀리지 않으면 보고서에 「모름 — 막힌 곳: …」 이라고 씁니다.
 
-> 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다. Exercise 7-1 실행 파일은 `tickets_day4.json` 을 읽기만 하고 다시 저장하지 않아서, 몇 번을 실행해도 같은 결과가 나옵니다.
+> 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다. Exercise 7-1 실행 파일은 `tickets_unit09.json` 을 읽기만 하고 다시 저장하지 않아서, 몇 번을 실행해도 같은 결과가 나옵니다.
 
 ---

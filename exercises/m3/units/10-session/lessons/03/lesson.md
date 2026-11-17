@@ -212,9 +212,9 @@ print(text)                                                      # 이어 붙인
 
 ** 할 일**
 
-1. `log_summary.py` · `day06_3-1_run.py` 두 파일을 만들고, `log_summary.py` 의 `read_log` · `count_by` · `filter_denied` · `deny_rate` · `find_heavy_users` 에서 직접 쓰는 곳 다섯 군데를 씁니다.
+1. `log_summary.py` · `exercise10-2_run.py` 두 파일을 만들고, `log_summary.py` 의 `read_log` · `count_by` · `filter_denied` · `deny_rate` · `find_heavy_users` 에서 직접 쓰는 곳 다섯 군데를 씁니다.
 2. 실행해서 <mark>허용 · 거부 · 거부율</mark>(단계 1: 집계), <mark>거부 사유별 횟수</mark>(단계 2), <mark>경고 여부</mark>(단계 3: 경고 기준)를 읽습니다.
-3. `weekly_report.py` · `day06_3-2_run.py` 를 붙여 넣어 실행하고, Exercise 10-1 점검 결과와 합친 <mark>주간 보고서</mark>(단계 3: 저장한 보고서 내용)를 읽습니다. 이 두 파일은 직접 쓰는 곳이 없습니다. Exercise 10-2 문제는 Exercise 10-2 하나이고, `day06_3-2_run.py` 는 같은 문제의 두 번째 실행 파일입니다. 보고서 (가)의 「단계 3」은 `day06_3-1_run.py` 에서는 경고 여부, `day06_3-2_run.py` 에서는 저장한 보고서 내용입니다.
+3. `weekly_report.py` · `exercise10-2-2_run.py` 를 붙여 넣어 실행하고, Exercise 10-1 점검 결과와 합친 <mark>주간 보고서</mark>(단계 3: 저장한 보고서 내용)를 읽습니다. 이 두 파일은 직접 쓰는 곳이 없습니다. Exercise 10-2 문제는 Exercise 10-2 하나이고, `exercise10-2-2_run.py` 는 같은 문제의 두 번째 실행 파일입니다. 보고서 (가)의 「단계 3」은 `exercise10-2_run.py` 에서는 경고 여부, `exercise10-2-2_run.py` 에서는 저장한 보고서 내용입니다.
 
 **`log_summary.py`**
 
@@ -294,7 +294,7 @@ def find_heavy_users(denied_counts, limit):                      # 사용자별 
 - 8 · 9번은 요청이 하나도 없을 때 0 으로 나누는 오류를 막는 줄입니다. 로그가 비는 경우의 결과는 문제 아래 정답에서 읽습니다.
 - 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다. 다만 `deny_rate` 의 8 · 9번만 비워 두면 오류가 나지 않습니다. 오늘 로그는 비어 있지 않아서 그렇고, 로그가 빈 날에만 문제가 드러납니다.
 
-**`day06_3-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 샘플 로그를 집계해 세 단계로 출력합니다.
+**`exercise10-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 샘플 로그를 집계해 세 단계로 출력합니다.
 
 ```python
 import json                                                      # 경고 기준 파일을 읽는 데 쓴다
@@ -400,7 +400,7 @@ def save_report(text, today):                                    # 보고서 문
   - 보고서 줄은 `lines.append(…)` 로 하나씩 모으고, 마지막에 `"\n".join(lines)` 로 한 문자열로 만듭니다(문법 상자 ④).
   - `save_report` 는 `"w"` 로 열어 새로 씁니다. 로그처럼 계속 덧붙이는 파일은 `"a"` 이고, 매주 새로 만드는 보고서는 `"w"` 입니다. 파일 이름에는 `f"…{today}.md"` 로 날짜를 넣습니다.
 
-**`day06_3-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. Exercise 10-1의 점검 함수와 Exercise 10-2의 로그 읽기 함수로 데이터를 모아 보고서를 만들고 저장합니다.
+**`exercise10-2-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. Exercise 10-1의 점검 함수와 Exercise 10-2의 로그 읽기 함수로 데이터를 모아 보고서를 만들고 저장합니다.
 
 ```python
 import json                                                      # 경고 기준 파일을 읽는 데 쓴다
@@ -431,17 +431,17 @@ print(text)                                                      # 보고서 내
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `log_summary.py` · `day06_3-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code 또는 터미널]** 파일 `log_summary.py` · `exercise10-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `log_summary.py` 에서 직접 쓰는 곳 다섯 군데를 씁니다. 2.1 의 표와 그림, 문법 상자를 보고 씁니다.
 3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python day06_3-1_run.py
+   python exercise10-2_run.py
    ```
 4. 출력은 세 단계입니다. 단계 1은 한 줄, 단계 2는 거부 사유 네 줄, 단계 3은 두 줄입니다.
-5. **[VS Code 또는 터미널]** 파일 `weekly_report.py` · `day06_3-2_run.py` 를 만들어 위 코드를 붙여 넣고 실행합니다. Exercise 10-1의 `checklist.py` 를 불러오므로 파일이 없으면 문서 맨 아래 「앞 Exercise 파일 완성본」으로 먼저 만듭니다.
+5. **[VS Code 또는 터미널]** 파일 `weekly_report.py` · `exercise10-2-2_run.py` 를 만들어 위 코드를 붙여 넣고 실행합니다. Exercise 10-1의 `checklist.py` 를 불러오므로 파일이 없으면 문서 맨 아래 「앞 Exercise 파일 완성본」으로 먼저 만듭니다.
    ```bash
-   python day06_3-2_run.py
+   python exercise10-2-2_run.py
    ls
    ```
    - 단계 3의 보고서가 네 절로 출력되고, `ls` 에 `access_control_weekly_report_2026-11-02.md` 가 보여야 합니다.
@@ -451,8 +451,8 @@ print(text)                                                      # 보고서 내
    grep dami week_log.jsonl
    ```
    - 명령 풀이: `grep 단어 파일` 파일에서 그 단어가 들어간 줄만 보여 줌
-7. **[보고서]** `day06_am_report.md` 의 `## Exercise 10-2` › `### Exercise 10-2` 아래를 채웁니다.
-   - (가) `day06_3-1_run.py` 의 출력과 `day06_3-2_run.py` 의 보고서 내용을 붙여 넣고, 허용 · 거부 · 거부율, 경고 여부, 거부 사유 중 가장 많은 것을 적어 주세요.
+7. **[보고서]** Unit 10 의 `## Exercise 10-2` › `### Exercise 10-2` 아래를 채웁니다.
+   - (가) `exercise10-2_run.py` 의 출력과 `exercise10-2-2_run.py` 의 보고서 내용을 붙여 넣고, 허용 · 거부 · 거부율, 경고 여부, 거부 사유 중 가장 많은 것을 적어 주세요.
    - (나) [핵심 질문] 보고서 4절에 거부가 4번 이상인 사용자로 gaeun 과 dami 가 나왔습니다. 6번에서 찾은 두 사람의 요청을 비교하고, 같은 조치를 하면 안 되는 이유와 각각 무엇부터 확인해야 하는지 적어 주세요.
    - (다) [핵심 질문] 서버가 멈춰서 로그가 빈 주에는 `deny_rate` 가 0.0 을 리턴해 보고서에 「거부율 0%」가 나옵니다. 이 보고서만 보고 「이번 주는 안전했다」고 판단해도 되는지, 보고서에서 함께 확인해야 하는 정보와 그 이유를 적어 주세요.
 
@@ -506,49 +506,49 @@ security-agent-toolkit/
     checklist.py
     conditional.py
     config_loader.py
-    day01_6-1_run.py
-    day01_7-1_audit.py
-    day01_pm_rbac.md
-    day01_pm_report.md
-    day02_2-1_run.py
-    day02_3-1_run.py
-    day02_4-1_run.py
-    day02_5-1_broken.py
-    day02_am_policy.md
-    day02_am_report.md
-    day02_pm_report.md
-    day02_pm_tests.md
-    day03_2-1_run.py
-    day03_3-1_run.py
-    day03_4-1_run.py
-    day03_5-1_run.py
-    day03_6-1_run.py
-    day03_am_report.md
-    day03_am_request.md
-    day03_pm_report.md
-    day03_pm_sla.md
-    day04_2-1_run.py
-    day04_3-1_run.py
-    day04_4-1_run.py
-    day04_5-1_run.py
-    day04_6-1_run.py
-    day04_am_access_review.md
-    day04_am_report.md
-    day04_pm_overprivilege.md
-    day04_pm_report.md
-    day05_2-1_run.py
-    day05_3-1_run.py
-    day05_4-1_run.py
-    day05_5-1_run.py
-    day05_am_report.md
-    day05_am_revoke.md
-    day05_pm_conditions.md
-    day05_pm_report.md
-    day06_2-1_run.py
-    day06_3-1_run.py
-    day06_3-2_run.py
-    day06_am_report.md
-    day06_am_weekly_report.md
+    exercise1-2_run.py
+    exercise1-3_audit.py
+    Unit 1
+    Unit 1
+    exercise2-1_run.py
+    exercise2-2_run.py
+    exercise2-3_run.py
+    exercise3-1_broken.py
+    Unit 2
+    Unit 2
+    Unit 3
+    Unit 3
+    exercise4-1_run.py
+    exercise4-2_run.py
+    exercise4-3_run.py
+    exercise5-1_run.py
+    exercise5-2_run.py
+    Unit 4
+    Unit 4
+    Unit 5
+    Unit 5
+    exercise6-1_run.py
+    exercise6-2_run.py
+    exercise6-3_run.py
+    exercise7-1_run.py
+    exercise7-2_run.py
+    Unit 6
+    Unit 6
+    Unit 7
+    Unit 7
+    exercise8-1_run.py
+    exercise8-2_run.py
+    exercise8-3_run.py
+    exercise9-1_run.py
+    Unit 8
+    Unit 8
+    Unit 9
+    Unit 9
+    exercise10-1_run.py
+    exercise10-2_run.py
+    exercise10-2-2_run.py
+    Unit 10
+    Unit 10
     exception_policy.py
     log_summary.py
     overprivilege.py

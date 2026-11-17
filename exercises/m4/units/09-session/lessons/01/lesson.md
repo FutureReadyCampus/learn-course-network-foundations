@@ -93,7 +93,7 @@ source:
    - 나오는 것: 끈 서버의 이름이 한 줄 나옵니다. 그 뒤 ① 의 명령을 다시 쳐서 머리글 줄만 나오는지 봅니다.
 
 
-5. **오늘 받은 파일 두 개**(`day05_pm_docker_compose_logs.md`, `day05_pm_report.md`)를 <mark>`다운로드` 폴더에서 `anomaly_detection` 폴더로 끌어다 놓습니다</mark>(안 되면 **File › Save As…**). 이미 있으면 건너뜁니다.
+5. **오늘 받은 파일 두 개**(Unit 9, Unit 9)를 <mark>`다운로드` 폴더에서 `anomaly_detection` 폴더로 끌어다 놓습니다</mark>(안 되면 **File › Save As…**). 이미 있으면 건너뜁니다.
 6. **[VS Code]** 보고서 맨 위 제목 `(이름 · 2026-11-06(금))` 의 <mark>`이름` 을 내 이름으로 바꿉니다</mark>. 안내 파일은 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다.
 
 ## 오류가 나면

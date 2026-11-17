@@ -49,7 +49,7 @@ source:
 enrichment.py   lookup_account   : 대상이 users_info 안에 있으면 재직 · VIP 를 담는다 (1 ~ 3번)
                 lookup_source_ip : 대상이 source_ips 안에 있으면 접속 IP 와 신뢰 IP 여부를 담는다 (4 ~ 6번)
                 enrich_incident  : 두 결과를 합쳐 incident["context"] 에 붙인다 (미리 채움)
-실행 파일       day02_2-1_run.py : 알림마다 맥락을 붙이는 함수를 호출하고 (7번), VIP 이면 (8번) VIP 알림 수를 1 늘린다 (9번)
+실행 파일       exercise4-1_run.py : 알림마다 맥락을 붙이는 함수를 호출하고 (7번), VIP 이면 (8번) VIP 알림 수를 1 늘린다 (9번)
 ```
 
 > **여기부터 문제입니다.**
@@ -59,7 +59,7 @@ enrichment.py   lookup_account   : 대상이 users_info 안에 있으면 재직 
 ** 이런 상황이 있습니다**
 
 - **지금은**: <mark>알림 5건에는 대상 이름과 위험 등급만 있어서 퇴사자 · VIP 계정 · 신뢰 IP 에서 온 접속을 구별할 수 없습니다</mark>.
-- **만드는 것**: 계정 정보 조회와 접속 IP 정보 조회(`enrichment.py`), 보강 함수 호출과 VIP 계정 알림 수 집계(`day02_2-1_run.py`).
+- **만드는 것**: 계정 정보 조회와 접속 IP 정보 조회(`enrichment.py`), 보강 함수 호출과 VIP 계정 알림 수 집계(`exercise4-1_run.py`).
 - **실행하면**: <mark>단계 1: 불러온 개수, 단계 2: 알림마다 붙인 정보, 단계 3: VIP 계정 알림 수가 나옵니다.</mark>
 
 ** 할 일**: 두 파일을 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 · 3 을 읽습니다.
@@ -104,7 +104,7 @@ def enrich_incident(incident, users_info, source_ips, trusted_ips):  # 인시던
     return incident                                                  # 맥락이 붙은 인시던트를 리턴한다
 ```
 
-**`day02_2-1_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 파일을 저장하지는 않습니다.
+**`exercise4-1_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 파일을 저장하지는 않습니다.
 
 ```python
 from incident import load_json, INCIDENTS_PATH                 # 월요일 파일의 함수를 불러온다
@@ -157,16 +157,16 @@ print("VIP 계정 알림", vip_count, "건")                        # VIP 계정
 1. **[터미널]** 파일 두 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
    ```bash
    pwd
-   touch enrichment.py day02_2-1_run.py
+   touch enrichment.py exercise4-1_run.py
    ls
    ```
-2. **[VS Code]** `enrichment.py` 1 ~ 6번, `day02_2-1_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「Exercise 2-1 한눈에」를 봅니다.
+2. **[VS Code]** `enrichment.py` 1 ~ 6번, `exercise4-1_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「Exercise 2-1 한눈에」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
-   python day02_2-1_run.py
+   python exercise4-1_run.py
    ```
 4. 출력은 세 단계입니다. 단계 1 은 숫자가 제목 줄에 함께 나옵니다. 단계 2 는 알림 5건이 한 줄씩 나오고 한 줄에는 번호 · 대상 · 재직 · VIP · 접속 IP · 신뢰 IP 가 순서대로 있습니다. 단계 3 은 1줄입니다.
-5. **[보고서]** `day02_am_report.md` 의 `## Exercise 2-1` 아래를 채웁니다.
+5. **[보고서]** Unit 2 의 `## Exercise 2-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 재직 여부가 「퇴사」인 알림과 VIP 가 「예」인 알림의 번호, 단계 3 의 VIP 계정 알림 수를 적어 주세요.
    - (나) [핵심 질문] INC-005 는 맥락이 모두 초기값(`False` · `None`)으로 남았습니다. 그 원인을 `lookup_account` 와 `lookup_source_ip` 의 `if` 조건을 근거로 설명해 주세요. 또 INC-005 의 `employed` 가 `True`(재직)로 판정된다면 어떤 문제가 생기는지도 적어 주세요.
    - (다) [핵심 질문] INC-002 와 INC-004 는 접속 IP 가 같고 둘 다 「신뢰 IP: 예」입니다. 두 알림의 `reasons`(알림을 발생시킨 탐지 규칙 이름 목록)를 비교해 보세요. 접속 IP 가 같은 신뢰 IP 라는 근거만으로 두 알림을 동일하게 처리해도 되는지 적어 주세요.

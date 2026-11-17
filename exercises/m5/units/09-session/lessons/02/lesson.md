@@ -50,7 +50,7 @@ risk_assessment.py   make_risk_table        : 표로 바꾸고 위험 점수 열
                      find_missing_controls  : 있어야 하는 통제가 없으면 (4번) 추가한다 (5번)
                      assess_risks           : 점수가 큰 것부터 정렬하고 (6번), 조치마다 빠진 통제를 찾는다 (7번)
                      make_assessment_lines  : 리스크 평가 문서의 줄 리스트를 만든다 (미리 채움)
-실행 파일            day05_5-1_run.py       : 평가 결과를 받아 (8번), 빠진 통제가 있는 조치를 센다 (9번)
+실행 파일            exercise9-1_run.py       : 평가 결과를 받아 (8번), 빠진 통제가 있는 조치를 센다 (9번)
 ```
 
 > **여기부터 문제입니다.**
@@ -60,7 +60,7 @@ risk_assessment.py   make_risk_table        : 표로 바꾸고 위험 점수 열
 ** 이런 상황이 있습니다**
 
 - **지금은**: <mark>자동 조치마다 위험이 얼마나 큰지, 필요한 통제가 갖춰져 있는지 정리한 리스크 평가 문서가 없습니다</mark>.
-- **만드는 것**: 위험 점수 산출 · 등급 분류 · 통제 갭 분석 · 위험도순 정렬(`risk_assessment.py`), 평가 결과 출력과 리스크 평가 문서 저장(`day05_5-1_run.py`).
+- **만드는 것**: 위험 점수 산출 · 등급 분류 · 통제 갭 분석 · 위험도순 정렬(`risk_assessment.py`), 평가 결과 출력과 리스크 평가 문서 저장(`exercise9-1_run.py`).
 - **실행하면**: <mark style="background:#bde3ff">단계 1: 불러온 자동 조치 수, 단계 2: 점수가 큰 조치부터 등급과 빠진 통제, 단계 3: 바로 보완할 조치 수와 저장한 문서가 나옵니다.</mark>
 
 ** 할 일**: 데이터 파일 하나와 코드 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행한 뒤 문서 파일을 열어 읽습니다.
@@ -168,7 +168,7 @@ def make_assessment_lines(rows):                                            # �
     return lines                                                            # 완성한 줄 리스트를 리턴한다
 ```
 
-**`day05_5-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+**`exercise9-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
 from incident import load_json                                                             # 월요일 파일의 JSON 읽기 함수를 불러온다
@@ -201,19 +201,19 @@ print("--- 단계 3: 바로 보완할 조치", gap_count, "개 ·", DOC_PATH, le
 1. **[터미널]** 파일 세 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
    ```bash
    pwd
-   touch config/automation_risks.json risk_assessment.py day05_5-1_run.py
+   touch config/automation_risks.json risk_assessment.py exercise9-1_run.py
    ls config
    ```
-2. **[VS Code]** `risk_assessment.py` 1 ~ 7번, `day05_5-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 9-1 한눈에」를 봅니다.
+2. **[VS Code]** `risk_assessment.py` 1 ~ 7번, `exercise9-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 9-1 한눈에」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
-   python day05_5-1_run.py
+   python exercise9-1_run.py
    ```
 4. 출력은 세 단계입니다. 제목 줄은 줄 수에 넣지 않습니다.
    - 단계 1 과 단계 3 은 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
    - 단계 2 는 조치 6개가 한 줄씩, 모두 6줄입니다.
 5. **[VS Code]** 왼쪽 목록에서 `risk_assessment.md` 를 열고 `Ctrl+Shift+V`(맥북은 `Cmd+Shift+V`)로 마크다운 미리보기에서 표 모양을 확인합니다. <mark style="background:#bde3ff">표 한 개와 「바로 보완할 조치」 절이 보이면</mark> 됩니다.
-6. **[보고서]** `day05_pm_report.md` 의 `## Exercise 9-1` 아래를 채웁니다.
+6. **[보고서]** Unit 9 의 `## Exercise 9-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 등급이 높음인 조치와 바로 보완할 조치 2개를 적어 주세요.
    - (나) [핵심 질문] 계정 잠금 · 세션 종료 · IP 차단은 점수가 모두 6(높음)인데, 세션 종료만 통제 갭이 있습니다. `config/automation_risks.json` 의 `controls` 를 근거로 그 이유를 적고, 세션 종료에 예방 통제인 승인 게이트가 특히 필요한 이유를 수요일의 되돌리기(교정 통제)와 연결해 적어 주세요.
    - (다) [핵심 질문] 담당자 알림은 영향도가 1인데 등급이 보통입니다. 점수 계산을 근거로 그 이유를 적고, 탐지 통제인 감사 기록이 없으면 사고가 난 뒤 무엇을 확인할 수 없는지 적어 주세요.

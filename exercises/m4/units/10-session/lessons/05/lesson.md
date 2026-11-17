@@ -23,7 +23,7 @@ source:
 
 ```bash
 pwd
-python day06_2-1_run.py
+python exercise10-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -140,7 +140,7 @@ gaeun :
 
 ```bash
 pwd
-python day06_3-1_run.py
+python exercise10-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -172,7 +172,7 @@ python day06_3-1_run.py
 
 ```
 --- 단계 1: 읽은 이벤트 57 개
---- 단계 2: 탐지된 규칙 8 건 → 점수 기록 5 건을 day03_risk_scores.json 에 저장
+--- 단계 2: 탐지된 규칙 8 건 → 점수 기록 5 건을 unit05_risk_scores.json 에 저장
 --- 단계 3: Gemini API 를 활용한 AI 요약 3 건 (실패 0 건)
 dami : 퇴사한 사람의 계정으로 서버에 요청한 기록이 있습니다. 먼저 이 계정이 비활성화되어 있는지 확인하세요.
 seoyeon : 평소와 다른 IP 에서 접속하고 파일을 한꺼번에 많이 내려받은 기록이 있습니다. 먼저 내려받은 파일 목록을 확인하세요.
@@ -226,7 +226,7 @@ low 198.51.100.90 30
 
 ```
 --- 단계 1: 읽은 이벤트 57 개
---- 단계 2: 탐지된 규칙 8 건 → 점수 기록 5 건을 day03_risk_scores.json 에 저장
+--- 단계 2: 탐지된 규칙 8 건 → 점수 기록 5 건을 unit05_risk_scores.json 에 저장
 [LLM 호출 실패] 상태 코드 429
 [LLM 호출 실패] 상태 코드 429
 [LLM 호출 실패] 상태 코드 429
@@ -254,7 +254,7 @@ low 198.51.100.90 30
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day06_3-1_run.py", line 3, in <module>
+  File "…/anomaly_detection/exercise10-2_run.py", line 3, in <module>
   File "…/anomaly_detection/pipeline.py", line 75, in run_pipeline
   File "…/anomaly_detection/pipeline.py", line 17, in analyze_events
   File "…/anomaly_detection/risk_scores.py", line 31, in collect_findings
@@ -267,7 +267,7 @@ TypeError: list indices must be integers or slices, not str
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day06_3-1_run.py", line 3, in <module>
+  File "…/anomaly_detection/exercise10-2_run.py", line 3, in <module>
   File "…/anomaly_detection/pipeline.py", line 74, in run_pipeline
   File "…/anomaly_detection/pipeline.py", line 16, in analyze_events
 NameError: name 'chains' is not defined
@@ -278,7 +278,7 @@ NameError: name 'chains' is not defined
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day06_3-1_run.py", line 3, in <module>
+  File "…/anomaly_detection/exercise10-2_run.py", line 3, in <module>
   File "…/anomaly_detection/pipeline.py", line 86, in run_pipeline
   File "…/anomaly_detection/pipeline.py", line 65, in save_report
 TypeError: Object of type method is not JSON serializable

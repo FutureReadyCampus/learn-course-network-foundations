@@ -23,7 +23,7 @@ source:
 
 ```bash
 pwd
-python day05_5-1_run.py
+python exercise9-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -48,7 +48,7 @@ python day05_5-1_run.py
         missing = find_missing_controls(level, row["controls"])  # 이 등급에 빠진 통제를 찾는다
 ```
 
-`day05_5-1_run.py` 의 8 · 9번입니다.
+`exercise9-1_run.py` 의 8 · 9번입니다.
 
 ```python
 # 8. assess_risks(table) 의 결과를 rows 에 담는다
@@ -165,13 +165,13 @@ NameError: name 'sorted_table' is not defined
 
 ```bash
 pwd
-python day05_6-1_run.py
+python exercise9-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예)
 
-`day4_check.py` 의 1 ~ 7번입니다.
+`unit09_check.py` 의 1 ~ 7번입니다.
 
 ```python
         # 1. number 가 report_text 안에 없으면 (if, not in)
@@ -228,7 +228,7 @@ def check_recovery(results, state, true_positive_users):         # 오탐 처리
     return problems                                              # 문제 문장 리스트를 리턴한다 — 미리 채운 줄
 ```
 
-`day05_6-1_run.py` 의 8 · 9번입니다.
+`exercise9-2_run.py` 의 8 · 9번입니다.
 
 ```python
 # 8. check_report(report_text, tickets, actions) 의 결과를 report_problems 에 담는다
@@ -239,7 +239,7 @@ recovery_problems = check_recovery(results, state, TRUE_POSITIVE_USERS)  # 오�
 
 **결과**
 
-- (가) 출력은 다음과 같습니다. 세 기준 모두 <mark style="background:#bde3ff">**통과**</mark>이고, `day4_checklist.md` 는 <mark style="background:#bde3ff">**5줄**</mark>입니다.
+- (가) 출력은 다음과 같습니다. 세 기준 모두 <mark style="background:#bde3ff">**통과**</mark>이고, `unit09_checklist.md` 는 <mark style="background:#bde3ff">**5줄**</mark>입니다.
 
 ```
 --- 단계 1: 점검 재료 · 티켓 7 장 · 조치 기록 10 건 · 시험 사례 7 개
@@ -247,10 +247,10 @@ recovery_problems = check_recovery(results, state, TRUE_POSITIVE_USERS)  # 오�
 [통과] ① 2 · 3일 차 데이터가 리포트에 빠짐없이 들어갔다 · 문제 0 개
 [통과] ② 위험 점수에 따라 자동 · 승인 필요 · 차단 금지가 맞게 나뉜다 · 문제 0 개
 [통과] ③ 오탐 복구가 30분 안에 빠짐없이 끝났고 진짜 공격의 잠금은 그대로다 · 문제 0 개
---- 단계 3: day4_checklist.md 5 줄 저장
+--- 단계 3: unit09_checklist.md 5 줄 저장
 ```
 
-점검 목록 `day4_checklist.md` 의 내용은 다음과 같습니다.
+점검 목록 `unit09_checklist.md` 의 내용은 다음과 같습니다.
 
 ```
 # Unit 9 마무리 점검 — 2026-11-13(금)

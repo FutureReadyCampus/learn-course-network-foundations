@@ -101,7 +101,7 @@ stale 을 리턴한다
 
 ** 할 일**
 
-1. `review_rules.py` 와 `day04_3-1_run.py` 두 파일을 만들고, `find_stale` 본문을 직접 씁니다.
+1. `review_rules.py` 와 `exercise6-2_run.py` 두 파일을 만들고, `find_stale` 본문을 직접 씁니다.
 2. 실행해서 <mark>규칙에 걸린 권한</mark>(단계 1: 판정)과 <mark>이유별 건수</mark>(단계 2: 점검)를 읽습니다.
 
 **`review_rules.py`**
@@ -137,7 +137,7 @@ def find_stale(access_list, now):                                # 현황 리스
 - 순서는 「`expires` 가 `None` 이 아니다(6번) → 그러면 시각으로 바꾸고(7번) → 지금과 비교한다(8번)」입니다. `None` 일 때는 `strptime` 이 오류를 내므로, 6번 안쪽에서만 시각으로 바꿉니다.
 - 채우기 전에 실행하면 `TypeError: object of type 'NoneType' has no len()` 오류가 납니다. `find_stale` 이 아무것도 리턴하지 않기 때문입니다.
 
-**`day04_3-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. Exercise 6-1의 `build_access_list` 로 현황을 만든 뒤 `find_stale` 로 규칙에 걸린 권한을 찾아 출력합니다.
+**`exercise6-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. Exercise 6-1의 `build_access_list` 로 현황을 만든 뒤 `find_stale` 로 규칙에 걸린 권한을 찾아 출력합니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
@@ -168,20 +168,20 @@ print(counts)                                                    # 이유별 건
    - **방법 1 · VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
      2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `review_rules.py` · `day04_3-1_run.py` 입니다.
+     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `review_rules.py` · `exercise6-2_run.py` 입니다.
      4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
-   - **방법 2 · touch 로 만들기**: 터미널에서 파일마다 한 줄씩 치고, 각각 VS Code 에서 열어 붙여넣기: `touch review_rules.py` → `touch day04_3-1_run.py`
-   - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim review_rules.py` → `vim day04_3-1_run.py` (각각 `i` → 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
+   - **방법 2 · touch 로 만들기**: 터미널에서 파일마다 한 줄씩 치고, 각각 VS Code 에서 열어 붙여넣기: `touch review_rules.py` → `touch exercise6-2_run.py`
+   - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim review_rules.py` → `vim exercise6-2_run.py` (각각 `i` → 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
 2. **[VS Code]** `review_rules.py` 의 `find_stale` 본문을 직접 씁니다. 2.1 의 표와 그림을 보고 씁니다.
 3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 이어서 실행합니다.
    ```bash
    pwd
-   python day04_3-1_run.py
+   python exercise6-2_run.py
    ```
-   - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `day04_3-1_run.py` 실행할 파일
-   - 맥북은 `python3 day04_3-1_run.py` 로 칩니다.
+   - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `exercise6-2_run.py` 실행할 파일
+   - 맥북은 `python3 exercise6-2_run.py` 로 칩니다.
 4. 출력은 두 단계입니다. 단계 1은 `규칙에 걸린 권한 N 건` 한 줄과 걸린 권한, 단계 2는 이유별 건수 딕셔너리 한 줄입니다.
-5. **[보고서]** `day04_am_report.md` 의 `## Exercise 6-2` › `### Exercise Exercise 5-2` 아래를 채웁니다.
+5. **[보고서]** Unit 6 의 `## Exercise 6-2` › `### Exercise Exercise 5-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 규칙에 걸린 권한이 이유별로 몇 건인지 적어 주세요.
    - (나) [핵심 질문] 퇴사한 계정과 만료된 예외는 파일에 적힌 사실로 걸러 냈습니다. 이 규칙으로는 걸러 낼 수 없지만 필요 없을 수 있는 권한의 예를 하나 들고, 그것을 찾으려면 어떤 정보가 더 필요한지 적어 주세요.
    - (다) [핵심 질문] 규칙에 걸린 7건을 내일 회수한다면 어떤 것부터 회수할까요? 출력의 이유(퇴사한 계정 · 만료된 예외)를 보고 기준을 하나 정해, 그 기준으로 이유를 적어 주세요.

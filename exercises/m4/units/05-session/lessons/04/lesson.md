@@ -23,9 +23,9 @@ source:
 
 ```bash
 pwd
-python day03_5-1_run.py
+python exercise5-1_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day03_5-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise5-1_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 네 함수입니다.
 
@@ -125,7 +125,7 @@ dtype: int64
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day03_5-1_run.py", line 4, in <module>
+  File "…/anomaly_detection/exercise5-1_run.py", line 4, in <module>
     events = add_minute_column(events)  # 시각에서 초를 버린 minute 열을 붙인다
   File "…/anomaly_detection/traffic_detection.py", line 23, in add_minute_column
     minutes = times.floor("min")  # .dt 를 빼먹었다
@@ -147,9 +147,9 @@ AttributeError: 'Series' object has no attribute 'floor'
 
 ```bash
 pwd
-python day03_6-1_run.py
+python exercise5-2_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day03_6-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise5-2_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 네 함수입니다.
 
@@ -231,7 +231,7 @@ python day03_6-1_run.py
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day03_6-1_run.py", line 23, in <module>
+  File "…/anomaly_detection/exercise5-2_run.py", line 23, in <module>
     saved_count = save_alerts(all_alerts, ALERTS_PATH)  # 모은 알림을 파일에 저장하고 저장한 건수를 받는다
   File "…/anomaly_detection/alerts.py", line 54, in save_alerts
     json.dump(alerts, file, ensure_ascii=False, indent=2)  # 한글은 그대로, 들여쓰기를 해서 파일에 쓴다

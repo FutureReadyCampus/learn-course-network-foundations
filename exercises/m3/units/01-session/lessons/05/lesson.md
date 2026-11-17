@@ -71,7 +71,7 @@ python -m json.tool config/roles.json
  **터미널에 입력합니다.**
 
 ```bash
-python day01_6-1_run.py
+python exercise1-2_run.py
 ```
 
 **채운 코드** (한 예)
@@ -137,7 +137,7 @@ tester SALES QUERY -> False 역할이 없음
  **터미널에 입력합니다.**
 
 ```bash
-python day01_7-1_audit.py
+python exercise1-3_audit.py
 ```
 
 **채운 코드** (한 예)

@@ -165,7 +165,7 @@ True
 
 ** 할 일**
 
-1. `config/access_log.json` · `review_unused.py` · `day04_4-1_run.py` 세 파일을 만들고, `find_unused` 본문을 직접 씁니다.
+1. `config/access_log.json` · `review_unused.py` · `exercise6-3_run.py` 세 파일을 만들고, `find_unused` 본문을 직접 씁니다.
 2. 실행해서 <mark>안 쓴 일 수</mark>(단계 1: 현황)와 <mark>90일 넘게 안 쓴 후보</mark>(단계 2: 판정)를 읽습니다.
 
 **`config/access_log.json`** — 그대로 붙여 넣습니다. 사용 이력입니다. `access_control` 안의 `config` 폴더에 만듭니다.
@@ -244,7 +244,7 @@ def find_unused(access_list, last_used_map, now, limit_days):    # 현황 · 마
 - `used_text is None` 은 「값이 `None` 인가」를 묻는 것입니다. `.get(key)` 는 키가 없으면 `None` 을 주므로 `None` 이면 사용 이력이 없다는 뜻입니다. 그 경우에는 일 수를 계산할 수 없으니, `days_since` 는 사용 이력이 있을 때(`elif`)만 부릅니다. `elif` 는 Exercise 6-2의 `find_stale` 에서 쓴 것과 같습니다.
 - 채우기 전에 실행하면 `TypeError: object of type 'NoneType' has no len()` 오류가 납니다. `find_unused` 가 아무것도 리턴하지 않기 때문입니다.
 
-**`day04_4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 현황을 만들고, Exercise 6-2의 `find_stale` 에 걸린 권한을 뺀 뒤, 남은 권한이 며칠째 안 쓰였는지 출력하고 `find_unused` 로 후보를 찾습니다.
+**`exercise6-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 현황을 만들고, Exercise 6-2의 `find_stale` 에 걸린 권한을 뺀 뒤, 남은 권한이 며칠째 안 쓰였는지 출력하고 `find_unused` 로 후보를 찾습니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
@@ -292,10 +292,10 @@ for entry in unused:                                             # 후보를 한
    - **방법 1 · VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
      2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `config/access_log.json` · `review_unused.py` · `day04_4-1_run.py` 입니다. `access_control` 폴더를 선택한 채로 `config/access_log.json` 을 입력하면 `config` 폴더 안에 만들어집니다.
+     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `config/access_log.json` · `review_unused.py` · `exercise6-3_run.py` 입니다. `access_control` 폴더를 선택한 채로 `config/access_log.json` 을 입력하면 `config` 폴더 안에 만들어집니다.
      4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
-   - **방법 2 · touch 로 만들기**: 터미널의 위치가 `access_control` 인지 `pwd` 로 먼저 확인합니다. 파일마다 한 줄씩 치고, 각각 VS Code 에서 열어 붙여넣기: `touch config/access_log.json` → `touch review_unused.py` → `touch day04_4-1_run.py`
-   - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim config/access_log.json` → `vim review_unused.py` → `vim day04_4-1_run.py` (각각 `i` → 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
+   - **방법 2 · touch 로 만들기**: 터미널의 위치가 `access_control` 인지 `pwd` 로 먼저 확인합니다. 파일마다 한 줄씩 치고, 각각 VS Code 에서 열어 붙여넣기: `touch config/access_log.json` → `touch review_unused.py` → `touch exercise6-3_run.py`
+   - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim config/access_log.json` → `vim review_unused.py` → `vim exercise6-3_run.py` (각각 `i` → 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
 2. **[터미널]** 파일을 만든 뒤 `ls config` 를 쳐서 `access_log.json` 이 `users.json` 과 같은 `config` 폴더 안에 있는지 확인합니다.
    - `config` 안에 또 `config` 가 생겼다면 위치가 틀린 것이니 옮깁니다.
    - 붙여 넣은 내용이 맞는지 `python -m json.tool config/access_log.json` 으로 확인합니다(맥북은 `python3 -m json.tool …`). 여러 줄로 정리되어 출력되면 정상이고, 오류가 나면 붙여 넣을 때 글자가 빠진 것입니다. 깨진 채 두면 사용 이력을 못 읽어 모든 권한이 「이력 없음」으로 나옵니다.
@@ -303,12 +303,12 @@ for entry in unused:                                             # 후보를 한
 4. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 이어서 실행합니다.
    ```bash
    pwd
-   python day04_4-1_run.py
+   python exercise6-3_run.py
    ```
-   - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `day04_4-1_run.py` 실행할 파일
-   - 맥북은 `python3 day04_4-1_run.py` 로 칩니다.
+   - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `exercise6-3_run.py` 실행할 파일
+   - 맥북은 `python3 exercise6-3_run.py` 로 칩니다.
 5. 출력은 두 단계입니다. 단계 1은 규칙에 안 걸린 권한 일곱 건의 안 쓴 일 수(일곱 줄), 단계 2는 90일 넘게 안 쓴 후보입니다.
-6. **[보고서]** `day04_am_report.md` 의 `## Exercise 6-3` › `### Exercise Exercise 5-2` 아래를 채웁니다.
+6. **[보고서]** Unit 6 의 `## Exercise 6-3` › `### Exercise Exercise 5-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 90일 넘게 안 쓴 후보가 몇 건인지와 후보마다 며칠째 안 쓰였는지 적어 주세요.
      - 며칠째인지는 단계 1 출력에서 후보와 같은 사용자 · 권한의 줄을 찾아 적습니다. 사용 이력이 없는 후보는 단계 1 에 「사용 이력 없음」으로 나옵니다.
    - (나) [핵심 질문] junho 의 `SETTLE:QUERY` 는 마지막 사용이 90일 전이라 후보에서 빠졌고, 같은 junho 의 `SALES:QUERY` 는 91일 전이라 후보에 들어갔습니다. 하루 차이로 나누는 기준은 합리적일까요? 경계 부근에서 담당자가 추가로 확인할 것도 적어 주세요.
@@ -329,14 +329,14 @@ for entry in unused:                                             # 후보를 한
 
 ## 오전 마무리 — 보고서 2 · 3 · Exercise 6-3 칸 확인
 
-`day04_am_report.md` 의 2 · 3 · Exercise 6-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. `access_control` 폴더에 오늘 만든 파일이 있는지 확인합니다.
+Unit 6 의 2 · 3 · Exercise 6-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. `access_control` 폴더에 오늘 만든 파일이 있는지 확인합니다.
 
 ```bash
 ls
 ls config
 ```
 
-- `review_list.py` · `review_rules.py` · `review_unused.py` · `day04_2-1_run.py` · `day04_3-1_run.py` · `day04_4-1_run.py` 가 보여야 합니다. `config` 안에는 `access_log.json` 이 새로 보여야 합니다.
+- `review_list.py` · `review_rules.py` · `review_unused.py` · `exercise6-1_run.py` · `exercise6-2_run.py` · `exercise6-3_run.py` 가 보여야 합니다. `config` 안에는 `access_log.json` 이 새로 보여야 합니다.
 
 오후에는 오늘 오전에 찾은 결과를 합쳐 **과다권한 종합 리포트**를 만들고 회수하지 않을 권한을 가려냅니다. 올리기(git)는 오후 Exercise 5-2 마지막에 한 번에 합니다.
 

@@ -27,17 +27,17 @@ source:
 - 오늘 새로 배우는 문법은 Exercise 10-1의 문자열 이어 붙이기 `"구분 글자".join(리스트)` 와 Exercise 10-2의 `Series.to_dict()` 두 개입니다. 나머지는 이번 주에 쓴 문법(f-문자열 · `if` · `and` · 딕셔너리 · `value_counts()` · `json.dump`)을 다시 씁니다.
 - <mark>AI 가 쓰는 요약 문장은 실행할 때마다 조금씩 달라집니다.</mark> 이 안내의 출력 예와 문장이 달라도 정상입니다. 점수와 등급과 건수는 같아야 합니다.
 - [주의] <mark style="background:#ffc4d6">**무료 Gemini 키는 1분에 15번까지만 호출할 수 있습니다.**</mark> 오늘은 Exercise 10-1 실행에 3번, Exercise 10-2 실행마다 3번 호출합니다. `[LLM 호출 실패] 상태 코드 429` 가 나오면 <mark>1분 기다린 뒤 다시 실행</mark>합니다. 실패해도 오늘 프로그램은 멈추지 않도록 만듭니다.
-- [주의] <mark>앞 수업(특히 11/5)에 결석했거나 파일이 없는 사람은 아래 표를 보고, 없는 파일만 「복구 파일 모음」(`day06_am_recovery_files.md`)으로 만듭니다.</mark> 이미 다 가진 사람은 그 파일을 받지 않아도 됩니다.
+- [주의] <mark>앞 수업(특히 11/5)에 결석했거나 파일이 없는 사람은 아래 표를 보고, 없는 파일만 「복구 파일 모음」(`unit10_recovery_files.md`)으로 만듭니다.</mark> 이미 다 가진 사람은 그 파일을 받지 않아도 됩니다.
 - 보고서에서 [핵심 질문] 가 붙은 질문은 이 Exercise에서 꼭 알아야 할 핵심 질문이고, <mark>내 출력이나 샘플 데이터의 값을 근거로 이유까지 서술합니다</mark>.
 - 점수 기준(high 60 이상 · mid 35 이상)과 AI 에게 요약시킬 대상 수(3명)는 **고정**하고, <mark>값을 바꿔 가며 비교하지 않습니다</mark>.
 
- **오늘 불러 쓰는 이전 파일**이 있습니다. 아래 표에서 <mark>`event_summary.py` 만 오늘 Exercise 10-1에 만들고, 나머지는 모두 앞 수업이나 1과목에서 만든 파일</mark>입니다. <mark>없는 파일은 「복구 파일 모음」(`day06_am_recovery_files.md`)으로 만듭니다.</mark> 이 파일은 앞 수업 파일이 없는 사람만 받습니다.
+ **오늘 불러 쓰는 이전 파일**이 있습니다. 아래 표에서 <mark>`event_summary.py` 만 오늘 Exercise 10-1에 만들고, 나머지는 모두 앞 수업이나 1과목에서 만든 파일</mark>입니다. <mark>없는 파일은 「복구 파일 모음」(`unit10_recovery_files.md`)으로 만듭니다.</mark> 이 파일은 앞 수업 파일이 없는 사람만 받습니다.
 
 | 파일 | 만든 곳 | 쓰는 곳 | 없거나 완성하지 못했을 때 |
 |---|---|---|---|
 | `llm_client.py` · `.env`(API 키) | 1과목(`agent_core` 폴더와 `security-agent-toolkit` 폴더) | 2 · Exercise 10-2 | 아래 시작하기 3번의 `cp` 명령으로 복사합니다. `agent_core` 에도 없으면 복구 파일 모음의 `llm_client.py` 로 만듭니다 |
-| `day03_risk_scores.json` | 11/5 오후 Exercise 9-2 | Exercise 10-1가 읽습니다 | 아래 시작하기 5번의 내용으로 파일을 만듭니다(항상 이 내용으로 덮어씁니다) |
-| `normalized_events.json` · `rbac.py` · `config/users.json` · `config/roles.json` | 11/5 오전 안내(`day04_am_suspicious_logs.md`) 시작하기 6번 | Exercise 10-2 | 복구 파일 모음의 내용으로 파일을 만듭니다 |
+| `unit05_risk_scores.json` | 11/5 오후 Exercise 9-2 | Exercise 10-1가 읽습니다 | 아래 시작하기 5번의 내용으로 파일을 만듭니다(항상 이 내용으로 덮어씁니다) |
+| `normalized_events.json` · `rbac.py` · `config/users.json` · `config/roles.json` | 11/5 오전 안내(Unit 6) 시작하기 6번 | Exercise 10-2 | 복구 파일 모음의 내용으로 파일을 만듭니다 |
 | `access_detection.py` · `saas_detection.py` · `malicious_detection.py` | 11/5 오전 2 · 3 · Exercise 10-3 | Exercise 10-2 | 복구 파일 모음의 완성본으로 파일을 만듭니다 |
 | `correlation.py` · `risk_scores.py` | 11/5 오후 5 · Exercise 9-2 | Exercise 10-2 | 복구 파일 모음의 완성본으로 파일을 만듭니다 |
 | `event_summary.py` | 오늘 Exercise 10-1 Exercise 10-1 | Exercise 10-2 `pipeline.py` 가 불러옵니다 | 이 안내 Exercise 10-1 의 코드 칸에 「Exercise 10-1 정답」의 「채운 코드」를 넣어 완성합니다 |
@@ -59,15 +59,15 @@ source:
    python -c "from llm_client import read_api_key; print(read_api_key() is not None)"
    ```
    - 명령 풀이: `cp 원본 대상` 파일 복사(`..` 은 한 단계 위 폴더, `.` 은 지금 폴더) · `ls 파일이름` 그 파일이 있는지 확인
-4. **오늘 받은 파일 두 개**(`day06_am_ai_summary_pipeline.md`, `day06_am_report.md`)를 <mark>`다운로드` 폴더에서 `anomaly_detection` 폴더로 끌어다 놓습니다</mark>(안 되면 **File › Save As…**). 이미 있으면 건너뜁니다. 위 표에서 없는 파일이 있는 사람은 `day06_am_recovery_files.md` 도 같은 방법으로 받습니다. 그리고 **[VS Code]** 보고서 맨 위 제목 `(이름 · 2026-11-09(월))` 의 <mark>`이름` 을 내 이름으로 바꿉니다</mark>. 안내 파일은 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다.
+4. **오늘 받은 파일 두 개**(Unit 10, Unit 10)를 <mark>`다운로드` 폴더에서 `anomaly_detection` 폴더로 끌어다 놓습니다</mark>(안 되면 **File › Save As…**). 이미 있으면 건너뜁니다. 위 표에서 없는 파일이 있는 사람은 `unit10_recovery_files.md` 도 같은 방법으로 받습니다. 그리고 **[VS Code]** 보고서 맨 위 제목 `(이름 · 2026-11-09(월))` 의 <mark>`이름` 을 내 이름으로 바꿉니다</mark>. 안내 파일은 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다.
 5. **[터미널]** Exercise 10-1가 읽을 점수 파일을 만들고 **[VS Code]** 에서 열어 아래 내용을 그대로 붙여 넣습니다. <mark>같은 이름의 파일이 이미 있으면 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다).
    ```bash
-   touch day03_risk_scores.json
-   ls day03_risk_scores.json
+   touch unit05_risk_scores.json
+   ls unit05_risk_scores.json
    ```
    - 명령 풀이: `touch 파일이름` 빈 파일 만들기 · `ls 파일이름` 그 파일이 있는지 확인
 
-**`day03_risk_scores.json`** — 11/5 오후에 저장한 대상별 점수 기록 5건입니다. `entity` 는 점수를 매긴 대상(사용자 또는 IP), `score` 는 점수, `grade` 는 등급, `reasons` 는 탐지된 규칙 이름입니다. 점수가 높은 순서로 저장돼 있습니다.
+**`unit05_risk_scores.json`** — 11/5 오후에 저장한 대상별 점수 기록 5건입니다. `entity` 는 점수를 매긴 대상(사용자 또는 IP), `score` 는 점수, `grade` 는 등급, `reasons` 는 탐지된 규칙 이름입니다. 점수가 높은 순서로 저장돼 있습니다.
 
 ```
 [
@@ -119,7 +119,7 @@ source:
 
 6. **[터미널]** 파일이 정상인지 확인합니다. <mark>`5` 가 나오고, 아래 두 줄에서 오류가 나오지 않으면</mark> 됩니다. 오류가 나면 그 줄의 파일이 없거나 이름이 다른 것이니 복구 파일 모음으로 만듭니다.
    ```bash
-   python -c "import json; print(len(json.load(open('day03_risk_scores.json', encoding='utf-8'))))"
+   python -c "import json; print(len(json.load(open('unit05_risk_scores.json', encoding='utf-8'))))"
    python -c "from access_detection import load_events, EVENTS_PATH; from saas_detection import pick_saas; from malicious_detection import pick_web_failures"
    python -c "from correlation import find_chains_in_events; from risk_scores import collect_findings, save_records"
    ```
@@ -218,7 +218,7 @@ source:
 ## 오류가 나면
 
 - 먼저 `pwd` 가 `anomaly_detection` 으로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
-- `ModuleNotFoundError: No module named 'llm_client'`(또는 `correlation` · `risk_scores` · `access_detection` 등): <mark>그 파일이 `anomaly_detection` 폴더 바로 아래에 없다는 뜻</mark>입니다. 위 표의 「없거나 완성하지 못했을 때」를 따라 복구 파일 모음(`day06_am_recovery_files.md`)으로 그 파일을 만듭니다.
+- `ModuleNotFoundError: No module named 'llm_client'`(또는 `correlation` · `risk_scores` · `access_detection` 등): <mark>그 파일이 `anomaly_detection` 폴더 바로 아래에 없다는 뜻</mark>입니다. 위 표의 「없거나 완성하지 못했을 때」를 따라 복구 파일 모음(`unit10_recovery_files.md`)으로 그 파일을 만듭니다.
 - `TypeError: expected str, bytes or os.PathLike object, not NoneType`: <mark>`llm_client.py` 가 `.env` 파일을 찾지 못한 것</mark>입니다. 위 「.env 와 API 키 다시 받기」를 따릅니다. API 키는 화면이나 AI 질문에 붙여 넣지 않습니다.
 - `ModuleNotFoundError: No module named 'requests'`: 새 PC 의 가상환경에 `requests` 가 없는 것입니다. 가상환경을 활성화한 뒤 `python -m pip install requests` 를 칩니다.
 - `[LLM 호출 실패] 상태 코드 429`: 1분에 15번을 넘었다는 뜻입니다. <mark>1분 기다린 뒤 다시 실행</mark>합니다. 요약 자리에 `(요약 실패 — 점수와 이유를 직접 확인)` 이 나와도 오늘 프로그램이 일부러 그렇게 만든 것이라 정상입니다.

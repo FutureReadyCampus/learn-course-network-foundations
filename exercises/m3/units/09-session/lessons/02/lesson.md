@@ -153,7 +153,7 @@ False
 
 ** 할 일**
 
-1. `config/conditions.json` · `conditional.py` · `day05_5-1_run.py` 세 파일을 만들고, `is_work_time` · `is_allowed_network` · `evaluate_conditional` 에서 직접 쓰는 곳 세 군데를 씁니다.
+1. `config/conditions.json` · `conditional.py` · `exercise9-1_run.py` 세 파일을 만들고, `is_work_time` · `is_allowed_network` · `evaluate_conditional` 에서 직접 쓰는 곳 세 군데를 씁니다.
 2. 실행해서 <mark>요청 여덟 건의 판정</mark>(단계 1: 판정)과 <mark>조건 파일에 적힌 조건</mark>(단계 2: 확인)을 읽습니다.
 
 **`config/conditions.json`** — 그대로 붙여 넣습니다. 권한별 조건입니다. `access_control` 안의 `config` 폴더에 만듭니다.
@@ -227,7 +227,7 @@ def evaluate_conditional(user, resource, action, network, now, rules):   # 사�
 - 6번 · 8번의 `not` 은 함수가 리턴한 참과 거짓을 뒤집습니다.
 - 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다(파이썬 버전에 따라 뒤에 `after 'if' statement on line …` 가 붙습니다). `evaluate_conditional` 의 `if` 아래에 실행할 줄이 아직 없기 때문입니다. `is_work_time` · `is_allowed_network` 는 채우기 전에 아무것도 리턴하지 않습니다.
 
-**`day05_5-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 요청 여덟 건을 시각까지 정해 판정하고, 조건 파일의 조건을 출력합니다.
+**`exercise9-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 요청 여덟 건을 시각까지 정해 판정하고, 조건 파일의 조건을 출력합니다.
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
@@ -272,7 +272,7 @@ for rule in RULES:                                               # 조건을 하
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `config/conditions.json` · `conditional.py` · `day05_5-1_run.py` 를 만들어 위 코드를 붙여 넣습니다. 만드는 법은 둘 중 하나를 고릅니다.
+1. **[VS Code 또는 터미널]** 파일 `config/conditions.json` · `conditional.py` · `exercise9-1_run.py` 를 만들어 위 코드를 붙여 넣습니다. 만드는 법은 둘 중 하나를 고릅니다.
    - VS Code: `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력합니다(`config/…` 이름은 이 폴더를 선택한 채 입력하면 `config` 폴더 안에 만들어집니다).
    - 터미널: `pwd` 로 `access_control` 인지 확인하고 `touch 이름` 으로 만든 뒤 VS Code 에서 열어 붙여 넣습니다(`vim 이름` → `i` → 붙여넣기 → `Esc` → `:wq` 도 됩니다).
 2. **[터미널]** `ls config` 로 `conditions.json` 이 `users.json` 과 같은 `config` 폴더에 있는지 보고, `python -m json.tool config/conditions.json`(맥북은 `python3`)로 내용이 정상인지 확인합니다.
@@ -281,10 +281,10 @@ for rule in RULES:                                               # 조건을 하
 4. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python day05_5-1_run.py
+   python exercise9-1_run.py
    ```
 5. 출력은 두 단계입니다. 단계 1은 `요청 8 건` 줄과 판정 여덟 줄, 단계 2는 조건 세 줄입니다.
-6. **[보고서]** `day05_pm_report.md` 의 `## Exercise 9-1` › `### Exercise 9-1` 아래를 채웁니다.
+6. **[보고서]** Unit 9 의 `## Exercise 9-1` › `### Exercise 9-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 허용된 요청과 거부된 요청이 각각 몇 건인지, 조건 때문에 거부된 요청이 몇 건이고 몇 번인지 적어 주세요.
    - (나) [핵심 질문] 5번 요청(seoyeon, 외부, 22시)은 업무 시간도 접속 위치도 어긋나는데 거부 이유는 「업무 시간 밖」 하나만 나옵니다. 거부 이유를 하나만 알려 주는 것과 어긋난 조건을 모두 알려 주는 것 중, 요청한 사람이 정상 사용자인 경우와 계정을 가로챈 사람인 경우 각각 어느 쪽이 나은지, 판정 결과를 점검하는 관제 담당자에게는 어느 쪽이 나은지 이유와 함께 적어 주세요.
    - (다) [핵심 질문] seoyeon 의 계정을 다른 사람이 새벽 2시에 외부에서 쓰려 한다고 해 봅시다. 계정에 `SALES:CHANGE` 역할 권한이 있는데도 이 요청을 거부해야 하는 이유와, 로그인할 때 한 번만 확인하고 그 뒤 요청은 확인하지 않았다면 어떻게 되었을지 적어 주세요.

@@ -48,7 +48,7 @@ undo_actions.py   undo_account         : 계정 잠금 기록을 계정 해제�
 rollback.py       find_incident_records: 그 인시던트(알림 한 건)의 기록만 모은다 (3 · 4번)
                   should_undo          : 조치 전과 후가 같으면 되돌리지 않는다 (5 · 6번). 확인 실패와 되돌릴 수 없는 조치는 미리 채운 줄이 되돌리기 대상에서 뺀다
                   rollback_incident    : 되돌릴 수 있는 기록은 되돌리고 (7 · 8번), 되돌릴 수 없는 조치는 따로 기록한다 (미리 채움)
-실행 파일         day03_5-1_run.py     : Exercise 5-1가 저장한 기록을 읽는다 (9번)
+실행 파일         exercise7-1_run.py     : Exercise 5-1가 저장한 기록을 읽는다 (9번)
 ```
 
 > **여기부터 문제입니다.**
@@ -58,7 +58,7 @@ rollback.py       find_incident_records: 그 인시던트(알림 한 건)의 기
 ** 이런 상황이 있습니다**
 
 - **지금은**: <mark>오탐이 확인돼도 어느 것이 자동 조치인지 구분하는 기능이 없어서, 사람이 추측으로 풀고 있습니다</mark>.
-- **만드는 것**: 계정 · IP 되돌리기(`undo_actions.py`), 기록 찾기 · 되돌릴지 정하기 · 되돌리기(`rollback.py`), 기록 읽기(`day03_5-1_run.py`).
+- **만드는 것**: 계정 · IP 되돌리기(`undo_actions.py`), 기록 찾기 · 되돌릴지 정하기 · 되돌리기(`rollback.py`), 기록 읽기(`exercise7-1_run.py`).
 - **실행하면**: <mark>단계 1: Exercise 5-1가 남긴 파일(그리고 이 실행이 새로 차단한 IP), 단계 2 ~ 4: 인시던트(incident, 인시던트: 알림 한 건을 처리하는 단위) 세 건의 되돌리기 결과, 단계 5: 되돌린 뒤 상태가 나옵니다.</mark>
 
 ** 할 일**: 파일 세 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 ~ 5 를 읽습니다.
@@ -144,7 +144,7 @@ def rollback_incident(incident_id, log, state):                              # �
     return records                                                           # 되돌리기 기록 리스트를 리턴한다
 ```
 
-**`day03_5-1_run.py`** — 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이 실행 파일은 먼저 INC-005 의 IP 차단을 새로 실행해 기록에 추가한 뒤, 그것을 되돌립니다.
+**`exercise7-1_run.py`** — 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이 실행 파일은 먼저 INC-005 의 IP 차단을 새로 실행해 기록에 추가한 뒤, 그것을 되돌립니다.
 
 ```python
 from incident import load_json                                                     # 월요일 파일의 함수를 불러온다
@@ -177,16 +177,16 @@ print("차단한 IP:", state["blocked_ips"])                                    
 1. **[터미널]** 파일 세 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
    ```bash
    pwd
-   touch undo_actions.py rollback.py day03_5-1_run.py
+   touch undo_actions.py rollback.py exercise7-1_run.py
    ls
    ```
-2. **[VS Code]** `undo_actions.py` 1 · 2번, `rollback.py` 3 ~ 8번, `day03_5-1_run.py` 9번을 씁니다. 막히면 아래 「Exercise 5-2 한눈에」를 봅니다.
+2. **[VS Code]** `undo_actions.py` 1 · 2번, `rollback.py` 3 ~ 8번, `exercise7-1_run.py` 9번을 씁니다. 막히면 아래 「Exercise 5-2 한눈에」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
-   python day03_5-1_run.py
+   python exercise7-1_run.py
    ```
 4. 출력은 다섯 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 3줄, 단계 2 는 2줄, 단계 3 은 1줄, 단계 4 는 1줄, 단계 5 는 2줄입니다.
-5. **[보고서]** `day03_pm_report.md` 의 `## Exercise 5-2` 아래를 채웁니다.
+5. **[보고서]** Unit 5 의 `## Exercise 5-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣어 주세요. 그리고 단계 5 의 잠긴 계정과 차단한 IP 를 적어 주세요.
    - (나) [핵심 질문] INC-006 의 `junho` 는 단계 3 에서 계정이 해제되지 않았고 단계 5 에도 잠겨 있습니다. Exercise 5-1 기록의 `before` 와 `after` 를 근거로 이유를 적고, `should_undo` 의 5 · 6번이 없었다면 어떤 일이 생겼을지 적어 주세요.
    - (다) [핵심 질문] 단계 2 의 `되돌리기 불가` 줄이 나온 이유를 적어 주세요. 또 세션 종료를 기록에 남기지 않고 「모두 원래대로」라고만 보고하면 어떤 문제가 생길지 적어 주세요.

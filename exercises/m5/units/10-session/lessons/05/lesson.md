@@ -23,7 +23,7 @@ source:
 
 ```bash
 pwd
-python day06_2-1_run.py
+python exercise10-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -135,7 +135,7 @@ def run_all(alerts, context):                           # 알림 리스트와 �
     return results                                      # 결과 기록 리스트를 리턴한다 — 미리 채운 줄
 ```
 
-`day06_2-1_run.py` 의 9번입니다.
+`exercise10-1_run.py` 의 9번입니다.
 
 ```python
     # 9. counts[outcome] 에 counts[outcome] + 1 을 저장한다 (1 늘린다)
@@ -268,7 +268,7 @@ SyntaxError: invalid syntax
 
 ```bash
 pwd
-python day06_3-1_run.py
+python exercise10-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -359,7 +359,7 @@ def summarize(results):                                        # 엔진 결과 �
     return summary                                             # 요약을 리턴한다 — 미리 채운 줄
 ```
 
-`day06_3-1_run.py` 의 9번입니다.
+`exercise10-2_run.py` 의 9번입니다.
 
 ```python
 # 9. run_all(alerts, context) 의 결과를 results 에 저장한다
@@ -481,7 +481,7 @@ NameError: name 'results' is not defined
 
 ```bash
 pwd
-python day06_4-1_run.py
+python exercise10-3_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -530,7 +530,7 @@ def judge(violations):    # 위반한 알림 번호 리스트를 받는 함수
     return "FAIL"         # 위반이 있으면 FAIL 을 리턴한다 — 미리 채운 줄
 ```
 
-`day06_4-1_run.py` 의 7 ~ 9번입니다. 8번 아래 미리 채운 `fail_count` 줄이 `if` 안쪽입니다.
+`exercise10-3_run.py` 의 7 ~ 9번입니다. 8번 아래 미리 채운 `fail_count` 줄이 `if` 안쪽입니다.
 
 ```python
     # 7. load_json(log_path) 의 결과를 results 에 저장한다

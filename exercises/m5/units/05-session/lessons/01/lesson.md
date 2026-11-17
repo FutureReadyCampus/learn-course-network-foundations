@@ -33,9 +33,9 @@ source:
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
-   - 오전 Exercise 5-1 실행 파일: `python day03_4-1_run.py` (맥북은 `python3`)
-3. 오늘 받은 파일 두 개(`day03_pm_rollback_drill.md`, `day03_pm_report.md`)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
-4. **[터미널]** Exercise 5-1가 남긴 파일이 정상인지 확인합니다(맥북은 `python3`). <mark>`['junho', 'dami'] 5` 가 나와야</mark> 합니다. `['junho'] 4` 가 나오면 오전 Exercise 5-1 실행 파일(`day03_4-1_run.py`)을 아직 한 번도 실행하지 않은 것입니다.
+   - 오전 Exercise 5-1 실행 파일: `python exercise6-3_run.py` (맥북은 `python3`)
+3. 오늘 받은 파일 두 개(Unit 5, Unit 5)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
+4. **[터미널]** Exercise 5-1가 남긴 파일이 정상인지 확인합니다(맥북은 `python3`). <mark>`['junho', 'dami'] 5` 가 나와야</mark> 합니다. `['junho'] 4` 가 나오면 오전 Exercise 5-1 실행 파일(`exercise6-3_run.py`)을 아직 한 번도 실행하지 않은 것입니다.
    ```bash
    python -c "import json; print(json.load(open('containment_state.json', encoding='utf-8'))['locked_users'], len(json.load(open('containment_log.json', encoding='utf-8'))))"
    ```

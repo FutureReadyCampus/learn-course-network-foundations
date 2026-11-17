@@ -101,7 +101,7 @@ LOG = [                                                          # 10/19(월) �
 확인할 두 가지: ① 막아야 할 것이 막히나  ② 정상 업무가 막히지 않나
 
 +--------------------+
-| day01_7-1_audit.py |
+| exercise1-3_audit.py |
 +--------------------+
    |
    +--> 단계 1 (기록마다 다시 판정): 판정 --> 허용이면 건수 +1 · 쓴 권한 모음 / 거부면 건수 +1 · [거부] 출력
@@ -173,12 +173,12 @@ for role, role_permissions in ROLES.items():                      # 역할 이�
 
 ** 할 일**
 
-1. `access_log.py` 와 `day01_7-1_audit.py` 를 만듭니다(3.1).
-2. `day01_7-1_audit.py` 의 <mark>단계 1: 재판정 반복문</mark>(건수 세기 · 거부 출력 · 쓴 권한 모으기)과 <mark>단계 2: 미사용 점검</mark>(쓰이지 않은 권한 출력)를 직접 씁니다.
+1. `access_log.py` 와 `exercise1-3_audit.py` 를 만듭니다(3.1).
+2. `exercise1-3_audit.py` 의 <mark>단계 1: 재판정 반복문</mark>(건수 세기 · 거부 출력 · 쓴 권한 모으기)과 <mark>단계 2: 미사용 점검</mark>(쓰이지 않은 권한 출력)를 직접 씁니다.
 3. 실행해서 <mark>거부된 기록</mark>, <mark>사용자별 허용 · 거부 건수</mark>, <mark>쓰이지 않은 권한</mark>을 읽습니다.
 4. 쓰이지 않은 권한 중 <mark>줄일 것과 남길 것</mark>을 이유와 함께 나눕니다.
 
-**`day01_7-1_audit.py`**
+**`exercise1-3_audit.py`**
 
 ```python
 from rbac import check_permission, ROLES, USERS                  # 판정 함수와 역할 · 사용자 정보를 불러온다
@@ -238,25 +238,25 @@ for … in ROLES.items():        # 단계 2: 들여쓰기 없음
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치를 보여 줌
    - 결과가 `…/access_control` 로 끝나지 않으면 `cd access_control` 로 들어갑니다(`security-agent-toolkit` 에서 시작했다면).
-2. **[VS Code 또는 터미널]** `access_log.py` 와 `day01_7-1_audit.py` 를 만들고 각각 붙여 넣습니다. 파일마다 아래 세 가지 방법 중 **하나만** 고릅니다.
+2. **[VS Code 또는 터미널]** `access_log.py` 와 `exercise1-3_audit.py` 를 만들고 각각 붙여 넣습니다. 파일마다 아래 세 가지 방법 중 **하나만** 고릅니다.
    - **방법 1 · VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
      2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `access_log.py` · `day01_7-1_audit.py` 입니다.
+     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `access_log.py` · `exercise1-3_audit.py` 입니다.
      4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
-   - **방법 2 · touch 로 만들기**: 터미널에서 파일마다 한 줄씩 치고, 각각 VS Code 에서 열어 코드 붙여넣기: `touch access_log.py` → `touch day01_7-1_audit.py`
-   - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim access_log.py` → `vim day01_7-1_audit.py` (각각 `i` → 코드 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
-3. **[VS Code]** `day01_7-1_audit.py` 의 `# ←` 아래 단계 1 과 단계 2 를 직접 씁니다. Exercise 1-2 의 `day01_6-1_run.py` 반복문과 10/19(월) 3-2 의 건수 세기, 3.1 의 권한 대조 그림을 떠올립니다.
+   - **방법 2 · touch 로 만들기**: 터미널에서 파일마다 한 줄씩 치고, 각각 VS Code 에서 열어 코드 붙여넣기: `touch access_log.py` → `touch exercise1-3_audit.py`
+   - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim access_log.py` → `vim exercise1-3_audit.py` (각각 `i` → 코드 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
+3. **[VS Code]** `exercise1-3_audit.py` 의 `# ←` 아래 단계 1 과 단계 2 를 직접 씁니다. Exercise 1-2 의 `exercise1-2_run.py` 반복문과 10/19(월) 3-2 의 건수 세기, 3.1 의 권한 대조 그림을 떠올립니다.
 4. **[터미널]** 실행합니다.
    ```bash
-   python day01_7-1_audit.py
+   python exercise1-3_audit.py
    ```
-   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `day01_7-1_audit.py` 실행할 파일
+   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise1-3_audit.py` 실행할 파일
 5. 거부된 번호를 10/19(월) 오전 2-1 에서 의심했던 번호(새벽 3 · 4 · 5번, 낮의 12 · 14 · 15 · 16 · 17번)와 비교합니다. 2번은 로그인 줄이라 3.1 의 기록에서 뺐습니다.
    - 여기서 **보고서 (가) · (나)** 를 먼저 씁니다.
 6. 나온 「쓰이지 않음」 줄마다 1.3 의 매트릭스와 10/19(월) 계정 설명을 보고 「하루 기록에 없었을 뿐 필요한 권한」인지 「필요 없는 권한」인지 나눕니다.
    - 여기서 **보고서 (다)** 를 먼저 씁니다.
-7. **[보고서]** `day01_pm_report.md` 의 `## Exercise 1-3` › `### Exercise 1-3` 아래를 채웁니다.
+7. **[보고서]** Unit 1 의 `## Exercise 1-3` › `### Exercise 1-3` 아래를 채웁니다.
    - (가) [핵심 질문] 실행한 출력에서 허용 · 거부가 각각 몇 건이고 거부된 번호가 무엇인지 적고, 점수로 판단하던 방식(PDP)은 낮의 12 · 14 ~ 17번을 막지 못했는데 RBAC 는 막은 이유를 두 방식이 무엇을 보고 판정하는지 비교해 설명해 주세요.
    - (나) [핵심 질문] 이 결과만으로 「RBAC 를 켜면 정상 업무는 막히지 않는다」고 말할 수 있나요? 이 기록으로 확인되는 것, 확인되지 않는 것, 기록이 하루치뿐이라서 생기는 한계를 적어 주세요.
    - (다) [핵심 질문] Exercise 1-1 (나)에서 필요 이상이라고 고른 ○ 는 이 기록에서도 쓰이지 않았나요? 쓰이지 않은 권한 가운데 줄일 것 하나와 남길 것 하나를 고르고 각각 이유를 적어 주세요(`auditor` 는 사용자가 없어 전부 쓰이지 않음으로 나오므로 이 역할은 빼고 고릅니다).
@@ -295,7 +295,7 @@ for … in ROLES.items():        # 단계 2: 들여쓰기 없음
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
    - `git push` 가 거절(`rejected`)되면 `git pull` 을 입력해 받아 온 뒤 `git push` 를 다시 합니다
    - 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다
-5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `access_control` 폴더를 열고, 오늘 만든 파일이 모두 있는지 확인합니다: `config` 폴더(안에 `users.json` · `roles.json`) · `rbac.py` · `access_log.py` · `day01_6-1_run.py` · `day01_7-1_audit.py` · `day01_pm_rbac.md` · `day01_pm_report.md`.
+5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `access_control` 폴더를 열고, 오늘 만든 파일이 모두 있는지 확인합니다: `config` 폴더(안에 `users.json` · `roles.json`) · `rbac.py` · `access_log.py` · `exercise1-2_run.py` · `exercise1-3_audit.py` · Unit 1 · Unit 1.
    - 빠진 파일이 있으면 터미널에서 `ls access_control` 로 내 PC 에 있는지 봅니다. 있으면 2 ~ 4번을 다시 합니다.
 
 ## Exercise 1-3 한눈에

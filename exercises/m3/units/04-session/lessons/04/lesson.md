@@ -147,7 +147,7 @@ print(exceptions)                                                  # 세 건이 
 
 ** 할 일**
 
-1. `req_grant.py` 와 `day03_4-1_run.py` 두 파일을 만들고, `grant_request` 본문을 직접 씁니다.
+1. `req_grant.py` 와 `exercise4-3_run.py` 두 파일을 만들고, `grant_request` 본문을 직접 씁니다.
 2. 실행해서 <mark>부여 전 판정</mark>(단계 1: 판정), <mark>부여 시도의 결과</mark>(단계 2: 부여), <mark>부여 후 판정</mark>(단계 3: 점검)을 읽습니다.
 
 **`req_grant.py`**
@@ -181,7 +181,7 @@ def grant_request(request):                                      # 요청서를 
 - 4번의 `judge_reason` 은 `check_permission` 이 리턴하는 판정 이유 문자열입니다(요청서의 `reason`, 즉 요청 이유와는 다릅니다). 「허용」이면 이미 가진 권한이라서 부여하지 않습니다.
 - 채우기 전에 실행하면 `TypeError: cannot unpack non-iterable NoneType object` 오류가 납니다. 함수가 아무것도 리턴하지 않기 때문입니다.
 
-**`day03_4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 요청서 네 장을 접수하고 1 · 3 · 4번은 승인, 2번은 반려한 뒤, 단계 1 · 2 · 3을 차례로 실행합니다. 중간의 `show` 함수는 요청서마다 어제의 `evaluate_access` 로 판정해 출력하고, 단계 2 끝에서는 `exception_id` 키가 있는 요청서(`"exception_id" in request`)의 예외 번호를 출력합니다.
+**`exercise4-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 요청서 네 장을 접수하고 1 · 3 · 4번은 승인, 2번은 반려한 뒤, 단계 1 · 2 · 3을 차례로 실행합니다. 중간의 `show` 함수는 요청서마다 어제의 `evaluate_access` 로 판정해 출력하고, 단계 2 끝에서는 `exception_id` 키가 있는 요청서(`"exception_id" in request`)의 예외 번호를 출력합니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
@@ -238,19 +238,19 @@ show("단계 3: 점검 - 부여 후")                                     # 부�
    - **방법 1 · VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
      2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `req_grant.py` · `day03_4-1_run.py` 입니다.
+     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `req_grant.py` · `exercise4-3_run.py` 입니다.
      4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
-   - **방법 2 · touch 로 만들기**: 터미널에서 파일마다 한 줄씩 치고, 각각 VS Code 에서 열어 붙여넣기: `touch req_grant.py` → `touch day03_4-1_run.py`
-   - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim req_grant.py` → `vim day03_4-1_run.py` (각각 `i` → 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
+   - **방법 2 · touch 로 만들기**: 터미널에서 파일마다 한 줄씩 치고, 각각 VS Code 에서 열어 붙여넣기: `touch req_grant.py` → `touch exercise4-3_run.py`
+   - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim req_grant.py` → `vim exercise4-3_run.py` (각각 `i` → 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
 2. **[VS Code]** `req_grant.py` 의 `grant_request` 본문을 직접 씁니다. 3.1 의 표와 그림을 보고 씁니다.
 3. **[터미널]** `pwd` 를 쳐서 마지막 폴더가 `access_control` 인지 확인한 뒤 실행합니다.
    ```bash
-   python day03_4-1_run.py
+   python exercise4-3_run.py
    ```
-   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `day03_4-1_run.py` 실행할 파일
-   - 맥북은 `python3 day03_4-1_run.py` 로 칩니다.
+   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise4-3_run.py` 실행할 파일
+   - 맥북은 `python3 exercise4-3_run.py` 로 칩니다.
 4. 출력은 세 단계입니다. 단계 1은 부여 전 판정(네 줄), 단계 2는 부여 시도의 결과(네 줄)와 `부여된 예외 번호:` 한 줄, 단계 3은 부여 후 판정(네 줄)입니다. 부여 전과 후에 달라진 줄이 하나 있습니다.
-5. **[보고서]** `day03_am_report.md` 의 `## Exercise 4-3` › `### Exercise Exercise 4-3` 아래를 채웁니다.
+5. **[보고서]** Unit 4 의 `## Exercise 4-3` › `### Exercise Exercise 4-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 부여를 시도한 네 건이 각각 어떻게 됐는지 적어 주세요.
    - (나) [핵심 질문] 승인자가 승인한 3번 요청(`dami`)을 코드가 부여하지 않았습니다. 코드의 이 확인이 없었다면 어떤 일이 생겼을까요? 승인자가 이 문제를 미리 막기 어려운 이유도 적어 주세요.
    - (다) [핵심 질문] 부여한 예외의 만료 시각에는 요청서의 희망 만료 시각을 그대로 썼습니다. 그 시각이 지나면 이 예외는 어떻게 될까요? 만료된 예외를 정리하는 점검은 누가 얼마나 자주 하면 좋을까요?
@@ -270,14 +270,14 @@ show("단계 3: 점검 - 부여 후")                                     # 부�
 
 ## 오전 마무리 — 보고서 2 · 3 · Exercise 4-3 칸 확인
 
-`day03_am_report.md` 의 2 · 3 · Exercise 4-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. `access_control` 폴더에 오늘 만든 파일이 있는지 확인합니다.
+Unit 4 의 2 · 3 · Exercise 4-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. `access_control` 폴더에 오늘 만든 파일이 있는지 확인합니다.
 
 ```bash
 ls
 ls config
 ```
 
-- `req_create.py` · `req_review.py` · `req_grant.py` · `day03_2-1_run.py` · `day03_3-1_run.py` · `day03_4-1_run.py` 가 보여야 합니다. `config` 안은 어제와 같아야 합니다(오늘은 `config` 에 새 파일을 만들지 않았습니다).
+- `req_create.py` · `req_review.py` · `req_grant.py` · `exercise4-1_run.py` · `exercise4-2_run.py` · `exercise4-3_run.py` 가 보여야 합니다. `config` 안은 어제와 같아야 합니다(오늘은 `config` 에 새 파일을 만들지 않았습니다).
 
 오늘 오후에는 접수한 지 오래된 요청서를 시간으로 찾아내고(SLA · 처리 기한), 요청서 이력을 파일로 저장합니다. 올리기(git)는 오후 Exercise 3-2 마지막에 한 번에 합니다.
 

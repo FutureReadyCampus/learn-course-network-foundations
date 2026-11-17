@@ -138,7 +138,7 @@ print(users)                                                     # 함수 밖의
 
 ** 할 일**
 
-1. `role_admin.py` · `day02_2-1_run.py` 두 파일을 만들고, `assign_role` 과 `revoke_access` 본문(함수 안에 들여써서 채우는 줄들)을 직접 씁니다.
+1. `role_admin.py` · `exercise2-1_run.py` 두 파일을 만들고, `assign_role` 과 `revoke_access` 본문(함수 안에 들여써서 채우는 줄들)을 직접 씁니다.
 2. 실행해서 <mark>인사 변경 전 판정</mark> 네 줄, <mark>통보 처리 결과</mark> 여섯 줄, <mark>인사 변경 후 판정</mark> 네 줄을 읽습니다.
 
 **`role_admin.py`**
@@ -175,7 +175,7 @@ def revoke_access(users, name):                                  # 사용자 딕
 
 아래 실행 파일에 나오는 **`SETTLE` 은 약자가 아니라 영어 단어 settle(정산하다, 결제를 마무리하다)입니다.** `SETTLE:QUERY` 는 「정산 쪽 조회 업무」라는 분류 이름으로 읽습니다.
 
-**`day02_2-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 인사 변경 전에 요청 네 건을 판정하고, 인사팀 통보 세 건과 시험 두 건(오타 역할 `salse`, 없는 사용자 `ghost`)을 함수로 처리하고, 같은 요청 네 건을 다시 판정합니다.
+**`exercise2-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 인사 변경 전에 요청 네 건을 판정하고, 인사팀 통보 세 건과 시험 두 건(오타 역할 `salse`, 없는 사용자 `ghost`)을 함수로 처리하고, 같은 요청 네 건을 다시 판정합니다.
 
 ```python
 from rbac import USERS, check_permission                         # 어제의 사용자 딕셔너리와 판정 함수를 불러온다
@@ -218,19 +218,19 @@ run_checks("인사 변경 후")                                        # 변경 
    - **방법 1 · VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
      2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `role_admin.py` · `day02_2-1_run.py` 입니다.
+     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `role_admin.py` · `exercise2-1_run.py` 입니다.
      4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
-   - **방법 2 · touch 로 만들기**: 터미널에서 파일마다 한 줄씩 치고, 각각 VS Code 에서 열어 붙여넣기: `touch role_admin.py` → `touch day02_2-1_run.py`
-   - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim role_admin.py` → `vim day02_2-1_run.py` (각각 `i` → 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
+   - **방법 2 · touch 로 만들기**: 터미널에서 파일마다 한 줄씩 치고, 각각 VS Code 에서 열어 붙여넣기: `touch role_admin.py` → `touch exercise2-1_run.py`
+   - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim role_admin.py` → `vim exercise2-1_run.py` (각각 `i` → 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
 2. **[VS Code]** `role_admin.py` 의 두 함수 본문을 직접 씁니다. 1.1 의 그림과 1.2 의 문법 상자를 보고 씁니다.
 3. **[터미널]** 위치가 `…/access_control` 인지 확인하고 실행합니다.
    ```bash
-   python day02_2-1_run.py
+   python exercise2-1_run.py
    ```
-   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `day02_2-1_run.py` 실행할 파일
-   맥북: `python3 day02_2-1_run.py`
+   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise2-1_run.py` 실행할 파일
+   맥북: `python3 exercise2-1_run.py`
 4. 출력은 제목 줄 세 개를 빼면 세 부분입니다. 윗부분은 인사 변경 **전**의 판정 네 줄, 가운데는 통보 처리 결과 여섯 줄, 아랫부분은 인사 변경 **후**의 판정 네 줄입니다. 같은 네 요청이 어떻게 달라졌는지 비교합니다.
-5. **[보고서]** `day02_am_report.md` 의 `## Exercise 2-1` › `### Exercise Exercise 2-1` 아래를 채웁니다.
+5. **[보고서]** Unit 2 의 `## Exercise 2-1` › `### Exercise Exercise 2-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, `hana` 가 사용자 딕셔너리에 들어갔는지 적어 주세요.
    - (나) [핵심 질문] `seoyeon` 은 영업에서 재무로 옮겼습니다. 역할 값 하나를 바꿨을 뿐인데 `SALES CHANGE` 와 `SETTLE QUERY` 의 결과가 각각 어떻게 달라졌나요? 이동한 사람에게 이전 역할의 권한이 남아 있으면 어떤 문제가 생기는지도 적어 주세요.
    - (다) [핵심 질문] 인사팀이 `junho` 의 퇴사 통보를 퇴사 당일이 아니라 사흘 뒤에 보냈습니다. 그 사흘 동안 `junho` 의 계정으로 어떤 일이 생길 수 있고, 이 간격을 줄이려면 보안 담당으로서 무엇을 하겠습니까?

@@ -23,9 +23,9 @@ source:
 
 ```bash
 pwd
-python day02_5-1_run.py
+python exercise3-1_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day02_5-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise3-1_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
 
@@ -98,7 +98,7 @@ Name: count, dtype: int64
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day02_5-1_run.py", line 4, in <module>
+  File "…/anomaly_detection/exercise3-1_run.py", line 4, in <module>
     shape, first_times = describe_events(events)  # 표 크기와 time 열의 처음 3개를 구한다
   File "…/anomaly_detection/events_basic.py", line 23, in describe_events
     times = events["times"]  # time 열 하나를 꺼낸다
@@ -121,9 +121,9 @@ KeyError: 'times'
 
 ```bash
 pwd
-python day02_6-1_run.py
+python exercise3-2_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day02_6-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise3-2_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 두 함수입니다.
 
@@ -186,7 +186,7 @@ dtype: int64
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day02_6-1_run.py", line 8, in <module>
+  File "…/anomaly_detection/exercise3-2_run.py", line 8, in <module>
     by_user = count_by_user(failed)  # 실패 횟수를 사용자별로 센다
   File "…/anomaly_detection/events_time.py", line 31, in count_by_user
     grouped = failed.groupby("users")  # user 가 같은 행끼리 묶는다

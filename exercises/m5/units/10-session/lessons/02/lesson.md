@@ -79,7 +79,7 @@ soar_engine.py  load_context          : 설정 파일을 읽어 엔진 재료를
                 run_soar_pipeline     : 게이트를 거칠 조치만 (6번) 처리하고 티켓까지 만든다
                 make_failure_result   : 실패한 알림의 결과 기록을 만든다 (미리 채움)
                 run_all               : 알림마다 처리하고 (7번) 오류는 실패로 기록한다 (8번)
-실행 파일       day06_2-1_run.py      : 처리 결과별 알림 수를 센다 (9번)
+실행 파일       exercise10-1_run.py      : 처리 결과별 알림 수를 센다 (9번)
 ```
 
 > **여기부터 문제입니다.**
@@ -89,7 +89,7 @@ soar_engine.py  load_context          : 설정 파일을 읽어 엔진 재료를
 ** 이런 상황이 있습니다**
 
 - **지금은**: <mark>플레이북 찾기 · 승인 게이트 · 조치 · 티켓이 파일마다 따로 있고, 한 알림의 오류가 전체 처리를 멈춥니다</mark>.
-- **만드는 것**: 조치 요청 · 조치 실행 · 승인 게이트 거치기 · 알림 한 건 처리 · 오류 격리(`soar_engine.py`), 처리 결과별 알림 수 세기(`day06_2-1_run.py`).
+- **만드는 것**: 조치 요청 · 조치 실행 · 승인 게이트 거치기 · 알림 한 건 처리 · 오류 격리(`soar_engine.py`), 처리 결과별 알림 수 세기(`exercise10-1_run.py`).
 - **실행하면**: <mark>단계 1: 불러온 알림 수와 승인 기준, 단계 2: 알림마다 처리 결과와 승인 게이트의 결정, 단계 3: 처리 결과별 알림 수, 단계 4: 저장한 로그와 티켓 파일이 나옵니다.</mark>
 
 ** 할 일**: 두 파일을 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행한 뒤 단계 2 를 알림마다 읽습니다.
@@ -274,7 +274,7 @@ def run_all(alerts, context):                                                   
     return results                                                                      # 결과 기록 리스트를 리턴한다 — 미리 채운 줄
 ```
 
-**`day06_2-1_run.py`** — 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+**`exercise10-1_run.py`** — 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
 from incident import load_json, save_json                                                # 월요일 파일의 JSON 읽기 · 쓰기 함수를 불러온다
@@ -318,19 +318,19 @@ print("--- 단계 4:", LOG_PATH, "에", len(results), "건 ·", TICKET_PATH, "�
 1. **[터미널]** 파일 두 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
    ```bash
    pwd
-   touch soar_engine.py day06_2-1_run.py
+   touch soar_engine.py exercise10-1_run.py
    ls
    ```
-2. **[VS Code]** `soar_engine.py` 1 ~ 8번, `day06_2-1_run.py` 9번을 씁니다. 막히면 위 문법 상자와 아래 「Exercise 10-1 한눈에」를 봅니다.
+2. **[VS Code]** `soar_engine.py` 1 ~ 8번, `exercise10-1_run.py` 9번을 씁니다. 막히면 위 문법 상자와 아래 「Exercise 10-1 한눈에」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
-   python day06_2-1_run.py
+   python exercise10-1_run.py
    ```
 4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다.
    - 단계 1 과 단계 4 는 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
    - 단계 2 는 알림마다 1줄이고, 조치가 있는 알림은 조치마다 1 ~ 2줄이 더 붙습니다. 단계 3 은 5줄입니다.
 5. **[VS Code]** 새로 생긴 `engine_log.json` 과 `engine_tickets.json` 을 열어 <mark>`INC-402` 의 `error` 와 `TCK-1` 의 `done`</mark> 을 읽습니다.
-6. **[보고서]** `day06_am_report.md` 의 `## Exercise 10-1` 아래를 채웁니다.
+6. **[보고서]** Unit 10 의 `## Exercise 10-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 처리 결과별 알림 수와 승인 대기인 알림 번호를 적어 주세요.
    - (나) [핵심 질문] `INC-402` 는 실패인데 `INC-403` ~ `INC-408` 은 처리됐습니다. 단계 2 의 `INC-402` 오류 문장과 `run_all` 의 `except` 줄을 근거로 그 이유를 적고, `try` / `except` 가 없으면 `INC-402` 이후의 알림이 어떻게 되는지 적어 주세요.
    - (다) [핵심 질문] `INC-404` 와 `INC-406` 은 둘 다 high 등급인데 결과가 「차단 금지」와 「승인 대기」로 다릅니다. 단계 2 의 결정 이유를 근거로 그 차이를 적고, 승인 게이트가 `execute_action` 보다 먼저 와야 하는 이유도 적어 주세요.

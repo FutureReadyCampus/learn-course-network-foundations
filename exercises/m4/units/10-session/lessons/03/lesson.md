@@ -38,7 +38,7 @@ source:
 단계 1  이벤트 읽기               normalized_events.json  →  events (표)
    ↓
 단계 2  연결 · 탐지 · 점수         events  →  chains  →  findings  →  totals · reasons  →  records
-   ↓                              (records 는 day03_risk_scores.json 에도 저장)
+   ↓                              (records 는 unit05_risk_scores.json 에도 저장)
 단계 3  Gemini API 를 활용한 AI 요약                   records  →  summaries   (실패하면 대체 문장)
    ↓
 단계 4  보고서 저장               events · findings · records · summaries
@@ -146,7 +146,7 @@ print(fruit_count_dict)                    # 딕셔너리를 출력한다
 
 ** 할 일**
 
-1. `pipeline.py` · `day06_3-1_run.py` 두 파일을 만들고, `pipeline.py` 의 두 함수에서 직접 쓰는 곳을 씁니다.
+1. `pipeline.py` · `exercise10-2_run.py` 두 파일을 만들고, `pipeline.py` 의 두 함수에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>읽은 이벤트 수</mark>(단계 1), <mark>탐지된 규칙과 점수 기록 수</mark>(단계 2), <mark>Gemini API 를 활용한 AI 요약</mark>(단계 3), <mark>보고서 저장</mark>(단계 4), <mark>확인할 순서</mark>(단계 5)를 읽고, 새로 생긴 `anomaly_detection_report_2026-11-02.json` 을 VS Code 에서 열어 봅니다.
 
 `summarize_records` · `count_failed` · `save_report` · `run_pipeline` 은 읽기만 하는 미리 채운 함수입니다. Exercise 10-1에서 쓴 방식과 같아서 직접 쓰는 곳이 없습니다.
@@ -251,7 +251,7 @@ def run_pipeline():                                                             
 - 함수에 전달하는 순서는 주석에 적힌 순서입니다. <mark>2번은 `events` 다음에 `chains` 입니다.</mark>
 - 채우기 전에 실행하면 `NameError: name 'totals' is not defined` 오류가 납니다. `totals` 를 만드는 3번을 아직 안 썼기 때문입니다.
 
-**`day06_3-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
+**`exercise10-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
 
 ```python
 from pipeline import run_pipeline  # 방금 만든 파이프라인 함수를 불러온다
@@ -261,10 +261,10 @@ run_pipeline()                     # 읽기부터 보고서 저장까지 한 번
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `pipeline.py` · `day06_3-1_run.py` 를 `anomaly_detection` 폴더에 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code 또는 터미널]** 파일 `pipeline.py` · `exercise10-2_run.py` 를 `anomaly_detection` 폴더에 만들어 위 코드를 붙여 넣습니다.
    ```bash
    pwd
-   touch pipeline.py day06_3-1_run.py
+   touch pipeline.py exercise10-2_run.py
    ls
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `touch 파일이름` 빈 파일 만들기 · `ls` 폴더 안의 파일 이름 보기
@@ -272,12 +272,12 @@ run_pipeline()                     # 읽기부터 보고서 저장까지 한 번
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`). Gemini API 를 3번 호출합니다.
    ```bash
    pwd
-   python day06_3-1_run.py
+   python exercise10-2_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day06_3-1_run.py` 파이썬으로 실행 파일 실행
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise10-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **다섯 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1과 2와 4는 숫자나 파일 이름이 제목 줄에 함께 나와 그 아래 줄이 없고, 단계 3은 제목 아래 3줄(대상마다 요약), 단계 5는 5줄(대상마다 등급 · 대상 · 점수)입니다. <mark>AI 호출이 실패하면 `[LLM 호출 실패]` 줄이 단계 3 제목 줄 위에 나옵니다.</mark>
 5. **[VS Code]** 새로 생긴 `anomaly_detection_report_2026-11-02.json` 을 열어 `event_count` · `records` · `summaries` 를 확인합니다.
-6. **[보고서]** `day06_am_report.md` 의 `## Exercise 10-2` › `### Exercise 10-2` 아래를 채웁니다.
+6. **[보고서]** Unit 10 의 `## Exercise 10-2` › `### Exercise 10-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 보고서 파일의 `event_count` · `finding_count` 값과 `records` · `summaries` 의 건수를 적어 주세요.
    - (나) [핵심 질문] 점수와 등급은 코드가 정하고 AI 에게는 요약만 시킨 이유를 적어 주세요. 단계 5 의 확인할 순서와 단계 3 의 요약을 근거로 쓰세요.
    - (다) [핵심 질문] AI 호출이 실패해도 파이프라인이 멈추지 않고 대체 문장을 쓰게 만든 이유를 적어 주세요. 대체 문장이 들어간 대상을 담당자가 어떻게 처리해야 하는지도 적어 주세요.
@@ -322,8 +322,8 @@ security-agent-toolkit/
     access_sample.log
     log_parse.py
     log_classify.py
-    day01_5-1_run.py
-    day01_6-1_run.py
+    exercise1-1_run.py
+    exercise1-2_run.py
     ── 11/3 ──
     server_log.jsonl
     saas_events.csv
@@ -333,7 +333,7 @@ security-agent-toolkit/
     normalized_events.json
     events_basic.py
     events_time.py
-    day02_2-1_run.py  ~  day02_6-1_run.py
+    exercise2-1_run.py  ~  exercise3-2_run.py
     ── 11/4 ──
     baseline_logins.csv
     baseline_traffic.csv
@@ -343,7 +343,7 @@ security-agent-toolkit/
     traffic_detection.py
     alerts.py
     alerts.json
-    day03_2-1_run.py  ~  day03_6-1_run.py
+    exercise4-1_run.py  ~  exercise5-2_run.py
     ── 11/5 ──
     rbac.py
     access_detection.py
@@ -352,8 +352,8 @@ security-agent-toolkit/
     advanced_detection.py
     correlation.py
     risk_scores.py
-    day03_risk_scores.json
-    day04_2-1_run.py  ~  day04_6-1_run.py
+    unit05_risk_scores.json
+    exercise6-1_run.py  ~  exercise7-2_run.py
     ── 11/6 ──
     review_alerts.json
     problems.json
@@ -361,19 +361,19 @@ security-agent-toolkit/
     evaluation.py
     tuning.py
     final_check.py
-    day05_2-1_run.py  ~  day05_4-1_run.py
+    exercise8-1_run.py  ~  exercise8-3_run.py
     compose.yaml
     compose.secure.yaml
     ── 11/9 (오늘) ──
     llm_client.py
     event_summary.py
     pipeline.py
-    day06_2-1_run.py
-    day06_3-1_run.py
+    exercise10-1_run.py
+    exercise10-2_run.py
     anomaly_detection_report_2026-11-02.json
     ── 날마다 받은 안내와 보고서 ──
-    day01_pm_*.md  day02_am_*.md  day02_pm_*.md  day03_am_*.md  day03_pm_*.md
-    day04_am_*.md  day04_pm_*.md  day05_am_*.md  day05_pm_*.md  day06_am_*.md
+    unit01_pm_*.md  unit03_am_*.md  unit03_pm_*.md  unit05_am_*.md  unit05_pm_*.md
+    unit07_am_*.md  unit07_pm_*.md  unit09_am_*.md  unit09_pm_*.md  unit10_am_*.md
 ```
 
 - `__pycache__/` 는 파이썬이 자동으로 만드는 임시 폴더라서 신경 쓰지 않고 깃허브에도 올리지 않습니다.

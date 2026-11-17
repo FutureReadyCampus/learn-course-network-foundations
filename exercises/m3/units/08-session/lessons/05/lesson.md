@@ -23,7 +23,7 @@ source:
 
 ```bash
 pwd
-python day05_2-1_run.py
+python exercise8-1_run.py
 ```
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 네 함수의 다섯 군데입니다.
@@ -139,7 +139,7 @@ sales 2 명 ['seoyeon', 'dami']
 
 ```bash
 pwd
-python day05_3-1_run.py
+python exercise8-2_run.py
 ```
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
@@ -236,7 +236,7 @@ gaeun SETTLE:QUERY <- 예외 5번 | 예외 삭제 | 영향 1 건 | 승인 불필
 
 ```bash
 pwd
-python day05_4-1_run.py
+python exercise8-3_run.py
 ```
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 `remove_exception` 의 한 곳, `apply_plan` 의 세 곳, `execute_revocation` 의 한 곳입니다.

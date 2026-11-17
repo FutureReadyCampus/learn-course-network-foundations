@@ -131,7 +131,7 @@ SIEM(심)이 무엇인지와 현업에서 쓰는 방식은 Exercise 1-1 맨 위�
 
 ** 할 일**
 
-1. <mark>`log_classify.py` · `day01_6-1_run.py` 두 파일</mark>을 만들고, `log_classify.py` 의 `is_suspicious` · `is_error` · `classify_line` 에서 **직접 쓰는 곳 세 군데**를 씁니다.
+1. <mark>`log_classify.py` · `exercise1-2_run.py` 두 파일</mark>을 만들고, `log_classify.py` 의 `is_suspicious` · `is_error` · `classify_line` 에서 **직접 쓰는 곳 세 군데**를 씁니다.
 2. 실행해서 <mark>분류별 요청 수</mark>(단계 1), <mark>의심으로 분류한 요청</mark>(단계 2), <mark>오류로 분류한 요청</mark>(단계 3)을 읽습니다.
 
 **`log_classify.py`**
@@ -199,7 +199,7 @@ def count_groups(labeled):                                             # 분류�
 - 1번의 `in SUSPICIOUS_STATUS` 는 상태 코드가 그 튜플에 들어 있는지 묻습니다. 2번의 `"/admin" in entry["path"]` 는 경로 문자열 안에 `/admin` 이 들어 있는지 묻습니다. <mark>둘 다 결과가 `True` 또는 `False` 입니다.</mark>
 - 채우기 전에 실행하면 <mark>오류는 나지 않고, 단계 1에서 모든 요청이 「정상」으로 나오고 단계 2 · 3이 비어 있습니다.</mark>
 
-**`day01_6-1_run.py`** — <mark>그대로 붙여 넣습니다.</mark> 학생이 쓰는 줄은 없습니다. Exercise 1-1의 `parse_line` 으로 로그를 읽고, 방금 만든 함수로 가른 뒤 세 단계로 출력합니다.
+**`exercise1-2_run.py`** — <mark>그대로 붙여 넣습니다.</mark> 학생이 쓰는 줄은 없습니다. Exercise 1-1의 `parse_line` 으로 로그를 읽고, 방금 만든 함수로 가른 뒤 세 단계로 출력합니다.
 
 ```python
 from log_parse import parse_line                                                # Exercise 1-1에 만든 로그 한 줄 읽기 함수를 불러온다
@@ -244,16 +244,16 @@ for item in labeled:                                                            
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `log_classify.py` · `day01_6-1_run.py` 를 만들어 위 코드를 붙여 넣습니다. Exercise 1-1의 `log_parse.py` 를 불러오므로 <mark>없으면 문서 맨 아래 「앞 Exercise 파일 완성본」으로 먼저 만듭니다.</mark>
+1. **[VS Code 또는 터미널]** 파일 `log_classify.py` · `exercise1-2_run.py` 를 만들어 위 코드를 붙여 넣습니다. Exercise 1-1의 `log_parse.py` 를 불러오므로 <mark>없으면 문서 맨 아래 「앞 Exercise 파일 완성본」으로 먼저 만듭니다.</mark>
 2. **[VS Code]** `log_classify.py` 에서 직접 쓰는 곳 세 군데를 씁니다. 2.3 의 그림을 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지 확인하고</mark> 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python day01_6-1_run.py
+   python exercise1-2_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day01_6-1_run.py` 파이썬으로 실행 파일 실행
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise1-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 세 단계입니다. <mark>단계 1은 한 줄, 단계 2는 의심 요청 여덟 줄, 단계 3은 오류 요청 다섯 줄입니다.</mark>
-5. **[보고서]** `day01_pm_report.md` 의 `## Exercise 1-2` › `### Exercise 1-2` 아래를 채웁니다.
+5. **[보고서]** Unit 1 의 `## Exercise 1-2` › `### Exercise 1-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 분류별 요청 수와, 의심으로 분류한 요청 중 같은 주소에서 반복된 것을 적어 주세요.
    - (나) [핵심 질문] 상태 코드와 경로만으로 분류를 정하면 놓치는 것이 있습니다. 샘플 로그에서 놓친 예를 두 가지 찾아(정상이나 오류로 분류됐지만 살펴볼 만한 요청) 왜 놓쳤는지 적어 주세요.
    - (다) [핵심 질문] Exercise 1-1 「현업에서 SIEM(심)을 쓰는 방식 여섯 가지」 표의 방식 중에서, 보안 전담 직원이 1명뿐이고 쓰는 서비스 대부분이 클라우드에 있는 작은 회사라면 어느 방식을 고를지 이유와 함께 적어 주세요. 고르지 않은 방식 하나가 왜 맞지 않는지도 적어 주세요.
@@ -283,14 +283,14 @@ for item in labeled:                                                            
 
 **순서**
 
-0. **[터미널]** 오늘 만든 파일이 있는지 `anomaly_detection` 폴더에서 확인합니다. `day01_pm_report.md` 의 5 · Exercise 1-2 칸에서 `답:` 뒤가 비어 있는 질문이 없는지도 봅니다.
+0. **[터미널]** 오늘 만든 파일이 있는지 `anomaly_detection` 폴더에서 확인합니다. Unit 1 의 5 · Exercise 1-2 칸에서 `답:` 뒤가 비어 있는 질문이 없는지도 봅니다.
    ```bash
    pwd
    ls
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
    - <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나야 합니다.</mark> 아니면 `cd anomaly_detection` 을 먼저 칩니다.
-   - `access_sample.log` · `log_parse.py` · `log_classify.py` · `day01_5-1_run.py` · `day01_6-1_run.py` 와 이 안내 · 보고서 두 파일이 보여야 합니다.
+   - `access_sample.log` · `log_parse.py` · `log_classify.py` · `exercise1-1_run.py` · `exercise1-2_run.py` 와 이 안내 · 보고서 두 파일이 보여야 합니다.
 1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
    ```bash
    cd ..

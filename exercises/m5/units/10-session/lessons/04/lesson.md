@@ -47,7 +47,7 @@ policy_check.py   count_executed         : 실행한 조치 수를 센다 (미�
                   find_missing_tickets   : 실행했는데 티켓이 없으면 (5번) 모은다
                   run_checks             : 점검 네 가지를 한꺼번에 실행한다 (미리 채움)
                   judge                  : 위반이 없으면 PASS 를 리턴한다 (6번)
-실행 파일         day06_4-1_run.py       : 로그를 읽고 (7번) 점검에 실패하면 (8번) 세고, 결과를 저장한다 (9번)
+실행 파일         exercise10-3_run.py       : 로그를 읽고 (7번) 점검에 실패하면 (8번) 세고, 결과를 저장한다 (9번)
 ```
 
 > **여기부터 문제입니다.**
@@ -57,7 +57,7 @@ policy_check.py   count_executed         : 실행한 조치 수를 센다 (미�
 ** 이런 상황이 있습니다**
 
 - **지금은**: <mark>엔진은 로그를 남기지만, 승인 게이트와 허용 목록 · VIP 예외가 지켜졌는지 자동으로 확인하는 점검이 없습니다</mark>.
-- **만드는 것**: 점검 네 가지와 PASS · FAIL 판정(`policy_check.py`), 로그 세 개를 읽어 점검하고 결과를 저장하기(`day06_4-1_run.py`).
+- **만드는 것**: 점검 네 가지와 PASS · FAIL 판정(`policy_check.py`), 로그 세 개를 읽어 점검하고 결과를 저장하기(`exercise10-3_run.py`).
 - **실행하면**: <mark>단계 1: 점검할 로그 수, 단계 2: 로그마다 네 점검의 PASS · FAIL 과 위반한 알림 번호, 단계 3: FAIL 이 나온 점검 수, 단계 4: 저장한 파일이 나옵니다.</mark>
 
 ** 할 일**: 데이터 파일 한 개와 코드 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 를 읽은 뒤, 회고 문서를 쓰고 깃허브에 올립니다.
@@ -157,7 +157,7 @@ def judge(violations):                                                          
     return "FAIL"                                                                          # 위반이 있으면 FAIL 을 리턴한다 — 미리 채운 줄
 ```
 
-**`day06_4-1_run.py`** — 7 · 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+**`exercise10-3_run.py`** — 7 · 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
 from incident import load_json, save_json                                                   # 월요일 파일의 JSON 읽기 · 쓰기 함수를 불러온다
@@ -193,22 +193,22 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
 
 **순서**
 
-1. **[터미널]** 먼저 2 · Exercise 10-2 로그가 있는지 확인합니다. <mark>`ls` 결과에 `engine_log.json` 과 `risk_engine_log.json` 이 보이면</mark> 됩니다. 없으면 `python day06_2-1_run.py` 와 `python day06_3-1_run.py` 를 먼저 실행합니다(맥북은 `python3`). 그다음 파일 세 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
+1. **[터미널]** 먼저 2 · Exercise 10-2 로그가 있는지 확인합니다. <mark>`ls` 결과에 `engine_log.json` 과 `risk_engine_log.json` 이 보이면</mark> 됩니다. 없으면 `python exercise10-1_run.py` 와 `python exercise10-2_run.py` 를 먼저 실행합니다(맥북은 `python3`). 그다음 파일 세 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
    ```bash
    pwd
    ls
-   touch gate_off_log.json policy_check.py day06_4-1_run.py
+   touch gate_off_log.json policy_check.py exercise10-3_run.py
    ```
-2. **[VS Code]** `policy_check.py` 1 ~ 6번, `day06_4-1_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「Exercise 10-3 한눈에」를 봅니다.
+2. **[VS Code]** `policy_check.py` 1 ~ 6번, `exercise10-3_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「Exercise 10-3 한눈에」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
-   python day06_4-1_run.py
+   python exercise10-3_run.py
    ```
 4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다.
    - 단계 1 · 단계 3 · 단계 4 는 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
    - 단계 2 는 로그마다 제목 줄 1줄과 점검 결과 4줄이라 모두 15줄입니다.
 5. **[VS Code]** 새로 생긴 `policy_check.json` 을 열어 <mark>12개 점검이 들어 있는지</mark> 봅니다.
-6. **[VS Code]** 5일간의 회고 문서 `day05_final_retrospective.md` 를 만듭니다. 파일 이름의 `day05` 는 강의계획서의 Unit 10(오늘)입니다. **[터미널]** 에서 `touch day05_final_retrospective.md` 로 빈 파일을 만든 뒤, 아래 틀을 붙여 넣고 `…` 를 채웁니다. 틀은 지우지 않고 그대로 둡니다.
+6. **[VS Code]** 5일간의 회고 문서 `unit10_final_retrospective.md` 를 만듭니다. 파일 이름의 `day05` 는 강의계획서의 Unit 10(오늘)입니다. **[터미널]** 에서 `touch unit10_final_retrospective.md` 로 빈 파일을 만든 뒤, 아래 틀을 붙여 넣고 `…` 를 채웁니다. 틀은 지우지 않고 그대로 둡니다.
 
    - 1절은 엔진이 각 날의 파일을 어디에 쓰는지 한 문장씩 씁니다(Exercise 10-1 `soar_engine.py` 의 `import` 줄과 오늘 만든 파일이 근거입니다).
    - 2절은 <mark>오늘 출력이나 코드에서 근거를 찾아</mark> 운영에서 깨질 수 있는 곳 세 가지와 막는 방법을 씁니다.
@@ -252,7 +252,7 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
    - 캡스톤 첫날 새 코드 없이 바꿔 볼 설정 파일 2개: …
    - 그대로 가져다 쓸 내 파일 3개: …
    ````
-7. **[보고서]** `day06_am_report.md` 의 `## Exercise 10-3` 아래를 채웁니다.
+7. **[보고서]** Unit 10 의 `## Exercise 10-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, FAIL 이 나온 로그와 FAIL 이 나온 점검 이름 · 위반한 알림 번호를 적어 주세요.
    - (나) [핵심 질문] `gate_off_log.json` 의 `INC-405` 는 `decision` 이 「자동」인데 점검 ①에서 위반으로 나옵니다. 그 `request` 의 `users_on_ip` 와 승인 정책의 점수를 근거로 다시 구한 결정을 적고, 로그의 `decision` 만 읽으면 위반을 놓치는 이유를 적어 주세요.
    - (다) [핵심 질문] `INC-406`(`gaeun`)은 점검 ①은 FAIL 인데 점검 ③은 PASS 입니다. 그 알림의 `before` · `after` 를 근거로 `gaeun` 이 잠기지 않은 이유를 수요일 `lock_account` 와 연결해 적고, 점검 ③이 게이트와 별도로 필요한 이유를 적어 주세요.
@@ -279,11 +279,11 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
 
 - **지금은**: <mark>팀장이 「5일간 만든 SOAR 모듈과 엔진 · 점검 · 회고 문서를 저장소에 남겨 달라」고 합니다</mark>.
 - **그래서 하는 것**: `git status` 로 올라갈 파일을 확인한 뒤(`.env` 같은 비밀 키 파일이 섞이면 안 됩니다) `git add` → `git commit` → `git push` 순서로 올립니다.
-- **끝나면**: 깃허브 저장소의 `soar_response` 폴더에 `soar_engine.py` · `engine_input.py` · `policy_check.py` · `day05_final_retrospective.md` 와 로그 · 요약 파일(`engine_log.json` · `risk_engine_log.json` · `engine_summary.json` · `policy_check.json`)이 보입니다.
+- **끝나면**: 깃허브 저장소의 `soar_response` 폴더에 `soar_engine.py` · `engine_input.py` · `policy_check.py` · `unit10_final_retrospective.md` 와 로그 · 요약 파일(`engine_log.json` · `risk_engine_log.json` · `engine_summary.json` · `policy_check.json`)이 보입니다.
 
 **순서**
 
-0. **[터미널]** 오늘 만든 파일이 있는지 `soar_response` 폴더에서 확인합니다. 두 명령을 하나씩 칩니다. `day06_am_report.md` 의 모든 질문에서 `답:` 뒤와 코드 상자가 채워졌는지, `day05_final_retrospective.md` 의 `…` 가 모두 채워졌는지도 확인합니다(마무리 (가)는 3번에서 채웁니다).
+0. **[터미널]** 오늘 만든 파일이 있는지 `soar_response` 폴더에서 확인합니다. 두 명령을 하나씩 칩니다. Unit 10 의 모든 질문에서 `답:` 뒤와 코드 상자가 채워졌는지, `unit10_final_retrospective.md` 의 `…` 가 모두 채워졌는지도 확인합니다(마무리 (가)는 3번에서 채웁니다).
 
    ① 지금 위치를 확인합니다.
 
@@ -301,7 +301,7 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
    ```
 
    - 하는 일: 폴더 안의 파일 이름을 보여 줍니다.
-   - 나오는 것: `soar_engine.py` · `engine_input.py` · `policy_check.py` · `day05_final_retrospective.md` · `engine_log.json` · `risk_engine_log.json` · `engine_summary.json` · `policy_check.json` · `config` 가 보이면 됩니다.
+   - 나오는 것: `soar_engine.py` · `engine_input.py` · `policy_check.py` · `unit10_final_retrospective.md` · `engine_log.json` · `risk_engine_log.json` · `engine_summary.json` · `policy_check.json` · `config` 가 보이면 됩니다.
 
 1. **[터미널]** `security-agent-toolkit` 폴더로 이동합니다. 0번의 `pwd` 결과가 `soar_response` 로 끝날 때만 `cd ..` 를 칩니다. 이미 `…/security-agent-toolkit` 으로 끝나면 `cd ..` 는 건너뛰고 `pwd` 만 칩니다.
 
@@ -338,7 +338,7 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
      - `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
    - `soar_response/__pycache__/` (파이썬이 실행하면서 자동으로 만드는 임시 폴더)가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 봅니다.
 
-3. **[보고서]** `day06_am_report.md` 의 `### 마무리 · 오늘 만든 것을 깃허브에 올리기` 아래를 채웁니다. <mark>올리기 전에 채워야</mark> 깃허브에 빈칸 없이 올라갑니다.
+3. **[보고서]** Unit 10 의 `### 마무리 · 오늘 만든 것을 깃허브에 올리기` 아래를 채웁니다. <mark>올리기 전에 채워야</mark> 깃허브에 빈칸 없이 올라갑니다.
    - (가) `git status` 를 쳤을 때 `.env` 나 `.venv` 가 보였는지, 보였다면 어떻게 했는지 적어 주세요.
    - <mark>앞 Exercise에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.</mark> 올린 뒤에 이어서 적어 다시 올려도 됩니다.
 4. **[터미널]** 바뀐 파일을 모두 올릴 목록에 추가하고(`add`), 기록하고(`commit`), 올립니다(`push`). 세 명령을 순서대로 하나씩 칩니다.

@@ -154,7 +154,7 @@ print(first_event)                                           # 열 이름이 키
 
 ** 할 일**
 
-1. `classify.py` · `day03_4-1_run.py` **두 파일**을 만들고, `classify.py` 의 `classify_event` · `count_types` 에서 직접 쓰는 곳을 씁니다.
+1. `classify.py` · `exercise4-3_run.py` **두 파일**을 만들고, `classify.py` 의 `classify_event` · `count_types` 에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>유형별 이벤트 수</mark>(단계 1)와 <mark>전체 이벤트 수</mark>(단계 2)를 읽습니다.
 
 **`classify.py`**
@@ -207,7 +207,7 @@ def count_types(events):                                                        
 - 번호 주석이 연달아 붙어 있어도, 주석 사이마다 줄을 끼워 넣어 **각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.**
 - 채우기 전에 실행하면 `NameError: name 'event_list' is not defined` 오류가 납니다. 5번을 아직 안 썼기 때문입니다.
 
-**`day03_4-1_run.py`** — <mark>그대로 붙여 넣습니다.</mark> 학생이 쓰는 줄은 없습니다. `.values()` 는 딕셔너리의 값(개수)만 꺼내고, `sum(…)` 은 그 숫자를 모두 더합니다.
+**`exercise4-3_run.py`** — <mark>그대로 붙여 넣습니다.</mark> 학생이 쓰는 줄은 없습니다. `.values()` 는 딕셔너리의 값(개수)만 꺼내고, `sum(…)` 은 그 숫자를 모두 더합니다.
 
 ```python
 from classify import load_events, count_types, EVENTS_PATH, TYPE_ORDER  # 방금 만든 함수를 불러온다
@@ -226,16 +226,16 @@ print("--- 단계 2: 전체 이벤트", total, "개")                           
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `classify.py` · `day03_4-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code 또는 터미널]** 파일 `classify.py` · `exercise4-3_run.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `classify.py` 에서 직접 쓰는 곳 **다섯 군데**를 씁니다. 3.1 의 규칙 순서와 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python day03_4-1_run.py
+   python exercise4-3_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day03_4-1_run.py` 파이썬으로 실행 파일 실행
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise4-3_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **두 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 4줄이고, 단계 2는 숫자가 제목 줄에 함께 나오므로 그 아래 줄이 없습니다.
-5. **[보고서]** `day03_am_report.md` 의 `## Exercise 4-3` › `### Exercise Exercise 4-3` 아래를 채웁니다.
+5. **[보고서]** Unit 4 의 `## Exercise 4-3` › `### Exercise Exercise 4-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 유형별 이벤트 수를 적어 주세요.
    - (나) [핵심 질문] 「기타 실패」(결과가 실패이면서 `POST /login` 도 아니고 `/admin` 도 없는 이벤트)는 실패한 유형 중 15개로 가장 많습니다. 샘플 이벤트에서 `source` 가 `server` 인 이벤트 하나와 `web` 인 이벤트 하나를 찾아, 각각 `action` 과 함께 적어 주세요(예: `server` 의 `ACCOUNT:CHANGE`, `web` 의 `GET /.env` 처럼 규칙 1 · 2번에 걸리지 않는 것). 그리고 이 둘이 같은 이름 「기타 실패」로 묶여 있으면 담당자가 무엇을 하기 어려운지 적어 주세요.
    - (다) [핵심 질문] 유형 규칙은 위에서부터 차례로 보고 먼저 조건을 충족하는 것으로 정합니다. 「기타 실패」(결과가 실패이면 충족)를 맨 위로 옮겼다고 합시다. 그러면 「비정상 로그인」 · 「비인가 접근」 · 「기타 실패」 이벤트는 각각 몇 개가 될까요? 그리고 그때 담당자가 구분하지 못하게 되는 것은 무엇인가요?
@@ -263,8 +263,8 @@ print("--- 단계 2: 전체 이벤트", total, "개")                           
    ls
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
-   - `baseline.py` · `login_detection.py` · `classify.py` · `day03_2-1_run.py` · `day03_3-1_run.py` · `day03_4-1_run.py` · `normalized_events.json` · `baseline_logins.csv` 와 <mark>이 안내 · 보고서 두 파일이 보여야</mark> 합니다.
-2. **[보고서]** `day03_am_report.md` 의 2 · 3 · Exercise 4-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. 못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.
+   - `baseline.py` · `login_detection.py` · `classify.py` · `exercise4-1_run.py` · `exercise4-2_run.py` · `exercise4-3_run.py` · `normalized_events.json` · `baseline_logins.csv` 와 <mark>이 안내 · 보고서 두 파일이 보여야</mark> 합니다.
+2. **[보고서]** Unit 4 의 2 · 3 · Exercise 4-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. 못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.
 
 ---
 

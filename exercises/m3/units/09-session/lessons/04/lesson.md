@@ -23,7 +23,7 @@ source:
 
 ```bash
 pwd
-python day05_5-1_run.py
+python exercise9-1_run.py
 ```
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.

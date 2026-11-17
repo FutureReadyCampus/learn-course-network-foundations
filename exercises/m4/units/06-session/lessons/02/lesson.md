@@ -223,7 +223,7 @@ print(names)                # 이름 리스트를 출력한다
 
 ** 할 일**
 
-1. `access_detection.py` · `day04_2-1_run.py` 두 파일을 만들고, `access_detection.py` 의 두 함수에서 직접 쓰는 곳을 씁니다.
+1. `access_detection.py` · `exercise6-1_run.py` 두 파일을 만들고, `access_detection.py` 의 두 함수에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>서버 실패 수</mark>(단계 1), <mark>먼저 확인할 이벤트 수</mark>(단계 2), <mark>이유별 순서</mark>(단계 3)를 읽습니다.
 
 **`access_detection.py`**
@@ -292,7 +292,7 @@ def judge_failure(user, action):                      # 사용자와 행동을 �
 - 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
 - 채우기 전에 실행하면 `NameError: name 'suspicious' is not defined` 오류가 납니다. 1 ~ 3번을 아직 안 썼기 때문입니다.
 
-**`day04_2-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `len(표)` 는 표의 행 수입니다.
+**`exercise6-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `len(표)` 는 표의 행 수입니다.
 
 ```python
 from access_detection import load_events, pick_server_failures, pick_suspicious, judge_failure, EVENTS_PATH  # 방금 만든 함수를 불러온다
@@ -326,16 +326,16 @@ for priority in [1, 2, 3]:                                   # 우선순위대�
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `access_detection.py` · `day04_2-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code 또는 터미널]** 파일 `access_detection.py` · `exercise6-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `access_detection.py` 에서 <mark>직접 쓰는 곳 여섯 군데를 씁니다</mark>. 위 판다스 문법 상자와 1.1 의 표를 참고해 씁니다. 막히면 아래 「Exercise 6-1 한눈에」를 봅니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python day04_2-1_run.py
+   python exercise6-1_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day04_2-1_run.py` 파이썬으로 실행 파일 실행
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise6-1_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **세 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1과 단계 2는 숫자가 제목 줄에 함께 나오므로 그 아래 줄이 없고, 단계 3은 7줄입니다.
-5. **[보고서]** `day04_am_report.md` 의 `## Exercise 6-1` › `### Exercise Exercise 5-2` 아래를 채웁니다.
+5. **[보고서]** Unit 6 의 `## Exercise 6-1` › `### Exercise Exercise 5-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 서버 실패 수와 먼저 확인할 이벤트 수, 1순위 사용자를 적어 주세요.
    - (나) [핵심 질문] ① dami 의 실패 4개는 3과목(접근통제) 규칙으로 어떤 이유로 판정됐고, 왜 1순위일까요? ② gaeun 의 실패 3개는 규칙으로는 「허용」인데 서버가 거절했습니다. 공격이라고 확정할 수 있는지 적고, 먼저 무엇을 확인해야 하는지 적어 주세요.
    - (다) [핵심 질문] seoyeon 의 서버 실패 2건(11:40 `SETTLE:QUERY` · 18:20 `SALES:CHANGE`)은 먼저 확인할 이벤트에 들어가지 않았습니다. 들어가지 않은 이유를 오늘 규칙(실패 3번 이상)으로 설명하고, 이 규칙 때문에 놓칠 수 있는 경우를 한 가지 적어 주세요.

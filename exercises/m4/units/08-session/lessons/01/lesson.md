@@ -38,7 +38,7 @@ source:
    pwd
    python -c "import pandas; print(pandas.__version__)"
    ```
-3. **오늘 받은 파일 두 개**(`day05_am_false_alarm_tuning.md`, `day05_am_report.md`)를 <mark>`다운로드` 폴더에서 `anomaly_detection` 폴더로 끌어다 놓습니다</mark>(안 되면 **File › Save As…**). 이미 있으면 건너뜁니다.
+3. **오늘 받은 파일 두 개**(Unit 8, Unit 8)를 <mark>`다운로드` 폴더에서 `anomaly_detection` 폴더로 끌어다 놓습니다</mark>(안 되면 **File › Save As…**). 이미 있으면 건너뜁니다.
 4. **[VS Code]** 보고서 맨 위 제목 `(이름 · 2026-11-06(금))` 의 <mark>`이름` 을 내 이름으로 바꿉니다</mark>. 안내 파일은 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다.
 5. **[터미널]** 오늘 쓸 JSON 파일 세 개를 만들고 확인합니다. 같은 이름의 파일이 이미 있으면 건너뜁니다.
    ```bash

@@ -23,7 +23,7 @@ source:
 
 ```bash
 pwd
-python day06_2-1_run.py
+python exercise10-1_run.py
 ```
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
@@ -104,7 +104,7 @@ python day06_2-1_run.py
 
 ```bash
 pwd
-python day06_3-1_run.py
+python exercise10-2_run.py
 ```
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 다섯 함수입니다.
@@ -163,7 +163,7 @@ python day06_3-1_run.py
 거부 4 번 이상 사용자: ['dami', 'gaeun']
 ```
 
-  - `day06_3-2_run.py` 의 출력은 다음과 같고, 거부율 40% 는 경고 기준 30% 이상이라 **경고**입니다. 실패한 점검은 퇴사자 계정 점검과 부서와 역할 점검입니다.
+  - `exercise10-2-2_run.py` 의 출력은 다음과 같고, 거부율 40% 는 경고 기준 30% 이상이라 **경고**입니다. 실패한 점검은 퇴사자 계정 점검과 부서와 역할 점검입니다.
 
 ```
 --- 단계 1: 모으기 - 점검 결과와 요청 로그
@@ -233,7 +233,7 @@ python day06_3-1_run.py
 
 ```
 Traceback (most recent call last):
-  File "…/access_control/day06_3-1_run.py", line 10, in <module>
+  File "…/access_control/exercise10-2_run.py", line 10, in <module>
     rate = deny_rate(entries)                                        # 거부율(0 ~ 1)을 구한다
   File "…/access_control/log_summary.py", line 47, in deny_rate
     return denied / total                                        # 거부 수를 전체 수로 나눈 비율을 리턴한다

@@ -17,7 +17,7 @@ source:
 
 깃허브 업로드는 오후 Exercise 1-2 마지막에 합니다. 새 문법은 Exercise 2-2의 **튜플 리턴과 언패킹**(두 값을 한 번에 리턴하고 한 번에 받는 문법)과 Exercise 2-3의 **`startswith`**(문자열이 지정한 문자열로 시작하는지 확인하는 메서드) 둘입니다. 보고서의 [핵심 질문] 질문은 <mark>내 출력 값을 근거로 사유까지</mark> 씁니다. 들여쓰기는 미리 채운 줄에 맞춥니다. 각 번호 주석 바로 아래에 한 줄을 씁니다. 주석은 지우지 않습니다.
 
- **이전 파일**: 어제 만든 `incident.py` · `playbook_runner.py` · `incident_samples.json` · `config/playbook_registry.json` 을 씁니다. 없는 파일은 복구 안내 `day02_am_recovery_files.md` 의 순서로 만듭니다(`config/playbook_registry.json` 만 `complete_files.md` 의 1절에서 만듭니다).
+ **이전 파일**: 어제 만든 `incident.py` · `playbook_runner.py` · `incident_samples.json` · `config/playbook_registry.json` 을 씁니다. 없는 파일은 복구 안내 `unit04_recovery_files.md` 의 순서로 만듭니다(`config/playbook_registry.json` 만 `complete_files.md` 의 1절에서 만듭니다).
 
 ## 개요
 
@@ -30,7 +30,7 @@ source:
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
-3. 오늘 받은 파일 두 개(`day02_am_context_route_safety.md`, `day02_am_report.md`)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
+3. 오늘 받은 파일 두 개(Unit 2, Unit 2)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
 4. **[터미널]** 데이터 파일 세 개를 만들고 **[VS Code]** 에서 열어 아래 내용을 붙여 넣습니다.
    ```bash
    touch users_info.json source_ips.json trusted_ips.json
@@ -84,7 +84,7 @@ source:
 ## 오류가 나면
 
 - `pwd` 가 `soar_response` 로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
-- `ModuleNotFoundError: No module named 'incident'` 는 <mark>어제 만든 `incident.py` 가 이 폴더에 없다는 뜻</mark>입니다. `day02_am_recovery_files.md` 의 3번에서 만듭니다.
+- `ModuleNotFoundError: No module named 'incident'` 는 <mark>어제 만든 `incident.py` 가 이 폴더에 없다는 뜻</mark>입니다. `unit04_recovery_files.md` 의 3번에서 만듭니다.
 - 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 막히면 맨 아래 「정답」을 보고, 풀리지 않으면 보고서에 「모름 — 막힌 곳: …」 이라고 씁니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다.

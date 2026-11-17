@@ -45,7 +45,7 @@ source:
     state["locked_users"].remove(user)               # 잠긴 계정 리스트에서 제거한다
 ```
 
-`day03_2-1_run.py` 의 8 · 9번입니다.
+`exercise6-1_run.py` 의 8 · 9번입니다.
 
 ```python
     # 8. lock_account(user, state, vip_accounts, incident_id, reason) 의 결과를 record 에 저장한다
@@ -161,7 +161,7 @@ NameError: name 'record' is not defined
             records.append(unblock_ip(ip, state, incident_id, "차단 시간이 끝나 자동 해제"))  # 차단을 풀고 해제 기록을 모은다
 ```
 
-`day03_3-1_run.py` 의 7 ~ 9번입니다.
+`exercise6-2_run.py` 의 7 ~ 9번입니다.
 
 ```python
     # 7. check_ip_policy(ip, allowlist_ips, ip_users) 의 결과를 refusal 에 저장한다
@@ -282,7 +282,7 @@ INC-008 192.0.2.41 · 변경 없음 → 변경 없음 · 여러 계정이 함께
         records.append(terminate_sessions(user, state, incident_id, reason))    # 이어서 세션을 종료하고 기록을 모은다
 ```
 
-`day03_4-1_run.py` 의 7 ~ 9번입니다.
+`exercise6-3_run.py` 의 7 ~ 9번입니다.
 
 ```python
     # 7. contain_account(user, state, vip_accounts, incident_id, reason) 의 결과를 records 에 저장한다

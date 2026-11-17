@@ -28,8 +28,8 @@ source:
 
 | 파일 | 만든 곳 | 쓰는 곳 | 없거나 안 풀렸을 때 |
 |---|---|---|---|
-| `normalized_events.json` | 오전 안내(`day03_am_baseline_login.md`) 시작하기 5번 | 5 · Exercise 5-2 | 그 안내 시작하기 5번의 내용으로 파일을 만듭니다 |
-| `login_detection.py` | 오전 Exercise 4-2 Exercise Exercise 4-3 | Exercise 5-2 `day03_6-1_run.py` 가 불러옵니다 | 오전 안내 Exercise Exercise 4-3 의 `login_detection.py` 코드 칸을 붙여 넣고, 「Exercise Exercise 4-3 정답」의 「채운 코드」를 빈칸 자리에 넣어 파일을 완성합니다. `pick_alert_ips` 는 주소와 횟수를 담은 결과(`Series`)를 리턴해야 합니다 |
+| `normalized_events.json` | 오전 안내(Unit 4) 시작하기 5번 | 5 · Exercise 5-2 | 그 안내 시작하기 5번의 내용으로 파일을 만듭니다 |
+| `login_detection.py` | 오전 Exercise 4-2 Exercise Exercise 4-3 | Exercise 5-2 `exercise5-2_run.py` 가 불러옵니다 | 오전 안내 Exercise Exercise 4-3 의 `login_detection.py` 코드 칸을 붙여 넣고, 「Exercise Exercise 4-3 정답」의 「채운 코드」를 빈칸 자리에 넣어 파일을 완성합니다. `pick_alert_ips` 는 주소와 횟수를 담은 결과(`Series`)를 리턴해야 합니다 |
 
 ## 개요
 
@@ -40,7 +40,7 @@ source:
    pwd
    ls
    ```
-3. **오늘 받은 파일 두 개**(`day03_pm_traffic_alerts.md`, `day03_pm_report.md`)를 `다운로드` 폴더에서 `anomaly_detection` 폴더로 끌어다 놓습니다(안 되면 **File › Save As…**). 이미 있으면 건너뜁니다.
+3. **오늘 받은 파일 두 개**(Unit 5, Unit 5)를 `다운로드` 폴더에서 `anomaly_detection` 폴더로 끌어다 놓습니다(안 되면 **File › Save As…**). 이미 있으면 건너뜁니다.
 4. **[VS Code]** 보고서 맨 위 제목 `(이름 · 2026-11-04(수))` 의 `이름` 을 내 이름으로 바꿉니다. 안내 파일은 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다.
 5. **[VS Code 또는 터미널]** `anomaly_detection` 폴더에 `baseline_traffic.csv` 파일을 만들어 아래 내용을 그대로 붙여 넣습니다(터미널에서는 `touch baseline_traffic.csv` 후 VS Code 에서 엽니다).
 

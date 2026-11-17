@@ -22,7 +22,7 @@ source:
  **터미널에 입력합니다.**
 
 ```bash
-python day02_5-1_broken.py
+python exercise3-1_broken.py
 ```
 
 **채운 코드** (한 예)

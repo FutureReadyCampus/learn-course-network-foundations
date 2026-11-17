@@ -198,7 +198,7 @@ UTC+09:00
 
 ** 할 일**
 
-1. **`normalize_web.py` · `day02_2-1_run.py`** 두 파일을 만들고, `normalize_web.py` 의 `convert_time` · `convert_result` 에서 직접 쓰는 곳을 씁니다.
+1. **`normalize_web.py` · `exercise2-1_run.py`** 두 파일을 만들고, `normalize_web.py` 의 `convert_time` · `convert_result` 에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>정규화한 이벤트 수와 읽기 실패한 줄</mark>(단계 1), <mark>처음 나오는 실패 이벤트</mark>(단계 2), <mark>성공 · 실패별 개수</mark>(단계 3)를 읽습니다.
 
 **`normalize_web.py`**
@@ -275,7 +275,7 @@ def normalize_web(line):                                                     # �
 - **채우기 전에 실행하면 `NameError: name 'time_out' is not defined` 오류가 납니다.** 1 ~ 3번을 아직 안 썼기 때문입니다.
 - `convert_result` 는 6번까지 쓰면 끝나는 함수라서 아래에 미리 채운 `return` 이 없습니다. <mark>5번과 6번의 `return` 을 직접 씁니다.</mark>
 
-**`day02_2-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 샘플 로그를 한 줄씩 공통 이벤트로 바꿔 세 단계로 출력합니다. `len(리스트)` 는 리스트의 개수입니다.
+**`exercise2-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 샘플 로그를 한 줄씩 공통 이벤트로 바꿔 세 단계로 출력합니다. `len(리스트)` 는 리스트의 개수입니다.
 
 ```python
 from normalize_web import normalize_web                                                # 방금 만든 웹 서버 로그 정규화 함수를 불러온다
@@ -312,16 +312,16 @@ print(result_counts)                                                            
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `normalize_web.py` · `day02_2-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code 또는 터미널]** 파일 `normalize_web.py` · `exercise2-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `normalize_web.py` 에서 직접 쓰는 곳 **여섯 군데**를 씁니다. 1.2 의 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python day02_2-1_run.py
+   python exercise2-1_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day02_2-1_run.py` 파이썬으로 실행 파일 실행
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise2-1_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **세 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1은 1줄, 단계 2는 1줄, 단계 3은 1줄입니다.
-5. **[보고서]** `day02_am_report.md` 의 `## Exercise 2-1` › `### Exercise Exercise 2-1` 아래를 채웁니다.
+5. **[보고서]** Unit 2 의 `## Exercise 2-1` › `### Exercise Exercise 2-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 정규화한 이벤트 수와 읽기 실패한 줄 수, 성공과 실패 개수를 적어 주세요.
    - (나) [핵심 질문] 시각을 `02/Nov/2026:09:00:00 +0900` 모양 그대로 문자열로 정렬하면 12월 1일 요청(`01/Dec/2026:…`)과 11월 2일 요청(`02/Nov/2026:…`) 중 어느 쪽이 앞에 놓일지 예상하고, 공통 모양(`2026-11-02 09:00:00`)으로 바꾸면 무엇이 달라지는지 이유와 함께 적어 주세요.
    - (다) [핵심 질문] 이벤트에 원래 로그 줄(`raw`)을 그대로 남겨 두는 이유는 무엇인가요? 정규화하면 사라지는 정보를 한 가지 예로 들어 함께 적어 주세요.

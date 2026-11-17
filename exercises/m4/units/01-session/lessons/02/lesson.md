@@ -287,7 +287,7 @@ GET /login HTTP/1.1
 
 ** 할 일**
 
-1. <mark>`log_parse.py` · `day01_5-1_run.py` 두 파일</mark>을 만들고, `log_parse.py` 의 `split_request` · `read_request` · `read_status` · `read_client` · `parse_line` 에서 **직접 쓰는 곳 다섯 군데**를 씁니다.
+1. <mark>`log_parse.py` · `exercise1-1_run.py` 두 파일</mark>을 만들고, `log_parse.py` 의 `split_request` · `read_request` · `read_status` · `read_client` · `parse_line` 에서 **직접 쓰는 곳 다섯 군데**를 씁니다.
 2. 실행해서 <mark>읽기 성공 · 읽기 실패 줄 수</mark>(단계 1: 읽기), <mark>로그 첫 3줄을 읽은 결과</mark>(단계 2), <mark>값이 덧붙은 요청</mark>(단계 3)을 읽습니다.
 
 **`log_parse.py`**
@@ -360,7 +360,7 @@ def parse_line(line):                                   # 로그 한 줄을 받�
 - 8번의 `line.count('"')` 는 줄 안의 큰따옴표 개수를 셉니다. 정상 줄에는 여섯 개가 있고, 깨진 줄은 두 개보다 적습니다.
 - 채우기 전에 실행하면 먼저 **`IndentationError: unexpected indent` 오류가 납니다.** 8번을 아직 안 썼기 때문입니다. 8번을 쓴 뒤 1 ~ 7번 중 하나를 비워 두면 `NameError` 오류가 납니다(예: 1번을 비우면 `name 'prefix' is not defined`).
 
-**`day01_5-1_run.py`** — <mark>그대로 붙여 넣습니다.</mark> 학생이 쓰는 줄은 없습니다. 샘플 로그를 한 줄씩 읽어 세 단계로 출력합니다.
+**`exercise1-1_run.py`** — <mark>그대로 붙여 넣습니다.</mark> 학생이 쓰는 줄은 없습니다. 샘플 로그를 한 줄씩 읽어 세 단계로 출력합니다.
 
 ```python
 from log_parse import parse_line                                       # 방금 만든 로그 한 줄 읽기 함수를 불러온다
@@ -393,16 +393,16 @@ for entry in entries:                                                  # 읽은 
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `log_parse.py` · `day01_5-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code 또는 터미널]** 파일 `log_parse.py` · `exercise1-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `log_parse.py` 에서 직접 쓰는 곳 다섯 군데를 씁니다. 1.3 의 표와 그림, 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지 확인하고</mark> 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python day01_5-1_run.py
+   python exercise1-1_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day01_5-1_run.py` 파이썬으로 실행 파일 실행
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise1-1_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 세 단계입니다. `--- 단계` 제목 줄은 세지 않고, <mark>단계 1은 한 줄, 단계 2는 딕셔너리 세 줄, 단계 3은 두 줄입니다.</mark> 읽기 실패한 줄은 붙여 넣은 `access_sample.log` 에서 큰따옴표가 두 개보다 적은 줄을 찾습니다.
-5. **[보고서]** `day01_pm_report.md` 의 `## Exercise 1-1` › `### Exercise 1-1` 아래를 채웁니다.
+5. **[보고서]** Unit 1 의 `## Exercise 1-1` › `### Exercise 1-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 읽기 성공한 줄과 읽기 실패한 줄이 각각 몇 줄인지, 읽기 실패한 줄이 어떤 줄인지 적어 주세요.
    - (나) [핵심 질문] 로그 한 줄만 보고 알 수 있는 것과 알 수 없는 것을 구분해 적어 주세요. 예를 들어 203.0.113.50 의 요청에서 접속자가 누구인지, 로그인에 성공했는지는 알 수 있나요?
    - (다) [핵심 질문] 404 가 한 번 난 요청과, 같은 주소에서 `/.env` · `/wp-login.php` · `/phpmyadmin` 이 연달아 404 가 난 요청은 같은 일일까요? 샘플 로그에서 두 경우를 찾아 어떻게 다른지, 왜 한 줄만 봐서는 판단하기 어려운지 적어 주세요.

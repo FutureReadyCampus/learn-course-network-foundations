@@ -124,7 +124,7 @@ print(users)                 # 사용자 이름을 출력한다
 
 ** 할 일**
 
-1. `tuning.py` · `day05_3-1_run.py` 두 파일을 만들고, `tuning.py` 의 세 함수에서 직접 쓰는 곳을 씁니다.
+1. `tuning.py` · `exercise8-2_run.py` 두 파일을 만들고, `tuning.py` 의 세 함수에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>적용 전 오탐 수</mark>(단계 1), <mark>빠진 알림</mark>(단계 2), <mark>적용 후 오탐 수</mark>(단계 3), <mark>빠진 알림 중 진짜 문제였던 알림 수</mark>(단계 4)를 읽습니다.
 
 **`tuning.py`**
@@ -194,7 +194,7 @@ def find_removed_users(removed_alerts):               # 빼낸 알림 표를 받
 - 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
 - 채우기 전에 실행하면 `NameError: name 'is_removed' is not defined` 오류가 납니다. 3번을 아직 안 썼기 때문입니다.
 
-**`day05_3-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
+**`exercise8-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
 
 ```python
 from tuning import load_table, count_false_alarms, apply_exception, count_real_removed, find_removed_users, ALERTS_PATH  # 방금 만든 함수를 불러온다
@@ -229,16 +229,16 @@ print("진짜 문제였던 알림 수:", real_removed_count)   # 0 이면 진짜
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `tuning.py` · `day05_3-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code 또는 터미널]** 파일 `tuning.py` · `exercise8-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `tuning.py` 에서 <mark>직접 쓰는 곳 일곱 군데를 씁니다</mark>. Exercise 8-1에서 쓴 방식과 위 판다스 문법 상자, 2.1 의 표를 참고해 씁니다. 막히면 아래 「Exercise 8-2 한눈에」를 봅니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python day05_3-1_run.py
+   python exercise8-2_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day05_3-1_run.py` 파이썬으로 실행 파일 실행
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise8-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **네 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 2줄(알림 수 · 오탐 수), 단계 2는 4줄(빠진 알림 수 1줄 · 빠진 알림 2줄 · 사용자 1줄), 단계 3은 2줄, 단계 4는 1줄입니다.
-5. **[보고서]** `day05_am_report.md` 의 `## Exercise 8-2` › `### Exercise 8-2` 아래를 채웁니다.
+5. **[보고서]** Unit 8 의 `## Exercise 8-2` › `### Exercise 8-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 적용 전후의 오탐 수와 빠진 알림을 적어 주세요.
    - (나) [핵심 질문] 예외 규칙을 적용한 뒤 오탐이 몇 개에서 몇 개로 줄었나요? A3(jiwoo 의 업무 시간 밖 로그인)은 같은 IP 인데 왜 줄어들지 않았는지도 적어 주세요.
    - (다) [핵심 질문] `SaaS 평소와 다른 IP` 규칙에서 `203.0.113.80` 을 믿는 IP 로 두면, 이 IP 에서 오는 진짜 공격을 그 규칙으로는 놓칠 수 있습니다. 어떤 경우인지 한 가지 적어 주세요.

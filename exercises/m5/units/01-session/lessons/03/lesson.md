@@ -33,7 +33,7 @@ Exercise 1-1에는 사람이 `system_state.json` 을 열어 값을 직접 고쳤
 |---|---|---|
 | `incident.py` | 상태 바꾸기 · 맞는 플레이북 찾기 · 액션 실행하기 · 감사 기록 만들기, 이 네 가지를 하는 함수 | 완성본을 붙여 넣는다 |
 | `playbook_runner.py` | 인시던트 한 건에 플레이북을 실행하는 함수 `run_playbook` 과, 인시던트 5건을 하나씩 처리하는 함수 `process_incidents` | **`run_playbook` 의 핵심 6곳을 직접 쓴다** |
-| `day01_6-1_run.py` | 파일을 읽어 `process_incidents` 를 호출하고, 결과를 출력하고 저장하는 시작 파일 | 그대로 붙여 넣고 터미널에서 실행한다 |
+| `exercise1-2_run.py` | 파일을 읽어 `process_incidents` 를 호출하고, 결과를 출력하고 저장하는 시작 파일 | 그대로 붙여 넣고 터미널에서 실행한다 |
 | `action_log.json` | 프로그램이 실행한 일을 한 건씩 적은 감사 기록 파일 | 실행하면 자동으로 생긴다 |
 
 **② 인시던트 한 건을 처리하는 순서** — `run_playbook` 이 한 번 실행되면 아래 순서로 한 건을 처리합니다. 직접 쓰는 6곳이 이 순서입니다.
@@ -118,7 +118,7 @@ Exercise 1-1에는 사람이 `system_state.json` 을 열어 값을 직접 고쳤
 
 ** 할 일**
 
-1. `incident.py` · `playbook_runner.py` · `day01_6-1_run.py` 세 파일을 만듭니다. `incident.py` 와 실행 파일은 그대로 붙여 넣고, `playbook_runner.py` 의 `run_playbook` 에서 직접 쓰는 곳을 씁니다.
+1. `incident.py` · `playbook_runner.py` · `exercise1-2_run.py` 세 파일을 만듭니다. `incident.py` 와 실행 파일은 그대로 붙여 넣고, `playbook_runner.py` 의 `run_playbook` 에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>인시던트마다 실행 결과</mark>(단계 3), <mark>실행 전후 상태</mark>(단계 2 · 4), <mark>승인 대기</mark>(단계 5), <mark>감사 기록</mark>(단계 6)를 읽습니다.
 
 **`incident.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
@@ -281,10 +281,10 @@ def process_incidents(incidents, registry, state, action_log):                  
 - 3번의 `return False` 는 「더 실행하지 않고 여기서 끝낸다」는 뜻입니다. 2번에서 기록을 남긴 뒤 바로 끝내야 `for` 문의 액션이 실행되지 않습니다.
 - 채우기 전에 실행하면 `IndentationError: expected an indented block` 으로 시작하는 오류가 납니다(문구는 파이썬 버전마다 조금 다릅니다). `for` 안쪽의 4 · 5번이 비어 있기 때문입니다.
 
-**`day01_6-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `len(리스트)` 는 리스트의 개수입니다.
+**`exercise1-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `len(리스트)` 는 리스트의 개수입니다.
 
 - **무엇인가**: 알림 5건 처리를 한 번에 실행하는 **시작 파일**입니다. 파일을 읽고, 실행기에 넘겨 처리하고, 결과를 출력하고 저장합니다.
-- **어디에 쓰나**: 터미널에서 `python day01_6-1_run.py` 로 실행합니다. 실행하면 `system_state.json` 과 `action_log.json` 이 새로 저장됩니다.
+- **어디에 쓰나**: 터미널에서 `python exercise1-2_run.py` 로 실행합니다. 실행하면 `system_state.json` 과 `action_log.json` 이 새로 저장됩니다.
 
 ```python
 from incident import load_json, save_json, INCIDENTS_PATH, REGISTRY_PATH, STATE_PATH, LOG_PATH  # 제공받은 함수를 불러온다
@@ -329,7 +329,7 @@ for entry in action_log:                                                        
 1. **[VS Code 또는 터미널]** 파일 세 개를 `soar_response` 폴더에 만들어 위 코드를 붙여 넣습니다. 터미널에서는 `touch` 로 만든 뒤 VS Code 에서 엽니다. <mark>`config/playbook_registry.json` 에 PB-001 ~ PB-003 이 있어야</mark> 합니다.
    ```bash
    pwd
-   touch incident.py playbook_runner.py day01_6-1_run.py
+   touch incident.py playbook_runner.py exercise1-2_run.py
    ls
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `touch 파일이름들` 빈 파일 만들기 · `ls` 폴더 안의 파일 이름 보기
@@ -337,14 +337,14 @@ for entry in action_log:                                                        
 3. **[터미널]** <mark>`pwd` 의 결과가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python day01_6-1_run.py
+   python exercise1-2_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day01_6-1_run.py` 파이썬으로 실행 파일 실행
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise1-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **여섯 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 줄 수는 단계마다 다릅니다. 단계 1은 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다. 단계 2와 4는 각각 3줄입니다. 단계 3은 인시던트마다 1줄이라 5줄입니다. 단계 5는 승인 대기 건수만큼, 단계 6은 감사 기록 건수만큼 줄이 나옵니다. <mark>승인 대기와 기록 수는 Exercise 1-1에서 내가 정한 PB-003 의 승인 값에 따라 달라집니다.</mark>
 5. **[VS Code]** 새로 생긴 `action_log.json` 과 `system_state.json` 을 열어 봅니다.
    - `action_log.json`: 감사 기록입니다. 누가 무엇을 언제 했는지 남은 파일이고, 사고가 난 뒤 대응이 적절했는지 다시 확인할 때 읽습니다. 시각(`time`)이 있는지 확인합니다.
    - `system_state.json`: 실행 후 연습용 시스템의 상태입니다. 잠긴 계정과 티켓이 들어 있는지 확인합니다.
-6. **[보고서]** `day01_pm_report.md` 의 `## Exercise 1-2` › `### Exercise 1-2` 아래를 채웁니다.
+6. **[보고서]** Unit 1 의 `## Exercise 1-2` › `### Exercise 1-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 실행 후 잠긴 계정 · 차단한 IP · 티켓의 개수와 승인 대기 건수를 적어 주세요.
    - (나) [핵심 질문] Exercise 1-1에서 INC-005 를 수동 처리할 때와 달리, 실행기는 INC-005 를 어떻게 처리했는지 적어 주세요. 근거는 단계 3 · 4 · 5 의 출력으로 쓰고, 그렇게 처리한 이유도 적어 주세요.
    - (다) [핵심 질문] 감사 기록(단계 6)에서 INC-002 의 한 줄을 읽고, 그 인시던트에 실제로 무엇이 일어났고 무엇이 일어나지 않았는지 적어 주세요. 이런 기록이 현업에서 필요한 이유도 적어 주세요.
@@ -371,7 +371,7 @@ for entry in action_log:                                                        
 
 **순서**
 
-0. **[터미널]** 오늘 만든 파일이 있는지 `soar_response` 폴더에서 확인합니다. 두 명령을 하나씩 칩니다. `day01_pm_report.md` 의 5 · Exercise 1-2 칸에서 비어 있는 칸이 없는지도 봅니다. 질문마다 `답:` 뒤와 코드 상자를 채웠는지 확인합니다(마무리 (가)는 3번에서 채웁니다).
+0. **[터미널]** 오늘 만든 파일이 있는지 `soar_response` 폴더에서 확인합니다. 두 명령을 하나씩 칩니다. Unit 1 의 5 · Exercise 1-2 칸에서 비어 있는 칸이 없는지도 봅니다. 질문마다 `답:` 뒤와 코드 상자를 채웠는지 확인합니다(마무리 (가)는 3번에서 채웁니다).
 
    ① 지금 위치를 확인합니다.
 
@@ -389,7 +389,7 @@ for entry in action_log:                                                        
    ```
 
    - 하는 일: 폴더 안의 파일 이름을 보여 줍니다.
-   - 나오는 것: `config` · `incident.py` · `playbook_runner.py` · `incident_samples.json` · `system_state.json` · `action_log.json` · `day01_6-1_run.py` 가 보이면 됩니다.
+   - 나오는 것: `config` · `incident.py` · `playbook_runner.py` · `incident_samples.json` · `system_state.json` · `action_log.json` · `exercise1-2_run.py` 가 보이면 됩니다.
 
 1. **[터미널]** `security-agent-toolkit` 폴더로 옮깁니다. 0번의 `pwd` 결과가 `soar_response` 로 끝날 때만 `cd ..` 를 칩니다. 이미 `…/security-agent-toolkit` 으로 끝나면 `cd ..` 는 건너뛰고 `pwd` 만 칩니다.
 

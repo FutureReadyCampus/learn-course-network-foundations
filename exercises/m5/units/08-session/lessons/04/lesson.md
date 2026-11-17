@@ -47,7 +47,7 @@ false_positive.py   list_changes           : 바뀐 기록이면 (1번) 추가�
                     find_not_recovered     : 아직 잠긴 계정 (3번) · 아직 차단된 IP (4번) 를 찾는다
                     make_tuning_note       : IP 차단이면 (5번) 허용 목록 추가를 제안한다 (6번)
                     handle_false_positive  : 영향 확인 → 되돌리기 (7번) → 복구 확인 → 제안 순서로 처리한다
-실행 파일           day05_4-1_run.py       : 신고마다 처리하고 (8번) 결과를 모은다 (9번)
+실행 파일           exercise10-3_run.py       : 신고마다 처리하고 (8번) 결과를 모은다 (9번)
 ```
 
 > **여기부터 문제입니다.**
@@ -57,7 +57,7 @@ false_positive.py   list_changes           : 바뀐 기록이면 (1번) 추가�
 ** 이런 상황이 있습니다**
 
 - **지금은**: <mark>롤백 함수는 있지만, 무엇이 바뀌었는지 확인하고(영향 확인), 실제로 복원됐는지 점검하고(복구 확인), 같은 오탐의 재발을 막을 규칙 조정을 제안하는 절차가 없습니다</mark>.
-- **만드는 것**: 영향 확인 · 복구 확인 · 규칙 조정 제안 · 신고 한 건 처리(`false_positive.py`), 신고마다 처리하고 저장하기(`day05_4-1_run.py`).
+- **만드는 것**: 영향 확인 · 복구 확인 · 규칙 조정 제안 · 신고 한 건 처리(`false_positive.py`), 신고마다 처리하고 저장하기(`exercise10-3_run.py`).
 - **실행하면**: <mark>단계 1: 신고 수와 처리 전 상태, 단계 2: 신고마다 영향 확인 · 되돌리기 · 복구 확인 · 규칙 조정 제안, 단계 3: 처리 뒤 상태, 단계 4: 저장한 파일이 나옵니다.</mark>
 
 ** 할 일**: 데이터 파일 세 개와 코드 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 · 3 을 읽습니다.
@@ -168,7 +168,7 @@ def handle_false_positive(report, log, state, now):                             
     return result                                                                    # 처리 결과를 리턴한다 — 미리 채운 줄
 ```
 
-**`day05_4-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+**`exercise10-3_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
 from incident import load_json, save_json                                                   # 월요일 파일의 JSON 읽기 · 쓰기 함수를 불러온다
@@ -208,19 +208,19 @@ print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.
 1. **[터미널]** 파일 다섯 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
    ```bash
    pwd
-   touch fp_state.json fp_log.json fp_reports.json false_positive.py day05_4-1_run.py
+   touch fp_state.json fp_log.json fp_reports.json false_positive.py exercise10-3_run.py
    ls
    ```
-2. **[VS Code]** `false_positive.py` 1 ~ 7번, `day05_4-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 8-3 한눈에」를 봅니다.
+2. **[VS Code]** `false_positive.py` 1 ~ 7번, `exercise10-3_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 8-3 한눈에」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
-   python day05_4-1_run.py
+   python exercise10-3_run.py
    ```
 4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다.
    - 단계 1 은 숫자가 제목 줄에 함께 나오고 그 아래 1줄입니다.
    - 단계 2 는 10줄(신고 한 건에 5줄씩), 단계 3 은 2줄입니다.
    - 단계 4 는 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
-5. **[보고서]** `day05_am_report.md` 의 `## Exercise 8-3` 아래를 채웁니다.
+5. **[보고서]** Unit 8 의 `## Exercise 8-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 신고마다 걸린 시간과 처리 뒤 잠긴 계정을 적어 주세요.
    - (나) [핵심 질문] `INC-301` 의 영향 확인에 `IP 차단 198.51.100.120` 이 없습니다. `fp_log.json` 에서 `198.51.100.120` 의 IP 차단 기록이 가진 `before` · `after` 를 근거로 그 이유를 적고, `false_positive.py` 1번의 `if` 줄이 없으면 규칙 조정 제안이 어떻게 잘못되는지 적어 주세요.
    - (다) [핵심 질문] `INC-301` 의 되돌리기에 `되돌리기 불가 jiwoo` 가 있습니다. 무엇을 되돌릴 수 없는지(비가역 조치)와 담당자가 `jiwoo` 에게 따로 안내해야 할 것을 적어 주세요. 그리고 `dami` 가 처리 뒤에도 잠겨 있어야 하는 이유를 따로 적어 주세요.

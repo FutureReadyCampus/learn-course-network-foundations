@@ -185,7 +185,7 @@ True
 
 ** 할 일**
 
-1. `req_create.py` 와 `day03_2-1_run.py` 두 파일을 만들고, `create_request` 본문(함수 안에 들여써서 채우는 줄들)을 직접 씁니다.
+1. `req_create.py` 와 `exercise4-1_run.py` 두 파일을 만들고, `create_request` 본문(함수 안에 들여써서 채우는 줄들)을 직접 씁니다.
 2. 실행해서 <mark>접수된 요청 네 건과 접수되지 않은 세 건</mark>(단계 1: 접수)과 <mark>요청서 리스트</mark>(단계 2: 점검)을 읽습니다.
 
 **`req_create.py`**
@@ -217,7 +217,7 @@ def create_request(user, resource, action, until, reason, received_at):  # 요�
 - `status` 의 값은 따옴표를 붙인 문자열 `"reviewing"` 입니다. 1.1 의 표와 철자가 같아야 Exercise 4-2가 읽습니다.
 - 채우기 전에 실행하면 `TypeError: cannot unpack non-iterable NoneType object` 오류가 납니다. 함수가 아무것도 리턴하지 않아 `is_success, result` 로 나눠 받지 못하기 때문입니다. 본문을 채운 뒤에 실행합니다.
 
-**`day03_2-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 단계 1은 요청 일곱 건을 `create_request` 로 접수하고, 단계 2는 접수된 요청서 리스트를 출력합니다.
+**`exercise4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 단계 1은 요청 일곱 건을 `create_request` 로 접수하고, 단계 2는 접수된 요청서 리스트를 출력합니다.
 
 ```python
 from req_create import REQUESTS, create_request                  # 방금 만든 요청서 함수와 리스트를 불러온다
@@ -251,19 +251,19 @@ for request in REQUESTS:                                         # 요청서를 
    - **방법 1 · VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
      2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `req_create.py` · `day03_2-1_run.py` 입니다.
+     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `req_create.py` · `exercise4-1_run.py` 입니다.
      4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
-   - **방법 2 · touch 로 만들기**: 터미널에서 파일마다 한 줄씩 치고, 각각 VS Code 에서 열어 붙여넣기: `touch req_create.py` → `touch day03_2-1_run.py`
-   - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim req_create.py` → `vim day03_2-1_run.py` (각각 `i` → 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
+   - **방법 2 · touch 로 만들기**: 터미널에서 파일마다 한 줄씩 치고, 각각 VS Code 에서 열어 붙여넣기: `touch req_create.py` → `touch exercise4-1_run.py`
+   - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim req_create.py` → `vim exercise4-1_run.py` (각각 `i` → 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
 2. **[VS Code]** `req_create.py` 의 `create_request` 본문을 직접 씁니다. 1.2 의 그림과 문법 상자를 보고 씁니다.
 3. **[터미널]** `pwd` 를 쳐서 마지막 폴더가 `access_control` 인지 확인한 뒤 실행합니다.
    ```bash
-   python day03_2-1_run.py
+   python exercise4-1_run.py
    ```
-   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `day03_2-1_run.py` 실행할 파일
-   - 맥북은 `python3 day03_2-1_run.py` 로 칩니다.
+   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise4-1_run.py` 실행할 파일
+   - 맥북은 `python3 exercise4-1_run.py` 로 칩니다.
 4. 출력은 두 단계입니다. 단계 1은 요청 일곱 건의 접수 결과(일곱 줄)이고, 단계 2는 접수된 요청서 리스트(네 줄)입니다.
-5. **[보고서]** `day03_am_report.md` 의 `## Exercise 4-1` › `### Exercise Exercise 4-3` 아래를 채웁니다.
+5. **[보고서]** Unit 4 의 `## Exercise 4-1` › `### Exercise Exercise 4-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 접수되지 않은 세 건이 각각 `create_request` 의 어느 `if` 조건 때문에 접수되지 않았는지 적어 주세요.
    - (나) [핵심 질문] 요청서의 `until`(희망 만료 시각)은 요청자가 직접 적습니다. 요청자가 적은 기간을 그대로 믿고 승인해도 될까요? 승인하기 전에 확인할 것을 두 가지 이상 적어 주세요.
 

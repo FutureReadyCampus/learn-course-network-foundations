@@ -30,11 +30,11 @@ source:
    ls
    ls config
    ```
-   - `rbac.py` 와 `config` 안의 `users.json` · `roles.json` 이 보여야 합니다. 어제 `check_permission` 을 다 채웠는지도 `python day01_6-1_run.py`(맥북은 `python3 day01_6-1_run.py`)로 확인합니다. 아홉 줄이 나오고 `dami` 줄이 `False 퇴사한 계정` 이면 정상입니다. 없으면 수업 자료로 받은 `rbac_recovery` 폴더 안의 `rbac.py` 를 `access_control` 폴더에, `config` 안의 두 파일을 `config` 폴더에 넣습니다. `users.json` 에는 `seoyeon` · `junho` · `gaeun` · `dami` · `batch-night` · `tester` 여섯 명과 `employed` 칸이 있어야 합니다(어제 Exercise 1-1). 한 명이라도 빠지면 Exercise 2-2 단계 2 에서 `KeyError` 가 납니다.
+   - `rbac.py` 와 `config` 안의 `users.json` · `roles.json` 이 보여야 합니다. 어제 `check_permission` 을 다 채웠는지도 `python exercise1-2_run.py`(맥북은 `python3 exercise1-2_run.py`)로 확인합니다. 아홉 줄이 나오고 `dami` 줄이 `False 퇴사한 계정` 이면 정상입니다. 없으면 수업 자료로 받은 `rbac_recovery` 폴더 안의 `rbac.py` 를 `access_control` 폴더에, `config` 안의 두 파일을 `config` 폴더에 넣습니다. `users.json` 에는 `seoyeon` · `junho` · `gaeun` · `dami` · `batch-night` · `tester` 여섯 명과 `employed` 칸이 있어야 합니다(어제 Exercise 1-1). 한 명이라도 빠지면 Exercise 2-2 단계 2 에서 `KeyError` 가 납니다.
 3. **오늘 받은 파일 두 개를 `access_control` 폴더에 둡니다.** 이미 있으면 건너뜁니다. `다운로드` 폴더에서 VS Code 왼쪽의 그 폴더 위로 끌어다 놓습니다(안 되면 파일을 열어 **File › Save As…** 로 저장).
-   - `day02_am_policy.md` (이 파일) — 오전 실습 안내. 읽기만 합니다.
-   - `day02_am_report.md` — **오전 보고서.** 2 · 3 · Exercise 2-3 답을 여기에 적습니다.
-4. **[VS Code]** 안내 파일을 열고 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다. 보고서 `day02_am_report.md` 는 오른쪽 클릭 › **Open to the Side** 로 옆에 열고, 맨 위 제목 `(이름 · 2026-10-22(목))` 의 `이름` 만 내 이름으로 바꿉니다.
+   - Unit 2 (이 파일) — 오전 실습 안내. 읽기만 합니다.
+   - Unit 2 — **오전 보고서.** 2 · 3 · Exercise 2-3 답을 여기에 적습니다.
+4. **[VS Code]** 안내 파일을 열고 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다. 보고서 Unit 2 는 오른쪽 클릭 › **Open to the Side** 로 옆에 열고, 맨 위 제목 `(이름 · 2026-10-22(목))` 의 `이름` 만 내 이름으로 바꿉니다.
 5. 문제는 **할 일 → 순서**대로 하고, `[창 이름]` 이 지금 쓸 창입니다. 코드를 채울 때는 주석이 말하는 일을 하면 몇 줄이든 맞고, 막히면 맨 아래 「정답」을 봅니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 **터미널**에서 합니다(맥북은 `python3`). **어제 만든 `rbac.py` · `users.json` · `roles.json` 은 고치지 않습니다.** 오늘 바뀌는 설정은 새 파일에 씁니다.

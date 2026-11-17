@@ -273,7 +273,7 @@ False
 
 ** 할 일**
 
-1. `saas_detection.py` · `day04_3-1_run.py` 두 파일을 만들고, `saas_detection.py` 의 두 함수에서 직접 쓰는 곳을 씁니다.
+1. `saas_detection.py` · `exercise6-2_run.py` 두 파일을 만들고, `saas_detection.py` 의 두 함수에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>업무 시간 밖 로그인</mark>(단계 1), <mark>평소와 다른 IP 사용자</mark>(단계 2), <mark>대량 다운로드 사용자</mark>(단계 3)를 읽습니다.
 
 **`saas_detection.py`**
@@ -366,7 +366,7 @@ def find_bulk_download_users(saas):                   # SaaS 이벤트 표를 �
 - 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
 - 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다(파이썬 버전에 따라 뒤에 `after 'if' statement on line …` 이 붙기도 합니다). `if` 안쪽의 5번이 비어 있기 때문입니다.
 
-**`day04_3-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `list(열)` 은 열의 값을 리스트로 만듭니다.
+**`exercise6-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `list(열)` 은 열의 값을 리스트로 만듭니다.
 
 ```python
 from saas_detection import load_events, pick_saas, pick_logins, find_off_hours_logins, find_new_ip_users, find_bulk_download_users, EVENTS_PATH  # 방금 만든 함수를 불러온다
@@ -389,16 +389,16 @@ print("--- 단계 3: 파일을 5번 이상 내려받은 사용자", bulk_users) 
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `saas_detection.py` · `day04_3-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code 또는 터미널]** 파일 `saas_detection.py` · `exercise6-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `saas_detection.py` 에서 <mark>직접 쓰는 곳 다섯 군데를 씁니다</mark>. 2.1 의 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python day04_3-1_run.py
+   python exercise6-2_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day04_3-1_run.py` 파이썬으로 실행 파일 실행
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise6-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **세 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 표 2줄이고, 단계 2와 3은 사용자가 제목 줄에 함께 나오므로 그 아래 줄이 없습니다.
-5. **[보고서]** `day04_am_report.md` 의 `## Exercise 6-2` › `### Exercise Exercise 5-2` 아래를 채웁니다.
+5. **[보고서]** Unit 6 의 `## Exercise 6-2` › `### Exercise Exercise 5-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 규칙마다 해당한 사용자를 적어 주세요.
    - (나) [핵심 질문] jiwoo 는 업무 시간 밖(02:14)과 평소와 다른 IP 두 규칙에 해당하지만 그 로그인은 실패였습니다. 이 기록만으로 계정 도용을 확정할 수 있나요? 그렇게 판단한 이유와, 샘플 로그에서 더 찾아볼 수 있는 것을 한 가지 적어 주세요.
    - (다) [핵심 질문] gaeun 은 평소 IP 기록이 없어 「평소와 다른 IP」 규칙에서 제외됩니다. 제외하지 않으면 어떤 일이 생기고, 제외하면 어떤 위험이 남나요?

@@ -134,7 +134,7 @@ False
 
 1. `config/exceptions.json` 에 예외 세 건을 붙여 넣고, 2.1 의 표를 보고 **4번 · 5번 예외 두 건을 직접** 씁니다.
 2. `exception_policy.py` 를 만들고 `find_exception` 본문을 직접 씁니다.
-3. `day02_3-1_run.py` 를 실행해서 <mark>여섯 건의 판정</mark>(단계 1: 판정)과 <mark>회수할 예외</mark>(단계 2: 점검)를 읽습니다.
+3. `exercise2-2_run.py` 를 실행해서 <mark>여섯 건의 판정</mark>(단계 1: 판정)과 <mark>회수할 예외</mark>(단계 2: 점검)를 읽습니다.
 
 **`config/exceptions.json`** — 아래 세 건을 붙여 넣습니다.
 
@@ -185,7 +185,7 @@ def find_exception(user, permission, now):                       # 사용자 · 
 
 - `find_exception` 의 들여쓰기: 1번 `for` 는 4칸, 2번 `if` 는 8칸, 3번은 12칸, 4번의 `if` 는 12칸이고 그 안의 `return` 은 16칸, 5번은 다시 4칸입니다.
 
-**`day02_3-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 단계 1(판정)은 `find_exception` 으로 여섯 건을 판정하고, 단계 2(점검)는 2.3 의 순서대로 예외 리스트를 하나씩 점검해 회수할 것을 찾습니다.
+**`exercise2-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 단계 1(판정)은 `find_exception` 으로 여섯 건을 판정하고, 단계 2(점검)는 2.3 의 순서대로 예외 리스트를 하나씩 점검해 회수할 것을 찾습니다.
 
 ```python
 import json                                                      # 사용자 파일을 읽는 데 쓴다
@@ -228,17 +228,17 @@ for exception in EXCEPTIONS:                                           # 예외�
 **순서**
 
 1. **[VS Code 또는 터미널]** 세 파일을 만들고 각각 붙여 넣습니다.
-   - 만드는 방법은 Exercise 2-1 1번과 같습니다(VS Code 새 파일 아이콘 · `touch` · `vim` 중 하나). 만들 파일 이름은 차례로 `config/exceptions.json` · `exception_policy.py` · `day02_3-1_run.py` 입니다. 앞에 폴더가 붙은 이름은 폴더도 함께 만들어집니다. 붙여 넣을 내용은 위 코드 상자입니다.
+   - 만드는 방법은 Exercise 2-1 1번과 같습니다(VS Code 새 파일 아이콘 · `touch` · `vim` 중 하나). 만들 파일 이름은 차례로 `config/exceptions.json` · `exception_policy.py` · `exercise2-2_run.py` 입니다. 앞에 폴더가 붙은 이름은 폴더도 함께 만들어집니다. 붙여 넣을 내용은 위 코드 상자입니다.
 2. **[VS Code]** `config/exceptions.json` 에 4번 · 5번 예외를 직접 씁니다. 2.1 의 표에서 사용자 · 권한 · 만료 시각 · 이유를 글자 그대로 옮깁니다.
 3. **[VS Code]** `exception_policy.py` 의 `find_exception` 본문을 직접 씁니다. 2.2 의 문법 상자를 보고 씁니다.
 4. **[터미널]** 실행합니다.
    ```bash
-   python day02_3-1_run.py
+   python exercise2-2_run.py
    ```
-   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `day02_3-1_run.py` 실행할 파일
-   맥북: `python3 day02_3-1_run.py`
+   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise2-2_run.py` 실행할 파일
+   맥북: `python3 exercise2-2_run.py`
 5. 출력은 두 단계입니다. 단계 1(판정)은 여섯 건의 판정(`(True, 번호)` 또는 `(False, None)`)이고, 단계 2(점검)는 예외 다섯 건마다 `[회수]` 또는 `[유지]` 입니다.
-6. **[보고서]** `day02_am_report.md` 의 `## Exercise 2-2` › `### Exercise Exercise 2-1` 아래를 채웁니다.
+6. **[보고서]** Unit 2 의 `## Exercise 2-2` › `### Exercise Exercise 2-1` 아래를 채웁니다.
    - (가) 단계 1 출력 여섯 줄과 단계 2 출력 다섯 줄을 붙여 넣고, 회수할 예외의 번호를 적어 주세요.
    - (나) [핵심 질문] 예외 신청서에 만료 시각이 비어 있어도 접수된다면 어떤 일이 쌓이고, 1년 뒤 감사에서 어떤 지적을 받을까요? 만료를 반드시 적게 하려면 시스템에 어떤 규칙을 넣겠습니까?
    - (다) [핵심 질문] 서비스 계정 `batch-night` 의 예외 4번(영업 실적 조회, 분기 집계 시험)을 다음 분기에도 쓰게 기간을 연장해 달라는 요청이 왔습니다. 연장해 주기 전에 무엇을 확인하고, 연장한다면 어떤 조건을 붙이겠습니까? 연장하지 않는다면 대신 무엇을 제안하겠습니까?

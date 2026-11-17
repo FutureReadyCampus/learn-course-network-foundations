@@ -44,11 +44,11 @@ source:
   - 쓸 내용: ① 연결되지 않은 이유(두 조건과 단계 4 의 두 숫자) ② 연결하지 않아서 탐지하지 못할 수 있는 것
   - 답:
 
-## Exercise 7-2 · 탐지된 규칙에 점수를 매겨 등급과 이유를 day03_risk_scores.json 에 저장하기
+## Exercise 7-2 · 탐지된 규칙에 점수를 매겨 등급과 이유를 unit05_risk_scores.json 에 저장하기
 
 
 
-#### Exercise 7-2 · 탐지된 규칙에 점수를 매겨 등급과 이유를 day03_risk_scores.json 에 저장하기
+#### Exercise 7-2 · 탐지된 규칙에 점수를 매겨 등급과 이유를 unit05_risk_scores.json 에 저장하기
 
 - (가) 실행한 출력 전체를 붙여 넣고, high · mid · low 에 각각 어떤 대상이 들어갔는지 적어 주세요.
   - 쓸 내용: ① 출력 전체(코드 상자에 붙여 넣기) ② high 에 들어간 대상 ③ mid 에 들어간 대상 ④ low 에 들어간 대상
