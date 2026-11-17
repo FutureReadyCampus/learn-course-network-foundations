@@ -1,6 +1,6 @@
 ---
 id: m5-u02-l03
-title: Exercise 2-2 · 맥락에 따라 처리 경로 나누기
+title: 실습 2-2 · 맥락에 따라 처리 경로 나누기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,7 +9,7 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 2-2 · 맥락에 따라 처리 경로 나누기
+# 실습 2-2 · 맥락에 따라 처리 경로 나누기
 
 ## 이번 의뢰: 오탐과 VIP 계정 구분
 
@@ -24,7 +24,7 @@ source:
 
 > **읽을거리 — 문제가 아닙니다.** 읽고 이해만 합니다.
 
-## 읽기 · 2.1 조건 분기(branching) — 맥락에 따라 알림을 서로 다른 처리 경로로 분기한다
+## 2.1 조건 분기(branching) — 맥락에 따라 알림을 서로 다른 처리 경로로 분기한다
 
 알림을 조건에 따라 세 가지 처리 경로(route) 가운데 하나로 분류해 보냅니다. 이처럼 조건에 따라 실행 경로를 나누는 일을 **조건 분기**(branching, 브랜칭)라고 하며, SOAR 플레이북에서는 알림의 맥락이나 신뢰도에 따라 자동 실행과 분석가 검토 중 하나를 선택하는 데 씁니다.
 
@@ -73,7 +73,7 @@ routing.py   is_only_ip_related : 규칙을 하나씩 꺼내 IP 관련이 아닌
 
 > **여기부터 문제입니다.**
 
-## Exercise 2-2 · 경로 분기하고 경로별 건수 세기
+## 실습 2-2 · 경로 분기하고 경로별 건수 세기
 
 **이런 상황이 있습니다**
 
@@ -83,7 +83,7 @@ routing.py   is_only_ip_related : 규칙을 하나씩 꺼내 IP 관련이 아닌
 
 **할 일**: 두 파일을 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 1 · 2 를 읽습니다.
 
-**`routing.py`** — 맥락을 보고 처리 경로를 정합니다. 이 파일이 정한 경로(`승인 필요` · `오탐 종료` · `기본`)를 Unit 3의 Exercise 3-1 이후에도 씁니다. 직접 쓰는 곳은 1 ~ 7번입니다.
+**`routing.py`** — 맥락을 보고 처리 경로를 정합니다. 이 파일이 정한 경로(`승인 필요` · `오탐 종료` · `기본`)를 Unit 3의 실습 3-1 이후에도 씁니다. 직접 쓰는 곳은 1 ~ 7번입니다.
 
 ```python
 from incident import change_status                                          # Unit 1 파일의 상태 바꾸기 함수를 불러온다
@@ -126,11 +126,11 @@ def apply_route(incident, route, reason, incident_log):                     # �
     incident_log.append(entry)                                              # 기록 리스트에 추가한다
 ```
 
-**`exercise2-2_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. Exercise 2-1의 `enrichment.py` 가 같은 폴더에 있어야 합니다.
+**`exercise2-2_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실습 2-1의 `enrichment.py` 가 같은 폴더에 있어야 합니다.
 
 ```python
 from incident import load_json, INCIDENTS_PATH                      # Unit 1 파일의 함수를 불러온다
-from enrichment import enrich_incident                              # Exercise 2-1에서 만든 함수를 불러온다
+from enrichment import enrich_incident                              # 실습 2-1에서 만든 함수를 불러온다
 from routing import decide_route, apply_route                       # 방금 만든 함수를 불러온다
 
 incidents = load_json(INCIDENTS_PATH)                               # 인시던트 파일을 리스트로 읽는다
@@ -162,18 +162,18 @@ for route in route_counts:                                          # 경로를 
    touch routing.py exercise2-2_run.py
    ls
    ```
-2. **[VS Code]** `routing.py` 1 ~ 7번, `exercise2-2_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 2-2 한눈에」를 봅니다.
+2. **[VS Code]** `routing.py` 1 ~ 7번, `exercise2-2_run.py` 8 · 9번을 씁니다. 막히면 아래 「실습 2-2 정리」를 봅니다.
 3. **[터미널]** 실행합니다(맥북은 `python3`).
    ```bash
    python exercise2-2_run.py
    ```
 4. 출력은 두 단계입니다. 단계 1 은 알림 5건이 한 줄씩 나오고 한 줄에는 번호 · 대상 · 등급이 나오고, `->` 뒤에 경로 · 이유가 나오며, 괄호 안에 상태가 나옵니다. 단계 2 는 경로마다 한 줄씩 3줄입니다.
-5. **[보고서]** Unit 2 의 `## Exercise 2-2` 아래를 채웁니다.
+5. **[보고서]** Unit 2 의 `## 실습 2-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 경로별 건수와 `종료` 상태가 된 알림의 번호를 적어 주세요.
    - (나) [핵심 질문] INC-002 와 INC-004 는 둘 다 신뢰 IP 에서 접속했는데 INC-002 는 `기본`, INC-004 는 `오탐 종료` 입니다. 두 알림의 `reasons` 를 근거로 경로가 달라진 이유를 적어 주세요.
    - (다) [핵심 질문] 6번 조건보다 4번 VIP 판정을 먼저 두었습니다. VIP 계정이 신뢰 IP 에서 접속했고 `평소와 다른 IP` 규칙 하나만 탐지되었다고 가정해 보세요. 이 알림이 어느 경로로 분기되는지 적어 주세요. 그리고 4번과 6번 조건의 순서를 바꾸면 무엇이 달라지는지 적어 주세요.
 
-## Exercise 2-2 한눈에
+## 실습 2-2 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|

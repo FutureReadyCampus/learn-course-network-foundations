@@ -1,6 +1,6 @@
 ---
 id: m3-u08-l02
-title: Exercise 8-1 · 회수 대상의 회수 계획 세우기
+title: 실습 8-1 · 회수 대상의 회수 계획 세우기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,11 +9,11 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 8-1 · 회수 대상의 회수 계획 세우기
+# 실습 8-1 · 회수 대상의 회수 계획 세우기
 
-## 이번에 만들 것: 회수 계획
+## 목표: 회수 계획
 
-> **이번 Exercise에 들어온 일**
+> **이번 실습에 들어온 일**
 >
 > A사 관제 담당이 보낸 메시지:
 > 「Unit 7의 점검 결과에서 회수할 권한이 8건 나왔습니다. 그런데 바로 지워도 되는지 걱정됩니다. 예외로 받은 권한은 그 예외만 지우면 되지만, 역할로 받은 권한은 같은 역할을 가진 다른 사람에게도 영향이 갈 수 있기 때문입니다.
@@ -21,18 +21,18 @@ source:
 > 지우기 전에 8건을 어떤 방법으로 회수할지, 그 회수로 몇 건의 권한이 사라지는지를 먼저 리스트로 보여 주세요.」
 > - **왜 중요한가**: 권한을 잘못 지우면 일하던 사람이 갑자기 접근하지 못합니다. 지우기 전에 방법과 영향을 먼저 확인하면 실수를 줄일 수 있습니다.
 
-> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「문제」 전까지는 이 Exercise의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
+> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「문제」 전까지는 이 실습의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
 
-## 읽기 · 앞 Unit 흐름 복습
+## 앞 Unit 흐름 복습
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
 | Unit | 한 일 | 이번 Unit으로 이어지는 것 |
 |---|---|---|
 | Unit 6 · Unit 7 | 현황 리스트 → 규칙(퇴사 · 만료)과 사용 이력(권한을 마지막으로 쓴 시각의 기록. 90일)으로 후보 찾기 → 후보 10건에서 회수 제외 2건을 뺌 | 회수 대상 8건(`load_to_revoke` 가 리턴하는 리스트, 코드에서는 `findings`). 회수 제외 리스트의 3건 중 dami 의 권한은 「퇴사한 계정」이라 제외하지 않아, 실제 제외는 gaeun 의 `ACCOUNT:CHANGE` · seoyeon 의 `SALES:CHANGE` 2건입니다. |
-| Unit 2 | 역할 부여 · 퇴사 처리(`revoke_access`), 예외 만료, 최종 판정 `evaluate_access` | Exercise 8-3의 회수 확인에 다시 씀 |
+| Unit 2 | 역할 부여 · 퇴사 처리(`revoke_access`), 예외 만료, 최종 판정 `evaluate_access` | 실습 8-3의 회수 확인에 다시 씀 |
 
-## 읽기 · 왜 회수 계획이 필요한가
+## 왜 회수 계획이 필요한가
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
@@ -43,7 +43,7 @@ source:
      - 역할에서 권한을 빼면 그 역할을 가진 **모든 사용자**가 권한을 잃습니다.
 3. 그래서 지우기 전에 방법과 영향을 정리한 **회수 계획**을 먼저 만듭니다. 계획은 실제로는 아무것도 지우지 않는 미리보기(dry-run · 드라이 런)입니다.
 
-## 읽기 · 1.1 회수 방법과 영향 범위
+## 1.1 회수 방법과 영향 범위
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
@@ -51,7 +51,7 @@ source:
   - 권한은 두 길로 받습니다. 예외(`EXCEPTIONS`)로 받거나, 사용자의 역할(`USERS` 의 `role` 이 가리키는 `ROLES`)로 받습니다.
   - 그래서 방법은 **예외 삭제 · 역할 해제 · 역할에서 권한 빼기** 세 가지입니다.
 - **영향**(impact · 임팩트)은 이 회수로 사용자들이 잃는 권한을 하나씩 센 수입니다(예: dami 가 권한 2개를 잃으면 2).
-- **이번 Exercise에서 쓰는 데이터의 모양**
+- **이번 실습에서 쓰는 데이터의 모양**
   - `USERS`: `{"seoyeon": {"role": "sales", "employed": True}, "junho": {"role": "finance", "employed": True}, "dami": {"role": "sales", "employed": False}, …}`
   - `ROLES`: `{"sales": ["SALES:QUERY", "SALES:CHANGE"], "finance": ["SALES:QUERY", "SETTLE:QUERY"], …}` (역할 이름 → 권한 리스트)
   - `EXCEPTIONS`: 예외 한 건은 `{"id": 3, "user": "dami", "permission": "SALES:QUERY", …}` 모양입니다.
@@ -154,7 +154,7 @@ plans 를 리턴한다
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## Exercise 8-1 · 회수 방법과 영향 범위 정하기
+## 실습 8-1 · 회수 방법과 영향 범위 정하기
 
 **이런 상황이 있습니다**
 
@@ -175,11 +175,11 @@ plans 를 리턴한다
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
-from review_list import build_access_list                        # Exercise 6-1에서 만든 현황 함수를 불러온다
-from review_rules import find_stale                              # Exercise 6-2에서 만든 규칙 점검 함수를 불러온다
-from review_unused import load_last_used, find_unused            # Exercise 6-3에서 만든 안 쓴 권한 점검 함수를 불러온다
-from overprivilege import generate_report                        # Exercise 7-1에서 만든 리포트 함수를 불러온다
-from report_exclude import load_exclude_map, split_by_exclude    # Exercise 7-2에서 만든 회수 제외 함수를 불러온다
+from review_list import build_access_list                        # 실습 6-1에서 만든 현황 함수를 불러온다
+from review_rules import find_stale                              # 실습 6-2에서 만든 규칙 점검 함수를 불러온다
+from review_unused import load_last_used, find_unused            # 실습 6-3에서 만든 안 쓴 권한 점검 함수를 불러온다
+from overprivilege import generate_report                        # 실습 7-1에서 만든 리포트 함수를 불러온다
+from report_exclude import load_exclude_map, split_by_exclude    # 실습 7-2에서 만든 회수 제외 함수를 불러온다
 
 REVIEW_TIME = datetime.strptime("2026-10-29 14:00", "%Y-%m-%d %H:%M")   # Unit 7에서 점검한 시각(고정). 같은 결과를 얻으려고 그 시각을 쓴다
 TIME_FORMAT = "%Y-%m-%d %H:%M"                                   # 시각 문자열의 형식
@@ -314,7 +314,7 @@ def plan_revocation(findings, users, roles):                     # 회수 대상
   - `count_users_by_role` 의 `for info in users.values():` 에서 `.values()` 는 딕셔너리의 값만 하나씩 꺼냅니다.
 - **`load_to_revoke`**(`revoke_input.py` 에 들어 있고 그대로 붙여 넣습니다): Unit 7의 점검을 같은 방법으로 다시 해서 회수 대상 8건을 만듭니다.
   - 같은 결과를 얻으려고 점검 시각은 `2026-10-29 14:00` 으로 고정했습니다.
-- 이번 Exercise의 데이터에서 영향이 2건 이상인 계획은 dami 의 역할 해제 두 건(영향 2)이고, Exercise 8-2에서 승인 대상이 됩니다.
+- 이번 실습의 데이터에서 영향이 2건 이상인 계획은 dami 의 역할 해제 두 건(영향 2)이고, 실습 8-2에서 승인 대상이 됩니다.
 - 10번의 `elif not info["employed"]` 는 「재직 여부(`employed`)가 `False` 이면」입니다.
   - 주석 목록의 10번이 `elif` 입니다.
   - `not` 은 참과 거짓을 뒤집습니다.
@@ -366,12 +366,12 @@ for role in names_by_role:                                       # 두 역할을
    python exercise8-1_run.py
    ```
 4. 출력은 세 단계입니다. 단계 1은 `회수 대상 8 건의 회수 방법` 줄과 계획 여덟 줄, 단계 2는 방법별 건수 딕셔너리 한 줄, 단계 3은 역할 두 줄(사용자 수와 이름)입니다.
-5. **[보고서]** Unit 8 의 `## Exercise 8-1` › `#### Exercise 8-1` 아래를 채웁니다.
+5. **[보고서]** Unit 8 의 `## 실습 8-1` › `#### 실습 8-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 회수 방법별 건수와 `finance` · `sales` 역할의 사용자 수를 적어 주세요.
    - (나) [핵심 질문] dami 의 역할 `sales` 권한 `SALES:QUERY` 를 「`sales` 역할에서 `SALES:QUERY` 권한 빼기」로 회수했다면 누가 영향을 받았을까요? 코드가 퇴사한 dami 를 「역할 해제」로 정한 이유도 적어 주세요.
    - (다) [핵심 질문] 회수 대상 8건 가운데 dami 의 권한이 3건입니다. 실제로 지우기 전에 회수 계획을 리스트로 먼저 만들어 보는 이유와, dami 3건을 처리하려고 데이터를 실제로 바꾸는 작업의 종류가 몇 가지인지(`users` 의 dami 정보를 바꾸는 일, 예외 리스트 `EXCEPTIONS` 에서 지우는 일 중 몇 가지가 필요한지) 적어 주세요.
 
-## Exercise 8-1 한눈에
+## 실습 8-1 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|

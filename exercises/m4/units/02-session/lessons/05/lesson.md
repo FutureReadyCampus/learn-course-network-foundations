@@ -17,7 +17,7 @@ source:
 
 ---
 
-## Exercise 2-1 정답
+## 실습 2-1 정답
 
  **터미널에 입력합니다.**
 
@@ -113,7 +113,7 @@ ValueError: time data '02/Nov/2026:09:01:05 +0900' does not match format '%Y-%m-
 
 ---
 
-## Exercise 2-2 정답
+## 실습 2-2 정답
 
  **터미널에 입력합니다.**
 
@@ -197,7 +197,7 @@ KeyError: True
 
 ---
 
-## Exercise 2-3 정답
+## 실습 2-3 정답
 
  **터미널에 입력합니다.**
 
@@ -298,7 +298,7 @@ ls
 
 **결과**
 
-- <mark>이번 Unit에서 만든 파일 아홉 개와 안내 · 보고서 두 파일이 보여야 합니다.</mark> 깃허브에 올리는 일은 Unit 3의 Exercise 3-2 마지막에 합니다.
+- <mark>이번 Unit에서 만든 파일 아홉 개와 안내 · 보고서 두 파일이 보여야 합니다.</mark> 깃허브에 올리는 일은 Unit 3의 실습 3-2 마지막에 합니다.
 
 ---
 
@@ -306,7 +306,7 @@ ls
 
 Unit 1의 파일이 없거나 잘 안 될 때 이 코드로 만듭니다. <mark>`anomaly_detection` 폴더 바로 아래에 같은 이름으로 만듭니다.</mark>
 
-**`log_parse.py`** (Unit 1의 Exercise 1-1 완성본)
+**`log_parse.py`** (Unit 1의 실습 1-1 완성본)
 
 ```python
 def split_request(line):                                # 로그 한 줄(문자열)을 받는 함수

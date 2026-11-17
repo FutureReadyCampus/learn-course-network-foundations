@@ -1,6 +1,6 @@
 ---
 id: m5-u10-l04
-title: Exercise 10-3 · 정책 준수 점검과 회고 문서
+title: 실습 10-3 · 정책 준수 점검과 회고 문서
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,20 +9,20 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 10-3 · 정책 준수 점검과 회고 문서
+# 실습 10-3 · 정책 준수 점검과 회고 문서
 
-## 이번에 만들 것: 정책 점검 표와 회고
+## 목표: 정책 점검 표와 회고
 
 > **오늘 들어온 일**
 >
-> - **상황**: Exercise 10-1과 Exercise 10-2에서 엔진을 실행하면 처리 결과 로그가 남습니다(`engine_log.json` 8건 · `risk_engine_log.json` 5건). 이번 Unit에서 고객사 보안 담당자가 「승인 게이트와 허용 목록 · VIP 예외가 정책대로 지켜졌는지 로그로 확인해 달라」고 요청합니다. 시험 운영 때 승인 게이트를 끄고 알림 5건(`INC-401` · `INC-403` ~ `INC-406`)을 처리한 로그 `gate_off_log.json` 도 점검 대상입니다.
+> - **상황**: 실습 10-1과 실습 10-2에서 엔진을 실행하면 처리 결과 로그가 남습니다(`engine_log.json` 8건 · `risk_engine_log.json` 5건). 이번 Unit에서 고객사 보안 담당자가 「승인 게이트와 허용 목록 · VIP 예외가 정책대로 지켜졌는지 로그로 확인해 달라」고 요청합니다. 시험 운영 때 승인 게이트를 끄고 알림 5건(`INC-401` · `INC-403` ~ `INC-406`)을 처리한 로그 `gate_off_log.json` 도 점검 대상입니다.
 > - **문제**: 로그를 사람이 한 줄씩 읽으면 알림이 늘수록 놓치기 쉽습니다. 게다가 로그의 `decision`(결정) 값은 엔진이 적은 값이라서, 게이트를 끈 로그에는 모든 조치가 「자동」으로 적혀 있습니다. <mark style="background:#ffc4d6">결정 값만 읽으면 게이트를 끈 로그에서 위반을 찾지 못합니다.</mark>
 > - **부탁**: 로그마다 네 가지(게이트 우회 실행 · 허용 목록 IP 차단 · VIP 계정 잠금 · 티켓 없는 조치)를 자동으로 점검해 PASS · FAIL 표를 만들어 주세요. 게이트 우회 실행은 로그에 저장된 조치 요청으로 <mark style="background:#e0d4ff">Unit 8의 `decide_gate`</mark> 를 다시 호출해 결정을 새로 구한 뒤, 실행 여부와 비교합니다. 점검이 끝나면 Unit 1~10 전체 회고 문서를 쓰고 저장소에 올려 주세요.
-> - **바뀌는 점**: 점검 12개 가운데 <mark style="background:#bde3ff">FAIL 2개</mark>가 나오고, 모두 `gate_off_log.json` 에서 나옵니다. 이번 Unit의 Exercise 10-1 · Exercise 10-2에서 만든 로그 두 개는 점검 8개가 모두 PASS 입니다. 상황과 이름은 설명을 위한 예시입니다.
+> - **바뀌는 점**: 점검 12개 가운데 <mark style="background:#bde3ff">FAIL 2개</mark>가 나오고, 모두 `gate_off_log.json` 에서 나옵니다. 이번 Unit의 실습 10-1 · 실습 10-2에서 만든 로그 두 개는 점검 8개가 모두 PASS 입니다. 상황과 이름은 설명을 위한 예시입니다.
 
 > **읽을거리 — 문제가 아닙니다.** 읽고 이해만 합니다.
 
-## 읽기 · 3.1 로그로 정책 준수 점검하기
+## 3.1 로그로 정책 준수 점검하기
 
 | 점검 | 위반으로 보는 것 | 찾는 방법 | 번호 |
 |---|---|---|---|
@@ -52,7 +52,7 @@ policy_check.py   count_executed         : 실행한 조치 수를 센다 (미�
 
 > **여기부터 문제입니다.**
 
-## Exercise 10-3 · 정책 준수 PASS · FAIL 표
+## 실습 10-3 · 정책 준수 PASS · FAIL 표
 
 **이런 상황이 있습니다**
 
@@ -64,7 +64,7 @@ policy_check.py   count_executed         : 실행한 조치 수를 센다 (미�
 
 **`gate_off_log.json`** — 시험 운영 때 승인 게이트를 끄고(모든 조치 요청의 결정을 「자동」으로 바꾸고) 알림 5건을 처리한 로그입니다.
 
-- 알림 한 건이 한 줄입니다. Exercise 10-1 `engine_log.json` 과 같은 꼴이고, 조치마다 `executed` · `before` · `after` 와 승인 게이트가 본 조치 요청 `request` 가 들어 있습니다.
+- 알림 한 건이 한 줄입니다. 실습 10-1 `engine_log.json` 과 같은 꼴이고, 조치마다 `executed` · `before` · `after` 와 승인 게이트가 본 조치 요청 `request` 가 들어 있습니다.
 - 모든 `decision` 이 「자동」이고 이유가 「승인 게이트 끔」입니다.
 
 ```
@@ -193,13 +193,13 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
 
 **순서**
 
-1. **[터미널]** 먼저 Exercise 10-1 · Exercise 10-2 로그가 있는지 확인합니다. <mark>`ls` 결과에 `engine_log.json` 과 `risk_engine_log.json` 이 보이면</mark> 됩니다. 없으면 `python exercise10-1_run.py` 와 `python exercise10-2_run.py` 를 먼저 실행합니다(맥북은 `python3`). 그다음 파일 세 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
+1. **[터미널]** 먼저 실습 10-1 · 실습 10-2 로그가 있는지 확인합니다. <mark>`ls` 결과에 `engine_log.json` 과 `risk_engine_log.json` 이 보이면</mark> 됩니다. 없으면 `python exercise10-1_run.py` 와 `python exercise10-2_run.py` 를 먼저 실행합니다(맥북은 `python3`). 그다음 파일 세 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
    ```bash
    pwd
    ls
    touch gate_off_log.json policy_check.py exercise10-3_run.py
    ```
-2. **[VS Code]** `policy_check.py` 1 ~ 6번, `exercise10-3_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「Exercise 10-3 한눈에」를 봅니다.
+2. **[VS Code]** `policy_check.py` 1 ~ 6번, `exercise10-3_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「실습 10-3 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python exercise10-3_run.py
@@ -210,7 +210,7 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
 5. **[VS Code]** 새로 생긴 `policy_check.json` 을 열어 <mark>12개 점검이 들어 있는지</mark> 봅니다.
 6. **[VS Code]** Unit 1~10 전체 회고 문서 `unit10_final_retrospective.md` 를 만듭니다. 파일 이름의 `unit10` 은 강의계획서의 Unit 10(이번 Unit)입니다. **[터미널]** 에서 `touch unit10_final_retrospective.md` 로 빈 파일을 만든 뒤, 아래 틀을 붙여 넣고 `…` 를 채웁니다. 틀은 지우지 않고 그대로 둡니다.
 
-   - 1절은 엔진이 각 Unit의 파일을 어디에 쓰는지 한 문장씩 씁니다(Exercise 10-1 `soar_engine.py` 의 `import` 줄과 오늘 만든 파일이 근거입니다).
+   - 1절은 엔진이 각 Unit의 파일을 어디에 쓰는지 한 문장씩 씁니다(실습 10-1 `soar_engine.py` 의 `import` 줄과 오늘 만든 파일이 근거입니다).
    - 2절은 <mark>오늘 출력이나 코드에서 근거를 찾아</mark> 운영에서 깨질 수 있는 곳 세 가지와 막는 방법을 씁니다.
    - 3절은 캡스톤 주제 가운데 하나를 고르고, 새 코드를 쓰지 않고 설정 파일만 바꿔 시작할 수 있는 것을 씁니다.
 
@@ -252,12 +252,12 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
    - 캡스톤 첫날 새 코드 없이 바꿔 볼 설정 파일 2개: …
    - 그대로 가져다 쓸 내 파일 3개: …
    ````
-7. **[보고서]** Unit 10 의 `## Exercise 10-3` 아래를 채웁니다.
+7. **[보고서]** Unit 10 의 `## 실습 10-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, FAIL 이 나온 로그와 FAIL 이 나온 점검 이름 · 위반한 알림 번호를 적어 주세요.
    - (나) [핵심 질문] `gate_off_log.json` 의 `INC-405` 는 `decision` 이 「자동」인데 점검 ①에서 위반으로 나옵니다. 그 `request` 의 `users_on_ip` 와 승인 정책의 점수를 근거로 다시 구한 결정을 적고, 로그의 `decision` 만 읽으면 위반을 놓치는 이유를 적어 주세요.
    - (다) [핵심 질문] `INC-406`(`gaeun`)은 점검 ①은 FAIL 인데 점검 ③은 PASS 입니다. 그 알림의 `before` · `after` 를 근거로 `gaeun` 이 잠기지 않은 이유를 Unit 4의 `lock_account` 와 연결해 적고, 점검 ③이 게이트와 별도로 필요한 이유를 적어 주세요.
 
-## Exercise 10-3 한눈에
+## 실습 10-3 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
@@ -273,7 +273,7 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
 
 ## 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기
 
-<mark>문제가 아니라 Unit 1~10에서 만든 것을 저장소에 올리는 마무리입니다.</mark> Exercise 10-3 마지막 약 10분에 합니다. 어느 터미널을 써도 됩니다. 먼저 `pwd` 로 위치를 확인하고, 결과가 `soar_response` 로 끝나면 아래 1번의 `cd ..` 를 칩니다.
+<mark>문제가 아니라 Unit 1~10에서 만든 것을 저장소에 올리는 마무리입니다.</mark> 실습 10-3 마지막 약 10분에 합니다. 어느 터미널을 써도 됩니다. 먼저 `pwd` 로 위치를 확인하고, 결과가 `soar_response` 로 끝나면 아래 1번의 `cd ..` 를 칩니다.
 
 **이런 상황이 있습니다**
 
@@ -340,7 +340,7 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
 
 3. **[보고서]** Unit 10 의 `### 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기` 아래를 채웁니다. <mark>올리기 전에 채워야</mark> 깃허브에 빈칸 없이 올라갑니다.
    - (가) `git status` 를 쳤을 때 `.env` 나 `.venv` 가 보였는지, 보였다면 어떻게 했는지 적어 주세요.
-   - <mark>Unit 10의 앞선 Exercise에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.</mark> 올린 뒤에 이어서 적어 다시 올려도 됩니다.
+   - <mark>Unit 10의 앞선 실습에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.</mark> 올린 뒤에 이어서 적어 다시 올려도 됩니다.
 4. **[터미널]** 바뀐 파일을 모두 올릴 목록에 추가하고(`add`), 기록하고(`commit`), 올립니다(`push`). 세 명령을 순서대로 하나씩 칩니다.
 
    ① 바뀐 파일을 모두 올릴 목록에 추가합니다.
@@ -378,7 +378,7 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
    - 깃허브에 안 보이는 파일이 있으면, 그 파일이 VS Code 왼쪽 목록의 `soar_response` 폴더에 내 PC 에도 있는지 봅니다.
      - 없으면 다른 폴더에 만든 것이니 `soar_response` 안으로 이동하고, `pwd` 로 위치를 확인한 뒤 2번의 `git status` 부터 다시 합니다.
 
-## 마무리 한눈에
+## 마무리 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
@@ -392,17 +392,17 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
 
 | 확인 | 문제 |
 |---|---|
-| 알림을 승인 게이트를 거쳐 조치하고 티켓을 남기며, 오류가 난 알림은 실패로 격리하는 통합 엔진을 만들었다 | Exercise 10-1 |
-| Module 4 탐지 결과를 점검해 엔진의 입력으로 바꾸고, 실행해 운영 요약을 만들었다 | Exercise 10-2 |
-| 엔진 로그를 정책 네 가지로 점검하고, Unit 1~10 전체 회고 문서를 쓰고, 깃허브에 올렸다 | Exercise 10-3 · 마무리 |
+| 알림을 승인 게이트를 거쳐 조치하고 티켓을 남기며, 오류가 난 알림은 실패로 격리하는 통합 엔진을 만들었다 | 실습 10-1 |
+| Module 4 탐지 결과를 점검해 엔진의 입력으로 바꾸고, 실행해 운영 요약을 만들었다 | 실습 10-2 |
+| 엔진 로그를 정책 네 가지로 점검하고, Unit 1~10 전체 회고 문서를 쓰고, 깃허브에 올렸다 | 실습 10-3 · 마무리 |
 
 **강의계획서 평가 기준 확인**
 
 | 기준 | 확인할 곳 |
 |---|---|
-| Module 4 탐지 결과부터 Module 5 대응까지 종단간으로 오류 없이 동작한다 | Exercise 10-2 단계 3 ~ 5 <mark style="background:#bde3ff">(Module 4 5건 → 알림 5건 → 자동 실행 2건 · 조치 없음 3건 · 실패 0건)</mark> |
-| 승인 게이트가 위험도에 따라 정확히 작동한다 | Exercise 10-1 단계 2 · 3 <mark style="background:#bde3ff">(자동 실행 2 · 승인 대기 2 · 차단 금지 1)</mark>, Exercise 10-3 점검 ① |
-| 모듈이 서로 이어져 하나의 흐름으로 동작한다 | Exercise 10-1 `soar_engine.py` 의 `import` 6줄, 회고 문서 1절 |
+| Module 4 탐지 결과부터 Module 5 대응까지 종단간으로 오류 없이 동작한다 | 실습 10-2 단계 3 ~ 5 <mark style="background:#bde3ff">(Module 4 5건 → 알림 5건 → 자동 실행 2건 · 조치 없음 3건 · 실패 0건)</mark> |
+| 승인 게이트가 위험도에 따라 정확히 작동한다 | 실습 10-1 단계 2 · 3 <mark style="background:#bde3ff">(자동 실행 2 · 승인 대기 2 · 차단 금지 1)</mark>, 실습 10-3 점검 ① |
+| 모듈이 서로 이어져 하나의 흐름으로 동작한다 | 실습 10-1 `soar_engine.py` 의 `import` 6줄, 회고 문서 1절 |
 
 ---
 

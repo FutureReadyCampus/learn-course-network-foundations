@@ -1,6 +1,6 @@
 ---
 id: m5-u07-l02
-title: Exercise 7-1 · 기한 초과 티켓 에스컬레이션
+title: 실습 7-1 · 기한 초과 티켓 에스컬레이션
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 7-1 · 기한 초과 티켓 에스컬레이션
+# 실습 7-1 · 기한 초과 티켓 에스컬레이션
 
-## 이번에 만들 것: 에스컬레이션 함수
+## 목표: 에스컬레이션 함수
 
 > **오늘 들어온 일**
 >
@@ -31,7 +31,7 @@ source:
 
 > **읽을거리 — 문제가 아닙니다.** 읽고 이해만 합니다.
 
-## 읽기 · 1.1 에스컬레이션 규칙의 세 요소
+## 1.1 에스컬레이션 규칙의 세 요소
 
 **에스컬레이션**(escalation, 에스컬레이션: 처리되지 않는 일을 더 높은 책임자에게 넘기는 절차)은 미리 정한 규칙에 따라 실행합니다. 규칙은 아래 세 가지, 즉 <mark>언제 시작하는지(발동 시점), 어느 티켓이 대상인지(대상 티켓), 누구에게 통보하는지(통보 대상)</mark>를 정합니다. 오늘은 담당자보다 높은 직급(팀장 · 관제 센터장)에게 넘깁니다. 이 방식은 **계층적 에스컬레이션**(hierarchical escalation, 하이어라키컬 에스컬레이션: 지휘 체계를 따라 더 높은 권한자에게 넘기는 방식)에 해당합니다. 전문성이 더 높은 기술 팀에 넘기는 방식은 기능적 에스컬레이션(functional escalation)이라고 따로 부릅니다.
 
@@ -45,7 +45,7 @@ source:
 - 이미 실행한 에스컬레이션 단계는 반복하지 않습니다. 티켓의 `escalation_level` 에 실행한 단계를 기록합니다. 그리고 기록된 단계보다 더 높은 단계에 해당할 때만 에스컬레이션합니다. 예를 들어 `escalation_level` 이 1 인 티켓은 1단계에 해당하는 동안 다시 통보하지 않고, 초과 시간이 30분 이상이 되어 2단계에 해당할 때 통보합니다. <mark style="background:#ffc4d6">점검할 때마다 같은 티켓을 반복해서 통보하면 상급자가 알림 피로를 겪어 알림을 무시하게 됩니다</mark>.
 - 등급 low 는 응답 기한이 240분입니다. 그래서 오늘 점검 시각(20 · 60 · 110분)은 모두 응답 기한 시각보다 이릅니다. 예를 들어 `TCK-2` 의 응답 기한 시각은 243분입니다. 따라서 등급 low 티켓은 에스컬레이션 대상이 아닙니다.
 - 점검 시각은 20분, 60분, 110분입니다(근무 시작 시점을 0분으로 하는 상대 시각). 이처럼 정해진 주기로 상태를 반복 조회하는 방식을 폴링(polling, 폴링: 일정한 간격으로 상태를 반복해서 확인하는 방식)이라고 합니다. 실제 운영에서는 몇 분마다 자동으로 점검합니다.
-- 상급자에게 통보하는 기능은 Unit 6의 Exercise 6-3의 `send_with_retry`(알림 전송에 실패하면 최대 3회까지 재시도(retry)하는 함수)를 재사용합니다. Unit 6의 Exercise 6-3 `ticket_notice.py` 를 가져와 사용(import)합니다.
+- 상급자에게 통보하는 기능은 Unit 6의 실습 6-3의 `send_with_retry`(알림 전송에 실패하면 최대 3회까지 재시도(retry)하는 함수)를 재사용합니다. Unit 6의 실습 6-3 `ticket_notice.py` 를 가져와 사용(import)합니다.
 
 아래 함수 네 개와 실행 파일 가운데 직접 쓰는 곳은 **아홉 군데**입니다.
 
@@ -59,7 +59,7 @@ escalation.py   overdue_minutes   : 응답 기한을 넘긴 시간(분)을 구�
 
 > **여기부터 문제입니다.**
 
-## Exercise 7-1 · 기한 초과 티켓 에스컬레이션
+## 실습 7-1 · 기한 초과 티켓 에스컬레이션
 
 **이런 상황이 있습니다**
 
@@ -69,10 +69,10 @@ escalation.py   overdue_minutes   : 응답 기한을 넘긴 시간(분)을 구�
 
 **할 일**: 두 파일을 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 알림 서버를 실행한 상태에서 프로그램을 실행합니다. 그리고 단계 2 · 3 의 출력과 서버 터미널의 수신 로그를 해석합니다.
 
-**`escalation.py`** — 응답 기한이 지난 티켓을 상급자에게 올립니다. Exercise 7-2에서도 이 파일을 가져와 사용(import)합니다. 직접 쓰는 곳은 1 ~ 6번입니다. 5번 아래에는 `if` 한 줄을, 6번 아래에는 한 단계 더 들여쓴 줄을 씁니다.
+**`escalation.py`** — 응답 기한이 지난 티켓을 상급자에게 올립니다. 실습 7-2에서도 이 파일을 가져와 사용(import)합니다. 직접 쓰는 곳은 1 ~ 6번입니다. 5번 아래에는 `if` 한 줄을, 6번 아래에는 한 단계 더 들여쓴 줄을 씁니다.
 
 ```python
-from ticket_notice import send_with_retry, MAX_TRIES                                       # Exercise 6-3에 만든 재시도 함수를 불러온다
+from ticket_notice import send_with_retry, MAX_TRIES                                       # 실습 6-3에 만든 재시도 함수를 불러온다
 
 
 def overdue_minutes(ticket, now):                                                          # 티켓과 지금 시각(분)을 받는 함수
@@ -130,10 +130,10 @@ def escalate_ticket(ticket, now, rules):                                        
 
 ```python
 from incident import load_json                                                       # Unit 1 파일의 JSON 읽기 함수를 불러온다
-from ticket_merge import change_ticket_status                                        # Exercise 6-2에 만든 상태 바꾸기 함수를 불러온다
+from ticket_merge import change_ticket_status                                        # 실습 6-2에 만든 상태 바꾸기 함수를 불러온다
 from escalation import overdue_minutes, needs_escalation, escalate_ticket            # 방금 만든 함수를 불러온다
 
-tickets = load_json("tickets_unit09.json")                                             # Unit 6의 Exercise 6-3에서 저장한 티켓을 읽는다
+tickets = load_json("tickets_unit09.json")                                             # Unit 6의 실습 6-3에서 저장한 티켓을 읽는다
 rules = load_json("config/escalation_rules.json")                                    # 규칙 파일을 읽는다
 steps_count = len(rules["escalation_steps"])                                         # 올림 단계가 몇 개인지 센다
 print("--- 단계 1: 불러온 티켓", len(tickets), "장 · 올림 단계", steps_count, "개")  # 단계 1 시작을 알리는 줄
@@ -168,18 +168,18 @@ for ticket in tickets:                                                          
    touch escalation.py exercise7-1_run.py
    ls
    ```
-2. **[VS Code]** `escalation.py` 1 ~ 6번, `exercise7-1_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「Exercise 7-1 한눈에」를 봅니다.
+2. **[VS Code]** `escalation.py` 1 ~ 6번, `exercise7-1_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「실습 7-1 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`). 알림 서버 터미널은 켜 둡니다.
    ```bash
    python exercise7-1_run.py
    ```
 4. 출력은 세 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 제목 줄 하나만 나옵니다(숫자가 제목 줄 안에 함께 나옵니다). 단계 2 는 제목 아래 8줄입니다. 단계 3 은 제목 아래 4줄입니다(올린 횟수는 제목 줄 안에 있습니다). <mark>알림 서버 터미널에는 `[알림 받음]` 줄이 4개 찍힙니다.</mark>
-5. **[보고서]** Unit 7 의 `## Exercise 7-1` 아래를 채웁니다.
+5. **[보고서]** Unit 7 의 `## 실습 7-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣어 주세요. 그리고 알림 서버 터미널에 출력된 `[알림 받음]` 줄 수와 단계 3 의 올린 횟수(에스컬레이션 실행 횟수)를 적어 주세요.
    - (나) [핵심 질문] `TCK-1` 은 20분 점검에서 1단계로 에스컬레이션되었지만, 60분 점검에서는 에스컬레이션되지 않았습니다. 그 이유를 설명해 주세요. 이때 25분에 변경된 상태와 `needs_escalation` 의 조건을 근거로 쓰고, 이 조건이 없을 때 발생하는 문제도 함께 설명해 주세요.
    - (다) [핵심 질문] 110분 점검에서 `TCK-3` 은 2단계로, `TCK-6` 은 1단계로 에스컬레이션되었습니다. 두 티켓의 응답 기한과 초과 시간을 근거로 단계가 달라진 이유를 설명해 주세요. 또한 등급 low 인 `TCK-2` 가 에스컬레이션되지 않은 이유도 설명해 주세요.
 
-## Exercise 7-1 한눈에
+## 실습 7-1 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|

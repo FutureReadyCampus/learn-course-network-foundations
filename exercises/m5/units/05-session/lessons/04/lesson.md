@@ -17,7 +17,7 @@ source:
 
 ---
 
-## Exercise 5-1 정답
+## 실습 5-1 정답
 
 **채운 코드** (한 예)
 
@@ -50,8 +50,8 @@ source:
 `exercise5-1_run.py` 의 9번입니다.
 
 ```python
-# 9. load_json(LOG_PATH) 의 결과를 log 에 저장한다 (Exercise 4-3이 저장한 조치 기록을 읽는다)
-log = load_json(LOG_PATH)  # Exercise 4-3이 저장한 조치 기록을 읽는다
+# 9. load_json(LOG_PATH) 의 결과를 log 에 저장한다 (실습 4-3이 저장한 조치 기록을 읽는다)
+log = load_json(LOG_PATH)  # 실습 4-3이 저장한 조치 기록을 읽는다
 ```
 
 **결과**
@@ -59,7 +59,7 @@ log = load_json(LOG_PATH)  # Exercise 4-3이 저장한 조치 기록을 읽는�
 - (가) 출력은 다음과 같습니다. 단계 5 의 잠긴 계정은 <mark style="background:#bde3ff">**`['junho']`**</mark>, 차단한 IP 는 <mark style="background:#bde3ff">**없음(`[]`)**</mark> 입니다.
 
 ```
---- 단계 1: Exercise 4-3이 남긴 파일
+--- 단계 1: 실습 4-3이 남긴 파일
 잠긴 계정: ['junho', 'dami']
 조치 기록: 5 건
 차단한 IP: ['198.51.100.90']
@@ -75,7 +75,7 @@ INC-005 198.51.100.90 · IP 해제 · 차단됨 → 차단되지 않음 · 되�
 차단한 IP: []
 ```
 
-- (나) Exercise 4-3 기록에서 `junho` 의 계정 잠금은 <mark style="background:#bde3ff">`잠김 → 잠김`</mark> 으로, 조치 전부터 잠겨 있던 것이라 `before` 와 `after` 가 같습니다. `before` 와 `after` 가 같으면 `should_undo` 의 5 · 6번이 `False` 를 리턴하므로 해제 대상에서 빠졌습니다.
+- (나) 실습 4-3 기록에서 `junho` 의 계정 잠금은 <mark style="background:#bde3ff">`잠김 → 잠김`</mark> 으로, 조치 전부터 잠겨 있던 것이라 `before` 와 `after` 가 같습니다. `before` 와 `after` 가 같으면 `should_undo` 의 5 · 6번이 `False` 를 리턴하므로 해제 대상에서 빠졌습니다.
   - 5 · 6번이 없었다면 `junho` 의 잠금도 「계정 잠금」 기록이라 해제됐을 것입니다.
   - 그러면 자동 대응과 상관없이 원래 잠겨 있던 계정이 풀려 버립니다.
 - (다) `되돌리기 불가` 줄은 세션 종료가 <mark style="background:#bde3ff">`before` 와 `after` 가 다르지만(`세션 2개 → 세션 0개`) `UNDOABLE_ACTIONS` 목록(해제 한 번으로 되돌릴 수 있는 계정 잠금 · IP 차단만 적어 둔 리스트)에 없는 조치라서</mark> 나옵니다. 끊긴 세션은 사용자가 다시 로그인해야 합니다.
@@ -136,7 +136,7 @@ NameError: name 'log' is not defined
 
 ---
 
-## Exercise 5-2 정답
+## 실습 5-2 정답
 
 **채운 코드** (한 예)
 

@@ -17,7 +17,7 @@ source:
 
 ---
 
-## Exercise 8-1 정답
+## 실습 8-1 정답
 
  **터미널에 입력합니다.**
 
@@ -180,7 +180,7 @@ NameError: name 'table' is not defined
 
 ---
 
-## Exercise 8-2 정답
+## 실습 8-2 정답
 
  **터미널에 입력합니다.**
 
@@ -360,7 +360,7 @@ NameError: name 'decision' is not defined
 
 ---
 
-## Exercise 8-3 정답
+## 실습 8-3 정답
 
  **터미널에 입력합니다.**
 

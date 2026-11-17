@@ -1,6 +1,6 @@
 ---
 id: m5-u10-l03
-title: Exercise 10-2 · 탐지 결과 연결과 운영 요약
+title: 실습 10-2 · 탐지 결과 연결과 운영 요약
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,20 +9,20 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 10-2 · 탐지 결과 연결과 운영 요약
+# 실습 10-2 · 탐지 결과 연결과 운영 요약
 
-## 이번에 만들 것: 입력 점검과 운영 요약
+## 목표: 입력 점검과 운영 요약
 
 > **오늘 들어온 일**
 >
-> - **상황**: <mark style="background:#e0d4ff">Module 4에서 `risk_scores.py` 가 대상별 점수 · 등급 · 이유를 `unit07_risk_scores.json` 에 저장했습니다.</mark> `dami`(60점 high) · `seoyeon`(45점 mid) · `gaeun`(40점 mid) · `jiwoo`(35점 mid) · `198.51.100.90`(30점 low) 5건입니다. Exercise 10-1 엔진은 Unit 1의 `incident_samples.json` 과 같은 모양의 알림을 읽습니다. 이번 Unit에서 팀장이 「Module 4에서 탐지된 5건을 엔진으로 처리하고, 무엇을 실행했는지 한 장으로 보고해 달라」고 요청합니다.
-> - **문제**: Module 4 파일에는 알림 번호(`id`)와 상태(`status`)가 없어서 엔진에 바로 넣을 수 없습니다. Module 4와 Module 5는 따로 만든 프로그램이라, Module 4 파일의 모양이 바뀌면(필수 키가 빠지거나 등급 이름이 늘면) 엔진 안에서 오류가 납니다. 엔진 안에서 잡힌 오류는 그 알림의 조치와 티켓이 없는 「실패」로만 남습니다(Exercise 10-1 `INC-402`). <mark style="background:#ffc4d6">어느 기록이 왜 못 들어갔는지 엔진 앞에서 이유와 함께 남기지 않으면 탐지된 대상이 사라집니다.</mark>
+> - **상황**: <mark style="background:#e0d4ff">Module 4에서 `risk_scores.py` 가 대상별 점수 · 등급 · 이유를 `unit07_risk_scores.json` 에 저장했습니다.</mark> `dami`(60점 high) · `seoyeon`(45점 mid) · `gaeun`(40점 mid) · `jiwoo`(35점 mid) · `198.51.100.90`(30점 low) 5건입니다. 실습 10-1 엔진은 Unit 1의 `incident_samples.json` 과 같은 모양의 알림을 읽습니다. 이번 Unit에서 팀장이 「Module 4에서 탐지된 5건을 엔진으로 처리하고, 무엇을 실행했는지 한 장으로 보고해 달라」고 요청합니다.
+> - **문제**: Module 4 파일에는 알림 번호(`id`)와 상태(`status`)가 없어서 엔진에 바로 넣을 수 없습니다. Module 4와 Module 5는 따로 만든 프로그램이라, Module 4 파일의 모양이 바뀌면(필수 키가 빠지거나 등급 이름이 늘면) 엔진 안에서 오류가 납니다. 엔진 안에서 잡힌 오류는 그 알림의 조치와 티켓이 없는 「실패」로만 남습니다(실습 10-1 `INC-402`). <mark style="background:#ffc4d6">어느 기록이 왜 못 들어갔는지 엔진 앞에서 이유와 함께 남기지 않으면 탐지된 대상이 사라집니다.</mark>
 > - **부탁**: Module 4 탐지 결과를 엔진이 읽는 알림으로 바꾸되, 바꾸기 전에 모양을 점검해 문제가 있는 기록은 이유와 함께 따로 모아 주세요. 엔진을 실행한 뒤에는 처리 결과별 알림 수 · 티켓 수 · 실제로 실행한 조치를 운영 요약으로 정리해 주세요.
 > - **바뀌는 점**: 5건이 알림 `INC-501` ~ `INC-505` 로 바뀌어 모두 엔진에 들어가고(거절 <mark style="background:#bde3ff">0건</mark>), <mark style="background:#bde3ff">자동 실행 2건</mark>(`dami` 잠금 · `198.51.100.90` 차단)과 <mark style="background:#bde3ff">조치 없음 3건</mark>으로 처리됩니다. 티켓 <mark style="background:#bde3ff">5장</mark>이 만들어지고, 운영 요약은 `engine_summary.json` 에 저장됩니다. 상황과 숫자는 설명을 위한 예시입니다.
 
 > **읽을거리 — 문제가 아닙니다.** 읽고 이해만 합니다.
 
-## 읽기 · 2.1 입력 검증과 운영 요약
+## 2.1 입력 검증과 운영 요약
 
 | Module 4 `unit07_risk_scores.json` 의 키 | 엔진이 읽는 알림의 키 | 하는 일 |
 |---|---|---|
@@ -33,7 +33,7 @@ source:
 - Module 4의 출력과 Module 5의 입력이 같은 키 이름과 모양을 쓰기로 정한 약속을 공통 스키마(common schema, 커먼 스키마: 프로그램끼리 주고받는 데이터의 키 이름과 모양을 미리 정한 약속)라고 합니다. 오늘 엔진의 공통 스키마는 <mark style="background:#e0d4ff">Unit 1의 `incident_samples.json` 의 알림 모양</mark>입니다.
 - 입력 검증(input validation, 인풋 밸리데이션: 데이터를 처리하기 전에 필수 키와 값의 범위가 맞는지 확인하는 일)에서는 <mark>필수 키가 있는지(1번), 등급 이름을 엔진이 아는지(2번)</mark> 점검합니다. 탐지된 규칙 이름이 비어 있는 기록도 거절합니다.
 - 문제가 있는 기록은 버리지 않고 이유와 함께 거절 리스트(`rejected`)에 모읍니다. 거절 리스트가 있으면 Module 4 파일을 고쳐야 하는지 알 수 있습니다.
-- 방어는 두 겹입니다. 엔진 앞의 입력 검증은 <mark>알려진 문제를 이유와 함께 걸러 내고</mark>, Exercise 10-1의 오류 격리는 <mark>걸러 내지 못한 문제가 다른 알림으로 번지지 않게</mark> 합니다.
+- 방어는 두 겹입니다. 엔진 앞의 입력 검증은 <mark>알려진 문제를 이유와 함께 걸러 내고</mark>, 실습 10-1의 오류 격리는 <mark>걸러 내지 못한 문제가 다른 알림으로 번지지 않게</mark> 합니다.
 - 운영 요약은 근무를 인계하거나 보고할 때 한 번에 보여 주는 정리입니다. 오늘은 처리 결과별 알림 수(7번), 티켓 수, 실제로 실행한 조치(8번)를 담습니다. <mark>실제로 실행한 조치는 `executed` 가 참인 조치만 모읍니다.</mark>
 - Module 4의 등급은 점수로 정해지고(60점 이상 high, 35점 이상 mid, 그 아래 low), 엔진은 이 등급을 그대로 승인 게이트의 `grade` 로 씁니다.
 
@@ -49,7 +49,7 @@ engine_input.py   find_schema_problem  : 필수 키가 없으면 (1번) · 모�
 
 > **여기부터 문제입니다.**
 
-## Exercise 10-2 · 탐지 결과 연결과 운영 요약
+## 실습 10-2 · 탐지 결과 연결과 운영 요약
 
 **이런 상황이 있습니다**
 
@@ -59,7 +59,7 @@ engine_input.py   find_schema_problem  : 필수 키가 없으면 (1번) · 모�
 
 **할 일**: 데이터 파일 한 개와 코드 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 3 ~ 5 를 읽습니다.
 
-**`unit07_risk_scores.json`** — Module 4 Unit 7의 Exercise 7-2 파일입니다. Module 4 폴더(`anomaly_detection`)에 이 파일이 있으면 `cp ../anomaly_detection/unit07_risk_scores.json .` 으로 복사하고, 없으면 만들어 붙여 넣습니다.
+**`unit07_risk_scores.json`** — Module 4 Unit 7의 실습 7-2 파일입니다. Module 4 폴더(`anomaly_detection`)에 이 파일이 있으면 `cp ../anomaly_detection/unit07_risk_scores.json .` 으로 복사하고, 없으면 만들어 붙여 넣습니다.
 
 - 대상(`entity`)은 계정 이름 또는 IP, 점수(`score`)는 탐지된 규칙의 점수를 더한 값, 등급(`grade`)은 점수로 정한 high · mid · low 이고, 이유(`reasons`)는 탐지된 규칙 이름 리스트입니다.
 
@@ -111,7 +111,7 @@ engine_input.py   find_schema_problem  : 필수 키가 없으면 (1번) · 모�
 ]
 ```
 
-**`engine_input.py`** — Module 4 연결 함수 모음입니다. Exercise 10-3에서는 가져오지 않습니다. 직접 쓰는 곳은 1 ~ 8번입니다.
+**`engine_input.py`** — Module 4 연결 함수 모음입니다. 실습 10-3에서는 가져오지 않습니다. 직접 쓰는 곳은 1 ~ 8번입니다.
 
 - 1번 · 2번 · 6번 · 8번은 `if` 한 줄만 쓰고, 그 아래 미리 채운 줄이 `if` 안쪽입니다. 7번은 한 줄을 쓰고, 4번은 딕셔너리라서 줄을 나눠 씁니다.
 
@@ -182,7 +182,7 @@ def summarize(results):                                              # 엔진 �
 
 ```python
 from incident import load_json, save_json                                                    # Unit 1 파일의 JSON 읽기 · 쓰기 함수를 불러온다
-from soar_engine import load_context, run_all                                                # Exercise 10-1에 만든 엔진 함수를 불러온다
+from soar_engine import load_context, run_all                                                # 실습 10-1에 만든 엔진 함수를 불러온다
 from engine_input import find_schema_problem, split_records, summarize                       # 방금 만든 연결 함수를 불러온다
 
 TEST_RECORDS = [                                                                             # 모양을 일부러 틀리게 만든 시험 기록 두 건
@@ -232,7 +232,7 @@ print("--- 단계 6: risk_engine_log.json · engine_summary.json · risk_tickets
    touch unit07_risk_scores.json engine_input.py exercise10-2_run.py
    ls
    ```
-2. **[VS Code]** `engine_input.py` 1 ~ 8번, `exercise10-2_run.py` 9번을 씁니다. 막히면 아래 「Exercise 10-2 한눈에」를 봅니다.
+2. **[VS Code]** `engine_input.py` 1 ~ 8번, `exercise10-2_run.py` 9번을 씁니다. 막히면 아래 「실습 10-2 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python exercise10-2_run.py
@@ -241,12 +241,12 @@ print("--- 단계 6: risk_engine_log.json · engine_summary.json · risk_tickets
    - 단계 1 과 단계 6 은 숫자나 파일 이름이 제목 줄에 함께 나와 그 아래 줄이 없습니다.
    - 단계 2 는 2줄, 단계 3 은 제목 줄에 건수가 나오고 그 아래 5줄입니다. 단계 4 는 5줄입니다.
    - 단계 5 는 제목 줄 아래 2줄에 실행한 조치 줄이 더 붙습니다.
-5. **[보고서]** Unit 10 의 `## Exercise 10-2` 아래를 채웁니다.
+5. **[보고서]** Unit 10 의 `## 실습 10-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 단계 5 의 처리 결과별 알림 수와 실제로 실행한 조치 두 개를 적어 주세요.
    - (나) [핵심 질문] `seoyeon` · `gaeun` · `jiwoo` 는 모두 「조치 없음」인데 티켓은 만들어졌습니다. 단계 4 에서 알림 뒤에 나오는 플레이북 번호를 근거로 세 알림에 조치가 없는 이유를 적고, 티켓이 없다면 이 세 알림이 어떻게 되는지 적어 주세요.
-   - (다) [핵심 질문] 단계 2 의 `minsu` 기록은 등급이 `critical` 입니다. `find_schema_problem` 이 이 기록을 엔진 앞에서 거절하는 이유를 적고, 거절 없이 엔진에 넣으면 어떤 오류가 나고 그 알림이 어떻게 기록되는지 Exercise 10-1 `INC-402` 와 연결해 적어 주세요.
+   - (다) [핵심 질문] 단계 2 의 `minsu` 기록은 등급이 `critical` 입니다. `find_schema_problem` 이 이 기록을 엔진 앞에서 거절하는 이유를 적고, 거절 없이 엔진에 넣으면 어떤 오류가 나고 그 알림이 어떻게 기록되는지 실습 10-1 `INC-402` 와 연결해 적어 주세요.
 
-## Exercise 10-2 한눈에
+## 실습 10-2 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|

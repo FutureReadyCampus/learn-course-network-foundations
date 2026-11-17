@@ -17,7 +17,7 @@ source:
 
 ---
 
-## Exercise 7-1 정답
+## 실습 7-1 정답
 
 **터미널에 입력합니다.**
 
@@ -74,7 +74,7 @@ gaeun 의 이벤트 (시각 · 로그 · 행동 · 결과)
 - (나) gaeun 의 이벤트 5개는 <mark>웹(`web`) 1개 · 판정 서버(`server`) 3개 · SaaS(`saas`) 1개</mark>이고, 서로 다른 로그가 3종류이며 09:33 부터 10:14 까지 41분 안에 모여 있어서 연결됐습니다.
   - <mark>공격이라고 확정할 수 없습니다.</mark> 서버의 거절 3개는 Module 3(접근통제) 규칙으로는 「허용」이었고, 웹의 `/admin` 실패는 1건이며, SaaS 로그인은 성공했습니다. 같은 시간대에 여러 로그가 확인될 뿐, 원인은 이 기록만으로 알 수 없습니다.
 - (다) seoyeon 은 단계 4 에서 <mark>로그 종류 2</mark>(서버 · SaaS)로 조건 ①(2 이상)을 만족하지만, 처음부터 마지막까지가 <mark>555분</mark>(09:05 ~ 18:20)으로 조건 ②(60분 이내)를 만족하지 못해 연결되지 않았습니다.
-  - 하나의 사건으로 연결하지 않으면 서버의 `SETTLE:QUERY` 거절(권한 없음)과 Exercise 6-2에서 본 평소와 다른 IP · 대량 다운로드가 같은 사용자의 기록이라는 점을 <mark>탐지 결과에서 확인하기 어렵습니다.</mark>
+  - 하나의 사건으로 연결하지 않으면 서버의 `SETTLE:QUERY` 거절(권한 없음)과 실습 6-2에서 본 평소와 다른 IP · 대량 다운로드가 같은 사용자의 기록이라는 점을 <mark>탐지 결과에서 확인하기 어렵습니다.</mark>
 
 **왜**
 
@@ -103,7 +103,7 @@ TypeError: concat() takes 1 positional argument but 3 were given
 
 ---
 
-## Exercise 7-2 정답
+## 실습 7-2 정답
 
 **터미널에 입력합니다.**
 
@@ -201,9 +201,9 @@ AttributeError: 'function' object has no attribute 'sort_values'
 
 ## 부록 · Unit 6 파일 완성본
 
-Unit 6의 Exercise 6-1 · 6-2 · 6-3 파일이 없거나 완성하지 못했다면 아래 완성본으로 파일을 만들어 Unit 7을 이어 갑니다. Unit 6에서 직접 풀었다면 이 부분은 건너뜁니다.
+Unit 6의 실습 6-1 · 6-2 · 6-3 파일이 없거나 완성하지 못했다면 아래 완성본으로 파일을 만들어 Unit 7을 이어 갑니다. Unit 6에서 직접 풀었다면 이 부분은 건너뜁니다.
 
-**`access_detection.py`** (Exercise 6-1 완성본)
+**`access_detection.py`** (실습 6-1 완성본)
 
 ```python
 import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
@@ -271,7 +271,7 @@ def judge_failure(user, action):                      # 사용자와 행동을 �
     return reason, priority                           # 판정 이유와 우선순위를 리턴한다
 ```
 
-**`saas_detection.py`** (Exercise 6-2 완성본)
+**`saas_detection.py`** (실습 6-2 완성본)
 
 ```python
 import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
@@ -362,7 +362,7 @@ def find_bulk_download_users(saas):                   # SaaS 이벤트 표를 �
     return bulk_users                                 # 대량 다운로드 사용자를 리턴한다
 ```
 
-**`malicious_detection.py`** (Exercise 6-3 완성본)
+**`malicious_detection.py`** (실습 6-3 완성본)
 
 ```python
 import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다

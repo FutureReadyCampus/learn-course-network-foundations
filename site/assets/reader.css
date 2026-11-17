@@ -178,3 +178,6 @@ button { color: inherit; }
 .hub a:focus-visible, .hub summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 .topbar-nav a[aria-current="page"] { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
 .hub-note a { color: var(--accent); }
+.no-copy { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; cursor: default; caret-color: transparent; }
+.no-copy *::selection, .no-copy::selection { background: transparent; }
+.no-copy-note { margin: 0 0 8px; color: var(--muted); font-size: .8125rem; }

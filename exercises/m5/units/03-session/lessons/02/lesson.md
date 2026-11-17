@@ -1,6 +1,6 @@
 ---
 id: m5-u03-l02
-title: Exercise 3-1 · 담당자 승인·거절 적용과 권한 확인
+title: 실습 3-1 · 담당자 승인·거절 적용과 권한 확인
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,7 +9,7 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 3-1 · 담당자 승인·거절 적용과 권한 확인
+# 실습 3-1 · 담당자 승인·거절 적용과 권한 확인
 
 ## 이번 의뢰: 승인 결과 받기
 
@@ -24,7 +24,7 @@ source:
 
 > **읽을거리 — 문제가 아닙니다.** 읽고 이해만 합니다.
 
-## 읽기 · 1.1 승인 처리는 「권한 확인 → 실행 또는 종료 → 기록」 순서다
+## 1.1 승인 처리는 「권한 확인 → 실행 또는 종료 → 기록」 순서다
 
 담당자가 승인이나 거절을 누르면 프로그램이 그 결정을 받아 처리해야 합니다. 순서는 세 단계입니다.
 
@@ -58,7 +58,7 @@ approvals.py    is_authorized     : 승인한 사람이 권한 목록에 있는�
 
 > **여기부터 문제입니다.**
 
-## Exercise 3-1 · 권한 확인 후 담당자 결정 적용
+## 실습 3-1 · 권한 확인 후 담당자 결정 적용
 
 **이런 상황이 있습니다**
 
@@ -68,7 +68,7 @@ approvals.py    is_authorized     : 승인한 사람이 권한 목록에 있는�
 
 **할 일**: 파일 세 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 ~ 4 를 읽습니다.
 
-**`audit.py`** — 감사 기록 한 건을 만듭니다. `approvals.py` 와 Exercise 3-2 `flow.py` 가 불러다 씁니다. 직접 쓰는 곳은 1번입니다.
+**`audit.py`** — 감사 기록 한 건을 만듭니다. `approvals.py` 와 실습 3-2 `flow.py` 가 불러다 씁니다. 직접 쓰는 곳은 1번입니다.
 
 ```python
 def log_line(item, action, text):  # 인시던트 · 액션 · 결과 문장을 받는 함수
@@ -80,7 +80,7 @@ def log_line(item, action, text):  # 인시던트 · 액션 · 결과 문장을 
     return entry                   # 기록 한 건을 리턴한다
 ```
 
-**`approvals.py`** — 권한을 확인하고 결정을 적용합니다. Exercise 3-2 `flow.py` 도 불러다 씁니다. 직접 쓰는 곳은 2 ~ 7번입니다.
+**`approvals.py`** — 권한을 확인하고 결정을 적용합니다. 실습 3-2 `flow.py` 도 불러다 씁니다. 직접 쓰는 곳은 2 ~ 7번입니다.
 
 ```python
 from incident import change_status, run_action                                           # Unit 1 파일의 함수를 불러온다
@@ -91,7 +91,7 @@ APPROVERS = ["kim.sec", "lee.soc"]                                              
 
 def hold_for_approval(incident, playbook_id, actions, why, action_log):                  # 승인 대기로 멈출 인시던트와 정보를 받는 함수
     """알림의 상태를 분류됨으로 바꾸고 승인 대기 기록을 남긴 뒤, 담당자에게 보여 줄 대기 건 한 건으로 리턴한다.
-    승인이 필요한 알림을 실행하지 않고 담당자에게 넘길 때 쓴다(Exercise 3-2 하루 흐름에서 호출한다).
+    승인이 필요한 알림을 실행하지 않고 담당자에게 넘길 때 쓴다(실습 3-2 하루 흐름에서 호출한다).
     """
     incident["playbook"] = playbook_id                                                   # 어떤 플레이북 때문인지 적고
     incident["actions"] = actions                                                        # 승인되면 실행할 액션을 적고
@@ -194,18 +194,18 @@ for entry in action_log:                                                        
    touch audit.py approvals.py exercise3-1_run.py
    ls
    ```
-2. **[VS Code]** `audit.py` 1번, `approvals.py` 2 ~ 7번, `exercise3-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 3-1 한눈에」를 봅니다.
+2. **[VS Code]** `audit.py` 1번, `approvals.py` 2 ~ 7번, `exercise3-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「실습 3-1 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python exercise3-1_run.py
    ```
 4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 3줄, 단계 2 도 3줄, 단계 3 은 3줄, 단계 4 는 감사 기록 4줄입니다.
-5. **[보고서]** Unit 3 의 `## Exercise 3-1` 아래를 채웁니다.
+5. **[보고서]** Unit 3 의 `## 실습 3-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 처리 뒤 티켓 수 · 담당자 알림 수 · `분류됨` 으로 남은 알림의 번호를 각각 적어 주세요.
    - (나) [핵심 질문] INC-005 는 결정이 `승인` 인데 실행되지 않았습니다. 단계 2 와 단계 4 의 출력을 근거로 그 이유를 적어 주세요. 그리고 권한 확인이 없을 때 생길 위험도 적어 주세요.
    - (다) [핵심 질문] INC-003 이 승인 대기가 된 이유(단계 1), 거절된 뒤의 상태, 감사 기록에 남은 내용을 각각 적어 주세요.
 
-## Exercise 3-1 한눈에
+## 실습 3-1 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|

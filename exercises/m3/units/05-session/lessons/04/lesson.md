@@ -17,7 +17,7 @@ source:
 
 ---
 
-## Exercise 5-1 정답
+## 실습 5-1 정답
 
  **터미널에 입력합니다.**
 
@@ -80,7 +80,7 @@ python exercise5-1_run.py
 
 ---
 
-## Exercise 5-2 정답
+## 실습 5-2 정답
 
  **터미널에 입력합니다.**
 
@@ -177,9 +177,9 @@ git push
 
 ---
 
-## 앞 Exercise 파일 완성본
+## 앞 실습 파일 완성본
 
-Exercise 5-1 파일을 못 만들고 Exercise 5-2로 넘어가야 할 때 그대로 만들어 씁니다. 정답 본문을 머리말과 합친 전체 파일입니다.
+실습 5-1 파일을 못 만들고 실습 5-2로 넘어가야 할 때 그대로 만들어 씁니다. 정답 본문을 머리말과 합친 전체 파일입니다.
 
 **`config/sla.json`**
 
@@ -187,7 +187,7 @@ Exercise 5-1 파일을 못 만들고 Exercise 5-2로 넘어가야 할 때 그대
 {"hours": 4}
 ```
 
-**`req_sla.py`** (Exercise 5-1 완성본)
+**`req_sla.py`** (실습 5-1 완성본)
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다

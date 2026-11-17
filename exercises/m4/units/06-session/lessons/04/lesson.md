@@ -1,6 +1,6 @@
 ---
 id: m4-u06-l04
-title: Exercise 6-3 · 웹 로그에서 경로를 스캔한 IP 찾기
+title: 실습 6-3 · 웹 로그에서 경로를 스캔한 IP 찾기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,11 +9,11 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 6-3 · 웹 로그에서 경로를 스캔한 IP 찾기
+# 실습 6-3 · 웹 로그에서 경로를 스캔한 IP 찾기
 
 ## 이번 의뢰: 경로 스캔 IP 찾기
 
-> **이번 Exercise에 들어온 일**
+> **이번 실습에 들어온 일**
 >
 > A사 보안 팀장이 보낸 메시지입니다:
 > 「웹 서버(우리 서비스 화면을 보여 주는 서버)의 11/2 실패 기록이 13건 있습니다. 이 중에 `/.env` · `/phpmyadmin` 처럼 일반 사용자는 열 일이 없는 경로(아래에서 설명합니다)를 요청한 IP 가 있습니다. 해킹 도구가 접근할 수 있는 곳이 있는지 경로를 차례로 요청해 본 것 같습니다.
@@ -21,9 +21,9 @@ source:
 > 그런데 사용자가 경로를 잘못 입력하거나 없는 게시글을 요청해도 똑같이 실패로 기록됩니다. 해킹 도구가 자주 요청하는 경로를 요청한 IP 만 가려 주세요.」
 > - **왜 중요한가**: <mark>실패를 모두 알림으로 보내면 알림이 너무 많아져서, 담당자가 진짜 경로 스캔을 놓칠 수 있습니다.</mark>
 
-> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「문제」 전까지는 이 Exercise의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다. (판다스 문법 상자의 코드는 눈으로 읽으면 됩니다.)
+> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「문제」 전까지는 이 실습의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다. (판다스 문법 상자의 코드는 눈으로 읽으면 됩니다.)
 
-## 읽기 · 왜 실패 중에서 스캔만 가려내는가
+## 왜 실패 중에서 스캔만 가려내는가
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
@@ -32,9 +32,9 @@ source:
    - `/.env`(비밀번호와 키가 든 설정 파일)
    - `/wp-login.php`(워드프레스 로그인 화면)
    - `/phpmyadmin`(데이터베이스 관리 화면)
-3. 이번 Exercise의 질문은 하나입니다. <mark>실패한 요청 중에 이 경로를 요청한 IP 가 있는가?</mark> 이 경로 중 하나를 요청했으면 이번 규칙의 기준에서는 스캔으로 봅니다(공격으로 확정하는 것은 아닙니다).
+3. 이번 실습의 질문은 하나입니다. <mark>실패한 요청 중에 이 경로를 요청한 IP 가 있는가?</mark> 이 경로 중 하나를 요청했으면 이번 규칙의 기준에서는 스캔으로 봅니다(공격으로 확정하는 것은 아닙니다).
 
-## 읽기 · 3.1 웹 실패 로그에서 스캔 찾기
+## 3.1 웹 실패 로그에서 스캔 찾기
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
@@ -127,7 +127,7 @@ print(scanner_df)            # 남은 요청을 출력한다
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## Exercise 6-3 · 웹 로그에서 경로를 스캔한 IP 찾기
+## 실습 6-3 · 웹 로그에서 경로를 스캔한 IP 찾기
 
 **이런 상황이 있습니다**
 
@@ -229,12 +229,12 @@ for ip in all_ips:                                           # IP 를 하나씩 
         print(ip)                                            # 제외한 IP 를 출력한다
 ```
 
-**`advanced_detection.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. Exercise 6-1 · 6-2 · 6-3에서 만든 함수를 모두 불러 한 번에 돌립니다. Exercise 6-1 · 6-2 파일을 아직 완성하지 못했다면 지금은 이 파일을 건너뛰고, 완성한 뒤에 실행합니다.
+**`advanced_detection.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 6-1 · 6-2 · 6-3에서 만든 함수를 모두 불러 한 번에 돌립니다. 실습 6-1 · 6-2 파일을 아직 완성하지 못했다면 지금은 이 파일을 건너뛰고, 완성한 뒤에 실행합니다.
 
 ```python
-from access_detection import load_events, pick_server_failures, pick_suspicious, EVENTS_PATH  # Exercise 6-1 함수를 불러온다
-from saas_detection import pick_saas, pick_logins, find_off_hours_logins, find_new_ip_users, find_bulk_download_users  # Exercise 6-2 함수를 불러온다
-from malicious_detection import pick_web_failures, find_scan_ips  # Exercise 6-3 함수를 불러온다
+from access_detection import load_events, pick_server_failures, pick_suspicious, EVENTS_PATH  # 실습 6-1 함수를 불러온다
+from saas_detection import pick_saas, pick_logins, find_off_hours_logins, find_new_ip_users, find_bulk_download_users  # 실습 6-2 함수를 불러온다
+from malicious_detection import pick_web_failures, find_scan_ips  # 실습 6-3 함수를 불러온다
 
 events = load_events(EVENTS_PATH)                            # 이벤트 파일을 표로 읽는다
 
@@ -268,12 +268,12 @@ print("웹 서버: 스캔으로 본 IP", scan_ips)                   # 웹 탐�
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 4. 출력은 **두 번** 나옵니다. `exercise6-3_run.py` 는 네 단계입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않고, 단계 1은 숫자가 제목 줄에 함께 나오며, 단계 2는 3줄, 단계 3은 1줄, 단계 4는 4줄입니다. `advanced_detection.py` 는 3줄입니다.
-5. **[보고서]** Unit 6 의 `## Exercise 6-3` › `### Exercise 6-3` 아래를 채웁니다.
+5. **[보고서]** Unit 6 의 `## 실습 6-3` › `### 실습 6-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 스캔으로 본 IP 와 이유를 적어 주세요.
    - (나) [핵심 질문] 203.0.113.50 은 실패한 요청이 7번 있지만 스캔에서 제외됐습니다. 제외된 이유와, 제외하지 않으면 담당자에게 어떤 일이 생기는지 적어 주세요.
    - (다) [핵심 질문] 198.51.100.21 의 `GET /board/99` 실패 1건은 이 규칙에서 어떤 조건 때문에 제외되나요? 그리고 해킹 도구가 `SCANNER_PATTERN` 에 없는 경로(예: `/backup.zip`)를 요청하면 이 규칙이 탐지하지 못한다는 점을 설명해 주세요.
 
-## Exercise 6-3 한눈에
+## 실습 6-3 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
@@ -286,7 +286,7 @@ print("웹 서버: 스캔으로 본 IP", scan_ips)                   # 웹 탐�
 
 ## 마무리 · 만든 파일 확인하기
 
-이번 Unit의 작업을 깃허브에 올리는 일은 Unit 7의 Exercise 7-2 마지막에 한 번에 합니다. <mark>이번 Unit에서는 파일이 모두 있는지만 확인합니다</mark>.
+이번 Unit의 작업을 깃허브에 올리는 일은 Unit 7의 실습 7-2 마지막에 한 번에 합니다. <mark>이번 Unit에서는 파일이 모두 있는지만 확인합니다</mark>.
 
 **순서**
 
@@ -297,7 +297,7 @@ print("웹 서버: 스캔으로 본 IP", scan_ips)                   # 웹 탐�
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
    - `access_detection.py` · `saas_detection.py` · `malicious_detection.py` · `advanced_detection.py` · `exercise6-1_run.py` · `exercise6-2_run.py` · `exercise6-3_run.py` · `rbac.py` · `config` 폴더 · `normalized_events.json` 과 이 안내 · 보고서 두 파일이 보여야 합니다.
-2. **[보고서]** Unit 6 의 Exercise 6-1 · 6-2 · 6-3 칸에서 <mark>`답:` 뒤가 비어 있는 질문이 없는지</mark> 봅니다. 못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.
+2. **[보고서]** Unit 6 의 실습 6-1 · 6-2 · 6-3 칸에서 <mark>`답:` 뒤가 비어 있는 질문이 없는지</mark> 봅니다. 못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.
 
 ---
 
@@ -305,9 +305,9 @@ print("웹 서버: 스캔으로 본 IP", scan_ips)                   # 웹 탐�
 
 | 확인 | 문제 |
 |---|---|
-| 서버 거절 9건 중 반복된 7건을 Module 3(접근통제) 판정 함수로 판정하고 이유로 순서를 정했다 | Exercise 6-1 |
-| SaaS 로그에서 업무 시간 밖 로그인 · 평소와 다른 IP · 대량 다운로드를 각각 찾았다 | Exercise 6-2 |
-| 웹 실패 로그에서 스캐너 경로를 요청한 IP 를 찾고 나머지 실패를 제외했다 | Exercise 6-3 |
+| 서버 거절 9건 중 반복된 7건을 Module 3(접근통제) 판정 함수로 판정하고 이유로 순서를 정했다 | 실습 6-1 |
+| SaaS 로그에서 업무 시간 밖 로그인 · 평소와 다른 IP · 대량 다운로드를 각각 찾았다 | 실습 6-2 |
+| 웹 실패 로그에서 스캐너 경로를 요청한 IP 를 찾고 나머지 실패를 제외했다 | 실습 6-3 |
 
 Unit 7에서는 이번 Unit의 탐지 결과를 <mark>**같은 사용자의 기록끼리 이어서 함께 봅니다**</mark>(상관분석). 그리고 위험 점수를 매겨 등급으로 나눕니다.
 

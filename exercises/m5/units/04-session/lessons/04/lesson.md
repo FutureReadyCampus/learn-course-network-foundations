@@ -1,6 +1,6 @@
 ---
 id: m5-u04-l04
-title: Exercise 4-3 · 활성 세션 종료와 잔존 세션 점검하기
+title: 실습 4-3 · 활성 세션 종료와 잔존 세션 점검하기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 4-3 · 활성 세션 종료와 잔존 세션 점검하기
+# 실습 4-3 · 활성 세션 종료와 잔존 세션 점검하기
 
-## 이번에 만들 것: 세션 종료와 빈틈 점검
+## 목표: 세션 종료와 빈틈 점검
 
 > **오늘 들어온 일**
 >
@@ -22,7 +22,7 @@ source:
 
 > **읽을거리 — 문제가 아닙니다.** 읽고 이해만 합니다.
 
-## 읽기 · 3.1 계정 잠금은 새 로그인을 차단하고, 세션 종료는 이미 열린 접속을 종료한다
+## 3.1 계정 잠금은 새 로그인을 차단하고, 세션 종료는 이미 열린 접속을 종료한다
 
 **세션**(session, 세션: 로그인한 뒤 서버가 유지하는 접속 상태)이 유효하면 서버는 비밀번호를 다시 요구하지 않습니다. 따라서 계정을 잠가도 이미 발급된 세션은 계속 사용할 수 있습니다. 예를 들어 아침에 로그인해 둔 `dami` 의 세션 `S-101` 은 계정을 잠근 후에도 서버에 요청을 보낼 수 있습니다. 세션은 서버 쪽에서 무효화(invalidate, 인밸리데이트: 그 세션을 더는 인증에 쓸 수 없게 만드는 일)해야 종료되므로, 잠금 뒤에 세션 종료 조치가 따로 필요합니다. 조치 순서도 중요합니다.
 
@@ -47,7 +47,7 @@ containment.py      contain_account     : 계정을 잠그고 (4번), 잠금이 
 
 > **여기부터 문제입니다.**
 
-## Exercise 4-3 · 활성 세션 종료와 잔존 세션 점검하기
+## 실습 4-3 · 활성 세션 종료와 잔존 세션 점검하기
 
 **이런 상황이 있습니다**
 
@@ -90,7 +90,7 @@ def find_open_sessions(state):                             # 연습용 시스템
 **`containment.py`** — 잠금과 세션 종료를 한 함수에서 순서대로 수행합니다. Unit 5에서도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 4 ~ 6번입니다.
 
 ```python
-from account_actions import lock_account                              # Exercise 4-1에 만든 계정 잠금 함수를 불러온다
+from account_actions import lock_account                              # 실습 4-1에 만든 계정 잠금 함수를 불러온다
 from session_actions import terminate_sessions                        # 방금 만든 세션 종료 함수를 불러온다
 
 
@@ -107,7 +107,7 @@ def contain_account(user, state, vip_accounts, incident_id, reason):  # 계정 �
     return records                                                    # 조치 기록 리스트를 리턴한다
 ```
 
-**`exercise4-3_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. Exercise 4-1의 `containment_store.py` 와 `account_actions.py` 가 같은 폴더에 있어야 합니다.
+**`exercise4-3_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실습 4-1의 `containment_store.py` 와 `account_actions.py` 가 같은 폴더에 있어야 합니다.
 
 ```python
 from incident import load_json                                                          # Unit 1 파일의 함수를 불러온다
@@ -151,18 +151,18 @@ print("조치 기록:", len(load_json("containment_log.json")), "건")          
    touch session_actions.py containment.py exercise4-3_run.py
    ls
    ```
-2. **[VS Code]** `session_actions.py` 1 ~ 3번, `containment.py` 4 ~ 6번, `exercise4-3_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「Exercise 4-3 한눈에」를 봅니다.
+2. **[VS Code]** `session_actions.py` 1 ~ 3번, `containment.py` 4 ~ 6번, `exercise4-3_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「실습 4-3 정리」를 봅니다.
 3. **[터미널]** 실행합니다(맥북은 `python3`).
    ```bash
    python exercise4-3_run.py
    ```
 4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 1줄, 단계 2 는 5줄, 단계 3 은 2줄, 단계 4 는 2줄입니다.
-5. **[보고서]** Unit 4 의 `## Exercise 4-3` 아래를 채웁니다.
+5. **[보고서]** Unit 4 의 `## 실습 4-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 단계 3 에서 빈틈이 남은 계정과 단계 4 의 잠긴 계정을 적어 주세요.
    - (나) [핵심 질문] 단계 1 에서 `junho` 가 점검에서 발견된 이유를 적어 주세요. 그리고 `dami` 가 단계 2 에서 받은 두 가지 조치와, 잠금만 했다면 유효하게 남았을 접속(세션)을 적어 주세요.
    - (다) [핵심 질문] `gaeun` 은 잠금도 세션 종료도 받지 않았습니다. `containment.py` 5번의 `if` 조건과 단계 2 의 출력 줄을 근거로 그 이유를 적어 주세요. 그리고 잠금이 적용되지 않은 계정의 세션을 종료하면 안 되는 이유도 적어 주세요.
 
-## Exercise 4-3 한눈에
+## 실습 4-3 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
@@ -179,9 +179,9 @@ print("조치 기록:", len(load_json("containment_log.json")), "건")          
 
 | 달성 기준 | 문제 |
 |---|---|
-| 계정 잠금을 실행하고 사후 검증했으며, 조치 전 · 후 상태를 감사 기록으로 남겼다 | Exercise 4-1 |
-| 허용 목록 IP 와 공유 IP 를 판별해 차단하고, 유효 기간이 지나면 자동 해제했다 | Exercise 4-2 |
-| 잠금 뒤 활성 세션을 종료하고, 빈틈(잔존 세션)이 남았는지 점검했다 | Exercise 4-3 |
+| 계정 잠금을 실행하고 사후 검증했으며, 조치 전 · 후 상태를 감사 기록으로 남겼다 | 실습 4-1 |
+| 허용 목록 IP 와 공유 IP 를 판별해 차단하고, 유효 기간이 지나면 자동 해제했다 | 실습 4-2 |
+| 잠금 뒤 활성 세션을 종료하고, 빈틈(잔존 세션)이 남았는지 점검했다 | 실습 4-3 |
 
 Unit 5에서는 두 가지를 합니다. ① 이번 Unit에서 만든 조치를 기록만 근거로 **롤백**합니다(조치 전부터 잠겨 있던 계정은 변경하지 않습니다). ② Unit 2에서 만든 맥락 보강 · 경로 판단과 함께 알림 8건을 일괄 처리합니다. 마지막에는 처리 결과를 근무 보고로 요약합니다.
 

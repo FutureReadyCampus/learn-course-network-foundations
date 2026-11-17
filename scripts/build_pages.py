@@ -18,7 +18,7 @@ from build_course import ROOT, build
 SITE = ROOT / "site"
 
 
-def emit(course: dict, output: Path, baseurl: str, revision: str, dispatch: dict | None = None, site: str = "") -> None:
+def emit(course: dict, output: Path, baseurl: str, revision: str, dispatch: dict | None = None, site: str = "", no_copy: bool = False) -> None:
     output.mkdir(parents=True)
     for lesson in course["lessons"]:
         for page in lesson.get("pages", []):
@@ -48,7 +48,7 @@ def emit(course: dict, output: Path, baseurl: str, revision: str, dispatch: dict
     html = (SITE / "index.html").read_text(encoding="utf-8").replace("__SITE__", site)
     if baseurl.count("/exercises/"):  # exercise reader: show its own course title
         html = html.replace("외워서 공부하는 네트워크", html_escape(course["title"]))
-    html = html.replace('window.NETWORK_SITE_BASE = "";', f'window.NETWORK_SITE_BASE = {json.dumps(baseurl)};')
+    html = html.replace('window.NETWORK_SITE_BASE = "";', f'window.NETWORK_SITE_BASE = {json.dumps(baseurl)};' + (" window.NETWORK_NO_COPY = true;" if no_copy else ""))
     revision_query = f"?v={quote(revision, safe='')}"
     html = html.replace('window.NETWORK_COURSE_URL = "/data/course.json";', f'window.NETWORK_COURSE_URL = {json.dumps(baseurl + "/data/course.json" + revision_query)};')
     for name in ("/assets/reader.css", "/assets/reader.js"):
@@ -59,7 +59,7 @@ def emit(course: dict, output: Path, baseurl: str, revision: str, dispatch: dict
     if dispatch:
         script = (f"<script>(function(){{var m=location.pathname.match({json.dumps('^' + baseurl + '/exercises/([^/]+)/')});"
                   f"var d={json.dumps(dispatch, ensure_ascii=False)};if(m&&d[m[1]]){{window.NETWORK_SITE_BASE={json.dumps(baseurl)}+'/exercises/'+m[1];"
-                  f"window.NETWORK_COURSE_URL=window.NETWORK_SITE_BASE+'/data/course.json{revision_query}';"
+                  f"window.NETWORK_NO_COPY=true;window.NETWORK_COURSE_URL=window.NETWORK_SITE_BASE+'/data/course.json{revision_query}';"
                   "document.querySelector('.topbar-course').textContent=d[m[1]];}})();</script></body>")
         html = html.replace("</body>", script, 1)
     (output / "404.html").write_text(html, encoding="utf-8")
@@ -82,7 +82,7 @@ def main() -> None:
     exercises = {f.parent.name: build(args.source_revision, args.source_label, f) for f in sorted((ROOT / "exercises").glob("*/course.yaml"))}
     emit(course, output, baseurl, args.source_revision, {k: v["title"] for k, v in exercises.items()}, baseurl)
     for slug, exercise in exercises.items():
-        emit(exercise, output / "exercises" / slug, f"{baseurl}/exercises/{slug}", args.source_revision, site=baseurl)
+        emit(exercise, output / "exercises" / slug, f"{baseurl}/exercises/{slug}", args.source_revision, site=baseurl, no_copy=True)
     if exercises:
         cards = []
         for slug, exercise in exercises.items():

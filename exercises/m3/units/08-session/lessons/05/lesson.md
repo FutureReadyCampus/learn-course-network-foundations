@@ -17,7 +17,7 @@ source:
 
 ---
 
-## Exercise 8-1 정답
+## 실습 8-1 정답
 
 **터미널에 입력합니다.**
 
@@ -133,7 +133,7 @@ sales 2 명 ['seoyeon', 'dami']
 
 ---
 
-## Exercise 8-2 정답
+## 실습 8-2 정답
 
 **터미널에 입력합니다.**
 
@@ -192,14 +192,14 @@ gaeun SETTLE:QUERY <- 예외 5번 | 예외 삭제 | 영향 1 건 | 승인 불필
   - 한 사람이 혼자 정하면 실수나 잘못된 사용이 생길 수 있어서, 다른 사람(보안 책임자)이 이유를 확인하고 승인하게 합니다.
   - 반면 조회 같은 일반 권한 한 건은 영향이 작고, 필요하면 다시 요청해서 받을 수 있어 되돌리기 쉽습니다.
   - 예를 들어 junho 의 `SALES:QUERY` 는 재직자의 권한이지만 마지막 사용이 90일보다 오래됐다고 Unit 7의 점검에서 나왔고 영향이 1건이라 승인 없이 회수합니다.
-- (다) Exercise 8-3에서 junho 의 `SALES:CHANGE`(예외 2번) 계획은 실행하지 않고 「대기」로 남습니다.
+- (다) 실습 8-3에서 junho 의 `SALES:CHANGE`(예외 2번) 계획은 실행하지 않고 「대기」로 남습니다.
   - 승인이 오래 나지 않으면 이 예외가 정리되지 않은 채 남아 점검에 계속 나오고 담당자가 같은 계획을 거듭 확인해야 합니다.
   - 그 예외는 이미 만료되어 접근은 막혀 있지만, 만료 시각이 고쳐지는 등의 일이 생기면 다시 쓰일 수 있어 오래 두면 위험합니다.
 
 **왜**
 
 - 쓰기 같은 중요한 권한과, 한 번의 회수로 권한이 여러 개 사라지는 회수는 한 사람이 혼자 정하지 않고 승인을 받습니다.
-  - 승인 상태를 계획마다 적어 두면 Exercise 8-3이 「승인 대기」인 계획만 빼고 실행할 수 있습니다.
+  - 승인 상태를 계획마다 적어 두면 실습 8-3이 「승인 대기」인 계획만 빼고 실행할 수 있습니다.
   - 같은 사용자의 역할 해제 두 건(dami)은 같은 변경(`role` 비우기)이므로 함께 결정해야 합니다.
   - 코드는 이를 막지 않으므로, 한쪽만 승인하면 승인받지 않은 권한까지 함께 없어집니다.
 
@@ -230,7 +230,7 @@ gaeun SETTLE:QUERY <- 예외 5번 | 예외 삭제 | 영향 1 건 | 승인 불필
 
 ---
 
-## Exercise 8-3 정답
+## 실습 8-3 정답
 
 **터미널에 입력합니다.**
 
@@ -364,19 +364,19 @@ gaeun SETTLE:QUERY | 거부(권한 없음) -> 거부(권한 없음) | 그대로
 
 ---
 
-## 앞 Exercise 파일 완성본
+## 앞 실습 파일 완성본
 
-앞 Exercise 파일이 없거나 잘 안 될 때 이 코드로 만듭니다. Unit 6 · Unit 7의 파일이 필요하면 Unit 6 · Unit 7 문서 맨 아래의 「앞 Exercise 파일 완성본」을 씁니다.
+앞 실습 파일이 없거나 잘 안 될 때 이 코드로 만듭니다. Unit 6 · Unit 7의 파일이 필요하면 Unit 6 · Unit 7 문서 맨 아래의 「앞 실습 파일 완성본」을 씁니다.
 
-**`revoke_input.py`** (Exercise 8-1 도우미)
+**`revoke_input.py`** (실습 8-1 도우미)
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
-from review_list import build_access_list                        # Exercise 6-1에서 만든 현황 함수를 불러온다
-from review_rules import find_stale                              # Exercise 6-2에서 만든 규칙 점검 함수를 불러온다
-from review_unused import load_last_used, find_unused            # Exercise 6-3에서 만든 안 쓴 권한 점검 함수를 불러온다
-from overprivilege import generate_report                        # Exercise 7-1에서 만든 리포트 함수를 불러온다
-from report_exclude import load_exclude_map, split_by_exclude    # Exercise 7-2에서 만든 회수 제외 함수를 불러온다
+from review_list import build_access_list                        # 실습 6-1에서 만든 현황 함수를 불러온다
+from review_rules import find_stale                              # 실습 6-2에서 만든 규칙 점검 함수를 불러온다
+from review_unused import load_last_used, find_unused            # 실습 6-3에서 만든 안 쓴 권한 점검 함수를 불러온다
+from overprivilege import generate_report                        # 실습 7-1에서 만든 리포트 함수를 불러온다
+from report_exclude import load_exclude_map, split_by_exclude    # 실습 7-2에서 만든 회수 제외 함수를 불러온다
 
 REVIEW_TIME = datetime.strptime("2026-10-29 14:00", "%Y-%m-%d %H:%M")   # Unit 7에서 점검한 시각(고정). 같은 결과를 얻으려고 그 시각을 쓴다
 TIME_FORMAT = "%Y-%m-%d %H:%M"                                   # 시각 문자열의 형식
@@ -397,7 +397,7 @@ def load_to_revoke():                                            # Unit 7의 점
     return to_revoke                                             # 회수 대상 리스트만 리턴한다
 ```
 
-**`revoke_plan.py`** (Exercise 8-1 완성본)
+**`revoke_plan.py`** (실습 8-1 완성본)
 
 ```python
 def exception_id(source):                                        # "예외 3번" 모양 문자열을 받는 함수
@@ -468,7 +468,7 @@ def plan_revocation(findings, users, roles):                     # 회수 대상
     return plans                                                 # 계획 리스트를 리턴한다
 ```
 
-**`revoke_approve.py`** (Exercise 8-2 완성본)
+**`revoke_approve.py`** (실습 8-2 완성본)
 
 ```python
 from config_loader import load_json                              # Unit 3에서 만든 안전한 읽기 함수를 불러온다
@@ -519,13 +519,13 @@ def mark_approvals(plans, sensitive, decisions):                 # 계획 리스
     return results                                               # 결과 리스트를 리턴한다
 ```
 
-**`config/sensitive.json`** (Exercise 8-2 완성본)
+**`config/sensitive.json`** (실습 8-2 완성본)
 
 ```json
 ["SALES:CHANGE", "ACCOUNT:CHANGE", "SETTLE:CHANGE"]
 ```
 
-**`revoke.py`** (Exercise 8-3 완성본)
+**`revoke.py`** (실습 8-3 완성본)
 
 ```python
 import json                                                      # JSON 파일을 쓰는 모듈을 불러온다
