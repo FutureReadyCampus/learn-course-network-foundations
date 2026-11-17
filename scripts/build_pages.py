@@ -16,7 +16,7 @@ from build_course import ROOT, build
 SITE = ROOT / "site"
 
 
-def emit(course: dict, output: Path, baseurl: str, revision: str, dispatch: dict | None = None) -> None:
+def emit(course: dict, output: Path, baseurl: str, revision: str, dispatch: dict | None = None, site: str = "") -> None:
     output.mkdir(parents=True)
     for lesson in course["lessons"]:
         for page in lesson.get("pages", []):
@@ -43,7 +43,7 @@ def emit(course: dict, output: Path, baseurl: str, revision: str, dispatch: dict
     for name in ("reader.css", "reader.js"):
         shutil.copyfile(SITE / "assets" / name, output / "assets" / name)
 
-    html = (SITE / "index.html").read_text(encoding="utf-8")
+    html = (SITE / "index.html").read_text(encoding="utf-8").replace("__SITE__", site)
     if baseurl.count("/exercises/"):  # exercise reader: show its own course title
         html = html.replace("외워서 공부하는 네트워크", html_escape(course["title"]))
     html = html.replace('window.NETWORK_SITE_BASE = "";', f'window.NETWORK_SITE_BASE = {json.dumps(baseurl)};')
@@ -79,9 +79,9 @@ def main() -> None:
     # Exercise courses (exercises/<id>/course.yaml) get their own reader copy under /exercises/<id>/.
     links, dispatch = [], {}
     exercises = {f.parent.name: build(args.source_revision, args.source_label, f) for f in sorted((ROOT / "exercises").glob("*/course.yaml"))}
-    emit(course, output, baseurl, args.source_revision, {k: v["title"] for k, v in exercises.items()})
+    emit(course, output, baseurl, args.source_revision, {k: v["title"] for k, v in exercises.items()}, baseurl)
     for slug, exercise in exercises.items():
-        emit(exercise, output / "exercises" / slug, f"{baseurl}/exercises/{slug}", args.source_revision)
+        emit(exercise, output / "exercises" / slug, f"{baseurl}/exercises/{slug}", args.source_revision, site=baseurl)
         links.append(f'<li><a href="{baseurl}/exercises/{slug}/">{html_escape(exercise["title"])}</a> · {len(exercise["units"])} Units</li>')
     if links:
         (output / "exercises" / "index.html").write_text(
