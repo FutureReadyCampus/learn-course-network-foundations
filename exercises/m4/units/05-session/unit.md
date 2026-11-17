@@ -1,9 +1,12 @@
 ---
 id: m4-u05
-title: 이상탐지 ③ — 요청이 늘어난 때 찾기 · 알림을 한 파일로 모으기
+title: 이상탐지 ③ — 요청이 늘어난 때 찾기
 lessons:
-- path: lessons/01-practice/lesson.md
-- path: lessons/02-report/lesson.md
+- path: lessons/01/lesson.md
+- path: lessons/02/lesson.md
+- path: lessons/03/lesson.md
+- path: lessons/04/lesson.md
+- path: lessons/05/lesson.md
 ---
 
-# 이상탐지 ③ — 요청이 늘어난 때 찾기 · 알림을 한 파일로 모으기
+# 이상탐지 ③ — 요청이 늘어난 때 찾기

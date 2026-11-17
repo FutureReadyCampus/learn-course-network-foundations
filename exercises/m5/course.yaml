@@ -5,32 +5,32 @@ course:
   status: draft
 units:
 - id: m5-u01
-  title: 자동 대응(SOAR) ① — 쏘아가 하는 일 직접 겪기 · 플레이북으로 알림 5건을 한 번에 처리하기
+  title: 자동 대응(SOAR) ① — 쏘아가 하는 일 직접 겪기
   path: exercises/m5/units/01-session/unit.md
 - id: m5-u02
-  title: 자동 대응(SOAR) ② — 알림 보강(enrichment) · 조건 분기(branching)에 따른 처리 경로(route) 결정 · 자동 대응 안전장치(guardrail) 적용
+  title: 자동 대응(SOAR) ② — 알림 보강(enrichment)
   path: exercises/m5/units/02-session/unit.md
 - id: m5-u03
-  title: '자동 대응(SOAR, 쏘아: 정해 둔 절차대로 대응을 자동으로 실행하는 것) ③ — 담당자 승인 처리하기 · 외부 서비스가 실패하면 다시 시도하기 · 하루 흐름 한 번에 실행하기'
+  title: 자동 대응(SOAR) ③ — 담당자 승인 처리하기
   path: exercises/m5/units/03-session/unit.md
 - id: m5-u04
-  title: '자동 대응(SOAR) ④ — 봉쇄(containment) 조치 구현: 계정 잠금 · IP 차단 · 세션 종료, 사후 검증 · 감사 기록 · 롤백 대비'
+  title: 자동 대응(SOAR) ④ — 봉쇄(containment) 조치 구현
   path: exercises/m5/units/04-session/unit.md
 - id: m5-u05
-  title: 자동 대응(SOAR) ⑤ — 로그를 보고 자동이 한 것만 되돌리기 · 알림 8건을 한 번에 처리하고 근무 보고로 요약하기
+  title: 자동 대응(SOAR) ⑤ — 로그를 보고 자동이 한 것만 되돌리기
   path: exercises/m5/units/05-session/unit.md
 - id: m5-u06
-  title: 자동 대응(SOAR) ⑥ — 인시던트 티케팅(ticketing) · 알림 병합(중복 제거)과 티켓 상태 전이 · 담당자 알림 전파와 재시도(retry)
+  title: 자동 대응(SOAR) ⑥ — 인시던트 티케팅(ticketing)
   path: exercises/m5/units/06-session/unit.md
 - id: m5-u07
-  title: '자동 대응(SOAR) ⑦ — 에스컬레이션(escalation) 구현: 응답 기한(SLA) 초과 티켓의 상급자 통보 · 근무 3시간 시뮬레이션과 운영 지표(평균 확인 시간 · 평균 해결 시간 · 응답 기한 위반 수) 산출'
+  title: 자동 대응(SOAR) ⑦ — 에스컬레이션(escalation) 구현
   path: exercises/m5/units/07-session/unit.md
 - id: m5-u08
-  title: 자동 대응(SOAR) ⑧ — 초동 대응 리포트(incident report) 작성 · 승인 게이트(approval gate)와 위험 점수 기반 승인 정책 · 오탐(false positive) 롤백(rollback)과 복구 검증
+  title: 자동 대응(SOAR) ⑧ — 초동 대응 리포트(incident report) 작성
   path: exercises/m5/units/08-session/unit.md
 - id: m5-u09
-  title: '자동 대응(SOAR) ⑨ — 리스크 평가(risk assessment): 자동 조치별 위험 점수 산출 · 통제 갭 분석 · 평가 문서 작성, 시험 사례를 이용한 Day 4 평가 기준 자동 점검'
+  title: 자동 대응(SOAR) ⑨ — 리스크 평가(risk assessment)
   path: exercises/m5/units/09-session/unit.md
 - id: m5-u10
-  title: '자동 대응(SOAR) ⑩ — 통합 엔진(orchestration engine) soar_engine.py: 승인 게이트를 거친 조치 실행과 오류 격리(failure isolation) · 4과목 탐지 결과의 종단간(end-to-end) 연결 · 정책 준수 점검과 최종 회고'
+  title: 자동 대응(SOAR) ⑩ — 통합 엔진(orchestration engine) soar_engine.py
   path: exercises/m5/units/10-session/unit.md
