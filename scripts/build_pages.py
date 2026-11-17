@@ -54,6 +54,10 @@ def emit(course: dict, output: Path, baseurl: str, revision: str, dispatch: dict
                 html_text = html_text.replace(prefix + relative_text, f"{baseurl}/assets/course-assets/{relative.as_posix()}")
             if html_text != page.get("html", ""):
                 page["html"] = html_text
+    for lesson in course["lessons"]:  # links in page HTML use __SITE__ for the site root
+        for page in lesson.get("pages", []):
+            if "html" in page:
+                page["html"] = page["html"].replace("__SITE__", site)
 
     data_dir = output / "data"
     data_dir.mkdir()
@@ -127,6 +131,8 @@ def main() -> None:
         page = (SITE / "portfolio.html").read_text(encoding="utf-8").replace("__SITE__", baseurl).replace("__TITLE__", html_escape(title)).replace("__BODY__", body)
         (output / "exercises" / "portfolio").mkdir(parents=True, exist_ok=True)
         (output / "exercises" / "portfolio" / "index.html").write_text(page, encoding="utf-8")
+        for svg in (ROOT / "portfolio").glob("*.svg"):
+            shutil.copyfile(svg, output / "exercises" / "portfolio" / svg.name)
         starter = ROOT / "portfolio-starter"
         if starter.is_dir():
             shutil.make_archive(str(output / "exercises" / "portfolio" / "portfolio-starter"), "zip", root_dir=starter)

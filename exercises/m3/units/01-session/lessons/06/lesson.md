@@ -84,3 +84,5 @@ source:
 - (가) `git status` 를 쳤을 때 빨간 목록에 줄이 몇 개였는지, 그 가운데 `.env` · `.venv` 가 있었는지 적어 주세요.
   - 쓸 내용: 줄 수와 `.env` · `.venv` 유무
   - 답:
+
+> **내 기록 남기기** — 이번 Unit에서 쓴 코드와 고민을 내 GitHub 페이지에 글로 남겨 보세요. 쓰기 질문은 스타터의 `prompts.md` 에 있는 「Module 3 · Unit 1. 역할로 권한을 정하고 판정하기」 항목에서 고릅니다. [안내 보기](__SITE__/exercises/portfolio/)

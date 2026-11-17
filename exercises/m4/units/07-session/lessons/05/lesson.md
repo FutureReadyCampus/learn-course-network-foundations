@@ -71,3 +71,5 @@ source:
 - (가) `git status` 를 쳤을 때 `.env` 나 `.venv` 가 보였는지, 보였다면 어떻게 했는지 적어 주세요.
   - 쓸 내용: ① `.env` · `.venv` 가 보였는지 ② 보였다면 한 조치
   - 답:
+
+> **내 기록 남기기** — 이번 Unit에서 쓴 코드와 고민을 내 GitHub 페이지에 글로 남겨 보세요. 쓰기 질문은 스타터의 `prompts.md` 에 있는 「Module 4 · Unit 7. 로그를 연결하고 위험 점수 매기기」 항목에서 고릅니다. [안내 보기](__SITE__/exercises/portfolio/)
