@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img">
+<title>check_permission 은 검사 네 개를 차례로 하고 하나라도 걸리면 그 이유로 거부한다</title>
+<desc>사용자 파일, 재직 여부, 역할 파일, 권한 리스트를 위에서부터 검사한다. 걸리면 그 자리에서 거부와 이유를 리턴하고, 네 검사를 모두 지나야만 허용한다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">check_permission 판정 순서</text>
+<rect x="40" y="52" width="300" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="190" y="82.2" font-size="15" fill="#292929" text-anchor="middle">[1] 사용자 파일에 있나?</text>
+<rect x="430" y="52" width="270" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="565" y="82.2" font-size="15" fill="#292929" text-anchor="middle">거부: 등록되지 않은 사용자</text>
+<polyline points="341,77 429,77" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="385" y="70" font-size="14" fill="#666660" text-anchor="middle">없음</text>
+<polyline points="190,103 190,127" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="200" y="120" font-size="14" fill="#666660">있음</text>
+<rect x="40" y="128" width="300" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="190" y="158.2" font-size="15" fill="#292929" text-anchor="middle">[2] 재직 중인가?</text>
+<rect x="430" y="128" width="270" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="565" y="158.2" font-size="15" fill="#292929" text-anchor="middle">거부: 퇴사한 계정</text>
+<polyline points="341,153 429,153" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="385" y="146" font-size="14" fill="#666660" text-anchor="middle">아님</text>
+<polyline points="190,179 190,203" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="200" y="196" font-size="14" fill="#666660">재직 중</text>
+<rect x="40" y="204" width="300" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="190" y="234.2" font-size="15" fill="#292929" text-anchor="middle">[3] 역할이 역할 파일에 있나?</text>
+<rect x="430" y="204" width="270" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="565" y="234.2" font-size="15" fill="#292929" text-anchor="middle">거부: 역할이 없음</text>
+<polyline points="341,229 429,229" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="385" y="222" font-size="14" fill="#666660" text-anchor="middle">없음</text>
+<polyline points="190,255 190,279" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="200" y="272" font-size="14" fill="#666660">있음</text>
+<rect x="40" y="280" width="300" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="190" y="310.2" font-size="15" fill="#292929" text-anchor="middle">[4] 자원:행위 가 권한에 있나?</text>
+<rect x="430" y="280" width="270" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="565" y="310.2" font-size="15" fill="#292929" text-anchor="middle">거부: 권한 없음</text>
+<polyline points="341,305 429,305" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="385" y="298" font-size="14" fill="#666660" text-anchor="middle">없음</text>
+<polyline points="190,331 190,355" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="200" y="348" font-size="14" fill="#666660">있음</text>
+<rect x="40" y="356" width="300" height="50" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="190" y="386.2" font-size="15" fill="#292929" text-anchor="middle">허용 (네 검사를 모두 지남)</text>
+<text x="430" y="380" font-size="14" fill="#666660">하나라도 걸리면 그 자리에서 끝</text>
+<text x="430" y="402" font-size="14" fill="#666660">검사를 빼먹으면 잘못 허용 (fail-open)</text>
+</g>
+</svg>

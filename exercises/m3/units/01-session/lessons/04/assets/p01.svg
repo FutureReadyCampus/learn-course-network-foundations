@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
+<title>조회 기록 15건을 check_permission 으로 다시 판정하고 쓰이지 않은 권한을 찾는다</title>
+<desc>access_log.py 의 기록과 rbac.py 의 판정 함수를 exercise1-3_audit.py 가 불러 쓴다. 결과로 허용·거부 건수와 쓰이지 않은 권한을 얻고, 마지막에 깃허브에 올린다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 1-3 · 지난 기록을 새 규칙으로 다시 판정</text>
+<rect x="20" y="56" width="200" height="80" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="120" y="90.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">access_log.py</text>
+<text x="120" y="112.2" font-size="15" fill="#292929" text-anchor="middle">조회 15건</text>
+<rect x="20" y="156" width="200" height="100" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="120" y="189.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">rbac.py</text>
+<text x="120" y="211.2" font-size="15" fill="#292929" text-anchor="middle">check_permission</text>
+<text x="120" y="233.2" font-size="15" fill="#292929" text-anchor="middle">ROLES · USERS</text>
+<rect x="270" y="96" width="200" height="120" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="370" y="141.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">exercise1-3_audit.py</text>
+<text x="370" y="160.9" font-size="14" fill="#292929" text-anchor="middle">단계 1 재판정</text>
+<text x="370" y="180.9" font-size="14" fill="#292929" text-anchor="middle">단계 2 미사용 점검</text>
+<rect x="520" y="56" width="180" height="80" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="610" y="90.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">허용 · 거부 건수</text>
+<text x="610" y="112.2" font-size="15" fill="#292929" text-anchor="middle">사용자별 건수</text>
+<rect x="520" y="156" width="180" height="100" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="610" y="189.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">쓰이지 않은 권한</text>
+<text x="610" y="211.2" font-size="15" fill="#292929" text-anchor="middle">줄일 것과</text>
+<text x="610" y="233.2" font-size="15" fill="#292929" text-anchor="middle">남길 것 나누기</text>
+<polyline points="221,96 269,130" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="221,206 269,182" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="471,130 519,96" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="471,182 519,206" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="20" y="286" width="680" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="318.2" font-size="15" fill="#292929" text-anchor="middle">마지막: git status 로 확인하고 깃허브에 올린다 · 보고서 (가) ~ (다)</text>
+</g>
+</svg>

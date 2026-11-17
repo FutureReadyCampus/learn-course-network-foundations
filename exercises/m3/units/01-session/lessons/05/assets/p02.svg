@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img">
+<title>실습 1-1 정답은 users.json 여섯 명, roles.json 다섯 역할, 요청 판정 여섯 개다</title>
+<desc>dami 만 employed 가 false 이고 tester 의 역할은 roles.json 에 없는 intern 이다. roles.json 에는 finance, batch, auditor 를 직접 더하고, 요청은 ①③⑥ 허용, ②④⑤ 거부다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 1-1 정답: 두 파일과 여섯 판정</text>
+<text x="20" y="66" font-size="16" fill="#292929" font-weight="700">users.json</text>
+<rect x="20" y="76" width="100" height="76" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="70" y="99.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">seoyeon</text>
+<text x="70" y="118.9" font-size="14" fill="#292929" text-anchor="middle">sales</text>
+<text x="70" y="138.9" font-size="14" fill="#292929" text-anchor="middle">true</text>
+<rect x="125" y="76" width="100" height="76" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="175" y="99.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">junho</text>
+<text x="175" y="118.9" font-size="14" fill="#292929" text-anchor="middle">finance</text>
+<text x="175" y="138.9" font-size="14" fill="#292929" text-anchor="middle">true</text>
+<rect x="230" y="76" width="135" height="76" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="297.5" y="99.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">gaeun</text>
+<text x="297.5" y="118.9" font-size="14" fill="#292929" text-anchor="middle">account_admin</text>
+<text x="297.5" y="138.9" font-size="14" fill="#292929" text-anchor="middle">true</text>
+<rect x="370" y="76" width="100" height="76" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="420" y="99.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">dami</text>
+<text x="420" y="118.9" font-size="14" fill="#292929" text-anchor="middle">sales</text>
+<text x="420" y="138.9" font-size="14" fill="#292929" text-anchor="middle">false</text>
+<rect x="475" y="76" width="120" height="76" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="535" y="99.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">batch-night</text>
+<text x="535" y="118.9" font-size="14" fill="#292929" text-anchor="middle">batch</text>
+<text x="535" y="138.9" font-size="14" fill="#292929" text-anchor="middle">true</text>
+<rect x="600" y="76" width="100" height="76" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="650" y="99.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">tester</text>
+<text x="650" y="118.9" font-size="14" fill="#292929" text-anchor="middle">intern</text>
+<text x="650" y="138.9" font-size="14" fill="#292929" text-anchor="middle">true</text>
+<text x="20" y="182" font-size="16" fill="#292929" font-weight="700">roles.json</text>
+<rect x="20" y="192" width="680" height="156" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="38" y="216" font-size="14" fill="#292929" font-weight="700">sales</text>
+<text x="190" y="216" font-size="14" fill="#292929">SALES:QUERY · SALES:CHANGE</text>
+<text x="684" y="216" font-size="14" fill="#666660" text-anchor="end">미리 적음</text>
+<text x="38" y="245" font-size="14" fill="#292929" font-weight="700">account_admin</text>
+<text x="190" y="245" font-size="14" fill="#292929">ACCOUNT:QUERY · ACCOUNT:CHANGE</text>
+<text x="684" y="245" font-size="14" fill="#666660" text-anchor="end">미리 적음</text>
+<rect x="26" y="256" width="668" height="26" rx="4" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="38" y="274" font-size="14" fill="#292929" font-weight="700">finance</text>
+<text x="190" y="274" font-size="14" fill="#292929">SALES:QUERY · SETTLE:QUERY</text>
+<text x="684" y="274" font-size="14" fill="#9a6200" text-anchor="end">직접 씀</text>
+<rect x="26" y="285" width="668" height="26" rx="4" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="38" y="303" font-size="14" fill="#292929" font-weight="700">batch</text>
+<text x="190" y="303" font-size="14" fill="#292929">SETTLE:QUERY</text>
+<text x="684" y="303" font-size="14" fill="#9a6200" text-anchor="end">직접 씀</text>
+<rect x="26" y="314" width="668" height="26" rx="4" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="38" y="332" font-size="14" fill="#292929" font-weight="700">auditor</text>
+<text x="190" y="332" font-size="14" fill="#292929">SALES:QUERY · SETTLE:QUERY · ACCOUNT:QUERY</text>
+<text x="684" y="332" font-size="14" fill="#9a6200" text-anchor="end">직접 씀</text>
+<text x="20" y="376" font-size="16" fill="#292929" font-weight="700">요청 ① ~ ⑥ 판정 (② 는 인가에서 거부)</text>
+<rect x="20" y="388" width="105" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="72.5" y="413.2" font-size="15" fill="#292929" text-anchor="middle">① 허용</text>
+<rect x="135" y="388" width="105" height="40" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="187.5" y="413.2" font-size="15" fill="#292929" text-anchor="middle">② 거부</text>
+<rect x="250" y="388" width="105" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="302.5" y="413.2" font-size="15" fill="#292929" text-anchor="middle">③ 허용</text>
+<rect x="365" y="388" width="105" height="40" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="417.5" y="413.2" font-size="15" fill="#292929" text-anchor="middle">④ 거부</text>
+<rect x="480" y="388" width="105" height="40" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="532.5" y="413.2" font-size="15" fill="#292929" text-anchor="middle">⑤ 거부</text>
+<rect x="595" y="388" width="105" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="647.5" y="413.2" font-size="15" fill="#292929" text-anchor="middle">⑥ 허용</text>
+</g>
+</svg>

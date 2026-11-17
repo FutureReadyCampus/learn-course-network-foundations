@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 from html import escape as html_escape
 import json
+import re
 import shutil
 
 import yaml
@@ -37,6 +38,22 @@ def emit(course: dict, output: Path, baseurl: str, revision: str, dispatch: dict
                 destination.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copyfile(source_path, destination)
                 illustration["src"] = f"{baseurl}/assets/course-assets/{relative.as_posix()}"
+
+    # Page figures embedded in page HTML (exercise courses): copy the SVGs and point them at the site.
+    prefix = "/api/v1/network-course-assets/"
+    for lesson in course["lessons"]:
+        for page in lesson.get("pages", []):
+            html_text = page.get("html", "")
+            for relative_text in set(re.findall(re.escape(prefix) + r'([^"]+)', html_text)):
+                relative = Path(relative_text)
+                if relative.is_absolute() or ".." in relative.parts or not (ROOT / relative).is_file():
+                    raise ValueError(f"bad page figure: {relative_text}")
+                destination = output / "assets/course-assets" / relative
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(ROOT / relative, destination)
+                html_text = html_text.replace(prefix + relative_text, f"{baseurl}/assets/course-assets/{relative.as_posix()}")
+            if html_text != page.get("html", ""):
+                page["html"] = html_text
 
     data_dir = output / "data"
     data_dir.mkdir()

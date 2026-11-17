@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
+<title>실습 1-1 요점은 인증과 인가, RBAC, 권한 매트릭스, JSON 확인이다</title>
+<desc>인증은 누구인지, 인가는 해도 되는지를 본다. RBAC 는 사용자에서 역할, 권한으로 이어지고, 매트릭스에 ○ 가 없으면 기본 거부이며, JSON 파일은 json.tool 로 확인한다.</desc>
+<defs><marker id="a-p08" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 1-1 요점</text>
+<rect x="20" y="56" width="330" height="104" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="185" y="91.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">인증 vs 인가</text>
+<text x="185" y="113.2" font-size="15" fill="#292929" text-anchor="middle">인증: 누구인가</text>
+<text x="185" y="135.2" font-size="15" fill="#292929" text-anchor="middle">인가: 이 일을 해도 되나</text>
+<rect x="370" y="56" width="330" height="104" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="535" y="91.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">RBAC</text>
+<text x="535" y="113.2" font-size="15" fill="#292929" text-anchor="middle">사용자 → 역할 → 권한</text>
+<text x="535" y="135.2" font-size="15" fill="#292929" text-anchor="middle">옮길 때 고칠 곳은 한 군데</text>
+<rect x="20" y="176" width="330" height="104" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="185" y="211.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">권한 매트릭스</text>
+<text x="185" y="233.2" font-size="15" fill="#292929" text-anchor="middle">역할 줄 × 권한 칸</text>
+<text x="185" y="255.2" font-size="15" fill="#292929" text-anchor="middle">○ 가 없으면 기본 거부</text>
+<rect x="370" y="176" width="330" height="104" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="535" y="211.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">JSON 확인</text>
+<text x="535" y="233.2" font-size="15" fill="#292929" text-anchor="middle">python -m json.tool</text>
+<text x="535" y="255.2" font-size="15" fill="#292929" text-anchor="middle">config/users.json · roles.json</text>
+<rect x="20" y="298" width="680" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="326.2" font-size="15" fill="#292929" text-anchor="middle">다음: 실습 1-2 에서 두 파일을 읽는 판정 함수를 쓴다</text>
+</g>
+</svg>

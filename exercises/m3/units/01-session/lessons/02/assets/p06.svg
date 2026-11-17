@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>users.json 의 role 이름으로 roles.json 의 권한을 찾고 JSON 규칙을 지킨다</title>
+<desc>seoyeon 의 role 인 sales 를 roles.json 에서 찾으면 영업 실적 조회와 변경 권한이 나온다. JSON 은 소문자 true·false, 마지막 쉼표 없음, 큰따옴표만 쓰며 python -m json.tool 로 검사한다.</desc>
+<defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">두 파일은 역할 이름으로 이어진다</text>
+<rect x="20" y="56" width="210" height="120" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="125" y="99.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">users.json</text>
+<text x="125" y="121.2" font-size="15" fill="#292929" text-anchor="middle">"seoyeon":</text>
+<text x="125" y="143.2" font-size="15" fill="#292929" text-anchor="middle">{"role": "sales"}</text>
+<rect x="270" y="56" width="240" height="120" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="390" y="88.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">roles.json</text>
+<text x="390" y="110.2" font-size="15" fill="#292929" text-anchor="middle">"sales":</text>
+<text x="390" y="132.2" font-size="15" fill="#292929" text-anchor="middle">["SALES:QUERY",</text>
+<text x="390" y="154.2" font-size="15" fill="#292929" text-anchor="middle">"SALES:CHANGE"]</text>
+<rect x="550" y="56" width="150" height="120" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="625" y="88.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">결과</text>
+<text x="625" y="110.2" font-size="15" fill="#292929" text-anchor="middle">seoyeon 은</text>
+<text x="625" y="132.2" font-size="15" fill="#292929" text-anchor="middle">영업 실적</text>
+<text x="625" y="154.2" font-size="15" fill="#292929" text-anchor="middle">조회 · 변경만</text>
+<polyline points="231,116 269,116" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p06)"/>
+<polyline points="511,116 549,116" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p06)"/>
+<text x="20" y="204" font-size="15" fill="#666660">열쇠는 역할 이름: "Sales" · "sale" 처럼 다르면 roles.json 에서 못 찾음</text>
+<text x="20" y="240" font-size="16" fill="#292929" font-weight="700">JSON 규칙 네 가지</text>
+<rect x="20" y="254" width="160" height="92" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="100" y="283.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">참 · 거짓</text>
+<text x="100" y="305.2" font-size="15" fill="#292929" text-anchor="middle">소문자</text>
+<text x="100" y="327.2" font-size="15" fill="#292929" text-anchor="middle">true · false</text>
+<rect x="193" y="254" width="160" height="92" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="273" y="283.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">마지막 항목</text>
+<text x="273" y="305.2" font-size="15" fill="#292929" text-anchor="middle">뒤에는</text>
+<text x="273" y="327.2" font-size="15" fill="#292929" text-anchor="middle">쉼표 없음</text>
+<rect x="366" y="254" width="160" height="92" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="446" y="283.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">따옴표</text>
+<text x="446" y="305.2" font-size="15" fill="#292929" text-anchor="middle">큰따옴표 " 만</text>
+<text x="446" y="327.2" font-size="15" fill="#292929" text-anchor="middle">' 는 오류</text>
+<rect x="539" y="254" width="160" height="92" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="619" y="283.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">검사</text>
+<text x="619" y="305.2" font-size="15" fill="#292929" text-anchor="middle">python -m</text>
+<text x="619" y="327.2" font-size="15" fill="#292929" text-anchor="middle">json.tool</text>
+<rect x="20" y="362" width="680" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="389.2" font-size="15" fill="#292929" text-anchor="middle">틀리면 Expecting … 오류와 줄 번호가 나온다</text>
+</g>
+</svg>
