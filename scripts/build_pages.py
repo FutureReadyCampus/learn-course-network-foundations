@@ -116,6 +116,21 @@ def main() -> None:
         page = (SITE / "exercises.html").read_text(encoding="utf-8").replace("__SITE__", baseurl).replace("__CARDS__", "".join(cards))
         (output / "exercises" / "index.html").write_text(page, encoding="utf-8")
 
+    # Learner portfolio guide: portfolio/index.md -> /exercises/portfolio/, plus the starter as a zip.
+    guide = ROOT / "portfolio" / "index.md"
+    if guide.is_file():
+        from markdown_it import MarkdownIt
+
+        text = guide.read_text(encoding="utf-8")
+        title = (re.search(r"^# (.+)$", text, re.M) or [None, "내 기록 남기기"])[1]
+        body = MarkdownIt("commonmark", {"html": True}).enable("table").render(text)
+        page = (SITE / "portfolio.html").read_text(encoding="utf-8").replace("__SITE__", baseurl).replace("__TITLE__", html_escape(title)).replace("__BODY__", body)
+        (output / "exercises" / "portfolio").mkdir(parents=True, exist_ok=True)
+        (output / "exercises" / "portfolio" / "index.html").write_text(page, encoding="utf-8")
+        starter = ROOT / "portfolio-starter"
+        if starter.is_dir():
+            shutil.make_archive(str(output / "exercises" / "portfolio" / "portfolio-starter"), "zip", root_dir=starter)
+
     print(f"Built static reader: {len(course['units'])} Units, {len(course['lessons'])} Lessons at {output}")
 
 

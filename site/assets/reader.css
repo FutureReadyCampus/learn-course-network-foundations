@@ -190,3 +190,8 @@ button { color: inherit; }
 .app-legend .app-icon { margin-inline: .25em .1em; }
 .page-figure { margin: 0 0 24px; padding: 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
 .page-figure img { display: block; width: 100%; height: auto; max-height: 460px; object-fit: contain; }
+.portfolio-doc { max-width: 760px; margin: 0 auto; }
+.portfolio-doc h1 { font-size: clamp(1.6rem, 4vw, 2.1rem); line-height: 1.35; margin: 0 0 18px; }
+.portfolio-doc h2 { margin-top: 38px; }
+.portfolio-doc img { max-width: 100%; height: auto; }
+.portfolio-doc .page-figure { margin: 20px 0; }
