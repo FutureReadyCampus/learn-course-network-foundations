@@ -1,9 +1,12 @@
 ---
 id: m3-u09
-title: 접근통제 ⑤ — 조건기반 정책 · 판정 서버 · 서버 로그
+title: 접근통제 ⑤ — 조건기반 정책
 lessons:
-- path: lessons/01-practice/lesson.md
-- path: lessons/02-report/lesson.md
+- path: lessons/01/lesson.md
+- path: lessons/02/lesson.md
+- path: lessons/03/lesson.md
+- path: lessons/04/lesson.md
+- path: lessons/05/lesson.md
 ---
 
-# 접근통제 ⑤ — 조건기반 정책 · 판정 서버 · 서버 로그
+# 접근통제 ⑤ — 조건기반 정책

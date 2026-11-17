@@ -1,0 +1,409 @@
+---
+id: m4-u10-l05
+title: 정답
+render: markdown
+source:
+  repository: FutureReadyCampus/learn-missions
+  path: network/114_day06_am_ai_summary_pipeline.md
+  mission_id: GichanSource.m4-1109-am-ai-summary-pipeline
+  commit: 61cf07917bdf13aa2571a551160363c425443504
+---
+
+# 정답
+
+## 정답
+
+설명하는 답은 한 예이고, <mark>핵심이 같으면 맞습니다.</mark>
+
+---
+
+## 정답 2-1
+
+💻 **터미널에 입력합니다.**
+
+```bash
+pwd
+python day06_2-1_run.py
+```
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
+
+**채운 코드** (한 예) — 직접 쓰는 곳은 네 함수입니다.
+
+① `pick_records_to_summarize` 안
+
+```python
+        if record["grade"] != "low" and len(picked) < SUMMARY_LIMIT:  # low 가 아니고 아직 3명이 안 찼으면
+            picked.append(record)                                     # 고른 목록에 추가한다
+```
+
+② `describe_reasons` 안
+
+```python
+    meaning_text = "; ".join(meanings)  # 사실 문장들을 "; " 로 이어 붙여 문자열 하나로 만든다
+```
+
+③ `build_prompt` 안
+
+```python
+    facts = f"[사실] 대상: {entity} / 등급: {grade} / 점수: {score}점 / 탐지된 내용: {meaning_text}"  # 점수 파일의 값을 [사실] 한 줄에 넣는다
+```
+
+④ `summarize_record` 안
+
+```python
+    summary = call_llm(prompt)  # AI 에게 보낼 글을 전달해 요약을 받는다
+    if summary == "":           # 요약이 빈 문자열이면(호출이 실패했으면)
+        summary = FAIL_TEXT     # 대체 문장을 쓴다
+```
+
+내가 채운 코드는 위의 코드입니다. <mark>줄 수가 달라도 주석이 말한 일을 하면 맞습니다.</mark>
+
+**결과**
+
+- (가) 출력은 다음과 같고, 점수 기록은 <mark style="background:#bde3ff">**5건**</mark>, 요약할 대상은 <mark style="background:#bde3ff">**3명**</mark>(dami · seoyeon · gaeun)입니다. 단계 4 의 문장은 AI 가 쓴 한 예이고 사람마다 다릅니다. `(요약 실패 …)` 가 나온 대상은 0명입니다.
+
+```
+--- 단계 1: 불러온 점수 기록 5 건
+--- 단계 2: 요약할 대상 3 명 (최대 3 명)
+high dami 60
+mid seoyeon 45
+mid gaeun 40
+--- 단계 3: AI 에게 보내는 글 (seoyeon)
+당신은 보안 관제 담당자를 돕는 도우미입니다. 아래 [사실]만 사용해 한국어 두 문장 이하로 요약하세요. [사실]에 없는 내용은 지어내지 말고, 공격이라고 단정하지 마세요. 먼저 확인할 것을 한 가지 제안하세요.
+[사실] 대상: seoyeon / 등급: mid / 점수: 45점 / 탐지된 내용: 평소와 다른 IP 에서 SaaS 에 접속함; SaaS 에서 파일을 한꺼번에 많이 내려받음
+--- 단계 4: Gemini API 를 활용한 AI 요약
+dami : 퇴사한 사람의 계정으로 서버에 요청한 기록이 있습니다. 먼저 이 계정이 비활성화되어 있는지 확인하세요.
+seoyeon : 평소와 다른 IP 에서 접속하고 파일을 한꺼번에 많이 내려받은 기록이 있습니다. 먼저 내려받은 파일 목록을 확인하세요.
+gaeun : 규칙으로는 허용되는 요청을 서버가 거절했고, 서로 다른 로그에서 짧은 시간 안에 이벤트가 확인되었습니다. 먼저 거절된 요청의 서버 설정을 확인하세요.
+```
+
+- (나) 지시문이 하지 말라고 한 것은 <mark style="background:#bde3ff">**[사실]에 없는 내용을 지어내는 것**</mark>과 <mark style="background:#bde3ff">**공격이라고 단정하는 것**</mark> 두 가지입니다.
+  - 지어내는 것이 위험한 이유: 점수 파일에 없는 사고를 AI 가 쓰면 담당자가 없는 일을 조사하게 되고, 실제로 확인할 대상은 뒤로 밀립니다.
+  - 단정하는 것이 위험한 이유: 점수와 등급은 먼저 확인할 순서를 뜻할 뿐 공격이라는 판정이 아닙니다. 예를 들어 dami 는 `퇴사한 계정` 한 가지로 high 이지만, 파일에는 어떤 사고가 있었다는 내용이 없습니다. 「공격이 있었다」고 쓰면 파일에 없는 판단을 사실처럼 말하는 것입니다.
+- (다) 한 예: seoyeon 의 요약이 「평소와 다른 IP 에서 접속하고 파일을 많이 내려받았습니다. 먼저 내려받은 파일의 목록을 확인하세요.」라면 <mark style="background:#bde3ff">표에 없는 내용이 없고, 탐지된 규칙 두 개(평소와 다른 IP · 대량 다운로드)가 모두 들어 있습니다.</mark>
+  - 만약 요약에 「계정이 해킹당했습니다」 같은 문장이 있다면 표에 없는 단정입니다. 이 경우에는 지시문의 「공격이라고 단정하지 마세요」 앞에 「[사실]에 적힌 것만 말하세요」를 한 번 더 적고 다시 실행해 문장이 사라지는지 확인합니다.
+  - 탐지된 규칙이 하나 빠졌다면 [사실]에는 두 규칙이 모두 있는데 AI 가 한 가지만 쓴 것입니다. 지시문에 「탐지된 내용을 모두 포함하세요」를 더하는 방법이 있습니다.
+
+**왜**
+
+- <mark>점수와 등급은 코드가 정하고, AI 는 코드가 정한 값을 문장으로 풀어 쓰기만 합니다.</mark> AI 의 문장은 실행마다 달라지지만 확인할 순서는 바뀌지 않습니다. 그리고 보내는 글에 값을 그대로 넣었기 때문에 담당자가 [사실]과 요약을 나란히 보고 틀린 곳을 찾을 수 있습니다.
+
+**자주 틀리는 곳**
+
+- 1번 조건을 `and` 대신 `or` 로 쓰면 오류는 나지 않지만 <mark>**요약할 대상이 3명이 아니라 4명으로 나옵니다.**</mark> 단계 2 의 제목 줄에 `4 명 (최대 3 명)` 이 나오는 것이 이 실수의 모습입니다. `or` 는 하나만 참이어도 통과해서, 3명이 찬 뒤에도 `low` 가 아닌 jiwoo 가 들어옵니다.
+  - 단계 2 는 다음처럼 나옵니다.
+
+```
+--- 단계 2: 요약할 대상 4 명 (최대 3 명)
+high dami 60
+mid seoyeon 45
+mid gaeun 40
+mid jiwoo 35
+```
+
+- 3번에서 `.join` 을 쓰지 않고 `meaning_text = meanings` 로 쓰면 오류는 나지 않지만 <mark>**[사실]의 탐지된 내용에 대괄호와 따옴표가 그대로 나옵니다.**</mark> 단계 3 의 마지막 줄이 이 실수의 모습입니다.
+
+```
+--- 단계 3: AI 에게 보내는 글 (seoyeon)
+당신은 보안 관제 담당자를 돕는 도우미입니다. 아래 [사실]만 사용해 한국어 두 문장 이하로 요약하세요. [사실]에 없는 내용은 지어내지 말고, 공격이라고 단정하지 마세요. 먼저 확인할 것을 한 가지 제안하세요.
+[사실] 대상: seoyeon / 등급: mid / 점수: 45점 / 탐지된 내용: ['평소와 다른 IP 에서 SaaS 에 접속함', 'SaaS 에서 파일을 한꺼번에 많이 내려받음']
+```
+
+- 4번에서 따옴표 앞의 `f` 를 빼면 오류는 나지 않지만 <mark>**{entity} 라는 글자가 그대로 AI 에게 갑니다.**</mark> 값이 들어가지 않아 AI 는 요약할 내용을 받지 못합니다.
+
+```
+--- 단계 3: AI 에게 보내는 글 (seoyeon)
+당신은 보안 관제 담당자를 돕는 도우미입니다. 아래 [사실]만 사용해 한국어 두 문장 이하로 요약하세요. [사실]에 없는 내용은 지어내지 말고, 공격이라고 단정하지 마세요. 먼저 확인할 것을 한 가지 제안하세요.
+[사실] 대상: {entity} / 등급: {grade} / 점수: {score}점 / 탐지된 내용: {meaning_text}
+```
+
+- 6 · 7번을 빠뜨리면 평소에는 문제가 없다가 <mark>**AI 호출이 실패했을 때 요약 자리가 빈칸으로 나옵니다.**</mark> 무료 키의 한도(1분에 15번)를 넘어 `429` 가 나는 때가 그렇습니다. 오류가 아니라서 눈에 띄지 않는 것이 문제입니다.
+
+```
+[LLM 호출 실패] 상태 코드 429
+dami :
+[LLM 호출 실패] 상태 코드 429
+seoyeon :
+[LLM 호출 실패] 상태 코드 429
+gaeun :
+```
+
+**관제에서는**
+
+- Gemini API 를 활용한 AI 요약은 담당자가 점수와 이유를 읽는 시간을 줄이는 도구입니다. <mark>값은 규칙이 정하고 AI 는 설명만 하게 하면, AI 가 틀려도 확인할 순서는 안 틀립니다.</mark>
+
+---
+
+## 정답 3-1
+
+💻 **터미널에 입력합니다.**
+
+```bash
+pwd
+python day06_3-1_run.py
+```
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
+
+**채운 코드** (한 예) — 직접 쓰는 곳은 두 함수입니다.
+
+① `analyze_events` 안
+
+```python
+    chains = find_chains_in_events(events)       # 이벤트에서 서로 다른 로그로 연결된 사건을 구한다
+    findings = collect_findings(events, chains)  # 이벤트와 연결된 사건에서 탐지된 규칙을 모은다
+    totals = score_findings(findings)            # 탐지된 규칙으로 대상별 점수를 더한다
+    reasons = collect_reasons(findings)          # 대상마다 탐지된 규칙 이름을 모은다
+```
+
+② `build_report` 안
+
+```python
+    source_event_counts = events["source"].value_counts()                                  # 로그 종류마다 이벤트가 몇 개인지 센다
+    source_count_dict = source_event_counts.to_dict()                                      # 센 결과를 JSON 에 저장할 수 있는 딕셔너리로 바꾼다
+    report = {"date": REPORT_DATE, "event_count": len(events), "source_event_counts": source_count_dict,
+              "finding_count": len(findings), "records": records, "summaries": summaries}  # 보고서 딕셔너리로 모은다
+```
+
+내가 채운 코드는 위의 코드입니다. <mark>줄 수가 달라도 주석이 말한 일을 하면 맞습니다.</mark>
+
+**결과**
+
+- (가) 출력은 다음과 같고, 이벤트는 <mark style="background:#bde3ff">**57개**</mark>, 탐지된 규칙은 <mark style="background:#bde3ff">**8건**</mark>, 점수 기록은 <mark style="background:#bde3ff">**5건**</mark>, Gemini API 를 활용한 AI 요약은 <mark style="background:#bde3ff">**3건**</mark>(실패 0건)입니다. 단계 3 의 문장은 AI 가 쓴 한 예이고 사람마다 다릅니다.
+
+```
+--- 단계 1: 읽은 이벤트 57 개
+--- 단계 2: 탐지된 규칙 8 건 → 점수 기록 5 건을 day03_risk_scores.json 에 저장
+--- 단계 3: Gemini API 를 활용한 AI 요약 3 건 (실패 0 건)
+dami : 퇴사한 사람의 계정으로 서버에 요청한 기록이 있습니다. 먼저 이 계정이 비활성화되어 있는지 확인하세요.
+seoyeon : 평소와 다른 IP 에서 접속하고 파일을 한꺼번에 많이 내려받은 기록이 있습니다. 먼저 내려받은 파일 목록을 확인하세요.
+gaeun : 규칙으로는 허용되는 요청을 서버가 거절했고, 서로 다른 로그에서 짧은 시간 안에 이벤트가 확인되었습니다. 먼저 거절된 요청의 서버 설정을 확인하세요.
+--- 단계 4: 보고서를 anomaly_detection_report_2026-11-02.json 에 저장
+--- 단계 5: 확인할 순서
+high dami 60
+mid seoyeon 45
+mid gaeun 40
+mid jiwoo 35
+low 198.51.100.90 30
+```
+
+- 보고서 파일 `anomaly_detection_report_2026-11-02.json` 의 앞부분은 다음과 같습니다. `date` 는 `2026-11-02`, `event_count` 는 57, `finding_count` 는 8이고 `records` 는 5건, `summaries` 는 3건입니다. 로그 종류마다 이벤트 수는 웹 서버 28 · 판정 서버 15 · SaaS 14 입니다.
+
+```
+{
+  "date": "2026-11-02",
+  "event_count": 57,
+  "source_event_counts": {
+    "web": 28,
+    "server": 15,
+    "saas": 14
+  },
+  "finding_count": 8,
+  "records": [
+    {
+      "entity": "dami",
+      "score": 60,
+      "grade": "high",
+      "reasons": [
+        "퇴사한 계정"
+      ]
+    },
+    …
+  ],
+  "summaries": [
+    …
+  ]
+}
+```
+
+- (나) 점수와 등급을 코드가 정하는 이유는 <mark style="background:#bde3ff">같은 입력이면 항상 같은 결과가 나와야 확인할 순서가 흔들리지 않기 때문</mark>입니다.
+  - 단계 5 의 확인할 순서(dami → seoyeon → gaeun → jiwoo → 198.51.100.90)는 Gemini API 를 활용한 AI 요약이 어떻게 나와도 같습니다. 점수는 `risk_scores.py` 의 `WEIGHTS` 와 등급 기준으로 정해지기 때문입니다.
+  - 단계 3 의 요약 문장은 실행할 때마다 다르게 나올 수 있습니다. 순서를 AI 가 정하면 같은 로그로 실행해도 오늘과 내일의 순서가 달라질 수 있습니다.
+  - AI 는 값을 풀어 쓰기만 해서, 요약이 틀려도 점수와 등급은 그대로입니다.
+- (다) AI 호출이 실패해도 멈추지 않게 만든 이유는 <mark style="background:#bde3ff">AI 하나가 실패했다고 점수와 등급이 담긴 보고서까지 못 만들면 담당자가 아침에 아무것도 볼 수 없기 때문</mark>입니다.
+  - 실패한 요약은 `(요약 실패 — 점수와 이유를 직접 확인)` 이라는 문장으로 채워지고, 단계 3 의 제목 줄에 실패 건수가 나옵니다.
+  - 대체 문장이 들어간 대상은 담당자가 `records` 의 점수와 이유(`reasons`)를 직접 읽고 판단합니다. 1분 뒤에 다시 실행해 요약을 받을 수도 있습니다.
+  - 실패했을 때의 출력은 다음과 같습니다(`429` 로 3번 모두 실패한 경우).
+
+```
+--- 단계 1: 읽은 이벤트 57 개
+--- 단계 2: 탐지된 규칙 8 건 → 점수 기록 5 건을 day03_risk_scores.json 에 저장
+[LLM 호출 실패] 상태 코드 429
+[LLM 호출 실패] 상태 코드 429
+[LLM 호출 실패] 상태 코드 429
+--- 단계 3: Gemini API 를 활용한 AI 요약 3 건 (실패 3 건)
+dami : (요약 실패 — 점수와 이유를 직접 확인)
+seoyeon : (요약 실패 — 점수와 이유를 직접 확인)
+gaeun : (요약 실패 — 점수와 이유를 직접 확인)
+--- 단계 4: 보고서를 anomaly_detection_report_2026-11-02.json 에 저장
+--- 단계 5: 확인할 순서
+high dami 60
+mid seoyeon 45
+mid gaeun 40
+mid jiwoo 35
+low 198.51.100.90 30
+```
+
+**왜**
+
+- <mark>단계를 이어 실행할 때는 앞 단계의 결과를 다음 단계에 정확히 전달하고, 바깥 서비스(AI)처럼 실패할 수 있는 단계는 대체 값으로 이어 가게 만듭니다.</mark> 그래야 한 번 실행한 결과를 믿고 보고서로 보낼 수 있습니다.
+
+**자주 틀리는 곳**
+
+- 2번에서 `collect_findings(events, chains)` 의 순서를 바꿔 `collect_findings(chains, events)` 로 쓰면 `TypeError` 오류가 납니다. <mark>**함수에 전달하는 순서는 정의한 순서(이벤트 표, 연결된 사건)입니다.**</mark>
+  - 실행하면 다음 오류가 납니다(<mark style="background:#ffc4d6">`list indices must be integers or slices, not str`</mark> 가 나오면 이 실수입니다).
+
+```
+Traceback (most recent call last):
+  File "…/anomaly_detection/day06_3-1_run.py", line 3, in <module>
+  File "…/anomaly_detection/pipeline.py", line 75, in run_pipeline
+  File "…/anomaly_detection/pipeline.py", line 17, in analyze_events
+  File "…/anomaly_detection/risk_scores.py", line 31, in collect_findings
+  File "…/anomaly_detection/access_detection.py", line 21, in pick_server_failures
+TypeError: list indices must be integers or slices, not str
+```
+
+  - 줄 번호는 사람마다 다릅니다.
+- 1번을 빠뜨리면 2번 줄에서 `NameError` 가 납니다. <mark>**앞 단계의 결과 `chains` 가 만들어지지 않았기 때문입니다.**</mark>
+
+```
+Traceback (most recent call last):
+  File "…/anomaly_detection/day06_3-1_run.py", line 3, in <module>
+  File "…/anomaly_detection/pipeline.py", line 74, in run_pipeline
+  File "…/anomaly_detection/pipeline.py", line 16, in analyze_events
+NameError: name 'chains' is not defined
+```
+
+- 6번에서 `.to_dict` 의 괄호를 빼거나, 6번을 통째로 쓰지 않고 시리즈를 그대로 보고서에 넣으면 `TypeError` 가 납니다. <mark>**`.to_dict()` 는 괄호까지 써야 합니다.**</mark> 보고서를 저장하는 단계에서 오류가 나고, 단계 4 의 제목 줄 앞까지는 정상으로 출력됩니다.
+  - 괄호를 빼면 다음 오류가 납니다(<mark style="background:#ffc4d6">`Object of type method is not JSON serializable`</mark>).
+
+```
+Traceback (most recent call last):
+  File "…/anomaly_detection/day06_3-1_run.py", line 3, in <module>
+  File "…/anomaly_detection/pipeline.py", line 86, in run_pipeline
+  File "…/anomaly_detection/pipeline.py", line 65, in save_report
+TypeError: Object of type method is not JSON serializable
+```
+
+  - `.to_dict()` 를 쓰지 않고 시리즈를 그대로 넣으면 `Object of type Series is not JSON serializable` 오류가 납니다.
+- 7번의 딕셔너리에서 키와 값 묶음 사이의 쉼표를 빼면 실행하기 전에 `SyntaxError` 가 납니다(오류 문구는 파이썬 버전마다 조금 다릅니다).
+
+```
+  File "…/anomaly_detection/pipeline.py", line 56
+    "finding_count": len(findings), "records": records, "summaries": summaries}
+    ^
+SyntaxError: invalid syntax
+```
+
+**관제에서는**
+
+- 여러 단계를 한 번에 실행하는 프로그램은 어느 단계가 어떤 결과를 냈는지 단계마다 한 줄씩 출력해 둡니다. <mark>그래야 결과가 이상할 때 어느 단계에서 틀어졌는지 바로 찾을 수 있습니다.</mark>
+
+---
+
+## 정답 4-1
+
+**용어 풀이**
+
+- 데이터 문제: 로그나 알림 같은 <mark>자료</mark>에 있어야 할 것이 없거나, 빠졌거나, 깨져 있는 경우입니다.
+- 규칙 문제: 「무엇을 의심할지」 정해 둔 <mark>기준</mark>이 없거나 현실과 맞지 않는 경우입니다.
+- 운영 설정 문제: 서버를 켜고 접속을 허용하는 <mark>설정</mark>이 목적과 맞지 않는 경우입니다.
+
+아래 답은 한 예이고, 상황마다 원인이 겹치면 겹치는 대로 쓰면 맞습니다. 4개 이상 쓴 것이 기준입니다.
+
+#### 상황 1 · 설정 파일 주소를 연달아 요청했는데 「의심」이 아니라 「오류」로 분류됨
+
+- 원인: <mark style="background:#bde3ff">규칙 문제</mark>입니다.
+  - `is_suspicious` 는 요청 하나의 상태 코드가 401 · 403 이거나 경로에 `/admin` 이 있을 때만 「의심」으로 가릅니다.
+  - 198.51.100.90 의 세 요청은 상태 코드가 모두 404 이고 경로에 `/admin` 이 없어서 의심 조건에 맞지 않습니다. 400 이상이라는 `is_error` 조건에만 맞아서 「오류」가 됩니다.
+  - 한 줄씩은 흔한 404 이지만, 설정 파일 · 관리 화면 주소를 1초 간격으로 연달아 요청한 것은 탐색입니다. 이 규칙은 경로 이름도 같은 주소의 반복도 보지 않습니다.
+- 고칠 파일: `log_classify.py`
+- 어떻게 고치나요:
+  - 케이스 A: <mark style="background:#bde3ff">값을 바꿉니다.</mark> `is_suspicious` 에 「경로에 `/.env` · `/wp-login` · `/phpmyadmin` 중 하나가 들어 있다」는 조건을 하나 더하고 `or` 로 잇습니다.
+  - 케이스 B: 경로 목록만 늘리면 목록에 없는 새 주소는 또 놓칩니다. 그래서 같은 주소가 없는 주소를 연달아 요청하는 횟수를 세는 규칙을 <mark style="background:#bde3ff">새로 넣습니다.</mark> 이 수업에서는 11/5 오전에 `find_scan_ips` 로 만들었습니다.
+- 고친 뒤 확인: 같은 로그를 다시 분류해서 198.51.100.90 의 세 줄이 「의심」 목록에 나오는지 봅니다. 분류별 개수는 정상 15 · 오류 5 · 의심 8 에서 정상 15 · 오류 2 · 의심 11 로 바뀝니다.
+- 담당자가 가장 먼저 할 일: 198.51.100.90 의 같은 시간대 요청이 더 있었는지, 성공(200)한 요청이 있었는지 접속 기록에서 확인합니다.
+
+#### 상황 2 · 로그 30줄이 이벤트 28개가 됨
+
+- 원인: <mark style="background:#bde3ff">데이터 문제</mark>입니다.
+  - 원본 로그 30줄 가운데 2줄은 `GET /board/5 HTTP/1.1` 에서 잘려 있거나 `-` 하나만 있어서 큰따옴표가 두 개보다 적습니다.
+  - `normalize_web` 은 이런 줄을 읽지 않고 `None` 을 리턴하므로 이벤트가 되지 못합니다. 그래서 웹 서버 이벤트가 30개가 아니라 28개입니다.
+  - 줄이 사라진 것이 아니라 읽기 실패로 센 것입니다. 11/3 오전 2교시 실행 파일의 단계 1 에 `읽기 실패 2 줄` 로 나옵니다.
+- 고칠 파일: 고칠 코드는 없습니다. 정규화 코드(`normalize_web.py`)는 의도한 대로 동작했고, 문제는 원본 로그의 두 줄입니다.
+- 어떻게 고치나요:
+  - 케이스 A: 코드를 바꾸지 않고 <mark style="background:#bde3ff">확인합니다.</mark> 읽기 성공 28 + 읽기 실패 2 = 전체 30 이 맞는지 계산해 보고서에 적어 둡니다.
+  - 케이스 B: 로그를 만드는 서버에서 줄이 끊기는 원인을 찾아 고칩니다. 이 수업에서는 서버 설정을 바꾸지 않았습니다.
+- 고친 뒤 확인: 정규화한 이벤트 수와 읽기 실패 줄 수를 더해 원본 줄 수 30 과 같은지 봅니다. 같으면 사라진 줄 없이 모두 설명됩니다.
+- 담당자가 가장 먼저 할 일: 읽지 못한 2줄의 원문을 원본 로그에서 찾아, 서버가 로그를 쓰는 도중 끊긴 것인지 확인합니다.
+
+#### 상황 3 · 웹 서버 로그에서 사용자를 알 수 있는 요청이 1개뿐
+
+- 원인: <mark style="background:#bde3ff">데이터 문제</mark>입니다.
+  - 웹 서버 로그에는 사용자 이름이 없고 IP 주소만 있어서 이벤트의 `user` 가 `None` 입니다.
+  - 사용자를 알려면 SaaS 에서 로그인에 성공한 IP 를 찾아 연결해야 합니다(`make_ip_user_map`). 웹 서버 실패 요청 13개 중 이렇게 사용자를 알 수 있는 것은 198.51.100.77(gaeun)의 `/admin` 1개뿐입니다.
+  - 203.0.113.50 은 SaaS 로그와 판정 서버 로그에 기록이 없어서 누구의 일인지 알 수 없습니다.
+- 고칠 파일: 케이스 A 는 웹 서버의 로그 설정, 케이스 B 는 `risk_scores.py` 입니다.
+- 어떻게 고치나요:
+  - 케이스 A: <mark style="background:#bde3ff">새로 넣습니다.</mark> 웹 서버가 로그인한 사용자의 이름도 로그 한 줄에 남기도록 설정을 바꿉니다. 이 수업에서는 서버 설정을 바꾸지 않았습니다.
+  - 케이스 B: 사용자를 모르는 요청은 사용자가 아니라 IP 를 대상으로 점수를 매깁니다. 경로 스캔 198.51.100.90 을 IP 로 점수를 매긴 것이 이 방식입니다.
+- 고친 뒤 확인: 케이스 A 는 다시 실행해 「IP 로 사용자를 알 수 있는 웹 실패 이벤트」 수가 1개보다 늘었는지 봅니다. 케이스 B 는 점수 파일의 `entity` 에 IP(198.51.100.90)가 나오는지 봅니다.
+- 담당자가 가장 먼저 할 일: 203.0.113.50 으로 로그인한 기록이 다른 로그에 있는지 검색해 계정을 찾습니다.
+
+#### 상황 4 · 두 로그에 나오는 seoyeon 이 연결되지 않음
+
+- 원인: <mark style="background:#bde3ff">규칙 문제</mark>입니다.
+  - `find_chains` 는 사용자의 하루 첫 이벤트부터 마지막 이벤트까지 걸린 시간(`span`)이 `WINDOW_MINUTES`(60분) 이내여야 연결합니다.
+  - seoyeon 의 이벤트는 09:05 부터 18:20 까지 흩어져 있어서 `span` 이 555분이고 연결되지 않습니다. 17:38 의 로그인부터 18:20 의 서버 거절까지는 42분인데, 하루 전체로 계산해서 놓칩니다.
+  - gaeun 은 이벤트 3종류가 41분 안에 있어서 연결됩니다.
+- 고칠 파일: `correlation.py`
+- 어떻게 고치나요:
+  - 케이스 A: <mark style="background:#bde3ff">값을 바꿉니다.</mark> `WINDOW_MINUTES` 를 600 으로 올리면 이 샘플에서는 seoyeon 이 `서로 다른 로그 2종류 · 555분 안` 으로 연결됩니다. 하지만 하루 전체가 한 사건이 되어 「짧은 시간 안에 모였다」는 뜻이 약해집니다.
+  - 케이스 B: `find_chains` 의 계산 방식을 <mark style="background:#bde3ff">바꿉니다.</mark> 첫 이벤트와 마지막 이벤트의 차이 대신, 이웃한 이벤트 사이가 60분 이내로 이어지는 이벤트끼리만 한 사건으로 묶습니다.
+- 고친 뒤 확인: 다시 실행해 seoyeon 이 연결된 사건에 나오는지, 연결 이유에 적힌 분이 어떻게 달라졌는지 봅니다. 케이스 A 에서는 이유에 `555분 안` 이 나옵니다.
+- 담당자가 가장 먼저 할 일: seoyeon 의 17:38 로그인부터 18:20 서버 거절까지를 시간순으로 읽습니다.
+
+#### 상황 7 · 정산 조회 시도에는 알림이 나지 않음
+
+- 원인: <mark style="background:#bde3ff">규칙 문제</mark>입니다(그 일을 잡는 규칙이 없습니다).
+  - 서버 거절 규칙(`pick_suspicious`)은 한 사용자의 서버 실패가 `REPEAT_LIMIT`(3번) 이상일 때만 먼저 확인합니다.
+  - seoyeon 의 서버 실패는 11:40 의 `SETTLE:QUERY` 와 18:20 의 `SALES:CHANGE` 두 번뿐이라 기준에 못 미칩니다. 그래서 P5 는 알림 대상이 아닙니다.
+  - 횟수만 보는 규칙은 정산처럼 중요한 권한을 권한 없이 한 번 건드린 일을 놓칩니다.
+- 고칠 파일: `access_detection.py`
+- 어떻게 고치나요: <mark style="background:#bde3ff">새로 넣습니다.</mark>
+  - 중요한 권한 목록(예: `SETTLE:QUERY`)을 정하고, 서버 실패 이벤트의 행동이 그 목록에 있으면 횟수와 상관없이 확인 대상에 넣는 함수를 `pick_suspicious` 옆에 더합니다.
+  - 이 규칙은 업무상 실수로 한 번 건드린 사용자까지 알려서 오탐이 늘 수 있습니다.
+- 고친 뒤 확인: 같은 이벤트로 다시 실행해 P5 가 알림 대상에 나오는지 보고, 11/6 오전처럼 오탐과 미탐을 다시 세어 오탐이 얼마나 늘었는지 봅니다.
+- 담당자가 가장 먼저 할 일: seoyeon 에게 11:40 의 정산 조회가 업무 요청이었는지 확인합니다.
+
+#### 상황 8 · 서버가 같은 네트워크에 열려 있고, 지우면 접속 기록도 사라짐
+
+- 원인: <mark style="background:#bde3ff">운영 설정 문제</mark>입니다(두 가지).
+  - 접속 범위: 5교시 `compose.yaml` 의 `ports` 가 `"8081:80"` 처럼 주소 없이 적혀 있으면 같은 네트워크의 다른 PC 도 접속할 수 있습니다. `docker compose ps` 의 PORTS 에 `0.0.0.0:8081->80/tcp` 로 나옵니다.
+  - 접속 기록: 서버를 `down` 으로 지우면 서버 안에 쌓인 기록도 함께 사라집니다. 서버 안 기록 폴더를 내 `logs` 폴더에 연결(`volumes`)해 두지 않았기 때문입니다.
+- 고칠 파일: `compose.secure.yaml`
+- 어떻게 고치나요:
+  - 케이스 A(접속 범위): <mark style="background:#bde3ff">값을 바꿉니다.</mark> `"8081:80"` 을 `"127.0.0.1:8081:80"` 으로 바꿔 내 PC 에서만 접속되게 합니다. 모두에게 열어 둘 서버(`web1`)는 그대로 둡니다.
+  - 케이스 B(접속 기록): <mark style="background:#bde3ff">새로 넣습니다.</mark> 서버 설정에 `volumes:` 아래 `- ./logs:/var/log/nginx` 를 더해 접속 기록을 내 `logs` 폴더에 남깁니다.
+- 고친 뒤 확인: 케이스 A 는 `docker compose ps` 의 PORTS 가 `127.0.0.1:8081->80/tcp` 로 바뀌었는지 봅니다. 케이스 B 는 서버를 지운 뒤에도 `ls logs` 에 `access.log` 가 남아 있는지 봅니다.
+- 담당자가 가장 먼저 할 일: `logs/access.log` 에 내 PC 가 아닌 IP 의 요청이 있는지 확인합니다.
+
+**왜**
+
+- <mark>상황마다 원인이 데이터인지 규칙인지 설정인지 먼저 가려야 고칠 곳이 정해집니다.</mark> 데이터를 고쳐야 할 때 규칙의 기준 값을 바꾸면 증상만 가려지고, 규칙을 고쳐야 할 때 데이터를 바꾸면 같은 일이 다시 생깁니다.
+
+**자주 틀리는 곳**
+
+- <mark>원인을 「규칙 문제입니다」 한 줄로만 쓰는 경우</mark>입니다. 어느 파일의 어느 함수가 지금 어떻게 동작해서 그 일이 생기는지까지 써야 고칠 곳이 정해집니다.
+- 「고치는 방법」에 값을 어디에 어떻게 넣는지 쓰지 않는 경우입니다. 예를 들어 「예외를 추가한다」가 아니라 「`TRUSTED_IPS` 에 `203.0.113.80` 을 넣는다」처럼 씁니다.
+- 고친 뒤 확인을 「잘 되는지 본다」로 쓰는 경우입니다. 어떤 출력이 어떻게 바뀌면 고쳐진 것인지(오탐 4개 → 2개 등)를 씁니다.
+
+**관제에서는**
+
+- 인수인계 문서는 상황별로 「원인 → 고칠 파일 → 어떻게 → 확인」이 적혀 있어야 다음 담당자가 같은 일을 처음부터 다시 조사하지 않습니다. <mark>마지막 칸의 「가장 먼저 할 일」은 자동 대응을 만들 때 대응 목록의 출발점이 됩니다.</mark>
+
+---
+
+## 정답 마무리
+
+- (가) 한 예: <mark>`git status` 에서 `.env` 와 `.venv` 가 보이지 않았습니다.</mark> `__pycache__` 가 보여서 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 다시 확인했습니다.
+- 깃허브의 `anomaly_detection` 폴더에 `event_summary.py` · `pipeline.py` · `anomaly_detection_report_2026-11-02.json` 이 보이면 됩니다.
