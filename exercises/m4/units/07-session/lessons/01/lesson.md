@@ -15,27 +15,27 @@ source:
 
 오전에는 판정 서버 · SaaS · 웹 로그에서 먼저 확인할 것을 따로 탐지했습니다. 오후에는 **같은 사용자의 서로 다른 로그에서 짧은 시간 안에 이벤트가 확인되는 사건**(함께 살펴볼 관련 기록)을 찾아 하나의 사건으로 연결하고(상관분석, correlation, 코렐레이션: 서로 다른 로그를 같은 기준으로 연결해 분석하는 것), 탐지된 규칙마다 **점수**를 매겨 high · mid · low 로 나눠 `day03_risk_scores.json` 한 파일에 저장합니다. 파일 이름의 `day03` 은 강의계획서가 정한 이름이라 그대로 씁니다.
 
-- **5교시**: 웹 로그에는 사용자가 없어서 SaaS 성공 로그인의 IP 로 사용자를 찾고, 서버 · SaaS · 웹 로그를 한 표로 합쳐 사용자 · 시각 순으로 놓은 뒤 60분 안에 모인 사건을 찾습니다.
-- **6교시**: 오전 탐지와 5교시 결과에서 탐지된 규칙을 모으고, 규칙마다 점수를 더해 등급과 이유를 파일로 저장합니다.
+- **Exercise 7-1**: 웹 로그에는 사용자가 없어서 SaaS 성공 로그인의 IP 로 사용자를 찾고, 서버 · SaaS · 웹 로그를 한 표로 합쳐 사용자 · 시각 순으로 놓은 뒤 60분 안에 모인 사건을 찾습니다.
+- **Exercise 7-2**: 오전 탐지와 Exercise 7-1 결과에서 탐지된 규칙을 모으고, 규칙마다 점수를 더해 등급과 이유를 파일로 저장합니다.
 
-오늘은 오후 5 · 6교시이고, <mark>깃허브에 올리는 일은 6교시 마지막에 합니다.</mark> 교시마다 문제는 하나입니다.
+오늘은 오후 5 · Exercise 7-2이고, <mark>깃허브에 올리는 일은 Exercise 7-2 마지막에 합니다.</mark> Exercise마다 문제는 하나입니다.
 
 - 오늘 쓰는 도구는 **파이썬 · 판다스 · VS Code · 터미널 · git** 입니다.
 - 코드 줄은 판다스로 쓰는 줄과 파이썬으로 쓰는 줄이 섞여 있습니다. 표를 합치고 정렬하고 합계를 내는 줄이 판다스이고, 판단 · 딕셔너리 · 문자열 연결이 파이썬입니다.
 - 연결 기준(서로 다른 로그 2종류 이상 · 60분)과 점수 · 등급 기준(high 60 이상 · mid 35 이상)은 **고정**하고, <mark>값을 바꿔 가며 비교하지 않습니다</mark>.
 - 샘플 이벤트의 날짜는 2026-11-02 입니다. 57개 중 웹 서버 28 · 판정 서버 15 · SaaS 14입니다.
-- 보고서에서 🔍 가 붙은 질문은 이 교시에서 꼭 알아야 할 핵심 질문이고, <mark>내 화면의 값을 근거로 이유까지 서술합니다</mark>.
-- 📎 **오늘 불러 쓰는 이전 파일**이 있습니다. 아래 표에서 <mark>`correlation.py` 만 오늘 5교시에 만들고, 나머지는 모두 오늘 오전에 만든 파일</mark>입니다.
+- 보고서에서 [핵심 질문] 가 붙은 질문은 이 Exercise에서 꼭 알아야 할 핵심 질문이고, <mark>내 화면의 값을 근거로 이유까지 서술합니다</mark>.
+- **오늘 불러 쓰는 이전 파일**이 있습니다. 아래 표에서 <mark>`correlation.py` 만 오늘 Exercise 7-1에 만들고, 나머지는 모두 오늘 오전에 만든 파일</mark>입니다.
 
 | 파일 | 만든 곳 | 쓰는 곳 | 없거나 완성하지 못했을 때 |
 |---|---|---|---|
-| `normalized_events.json` · `rbac.py` · `config/users.json` · `config/roles.json` | 오전 안내(`day04_am_suspicious_logs.md`) 시작하기 6번 | 5 · 6교시 | 그 안내 시작하기 6번의 내용으로 파일을 만듭니다 |
-| `access_detection.py` | 오전 2교시 문제 2-1 | 5 · 6교시가 불러옵니다 | 이 안내 맨 아래 「부록」의 완성본으로 파일을 만듭니다 |
-| `saas_detection.py` | 오전 3교시 문제 3-1 | 5 · 6교시가 불러옵니다 | 이 안내 맨 아래 「부록」의 완성본으로 파일을 만듭니다 |
-| `malicious_detection.py` | 오전 4교시 문제 4-1 | 5 · 6교시가 불러옵니다 | 이 안내 맨 아래 「부록」의 완성본으로 파일을 만듭니다 |
-| `correlation.py` | 오늘 5교시 문제 5-1 | 6교시 `day04_6-1_run.py` 가 불러옵니다 | 이 안내 문제 5-1 의 코드 칸에 「정답 5-1」의 「채운 코드」를 넣어 완성합니다 |
+| `normalized_events.json` · `rbac.py` · `config/users.json` · `config/roles.json` | 오전 안내(`day04_am_suspicious_logs.md`) 시작하기 6번 | 5 · Exercise 7-2 | 그 안내 시작하기 6번의 내용으로 파일을 만듭니다 |
+| `access_detection.py` | 오전 Exercise 6-1 Exercise Exercise 7-2 | 5 · Exercise 7-2가 불러옵니다 | 이 안내 맨 아래 「부록」의 완성본으로 파일을 만듭니다 |
+| `saas_detection.py` | 오전 Exercise 6-2 Exercise Exercise 7-2 | 5 · Exercise 7-2가 불러옵니다 | 이 안내 맨 아래 「부록」의 완성본으로 파일을 만듭니다 |
+| `malicious_detection.py` | 오전 Exercise 6-3 Exercise Exercise 7-2 | 5 · Exercise 7-2가 불러옵니다 | 이 안내 맨 아래 「부록」의 완성본으로 파일을 만듭니다 |
+| `correlation.py` | 오늘 Exercise 7-1 Exercise 7-1 | Exercise 7-2 `day04_6-1_run.py` 가 불러옵니다 | 이 안내 Exercise 7-1 의 코드 칸에 「Exercise 7-1 정답」의 「채운 코드」를 넣어 완성합니다 |
 
-## 시작하기
+## 개요
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치와 오전 파일을 확인합니다(맥북은 `python3`). <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나고, `ls` 결과에 위 표의 파일들이 보여야</mark> 합니다.
@@ -54,7 +54,7 @@ source:
    ```
    - `python -c "코드"` 는 파일을 만들지 않고 코드를 한 줄로 바로 실행합니다.
 
-## 🆘 오류가 나면
+## 오류가 나면
 
 - 먼저 `pwd` 가 `anomaly_detection` 으로 끝나는지, `ls` 로 파일 이름이 문서와 같은지 봅니다.
 - `No module named 'pandas'`: <mark>가상환경이 활성화되지 않은 터미널입니다</mark>. `security-agent-toolkit` 폴더에서 가상환경을 활성화한 뒤(`source .venv/Scripts/activate`, 맥북은 `Scripts` 를 `bin` 으로, 폴더 이름이 다르면 그 이름으로) `python -m pip install pandas` 를 칩니다.

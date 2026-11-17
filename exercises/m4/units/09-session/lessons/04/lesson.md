@@ -11,15 +11,15 @@ source:
 
 # 정답
 
-## 정답
+## 개요
 
 설명하는 답은 한 예이고, <mark>핵심이 같으면 맞습니다.</mark>
 
 ---
 
-## 정답 5-1
+## Exercise 9-1 정답
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 ```bash
 docker ps --filter publish=8080 --filter publish=8081 --filter publish=8082
@@ -117,9 +117,9 @@ curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8081
 
 ---
 
-## 정답 6-1
+## Exercise 9-2 정답
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 ```bash
 docker compose ps
@@ -160,7 +160,7 @@ ls logs
 
 **자주 틀리는 곳**
 
-- `up -d` 에 `-f compose.secure.yaml` 을 빼고 `docker compose up -d` 만 치면 <mark>**아무것도 바뀌지 않습니다.**</mark> 5교시의 `compose.yaml` 이 그대로 적용되기 때문입니다.
+- `up -d` 에 `-f compose.secure.yaml` 을 빼고 `docker compose up -d` 만 치면 <mark>**아무것도 바뀌지 않습니다.**</mark> Exercise 9-1의 `compose.yaml` 이 그대로 적용되기 때문입니다.
   - 이때 `ps` 의 PORTS 가 다음처럼 둘 다 `0.0.0.0:` 인 것이 이 실수의 모습입니다. `-f compose.secure.yaml` 을 붙여 다시 칩니다.
 
     ```

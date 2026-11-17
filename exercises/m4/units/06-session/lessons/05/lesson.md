@@ -11,15 +11,15 @@ source:
 
 # 정답
 
-## 정답
+## 개요
 
 설명하는 답은 한 예이고, <mark>핵심이 같으면 맞습니다.</mark>
 
 ---
 
-## 정답 2-1
+## Exercise Exercise 5-2 정답
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 ```bash
 pwd
@@ -101,9 +101,9 @@ TypeError: 'Index' object is not callable
 
 ---
 
-## 정답 3-1
+## Exercise Exercise 5-2 정답
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 ```bash
 pwd
@@ -152,7 +152,7 @@ python day04_3-1_run.py
 
 **왜**
 
-- <mark>세 규칙을 따로 찾아 두면 사용자마다 어떤 기준에 해당하는지 바로 보입니다.</mark> jiwoo 와 seoyeon 은 두 규칙에 해당하고, 6교시에서 규칙마다 점수를 더하면 먼저 볼 순서가 정해집니다.
+- <mark>세 규칙을 따로 찾아 두면 사용자마다 어떤 기준에 해당하는지 바로 보입니다.</mark> jiwoo 와 seoyeon 은 두 규칙에 해당하고, Exercise 5-2에서 규칙마다 점수를 더하면 먼저 볼 순서가 정해집니다.
 
 **자주 틀리는 곳**
 
@@ -177,9 +177,9 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 
 ---
 
-## 정답 4-1
+## Exercise Exercise 5-2 정답
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 ```bash
 pwd

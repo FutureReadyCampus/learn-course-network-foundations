@@ -11,15 +11,15 @@ source:
 
 # 정답
 
-## 정답
+## 개요
 
 설명하는 답은 한 예이고, <mark>핵심이 같으면 맞습니다.</mark>
 
 ---
 
-## 정답 5-1
+## Exercise 1-1 정답
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 ```bash
 pwd
@@ -111,7 +111,7 @@ ValueError: too many values to unpack (expected 3)
 ```
 
   - 줄 번호는 사람마다 다릅니다.
-- `read_status` 에서 `int(…)` 를 빼먹으면 5교시 출력은 `'status': '401'` 처럼 <mark>따옴표가 붙은 문자열로 나오고 오류는 나지 않습니다.</mark> 6교시에서 `400` 과 비교할 때 비로소 `TypeError` 가 납니다.
+- `read_status` 에서 `int(…)` 를 빼먹으면 Exercise 1-1 출력은 `'status': '401'` 처럼 <mark>따옴표가 붙은 문자열로 나오고 오류는 나지 않습니다.</mark> Exercise 1-2에서 `400` 과 비교할 때 비로소 `TypeError` 가 납니다.
 
 **관제에서는**
 
@@ -119,9 +119,9 @@ ValueError: too many values to unpack (expected 3)
 
 ---
 
-## 정답 6-1
+## Exercise 1-2 정답
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 ```bash
 pwd
@@ -231,7 +231,7 @@ TypeError: '>=' not supported between instances of 'str' and 'int'
 
 ## 정답 마무리
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 ```bash
 cd ..
@@ -269,11 +269,11 @@ git push
 
 ---
 
-## 앞 교시 파일 완성본
+## 앞 Exercise 파일 완성본
 
-앞 교시 파일이 없거나 잘 안 될 때 이 코드로 만듭니다. 샘플 로그는 「시작하기」 6번의 내용입니다.
+앞 Exercise 파일이 없거나 잘 안 될 때 이 코드로 만듭니다. 샘플 로그는 「시작하기」 6번의 내용입니다.
 
-**`log_parse.py`** (5교시 완성본)
+**`log_parse.py`** (Exercise 1-1 완성본)
 
 ```python
 def split_request(line):                                # 로그 한 줄(문자열)을 받는 함수

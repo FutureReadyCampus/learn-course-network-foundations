@@ -15,8 +15,8 @@ source:
 
 오전에 알림에 맥락을 붙이고(`enrichment.py`), 처리 경로를 나누고(`routing.py`), 실행 전에 중복과 한도를 확인하는 안전장치를 만들었습니다(`safe_runner.py`). 그 결과 VIP 계정 알림은 `승인 필요` 경로로 갔고, 플레이북이 승인을 요구하는 알림은 `승인 대기` 로 멈췄습니다. 오후에는 두 가지를 더합니다.
 
-- **5교시**: 멈춰 있던 알림에 담당자의 결정(승인 또는 거절)을 적용합니다. 승인할 권한이 없는 사람의 승인은 막고, 모든 결정을 기록합니다.
-- **6교시**: 티켓(ticket, 티켓: 처리할 일을 한 건씩 적어 담당자에게 맡기는 요청서) 서비스 같은 외부 서비스가 잠깐 응답하지 않으면 다시 시도하고, 그래도 안 되면 담당자가 확인할 목록에 올립니다. 그리고 오전부터 만든 것을 하루 흐름 하나로 이어서 실행합니다.
+- **Exercise 3-1**: 멈춰 있던 알림에 담당자의 결정(승인 또는 거절)을 적용합니다. 승인할 권한이 없는 사람의 승인은 막고, 모든 결정을 기록합니다.
+- **Exercise 3-2**: 티켓(ticket, 티켓: 처리할 일을 한 건씩 적어 담당자에게 맡기는 요청서) 서비스 같은 외부 서비스가 잠깐 응답하지 않으면 다시 시도하고, 그래도 안 되면 담당자가 확인할 목록에 올립니다. 그리고 오전부터 만든 것을 하루 흐름 하나로 이어서 실행합니다.
 
 오후에 자주 나오는 말은 이렇습니다.
 
@@ -27,11 +27,11 @@ source:
 - **연습용 시스템**(`state`): 진짜 계정 · 방화벽(firewall, 파이어월: 허용하지 않은 접속을 막는 장비나 프로그램) 대신 잠긴 계정 · 차단한 IP · 티켓을 적어 두는 연습용 딕셔너리입니다.
 - **하루 흐름**: 오전의 맥락 붙이기 · 경로 정하기 · 안전장치(이미 잠긴 계정 건너뛰기, 잠금 한도)와 오후의 승인 · 재시도를 합친 것입니다. 알림 한 건은 맥락 붙이기 → 경로 정하기를 거친 뒤, 경로에 따라 오탐 종료 · 승인 대기 · 재시도하며 실행(이때 안전장치가 함께 쓰입니다) 중 하나로 처리됩니다.
 
-깃허브에 올리는 일은 6교시 마지막에 합니다. 새 문법은 6교시의 `try` / `except` 하나입니다. 보고서의 🔍 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기는 미리 채운 줄에 맞춥니다. 각 번호 주석 바로 아래에 한 줄을 씁니다. 주석은 지우지 않습니다.
+깃허브에 올리는 일은 Exercise 3-2 마지막에 합니다. 새 문법은 Exercise 3-2의 `try` / `except` 하나입니다. 보고서의 [핵심 질문] 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기는 미리 채운 줄에 맞춥니다. 각 번호 주석 바로 아래에 한 줄을 씁니다. 주석은 지우지 않습니다.
 
-📎 **이전 파일**: 5교시는 어제 `incident.py` 만 씁니다. 6교시는 오전 파일(`enrichment.py` · `routing.py` · `safe_runner.py`)과, 오전에 쓴 데이터 파일(JSON, 제이슨: 이름과 값을 짝지어 적는 파일 형식. `users_info.json` · `source_ips.json` · `trusted_ips.json`)과 월요일의 `incident_samples.json` · `config/playbook_registry.json` 도 씁니다. 없는 파일은 `complete_files.md` 의 해당 절에서 복사합니다.
+ **이전 파일**: Exercise 3-1는 어제 `incident.py` 만 씁니다. Exercise 3-2는 오전 파일(`enrichment.py` · `routing.py` · `safe_runner.py`)과, 오전에 쓴 데이터 파일(JSON, 제이슨: 이름과 값을 짝지어 적는 파일 형식. `users_info.json` · `source_ips.json` · `trusted_ips.json`)과 월요일의 `incident_samples.json` · `config/playbook_registry.json` 도 씁니다. 없는 파일은 `complete_files.md` 의 해당 절에서 복사합니다.
 
-## 시작하기
+## 개요
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** 5과목 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `config` · `incident.py` · `incident_samples.json` · `enrichment.py` · `routing.py` · `safe_runner.py` · `users_info.json` · `source_ips.json` · `trusted_ips.json` 이 보이면</mark> 됩니다.
@@ -49,7 +49,7 @@ source:
    ls
    ```
 
-**`pending.json`** — 승인을 기다리는 건 3건입니다(오전에 `승인 필요` 경로로 간 VIP 알림 1건과, 플레이북이 승인을 요구해 멈춘 2건). 번호는 **인시던트**(incident, 보안 알림 가운데 사람이 확인하고 대응해야 하는 사건 한 건)에 붙인 관리 번호입니다. 각 건에는 어떤 플레이북(playbook, 플레이북: 알림 종류별로 어떤 대응을 할지 적어 둔 절차) 때문에 멈췄는지, 승인되면 어떤 액션을 실행하는지, 왜 승인이 필요한지가 적혀 있습니다. 5교시는 이 파일을 읽어서 씁니다. 6교시 하루 흐름은 이 파일을 읽지 않고, 코드가 같은 내용을 직접 만듭니다.
+**`pending.json`** — 승인을 기다리는 건 3건입니다(오전에 `승인 필요` 경로로 간 VIP 알림 1건과, 플레이북이 승인을 요구해 멈춘 2건). 번호는 **인시던트**(incident, 보안 알림 가운데 사람이 확인하고 대응해야 하는 사건 한 건)에 붙인 관리 번호입니다. 각 건에는 어떤 플레이북(playbook, 플레이북: 알림 종류별로 어떤 대응을 할지 적어 둔 절차) 때문에 멈췄는지, 승인되면 어떤 액션을 실행하는지, 왜 승인이 필요한지가 적혀 있습니다. Exercise 3-1는 이 파일을 읽어서 씁니다. Exercise 3-2 하루 흐름은 이 파일을 읽지 않고, 코드가 같은 내용을 직접 만듭니다.
 
 ```
 [
@@ -59,7 +59,7 @@ source:
 ]
 ```
 
-**`decisions.json`** — 담당자가 메신저에서 누른 승인 · 거절 결과를 파일로 흉내 낸 것입니다. 건마다 적힌 것은 세 가지입니다. 누가 눌렀는지(`approver`), 승인과 거절 중 무엇을 눌렀는지(`result`), 남긴 말(`comment`)입니다. 권한이 있는 담당자는 `kim.sec` · `lee.soc` 이고 `intern01` 은 권한이 없습니다. 5 · 6교시가 읽습니다.
+**`decisions.json`** — 담당자가 메신저에서 누른 승인 · 거절 결과를 파일로 흉내 낸 것입니다. 건마다 적힌 것은 세 가지입니다. 누가 눌렀는지(`approver`), 승인과 거절 중 무엇을 눌렀는지(`result`), 남긴 말(`comment`)입니다. 권한이 있는 담당자는 `kim.sec` · `lee.soc` 이고 `intern01` 은 권한이 없습니다. 5 · Exercise 3-2가 읽습니다.
 
 ```
 {
@@ -74,7 +74,7 @@ source:
    python -c "import json; print(len(json.load(open('pending.json', encoding='utf-8'))), len(json.load(open('decisions.json', encoding='utf-8'))))"
    ```
 
-## 🆘 오류가 나면
+## 오류가 나면
 
 - `pwd` 가 `soar_response` 로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
 - `ModuleNotFoundError` 는 <mark>`incident.py` · `enrichment.py` 같은 앞 파일이 이 폴더에 없다는 뜻</mark>입니다. `complete_files.md` 에서 복사합니다.

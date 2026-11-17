@@ -11,15 +11,15 @@ source:
 
 # 정답
 
-## 정답
+## 개요
 
 아래 답은 한 예이고, <mark>핵심이 같으면 맞습니다.</mark> 줄 수가 달라도 주석이 말한 일을 하면 맞습니다.
 
 ---
 
-## 정답 2-1
+## Exercise 8-1 정답
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 ```bash
 pwd
@@ -180,9 +180,9 @@ NameError: name 'table' is not defined
 
 ---
 
-## 정답 3-1
+## Exercise 8-2 정답
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 ```bash
 pwd
@@ -359,9 +359,9 @@ NameError: name 'decision' is not defined
 
 ---
 
-## 정답 4-1
+## Exercise 8-3 정답
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 ```bash
 pwd

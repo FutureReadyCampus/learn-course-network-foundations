@@ -11,15 +11,15 @@ source:
 
 # 정답
 
-## 정답
+## 개요
 
 설명하는 답은 한 예이고, 핵심이 같으면 맞습니다.
 
 ---
 
-## 정답 5-1
+## Exercise Exercise 1-3 정답
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 ```bash
 pwd
@@ -125,9 +125,9 @@ junho SALES:QUERY <- 역할 finance | 90일 넘게 안 씀(이력 없음 포함)
 
 ---
 
-## 정답 6-1
+## Exercise Exercise 1-3 정답
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 ```bash
 pwd
@@ -218,7 +218,7 @@ dami SALES:QUERY <- 예외 3번 | 퇴사한 계정
 
 ## 정답 마무리
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 ```bash
 cd ..
@@ -251,11 +251,11 @@ git push
 
 ---
 
-## 앞 교시 파일 완성본
+## 앞 Exercise 파일 완성본
 
-앞 교시 파일을 못 만들고 다음 교시로 넘어가야 할 때 그대로 만들어 씁니다. 오전 파일(`review_list.py` · `review_rules.py` · `review_unused.py` · `config/access_log.json`)은 오전 문서 맨 아래에 있습니다. 정답 본문을 함수 머리말과 합친 전체 파일입니다.
+앞 Exercise 파일을 못 만들고 다음 Exercise로 넘어가야 할 때 그대로 만들어 씁니다. 오전 파일(`review_list.py` · `review_rules.py` · `review_unused.py` · `config/access_log.json`)은 오전 문서 맨 아래에 있습니다. 정답 본문을 함수 머리말과 합친 전체 파일입니다.
 
-**`overprivilege.py`** (5교시 완성본)
+**`overprivilege.py`** (Exercise 7-1 완성본)
 
 ```python
 def entry_key(entry):                                            # 현황의 권한 한 건의 식별 키를 만드는 함수
@@ -325,7 +325,7 @@ def generate_report(access_list, stale, unused, days, generated_at):   # 현황 
     return report                                                # 리포트를 리턴한다
 ```
 
-**`report_exclude.py`** (6교시 완성본)
+**`report_exclude.py`** (Exercise 7-2 완성본)
 
 ```python
 from config_loader import load_json                              # 10/22(목)에 만든 안전한 읽기 함수를 불러온다
@@ -387,7 +387,7 @@ def split_by_exclude(findings, exclude_map):                     # 후보 리스
     return to_revoke, excluded                                   # 두 리스트를 함께 리턴한다
 ```
 
-**`config/exclude_list.json`** (6교시 완성본)
+**`config/exclude_list.json`** (Exercise 7-2 완성본)
 
 ```json
 [

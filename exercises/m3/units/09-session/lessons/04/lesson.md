@@ -11,15 +11,15 @@ source:
 
 # 정답
 
-## 정답
+## 개요
 
 설명하는 답은 한 예이고, 핵심이 같으면 맞습니다.
 
 ---
 
-## 정답 5-1
+## Exercise 9-1 정답
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 ```bash
 pwd
@@ -114,9 +114,9 @@ ACCOUNT:CHANGE | 9시부터 18시 전까지 | office
 
 ---
 
-## 정답 6-1
+## Exercise 9-2 정답
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 터미널 1:
 
@@ -252,7 +252,7 @@ dami SALES:QUERY office 2026-10-30T10:00 -> False 퇴사한 계정
 
 ## 정답 마무리
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 ```bash
 cd ..
@@ -290,11 +290,11 @@ git push
 
 ---
 
-## 앞 교시 파일 완성본
+## 앞 Exercise 파일 완성본
 
-앞 교시 파일이 없거나 잘 안 될 때 이 코드로 만듭니다.
+앞 Exercise 파일이 없거나 잘 안 될 때 이 코드로 만듭니다.
 
-**`config/conditions.json`** (5교시 완성본)
+**`config/conditions.json`** (Exercise 9-1 완성본)
 
 ```json
 [
@@ -304,7 +304,7 @@ git push
 ]
 ```
 
-**`conditional.py`** (5교시 완성본)
+**`conditional.py`** (Exercise 9-1 완성본)
 
 ```python
 from config_loader import load_json                              # 10/22(목)에 만든 안전한 읽기 함수를 불러온다
@@ -354,13 +354,13 @@ def evaluate_conditional(user, resource, action, network, now, rules):   # 사�
     return True, reason                                          # 어긋나는 조건이 없으면 기본 판정의 이유로 허용한다
 ```
 
-**`access_server.py`** (6교시 완성본)
+**`access_server.py`** (Exercise 9-2 완성본)
 
 ```python
 import json                                                      # JSON 문자열을 만드는 모듈을 불러온다
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
 from flask import Flask, request                                 # 서버를 만드는 Flask 와 요청 정보를 담은 request 를 불러온다
-from conditional import load_rules, evaluate_conditional         # 5교시에 만든 조건 판정 함수를 불러온다
+from conditional import load_rules, evaluate_conditional         # Exercise 9-1에 만든 조건 판정 함수를 불러온다
 
 app = Flask(__name__)                                            # 서버 프로그램을 만든다
 app.json.ensure_ascii = False                                    # 응답의 한글이 \uXXXX 로 깨지지 않게 한다

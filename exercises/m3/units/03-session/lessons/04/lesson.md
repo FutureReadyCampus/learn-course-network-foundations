@@ -11,15 +11,15 @@ source:
 
 # 정답
 
-## 정답
+## 개요
 
 설명하는 답은 한 예이고, 핵심이 같으면 맞습니다.
 
 ---
 
-## 정답 5-1
+## Exercise Exercise 2-2 정답
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 ```bash
 python day02_5-1_broken.py
@@ -62,9 +62,9 @@ config/users_broken.json -> 사용자 0 명, 등록된 사용자가 없다
 
 ---
 
-## 정답 6-1
+## Exercise Exercise 2-2 정답
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 ```bash
 python test_policy.py
@@ -121,7 +121,7 @@ AssertionError: 6. 만료 정각에도 허용되어야 한다(팀원 제안)
 
 ## 정답 마무리
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 ```bash
 cd ..

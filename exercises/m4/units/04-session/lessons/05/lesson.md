@@ -11,15 +11,15 @@ source:
 
 # 정답
 
-## 정답
+## 개요
 
 설명하는 답은 한 예이고, 핵심이 같으면 맞습니다.
 
 ---
 
-## 정답 2-1
+## Exercise Exercise 4-3 정답
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 ```bash
 pwd
@@ -113,9 +113,9 @@ KeyError: 'failed_login'
 
 ---
 
-## 정답 3-1
+## Exercise Exercise 4-3 정답
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 ```bash
 pwd
@@ -195,9 +195,9 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 
 ---
 
-## 정답 4-1
+## Exercise Exercise 4-3 정답
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 ```bash
 pwd
@@ -273,7 +273,7 @@ TypeError: string indices must be integers
 
 ## 정답 마무리
 
-💻 **터미널에 입력합니다.**
+ **터미널에 입력합니다.**
 
 ```bash
 pwd
@@ -283,4 +283,4 @@ ls
 
 **결과**
 
-- 오늘 만든 파일 **여덟 개**와 안내 · 보고서 두 파일이 보여야 합니다. 깃허브에 올리는 일은 오후 6교시 마지막에 합니다.
+- 오늘 만든 파일 **여덟 개**와 안내 · 보고서 두 파일이 보여야 합니다. 깃허브에 올리는 일은 오후 Exercise 3-2 마지막에 합니다.
