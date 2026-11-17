@@ -1,0 +1,36 @@
+course:
+  id: exercises-m3
+  title: M3 접근통제 실습
+  language: ko
+  status: draft
+units:
+- id: m3-u01
+  title: 접근통제 ① — 역할 기반 접근통제(RBAC) · 권한 판정 함수 · 기록으로 권한 점검하기
+  path: exercises/m3/units/01-session/unit.md
+- id: m3-u02
+  title: 접근통제 ② — 역할 부여와 회수 · 기간이 정해진 예외 권한 · 정책 policy.py
+  path: exercises/m3/units/02-session/unit.md
+- id: m3-u03
+  title: 접근통제 ③ — 설정이 고장 나도 거부 · 테스트 케이스 설계
+  path: exercises/m3/units/03-session/unit.md
+- id: m3-u04
+  title: 접근통제 ③ — 권한 요청서 · 승인과 반려 · 정책 확인 후 부여
+  path: exercises/m3/units/04-session/unit.md
+- id: m3-u05
+  title: 접근통제 ④ — 요청 처리 기한(SLA) 점검 · 요청 이력 저장
+  path: exercises/m3/units/05-session/unit.md
+- id: m3-u06
+  title: 접근통제 ④ — 접근 점검 · 필요 없어진 권한 찾기
+  path: exercises/m3/units/06-session/unit.md
+- id: m3-u07
+  title: 접근통제 ④ — 과다권한 종합 리포트 · 회수 제외
+  path: exercises/m3/units/07-session/unit.md
+- id: m3-u08
+  title: 접근통제 ⑤ — 권한 회수 계획 · 승인 · 실행 · 이력
+  path: exercises/m3/units/08-session/unit.md
+- id: m3-u09
+  title: 접근통제 ⑤ — 조건기반 정책 · 판정 서버 · 서버 로그
+  path: exercises/m3/units/09-session/unit.md
+- id: m3-u10
+  title: 접근통제 ⑥ — 점검 체크리스트 · 로그 집계 · 주간 보고서
+  path: exercises/m3/units/10-session/unit.md
