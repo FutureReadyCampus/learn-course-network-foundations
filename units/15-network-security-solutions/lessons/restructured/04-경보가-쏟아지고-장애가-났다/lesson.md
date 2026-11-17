@@ -57,6 +57,11 @@ page_metadata:
   - question_id: u15-l04-p02-q01
     after_paragraph: 5
   illustrations:
+  - file: assets/animations/u15-l04-p1-story-siem-morning.svg
+    title: "장비마다 따로인 화면과 쏟아지는 경보"
+    alt: "지우가 NAC·방화벽·IPS 화면을 따로 돌아보는 중 경보가 하루 수천 건 쌓이고, 서 이사가 점검 결과를 한 장으로 달라고 하며, 흩어진 기록을 어떻게 이어 읽을지 묻습니다."
+    caption: "화면은 따로이고 경보는 수천 건인데, 서 이사가 한 장을 원해요."
+    after_paragraph: 0
   - file: assets/animations/u15-l04-p1-siem-correlation.svg
     title: "흩어진 로그를 이으면"
     alt: "NAC 02:41, 방화벽 02:45, IPS 02:49 세 기록에 같은 주소 192.168.10.77가 남고, SIEM이 시간순으로 엮어 8분 안의 한 사건으로 읽고 회의실 포트까지 역추적하며, 장비 시각이 틀리면 순서가 뒤집힌다는 전제를 보여 줍니다."
@@ -112,6 +117,11 @@ page_metadata:
   - question_id: u15-l04-p03-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u15-l04-p2-story-test-attack.svg
+    title: "수십 건의 테스트어택 경보"
+    alt: "지우가 테스트어택 경보가 뜬 화면 앞에 앉고, 같은 경보가 수십 건 찍혀 공격인지 오탐인지 고민하며, 어떤 규칙이 울렸는지 알아보려 합니다."
+    caption: "같은 경보가 수십 건 찍혀 지우가 규칙을 열어 봐요."
+    after_paragraph: 0
   - file: assets/animations/u15-l04-p2-rule-reading.svg
     title: "이 경보는 어떤 규칙이 울렸을까"
     alt: "alert tcp any any -> any 80 규칙 한 줄을 누가 어디로, 무엇을 찾나, 찾으면 무엇을 하나의 순서로 나눠 읽는 모습입니다."
@@ -167,6 +177,11 @@ page_metadata:
   - question_id: u15-l04-p04-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u15-l04-p3-story-upload-fail.svg
+    title: "업로드 실패와 서로를 의심하는 두 사람"
+    alt: "IPS 규칙 갱신 다음 날 업로드가 실패하자 박 팀장은 서버를, 서 이사는 네트워크를 의심하고, 지우는 의심 대상을 어떻게 줄일지 묻습니다."
+    caption: "업로드가 안 되자 박 팀장과 서 이사가 서로 상대를 의심해요."
+    after_paragraph: 0
   - file: assets/animations/u15-l04-p3-rule-rollback.svg
     title: "규칙 하나 바꿨는데 장애가"
     alt: "IPS 규칙 갱신 뒤 첨부 파일 업로드가 실패하자 변경 기록에서 최근 바뀐 IPS를 짚고, 경로 밖 NIDS는 후순위로 두고, IPS 규칙을 되돌려 업로드가 되는 모습입니다."
@@ -222,6 +237,11 @@ page_metadata:
   - question_id: u15-l04-p06-q01
     after_paragraph: 5
   illustrations:
+  - file: assets/animations/u15-l04-p4-story-one-map.svg
+    title: "이름 말고 한 장으로"
+    alt: "서 이사가 장비 이름 열 개짜리 보고서를 덮고 무엇이 어디서 무엇을 하는지 한 장으로 보여 달라고 하며, 지우가 장치를 한 장의 지도에 놓을 방법을 생각합니다."
+    caption: "서 이사가 이름이 아니라 위치로 그린 한 장을 원해요."
+    after_paragraph: 0
   - file: assets/animations/u15-l04-p4-request-path.svg
     title: "한 장의 지도에 요청 하나를"
     alt: "해외 고객 192.0.2.77의 요청이 공개 주소 203.0.113.10:443에서 UTM, TLS 종료와 WAF, IPS를 지나 서버 풀에 도착하고 NIDS가 옆에서 복사본만 보는 지도입니다."
@@ -282,6 +302,11 @@ page_metadata:
   - question_id: u15-l04-p07-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u15-l04-p5-story-two-requests.svg
+    title: "비슷해 보이는 두 요청"
+    alt: "박 팀장이 도쿄 지사 노트북을 MAC 주소로 막아 달라 하고 다음 날 서 이사가 특정 URL을 막아 달라 하며, 요청한 정보가 어느 층에 있는지 묻습니다."
+    caption: "MAC을 막아 달라는 요청과 URL을 막아 달라는 요청이 이어서 와요."
+    after_paragraph: 0
   - file: assets/animations/u15-l04-p5-layer-bar.svg
     title: "장치마다 보는 층"
     alt: "요청의 L2 MAC, L3 IP, L4 포트, 소켓 위 URL을 층별로 놓고 각 층을 보는 장치를 이어, MAC 차단은 L2 장치에, URL 차단은 소켓 위 장치에 맡기며 위층일수록 깊게 보지만 느린 모습입니다."
@@ -337,6 +362,11 @@ page_metadata:
   - question_id: u15-l04-p08-q01
     after_paragraph: 4
   illustrations:
+  - file: assets/animations/u15-l04-p6-story-safe-answer.svg
+    title: "안전하다고 답할 수 있을까"
+    alt: "서 이사가 첫날의 질문을 다시 꺼내고 지우가 안전하다는 말 대신 네 질문 표를 띄워, 무엇을 근거로 답할지 알아봅니다."
+    caption: "서 이사의 안전하냐는 질문에 지우가 네 질문 표로 답해요."
+    after_paragraph: 0
   - file: assets/animations/u15-l04-p6-four-checks.svg
     title: "이제 안전하다고 답할 수 있을까"
     alt: "서 이사의 질문을 누가 들어오나, 무엇을 통과시키나, 무엇이 공격인가, 무슨 일이 있었나 네 가지 점검으로 쪼개 각각 답할 수 있는 것과 아직 비어 있는 것을 말하는 모습입니다."

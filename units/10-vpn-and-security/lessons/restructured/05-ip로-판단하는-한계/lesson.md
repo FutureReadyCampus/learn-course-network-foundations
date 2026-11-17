@@ -59,6 +59,11 @@ page_metadata:
   - question_id: u14-l05-p01-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u14-l05-p1-story-service-view.svg
+    title: "박 팀장이 해외에서 본 현지 기준 화면"
+    alt: "해외 박람회의 박 팀장이 외부 클라우드 저장소 화면이 현지 기준으로 바뀐 것을 보고 지우에게 이유를 묻는 모습이다."
+    caption: "박 팀장의 화면이 현지 기준으로 바뀌어 지우에게 이유를 물어요."
+    after_paragraph: 0
   - file: assets/animations/u14-l05-p1-service-view-rev.svg
     title: "서비스는 내가 어디 있다고 볼까?"
     alt: "출장지의 박 팀장 요청이 외부 클라우드 저장소 서버에 닿으면 서버는 출발지 IP 192.0.2.150만 확실히 알고 실제 위치는 모른 채, IP 위치 데이터베이스와 맞춰 현지 접속이라고 짐작하므로 위치는 추정치라는 흐름입니다."
@@ -114,6 +119,11 @@ page_metadata:
   - question_id: u14-l05-p02-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u14-l05-p2-story-exit-changes.svg
+    title: "같은 노트북인데 위치가 달라져요"
+    alt: "출장지의 박 팀장이 회사 VPN을 켜자 서비스가 한국 접속으로 보고, 지우는 같은 노트북인데 위치가 달라지는 것을 이상해하는 모습이다."
+    caption: "VPN을 켜고 끌 때 서비스가 보는 위치가 달라져요."
+    after_paragraph: 0
   - file: assets/animations/u14-l05-p2-exit-changes-rev.svg
     title: "VPN을 켜면 왜 출구가 바뀔까?"
     alt: "같은 노트북 192.0.2.150에서 왼쪽은 VPN을 끈 채 바로, 오른쪽은 전체 터널로 SG를 거쳐 외부 클라우드 저장소에 보내면 서비스에 보이는 출발지가 192.0.2.150과 198.51.100.25로 달라지는 비교입니다."
@@ -169,6 +179,11 @@ page_metadata:
   - question_id: u14-l05-p03-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u14-l05-p3-story-region-risk.svg
+    title: "개인 VPN으로 제한 서비스를 쓰면?"
+    alt: "서 이사가 직원이 개인 VPN으로 제한 서비스를 쓰면 어떻게 되는지 묻고, 지우는 되는지가 아니라 회사의 위험으로 답하기로 하는 모습이다."
+    caption: "서 이사의 질문에 지우는 위험으로 답하려 해요."
+    after_paragraph: 0
   - file: assets/animations/u14-l05-p3-region-risk-rev.svg
     title: "지역 제한을 VPN으로 넘으면"
     alt: "직원이 거래처 자료 업무로 지역 제한 서비스를 열려고 개인 VPN을 거치면 출구만 바뀌고 약관·계약은 그대로여서 계정 정지와 자료 유출 위험이 생기고, 회사는 공식 지원 지역과 기업 계약부터 확인한다는 흐름입니다."
@@ -224,6 +239,11 @@ page_metadata:
   - question_id: u14-l05-p04-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u14-l05-p4-story-ip-reputation.svg
+    title: "정상 메일이 스팸함으로 가요"
+    alt: "본사 공인 주소 198.51.100.25에서 보낸 정상 메일이 스팸함으로 가고 캡차와 일시 차단이 잦아져, 지우가 우리는 잘못한 적이 없는데 왜 그런지 의아해하는 모습이다."
+    caption: "잘못이 없는데 회사 출구 주소가 의심받아요."
+    after_paragraph: 0
   - file: assets/animations/u14-l05-p4-ip-reputation-rev.svg
     title: "IP 주소에도 평판이 있다?"
     alt: "본사 PC들이 NAT 출구 198.51.100.25 하나로 나가므로 감염된 PC의 스팸 때문에 출구 평판이 깎이고 정상 메일도 의심받아서, 출구 뒤 장비를 점검하고 차단 해제를 요청하는 모습입니다."
@@ -279,6 +299,11 @@ page_metadata:
   - question_id: u14-l05-p05-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u14-l05-p5-story-router-vpn.svg
+    title: "켠 적 없는 공유기 VPN"
+    alt: "박 팀장 집 공유기 설정 화면에 VPN 서버 메뉴가 켜져 있고 박 팀장은 켠 기억이 없어 걱정하며 지우와 함께 화면을 보는 모습이다."
+    caption: "켠 기억이 없는 공유기 VPN 서버가 켜져 있어요."
+    after_paragraph: 0
   - file: assets/animations/u14-l05-p5-router-vpn-rev.svg
     title: "공유기 VPN 기능의 위험"
     alt: "박 팀장 집 공유기에 켜져 있던 VPN 서버 기능이 기본 비밀번호와 오래된 펌웨어 때문에 낯선 계정을 허용하게 되고, 비밀번호 변경·기능 끄기·펌웨어 업데이트 순서로 막는 모습입니다."
@@ -334,6 +359,11 @@ page_metadata:
   - question_id: u14-l05-p06-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u14-l05-p6-story-relay.svg
+    title: "우리 주소에서 온 이상한 요청"
+    alt: "외부 클라우드 저장소 업체가 우리 주소에서 비정상적으로 많은 요청이 왔다고 알려 오자 지우가 우리는 한 적 없는데 기록에는 우리 주소가 있다고 의아해하는 모습이다."
+    caption: "기록에는 우리 주소가 있는데 우리가 한 일이 아니에요."
+    after_paragraph: 0
   - file: assets/animations/u14-l05-p6-relay-rev.svg
     title: "내 공유기가 남의 중계소라면?"
     alt: "공격자가 장악된 회사 공유기를 거쳐 클라우드 업체에 요청을 보내면 로그에 198.51.100.25가 남아 이 IP에서 왔다는 사실만 확인되고 이 사람이 했다는 것은 이어지지 않는 모습입니다."
@@ -389,6 +419,11 @@ page_metadata:
   - question_id: u14-l05-p07-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u14-l05-p7-story-filter-blind.svg
+    title: "막아 둔 사이트가 열렸어요"
+    alt: "직원이 개인 VPN으로 필터가 막아 둔 사이트를 열어 악성 코드가 사내 PC에 들어왔고, 지우가 왜 필터가 못 막았는지 궁금해하는 모습이다."
+    caption: "개인 VPN으로 막힌 사이트가 열려 지우가 이유를 궁금해해요."
+    after_paragraph: 0
   - file: assets/animations/u14-l05-p7-filter-blind-rev.svg
     title: "개인 VPN 안은 필터가 볼 수 없어요"
     alt: "직원 PC가 개인 VPN으로 필터가 막아 둔 파일 공유 사이트에 접속하면 회사 필터에는 암호화된 통신만 보여 막지 못하고, 통제는 허용할 터널을 정하는 일로 한다는 흐름입니다."
@@ -449,6 +484,11 @@ page_metadata:
   - question_id: u14-l05-p08-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u14-l05-p8-story-ip-only.svg
+    title: "주소만 보는 허용 규칙"
+    alt: "그룹웨어의 10.10.99.0/24 허용 규칙이 있는데 박 팀장의 VPN 비밀번호가 유출되어, 지우가 주소만 보는 규칙은 이 사람을 알아보지 못한다고 생각하는 모습이다."
+    caption: "비밀번호가 새도 주소만 보는 규칙은 통과시켜요."
+    after_paragraph: 0
   - file: assets/animations/u14-l05-p8-ip-only-rev.svg
     title: "IP만 보고 믿어도 될까?"
     alt: "사내 그룹웨어가 VPN 풀 10.10.99.0/24 주소를 모두 허용하면 비밀번호가 유출된 계정으로 붙은 공격자도 풀 주소를 받아 통과하므로 IP는 신원이 아니라 관찰 지점이라는 흐름입니다."

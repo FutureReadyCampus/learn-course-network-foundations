@@ -13,6 +13,11 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: advanced-source-18-page-01
   illustrations:
+  - file: assets/animations/u13-l03-p01-story-latency-ticket.svg
+    title: "일본 고객에게만 느리다는 티켓"
+    alt: "박 팀장이 일본 지사 직원만 첫 화면이 늦다는 티켓을 올리고, 지우가 서울과 도쿄의 응답 시간을 재며 서버는 충분한데 왜 느린지 생각하는 모습입니다."
+    caption: "서버는 충분한데 도쿄에서만 느리다는 티켓이 왔어요."
+    after_paragraph: 0
   - file: assets/animations/u13-l03-p1-latency.svg
     title: "일본 고객에게만 왜 느릴까?"
     alt: "서울 사이트의 서버는 한산한데 일본 고객의 요청이 왕복 50ms를 20~30번 오가 첫 화면이 1~1.5초 더 걸리고, 도쿄 사이트를 두면 가까워지는 모습입니다."
@@ -68,6 +73,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-18-page-02
   illustrations:
+  - file: assets/animations/u13-l03-p02-story-two-addresses.svg
+    title: "주소를 둘 등록했는데도"
+    alt: "지우가 서울과 도쿄 주소를 둘 등록했는데 도쿄를 점검하는 중에도 일부 손님이 도쿄로 가서 접속이 지연되거나 실패하는 모습입니다."
+    caption: "주소를 둘 등록했다고 살아 있는 곳으로 가는 건 아니었어요."
+    after_paragraph: 0
   - file: assets/animations/u13-l03-p2-dns-rr.svg
     title: "DNS가 주소를 둘 알려 주면?"
     alt: "이름 하나에 서울과 도쿄 주소를 둘 다 등록했지만 도쿄 사이트가 점검 중이어도 DNS는 몰라서 손님을 도쿄로 안내하다 막히는 모습입니다."
@@ -128,6 +138,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-18-page-05
   illustrations:
+  - file: assets/animations/u13-l03-p03-story-one-name.svg
+    title: "안내문엔 이름 하나만"
+    alt: "고객 안내문에는 이름 하나만 쓰고 인쇄한 뒤에도 지역 구성은 GSLB 쪽에서 바꾸고 싶다고 지우가 생각하는 모습입니다."
+    caption: "이름 하나로 지역마다 다른 주소를 주고 싶어요."
+    after_paragraph: 0
   - file: assets/animations/u13-l03-p3-cname-steps.svg
     title: "이름 하나로 지역마다 다른 주소를"
     alt: "손님이 book.company.example을 물으면 GSLB의 이름 jp.book.gslb.example(CNAME)을 거쳐 도쿄 주소 203.0.113.20이 나오고, 같은 이름도 한국 쪽 손님에게는 서울 주소가 돌아간다는 흐름입니다."
@@ -183,6 +198,11 @@ page_metadata:
     after_paragraph: 2
 - page_id: advanced-source-18-page-06
   illustrations:
+  - file: assets/animations/u13-l03-p04-story-one-laptop.svg
+    title: "노트북 한 대만 서울로"
+    alt: "도쿄 지사에서 노트북 한 대만 서울 사이트로 안내되어 박 팀장이 이 노트북만 느리다고 말하고 지우가 이유를 궁금해하는 모습입니다."
+    caption: "같은 지사인데 이 노트북만 서울로 안내됐어요."
+    after_paragraph: 0
   - file: assets/animations/u13-l03-p4-resolver-ip.svg
     title: "권한 DNS는 누구의 위치를 볼까?"
     alt: "손님 PC가 서울 쪽 리졸버에게 묻고 리졸버가 권한 DNS에 대신 물으면 권한 DNS는 리졸버의 위치를 보고 서울 주소를 돌려주며, ECS를 보내는 리졸버라면 손님 주소 앞부분으로 도쿄 주소를 고르는 모습입니다."
@@ -243,6 +263,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-18-page-09
   illustrations:
+  - file: assets/animations/u13-l03-p05-story-country-request.svg
+    title: "나라별로 나눠 주세요"
+    alt: "서 이사가 한국 손님은 서울로, 일본 손님은 도쿄로 나눠 달라고 하자 지우가 IP 주소만으로 나라를 알 수 있을지 생각하는 모습입니다."
+    caption: "서 이사가 손님을 나라별로 나눠 달라고 했어요."
+    after_paragraph: 0
   - file: assets/animations/u13-l03-p5-geoip-steps.svg
     title: "IP 주소만 보고 나라를 알 수 있을까?"
     alt: "IP 위치 DB가 손님 IP 192.0.2.77을 일본·도쿄로 추정하지만 VPN을 쓰는 손님은 출구 위치로 추정돼 틀릴 수 있다는 흐름입니다."
@@ -303,6 +328,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: u13-l03-page-06
   illustrations:
+  - file: assets/animations/u13-l03-p06-story-old-price.svg
+    title: "일본 고객만 예전 요금으로"
+    alt: "서울 사이트는 새 요금표인데 도쿄 사이트는 예전 요금표 그대로여서 일본 고객만 예전 요금으로 견적을 받았다는 티켓이 오고 지우가 이유를 찾는 모습입니다."
+    caption: "같은 예약 사이트인데 서울과 도쿄의 답이 달랐어요."
+    after_paragraph: 0
   - file: assets/animations/u13-l03-p6-sync-steps.svg
     title: "서울과 도쿄가 다른 답을 한다면?"
     alt: "서울은 최신 안내 문서 버전이고 도쿄는 하루 전 버전이라 일본 손님이 예전 요금을 받다가, 서울 원본을 도쿄로 복사해 맞추고 응답에 버전 번호를 남겨 어긋남을 확인하는 모습입니다."
@@ -358,6 +388,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-18-page-07
   illustrations:
+  - file: assets/animations/u13-l03-p07-story-slow-photo.svg
+    title: "사진 때문에 첫 화면이 느려요"
+    alt: "도쿄 고객의 첫 화면이 상품 소개 고화질 사진 때문에 늦게 뜨고 지우가 사진을 매번 서울에서 내려받고 있었다는 것을 알아채는 모습입니다."
+    caption: "도쿄 고객은 사진을 매번 서울에서 내려받고 있었어요."
+    after_paragraph: 0
   - file: assets/animations/u13-l03-p7-cdn.svg
     title: "사진과 화면은 더 가까이 둘 수 없을까?"
     alt: "도쿄 손님이 서울 원본에서 3MB 사진을 받다가 도쿄 에지에 사본을 저장해 두고 이후 가까운 에지에서 바로 받으며, 개인 응답은 캐시하지 않는 모습입니다."
@@ -418,6 +453,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-18-page-08
   illustrations:
+  - file: assets/animations/u13-l03-p08-story-one-server-down.svg
+    title: "서버 한 대가 고장 나면"
+    alt: "도쿄 사이트의 웹 서버 세 대 중 한 대가 고장 나자 지우가 도쿄 전체를 빼야 할지, 모두 서울로 몰리면 어떻게 될지 따져 보는 모습입니다."
+    caption: "서버 한 대 고장에 도쿄 전체를 빼야 할지 따져 봐요."
+    after_paragraph: 0
   - file: assets/animations/u13-l03-p8-two-layers-rev.svg
     title: "지역을 고른 뒤엔 누가 서버를 고를까?"
     alt: "GSLB가 한국 손님은 서울, 일본 손님은 도쿄로 고르고 도쿄 안의 L4가 서버를 고르며, 서버 한 대 고장은 L4가 빼고 서울 전체 장애는 GSLB가 한국 손님을 도쿄로 돌리는 모습입니다."

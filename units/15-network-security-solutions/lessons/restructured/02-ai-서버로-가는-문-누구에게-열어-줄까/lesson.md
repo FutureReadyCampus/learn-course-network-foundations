@@ -59,6 +59,11 @@ page_metadata:
   - question_id: u15-l02-p01-q01
     after_paragraph: 4
   illustrations:
+  - file: assets/animations/u15-l02-p1-story-open-doors.svg
+    title: "바깥쪽 문이 열려 있어요"
+    alt: "시험하며 연 포트 포워딩이 남아 인터넷에서 SSH와 웹이 응답하는 모니터 앞에서, 서 이사가 필요한 문만 열라고 하고 지우는 무엇이 필요한 문인지 생각합니다."
+    caption: "열려 있는 문을 보고 서 이사가 필요한 문만 열라고 해요."
+    after_paragraph: 0
   - file: assets/animations/u15-l02-p1-packet-filter-v2.svg
     title: "방화벽은 무엇을 보고 막을까"
     alt: "협력사 192.0.2.77에게만 그룹웨어 서버 8080을 허용하고, SSH 22번과 나머지는 차단하며, 허용한 것 외에는 모두 차단하는 것이 기본인 방화벽 규칙표입니다."
@@ -114,6 +119,11 @@ page_metadata:
   - question_id: u15-l02-p02-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u15-l02-p2-story-log-missing.svg
+    title: "로그에 없는 접속"
+    alt: "박 팀장 PC의 서버 접속이 방화벽 로그에 기록되지 않은 것을 보고 서 이사가 방화벽이 서버를 지켜 주는지 묻습니다."
+    caption: "접속은 되는데 방화벽 로그에는 기록이 없어요."
+    after_paragraph: 0
   - file: assets/animations/u15-l02-p2-server-move.svg
     title: "그룹웨어 서버를 서버 구역으로 옮기면"
     alt: "같은 LAN의 PC와 그룹웨어 서버 통신은 방화벽 기록이 없지만, 그룹웨어 서버를 방화벽 전용 포트 뒤 192.168.40.50 서버 구역으로 옮기면 모든 접속이 방화벽을 지나 기록됩니다."
@@ -174,6 +184,11 @@ page_metadata:
   - question_id: u15-l02-p03-q01
     after_paragraph: 4
   illustrations:
+  - file: assets/animations/u15-l02-p3-story-reply-blocked.svg
+    title: "막혀 버린 응답"
+    alt: "지우가 넣은 규칙 때문에 직원들이 쓰는 외부 클라우드 저장소의 응답이 막히고, 지우는 높은 번호 포트를 통째로 열까 고민합니다."
+    caption: "규칙 때문에 저장소 응답까지 막혀서 지우가 고민해요."
+    after_paragraph: 0
   - file: assets/animations/u15-l02-p3-no-memory.svg
     title: "돌아오는 응답이 막히는 이유"
     alt: "한 장씩 보는 필터는 외부 클라우드 저장소의 응답이 내 요청의 답인지 몰라 막고, 높은 번호 포트를 통째로 열면 처음 보는 출발지도 들어오는 모습입니다."
@@ -234,6 +249,11 @@ page_metadata:
   - question_id: u15-l02-p04-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u15-l02-p4-story-full-table-day.svg
+    title: "한가한데 안 되는 날"
+    alt: "예약 오픈 이벤트 날 이미 연결된 고객은 괜찮지만 새 고객의 접속만 실패하고, 방화벽 CPU는 한가해서 지우가 갸웃합니다."
+    caption: "장비는 한가한데 새 고객만 접속에 실패해요."
+    after_paragraph: 0
   - file: assets/animations/u15-l02-p4-session-table-v2.svg
     title: "세션 표가 가득 차면"
     alt: "이벤트 날 세션 표가 가득 차 이미 연결된 고객은 괜찮지만 새 연결이 거절되고, 동시 세션 한도와 유휴 시간을 확인하는 모습입니다."
@@ -289,6 +309,11 @@ page_metadata:
   - question_id: u15-l02-p05-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u15-l02-p5-story-port-443-worry.svg
+    title: "443으로 나가는 통신"
+    alt: "지우가 PC의 프로그램이 443 포트로 처음 보는 해외 주소에 통신을 보내는 것을 보고, 로그에는 허용과 포트만 남아 안심할 수 없다고 생각합니다."
+    caption: "포트는 맞는데 처음 보는 해외 주소로 나가서 걱정돼요."
+    after_paragraph: 0
   - file: assets/animations/u15-l02-p5-port-443-v2.svg
     title: "443이면 모두 웹 요청일까"
     alt: "패킷 필터가 443을 허용해 웹 요청도 웹이 아닌 통신도 통과하고 로그에는 IP와 포트만 남으며, 내용 해석은 Proxy형이 맡는 모습입니다."
@@ -344,6 +369,11 @@ page_metadata:
   - question_id: u15-l02-p06-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u15-l02-p6-story-all-in-one.svg
+    title: "올인원 한 대"
+    alt: "견적서에 올인원 장비 한 대가 올라와 있고, 서 이사가 한 대로 되면 제일 좋은 거 아니냐고 묻습니다."
+    caption: "올인원 장비 한 대가 정말 제일 좋은지 서 이사가 물어요."
+    after_paragraph: 0
   - file: assets/animations/u15-l02-p6-utm-v2.svg
     title: "한 대에 다 넣으면"
     alt: "방화벽·VPN·IPS·웹 필터를 UTM 한 대로 합치면 저렴하지만 기능을 켤수록 처리 능력의 여유가 줄고, 그 한 대가 멈추면 모두 멈추는 모습입니다."
@@ -399,6 +429,11 @@ page_metadata:
   - question_id: u15-l02-p07-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u15-l02-p7-story-remote-vpn.svg
+    title: "재택 직원의 VPN"
+    alt: "재택 중인 박 팀장이 VPN으로 사내에 접속하고, 서 이사가 화면 하나 쓰는데 건물 전체 열쇠가 필요한지 묻습니다."
+    caption: "화면 하나 쓰는 재택 직원에게 어디까지 열어 줄지 물어요."
+    after_paragraph: 0
   - file: assets/animations/u15-l02-p7-vpn-rules-v2.svg
     title: "VPN으로 들어와도 규칙이 필요"
     alt: "재택 박 팀장의 VPN 주소 풀 10.10.99.0/24에서 그룹웨어 서버 8080만 허용하고, 나머지 사내 192.168.0.0/16은 방화벽이 막는 모습입니다."

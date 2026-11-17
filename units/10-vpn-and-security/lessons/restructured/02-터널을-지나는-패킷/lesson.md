@@ -62,6 +62,11 @@ page_metadata:
   - question_id: u14-l02-p01-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u14-l02-p1-story-first-hop.svg
+    title: "박 팀장의 요청은 어디서 시작될까"
+    alt: "도쿄 지사 SG 설치 첫날 박 팀장이 지사 PC에서 본사 그룹웨어가 열리는지 봐 달라고 하고, 화면이 뜨는 걸 본 지우는 사설 주소의 서버로 요청이 어떻게 갔을지 궁금해하며, 이 Page에서 요청이 가장 먼저 어디로 가는지 알아봅니다."
+    caption: "박 팀장의 요청과 지우의 궁금증이에요."
+    after_paragraph: 0
   - file: assets/animations/u14-l02-p1-first-hop.svg
     title: "지사 PC의 요청은 어디로"
     alt: "지사 PC 10.20.0.15가 목적지 192.168.10.50 패킷을 기본 게이트웨이인 도쿄 SG에 맡기면, SG가 규칙에 대 보고 본사 목적지는 터널로 보내고 203.0.113.80 같은 다른 목적지는 일반 경로로 보냅니다."
@@ -117,6 +122,11 @@ page_metadata:
   - question_id: u14-l02-p02-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u14-l02-p2-story-private-wrap.svg
+    title: "사설 주소 패킷을 그대로 내보내면"
+    alt: "지우가 지사 PC가 만든 목적지 192.168.10.50 패킷이 인터넷 라우터로 향하는 것을 보고 그대로 내보내면 어떻게 될지 생각하며, 이 Page에서 사설 주소 패킷이 인터넷을 건너는 방법을 알아봅니다."
+    caption: "사설 주소 패킷이 인터넷 라우터 앞에 섰어요."
+    after_paragraph: 0
   - file: assets/animations/u14-l02-p2-private-wrap.svg
     title: "사설 주소 패킷은 왜 못 건널까"
     alt: "원본 패킷을 그대로 내보내면 인터넷에서 버려지고, 도쿄 SG가 198.51.100.20에서 198.51.100.25로 가는 새 IP 헤더를 한 겹 씌우면 터널로 인터넷을 건너 서울 SG에 닿습니다."
@@ -172,6 +182,11 @@ page_metadata:
   - question_id: u14-l02-p03-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u14-l02-p3-story-four-addresses.svg
+    title: "주소 네 개 앞에서 멈춘 지우"
+    alt: "지우가 패킷 그림을 그리다 출발지 두 개와 목적지 두 개, 주소 네 개 앞에서 멈추고 주소의 주인이 섞이면 엉뚱한 곳을 보게 된다고 걱정하며, 이 Page에서 네 주소의 주인을 가려 봅니다."
+    caption: "지우가 주소 네 개 앞에서 손이 멈췄어요."
+    after_paragraph: 0
   - file: assets/animations/u14-l02-p3-inner-outer.svg
     title: "안쪽 IP와 바깥 IP"
     alt: "원본 패킷의 안쪽 IP 한 쌍 위에 바깥 IP 헤더와 암호화 헤더가 씌워지고, 인터넷 라우터는 바깥 IP 헤더만 읽으며 바깥은 어느 터널로, 안쪽은 누가 누구에게를 뜻합니다."
@@ -227,6 +242,11 @@ page_metadata:
   - question_id: u14-l02-p04-q01
     after_paragraph: 2
   illustrations:
+  - file: assets/animations/u14-l02-p4-story-unwrap.svg
+    title: "인터넷 접속을 받지 않는 서버"
+    alt: "본사 그룹웨어 서버는 인터넷에서 직접 오는 접속을 받지 않는데 지사의 요청은 받아 줘야 해서, 지우가 그 요청이 서버에 어떤 모습으로 도착할지 궁금해하며 이 Page에서 서울 SG를 따라가 봅니다."
+    caption: "서버는 인터넷에서 직접 오는 접속을 받지 않아요."
+    after_paragraph: 0
   - file: assets/animations/u14-l02-p4-unwrap.svg
     title: "본사 SG는 포장을 어떻게 풀까"
     alt: "서울 SG가 도착한 패킷의 바깥 헤더를 벗기고 복호화하면 서버에는 지사 PC 주소가 그대로 보이고, 응답은 다시 포장되어 같은 터널로 돌아갑니다."
@@ -287,6 +307,11 @@ page_metadata:
   - question_id: u14-l02-p05-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u14-l02-p5-story-isp-view.svg
+    title: "통신사는 무엇을 볼까"
+    alt: "서 이사가 VPN을 쓰면 통신사는 도쿄와 통신하는 것도 모르겠느냐고 다시 묻고, 지우는 통신사가 터널 구간의 패킷을 본다고 가정해 이 Page에서 무엇이 보이고 가려지는지 알아봅니다."
+    caption: "서 이사가 통신사에게 보이는 것을 물어요."
+    after_paragraph: 0
   - file: assets/animations/u14-l02-p5-visible.svg
     title: "터널 밖에서는 무엇이 보일까"
     alt: "통신사에게는 두 SG 주소와 패킷 크기·시간이 보이고, 안쪽 주소와 그룹웨어에 올린 문서 내용은 가려지지만 통신 사실은 숨겨지지 않습니다."
@@ -342,6 +367,11 @@ page_metadata:
   - question_id: u14-l02-p06-q01
     after_paragraph: 3
   illustrations:
+  - file: assets/animations/u14-l02-p6-story-big-file.svg
+    title: "큰 첨부 파일만 멈춰요"
+    alt: "지사 직원이 짧은 글은 열리는데 큰 첨부 파일을 올리면 멈춘다는 티켓을 올리고, 터널과 그룹웨어가 정상이라 지우가 한 겹 더 포장한 것을 의심하며 이 Page에서 포장의 대가를 알아봅니다."
+    caption: "큰 파일만 멈춘다는 티켓이에요."
+    after_paragraph: 0
   - file: assets/animations/u14-l02-p6-mtu.svg
     title: "포장 한 겹의 대가"
     alt: "한계까지 꽉 찬 패킷에 바깥 IP·IPsec 헤더가 붙으면 MTU 1,500바이트를 넘고, SG가 원본 크기를 헤더만큼 미리 줄이면 한계 안에 들어갑니다."

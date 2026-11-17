@@ -17,6 +17,11 @@ source_wiki: https://github.com/physical-spark/course-network/blob/d1b650e39cb0f
 page_metadata:
 - page_id: u13-l01-page-01
   illustrations:
+  - file: assets/animations/u13-l01-p1-story-slow-lunch.svg
+    title: "점심시간마다 느려지는 예약 사이트 티켓"
+    alt: "지우에게 예약·문의 사이트 티켓이 오고, 점심시간에 답이 30초 넘게 걸리며, 박 팀장은 회선 교체를, 서 이사는 서버 사양을 말하고, 느린 곳이 회선인지 서버인지 알아볼 질문이 남습니다."
+    caption: "점심시간마다 느린 사이트를 두고 회선과 서버 이야기가 나왔어요."
+    after_paragraph: 0
   - file: assets/animations/u13-l01-p1-slow.svg
     title: "예약 사이트는 왜 느려졌을까?"
     alt: "점심시간 요청이 서버 한 대로 몰려 회선 사용률은 30%인데 서버 CPU는 100%가 되고, 한 대의 한계라 여러 대로 나눠야 한다는 흐름입니다."
@@ -72,6 +77,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-17-page-01
   illustrations:
+  - file: assets/animations/u13-l01-p2-story-port-one-server.svg
+    title: "서버를 세 대로 늘리려다 막힌 지우"
+    alt: "서버 세 대를 세우고 지우가 서버마다 포워딩 규칙을 쓰는데 두 번째 규칙이 외부 443이 이미 쓰인다며 거부되고, 포워딩을 여러 대로 늘리면 어떻게 되는지가 질문으로 남습니다."
+    caption: "서버마다 포워딩 규칙을 쓰려다 두 번째 규칙이 거부됐어요."
+    after_paragraph: 0
   - file: assets/animations/u13-l01-p2-forward-vs-lb.svg
     title: "포트 포워딩을 서버 여러 대로?"
     alt: "왼쪽은 외부 443이 서버 .11 한 대에만 연결돼 .12 규칙이 거부되고, 오른쪽은 로드 밸런서(203.0.113.10:443)가 연결마다 서버 .11~.13 중 하나를 고르는 모습입니다."
@@ -127,6 +137,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-17-page-02
   illustrations:
+  - file: assets/animations/u13-l01-p3-story-three-addresses.svg
+    title: "안내문에 주소를 세 개 적을까"
+    alt: "서버 세 대에 고객 안내문은 하나이고, 안내문에 서버 주소 세 개를 적어야 할지 고민하는데 서 이사가 서버별 주소를 알려 주자고 하며, 손님이 알아야 할 주소 수가 질문으로 남습니다."
+    caption: "서 이사가 서버별 주소를 알려 주자고 해서 지우가 고민해요."
+    after_paragraph: 0
   - file: assets/animations/u13-l01-p3-vip-one-address.svg
     title: "손님은 주소 하나만 알면 돼요"
     alt: "손님이 book.company.example을 풀어 VIP 203.0.113.10:443을 받고, 로드 밸런서가 서버 풀 192.168.20.11~.13 중 하나로 넘기는 모습입니다."
@@ -182,6 +197,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-17-page-03
   illustrations:
+  - file: assets/animations/u13-l01-p4-story-lost-date.svg
+    title: "고른 날짜가 사라진 예약 화면"
+    alt: "고객이 예약 화면에서 날짜를 고르고 다음 화면으로 가자 선택한 날짜가 없다고 나오며, 지우가 서버 세 대의 결과가 왜 다른지 궁금해하고, 진행 정보를 어디에 둘지가 질문으로 남습니다."
+    caption: "고른 날짜가 다음 화면에서 없다고 나와요."
+    after_paragraph: 0
   - file: assets/animations/u13-l01-p4-forgets-first-line.svg
     title: "예약 중에 고른 내용을 잊는다면?"
     alt: "손님이 고른 날짜를 서버 .11이 기억하지만 다음 요청이 서버 .12로 가면 모르고, 공유 저장소에 두면 어느 서버든 같은 기록을 읽는 모습입니다."
@@ -242,6 +262,11 @@ page_metadata:
     after_paragraph: 4
 - page_id: advanced-source-17-page-04
   illustrations:
+  - file: assets/animations/u13-l01-p5-story-uneven-queue.svg
+    title: "같은 개수로 나눴는데 한 서버만 줄이 길어요"
+    alt: "서버 세 대에 차례로 요청을 보내도록 설정했는데 오후에 2번 서버만 줄이 길고 3번은 놀며, 지우가 왜 불공평한지 의문을 갖고, 차례대로 나누는 방식이 공평한지가 질문으로 남습니다."
+    caption: "차례대로 나눴는데 2번 서버만 줄이 길어졌어요."
+    after_paragraph: 0
   - file: assets/animations/u13-l01-p5-round-robin-vs-least.svg
     title: "차례대로 나눠 주면 공평할까?"
     alt: "라운드 로빈은 순서대로 나누지만 긴 요청이 걸린 서버 .12만 막히고 .13은 놀며, 최소 연결은 한가한 서버 .13을 고르는 모습입니다."
@@ -297,6 +322,11 @@ page_metadata:
     after_paragraph: 4
 - page_id: u13-l01-page-06
   illustrations:
+  - file: assets/animations/u13-l01-p6-story-estimate-split.svg
+    title: "견적 요청만 큰 서버로 보내 달라는 부탁"
+    alt: "박 팀장이 견적서 요청은 큰 서버로 일반 문의는 작은 서버로 보내 달라고 하는데 로드 밸런서 설정에 그런 항목이 없어 지우가 의문을 갖고, 지금 장비가 요청을 왜 가르지 못하는지가 질문으로 남습니다."
+    caption: "설정 화면에 요청을 가르는 항목이 없어요."
+    after_paragraph: 0
   - file: assets/animations/u13-l01-p6-l4-vs-l7-requests.svg
     title: "견적 요청만 큰 서버로?"
     alt: "왼쪽 L4는 IP와 포트만 봐서 견적 요청과 일반 문의를 가르지 못하고, 오른쪽 L7은 /api/estimate 경로를 읽어 견적 요청을 큰 서버로 보내는 모습입니다."
@@ -352,6 +382,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-17-page-05
   illustrations:
+  - file: assets/animations/u13-l01-p7-story-not-ready.svg
+    title: "켜졌는데 오류가 난 2번 서버"
+    alt: "재시작한 2번 서버가 켜졌지만 캐시를 채우는 중이었고 그 사이 요청이 가서 오류가 났으며, 지우가 아픈 서버로 왜 보냈는지 의문을 갖고, 서버가 일할 수 있는지 아는 법이 질문으로 남습니다."
+    caption: "켜졌지만 준비가 안 된 서버로 요청이 가서 오류가 났어요."
+    after_paragraph: 0
   - file: assets/animations/u13-l01-p7-health-check-ready.svg
     title: "캐시를 올리는 서버로 왜 갔을까?"
     alt: "ping에는 정상으로 답하지만 시작 중(캐시를 올리는 중)인 서버 .12로 요청이 가 오류가 나고, /health로 준비 여부를 물으면 준비 전이라 풀에서 제외되는 모습입니다."
@@ -407,6 +442,11 @@ page_metadata:
     after_paragraph: 3
 - page_id: advanced-source-17-page-06
   illustrations:
+  - file: assets/animations/u13-l01-p8-story-repair-five-days.svg
+    title: "수리에 5일 걸리는 1번 서버"
+    alt: "1번 서버의 CPU가 80%를 넘고 오류가 잦은데 수리에 5일이 걸리고, 서 이사가 그동안 손님은 어떻게 되는지 물으며, 손님이 모르게 서버 한 대를 빼는 방법이 질문으로 남습니다."
+    caption: "서 이사가 수리하는 5일 동안 손님은 어떻게 되는지 물어요."
+    after_paragraph: 0
   - file: assets/animations/u13-l01-p8-drain-headroom.svg
     title: "서버 한 대를 빼도 손님이 모르게"
     alt: "평소 서버 세 대가 60%씩 맡다가 오류가 잦은 서버 .11을 새 연결에서 먼저 빼면 남은 두 대가 90%씩 맡고, 한계 100%까지 여유가 있어야 버티는 모습입니다."
