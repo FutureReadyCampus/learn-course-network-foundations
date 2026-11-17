@@ -151,3 +151,7 @@ button { color: inherit; }
 .net-prose table { display: block; overflow-x: auto; border-collapse: collapse; }
 .net-prose th, .net-prose td { padding: 6px 10px; border: 1px solid var(--border); }
 .net-prose mark { background: var(--accent-soft); color: inherit; }
+.topbar-brand { color: inherit; text-decoration: none; }
+.topbar-nav { display: flex; gap: 6px; }
+.topbar-nav a { padding: 5px 11px; border: 1px solid var(--border); border-radius: 999px; color: inherit; font-size: .8125rem; font-weight: 650; text-decoration: none; }
+.topbar-nav a:hover { background: var(--accent-soft); }
