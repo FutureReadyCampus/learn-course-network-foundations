@@ -15,11 +15,11 @@ source:
 
 > **오늘 들어온 일**
 >
-> - **상황**: 오늘 오전에 계정 잠금 요청이 세 건 들어옵니다. **계정 잠금**(account lockout, 어카운트 락아웃)은 해당 계정의 로그인을 비활성화하는 조치입니다. `INC-001` 은 퇴사한 `dami`, `INC-003` 은 계정 관리자 `gaeun`, `INC-006` 은 이미 잠겨 있던 `junho` 입니다. 월요일에 만든 `run_action` 에 이 세 계정을 그대로 넘기면, 세 건 모두 계정 이름을 잠긴 계정 리스트에 추가하고 「잠금 완료」라는 결과만 기록합니다.
+> - **상황**: 오늘 계정 잠금 요청이 세 건 들어옵니다. **계정 잠금**(account lockout, 어카운트 락아웃)은 해당 계정의 로그인을 비활성화하는 조치입니다. `INC-001` 은 퇴사한 `dami`, `INC-003` 은 계정 관리자 `gaeun`, `INC-006` 은 이미 잠겨 있던 `junho` 입니다. Unit 1에서 만든 `run_action` 에 이 세 계정을 그대로 넘기면, 세 건 모두 계정 이름을 잠긴 계정 리스트에 추가하고 「잠금 완료」라는 결과만 기록합니다.
 > - **문제**:
 > - 사후 검증(post-action verification: 조치 후 실제 상태를 다시 확인하는 일, 1.1 에서 설명)이 없습니다. 잠금이 실제로 적용됐는지 확인하지 않으므로 실제 서버에서 잠금 명령이 실패해도 「잠금 완료」로 기록됩니다.
 > - 조치 전 상태(before)를 기록하지 않습니다. `junho` 는 원래 잠겨 있었는데, 나중에 알림이 오탐(false positive, 폴스 포지티브: 정상 활동을 공격으로 잘못 판정한 것)으로 판명되어 자동 대응이 잠근 계정을 일괄 해제(롤백, rollback: 조치 이전 상태로 복원하는 일)하면, 조치 전 상태가 기록에 없으므로 원래 잠겨 있던 `junho` 까지 해제됩니다.
-> - 화요일에는 계정 관리자 알림을 승인 경로로 분기했습니다. 그러나 이 경로를 거치지 않고 잠금 함수를 직접 호출하면 `gaeun` 계정도 잠겨, 직원들의 계정 관리 업무가 중단됩니다.
+> - Unit 2에서는 계정 관리자 알림을 승인 경로로 분기했습니다. 그러나 이 경로를 거치지 않고 잠금 함수를 직접 호출하면 `gaeun` 계정도 잠겨, 직원들의 계정 관리 업무가 중단됩니다.
 > - **부탁**: 계정을 잠근 후 실제로 잠겼는지 사후 검증하고, 조치 전 · 후 상태를 감사 기록으로 남겨 주세요. 계정 관리자(VIP) 계정은 이 함수에서도 잠그지 않아야 하며, 오탐으로 판명되면 해제할 수 있어야 합니다.
 > - **바뀌는 점**: 사후 검증으로 확인된 상태만 「잠김」으로 기록되고, 원래 잠겨 있던 계정(`junho`)과 이번에 잠근 계정(`dami`)이 조치 전 상태(before)로 구분됩니다. 오늘 샘플에서는 세 건 중 `dami` 한 건만 새로 잠기고 `gaeun` 은 잠기지 않습니다. 상황과 이름은 설명을 위한 예시입니다.
 
@@ -64,26 +64,26 @@ account_actions.py    check_policy      : VIP 계정이면 자동 조치를 막�
                       verify_locked     : 실제로 잠긴 계정 리스트에 있는지 확인한다 (5번)
                       lock_account      : 잠그고, 확인하고, 기록을 만든다 (6번이 잠그는 줄)
                       unlock_account    : 해제하고, 확인하고, 기록을 만든다 (7번이 해제하는 줄)
-실행 파일             day03_2-1_run.py  : 잠금 요청마다 잠그고 (8번) 기록을 남긴다 (9번)
+실행 파일             exercise4-1_run.py  : 잠금 요청마다 잠그고 (8번) 기록을 남긴다 (9번)
 ```
 
 > **여기부터 문제입니다.**
 
-## Exercise Exercise 4-3 · 계정 잠금을 실행하고 사후 검증하며, 조치 전 · 후 상태를 감사 기록으로 남기기
+## Exercise 4-1 · 계정 잠금을 실행하고 사후 검증하며, 조치 전 · 후 상태를 감사 기록으로 남기기
 
 ** 이런 상황이 있습니다**
 
 - **지금은**: <mark>잠금 호출만 있고 사후 검증도 조치 전 상태 기록도 없어서, 「잠갔다」는 기록이 실제 상태를 입증하지 못합니다</mark>.
-- **만드는 것**: 조치 기록 생성과 기록 파일 추가(`containment_store.py`), VIP 정책 검사 · 잠금 사후 검증 · 잠금 · 해제(`account_actions.py`), 잠금 요청 처리(`day03_2-1_run.py`).
+- **만드는 것**: 조치 기록 생성과 기록 파일 추가(`containment_store.py`), VIP 정책 검사 · 잠금 사후 검증 · 잠금 · 해제(`account_actions.py`), 잠금 요청 처리(`exercise4-1_run.py`).
 - **실행하면**: <mark>단계 1: 조치 전 잠긴 계정, 단계 2: 잠금 요청 3건의 조치 전 → 후, 단계 3: 해제, 단계 4: 파일에 저장해 둔 잠긴 계정과 조치 기록 수를 다시 읽은 결과가 나옵니다.</mark>
 
 ** 할 일**: 파일 세 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 ~ 4 를 읽습니다.
 
-**`containment_store.py`** — 연습용 시스템의 상태와 조치 기록 파일을 관리합니다. 3 · Exercise 4-3에서도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 1 · 2번입니다. `INITIAL_STATE` 의 `junho` 는 수업 전부터 잠겨 있는 계정입니다.
+**`containment_store.py`** — 연습용 시스템의 상태와 조치 기록 파일을 관리합니다. Exercise 4-2 · Exercise 4-3에서도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 1 · 2번입니다. `INITIAL_STATE` 의 `junho` 는 수업 전부터 잠겨 있는 계정입니다.
 
 ```python
 import copy                                                           # 처음 상태를 복사해 쓰기 위해 copy 를 불러온다
-from incident import load_json, save_json                             # 월요일 파일의 파일 읽기 · 쓰기 함수를 불러온다
+from incident import load_json, save_json                             # Unit 1 파일의 파일 읽기 · 쓰기 함수를 불러온다
 
 STATE_PATH = "containment_state.json"                                 # 연습용 시스템 상태를 저장할 파일 이름
 LOG_PATH = "containment_log.json"                                     # 조치 기록을 저장할 파일 이름
@@ -201,10 +201,10 @@ def unlock_account(user, state, incident_id, reason):                           
     return make_record("계정 해제", user, incident_id, "잠김", after, reason)         # 조치 전 · 후 상태와 함께 기록한다 — 미리 채운 줄
 ```
 
-**`day03_2-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+**`exercise4-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
-from incident import load_json                                                          # 월요일 파일의 함수를 불러온다
+from incident import load_json                                                          # Unit 1 파일의 함수를 불러온다
 from containment_store import new_state, save_state, load_state, reset_log, append_log  # 방금 만든 상태 · 기록 함수를 불러온다
 from account_actions import lock_account, unlock_account                                # 방금 만든 계정 조치 함수를 불러온다
 
@@ -241,18 +241,18 @@ print("조치 기록:", len(saved_log), "건")                                  
 1. **[터미널]** 파일 세 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
    ```bash
    pwd
-   touch containment_store.py account_actions.py day03_2-1_run.py
+   touch containment_store.py account_actions.py exercise4-1_run.py
    ls
    ```
-2. **[VS Code]** `containment_store.py` 1 · 2번, `account_actions.py` 3 ~ 7번, `day03_2-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 4-1 한눈에」를 봅니다.
+2. **[VS Code]** `containment_store.py` 1 · 2번, `account_actions.py` 3 ~ 7번, `exercise4-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 4-1 한눈에」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
-   python day03_2-1_run.py
+   python exercise4-1_run.py
    ```
 4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 1줄, 단계 2 는 3줄, 단계 3 은 1줄, 단계 4 는 2줄입니다. 실행하면 `containment_state.json` 과 `containment_log.json` 이 생깁니다.
-5. **[보고서]** `day03_am_report.md` 의 `## Exercise 4-1` 아래를 채웁니다.
+5. **[보고서]** Unit 4 의 `## Exercise 4-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 단계 4 의 잠긴 계정과 조치 기록 수를 적어 주세요.
-   - (나) [핵심 질문] INC-003 의 `gaeun` 은 잠기지 않았습니다. 단계 2 의 줄을 근거로 이유를 적어 주세요. 그리고 어제 Exercise 4-2의 경로가 VIP 계정을 이미 `승인 필요` 경로로 분기했는데도 조치 함수가 정책을 한 번 더 검사하는 이유도 적어 주세요.
+   - (나) [핵심 질문] INC-003 의 `gaeun` 은 잠기지 않았습니다. 단계 2 의 줄을 근거로 이유를 적어 주세요. 그리고 Unit 2의 Exercise 2-2의 경로가 VIP 계정을 이미 `승인 필요` 경로로 분기했는데도 조치 함수가 정책을 한 번 더 검사하는 이유도 적어 주세요.
    - (다) [핵심 질문] INC-006 의 `junho` 는 `잠김 → 잠김` 으로 기록됐고, 단계 3 에서 해제한 `dami` 는 `잠김 → 잠기지 않음` 입니다. `before` 를 남기면 롤백할 때 어떤 판단이 가능해지는지 적어 주세요. 그리고 잠금 뒤 사후 검증(`verify_locked`)이 없으면 어떤 문제가 생기는지도 적어 주세요.
 
 ## Exercise 4-1 한눈에

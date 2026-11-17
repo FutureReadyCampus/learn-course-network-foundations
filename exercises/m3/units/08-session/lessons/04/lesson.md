@@ -13,7 +13,7 @@ source:
 
 ## 개요
 
-> **오늘 들어온 일**
+> **이번 Exercise에 들어온 일**
 >
 > A사 관제 담당이 보낸 메시지:
 > 「승인이 필요 없거나 승인된 것만 실제로 회수하고, 회수한 내용을 이력 파일로 남겨 주세요. 아직 승인되지 않은 것은 실행하지 말고 「대기」로 남겨 주세요.
@@ -21,15 +21,15 @@ source:
 > 회수한 뒤에는 같은 사용자 · 권한으로 접근을 다시 판정해서 정말 막혔는지 확인해 주세요. 회수했다고 적어 놓고 여전히 접근이 허용되면 안 됩니다.」
 > - **왜 중요한가**: 회수했다는 기록만으로는 부족합니다. 다시 판정해 보아야 정말 막혔는지 알 수 있고, 이력이 있어야 나중에 누가 언제 왜 없앴는지 설명할 수 있습니다.
 
-> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「 문제」 전까지는 이 Exercise의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
+> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「문제」 전까지는 이 Exercise의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
 
 ## 읽기 · 왜 필요한가
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
 1. 승인 상태까지 정해진 계획을 이제 실행합니다. 승인 상태가 「승인 불필요」 또는 「승인됨」인 계획만 실행하고, 「승인 대기」인 계획은 실행하지 않습니다.
-2. 실행한 뒤에는 **같은 사용자 · 권한을 다시 판정**합니다. 10/22(목)의 `evaluate_access` 가 회수 전과 후에 같은 요청을 어떻게 판정하는지 비교하면 회수가 정말 효과가 있었는지 알 수 있습니다.
-3. 실행한 내용은 **회수 이력**(`revocation_log.json`)으로 남깁니다. 어제의 「사용 이력」(권한을 마지막으로 쓴 시각의 기록)과 다른 것입니다. 회수 이력은 오늘 무엇을 회수했는지의 기록입니다.
+2. 실행한 뒤에는 **같은 사용자 · 권한을 다시 판정**합니다. Unit 2의 `evaluate_access` 가 회수 전과 후에 같은 요청을 어떻게 판정하는지 비교하면 회수가 정말 효과가 있었는지 알 수 있습니다.
+3. 실행한 내용은 **회수 이력**(`revocation_log.json`)으로 남깁니다. Unit 6의 「사용 이력」(권한을 마지막으로 쓴 시각의 기록)과 다른 것입니다. 회수 이력은 이번 Unit에서 무엇을 회수했는지의 기록입니다.
 
 ## 읽기 · 3.1 실행 방법과 이력
 
@@ -48,12 +48,12 @@ source:
   - `apply_plan`(4 ~ 8번): 회수 방법별로 실제로 지우는 일(세 곳)입니다.
   - `execute_revocation`(9 ~ 13번): 계획마다 「대기」인지 「실행」인지 정합니다.
 - **미리 채운 함수**
-  - `save_log`: 이력을 JSON 파일로 저장합니다(판단이 없는 저장이라 미리 채움, 10/23(금)의 `save_requests` 와 같은 방법입니다).
+  - `save_log`: 이력을 JSON 파일로 저장합니다(판단이 없는 저장이라 미리 채움, Unit 5의 `save_requests` 와 같은 방법입니다).
 - 회수한 뒤에 다시 판정하면 결과가 달라질 수 있습니다.
   - `execute_revocation` 이 바꾼 `USERS` · `ROLES` · `EXCEPTIONS` 를 `evaluate_access` 도 같은 것으로 읽기 때문입니다.
-  - `evaluate_access(사용자, 자원, 행위, 시각)` 는 `(허용 여부, 이유)` 두 값을 리턴합니다(10/22(목)).
+  - `evaluate_access(사용자, 자원, 행위, 시각)` 는 `(허용 여부, 이유)` 두 값을 리턴합니다(Unit 2).
 - `apply_plan` 은 승인 상태를 보지 않습니다. 승인 상태를 보고 실행할지 정하는 것은 `execute_revocation` 이 하는 일입니다.
-- `day05_4-1_run.py` 는 회수 전과 후에 계획마다 `evaluate_access` 로 같은 사용자 · 권한을 판정해 「허용(이유)」 또는 「거부(이유)」 문자열로 비교합니다.
+- `exercise8-3_run.py` 는 회수 전과 후에 계획마다 `evaluate_access` 로 같은 사용자 · 권한을 판정해 「허용(이유)」 또는 「거부(이유)」 문자열로 비교합니다.
 
 ```
 +----------------------------------------------------------+
@@ -100,7 +100,7 @@ log 를 리턴한다
 
 ## Exercise 8-3 · 회수를 실행하고 전후 판정과 이력 남기기
 
-** 이런 상황이 있습니다**
+**이런 상황이 있습니다**
 
 - **지금은**: 회수 계획과 승인 상태만 있고 실제로는 아무것도 지워지지 않았습니다. 지운 뒤에 정말 막혔는지 확인하는 방법도, 지운 기록도 없습니다.
 - **그래서 만드는 것**: `execute_revocation` 입니다.
@@ -108,9 +108,9 @@ log 를 리턴한다
 - **실행하면**: 단계 1은 계획별 실행 결과, 단계 2는 회수 전후의 판정 비교, 단계 3은 `revocation_log.json` 저장과 다시 읽은 건수를 출력합니다.
 - **현업에서는**: 회수 도구도 실행한 뒤 다시 판정해 막혔는지 확인하고, 이력을 지우지 않고 보관합니다.
 
-** 할 일**
+**할 일**
 
-1. `revoke.py` 와 `day05_4-1_run.py` 두 파일을 만들고, `remove_exception` · `apply_plan` · `execute_revocation` 에서 직접 쓰는 곳 다섯 군데를 씁니다.
+1. `revoke.py` 와 `exercise8-3_run.py` 두 파일을 만들고, `remove_exception` · `apply_plan` · `execute_revocation` 에서 직접 쓰는 곳 다섯 군데를 씁니다.
 2. 실행해서 <mark>회수 결과</mark>(단계 1: 실행), <mark>회수 전후의 판정</mark>(단계 2: 확인), <mark>저장한 이력</mark>(단계 3: 저장)을 읽고, 새로 생긴 `revocation_log.json` 파일도 열어 봅니다.
 
 **`revoke.py`**
@@ -190,24 +190,24 @@ def execute_revocation(plans, users, roles, exceptions, now):    # 계획 · 사
   - 나머지 줄은 미리 채워 두었으니 그대로 둡니다.
 - 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다(파이썬 버전에 따라 뒤에 `after 'if' statement on line …` 가 붙습니다). `remove_exception` 의 `for` 아래에 실행할 줄이 아직 없기 때문입니다.
 
-**`day05_4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. Exercise 8-2까지의 계획과 승인 상태를 만든 뒤 회수 전 판정을 모으고, `execute_revocation` 으로 회수하고, 회수 후 판정을 모아 비교하고, 이력을 저장합니다.
+**`exercise8-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. Exercise 8-2까지의 계획과 승인 상태를 만든 뒤 회수 전 판정을 모으고, `execute_revocation` 으로 회수하고, 회수 후 판정을 모아 비교하고, 이력을 저장합니다.
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
-from rbac import USERS, ROLES                                    # 10/21(수)에 만든 사용자 · 역할 딕셔너리를 불러온다
-from exception_policy import EXCEPTIONS, TIME_FORMAT             # 10/22(목)에 만든 예외 리스트와 시각 형식을 불러온다
-from policy import evaluate_access                               # 10/22(목)에 만든 최종 판정 함수를 불러온다
-from config_loader import load_json                              # 10/22(목)에 만든 안전한 읽기 함수를 불러온다
-from revoke_input import load_to_revoke                          # 어제 점검 결과(회수 대상)를 만드는 함수를 불러온다
-from revoke_plan import plan_revocation                          # Exercise 8-1에 만든 회수 계획 함수를 불러온다
-from revoke_approve import load_sensitive, mark_approvals        # Exercise 8-2에 만든 승인 함수를 불러온다
+from rbac import USERS, ROLES                                    # Unit 1에서 만든 사용자 · 역할 딕셔너리를 불러온다
+from exception_policy import EXCEPTIONS, TIME_FORMAT             # Unit 2에서 만든 예외 리스트와 시각 형식을 불러온다
+from policy import evaluate_access                               # Unit 2에서 만든 최종 판정 함수를 불러온다
+from config_loader import load_json                              # Unit 3에서 만든 안전한 읽기 함수를 불러온다
+from revoke_input import load_to_revoke                          # Unit 7의 점검 결과(회수 대상)를 만드는 함수를 불러온다
+from revoke_plan import plan_revocation                          # Exercise 8-1에서 만든 회수 계획 함수를 불러온다
+from revoke_approve import load_sensitive, mark_approvals        # Exercise 8-2에서 만든 승인 함수를 불러온다
 from revoke import execute_revocation, save_log                  # 방금 만든 회수 실행 함수와 이력 저장 함수를 불러온다
 
-NOW_TEXT = "2026-10-30 10:00"                                    # 오늘 오전 실습의 지금 시각 문자열(고정)
+NOW_TEXT = "2026-10-30 10:00"                                    # 이번 실습의 지금 시각 문자열(고정)
 NOW = datetime.strptime(NOW_TEXT, TIME_FORMAT)                   # 같은 시각을 시각으로 바꾼다. 판정 함수가 쓴다
 DECISIONS = {"dami:SALES:QUERY": "승인", "dami:SALES:CHANGE": "승인"}  # 보안 책임자의 결정(Exercise 8-2와 같다)
 
-to_revoke = load_to_revoke()                                     # 어제 점검한 회수 대상을 만든다
+to_revoke = load_to_revoke()                                     # Unit 7에서 점검한 회수 대상을 만든다
 plans = plan_revocation(to_revoke, USERS, ROLES)                 # 회수 계획을 세운다
 sensitive = load_sensitive("config/sensitive.json")              # 민감한 권한 리스트를 읽는다
 plans = mark_approvals(plans, sensitive, DECISIONS)              # 계획마다 승인 상태를 적는다
@@ -262,18 +262,18 @@ print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `revoke.py` · `day05_4-1_run.py` 를 만들어 위 코드를 붙여 넣습니다. 만드는 법은 둘 중 하나를 고릅니다.
+1. **[VS Code 또는 터미널]** 파일 `revoke.py` · `exercise8-3_run.py` 를 만들어 위 코드를 붙여 넣습니다. 만드는 법은 둘 중 하나를 고릅니다.
    - VS Code: `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력합니다.
    - 터미널: `pwd` 로 `access_control` 인지 확인하고 `touch 이름` 으로 만든 뒤 VS Code 에서 열어 붙여 넣습니다(`vim 이름` → `i` → 붙여넣기 → `Esc` → `:wq` 도 됩니다).
 2. **[VS Code]** `revoke.py` 에서 `remove_exception` · `apply_plan` · `execute_revocation` 의 직접 쓰는 곳 다섯 군데를 씁니다. 3.1 의 표와 그림을 보고 씁니다.
 3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python day05_4-1_run.py
+   python exercise8-3_run.py
    ```
 4. 출력은 세 단계입니다. 단계 1은 계획 여덟 줄과 `실행 N 건, 대기 N 건`, 단계 2는 판정 비교 여덟 줄, 단계 3은 저장 한 줄입니다.
 5. **[VS Code]** 왼쪽 목록에 새로 생긴 `revocation_log.json` 을 열어 한글이 그대로 저장됐는지 봅니다.
-6. **[보고서]** `day05_am_report.md` 의 `## Exercise 8-3` › `### Exercise 8-3` 아래를 채웁니다.
+6. **[보고서]** Unit 8 의 `## Exercise 8-3` › `#### Exercise 8-3` 아래를 채웁니다.
    - (가) 출력 전체를 붙여 넣고, 이력의 결과가 「실행」인 건수와 「대기」인 건수, 회수 전후 판정이 바뀐 권한, 저장한 이력 건수를 적어 주세요.
    - (나) [핵심 질문] 회수를 실행한 7건 가운데 회수 전후 판정이 바뀐 것은 일부입니다. 바뀌지 않은 권한이 그대로인 이유와, 그래도 회수하고 이력을 남기는 이유를 적어 주세요.
    - (다) [핵심 질문] 회수 이력에는 시각 · 사용자 · 권한 · 방법 · 승인 상태 · 결과가 들어 있습니다. 반년 뒤 감사(점검 기록을 검토받는 일)에서 「이 권한이 왜 없어졌나요?」라고 물으면 이 이력만으로 답할 수 있을까요? 이력에 없는 정보가 있다면 무엇인지, 어떤 키를 추가하면 되는지 적어 주세요.
@@ -292,19 +292,19 @@ print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력
 
 ---
 
-## 오전 마무리 — 보고서 2 · 3 · Exercise 8-3 칸 확인
+## Unit 8 마무리 — 보고서 Exercise 8-1 · Exercise 8-2 · Exercise 8-3 칸 확인
 
-`day05_am_report.md` 의 2 · 3 · Exercise 8-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. `access_control` 폴더에 오늘 만든 파일이 있는지 확인합니다.
+Unit 8 의 Exercise 8-1 · Exercise 8-2 · Exercise 8-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. `access_control` 폴더에 이번 Unit에서 만든 파일이 있는지 확인합니다.
 
 ```bash
 ls
 ls config
 ```
 
-- `revoke_input.py` · `revoke_plan.py` · `revoke_approve.py` · `revoke.py` · `day05_2-1_run.py` · `day05_3-1_run.py` · `day05_4-1_run.py` · `revocation_log.json` 이 보여야 합니다.
+- `revoke_input.py` · `revoke_plan.py` · `revoke_approve.py` · `revoke.py` · `exercise8-1_run.py` · `exercise8-2_run.py` · `exercise8-3_run.py` · `revocation_log.json` 이 보여야 합니다.
   - `config` 안에는 `sensitive.json` 이 새로 보여야 합니다.
 
-오후에는 회수한 뒤에도 조건을 따져 접근을 판단하는 **조건기반 정책**과 판정 함수를 서버로 여는 수업을 합니다. 올리기(git)는 오후 Exercise 7-2 마지막에 한 번에 합니다.
+Unit 9에서는 회수한 뒤에도 조건을 따져 접근을 판단하는 **조건기반 정책**과 판정 함수를 서버로 여는 실습을 합니다. 올리기(git)는 Unit 9의 Exercise 9-2 마지막에 한 번에 합니다.
 
 ---
 

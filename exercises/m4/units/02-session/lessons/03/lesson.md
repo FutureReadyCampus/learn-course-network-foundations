@@ -23,7 +23,7 @@ source:
 > - 두 로그 모두 성공 · 실패를 웹 서버 로그처럼 `성공` · `실패` 로 통일해 주세요.」
 > - **왜 중요한가**: <mark>같은 사람이 로그마다 `seoyeon` 과 `seoyeon@a-corp.example` 로 적히면 사용자별로 세거나 이어 볼 수 없습니다.</mark> 접속 주소가 원래 없는 로그에는 임의의 주소를 채우지 말고 `None` 으로 둡니다. 가짜 주소로 세어지는 이벤트가 생기기 때문입니다.
 
-> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「 문제」 전까지는 이 Exercise의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
+> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「Exercise」 전까지는 이 Exercise의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
 
 ## 읽기 · 왜 필요한가
 
@@ -120,7 +120,7 @@ print(allowed_result)                                # 바꾼 값을 출력한�
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## Exercise Exercise 2-1 · 판정 서버 로그와 SaaS 로그를 공통 이벤트로 바꾸기
+## Exercise 2-2 · 판정 서버 로그와 SaaS 로그를 공통 이벤트로 바꾸기
 
 ** 이런 상황이 있습니다**
 
@@ -133,7 +133,7 @@ print(allowed_result)                                # 바꾼 값을 출력한�
 
 ** 할 일**
 
-1. **`normalize_json_csv.py` · `day02_3-1_run.py`** 두 파일을 만들고, `normalize_json_csv.py` 의 `convert_server_time` · `normalize_server` · `normalize_saas` 에서 직접 쓰는 곳을 씁니다.
+1. **`normalize_json_csv.py` · `exercise2-2_run.py`** 두 파일을 만들고, `normalize_json_csv.py` 의 `convert_server_time` · `normalize_server` · `normalize_saas` 에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>판정 서버 이벤트 수와 성공 · 실패별 개수</mark>(단계 1), <mark>SaaS 이벤트 수와 성공 · 실패별 개수</mark>(단계 2), <mark>각 로그의 첫 이벤트</mark>(단계 3)를 읽습니다.
 
 **`normalize_json_csv.py`**
@@ -229,11 +229,11 @@ def load_saas(path):                                             # SaaS CSV 파�
 ```
 
 - 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 6번은 모두 함수 안이라 앞에 공백 4개입니다.
-- 4번의 `split("@")` 는 어제 `split('"', 2)` 처럼 구분 문자로 나눈 리스트를 만듭니다. `seoyeon@a-corp.example` 은 `["seoyeon", "a-corp.example"]` 이 되고, <mark>5번에서 첫 값(`account_parts[0]`)을 씁니다.</mark>
+- 4번의 `split("@")` 는 Unit 1의 `split('"', 2)` 처럼 구분 문자로 나눈 리스트를 만듭니다. `seoyeon@a-corp.example` 은 `["seoyeon", "a-corp.example"]` 이 되고, <mark>5번에서 첫 값(`account_parts[0]`)을 씁니다.</mark>
 - 번호 주석이 연달아 붙어 있어도(예: 4 · 5번), <mark>주석 사이마다 줄을 끼워 넣어 각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark>
 - **채우기 전에 실행하면 `UnboundLocalError` 또는 `NameError` 가 납니다.** 예를 들어 1 · 2번을 아직 안 썼으면 `time_out` 을 찾지 못합니다.
 
-**`day02_3-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 두 로그를 공통 이벤트로 바꿔 세 단계로 출력합니다.
+**`exercise2-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 두 로그를 공통 이벤트로 바꿔 세 단계로 출력합니다.
 
 ```python
 from normalize_json_csv import load_server, load_saas                       # 방금 만든 파일 읽기 함수를 불러온다
@@ -266,16 +266,16 @@ print(first_saas)                                                           # Sa
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `normalize_json_csv.py` · `day02_3-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code 또는 터미널]** 파일 `normalize_json_csv.py` · `exercise2-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `normalize_json_csv.py` 에서 직접 쓰는 곳 **여섯 군데**를 씁니다. 2.1 의 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python day02_3-1_run.py
+   python exercise2-2_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day02_3-1_run.py` 파이썬으로 실행 파일 실행
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise2-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **세 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1은 1줄, 단계 2는 1줄, 단계 3은 2줄입니다.
-5. **[보고서]** `day02_am_report.md` 의 `## Exercise 2-2` › `### Exercise Exercise 2-1` 아래를 채웁니다.
+5. **[보고서]** Unit 2 의 `## Exercise 2-2` › `### Exercise 2-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 판정 서버와 SaaS 이벤트의 수와 성공 · 실패별 개수를 적어 주세요.
    - (나) [핵심 질문] 판정 서버 로그에는 접속 주소가 없어서 `ip` 를 `None` 으로 두었습니다. `None` 대신 가짜 주소 `0.0.0.0` 을 넣으면 주소별로 셀 때 어떤 문제가 생길까요? 이유도 함께 적어 주세요.
    - (다) [핵심 질문] 정규화하면서 공통 이벤트의 키에 들어가지 않은 정보를 판정 서버 로그에서 찾아 적고, 그 정보를 나중에 어디서 찾을 수 있는지 적어 주세요.

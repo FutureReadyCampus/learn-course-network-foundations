@@ -1,6 +1,6 @@
 ---
 id: m5-u05-l02
-title: Exercise 5-2 · 기록을 보고 자동이 바꾼 것만 되돌리고, 되돌릴 수 없는 조치는 따로 표시하기
+title: Exercise 5-1 · 기록을 보고 자동이 바꾼 것만 되돌리고, 되돌릴 수 없는 조치는 따로 표시하기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,13 +9,13 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 5-2 · 기록을 보고 자동이 바꾼 것만 되돌리고, 되돌릴 수 없는 조치는 따로 표시하기
+# Exercise 5-1 · 기록을 보고 자동이 바꾼 것만 되돌리고, 되돌릴 수 없는 조치는 따로 표시하기
 
 ## 개요
 
 > **오늘 들어온 일**
 >
-> - **상황**: 오전에 자동 대응이 세 건의 조치를 했습니다. `INC-001` 은 `dami` 의 계정을 잠그고 세션을 종료했습니다. `INC-006` 은 이미 잠겨 있던 `junho` 의 계정은 그대로 두고 세션만 종료했습니다. `INC-005` 는 IP `198.51.100.90` 을 차단했습니다(오늘 Exercise 5-2 실행 파일이 이 차단을 다시 만듭니다). 그런데 인사 담당자가 「`dami` 는 휴직 복귀 처리 중이라 퇴사자가 아닙니다」라고 알려 왔고, 세 건 모두 **오탐**(false positive, 폴스 포지티브: 위협이 아닌데 위협으로 낸 알림)으로 확인됐습니다(이 Exercise에서만 가정한 상황이고, 화요일 `users_info.json` 의 `dami` 는 퇴사자입니다).
+> - **상황**: Unit 4에서 자동 대응이 세 건의 조치를 했습니다. `INC-001` 은 `dami` 의 계정을 잠그고 세션을 종료했습니다. `INC-006` 은 이미 잠겨 있던 `junho` 의 계정은 그대로 두고 세션만 종료했습니다. `INC-005` 는 IP `198.51.100.90` 을 차단했습니다(오늘 Exercise 5-1 실행 파일이 이 차단을 다시 만듭니다). 그런데 인사 담당자가 「`dami` 는 휴직 복귀 처리 중이라 퇴사자가 아닙니다」라고 알려 왔고, 세 건 모두 **오탐**(false positive, 폴스 포지티브: 위협이 아닌데 위협으로 낸 알림)으로 확인됐습니다(이 Exercise에서만 가정한 상황이고, Unit 2의 `users_info.json` 의 `dami` 는 퇴사자입니다).
 > - **문제**:
 > - 사람이 계정 화면에서 직접 풀면, 어느 것이 자동 대응이 한 일인지 알 수 없습니다. 그래서 원래 잠겨 있던 `junho` 까지 풀 수 있습니다.
 > - 세션 종료는 되돌릴 수 없습니다(사용자가 다시 로그인해야 합니다). 그런데 「모두 원래대로 되돌렸다」고 보고하면 사실과 다릅니다.
@@ -48,26 +48,26 @@ undo_actions.py   undo_account         : 계정 잠금 기록을 계정 해제�
 rollback.py       find_incident_records: 그 인시던트(알림 한 건)의 기록만 모은다 (3 · 4번)
                   should_undo          : 조치 전과 후가 같으면 되돌리지 않는다 (5 · 6번). 확인 실패와 되돌릴 수 없는 조치는 미리 채운 줄이 되돌리기 대상에서 뺀다
                   rollback_incident    : 되돌릴 수 있는 기록은 되돌리고 (7 · 8번), 되돌릴 수 없는 조치는 따로 기록한다 (미리 채움)
-실행 파일         day03_5-1_run.py     : Exercise 5-1가 저장한 기록을 읽는다 (9번)
+실행 파일         exercise5-1_run.py     : Exercise 4-3이 저장한 기록을 읽는다 (9번)
 ```
 
 > **여기부터 문제입니다.**
 
-## Exercise Exercise 5-2 · 기록을 보고 자동이 바꾼 것만 되돌리기
+## Exercise 5-1 · 기록을 보고 자동이 바꾼 것만 되돌리기
 
 ** 이런 상황이 있습니다**
 
 - **지금은**: <mark>오탐이 확인돼도 어느 것이 자동 조치인지 구분하는 기능이 없어서, 사람이 추측으로 풀고 있습니다</mark>.
-- **만드는 것**: 계정 · IP 되돌리기(`undo_actions.py`), 기록 찾기 · 되돌릴지 정하기 · 되돌리기(`rollback.py`), 기록 읽기(`day03_5-1_run.py`).
-- **실행하면**: <mark>단계 1: Exercise 5-1가 남긴 파일(그리고 이 실행이 새로 차단한 IP), 단계 2 ~ 4: 인시던트(incident, 인시던트: 알림 한 건을 처리하는 단위) 세 건의 되돌리기 결과, 단계 5: 되돌린 뒤 상태가 나옵니다.</mark>
+- **만드는 것**: 계정 · IP 되돌리기(`undo_actions.py`), 기록 찾기 · 되돌릴지 정하기 · 되돌리기(`rollback.py`), 기록 읽기(`exercise5-1_run.py`).
+- **실행하면**: <mark>단계 1: Exercise 4-3이 남긴 파일(그리고 이 실행이 새로 차단한 IP), 단계 2 ~ 4: 인시던트(incident, 인시던트: 알림 한 건을 처리하는 단위) 세 건의 되돌리기 결과, 단계 5: 되돌린 뒤 상태가 나옵니다.</mark>
 
 ** 할 일**: 파일 세 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 ~ 5 를 읽습니다.
 
 **`undo_actions.py`** — 되돌리기 실행입니다. 직접 쓰는 곳은 1 · 2번입니다.
 
 ```python
-from account_actions import unlock_account  # 오전 Exercise 4-1에 만든 계정 해제 함수를 불러온다
-from ip_actions import unblock_ip           # 오전 Exercise 4-2에 만든 IP 해제 함수를 불러온다
+from account_actions import unlock_account  # Unit 4의 Exercise 4-1에서 만든 계정 해제 함수를 불러온다
+from ip_actions import unblock_ip           # Unit 4의 Exercise 4-2에서 만든 IP 해제 함수를 불러온다
 
 
 def undo_account(record, state):            # 되돌릴 조치 기록과 연습용 시스템 상태를 받는 함수
@@ -144,19 +144,19 @@ def rollback_incident(incident_id, log, state):                              # �
     return records                                                           # 되돌리기 기록 리스트를 리턴한다
 ```
 
-**`day03_5-1_run.py`** — 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이 실행 파일은 먼저 INC-005 의 IP 차단을 새로 실행해 기록에 추가한 뒤, 그것을 되돌립니다.
+**`exercise5-1_run.py`** — 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이 실행 파일은 먼저 INC-005 의 IP 차단을 새로 실행해 기록에 추가한 뒤, 그것을 되돌립니다.
 
 ```python
-from incident import load_json                                                     # 월요일 파일의 함수를 불러온다
-from containment_store import load_state, LOG_PATH                                 # Exercise 5-1가 저장한 상태 · 기록 파일을 읽는 함수를 불러온다
-from ip_actions import block_ip, DEFAULT_TTL                                       # 오전 Exercise 4-2의 IP 차단 함수를 불러온다
+from incident import load_json                                                     # Unit 1 파일의 함수를 불러온다
+from containment_store import load_state, LOG_PATH                                 # Exercise 4-3이 저장한 상태 · 기록 파일을 읽는 함수를 불러온다
+from ip_actions import block_ip, DEFAULT_TTL                                       # Unit 4의 Exercise 4-2의 IP 차단 함수를 불러온다
 from rollback import rollback_incident                                             # 방금 만든 되돌리기 함수를 불러온다
 
-state = load_state()                                                               # Exercise 5-1가 저장한 연습용 시스템 상태를 읽는다
+state = load_state()                                                               # Exercise 4-3이 저장한 연습용 시스템 상태를 읽는다
 # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-# 9. load_json(LOG_PATH) 의 결과를 log 에 저장한다 (Exercise 5-1가 저장한 조치 기록을 읽는다)
+# 9. load_json(LOG_PATH) 의 결과를 log 에 저장한다 (Exercise 4-3이 저장한 조치 기록을 읽는다)
 
-print("--- 단계 1: Exercise 5-1가 남긴 파일")                                             # 단계 1 시작을 알리는 줄
+print("--- 단계 1: Exercise 4-3이 남긴 파일")                                             # 단계 1 시작을 알리는 줄
 print("잠긴 계정:", state["locked_users"])                                         # 잠긴 계정을 출력한다
 print("조치 기록:", len(log), "건")                                                # 기록 수를 출력한다
 log.append(block_ip("198.51.100.90", state, "INC-005", "경로 스캔", DEFAULT_TTL))  # INC-005 의 IP 차단을 이 실행에서 추가한다
@@ -177,21 +177,21 @@ print("차단한 IP:", state["blocked_ips"])                                    
 1. **[터미널]** 파일 세 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
    ```bash
    pwd
-   touch undo_actions.py rollback.py day03_5-1_run.py
+   touch undo_actions.py rollback.py exercise5-1_run.py
    ls
    ```
-2. **[VS Code]** `undo_actions.py` 1 · 2번, `rollback.py` 3 ~ 8번, `day03_5-1_run.py` 9번을 씁니다. 막히면 아래 「Exercise 5-2 한눈에」를 봅니다.
+2. **[VS Code]** `undo_actions.py` 1 · 2번, `rollback.py` 3 ~ 8번, `exercise5-1_run.py` 9번을 씁니다. 막히면 아래 「Exercise 5-1 한눈에」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
-   python day03_5-1_run.py
+   python exercise5-1_run.py
    ```
 4. 출력은 다섯 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 3줄, 단계 2 는 2줄, 단계 3 은 1줄, 단계 4 는 1줄, 단계 5 는 2줄입니다.
-5. **[보고서]** `day03_pm_report.md` 의 `## Exercise 5-2` 아래를 채웁니다.
+5. **[보고서]** Unit 5 의 `## Exercise 5-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣어 주세요. 그리고 단계 5 의 잠긴 계정과 차단한 IP 를 적어 주세요.
-   - (나) [핵심 질문] INC-006 의 `junho` 는 단계 3 에서 계정이 해제되지 않았고 단계 5 에도 잠겨 있습니다. Exercise 5-1 기록의 `before` 와 `after` 를 근거로 이유를 적고, `should_undo` 의 5 · 6번이 없었다면 어떤 일이 생겼을지 적어 주세요.
+   - (나) [핵심 질문] INC-006 의 `junho` 는 단계 3 에서 계정이 해제되지 않았고 단계 5 에도 잠겨 있습니다. Exercise 4-3 기록의 `before` 와 `after` 를 근거로 이유를 적고, `should_undo` 의 5 · 6번이 없었다면 어떤 일이 생겼을지 적어 주세요.
    - (다) [핵심 질문] 단계 2 의 `되돌리기 불가` 줄이 나온 이유를 적어 주세요. 또 세션 종료를 기록에 남기지 않고 「모두 원래대로」라고만 보고하면 어떤 문제가 생길지 적어 주세요.
 
-## Exercise 5-2 한눈에
+## Exercise 5-1 한눈에
 
 | 하려는 일 | 코드 · 말 |
 |---|---|

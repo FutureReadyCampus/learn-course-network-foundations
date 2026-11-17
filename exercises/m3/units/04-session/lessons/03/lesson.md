@@ -134,7 +134,7 @@ KeyError: 'approver'
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## Exercise Exercise 4-3 · 승인 · 반려 함수 만들고, 두 번째 처리가 막히는지 확인하기
+## Exercise 4-2 · 승인 · 반려 함수 만들고, 두 번째 처리가 막히는지 확인하기
 
 ** 이런 상황이 있습니다**
 
@@ -145,7 +145,7 @@ KeyError: 'approver'
 
 ** 할 일**
 
-1. `req_review.py` 와 `day03_3-1_run.py` 두 파일을 만들고, `approve_request` 본문을 직접 쓰고 `reject_request` 는 남은 부분을 채웁니다.
+1. `req_review.py` 와 `exercise4-2_run.py` 두 파일을 만들고, `approve_request` 본문을 직접 쓰고 `reject_request` 는 남은 부분을 채웁니다.
 2. 실행해서 <mark>본인 승인 시험과 처리 여섯 건의 결과</mark>(단계 1: 처리)와 <mark>요청서 리스트</mark>(단계 2: 점검)을 읽습니다.
 
 **`req_review.py`**
@@ -181,10 +181,10 @@ def reject_request(request, approver):                           # 요청서와 
 - `reject_request` 는 `approve_request` 와 모양이 같고, 바뀌는 문자열(`"rejected"` · `"반려"`)만 다릅니다. 그래서 앞의 두 검사(`if` 두 개)는 미리 채워 두었고, 1 ~ 3번 주석 아래만 씁니다.
 - 채우기 전에 실행하면 `TypeError: cannot unpack non-iterable NoneType object` 오류가 납니다. `approve_request` 가 아무것도 리턴하지 않기 때문입니다.
 
-**`day03_3-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. Exercise 4-1의 `create_request` 로 요청서 네 장을 접수한 뒤, 단계 1은 본인 승인 시험 한 건과 처리 여섯 건을 넣고 단계 2는 요청서 리스트를 출력합니다.
+**`exercise4-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. Exercise 4-1의 `create_request` 로 요청서 네 장을 접수한 뒤, 단계 1은 본인 승인 시험 한 건과 처리 여섯 건을 넣고 단계 2는 요청서 리스트를 출력합니다.
 
 ```python
-from req_create import REQUESTS, create_request                  # 오전 Exercise 4-1에 만든 요청서 함수와 리스트를 불러온다
+from req_create import REQUESTS, create_request                  # Exercise 4-1에서 만든 요청서 함수와 리스트를 불러온다
 from req_review import approve_request, reject_request           # 방금 만든 승인 · 반려 함수를 불러온다
 
 INBOX = [                                                        # 접수에 성공하는 요청 네 건. (요청자, 자원, 행위, 희망 만료 시각, 이유, 접수 시각)
@@ -227,19 +227,19 @@ for request in REQUESTS:                                         # 요청서를 
    - **방법 1 · VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
      2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `req_review.py` · `day03_3-1_run.py` 입니다.
+     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `req_review.py` · `exercise4-2_run.py` 입니다.
      4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
-   - **방법 2 · touch 로 만들기**: 터미널에서 파일마다 한 줄씩 치고, 각각 VS Code 에서 열어 붙여넣기: `touch req_review.py` → `touch day03_3-1_run.py`
-   - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim req_review.py` → `vim day03_3-1_run.py` (각각 `i` → 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
+   - **방법 2 · touch 로 만들기**: 터미널에서 파일마다 한 줄씩 치고, 각각 VS Code 에서 열어 붙여넣기: `touch req_review.py` → `touch exercise4-2_run.py`
+   - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim req_review.py` → `vim exercise4-2_run.py` (각각 `i` → 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
 2. **[VS Code]** `req_review.py` 의 두 함수 본문을 직접 씁니다. 2.1 의 표와 그림을 보고 씁니다.
 3. **[터미널]** `pwd` 를 쳐서 마지막 폴더가 `access_control` 인지 확인한 뒤 실행합니다.
    ```bash
-   python day03_3-1_run.py
+   python exercise4-2_run.py
    ```
-   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `day03_3-1_run.py` 실행할 파일
-   - 맥북은 `python3 day03_3-1_run.py` 로 칩니다.
+   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise4-2_run.py` 실행할 파일
+   - 맥북은 `python3 exercise4-2_run.py` 로 칩니다.
 4. 출력은 두 단계입니다. 단계 1은 본인 승인 시험 한 줄과 처리 여섯 건의 결과(여섯 줄)이고, 단계 2는 요청서 리스트(네 줄)입니다. 본인 승인 시험은 `False`, 처리 여섯 건은 앞의 네 건이 `True`, 뒤의 두 건이 `False` 로 나와야 합니다.
-5. **[보고서]** `day03_am_report.md` 의 `## Exercise 4-2` › `### Exercise Exercise 4-3` 아래를 채웁니다.
+5. **[보고서]** Unit 4 의 `## Exercise 4-2` › `### Exercise 4-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 막힌 세 줄이 각각 왜 막혔는지 적어 주세요.
    - (나) [핵심 질문] 이미 승인한 요청서를 다시 승인하지 못하게 막는 이유는 무엇인가요? 막지 않으면 어떤 일이 생길 수 있나요?
    - (다) [핵심 질문] `approve_request` 에서 `request["user"] == approver` 검사를 뺀다면 어떤 위험이 생길까요? 요청자가 친구에게 대신 승인해 달라고 부탁하면 이 검사로는 막을 수 없습니다. 이런 경우를 막으려면 무엇이 더 필요할까요?

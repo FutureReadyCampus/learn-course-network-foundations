@@ -32,7 +32,7 @@ source:
 |---|---|---|---|
 | `승인 필요` | 대상이 VIP 계정이다 | 담당자가 확인하기 전에는 조치하지 않는다 | `INC-003`(`gaeun`) |
 | `오탐 종료` | 접속 IP 가 신뢰 IP 이고, 탐지된 규칙이 **모두** IP 관련 규칙이다 | 상태(status: 알림의 처리 진행 단계를 나타내는 값)를 `분류됨` 으로, 이어서 `종료` 로 변경하고 종료 사유를 기록한다 | `INC-004`(`jiwoo`) |
-| `기본` | 위 두 경우가 아니다 | 어제 만든 플레이북 절차대로 처리한다 | `INC-001` · `INC-002` · `INC-005` |
+| `기본` | 위 두 경우가 아니다 | Unit 1에서 만든 플레이북 절차대로 처리한다 | `INC-001` · `INC-002` · `INC-005` |
 
 - **탐지 규칙**(detection rule, 디텍션 룰: 알림을 발생시키는 조건): 알림에는 `reasons` 라는 리스트가 있고, 이 알림을 발생시킨 탐지 규칙의 이름이 요소로 저장되어 있습니다. 예를 들어 `INC-002` 는 `["평소와 다른 IP", "대량 다운로드"]` 입니다.
 - **IP 관련 규칙**: 접속 IP 를 보고 낸 규칙입니다. 오늘은 `평소와 다른 IP` 와 `업무 시간 밖 로그인` 두 가지입니다.
@@ -68,25 +68,25 @@ print(action)
 routing.py   is_only_ip_related : 규칙을 하나씩 꺼내 IP 관련이 아닌 것이 있으면 False 를 리턴한다 (1 ~ 3번)
              decide_route       : VIP 이면 「승인 필요」 (4 · 5번) / 신뢰 IP 이고 규칙이 모두 IP 관련이면 「오탐 종료」 (6 · 7번) / 아니면 「기본」 (미리 채움)
              apply_route        : 오탐 종료이면 상태를 종료로 옮기고 이유를 기록한다 (미리 채움)
-실행 파일    day02_3-1_run.py   : decide_route 가 리턴한 두 값을 언패킹으로 받고 (8번), 경로별 건수를 센다 (9번)
+실행 파일    exercise2-2_run.py   : decide_route 가 리턴한 두 값을 언패킹으로 받고 (8번), 경로별 건수를 센다 (9번)
 ```
 
 > **여기부터 문제입니다.**
 
-## Exercise Exercise 2-1 · VIP 계정은 승인 경로로 분기하고, 신뢰 IP 의 IP 관련 알림은 오탐으로 종료하며 경로별 건수 집계하기
+## Exercise 2-2 · VIP 계정은 승인 경로로 분기하고, 신뢰 IP 의 IP 관련 알림은 오탐으로 종료하며 경로별 건수 집계하기
 
 ** 이런 상황이 있습니다**
 
 - **지금은**: <mark>알림을 규칙 이름과 등급만 보고 처리하므로 계정 관리자(VIP)의 알림과 협력사의 정상 접속 알림을 따로 다룰 수 없습니다</mark>.
-- **만드는 것**: 규칙이 모두 IP 관련인지 판별하는 함수와 처리 경로를 결정하는 함수(`routing.py`), 경로 수신과 경로별 건수 집계(`day02_3-1_run.py`). 경로를 결정할 때마다 판정 사유도 문장으로 함께 리턴합니다.
+- **만드는 것**: 규칙이 모두 IP 관련인지 판별하는 함수와 처리 경로를 결정하는 함수(`routing.py`), 경로 수신과 경로별 건수 집계(`exercise2-2_run.py`). 경로를 결정할 때마다 판정 사유도 문장으로 함께 리턴합니다.
 - **실행하면**: <mark>단계 1: 알림마다 경로 · 이유 · 상태, 단계 2: 경로별 건수가 나옵니다.</mark>
 
 ** 할 일**: 두 파일을 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 1 · 2 를 읽습니다.
 
-**`routing.py`** — 맥락을 보고 처리 경로를 정합니다. 이 파일이 정한 경로(`승인 필요` · `오탐 종료` · `기본`)를 오후 Exercise 1-1 이후에도 씁니다. 직접 쓰는 곳은 1 ~ 7번입니다.
+**`routing.py`** — 맥락을 보고 처리 경로를 정합니다. 이 파일이 정한 경로(`승인 필요` · `오탐 종료` · `기본`)를 Unit 3의 Exercise 3-1 이후에도 씁니다. 직접 쓰는 곳은 1 ~ 7번입니다.
 
 ```python
-from incident import change_status                                          # 월요일 파일의 상태 바꾸기 함수를 불러온다
+from incident import change_status                                          # Unit 1 파일의 상태 바꾸기 함수를 불러온다
 
 IP_RELATED_RULES = ["평소와 다른 IP", "업무 시간 밖 로그인"]                # 접속 IP 만 보고 낸 알림의 규칙 이름
 
@@ -126,10 +126,10 @@ def apply_route(incident, route, reason, incident_log):                     # �
     incident_log.append(entry)                                              # 기록 리스트에 추가한다
 ```
 
-**`day02_3-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. Exercise 2-1의 `enrichment.py` 가 같은 폴더에 있어야 합니다.
+**`exercise2-2_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. Exercise 2-1의 `enrichment.py` 가 같은 폴더에 있어야 합니다.
 
 ```python
-from incident import load_json, INCIDENTS_PATH                      # 월요일 파일의 함수를 불러온다
+from incident import load_json, INCIDENTS_PATH                      # Unit 1 파일의 함수를 불러온다
 from enrichment import enrich_incident                              # Exercise 2-1에 만든 함수를 불러온다
 from routing import decide_route, apply_route                       # 방금 만든 함수를 불러온다
 
@@ -159,16 +159,16 @@ for route in route_counts:                                          # 경로를 
 1. **[터미널]** 파일 두 개를 만들고 붙여 넣습니다.
    ```bash
    pwd
-   touch routing.py day02_3-1_run.py
+   touch routing.py exercise2-2_run.py
    ls
    ```
-2. **[VS Code]** `routing.py` 1 ~ 7번, `day02_3-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 2-2 한눈에」를 봅니다.
+2. **[VS Code]** `routing.py` 1 ~ 7번, `exercise2-2_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 2-2 한눈에」를 봅니다.
 3. **[터미널]** 실행합니다(맥북은 `python3`).
    ```bash
-   python day02_3-1_run.py
+   python exercise2-2_run.py
    ```
 4. 출력은 두 단계입니다. 단계 1 은 알림 5건이 한 줄씩 나오고 한 줄에는 번호, 대상, 등급이 나오고 `->` 뒤에 경로, 사유, 괄호 안에 상태가 순서대로 나옵니다. 단계 2 는 경로마다 한 줄씩 3줄입니다.
-5. **[보고서]** `day02_am_report.md` 의 `## Exercise 2-2` 아래를 채웁니다.
+5. **[보고서]** Unit 2 의 `## Exercise 2-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 경로별 건수와 `종료` 상태가 된 알림의 번호를 적어 주세요.
    - (나) [핵심 질문] INC-002 와 INC-004 는 둘 다 신뢰 IP 에서 접속했는데 INC-002 는 `기본`, INC-004 는 `오탐 종료` 입니다. 두 알림의 `reasons` 를 근거로 경로가 달라진 사유를 적어 주세요.
    - (다) [핵심 질문] 6번 조건보다 4번 VIP 판정을 먼저 두었습니다. VIP 계정이 신뢰 IP 에서 접속했고 `평소와 다른 IP` 규칙 하나만 탐지되었다고 가정해 보세요. 이 알림이 어느 경로로 분기되는지 적어 주세요. 그리고 4번과 6번 조건의 순서를 바꾸면 무엇이 달라지는지 적어 주세요.

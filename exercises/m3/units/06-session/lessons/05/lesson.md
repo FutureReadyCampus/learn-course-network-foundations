@@ -17,12 +17,12 @@ source:
 
 ---
 
-## Exercise Exercise 5-2 정답
+## Exercise 6-1 정답
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 ```bash
-python day04_2-1_run.py
+python exercise6-1_run.py
 ```
 
 **채운 코드** (한 예)
@@ -95,12 +95,12 @@ gaeun SETTLE:QUERY <- 예외 5번 | 재직 True
 
 ---
 
-## Exercise Exercise 5-2 정답
+## Exercise 6-2 정답
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 ```bash
-python day04_3-1_run.py
+python exercise6-2_run.py
 ```
 
 **채운 코드** (한 예)
@@ -125,7 +125,7 @@ python day04_3-1_run.py
 
 **결과**
 
-- (가) 출력은 다음과 같고, 규칙에 걸린 권한은 **7건**입니다. 퇴사한 계정이 3건(dami 의 역할 권한 2건과 예외 3번), 만료된 예외가 4건(1 · 2 · 4 · 5번)입니다. dami 의 예외 3번은 만료 시각(10/31(토))이 아직 안 지났지만 퇴사한 계정이라 퇴사로 걸렸습니다.
+- (가) 출력은 다음과 같고, 규칙에 걸린 권한은 **7건**입니다. 퇴사한 계정이 3건(dami 의 역할 권한 2건과 예외 3번), 만료된 예외가 4건(1 · 2 · 4 · 5번)입니다. dami 의 예외 3번은 만료 시각(2026-10-31 18:00)이 아직 안 지났지만 퇴사한 계정이라 퇴사로 걸렸습니다.
 
 ```
 --- 단계 1: 판정 - 규칙에 걸린 권한 7 건 (전체 14 건 중)
@@ -162,12 +162,12 @@ KeyError: 'expires'
 
 ---
 
-## Exercise Exercise 5-2 정답
+## Exercise 6-3 정답
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 ```bash
-python day04_4-1_run.py
+python exercise6-3_run.py
 ```
 
 **채운 코드** (한 예)
@@ -243,8 +243,8 @@ gaeun ACCOUNT:CHANGE <- 역할 account_admin
 **`review_list.py`** (Exercise 6-1 완성본)
 
 ```python
-from rbac import USERS, ROLES                                    # 10/21(수)에 만든 사용자 · 역할 딕셔너리를 불러온다
-from exception_policy import EXCEPTIONS                          # 10/22(목)에 만든 예외 리스트를 불러온다
+from rbac import USERS, ROLES                                    # Unit 1에서 만든 사용자 · 역할 딕셔너리를 불러온다
+from exception_policy import EXCEPTIONS                          # Unit 2에서 만든 예외 리스트를 불러온다
 
 
 def role_entries(user, info):                                    # 사용자 이름과 그 사용자의 정보 딕셔너리를 받는 함수
@@ -320,7 +320,7 @@ def find_stale(access_list, now):                                # 현황 리스
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
-from config_loader import load_json                              # 10/22(목)에 만든 안전한 읽기 함수를 불러온다
+from config_loader import load_json                              # Unit 3에서 만든 안전한 읽기 함수를 불러온다
 from exception_policy import TIME_FORMAT                         # 시각 문자열의 형식("%Y-%m-%d %H:%M")을 불러온다
 
 

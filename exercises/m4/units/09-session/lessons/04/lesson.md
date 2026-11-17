@@ -19,7 +19,7 @@ source:
 
 ## Exercise 9-1 정답
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 ```bash
 docker ps --filter publish=8080 --filter publish=8081 --filter publish=8082
@@ -119,7 +119,7 @@ curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8081
 
 ## Exercise 9-2 정답
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 ```bash
 docker compose ps
@@ -187,4 +187,4 @@ ls logs
 ## 정답 마무리
 
 - (가) 예: 「`git status` 에 `.env` 와 `.venv` 는 보이지 않았다」. 보였다면 `.gitignore` 맨 아래에 한 줄을 적고 저장한 뒤 `git status` 를 다시 쳐서 사라졌는지 확인했다고 적습니다.
-- 깃허브의 `anomaly_detection` 폴더에 오늘 오전과 오후 파일(`compose.yaml` · `logs/web_404.log` 포함)이 보이면 됩니다.
+- 깃허브의 `anomaly_detection` 폴더에 Unit 8과 Unit 9의 파일(`compose.yaml` · `logs/web_404.log` 포함)이 보이면 됩니다.

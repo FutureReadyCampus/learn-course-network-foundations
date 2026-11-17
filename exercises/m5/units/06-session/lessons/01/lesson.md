@@ -13,15 +13,15 @@ source:
 
 ## 개요
 
-<mark style="background:#e0d4ff">어제까지는 알림에 맞는 대응 조치를 실행하고</mark>, 롤백(rollback: 조치 이전 상태로 복원하는 일)하는 것까지 구현했습니다. 오늘은 그 결과를 <mark>**담당자에게 인계하고 통지하는 단계**</mark>를 구현합니다. 보안 관제 조직은 티켓과 알림 메시지로 사건 처리를 인수인계하기 때문입니다. 이 단계는 인시던트 관리(incident management)의 일부에 해당합니다. 오늘은 그중 사건 등록 · 중복 제거 · 상태 관리 · 담당자 통지를 구현합니다.
+<mark style="background:#e0d4ff">Unit 5까지는 알림에 맞는 대응 조치를 실행하고</mark>, 롤백(rollback: 조치 이전 상태로 복원하는 일)하는 것까지 구현했습니다. 이번 Unit에서는 그 결과를 <mark>**담당자에게 인계하고 통지하는 단계**</mark>를 구현합니다. 보안 관제 조직은 티켓과 알림 메시지로 사건 처리를 인수인계하기 때문입니다. 이 단계는 인시던트 관리(incident management)의 일부에 해당합니다. 이번 Unit에서는 그중 사건 등록 · 중복 제거 · 상태 관리 · 담당자 통지를 구현합니다.
 
 - **Exercise 6-1**: 알림 한 건으로 담당자가 즉시 판단할 수 있는 **티켓을 생성**(ticketing, 티케팅: 알림을 추적 가능한 티켓으로 등록하는 일)합니다. 티켓에는 응답 기한(SLA)을 계산해 기재합니다. 사후 검증에 실패한 조치는 수동 확인 대상으로 별도 표시합니다(`ticketing.py`).
 - **Exercise 6-2**: 같은 사건의 알림을 티켓 한 장으로 **병합**(merge)합니다. 병합하면 중복 제거(deduplication: 같은 사건의 알림을 한 건으로 처리하는 일)가 됩니다. 예를 들어 `dami` 의 알림 네 건이 TCK-1 한 장에 병합됩니다. 이어서 허용된 순서로만 티켓 **상태를 전이**(status transition: 상태를 정해진 규칙에 따라 다른 값으로 바꾸는 일)합니다(`ticket_merge.py`).
 - **Exercise 6-3**: 등급에 맞는 수신자에게 알림을 **전파**(notification, 노티피케이션: 사건 발생을 담당자에게 통지하는 일)합니다. 이때 1과목에서 만든 알림 함수를 가져와 사용(import)합니다. 같은 티켓에 알림을 보내는 간격을 제한해 알림 피로(alert fatigue, 얼럿 퍼티그: 알림이 지나치게 많아 담당자가 반응하지 않게 되는 현상)를 줄입니다. 전송에 실패하면 **재시도**(retry, 리트라이: 실패한 전송을 다시 시도하는 일)합니다(`ticket_notice.py`).
 
-깃허브에 올리는 일은 오후 Exercise 5-3 마지막에 합니다. 새 문법은 Exercise 6-2의 `return None` 과 `is None` 두 가지입니다(`None` 값 자체는 화요일에 나왔습니다). 보고서의 [핵심 질문] 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기는 미리 채운 줄에 맞춥니다. 각 번호 주석 바로 아래에 한 줄을 씁니다. <mark style="background:#ffc4d6">주석은 지우지 않습니다</mark>.
+깃허브에 올리는 일은 Unit 7의 Exercise 7-2 마지막에 합니다. 새 문법은 Exercise 6-2의 `return None` 과 `is None` 두 가지입니다(`None` 값 자체는 Unit 2에서 나왔습니다). 보고서의 [핵심 질문] 표시가 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기는 미리 채운 줄에 맞춥니다. 각 번호 주석 바로 아래에 한 줄을 씁니다. <mark style="background:#ffc4d6">주석은 지우지 않습니다</mark>.
 
- **이전 파일**: 오늘 가져와 사용(import)하는 파일은 두 묶음입니다. 하나는 <mark style="background:#e0d4ff">월요일에 만든 `incident.py` 의 `load_json` · `save_json`</mark> 입니다. 다른 하나는 <mark style="background:#e0d4ff">1과목에서 만든 `notifier.py` · `alert_server.py`</mark> 입니다. 없는 파일은 아래 시작하기의 「 이전 파일이 없을 때」 코드 상자로 만듭니다.
+ **이전 파일**: 이번 Unit에서 가져와 사용(import)하는 파일은 두 묶음입니다. 하나는 <mark style="background:#e0d4ff">Unit 1에서 만든 `incident.py` 의 `load_json` · `save_json`</mark> 입니다. 다른 하나는 <mark style="background:#e0d4ff">1과목에서 만든 `notifier.py` · `alert_server.py`</mark> 입니다. 없는 파일은 아래 시작하기의 「 이전 파일이 없을 때」 코드 상자로 만듭니다.
 
  **줄임말 이름 안내**: 이 문서의 코드와 파일에는 줄임말로 된 이름이 있습니다. 처음 보면 뜻을 알기 어려워서 아래에 풀어 둡니다. 이미 배포한 파일과 맞추기 위해 이름은 그대로 쓰고 뜻만 설명합니다.
   - `acked_at` 의 `acked` 는 acknowledged(확인했다)의 줄임말입니다. `acked_at` 은 담당자가 티켓을 처음 확인한 시각(분)입니다.
@@ -39,7 +39,7 @@ source:
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
-3. 오늘 받은 파일 두 개(`day04_am_ticket_notice.md`, `day04_am_report.md`)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
+3. 이번 Unit에서 받은 파일 두 개(Unit 6 안내 문서, Unit 6 보고서)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
 4. **[터미널]** 데이터 파일과 설정 파일을 만들고 **[VS Code]** 에서 열어 아래 내용을 붙여 넣습니다.
    ```bash
    mkdir -p config
@@ -47,13 +47,13 @@ source:
    ls config
    ```
 
-**`alerts_thu.json`** — 오늘 오전 근무 3시간 동안 들어온 알림 11건입니다.
+**`alerts_thu.json`** — 이번 Unit의 근무 3시간 동안 들어온 알림 11건입니다.
 
 - **무엇인가**:
   - 알림 한 건은 `id`(알림 번호), `minute`(알림 수신 시각), `entity`(대상: 사용자 이름 또는 IP), `rule`(탐지 규칙), `grade`(심각도 등급, severity)로 구성됩니다.
   - 알림에는 처리 정보도 들어 있습니다. `status` 는 알림 처리 상태입니다. `playbook` 은 실행한 플레이북(playbook: 알림 유형별로 정해 둔 대응 절차)입니다. `done` 은 이미 수행한 조치 내역을 문장으로 적은 리스트입니다.
   - `minute` 은 근무를 시작한 때를 0분으로 센 분 단위 숫자입니다. `INC-201` 은 0분, `INC-211` 은 160분에 왔습니다.
-- **어디에 쓰나**: 2 · 3 · Exercise 6-3 실행 파일이 이 파일을 읽어 알림을 하나씩 처리합니다.
+- **어디에 쓰나**: Exercise 6-1 · Exercise 6-2 · Exercise 6-3 실행 파일이 이 파일을 읽어 알림을 하나씩 처리합니다.
 
 ```
 [
@@ -76,10 +76,10 @@ source:
 - **무엇인가**:
   - `sla_minutes` 는 등급별 응답 기한(SLA, 서비스 수준 협약)입니다. 알림을 수신한 뒤 담당자가 응답해야 하는 시간이며, 단위는 분입니다.
   - `recipients` 는 등급별 알림 수신자(recipient, 리서피언트: 알림을 받는 사람)입니다.
-  - `merge_window_minutes` 는 병합 시간 범위(merge window, 머지 윈도우: 이 시간 안에 수신된 같은 사건의 알림만 병합하는 기준)이며 단위는 분입니다. 오늘 값은 60이므로, 티켓이 마지막으로 갱신된 뒤 60분 이내에 수신된 같은 사건의 알림만 그 티켓에 병합합니다.
-  - `send_gap_minutes` 는 같은 티켓에 알림을 다시 전송하기까지 두는 최소 간격이며 단위는 분입니다. 오늘 값은 30이므로, <mark style="background:#ffdcb0">마지막으로 알린 뒤 30분이 지나야</mark> 같은 티켓에 다시 전송합니다.
+  - `merge_window_minutes` 는 병합 시간 범위(merge window, 머지 윈도우: 이 시간 안에 수신된 같은 사건의 알림만 병합하는 기준)이며 단위는 분입니다. 이번 Unit의 값은 60이므로, 티켓이 마지막으로 갱신된 뒤 60분 이내에 수신된 같은 사건의 알림만 그 티켓에 병합합니다.
+  - `send_gap_minutes` 는 같은 티켓에 알림을 다시 전송하기까지 두는 최소 간격이며 단위는 분입니다. 이번 Unit의 값은 30이므로, <mark style="background:#ffdcb0">마지막으로 알린 뒤 30분이 지나야</mark> 같은 티켓에 다시 전송합니다.
   - `alert_url` 은 알림 서버 주소입니다. 알림 서버는 Exercise 6-3 순서에서 두 번째 터미널로 켭니다.
-  - `escalation_steps` 는 응답 기한이 지난 티켓을 상급자에게 올리는 에스컬레이션(escalation, 에스컬레이션: 미처리 사건을 상위 담당자에게 넘기는 일) 단계로, 오후에 사용합니다.
+  - `escalation_steps` 는 응답 기한이 지난 티켓을 상급자에게 올리는 에스컬레이션(escalation, 에스컬레이션: 미처리 사건을 상위 담당자에게 넘기는 일) 단계로, Unit 7에서 사용합니다.
 - **어디에 쓰나**: 코드를 바꾸지 않고 이 파일만 고쳐도 응답 시간과 수신자(알림을 받는 사람)가 바뀝니다.
 
 ```
@@ -117,9 +117,9 @@ source:
    python -c "import notifier; print('notifier 불러오기 성공')"
    ```
 
-## 이전 파일이 없을 때 (월요일 · 1과목 파일)
+## 이전 파일이 없을 때 (Unit 1 · 1과목 파일)
 
-월요일에 결석했거나 파일을 지운 경우에만 만듭니다. **이미 있는 파일은 건너뜁니다.** 먼저 **[터미널]** 에서 빈 파일을 만듭니다. 이미 있는 파일은 `touch` 가 그대로 둡니다.
+Unit 1을 하지 못했거나 파일을 지운 경우에만 만듭니다. **이미 있는 파일은 건너뜁니다.** 먼저 **[터미널]** 에서 빈 파일을 만듭니다. 이미 있는 파일은 `touch` 가 그대로 둡니다.
 
 ```bash
 touch incident.py notifier.py alert_server.py
@@ -129,7 +129,7 @@ ls
 - 명령 풀이: `touch 파일이름들` 빈 파일 만들기 · `ls` 폴더 안의 파일 이름 보기
 - 아래 코드 상자 세 개를 **[VS Code]** 에서 같은 이름의 파일에 붙여 넣고 저장합니다. 이미 있는 파일은 붙여 넣지 않습니다.
 
-**`incident.py`** — 월요일 파일에서 오늘 쓰는 두 함수(`load_json` · `save_json`)만 담았습니다. 월요일 파일 전체가 있으면 그것을 그대로 씁니다.
+**`incident.py`** — Unit 1 파일에서 이번 Unit에서 쓰는 두 함수(`load_json` · `save_json`)만 담았습니다. Unit 1 파일 전체가 있으면 그것을 그대로 씁니다.
 
 ```python
 import json                                                  # JSON 파일을 읽고 쓰기 위해 json 을 불러온다
@@ -167,7 +167,7 @@ def notify(message, url):                                      # 메시지를 �
         return False                                           # 못 보냈다 — 부른 쪽은 계속 간다
 ```
 
-**`alert_server.py`** — 1과목 알림 서버입니다. Exercise 6-3와 오후에 알림을 받는 쪽입니다.
+**`alert_server.py`** — 1과목 알림 서버입니다. Exercise 6-3과 Unit 7의 Exercise 7-1에서 알림을 받는 쪽입니다.
 
 ```python
 from flask import Flask, request        # 10/2 에 쓴 웹 서버 도구
@@ -188,7 +188,7 @@ app.run(port=5001)                      # 5001 번 포트에서 기다린다
 ## 오류가 나면
 
 - `pwd` 가 `soar_response` 로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
-- `ModuleNotFoundError: No module named 'incident'` 는 <mark style="background:#ffc4d6">월요일에 만든 `incident.py` 가 이 폴더에 없다는 뜻</mark>입니다. `No module named 'notifier'` 는 5번 복사를 하지 않았다는 뜻입니다. 둘 다 위 「 이전 파일이 없을 때」의 코드 상자로 만듭니다. `No module named 'requests'` 나 `No module named 'flask'` 가 나오면, 터미널(가상환경이 켜진 상태)에서 `pip install requests` 또는 `pip install flask` 를 입력합니다.
+- `ModuleNotFoundError: No module named 'incident'` 는 <mark style="background:#ffc4d6">Unit 1에서 만든 `incident.py` 가 이 폴더에 없다는 뜻</mark>입니다. `No module named 'notifier'` 는 5번 복사를 하지 않았다는 뜻입니다. 둘 다 위 「 이전 파일이 없을 때」의 코드 상자로 만듭니다. `No module named 'requests'` 나 `No module named 'flask'` 가 나오면, 터미널(가상환경이 켜진 상태)에서 `pip install requests` 또는 `pip install flask` 를 입력합니다.
 - 오류 전체와 입력한 명령을 AI 에게 붙여 넣어 물어봅니다. 이때 <mark style="background:#ffc4d6">`.env` 와 API 키는 지웁니다</mark>. 그래도 막히면 맨 아래 「정답」을 봅니다. 그래도 풀리지 않으면 보고서에 「모름 — 막힌 곳: …」 이라고 씁니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다. 실행할 때마다 처음 상태에서 시작해 같은 결과가 나옵니다.

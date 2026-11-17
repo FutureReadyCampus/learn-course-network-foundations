@@ -15,7 +15,7 @@ source:
 
 > **오늘 들어온 일**
 > A사 보안 담당이 보낸 메시지: 「지금은 "역할로 허용되나?"와 "예외로 허용되나?"를 따로 확인해서, 정산 포털이 어느 결과를 믿어야 할지 모르겠습니다. 요청 하나를 넣으면 "허용인지 거부인지"와 "왜 그런지"가 한 번에 나오게 해 주세요. 이미 퇴사한 사람은 예외가 남아 있어도 열리면 안 됩니다.」
-> - 이 Exercise에서 하는 일: 어제의 `check_permission` 과 오늘의 `find_exception` 을 불러 최종 판정 함수 `evaluate_access` 를 `policy.py` 에 직접 쓰고, 오늘 요청 아홉 건을 판정한 결과를 읽습니다.
+> - 이 Exercise에서 하는 일: Unit 1의 `check_permission` 과 Exercise 2-2의 `find_exception` 을 불러 최종 판정 함수 `evaluate_access` 를 `policy.py` 에 직접 쓰고, 오늘 요청 아홉 건을 판정한 결과를 읽습니다.
 > - 끝나면 쓰는 것: 보고서 (가)~(다) 답
 
 > **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「 문제」 전까지는 이 Exercise의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
@@ -24,9 +24,9 @@ source:
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
-1. 판정 기준이 두 곳에 흩어져 있으면 집행하는 쪽(PEP · 피이피, 집행 지점)이 어느 것을 따를지 매번 정해야 합니다. 최종 판정을 한 함수가 하면 규칙이 한 곳에 모입니다(10/19(월) 오전의 판단과 집행 분리).
+1. 판정 기준이 두 곳에 흩어져 있으면 집행하는 쪽(PEP · 피이피, 집행 지점)이 어느 것을 따를지 매번 정해야 합니다. 최종 판정을 한 함수가 하면 규칙이 한 곳에 모입니다(2과목의 판단과 집행 분리).
 2. 예외는 **역할 권한이 없을 때만** 봐야 합니다. 그리고 사용자 자체가 거부 대상인 경우(없는 사용자 · 퇴사자 · 역할이 없음)는 예외가 있어도 열면 안 됩니다. 이 순서가 틀리면 Exercise 2-2 의 `dami` 처럼 퇴사자가 예외로 허용됩니다.
-3. `policy.py` 는 내일 요청 · 승인 · 부여 흐름(`req_create.py` · `req_review.py` · `req_grant.py`)이 불러 쓰는 함수입니다.
+3. `policy.py` 는 Unit 4의 요청 · 승인 · 부여 흐름(`req_create.py` · `req_review.py` · `req_grant.py`)이 불러 쓰는 함수입니다.
 
 ## 읽기 · 3.1 판정 순서
 
@@ -56,16 +56,16 @@ source:
    +--> 없음 --> 거부: 권한 없음
 ```
 
-- `check_permission` 은 어제 만든 그대로 불러 씁니다. 고치지 않습니다. 이 함수는 `(True 또는 False, 이유)` 를 리턴하고, 이유는 「권한 없음」 · 「퇴사한 계정」 · 「등록되지 않은 사용자」 · 「역할이 없음」 중 하나입니다.
-- 오늘의 `policy.py` 는 어제의 역할 파일(`roles.json`)과 사용자 파일(`users.json`)을 그대로 씁니다. Exercise 2-1의 `assign_role` 과 `revoke_access` 는 메모리의 사용자 딕셔너리만 바꾸고 파일에는 저장하지 않으므로, `policy.py` 는 인사 변경 전의 사용자로 판정합니다.
+- `check_permission` 은 Unit 1에서 만든 그대로 불러 씁니다. 고치지 않습니다. 이 함수는 `(True 또는 False, 이유)` 를 리턴하고, 이유는 「권한 없음」 · 「퇴사한 계정」 · 「등록되지 않은 사용자」 · 「역할이 없음」 중 하나입니다.
+- 이번 Unit의 `policy.py` 는 Unit 1의 역할 파일(`roles.json`)과 사용자 파일(`users.json`)을 그대로 씁니다. Exercise 2-1의 `assign_role` 과 `revoke_access` 는 메모리의 사용자 딕셔너리만 바꾸고 파일에는 저장하지 않으므로, `policy.py` 는 인사 변경 전의 사용자로 판정합니다.
 - **서비스 계정**은 사람이 아니라 프로그램이 쓰는 계정입니다(`batch-night`). 사람이 로그인하지 않고, 키나 비밀번호를 설정 파일에 두고 접속하는 경우가 많습니다.
 - `[역할 판정]` 에서 「권한 없음」일 때만 예외를 봅니다. 사용자 자체가 거부 대상인 경우는 예외 검사까지 가지 않습니다.
 
 **이 시간에 나오는 말** (이미 배운 방법입니다)
 
-- `from rbac import check_permission` · `from exception_policy import find_exception` 처럼 두 파일의 함수를 함께 불러옵니다(10/21(수)).
+- `from rbac import check_permission` · `from exception_policy import find_exception` 처럼 두 파일의 함수를 함께 불러옵니다(Unit 1).
 - `값 != "권한 없음"` 은 이유 문자열이 「권한 없음」이 아닌지 검사합니다.
-- `f"예외 {found_exception_id}번"` 처럼 f-문자열로 이유를 만듭니다(9/23(수)).
+- `f"예외 {found_exception_id}번"` 처럼 f-문자열로 이유를 만듭니다(앞선 실습).
 
 ## 읽기 · 3.2 허용 방식별로 세기
 
@@ -73,7 +73,7 @@ source:
 
 - 판정 결과는 세 갈래로 셉니다: **역할로 허용**(이유가 「역할 권한」) · **예외로 허용**(이유가 「예외 N번」) · **거부**.
 - 허용을 둘로 나눠 세는 이유는 **예외로 열린 일이 얼마나 되는지** 숫자로 보기 위해서입니다. 예외가 많아지면 역할 설계가 실제 업무와 맞지 않는다는 신호입니다. 현업에서는 예외 허용 건수를 따로 세어 매주 보고합니다.
-- 세는 모양은 어제 Exercise 1-3 과 같습니다: `old_count = counts.get(키, 0)` → `counts[키] = old_count + 1`.
+- 세는 모양은 Unit 1의 Exercise 1-3 과 같습니다: `old_count = counts.get(키, 0)` → `counts[키] = old_count + 1`.
 - 요청마다 시각이 다르면 `"2026-10-22 " + 시각` 으로 날짜 문자열과 시각 문자열을 이어 붙인 뒤 `strptime` 으로 시각을 만듭니다(2.2).
 - **만료 뒤 시도**: 거부 이유가 「권한 없음」인데 같은 사람 · 같은 권한의 예외가 예외 리스트에 있으면, 예외가 끝난 뒤에도 다시 시도한 것입니다. 퇴사자(`dami`)처럼 사람이 거부 대상인 경우는 예외가 남아 있어도 만료 뒤 시도로 보지 않습니다.
 - 순서는 「역할 권한으로 허용」을 먼저 검사하고, 그다음 「그 밖의 허용」(예외)을 검사합니다. 거꾸로 하면 역할로 허용된 요청이 예외로 세어집니다.
@@ -89,7 +89,7 @@ source:
 
 ```
 +------------------+
-| day02_2-1_run.py |
+| exercise2-1_run.py |
 +------------------+
    |
    +--> 1. check_permission() 호출
@@ -115,7 +115,7 @@ source:
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## Exercise Exercise 2-1 · 최종 판정 함수 evaluate_access 만들고, 오늘 요청 아홉 건의 결과와 만료 뒤 시도 읽기
+## Exercise 2-3 · 최종 판정 함수 evaluate_access 만들고, 오늘 요청 아홉 건의 결과와 만료 뒤 시도 읽기
 
 ** 이런 상황이 있습니다**
 
@@ -126,12 +126,12 @@ source:
 ** 할 일**
 
 1. `policy.py` 를 만들고 `evaluate_access` 본문을 직접 씁니다.
-2. `day02_4-1_run.py` 를 실행해서 <mark>아홉 건의 결과</mark>, <mark>만료 뒤 시도</mark>, <mark>예외 번호별 사용 건수</mark>를 읽습니다.
+2. `exercise2-3_run.py` 를 실행해서 <mark>아홉 건의 결과</mark>, <mark>만료 뒤 시도</mark>, <mark>예외 번호별 사용 건수</mark>를 읽습니다.
 
 **`policy.py`**
 
 ```python
-from rbac import check_permission                                # 어제 만든 역할 판정 함수를 불러온다
+from rbac import check_permission                                # Unit 1에서 만든 역할 판정 함수를 불러온다
 from exception_policy import find_exception                      # Exercise 2-2에 만든 예외 판정 함수를 불러온다
 
 
@@ -147,7 +147,7 @@ def evaluate_access(user, resource, action, now):                # 사용자 · 
     # 5. found 이면 True, f"예외 {found_exception_id}번" 을 리턴한다
     # 6. 여기까지 왔으면 False, "권한 없음" 을 리턴한다
 ```
-**`day02_4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 오늘 요청 아홉 건을 그 시각대로 `evaluate_access` 로 판정하고, 3.2 의 순서로 방식별 건수와 예외 번호별 사용 건수를 세고, 예외가 끝난 뒤의 시도를 알립니다.
+**`exercise2-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 오늘 요청 아홉 건을 그 시각대로 `evaluate_access` 로 판정하고, 3.2 의 순서로 방식별 건수와 예외 번호별 사용 건수를 세고, 예외가 끝난 뒤의 시도를 알립니다.
 
 ```python
 from datetime import datetime                                    # 요청 시각을 만드는 데 쓴다
@@ -202,19 +202,19 @@ print("예외 사용", used)                                          # 예외 �
 **순서**
 
 1. **[VS Code 또는 터미널]** 두 파일을 만들고 각각 붙여 넣습니다.
-   - 만드는 방법은 Exercise 2-1 1번과 같습니다(VS Code 새 파일 아이콘 · `touch` · `vim` 중 하나). 만들 파일 이름은 차례로 `policy.py` · `day02_4-1_run.py` 입니다. 붙여 넣을 내용은 위 코드 상자입니다.
+   - 만드는 방법은 Exercise 2-1 1번과 같습니다(VS Code 새 파일 아이콘 · `touch` · `vim` 중 하나). 만들 파일 이름은 차례로 `policy.py` · `exercise2-3_run.py` 입니다. 붙여 넣을 내용은 위 코드 상자입니다.
 2. **[VS Code]** `policy.py` 의 `evaluate_access` 본문을 직접 씁니다. 3.1 의 그림을 보고 씁니다.
 3. **[터미널]** 실행합니다.
    ```bash
-   python day02_4-1_run.py
+   python exercise2-3_run.py
    ```
-   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `day02_4-1_run.py` 실행할 파일
-   맥북: `python3 day02_4-1_run.py`
+   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise2-3_run.py` 실행할 파일
+   맥북: `python3 exercise2-3_run.py`
 4. 요청 아홉 건의 결과 사이에 `[만료 뒤 시도]` 줄이 중간에 섞여 나오고, 마지막 두 줄이 방식별 건수와 예외 번호별 사용 건수입니다.
-5. **[보고서]** `day02_am_report.md` 의 `## Exercise 2-3` › `### Exercise Exercise 2-1` 아래를 채웁니다.
+5. **[보고서]** Unit 2 의 `## Exercise 2-3` › `### Exercise 2-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, `[만료 뒤 시도]` 로 출력된 세 건의 사용자와 끝난 예외 번호, 마지막 줄 「예외 사용」에서 예외 1번이 쓰인 횟수를 적어 주세요.
    - (나) [핵심 질문] 역할 판정에서 「권한 없음」이 아닌 이유(퇴사 · 없는 사용자 · 역할이 없음)로 거부되면 예외를 보지 않게 했습니다. 골격의 3번 주석(`# 3. …`)이 없다고 가정하면 퇴사자 `dami` 의 영업 실적 조회는 어떻게 판정되나요? 코드를 지우지 말고 생각해서 답합니다. 3.1 의 그림으로 설명하고, 현업에서 이런 허점이 어떤 사고로 이어질 수 있는지 적어 주세요.
-   - (다) [핵심 질문] 오늘 Exercise 2-3까지 만든 파일들이 서로 어떻게 이어지는지 그려 보세요. `day02_4-1_run.py` 에서 출발해, 파일 이름 · 함수 이름 · 읽는 설정 파일을 상자와 화살표(`+---+` · `|` · `v` · `+-->`)로 이어 글자로 그립니다(3.3 의 본보기를 참고). 그린 뒤, `config/exceptions.json` 이 깨졌을 때 이 그림의 어느 화살표에서 멈추는지 적어 주세요.
+   - (다) [핵심 질문] 오늘 Exercise 2-3까지 만든 파일들이 서로 어떻게 이어지는지 그려 보세요. `exercise2-3_run.py` 에서 출발해, 파일 이름 · 함수 이름 · 읽는 설정 파일을 상자와 화살표(`+---+` · `|` · `v` · `+-->`)로 이어 글자로 그립니다(3.3 의 본보기를 참고). 그린 뒤, `config/exceptions.json` 이 깨졌을 때 이 그림의 어느 화살표에서 멈추는지 적어 주세요.
 
 ## Exercise 2-3 한눈에
 
@@ -229,18 +229,18 @@ print("예외 사용", used)                                          # 예외 �
 
 ---
 
-## 오전 마무리 — 보고서 2 · 3 · Exercise 2-3 칸 확인
+## Unit 2 마무리 — 보고서 Exercise 2-1 · 2-2 · 2-3 칸 확인
 
-`day02_am_report.md` 의 2 · 3 · Exercise 2-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. `access_control` 폴더에 오늘 만든 파일이 있는지 확인합니다.
+Unit 2 의 Exercise 2-1 · 2-2 · 2-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. `access_control` 폴더에 오늘 만든 파일이 있는지 확인합니다.
 
 ```bash
 ls
 ls config
 ```
 
-- `role_admin.py` · `exception_policy.py` · `policy.py` · `day02_2-1_run.py` · `day02_3-1_run.py` · `day02_4-1_run.py` 가 보여야 합니다. `config` 안에는 `exceptions.json` 이 새로 보여야 합니다(`users.json` · `roles.json` 은 어제 그대로입니다).
+- `role_admin.py` · `exception_policy.py` · `policy.py` · `exercise2-1_run.py` · `exercise2-2_run.py` · `exercise2-3_run.py` 가 보여야 합니다. `config` 안에는 `exceptions.json` 이 새로 보여야 합니다(`users.json` · `roles.json` 은 Unit 1 그대로입니다).
 
-오늘 오후에는 설정 파일이 없거나 깨졌을 때도 안전하게 거부하도록 만들고, 오늘 만든 정책을 테스트 네 가지로 검증합니다. 올리기(git)는 오후 Exercise 1-2 마지막에 한 번에 합니다.
+다음 Unit(Unit 3)에서는 설정 파일이 없거나 깨졌을 때도 안전하게 거부하도록 만들고, 오늘 만든 정책을 테스트 네 가지로 검증합니다. 올리기(git)는 Unit 3의 Exercise 3-2 마지막에 한 번에 합니다.
 
 ---
 

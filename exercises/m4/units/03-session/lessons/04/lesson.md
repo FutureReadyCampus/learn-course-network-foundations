@@ -17,15 +17,15 @@ source:
 
 ---
 
-## Exercise Exercise 2-2 정답
+## Exercise 3-1 정답
 
  **터미널에 입력합니다.**
 
 ```bash
 pwd
-python day02_5-1_run.py
+python exercise3-1_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day02_5-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise3-1_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
 
@@ -98,7 +98,7 @@ Name: count, dtype: int64
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day02_5-1_run.py", line 4, in <module>
+  File "…/anomaly_detection/exercise3-1_run.py", line 4, in <module>
     shape, first_times = describe_events(events)  # 표 크기와 time 열의 처음 3개를 구한다
   File "…/anomaly_detection/events_basic.py", line 23, in describe_events
     times = events["times"]  # time 열 하나를 꺼낸다
@@ -115,15 +115,15 @@ KeyError: 'times'
 
 ---
 
-## Exercise Exercise 2-2 정답
+## Exercise 3-2 정답
 
  **터미널에 입력합니다.**
 
 ```bash
 pwd
-python day02_6-1_run.py
+python exercise3-2_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day02_6-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise3-2_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 두 함수입니다.
 
@@ -186,7 +186,7 @@ dtype: int64
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day02_6-1_run.py", line 8, in <module>
+  File "…/anomaly_detection/exercise3-2_run.py", line 8, in <module>
     by_user = count_by_user(failed)  # 실패 횟수를 사용자별로 센다
   File "…/anomaly_detection/events_time.py", line 31, in count_by_user
     grouped = failed.groupby("users")  # user 가 같은 행끼리 묶는다
@@ -218,7 +218,7 @@ git status
 
 ```bash
 git add .
-git commit -m "Add anomaly detection day 2 pandas basics"
+git commit -m "Add anomaly detection unit 3 pandas basics"
 git push
 ```
 - 명령 풀이: `git add .` 바뀐 파일을 올릴 대상에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림

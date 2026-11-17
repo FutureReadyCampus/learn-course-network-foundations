@@ -19,11 +19,11 @@ source:
 
 ## Exercise 10-1 정답
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 ```bash
 pwd
-python day06_2-1_run.py
+python exercise10-1_run.py
 ```
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
@@ -100,11 +100,11 @@ python day06_2-1_run.py
 
 ## Exercise 10-2 정답
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 ```bash
 pwd
-python day06_3-1_run.py
+python exercise10-2_run.py
 ```
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 다섯 함수입니다.
@@ -163,7 +163,7 @@ python day06_3-1_run.py
 거부 4 번 이상 사용자: ['dami', 'gaeun']
 ```
 
-  - `day06_3-2_run.py` 의 출력은 다음과 같고, 거부율 40% 는 경고 기준 30% 이상이라 **경고**입니다. 실패한 점검은 퇴사자 계정 점검과 부서와 역할 점검입니다.
+  - `exercise10-2-2_run.py` 의 출력은 다음과 같고, 거부율 40% 는 경고 기준 30% 이상이라 **경고**입니다. 실패한 점검은 퇴사자 계정 점검과 부서와 역할 점검입니다.
 
 ```
 --- 단계 1: 모으기 - 점검 결과와 요청 로그
@@ -229,11 +229,11 @@ python day06_3-1_run.py
 거부 4 번 이상 사용자: []
 ```
 
-- `deny_rate` 의 8 · 9번을 빼먹으면 오늘 로그에서는 잘 되지만, 빈 로그 파일(`empty.jsonl`)로 실행하면 다음 오류가 납니다.
+- `deny_rate` 의 8 · 9번을 빼먹으면 이번 로그에서는 잘 되지만, 빈 로그 파일(`empty.jsonl`)로 실행하면 다음 오류가 납니다.
 
 ```
 Traceback (most recent call last):
-  File "…/access_control/day06_3-1_run.py", line 10, in <module>
+  File "…/access_control/exercise10-2_run.py", line 10, in <module>
     rate = deny_rate(entries)                                        # 거부율(0 ~ 1)을 구한다
   File "…/access_control/log_summary.py", line 47, in deny_rate
     return denied / total                                        # 거부 수를 전체 수로 나눈 비율을 리턴한다
@@ -366,7 +366,7 @@ ZeroDivisionError: division by zero
 - 케이스 D. 제외 리스트에 있어도 사용자가 퇴사한 경우 (dami 의 `SALES:QUERY`)
   - 원인: 퇴사한 사람의 권한은 제외 리스트에 있어도 제외하지 않습니다. 이 권한은 「일을 넘겨받을 사람이 정해질 때까지 필요」라는 이유로 제외 리스트에 있지만, dami 가 퇴사해서 코드가 회수 대상으로 둡니다.
   - 고칠 파일: 없습니다. 코드가 이미 처리합니다.
-  - 어떻게 고치나요: 회수 대상으로 둡니다. 필요하면 제외 리스트의 dami 정보은 지웁니다.
+  - 어떻게 고치나요: 회수 대상으로 둡니다. 필요하면 제외 리스트의 dami 정보를 지웁니다.
   - 고친 뒤 확인: 이 권한이 회수 제외가 아니라 회수 대상으로 나오는지 봅니다.
 
 **상황 6 · 민감한 권한을 회수해야 함**
@@ -495,7 +495,7 @@ def check_employed(users):                                       # 사용자 딕
     정기 점검에서 퇴사자 계정을 찾을 때 쓴다.
     """
     problems = []                                                # 문제가 있는 사용자 이름을 모을 리스트
-    for name, info in users.items():                             # 사용자 이름과 사용자 정보을 하나씩 꺼낸다
+    for name, info in users.items():                             # 사용자 이름과 사용자 정보를 하나씩 꺼낸다
         if not info["employed"]:                                 # 퇴사했으면
             problems.append(name)                                # 이름을 문제 리스트에 추가한다
     return problems                                              # 문제가 있는 사용자 이름을 리턴한다
@@ -518,7 +518,7 @@ def check_dept(users, role_dept):                                # 사용자 딕
     정기 점검에서 엉뚱한 부서에 역할이 남은 사람을 찾을 때 쓴다.
     """
     problems = []                                                # 문제가 있는 사용자 이름을 모을 리스트
-    for name, info in users.items():                             # 사용자 이름과 사용자 정보을 하나씩 꺼낸다
+    for name, info in users.items():                             # 사용자 이름과 사용자 정보를 하나씩 꺼낸다
         expected_dept = role_dept[info["role"]]                  # 이 역할이 속해야 하는 부서를 찾는다
         if expected_dept != info["dept"]:                        # 사용자의 부서와 다르면
             problems.append(name)                                # 이름을 문제 리스트에 추가한다

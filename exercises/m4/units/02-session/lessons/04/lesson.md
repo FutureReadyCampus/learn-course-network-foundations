@@ -16,18 +16,18 @@ source:
 > **오늘 들어온 일**
 >
 > A사 보안 팀장이 보낸 메시지입니다:
-> 「세 로그가 같은 모양이 되었습니다. 하나로 합쳐 시간 순서로 정렬해 파일로 저장해 주세요. 오후에 이 파일로 실패가 몇 번 났는지 세겠습니다.
+> 「세 로그가 같은 모양이 되었습니다. 하나로 합쳐 시간 순서로 정렬해 파일로 저장해 주세요. Unit 3에서 이 파일로 실패가 몇 번 났는지 세겠습니다.
 >
-> 소스별로 이벤트가 몇 개씩인지, 사용자나 주소가 비어 있는 이벤트가 몇 개인지도 알려 주세요. 합친 결과로 gaeun 이 오늘 한 일을 시간순으로 보여 주세요.」
-> - **왜 중요한가**: <mark>로그가 따로 있을 때는 보이지 않던 같은 계정의 일이 시간순으로 합치면 보입니다.</mark> 값이 비어 있는 이벤트 수는 분석에서 빠지는 이벤트가 얼마나 되는지 미리 알려 줍니다. 저장한 파일은 오후 분석의 입력이 됩니다.
+> 소스별로 이벤트가 몇 개씩인지, 사용자나 주소가 비어 있는 이벤트가 몇 개인지도 알려 주세요. 합친 결과로 gaeun 이 한 일을 시간순으로 보여 주세요.」
+> - **왜 중요한가**: <mark>로그가 따로 있을 때는 보이지 않던 같은 계정의 일이 시간순으로 합치면 보입니다.</mark> 값이 비어 있는 이벤트 수는 분석에서 빠지는 이벤트가 얼마나 되는지 미리 알려 줍니다. 저장한 파일은 Unit 3 분석의 입력이 됩니다.
 
-> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「 문제」 전까지는 이 Exercise의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
+> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「Exercise」 전까지는 이 Exercise의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
 
 ## 읽기 · 왜 필요한가
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
-1. 2 · Exercise 2-2에서 만든 함수는 로그 한 종류씩 공통 이벤트 리스트를 만듭니다. 이제 세 리스트를 **합치고, 시간순으로 정렬하고, 파일로 저장**합니다.
+1. Exercise 2-1 · Exercise 2-2에서 만든 함수는 로그 한 종류씩 공통 이벤트 리스트를 만듭니다. 이제 세 리스트를 **합치고, 시간순으로 정렬하고, 파일로 저장**합니다.
 2. 순서는 이렇습니다.
    - 웹 서버 이벤트 28개 · 판정 서버 이벤트 15개 · SaaS 이벤트 14개를 각각 만듭니다.
    - 하나의 리스트로 이어 붙입니다(57개).
@@ -130,7 +130,7 @@ print(text)                                                         # 파일 내
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## Exercise Exercise 2-1 · 세 로그의 이벤트를 합쳐 시간순으로 저장하기
+## Exercise 2-3 · 세 로그의 이벤트를 합쳐 시간순으로 저장하기
 
 ** 이런 상황이 있습니다**
 
@@ -144,7 +144,7 @@ print(text)                                                         # 파일 내
 
 ** 할 일**
 
-1. **`normalize.py` · `day02_4-1_run.py`** 두 파일을 만들고, `normalize.py` 의 `merge_events` · `count_by_source` · `save_events` 에서 직접 쓰는 곳을 씁니다. Exercise 2-1의 `normalize_web.py` 와 Exercise 2-2의 `normalize_json_csv.py` 가 필요합니다.
+1. **`normalize.py` · `exercise2-3_run.py`** 두 파일을 만들고, `normalize.py` 의 `merge_events` · `count_by_source` · `save_events` 에서 직접 쓰는 곳을 씁니다. Exercise 2-1의 `normalize_web.py` 와 Exercise 2-2의 `normalize_json_csv.py` 가 필요합니다.
 2. 실행해서 <mark>소스별 이벤트 수</mark>(단계 1), <mark>값이 비어 있는 이벤트 수</mark>(단계 2), <mark>gaeun 의 이벤트</mark>(단계 3), <mark>저장된 이벤트 수</mark>(단계 4)를 읽습니다.
 
 **`normalize.py`**
@@ -224,7 +224,7 @@ def save_events(events, path):                              # 이벤트 리스�
 - 번호 주석이 연달아 붙어 있어도(예: 3 · 4번), <mark>주석 사이마다 줄을 끼워 넣어 각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark>
 - **채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다.** `for` 아래와 `with` 아래가 주석뿐이기 때문입니다.
 
-**`day02_4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 세 로그를 읽어 합치고 네 단계로 출력합니다.
+**`exercise2-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 세 로그를 읽어 합치고 네 단계로 출력합니다.
 
 ```python
 from normalize import load_web, merge_events, count_by_source, count_missing, save_events, EVENTS_PATH  # 방금 만든 함수를 불러온다
@@ -273,17 +273,17 @@ print("저장된 이벤트", saved_count, "개")                                
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `normalize.py` · `day02_4-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code 또는 터미널]** 파일 `normalize.py` · `exercise2-3_run.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `normalize.py` 에서 직접 쓰는 곳 **다섯 군데**를 씁니다. 3.1 의 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python day02_4-1_run.py
+   python exercise2-3_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day02_4-1_run.py` 파이썬으로 실행 파일 실행
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise2-3_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **네 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1은 1줄, 단계 2는 2줄, 단계 3은 5줄, 단계 4는 1줄입니다.
 5. **[VS Code]** 새로 생긴 `normalized_events.json` 을 열어 <mark>이벤트 하나가 7개 키(`time` · `source` · `user` · `ip` · `action` · `result` · `raw`)로 되어 있는지</mark> 봅니다.
-6. **[보고서]** `day02_am_report.md` 의 `## Exercise 2-3` › `### Exercise Exercise 2-1` 아래를 채웁니다.
+6. **[보고서]** Unit 2 의 `## Exercise 2-3` › `### Exercise 2-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 소스별 이벤트 수와 `user` · `ip` 가 비어 있는 이벤트 수, 저장된 이벤트 수를 적어 주세요.
    - (나) [핵심 질문] 단계 3의 gaeun 이벤트를 시간순으로 보고, 서로 다른 소스에서 나온 이벤트가 시간순으로 어떤 순서로 나오는지 적고, 로그를 따로 볼 때와 무엇이 달라지는지 적어 주세요.
    - (다) [핵심 질문] `user` 가 비어 있는 이벤트가 28개입니다. 어느 로그(소스)의 이벤트이고 왜 비어 있는지 적어 주세요. 그리고 사용자 이름별로 개수를 세면 이 28개가 어떻게 될지 예상해 적어 주세요.
@@ -299,32 +299,32 @@ print("저장된 이벤트", saved_count, "개")                                
 
 ---
 
-## 마무리 · 오전 작업 확인하기
+## 마무리 · 이번 Unit 작업 확인하기
 
-오전 작업을 깃허브에 올리는 일은 오후 Exercise 1-2 마지막에 한 번에 합니다. <mark>오전에는 파일이 모두 있는지만 확인합니다.</mark>
+이번 Unit의 작업을 깃허브에 올리는 일은 Unit 3의 Exercise 3-2 마지막에 한 번에 합니다. <mark>이번 Unit에서는 파일이 모두 있는지만 확인합니다.</mark>
 
 **순서**
 
-1. **[터미널]** `anomaly_detection` 폴더에서 오늘 만든 파일이 있는지 확인합니다.
+1. **[터미널]** `anomaly_detection` 폴더에서 이번 Unit에서 만든 파일이 있는지 확인합니다.
    ```bash
    pwd
    ls
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
-   - `normalize_web.py` · `normalize_json_csv.py` · `normalize.py` · `day02_2-1_run.py` · `day02_3-1_run.py` · `day02_4-1_run.py` · `normalized_events.json` · `server_log.jsonl` · `saas_events.csv` 와 이 안내 · 보고서 두 파일이 보여야 합니다.
-2. **[보고서]** `day02_am_report.md` 의 2 · 3 · Exercise 2-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. <mark>못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.</mark>
+   - `normalize_web.py` · `normalize_json_csv.py` · `normalize.py` · `exercise2-1_run.py` · `exercise2-2_run.py` · `exercise2-3_run.py` · `normalized_events.json` · `server_log.jsonl` · `saas_events.csv` 와 이 안내 · 보고서 두 파일이 보여야 합니다.
+2. **[보고서]** Unit 2 보고서의 Exercise 2-1 ~ Exercise 2-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. <mark>못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.</mark>
 
 ---
 
-## 오늘 오전 마무리
+## 이번 Unit 마무리
 
 | 확인 | 문제 |
 |---|---|
-| 웹 서버 로그 한 줄을 공통 이벤트로 바꿨다 | 오전 Exercise 2-1 |
-| 판정 서버 로그와 SaaS 로그를 공통 이벤트로 바꿨다 | 오전 Exercise 2-2 |
-| 세 로그를 합쳐 시간순으로 정렬하고 `normalized_events.json` 으로 저장했다 | 오전 Exercise 2-3 |
+| 웹 서버 로그 한 줄을 공통 이벤트로 바꿨다 | Exercise 2-1 |
+| 판정 서버 로그와 SaaS 로그를 공통 이벤트로 바꿨다 | Exercise 2-2 |
+| 세 로그를 합쳐 시간순으로 정렬하고 `normalized_events.json` 으로 저장했다 | Exercise 2-3 |
 
-오후에는 이 `normalized_events.json` 과 같은 모양의 파일을 **판다스**로 읽어서 실패한 이벤트를 골라 세고, 사용자별 · 시간대별로 묶습니다. 판다스 설치는 어제 미리 했다면 확인만 합니다.
+Unit 3에서는 이 `normalized_events.json` 과 같은 모양의 파일을 **판다스**로 읽어서 실패한 이벤트를 골라 세고, 사용자별 · 시간대별로 묶습니다. 판다스 설치를 Unit 1 마무리 때 미리 했다면 확인만 합니다.
 
 ---
 

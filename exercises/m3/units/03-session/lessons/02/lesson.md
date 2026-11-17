@@ -24,10 +24,10 @@ source:
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
-1. 지금 `rbac.py` 는 파일을 바로 열어서, 파일이 없으면 `FileNotFoundError`, JSON 이 깨지면 `JSONDecodeError` 로 프로그램이 멈춥니다. 오늘은 안전하게 읽는 함수를 새 파일에 만들어 시험합니다. 이 함수를 판정 프로그램에 연결하는 일은 오늘 하지 않고, 오전까지 만든 파일도 고치지 않습니다.
+1. 지금 `rbac.py` 는 파일을 바로 열어서, 파일이 없으면 `FileNotFoundError`, JSON 이 깨지면 `JSONDecodeError` 로 프로그램이 멈춥니다. 오늘은 안전하게 읽는 함수를 새 파일에 만들어 시험합니다. 이 함수를 판정 프로그램에 연결하는 일은 오늘 하지 않고, Unit 2까지 만든 파일도 고치지 않습니다.
 2. 판정 프로그램이 멈추면 현장에서는 판정을 건너뛰고 모두 통과시키는 일이 생깁니다. 판정을 건너뛰고 모두 통과시키는 이 상태를 **열림 기본 값**(fail-open · 페일 오픈)이라고 합니다.
 3. 설정을 읽지 못했을 때 **빈 설정**을 쓰면 사용자가 한 명도 없습니다.
-   - 그러면 어제의 판정 함수(`check_permission`)가 맨 처음 「사용자 파일에 있나?」 검사에서 모든 요청을 거부합니다.
+   - 그러면 Unit 1의 판정 함수(`check_permission`)가 맨 처음 「사용자 파일에 있나?」 검사에서 모든 요청을 거부합니다.
    - 멈추지 않고 모두 막는 이 동작을 **닫힘 기본 값**(fail-closed · 페일 클로즈드)이라고 합니다.
 
 ## 읽기 · 1.1 안전하게 읽고, 실패하면 빈 설정
@@ -62,9 +62,9 @@ source:
 
 **이 시간에 나오는 말** (이미 배운 방법입니다)
 
-- `try:` 안에서 오류가 나면 그 종류에 맞는 `except 오류이름:` 으로 넘어갑니다(9/28(월)).
-- `with open(path, encoding="utf-8") as input_file:` 는 파일을 열어 `input_file` 로 받습니다(9/28(월), 어제 `rbac.py` 와 같습니다).
-- `FileNotFoundError` 는 파일이 없을 때, `json.JSONDecodeError` 는 JSON 규칙이 틀렸을 때 납니다(9/28(월)).
+- `try:` 안에서 오류가 나면 그 종류에 맞는 `except 오류이름:` 으로 넘어갑니다(앞선 실습).
+- `with open(path, encoding="utf-8") as input_file:` 는 파일을 열어 `input_file` 로 받습니다(앞선 실습, Unit 1의 `rbac.py` 와 같습니다).
+- `FileNotFoundError` 는 파일이 없을 때, `json.JSONDecodeError` 는 JSON 규칙이 틀렸을 때 납니다(앞선 실습).
 - 함수가 기본값을 인자(`default`)로 받으면, 호출하는 쪽이 빈 딕셔너리 `{}` 나 빈 리스트 `[]` 를 골라 넣을 수 있습니다.
 
 ## 읽기 · 1.2 고장을 일부러 만들어 시험하기
@@ -84,7 +84,7 @@ source:
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## Exercise Exercise 2-2 · 설정 파일을 안전하게 읽는 함수 load_json 만들고, 고장 두 가지로 시험하기
+## Exercise 3-1 · 설정 파일을 안전하게 읽는 함수 load_json 만들고, 고장 두 가지로 시험하기
 
 ** 이런 상황이 있습니다**
 
@@ -96,7 +96,7 @@ source:
 ** 할 일**
 
 1. `config_loader.py` 를 만들고 `load_json` 본문을 직접 씁니다.
-2. 깨진 파일 `config/users_broken.json` 과 시험 파일 `day02_5-1_broken.py` 를 만듭니다.
+2. 깨진 파일 `config/users_broken.json` 과 시험 파일 `exercise3-1_broken.py` 를 만듭니다.
 3. 실행해서 <mark>세 경로의 결과</mark>를 읽습니다.
 
 **`config_loader.py`**
@@ -132,7 +132,7 @@ def load_json(path, default):                                    # 파일 경로
 }
 ```
 
-**`day02_5-1_broken.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 1.2 의 세 경로를 `load_json` 으로 읽어 결과를 출력합니다.
+**`exercise3-1_broken.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 1.2 의 세 경로를 `load_json` 으로 읽어 결과를 출력합니다.
 
 ```python
 from config_loader import load_json                              # 5-1 의 안전한 읽기 함수를 불러온다
@@ -168,19 +168,19 @@ for path in PATHS:                                               # 경로를 하
    - **방법 1 · VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
      2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `config/users_broken.json` · `day02_5-1_broken.py` 입니다. 앞에 폴더가 붙은 이름은 폴더도 함께 만들어집니다.
+     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `config/users_broken.json` · `exercise3-1_broken.py` 입니다. 앞에 폴더가 붙은 이름은 폴더도 함께 만들어집니다.
      4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
-   - **방법 2 · touch 로 만들기**: 터미널에서 파일마다 한 줄씩 치고, 각각 VS Code 에서 열어 붙여넣기: `touch config/users_broken.json` → `touch day02_5-1_broken.py`
-   - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim config/users_broken.json` → `vim day02_5-1_broken.py` (각각 `i` → 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
+   - **방법 2 · touch 로 만들기**: 터미널에서 파일마다 한 줄씩 치고, 각각 VS Code 에서 열어 붙여넣기: `touch config/users_broken.json` → `touch exercise3-1_broken.py`
+   - **방법 3 · vim 으로 만들기**: 파일마다 한 번씩 합니다: `vim config/users_broken.json` → `vim exercise3-1_broken.py` (각각 `i` → 붙여넣기 → `Esc` → `:wq` Enter. 줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
 4. **[터미널]** 위치가 `…/access_control` 인지 확인하고 실행합니다.
    ```bash
    pwd
-   python day02_5-1_broken.py
+   python exercise3-1_broken.py
    ```
-   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `day02_5-1_broken.py` 실행할 파일
-   맥북: `python3 day02_5-1_broken.py`
+   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise3-1_broken.py` 실행할 파일
+   맥북: `python3 exercise3-1_broken.py`
 5. 세 경로의 결과 다섯 줄이 나옵니다. 경고 두 줄이 어느 경로에서 나왔는지 봅니다.
-6. **[보고서]** `day02_pm_report.md` 의 `## Exercise 3-1` › `### Exercise Exercise 2-2` 아래를 채웁니다.
+6. **[보고서]** Unit 3 의 `## Exercise 3-1` › `### Exercise 3-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 경고 두 줄이 각각 어떤 오류 때문에 나왔는지 적어 주세요.
    - (나) [핵심 질문] 실패했을 때 프로그램을 멈추지 않고 빈 설정을 리턴하는 것이, 오류로 멈추는 것보다 왜 안전한가요? 「멈춘 뒤 현장에서 생기는 일」을 넣어 적어 주세요.
    - (다) [핵심 질문] 설정 파일이 깨져서 모두 거부되면 정산 업무가 멈춥니다. 운영자가 이 상황을 빨리 알고 복구하려면 판정 프로그램에 무엇을 추가하겠습니까? 두 가지 이상 적고, 그중 가장 먼저 할 것을 고른 이유를 적어 주세요.

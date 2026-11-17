@@ -17,12 +17,12 @@ source:
 
 ---
 
-## Exercise Exercise 2-2 정답
+## Exercise 3-1 정답
 
  **터미널에 입력합니다.**
 
 ```bash
-python day02_5-1_broken.py
+python exercise3-1_broken.py
 ```
 
 **채운 코드** (한 예)
@@ -62,7 +62,7 @@ config/users_broken.json -> 사용자 0 명, 등록된 사용자가 없다
 
 ---
 
-## Exercise Exercise 2-2 정답
+## Exercise 3-2 정답
 
  **터미널에 입력합니다.**
 

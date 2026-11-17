@@ -13,30 +13,30 @@ source:
 
 ## 개요
 
-<mark style="background:#e0d4ff">지난주에는 플레이북 찾기(월) · 계정 잠금과 IP 차단(수) · 티켓(목) · 승인 게이트(금)</mark>를 단계마다 따로 구현했습니다. 오늘 오전에는 <mark>**이 모듈들을 하나의 엔진으로 연결해 알림 한 건을 처음부터 끝까지 처리하고, 4과목의 탐지 결과를 입력으로 받아 실행하고, 엔진이 정책을 지켰는지 로그로 점검하는 부분**</mark>을 구현합니다. 통합 엔진(orchestration engine, 오케스트레이션 엔진: 여러 모듈을 정해진 순서로 호출해 하나의 흐름으로 실행하는 프로그램)은 SOAR(Security Orchestration, Automation and Response, 쏘아: 보안 오케스트레이션 · 자동화 · 대응) 제품의 핵심 부분입니다.
+<mark style="background:#e0d4ff">Unit 1~9에서는 플레이북 찾기(Unit 1) · 계정 잠금과 IP 차단(Unit 4) · 티켓(Unit 6) · 승인 게이트(Unit 8)</mark>를 단계마다 따로 구현했습니다. 이번 Unit에서는 <mark>**이 모듈들을 하나의 엔진으로 연결해 알림 한 건을 처음부터 끝까지 처리하고, 4과목의 탐지 결과를 입력으로 받아 실행하고, 엔진이 정책을 지켰는지 로그로 점검하는 부분**</mark>을 구현합니다. 통합 엔진(orchestration engine, 오케스트레이션 엔진: 여러 모듈을 정해진 순서로 호출해 하나의 흐름으로 실행하는 프로그램)은 SOAR(Security Orchestration, Automation and Response, 쏘아: 보안 오케스트레이션 · 자동화 · 대응) 제품의 핵심 부분입니다.
 
 - **Exercise 10-1**: 알림 한 건을 <mark>플레이북 찾기 → 승인 게이트 → 조치 실행 → 티켓</mark> 순서로 처리하는 엔진을 만듭니다. 알림 하나에서 오류가 나도 그 알림만 실패(failure)로 기록하고 나머지 알림을 계속 처리합니다(`soar_engine.py`).
-- **Exercise 10-2**: 4과목이 저장한 탐지 결과 `day03_risk_scores.json` 을 엔진이 읽는 알림으로 바꾸고, 파일 모양을 엔진 앞에서 점검합니다. 엔진 실행 결과는 운영 요약(operations summary: 처리 결과별 알림 수 · 티켓 수 · 실제로 실행한 조치를 한 번에 보여 주는 요약)으로 정리합니다(`engine_input.py`). 종단간(end-to-end: 처음 입력부터 마지막 결과까지 중간에 끊기지 않고 한 흐름으로 이어지는 것) 연결입니다.
-- **Exercise 10-3**: 엔진이 남긴 로그로 <mark>정책 준수 점검</mark>(policy compliance check: 승인 게이트와 허용 목록 같은 통제가 실제로 지켜졌는지 확인하는 일)을 하고, 5일간의 회고 문서 `day05_final_retrospective.md` 를 쓴 뒤 깃허브에 올립니다(`policy_check.py`).
+- **Exercise 10-2**: 4과목이 저장한 탐지 결과 `unit07_risk_scores.json` 을 엔진이 읽는 알림으로 바꾸고, 파일 모양을 엔진 앞에서 점검합니다. 엔진 실행 결과는 운영 요약(operations summary: 처리 결과별 알림 수 · 티켓 수 · 실제로 실행한 조치를 한 번에 보여 주는 요약)으로 정리합니다(`engine_input.py`). 종단간(end-to-end: 처음 입력부터 마지막 결과까지 중간에 끊기지 않고 한 흐름으로 이어지는 것) 연결입니다.
+- **Exercise 10-3**: 엔진이 남긴 로그로 <mark>정책 준수 점검</mark>(policy compliance check: 승인 게이트와 허용 목록 같은 통제가 실제로 지켜졌는지 확인하는 일)을 하고, Unit 1~10 전체 회고 문서 `unit10_final_retrospective.md` 를 쓴 뒤 깃허브에 올립니다(`policy_check.py`).
 
-새 문법은 Exercise 10-1의 `except Exception as error` 하나입니다. 이 수업에서는 판다스를 쓰지 않습니다. 보고서의 [핵심 질문] 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기(줄 앞의 빈칸)는 각 번호 주석과 같은 위치에서 시작합니다. 각 번호 주석 바로 아래에 직접 쓰고(Exercise 10-2 4번만 딕셔너리라서 여러 줄), 주석은 지우지 않습니다.
+새 문법은 Exercise 10-1의 `except Exception as error` 하나입니다. 이 수업에서는 판다스를 쓰지 않습니다. 보고서의 [핵심 질문] 표시가 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기(줄 앞의 빈칸)는 각 번호 주석과 같은 위치에서 시작합니다. 각 번호 주석 바로 아래에 직접 쓰고(Exercise 10-2 4번만 딕셔너리라서 여러 줄), 주석은 지우지 않습니다.
 
  **이전 파일**: 오늘 가져와 사용(import)하는 이전 파일은 아래 표와 같습니다. 없는 파일은 시작하기 뒤의 「 이전 파일이 없을 때」 코드 상자로 만듭니다.
 
 | 파일 | 만든 날 | 가져다 쓰는 것 | 쓰는 Exercise |
 |---|---|---|---|
-| `incident.py` | 월요일 | `load_json` · `save_json` · `match_playbooks` | 2 · 3 · Exercise 10-3 |
-| `config/playbook_registry.json` | 월요일 | 플레이북 3개(`actions` · 트리거 규칙 · 최소 등급) | 2 · Exercise 10-2 |
-| `containment_store.py` · `account_actions.py` · `ip_actions.py` | 수요일 | `new_state` · `lock_account` · `block_ip` · `count_users_on_ip` | Exercise 10-1 |
-| `ip_users.json` | 수요일 | IP 별로 그 IP 를 쓰는 계정 리스트 | Exercise 10-1 |
-| `ticketing.py` · `config/escalation_rules.json` | 목요일 | `make_ticket` · 등급별 응답 기한(`sla_minutes`) | Exercise 10-1 |
-| `approval_gate.py` · `config/approval_policy.json` | 금요일 | `decide_gate` · 승인 정책 | 2 · Exercise 10-3 |
-| `day03_risk_scores.json` | 4과목 11/5(목) 오후 | 대상별 점수 · 등급 · 이유 5건 | Exercise 10-2 |
+| `incident.py` | Unit 1 | `load_json` · `save_json` · `match_playbooks` | Exercise 10-1 · Exercise 10-2 · Exercise 10-3 |
+| `config/playbook_registry.json` | Unit 1 | 플레이북 3개(`actions` · 트리거 규칙 · 최소 등급) | Exercise 10-1 · Exercise 10-2 |
+| `containment_store.py` · `account_actions.py` · `ip_actions.py` | Unit 4 | `new_state` · `lock_account` · `block_ip` · `count_users_on_ip` | Exercise 10-1 |
+| `ip_users.json` | Unit 4 | IP 별로 그 IP 를 쓰는 계정 리스트 | Exercise 10-1 |
+| `ticketing.py` · `config/escalation_rules.json` | Unit 6 | `make_ticket` · 등급별 응답 기한(`sla_minutes`) | Exercise 10-1 |
+| `approval_gate.py` · `config/approval_policy.json` | Unit 8 | `decide_gate` · 승인 정책 | Exercise 10-1 · Exercise 10-3 |
+| `unit07_risk_scores.json` | 4과목 Unit 7 | 대상별 점수 · 등급 · 이유 5건 | Exercise 10-2 |
 
 ## 개요
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** 5과목 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `incident.py` · `approval_gate.py` · `ticketing.py` · `ip_users.json` 과 `config` 가 보이고, `ls config` 결과에 `playbook_registry.json` · `approval_policy.json` · `escalation_rules.json` 이 보이면</mark> 됩니다. 수요일 파일 세 개(`containment_store.py` · `account_actions.py` · `ip_actions.py`)도 필요합니다. 없는 파일은 아래 「」에서 만듭니다.
+2. **[터미널]** 5과목 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `incident.py` · `approval_gate.py` · `ticketing.py` · `ip_users.json` 과 `config` 가 보이고, `ls config` 결과에 `playbook_registry.json` · `approval_policy.json` · `escalation_rules.json` 이 보이면</mark> 됩니다. Unit 4 파일 세 개(`containment_store.py` · `account_actions.py` · `ip_actions.py`)도 필요합니다. 없는 파일은 아래 「」에서 만듭니다.
    ```bash
    pwd
    cd soar_response
@@ -45,8 +45,8 @@ source:
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
-3. 오늘 받은 파일 두 개(`day06_am_soar_engine.md`, `day06_am_report.md`)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
-4. **[터미널]** 월요일의 플레이북 등록 값을 점검합니다(맥북은 `python3`). 엔진은 이 파일의 `actions` · 트리거 규칙 · 최소 등급을 읽으므로, <mark>아래 출력과 같아야</mark> 오늘 출력이 문서와 일치합니다. 다르면 아래 「」의 `config/playbook_registry.json` 으로 덮어씁니다.
+3. 이번 Unit에서 받은 파일 두 개(Unit 10 안내 문서, Unit 10 보고서)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
+4. **[터미널]** Unit 1의 플레이북 등록 값을 점검합니다(맥북은 `python3`). 엔진은 이 파일의 `actions` · 트리거 규칙 · 최소 등급을 읽으므로, <mark>아래 출력과 같아야</mark> 이번 Unit의 출력이 문서와 일치합니다. 다르면 아래 「」의 `config/playbook_registry.json` 으로 덮어씁니다.
    ```bash
    python -c "import json; print([(p['id'], p['trigger_rule'], p['min_grade'], p['actions']) for p in json.load(open('config/playbook_registry.json', encoding='utf-8'))])"
    ```
@@ -59,10 +59,10 @@ source:
    ls
    ```
 
-**`engine_alerts.json`** — 오늘 아침 들어온 알림 8건입니다.
+**`engine_alerts.json`** — 이번 Unit에서 들어온 알림 8건입니다.
 
 - **무엇인가**:
-  - 월요일 `incident_samples.json` 과 같은 알림 모양입니다. 키는 `id`(알림 번호) · `entity`(대상 계정 또는 IP) · `grade`(등급) · `score`(점수) · `reasons`(탐지된 규칙 이름 리스트) · `status`(상태)입니다.
+  - Unit 1의 `incident_samples.json` 과 같은 알림 모양입니다. 키는 `id`(알림 번호) · `entity`(대상 계정 또는 IP) · `grade`(등급) · `score`(점수) · `reasons`(탐지된 규칙 이름 리스트) · `status`(상태)입니다.
   - 알림마다 다른 처리 경로를 지나도록 만든 시험용 데이터입니다. `INC-402` 는 `grade` 키가 없는 알림입니다.
   - `203.0.113.80` 은 허용 목록(allowlist, 얼라우리스트: 차단 대상에서 제외하기로 미리 정한 IP 의 목록)에 있는 협력사 사무실 IP 이고, `192.0.2.41` 은 `junho` 와 `hana` 가 함께 쓰는 IP 이며, `gaeun` 은 VIP 계정입니다.
 - **어디에 쓰나**: Exercise 10-1 엔진이 알림을 하나씩 처리합니다.
@@ -85,7 +85,7 @@ source:
    python -c "import json; print(len(json.load(open('engine_alerts.json', encoding='utf-8'))))"
    ```
 
-## 이전 파일이 없을 때 (월 · 수 · 목 · 금요일 파일)
+## 이전 파일이 없을 때 (Unit 1 · 4 · 6 · 8 파일)
 
 해당 요일에 결석했거나 파일을 지운 경우에만 만듭니다. **이미 있는 파일은 건너뜁니다.** 먼저 **[터미널]** 에서 빈 파일을 만듭니다. 이미 있는 파일은 `touch` 가 그대로 두고, `config` 폴더가 이미 있으면 `mkdir -p` 도 그대로 둡니다.
 
@@ -99,7 +99,7 @@ ls
 - 명령 풀이: `mkdir -p 폴더이름` 폴더가 없을 때만 만들기 · `touch 파일이름들` 빈 파일 만들기 · `ls` 폴더 안의 파일 이름 보기
 - 아래 코드 상자를 **[VS Code]** 에서 같은 이름의 파일에 붙여 넣고 저장합니다. 이미 있는 파일은 붙여 넣지 않습니다(플레이북 등록 파일만 4번 점검 결과가 다를 때 덮어씁니다).
 
-**`incident.py`** — 월요일 파일에서 오늘 쓰는 부분(`load_json` · `save_json` · `match_playbooks` 와 그 함수가 쓰는 `is_grade_enough`)만 담았습니다. 월요일 파일 전체가 있으면 그것을 그대로 씁니다.
+**`incident.py`** — Unit 1 파일에서 이번 Unit에서 쓰는 부분(`load_json` · `save_json` · `match_playbooks` 와 그 함수가 쓰는 `is_grade_enough`)만 담았습니다. Unit 1 파일 전체가 있으면 그것을 그대로 씁니다.
 
 ```python
 import json                                                                   # JSON 파일을 읽고 쓰기 위해 json 을 불러온다
@@ -144,7 +144,7 @@ def match_playbooks(incident, registry):                                      # 
     return matched                                                            # 맞는 플레이북 리스트를 리턴한다
 ```
 
-**`config/playbook_registry.json`** — 월요일의 플레이북 3개입니다. 오늘 엔진은 `trigger_rule` · `min_grade` · `actions` 만 읽습니다.
+**`config/playbook_registry.json`** — Unit 1의 플레이북 3개입니다. 이번 Unit의 엔진은 `trigger_rule` · `min_grade` · `actions` 만 읽습니다.
 
 ```
 [
@@ -187,7 +187,7 @@ def match_playbooks(incident, registry):                                      # 
 ]
 ```
 
-**`containment_store.py`** — 수요일 오전 파일에서 오늘 쓰는 부분(`new_state` · `make_record`)만 담았습니다. 조치 기록 한 건을 만들고 연습용 시스템의 처음 상태를 만듭니다. 수요일 파일 전체가 있으면 그것을 그대로 씁니다.
+**`containment_store.py`** — Unit 4 파일에서 이번 Unit에서 쓰는 부분(`new_state` · `make_record`)만 담았습니다. 조치 기록 한 건을 만들고 연습용 시스템의 처음 상태를 만듭니다. Unit 4 파일 전체가 있으면 그것을 그대로 씁니다.
 
 ```python
 import copy                                                           # 처음 상태를 복사해 쓰기 위해 copy 를 불러온다
@@ -216,7 +216,7 @@ def make_record(action, target, incident_id, before, after, reason):  # 조치 �
     return record                                                     # 기록 한 건을 리턴한다
 ```
 
-**`account_actions.py`** — 수요일 오전 파일에서 오늘 쓰는 부분(`lock_account` 와 그 함수가 쓰는 `check_policy` · `verify_locked`)만 담았습니다. VIP 이면 잠그지 않고, 아니면 계정을 잠급니다.
+**`account_actions.py`** — Unit 4 파일에서 이번 Unit에서 쓰는 부분(`lock_account` 와 그 함수가 쓰는 `check_policy` · `verify_locked`)만 담았습니다. VIP 이면 잠그지 않고, 아니면 계정을 잠급니다.
 
 ```python
 from containment_store import make_record                                             # 기록 한 건을 만드는 함수를 불러온다
@@ -254,7 +254,7 @@ def lock_account(user, state, vip_accounts, incident_id, reason):               
     return make_record("계정 잠금", user, incident_id, "잠기지 않음", after, reason)  # 조치 전 · 후 상태와 함께 기록한다 — 미리 채운 줄
 ```
 
-**`ip_actions.py`** — 수요일 오전 파일에서 오늘 쓰는 부분(`block_ip` · `count_users_on_ip` · `DEFAULT_TTL`)만 담았습니다. IP 를 차단하고, 그 IP 를 쓰는 계정 수를 셉니다.
+**`ip_actions.py`** — Unit 4 파일에서 이번 Unit에서 쓰는 부분(`block_ip` · `count_users_on_ip` · `DEFAULT_TTL`)만 담았습니다. IP 를 차단하고, 그 IP 를 쓰는 계정 수를 셉니다.
 
 ```python
 from containment_store import make_record             # 기록 한 건을 만드는 함수를 불러온다
@@ -281,13 +281,13 @@ def block_ip(ip, state, incident_id, reason, ttl):    # IP · 상태 · 인시�
     return make_record("IP 차단", ip, incident_id, "차단되지 않음", after, reason + " (" + str(ttl) + "분 뒤 자동 해제)")  # 조치 전 · 후 상태와 함께 기록한다 — 미리 채운 줄
 ```
 
-**`ip_users.json`** — 수요일 오전 파일입니다. IP 별로 그 IP 를 쓰는 계정 리스트입니다.
+**`ip_users.json`** — Unit 4 파일입니다. IP 별로 그 IP 를 쓰는 계정 리스트입니다.
 
 ```
 {"203.0.113.80": ["seoyeon", "jiwoo"], "192.0.2.41": ["junho", "hana"]}
 ```
 
-**`ticketing.py`** — 목요일 오전 파일입니다. 알림 한 건으로 티켓 한 장을 만듭니다.
+**`ticketing.py`** — Unit 6 파일입니다. 알림 한 건으로 티켓 한 장을 만듭니다.
 
 ```python
 DEFAULT_NEXT_STEP = "담당자가 알림 내용을 읽고 필요한 일을 정한다"                      # 알림 상태를 모를 때 쓰는 다음 할 일
@@ -364,7 +364,7 @@ def make_ticket(alert, ticket_no, rules, next_steps):                           
     return ticket                                                                       # 만든 티켓을 리턴한다
 ```
 
-**`config/escalation_rules.json`** — 목요일 오전 파일입니다. 오늘은 등급별 응답 기한(`sla_minutes`)만 읽습니다.
+**`config/escalation_rules.json`** — Unit 6 파일입니다. 이번 Unit에서는 등급별 응답 기한(`sla_minutes`)만 읽습니다.
 
 ```
 {
@@ -384,7 +384,7 @@ def make_ticket(alert, ticket_no, rules, next_steps):                           
 }
 ```
 
-**`approval_gate.py`** — 금요일 오전 파일입니다. 조치 요청 한 건을 자동 · 승인 필요 · 차단 금지로 정합니다.
+**`approval_gate.py`** — Unit 8 파일입니다. 조치 요청 한 건을 자동 · 승인 필요 · 차단 금지로 정합니다.
 
 ```python
 def is_allowlisted(request, policy):                                        # 조치 요청 한 건과 승인 정책을 받는 함수
@@ -426,7 +426,7 @@ def decide_gate(request, policy):                                           # �
     return "자동", reasons                                                  # 기준보다 낮으면 자동으로 실행한다 — 미리 채운 줄
 ```
 
-**`config/approval_policy.json`** — 금요일 오전 파일입니다. 승인 게이트의 점수 기준입니다.
+**`config/approval_policy.json`** — Unit 8 파일입니다. 승인 게이트의 점수 기준입니다.
 
 ```
 {

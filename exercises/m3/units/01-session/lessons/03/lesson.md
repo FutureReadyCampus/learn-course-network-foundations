@@ -24,7 +24,7 @@ source:
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
-1. 표만 있고 막는 코드가 없으면 10/19(월) 사건이 그대로 다시 일어납니다. 판단(PDP)을 코드로 만들어야 집행하는 곳(PEP)이 따를 수 있습니다.
+1. 표만 있고 막는 코드가 없으면 2과목의 사건이 그대로 다시 일어납니다. 판단(PDP)을 코드로 만들어야 집행하는 곳(PEP)이 따를 수 있습니다.
 2. 실패하는 경우는 여러 가지입니다. 없는 사용자, 퇴사자, 역할이 없는 사용자, 권한이 없는 요청. **어느 경우든 거부**해야 하고, 하나라도 빠지면 그 경우의 요청이 그대로 통과합니다.
 3. 거부 이유를 구분해 남기면, 감사 때 「왜 막았나」를 설명하고 오탐(정상인데 막은 것)을 찾을 수 있습니다.
 
@@ -69,8 +69,8 @@ source:
 허용
 ```
 
-- 위에서부터 검사하다가 하나라도 걸리면 그 자리에서 거부를 리턴하고 끝납니다(10/19(월) 오전의 필수 조건과 같은 방식).
-- 네 검사를 모두 지나야만 허용입니다. 검사 하나를 빼먹으면 그 경우는 **잘못 허용됩니다.** 이것이 2과목 10/21(수) 오전에 본 열림 기본 값(fail-open)과 같은 위험입니다.
+- 위에서부터 검사하다가 하나라도 걸리면 그 자리에서 거부를 리턴하고 끝납니다(2과목의 필수 조건과 같은 방식).
+- 네 검사를 모두 지나야만 허용입니다. 검사 하나를 빼먹으면 그 경우는 **잘못 허용됩니다.** 이것이 2과목에서 본 열림 기본 값(fail-open)과 같은 위험입니다.
 
 #### 걸리면 바로 끝내는 이유
 
@@ -97,12 +97,12 @@ source:
 
 **이 시간에 나오는 말** (이미 배운 방법입니다)
 
-- `with open(파일, encoding="utf-8") as 파일변수:` 와 `json.load(파일변수)` 로 JSON 파일을 딕셔너리로 읽습니다(9/28(월)).
-- `값 in 딕셔너리` 는 딕셔너리에 그 키가 있는지, `값 not in 딕셔너리` 는 없는지 검사합니다. 예: `role not in ROLES`. `값 not in 리스트` 는 리스트에 없는지 검사합니다(10/15(목)).
-- `return 값1, 값2` 로 두 값을 함께 리턴하고, `is_allowed, reason = 함수(…)` 로 나눠 받습니다(10/16(금) 이전 Exercise).
-- `f"{resource}:{action}"` 처럼 f-문자열로 문자열을 합칩니다(9/23(수)).
-- `from rbac import check_permission` 처럼 내가 만든 파일의 함수를 불러옵니다(10/6(화) `from llm_client import call_llm`).
-- `if not 값:` 은 값이 거짓(`False`)일 때 실행됩니다(10/19(월) `not account["employed"]`).
+- `with open(파일, encoding="utf-8") as 파일변수:` 와 `json.load(파일변수)` 로 JSON 파일을 딕셔너리로 읽습니다(앞선 실습).
+- `값 in 딕셔너리` 는 딕셔너리에 그 키가 있는지, `값 not in 딕셔너리` 는 없는지 검사합니다. 예: `role not in ROLES`. `값 not in 리스트` 는 리스트에 없는지 검사합니다(앞선 실습).
+- `return 값1, 값2` 로 두 값을 함께 리턴하고, `is_allowed, reason = 함수(…)` 로 나눠 받습니다(앞선 실습).
+- `f"{resource}:{action}"` 처럼 f-문자열로 문자열을 합칩니다(앞선 실습).
+- `from rbac import check_permission` 처럼 내가 만든 파일의 함수를 불러옵니다(앞선 실습의 `from llm_client import call_llm`).
+- `if not 값:` 은 값이 거짓(`False`)일 때 실행됩니다(2과목의 `not account["employed"]`).
 - 함수 첫 줄의 `""" … """` 는 **독스트링**(docstring · 닥스트링)이라 부르는 설명 글입니다. 함수가 무엇을 받고 리턴하는지 한 번에 적은 것이고 실행에는 영향이 없습니다.
 
 `rbac.py` 가 시작할 때 읽어 두는 `ROLES` · `USERS` 는 이런 모양이고, 함수는 `is_allowed, reason` 으로 나눠 리턴합니다.
@@ -157,7 +157,7 @@ print(permission not in ROLES["finance"]) # True  · finance 에는 없음
 ** 할 일**
 
 1. 아래 코드로 `rbac.py` 를 만들고, `# ←` 가 있는 <mark>다섯 곳</mark>을 채웁니다.
-2. 요청 아홉 건을 판정하는 `day01_6-1_run.py` 를 만들어 실행합니다.
+2. 요청 아홉 건을 판정하는 `exercise1-2_run.py` 를 만들어 실행합니다.
 3. 채우기 <mark>전과 후</mark>의 판정을 비교합니다.
 
 **준비** — 아래 `rbac.py` 는 Exercise 1-1(Exercise 1-1)에 쓴 두 파일 `config/users.json` 과 `config/roles.json` 을 **읽습니다.** 그 파일이 없으면 코드가 시작하자마자 멈춥니다. 터미널이 `…/access_control` 위치인지 확인한 뒤(아니면 `cd access_control` 로 들어갑니다) 두 파일이 있는지 봅니다.
@@ -195,14 +195,14 @@ def check_permission(user, resource, action):                    # 사용자 · 
     return True, "허용"                                          # 모든 검사를 지나면 허용한다
 ```
 
-**`day01_6-1_run.py`**
+**`exercise1-2_run.py`**
 
 ```python
 from rbac import check_permission                                # rbac.py 의 판정 함수를 불러온다
 
 REQUESTS = [                                                     # 판정할 요청 리스트. (사용자, 자원, 행위)
     ("seoyeon", "SALES", "QUERY"),                               # 영업이 영업 실적 조회
-    ("seoyeon", "SETTLE", "QUERY"),                              # 영업이 정산 조회 (10/19(월) 사건)
+    ("seoyeon", "SETTLE", "QUERY"),                              # 영업이 정산 조회 (2과목의 사건)
     ("junho", "SETTLE", "QUERY"),                                # 재무가 정산 조회
     ("junho", "SALES", "CHANGE"),                                # 재무가 영업 실적 변경
     ("dami", "SALES", "QUERY"),                                  # 퇴사자가 영업 실적 조회
@@ -234,26 +234,26 @@ for user, resource, action in REQUESTS:                          # 요청을 하
      4. 열린 파일에 코드를 복사해 붙여 넣고 저장합니다.
    - **방법 2 · touch**: `touch rbac.py` → VS Code 에서 파일을 열어 코드 붙여넣기
    - **방법 3 · vim 으로 만들기**: `vim rbac.py` → `i` → 코드 붙여넣기 → `Esc` → `:wq` Enter (줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
-2. **[VS Code 또는 터미널]** `day01_6-1_run.py` 도 같은 방법으로 만듭니다. 아래 세 가지 방법 중 **하나만** 고릅니다.
+2. **[VS Code 또는 터미널]** `exercise1-2_run.py` 도 같은 방법으로 만듭니다. 아래 세 가지 방법 중 **하나만** 고릅니다.
    - **방법 1 · VS Code 에서 만들기**
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
      2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-     3. 이름 칸에 `day01_6-1_run.py` 라고 입력하고 Enter 를 누릅니다.
+     3. 이름 칸에 `exercise1-2_run.py` 라고 입력하고 Enter 를 누릅니다.
      4. 열린 파일에 코드를 복사해 붙여 넣고 저장합니다.
-   - **방법 2 · touch**: `touch day01_6-1_run.py` → VS Code 에서 파일을 열어 코드 붙여넣기
-   - **방법 3 · vim 으로 만들기**: `vim day01_6-1_run.py` → `i` → 코드 붙여넣기 → `Esc` → `:wq` Enter (줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
+   - **방법 2 · touch**: `touch exercise1-2_run.py` → VS Code 에서 파일을 열어 코드 붙여넣기
+   - **방법 3 · vim 으로 만들기**: `vim exercise1-2_run.py` → `i` → 코드 붙여넣기 → `Esc` → `:wq` Enter (줄 앞 공백이 줄마다 밀려 있으면 `Esc` → `:q!` 로 나와서 방법 1 이나 방법 2 로 다시 만듭니다)
 3. **[터미널]** `pwd` 가 `…/access_control` 로 끝나는지 확인하고, **채우기 전에** 한 번 실행해서 허용되면 안 되는 요청이 있는지 봅니다(보고서 (나)에서 씁니다).
    ```bash
-   python day01_6-1_run.py
+   python exercise1-2_run.py
    ```
-   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `day01_6-1_run.py` 실행할 파일
-   맥북: `python3 day01_6-1_run.py`
+   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise1-2_run.py` 실행할 파일
+   맥북: `python3 exercise1-2_run.py`
 4. **[VS Code]** `rbac.py` 의 `# ←` 다섯 곳을 채웁니다. 실행은 VS Code 의 ▶ 단추가 아니라 터미널에서 합니다. `config/` 파일을 지금 위치(`…/access_control`) 기준으로 찾기 때문입니다. 2.1 의 판정 순서 그림을 보고 씁니다.
 5. **[터미널]** 다시 실행합니다. 아홉 줄의 결과와 이유가 2.1 의 그림에서 읽은 것과 같은지 확인합니다.
    ```bash
-   python day01_6-1_run.py
+   python exercise1-2_run.py
    ```
-   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `day01_6-1_run.py` 실행할 파일
+   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise1-2_run.py` 실행할 파일
 6. **[보고서]** `### Exercise 1-2` 아래를 채웁니다.
    - (가) [핵심 질문] 채운 뒤 실행한 출력 아홉 줄을 붙여 넣고, 거부된 요청마다 2.1 그림의 몇 번 검사에서 걸렸는지 적어 주세요.
    - (나) [핵심 질문] 채우기 전에 실행하면 `minsu` 만 거부됩니다. 그 출력에서 허용되면 안 되는 요청을 모두 고르고, 각각 왜 허용되면 안 되는지 적어 주세요. 검사가 하나뿐인데 왜 이런 일이 생기나요?

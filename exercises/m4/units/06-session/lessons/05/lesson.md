@@ -17,13 +17,13 @@ source:
 
 ---
 
-## Exercise Exercise 5-2 정답
+## Exercise 6-1 정답
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 ```bash
 pwd
-python day04_2-1_run.py
+python exercise6-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -86,7 +86,7 @@ python day04_2-1_run.py
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day04_2-1_run.py", line 10, in <module>
+  File "…/anomaly_detection/exercise6-1_run.py", line 10, in <module>
     suspicious = pick_suspicious(server_failures)                # 먼저 확인할 실패 이벤트만 골라낸다
   File "…/anomaly_detection/access_detection.py", line 41, in pick_suspicious
     repeated_names = repeated_users.index()  # 반복된 사용자의 이름들(인덱스)을 꺼낸다
@@ -101,13 +101,13 @@ TypeError: 'Index' object is not callable
 
 ---
 
-## Exercise Exercise 5-2 정답
+## Exercise 6-2 정답
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 ```bash
 pwd
-python day04_3-1_run.py
+python exercise6-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -152,7 +152,7 @@ python day04_3-1_run.py
 
 **왜**
 
-- <mark>세 규칙을 따로 찾아 두면 사용자마다 어떤 기준에 해당하는지 바로 보입니다.</mark> jiwoo 와 seoyeon 은 두 규칙에 해당하고, Exercise 5-2에서 규칙마다 점수를 더하면 먼저 볼 순서가 정해집니다.
+- <mark>세 규칙을 따로 찾아 두면 사용자마다 어떤 기준에 해당하는지 바로 보입니다.</mark> jiwoo 와 seoyeon 은 두 규칙에 해당하고, Unit 7의 Exercise 7-2에서 규칙마다 점수를 더하면 먼저 볼 순서가 정해집니다.
 
 **자주 틀리는 곳**
 
@@ -161,7 +161,7 @@ python day04_3-1_run.py
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day04_3-1_run.py", line 7, in <module>
+  File "…/anomaly_detection/exercise6-2_run.py", line 7, in <module>
     off_hours_logins = find_off_hours_logins(logins)             # 업무 시간 밖 로그인만 골라낸다
   File "…/anomaly_detection/saas_detection.py", line 49, in find_off_hours_logins
     is_off_hours = not is_business_hour  # True 와 False 를 뒤집어 업무 시간 밖인 행을 True 로 만든다
@@ -173,17 +173,17 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 
 **관제에서는**
 
-- <mark>규칙 하나마다 알림을 내면 오탐이 쌓여서 담당자가 알림을 무시하게 됩니다.</mark> 해당하는 규칙 수를 점수로 쓰면 먼저 볼 순서를 정할 수 있습니다. 내일(11/6(금))에는 오탐과 미탐을 직접 세어 봅니다.
+- <mark>규칙 하나마다 알림을 내면 오탐이 쌓여서 담당자가 알림을 무시하게 됩니다.</mark> 해당하는 규칙 수를 점수로 쓰면 먼저 볼 순서를 정할 수 있습니다. Unit 8에서는 오탐과 미탐을 직접 세어 봅니다.
 
 ---
 
-## Exercise Exercise 5-2 정답
+## Exercise 6-3 정답
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 ```bash
 pwd
-python day04_4-1_run.py
+python exercise6-3_run.py
 python advanced_detection.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
@@ -237,14 +237,14 @@ SaaS: 업무 시간 밖 ['jiwoo'] · 평소와 다른 IP ['jiwoo', 'seoyeon'] ·
 
 - (나) 203.0.113.50 은 실패한 요청이 7번(`POST /login` 5번 · `GET /admin` · `GET /admin/users`)이지만 <mark>스캐너 경로가 하나도 없어서</mark> 제외됩니다.
   - 제외하지 않으면 경로 스캔 알림에 로그인과 관리자 화면 실패가 섞여, 담당자가 경로 스캔과 로그인 실패를 구분하기 어려워집니다.
-  - 이 IP 는 어제 오전의 로그인 규칙에서 따로 다룬 대상입니다.
+  - 이 IP 는 Unit 4의 로그인 규칙에서 따로 다룬 대상입니다.
 - (다) 198.51.100.21 의 `GET /board/99` 는 <mark>`SCANNER_PATTERN` 의 세 경로(`/.env` · `/wp-login` · `/phpmyadmin`) 중 어느 것도 아니라서</mark> `is_scanner` 가 `False` 가 되어 제외됩니다.
   - 해킹 도구가 `/backup.zip` 처럼 목록에 없는 경로를 요청하면 `str.contains` 가 `False` 라서 이 규칙은 놓칩니다. 경로 목록을 정해 두었기 때문에 생기는 한계입니다.
   - 그래서 현업에서는 경로 목록을 새 위협에 맞춰 갱신합니다.
 
 **왜**
 
-- <mark>해킹 도구가 자주 요청하는 경로를 요청한 IP 만 골라 알리면 오타 실패와 섞이지 않습니다.</mark> 대신 목록에 없는 경로는 놓치므로, 내일 오탐과 미탐을 세면서 확인합니다.
+- <mark>해킹 도구가 자주 요청하는 경로를 요청한 IP 만 골라 알리면 오타 실패와 섞이지 않습니다.</mark> 대신 목록에 없는 경로는 놓치므로, Unit 8에서 오탐과 미탐을 세면서 확인합니다.
 
 **자주 틀리는 곳**
 
@@ -253,7 +253,7 @@ SaaS: 업무 시간 밖 ['jiwoo'] · 평소와 다른 IP ['jiwoo', 'seoyeon'] ·
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day04_4-1_run.py", line 8, in <module>
+  File "…/anomaly_detection/exercise6-3_run.py", line 8, in <module>
     scan_ips, scan_counts = find_scan_ips(web_failures)          # 스캔 IP 와 IP 별 요청 횟수를 찾는다
   File "…/anomaly_detection/malicious_detection.py", line 36, in find_scan_ips
     is_scanner = actions.contains(SCANNER_PATTERN)  # 각 행에 스캐너 경로가 들어 있는지 구해 True 또는 False 를 만든다
@@ -271,5 +271,5 @@ AttributeError: 'Series' object has no attribute 'contains'
 
 ## 정답 마무리
 
-- `ls` 결과에 오늘 파일들과 `config` 폴더, 이 안내 · 보고서 두 파일이 모두 보이면 됩니다.
+- `ls` 결과에 이번 Unit의 파일들과 `config` 폴더, 이 안내 · 보고서 두 파일이 모두 보이면 됩니다.
 - 보고서에 빈 `답:` 이 없으면 됩니다. 못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.

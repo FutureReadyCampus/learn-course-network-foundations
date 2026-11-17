@@ -15,7 +15,7 @@ source:
 
 > **오늘 들어온 일**
 >
-> - **상황**: <mark style="background:#e0d4ff">수요일에 자동 조치를 원래 상태로 복원(롤백, rollback)하는 `rollback_incident` 를 만들었습니다.</mark> 오늘 오전 **오탐**(false positive, 폴스 포지티브: 정상 활동을 공격으로 잘못 판정한 것) 신고가 2건 들어왔습니다.
+> - **상황**: <mark style="background:#e0d4ff">Unit 5에서 자동 조치를 원래 상태로 복원(롤백, rollback)하는 `rollback_incident` 를 만들었습니다.</mark> 이번 Unit에서 **오탐**(false positive, 폴스 포지티브: 정상 활동을 공격으로 잘못 판정한 것) 신고가 2건 들어왔습니다.
 > - `INC-301`: 해외 IP 에서 로그인한 `jiwoo` 계정을 자동으로 잠그고 세션(session, 세션: 로그인한 뒤 서버가 유지하는 접속 상태)을 종료했는데, 영업팀장이 「출장 중이고 출장 등록도 했다」고 알려 왔습니다.
 > - `INC-202`: 경로 스캔(서버의 여러 주소에 차례로 요청을 보내 약점을 찾는 일)으로 자동 차단한 IP `198.51.100.90` 이 회사가 계약한 점검 업체의 스캐너라고 인프라팀이 알려 왔습니다.
 > - **문제**: 롤백 함수만 실행하면 오탐 대응이 끝나지 않습니다. <mark style="background:#ffc4d6">영향 확인(impact assessment: 조치가 실제로 바꾼 대상을 파악하는 일)을 먼저 하지 않으면</mark> 누가 영향을 받았는지 알 수 없습니다. 신고와 상관없는 진짜 공격(정탐, true positive: 실제 공격을 정확히 탐지한 것)인 `dami` 잠금(`INC-201`)이 그대로인지도 따로 확인하기 어렵습니다. 롤백한 뒤 복구 확인(recovery verification: 실제 상태가 복원됐는지 다시 점검하는 일)을 하지 않으면 해제되지 않은 계정이 남아도 알 수 없어, `jiwoo` 가 계속 로그인하지 못할 수 있습니다. 탐지 규칙을 조정하지 않으면 다음 출장 때도 같은 오탐 알림이 생깁니다.
@@ -29,14 +29,14 @@ source:
 | 순서 | 하는 일 | 오늘 쓰는 함수 |
 |---|---|---|
 | 1. 영향 확인 | 그 인시던트의 기록 가운데 조치 전(`before`)과 조치 후(`after`)가 다른 기록만 찾는다 | `list_changes` (1 · 2번) |
-| 2. 되돌리기 | 자동 조치가 바꾼 것만 조치 이전 상태로 롤백한다 | <mark style="background:#e0d4ff">수요일의 `rollback_incident`</mark> (7번) |
+| 2. 되돌리기 | 자동 조치가 바꾼 것만 조치 이전 상태로 롤백한다 | <mark style="background:#e0d4ff">Unit 5의 `rollback_incident`</mark> (7번) |
 | 3. 복구 확인 | 롤백한 뒤에도 잠겨 있는 계정 · 차단된 IP 가 남았는지 점검한다 | `find_not_recovered` (3 · 4번) |
 | 4. 규칙 조정 제안 | IP 차단이었으면 허용 목록 추가 검토, 계정이었으면 탐지 규칙 예외(exception) 검토를 담당자에게 제안한다 | `make_tuning_note` (5 · 6번) |
 
-- <mark style="background:#e0d4ff">4과목 금요일에는 탐지 규칙을 고쳐(튜닝) 오탐 알림을 줄였습니다.</mark> 오늘은 오탐 때문에 **이미 실행된 자동 조치**를 원래 상태로 복원(롤백)하는 일입니다.
+- <mark style="background:#e0d4ff">4과목에서는 탐지 규칙을 고쳐(튜닝) 오탐 알림을 줄였습니다.</mark> 오늘은 오탐 때문에 **이미 실행된 자동 조치**를 원래 상태로 복원(롤백)하는 일입니다.
 - `INC-301` 에는 IP `198.51.100.120` 의 차단 기록도 있지만 `before` 와 `after` 가 모두 <mark style="background:#bde3ff">「변경 없음」</mark>입니다. 바뀐 것이 없으므로 영향 확인 대상에서 제외합니다.
 - `rollback_incident` 는 신고된 인시던트의 기록만 롤백합니다. 같은 기록 파일에 있는 `INC-201`(`dami`)은 <mark style="background:#ffc4d6">변경하지 않습니다.</mark>
-- <mark style="background:#ffc4d6">세션 종료는 되돌릴 수 없는 조치(비가역, irreversible)입니다.</mark> 이미 종료된 세션은 재개할 수 없고, 사용자가 다시 로그인해야 새 세션이 생성되기 때문입니다. 수요일의 `rollback_incident` 가 「되돌리기 불가」 기록을 남기므로, 담당자는 사용자에게 다시 로그인하라고 안내해야 합니다.
+- <mark style="background:#ffc4d6">세션 종료는 되돌릴 수 없는 조치(비가역, irreversible)입니다.</mark> 이미 종료된 세션은 재개할 수 없고, 사용자가 다시 로그인해야 새 세션이 생성되기 때문입니다. Unit 5의 `rollback_incident` 가 「되돌리기 불가」 기록을 남기므로, 담당자는 사용자에게 다시 로그인하라고 안내해야 합니다.
 - 규칙 조정 제안은 즉시 적용하지 않습니다. 담당자가 IP 의 소유자와 용도, 예외로 둘 사용자를 검토하고 승인한 뒤에 변경합니다.
 - <mark style="background:#ffdcb0">30분(`RECOVERY_LIMIT`)</mark>은 이 수업에서 정한 복구 기준 시간입니다. 지금 시각(`NOW` = 45분)에서 신고 접수 시각을 빼서 복구까지 걸린 시간을 구합니다. 예를 들어 `INC-301` 은 신고 접수 시각이 20분이라 <mark style="background:#bde3ff">45 − 20 = 25분</mark>입니다.
 
@@ -47,7 +47,7 @@ false_positive.py   list_changes           : 바뀐 기록이면 (1번) 추가�
                     find_not_recovered     : 아직 잠긴 계정 (3번) · 아직 차단된 IP (4번) 를 찾는다
                     make_tuning_note       : IP 차단이면 (5번) 허용 목록 추가를 제안한다 (6번)
                     handle_false_positive  : 영향 확인 → 되돌리기 (7번) → 복구 확인 → 제안 순서로 처리한다
-실행 파일           day05_4-1_run.py       : 신고마다 처리하고 (8번) 결과를 모은다 (9번)
+실행 파일           exercise8-3_run.py       : 신고마다 처리하고 (8번) 결과를 모은다 (9번)
 ```
 
 > **여기부터 문제입니다.**
@@ -57,18 +57,18 @@ false_positive.py   list_changes           : 바뀐 기록이면 (1번) 추가�
 ** 이런 상황이 있습니다**
 
 - **지금은**: <mark>롤백 함수는 있지만, 무엇이 바뀌었는지 확인하고(영향 확인), 실제로 복원됐는지 점검하고(복구 확인), 같은 오탐의 재발을 막을 규칙 조정을 제안하는 절차가 없습니다</mark>.
-- **만드는 것**: 영향 확인 · 복구 확인 · 규칙 조정 제안 · 신고 한 건 처리(`false_positive.py`), 신고마다 처리하고 저장하기(`day05_4-1_run.py`).
+- **만드는 것**: 영향 확인 · 복구 확인 · 규칙 조정 제안 · 신고 한 건 처리(`false_positive.py`), 신고마다 처리하고 저장하기(`exercise8-3_run.py`).
 - **실행하면**: <mark>단계 1: 신고 수와 처리 전 상태, 단계 2: 신고마다 영향 확인 · 되돌리기 · 복구 확인 · 규칙 조정 제안, 단계 3: 처리 뒤 상태, 단계 4: 저장한 파일이 나옵니다.</mark>
 
 ** 할 일**: 데이터 파일 세 개와 코드 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 · 3 을 읽습니다.
 
-**`fp_state.json`** — 오탐을 처리하기 전 연습용 시스템 상태입니다. 수요일의 `containment_state.json` 과 같은 꼴입니다. `junho` 는 오늘 수업 전부터 잠겨 있던 계정입니다. 연습용 시스템(실제 서버를 대신하는 시스템)의 시계(`clock`)는 0 에서 움직이지 않고, 끝난 차단을 해제하는 수요일 함수 `expire_blocks` 도 호출하지 않습니다. 그래서 `block_expiry`(차단이 끝나는 시각)가 있어도 차단이 자동으로 풀리지 않습니다.
+**`fp_state.json`** — 오탐을 처리하기 전 연습용 시스템 상태입니다. Unit 4의 `containment_state.json` 과 같은 꼴입니다. `junho` 는 이번 Unit 시작 전부터 잠겨 있던 계정입니다. 연습용 시스템(실제 서버를 대신하는 시스템)의 시계(`clock`)는 0 에서 움직이지 않고, 끝난 차단을 해제하는 Unit 4의 함수 `expire_blocks` 도 호출하지 않습니다. 그래서 `block_expiry`(차단이 끝나는 시각)가 있어도 차단이 자동으로 풀리지 않습니다.
 
 ```
 {"locked_users": ["junho", "dami", "jiwoo"], "blocked_ips": ["198.51.100.90"], "block_expiry": {"198.51.100.90": 120}, "clock": 0, "sessions": {"dami": [], "jiwoo": [], "junho": [], "hana": ["S-601"]}}
 ```
 
-**`fp_log.json`** — 자동 조치 기록 7건입니다. 수요일의 `containment_log.json` 과 같은 꼴입니다.
+**`fp_log.json`** — 자동 조치 기록 7건입니다. Unit 4의 `containment_log.json` 과 같은 꼴입니다.
 
 ```
 [
@@ -91,12 +91,12 @@ false_positive.py   list_changes           : 바뀐 기록이면 (1번) 추가�
 ]
 ```
 
-**`false_positive.py`** — 오탐 처리 함수 모음입니다. Exercise 7-2도 가져와 사용(import)합니다. 수요일의 `rollback.py` 가 같은 폴더에 있어야 합니다. 직접 쓰는 곳은 1 ~ 7번입니다.
+**`false_positive.py`** — 오탐 처리 함수 모음입니다. Exercise 9-2도 가져와 사용(import)합니다. Unit 5의 `rollback.py` 가 같은 폴더에 있어야 합니다. 직접 쓰는 곳은 1 ~ 7번입니다.
 
 - 3번과 4번은 `if` 한 줄만 씁니다. 그 아래 미리 채운 `remaining.append(target)` 줄이 `if` 안쪽입니다.
 
 ```python
-from rollback import find_incident_records, rollback_incident                        # 수요일에 만든 되돌리기 함수를 불러온다
+from rollback import find_incident_records, rollback_incident                        # Unit 5에서 만든 되돌리기 함수를 불러온다
 
 RECOVERY_LIMIT = 30                                                                  # 오탐 신고를 받은 뒤 복구를 끝내야 하는 시간(분)
 
@@ -168,10 +168,10 @@ def handle_false_positive(report, log, state, now):                             
     return result                                                                    # 처리 결과를 리턴한다 — 미리 채운 줄
 ```
 
-**`day05_4-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+**`exercise8-3_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
-from incident import load_json, save_json                                                   # 월요일 파일의 JSON 읽기 · 쓰기 함수를 불러온다
+from incident import load_json, save_json                                                   # Unit 1 파일의 JSON 읽기 · 쓰기 함수를 불러온다
 from false_positive import handle_false_positive, RECOVERY_LIMIT                            # 방금 만든 오탐 처리 함수를 불러온다
 
 NOW = 45                                                                                    # 오탐 신고를 처리하는 지금 시각(분)
@@ -208,19 +208,19 @@ print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.
 1. **[터미널]** 파일 다섯 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
    ```bash
    pwd
-   touch fp_state.json fp_log.json fp_reports.json false_positive.py day05_4-1_run.py
+   touch fp_state.json fp_log.json fp_reports.json false_positive.py exercise8-3_run.py
    ls
    ```
-2. **[VS Code]** `false_positive.py` 1 ~ 7번, `day05_4-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 8-3 한눈에」를 봅니다.
+2. **[VS Code]** `false_positive.py` 1 ~ 7번, `exercise8-3_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 8-3 한눈에」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
-   python day05_4-1_run.py
+   python exercise8-3_run.py
    ```
 4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다.
    - 단계 1 은 숫자가 제목 줄에 함께 나오고 그 아래 1줄입니다.
    - 단계 2 는 10줄(신고 한 건에 5줄씩), 단계 3 은 2줄입니다.
    - 단계 4 는 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
-5. **[보고서]** `day05_am_report.md` 의 `## Exercise 8-3` 아래를 채웁니다.
+5. **[보고서]** Unit 8 의 `## Exercise 8-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 신고마다 걸린 시간과 처리 뒤 잠긴 계정을 적어 주세요.
    - (나) [핵심 질문] `INC-301` 의 영향 확인에 `IP 차단 198.51.100.120` 이 없습니다. `fp_log.json` 에서 `198.51.100.120` 의 IP 차단 기록이 가진 `before` · `after` 를 근거로 그 이유를 적고, `false_positive.py` 1번의 `if` 줄이 없으면 규칙 조정 제안이 어떻게 잘못되는지 적어 주세요.
    - (다) [핵심 질문] `INC-301` 의 되돌리기에 `되돌리기 불가 jiwoo` 가 있습니다. 무엇을 되돌릴 수 없는지(비가역 조치)와 담당자가 `jiwoo` 에게 따로 안내해야 할 것을 적어 주세요. 그리고 `dami` 가 처리 뒤에도 잠겨 있어야 하는 이유를 따로 적어 주세요.
@@ -238,15 +238,15 @@ print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.
 
 ---
 
-## 오늘 오전 마무리
+## 이번 Unit 마무리
 
 | 확인 | 문제 |
 |---|---|
-| 티켓과 조치 기록을 대조해 리포트 파일을 생성하고, 티켓이 없는 조치까지 찾았다 | 오전 Exercise 8-1 |
-| 조치 요청을 위험 점수로 자동 · 승인 필요 · 차단 금지로 분류했다 | 오전 Exercise 8-2 |
-| 오탐 신고를 영향 확인 · 롤백 · 복구 확인 · 규칙 조정 제안까지 처리했다 | 오전 Exercise 8-3 |
+| 티켓과 조치 기록을 대조해 리포트 파일을 생성하고, 티켓이 없는 조치까지 찾았다 | Exercise 8-1 |
+| 조치 요청을 위험 점수로 자동 · 승인 필요 · 차단 금지로 분류했다 | Exercise 8-2 |
+| 오탐 신고를 영향 확인 · 롤백 · 복구 확인 · 규칙 조정 제안까지 처리했다 | Exercise 8-3 |
 
-<mark>오후 Exercise 7-1에는 자동 조치마다 운영 위험을 평가한 문서(`risk_assessment.md`)를 새로 작성합니다. Exercise 7-2에는 오전의 `report.py` · `approval_gate.py` · `false_positive.py` 를 가져와 사용(import)해 오늘 만든 것을 한 번에 점검합니다.</mark>
+<mark>Unit 9의 Exercise 9-1에서는 자동 조치마다 운영 위험을 평가한 문서(`risk_assessment.md`)를 새로 작성합니다. Exercise 9-2에서는 Unit 8의 `report.py` · `approval_gate.py` · `false_positive.py` 를 가져와 사용(import)해 이번 Unit에서 만든 것을 한 번에 점검합니다.</mark>
 
 ---
 

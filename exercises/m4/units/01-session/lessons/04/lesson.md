@@ -23,9 +23,9 @@ source:
 
 ```bash
 pwd
-python day01_5-1_run.py
+python exercise1-1_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day01_5-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise1-1_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 다섯 함수입니다.
 
@@ -101,7 +101,7 @@ python day01_5-1_run.py
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day01_5-1_run.py", line 10, in <module>
+  File "…/anomaly_detection/exercise1-1_run.py", line 10, in <module>
     entry = parse_line(line)  # 한 줄을 읽어 딕셔너리로 바꾼다
   File "…/anomaly_detection/log_parse.py", line 43, in parse_line
     prefix, request_text, suffix = split_request(line)  # 세 조각으로 나눈다
@@ -125,9 +125,9 @@ ValueError: too many values to unpack (expected 3)
 
 ```bash
 pwd
-python day01_6-1_run.py
+python exercise1-2_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day01_6-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise1-2_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
 
@@ -193,7 +193,7 @@ python day01_6-1_run.py
 
 - <mark>하루 수만 줄을 사람이 다 볼 수 없으니 단순한 규칙으로 1차로 가르고 의심만 먼저 조사합니다.</mark>
   - 의심을 오류보다 먼저 확인하는 이유는, 401 · 403 은 400 이상이기도 해서 순서가 바뀌면 로그인 실패가 오류로 분류되어 의심에서 빠지기 때문입니다.
-  - 규칙은 단순할수록 놓치는 것이 많아서, 11/3(화) 이후 같은 주소의 반복과 시간 간격을 보는 규칙을 더합니다.
+  - 규칙은 단순할수록 놓치는 것이 많아서, Unit 2 이후 같은 주소의 반복과 시간 간격을 보는 규칙을 더합니다.
 
 **자주 틀리는 곳**
 
@@ -209,7 +209,7 @@ python day01_6-1_run.py
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day01_6-1_run.py", line 23, in <module>
+  File "…/anomaly_detection/exercise1-2_run.py", line 23, in <module>
     labeled = label_entries(entries)  # 요청마다 분류를 적는다
   File "…/anomaly_detection/log_classify.py", line 38, in label_entries
     item["group"] = classify_line(entry)  # 분류를 복사본에 적는다
@@ -244,7 +244,7 @@ git status
 
 ```bash
 git add .
-git commit -m "Add access control day 6 and anomaly detection day 1"
+git commit -m "Add access control and anomaly detection unit 1"
 git push
 ```
 - 명령 풀이: `git add .` 바뀐 파일을 올릴 대상에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림

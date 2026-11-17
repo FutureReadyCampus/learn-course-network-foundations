@@ -13,15 +13,15 @@ source:
 
 ## 개요
 
-> **오늘 들어온 일**
+> **이번 Exercise에 들어온 일**
 >
 > A사 보안 팀장이 보낸 메시지입니다:
-> 「오전과 Exercise 7-1에서 탐지된 규칙이 여러 개인데, 결과가 모두 `탐지됨` 이라고만 나와서 어느 대상부터 확인할지 정할 수 없습니다. 퇴사한 계정이 계속 시도한 것과 파일을 한 번 더 내려받은 것이 같은 무게일 수는 없습니다.
+> 「Unit 6과 Exercise 7-1에서 탐지된 규칙이 여러 개인데, 결과가 모두 `탐지됨` 이라고만 나와서 어느 대상부터 확인할지 정할 수 없습니다. 퇴사한 계정이 계속 시도한 것과 파일을 한 번 더 내려받은 것이 같은 무게일 수는 없습니다.
 >
 > 탐지된 규칙마다 점수를 정하고 대상(사용자 또는 IP)마다 더해서 high · mid · low 로 나눠 주세요. 담당자가 왜 그 등급인지 알 수 있게, 탐지된 규칙 이름도 같이 파일에 적어 주세요.」
 > - **왜 중요한가**: <mark>점수만 있고 이유가 없으면 담당자가 근거를 확인하기 어려워서, 탐지된 규칙 이름을 이유로 함께 저장합니다.</mark>
 
-> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「 문제」 전까지는 이 Exercise의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다. (판다스 문법 상자의 코드는 눈으로 읽으면 됩니다.)
+> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「문제」 전까지는 이 Exercise의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다. (판다스 문법 상자의 코드는 눈으로 읽으면 됩니다.)
 
 ## 읽기 · 왜 필요한가
 
@@ -36,25 +36,25 @@ source:
 
 | 탐지된 규칙 | 점수 | 어느 단계에서 탐지되나 |
 |---|---|---|
-| 퇴사한 계정 | 60 | 오전 Exercise 6-1: 서버가 거절한 요청을 `check_permission` 으로 다시 판정했을 때 나온 이유 단어 |
-| 권한 없음 | 20 | 오전 Exercise 6-1 |
-| 규칙은 허용인데 서버가 거절 | 10 | 오전 Exercise 6-1 |
-| 업무 시간 밖 로그인 | 15 | 오전 Exercise 6-2 |
-| 평소와 다른 IP | 20 | 오전 Exercise 6-2 |
-| 대량 다운로드 | 25 | 오전 Exercise 6-2 |
-| 경로 스캔 | 30 | 오전 Exercise 6-3: 대상이 사용자가 아니라 IP |
+| 퇴사한 계정 | 60 | Exercise 6-1: 서버가 거절한 요청을 `check_permission` 으로 다시 판정했을 때 나온 이유 단어 |
+| 권한 없음 | 20 | Exercise 6-1 |
+| 규칙은 허용인데 서버가 거절 | 10 | Exercise 6-1 |
+| 업무 시간 밖 로그인 | 15 | Exercise 6-2 |
+| 평소와 다른 IP | 20 | Exercise 6-2 |
+| 대량 다운로드 | 25 | Exercise 6-2 |
+| 경로 스캔 | 30 | Exercise 6-3: 대상이 사용자가 아니라 IP |
 | 여러 로그 연결 | 30 | Exercise 7-1 |
 
 - 등급 기준은 점수가 **60 이상이면 high, 35 이상 60 미만이면 mid, 35 미만이면 low** 입니다. 「이상」은 `>=` 이고, <mark>높은 기준(high)부터 먼저 검사합니다.</mark> 등급은 위험이 없다는 판정이 아니라 **확인할 순서를 정하는 기준**입니다.
 - 표의 「규칙」은 **탐지 규칙의 이름**입니다. 서버 거절은 판정 이유 단어(`퇴사한 계정` · `권한 없음` · `허용`)를 그대로 이름으로 쓰고, `허용` 은 「규칙은 허용인데 서버가 거절」이라는 이름으로 바꿔 씁니다.
-- 대상은 사용자(`seoyeon` · `dami` …)와 IP(경로 스캔)입니다. 코드의 `entity`(엔티티, 점수를 매길 대상)가 이 대상입니다. 이 숫자들은 <mark>오늘 정해 고정한 값</mark>이고, 현업에서는 조직이 정합니다.
-- 출력 맨 아래의 `dtype: int64` 는 값이 정수라는 표시이고 읽지 않아도 됩니다(11/3 오후와 11/4 오후에 본 줄과 같습니다).
+- 대상은 사용자(`seoyeon` · `dami` …)와 IP(경로 스캔)입니다. 코드의 `entity`(엔티티, 점수를 매길 대상)가 이 대상입니다. 이 숫자들은 <mark>이번 Exercise에서 정해 고정한 값</mark>이고, 현업에서는 조직이 정합니다.
+- 출력 맨 아래의 `dtype: int64` 는 값이 정수라는 표시이고 읽지 않아도 됩니다(Unit 3과 Unit 5에서 본 줄과 같습니다).
 
-** 판다스 문법 상자 — 그룹마다 합계 `sum`**
+**판다스 문법 상자 — 그룹마다 합계 `sum`**
 
 **<mark>`그룹["열"].sum()`</mark> 은 `groupby` 로 만든 그룹마다 그 열의 숫자를 모두 더합니다**
 
-오전에 같은 값끼리 묶는 `groupby` 를 썼습니다. 아래는 탐지된 규칙마다 점수를 적은 표이고, 대상(`entity`)마다 점수를 더합니다.
+앞 Unit에서 같은 값끼리 묶는 `groupby` 를 썼습니다. 아래는 탐지된 규칙마다 점수를 적은 표이고, 대상(`entity`)마다 점수를 더합니다.
 
 ```python
 import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
@@ -114,24 +114,24 @@ Name: points, dtype: int64
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## Exercise 7-2 · 탐지된 규칙에 점수를 매겨 등급과 이유를 day03_risk_scores.json 에 저장하기
+## Exercise 7-2 · 탐지된 규칙에 점수를 매겨 등급과 이유를 unit05_risk_scores.json 에 저장하기
 
-** 이런 상황이 있습니다**
+**이런 상황이 있습니다**
 
-- **지금은**: <mark>오전과 Exercise 7-1에서 탐지된 규칙이 8건 있지만 대상별 우선순위가 정해져 있지 않습니다</mark>.
+- **지금은**: <mark>Unit 6과 Exercise 7-1에서 탐지된 규칙이 8건 있지만 대상별 우선순위가 정해져 있지 않습니다</mark>.
 - **그래서 만드는 것**: `risk_scores.py` 입니다.
   - 규칙마다 점수를 채우고 대상마다 더합니다.
   - 점수로 high · mid · low 등급을 정합니다.
-  - 대상 · 점수 · 등급 · 이유를 `day03_risk_scores.json` 한 파일에 저장합니다.
+  - 대상 · 점수 · 등급 · 이유를 `unit05_risk_scores.json` 한 파일에 저장합니다.
 - **실행하면**: <mark>단계 1: 탐지된 규칙 수, 단계 2: 대상별 점수, 단계 3: 저장한 건수, 단계 4: 저장된 기록이 한 건씩 나옵니다.</mark>
 - **현업에서는**: 점수와 이유를 함께 남기면 등급이 올라간 근거를 설명할 수 있습니다. 조직은 필요에 따라 점수 기준을 바꿀 수 있고, 바꾼 날짜와 이유를 기록합니다.
 
-** 할 일**
+**할 일**
 
-1. `risk_scores.py` · `day04_6-1_run.py` 두 파일을 만들고, `risk_scores.py` 의 세 함수에서 직접 쓰는 곳을 씁니다.
-2. 실행해서 <mark>탐지된 규칙 수</mark>(단계 1), <mark>대상별 점수</mark>(단계 2), <mark>저장한 건수</mark>(단계 3), <mark>저장된 기록</mark>(단계 4)를 읽고, 새로 생긴 `day03_risk_scores.json` 을 VS Code 에서 열어 봅니다.
+1. `risk_scores.py` · `exercise7-2_run.py` 두 파일을 만들고, `risk_scores.py` 의 세 함수에서 직접 쓰는 곳을 씁니다.
+2. 실행해서 <mark>탐지된 규칙 수</mark>(단계 1), <mark>대상별 점수</mark>(단계 2), <mark>저장한 건수</mark>(단계 3), <mark>저장된 기록</mark>(단계 4)를 읽고, 새로 생긴 `unit05_risk_scores.json` 을 VS Code 에서 열어 봅니다.
 
-`collect_findings` 는 읽기만 하는 미리 채운 함수입니다. 오전 탐지 결과를 (대상, 규칙) 쌍으로 모으는 일이라 직접 쓰는 곳이 없습니다.
+`collect_findings` 는 읽기만 하는 미리 채운 함수입니다. Unit 6의 탐지 결과를 (대상, 규칙) 쌍으로 모으는 일이라 직접 쓰는 곳이 없습니다.
 
 **`risk_scores.py`**
 
@@ -142,7 +142,7 @@ from access_detection import load_events, pick_server_failures, pick_suspicious,
 from saas_detection import pick_saas, pick_logins, find_off_hours_logins, find_new_ip_users, find_bulk_download_users  # Exercise 6-2 함수를 불러온다
 from malicious_detection import pick_web_failures, find_scan_ips  # Exercise 6-3 함수를 불러온다
 
-RISK_PATH = "day03_risk_scores.json"                   # 점수를 저장할 파일 이름
+RISK_PATH = "unit05_risk_scores.json"                   # 점수를 저장할 파일 이름
 HIGH_LIMIT = 60                                        # 점수가 이 값 이상이면 high
 MID_LIMIT = 35                                         # 점수가 이 값 이상이면 mid, 그보다 낮으면 low
 WEIGHTS = {"퇴사한 계정": 60, "권한 없음": 20, "규칙은 허용인데 서버가 거절": 10,
@@ -161,7 +161,7 @@ def add_finding(findings, entity, rule):               # 리스트 · 대상 · 
 
 
 def collect_findings(events, chains):                  # 이벤트 표와 연결된 사건을 받는 함수
-    """오전 탐지 3개와 Exercise 7-1 연결 결과를 (대상, 탐지된 규칙) 리스트로 모은다.
+    """Unit 6의 탐지 3개와 Exercise 7-1 연결 결과를 (대상, 탐지된 규칙) 리스트로 모은다.
     점수를 매기기 전에 한 번에 쓴다.
     """
     findings = []                                      # 탐지된 규칙을 담을 빈 리스트
@@ -265,7 +265,7 @@ def save_records(records, path):                       # 기록 리스트와 파
 - `collect_findings` 는 읽기만 하는 미리 채운 함수입니다. `SERVER_RULES.get(reason, reason)` 은 딕셔너리에서 reason 을 찾고, 없으면 reason 을 그대로 쓴다는 뜻입니다.
 - 채우기 전에 실행하면 `NameError: name 'points' is not defined` 오류가 납니다. 1번을 아직 안 썼기 때문입니다.
 
-**`day04_6-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `len(리스트)` 는 리스트의 개수입니다.
+**`exercise7-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `len(리스트)` 는 리스트의 개수입니다.
 
 ```python
 from access_detection import load_events, EVENTS_PATH  # Exercise 6-1 함수를 불러온다
@@ -274,7 +274,7 @@ from risk_scores import collect_findings, score_findings, collect_reasons, make_
 
 events = load_events(EVENTS_PATH)                      # 이벤트 파일을 표로 읽는다
 chains = find_chains_in_events(events)                 # Exercise 7-1에서 만든 연결된 사건을 찾는다
-findings = collect_findings(events, chains)            # 오전 탐지와 연결 결과에서 탐지된 규칙을 모은다
+findings = collect_findings(events, chains)            # Unit 6의 탐지와 연결 결과에서 탐지된 규칙을 모은다
 finding_count = len(findings)                          # 탐지된 규칙이 모두 몇 건인지 센다
 print("--- 단계 1: 탐지된 규칙", finding_count, "건")    # 단계 1 시작을 알리는 줄과 건수
 
@@ -294,17 +294,17 @@ for record in records:                                 # 기록을 하나씩 꺼
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `risk_scores.py` · `day04_6-1_run.py` 를 `anomaly_detection` 폴더에 만들어 위 코드를 붙여 넣습니다. 터미널에서는 `touch risk_scores.py day04_6-1_run.py` 로 만든 뒤 VS Code 에서 엽니다.
+1. **[VS Code 또는 터미널]** 파일 `risk_scores.py` · `exercise7-2_run.py` 를 `anomaly_detection` 폴더에 만들어 위 코드를 붙여 넣습니다. 터미널에서는 `touch risk_scores.py exercise7-2_run.py` 로 만든 뒤 VS Code 에서 엽니다.
 2. **[VS Code]** `risk_scores.py` 에서 <mark>직접 쓰는 곳 다섯 군데를 씁니다</mark>. 2.1 의 표와 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python day04_6-1_run.py
+   python exercise7-2_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day04_6-1_run.py` 파이썬으로 실행 파일 실행
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise7-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **네 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1과 단계 3은 숫자가 제목 줄에 함께 나오고, 단계 2는 제목 아래 7줄(맨 위 `entity`, 대상 5줄, 맨 아래 `Name: points, dtype: int64`), 단계 4는 5줄입니다.
-5. **[VS Code]** 새로 생긴 `day03_risk_scores.json` 을 열어 <mark>대상 5개가 점수 순으로 들어 있는지</mark> 확인합니다.
-6. **[보고서]** `day04_pm_report.md` 의 `## Exercise 7-2` › `### Exercise 7-2` 아래를 채웁니다.
+5. **[VS Code]** 새로 생긴 `unit05_risk_scores.json` 을 열어 <mark>대상 5개가 점수 순으로 들어 있는지</mark> 확인합니다.
+6. **[보고서]** Unit 7 의 `## Exercise 7-2` › `### Exercise 7-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, high · mid · low 에 각각 어떤 대상이 들어갔는지 적어 주세요.
    - (나) [핵심 질문] seoyeon 의 점수가 어떤 규칙의 점수를 더해 나왔는지 적고, 점수만 저장하지 않고 이유(`reasons`)를 함께 저장하는 까닭을 적어 주세요.
    - (다) [핵심 질문] 198.51.100.90 은 경로 스캔 하나에 해당하지만 low 입니다. low 는 점수 기준상 낮은 등급이라는 뜻입니다. low 인 이유를 점수와 기준으로 설명하고, 이 IP 의 기록을 무시해도 되는지 샘플의 값(그 IP 의 요청 3개의 `result`)으로 판단해 적어 주세요.
@@ -320,25 +320,25 @@ for record in records:                                 # 기록을 하나씩 꺼
 
 ---
 
-## 마무리 · 오늘 만든 것을 깃허브에 올리기
+## 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기
 
-<mark>문제가 아니라 오늘 한 일을 저장소에 올리는 마무리입니다.</mark> Exercise 7-2 마지막 약 10분에 합니다. 어느 터미널을 써도 되고, `pwd` 로 위치를 먼저 확인한 뒤 결과가 `anomaly_detection` 으로 끝나면 아래 1번의 `cd ..` 를 칩니다.
+<mark>문제가 아니라 이번 Unit에서 한 일을 저장소에 올리는 마무리입니다.</mark> Exercise 7-2 마지막 약 10분에 합니다. 어느 터미널을 써도 되고, `pwd` 로 위치를 먼저 확인한 뒤 결과가 `anomaly_detection` 으로 끝나면 아래 1번의 `cd ..` 를 칩니다.
 
-** 이런 상황이 있습니다**
+**이런 상황이 있습니다**
 
-- **지금은**: <mark>팀장이 「오늘 만든 탐지 코드와 점수 파일을 저장소에 남겨 달라」고 합니다</mark>.
+- **지금은**: <mark>팀장이 「이번 Unit에서 만든 탐지 코드와 점수 파일을 저장소에 남겨 달라」고 합니다</mark>.
 - **그래서 하는 것**: `git status` 로 올라갈 파일을 확인한 뒤(`.env` 같은 비밀 키 파일이 섞이면 안 됩니다) `git add` → `git commit` → `git push` 순서로 올립니다.
-- **끝나면**: 깃허브 저장소의 `anomaly_detection` 폴더에 오늘 오전과 오후에 만든 파일이 보입니다.
+- **끝나면**: 깃허브 저장소의 `anomaly_detection` 폴더에 Unit 6과 Unit 7에서 만든 파일이 보입니다.
 
 **순서**
 
-0. **[터미널]** 오늘 만든 파일이 있는지 `anomaly_detection` 폴더에서 확인합니다. `day04_pm_report.md` 의 5 · Exercise 7-2 칸에서 `답:` 뒤와 코드 상자가 비어 있는 질문이 없는지도 봅니다(마무리 (가)는 3번에서 채웁니다).
+0. **[터미널]** 이번 Unit에서 만든 파일이 있는지 `anomaly_detection` 폴더에서 확인합니다. Unit 7 의 Exercise 7-1 · 7-2 칸에서 `답:` 뒤와 코드 상자가 비어 있는 질문이 없는지도 봅니다(마무리 (가)는 3번에서 채웁니다).
    ```bash
    pwd
    ls
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
-   - <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나야 합니다.</mark> 오전 파일(`access_detection.py` · `saas_detection.py` · `malicious_detection.py` · `advanced_detection.py`)과 오후 파일(`correlation.py` · `risk_scores.py` · `day04_5-1_run.py` · `day04_6-1_run.py` · `day03_risk_scores.json`)이 보이면 됩니다. `advanced_detection.py` 는 오전 Exercise 6-3에서 만든 파일입니다.
+   - <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나야 합니다.</mark> Unit 6 파일(`access_detection.py` · `saas_detection.py` · `malicious_detection.py` · `advanced_detection.py`)과 Unit 7 파일(`correlation.py` · `risk_scores.py` · `exercise7-1_run.py` · `exercise7-2_run.py` · `unit05_risk_scores.json`)이 보이면 됩니다. `advanced_detection.py` 는 Exercise 6-3에서 만든 파일입니다.
 1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 0번의 `pwd` 결과가 `anomaly_detection` 으로 끝날 때만 `cd ..` 를 칩니다. 이미 `…/security-agent-toolkit` 으로 끝나면 `cd ..` 는 건너뛰고 `pwd` 만 칩니다.
    ```bash
    cd ..
@@ -354,7 +354,7 @@ for record in records:                                 # 기록을 하나씩 꺼
    - `.env` 가 보이면: VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다.
      - `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
    - `anomaly_detection/__pycache__/` (파이썬이 실행하면서 자동으로 만드는 임시 폴더)가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 봅니다.
-3. **[보고서]** `### 마무리 · 오늘 만든 것을 깃허브에 올리기` 아래를 채웁니다. <mark>올리기 전에 채워야</mark> 깃허브에 빈칸 없이 올라갑니다.
+3. **[보고서]** `### 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기` 아래를 채웁니다. <mark>올리기 전에 채워야</mark> 깃허브에 빈칸 없이 올라갑니다.
    - (가) `git status` 를 쳤을 때 `.env` 나 `.venv` 가 보였는지, 보였다면 어떻게 했는지 적어 주세요.
    - <mark>앞 Exercise에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.</mark> 올린 뒤에 이어서 적어 다시 올려도 됩니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
@@ -380,15 +380,15 @@ for record in records:                                 # 기록을 하나씩 꺼
 
 ---
 
-## 오늘 오후 마무리
+## 이번 Unit 마무리
 
 | 확인 | 문제 |
 |---|---|
-| 세 로그를 한 사용자 기준으로 연결해 60분 안에 모인 사건을 찾았다 | 오후 Exercise 7-1 |
-| 탐지된 규칙에 점수를 매겨 등급과 이유를 `day03_risk_scores.json` 에 저장했다 | 오후 Exercise 7-2 |
-| 오늘 만든 파일과 보고서를 깃허브에 올렸다 | 마무리 |
+| 세 로그를 한 사용자 기준으로 연결해 60분 안에 모인 사건을 찾았다 | Exercise 7-1 |
+| 탐지된 규칙에 점수를 매겨 등급과 이유를 `unit05_risk_scores.json` 에 저장했다 | Exercise 7-2 |
+| 이번 Unit에서 만든 파일과 보고서를 깃허브에 올렸다 | 마무리 |
 
-다음 수업은 11/6(금)입니다. <mark>오늘 만든 탐지가 맞았는지를 직접 세어 봅니다.</mark> 알림이 났는데 문제가 아니었던 것(오탐)과 알림이 나야 하는데 안 난 것(미탐)을 찾습니다.
+다음은 Unit 8입니다. <mark>이번 Unit에서 만든 탐지가 맞았는지를 직접 세어 봅니다.</mark> 알림이 났는데 문제가 아니었던 것(오탐)과 알림이 나야 하는데 안 난 것(미탐)을 찾습니다.
 
 ---
 

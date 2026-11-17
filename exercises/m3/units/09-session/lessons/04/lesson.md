@@ -19,11 +19,11 @@ source:
 
 ## Exercise 9-1 정답
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 ```bash
 pwd
-python day05_5-1_run.py
+python exercise9-1_run.py
 ```
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
@@ -80,7 +80,7 @@ ACCOUNT:CHANGE | 9시부터 18시 전까지 | office
   - 두 경우가 서로 반대라서, 실제 서비스에서는 요청한 사람에게 보내는 응답에는 이유를 줄이고 서버 로그에는 어긋난 조건을 모두 남기는 방법을 많이 씁니다.
   - 관제 담당자에게는 어긋난 조건을 **모두** 아는 쪽이 낫습니다.
   - 어긋난 조건이 여러 개인 요청이 몇 건인지 세면 평소와 다른 접속이 얼마나 되는지 볼 수 있기 때문입니다.
-  - 오늘 만든 코드는 첫 번째 이유만 리턴하므로, 모두 알리려면 코드를 바꿔야 합니다.
+  - 이번 Exercise의 코드는 첫 번째 이유만 리턴하므로, 모두 알리려면 코드를 바꿔야 합니다.
 - (다) 권한이 있어도 계정을 다른 사람이 가로챘다면 그 요청은 정상 사용자가 보낸 것이 아닙니다.
   - 로그인할 때 한 번만 확인하면 가로챈 계정이 새벽 2시에 외부에서 들어와도 막지 못하고, 쓰기 권한이 있는 데이터까지 바꿀 수 있습니다.
   - 요청마다 시간과 접속 위치를 확인하면(서버가 그 값을 직접 알아낼 수 있을 때) 평소와 다른 접속을 바로 막을 수 있습니다.
@@ -108,15 +108,15 @@ ACCOUNT:CHANGE | 9시부터 18시 전까지 | office
 **관제에서는**
 
 - 접근 제어 서비스는 사용자를 확인한 뒤에도 접속 시간, 위치, 기기 상태를 요청마다 다시 확인하고, 평소와 다른 요청은 한 번 더 확인하거나 막습니다.
-  - 오늘 단순화한 부분은 두 가지입니다.
+  - 이번 Exercise에서 단순화한 부분은 두 가지입니다.
   - 첫째, 실습에서는 접속 위치(`network`)와 시각(`time`)을 요청하는 쪽이 적어 보내지만, 실제 서비스는 서버에 접속해 온 쪽의 주소(IP)와 서버 시계로 직접 알아냅니다.
-  - 둘째, 조건 파일을 읽지 못하면 오늘 코드는 조건 없이 모두 허용하는데, 실제 서비스는 읽지 못하면 서버를 켜지 않거나 모두 거부하는 쪽으로 만듭니다.
+  - 둘째, 조건 파일을 읽지 못하면 이번 Exercise의 코드는 조건 없이 모두 허용하는데, 실제 서비스는 읽지 못하면 서버를 켜지 않거나 모두 거부하는 쪽으로 만듭니다.
 
 ---
 
 ## Exercise 9-2 정답
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 터미널 1:
 
@@ -252,7 +252,7 @@ dami SALES:QUERY office 2026-10-30T10:00 -> False 퇴사한 계정
 
 ## 정답 마무리
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 ```bash
 cd ..
@@ -264,19 +264,19 @@ git status
 
 ```bash
 git add .
-git commit -m "Add access control day 5 revocation, conditional policy and check server"
+git commit -m "Add access control revocation, conditional policy and check server"
 git push
 ```
 
 **결과**
 
-- (가) 한 예: 「줄이 열아홉 개였고(`.py` 열한 개 + `.json` 세 개 + `server_log.jsonl` 한 개 + `.md` 네 개), `.env` · `.venv` 는 없었다」. 이 숫자는 어제(10/29(목))까지 올렸고 `__pycache__` 가 보이지 않을 때의 숫자이며, 줄 수와 이름은 학생마다 다를 수 있습니다.
+- (가) 한 예: 「줄이 열아홉 개였고(`.py` 열한 개 + `.json` 세 개 + `server_log.jsonl` 한 개 + `.md` 네 개), `.env` · `.venv` 는 없었다」. 이 숫자는 Unit 7까지 올렸고 `__pycache__` 가 보이지 않을 때의 숫자이며, 줄 수와 이름은 학생마다 다를 수 있습니다.
   - `.env` 나 `.venv` 가 보였다면 `.gitignore` 에 한 줄을 적고 `git status` 를 다시 쳤다고 적습니다.
 
 **왜**
 
 - 올리기 전에 올라갈 파일을 확인해야 비밀 키가 섞이지 않습니다.
-  - 코드와 오늘 서버가 남긴 `server_log.jsonl` 이 함께 올라가야 11/2(월) 수업이 같은 로그에서 시작합니다.
+  - 코드와 이번 Unit에서 서버가 남긴 `server_log.jsonl` 이 함께 올라가야 Unit 10이 같은 로그에서 시작합니다.
 
 **자주 틀리는 곳**
 
@@ -307,8 +307,8 @@ git push
 **`conditional.py`** (Exercise 9-1 완성본)
 
 ```python
-from config_loader import load_json                              # 10/22(목)에 만든 안전한 읽기 함수를 불러온다
-from policy import evaluate_access                               # 10/22(목)에 만든 기본 판정 함수를 불러온다
+from config_loader import load_json                              # Unit 3에서 만든 안전한 읽기 함수를 불러온다
+from policy import evaluate_access                               # Unit 2에서 만든 기본 판정 함수를 불러온다
 
 
 def load_rules(path):                                            # 조건 파일 경로를 받는 함수
@@ -341,7 +341,7 @@ def evaluate_conditional(user, resource, action, network, now, rules):   # 사�
     기본 판정이 허용이어도 업무 시간 · 접속 위치 조건에 어긋나면 거부한다.
     새벽 · 외부 접속을 막을 때 쓴다.
     """
-    is_allowed, reason = evaluate_access(user, resource, action, now)    # 먼저 10/22(목)의 기본 판정을 한다
+    is_allowed, reason = evaluate_access(user, resource, action, now)    # 먼저 Unit 2의 기본 판정을 한다
     if not is_allowed:                                                   # 기본 판정이 거부이면
         return False, reason                                     # 그 이유로 바로 거부한다
     permission = f"{resource}:{action}"                          # "자원:행위" 모양 문자열로 합친다
@@ -360,7 +360,7 @@ def evaluate_conditional(user, resource, action, network, now, rules):   # 사�
 import json                                                      # JSON 문자열을 만드는 모듈을 불러온다
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
 from flask import Flask, request                                 # 서버를 만드는 Flask 와 요청 정보를 담은 request 를 불러온다
-from conditional import load_rules, evaluate_conditional         # Exercise 9-1에 만든 조건 판정 함수를 불러온다
+from conditional import load_rules, evaluate_conditional         # Exercise 9-1에서 만든 조건 판정 함수를 불러온다
 
 app = Flask(__name__)                                            # 서버 프로그램을 만든다
 app.json.ensure_ascii = False                                    # 응답의 한글이 \uXXXX 로 깨지지 않게 한다

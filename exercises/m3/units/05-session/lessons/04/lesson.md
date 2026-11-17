@@ -17,13 +17,13 @@ source:
 
 ---
 
-## Exercise Exercise 5-1 정답
+## Exercise 5-1 정답
 
  **터미널에 입력합니다.**
 
 ```bash
 pwd
-python day03_5-1_run.py
+python exercise5-1_run.py
 ```
 
 **채운 코드** (한 예)
@@ -80,13 +80,13 @@ python day03_5-1_run.py
 
 ---
 
-## Exercise Exercise 5-1 정답
+## Exercise 5-2 정답
 
  **터미널에 입력합니다.**
 
 ```bash
 pwd
-python day03_6-1_run.py
+python exercise5-2_run.py
 ```
 
 **채운 코드** (한 예)
@@ -191,7 +191,7 @@ Exercise 5-1 파일을 못 만들고 Exercise 5-2로 넘어가야 할 때 그대
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
-from config_loader import load_json                              # 10/22(목)에 만든 안전한 읽기 함수를 불러온다
+from config_loader import load_json                              # Unit 3에서 만든 안전한 읽기 함수를 불러온다
 from exception_policy import TIME_FORMAT                         # 시각 문자열의 형식("%Y-%m-%d %H:%M")을 불러온다
 
 SLA_HOURS = load_json("config/sla.json", {"hours": 4})["hours"]  # 처리 기한(시간). 파일이 없거나 깨졌으면 기본값 4

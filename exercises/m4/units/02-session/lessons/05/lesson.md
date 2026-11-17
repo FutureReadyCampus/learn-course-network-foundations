@@ -17,15 +17,15 @@ source:
 
 ---
 
-## Exercise Exercise 2-1 정답
+## Exercise 2-1 정답
 
  **터미널에 입력합니다.**
 
 ```bash
 pwd
-python day02_2-1_run.py
+python exercise2-1_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day02_2-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise2-1_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 두 함수입니다.
 
@@ -95,7 +95,7 @@ False
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day02_2-1_run.py", line 7, in <module>
+  File "…/anomaly_detection/exercise2-1_run.py", line 7, in <module>
     event = normalize_web(line)  # 한 줄을 공통 이벤트로 바꾼다
   File "…/anomaly_detection/normalize_web.py", line 57, in normalize_web
     time_out = convert_time(time_text)  # 공통 모양의 시각으로 바꾼다
@@ -113,15 +113,15 @@ ValueError: time data '02/Nov/2026:09:01:05 +0900' does not match format '%Y-%m-
 
 ---
 
-## Exercise Exercise 2-1 정답
+## Exercise 2-2 정답
 
  **터미널에 입력합니다.**
 
 ```bash
 pwd
-python day02_3-1_run.py
+python exercise2-2_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day02_3-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise2-2_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
 
@@ -180,7 +180,7 @@ python day02_3-1_run.py
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day02_3-1_run.py", line 3, in <module>
+  File "…/anomaly_detection/exercise2-2_run.py", line 3, in <module>
     server_events = load_server("server_log.jsonl")  # 판정 서버 로그를 공통 이벤트로 바꾼다
   File "…/anomaly_detection/normalize_json_csv.py", line 78, in load_server
     event = normalize_server(line)  # 공통 이벤트로 바꾼다
@@ -197,15 +197,15 @@ KeyError: True
 
 ---
 
-## Exercise Exercise 2-1 정답
+## Exercise 2-3 정답
 
  **터미널에 입력합니다.**
 
 ```bash
 pwd
-python day02_4-1_run.py
+python exercise2-3_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python day02_4-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise2-3_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
 
@@ -255,7 +255,7 @@ ip 가 비어 있는 이벤트 15 개
   - <mark>이 순서만으로 원인을 알 수는 없습니다.</mark> 같은 사용자가 두 곳에서 어떤 일을 했는지 함께 확인할 단서가 생겼다고 보면 됩니다.
 - (다) `user` 가 비어 있는 이벤트 28개는 <mark>웹 서버 이벤트 전부입니다.</mark> 웹 서버 로그에는 사용자 이름이 원래 없기 때문입니다.
   - 사용자 이름으로 세거나 묶는 분석을 하면 <mark>이 28개는 어느 사용자에도 들어가지 못하고 빠집니다.</mark>
-  - 그래서 사용자별 숫자만 보면 웹 서버에서 난 일을 놓칩니다. 오후에 판다스로 직접 확인합니다.
+  - 그래서 사용자별 숫자만 보면 웹 서버에서 난 일을 놓칩니다. Unit 3에서 판다스로 직접 확인합니다.
 
 **왜**
 
@@ -269,7 +269,7 @@ ip 가 비어 있는 이벤트 15 개
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day02_4-1_run.py", line 24, in <module>
+  File "…/anomaly_detection/exercise2-3_run.py", line 24, in <module>
     source_event_counts = count_by_source(events)  # 소스별 개수를 센다
   File "…/anomaly_detection/normalize.py", line 45, in count_by_source
     for event in events:  # 이벤트를 하나씩 꺼낸다
@@ -298,15 +298,15 @@ ls
 
 **결과**
 
-- <mark>오늘 만든 파일 아홉 개와 안내 · 보고서 두 파일이 보여야 합니다.</mark> 깃허브에 올리는 일은 오후 Exercise 1-2 마지막에 합니다.
+- <mark>이번 Unit에서 만든 파일 아홉 개와 안내 · 보고서 두 파일이 보여야 합니다.</mark> 깃허브에 올리는 일은 Unit 3의 Exercise 3-2 마지막에 합니다.
 
 ---
 
-## 앞 날 파일 완성본
+## 앞 Unit 파일 완성본
 
-어제 파일이 없거나 잘 안 될 때 이 코드로 만듭니다. <mark>`anomaly_detection` 폴더 바로 아래에 같은 이름으로 만듭니다.</mark>
+Unit 1의 파일이 없거나 잘 안 될 때 이 코드로 만듭니다. <mark>`anomaly_detection` 폴더 바로 아래에 같은 이름으로 만듭니다.</mark>
 
-**`log_parse.py`** (어제 Exercise 1-1 완성본)
+**`log_parse.py`** (Unit 1의 Exercise 1-1 완성본)
 
 ```python
 def split_request(line):                                # 로그 한 줄(문자열)을 받는 함수
@@ -364,7 +364,7 @@ def parse_line(line):                                   # 로그 한 줄을 받�
     return entry                                        # 딕셔너리를 리턴한다
 ```
 
-**`access_sample.log`** (어제 시작하기 5번의 샘플 로그, 30줄) — 끝이 잘린 줄과 마지막 줄의 `-` 는 <mark>일부러 형식을 틀리게 만든 줄이니 지우지 않습니다</mark>.
+**`access_sample.log`** (Unit 1 시작하기 5번의 샘플 로그, 30줄) — 끝이 잘린 줄과 마지막 줄의 `-` 는 <mark>일부러 형식을 틀리게 만든 줄이니 지우지 않습니다</mark>.
 
 ```
 198.51.100.21 - - [02/Nov/2026:09:01:05 +0900] "GET / HTTP/1.1" 200 1204 "-" "Mozilla/5.0"

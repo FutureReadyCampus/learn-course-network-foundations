@@ -13,33 +13,33 @@ source:
 
 ## 개요
 
-어제는 웹 서버 접속 로그 한 줄을 읽고 이상 징후를 구분하는 법을 배웠습니다. 오늘 오전에는 **서로 다른 모양의 로그 3종류를 같은 키로 맞추는 정규화**를 합니다. SIEM(심, 로그를 모아 분석하는 보안 도구)의 네 단계(수집 → 정규화 → 탐지 → 알림 · 조사) 중 두 번째 단계입니다.
+Unit 1에서는 웹 서버 접속 로그 한 줄을 읽고 이상 징후를 구분하는 법을 배웠습니다. 이번 Unit에서는 **서로 다른 모양의 로그 3종류를 같은 키로 맞추는 정규화**를 합니다. SIEM(심, 로그를 모아 분석하는 보안 도구)의 네 단계(수집 → 정규화 → 탐지 → 알림 · 조사) 중 두 번째 단계입니다.
 
 - **Exercise 2-1**: 웹 서버 로그 한 줄을 공통 이벤트(키는 2.1에서 설명)로 바꿉니다. 시각 모양을 맞추는 법을 처음 배웁니다.
 - **Exercise 2-2**: 판정 서버 로그(JSON)와 SaaS 로그(CSV)를 같은 공통 이벤트로 바꿉니다.
-- **Exercise 2-3**: 세 로그의 이벤트를 하나로 합쳐 시간순으로 정렬하고 `normalized_events.json` 파일로 저장합니다. 이 파일을 오후에 판다스로 읽습니다.
+- **Exercise 2-3**: 세 로그의 이벤트를 하나로 합쳐 시간순으로 정렬하고 `normalized_events.json` 파일로 저장합니다. 이 파일을 Unit 3에서 판다스로 읽습니다.
 
-오늘은 오전 2 · 3 · Exercise 2-3이고, <mark>깃허브에 올리는 일은 오후 Exercise 1-2 마지막에 합니다.</mark> Exercise마다 문제는 하나입니다.
+이번 Unit은 Exercise 2-1 · Exercise 2-2 · Exercise 2-3으로 이루어져 있고, <mark>깃허브에 올리는 일은 Unit 3의 Exercise 3-2 마지막에 합니다.</mark> Exercise마다 문제는 하나입니다.
 
-- 오늘 오전에 쓰는 도구는 **파이썬 · VS Code · 터미널**입니다. 판다스는 오후에 처음 씁니다.
+- 이번 Unit에서 쓰는 도구는 **파이썬 · VS Code · 터미널**입니다. 판다스는 Unit 3에서 처음 씁니다.
 - 새로 나오는 문법은 읽을거리의 「문법 상자」에서 코드와 실행 결과, 값이 바뀌는 모양과 함께 설명합니다.
-- **오늘 불러 쓰는 이전 파일**
+- **이번 Unit에서 불러 쓰는 이전 파일**
 
-| 파일 | 어디서 | 오늘 쓰는 곳 | 없으면 |
+| 파일 | 어디서 | 이번 Unit에서 쓰는 곳 | 없으면 |
 |---|---|---|---|
-| `log_parse.py` | 어제 Exercise 1-1에 만든 파일 | Exercise 2-1 `normalize_web.py` 가 안의 함수 네 개를 불러 씁니다 | 문서 맨 아래 「앞 날 파일 완성본」으로 만듭니다 |
-| `access_sample.log` | 어제 시작하기에서 만든 샘플 웹 서버 로그(30줄) | Exercise 2-1와 Exercise 2-3에서 읽습니다 | 같은 곳의 완성본으로 만듭니다 |
+| `log_parse.py` | Unit 1의 Exercise 1-1에서 만든 파일 | Exercise 2-1 `normalize_web.py` 가 안의 함수 네 개를 불러 씁니다 | 문서 맨 아래 「앞 Unit 파일 완성본」으로 만듭니다 |
+| `access_sample.log` | Unit 1 시작하기에서 만든 샘플 웹 서버 로그(30줄) | Exercise 2-1과 Exercise 2-3에서 읽습니다 | 같은 곳의 완성본으로 만듭니다 |
 
 ## 개요
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치와 어제 파일을 확인합니다(맥북은 `python3`). <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나고, `ls` 결과에 `log_parse.py` 와 `access_sample.log` 가 보여야</mark> 합니다. 없으면 맨 아래 「앞 날 파일 완성본」으로 먼저 만듭니다. `cd` 가 「No such file or directory」 오류를 내면 `mkdir anomaly_detection` 으로 폴더부터 만들고 들어갑니다.
+2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치와 Unit 1의 파일을 확인합니다(맥북은 `python3`). <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나고, `ls` 결과에 `log_parse.py` 와 `access_sample.log` 가 보여야</mark> 합니다. 없으면 맨 아래 「앞 Unit 파일 완성본」으로 먼저 만듭니다. `cd` 가 「No such file or directory」 오류를 내면 `mkdir anomaly_detection` 으로 폴더부터 만들고 들어갑니다.
    ```bash
    cd anomaly_detection
    pwd
    ls
    ```
-3. **오늘 받은 파일 두 개**(`day02_am_normalize.md`, `day02_am_report.md`)를 `다운로드` 폴더에서 `anomaly_detection` 폴더로 끌어다 놓습니다(안 되면 **File › Save As…**). 이미 있으면 건너뜁니다.
+3. **이번 Unit에서 받은 파일 두 개**(Unit 2 안내, Unit 2 보고서)를 `다운로드` 폴더에서 `anomaly_detection` 폴더로 끌어다 놓습니다(안 되면 **File › Save As…**). 이미 있으면 건너뜁니다.
 4. **[VS Code]** 보고서 맨 위 제목 `(이름 · 2026-11-03(화))` 의 <mark>`이름` 을 내 이름으로 바꿉니다</mark>. 안내 파일은 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다.
 5. **[VS Code 또는 터미널]** `anomaly_detection` 폴더에 `server_log.jsonl` 과 `saas_events.csv` 파일을 만들어 아래 내용을 그대로 붙여 넣습니다(터미널에서는 `touch 파일이름` 후 VS Code 에서 엽니다).
 
@@ -94,7 +94,7 @@ time,account,event,ip_address,outcome
 ## 오류가 나면
 
 - 먼저 `pwd` 가 `anomaly_detection` 으로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
-- `No module named 'log_parse'`: 어제 `log_parse.py` 가 이 폴더에 없는 것입니다. 맨 아래 「앞 날 파일 완성본」으로 만듭니다.
+- `No module named 'log_parse'`: Unit 1의 `log_parse.py` 가 이 폴더에 없는 것입니다. 맨 아래 「앞 Unit 파일 완성본」으로 만듭니다.
 - `IndentationError` · `NameError`: 직접 쓴 줄의 들여쓰기가 틀렸거나 빠뜨린 줄이 있습니다.
 - 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 막히면 맨 아래 「정답」을 보고, 풀리지 않으면 그 질문의 `답:` 에 「모름 — 막힌 곳: …」 이라고 쓰고 넘어갑니다.
 

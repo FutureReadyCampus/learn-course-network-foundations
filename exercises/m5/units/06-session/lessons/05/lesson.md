@@ -17,13 +17,13 @@ source:
 
 ---
 
-## Exercise Exercise 5-3 정답
+## Exercise 6-1 정답
 
  **터미널에 입력합니다.**
 
 ```bash
 pwd
-python day04_2-1_run.py
+python exercise6-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -46,7 +46,7 @@ python day04_2-1_run.py
     sla_due = alert["minute"] + sla_minutes            # 알림이 온 시각 + 응답 기한 = 응답해야 하는 시각
 ```
 
-`day04_2-1_run.py` 의 7 ~ 9번입니다.
+`exercise6-1_run.py` 의 7 ~ 9번입니다.
 
 ```python
     # 7. make_ticket(alert, ticket_no, rules, NEXT_STEPS) 의 결과를 ticket 에 저장한다
@@ -169,13 +169,13 @@ IndentationError: expected an indented block
 
 ---
 
-## Exercise Exercise 5-3 정답
+## Exercise 6-2 정답
 
  **터미널에 입력합니다.**
 
 ```bash
 pwd
-python day04_3-1_run.py
+python exercise6-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -366,13 +366,13 @@ INC-206 -> TCK-2 병합 · 합쳐진 알림 1 건
 
 ---
 
-## Exercise Exercise 5-3 정답
+## Exercise 6-3 정답
 
  **터미널에 입력합니다.** 알림 서버를 켠 터미널은 그대로 두고, 처음 쓰던 터미널에서 실행합니다.
 
 ```bash
 pwd
-python day04_4-1_run.py
+python exercise6-3_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -395,7 +395,7 @@ python day04_4-1_run.py
             return attempt             # 성공한 시도 번호를 리턴한다
 ```
 
-`day04_4-1_run.py` 의 7 ~ 9번입니다.
+`exercise6-3_run.py` 의 7 ~ 9번입니다.
 
 ```python
     # 7. send_ticket_notice(ticket, alert["minute"], rules) 의 결과를 result 에 저장한다

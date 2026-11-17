@@ -13,15 +13,15 @@ source:
 
 ## 개요
 
-<mark style="background:#e0d4ff">어제까지 조치 · 티켓 · 알림 · 에스컬레이션</mark>(escalation, 에스컬레이션: 정해진 시간 안에 처리되지 않은 사건을 상위 담당자에게 넘겨 처리하게 하는 일)을 구현했습니다. 오늘 오전에는 <mark>**처리 결과를 리포트로 보고하고, 자동 실행해도 되는 조치와 사람의 승인이 필요한 조치를 구분하고, 오탐으로 판명된 조치를 원래 상태로 복원하는 부분**</mark>을 구현합니다.
+<mark style="background:#e0d4ff">Unit 7까지 조치 · 티켓 · 알림 · 에스컬레이션</mark>(escalation, 에스컬레이션: 정해진 시간 안에 처리되지 않은 사건을 상위 담당자에게 넘겨 처리하게 하는 일)을 구현했습니다. 이번 Unit에서는 <mark>**처리 결과를 리포트로 보고하고, 자동 실행해도 되는 조치와 사람의 승인이 필요한 조치를 구분하고, 오탐으로 판명된 조치를 원래 상태로 복원하는 부분**</mark>을 구현합니다.
 
-- **Exercise 8-1**: 어제 근무의 티켓을 판다스(pandas, 판다스: 표 모양 데이터를 다루는 파이썬 도구) 표로 바꿔 집계(aggregation, 어그리게이션: 값을 그룹별로 모아 개수 · 평균을 구하는 일)하고, 조치 기록과 대조(reconciliation, 레컨실리에이션: 두 기록이 서로 맞는지 맞춰 보는 일)해 초동 대응 리포트(incident report, 인시던트 리포트: 사건의 현황과 처리 내용을 정리해 전달하는 문서) 파일을 작성합니다(`report.py`).
+- **Exercise 8-1**: Unit 7 근무의 티켓을 판다스(pandas, 판다스: 표 모양 데이터를 다루는 파이썬 도구) 표로 바꿔 집계(aggregation, 어그리게이션: 값을 그룹별로 모아 개수 · 평균을 구하는 일)하고, 조치 기록과 대조(reconciliation, 레컨실리에이션: 두 기록이 서로 맞는지 맞춰 보는 일)해 초동 대응 리포트(incident report, 인시던트 리포트: 사건의 현황과 처리 내용을 정리해 전달하는 문서) 파일을 작성합니다(`report.py`).
 - **Exercise 8-2**: 조치 요청마다 위험 점수(risk score, 리스크 스코어: 조치의 위험을 점수로 환산한 값)를 합산해 「자동 · 승인 필요 · 차단 금지」로 분류하는 승인 게이트를 구현합니다. <mark style="background:#ffdcb0">승인 기준은 설정 파일로 분리합니다</mark>(`approval_gate.py`).
-- **Exercise 8-3**: 오탐(false positive, 폴스 포지티브: 위협이 아닌 활동을 위협으로 잘못 판정한 알림) 신고를 받으면 영향 확인(impact assessment: 조치가 실제로 바꾼 대상을 파악하는 일)을 하고, <mark style="background:#e0d4ff">수요일의 되돌리기 함수</mark>로 롤백(rollback, 롤백: 조치 이전 상태로 복원하는 일)한 뒤, 복구 확인(recovery verification: 실제 상태가 복원됐는지 다시 점검하는 일)까지 처리합니다(`false_positive.py`).
+- **Exercise 8-3**: 오탐(false positive, 폴스 포지티브: 위협이 아닌 활동을 위협으로 잘못 판정한 알림) 신고를 받으면 영향 확인(impact assessment: 조치가 실제로 바꾼 대상을 파악하는 일)을 하고, <mark style="background:#e0d4ff">Unit 5의 되돌리기 함수</mark>로 롤백(rollback, 롤백: 조치 이전 상태로 복원하는 일)한 뒤, 복구 확인(recovery verification: 실제 상태가 복원됐는지 다시 점검하는 일)까지 처리합니다(`false_positive.py`).
 
-깃허브에 올리는 일은 오후 Exercise 7-2 마지막에 합니다. 새 문법은 Exercise 8-1의 판다스 세 가지(열(column, 컬럼: 표의 세로 줄)끼리 빼기 · 그룹마다 평균 `mean` · 반올림 `round`)입니다. 보고서의 [핵심 질문] 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기(줄 앞의 빈칸)는 각 번호 주석과 같은 위치에서 시작합니다. 각 번호 주석 바로 아래에 한 줄을 씁니다. 주석은 지우지 않습니다.
+깃허브에 올리는 일은 Unit 9의 Exercise 9-2 마지막에 합니다. 새 문법은 Exercise 8-1의 판다스 세 가지(열(column, 컬럼: 표의 세로 줄)끼리 빼기 · 그룹마다 평균 `mean` · 반올림 `round`)입니다. 보고서의 [핵심 질문] 표시가 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기(줄 앞의 빈칸)는 각 번호 주석과 같은 위치에서 시작합니다. 각 번호 주석 바로 아래에 한 줄을 씁니다. 주석은 지우지 않습니다.
 
- **이전 파일**: <mark style="background:#e0d4ff">월요일의 `incident.py`</mark>(`load_json` · `save_json`)를 모든 Exercise에서 씁니다. Exercise 8-3는 <mark style="background:#e0d4ff">수요일의 `rollback.py`</mark> 와, 그 파일이 직접 또는 다른 파일을 거쳐 가져와 사용(import)하는 `undo_actions.py` · `account_actions.py` · `ip_actions.py` · `containment_store.py` 도 씁니다. 없는 파일은 아래 시작하기의 「 이전 파일이 없을 때」 코드 상자로 만듭니다.
+ **이전 파일**: <mark style="background:#e0d4ff">Unit 1의 `incident.py`</mark>(`load_json` · `save_json`)를 모든 Exercise에서 씁니다. Exercise 8-3에서는 <mark style="background:#e0d4ff">Unit 5의 `rollback.py`</mark> 와, 그 파일이 직접 또는 다른 파일을 거쳐 가져와 사용(import)하는 `undo_actions.py` · `account_actions.py` · `ip_actions.py` · `containment_store.py` 도 씁니다. 없는 파일은 아래 시작하기의 「 이전 파일이 없을 때」 코드 상자로 만듭니다.
 
  **줄임말 이름 안내**: 이 문서의 코드와 파일에는 줄임말로 된 이름이 있습니다. 처음 보면 뜻을 알기 어려워서 아래에 풀어 둡니다. 이미 배포한 파일과 맞추기 위해 이름은 그대로 쓰고 뜻만 설명합니다.
   - `ack` · `acked` 는 acknowledge(확인하다) · acknowledged(확인했다)의 줄임말입니다. 담당자가 티켓을 처음 확인했다는 뜻입니다.
@@ -32,7 +32,7 @@ source:
 ## 개요
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** 5과목 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `incident.py` 와 `rollback.py` 가 보이면</mark> 됩니다. Exercise 8-3에는 수요일의 `undo_actions.py` · `account_actions.py` · `ip_actions.py` · `containment_store.py` 도 필요합니다(없으면 위 의 절에서 복사).
+2. **[터미널]** 5과목 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `incident.py` 와 `rollback.py` 가 보이면</mark> 됩니다. Exercise 8-3에는 Unit 4 · Unit 5의 `undo_actions.py` · `account_actions.py` · `ip_actions.py` · `containment_store.py` 도 필요합니다(없으면 위 의 절에서 복사).
    ```bash
    pwd
    cd soar_response
@@ -40,7 +40,7 @@ source:
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
-3. 오늘 받은 파일 두 개(`day05_am_report_gate.md`, `day05_am_report.md`)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
+3. 이번 Unit에서 받은 파일 두 개(Unit 8 안내 문서, Unit 8 보고서)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
 4. **[터미널]** 판다스를 불러올 수 있는지 확인합니다(맥북은 `python3`). <mark>`판다스 불러오기 성공` 이 나와야</mark> 합니다.
    ```bash
    python -c "import pandas; print('판다스 불러오기 성공')"
@@ -48,14 +48,14 @@ source:
    - `No module named 'pandas'`(판다스가 설치되어 있지 않다는 뜻)가 나오면 터미널(가상환경이 켜진 상태)에서 `pip install pandas`(판다스를 설치하는 명령)를 입력한 뒤 다시 확인합니다.
 5. **[터미널]** Exercise 8-1 데이터 파일 두 개를 만들고 **[VS Code]** 에서 열어 아래 내용을 붙여 넣습니다.
    ```bash
-   touch day05_tickets.json day05_actions.json
+   touch unit10_tickets.json unit10_actions.json
    ls
    ```
 
-**`day05_tickets.json`** — 어제(11/12(목)) 근무 3시간이 끝났을 때의 티켓 7장입니다.
+**`unit10_tickets.json`** — Unit 7의 근무 3시간 시뮬레이션이 끝났을 때의 티켓 7장입니다.
 
 - **무엇인가**:
-  - 어제 Exercise 7-2가 저장한 `shift_tickets.json` 에서 리포트에 쓰는 키만 남긴 것입니다.
+  - Unit 7의 Exercise 7-2에서 저장한 `shift_tickets.json` 에서 리포트에 쓰는 키만 남긴 것입니다.
   - `incidents` 는 티켓 하나로 병합(merge)된 인시던트(incident, 인시던트: 탐지된 보안 사건 하나)의 번호 리스트입니다.
   - `created_at`(티켓 생성 시각) · `sla_due`(응답 기한 시각, 담당자가 이 시각까지 확인해야 하는 마감 시각. SLA 는 Service Level Agreement, 에스엘에이: 담당자가 응답해야 하는 시간을 미리 약속한 서비스 수준 협약입니다) · `acked_at`(확인 시각, acknowledge: 담당자가 사건을 처음 확인한 시각) · `resolved_at`(해결 시각)은 모두 근무를 시작한 때를 0분으로 놓고, 그때부터 몇 분이 지났는지를 적은 숫자입니다. <mark style="background:#ffdcb0">아직 확인하지 않았거나 해결하지 않았으면 `-1` 입니다.</mark>
 - **어디에 쓰나**: Exercise 8-1 리포트의 재료입니다.
@@ -72,10 +72,10 @@ source:
 ]
 ```
 
-**`day05_actions.json`** — 어제 자동 대응이 남긴 조치 기록 9건에, 설명을 위해 만든 `INC-212` 1건을 더한 10건입니다.
+**`unit10_actions.json`** — 근무 중 자동 대응이 남긴 조치 기록 9건에, 설명을 위해 만든 `INC-212` 1건을 더한 10건입니다.
 
 - **무엇인가**:
-  - <mark style="background:#e0d4ff">수요일에 만든 조치 기록</mark>(감사 기록, audit log: 조치를 순서대로 남긴 기록)에서 `reason` 키만 뺀 꼴입니다. `before` 는 조치 전 상태, `after` 는 조치 후 상태입니다.
+  - <mark style="background:#e0d4ff">Unit 4에서 만든 조치 기록</mark>(감사 기록, audit log: 조치를 순서대로 남긴 기록)에서 `reason` 키만 뺀 꼴입니다. `before` 는 조치 전 상태, `after` 는 조치 후 상태입니다.
   - `INC-212` 는 근무가 끝나기 직전에 `yuna` 계정을 잠근 기록입니다. 티켓 생성 단계가 실패해서 이 인시던트에는 티켓이 없습니다.
 - **어디에 쓰나**: Exercise 8-1 리포트는 티켓과 조치 기록을 대조해 티켓마다 조치 기록 수를 세고, 티켓이 없는 조치(추적 누락)를 찾습니다.
 
@@ -96,12 +96,12 @@ source:
 
 6. **[터미널]** 파일이 정상인지 확인합니다(맥북은 `python3`). <mark>`7 10` 이 나와야</mark> 합니다.
    ```bash
-   python -c "import json; print(len(json.load(open('day05_tickets.json', encoding='utf-8'))), len(json.load(open('day05_actions.json', encoding='utf-8'))))"
+   python -c "import json; print(len(json.load(open('unit10_tickets.json', encoding='utf-8'))), len(json.load(open('unit10_actions.json', encoding='utf-8'))))"
    ```
 
-## 이전 파일이 없을 때 (월요일 · 수요일 파일)
+## 이전 파일이 없을 때 (Unit 1 · Unit 4 · Unit 5 파일)
 
-월요일이나 수요일에 결석했거나 파일을 지운 경우에만 만듭니다. **이미 있는 파일은 건너뜁니다.** 먼저 **[터미널]** 에서 빈 파일을 만듭니다. 이미 있는 파일은 `touch` 가 그대로 둡니다.
+Unit 1 · Unit 4 · Unit 5 중 하지 못한 Unit이 있거나 파일을 지운 경우에만 만듭니다. **이미 있는 파일은 건너뜁니다.** 먼저 **[터미널]** 에서 빈 파일을 만듭니다. 이미 있는 파일은 `touch` 가 그대로 둡니다.
 
 ```bash
 touch incident.py containment_store.py account_actions.py ip_actions.py undo_actions.py rollback.py
@@ -109,9 +109,9 @@ ls
 ```
 
 - 명령 풀이: `touch 파일이름들` 빈 파일 만들기 · `ls` 폴더 안의 파일 이름 보기
-- 아래 코드 상자 여섯 개를 **[VS Code]** 에서 같은 이름의 파일에 순서대로 붙여 넣고 저장합니다. 이미 있는 파일은 붙여 넣지 않습니다. 오전 2 · Exercise 8-2는 `incident.py` 만 있으면 되고, 나머지 다섯 개는 Exercise 8-3에서 씁니다.
+- 아래 코드 상자 여섯 개를 **[VS Code]** 에서 같은 이름의 파일에 순서대로 붙여 넣고 저장합니다. 이미 있는 파일은 붙여 넣지 않습니다. Exercise 8-1 · Exercise 8-2에는 `incident.py` 만 있으면 되고, 나머지 다섯 개는 Exercise 8-3에서 씁니다.
 
-**`incident.py`** — 월요일 파일에서 오늘 쓰는 두 함수(`load_json` · `save_json`)만 담았습니다. 월요일 파일 전체가 있으면 그것을 그대로 씁니다.
+**`incident.py`** — Unit 1 파일에서 오늘 쓰는 두 함수(`load_json` · `save_json`)만 담았습니다. Unit 1 파일 전체가 있으면 그것을 그대로 씁니다.
 
 ```python
 import json                                                  # JSON 파일을 읽고 쓰기 위해 json 을 불러온다
@@ -134,11 +134,11 @@ def save_json(data, path):                                   # 저장할 값과 
         json.dump(data, file, ensure_ascii=False, indent=2)  # 한글은 그대로, 줄을 나눠 저장한다
 ```
 
-**`containment_store.py`** — 수요일 오전 파일입니다. 조치 기록 한 건을 만들고 조치 상태를 파일로 저장 · 읽기 합니다.
+**`containment_store.py`** — Unit 4 파일입니다. 조치 기록 한 건을 만들고 조치 상태를 파일로 저장 · 읽기 합니다.
 
 ```python
 import copy                                                           # 처음 상태를 복사해 쓰기 위해 copy 를 불러온다
-from incident import load_json, save_json                             # 어제 파일의 파일 읽기 · 쓰기 함수를 불러온다
+from incident import load_json, save_json                             # Unit 1 파일의 파일 읽기 · 쓰기 함수를 불러온다
 
 STATE_PATH = "containment_state.json"                                 # 연습용 시스템 상태를 저장할 파일 이름
 LOG_PATH = "containment_log.json"                                     # 조치 기록을 저장할 파일 이름
@@ -199,7 +199,7 @@ def append_log(record):                                               # 기록 �
     save_json(log, LOG_PATH)                                          # 기록 파일로 다시 저장한다
 ```
 
-**`account_actions.py`** — 수요일 오전 파일입니다. 계정을 잠그고 해제합니다.
+**`account_actions.py`** — Unit 4 파일입니다. 계정을 잠그고 해제합니다.
 
 ```python
 from containment_store import make_record                                             # 기록 한 건을 만드는 함수를 불러온다
@@ -250,7 +250,7 @@ def unlock_account(user, state, incident_id, reason):                           
     return make_record("계정 해제", user, incident_id, "잠김", after, reason)         # 조치 전 · 후 상태와 함께 기록한다 — 미리 채운 줄
 ```
 
-**`ip_actions.py`** — 수요일 오전 파일입니다. IP 를 차단하고 해제합니다.
+**`ip_actions.py`** — Unit 4 파일입니다. IP 를 차단하고 해제합니다.
 
 ```python
 from containment_store import make_record                                                     # 기록 한 건을 만드는 함수를 불러온다
@@ -317,11 +317,11 @@ def expire_blocks(state, incident_id):                                          
     return records                                                                            # 해제 기록 리스트를 리턴한다
 ```
 
-**`undo_actions.py`** — 수요일 오후 파일입니다. 조치 기록 한 건을 거꾸로 되돌립니다.
+**`undo_actions.py`** — Unit 5 파일입니다. 조치 기록 한 건을 거꾸로 되돌립니다.
 
 ```python
-from account_actions import unlock_account  # 오전 Exercise 8-1에 만든 계정 해제 함수를 불러온다
-from ip_actions import unblock_ip           # 오전 Exercise 8-2에 만든 IP 해제 함수를 불러온다
+from account_actions import unlock_account  # Exercise 8-1에 만든 계정 해제 함수를 불러온다
+from ip_actions import unblock_ip           # Exercise 8-2에 만든 IP 해제 함수를 불러온다
 
 
 def undo_account(record, state):            # 되돌릴 조치 기록과 연습용 시스템 상태를 받는 함수
@@ -347,7 +347,7 @@ def undo_record(record, state):             # 되돌릴 조치 기록과 연습�
     return undo_ip(record, state)           # 아니면 IP 차단 기록이므로 IP 를 해제한다 — 미리 채운 줄
 ```
 
-**`rollback.py`** — 수요일 오후 파일입니다. 인시던트 한 건의 조치 기록을 찾아 되돌립니다.
+**`rollback.py`** — Unit 5 파일입니다. 인시던트 한 건의 조치 기록을 찾아 되돌립니다.
 
 ```python
 from containment_store import make_record                                    # 기록 한 건을 만드는 함수를 불러온다
@@ -396,7 +396,7 @@ def rollback_incident(incident_id, log, state):                              # �
 ## 오류가 나면
 
 - `pwd` 가 `soar_response` 로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
-- `ModuleNotFoundError: No module named 'incident'` 는 <mark style="background:#ffc4d6">월요일에 만든 `incident.py` 가 이 폴더에 없다는 뜻</mark>입니다. `No module named 'rollback'` 은 수요일 파일이 없다는 뜻입니다. 둘 다 위 「 이전 파일이 없을 때」의 코드 상자로 만듭니다.
+- `ModuleNotFoundError: No module named 'incident'` 는 <mark style="background:#ffc4d6">Unit 1에서 만든 `incident.py` 가 이 폴더에 없다는 뜻</mark>입니다. `No module named 'rollback'` 은 Unit 5 파일이 없다는 뜻입니다. 둘 다 위 「 이전 파일이 없을 때」의 코드 상자로 만듭니다.
 - 먼저 오류 전체와 내가 친 명령을 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 그래도 막히면 맨 아래 「정답」을 봅니다. 그래도 풀리지 않으면 보고서에 「모름 — 막힌 곳: …」 이라고 씁니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark style="background:#ffc4d6">**터미널**에서</mark> 합니다. 실행할 때마다 같은 입력 파일에서 시작해 같은 결과가 나옵니다.

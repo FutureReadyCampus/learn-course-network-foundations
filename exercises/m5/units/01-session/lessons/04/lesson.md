@@ -144,7 +144,7 @@ json.decoder.JSONDecodeError: Expecting ',' delimiter: line 14 column 3 (char 29
 
 ```bash
 pwd
-python day01_6-1_run.py
+python exercise1-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 

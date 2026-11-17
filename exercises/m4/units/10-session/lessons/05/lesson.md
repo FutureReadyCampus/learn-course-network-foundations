@@ -19,11 +19,11 @@ source:
 
 ## Exercise 10-1 정답
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 ```bash
 pwd
-python day06_2-1_run.py
+python exercise10-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -136,11 +136,11 @@ gaeun :
 
 ## Exercise 10-2 정답
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 ```bash
 pwd
-python day06_3-1_run.py
+python exercise10-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -172,7 +172,7 @@ python day06_3-1_run.py
 
 ```
 --- 단계 1: 읽은 이벤트 57 개
---- 단계 2: 탐지된 규칙 8 건 → 점수 기록 5 건을 day03_risk_scores.json 에 저장
+--- 단계 2: 탐지된 규칙 8 건 → 점수 기록 5 건을 unit05_risk_scores.json 에 저장
 --- 단계 3: Gemini API 를 활용한 AI 요약 3 건 (실패 0 건)
 dami : 퇴사한 사람의 계정으로 서버에 요청한 기록이 있습니다. 먼저 이 계정이 비활성화되어 있는지 확인하세요.
 seoyeon : 평소와 다른 IP 에서 접속하고 파일을 한꺼번에 많이 내려받은 기록이 있습니다. 먼저 내려받은 파일 목록을 확인하세요.
@@ -226,7 +226,7 @@ low 198.51.100.90 30
 
 ```
 --- 단계 1: 읽은 이벤트 57 개
---- 단계 2: 탐지된 규칙 8 건 → 점수 기록 5 건을 day03_risk_scores.json 에 저장
+--- 단계 2: 탐지된 규칙 8 건 → 점수 기록 5 건을 unit05_risk_scores.json 에 저장
 [LLM 호출 실패] 상태 코드 429
 [LLM 호출 실패] 상태 코드 429
 [LLM 호출 실패] 상태 코드 429
@@ -254,7 +254,7 @@ low 198.51.100.90 30
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day06_3-1_run.py", line 3, in <module>
+  File "…/anomaly_detection/exercise10-2_run.py", line 3, in <module>
   File "…/anomaly_detection/pipeline.py", line 75, in run_pipeline
   File "…/anomaly_detection/pipeline.py", line 17, in analyze_events
   File "…/anomaly_detection/risk_scores.py", line 31, in collect_findings
@@ -267,7 +267,7 @@ TypeError: list indices must be integers or slices, not str
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day06_3-1_run.py", line 3, in <module>
+  File "…/anomaly_detection/exercise10-2_run.py", line 3, in <module>
   File "…/anomaly_detection/pipeline.py", line 74, in run_pipeline
   File "…/anomaly_detection/pipeline.py", line 16, in analyze_events
 NameError: name 'chains' is not defined
@@ -278,7 +278,7 @@ NameError: name 'chains' is not defined
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/day06_3-1_run.py", line 3, in <module>
+  File "…/anomaly_detection/exercise10-2_run.py", line 3, in <module>
   File "…/anomaly_detection/pipeline.py", line 86, in run_pipeline
   File "…/anomaly_detection/pipeline.py", line 65, in save_report
 TypeError: Object of type method is not JSON serializable
@@ -319,7 +319,7 @@ SyntaxError: invalid syntax
 - 고칠 파일: `log_classify.py`
 - 어떻게 고치나요:
   - 케이스 A: <mark style="background:#bde3ff">값을 바꿉니다.</mark> `is_suspicious` 에 「경로에 `/.env` · `/wp-login` · `/phpmyadmin` 중 하나가 들어 있다」는 조건을 하나 더하고 `or` 로 잇습니다.
-  - 케이스 B: 경로 목록만 늘리면 목록에 없는 새 주소는 또 놓칩니다. 그래서 같은 주소가 없는 주소를 연달아 요청하는 횟수를 세는 규칙을 <mark style="background:#bde3ff">새로 넣습니다.</mark> 이 수업에서는 11/5 오전에 `find_scan_ips` 로 만들었습니다.
+  - 케이스 B: 경로 목록만 늘리면 목록에 없는 새 주소는 또 놓칩니다. 그래서 같은 주소가 없는 주소를 연달아 요청하는 횟수를 세는 규칙을 <mark style="background:#bde3ff">새로 넣습니다.</mark> 이 과정에서는 Unit 6에서 `find_scan_ips` 로 만들었습니다.
 - 고친 뒤 확인: 같은 로그를 다시 분류해서 198.51.100.90 의 세 줄이 「의심」 목록에 나오는지 봅니다. 분류별 개수는 정상 15 · 오류 5 · 의심 8 에서 정상 15 · 오류 2 · 의심 11 로 바뀝니다.
 - 담당자가 가장 먼저 할 일: 198.51.100.90 의 같은 시간대 요청이 더 있었는지, 성공(200)한 요청이 있었는지 접속 기록에서 확인합니다.
 
@@ -328,11 +328,11 @@ SyntaxError: invalid syntax
 - 원인: <mark style="background:#bde3ff">데이터 문제</mark>입니다.
   - 원본 로그 30줄 가운데 2줄은 `GET /board/5 HTTP/1.1` 에서 잘려 있거나 `-` 하나만 있어서 큰따옴표가 두 개보다 적습니다.
   - `normalize_web` 은 이런 줄을 읽지 않고 `None` 을 리턴하므로 이벤트가 되지 못합니다. 그래서 웹 서버 이벤트가 30개가 아니라 28개입니다.
-  - 줄이 사라진 것이 아니라 읽기 실패로 센 것입니다. 11/3 오전 Exercise 10-1 실행 파일의 단계 1 에 `읽기 실패 2 줄` 로 나옵니다.
+  - 줄이 사라진 것이 아니라 읽기 실패로 센 것입니다. Exercise 2-1 실행 파일의 단계 1 에 `읽기 실패 2 줄` 로 나옵니다.
 - 고칠 파일: 고칠 코드는 없습니다. 정규화 코드(`normalize_web.py`)는 의도한 대로 동작했고, 문제는 원본 로그의 두 줄입니다.
 - 어떻게 고치나요:
   - 케이스 A: 코드를 바꾸지 않고 <mark style="background:#bde3ff">확인합니다.</mark> 읽기 성공 28 + 읽기 실패 2 = 전체 30 이 맞는지 계산해 보고서에 적어 둡니다.
-  - 케이스 B: 로그를 만드는 서버에서 줄이 끊기는 원인을 찾아 고칩니다. 이 수업에서는 서버 설정을 바꾸지 않았습니다.
+  - 케이스 B: 로그를 만드는 서버에서 줄이 끊기는 원인을 찾아 고칩니다. 이 과정에서는 서버 설정을 바꾸지 않았습니다.
 - 고친 뒤 확인: 정규화한 이벤트 수와 읽기 실패 줄 수를 더해 원본 줄 수 30 과 같은지 봅니다. 같으면 사라진 줄 없이 모두 설명됩니다.
 - 담당자가 가장 먼저 할 일: 읽지 못한 2줄의 원문을 원본 로그에서 찾아, 서버가 로그를 쓰는 도중 끊긴 것인지 확인합니다.
 
@@ -344,7 +344,7 @@ SyntaxError: invalid syntax
   - 203.0.113.50 은 SaaS 로그와 판정 서버 로그에 기록이 없어서 누구의 일인지 알 수 없습니다.
 - 고칠 파일: 케이스 A 는 웹 서버의 로그 설정, 케이스 B 는 `risk_scores.py` 입니다.
 - 어떻게 고치나요:
-  - 케이스 A: <mark style="background:#bde3ff">새로 넣습니다.</mark> 웹 서버가 로그인한 사용자의 이름도 로그 한 줄에 남기도록 설정을 바꿉니다. 이 수업에서는 서버 설정을 바꾸지 않았습니다.
+  - 케이스 A: <mark style="background:#bde3ff">새로 넣습니다.</mark> 웹 서버가 로그인한 사용자의 이름도 로그 한 줄에 남기도록 설정을 바꿉니다. 이 과정에서는 서버 설정을 바꾸지 않았습니다.
   - 케이스 B: 사용자를 모르는 요청은 사용자가 아니라 IP 를 대상으로 점수를 매깁니다. 경로 스캔 198.51.100.90 을 IP 로 점수를 매긴 것이 이 방식입니다.
 - 고친 뒤 확인: 케이스 A 는 다시 실행해 「IP 로 사용자를 알 수 있는 웹 실패 이벤트」 수가 1개보다 늘었는지 봅니다. 케이스 B 는 점수 파일의 `entity` 에 IP(198.51.100.90)가 나오는지 봅니다.
 - 담당자가 가장 먼저 할 일: 203.0.113.50 으로 로그인한 기록이 다른 로그에 있는지 검색해 계정을 찾습니다.
@@ -372,13 +372,13 @@ SyntaxError: invalid syntax
 - 어떻게 고치나요: <mark style="background:#bde3ff">새로 넣습니다.</mark>
   - 중요한 권한 목록(예: `SETTLE:QUERY`)을 정하고, 서버 실패 이벤트의 행동이 그 목록에 있으면 횟수와 상관없이 확인 대상에 넣는 함수를 `pick_suspicious` 옆에 더합니다.
   - 이 규칙은 업무상 실수로 한 번 건드린 사용자까지 알려서 오탐이 늘 수 있습니다.
-- 고친 뒤 확인: 같은 이벤트로 다시 실행해 P5 가 알림 대상에 나오는지 보고, 11/6 오전처럼 오탐과 미탐을 다시 세어 오탐이 얼마나 늘었는지 봅니다.
+- 고친 뒤 확인: 같은 이벤트로 다시 실행해 P5 가 알림 대상에 나오는지 보고, Unit 8처럼 오탐과 미탐을 다시 세어 오탐이 얼마나 늘었는지 봅니다.
 - 담당자가 가장 먼저 할 일: seoyeon 에게 11:40 의 정산 조회가 업무 요청이었는지 확인합니다.
 
 #### 상황 8 · 서버가 같은 네트워크에 열려 있고, 지우면 접속 기록도 사라짐
 
 - 원인: <mark style="background:#bde3ff">운영 설정 문제</mark>입니다(두 가지).
-  - 접속 범위: Exercise 9-1 `compose.yaml` 의 `ports` 가 `"8081:80"` 처럼 주소 없이 적혀 있으면 같은 네트워크의 다른 PC 도 접속할 수 있습니다. `docker compose ps` 의 PORTS 에 `0.0.0.0:8081->80/tcp` 로 나옵니다.
+  - 접속 범위: Unit 9의 Exercise 9-1에서 쓴 `compose.yaml` 의 `ports` 가 `"8081:80"` 처럼 주소 없이 적혀 있으면 같은 네트워크의 다른 PC 도 접속할 수 있습니다. `docker compose ps` 의 PORTS 에 `0.0.0.0:8081->80/tcp` 로 나옵니다.
   - 접속 기록: 서버를 `down` 으로 지우면 서버 안에 쌓인 기록도 함께 사라집니다. 서버 안 기록 폴더를 내 `logs` 폴더에 연결(`volumes`)해 두지 않았기 때문입니다.
 - 고칠 파일: `compose.secure.yaml`
 - 어떻게 고치나요:

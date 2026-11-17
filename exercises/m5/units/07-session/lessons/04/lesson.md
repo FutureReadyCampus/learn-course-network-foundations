@@ -23,7 +23,7 @@ source:
 
 ```bash
 pwd
-python day04_5-1_run.py
+python exercise7-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -46,7 +46,7 @@ python day04_5-1_run.py
             level = index + 1                   # 이 단계 번호를 담는다 (뒤의 더 높은 단계가 덮어쓴다)
 ```
 
-`day04_5-1_run.py` 의 7 ~ 9번입니다.
+`exercise7-1_run.py` 의 7 ~ 9번입니다.
 
 ```python
         # 7. needs_escalation(ticket, now) 가 참이면 (if)
@@ -204,7 +204,7 @@ IndentationError: expected an indented block
 
 ```bash
 pwd
-python day04_6-1_run.py
+python exercise7-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -229,7 +229,7 @@ python day04_6-1_run.py
             late = late + 1                                          # 기한을 넘긴 티켓 수를 1 늘린다
 ```
 
-`day04_6-1_run.py` 의 8 · 9번입니다.
+`exercise7-2_run.py` 의 8 · 9번입니다.
 
 ```python
 # 8. collect_response_times(tickets) 의 결과를 ack_times 에 저장한다
