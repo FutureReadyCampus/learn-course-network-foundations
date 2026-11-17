@@ -1,6 +1,6 @@
 ---
 id: m5-u04-l04
-title: Exercise 4-3 · 계정 잠금 뒤에도 남는 활성 세션을 종료하고, 빈틈(잔존 세션)이 없는지 점검하기
+title: Exercise 4-3 · 활성 세션 종료와 잔존 세션 점검하기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 4-3 · 계정 잠금 뒤에도 남는 활성 세션을 종료하고, 빈틈(잔존 세션)이 없는지 점검하기
+# Exercise 4-3 · 활성 세션 종료와 잔존 세션 점검하기
 
-## 개요
+## 이번에 만들 것: 세션 종료와 빈틈 점검
 
 > **오늘 들어온 일**
 >
@@ -47,7 +47,7 @@ containment.py      contain_account     : 계정을 잠그고 (4번), 잠금이 
 
 > **여기부터 문제입니다.**
 
-## Exercise 4-3 · 계정 잠금 뒤 활성 세션까지 종료하고, 빈틈(잔존 세션)을 점검하기
+## Exercise 4-3 · 활성 세션 종료와 잔존 세션 점검하기
 
 **이런 상황이 있습니다**
 

@@ -11,7 +11,7 @@ source:
 
 # 정답
 
-## 개요
+## 정답 보는 법
 
 설명하는 답은 한 예이고, <mark>핵심이 같으면 맞습니다.</mark>
 
@@ -192,14 +192,14 @@ AttributeError: 'function' object has no attribute 'sort_values'
 
 ---
 
-## 정답 마무리
+## 정답 확인 후 점검
 
 - (가) 예: 「`git status` 에 `.env` 와 `.venv` 는 보이지 않았다」. 보였다면 `.gitignore` 맨 아래에 한 줄을 적고 저장한 뒤 `git status` 를 다시 쳐서 사라졌는지 확인했다고 적습니다.
 - 깃허브의 `anomaly_detection` 폴더에 Unit 6과 Unit 7의 파일이 보이면 됩니다.
 
 ---
 
-## 부록 · Unit 6 파일 완성본 (Unit 6 파일을 완성하지 못했을 때만 씁니다)
+## 부록 · Unit 6 파일 완성본
 
 Unit 6의 Exercise 6-1 · 6-2 · 6-3 파일이 없거나 완성하지 못했다면 아래 완성본으로 파일을 만들어 Unit 7을 이어 갑니다. Unit 6에서 직접 풀었다면 이 부분은 건너뜁니다.
 

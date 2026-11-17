@@ -1,6 +1,6 @@
 ---
 id: m5-u09
-title: 자동 대응(SOAR) ⑨ — 리스크 평가(risk assessment)
+title: 자동 조치 리스크 평가
 lessons:
 - path: lessons/01/lesson.md
 - path: lessons/02/lesson.md
@@ -9,4 +9,4 @@ lessons:
 - path: lessons/05/lesson.md
 ---
 
-# 자동 대응(SOAR) ⑨ — 리스크 평가(risk assessment)
+# 자동 조치 리스크 평가

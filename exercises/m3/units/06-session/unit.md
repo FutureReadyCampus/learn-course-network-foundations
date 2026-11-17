@@ -1,6 +1,6 @@
 ---
 id: m3-u06
-title: 접근통제 ④ — 접근 점검
+title: 쓰지 않는 권한 찾기
 lessons:
 - path: lessons/01/lesson.md
 - path: lessons/02/lesson.md
@@ -10,4 +10,4 @@ lessons:
 - path: lessons/06/lesson.md
 ---
 
-# 접근통제 ④ — 접근 점검
+# 쓰지 않는 권한 찾기

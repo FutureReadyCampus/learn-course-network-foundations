@@ -1,6 +1,6 @@
 ---
 id: m5-u06-l03
-title: Exercise 6-2 · 같은 사건의 알림을 티켓 한 장으로 병합(중복 제거)하고, 티켓 상태를 허용된 순서로 전이하기
+title: Exercise 6-2 · 중복 알림 병합과 티켓 상태 전이
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 6-2 · 같은 사건의 알림을 티켓 한 장으로 병합(중복 제거)하고, 티켓 상태를 허용된 순서로 전이하기
+# Exercise 6-2 · 중복 알림 병합과 티켓 상태 전이
 
-## 개요
+## 이번에 만들 것: 알림 병합과 상태 전이
 
 > **오늘 들어온 일**
 >
@@ -85,7 +85,7 @@ ticket_merge.py   find_open_ticket     : 합칠 수 있는 티켓을 찾는다 (
 
 > **여기부터 문제입니다.**
 
-## Exercise 6-2 · 같은 사건의 알림을 티켓 한 장으로 병합(중복 제거)하고, 티켓 상태를 허용된 순서로 전이하기
+## Exercise 6-2 · 중복 알림 병합과 티켓 상태 전이
 
 **이런 상황이 있습니다**
 

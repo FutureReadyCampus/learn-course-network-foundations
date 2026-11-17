@@ -1,6 +1,6 @@
 ---
 id: m5-u04-l03
-title: Exercise 4-2 · 허용 목록 IP 와 공유 IP 는 자동 차단에서 제외하고, 차단에 유효 기간(TTL)을 두어 자동 해제하기
+title: Exercise 4-2 · 허용 IP 제외와 차단 자동 해제 만들기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 4-2 · 허용 목록 IP 와 공유 IP 는 자동 차단에서 제외하고, 차단에 유효 기간(TTL)을 두어 자동 해제하기
+# Exercise 4-2 · 허용 IP 제외와 차단 자동 해제 만들기
 
-## 개요
+## 이번에 만들 것: 예외 IP와 차단 만료
 
 > **오늘 들어온 일**
 >
@@ -50,7 +50,7 @@ ip_actions.py     is_in_allowlist    : 허용 목록에 있는지 확인한다 (
 
 > **여기부터 문제입니다.**
 
-## Exercise 4-2 · 허용 목록 IP 와 공유 IP 를 판별해 차단하고, 유효 기간이 지나면 자동 해제하기
+## Exercise 4-2 · 허용 IP 제외와 차단 자동 해제 만들기
 
 **이런 상황이 있습니다**
 

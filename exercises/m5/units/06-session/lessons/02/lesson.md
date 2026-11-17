@@ -1,6 +1,6 @@
 ---
 id: m5-u06-l02
-title: Exercise 6-1 · 알림 한 건으로 티켓을 생성하고, 응답 기한(SLA)을 계산하며, 조치 확인에 실패한 건을 수동 확인 대상으로 표시하기
+title: Exercise 6-1 · 티켓 생성과 응답 기한 계산하기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 6-1 · 알림 한 건으로 티켓을 생성하고, 응답 기한(SLA)을 계산하며, 조치 확인에 실패한 건을 수동 확인 대상으로 표시하기
+# Exercise 6-1 · 티켓 생성과 응답 기한 계산하기
 
-## 개요
+## 이번에 만들 것: 티켓과 응답 기한
 
 > **오늘 들어온 일**
 >
@@ -52,7 +52,7 @@ ticketing.py   make_title         : 등급 · 대상 · 규칙으로 티켓 제�
 
 > **여기부터 문제입니다.**
 
-## Exercise 6-1 · 알림 11건으로 티켓을 생성하고, 응답 기한(SLA)을 계산하며, 조치 확인에 실패한 건을 수동 확인 대상으로 표시하기
+## Exercise 6-1 · 티켓 생성과 응답 기한 계산하기
 
 **이런 상황이 있습니다**
 

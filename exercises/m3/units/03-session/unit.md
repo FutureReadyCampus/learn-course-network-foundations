@@ -1,6 +1,6 @@
 ---
 id: m3-u03
-title: 접근통제 ③ — 설정이 고장 나도 거부
+title: 설정이 고장 나도 거부하기와 테스트 설계
 lessons:
 - path: lessons/01/lesson.md
 - path: lessons/02/lesson.md
@@ -9,4 +9,4 @@ lessons:
 - path: lessons/05/lesson.md
 ---
 
-# 접근통제 ③ — 설정이 고장 나도 거부
+# 설정이 고장 나도 거부하기와 테스트 설계

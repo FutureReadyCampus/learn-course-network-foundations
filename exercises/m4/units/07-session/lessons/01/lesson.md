@@ -11,7 +11,7 @@ source:
 
 # 시작하기
 
-## 개요
+## 이번에 할 일: 로그 연결과 위험 점수
 
 Unit 6에서는 판정 서버 · SaaS · 웹 로그에서 먼저 확인할 것을 따로 탐지했습니다. 이번 Unit에서는 먼저 **같은 사용자의 이벤트가 서로 다른 로그에 짧은 시간 안에 나타난 경우**를 찾아 하나의 사건으로 연결합니다. 이렇게 서로 다른 로그를 같은 기준으로 연결해 분석하는 것을 상관분석(correlation, 코렐레이션)이라고 합니다. 그다음 탐지된 규칙마다 **점수**를 매겨 high · mid · low 로 나누고, 결과를 `unit05_risk_scores.json` 한 파일에 저장합니다. 파일 이름의 `unit05` 는 강의계획서가 정한 이름이라 그대로 씁니다.
 
@@ -35,7 +35,7 @@ Unit 6에서는 판정 서버 · SaaS · 웹 로그에서 먼저 확인할 것�
 | `malicious_detection.py` | Exercise 6-3 | Exercise 7-1 · 7-2가 불러옵니다 | 이 안내 맨 아래 「부록」의 완성본으로 파일을 만듭니다 |
 | `correlation.py` | Exercise 7-1 | Exercise 7-2 `exercise7-2_run.py` 가 불러옵니다 | 이 안내 Exercise 7-1 의 코드 칸에 「Exercise 7-1 정답」의 「채운 코드」를 넣어 완성합니다 |
 
-## 시작하기 순서
+## 폴더 열고 Unit 6 파일 확인하기
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치와 Unit 6 파일을 확인합니다(맥북은 `python3`). <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나고, `ls` 결과에 위 표의 파일들이 보여야</mark> 합니다.

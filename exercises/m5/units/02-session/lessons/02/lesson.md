@@ -1,6 +1,6 @@
 ---
 id: m5-u02-l02
-title: 'Exercise 2-1 · 알림 보강(enrichment): 대상의 재직 · VIP · 접속 IP 맥락(context) 추가'
+title: Exercise 2-1 · 알림에 맥락 정보 보강하기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 2-1 · 알림 보강(enrichment): 대상의 재직 · VIP · 접속 IP 맥락(context) 추가
+# Exercise 2-1 · 알림에 맥락 정보 보강하기
 
-## 개요
+## 이번 의뢰: 맥락 없는 자동 조치
 
 > **오늘 들어온 일**
 >
@@ -56,7 +56,7 @@ enrichment.py   lookup_account   : 대상이 users_info 안에 있으면 재직 
 
 > **여기부터 문제입니다.**
 
-## Exercise 2-1 · 알림 5건을 보강하여 재직 · VIP · 접속 IP 맥락을 추가하고 VIP 계정 알림 수 집계하기
+## Exercise 2-1 · 알림 5건 보강하고 VIP 알림 수 세기
 
 **이런 상황이 있습니다**
 

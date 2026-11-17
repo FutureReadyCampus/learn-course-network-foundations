@@ -1,6 +1,6 @@
 ---
 id: m5-u03-l02
-title: Exercise 3-1 · 담당자의 승인 · 거절 결정을 적용하고, 권한 없는 승인은 막기 (승인 처리)
+title: Exercise 3-1 · 담당자 승인·거절 적용과 권한 확인
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 3-1 · 담당자의 승인 · 거절 결정을 적용하고, 권한 없는 승인은 막기 (승인 처리)
+# Exercise 3-1 · 담당자 승인·거절 적용과 권한 확인
 
-## 개요
+## 이번 의뢰: 승인 결과 받기
 
 > **오늘 들어온 일**
 >
@@ -58,7 +58,7 @@ approvals.py    is_authorized     : 승인한 사람이 권한 목록에 있는�
 
 > **여기부터 문제입니다.**
 
-## Exercise 3-1 · 감사 기록을 만들고, 권한을 확인해 담당자 결정을 적용하기
+## Exercise 3-1 · 권한 확인 후 담당자 결정 적용
 
 **이런 상황이 있습니다**
 

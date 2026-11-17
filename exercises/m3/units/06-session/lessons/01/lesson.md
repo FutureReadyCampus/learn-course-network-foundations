@@ -11,7 +11,7 @@ source:
 
 # 시작하기
 
-## 개요
+## 이번 Unit에서 만들 것: 권한 접근 점검
 
 Unit 5까지는 권한을 **주는** 흐름(요청 → 승인 → 예외 권한 부여 → 기한 점검 → 기록 저장)을 만들었습니다. 이번 Unit에서는 반대로 이미 **부여돼 있는 권한** 가운데 필요 없어진 것을 찾는 **접근 점검**을 만듭니다.
 
@@ -36,7 +36,7 @@ Unit 5까지는 권한을 **주는** 흐름(요청 → 승인 → 예외 권한 
 
 - 이번 Unit에서 만드는 파일도 뒤 Exercise가 가져다 씁니다. Exercise 6-1의 `review_list.py` 는 Exercise 6-2 · Exercise 6-3에서, Exercise 6-2의 `review_rules.py` 는 Exercise 6-3에서 씁니다.
 
-## 시작하기 순서
+## 터미널 열고 Unit 1~3 파일 확인하기
 
 1. **[VS Code]** 왼쪽 목록의 `access_control` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** 위치와 Unit 1 ~ Unit 3에서 만든 파일을 확인합니다. 결과가 `…/security-agent-toolkit/access_control` 로 끝나야 합니다.

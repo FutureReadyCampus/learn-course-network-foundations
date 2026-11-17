@@ -1,6 +1,6 @@
 ---
 id: m4-u02-l03
-title: Exercise 2-2 · 판정 서버 로그와 SaaS 로그를 공통 이벤트로 바꾸기
+title: Exercise 2-2 · JSON·CSV 로그를 이벤트로
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 2-2 · 판정 서버 로그와 SaaS 로그를 공통 이벤트로 바꾸기
+# Exercise 2-2 · JSON·CSV 로그를 이벤트로
 
-## 개요
+## 이번에 만들 것: JSON·CSV 이벤트 변환
 
 > **오늘 들어온 일**
 >
@@ -25,7 +25,7 @@ source:
 
 > **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「Exercise」 전까지는 이 Exercise의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
 
-## 읽기 · 왜 필요한가
+## 읽기 · 왜 두 로그도 같은 키로 맞추는가
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
@@ -120,7 +120,7 @@ print(allowed_result)                                # 바꾼 값을 출력한�
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## Exercise 2-2 · 판정 서버 로그와 SaaS 로그를 공통 이벤트로 바꾸기
+## Exercise 2-2 · JSON·CSV 로그를 이벤트로
 
 **이런 상황이 있습니다**
 

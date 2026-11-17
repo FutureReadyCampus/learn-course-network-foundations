@@ -11,7 +11,7 @@ source:
 
 # 정답
 
-## 개요
+## 정답 보는 법
 
 글로 쓰는 답은 한 예이고, <mark>핵심이 같으면 맞습니다.</mark>
 
@@ -403,7 +403,7 @@ SyntaxError: invalid syntax
 
 ---
 
-## 정답 마무리
+## 정답 확인 후 점검
 
 - (가) 한 예: <mark>`git status` 에서 `.env` 와 `.venv` 가 보이지 않았습니다.</mark> `__pycache__` 가 보여서 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 다시 확인했습니다.
 - 깃허브의 `anomaly_detection` 폴더에 `event_summary.py` · `pipeline.py` · `anomaly_detection_report_2026-11-02.json` 이 보이면 됩니다.

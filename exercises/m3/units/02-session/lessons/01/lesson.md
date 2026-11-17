@@ -1,6 +1,6 @@
 ---
 id: m3-u02-l01
-title: 아침 과제 16 · 새 자리에서 내 깃허브 연결하기 — 앞 사람 흔적 확인
+title: 준비 과제 16 · 새 자리에서 내 깃허브 연결하기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 준비 과제 16 · 새 자리에서 내 깃허브 연결하기 — 앞 사람 흔적 확인
+# 준비 과제 16 · 새 자리에서 내 깃허브 연결하기
 
-## 개요
+## 이번에 할 일: 앞 사람 흔적 정리하기
 
 Unit 2 · 준비 과제
 

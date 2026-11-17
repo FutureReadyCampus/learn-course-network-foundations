@@ -1,6 +1,6 @@
 ---
 id: m4-u10
-title: 이상탐지 ⑥ — Gemini API 를 활용한 AI 요약 만들기
+title: AI 요약과 탐지 파이프라인
 lessons:
 - path: lessons/01/lesson.md
 - path: lessons/02/lesson.md
@@ -10,4 +10,4 @@ lessons:
 - path: lessons/06/lesson.md
 ---
 
-# 이상탐지 ⑥ — Gemini API 를 활용한 AI 요약 만들기
+# AI 요약과 탐지 파이프라인

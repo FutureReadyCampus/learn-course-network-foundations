@@ -11,7 +11,7 @@ source:
 
 # 시작하기
 
-## 개요
+## 이번에 할 일: AI 요약과 pipeline.py
 
 Unit 8까지 이상탐지 규칙을 만들고, 알림이 맞았는지 세고, 틀린 알림을 줄였습니다. 이번 Unit에서는 <mark>**Unit 6 · 7에서 만든 탐지를 한 번에 실행해 보고서 파일 하나로 남기고**</mark>, 4과목에서 만난 상황을 정리합니다. 4과목의 마지막 Unit입니다.
 
@@ -42,7 +42,7 @@ Unit 10은 Exercise 10-1 · 10-2 · 10-3으로 이루어져 있고, 다음 Unit�
 | `correlation.py` · `risk_scores.py` | Unit 7의 Exercise 7-1 · 7-2 | Exercise 10-2 | 복구 파일 모음의 완성본으로 파일을 만듭니다 |
 | `event_summary.py` | Exercise 10-1 | Exercise 10-2 `pipeline.py` 가 불러옵니다 | 이 안내 Exercise 10-1 의 코드 칸에 「Exercise 10-1 정답」의 「채운 코드」를 넣어 완성합니다 |
 
-## 시작하기 순서
+## 폴더 열고 LLM 호출 파일 준비하기
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치와 앞 Unit의 파일을 확인합니다(맥북은 `python3`). <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나고, `ls` 결과에 위 표의 Unit 6 · 7 파일들이 보여야</mark> 합니다. 없는 파일이 있으면 복구 파일 모음으로 만든 뒤 `ls` 를 다시 칩니다. <mark>자리를 바꾼 사람은 3번 전에 아래 「.env 와 API 키 다시 받기」를 먼저 합니다.</mark>
@@ -124,7 +124,7 @@ Unit 10은 Exercise 10-1 · 10-2 · 10-3으로 이루어져 있고, 다음 Unit�
    python -c "from correlation import find_chains_in_events; from risk_scores import collect_findings, save_records"
    ```
 
-## .env 와 API 키 다시 받기 (자리를 바꾼 사람 · 3번에서 오류가 난 사람)
+## API 키와 .env 다시 받기 (필요한 사람만)
 
 처음부터 새로 받는 방법입니다. 키를 만들고, 키가 맞는지 확인하고, `.env` 파일에 넣고, 깃허브에 올라가지 않게 막은 뒤, 마지막으로 읽히는지 봅니다.
 

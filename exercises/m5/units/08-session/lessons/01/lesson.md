@@ -11,7 +11,7 @@ source:
 
 # 시작하기
 
-## 개요
+## Unit 8에서 만들 것: 리포트 · 승인 게이트 · 롤백
 
 <mark style="background:#e0d4ff">Unit 7까지 조치 · 티켓 · 알림 · 에스컬레이션</mark>(escalation, 에스컬레이션: 정해진 시간 안에 처리되지 않은 사건을 상위 담당자에게 넘겨 처리하게 하는 일)을 만들었습니다. Unit 8에서는 세 가지를 만듭니다. <mark>**처리 결과를 리포트로 보고하는 부분, 자동 실행해도 되는 조치와 사람의 승인이 필요한 조치를 나누는 부분, 오탐으로 밝혀진 조치를 원래 상태로 되돌리는 부분**</mark>입니다.
 
@@ -29,7 +29,7 @@ source:
   - `sla` 는 서비스 수준 협약(SLA, Service Level Agreement)의 줄임말입니다. 이 문서에서는 응답 기한을 뜻합니다.
   - `sla_due` 는 응답해야 하는 시각입니다.
 
-## 시작하기 순서
+## 폴더 열고 파일 준비하기
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** `soar_response` 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `incident.py` 와 `rollback.py` 가 보이면</mark> 됩니다. Exercise 8-3에는 Unit 4 · Unit 5의 `undo_actions.py` · `account_actions.py` · `ip_actions.py` · `containment_store.py` 도 필요합니다(없으면 아래 「이전 파일이 없을 때」 절의 코드 상자로 만듭니다).

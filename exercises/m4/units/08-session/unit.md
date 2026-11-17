@@ -1,6 +1,6 @@
 ---
 id: m4-u08
-title: 이상탐지 ⑤ — 오탐
+title: 오탐과 미탐 줄이기
 lessons:
 - path: lessons/01/lesson.md
 - path: lessons/02/lesson.md
@@ -10,4 +10,4 @@ lessons:
 - path: lessons/06/lesson.md
 ---
 
-# 이상탐지 ⑤ — 오탐
+# 오탐과 미탐 줄이기

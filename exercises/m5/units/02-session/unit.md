@@ -1,6 +1,6 @@
 ---
 id: m5-u02
-title: 자동 대응(SOAR) ② — 알림 보강(enrichment)
+title: 알림에 맥락을 붙이고 경로 나누기
 lessons:
 - path: lessons/01/lesson.md
 - path: lessons/02/lesson.md
@@ -10,4 +10,4 @@ lessons:
 - path: lessons/06/lesson.md
 ---
 
-# 자동 대응(SOAR) ② — 알림 보강(enrichment)
+# 알림에 맥락을 붙이고 경로 나누기

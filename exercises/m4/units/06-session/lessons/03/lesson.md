@@ -1,6 +1,6 @@
 ---
 id: m4-u06-l03
-title: Exercise 6-2 · SaaS 로그에서 이상 사용 세 가지 찾기
+title: Exercise 6-2 · SaaS 이상 사용 세 가지 찾기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 6-2 · SaaS 로그에서 이상 사용 세 가지 찾기
+# Exercise 6-2 · SaaS 이상 사용 세 가지 찾기
 
-## 개요
+## 이번 의뢰: SaaS 이상 사용 찾기
 
 > **이번 Exercise에 들어온 일**
 >
@@ -23,7 +23,7 @@ source:
 
 > **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「문제」 전까지는 이 Exercise의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다. (판다스 문법 상자의 코드는 눈으로 읽으면 됩니다.)
 
-## 읽기 · 왜 필요한가
+## 읽기 · 왜 규칙 세 개를 따로 찾는가
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
@@ -259,7 +259,7 @@ False
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## Exercise 6-2 · SaaS 로그에서 이상 사용 세 가지 찾기
+## Exercise 6-2 · SaaS 이상 사용 세 가지 찾기
 
 **이런 상황이 있습니다**
 

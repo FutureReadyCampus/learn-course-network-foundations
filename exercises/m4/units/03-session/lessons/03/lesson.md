@@ -1,6 +1,6 @@
 ---
 id: m4-u03-l03
-title: Exercise 3-2 · 실패를 사용자별 · 시간대별로 묶어 세고 저장하기
+title: Exercise 3-2 · 실패를 묶어 세고 CSV로 저장
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 3-2 · 실패를 사용자별 · 시간대별로 묶어 세고 저장하기
+# Exercise 3-2 · 실패를 묶어 세고 CSV로 저장
 
-## 개요
+## 이번에 만들 것: 실패 집계표와 CSV
 
 > **오늘 들어온 일**
 >
@@ -26,7 +26,7 @@ source:
 
 > **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「Exercise」 전까지는 이 Exercise의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
 
-## 읽기 · 왜 필요한가
+## 읽기 · 왜 실패를 묶어서 세는가
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
@@ -331,7 +331,7 @@ failed.to_csv("failed_events.csv", index=False)  # 표를 failed_events.csv 파�
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## Exercise 3-2 · 실패한 이벤트를 사용자별 · 시간대별로 묶어 세고 CSV 로 저장하기
+## Exercise 3-2 · 실패를 묶어 세고 CSV로 저장
 
 **이런 상황이 있습니다**
 

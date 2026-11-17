@@ -1,6 +1,6 @@
 ---
 id: m5-u07
-title: 자동 대응(SOAR) ⑦ — 에스컬레이션(escalation) 구현
+title: 에스컬레이션과 운영 지표
 lessons:
 - path: lessons/01/lesson.md
 - path: lessons/02/lesson.md
@@ -9,4 +9,4 @@ lessons:
 - path: lessons/05/lesson.md
 ---
 
-# 자동 대응(SOAR) ⑦ — 에스컬레이션(escalation) 구현
+# 에스컬레이션과 운영 지표

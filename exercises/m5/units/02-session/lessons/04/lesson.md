@@ -1,6 +1,6 @@
 ---
 id: m5-u02-l04
-title: Exercise 2-3 · 중복 실행을 방지하고 1회 실행당 잠글 수 있는 계정 수 제한하기 (안전장치, guardrail)
+title: Exercise 2-3 · 중복 실행과 잠금 수 제한하기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 2-3 · 중복 실행을 방지하고 1회 실행당 잠글 수 있는 계정 수 제한하기 (안전장치, guardrail)
+# Exercise 2-3 · 중복 실행과 잠금 수 제한하기
 
-## 개요
+## 이번 의뢰: 중복 처리와 대량 잠금
 
 > **오늘 들어온 일**
 >
@@ -63,7 +63,7 @@ safe_runner.py   find_skip_reason : 이미 잠긴 계정이면 (1 · 2번), 잠�
 
 > **여기부터 문제입니다.**
 
-## Exercise 2-3 · 중복 실행을 방지하고 1회 실행당 잠글 수 있는 계정을 3개로 제한하기
+## Exercise 2-3 · 중복 방지와 잠금 3개 제한
 
 **이런 상황이 있습니다**
 

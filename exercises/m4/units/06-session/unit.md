@@ -1,6 +1,6 @@
 ---
 id: m4-u06
-title: 이상탐지 ④ — 서버가 거절한 요청
+title: 거절 요청·SaaS 이상 사용·경로 스캔 찾기
 lessons:
 - path: lessons/01/lesson.md
 - path: lessons/02/lesson.md
@@ -10,4 +10,4 @@ lessons:
 - path: lessons/06/lesson.md
 ---
 
-# 이상탐지 ④ — 서버가 거절한 요청
+# 거절 요청·SaaS 이상 사용·경로 스캔 찾기

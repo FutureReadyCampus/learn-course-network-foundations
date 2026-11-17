@@ -1,6 +1,6 @@
 ---
 id: m5-u02-l03
-title: Exercise 2-2 · 맥락에 따라 승인 필요 · 오탐 종료 · 기본 경로로 분기하기 (조건 분기, branching)
+title: Exercise 2-2 · 맥락에 따라 처리 경로 나누기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 2-2 · 맥락에 따라 승인 필요 · 오탐 종료 · 기본 경로로 분기하기 (조건 분기, branching)
+# Exercise 2-2 · 맥락에 따라 처리 경로 나누기
 
-## 개요
+## 이번 의뢰: 오탐과 VIP 계정 구분
 
 > **오늘 들어온 일**
 >
@@ -73,7 +73,7 @@ routing.py   is_only_ip_related : 규칙을 하나씩 꺼내 IP 관련이 아닌
 
 > **여기부터 문제입니다.**
 
-## Exercise 2-2 · VIP 계정은 승인 경로로 분기하고, 신뢰 IP 의 IP 관련 알림은 오탐으로 종료하며 경로별 건수 집계하기
+## Exercise 2-2 · 경로 분기하고 경로별 건수 세기
 
 **이런 상황이 있습니다**
 

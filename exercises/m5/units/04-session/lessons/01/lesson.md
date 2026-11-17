@@ -11,7 +11,7 @@ source:
 
 # 시작하기
 
-## 개요
+## Unit 4에서 만들 것: 실행 · 검증 · 기록
 
 Unit 3까지는 판단 단계(맥락 보강 · 처리 경로 분기 · 안전장치 · 승인 · 재시도)를 만들었습니다. 이번 Unit에서는 판단한 대응 조치를 연습용 시스템(실제 서버 대신 연습용으로 만든 시뮬레이션 환경)에서 **실행하고, 사후 검증하고, 감사 기록으로 남기고, 롤백할 수 있게** 구현합니다. 사후 검증(post-action verification)은 조치 후 실제 상태를 다시 확인하는 일입니다. 감사 기록(audit log)은 조치를 순서대로 남긴 기록입니다. 롤백(rollback)은 조치 이전 상태로 되돌리는 일입니다. 침해 사고 대응에서 이 구현 단계는 봉쇄(containment, 컨테인먼트: 피해가 더 확산되기 전에 사고를 차단하는 단계)에 해당합니다. NIST SP 800-61 Rev. 2 는 봉쇄를 「봉쇄 · 제거 · 복구」(Containment, Eradication, and Recovery) 단계 안에 둡니다. 이번 Unit에서는 현업에서 자주 생기는 결함 세 가지를 하나씩 해소합니다.
 
@@ -23,7 +23,7 @@ Unit 3까지는 판단 단계(맥락 보강 · 처리 경로 분기 · 안전장
 
  **이전 파일**: Unit 1에서 만든 `incident.py` 의 `load_json` · `save_json` 만 씁니다. 없으면 `complete_files.md` 의 1절에서 복사합니다.
 
-## 시작하기 순서
+## 설정 파일 세 개 만들기
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** 5과목 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `config` 와 `incident.py` 가 보이면</mark> 됩니다.

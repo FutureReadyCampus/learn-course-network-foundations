@@ -11,7 +11,7 @@ source:
 
 # 시작하기
 
-## 개요
+## Unit 8에서 할 일: 계획, 승인, 실행으로 회수
 
 Unit 6과 Unit 7에서는 부여돼 있는 권한을 점검해서 **회수 대상 8건**을 찾았습니다. 이번 Unit에서는 그 8건을 실제로 **회수**(권한을 없애는 일)합니다. 단, 바로 지우지 않고 계획 → 승인 → 실행 순서로 합니다.
 
@@ -41,7 +41,7 @@ Unit 6과 Unit 7에서는 부여돼 있는 권한을 점검해서 **회수 대�
 
 - 이번 Unit에서 만드는 파일도 뒤 Exercise가 가져다 씁니다. Exercise 8-1의 `revoke_plan.py` 는 Exercise 8-2 · Exercise 8-3에서, Exercise 8-2의 `revoke_approve.py` 는 Exercise 8-3에서 씁니다.
 
-## 시작하기 순서
+## 폴더 열고 Unit 6 · 7 파일 확인하기
 
 1. **[VS Code]** 왼쪽 목록의 `access_control` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** 위치와 앞서 만든 파일을 확인합니다. 결과가 `…/security-agent-toolkit/access_control` 로 끝나야 합니다.
