@@ -17,7 +17,7 @@ source:
 
 ---
 
-## Exercise 4-1 정답
+## 실습 4-1 정답
 
  **터미널에 입력합니다.**
 
@@ -113,7 +113,7 @@ KeyError: 'failed_login'
 
 ---
 
-## Exercise 4-2 정답
+## 실습 4-2 정답
 
  **터미널에 입력합니다.**
 
@@ -195,7 +195,7 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 
 ---
 
-## Exercise 4-3 정답
+## 실습 4-3 정답
 
  **터미널에 입력합니다.**
 
@@ -283,4 +283,4 @@ ls
 
 **결과**
 
-- 이번 Unit에서 만든 파일 **여덟 개**와 안내 · 보고서 두 파일이 보여야 합니다. 깃허브에 올리는 일은 Unit 5의 Exercise 5-2 마지막에 합니다.
+- 이번 Unit에서 만든 파일 **여덟 개**와 안내 · 보고서 두 파일이 보여야 합니다. 깃허브에 올리는 일은 Unit 5의 실습 5-2 마지막에 합니다.

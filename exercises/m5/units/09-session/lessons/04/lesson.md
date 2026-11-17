@@ -17,7 +17,7 @@ source:
 
 ---
 
-## Exercise 9-1 정답
+## 실습 9-1 정답
 
  **터미널에 입력합니다.**
 
@@ -159,7 +159,7 @@ NameError: name 'sorted_table' is not defined
 
 ---
 
-## Exercise 9-2 정답
+## 실습 9-2 정답
 
  **터미널에 입력합니다.**
 

@@ -1,6 +1,6 @@
 ---
 id: m5-u08-l04
-title: Exercise 8-3 · 오탐 신고 처리와 롤백 확인
+title: 실습 8-3 · 오탐 신고 처리와 롤백 확인
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 8-3 · 오탐 신고 처리와 롤백 확인
+# 실습 8-3 · 오탐 신고 처리와 롤백 확인
 
-## 이번에 만들 것: 오탐 대응 절차
+## 목표: 오탐 대응 절차
 
 > **오늘 들어온 일**
 >
@@ -27,7 +27,7 @@ source:
 
 > **읽을거리 — 문제가 아닙니다.** 읽고 이해만 합니다.
 
-## 읽기 · 3.1 오탐 대응의 네 단계
+## 3.1 오탐 대응의 네 단계
 
 | 순서 | 하는 일 | 오늘 쓰는 함수 |
 |---|---|---|
@@ -55,7 +55,7 @@ false_positive.py   list_changes           : 바뀐 기록이면 (1번) 추가�
 
 > **여기부터 문제입니다.**
 
-## Exercise 8-3 · 오탐 신고 처리와 롤백 확인
+## 실습 8-3 · 오탐 신고 처리와 롤백 확인
 
 **이런 상황이 있습니다**
 
@@ -94,7 +94,7 @@ false_positive.py   list_changes           : 바뀐 기록이면 (1번) 추가�
 ]
 ```
 
-**`false_positive.py`** — 오탐 처리 함수 모음입니다. Exercise 9-2도 가져와 사용(import)합니다. Unit 5의 `rollback.py` 가 같은 폴더에 있어야 합니다. 직접 쓰는 곳은 1 ~ 7번입니다.
+**`false_positive.py`** — 오탐 처리 함수 모음입니다. 실습 9-2도 가져와 사용(import)합니다. Unit 5의 `rollback.py` 가 같은 폴더에 있어야 합니다. 직접 쓰는 곳은 1 ~ 7번입니다.
 
 - 3번과 4번은 `if` 한 줄만 씁니다. 그 아래 미리 채운 `remaining.append(target)` 줄이 `if` 안쪽입니다.
 
@@ -214,7 +214,7 @@ print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.
    touch fp_state.json fp_log.json fp_reports.json false_positive.py exercise8-3_run.py
    ls
    ```
-2. **[VS Code]** `false_positive.py` 1 ~ 7번, `exercise8-3_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 8-3 한눈에」를 봅니다.
+2. **[VS Code]** `false_positive.py` 1 ~ 7번, `exercise8-3_run.py` 8 · 9번을 씁니다. 막히면 아래 「실습 8-3 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python exercise8-3_run.py
@@ -223,12 +223,12 @@ print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.
    - 단계 1 은 숫자가 제목 줄에 함께 나오고 그 아래 1줄입니다.
    - 단계 2 는 10줄(신고 한 건에 5줄씩), 단계 3 은 2줄입니다.
    - 단계 4 는 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
-5. **[보고서]** Unit 8 의 `## Exercise 8-3` 아래를 채웁니다.
+5. **[보고서]** Unit 8 의 `## 실습 8-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 신고마다 걸린 시간과 처리 뒤 잠긴 계정을 적어 주세요.
    - (나) [핵심 질문] `INC-301` 의 영향 확인에 `IP 차단 198.51.100.120` 이 없습니다. `fp_log.json` 에서 `198.51.100.120` 의 IP 차단 기록이 가진 `before` · `after` 를 근거로 그 이유를 적고, `false_positive.py` 1번의 `if` 줄이 없으면 규칙 조정 제안이 어떻게 잘못되는지 적어 주세요.
    - (다) [핵심 질문] `INC-301` 의 되돌리기에 `되돌리기 불가 jiwoo` 가 있습니다. 무엇을 되돌릴 수 없는지(비가역 조치)와 담당자가 `jiwoo` 에게 따로 안내해야 할 것을 적어 주세요. 그리고 `dami` 가 처리 뒤에도 잠겨 있어야 하는 이유를 따로 적어 주세요.
 
-## Exercise 8-3 한눈에
+## 실습 8-3 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
@@ -245,11 +245,11 @@ print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.
 
 | 확인 | 문제 |
 |---|---|
-| 티켓과 조치 기록을 대조해 리포트 파일을 생성하고, 티켓이 없는 조치까지 찾았다 | Exercise 8-1 |
-| 조치 요청을 위험 점수로 자동 · 승인 필요 · 차단 금지로 분류했다 | Exercise 8-2 |
-| 오탐 신고를 영향 확인 · 롤백 · 복구 확인 · 규칙 조정 제안까지 처리했다 | Exercise 8-3 |
+| 티켓과 조치 기록을 대조해 리포트 파일을 생성하고, 티켓이 없는 조치까지 찾았다 | 실습 8-1 |
+| 조치 요청을 위험 점수로 자동 · 승인 필요 · 차단 금지로 분류했다 | 실습 8-2 |
+| 오탐 신고를 영향 확인 · 롤백 · 복구 확인 · 규칙 조정 제안까지 처리했다 | 실습 8-3 |
 
-<mark>Unit 9의 Exercise 9-1에서는 자동 조치마다 운영 위험을 평가한 문서(`risk_assessment.md`)를 새로 작성합니다. Exercise 9-2에서는 Unit 8의 `report.py` · `approval_gate.py` · `false_positive.py` 를 가져와 사용(import)해 Unit 8에서 만든 것을 한 번에 점검합니다.</mark>
+<mark>Unit 9의 실습 9-1에서는 자동 조치마다 운영 위험을 평가한 문서(`risk_assessment.md`)를 새로 작성합니다. 실습 9-2에서는 Unit 8의 `report.py` · `approval_gate.py` · `false_positive.py` 를 가져와 사용(import)해 Unit 8에서 만든 것을 한 번에 점검합니다.</mark>
 
 ---
 

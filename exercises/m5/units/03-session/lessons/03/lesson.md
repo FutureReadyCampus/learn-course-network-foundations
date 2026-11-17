@@ -1,6 +1,6 @@
 ---
 id: m5-u03-l03
-title: Exercise 3-2 · 연결 오류 재시도와 실패 목록
+title: 실습 3-2 · 연결 오류 재시도와 실패 목록
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,7 +9,7 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 3-2 · 연결 오류 재시도와 실패 목록
+# 실습 3-2 · 연결 오류 재시도와 실패 목록
 
 ## 이번 의뢰: 티켓 서비스 장애
 
@@ -22,7 +22,7 @@ source:
 
 > **읽을거리 — 문제가 아닙니다.** 읽고 이해만 합니다.
 
-## 읽기 · 2.1 실패 처리는 「다시 시도 → 안 되면 기록하고 사람에게 넘기기」다
+## 2.1 실패 처리는 「다시 시도 → 안 되면 기록하고 사람에게 넘기기」다
 
 티켓 서비스 같은 외부 서비스는 가끔 잠깐 응답하지 않습니다. 이럴 때 바로 포기하지 않고 몇 번 다시 해 보는 것이 재시도입니다. 다만 지킬 규칙이 네 가지 있습니다.
 
@@ -66,13 +66,13 @@ failure_report.py   collect_failures        : 기록에서 「실패」로 시�
 실행 파일           exercise3-2_run.py        : 실패 목록을 받고(8번) 출력한다(9번)
 
 하루 흐름(flow.py 의 run_day_flow, 미리 채움) : 알림 하나가 아래 순서로 지나갑니다
-  ① 맥락 붙이기(Unit 2의 Exercise 2-1) → ② 경로 정하기(Unit 2의 Exercise 2-2)
-  → ③ 경로에 따라 셋 중 하나를 한다: 오탐 종료 | 승인 대기로 멈추기(Exercise 3-1) | 재시도하며 실행(Unit 2의 Exercise 2-3 + Exercise 3-2)
+  ① 맥락 붙이기(Unit 2의 실습 2-1) → ② 경로 정하기(Unit 2의 실습 2-2)
+  → ③ 경로에 따라 셋 중 하나를 한다: 오탐 종료 | 승인 대기로 멈추기(실습 3-1) | 재시도하며 실행(Unit 2의 실습 2-3 + 실습 3-2)
 ```
 
 > **여기부터 문제입니다.**
 
-## Exercise 3-2 · 최대 3번 재시도하고 실패 목록 만들기
+## 실습 3-2 · 최대 3번 재시도하고 실패 목록 만들기
 
 **이런 상황이 있습니다**
 
@@ -85,7 +85,7 @@ failure_report.py   collect_failures        : 기록에서 「실패」로 시�
 **`retry_runner.py`** — 실패를 흉내 내고 다시 시도합니다. 직접 쓰는 곳은 1 ~ 3번입니다.
 
 ```python
-from safe_runner import safe_run_action                                            # Unit 2의 Exercise 2-3에서 만든 안전한 액션 실행 함수를 불러온다
+from safe_runner import safe_run_action                                            # Unit 2의 실습 2-3에서 만든 안전한 액션 실행 함수를 불러온다
 
 MAX_TRIES = 3                                                                      # 한 액션을 시도하는 최대 횟수
 
@@ -118,15 +118,15 @@ def run_with_retry(action, incident, state, fail_plan, max_tries):              
     return "실패: " + last_error + " (" + str(max_tries) + "회 모두 실패)"         # 모든 시도가 실패했으면 실패 문장을 리턴한다 — 미리 채운 줄
 ```
 
-**`flow.py`** — 하루 흐름 파일입니다. 줄 끝의 `[Unit 2 Exercise 2-1]` 같은 표시로 어느 Exercise에서 만든 함수인지 알 수 있습니다. 직접 쓰는 곳은 4 · 5번입니다.
+**`flow.py`** — 하루 흐름 파일입니다. 줄 끝의 `[Unit 2 실습 2-1]` 같은 표시로 어느 실습에서 만든 함수인지 알 수 있습니다. 직접 쓰는 곳은 4 · 5번입니다.
 
 ```python
 from incident import change_status, match_playbooks                             # Unit 1 파일의 함수를 불러온다
-from enrichment import enrich_incident                                          # Unit 2의 Exercise 2-1 : 맥락 붙이기
-from routing import decide_route, apply_route                                   # Unit 2의 Exercise 2-2 : 경로 정하기
-from approvals import hold_for_approval                                         # Exercise 3-1 : 승인 대기로 멈추기
-from audit import log_line                                                      # Exercise 3-1 : 감사 기록 한 건 만들기
-from retry_runner import run_with_retry, MAX_TRIES                              # Exercise 3-2 : 재시도하며 실행하기
+from enrichment import enrich_incident                                          # Unit 2의 실습 2-1 : 맥락 붙이기
+from routing import decide_route, apply_route                                   # Unit 2의 실습 2-2 : 경로 정하기
+from approvals import hold_for_approval                                         # 실습 3-1 : 승인 대기로 멈추기
+from audit import log_line                                                      # 실습 3-1 : 감사 기록 한 건 만들기
+from retry_runner import run_with_retry, MAX_TRIES                              # 실습 3-2 : 재시도하며 실행하기
 
 VIP_REVIEW_ACTIONS = ["담당자 알림", "티켓 생성"]                               # VIP 계정 알림을 담당자가 승인하면 실행할 액션
 
@@ -157,22 +157,22 @@ def run_day_flow(incidents, registry, users_info, source_ips, trusted_ips, state
     pending = []                                                                # 승인 대기 건을 담을 빈 리스트
     route_log = []                                                              # 경로 기록을 담을 빈 리스트
     for incident in incidents:                                                  # 인시던트를 하나씩 꺼낸다
-        enrich_incident(incident, users_info, source_ips, trusted_ips)          # [Unit 2의 Exercise 2-1] 맥락을 붙인다
-        route, reason = decide_route(incident)                                  # [Unit 2의 Exercise 2-2] 처리 경로와 이유를 정한다
-        apply_route(incident, route, reason, route_log)                         # [Unit 2의 Exercise 2-2] 경로를 적용한다 (오탐 종료이면 여기서 닫힌다)
+        enrich_incident(incident, users_info, source_ips, trusted_ips)          # [Unit 2의 실습 2-1] 맥락을 붙인다
+        route, reason = decide_route(incident)                                  # [Unit 2의 실습 2-2] 처리 경로와 이유를 정한다
+        apply_route(incident, route, reason, route_log)                         # [Unit 2의 실습 2-2] 경로를 적용한다 (오탐 종료이면 여기서 닫힌다)
         result_text = "맞는 플레이북 없음"                                      # 처음에는 없다고 적어 둔다
         if route == "오탐 종료":                                                # 오탐으로 닫았으면
             result_text = "오탐 종료"                                           # 오탐 종료라고 적는다
         elif route == "승인 필요":                                              # VIP 계정이라 담당자 승인이 필요하면
-            pending.append(hold_for_approval(incident, "VIP 확인", VIP_REVIEW_ACTIONS, "VIP 계정이라 경로가 승인 필요", action_log))  # [Exercise 3-1] 승인 대기로 멈춘다
+            pending.append(hold_for_approval(incident, "VIP 확인", VIP_REVIEW_ACTIONS, "VIP 계정이라 경로가 승인 필요", action_log))  # [실습 3-1] 승인 대기로 멈춘다
             result_text = "승인 대기"                                           # 승인 대기라고 적는다
         else:                                                                   # 기본 경로이면
             for playbook in match_playbooks(incident, registry):                # 맞는 플레이북을 하나씩 꺼낸다
                 if playbook["approval"] != "자동":                              # 플레이북이 승인을 요구하면
-                    pending.append(hold_for_approval(incident, playbook["id"], playbook["actions"], "플레이북 승인 값이 " + playbook["approval"], action_log))  # [Exercise 3-1] 승인 대기로 멈춘다
+                    pending.append(hold_for_approval(incident, playbook["id"], playbook["actions"], "플레이북 승인 값이 " + playbook["approval"], action_log))  # [실습 3-1] 승인 대기로 멈춘다
                     result_text = "승인 대기"                                   # 승인 대기라고 적는다
                 else:                                                           # 자동이면
-                    result_text = run_playbook_with_retry(incident, playbook, state, action_log, fail_plan)  # [Exercise 3-2] 재시도하며 실행한다
+                    result_text = run_playbook_with_retry(incident, playbook, state, action_log, fail_plan)  # [실습 3-2] 재시도하며 실행한다
         print(incident["id"], incident["entity"], "->", result_text, "(상태: " + incident["status"] + ")")  # 한 줄로 출력한다
     return pending                                                              # 승인 대기 리스트를 리턴한다
 ```
@@ -196,7 +196,7 @@ def collect_failures(action_log):  # 감사 기록 리스트를 받는 함수
 
 ```python
 from incident import load_json, INCIDENTS_PATH                                              # Unit 1 파일의 함수를 불러온다
-from approvals import apply_decision                                                        # Exercise 3-1에 만든 결정 적용 함수를 불러온다
+from approvals import apply_decision                                                        # 실습 3-1에 만든 결정 적용 함수를 불러온다
 from retry_runner import run_with_retry, MAX_TRIES                                          # 방금 만든 재시도 함수를 불러온다
 from flow import run_day_flow                                                               # 하루 흐름 함수를 불러온다
 from failure_report import collect_failures                                                 # 실패한 기록을 모으는 함수를 불러온다
@@ -261,24 +261,24 @@ for item in pending:                                                            
 
 **순서**
 
-1. **[터미널]** 파일 네 개를 만들고 붙여 넣습니다. <mark>Exercise 3-1의 `audit.py` · `approvals.py` 가 완성돼 있어야(`flow.py` 가 이 두 파일을 불러오기 때문)</mark> 합니다.
+1. **[터미널]** 파일 네 개를 만들고 붙여 넣습니다. <mark>실습 3-1의 `audit.py` · `approvals.py` 가 완성돼 있어야(`flow.py` 가 이 두 파일을 불러오기 때문)</mark> 합니다.
    ```bash
    pwd
    touch retry_runner.py flow.py failure_report.py exercise3-2_run.py
    ls
    ```
-2. **[VS Code]** `retry_runner.py` 1 ~ 3번, `flow.py` 4 · 5번, `failure_report.py` 6 · 7번, `exercise3-2_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 3-2 한눈에」를 봅니다.
+2. **[VS Code]** `retry_runner.py` 1 ~ 3번, `flow.py` 4 · 5번, `failure_report.py` 6 · 7번, `exercise3-2_run.py` 8 · 9번을 씁니다. 막히면 아래 「실습 3-2 정리」를 봅니다.
 3. **[터미널]** 실행합니다(맥북은 `python3`).
    ```bash
    python exercise3-2_run.py
    ```
 4. 출력은 여섯 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 2줄, 단계 2 도 2줄, 단계 3 은 5줄, 단계 4 는 3줄, 단계 5 는 3줄, 단계 6 은 2줄입니다.
-5. **[보고서]** Unit 3 의 `## Exercise 3-2` 아래를 채웁니다.
+5. **[보고서]** Unit 3 의 `## 실습 3-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 단계 3 에서 `일부 실패` · `승인 대기` · `오탐 종료`(오탐: 위험하지 않은데 위험하다고 잘못 알린 경우) 인 알림의 번호를 각각 적어 주세요.
    - (나) [핵심 질문] 단계 1 과 2 는 같은 `run_with_retry` 인데 결과가 다릅니다. 두 단계의 `fail_plan` 값을 근거로 이유를 적어 주세요. 그리고 최대 횟수가 없으면 서비스가 계속 멈춰 있을 때 어떤 문제가 생기는지도 적어 주세요.
-   - (다) [핵심 질문] 단계 3 에서 INC-001 은 계정은 잠겼는데 상태가 `조치됨` 이 아닙니다. 그 이유를 적어 주세요. 또 단계 6 의 출력이 담당자에게 무엇을 알려 주는지 적어 주세요. 마지막으로, 같은 `state` 로 다시 처리해도 `dami` 가 두 번 잠기지 않는 이유를 Unit 2의 Exercise 2-3에서 만든 장치와 연결해 적어 주세요.
+   - (다) [핵심 질문] 단계 3 에서 INC-001 은 계정은 잠겼는데 상태가 `조치됨` 이 아닙니다. 그 이유를 적어 주세요. 또 단계 6 의 출력이 담당자에게 무엇을 알려 주는지 적어 주세요. 마지막으로, 같은 `state` 로 다시 처리해도 `dami` 가 두 번 잠기지 않는 이유를 Unit 2의 실습 2-3에서 만든 장치와 연결해 적어 주세요.
 
-## Exercise 3-2 한눈에
+## 실습 3-2 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
@@ -292,7 +292,7 @@ for item in pending:                                                            
 
 ## 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기
 
-<mark>문제가 아니라 오늘 한 일을 저장소(repository, 리포지터리: 깃허브에 코드를 모아 두는 곳)에 올리는 마무리입니다.</mark> Exercise 3-2 마지막 약 10분에 합니다. 어느 터미널을 써도 되고, 먼저 `pwd` 로 위치를 확인합니다. 결과가 `soar_response` 로 끝날 때만 아래 1번의 `cd ..` 를 칩니다.
+<mark>문제가 아니라 오늘 한 일을 저장소(repository, 리포지터리: 깃허브에 코드를 모아 두는 곳)에 올리는 마무리입니다.</mark> 실습 3-2 마지막 약 10분에 합니다. 어느 터미널을 써도 되고, 먼저 `pwd` 로 위치를 확인합니다. 결과가 `soar_response` 로 끝날 때만 아래 1번의 `cd ..` 를 칩니다.
 
 **이런 상황이 있습니다**
 
@@ -397,7 +397,7 @@ for item in pending:                                                            
    - 빠진 이름이 있으면 VS Code 왼쪽 목록의 `soar_response` 폴더에 내 PC 에도 있는지 봅니다.
      - 없으면 다른 폴더에 만든 것이니 `soar_response` 안으로 옮기고, `pwd` 로 위치를 확인한 뒤 2번의 `git status` 부터 다시 합니다.
 
-## 마무리 한눈에
+## 마무리 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
@@ -411,8 +411,8 @@ for item in pending:                                                            
 
 | 확인 | 문제 |
 |---|---|
-| 담당자 결정을 적용하고 권한 없는 승인은 막았다 | Exercise 3-1 |
-| 연결 오류가 나면 최대 3번 시도하고, 하루 흐름 전체를 한 번에 읽었다 | Exercise 3-2 |
+| 담당자 결정을 적용하고 권한 없는 승인은 막았다 | 실습 3-1 |
+| 연결 오류가 나면 최대 3번 시도하고, 하루 흐름 전체를 한 번에 읽었다 | 실습 3-2 |
 | 오늘 만든 파일과 보고서를 깃허브에 올렸다 | 마무리 |
 
 오늘은 연습용 시스템에서 실행했습니다. <mark>Unit 4에서는 계정 잠금 · IP 차단을 연습용 시스템에서 실제로 하고, 확인하고, 되돌리는 것까지 만듭니다.</mark> 오늘 만든 맥락 붙이기와 경로 정하기는 Unit 5에서 다시 씁니다.

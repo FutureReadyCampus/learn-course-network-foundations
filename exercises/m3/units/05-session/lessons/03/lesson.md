@@ -1,6 +1,6 @@
 ---
 id: m3-u05-l03
-title: Exercise 5-2 · 요청 이력 저장과 상태별 건수
+title: 실습 5-2 · 요청 이력 저장과 상태별 건수
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,26 +9,26 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 5-2 · 요청 이력 저장과 상태별 건수
+# 실습 5-2 · 요청 이력 저장과 상태별 건수
 
-## 이번에 만들 것: 저장 함수와 건수 세기
+## 목표: 저장 함수와 건수 세기
 
 > **오늘 들어온 일**
 >
 > A사 관제 담당이 보낸 메시지: 「지금까지 만든 요청서는 프로그램을 끄면 사라집니다. 접수 · 승인 · 반려 · 부여를 한 번 돌리고 나면 요청서 전체를 파일로 남겨 주세요. 그리고 상태별로 몇 건인지 숫자로 보고 싶은데, 손으로 세면 시간이 걸리고 틀리기 쉽습니다.」
-> - 이 Exercise에서 하는 일: 요청서 리스트를 `requests.json` 으로 저장하는 함수 `save_requests` 와 상태별 건수를 세는 함수 `count_by_status` 를 직접 씁니다. Unit 4와 Unit 5에서 만든 함수를 모두 이어서 한 번 돌려 봅니다. 마지막에 이번 Unit에서 만든 것을 깃허브에 올립니다.
+> - 이 실습에서 하는 일: 요청서 리스트를 `requests.json` 으로 저장하는 함수 `save_requests` 와 상태별 건수를 세는 함수 `count_by_status` 를 직접 씁니다. Unit 4와 Unit 5에서 만든 함수를 모두 이어서 한 번 돌려 봅니다. 마지막에 이번 Unit에서 만든 것을 깃허브에 올립니다.
 > - 끝나면 쓰는 것: 보고서 (가)~(다) 답
 
-> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「문제」 전까지는 이 Exercise의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
+> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「문제」 전까지는 이 실습의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
 
-## 읽기 · 왜 요청 이력을 파일로 남기는가
+## 왜 요청 이력을 파일로 남기는가
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
 1. 요청서는 프로그램이 켜져 있는 동안에만 남아 있고, 프로그램이 끝나면 사라집니다. 파일로 저장해야 다음 날에도 요청서를 볼 수 있습니다. 여기서 **이력**은 요청이 어떻게 처리됐는지 남은 기록입니다.
 2. 상태별 건수는 매일 아침 한눈에 보는 숫자입니다.
 
-## 읽기 · 2.1 JSON 파일로 저장하기
+## 2.1 JSON 파일로 저장하기
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
@@ -123,7 +123,7 @@ print(text)                                                      # 쓴 파일을
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## Exercise 5-2 · 요청서 저장하고 상태별 건수 세기
+## 실습 5-2 · 요청서 저장하고 상태별 건수 세기
 
 **이런 상황이 있습니다**
 
@@ -174,10 +174,10 @@ def count_by_status(requests):                                   # 요청서 리
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
 from config_loader import load_json                              # Unit 3에서 만든 안전한 읽기 함수를 불러온다
-from req_create import REQUESTS, create_request                  # Exercise 4-1에서 만든 요청서 함수와 리스트를 불러온다
-from req_review import approve_request, reject_request           # Exercise 4-2에서 만든 승인 · 반려 함수를 불러온다
-from req_grant import grant_request                              # Exercise 4-3에서 만든 부여 함수를 불러온다
-from req_sla import check_sla_breach                             # Exercise 5-1에서 만든 기한 점검 함수를 불러온다
+from req_create import REQUESTS, create_request                  # 실습 4-1에서 만든 요청서 함수와 리스트를 불러온다
+from req_review import approve_request, reject_request           # 실습 4-2에서 만든 승인 · 반려 함수를 불러온다
+from req_grant import grant_request                              # 실습 4-3에서 만든 부여 함수를 불러온다
+from req_sla import check_sla_breach                             # 실습 5-1에서 만든 기한 점검 함수를 불러온다
 from request_flow import save_requests, count_by_status          # 방금 만든 저장 · 집계 함수를 불러온다
 
 NOW = datetime.strptime("2026-10-23 14:00", "%Y-%m-%d %H:%M")    # 이번 실습의 지금 시각(고정)
@@ -216,9 +216,9 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
 
 **순서**
 
-0. **[터미널]** Exercise 5-1 파일이 정상인지 먼저 확인합니다. 마지막 줄에 `Exercise 5-1 파일 정상` 이 나와야 합니다(맥북은 `python3 -c "…"`). 아니면 문서 맨 아래 「앞 Exercise 파일 완성본」으로 `req_sla.py` 와 `config/sla.json` 을 먼저 만듭니다.
+0. **[터미널]** 실습 5-1 파일이 정상인지 먼저 확인합니다. 마지막 줄에 `실습 5-1 파일 정상` 이 나와야 합니다(맥북은 `python3 -c "…"`). 아니면 문서 맨 아래 「앞 실습 파일 완성본」으로 `req_sla.py` 와 `config/sla.json` 을 먼저 만듭니다.
    ```bash
-   python -c "from req_sla import check_sla_breach; print('Exercise 5-1 파일 정상')"
+   python -c "from req_sla import check_sla_breach; print('실습 5-1 파일 정상')"
    ```
 1. **[VS Code 또는 터미널]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 세 가지 방법 중 **하나만** 고릅니다.
    - **방법 1 · VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
@@ -237,14 +237,14 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
    - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `exercise5-2_run.py` 실행할 파일
    - 맥북은 `python3 exercise5-2_run.py` 로 칩니다.
 4. 출력은 세 단계입니다. 단계 1은 요청 여섯 건의 처리 결과(여섯 줄), 단계 2는 상태별 건수와 SLA 초과 요청 번호, 단계 3은 저장 함수가 리턴한 건수와 저장 결과입니다.
-   - Exercise 5-1에서는 SLA 초과가 1번과 5번이었지만 여기서는 5번만 나옵니다. 이 실행에서는 1번이 승인 · 부여까지 끝나 더 이상 `reviewing` 이 아니기 때문입니다.
+   - 실습 5-1에서는 SLA 초과가 1번과 5번이었지만 여기서는 5번만 나옵니다. 이 실행에서는 1번이 승인 · 부여까지 끝나 더 이상 `reviewing` 이 아니기 때문입니다.
 5. **[VS Code]** 왼쪽 목록에 새로 생긴 `requests.json` 을 열어 요청서가 한글 그대로 저장됐는지 봅니다.
-6. **[보고서]** Unit 5 의 `## Exercise 5-2` › `### Exercise 5-2` 아래를 채웁니다.
+6. **[보고서]** Unit 5 의 `## 실습 5-2` › `### 실습 5-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, `requests.json` 에 저장된 요청서가 몇 건인지와 상태별 건수를 적어 주세요.
    - (나) [핵심 질문] 반려된 요청서(`rejected`)나 승인은 됐지만 부여하지 않은 요청서(`approved`)도 지우지 않고 `requests.json` 에 남기는 이유는 무엇인가요?
    - (다) [핵심 질문] 상태별 건수가 `granted` 1 · `rejected` 1 · `approved` 2 · `reviewing` 2 로 나왔습니다. 이 숫자를 매일 아침 보면 처리 흐름의 어디가 막혀 있는지 어떻게 알 수 있나요?
 
-## Exercise 5-2 한눈에
+## 실습 5-2 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
@@ -258,7 +258,7 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
 
 ## 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기
 
-문제가 아니라 오늘 한 일을 저장소에 올리는 마무리입니다. Exercise 5-2를 끝낸 뒤 마지막에 합니다.
+문제가 아니라 오늘 한 일을 저장소에 올리는 마무리입니다. 실습 5-2를 끝낸 뒤 마지막에 합니다.
 
 - **지금은**: 팀장이 「오늘 만든 요청 처리 코드를 저장소에 남겨 달라」고 합니다.
 - **그래서 하는 것**: 올라갈 파일을 `git status` 로 먼저 확인하고(비밀 키 파일 `.env` 가 섞이면 안 됩니다), `git add` → `git commit` → `git push` 로 올립니다.
@@ -280,11 +280,11 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
    - 명령 풀이: `git status` 올릴 파일의 상태를 봄
    - `.env` 가 보이면: VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 도 같은 방법으로 합니다.
    - Unit 3에서 `access_control` 을 이미 올렸다면 오늘 새로 만든 파일이 `access_control/req_create.py` 처럼 한 줄씩 보입니다. Unit 3에서 올리지 않았다면 `access_control/` 한 줄로 보일 수 있습니다. 어느 쪽이든 `Untracked files:` 아래에 보이는 줄을 센 그대로 적습니다.
-   - `access_control/requests.json` 은 Exercise 5-2에서 프로그램이 만든 이력 파일입니다. 이것도 올라갑니다.
+   - `access_control/requests.json` 은 실습 5-2에서 프로그램이 만든 이력 파일입니다. 이것도 올라갑니다.
    - `access_control/__pycache__/` 가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. 줄 수는 그 뒤에 다시 셉니다.
 3. **[보고서]** `### 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기` 아래를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다.
    - (가) `git status` 를 쳤을 때 `Untracked files:` 아래에 줄이 몇 개 보였는지, 그중에 `.env` 나 `.venv` 가 있었는지 적어 주세요.
-   - 앞 Exercise에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다. 올린 뒤에 이어서 적어 다시 올려도 됩니다.
+   - 앞 실습에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다. 올린 뒤에 이어서 적어 다시 올려도 됩니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
    ```bash
    git add .
@@ -297,7 +297,7 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
 5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `access_control` 폴더를 열고, 터미널에서 `ls access_control` 로 본 파일들이 깃허브에도 보이는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
    - 빠진 이름이 있으면 터미널에서 `ls access_control` 로 내 PC 에 있는지 봅니다. 없으면 다른 폴더에 만든 것이니 `access_control` 안으로 옮기고 1 ~ 4번을 다시 합니다.
 
-## 마무리 한눈에
+## 마무리 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
@@ -311,11 +311,11 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
 
 | 확인 | 문제 |
 |---|---|
-| 요청을 요청서로 접수하고 접수 못 할 요청을 걸러 냈다 | Exercise 4-1 |
-| 승인 · 반려가 검토 중인 요청서에만 되게 했다 | Exercise 4-2 |
-| 승인된 요청서를 정책으로 확인하고 예외 권한을 부여했다 | Exercise 4-3 |
-| 처리 기한을 초과한 요청서를 시간 계산으로 찾았다 | Exercise 5-1 |
-| 요청서 전체를 `requests.json` 으로 저장하고 상태별 건수를 셌다 | Exercise 5-2 |
+| 요청을 요청서로 접수하고 접수 못 할 요청을 걸러 냈다 | 실습 4-1 |
+| 승인 · 반려가 검토 중인 요청서에만 되게 했다 | 실습 4-2 |
+| 승인된 요청서를 정책으로 확인하고 예외 권한을 부여했다 | 실습 4-3 |
+| 처리 기한을 초과한 요청서를 시간 계산으로 찾았다 | 실습 5-1 |
+| 요청서 전체를 `requests.json` 으로 저장하고 상태별 건수를 셌다 | 실습 5-2 |
 | 오늘 만든 파일과 보고서를 깃허브에 올렸다 | 마무리 |
 
 다음 Unit(Unit 6)에서는 부여된 권한 가운데 쓰이지 않는 것 · 넘치는 것을 찾는 과다권한 탐지를 합니다. 오늘 만든 `requests.json` 이 그때 「누가 어떤 권한을 요청해 받았나」를 보는 자료입니다.

@@ -17,7 +17,7 @@ source:
 
 ---
 
-## Exercise 6-1 정답
+## 실습 6-1 정답
 
 **터미널에 입력합니다.**
 
@@ -101,7 +101,7 @@ TypeError: 'Index' object is not callable
 
 ---
 
-## Exercise 6-2 정답
+## 실습 6-2 정답
 
 **터미널에 입력합니다.**
 
@@ -152,7 +152,7 @@ python exercise6-2_run.py
 
 **왜**
 
-- <mark>세 규칙을 따로 찾아 두면 사용자마다 어떤 기준에 해당하는지 바로 보입니다.</mark> jiwoo 와 seoyeon 은 두 규칙에 해당하고, Unit 7의 Exercise 7-2에서 규칙마다 점수를 더하면 먼저 볼 순서가 정해집니다.
+- <mark>세 규칙을 따로 찾아 두면 사용자마다 어떤 기준에 해당하는지 바로 보입니다.</mark> jiwoo 와 seoyeon 은 두 규칙에 해당하고, Unit 7의 실습 7-2에서 규칙마다 점수를 더하면 먼저 볼 순서가 정해집니다.
 
 **자주 틀리는 곳**
 
@@ -177,7 +177,7 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 
 ---
 
-## Exercise 6-3 정답
+## 실습 6-3 정답
 
 **터미널에 입력합니다.**
 

@@ -1,6 +1,6 @@
 ---
 id: m3-u08-l04
-title: Exercise 8-3 · 회수 실행하고 이력 남기기
+title: 실습 8-3 · 회수 실행하고 이력 남기기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,11 +9,11 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 8-3 · 회수 실행하고 이력 남기기
+# 실습 8-3 · 회수 실행하고 이력 남기기
 
-## 이번에 만들 것: 회수 실행과 회수 이력
+## 목표: 회수 실행과 회수 이력
 
-> **이번 Exercise에 들어온 일**
+> **이번 실습에 들어온 일**
 >
 > A사 관제 담당이 보낸 메시지:
 > 「승인이 필요 없거나 승인된 것만 실제로 회수하고, 회수한 내용을 이력 파일로 남겨 주세요. 아직 승인되지 않은 것은 실행하지 말고 「대기」로 남겨 주세요.
@@ -21,9 +21,9 @@ source:
 > 회수한 뒤에는 같은 사용자 · 권한으로 접근을 다시 판정해서 정말 막혔는지 확인해 주세요. 회수했다고 적어 놓고 여전히 접근이 허용되면 안 됩니다.」
 > - **왜 중요한가**: 회수했다는 기록만으로는 부족합니다. 다시 판정해 보아야 정말 막혔는지 알 수 있고, 이력이 있어야 나중에 누가 언제 왜 없앴는지 설명할 수 있습니다.
 
-> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「문제」 전까지는 이 Exercise의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
+> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「문제」 전까지는 이 실습의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
 
-## 읽기 · 왜 전후 판정과 이력이 필요한가
+## 왜 전후 판정과 이력이 필요한가
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
@@ -31,7 +31,7 @@ source:
 2. 실행한 뒤에는 **같은 사용자 · 권한을 다시 판정**합니다. Unit 2의 `evaluate_access` 가 회수 전과 후에 같은 요청을 어떻게 판정하는지 비교하면 회수가 정말 효과가 있었는지 알 수 있습니다.
 3. 실행한 내용은 **회수 이력**(`revocation_log.json`)으로 남깁니다. Unit 6의 「사용 이력」(권한을 마지막으로 쓴 시각의 기록)과 다른 것입니다. 회수 이력은 이번 Unit에서 무엇을 회수했는지의 기록입니다.
 
-## 읽기 · 3.1 실행 방법과 이력
+## 3.1 실행 방법과 이력
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
@@ -98,7 +98,7 @@ log 를 리턴한다
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## Exercise 8-3 · 회수 실행 후 판정과 이력 남기기
+## 실습 8-3 · 회수 실행 후 판정과 이력 남기기
 
 **이런 상황이 있습니다**
 
@@ -192,7 +192,7 @@ def execute_revocation(plans, users, roles, exceptions, now):    # 계획 · 사
   - 나머지 줄은 미리 채워 두었으니 그대로 둡니다.
 - 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다(파이썬 버전에 따라 뒤에 `after 'if' statement on line …` 가 붙습니다). `remove_exception` 의 `for` 아래에 실행할 줄이 아직 없기 때문입니다.
 
-**`exercise8-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. Exercise 8-2까지의 계획과 승인 상태를 만든 뒤 회수 전 판정을 모으고, `execute_revocation` 으로 회수하고, 회수 후 판정을 모아 비교하고, 이력을 저장합니다.
+**`exercise8-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 8-2까지의 계획과 승인 상태를 만든 뒤 회수 전 판정을 모으고, `execute_revocation` 으로 회수하고, 회수 후 판정을 모아 비교하고, 이력을 저장합니다.
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
@@ -201,13 +201,13 @@ from exception_policy import EXCEPTIONS, TIME_FORMAT             # Unit 2에서 
 from policy import evaluate_access                               # Unit 2에서 만든 최종 판정 함수를 불러온다
 from config_loader import load_json                              # Unit 3에서 만든 안전한 읽기 함수를 불러온다
 from revoke_input import load_to_revoke                          # Unit 7의 점검 결과(회수 대상)를 만드는 함수를 불러온다
-from revoke_plan import plan_revocation                          # Exercise 8-1에서 만든 회수 계획 함수를 불러온다
-from revoke_approve import load_sensitive, mark_approvals        # Exercise 8-2에서 만든 승인 함수를 불러온다
+from revoke_plan import plan_revocation                          # 실습 8-1에서 만든 회수 계획 함수를 불러온다
+from revoke_approve import load_sensitive, mark_approvals        # 실습 8-2에서 만든 승인 함수를 불러온다
 from revoke import execute_revocation, save_log                  # 방금 만든 회수 실행 함수와 이력 저장 함수를 불러온다
 
 NOW_TEXT = "2026-10-30 10:00"                                    # 이번 실습의 지금 시각 문자열(고정)
 NOW = datetime.strptime(NOW_TEXT, TIME_FORMAT)                   # 같은 시각을 시각으로 바꾼다. 판정 함수가 쓴다
-DECISIONS = {"dami:SALES:QUERY": "승인", "dami:SALES:CHANGE": "승인"}  # 보안 책임자의 결정(Exercise 8-2와 같다)
+DECISIONS = {"dami:SALES:QUERY": "승인", "dami:SALES:CHANGE": "승인"}  # 보안 책임자의 결정(실습 8-2와 같다)
 
 to_revoke = load_to_revoke()                                     # Unit 7에서 점검한 회수 대상을 만든다
 plans = plan_revocation(to_revoke, USERS, ROLES)                 # 회수 계획을 세운다
@@ -275,12 +275,12 @@ print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력
    ```
 4. 출력은 세 단계입니다. 단계 1은 계획 여덟 줄과 `실행 N 건, 대기 N 건`, 단계 2는 판정 비교 여덟 줄, 단계 3은 저장 한 줄입니다.
 5. **[VS Code]** 왼쪽 목록에 새로 생긴 `revocation_log.json` 을 열어 한글이 그대로 저장됐는지 봅니다.
-6. **[보고서]** Unit 8 의 `## Exercise 8-3` › `#### Exercise 8-3` 아래를 채웁니다.
+6. **[보고서]** Unit 8 의 `## 실습 8-3` › `#### 실습 8-3` 아래를 채웁니다.
    - (가) 출력 전체를 붙여 넣고, 이력의 결과가 「실행」인 건수와 「대기」인 건수, 회수 전후 판정이 바뀐 권한, 저장한 이력 건수를 적어 주세요.
    - (나) [핵심 질문] 회수를 실행한 7건 가운데 회수 전후 판정이 바뀐 것은 일부입니다. 바뀌지 않은 권한이 그대로인 이유와, 그래도 회수하고 이력을 남기는 이유를 적어 주세요.
    - (다) [핵심 질문] 회수 이력에는 시각 · 사용자 · 권한 · 방법 · 승인 상태 · 결과가 들어 있습니다. 반년 뒤 감사(점검 기록을 검토받는 일)에서 「이 권한이 왜 없어졌나요?」라고 물으면 이 이력만으로 답할 수 있을까요? 이력에 없는 정보가 있다면 무엇인지, 어떤 키를 추가하면 되는지 적어 주세요.
 
-## Exercise 8-3 한눈에
+## 실습 8-3 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
@@ -294,9 +294,9 @@ print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력
 
 ---
 
-## Unit 8 마무리 — 보고서 Exercise 8-1 · Exercise 8-2 · Exercise 8-3 칸 확인
+## Unit 8 마무리 — 보고서 실습 8-1 · 실습 8-2 · 실습 8-3 칸 확인
 
-Unit 8 의 Exercise 8-1 · Exercise 8-2 · Exercise 8-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. `access_control` 폴더에 이번 Unit에서 만든 파일이 있는지 확인합니다.
+Unit 8 의 실습 8-1 · 실습 8-2 · 실습 8-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. `access_control` 폴더에 이번 Unit에서 만든 파일이 있는지 확인합니다.
 
 ```bash
 ls
@@ -306,7 +306,7 @@ ls config
 - `revoke_input.py` · `revoke_plan.py` · `revoke_approve.py` · `revoke.py` · `exercise8-1_run.py` · `exercise8-2_run.py` · `exercise8-3_run.py` · `revocation_log.json` 이 보여야 합니다.
   - `config` 안에는 `sensitive.json` 이 새로 보여야 합니다.
 
-Unit 9에서는 회수한 뒤에도 조건을 따져 접근을 판단하는 **조건기반 정책**과 판정 함수를 서버로 여는 실습을 합니다. 올리기(git)는 Unit 9의 Exercise 9-2 마지막에 한 번에 합니다.
+Unit 9에서는 회수한 뒤에도 조건을 따져 접근을 판단하는 **조건기반 정책**과 판정 함수를 서버로 여는 실습을 합니다. 올리기(git)는 Unit 9의 실습 9-2 마지막에 한 번에 합니다.
 
 ---
 

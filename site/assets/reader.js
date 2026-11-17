@@ -22,6 +22,24 @@
   const imageSrc = (src) => src?.startsWith("/api/v1/network-course-assets/")
     ? `${base}/assets/course-assets/${src.slice("/api/v1/network-course-assets/".length)}`
     : src;
+  // Exercise readers: code boxes cannot be selected or copied, so learners type the code themselves.
+  const lockCode = (root) => {
+    const boxes = root.querySelectorAll("pre");
+    boxes.forEach((box) => box.classList.add("no-copy"));
+    if (boxes.length) {
+      const note = document.createElement("p");
+      note.className = "no-copy-note";
+      note.textContent = "코드 상자는 복사할 수 없습니다. 눈으로 읽으면서 직접 입력해 보세요.";
+      boxes[0].before(note);
+    }
+  };
+  if (window.NETWORK_NO_COPY && !window.__noCopyBound) {
+    window.__noCopyBound = true;
+    const inLocked = (node) => (node && (node.nodeType === 1 ? node : node.parentElement))?.closest?.(".no-copy");
+    const selectionLocked = () => { const sel = getSelection(); return !!sel && (inLocked(sel.anchorNode) || inLocked(sel.focusNode)); };
+    ["copy", "cut"].forEach((type) => document.addEventListener(type, (event) => { if (selectionLocked()) event.preventDefault(); }));
+    ["contextmenu", "dragstart", "selectstart"].forEach((type) => document.addEventListener(type, (event) => { if (inLocked(event.target)) event.preventDefault(); }));
+  }
   const renderProse = (paragraphs = [], illustrations = [], inlineQuizzes = [], renderInlineQuiz = () => null) => {
     const prose = document.createElement("div");
     prose.className = "net-prose";
@@ -509,6 +527,7 @@
       prose = document.createElement("div");
       prose.className = "net-prose";
       prose.innerHTML = page.html;
+      if (window.NETWORK_NO_COPY) lockCode(prose);
     } else prose = renderProse(page.paragraphs || [], page.illustrations || [], inlineQuizzes,
       (quiz) => renderQuiz(quiz.questions, quiz.start_index || 0));
     const recap = prose.querySelector(":scope > .ral-summary");

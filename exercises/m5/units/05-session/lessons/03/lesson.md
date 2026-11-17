@@ -1,6 +1,6 @@
 ---
 id: m5-u05-l03
-title: Exercise 5-2 · 알림 8건 처리와 확인 목록 만들기
+title: 실습 5-2 · 알림 8건 처리와 확인 목록 만들기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 5-2 · 알림 8건 처리와 확인 목록 만들기
+# 실습 5-2 · 알림 8건 처리와 확인 목록 만들기
 
-## 이번에 만들 것: 알림 8건 일괄 처리
+## 목표: 알림 8건 일괄 처리
 
 > **오늘 들어온 일**
 >
@@ -29,15 +29,15 @@ source:
 
 > **읽을거리 — 문제가 아닙니다.** 읽고 이해만 합니다.
 
-## 읽기 · 3.1 알림 한 건은 「판단 → 조치 → 기록」을 거치고, 근무가 끝나면 기록을 종류별로 센다
+## 3.1 알림 한 건은 「판단 → 조치 → 기록」을 거치고, 근무가 끝나면 기록을 종류별로 센다
 
 ```
-알림 → 맥락 붙이기(Unit 2의 Exercise 2-1) → 경로 정하기(Unit 2의 Exercise 2-2)
+알림 → 맥락 붙이기(Unit 2의 실습 2-1) → 경로 정하기(Unit 2의 실습 2-2)
    ├ 오탐 종료  → 조치하지 않는다
    ├ 승인 필요  → 승인 대기로 두고 조치하지 않는다 (VIP)
    └ 기본       → 탐지된 규칙에 연결된 조치를 한다
-         ├ 퇴사한 계정 → 계정 잠금 → 세션 종료 (Unit 4의 Exercise 4-3)
-         ├ 경로 스캔   → 허용 목록 IP(차단하지 않기로 미리 정해 둔 IP)이면 차단하지 않고, 여러 계정이 함께 쓰는 IP 이면 승인 대기, 아니면 IP 차단 (Unit 4의 Exercise 4-2)
+         ├ 퇴사한 계정 → 계정 잠금 → 세션 종료 (Unit 4의 실습 4-3)
+         ├ 경로 스캔   → 허용 목록 IP(차단하지 않기로 미리 정해 둔 IP)이면 차단하지 않고, 여러 계정이 함께 쓰는 IP 이면 승인 대기, 아니면 IP 차단 (Unit 4의 실습 4-2)
          └ 그 밖의 규칙 → 자동 조치하지 않는다
 ```
 
@@ -62,7 +62,7 @@ shift_report.py   is_failure         : 조치 후 상태에 확인 실패가 있
 
 > **여기부터 문제입니다.**
 
-## Exercise 5-2 · 알림 8건 처리와 확인 목록 만들기
+## 실습 5-2 · 알림 8건 처리와 확인 목록 만들기
 
 **이런 상황이 있습니다**
 
@@ -75,11 +75,11 @@ shift_report.py   is_failure         : 조치 후 상태에 확인 실패가 있
 **`drill.py`** — 알림 한 건을 처리합니다. Unit 2의 `enrichment.py` · `routing.py` 와 Unit 4 파일을 불러옵니다(import). 직접 쓰는 곳은 1 ~ 5번입니다. `FIREWALL_DOWN_FOR` 는 방화벽 연결이 끊긴 상황을 흉내 내려고 수업에서만 쓰는 목록입니다.
 
 ```python
-from enrichment import enrich_incident                                                      # Unit 2의 Exercise 2-1 : 맥락 붙이기
-from routing import decide_route                                                            # Unit 2의 Exercise 2-2 : 경로 정하기
+from enrichment import enrich_incident                                                      # Unit 2의 실습 2-1 : 맥락 붙이기
+from routing import decide_route                                                            # Unit 2의 실습 2-2 : 경로 정하기
 from containment_store import make_record                                                   # 기록 한 건을 만드는 함수를 불러온다
-from containment import contain_account                                                     # Unit 4의 Exercise 4-3 : 잠금 → 세션 종료
-from ip_actions import check_ip_policy, block_ip, DEFAULT_TTL                               # Unit 4의 Exercise 4-2 : IP 차단
+from containment import contain_account                                                     # Unit 4의 실습 4-3 : 잠금 → 세션 종료
+from ip_actions import check_ip_policy, block_ip, DEFAULT_TTL                               # Unit 4의 실습 4-2 : IP 차단
 
 CONTAINMENT_BY_RULE = {"퇴사한 계정": "계정 조치", "경로 스캔": "IP 차단"}                  # 탐지된 규칙에 따라 할 조치 : 이 표에 없는 규칙은 조치하지 않는다
 FIREWALL_DOWN_FOR = ["INC-005"]                                                             # 방화벽 연결이 끊긴 상황을 흉내 낼 인시던트 번호 : 이 인시던트의 IP 차단은 실패한다
@@ -167,11 +167,11 @@ def summarize(log):                                         # 기록 리스트�
     return counts                                           # 종류별 건수를 리턴한다
 ```
 
-**`exercise5-2_run.py`** — 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이번 근무의 기록은 `shift_log.json` 에 따로 저장하고, Exercise 4-3이 저장한 파일은 건드리지 않습니다.
+**`exercise5-2_run.py`** — 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이번 근무의 기록은 `shift_log.json` 에 따로 저장하고, 실습 4-3이 저장한 파일은 건드리지 않습니다.
 
 ```python
 from incident import load_json, save_json, INCIDENTS_PATH                                 # Unit 1 파일의 함수를 불러온다
-from containment_store import new_state                                                   # Unit 4의 Exercise 4-1의 처음 상태 함수를 불러온다
+from containment_store import new_state                                                   # Unit 4의 실습 4-1의 처음 상태 함수를 불러온다
 from drill import handle_incident                                                         # 방금 만든 사건 처리 함수를 불러온다
 from shift_report import summarize, is_failure                                            # 방금 만든 근무 보고 함수를 불러온다
 
@@ -191,7 +191,7 @@ for incident in incidents:                                                      
         log.append(record)                                                                # 이번 근무의 기록에 모은다
     print(incident["id"], incident["entity"], "->", status, "(조치 기록 " + str(len(records)) + "건)")  # 한 줄로 출력한다
 
-save_json(log, "shift_log.json")                                                          # 이번 근무의 기록을 따로 저장한다 (Exercise 4-3이 저장한 기록 파일은 건드리지 않는다)
+save_json(log, "shift_log.json")                                                          # 이번 근무의 기록을 따로 저장한다 (실습 4-3이 저장한 기록 파일은 건드리지 않는다)
 print("--- 단계 2: 조치 기록")                                                            # 단계 2 시작을 알리는 줄
 for record in log:                                                                        # 기록을 하나씩 꺼낸다
     print(record["incident"], record["target"], "·", record["action"], "·", record["before"], "→", record["after"], "·", record["reason"])  # 기록 한 건을 출력한다
@@ -220,18 +220,18 @@ for record in log:                                                              
    touch drill.py shift_report.py exercise5-2_run.py
    ls
    ```
-2. **[VS Code]** `drill.py` 1 ~ 5번, `shift_report.py` 6 ~ 8번, `exercise5-2_run.py` 9번을 씁니다. 막히면 아래 「Exercise 5-2 한눈에」를 봅니다.
+2. **[VS Code]** `drill.py` 1 ~ 5번, `shift_report.py` 6 ~ 8번, `exercise5-2_run.py` 9번을 씁니다. 막히면 아래 「실습 5-2 정리」를 봅니다.
 3. **[터미널]** 실행합니다(맥북은 `python3`).
    ```bash
    python exercise5-2_run.py
    ```
 4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 8줄, 단계 2 는 5줄, 단계 3 은 3줄, 단계 4 는 4줄입니다.
-5. **[보고서]** Unit 5 의 `## Exercise 5-2` 아래를 채웁니다.
+5. **[보고서]** Unit 5 의 `## 실습 5-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣어 주세요. 그리고 단계 3 의 요약과 단계 4 의 건수를 적어 주세요.
    - (나) [핵심 질문] INC-005 는 `조치 실패` 로 나왔고 요약의 `확인 실패` 가 1 입니다. 단계 2 의 줄을 근거로 이유를 적고, 6번(`is_failure`, 확인 실패인지 구하는 함수)이 없다면 이 건이 근무 보고에서 어떻게 보일지 적어 주세요.
    - (다) [핵심 질문] INC-008 과 INC-009 는 모두 차단되지 않았습니다. INC-008 은 승인 대기이고 INC-009 는 조치하지 않음입니다. INC-003 과 INC-010 도 승인 대기입니다. INC-003 · INC-008 · INC-009 · INC-010 네 건이 왜 그렇게 나왔는지 단계 2 와 단계 4 의 줄을 근거로 적어 주세요. 또 이 네 건을 그대로 자동 처리했다면 누가 어떤 영향을 받았을지 적어 주세요.
 
-## Exercise 5-2 한눈에
+## 실습 5-2 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
@@ -247,7 +247,7 @@ for record in log:                                                              
 
 ## 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기
 
-<mark>문제가 아니라 오늘 한 일을 저장소에 올리는 마무리입니다.</mark> Exercise 5-2 마지막 약 10분에 합니다. 어느 터미널을 써도 됩니다. 먼저 `pwd` 로 위치를 확인하고, 결과가 `soar_response` 로 끝날 때만 아래 1번의 `cd ..` 를 칩니다.
+<mark>문제가 아니라 오늘 한 일을 저장소에 올리는 마무리입니다.</mark> 실습 5-2 마지막 약 10분에 합니다. 어느 터미널을 써도 됩니다. 먼저 `pwd` 로 위치를 확인하고, 결과가 `soar_response` 로 끝날 때만 아래 1번의 `cd ..` 를 칩니다.
 
 **이런 상황이 있습니다**
 
@@ -314,7 +314,7 @@ for record in log:                                                              
 
 3. **[보고서]** Unit 5 의 `### 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기` 아래를 채웁니다. <mark>올리기 전에 채워야</mark> 깃허브에 빈칸 없이 올라갑니다.
    - (가) `git status` 를 쳤을 때 `.env` 나 `.venv` 가 보였는지, 보였다면 어떻게 했는지 적어 주세요.
-   - <mark>Unit 4 와 Unit 5 의 Exercise에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.</mark> 올린 뒤에 이어서 적어 다시 올려도 됩니다.
+   - <mark>Unit 4 와 Unit 5 의 실습에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.</mark> 올린 뒤에 이어서 적어 다시 올려도 됩니다.
 4. **[터미널]** 바뀐 파일을 모두 올릴 목록에 추가하고(`add`), 기록하고(`commit`), 올립니다(`push`). 세 명령을 순서대로 하나씩 칩니다.
 
    ① 바뀐 파일을 모두 올릴 목록에 추가합니다.
@@ -352,7 +352,7 @@ for record in log:                                                              
    - 깃허브에 빠진 이름이 있으면, 그 파일이 내 PC 의 `soar_response` 폴더(VS Code 왼쪽 목록)에는 있는지 봅니다.
      - 없으면 다른 폴더에 만든 것이니 `soar_response` 안으로 옮기고, `pwd` 로 위치를 확인한 뒤 2번의 `git status` 부터 다시 합니다.
 
-## 마무리 한눈에
+## 마무리 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
@@ -366,17 +366,17 @@ for record in log:                                                              
 
 | 확인 | 문제 |
 |---|---|
-| 기록을 보고 자동이 바꾼 것만 되돌리고, 되돌릴 수 없는 조치는 따로 표시했다 | Exercise 5-1 |
-| 알림 8건을 판단 → 조치로 처리하고, 기록을 요약해 확인 목록을 만들었다 | Exercise 5-2 |
+| 기록을 보고 자동이 바꾼 것만 되돌리고, 되돌릴 수 없는 조치는 따로 표시했다 | 실습 5-1 |
+| 알림 8건을 판단 → 조치로 처리하고, 기록을 요약해 확인 목록을 만들었다 | 실습 5-2 |
 | 오늘 만든 파일과 보고서를 깃허브에 올렸다 | 마무리 |
 
 **강의계획서 평가 기준 확인**
 
 | 기준 | 확인할 곳 |
 |---|---|
-| 계정 잠금 · IP 차단 · 세션 종료가 모두 동작한다 | Unit 4의 Exercise 4-1 · 4-2 · 4-3 출력, Exercise 5-2 단계 2 |
-| VIP 계정 예외 처리가 된다(VIP 계정은 자동으로 잠그지 않고 승인 대기로 둔다) | Unit 4의 Exercise 4-1 단계 2, Exercise 5-2의 INC-003 · INC-010 |
-| 모든 조치와 해제가 기록으로 남는다 | Unit 4의 Exercise 4-1 단계 3, Exercise 5-1 단계 2 ~ 4 |
+| 계정 잠금 · IP 차단 · 세션 종료가 모두 동작한다 | Unit 4의 실습 4-1 · 4-2 · 4-3 출력, 실습 5-2 단계 2 |
+| VIP 계정 예외 처리가 된다(VIP 계정은 자동으로 잠그지 않고 승인 대기로 둔다) | Unit 4의 실습 4-1 단계 2, 실습 5-2의 INC-003 · INC-010 |
+| 모든 조치와 해제가 기록으로 남는다 | Unit 4의 실습 4-1 단계 3, 실습 5-1 단계 2 ~ 4 |
 
 오늘은 연습용 시스템에서 실행했습니다. <mark>실제 제품에서는 `account_actions.py` · `ip_actions.py` · `session_actions.py` 안의 상태를 바꾸는 줄이, 계정 · 방화벽 · 인증 시스템에 실제로 명령을 보내는 코드로 바뀝니다.</mark> 기록 · 되돌릴지 정하기 · 요약하는 코드는 그대로 쓰고, 확인하는 줄은 실제 시스템의 상태를 조회하도록 바꿉니다.
 

@@ -1,6 +1,6 @@
 ---
 id: m5-u09-l03
-title: Exercise 9-2 · 평가 기준 자동 점검과 점검 목록
+title: 실습 9-2 · 평가 기준 자동 점검과 점검 목록
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 9-2 · 평가 기준 자동 점검과 점검 목록
+# 실습 9-2 · 평가 기준 자동 점검과 점검 목록
 
-## 이번에 만들 것: Unit 9 점검 프로그램
+## 목표: Unit 9 점검 프로그램
 
 > **오늘 들어온 일**
 >
@@ -22,20 +22,20 @@ source:
 
 > **읽을거리 — 문제가 아닙니다.** 읽고 이해만 합니다.
 
-## 읽기 · 2.1 기대 결과와 실제 결과 비교
+## 2.1 기대 결과와 실제 결과 비교
 
 | 기준 | 기대한 결과(미리 적어 둔 것) | 실제 결과 | 불일치로 남기는 것(문제 목록) |
 |---|---|---|---|
-| ① 리포트 반영 | 티켓 번호 7개 + 티켓 없는 조치의 인시던트 번호 1개 | <mark style="background:#e0d4ff">Unit 8의 Exercise 8-1에서 쓴 `incident_report_20261112.md`</mark> 의 본문 | 리포트에 없는 번호 (1 · 2번) |
-| ② 자동 · 승인 분기 | `gate_cases.json` 의 사례마다 기대한 결정 | <mark style="background:#e0d4ff">Unit 8의 Exercise 8-2 `decide_gate`</mark> 의 결정 | 기대와 다른 사례 (3 · 4번) |
-| ③ 오탐 복구 | <mark style="background:#ffdcb0">남은 대상 0개 · 30분 안</mark> · 정탐(진짜 공격) 계정 `dami` 는 잠김 유지 | <mark style="background:#e0d4ff">Unit 8의 Exercise 8-3 `handle_false_positive`</mark> 의 결과와 처리 뒤 상태 | 복구 안 된 대상 · 시간 초과(5번) · 잠금이 풀린 정탐 계정(6 · 7번) |
+| ① 리포트 반영 | 티켓 번호 7개 + 티켓 없는 조치의 인시던트 번호 1개 | <mark style="background:#e0d4ff">Unit 8의 실습 8-1에서 쓴 `incident_report_20261112.md`</mark> 의 본문 | 리포트에 없는 번호 (1 · 2번) |
+| ② 자동 · 승인 분기 | `gate_cases.json` 의 사례마다 기대한 결정 | <mark style="background:#e0d4ff">Unit 8의 실습 8-2 `decide_gate`</mark> 의 결정 | 기대와 다른 사례 (3 · 4번) |
+| ③ 오탐 복구 | <mark style="background:#ffdcb0">남은 대상 0개 · 30분 안</mark> · 정탐(진짜 공격) 계정 `dami` 는 잠김 유지 | <mark style="background:#e0d4ff">Unit 8의 실습 8-3 `handle_false_positive`</mark> 의 결과와 처리 뒤 상태 | 복구 안 된 대상 · 시간 초과(5번) · 잠금이 풀린 정탐 계정(6 · 7번) |
 
 - **시험 사례**(test case, 테스트 케이스: 입력과 기대한 결과를 짝지어 적어 둔 것)는 **경계값 분석**(boundary value analysis, 바운더리 밸류 애널리시스: 기준 숫자 바로 앞뒤의 값, 즉 경계값으로 시험 사례를 만드는 방법)에 따라 경계의 양쪽을 꼭 포함합니다. 오늘은 대상 3개(1점, 자동)와 대상 4개(3점, 승인 필요)를 함께 포함해 <mark style="background:#ffdcb0">「4개 이상」 경계</mark>를 검증합니다. 경계에서는 `>` 를 `>=` 로 잘못 쓰는 경계 조건 오류(Unit 2에서 배운 off-by-one error)가 가장 잘 드러나기 때문입니다.
 - 리포트 점검은 번호 문자열이 리포트 본문 안에 포함되어 있는지(`in`)로 판정합니다. 번호의 포함 여부만 검사하고, <mark style="background:#ffc4d6">줄의 모양(형식)은 검사하지 않습니다.</mark>
-- 오탐 복구 점검은 <mark style="background:#e0d4ff">Unit 8의 Exercise 8-3과 같은 입력으로 다시 처리한 결과</mark>를 대상으로 합니다. 같은 입력이면 같은 결과가 나오므로(재현성) Unit 8의 Exercise 8-3 출력과 같은 결과가 나와야 합니다.
+- 오탐 복구 점검은 <mark style="background:#e0d4ff">Unit 8의 실습 8-3과 같은 입력으로 다시 처리한 결과</mark>를 대상으로 합니다. 같은 입력이면 같은 결과가 나오므로(재현성) Unit 8의 실습 8-3 출력과 같은 결과가 나와야 합니다.
 - 기준 숫자나 코드를 바꾼 뒤 같은 점검을 다시 실행해, 이전에 맞던 결과가 그대로 맞는지 확인하는 방식을 **회귀 시험**(regression test, 리그레션 테스트: 변경 뒤에 기존에 되던 것이 깨지지 않았는지 다시 확인하는 시험)이라고 합니다. 오늘의 점검 프로그램은 이 회귀 시험으로 쓸 수 있습니다.
 
-**`gate_cases.json`** — 승인 게이트 시험 사례 7개입니다. `case` 는 사례 이름, `expected` 는 기대한 결정(기대 결과), `request` 는 <mark style="background:#e0d4ff">Unit 8의 Exercise 8-2 요청</mark>에서 `incident` 만 뺀 형식의 조치 요청입니다.
+**`gate_cases.json`** — 승인 게이트 시험 사례 7개입니다. `case` 는 사례 이름, `expected` 는 기대한 결정(기대 결과), `request` 는 <mark style="background:#e0d4ff">Unit 8의 실습 8-2 요청</mark>에서 `incident` 만 뺀 형식의 조치 요청입니다.
 
 ```
 [
@@ -61,7 +61,7 @@ unit09_check.py   check_report    : 있어야 할 번호가 리포트에 없으�
 
 > **여기부터 문제입니다.**
 
-## Exercise 9-2 · 평가 기준 자동 점검과 점검 목록
+## 실습 9-2 · 평가 기준 자동 점검과 점검 목록
 
 **이런 상황이 있습니다**
 
@@ -76,8 +76,8 @@ unit09_check.py   check_report    : 있어야 할 번호가 리포트에 없으�
 - 4번과 5번은 `if` 한 줄만 씁니다. 그 아래 미리 채운 `append` 줄이 `if` 안쪽입니다.
 
 ```python
-from report import find_missing_incidents                        # Unit 8의 Exercise 8-1의 티켓 없는 조치 찾기 함수를 불러온다
-from approval_gate import decide_gate                            # Unit 8의 Exercise 8-2의 승인 게이트 함수를 불러온다
+from report import find_missing_incidents                        # Unit 8의 실습 8-1의 티켓 없는 조치 찾기 함수를 불러온다
+from approval_gate import decide_gate                            # Unit 8의 실습 8-2의 승인 게이트 함수를 불러온다
 
 
 def check_report(report_text, tickets, actions):                 # 리포트 문자열 · 티켓 리스트 · 조치 기록 리스트를 받는 함수
@@ -140,10 +140,10 @@ def mark(problems):                                              # 문제 리스
 
 ```python
 from incident import load_json                                                              # Unit 1 파일의 JSON 읽기 함수를 불러온다
-from false_positive import handle_false_positive                                            # Unit 8의 Exercise 8-3의 오탐 처리 함수를 불러온다
+from false_positive import handle_false_positive                                            # Unit 8의 실습 8-3의 오탐 처리 함수를 불러온다
 from unit09_check import check_report, check_gate, check_recovery, mark                       # 방금 만든 점검 함수를 불러온다
 
-REPORT_PATH = "incident_report_20261112.md"                                                 # Unit 8의 Exercise 8-1에서 만든 리포트 파일 이름
+REPORT_PATH = "incident_report_20261112.md"                                                 # Unit 8의 실습 8-1에서 만든 리포트 파일 이름
 TRUE_POSITIVE_USERS = ["dami"]                                                              # 진짜 공격으로 확인된 계정 (오탐 처리로 풀면 안 된다)
 NOW = 45                                                                                    # 오탐 신고를 처리하는 지금 시각(분)
 
@@ -196,7 +196,7 @@ print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")            
    touch gate_cases.json unit09_check.py exercise9-2_run.py
    ls
    ```
-2. **[VS Code]** `unit09_check.py` 1 ~ 7번, `exercise9-2_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 9-2 한눈에」를 봅니다.
+2. **[VS Code]** `unit09_check.py` 1 ~ 7번, `exercise9-2_run.py` 8 · 9번을 씁니다. 막히면 아래 「실습 9-2 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python exercise9-2_run.py
@@ -204,12 +204,12 @@ print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")            
 4. 출력은 세 단계입니다. 제목 줄은 줄 수에 넣지 않습니다.
    - 단계 1 과 단계 3 은 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
    - 단계 2 는 기준마다 한 줄씩 3줄입니다. 문제가 있으면 문제마다 한 줄이 더 나옵니다.
-5. **[보고서]** Unit 9 의 `## Exercise 9-2` 아래를 채웁니다.
+5. **[보고서]** Unit 9 의 `## 실습 9-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 세 기준의 결과와 `unit09_checklist.md` 의 줄 수를 적어 주세요.
    - (나) [핵심 질문] `gate_cases.json` 에는 「대상 3개」와 「대상 4개」 사례가 함께 있습니다. 두 사례의 점수와 기대한 결정을 근거로, 경계값 분석에 따라 기준 숫자 바로 앞뒤 값(경계값)의 사례를 함께 넣는 이유를 적어 주세요.
-   - (다) [핵심 질문] ③ 기준은 오탐 신고를 처리한 뒤에도 정탐 계정 `dami` 의 잠금이 유지되는지 확인합니다. 오탐 복구 점검에 이 확인이 없으면 어떤 실수를 놓칠 수 있는지 적어 주세요. Unit 5의 `rollback_incident`(Unit 8의 Exercise 8-3에서 가져와 사용(import)하는 함수)가 어떻게 동작할 때 그 실수가 생기는지도 함께 적어 주세요.
+   - (다) [핵심 질문] ③ 기준은 오탐 신고를 처리한 뒤에도 정탐 계정 `dami` 의 잠금이 유지되는지 확인합니다. 오탐 복구 점검에 이 확인이 없으면 어떤 실수를 놓칠 수 있는지 적어 주세요. Unit 5의 `rollback_incident`(Unit 8의 실습 8-3에서 가져와 사용(import)하는 함수)가 어떻게 동작할 때 그 실수가 생기는지도 함께 적어 주세요.
 
-## Exercise 9-2 한눈에
+## 실습 9-2 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
@@ -225,7 +225,7 @@ print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")            
 
 ## 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기
 
-<mark>문제가 아니라 오늘 한 일을 저장소에 올리는 마무리입니다.</mark> Exercise 9-2 마지막 약 10분에 합니다. 어느 터미널을 써도 됩니다. 먼저 `pwd` 로 위치를 확인하고, 결과가 `soar_response` 로 끝나면 아래 1번의 `cd ..` 를 칩니다.
+<mark>문제가 아니라 오늘 한 일을 저장소에 올리는 마무리입니다.</mark> 실습 9-2 마지막 약 10분에 합니다. 어느 터미널을 써도 됩니다. 먼저 `pwd` 로 위치를 확인하고, 결과가 `soar_response` 로 끝나면 아래 1번의 `cd ..` 를 칩니다.
 
 **이런 상황이 있습니다**
 
@@ -292,7 +292,7 @@ print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")            
 
 3. **[보고서]** Unit 9 의 `### 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기` 아래를 채웁니다. <mark>올리기 전에 채워야</mark> 깃허브에 빈칸 없이 올라갑니다.
    - (가) `git status` 를 쳤을 때 `.env` 나 `.venv` 가 보였는지, 보였다면 어떻게 했는지 적어 주세요.
-   - <mark>Unit 8과 Unit 9의 앞선 Exercise에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.</mark> 올린 뒤에 이어서 적어 다시 올려도 됩니다.
+   - <mark>Unit 8과 Unit 9의 앞선 실습에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.</mark> 올린 뒤에 이어서 적어 다시 올려도 됩니다.
 4. **[터미널]** 바뀐 파일을 모두 올릴 목록에 추가하고(`add`), 기록하고(`commit`), 올립니다(`push`). 세 명령을 순서대로 하나씩 칩니다.
 
    ① 바뀐 파일을 모두 올릴 목록에 추가합니다.
@@ -330,7 +330,7 @@ print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")            
    - 깃허브에 안 보이는 파일이 있으면, 그 파일이 VS Code 왼쪽 목록의 `soar_response` 폴더에 내 PC 에도 있는지 봅니다.
      - 없으면 다른 폴더에 만든 것이니 `soar_response` 안으로 이동하고, `pwd` 로 위치를 확인한 뒤 2번의 `git status` 부터 다시 합니다.
 
-## 마무리 한눈에
+## 마무리 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
@@ -344,17 +344,17 @@ print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")            
 
 | 확인 | 문제 |
 |---|---|
-| 자동 조치마다 위험 점수 · 등급 · 빠진 통제(통제 갭)를 정리한 리스크 평가 문서를 작성했다 | Exercise 9-1 |
-| 평가 기준 세 가지를 자동 점검으로 한 번에 검증해 Unit 9 점검 목록을 작성했다 | Exercise 9-2 |
+| 자동 조치마다 위험 점수 · 등급 · 빠진 통제(통제 갭)를 정리한 리스크 평가 문서를 작성했다 | 실습 9-1 |
+| 평가 기준 세 가지를 자동 점검으로 한 번에 검증해 Unit 9 점검 목록을 작성했다 | 실습 9-2 |
 | 오늘 만든 파일과 보고서를 깃허브에 올렸다 | 마무리 |
 
 **강의계획서 평가 기준 확인**
 
 | 기준 | 확인할 곳 |
 |---|---|
-| 근무 데이터의 티켓 번호와 티켓 없는 조치의 인시던트 번호가 리포트에 들어 있다 | Unit 8의 Exercise 8-1 리포트의 1 · 5절, Exercise 9-2 점검 ① |
-| 위험 등급에 따라 자동 · 승인이 올바르게 나뉜다 | Unit 8의 Exercise 8-2 단계 2 · 3, Exercise 9-2 점검 ② (시험 사례 7개) |
-| 오탐 복구 절차가 신속하고 완전하게 처리된다 | Unit 8의 Exercise 8-3 단계 2 · 3 <mark style="background:#bde3ff">(25분 · 5분, 남은 대상 0개, `dami` 잠김)</mark>, Exercise 9-2 점검 ③ |
+| 근무 데이터의 티켓 번호와 티켓 없는 조치의 인시던트 번호가 리포트에 들어 있다 | Unit 8의 실습 8-1 리포트의 1 · 5절, 실습 9-2 점검 ① |
+| 위험 등급에 따라 자동 · 승인이 올바르게 나뉜다 | Unit 8의 실습 8-2 단계 2 · 3, 실습 9-2 점검 ② (시험 사례 7개) |
+| 오탐 복구 절차가 신속하고 완전하게 처리된다 | Unit 8의 실습 8-3 단계 2 · 3 <mark style="background:#bde3ff">(25분 · 5분, 남은 대상 0개, `dami` 잠김)</mark>, 실습 9-2 점검 ③ |
 
 리스크 평가 문서와 점검 목록은 한 번 작성하고 끝내지 않습니다. <mark>승인 기준이나 자동 조치가 바뀔 때마다 리스크 평가를 다시 수행하고, 점검 프로그램을 다시 실행해 「통과」가 유지되는지 확인합니다(회귀 시험).</mark> 통제를 보완한 뒤 남는 잔여 위험도 이때 다시 평가합니다. 다음 Unit에서는 지금까지 만든 것을 하나의 흐름으로 합칩니다.
 

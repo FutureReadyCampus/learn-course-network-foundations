@@ -1,6 +1,6 @@
 ---
 id: m4-u05-l03
-title: Exercise 5-2 · 알림을 한 파일로 모으기
+title: 실습 5-2 · 알림을 한 파일로 모으기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,7 +9,7 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 5-2 · 알림을 한 파일로 모으기
+# 실습 5-2 · 알림을 한 파일로 모으기
 
 ## 이번 의뢰: 알림 형식 맞추기
 
@@ -21,19 +21,19 @@ source:
 > 두 알림을 `alerts.json` 한 파일에 같은 모양으로 모아 주세요. 알림마다 종류 · 대상 · 횟수 · 메모를 넣어 주세요. 공격으로 확정된 것은 아니니 처리 상태는 모두 「확인 필요」로 해 주세요.」
 > - **왜 중요한가**: <mark>알림 형식이 종류마다 다르면 담당자가 하나씩 해석해야 합니다.</mark> 형식이 같으면 사람도 자동 대응 도구도 같은 방법으로 처리할 수 있습니다.
 
-> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「Exercise」 전까지는 이 Exercise의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
+> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「실습」 전까지는 이 실습의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
 
-## 읽기 · 왜 알림 모양을 통일하는가
+## 왜 알림 모양을 통일하는가
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
-1. SIEM(심, 보안 로그를 모아 탐지 · 알림하는 시스템)의 네 단계는 **수집 → 정규화 → 탐지 → 알림**입니다. 이번 Unit에서 알림으로 모으는 탐지 결과는 Unit 4의 로그인 실패 규칙과 Exercise 5-1의 트래픽 급증 규칙, 두 가지입니다. <mark>이제 마지막 단계인 알림을 만듭니다.</mark>
+1. SIEM(심, 보안 로그를 모아 탐지 · 알림하는 시스템)의 네 단계는 **수집 → 정규화 → 탐지 → 알림**입니다. 이번 Unit에서 알림으로 모으는 탐지 결과는 Unit 4의 로그인 실패 규칙과 실습 5-1의 트래픽 급증 규칙, 두 가지입니다. <mark>이제 마지막 단계인 알림을 만듭니다.</mark>
 2. <mark>두 규칙의 결과는 모양이 다릅니다.</mark>
    - 로그인 실패 규칙은 「주소와 횟수」(`203.0.113.50` 이 5번)를 냅니다.
    - 트래픽 급증 규칙은 「분과 요청 수」(`09:12` 에 9개)를 냅니다.
 3. 알림은 **종류 · 대상 · 횟수 · 메모 · 처리 상태**를 <mark>같은 키로 담아야 한 파일에 모을 수 있습니다.</mark>
 
-## 읽기 · 2.1 알림 한 건의 모양과 지킬 점 두 가지
+## 2.1 알림 한 건의 모양과 지킬 점 두 가지
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문은 없습니다. 판다스 문법 상자의 코드는 눈으로 읽으면 됩니다.
 
@@ -98,7 +98,7 @@ saas 1
 ```
 
 - 읽는 법: 출력 세 줄이 센 결과의 세 줄에 하나씩 대응합니다. <mark>인덱스가 `source` 에, 값이 `count` 에 들어옵니다.</mark>
-- 이번 Exercise에서는 이 인덱스가 주소(`203.0.113.50`)나 분(`2026-11-02 09:12:00`)이고, <mark>값이 횟수입니다.</mark>
+- 이번 실습에서는 이 인덱스가 주소(`203.0.113.50`)나 분(`2026-11-02 09:12:00`)이고, <mark>값이 횟수입니다.</mark>
 
 **판다스 문법 상자 — 시각 값을 문자열로 바꾸기**
 
@@ -154,11 +154,11 @@ print(message)                                               # 이어 붙인 글
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## Exercise 5-2 · 알림을 alerts.json 한 파일로 모으기
+## 실습 5-2 · 알림을 alerts.json 한 파일로 모으기
 
 **이런 상황이 있습니다**
 
-- **지금은**: Exercise 4-2의 로그인 실패 결과와 Exercise 5-1의 트래픽 급증 결과가 형식이 달라서, 담당자가 하나씩 열어 확인해야 합니다.
+- **지금은**: 실습 4-2의 로그인 실패 결과와 실습 5-1의 트래픽 급증 결과가 형식이 달라서, 담당자가 하나씩 열어 확인해야 합니다.
 - **그래서 만드는 것**: `alerts.py` 입니다.
   - 알림 한 건을 종류 · 대상 · 횟수 · 메모 · 처리 상태 키 다섯 개로 만듭니다.
   - 두 종류의 알림을 같은 모양으로 만듭니다.
@@ -190,7 +190,7 @@ def make_alert(alert_type, target, count, note):                                
 
 def make_login_alerts(alert_ips):                                                       # 알림 대상 주소와 횟수를 받는 함수
     """로그인 실패 알림 대상 주소마다 「비정상 로그인」 알림을 하나씩 만든다.
-    Exercise 4-2에서 추출한 주소를 알림 형식으로 바꿀 때 쓴다.
+    실습 4-2에서 추출한 주소를 알림 형식으로 바꿀 때 쓴다.
     """
     alerts = []                                                                         # 알림을 담을 빈 리스트
     for ip_address, count in alert_ips.items():                                         # 주소와 횟수를 한 쌍씩 꺼낸다
@@ -203,7 +203,7 @@ def make_login_alerts(alert_ips):                                               
 
 def make_traffic_alerts(spike_minutes):                                                 # 요청이 급증한 분과 요청 수를 받는 함수
     """요청이 급증한 분마다 「트래픽 급증」 알림을 하나씩 만든다.
-    Exercise 5-1에서 추출한 분을 알림 형식으로 바꿀 때 쓴다.
+    실습 5-1에서 추출한 분을 알림 형식으로 바꿀 때 쓴다.
     """
     alerts = []                                                                         # 알림을 담을 빈 리스트
     for minute, count in spike_minutes.items():                                         # 분과 요청 수를 한 쌍씩 꺼낸다
@@ -230,12 +230,12 @@ def save_alerts(alerts, path):                                                  
 - 번호 주석이 연달아 붙어 있어도(예: 3 · 4번), <mark>주석 사이마다 줄을 끼워 넣어 각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark>
 - 채우기 전에 실행하면 `NameError: name 'alert' is not defined` 오류가 납니다. 2번을 아직 안 써서 `alert` 가 만들어지지 않았기 때문입니다.
 
-**`exercise5-2_run.py`** — **그대로 붙여 넣습니다.** 직접 쓰는 줄은 없습니다. Unit 4의 `login_detection.py` 와 Exercise 5-1의 `traffic_detection.py` 에 있는 함수를 불러와 알림을 만듭니다. `load_events` 는 두 파일에 같은 이름으로 있어서, <mark>여기서는 `login_detection.py` 의 것 하나만 불러옵니다.</mark>
+**`exercise5-2_run.py`** — **그대로 붙여 넣습니다.** 직접 쓰는 줄은 없습니다. Unit 4의 `login_detection.py` 와 실습 5-1의 `traffic_detection.py` 에 있는 함수를 불러와 알림을 만듭니다. `load_events` 는 두 파일에 같은 이름으로 있어서, <mark>여기서는 `login_detection.py` 의 것 하나만 불러옵니다.</mark>
 
 ```python
 import json                                                                          # 저장한 파일을 다시 읽기 위해 json 을 불러온다
-from login_detection import load_events, pick_login_failures, count_by_ip, pick_alert_ips, EVENTS_PATH, LOGIN_LIMIT  # Exercise 4-2에서 만든 함수를 불러온다
-from traffic_detection import add_minute_column, count_web_per_minute, make_traffic_limit, pick_spike_minutes, TRAFFIC_PATH, SPIKE_MULTIPLE  # Exercise 5-1에서 만든 함수를 불러온다
+from login_detection import load_events, pick_login_failures, count_by_ip, pick_alert_ips, EVENTS_PATH, LOGIN_LIMIT  # 실습 4-2에서 만든 함수를 불러온다
+from traffic_detection import add_minute_column, count_web_per_minute, make_traffic_limit, pick_spike_minutes, TRAFFIC_PATH, SPIKE_MULTIPLE  # 실습 5-1에서 만든 함수를 불러온다
 from alerts import make_login_alerts, make_traffic_alerts, save_alerts, ALERTS_PATH  # 방금 만든 함수를 불러온다
 
 events = load_events(EVENTS_PATH)                                                    # 이벤트 파일을 표로 읽는다
@@ -277,12 +277,12 @@ for alert in saved_alerts:                                                      
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise5-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **네 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1 ~ 3은 제목 줄에 숫자가 함께 나오고, 단계 4는 알림 한 건이 한 줄씩 2줄입니다.
 5. **[VS Code]** 새로 생긴 `alerts.json` 을 열어 <mark>알림 두 건이 보이는지</mark> 확인합니다.
-6. **[보고서]** Unit 5 의 `## Exercise 5-2` › `### Exercise 5-2` 아래를 채웁니다.
+6. **[보고서]** Unit 5 의 `## 실습 5-2` › `### 실습 5-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, `alerts.json` 의 내용도 붙여 넣은 뒤 알림이 모두 몇 건인지 적어 주세요.
    - (나) [핵심 질문] ① 203.0.113.50 이 `normalized_events.json` 의 `source` 가 `web` 인 줄에 몇 시에 나오는지 찾아 주세요. ② 그 시각이 급증 알림의 분(09:12)과 같은지 비교해 주세요. ③ 두 알림이 같은 일과 관련이 있는지 적고, 담당자가 두 건을 한 건으로 합쳐 조사할지 따로 조사할지 고른 이유도 적어 주세요.
    - (다) [핵심 질문] 203.0.113.50 알림을 조사해 보니 직원이 비밀번호를 잊어 반복해서 입력한 것이었습니다. ① `status` 를 어떤 값으로 바꿀지(안내 문서 2.1 의 처리 상태 순서를 참고), ② `note` 에 무엇을 더 적을지, ③ 알림을 지우지 않고 남겨 두는 편이 좋은 이유를 적어 주세요. 코드는 고치지 않고 글로만 적습니다.
 
-## Exercise 5-2 한눈에
+## 실습 5-2 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
@@ -295,7 +295,7 @@ for alert in saved_alerts:                                                      
 
 ## 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기
 
-문제가 아니라 이번 Unit에서 한 일을 저장소에 올리는 마무리입니다. Exercise 5-2 마지막 약 10분에 합니다. 어느 터미널을 써도 되고, `pwd` 로 위치를 먼저 확인한 뒤 <mark>결과가 `anomaly_detection` 으로 끝나면 아래 1번의 `cd ..` 를 칩니다.</mark>
+문제가 아니라 이번 Unit에서 한 일을 저장소에 올리는 마무리입니다. 실습 5-2 마지막 약 10분에 합니다. 어느 터미널을 써도 되고, `pwd` 로 위치를 먼저 확인한 뒤 <mark>결과가 `anomaly_detection` 으로 끝나면 아래 1번의 `cd ..` 를 칩니다.</mark>
 
 **이런 상황이 있습니다**
 
@@ -305,7 +305,7 @@ for alert in saved_alerts:                                                      
 
 **순서**
 
-0. **[터미널]** 이번 Unit에서 만든 파일이 있는지 `anomaly_detection` 폴더에서 확인합니다. Unit 5 보고서의 Exercise 5-2 칸에서 <mark>`답:` 뒤와 코드 상자가 비어 있는 질문이 없는지도 봅니다</mark>(마무리 (가)는 3번에서 채웁니다).
+0. **[터미널]** 이번 Unit에서 만든 파일이 있는지 `anomaly_detection` 폴더에서 확인합니다. Unit 5 보고서의 실습 5-2 칸에서 <mark>`답:` 뒤와 코드 상자가 비어 있는 질문이 없는지도 봅니다</mark>(마무리 (가)는 3번에서 채웁니다).
    ```bash
    pwd
    ls
@@ -331,7 +331,7 @@ for alert in saved_alerts:                                                      
    - `anomaly_detection/__pycache__/` (파이썬이 실행하면서 자동으로 만드는 임시 폴더)가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다.
 3. **[보고서]** `### 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기` 아래를 채웁니다. <mark>올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다.</mark>
    - (가) `git status` 를 쳤을 때 `.env` 나 `.venv` 가 보였는지, 보였다면 어떻게 했는지 적어 주세요.
-   - 앞 Exercise에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다. 올린 뒤에 이어서 적어 다시 올려도 됩니다.
+   - 앞 실습에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다. 올린 뒤에 이어서 적어 다시 올려도 됩니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
    ```bash
    git add .
@@ -345,7 +345,7 @@ for alert in saved_alerts:                                                      
    - 빠진 이름이 있으면 VS Code 왼쪽 목록의 `anomaly_detection` 폴더에 내 PC 에도 있는지 봅니다.
      - 없으면 다른 폴더에 만든 것이니 `anomaly_detection` 안으로 옮기고, `pwd` 로 위치를 확인한 뒤 2번의 `git status` 부터 다시 합니다.
 
-## 마무리 한눈에
+## 마무리 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
@@ -359,8 +359,8 @@ for alert in saved_alerts:                                                      
 
 | 확인 | 문제 |
 |---|---|
-| 웹 서버 요청을 분마다 세고 평소 평균의 3배 이상으로 늘어난 분을 찾았다 | Exercise 5-1 |
-| 로그인 실패 알림과 트래픽 급증 알림을 같은 모양으로 만들어 `alerts.json` 에 모았다 | Exercise 5-2 |
+| 웹 서버 요청을 분마다 세고 평소 평균의 3배 이상으로 늘어난 분을 찾았다 | 실습 5-1 |
+| 로그인 실패 알림과 트래픽 급증 알림을 같은 모양으로 만들어 `alerts.json` 에 모았다 | 실습 5-2 |
 | 이번 Unit에서 만든 파일과 보고서를 깃허브에 올렸다 | 마무리 |
 
 다음은 Unit 6입니다. 이번 Unit에서 만든 알림 형식에 SaaS 이상 사용과 악성 행위 징후 같은 유형을 더해 갑니다.

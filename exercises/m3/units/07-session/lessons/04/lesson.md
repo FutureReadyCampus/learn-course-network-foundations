@@ -17,7 +17,7 @@ source:
 
 ---
 
-## Exercise 7-1 정답
+## 실습 7-1 정답
 
 **터미널에 입력합니다.**
 
@@ -125,7 +125,7 @@ junho SALES:QUERY <- 역할 finance | 90일 넘게 안 씀(이력 없음 포함)
 
 ---
 
-## Exercise 7-2 정답
+## 실습 7-2 정답
 
 **터미널에 입력합니다.**
 
@@ -251,11 +251,11 @@ git push
 
 ---
 
-## 앞 Exercise 파일 완성본
+## 앞 실습 파일 완성본
 
-앞 Exercise 파일을 못 만들고 다음 Exercise로 넘어가야 할 때 그대로 만들어 씁니다. Unit 6의 파일(`review_list.py` · `review_rules.py` · `review_unused.py` · `config/access_log.json`)은 Unit 6 문서 맨 아래에 있습니다. 정답 본문을 함수 머리말과 합친 전체 파일입니다.
+앞 실습 파일을 못 만들고 다음 실습으로 넘어가야 할 때 그대로 만들어 씁니다. Unit 6의 파일(`review_list.py` · `review_rules.py` · `review_unused.py` · `config/access_log.json`)은 Unit 6 문서 맨 아래에 있습니다. 정답 본문을 함수 머리말과 합친 전체 파일입니다.
 
-**`overprivilege.py`** (Exercise 7-1 완성본)
+**`overprivilege.py`** (실습 7-1 완성본)
 
 ```python
 def entry_key(entry):                                            # 현황의 권한 한 건의 식별 키를 만드는 함수
@@ -325,7 +325,7 @@ def generate_report(access_list, stale, unused, days, generated_at):   # 현황 
     return report                                                # 리포트를 리턴한다
 ```
 
-**`report_exclude.py`** (Exercise 7-2 완성본)
+**`report_exclude.py`** (실습 7-2 완성본)
 
 ```python
 from config_loader import load_json                              # Unit 3에서 만든 안전한 읽기 함수를 불러온다
@@ -387,7 +387,7 @@ def split_by_exclude(findings, exclude_map):                     # 후보 리스
     return to_revoke, excluded                                   # 두 리스트를 함께 리턴한다
 ```
 
-**`config/exclude_list.json`** (Exercise 7-2 완성본)
+**`config/exclude_list.json`** (실습 7-2 완성본)
 
 ```json
 [

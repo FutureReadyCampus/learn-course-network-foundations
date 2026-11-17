@@ -1,6 +1,6 @@
 ---
 id: m4-u07-l02
-title: Exercise 7-1 · 로그를 한 사용자로 연결하기
+title: 실습 7-1 · 로그를 한 사용자로 연결하기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,11 +9,11 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 7-1 · 로그를 한 사용자로 연결하기
+# 실습 7-1 · 로그를 한 사용자로 연결하기
 
-## 이번에 만들 것: 한 사용자 기준 사건 연결
+## 목표: 한 사용자 기준 사건 연결
 
-> **이번 Exercise에 들어온 일**
+> **이번 실습에 들어온 일**
 >
 > A사 보안 팀장이 보낸 메시지입니다:
 > 「Unit 6에서 서버 · SaaS · 웹 로그를 각각 따로 탐지했더니 결과 목록이 세 개가 됐습니다. 목록을 번갈아 보다가 같은 사람 이름이 서버 결과에도, SaaS 결과에도 나오는 것을 봤습니다. 같은 사용자가 짧은 시간 안에 여러 로그에서 이상 징후를 보였다면 하나의 사건일 수 있습니다.
@@ -21,9 +21,9 @@ source:
 > 같은 사용자에게 서로 다른 로그의 이벤트가 짧은 시간 안에 모여 있으면 하나의 사건으로 연결해서 알려 주세요. 웹 로그에는 사용자 이름이 없고 IP 만 있으니, SaaS 에 로그인한 기록에서 IP 로 사용자를 찾아 연결해 주세요.」
 > - **왜 중요한가**: <mark>로그 하나에서는 작은 이상 징후도 같은 사용자에게 짧은 시간 안에 여러 로그에서 겹치면 먼저 확인할 이유가 분명하지만, 아침과 저녁처럼 시간이 멀리 떨어진 기록까지 한 사건으로 보면 안 됩니다.</mark>
 
-> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「문제」 전까지는 이 Exercise의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다. (판다스 문법 상자의 코드는 눈으로 읽으면 됩니다.)
+> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「문제」 전까지는 이 실습의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다. (판다스 문법 상자의 코드는 눈으로 읽으면 됩니다.)
 
-## 읽기 · 왜 IP 로 사용자를 채워 연결하는가
+## 왜 IP 로 사용자를 채워 연결하는가
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
@@ -31,7 +31,7 @@ source:
 2. 세 로그를 표 하나로 합쳐 **사용자 순, 같은 사용자는 시각 순**으로 놓으면 <mark>사용자별 이벤트를 시각 순서로 확인할 수 있습니다.</mark>
 3. 연결됐다고 보는 조건은 둘입니다. ① 서로 다른 로그(`source`)가 2종류 이상이다. ② 그 사용자의 첫 이벤트부터 마지막 이벤트까지가 60분 이내이다. <mark>하나만 맞으면 연결된 것으로 보지 않습니다.</mark>
 
-## 읽기 · 1.1 사용자 채우고 표 잇고 정렬하기
+## 1.1 사용자 채우고 표 잇고 정렬하기
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문은 없습니다. 판다스 문법 상자의 코드는 눈으로 읽으면 됩니다.
 
@@ -210,7 +210,7 @@ print(sorted_df)                              # 정렬한 표를 출력한다
 | `attach_user_to_web` | 웹 실패 표 · 딕셔너리 | `user` 열이 붙은 웹 이벤트 표 |
 | `build_timeline` | 서버 · SaaS · 웹 표 | 사용자 · 시각 순으로 정렬된 표 |
 | `find_chains` | 정렬된 표 | 연결된 사건 리스트와 연결되지 않은 사용자 |
-| `find_chains_in_events` | 이벤트 표 | 연결된 사건 리스트(미리 채움, Exercise 7-2에서 씀) |
+| `find_chains_in_events` | 이벤트 표 | 연결된 사건 리스트(미리 채움, 실습 7-2에서 씀) |
 
 - 미리 채운 줄 가운데 처음 보는 것은 이렇습니다.
   - `hours * 60 + minutes` 는 시각을 「자정부터 몇 분이 지났는지」로 바꿉니다(09:33 → 573). 사용자별로 가장 늦은 시각에서 가장 이른 시각을 빼면 첫 이벤트와 마지막 이벤트의 시간 차(분)가 나오고, 이 값을 60분 기준과 비교합니다. 분 단위로 계산하므로 초는 버립니다.
@@ -225,7 +225,7 @@ print(sorted_df)                              # 정렬한 표를 출력한다
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## Exercise 7-1 · 로그를 한 사용자로 연결하기
+## 실습 7-1 · 로그를 한 사용자로 연결하기
 
 **이런 상황이 있습니다**
 
@@ -246,9 +246,9 @@ print(sorted_df)                              # 정렬한 표를 출력한다
 
 ```python
 import pandas as pd                                    # 판다스를 pd 라는 짧은 이름으로 불러온다
-from access_detection import load_events, pick_server_failures, EVENTS_PATH  # Exercise 6-1 함수를 불러온다
-from saas_detection import pick_saas, pick_logins      # Exercise 6-2 함수를 불러온다
-from malicious_detection import pick_web_failures      # Exercise 6-3 함수를 불러온다
+from access_detection import load_events, pick_server_failures, EVENTS_PATH  # 실습 6-1 함수를 불러온다
+from saas_detection import pick_saas, pick_logins      # 실습 6-2 함수를 불러온다
+from malicious_detection import pick_web_failures      # 실습 6-3 함수를 불러온다
 
 MIN_SOURCES = 2                                        # 서로 다른 로그(source)가 이 개수 이상이면 연결된 것으로 본다
 WINDOW_MINUTES = 60                                    # 한 사용자의 이벤트가 이 분 안에 모여 있어야 연결된 것으로 본다
@@ -324,7 +324,7 @@ def find_chains(timeline):                             # 정렬된 이벤트 표
 
 def find_chains_in_events(events):                     # 이벤트 표를 받는 함수
     """이벤트 표 하나로 위 함수를 차례로 불러 연결된 사건 리스트를 만든다.
-    Exercise 7-2에서 점수를 매기기 전에 한 번에 쓴다.
+    실습 7-2에서 점수를 매기기 전에 한 번에 쓴다.
     """
     server_failures = pick_server_failures(events)     # 판정 서버 실패 이벤트를 고른다
     server_part = server_failures                      # 서버 실패 이벤트 전체를 쓴다
@@ -347,9 +347,9 @@ def find_chains_in_events(events):                     # 이벤트 표를 받는
 **`exercise7-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
 
 ```python
-from access_detection import load_events, pick_server_failures, EVENTS_PATH  # Exercise 6-1 함수를 불러온다
-from saas_detection import pick_saas, pick_logins      # Exercise 6-2 함수를 불러온다
-from malicious_detection import pick_web_failures      # Exercise 6-3 함수를 불러온다
+from access_detection import load_events, pick_server_failures, EVENTS_PATH  # 실습 6-1 함수를 불러온다
+from saas_detection import pick_saas, pick_logins      # 실습 6-2 함수를 불러온다
+from malicious_detection import pick_web_failures      # 실습 6-3 함수를 불러온다
 from correlation import make_ip_user_map, attach_user_to_web, build_timeline, find_chains, WINDOW_MINUTES  # 방금 만든 함수를 불러온다
 
 events = load_events(EVENTS_PATH)                      # 이벤트 파일을 표로 읽는다
@@ -395,7 +395,7 @@ for item in not_chained:                               # 연결되지 않은 사
    ls
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `touch 파일이름` 빈 파일 만들기 · `ls` 폴더 안의 파일 이름 보기
-2. **[VS Code]** `correlation.py` 에서 <mark>직접 쓰는 곳 다섯 군데를 씁니다</mark>. 1.1 의 문법 상자를 보고 쓰고, 막히면 아래 「Exercise 7-1 한눈에」를 봅니다.
+2. **[VS Code]** `correlation.py` 에서 <mark>직접 쓰는 곳 다섯 군데를 씁니다</mark>. 1.1 의 문법 상자를 보고 쓰고, 막히면 아래 「실습 7-1 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
@@ -403,12 +403,12 @@ for item in not_chained:                               # 연결되지 않은 사
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise7-1_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **네 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 숫자가 제목 줄에 함께 나오므로 그 아래 줄이 없고, 단계 2는 제목 아래 6줄(`gaeun 의 이벤트 …` 안내 줄 1줄과 gaeun 의 이벤트 5줄), 단계 3은 1줄, 단계 4는 제목 아래 1줄입니다.
-5. **[보고서]** Unit 7 의 `## Exercise 7-1` › `### Exercise 7-1` 아래를 채웁니다.
+5. **[보고서]** Unit 7 의 `## 실습 7-1` › `### 실습 7-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 연결된 사건의 사용자와 이유를 적어 주세요.
    - (나) [핵심 질문] 단계 2에 나온 gaeun 의 이벤트 5개는 어느 로그(`source`)에서 왔고, 왜 한 사건으로 연결됐나요? 이 사건만으로 공격이라고 확정할 수 있는지도 적어 주세요.
-   - (다) [핵심 질문] seoyeon 은 서로 다른 로그에 나오지만 연결되지 않았습니다. 단계 4 의 두 숫자(로그 종류 수와 처음부터 마지막까지의 분)로 두 조건을 비교해 연결되지 않은 이유를 설명하고, 하나의 사건으로 연결하지 않아서 탐지하지 못할 수 있는 것을 Exercise 6-2 출력에서 seoyeon 이 나온 규칙과 연결해 적어 주세요.
+   - (다) [핵심 질문] seoyeon 은 서로 다른 로그에 나오지만 연결되지 않았습니다. 단계 4 의 두 숫자(로그 종류 수와 처음부터 마지막까지의 분)로 두 조건을 비교해 연결되지 않은 이유를 설명하고, 하나의 사건으로 연결하지 않아서 탐지하지 못할 수 있는 것을 실습 6-2 출력에서 seoyeon 이 나온 규칙과 연결해 적어 주세요.
 
-## Exercise 7-1 한눈에
+## 실습 7-1 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
