@@ -24,8 +24,8 @@ Unit 9는 Exercise 9-1 · 9-2로 이루어져 있고, <mark>깃허브에 올리�
 - 서버가 쓰는 포트(port, 포트: 컴퓨터로 들어오는 요청을 구분하는 번호)는 `8080` · `8081` · `8082` 로 **고정**합니다. <mark>번호를 바꾸지 않습니다.</mark>
 - 보고서에서 `[핵심 질문]` 표시가 붙은 질문은 이 Exercise에서 꼭 알아야 할 핵심 질문이고, <mark>내 화면의 값을 근거로 이유까지 씁니다</mark>.
 
-> [주의] **먼저 확인 — 이번 Unit에서 만드는 파일은 모두 4과목 폴더 `anomaly_detection` 안에서 만듭니다.**
-> - <mark style="background:#ffc4d6">터미널에서 `pwd` 를 쳐서 결과가 `…/anomaly_detection` 으로 끝나는지 확인한 뒤 시작합니다.</mark> 이전 과목 폴더가 아닙니다.
+> [주의] **먼저 확인 — 이번 Unit에서 만드는 파일은 모두 Module 4 폴더 `anomaly_detection` 안에서 만듭니다.**
+> - <mark style="background:#ffc4d6">터미널에서 `pwd` 를 쳐서 결과가 `…/anomaly_detection` 으로 끝나는지 확인한 뒤 시작합니다.</mark> 이전 Module 폴더가 아닙니다.
 > - 다른 폴더에서 `docker compose` 를 치면 상위 폴더에 있는 옛 `compose.yaml` 이 켜질 수 있습니다.
 
 **이번 Unit에서 불러 쓰는 이전 파일**: 없습니다. 여기서 만드는 파일은 `compose.yaml` · `compose.secure.yaml` 과 `logs/web_404.log` 입니다.

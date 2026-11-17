@@ -54,13 +54,13 @@ print(grade_means.round(1).to_dict())
 
 | 코드 | 뜻 |
 |---|---|
-| `groups["ack_minutes"].mean()` | <mark style="background:#e0d4ff">4과목에서 배운 `그룹["열"].sum()`</mark> 과 같은 모양입니다. 합계 대신 그룹마다 평균을 구하는 그룹별 집계입니다. 그룹은 `table.groupby("grade")` 처럼 grade 값이 같은 행끼리 묶은 것입니다 |
+| `groups["ack_minutes"].mean()` | <mark style="background:#e0d4ff">Module 4에서 배운 `그룹["열"].sum()`</mark> 과 같은 모양입니다. 합계 대신 그룹마다 평균을 구하는 그룹별 집계입니다. 그룹은 `table.groupby("grade")` 처럼 grade 값이 같은 행끼리 묶은 것입니다 |
 | `.round(1)` | 소수 첫째 자리까지 반올림합니다 |
 | 위 코드의 출력 | <mark style="background:#bde3ff">`{'high': 10.0, 'mid': 63.5}`</mark> 입니다. mid 는 <mark style="background:#bde3ff">(72 + 55) ÷ 2 = 63.5</mark> 입니다 |
 
 - 4절은 <mark style="background:#ffdcb0">확인 시각(`acked_at`)이 응답 기한 시각(`sla_due`)보다 늦은</mark> 티켓, 즉 SLA 위반 티켓만 집계합니다.
 - 오늘 샘플에서 아직 확인하지 않은 티켓은 `TCK-2` · `TCK-5` 입니다. 근무는 180분에 끝났는데 둘의 응답 기한 시각은 243분 · 270분이라서, <mark style="background:#bde3ff">기한이 아직 지나지 않았으므로 위반으로 집계하지 않습니다</mark>.
-- `table[table["acked_at"] > table["sla_due"]]` 는 <mark style="background:#e0d4ff">4과목에서 배운</mark> 「조건으로 행 필터링(filtering, 필터링: 조건에 맞는 행만 남기기)하기」와 같은 모양입니다. 여기서 `table` 은 DataFrame(데이터프레임: 행과 열로 이루어진 판다스의 표)입니다. 조건에 숫자 대신 다른 열을 쓴 것만 다릅니다. 바로 아래 문법 상자에서 작은 예로 확인합니다.
+- `table[table["acked_at"] > table["sla_due"]]` 는 <mark style="background:#e0d4ff">Module 4에서 배운</mark> 「조건으로 행 필터링(filtering, 필터링: 조건에 맞는 행만 남기기)하기」와 같은 모양입니다. 여기서 `table` 은 DataFrame(데이터프레임: 행과 열로 이루어진 판다스의 표)입니다. 조건에 숫자 대신 다른 열을 쓴 것만 다릅니다. 바로 아래 문법 상자에서 작은 예로 확인합니다.
 
 **판다스 문법 상자 — 두 열로 계산하고 비교하기 `표["열1"] - 표["열2"]` · `표[표["열1"] > 표["열2"]]`**
 

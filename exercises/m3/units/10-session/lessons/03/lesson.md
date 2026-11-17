@@ -471,11 +471,11 @@ print(text)                                                      # 보고서 내
 | 보고서 줄 모으기 | `lines.append("…")` → `"\n".join(lines)` (`weekly_report.py`, 미리 채움) |
 | 파일로 저장 | `open(file_name, "w", encoding="utf-8")` → `report_file.write(text)` (미리 채움) |
 
-## 3과목 폴더 구조 한눈에 보기
+## Module 3 폴더 구조 한눈에 보기
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
-3과목이 끝나면 `access_control` 폴더는 아래 모양이어야 합니다. 파일을 어디에 저장했는지 헷갈리면 내 VS Code 왼쪽 목록과 비교합니다.
+Module 3이 끝나면 `access_control` 폴더는 아래 모양이어야 합니다. 파일을 어디에 저장했는지 헷갈리면 내 VS Code 왼쪽 목록과 비교합니다.
 
 - **`config/` 안에는 JSON 설정 파일만** 둡니다. 이름이 `config/…` 로 시작하는 파일입니다.
 - **그 밖의 파일은 모두 `access_control/` 바로 아래**에 둡니다. 코드(`.py`), 실행 파일(`exerciseN-M_run.py`), Unit마다 받은 안내와 보고서(`.md`), 실행하면 생기는 파일이 모두 해당합니다.
@@ -485,9 +485,9 @@ print(text)                                                      # 보고서 내
 security-agent-toolkit/
   .env
   .gitignore
-  agent_core/                1과목
-  network_zt/                2과목
-  access_control/ (바로 아래 파일 76개 + config 11개 = 87개)    3과목  ← 여기서 작업
+  agent_core/                Module 1
+  network_zt/                Module 2
+  access_control/ (바로 아래 파일 76개 + config 11개 = 87개)    Module 3  ← 여기서 작업
     config/ (11개)           ← JSON 설정만
       access_log.json
       alert.json
@@ -577,11 +577,11 @@ security-agent-toolkit/
     test_policy_extra.py
     week_log.jsonl
     weekly_report.py
-  anomaly_detection/         4과목 (다음 Unit부터)
+  anomaly_detection/         Module 4 (다음 Unit부터)
 ```
 
 - 개수는 안내 · 보고서를 포함해 세었습니다. 실행해야 생기는 파일(`requests.json` · `revocation_log.json` · `server_log.jsonl` · 주간 보고서)은 그 파일을 만드는 실행 파일을 돌리지 않았다면 내 폴더에 없을 수 있습니다.
 - `__pycache__/` 는 파이썬이 만드는 임시 폴더라서 신경 쓰지 않고 깃허브에도 올리지 않습니다.
-- 다른 과목 폴더는 일부만 적었습니다. 내 폴더에 `.venv`, `docs/` 같은 폴더가 더 있어도 괜찮습니다.
+- 다른 Module 폴더는 일부만 적었습니다. 내 폴더에 `.venv`, `docs/` 같은 폴더가 더 있어도 괜찮습니다.
 
 ---

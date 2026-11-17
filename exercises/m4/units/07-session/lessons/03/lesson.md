@@ -170,7 +170,7 @@ def collect_findings(events, chains):                  # 이벤트 표와 연결
     suspicious = pick_suspicious(server_failures)      # 먼저 확인할 서버 이벤트를 고른다
     suspicious_list = suspicious.to_dict("records")    # 표를 이벤트 딕셔너리 리스트로 바꾼다
     for event in suspicious_list:                      # 이벤트를 하나씩 꺼낸다
-        reason, priority = judge_failure(event["user"], event["action"])  # 3과목 규칙으로 다시 판정한다
+        reason, priority = judge_failure(event["user"], event["action"])  # Module 3 규칙으로 다시 판정한다
         rule = SERVER_RULES.get(reason, reason)        # 판정 이유를 규칙 이름으로 바꾼다
         add_finding(findings, event["user"], rule)     # 사용자와 규칙을 추가한다
 

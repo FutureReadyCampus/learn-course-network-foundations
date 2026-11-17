@@ -72,7 +72,7 @@ gaeun 의 이벤트 (시각 · 로그 · 행동 · 결과)
 ```
 
 - (나) gaeun 의 이벤트 5개는 <mark>웹(`web`) 1개 · 판정 서버(`server`) 3개 · SaaS(`saas`) 1개</mark>이고, 서로 다른 로그가 3종류이며 09:33 부터 10:14 까지 41분 안에 모여 있어서 연결됐습니다.
-  - <mark>공격이라고 확정할 수 없습니다.</mark> 서버의 거절 3개는 3과목(접근통제) 규칙으로는 「허용」이었고, 웹의 `/admin` 실패는 1건이며, SaaS 로그인은 성공했습니다. 같은 시간대에 여러 로그가 확인될 뿐, 원인은 이 기록만으로 알 수 없습니다.
+  - <mark>공격이라고 확정할 수 없습니다.</mark> 서버의 거절 3개는 Module 3(접근통제) 규칙으로는 「허용」이었고, 웹의 `/admin` 실패는 1건이며, SaaS 로그인은 성공했습니다. 같은 시간대에 여러 로그가 확인될 뿐, 원인은 이 기록만으로 알 수 없습니다.
 - (다) seoyeon 은 단계 4 에서 <mark>로그 종류 2</mark>(서버 · SaaS)로 조건 ①(2 이상)을 만족하지만, 처음부터 마지막까지가 <mark>555분</mark>(09:05 ~ 18:20)으로 조건 ②(60분 이내)를 만족하지 못해 연결되지 않았습니다.
   - 하나의 사건으로 연결하지 않으면 서버의 `SETTLE:QUERY` 거절(권한 없음)과 Exercise 6-2에서 본 평소와 다른 IP · 대량 다운로드가 같은 사용자의 기록이라는 점을 <mark>탐지 결과에서 확인하기 어렵습니다.</mark>
 
@@ -207,7 +207,7 @@ Unit 6의 Exercise 6-1 · 6-2 · 6-3 파일이 없거나 완성하지 못했다�
 
 ```python
 import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
-from rbac import check_permission                     # 3과목(접근통제)에서 만든 권한 판정 함수를 불러온다
+from rbac import check_permission                     # Module 3(접근통제)에서 만든 권한 판정 함수를 불러온다
 
 EVENTS_PATH = "normalized_events.json"                # 읽을 정규화 이벤트 파일 이름
 REPEAT_LIMIT = 3                                      # 한 사용자의 실패가 이 횟수 이상이면 먼저 확인한다
@@ -255,7 +255,7 @@ def pick_suspicious(server_failures):                 # 서버 실패 표를 받
 
 
 def judge_failure(user, action):                      # 사용자와 행동을 받는 함수
-    """서버가 거절한 요청을 3과목(접근통제) 권한 규칙으로 다시 판정해 이유와 우선순위를 리턴한다.
+    """서버가 거절한 요청을 Module 3(접근통제) 권한 규칙으로 다시 판정해 이유와 우선순위를 리턴한다.
     거절이 규칙대로인지 확인할 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
@@ -265,7 +265,7 @@ def judge_failure(user, action):                      # 사용자와 행동을 �
     permission_action = parts[1]                      # 두 번째 조각이 행위이다
 
     # 5. check_permission 에 user, resource, permission_action 을 전달하고, 결과를 is_allowed 와 reason 에 나눠 담는다 (모양: is_allowed, reason = check_permission(...). is_allowed 는 이 문제에서 쓰지 않는다)
-    is_allowed, reason = check_permission(user, resource, permission_action)  # 3과목(접근통제) 판정 결과를 허용 여부와 이유로 나눠 받는다
+    is_allowed, reason = check_permission(user, resource, permission_action)  # Module 3(접근통제) 판정 결과를 허용 여부와 이유로 나눠 받는다
     # 6. PRIORITY 에서 reason 의 순서를 꺼내 priority 에 담는다 (딕셔너리에 없는 이유이면 4 — .get(reason, 4))
     priority = PRIORITY.get(reason, 4)                # 이유의 우선순위를 꺼낸다(없으면 4)
     return reason, priority                           # 판정 이유와 우선순위를 리턴한다

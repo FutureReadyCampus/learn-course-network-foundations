@@ -13,15 +13,15 @@ source:
 
 ## 이번에 할 일: AI 요약과 pipeline.py
 
-Unit 8까지 이상탐지 규칙을 만들고, 알림이 맞았는지 세고, 틀린 알림을 줄였습니다. 이번 Unit에서는 <mark>**Unit 6 · 7에서 만든 탐지를 한 번에 실행해 보고서 파일 하나로 남기고**</mark>, 4과목에서 만난 상황을 정리합니다. 4과목의 마지막 Unit입니다.
+Unit 8까지 이상탐지 규칙을 만들고, 알림이 맞았는지 세고, 틀린 알림을 줄였습니다. 이번 Unit에서는 <mark>**Unit 6 · 7에서 만든 탐지를 한 번에 실행해 보고서 파일 하나로 남기고**</mark>, Module 4에서 만난 상황을 정리합니다. Module 4의 마지막 Unit입니다.
 
 - **Exercise 10-1**: Unit 7에서 저장한 대상별 점수 파일에서 먼저 확인할 대상을 고르고, **AI** 에게 파일에 있는 사실만으로 짧은 요약문을 쓰게 합니다(`event_summary.py`).
 - **Exercise 10-2**: 이벤트 읽기 → 연결 · 탐지 · 점수 → Gemini API 를 활용한 AI 요약 → 보고서 저장을 **`pipeline.py`**(pipeline, 파이프라인: 여러 단계를 순서대로 이어 한 번에 실행하는 프로그램) 하나로 실행합니다.
-- **Exercise 10-3**: **4과목 총정리.** 새로 배우는 것 없이, 상황 8개의 원인과 고치는 방법을 내 말로 정리하고 이번 Unit의 작업을 깃허브에 올립니다.
+- **Exercise 10-3**: **Module 4 총정리.** 새로 배우는 것 없이, 상황 8개의 원인과 고치는 방법을 내 말로 정리하고 이번 Unit의 작업을 깃허브에 올립니다.
 
-Unit 10은 Exercise 10-1 · 10-2 · 10-3으로 이루어져 있고, 다음 Unit부터는 5과목(자동 대응)을 시작합니다. <mark>깃허브에 올리는 일은 Exercise 10-3 마지막에 합니다.</mark> Exercise마다 문제는 하나입니다.
+Unit 10은 Exercise 10-1 · 10-2 · 10-3으로 이루어져 있고, 다음 Unit부터는 Module 5(자동 대응)을 시작합니다. <mark>깃허브에 올리는 일은 Exercise 10-3 마지막에 합니다.</mark> Exercise마다 문제는 하나입니다.
 
-- 이번 Unit에서 쓰는 도구는 **파이썬 · 판다스 · VS Code · 터미널 · git** 이고, Exercise 10-1 · 10-2에는 1과목에서 만든 **LLM 호출 함수**(`llm_client.py` 의 `call_llm`)를 씁니다.
+- 이번 Unit에서 쓰는 도구는 **파이썬 · 판다스 · VS Code · 터미널 · git** 이고, Exercise 10-1 · 10-2에는 Module 1에서 만든 **LLM 호출 함수**(`llm_client.py` 의 `call_llm`)를 씁니다.
   - 이 안내에서 말하는 **AI** 는 구글의 **Gemini API** 입니다.
   - `call_llm` 이 Gemini API 에 글을 보내고 답을 받아 옵니다.
 - 이번 Unit에서 새로 배우는 문법은 Exercise 10-1의 문자열 이어 붙이기 `"구분 글자".join(리스트)` 와 Exercise 10-2의 `Series.to_dict()` 두 개입니다. 나머지는 앞에서 쓴 문법(f-문자열 · `if` · `and` · 딕셔너리 · `value_counts()` · `json.dump`)을 다시 씁니다.
@@ -31,11 +31,11 @@ Unit 10은 Exercise 10-1 · 10-2 · 10-3으로 이루어져 있고, 다음 Unit�
 - 보고서에서 `[핵심 질문]` 표시가 붙은 질문은 이 Exercise에서 꼭 알아야 할 핵심 질문이고, <mark>내 출력이나 샘플 데이터의 값을 근거로 이유까지 씁니다</mark>.
 - 점수 기준(high 60 이상 · mid 35 이상)과 AI 에게 요약시킬 대상 수(3명)는 **고정**하고, <mark>값을 바꿔 가며 비교하지 않습니다</mark>.
 
-**이번 Unit에서 불러 쓰는 이전 파일**이 있습니다. 아래 표에서 <mark>`event_summary.py` 만 이번 Unit의 Exercise 10-1에서 만들고, 나머지는 모두 앞 Unit이나 1과목에서 만든 파일</mark>입니다. <mark>없는 파일은 「복구 파일 모음」(`unit10_recovery_files.md`)으로 만듭니다.</mark> 이 파일은 앞 Unit의 파일이 없는 사람만 받습니다.
+**이번 Unit에서 불러 쓰는 이전 파일**이 있습니다. 아래 표에서 <mark>`event_summary.py` 만 이번 Unit의 Exercise 10-1에서 만들고, 나머지는 모두 앞 Unit이나 Module 1에서 만든 파일</mark>입니다. <mark>없는 파일은 「복구 파일 모음」(`unit10_recovery_files.md`)으로 만듭니다.</mark> 이 파일은 앞 Unit의 파일이 없는 사람만 받습니다.
 
 | 파일 | 만든 곳 | 쓰는 곳 | 없거나 완성하지 못했을 때 |
 |---|---|---|---|
-| `llm_client.py` · `.env`(API 키) | 1과목(`agent_core` 폴더와 `security-agent-toolkit` 폴더) | Exercise 10-1 · 10-2 | 아래 시작하기 3번의 `cp` 명령으로 복사합니다. `agent_core` 에도 없으면 복구 파일 모음의 `llm_client.py` 로 만듭니다 |
+| `llm_client.py` · `.env`(API 키) | Module 1(`agent_core` 폴더와 `security-agent-toolkit` 폴더) | Exercise 10-1 · 10-2 | 아래 시작하기 3번의 `cp` 명령으로 복사합니다. `agent_core` 에도 없으면 복구 파일 모음의 `llm_client.py` 로 만듭니다 |
 | `unit05_risk_scores.json` | Unit 7의 Exercise 7-2 | Exercise 10-1이 읽습니다 | 아래 시작하기 5번의 내용으로 파일을 만듭니다(항상 이 내용으로 덮어씁니다) |
 | `normalized_events.json` · `rbac.py` · `config/users.json` · `config/roles.json` | Unit 6 안내의 시작하기 6번 | Exercise 10-2 | 복구 파일 모음의 내용으로 파일을 만듭니다 |
 | `access_detection.py` · `saas_detection.py` · `malicious_detection.py` | Unit 6의 Exercise 6-1 · 6-2 · 6-3 | Exercise 10-2 | 복구 파일 모음의 완성본으로 파일을 만듭니다 |
@@ -52,7 +52,7 @@ Unit 10은 Exercise 10-1 · 10-2 · 10-3으로 이루어져 있고, 다음 Unit�
    ls
    ```
    - 명령 풀이: `cd 폴더이름` 그 폴더로 이동 · `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
-3. **[터미널]** 1과목에서 만든 LLM 호출 파일을 이 폴더로 복사하고, API 키를 읽을 수 있는지 확인합니다. <mark>마지막 명령에서 `True` 가 나오면</mark> 됩니다. 키 값은 화면에 나오지 않습니다.
+3. **[터미널]** Module 1에서 만든 LLM 호출 파일을 이 폴더로 복사하고, API 키를 읽을 수 있는지 확인합니다. <mark>마지막 명령에서 `True` 가 나오면</mark> 됩니다. 키 값은 화면에 나오지 않습니다.
    ```bash
    cp ../agent_core/llm_client.py .
    ls llm_client.py

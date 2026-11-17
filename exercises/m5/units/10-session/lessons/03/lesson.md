@@ -15,33 +15,33 @@ source:
 
 > **오늘 들어온 일**
 >
-> - **상황**: <mark style="background:#e0d4ff">4과목에서 `risk_scores.py` 가 대상별 점수 · 등급 · 이유를 `unit07_risk_scores.json` 에 저장했습니다.</mark> `dami`(60점 high) · `seoyeon`(45점 mid) · `gaeun`(40점 mid) · `jiwoo`(35점 mid) · `198.51.100.90`(30점 low) 5건입니다. Exercise 10-1 엔진은 Unit 1의 `incident_samples.json` 과 같은 모양의 알림을 읽습니다. 이번 Unit에서 팀장이 「4과목에서 탐지된 5건을 엔진으로 처리하고, 무엇을 실행했는지 한 장으로 보고해 달라」고 요청합니다.
-> - **문제**: 4과목 파일에는 알림 번호(`id`)와 상태(`status`)가 없어서 엔진에 바로 넣을 수 없습니다. 4과목과 5과목은 따로 만든 프로그램이라, 4과목 파일의 모양이 바뀌면(필수 키가 빠지거나 등급 이름이 늘면) 엔진 안에서 오류가 납니다. 엔진 안에서 잡힌 오류는 그 알림의 조치와 티켓이 없는 「실패」로만 남습니다(Exercise 10-1 `INC-402`). <mark style="background:#ffc4d6">어느 기록이 왜 못 들어갔는지 엔진 앞에서 이유와 함께 남기지 않으면 탐지된 대상이 사라집니다.</mark>
-> - **부탁**: 4과목 탐지 결과를 엔진이 읽는 알림으로 바꾸되, 바꾸기 전에 모양을 점검해 문제가 있는 기록은 이유와 함께 따로 모아 주세요. 엔진을 실행한 뒤에는 처리 결과별 알림 수 · 티켓 수 · 실제로 실행한 조치를 운영 요약으로 정리해 주세요.
+> - **상황**: <mark style="background:#e0d4ff">Module 4에서 `risk_scores.py` 가 대상별 점수 · 등급 · 이유를 `unit07_risk_scores.json` 에 저장했습니다.</mark> `dami`(60점 high) · `seoyeon`(45점 mid) · `gaeun`(40점 mid) · `jiwoo`(35점 mid) · `198.51.100.90`(30점 low) 5건입니다. Exercise 10-1 엔진은 Unit 1의 `incident_samples.json` 과 같은 모양의 알림을 읽습니다. 이번 Unit에서 팀장이 「Module 4에서 탐지된 5건을 엔진으로 처리하고, 무엇을 실행했는지 한 장으로 보고해 달라」고 요청합니다.
+> - **문제**: Module 4 파일에는 알림 번호(`id`)와 상태(`status`)가 없어서 엔진에 바로 넣을 수 없습니다. Module 4와 Module 5는 따로 만든 프로그램이라, Module 4 파일의 모양이 바뀌면(필수 키가 빠지거나 등급 이름이 늘면) 엔진 안에서 오류가 납니다. 엔진 안에서 잡힌 오류는 그 알림의 조치와 티켓이 없는 「실패」로만 남습니다(Exercise 10-1 `INC-402`). <mark style="background:#ffc4d6">어느 기록이 왜 못 들어갔는지 엔진 앞에서 이유와 함께 남기지 않으면 탐지된 대상이 사라집니다.</mark>
+> - **부탁**: Module 4 탐지 결과를 엔진이 읽는 알림으로 바꾸되, 바꾸기 전에 모양을 점검해 문제가 있는 기록은 이유와 함께 따로 모아 주세요. 엔진을 실행한 뒤에는 처리 결과별 알림 수 · 티켓 수 · 실제로 실행한 조치를 운영 요약으로 정리해 주세요.
 > - **바뀌는 점**: 5건이 알림 `INC-501` ~ `INC-505` 로 바뀌어 모두 엔진에 들어가고(거절 <mark style="background:#bde3ff">0건</mark>), <mark style="background:#bde3ff">자동 실행 2건</mark>(`dami` 잠금 · `198.51.100.90` 차단)과 <mark style="background:#bde3ff">조치 없음 3건</mark>으로 처리됩니다. 티켓 <mark style="background:#bde3ff">5장</mark>이 만들어지고, 운영 요약은 `engine_summary.json` 에 저장됩니다. 상황과 숫자는 설명을 위한 예시입니다.
 
 > **읽을거리 — 문제가 아닙니다.** 읽고 이해만 합니다.
 
 ## 읽기 · 2.1 입력 검증과 운영 요약
 
-| 4과목 `unit07_risk_scores.json` 의 키 | 엔진이 읽는 알림의 키 | 하는 일 |
+| Module 4 `unit07_risk_scores.json` 의 키 | 엔진이 읽는 알림의 키 | 하는 일 |
 |---|---|---|
 | `entity` · `score` · `grade` · `reasons` | 같은 이름 | 값을 그대로 옮긴다 |
 | (없음) | `id` | `INC-501` 부터 번호를 붙인다 (3번) |
 | (없음) | `status` | 처음 상태인 `탐지됨` 을 적는다 (4번) |
 
-- 4과목의 출력과 5과목의 입력이 같은 키 이름과 모양을 쓰기로 정한 약속을 공통 스키마(common schema, 커먼 스키마: 프로그램끼리 주고받는 데이터의 키 이름과 모양을 미리 정한 약속)라고 합니다. 오늘 엔진의 공통 스키마는 <mark style="background:#e0d4ff">Unit 1의 `incident_samples.json` 의 알림 모양</mark>입니다.
+- Module 4의 출력과 Module 5의 입력이 같은 키 이름과 모양을 쓰기로 정한 약속을 공통 스키마(common schema, 커먼 스키마: 프로그램끼리 주고받는 데이터의 키 이름과 모양을 미리 정한 약속)라고 합니다. 오늘 엔진의 공통 스키마는 <mark style="background:#e0d4ff">Unit 1의 `incident_samples.json` 의 알림 모양</mark>입니다.
 - 입력 검증(input validation, 인풋 밸리데이션: 데이터를 처리하기 전에 필수 키와 값의 범위가 맞는지 확인하는 일)에서는 <mark>필수 키가 있는지(1번), 등급 이름을 엔진이 아는지(2번)</mark> 점검합니다. 탐지된 규칙 이름이 비어 있는 기록도 거절합니다.
-- 문제가 있는 기록은 버리지 않고 이유와 함께 거절 리스트(`rejected`)에 모읍니다. 거절 리스트가 있으면 4과목 파일을 고쳐야 하는지 알 수 있습니다.
+- 문제가 있는 기록은 버리지 않고 이유와 함께 거절 리스트(`rejected`)에 모읍니다. 거절 리스트가 있으면 Module 4 파일을 고쳐야 하는지 알 수 있습니다.
 - 방어는 두 겹입니다. 엔진 앞의 입력 검증은 <mark>알려진 문제를 이유와 함께 걸러 내고</mark>, Exercise 10-1의 오류 격리는 <mark>걸러 내지 못한 문제가 다른 알림으로 번지지 않게</mark> 합니다.
 - 운영 요약은 근무를 인계하거나 보고할 때 한 번에 보여 주는 정리입니다. 오늘은 처리 결과별 알림 수(7번), 티켓 수, 실제로 실행한 조치(8번)를 담습니다. <mark>실제로 실행한 조치는 `executed` 가 참인 조치만 모읍니다.</mark>
-- 4과목의 등급은 점수로 정해지고(60점 이상 high, 35점 이상 mid, 그 아래 low), 엔진은 이 등급을 그대로 승인 게이트의 `grade` 로 씁니다.
+- Module 4의 등급은 점수로 정해지고(60점 이상 high, 35점 이상 mid, 그 아래 low), 엔진은 이 등급을 그대로 승인 게이트의 `grade` 로 씁니다.
 
 함수 네 개와 실행 파일 가운데 직접 쓰는 곳은 **아홉 군데**입니다.
 
 ```
 engine_input.py   find_schema_problem  : 필수 키가 없으면 (1번) · 모르는 등급이면 (2번) 이유를 리턴한다
-                  make_alert           : 알림 번호를 만들고 (3번) 4과목 기록을 알림 딕셔너리로 바꾼다 (4번)
+                  make_alert           : 알림 번호를 만들고 (3번) Module 4 기록을 알림 딕셔너리로 바꾼다 (4번)
                   split_records        : 기록마다 점검하고 (5번) 문제가 없으면 (6번) 알림 리스트에 넣는다
                   summarize            : 처리 결과별 알림 수를 세고 (7번) 실행한 조치만 (8번) 모은다
 실행 파일         exercise10-2_run.py     : 엔진을 실행한다 (9번)
@@ -53,13 +53,13 @@ engine_input.py   find_schema_problem  : 필수 키가 없으면 (1번) · 모�
 
 **이런 상황이 있습니다**
 
-- **지금은**: <mark>4과목 탐지 결과 파일은 있지만 엔진이 읽는 알림 모양이 아니고, 엔진을 실행한 결과를 한눈에 보고할 요약이 없습니다</mark>.
+- **지금은**: <mark>Module 4 탐지 결과 파일은 있지만 엔진이 읽는 알림 모양이 아니고, 엔진을 실행한 결과를 한눈에 보고할 요약이 없습니다</mark>.
 - **만드는 것**: 모양 점검 · 알림으로 바꾸기 · 기록 나누기 · 운영 요약(`engine_input.py`), 엔진 실행과 출력(`exercise10-2_run.py`).
-- **실행하면**: <mark>단계 1: 4과목 탐지 결과 수, 단계 2: 일부러 틀리게 만든 기록 두 건의 점검 결과, 단계 3: 엔진에 넣을 알림, 단계 4: 알림마다 엔진 처리 결과, 단계 5: 운영 요약, 단계 6: 저장한 파일이 나옵니다.</mark>
+- **실행하면**: <mark>단계 1: Module 4 탐지 결과 수, 단계 2: 일부러 틀리게 만든 기록 두 건의 점검 결과, 단계 3: 엔진에 넣을 알림, 단계 4: 알림마다 엔진 처리 결과, 단계 5: 운영 요약, 단계 6: 저장한 파일이 나옵니다.</mark>
 
 **할 일**: 데이터 파일 한 개와 코드 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 3 ~ 5 를 읽습니다.
 
-**`unit07_risk_scores.json`** — 4과목 Unit 7의 Exercise 7-2 파일입니다. 4과목 폴더(`anomaly_detection`)에 이 파일이 있으면 `cp ../anomaly_detection/unit07_risk_scores.json .` 으로 복사하고, 없으면 만들어 붙여 넣습니다.
+**`unit07_risk_scores.json`** — Module 4 Unit 7의 Exercise 7-2 파일입니다. Module 4 폴더(`anomaly_detection`)에 이 파일이 있으면 `cp ../anomaly_detection/unit07_risk_scores.json .` 으로 복사하고, 없으면 만들어 붙여 넣습니다.
 
 - 대상(`entity`)은 계정 이름 또는 IP, 점수(`score`)는 탐지된 규칙의 점수를 더한 값, 등급(`grade`)은 점수로 정한 high · mid · low 이고, 이유(`reasons`)는 탐지된 규칙 이름 리스트입니다.
 
@@ -111,18 +111,18 @@ engine_input.py   find_schema_problem  : 필수 키가 없으면 (1번) · 모�
 ]
 ```
 
-**`engine_input.py`** — 4과목 연결 함수 모음입니다. Exercise 10-3에서는 가져오지 않습니다. 직접 쓰는 곳은 1 ~ 8번입니다.
+**`engine_input.py`** — Module 4 연결 함수 모음입니다. Exercise 10-3에서는 가져오지 않습니다. 직접 쓰는 곳은 1 ~ 8번입니다.
 
 - 1번 · 2번 · 6번 · 8번은 `if` 한 줄만 쓰고, 그 아래 미리 채운 줄이 `if` 안쪽입니다. 7번은 한 줄을 쓰고, 4번은 딕셔너리라서 줄을 나눠 씁니다.
 
 ```python
-REQUIRED_KEYS = ["entity", "score", "grade", "reasons"]              # 4과목 결과 기록에 반드시 있어야 하는 키
+REQUIRED_KEYS = ["entity", "score", "grade", "reasons"]              # Module 4 결과 기록에 반드시 있어야 하는 키
 GRADES = ["high", "mid", "low"]                                      # 엔진이 읽을 수 있는 등급 이름
 FIRST_NUMBER = 501                                                   # 엔진이 붙이는 알림 번호의 시작 (INC-501 부터)
 
 
-def find_schema_problem(record):                                     # 4과목 결과 기록 한 건을 받는 함수
-    """엔진이 읽을 수 없는 기록이면 그 이유 문장을, 문제가 없으면 빈 문자열("")를 리턴한다. 4과목 파일의 모양이 바뀌었을 때 엔진이 오류를 내기 전에 걸러 낼 때 쓴다."""
+def find_schema_problem(record):                                     # Module 4 결과 기록 한 건을 받는 함수
+    """엔진이 읽을 수 없는 기록이면 그 이유 문장을, 문제가 없으면 빈 문자열("")를 리턴한다. Module 4 파일의 모양이 바뀌었을 때 엔진이 오류를 내기 전에 걸러 낼 때 쓴다."""
     for key in REQUIRED_KEYS:                                        # 필수 키를 하나씩 꺼낸다 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 1. key 가 record 안에 없으면 (if, not in)
@@ -134,15 +134,15 @@ def find_schema_problem(record):                                     # 4과목 �
     return ""                                                        # 문제가 없으면 빈 문자열를 리턴한다 — 미리 채운 줄
 
 
-def make_alert(record, number):                                      # 4과목 결과 기록 한 건과 알림 번호 숫자를 받는 함수
-    """4과목 결과 기록(대상 · 점수 · 등급 · 이유)에 알림 번호와 상태를 붙여 Unit 1 인시던트 모양의 딕셔너리로 리턴한다. 4과목 파일의 기록을 엔진의 입력으로 바꿀 때 쓴다."""
+def make_alert(record, number):                                      # Module 4 결과 기록 한 건과 알림 번호 숫자를 받는 함수
+    """Module 4 결과 기록(대상 · 점수 · 등급 · 이유)에 알림 번호와 상태를 붙여 Unit 1 인시던트 모양의 딕셔너리로 리턴한다. Module 4 파일의 기록을 엔진의 입력으로 바꿀 때 쓴다."""
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 3. "INC-" 뒤에 str(number) 를 이어 붙여 alert_id 에 저장한다
     # 4. 키 "id"(alert_id) · "entity" · "grade" · "score" · "reasons"(record 의 같은 이름 키의 값), "status"("탐지됨") 를 가진 딕셔너리를 alert 에 저장한다
     return alert                                                     # 엔진이 읽을 알림을 리턴한다 — 미리 채운 줄
 
 
-def split_records(records):                                          # 4과목 결과 기록 리스트를 받는 함수
+def split_records(records):                                          # Module 4 결과 기록 리스트를 받는 함수
     """기록마다 모양을 점검해 엔진에 넣을 알림 리스트와 거절한 기록 리스트를 만들고 두 리스트를 함께 리턴한다. 거절한 기록을 이유와 함께 남겨 기록 없이 빠지지 않게 할 때 쓴다."""
     alerts = []                                                      # 엔진에 넣을 알림을 모을 빈 리스트 — 미리 채운 줄
     rejected = []                                                    # 거절한 기록과 이유를 모을 빈 리스트 — 미리 채운 줄
@@ -190,8 +190,8 @@ TEST_RECORDS = [                                                                
     {"entity": "minsu", "score": 90, "grade": "critical", "reasons": ["퇴사한 계정"]},       # 엔진이 모르는 등급 이름이다
 ]
 
-records = load_json("unit07_risk_scores.json")                                                # 4과목이 저장한 탐지 결과 파일을 리스트로 읽는다
-print("--- 단계 1: 4과목 탐지 결과", len(records), "건")                                     # 단계 1 시작을 알리는 줄과 건수
+records = load_json("unit07_risk_scores.json")                                                # Module 4가 저장한 탐지 결과 파일을 리스트로 읽는다
+print("--- 단계 1: Module 4 탐지 결과", len(records), "건")                                     # 단계 1 시작을 알리는 줄과 건수
 
 print("--- 단계 2: 모양 점검 시험 (일부러 틀린 기록)")                                       # 단계 2 시작을 알리는 줄
 for test_record in TEST_RECORDS:                                                             # 시험 기록을 하나씩 꺼낸다
@@ -226,7 +226,7 @@ print("--- 단계 6: risk_engine_log.json · engine_summary.json · risk_tickets
 
 **순서**
 
-1. **[터미널]** 파일 세 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다. 4과목 파일을 복사했으면 아래 `touch` 에서 `unit07_risk_scores.json` 을 뺍니다.
+1. **[터미널]** 파일 세 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다. Module 4 파일을 복사했으면 아래 `touch` 에서 `unit07_risk_scores.json` 을 뺍니다.
    ```bash
    pwd
    touch unit07_risk_scores.json engine_input.py exercise10-2_run.py

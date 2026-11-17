@@ -43,7 +43,7 @@ Unit 1에서는 웹 서버 접속 로그 한 줄을 읽고 이상 징후를 구�
 4. **[VS Code]** 보고서 맨 위 제목 `(이름 · 2026-11-03(화))` 의 <mark>`이름` 을 내 이름으로 바꿉니다</mark>. 안내 파일은 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다.
 5. **[VS Code 또는 터미널]** `anomaly_detection` 폴더에 `server_log.jsonl` 과 `saas_events.csv` 파일을 만들어 아래 내용을 그대로 붙여 넣습니다(터미널에서는 `touch 파일이름` 후 VS Code 에서 엽니다).
 
-**`server_log.jsonl`** — 판정 서버가 남긴 로그 샘플입니다. 3과목에서 만든 서버의 로그와 같은 모양이고, 한 줄이 요청 1개인 JSON 입니다(15줄).
+**`server_log.jsonl`** — 판정 서버가 남긴 로그 샘플입니다. Module 3에서 만든 서버의 로그와 같은 모양이고, 한 줄이 요청 1개인 JSON 입니다(15줄).
 
 ```
 {"time": "2026-11-02T09:40", "user": "seoyeon", "permission": "SALES:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
