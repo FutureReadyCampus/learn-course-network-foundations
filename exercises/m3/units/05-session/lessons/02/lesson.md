@@ -36,9 +36,9 @@ source:
 - **어떤 요청서를 보나**: 아직 처리 중인 요청서, 즉 상태가 `reviewing`(검토 중)인 것만 봅니다. 이미 승인되거나 반려된 요청서는 처리가 끝났으므로 기한을 따지지 않습니다.
 - **얼마나 지났나**: `지금 시각 − 접수 시각` 으로 구합니다. 이 값을 시간(hour) 단위 숫자로 바꿔서 SLA 시간(`SLA_HOURS`, 오늘은 4)과 비교합니다.
 - **SLA 시간은 어디에 두나**: 코드에 4를 직접 쓰지 않고 `config/sla.json` 파일에 적어 두고 읽습니다. 그러면 기한을 4시간에서 2시간으로 바꿀 때 코드는 그대로 두고 파일만 고치면 됩니다.
-- **파일은 어떻게 읽나**: 10/22(목)에 만든 `load_json` 으로 읽습니다. 파일이 없거나 깨졌을 때는 기본값 4를 씁니다.
+- **파일은 어떻게 읽나**: Unit 3에서 만든 `load_json` 으로 읽습니다. 파일이 없거나 깨졌을 때는 기본값 4를 씁니다.
 - **기한이 지난 요청은 어떻게 하나**: 현업에서는 승인자의 윗사람이나 대리 승인자(승인자가 자리에 없을 때 대신 승인하는 사람)에게 넘깁니다. 이것을 **에스컬레이션**(escalation · 에스컬레이션)이라고 합니다. 오늘은 넘기는 일은 만들지 않고, 기한이 지난 요청을 찾는 데까지만 합니다.
-- **`now` 이름**: 함수가 받는 `now` 는 **지금 시각**(datetime)입니다. 10/22(목)의 `evaluate_access` 의 `now` 와 같은 뜻입니다.
+- **`now` 이름**: 함수가 받는 `now` 는 **지금 시각**(datetime)입니다. Unit 2의 `evaluate_access` 의 `now` 와 같은 뜻입니다.
 
 ```
 +---------------------------------+
@@ -85,7 +85,7 @@ breached 를 리턴한다
 
 ** 문법 상자 — 걸린 시간을 시간 단위 숫자로 바꾸기**
 
-- 시각 문자열을 시각으로 바꾸는 `datetime.strptime(문자열, 형식)` 은 10/22(목)에 쓴 것과 같습니다. 형식 문자열 `"%Y-%m-%d %H:%M"` 은 `exception_policy.py` 의 `TIME_FORMAT` 에 이미 적혀 있어서 오늘은 그것을 불러다 씁니다. 아래 상자에서는 그 모양을 그대로 볼 수 있습니다.
+- 시각 문자열을 시각으로 바꾸는 `datetime.strptime(문자열, 형식)` 은 Unit 2에서 쓴 것과 같습니다. 형식 문자열 `"%Y-%m-%d %H:%M"` 은 `exception_policy.py` 의 `TIME_FORMAT` 에 이미 적혀 있어서 오늘은 그것을 불러다 씁니다. 아래 상자에서는 그 모양을 그대로 볼 수 있습니다.
 
 **① 시각에서 시각을 빼면 「걸린 시간」이 나옵니다**
 
@@ -172,7 +172,7 @@ print(overdue)                                                      # 복사본�
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## Exercise Exercise 5-1 · 검토 중인 요청서 가운데 처리 기한을 초과한 것 찾기
+## Exercise 5-1 · 검토 중인 요청서 가운데 처리 기한을 초과한 것 찾기
 
 ** 이런 상황이 있습니다**
 
@@ -187,7 +187,7 @@ print(overdue)                                                      # 복사본�
 1. `req_sla.py` · `config/sla.json` · `exercise5-1_run.py` 세 파일을 만들고, `check_sla_breach` 본문을 직접 씁니다.
 2. 실행해서 <mark>요청서 현황</mark>(단계 1: 현황)과 <mark>기한을 초과한 요청</mark>(단계 2: 판정)을 읽습니다.
 
-**`config/sla.json`** — 그대로 붙여 넣습니다. 처리 기한(시간)을 적은 설정 파일이고, `access_control` 안의 `config` 폴더(10/21(수)부터 `users.json` 이 있던 곳)에 만듭니다.
+**`config/sla.json`** — 그대로 붙여 넣습니다. 처리 기한(시간)을 적은 설정 파일이고, `access_control` 안의 `config` 폴더(Unit 1부터 `users.json` 이 있던 곳)에 만듭니다.
 
 ```json
 {"hours": 4}
@@ -197,7 +197,7 @@ print(overdue)                                                      # 복사본�
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
-from config_loader import load_json                              # 10/22(목)에 만든 안전한 읽기 함수를 불러온다
+from config_loader import load_json                              # Unit 3에서 만든 안전한 읽기 함수를 불러온다
 from exception_policy import TIME_FORMAT                         # 시각 문자열의 형식("%Y-%m-%d %H:%M")을 불러온다
 
 SLA_HOURS = load_json("config/sla.json", {"hours": 4})["hours"]  # 처리 기한(시간). 파일이 없거나 깨졌으면 기본값 4
@@ -230,19 +230,19 @@ def check_sla_breach(requests, now):                             # 요청서 리
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
-from req_create import REQUESTS, create_request                  # 오전 Exercise 4-1에 만든 요청서 함수와 리스트를 불러온다
-from req_review import approve_request                           # 오전 Exercise 4-2에 만든 승인 함수를 불러온다
+from req_create import REQUESTS, create_request                  # Exercise 4-1에서 만든 요청서 함수와 리스트를 불러온다
+from req_review import approve_request                           # Exercise 4-2에서 만든 승인 함수를 불러온다
 from req_sla import SLA_HOURS, check_sla_breach                  # 방금 만든 기한 점검 함수와 SLA 시간을 불러온다
 
-NOW = datetime.strptime("2026-10-23 14:00", "%Y-%m-%d %H:%M")    # 오늘 오후 실습의 지금 시각(고정)
+NOW = datetime.strptime("2026-10-23 14:00", "%Y-%m-%d %H:%M")    # 이번 실습의 지금 시각(고정)
 
 INBOX = [                                                        # 오늘 들어온 요청 여섯 건. (요청자, 자원, 행위, 희망 만료 시각, 이유, 접수 시각)
-    ("seoyeon", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 대조 지원", "2026-10-23 08:30"),    # 오전 일찍 접수한 요청
-    ("gaeun", "SALES", "QUERY", "2026-10-28 18:00", "감사 자료 대응", "2026-10-23 10:30"),       # 오전에 접수한 요청
+    ("seoyeon", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 대조 지원", "2026-10-23 08:30"),    # 08:30 에 접수한 요청
+    ("gaeun", "SALES", "QUERY", "2026-10-28 18:00", "감사 자료 대응", "2026-10-23 10:30"),       # 10:30 에 접수한 요청
     ("dami", "SALES", "QUERY", "2026-10-27 18:00", "인수인계 자료 확인", "2026-10-23 12:00"),    # 낮에 접수한 요청
     ("junho", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 확인", "2026-10-23 09:00"),           # 나중에 승인해서 처리가 끝나게 될 요청
-    ("seoyeon", "ACCOUNT", "QUERY", "2026-10-27 18:00", "계정 권한 점검", "2026-10-23 07:50"),   # 이른 아침에 접수한 요청
-    ("tester", "SALES", "QUERY", "2026-10-27 18:00", "시험 계정 확인", "2026-10-23 10:00"),      # 오전 10시 정각에 접수한 요청
+    ("seoyeon", "ACCOUNT", "QUERY", "2026-10-27 18:00", "계정 권한 점검", "2026-10-23 07:50"),   # 07:50 에 접수한 요청
+    ("tester", "SALES", "QUERY", "2026-10-27 18:00", "시험 계정 확인", "2026-10-23 10:00"),      # 10:00 정각에 접수한 요청
 ]
 for user, resource, action, until, reason, received_at in INBOX:         # 요청을 하나씩 꺼내
     create_request(user, resource, action, until, reason, received_at)   # 접수한다
@@ -279,7 +279,7 @@ for request in check_sla_breach(REQUESTS, NOW):                  # 기한을 초
    - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `exercise5-1_run.py` 실행할 파일
    - 맥북은 `python3 exercise5-1_run.py` 로 칩니다.
 5. 출력은 두 단계입니다. 단계 1은 요청서 현황(여섯 줄)이고, 단계 2는 기한을 초과한 요청서와 지난 시간입니다.
-6. **[보고서]** Unit 5 의 `## Exercise 5-1` › `### Exercise Exercise 5-1` 아래를 채웁니다.
+6. **[보고서]** Unit 5 의 `## Exercise 5-1` › `### Exercise 5-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 접수한 뒤 4시간을 초과한 요청이 몇 번인지, 접수한 뒤 몇 시간이 지났는지 적어 주세요.
    - (나) [핵심 질문] 승인자(`security_manager`)가 4시간을 초과하도록 처리하지 않은 요청을 찾았다면, 관제 담당은 누구에게 어떤 조치를 하면 좋을까요? 알림만 보낼 때와 윗사람에게 넘길 때(에스컬레이션)는 어떤 기준(예: 얼마나 더 지났을 때)으로 나누면 좋을까요?
    - (다) [핵심 질문] 상태(`reviewing` 인지)는 확인하지 않고 접수 시각만 보고 기한을 따진다면, 리스트에 어떤 문제가 생기나요? 그 리스트를 받은 사람은 무엇이 곤란할까요?

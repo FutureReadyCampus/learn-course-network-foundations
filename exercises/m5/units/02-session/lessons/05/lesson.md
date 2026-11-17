@@ -17,13 +17,13 @@ source:
 
 ---
 
-## Exercise Exercise 2-1 정답
+## Exercise 2-1 정답
 
  **터미널에 입력합니다.**
 
 ```bash
 pwd
-python exercise4-1_run.py
+python exercise2-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -44,7 +44,7 @@ python exercise4-1_run.py
         ip_info["ip_trusted"] = source_ips[entity] in trusted_ips  # 신뢰 IP 안에 있는지 확인한 결과를 담는다
 ```
 
-`exercise4-1_run.py` 의 7 ~ 9번입니다.
+`exercise2-1_run.py` 의 7 ~ 9번입니다.
 
 ```python
     # 7. enrich_incident(incident, users_info, source_ips, trusted_ips) 를 호출한다 (인시던트에 맥락이 붙는다)
@@ -132,13 +132,13 @@ VIP 계정 알림 0 건
 
 ---
 
-## Exercise Exercise 2-1 정답
+## Exercise 2-2 정답
 
  **터미널에 입력합니다.**
 
 ```bash
 pwd
-python exercise4-2_run.py
+python exercise2-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -161,7 +161,7 @@ python exercise4-2_run.py
         return "오탐 종료", "신뢰 IP 에서 온 IP 관련 규칙뿐이라 정상 접속으로 봄"  # 경로와 이유를 함께 리턴한다
 ```
 
-`exercise4-2_run.py` 의 8 · 9번입니다.
+`exercise2-2_run.py` 의 8 · 9번입니다.
 
 ```python
     # 8. decide_route(incident) 가 리턴한 두 값을 route 와 reason 에 한 번에 받는다
@@ -254,13 +254,13 @@ NameError: name 'route' is not defined
 
 ---
 
-## Exercise Exercise 2-1 정답
+## Exercise 2-3 정답
 
  **터미널에 입력합니다.**
 
 ```bash
 pwd
-python exercise4-3_run.py
+python exercise2-3_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -280,10 +280,10 @@ python exercise4-3_run.py
     # 6.   skip_reason 을 리턴한다
         return skip_reason                                                         # 실행하지 않고 이유를 리턴한다
     # 7. run_action(action, incident, state) 의 결과를 리턴한다 (건너뛸 이유가 없으면 원래대로 실행한다)
-    return run_action(action, incident, state)                                     # 이유가 없으면 어제의 방식대로 실행한 결과를 리턴한다
+    return run_action(action, incident, state)                                     # 이유가 없으면 Unit 1의 방식대로 실행한 결과를 리턴한다
 ```
 
-`exercise4-3_run.py` 의 8 · 9번입니다.
+`exercise2-3_run.py` 의 8 · 9번입니다.
 
 ```python
     # 8. result_text 가 "건너뜀" 으로 시작하면 (if, startswith)
@@ -297,10 +297,10 @@ python exercise4-3_run.py
 - (가) 출력은 다음과 같습니다. 단계 1 의 잠긴 계정은 <mark style="background:#bde3ff">**`['dami', 'dami']`, 티켓 2건**</mark>, 단계 3 은 <mark style="background:#bde3ff">**`['dami']`, 티켓 1건**</mark>, 단계 4 는 <mark style="background:#bde3ff">**3개(`dami` · `seoyeon` · `gaeun`), 티켓 7건**</mark> 입니다.
 
 ```
---- 단계 1: 어제 방식(안전장치 없음)으로 같은 알림 5건을 두 번 처리
+--- 단계 1: Unit 1 방식(안전장치 없음)으로 같은 알림 5건을 두 번 처리
 잠긴 계정: ['dami', 'dami']
 티켓: 2 건
---- 단계 2: 어제 방식(안전장치 없음)으로 인사 오류 알림 7건 처리
+--- 단계 2: Unit 1 방식(안전장치 없음)으로 인사 오류 알림 7건 처리
 잠긴 계정 7 개: ['dami', 'dami', 'seoyeon', 'gaeun', 'jiwoo', 'junho', 'hana']
 --- 단계 3: 안전한 방식으로 같은 알림 5건을 두 번 처리
 첫 번째 처리
@@ -337,11 +337,11 @@ INC-B07 계정 잠금 -> 건너뜀: 한 번에 잠글 수 있는 계정 수를 �
 
 - (나) 단계 3 의 「두 번째 처리」에서 INC-001 이 <mark style="background:#bde3ff">`이미 처리됨 (상태: 조치됨)`</mark> 으로 나옵니다.
   - 장치: 중복 실행 방지(idempotency)입니다. `run_playbook_safe` 의 첫 `if` 가 인시던트 상태를 점검해서, `조치됨` · `보고됨` · `종료` 이면 실행하지 않고 건너뜁니다. 첫 번째 처리에서 INC-001 이 `조치됨` 이 되었기 때문입니다.
-  - 월요일 방식에는 이 확인이 없어서 두 번째 처리에서 `dami` 를 다시 잠그고 티켓을 또 만들었습니다.
+  - Unit 1 방식에는 이 확인이 없어서 두 번째 처리에서 `dami` 를 다시 잠그고 티켓을 또 만들었습니다.
 - (다) 잠긴 3개 가운데 <mark style="background:#bde3ff">`seoyeon` 과 `gaeun` 은 `employed` 가 `true` 인 재직자라 잘못 잠긴 계정</mark>입니다. 실제 퇴사자는 `dami` 한 명입니다.
   - 한도가 없고 중복 방지만 있다면 서로 다른 계정 6개가 모두 잠깁니다. 이 가운데 실제 퇴사자는 `dami` 한 명이라 5명이 잘못 잠깁니다(`dami` 는 알림이 두 건이라도 한 번만 잠깁니다). 한도 3개로 잘못 잠긴 계정이 5명에서 2명으로 줄었습니다.
   - 한도가 방지하지 못하는 문제: 한도 안에서는 잘못된 알림도 그대로 실행됩니다. 한도는 영향 범위(잠기는 계정 수)를 제한할 뿐, 잘못된 알림을 식별하지는 못합니다.
-  - 줄이는 방법: Exercise 2-1에서 보강한 `employed` 맥락을 잠금 실행 전에 점검하면 `seoyeon` 과 `gaeun` 은 재직 중이라 잠금 대상에서 제외됩니다. `gaeun` 은 VIP 계정이라 Exercise 2-2의 `승인 필요` 경로에서도 자동 잠금 대상에서 제외됩니다. 오후 Exercise 1-2 하루 흐름은 이 가운데 VIP 경로와 신뢰 IP 오탐 판단을 하나의 흐름으로 연결합니다(재직 여부 점검은 연결하지 않습니다).
+  - 줄이는 방법: Exercise 2-1에서 보강한 `employed` 맥락을 잠금 실행 전에 점검하면 `seoyeon` 과 `gaeun` 은 재직 중이라 잠금 대상에서 제외됩니다. `gaeun` 은 VIP 계정이라 Exercise 2-2의 `승인 필요` 경로에서도 자동 잠금 대상에서 제외됩니다. Unit 3의 Exercise 3-2 하루 흐름은 이 가운데 VIP 경로와 신뢰 IP 오탐 판단을 하나의 흐름으로 연결합니다(재직 여부 점검은 연결하지 않습니다).
   - 계정 잠금을 건너뛴 알림에도 티켓은 만들어집니다(티켓 7건). 건너뛰는 것이 알림 전체가 아니라 계정 잠금 액션 하나뿐이기 때문이며, 담당자가 티켓을 보고 이어서 확인합니다.
 
 **왜**

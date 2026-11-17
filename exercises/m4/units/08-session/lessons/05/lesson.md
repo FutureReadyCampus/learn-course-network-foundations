@@ -19,7 +19,7 @@ source:
 
 ## Exercise 8-1 정답
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 ```bash
 pwd
@@ -111,7 +111,7 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 
 ## Exercise 8-2 정답
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 ```bash
 pwd
@@ -205,7 +205,7 @@ python exercise8-2_run.py
 
 ## Exercise 8-3 정답
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 ```bash
 pwd
@@ -262,7 +262,7 @@ python exercise8-3_run.py
   - 오탐이 늘지 않은 이유: A8 은 조사해 보니 진짜 문제(`real` 이 `True`)였기 때문에, 오탐은 Exercise 8-2에서 줄인 2개(A2 · A3) 그대로입니다.
 - (다) P5 를 찾으려면 <mark style="background:#bde3ff">정산처럼 중요한 자원에 권한 없이 접근하면 한 번만 거절돼도 알리는 규칙</mark>이 필요합니다.
   - 그 규칙을 더하면 업무상 실수로 권한 없는 곳을 한 번 건드린 사용자까지 알림이 나서 <mark style="background:#bde3ff">오탐이 늘 수 있습니다.</mark>
-  - 그래서 규칙을 더한 뒤에는 오늘처럼 오탐과 미탐을 다시 세어 봅니다.
+  - 그래서 규칙을 더한 뒤에는 이번 Unit처럼 오탐과 미탐을 다시 세어 봅니다.
 
 **왜**
 
@@ -302,5 +302,5 @@ TypeError: only list-like objects are allowed to be passed to isin(), you passed
 
 ## 정답 마무리
 
-- `ls` 결과에 오늘 파일들과 이 안내 · 보고서 두 파일이 모두 보이면 됩니다.
+- `ls` 결과에 이번 Unit의 파일들과 이 안내 · 보고서 두 파일이 모두 보이면 됩니다.
 - 보고서에 빈 `답:` 이 없으면 됩니다. 못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.

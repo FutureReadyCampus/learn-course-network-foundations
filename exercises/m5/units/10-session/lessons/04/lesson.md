@@ -9,16 +9,16 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 10-3 · 엔진 로그 3개를 정책 네 가지로 점검해 승인 게이트 우회와 허용 목록 · VIP 위반을 찾고, 5일간의 회고 문서 쓰기
+# Exercise 10-3 · 엔진 로그 3개를 정책 네 가지로 점검해 승인 게이트 우회와 허용 목록 · VIP 위반을 찾고, Unit 1~10 전체 회고 문서 쓰기
 
 ## 개요
 
 > **오늘 들어온 일**
 >
-> - **상황**: Exercise 10-1와 Exercise 10-2에 엔진을 실행하면 처리 결과 로그가 남습니다(`engine_log.json` 8건 · `risk_engine_log.json` 5건). 오늘 아침 고객사 보안 담당자가 「승인 게이트와 허용 목록 · VIP 예외가 정책대로 지켜졌는지 로그로 확인해 달라」고 요청합니다. 시험 운영 때 승인 게이트를 끄고 알림 5건(`INC-401` · `INC-403` ~ `INC-406`)을 처리한 로그 `gate_off_log.json` 도 점검 대상입니다.
+> - **상황**: Exercise 10-1과 Exercise 10-2에서 엔진을 실행하면 처리 결과 로그가 남습니다(`engine_log.json` 8건 · `risk_engine_log.json` 5건). 이번 Unit에서 고객사 보안 담당자가 「승인 게이트와 허용 목록 · VIP 예외가 정책대로 지켜졌는지 로그로 확인해 달라」고 요청합니다. 시험 운영 때 승인 게이트를 끄고 알림 5건(`INC-401` · `INC-403` ~ `INC-406`)을 처리한 로그 `gate_off_log.json` 도 점검 대상입니다.
 > - **문제**: 로그를 사람이 한 줄씩 읽으면 알림이 늘수록 놓치기 쉽습니다. 게다가 로그의 `decision`(결정) 값은 엔진이 적은 값이라서, 게이트를 끈 로그에는 모든 조치가 「자동」으로 적혀 있습니다. <mark style="background:#ffc4d6">결정 값만 읽으면 게이트를 끈 로그에서 위반을 찾지 못합니다.</mark>
-> - **부탁**: 로그마다 네 가지(게이트 우회 실행 · 허용 목록 IP 차단 · VIP 계정 잠금 · 티켓 없는 조치)를 자동으로 점검해 PASS · FAIL 표를 만들어 주세요. 게이트 우회 실행은 로그에 저장된 조치 요청으로 <mark style="background:#e0d4ff">금요일의 `decide_gate`</mark> 를 다시 호출해 결정을 새로 구한 뒤, 실행 여부와 비교합니다. 점검이 끝나면 5일간의 회고 문서를 쓰고 저장소에 올려 주세요.
-> - **바뀌는 점**: 점검 12개 가운데 <mark style="background:#bde3ff">FAIL 2개</mark>가 나오고, 모두 `gate_off_log.json` 에서 나옵니다. 오늘 2 · Exercise 10-2에서 만든 로그 두 개는 점검 8개가 모두 PASS 입니다. 상황과 이름은 설명을 위한 예시입니다.
+> - **부탁**: 로그마다 네 가지(게이트 우회 실행 · 허용 목록 IP 차단 · VIP 계정 잠금 · 티켓 없는 조치)를 자동으로 점검해 PASS · FAIL 표를 만들어 주세요. 게이트 우회 실행은 로그에 저장된 조치 요청으로 <mark style="background:#e0d4ff">Unit 8의 `decide_gate`</mark> 를 다시 호출해 결정을 새로 구한 뒤, 실행 여부와 비교합니다. 점검이 끝나면 Unit 1~10 전체 회고 문서를 쓰고 저장소에 올려 주세요.
+> - **바뀌는 점**: 점검 12개 가운데 <mark style="background:#bde3ff">FAIL 2개</mark>가 나오고, 모두 `gate_off_log.json` 에서 나옵니다. 이번 Unit의 Exercise 10-1 · Exercise 10-2에서 만든 로그 두 개는 점검 8개가 모두 PASS 입니다. 상황과 이름은 설명을 위한 예시입니다.
 
 > **읽을거리 — 문제가 아닙니다.** 읽고 이해만 합니다.
 
@@ -32,9 +32,9 @@ source:
 | ④ 티켓 없는 조치 | 실행한 조치가 있는데 `ticket` 이 빈 알림 | `count_executed` 로 센 뒤 `ticket` 확인 | 5번 |
 
 - 정책 준수 점검(policy compliance check)은 통제가 설계한 대로 작동했는지 실제 기록으로 확인하는 일이고, 이때 로그가 증거(audit evidence, 오딧 에비던스: 사실을 뒷받침하는 기록)가 됩니다.
-- ①은 재수행(re-performance, 리퍼포먼스: 기록된 입력으로 판단을 다시 계산해 기록된 결과와 비교하는 방법)입니다. 로그의 `request` 는 <mark style="background:#e0d4ff">금요일 승인 게이트가 본 입력</mark>이라서, 같은 정책으로 다시 계산하면 그 조치가 원래 자동이었는지 알 수 있습니다.
+- ①은 재수행(re-performance, 리퍼포먼스: 기록된 입력으로 판단을 다시 계산해 기록된 결과와 비교하는 방법)입니다. 로그의 `request` 는 <mark style="background:#e0d4ff">Unit 8의 승인 게이트가 본 입력</mark>이라서, 같은 정책으로 다시 계산하면 그 조치가 원래 자동이었는지 알 수 있습니다.
 - ②와 ③은 불변 조건(invariant, 인베리언트: 어떤 경우에도 항상 지켜져야 하는 조건)을 점검합니다. 게이트의 계산을 거치지 않고 결과만 보므로 <mark>게이트 코드에 오류가 있어도 위반을 찾습니다.</mark>
-- <mark style="background:#e0d4ff">수요일의 `lock_account` 는 VIP 계정이면 잠그지 않고 이유를 기록합니다.</mark> 그래서 VIP 계정은 승인 게이트를 꺼도 잠기지 않을 수 있습니다. 다만 방어를 여러 겹 두는 것(다층 방어, defense in depth)과 각 겹을 따로 점검하는 것은 별개입니다.
+- <mark style="background:#e0d4ff">Unit 4의 `lock_account` 는 VIP 계정이면 잠그지 않고 이유를 기록합니다.</mark> 그래서 VIP 계정은 승인 게이트를 꺼도 잠기지 않을 수 있습니다. 다만 방어를 여러 겹 두는 것(다층 방어, defense in depth)과 각 겹을 따로 점검하는 것은 별개입니다.
 - 점검 결과는 `judge`(6번)가 PASS 또는 FAIL 로 정하고, 실행 파일이 로그마다 네 줄씩 출력합니다. FAIL 이 나오면 위반한 알림 번호로 로그를 열어 그 알림의 `request` 와 `decision` 을 확인합니다.
 
 함수 일곱 개와 실행 파일 가운데 직접 쓰는 곳은 **아홉 군데**입니다.
@@ -82,7 +82,7 @@ policy_check.py   count_executed         : 실행한 조치 수를 센다 (미�
 - 2번 · 3번 · 4번 · 5번 · 6번은 `if` 한 줄만 쓰고, 그 아래 미리 채운 줄이 `if` 안쪽입니다. 1번과 2번은 같은 함수에 있고 둘 다 같은 들여쓰기에서 시작합니다.
 
 ```python
-from approval_gate import decide_gate                                                      # 금요일 파일의 승인 게이트 함수를 불러온다
+from approval_gate import decide_gate                                                      # Unit 8 파일의 승인 게이트 함수를 불러온다
 
 
 def count_executed(result):                                                                # 결과 기록 한 건을 받는 함수
@@ -160,7 +160,7 @@ def judge(violations):                                                          
 **`exercise10-3_run.py`** — 7 · 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
-from incident import load_json, save_json                                                   # 월요일 파일의 JSON 읽기 · 쓰기 함수를 불러온다
+from incident import load_json, save_json                                                   # Unit 1 파일의 JSON 읽기 · 쓰기 함수를 불러온다
 from policy_check import run_checks, judge                                                  # 방금 만든 점검 함수를 불러온다
 
 LOG_FILES = ["engine_log.json", "risk_engine_log.json", "gate_off_log.json"]                # 점검할 엔진 로그 파일 세 개
@@ -193,7 +193,7 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
 
 **순서**
 
-1. **[터미널]** 먼저 2 · Exercise 10-2 로그가 있는지 확인합니다. <mark>`ls` 결과에 `engine_log.json` 과 `risk_engine_log.json` 이 보이면</mark> 됩니다. 없으면 `python exercise10-1_run.py` 와 `python exercise10-2_run.py` 를 먼저 실행합니다(맥북은 `python3`). 그다음 파일 세 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
+1. **[터미널]** 먼저 Exercise 10-1 · Exercise 10-2 로그가 있는지 확인합니다. <mark>`ls` 결과에 `engine_log.json` 과 `risk_engine_log.json` 이 보이면</mark> 됩니다. 없으면 `python exercise10-1_run.py` 와 `python exercise10-2_run.py` 를 먼저 실행합니다(맥북은 `python3`). 그다음 파일 세 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
    ```bash
    pwd
    ls
@@ -208,26 +208,26 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
    - 단계 1 · 단계 3 · 단계 4 는 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
    - 단계 2 는 로그마다 제목 줄 1줄과 점검 결과 4줄이라 모두 15줄입니다.
 5. **[VS Code]** 새로 생긴 `policy_check.json` 을 열어 <mark>12개 점검이 들어 있는지</mark> 봅니다.
-6. **[VS Code]** 5일간의 회고 문서 `unit10_final_retrospective.md` 를 만듭니다. 파일 이름의 `day05` 는 강의계획서의 Unit 10(오늘)입니다. **[터미널]** 에서 `touch unit10_final_retrospective.md` 로 빈 파일을 만든 뒤, 아래 틀을 붙여 넣고 `…` 를 채웁니다. 틀은 지우지 않고 그대로 둡니다.
+6. **[VS Code]** Unit 1~10 전체 회고 문서 `unit10_final_retrospective.md` 를 만듭니다. 파일 이름의 `unit10` 은 강의계획서의 Unit 10(이번 Unit)입니다. **[터미널]** 에서 `touch unit10_final_retrospective.md` 로 빈 파일을 만든 뒤, 아래 틀을 붙여 넣고 `…` 를 채웁니다. 틀은 지우지 않고 그대로 둡니다.
 
-   - 1절은 엔진이 각 날의 파일을 어디에 쓰는지 한 문장씩 씁니다(Exercise 10-1 `soar_engine.py` 의 `import` 줄과 오늘 만든 파일이 근거입니다).
+   - 1절은 엔진이 각 Unit의 파일을 어디에 쓰는지 한 문장씩 씁니다(Exercise 10-1 `soar_engine.py` 의 `import` 줄과 오늘 만든 파일이 근거입니다).
    - 2절은 <mark>오늘 출력이나 코드에서 근거를 찾아</mark> 운영에서 깨질 수 있는 곳 세 가지와 막는 방법을 씁니다.
    - 3절은 캡스톤 주제 가운데 하나를 고르고, 새 코드를 쓰지 않고 설정 파일만 바꿔 시작할 수 있는 것을 씁니다.
 
    ````markdown
-   # 5과목 Unit 10 최종 회고 (이름 · 2026-11-16(월))
+   # 5과목 Unit 10 최종 회고 (이름)
 
-   ## 1. 5일 동안 만든 것
+   ## 1. Unit 1~10에서 만든 것
 
-   엔진이 각 날의 파일을 어디에 쓰는지 한 문장씩 씁니다.
+   엔진이 각 Unit의 파일을 어디에 쓰는지 한 문장씩 씁니다.
 
-   | Day | 날짜 | 엔진과 연결된 파일 | 엔진에서 하는 일 |
-   |---|---|---|---|
-   | 1 | 11/9(월) · 11/10(화) | `incident.py` · `config/playbook_registry.json` | … |
-   | 2 | 11/11(수) | `account_actions.py` · `ip_actions.py` | … |
-   | 3 | 11/12(목) | `ticketing.py` | … |
-   | 4 | 11/13(금) | `approval_gate.py` | … |
-   | 5 | 11/16(월) | `soar_engine.py` · `engine_input.py` · `policy_check.py` | … |
+   | Unit | 엔진과 연결된 파일 | 엔진에서 하는 일 |
+   |---|---|---|
+   | Unit 1 · Unit 2 · Unit 3 | `incident.py` · `config/playbook_registry.json` | … |
+   | Unit 4 · Unit 5 | `account_actions.py` · `ip_actions.py` | … |
+   | Unit 6 · Unit 7 | `ticketing.py` | … |
+   | Unit 8 · Unit 9 | `approval_gate.py` | … |
+   | Unit 10 | `soar_engine.py` · `engine_input.py` · `policy_check.py` | … |
 
    ## 2. 운영하면 깨질 수 있는 곳 3가지
 
@@ -255,7 +255,7 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
 7. **[보고서]** Unit 10 의 `## Exercise 10-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, FAIL 이 나온 로그와 FAIL 이 나온 점검 이름 · 위반한 알림 번호를 적어 주세요.
    - (나) [핵심 질문] `gate_off_log.json` 의 `INC-405` 는 `decision` 이 「자동」인데 점검 ①에서 위반으로 나옵니다. 그 `request` 의 `users_on_ip` 와 승인 정책의 점수를 근거로 다시 구한 결정을 적고, 로그의 `decision` 만 읽으면 위반을 놓치는 이유를 적어 주세요.
-   - (다) [핵심 질문] `INC-406`(`gaeun`)은 점검 ①은 FAIL 인데 점검 ③은 PASS 입니다. 그 알림의 `before` · `after` 를 근거로 `gaeun` 이 잠기지 않은 이유를 수요일 `lock_account` 와 연결해 적고, 점검 ③이 게이트와 별도로 필요한 이유를 적어 주세요.
+   - (다) [핵심 질문] `INC-406`(`gaeun`)은 점검 ①은 FAIL 인데 점검 ③은 PASS 입니다. 그 알림의 `before` · `after` 를 근거로 `gaeun` 이 잠기지 않은 이유를 Unit 4의 `lock_account` 와 연결해 적고, 점검 ③이 게이트와 별도로 필요한 이유를 적어 주세요.
 
 ## Exercise 10-3 한눈에
 
@@ -273,11 +273,11 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
 
 ## 마무리 · 오늘 만든 것을 깃허브에 올리기
 
-<mark>문제가 아니라 5일간 만든 것을 저장소에 올리는 마무리입니다.</mark> Exercise 10-3 마지막 약 10분에 합니다. 어느 터미널을 써도 됩니다. 먼저 `pwd` 로 위치를 확인하고, 결과가 `soar_response` 로 끝나면 아래 1번의 `cd ..` 를 칩니다.
+<mark>문제가 아니라 Unit 1~10에서 만든 것을 저장소에 올리는 마무리입니다.</mark> Exercise 10-3 마지막 약 10분에 합니다. 어느 터미널을 써도 됩니다. 먼저 `pwd` 로 위치를 확인하고, 결과가 `soar_response` 로 끝나면 아래 1번의 `cd ..` 를 칩니다.
 
 ** 이런 상황이 있습니다**
 
-- **지금은**: <mark>팀장이 「5일간 만든 SOAR 모듈과 엔진 · 점검 · 회고 문서를 저장소에 남겨 달라」고 합니다</mark>.
+- **지금은**: <mark>팀장이 「Unit 1~10에서 만든 SOAR 모듈과 엔진 · 점검 · 회고 문서를 저장소에 남겨 달라」고 합니다</mark>.
 - **그래서 하는 것**: `git status` 로 올라갈 파일을 확인한 뒤(`.env` 같은 비밀 키 파일이 섞이면 안 됩니다) `git add` → `git commit` → `git push` 순서로 올립니다.
 - **끝나면**: 깃허브 저장소의 `soar_response` 폴더에 `soar_engine.py` · `engine_input.py` · `policy_check.py` · `unit10_final_retrospective.md` 와 로그 · 요약 파일(`engine_log.json` · `risk_engine_log.json` · `engine_summary.json` · `policy_check.json`)이 보입니다.
 
@@ -388,21 +388,21 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
 
 ---
 
-## 오늘 오전 마무리
+## 이번 Unit 마무리
 
 | 확인 | 문제 |
 |---|---|
-| 알림을 승인 게이트를 거쳐 조치하고 티켓을 남기며, 오류가 난 알림은 실패로 격리하는 통합 엔진을 만들었다 | 오전 Exercise 10-1 |
-| 4과목 탐지 결과를 점검해 엔진의 입력으로 바꾸고, 실행해 운영 요약을 만들었다 | 오전 Exercise 10-2 |
-| 엔진 로그를 정책 네 가지로 점검하고, 5일간의 회고 문서를 쓰고, 깃허브에 올렸다 | 오전 Exercise 10-3 · 마무리 |
+| 알림을 승인 게이트를 거쳐 조치하고 티켓을 남기며, 오류가 난 알림은 실패로 격리하는 통합 엔진을 만들었다 | Exercise 10-1 |
+| 4과목 탐지 결과를 점검해 엔진의 입력으로 바꾸고, 실행해 운영 요약을 만들었다 | Exercise 10-2 |
+| 엔진 로그를 정책 네 가지로 점검하고, Unit 1~10 전체 회고 문서를 쓰고, 깃허브에 올렸다 | Exercise 10-3 · 마무리 |
 
 **강의계획서 평가 기준 확인**
 
 | 기준 | 확인할 곳 |
 |---|---|
-| 4과목 탐지 결과부터 5과목 대응까지 종단간으로 오류 없이 동작한다 | 오전 Exercise 10-2 단계 3 ~ 5 <mark style="background:#bde3ff">(4과목 5건 → 알림 5건 → 자동 실행 2건 · 조치 없음 3건 · 실패 0건)</mark> |
-| 승인 게이트가 위험도에 따라 정확히 작동한다 | 오전 Exercise 10-1 단계 2 · 3 <mark style="background:#bde3ff">(자동 실행 2 · 승인 대기 2 · 차단 금지 1)</mark>, 오전 Exercise 10-3 점검 ① |
-| 모듈이 서로 이어져 하나의 흐름으로 동작한다 | 오전 Exercise 10-1 `soar_engine.py` 의 `import` 6줄, 회고 문서 1절 |
+| 4과목 탐지 결과부터 5과목 대응까지 종단간으로 오류 없이 동작한다 | Exercise 10-2 단계 3 ~ 5 <mark style="background:#bde3ff">(4과목 5건 → 알림 5건 → 자동 실행 2건 · 조치 없음 3건 · 실패 0건)</mark> |
+| 승인 게이트가 위험도에 따라 정확히 작동한다 | Exercise 10-1 단계 2 · 3 <mark style="background:#bde3ff">(자동 실행 2 · 승인 대기 2 · 차단 금지 1)</mark>, Exercise 10-3 점검 ① |
+| 모듈이 서로 이어져 하나의 흐름으로 동작한다 | Exercise 10-1 `soar_engine.py` 의 `import` 6줄, 회고 문서 1절 |
 
 ---
 

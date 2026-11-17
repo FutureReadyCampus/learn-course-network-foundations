@@ -134,7 +134,7 @@ KeyError: 'approver'
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## Exercise Exercise 4-3 · 승인 · 반려 함수 만들고, 두 번째 처리가 막히는지 확인하기
+## Exercise 4-2 · 승인 · 반려 함수 만들고, 두 번째 처리가 막히는지 확인하기
 
 ** 이런 상황이 있습니다**
 
@@ -184,7 +184,7 @@ def reject_request(request, approver):                           # 요청서와 
 **`exercise4-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. Exercise 4-1의 `create_request` 로 요청서 네 장을 접수한 뒤, 단계 1은 본인 승인 시험 한 건과 처리 여섯 건을 넣고 단계 2는 요청서 리스트를 출력합니다.
 
 ```python
-from req_create import REQUESTS, create_request                  # 오전 Exercise 4-1에 만든 요청서 함수와 리스트를 불러온다
+from req_create import REQUESTS, create_request                  # Exercise 4-1에서 만든 요청서 함수와 리스트를 불러온다
 from req_review import approve_request, reject_request           # 방금 만든 승인 · 반려 함수를 불러온다
 
 INBOX = [                                                        # 접수에 성공하는 요청 네 건. (요청자, 자원, 행위, 희망 만료 시각, 이유, 접수 시각)
@@ -239,7 +239,7 @@ for request in REQUESTS:                                         # 요청서를 
    - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise4-2_run.py` 실행할 파일
    - 맥북은 `python3 exercise4-2_run.py` 로 칩니다.
 4. 출력은 두 단계입니다. 단계 1은 본인 승인 시험 한 줄과 처리 여섯 건의 결과(여섯 줄)이고, 단계 2는 요청서 리스트(네 줄)입니다. 본인 승인 시험은 `False`, 처리 여섯 건은 앞의 네 건이 `True`, 뒤의 두 건이 `False` 로 나와야 합니다.
-5. **[보고서]** Unit 4 의 `## Exercise 4-2` › `### Exercise Exercise 4-3` 아래를 채웁니다.
+5. **[보고서]** Unit 4 의 `## Exercise 4-2` › `### Exercise 4-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 막힌 세 줄이 각각 왜 막혔는지 적어 주세요.
    - (나) [핵심 질문] 이미 승인한 요청서를 다시 승인하지 못하게 막는 이유는 무엇인가요? 막지 않으면 어떤 일이 생길 수 있나요?
    - (다) [핵심 질문] `approve_request` 에서 `request["user"] == approver` 검사를 뺀다면 어떤 위험이 생길까요? 요청자가 친구에게 대신 승인해 달라고 부탁하면 이 검사로는 막을 수 없습니다. 이런 경우를 막으려면 무엇이 더 필요할까요?

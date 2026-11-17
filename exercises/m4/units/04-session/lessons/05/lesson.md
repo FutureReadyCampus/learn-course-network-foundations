@@ -17,7 +17,7 @@ source:
 
 ---
 
-## Exercise Exercise 4-3 정답
+## Exercise 4-1 정답
 
  **터미널에 입력합니다.**
 
@@ -113,7 +113,7 @@ KeyError: 'failed_login'
 
 ---
 
-## Exercise Exercise 4-3 정답
+## Exercise 4-2 정답
 
  **터미널에 입력합니다.**
 
@@ -195,7 +195,7 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 
 ---
 
-## Exercise Exercise 4-3 정답
+## Exercise 4-3 정답
 
  **터미널에 입력합니다.**
 
@@ -239,7 +239,7 @@ python exercise4-3_run.py
   - `server`(판정 서버) 실패 9개: gaeun 의 `ACCOUNT:CHANGE` 3번, dami 의 `SALES:QUERY` 3번과 `SALES:CHANGE` 1번, seoyeon 의 `SETTLE:QUERY` 1번과 `SALES:CHANGE` 1번입니다.
   - `web`(웹 서버) 실패 5개: 198.51.100.90 이 09:20:10 ~ 09:20:12 에 `/.env` · `/wp-login.php` · `/phpmyadmin` 을 차례로 요청한 것 3개와, 페이지 요청 실패 2개(`/board/99` · `/report`)입니다.
   - `saas`(SaaS) 실패 1개: jiwoo 의 `login` 입니다.
-  - <mark>하나로 묶으면 이 일들이 모두 같은 유형으로 보여서, 담당자가 대응을 정할 수 없습니다.</mark> 예를 들어 같은 사용자의 계정 변경이 3번 실패한 것과 `/.env` · `/wp-login.php` · `/phpmyadmin` 을 차례로 요청한 것은 대응이 전혀 다릅니다. 그래서 11/5(목)에 유형을 더 나눕니다.
+  - <mark>하나로 묶으면 이 일들이 모두 같은 유형으로 보여서, 담당자가 대응을 정할 수 없습니다.</mark> 예를 들어 같은 사용자의 계정 변경이 3번 실패한 것과 `/.env` · `/wp-login.php` · `/phpmyadmin` 을 차례로 요청한 것은 대응이 전혀 다릅니다. 그래서 Unit 6에서 유형을 더 나눕니다.
 - (다) 「기타 실패」를 맨 위에 두면 결과가 실패인 이벤트 23개가 모두 먼저 조건을 충족해서 **기타 실패 23개**가 되고, 비정상 로그인과 비인가 접근은 **0개**가 됩니다. 정상은 34개 그대로입니다.
   - 담당자는 로그인 실패와 관리자 경로 요청 실패를 구분할 수 없게 되어, 비밀번호 대응과 접근 차단 중 무엇을 할지 정하지 못합니다.
   - 먼저 조건을 충족한 규칙에서 멈추기 때문입니다. <mark>좁은 조건(로그인 실패, 관리자 경로)을 위에 두고 넓은 조건(모든 실패)을 아래에 두어야 유형이 나뉩니다.</mark>
@@ -283,4 +283,4 @@ ls
 
 **결과**
 
-- 오늘 만든 파일 **여덟 개**와 안내 · 보고서 두 파일이 보여야 합니다. 깃허브에 올리는 일은 오후 Exercise 3-2 마지막에 합니다.
+- 이번 Unit에서 만든 파일 **여덟 개**와 안내 · 보고서 두 파일이 보여야 합니다. 깃허브에 올리는 일은 Unit 5의 Exercise 5-2 마지막에 합니다.

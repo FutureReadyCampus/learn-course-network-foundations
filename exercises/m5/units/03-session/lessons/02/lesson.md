@@ -53,17 +53,17 @@ approvals.py    is_authorized     : 승인한 사람이 권한 목록에 있는�
                 execute_actions   : 액션을 하나씩 실행한다 (3번)
                 apply_decision    : 권한이 없으면 기록만 남기고 멈춘다 (4 · 5번)
                 finish_decision   : 승인이면 실행하고 끝낸다 (6 · 7번) / 아니면 종료하고 거절 사유를 기록한다 (미리 채움)
-실행 파일       exercise5-2_run.py  : 대기 건마다 결정이 있으면 apply_decision 을 호출한다 (8 · 9번)
+실행 파일       exercise3-1_run.py  : 대기 건마다 결정이 있으면 apply_decision 을 호출한다 (8 · 9번)
 ```
 
 > **여기부터 문제입니다.**
 
-## Exercise Exercise 2-2 · 감사 기록을 만들고, 권한을 확인해 담당자 결정을 적용하기
+## Exercise 3-1 · 감사 기록을 만들고, 권한을 확인해 담당자 결정을 적용하기
 
 ** 이런 상황이 있습니다**
 
 - **지금은**: <mark>승인 대기 3건이 멈춰 있고, 담당자 결정 3건(승인 · 거절 · 권한 없는 승인)이 들어와 있습니다</mark>.
-- **만드는 것**: 기록 한 건 만들기(`audit.py`), 권한 확인 · 실행 · 종료(`approvals.py`), 결정을 적용하는 함수를 부르는 실행 파일(`exercise5-2_run.py`).
+- **만드는 것**: 기록 한 건 만들기(`audit.py`), 권한 확인 · 실행 · 종료(`approvals.py`), 결정을 적용하는 함수를 부르는 실행 파일(`exercise3-1_run.py`).
 - **실행하면**: <mark>단계 1: 승인 대기 건, 단계 2: 결정 적용 결과, 단계 3: 처리 뒤 연습용 시스템 상태, 단계 4: 감사 기록이 나옵니다.</mark>
 
 ** 할 일**: 파일 세 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 ~ 4 를 읽습니다.
@@ -83,7 +83,7 @@ def log_line(item, action, text):  # 인시던트 · 액션 · 결과 문장을 
 **`approvals.py`** — 권한을 확인하고 결정을 적용합니다. Exercise 3-2 `flow.py` 도 불러다 씁니다. 직접 쓰는 곳은 2 ~ 7번입니다.
 
 ```python
-from incident import change_status, run_action                                           # 어제 파일의 함수를 불러온다
+from incident import change_status, run_action                                           # Unit 1 파일의 함수를 불러온다
 from audit import log_line                                                               # 방금 만든 기록 함수를 불러온다
 
 APPROVERS = ["kim.sec", "lee.soc"]                                                       # 승인할 권한이 있는 담당자 이름 리스트
@@ -153,10 +153,10 @@ def finish_decision(item, decision, state, action_log):                         
     return "거절 처리"                                                                   # 거절 처리를 리턴한다 — 미리 채운 줄
 ```
 
-**`exercise5-2_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실행하면 결과를 출력합니다.
+**`exercise3-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실행하면 결과를 출력합니다.
 
 ```python
-from incident import load_json                                                              # 어제 파일의 함수를 불러온다
+from incident import load_json                                                              # Unit 1 파일의 함수를 불러온다
 from approvals import apply_decision                                                        # 방금 만든 결정 적용 함수를 불러온다
 
 pending = load_json("pending.json")                                                         # 승인 대기 3건을 읽는다
@@ -191,13 +191,13 @@ for entry in action_log:                                                        
 1. **[터미널]** 파일 세 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
    ```bash
    pwd
-   touch audit.py approvals.py exercise5-2_run.py
+   touch audit.py approvals.py exercise3-1_run.py
    ls
    ```
-2. **[VS Code]** `audit.py` 1번, `approvals.py` 2 ~ 7번, `exercise5-2_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 3-1 한눈에」를 봅니다.
+2. **[VS Code]** `audit.py` 1번, `approvals.py` 2 ~ 7번, `exercise3-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「Exercise 3-1 한눈에」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
-   python exercise5-2_run.py
+   python exercise3-1_run.py
    ```
 4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 3줄, 단계 2 도 3줄, 단계 3 은 3줄, 단계 4 는 감사 기록 4줄입니다.
 5. **[보고서]** Unit 3 의 `## Exercise 3-1` 아래를 채웁니다.

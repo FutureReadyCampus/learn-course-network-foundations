@@ -16,7 +16,7 @@ source:
 > **오늘 들어온 일**
 >
 > A사 관제 담당이 보낸 메시지: 「지금까지 만든 요청서는 프로그램을 끄면 사라집니다. 접수 · 승인 · 반려 · 부여를 한 번 돌리고 나면 요청서 전체를 파일로 남겨 주세요. 그리고 상태별로 몇 건인지 숫자로 보고 싶은데, 손으로 세면 시간이 걸리고 틀리기 쉽습니다.」
-> - 이 Exercise에서 하는 일: 요청서 리스트를 `requests.json` 으로 저장하는 함수 `save_requests` 와 상태별 건수를 세는 함수 `count_by_status` 를 직접 씁니다. 오전 · 오후에 만든 함수를 모두 이어서 한 번 돌려 봅니다. 마지막 10분에 오늘 만든 것을 깃허브에 올립니다.
+> - 이 Exercise에서 하는 일: 요청서 리스트를 `requests.json` 으로 저장하는 함수 `save_requests` 와 상태별 건수를 세는 함수 `count_by_status` 를 직접 씁니다. Unit 4와 Unit 5에서 만든 함수를 모두 이어서 한 번 돌려 봅니다. 마지막 10분에 오늘 만든 것을 깃허브에 올립니다.
 > - 끝나면 쓰는 것: 보고서 (가)~(다) 답
 
 > **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「 문제」 전까지는 이 Exercise의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
@@ -32,7 +32,7 @@ source:
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
-- 어제까지는 JSON 파일을 **읽기**만 했습니다. 오늘은 파일에 **쓰기**를 합니다.
+- 이전 Unit까지는 JSON 파일을 **읽기**만 했습니다. 이번에는 파일에 **쓰기**를 합니다.
 
 | 파일 열기 | 뜻 |
 |---|---|
@@ -119,11 +119,11 @@ print(text)                                                      # 쓴 파일을
 
 - `as demo_file` 은 열린 파일을 `demo_file` 이라는 이름으로 부르겠다는 뜻이고, 파일은 `with` 아래에 들여쓴 줄 안에서만 열려 있습니다.
 - `open(…).read()` 는 파일을 열어 내용 전체를 문자열로 읽습니다. 위 코드는 방금 쓴 파일을 확인하려고 한 번 더 읽어 출력한 것입니다.
-- 세는 모양 `old_count = counts.get(키, 0)` → `counts[키] = old_count + 1` 은 10/21(수)에 쓴 것과 같습니다. `counts.get(키, 0)` 은 그 키가 있으면 값을, 없으면 0 을 꺼냅니다.
+- 세는 모양 `old_count = counts.get(키, 0)` → `counts[키] = old_count + 1` 은 Unit 1에서 쓴 것과 같습니다. `counts.get(키, 0)` 은 그 키가 있으면 값을, 없으면 0 을 꺼냅니다.
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## Exercise Exercise 5-1 · 요청서 전체를 파일로 저장하고 상태별 건수 세기
+## Exercise 5-2 · 요청서 전체를 파일로 저장하고 상태별 건수 세기
 
 ** 이런 상황이 있습니다**
 
@@ -173,14 +173,14 @@ def count_by_status(requests):                                   # 요청서 리
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
-from config_loader import load_json                              # 10/22(목)에 만든 안전한 읽기 함수를 불러온다
-from req_create import REQUESTS, create_request                  # 오전 Exercise 4-1에 만든 요청서 함수와 리스트를 불러온다
-from req_review import approve_request, reject_request           # 오전 Exercise 4-2에 만든 승인 · 반려 함수를 불러온다
-from req_grant import grant_request                              # 오전 Exercise 4-3에 만든 부여 함수를 불러온다
+from config_loader import load_json                              # Unit 3에서 만든 안전한 읽기 함수를 불러온다
+from req_create import REQUESTS, create_request                  # Exercise 4-1에서 만든 요청서 함수와 리스트를 불러온다
+from req_review import approve_request, reject_request           # Exercise 4-2에서 만든 승인 · 반려 함수를 불러온다
+from req_grant import grant_request                              # Exercise 4-3에서 만든 부여 함수를 불러온다
 from req_sla import check_sla_breach                             # Exercise 5-1에 만든 기한 점검 함수를 불러온다
 from request_flow import save_requests, count_by_status          # 방금 만든 저장 · 집계 함수를 불러온다
 
-NOW = datetime.strptime("2026-10-23 14:00", "%Y-%m-%d %H:%M")    # 오늘 오후 실습의 지금 시각(고정)
+NOW = datetime.strptime("2026-10-23 14:00", "%Y-%m-%d %H:%M")    # 이번 실습의 지금 시각(고정)
 
 INBOX = [                                                        # 오늘 들어온 요청 여섯 건. (요청자, 자원, 행위, 희망 만료 시각, 이유, 접수 시각)
     ("seoyeon", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 대조 지원", "2026-10-23 08:30"),
@@ -216,7 +216,7 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
 
 **순서**
 
-0. **[터미널]** Exercise 5-1 파일이 정상인지 먼저 확인합니다. 마지막 줄에 `5교시 파일 정상` 이 나와야 합니다(맥북은 `python3 -c "…"`). 아니면 문서 맨 아래 「앞 Exercise 파일 완성본」으로 `req_sla.py` 와 `config/sla.json` 을 먼저 만듭니다.
+0. **[터미널]** Exercise 5-1 파일이 정상인지 먼저 확인합니다. 마지막 줄에 `Exercise 5-1 파일 정상` 이 나와야 합니다(맥북은 `python3 -c "…"`). 아니면 문서 맨 아래 「앞 Exercise 파일 완성본」으로 `req_sla.py` 와 `config/sla.json` 을 먼저 만듭니다.
    ```bash
    python -c "from req_sla import check_sla_breach; print('Exercise 5-1 파일 정상')"
    ```
@@ -239,7 +239,7 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
 4. 출력은 세 단계입니다. 단계 1은 요청 여섯 건의 처리 결과(여섯 줄), 단계 2는 상태별 건수와 SLA 초과 요청 번호, 단계 3은 저장 함수가 리턴한 건수와 저장 결과입니다.
    - Exercise 5-1에서는 SLA 초과가 1번과 5번이었지만 여기서는 5번만 나옵니다. 이 실행에서는 1번이 승인 · 부여까지 끝나 더 이상 `reviewing` 이 아니기 때문입니다.
 5. **[VS Code]** 왼쪽 목록에 새로 생긴 `requests.json` 을 열어 요청서가 한글 그대로 저장됐는지 봅니다.
-6. **[보고서]** Unit 5 의 `## Exercise 5-2` › `### Exercise Exercise 5-1` 아래를 채웁니다.
+6. **[보고서]** Unit 5 의 `## Exercise 5-2` › `### Exercise 5-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, `requests.json` 에 저장된 요청서가 몇 건인지와 상태별 건수를 적어 주세요.
    - (나) [핵심 질문] 반려된 요청서(`rejected`)나 승인은 됐지만 부여하지 않은 요청서(`approved`)도 지우지 않고 `requests.json` 에 남기는 이유는 무엇인가요?
    - (다) [핵심 질문] 상태별 건수가 `granted` 1 · `rejected` 1 · `approved` 2 · `reviewing` 2 로 나왔습니다. 이 숫자를 매일 아침 보면 처리 흐름의 어디가 막혀 있는지 어떻게 알 수 있나요?
@@ -279,7 +279,7 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
    ```
    - 명령 풀이: `git status` 올릴 파일의 상태를 봄
    - `.env` 가 보이면: VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 도 같은 방법으로 합니다.
-   - 어제 `access_control` 을 이미 올렸다면 오늘 새로 만든 파일이 `access_control/req_create.py` 처럼 한 줄씩 보입니다. 어제 올리지 않았다면 `access_control/` 한 줄로 보일 수 있습니다. 어느 쪽이든 `Untracked files:` 아래에 보이는 줄을 센 그대로 적습니다.
+   - Unit 3에서 `access_control` 을 이미 올렸다면 오늘 새로 만든 파일이 `access_control/req_create.py` 처럼 한 줄씩 보입니다. Unit 3에서 올리지 않았다면 `access_control/` 한 줄로 보일 수 있습니다. 어느 쪽이든 `Untracked files:` 아래에 보이는 줄을 센 그대로 적습니다.
    - `access_control/requests.json` 은 Exercise 5-2에 프로그램이 만든 이력 파일입니다. 이것도 올라갑니다.
    - `access_control/__pycache__/` 가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. 줄 수는 그 뒤에 다시 셉니다.
 3. **[보고서]** `### 마무리 · 오늘 만든 것을 깃허브에 올리기` 아래를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다.
@@ -307,18 +307,18 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
 
 ---
 
-## 오늘 마무리
+## 이번 Unit 마무리
 
 | 확인 | 문제 |
 |---|---|
-| 요청을 요청서로 접수하고 접수 못 할 요청을 걸러 냈다 | 오전 Exercise 4-1 |
-| 승인 · 반려가 검토 중인 요청서에만 되게 했다 | 오전 Exercise 4-2 |
-| 승인된 요청서를 정책으로 확인하고 예외 권한을 부여했다 | 오전 Exercise 4-3 |
+| 요청을 요청서로 접수하고 접수 못 할 요청을 걸러 냈다 | Exercise 4-1 |
+| 승인 · 반려가 검토 중인 요청서에만 되게 했다 | Exercise 4-2 |
+| 승인된 요청서를 정책으로 확인하고 예외 권한을 부여했다 | Exercise 4-3 |
 | 처리 기한을 초과한 요청서를 시간 계산으로 찾았다 | Exercise 5-1 |
 | 요청서 전체를 `requests.json` 으로 저장하고 상태별 건수를 셌다 | Exercise 5-2 |
 | 오늘 만든 파일과 보고서를 깃허브에 올렸다 | 마무리 |
 
-주말과 현직자 수업(10/26(월)~10/28(수))이 지나고 10/29(목)에는 부여된 권한 가운데 쓰이지 않는 것 · 넘치는 것을 찾는 과다권한 탐지를 합니다. 오늘 만든 `requests.json` 이 그때 「누가 어떤 권한을 요청해 받았나」를 보는 자료입니다.
+다음 Unit(Unit 6)에서는 부여된 권한 가운데 쓰이지 않는 것 · 넘치는 것을 찾는 과다권한 탐지를 합니다. 오늘 만든 `requests.json` 이 그때 「누가 어떤 권한을 요청해 받았나」를 보는 자료입니다.
 
 ---
 

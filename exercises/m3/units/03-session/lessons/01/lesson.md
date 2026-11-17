@@ -13,29 +13,29 @@ source:
 
 ## 개요
 
-오전에는 역할 부여와 회수, 기간이 정해진 예외, 최종 판정 함수 `evaluate_access`(`policy.py`)를 만들었습니다. 오후에는 그 정책을 **믿을 수 있게** 만듭니다.
+Unit 2에서는 역할 부여와 회수, 기간이 정해진 예외, 최종 판정 함수 `evaluate_access`(`policy.py`)를 만들었습니다. 이번 Unit에서는 그 정책을 **믿을 수 있게** 만듭니다.
 
 - **Exercise 3-1**: 설정 파일이 없거나 깨져도 프로그램이 멈추지 않고 **빈 설정으로 이어지게** 한다(그 설정이면 모든 요청이 거부됩니다).
 - **Exercise 3-2**: 정책이 정한 대로 움직이는지 **테스트 케이스**를 직접 설계해 자동으로 확인하고, 마지막 10분에 오늘 만든 것을 올린다.
 
-오늘 오후는 5 · Exercise 3-2이고 Exercise 1-3는 없습니다. Exercise마다 문제는 하나이고, 그 안에서 단계를 나눠 질문에 답합니다. 깃허브에 올리는 일은 Exercise 3-2 마지막에 합니다.
+이번 Unit은 Exercise 3-1 · 3-2로 이루어집니다. Exercise마다 문제는 하나이고, 그 안에서 단계를 나눠 질문에 답합니다. 깃허브에 올리는 일은 Exercise 3-2 마지막에 합니다.
 
 ## 개요
 
 1. **[VS Code]** 왼쪽 목록의 `access_control` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** 위치와 오전 파일을 확인합니다. 결과가 `…/security-agent-toolkit/access_control` 로 끝나야 합니다.
+2. **[터미널]** 위치와 Unit 2의 파일을 확인합니다. 결과가 `…/security-agent-toolkit/access_control` 로 끝나야 합니다.
    ```bash
    pwd
    ls
    ls config
    ```
-   - `rbac.py` · `role_admin.py` · `exception_policy.py` · `policy.py` · `exercise2-1_run.py` · `exercise2-2_run.py` · `exercise2-3_run.py` 가 보여야 하고, `config` 안에는 `users.json` · `roles.json` · `exceptions.json` 이 보여야 합니다. 없으면 오전 문서(Unit 2)의 정답으로 먼저 만듭니다.
-3. **[VS Code]** **오후에 받은 파일 두 개를 `access_control` 폴더로 옮깁니다.** 수업 자료에서 내려받은 파일은 보통 `다운로드` 폴더에 있습니다. 파일 탐색기(맥북은 Finder)에서 `다운로드` 폴더를 열고, 두 파일을 VS Code 왼쪽 목록의 `access_control` 폴더 위로 끌어다 놓습니다. 끌어다 놓기가 안 되면 파일을 VS Code 로 열고 메뉴 **File › Save As…** 로 `access_control` 폴더에 저장합니다.
-   - Unit 3 (이 파일) — 오후 실습 안내. 읽기만 합니다.
-   - Unit 3 — **오후 보고서.** 5 · Exercise 3-2와 마무리 답을 여기에 적습니다.
+   - `rbac.py` · `role_admin.py` · `exception_policy.py` · `policy.py` · `exercise2-1_run.py` · `exercise2-2_run.py` · `exercise2-3_run.py` 가 보여야 하고, `config` 안에는 `users.json` · `roles.json` · `exceptions.json` 이 보여야 합니다. 없으면 Unit 2 문서의 정답으로 먼저 만듭니다.
+3. **[VS Code]** **이번 Unit에서 받은 파일 두 개를 `access_control` 폴더로 옮깁니다.** 수업 자료에서 내려받은 파일은 보통 `다운로드` 폴더에 있습니다. 파일 탐색기(맥북은 Finder)에서 `다운로드` 폴더를 열고, 두 파일을 VS Code 왼쪽 목록의 `access_control` 폴더 위로 끌어다 놓습니다. 끌어다 놓기가 안 되면 파일을 VS Code 로 열고 메뉴 **File › Save As…** 로 `access_control` 폴더에 저장합니다.
+   - Unit 3 (이 파일) — 실습 안내. 읽기만 합니다.
+   - Unit 3 — **보고서.** Exercise 3-1 · 3-2와 마무리 답을 여기에 적습니다.
 4. **[VS Code]** 안내 파일을 열고 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다. 보고서 Unit 3 는 오른쪽 클릭 › **Open to the Side** 로 옆에 열고, 맨 위 제목 `(이름 · 2026-10-22(목))` 의 `이름` 만 내 이름으로 바꿉니다.
 5. 문제는 **할 일 → 순서**대로 하고, `[창 이름]` 이 지금 쓸 창입니다. 코드를 채울 때는 주석이 말하는 일을 하면 몇 줄이든 맞고, 막히면 맨 아래 「정답」을 봅니다.
 
-> 실행은 **터미널**에서 합니다(VS Code 의 ▶ 단추를 쓰지 않습니다). `python` 이 없다는 오류가 나오면 `python3` 으로 칩니다(맥북은 `python3`). **오전까지 만든 파일은 고치지 않습니다.** 오늘 만드는 파일은 모두 새 파일입니다.
+> 실행은 **터미널**에서 합니다(VS Code 의 ▶ 단추를 쓰지 않습니다). `python` 이 없다는 오류가 나오면 `python3` 으로 칩니다(맥북은 `python3`). **Unit 2까지 만든 파일은 고치지 않습니다.** 오늘 만드는 파일은 모두 새 파일입니다.
 
 ---

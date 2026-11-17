@@ -17,7 +17,7 @@ source:
 
 ---
 
-## Exercise Exercise 2-2 정답
+## Exercise 3-1 정답
 
  **터미널에 입력합니다.**
 
@@ -115,7 +115,7 @@ KeyError: 'times'
 
 ---
 
-## Exercise Exercise 2-2 정답
+## Exercise 3-2 정답
 
  **터미널에 입력합니다.**
 
@@ -218,7 +218,7 @@ git status
 
 ```bash
 git add .
-git commit -m "Add anomaly detection day 2 pandas basics"
+git commit -m "Add anomaly detection unit 3 pandas basics"
 git push
 ```
 - 명령 풀이: `git add .` 바뀐 파일을 올릴 대상에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림

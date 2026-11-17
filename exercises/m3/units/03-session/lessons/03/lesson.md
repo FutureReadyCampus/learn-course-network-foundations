@@ -180,7 +180,7 @@ seoyeon 이 없어서 통과
 | 5 | 퇴사자는 예외가 남아 있어도 막아야 한다 | `dami` 의 영업 실적 조회가 거부되는가 |
 | 6 | 만료 시각 18:00 정각에도 허용해야 한다 | `seoyeon` 의 정산 조회가 18:00 에 허용되는가 |
 
-- `dami` 는 어제 만든 `users.json` 에서 퇴사한 계정이고, 예외 3번이 아직 남아 있습니다.
+- `dami` 는 Unit 1에서 만든 `users.json` 에서 퇴사한 계정이고, 예외 3번이 아직 남아 있습니다.
 
 테스트가 실패하면 이 순서로 생각합니다.
 
@@ -201,7 +201,7 @@ AssertionError: 6. 만료 정각에도 허용되어야 한다(팀원 제안)    
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## Exercise Exercise 2-2 · 꼭 지켜야 할 네 가지를 테스트로 설계하고, 팀원의 제안을 시험하기
+## Exercise 3-2 · 꼭 지켜야 할 네 가지를 테스트로 설계하고, 팀원의 제안을 시험하기
 
 ** 이런 상황이 있습니다**
 
@@ -219,7 +219,7 @@ AssertionError: 6. 만료 정각에도 허용되어야 한다(팀원 제안)    
 
 ```python
 from datetime import datetime                                    # 시각을 만드는 데 쓴다
-from policy import evaluate_access                               # 오전에 만든 최종 판정 함수
+from policy import evaluate_access                               # Unit 2에서 만든 최종 판정 함수
 from config_loader import load_json                              # Exercise 3-1에 만든 안전한 읽기 함수
 
 
@@ -254,7 +254,7 @@ print("테스트 4개 모두 통과")                                     # 위 
 
 ```python
 from datetime import datetime                                    # 시각을 만드는 데 쓴다
-from policy import evaluate_access                               # 오전에 만든 최종 판정 함수
+from policy import evaluate_access                               # Unit 2에서 만든 최종 판정 함수
 
 
 def at(text):                                                    # 문자열을 시각으로 바꾸는 짧은 함수
@@ -292,7 +292,7 @@ print("6 통과")                                                  # 6번 assert
    ```
    - 명령 풀이: `python` 파이썬으로 파일을 실행 · `test_policy.py` 실행할 파일
    맥북: `python3 test_policy.py`
-   - `AssertionError` 가 나오면 설명 문자열로 어느 테스트인지 보고, 그 테스트의 입력과 기대 결과가 2.1 의 표와 같은지 다시 봅니다. `ModuleNotFoundError` 가 나오면 `pwd` 가 `…/access_control` 인지 확인하고, `No module named 'config_loader'` 이면 Exercise 3-1 파일이, `No module named 'policy'` 이면 오전 Exercise 2-3 파일이 없는 것입니다.
+   - `AssertionError` 가 나오면 설명 문자열로 어느 테스트인지 보고, 그 테스트의 입력과 기대 결과가 2.1 의 표와 같은지 다시 봅니다. `ModuleNotFoundError` 가 나오면 `pwd` 가 `…/access_control` 인지 확인하고, `No module named 'config_loader'` 이면 Exercise 3-1 파일이, `No module named 'policy'` 이면 Unit 2의 Exercise 2-3 파일이 없는 것입니다.
 4. **[VS Code 또는 터미널]** `test_policy_extra.py` 를 만들고 붙여 넣습니다.
    - 만드는 방법은 위 1번과 같습니다(VS Code 새 파일 아이콘 · `touch` · `vim` 중 하나). 만들 파일 이름은 `test_policy_extra.py` 입니다. 붙여 넣을 내용은 위 코드 상자입니다.
 5. **[터미널]** 실행합니다. **`5 통과` 가 먼저 출력되고, 그다음 6번 테스트에서 `AssertionError` 가 나는 것이 정상입니다.** 5번 테스트에서 멈췄다면 그 사실을 보고서 (가)에 적습니다.
@@ -302,7 +302,7 @@ print("6 통과")                                                  # 6번 assert
    - 명령 풀이: `python` 파이썬으로 파일을 실행 · `test_policy_extra.py` 실행할 파일
    맥북: `python3 test_policy_extra.py`
    - 오류 메시지에서 `line` 뒤의 숫자(몇 번째 줄인지)와 맨 마지막 줄 `AssertionError: …` 의 설명을 읽습니다(2.2).
-6. **[보고서]** Unit 3 의 `## Exercise 3-2` › `### Exercise Exercise 2-2` 아래를 채웁니다.
+6. **[보고서]** Unit 3 의 `## Exercise 3-2` › `### Exercise 3-2` 아래를 채웁니다.
    - (가) `test_policy_extra.py` 를 실행한 출력 전체를 붙여 넣고, 실패한 줄 번호와 `AssertionError:` 뒤에 나온 글자를 적어 주세요.
    - (나) [핵심 질문] 그 실패는 코드가 틀렸다는 뜻인가요, 제안이 우리가 정한 만료 규칙과 다르다는 뜻인가요? 근거를 적어 주세요.
    - (다) [핵심 질문] 정책 코드를 바꿀 때마다 `test_policy.py` 의 1 ~ 4번 테스트를 돌리지 않으면 어떤 사고가 날 수 있나요? 네 개 중 하나를 골라, 그 테스트가 막아 주는 사고를 구체적인 장면으로 적어 주세요.
@@ -339,7 +339,7 @@ print("6 통과")                                                  # 6번 assert
    ```
    - 명령 풀이: `git status` 올릴 파일의 상태를 봄
    - `.env` 가 보이면: VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 도 같은 방법으로 합니다.
-   - 어제 `access_control` 을 이미 올렸다면 오늘 새로 만든 파일이 `access_control/role_admin.py` 처럼 한 줄씩 보입니다. 어제 올리지 않았다면 `access_control/` 한 줄로 보일 수 있습니다. 어느 쪽이든 `Untracked files:` 아래에 보이는 줄을 센 그대로 적습니다.
+   - Unit 1에서 `access_control` 을 이미 올렸다면 오늘 새로 만든 파일이 `access_control/role_admin.py` 처럼 한 줄씩 보입니다. Unit 1에서 올리지 않았다면 `access_control/` 한 줄로 보일 수 있습니다. 어느 쪽이든 `Untracked files:` 아래에 보이는 줄을 센 그대로 적습니다.
    - 일부러 깨뜨린 `config/users_broken.json` 도 올라갑니다. Exercise 3-1의 고장 시험 자료라서 괜찮습니다.
    - `access_control/__pycache__/` 가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. 줄 수는 그 뒤에 다시 셉니다.
 3. **[보고서]** `### 마무리 · 오늘 만든 것을 깃허브에 올리기` 아래를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다.
@@ -367,7 +367,7 @@ print("6 통과")                                                  # 6번 assert
 
 ---
 
-## 오늘 마무리
+## 이번 Unit 마무리
 
 | 확인 | 문제 |
 |---|---|
@@ -377,7 +377,7 @@ print("6 통과")                                                  # 6번 assert
 | 실패한 테스트를 읽고 코드와 기대 중 무엇이 다른지 판단했다 | Exercise 3-2 |
 | 오늘 만든 파일과 보고서를 깃허브에 올렸다 | 마무리 |
 
-내일(10/23(금))에는 직원이 권한을 **요청**하면 승인자가 **승인 · 반려**하고, 승인된 것만 **부여**되는 흐름(`req_create.py` · `req_review.py` · `req_grant.py`)을 만듭니다. 오늘의 `evaluate_access` 를 이중 검증에 그대로 불러 씁니다.
+다음 Unit(Unit 4)에서는 직원이 권한을 **요청**하면 승인자가 **승인 · 반려**하고, 승인된 것만 **부여**되는 흐름(`req_create.py` · `req_review.py` · `req_grant.py`)을 만듭니다. 오늘의 `evaluate_access` 를 이중 검증에 그대로 불러 씁니다.
 
 ---
 

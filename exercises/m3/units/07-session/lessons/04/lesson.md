@@ -17,9 +17,9 @@ source:
 
 ---
 
-## Exercise Exercise 1-3 정답
+## Exercise 7-1 정답
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 ```bash
 pwd
@@ -125,9 +125,9 @@ junho SALES:QUERY <- 역할 finance | 90일 넘게 안 씀(이력 없음 포함)
 
 ---
 
-## Exercise Exercise 1-3 정답
+## Exercise 7-2 정답
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 ```bash
 pwd
@@ -218,26 +218,26 @@ dami SALES:QUERY <- 예외 3번 | 퇴사한 계정
 
 ## 정답 마무리
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 ```bash
 cd ..
 pwd
 git status
 git add .
-git commit -m "Add access control day 4 access review and overprivilege report"
+git commit -m "Add access control access review and overprivilege report"
 git push
 ```
 
 **결과**
 
-- (가) 한 예: 「줄이 열여섯 개였고(`.py` 열 개 + `config/access_log.json` · `config/exclude_list.json` 두 개 + `.md` 네 개), `.env` · `.venv` 는 없었다」. 이 숫자는 10/23(금) 파일을 이미 올렸고 `__pycache__` 가 보이지 않을 때의 숫자이며, 줄 수와 이름은 학생마다 다를 수 있습니다.
+- (가) 한 예: 「줄이 열여섯 개였고(`.py` 열 개 + `config/access_log.json` · `config/exclude_list.json` 두 개 + `.md` 네 개), `.env` · `.venv` 는 없었다」. 이 숫자는 Unit 5의 파일을 이미 올렸고 `__pycache__` 가 보이지 않을 때의 숫자이며, 줄 수와 이름은 학생마다 다를 수 있습니다.
   - `.env` 나 `.venv` 가 보였다면 `.gitignore` 에 한 줄을 적고 `git status` 를 다시 쳤다고 적습니다.
 
 **왜**
 
 - 올리기 전에 올라갈 파일을 확인해야 비밀 키가 섞이지 않습니다.
-  - 코드와 오늘 만든 회수 제외 리스트가 함께 올라가야 내일 회수 수업이 같은 기준에서 시작합니다.
+  - 코드와 이번 Unit에서 만든 회수 제외 리스트가 함께 올라가야 Unit 8의 회수 실습이 같은 기준에서 시작합니다.
 
 **자주 틀리는 곳**
 
@@ -253,7 +253,7 @@ git push
 
 ## 앞 Exercise 파일 완성본
 
-앞 Exercise 파일을 못 만들고 다음 Exercise로 넘어가야 할 때 그대로 만들어 씁니다. 오전 파일(`review_list.py` · `review_rules.py` · `review_unused.py` · `config/access_log.json`)은 오전 문서 맨 아래에 있습니다. 정답 본문을 함수 머리말과 합친 전체 파일입니다.
+앞 Exercise 파일을 못 만들고 다음 Exercise로 넘어가야 할 때 그대로 만들어 씁니다. Unit 6의 파일(`review_list.py` · `review_rules.py` · `review_unused.py` · `config/access_log.json`)은 Unit 6 문서 맨 아래에 있습니다. 정답 본문을 함수 머리말과 합친 전체 파일입니다.
 
 **`overprivilege.py`** (Exercise 7-1 완성본)
 
@@ -328,7 +328,7 @@ def generate_report(access_list, stale, unused, days, generated_at):   # 현황 
 **`report_exclude.py`** (Exercise 7-2 완성본)
 
 ```python
-from config_loader import load_json                              # 10/22(목)에 만든 안전한 읽기 함수를 불러온다
+from config_loader import load_json                              # Unit 3에서 만든 안전한 읽기 함수를 불러온다
 
 
 def exclude_key(entry):                                          # 사용자와 권한이 든 딕셔너리(후보 또는 제외 리스트의 한 건)를 받는 함수

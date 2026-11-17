@@ -96,7 +96,7 @@ def run_step(alert, action, context):                            # 알림 · 조
 ```python
 def run_soar_pipeline(alert, context):                                 # 알림 한 건과 엔진 재료를 받는 함수
     """알림 한 건을 플레이북 찾기 → 조치마다 승인 게이트 → 티켓 만들기 순서로 처리하고 결과 기록 한 건을 리턴한다. 알림마다 한 번씩 쓴다."""
-    playbooks = match_playbooks(alert, context["registry"])            # 월요일 함수로 맞는 플레이북을 찾는다 — 미리 채운 줄
+    playbooks = match_playbooks(alert, context["registry"])            # Unit 1 함수로 맞는 플레이북을 찾는다 — 미리 채운 줄
     playbook_id = "없음"                                               # 맞는 플레이북이 없으면 「없음」으로 남긴다 — 미리 채운 줄
     steps = []                                                         # 조치마다 결과를 모을 빈 리스트 — 미리 채운 줄
     for playbook in playbooks:                                         # 맞는 플레이북을 하나씩 꺼낸다 — 미리 채운 줄
@@ -395,7 +395,7 @@ INC-505 IP 차단 198.51.100.90: 차단되지 않음 → 차단됨
 --- 단계 6: risk_engine_log.json · engine_summary.json · risk_tickets.json 저장
 ```
 
-- (나) `seoyeon`(`INC-502`)은 플레이북 `PB-002`(대량 다운로드)가 맞지만, 그 플레이북의 액션이 `담당자 알림` · `티켓 생성` 뿐이라 승인 게이트를 거칠 조치(계정 잠금 · IP 차단)가 없습니다. `gaeun`(`INC-503`)과 `jiwoo`(`INC-504`)는 단계 4 의 플레이북 번호가 <mark style="background:#bde3ff">「없음」</mark>입니다. 월요일 플레이북 3개의 트리거 규칙은 퇴사한 계정 · 대량 다운로드 · 경로 스캔이고, 두 대상의 이유(`규칙은 허용인데 서버가 거절` · `여러 로그 연결` / `업무 시간 밖 로그인` · `평소와 다른 IP`)는 그 규칙에 없기 때문입니다.
+- (나) `seoyeon`(`INC-502`)은 플레이북 `PB-002`(대량 다운로드)가 맞지만, 그 플레이북의 액션이 `담당자 알림` · `티켓 생성` 뿐이라 승인 게이트를 거칠 조치(계정 잠금 · IP 차단)가 없습니다. `gaeun`(`INC-503`)과 `jiwoo`(`INC-504`)는 단계 4 의 플레이북 번호가 <mark style="background:#bde3ff">「없음」</mark>입니다. Unit 1 플레이북 3개의 트리거 규칙은 퇴사한 계정 · 대량 다운로드 · 경로 스캔이고, 두 대상의 이유(`규칙은 허용인데 서버가 거절` · `여러 로그 연결` / `업무 시간 밖 로그인` · `평소와 다른 IP`)는 그 규칙에 없기 때문입니다.
   - 티켓이 없으면 세 알림은 엔진이 한 일도 남은 기록도 없어서 담당자가 알 방법이 없습니다. <mark style="background:#ffc4d6">티켓이 조치 없는 알림을 사람에게 넘기는 유일한 경로입니다.</mark> 세 알림의 티켓(`TCK-2` ~ `TCK-4`)에는 다음 할 일로 「자동 조치가 없는 알림이니 직접 보고 조치가 필요한지 정한다」가 적힙니다.
 - (다) `minsu` 기록은 등급이 `critical` 이라 엔진이 아는 등급(`GRADES`: high · mid · low)에 없어서 <mark style="background:#bde3ff">`알 수 없는 등급: critical`</mark> 로 거절됩니다. 거절하면 거절 리스트에 이유가 남아 4과목 쪽을 고칠 수 있습니다.
   - 거절 없이 엔진에 넣으면 `match_playbooks` 가 `GRADE_ORDER["critical"]` 을 찾다가 오류를 내고, Exercise 10-1 `INC-402` 처럼 그 알림만 실패로 기록됩니다. 조치도 티켓도 없고 원인은 오류 문장에만 남습니다. 아래는 그렇게 실행한 결과입니다.
@@ -569,7 +569,7 @@ save_json(rows, CHECK_PATH)        # 점검 결과를 파일에 저장한다
 
 - (나) `INC-405` 의 `request` 는 등급 mid 에 `users_on_ip` 가 2 입니다. 승인 정책에서 mid <mark style="background:#ffdcb0">1점</mark>과 함께 쓰는 IP(2개 이상) <mark style="background:#ffdcb0">2점</mark>을 더한 <mark style="background:#bde3ff">합계 3점</mark>이 `approval_score`(3점) 이상이라, `decide_gate` 를 다시 호출하면 「승인 필요」입니다. 그런데 `executed` 가 참이라서 위반입니다.
   - 로그의 `decision` 은 게이트를 끈 엔진이 적은 값(「자동」, 이유 「승인 게이트 끔」)이라 <mark style="background:#ffc4d6">`decision` 만 읽으면 위반이 보이지 않습니다.</mark> 저장된 입력(`request`)으로 다시 구해야 엔진이 적은 값과 상관없이 확인할 수 있습니다.
-- (다) `INC-406` 은 `before` 와 `after` 가 모두 <mark style="background:#bde3ff">「변경 없음」</mark>입니다. 수요일의 `lock_account` 가 VIP 계정(`gaeun`)이면 잠그지 않고 「VIP 계정이라 자동 조치 대상이 아님」을 기록하기 때문에 `gaeun` 은 잠기지 않았습니다. 점검 ①은 그래도 조치 함수를 호출한 것(`executed`)이라서 FAIL 입니다.
+- (다) `INC-406` 은 `before` 와 `after` 가 모두 <mark style="background:#bde3ff">「변경 없음」</mark>입니다. Unit 4의 `lock_account` 가 VIP 계정(`gaeun`)이면 잠그지 않고 「VIP 계정이라 자동 조치 대상이 아님」을 기록하기 때문에 `gaeun` 은 잠기지 않았습니다. 점검 ①은 그래도 조치 함수를 호출한 것(`executed`)이라서 FAIL 입니다.
   - 점검 ③은 게이트나 `lock_account` 와 별도로 결과(`after`)만 봅니다. `lock_account` 에 VIP 리스트를 잘못 전달하거나 함수가 바뀌면 같은 로그에서도 VIP 가 잠길 수 있는데, 그때는 ③이 FAIL 로 잡습니다. <mark>한 겹의 통제가 깨져도 다른 겹의 점검이 잡도록 각각 점검합니다.</mark>
 
 **왜**

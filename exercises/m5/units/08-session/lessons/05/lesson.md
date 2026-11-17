@@ -23,7 +23,7 @@ source:
 
 ```bash
 pwd
-python exercise10-1_run.py
+python exercise8-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -50,7 +50,7 @@ python exercise10-1_run.py
         lines.append("- " + rule + ": " + str(count) + "장")        # 규칙 한 줄을 추가한다
 ```
 
-`exercise10-1_run.py` 의 9번입니다.
+`exercise8-1_run.py` 의 9번입니다.
 
 ```python
 # 9. make_ticket_table(tickets) 의 결과를 table 에 저장한다
@@ -186,7 +186,7 @@ NameError: name 'table' is not defined
 
 ```bash
 pwd
-python exercise10-2_run.py
+python exercise8-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -253,7 +253,7 @@ def decide_gate(request, policy):                 # 조치 요청 한 건과 승
     return "자동", reasons                        # 기준보다 낮으면 자동으로 실행한다 — 미리 채운 줄
 ```
 
-`exercise10-2_run.py` 의 8 · 9번입니다.
+`exercise8-2_run.py` 의 8 · 9번입니다.
 
 ```python
     # 8. decide_gate(request, policy) 의 두 결과를 decision, reasons 에 저장한다
@@ -289,7 +289,7 @@ REQ-6 INC-316 계정 잠금 minsu → 담당자 승인을 기다림
 ```
 
 - (나) `REQ-1` 은 등급 high 2점뿐이라 <mark style="background:#bde3ff">합계 2점</mark>으로 <mark style="background:#ffdcb0">임계값(3점)</mark>보다 낮아 자동입니다. `REQ-6` 은 등급 2점에 대상 6개 2점을 더해 <mark style="background:#bde3ff">합계 4점</mark>이라 승인 필요입니다.
-  - 대상이 많으면 잘못 실행했을 때 여러 사용자의 계정이 한꺼번에 잠기므로, 영향 범위가 넓은 조치입니다. <mark style="background:#e0d4ff">화요일의 인사 시스템 오류(퇴사자 알림이 한꺼번에 많이 들어온 일)</mark>처럼 입력이 잘못되면 대상 수가 갑자기 늘 수 있습니다.
+  - 대상이 많으면 잘못 실행했을 때 여러 사용자의 계정이 한꺼번에 잠기므로, 영향 범위가 넓은 조치입니다. <mark style="background:#e0d4ff">Unit 2의 인사 시스템 오류(퇴사자 알림이 한꺼번에 많이 들어온 일)</mark>처럼 입력이 잘못되면 대상 수가 갑자기 늘 수 있습니다.
 - (다) 허용 목록 대상은 차단하면 업무가 중단되는 대상이라, <mark>점수와 무관하게 차단하지 않아야 합니다.</mark> 점수부터 판단하면 `REQ-3`(4점)처럼 점수가 높은 요청이 「승인 필요」가 되고, 담당자가 실수로 승인하면 협력사 사무실 IP 가 차단됩니다.
   - 기준을 설정 파일로 분리하면 코드를 수정하지 않고 숫자만 바꿔 정책을 조정할 수 있고, 설정 파일을 깃(git)으로 관리하면 누가 언제 기준을 바꿨는지 변경 이력(change history)으로 남습니다.
 
@@ -365,7 +365,7 @@ NameError: name 'decision' is not defined
 
 ```bash
 pwd
-python exercise10-3_run.py
+python exercise8-3_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -410,7 +410,7 @@ def find_not_recovered(changes, state):                                         
     return remaining                                                             # 복구되지 않은 대상 리스트를 리턴한다 — 미리 채운 줄
 ```
 
-`exercise10-3_run.py` 의 8 · 9번입니다.
+`exercise8-3_run.py` 의 8 · 9번입니다.
 
 ```python
     # 8. handle_false_positive(report, log, state, NOW) 의 결과를 result 에 저장한다

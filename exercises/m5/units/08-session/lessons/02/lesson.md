@@ -9,13 +9,13 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 8-1 · 어제 근무의 티켓과 조치 기록을 대조해 초동 대응 리포트(incident report) 파일 생성하기
+# Exercise 8-1 · Unit 7 근무의 티켓과 조치 기록을 대조해 초동 대응 리포트(incident report) 파일 생성하기
 
 ## 개요
 
 > **오늘 들어온 일**
 >
-> - **상황**: <mark style="background:#e0d4ff">어제 Exercise 7-2 프로그램</mark>은 티켓 7장을 파일로 저장했습니다. 화면에는 근무 중 발생한 사건 · 평균 확인 시간 · 평균 해결 시간 · 응답 기한(SLA)을 넘긴 티켓 수 · 다음 근무자에게 인계할 티켓 목록이 나왔습니다. 오늘 아침 팀장이 「어제 근무의 초동 대응 리포트를 고객사에 보낼 수 있게 파일로 만들어 주세요」라고 요청합니다. **초동 대응**(initial response, 이니셜 리스폰스)은 사건이 발생한 직후 처음 수행한 대응입니다.
+> - **상황**: <mark style="background:#e0d4ff">Unit 7의 Exercise 7-2 프로그램</mark>은 티켓 7장을 파일로 저장했습니다. 화면에는 근무 중 발생한 사건 · 평균 확인 시간 · 평균 해결 시간 · 응답 기한(SLA)을 넘긴 티켓 수 · 다음 근무자에게 인계할 티켓 목록이 나왔습니다. 이번 Unit에서 팀장이 「Unit 7 근무의 초동 대응 리포트를 고객사에 보낼 수 있게 파일로 만들어 주세요」라고 요청합니다. **초동 대응**(initial response, 이니셜 리스폰스)은 사건이 발생한 직후 처음 수행한 대응입니다.
 > - **문제**: 티켓 파일과 조치 기록 파일이 따로 있어서, 사람이 손으로 옮겨 적으면 누락이 생기기 쉽습니다. 예를 들어 `INC-212`(`yuna` 계정 잠금)는 조치는 실행됐는데 티켓이 없습니다(티켓 추적 누락). <mark style="background:#ffc4d6">티켓만 보고 리포트를 쓰면 이 사건이 누락됩니다.</mark>
 > - **부탁**: 티켓 파일은 판다스 표로 바꿔 집계하고, 조치 기록 파일은 티켓과 대조해 리포트 파일 하나로 작성해 주세요. 리포트에는 티켓별 상태 · 탐지 규칙별 티켓 수 · 등급별 평균 확인 시간(MTTA, Mean Time To Acknowledge, 엠티티에이: 티켓 생성부터 담당자가 처음 확인하기까지 걸린 평균 시간) · 응답 기한(SLA)을 넘겨 확인한 티켓 · 티켓이 없는 조치 · 높음 등급 티켓의 처리 경위(생성 → 확인 → 해결 시각을 시간순으로 이은 기록)가 들어갑니다.
 > - **바뀌는 점**: 실행 한 번으로 `incident_report_20261112.md` <mark style="background:#bde3ff">32줄</mark>이 생성됩니다. 오늘 샘플에서는 응답 기한(SLA)을 넘겨 확인한 티켓 <mark style="background:#bde3ff">2장</mark>(`TCK-3` · `TCK-4`)과 티켓이 없는 조치 <mark style="background:#bde3ff">1건</mark>(`INC-212`)이 리포트에 따로 적힙니다. 상황과 이름은 설명을 위한 예시입니다.
@@ -140,7 +140,7 @@ report.py   make_ticket_table       : 티켓 리스트를 표로 바꾸고 확�
             count_actions           : 티켓 한 장의 조치 기록 수를 센다 (미리 채움)
             make_timeline_line      : 티켓 한 장의 생성 · 확인 · 해결 시각을 시간순 한 줄로 만든다 (미리 채움)
             make_report_lines       : 리포트의 줄 리스트를 만든다. 규칙별 줄만 직접 쓴다 (8번)
-실행 파일   exercise10-1_run.py        : 표를 만들고 (9번), 결과를 출력하고, 리포트 파일을 쓴다 (미리 채움)
+실행 파일   exercise8-1_run.py        : 표를 만들고 (9번), 결과를 출력하고, 리포트 파일을 쓴다 (미리 채움)
 ```
 
 > **여기부터 문제입니다.**
@@ -150,7 +150,7 @@ report.py   make_ticket_table       : 티켓 리스트를 표로 바꾸고 확�
 ** 이런 상황이 있습니다**
 
 - **지금은**: <mark>티켓과 조치 기록이 JSON(제이슨: 키와 값으로 적은 데이터 파일 형식) 파일 두 개에 따로 있고, 사람이 읽을 리포트가 없습니다</mark>.
-- **만드는 것**: 표 만들기 · 규칙별 수 · 등급별 평균 · 기한 넘긴 티켓 · 티켓 없는 조치 찾기 · 리포트 줄 만들기(`report.py`), 리포트 파일 쓰기(`exercise10-1_run.py`).
+- **만드는 것**: 표 만들기 · 규칙별 수 · 등급별 평균 · 기한 넘긴 티켓 · 티켓 없는 조치 찾기 · 리포트 줄 만들기(`report.py`), 리포트 파일 쓰기(`exercise8-1_run.py`).
 - **실행하면**: <mark>단계 1: 불러온 수, 단계 2: 규칙별 티켓 수, 단계 3: 등급별 평균 확인 시간, 단계 4: 기한을 넘긴 티켓과 티켓이 없는 조치, 단계 5: 저장한 리포트 파일이 나옵니다.</mark>
 
 ** 할 일**: 두 파일을 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행한 뒤 리포트 파일을 열어 읽습니다.
@@ -278,16 +278,16 @@ def make_report_lines(tickets, actions, rule_counts, grade_means, late_tickets, 
     return lines                                                                           # 완성한 줄 리스트를 리턴한다 — 미리 채운 줄
 ```
 
-**`exercise10-1_run.py`** — 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+**`exercise8-1_run.py`** — 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
-from incident import load_json                                                                # 월요일 파일의 JSON 읽기 함수를 불러온다
+from incident import load_json                                                                # Unit 1 파일의 JSON 읽기 함수를 불러온다
 from report import make_ticket_table, count_by_rule, mean_ack_by_grade, find_late_tickets, find_missing_incidents, make_report_lines  # 방금 만든 리포트 함수를 불러온다
 
 REPORT_PATH = "incident_report_20261112.md"                                                   # 리포트를 저장할 파일 이름
 
-tickets = load_json("unit10_tickets.json")                                                     # 목요일 근무의 티켓 파일을 리스트로 읽는다
-actions = load_json("unit10_actions.json")                                                     # 목요일 근무의 조치 기록 파일을 리스트로 읽는다
+tickets = load_json("unit10_tickets.json")                                                     # Unit 7 근무의 티켓 파일을 리스트로 읽는다
+actions = load_json("unit10_actions.json")                                                     # Unit 7 근무의 조치 기록 파일을 리스트로 읽는다
 print("--- 단계 1: 불러온 티켓", len(tickets), "장 · 조치 기록", len(actions), "건")          # 단계 1 시작을 알리는 줄
 
 # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
@@ -323,13 +323,13 @@ print("--- 단계 5: 리포트 파일", REPORT_PATH, "·", len(lines), "줄 저�
 1. **[터미널]** 파일 두 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
    ```bash
    pwd
-   touch report.py exercise10-1_run.py
+   touch report.py exercise8-1_run.py
    ls
    ```
-2. **[VS Code]** `report.py` 1 ~ 8번, `exercise10-1_run.py` 9번을 씁니다. 막히면 위 문법 상자와 아래 「Exercise 8-1 한눈에」를 봅니다.
+2. **[VS Code]** `report.py` 1 ~ 8번, `exercise8-1_run.py` 9번을 씁니다. 막히면 위 문법 상자와 아래 「Exercise 8-1 한눈에」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
-   python exercise10-1_run.py
+   python exercise8-1_run.py
    ```
 4. 출력은 다섯 단계입니다. 제목 줄은 줄 수에 넣지 않습니다.
    - 단계 1 과 단계 5 는 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.

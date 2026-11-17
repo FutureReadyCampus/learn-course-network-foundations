@@ -19,7 +19,7 @@ source:
 
 ## Exercise 8-1 정답
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 ```bash
 pwd
@@ -135,7 +135,7 @@ sales 2 명 ['seoyeon', 'dami']
 
 ## Exercise 8-2 정답
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 ```bash
 pwd
@@ -191,7 +191,7 @@ gaeun SETTLE:QUERY <- 예외 5번 | 예외 삭제 | 영향 1 건 | 승인 불필
 - (나) 민감한 권한(쓰기 권한)과, 한 번의 회수로 권한이 여러 개 사라지는 회수는 잘못되면 그 권한으로 일하던 사람의 업무가 멈추고 피해가 큽니다.
   - 한 사람이 혼자 정하면 실수나 잘못된 사용이 생길 수 있어서, 다른 사람(보안 책임자)이 이유를 확인하고 승인하게 합니다.
   - 반면 조회 같은 일반 권한 한 건은 영향이 작고, 필요하면 다시 요청해서 받을 수 있어 되돌리기 쉽습니다.
-  - 예를 들어 junho 의 `SALES:QUERY` 는 재직자의 권한이지만 마지막 사용이 90일보다 오래됐다고 어제 점검에서 나왔고 영향이 1건이라 승인 없이 회수합니다.
+  - 예를 들어 junho 의 `SALES:QUERY` 는 재직자의 권한이지만 마지막 사용이 90일보다 오래됐다고 Unit 7의 점검에서 나왔고 영향이 1건이라 승인 없이 회수합니다.
 - (다) Exercise 8-3에서 junho 의 `SALES:CHANGE`(예외 2번) 계획은 실행하지 않고 「대기」로 남습니다.
   - 승인이 오래 나지 않으면 이 예외가 정리되지 않은 채 남아 점검에 계속 나오고 담당자가 같은 계획을 거듭 확인해야 합니다.
   - 그 예외는 이미 만료되어 접근은 막혀 있지만, 만료 시각이 고쳐지는 등의 일이 생기면 다시 쓰일 수 있어 오래 두면 위험합니다.
@@ -199,7 +199,7 @@ gaeun SETTLE:QUERY <- 예외 5번 | 예외 삭제 | 영향 1 건 | 승인 불필
 **왜**
 
 - 쓰기 같은 중요한 권한과, 한 번의 회수로 권한이 여러 개 사라지는 회수는 한 사람이 혼자 정하지 않고 승인을 받습니다.
-  - 승인 상태를 계획마다 적어 두면 Exercise 8-3가 「승인 대기」인 계획만 빼고 실행할 수 있습니다.
+  - 승인 상태를 계획마다 적어 두면 Exercise 8-3이 「승인 대기」인 계획만 빼고 실행할 수 있습니다.
   - 같은 사용자의 역할 해제 두 건(dami)은 같은 변경(`role` 비우기)이므로 함께 결정해야 합니다.
   - 코드는 이를 막지 않으므로, 한쪽만 승인하면 승인받지 않은 권한까지 함께 없어집니다.
 
@@ -232,7 +232,7 @@ gaeun SETTLE:QUERY <- 예외 5번 | 예외 삭제 | 영향 1 건 | 승인 불필
 
 ## Exercise 8-3 정답
 
- **터미널에 입력합니다.**
+**터미널에 입력합니다.**
 
 ```bash
 pwd
@@ -311,7 +311,7 @@ gaeun SETTLE:QUERY | 거부(권한 없음) -> 거부(권한 없음) | 그대로
 
 - (나) 실행한 7건 가운데 나머지 6건은 회수 전에도 이미 거부였습니다. 퇴사한 계정(dami 세 건)은 사용자 파일의 재직 표시 때문에, 예외 세 건(seoyeon 1번 · batch-night 4번 · gaeun 5번)은 만료 시각이 지난 예외라 출력에서도 거부(권한 없음)로 나옵니다. 그래도 회수하고 이력을 남기는 이유는 ① 데이터에 남아 있으면 퇴사자의 재직 표시가 잘못 바뀌거나 예외 만료 시각이 고쳐질 때 다시 허용될 수 있고 ② 점검에 같은 권한이 계속 나와 담당자가 거듭 확인해야 하고 ③ 정리하지 않은 권한이 남아 있으면 감사에서 문제가 되기 때문입니다. 실제로 위험을 줄인 것은 허용되던 junho 의 `SALES:QUERY` 한 건입니다.
 - (다) 이 이력만으로는 부족합니다.
-  - 「이 권한이 왜 없어졌나요?」에 답하려면 ① 회수 이유(퇴사 · 만료 · 90일 미사용 중 무엇 때문인지. 어제 점검 결과의 `reasons` 키에 적혀 있습니다) ② 승인한 사람의 이름 ③ 승인한 시각이 있어야 합니다.
+  - 「이 권한이 왜 없어졌나요?」에 답하려면 ① 회수 이유(퇴사 · 만료 · 90일 미사용 중 무엇 때문인지. Unit 7의 점검 결과의 `reasons` 키에 적혀 있습니다) ② 승인한 사람의 이름 ③ 승인한 시각이 있어야 합니다.
   - 지금 이력에는 승인 상태(`승인됨`)만 있고 누가 승인했는지와 회수 이유가 없습니다.
   - `revoke_reason`(회수 이유) · `approver`(승인한 사람) · `approved_at`(승인한 시각) 키를 추가하면 됩니다.
   - 다만 승인한 사람을 남기려면 보안 책임자의 결정(`decisions`)에 사람 이름도 함께 적어 두어야 합니다.
@@ -362,24 +362,24 @@ gaeun SETTLE:QUERY | 거부(권한 없음) -> 거부(권한 없음) | 그대로
 
 ## 앞 Exercise 파일 완성본
 
-앞 Exercise 파일이 없거나 잘 안 될 때 이 코드로 만듭니다. 어제(10/29(목)) 파일이 필요하면 10/29(목) 오전 · 오후 문서 맨 아래의 「앞 Exercise 파일 완성본」을 씁니다.
+앞 Exercise 파일이 없거나 잘 안 될 때 이 코드로 만듭니다. Unit 6 · Unit 7의 파일이 필요하면 Unit 6 · Unit 7 문서 맨 아래의 「앞 Exercise 파일 완성본」을 씁니다.
 
 **`revoke_input.py`** (Exercise 8-1 도우미)
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
-from review_list import build_access_list                        # 10/29(목) 오전 Exercise 8-1에 만든 현황 함수를 불러온다
-from review_rules import find_stale                              # 10/29(목) 오전 Exercise 8-2에 만든 규칙 점검 함수를 불러온다
-from review_unused import load_last_used, find_unused            # 10/29(목) 오전 Exercise 8-3에 만든 안 쓴 권한 점검 함수를 불러온다
-from overprivilege import generate_report                        # 10/29(목) Exercise 7-1에 만든 리포트 함수를 불러온다
-from report_exclude import load_exclude_map, split_by_exclude    # 10/29(목) Exercise 7-2에 만든 회수 제외 함수를 불러온다
+from review_list import build_access_list                        # Exercise 6-1에서 만든 현황 함수를 불러온다
+from review_rules import find_stale                              # Exercise 6-2에서 만든 규칙 점검 함수를 불러온다
+from review_unused import load_last_used, find_unused            # Exercise 6-3에서 만든 안 쓴 권한 점검 함수를 불러온다
+from overprivilege import generate_report                        # Exercise 7-1에서 만든 리포트 함수를 불러온다
+from report_exclude import load_exclude_map, split_by_exclude    # Exercise 7-2에서 만든 회수 제외 함수를 불러온다
 
-REVIEW_TIME = datetime.strptime("2026-10-29 14:00", "%Y-%m-%d %H:%M")   # 어제 점검한 시각(고정). 같은 결과를 얻으려고 어제 시각을 쓴다
+REVIEW_TIME = datetime.strptime("2026-10-29 14:00", "%Y-%m-%d %H:%M")   # Unit 7에서 점검한 시각(고정). 같은 결과를 얻으려고 그 시각을 쓴다
 TIME_FORMAT = "%Y-%m-%d %H:%M"                                   # 시각 문자열의 형식
 
 
-def load_to_revoke():                                            # 어제 점검 결과를 다시 만드는 함수
-    """어제 점검에서 나온 「회수 대상」 리스트(8개)를 리턴한다.
+def load_to_revoke():                                            # Unit 7의 점검 결과를 다시 만드는 함수
+    """Unit 7의 점검에서 나온 「회수 대상」 리스트(8개)를 리턴한다.
     회수 계획을 세우기 전에 회수할 권한을 준비할 때 쓴다.
     """
     access_list = build_access_list()                            # 현황을 만든다
@@ -467,7 +467,7 @@ def plan_revocation(findings, users, roles):                     # 회수 대상
 **`revoke_approve.py`** (Exercise 8-2 완성본)
 
 ```python
-from config_loader import load_json                              # 10/22(목)에 만든 안전한 읽기 함수를 불러온다
+from config_loader import load_json                              # Unit 3에서 만든 안전한 읽기 함수를 불러온다
 
 
 def load_sensitive(path):                                        # 민감한 권한 파일 경로를 받는 함수

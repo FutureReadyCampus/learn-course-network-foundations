@@ -51,17 +51,17 @@ ticket_notice.py   pick_recipients     : 등급에 맞는 수신자 리스트를
                    should_send         : 지금 알려도 되는지 정한다. 처음이거나 간격이 지났으면 True (2 ~ 4번)
                    send_with_retry     : 최대 3번 보내 보고, 성공한 시도 번호를 리턴한다. 모두 실패하면 0 (5 · 6번)
                    send_ticket_notice  : 위 세 함수로 티켓 알림을 보내고 「전송」 · 「건너뜀」 · 「실패」를 리턴한다 (미리 채움)
-실행 파일          exercise8-3_run.py    : 알림마다 티켓 알림을 보내고 (7번), 보냈으면 센다 (8 · 9번)
+실행 파일          exercise6-3_run.py    : 알림마다 티켓 알림을 보내고 (7번), 보냈으면 센다 (8 · 9번)
 ```
 
 > **여기부터 문제입니다.**
 
-## Exercise Exercise 5-3 · 등급별 수신자에게 알림을 전파하고, 전송 간격을 제한해 알림 피로를 줄이며, 실패하면 재시도하기
+## Exercise 6-3 · 등급별 수신자에게 알림을 전파하고, 전송 간격을 제한해 알림 피로를 줄이며, 실패하면 재시도하기
 
 ** 이런 상황이 있습니다**
 
 - **지금은**: <mark>티켓은 생성되지만 담당자에게 알림을 전파하는 단계가 없습니다. 그래서 담당자가 티켓 목록을 직접 조회하기 전에는 새 티켓이 생성된 것을 알 수 없습니다</mark>.
-- **만드는 것**: 수신자 선택 · 전송 여부 판정 · 최대 3번 재시도 전송(`ticket_notice.py`), 알림마다 담당자에게 알림을 전파하고 집계한 결과(`exercise8-3_run.py`).
+- **만드는 것**: 수신자 선택 · 전송 여부 판정 · 최대 3번 재시도 전송(`ticket_notice.py`), 알림마다 담당자에게 알림을 전파하고 집계한 결과(`exercise6-3_run.py`).
 - **실행하면**: <mark>단계 1: 알림 11건의 처리와 담당자 알리기 결과, 단계 2: 전송과 건너뜀 건수 · 티켓별 알린 횟수, 단계 3: 꺼진 주소로 3번 보내 보기, 단계 4: 저장한 티켓이 나옵니다.</mark>
 
 ** 할 일**: 알림 서버를 켜고, 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 1 ~ 3 과 서버 터미널을 읽습니다.
@@ -126,14 +126,14 @@ def send_ticket_notice(ticket, now, rules):                            # 티켓 
     return "전송"                                                      # 「전송」을 리턴한다
 ```
 
-**`exercise8-3_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 7번 아래에는 `result = …` 를 씁니다. 8번 아래에는 `if … :` 를 씁니다. 9번 아래에는 한 단계 들여쓴 줄을 씁니다.
+**`exercise6-3_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 7번 아래에는 `result = …` 를 씁니다. 8번 아래에는 `if … :` 를 씁니다. 9번 아래에는 한 단계 들여쓴 줄을 씁니다.
 
 ```python
-from incident import load_json, save_json                                             # 월요일 파일의 JSON 읽기 · 저장 함수를 불러온다
+from incident import load_json, save_json                                             # Unit 1 파일의 JSON 읽기 · 저장 함수를 불러온다
 from ticket_merge import handle_alert                                                 # Exercise 6-2에 만든 알림 처리 함수를 불러온다
 from ticket_notice import send_ticket_notice, send_with_retry, MAX_TRIES              # 방금 만든 알림 함수를 불러온다
 
-alerts = load_json("alerts_thu.json")                                                 # 오늘 오전 알림 파일을 읽는다
+alerts = load_json("alerts_thu.json")                                                 # 이번 Unit의 알림 파일을 읽는다
 rules = load_json("config/escalation_rules.json")                                     # 규칙 파일을 읽는다
 tickets = []                                                                          # 만든 티켓을 저장할 빈 리스트
 sent_count = 0                                                                        # 알림을 보낸 수 : 처음에는 0
@@ -175,13 +175,13 @@ print("--- 단계 4: 파일에 저장된 티켓", len(saved), "장")            
 2. **[터미널]** 처음 쓰던 터미널로 돌아와 파일 두 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
    ```bash
    pwd
-   touch ticket_notice.py exercise8-3_run.py
+   touch ticket_notice.py exercise6-3_run.py
    ls
    ```
-3. **[VS Code]** `ticket_notice.py` 1 ~ 6번, `exercise8-3_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「Exercise 6-3 한눈에」를 봅니다.
+3. **[VS Code]** `ticket_notice.py` 1 ~ 6번, `exercise6-3_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「Exercise 6-3 한눈에」를 봅니다.
 4. **[터미널]** 처음 쓰던 터미널에서 <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
-   python exercise8-3_run.py
+   python exercise6-3_run.py
    ```
 5. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 11줄, 단계 2 는 숫자가 제목 줄에 함께 나오고 그 아래 티켓 7줄, 단계 3 은 `[알림 실패] ConnectionError` 3줄과 결과 1줄(재시도를 확인하는 시험입니다), 단계 4 는 숫자가 제목 줄에 함께 나오고 그 아래 줄이 없습니다. <mark style="background:#bde3ff">알림 서버 터미널에는 `[알림 받음]` 줄이 9개 출력됩니다.</mark>
 6. **[터미널]** 알림 서버 터미널을 `Ctrl + C` 로 끕니다.
@@ -204,15 +204,15 @@ print("--- 단계 4: 파일에 저장된 티켓", len(saved), "장")            
 
 ---
 
-## 오늘 오전 마무리
+## 이번 Unit 마무리
 
 | 확인 | 문제 |
 |---|---|
-| 알림으로 티켓을 생성하고 응답 기한(SLA)을 계산했으며, 조치 확인에 실패한 건을 수동 확인 대상으로 표시했다 | 오전 Exercise 6-1 |
-| 같은 사건의 알림을 티켓 한 장으로 병합(중복 제거)하고 허용된 순서로 상태를 전이했다 | 오전 Exercise 6-2 |
-| 등급별 수신자에게 알림을 전파하고, 전송 간격을 제한했으며, 실패하면 최대 3번 재시도했다 | 오전 Exercise 6-3 |
+| 알림으로 티켓을 생성하고 응답 기한(SLA)을 계산했으며, 조치 확인에 실패한 건을 수동 확인 대상으로 표시했다 | Exercise 6-1 |
+| 같은 사건의 알림을 티켓 한 장으로 병합(중복 제거)하고 허용된 순서로 상태를 전이했다 | Exercise 6-2 |
+| 등급별 수신자에게 알림을 전파하고, 전송 간격을 제한했으며, 실패하면 최대 3번 재시도했다 | Exercise 6-3 |
 
-오전에 구현한 티켓 생성 · 병합 · 알림 전파는 오후로 이어집니다. <mark>오후에는 응답 기한이 지나도 아무도 확인하지 않은 티켓을 상급자에게 올리는 에스컬레이션(escalation)을 구현합니다. 그리고 오전부터 만든 것을 가상 근무 시간 동안 한 번에 실행합니다.</mark>
+Unit 6에서 구현한 티켓 생성 · 병합 · 알림 전파는 Unit 7로 이어집니다. <mark>Unit 7에서는 응답 기한이 지나도 아무도 확인하지 않은 티켓을 상급자에게 올리는 에스컬레이션(escalation)을 구현합니다. 그리고 Unit 6부터 만든 것을 가상 근무 시간 동안 한 번에 실행합니다.</mark>
 
 ---
 

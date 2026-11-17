@@ -17,7 +17,7 @@ source:
 
 ---
 
-## Exercise Exercise 5-1 정답
+## Exercise 5-1 정답
 
  **터미널에 입력합니다.**
 
@@ -108,11 +108,11 @@ dtype: int64
 | 09:12:27 | 203.0.113.50 | `GET /admin/users` | 실패 |
 
   - 로그인 화면을 열고(`GET /login`), 로그인 정보를 6번 보냈고(`POST /login`, 5번 실패 뒤 1번 성공), 관리자 경로를 2번 요청했습니다(`/admin`, `/admin/users`).
-  - <mark>이 급증이 공격이라고 확정할 수는 없습니다.</mark> 하지만 <mark>오전 Exercise 4-2에서 로그인 실패 5번으로 알림 대상이 된 주소와 같은 IP 주소입니다.</mark> 한 주소가 1분도 안 되는 사이에 로그인을 반복하다 성공하고 관리자 경로를 요청한 것은 먼저 살펴볼 일입니다.
+  - <mark>이 급증이 공격이라고 확정할 수는 없습니다.</mark> 하지만 <mark>Exercise 4-2에서 로그인 실패 5번으로 알림 대상이 된 주소와 같은 IP 주소입니다.</mark> 한 주소가 1분도 안 되는 사이에 로그인을 반복하다 성공하고 관리자 경로를 요청한 것은 먼저 살펴볼 일입니다.
   - 확정하려면 이 주소가 회사 직원의 주소인지, 성공한 계정이 누구인지 <mark>판정 서버 · SaaS 로그와 시각을 맞춰 봐야 합니다.</mark>
 - (다) 09:20 의 요청 3개는 <mark>급증 기준(6.0번 이상)보다 적어서 탐지되지 않았습니다.</mark>
   - 그 3개는 모두 198.51.100.90 이 09:20:10 ~ 09:20:12 에 보낸 `GET /.env` · `GET /wp-login.php` · `GET /phpmyadmin` 이고 모두 실패했습니다. 서로 다른 경로를 차례로 요청한 모양입니다.
-  - 급증 규칙은 요청의 **수**만 보기 때문에, <mark>수가 적으면 요청의 내용과 상관없이 알리지 못합니다.</mark> 이런 경로 스캔(취약한 경로를 하나씩 찾아보는 시도)은 11/5(목)에 다른 규칙으로 찾습니다.
+  - 급증 규칙은 요청의 **수**만 보기 때문에, <mark>수가 적으면 요청의 내용과 상관없이 알리지 못합니다.</mark> 이런 경로 스캔(취약한 경로를 하나씩 찾아보는 시도)은 Unit 6에서 다른 규칙으로 찾습니다.
 
 **왜**
 
@@ -141,7 +141,7 @@ AttributeError: 'Series' object has no attribute 'floor'
 
 ---
 
-## Exercise Exercise 5-1 정답
+## Exercise 5-2 정답
 
  **터미널에 입력합니다.**
 
@@ -263,7 +263,7 @@ git status
 
 ```bash
 git add .
-git commit -m "Add anomaly detection day 3 baseline and alerts"
+git commit -m "Add anomaly detection unit 4 and unit 5 baseline and alerts"
 git push
 ```
 - 명령 풀이: `git add .` 바뀐 파일을 올릴 대상에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림

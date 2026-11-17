@@ -17,7 +17,7 @@ source:
 
 ---
 
-## Exercise Exercise 5-2 정답
+## Exercise 5-1 정답
 
 **채운 코드** (한 예)
 
@@ -47,11 +47,11 @@ source:
             records.append(undo_record(record, state))  # 되돌리고 해제 기록을 모은다
 ```
 
-`exercise7-1_run.py` 의 9번입니다.
+`exercise5-1_run.py` 의 9번입니다.
 
 ```python
-# 9. load_json(LOG_PATH) 의 결과를 log 에 저장한다 (Exercise 5-1가 저장한 조치 기록을 읽는다)
-log = load_json(LOG_PATH)  # Exercise 5-1가 저장한 조치 기록을 읽는다
+# 9. load_json(LOG_PATH) 의 결과를 log 에 저장한다 (Exercise 4-3이 저장한 조치 기록을 읽는다)
+log = load_json(LOG_PATH)  # Exercise 4-3이 저장한 조치 기록을 읽는다
 ```
 
 **결과**
@@ -59,7 +59,7 @@ log = load_json(LOG_PATH)  # Exercise 5-1가 저장한 조치 기록을 읽는�
 - (가) 출력은 다음과 같습니다. 단계 5 의 잠긴 계정은 <mark style="background:#bde3ff">**`['junho']`**</mark>, 차단한 IP 는 <mark style="background:#bde3ff">**없음(`[]`)**</mark> 입니다.
 
 ```
---- 단계 1: Exercise 5-1가 남긴 파일
+--- 단계 1: Exercise 4-3이 남긴 파일
 잠긴 계정: ['junho', 'dami']
 조치 기록: 5 건
 차단한 IP: ['198.51.100.90']
@@ -75,7 +75,7 @@ INC-005 198.51.100.90 · IP 해제 · 차단됨 → 차단되지 않음 · 되�
 차단한 IP: []
 ```
 
-- (나) Exercise 5-1 기록에서 `junho` 의 계정 잠금은 <mark style="background:#bde3ff">`잠김 → 잠김`</mark> 으로, 조치 전부터 잠겨 있던 것이라 `before` 와 `after` 가 같습니다. `before` 와 `after` 가 같으면 `should_undo` 의 5 · 6번이 `False` 를 리턴하므로 해제 대상에서 빠졌습니다.
+- (나) Exercise 4-3 기록에서 `junho` 의 계정 잠금은 <mark style="background:#bde3ff">`잠김 → 잠김`</mark> 으로, 조치 전부터 잠겨 있던 것이라 `before` 와 `after` 가 같습니다. `before` 와 `after` 가 같으면 `should_undo` 의 5 · 6번이 `False` 를 리턴하므로 해제 대상에서 빠졌습니다.
   - 5 · 6번이 없었다면 `junho` 의 잠금도 「계정 잠금」 기록이라 해제됐을 것입니다.
   - 그러면 자동 대응과 상관없이 원래 잠겨 있던 계정이 풀려 버립니다.
 - (다) `되돌리기 불가` 줄은 세션 종료가 <mark style="background:#bde3ff">`before` 와 `after` 가 다르지만(`세션 2개 → 세션 0개`) `UNDOABLE_ACTIONS` 목록(해제 한 번으로 되돌릴 수 있는 계정 잠금 · IP 차단만 적어 둔 리스트)에 없는 조치라서</mark> 나옵니다. 끊긴 세션은 사용자가 다시 로그인해야 합니다.
@@ -136,7 +136,7 @@ NameError: name 'log' is not defined
 
 ---
 
-## Exercise Exercise 5-2 정답
+## Exercise 5-2 정답
 
 **채운 코드** (한 예)
 
@@ -166,7 +166,7 @@ NameError: name 'log' is not defined
         counts[kind] = counts[kind] + 1         # 그 종류의 건수를 1 늘린다
 ```
 
-`exercise7-2_run.py` 의 9번입니다.
+`exercise5-2_run.py` 의 9번입니다.
 
 ```python
     # 9. handle_incident(incident, state, refs) 가 리턴한 두 값을 status 와 records 에 한 번에 받는다
@@ -208,7 +208,7 @@ INC-008 192.0.2.41 : 여러 계정이 함께 쓰는 IP 라서 담당자 승인 �
   - 6번이 없으면 `is_failure` 는 값을 리턴하지 않습니다(`None`, 조건에서는 거짓으로 취급됩니다). 그러면 조치 전과 후의 글자가 달라서 「변경됨」으로 세어집니다. 그래서 <mark style="background:#bde3ff">차단되지 않은 건이 조치된 것처럼 보고에 들어갑니다.</mark>
 - (다) INC-008 은 `ip_users.json` 을 보면 `junho` 와 `hana` 가 같은 IP 를 함께 씁니다. 그래서 `여러 계정이 함께 쓰는 IP 라서 담당자 승인 필요` 이유로 <mark style="background:#bde3ff">승인 대기</mark> 입니다. INC-009 는 허용 목록의 점검 서버라서 `허용 목록 IP 라서 차단하지 않음` 이유로 <mark style="background:#bde3ff">조치하지 않음</mark> 입니다.
   - INC-003 과 INC-010 은 `gaeun` 이 VIP 라서 경로가 `승인 필요` 가 되고 4 · 5번에서 `승인 대기` 가 됩니다.
-  - 그대로 자동 처리했다면 이런 영향이 생길 수 있었습니다. INC-008 은 `junho` 와 `hana` 가 접속하지 못합니다. INC-009 는 회사 점검 서버가 보내는 접속이 막혀 점검이 멈춥니다. INC-003 · INC-010 은 계정 관리 업무를 하는 VIP 계정 `gaeun` 의 알림이라 담당자 확인 없이 처리하면 안 됩니다(오전에 만든 조치 함수는 VIP 계정을 한 번 더 막아서 INC-010 에서는 `변경 없음` 으로 남깁니다).
+  - 그대로 자동 처리했다면 이런 영향이 생길 수 있었습니다. INC-008 은 `junho` 와 `hana` 가 접속하지 못합니다. INC-009 는 회사 점검 서버가 보내는 접속이 막혀 점검이 멈춥니다. INC-003 · INC-010 은 계정 관리 업무를 하는 VIP 계정 `gaeun` 의 알림이라 담당자 확인 없이 처리하면 안 됩니다(Unit 4에서 만든 조치 함수는 VIP 계정을 한 번 더 막아서 INC-010 에서는 `변경 없음` 으로 남깁니다).
 
 **왜**: <mark>알림마다 판단 → 조치 → 기록을 이어서 자동으로 하면 사람이 알림을 하나씩 열어 보지 않아도 되고, 요약이 있으면 사람이 봐야 할 건만 남습니다.</mark> 실패를 숨기지 않고 따로 세는 것이 핵심입니다.
 
@@ -228,7 +228,7 @@ INC-009 192.0.2.10 -> 조치하지 않음 (조치 기록 0건)
 INC-010 gaeun -> 승인 대기 (조치 기록 0건)
 ```
 
-- 4 · 5번을 비워 두면 VIP 계정의 `INC-010` 이 조치 함수를 호출하게 되어 <mark>**승인 대기가 아니라 「조치함」으로 표시됩니다.**</mark> 오전에 만든 함수는 VIP 계정을 잠그지 않고 `변경 없음` 기록만 남깁니다. 그런데 승인 대기로 두는 코드가 없어서 단계 4 의 확인 목록에 나오지 않습니다. `INC-003` 은 연결된 규칙이 없어 `조치하지 않음` 으로 나옵니다. 아래는 이 실수일 때 INC-010 에서 나오는 출력입니다.
+- 4 · 5번을 비워 두면 VIP 계정의 `INC-010` 이 조치 함수를 호출하게 되어 <mark>**승인 대기가 아니라 「조치함」으로 표시됩니다.**</mark> Unit 4에서 만든 함수는 VIP 계정을 잠그지 않고 `변경 없음` 기록만 남깁니다. 그런데 승인 대기로 두는 코드가 없어서 단계 4 의 확인 목록에 나오지 않습니다. `INC-003` 은 연결된 규칙이 없어 `조치하지 않음` 으로 나옵니다. 아래는 이 실수일 때 INC-010 에서 나오는 출력입니다.
 
 ```
 INC-010 gaeun -> 조치함 (조치 기록 1건)
