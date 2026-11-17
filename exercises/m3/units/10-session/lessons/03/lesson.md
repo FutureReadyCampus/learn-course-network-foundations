@@ -486,7 +486,7 @@ security-agent-toolkit/
   .env
   .gitignore
   agent_core/                Module 1
-  network_zt/                Module 2
+  network_zt/
   access_control/ (바로 아래 파일 76개 + config 11개 = 87개)    Module 3  ← 여기서 작업
     config/ (11개)           ← JSON 설정만
       access_log.json
