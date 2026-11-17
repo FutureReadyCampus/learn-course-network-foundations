@@ -4,6 +4,9 @@ Run from the repo root: python3 scripts/svg_pairs/u11_l05_story.py"""
 from pathlib import Path
 
 from hangyeol_cast import *  # noqa: F401,F403
+from hangyeol_cast import ROLES
+
+ROLES.update({"지우": "신입 네트워크 관리자", "박 팀장": "팀장", "서 이사": "경영진"})  # admin-tutorial roles (shared dict, this process only)
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "units/07-network-devices/lessons/restructured/05-회사-프록시의-검사와-기록/assets/animations"
@@ -37,25 +40,25 @@ def p1():
         ppl(a, 700, 235, "지우", [("normal", 1, 2), ("thinking", 3, 4)]),
         ppl(a, 850, 235, "서 이사", [("normal", 1, 2), ("worried", 3, 4)], "left"),
         pm(a, 700, 235, 1),
-        # 들은 이야기: 박 팀장이 도면 PDF를 외부 AI에 올림
+        # 들은 이야기: 박 팀장이 거래처 자료 PDF를 개인 클라우드에 올림
         a.vis(box(30, 128, 470, 240, MUTED, BG, 12, True) + pill(265, 152, "들은 이야기", MUTED, 17)
               + person(95, 218, "박 팀장", "normal", 0.8)
-              + chat_window(270, 265, ["견적서 초안 써 줘"]) + text(270, 362, "외부 AI 서비스", 17, TXT, 700)
-              + doc(455, 262, "고객 도면", RED), 2, 4),
+              + cell(175, 225, 190, 70, "개인 클라우드", BLUE, 17) + text(270, 330, "외부 클라우드 저장소", 17, TXT, 700)
+              + doc(440, 262, "거래처 자료", RED), 2, 4),
         mark(a, 30, 128, 470, 240, 2),
         bub(a, 800, 165, sj, (850, 208), "서 이사", 3, 3), mark(a, *bub_box(800, 165, sj), 3),
         a.vis(thought(598, 165, "프록시를 통해서만\n나가게 바꾸자", tail_to=(692, 211), color=BLUE), 3, 4),
         question(a, "프록시를 건너뛰는 길은 어떻게 막을까?"),
     ]
-    caps = ["월요일 회의에서 서 이사와 지우가 이야기해요", "박 팀장이 고객 도면 PDF를 외부 AI에 올렸대요",
+    caps = ["월요일 회의에서 서 이사와 지우가 이야기해요", "박 팀장이 거래처 자료 PDF를 개인 클라우드에 올렸대요",
             "서 이사는 막을 방법을, 지우는 길 하나를 떠올려요", "이 Page에서 건너뛰는 길을 막는 법을 살펴봐요"]
-    return scene(a, "박 팀장의 도면이 AI로 나갔대요", "서 이사의 얼굴이 굳은 월요일 회의", caps, "".join(body), "office")
+    return scene(a, "거래처 자료가 밖으로 나갔대요", "서 이사의 얼굴이 굳은 월요일 회의", caps, "".join(body), "office")
 
 
 def p2():
     a = new()
     sy = "박 팀장이 어제 뭘 올렸는지\n찾아 줄 수 있어요?"
-    r1 = "14:05:12  192.168.10.42  ai-chat.example:443"
+    r1 = "14:05:12  192.168.10.42  files.example:443"
     r2 = "14:20:40  192.168.10.41  docs.example:443"
     assert tw(r1, 16) < 430, tw(r1, 16)
     px, py, pw, ph = 250, 214, 460, 146
@@ -86,13 +89,13 @@ def p3():
         a.vis(pc(300, 285, "박 팀장 PC") + line(350, 275, 590, 275, BLUE, 6)
               + f'<rect x="446" y="248" width="56" height="54" rx="8" fill="{BG}"/>' + lock(474, 258, BLUE)
               + text(474, 325, "암호", 17, BLUE, 700)
-              + cell(590, 240, 150, 70, "AI 서비스", BLUE, 17), 2, 4),
+              + cell(590, 240, 150, 70, "외부 저장소", BLUE, 17), 2, 4),
         mark(a, 250, 235, 500, 105, 2),
         bub(a, 262, 165, sy, (118, 208), "서 이사", 3, 3), mark(a, *bub_box(262, 165, sy), 3),
         a.vis(thought(700, 165, "이 암호를 열려면\n무엇이 필요할까?", tail_to=(842, 211), color=BLUE), 3, 4),
-        question(a, "암호화된 AI 대화를 열어 보려면?"),
+        question(a, "암호화된 업로드를 열어 보려면?"),
     ]
-    caps = ["기록만으로는 부족하다고 서 이사가 말해요", "내용은 박 팀장 PC와 AI 서비스만 푸는 암호 속에 있어요",
+    caps = ["기록만으로는 부족하다고 서 이사가 말해요", "내용은 박 팀장 PC와 저장소만 푸는 암호 속에 있어요",
             "서 이사는 올리는 순간 막기를, 지우는 암호 열기를 떠올려요", "이 Page에서 암호를 열 조건을 알아봐요"]
     return scene(a, "올라가는 순간 막을 수 없어요?", "기록 다음에 서 이사가 던진 질문", caps, "".join(body), "office")
 
@@ -106,13 +109,13 @@ def p4():
         ppl(a, 480, 235, "지우", [("normal", 1, 2), ("thinking", 3, 4)]),
         ppl(a, 850, 235, "서 이사", [("normal", 1, 2), ("worried", 3, 4)], "left"),
         pm(a, 100, 235, 1),
-        a.vis(pill(275, 225, "처음 보는 외부 사이트", MUTED, 17) + doc(275, 300, "AI 자동 배치", RED), 2, 4),
+        a.vis(pill(275, 225, "처음 보는 외부 사이트", MUTED, 17) + doc(275, 300, "동기화 프로그램", RED), 2, 4),
         mark(a, 150, 200, 250, 195, 2),
         bub(a, 185, 165, se, (108, 208), "직원", 3, 3), mark(a, *bub_box(185, 165, se), 3),
         bub(a, 700, 165, sy, (850, 208), "서 이사", 3, 3, fs=16),
         question(a, "받은 파일에 악성코드가 있다면?"),
     ]
-    caps = ["디자인팀 직원이 지우를 찾아와요", "처음 보는 사이트에서 'AI 자동 배치' 설치 파일을 받았어요",
+    caps = ["영업팀 직원이 지우를 찾아와요", "처음 보는 사이트에서 동기화 프로그램 설치 파일을 받았어요",
             "직원은 괜찮은지 묻고, 서 이사는 먼저 걸러 주길 바라요", "이 Page에서 파일을 걸러 주는 법을 알아봐요"]
     return scene(a, "받은 파일, 괜찮은 걸까요?", "설치하기 전에 지우에게 물어 온 직원", caps, "".join(body), "office")
 
@@ -126,20 +129,20 @@ def p5():
         a.vis(doc(200, 290, "장비 견적", BLUE), 1, 1),
         box_ + line(400, 232, 400, 338, BLUE, 2) + line(480, 232, 480, 338, BLUE, 2),
         pm(a, 90, 235, 1),
-        a.vis(monitor(700, 285, "loading", "웹·AI만 느려요"), 2, 4),
+        a.vis(monitor(700, 285, "loading", "웹만 느려요"), 2, 4),
         a.vis(pill(700, 395, "메일·화상 회의는 멀쩡", GREEN, 17), 2, 3), mark(a, 595, 226, 210, 216, 2),
         a.vis(thought(700, 165, "장비는 한 대인데\n왜 어떤 것만 느릴까?", tail_to=(880, 211), color=BLUE), 3, 4),
         mark(a, 590, 124, 234, 82, 3),
         question(a, "한 상자에 IPS와 프록시가 같이 있다면?"),
     ]
-    caps = ["서 이사가 방화벽·IPS·프록시가 든 장비 견적을 받아 와요", "시험에서 웹과 AI만 느리고 메일·화상 회의는 멀쩡해요",
+    caps = ["서 이사가 방화벽·IPS·프록시가 든 장비 견적을 받아 와요", "시험에서 웹만 느리고 메일·화상 회의는 멀쩡해요",
             "장비는 한 대인데 왜 어떤 것만 느린지 지우가 궁금해해요", "이 Page에서 한 상자 안을 들여다봐요"]
     return scene(a, "장비는 한 대인데 웹만 느려요", "통합 보안 장비 시험 중에 생긴 일", caps, "".join(body), "server_room")
 
 
 def p6():
     a = new()
-    sj = "AI 대화 전문을\n1년 동안 보관해 두죠"
+    sj = "내용 전문을\n1년 동안 보관해 두죠"
     body = [
         a.vis(pill(480, 395, "회의", MUTED, 17), 1, 3),
         ppl(a, 110, 235, "직원", [("normal", 1, 4)]),
@@ -147,13 +150,13 @@ def p6():
         ppl(a, 850, 235, "지우", [("normal", 1, 2), ("thinking", 3, 4)], "left"),
         pm(a, 480, 235, 1),
         bub(a, 270, 165, sj, (112, 208), "직원", 2, 2), mark(a, *bub_box(270, 165, sj), 2),
-        a.vis(thought(700, 165, "업무 질문, 점심 메뉴 추천,\n건강 상담, 개인 메일 초안", tail_to=(842, 211), color=BLUE), 3, 4),
-        mark(a, *bub_box(700, 165, "업무 질문, 점심 메뉴 추천,\n건강 상담, 개인 메일 초안", 18), 3),
-        question(a, "직원의 AI 대화, 어디까지 봐도 될까?"),
+        a.vis(thought(700, 165, "업무 메일, 점심 약속,\n병원 예약, 개인 메일 초안", tail_to=(842, 211), color=BLUE), 3, 4),
+        mark(a, *bub_box(700, 165, "업무 메일, 점심 약속,\n병원 예약, 개인 메일 초안", 18), 3),
+        question(a, "직원의 통신 내용, 어디까지 봐도 될까?"),
     ]
-    caps = ["회의에서 서 이사와 지우가 의견을 들어요", "한 사람이 AI 대화 전문을 1년 보관하자고 해요",
+    caps = ["회의에서 서 이사와 지우가 의견을 들어요", "한 사람이 내용 전문을 1년 보관하자고 해요",
             "서 이사는 솔깃하고, 지우는 시험 화면의 내용이 마음에 걸려요", "이 Page에서 어디까지 봐도 되는지 따져 봐요"]
-    return scene(a, "대화 전문을 1년 보관하자고요?", "시험 적용한 날 회의에서 나온 의견", caps, "".join(body), "office")
+    return scene(a, "내용 전문을 1년 보관하자고요?", "시험 적용한 날 회의에서 나온 의견", caps, "".join(body), "office")
 
 
 PAGES = {

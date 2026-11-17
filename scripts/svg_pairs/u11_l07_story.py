@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
-"""Unit 11 Lesson 7 situation SVGs (한결디자인 story, one per Page, 4 steps each).
+"""Unit 11 Lesson 7 situation SVGs (admin-tutorial story: 신입 네트워크 관리자 지우 + 티켓, one per Page, 4 steps each).
 Run from repo root: python3 scripts/svg_pairs/u11_l07_story.py   (writes SVGs into the lesson's assets/animations/)."""
 from hangyeol_cast import *  # noqa: F401,F403
+from hangyeol_cast import ROLES
 import u11_new_common as C
+
+ROLES.update({"지우": "신입 네트워크 관리자", "박 팀장": "팀장", "서 이사": "경영진"})  # admin-tutorial roles (shared dict, this process only)
 
 OUT = C.lesson_dir(7) / "assets" / "animations"
 HY = 240  # head centre y for standing people
@@ -62,25 +65,25 @@ def p1():
     t1 = "아직 띄우기 전이니\n설계도부터 그리자"
     body = [cast(a, 330, "지우", ["normal", "normal", "thinking", "thinking"]),
             cast(a, 780, "서 이사", ["normal", "normal", "worried", "worried"], facing="left"),
-            a.vis(pill(555, 395, "한결디자인 사무실", MUTED, 17), 1, 3), pmark(a, 330, 1),
-            a.vis(srv(555, 262, "AI 서버", "192.168.10.50:8080", GREEN, True), 2, 4), srv_mark(a, 555, 262, 2),
-            say(a, 745, 168, "시연 때 밖에서도 보여 주려면\n열어야 하잖아요?", (780, 212), "서 이사", 3),
+            a.vis(pill(555, 395, "티켓 5: 외근 중에도 전자결재", MUTED, 17), 1, 3), pmark(a, 330, 1),
+            a.vis(srv(555, 262, "그룹웨어 서버", "192.168.10.50:8080", GREEN, True), 2, 4), srv_mark(a, 555, 262, 2),
+            say(a, 745, 168, "밖에서도 열어 주려면\n인터넷에 내놔야 하잖아요?", (780, 212), "서 이사", 3),
             think(a, 330, 168, t1, (330, 212), 3),
             question(a, "서버 앞에 무엇을 어떤 순서로 세울까?")]
-    caps = ["지우와 서 이사가 사내 AI 서버 계획을 봐요", "GPU PC에 AI 서버를 띄우자는 의견이 나왔어요",
+    caps = ["박 팀장이 외근 중에도 전자결재를 열게 해 달라고 해요", "지우와 서 이사가 사내 그룹웨어 서버 계획을 봐요",
             "서 이사는 공격이 걱정, 지우는 설계도부터 그려요", "이 Page에서 서버 앞 경비를 알아봐요"]
-    finish(a, "u11-l07-p01-story-open-server", "밖에 열면 공격받지 않아요?", "사내 AI 서버를 고객사 시연에 보여 줘야 해요", caps, body, "office")
+    finish(a, "u11-l07-p01-story-open-server", "밖에 열면 공격받지 않아요?", "외근 중에도 쓸 사내 그룹웨어를 밖에 열어 줘야 해요", caps, body, "office")
 
 
 # ------------------------------------------------------------------ Page 2
 def p2():
     a = new()
     body = [cast(a, 150, "지우", ["thinking", "thinking", "worried", "worried"]), pmark(a, 150, 1),
-            srv(560, 290, "AI 서버", "192.168.10.50:8080", GREEN, True),
+            srv(560, 290, "그룹웨어 서버", "192.168.10.50:8080", GREEN, True),
             a.vis(C.cloud(860, 290, "해외 대역") + "".join(line(780, 250 + 30 * i, 625, 250 + 30 * i, RED, 3, "8 6") + packet(700 + 30 * (i % 2), 250 + 30 * i, RED)
                                                          for i in range(4)), 2, 4),
             a.vis(pill(715, 200, "443번 포트를 수없이 두드려요", ORANGE, 17), 2, 2), mark(a, 780, 245, 140, 90, 2),
-            think(a, 300, 168, "전부 들여보내면\n앞단도 AI 서버도 지쳐", (150, 212), 3),
+            think(a, 300, 168, "전부 들여보내면\n앞단도 서버도 지쳐", (150, 212), 3),
             question(a, "문 앞에서 먼저 걸러 낼 수는 없을까?")]
     caps = ["지우는 서버를 열었을 때 생길 일을 그려 봐요", "처음 보는 해외 대역에서 연결 시도가 쏟아져요",
             "전부 안쪽까지 들이면 금방 지치겠어요", "이 Page에서 문 앞 첫 관문을 알아봐요"]
@@ -91,14 +94,14 @@ def p2():
 def p3():
     a = new()
     body = [cast(a, 170, "지우", ["normal", "thinking", "thinking", "thinking"]), pmark(a, 170, 1),
-            srv(520, 262, "AI 서버", "192.168.10.50:8080", GREEN) + lock(520, 264, GREEN),
+            srv(520, 262, "그룹웨어 서버", "192.168.10.50:8080", GREEN) + lock(520, 264, GREEN),
             a.vis(C.doc(620, 240, BLUE), 2, 4) + a.vis(pill(520, 395, "서버가 TLS를 직접 풀어요", BLUE, 17), 2, 3), mark(a, 598, 218, 44, 44, 2),
-            a.vis(srv(790, 262, "AI 서버 (늘림)", None, GREEN) + lock(790, 264, GREEN) + C.doc(885, 240, BLUE), 3, 4), mark(a, 728, 200, 190, 160, 3),
+            a.vis(srv(790, 262, "서버 (늘림)", None, GREEN) + lock(790, 264, GREEN) + C.doc(885, 240, BLUE), 3, 4), mark(a, 728, 200, 190, 160, 3),
             think(a, 300, 168, "서버를 늘릴 때마다\n인증서를 설치·갱신?", (170, 212), 3, 4),
             question(a, "암호는 어디서 풀어야 할까?")]
-    caps = ["요청 내용을 검사하려면 TLS를 풀어야 해요", "가장 단순한 답은 AI 서버가 직접 푸는 거예요",
+    caps = ["요청 내용을 검사하려면 TLS를 풀어야 해요", "가장 단순한 답은 그룹웨어 서버가 직접 푸는 거예요",
             "서버가 늘면 서버마다 인증서가 따라가요", "이 Page에서 더 나은 자리를 찾아봐요"]
-    finish(a, "u11-l07-p03-story-who-decrypts", "암호는 AI 서버가 풀까요?", "TLS를 푸는 일을 누가 맡을지 고민해요", caps, body, "office")
+    finish(a, "u11-l07-p03-story-who-decrypts", "암호는 그룹웨어 서버가 풀까요?", "TLS를 푸는 일을 누가 맡을지 고민해요", caps, body, "office")
 
 
 # ------------------------------------------------------------------ Page 4
@@ -106,14 +109,14 @@ def p4():
     a = new()
     t = "주소도 포트도 TLS도\n평범해요"
     body = [cast(a, 140, "지우", ["thinking", "thinking", "worried", "worried"]), pmark(a, 140, 1),
-            monitor(400, 290, "ok", "/history?customer=1042"),
-            a.vis(pill(400, 395, "상담 이력 조회 주소", MUTED, 17), 1, 1),
-            a.vis(alert_card(700, 290, "customer=1042' OR '1'='1"), 2, 4), mark(a, 548, 262, 304, 56, 2),
+            monitor(400, 290, "ok", "/approval?doc=1042"),
+            a.vis(pill(400, 395, "결재 문서 조회 주소", MUTED, 17), 1, 1),
+            a.vis(alert_card(700, 290, "doc=1042' OR '1'='1"), 2, 4), mark(a, 548, 262, 304, 56, 2),
             think(a, 340, 168, t, (140, 212), 3),
             question(a, "이상한 요청을 어떻게 거를까?")]
-    caps = ["지우가 상담 이력 조회 주소를 보안 점검해요", "이런 주소에는 공격 요청이 흔히 들어와요",
+    caps = ["지우가 결재 문서 조회 주소를 보안 점검해요", "이런 주소에는 공격 요청이 흔히 들어와요",
             "출발지도 포트도 TLS도 평범해 검문소는 못 걸러요", "이 Page에서 이 요청을 거르는 법을 알아봐요"]
-    finish(a, "u11-l07-p04-story-odd-request", "평범해 보이는 이상한 요청", "남의 상담 이력까지 꺼내려는 요청이 와요", caps, body, "office")
+    finish(a, "u11-l07-p04-story-odd-request", "평범해 보이는 이상한 요청", "남의 결재 문서까지 꺼내려는 요청이 와요", caps, body, "office")
 
 
 # ------------------------------------------------------------------ Page 5
@@ -122,11 +125,11 @@ def p5():
     body = [cast(a, 330, "지우", ["normal", "normal", "worried", "worried"]),
             cast(a, 780, "서 이사", ["normal", "normal", "worried", "worried"], facing="left"),
             doc(555, 285, "설계도"), pmark(a, 780, 1),
-            say(a, 745, 168, "시연 요청은 전부\n앞단 하나를 지나요?", (780, 212), "서 이사", 2),
+            say(a, 745, 168, "외근 접속은 전부\n앞단 하나를 지나요?", (780, 212), "서 이사", 2),
             say(a, 745, 168, "이게 고장 나면요?", (780, 212), "서 이사", 3),
-            think(a, 330, 168, "AI 서버가 멀쩡해도\n앞단이 멈추면…", (330, 212), 3),
+            think(a, 330, 168, "그룹웨어 서버가 멀쩡해도\n앞단이 멈추면…", (330, 212), 3),
             question(a, "앞단 한 대로 무엇을 얻고 잃을까?")]
-    caps = ["설계도를 들여다보던 서 이사가 물어요", "시연 요청이 앞단 하나를 지나는지 물어요",
+    caps = ["설계도를 들여다보던 서 이사가 물어요", "외근 접속이 앞단 하나를 지나는지 물어요",
             "지우는 바로 답하지 못해요", "이 Page에서 앞단 한 대의 득실을 따져 봐요"]
     finish(a, "u11-l07-p05-story-front-fails", "이게 고장 나면요?", "설계도를 본 서 이사의 질문", caps, body, "office")
 
@@ -141,9 +144,9 @@ def p6():
             think(a, 640, 168, "가장 빠른 길을 찾되,\n열면 뭐가 노출될까?", (840, 212), 3),
             a.vis(C.node(545, 290, "198.51.100.25", None, 170, 56, ORANGE, 17) + ask(545, 345), 4, 4),
             a.vis(text(480, 402, "다음 Unit 12에서 알아볼 것", 16, MUTED) + pill(480, 438, "밖에서 온 연결은 서버까지 어떻게 닿을까?", ORANGE, 22, True), 4, 4)]
-    caps = ["박 팀장이 고객사에서 시연하기로 했어요", "그런데 고객사에서는 서버에 닿지 않아요",
+    caps = ["박 팀장이 거래처에서 결재를 확인해야 해요", "그런데 거래처에서는 서버에 닿지 않아요",
             "지우는 가장 빠른 길과 노출을 함께 따져요", "공인 주소로 온 연결은 Unit 12에서 따져요"]
-    finish(a, "u11-l07-p06-story-handoff", "고객사에서는 서버에 안 닿아요", "설계도는 완성, 앞단은 아직 종이 위", caps, body, "client")
+    finish(a, "u11-l07-p06-story-handoff", "거래처에서는 서버에 안 닿아요", "설계도는 완성, 앞단은 아직 종이 위", caps, body, "client")
 
 
 if __name__ == "__main__":

@@ -46,7 +46,7 @@ def mvi(a, t, inner, pts, f0=0.1, f1=0.9):
     return mv(a, inner, pts, t, t, t, f0, f1)
 
 
-def server(x, y, label="AI 서버", c=GREEN, sub=None):
+def server(x, y, label="그룹웨어 서버", c=GREEN, sub=None):
     s = (f'<rect x="{x - 34}" y="{y - 40}" width="68" height="80" rx="8" fill="{PANEL}" stroke="{c}" stroke-width="3"/>'
          + "".join(f'<rect x="{x - 24}" y="{y - 30 + i * 24}" width="48" height="16" rx="3" fill="{c}" fill-opacity="0.45"/>' for i in range(3))
          + text(x, y + 62, label, 16, TXT, 700))

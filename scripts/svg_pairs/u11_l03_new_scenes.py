@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Unit 11 Lesson 3 (숨은 AI 사용을 찾아라): new SVG for Page 1 (was missing).
+"""Unit 11 Lesson 3 (누가 어떤 사이트를 쓰나): new SVG for Page 1 (was missing).
 Run from repo root: python3 scripts/svg_pairs/u11_l03_new_scenes.py   (--svg-only skips lesson.md edit).
 Running example: 지우 PC 192.168.10.41 → 코어 스위치 → 게이트웨이 192.168.10.1, 옆에 센서 192.168.10.250."""
 import sys

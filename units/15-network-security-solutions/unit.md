@@ -1,6 +1,6 @@
 ---
 id: network-security-solutions
-title: "AI를 들인 회사, 정말 안전할까: 네트워크 보안 솔루션"
+title: "우리 회사 네트워크, 정말 안전할까: 네트워크 보안 솔루션"
 lessons:
 - path: lessons/restructured/01-아무-노트북이나-사내망에-붙는다면/lesson.md
 - path: lessons/restructured/02-ai-서버로-가는-문-누구에게-열어-줄까/lesson.md
