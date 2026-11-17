@@ -11,7 +11,7 @@ source:
 
 # 시작하기
 
-## 개요
+## Unit 5에서 만들 것: 되돌리기와 일괄 처리
 
 Unit 4에서 계정 잠금 · IP 차단 · 세션 종료(세션, session: 로그인한 뒤 서버에 이어져 있는 접속 상태)를 확인하고 기록하며 만들었습니다. 이번 Unit에서는 그 조치를 **안전하게 되돌리고**, Unit 2에서 만든 맥락 · 경로 코드를 이어 써서 **알림 8건을 한 번에 처리**합니다.
 
@@ -25,7 +25,7 @@ Unit 4에서 계정 잠금 · IP 차단 · 세션 종료(세션, session: 로그
 - Exercise 5-2는 Unit 4 파일 전부와 Unit 4 데이터 파일(`config/vip_accounts.json` · `config/allowlist_ips.json` · `ip_users.json`)을 씁니다. Unit 1의 `incident.py` · `incident_samples.json`, Unit 2의 `enrichment.py` · `routing.py`, Unit 2 데이터(`users_info.json` · `source_ips.json` · `trusted_ips.json`)도 씁니다.
 - 없는 파일은 `complete_files.md` 에서 복사합니다. Unit 1 파일은 1절, Unit 2 파일은 2절, Unit 4 파일은 4절, Unit 5 완성본은 5절에 있습니다. `containment_state.json` · `containment_log.json` 도 5절에 있습니다.
 
-## 시작하기 순서
+## 이전 조치 기록 확인하기
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** 5과목 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `containment_log.json` 과 `containment_state.json` 이 보이면</mark> 됩니다. 없으면 Unit 4의 Exercise 4-3 실행 파일을 한 번 실행하면 생깁니다.

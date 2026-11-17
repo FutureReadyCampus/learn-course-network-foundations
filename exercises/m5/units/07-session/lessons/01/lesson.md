@@ -11,7 +11,7 @@ source:
 
 # 시작하기
 
-## 개요
+## Unit 7에서 만들 것: 에스컬레이션과 운영 지표
 
 Unit 6에서는 세 가지를 했습니다. 알림으로 티켓(ticket, 티켓: 처리할 일 한 건을 적어 두는 기록)을 만들었습니다. 같은 사건의 알림은 티켓 한 장으로 병합(merge: 하나로 합치기)했습니다. 그리고 담당자에게 알림을 보냈습니다(통지, notification).
 
@@ -32,7 +32,7 @@ Unit 6에서는 세 가지를 했습니다. 알림으로 티켓(ticket, 티켓: 
   - `sla` 는 서비스 수준 협약(SLA, Service Level Agreement)의 줄임말입니다. 이 문서에서는 응답 기한을 뜻합니다.
   - `sla_due` 는 응답해야 하는 시각이고, `count_sla_breaches` 는 응답 기한을 넘긴 티켓 수를 세는 함수입니다.
 
-## 시작하기 순서
+## 폴더 열고 파일 준비하기
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** `soar_response` 폴더로 들어가 파일을 확인합니다. <mark style="background:#bde3ff">`ls` 결과에 `ticketing.py` · `ticket_merge.py` · `ticket_notice.py` · `tickets_unit09.json` 이 보이면</mark> 됩니다.

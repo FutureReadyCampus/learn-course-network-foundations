@@ -1,6 +1,6 @@
 ---
 id: m5-u06-l04
-title: Exercise 6-3 · 등급별 수신자에게 알림을 전파하고, 전송 간격을 제한해 알림 피로를 줄이며, 실패하면 재시도하기
+title: Exercise 6-3 · 등급별 알림 전파와 재시도 만들기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 6-3 · 등급별 수신자에게 알림을 전파하고, 전송 간격을 제한해 알림 피로를 줄이며, 실패하면 재시도하기
+# Exercise 6-3 · 등급별 알림 전파와 재시도 만들기
 
-## 개요
+## 이번에 만들 것: 알림 전파와 재시도
 
 > **오늘 들어온 일**
 >
@@ -56,7 +56,7 @@ ticket_notice.py   pick_recipients     : 등급에 맞는 수신자 리스트를
 
 > **여기부터 문제입니다.**
 
-## Exercise 6-3 · 등급별 수신자에게 알림을 전파하고, 전송 간격을 제한해 알림 피로를 줄이며, 실패하면 재시도하기
+## Exercise 6-3 · 등급별 알림 전파와 재시도 만들기
 
 **이런 상황이 있습니다**
 

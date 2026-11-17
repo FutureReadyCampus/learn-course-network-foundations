@@ -11,7 +11,7 @@ source:
 
 # 시작하기
 
-## 개요
+## 이번 Unit에서 만들 것: 승인과 실패 처리
 
 Unit 2에서 알림에 맥락을 붙이고(`enrichment.py`), 처리 경로를 나누고(`routing.py`), 실행 전에 중복과 한도를 확인하는 안전장치를 만들었습니다(`safe_runner.py`). 그 결과 VIP 계정 알림은 `승인 필요` 경로로 갔고, 플레이북이 승인을 요구하는 알림은 `승인 대기` 로 멈췄습니다. 이번 Unit에서는 두 가지를 더 만듭니다.
 
@@ -31,7 +31,7 @@ Unit 2에서 알림에 맥락을 붙이고(`enrichment.py`), 처리 경로를 �
 
  **이전 파일**: Exercise 3-1은 Unit 1의 `incident.py` 만 씁니다. Exercise 3-2는 Unit 2 파일(`enrichment.py` · `routing.py` · `safe_runner.py`)을 씁니다. 또 Unit 2에서 쓴 데이터 파일 `users_info.json` · `source_ips.json` · `trusted_ips.json` 도 씁니다(JSON, 제이슨: 이름과 값을 짝지어 적는 파일 형식). 여기에 Unit 1의 `incident_samples.json` · `config/playbook_registry.json` 도 씁니다. 없는 파일은 `complete_files.md` 의 해당 절에서 복사합니다.
 
-## 시작하기 순서
+## Unit 2 파일 확인하고 데이터 파일 만들기
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** 5과목 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `config` · `incident.py` · `incident_samples.json` · `enrichment.py` · `routing.py` · `safe_runner.py` · `users_info.json` · `source_ips.json` · `trusted_ips.json` 이 보이면</mark> 됩니다.

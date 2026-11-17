@@ -6,32 +6,32 @@ course:
   status: draft
 units:
 - id: m4-u01
-  title: 이상탐지 ① — 접속 로그 읽기
+  title: 접속 로그 읽기와 이상 징후 가르기
   path: exercises/m4/units/01-session/unit.md
 - id: m4-u02
-  title: 이상탐지 ② — 서로 다른 로그 3종류를 같은 모양으로 맞추기(정규화)
+  title: 서로 다른 로그를 같은 모양으로 맞추기
   path: exercises/m4/units/02-session/unit.md
 - id: m4-u03
-  title: 이상탐지 ② — 판다스로 정규화된 이벤트 읽고 세기
+  title: 판다스로 로그인 실패 세기
   path: exercises/m4/units/03-session/unit.md
 - id: m4-u04
-  title: 이상탐지 ③ — 평소 기준 정하기
+  title: 평소 기준과 알림 기준 정하기
   path: exercises/m4/units/04-session/unit.md
 - id: m4-u05
-  title: 이상탐지 ③ — 요청이 늘어난 때 찾기
+  title: 요청 급증 찾기와 알림 모으기
   path: exercises/m4/units/05-session/unit.md
 - id: m4-u06
-  title: 이상탐지 ④ — 서버가 거절한 요청
+  title: 거절 요청·SaaS 이상 사용·경로 스캔 찾기
   path: exercises/m4/units/06-session/unit.md
 - id: m4-u07
-  title: 이상탐지 ④ — 서로 다른 로그를 한 사용자로 연결해 분석하기
+  title: 로그를 연결하고 위험 점수 매기기
   path: exercises/m4/units/07-session/unit.md
 - id: m4-u08
-  title: 이상탐지 ⑤ — 오탐
+  title: 오탐과 미탐 줄이기
   path: exercises/m4/units/08-session/unit.md
 - id: m4-u09
-  title: 이상탐지 ⑤ — 도커 컴포즈로 서버 두 대를 켜고 웹 서버 로그 만들기
+  title: Docker Compose로 서버 로그 만들기
   path: exercises/m4/units/09-session/unit.md
 - id: m4-u10
-  title: 이상탐지 ⑥ — Gemini API 를 활용한 AI 요약 만들기
+  title: AI 요약과 탐지 파이프라인
   path: exercises/m4/units/10-session/unit.md

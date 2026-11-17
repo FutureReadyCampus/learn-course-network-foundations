@@ -11,7 +11,7 @@ source:
 
 # 시작하기
 
-## 개요
+## 이번 Unit에서 할 일: 세 가지 상황
 
 Unit 1에서는 사용자 → 역할 → 권한 표를 파일로 만들고, 판정 함수 `check_permission` 으로 허용 · 거부를 정했습니다. Unit 2에서는 그 정책을 현업에서 흔한 세 상황에 맞게 넓힙니다.
 
@@ -21,7 +21,7 @@ Unit 1에서는 사용자 → 역할 → 권한 표를 파일로 만들고, 판�
 
 Unit 2는 Exercise 2-1 · 2-2 · 2-3으로 이루어집니다. Exercise마다 문제는 하나이고, 그 안에서 단계를 나눠 질문에 답합니다. 깃허브에 올리는 일은 Unit 3의 Exercise 3-2 마지막에 한 번에 합니다.
 
-## 시작하기 순서
+## 폴더 열고 받은 파일 준비하기
 
 1. **[VS Code]** 왼쪽 목록의 `access_control` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** 위치를 확인합니다. 결과가 `…/security-agent-toolkit/access_control` 로 끝나야 합니다. Unit 1에서 만든 파일이 보이는지도 `ls` 로 봅니다.

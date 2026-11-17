@@ -11,7 +11,7 @@ source:
 
 # 시작하기
 
-## 개요
+## 이번 Unit에서 만들 것: 요청서 접수·승인·부여
 
 Unit 2와 Unit 3에서는 역할 부여와 회수, 기간이 정해진 예외, 최종 판정 함수 `evaluate_access`(`policy.py`)를 만들었습니다. 이번 Unit에서는 직원이 권한을 달라고 하는 **요청**을 기록으로 남기고, 승인하고, 정책으로 한 번 더 확인해서 Unit 2의 예외 권한을 부여하는 흐름을 만듭니다.
 
@@ -21,7 +21,7 @@ Unit 2와 Unit 3에서는 역할 부여와 회수, 기간이 정해진 예외, �
 
 이번 Unit은 Exercise 4-1 · 4-2 · 4-3으로 이루어집니다. Exercise마다 문제는 하나이고, 그 안에서 단계를 나눠 질문에 답합니다. 깃허브에 올리는 일은 Unit 5의 Exercise 5-2 마지막에 한 번에 합니다.
 
-## 시작하기 순서
+## 터미널 열고 Unit 3 파일 확인하기
 
 1. **[VS Code]** 왼쪽 목록의 `access_control` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** 위치와 Unit 3까지 만든 파일을 확인합니다. 결과가 `…/security-agent-toolkit/access_control` 로 끝나야 합니다.

@@ -11,7 +11,7 @@ source:
 
 # 시작하기
 
-## 개요
+## 5과목 소개와 이번 Unit에서 만들 것
 
 앞서 4과목을 마쳤습니다. 4과목에서는 로그를 읽어 **위험한 대상을 찾아 점수와 등급을 매겼습니다.** 이번 Unit부터 시작하는 5과목은 그 **알림이 난 뒤에 하는 일**을 다룹니다. 계정을 잠그고, **티켓**(ticket, 티켓: 처리할 일 한 건을 적어 두고 누가 맡았는지와 처리됐는지를 추적하는 기록)을 만들고, 담당자에게 알리는 일을 정해 둔 절차대로 프로그램이 실행하게 만드는 과목입니다.
 
@@ -29,7 +29,7 @@ source:
 
  **오늘 불러 쓰는 이전 파일**: 없습니다. 오늘 쓰는 데이터(`incident_samples.json`)는 4과목의 점수 파일과 같은 내용입니다. 이 내용을 아래에 예시 데이터로 적어 두었으니 붙여 넣어 만듭니다. 그래서 4과목 파일이 없어도 그대로 따라 할 수 있습니다. Exercise 1-2는 Exercise 1-1에서 만드는 `config/playbook_registry.json` 을 읽습니다(없으면 `complete_files.md` 의 1절이나 Exercise 1-1 의 「Exercise 1-1 정답」 완성본으로 만듭니다).
 
-## 시작하기 순서
+## 폴더 열고 파일 준비하기
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** 지금 위치를 확인합니다. <mark>`pwd` 결과가 `…/security-agent-toolkit` 으로 끝나고, `ls` 결과에 `anomaly_detection` 폴더가 보이면</mark> 됩니다. 결과가 다르면 `security-agent-toolkit` 폴더에서 터미널을 새로 엽니다.

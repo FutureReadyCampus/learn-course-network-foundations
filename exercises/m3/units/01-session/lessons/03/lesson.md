@@ -1,6 +1,6 @@
 ---
 id: m3-u01-l03
-title: Exercise 1-2 · 권한 판정 함수 check_permission
+title: Exercise 1-2 · 권한 판정 함수 만들기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 1-2 · 권한 판정 함수 check_permission
+# Exercise 1-2 · 권한 판정 함수 만들기
 
-## 개요
+## 이번에 만들 것: 권한 판정 함수
 
 > **오늘 들어온 일**
 > A사 보안 담당이 보낸 메시지: 「표는 좋습니다. 이제 요청이 들어오면 이 표대로 허용 · 거부를 정하는 프로그램을 만들어 주세요. 거부할 때는 왜 거부했는지도 남겨야 감사 때 설명할 수 있습니다.」
@@ -20,7 +20,7 @@ source:
 
 > **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「Exercise」 전까지는 이 Exercise의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
 
-## 읽기 · 왜 필요한가
+## 읽기 · 왜 모든 실패를 거부해야 하는가
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
@@ -147,7 +147,7 @@ print(permission not in ROLES["finance"]) # True  · finance 에는 없음
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## Exercise 1-2 · 권한 판정 함수 check_permission 직접 쓰기
+## Exercise 1-2 · 권한 판정 함수 직접 쓰기
 
 **이런 상황이 있습니다**
 

@@ -1,6 +1,6 @@
 ---
 id: m3-u10-l04
-title: 'Exercise 10-3 · 3과목 총정리: 상황마다 원인과 고치는 방법 정리하기'
+title: Exercise 10-3 · 상황별 원인과 해결법 정리하기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 10-3 · 3과목 총정리: 상황마다 원인과 고치는 방법 정리하기
+# Exercise 10-3 · 상황별 원인과 해결법 정리하기
 
-## 개요
+## 이번 Exercise: 3과목 상황 되짚기
 
 > **이번 Exercise는 새로 배우는 것이 없습니다.** 3과목에서 만든 파일과 함수를 **상황별로 되짚으면서**, 각 상황의 원인과 고치는 방법을 내 말로 정리합니다. 정리한 글이 3과목의 총정리가 되고, 보고서의 Exercise 10-3 칸에 씁니다.
 
@@ -304,7 +304,7 @@ exercise10-2-2_run.py
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## Exercise 10-3 · 상황 8개의 원인과 고치는 방법을 내 말로 정리하기
+## Exercise 10-3 · 상황 8개 원인과 해결법 정리하기
 
 **이런 상황이 있습니다**
 

@@ -1,6 +1,6 @@
 ---
 id: m5-u08-l02
-title: Exercise 8-1 · 어제 근무의 티켓과 조치 기록을 대조해 초동 대응 리포트(incident report) 파일 생성하기
+title: Exercise 8-1 · 초동 대응 리포트 파일 생성
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 8-1 · Unit 7 근무의 티켓과 조치 기록을 대조해 초동 대응 리포트(incident report) 파일 생성하기
+# Exercise 8-1 · 초동 대응 리포트 파일 생성
 
-## 개요
+## 이번에 만들 것: 초동 대응 리포트
 
 > **오늘 들어온 일**
 >
@@ -22,7 +22,7 @@ source:
 
 > **읽을거리 — 문제가 아닙니다.** 읽고 이해만 합니다. (문법 상자의 코드는 눈으로 읽어도 되고, 따라 쳐 보아도 됩니다.)
 
-## 읽기 · 1.1 인시던트 리포트는 「사건 현황 · 평균 확인 시간(MTTA) · 추적 누락 · 처리 경위」를 보고한다
+## 읽기 · 1.1 인시던트 리포트에 담을 네 가지
 
 | 리포트의 절 | 읽는 사람이 알고 싶은 것 | 만드는 방법 |
 |---|---|---|
@@ -145,7 +145,7 @@ report.py   make_ticket_table       : 티켓 리스트를 표로 바꾸고 확�
 
 > **여기부터 문제입니다.**
 
-## Exercise 8-1 · 티켓 7장과 조치 기록 10건을 대조해 초동 대응 리포트(incident report) 파일 작성하기
+## Exercise 8-1 · 초동 대응 리포트 파일 생성
 
 **이런 상황이 있습니다**
 

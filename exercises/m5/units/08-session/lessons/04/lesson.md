@@ -1,6 +1,6 @@
 ---
 id: m5-u08-l04
-title: Exercise 8-3 · 오탐(false positive) 신고를 받아 영향 확인 · 롤백 · 복구 확인 · 규칙 조정 제안까지 처리하기
+title: Exercise 8-3 · 오탐 신고 처리와 롤백 확인
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 8-3 · 오탐(false positive) 신고를 받아 영향 확인 · 롤백 · 복구 확인 · 규칙 조정 제안까지 처리하기
+# Exercise 8-3 · 오탐 신고 처리와 롤백 확인
 
-## 개요
+## 이번에 만들 것: 오탐 대응 절차
 
 > **오늘 들어온 일**
 >
@@ -27,7 +27,7 @@ source:
 
 > **읽을거리 — 문제가 아닙니다.** 읽고 이해만 합니다.
 
-## 읽기 · 3.1 오탐 대응은 「영향 확인 → 롤백 → 복구 확인 → 규칙 조정 제안(튜닝)」 순서로 진행한다
+## 읽기 · 3.1 오탐 대응의 네 단계
 
 | 순서 | 하는 일 | 오늘 쓰는 함수 |
 |---|---|---|
@@ -55,7 +55,7 @@ false_positive.py   list_changes           : 바뀐 기록이면 (1번) 추가�
 
 > **여기부터 문제입니다.**
 
-## Exercise 8-3 · 오탐(false positive) 신고 2건을 영향 확인 · 롤백 · 복구 확인 · 규칙 조정 제안까지 처리하기
+## Exercise 8-3 · 오탐 신고 처리와 롤백 확인
 
 **이런 상황이 있습니다**
 

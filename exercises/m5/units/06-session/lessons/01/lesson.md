@@ -11,7 +11,7 @@ source:
 
 # 시작하기
 
-## 개요
+## Unit 6에서 만들 것: 티켓과 알림 전파
 
 <mark style="background:#e0d4ff">Unit 5까지는 알림에 맞는 대응 조치를 실행하고</mark>, 롤백(rollback: 조치 이전 상태로 복원하는 일)하는 것까지 구현했습니다. 이번 Unit에서는 그 결과를 <mark>**담당자에게 인계하고 통지하는 단계**</mark>를 구현합니다. 보안 관제 조직은 티켓과 알림 메시지로 사건 처리를 인수인계하기 때문입니다. 이 단계는 인시던트 관리(incident management)의 일부에 해당합니다. 그중에서 사건 등록 · 중복 제거 · 상태 관리 · 담당자 통지를 구현합니다.
 
@@ -28,7 +28,7 @@ source:
   - `sla` 는 서비스 수준 협약(SLA, Service Level Agreement)의 줄임말입니다. 이 문서에서는 응답 기한을 뜻합니다.
   - `sla_minutes` 는 응답 기한(분), `sla_table` 은 등급마다 정한 응답 기한(분) 표, `sla_due` 는 응답해야 하는 시각, `sla_count` 는 응답 기한을 정한 등급 수입니다.
 
-## 시작하기 순서
+## 알림 데이터와 설정 파일 만들기
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** 5과목 폴더로 들어가 파일을 확인합니다. <mark style="background:#bde3ff">`ls` 결과에 `config` 와 `incident.py` 가 보이면</mark> 됩니다.

@@ -1,6 +1,6 @@
 ---
 id: m4-u10-l02
-title: Exercise 10-1 · 점수 파일의 사실만 Gemini API 에 보내 대상별 AI 요약 받기
+title: Exercise 10-1 · 점수 파일 사실로 AI 요약 받기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 10-1 · 점수 파일의 사실만 Gemini API 에 보내 대상별 AI 요약 받기
+# Exercise 10-1 · 점수 파일 사실로 AI 요약 받기
 
-## 개요
+## 이번에 만들 것: 대상별 AI 요약
 
 > **이번 Exercise에 들어온 일**
 >
@@ -51,7 +51,7 @@ source:
   - 시작하기 5번에서 내용을 붙여 넣어 만듭니다. Unit 7에서 이미 저장한 사람도 같은 내용으로 덮어씁니다.
   - 이번 Exercise에서는 이 파일을 읽기만 합니다. 점수와 등급은 바꾸지 않습니다.
 
-## 읽기 · 왜 필요한가
+## 읽기 · 왜 AI 에게 사실만 보내는가
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
@@ -158,7 +158,7 @@ print(slash_text)               # 이어 붙인 글자를 출력한다
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## Exercise 10-1 · AI 에게 사실만 보내 대상별 요약 받기
+## Exercise 10-1 · 점수 파일 사실로 AI 요약 받기
 
 **이런 상황이 있습니다**
 

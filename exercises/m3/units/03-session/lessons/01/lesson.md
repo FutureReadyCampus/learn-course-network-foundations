@@ -11,7 +11,7 @@ source:
 
 # 시작하기
 
-## 개요
+## 이번 Unit에서 할 일: 믿을 수 있는 정책
 
 Unit 2에서는 역할 부여와 회수, 기간이 정해진 예외, 최종 판정 함수 `evaluate_access`(`policy.py`)를 만들었습니다. Unit 3에서는 그 정책을 **믿을 수 있게** 만듭니다.
 
@@ -20,7 +20,7 @@ Unit 2에서는 역할 부여와 회수, 기간이 정해진 예외, 최종 판�
 
 Unit 3은 Exercise 3-1 · 3-2로 이루어집니다. Exercise마다 문제는 하나이고, 그 안에서 단계를 나눠 질문에 답합니다. 깃허브에 올리는 일은 Exercise 3-2 마지막에 합니다.
 
-## 시작하기 순서
+## 폴더 열고 Unit 2 파일 확인하기
 
 1. **[VS Code]** 왼쪽 목록의 `access_control` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** 위치와 Unit 2의 파일을 확인합니다. 결과가 `…/security-agent-toolkit/access_control` 로 끝나야 합니다.

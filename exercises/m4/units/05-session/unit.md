@@ -1,6 +1,6 @@
 ---
 id: m4-u05
-title: 이상탐지 ③ — 요청이 늘어난 때 찾기
+title: 요청 급증 찾기와 알림 모으기
 lessons:
 - path: lessons/01/lesson.md
 - path: lessons/02/lesson.md
@@ -9,4 +9,4 @@ lessons:
 - path: lessons/05/lesson.md
 ---
 
-# 이상탐지 ③ — 요청이 늘어난 때 찾기
+# 요청 급증 찾기와 알림 모으기

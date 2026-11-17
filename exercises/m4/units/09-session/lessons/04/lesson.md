@@ -11,7 +11,7 @@ source:
 
 # 정답
 
-## 개요
+## 정답 보는 법
 
 아래 답은 한 예이고, <mark>핵심이 같으면 맞습니다.</mark>
 
@@ -184,7 +184,7 @@ ls logs
 
 ---
 
-## 정답 마무리
+## 정답 확인 후 점검
 
 - (가) 예: 「`git status` 에 `.env` 와 `.venv` 는 보이지 않았다」. 보였다면 `.gitignore` 맨 아래에 한 줄을 적고 저장한 뒤 `git status` 를 다시 쳐서 사라졌는지 확인했다고 적습니다.
 - 깃허브의 `anomaly_detection` 폴더에 Unit 8과 Unit 9의 파일(`compose.yaml` · `logs/web_404.log` 포함)이 보이면 됩니다.

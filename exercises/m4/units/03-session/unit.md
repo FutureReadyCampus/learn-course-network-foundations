@@ -1,6 +1,6 @@
 ---
 id: m4-u03
-title: 이상탐지 ② — 판다스로 정규화된 이벤트 읽고 세기
+title: 판다스로 로그인 실패 세기
 lessons:
 - path: lessons/01/lesson.md
 - path: lessons/02/lesson.md
@@ -9,4 +9,4 @@ lessons:
 - path: lessons/05/lesson.md
 ---
 
-# 이상탐지 ② — 판다스로 정규화된 이벤트 읽고 세기
+# 판다스로 로그인 실패 세기

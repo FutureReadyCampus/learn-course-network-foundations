@@ -1,6 +1,6 @@
 ---
 id: m3-u06-l02
-title: Exercise 6-1 · 지금 부여돼 있는 권한 현황 만들기
+title: Exercise 6-1 · 권한 현황 리스트 만들기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 6-1 · 지금 부여돼 있는 권한 현황 만들기
+# Exercise 6-1 · 권한 현황 리스트 만들기
 
-## 개요
+## 이번에 만들 것: 권한 현황 리스트
 
 > **이번 Exercise에 들어온 일**
 >
@@ -117,7 +117,7 @@ print(first_list)                                                # first_list �
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## Exercise 6-1 · 역할과 예외를 합쳐 지금 부여돼 있는 권한 현황 만들기
+## Exercise 6-1 · 역할·예외 합친 권한 현황 만들기
 
 **이런 상황이 있습니다**
 

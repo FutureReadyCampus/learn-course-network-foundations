@@ -1,6 +1,6 @@
 ---
 id: m3-u01
-title: 접근통제 ① — 역할 기반 접근통제(RBAC)
+title: 역할로 권한을 정하고 판정하기
 lessons:
 - path: lessons/01/lesson.md
 - path: lessons/02/lesson.md
@@ -10,4 +10,4 @@ lessons:
 - path: lessons/06/lesson.md
 ---
 
-# 접근통제 ① — 역할 기반 접근통제(RBAC)
+# 역할로 권한을 정하고 판정하기

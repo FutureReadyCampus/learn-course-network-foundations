@@ -11,7 +11,7 @@ source:
 
 # 시작하기
 
-## 개요
+## Unit 10에서 만들 것: 통합 엔진과 정책 점검
 
 <mark style="background:#e0d4ff">Unit 1~9에서는 플레이북 찾기(Unit 1) · 계정 잠금과 IP 차단(Unit 4) · 티켓(Unit 6) · 승인 게이트(Unit 8)</mark>를 단계마다 따로 구현했습니다. 이번 Unit에서는 <mark>**이 모듈들을 하나의 엔진으로 연결해 알림 한 건을 처음부터 끝까지 처리하고, 4과목의 탐지 결과를 입력으로 받아 실행하고, 엔진이 정책을 지켰는지 로그로 점검하는 부분**</mark>을 구현합니다. 통합 엔진(orchestration engine, 오케스트레이션 엔진: 여러 모듈을 정해진 순서로 호출해 하나의 흐름으로 실행하는 프로그램)은 SOAR(Security Orchestration, Automation and Response, 쏘아: 보안 오케스트레이션 · 자동화 · 대응) 제품의 핵심 부분입니다.
 
@@ -33,7 +33,7 @@ source:
 | `approval_gate.py` · `config/approval_policy.json` | Unit 8 | `decide_gate` · 승인 정책 | Exercise 10-1 · Exercise 10-3 |
 | `unit07_risk_scores.json` | 4과목 Unit 7 | 대상별 점수 · 등급 · 이유 5건 | Exercise 10-2 |
 
-## 시작하기 순서
+## 폴더 열고 파일 준비하기
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** 5과목 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `incident.py` · `approval_gate.py` · `ticketing.py` · `ip_users.json` 과 `config` 가 보이고, `ls config` 결과에 `playbook_registry.json` · `approval_policy.json` · `escalation_rules.json` 이 보이면</mark> 됩니다. Unit 4 파일 세 개(`containment_store.py` · `account_actions.py` · `ip_actions.py`)도 필요합니다. 없는 파일은 아래 「이전 파일이 없을 때」에서 만듭니다.

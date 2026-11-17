@@ -6,32 +6,32 @@ course:
   status: draft
 units:
 - id: m3-u01
-  title: 접근통제 ① — 역할 기반 접근통제(RBAC)
+  title: 역할로 권한을 정하고 판정하기
   path: exercises/m3/units/01-session/unit.md
 - id: m3-u02
-  title: 접근통제 ② — 역할 부여와 회수
+  title: 역할 부여·회수와 기간제 예외 권한
   path: exercises/m3/units/02-session/unit.md
 - id: m3-u03
-  title: 접근통제 ③ — 설정이 고장 나도 거부
+  title: 설정이 고장 나도 거부하기와 테스트 설계
   path: exercises/m3/units/03-session/unit.md
 - id: m3-u04
-  title: 접근통제 ③ — 권한 요청서
+  title: 권한 요청서와 승인·반려
   path: exercises/m3/units/04-session/unit.md
 - id: m3-u05
-  title: 접근통제 ④ — 요청 처리 기한(SLA) 점검
+  title: 요청 처리 기한(SLA) 점검과 이력 저장
   path: exercises/m3/units/05-session/unit.md
 - id: m3-u06
-  title: 접근통제 ④ — 접근 점검
+  title: 쓰지 않는 권한 찾기
   path: exercises/m3/units/06-session/unit.md
 - id: m3-u07
-  title: 접근통제 ④ — 과다권한 종합 리포트
+  title: 과다권한 리포트와 회수 제외
   path: exercises/m3/units/07-session/unit.md
 - id: m3-u08
-  title: 접근통제 ⑤ — 권한 회수 계획
+  title: 권한 회수 계획과 실행
   path: exercises/m3/units/08-session/unit.md
 - id: m3-u09
-  title: 접근통제 ⑤ — 조건기반 정책
+  title: 조건으로 판정하는 서버
   path: exercises/m3/units/09-session/unit.md
 - id: m3-u10
-  title: 접근통제 ⑥ — 점검 체크리스트
+  title: 점검 체크리스트와 주간 보고서
   path: exercises/m3/units/10-session/unit.md

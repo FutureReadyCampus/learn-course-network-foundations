@@ -1,6 +1,6 @@
 ---
 id: m5-u06
-title: 자동 대응(SOAR) ⑥ — 인시던트 티케팅(ticketing)
+title: 티켓 만들기와 알림 전파
 lessons:
 - path: lessons/01/lesson.md
 - path: lessons/02/lesson.md
@@ -10,4 +10,4 @@ lessons:
 - path: lessons/06/lesson.md
 ---
 
-# 자동 대응(SOAR) ⑥ — 인시던트 티케팅(ticketing)
+# 티켓 만들기와 알림 전파

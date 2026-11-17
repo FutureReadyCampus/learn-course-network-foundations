@@ -11,7 +11,7 @@ source:
 
 # 시작하기
 
-## 개요
+## 이번 Unit에서 만들 것: 보강·분기·안전장치
 
 이번 Unit은 SOAR 자동 대응의 판단 단계를 구현합니다. Exercise 2-1은 알림 보강(enrichment, 인리치먼트: 판단에 필요한 정보를 알림에 추가하는 일)을 다룹니다. Exercise 2-2는 맥락에 따른 조건 분기(branching, 브랜칭: 조건에 따라 처리 경로를 나누는 일)를 다룹니다. Exercise 2-3은 안전장치(guardrail, 가드레일: 자동 대응이 잘못 실행되어도 피해가 커지지 않도록 미리 두는 점검과 제한)를 다룹니다.
 
@@ -19,7 +19,7 @@ source:
 
  **이전 파일**: Unit 1에서 만든 `incident.py` · `playbook_runner.py` · `incident_samples.json` · `config/playbook_registry.json` 을 씁니다. 없는 파일은 복구 안내 `unit04_recovery_files.md` 의 순서로 만듭니다(`config/playbook_registry.json` 만 `complete_files.md` 의 1절에서 만듭니다).
 
-## 시작하기 순서
+## Unit 1 파일 확인하고 데이터 파일 만들기
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** 5과목 폴더로 들어가 Unit 1 파일을 확인합니다. <mark>`ls` 결과에 `config` · `incident.py` · `incident_samples.json` · `playbook_runner.py` 가 보이면</mark> 됩니다.

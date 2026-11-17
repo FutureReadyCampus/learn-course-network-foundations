@@ -1,6 +1,6 @@
 ---
 id: m3-u04
-title: 접근통제 ③ — 권한 요청서
+title: 권한 요청서와 승인·반려
 lessons:
 - path: lessons/01/lesson.md
 - path: lessons/02/lesson.md
@@ -10,4 +10,4 @@ lessons:
 - path: lessons/06/lesson.md
 ---
 
-# 접근통제 ③ — 권한 요청서
+# 권한 요청서와 승인·반려

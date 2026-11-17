@@ -1,6 +1,6 @@
 ---
 id: m4-u04
-title: 이상탐지 ③ — 평소 기준 정하기
+title: 평소 기준과 알림 기준 정하기
 lessons:
 - path: lessons/01/lesson.md
 - path: lessons/02/lesson.md
@@ -10,4 +10,4 @@ lessons:
 - path: lessons/06/lesson.md
 ---
 
-# 이상탐지 ③ — 평소 기준 정하기
+# 평소 기준과 알림 기준 정하기

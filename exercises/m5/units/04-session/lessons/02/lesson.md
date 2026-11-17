@@ -1,6 +1,6 @@
 ---
 id: m5-u04-l02
-title: Exercise 4-1 · 계정 잠금을 실행하고 사후 검증하며, 조치 전 · 후 상태를 감사 기록으로 남기기
+title: Exercise 4-1 · 계정 잠금 실행과 감사 기록 남기기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 4-1 · 계정 잠금을 실행하고 사후 검증하며, 조치 전 · 후 상태를 감사 기록으로 남기기
+# Exercise 4-1 · 계정 잠금 실행과 감사 기록 남기기
 
-## 개요
+## 이번에 만들 것: 잠금 실행과 감사 기록
 
 > **오늘 들어온 일**
 >
@@ -71,7 +71,7 @@ account_actions.py    check_policy      : VIP 계정이면 자동 조치를 막�
 
 > **여기부터 문제입니다.**
 
-## Exercise 4-1 · 계정 잠금을 실행하고 사후 검증하며, 조치 전 · 후 상태를 감사 기록으로 남기기
+## Exercise 4-1 · 계정 잠금 실행과 감사 기록 남기기
 
 **이런 상황이 있습니다**
 

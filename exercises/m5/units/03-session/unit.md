@@ -1,6 +1,6 @@
 ---
 id: m5-u03
-title: 자동 대응(SOAR) ③ — 담당자 승인 처리하기
+title: 담당자 승인과 재시도
 lessons:
 - path: lessons/01/lesson.md
 - path: lessons/02/lesson.md
@@ -9,4 +9,4 @@ lessons:
 - path: lessons/05/lesson.md
 ---
 
-# 자동 대응(SOAR) ③ — 담당자 승인 처리하기
+# 담당자 승인과 재시도

@@ -11,7 +11,7 @@ source:
 
 # 시작하기
 
-## 개요
+## Unit 9에서 할 일: 조건 판정과 서버
 
 Unit 8에서는 점검에서 찾은 권한을 계획 → 승인 → 실행 순서로 회수했습니다. 이번 Unit에서는 회수하고도 남은 권한을 **요청이 올 때마다 조건을 확인해서** 판정하고, 그 판정을 **서버**로 만들어 다른 프로그램이 주소로 요청해 판정을 받을 수 있게 합니다.
 
@@ -31,7 +31,7 @@ Exercise마다 문제는 하나입니다. 이번 Unit은 Unit 8의 회수 결과
 - Unit 8의 회수 결과와 Unit 4 ~ Unit 7의 파일은 이번 Unit에서 쓰지 않습니다. 앞의 Unit을 건너뛰었어도 위 `unit03_recovery` 폴더만 있으면 됩니다.
 - 이번 Unit에서 만드는 파일도 뒤 Exercise가 가져다 씁니다. Exercise 9-1의 `conditional.py` 는 Exercise 9-2에서 씁니다.
 
-## 시작하기 순서
+## 폴더 열고 Unit 2 판정 함수 확인하기
 
 1. **[VS Code]** 왼쪽 목록의 `access_control` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** 위치와 이전 파일, 설치한 도구(flask · requests)를 확인합니다. 결과가 `…/security-agent-toolkit/access_control` 로 끝나야 합니다.

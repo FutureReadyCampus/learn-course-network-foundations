@@ -11,7 +11,7 @@ source:
 
 # 시작하기
 
-## 개요
+## Unit 7에서 할 일: 리포트 합치기와 회수 제외
 
 Unit 6에서는 부여돼 있는 권한의 **현황 리스트**를 만들고, 거기서 필요 없어진 권한을 **규칙**(퇴사 · 만료)과 **사용 이력**(90일 넘게 안 씀)으로 찾았습니다. 이번 Unit에서는 그 결과들을 한 장의 **과다권한 리포트**로 합치고, 회수하지 않을 권한을 가려냅니다.
 
@@ -35,7 +35,7 @@ Unit 6에서는 부여돼 있는 권한의 **현황 리스트**를 만들고, �
   - 없으면 `unit03_recovery` 폴더를 씁니다.
 - 이번 Unit에서 만드는 파일도 뒤 Exercise가 가져다 씁니다. Exercise 7-1의 `overprivilege.py` 는 Exercise 7-2에서 씁니다.
 
-## 시작하기 순서
+## 폴더 열고 Unit 6 파일 확인하기
 
 1. **[VS Code]** 왼쪽 목록의 `access_control` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** 위치와 Unit 6의 파일을 확인합니다. 결과가 `…/security-agent-toolkit/access_control` 로 끝나야 합니다.

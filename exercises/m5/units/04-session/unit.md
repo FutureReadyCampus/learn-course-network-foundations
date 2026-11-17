@@ -1,6 +1,6 @@
 ---
 id: m5-u04
-title: 자동 대응(SOAR) ④ — 봉쇄(containment) 조치 구현
+title: 계정 잠금·IP 차단·세션 종료
 lessons:
 - path: lessons/01/lesson.md
 - path: lessons/02/lesson.md
@@ -10,4 +10,4 @@ lessons:
 - path: lessons/06/lesson.md
 ---
 
-# 자동 대응(SOAR) ④ — 봉쇄(containment) 조치 구현
+# 계정 잠금·IP 차단·세션 종료

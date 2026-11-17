@@ -1,6 +1,6 @@
 ---
 id: m5-u05-l02
-title: Exercise 5-1 · 기록을 보고 자동이 바꾼 것만 되돌리고, 되돌릴 수 없는 조치는 따로 표시하기
+title: Exercise 5-1 · 자동 조치 되돌리기와 불가 표시
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,9 +9,9 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# Exercise 5-1 · 기록을 보고 자동이 바꾼 것만 되돌리고, 되돌릴 수 없는 조치는 따로 표시하기
+# Exercise 5-1 · 자동 조치 되돌리기와 불가 표시
 
-## 개요
+## 이번에 만들 것: 조치 되돌리기
 
 > **오늘 들어온 일**
 >
