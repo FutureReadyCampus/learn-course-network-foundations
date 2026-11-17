@@ -639,7 +639,8 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
     return pages
 
 
-def build(source_revision: str = "local-draft", source_label: str = "local draft", course_file: Path = ROOT / "course.yaml") -> dict:
+def build(source_revision: str = "local-draft", source_label: str = "local draft", course_file: Path | None = None) -> dict:
+    course_file = course_file or ROOT / "course.yaml"
     course_meta = yaml.safe_load(course_file.read_text(encoding="utf-8"))
     units = []
     for item in course_meta["units"]:
