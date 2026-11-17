@@ -7,6 +7,8 @@ import argparse
 from html import escape as html_escape
 import json
 import shutil
+
+import yaml
 from urllib.parse import quote
 from pathlib import Path
 
@@ -77,17 +79,25 @@ def main() -> None:
     baseurl = "/" + args.baseurl.strip("/") if args.baseurl.strip("/") else ""
     course = build(args.source_revision, args.source_label)
     # Exercise courses (exercises/<id>/course.yaml) get their own reader copy under /exercises/<id>/.
-    links, dispatch = [], {}
     exercises = {f.parent.name: build(args.source_revision, args.source_label, f) for f in sorted((ROOT / "exercises").glob("*/course.yaml"))}
     emit(course, output, baseurl, args.source_revision, {k: v["title"] for k, v in exercises.items()}, baseurl)
     for slug, exercise in exercises.items():
         emit(exercise, output / "exercises" / slug, f"{baseurl}/exercises/{slug}", args.source_revision, site=baseurl)
-        links.append(f'<li><a href="{baseurl}/exercises/{slug}/">{html_escape(exercise["title"])}</a> · {len(exercise["units"])} Units</li>')
-    if links:
-        (output / "exercises" / "index.html").write_text(
-            '<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-            f'<title>Exercises</title><h1>실습 과정</h1><ul>{"".join(links)}</ul>'
-            f'<p><a href="{baseurl}/">← 네트워크 기초(Foundations)</a></p>', encoding="utf-8")
+    if exercises:
+        cards = []
+        for slug, exercise in exercises.items():
+            meta = yaml.safe_load((ROOT / "exercises" / slug / "course.yaml").read_text(encoding="utf-8"))["course"]
+            pages = sum(len(lesson["pages"]) for lesson in exercise["lessons"])
+            units = "".join(f"<li>{html_escape(unit['title'])}</li>" for unit in exercise["units"])
+            cards.append(
+                f'<article class="hub-card"><span class="hub-tag">{html_escape(slug.upper())}</span>'
+                f'<h2>{html_escape(meta["title"])}</h2><p>{html_escape(meta.get("description", ""))}</p>'
+                f'<ul class="hub-stats"><li><strong>{len(exercise["units"])}</strong>Units</li>'
+                f'<li><strong>{len(exercise["lessons"])}</strong>Lessons</li><li><strong>{pages}</strong>Pages</li></ul>'
+                f'<details><summary>Unit 목록 보기</summary><ol>{units}</ol></details>'
+                f'<a class="hub-cta" href="{baseurl}/exercises/{slug}/">시작하기</a></article>')
+        page = (SITE / "exercises.html").read_text(encoding="utf-8").replace("__SITE__", baseurl).replace("__CARDS__", "".join(cards))
+        (output / "exercises" / "index.html").write_text(page, encoding="utf-8")
 
     print(f"Built static reader: {len(course['units'])} Units, {len(course['lessons'])} Lessons at {output}")
 
