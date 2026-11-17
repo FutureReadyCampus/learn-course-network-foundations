@@ -18,11 +18,14 @@ Unit 4에서 계정 잠금 · IP 차단 · 세션 종료(세션, session: 로그
 - **Exercise 5-1**: 오탐으로 확인된 알림은 조치 기록을 보고 되돌립니다. <mark>자동이 바꾼 것만</mark> 되돌리고, 되돌릴 수 없는 조치는 따로 표시합니다(`undo_actions.py` · `rollback.py`).
 - **Exercise 5-2**: 알림 8건을 맥락 붙이기(알림에 사용자 · IP 정보를 붙임) → 경로 정하기(어떻게 처리할지 정함) → 조치 순서로 처리합니다. 그다음 기록을 종류별로 요약해 <mark>사람이 확인할 건 목록</mark>을 만듭니다(`drill.py` · `shift_report.py`). 방화벽(firewall, 파이어월: 허용하지 않은 IP 의 접속을 막는 장치) 연결이 끊긴 상황도 한 건 들어 있습니다.
 
-깃허브에 올리는 일은 Exercise 5-2 마지막에 합니다. 새 문법은 없습니다. 보고서에서 [핵심 질문]이 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기는 미리 채운 줄에 맞춥니다. 각 번호 주석 바로 아래에 한 줄을 씁니다. 주석은 지우지 않습니다.
+깃허브에 올리는 일은 Exercise 5-2 마지막에 합니다. 새 문법은 없습니다. 보고서에서 [핵심 질문]이 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 코드를 쓸 때는 들여쓰기를 미리 채운 줄에 맞추고, 각 번호 주석 바로 아래에 한 줄을 씁니다. 주석은 지우지 않습니다.
 
- **이전 파일**: Exercise 5-1는 Unit 1의 `incident.py` 와 Unit 4 파일(`containment_store.py` · `account_actions.py` · `ip_actions.py`), Exercise 4-3이 저장한 `containment_state.json` · `containment_log.json` 을 씁니다. Exercise 5-2은 Unit 4 파일 전부와 Unit 4 데이터 파일(`config/vip_accounts.json` · `config/allowlist_ips.json` · `ip_users.json`), Unit 1의 `incident.py` · `incident_samples.json`, Unit 2의 `enrichment.py` · `routing.py`, 그리고 Unit 2 데이터(`users_info.json` · `source_ips.json` · `trusted_ips.json`)를 씁니다. 없는 파일은 `complete_files.md` 에서 복사합니다. Unit 1 파일은 1절, Unit 2 파일은 2절, Unit 4 파일은 4절, Unit 5 완성본은 5절에 있습니다. `containment_state.json` · `containment_log.json` 도 5절에 있습니다.
+ **이전 파일**:
+- Exercise 5-1은 Unit 1의 `incident.py` 와 Unit 4 파일(`containment_store.py` · `account_actions.py` · `ip_actions.py`)을 씁니다. Exercise 4-3이 저장한 `containment_state.json` · `containment_log.json` 도 씁니다.
+- Exercise 5-2는 Unit 4 파일 전부와 Unit 4 데이터 파일(`config/vip_accounts.json` · `config/allowlist_ips.json` · `ip_users.json`)을 씁니다. Unit 1의 `incident.py` · `incident_samples.json`, Unit 2의 `enrichment.py` · `routing.py`, Unit 2 데이터(`users_info.json` · `source_ips.json` · `trusted_ips.json`)도 씁니다.
+- 없는 파일은 `complete_files.md` 에서 복사합니다. Unit 1 파일은 1절, Unit 2 파일은 2절, Unit 4 파일은 4절, Unit 5 완성본은 5절에 있습니다. `containment_state.json` · `containment_log.json` 도 5절에 있습니다.
 
-## 개요
+## 시작하기 순서
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** 5과목 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `containment_log.json` 과 `containment_state.json` 이 보이면</mark> 됩니다. 없으면 Unit 4의 Exercise 4-3 실행 파일을 한 번 실행하면 생깁니다.

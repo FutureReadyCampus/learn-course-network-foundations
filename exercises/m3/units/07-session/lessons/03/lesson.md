@@ -262,7 +262,7 @@ for item in to_revoke:                                           # 회수 대상
 
 ## 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기
 
-문제가 아니라 이번 Unit에서 한 일을 저장소에 올리는 마무리입니다. Exercise 7-2 마지막 10분에 합니다.
+문제가 아니라 이번 Unit에서 한 일을 저장소에 올리는 마무리입니다. Exercise 7-2를 마친 뒤에 합니다.
 
 **이런 상황이 있습니다**
 
@@ -287,7 +287,7 @@ for item in to_revoke:                                           # 회수 대상
    - 명령 풀이: `git status` 올릴 파일의 상태를 봄
    - `.env` 가 보이면: VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다.
      - `.venv` 도 같은 방법으로 합니다.
-   - Unit 5에서 올린 뒤 만든 이번 Unit의 파일이 `access_control/review_list.py` 처럼 한 줄씩 보입니다.
+   - Unit 5에서 올린 뒤 새로 만든 파일이 `access_control/review_list.py` 처럼 한 줄씩 보입니다.
      - 앞서 올리지 않았다면 `access_control/` 한 줄로 보일 수 있습니다.
      - 어느 쪽이든 `Untracked files:` 아래에 보이는 줄을 센 그대로 적습니다.
    - `access_control/config/exclude_list.json` 은 Exercise 7-2에서 만든 회수 제외 리스트입니다. 이것도 올라갑니다.
@@ -304,8 +304,8 @@ for item in to_revoke:                                           # 회수 대상
    git push
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - `git push` 가 거절(`rejected`)되면 깃허브에 내 PC 에 없는 기록이 있다는 뜻입니다. `git pull` 을 입력해 받아 온 뒤 `git push` 를 다시 합니다
-   - `git pull` 뒤에 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다
+   - `git push` 가 거절(`rejected`)되면 깃허브에 내 PC 에 없는 기록이 있다는 뜻입니다. `git pull` 을 입력해 받아 온 뒤 `git push` 를 다시 합니다.
+   - `git pull` 뒤에 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다.
 5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `access_control` 폴더를 열고, VS Code 왼쪽 목록의 `access_control` 폴더에 있는 파일들이 깃허브에도 보이는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
    - 빠진 이름이 있으면 VS Code 왼쪽 목록의 `access_control` 폴더에 내 PC 에도 있는지 봅니다.
      - 없으면 다른 폴더에 만든 것이니 `access_control` 안으로 옮기고 1 ~ 4번을 다시 합니다.

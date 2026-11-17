@@ -53,7 +53,7 @@ source:
 요청을 보내는 쪽이 응답을 받는다
 ```
 
-**주소**(URL · 유알엘)는 서버의 위치를 적은 문자열입니다. 서버 주소(`http://127.0.0.1:5001`) 뒤에 서버 안의 위치인 경로 `/check` 를 붙이고, `?` 뒤에 값 다섯 개를 `이름=값` 으로 이어 붙인 전체를 **요청 주소**라고 부릅니다.
+**주소**(URL · 유알엘)는 서버의 위치를 적은 문자열입니다. 서버 주소(`http://127.0.0.1:5001`) 뒤에 서버 안의 위치인 경로 `/check` 를 붙이고, 그 뒤에 `?` 를 쓴 다음 값 다섯 개를 `이름=값` 모양으로 이어 붙입니다. 이렇게 만든 전체를 **요청 주소**라고 부릅니다.
 
 | 주소의 이름 | 뜻 | 값의 예 |
 |---|---|---|
@@ -124,7 +124,7 @@ source:
 
 **할 일**
 
-1. `access_server.py` 와 `send_checks.py` 두 파일을 만들고, `parse_time` · `write_log` · `check` 에서 직접 쓰는 곳 네 군데를 씁니다. Exercise 9-1의 `conditional.py` 와 `config/conditions.json` 이 필요합니다.
+1. `access_server.py` 와 `send_checks.py` 두 파일을 만들고, `parse_time` · `write_log` · `check` 에서 직접 쓰는 곳 다섯 군데를 씁니다. Exercise 9-1의 `conditional.py` 와 `config/conditions.json` 이 필요합니다.
 2. 터미널 1에서 서버를 켜고, 터미널 2에서 `send_checks.py` 를 실행해 <mark>응답</mark>(단계 1: 응답), <mark>서버 로그</mark>(단계 2: 로그), <mark>대조 결과</mark>(단계 3: 대조)를 읽습니다.
 
 **`access_server.py`**
@@ -276,7 +276,7 @@ print("판정까지 간 응답", answered, "건 / 로그에 남은 줄", len(ent
 1. **[VS Code 또는 터미널]** 파일 `access_server.py` · `send_checks.py` 를 만들어 위 코드를 붙여 넣습니다. 만드는 법은 둘 중 하나를 고릅니다.
    - VS Code: `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력합니다.
    - 터미널: `pwd` 로 `access_control` 인지 확인하고 `touch 이름` 으로 만든 뒤 VS Code 에서 열어 붙여 넣습니다(`vim 이름` → `i` → 붙여넣기 → `Esc` → `:wq` 도 됩니다).
-2. **[VS Code]** `access_server.py` 의 `parse_time` · `write_log` · `check` 에서 직접 쓰는 곳 네 군데를 씁니다. 2.1 의 표와 그림을 보고 씁니다.
+2. **[VS Code]** `access_server.py` 의 `parse_time` · `write_log` · `check` 에서 직접 쓰는 곳 다섯 군데를 씁니다. 2.1 의 표와 그림을 보고 씁니다.
 3. **[터미널 1]** 서버를 켭니다(맥북은 `python3`).
    ```bash
    pwd
@@ -363,7 +363,7 @@ print("판정까지 간 응답", answered, "건 / 로그에 남은 줄", len(ent
      - 줄 수는 그 뒤에 다시 셉니다.
 3. **[보고서]** `#### 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기` 아래를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다.
    - (가) `git status` 를 쳤을 때 `Untracked files:` 아래에 줄이 몇 개 보였는지, 그중에 `.env` 나 `.venv` 가 있었는지 적어 주세요.
-   - 앞 Exercise에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다. 올린 뒤에 이어서 적어 다시 올려도 됩니다.
+   - Exercise 9-1 · 9-2 등 앞에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다. 올린 뒤에 이어서 적어 다시 올려도 됩니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
    ```bash
    git add .
@@ -371,8 +371,8 @@ print("판정까지 간 응답", answered, "건 / 로그에 남은 줄", len(ent
    git push
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - `git push` 가 거절(`rejected`)되면 깃허브에 내 PC 에 없는 기록이 있다는 뜻입니다. `git pull` 을 입력해 받아 온 뒤 `git push` 를 다시 합니다
-   - `git pull` 뒤에 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다
+   - `git push` 가 거절(`rejected`)되면 깃허브에 내 PC 에 없는 기록이 있다는 뜻입니다. `git pull` 을 입력해 받아 온 뒤 `git push` 를 다시 합니다.
+   - `git pull` 뒤에 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다.
 5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `access_control` 폴더를 열고, VS Code 왼쪽 목록의 `access_control` 폴더에 있는 파일들이 깃허브에도 보이는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
    - 빠진 이름이 있으면 VS Code 왼쪽 목록의 `access_control` 폴더에 내 PC 에도 있는지 봅니다.
      - 없으면 다른 폴더에 만든 것이니 `access_control` 안으로 옮기고, `pwd` 로 위치를 확인한 뒤 2번의 `git status` 부터 다시 합니다.

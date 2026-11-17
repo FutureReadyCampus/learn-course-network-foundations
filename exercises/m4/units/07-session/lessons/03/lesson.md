@@ -54,7 +54,7 @@ source:
 
 **<mark>`그룹["열"].sum()`</mark> 은 `groupby` 로 만든 그룹마다 그 열의 숫자를 모두 더합니다**
 
-앞 Unit에서 같은 값끼리 묶는 `groupby` 를 썼습니다. 아래는 탐지된 규칙마다 점수를 적은 표이고, 대상(`entity`)마다 점수를 더합니다.
+Unit 6에서 같은 값끼리 묶는 `groupby` 를 썼습니다. 아래는 탐지된 규칙마다 점수를 적은 표이고, 대상(`entity`)마다 점수를 더합니다.
 
 ```python
 import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다

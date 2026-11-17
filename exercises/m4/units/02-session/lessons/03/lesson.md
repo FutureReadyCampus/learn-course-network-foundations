@@ -38,7 +38,7 @@ source:
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문은 없습니다. 문법 상자의 코드는 눈으로 읽어도 되고, `saas_events.csv` 가 있는 폴더에서 따라 쳐 보아도 됩니다.
 
-** 문법 상자 — CSV 파일을 딕셔너리로 읽기**
+**문법 상자 — CSV 파일을 딕셔너리로 읽기**
 
 **<mark>`csv.DictReader`</mark> 는 CSV 파일의 첫 줄을 열 이름으로 삼아, 둘째 줄부터 한 줄씩 「열 이름: 값」 딕셔너리로 읽어 줍니다**
 
@@ -76,7 +76,7 @@ CSV 한 줄이 딕셔너리 하나로 바뀌는 모양입니다.
 - `csv.DictReader(saas_file)` 로 만든 `reader` 를 `for row in reader:` 로 돌리면 행마다 `{"time": …, "account": …}` 딕셔너리가 나옵니다. <mark>그래서 `row["account"]` 처럼 이름으로 값을 꺼냅니다.</mark>
 - <mark>CSV 파일을 열 때는 `newline=""` 을 함께 씁니다.</mark> 줄바꿈을 csv 모듈이 직접 처리하게 하는 관례입니다.
 
-** 문법 상자 — 딕셔너리로 값을 다른 값으로 바꾸기**
+**문법 상자 — 딕셔너리로 값을 다른 값으로 바꾸기**
 
 **딕셔너리에 「원래 값: 바꿀 값」을 짝지어 두면 <mark>`딕셔너리[키]`</mark> 한 줄로 값을 다른 값으로 바꿀 수 있습니다. 예: `"failure"` → `"실패"`**
 
@@ -113,7 +113,7 @@ print(allowed_result)                                # 바꾼 값을 출력한�
 | `load_server` · `load_saas` | 파일 경로 | 공통 이벤트 리스트(미리 채움) |
 
 - **직접 쓰는 곳은 세 함수**(번호 1 ~ 6)입니다.
-  - `convert_server_time`(1 · 2번): Exercise 2-1와 같은 방식으로 시각 모양을 바꿉니다(시간대가 없어서 `replace` 는 필요 없습니다).
+  - `convert_server_time`(1 · 2번): Exercise 2-1과 같은 방식으로 시각 모양을 바꿉니다(시간대가 없어서 `replace` 는 필요 없습니다).
   - `normalize_server`(3번): 딕셔너리에서 `allowed` 를 `"성공"` / `"실패"` 로 바꿉니다.
   - `normalize_saas`(4 ~ 6번): 메일 주소에서 이름을 꺼내고, 딕셔너리에서 `outcome` 을 바꿉니다.
 - **미리 채운 것**: 파일을 읽어 이벤트 리스트로 만드는 `load_server` · `load_saas` 와 이벤트를 묶는 줄입니다.
@@ -122,7 +122,7 @@ print(allowed_result)                                # 바꾼 값을 출력한�
 
 ## Exercise 2-2 · 판정 서버 로그와 SaaS 로그를 공통 이벤트로 바꾸기
 
-** 이런 상황이 있습니다**
+**이런 상황이 있습니다**
 
 - **지금은**: 판정 서버 로그는 시각 가운데에 `T` 가 있고 접속 주소가 없습니다. SaaS 로그는 사용자가 메일 주소이고 결과가 `success` / `failure` 입니다.
 - **그래서 만드는 것**: `normalize_json_csv.py` 입니다.
@@ -131,7 +131,7 @@ print(allowed_result)                                # 바꾼 값을 출력한�
 - **실행하면**: 단계 1: 판정 서버 이벤트 수와 성공 · 실패별 개수, 단계 2: SaaS 이벤트 수와 성공 · 실패별 개수, 단계 3: 각 로그의 첫 이벤트가 나옵니다.
 - **현업에서는**: 로그 종류가 늘면 변환 코드를 하나 더 만듭니다. <mark>결과 모양이 같아서 뒤의 탐지 코드는 고치지 않아도 됩니다.</mark>
 
-** 할 일**
+**할 일**
 
 1. **`normalize_json_csv.py` · `exercise2-2_run.py`** 두 파일을 만들고, `normalize_json_csv.py` 의 `convert_server_time` · `normalize_server` · `normalize_saas` 에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>판정 서버 이벤트 수와 성공 · 실패별 개수</mark>(단계 1), <mark>SaaS 이벤트 수와 성공 · 실패별 개수</mark>(단계 2), <mark>각 로그의 첫 이벤트</mark>(단계 3)를 읽습니다.

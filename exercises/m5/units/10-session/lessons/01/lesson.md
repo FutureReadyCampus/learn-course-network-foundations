@@ -19,9 +19,9 @@ source:
 - **Exercise 10-2**: 4과목이 저장한 탐지 결과 `unit07_risk_scores.json` 을 엔진이 읽는 알림으로 바꾸고, 파일 모양을 엔진 앞에서 점검합니다. 엔진 실행 결과는 운영 요약(operations summary: 처리 결과별 알림 수 · 티켓 수 · 실제로 실행한 조치를 한 번에 보여 주는 요약)으로 정리합니다(`engine_input.py`). 종단간(end-to-end: 처음 입력부터 마지막 결과까지 중간에 끊기지 않고 한 흐름으로 이어지는 것) 연결입니다.
 - **Exercise 10-3**: 엔진이 남긴 로그로 <mark>정책 준수 점검</mark>(policy compliance check: 승인 게이트와 허용 목록 같은 통제가 실제로 지켜졌는지 확인하는 일)을 하고, Unit 1~10 전체 회고 문서 `unit10_final_retrospective.md` 를 쓴 뒤 깃허브에 올립니다(`policy_check.py`).
 
-새 문법은 Exercise 10-1의 `except Exception as error` 하나입니다. 이 수업에서는 판다스를 쓰지 않습니다. 보고서의 [핵심 질문] 표시가 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기(줄 앞의 빈칸)는 각 번호 주석과 같은 위치에서 시작합니다. 각 번호 주석 바로 아래에 직접 쓰고(Exercise 10-2 4번만 딕셔너리라서 여러 줄), 주석은 지우지 않습니다.
+새 문법은 Exercise 10-1의 `except Exception as error` 하나입니다. 이번 Unit에서는 판다스를 쓰지 않습니다. 보고서의 [핵심 질문] 표시가 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기(줄 앞의 빈칸)는 각 번호 주석과 같은 위치에서 시작합니다. 각 번호 주석 바로 아래에 직접 쓰고(Exercise 10-2 4번만 딕셔너리라서 여러 줄), 주석은 지우지 않습니다.
 
- **이전 파일**: 오늘 가져와 사용(import)하는 이전 파일은 아래 표와 같습니다. 없는 파일은 시작하기 뒤의 「 이전 파일이 없을 때」 코드 상자로 만듭니다.
+ **이전 파일**: 오늘 가져와 사용(import)하는 이전 파일은 아래 표와 같습니다. 없는 파일은 시작하기 뒤의 「이전 파일이 없을 때」 코드 상자로 만듭니다.
 
 | 파일 | 만든 날 | 가져다 쓰는 것 | 쓰는 Exercise |
 |---|---|---|---|
@@ -33,10 +33,10 @@ source:
 | `approval_gate.py` · `config/approval_policy.json` | Unit 8 | `decide_gate` · 승인 정책 | Exercise 10-1 · Exercise 10-3 |
 | `unit07_risk_scores.json` | 4과목 Unit 7 | 대상별 점수 · 등급 · 이유 5건 | Exercise 10-2 |
 
-## 개요
+## 시작하기 순서
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** 5과목 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `incident.py` · `approval_gate.py` · `ticketing.py` · `ip_users.json` 과 `config` 가 보이고, `ls config` 결과에 `playbook_registry.json` · `approval_policy.json` · `escalation_rules.json` 이 보이면</mark> 됩니다. Unit 4 파일 세 개(`containment_store.py` · `account_actions.py` · `ip_actions.py`)도 필요합니다. 없는 파일은 아래 「」에서 만듭니다.
+2. **[터미널]** 5과목 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `incident.py` · `approval_gate.py` · `ticketing.py` · `ip_users.json` 과 `config` 가 보이고, `ls config` 결과에 `playbook_registry.json` · `approval_policy.json` · `escalation_rules.json` 이 보이면</mark> 됩니다. Unit 4 파일 세 개(`containment_store.py` · `account_actions.py` · `ip_actions.py`)도 필요합니다. 없는 파일은 아래 「이전 파일이 없을 때」에서 만듭니다.
    ```bash
    pwd
    cd soar_response
@@ -46,7 +46,7 @@ source:
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
 3. 이번 Unit에서 받은 파일 두 개(Unit 10 안내 문서, Unit 10 보고서)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
-4. **[터미널]** Unit 1의 플레이북 등록 값을 점검합니다(맥북은 `python3`). 엔진은 이 파일의 `actions` · 트리거 규칙 · 최소 등급을 읽으므로, <mark>아래 출력과 같아야</mark> 이번 Unit의 출력이 문서와 일치합니다. 다르면 아래 「」의 `config/playbook_registry.json` 으로 덮어씁니다.
+4. **[터미널]** Unit 1의 플레이북 등록 값을 점검합니다(맥북은 `python3`). 엔진은 이 파일의 `actions` · 트리거 규칙 · 최소 등급을 읽으므로, <mark>아래 출력과 같아야</mark> 이번 Unit의 출력이 문서와 일치합니다. 다르면 아래 「이전 파일이 없을 때」의 `config/playbook_registry.json` 으로 덮어씁니다.
    ```bash
    python -c "import json; print([(p['id'], p['trigger_rule'], p['min_grade'], p['actions']) for p in json.load(open('config/playbook_registry.json', encoding='utf-8'))])"
    ```
@@ -445,8 +445,8 @@ def decide_gate(request, policy):                                           # �
 ## 오류가 나면
 
 - `pwd` 가 `soar_response` 로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
-- `ModuleNotFoundError: No module named 'approval_gate'` 처럼 `No module named` 이 나오면 <mark style="background:#ffc4d6">그 이름의 파일이 이 폴더에 없다는 뜻</mark>입니다. 위 「 이전 파일이 없을 때」의 코드 상자로 만듭니다.
-- `FileNotFoundError` 가 나오면 오류 문장에 적힌 파일(`ip_users.json` · `config/playbook_registry.json` · `config/approval_policy.json` · `config/escalation_rules.json`)이 그 위치에 없는 것입니다. `ls` 와 `ls config` 로 확인한 뒤 위 「 이전 파일이 없을 때」의 코드 상자로 만듭니다.
+- `ModuleNotFoundError: No module named 'approval_gate'` 처럼 `No module named` 이 나오면 <mark style="background:#ffc4d6">그 이름의 파일이 이 폴더에 없다는 뜻</mark>입니다. 위 「이전 파일이 없을 때」의 코드 상자로 만듭니다.
+- `FileNotFoundError` 가 나오면 오류 문장에 적힌 파일(`ip_users.json` · `config/playbook_registry.json` · `config/approval_policy.json` · `config/escalation_rules.json`)이 그 위치에 없는 것입니다. `ls` 와 `ls config` 로 확인한 뒤 위 「이전 파일이 없을 때」의 코드 상자로 만듭니다.
 - `json.decoder.JSONDecodeError` 가 나오면 붙여 넣은 JSON 파일에서 쉼표나 괄호가 빠졌거나 남은 것입니다. 오류 문장의 `line` 숫자 근처를 확인하고, 모르겠으면 파일 내용을 모두 지운 뒤 문서의 코드 상자를 다시 붙여 넣습니다.
 - 먼저 오류 전체와 내가 친 명령을 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 그래도 막히면 맨 아래 「정답」을 봅니다. 그래도 풀리지 않으면 보고서에 「모름 — 막힌 곳: …」 이라고 씁니다.
 

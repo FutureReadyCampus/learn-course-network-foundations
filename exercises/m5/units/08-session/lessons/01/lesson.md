@@ -13,13 +13,13 @@ source:
 
 ## 개요
 
-<mark style="background:#e0d4ff">Unit 7까지 조치 · 티켓 · 알림 · 에스컬레이션</mark>(escalation, 에스컬레이션: 정해진 시간 안에 처리되지 않은 사건을 상위 담당자에게 넘겨 처리하게 하는 일)을 구현했습니다. 이번 Unit에서는 <mark>**처리 결과를 리포트로 보고하고, 자동 실행해도 되는 조치와 사람의 승인이 필요한 조치를 구분하고, 오탐으로 판명된 조치를 원래 상태로 복원하는 부분**</mark>을 구현합니다.
+<mark style="background:#e0d4ff">Unit 7까지 조치 · 티켓 · 알림 · 에스컬레이션</mark>(escalation, 에스컬레이션: 정해진 시간 안에 처리되지 않은 사건을 상위 담당자에게 넘겨 처리하게 하는 일)을 만들었습니다. Unit 8에서는 세 가지를 만듭니다. <mark>**처리 결과를 리포트로 보고하는 부분, 자동 실행해도 되는 조치와 사람의 승인이 필요한 조치를 나누는 부분, 오탐으로 밝혀진 조치를 원래 상태로 되돌리는 부분**</mark>입니다.
 
-- **Exercise 8-1**: Unit 7 근무의 티켓을 판다스(pandas, 판다스: 표 모양 데이터를 다루는 파이썬 도구) 표로 바꿔 집계(aggregation, 어그리게이션: 값을 그룹별로 모아 개수 · 평균을 구하는 일)하고, 조치 기록과 대조(reconciliation, 레컨실리에이션: 두 기록이 서로 맞는지 맞춰 보는 일)해 초동 대응 리포트(incident report, 인시던트 리포트: 사건의 현황과 처리 내용을 정리해 전달하는 문서) 파일을 작성합니다(`report.py`).
-- **Exercise 8-2**: 조치 요청마다 위험 점수(risk score, 리스크 스코어: 조치의 위험을 점수로 환산한 값)를 합산해 「자동 · 승인 필요 · 차단 금지」로 분류하는 승인 게이트를 구현합니다. <mark style="background:#ffdcb0">승인 기준은 설정 파일로 분리합니다</mark>(`approval_gate.py`).
-- **Exercise 8-3**: 오탐(false positive, 폴스 포지티브: 위협이 아닌 활동을 위협으로 잘못 판정한 알림) 신고를 받으면 영향 확인(impact assessment: 조치가 실제로 바꾼 대상을 파악하는 일)을 하고, <mark style="background:#e0d4ff">Unit 5의 되돌리기 함수</mark>로 롤백(rollback, 롤백: 조치 이전 상태로 복원하는 일)한 뒤, 복구 확인(recovery verification: 실제 상태가 복원됐는지 다시 점검하는 일)까지 처리합니다(`false_positive.py`).
+- **Exercise 8-1**: Unit 7 근무의 티켓을 판다스(pandas, 판다스: 표 모양 데이터를 다루는 파이썬 도구) 표로 바꿔 집계(aggregation, 어그리게이션: 값을 그룹별로 모아 개수 · 평균을 구하는 일)합니다. 그다음 조치 기록과 대조(reconciliation, 레컨실리에이션: 두 기록이 서로 맞는지 맞춰 보는 일)해서 초동 대응 리포트(incident report, 인시던트 리포트: 사건의 현황과 처리 내용을 정리해 전달하는 문서) 파일을 씁니다(`report.py`).
+- **Exercise 8-2**: 조치 요청마다 위험 점수(risk score, 리스크 스코어: 조치의 위험을 점수로 나타낸 값)를 더해 「자동 · 승인 필요 · 차단 금지」로 나누는 승인 게이트를 만듭니다. <mark style="background:#ffdcb0">승인 기준은 설정 파일에 따로 둡니다</mark>(`approval_gate.py`).
+- **Exercise 8-3**: 오탐(false positive, 폴스 포지티브: 위협이 아닌 활동을 위협으로 잘못 판정한 알림) 신고를 받으면 먼저 영향 확인(impact assessment: 조치가 실제로 바꾼 대상을 파악하는 일)을 합니다. 그다음 <mark style="background:#e0d4ff">Unit 5의 되돌리기 함수</mark>로 롤백(rollback, 롤백: 조치 이전 상태로 되돌리는 일)합니다. 마지막으로 복구 확인(recovery verification: 실제 상태가 되돌아왔는지 다시 점검하는 일)까지 합니다(`false_positive.py`).
 
-깃허브에 올리는 일은 Unit 9의 Exercise 9-2 마지막에 합니다. 새 문법은 Exercise 8-1의 판다스 세 가지(열(column, 컬럼: 표의 세로 줄)끼리 빼기 · 그룹마다 평균 `mean` · 반올림 `round`)입니다. 보고서의 [핵심 질문] 표시가 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기(줄 앞의 빈칸)는 각 번호 주석과 같은 위치에서 시작합니다. 각 번호 주석 바로 아래에 한 줄을 씁니다. 주석은 지우지 않습니다.
+깃허브에 올리는 일은 Unit 9의 Exercise 9-2 마지막에 합니다. 새 문법은 Exercise 8-1의 판다스 세 가지입니다. 열(column, 컬럼: 표의 세로 줄)끼리 빼기, 그룹마다 평균 `mean`, 반올림 `round` 입니다. 보고서의 [핵심 질문] 표시가 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기(줄 앞의 빈칸)는 각 번호 주석과 같은 위치에서 시작합니다. 각 번호 주석 바로 아래에 한 줄을 씁니다. 주석은 지우지 않습니다.
 
  **이전 파일**: <mark style="background:#e0d4ff">Unit 1의 `incident.py`</mark>(`load_json` · `save_json`)를 모든 Exercise에서 씁니다. Exercise 8-3에서는 <mark style="background:#e0d4ff">Unit 5의 `rollback.py`</mark> 와, 그 파일이 직접 또는 다른 파일을 거쳐 가져와 사용(import)하는 `undo_actions.py` · `account_actions.py` · `ip_actions.py` · `containment_store.py` 도 씁니다. 없는 파일은 아래 시작하기의 「 이전 파일이 없을 때」 코드 상자로 만듭니다.
 
@@ -29,10 +29,10 @@ source:
   - `sla` 는 서비스 수준 협약(SLA, Service Level Agreement)의 줄임말입니다. 이 문서에서는 응답 기한을 뜻합니다.
   - `sla_due` 는 응답해야 하는 시각입니다.
 
-## 개요
+## 시작하기 순서
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** 5과목 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `incident.py` 와 `rollback.py` 가 보이면</mark> 됩니다. Exercise 8-3에는 Unit 4 · Unit 5의 `undo_actions.py` · `account_actions.py` · `ip_actions.py` · `containment_store.py` 도 필요합니다(없으면 위 의 절에서 복사).
+2. **[터미널]** `soar_response` 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `incident.py` 와 `rollback.py` 가 보이면</mark> 됩니다. Exercise 8-3에는 Unit 4 · Unit 5의 `undo_actions.py` · `account_actions.py` · `ip_actions.py` · `containment_store.py` 도 필요합니다(없으면 아래 「이전 파일이 없을 때」 절의 코드 상자로 만듭니다).
    ```bash
    pwd
    cd soar_response
@@ -40,7 +40,7 @@ source:
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
-3. 이번 Unit에서 받은 파일 두 개(Unit 8 안내 문서, Unit 8 보고서)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
+3. Unit 8에서 받은 파일 두 개(Unit 8 안내 문서, Unit 8 보고서)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
 4. **[터미널]** 판다스를 불러올 수 있는지 확인합니다(맥북은 `python3`). <mark>`판다스 불러오기 성공` 이 나와야</mark> 합니다.
    ```bash
    python -c "import pandas; print('판다스 불러오기 성공')"
@@ -57,7 +57,12 @@ source:
 - **무엇인가**:
   - Unit 7의 Exercise 7-2에서 저장한 `shift_tickets.json` 에서 리포트에 쓰는 키만 남긴 것입니다.
   - `incidents` 는 티켓 하나로 병합(merge)된 인시던트(incident, 인시던트: 탐지된 보안 사건 하나)의 번호 리스트입니다.
-  - `created_at`(티켓 생성 시각) · `sla_due`(응답 기한 시각, 담당자가 이 시각까지 확인해야 하는 마감 시각. SLA 는 Service Level Agreement, 에스엘에이: 담당자가 응답해야 하는 시간을 미리 약속한 서비스 수준 협약입니다) · `acked_at`(확인 시각, acknowledge: 담당자가 사건을 처음 확인한 시각) · `resolved_at`(해결 시각)은 모두 근무를 시작한 때를 0분으로 놓고, 그때부터 몇 분이 지났는지를 적은 숫자입니다. <mark style="background:#ffdcb0">아직 확인하지 않았거나 해결하지 않았으면 `-1` 입니다.</mark>
+  - 시각을 나타내는 키는 네 개입니다.
+    - `created_at`: 티켓 생성 시각입니다.
+    - `sla_due`: 응답 기한 시각입니다. 담당자가 이 시각까지 확인해야 하는 마감 시각입니다. SLA 는 Service Level Agreement(에스엘에이)의 줄임말이고, 담당자가 응답해야 하는 시간을 미리 약속한 서비스 수준 협약입니다.
+    - `acked_at`: 확인 시각입니다. acknowledge 는 담당자가 사건을 처음 확인했다는 뜻입니다.
+    - `resolved_at`: 해결 시각입니다.
+    - 네 값은 모두 근무를 시작한 때를 0분으로 놓고, 그때부터 몇 분이 지났는지를 적은 숫자입니다. <mark style="background:#ffdcb0">아직 확인하지 않았거나 해결하지 않았으면 `-1` 입니다.</mark>
 - **어디에 쓰나**: Exercise 8-1 리포트의 재료입니다.
 
 ```
@@ -75,7 +80,7 @@ source:
 **`unit10_actions.json`** — 근무 중 자동 대응이 남긴 조치 기록 9건에, 설명을 위해 만든 `INC-212` 1건을 더한 10건입니다.
 
 - **무엇인가**:
-  - <mark style="background:#e0d4ff">Unit 4에서 만든 조치 기록</mark>(감사 기록, audit log: 조치를 순서대로 남긴 기록)에서 `reason` 키만 뺀 꼴입니다. `before` 는 조치 전 상태, `after` 는 조치 후 상태입니다.
+  - <mark style="background:#e0d4ff">Unit 4에서 만든 조치 기록</mark>(감사 기록, audit log: 조치를 순서대로 남긴 기록)에서 `reason` 키만 뺀 모양입니다. `before` 는 조치 전 상태, `after` 는 조치 후 상태입니다.
   - `INC-212` 는 근무가 끝나기 직전에 `yuna` 계정을 잠근 기록입니다. 티켓 생성 단계가 실패해서 이 인시던트에는 티켓이 없습니다.
 - **어디에 쓰나**: Exercise 8-1 리포트는 티켓과 조치 기록을 대조해 티켓마다 조치 기록 수를 세고, 티켓이 없는 조치(추적 누락)를 찾습니다.
 
@@ -134,7 +139,7 @@ def save_json(data, path):                                   # 저장할 값과 
         json.dump(data, file, ensure_ascii=False, indent=2)  # 한글은 그대로, 줄을 나눠 저장한다
 ```
 
-**`containment_store.py`** — Unit 4 파일입니다. 조치 기록 한 건을 만들고 조치 상태를 파일로 저장 · 읽기 합니다.
+**`containment_store.py`** — Unit 4 파일입니다. 조치 기록 한 건을 만들고 조치 상태를 파일로 저장하고 읽습니다.
 
 ```python
 import copy                                                           # 처음 상태를 복사해 쓰기 위해 copy 를 불러온다

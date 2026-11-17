@@ -13,22 +13,22 @@ source:
 
 ## 개요
 
-Unit 8까지 이상탐지 규칙을 만들고, 알림이 맞았는지 세고, 틀린 알림을 줄였습니다. 이번 Unit에서는 <mark>**앞 Unit에서 만든 탐지를 한 번에 실행해 보고서 파일 하나로 남기고**</mark>, 4과목에서 만난 상황을 정리합니다. 4과목의 마지막 Unit입니다.
+Unit 8까지 이상탐지 규칙을 만들고, 알림이 맞았는지 세고, 틀린 알림을 줄였습니다. 이번 Unit에서는 <mark>**Unit 6 · 7에서 만든 탐지를 한 번에 실행해 보고서 파일 하나로 남기고**</mark>, 4과목에서 만난 상황을 정리합니다. 4과목의 마지막 Unit입니다.
 
 - **Exercise 10-1**: Unit 7에서 저장한 대상별 점수 파일에서 먼저 확인할 대상을 고르고, **AI** 에게 파일에 있는 사실만으로 짧은 요약문을 쓰게 합니다(`event_summary.py`).
-- **Exercise 10-2**: 이벤트 읽기 → 연결 · 탐지 · 점수 → Gemini API 를 활용한 AI 요약 → 보고서 저장을 **`pipeline.py`**(파이프라인, pipeline, 파이프라인: 여러 단계를 순서대로 이어 한 번에 실행하는 프로그램) 하나로 실행합니다.
+- **Exercise 10-2**: 이벤트 읽기 → 연결 · 탐지 · 점수 → Gemini API 를 활용한 AI 요약 → 보고서 저장을 **`pipeline.py`**(pipeline, 파이프라인: 여러 단계를 순서대로 이어 한 번에 실행하는 프로그램) 하나로 실행합니다.
 - **Exercise 10-3**: **4과목 총정리.** 새로 배우는 것 없이, 상황 8개의 원인과 고치는 방법을 내 말로 정리하고 이번 Unit의 작업을 깃허브에 올립니다.
 
-이번 Unit은 Exercise 10-1 · 10-2 · 10-3으로 이루어져 있고, 다음 Unit부터는 5과목(자동 대응)을 시작합니다. <mark>깃허브에 올리는 일은 Exercise 10-3 마지막에 합니다.</mark> Exercise마다 문제는 하나입니다.
+Unit 10은 Exercise 10-1 · 10-2 · 10-3으로 이루어져 있고, 다음 Unit부터는 5과목(자동 대응)을 시작합니다. <mark>깃허브에 올리는 일은 Exercise 10-3 마지막에 합니다.</mark> Exercise마다 문제는 하나입니다.
 
 - 이번 Unit에서 쓰는 도구는 **파이썬 · 판다스 · VS Code · 터미널 · git** 이고, Exercise 10-1 · 10-2에는 1과목에서 만든 **LLM 호출 함수**(`llm_client.py` 의 `call_llm`)를 씁니다.
   - 이 안내에서 말하는 **AI** 는 구글의 **Gemini API** 입니다.
   - `call_llm` 이 Gemini API 에 글을 보내고 답을 받아 옵니다.
-- 이번 Unit에서 새로 배우는 문법은 Exercise 10-1의 문자열 이어 붙이기 `"구분 글자".join(리스트)` 와 Exercise 10-2의 `Series.to_dict()` 두 개입니다. 나머지는 앞 Unit에서 쓴 문법(f-문자열 · `if` · `and` · 딕셔너리 · `value_counts()` · `json.dump`)을 다시 씁니다.
+- 이번 Unit에서 새로 배우는 문법은 Exercise 10-1의 문자열 이어 붙이기 `"구분 글자".join(리스트)` 와 Exercise 10-2의 `Series.to_dict()` 두 개입니다. 나머지는 앞에서 쓴 문법(f-문자열 · `if` · `and` · 딕셔너리 · `value_counts()` · `json.dump`)을 다시 씁니다.
 - <mark>AI 가 쓰는 요약 문장은 실행할 때마다 조금씩 달라집니다.</mark> 이 안내의 출력 예와 문장이 달라도 정상입니다. 점수와 등급과 건수는 같아야 합니다.
 - [주의] <mark style="background:#ffc4d6">**무료 Gemini 키는 1분에 15번까지만 호출할 수 있습니다.**</mark> 이번 Unit에서는 Exercise 10-1 실행에 3번, Exercise 10-2 실행마다 3번 호출합니다. `[LLM 호출 실패] 상태 코드 429` 가 나오면 <mark>1분 기다린 뒤 다시 실행</mark>합니다. 실패해도 이 프로그램은 멈추지 않도록 만듭니다.
 - [주의] <mark>앞 Unit(특히 Unit 7)의 파일이 없는 사람은 아래 표를 보고, 없는 파일만 「복구 파일 모음」(`unit10_recovery_files.md`)으로 만듭니다.</mark> 이미 다 가진 사람은 그 파일을 받지 않아도 됩니다.
-- 보고서에서 `[핵심 질문]` 표시가 붙은 질문은 이 Exercise에서 꼭 알아야 할 핵심 질문이고, <mark>내 출력이나 샘플 데이터의 값을 근거로 이유까지 서술합니다</mark>.
+- 보고서에서 `[핵심 질문]` 표시가 붙은 질문은 이 Exercise에서 꼭 알아야 할 핵심 질문이고, <mark>내 출력이나 샘플 데이터의 값을 근거로 이유까지 씁니다</mark>.
 - 점수 기준(high 60 이상 · mid 35 이상)과 AI 에게 요약시킬 대상 수(3명)는 **고정**하고, <mark>값을 바꿔 가며 비교하지 않습니다</mark>.
 
 **이번 Unit에서 불러 쓰는 이전 파일**이 있습니다. 아래 표에서 <mark>`event_summary.py` 만 이번 Unit의 Exercise 10-1에서 만들고, 나머지는 모두 앞 Unit이나 1과목에서 만든 파일</mark>입니다. <mark>없는 파일은 「복구 파일 모음」(`unit10_recovery_files.md`)으로 만듭니다.</mark> 이 파일은 앞 Unit의 파일이 없는 사람만 받습니다.
@@ -42,7 +42,7 @@ Unit 8까지 이상탐지 규칙을 만들고, 알림이 맞았는지 세고, �
 | `correlation.py` · `risk_scores.py` | Unit 7의 Exercise 7-1 · 7-2 | Exercise 10-2 | 복구 파일 모음의 완성본으로 파일을 만듭니다 |
 | `event_summary.py` | Exercise 10-1 | Exercise 10-2 `pipeline.py` 가 불러옵니다 | 이 안내 Exercise 10-1 의 코드 칸에 「Exercise 10-1 정답」의 「채운 코드」를 넣어 완성합니다 |
 
-## 개요
+## 시작하기 순서
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치와 앞 Unit의 파일을 확인합니다(맥북은 `python3`). <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나고, `ls` 결과에 위 표의 Unit 6 · 7 파일들이 보여야</mark> 합니다. 없는 파일이 있으면 복구 파일 모음으로 만든 뒤 `ls` 를 다시 칩니다. <mark>자리를 바꾼 사람은 3번 전에 아래 「.env 와 API 키 다시 받기」를 먼저 합니다.</mark>

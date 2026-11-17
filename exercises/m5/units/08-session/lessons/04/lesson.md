@@ -15,10 +15,13 @@ source:
 
 > **오늘 들어온 일**
 >
-> - **상황**: <mark style="background:#e0d4ff">Unit 5에서 자동 조치를 원래 상태로 복원(롤백, rollback)하는 `rollback_incident` 를 만들었습니다.</mark> 이번 Unit에서 **오탐**(false positive, 폴스 포지티브: 정상 활동을 공격으로 잘못 판정한 것) 신고가 2건 들어왔습니다.
+> - **상황**: <mark style="background:#e0d4ff">Unit 5에서 자동 조치를 원래 상태로 복원(롤백, rollback)하는 `rollback_incident` 를 만들었습니다.</mark> Unit 8에서는 **오탐**(false positive, 폴스 포지티브: 정상 활동을 공격으로 잘못 판정한 것) 신고가 2건 들어왔습니다.
 > - `INC-301`: 해외 IP 에서 로그인한 `jiwoo` 계정을 자동으로 잠그고 세션(session, 세션: 로그인한 뒤 서버가 유지하는 접속 상태)을 종료했는데, 영업팀장이 「출장 중이고 출장 등록도 했다」고 알려 왔습니다.
 > - `INC-202`: 경로 스캔(서버의 여러 주소에 차례로 요청을 보내 약점을 찾는 일)으로 자동 차단한 IP `198.51.100.90` 이 회사가 계약한 점검 업체의 스캐너라고 인프라팀이 알려 왔습니다.
-> - **문제**: 롤백 함수만 실행하면 오탐 대응이 끝나지 않습니다. <mark style="background:#ffc4d6">영향 확인(impact assessment: 조치가 실제로 바꾼 대상을 파악하는 일)을 먼저 하지 않으면</mark> 누가 영향을 받았는지 알 수 없습니다. 신고와 상관없는 진짜 공격(정탐, true positive: 실제 공격을 정확히 탐지한 것)인 `dami` 잠금(`INC-201`)이 그대로인지도 따로 확인하기 어렵습니다. 롤백한 뒤 복구 확인(recovery verification: 실제 상태가 복원됐는지 다시 점검하는 일)을 하지 않으면 해제되지 않은 계정이 남아도 알 수 없어, `jiwoo` 가 계속 로그인하지 못할 수 있습니다. 탐지 규칙을 조정하지 않으면 다음 출장 때도 같은 오탐 알림이 생깁니다.
+> - **문제**: 롤백 함수만 실행하면 오탐 대응이 끝나지 않습니다.
+> - <mark style="background:#ffc4d6">영향 확인(impact assessment: 조치가 실제로 바꾼 대상을 파악하는 일)을 먼저 하지 않으면</mark> 누가 영향을 받았는지 알 수 없습니다. 신고와 상관없는 진짜 공격(정탐, true positive: 실제 공격을 정확히 탐지한 것)인 `dami` 잠금(`INC-201`)이 그대로인지도 따로 확인하기 어렵습니다.
+> - 롤백한 뒤 복구 확인(recovery verification: 실제 상태가 복원됐는지 다시 점검하는 일)을 하지 않으면 해제되지 않은 계정이 남아도 알 수 없습니다. 그러면 `jiwoo` 가 계속 로그인하지 못할 수 있습니다.
+> - 탐지 규칙을 조정하지 않으면 다음 출장 때도 같은 오탐 알림이 생깁니다.
 > - **부탁**: 오탐 신고마다 영향 확인 → 롤백 → 복구 확인 순서로 처리하고, 신고를 접수한 뒤 <mark style="background:#ffdcb0">30분 이내</mark>에 복구했는지도 기록해 주세요. 마지막으로 담당자가 검토할 규칙 조정(튜닝, tuning: 같은 오탐이 반복되지 않도록 탐지 규칙이나 허용 목록을 고치는 일) 제안을 남겨 주세요.
 > - **바뀌는 점**: 두 신고가 <mark style="background:#bde3ff">25분 · 5분</mark> 만에 복구됩니다. 롤백한 뒤에도 잠겨 있거나 차단된 대상은 <mark style="background:#bde3ff">0개</mark>입니다. <mark style="background:#ffc4d6">`jiwoo` 의 세션은 되돌릴 수 없는 조치(비가역, irreversible)라 「되돌리기 불가」로 따로 남습니다.</mark> 그래서 `jiwoo` 가 다시 로그인해야 합니다. `dami` 는 그대로 잠겨 있습니다. 상황과 이름은 설명을 위한 예시입니다.
 
@@ -54,21 +57,21 @@ false_positive.py   list_changes           : 바뀐 기록이면 (1번) 추가�
 
 ## Exercise 8-3 · 오탐(false positive) 신고 2건을 영향 확인 · 롤백 · 복구 확인 · 규칙 조정 제안까지 처리하기
 
-** 이런 상황이 있습니다**
+**이런 상황이 있습니다**
 
 - **지금은**: <mark>롤백 함수는 있지만, 무엇이 바뀌었는지 확인하고(영향 확인), 실제로 복원됐는지 점검하고(복구 확인), 같은 오탐의 재발을 막을 규칙 조정을 제안하는 절차가 없습니다</mark>.
 - **만드는 것**: 영향 확인 · 복구 확인 · 규칙 조정 제안 · 신고 한 건 처리(`false_positive.py`), 신고마다 처리하고 저장하기(`exercise8-3_run.py`).
 - **실행하면**: <mark>단계 1: 신고 수와 처리 전 상태, 단계 2: 신고마다 영향 확인 · 되돌리기 · 복구 확인 · 규칙 조정 제안, 단계 3: 처리 뒤 상태, 단계 4: 저장한 파일이 나옵니다.</mark>
 
-** 할 일**: 데이터 파일 세 개와 코드 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 · 3 을 읽습니다.
+**할 일**: 데이터 파일 세 개와 코드 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 · 3 을 읽습니다.
 
-**`fp_state.json`** — 오탐을 처리하기 전 연습용 시스템 상태입니다. Unit 4의 `containment_state.json` 과 같은 꼴입니다. `junho` 는 이번 Unit 시작 전부터 잠겨 있던 계정입니다. 연습용 시스템(실제 서버를 대신하는 시스템)의 시계(`clock`)는 0 에서 움직이지 않고, 끝난 차단을 해제하는 Unit 4의 함수 `expire_blocks` 도 호출하지 않습니다. 그래서 `block_expiry`(차단이 끝나는 시각)가 있어도 차단이 자동으로 풀리지 않습니다.
+**`fp_state.json`** — 오탐을 처리하기 전 연습용 시스템 상태입니다. Unit 4의 `containment_state.json` 과 같은 모양입니다. `junho` 는 Unit 8을 시작하기 전부터 잠겨 있던 계정입니다. 연습용 시스템(실제 서버를 대신하는 시스템)의 시계(`clock`)는 0 에서 움직이지 않습니다. 끝난 차단을 해제하는 Unit 4의 함수 `expire_blocks` 도 호출하지 않습니다. 그래서 `block_expiry`(차단이 끝나는 시각)가 있어도 차단이 자동으로 풀리지 않습니다.
 
 ```
 {"locked_users": ["junho", "dami", "jiwoo"], "blocked_ips": ["198.51.100.90"], "block_expiry": {"198.51.100.90": 120}, "clock": 0, "sessions": {"dami": [], "jiwoo": [], "junho": [], "hana": ["S-601"]}}
 ```
 
-**`fp_log.json`** — 자동 조치 기록 7건입니다. Unit 4의 `containment_log.json` 과 같은 꼴입니다.
+**`fp_log.json`** — 자동 조치 기록 7건입니다. Unit 4의 `containment_log.json` 과 같은 모양입니다.
 
 ```
 [
@@ -246,7 +249,7 @@ print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.
 | 조치 요청을 위험 점수로 자동 · 승인 필요 · 차단 금지로 분류했다 | Exercise 8-2 |
 | 오탐 신고를 영향 확인 · 롤백 · 복구 확인 · 규칙 조정 제안까지 처리했다 | Exercise 8-3 |
 
-<mark>Unit 9의 Exercise 9-1에서는 자동 조치마다 운영 위험을 평가한 문서(`risk_assessment.md`)를 새로 작성합니다. Exercise 9-2에서는 Unit 8의 `report.py` · `approval_gate.py` · `false_positive.py` 를 가져와 사용(import)해 이번 Unit에서 만든 것을 한 번에 점검합니다.</mark>
+<mark>Unit 9의 Exercise 9-1에서는 자동 조치마다 운영 위험을 평가한 문서(`risk_assessment.md`)를 새로 작성합니다. Exercise 9-2에서는 Unit 8의 `report.py` · `approval_gate.py` · `false_positive.py` 를 가져와 사용(import)해 Unit 8에서 만든 것을 한 번에 점검합니다.</mark>
 
 ---
 

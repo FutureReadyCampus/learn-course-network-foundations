@@ -56,7 +56,7 @@ source:
 | 알림 있음 ≠ 공격 확정 | 알림은 「먼저 살펴볼 곳」일 뿐이고, 정상적인 일이 기준 이상이 될 수도 있습니다 | `status` 를 모두 「확인 필요」로 둠 |
 | 알림 없음 ≠ 안전 | 알림이 없는 것은 규칙에 해당하지 않았다는 뜻일 뿐, 아무 일도 없었다는 뜻이 아닙니다 | 규칙에 해당하지 않으면 알림이 나지 않음 |
 
-** 판다스 문법 상자 — 인덱스와 값을 한 쌍씩 꺼내기**
+**판다스 문법 상자 — 인덱스와 값을 한 쌍씩 꺼내기**
 
 **<mark>`결과.items()`</mark> 는 판다스로 센 결과(시리즈, Series: 인덱스와 값이 한 줄씩 있는 데이터)에서 「인덱스, 값」을 한 쌍씩 꺼냅니다. `for 인덱스, 값 in 결과.items():` 로 반복합니다**
 
@@ -100,7 +100,7 @@ saas 1
 - 읽는 법: 출력 세 줄이 센 결과의 세 줄에 하나씩 대응합니다. <mark>인덱스가 `source` 에, 값이 `count` 에 들어옵니다.</mark>
 - 이번 Exercise에서는 이 인덱스가 주소(`203.0.113.50`)나 분(`2026-11-02 09:12:00`)이고, <mark>값이 횟수입니다.</mark>
 
-** 판다스 문법 상자 — 시각 값을 문자열로 바꾸기**
+**판다스 문법 상자 — 시각 값을 문자열로 바꾸기**
 
 **<mark>`str(시각 값)`</mark> 은 판다스의 시각 값을 `"2026-11-02 09:01:00"` 같은 문자열로 바꿉니다. JSON 파일에는 문자열 · 숫자 · 리스트 · 딕셔너리만 쓸 수 있어서, 시각 값은 문자열로 바꿔야 합니다**
 
@@ -149,13 +149,14 @@ print(message)                                               # 이어 붙인 글
   - `make_alert`(1번): 키 다섯 개를 딕셔너리로 만듭니다.
   - `make_login_alerts`(2번): 알림 한 건을 만듭니다. 반복문과 메모 문장은 미리 채웠습니다.
   - `make_traffic_alerts`(3 · 4번): 시각 값을 문자열로 바꾸고 알림 한 건을 만듭니다.
-  - `save_alerts`(5 · 6번): 파일을 쓰기 위해 열고(5번), 알림 리스트를 JSON 파일에 저장합니다(6번). 저장한 건수를 세어 리턴하는 줄은 미리 채웠습니다. JSON 은 문자열과 숫자, 리스트, 딕셔너리를 담는 텍스트 파일 형식입니다.
+  - `save_alerts`(5 · 6번): 파일을 쓰기 위해 열고(5번), 알림 리스트를 JSON 파일에 저장합니다(6번). 저장한 건수를 세어 리턴하는 줄은 미리 채웠습니다.
+  - JSON 은 문자열 · 숫자 · 리스트 · 딕셔너리를 담는 텍스트 파일 형식입니다.
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
 ## Exercise 5-2 · 로그인 실패 알림과 트래픽 급증 알림을 alerts.json 한 파일로 모으기
 
-** 이런 상황이 있습니다**
+**이런 상황이 있습니다**
 
 - **지금은**: Exercise 4-2의 로그인 실패 결과와 Exercise 5-1의 트래픽 급증 결과가 형식이 달라서, 담당자가 하나씩 열어 확인해야 합니다.
 - **그래서 만드는 것**: `alerts.py` 입니다.
@@ -165,7 +166,7 @@ print(message)                                               # 이어 붙인 글
 - **실행하면**: 단계 1: 로그인 실패 알림 건수, 단계 2: 트래픽 급증 알림 건수, 단계 3: 저장한 건수, 단계 4: 저장된 알림이 한 건씩 나옵니다.
 - **현업에서는**: 알림 형식이 같으면 규칙이 늘어도 메신저 · 티켓 · 자동 대응 도구에 같은 방법으로 보낼 수 있습니다. 담당자는 「확인 필요」인 알림부터 확인합니다.
 
-** 할 일**
+**할 일**
 
 1. `alerts.py` · `exercise5-2_run.py` **두 파일**을 만들고, `alerts.py` 의 **네 함수**에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>알림 건수</mark>(단계 1 ~ 3)와 <mark>저장된 알림</mark>(단계 4)을 확인하고, 새로 생긴 `alerts.json` 을 VS Code 에서 열어 봅니다.
@@ -229,7 +230,7 @@ def save_alerts(alerts, path):                                                  
 - 번호 주석이 연달아 붙어 있어도(예: 3 · 4번), <mark>주석 사이마다 줄을 끼워 넣어 각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark>
 - 채우기 전에 실행하면 `NameError: name 'alert' is not defined` 오류가 납니다. 2번을 아직 안 써서 `alert` 가 만들어지지 않았기 때문입니다.
 
-**`exercise5-2_run.py`** — **그대로 붙여 넣습니다.** 학생이 쓰는 줄은 없습니다. Unit 4의 `login_detection.py` 와 Exercise 5-1의 `traffic_detection.py` 의 함수를 불러와 이번 Unit의 알림을 만듭니다. `load_events` 는 두 파일에 같은 이름으로 있어서, <mark>여기서는 `login_detection.py` 의 것 하나만 불러옵니다.</mark>
+**`exercise5-2_run.py`** — **그대로 붙여 넣습니다.** 직접 쓰는 줄은 없습니다. Unit 4의 `login_detection.py` 와 Exercise 5-1의 `traffic_detection.py` 에 있는 함수를 불러와 알림을 만듭니다. `load_events` 는 두 파일에 같은 이름으로 있어서, <mark>여기서는 `login_detection.py` 의 것 하나만 불러옵니다.</mark>
 
 ```python
 import json                                                                          # 저장한 파일을 다시 읽기 위해 json 을 불러온다
@@ -278,7 +279,7 @@ for alert in saved_alerts:                                                      
 5. **[VS Code]** 새로 생긴 `alerts.json` 을 열어 <mark>알림 두 건이 보이는지</mark> 확인합니다.
 6. **[보고서]** Unit 5 의 `## Exercise 5-2` › `### Exercise 5-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, `alerts.json` 의 내용도 붙여 넣은 뒤 알림이 모두 몇 건인지 적어 주세요.
-   - (나) [핵심 질문] ① 203.0.113.50 이 `normalized_events.json` 의 `source` 가 `web` 인 줄에 몇 시에 나오는지 찾고, ② 그 시각이 급증 알림의 분(09:12)과 같은지 비교하고, ③ 두 알림이 같은 일과 관련이 있는지 적고, 담당자가 두 건을 한 건으로 합쳐 조사할지 따로 조사할지 고른 이유를 적어 주세요.
+   - (나) [핵심 질문] ① 203.0.113.50 이 `normalized_events.json` 의 `source` 가 `web` 인 줄에 몇 시에 나오는지 찾아 주세요. ② 그 시각이 급증 알림의 분(09:12)과 같은지 비교해 주세요. ③ 두 알림이 같은 일과 관련이 있는지 적고, 담당자가 두 건을 한 건으로 합쳐 조사할지 따로 조사할지 고른 이유도 적어 주세요.
    - (다) [핵심 질문] 203.0.113.50 알림을 조사해 보니 직원이 비밀번호를 잊어 반복해서 입력한 것이었습니다. ① `status` 를 어떤 값으로 바꿀지(안내 문서 2.1 의 처리 상태 순서를 참고), ② `note` 에 무엇을 더 적을지, ③ 알림을 지우지 않고 남겨 두는 편이 좋은 이유를 적어 주세요. 코드는 고치지 않고 글로만 적습니다.
 
 ## Exercise 5-2 한눈에
@@ -296,7 +297,7 @@ for alert in saved_alerts:                                                      
 
 문제가 아니라 이번 Unit에서 한 일을 저장소에 올리는 마무리입니다. Exercise 5-2 마지막 약 10분에 합니다. 어느 터미널을 써도 되고, `pwd` 로 위치를 먼저 확인한 뒤 <mark>결과가 `anomaly_detection` 으로 끝나면 아래 1번의 `cd ..` 를 칩니다.</mark>
 
-** 이런 상황이 있습니다**
+**이런 상황이 있습니다**
 
 - **지금은**: 팀장이 「이번 Unit에서 만든 탐지 코드와 알림 파일을 저장소에 남겨 달라」고 합니다.
 - **그래서 하는 것**: `git status` 로 올라갈 파일을 확인한 뒤<mark>(`.env` 같은 비밀 키 파일이 섞이면 안 됩니다)</mark> `git add` → `git commit` → `git push` 순서로 올립니다.
@@ -310,7 +311,9 @@ for alert in saved_alerts:                                                      
    ls
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
-   - <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나야 합니다.</mark> 파일은 `baseline.py` · `login_detection.py` · `classify.py` · `traffic_detection.py` · `alerts.py` · `exercise4-1_run.py` ~ `exercise5-2_run.py` 다섯 개 · `normalized_events.json` · `baseline_logins.csv` · `baseline_traffic.csv` · `alerts.json` 과 안내 · 보고서 네 파일(Unit 4 · Unit 4 · Unit 5 · Unit 5)이 보여야 합니다. `__pycache__` 폴더는 파이썬이 만든 임시 폴더라 있어도 됩니다. 빠진 파일이 있으면 그 문제를 다시 풀어 만들고, `pwd` 가 `security-agent-toolkit` 로 나오면 `cd anomaly_detection` 을 먼저 칩니다.
+   - <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나야 합니다.</mark> 파일은 `baseline.py` · `login_detection.py` · `classify.py` · `traffic_detection.py` · `alerts.py` · `exercise4-1_run.py` ~ `exercise5-2_run.py` 다섯 개 · `normalized_events.json` · `baseline_logins.csv` · `baseline_traffic.csv` · `alerts.json` 과 안내 · 보고서 네 파일(Unit 4 안내 · Unit 4 보고서 · Unit 5 안내 · Unit 5 보고서)이 보여야 합니다. `__pycache__` 폴더는 파이썬이 만든 임시 폴더라 있어도 됩니다.
+   - 빠진 파일이 있으면 그 문제를 다시 풀어 만듭니다.
+   - `pwd` 가 `security-agent-toolkit` 으로 끝나면 `cd anomaly_detection` 을 먼저 칩니다.
 1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. <mark>결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.</mark>
    ```bash
    cd ..
