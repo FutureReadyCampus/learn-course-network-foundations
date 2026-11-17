@@ -306,8 +306,8 @@ Module 4가 끝나면 `anomaly_detection` 폴더에 Unit별로 아래 파일이 
 security-agent-toolkit/
   .env
   .gitignore
-  agent_core/                       Module 1
-  network_zt/                       Module 2
+  agent_core/
+  network_zt/
   access_control/                   Module 3
   anomaly_detection/                Module 4   ← 여기서 작업
     config/                         ← JSON 설정만
