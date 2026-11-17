@@ -13,10 +13,14 @@ source:
 
 ## 개요
 
-Unit 6에서는 세 가지를 했습니다. 알림으로 티켓(ticket, 티켓: 처리할 일 한 건을 적어 두는 기록)을 생성했습니다. 같은 사건의 알림은 티켓 한 장으로 병합(merge)했습니다. 그리고 담당자에게 통지(notification)했습니다. 이번 Unit에서는 두 가지를 구현합니다. 하나는 **에스컬레이션**(escalation, 에스컬레이션: 처리되지 않는 일을 더 높은 책임자에게 넘기는 절차)입니다. <mark>담당자가 응답 기한 안에 응답하지 않으면 상급자에게 통보하는 기능</mark>입니다. 다른 하나는 **운영 지표**(operational metrics, 오퍼레이셔널 메트릭스: 팀의 대응 속도를 숫자로 나타낸 값)입니다. 근무가 끝날 때 팀의 대응 속도를 보고하기 위해 이 값을 산출합니다. 두 기능은 보안 관제(SOC, Security Operations Center, 소크: 보안 사건을 감시하고 대응하는 조직)가 근무 중 운영하는 절차입니다.
+Unit 6에서는 세 가지를 했습니다. 알림으로 티켓(ticket, 티켓: 처리할 일 한 건을 적어 두는 기록)을 만들었습니다. 같은 사건의 알림은 티켓 한 장으로 병합(merge: 하나로 합치기)했습니다. 그리고 담당자에게 알림을 보냈습니다(통지, notification).
+
+이번 Unit에서는 두 가지를 만듭니다. 하나는 **에스컬레이션**(escalation, 에스컬레이션: 처리되지 않는 일을 더 높은 책임자에게 넘기는 절차)입니다. <mark>담당자가 응답 기한 안에 응답하지 않으면 상급자에게 알리는 기능</mark>입니다. 다른 하나는 **운영 지표**(operational metrics, 오퍼레이셔널 메트릭스: 팀의 대응 속도를 숫자로 나타낸 값)입니다. 근무가 끝날 때 팀의 대응 속도를 보고하려고 이 값을 계산합니다.
+
+두 기능은 보안 관제(SOC, Security Operations Center, 소크: 보안 사건을 감시하고 대응하는 조직)가 근무 중에 하는 일입니다.
 
 - **Exercise 7-1**: **응답 기한**(SLA, Service Level Agreement, 에스엘에이: 티켓이 생성된 뒤 담당자가 확인해야 하는 제한 시간. 원래는 「서비스 수준 협약」의 줄임말)이 지났는데도 확인(acknowledge)되지 않은 티켓을 상급자에게 에스컬레이션합니다(`escalation.py`). 예를 들어 <mark style="background:#ffdcb0">`TCK-1` 은 응답 기한이 15분이므로 15분 안에 확인되어야 합니다</mark>. 20분이 되도록 아무도 확인하지 않았다면 5분을 초과한 것입니다.
-- **Exercise 7-2**: Unit 6부터 구현한 기능을 근무 3시간 시뮬레이션(simulation, 시뮬레이션: 실제 근무 대신 연습용 알림 · 동작 기록으로 근무 시간을 재현하는 방식)으로 연속 실행합니다. 그 결과로 <mark>평균 확인 시간(MTTA) · 평균 해결 시간(MTTR) · 응답 기한 위반(SLA breach) 수를 산출합니다</mark>. 마지막으로 다음 근무자에게 인계(handoff)할 미해결 티켓 목록을 작성합니다(`shift_metrics.py`).
+- **Exercise 7-2**: Unit 6부터 만든 기능을 근무 3시간 시뮬레이션(simulation, 시뮬레이션: 실제 근무 대신 연습용 알림 · 동작 기록으로 근무 시간을 재현하는 방식)으로 연속 실행합니다. 그 결과로 <mark>평균 확인 시간(MTTA) · 평균 해결 시간(MTTR) · 응답 기한 위반(SLA breach) 수를 계산합니다</mark>. 마지막으로 다음 근무자에게 인계(handoff)할 미해결 티켓 목록을 작성합니다(`shift_metrics.py`).
 
 깃허브에 올리는 일은 Exercise 7-2 마지막에 합니다. 새 문법은 Exercise 7-2의 `sum()` 과 `%` 둘이고, 나눗셈 `/` 는 문법 상자에서 풀이합니다. 보고서의 [핵심 질문] 표시가 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기는 미리 채운 줄에 맞춥니다. 각 번호 주석 바로 아래에 한 줄을 씁니다. <mark style="background:#ffc4d6">주석은 지우지 않습니다</mark>.
 
@@ -28,10 +32,10 @@ Unit 6에서는 세 가지를 했습니다. 알림으로 티켓(ticket, 티켓: 
   - `sla` 는 서비스 수준 협약(SLA, Service Level Agreement)의 줄임말입니다. 이 문서에서는 응답 기한을 뜻합니다.
   - `sla_due` 는 응답해야 하는 시각이고, `count_sla_breaches` 는 응답 기한을 넘긴 티켓 수를 세는 함수입니다.
 
-## 개요
+## 시작하기 순서
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** 5과목 폴더로 들어가 파일을 확인합니다. <mark style="background:#bde3ff">`ls` 결과에 `ticketing.py` · `ticket_merge.py` · `ticket_notice.py` · `tickets_unit09.json` 이 보이면</mark> 됩니다.
+2. **[터미널]** `soar_response` 폴더로 들어가 파일을 확인합니다. <mark style="background:#bde3ff">`ls` 결과에 `ticketing.py` · `ticket_merge.py` · `ticket_notice.py` · `tickets_unit09.json` 이 보이면</mark> 됩니다.
    ```bash
    pwd
    cd soar_response
@@ -39,8 +43,8 @@ Unit 6에서는 세 가지를 했습니다. 알림으로 티켓(ticket, 티켓: 
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다. `cd` 가 안 되면 `ls` 로 `soar_response` 폴더가 보이는지 확인합니다.
-   - `tickets_unit09.json` 이 없으면 먼저 아래 6번(알림 서버 켜기)을 합니다. 그다음 이 터미널에서 Unit 6의 Exercise 6-3 실행 파일(`exercise6-3_run.py`)을 한 번 실행하면 `tickets_unit09.json` 이 생깁니다. Unit 6의 Exercise 6-3 안내 문서의 `exercise6-3_run.py` 코드로 파일을 만들어 실행합니다(`ticketing.py` 같은 Unit 6 코드 파일은 `complete_files.md` 6절에서 복사합니다). 이 경우 서버 터미널에 Unit 6의 Exercise 6-3의 `[알림 받음]` 9줄이 먼저 나오므로, Exercise 7-1의 4줄은 그 아래부터 셉니다.
-3. 이번 Unit에서 받은 파일 두 개(Unit 7 안내 문서, Unit 7 보고서)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
+   - `tickets_unit09.json` 이 없으면 먼저 아래 6번(알림 서버 켜기)을 합니다. 그다음 이 터미널에서 Unit 6의 Exercise 6-3 실행 파일(`exercise6-3_run.py`)을 한 번 실행하면 `tickets_unit09.json` 이 생깁니다. 실행 파일이 없으면 Unit 6의 Exercise 6-3 안내 문서의 `exercise6-3_run.py` 코드로 파일을 만들어 실행합니다. `ticketing.py` 같은 Unit 6 코드 파일은 `complete_files.md` 6절에서 복사합니다. 이 경우 서버 터미널에 Unit 6의 Exercise 6-3의 `[알림 받음]` 9줄이 먼저 나오므로, Exercise 7-1의 4줄은 그 아래부터 셉니다.
+3. Unit 7에서 받은 파일 두 개(Unit 7 안내 문서, Unit 7 보고서)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
 4. **[터미널]** 담당자 동작 파일을 만들고 **[VS Code]** 에서 열어 아래 내용을 붙여 넣습니다.
    ```bash
    touch status_events.json

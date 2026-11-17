@@ -30,7 +30,7 @@ Unit 1에서는 웹 서버 접속 로그 한 줄을 읽고 이상 징후를 구�
 | `log_parse.py` | Unit 1의 Exercise 1-1에서 만든 파일 | Exercise 2-1 `normalize_web.py` 가 안의 함수 네 개를 불러 씁니다 | 문서 맨 아래 「앞 Unit 파일 완성본」으로 만듭니다 |
 | `access_sample.log` | Unit 1 시작하기에서 만든 샘플 웹 서버 로그(30줄) | Exercise 2-1과 Exercise 2-3에서 읽습니다 | 같은 곳의 완성본으로 만듭니다 |
 
-## 개요
+## 시작하기 순서
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치와 Unit 1의 파일을 확인합니다(맥북은 `python3`). <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나고, `ls` 결과에 `log_parse.py` 와 `access_sample.log` 가 보여야</mark> 합니다. 없으면 맨 아래 「앞 Unit 파일 완성본」으로 먼저 만듭니다. `cd` 가 「No such file or directory」 오류를 내면 `mkdir anomaly_detection` 으로 폴더부터 만들고 들어갑니다.

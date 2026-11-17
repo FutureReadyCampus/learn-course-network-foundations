@@ -16,11 +16,11 @@ source:
 Unit 4에서는 요청을 요청서로 접수하고(`req_create.py`), 승인 · 반려하고(`req_review.py`), 정책으로 확인해 예외 권한을 부여하는(`req_grant.py`) 흐름을 만들었습니다. 이번 Unit에서는 그 흐름이 **정해진 시간 안에** 처리되는지 점검하고, 요청서를 **파일로 저장**해 이력(처리 기록)으로 남깁니다.
 
 - **Exercise 5-1**: 접수한 지 정해진 시간(SLA, 처리 기한)이 지났는데도 처리되지 않은 요청서를 찾는다.
-- **Exercise 5-2**: 요청서 전체를 `requests.json` 으로 저장하고, 상태별 건수를 센다. 마지막 10분에 오늘 만든 것을 깃허브에 올린다.
+- **Exercise 5-2**: 요청서 전체를 `requests.json` 으로 저장하고, 상태별 건수를 센다. 마지막에 오늘 만든 것을 깃허브에 올린다.
 
 이번 Unit은 Exercise 5-1 · 5-2로 이루어집니다. Exercise마다 문제는 하나이고, 그 안에서 단계를 나눠 질문에 답합니다. 깃허브에 올리는 일은 Exercise 5-2 마지막에 합니다.
 
-## 개요
+## 시작하기 순서
 
 1. **[VS Code]** 왼쪽 목록의 `access_control` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** 위치와 Unit 4의 파일을 확인합니다. 결과가 `…/security-agent-toolkit/access_control` 로 끝나야 합니다.

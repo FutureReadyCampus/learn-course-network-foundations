@@ -17,7 +17,7 @@ source:
 
 오늘은 <mark>**연습용 시스템**(실제 서버와 계정 대신 파일로 흉내 낸 시스템)에서 대응이 실제로 일어나는 것</mark>을 봅니다. 실제 서버와 계정은 건드리지 않습니다.
 
-- **Exercise 1-1**: SOAR 가 무엇인지 읽고, **플레이북**(playbook, 플레이북: 「이런 알림이 오면 이렇게 대응한다」를 미리 적어 둔 대응 절차서) 한 건을 직접 씁니다. 그리고 알림 두 건을 **수동 처리**(수동: 프로그램 없이 사람이 직접 하는 처리입니다. 여기서는 VS Code 로 `system_state.json` 을 열어 값을 직접 타이핑해 넣고 저장하는 처리)해 보면서 얼마나 번거로운지 겪습니다.
+- **Exercise 1-1**: SOAR 가 무엇인지 읽고, **플레이북**(playbook, 플레이북: 「이런 알림이 오면 이렇게 대응한다」를 미리 적어 둔 대응 절차서) 한 건을 직접 씁니다. 그리고 알림 두 건을 **수동 처리**(프로그램 없이 사람이 직접 하는 처리)해 봅니다. 여기서는 VS Code 로 `system_state.json` 을 열어 값을 직접 타이핑해 넣고 저장합니다. 이 과정에서 얼마나 번거로운지 겪습니다.
 - **Exercise 1-2**: 같은 일을 프로그램(`playbook_runner.py`)이 하게 만듭니다. <mark>한 번 실행하면 알림 5건이 처리되고, 사람의 승인이 필요한 건은 멈추고, 무엇을 했는지 기록이 남습니다.</mark>
 
 이번 Unit은 Exercise 1-1과 Exercise 1-2로 이루어져 있고, <mark>깃허브에 올리는 일은 Exercise 1-2 마지막에 합니다.</mark> Exercise마다 문제는 하나입니다.
@@ -27,9 +27,9 @@ source:
 - 새로 나오는 용어가 많은 날입니다. <mark>처음 나올 때 한 번씩 풀어 쓰고, 문제를 풀 때는 1.2 와 2.1 의 표를 보면서 풉니다.</mark>
 - 보고서에서 [핵심 질문]이 붙은 질문은 이 Exercise에서 꼭 알아야 할 핵심 질문이고, <mark>내 출력이나 샘플 데이터의 값을 근거로 이유까지 서술합니다</mark>.
 
- **오늘 불러 쓰는 이전 파일**: 없습니다. 오늘 쓰는 데이터(`incident_samples.json`)는 4과목의 점수 파일과 같은 내용을 오늘 수업용 예시 데이터로 아래 시작하기에 적어 두었고, 그것을 붙여 넣어 만듭니다. 그래서 4과목 파일이 없어도 그대로 따라 할 수 있습니다. Exercise 1-2는 Exercise 1-1에서 만드는 `config/playbook_registry.json` 을 읽습니다(없으면 `complete_files.md` 의 1절이나 Exercise 1-1 의 「Exercise 1-1 정답」 완성본으로 만듭니다).
+ **오늘 불러 쓰는 이전 파일**: 없습니다. 오늘 쓰는 데이터(`incident_samples.json`)는 4과목의 점수 파일과 같은 내용입니다. 이 내용을 아래에 예시 데이터로 적어 두었으니 붙여 넣어 만듭니다. 그래서 4과목 파일이 없어도 그대로 따라 할 수 있습니다. Exercise 1-2는 Exercise 1-1에서 만드는 `config/playbook_registry.json` 을 읽습니다(없으면 `complete_files.md` 의 1절이나 Exercise 1-1 의 「Exercise 1-1 정답」 완성본으로 만듭니다).
 
-## 개요
+## 시작하기 순서
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** 지금 위치를 확인합니다. <mark>`pwd` 결과가 `…/security-agent-toolkit` 으로 끝나고, `ls` 결과에 `anomaly_detection` 폴더가 보이면</mark> 됩니다. 결과가 다르면 `security-agent-toolkit` 폴더에서 터미널을 새로 엽니다.

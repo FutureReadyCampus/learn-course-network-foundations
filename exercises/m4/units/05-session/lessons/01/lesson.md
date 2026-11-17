@@ -13,7 +13,7 @@ source:
 
 ## 개요
 
-Unit 4에서는 로그인 실패 규칙과 이벤트 유형 규칙을 만들었습니다. 이번 Unit에서는 **요청이 갑자기 늘어난 때(트래픽 급증, traffic spike, 트래픽 스파이크)** 를 찾는 규칙을 하나 더 만들고, Unit 4와 이번 Unit의 탐지 결과를 **알림 한 파일**로 모읍니다. SIEM(심, 보안 로그를 모아 탐지 · 알림하는 시스템)의 네 단계 중 탐지를 마무리하고 마지막 단계인 **알림**을 처음 해 보는 날입니다.
+Unit 4에서는 로그인 실패 규칙과 이벤트 유형 규칙을 만들었습니다. 이번 Unit에서는 **요청이 갑자기 늘어난 때(트래픽 급증, traffic spike, 트래픽 스파이크)** 를 찾는 규칙을 하나 더 만들고, Unit 4와 이번 Unit의 탐지 결과를 **알림 한 파일**로 모읍니다. SIEM(심, 보안 로그를 모아 탐지하고 알림을 보내는 시스템)의 네 단계 중 탐지를 마무리하고, 마지막 단계인 **알림**을 처음 해 봅니다.
 
 - **Exercise 5-1**: 웹 서버 요청을 분마다 세고, 지난 7일 평균의 3배 이상으로 늘어난 분을 찾습니다.
 - **Exercise 5-2**: 로그인 실패 알림과 트래픽 급증 알림을 같은 모양으로 만들어 `alerts.json` 한 파일에 저장합니다.
@@ -31,7 +31,7 @@ Unit 4에서는 로그인 실패 규칙과 이벤트 유형 규칙을 만들었�
 | `normalized_events.json` | Unit 4 안내의 시작하기 5번 | Exercise 5-2 | 그 안내 시작하기 5번의 내용으로 파일을 만듭니다 |
 | `login_detection.py` | Exercise 4-2 | Exercise 5-2 `exercise5-2_run.py` 가 불러옵니다 | Unit 4 안내의 Exercise 4-2 `login_detection.py` 코드 칸을 붙여 넣고, 「Exercise 4-2 정답」의 「채운 코드」를 빈칸 자리에 넣어 파일을 완성합니다. `pick_alert_ips` 는 주소와 횟수를 담은 결과(`Series`)를 리턴해야 합니다 |
 
-## 개요
+## 시작하기 순서
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치와 Unit 4의 파일을 확인합니다. <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나고, `ls` 결과에 `login_detection.py` 와 `normalized_events.json` 이 보여야</mark> 합니다.

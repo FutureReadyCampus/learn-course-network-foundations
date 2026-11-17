@@ -15,10 +15,10 @@ source:
 
 > **오늘 들어온 일**
 > A사 보안 담당이 보낸 메시지: 「표는 좋습니다. 이제 요청이 들어오면 이 표대로 허용 · 거부를 정하는 프로그램을 만들어 주세요. 거부할 때는 왜 거부했는지도 남겨야 감사 때 설명할 수 있습니다.」
-> - 이 Exercise에서 하는 일: Exercise 1-1에 쓴 사용자 파일과 역할 파일을 읽어, 사용자 · 자원 · 행위를 받아 **(허용 여부, 이유)** 를 리턴하는 함수 `check_permission` 을 `rbac.py` 에 직접 씁니다.
+> - 이 Exercise에서 하는 일: Exercise 1-1에서 만든 사용자 파일과 역할 파일을 읽습니다. 그리고 사용자 · 자원 · 행위를 받아 **(허용 여부, 이유)** 를 리턴하는 함수 `check_permission` 을 `rbac.py` 에 직접 씁니다.
 > - 끝나면 쓰는 것: 보고서 (가)~(다) 답
 
-> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「 문제」 전까지는 이 Exercise의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
+> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「Exercise」 전까지는 이 Exercise의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
 
 ## 읽기 · 왜 필요한가
 
@@ -149,25 +149,25 @@ print(permission not in ROLES["finance"]) # True  · finance 에는 없음
 
 ## Exercise 1-2 · 권한 판정 함수 check_permission 직접 쓰기
 
-** 이런 상황이 있습니다**
+**이런 상황이 있습니다**
 
 - 판정 함수의 첫 검사(등록되지 않은 사용자)는 미리 써 두었습니다. 담당자는 나머지 세 검사를 직접 써서, 모든 실패 경로가 거부되고 이유가 서로 다르게 남게 해야 합니다.
 - 현업의 접근통제 코드는 이렇게 검사를 위에서부터 차례로 걸고, 끝까지 지난 경우에만 허용합니다.
 
-** 할 일**
+**할 일**
 
 1. 아래 코드로 `rbac.py` 를 만들고, `# ←` 가 있는 <mark>다섯 곳</mark>을 채웁니다.
 2. 요청 아홉 건을 판정하는 `exercise1-2_run.py` 를 만들어 실행합니다.
 3. 채우기 <mark>전과 후</mark>의 판정을 비교합니다.
 
-**준비** — 아래 `rbac.py` 는 Exercise 1-1(Exercise 1-1)에 쓴 두 파일 `config/users.json` 과 `config/roles.json` 을 **읽습니다.** 그 파일이 없으면 코드가 시작하자마자 멈춥니다. 터미널이 `…/access_control` 위치인지 확인한 뒤(아니면 `cd access_control` 로 들어갑니다) 두 파일이 있는지 봅니다.
+**준비** — 아래 `rbac.py` 는 Exercise 1-1에서 만든 두 파일 `config/users.json` 과 `config/roles.json` 을 **읽습니다.** 그 파일이 없으면 코드가 시작하자마자 멈춥니다. 터미널이 `…/access_control` 위치인지 확인한 뒤(아니면 `cd access_control` 로 들어갑니다) 두 파일이 있는지 봅니다.
 
 ```bash
 ls config
 ```
 
 - 명령 풀이: `ls` 폴더 안의 파일 이름 리스트 · `config` 볼 폴더
-- `roles.json` 과 `users.json` 두 개가 나와야 합니다. 없으면 Exercise 1-1 Exercise 1-1 로 돌아가 만듭니다. 없는 채로 실행하면 `FileNotFoundError: [Errno 2] No such file or directory: 'config/roles.json'` 오류가 납니다.
+- `roles.json` 과 `users.json` 두 개가 나와야 합니다. 없으면 Exercise 1-1로 돌아가 만듭니다. 없는 채로 실행하면 `FileNotFoundError: [Errno 2] No such file or directory: 'config/roles.json'` 오류가 납니다.
 
 **`rbac.py`**
 
@@ -248,7 +248,7 @@ for user, resource, action in REQUESTS:                          # 요청을 하
    ```
    - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise1-2_run.py` 실행할 파일
    맥북: `python3 exercise1-2_run.py`
-4. **[VS Code]** `rbac.py` 의 `# ←` 다섯 곳을 채웁니다. 실행은 VS Code 의 ▶ 단추가 아니라 터미널에서 합니다. `config/` 파일을 지금 위치(`…/access_control`) 기준으로 찾기 때문입니다. 2.1 의 판정 순서 그림을 보고 씁니다.
+4. **[VS Code]** `rbac.py` 의 `# ←` 다섯 곳을 채웁니다. 2.1 의 판정 순서 그림을 보고 씁니다. 실행은 VS Code 의 ▶ 단추가 아니라 터미널에서 합니다. 코드가 `config/` 파일을 지금 위치(`…/access_control`) 기준으로 찾기 때문입니다.
 5. **[터미널]** 다시 실행합니다. 아홉 줄의 결과와 이유가 2.1 의 그림에서 읽은 것과 같은지 확인합니다.
    ```bash
    python exercise1-2_run.py

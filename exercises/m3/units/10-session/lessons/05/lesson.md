@@ -471,7 +471,7 @@ ZeroDivisionError: division by zero
 
 ## 앞 Exercise 파일 완성본
 
-앞 Exercise 파일이 없거나 잘 안 될 때 이 코드로 만듭니다. 데이터 파일 세 개는 「시작하기」 6번의 내용입니다.
+Exercise 10-1 · 10-2 에서 만든 파일이 없거나 잘 안 될 때 이 코드로 만듭니다. 데이터 파일 세 개는 「시작하기」 6번의 내용입니다.
 
 **`checklist.py`** (Exercise 10-1 완성본)
 

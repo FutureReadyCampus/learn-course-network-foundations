@@ -53,13 +53,13 @@ source:
 | 10/31 | 2 |
 | 11/1 | 2 |
 
-- 평균은 (2 + 2 + 3 + 2 + 1 + 2 + 2) ÷ 7 = **1.0**이고, <mark>급증 기준은 1.0 × 3 = **2.0**번입니다.</mark>
-- Exercise 4-1과 같은 순서입니다: 평소를 구하고, 그 숫자에서 기준을 정합니다. <mark>달라진 점은 「최댓값 + 1」 대신 「평균의 3배」를 쓴다는 것입니다.</mark> 1분 요청 수는 1 ~ 3개로 자주 달라져서, 평균의 3배 이상일 때만 급증으로 보기 위해서입니다.
+- 평균은 (2 + 2 + 3 + 2 + 1 + 2 + 2) ÷ 7 = **2.0**이고, <mark>급증 기준은 2.0 × 3 = **6.0**번입니다.</mark>
+- Exercise 4-1과 같은 순서입니다: 평소를 구하고, 그 숫자에서 기준을 정합니다. <mark>달라진 점은 「최댓값 + 1」 대신 「평균의 3배」를 쓴다는 것입니다.</mark> 1분 요청 수는 1 ~ 3개로 자주 달라집니다. 그래서 평균의 3배 이상일 때만 급증으로 봅니다.
 - 이번 Unit에서는 이 기준을 **고정**하고, 값을 바꿔 가며 비교하지 않습니다.
 - 이 규칙은 분마다 요청이 **몇 개**인지만 봅니다. <mark>요청의 내용(어떤 경로를 요청했는지)은 보지 않습니다.</mark>
 - 급증은 이상 징후(평소 범위를 벗어난 일)의 한 종류입니다. <mark>급증이 있다고 공격이 확정되는 것은 아니고,</mark> 먼저 확인할 대상이 정해질 뿐입니다.
 
-** 판다스 문법 상자 — 시각에서 초를 버려 분으로 맞추기**
+**판다스 문법 상자 — 시각에서 초를 버려 분으로 맞추기**
 
 **<mark>`시각.dt.floor("min")`</mark> 은 시각에서 초를 버리고 분까지만 남깁니다. `09:12:03` 도 `09:12:15` 도 `09:12:00` 이 되어, 같은 분의 이벤트가 같은 값을 갖습니다**
 
@@ -168,7 +168,7 @@ Name: count, dtype: int64
 
 ## Exercise 5-1 · 웹 서버 요청을 분마다 세어 요청이 급증한 분 찾기
 
-** 이런 상황이 있습니다**
+**이런 상황이 있습니다**
 
 - **지금은**: 웹 서버 이벤트 28개가 초 단위로 흩어져 있어서, 어느 1분에 요청이 늘었는지 한눈에 안 보입니다.
 - **그래서 만드는 것**: `traffic_detection.py` 입니다.
@@ -178,7 +178,7 @@ Name: count, dtype: int64
 - **실행하면**: 단계 1: 시각과 분 비교, 단계 2: 분당 요청 수, 단계 3: 급증 기준, 단계 4: 요청이 급증한 분이 나옵니다.
 - **현업에서는**: 트래픽 급증 규칙은 서버 장애와 공격을 함께 탐지하는 기본 규칙입니다. 알림이 오면 그 분의 요청을 누가 보냈는지부터 봅니다.
 
-** 할 일**
+**할 일**
 
 1. `traffic_detection.py` · `exercise5-1_run.py` **두 파일**을 만들고, `traffic_detection.py` 의 **네 함수**에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>시각과 분의 차이</mark>(단계 1), <mark>분당 요청 수</mark>(단계 2), <mark>급증 기준</mark>(단계 3), <mark>요청이 급증한 분</mark>(단계 4)를 읽습니다.
@@ -249,7 +249,7 @@ def pick_spike_minutes(minute_request_counts, limit):            # 분마다 요
 - 번호 주석이 연달아 붙어 있어도(예: 5 · 6번), <mark>주석 사이마다 줄을 끼워 넣어 각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark>
 - 채우기 전에 실행하면 `NameError: name 'minutes' is not defined` 오류가 납니다. 1번을 아직 안 써서 `minutes` 가 없기 때문입니다.
 
-**`exercise5-1_run.py`** — **그대로 붙여 넣습니다.** 학생이 쓰는 줄은 없습니다. `.head(3)` 는 열의 처음 3개만 꺼냅니다.
+**`exercise5-1_run.py`** — **그대로 붙여 넣습니다.** 직접 쓰는 줄은 없습니다. `.head(3)` 는 열의 처음 3개만 꺼냅니다.
 
 ```python
 from traffic_detection import load_events, add_minute_column, count_web_per_minute, make_traffic_limit, pick_spike_minutes, EVENTS_PATH, TRAFFIC_PATH, SPIKE_MULTIPLE  # 방금 만든 함수를 불러온다
@@ -286,7 +286,7 @@ print(spike_minutes)                                                            
    python exercise5-1_run.py
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise5-1_run.py` 파이썬으로 실행 파일 실행
-4. 출력은 **네 단계**입니다. `--- 단계` 제목 줄은 세지 않습니다. 단계 1은 시각 4줄과 분 4줄(각각 마지막은 `Name:` 줄), 단계 2는 16줄(`minute` 줄 · 분마다 14줄 · `dtype:` 줄), 단계 3은 제목 줄에 숫자가 함께 나오고, 단계 4는 3줄(`minute` 줄 · 급증한 분 한 줄 · `dtype:` 줄)입니다. (나) · (다)에서 이벤트를 찾을 때는 VS Code 로 `normalized_events.json` 을 열고 `Ctrl + F`(맥북은 `Cmd + F`)로 `09:12` 또는 `09:20` 을 검색하고, `source` 가 `web` 인 줄만 셉니다. 이벤트 하나의 키는 `time · source · user · ip · action · result` 입니다.
+4. 출력은 **네 단계**입니다. `--- 단계` 제목 줄은 세지 않습니다. 단계 1은 시각 4줄과 분 4줄(각각 마지막은 `Name:` 줄), 단계 2는 16줄(`minute` 줄 · 분마다 14줄 · `dtype:` 줄), 단계 3은 제목 줄에 숫자가 함께 나오고, 단계 4는 3줄(`minute` 줄 · 급증한 분 한 줄 · `dtype:` 줄)입니다. 보고서 (나) · (다)에서 이벤트를 찾을 때는 VS Code 로 `normalized_events.json` 을 열고 `Ctrl + F`(맥북은 `Cmd + F`)로 `09:12` 또는 `09:20` 을 검색하고, `source` 가 `web` 인 줄만 셉니다. 이벤트 하나의 키는 `time · source · user · ip · action · result` 입니다.
 5. **[보고서]** Unit 5 의 `## Exercise 5-1` › `### Exercise 5-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 급증 기준과 요청이 급증한 분(시각과 요청 수)을 적어 주세요.
    - (나) [핵심 질문] `normalized_events.json` 에서 `time` 이 `2026-11-02 09:12` 로 시작하는 웹 서버(`source` 가 `web`) 줄을 찾아, ① 요청을 보낸 IP 주소와 ② 행동(`action`)별 횟수를 적어 주세요. 그리고 ③ 이 급증을 공격이라고 확정할 수 있는지 이유와 함께 적어 주세요.
@@ -298,7 +298,7 @@ print(spike_minutes)                                                            
 |---|---|
 | 초를 버려 분으로 | `minutes = times.dt.floor("min")` → `events["minute"] = minutes` |
 | 웹 서버 이벤트만 | `is_web = events["source"] == "web"` → `web_events = events[is_web]` |
-| 급증 기준 | `limit = average * multiple` (평균 1.0 × 3 = 2.0) |
+| 급증 기준 | `limit = average * multiple` (평균 2.0 × 3 = 6.0) |
 | 기준 이상인 분 | `is_spike = minute_request_counts >= limit` → `spike_minutes = minute_request_counts[is_spike]` |
 
 ---
