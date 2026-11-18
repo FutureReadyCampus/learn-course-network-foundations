@@ -30,6 +30,20 @@
     boxes.forEach((box) => box.classList.add("no-copy"));
     const addNote = (box, text) => { const note = document.createElement("p"); note.className = "no-copy-note"; note.textContent = text; box.before(note); };
     if (boxes.length) addNote(boxes[0], "코드 상자는 복사할 수 없습니다. 눈으로 읽으면서 직접 입력해 보세요.");
+    open.forEach((box) => {
+      const wrap = document.createElement("div");
+      wrap.className = "code-wrap";
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "code-copy";
+      button.textContent = "복사";
+      button.addEventListener("click", () => navigator.clipboard.writeText(box.textContent).then(() => {
+        button.textContent = "복사됨";
+        setTimeout(() => { button.textContent = "복사"; }, 1500);
+      }));
+      box.before(wrap);
+      wrap.append(box, button);
+    });
     if (open.length) addNote(open[0], "Python 코드는 복사해서 쓸 수 있습니다. 「직접 씁니다」 아래 빈칸은 직접 채워 보세요.");
   };
   if (window.NETWORK_NO_COPY && !window.__noCopyBound) {

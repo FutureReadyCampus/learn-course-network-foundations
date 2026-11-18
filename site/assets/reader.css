@@ -212,3 +212,6 @@ button { color: inherit; }
 .file-card p { margin: 0 0 10px; color: var(--muted); }
 .file-level { margin-inline-start: 6px; padding: 1px 9px; border-radius: 999px; background: var(--surface-muted); color: var(--muted); font-size: .75rem; font-weight: 700; vertical-align: middle; }
 .file-toc { padding-inline-start: 1.4em; }
+.code-wrap { position: relative; }
+.code-copy { position: absolute; top: 6px; right: 6px; padding: 2px 10px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg, #fff); color: var(--muted); font-size: .75rem; cursor: pointer; }
+.code-copy:hover { color: inherit; }
