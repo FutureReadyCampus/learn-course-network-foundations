@@ -7,10 +7,11 @@
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     .replace(/\*([^*]+)\*/g, "<em>$1</em>")
     .replace(/\[([^\]]+)\]\((https?:[^\s)]+)\)/g, '<a href="$2" rel="noreferrer">$1</a>');
-  const routeFor = (unitIndex, lessonIndex, pageIndex) => `${base}/m2-network/unit/${unitIndex + 1}/lesson/${lessonIndex + 1}/page/${pageIndex + 1}`;
+  const seg = base.includes("/exercises/") ? "" : "/m2-network"; // Foundations keeps its published /m2-network URLs
+  const routeFor = (unitIndex, lessonIndex, pageIndex) => `${base}${seg}/unit/${unitIndex + 1}/lesson/${lessonIndex + 1}/page/${pageIndex + 1}`;
   const parseRoute = (course) => {
     const path = location.pathname.slice(base.length) || "/";
-    const found = path.match(/\/m2-network\/unit\/(\d+)\/lesson\/(\d+)\/page\/(\d+)/);
+    const found = path.slice(seg.length).match(/^\/unit\/(\d+)\/lesson\/(\d+)\/page\/(\d+)/);
     if (!found) return { unitIndex: 0, lessonIndex: 0, pageIndex: 0 };
     const unitIndex = Number(found[1]) - 1;
     const unit = course.units[unitIndex];
@@ -49,6 +50,7 @@
       : "Python 코드는 복사해서 쓸 수 있습니다. 「직접 씁니다」 아래 빈칸은 직접 채워 보세요.");
   };
   if (window.NETWORK_NO_COPY && !window.__noCopyBound) {
+    document.documentElement.style.setProperty("--measure", "912px");  // exercise pages: 20% wider than the 760px reading width
     window.__noCopyBound = true;
     const inLocked = (node) => (node && (node.nodeType === 1 ? node : node.parentElement))?.closest?.(".no-copy");
     const selectionLocked = () => { const sel = getSelection(); return !!sel && (inLocked(sel.anchorNode) || inLocked(sel.focusNode)); };
