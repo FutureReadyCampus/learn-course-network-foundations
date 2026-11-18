@@ -90,7 +90,7 @@ button { color: inherit; }
 .net-table th { background: var(--surface-muted); font-weight: 700; }
 .net-table tbody tr:last-child td { border-block-end: 0; }
 .net-prose code { padding: .08em .28em; border: 1px solid var(--border); border-radius: 4px; background: var(--surface-muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .88em; overflow-wrap: anywhere; }
-.net-prose pre { overflow-x: auto; padding: 14px 16px; border: 1px solid var(--border); border-radius: 9px; background: var(--surface); line-height: 1.6; }
+.net-prose pre { white-space: pre-wrap; overflow-wrap: anywhere; overflow-x: auto; padding: 14px 16px; border: 1px solid var(--border); border-radius: 9px; background: var(--surface); line-height: 1.6; }
 .net-prose pre code { padding: 0; border: 0; background: transparent; }
 .page-quiz { max-width: 912px; margin: 38px auto 28px; padding: 22px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
 .page-quiz > h2 { margin: 0 0 18px; font-size: 1.25rem; }
