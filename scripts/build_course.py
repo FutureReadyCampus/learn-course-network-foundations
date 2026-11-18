@@ -531,7 +531,16 @@ def markdown_pages(path: Path) -> list[dict]:
         return (f'<figure class="page-figure"><img src="/api/v1/network-course-assets/{repository_asset_path(svg)}" '
                 f'alt="{alt}" loading="lazy"></figure>')
 
-    return [{"title": title, "paragraphs": [], "html": figure(i) + iconize(md.render("\n".join(body))), "terms": [], "questions": []}
+    def inline_figures(html: str) -> str:
+        """<img src="assets/x.svg"> written in a Lesson points at that Lesson's own assets folder."""
+        def fix(match: "re.Match[str]") -> str:
+            asset = path.parent / "assets" / match.group(1)
+            if not asset.is_file():
+                raise FileNotFoundError(f"Missing figure {match.group(1)} in {path}")
+            return f'src="/api/v1/network-course-assets/{repository_asset_path(asset)}"'
+        return re.sub(r'src="assets/([^"]+)"', fix, html)
+
+    return [{"title": title, "paragraphs": [], "html": figure(i) + inline_figures(iconize(md.render("\n".join(body)))), "terms": [], "questions": []}
             for i, (title, body) in enumerate(sections, 1)]
 
 
