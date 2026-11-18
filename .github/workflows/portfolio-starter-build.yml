@@ -1,0 +1,40 @@
+name: Portfolio starter builds on GitHub Pages
+
+# Builds portfolio-starter/ with the same Jekyll setup GitHub Pages uses for "Deploy from a branch",
+# so the files learners copy from the course keep working. Nothing is published.
+on:
+  pull_request:
+    paths:
+      - portfolio-starter/**
+      - .github/workflows/portfolio-starter-build.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  jekyll:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Build with the GitHub Pages Jekyll action
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./portfolio-starter
+          destination: ./_site
+
+      - name: Check the built site
+        run: |
+          set -e
+          test -f _site/index.html
+          grep -q "네트워크 실습 노트" _site/index.html
+          test -f _site/about/index.html
+          # the sample post (dated in the past) must be published and listed on the first page
+          test -f _site/2026/01/01/hello.html
+          grep -q "hello.html" _site/index.html
+          # files meant to stay out of the site
+          test ! -e _site/README.md
+          test ! -e _site/check_publish.py
+          test ! -e _site/_templates
+          echo "starter site OK"

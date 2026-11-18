@@ -10,6 +10,8 @@ url: "https://<내 아이디>.github.io"   # ← 내 것으로 바꾸기
 baseurl: "/network-study-notes"        # ← 내 것으로 바꾸기
 
 lang: ko
+# 한국 시간으로 쓴 글이 "미래 날짜"로 취급되어 안 보이는 일을 막습니다. 지우지 않습니다.
+timezone: Asia/Seoul
 theme: minima
 markdown: kramdown
 
