@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 582" role="img">
+<title>find_stale 은 권한마다 퇴사와 만료 예외를 차례로 묻고, 걸린 권한에 이유를 적어 모은다</title>
+<desc>현황의 권한을 한 건씩 꺼내 employed 가 False 인지, 예외 권한의 만료 시각이 now 와 같거나 지났는지 묻습니다. 걸리면 reason 을 적고, reason 이 적힌 권한만 복사해 stale 에 추가합니다. 모든 권한을 꺼낸 뒤 stale 을 리턴합니다.</desc>
+<defs><marker id="a-f01-0603" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#292929">
+<rect x="56" y="14" width="420" height="48" rx="4" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="266.0" y="34" text-anchor="middle" font-weight="700">find_stale(access_list, now)</text>
+<text x="266.0" y="52" text-anchor="middle">현황과 지금 시각을 받아, 규칙에 걸린 권한을 골라 리턴</text>
+<rect x="56" y="84" width="420" height="48" rx="4" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="266.0" y="104" text-anchor="middle">stale = []</text>
+<text x="266.0" y="122" text-anchor="middle">규칙에 걸린 권한을 담을 리스트</text>
+<polyline points="266.0,62 266.0,83" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0603)"/>
+<rect x="56" y="154" width="420" height="48" rx="4" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="266.0" y="174" text-anchor="middle">현황의 권한을 한 건씩 꺼낸다</text>
+<text x="266.0" y="192" text-anchor="middle">아래 판단을 권한마다 되풀이한다</text>
+<polyline points="266.0,132 266.0,153" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0603)"/>
+<rect x="56" y="224" width="420" height="30" rx="14" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="266.0" y="244" text-anchor="middle">employed 가 False 인가?</text>
+<polyline points="266.0,202 266.0,223" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0603)"/>
+<rect x="56" y="276" width="420" height="48" rx="14" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="266.0" y="296" text-anchor="middle">예외 권한이고(expires 가 있고)</text>
+<text x="266.0" y="314" text-anchor="middle">만료 시각이 now 와 같거나 지났나?</text>
+<polyline points="266.0,254 266.0,275" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0603)"/>
+<text x="256.0" y="270.0" text-anchor="end" fill="#666660">아니다</text>
+<rect x="56" y="372" width="420" height="48" rx="14" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="266.0" y="392" text-anchor="middle">reason 이 비어 있나?</text>
+<text x="266.0" y="410" text-anchor="middle">(규칙에 안 걸림)</text>
+<polyline points="266.0,324 266.0,371" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0603)"/>
+<text x="276.0" y="363" text-anchor="start" fill="#666660">아니다</text>
+<rect x="56" y="442" width="420" height="48" rx="4" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="266.0" y="462" text-anchor="middle">권한을 복사해 reason 키를 적고</text>
+<text x="266.0" y="480" text-anchor="middle">stale 에 추가한다</text>
+<polyline points="266.0,420 266.0,441" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0603)"/>
+<text x="256.0" y="436.0" text-anchor="end" fill="#666660">아니다 (reason 이 적혔으면)</text>
+<rect x="56" y="538" width="420" height="30" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="266.0" y="558" text-anchor="middle">stale 을 리턴한다</text>
+<polyline points="266.0,490 266.0,537" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0603)"/>
+<text x="276.0" y="529" text-anchor="start" fill="#666660">모든 권한을 꺼낸 뒤</text>
+<rect x="520" y="215.0" width="170" height="48" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="605.0" y="235.0" text-anchor="middle">reason =</text>
+<text x="605.0" y="253.0" text-anchor="middle">"퇴사한 계정"</text>
+<polyline points="476,239.0 519,239.0" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0603)"/>
+<text x="498.0" y="232.0" text-anchor="middle" fill="#666660">그렇다</text>
+<polyline points="690,239.0 706,239.0 706,339 269.0,339" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0603)"/>
+<rect x="520" y="276.0" width="170" height="48" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="605.0" y="296.0" text-anchor="middle">reason =</text>
+<text x="605.0" y="314.0" text-anchor="middle">"만료된 예외"</text>
+<polyline points="476,300.0 519,300.0" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0603)"/>
+<text x="498.0" y="293.0" text-anchor="middle" fill="#666660">그렇다</text>
+<polyline points="690,300.0 706,300.0 706,339 269.0,339" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0603)"/>
+<rect x="520" y="381.0" width="170" height="30" rx="4" fill="#f1f1ef" stroke="#666660" stroke-width="1.5"/>
+<text x="605.0" y="401.0" text-anchor="middle">다음 권한으로</text>
+<polyline points="476,396.0 519,396.0" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0603)"/>
+<text x="498.0" y="389.0" text-anchor="middle" fill="#666660">그렇다</text>
+<polyline points="690,396.0 706,396.0 706,505 269.0,505" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0603)"/>
+<polyline points="266.0,505 30,505 30,178.0 55,178.0" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0603)"/>
+<text x="22" y="341.5" text-anchor="middle" fill="#666660" transform="rotate(-90 22 341.5)">다음 권한으로</text>
+<circle cx="266.0" cy="505" r="3" fill="#666660"/>
+</g></svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img">
+<title>터미널 2의 send_checks.py 가 요청을 보내면 터미널 1의 access_server.py 가 응답한다</title>
+<desc>요청을 보내는 쪽은 /check 주소에 user, resource, action, network, time 값을 붙여 서버에 요청합니다. 서버는 상태 코드 200, 403, 400 중 하나와 allowed, reason 을 담은 응답을 돌려줍니다. 요청을 보내는 쪽이 그 응답을 받습니다.</desc>
+<defs><marker id="a-f01-0903" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<rect x="16" y="80" width="190" height="120" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="111.0" y="126.0" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">요청을 보내는 쪽</text>
+<text x="111.0" y="145.0" font-size="14" fill="#292929" text-anchor="middle">터미널 2에서 실행하는</text>
+<text x="111.0" y="164.0" font-size="14" fill="#292929" text-anchor="middle">send_checks.py</text>
+<rect x="514" y="80" width="190" height="120" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="609.0" y="126.0" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">서버 쪽</text>
+<text x="609.0" y="145.0" font-size="14" fill="#292929" text-anchor="middle">터미널 1에서 켠</text>
+<text x="609.0" y="164.0" font-size="14" fill="#292929" text-anchor="middle">access_server.py</text>
+<path d="M206 110 L514 110" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0903)"/>
+<text x="360" y="44" font-size="15" fill="#666660" text-anchor="middle" font-weight="700">요청</text>
+<text x="360" y="66" font-size="14" fill="#666660" text-anchor="middle">/check?user=…&amp;resource=…</text>
+<text x="360" y="86" font-size="14" fill="#666660" text-anchor="middle">&amp;action=…&amp;network=…&amp;time=…</text>
+<path d="M514 170 L206 170" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0903)"/>
+<text x="360" y="196" font-size="15" fill="#666660" text-anchor="middle" font-weight="700">응답</text>
+<text x="360" y="218" font-size="14" fill="#666660" text-anchor="middle">상태 코드(200 · 403 · 400)와</text>
+<text x="360" y="238" font-size="14" fill="#666660" text-anchor="middle">{"allowed": …, "reason": …}</text>
+<text x="111" y="226" font-size="14" fill="#666660" text-anchor="middle">요청을 보내는 쪽이</text>
+<text x="111" y="246" font-size="14" fill="#666660" text-anchor="middle">응답을 받는다</text>
+</g>
+</svg>

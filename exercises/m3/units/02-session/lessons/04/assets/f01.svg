@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>예외 하나마다 만료 여부를 먼저, 퇴사 여부를 다음에 보고 회수나 유지를 정한다</title>
+<desc>예외를 하나 꺼내 만료 시각이 지났는지(NOW &gt;= expires) 본다. 지났으면 만료됨으로 회수하고, 아니면 그 사용자가 재직 중이 아닌지 봐서 맞으면 퇴사자로 회수하고 아니면 유지한다.</desc>
+<defs><marker id="a-f01-u2l4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<rect x="40" y="20" width="340" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="210.0" y="47.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">예외 하나를 꺼낸다</text>
+<polyline points="210,64 210,98" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f01-u2l4)"/>
+<rect x="40" y="100" width="340" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="210.0" y="122.4" font-size="15" fill="#292929" text-anchor="middle">만료 시각이 지났나?</text>
+<text x="210.0" y="144.1" font-size="15" fill="#292929" text-anchor="middle">(NOW &gt;= expires)</text>
+<polyline points="380,128 458,128" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f01-u2l4)"/>
+<text x="419" y="120" font-size="14" fill="#666660" text-anchor="middle">예</text>
+<rect x="460" y="106" width="230" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="575.0" y="133.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">[회수] 만료됨</text>
+<polyline points="210,156 210,208" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f01-u2l4)"/>
+<text x="222" y="188" font-size="14" fill="#666660" text-anchor="start">아니오</text>
+<rect x="40" y="210" width="340" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="210.0" y="239.2" font-size="15" fill="#292929" text-anchor="middle">그 사용자가 재직 중이 아닌가?</text>
+<polyline points="380,234 458,234" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f01-u2l4)"/>
+<text x="419" y="226" font-size="14" fill="#666660" text-anchor="middle">예</text>
+<rect x="460" y="212" width="230" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="575.0" y="239.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">[회수] 퇴사자</text>
+<polyline points="210,258 210,308" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f01-u2l4)"/>
+<text x="222" y="290" font-size="14" fill="#666660" text-anchor="start">아니오</text>
+<rect x="150" y="310" width="120" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="210.0" y="337.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">[유지]</text>
+</g>
+</svg>
