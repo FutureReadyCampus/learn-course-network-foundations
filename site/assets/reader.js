@@ -7,10 +7,11 @@
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     .replace(/\*([^*]+)\*/g, "<em>$1</em>")
     .replace(/\[([^\]]+)\]\((https?:[^\s)]+)\)/g, '<a href="$2" rel="noreferrer">$1</a>');
-  const routeFor = (unitIndex, lessonIndex, pageIndex) => `${base}/m2-network/unit/${unitIndex + 1}/lesson/${lessonIndex + 1}/page/${pageIndex + 1}`;
+  const seg = base.includes("/exercises/") ? "" : "/m2-network"; // Foundations keeps its published /m2-network URLs
+  const routeFor = (unitIndex, lessonIndex, pageIndex) => `${base}${seg}/unit/${unitIndex + 1}/lesson/${lessonIndex + 1}/page/${pageIndex + 1}`;
   const parseRoute = (course) => {
     const path = location.pathname.slice(base.length) || "/";
-    const found = path.match(/\/m2-network\/unit\/(\d+)\/lesson\/(\d+)\/page\/(\d+)/);
+    const found = path.slice(seg.length).match(/^\/unit\/(\d+)\/lesson\/(\d+)\/page\/(\d+)/);
     if (!found) return { unitIndex: 0, lessonIndex: 0, pageIndex: 0 };
     const unitIndex = Number(found[1]) - 1;
     const unit = course.units[unitIndex];
