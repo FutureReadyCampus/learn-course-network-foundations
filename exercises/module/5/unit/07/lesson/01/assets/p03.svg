@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 350" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <title>오류가 나면 증상을 보고 위치, 파일, 알림 서버를 확인해 고친다</title>
-<desc>세 가지 증상마다 확인할 것과 고치는 방법을 나란히 놓았다. 위치가 다르면 cd soar_response, 모듈이 없으면 complete_files.md 에서 복사, ConnectionError 면 알림 서버를 다시 켠다.</desc>
+<desc>세 가지 증상마다 확인할 것과 고치는 방법을 나란히 놓았다. 위치가 다르면 cd soar_response, 모듈이 없으면 앞 레슨의 코드 상자로 만들기, ConnectionError 면 알림 서버를 다시 켠다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">오류가 나면 · 증상 → 확인 → 고치기</text>
 <text x="125" y="68" font-size="15" font-weight="bold" fill="#666660" text-anchor="middle">증상</text>
@@ -21,8 +21,8 @@
 <text x="360.0" y="198.1" font-size="14" fill="#292929" text-anchor="middle">Unit 6 파일 ·</text>
 <text x="360.0" y="217.7" font-size="14" fill="#292929" text-anchor="middle">incident.py · notifier.py</text>
 <rect x="490" y="168" width="210" height="70" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="595.0" y="197.8" font-size="15" fill="#292929" text-anchor="middle">complete_files.md</text>
-<text x="595.0" y="218.8" font-size="15" fill="#292929" text-anchor="middle">에서 복사</text>
+<text x="595.0" y="197.8" font-size="15" fill="#292929" text-anchor="middle">앞 레슨의</text>
+<text x="595.0" y="218.8" font-size="15" fill="#292929" text-anchor="middle">코드 상자로 만들기</text>
 <line x1="232" y1="203" x2="253" y2="203" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
 <line x1="467" y1="203" x2="488" y2="203" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
 <rect x="20" y="254" width="210" height="70" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>

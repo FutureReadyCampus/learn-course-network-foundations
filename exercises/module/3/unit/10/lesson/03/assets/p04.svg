@@ -42,7 +42,7 @@
 <text x="326" y="345" font-size="15" fill="#292929" text-anchor="middle">로그에서 요청 비교</text>
 <line x1="438" y1="328" x2="460" y2="328" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
 <rect x="462" y="286" width="238" height="84" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="581" y="322.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">보고서 Unit 10</text>
+<text x="581" y="322.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">report_u10.md</text>
 <text x="581" y="345" font-size="15" fill="#292929" text-anchor="middle">실습 10-2 (가)(나)(다)</text>
 <text x="20" y="392" font-size="14" fill="#666660">순서: 위 줄부터 아래 줄로. 두 번째 줄은 실습 10-1 의 checklist.py 가 있어야 합니다.</text>
 </g>

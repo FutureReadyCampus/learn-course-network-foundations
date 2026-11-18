@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
 <title>가상환경을 켜고 anomaly_detection 에 판다스를 설치한 뒤 이벤트 파일을 만든다</title>
-<desc>왼쪽은 준비 순서로, 가상환경 확인, 판다스 설치와 버전 확인, 받은 파일 옮기기, normalized_events.json 만들기, 57개 확인입니다. 오른쪽은 준비가 끝난 폴더 배치입니다.</desc>
+<desc>왼쪽은 준비 순서로, 가상환경 확인, 판다스 설치와 버전 확인, New File 로 파일 만드는 법, report_u3.md 는 「보고서 쓰기」 레슨에서 만든다는 점, normalized_events.json 만들기, 57개 확인입니다. 오른쪽은 준비가 끝난 폴더 배치입니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">폴더 열고 판다스 준비하기</text>
@@ -23,7 +23,7 @@
 <rect x="24" y="254" width="60" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="54" y="278.1" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">4 · 5</text>
 <rect x="92" y="254" width="300" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="104" y="278.1" font-size="14" text-anchor="start" fill="#292929">안내 · 보고서 옮기고 이름 쓰기</text>
+<text x="104" y="278.1" font-size="14" text-anchor="start" fill="#292929">New File 로 만들고 복사해 붙여 넣기</text>
 <rect x="24" y="304" width="60" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="54" y="328.1" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">6</text>
 <rect x="92" y="304" width="300" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
@@ -45,10 +45,7 @@
 <text x="472" y="208" font-size="14" text-anchor="start" fill="#292929">normalized_events.json</text>
 <line x1="458" y1="222" x2="458" y2="243" stroke="#666660" stroke-width="1.5"/>
 <line x1="458" y1="243" x2="468" y2="243" stroke="#666660" stroke-width="1.5"/>
-<text x="472" y="248" font-size="14" text-anchor="start" fill="#292929">Unit 3 안내</text>
-<line x1="458" y1="262" x2="458" y2="283" stroke="#666660" stroke-width="1.5"/>
-<line x1="458" y1="283" x2="468" y2="283" stroke="#666660" stroke-width="1.5"/>
-<text x="472" y="288" font-size="14" text-anchor="start" fill="#292929">Unit 3 보고서</text>
+<text x="472" y="248" font-size="14" text-anchor="start" fill="#292929">report_u3.md (보고서 쓰기)</text>
 <text x="428" y="340" font-size="14" text-anchor="start" fill="#666660">pwd 가 …/anomaly_detection</text>
 <text x="428" y="362" font-size="14" text-anchor="start" fill="#666660">으로 끝나야 합니다</text>
 </g>

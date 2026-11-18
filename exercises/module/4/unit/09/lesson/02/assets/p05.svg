@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 359" role="img">
 <title>실습 9-1은 복습에서 시작해 compose.yaml 로 두 대를 켜고 200을 확인한다</title>
-<desc>이미지 확인, docker run 복습, compose.yaml 만들기, 붙여 넣기, docker compose up -d, curl 확인 순서다. 마지막에 보고서를 채운다.</desc>
+<desc>이미지 확인, docker run 복습, VS Code 의 New File 로 compose.yaml 만들기, 붙여 넣기, docker compose up -d, curl 확인 순서다. 마지막에 report_u9.md 를 채운다.</desc>
 <defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 9-1 순서</text>
@@ -14,8 +14,9 @@
 <text x="360" y="125" font-size="15" text-anchor="middle" fill="#292929">→ docker stop web-run</text>
 <line x1="227" y1="97.35" x2="251" y2="97.35" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
 <rect x="496" y="52" width="212" height="90.7" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="602" y="91.995" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">3. 파일 만들기</text>
-<text x="602" y="114.125" font-size="15" text-anchor="middle" fill="#292929">touch compose.yaml → ls</text>
+<text x="602" y="81.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">3. 파일 만들기</text>
+<text x="602" y="103.25" font-size="15" text-anchor="middle" fill="#292929">New File 로 이름 입력</text>
+<text x="602" y="125" font-size="15" text-anchor="middle" fill="#292929">compose.yaml → ls</text>
 <line x1="469" y1="97.35" x2="493" y2="97.35" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
 <rect x="12" y="176.7" width="212" height="90.7" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="118" y="205.82" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">4. 붙여 넣기</text>
@@ -33,6 +34,6 @@
 <text x="602" y="249.7" font-size="15" text-anchor="middle" fill="#292929">200</text>
 <line x1="469" y1="222.05" x2="493" y2="222.05" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
 <rect x="12" y="300" width="696" height="45.75" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360" y="328.05" font-size="15" text-anchor="middle" fill="#292929">7. 보고서 실습 9-1 (가)~(라)를 채운다. 복습 서버 web-run 은 꼭 끈 뒤 5번으로 간다.</text>
+<text x="360" y="328.05" font-size="15" text-anchor="middle" fill="#292929">7. report_u9.md 실습 9-1 (가)~(라)를 채운다. 복습 서버 web-run 은 꼭 끈 뒤 5번으로 간다.</text>
 </g>
 </svg>

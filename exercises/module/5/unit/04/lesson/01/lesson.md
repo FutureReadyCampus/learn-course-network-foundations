@@ -65,7 +65,7 @@ Unit 3까지는 판단 단계(맥락 보강 · 처리 경로 분기 · 안전장
 ## 오류가 나면
 
 - `pwd` 가 `soar_response` 로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
-- `ModuleNotFoundError: No module named 'incident'` 는 <mark>Unit 1에서 만든 `incident.py` 가 이 폴더에 없다는 뜻</mark>입니다. `complete_files.md` 에서 복사합니다.
+- `ModuleNotFoundError: No module named 'incident'` 는 <mark>Unit 1에서 만든 `incident.py` 가 이 폴더에 없다는 뜻</mark>입니다. Unit 1 실습 1-2 레슨의 코드 상자로 다시 만듭니다.
 - 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 막히면 맨 아래 「정답」을 보고, 풀리지 않으면 보고서에 「모름 — 막힌 곳: …」 이라고 씁니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다. 실행할 때마다 처음 상태에서 시작해 같은 결과가 나옵니다.

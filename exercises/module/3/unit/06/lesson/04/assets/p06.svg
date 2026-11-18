@@ -11,7 +11,7 @@
 <text x="52" y="256" font-size="15" fill="#292929">exercise6-3_run.py</text>
 <text x="36" y="290" font-size="16" fill="#292929" font-weight="700">config/   (ls config)</text>
 <text x="52" y="318" font-size="15" fill="#292929">access_log.json  ← 새로 생김</text>
-<text x="380" y="84" font-size="16" fill="#292929" font-weight="700">보고서 Unit 6</text>
+<text x="380" y="84" font-size="16" fill="#292929" font-weight="700">report_u6.md</text>
 <rect x="380" y="100" width="320" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="2"/>
 <text x="540" y="129.25" font-size="15" fill="#292929" text-anchor="middle">실습 6-1 칸 · 답: 뒤가 채워졌나</text>
 <rect x="380" y="160" width="320" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="2"/>

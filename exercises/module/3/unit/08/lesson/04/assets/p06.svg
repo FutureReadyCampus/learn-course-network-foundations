@@ -18,7 +18,7 @@
 <rect x="36" y="332" width="388" height="40" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="48" y="357.2" font-size="15" fill="#292929" text-anchor="start">config/sensitive.json</text>
 <rect x="470" y="60" width="230" height="100" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="585" y="83.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">보고서 Unit 8</text>
+<text x="585" y="83.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">report_u8.md</text>
 <text x="585" y="104.8" font-size="15" fill="#292929" text-anchor="middle">실습 8-1 · 실습 8-2</text>
 <text x="585" y="125.8" font-size="15" fill="#292929" text-anchor="middle">실습 8-3 칸의</text>
 <text x="585" y="146.8" font-size="15" fill="#292929" text-anchor="middle">답: 뒤 빈칸 없음</text>

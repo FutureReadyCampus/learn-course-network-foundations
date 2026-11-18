@@ -46,7 +46,7 @@ Unit 4에서 계정 잠금 · IP 차단 · 세션 종료(세션, session: 로그
 ## 오류가 나면
 
 - `pwd` 가 `soar_response` 로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
-- `ModuleNotFoundError` 는 <mark>앞 파일(`account_actions.py` · `ip_actions.py` · `enrichment.py` 등)이 이 폴더에 없다는 뜻</mark>입니다. `complete_files.md` 에서 복사합니다. `FileNotFoundError` 는 `config/vip_accounts.json` 같은 데이터 파일이 없다는 뜻이고, 역시 `complete_files.md` 4절에서 복사합니다.
+- `ModuleNotFoundError` 는 <mark>앞 파일(`account_actions.py` · `ip_actions.py` · `enrichment.py` 등)이 이 폴더에 없다는 뜻</mark>입니다. 앞 Unit 레슨의 코드 상자로 다시 만듭니다. `FileNotFoundError` 는 `config/vip_accounts.json` 같은 데이터 파일이 없다는 뜻이고, Unit 4 레슨의 코드 상자로 다시 만듭니다.
 - 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 막히면 맨 아래 「정답」을 보고, 풀리지 않으면 보고서에 「모름 — 막힌 곳: …」 이라고 씁니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다. 실습 5-1 실행 파일은 실습 4-3이 저장한 파일을 읽기만 하고 다시 저장하지 않아서, 몇 번을 실행해도 같은 결과가 나옵니다.

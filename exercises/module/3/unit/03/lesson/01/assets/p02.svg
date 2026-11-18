@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>access_control 폴더에 Unit 2 파일이 있는지 보고 Unit 3 파일 두 개를 옮깁니다</title>
-<desc>Unit 2에서 만든 파이썬 파일 일곱 개와 config 폴더의 JSON 세 개가 있어야 합니다. 다운로드 폴더의 Unit 3 안내 파일과 보고서를 access_control 폴더로 끌어다 놓습니다.</desc>
+<title>access_control 폴더에 Unit 2 파일이 있는지 보고 Unit 3 파일은 New File 로 만듭니다</title>
+<desc>Unit 2에서 만든 파이썬 파일 일곱 개와 config 폴더의 JSON 세 개가 있어야 합니다. Unit 3 파일은 폴더를 오른쪽 클릭해 New File 로 이름을 적고 코드 상자 내용을 복사해 붙여 넣습니다. 보고서 report_u3.md 는 「보고서 쓰기」 레슨에서 만듭니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
 <text x="24" y="34" font-size="19" font-weight="700">폴더 준비 · access_control</text>
@@ -17,12 +17,12 @@
 <text x="92" y="336" font-size="15">users.json · roles.json</text>
 <text x="92" y="364" font-size="15">exceptions.json</text>
 <rect x="470" y="70" width="226" height="108" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="583" y="108.4" font-size="16" text-anchor="middle" font-weight="700">다운로드 폴더</text>
-<text x="583" y="129.4" font-size="15" text-anchor="middle">Unit 3 안내 파일</text>
-<text x="583" y="150.4" font-size="15" text-anchor="middle">Unit 3 보고서</text>
+<text x="583" y="108.4" font-size="16" text-anchor="middle" font-weight="700">새 파일 만들기</text>
+<text x="583" y="129.4" font-size="14" text-anchor="middle">폴더 오른쪽 클릭 › New File</text>
+<text x="583" y="150.4" font-size="14" text-anchor="middle">이름 적고 복사해 붙여 넣기</text>
 <path d="M468,124 L386,124" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
-<text x="427" y="112" font-size="14" text-anchor="middle" fill="#666660">끌어다</text>
-<text x="427" y="146" font-size="14" text-anchor="middle" fill="#666660">놓기</text>
+<text x="427" y="112" font-size="14" text-anchor="middle" fill="#666660">여기에</text>
+<text x="427" y="146" font-size="14" text-anchor="middle" fill="#666660">만듦</text>
 <rect x="470" y="214" width="226" height="130" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="583" y="252.9" font-size="16" text-anchor="middle" font-weight="700">터미널 위치 확인</text>
 <text x="583" y="273.9" font-size="15" text-anchor="middle">pwd 결과가</text>

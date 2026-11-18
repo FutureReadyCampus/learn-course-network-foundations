@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>터미널에서 Unit 3 파일을 확인하고, 결과가 다르면 unit03_recovery 파일을 넣습니다</title>
+<title>터미널에서 Unit 3 파일을 확인하고, 결과가 다르면 Unit 1~3 코드 상자로 다시 만듭니다</title>
 <desc>pwd, ls, python -c 한 줄로 앞 Unit 파일이 정상인지 확인합니다. 마지막 두 줄이 「이전 파일 정상 5」와 (False, '퇴사한 계정') 이면 Unit 4 파일 두 개를 두고, 다르면 복구 파일을 넣고 다시 칩니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
@@ -26,8 +26,8 @@
 <text x="440" y="354.4" font-size="15" text-anchor="middle">두 개 두기</text>
 <rect x="536" y="280" width="160" height="96" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
 <text x="616" y="312.4" font-size="16" text-anchor="middle" font-weight="700">아니오</text>
-<text x="616" y="333.4" font-size="15" text-anchor="middle">unit03_recovery</text>
-<text x="616" y="354.4" font-size="15" text-anchor="middle">넣고 다시</text>
+<text x="616" y="333.4" font-size="15" text-anchor="middle">Unit 1~3 코드 상자로</text>
+<text x="616" y="354.4" font-size="15" text-anchor="middle">다시 만들고 확인</text>
 <path d="M440,244 L440,278" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
 <path d="M616,244 L616,278" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
 <rect x="24" y="316" width="300" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
