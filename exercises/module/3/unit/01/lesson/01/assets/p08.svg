@@ -1,50 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>공개 전에 눈으로 훑고 check_publish.py로 오류·주의가 없을 때까지 고칩니다</title>
-<desc>왼쪽은 눈으로 확인할 것 네 가지(.env 파일, API 키·토큰, 이메일·전화번호, 다른 사람 이름)입니다. 오른쪽은 git clone, cd, python check_publish.py로 점검하고 [오류]나 [주의] 줄이 있으면 고친 뒤 다시 돌리는 순서입니다. 이미 올린 키는 지우기 전에 서비스에서 먼저 폐기합니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>글 틀 세 가지 중 하나를 골라 _posts/ 아래 새 파일로 만들고 빈칸을 채웁니다</title>
+<desc>왼쪽은 글 틀 post-practice(기본), post-short(세 문장), post-stuck(막힌 일)입니다. 하나를 복사해 _posts/날짜-영문제목.md 새 파일로 만들고 빈칸을 채웁니다. 실행 결과 화면은 assets/images/ 에 올려 글에 연결합니다.</desc>
 <defs>
 <marker id="a-p08" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
 </defs>
-<text x="20" y="30" font-size="19" font-weight="700" fill="#292929">공개 전 점검: 눈으로, 그리고 스크립트로</text>
+<text x="20" y="30" font-size="19" font-weight="700" fill="#292929">글 틀로 글 한 편 쓰기</text>
 
 <g font-size="15" fill="#292929">
-<rect x="20" y="52" width="270" height="260" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="36" y="82" font-size="16" font-weight="700">① 눈으로 확인</text>
-<g fill="#ffffff" stroke="#e0442e" stroke-width="1.5">
-<rect x="36" y="110" width="16" height="16" rx="3"/>
-<rect x="36" y="160" width="16" height="16" rx="3"/>
-<rect x="36" y="210" width="16" height="16" rx="3"/>
-<rect x="36" y="260" width="16" height="16" rx="3"/>
+<text x="20" y="62" font-size="14" fill="#666660">① 하나 고르기</text>
+<rect x="20" y="74" width="220" height="64" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="36" y="100" font-weight="700">post-practice.md</text>
+<text x="36" y="124" font-size="14" fill="#666660">실습 한 개 · 기본 틀</text>
+<rect x="20" y="152" width="220" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="36" y="178" font-weight="700">post-short.md</text>
+<text x="36" y="202" font-size="14" fill="#666660">5분 · 세 문장</text>
+<rect x="20" y="230" width="220" height="64" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="36" y="256" font-weight="700">post-stuck.md</text>
+<text x="36" y="280" font-size="14" fill="#666660">막혔던 일 남기기</text>
+
+<text x="276" y="62" font-size="14" fill="#666660">② 복사해 새 파일</text>
+<rect x="276" y="74" width="230" height="220" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="292" y="104" font-weight="700">_posts/</text>
+<text x="292" y="128" font-weight="700">날짜-영문제목.md</text>
+<line x1="292" y1="148" x2="490" y2="148" stroke="#dededb" stroke-width="1.5"/>
+<text x="292" y="176" font-size="14" fill="#666660">예:</text>
+<text x="292" y="198" font-size="14">_posts/</text>
+<text x="292" y="218" font-size="14">2026-01-15-first-post.md</text>
+<text x="292" y="270" font-size="14" fill="#666660">처음엔 짧은 틀도 좋음</text>
+
+<text x="542" y="62" font-size="14" fill="#666660">③ 채우기</text>
+<rect x="542" y="74" width="160" height="220" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="558" y="104" font-weight="700">빈칸 채우기</text>
+<text x="558" y="138">주석 안내를</text>
+<text x="558" y="160">읽고 내 말로</text>
+<text x="558" y="196" font-size="14" fill="#666660">무엇을 했나</text>
+<text x="558" y="218" font-size="14" fill="#666660">무엇을 골랐나</text>
+<text x="558" y="240" font-size="14" fill="#666660">왜 골랐나</text>
+<text x="558" y="276" font-size="14" fill="#666660">(post-short 예)</text>
+
+<rect x="20" y="314" width="682" height="52" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="36" y="346">실행 결과 화면은 이미지로 저장해 <tspan font-weight="700">assets/images/</tspan> 에 올리고 글에 연결</text>
 </g>
-<text x="64" y="124">.env 파일</text>
-<text x="64" y="174">API 키·토큰</text>
-<text x="64" y="224">이메일·전화번호</text>
-<text x="64" y="274">다른 사람 이름</text>
 
-<rect x="330" y="52" width="370" height="110" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="346" y="82" font-size="16" font-weight="700">② 스크립트로 확인</text>
-<text x="346" y="108" font-size="14">git clone …/network-study-notes.git</text>
-<text x="346" y="128" font-size="14">cd network-study-notes</text>
-<text x="346" y="148" font-size="14" font-weight="700">python check_publish.py</text>
-
-<rect x="330" y="186" width="370" height="44" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="346" y="214">[오류]·[주의] 줄이 나왔나?</text>
-
-<rect x="330" y="256" width="175" height="56" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="346" y="280" font-weight="700">있음</text>
-<text x="346" y="301" font-size="14">고치고 다시 실행</text>
-<rect x="525" y="256" width="175" height="56" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="541" y="280" font-weight="700">없음</text>
-<text x="541" y="301" font-size="14">공개해도 됩니다</text>
-
-<rect x="20" y="336" width="680" height="68" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="36" y="364" font-weight="700">이미 올린 키가 있다면</text>
-<text x="36" y="388">지우기 전에 그 서비스에서 키부터 폐기합니다. 지워도 기록에 남기 때문입니다.</text>
-</g>
-
+<path d="M241 106H258V262H241" stroke="#666660" stroke-width="2" fill="none"/>
 <g stroke="#666660" stroke-width="2" fill="none" marker-end="url(#a-p08)">
-<path d="M515 163V182"/>
-<path d="M417 231V252"/>
-<path d="M612 231V252"/>
-<path d="M329 284H312V108H326"/>
+<path d="M241 184H272"/>
+<path d="M507 184H538"/>
 </g>
 </svg>

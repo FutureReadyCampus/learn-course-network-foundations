@@ -1,50 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>글 틀 세 가지 중 하나를 골라 _posts/ 아래 새 파일로 만들고 빈칸을 채웁니다</title>
-<desc>왼쪽은 글 틀 post-practice(기본), post-short(세 문장), post-stuck(막힌 일)입니다. 하나를 복사해 _posts/날짜-영문제목.md 새 파일로 만들고 빈칸을 채웁니다. 실행 결과 화면은 assets/images/ 에 올려 글에 연결합니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>_config.yml의 다섯 줄을 내 것으로 고친 뒤 Settings의 Pages에서 사이트를 켭니다</title>
+<desc>왼쪽은 _config.yml에서 바꿀 줄 title, description, author, baseurl과 바꿀 내용이고 url은 비워 둔 그대로 둡니다. 오른쪽은 Settings → Pages → Deploy from a branch → main과 / (root) → Save → 1~2분 뒤 주소 열기 순서입니다. 주소는 https://&lt;내 아이디&gt;.github.io/&lt;저장소 이름&gt;/ 모양입니다.</desc>
 <defs>
 <marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
 </defs>
-<text x="20" y="30" font-size="19" font-weight="700" fill="#292929">글 틀로 글 한 편 쓰기</text>
+<text x="20" y="30" font-size="19" font-weight="700" fill="#292929">이름·주소 바꾸고 Pages 켜기</text>
 
 <g font-size="15" fill="#292929">
-<text x="20" y="62" font-size="14" fill="#666660">① 하나 고르기</text>
-<rect x="20" y="74" width="220" height="64" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="36" y="100" font-weight="700">post-practice.md</text>
-<text x="36" y="124" font-size="14" fill="#666660">실습 한 개 · 기본 틀</text>
-<rect x="20" y="152" width="220" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="36" y="178" font-weight="700">post-short.md</text>
-<text x="36" y="202" font-size="14" fill="#666660">5분 · 세 문장</text>
-<rect x="20" y="230" width="220" height="64" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="36" y="256" font-weight="700">post-stuck.md</text>
-<text x="36" y="280" font-size="14" fill="#666660">막혔던 일 남기기</text>
+<rect x="20" y="52" width="340" height="236" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="20" y="52" width="340" height="40" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="36" y="78" font-size="16" font-weight="700">_config.yml 에서 바꿀 줄</text>
+<text x="36" y="124" font-weight="700">title</text><text x="150" y="124">사이트 이름</text>
+<text x="36" y="160" font-weight="700">description</text><text x="150" y="160">한 줄 소개</text>
+<text x="36" y="196" font-weight="700">author</text><text x="150" y="196">내 이름</text>
+<text x="36" y="232" font-weight="700">url</text><text x="150" y="232" fill="#666660">비워 둔 그대로</text>
+<text x="36" y="268" font-weight="700">baseurl</text><text x="150" y="268">/저장소 이름</text>
 
-<text x="276" y="62" font-size="14" fill="#666660">② 복사해 새 파일</text>
-<rect x="276" y="74" width="230" height="220" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="292" y="104" font-weight="700">_posts/</text>
-<text x="292" y="128" font-weight="700">날짜-영문제목.md</text>
-<line x1="292" y1="148" x2="490" y2="148" stroke="#dededb" stroke-width="1.5"/>
-<text x="292" y="176" font-size="14" fill="#666660">예:</text>
-<text x="292" y="198" font-size="14">_posts/</text>
-<text x="292" y="218" font-size="14">2026-01-15-first-post.md</text>
-<text x="292" y="270" font-size="14" fill="#666660">처음엔 짧은 틀도 좋음</text>
+<rect x="20" y="308" width="340" height="80" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="36" y="336" font-size="16" font-weight="700">열리는 주소</text>
+<text x="36" y="362">https://&lt;내 아이디&gt;.github.io/</text>
+<text x="36" y="381">&lt;저장소 이름&gt;/</text>
 
-<text x="542" y="62" font-size="14" fill="#666660">③ 채우기</text>
-<rect x="542" y="74" width="160" height="220" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="558" y="104" font-weight="700">빈칸 채우기</text>
-<text x="558" y="138">주석 안내를</text>
-<text x="558" y="160">읽고 내 말로</text>
-<text x="558" y="196" font-size="14" fill="#666660">무엇을 했나</text>
-<text x="558" y="218" font-size="14" fill="#666660">무엇을 골랐나</text>
-<text x="558" y="240" font-size="14" fill="#666660">왜 골랐나</text>
-<text x="558" y="276" font-size="14" fill="#666660">(post-short 예)</text>
-
-<rect x="20" y="314" width="682" height="52" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="36" y="346">실행 결과 화면은 이미지로 저장해 <tspan font-weight="700">assets/images/</tspan> 에 올리고 글에 연결</text>
+<rect x="400" y="52" width="300" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="416" y="78">1. Settings 탭</text>
+<rect x="400" y="108" width="300" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="416" y="134">2. 왼쪽 메뉴 Pages</text>
+<rect x="400" y="164" width="300" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="416" y="190">3. Source: Deploy from a branch</text>
+<rect x="400" y="220" width="300" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="416" y="246">4. Branch: main · / (root)</text>
+<rect x="400" y="276" width="300" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="416" y="302">5. Save</text>
+<rect x="400" y="332" width="300" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="416" y="358">6. 1~2분 뒤 주소 열기</text>
 </g>
 
-<path d="M241 106H258V262H241" stroke="#666660" stroke-width="2" fill="none"/>
 <g stroke="#666660" stroke-width="2" fill="none" marker-end="url(#a-p06)">
-<path d="M241 184H272"/>
-<path d="M507 184H538"/>
+<path d="M550 93V105"/>
+<path d="M550 149V161"/>
+<path d="M550 205V217"/>
+<path d="M550 261V273"/>
+<path d="M550 317V329"/>
+<path d="M398 352H364"/>
 </g>
 </svg>

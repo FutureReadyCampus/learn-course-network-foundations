@@ -19,7 +19,7 @@ Module 3~5 실습에서 쓴 파이썬 코드와 고민을 기록하는 포트폴
 
 ## 꼭 바꿔야 하는 3곳
 
-1. `_config.yml`: `title`, `author`, `url`, `baseurl`을 내 이름과 주소로 바꿉니다. (`← 내 것으로 바꾸기` 표시)
+1. `_config.yml`: `title`, `description`, `author`, `baseurl`을 내 것으로 바꿉니다(`url`은 비워 둡니다). (`← 내 것으로 바꾸기` 표시)
 2. `about.md`: 빈칸 안내 문구를 내 소개로 채웁니다.
 3. `_posts/`의 샘플 글: 지우고 내 첫 글을 씁니다.
 

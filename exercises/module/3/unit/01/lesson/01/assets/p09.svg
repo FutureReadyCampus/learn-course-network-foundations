@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>질문 하나를 골라 세 문장으로 답하고, 필요할 때만 AI 도우미로 정리합니다</title>
+<desc>먼저 공통 질문이나 Unit 끝의 글감 질문 중 하나를 고르고, 답을 세 문장으로 씁니다. 필요하면 코드 설명 정리, 초안 다듬기, 내 글 점검 도우미에 붙여 넣습니다. 붙이기 전에 비밀키·개인정보를 빼고, 내 코드와 내 생각만 바탕으로 합니다.</desc>
+<defs>
+<marker id="a-p09" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
+</defs>
+<text x="20" y="30" font-size="19" font-weight="700" fill="#292929">막힐 때는 질문 하나부터</text>
+
+<g font-size="15" fill="#292929">
+<rect x="10" y="52" width="210" height="220" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="26" y="82" font-size="16" font-weight="700">① 질문 고르기</text>
+<rect x="26" y="100" width="178" height="68" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="40" y="128">공통 질문 10개</text>
+<text x="40" y="152" font-size="14" fill="#666660">아무 실습에나</text>
+<rect x="26" y="184" width="178" height="68" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="40" y="212">Unit 끝 글감 질문</text>
+<text x="40" y="236" font-size="14" fill="#666660">「내 기록 남기기」</text>
+
+<rect x="255" y="52" width="210" height="220" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="271" y="82" font-size="16" font-weight="700">② 답을 세 문장으로</text>
+<text x="271" y="120">블로그처럼 가볍게</text>
+<text x="271" y="150">막힌 이야기도 좋음</text>
+<text x="271" y="180">나중에 고쳐도 됨</text>
+<text x="271" y="240" font-size="14" fill="#666660">여기까지만 해도 글 한 편</text>
+
+<rect x="500" y="52" width="210" height="220" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="516" y="82" font-size="16" font-weight="700">③ AI 도우미</text>
+<text x="516" y="104" font-size="14" fill="#666660">필요할 때만</text>
+<rect x="516" y="118" width="178" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="530" y="143">1. 코드 설명 정리</text>
+<rect x="516" y="168" width="178" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="530" y="193">2. 초안 다듬기</text>
+<rect x="516" y="218" width="178" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="530" y="243">3. 내 글 점검</text>
+
+<rect x="10" y="296" width="700" height="92" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="26" y="324" font-size="16" font-weight="700">붙여 넣기 전에</text>
+<text x="26" y="350">비밀키·토큰·이메일·이름은 넣지 않습니다. [ ] 부분만 내 것으로 바꿉니다.</text>
+<text x="26" y="374">내 코드와 내 생각만 바탕으로 합니다. 대신 써 준 글은 내 글이 아닙니다.</text>
+</g>
+
+<g stroke="#666660" stroke-width="2" fill="none" marker-end="url(#a-p09)">
+<path d="M222 162H251"/>
+<path d="M467 162H496"/>
+</g>
+</svg>
