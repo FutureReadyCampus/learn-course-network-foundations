@@ -85,4 +85,4 @@ source:
   - 쓸 내용: 줄 수와 `.env` · `.venv` 유무
   - 답:
 
-> **내 기록 남기기** — 이번 Unit에서 쓴 코드와 고민을 내 GitHub 페이지에 글로 남겨 보세요. 쓰기 질문은 [쓰기 프롬프트](__SITE__/exercises/portfolio/prompts/)의 「Module 3 · Unit 1. 역할로 권한을 정하고 판정하기」 항목에서 고릅니다. [안내 보기](__SITE__/exercises/portfolio/)
+> **내 기록 남기기** — 이번 Unit의 코드와 고민을 글로 남겨 보세요. 글감 질문: ① 역할 매트릭스에서 필요 이상으로 보이는 ○ 를 하나 골랐다면 왜 그렇게 봤나요? 그 권한이 남아 있을 때의 위험은 무엇인가요? ② roles.json 에 없는 역할(`intern`)의 사용자는 허용으로 판정해야 할까요, 거부일까요? 그렇게 정한 이유를 써 보세요. 준비가 안 되어 있다면 [Module 3 Unit 1의 「내 기록 남기기」](__SITE__/exercises/module/3/m2-network/unit/1/lesson/1/page/3)에서 시작합니다.

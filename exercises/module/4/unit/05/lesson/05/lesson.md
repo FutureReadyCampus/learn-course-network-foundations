@@ -76,4 +76,4 @@ source:
   - 쓸 내용: ① `.env` · `.venv` 가 보였는지 ② 보였다면 한 조치
   - 답:
 
-> **내 기록 남기기** — 이번 Unit에서 쓴 코드와 고민을 내 GitHub 페이지에 글로 남겨 보세요. 쓰기 질문은 [쓰기 프롬프트](__SITE__/exercises/portfolio/prompts/)의 「Module 4 · Unit 5. 요청 급증 찾기와 알림 모으기」 항목에서 고릅니다. [안내 보기](__SITE__/exercises/portfolio/)
+> **내 기록 남기기** — 이번 Unit의 코드와 고민을 글로 남겨 보세요. 글감 질문: ① 급증으로 탐지된 시간대의 IP 와 행동을 살펴보고, 이것만으로 공격이라고 확정할 수 있는지 써 보세요. ② 급증 기준에 못 미쳐 탐지되지 않은 요청을 찾아, 기준에 비추어 왜 놓쳤는지 설명해 보세요. 준비가 안 되어 있다면 [Module 3 Unit 1의 「내 기록 남기기」](__SITE__/exercises/module/3/m2-network/unit/1/lesson/1/page/3)에서 시작합니다.

@@ -150,4 +150,4 @@ source:
   - 쓸 내용: ① `.env` · `.venv` 가 보였는지 ② 보였다면 한 조치
   - 답:
 
-> **내 기록 남기기** — 이번 Unit에서 쓴 코드와 고민을 내 GitHub 페이지에 글로 남겨 보세요. 쓰기 질문은 [쓰기 프롬프트](__SITE__/exercises/portfolio/prompts/)의 「Module 4 · Unit 10. AI 요약과 탐지 파이프라인」 항목에서 고릅니다. [안내 보기](__SITE__/exercises/portfolio/)
+> **내 기록 남기기** — 이번 Unit의 코드와 고민을 글로 남겨 보세요. 글감 질문: ① AI 에게 주는 지시문에서 하지 말라고 한 것 두 가지는 무엇인가요? 하면 왜 위험한가요? ② AI 요약 하나를 점수 기록 표와 비교해 보세요. 표에 없는 내용이 섞여 있었나요? 있다면 지시문을 어떻게 고치겠습니까? 준비가 안 되어 있다면 [Module 3 Unit 1의 「내 기록 남기기」](__SITE__/exercises/module/3/m2-network/unit/1/lesson/1/page/3)에서 시작합니다.

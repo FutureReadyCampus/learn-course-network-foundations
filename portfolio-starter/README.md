@@ -2,7 +2,7 @@
 
 Module 3~5 실습에서 쓴 파이썬 코드와 고민을 기록하는 포트폴리오 저장소입니다. GitHub Pages(Jekyll, 기본 빌드)로 공개합니다. 별도 Action이나 설치 없이 동작합니다.
 
-안내 페이지: <https://futurereadycampus.github.io/learn-course-network-foundations/exercises/portfolio/>
+안내: 코스의 Module 3 Unit 1 「시작하기」 → 「내 기록 남기기」 페이지 (<https://futurereadycampus.github.io/learn-course-network-foundations/exercises/module/3/m2-network/unit/1/lesson/1/page/3>)
 
 ## 파일 구성
 

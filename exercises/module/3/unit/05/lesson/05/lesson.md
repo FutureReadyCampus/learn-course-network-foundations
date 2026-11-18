@@ -72,4 +72,4 @@ source:
   - 쓸 내용: 줄 수, `.env` · `.venv` 가 있었는지 없었는지
   - 답:
 
-> **내 기록 남기기** — 이번 Unit에서 쓴 코드와 고민을 내 GitHub 페이지에 글로 남겨 보세요. 쓰기 질문은 [쓰기 프롬프트](__SITE__/exercises/portfolio/prompts/)의 「Module 3 · Unit 5. 요청 처리 기한(SLA) 점검과 이력 저장」 항목에서 고릅니다. [안내 보기](__SITE__/exercises/portfolio/)
+> **내 기록 남기기** — 이번 Unit의 코드와 고민을 글로 남겨 보세요. 글감 질문: ① 기한을 넘긴 요청을 찾았을 때 알림만 보낼 경우와 윗사람에게 넘길 경우를 어떤 기준으로 나누었나요? ② 상태(`reviewing`)를 보지 않고 접수 시각만으로 기한을 따지면 리스트에 어떤 문제가 생기나요? 준비가 안 되어 있다면 [Module 3 Unit 1의 「내 기록 남기기」](__SITE__/exercises/module/3/m2-network/unit/1/lesson/1/page/3)에서 시작합니다.

@@ -76,4 +76,4 @@ source:
   - 쓸 내용: ① `.env` · `.venv` 가 보였는지 ② 보였다면 한 조치
   - 답:
 
-> **내 기록 남기기** — 이번 Unit에서 쓴 코드와 고민을 내 GitHub 페이지에 글로 남겨 보세요. 쓰기 질문은 [쓰기 프롬프트](__SITE__/exercises/portfolio/prompts/)의 「Module 4 · Unit 9. Docker Compose로 서버 로그 만들기」 항목에서 고릅니다. [안내 보기](__SITE__/exercises/portfolio/)
+> **내 기록 남기기** — 이번 Unit의 코드와 고민을 글로 남겨 보세요. 글감 질문: ① `docker run` 으로 서버를 켜는 것과 `compose.yaml` 로 켜는 것을 비교해 컴포즈가 나은 점을 두 가지 써 보세요. ② 사고 뒤 "같은 구성으로 다시 켜 보라"는 요청을 받았습니다. 긴 명령을 기억하지 못하는 경우와 `compose.yaml` 이 있는 경우를 비교해 보세요. 준비가 안 되어 있다면 [Module 3 Unit 1의 「내 기록 남기기」](__SITE__/exercises/module/3/m2-network/unit/1/lesson/1/page/3)에서 시작합니다.

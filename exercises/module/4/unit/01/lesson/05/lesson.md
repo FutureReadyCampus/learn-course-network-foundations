@@ -72,4 +72,4 @@ source:
   - 쓸 내용: ① `.env` · `.venv` 가 보였는지 ② 보였다면 한 조치
   - 답:
 
-> **내 기록 남기기** — 이번 Unit에서 쓴 코드와 고민을 내 GitHub 페이지에 글로 남겨 보세요. 쓰기 질문은 [쓰기 프롬프트](__SITE__/exercises/portfolio/prompts/)의 「Module 4 · Unit 1. 접속 로그 읽기와 이상 징후 가르기」 항목에서 고릅니다. [안내 보기](__SITE__/exercises/portfolio/)
+> **내 기록 남기기** — 이번 Unit의 코드와 고민을 글로 남겨 보세요. 글감 질문: ① 로그 한 줄만 보고 알 수 있는 것과 알 수 없는 것을 나눠 보세요. 접속자가 누구인지, 로그인에 성공했는지도 알 수 있나요? ② 404 한 번과 `/.env`·`/wp-login.php` 에 연달아 404 가 난 요청은 같은 일일까요? 한 줄만 보고 판단하기 어려운 이유를 써 보세요. 준비가 안 되어 있다면 [Module 3 Unit 1의 「내 기록 남기기」](__SITE__/exercises/module/3/m2-network/unit/1/lesson/1/page/3)에서 시작합니다.
