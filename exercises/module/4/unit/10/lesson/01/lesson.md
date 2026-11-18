@@ -22,30 +22,30 @@ Unit 8까지 이상탐지 규칙을 만들고, 알림이 맞았는지 세고, �
 Unit 10은 실습 10-1 · 10-2 · 10-3으로 이루어져 있고, 다음 Unit부터는 Module 5(자동 대응)을 시작합니다. <mark>깃허브에 올리는 일은 실습 10-3 마지막에 합니다.</mark> 실습마다 문제는 하나입니다.
 
 - 이번 Unit에서 쓰는 도구는 **파이썬 · 판다스 · VS Code · 터미널 · git** 이고, 실습 10-1 · 10-2에는 **LLM 호출 함수**(`llm_client.py` 의 `call_llm`)를 씁니다.
-  - 이 안내에서 말하는 **AI** 는 구글의 **Gemini API** 입니다.
+  - 이 페이지에서 말하는 **AI** 는 구글의 **Gemini API** 입니다.
   - `call_llm` 이 Gemini API 에 글을 보내고 답을 받아 옵니다.
 - 이번 Unit에서 새로 배우는 문법은 실습 10-1의 문자열 이어 붙이기 `"구분 글자".join(리스트)` 와 실습 10-2의 `Series.to_dict()` 두 개입니다. 나머지는 앞에서 쓴 문법(f-문자열 · `if` · `and` · 딕셔너리 · `value_counts()` · `json.dump`)을 다시 씁니다.
-- <mark>AI 가 쓰는 요약 문장은 실행할 때마다 조금씩 달라집니다.</mark> 이 안내의 출력 예와 문장이 달라도 정상입니다. 점수와 등급과 건수는 같아야 합니다.
+- <mark>AI 가 쓰는 요약 문장은 실행할 때마다 조금씩 달라집니다.</mark> 이 페이지의 출력 예와 문장이 달라도 정상입니다. 점수와 등급과 건수는 같아야 합니다.
 - [주의] <mark style="background:#ffc4d6">**무료 Gemini 키는 1분에 15번까지만 호출할 수 있습니다.**</mark> 이번 Unit에서는 실습 10-1 실행에 3번, 실습 10-2 실행마다 3번 호출합니다. `[LLM 호출 실패] 상태 코드 429` 가 나오면 <mark>1분 기다린 뒤 다시 실행</mark>합니다. 실패해도 이 프로그램은 멈추지 않도록 만듭니다.
-- [주의] <mark>앞 Unit(특히 Unit 7)의 파일이 없는 사람은 아래 표를 보고, 없는 파일만 「복구 파일 모음」(`unit10_recovery_files.md`)으로 만듭니다.</mark> 이미 다 가진 사람은 그 파일을 받지 않아도 됩니다.
+- [주의] <mark>앞 Unit(특히 Unit 7)의 파일이 없는 사람은 아래 표를 보고, 없는 파일만 표의 안내대로 앞 Unit의 코드 상자에서 복사해 만듭니다.</mark> 이미 다 가진 사람은 건너뜁니다.
 - 보고서에서 `[핵심 질문]` 표시가 붙은 질문은 이 실습에서 꼭 알아야 할 핵심 질문이고, <mark>내 출력이나 샘플 데이터의 값을 근거로 이유까지 씁니다</mark>.
 - 점수 기준(high 60 이상 · mid 35 이상)과 AI 에게 요약시킬 대상 수(3명)는 **고정**하고, <mark>값을 바꿔 가며 비교하지 않습니다</mark>.
 
-**이번 Unit에서 불러 쓰는 이전 파일**이 있습니다. 아래 표에서 <mark>`event_summary.py` 만 이번 Unit의 실습 10-1에서 만들고, 나머지는 모두 앞 Unit에서 만들었거나 `agent_core` 폴더에서 가져오는 파일</mark>입니다. <mark>없는 파일은 「복구 파일 모음」(`unit10_recovery_files.md`)으로 만듭니다.</mark> 이 파일은 앞 Unit의 파일이 없는 사람만 받습니다.
+**이번 Unit에서 불러 쓰는 이전 파일**이 있습니다. 아래 표에서 <mark>`event_summary.py` 만 이번 Unit의 실습 10-1에서 만들고, 나머지는 모두 앞 Unit에서 만들었거나 `agent_core` 폴더에서 가져오는 파일</mark>입니다. <mark>없는 파일은 표의 안내대로 앞 Unit의 코드 상자에서 복사해 만듭니다.</mark> 이미 다 가진 사람은 건너뜁니다.
 
 | 파일 | 만든 곳 | 쓰는 곳 | 없거나 완성하지 못했을 때 |
 |---|---|---|---|
-| `llm_client.py` · `.env`(API 키) | `agent_core` 폴더와 `security-agent-toolkit` 폴더 | 실습 10-1 · 10-2 | 아래 시작하기 3번의 `cp` 명령으로 복사합니다. `agent_core` 에도 없으면 복구 파일 모음의 `llm_client.py` 로 만듭니다 |
+| `llm_client.py` · `.env`(API 키) | `agent_core` 폴더와 `security-agent-toolkit` 폴더 | 실습 10-1 · 10-2 | 아래 시작하기 3번의 `cp` 명령으로 복사합니다. `agent_core` 에도 없으면 `agent_core` 를 만든 앞 Module 의 실습에서 먼저 만듭니다 |
 | `unit05_risk_scores.json` | Unit 7의 실습 7-2 | 실습 10-1이 읽습니다 | 아래 시작하기 5번의 내용으로 파일을 만듭니다(항상 이 내용으로 덮어씁니다) |
-| `normalized_events.json` · `rbac.py` · `config/users.json` · `config/roles.json` | Unit 6 안내의 시작하기 6번 | 실습 10-2 | 복구 파일 모음의 내용으로 파일을 만듭니다 |
-| `access_detection.py` · `saas_detection.py` · `malicious_detection.py` | Unit 6의 실습 6-1 · 6-2 · 6-3 | 실습 10-2 | 복구 파일 모음의 완성본으로 파일을 만듭니다 |
-| `correlation.py` · `risk_scores.py` | Unit 7의 실습 7-1 · 7-2 | 실습 10-2 | 복구 파일 모음의 완성본으로 파일을 만듭니다 |
-| `event_summary.py` | 실습 10-1 | 실습 10-2 `pipeline.py` 가 불러옵니다 | 이 안내 실습 10-1 의 코드 칸에 「실습 10-1 정답」의 「채운 코드」를 넣어 완성합니다 |
+| `normalized_events.json` · `rbac.py` · `config/users.json` · `config/roles.json` | Unit 6 「시작하기」 6번 | 실습 10-2 | Unit 6 「시작하기」 레슨 6번의 코드 상자로 파일을 만듭니다 |
+| `access_detection.py` · `saas_detection.py` · `malicious_detection.py` | Unit 6의 실습 6-1 · 6-2 · 6-3 | 실습 10-2 | Unit 7 「정답」 레슨 맨 아래 「부록 · Unit 6 파일 완성본」의 코드 상자로 파일을 만듭니다 |
+| `correlation.py` · `risk_scores.py` | Unit 7의 실습 7-1 · 7-2 | 실습 10-2 | Unit 7 실습 7-1 · 7-2 레슨의 코드 상자를 붙여 넣고, 「정답」 레슨의 「채운 코드」를 빈칸 자리에 넣어 파일을 완성합니다 |
+| `event_summary.py` | 실습 10-1 | 실습 10-2 `pipeline.py` 가 불러옵니다 | 이 Unit 실습 10-1 레슨의 코드 칸에 「실습 10-1 정답」의 「채운 코드」를 넣어 완성합니다 |
 
 ## 폴더 열고 LLM 호출 파일 준비하기
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치와 앞 Unit의 파일을 확인합니다(맥북은 `python3`). <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나고, `ls` 결과에 위 표의 Unit 6 · 7 파일들이 보여야</mark> 합니다. 없는 파일이 있으면 복구 파일 모음으로 만든 뒤 `ls` 를 다시 칩니다. <mark>자리를 바꾼 사람은 3번 전에 아래 「.env 와 API 키 다시 받기」를 먼저 합니다.</mark>
+2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치와 앞 Unit의 파일을 확인합니다(맥북은 `python3`). <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나고, `ls` 결과에 위 표의 Unit 6 · 7 파일들이 보여야</mark> 합니다. 없는 파일이 있으면 위 표의 안내대로 만든 뒤 `ls` 를 다시 칩니다. <mark>자리를 바꾼 사람은 3번 전에 아래 「.env 와 API 키 다시 받기」를 먼저 합니다.</mark>
    ```bash
    cd anomaly_detection
    pwd
@@ -59,13 +59,11 @@ Unit 10은 실습 10-1 · 10-2 · 10-3으로 이루어져 있고, 다음 Unit부
    python -c "from llm_client import read_api_key; print(read_api_key() is not None)"
    ```
    - 명령 풀이: `cp 원본 대상` 파일 복사(`..` 은 한 단계 위 폴더, `.` 은 지금 폴더) · `ls 파일이름` 그 파일이 있는지 확인
-4. **이번 Unit에서 받은 파일 두 개**(Unit 10 안내 파일과 보고서 파일)를 <mark>`다운로드` 폴더에서 `anomaly_detection` 폴더로 끌어다 놓습니다</mark>(안 되면 **File › Save As…**). 이미 있으면 건너뜁니다. 위 표에서 없는 파일이 있는 사람은 `unit10_recovery_files.md` 도 같은 방법으로 받습니다. 그리고 **[VS Code]** 보고서 맨 위의 <mark>`이름` 을 내 이름으로 바꿉니다</mark>. 안내 파일은 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다.
-5. **[터미널]** 실습 10-1이 읽을 점수 파일을 만들고 **[VS Code]** 에서 열어 아래 내용을 그대로 붙여 넣습니다. <mark>같은 이름의 파일이 이미 있으면 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다).
-   ```bash
-   touch unit05_risk_scores.json
-   ls unit05_risk_scores.json
-   ```
-   - 명령 풀이: `touch 파일이름` 빈 파일 만들기 · `ls 파일이름` 그 파일이 있는지 확인
+4. **파일은 이렇게 만듭니다.** 이 페이지에 나오는 파일은 모두 이 페이지의 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
+   1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다.
+   2. 코드 상자의 복사 버튼으로 내용을 복사해 새 파일에 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
+   - 답을 적는 **보고서**(`report_u10.md`)도 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
+5. **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `unit05_risk_scores.json` 을 만들고 아래 내용을 그대로 붙여 넣습니다. <mark>같은 이름의 파일이 이미 있으면 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다).
 
 **`unit05_risk_scores.json`** — Unit 7에서 저장한 대상별 점수 기록 5건입니다. `entity` 는 점수를 매긴 대상(사용자 또는 IP), `score` 는 점수, `grade` 는 등급, `reasons` 는 탐지된 규칙 이름입니다. 점수가 높은 순서로 저장돼 있습니다.
 
@@ -117,7 +115,7 @@ Unit 10은 실습 10-1 · 10-2 · 10-3으로 이루어져 있고, 다음 Unit부
 ]
 ```
 
-6. **[터미널]** 파일이 정상인지 확인합니다. <mark>`5` 가 나오고, 아래 두 줄에서 오류가 나오지 않으면</mark> 됩니다. 오류가 나면 그 줄의 파일이 없거나 이름이 다른 것이니 복구 파일 모음으로 만듭니다.
+6. **[터미널]** 파일이 정상인지 확인합니다. <mark>`5` 가 나오고, 아래 두 줄에서 오류가 나오지 않으면</mark> 됩니다. 오류가 나면 그 줄의 파일이 없거나 이름이 다른 것이니 위 표의 안내대로 만듭니다.
    ```bash
    python -c "import json; print(len(json.load(open('unit05_risk_scores.json', encoding='utf-8'))))"
    python -c "from access_detection import load_events, EVENTS_PATH; from saas_detection import pick_saas; from malicious_detection import pick_web_failures"
@@ -164,16 +162,7 @@ Unit 10은 실습 10-1 · 10-2 · 10-3으로 이루어져 있고, 다음 Unit부
 
 **3단계 · `.env` 파일 만들기**
 
-- **[터미널]** 한 단계 위 폴더(`security-agent-toolkit`)로 가서 빈 파일 두 개를 만들고 숨김 파일까지 봅니다. <mark>`pwd` 가 `security-agent-toolkit` 으로 끝나야</mark> 합니다.
-  ```bash
-  cd ..
-  pwd
-  touch .env .gitignore
-  ls -a
-  ```
-  - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `touch 파일이름들` 빈 파일 만들기(이미 있는 파일은 지우지 않습니다)
-  - 나오는 것: 목록에 <mark>`.env` 와 `.gitignore` 가 둘 다 보이면</mark> 됩니다.
-  - 이렇게 터미널로 만드는 이유: VS Code 의 저장 창에서 이름을 적으면 `.env.txt` 처럼 뒤에 `.txt` 가 붙는 실수가 잦기 때문입니다.
+- **[VS Code]** 왼쪽 목록에서 `security-agent-toolkit` 폴더(`anomaly_detection` 의 바깥)를 오른쪽 클릭 › **New File** 을 누르고 `.env` 를, 같은 방법으로 `.gitignore` 를 만듭니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다. 파일 이름 뒤에 `.txt` 같은 것이 붙지 않아야 합니다.
 - **[VS Code]** 왼쪽 파일 목록에서 `security-agent-toolkit` 바로 아래의 `.env` 를 열고 아래 한 줄만 적습니다. <mark>등호 앞뒤에 빈칸을 넣지 않고, 따옴표도 넣지 않습니다.</mark>
   ```
   GEMINI_API_KEY=여기에_복사한_키를_붙여넣습니다
@@ -218,7 +207,7 @@ Unit 10은 실습 10-1 · 10-2 · 10-3으로 이루어져 있고, 다음 Unit부
 ## 오류가 나면
 
 - 먼저 `pwd` 가 `anomaly_detection` 으로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
-- `ModuleNotFoundError: No module named 'llm_client'`(또는 `correlation` · `risk_scores` · `access_detection` 등): <mark>그 파일이 `anomaly_detection` 폴더 바로 아래에 없다는 뜻</mark>입니다. 위 표의 「없거나 완성하지 못했을 때」를 따라 복구 파일 모음(`unit10_recovery_files.md`)으로 그 파일을 만듭니다.
+- `ModuleNotFoundError: No module named 'llm_client'`(또는 `correlation` · `risk_scores` · `access_detection` 등): <mark>그 파일이 `anomaly_detection` 폴더 바로 아래에 없다는 뜻</mark>입니다. 위 표의 「없거나 완성하지 못했을 때」를 따라 그 파일을 만듭니다.
 - `TypeError: expected str, bytes or os.PathLike object, not NoneType`: <mark>`llm_client.py` 가 `.env` 파일을 찾지 못한 것</mark>입니다. 위 「.env 와 API 키 다시 받기」를 따릅니다. API 키는 화면이나 AI 질문에 붙여 넣지 않습니다.
 - `ModuleNotFoundError: No module named 'requests'`: 새 PC 의 가상환경에 `requests` 가 없는 것입니다. 가상환경을 활성화한 뒤 `python -m pip install requests` 를 칩니다.
 - `[LLM 호출 실패] 상태 코드 429`: 1분에 15번을 넘었다는 뜻입니다. <mark>1분 기다린 뒤 다시 실행</mark>합니다. 요약 자리에 `(요약 실패 — 점수와 이유를 직접 확인)` 이 나와도 이 프로그램이 일부러 그렇게 만든 것이라 정상입니다.

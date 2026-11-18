@@ -156,19 +156,14 @@ print("VIP 계정 알림", vip_count, "건")                        # VIP 계정
 
 **순서**
 
-1. **[터미널]** 파일 두 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
-   ```bash
-   pwd
-   touch enrichment.py exercise2-1_run.py
-   ls
-   ```
+1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `enrichment.py` · `exercise2-1_run.py` 두 파일을 하나씩 만들고(파일 이름 그대로), 코드를 붙여 넣어 저장합니다.
 2. **[VS Code]** `enrichment.py` 1 ~ 6번, `exercise2-1_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「실습 2-1 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python exercise2-1_run.py
    ```
 4. 출력은 세 단계입니다. 단계 1 은 숫자가 제목 줄에 함께 나옵니다. 단계 2 는 알림 5건이 한 줄씩 나오고 한 줄에는 번호 · 대상 · 재직 · VIP · 접속 IP · 신뢰 IP 가 순서대로 있습니다. 단계 3 은 1줄입니다.
-5. **[보고서]** Unit 2 의 `## 실습 2-1` 아래를 채웁니다.
+5. **[보고서]** `report_u2.md` 의 `## 실습 2-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 재직 여부가 「퇴사」인 알림과 VIP 가 「예」인 알림의 번호, 단계 3 의 VIP 계정 알림 수를 적어 주세요.
    - (나) [핵심 질문] INC-005 는 맥락이 모두 초기값(`False` · `None`)으로 남았습니다. 그 원인을 `lookup_account` 와 `lookup_source_ip` 의 `if` 조건을 근거로 설명해 주세요. 또 INC-005 의 `employed` 가 `True`(재직)로 판정된다면 어떤 문제가 생기는지도 적어 주세요.
    - (다) [핵심 질문] INC-002 와 INC-004 는 접속 IP 가 같고 둘 다 「신뢰 IP: 예」입니다. 두 알림의 `reasons`(알림을 발생시킨 탐지 규칙 이름 목록)를 비교해 보세요. 접속 IP 가 같은 신뢰 IP 라는 근거만으로 두 알림을 동일하게 처리해도 되는지 적어 주세요.

@@ -300,7 +300,7 @@ print(summary)                                        # 요약 문장을 출력�
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `final_check.py` · `exercise8-3_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code]** 파일 `final_check.py` · `exercise8-3_run.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `final_check.py` 에서 <mark>직접 쓰는 곳 여섯 군데를 씁니다</mark>. 위 판다스 문법 상자와 3.1 의 표를 참고해 씁니다. 막히면 아래 「실습 8-3 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -309,7 +309,7 @@ print(summary)                                        # 요약 문장을 출력�
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise8-3_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **다섯 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 2줄(빠진 알림 수 · 남은 알림 수), 단계 2와 단계 3은 각각 1줄, 단계 4는 2줄(미탐 수 · 놓친 문제), 단계 5는 1줄입니다.
-5. **[보고서]** Unit 8 의 `## 실습 8-3` › `### 실습 8-3` 아래를 채웁니다.
+5. **[보고서]** `report_u8.md` 의 `## 실습 8-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 한 문장 요약을 적어 주세요.
    - (나) [핵심 질문] 로그인 규칙의 알림을 합치자 놓친 문제가 몇 개에서 몇 개로 줄었나요? P4 가 잡힌 이유와, 오탐이 늘지 않은 이유를 함께 적어 주세요.
    - (다) [핵심 질문] 아직 놓친 P5(seoyeon 의 권한 없는 정산 조회 시도)를 찾으려면 어떤 규칙이 필요하고, 그 규칙을 더하면 오탐이 늘 수 있는 이유는 무엇인지 적어 주세요.
@@ -338,8 +338,8 @@ print(summary)                                        # 요약 문장을 출력�
    ls
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
-   - `evaluation.py` · `tuning.py` · `final_check.py` · `exercise8-1_run.py` · `exercise8-2_run.py` · `exercise8-3_run.py` · `review_alerts.json` · `problems.json` · `login_alerts.json` 과 이 안내 · 보고서 두 파일이 보여야 합니다.
-2. **[보고서]** Unit 8 의 실습 8-1 · 8-2 · 8-3 칸에서 <mark>`답:` 뒤가 비어 있는 질문이 없는지</mark> 봅니다. 못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.
+   - `evaluation.py` · `tuning.py` · `final_check.py` · `exercise8-1_run.py` · `exercise8-2_run.py` · `exercise8-3_run.py` · `review_alerts.json` · `problems.json` · `login_alerts.json` 과 `report_u8.md` 가 보여야 합니다.
+2. **[보고서]** `report_u8.md` 의 실습 8-1 · 8-2 · 8-3 칸에서 <mark>`답:` 뒤가 비어 있는 질문이 없는지</mark> 봅니다. 못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.
 
 ---
 

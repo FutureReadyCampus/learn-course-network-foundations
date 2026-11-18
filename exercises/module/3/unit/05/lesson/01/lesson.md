@@ -30,12 +30,12 @@ Unit 4에서는 요청을 요청서로 접수하고(`req_create.py`), 승인 · 
    python -c "from rbac import check_permission; from exception_policy import EXCEPTIONS; from config_loader import load_json; from req_grant import grant_request; print('Unit 4 파일 정상')"
    ```
    - 맥북은 `python` 을 `python3` 로 바꿔 칩니다. 마지막 줄에 `Unit 4 파일 정상` 이 나와야 합니다.
-   - 아니면 Unit 4 문서 맨 아래 「앞 실습 파일 완성본」으로 `req_create.py` · `req_review.py` · `req_grant.py` 를 만들고, `rbac.py` · `exception_policy.py` · `config_loader.py` 가 없으면 `unit03_recovery` 폴더에서 넣습니다. 그다음 마지막 줄을 다시 칩니다.
-3. **[VS Code]** **이번 Unit에서 받은 파일 두 개를 `access_control` 폴더로 옮깁니다.** 수업 자료에서 내려받은 파일은 보통 `다운로드` 폴더에 있습니다. 파일 탐색기(맥북은 Finder)에서 `다운로드` 폴더를 열고, 두 파일을 VS Code 왼쪽 목록의 `access_control` 폴더 위로 끌어다 놓습니다. 끌어다 놓기가 안 되면 파일을 VS Code 로 열고 메뉴 **File › Save As…** 로 `access_control` 폴더에 저장합니다.
-   - Unit 5 (이 파일) — 실습 안내. 읽기만 합니다.
-   - Unit 5 — **보고서.** 실습 5-1 · 5-2와 마무리 답을 여기에 적습니다.
-4. **[VS Code]** 안내 파일을 열고 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다. 보고서 Unit 5 는 오른쪽 클릭 › **Open to the Side** 로 옆에 열고, 맨 위 제목 `(이름 · 2026-10-23(금))` 의 `이름` 만 내 이름으로 바꿉니다.
-5. 문제는 **할 일 → 순서**대로 하고, `[창 이름]` 이 지금 쓸 창입니다. 코드를 채울 때는 주석이 말하는 일을 하면 몇 줄이든 맞고, 막히면 맨 아래 「정답」을 봅니다.
+   - 아니면 Unit 4 의 「정답」 레슨 맨 아래 「앞 실습 파일 완성본」으로 `req_create.py` · `req_review.py` · `req_grant.py` 를 만들고, `rbac.py` · `exception_policy.py` · `config_loader.py` 가 없으면 Unit 1 ~ Unit 3 레슨의 코드 상자로 만듭니다. 그다음 마지막 줄을 다시 칩니다.
+3. **파일은 이렇게 만듭니다.** 이 페이지에 나오는 파일은 모두 이 페이지의 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
+   1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다.
+   2. 코드 상자의 복사 버튼으로 내용을 복사해 새 파일에 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
+   - 답을 적는 **보고서** `report_u5.md` 는 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
+4. 문제는 **할 일 → 순서**대로 하고, `[창 이름]` 이 지금 쓸 창입니다. 코드를 채울 때는 주석이 말하는 일을 하면 몇 줄이든 맞고, 막히면 맨 아래 「정답」을 봅니다.
 
 > 실행은 **터미널**에서 합니다(VS Code 의 ▶ 단추를 쓰지 않습니다). `python` 이 없다는 오류가 나오면 `python3` 으로 칩니다(맥북은 `python3`). **Unit 4까지 만든 파일은 고치지 않습니다.** 오늘 만드는 파일은 모두 새 파일입니다.
 

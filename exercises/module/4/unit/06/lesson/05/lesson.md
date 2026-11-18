@@ -271,5 +271,5 @@ AttributeError: 'Series' object has no attribute 'contains'
 
 ## 정답 마무리
 
-- `ls` 결과에 이번 Unit의 파일들과 `config` 폴더, 이 안내 · 보고서 두 파일이 모두 보이면 됩니다.
+- `ls` 결과에 이번 Unit의 파일들과 `config` 폴더, `report_u6.md` 가 모두 보이면 됩니다.
 - 보고서에 빈 `답:` 이 없으면 됩니다. 못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.

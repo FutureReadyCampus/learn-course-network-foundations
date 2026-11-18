@@ -23,12 +23,11 @@ source:
 
 ```bash
 pwd
-touch config/playbook_registry.json
 ls config
 python -c "import json; print([p['id'] for p in json.load(open('config/playbook_registry.json', encoding='utf-8'))])"
 python -c "import json; s = json.load(open('system_state.json', encoding='utf-8')); print(s['locked_users'], s['blocked_ips'], len(s['tickets']))"
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `touch 파일이름` 빈 파일 만들기 · `ls 폴더이름` 폴더 안의 파일 이름 보기
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls 폴더이름` 폴더 안의 파일 이름 보기
 
 **채운 파일** (한 예)
 

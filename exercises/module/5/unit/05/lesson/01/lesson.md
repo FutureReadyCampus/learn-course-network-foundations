@@ -23,7 +23,7 @@ Unit 4에서 계정 잠금 · IP 차단 · 세션 종료(세션, session: 로그
  **이전 파일**:
 - 실습 5-1은 Unit 1의 `incident.py` 와 Unit 4 파일(`containment_store.py` · `account_actions.py` · `ip_actions.py`)을 씁니다. 실습 4-3이 저장한 `containment_state.json` · `containment_log.json` 도 씁니다.
 - 실습 5-2는 Unit 4 파일 전부와 Unit 4 데이터 파일(`config/vip_accounts.json` · `config/allowlist_ips.json` · `ip_users.json`)을 씁니다. Unit 1의 `incident.py` · `incident_samples.json`, Unit 2의 `enrichment.py` · `routing.py`, Unit 2 데이터(`users_info.json` · `source_ips.json` · `trusted_ips.json`)도 씁니다.
-- 없는 파일은 `complete_files.md` 에서 복사합니다. Unit 1 파일은 1절, Unit 2 파일은 2절, Unit 4 파일은 4절, Unit 5 완성본은 5절에 있습니다. `containment_state.json` · `containment_log.json` 도 5절에 있습니다.
+- 없는 파일은 각 Unit의 코드 상자에서 복사해 만듭니다. Unit 1 파일은 Unit 1 시작하기 · 실습 1-1 · 실습 1-2, Unit 2 파일은 Unit 2 시작하기 · 실습 2-1 · 실습 2-2, Unit 4 파일은 Unit 4 시작하기 · 실습 4-1 ~ 4-3 레슨에 있습니다. `containment_state.json` · `containment_log.json` 은 Unit 4의 실습 4-3 실행 파일을 한 번 실행하면 생깁니다.
 
 ## 이전 조치 기록 확인하기
 
@@ -37,7 +37,7 @@ Unit 4에서 계정 잠금 · IP 차단 · 세션 종료(세션, session: 로그
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
    - Unit 4의 실습 4-3 실행 파일: `python exercise4-3_run.py` (맥북은 `python3`)
-3. 오늘 받은 파일 두 개(안내 파일과 보고서)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
+3. 이 Unit에서 만드는 파일은 모두 각 실습 레슨의 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 답을 적는 보고서 `report_u5.md` 는 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
 4. **[터미널]** 실습 4-3이 남긴 파일이 정상인지 확인합니다(맥북은 `python3`). <mark>`['junho', 'dami'] 5` 가 나와야</mark> 합니다. `['junho'] 4` 가 나오면 Unit 4의 실습 4-3 실행 파일(`exercise4-3_run.py`)을 아직 한 번도 실행하지 않은 것입니다.
    ```bash
    python -c "import json; print(json.load(open('containment_state.json', encoding='utf-8'))['locked_users'], len(json.load(open('containment_log.json', encoding='utf-8'))))"

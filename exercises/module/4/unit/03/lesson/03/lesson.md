@@ -444,7 +444,7 @@ print("저장된 행", saved_count, "개")          # 저장된 행 수를 출�
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 **`events_time.py` · `exercise3-2_run.py`** 를 만들어 위 코드를 붙여 넣습니다(터미널에서는 `touch events_time.py exercise3-2_run.py` 후 VS Code 에서 엽니다).
+1. **[VS Code]** 파일 **`events_time.py` · `exercise3-2_run.py`** 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `events_time.py` 에서 **직접 쓰는 곳 다섯 군데**를 씁니다. 2.1 의 판다스 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -454,7 +454,7 @@ print("저장된 행", saved_count, "개")          # 저장된 행 수를 출�
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise3-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **세 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1은 6줄, 단계 2는 7줄, 단계 3은 1줄입니다.
 5. **[VS Code]** 새로 생긴 `failed_events.csv` 를 열어 첫 줄이 열 이름(`time,source,user,ip,action,result,hour`)인지 보고, <mark>`hour` 가 9 인 행의 `source` 를 봅니다</mark>.
-6. **[보고서]** Unit 3 의 `## 실습 3-2` › `### 실습 3-2` 아래를 채웁니다.
+6. **[보고서]** `report_u3.md` 의 `## 실습 3-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 실패가 가장 많은 사용자와 횟수, 실패가 가장 많이 난 시간대와 횟수, 저장된 행 수를 적어 주세요.
    - (나) [핵심 질문] 시간대별 결과에서 실패가 가장 많이 난 시간대의 개수를 보세요. 이 개수는 실습 3-1 단계 3의 어느 소스 개수와 같은가요? 그 실패가 어느 소스에서 났는지 적고(근거는 숫자가 같다는 것까지 쓰면 됩니다), 이어서 확인할 것도 적어 주세요.
    - (다) [핵심 질문] 사용자별 실패 횟수를 모두 더하면 실패한 이벤트 전체보다 적습니다. 몇 개가 모자라고 왜 모자란지 적어 주세요. 그리고 이 차이를 모르고 사용자별 숫자만 보면 어떤 잘못된 판단을 할 수 있을지도 적어 주세요.
@@ -484,12 +484,12 @@ print("저장된 행", saved_count, "개")          # 저장된 행 수를 출�
 
 **순서**
 
-0. **[터미널]** 이번 Unit에서 만든 파일이 있는지 `anomaly_detection` 폴더에서 확인합니다. Unit 3 보고서의 실습 3-2 칸에서 `답:` 뒤가 비어 있는 질문이 없는지도 봅니다.
+0. **[터미널]** 이번 Unit에서 만든 파일이 있는지 `anomaly_detection` 폴더에서 확인합니다. `report_u3.md` 의 실습 3-2 칸에서 `답:` 뒤가 비어 있는 질문이 없는지도 봅니다.
    ```bash
    ls
    ```
    - 명령 풀이: `ls` 폴더 안의 파일 이름 보기
-   - `normalized_events.json` · `events_basic.py` · `events_time.py` · `exercise3-1_run.py` · `exercise3-2_run.py` · `failed_events.csv` 와 이 안내 · 보고서 두 파일이 보여야 합니다.
+   - `normalized_events.json` · `events_basic.py` · `events_time.py` · `exercise3-1_run.py` · `exercise3-2_run.py` · `failed_events.csv` 와 `report_u3.md` 가 보여야 합니다.
 1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. <mark>결과가 `…/security-agent-toolkit` 으로 끝나야</mark> 합니다.
    ```bash
    cd ..
@@ -505,7 +505,7 @@ print("저장된 행", saved_count, "개")          # 저장된 행 수를 출�
    - `.env` 가 보이면: VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다.
      - `.venv` 도 같은 방법으로 합니다.
    - `anomaly_detection/__pycache__/` (파이썬이 실행하면서 자동으로 만드는 임시 폴더)가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다.
-3. **[보고서]** `### 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기` 아래를 채웁니다. <mark>올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다</mark>.
+3. **[보고서]** `report_u3.md` 의 `## 마무리` 아래를 채웁니다. <mark>올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다</mark>.
    - (가) `git status` 를 쳤을 때 `.env` 나 `.venv` 가 보였는지, 보였다면 어떻게 했는지 적어 주세요.
    - 앞 실습에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다. 올린 뒤에 이어서 적어 다시 올려도 됩니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).

@@ -29,7 +29,7 @@ Unit 2에서 알림에 맥락을 붙이고(`enrichment.py`), 처리 경로를 �
 
 깃허브에 올리는 일은 실습 3-2 마지막에 합니다. 새 문법은 실습 3-2의 `try` / `except` 하나입니다. 보고서에서 [핵심 질문]이 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기는 미리 채운 줄에 맞춥니다. 각 번호 주석 바로 아래에 한 줄을 씁니다. 주석은 지우지 않습니다.
 
- **이전 파일**: 실습 3-1은 Unit 1의 `incident.py` 만 씁니다. 실습 3-2는 Unit 2 파일(`enrichment.py` · `routing.py` · `safe_runner.py`)을 씁니다. 또 Unit 2에서 쓴 데이터 파일 `users_info.json` · `source_ips.json` · `trusted_ips.json` 도 씁니다(JSON, 제이슨: 이름과 값을 짝지어 적는 파일 형식). 여기에 Unit 1의 `incident_samples.json` · `config/playbook_registry.json` 도 씁니다. 없는 파일은 `complete_files.md` 의 해당 절에서 복사합니다.
+ **이전 파일**: 실습 3-1은 Unit 1의 `incident.py` 만 씁니다. 실습 3-2는 Unit 2 파일(`enrichment.py` · `routing.py` · `safe_runner.py`)을 씁니다. 또 Unit 2에서 쓴 데이터 파일 `users_info.json` · `source_ips.json` · `trusted_ips.json` 도 씁니다(JSON, 제이슨: 이름과 값을 짝지어 적는 파일 형식). 여기에 Unit 1의 `incident_samples.json` · `config/playbook_registry.json` 도 씁니다. 없는 파일은 앞 Unit 레슨의 코드 상자로 만듭니다(Unit 1은 「시작하기」 · 실습 1-1 · 실습 1-2, Unit 2는 「시작하기」와 실습 2-1 ~ 2-3 레슨).
 
 ## Unit 2 파일 확인하고 데이터 파일 만들기
 
@@ -42,12 +42,8 @@ Unit 2에서 알림에 맥락을 붙이고(`enrichment.py`), 처리 경로를 �
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
-3. 오늘 받은 파일 두 개(안내 파일과 보고서)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
-4. **[터미널]** 데이터 파일 두 개를 만들고 **[VS Code]** 에서 열어 아래 내용을 붙여 넣습니다.
-   ```bash
-   touch pending.json decisions.json
-   ls
-   ```
+3. **파일은 이렇게 만듭니다.** 이 페이지에 나오는 파일은 모두 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, **파일 이름을 확장자까지 그대로** 적고 Enter 를 친 뒤, 내용을 붙여 넣고 `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다. 답을 적는 보고서(`report_u3.md`)는 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
+4. **[VS Code]** 데이터 파일 두 개 `pending.json` · `decisions.json` 을 `soar_response` 폴더에 만들고, 아래 각 파일의 코드 상자 내용을 붙여 넣습니다.
 
 **`pending.json`** — 승인을 기다리는 건 3건입니다(Unit 2에서 `승인 필요` 경로로 간 VIP 알림 1건과, 플레이북이 승인을 요구해 멈춘 2건). `INC-002` 같은 번호는 **인시던트**(incident, 보안 알림 가운데 사람이 확인하고 대응해야 하는 사건 한 건)에 붙인 관리 번호입니다. 각 건에는 어떤 플레이북(playbook, 플레이북: 알림 종류별로 어떤 대응을 할지 적어 둔 절차) 때문에 멈췄는지, 승인되면 어떤 액션을 실행하는지, 왜 승인이 필요한지가 적혀 있습니다. 실습 3-1은 이 파일을 읽어서 씁니다. 실습 3-2 하루 흐름은 이 파일을 읽지 않고, 코드가 같은 내용을 직접 만듭니다.
 
@@ -77,7 +73,7 @@ Unit 2에서 알림에 맥락을 붙이고(`enrichment.py`), 처리 경로를 �
 ## 오류가 나면
 
 - `pwd` 가 `soar_response` 로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
-- `ModuleNotFoundError` 는 <mark>`incident.py` · `enrichment.py` 같은 앞 파일이 이 폴더에 없다는 뜻</mark>입니다. `complete_files.md` 에서 복사합니다.
+- `ModuleNotFoundError` 는 <mark>`incident.py` · `enrichment.py` 같은 앞 파일이 이 폴더에 없다는 뜻</mark>입니다. 앞 Unit 레슨의 코드 상자로 만듭니다.
 - 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env`(API 키를 적어 둔 파일) · API 키(외부 서비스를 쓸 수 있게 확인하는 비밀 문자열)는 지웁니다). 막히면 맨 아래 「정답」을 보고, 풀리지 않으면 보고서에 「모름 — 막힌 곳: …」 이라고 씁니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다.

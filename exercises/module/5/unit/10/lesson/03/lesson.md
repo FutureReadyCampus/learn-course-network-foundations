@@ -226,12 +226,7 @@ print("--- 단계 6: risk_engine_log.json · engine_summary.json · risk_tickets
 
 **순서**
 
-1. **[터미널]** 파일 세 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다. Module 4 파일을 복사했으면 아래 `touch` 에서 `unit07_risk_scores.json` 을 뺍니다.
-   ```bash
-   pwd
-   touch unit07_risk_scores.json engine_input.py exercise10-2_run.py
-   ls
-   ```
+1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `unit07_risk_scores.json` · `engine_input.py` · `exercise10-2_run.py` 파일을 만들어 이 페이지의 코드 상자를 붙여 넣고 저장합니다. Module 4 파일을 복사해 왔으면 `unit07_risk_scores.json` 은 만들지 않습니다.
 2. **[VS Code]** `engine_input.py` 1 ~ 8번, `exercise10-2_run.py` 9번을 씁니다. 막히면 아래 「실습 10-2 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -241,7 +236,7 @@ print("--- 단계 6: risk_engine_log.json · engine_summary.json · risk_tickets
    - 단계 1 과 단계 6 은 숫자나 파일 이름이 제목 줄에 함께 나와 그 아래 줄이 없습니다.
    - 단계 2 는 2줄, 단계 3 은 제목 줄에 건수가 나오고 그 아래 5줄입니다. 단계 4 는 5줄입니다.
    - 단계 5 는 제목 줄 아래 2줄에 실행한 조치 줄이 더 붙습니다.
-5. **[보고서]** Unit 10 의 `## 실습 10-2` 아래를 채웁니다.
+5. **[보고서]** `report_u10.md` 의 `## 실습 10-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 단계 5 의 처리 결과별 알림 수와 실제로 실행한 조치 두 개를 적어 주세요.
    - (나) [핵심 질문] `seoyeon` · `gaeun` · `jiwoo` 는 모두 「조치 없음」인데 티켓은 만들어졌습니다. 단계 4 에서 알림 뒤에 나오는 플레이북 번호를 근거로 세 알림에 조치가 없는 이유를 적고, 티켓이 없다면 이 세 알림이 어떻게 되는지 적어 주세요.
    - (다) [핵심 질문] 단계 2 의 `minsu` 기록은 등급이 `critical` 입니다. `find_schema_problem` 이 이 기록을 엔진 앞에서 거절하는 이유를 적고, 거절 없이 엔진에 넣으면 어떤 오류가 나고 그 알림이 어떻게 기록되는지 실습 10-1 `INC-402` 와 연결해 적어 주세요.

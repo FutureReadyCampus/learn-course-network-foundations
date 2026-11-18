@@ -221,7 +221,7 @@ for item in labeled:                                                            
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `log_classify.py` · `exercise1-2_run.py` 를 만들어 위 코드를 붙여 넣습니다. 실습 1-1의 `log_parse.py` 를 불러오므로 <mark>없으면 문서 맨 아래 「앞 실습 파일 완성본」으로 먼저 만듭니다.</mark>
+1. **[VS Code]** 파일 `log_classify.py` · `exercise1-2_run.py` 를 만들어 위 코드를 붙여 넣습니다. 실습 1-1의 `log_parse.py` 를 불러오므로 <mark>없으면 문서 맨 아래 「앞 실습 파일 완성본」으로 먼저 만듭니다.</mark>
 2. **[VS Code]** `log_classify.py` 에서 직접 쓰는 곳 세 군데를 씁니다. 2.3 의 그림을 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지 확인하고</mark> 실행합니다(맥북은 `python3`).
    ```bash
@@ -230,7 +230,7 @@ for item in labeled:                                                            
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise1-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 세 단계입니다. <mark>단계 1은 한 줄, 단계 2는 의심 요청 여덟 줄, 단계 3은 오류 요청 다섯 줄입니다.</mark>
-5. **[보고서]** Unit 1 의 `## 실습 1-2` › `### 실습 1-2` 아래를 채웁니다.
+5. **[보고서]** `report_u1.md` 의 `## 실습 1-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 분류별 요청 수와, 의심으로 분류한 요청 중 같은 주소에서 반복된 것을 적어 주세요.
    - (나) [핵심 질문] 상태 코드와 경로만으로 분류를 정하면 놓치는 것이 있습니다. 샘플 로그에서 놓친 예를 두 가지 찾아(정상이나 오류로 분류됐지만 살펴볼 만한 요청) 왜 놓쳤는지 적어 주세요.
    - (다) [핵심 질문] 실습 1-1 「현업에서 SIEM(심)을 쓰는 방식 여섯 가지」 표의 방식 중에서, 보안 전담 직원이 1명뿐이고 쓰는 서비스 대부분이 클라우드에 있는 작은 회사라면 어느 방식을 고를지 이유와 함께 적어 주세요. 고르지 않은 방식 하나가 왜 맞지 않는지도 적어 주세요.
@@ -260,14 +260,14 @@ for item in labeled:                                                            
 
 **순서**
 
-0. **[터미널]** 이번 Unit에서 만든 파일이 있는지 `anomaly_detection` 폴더에서 확인합니다. Unit 1 보고서의 실습 1-2 칸에서 `답:` 뒤가 비어 있는 질문이 없는지도 봅니다.
+0. **[터미널]** 이번 Unit에서 만든 파일이 있는지 `anomaly_detection` 폴더에서 확인합니다. `report_u1.md` 의 실습 1-2 칸에서 `답:` 뒤가 비어 있는 질문이 없는지도 봅니다.
    ```bash
    pwd
    ls
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
    - <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나야 합니다.</mark> 아니면 `cd anomaly_detection` 을 먼저 칩니다.
-   - `access_sample.log` · `log_parse.py` · `log_classify.py` · `exercise1-1_run.py` · `exercise1-2_run.py` 와 이 안내 · 보고서 두 파일이 보여야 합니다.
+   - `access_sample.log` · `log_parse.py` · `log_classify.py` · `exercise1-1_run.py` · `exercise1-2_run.py` 와 `report_u1.md` 가 보여야 합니다.
 1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
    ```bash
    cd ..
@@ -285,7 +285,7 @@ for item in labeled:                                                            
    - `.env` 가 보이면: VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다.
      - `.venv` 도 같은 방법으로 합니다. 가상환경 폴더 이름이 `.venv` 가 아니면 그 이름으로 적습니다.
    - `anomaly_detection/` 안에는 파이썬이 실행하면서 만든 임시 폴더 `__pycache__/` 가 들어 있을 수 있어서 한 줄로 묶인 `git status` 에는 보이지 않습니다. `.gitignore` 맨 아래에 `__pycache__/` 한 줄도 적고 저장한 뒤 `git status` 를 다시 칩니다.
-3. **[보고서]** `### 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기` 아래를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다.
+3. **[보고서]** `report_u1.md` 의 `## 마무리` 아래를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다.
    - (가) `git status` 를 쳤을 때 `.env` 나 `.venv` 가 보였는지, 보였다면 어떻게 했는지 적어 주세요.
    - 실습 1-1이나 실습 1-2에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다. 올린 뒤에 이어서 적어 다시 올려도 됩니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).

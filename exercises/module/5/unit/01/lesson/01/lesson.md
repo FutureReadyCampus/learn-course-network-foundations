@@ -27,7 +27,7 @@ source:
 - 새로 나오는 용어가 많은 날입니다. <mark>처음 나올 때 한 번씩 풀어 쓰고, 문제를 풀 때는 1.2 와 2.1 의 표를 보면서 풉니다.</mark>
 - 보고서에서 [핵심 질문]이 붙은 질문은 이 실습에서 꼭 알아야 할 핵심 질문이고, <mark>내 출력이나 샘플 데이터의 값을 근거로 이유까지 서술합니다</mark>.
 
- **오늘 불러 쓰는 이전 파일**: 없습니다. 오늘 쓰는 데이터(`incident_samples.json`)는 Module 4의 점수 파일과 같은 내용입니다. 이 내용을 아래에 예시 데이터로 적어 두었으니 붙여 넣어 만듭니다. 그래서 Module 4 파일이 없어도 그대로 따라 할 수 있습니다. 실습 1-2는 실습 1-1에서 만드는 `config/playbook_registry.json` 을 읽습니다(없으면 `complete_files.md` 의 1절이나 실습 1-1 의 「실습 1-1 정답」 완성본으로 만듭니다).
+ **오늘 불러 쓰는 이전 파일**: 없습니다. 오늘 쓰는 데이터(`incident_samples.json`)는 Module 4의 점수 파일과 같은 내용입니다. 이 내용을 아래에 예시 데이터로 적어 두었으니 붙여 넣어 만듭니다. 그래서 Module 4 파일이 없어도 그대로 따라 할 수 있습니다. 실습 1-2는 실습 1-1에서 만드는 `config/playbook_registry.json` 을 읽습니다(없으면 실습 1-1 의 「정답」 레슨 완성본으로 만듭니다).
 
 ## 폴더 열고 파일 준비하기
 
@@ -47,13 +47,22 @@ source:
    ```
    - 명령 풀이: `mkdir 폴더이름` 새 폴더 만들기 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 이름 보기
    - <mark>`config` 폴더가 보이면</mark> 됩니다. `config` 에는 JSON 설정 파일만 둡니다.
-4. **오늘 받은 파일 두 개**(안내 파일과 보고서)를 <mark>`다운로드` 폴더에서 `soar_response` 폴더로 끌어다 놓습니다</mark>(안 되면 **File › Save As…**). 그리고 **[VS Code]** 보고서 맨 위 제목 `(이름 · Unit 1)` 의 <mark>`이름` 을 내 이름으로 바꿉니다</mark>. 안내 파일은 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다.
-5. **[터미널]** 오늘 쓸 파일 두 개를 만들고 **[VS Code]** 에서 열어 아래 내용을 그대로 붙여 넣습니다.
-   ```bash
-   touch incident_samples.json system_state.json
-   ls
+4. **파일은 이렇게 만듭니다.** 이 페이지에 나오는 파일은 모두 이 페이지의 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 「`파일이름` 파일을 만들어 붙여 넣습니다」라고 하면:
+   1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 확장자까지 그대로** 적고 Enter 를 칩니다.
+   2. 코드 상자의 복사 버튼으로 내용을 복사해 새 파일에 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
+   - 답을 적는 **보고서**(`report_u1.md`)도 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
+5. **[VS Code]** 오늘 쓸 파일 두 개 `incident_samples.json` · `system_state.json` 을 `soar_response` 폴더에 만들고, 아래 각 파일의 코드 상자 내용을 그대로 붙여 넣습니다. 폴더는 이렇게 됩니다. 나머지 파일은 실습 때 만듭니다.
    ```
-   - 명령 풀이: `touch 파일이름들` 빈 파일 만들기 · `ls` 폴더 안의 이름 보기
+   soar_response/
+     config/
+       playbook_registry.json   실습 1-1에서 만듦
+     incident_samples.json      지금 만듦
+     system_state.json          지금 만듦
+     incident.py                실습 1-2에서 만듦
+     playbook_runner.py         실습 1-2에서 만듦
+     exercise1-2_run.py         실습 1-2에서 만듦
+     report_u1.md               「보고서 쓰기」에서 만듦
+   ```
 
 **`incident_samples.json`** — 오늘 처리할 알림 5건의 목록입니다.
 

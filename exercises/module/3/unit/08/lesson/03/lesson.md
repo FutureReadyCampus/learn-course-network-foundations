@@ -181,9 +181,8 @@ print(counts)                                                    # 승인 상태
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `config/sensitive.json` · `revoke_approve.py` · `exercise8-2_run.py` 를 만들어 위 코드를 붙여 넣습니다. 만드는 법은 둘 중 하나를 고릅니다.
+1. **[VS Code]** 파일 `config/sensitive.json` · `revoke_approve.py` · `exercise8-2_run.py` 를 만들어 위 코드를 붙여 넣습니다. 
    - VS Code: `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력합니다(`config/…` 이름은 이 폴더를 선택한 채 입력하면 `config` 폴더 안에 만들어집니다).
-   - 터미널: `pwd` 로 `access_control` 인지 확인하고 `touch 이름` 으로 만든 뒤 VS Code 에서 열어 붙여 넣습니다(`vim 이름` → `i` → 붙여넣기 → `Esc` → `:wq` 도 됩니다).
 2. **[터미널]** `ls config` 로 `sensitive.json` 이 `users.json` 과 같은 `config` 폴더에 있는지 보고, `python -m json.tool config/sensitive.json`(맥북은 `python3`)로 내용이 정상인지 확인합니다.
    - 깨진 채 두면 민감한 권한 리스트를 읽지 못해 junho 의 `SALES:CHANGE` 가 「승인 불필요」로 나오고, 승인이 필요한 계획이 3건에서 2건으로 줄어듭니다.
 3. **[VS Code]** `revoke_approve.py` 의 `plan_key` · `needs_approval` · `mark_approvals` 에서 직접 쓰는 곳 세 군데를 씁니다. 2.1 의 표와 그림을 보고 씁니다.
@@ -193,7 +192,7 @@ print(counts)                                                    # 승인 상태
    python exercise8-2_run.py
    ```
 5. 출력은 두 단계입니다. 단계 1은 `계획 8건` 제목 줄과 계획 여덟 줄(줄마다 승인 상태), 단계 2는 승인 상태별 건수 딕셔너리 한 줄입니다.
-6. **[보고서]** Unit 8 의 `## 실습 8-2` › `#### 실습 8-2` 아래를 채웁니다.
+6. **[보고서]** `report_u8.md` 의 `## 실습 8-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 「승인 불필요」 · 「승인됨」 · 「승인 대기」가 각각 몇 건인지, 승인 대기인 계획이 무엇인지 적어 주세요.
    - (나) [핵심 질문] 권한을 없애는 일인데 왜 쓰기 권한 같은 민감한 권한은 승인을 받게 할까요? 조회 같은 일반 권한 한 건은 바로 회수해도 되는 이유도 적어 주세요.
    - (다) [핵심 질문] junho 의 `SALES:CHANGE`(예외 2번) 계획은 승인 대기입니다. 실습 8-3에서 이 계획은 어떻게 처리될지 예상해서 적고, 승인이 오래 나지 않으면 어떤 문제가 생길지도 적어 주세요.

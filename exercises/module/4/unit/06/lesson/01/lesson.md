@@ -44,19 +44,17 @@ Module 3(접근통제) 파일 세 개는 이번 Unit에서 <mark>**완성본을 
    pwd
    python -c "import pandas; print(pandas.__version__)"
    ```
-3. **이번 Unit에서 받은 파일 두 개**(Unit 6 안내 파일과 보고서 파일)를 <mark>`다운로드` 폴더에서 `anomaly_detection` 폴더로 끌어다 놓습니다</mark>(안 되면 **File › Save As…**). 이미 있으면 건너뜁니다.
-4. **[VS Code]** 보고서 맨 위의 <mark>`이름` 을 내 이름으로 바꿉니다</mark>. 안내 파일은 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다.
+3. **파일은 이렇게 만듭니다.** 이 페이지에 나오는 파일은 모두 이 페이지의 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
+   1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다.
+   2. 코드 상자의 복사 버튼으로 내용을 복사해 새 파일에 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
+4. 답을 적는 **보고서**(`report_u6.md`)도 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
 5. **[터미널]** Module 3(접근통제) 파일을 넣을 `config` 폴더를 만들고 확인합니다. 이미 `config` 폴더가 있으면 건너뜁니다.
    ```bash
    mkdir config
    ls
    ```
    - 명령 풀이: `mkdir config` 폴더 만들기 · `ls` 폴더 안의 파일 이름 보기
-6. **[VS Code 또는 터미널]** `anomaly_detection` 폴더에 `normalized_events.json` · `rbac.py` · `config/users.json` · `config/roles.json` 파일을 만들어 아래 내용을 그대로 붙여 넣습니다(<mark>파일 네 개를 모두 붙인 뒤 맨 아래 7번으로 확인합니다</mark>). 터미널에서는 아래 명령으로 한 번에 만들고 VS Code 에서 엽니다(`config` 폴더는 위 5번에서 만들었습니다).
-   ```bash
-   touch normalized_events.json rbac.py config/users.json config/roles.json
-   ls config
-   ```
+6. **[VS Code]** `anomaly_detection` 폴더에 `normalized_events.json` · `rbac.py` 를, 그 안의 `config` 폴더에 `users.json` · `roles.json` 을 파일로 만들어 아래 내용을 그대로 붙여 넣습니다(<mark>파일 네 개를 모두 붙인 뒤 맨 아래 7번으로 확인합니다</mark>). `config` 폴더는 위 5번에서 만들었습니다.
 
 **`normalized_events.json`** — Unit 2에서 만든 이벤트 샘플 57개입니다. 이번 Unit에서는 모두 아래 내용으로 만듭니다. <mark>같은 이름의 파일이 이미 있으면 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다). 이벤트 날짜는 모두 2026-11-02 입니다. `null` 은 그 값이 로그에 없다는 뜻입니다.
 

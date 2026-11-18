@@ -29,12 +29,12 @@ Unit 3은 실습 3-1 · 3-2로 이루어집니다. 실습마다 문제는 하나
    ls
    ls config
    ```
-   - `rbac.py` · `role_admin.py` · `exception_policy.py` · `policy.py` · `exercise2-1_run.py` · `exercise2-2_run.py` · `exercise2-3_run.py` 가 보여야 하고, `config` 안에는 `users.json` · `roles.json` · `exceptions.json` 이 보여야 합니다. 없으면 Unit 2 문서의 정답으로 먼저 만듭니다.
-3. **[VS Code]** **Unit 3에서 받은 파일 두 개를 `access_control` 폴더로 옮깁니다.** 수업 자료에서 내려받은 파일은 보통 `다운로드` 폴더에 있습니다. 파일 탐색기(맥북은 Finder)에서 `다운로드` 폴더를 열고, 두 파일을 VS Code 왼쪽 목록의 `access_control` 폴더 위로 끌어다 놓습니다. 끌어다 놓기가 안 되면 파일을 VS Code 로 열고 메뉴 **File › Save As…** 로 `access_control` 폴더에 저장합니다.
-   - Unit 3 안내 파일(지금 읽는 이 파일) — 실습 안내입니다. 읽기만 합니다.
-   - Unit 3 보고서 — **답을 적는 파일입니다.** 실습 3-1 · 3-2와 마무리 답을 여기에 적습니다.
-4. **[VS Code]** 안내 파일을 열고 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다. Unit 3 보고서는 오른쪽 클릭 › **Open to the Side** 로 옆에 열고, 맨 위 제목 `(이름 · 2026-10-22(목))` 의 `이름` 만 내 이름으로 바꿉니다.
-5. 문제는 **할 일 → 순서**대로 하고, `[창 이름]` 이 지금 쓸 창입니다. 코드를 채울 때는 주석이 말하는 일을 하면 몇 줄이든 맞고, 막히면 맨 아래 「정답」을 봅니다.
+   - `rbac.py` · `role_admin.py` · `exception_policy.py` · `policy.py` · `exercise2-1_run.py` · `exercise2-2_run.py` · `exercise2-3_run.py` 가 보여야 하고, `config` 안에는 `users.json` · `roles.json` · `exceptions.json` 이 보여야 합니다. 없으면 Unit 2 의 「정답」 레슨 코드 상자로 먼저 만듭니다.
+3. **파일은 이렇게 만듭니다.** 이 페이지에 나오는 파일은 모두 이 페이지의 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
+   1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다.
+   2. 코드 상자의 복사 버튼으로 내용을 복사해 새 파일에 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
+   - 답을 적는 **보고서** `report_u3.md` 는 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
+4. 문제는 **할 일 → 순서**대로 하고, `[창 이름]` 이 지금 쓸 창입니다. 코드를 채울 때는 주석이 말하는 일을 하면 몇 줄이든 맞고, 막히면 맨 아래 「정답」을 봅니다.
 
 > 실행은 **터미널**에서 합니다(VS Code 의 ▶ 단추를 쓰지 않습니다). `python` 이 없다는 오류가 나오면 `python3` 으로 칩니다(맥북은 `python3`). **Unit 2까지 만든 파일은 고치지 않습니다.** 오늘 만드는 파일은 모두 새 파일입니다.
 

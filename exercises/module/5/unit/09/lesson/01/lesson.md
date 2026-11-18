@@ -22,12 +22,12 @@ source:
 
  **이전 파일**: <mark style="background:#e0d4ff">실습 9-1에서는 Unit 1의 `incident.py` 만 가져와 사용(import)합니다.</mark> <mark style="background:#e0d4ff">실습 9-2에서는 Unit 8에서 만든 코드 파일 `report.py` · `approval_gate.py` · `false_positive.py` 를 가져와 사용(import)합니다.</mark> Unit 8의 데이터 파일(`unit10_tickets.json` · `unit10_actions.json` · `config/approval_policy.json` · `fp_state.json` · `fp_log.json` · `fp_reports.json`), Unit 8의 실습 8-1에서 만든 `incident_report_20261112.md` 를 씁니다. `false_positive.py` 가 부르는 Unit 5 파일(`rollback.py` 등)도 같은 폴더에 있어야 합니다.
 
-없는 파일은 `complete_files.md` 에서 복사합니다(Unit 8 파일은 8절). `incident.py` 와 Unit 5 파일은 Unit 8 안내의 시작하기에 있는 「이전 파일이 없을 때」 코드 상자로 만듭니다. 리포트 파일이 없으면 8절의 `exercise8-1_run.py` 를 복사해 한 번 실행하면 생깁니다.
+없는 파일은 Unit 8 레슨의 코드 상자에서 복사해 만듭니다. 코드 파일(`report.py` · `approval_gate.py` · `false_positive.py`)과 실행 파일은 Unit 8 의 실습 8-1 · 8-2 · 8-3 레슨과 「정답」 레슨에, 데이터 파일은 실습 8-1 · 8-2 · 8-3 레슨에 있습니다. `incident.py` 와 Unit 5 파일은 Unit 8 의 「시작하기」 레슨에 있는 「이전 파일이 없을 때」 코드 상자로 만듭니다. 리포트 파일이 없으면 Unit 8 의 `exercise8-1_run.py` 를 한 번 실행하면 생깁니다.
 
 ## 폴더 열고 파일 준비하기
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** `soar_response` 폴더로 들어가 Unit 8 파일을 확인합니다. <mark style="background:#bde3ff">`ls` 결과에 `report.py` · `approval_gate.py` · `false_positive.py` · `incident_report_20261112.md` 가 보이면</mark> 됩니다. `incident_report_20261112.md` 가 없으면 `complete_files.md` 8절의 `exercise8-1_run.py` 를 같은 폴더에 새 파일로 붙여 넣고 실행해서 만듭니다.
+2. **[터미널]** `soar_response` 폴더로 들어가 Unit 8 파일을 확인합니다. <mark style="background:#bde3ff">`ls` 결과에 `report.py` · `approval_gate.py` · `false_positive.py` · `incident_report_20261112.md` 가 보이면</mark> 됩니다. `incident_report_20261112.md` 가 없으면 Unit 8 의 `exercise8-1_run.py` 를 같은 폴더에 새 파일로 붙여 넣고 실행해서 만듭니다.
    ```bash
    pwd
    cd soar_response
@@ -35,7 +35,7 @@ source:
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
-3. Unit 9에서 받은 파일 두 개(Unit 9 안내 문서, Unit 9 보고서)를 `soar_response` 폴더로 이동하고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
+3. 이 페이지에 나오는 파일은 모두 이 페이지의 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 답을 적는 **보고서**(`report_u9.md`)도 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다. 파일은 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
 4. **[터미널]** Unit 8 파일을 불러올 수 있는지 확인합니다(맥북은 `python3`). <mark style="background:#bde3ff">`Unit 8 파일 불러오기 성공` 이 나와야</mark> 합니다.
    ```bash
    python -c "import report, approval_gate, false_positive; print('Unit 8 파일 불러오기 성공')"
@@ -44,7 +44,7 @@ source:
 ## 오류가 나면
 
 - `pwd` 가 `soar_response` 로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
-- <mark style="background:#ffc4d6">`ModuleNotFoundError: No module named 'report'`</mark> 처럼 Unit 8 파일 이름이 나오면 그 파일이 이 폴더에 없다는 뜻입니다. `No module named 'rollback'` 은 <mark style="background:#e0d4ff">Unit 5 파일</mark>이 없다는 뜻입니다. `complete_files.md` 에서 복사하거나 Unit 8 안내의 「이전 파일이 없을 때」 코드 상자로 만듭니다. `No module named 'pandas'` 는 판다스(pandas, 판다스: 표 모양 데이터를 다루는 파이썬 도구)가 설치되어 있지 않다는 뜻입니다. 가상환경이 켜진 터미널에서 `pip install pandas`(판다스를 내려받아 설치하는 명령)를 입력합니다.
+- <mark style="background:#ffc4d6">`ModuleNotFoundError: No module named 'report'`</mark> 처럼 Unit 8 파일 이름이 나오면 그 파일이 이 폴더에 없다는 뜻입니다. `No module named 'rollback'` 은 <mark style="background:#e0d4ff">Unit 5 파일</mark>이 없다는 뜻입니다. Unit 8 레슨의 코드 상자에서 복사하거나 Unit 8 의 「이전 파일이 없을 때」 코드 상자로 만듭니다. `No module named 'pandas'` 는 판다스(pandas, 판다스: 표 모양 데이터를 다루는 파이썬 도구)가 설치되어 있지 않다는 뜻입니다. 가상환경이 켜진 터미널에서 `pip install pandas`(판다스를 내려받아 설치하는 명령)를 입력합니다.
 - 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 막히면 맨 아래 「정답」을 보고, 풀리지 않으면 보고서에 「모름 — 막힌 곳: …」 이라고 씁니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다. 실행할 때마다 같은 입력 파일에서 시작해 같은 결과가 나옵니다. 이런 성질을 재현성(reproducibility, 리프로듀서빌리티: 같은 조건에서 다시 실행하면 같은 결과가 나오는 성질)이라고 합니다.

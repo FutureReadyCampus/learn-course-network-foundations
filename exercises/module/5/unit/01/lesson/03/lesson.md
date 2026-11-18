@@ -326,13 +326,7 @@ for entry in action_log:                                                        
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 세 개를 `soar_response` 폴더에 만들어 위 코드를 붙여 넣습니다. 터미널에서는 `touch` 로 만든 뒤 VS Code 에서 엽니다. <mark>`config/playbook_registry.json` 에 PB-001 ~ PB-003 이 있어야</mark> 합니다.
-   ```bash
-   pwd
-   touch incident.py playbook_runner.py exercise1-2_run.py
-   ls
-   ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `touch 파일이름들` 빈 파일 만들기 · `ls` 폴더 안의 파일 이름 보기
+1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `incident.py` · `playbook_runner.py` · `exercise1-2_run.py` 세 파일을 하나씩 만들고(파일 이름 그대로), 위 코드를 붙여 넣어 저장합니다. <mark>`config/playbook_registry.json` 에 PB-001 ~ PB-003 이 있어야</mark> 합니다.
 2. **[VS Code]** `playbook_runner.py` 에서 <mark>직접 쓰는 곳 여섯 군데를 씁니다</mark>. 위 2.1 의 그림과 표를 참고해 씁니다. 막히면 아래 「실습 1-2 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -344,7 +338,7 @@ for entry in action_log:                                                        
 5. **[VS Code]** 새로 생긴 `action_log.json` 과 `system_state.json` 을 열어 봅니다.
    - `action_log.json`: 감사 기록입니다. 누가 무엇을 언제 했는지 남은 파일이고, 사고가 난 뒤 대응이 적절했는지 다시 확인할 때 읽습니다. 시각(`time`)이 있는지 확인합니다.
    - `system_state.json`: 실행 후 연습용 시스템의 상태입니다. 잠긴 계정과 티켓이 들어 있는지 확인합니다.
-6. **[보고서]** Unit 1 의 `## 실습 1-2` › `### 실습 1-2` 아래를 채웁니다.
+6. **[보고서]** `report_u1.md` 의 `## 실습 1-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 실행 후 잠긴 계정 · 차단한 IP · 티켓의 개수와 승인 대기 건수를 적어 주세요.
    - (나) [핵심 질문] 실습 1-1에서 INC-005 를 수동 처리할 때와 달리, 실행기는 INC-005 를 어떻게 처리했는지 적어 주세요. 근거는 단계 3 · 4 · 5 의 출력으로 쓰고, 그렇게 처리한 이유도 적어 주세요.
    - (다) [핵심 질문] 감사 기록(단계 6)에서 INC-002 의 한 줄을 읽고, 그 인시던트에 실제로 무엇이 일어났고 무엇이 일어나지 않았는지 적어 주세요. 이런 기록이 현업에서 필요한 이유도 적어 주세요.
@@ -426,7 +420,7 @@ for entry in action_log:                                                        
      - `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
    - `soar_response/__pycache__/` (파이썬이 실행하면서 자동으로 만드는 임시 폴더)가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 봅니다.
 
-3. **[보고서]** `### 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기` 아래를 채웁니다. <mark>올리기 전에 채워야</mark> 깃허브에 빈칸 없이 올라갑니다.
+3. **[보고서]** `report_u1.md` 의 `## 마무리` 아래를 채웁니다. <mark>올리기 전에 채워야</mark> 깃허브에 빈칸 없이 올라갑니다.
    - (가) `git status` 를 쳤을 때 `.env` 나 `.venv` 가 보였는지, 보였다면 어떻게 했는지 적어 주세요.
    - <mark>앞의 실습 1-1, 1-2에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.</mark> 올린 뒤에 이어서 적어 다시 올려도 됩니다.
 4. **[터미널]** 바뀐 파일을 올릴 목록에 추가하고(`add`), 기록으로 저장하고(`commit`), 깃허브로 올립니다(`push`). 세 명령을 순서대로 하나씩 칩니다.

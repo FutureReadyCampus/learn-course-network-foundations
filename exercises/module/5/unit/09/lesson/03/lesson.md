@@ -190,12 +190,7 @@ print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")            
 
 **순서**
 
-1. **[터미널]** 파일 세 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
-   ```bash
-   pwd
-   touch gate_cases.json unit09_check.py exercise9-2_run.py
-   ls
-   ```
+1. **[VS Code]** 파일 세 개 `gate_cases.json` · `unit09_check.py` · `exercise9-2_run.py` 를 만듭니다. 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
 2. **[VS Code]** `unit09_check.py` 1 ~ 7번, `exercise9-2_run.py` 8 · 9번을 씁니다. 막히면 아래 「실습 9-2 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -204,7 +199,7 @@ print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")            
 4. 출력은 세 단계입니다. 제목 줄은 줄 수에 넣지 않습니다.
    - 단계 1 과 단계 3 은 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
    - 단계 2 는 기준마다 한 줄씩 3줄입니다. 문제가 있으면 문제마다 한 줄이 더 나옵니다.
-5. **[보고서]** Unit 9 의 `## 실습 9-2` 아래를 채웁니다.
+5. **[보고서]** `report_u9.md` 의 `## 실습 9-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 세 기준의 결과와 `unit09_checklist.md` 의 줄 수를 적어 주세요.
    - (나) [핵심 질문] `gate_cases.json` 에는 「대상 3개」와 「대상 4개」 사례가 함께 있습니다. 두 사례의 점수와 기대한 결정을 근거로, 경계값 분석에 따라 기준 숫자 바로 앞뒤 값(경계값)의 사례를 함께 넣는 이유를 적어 주세요.
    - (다) [핵심 질문] ③ 기준은 오탐 신고를 처리한 뒤에도 정탐 계정 `dami` 의 잠금이 유지되는지 확인합니다. 오탐 복구 점검에 이 확인이 없으면 어떤 실수를 놓칠 수 있는지 적어 주세요. Unit 5의 `rollback_incident`(Unit 8의 실습 8-3에서 가져와 사용(import)하는 함수)가 어떻게 동작할 때 그 실수가 생기는지도 함께 적어 주세요.
@@ -231,7 +226,7 @@ print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")            
 
 - **지금은**: <mark>팀장이 「오늘 만든 리포트 · 승인 게이트 · 오탐 복구 · 리스크 평가 · 점검 코드와 문서를 저장소에 남겨 달라」고 합니다</mark>.
 - **그래서 하는 것**: `git status` 로 올라갈 파일을 확인한 뒤(`.env` 같은 비밀 키 파일이 섞이면 안 됩니다) `git add` → `git commit` → `git push` 순서로 올립니다.
-- **끝나면**: 깃허브 저장소의 `soar_response` 폴더에 `report.py` · `approval_gate.py` · `false_positive.py` · `risk_assessment.py` · `unit09_check.py` 와 `incident_report_20261112.md` · `risk_assessment.md` · `unit09_checklist.md` 가 보입니다.
+- **끝나면**: 깃허브 저장소의 `soar_response` 폴더에 `report.py` · `approval_gate.py` · `false_positive.py` · `risk_assessment.py` · `unit09_check.py` 와 `incident_report_20261112.md` · `risk_assessment.md` · `unit09_checklist.md` · `report_u8.md` · `report_u9.md` 가 보입니다.
 
 **순서**
 
@@ -253,7 +248,7 @@ print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")            
    ```
 
    - 하는 일: 폴더 안의 파일 이름을 보여 줍니다.
-   - 나오는 것: `report.py` · `approval_gate.py` · `false_positive.py` · `risk_assessment.py` · `unit09_check.py` · `incident_report_20261112.md` · `risk_assessment.md` · `unit09_checklist.md` · `config` 가 보이면 됩니다.
+   - 나오는 것: `report.py` · `approval_gate.py` · `false_positive.py` · `risk_assessment.py` · `unit09_check.py` · `incident_report_20261112.md` · `risk_assessment.md` · `unit09_checklist.md` · `report_u8.md` · `report_u9.md` · `config` 가 보이면 됩니다.
 
 1. **[터미널]** `security-agent-toolkit` 폴더로 이동합니다. 0번의 `pwd` 결과가 `soar_response` 로 끝날 때만 `cd ..` 를 칩니다. 이미 `…/security-agent-toolkit` 으로 끝나면 `cd ..` 는 건너뛰고 `pwd` 만 칩니다.
 
@@ -290,7 +285,7 @@ print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")            
      - `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
    - `soar_response/__pycache__/` (파이썬이 실행하면서 자동으로 만드는 임시 폴더)가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 봅니다.
 
-3. **[보고서]** Unit 9 의 `### 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기` 아래를 채웁니다. <mark>올리기 전에 채워야</mark> 깃허브에 빈칸 없이 올라갑니다.
+3. **[보고서]** `report_u9.md` 의 `## 마무리` 아래를 채웁니다. <mark>올리기 전에 채워야</mark> 깃허브에 빈칸 없이 올라갑니다.
    - (가) `git status` 를 쳤을 때 `.env` 나 `.venv` 가 보였는지, 보였다면 어떻게 했는지 적어 주세요.
    - <mark>Unit 8과 Unit 9의 앞선 실습에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.</mark> 올린 뒤에 이어서 적어 다시 올려도 됩니다.
 4. **[터미널]** 바뀐 파일을 모두 올릴 목록에 추가하고(`add`), 기록하고(`commit`), 올립니다(`push`). 세 명령을 순서대로 하나씩 칩니다.

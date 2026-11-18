@@ -315,12 +315,7 @@ print("--- 단계 4:", LOG_PATH, "에", len(results), "건 ·", TICKET_PATH, "�
 
 **순서**
 
-1. **[터미널]** 파일 두 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
-   ```bash
-   pwd
-   touch soar_engine.py exercise10-1_run.py
-   ls
-   ```
+1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `soar_engine.py` 와 `exercise10-1_run.py` 파일을 만들어 연 뒤, 이 페이지의 코드 상자를 붙여 넣고 저장합니다.
 2. **[VS Code]** `soar_engine.py` 1 ~ 8번, `exercise10-1_run.py` 9번을 씁니다. 막히면 위 문법 상자와 아래 「실습 10-1 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -330,7 +325,7 @@ print("--- 단계 4:", LOG_PATH, "에", len(results), "건 ·", TICKET_PATH, "�
    - 단계 1 과 단계 4 는 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
    - 단계 2 는 알림마다 1줄이고, 조치가 있는 알림은 조치마다 1 ~ 2줄이 더 붙습니다. 단계 3 은 5줄입니다.
 5. **[VS Code]** 새로 생긴 `engine_log.json` 과 `engine_tickets.json` 을 열어 <mark>`INC-402` 의 `error` 와 `TCK-1` 의 `done`</mark> 을 읽습니다.
-6. **[보고서]** Unit 10 의 `## 실습 10-1` 아래를 채웁니다.
+6. **[보고서]** `report_u10.md` 의 `## 실습 10-1` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
    - (가) 실행한 출력 전체를 붙여 넣고, 처리 결과별 알림 수와 승인 대기인 알림 번호를 적어 주세요.
    - (나) [핵심 질문] `INC-402` 는 실패인데 `INC-403` ~ `INC-408` 은 처리됐습니다. 단계 2 의 `INC-402` 오류 문장과 `run_all` 의 `except` 줄을 근거로 그 이유를 적고, `try` / `except` 가 없으면 `INC-402` 이후의 알림이 어떻게 되는지 적어 주세요.
    - (다) [핵심 질문] `INC-404` 와 `INC-406` 은 둘 다 high 등급인데 결과가 「차단 금지」와 「승인 대기」로 다릅니다. 단계 2 의 결정 이유를 근거로 그 차이를 적고, 승인 게이트가 `execute_action` 보다 먼저 와야 하는 이유도 적어 주세요.
