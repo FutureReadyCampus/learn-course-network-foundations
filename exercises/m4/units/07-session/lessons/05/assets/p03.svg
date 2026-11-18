@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>실습 7-2 보고서 칸: 등급별 대상, seoyeon 점수와 이유, low 인 IP, git status</title>
+<desc>(가)에는 출력 전체와 high · mid · low 대상을 씁니다. (나)는 seoyeon 점수를 이룬 규칙과 이유를 저장하는 까닭, (다)는 198.51.100.90 이 low 인 이유와 무시해도 되는지를 씁니다. 마지막으로 git status 에 .env · .venv 가 보였는지 적습니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 7-2 보고서 칸</text>
+<text x="700" y="32" font-size="15" fill="#666660" text-anchor="end">채울 것 체크리스트</text>
+<rect x="20" y="56" width="680" height="42" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<rect x="36" y="67" width="20" height="20" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="72" y="83" font-size="15" fill="#292929" font-weight="700">(가)</text>
+<text x="140" y="83" font-size="15" fill="#292929">출력 전체 · high · mid · low 에 들어간 대상</text>
+<rect x="20" y="106" width="680" height="42" rx="8" fill="#fbf0dc" stroke="#dededb" stroke-width="1.5"/>
+<rect x="36" y="117" width="20" height="20" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="72" y="133" font-size="15" fill="#292929" font-weight="700">(나)</text>
+<text x="140" y="133" font-size="15" fill="#292929">seoyeon 점수를 이룬 규칙과 점수</text>
+<rect x="20" y="156" width="680" height="42" rx="8" fill="#fbf0dc" stroke="#dededb" stroke-width="1.5"/>
+<rect x="36" y="167" width="20" height="20" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="140" y="183" font-size="15" fill="#292929">점수와 함께 reasons 를 저장하는 까닭</text>
+<rect x="20" y="206" width="680" height="42" rx="8" fill="#fbf0dc" stroke="#dededb" stroke-width="1.5"/>
+<rect x="36" y="217" width="20" height="20" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="72" y="233" font-size="15" fill="#292929" font-weight="700">(다)</text>
+<text x="140" y="233" font-size="15" fill="#292929">198.51.100.90 이 low 인 이유 (점수와 기준)</text>
+<rect x="20" y="256" width="680" height="42" rx="8" fill="#fbf0dc" stroke="#dededb" stroke-width="1.5"/>
+<rect x="36" y="267" width="20" height="20" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="140" y="283" font-size="15" fill="#292929">무시해도 되는지 (요청 3개의 result 로)</text>
+<rect x="20" y="306" width="680" height="42" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<rect x="36" y="317" width="20" height="20" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="72" y="333" font-size="15" fill="#292929" font-weight="700">마무리</text>
+<text x="140" y="333" font-size="15" fill="#292929">git status 에 .env · .venv 가 보였는지</text>
+<text x="20" y="366" font-size="15" fill="#666660">호박색 칸은 [핵심 질문] 입니다.</text>
+</g>
+</svg>

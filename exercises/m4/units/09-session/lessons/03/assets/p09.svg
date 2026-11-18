@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" role="img">
+<title>올릴 파일을 git status 로 보고 add, commit, push 뒤 브라우저에서 확인한다</title>
+<desc>git status 에서 .env 나 .venv 가 보이면 멈춘다. 이상이 없으면 add, commit, push 순서로 올리고 브라우저에서 폴더와 파일을 확인한다.</desc>
+<defs><marker id="a-p09" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">마무리 정리</text>
+<rect x="12" y="56" width="156" height="92.15" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="90" y="85.845" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">git status</text>
+<text x="90" y="107.975" font-size="15" text-anchor="middle" fill="#292929">.env · .venv 가</text>
+<text x="90" y="129.725" font-size="15" text-anchor="middle" fill="#292929">보이면 멈춤</text>
+<rect x="192" y="56" width="156" height="92.15" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="270" y="96.72" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">git add .</text>
+<text x="270" y="118.85" font-size="15" text-anchor="middle" fill="#292929">바뀐 파일을 담는다</text>
+<line x1="171" y1="102.075" x2="189" y2="102.075" stroke="#666660" stroke-width="2" marker-end="url(#a-p09)"/>
+<rect x="372" y="56" width="156" height="92.15" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="450" y="85.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">git commit -m</text>
+<text x="450" y="108.32" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">"…"</text>
+<text x="450" y="130.45" font-size="15" text-anchor="middle" fill="#292929">기록으로 저장</text>
+<line x1="351" y1="102.075" x2="369" y2="102.075" stroke="#666660" stroke-width="2" marker-end="url(#a-p09)"/>
+<rect x="552" y="56" width="156" height="92.15" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="630" y="96.72" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">git push</text>
+<text x="630" y="118.85" font-size="15" text-anchor="middle" fill="#292929">깃허브로 올린다</text>
+<line x1="531" y1="102.075" x2="549" y2="102.075" stroke="#666660" stroke-width="2" marker-end="url(#a-p09)"/>
+<line x1="630" y1="150.15" x2="630" y2="178.15" stroke="#666660" stroke-width="2" marker-end="url(#a-p09)"/>
+<rect x="12" y="180.15" width="696" height="45.75" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360" y="208.2" font-size="15" text-anchor="middle" fill="#292929">올린 뒤: 브라우저에서 anomaly_detection 폴더와 파일이 있는지 확인</text>
+</g>
+</svg>

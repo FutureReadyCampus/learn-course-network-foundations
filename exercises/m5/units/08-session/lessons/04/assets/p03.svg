@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 392" role="img">
+<title>오탐 처리 전후 상태: jiwoo 잠금과 IP 차단만 풀리고 dami는 유지</title>
+<desc>처리 전에는 junho · dami · jiwoo가 잠기고 198.51.100.90이 차단되어 있습니다. 두 신고를 되돌린 뒤에는 junho와 dami만 잠겨 있고 차단된 IP는 없습니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p03r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p03g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p03b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">처리 전 · 처리 뒤 연습용 시스템 상태</tspan></text>
+<rect x="20" y="56" width="240" height="212" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="140.0" y="120.4" font-size="15" text-anchor="middle" fill="#292929"><tspan x="140.0" font-weight="bold">처리 전</tspan><tspan x="140.0" dy="22.4" font-size="14" fill="#666660">잠긴 계정</tspan><tspan x="140.0" dy="24.0">junho · dami · jiwoo</tspan><tspan x="140.0" dy="22.4" font-size="14" fill="#666660">차단된 IP</tspan><tspan x="140.0" dy="24.0">198.51.100.90</tspan></text>
+<rect x="300" y="66" width="150" height="84" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="375.0" y="102.0" font-size="15" text-anchor="middle" fill="#292929"><tspan x="375.0" font-size="14">INC-301 되돌리기</tspan><tspan x="375.0" dy="21.0">jiwoo 계정 해제</tspan></text>
+<rect x="300" y="174" width="150" height="84" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="375.0" y="210.0" font-size="15" text-anchor="middle" fill="#292929"><tspan x="375.0" font-size="14">INC-202 되돌리기</tspan><tspan x="375.0" dy="21.0">IP 차단 해제</tspan></text>
+<line x1="262" y1="130" x2="298" y2="108" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="262" y1="194" x2="298" y2="216" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="452" y1="108" x2="488" y2="130" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="452" y1="216" x2="488" y2="194" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="490" y="56" width="210" height="212" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="595.0" y="120.4" font-size="15" text-anchor="middle" fill="#292929"><tspan x="595.0" font-weight="bold">처리 뒤</tspan><tspan x="595.0" dy="22.4" font-size="14" fill="#666660">잠긴 계정</tspan><tspan x="595.0" dy="24.0">junho · dami</tspan><tspan x="595.0" dy="22.4" font-size="14" fill="#666660">차단된 IP</tspan><tspan x="595.0" dy="24.0">없음 ([])</tspan></text>
+<rect x="20" y="290" width="330" height="76" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="185.0" y="323.0" font-size="15" text-anchor="middle" fill="#292929"><tspan x="185.0" font-weight="bold">dami 는 아직 잠김: True</tspan><tspan x="185.0" dy="19.6" font-size="14">신고된 인시던트만 롤백</tspan></text>
+<rect x="370" y="290" width="330" height="76" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="535.0" y="323.0" font-size="15" text-anchor="middle" fill="#292929"><tspan x="535.0" font-weight="bold">남은 대상 [] · 25분 · 5분</tspan><tspan x="535.0" dy="19.6" font-size="14">둘 다 30분 안 (True)</tspan></text>
+</g>
+</svg>

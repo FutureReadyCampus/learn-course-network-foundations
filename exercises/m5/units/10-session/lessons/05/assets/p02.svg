@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>실습 10-1 정답: 알림마다 게이트를 거쳐 조치하고, 오류는 그 알림만 실패로 남긴다</title>
+<desc>run_all 은 알림을 하나씩 try 안에서 run_soar_pipeline 으로 처리합니다. 파이프라인은 플레이북을 찾고 조치마다 run_step 에서 decide_gate 가 자동일 때만 execute_action 을 실행한 뒤 티켓을 만듭니다. INC-402 처럼 KeyError 가 나면 except 가 받아 make_failure_result 로 실패만 기록하고 다음 알림으로 넘어갑니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="bold">실습 10-1 정답: 통합 엔진의 처리 순서</text>
+<rect x="20" y="50" width="150" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="95.0" y="76.8" font-size="15" fill="#292929" text-anchor="middle">run_all</text>
+<text x="95.0" y="97.8" font-size="15" fill="#292929" text-anchor="middle">알림 하나씩</text>
+<line x1="172" y1="82" x2="198" y2="82" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="200" y="50" width="260" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="330.0" y="76.8" font-size="15" fill="#292929" text-anchor="middle">try:</text>
+<text x="330.0" y="97.8" font-size="15" fill="#292929" text-anchor="middle">run_soar_pipeline</text>
+<line x1="462" y1="82" x2="488" y2="82" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<text x="475" y="72" font-size="14" fill="#666660" text-anchor="middle">오류</text>
+<rect x="490" y="50" width="210" height="64" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="595.0" y="77.1" font-size="14" fill="#292929" text-anchor="middle">except → 실패 기록</text>
+<text x="595.0" y="96.7" font-size="14" fill="#292929" text-anchor="middle">make_failure_result</text>
+<line x1="330" y1="116" x2="330" y2="148" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="20" y="150" width="160" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="100.0" y="177.1" font-size="14" fill="#292929" text-anchor="middle">match_playbooks</text>
+<text x="100.0" y="196.7" font-size="14" fill="#292929" text-anchor="middle">플레이북 찾기</text>
+<line x1="181" y1="182" x2="192" y2="182" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="193" y="150" width="160" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="273.0" y="177.1" font-size="14" fill="#292929" text-anchor="middle">run_step</text>
+<text x="273.0" y="196.7" font-size="14" fill="#292929" text-anchor="middle">decide_gate 결정</text>
+<line x1="354" y1="182" x2="365" y2="182" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="366" y="150" width="160" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="446.0" y="177.1" font-size="14" fill="#292929" text-anchor="middle">execute_action</text>
+<text x="446.0" y="196.7" font-size="14" fill="#292929" text-anchor="middle">「자동」일 때만</text>
+<line x1="527" y1="182" x2="538" y2="182" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="539" y="150" width="160" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="619.0" y="177.1" font-size="14" fill="#292929" text-anchor="middle">open_ticket</text>
+<text x="619.0" y="196.7" font-size="14" fill="#292929" text-anchor="middle">티켓 만들기</text>
+<rect x="20" y="236" width="680" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="269.2" font-size="15" fill="#292929" text-anchor="middle">INC-402 · KeyError: 'grade' → 실패로 남기고 INC-403 부터 계속 처리</text>
+<rect x="20" y="316" width="129" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="84.5" y="340.8" font-size="15" fill="#292929" text-anchor="middle">자동 실행</text>
+<text x="84.5" y="361.8" font-size="15" fill="#292929" text-anchor="middle">2건</text>
+<rect x="157" y="316" width="129" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="221.5" y="340.8" font-size="15" fill="#292929" text-anchor="middle">승인 대기</text>
+<text x="221.5" y="361.8" font-size="15" fill="#292929" text-anchor="middle">2건</text>
+<rect x="294" y="316" width="129" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="358.5" y="340.8" font-size="15" fill="#292929" text-anchor="middle">차단 금지</text>
+<text x="358.5" y="361.8" font-size="15" fill="#292929" text-anchor="middle">1건</text>
+<rect x="431" y="316" width="129" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="495.5" y="340.8" font-size="15" fill="#292929" text-anchor="middle">조치 없음</text>
+<text x="495.5" y="361.8" font-size="15" fill="#292929" text-anchor="middle">2건</text>
+<rect x="568" y="316" width="129" height="60" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="632.5" y="340.8" font-size="15" fill="#292929" text-anchor="middle">실패</text>
+<text x="632.5" y="361.8" font-size="15" fill="#292929" text-anchor="middle">1건</text>
+</g>
+</svg>

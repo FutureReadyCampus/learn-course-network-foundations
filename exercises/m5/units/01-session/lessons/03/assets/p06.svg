@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>올릴 파일을 git status로 확인하고 add, commit, push 후 브라우저에서 확인한다</title>
+<desc>마무리 정리 흐름이다. git status에서 .env나 .venv가 보이면 멈추고, 아니면 git add, git commit, git push 순서로 올린 뒤 브라우저에서 soar_response 폴더와 파일을 확인한다.</desc>
+<defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">마무리 정리</text>
+<rect x="20.0" y="64" width="118.4" height="76" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="97.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="79.2" dy="0.0" font-weight="700">git status</tspan><tspan x="79.2" dy="19.6">올릴 파일 확인</tspan></text>
+<rect x="160.4" y="64" width="118.4" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="106.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="219.60000000000002" dy="0.0" font-weight="700">git add .</tspan></text>
+<line x1="141.4" y1="102.0" x2="156.4" y2="102.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
+<rect x="300.8" y="64" width="118.4" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="97.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0" font-weight="700">git commit</tspan><tspan x="360.0" dy="19.6">-m "…"</tspan></text>
+<line x1="281.8" y1="102.0" x2="296.8" y2="102.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
+<rect x="441.2" y="64" width="118.4" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="106.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="500.4" dy="0.0" font-weight="700">git push</tspan></text>
+<line x1="422.2" y1="102.0" x2="437.2" y2="102.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
+<rect x="581.6" y="64" width="118.4" height="76" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text y="87.3" font-size="14" fill="#292929" text-anchor="middle"><tspan x="640.8000000000001" dy="0.0" font-weight="700">브라우저</tspan><tspan x="640.8000000000001" dy="19.6">폴더 · 파일</tspan><tspan x="640.8000000000001" dy="19.6">확인</tspan></text>
+<line x1="562.6" y1="102.0" x2="577.6" y2="102.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
+<rect x="20" y="172" width="330" height="100" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text y="206.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="185.0" dy="0.0">.env · .venv 가 보이면</tspan><tspan x="185.0" dy="21.0">멈추고 .gitignore 에 적은 뒤</tspan><tspan x="185.0" dy="21.0">git status 다시</tspan></text>
+<rect x="370" y="172" width="330" height="100" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text y="207.3" font-size="14" fill="#292929" text-anchor="middle"><tspan x="535.0" dy="0.0">깃허브에 soar_response</tspan><tspan x="535.0" dy="19.6">config · incident.py ·</tspan><tspan x="535.0" dy="19.6">playbook_runner.py · action_log.json</tspan></text>
+</svg>

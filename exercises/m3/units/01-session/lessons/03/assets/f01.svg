@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 560" role="img">
+<title>check_permission 은 네 가지를 차례로 검사하고, 하나라도 걸리면 바로 거부한다</title>
+<desc>사용자 파일에 있는지, 재직 중인지, 역할이 역할 파일에 있는지, 자원:행위가 역할의 권한에 있는지를 위에서부터 검사한다. 걸린 검사마다 거부 이유가 다르고, 네 검사를 모두 지나야만 허용이다.</desc>
+<defs><marker id="a-f01-u1l3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">판정 순서 — 모든 실패 경로는 거부</text>
+<rect x="30" y="50" width="360" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="210.0" y="77.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">check_permission(사용자, 자원, 행위)</text>
+<polyline points="210,94 210,128" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f01-u1l3)"/>
+<rect x="30" y="130" width="360" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="210.0" y="159.2" font-size="15" fill="#292929" text-anchor="middle">[1] 사용자 파일에 있나?</text>
+<polyline points="390,154 458,154" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f01-u1l3)"/>
+<text x="424" y="146" font-size="14" fill="#666660" text-anchor="middle">없음</text>
+<rect x="460" y="130" width="240" height="48" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="580.0" y="159.2" font-size="15" fill="#292929" text-anchor="middle">거부: 등록되지 않은 사용자</text>
+<polyline points="210,178 210,224" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f01-u1l3)"/>
+<text x="222" y="212" font-size="14" fill="#666660" text-anchor="start">있음</text>
+<rect x="30" y="226" width="360" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="210.0" y="255.2" font-size="15" fill="#292929" text-anchor="middle">[2] 재직 중인가?</text>
+<polyline points="390,250 458,250" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f01-u1l3)"/>
+<text x="424" y="242" font-size="14" fill="#666660" text-anchor="middle">아님</text>
+<rect x="460" y="226" width="240" height="48" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="580.0" y="255.2" font-size="15" fill="#292929" text-anchor="middle">거부: 퇴사한 계정</text>
+<polyline points="210,274 210,320" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f01-u1l3)"/>
+<text x="222" y="308" font-size="14" fill="#666660" text-anchor="start">재직 중</text>
+<rect x="30" y="322" width="360" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="210.0" y="351.2" font-size="15" fill="#292929" text-anchor="middle">[3] 역할이 역할 파일에 있나?</text>
+<polyline points="390,346 458,346" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f01-u1l3)"/>
+<text x="424" y="338" font-size="14" fill="#666660" text-anchor="middle">없음</text>
+<rect x="460" y="322" width="240" height="48" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="580.0" y="351.2" font-size="15" fill="#292929" text-anchor="middle">거부: 역할이 없음</text>
+<polyline points="210,370 210,416" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f01-u1l3)"/>
+<text x="222" y="404" font-size="14" fill="#666660" text-anchor="start">있음</text>
+<rect x="30" y="418" width="360" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="210.0" y="447.2" font-size="15" fill="#292929" text-anchor="middle">[4] "자원:행위" 가 역할의 권한에 있나?</text>
+<polyline points="390,442 458,442" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f01-u1l3)"/>
+<text x="424" y="434" font-size="14" fill="#666660" text-anchor="middle">없음</text>
+<rect x="460" y="418" width="240" height="48" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="580.0" y="447.2" font-size="15" fill="#292929" text-anchor="middle">거부: 권한 없음</text>
+<polyline points="210,466 210,498" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f01-u1l3)"/>
+<text x="222" y="484" font-size="14" fill="#666660" text-anchor="start">있음</text>
+<rect x="150" y="500" width="120" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="210.0" y="527.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">허용</text>
+</g>
+</svg>

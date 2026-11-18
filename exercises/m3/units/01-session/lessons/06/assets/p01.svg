@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
+<title>보고서 질문은 질문, 쓸 내용, 답 순서로 읽고 근거와 함께 채운다</title>
+<desc>질문마다 쓸 내용에 무엇을 쓸지 적혀 있고 그대로 답 뒤에 쓴다. 문제를 풀 때마다 채우고, 이유는 화면 값과 배운 내용을 근거로 쓰며, 모르면 막힌 곳을 적는다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">보고서 질문 하나를 채우는 순서</text>
+<rect x="20" y="56" width="200" height="84" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="120" y="92.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">질문</text>
+<text x="120" y="114.2" font-size="15" fill="#292929" text-anchor="middle">(가) [핵심 질문] …</text>
+<polyline points="221,98 259,98" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="260" y="56" width="200" height="84" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="92.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">쓸 내용:</text>
+<text x="360" y="114.2" font-size="15" fill="#292929" text-anchor="middle">무엇을 쓸지 ① ② ③</text>
+<polyline points="461,98 499,98" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="500" y="56" width="200" height="84" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="600" y="92.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">답:</text>
+<text x="600" y="114.2" font-size="15" fill="#292929" text-anchor="middle">그 내용대로 쓴다</text>
+<rect x="20" y="180" width="213" height="116" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="126.5" y="221.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">문제 하나 풀 때마다</text>
+<text x="126.5" y="243.2" font-size="15" fill="#292929" text-anchor="middle">그 제목 아래를</text>
+<text x="126.5" y="265.2" font-size="15" fill="#292929" text-anchor="middle">바로 채운다</text>
+<rect x="253" y="180" width="213" height="116" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="359.5" y="221.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">왜 그럴까요?</text>
+<text x="359.5" y="243.2" font-size="15" fill="#292929" text-anchor="middle">화면 값 · 배운 내용을</text>
+<text x="359.5" y="265.2" font-size="15" fill="#292929" text-anchor="middle">근거로 이유까지</text>
+<rect x="486" y="180" width="213" height="116" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="592.5" y="221.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">답을 못 찾으면</text>
+<text x="592.5" y="243.2" font-size="15" fill="#292929" text-anchor="middle">모름 — 막힌 곳: …</text>
+<text x="592.5" y="265.2" font-size="15" fill="#292929" text-anchor="middle">이라고 쓴다</text>
+</g>
+</svg>

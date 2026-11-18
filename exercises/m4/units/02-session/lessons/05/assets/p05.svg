@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img">
+<title>정답 마무리: pwd 와 ls 로 이번 Unit 파일 아홉 개와 안내·보고서를 확인</title>
+<desc>터미널에서 pwd 와 ls 를 쳐서 anomaly_detection 폴더에 이번 Unit 파일 아홉 개와 안내, 보고서 두 파일이 보이는지 봅니다. 깃허브에 올리는 일은 Unit 3 실습 3-2 마지막에 합니다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">정답 마무리: 파일 확인</text>
+<rect x="24" y="56" width="180" height="100" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="114" y="88.6" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">터미널</text>
+<text x="114" y="110.3" font-size="15" text-anchor="middle" fill="#292929">pwd</text>
+<text x="114" y="132.1" font-size="15" text-anchor="middle" fill="#292929">ls</text>
+<line x1="206" y1="106" x2="236" y2="106" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<rect x="240" y="56" width="456" height="210" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="256" y="84" font-size="15" text-anchor="start" fill="#292929" font-weight="700">보여야 하는 것</text>
+<rect x="256" y="96" width="212" height="28" rx="4" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="268" y="114.1" font-size="14" text-anchor="start" fill="#292929">normalize_web.py</text>
+<rect x="472" y="96" width="212" height="28" rx="4" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="484" y="114.1" font-size="14" text-anchor="start" fill="#292929">normalize_json_csv.py</text>
+<rect x="256" y="128" width="212" height="28" rx="4" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="268" y="146.1" font-size="14" text-anchor="start" fill="#292929">normalize.py</text>
+<rect x="472" y="128" width="212" height="28" rx="4" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="484" y="146.1" font-size="14" text-anchor="start" fill="#292929">exercise2-1_run.py</text>
+<rect x="256" y="160" width="212" height="28" rx="4" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="268" y="178.1" font-size="14" text-anchor="start" fill="#292929">exercise2-2_run.py</text>
+<rect x="472" y="160" width="212" height="28" rx="4" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="484" y="178.1" font-size="14" text-anchor="start" fill="#292929">exercise2-3_run.py</text>
+<rect x="256" y="192" width="212" height="28" rx="4" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="268" y="210.1" font-size="14" text-anchor="start" fill="#292929">normalized_events.json</text>
+<rect x="472" y="192" width="212" height="28" rx="4" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="484" y="210.1" font-size="14" text-anchor="start" fill="#292929">server_log.jsonl</text>
+<rect x="256" y="224" width="212" height="28" rx="4" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="268" y="242.1" font-size="14" text-anchor="start" fill="#292929">saas_events.csv</text>
+<rect x="472" y="224" width="212" height="28" rx="4" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="484" y="242.1" font-size="14" text-anchor="start" fill="#292929">안내 · 보고서 두 파일</text>
+<rect x="24" y="284" width="672" height="36" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="306.4" font-size="15" text-anchor="middle" fill="#292929">깃허브에 올리는 일은 Unit 3 실습 3-2 마지막에 합니다.</text>
+</g>
+</svg>

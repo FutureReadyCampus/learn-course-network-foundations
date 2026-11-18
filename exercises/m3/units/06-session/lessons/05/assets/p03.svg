@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img"><title>실습 6-2 정답: 현황 14건 중 퇴사한 계정 3건과 만료된 예외 4건이 걸린다</title><desc>find_stale 은 퇴사 여부를 먼저 보고, 아니면 elif 로 만료 시각을 본다. 퇴사한 계정 3건(dami)과 만료된 예외 4건(1·2·4·5번)으로 모두 7건이 걸린다.</desc><defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">실습 6-2 정답 · 규칙에 걸린 7건</text>
+<rect x="20" y="120" width="130" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="85" y="149.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">현황</text>
+<text x="85" y="170.75" font-size="15" fill="#292929" text-anchor="middle">14건</text>
+<line x1="154" y1="155" x2="186" y2="155" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="190" y="70" width="220" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
+<text x="300" y="105.25" font-size="15" fill="#292929" text-anchor="middle">not entry["employed"] ?</text>
+<rect x="190" y="170" width="220" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
+<text x="300" y="202.75" font-size="15" fill="#292929" text-anchor="middle">elif expires 가 있고</text>
+<text x="300" y="223.75" font-size="15" fill="#292929" text-anchor="middle">expires_at &lt;= now ?</text>
+<line x1="300" y1="132" x2="300" y2="166" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<text x="336" y="154" font-size="14" fill="#666660" text-anchor="middle">아니다</text>
+<line x1="414" y1="100" x2="466" y2="100" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="414" y1="208" x2="466" y2="208" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="470" y="70" width="230" height="60" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="2"/>
+<text x="585" y="94.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">퇴사한 계정 3건</text>
+<text x="585" y="115.75" font-size="14" fill="#666660" text-anchor="middle">dami 역할 2건 + 예외 3번</text>
+<rect x="470" y="178" width="230" height="60" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="2"/>
+<text x="585" y="202.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">만료된 예외 4건</text>
+<text x="585" y="223.75" font-size="14" fill="#666660" text-anchor="middle">예외 1 · 2 · 4 · 5번</text>
+<rect x="20" y="272" width="680" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="2"/>
+<text x="360" y="298.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">자주 틀리는 곳: entry["expires"] 로 꺼내면 KeyError: 'expires'</text>
+<text x="360" y="319.75" font-size="14" fill="#666660" text-anchor="middle">역할로 받은 권한에는 expires 키가 없으므로 entry.get("expires") 를 쓴다</text>
+</g>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 313" role="img">
+<title>정답 확인 뒤 git status 에 .env 가 없는지와 깃허브의 파일을 점검한다</title>
+<desc>마무리 (가)는 git status 에 .env 와 .venv 가 보였는지와 한 조치를 적는다. 깃허브의 anomaly_detection 폴더에 Unit 8과 Unit 9 파일이 보이면 된다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">정답 확인 후 점검</text>
+<rect x="12" y="56" width="212" height="90.7" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="118" y="95.995" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">git status</text>
+<text x="118" y="118.125" font-size="15" text-anchor="middle" fill="#292929">.env · .venv 가 보였나?</text>
+<rect x="254" y="56" width="212" height="90.7" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="85.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">보였다면</text>
+<text x="360" y="107.25" font-size="15" text-anchor="middle" fill="#292929">.gitignore 맨 아래에 한 줄</text>
+<text x="360" y="129" font-size="15" text-anchor="middle" fill="#292929">적고 저장</text>
+<line x1="227" y1="101.35" x2="251" y2="101.35" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="496" y="56" width="212" height="90.7" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="602" y="95.995" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">다시 git status</text>
+<text x="602" y="118.125" font-size="15" text-anchor="middle" fill="#292929">사라졌는지 확인</text>
+<line x1="469" y1="101.35" x2="493" y2="101.35" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="12" y="174.7" width="696" height="67.5" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="24" y="191.2" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="46" y="202.75" font-size="15" text-anchor="start" fill="#292929">깃허브 anomaly_detection 폴더에 Unit 8 · Unit 9 파일이 보인다 (compose.yaml ·</text>
+<text x="46" y="224.5" font-size="15" text-anchor="start" fill="#292929">logs/web_404.log 포함)</text>
+<rect x="12" y="254.2" width="696" height="45.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="24" y="270.7" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="46" y="282.25" font-size="15" text-anchor="start" fill="#292929">마무리 (가)에 .env · .venv 가 보였는지와 한 조치를 적었다</text>
+</g>
+</svg>

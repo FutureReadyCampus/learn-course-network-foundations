@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>reviewing 만 승인·반려되고, approved·rejected 를 다시 처리하면 검토 중이 아님으로 막힌다</title>
+<desc>reviewing 은 승인하면 approved, 반려하면 rejected 가 됩니다. 이미 approved 나 rejected 인 요청서를 다시 처리하면 상태를 바꾸지 않고 (False, "검토 중이 아님")을 리턴합니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">상태가 바뀌는 순서</text>
+<rect x="30" y="136" width="170" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="115" y="160.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">reviewing</text>
+<text x="115" y="181.1" font-size="15" fill="#292929" text-anchor="middle">검토 중</text>
+<line x1="200" y1="152" x2="298" y2="100" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p03)"/>
+<text x="240" y="114" font-size="14" fill="#666660" text-anchor="middle">승인</text>
+<line x1="200" y1="180" x2="298" y2="232" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p03)"/>
+<text x="240" y="222" font-size="14" fill="#666660" text-anchor="middle">반려</text>
+<rect x="300" y="66" width="180" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="390" y="90.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">approved</text>
+<text x="390" y="111.1" font-size="15" fill="#292929" text-anchor="middle">승인됨</text>
+<rect x="300" y="206" width="180" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="390" y="230.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">rejected</text>
+<text x="390" y="251.1" font-size="15" fill="#292929" text-anchor="middle">반려됨</text>
+<line x1="480" y1="96" x2="538" y2="146" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p03)"/>
+<text x="500" y="84" font-size="14" fill="#666660" text-anchor="middle">다시 처리</text>
+<line x1="480" y1="236" x2="538" y2="190" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p03)"/>
+<text x="500" y="260" font-size="14" fill="#666660" text-anchor="middle">다시 처리</text>
+<rect x="540" y="122" width="160" height="92" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="620" y="150.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">False</text>
+<text x="620" y="172.8" font-size="15" fill="#292929" text-anchor="middle">"검토 중이 아님"</text>
+<text x="620" y="194.8" font-size="15" fill="#292929" text-anchor="middle">상태 그대로</text>
+<rect x="30" y="290" width="670" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="365" y="319.6" font-size="15" fill="#292929" text-anchor="middle">바꾸기 전에 지금 상태를 먼저 확인하고, 맞지 않으면 아무것도 바꾸지 않습니다</text>
+</svg>

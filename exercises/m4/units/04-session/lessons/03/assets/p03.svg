@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img">
+<title>203.0.113.50 이벤트 9개 중 POST /login 이면서 실패인 5개만 남긴다</title>
+<desc>왼쪽은 203.0.113.50 이 보낸 이벤트 9개이고, 로그인 요청이면서 실패한 10~14번 행이 강조되어 있습니다. 오른쪽은 is_login, is_fail 을 &amp; 로 합쳐 표[조건]으로 그 행만 남기는 순서입니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">로그인 요청이면서 실패인 행만 남긴다</text>
+<rect x="20" y="54" width="416" height="30" rx="0" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="42.0" y="74" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">행</text>
+<text x="110.0" y="74" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">시각</text>
+<text x="234.0" y="74" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">action</text>
+<text x="343.0" y="74" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">result</text>
+<text x="405.0" y="74" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">둘 다</text>
+<rect x="20" y="114" width="416" height="150" rx="0" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="42.0" y="104" font-size="14" text-anchor="middle" fill="#292929">9</text>
+<text x="110.0" y="104" font-size="14" text-anchor="middle" fill="#292929">09:12:01</text>
+<text x="234.0" y="104" font-size="14" text-anchor="middle" fill="#292929">GET /login</text>
+<text x="343.0" y="104" font-size="14" text-anchor="middle" fill="#292929">성공</text>
+<text x="405.0" y="104" font-size="14" text-anchor="middle" fill="#292929">아니오</text>
+<line x1="20" y1="114" x2="436" y2="114" stroke="#dededb" stroke-width="1"/>
+<text x="42.0" y="134" font-size="14" text-anchor="middle" fill="#292929">10</text>
+<text x="110.0" y="134" font-size="14" text-anchor="middle" fill="#292929">09:12:03</text>
+<text x="234.0" y="134" font-size="14" text-anchor="middle" fill="#292929">POST /login</text>
+<text x="343.0" y="134" font-size="14" text-anchor="middle" fill="#292929">실패</text>
+<text x="405.0" y="134" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">예</text>
+<line x1="20" y1="144" x2="436" y2="144" stroke="#dededb" stroke-width="1"/>
+<text x="42.0" y="164" font-size="14" text-anchor="middle" fill="#292929">11</text>
+<text x="110.0" y="164" font-size="14" text-anchor="middle" fill="#292929">09:12:06</text>
+<text x="234.0" y="164" font-size="14" text-anchor="middle" fill="#292929">POST /login</text>
+<text x="343.0" y="164" font-size="14" text-anchor="middle" fill="#292929">실패</text>
+<text x="405.0" y="164" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">예</text>
+<line x1="20" y1="174" x2="436" y2="174" stroke="#dededb" stroke-width="1"/>
+<text x="42.0" y="194" font-size="14" text-anchor="middle" fill="#292929">12</text>
+<text x="110.0" y="194" font-size="14" text-anchor="middle" fill="#292929">09:12:09</text>
+<text x="234.0" y="194" font-size="14" text-anchor="middle" fill="#292929">POST /login</text>
+<text x="343.0" y="194" font-size="14" text-anchor="middle" fill="#292929">실패</text>
+<text x="405.0" y="194" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">예</text>
+<line x1="20" y1="204" x2="436" y2="204" stroke="#dededb" stroke-width="1"/>
+<text x="42.0" y="224" font-size="14" text-anchor="middle" fill="#292929">13</text>
+<text x="110.0" y="224" font-size="14" text-anchor="middle" fill="#292929">09:12:12</text>
+<text x="234.0" y="224" font-size="14" text-anchor="middle" fill="#292929">POST /login</text>
+<text x="343.0" y="224" font-size="14" text-anchor="middle" fill="#292929">실패</text>
+<text x="405.0" y="224" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">예</text>
+<line x1="20" y1="234" x2="436" y2="234" stroke="#dededb" stroke-width="1"/>
+<text x="42.0" y="254" font-size="14" text-anchor="middle" fill="#292929">14</text>
+<text x="110.0" y="254" font-size="14" text-anchor="middle" fill="#292929">09:12:15</text>
+<text x="234.0" y="254" font-size="14" text-anchor="middle" fill="#292929">POST /login</text>
+<text x="343.0" y="254" font-size="14" text-anchor="middle" fill="#292929">실패</text>
+<text x="405.0" y="254" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">예</text>
+<line x1="20" y1="264" x2="436" y2="264" stroke="#dededb" stroke-width="1"/>
+<text x="42.0" y="284" font-size="14" text-anchor="middle" fill="#292929">15</text>
+<text x="110.0" y="284" font-size="14" text-anchor="middle" fill="#292929">09:12:18</text>
+<text x="234.0" y="284" font-size="14" text-anchor="middle" fill="#292929">POST /login</text>
+<text x="343.0" y="284" font-size="14" text-anchor="middle" fill="#292929">성공</text>
+<text x="405.0" y="284" font-size="14" text-anchor="middle" fill="#292929">아니오</text>
+<line x1="20" y1="294" x2="436" y2="294" stroke="#dededb" stroke-width="1"/>
+<text x="42.0" y="314" font-size="14" text-anchor="middle" fill="#292929">16</text>
+<text x="110.0" y="314" font-size="14" text-anchor="middle" fill="#292929">09:12:25</text>
+<text x="234.0" y="314" font-size="14" text-anchor="middle" fill="#292929">GET /admin</text>
+<text x="343.0" y="314" font-size="14" text-anchor="middle" fill="#292929">실패</text>
+<text x="405.0" y="314" font-size="14" text-anchor="middle" fill="#292929">아니오</text>
+<line x1="20" y1="324" x2="436" y2="324" stroke="#dededb" stroke-width="1"/>
+<text x="42.0" y="344" font-size="14" text-anchor="middle" fill="#292929">17</text>
+<text x="110.0" y="344" font-size="14" text-anchor="middle" fill="#292929">09:12:27</text>
+<text x="234.0" y="344" font-size="14" text-anchor="middle" fill="#292929">GET /admin/users</text>
+<text x="343.0" y="344" font-size="14" text-anchor="middle" fill="#292929">실패</text>
+<text x="405.0" y="344" font-size="14" text-anchor="middle" fill="#292929">아니오</text>
+<line x1="20" y1="354" x2="436" y2="354" stroke="#dededb" stroke-width="1"/>
+<text x="20" y="384" font-size="15" text-anchor="start" fill="#292929" font-weight="700">로그인 실패 이벤트 = 5개 (10~14번 행)</text>
+<text x="20" y="410" font-size="14" text-anchor="start" fill="#666660">GET /login 은 화면 요청이라 세지 않는다</text>
+<rect x="470" y="54" width="230" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="585.0" y="78" font-size="14" text-anchor="middle" fill="#292929"><tspan x="585.0" dy="0" font-weight="700">is_login</tspan><tspan x="585.0" dy="19">로그인 요청이면 True</tspan></text>
+<rect x="470" y="134" width="230" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="585.0" y="158" font-size="14" text-anchor="middle" fill="#292929"><tspan x="585.0" dy="0" font-weight="700">is_fail</tspan><tspan x="585.0" dy="19">실패이면 True</tspan></text>
+<polyline points="585,114 585,131" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="470" y="214" width="230" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="585.0" y="238" font-size="14" text-anchor="middle" fill="#292929"><tspan x="585.0" dy="0" font-weight="700">is_login &amp; is_fail</tspan><tspan x="585.0" dy="19">둘 다 True 인 행만 True</tspan></text>
+<polyline points="585,194 585,211" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="470" y="294" width="230" height="58" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="585.0" y="318" font-size="14" text-anchor="middle" fill="#292929"><tspan x="585.0" dy="0" font-weight="700">events[both_true]</tspan><tspan x="585.0" dy="19">True 인 행만 남긴 표</tspan></text>
+<polyline points="585,274 585,291" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<polyline points="585,355 585,366" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="470" y="370" width="230" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="585.0" y="393" font-size="14" text-anchor="middle" fill="#292929"><tspan x="585.0" dy="0" font-weight="700">주소별로 센 뒤</tspan><tspan x="585.0" dy="19">횟수 &gt;= 기준 만 남긴다</tspan></text>
+</g>
+</svg>

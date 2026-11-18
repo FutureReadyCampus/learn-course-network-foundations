@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
+<title>보고서 실습 10-2: (가) 출력과 보고서 값 · (나) 코드가 정한 이유 · (다) 대체 문장</title>
+<desc>(가)는 출력 전체와 event_count · finding_count · records · summaries 건수를 적습니다. (나)는 점수와 등급을 코드가 정한 이유를 단계 5 와 단계 3 근거로, (다)는 실패해도 멈추지 않게 한 이유와 처리 방법을 씁니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">보고서 실습 10-2 · 채울 칸</text>
+<rect x="20" y="50" width="214" height="290" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="34" y="78" font-size="16" fill="#292929" font-weight="700">(가) 출력</text>
+<rect x="34" y="119" width="14" height="14" rx="2" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="56" y="132" font-size="15" fill="#292929">출력 전체</text>
+<rect x="34" y="159" width="14" height="14" rx="2" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="56" y="172" font-size="15" fill="#292929">event_count</text>
+<rect x="34" y="199" width="14" height="14" rx="2" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="56" y="212" font-size="15" fill="#292929">finding_count</text>
+<rect x="34" y="239" width="14" height="14" rx="2" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="56" y="252" font-size="15" fill="#292929">records 건수</text>
+<rect x="34" y="279" width="14" height="14" rx="2" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="56" y="292" font-size="15" fill="#292929">summaries 건수</text>
+<rect x="253" y="50" width="214" height="290" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="267" y="78" font-size="16" fill="#292929" font-weight="700">(나) 코드 vs AI</text>
+<text x="267" y="100" font-size="14" fill="#292929">[핵심 질문]</text>
+<rect x="267" y="119" width="14" height="14" rx="2" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="289" y="132" font-size="15" fill="#292929">점수 · 등급을</text>
+<text x="289" y="154" font-size="15" fill="#292929">코드가 정한 이유</text>
+<rect x="267" y="181" width="14" height="14" rx="2" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="289" y="194" font-size="15" fill="#292929">단계 5 와 단계 3</text>
+<text x="289" y="216" font-size="15" fill="#292929">에서 찾은 근거</text>
+<rect x="486" y="50" width="214" height="290" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="500" y="78" font-size="16" fill="#292929" font-weight="700">(다) 대체 문장</text>
+<text x="500" y="100" font-size="14" fill="#292929">[핵심 질문]</text>
+<rect x="500" y="119" width="14" height="14" rx="2" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="522" y="132" font-size="15" fill="#292929">실패해도 멈추지</text>
+<text x="522" y="154" font-size="15" fill="#292929">않게 한 이유</text>
+<rect x="500" y="181" width="14" height="14" rx="2" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="522" y="194" font-size="15" fill="#292929">대체 문장이 든</text>
+<text x="522" y="216" font-size="15" fill="#292929">대상 처리 방법</text>
+</g>
+</svg>

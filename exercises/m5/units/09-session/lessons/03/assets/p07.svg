@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img"><title>Unit 9 마무리: 리스크 평가와 점검 목록, 바뀔 때마다 다시 점검</title><desc>실습 9-1 은 리스크 평가 문서, 실습 9-2 는 평가 기준 세 가지의 점검 목록을 만들었고 마무리에서 깃허브에 올렸습니다. 승인 기준이나 자동 조치가 바뀌면 다시 평가하고 점검을 다시 실행하는 회귀 시험을 합니다.</desc><defs><marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">이번 Unit 마무리</text>
+<rect x="20" y="55" width="215" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="127.5" y="93" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">실습 9-1</text>
+<text x="127.5" y="117" font-size="15" fill="#292929" text-anchor="middle">리스크 평가 문서</text>
+<text x="127.5" y="138" font-size="15" fill="#292929" text-anchor="middle">점수 · 등급 · 통제 갭</text>
+<rect x="252" y="55" width="215" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="359.5" y="93" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">실습 9-2</text>
+<text x="359.5" y="117" font-size="15" fill="#292929" text-anchor="middle">점검 목록</text>
+<text x="359.5" y="138" font-size="15" fill="#292929" text-anchor="middle">세 기준 자동 점검</text>
+<rect x="485" y="55" width="215" height="110" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="592.5" y="93" font-size="16" fill="#1f7a4a" text-anchor="middle" font-weight="700">마무리</text>
+<text x="592.5" y="117" font-size="15" fill="#292929" text-anchor="middle">파일과 보고서를</text>
+<text x="592.5" y="138" font-size="15" fill="#292929" text-anchor="middle">깃허브에 올림</text>
+<text x="360" y="215" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">바뀔 때마다 반복하기 (회귀 시험)</text>
+<rect x="20" y="240" width="155" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="97.5" y="275" font-size="15" fill="#292929" text-anchor="middle">기준 · 조치 변경</text>
+<line x1="177" y1="270" x2="193" y2="270" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<rect x="195" y="240" width="155" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="272.5" y="275" font-size="15" fill="#292929" text-anchor="middle">리스크 다시 평가</text>
+<line x1="352" y1="270" x2="368" y2="270" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<rect x="370" y="240" width="155" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="447.5" y="275" font-size="15" fill="#292929" text-anchor="middle">점검 다시 실행</text>
+<line x1="527" y1="270" x2="543" y2="270" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<rect x="545" y="240" width="155" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="622.5" y="275" font-size="15" fill="#292929" text-anchor="middle">「통과」 유지 확인</text>
+<line x1="642" y1="302" x2="642" y2="330" stroke="#666660" stroke-width="1.5"/>
+<line x1="642" y1="330" x2="97" y2="330" stroke="#666660" stroke-width="1.5"/>
+<line x1="97" y1="330" x2="97" y2="304" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<text x="360" y="370" font-size="15" fill="#666660" text-anchor="middle">다음 Unit: 지금까지 만든 것을 하나의 흐름으로 합칩니다.</text>
+</g></svg>

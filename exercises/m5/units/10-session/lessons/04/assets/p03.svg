@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>로그 3개를 읽어 점검 12개를 표로 만들면 gate_off_log.json 에서 FAIL 2개가 나온다</title>
+<desc>exercise10-3_run.py 가 로그를 하나씩 읽고(7번) run_checks 로 점검 네 가지를 실행한 뒤 judge 로 판정하고, FAIL 이면 수를 세고(8번), rows 를 policy_check.json 에 저장합니다(9번). 결과 표에서는 gate_off_log.json 의 점검 ①과 ②만 FAIL 입니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="bold">실습 10-3: 실행 흐름과 결과 표</text>
+<rect x="20" y="50" width="124" height="62" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="82.0" y="76.1" font-size="14" fill="#292929" text-anchor="middle">로그 읽기</text>
+<text x="82.0" y="95.7" font-size="14" fill="#292929" text-anchor="middle">7번 load_json</text>
+<line x1="145" y1="81" x2="158" y2="81" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="159" y="50" width="124" height="62" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="221.0" y="76.1" font-size="14" fill="#292929" text-anchor="middle">run_checks</text>
+<text x="221.0" y="95.7" font-size="14" fill="#292929" text-anchor="middle">점검 4가지</text>
+<line x1="284" y1="81" x2="297" y2="81" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="298" y="50" width="124" height="62" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="76.1" font-size="14" fill="#292929" text-anchor="middle">judge</text>
+<text x="360.0" y="95.7" font-size="14" fill="#292929" text-anchor="middle">PASS · FAIL</text>
+<line x1="423" y1="81" x2="436" y2="81" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="437" y="50" width="124" height="62" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="499.0" y="76.1" font-size="14" fill="#292929" text-anchor="middle">FAIL 세기</text>
+<text x="499.0" y="95.7" font-size="14" fill="#292929" text-anchor="middle">8번 if</text>
+<line x1="562" y1="81" x2="575" y2="81" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="576" y="50" width="124" height="62" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="638.0" y="76.1" font-size="14" fill="#292929" text-anchor="middle">저장</text>
+<text x="638.0" y="95.7" font-size="14" fill="#292929" text-anchor="middle">9번 save_json</text>
+<text x="20" y="140" font-size="14" fill="#666660" text-anchor="start">파란 상자 = 직접 쓰는 곳(7 · 8 · 9번), 1 ~ 6번은 policy_check.py</text>
+<rect x="20" y="156" width="180" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="110.0" y="181.2" font-size="15" fill="#292929" text-anchor="middle">로그</text>
+<rect x="206" y="156" width="120" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="266.0" y="180.9" font-size="14" fill="#292929" text-anchor="middle">① 게이트 우회</text>
+<rect x="330" y="156" width="120" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="390.0" y="180.9" font-size="14" fill="#292929" text-anchor="middle">② 허용 목록 IP</text>
+<rect x="454" y="156" width="120" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="514.0" y="180.9" font-size="14" fill="#292929" text-anchor="middle">③ VIP 잠금</text>
+<rect x="578" y="156" width="120" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="638.0" y="180.9" font-size="14" fill="#292929" text-anchor="middle">④ 티켓 없음</text>
+<rect x="20" y="204" width="180" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="28" y="230.9" font-size="14" fill="#292929" text-anchor="start">engine_log.json</text>
+<rect x="206" y="204" width="120" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="266.0" y="231.2" font-size="15" fill="#292929" text-anchor="middle">PASS</text>
+<rect x="330" y="204" width="120" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="390.0" y="231.2" font-size="15" fill="#292929" text-anchor="middle">PASS</text>
+<rect x="454" y="204" width="120" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="514.0" y="231.2" font-size="15" fill="#292929" text-anchor="middle">PASS</text>
+<rect x="578" y="204" width="120" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="638.0" y="231.2" font-size="15" fill="#292929" text-anchor="middle">PASS</text>
+<rect x="20" y="256" width="180" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="28" y="282.9" font-size="14" fill="#292929" text-anchor="start">risk_engine_log.json</text>
+<rect x="206" y="256" width="120" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="266.0" y="283.2" font-size="15" fill="#292929" text-anchor="middle">PASS</text>
+<rect x="330" y="256" width="120" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="390.0" y="283.2" font-size="15" fill="#292929" text-anchor="middle">PASS</text>
+<rect x="454" y="256" width="120" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="514.0" y="283.2" font-size="15" fill="#292929" text-anchor="middle">PASS</text>
+<rect x="578" y="256" width="120" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="638.0" y="283.2" font-size="15" fill="#292929" text-anchor="middle">PASS</text>
+<rect x="20" y="308" width="180" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="28" y="334.9" font-size="14" fill="#292929" text-anchor="start">gate_off_log.json</text>
+<rect x="206" y="308" width="120" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="266.0" y="335.2" font-size="15" fill="#292929" text-anchor="middle">FAIL · 위반 3</text>
+<rect x="330" y="308" width="120" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="390.0" y="335.2" font-size="15" fill="#292929" text-anchor="middle">FAIL · 위반 1</text>
+<rect x="454" y="308" width="120" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="514.0" y="335.2" font-size="15" fill="#292929" text-anchor="middle">PASS</text>
+<rect x="578" y="308" width="120" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="638.0" y="335.2" font-size="15" fill="#292929" text-anchor="middle">PASS</text>
+<rect x="20" y="362" width="680" height="54" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="384.1" font-size="14" fill="#292929" text-anchor="middle">FAIL 2개 · 전체 점검 12개 → policy_check.json 저장</text>
+<text x="360.0" y="403.7" font-size="14" fill="#292929" text-anchor="middle">위반: ① INC-404 · INC-405 · INC-406   ② INC-404</text>
+</g>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img"><title>Unit 7 마무리: 리포트, 회수 제외 분류, 깃허브 올리기를 마치고 Unit 8 회수로 간다</title><desc>이번 Unit에서 이유가 붙은 후보 리포트를 만들고 후보를 회수 대상과 회수 제외로 나눴으며 깃허브에 올렸다. Unit 8에서는 이 결과로 실제 회수하고 이력을 남긴다.</desc><defs><marker id="a-p08" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">Unit 7 마무리</text>
+<rect x="30" y="71" width="22" height="22" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<rect x="66" y="56" width="150" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="141" y="86.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실습 7-1</text>
+<rect x="228" y="56" width="472" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="464" y="86.25" font-size="15" fill="#292929" text-anchor="middle">이유가 붙은 후보 리포트를 만들었다</text>
+<rect x="30" y="131" width="22" height="22" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<rect x="66" y="116" width="150" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="141" y="146.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실습 7-2</text>
+<rect x="228" y="116" width="472" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="464" y="146.25" font-size="15" fill="#292929" text-anchor="middle">후보를 회수 대상과 회수 제외로 나눴다</text>
+<rect x="30" y="191" width="22" height="22" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<rect x="66" y="176" width="150" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="141" y="206.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">마무리</text>
+<rect x="228" y="176" width="472" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="464" y="206.25" font-size="15" fill="#292929" text-anchor="middle">파일과 보고서를 깃허브에 올렸다</text>
+<rect x="66" y="250" width="300" height="80" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="2"/>
+<text x="216" y="274.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">Unit 8</text>
+<text x="216" y="295.25" font-size="14" fill="#666660" text-anchor="middle">후보를 실제로 회수</text>
+<text x="216" y="316.25" font-size="14" fill="#666660" text-anchor="middle">회수한 이력을 남김</text>
+<line x1="370" y1="290" x2="406" y2="290" stroke="#666660" stroke-width="2" marker-end="url(#a-p08)"/>
+<rect x="410" y="250" width="290" height="80" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
+<text x="555" y="284.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">Unit 9</text>
+<text x="555" y="305.75" font-size="14" fill="#666660" text-anchor="middle">판정 함수를 서버로 연다</text>
+</g>
+</svg>

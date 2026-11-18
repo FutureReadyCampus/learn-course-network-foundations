@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>파일을 따로 실행하는 대신 앞 단계의 리턴값을 다음 단계에 전달해 이어 간다</title>
+<desc>파일을 하나씩 실행하면 순서를 빠뜨리거나 결과를 잘못 넘길 수 있습니다. 파이프라인은 앞 함수의 리턴값을 다음 함수에 전달합니다. 한 단계가 실패해도 대체 값으로 넘겨 나머지 결과를 남깁니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">왜 단계 결과를 이어 붙이는가</text>
+<text x="20" y="66" font-size="16" fill="#292929" font-weight="700">따로 실행할 때</text>
+<rect x="20" y="78" width="320" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="180" y="104.6" font-size="15" fill="#292929" text-anchor="middle">파일 1 실행</text>
+<rect x="20" y="132" width="320" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="180" y="158.6" font-size="15" fill="#292929" text-anchor="middle">파일 2 실행을 빠뜨림</text>
+<rect x="20" y="186" width="320" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="180" y="212.6" font-size="15" fill="#292929" text-anchor="middle">결과를 사람이 옮겨 넘김</text>
+<rect x="20" y="240" width="320" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="180" y="266.6" font-size="15" fill="#292929" text-anchor="middle">점수가 틀려도 모르고 보고</text>
+<text x="380" y="66" font-size="16" fill="#292929" font-weight="700">파이프라인</text>
+<rect x="380" y="78" width="320" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="540" y="104.6" font-size="15" fill="#292929" text-anchor="middle">함수 A 의 리턴값</text>
+<rect x="380" y="132" width="320" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="540" y="158.6" font-size="15" fill="#292929" text-anchor="middle">→ 함수 B 에 전달 → 리턴값</text>
+<rect x="380" y="186" width="320" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="540" y="212.6" font-size="15" fill="#292929" text-anchor="middle">→ 함수 C 에 전달 → 보고서</text>
+<rect x="380" y="240" width="320" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="540" y="266.6" font-size="15" fill="#292929" text-anchor="middle">AI 실패 → 대체 문장으로 계속</text>
+<polyline points="180,122 180,130" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="540,122 540,130" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="180,176 180,184" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="540,176 540,184" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="180,230 180,238" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="540,230 540,238" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="20" y="318" font-size="15" fill="#666660">질문: 결과를 어떻게 넘기고, 한 단계가 실패해도 나머지를 어떻게 남기는가?</text>
+</g>
+</svg>

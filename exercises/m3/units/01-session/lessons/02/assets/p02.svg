@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
+<title>규칙이 없고 직원마다 권한을 주면 막지 못하고 권한이 쌓여서 표가 필요하다</title>
+<desc>seoyeon 의 정산 조회가 통과한 것은 누가 무엇을 해도 되는지 적힌 곳이 없었기 때문이다. 직원마다 권한을 주면 관리가 안 되므로 사용자·역할 파일을 만들고, 이 파일은 Unit 2와 Unit 4에서 다시 쓴다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">왜 사용자 · 역할 표가 필요한가</text>
+<rect x="20" y="56" width="310" height="78" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="175" y="89.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">규칙이 어디에도 없음</text>
+<text x="175" y="111.2" font-size="15" fill="#292929" text-anchor="middle">seoyeon 이 정산 내역 조회</text>
+<rect x="390" y="56" width="310" height="78" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="545" y="89.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">막지 못하고 통과</text>
+<text x="545" y="111.2" font-size="15" fill="#292929" text-anchor="middle">누가 무엇을 해도 되나 미정</text>
+<polyline points="331,95 389,95" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="20" y="152" width="310" height="78" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="175" y="185.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">직원마다 권한을 하나씩</text>
+<text x="175" y="207.2" font-size="15" fill="#292929" text-anchor="middle">수백 명이면 관리 안 됨</text>
+<rect x="390" y="152" width="310" height="78" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="545" y="185.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">부서 옮긴 직원 권한이 남음</text>
+<text x="545" y="207.2" font-size="15" fill="#292929" text-anchor="middle">필요 이상 권한이 쌓임</text>
+<polyline points="331,191 389,191" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="20" y="248" width="310" height="78" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="175" y="281.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 1 사용자 · 역할 파일</text>
+<text x="175" y="303.2" font-size="15" fill="#292929" text-anchor="middle">그리고 판정 함수</text>
+<rect x="390" y="248" width="310" height="78" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="545" y="281.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 2 정책 policy.py</text>
+<text x="545" y="303.2" font-size="15" fill="#292929" text-anchor="middle">Unit 4 요청 · 승인 흐름에서 다시 씀</text>
+<polyline points="331,287 389,287" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+</g>
+</svg>

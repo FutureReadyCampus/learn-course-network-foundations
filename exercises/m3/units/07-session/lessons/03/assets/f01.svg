@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 398" role="img">
+<title>split_by_exclude 는 후보마다 can_exclude 로 물어 excluded 와 to_revoke 로 나눈다</title>
+<desc>두 리스트를 비워 두고, 후보를 하나씩 꺼내 「사용자:권한」 key 를 만듭니다. can_exclude 가 참이면 복사본에 exclude_reason 키를 적어 excluded 에, 거짓이면 그대로 to_revoke 에 추가합니다. 모든 후보를 꺼낸 뒤 (to_revoke, excluded) 를 리턴합니다.</desc>
+<defs><marker id="a-f01-0703" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#292929">
+<rect x="56" y="14" width="420" height="30" rx="4" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="266.0" y="34" text-anchor="middle" font-weight="700">split_by_exclude(findings, exclude_map)</text>
+<rect x="56" y="66" width="420" height="48" rx="4" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="266.0" y="86" text-anchor="middle">to_revoke = [] / excluded = []</text>
+<text x="266.0" y="104" text-anchor="middle">두 리스트를 비워 두고 시작한다</text>
+<polyline points="266.0,44 266.0,65" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0703)"/>
+<rect x="56" y="136" width="420" height="48" rx="4" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="266.0" y="156" text-anchor="middle">후보를 하나씩 꺼내</text>
+<text x="266.0" y="174" text-anchor="middle">key(「사용자:권한」 문자열)을 만든다</text>
+<polyline points="266.0,114 266.0,135" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0703)"/>
+<rect x="56" y="206" width="420" height="48" rx="14" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="266.0" y="226" text-anchor="middle">can_exclude(finding, exclude_map) 가 참인가?</text>
+<text x="266.0" y="244" text-anchor="middle">제외 리스트에 있고, 퇴사한 계정이 아닌가?</text>
+<polyline points="266.0,184 266.0,205" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0703)"/>
+<rect x="56" y="276" width="420" height="30" rx="4" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="266.0" y="296" text-anchor="middle">그대로 to_revoke 에 추가한다</text>
+<polyline points="266.0,254 266.0,275" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0703)"/>
+<text x="256.0" y="270.0" text-anchor="end" fill="#666660">아니다</text>
+<rect x="56" y="354" width="420" height="30" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="266.0" y="374" text-anchor="middle">(to_revoke, excluded) 를 리턴한다</text>
+<polyline points="266.0,306 266.0,353" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0703)"/>
+<text x="276.0" y="345" text-anchor="start" fill="#666660">모든 후보를 꺼낸 뒤</text>
+<rect x="520" y="188.0" width="170" height="84" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="605.0" y="208.0" text-anchor="middle">복사본에</text>
+<text x="605.0" y="226.0" text-anchor="middle">exclude_reason 키를</text>
+<text x="605.0" y="244.0" text-anchor="middle">적어 excluded 에</text>
+<text x="605.0" y="262.0" text-anchor="middle">추가한다</text>
+<polyline points="476,230.0 519,230.0" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0703)"/>
+<text x="498.0" y="223.0" text-anchor="middle" fill="#666660">그렇다</text>
+<polyline points="690,230.0 706,230.0 706,321 269.0,321" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0703)"/>
+<polyline points="266.0,321 30,321 30,160.0 55,160.0" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0703)"/>
+<text x="22" y="240.5" text-anchor="middle" fill="#666660" transform="rotate(-90 22 240.5)">다음 후보로</text>
+<circle cx="266.0" cy="321" r="3" fill="#666660"/>
+</g></svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>Unit 3 에서 한 일 세 가지와 다음 Unit 4 의 평소 기준 탐지</title>
+<desc>실습 3-1 에서 실패를 소스별로 세고, 실습 3-2 에서 사용자별·시간대별로 묶어 CSV 로 저장했고, 마무리에서 깃허브에 올렸습니다. 다음 Unit 4 에서는 평소 기준과 비교하는 탐지 규칙을 만듭니다.</desc>
+<defs><marker id="a-0303-p09" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">Unit 3 에서 한 일</text>
+<rect x="24" y="64" width="520" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="38" y="79.0" width="18" height="18" rx="3" fill="#e4f3ea" stroke="#1f7a4a"/>
+<path d="M42,88.0 L46.0,92.0 L52,83.0" fill="none" stroke="#1f7a4a" stroke-width="2.2"/>
+<text x="68" y="93.25" font-size="15" fill="#292929" text-anchor="start">표로 읽고 실패한 이벤트를 소스별로 셈</text>
+<rect x="24" y="124" width="520" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="38" y="139.0" width="18" height="18" rx="3" fill="#e4f3ea" stroke="#1f7a4a"/>
+<path d="M42,148.0 L46.0,152.0 L52,143.0" fill="none" stroke="#1f7a4a" stroke-width="2.2"/>
+<text x="68" y="153.25" font-size="15" fill="#292929" text-anchor="start">사용자별 · 시간대별로 묶어 세고 CSV 저장</text>
+<rect x="24" y="184" width="520" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="38" y="199.0" width="18" height="18" rx="3" fill="#e4f3ea" stroke="#1f7a4a"/>
+<path d="M42,208.0 L46.0,212.0 L52,203.0" fill="none" stroke="#1f7a4a" stroke-width="2.2"/>
+<text x="68" y="213.25" font-size="15" fill="#292929" text-anchor="start">만든 파일과 보고서를 깃허브에 올림</text>
+<rect x="560" y="64" width="136" height="48" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="628.0" y="93.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실습 3-1</text>
+<rect x="560" y="124" width="136" height="48" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="628.0" y="153.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실습 3-2</text>
+<rect x="560" y="184" width="136" height="48" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="628.0" y="213.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">마무리</text>
+<line x1="360" y1="246" x2="360" y2="262" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p09)"/>
+<rect x="24" y="266" width="672" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360.0" y="296.2" font-size="15" fill="#292929" text-anchor="middle">다음 Unit 4: 평소 기준(baseline)과 비교해 탐지 규칙 만들기</text>
+</svg>

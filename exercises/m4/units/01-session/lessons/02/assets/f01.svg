@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img">
+<title>로그 한 줄을 큰따옴표로 세 조각으로 나누고, 조각마다 읽는 함수가 다르다</title>
+<desc>split_request 가 로그 한 줄을 큰따옴표 기준으로 두 번 나눠 앞(prefix), 요청(request_text), 뒤(suffix) 세 조각을 만듭니다. read_client 는 앞 조각에서 접속자 주소를, read_request 는 요청 조각에서 방법과 경로를, read_status 는 뒤 조각에서 정수 상태 코드를 꺼냅니다.</desc>
+<defs><marker id="a-f01-m4u01l02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" font-size="15" fill="#292929" text-anchor="middle">
+<g fill="none" stroke="#666660" stroke-width="1.5">
+<path d="M360 60V106" marker-end="url(#a-f01-m4u01l02)"/>
+<path d="M133 180V226" marker-end="url(#a-f01-m4u01l02)"/>
+<path d="M360 180V226" marker-end="url(#a-f01-m4u01l02)"/>
+<path d="M587 180V226" marker-end="url(#a-f01-m4u01l02)"/>
+</g>
+<rect x="20" y="20" width="680" height="40" rx="8" fill="#f1f1ef" stroke="#dededb"/>
+<text x="360" y="45">로그 한 줄 (문자열)</text>
+<text x="372" y="89" text-anchor="start"><tspan font-weight="700">split_request</tspan>: 큰따옴표 기준으로 두 번 나눈다</text>
+<rect x="20" y="110" width="226" height="70" fill="#ffffff" stroke="#dededb"/>
+<rect x="247" y="110" width="226" height="70" fill="#fbf0dc" stroke="#9a6200"/>
+<rect x="474" y="110" width="226" height="70" fill="#ffffff" stroke="#dededb"/>
+<text x="133" y="138" font-weight="700">prefix (앞)</text><text x="133" y="164" font-size="14">주소 · 시각</text>
+<text x="360" y="138" font-weight="700">request_text (요청)</text><text x="360" y="164" font-size="14">GET /login HTTP/1.1</text>
+<text x="587" y="138" font-weight="700">suffix (뒤)</text><text x="587" y="164" font-size="14"> 401 312 "-" "Mozilla/5.0"</text>
+<g font-size="14" text-anchor="start"><text x="141" y="208">read_client</text><text x="368" y="208">read_request</text><text x="595" y="208">read_status</text></g>
+<rect x="58" y="232" width="150" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a"/><text x="133" y="257">접속자 주소</text>
+<rect x="285" y="232" width="150" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a"/><text x="360" y="257">방법 · 경로</text>
+<rect x="512" y="232" width="150" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a"/><text x="587" y="257">상태 코드(정수)</text>
+</g>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>알림이 올 때마다 플레이북 파일의 값을 읽으며 대응 절차가 반복 실행된다</title>
+<desc>알림 도착부터 상태 변경(조치됨)까지 일곱 단계 흐름이다. 각 단계 아래에 프로그램이 읽는 플레이북 키를 적었고, name과 reason은 사람이 검토할 때 읽는다.</desc>
+<defs><marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">플레이북이 실행되는 흐름과 읽는 키</text>
+<rect x="20.0" y="56" width="149.0" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="93.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="94.5" dy="0.0">알림 도착</tspan></text>
+<rect x="197.0" y="56" width="149.0" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="82.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="271.5" dy="0.0">인시던트 생성</tspan><tspan x="271.5" dy="21.0">(탐지됨)</tspan></text>
+<line x1="172.0" y1="88.0" x2="193.0" y2="88.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<rect x="374.0" y="56" width="149.0" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="82.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="448.5" dy="0.0">맞는 플레이북</tspan><tspan x="448.5" dy="21.0">찾기</tspan></text>
+<line x1="349.0" y1="88.0" x2="370.0" y2="88.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<rect x="551.0" y="56" width="149.0" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="93.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="625.5" dy="0.0">승인 확인</tspan></text>
+<line x1="526.0" y1="88.0" x2="547.0" y2="88.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<rect x="20.0" y="196" width="208.0" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text y="222.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="124.0" dy="0.0">상태 변경</tspan><tspan x="124.0" dy="21.0">(조치됨)</tspan></text>
+<rect x="256.0" y="196" width="208.0" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="233.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0">감사 기록</tspan></text>
+<rect x="492.0" y="196" width="208.0" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="222.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="596.0" dy="0.0">액션을 순서대로</tspan><tspan x="596.0" dy="21.0">실행</tspan></text>
+<line x1="253.0" y1="228" x2="232.0" y2="228" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<line x1="489.0" y1="228" x2="468.0" y2="228" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<polyline points="625.5,121 625.5,160 596.0,160 596.0,192" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<text x="448.5" y="144" font-size="14" fill="#2f6fd0" text-anchor="middle">trigger_rule · min_grade</text>
+<text x="596.0" y="284" font-size="14" fill="#2f6fd0" text-anchor="middle">actions</text>
+<text x="360.0" y="284" font-size="14" fill="#2f6fd0" text-anchor="middle">id</text>
+<text x="633.5" y="146" font-size="14" fill="#2f6fd0">approval</text>
+<rect x="20" y="312" width="680" height="86" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text y="349.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0">name · reason 은 프로그램이 읽지 않고, 사람이 검토 · 감사할 때 읽는다</tspan><tspan x="360.0" dy="21.0">플레이북을 코드 밖 파일에 두면 코드를 바꾸지 않고 대응을 바꿀 수 있다</tspan></text>
+</svg>

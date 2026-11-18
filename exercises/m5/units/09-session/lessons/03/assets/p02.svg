@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img"><title>기대 결과와 실제 결과를 비교해 다른 것만 문제 목록에 남긴다</title><desc>기준 세 가지마다 미리 적어 둔 기대 결과와 실제 결과를 비교하고, 다른 것을 문제 목록에 남깁니다. 승인 게이트는 대상 3개와 4개처럼 경계 양쪽 사례로 검증합니다.</desc><defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">기대 결과 vs 실제 결과</text>
+<text x="20" y="62" font-size="15" fill="#666660" font-weight="700">기준</text>
+<text x="175" y="62" font-size="15" fill="#666660" font-weight="700">기대한 결과</text>
+<text x="455" y="62" font-size="15" fill="#666660" font-weight="700">불일치로 남기는 것</text>
+<rect x="20" y="75" width="140" height="46" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="90.0" y="103" font-size="15" fill="#292929" text-anchor="middle">① 리포트 반영</text>
+<rect x="175" y="75" width="250" height="46" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="300.0" y="103" font-size="15" fill="#292929" text-anchor="middle">번호 8개가 리포트에 있음</text>
+<line x1="427" y1="98" x2="451" y2="98" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="455" y="75" width="245" height="46" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="577.5" y="103" font-size="15" fill="#292929" text-anchor="middle">리포트에 없는 번호</text>
+<rect x="20" y="133" width="140" height="46" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="90.0" y="161" font-size="15" fill="#292929" text-anchor="middle">② 자동 · 승인</text>
+<rect x="175" y="133" width="250" height="46" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="300.0" y="161" font-size="15" fill="#292929" text-anchor="middle">사례마다 기대한 결정</text>
+<line x1="427" y1="156" x2="451" y2="156" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="455" y="133" width="245" height="46" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="577.5" y="161" font-size="15" fill="#292929" text-anchor="middle">기대와 다른 사례</text>
+<rect x="20" y="191" width="140" height="46" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="90.0" y="219" font-size="15" fill="#292929" text-anchor="middle">③ 오탐 복구</text>
+<rect x="175" y="191" width="250" height="46" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="300.0" y="219" font-size="15" fill="#292929" text-anchor="middle">남은 대상 0개 · 30분 안</text>
+<line x1="427" y1="214" x2="451" y2="214" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="455" y="191" width="245" height="46" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="577.5" y="219" font-size="15" fill="#292929" text-anchor="middle">복구 안 됨 · 시간 초과</text>
+<text x="20" y="280" font-size="16" fill="#292929" font-weight="700">경계값 분석: 「4개 이상」 경계의 양쪽을 함께 넣는다</text>
+<rect x="20" y="296" width="250" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="145.0" y="322" font-size="15" fill="#292929" text-anchor="middle">대상 3개 · 1점</text>
+<text x="145.0" y="344" font-size="15" fill="#292929" text-anchor="middle">기대: 자동</text>
+<rect x="450" y="296" width="250" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="575.0" y="322" font-size="15" fill="#292929" text-anchor="middle">대상 4개 · 3점</text>
+<text x="575.0" y="344" font-size="15" fill="#292929" text-anchor="middle">기대: 승인 필요</text>
+<line x1="360" y1="290" x2="360" y2="370" stroke="#e0442e" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="360" y="388" font-size="15" fill="#292929" text-anchor="middle">경계</text>
+<text x="20" y="412" font-size="15" fill="#666660">변경 뒤 다시 실행해 결과가 그대로인지 보면 회귀 시험입니다.</text>
+</g></svg>

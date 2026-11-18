@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 331" role="img">
+<title>실습 9-1 보고서: 명령과 결과, 컴포즈의 장점, 재현, 포트 바꾸기를 채운다</title>
+<desc>실습 9-1 보고서의 (가)부터 (라)까지 채울 내용을 체크리스트로 보여 준다. (나) (다) (라)는 핵심 질문이다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 9-1 · 채울 칸</text>
+<rect x="12" y="54" width="165" height="47.2" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="94.5" y="83.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">(가) 명령과 결과</text>
+<rect x="12" y="111.2" width="165" height="85.25" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="22.0" y="125.7" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="44" y="137.25" font-size="15" text-anchor="start" fill="#292929">docker images</text>
+<text x="44" y="159" font-size="15" text-anchor="start" fill="#292929">부터 curl 까지 친</text>
+<text x="44" y="180.75" font-size="15" text-anchor="start" fill="#292929">순서대로</text>
+<rect x="12" y="204.45" width="165" height="41.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="22.0" y="218.95" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="44" y="230.5" font-size="15" text-anchor="start" fill="#292929">서비스 이름 두 개</text>
+<rect x="12" y="254.2" width="165" height="41.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="22.0" y="268.7" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="44" y="280.25" font-size="15" text-anchor="start" fill="#292929">각 서비스의 포트</text>
+<rect x="189" y="54" width="165" height="47.2" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="271.5" y="83.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">(나) [핵심 질문]</text>
+<rect x="189" y="111.2" width="165" height="107" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="199.0" y="125.7" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="221" y="137.25" font-size="15" text-anchor="start" fill="#292929">docker run 과</text>
+<text x="221" y="159" font-size="15" text-anchor="start" fill="#292929">비교해 컴포즈가</text>
+<text x="221" y="180.75" font-size="15" text-anchor="start" fill="#292929">더 나은 점 두</text>
+<text x="221" y="202.5" font-size="15" text-anchor="start" fill="#292929">가지</text>
+<rect x="366" y="54" width="165" height="47.2" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="448.5" y="83.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">(다) [핵심 질문]</text>
+<rect x="366" y="111.2" width="165" height="85.25" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="376.0" y="125.7" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="398" y="137.25" font-size="15" text-anchor="start" fill="#292929">docker run 팀과</text>
+<text x="398" y="159" font-size="15" text-anchor="start" fill="#292929">compose.yaml</text>
+<text x="398" y="180.75" font-size="15" text-anchor="start" fill="#292929">팀의 차이</text>
+<rect x="366" y="204.45" width="165" height="63.5" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="376.0" y="218.95" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="398" y="230.5" font-size="15" text-anchor="start" fill="#292929">nginx:1.28 처럼</text>
+<text x="398" y="252.25" font-size="15" text-anchor="start" fill="#292929">버전을 적는 이유</text>
+<rect x="543" y="54" width="165" height="47.2" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="625.5" y="83.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">(라) [핵심 질문]</text>
+<rect x="543" y="111.2" width="165" height="63.5" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="553.0" y="125.7" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="575" y="137.25" font-size="15" text-anchor="start" fill="#292929">8081 이 막혔을</text>
+<text x="575" y="159" font-size="15" text-anchor="start" fill="#292929">때 바꿀 줄과 모양</text>
+<rect x="543" y="182.7" width="165" height="63.5" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="553.0" y="197.2" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="575" y="208.75" font-size="15" text-anchor="start" fill="#292929">서버 안은 그대로</text>
+<text x="575" y="230.5" font-size="15" text-anchor="start" fill="#292929">80 인 이유</text>
+<rect x="543" y="254.2" width="165" height="63.5" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="553.0" y="268.7" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="575" y="280.25" font-size="15" text-anchor="start" fill="#292929">curl 주소에서</text>
+<text x="575" y="302" font-size="15" text-anchor="start" fill="#292929">달라지는 점</text>
+</g>
+</svg>

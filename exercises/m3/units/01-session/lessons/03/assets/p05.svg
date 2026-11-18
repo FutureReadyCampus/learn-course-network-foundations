@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 370" role="img">
+<title>실습 1-2 요점은 파일 읽기, 없으면 거부, 권한 문자열, 끝까지 지나면 허용이다</title>
+<desc>JSON 파일을 읽고, 키나 권한이 없으면 거부하며, f-문자열로 자원:행위를 만든다. 모든 검사를 지나면 허용하고, 다른 파일에서는 from rbac import 로 불러 쓴다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 1-2 요점</text>
+<rect x="20" y="52" width="210" height="42" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="125" y="78.2" font-size="15" fill="#292929" text-anchor="middle">JSON 파일 읽기</text>
+<rect x="250" y="52" width="450" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="262" y="77.9" font-size="14" fill="#292929">ROLES = json.load(roles_file)</text>
+<polyline points="231,73 249,73" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="20" y="104" width="210" height="42" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="125" y="130.2" font-size="15" fill="#292929" text-anchor="middle">키가 없으면 거부</text>
+<rect x="250" y="104" width="450" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="262" y="129.9" font-size="14" fill="#292929">if user not in USERS: return False, …</text>
+<polyline points="231,125 249,125" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="20" y="156" width="210" height="42" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="125" y="182.2" font-size="15" fill="#292929" text-anchor="middle">권한 문자열 만들기</text>
+<rect x="250" y="156" width="450" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="262" y="181.9" font-size="14" fill="#292929">permission = f"{resource}:{action}"</text>
+<polyline points="231,177 249,177" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="20" y="208" width="210" height="42" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="125" y="234.2" font-size="15" fill="#292929" text-anchor="middle">리스트에 없으면 거부</text>
+<rect x="250" y="208" width="450" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="262" y="233.9" font-size="14" fill="#292929">if permission not in ROLES[role]:</text>
+<polyline points="231,229 249,229" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="20" y="260" width="210" height="42" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="125" y="286.2" font-size="15" fill="#292929" text-anchor="middle">끝까지 지나면 허용</text>
+<rect x="250" y="260" width="450" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="262" y="285.9" font-size="14" fill="#292929">return True, "허용"</text>
+<polyline points="231,281 249,281" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="20" y="312" width="210" height="42" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="125" y="338.2" font-size="15" fill="#292929" text-anchor="middle">다른 파일에서 쓰기</text>
+<rect x="250" y="312" width="450" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="262" y="337.9" font-size="14" fill="#292929">from rbac import check_permission</text>
+<polyline points="231,333 249,333" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+</g>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>정답 마무리: git status 로 .env·.venv 를 확인하고 __pycache__ 는 .gitignore 에 적는다</title>
+<desc>git status 에서 .env 나 .venv 가 보이지 않았는지 확인한다. __pycache__ 가 보이면 .gitignore 맨 아래에 __pycache__/ 를 적고 다시 확인한 뒤 올리면, 깃허브 soar_response 폴더에 오늘 만든 .py 파일이 보인다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<text x="20" y="32" font-size="18" fill="#292929" font-weight="700">정답 마무리 · 한 예</text>
+<rect x="20" y="56" width="200" height="100" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="120" y="90.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">git status</text>
+<text x="120" y="111.4" font-size="15" fill="#292929" text-anchor="middle">.env · .venv</text>
+<text x="120" y="132.4" font-size="15" fill="#292929" text-anchor="middle">보이지 않음</text>
+<line x1="226" y1="106" x2="254" y2="106" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="260" y="56" width="200" height="100" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="91.44" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">__pycache__ 보임</text>
+<text x="360" y="111.04" font-size="14" fill="#292929" text-anchor="middle">.gitignore 맨 아래에</text>
+<text x="360" y="130.64" font-size="14" fill="#292929" text-anchor="middle">__pycache__/ 적기</text>
+<line x1="466" y1="106" x2="494" y2="106" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="500" y="56" width="200" height="100" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="600" y="91.44" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">올린 뒤</text>
+<text x="600" y="111.04" font-size="14" fill="#292929" text-anchor="middle">깃허브 soar_response</text>
+<text x="600" y="130.64" font-size="14" fill="#292929" text-anchor="middle">에 .py 파일 보임</text>
+<rect x="20" y="196" width="680" height="80" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="360" y="230.9" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">.env 가 보였다면 올리지 않는다</text>
+<text x="360" y="251.9" font-size="15" fill="#292929" text-anchor="middle">API 키가 있어 다른 사람이 볼 수 있다</text>
+</svg>

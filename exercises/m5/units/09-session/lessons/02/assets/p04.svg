@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img"><title>실습 9-1 정리: 직접 쓴 코드 여섯 가지</title><desc>점수 열 만들기, 등급 리턴, 빠진 통제 추가, 정렬, 함수 결과 저장, 개수 세기의 코드 조각을 한 장에 모았습니다. 왼쪽은 하려는 일, 오른쪽은 코드입니다.</desc><defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">실습 9-1 정리</text>
+<rect x="20" y="50" width="250" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="145.0" y="79" font-size="15" fill="#292929" text-anchor="middle">두 열을 곱해 점수 열</text>
+<line x1="272" y1="74" x2="296" y2="74" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="300" y="50" width="400" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="312" y="79" font-size="14" fill="#292929">table[&quot;score&quot;] = ...impact * ...likelihood</text>
+<rect x="20" y="110" width="250" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="145.0" y="139" font-size="15" fill="#292929" text-anchor="middle">기준 이상이면 등급 리턴</text>
+<line x1="272" y1="134" x2="296" y2="134" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="300" y="110" width="400" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="312" y="139" font-size="14" fill="#292929">if score &gt;= 6: return &quot;높음&quot;</text>
+<rect x="20" y="170" width="250" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="145.0" y="199" font-size="15" fill="#292929" text-anchor="middle">없으면 빠진 통제에 추가</text>
+<line x1="272" y1="194" x2="296" y2="194" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="300" y="170" width="400" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="312" y="199" font-size="14" fill="#292929">if control not in controls: append</text>
+<rect x="20" y="230" width="250" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="145.0" y="259" font-size="15" fill="#292929" text-anchor="middle">점수가 큰 순서로 정렬</text>
+<line x1="272" y1="254" x2="296" y2="254" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="300" y="230" width="400" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="312" y="259" font-size="14" fill="#292929">sort_values(&quot;score&quot;, ascending=False)</text>
+<rect x="20" y="290" width="250" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="145.0" y="319" font-size="15" fill="#292929" text-anchor="middle">함수 결과를 변수에 저장</text>
+<line x1="272" y1="314" x2="296" y2="314" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="300" y="290" width="400" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="312" y="319" font-size="14" fill="#292929">missing = find_missing_controls(...)</text>
+<rect x="20" y="350" width="250" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="145.0" y="379" font-size="15" fill="#292929" text-anchor="middle">보완할 조치 수 1 늘리기</text>
+<line x1="272" y1="374" x2="296" y2="374" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="300" y="350" width="400" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="312" y="379" font-size="14" fill="#292929">gap_count = gap_count + 1</text>
+</g></svg>

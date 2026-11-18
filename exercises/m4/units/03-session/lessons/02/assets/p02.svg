@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 390" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>for 로 하나씩 세던 방식에서 판다스 표(행=이벤트, 열=키)로 바꾸기</title>
+<desc>지금까지는 리스트와 딕셔너리를 for 로 돌려 하나씩 셌습니다. 판다스는 파일을 데이터프레임이라는 표로 읽고, 행 하나가 이벤트 1개, 열 하나가 키 하나입니다.</desc>
+<defs><marker id="a-0302-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">왜 판다스로 표를 읽는가</text>
+<rect x="24" y="68" width="310" height="110" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="179.0" y="107.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">지금까지: 리스트 · 딕셔너리</text>
+<text x="179.0" y="128.2" font-size="15" fill="#666660" text-anchor="middle">for 로 하나씩 꺼내</text>
+<text x="179.0" y="149.2" font-size="15" fill="#666660" text-anchor="middle">딕셔너리에 더해 가며 셈</text>
+<line x1="340" y1="123" x2="380" y2="123" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p02)"/>
+<rect x="386" y="68" width="310" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="541.0" y="107.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">판다스: 표(DataFrame)</text>
+<text x="541.0" y="128.2" font-size="15" fill="#666660" text-anchor="middle">import pandas as pd</text>
+<text x="541.0" y="149.2" font-size="15" fill="#666660" text-anchor="middle">짧은 코드로 거르기 · 세기</text>
+<rect x="24" y="206" width="40" height="30" rx="0" fill="#f1f1ef" stroke="#dededb"/>
+<text x="44.0" y="225.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700"></text>
+<rect x="64" y="206" width="90" height="30" rx="0" fill="#f1f1ef" stroke="#dededb"/>
+<text x="109.0" y="225.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">time</text>
+<rect x="154" y="206" width="80" height="30" rx="0" fill="#e6eefb" stroke="#dededb"/>
+<text x="194.0" y="225.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">source</text>
+<rect x="234" y="206" width="70" height="30" rx="0" fill="#f1f1ef" stroke="#dededb"/>
+<text x="269.0" y="225.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">user</text>
+<rect x="304" y="206" width="122" height="30" rx="0" fill="#f1f1ef" stroke="#dededb"/>
+<text x="365.0" y="225.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">ip</text>
+<rect x="426" y="206" width="176" height="30" rx="0" fill="#f1f1ef" stroke="#dededb"/>
+<text x="514.0" y="225.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">action</text>
+<rect x="602" y="206" width="70" height="30" rx="0" fill="#f1f1ef" stroke="#dededb"/>
+<text x="637.0" y="225.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">result</text>
+<rect x="24" y="236" width="40" height="30" rx="0" fill="#f8e8e3" stroke="#dededb"/>
+<text x="44.0" y="255.9" font-size="14" fill="#292929" text-anchor="middle">0</text>
+<rect x="64" y="236" width="90" height="30" rx="0" fill="#f8e8e3" stroke="#dededb"/>
+<text x="109.0" y="255.9" font-size="14" fill="#292929" text-anchor="middle">02:14:08</text>
+<rect x="154" y="236" width="80" height="30" rx="0" fill="#f8e8e3" stroke="#dededb"/>
+<text x="194.0" y="255.9" font-size="14" fill="#292929" text-anchor="middle">saas</text>
+<rect x="234" y="236" width="70" height="30" rx="0" fill="#f8e8e3" stroke="#dededb"/>
+<text x="269.0" y="255.9" font-size="14" fill="#292929" text-anchor="middle">jiwoo</text>
+<rect x="304" y="236" width="122" height="30" rx="0" fill="#f8e8e3" stroke="#dededb"/>
+<text x="365.0" y="255.9" font-size="14" fill="#292929" text-anchor="middle">203.0.113.80</text>
+<rect x="426" y="236" width="176" height="30" rx="0" fill="#f8e8e3" stroke="#dededb"/>
+<text x="514.0" y="255.9" font-size="14" fill="#292929" text-anchor="middle">login</text>
+<rect x="602" y="236" width="70" height="30" rx="0" fill="#f8e8e3" stroke="#dededb"/>
+<text x="637.0" y="255.9" font-size="14" fill="#292929" text-anchor="middle">실패</text>
+<rect x="24" y="266" width="40" height="30" rx="0" fill="#ffffff" stroke="#dededb"/>
+<text x="44.0" y="285.9" font-size="14" fill="#292929" text-anchor="middle">1</text>
+<rect x="64" y="266" width="90" height="30" rx="0" fill="#ffffff" stroke="#dededb"/>
+<text x="109.0" y="285.9" font-size="14" fill="#292929" text-anchor="middle">09:01:05</text>
+<rect x="154" y="266" width="80" height="30" rx="0" fill="#e6eefb" stroke="#dededb"/>
+<text x="194.0" y="285.9" font-size="14" fill="#292929" text-anchor="middle">web</text>
+<rect x="234" y="266" width="70" height="30" rx="0" fill="#ffffff" stroke="#dededb"/>
+<text x="269.0" y="285.9" font-size="14" fill="#292929" text-anchor="middle">None</text>
+<rect x="304" y="266" width="122" height="30" rx="0" fill="#ffffff" stroke="#dededb"/>
+<text x="365.0" y="285.9" font-size="14" fill="#292929" text-anchor="middle">198.51.100.21</text>
+<rect x="426" y="266" width="176" height="30" rx="0" fill="#ffffff" stroke="#dededb"/>
+<text x="514.0" y="285.9" font-size="14" fill="#292929" text-anchor="middle">GET /</text>
+<rect x="602" y="266" width="70" height="30" rx="0" fill="#ffffff" stroke="#dededb"/>
+<text x="637.0" y="285.9" font-size="14" fill="#292929" text-anchor="middle">성공</text>
+<rect x="24" y="296" width="40" height="30" rx="0" fill="#ffffff" stroke="#dededb"/>
+<text x="44.0" y="315.9" font-size="14" fill="#292929" text-anchor="middle">2</text>
+<rect x="64" y="296" width="90" height="30" rx="0" fill="#ffffff" stroke="#dededb"/>
+<text x="109.0" y="315.9" font-size="14" fill="#292929" text-anchor="middle">09:01:06</text>
+<rect x="154" y="296" width="80" height="30" rx="0" fill="#e6eefb" stroke="#dededb"/>
+<text x="194.0" y="315.9" font-size="14" fill="#292929" text-anchor="middle">web</text>
+<rect x="234" y="296" width="70" height="30" rx="0" fill="#ffffff" stroke="#dededb"/>
+<text x="269.0" y="315.9" font-size="14" fill="#292929" text-anchor="middle">None</text>
+<rect x="304" y="296" width="122" height="30" rx="0" fill="#ffffff" stroke="#dededb"/>
+<text x="365.0" y="315.9" font-size="14" fill="#292929" text-anchor="middle">198.51.100.21</text>
+<rect x="426" y="296" width="176" height="30" rx="0" fill="#ffffff" stroke="#dededb"/>
+<text x="514.0" y="315.9" font-size="14" fill="#292929" text-anchor="middle">GET /static/app.css</text>
+<rect x="602" y="296" width="70" height="30" rx="0" fill="#ffffff" stroke="#dededb"/>
+<text x="637.0" y="315.9" font-size="14" fill="#292929" text-anchor="middle">성공</text>
+<rect x="24" y="342" width="16" height="16" rx="3" fill="#f8e8e3" stroke="#e0442e"/>
+<text x="48" y="355" font-size="15" fill="#292929" text-anchor="start">행 하나 = 이벤트 1개</text>
+<rect x="260" y="342" width="16" height="16" rx="3" fill="#e6eefb" stroke="#2f6fd0"/>
+<text x="284" y="355" font-size="15" fill="#292929" text-anchor="start">열 하나 = 키 하나의 값 전체</text>
+<text x="24" y="380" font-size="14" fill="#666660" text-anchor="start">맨 왼쪽 숫자는 판다스가 붙이는 행 번호(인덱스)</text>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" role="img">
+<title>마무리 정리: git status 확인 → add·commit·push → 브라우저에서 확인</title>
+<desc>올릴 파일을 git status 로 먼저 보고 .env 나 .venv 가 보이면 멈춥니다. 그다음 git add, commit, push 로 올리고 브라우저에서 파일이 모두 있는지 확인합니다.</desc>
+<defs><marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">마무리 정리</text>
+<rect x="24" y="70" width="200" height="110" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="124" y="110.328" font-size="16" fill="#9a6200" text-anchor="middle" font-weight="700">올릴 파일 확인</text>
+<text x="124" y="130.712" font-size="14" fill="#292929" text-anchor="middle">git status</text>
+<text x="124" y="150.312" font-size="14" fill="#666660" text-anchor="middle">.env · .venv 면 멈춤</text>
+<rect x="260" y="70" width="200" height="110" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360" y="110.328" font-size="16" fill="#1f7a4a" text-anchor="middle" font-weight="700">올리기</text>
+<text x="360" y="130.712" font-size="14" fill="#292929" text-anchor="middle">git add .</text>
+<text x="360" y="150.312" font-size="14" fill="#292929" text-anchor="middle">commit → push</text>
+<polyline points="227,125 256,125" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p07)"/>
+<rect x="496" y="70" width="200" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="596" y="108.928" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">올린 뒤</text>
+<text x="596" y="130.32" font-size="15" fill="#292929" text-anchor="middle">브라우저에서</text>
+<text x="596" y="151.32" font-size="15" fill="#292929" text-anchor="middle">파일이 모두 있나</text>
+<polyline points="463,125 492,125" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p07)"/>
+</g>
+</svg>

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 620" role="img">
+<title>mark_approvals 는 계획마다 승인 필요 여부와 결정을 보고 승인 상태 세 가지 중 하나를 적는다</title>
+<desc>계획을 하나씩 꺼내 복사본을 만들고, 승인이 필요 없으면 승인 불필요를 적습니다. 승인이 필요하면 보안 책임자의 결정이 승인일 때 승인됨, 아니면 승인 대기를 적습니다. 모든 계획을 results 에 담은 뒤 리턴합니다.</desc>
+<defs><marker id="a-f01-0803" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<rect x="50" y="16" width="360" height="56" rx="22" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="230.0" y="39.5" font-size="15" fill="#292929" text-anchor="middle">mark_approvals(</text>
+<text x="230.0" y="58.5" font-size="14" fill="#292929" text-anchor="middle">plans, sensitive, decisions)</text>
+<g transform="translate(0 16)">
+<path d="M230 56 L230 80" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0803)"/>
+<rect x="50" y="80" width="360" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="230.0" y="105.0" font-size="15" fill="#292929" text-anchor="middle">results = []  (결과를 담을 빈 리스트)</text>
+<path d="M230 120 L230 144" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0803)"/>
+<rect x="50" y="144" width="360" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="230.0" y="169.0" font-size="15" fill="#292929" text-anchor="middle">계획을 하나씩 꺼내 복사본(item)을 만든다</text>
+<path d="M230 184 L230 208" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0803)"/>
+<rect x="50" y="208" width="360" height="66" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="230.0" y="227.0" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">승인이 필요한가?</text>
+<text x="230.0" y="246.0" font-size="14" fill="#292929" text-anchor="middle">needs_approval: 민감한 권한이거나</text>
+<text x="230.0" y="265.0" font-size="14" fill="#292929" text-anchor="middle">영향이 2건 이상인가</text>
+<path d="M410 241 L460 241" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0803)"/>
+<text x="435" y="234" font-size="14" fill="#666660" text-anchor="middle">아니다</text>
+<rect x="460" y="216" width="240" height="50" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="580.0" y="236.5" font-size="15" fill="#292929" text-anchor="middle">item["approval"]</text>
+<text x="580.0" y="255.5" font-size="14" fill="#292929" text-anchor="middle">= "승인 불필요"</text>
+<path d="M230 274 L230 304" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0803)"/>
+<text x="238" y="294" font-size="14" fill="#666660" text-anchor="start">그렇다</text>
+<rect x="50" y="304" width="360" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="230.0" y="324.5" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">보안 책임자의 결정(decisions)이</text>
+<text x="230.0" y="343.5" font-size="14" fill="#292929" text-anchor="middle">「승인」인가?</text>
+<path d="M230 354 L230 366 L140 366 L140 388" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0803)"/>
+<path d="M230 366 L320 366 L320 388" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0803)"/>
+<text x="132" y="382" font-size="14" fill="#666660" text-anchor="end">그렇다</text>
+<text x="328" y="382" font-size="14" fill="#666660" text-anchor="start">아니다</text>
+<rect x="50" y="388" width="175" height="50" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="137.5" y="408.5" font-size="15" fill="#292929" text-anchor="middle">item["approval"]</text>
+<text x="137.5" y="427.5" font-size="14" fill="#292929" text-anchor="middle">= "승인됨"</text>
+<rect x="235" y="388" width="175" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="322.5" y="408.5" font-size="15" fill="#292929" text-anchor="middle">item["approval"]</text>
+<text x="322.5" y="427.5" font-size="14" fill="#292929" text-anchor="middle">= "승인 대기"</text>
+<path d="M137 438 L137 452 L322 452 L322 438" fill="none" stroke="#666660" stroke-width="1.6"/>
+<path d="M230 452 L230 472" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0803)"/>
+<path d="M580 266 L580 492 L410 492" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0803)"/>
+<rect x="50" y="472" width="360" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="230.0" y="497.0" font-size="15" fill="#292929" text-anchor="middle">item 을 results 에 추가하고 다음 계획으로</text>
+<path d="M50 492 L24 492 L24 164 L50 164" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0803)"/>
+<text x="18" y="330" font-size="14" fill="#666660" text-anchor="middle" transform="rotate(-90 18 330)">반복 (다음 계획)</text>
+<path d="M230 512 L230 548" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0803)"/>
+<text x="238" y="535" font-size="14" fill="#666660" text-anchor="start">모든 계획을 꺼낸 뒤</text>
+<rect x="50" y="548" width="360" height="40" rx="22" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="230.0" y="573.0" font-size="15" fill="#292929" text-anchor="middle">results 를 리턴한다</text>
+</g>
+</g>
+</svg>

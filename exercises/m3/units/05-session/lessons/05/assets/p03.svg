@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>실습 5-2 보고서와 마무리 체크리스트: 건수, 남기는 이유, 막힌 곳, git status</title>
+<desc>실습 5-2 (가)에는 출력 전체와 저장 건수, 상태별 건수를 씁니다. (나)는 반려·미부여 요청서도 남기는 이유, (다)는 상태별 건수로 읽는 막힌 곳과 할 일입니다. 마무리 (가)에는 git status 의 줄 수와 .env·.venv 여부를 씁니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">실습 5-2 · 마무리 보고서에 채울 칸</text>
+<rect x="20" y="52" width="110" height="74" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="75" y="93.62" font-size="15" fill="#292929" text-anchor="middle">(가)</text>
+<rect x="140" y="52" width="560" height="74" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="152" y="83.12" font-size="15" fill="#292929">① 출력 전체 (코드 상자에)</text>
+<text x="152" y="104.12" font-size="15" fill="#292929">② 저장된 요청서 건수  ③ 상태 이름별 건수</text>
+<rect x="20" y="142" width="110" height="74" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="75" y="183.62" font-size="15" fill="#292929" text-anchor="middle">(나)</text>
+<rect x="140" y="142" width="560" height="74" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="152" y="173.12" font-size="15" fill="#292929">[핵심 질문] rejected · approved 요청서도</text>
+<text x="152" y="194.12" font-size="15" fill="#292929">지우지 않고 남기는 이유 두 가지 이상</text>
+<rect x="20" y="232" width="110" height="74" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="75" y="273.62" font-size="15" fill="#292929" text-anchor="middle">(다)</text>
+<rect x="140" y="232" width="560" height="74" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="152" y="263.12" font-size="15" fill="#292929">[핵심 질문] ① 숫자에서 읽는 막힌 곳</text>
+<text x="152" y="284.12" font-size="15" fill="#292929">② 막힌 곳에 해야 할 일</text>
+<rect x="20" y="322" width="110" height="74" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="75" y="363.62" font-size="15" fill="#292929" text-anchor="middle">마무리 (가)</text>
+<rect x="140" y="322" width="560" height="74" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="152" y="353.12" font-size="15" fill="#292929">Untracked files: 아래 줄 수</text>
+<text x="152" y="374.12" font-size="15" fill="#292929">.env · .venv 가 있었는지</text>
+</g>
+</svg>

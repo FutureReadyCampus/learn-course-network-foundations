@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>Unit 5 마무리: 세 실습 확인과 강의계획서 평가 기준 확인</title>
+<desc>위 칸은 이번 Unit에서 확인할 세 가지(실습 5-1, 실습 5-2, 마무리)이고, 아래 칸은 강의계획서 평가 기준 세 가지와 확인할 출력 위치다.</desc>
+<defs><marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<text x="20" y="30" font-size="18" fill="#292929" font-weight="700">이번 Unit 마무리</text>
+<rect x="20" y="46" width="130" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="85" y="71.4" font-size="15" fill="#292929" text-anchor="middle">실습 5-1</text>
+<rect x="160" y="46" width="540" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="172" y="71.4" font-size="15" fill="#292929">자동이 바꾼 것만 되돌리고 불가 조치 표시</text>
+<rect x="20" y="96" width="130" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="85" y="121.4" font-size="15" fill="#292929" text-anchor="middle">실습 5-2</text>
+<rect x="160" y="96" width="540" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="172" y="121.4" font-size="15" fill="#292929">알림 8건 판단 → 조치, 요약과 확인 목록</text>
+<rect x="20" y="146" width="130" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="85" y="171.4" font-size="15" fill="#292929" text-anchor="middle">마무리</text>
+<rect x="160" y="146" width="540" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="172" y="171.4" font-size="15" fill="#292929">오늘 만든 파일과 보고서를 깃허브에 올림</text>
+<text x="20" y="230" font-size="18" fill="#292929" font-weight="700">강의계획서 평가 기준</text>
+<rect x="20" y="246" width="340" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="32" y="271.04" font-size="14" fill="#292929">계정 잠금 · IP 차단 · 세션 종료 동작</text>
+<rect x="370" y="246" width="330" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="382" y="271.04" font-size="14" fill="#292929">실습 4-1 · 4-2 · 4-3, 5-2 단계 2</text>
+<rect x="20" y="296" width="340" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="32" y="321.04" font-size="14" fill="#292929">VIP 계정은 승인 대기로 둔다</text>
+<rect x="370" y="296" width="330" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="382" y="321.04" font-size="14" fill="#292929">실습 4-1 단계 2, INC-003 · 010</text>
+<rect x="20" y="346" width="340" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="32" y="371.04" font-size="14" fill="#292929">모든 조치와 해제가 기록으로 남는다</text>
+<rect x="370" y="346" width="330" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="382" y="371.04" font-size="14" fill="#292929">실습 4-1 단계 3, 5-1 단계 2~4</text>
+</svg>

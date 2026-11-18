@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 350" role="img">
+<title>실습 3-1 보고서: 출력과 숫자, INC-005·INC-003 의 이유를 채웁니다</title>
+<desc>실습 3-1 보고서에 채울 칸입니다. (가)는 출력과 숫자, (나)는 INC-005 가 실행되지 않은 이유와 위험, (다)는 INC-003 의 승인 대기 이유와 거절 뒤 상태, 감사 기록을 씁니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 3-1 보고서에 채울 칸</text>
+<rect x="24" y="60" width="130" height="85" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="89.0" y="107.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(가)</tspan></text>
+<rect x="166" y="60" width="530" height="85" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="180" y="86.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180" dy="0">① 출력 전체 (코드 상자에 붙여 넣기)</tspan><tspan x="180" dy="21.0">② 처리 뒤 티켓 수   ③ 담당자 알림 수</tspan><tspan x="180" dy="21.0">④ 분류됨 으로 남은 건의 번호</tspan></text>
+<rect x="24" y="157" width="130" height="64" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="89.0" y="183.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(나)</tspan><tspan x="89.0" dy="21.0">핵심 질문</tspan></text>
+<rect x="166" y="157" width="530" height="64" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="180" y="183.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180" dy="0">① INC-005 가 실행되지 않은 이유 (단계 2 · 4 근거)</tspan><tspan x="180" dy="21.0">② 권한 확인이 없을 때 생길 위험</tspan></text>
+<rect x="24" y="233" width="130" height="85" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="89.0" y="270.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(다)</tspan><tspan x="89.0" dy="21.0">핵심 질문</tspan></text>
+<rect x="166" y="233" width="530" height="85" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="180" y="259.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180" dy="0">① 단계 1 에서 INC-003 이 승인 대기가 된 이유</tspan><tspan x="180" dy="21.0">② 거절된 뒤 INC-003 의 상태</tspan><tspan x="180" dy="21.0">③ 감사 기록에 남은 내용</tspan></text>
+</g>
+</svg>

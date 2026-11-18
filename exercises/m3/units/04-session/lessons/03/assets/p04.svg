@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>요청자 본인은 자기 요청을 처리할 수 없고, 없을 수 있는 키는 .get 으로 꺼낸다</title>
+<desc>위: seoyeon 이 자기 요청 1번을 승인하면 막히고, security_manager 가 승인하면 통과합니다. 아래: approver 키가 아직 없는 요청서에서 .get 은 None 을 꺼내고, [ ] 는 KeyError 로 멈춥니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">승인자를 정하는 규칙과 키 꺼내기</text>
+<rect x="30" y="80" width="160" height="84" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="104.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">요청 1번</text>
+<text x="110" y="126.8" font-size="15" fill="#292929" text-anchor="middle">user:</text>
+<text x="110" y="148.8" font-size="15" fill="#292929" text-anchor="middle">"seoyeon"</text>
+<line x1="190" y1="106" x2="248" y2="86" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p04)"/>
+<line x1="190" y1="140" x2="248" y2="158" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p04)"/>
+<rect x="250" y="56" width="230" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="365" y="78.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">approver</text>
+<text x="365" y="99.1" font-size="15" fill="#292929" text-anchor="middle">"seoyeon" (본인)</text>
+<rect x="250" y="132" width="230" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="365" y="154.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">approver</text>
+<text x="365" y="175.1" font-size="15" fill="#292929" text-anchor="middle">"security_manager"</text>
+<line x1="480" y1="84" x2="508" y2="84" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p04)"/>
+<line x1="480" y1="160" x2="508" y2="160" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p04)"/>
+<rect x="510" y="56" width="190" height="56" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="605" y="78.4" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">False</text>
+<text x="605" y="98.4" font-size="14" fill="#292929" text-anchor="middle">본인 요청은 처리할 수 없음</text>
+<rect x="510" y="132" width="190" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="605" y="154.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">True</text>
+<text x="605" y="175.1" font-size="15" fill="#292929" text-anchor="middle">"승인"</text>
+<line x1="30" y1="214" x2="700" y2="214" stroke="#dededb" stroke-width="1.5"/>
+<text x="30" y="244" font-size="16" fill="#292929" text-anchor="start" font-weight="700">approver 키가 아직 없는 요청서에서 꺼내면</text>
+<rect x="30" y="260" width="300" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="180" y="290.6" font-size="15" fill="#292929" text-anchor="middle">request.get("approver")</text>
+<line x1="330" y1="286" x2="398" y2="286" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p04)"/>
+<rect x="400" y="260" width="300" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="550" y="290.6" font-size="15" fill="#292929" text-anchor="middle">None · 멈추지 않음</text>
+<rect x="30" y="330" width="300" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="180" y="360.6" font-size="15" fill="#292929" text-anchor="middle">request["approver"]</text>
+<line x1="330" y1="356" x2="398" y2="356" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p04)"/>
+<rect x="400" y="330" width="300" height="52" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="550" y="360.6" font-size="15" fill="#292929" text-anchor="middle">KeyError · 프로그램이 멈춤</text>
+</svg>

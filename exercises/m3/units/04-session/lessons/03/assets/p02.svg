@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 310" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>상태는 정해진 순서로만 바꾸고, 처리한 사람을 적어 책임과 감사에 대비한다</title>
+<desc>위는 reviewing 에서 approved 또는 rejected 로 한 번만 바뀌고 다시 처리할 수 없다는 규칙입니다. 아래는 approver 를 적어 두면 문제가 생겼을 때 책임을 찾고 감사에 답할 수 있다는 흐름입니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">왜 처리 순서와 처리자를 남기는가</text>
+<text x="30" y="70" font-size="16" fill="#292929" text-anchor="start" font-weight="700">1. 요청서는 정해진 순서로만 상태를 바꿉니다</text>
+<rect x="30" y="86" width="170" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="115" y="106.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">reviewing</text>
+<text x="115" y="127.1" font-size="15" fill="#292929" text-anchor="middle">검토 중</text>
+<line x1="200" y1="112" x2="248" y2="112" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<rect x="250" y="86" width="220" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360" y="106.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">approved 또는 rejected</text>
+<text x="360" y="127.1" font-size="15" fill="#292929" text-anchor="middle">처리 끝</text>
+<line x1="470" y1="112" x2="518" y2="112" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<text x="494" y="104" font-size="14" fill="#666660" text-anchor="middle">또 처리</text>
+<rect x="520" y="86" width="180" height="52" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="610" y="106.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">막힘</text>
+<text x="610" y="127.1" font-size="15" fill="#292929" text-anchor="middle">다시 처리할 수 없음</text>
+<text x="30" y="186" font-size="16" fill="#292929" text-anchor="start" font-weight="700">2. 누가 처리했는지 적어 둡니다</text>
+<rect x="30" y="202" width="220" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="140" y="226.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">approver</text>
+<text x="140" y="247.1" font-size="15" fill="#292929" text-anchor="middle">"security_manager"</text>
+<line x1="250" y1="232" x2="298" y2="232" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<rect x="300" y="202" width="180" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="390" y="226.1" font-size="15" fill="#292929" text-anchor="middle">문제가 생기면</text>
+<text x="390" y="247.1" font-size="15" fill="#292929" text-anchor="middle">책임을 찾음</text>
+<line x1="480" y1="232" x2="518" y2="232" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<rect x="520" y="202" width="180" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="610" y="226.1" font-size="15" fill="#292929" text-anchor="middle">감사에</text>
+<text x="610" y="247.1" font-size="15" fill="#292929" text-anchor="middle">답할 수 있음</text>
+</svg>

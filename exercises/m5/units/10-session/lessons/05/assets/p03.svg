@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>실습 10-2 정답: 탐지 결과를 모양 점검으로 걸러 엔진에 넣고 운영 요약을 만든다</title>
+<desc>Module 4 탐지 결과 5건을 find_schema_problem 으로 점검해 알림 5건(거절 0건)으로 바꿉니다. 시험 기록 hana 는 필수 키 없음: grade, minsu 는 알 수 없는 등급: critical 로 거절됩니다. run_all 과 summarize 를 거치면 자동 실행 2건 · 조치 없음 3건 · 실패 0건, 티켓 5건이 나옵니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="bold">실습 10-2 정답: 탐지 결과 → 엔진 → 운영 요약</text>
+<rect x="20" y="52" width="124" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="82.0" y="79.1" font-size="14" fill="#292929" text-anchor="middle">Module 4</text>
+<text x="82.0" y="98.7" font-size="14" fill="#292929" text-anchor="middle">탐지 결과 5건</text>
+<line x1="145" y1="84" x2="158" y2="84" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="159" y="52" width="124" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="221.0" y="79.1" font-size="14" fill="#292929" text-anchor="middle">split_records</text>
+<text x="221.0" y="98.7" font-size="14" fill="#292929" text-anchor="middle">모양 점검</text>
+<line x1="284" y1="84" x2="297" y2="84" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="298" y="52" width="124" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="79.1" font-size="14" fill="#292929" text-anchor="middle">알림 5건</text>
+<text x="360.0" y="98.7" font-size="14" fill="#292929" text-anchor="middle">거절 0건</text>
+<line x1="423" y1="84" x2="436" y2="84" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="437" y="52" width="124" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="499.0" y="79.1" font-size="14" fill="#292929" text-anchor="middle">run_all</text>
+<text x="499.0" y="98.7" font-size="14" fill="#292929" text-anchor="middle">엔진 처리</text>
+<line x1="562" y1="84" x2="575" y2="84" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="576" y="52" width="124" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="638.0" y="79.1" font-size="14" fill="#292929" text-anchor="middle">summarize</text>
+<text x="638.0" y="98.7" font-size="14" fill="#292929" text-anchor="middle">운영 요약</text>
+<text x="20" y="150" font-size="15" fill="#666660" text-anchor="start">단계 2 시험: 일부러 틀린 기록은 엔진 앞에서 거절</text>
+<rect x="20" y="162" width="330" height="56" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="185.0" y="195.2" font-size="15" fill="#292929" text-anchor="middle">hana → 필수 키 없음: grade</text>
+<rect x="370" y="162" width="330" height="56" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="535.0" y="195.2" font-size="15" fill="#292929" text-anchor="middle">minsu → 알 수 없는 등급: critical</text>
+<text x="20" y="252" font-size="15" fill="#666660" text-anchor="start">단계 5 운영 요약</text>
+<rect x="20" y="264" width="129" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="84.5" y="286.8" font-size="15" fill="#292929" text-anchor="middle">자동 실행</text>
+<text x="84.5" y="307.8" font-size="15" fill="#292929" text-anchor="middle">2건</text>
+<rect x="157" y="264" width="129" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="221.5" y="286.8" font-size="15" fill="#292929" text-anchor="middle">승인 대기</text>
+<text x="221.5" y="307.8" font-size="15" fill="#292929" text-anchor="middle">0건</text>
+<rect x="294" y="264" width="129" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="358.5" y="286.8" font-size="15" fill="#292929" text-anchor="middle">차단 금지</text>
+<text x="358.5" y="307.8" font-size="15" fill="#292929" text-anchor="middle">0건</text>
+<rect x="431" y="264" width="129" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="495.5" y="286.8" font-size="15" fill="#292929" text-anchor="middle">조치 없음</text>
+<text x="495.5" y="307.8" font-size="15" fill="#292929" text-anchor="middle">3건</text>
+<rect x="568" y="264" width="129" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="632.5" y="286.8" font-size="15" fill="#292929" text-anchor="middle">실패</text>
+<text x="632.5" y="307.8" font-size="15" fill="#292929" text-anchor="middle">0건</text>
+<rect x="20" y="334" width="680" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="363.8" font-size="15" fill="#292929" text-anchor="middle">티켓 5건 · 실제로 실행한 조치 2건</text>
+<text x="360.0" y="384.8" font-size="15" fill="#292929" text-anchor="middle">INC-501 계정 잠금 dami · INC-505 IP 차단 198.51.100.90</text>
+</g>
+</svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img">
+<title>RBAC 는 역할에 권한을 주므로 부서를 옮겨도 역할 한 칸만 바꾼다</title>
+<desc>사용자는 역할을, 역할은 권한을 가진다. 영업 직원 한 명이 재무로 옮길 때 직접 주기는 네 군데를 고치지만 역할로 주기는 role 한 칸만 바꾼다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">RBAC: 사용자 → 역할 → 권한</text>
+<text x="24" y="62" font-size="14" fill="#666660">사용자</text>
+<text x="184" y="62" font-size="14" fill="#666660">역할</text>
+<text x="384" y="62" font-size="14" fill="#666660">권한</text>
+<rect x="20" y="72" width="120" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="80" y="97.2" font-size="15" fill="#292929" text-anchor="middle">seoyeon</text>
+<rect x="180" y="72" width="160" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="260" y="97.2" font-size="15" fill="#292929" text-anchor="middle">sales</text>
+<rect x="380" y="72" width="320" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="540" y="96.9" font-size="14" fill="#292929" text-anchor="middle">SALES:QUERY, SALES:CHANGE</text>
+<polyline points="141,92 179,92" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<polyline points="341,92 379,92" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="20" y="122" width="120" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="80" y="147.2" font-size="15" fill="#292929" text-anchor="middle">junho</text>
+<rect x="180" y="122" width="160" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="260" y="147.2" font-size="15" fill="#292929" text-anchor="middle">finance</text>
+<rect x="380" y="122" width="320" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="540" y="146.9" font-size="14" fill="#292929" text-anchor="middle">SALES:QUERY, SETTLE:QUERY</text>
+<polyline points="141,142 179,142" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<polyline points="341,142 379,142" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="20" y="172" width="120" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="80" y="197.2" font-size="15" fill="#292929" text-anchor="middle">gaeun</text>
+<rect x="180" y="172" width="160" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="260" y="197.2" font-size="15" fill="#292929" text-anchor="middle">account_admin</text>
+<rect x="380" y="172" width="320" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="540" y="196.9" font-size="14" fill="#292929" text-anchor="middle">ACCOUNT:QUERY, ACCOUNT:CHANGE</text>
+<polyline points="141,192 179,192" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<polyline points="341,192 379,192" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<text x="20" y="248" font-size="16" fill="#292929" font-weight="700">영업팀 30명 중 1명이 재무팀으로 옮길 때 고칠 곳</text>
+<rect x="20" y="262" width="330" height="130" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="185" y="299.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">직접 주기</text>
+<text x="185" y="321.2" font-size="15" fill="#292929" text-anchor="middle">사용자마다 권한 리스트</text>
+<text x="185" y="343.2" font-size="15" fill="#292929" text-anchor="middle">영업 두 개 빼고 재무 두 개 넣기</text>
+<text x="185" y="365.2" font-size="15" fill="#292929" text-anchor="middle">→ 네 군데 · 빼먹으면 옛 권한이 남음</text>
+<rect x="370" y="262" width="330" height="130" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="535" y="299.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">역할로 주기</text>
+<text x="535" y="321.2" font-size="15" fill="#292929" text-anchor="middle">users.json 의 role 한 칸</text>
+<text x="535" y="343.2" font-size="15" fill="#292929" text-anchor="middle">sales → finance</text>
+<text x="535" y="365.2" font-size="15" fill="#292929" text-anchor="middle">→ 한 군데</text>
+</g>
+</svg>

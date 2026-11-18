@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>Module 4의 알림을 받아 Module 5에서 대응하고, 실습 1-1에서 1-2로 이어진다</title>
+<desc>위 줄은 Module 4가 만든 알림이 Module 5의 대응(계정 잠금, 티켓, 담당자 알림)으로 이어지는 흐름이다. 아래 줄은 이번 Unit의 실습 1-1(수동 처리), 실습 1-2(프로그램 처리), 깃허브 올리기 순서다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">Module 5는 알림이 난 뒤의 대응을 다룹니다</text>
+<rect x="20.0" y="52" width="202.7" height="96" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text y="84.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="121.35" dy="0.0" font-weight="700">Module 4</tspan><tspan x="121.35" dy="21.0">로그를 읽어</tspan><tspan x="121.35" dy="21.0">점수 · 등급 매기기</tspan></text>
+<rect x="258.7" y="52" width="202.7" height="96" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="84.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.04999999999995" dy="0.0" font-weight="700">알림</tspan><tspan x="360.04999999999995" dy="21.0">위험해 보이는</tspan><tspan x="360.04999999999995" dy="21.0">대상 5건</tspan></text>
+<line x1="225.7" y1="100.0" x2="254.7" y2="100.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="497.3" y="52" width="202.7" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="84.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="598.65" dy="0.0" font-weight="700">Module 5</tspan><tspan x="598.65" dy="21.0">계정 잠금 · 티켓 ·</tspan><tspan x="598.65" dy="21.0">담당자 알림</tspan></text>
+<line x1="464.3" y1="100.0" x2="493.3" y2="100.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<text x="20" y="182" font-size="15" fill="#666660">이번 Unit에서 하는 일 (연습용 시스템, 실제 서버는 건드리지 않음)</text>
+<rect x="20.0" y="198" width="202.7" height="132" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="227.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="121.35" dy="0.0" font-weight="700">실습 1-1</tspan><tspan x="121.35" dy="21.0">플레이북 한 건 쓰기</tspan><tspan x="121.35" dy="21.0">알림 두 건 수동 처리</tspan><tspan x="121.35" dy="21.0">system_state.json</tspan><tspan x="121.35" dy="21.0">직접 타이핑</tspan></text>
+<rect x="258.7" y="198" width="202.7" height="132" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text y="227.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.04999999999995" dy="0.0" font-weight="700">실습 1-2</tspan><tspan x="360.04999999999995" dy="21.0">playbook_runner.py</tspan><tspan x="360.04999999999995" dy="21.0">한 번 실행 → 5건 처리</tspan><tspan x="360.04999999999995" dy="21.0">승인 필요한 건은 멈춤</tspan><tspan x="360.04999999999995" dy="21.0">기록이 남음</tspan></text>
+<line x1="225.7" y1="264.0" x2="254.7" y2="264.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="497.3" y="198" width="202.7" height="132" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="248.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="598.65" dy="0.0" font-weight="700">마무리</tspan><tspan x="598.65" dy="21.0">깃허브에 올리기</tspan><tspan x="598.65" dy="21.0">(실습 1-2 마지막)</tspan></text>
+<line x1="464.3" y1="264.0" x2="493.3" y2="264.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<text x="360" y="362" font-size="15" fill="#666660" text-anchor="middle">도구: 파이썬 · VS Code · 터미널 · git  ·  새 문법 없음</text>
+</svg>

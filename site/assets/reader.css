@@ -188,3 +188,5 @@ button { color: inherit; }
 .app-or { margin-inline: .15em; color: var(--muted); }
 .net-prose p.app-legend { margin: 0 0 16px; color: var(--muted); font-size: .85rem; line-height: 1.8; }
 .app-legend .app-icon { margin-inline: .25em .1em; }
+.page-figure { margin: 0 0 24px; padding: 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+.page-figure img { display: block; width: 100%; height: auto; max-height: 460px; object-fit: contain; }

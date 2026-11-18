@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>실패 경로 네 가지는 모두 거부하고 거부 이유를 따로 남긴다</title>
+<desc>없는 사용자, 퇴사자, 역할이 없는 사용자, 권한이 없는 요청은 모두 거부한다. 이유를 구분해 남기면 감사 때 설명하고 오탐을 찾을 수 있으며, 검사가 하나라도 빠지면 그 요청이 통과한다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실패 경로는 모두 거부, 이유는 따로</text>
+<rect x="20" y="56" width="250" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="145" y="86.2" font-size="15" fill="#292929" text-anchor="middle">없는 사용자</text>
+<polyline points="271,81 329,179" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="20" y="118" width="250" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="145" y="148.2" font-size="15" fill="#292929" text-anchor="middle">퇴사자</text>
+<polyline points="271,143 329,179" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="20" y="180" width="250" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="145" y="210.2" font-size="15" fill="#292929" text-anchor="middle">역할이 없는 사용자</text>
+<polyline points="271,205 329,179" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="20" y="242" width="250" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="145" y="272.2" font-size="15" fill="#292929" text-anchor="middle">권한이 없는 요청</text>
+<polyline points="271,267 329,179" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="330" y="134" width="140" height="90" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="400" y="173.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">모두 거부</text>
+<text x="400" y="195.2" font-size="15" fill="#292929" text-anchor="middle">False</text>
+<polyline points="471,179 519,179" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="520" y="96" width="180" height="166" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="610" y="151.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">이유를 따로 남기면</text>
+<text x="610" y="173.2" font-size="15" fill="#292929" text-anchor="middle">감사 때 왜 막았나</text>
+<text x="610" y="195.2" font-size="15" fill="#292929" text-anchor="middle">설명할 수 있고</text>
+<text x="610" y="217.2" font-size="15" fill="#292929" text-anchor="middle">오탐도 찾는다</text>
+<rect x="20" y="316" width="680" height="48" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="360" y="345.2" font-size="15" fill="#292929" text-anchor="middle">검사 하나라도 빠지면 그 경우의 요청이 그대로 통과한다 (fail-open)</text>
+</g>
+</svg>

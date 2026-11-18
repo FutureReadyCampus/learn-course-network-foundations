@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>보고서는 질문마다 쓸 내용을 보고 답: 뒤에 쓰고, 출력은 코드 상자에 붙인다</title>
+<desc>왼쪽은 보고서 질문 한 칸의 모양이고, 오른쪽은 쓰는 법 다섯 가지입니다. 모르는 칸은 「모름 — 막힌 곳: …」 이라고 씁니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">보고서 쓰는 법</text>
+<rect x="20" y="54" width="340" height="310" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="40" y="86" font-size="15" text-anchor="start" fill="#292929" font-weight="700">(가) 질문</text>
+<text x="40" y="114" font-size="15" text-anchor="start" fill="#666660">쓸 내용: ① … ② …</text>
+<text x="40" y="142" font-size="15" text-anchor="start" fill="#292929">답: 여기에 씁니다</text>
+<rect x="40" y="158" width="300" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="190" y="199" font-size="15" text-anchor="middle" fill="#666660">빈 코드 상자: 출력 · 코드</text>
+<text x="40" y="266" font-size="15" text-anchor="start" fill="#292929" font-weight="700">(나) [핵심 질문] …</text>
+<text x="40" y="294" font-size="15" text-anchor="start" fill="#666660">쓸 내용: ① … ② …</text>
+<text x="40" y="322" font-size="15" text-anchor="start" fill="#292929">답: 근거와 이유까지</text>
+<rect x="390" y="54" width="310" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="404" y="85" font-size="14" text-anchor="start" fill="#292929"><tspan x="404" dy="0">문제마다 그 제목 아래 질문에 답한다</tspan></text>
+<rect x="390" y="118" width="310" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="404" y="149" font-size="14" text-anchor="start" fill="#292929"><tspan x="404" dy="0">쓸 내용 을 보고 답: 뒤에 쓴다</tspan></text>
+<rect x="390" y="182" width="310" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="404" y="213" font-size="14" text-anchor="start" fill="#292929"><tspan x="404" dy="0">출력 · 코드는 빈 코드 상자에</tspan></text>
+<rect x="390" y="246" width="310" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="404" y="277" font-size="14" text-anchor="start" fill="#292929"><tspan x="404" dy="0">「왜」는 화면 값을 근거로 이유까지</tspan></text>
+<rect x="390" y="310" width="310" height="52" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="404" y="341" font-size="14" text-anchor="start" fill="#292929"><tspan x="404" dy="0">못 찾으면 「모름 — 막힌 곳: …」</tspan></text>
+</g>
+</svg>

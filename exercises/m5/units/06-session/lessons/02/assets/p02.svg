@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>티켓은 담당자의 네 가지 질문에 답하는 키를 가진다</title>
+<desc>무슨 일인가는 title, 이미 무엇을 했나는 done, 다음에 무엇을 하나는 next_step, 언제까지 응답하나는 sla_due 가 답한다. sla_due 는 알림 수신 시각에 등급별 응답 기한을 더한 값이다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<text x="20" y="32" font-size="18" fill="#292929" font-weight="700">담당자의 질문 → 티켓의 키</text>
+<rect x="20" y="50" width="190" height="46" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="115" y="78.4" font-size="15" fill="#292929" text-anchor="middle">무슨 일인가</text>
+<line x1="214" y1="73" x2="238" y2="73" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="242" y="50" width="140" height="46" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="312" y="78.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">title</text>
+<rect x="392" y="50" width="308" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="404" y="78.04" font-size="14" fill="#292929">[high] dami — 퇴사한 계정</text>
+<rect x="20" y="108" width="190" height="46" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="115" y="136.4" font-size="15" fill="#292929" text-anchor="middle">이미 무엇을 했나</text>
+<line x1="214" y1="131" x2="238" y2="131" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="242" y="108" width="140" height="46" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="312" y="136.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">done</text>
+<rect x="392" y="108" width="308" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="404" y="136.04" font-size="14" fill="#292929">알림의 조치 내역을 그대로 복사</text>
+<rect x="20" y="166" width="190" height="46" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="115" y="194.4" font-size="15" fill="#292929" text-anchor="middle">다음에 무엇을 하나</text>
+<line x1="214" y1="189" x2="238" y2="189" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="242" y="166" width="140" height="46" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="312" y="194.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">next_step</text>
+<rect x="392" y="166" width="308" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="404" y="194.04" font-size="14" fill="#292929">상태별 문장 · 확인 실패면 교체</text>
+<rect x="20" y="224" width="190" height="46" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="115" y="252.4" font-size="15" fill="#292929" text-anchor="middle">언제까지 응답하나</text>
+<line x1="214" y1="247" x2="238" y2="247" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="242" y="224" width="140" height="46" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="312" y="252.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">sla_due</text>
+<rect x="392" y="224" width="308" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="404" y="252.04" font-size="14" fill="#292929">수신 시각 + 등급별 기한</text>
+<text x="20" y="300" font-size="16" fill="#292929" font-weight="700">등급별 응답 기한 (sla_minutes)</text>
+<rect x="20" y="314" width="110" height="60" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="75" y="338.9" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">high</text>
+<text x="75" y="359.9" font-size="15" fill="#292929" text-anchor="middle">15분</text>
+<rect x="140" y="314" width="110" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="195" y="338.9" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">mid</text>
+<text x="195" y="359.9" font-size="15" fill="#292929" text-anchor="middle">60분</text>
+<rect x="260" y="314" width="110" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="315" y="338.9" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">low</text>
+<text x="315" y="359.9" font-size="15" fill="#292929" text-anchor="middle">240분</text>
+<rect x="390" y="314" width="310" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="545" y="339.24" font-size="14" fill="#292929" text-anchor="middle">INC-201 · 0 + 15 = 15분</text>
+<text x="545" y="358.84" font-size="14" fill="#292929" text-anchor="middle">INC-202 · 3 + 240 = 243분</text>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>먼저 권한을 확인하고, 승인이면 실행, 거절이면 종료한 뒤 모든 결정을 기록한다</title>
+<desc>결정한 사람이 APPROVERS 에 없으면 실행하지 않고 권한 없음만 기록한다. 권한이 있으면 승인은 액션 실행 뒤 조치됨, 거절은 종료로 처리하고 어느 경우든 감사 기록을 남긴다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">승인 처리 순서: 권한 확인 → 실행 또는 종료 → 기록</text>
+<rect x="20" y="160" width="140" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="90" y="188.475" font-size="15" fill="#292929" text-anchor="middle">담당자 결정</text>
+<text x="90" y="210.225" font-size="15" fill="#292929" text-anchor="middle">decision</text>
+<rect x="200" y="60" width="230" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="315" y="88.475" font-size="15" fill="#292929" text-anchor="middle">① approver 가</text>
+<text x="315" y="110.225" font-size="15" fill="#292929" text-anchor="middle">APPROVERS 안에 있나?</text>
+<rect x="200" y="200" width="230" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="315" y="228.475" font-size="15" fill="#292929" text-anchor="middle">② result 가</text>
+<text x="315" y="250.225" font-size="15" fill="#292929" text-anchor="middle">「승인」 인가?</text>
+<rect x="480" y="60" width="220" height="70" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="590" y="88.475" font-size="15" fill="#292929" text-anchor="middle">권한 없음 기록</text>
+<text x="590" y="110.225" font-size="15" fill="#292929" text-anchor="middle">상태 그대로 (INC-005)</text>
+<rect x="480" y="170" width="220" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="590" y="193.91" font-size="14" fill="#292929" text-anchor="middle">액션 실행 → 조치됨</text>
+<text x="590" y="214.21" font-size="14" fill="#292929" text-anchor="middle">(INC-002)</text>
+<rect x="480" y="250" width="220" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="590" y="273.91" font-size="14" fill="#292929" text-anchor="middle">종료 · 거절 사유 기록</text>
+<text x="590" y="294.21" font-size="14" fill="#292929" text-anchor="middle">(INC-003)</text>
+<rect x="200" y="330" width="500" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="450" y="360.35" font-size="15" fill="#292929" text-anchor="middle">③ 어느 경우든 action_log 에 감사 기록 한 건 (log_line)</text>
+<polyline points="162,195 180,195 180,95 198,95" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="432,95 478,95" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="455" y="86" font-size="14" fill="#666660" text-anchor="middle">아니오</text>
+<polyline points="315,132 315,198" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="325" y="170" font-size="14" fill="#666660">예</text>
+<polyline points="432,225 455,225 455,200 478,200" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="440" y="194" font-size="14" fill="#666660" text-anchor="end">예</text>
+<polyline points="432,245 455,245 455,280 478,280" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="448" y="300" font-size="14" fill="#666660" text-anchor="end">아니오</text>
+<polyline points="315,272 315,328" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+</g>
+</svg>

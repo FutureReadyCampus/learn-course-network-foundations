@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 370" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>알림 전파 정책 세 가지: 등급별 수신자, 같은 티켓 30분 간격, 최대 3번 시도</title>
+<desc>위에는 누구에게, 얼마나 자주, 실패하면 어떻게 할지 세 가지 정책과 규칙 파일의 키를 놓았다. 아래 타임라인은 TCK-1 에 병합된 dami 알림 네 건 가운데 30분 간격 때문에 세 번만 전송되는 모습이다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">알림 전파에서 정할 세 가지</text>
+<rect x="20" y="56" width="213" height="150" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="126.5" y="94.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">누구에게</text>
+<text x="126.5" y="115.2" font-size="15" fill="#292929" text-anchor="middle">recipients</text>
+<text x="126.5" y="136.2" font-size="15" fill="#292929" text-anchor="middle">high: 3명</text>
+<text x="126.5" y="157.2" font-size="15" fill="#292929" text-anchor="middle">mid: 2명</text>
+<text x="126.5" y="178.2" font-size="15" fill="#292929" text-anchor="middle">low: 1명</text>
+<rect x="253" y="56" width="213" height="150" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="359.5" y="104.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">얼마나 자주</text>
+<text x="359.5" y="125.8" font-size="15" fill="#292929" text-anchor="middle">send_gap_minutes</text>
+<text x="359.5" y="146.8" font-size="15" fill="#292929" text-anchor="middle">같은 티켓은</text>
+<text x="359.5" y="167.8" font-size="15" fill="#292929" text-anchor="middle">30분 지나야 다시</text>
+<rect x="486" y="56" width="214" height="150" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="593.0" y="104.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">실패하면</text>
+<text x="593.0" y="125.8" font-size="15" fill="#292929" text-anchor="middle">MAX_TRIES = 3</text>
+<text x="593.0" y="146.8" font-size="15" fill="#292929" text-anchor="middle">3번 모두 실패하면</text>
+<text x="593.0" y="167.8" font-size="15" fill="#292929" text-anchor="middle">「실패」</text>
+<text x="20" y="246" font-size="15" font-weight="bold" fill="#292929">TCK-1 에 병합된 dami 알림 (분)</text>
+<line x1="60" y1="300" x2="680" y2="300" stroke="#666660" stroke-width="2"/>
+<circle cx="60" cy="300" r="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="2"/>
+<text x="30" y="280" font-size="14" fill="#292929">INC-201</text>
+<text x="30" y="330" font-size="14" font-weight="bold" fill="#1f7a4a">0분 전송</text>
+<circle cx="144" cy="300" r="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="2"/>
+<text x="144" y="280" font-size="14" fill="#292929" text-anchor="middle">INC-205</text>
+<text x="144" y="330" font-size="14" font-weight="bold" fill="#9a6200" text-anchor="middle">14분 건너뜀</text>
+<circle cx="300" cy="300" r="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="2"/>
+<text x="300" y="280" font-size="14" fill="#292929" text-anchor="middle">INC-209</text>
+<text x="300" y="330" font-size="14" font-weight="bold" fill="#1f7a4a" text-anchor="middle">40분 전송</text>
+<circle cx="630" cy="300" r="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="2"/>
+<text x="630" y="280" font-size="14" fill="#292929" text-anchor="middle">INC-210</text>
+<text x="630" y="330" font-size="14" font-weight="bold" fill="#1f7a4a" text-anchor="middle">95분 전송</text>
+</svg>

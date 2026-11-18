@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>두 갈림길로 예외 삭제, 역할 해제, 역할에서 권한 빼기 중 하나를 고릅니다</title>
+<desc>source 에 「예외」가 있으면 예외 삭제, 없고 퇴사한 사용자이면 역할 해제, 그 밖이면 역할에서 권한 빼기입니다. 방법마다 지울 대상(target)과 영향(impact)이 다릅니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">1.1 회수 방법 고르기 — 두 갈림길과 세 방법</text>
+<rect x="20" y="60" width="240" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="140" y="93.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">source 에 「예외」가 있나?</text>
+<path d="M260 88 L318 88" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<text x="272" y="80" font-size="14" fill="#666660" text-anchor="start">있다</text>
+<rect x="320" y="60" width="380" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="510" y="93.2" font-size="15" fill="#292929" text-anchor="middle">① 예외 삭제 · target 예외 번호 · 영향 1</text>
+<path d="M140 116 L140 158" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<text x="150" y="143" font-size="14" fill="#666660" text-anchor="start">없다</text>
+<rect x="20" y="160" width="240" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="140" y="193.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">퇴사한 사용자인가?</text>
+<path d="M260 188 L318 188" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<text x="264" y="180" font-size="14" fill="#666660" text-anchor="start">그렇다</text>
+<rect x="320" y="150" width="380" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="510" y="182.8" font-size="15" fill="#292929" text-anchor="middle">② 역할 해제 · target 사용자 이름</text>
+<text x="510" y="203.8" font-size="15" fill="#292929" text-anchor="middle">영향 = 역할에 든 권한 수 (dami 2)</text>
+<path d="M140 216 L140 288 L318 288" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<text x="150" y="254" font-size="14" fill="#666660" text-anchor="start">아니다</text>
+<rect x="320" y="250" width="380" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="510" y="282.8" font-size="15" fill="#292929" text-anchor="middle">③ 역할에서 권한 빼기 · target 역할 이름</text>
+<text x="510" y="303.8" font-size="15" fill="#292929" text-anchor="middle">영향 = 그 역할의 사용자 수 (junho 1)</text>
+<rect x="20" y="350" width="680" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360" y="381.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">계획 한 건 = 회수 대상 + method · target · impact</text>
+</g>
+</svg>

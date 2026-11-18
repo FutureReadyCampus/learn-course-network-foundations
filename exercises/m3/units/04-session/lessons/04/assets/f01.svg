@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>부여 함수는 승인된 요청서 중 「권한 없음」인 경우에만 예외를 만들어 부여한다</title>
+<desc>요청서가 approved 가 아니면 (False, "승인되지 않음")을 리턴합니다. check_permission 판정이 허용이거나 퇴사한 계정 · 등록되지 않은 사용자 · 역할이 없음이면 부여하지 않습니다. 권한 없음일 때만 예외를 EXCEPTIONS 에 추가하고, 요청서에 exception_id 를 적고 status 를 granted 로 바꾼 뒤 (True, "부여")를 리턴합니다.</desc>
+<defs><marker id="a-f01-0404" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<text x="24" y="30" font-size="18" fill="#292929" font-weight="700">grant_request 가 부여할지 판단하는 순서</text>
+<rect x="24" y="50" width="350" height="37" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="199" y="73" font-size="14" fill="#292929" text-anchor="middle">grant_request(request)</text>
+<line x1="199" y1="87" x2="199" y2="111" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0404)"/>
+<rect x="24" y="113" width="350" height="37" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="199" y="136" font-size="14" fill="#292929" text-anchor="middle">status 가 "approved" 인가?</text>
+<rect x="470" y="113" width="230" height="37" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="585" y="136" font-size="14" fill="#292929" text-anchor="middle">(False, "승인되지 않음")</text>
+<path d="M374 131.5H468" stroke="#666660" stroke-width="1.6" fill="none" marker-end="url(#a-f01-0404)"/>
+<text x="422" y="124.5" font-size="14" fill="#292929" text-anchor="middle">아님</text>
+<line x1="199" y1="150" x2="199" y2="221.5" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0404)"/>
+<text x="209" y="191.75" font-size="14" fill="#666660">맞음</text>
+<rect x="24" y="223.5" width="350" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="199" y="246.5" font-size="14" fill="#292929" text-anchor="middle">check_permission 으로 요청자를</text>
+<text x="199" y="265.5" font-size="14" fill="#292929" text-anchor="middle">지금 정책으로 판정</text>
+<rect x="470" y="162" width="230" height="75" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="585" y="185" font-size="14" fill="#292929" text-anchor="middle">(False,</text>
+<text x="585" y="204" font-size="14" fill="#292929" text-anchor="middle">"부여하지 않음(허용)")</text>
+<text x="585" y="223" font-size="14" fill="#666660" text-anchor="middle">이미 가진 권한</text>
+<path d="M374 231.5H468" stroke="#666660" stroke-width="1.6" fill="none" marker-end="url(#a-f01-0404)"/>
+<text x="422" y="224.5" font-size="14" fill="#292929" text-anchor="middle">허용</text>
+<rect x="470" y="247" width="230" height="94" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="585" y="270" font-size="14" fill="#292929" text-anchor="middle">(False,</text>
+<text x="585" y="289" font-size="14" fill="#292929" text-anchor="middle">"부여하지 않음(이유)")</text>
+<text x="585" y="308" font-size="14" fill="#666660" text-anchor="middle">퇴사한 계정 · 등록되지 않은</text>
+<text x="585" y="327" font-size="14" fill="#666660" text-anchor="middle">사용자 · 역할이 없음</text>
+<path d="M374 271.5H468" stroke="#666660" stroke-width="1.6" fill="none" marker-end="url(#a-f01-0404)"/>
+<text x="422" y="264.5" font-size="14" fill="#292929" text-anchor="middle">그 밖의 이유</text>
+<line x1="199" y1="279.5" x2="199" y2="303.5" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0404)"/>
+<text x="209" y="297.5" font-size="14" fill="#666660">권한 없음</text>
+<rect x="24" y="305.5" width="350" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="199" y="328.5" font-size="14" fill="#292929" text-anchor="middle">요청서로 예외 한 건을 만들어</text>
+<text x="199" y="347.5" font-size="14" fill="#292929" text-anchor="middle">EXCEPTIONS 에 추가한다</text>
+<line x1="199" y1="361.5" x2="199" y2="385.5" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0404)"/>
+<rect x="24" y="387.5" width="350" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="199" y="410.5" font-size="14" fill="#292929" text-anchor="middle">요청서에 예외 번호(exception_id)를 적고</text>
+<text x="199" y="429.5" font-size="14" fill="#292929" text-anchor="middle">status 를 "granted" 로 바꾼다</text>
+<line x1="199" y1="443.5" x2="199" y2="467.5" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0404)"/>
+<rect x="24" y="469.5" width="350" height="37" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="199" y="492.5" font-size="14" fill="#292929" text-anchor="middle">(True, "부여")</text>
+</svg>

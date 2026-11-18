@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
+<title>목표: plan_revocation 으로 회수 대상 8건의 회수 계획을 만듭니다</title>
+<desc>입력은 Unit 7의 회수 대상 8건(findings)입니다. plan_revocation 이 방법을 정하고 build_plan 이 계획 한 건을 만듭니다. 계획은 아무것도 지우지 않는 미리보기입니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">목표 — 회수 대상 8건에서 회수 계획 8건 만들기</text>
+<rect x="20" y="80" width="170" height="110" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="105" y="119.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">입력</text>
+<text x="105" y="140.2" font-size="15" fill="#292929" text-anchor="middle">회수 대상 8건</text>
+<text x="105" y="161.2" font-size="15" fill="#292929" text-anchor="middle">findings</text>
+<path d="M190 135 L236 135" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="240" y="80" width="230" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="355" y="119.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">plan_revocation</text>
+<text x="355" y="140.2" font-size="15" fill="#292929" text-anchor="middle">방법을 정하고</text>
+<text x="355" y="161.2" font-size="15" fill="#292929" text-anchor="middle">build_plan 으로 계획</text>
+<path d="M470 135 L516 135" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="520" y="80" width="180" height="110" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="610" y="108.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">출력</text>
+<text x="610" y="129.8" font-size="15" fill="#292929" text-anchor="middle">계획 8건</text>
+<text x="610" y="150.8" font-size="15" fill="#292929" text-anchor="middle">+ method · target</text>
+<text x="610" y="171.8" font-size="15" fill="#292929" text-anchor="middle">+ impact</text>
+<rect x="20" y="220" width="680" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="360" y="249.8" font-size="15" fill="#292929" text-anchor="middle">아직 아무것도 지우지 않는 미리보기(dry-run)</text>
+<text x="360" y="270.8" font-size="15" fill="#292929" text-anchor="middle">지우기 전에 방법과 영향을 먼저 확인합니다</text>
+</g>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>실행하고, 같은 요청을 다시 판정하고, 회수 이력을 남기는 세 단계입니다</title>
+<desc>승인 불필요와 승인됨인 계획만 실행합니다. evaluate_access 로 회수 전과 후를 비교해 효과를 확인합니다. 회수 이력은 Unit 6의 사용 이력과 다른 기록입니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">왜 전후 판정과 이력이 필요한가 — 세 단계</text>
+<rect x="20" y="70" width="200" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="120" y="109.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">1. 실행</text>
+<text x="120" y="130.2" font-size="15" fill="#292929" text-anchor="middle">승인 불필요 · 승인됨만</text>
+<text x="120" y="151.2" font-size="15" fill="#292929" text-anchor="middle">승인 대기는 실행 안 함</text>
+<path d="M220 125 L256 125" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="260" y="70" width="200" height="110" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="109.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">2. 다시 판정</text>
+<text x="360" y="130.2" font-size="15" fill="#292929" text-anchor="middle">evaluate_access</text>
+<text x="360" y="151.2" font-size="15" fill="#292929" text-anchor="middle">회수 전 vs 회수 후</text>
+<path d="M460 125 L496 125" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="500" y="70" width="200" height="110" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="600" y="109.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">3. 회수 이력</text>
+<text x="600" y="130.2" font-size="15" fill="#292929" text-anchor="middle">revocation_log.json</text>
+<text x="600" y="151.2" font-size="15" fill="#292929" text-anchor="middle">무엇을 회수했는지</text>
+<rect x="20" y="215" width="680" height="96" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="257.4" font-size="16" fill="#292929" text-anchor="start">사용 이력(Unit 6): 권한을 마지막으로 쓴 시각의 기록</text>
+<text x="32" y="279.8" font-size="16" fill="#292929" text-anchor="start">회수 이력(Unit 8): 이번 Unit에서 무엇을 회수했는지의 기록</text>
+</g>
+</svg>

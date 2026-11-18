@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
+<title>Unit 1은 샘플 로그를 실습 1-1에서 조각내고 실습 1-2에서 세 갈래로 가른다</title>
+<desc>access_sample.log 30줄을 실습 1-1의 log_parse.py 가 조각으로 나누고, 실습 1-2의 log_classify.py 가 정상 · 오류 · 의심으로 가릅니다. 이번 Unit의 도구는 파이썬 · VS Code · 터미널 · git 입니다.</desc>
+<defs><marker id="a-m4u01l01-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker><marker id="a-m4u01l01-p01-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0442e"/></marker></defs>
+<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
+<text x="24" y="34" font-size="19" fill="#292929" font-weight="700">Unit 1 에서 만드는 것</text>
+<rect x="24" y="70" width="180" height="100" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="114.0" y="114.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">access_sample.log</text>
+<text x="114.0" y="135.8" font-size="15" fill="#292929" text-anchor="middle">샘플 로그 30줄</text>
+<line x1="204" y1="120" x2="262" y2="120" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l01-p01)"/>
+<rect x="268" y="60" width="190" height="120" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="363.0" y="104.2" font-size="15" fill="#2558a8" text-anchor="middle" font-weight="700">실습 1-1</text>
+<text x="363.0" y="125.2" font-size="15" fill="#292929" text-anchor="middle">log_parse.py</text>
+<text x="363.0" y="146.2" font-size="15" fill="#292929" text-anchor="middle">한 줄을 조각으로</text>
+<line x1="458" y1="120" x2="516" y2="120" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l01-p01)"/>
+<rect x="522" y="60" width="174" height="120" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="609.0" y="104.2" font-size="15" fill="#1f7a4a" text-anchor="middle" font-weight="700">실습 1-2</text>
+<text x="609.0" y="125.2" font-size="15" fill="#292929" text-anchor="middle">log_classify.py</text>
+<text x="609.0" y="146.2" font-size="15" fill="#292929" text-anchor="middle">정상 · 오류 · 의심</text>
+<text x="24" y="226" font-size="15" fill="#666660">쓰는 도구 (Module 3 과 같음)</text>
+<rect x="24" y="240" width="156" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="102.0" y="265.2" font-size="15" fill="#292929" text-anchor="middle">파이썬</text>
+<rect x="192" y="240" width="156" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="270.0" y="265.2" font-size="15" fill="#292929" text-anchor="middle">VS Code</text>
+<rect x="360" y="240" width="156" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="438.0" y="265.2" font-size="15" fill="#292929" text-anchor="middle">터미널</text>
+<rect x="528" y="240" width="156" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="606.0" y="265.2" font-size="15" fill="#292929" text-anchor="middle">git</text>
+<text x="24" y="308" font-size="15" fill="#666660">도커 · 판다스는 이번 Unit에서 쓰지 않습니다. 깃허브 올리기는 실습 1-2 마지막.</text>
+</g>
+</svg>

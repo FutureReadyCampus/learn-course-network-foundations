@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 436" role="img">
+<title>실습 2-3 보고서에 채울 칸: 출력과 수, gaeun 이벤트 순서, user 가 빈 28개</title>
+<desc>(가)는 출력과 소스별 수, 빈 값 수, 저장된 수를 씁니다. (나)는 gaeun 이벤트의 순서, (다)는 user 가 빈 28개의 소스와 이유를 씁니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">보고서 실습 2-3 칸 체크리스트</text>
+<rect x="24" y="54" width="170" height="154" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="109" y="125.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">(가)</text>
+<text x="109" y="145.9" font-size="14" text-anchor="middle" fill="#666660">출력 · 수</text>
+<rect x="210" y="69" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<rect x="240" y="62" width="456" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="252" y="82.1" font-size="14" text-anchor="start" fill="#292929">① 출력 전체 (코드 상자에 붙여 넣기)</text>
+<rect x="210" y="105" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<rect x="240" y="98" width="456" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="252" y="118.1" font-size="14" text-anchor="start" fill="#292929">② 소스별 이벤트 수</text>
+<rect x="210" y="141" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<rect x="240" y="134" width="456" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="252" y="154.1" font-size="14" text-anchor="start" fill="#292929">③ user · ip 가 비어 있는 이벤트 수</text>
+<rect x="210" y="177" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<rect x="240" y="170" width="456" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="252" y="190.1" font-size="14" text-anchor="start" fill="#292929">④ 저장된 이벤트 수</text>
+<rect x="24" y="222" width="170" height="82" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="109" y="247.0" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">(나)</text>
+<text x="109" y="267.8" font-size="14" text-anchor="middle" fill="#666660">gaeun 의 순서</text>
+<text x="109" y="288.1" font-size="14" text-anchor="middle" fill="#292929">[핵심 질문]</text>
+<rect x="210" y="237" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<rect x="240" y="230" width="456" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="252" y="250.1" font-size="14" text-anchor="start" fill="#292929">① 여러 소스에 걸친 이벤트의 순서</text>
+<rect x="210" y="273" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<rect x="240" y="266" width="456" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="252" y="286.1" font-size="14" text-anchor="start" fill="#292929">② 로그를 따로 볼 때와 달라지는 점</text>
+<rect x="24" y="318" width="170" height="82" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="109" y="343.1" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">(다)</text>
+<text x="109" y="363.8" font-size="14" text-anchor="middle" fill="#666660">user 가 빈 28개</text>
+<text x="109" y="384.1" font-size="14" text-anchor="middle" fill="#292929">[핵심 질문]</text>
+<rect x="210" y="333" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<rect x="240" y="326" width="456" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="252" y="346.1" font-size="14" text-anchor="start" fill="#292929">① 비어 있는 이벤트의 소스와 이유</text>
+<rect x="210" y="369" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<rect x="240" y="362" width="456" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="252" y="382.1" font-size="14" text-anchor="start" fill="#292929">② 사용자 이름별로 셀 때의 예상</text>
+</g>
+</svg>

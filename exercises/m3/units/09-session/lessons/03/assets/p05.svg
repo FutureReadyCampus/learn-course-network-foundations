@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>서버 오류는 가상환경과 터미널을 먼저 보고, 오류 문구에 맞게 고친다</title>
+<desc>No module named flask 나 requests 는 pip 로 설치하고 가상환경을 확인한다. Address already in use 는 이미 켜진 서버를 Ctrl + C 로 끈다. AI 에게 물을 때는 운영체제, 명령, 오류 전체를 붙이고 비밀 값은 지운다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">서버가 안 켜지거나 오류가 나면</text>
+<rect x="20" y="50" width="680" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="80.2" font-size="15" fill="#292929" text-anchor="middle">먼저: 터미널 앞의 (.venv) · 서버 터미널과 요청 터미널을 헷갈리지 않았나</text>
+<rect x="20" y="120" width="190" height="70" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="115" y="149.4" font-size="15" fill="#292929" text-anchor="middle">No module named</text>
+<text x="115" y="171.1" font-size="15" fill="#292929" text-anchor="middle">&#x27;flask&#x27; · &#x27;requests&#x27;</text>
+<rect x="236" y="120" width="240" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="356" y="149.4" font-size="15" fill="#292929" text-anchor="middle">모듈이 없음 · 새 터미널이면</text>
+<text x="356" y="171.1" font-size="15" fill="#292929" text-anchor="middle">가상환경이 꺼져 있을 수 있음</text>
+<rect x="500" y="120" width="200" height="70" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="600" y="149.4" font-size="15" fill="#292929" text-anchor="middle">python -m pip</text>
+<text x="600" y="171.1" font-size="15" fill="#292929" text-anchor="middle">install flask requests</text>
+<polyline points="211,155 235,155" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<polyline points="477,155 499,155" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="20" y="204" width="190" height="70" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="115" y="233.4" font-size="15" fill="#292929" text-anchor="middle">Address already</text>
+<text x="115" y="255.1" font-size="15" fill="#292929" text-anchor="middle">in use</text>
+<rect x="236" y="204" width="240" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="356" y="233.4" font-size="15" fill="#292929" text-anchor="middle">이미 켜진 서버가</text>
+<text x="356" y="255.1" font-size="15" fill="#292929" text-anchor="middle">5001번 포트를 씀</text>
+<rect x="500" y="204" width="200" height="70" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="600" y="233.4" font-size="15" fill="#292929" text-anchor="middle">그 터미널에서</text>
+<text x="600" y="255.1" font-size="15" fill="#292929" text-anchor="middle">Ctrl + C</text>
+<polyline points="211,239 235,239" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<polyline points="477,239 499,239" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="20" y="296" width="680" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="325.4" font-size="15" fill="#292929" text-anchor="middle">AI 에게 물을 때: 운영체제 · 친 명령 한 줄 · 오류 전체</text>
+<text x="360" y="347.1" font-size="15" fill="#292929" text-anchor="middle">rm · del · kill 같은 명령은 뜻을 되물은 뒤에 칩니다</text>
+</g>
+</svg>

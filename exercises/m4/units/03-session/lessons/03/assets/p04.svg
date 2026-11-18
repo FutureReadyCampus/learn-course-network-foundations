@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>groupby("user") 는 user 가 비어 있는 web 행을 오류 없이 뺀다</title>
+<desc>user 가 있는 server·saas 행은 그룹에 들어가지만 user 가 null 인 web 행은 빠집니다. 오류가 나지 않아서 사용자별 합이 실패 전체보다 작아도 모르고 지나치기 쉽습니다.</desc>
+<defs><marker id="a-0303-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">2.2 groupby("user") 는 비어 있는 값을 뺍니다</text>
+<rect x="24" y="72" width="90" height="34" rx="0" fill="#f1f1ef" stroke="#dededb"/>
+<text x="69.0" y="93.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">source</text>
+<rect x="114" y="72" width="110" height="34" rx="0" fill="#f1f1ef" stroke="#dededb"/>
+<text x="169.0" y="93.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">user</text>
+<rect x="24" y="106" width="90" height="34" rx="0" fill="#ffffff" stroke="#dededb"/>
+<text x="69.0" y="127.9" font-size="14" fill="#292929" text-anchor="middle">server</text>
+<rect x="114" y="106" width="110" height="34" rx="0" fill="#ffffff" stroke="#dededb"/>
+<text x="169.0" y="127.9" font-size="14" fill="#292929" text-anchor="middle">gaeun</text>
+<rect x="24" y="140" width="90" height="34" rx="0" fill="#ffffff" stroke="#dededb"/>
+<text x="69.0" y="161.9" font-size="14" fill="#292929" text-anchor="middle">server</text>
+<rect x="114" y="140" width="110" height="34" rx="0" fill="#ffffff" stroke="#dededb"/>
+<text x="169.0" y="161.9" font-size="14" fill="#292929" text-anchor="middle">dami</text>
+<rect x="24" y="174" width="90" height="34" rx="0" fill="#ffffff" stroke="#dededb"/>
+<text x="69.0" y="195.9" font-size="14" fill="#292929" text-anchor="middle">saas</text>
+<rect x="114" y="174" width="110" height="34" rx="0" fill="#ffffff" stroke="#dededb"/>
+<text x="169.0" y="195.9" font-size="14" fill="#292929" text-anchor="middle">jiwoo</text>
+<rect x="24" y="208" width="90" height="34" rx="0" fill="#f8e8e3" stroke="#dededb"/>
+<text x="69.0" y="229.9" font-size="14" fill="#292929" text-anchor="middle">web</text>
+<rect x="114" y="208" width="110" height="34" rx="0" fill="#f8e8e3" stroke="#dededb"/>
+<text x="169.0" y="229.9" font-size="14" fill="#292929" text-anchor="middle">null</text>
+<rect x="24" y="242" width="90" height="34" rx="0" fill="#f8e8e3" stroke="#dededb"/>
+<text x="69.0" y="263.9" font-size="14" fill="#292929" text-anchor="middle">web</text>
+<rect x="114" y="242" width="110" height="34" rx="0" fill="#f8e8e3" stroke="#dededb"/>
+<text x="169.0" y="263.9" font-size="14" fill="#292929" text-anchor="middle">null</text>
+<line x1="228" y1="157" x2="262" y2="157" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p04)"/>
+<rect x="266" y="122" width="150" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="341.0" y="161.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">groupby("user")</text>
+<rect x="452" y="72" width="244" height="96" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="574.0" y="104.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">그룹에 들어감</text>
+<text x="574.0" y="125.2" font-size="15" fill="#666660" text-anchor="middle">user 가 있는 행</text>
+<text x="574.0" y="146.2" font-size="15" fill="#666660" text-anchor="middle">(server · saas)</text>
+<rect x="452" y="184" width="244" height="88" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="574.0" y="222.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">빠짐 · 오류 없음</text>
+<text x="574.0" y="243.8" font-size="15" fill="#666660" text-anchor="middle">user 가 null 인 행 (web)</text>
+<line x1="419" y1="150" x2="449" y2="120" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p04)"/>
+<line x1="419" y1="165" x2="449" y2="228" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p04)"/>
+<rect x="24" y="296" width="672" height="46" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="324.2" font-size="15" fill="#292929" text-anchor="middle">사용자별 개수의 합 &lt; 실패한 이벤트 전체 → 빠진 행이 있는지 함께 봅니다</text>
+</svg>

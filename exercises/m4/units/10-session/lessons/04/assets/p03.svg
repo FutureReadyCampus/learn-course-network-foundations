@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img">
+<title>상황 8개와 각 상황에서 읽을 핵심 코드 파일</title>
+<desc>상황 1 ~ 8 마다 읽을 파일과 함수를 짝지었습니다. 상황 5 · 6 은 예시입니다. 상황 3 · 4 는 같은 이벤트 표에서, 상황 5 · 6 · 7 은 평가 결과에서 이어집니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">상황 8개와 읽을 핵심 코드</text>
+<rect x="20" y="48" width="330" height="78" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="34" y="71.3" font-size="15" fill="#292929" font-weight="700">상황 1</text>
+<text x="34" y="92.3" font-size="15" fill="#292929">설정 파일 주소 요청이 「오류」로 분류</text>
+<text x="34" y="112.3" font-size="14" fill="#666660">log_classify.py · is_suspicious</text>
+<rect x="370" y="48" width="330" height="78" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="384" y="71.3" font-size="15" fill="#292929" font-weight="700">상황 2</text>
+<text x="384" y="92.3" font-size="15" fill="#292929">로그 30줄이 이벤트 28개가 됨</text>
+<text x="384" y="112.3" font-size="14" fill="#666660">normalize_web 의 깨진 줄 검사</text>
+<rect x="20" y="134" width="330" height="78" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="34" y="157.3" font-size="15" fill="#292929" font-weight="700">상황 3</text>
+<text x="34" y="178.3" font-size="15" fill="#292929">사용자를 알 수 있는 요청이 1개뿐</text>
+<text x="34" y="198.3" font-size="14" fill="#666660">correlation.py · make_ip_user_map</text>
+<rect x="370" y="134" width="330" height="78" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="384" y="157.3" font-size="15" fill="#292929" font-weight="700">상황 4</text>
+<text x="384" y="178.3" font-size="15" fill="#292929">두 로그의 seoyeon 이 연결 안 됨</text>
+<text x="384" y="198.3" font-size="14" fill="#666660">correlation.py · find_chains</text>
+<rect x="20" y="220" width="330" height="78" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="34" y="243.3" font-size="15" fill="#292929" font-weight="700">상황 5</text>
+<text x="34" y="264.3" font-size="15" fill="#292929">협력사 IP 정상 접속에 알림 (예시)</text>
+<text x="34" y="284.3" font-size="14" fill="#666660">tuning.py · apply_exception</text>
+<rect x="370" y="220" width="330" height="78" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="384" y="243.3" font-size="15" fill="#292929" font-weight="700">상황 6</text>
+<text x="384" y="264.3" font-size="15" fill="#292929">로그인 알림이 평가에서 빠짐 (예시)</text>
+<text x="384" y="284.3" font-size="14" fill="#666660">final_check.py · merge_alerts</text>
+<rect x="20" y="306" width="330" height="78" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="34" y="329.3" font-size="15" fill="#292929" font-weight="700">상황 7</text>
+<text x="34" y="350.3" font-size="15" fill="#292929">정산 조회 시도에 알림이 안 남</text>
+<text x="34" y="370.3" font-size="14" fill="#666660">access_detection.py · REPEAT_LIMIT</text>
+<rect x="370" y="306" width="330" height="78" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="384" y="329.3" font-size="15" fill="#292929" font-weight="700">상황 8</text>
+<text x="384" y="350.3" font-size="15" fill="#292929">서버가 열려 있고 기록이 사라짐</text>
+<text x="384" y="370.3" font-size="14" fill="#666660">compose.yaml · ports · volumes</text>
+<text x="20" y="424" font-size="15" fill="#666660">이어짐: 상황 3 → 4 (같은 이벤트 표) · 상황 5 → 6 → 7 (평가 결과)</text>
+</g>
+</svg>

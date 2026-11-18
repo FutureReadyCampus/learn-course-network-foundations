@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 399" role="img">
+<title>오류가 나면 증상을 보고 확인한 뒤 알맞은 방법으로 고친다</title>
+<desc>시작하기에서 자주 나는 오류 세 가지와 그래도 막힐 때의 순서를 증상, 확인, 고치기 세 칸으로 정리했다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">오류가 나면</text>
+<text x="107" y="66" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">증상</text>
+<text x="337" y="66" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">확인</text>
+<text x="590" y="66" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">고치기</text>
+<rect x="12" y="80" width="190" height="85.25" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="107" y="127.8" font-size="15" text-anchor="middle" fill="#292929">파일 · 명령이 안 맞음</text>
+<rect x="228" y="80" width="218" height="85.25" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="337" y="106.05" font-size="15" text-anchor="middle" fill="#292929">pwd 끝이</text>
+<text x="337" y="127.8" font-size="15" text-anchor="middle" fill="#292929">anomaly_detection 인가,</text>
+<text x="337" y="149.55" font-size="15" text-anchor="middle" fill="#292929">ls 이름이 문서와 같은가</text>
+<line x1="205" y1="122.625" x2="225" y2="122.625" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="472" y="80" width="236" height="85.25" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="590" y="116.925" font-size="15" text-anchor="middle" fill="#292929">폴더와 파일 이름을 문서와 같게</text>
+<text x="590" y="138.675" font-size="15" text-anchor="middle" fill="#292929">맞춘다</text>
+<line x1="449" y1="122.625" x2="469" y2="122.625" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="12" y="175.25" width="190" height="63.5" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="107" y="201.3" font-size="15" text-anchor="middle" fill="#292929">Cannot connect to</text>
+<text x="107" y="223.05" font-size="15" text-anchor="middle" fill="#292929">the Docker daemon</text>
+<rect x="228" y="175.25" width="218" height="63.5" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="337" y="201.3" font-size="15" text-anchor="middle" fill="#292929">Docker Desktop 이 꺼져</text>
+<text x="337" y="223.05" font-size="15" text-anchor="middle" fill="#292929">있다</text>
+<line x1="205" y1="207" x2="225" y2="207" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="472" y="175.25" width="236" height="63.5" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="590" y="201.3" font-size="15" text-anchor="middle" fill="#292929">켜고 Running(초록)까지</text>
+<text x="590" y="223.05" font-size="15" text-anchor="middle" fill="#292929">1분쯤 기다린 뒤 다시 친다</text>
+<line x1="449" y1="207" x2="469" y2="207" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="12" y="248.75" width="190" height="63.5" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="107" y="285.675" font-size="15" text-anchor="middle" fill="#292929">toomanyrequests</text>
+<rect x="228" y="248.75" width="218" height="63.5" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="337" y="285.675" font-size="15" text-anchor="middle" fill="#292929">이미지를 너무 많이 받았다</text>
+<line x1="205" y1="280.5" x2="225" y2="280.5" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="472" y="248.75" width="236" height="63.5" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="590" y="274.8" font-size="15" text-anchor="middle" fill="#292929">1시간 뒤 다시. 그동안</text>
+<text x="590" y="296.55" font-size="15" text-anchor="middle" fill="#292929">보고서부터 채운다</text>
+<line x1="449" y1="280.5" x2="469" y2="280.5" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="12" y="322.25" width="190" height="63.5" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="107" y="359.175" font-size="15" text-anchor="middle" fill="#292929">그래도 막힘</text>
+<rect x="228" y="322.25" width="218" height="63.5" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="337" y="348.3" font-size="15" text-anchor="middle" fill="#292929">오류와 친 명령을 AI 에게</text>
+<text x="337" y="370.05" font-size="15" text-anchor="middle" fill="#292929">(.env · 키는 지움)</text>
+<line x1="205" y1="354" x2="225" y2="354" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="472" y="322.25" width="236" height="63.5" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="590" y="348.3" font-size="15" text-anchor="middle" fill="#292929">정답을 보고, 안 되면 「모름 —</text>
+<text x="590" y="370.05" font-size="15" text-anchor="middle" fill="#292929">막힌 곳: …」</text>
+<line x1="449" y1="354" x2="469" y2="354" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+</g>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img"><title>이전 파일이 없을 때만 Unit별 파일을 만들고 코드 상자를 붙여 넣는다</title><desc>mkdir -p config 와 touch 로 빈 파일을 만든 뒤 같은 이름의 코드 상자를 붙여 넣습니다. 이미 있는 파일은 건너뛰고, 플레이북 등록 파일만 점검 결과가 다를 때 덮어씁니다.</desc><defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">이전 파일이 없을 때</text>
+<rect x="20" y="50" width="200" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="120.0" y="79" font-size="15" fill="#292929" text-anchor="middle">그 파일이</text>
+<text x="120.0" y="101" font-size="15" fill="#292929" text-anchor="middle">이미 있나?</text>
+<rect x="260" y="50" width="180" height="70" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="350.0" y="90" font-size="15" fill="#292929" text-anchor="middle">예 → 건너뜀</text>
+<rect x="480" y="50" width="220" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="590.0" y="79" font-size="15" fill="#292929" text-anchor="middle">아니오 → touch 후</text>
+<text x="590.0" y="101" font-size="15" fill="#292929" text-anchor="middle">코드 상자 붙여 넣기</text>
+<line x1="222" y1="85" x2="256" y2="85" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="442" y1="85" x2="476" y2="85" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="20" y="150" width="100" height="38" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="70.0" y="174" font-size="15" fill="#292929" text-anchor="middle">Unit 1</text>
+<rect x="130" y="150" width="570" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="142" y="174" font-size="15" fill="#292929">incident.py · config/playbook_registry.json</text>
+<rect x="20" y="196" width="100" height="84" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="70.0" y="243" font-size="15" fill="#292929" text-anchor="middle">Unit 4</text>
+<rect x="130" y="196" width="570" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="142" y="220" font-size="15" fill="#292929">containment_store.py · account_actions.py</text>
+<rect x="130" y="242" width="570" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="142" y="266" font-size="15" fill="#292929">ip_actions.py · ip_users.json</text>
+<rect x="20" y="288" width="100" height="38" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="70.0" y="312" font-size="15" fill="#292929" text-anchor="middle">Unit 6</text>
+<rect x="130" y="288" width="570" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="142" y="312" font-size="15" fill="#292929">ticketing.py · config/escalation_rules.json</text>
+<rect x="20" y="334" width="100" height="38" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="70.0" y="358" font-size="15" fill="#292929" text-anchor="middle">Unit 8</text>
+<rect x="130" y="334" width="570" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="142" y="358" font-size="15" fill="#292929">approval_gate.py · config/approval_policy.json</text>
+<text x="20" y="400" font-size="15" fill="#666660">플레이북 등록 파일은 4번 점검 결과가 다를 때만 덮어씁니다.</text>
+</g></svg>

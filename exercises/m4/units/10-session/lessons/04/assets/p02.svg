@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>상황을 풀 때: 확인 → 원인(데이터·규칙·운영 설정) → 고치기(추가·수정·삭제) → 다시 확인</title>
+<desc>상황이 생기면 네 단계로 생각합니다. 원인은 데이터 문제, 규칙 문제, 운영 설정 문제 중 하나이고, 고치는 방법은 새로 넣기, 값 바꾸기, 지우기 중 하나입니다. 틀린 알림은 오탐과 미탐 두 가지입니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">상황을 풀 때 쓰는 틀</text>
+<rect x="20" y="52" width="152" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="96" y="80.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">확인</text>
+<polyline points="172,76 192,76" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="196" y="52" width="152" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="272" y="80.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">원인</text>
+<polyline points="348,76 368,76" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="372" y="52" width="152" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="448" y="80.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">고치기</text>
+<polyline points="524,76 544,76" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="548" y="52" width="152" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="624" y="80.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">다시 확인</text>
+<rect x="196" y="118" width="152" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="272" y="137.8" font-size="15" fill="#292929" text-anchor="middle">데이터 문제</text>
+<text x="272" y="157.8" font-size="14" fill="#666660" text-anchor="middle">없거나 깨진 자료</text>
+<rect x="196" y="176" width="152" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="272" y="195.8" font-size="15" fill="#292929" text-anchor="middle">규칙 문제</text>
+<text x="272" y="215.8" font-size="14" fill="#666660" text-anchor="middle">기준이 안 맞음</text>
+<rect x="196" y="234" width="152" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="272" y="253.8" font-size="15" fill="#292929" text-anchor="middle">운영 설정 문제</text>
+<text x="272" y="273.8" font-size="14" fill="#666660" text-anchor="middle">compose.yaml 설정</text>
+<rect x="372" y="118" width="152" height="50" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="448" y="137.8" font-size="15" fill="#292929" text-anchor="middle">새로 넣는다</text>
+<text x="448" y="157.8" font-size="14" fill="#666660" text-anchor="middle">추가</text>
+<rect x="372" y="176" width="152" height="50" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="448" y="195.8" font-size="15" fill="#292929" text-anchor="middle">값을 바꾼다</text>
+<text x="448" y="215.8" font-size="14" fill="#666660" text-anchor="middle">수정</text>
+<rect x="372" y="234" width="152" height="50" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="448" y="253.8" font-size="15" fill="#292929" text-anchor="middle">지운다</text>
+<text x="448" y="273.8" font-size="14" fill="#666660" text-anchor="middle">삭제</text>
+<rect x="20" y="118" width="152" height="166" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="96" y="174.1" font-size="15" fill="#292929" text-anchor="middle">로그나</text>
+<text x="96" y="195.1" font-size="15" fill="#292929" text-anchor="middle">평가 결과로</text>
+<text x="96" y="216.1" font-size="15" fill="#292929" text-anchor="middle">무슨 일인지</text>
+<text x="96" y="237.1" font-size="15" fill="#292929" text-anchor="middle">알아봄</text>
+<rect x="548" y="118" width="152" height="166" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="624" y="174.1" font-size="15" fill="#292929" text-anchor="middle">무엇을 다시</text>
+<text x="624" y="195.1" font-size="15" fill="#292929" text-anchor="middle">실행하고</text>
+<text x="624" y="216.1" font-size="15" fill="#292929" text-anchor="middle">어떤 출력을</text>
+<text x="624" y="237.1" font-size="15" fill="#292929" text-anchor="middle">볼지 정함</text>
+<text x="20" y="318" font-size="15" fill="#666660">틀린 알림 두 가지</text>
+<rect x="20" y="330" width="330" height="56" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="185" y="352.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">오탐</text>
+<text x="185" y="373.1" font-size="15" fill="#292929" text-anchor="middle">문제가 아닌데 난 알림</text>
+<rect x="370" y="330" width="330" height="56" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="535" y="352.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">미탐</text>
+<text x="535" y="373.1" font-size="15" fill="#292929" text-anchor="middle">진짜 문제인데 나지 않은 알림</text>
+</g>
+</svg>

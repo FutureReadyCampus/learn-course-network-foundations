@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>위치 확인 → git status 점검 → 보고서 채우기 → add·commit·push → 브라우저 확인</title>
+<desc>soar_response 에서 pwd 와 ls 로 파일을 확인한 뒤 cd .. 로 security-agent-toolkit 으로 갑니다. git status 에 .env 나 .venv 가 보이면 .gitignore 에 적고 다시 봅니다. 보고서를 채운 뒤 git add, commit, push 로 올리고, 거절되면 git pull --no-rebase 후 다시 push 합니다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="bold">마무리: Unit 1~10에서 만든 것을 깃허브에 올리는 순서</text>
+<rect x="20" y="56" width="210" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="125.0" y="86.8" font-size="15" fill="#292929" text-anchor="middle">0. pwd · ls</text>
+<text x="125.0" y="107.8" font-size="15" fill="#292929" text-anchor="middle">soar_response 확인</text>
+<line x1="232" y1="92" x2="253" y2="92" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<rect x="255" y="56" width="210" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="86.8" font-size="15" fill="#292929" text-anchor="middle">1. cd ..</text>
+<text x="360.0" y="107.8" font-size="15" fill="#292929" text-anchor="middle">toolkit 폴더로</text>
+<line x1="467" y1="92" x2="488" y2="92" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<rect x="490" y="56" width="210" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="595.0" y="86.8" font-size="15" fill="#292929" text-anchor="middle">2. git status</text>
+<text x="595.0" y="107.8" font-size="15" fill="#292929" text-anchor="middle">올릴 파일 보기</text>
+<rect x="20" y="226" width="210" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="125.0" y="256.8" font-size="15" fill="#292929" text-anchor="middle">3. 보고서 채우기</text>
+<text x="125.0" y="277.8" font-size="15" fill="#292929" text-anchor="middle">마무리 (가)</text>
+<line x1="232" y1="262" x2="253" y2="262" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<rect x="255" y="226" width="210" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360.0" y="256.8" font-size="15" fill="#292929" text-anchor="middle">4. add · commit · push</text>
+<text x="360.0" y="277.8" font-size="15" fill="#292929" text-anchor="middle">차례로 하나씩</text>
+<line x1="467" y1="262" x2="488" y2="262" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<rect x="490" y="226" width="210" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="595.0" y="256.8" font-size="15" fill="#292929" text-anchor="middle">5. 브라우저 확인</text>
+<text x="595.0" y="277.8" font-size="15" fill="#292929" text-anchor="middle">soar_response 폴더</text>
+<path d="M 595 128 L 595 162 L 125 162 L 125 224" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<rect x="20" y="306" width="330" height="96" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="185.0" y="329.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="bold">2번에서 멈출 때</text>
+<text x="185.0" y="350.5" font-size="14" fill="#292929" text-anchor="middle">.env · .venv 가 보이면 올리지 않고</text>
+<text x="185.0" y="370.1" font-size="14" fill="#292929" text-anchor="middle">.gitignore 에 한 줄 적고</text>
+<text x="185.0" y="389.7" font-size="14" fill="#292929" text-anchor="middle">git status 를 다시 봅니다</text>
+<rect x="370" y="306" width="330" height="96" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="535.0" y="329.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="bold">4번이 거절될 때</text>
+<text x="535.0" y="350.5" font-size="14" fill="#292929" text-anchor="middle">git push 가 rejected 이면</text>
+<text x="535.0" y="370.1" font-size="14" fill="#292929" text-anchor="middle">git pull --no-rebase 후</text>
+<text x="535.0" y="389.7" font-size="14" fill="#292929" text-anchor="middle">git push 를 다시 합니다</text>
+</g>
+</svg>

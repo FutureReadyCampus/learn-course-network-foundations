@@ -521,8 +521,27 @@ def markdown_pages(path: Path) -> list[dict]:
             sections[-1][1].append(line)
     if not sections:
         raise ValueError(f"Lesson source has no Page headings: {path}")
-    return [{"title": title, "paragraphs": [], "html": iconize(md.render("\n".join(body))), "terms": [], "questions": []}
-            for title, body in sections]
+    def figure(index: int) -> str:
+        """assets/pNN.svg (NN = 1-based Page number) is shown above the Page text; its <title> is the alt text."""
+        svg = path.parent / "assets" / f"p{index:02d}.svg"
+        if not svg.is_file():
+            return ""
+        m = re.search(r"<title[^>]*>(.*?)</title>", svg.read_text(encoding="utf-8"), re.S)
+        alt = re.sub(r"\s+", " ", m.group(1)).strip() if m else ""
+        return (f'<figure class="page-figure"><img src="/api/v1/network-course-assets/{repository_asset_path(svg)}" '
+                f'alt="{alt}" loading="lazy"></figure>')
+
+    def inline_figures(html: str) -> str:
+        """<img src="assets/x.svg"> written in a Lesson points at that Lesson's own assets folder."""
+        def fix(match: "re.Match[str]") -> str:
+            asset = path.parent / "assets" / match.group(1)
+            if not asset.is_file():
+                raise FileNotFoundError(f"Missing figure {match.group(1)} in {path}")
+            return f'src="/api/v1/network-course-assets/{repository_asset_path(asset)}"'
+        return re.sub(r'src="assets/([^"]+)"', fix, html)
+
+    return [{"title": title, "paragraphs": [], "html": figure(i) + inline_figures(iconize(md.render("\n".join(body)))), "terms": [], "questions": []}
+            for i, (title, body) in enumerate(sections, 1)]
 
 
 def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list[dict]:

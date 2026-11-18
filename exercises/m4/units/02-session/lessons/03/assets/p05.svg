@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>실습 2-2 정리: 시각, 결과, 이름 꺼내기, CSV 읽기 코드</title>
+<desc>판정 서버 시각은 strptime 과 strftime, 결과는 ALLOWED_MAP 과 RESULT_MAP 으로 바꿉니다. 메일 주소는 split("@")의 첫 값이 이름이고, CSV 는 DictReader 로 읽습니다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 2-2 정리</text>
+<rect x="24" y="56" width="190" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="119" y="84.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">판정 서버 시각</text>
+<line x1="216" y1="80" x2="236" y2="80" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<rect x="240" y="56" width="456" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="252" y="84.1" font-size="14" text-anchor="start" fill="#292929">strptime(…, SERVER_TIME_FORMAT) → strftime</text>
+<rect x="24" y="118" width="190" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="119" y="146.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">allowed → 결과</text>
+<line x1="216" y1="142" x2="236" y2="142" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<rect x="240" y="118" width="456" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="252" y="146.1" font-size="14" text-anchor="start" fill="#292929">result = ALLOWED_MAP[allowed]</text>
+<rect x="24" y="180" width="190" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="119" y="208.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">메일에서 이름</text>
+<line x1="216" y1="204" x2="236" y2="204" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<rect x="240" y="180" width="456" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="252" y="208.1" font-size="14" text-anchor="start" fill="#292929">row["account"].split("@") → [0]</text>
+<rect x="24" y="242" width="190" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="119" y="270.4" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">outcome → 결과</text>
+<line x1="216" y1="266" x2="236" y2="266" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<rect x="240" y="242" width="456" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="252" y="270.1" font-size="14" text-anchor="start" fill="#292929">result = RESULT_MAP[outcome]</text>
+<rect x="24" y="304" width="190" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="119" y="332.4" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">CSV 읽기</text>
+<line x1="216" y1="328" x2="236" y2="328" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<rect x="240" y="304" width="456" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="252" y="332.1" font-size="14" text-anchor="start" fill="#292929">csv.DictReader(saas_file) → for row in reader:</text>
+</g>
+</svg>

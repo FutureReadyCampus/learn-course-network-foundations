@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" role="img">
+<title>설명하는 답은 한 예이므로 핵심이 같으면 맞은 것으로 본다</title>
+<desc>정답에 적힌 설명은 한 가지 예다. 내 답과 정답 예를 비교해 핵심이 같으면 맞다. 문장이 달라도 괜찮다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
+<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">정답 보는 법</text>
+<rect x="30" y="70" width="170" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="115" y="107.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">내 답</text>
+<rect x="30" y="160" width="170" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="115" y="197.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">정답 (한 예)</text>
+<rect x="260" y="105" width="220" height="84" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="370" y="141.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">핵심이 같은가?</text>
+<text x="370" y="162.8" font-size="15" fill="#292929" text-anchor="middle">문장은 달라도 됨</text>
+<line x1="200" y1="102" x2="258" y2="132" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<line x1="200" y1="192" x2="258" y2="165" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="540" y="115" width="150" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="615" y="152.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">맞음</text>
+<line x1="480" y1="147" x2="538" y2="147" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<text x="509" y="139" font-size="14" fill="#666660" text-anchor="middle">예</text>
+</g>
+</svg>

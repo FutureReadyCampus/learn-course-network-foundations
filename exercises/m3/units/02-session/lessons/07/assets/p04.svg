@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 426" role="img">
+<title>실습 2-3 보고서에 채울 칸: 출력, 3번 주석이 없을 때, 파일 흐름 그림</title>
+<desc>실습 2-3 보고서의 (가)~(다) 질문마다 써야 할 내용을 체크리스트로 보여 줍니다. (다)는 exercise2-3_run.py 에서 출발하는 글자 그림입니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+<text x="24" y="34" font-size="19" font-weight="700">실습 2-3 보고서 · 채울 칸</text>
+<rect x="24" y="52" width="672" height="120" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="40" y="74" font-size="16" font-weight="700">(가) 출력과 만료 뒤 시도</text>
+<rect x="44" y="86" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="68" y="98" font-size="15">출력 전체를 코드 상자에 붙여 넣기</text>
+<rect x="44" y="112" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="68" y="124" font-size="15">[만료 뒤 시도] 세 건의 사용자와 끝난 예외 번호</text>
+<rect x="44" y="138" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="68" y="150" font-size="15">예외 1번이 쓰인 횟수</text>
+<rect x="24" y="184" width="672" height="120" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="40" y="206" font-size="16" font-weight="700">(나) [핵심 질문] 3번 주석이 없다면 dami 는?</text>
+<rect x="44" y="218" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="68" y="230" font-size="15">판정 결과</text>
+<rect x="44" y="244" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="68" y="256" font-size="15">3.1 그림의 어느 단계를 거치는지</text>
+<rect x="44" y="270" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="68" y="282" font-size="15">이어질 수 있는 사고</text>
+<rect x="24" y="316" width="672" height="94" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="40" y="338" font-size="16" font-weight="700">(다) [핵심 질문] 파일 흐름 그림</text>
+<rect x="44" y="350" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="68" y="362" font-size="15">exercise2-3_run.py 에서 출발하는 상자와 화살표 그림</text>
+<rect x="44" y="376" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="68" y="388" font-size="15">exceptions.json 이 깨졌을 때 멈추는 곳</text>
+</g>
+</svg>

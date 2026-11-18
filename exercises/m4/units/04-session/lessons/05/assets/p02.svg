@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>지난 7일 로그인 실패: 평균 2.4번, 최대 4번, 알림 기준 5번 이상</title>
+<desc>7일 막대에서 평균 2.4번 이상인 날은 10/27, 10/29, 10/31 3일이고 5번 이상인 날은 0일입니다. 12번인 날이 섞이면 최댓값 12, 기준 13이 되어 5~12번 실패를 놓칩니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 4-1 정답: 평균 2.4 · 최대 4 · 알림 기준 5</text>
+<text x="66" y="335" font-size="14" text-anchor="end" fill="#666660">0</text>
+<text x="66" y="293" font-size="14" text-anchor="end" fill="#666660">1</text>
+<text x="66" y="251" font-size="14" text-anchor="end" fill="#666660">2</text>
+<text x="66" y="209" font-size="14" text-anchor="end" fill="#666660">3</text>
+<text x="66" y="167" font-size="14" text-anchor="end" fill="#666660">4</text>
+<text x="66" y="125" font-size="14" text-anchor="end" fill="#666660">5</text>
+<line x1="76" y1="330" x2="572" y2="330" stroke="#666660" stroke-width="1.5"/>
+<rect x="90" y="246" width="44" height="84" rx="3" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="112" y="238" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">2</text>
+<text x="112" y="352" font-size="14" text-anchor="middle" fill="#292929">10/26</text>
+<rect x="158" y="204" width="44" height="126" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="180" y="196" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">3</text>
+<text x="180" y="352" font-size="14" text-anchor="middle" fill="#292929">10/27</text>
+<rect x="226" y="288" width="44" height="42" rx="3" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="248" y="280" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">1</text>
+<text x="248" y="352" font-size="14" text-anchor="middle" fill="#292929">10/28</text>
+<rect x="294" y="162" width="44" height="168" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="316" y="154" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">4</text>
+<text x="316" y="352" font-size="14" text-anchor="middle" fill="#292929">10/29</text>
+<rect x="362" y="246" width="44" height="84" rx="3" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="384" y="238" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">2</text>
+<text x="384" y="352" font-size="14" text-anchor="middle" fill="#292929">10/30</text>
+<rect x="430" y="204" width="44" height="126" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="452" y="196" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">3</text>
+<text x="452" y="352" font-size="14" text-anchor="middle" fill="#292929">10/31</text>
+<rect x="498" y="246" width="44" height="84" rx="3" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="520" y="238" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">2</text>
+<text x="520" y="352" font-size="14" text-anchor="middle" fill="#292929">11/1</text>
+<line x1="76" y1="229.2" x2="572" y2="229.2" stroke="#2f6fd0" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="580" y="234" font-size="14" text-anchor="start" fill="#2f6fd0" font-weight="700">평균 2.4</text>
+<line x1="76" y1="120" x2="572" y2="120" stroke="#e0442e" stroke-width="2"/>
+<text x="580" y="125" font-size="14" text-anchor="start" fill="#292929" font-weight="700">알림 기준 5</text>
+<text x="580" y="167" font-size="14" text-anchor="start" fill="#666660">최대 4</text>
+<text x="20" y="384" font-size="15" text-anchor="start" fill="#292929" font-weight="700">평균 이상인 날 3일(모두 평범한 날) · 5번 이상인 날 0일</text>
+<text x="20" y="410" font-size="14" text-anchor="start" fill="#666660">12번인 날이 섞이면 최대 12 → 기준 13: 5~12번 실패를 놓친다</text>
+</g>
+</svg>

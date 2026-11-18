@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>실습 8-1 정리: 방법 정하기, 예외 번호, 역할별 사용자 수, 영향 계산의 코드 조각</title>
+<desc>왼쪽은 plan_revocation 이 방법을 정하는 조건과 세 값, 계획 한 건을 만드는 build_plan 입니다. 오른쪽은 exception_id, count_users_by_role, 영향 계산에서 직접 쓰는 줄입니다.</desc>
+<defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">실습 8-1 정리 — 코드 조각 지도</text>
+<rect x="20" y="60" width="330" height="90" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="32" y="89.2" font-size="15" fill="#292929" text-anchor="start" font-weight="700">방법 정하기</text>
+<text x="32" y="110.2" font-size="15" fill="#292929" text-anchor="start">if "예외" in finding["source"]:</text>
+<text x="32" y="131.2" font-size="15" fill="#292929" text-anchor="start">elif not info["employed"]:</text>
+<rect x="20" y="165" width="330" height="90" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="32" y="194.2" font-size="15" fill="#292929" text-anchor="start" font-weight="700">method 세 값</text>
+<text x="32" y="215.2" font-size="15" fill="#292929" text-anchor="start">"예외 삭제" · "역할 해제"</text>
+<text x="32" y="236.2" font-size="15" fill="#292929" text-anchor="start">"역할에서 권한 빼기"</text>
+<rect x="20" y="270" width="330" height="90" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="32" y="299.2" font-size="15" fill="#292929" text-anchor="start" font-weight="700">계획 한 건</text>
+<text x="32" y="320.2" font-size="15" fill="#292929" text-anchor="start">build_plan(finding, method, …)</text>
+<text x="32" y="341.2" font-size="15" fill="#292929" text-anchor="start">target · impact 를 정함</text>
+<rect x="370" y="60" width="330" height="90" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="382" y="89.2" font-size="15" fill="#292929" text-anchor="start" font-weight="700">예외 번호 꺼내기</text>
+<text x="382" y="110.2" font-size="15" fill="#292929" text-anchor="start">replace("번", "")</text>
+<text x="382" y="131.2" font-size="15" fill="#292929" text-anchor="start">→ int(number_text)</text>
+<rect x="370" y="165" width="330" height="90" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="382" y="194.2" font-size="15" fill="#292929" text-anchor="start" font-weight="700">역할별 사용자 수</text>
+<text x="382" y="215.2" font-size="15" fill="#292929" text-anchor="start">counts.get(role, 0)</text>
+<text x="382" y="236.2" font-size="15" fill="#292929" text-anchor="start">counts[role] = old_count + 1</text>
+<rect x="370" y="270" width="330" height="90" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="382" y="299.2" font-size="15" fill="#292929" text-anchor="start" font-weight="700">영향 계산</text>
+<text x="382" y="320.2" font-size="15" fill="#292929" text-anchor="start">역할 해제: len(role_permissions)</text>
+<text x="382" y="341.2" font-size="15" fill="#292929" text-anchor="start">권한 빼기: role_counts[info["role"]]</text>
+</g>
+</svg>

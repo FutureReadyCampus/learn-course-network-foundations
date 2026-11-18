@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>실습 10-2 는 로그를 집계해 경고를 붙이고, 점검 결과와 합쳐 주간 보고서를 만든다</title>
+<desc>week_log.jsonl 40줄과 config/alert.json 경고 기준을 log_summary.py 가 읽어 허용·거부·거부율과 사유별 횟수를 낸다. weekly_report.py 는 이 집계와 실습 10-1 점검 결과를 합쳐 날짜가 들어간 .md 보고서로 저장한다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 10-2 · 로그 집계와 주간 보고서가 만드는 것</text>
+<rect x="20" y="70" width="190" height="76" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="115" y="102.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">week_log.jsonl</text>
+<text x="115" y="125" font-size="15" fill="#292929" text-anchor="middle">요청 40줄</text>
+<rect x="20" y="160" width="190" height="76" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="115" y="192.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">config/alert.json</text>
+<text x="115" y="215" font-size="15" fill="#292929" text-anchor="middle">경고 기준</text>
+<rect x="20" y="280" width="190" height="76" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="115" y="312.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">실습 10-1</text>
+<text x="115" y="335" font-size="15" fill="#292929" text-anchor="middle">점검 결과</text>
+<rect x="260" y="110" width="180" height="86" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="350" y="147.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">log_summary.py</text>
+<text x="350" y="170" font-size="15" fill="#292929" text-anchor="middle">세기 · 비율 · 경고</text>
+<rect x="260" y="270" width="180" height="86" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="350" y="307.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">weekly_report.py</text>
+<text x="350" y="330" font-size="15" fill="#292929" text-anchor="middle">합치기 · 저장</text>
+<rect x="490" y="104" width="210" height="98" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="595" y="137" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">집계 출력</text>
+<text x="595" y="159.1" font-size="15" fill="#292929" text-anchor="middle">허용 · 거부 · 거부율</text>
+<text x="595" y="180.9" font-size="15" fill="#292929" text-anchor="middle">사유별 · 경고 여부</text>
+<rect x="490" y="264" width="210" height="98" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="595" y="298.5" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">주간 보고서 .md</text>
+<text x="595" y="319.5" font-size="14" fill="#292929" text-anchor="middle">access_control_weekly</text>
+<text x="595" y="339.8" font-size="14" fill="#292929" text-anchor="middle">_report_2026-11-02.md</text>
+<line x1="212" y1="108" x2="256" y2="140" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<line x1="212" y1="198" x2="256" y2="168" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<line x1="442" y1="153" x2="486" y2="153" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<line x1="350" y1="198" x2="350" y2="266" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<line x1="212" y1="318" x2="256" y2="318" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<line x1="442" y1="313" x2="486" y2="313" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<text x="358" y="238" font-size="14" fill="#666660">집계 결과</text>
+</g>
+</svg>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img">
+<title>대응 조치는 실행, 사후 검증, 감사 기록의 세 단계를 마쳐야 완료됩니다</title>
+<desc>조치를 실행한 뒤 실제 상태를 다시 확인하고, 감사 기록 한 건에 action, target, incident, before, after, reason 여섯 키를 남깁니다. after 는 사후 검증으로 확인한 상태입니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">1.1 실행 → 사후 검증 → 감사 기록</text>
+<rect x="24" y="66" width="208" height="70" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="128.0" y="95.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="128.0" dy="0" font-weight="700">① 실행</tspan><tspan x="128.0" dy="21.0">dami 를 잠근다</tspan></text>
+<line x1="232" y1="101" x2="254" y2="101" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="256" y="66" width="208" height="70" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="95.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">② 사후 검증</tspan><tspan x="360.0" dy="21.0">잠긴 리스트에 있나?</tspan></text>
+<line x1="464" y1="101" x2="486" y2="101" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="488" y="66" width="208" height="70" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="592.0" y="95.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="592.0" dy="0" font-weight="700">③ 감사 기록</tspan><tspan x="592.0" dy="21.0">여섯 키 한 건</tspan></text>
+<rect x="24" y="160" width="130" height="34" fill="#f1f1ef" stroke="#dededb"/>
+<text x="36" y="182.2" font-size="15" fill="#292929" font-weight="700">키</text>
+<rect x="154" y="160" width="290" height="34" fill="#f1f1ef" stroke="#dededb"/>
+<text x="166" y="182.2" font-size="15" fill="#292929" font-weight="700">뜻</text>
+<rect x="444" y="160" width="252" height="34" fill="#f1f1ef" stroke="#dededb"/>
+<text x="456" y="182.2" font-size="15" fill="#292929" font-weight="700">예</text>
+<rect x="24" y="194" width="130" height="34" fill="#ffffff" stroke="#dededb"/>
+<text x="36" y="216.2" font-size="15" fill="#292929">action</text>
+<rect x="154" y="194" width="290" height="34" fill="#ffffff" stroke="#dededb"/>
+<text x="166" y="216.2" font-size="15" fill="#292929">수행한 조치</text>
+<rect x="444" y="194" width="252" height="34" fill="#ffffff" stroke="#dededb"/>
+<text x="456" y="216.2" font-size="15" fill="#292929">"계정 잠금"</text>
+<rect x="24" y="228" width="130" height="34" fill="#ffffff" stroke="#dededb"/>
+<text x="36" y="250.2" font-size="15" fill="#292929">target</text>
+<rect x="154" y="228" width="290" height="34" fill="#ffffff" stroke="#dededb"/>
+<text x="166" y="250.2" font-size="15" fill="#292929">조치 대상</text>
+<rect x="444" y="228" width="252" height="34" fill="#ffffff" stroke="#dededb"/>
+<text x="456" y="250.2" font-size="15" fill="#292929">"dami"</text>
+<rect x="24" y="262" width="130" height="34" fill="#ffffff" stroke="#dededb"/>
+<text x="36" y="284.2" font-size="15" fill="#292929">incident</text>
+<rect x="154" y="262" width="290" height="34" fill="#ffffff" stroke="#dededb"/>
+<text x="166" y="284.2" font-size="15" fill="#292929">인시던트 번호</text>
+<rect x="444" y="262" width="252" height="34" fill="#ffffff" stroke="#dededb"/>
+<text x="456" y="284.2" font-size="15" fill="#292929">"INC-001"</text>
+<rect x="24" y="296" width="130" height="34" fill="#ffffff" stroke="#dededb"/>
+<text x="36" y="318.2" font-size="15" fill="#292929">before</text>
+<rect x="154" y="296" width="290" height="34" fill="#ffffff" stroke="#dededb"/>
+<text x="166" y="318.2" font-size="15" fill="#292929">조치 전 상태</text>
+<rect x="444" y="296" width="252" height="34" fill="#ffffff" stroke="#dededb"/>
+<text x="456" y="318.2" font-size="15" fill="#292929">"잠기지 않음"</text>
+<rect x="24" y="330" width="130" height="34" fill="#ffffff" stroke="#dededb"/>
+<text x="36" y="352.2" font-size="15" fill="#292929">after</text>
+<rect x="154" y="330" width="290" height="34" fill="#ffffff" stroke="#dededb"/>
+<text x="166" y="352.2" font-size="15" fill="#292929">사후 검증으로 확인한 상태</text>
+<rect x="444" y="330" width="252" height="34" fill="#ffffff" stroke="#dededb"/>
+<text x="456" y="352.2" font-size="15" fill="#292929">"잠김"</text>
+<rect x="24" y="364" width="130" height="34" fill="#ffffff" stroke="#dededb"/>
+<text x="36" y="386.2" font-size="15" fill="#292929">reason</text>
+<rect x="154" y="364" width="290" height="34" fill="#ffffff" stroke="#dededb"/>
+<text x="166" y="386.2" font-size="15" fill="#292929">조치 사유</text>
+<rect x="444" y="364" width="252" height="34" fill="#ffffff" stroke="#dededb"/>
+<text x="456" y="386.2" font-size="15" fill="#292929">"퇴사한 계정의 서버 요청"</text>
+</g>
+</svg>

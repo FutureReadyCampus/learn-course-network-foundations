@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>Unit 4의 접수·승인·부여 흐름을 Unit 5에서 처리 기한으로 점검하고 파일로 저장한다</title>
+<desc>위는 Unit 4에서 만든 req_create.py, req_review.py, req_grant.py 흐름입니다. 아래는 이번 Unit 의 실습 5-1 SLA 점검과 실습 5-2 requests.json 저장 · 상태별 건수 · 깃허브 올리기입니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">Unit 5 목표: 기한 점검과 기록 저장</text>
+<text x="24" y="66" font-size="15" fill="#666660" text-anchor="start" font-weight="700">Unit 4 에서 만든 흐름</text>
+<rect x="24" y="78" width="200" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="124" y="100.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">req_create.py</text>
+<text x="124" y="121.1" font-size="15" fill="#292929" text-anchor="middle">접수</text>
+<line x1="224" y1="106" x2="254" y2="106" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p01)"/>
+<rect x="256" y="78" width="200" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="356" y="100.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">req_review.py</text>
+<text x="356" y="121.1" font-size="15" fill="#292929" text-anchor="middle">승인 · 반려</text>
+<line x1="456" y1="106" x2="486" y2="106" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p01)"/>
+<rect x="488" y="78" width="200" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="588" y="100.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">req_grant.py</text>
+<text x="588" y="121.1" font-size="15" fill="#292929" text-anchor="middle">예외 부여</text>
+<line x1="360" y1="134" x2="360" y2="168" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p01)"/>
+<text x="372" y="158" font-size="14" fill="#666660" text-anchor="start">정해진 시간 안에 처리되나? 기록이 남나?</text>
+<rect x="24" y="176" width="320" height="120" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="184" y="206.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실습 5-1</text>
+<text x="184" y="229.6" font-size="15" fill="#292929" text-anchor="middle">접수한 지 정해진 시간</text>
+<text x="184" y="252.6" font-size="15" fill="#292929" text-anchor="middle">(SLA, 처리 기한)이 지났는데</text>
+<text x="184" y="275.6" font-size="15" fill="#292929" text-anchor="middle">처리 안 된 요청서 찾기</text>
+<rect x="376" y="176" width="324" height="120" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="538" y="206.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실습 5-2</text>
+<text x="538" y="229.6" font-size="15" fill="#292929" text-anchor="middle">requests.json 으로 저장</text>
+<text x="538" y="252.6" font-size="15" fill="#292929" text-anchor="middle">상태별 건수 세기</text>
+<text x="538" y="275.6" font-size="15" fill="#292929" text-anchor="middle">마지막에 깃허브에 올리기</text>
+</svg>

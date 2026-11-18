@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>실습 3-2 정리: assert 로 기대를 적고 경계값을 넣고, 실패하면 먼저 판단</title>
+<desc>assert 의 두 모양, 만료 경계값 17:59 와 18:00, 실패했을 때 할 일을 한 장에 모았습니다.</desc>
+<defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+<text x="24" y="34" font-size="19" font-weight="700">실습 3-2 정리</text>
+<rect x="24" y="52" width="320" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="184" y="82.9" font-size="16" text-anchor="middle" font-weight="700">기대 결과 적기</text>
+<text x="184" y="103.9" font-size="15" text-anchor="middle">assert 조건, "설명"</text>
+<rect x="376" y="52" width="320" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="536" y="82.9" font-size="16" text-anchor="middle" font-weight="700">두 조건 함께</text>
+<text x="536" y="103.9" font-size="15" text-anchor="middle">assert A and B, "설명"</text>
+<rect x="24" y="140" width="672" height="112" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="40" y="166" font-size="16" font-weight="700">경계값: 결과가 바뀌는 지점의 바로 앞과 그 지점</text>
+<rect x="80" y="184" width="360" height="28" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<rect x="440" y="184" width="200" height="28" rx="4" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="260" y="204" font-size="14" text-anchor="middle">유효</text>
+<text x="540" y="204" font-size="14" text-anchor="middle">만료</text>
+<line x1="420" y1="212" x2="420" y2="224" stroke="#666660" stroke-width="1.5"/>
+<line x1="440" y1="212" x2="440" y2="224" stroke="#666660" stroke-width="1.5"/>
+<text x="414" y="240" font-size="14" text-anchor="end">17:59 허용</text>
+<text x="446" y="240" font-size="14">18:00 거부</text>
+<rect x="24" y="268" width="672" height="92" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="308.9" font-size="16" text-anchor="middle" font-weight="700">실패하면 AssertionError: 설명 + 줄 번호</text>
+<text x="360" y="329.9" font-size="15" text-anchor="middle">→ 코드가 틀렸나, 기대가 정책과 다른가를 먼저 판단</text>
+</g>
+</svg>

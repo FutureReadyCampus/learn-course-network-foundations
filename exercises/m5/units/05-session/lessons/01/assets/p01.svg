@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>Unit 5는 조치를 기록으로 되돌리고, 알림 8건을 한 흐름으로 처리합니다</title>
+<desc>실습 5-1은 오탐으로 확인된 알림의 조치를 기록을 보고 되돌리되 자동이 바꾼 것만 되돌립니다. 실습 5-2는 알림 8건을 맥락 붙이기, 경로 정하기, 조치 순서로 처리하고 사람이 확인할 건 목록을 만듭니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">Unit 5 목표: 되돌리기와 일괄 처리</text>
+<rect x="24" y="64" width="672" height="40" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="89.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">실습 5-1 · 되돌리기 (undo_actions.py · rollback.py)</tspan></text>
+<rect x="24" y="116" width="200" height="70" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="124.0" y="146.1" font-size="14" text-anchor="middle" fill="#292929"><tspan x="124.0" dy="0" font-weight="700">조치 기록</tspan><tspan x="124.0" dy="19.6">containment_log.json</tspan></text>
+<rect x="260" y="116" width="200" height="70" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360.0" y="145.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">자동이 바꾼 것만</tspan><tspan x="360.0" dy="21.0">되돌림</tspan></text>
+<rect x="496" y="116" width="200" height="70" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="596.0" y="145.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="596.0" dy="0" font-weight="700">되돌릴 수 없는 조치</tspan><tspan x="596.0" dy="21.0">따로 표시</tspan></text>
+<line x1="224" y1="151" x2="258" y2="151" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<line x1="460" y1="151" x2="494" y2="151" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="24" y="214" width="672" height="40" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="239.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">실습 5-2 · 알림 8건 일괄 처리 (drill.py · shift_report.py)</tspan></text>
+<rect x="24" y="266" width="156" height="70" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="102.0" y="295.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="102.0" dy="0" font-weight="700">맥락 붙이기</tspan><tspan x="102.0" dy="21.0">사용자 · IP 정보</tspan></text>
+<line x1="180" y1="301" x2="194" y2="301" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="196" y="266" width="156" height="70" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="274.0" y="295.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="274.0" dy="0" font-weight="700">경로 정하기</tspan><tspan x="274.0" dy="21.0">어떻게 처리할지</tspan></text>
+<line x1="352" y1="301" x2="366" y2="301" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="368" y="266" width="156" height="70" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="446.0" y="295.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="446.0" dy="0" font-weight="700">조치</tspan><tspan x="446.0" dy="21.0">잠금 · 차단 등</tspan></text>
+<line x1="524" y1="301" x2="538" y2="301" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="540" y="266" width="156" height="70" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="618.0" y="295.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="618.0" dy="0" font-weight="700">요약</tspan><tspan x="618.0" dy="21.0">사람이 확인할 건</tspan></text>
+<text x="24" y="366" font-size="15" text-anchor="start" fill="#666660">방화벽 연결이 끊긴 상황도 한 건 들어 있습니다.</text>
+</g>
+</svg>

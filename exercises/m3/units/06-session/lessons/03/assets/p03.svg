@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img">
+<title>find_stale 의 판단 순서: 퇴사 → 아니면 예외 만료 → 이유가 있으면 복사해 추가</title>
+<desc>권한을 한 건씩 꺼내 employed 가 False 이면 퇴사한 계정, 아니고 expires 가 있으며 만료 시각이 지금과 같거나 지났으면 만료된 예외로 적습니다. reason 이 비어 있으면 넘어가고, 적혔으면 복사본에 reason 을 적어 stale 에 넣습니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">이번 실습의 두 규칙</text>
+<rect x="20" y="50" width="340" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="190" y="76.62" font-size="15" fill="#292929" text-anchor="middle">현황의 권한을 한 건씩 꺼낸다</text>
+<rect x="20" y="120" width="340" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="190" y="146.62" font-size="15" fill="#292929" text-anchor="middle">employed 가 False 인가?</text>
+<rect x="20" y="190" width="340" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="190" y="216.12" font-size="15" fill="#292929" text-anchor="middle">(elif) expires 가 있고</text>
+<text x="190" y="237.12" font-size="15" fill="#292929" text-anchor="middle">만료 시각 &lt;= now 인가?</text>
+<rect x="20" y="280" width="340" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="190" y="306.62" font-size="15" fill="#292929" text-anchor="middle">reason 이 비어 있나?</text>
+<rect x="20" y="350" width="340" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="190" y="376.12" font-size="15" fill="#292929" text-anchor="middle">entry.copy() 에 reason 을 적고</text>
+<text x="190" y="397.12" font-size="15" fill="#292929" text-anchor="middle">stale 에 추가</text>
+<polyline points="190,94 190,117" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<polyline points="190,164 190,187" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="198" y="182" font-size="14" fill="#666660">아니다</text>
+<polyline points="190,254 190,277" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<polyline points="190,324 190,347" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="198" y="342" font-size="14" fill="#666660">아니다</text>
+<rect x="430" y="120" width="270" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="565" y="146.62" font-size="15" fill="#292929" text-anchor="middle">reason = "퇴사한 계정"</text>
+<polyline points="360,142 426,142" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="395" y="134" font-size="14" fill="#666660" text-anchor="middle">그렇다</text>
+<rect x="430" y="200" width="270" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="565" y="226.62" font-size="15" fill="#292929" text-anchor="middle">reason = "만료된 예외"</text>
+<polyline points="360,222 426,222" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="395" y="214" font-size="14" fill="#666660" text-anchor="middle">그렇다</text>
+<rect x="430" y="280" width="270" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="565" y="306.62" font-size="15" fill="#292929" text-anchor="middle">규칙에 안 걸림 → 다음 권한</text>
+<polyline points="360,302 426,302" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="395" y="294" font-size="14" fill="#666660" text-anchor="middle">그렇다</text>
+<text x="430" y="380" font-size="14" fill="#666660">둘 다 걸려도 elif 라</text>
+<text x="430" y="400" font-size="14" fill="#666660">이유는 하나만 적힌다</text>
+</g>
+</svg>

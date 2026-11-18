@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>실습 4-2 정답: 외부 IP 하나만 차단되고 120분이 되자 자동 해제됩니다</title>
+<desc>198.51.100.90 만 차단되고 만료 시각은 120분입니다. 192.0.2.10 은 허용 목록, 192.0.2.41 은 공유 IP 라 차단하지 않습니다. 시계가 120분이 되면 차단이 풀리고 조치 기록은 4건입니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 4-2 정답: 차단 요청 3건의 결과</text>
+<rect x="24" y="62" width="250" height="46" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="149.0" y="90.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="149.0" dy="0">INC-005 198.51.100.90</tspan></text>
+<rect x="290" y="62" width="406" height="46" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="493.0" y="90.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="493.0" dy="0">차단되지 않음 → 차단됨 (만료 120분)</tspan></text>
+<rect x="24" y="118" width="250" height="46" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="149.0" y="146.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="149.0" dy="0">INC-009 192.0.2.10</tspan></text>
+<rect x="290" y="118" width="406" height="46" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="493.0" y="146.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="493.0" dy="0">변경 없음 · 허용 목록 IP</tspan></text>
+<rect x="24" y="174" width="250" height="46" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="149.0" y="202.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="149.0" dy="0">INC-008 192.0.2.41</tspan></text>
+<rect x="290" y="174" width="406" height="46" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="493.0" y="202.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="493.0" dy="0">변경 없음 · 공유 IP, 담당자 승인 필요</tspan></text>
+<rect x="24" y="238" width="324" height="70" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="186.0" y="267.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="186.0" dy="0" font-weight="700">단계 3 · 시계 120분</tspan><tspan x="186.0" dy="21.0">end_time &lt;= clock → 자동 해제</tspan></text>
+<rect x="372" y="238" width="324" height="70" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="534.0" y="267.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="534.0" dy="0" font-weight="700">단계 4 결과</tspan><tspan x="534.0" dy="21.0">차단한 IP [] · 조치 기록 4 건</tspan></text>
+<line x1="348" y1="273" x2="370" y2="273" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="24" y="346" font-size="15" text-anchor="start" fill="#666660">공유 IP 를 차단했다면 junho 와 hana 두 사람이 모두 접속하지 못했습니다.</text>
+</g>
+</svg>

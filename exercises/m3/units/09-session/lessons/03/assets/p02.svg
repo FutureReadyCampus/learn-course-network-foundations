@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>판정을 서버로 만들면 주소만 알면 어떤 프로그램이든 같은 규칙으로 묻는다</title>
+<desc>import 로 쓰면 그 파일을 가진 프로그램만 판정할 수 있다. 서버로 만들면 여러 프로그램이 같은 주소로 묻는다. 서버를 켠 터미널 1은 요청을 기다리므로 요청은 터미널 2에서 보낸다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">import 로 쓸 때 vs 서버로 만들 때</text>
+<rect x="20" y="52" width="330" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="185" y="81.5" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">import 로 쓸 때</text>
+<text x="185" y="104.7" font-size="15" fill="#292929" text-anchor="middle">파일을 가진 프로그램만 판정</text>
+<rect x="20" y="140" width="150" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="95" y="164.5" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">프로그램 A</text>
+<text x="95" y="187.7" font-size="15" fill="#292929" text-anchor="middle">policy.py 있음</text>
+<rect x="200" y="140" width="150" height="60" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="275" y="164.5" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">프로그램 B</text>
+<text x="275" y="187.7" font-size="15" fill="#292929" text-anchor="middle">파일 없음</text>
+<rect x="370" y="52" width="330" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="535" y="81.5" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">서버로 만들 때</text>
+<text x="535" y="104.7" font-size="15" fill="#292929" text-anchor="middle">주소만 알면 같은 규칙으로</text>
+<rect x="370" y="140" width="100" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="420" y="171.2" font-size="15" fill="#292929" text-anchor="middle">프로그램 A</text>
+<rect x="485" y="140" width="100" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="535" y="171.2" font-size="15" fill="#292929" text-anchor="middle">프로그램 B</text>
+<rect x="600" y="140" width="100" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="650" y="171.2" font-size="15" fill="#292929" text-anchor="middle">프로그램 C</text>
+<polyline points="420,193 535,225" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="535,193 535,225" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="650,193 535,225" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="430" y="226" width="210" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="535" y="256.2" font-size="15" fill="#292929" text-anchor="middle">판정 서버 · 주소 하나</text>
+<rect x="20" y="300" width="330" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="185" y="326.5" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">터미널 1</text>
+<text x="185" y="349.7" font-size="15" fill="#292929" text-anchor="middle">서버를 켜 두고 요청을 기다림</text>
+<rect x="370" y="300" width="330" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="535" y="326.5" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">터미널 2</text>
+<text x="535" y="349.7" font-size="15" fill="#292929" text-anchor="middle">send_checks.py 로 요청 보내기</text>
+<polyline points="369,332 351,332" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+</g>
+</svg>

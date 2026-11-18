@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" role="img">
+<title>마무리 정리: git status 로 확인하고 add, commit, push 로 올린 뒤 브라우저에서 본다</title>
+<desc>올리기 전에 git status 로 .env 와 .venv 가 없는지 본다. git add, git commit, git push 순서로 올린다. 올린 뒤 브라우저에서 anomaly_detection 폴더와 파일을 확인한다.</desc>
+<defs><marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
+<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">마무리 정리 · 세 단계</text>
+<rect x="30" y="80" width="210" height="130" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="135" y="129.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">올릴 파일 확인</text>
+<text x="135" y="150.2" font-size="15" fill="#292929" text-anchor="middle">git status</text>
+<text x="135" y="171.2" font-size="15" fill="#292929" text-anchor="middle">.env · .venv 면 멈춤</text>
+<rect x="260" y="80" width="210" height="130" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="365" y="129.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">올리기</text>
+<text x="365" y="150.2" font-size="15" fill="#292929" text-anchor="middle">git add .</text>
+<text x="365" y="171.2" font-size="15" fill="#292929" text-anchor="middle">commit → push</text>
+<line x1="240" y1="145" x2="258" y2="145" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<rect x="490" y="80" width="210" height="130" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="595" y="129.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">올린 뒤</text>
+<text x="595" y="150.2" font-size="15" fill="#292929" text-anchor="middle">브라우저에서</text>
+<text x="595" y="171.2" font-size="15" fill="#292929" text-anchor="middle">anomaly_detection 확인</text>
+<line x1="470" y1="145" x2="488" y2="145" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<text x="30" y="260" font-size="15" fill="#666660">올리기 전에 올라갈 파일을 확인해야 비밀 키가 섞이지 않습니다.</text>
+</g>
+</svg>

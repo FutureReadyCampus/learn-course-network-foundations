@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img"><title>리포트는 네 키를 가진 딕셔너리이고, 후보는 식별 키로 구별한다</title><desc>리포트 딕셔너리는 generated_at, total, finding_count, findings 네 키를 가진다. 후보를 찾을 때는 user, permission, source 를 : 로 이은 식별 키를 써서 역할과 예외로 받은 같은 권한을 구별한다.</desc><defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">리포트의 모양과 식별 키</text>
+<rect x="20" y="56" width="330" height="200" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="36" y="84" font-size="16" fill="#292929" font-weight="700">report = {</text>
+<text x="56" y="116" font-size="15" fill="#292929">"generated_at":</text>
+<text x="200" y="116" font-size="15" fill="#1f7a4a">"2026-10-29 14:00"</text>
+<text x="56" y="146" font-size="15" fill="#292929">"total":</text>
+<text x="200" y="146" font-size="15" fill="#1f7a4a">14</text>
+<text x="56" y="176" font-size="15" fill="#292929">"finding_count":</text>
+<text x="200" y="176" font-size="15" fill="#1f7a4a">10</text>
+<text x="56" y="206" font-size="15" fill="#292929">"findings":</text>
+<text x="200" y="206" font-size="15" fill="#1f7a4a">[ {…}, {…} ]</text>
+<text x="36" y="240" font-size="16" fill="#292929" font-weight="700">}</text>
+<rect x="380" y="56" width="320" height="200" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
+<text x="540" y="119.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">후보 한 건</text>
+<text x="540" y="140.25" font-size="15" fill="#292929" text-anchor="middle">= 현황의 권한 한 건</text>
+<text x="540" y="161.25" font-size="15" fill="#292929" text-anchor="middle">+ "reasons" 키</text>
+<text x="540" y="182.25" font-size="14" fill="#666660" text-anchor="middle">reasons 는 이유 문자열 리스트</text>
+<text x="540" y="203.25" font-size="14" fill="#666660" text-anchor="middle">이유가 없으면 후보가 아니다</text>
+<line x1="354" y1="206" x2="376" y2="206" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<text x="20" y="290" font-size="16" fill="#292929" font-weight="700">식별 키 = user:permission:source</text>
+<rect x="20" y="304" width="330" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="185" y="335.25" font-size="15" fill="#292929" text-anchor="middle">dami · SALES:QUERY · 역할 sales</text>
+<rect x="20" y="364" width="330" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="185" y="395.25" font-size="15" fill="#292929" text-anchor="middle">dami · SALES:QUERY · 예외 3번</text>
+<rect x="380" y="304" width="320" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="2"/>
+<text x="540" y="335.25" font-size="15" fill="#292929" text-anchor="middle">"dami:SALES:QUERY:역할 sales"</text>
+<rect x="380" y="364" width="320" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="2"/>
+<text x="540" y="395.25" font-size="15" fill="#292929" text-anchor="middle">"dami:SALES:QUERY:예외 3번"</text>
+<line x1="354" y1="330" x2="376" y2="330" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="354" y1="390" x2="376" y2="390" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+</g>
+</svg>
