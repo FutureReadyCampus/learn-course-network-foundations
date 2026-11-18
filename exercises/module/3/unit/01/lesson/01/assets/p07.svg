@@ -1,50 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>첫 화면이 이렇게 보이면 성공이고, 막히면 Actions 탭에서 오류 줄을 읽습니다</title>
-<desc>왼쪽은 완성된 첫 화면입니다. 위쪽에 사이트 이름과 소개·홈 메뉴, 소개 문단, Module 3·4·5 각 10칸이 모두 회색인 나의 진행, 샘플 글 한 편이 있는 최신 글이 보입니다. 오른쪽은 확인할 세 가지와, 막힐 때 Actions 탭에서 가장 위 실행을 열어 빨간 ✗이면 오류 줄을 읽는 순서입니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>_config.yml의 다섯 줄을 내 것으로 고친 뒤 Settings의 Pages에서 사이트를 켭니다</title>
+<desc>왼쪽은 _config.yml에서 바꿀 줄 title, description, author, baseurl과 바꿀 내용이고 url은 비워 둔 그대로 둡니다. 오른쪽은 Settings → Pages → Deploy from a branch → main과 / (root) → Save → 1~2분 뒤 주소 열기 순서입니다. 주소는 https://&lt;내 아이디&gt;.github.io/&lt;저장소 이름&gt;/ 모양입니다.</desc>
 <defs>
 <marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
 </defs>
-<text x="20" y="30" font-size="19" font-weight="700" fill="#292929">첫 화면 확인과 막힐 때 볼 곳</text>
+<text x="20" y="30" font-size="19" font-weight="700" fill="#292929">이름·주소 바꾸고 Pages 켜기</text>
+
 <g font-size="15" fill="#292929">
-<rect x="20" y="50" width="400" height="344" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<path d="M20 90H420" stroke="#dededb"/>
-<text x="36" y="76" font-size="16" font-weight="700">사이트 이름</text>
-<text x="324" y="76">소개</text>
-<text x="372" y="76">홈</text>
-<text x="36" y="116" font-size="14" fill="#666660">소개 문단</text>
-<rect x="36" y="126" width="360" height="10" rx="5" fill="#f1f1ef"/>
-<rect x="36" y="144" width="280" height="10" rx="5" fill="#f1f1ef"/>
-<text x="36" y="184" font-weight="700">나의 진행</text>
-<text x="36" y="212" font-size="14">Module 3</text>
-<text x="36" y="242" font-size="14">Module 4</text>
-<text x="36" y="272" font-size="14">Module 5</text>
-<g fill="#dededb">
-<rect x="112" y="196" width="22" height="22" rx="3"/><rect x="138" y="196" width="22" height="22" rx="3"/><rect x="164" y="196" width="22" height="22" rx="3"/><rect x="190" y="196" width="22" height="22" rx="3"/><rect x="216" y="196" width="22" height="22" rx="3"/><rect x="242" y="196" width="22" height="22" rx="3"/><rect x="268" y="196" width="22" height="22" rx="3"/><rect x="294" y="196" width="22" height="22" rx="3"/><rect x="320" y="196" width="22" height="22" rx="3"/><rect x="346" y="196" width="22" height="22" rx="3"/>
-<rect x="112" y="226" width="22" height="22" rx="3"/><rect x="138" y="226" width="22" height="22" rx="3"/><rect x="164" y="226" width="22" height="22" rx="3"/><rect x="190" y="226" width="22" height="22" rx="3"/><rect x="216" y="226" width="22" height="22" rx="3"/><rect x="242" y="226" width="22" height="22" rx="3"/><rect x="268" y="226" width="22" height="22" rx="3"/><rect x="294" y="226" width="22" height="22" rx="3"/><rect x="320" y="226" width="22" height="22" rx="3"/><rect x="346" y="226" width="22" height="22" rx="3"/>
-<rect x="112" y="256" width="22" height="22" rx="3"/><rect x="138" y="256" width="22" height="22" rx="3"/><rect x="164" y="256" width="22" height="22" rx="3"/><rect x="190" y="256" width="22" height="22" rx="3"/><rect x="216" y="256" width="22" height="22" rx="3"/><rect x="242" y="256" width="22" height="22" rx="3"/><rect x="268" y="256" width="22" height="22" rx="3"/><rect x="294" y="256" width="22" height="22" rx="3"/><rect x="320" y="256" width="22" height="22" rx="3"/><rect x="346" y="256" width="22" height="22" rx="3"/>
+<rect x="20" y="52" width="340" height="236" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="20" y="52" width="340" height="40" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="36" y="78" font-size="16" font-weight="700">_config.yml 에서 바꿀 줄</text>
+<text x="36" y="124" font-weight="700">title</text><text x="150" y="124">사이트 이름</text>
+<text x="36" y="160" font-weight="700">description</text><text x="150" y="160">한 줄 소개</text>
+<text x="36" y="196" font-weight="700">author</text><text x="150" y="196">내 이름</text>
+<text x="36" y="232" font-weight="700">url</text><text x="150" y="232" fill="#666660">비워 둔 그대로</text>
+<text x="36" y="268" font-weight="700">baseurl</text><text x="150" y="268">/저장소 이름</text>
+
+<rect x="20" y="308" width="340" height="80" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="36" y="336" font-size="16" font-weight="700">열리는 주소</text>
+<text x="36" y="362">https://&lt;내 아이디&gt;.github.io/</text>
+<text x="36" y="381">&lt;저장소 이름&gt;/</text>
+
+<rect x="400" y="52" width="300" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="416" y="78">1. Settings 탭</text>
+<rect x="400" y="108" width="300" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="416" y="134">2. 왼쪽 메뉴 Pages</text>
+<rect x="400" y="164" width="300" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="416" y="190">3. Source: Deploy from a branch</text>
+<rect x="400" y="220" width="300" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="416" y="246">4. Branch: main · / (root)</text>
+<rect x="400" y="276" width="300" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="416" y="302">5. Save</text>
+<rect x="400" y="332" width="300" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="416" y="358">6. 1~2분 뒤 주소 열기</text>
 </g>
-<text x="36" y="314" font-weight="700">최신 글</text>
-<rect x="36" y="326" width="360" height="40" rx="6" fill="#f1f1ef"/>
-<text x="50" y="351">샘플 글 한 편</text>
-<text x="382" y="351" font-size="14" fill="#666660" text-anchor="end">sample: true</text>
-<text x="36" y="386" font-size="14" fill="#666660">Unit 1~10 칸 모두 회색</text>
-<rect x="440" y="50" width="260" height="190" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="456" y="76" font-size="16" font-weight="700">이렇게 보이면 성공</text>
-<text x="456" y="104">① Settings → Pages에</text>
-<text x="476" y="124">Your site is live at</text>
-<text x="456" y="154">② 주소를 열면</text>
-<text x="476" y="174">왼쪽 같은 화면</text>
-<text x="456" y="204">③ 위쪽 소개를 누르면</text>
-<text x="476" y="224">about.md 내용</text>
-<rect x="440" y="256" width="260" height="138" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="456" y="282" font-size="16" font-weight="700">막힐 때</text>
-<text x="456" y="308">Actions 탭</text>
-<text x="476" y="332">가장 위 실행</text>
-<text x="476" y="356">빨간 ✗이면 눌러서</text>
-<text x="476" y="378">오류 줄 읽기</text>
-</g>
-<g stroke="#666660" stroke-width="1.5" marker-end="url(#a-p07)">
-<line x1="462" y1="314" x2="470" y2="326"/>
-<line x1="462" y1="338" x2="470" y2="350"/>
+
+<g stroke="#666660" stroke-width="2" fill="none" marker-end="url(#a-p07)">
+<path d="M550 93V105"/>
+<path d="M550 149V161"/>
+<path d="M550 205V217"/>
+<path d="M550 261V273"/>
+<path d="M550 317V329"/>
+<path d="M398 352H364"/>
 </g>
 </svg>
