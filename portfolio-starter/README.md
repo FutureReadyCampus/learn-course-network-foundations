@@ -15,7 +15,6 @@ Module 3~5 실습에서 쓴 파이썬 코드와 고민을 기록하는 포트폴
 | `_templates/` | 글 틀 |
 | `code/` | 실습 코드 |
 | `assets/images/` | 글에 넣는 이미지 |
-| `prompts.md` | 쓰기 프롬프트 |
 | `check_publish.py` | 공개 전 점검 스크립트 |
 
 ## 꼭 바꿔야 하는 3곳

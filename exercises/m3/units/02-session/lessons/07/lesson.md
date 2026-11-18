@@ -91,4 +91,4 @@ source:
 
 ```
 
-> **내 기록 남기기** — 이번 Unit에서 쓴 코드와 고민을 내 GitHub 페이지에 글로 남겨 보세요. 쓰기 질문은 스타터의 `prompts.md` 에 있는 「Module 3 · Unit 2. 역할 부여·회수와 기간제 예외 권한」 항목에서 고릅니다. [안내 보기](__SITE__/exercises/portfolio/)
+> **내 기록 남기기** — 이번 Unit에서 쓴 코드와 고민을 내 GitHub 페이지에 글로 남겨 보세요. 쓰기 질문은 [쓰기 프롬프트](__SITE__/exercises/portfolio/prompts/)의 「Module 3 · Unit 2. 역할 부여·회수와 기간제 예외 권한」 항목에서 고릅니다. [안내 보기](__SITE__/exercises/portfolio/)

@@ -14,8 +14,28 @@
         <div class="topbar-actions"><nav class="topbar-nav" aria-label="과정 선택"><a href="__SITE__/">Foundations</a><a href="__SITE__/exercises/">Exercises</a></nav></div>
       </header>
       <main class="hub">
+        __NAV__
         <article class="net-prose portfolio-doc">__BODY__</article>
       </main>
     </div>
+    <script>
+      // Every code box on these pages gets a copy button (the course pages themselves block copying; here learners need it).
+      document.querySelectorAll(".portfolio-doc pre").forEach(function (pre) {
+        var wrap = document.createElement("div"); wrap.className = "code-wrap";
+        pre.parentNode.insertBefore(wrap, pre); wrap.appendChild(pre);
+        var button = document.createElement("button"); button.type = "button"; button.className = "copy-btn"; button.textContent = "복사";
+        button.addEventListener("click", function () {
+          var text = pre.innerText;
+          var done = function () { button.textContent = "복사됨"; setTimeout(function () { button.textContent = "복사"; }, 1500); };
+          var fallback = function () {
+            var area = document.createElement("textarea"); area.value = text; document.body.appendChild(area); area.select();
+            try { document.execCommand("copy"); done(); } catch (e) { button.textContent = "직접 선택해 복사하세요"; }
+            document.body.removeChild(area);
+          };
+          if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, fallback); else fallback();
+        });
+        wrap.appendChild(button);
+      });
+    </script>
   </body>
 </html>

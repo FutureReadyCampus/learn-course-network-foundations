@@ -88,4 +88,4 @@ source:
   - 쓸 내용: ① 한 번의 실패가 제외되는 과정 ② 목록에 없는 경로를 요청하면 탐지하지 못한다는 점
   - 답:
 
-> **내 기록 남기기** — 이번 Unit에서 쓴 코드와 고민을 내 GitHub 페이지에 글로 남겨 보세요. 쓰기 질문은 스타터의 `prompts.md` 에 있는 「Module 4 · Unit 6. 거절 요청·SaaS 이상 사용·경로 스캔 찾기」 항목에서 고릅니다. [안내 보기](__SITE__/exercises/portfolio/)
+> **내 기록 남기기** — 이번 Unit에서 쓴 코드와 고민을 내 GitHub 페이지에 글로 남겨 보세요. 쓰기 질문은 [쓰기 프롬프트](__SITE__/exercises/portfolio/prompts/)의 「Module 4 · Unit 6. 거절 요청·SaaS 이상 사용·경로 스캔 찾기」 항목에서 고릅니다. [안내 보기](__SITE__/exercises/portfolio/)

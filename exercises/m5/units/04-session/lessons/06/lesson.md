@@ -88,4 +88,4 @@ source:
   - 쓸 내용: ① `gaeun` 이 잠금도 세션 종료도 받지 않은 이유(5번 조건과 단계 2 의 줄) ② 잠기지 않은 계정의 세션을 끊으면 안 되는 이유
   - 답:
 
-> **내 기록 남기기** — 이번 Unit에서 쓴 코드와 고민을 내 GitHub 페이지에 글로 남겨 보세요. 쓰기 질문은 스타터의 `prompts.md` 에 있는 「Module 5 · Unit 4. 계정 잠금·IP 차단·세션 종료」 항목에서 고릅니다. [안내 보기](__SITE__/exercises/portfolio/)
+> **내 기록 남기기** — 이번 Unit에서 쓴 코드와 고민을 내 GitHub 페이지에 글로 남겨 보세요. 쓰기 질문은 [쓰기 프롬프트](__SITE__/exercises/portfolio/prompts/)의 「Module 5 · Unit 4. 계정 잠금·IP 차단·세션 종료」 항목에서 고릅니다. [안내 보기](__SITE__/exercises/portfolio/)

@@ -88,4 +88,4 @@ source:
   - 쓸 내용: ① 되돌릴 수 없는 것 ② jiwoo 에게 안내할 것 ③ dami 가 잠겨 있어야 하는 이유
   - 답:
 
-> **내 기록 남기기** — 이번 Unit에서 쓴 코드와 고민을 내 GitHub 페이지에 글로 남겨 보세요. 쓰기 질문은 스타터의 `prompts.md` 에 있는 「Module 5 · Unit 8. 초동 대응 리포트와 승인 게이트」 항목에서 고릅니다. [안내 보기](__SITE__/exercises/portfolio/)
+> **내 기록 남기기** — 이번 Unit에서 쓴 코드와 고민을 내 GitHub 페이지에 글로 남겨 보세요. 쓰기 질문은 [쓰기 프롬프트](__SITE__/exercises/portfolio/prompts/)의 「Module 5 · Unit 8. 초동 대응 리포트와 승인 게이트」 항목에서 고릅니다. [안내 보기](__SITE__/exercises/portfolio/)

@@ -88,4 +88,4 @@ source:
   - 쓸 내용: ① `[알림 실패]` 가 3번 나온 이유 ② 3번 모두 실패한 알림이 누락되지 않게 추가로 해야 할 일
   - 답:
 
-> **내 기록 남기기** — 이번 Unit에서 쓴 코드와 고민을 내 GitHub 페이지에 글로 남겨 보세요. 쓰기 질문은 스타터의 `prompts.md` 에 있는 「Module 5 · Unit 6. 티켓 만들기와 알림 전파」 항목에서 고릅니다. [안내 보기](__SITE__/exercises/portfolio/)
+> **내 기록 남기기** — 이번 Unit에서 쓴 코드와 고민을 내 GitHub 페이지에 글로 남겨 보세요. 쓰기 질문은 [쓰기 프롬프트](__SITE__/exercises/portfolio/prompts/)의 「Module 5 · Unit 6. 티켓 만들기와 알림 전파」 항목에서 고릅니다. [안내 보기](__SITE__/exercises/portfolio/)

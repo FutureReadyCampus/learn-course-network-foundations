@@ -19,6 +19,78 @@ from build_course import ROOT, build
 SITE = ROOT / "site"
 
 
+PORTFOLIO_FILES = [  # (path in portfolio-starter/, level, what it is) - order = the order learners create them
+    ("_config.yml", "필수", "사이트 이름과 주소 설정입니다. 붙여 넣은 뒤 `# ← 내 것으로 바꾸기` 줄을 내 것으로 고칩니다."),
+    ("index.md", "필수", "첫 화면입니다. 최신 글 목록이 자동으로 나옵니다."),
+    ("about.md", "필수", "소개 페이지입니다. 빈칸 안내 문구를 내 소개로 바꿉니다."),
+    ("_posts/2026-01-01-hello.md", "필수", "샘플 글입니다. 내 첫 글을 쓸 때는 파일 이름의 날짜와 제목(영문 권장)을 바꿔 새 파일로 만듭니다."),
+    (".gitignore", "권장", "비밀키 파일이 실수로 올라가지 않게 막아 줍니다."),
+    ("_templates/post-practice.md", "권장", "실습 한 개를 글 한 편으로 남기는 기본 글 틀입니다. 복사해서 `_posts/` 아래 새 글로 씁니다."),
+    ("_templates/post-short.md", "선택", "5분 안에 쓰는 짧은 글 틀입니다."),
+    ("_templates/post-stuck.md", "선택", "막혔던 일을 남기는 글 틀입니다."),
+    ("code/README.md", "선택", "실습 코드를 두는 폴더 안내입니다. 이 파일을 만들면 `code/` 폴더가 함께 만들어집니다."),
+    ("code/hello_example.py", "선택", "파이썬 예시 코드 한 개입니다."),
+    ("check_publish.py", "권장", "공개 전 점검 스크립트입니다. 내 컴퓨터에서 `python check_publish.py` 로 돌립니다."),
+    ("README.md", "선택", "저장소 첫 화면 설명입니다."),
+]
+
+
+def _inline_code(text: str) -> str:
+    return re.sub(r"`([^`]+)`", lambda m: f"<code>{html_escape(m.group(1))}</code>", html_escape(text, quote=False))
+
+
+def _portfolio_slug(path: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", path.lower()).strip("-")
+
+
+def build_portfolio(target: Path, baseurl: str) -> None:
+    from markdown_it import MarkdownIt
+
+    md = MarkdownIt("commonmark", {"html": True}).enable("table")
+    template = (SITE / "portfolio.html").read_text(encoding="utf-8")
+    here = f"{baseurl}/exercises/portfolio"
+    nav_items = [("", "가이드"), ("files/", "파일 모음"), ("prompts/", "쓰기 프롬프트")]
+
+    def page(sub: str, title: str, body: str) -> None:
+        nav = "".join(
+            f'<a href="{here}/{href}"' + (' aria-current="page"' if href == sub else "") + f">{label}</a>"
+            for href, label in nav_items
+        )
+        html = (template.replace("__SITE__", baseurl).replace("__TITLE__", html_escape(title))
+                .replace("__NAV__", f'<nav class="portfolio-nav" aria-label="내 기록 남기기">{nav}</nav>').replace("__BODY__", body))
+        out = target / sub
+        out.mkdir(parents=True, exist_ok=True)
+        (out / "index.html").write_text(html, encoding="utf-8")
+
+    guide_text = (ROOT / "portfolio" / "index.md").read_text(encoding="utf-8")
+    title = (re.search(r"^# (.+)$", guide_text, re.M) or [None, "내 기록 남기기"])[1]
+    page("", title, md.render(guide_text))
+    for svg in (ROOT / "portfolio").glob("*.svg"):
+        shutil.copyfile(svg, target / svg.name)
+
+    starter = ROOT / "portfolio-starter"
+    toc, sections = [], []
+    for path, level, note in PORTFOLIO_FILES:
+        source = starter / path
+        if not source.is_file():
+            raise FileNotFoundError(source)
+        slug = _portfolio_slug(path)
+        toc.append(f'<li><a href="#{slug}"><code>{html_escape(path)}</code></a> <span class="file-level">{level}</span></li>')
+        sections.append(
+            f'<section class="file-card" id="{slug}"><h2><code>{html_escape(path)}</code> <span class="file-level">{level}</span></h2>'
+            f"<p>{_inline_code(note)}</p><pre><code>{html_escape(source.read_text(encoding='utf-8'))}</code></pre></section>"
+        )
+    intro = ("<h1>파일 모음</h1><p>내 저장소에 만들 파일의 내용입니다. 각 상자의 <strong>복사</strong> 버튼을 누르고, "
+             "GitHub 저장소 화면에서 <strong>Add file → Create new file</strong>로 같은 이름의 파일을 만들어 붙여 넣으면 됩니다. "
+             "<code>_posts/…</code>처럼 폴더가 붙은 이름은 이름 칸에 그대로 입력하면 폴더도 함께 만들어집니다.</p>")
+    page("files/", "파일 모음", intro + f'<ol class="file-toc">{"".join(toc)}</ol>' + "".join(sections))
+
+    prompts = starter / "prompts.md"
+    if prompts.is_file():
+        page("prompts/", "쓰기 프롬프트", md.render(prompts.read_text(encoding="utf-8")))
+
+
+
 def emit(course: dict, output: Path, baseurl: str, revision: str, dispatch: dict | None = None, site: str = "", no_copy: bool = False) -> None:
     output.mkdir(parents=True)
     for lesson in course["lessons"]:
@@ -120,22 +192,10 @@ def main() -> None:
         page = (SITE / "exercises.html").read_text(encoding="utf-8").replace("__SITE__", baseurl).replace("__CARDS__", "".join(cards))
         (output / "exercises" / "index.html").write_text(page, encoding="utf-8")
 
-    # Learner portfolio guide: portfolio/index.md -> /exercises/portfolio/, plus the starter as a zip.
+    # Learner portfolio: guide + copy-paste file collection + writing prompts under /exercises/portfolio/.
     guide = ROOT / "portfolio" / "index.md"
     if guide.is_file():
-        from markdown_it import MarkdownIt
-
-        text = guide.read_text(encoding="utf-8")
-        title = (re.search(r"^# (.+)$", text, re.M) or [None, "내 기록 남기기"])[1]
-        body = MarkdownIt("commonmark", {"html": True}).enable("table").render(text)
-        page = (SITE / "portfolio.html").read_text(encoding="utf-8").replace("__SITE__", baseurl).replace("__TITLE__", html_escape(title)).replace("__BODY__", body)
-        (output / "exercises" / "portfolio").mkdir(parents=True, exist_ok=True)
-        (output / "exercises" / "portfolio" / "index.html").write_text(page, encoding="utf-8")
-        for svg in (ROOT / "portfolio").glob("*.svg"):
-            shutil.copyfile(svg, output / "exercises" / "portfolio" / svg.name)
-        starter = ROOT / "portfolio-starter"
-        if starter.is_dir():
-            shutil.make_archive(str(output / "exercises" / "portfolio" / "portfolio-starter"), "zip", root_dir=starter)
+        build_portfolio(output / "exercises" / "portfolio", baseurl)
 
     print(f"Built static reader: {len(course['units'])} Units, {len(course['lessons'])} Lessons at {output}")
 
