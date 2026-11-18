@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
 <title>인사팀 리스트와 매트릭스를 users.json 과 roles.json 두 파일로 옮긴다</title>
-<desc>받은 계정 리스트와 권한 매트릭스를 보고 두 JSON 파일을 직접 쓰고 json.tool 로 확인한다. 끝나면 보고서 (가)~(다)를 쓴다.</desc>
+<desc>위 자료의 계정 리스트와 권한 매트릭스를 보고 VS Code 에서 New File 로 두 JSON 파일을 만들어 직접 쓰고 json.tool 로 확인한다. 끝나면 보고서 (가)~(다)를 쓴다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 1-1 · 표를 파일 두 개로 옮긴다</text>
 <rect x="20" y="56" width="200" height="80" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="120" y="79.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">받은 자료 ②</text>
+<text x="120" y="79.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">자료 ②</text>
 <text x="120" y="101.2" font-size="15" fill="#292929" text-anchor="middle">인사팀 계정 리스트</text>
 <text x="120" y="123.2" font-size="15" fill="#292929" text-anchor="middle">6명</text>
 <rect x="20" y="156" width="200" height="80" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
@@ -13,7 +13,7 @@
 <text x="120" y="212.2" font-size="15" fill="#292929" text-anchor="middle">역할 5개 × 권한 5칸</text>
 <rect x="270" y="96" width="180" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="360" y="129.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">직접 쓰기</text>
-<text x="360" y="151.2" font-size="15" fill="#292929" text-anchor="middle">VS Code 또는 vim</text>
+<text x="360" y="151.2" font-size="15" fill="#292929" text-anchor="middle">New File 로 만들기</text>
 <text x="360" y="173.2" font-size="15" fill="#292929" text-anchor="middle">json.tool 로 확인</text>
 <rect x="500" y="56" width="200" height="80" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="600" y="90.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">config/users.json</text>

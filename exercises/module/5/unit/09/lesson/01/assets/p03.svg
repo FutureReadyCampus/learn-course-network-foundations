@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 392" role="img">
 <title>Unit 9 오류가 나면: 없는 파일 이름을 보고 어디서 가져올지 고른다</title>
-<desc>No module named 뒤의 이름이 Unit 8 파일이면 complete_files.md에서, Unit 5 파일이면 이전 파일 코드 상자에서 만듭니다. pandas가 없으면 가상환경에서 pip install pandas를 입력합니다.</desc>
+<desc>No module named 뒤의 이름이 Unit 8 파일이면 Unit 8 레슨의 코드 상자에서, Unit 5 파일이면 이전 파일 코드 상자에서 만듭니다. pandas가 없으면 가상환경에서 pip install pandas를 입력합니다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p03r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p03g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p03b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">오류가 나면: 증상 → 뜻 → 고치기</tspan></text>
@@ -14,7 +14,7 @@
 <text x="360.0" y="104.7" font-size="14" text-anchor="middle" fill="#292929"><tspan x="360.0">Unit 8 파일이</tspan><tspan x="360.0" dy="19.6">이 폴더에 없음</tspan></text>
 <line x1="462" y1="110" x2="488" y2="110" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
 <rect x="490" y="78" width="210" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="595.0" y="104.7" font-size="14" text-anchor="middle" fill="#292929"><tspan x="595.0">complete_files.md</tspan><tspan x="595.0" dy="19.6">에서 복사</tspan></text>
+<text x="595.0" y="104.7" font-size="14" text-anchor="middle" fill="#292929"><tspan x="595.0">Unit 8 레슨의</tspan><tspan x="595.0" dy="19.6">코드 상자에서 복사</tspan></text>
 <rect x="20" y="162" width="210" height="64" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
 <text x="125.0" y="188.7" font-size="14" text-anchor="middle" fill="#292929"><tspan x="125.0">No module named</tspan><tspan x="125.0" dy="19.6">'rollback'</tspan></text>
 <line x1="232" y1="194" x2="258" y2="194" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>

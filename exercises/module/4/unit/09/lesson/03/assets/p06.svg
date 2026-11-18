@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 409" role="img">
 <title>실습 9-2는 범위 확인, 새 파일 적용, 출력 읽기, 로그 저장, 정리 순서로 한다</title>
-<desc>실습 9-1 서버의 PORTS 를 보고, compose.secure.yaml 을 만들어 -f 로 적용한 뒤 출력과 PORTS 를 읽는다. 이어서 404 요청을 만들어 세고 저장하고, down 뒤에도 로그가 남는지 본다.</desc>
+<desc>실습 9-1 서버의 PORTS 를 보고, compose.secure.yaml 을 New File 로 만들어 붙여 넣고 -f 로 적용한 뒤 출력과 PORTS 를 읽는다. 이어서 404 요청을 만들어 세고 저장하고, down 뒤에도 로그가 남는지 본다. 마지막에 report_u9.md 의 실습 9-2 칸을 채운다.</desc>
 <defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 9-2 순서</text>
@@ -10,7 +10,7 @@
 <text x="118" y="133.875" font-size="15" text-anchor="middle" fill="#292929">다 0.0.0.0:</text>
 <rect x="254" y="50" width="212" height="112.45" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="360" y="89.995" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">2. 준비</text>
-<text x="360" y="112.125" font-size="15" text-anchor="middle" fill="#292929">mkdir logs · touch</text>
+<text x="360" y="112.125" font-size="15" text-anchor="middle" fill="#292929">mkdir logs · New File</text>
 <text x="360" y="133.875" font-size="15" text-anchor="middle" fill="#292929">compose.secure.yaml</text>
 <line x1="227" y1="106.225" x2="251" y2="106.225" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
 <rect x="496" y="50" width="212" height="112.45" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
@@ -45,8 +45,9 @@
 <text x="360" y="378.15" font-size="15" text-anchor="middle" fill="#292929">남는다</text>
 <line x1="227" y1="350.5" x2="251" y2="350.5" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
 <rect x="496" y="305.15" width="212" height="90.7" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="602" y="345.145" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">9. 보고서</text>
-<text x="602" y="367.275" font-size="15" text-anchor="middle" fill="#292929">실습 9-2 (가) (나) (다)</text>
+<text x="602" y="334.27" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">9. 보고서</text>
+<text x="602" y="356.4" font-size="15" text-anchor="middle" fill="#292929">report_u9.md 실습 9-2</text>
+<text x="602" y="378.15" font-size="15" text-anchor="middle" fill="#292929">(가) (나) (다)</text>
 <line x1="469" y1="350.5" x2="493" y2="350.5" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
 </g>
 </svg>

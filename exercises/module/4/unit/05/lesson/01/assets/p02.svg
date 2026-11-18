@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
 <title>anomaly_detection 폴더에 baseline_traffic.csv 를 만들고 8줄인지 확인한다</title>
-<desc>security-agent-toolkit 안의 anomaly_detection 폴더에 Unit 4 파일 두 개와 Unit 5 안내·보고서가 있어야 합니다. baseline_traffic.csv 를 새로 만들고 줄 수가 헤더 포함 8인지 확인합니다.</desc>
+<desc>security-agent-toolkit 안의 anomaly_detection 폴더에 Unit 4 파일 두 개가 있어야 합니다. baseline_traffic.csv 를 New File 로 만들어 붙여 넣고 줄 수가 헤더 포함 8인지 확인합니다. 보고서 report_u5.md 는 「보고서 쓰기」 레슨에서 만듭니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">폴더 준비: baseline_traffic.csv 를 만든다</text>
@@ -11,8 +11,8 @@
 <text x="424" y="146" font-size="14" text-anchor="end" fill="#666660">Unit 4</text>
 <text x="84" y="176" font-size="15" text-anchor="start" fill="#292929">normalized_events.json</text>
 <text x="424" y="176" font-size="14" text-anchor="end" fill="#666660">Unit 4</text>
-<text x="84" y="206" font-size="15" text-anchor="start" fill="#292929">Unit 5 안내 · 보고서</text>
-<text x="424" y="206" font-size="14" text-anchor="end" fill="#666660">다운로드에서 옮김</text>
+<text x="84" y="206" font-size="15" text-anchor="start" fill="#292929">report_u5.md</text>
+<text x="424" y="206" font-size="14" text-anchor="end" fill="#666660">「보고서 쓰기」에서</text>
 <text x="84" y="236" font-size="15" text-anchor="start" fill="#292929" font-weight="700">baseline_traffic.csv</text>
 <text x="424" y="236" font-size="14" text-anchor="end" fill="#9a6200">새로 만듦</text>
 <rect x="84" y="270" width="340" height="100" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
@@ -20,7 +20,7 @@
 <rect x="470" y="52" width="230" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="585.0" y="79" font-size="14" text-anchor="middle" fill="#292929"><tspan x="585.0" dy="0" font-weight="700">폴더로 이동</tspan><tspan x="585.0" dy="19">cd anomaly_detection</tspan></text>
 <rect x="470" y="138" width="230" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="585.0" y="165" font-size="14" text-anchor="middle" fill="#292929"><tspan x="585.0" dy="0" font-weight="700">받은 두 파일 옮기고</tspan><tspan x="585.0" dy="19">보고서 이름 칸 바꾸기</tspan></text>
+<text x="585.0" y="165" font-size="14" text-anchor="middle" fill="#292929"><tspan x="585.0" dy="0" font-weight="700">파일 만드는 법</tspan><tspan x="585.0" dy="19">New File › 이름 › 붙여 넣기</tspan></text>
 <polyline points="585,118 585,135" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
 <rect x="470" y="224" width="230" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="585.0" y="251" font-size="14" text-anchor="middle" fill="#292929"><tspan x="585.0" dy="0" font-weight="700">CSV 만들기</tspan><tspan x="585.0" dy="19">baseline_traffic.csv</tspan></text>

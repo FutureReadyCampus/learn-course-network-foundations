@@ -19,7 +19,7 @@
 <rect x="64" y="284" width="280" height="36" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="204.0" y="307.2" font-size="15" fill="#292929" text-anchor="middle">saas_events.csv (15줄)</text>
 <rect x="64" y="342" width="280" height="36" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="204.0" y="365.2" font-size="15" fill="#292929" text-anchor="middle">Unit 2 안내 · 보고서 (받은 파일)</text>
+<text x="204.0" y="365.2" font-size="15" fill="#292929" text-anchor="middle">report_u2.md (보고서 쓰기에서)</text>
 <rect x="380" y="46" width="316" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="394" y="73.2" font-size="15" fill="#292929">access_sample.log → 30</text>
 <rect x="380" y="100" width="316" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
