@@ -24,13 +24,13 @@
     : src;
   // Exercise readers: code boxes cannot be selected or copied, so learners type the code themselves.
   const lockCode = (root) => {
-    // Code with "← 아래를 직접 씁니다" blanks is a scaffold: copying it is fine, the learner still writes the blanks.
+    // Python code is copyable (most boxes are scaffolds with blanks the learner still fills in); other boxes stay locked.
     const [open, boxes] = [[], []];
-    root.querySelectorAll("pre").forEach((box) => (box.textContent.includes("직접 씁니다") ? open : boxes).push(box));
+    root.querySelectorAll("pre").forEach((box) => (box.querySelector("code.language-python") ? open : boxes).push(box));
     boxes.forEach((box) => box.classList.add("no-copy"));
     const addNote = (box, text) => { const note = document.createElement("p"); note.className = "no-copy-note"; note.textContent = text; box.before(note); };
     if (boxes.length) addNote(boxes[0], "코드 상자는 복사할 수 없습니다. 눈으로 읽으면서 직접 입력해 보세요.");
-    if (open.length) addNote(open[0], "빈칸이 있는 코드는 복사해서 쓰고, 「직접 씁니다」 아래 빈칸만 직접 채워 보세요.");
+    if (open.length) addNote(open[0], "Python 코드는 복사해서 쓸 수 있습니다. 「직접 씁니다」 아래 빈칸은 직접 채워 보세요.");
   };
   if (window.NETWORK_NO_COPY && !window.__noCopyBound) {
     window.__noCopyBound = true;
