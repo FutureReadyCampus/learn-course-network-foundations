@@ -506,6 +506,20 @@ def iconize(html: str) -> str:
     return out
 
 
+def expand_includes(text: str) -> str:
+    """`<!-- include: portfolio-starter/... -->` (or portfolio-prompts/) becomes a copyable code box with that file's content."""
+    from html import escape
+
+    def box(match: "re.Match[str]") -> str:
+        rel = Path(match.group(1).strip())
+        source = ROOT / rel
+        if rel.parts[0] not in ("portfolio-starter", "portfolio-prompts") or ".." in rel.parts or not source.is_file():
+            raise FileNotFoundError(f"include not found: {match.group(1)}")
+        return f'<pre class="copyable"><code>{escape(source.read_text(encoding="utf-8"), quote=False)}</code></pre>'
+
+    return re.sub(r"(?m)^<!--\s*include:\s*(\S+)\s*-->\s*$", box, text)
+
+
 def markdown_pages(path: Path) -> list[dict]:
     """Exercise Lessons: each `## ` heading (outside code fences) is a Page rendered from full Markdown."""
     from markdown_it import MarkdownIt
@@ -540,7 +554,7 @@ def markdown_pages(path: Path) -> list[dict]:
             return f'src="/api/v1/network-course-assets/{repository_asset_path(asset)}"'
         return re.sub(r'src="assets/([^"]+)"', fix, html)
 
-    return [{"title": title, "paragraphs": [], "html": figure(i) + inline_figures(iconize(md.render("\n".join(body)))), "terms": [], "questions": []}
+    return [{"title": title, "paragraphs": [], "html": figure(i) + inline_figures(iconize(md.render(expand_includes("\n".join(body))))), "terms": [], "questions": []}
             for i, (title, body) in enumerate(sections, 1)]
 
 

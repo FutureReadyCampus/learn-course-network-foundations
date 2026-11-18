@@ -72,4 +72,4 @@ source:
   - 쓸 내용: ① `.env` · `.venv` 가 보였는지 ② 보였다면 한 조치
   - 답:
 
-> **내 기록 남기기** — 이번 Unit에서 쓴 코드와 고민을 내 GitHub 페이지에 글로 남겨 보세요. 쓰기 질문은 [쓰기 프롬프트](__SITE__/exercises/portfolio/prompts/)의 「Module 5 · Unit 5. 자동 조치 되돌리기와 근무 요약」 항목에서 고릅니다. [안내 보기](__SITE__/exercises/portfolio/)
+> **내 기록 남기기** — 이번 Unit의 코드와 고민을 글로 남겨 보세요. 글감 질문: ① 해제되지 않고 계속 잠겨 있는 계정은 왜 그랬나요? 되돌림 조건 중 하나가 없었다면 어떤 일이 생겼을까요? ② 조치를 되돌릴 수 있도록 `before`/`after` 를 기록한 이유는 무엇인가요? 기록이 없었다면 어떻게 되돌렸을까요? 준비가 안 되어 있다면 [Module 3 Unit 1의 「내 기록 남기기」](__SITE__/exercises/module/3/unit/1/lesson/1/page/3)에서 시작합니다.

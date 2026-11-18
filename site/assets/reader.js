@@ -27,7 +27,7 @@
   const lockCode = (root) => {
     // Python code is copyable (most boxes are scaffolds with blanks the learner still fills in); other boxes stay locked.
     const [open, boxes] = [[], []];
-    root.querySelectorAll("pre").forEach((box) => (box.querySelector("code.language-python") ? open : boxes).push(box));
+    root.querySelectorAll("pre").forEach((box) => (box.classList.contains("copyable") || box.querySelector("code.language-python") ? open : boxes).push(box));
     boxes.forEach((box) => box.classList.add("no-copy"));
     const addNote = (box, text) => { const note = document.createElement("p"); note.className = "no-copy-note"; note.textContent = text; box.before(note); };
     if (boxes.length) addNote(boxes[0], "코드 상자는 복사할 수 없습니다. 눈으로 읽으면서 직접 입력해 보세요.");
@@ -45,7 +45,9 @@
       box.before(wrap);
       wrap.append(box, button);
     });
-    if (open.length) addNote(open[0], "Python 코드는 복사해서 쓸 수 있습니다. 「직접 씁니다」 아래 빈칸은 직접 채워 보세요.");
+    if (open.length) addNote(open[0], open.every((box) => box.classList.contains("copyable"))
+      ? "복사 버튼을 눌러 내용을 복사하고, 내 저장소에 같은 이름의 파일로 붙여 넣으세요."
+      : "Python 코드는 복사해서 쓸 수 있습니다. 「직접 씁니다」 아래 빈칸은 직접 채워 보세요.");
   };
   if (window.NETWORK_NO_COPY && !window.__noCopyBound) {
     document.documentElement.style.setProperty("--measure", "912px");  // exercise pages: 20% wider than the 760px reading width
