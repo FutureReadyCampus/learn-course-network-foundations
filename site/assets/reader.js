@@ -50,7 +50,6 @@
       : "Python 코드는 복사해서 쓸 수 있습니다. 「직접 씁니다」 아래 빈칸은 직접 채워 보세요.");
   };
   if (window.NETWORK_NO_COPY && !window.__noCopyBound) {
-    document.documentElement.style.setProperty("--measure", "912px");  // exercise pages: 20% wider than the 760px reading width
     window.__noCopyBound = true;
     const inLocked = (node) => (node && (node.nodeType === 1 ? node : node.parentElement))?.closest?.(".no-copy");
     const selectionLocked = () => { const sel = getSelection(); return !!sel && (inLocked(sel.anchorNode) || inLocked(sel.focusNode)); };
