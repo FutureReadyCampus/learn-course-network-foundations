@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>실습 8-3 정답: 실행 7건, 대기 1건이고 판정이 바뀐 것은 junho SALES:QUERY 1건</title>
+<desc>승인 대기인 junho 의 예외 2번만 실행하지 않습니다. 실행한 7건 중 6건은 회수 전에도 이미 거부라 판정이 그대로입니다. 이력 8건을 저장하고 다시 읽으며, 승인 대기 검사를 빼면 실행 8건이 됩니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">실습 8-3 정답 — 실행 7 · 대기 1, 바뀐 판정 1건</text>
+<rect x="20" y="60" width="140" height="90" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="90" y="99.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">계획</text>
+<text x="90" y="120.8" font-size="15" fill="#292929" text-anchor="middle">8건</text>
+<path d="M160 95 L208 73" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<path d="M160 115 L208 129" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="210" y="50" width="230" height="46" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="325" y="78.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실행 7건</text>
+<rect x="210" y="106" width="230" height="46" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="325" y="134.2" font-size="15" fill="#292929" text-anchor="middle">대기 1건 · junho 예외 2번</text>
+<path d="M440 70 L488 70" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<path d="M440 76 L488 140" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="490" y="40" width="210" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="595" y="64.8" font-size="15" fill="#292929" text-anchor="middle">바뀜 1건 (허용 → 거부)</text>
+<text x="595" y="85.8" font-size="15" fill="#292929" text-anchor="middle">junho SALES:QUERY</text>
+<rect x="490" y="110" width="210" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="595" y="134.8" font-size="15" fill="#292929" text-anchor="middle">그대로 6건</text>
+<text x="595" y="155.8" font-size="15" fill="#292929" text-anchor="middle">회수 전에도 이미 거부</text>
+<path d="M325 152 L325 198" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="20" y="200" width="680" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="233.2" font-size="15" fill="#292929" text-anchor="middle">이력 8건 저장 → 다시 읽은 건수 8건 (revocation_log.json)</text>
+<rect x="20" y="280" width="680" height="56" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="360" y="313.2" font-size="15" fill="#292929" text-anchor="middle">승인 대기 검사를 빼면 실행 8건 · 대기 0건 (junho 예외 2번까지 지워짐)</text>
+<rect x="20" y="356" width="680" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="360" y="385.2" font-size="15" fill="#292929" text-anchor="middle">감사에 답하려면 추가할 키: revoke_reason · approver · approved_at</text>
+</g>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>soar_response 폴더에 Unit 6 파일과 status_events.json 을 두고 터미널 두 개를 연다</title>
+<desc>왼쪽은 soar_response 폴더 안에 있어야 할 파일이다. status_events.json 은 이번에 새로 만든다. 오른쪽 터미널 1 은 확인과 실행용으로 7 8 이 나와야 하고, 터미널 2 는 알림 서버를 켜 둔다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">폴더 준비 · 파일과 터미널</text>
+<rect x="20" y="56" width="360" height="350" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="40" y="88" font-size="16" font-weight="bold" fill="#292929">soar_response/</text>
+<text x="62" y="120" font-size="15" fill="#292929">ticketing.py</text>
+<text x="62" y="151" font-size="15" fill="#292929">ticket_merge.py</text>
+<text x="62" y="182" font-size="15" fill="#292929">ticket_notice.py</text>
+<text x="62" y="213" font-size="15" fill="#292929">tickets_unit09.json</text>
+<rect x="50" y="224" width="318" height="28" rx="5" fill="#e4f3ea" stroke="#1f7a4a"/>
+<text x="230" y="244" font-size="14" font-weight="bold" fill="#1f7a4a">← 새로 만든다</text>
+<text x="62" y="244" font-size="15" fill="#292929">status_events.json</text>
+<text x="62" y="275" font-size="15" fill="#292929">incident.py · notifier.py</text>
+<text x="62" y="306" font-size="15" fill="#292929">alert_server.py</text>
+<text x="62" y="337" font-size="15" fill="#292929">config/escalation_rules.json</text>
+<text x="62" y="368" font-size="15" fill="#292929">Unit 7 안내 · 보고서</text>
+<rect x="410" y="56" width="290" height="160" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="555.0" y="109.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">터미널 1 · 확인과 실행</text>
+<text x="555.0" y="130.8" font-size="15" fill="#292929" text-anchor="middle">cd soar_response</text>
+<text x="555.0" y="151.8" font-size="15" fill="#292929" text-anchor="middle">ls</text>
+<text x="555.0" y="172.8" font-size="15" fill="#292929" text-anchor="middle">파일 수 확인 → 7 8</text>
+<rect x="410" y="246" width="290" height="160" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="555.0" y="299.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">터미널 2 · 알림 서버</text>
+<text x="555.0" y="320.8" font-size="15" fill="#292929" text-anchor="middle">python alert_server.py</text>
+<text x="555.0" y="341.8" font-size="15" fill="#292929" text-anchor="middle">Running on</text>
+<text x="555.0" y="362.8" font-size="15" fill="#292929" text-anchor="middle">http://127.0.0.1:5001</text>
+</svg>

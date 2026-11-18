@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 291" role="img">
+<title>docker run 의 옵션 네 개가 compose.yaml 의 어느 줄로 가는지 짝지었다</title>
+<desc>docker run 의 --name, 이미지 이름, -p, -d 가 compose.yaml 에서 각각 서비스 이름, image:, ports:, up -d 의 -d 로 옮겨진다. 오른쪽 칸은 그 뜻이다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">docker run 옵션 → compose.yaml 위치</text>
+<text x="87" y="66" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">docker run 에서</text>
+<text x="306" y="66" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">compose.yaml 에서</text>
+<text x="575" y="66" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">뜻</text>
+<rect x="12" y="80" width="150" height="41.75" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="87" y="106.05" font-size="15" text-anchor="middle" fill="#292929">--name web-run</text>
+<rect x="188" y="80" width="236" height="41.75" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="306" y="106.05" font-size="15" text-anchor="middle" fill="#292929">web1: · web2: (서비스 이름)</text>
+<line x1="165" y1="100.875" x2="185" y2="100.875" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="450" y="80" width="250" height="41.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="575" y="106.05" font-size="15" text-anchor="middle" fill="#292929">서버를 구분하는 이름</text>
+<line x1="427" y1="100.875" x2="447" y2="100.875" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="12" y="131.75" width="150" height="41.75" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="87" y="157.8" font-size="15" text-anchor="middle" fill="#292929">nginx:1.28</text>
+<rect x="188" y="131.75" width="236" height="41.75" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="306" y="157.8" font-size="15" text-anchor="middle" fill="#292929">image: nginx:1.28</text>
+<line x1="165" y1="152.625" x2="185" y2="152.625" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="450" y="131.75" width="250" height="41.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="575" y="157.8" font-size="15" text-anchor="middle" fill="#292929">서버를 켜는 데 쓰는 이미지</text>
+<line x1="427" y1="152.625" x2="447" y2="152.625" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="12" y="183.5" width="150" height="41.75" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="87" y="209.55" font-size="15" text-anchor="middle" fill="#292929">-p 8080:80</text>
+<rect x="188" y="183.5" width="236" height="41.75" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="306" y="209.55" font-size="15" text-anchor="middle" fill="#292929">ports: 아래 - "8080:80"</text>
+<line x1="165" y1="204.375" x2="185" y2="204.375" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="450" y="183.5" width="250" height="41.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="575" y="209.55" font-size="15" text-anchor="middle" fill="#292929">내 컴퓨터 8080번 → 서버 80번</text>
+<line x1="427" y1="204.375" x2="447" y2="204.375" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="12" y="235.25" width="150" height="41.75" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="87" y="261.3" font-size="15" text-anchor="middle" fill="#292929">-d</text>
+<rect x="188" y="235.25" width="236" height="41.75" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="306" y="261.3" font-size="15" text-anchor="middle" fill="#292929">docker compose up -d 의 -d</text>
+<line x1="165" y1="256.125" x2="185" y2="256.125" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="450" y="235.25" width="250" height="41.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="575" y="261.3" font-size="15" text-anchor="middle" fill="#292929">백그라운드에서 실행</text>
+<line x1="427" y1="256.125" x2="447" y2="256.125" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+</g>
+</svg>

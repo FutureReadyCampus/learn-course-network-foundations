@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 350" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>앞 실습 파일 완성본 세 개는 Unit 1의 rbac.py 와 Unit 2의 exception_policy.py 를 불러 쓴다</title>
+<desc>앞 실습 파일을 못 만들었을 때 req_create.py, req_review.py, req_grant.py 완성본을 그대로 만들어 씁니다. req_create.py 는 USERS 를, req_grant.py 는 check_permission 과 EXCEPTIONS 를 불러옵니다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">앞 실습 파일 완성본이 불러 쓰는 것</text>
+<rect x="30" y="56" width="300" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="180" y="82.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">rbac.py (Unit 1)</text>
+<text x="180" y="103.1" font-size="15" fill="#292929" text-anchor="middle">USERS · check_permission</text>
+<rect x="420" y="56" width="280" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="560" y="82.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">exception_policy.py (Unit 2)</text>
+<text x="560" y="103.1" font-size="15" fill="#292929" text-anchor="middle">EXCEPTIONS</text>
+<line x1="120" y1="120" x2="120" y2="186" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p05)"/>
+<text x="130" y="160" font-size="14" fill="#666660" text-anchor="start">USERS</text>
+<line x1="300" y1="120" x2="560" y2="186" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p05)"/>
+<text x="430" y="136" font-size="14" fill="#666660" text-anchor="middle">check_permission</text>
+<line x1="640" y1="120" x2="640" y2="186" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p05)"/>
+<text x="630" y="160" font-size="14" fill="#666660" text-anchor="end">EXCEPTIONS</text>
+<rect x="30" y="188" width="200" height="92" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="130" y="216.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">req_create.py</text>
+<text x="130" y="238.8" font-size="15" fill="#292929" text-anchor="middle">실습 4-1</text>
+<text x="130" y="260.8" font-size="15" fill="#292929" text-anchor="middle">create_request</text>
+<rect x="260" y="188" width="200" height="92" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360" y="208.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">req_review.py</text>
+<text x="360" y="228.4" font-size="15" fill="#292929" text-anchor="middle">실습 4-2</text>
+<text x="360" y="248.4" font-size="15" fill="#292929" text-anchor="middle">approve_request</text>
+<text x="360" y="268.4" font-size="15" fill="#292929" text-anchor="middle">reject_request</text>
+<rect x="490" y="188" width="210" height="92" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="595" y="216.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">req_grant.py</text>
+<text x="595" y="238.8" font-size="15" fill="#292929" text-anchor="middle">실습 4-3</text>
+<text x="595" y="260.8" font-size="15" fill="#292929" text-anchor="middle">grant_request</text>
+<rect x="30" y="298" width="670" height="40" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="365" y="322.6" font-size="15" fill="#292929" text-anchor="middle">다음 실습으로 넘어가야 할 때 그대로 만들어 씁니다</text>
+</svg>

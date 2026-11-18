@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
+<title>실습 5-1: 요청서와 지금 시각을 받아 기한을 초과한 요청서를 골라낸다</title>
+<desc>요청서 여섯 장과 지금 시각 14:00 이 check_sla_breach 에 들어갑니다. 함수는 config/sla.json 의 4시간을 기준으로 검토 중인 요청서만 따져, 기한을 초과한 요청서에 wait_hours 를 적어 돌려줍니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">실습 5-1 · 무엇을 만드나</text>
+<rect x="29" y="70" width="190" height="120" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="124" y="113.928" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">입력</text>
+<text x="124" y="135.32" font-size="15" fill="#292929" text-anchor="middle">요청서 여섯 장</text>
+<text x="124" y="156.32" font-size="15" fill="#292929" text-anchor="middle">지금 시각 14:00</text>
+<rect x="255" y="70" width="210" height="120" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="113.928" font-size="16" fill="#9a6200" text-anchor="middle" font-weight="700">check_sla_breach</text>
+<text x="360" y="135.32" font-size="15" fill="#292929" text-anchor="middle">검토 중이고</text>
+<text x="360" y="156.32" font-size="15" fill="#292929" text-anchor="middle">4시간을 초과했나?</text>
+<polyline points="222,130 251,130" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="501" y="70" width="190" height="120" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="596" y="113.928" font-size="16" fill="#1f7a4a" text-anchor="middle" font-weight="700">출력</text>
+<text x="596" y="135.32" font-size="15" fill="#292929" text-anchor="middle">기한 초과 요청서</text>
+<text x="596" y="156.32" font-size="15" fill="#292929" text-anchor="middle">+ wait_hours</text>
+<polyline points="468,130 497,130" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="255" y="236" width="210" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="262.512" font-size="14" fill="#292929" text-anchor="middle">config/sla.json</text>
+<text x="360" y="282.112" font-size="14" fill="#292929" text-anchor="middle">{"hours": 4}</text>
+<polyline points="360,234 360,194" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="501" y="236" width="190" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="596" y="262.82" font-size="15" fill="#292929" text-anchor="middle">보고서 (가)~(다)</text>
+<text x="596" y="282.812" font-size="14" fill="#666660" text-anchor="middle">출력을 읽고 답하기</text>
+<polyline points="596,190 596,232" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<text x="30" y="262" font-size="14" fill="#666660">SLA 시간은 코드에 쓰지 않고</text>
+<text x="30" y="284" font-size="14" fill="#666660">설정 파일에서 읽는다</text>
+</g>
+</svg>

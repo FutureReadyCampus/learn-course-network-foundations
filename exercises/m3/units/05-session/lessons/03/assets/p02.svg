@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
+<title>프로그램 안의 요청서는 끄면 사라지므로 파일로 남겨 이력을 이어 본다</title>
+<desc>파일로 남기지 않으면 요청서는 프로그램이 끝날 때 사라집니다. requests.json 으로 저장하면 처리 기록이 남아 다음 날에도 볼 수 있습니다. 상태별 건수는 매일 아침 보는 숫자입니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">왜 요청 이력을 파일로 남기는가</text>
+<rect x="20" y="60" width="300" height="170" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="170" y="118.428" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">파일로 남기지 않으면</text>
+<text x="170" y="139.82" font-size="15" fill="#292929" text-anchor="middle">요청서는 프로그램 안에만 있다</text>
+<text x="170" y="160.82" font-size="15" fill="#292929" text-anchor="middle">프로그램을 끄면 사라진다</text>
+<text x="170" y="181.82" font-size="15" fill="#292929" text-anchor="middle">다음 날 볼 수 없다</text>
+<rect x="400" y="60" width="300" height="170" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="550" y="119.128" font-size="16" fill="#1f7a4a" text-anchor="middle" font-weight="700">requests.json 에 저장하면</text>
+<text x="550" y="140.52" font-size="15" fill="#292929" text-anchor="middle">처리된 기록(이력)이 남는다</text>
+<text x="550" y="161.52" font-size="15" fill="#292929" text-anchor="middle">다음 날에도 이어 본다</text>
+<text x="550" y="181.512" font-size="14" fill="#666660" text-anchor="middle">이력 = 어떻게 처리됐는지 기록</text>
+<polyline points="320,145 396,145" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="360" y="132" font-size="14" fill="#666660" text-anchor="middle">저장</text>
+<rect x="20" y="254" width="680" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="282.62" font-size="15" fill="#292929" text-anchor="middle">상태별 건수 = 매일 아침 한눈에 보는 숫자</text>
+</g>
+</svg>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 616" role="img">
+<title>plan_revocation 은 회수 대상마다 회수 방법을 고르고 build_plan 으로 계획을 만든다</title>
+<desc>plans 와 role_counts 를 먼저 만들고, 회수 대상을 하나씩 꺼내 사용자 정보 info 를 꺼냅니다. source 에 「예외」가 있으면 예외 삭제, 퇴사한 사용자면 역할 해제, 아니면 역할에서 권한 빼기로 method 를 정한 뒤 build_plan 으로 계획을 만들어 plans 에 추가합니다. 모든 회수 대상을 꺼낸 뒤 plans 를 리턴합니다.</desc>
+<defs><marker id="a-f01-0802" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#292929">
+<rect x="56" y="14" width="420" height="30" rx="4" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="266.0" y="34" text-anchor="middle" font-weight="700">plan_revocation(findings, users, roles)</text>
+<rect x="56" y="66" width="420" height="30" rx="4" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="266.0" y="86" text-anchor="middle">plans = []  (계획을 담을 빈 리스트)</text>
+<polyline points="266.0,44 266.0,65" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0802)"/>
+<rect x="56" y="118" width="420" height="48" rx="4" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="266.0" y="138" text-anchor="middle">role_counts = 역할별 사용자 수 딕셔너리</text>
+<text x="266.0" y="156" text-anchor="middle">(반복 전에 한 번만 만든다)</text>
+<polyline points="266.0,96 266.0,117" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0802)"/>
+<rect x="56" y="188" width="420" height="48" rx="4" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="266.0" y="208" text-anchor="middle">회수 대상을 하나씩 꺼내</text>
+<text x="266.0" y="226" text-anchor="middle">그 사용자의 정보(info)를 꺼낸다</text>
+<polyline points="266.0,166 266.0,187" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0802)"/>
+<rect x="56" y="258" width="420" height="30" rx="14" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="266.0" y="278" text-anchor="middle">source 에 「예외」가 있나?</text>
+<polyline points="266.0,236 266.0,257" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0802)"/>
+<rect x="56" y="310" width="420" height="48" rx="14" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="266.0" y="330" text-anchor="middle">info["employed"] 가 거짓</text>
+<text x="266.0" y="348" text-anchor="middle">(퇴사한 사용자)인가?</text>
+<polyline points="266.0,288 266.0,309" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0802)"/>
+<text x="256.0" y="304.0" text-anchor="end" fill="#666660">없다</text>
+<rect x="56" y="406" width="420" height="66" rx="4" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="266.0" y="426" text-anchor="middle">build_plan(finding, method, …) 으로</text>
+<text x="266.0" y="444" text-anchor="middle">지울 대상(target)과 영향(impact)을 정한</text>
+<text x="266.0" y="462" text-anchor="middle">계획 한 건을 만든다 (영향 계산은 직접 씀)</text>
+<polyline points="266.0,358 266.0,405" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0802)"/>
+<text x="276.0" y="397" text-anchor="start" fill="#666660">아니다 · method = 「역할에서 권한 빼기」</text>
+<rect x="56" y="494" width="420" height="30" rx="4" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="266.0" y="514" text-anchor="middle">계획을 plans 에 추가한다</text>
+<polyline points="266.0,472 266.0,493" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0802)"/>
+<rect x="56" y="572" width="420" height="30" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="266.0" y="592" text-anchor="middle">plans 를 리턴한다</text>
+<polyline points="266.0,524 266.0,571" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0802)"/>
+<text x="276.0" y="563" text-anchor="start" fill="#666660">모든 회수 대상을 꺼낸 뒤</text>
+<rect x="520" y="249.0" width="170" height="48" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="605.0" y="269.0" text-anchor="middle">method =</text>
+<text x="605.0" y="287.0" text-anchor="middle">「예외 삭제」</text>
+<polyline points="476,273.0 519,273.0" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0802)"/>
+<text x="498.0" y="266.0" text-anchor="middle" fill="#666660">있다</text>
+<polyline points="690,273.0 706,273.0 706,373 269.0,373" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0802)"/>
+<rect x="520" y="310.0" width="170" height="48" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="605.0" y="330.0" text-anchor="middle">method =</text>
+<text x="605.0" y="348.0" text-anchor="middle">「역할 해제」</text>
+<polyline points="476,334.0 519,334.0" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0802)"/>
+<text x="498.0" y="327.0" text-anchor="middle" fill="#666660">그렇다</text>
+<polyline points="690,334.0 706,334.0 706,373 269.0,373" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0802)"/>
+<polyline points="266.0,539 30,539 30,212.0 55,212.0" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0802)"/>
+<text x="22" y="375.5" text-anchor="middle" fill="#666660" transform="rotate(-90 22 375.5)">다음 회수 대상으로 (반복)</text>
+<circle cx="266.0" cy="539" r="3" fill="#666660"/>
+</g></svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>이번 Unit에서 실습 1-1, 실습 1-2, 마무리를 마쳤고 Unit 2부터 실제 대응을 연결한다</title>
+<desc>이번 Unit의 확인 세 가지와 다음 단계를 보여 준다. 수동 처리로 번거로움을 겪고, 실행기로 5건을 처리하고, 깃허브에 올렸다. Unit 2부터는 실제로 동작하는 대응을 연결한다.</desc>
+<defs><marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">이번 Unit 마무리</text>
+<rect x="20.0" y="52" width="206.7" height="140" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="95.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="123.35" dy="0.0" font-weight="700">실습 1-1</tspan><tspan x="123.35" dy="21.0">플레이북을 쓰고</tspan><tspan x="123.35" dy="21.0">두 건 수동 처리</tspan><tspan x="123.35" dy="21.0">→ 번거로움 겪기</tspan></text>
+<rect x="256.7" y="52" width="206.7" height="140" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="95.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.04999999999995" dy="0.0" font-weight="700">실습 1-2</tspan><tspan x="360.04999999999995" dy="21.0">실행기로 5건 처리</tspan><tspan x="360.04999999999995" dy="21.0">승인 필요한 건 멈춤</tspan><tspan x="360.04999999999995" dy="21.0">감사 기록 읽기</tspan></text>
+<line x1="229.7" y1="122.0" x2="252.7" y2="122.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<rect x="493.3" y="52" width="206.7" height="140" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text y="95.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="596.65" dy="0.0" font-weight="700">마무리</tspan><tspan x="596.65" dy="21.0">Module 5 첫날</tspan><tspan x="596.65" dy="21.0">파일과 보고서를</tspan><tspan x="596.65" dy="21.0">깃허브에 올리기</tspan></text>
+<line x1="466.3" y1="122.0" x2="489.3" y2="122.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<line x1="360" y1="196" x2="360" y2="226" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<rect x="20" y="230" width="680" height="100" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text y="264.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0" font-weight="700">다음: Unit 2 부터</tspan><tspan x="360.0" dy="21.0">연습용 시스템 대신 실제로 동작하는 대응(계정 잠금 · 접근 차단 등)을 연결</tspan><tspan x="360.0" dy="21.0">오늘 정한 승인 값과 감사 기록의 모양은 그때도 그대로 쓰인다</tspan></text>
+</svg>

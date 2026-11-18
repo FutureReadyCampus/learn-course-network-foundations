@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img">
+<title>실습 1-3 정답은 허용 7건, seoyeon 정산 조회 거부 8건, 쓰이지 않은 권한 7줄이다</title>
+<desc>거부된 8건은 모두 seoyeon 의 SETTLE:QUERY 이고 이유는 권한 없음이다. 쓰이지 않은 7줄 중 한 예로 finance 의 SALES:QUERY 는 줄이고 account_admin 의 ACCOUNT:CHANGE 는 남기며 auditor 는 빼고 고른다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 1-3 정답: 거부 8건과 쓰이지 않은 권한 7줄</text>
+<rect x="20" y="52" width="330" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="185" y="79.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">허용 7</text>
+<text x="185" y="98.9" font-size="14" fill="#292929" text-anchor="middle">batch-night 1 · junho 3 · seoyeon 3</text>
+<rect x="20" y="132" width="330" height="116" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="185" y="165.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">거부 8 · 이유는 권한 없음</text>
+<text x="185" y="184.9" font-size="14" fill="#292929" text-anchor="middle">모두 seoyeon 의 SETTLE:QUERY</text>
+<text x="185" y="204.9" font-size="14" fill="#292929" text-anchor="middle">3 · 4 · 5번 (새벽)</text>
+<text x="185" y="224.9" font-size="14" fill="#292929" text-anchor="middle">12 · 14 ~ 17번 (낮)</text>
+<rect x="20" y="264" width="330" height="116" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="185" y="297.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">점수 판단과 RBAC</text>
+<text x="185" y="316.9" font-size="14" fill="#292929" text-anchor="middle">점수 판단은 기기 · 시각을 본다</text>
+<text x="185" y="336.9" font-size="14" fill="#292929" text-anchor="middle">RBAC 는 역할의 권한을 본다</text>
+<text x="185" y="356.9" font-size="14" fill="#292929" text-anchor="middle">그래서 낮의 기록도 막았다</text>
+<text x="394" y="70" font-size="16" fill="#292929" font-weight="700">쓰이지 않음 7줄</text>
+<rect x="380" y="82" width="320" height="30" rx="6" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="392" y="102" font-size="14" fill="#292929">sales</text>
+<text x="530" y="102" font-size="14" fill="#292929">SALES:CHANGE</text>
+<rect x="380" y="116" width="320" height="30" rx="6" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="392" y="136" font-size="14" fill="#292929">account_admin</text>
+<text x="530" y="136" font-size="14" fill="#292929">ACCOUNT:QUERY</text>
+<rect x="380" y="150" width="320" height="30" rx="6" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="392" y="170" font-size="14" fill="#292929">account_admin</text>
+<text x="530" y="170" font-size="14" fill="#292929">ACCOUNT:CHANGE</text>
+<rect x="380" y="184" width="320" height="30" rx="6" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="392" y="204" font-size="14" fill="#292929">finance</text>
+<text x="530" y="204" font-size="14" fill="#292929">SALES:QUERY</text>
+<rect x="380" y="218" width="320" height="30" rx="6" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="392" y="238" font-size="14" fill="#292929">auditor</text>
+<text x="530" y="238" font-size="14" fill="#292929">SALES:QUERY</text>
+<rect x="380" y="252" width="320" height="30" rx="6" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="392" y="272" font-size="14" fill="#292929">auditor</text>
+<text x="530" y="272" font-size="14" fill="#292929">SETTLE:QUERY</text>
+<rect x="380" y="286" width="320" height="30" rx="6" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="392" y="306" font-size="14" fill="#292929">auditor</text>
+<text x="530" y="306" font-size="14" fill="#292929">ACCOUNT:QUERY</text>
+<rect x="380" y="336" width="18" height="18" rx="3" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="406" y="351" font-size="14" fill="#292929">줄일 것 (한 예) · 재무 일에 근거 없음</text>
+<rect x="380" y="366" width="18" height="18" rx="3" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="406" y="381" font-size="14" fill="#292929">남길 것 (한 예) · 계정 관리자가 맡은 일</text>
+<rect x="380" y="396" width="18" height="18" rx="3" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="406" y="411" font-size="14" fill="#292929">auditor · 사용자가 없어 빼고 고름</text>
+</g>
+</svg>

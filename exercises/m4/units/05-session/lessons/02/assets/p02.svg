@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
+<title>초까지 다른 시각에서 초를 버리면 같은 분끼리 묶어 셀 수 있다</title>
+<desc>Unit 4 규칙은 같은 주소의 실패 횟수를, 이번 규칙은 짧은 시간의 요청 수를 봅니다. 09:12:03, 09:12:06, 09:12:15 는 초까지 보면 모두 다르지만 초를 버리면 09:12:00 으로 같아집니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">왜 초를 버리고 분 단위로 세는가</text>
+<rect x="20" y="52" width="330" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="185.0" y="79" font-size="15" text-anchor="middle" fill="#292929"><tspan x="185.0" dy="0" font-weight="700">Unit 4 로그인 실패 규칙</tspan><tspan x="185.0" dy="20">같은 주소가 몇 번 실패했나</tspan></text>
+<rect x="370" y="52" width="330" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="535.0" y="79" font-size="15" text-anchor="middle" fill="#292929"><tspan x="535.0" dy="0" font-weight="700">이번 Unit 트래픽 급증 규칙</tspan><tspan x="535.0" dy="20">짧은 시간에 요청이 몇 개인가</tspan></text>
+<rect x="60" y="150" width="150" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="135.0" y="174" font-size="15" text-anchor="middle" fill="#292929"><tspan x="135.0" dy="0">09:12:03</tspan></text>
+<polyline points="213,169 446,222" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="60" y="202" width="150" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="135.0" y="226" font-size="15" text-anchor="middle" fill="#292929"><tspan x="135.0" dy="0">09:12:06</tspan></text>
+<polyline points="213,221 446,222" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="60" y="254" width="150" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="135.0" y="278" font-size="15" text-anchor="middle" fill="#292929"><tspan x="135.0" dy="0">09:12:15</tspan></text>
+<polyline points="213,273 446,222" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<text x="330" y="150" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">초를 버림</text>
+<rect x="450" y="182" width="210" height="80" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="555.0" y="217" font-size="15" text-anchor="middle" fill="#292929"><tspan x="555.0" dy="0" font-weight="700">09:12:00</tspan><tspan x="555.0" dy="20">같은 분으로 묶임</tspan></text>
+<text x="135" y="326" font-size="14" text-anchor="middle" fill="#666660">초까지 보면 모두 다른 시각</text>
+<text x="555" y="326" font-size="14" text-anchor="middle" fill="#666660">같은 분끼리 그룹화해 센다</text>
+</g>
+</svg>

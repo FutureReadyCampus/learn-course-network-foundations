@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>Unit 8 실습 세 개의 입력 · 프로그램 · 결과</title>
+<desc>실습 8-1은 티켓과 조치 기록으로 리포트를, 실습 8-2는 조치 요청을 세 갈래로 나누고, 실습 8-3은 오탐 조치를 되돌립니다. 모든 실습이 Unit 1의 incident.py를 씁니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p01r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p01g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p01b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">Unit 8에서 만드는 세 가지</tspan></text>
+<rect x="20" y="54" width="200" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="120.0" y="80.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="120.0" font-weight="bold">실습 8-1 · 리포트</tspan></text>
+<rect x="20" y="114" width="200" height="62" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="120.0" y="139.3" font-size="15" text-anchor="middle" fill="#292929"><tspan x="120.0">티켓 7장</tspan><tspan x="120.0" dy="21.0">+ 조치 기록 10건</tspan></text>
+<line x1="120" y1="178" x2="120" y2="200" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="20" y="202" width="200" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="120.0" y="230.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="120.0">report.py</tspan></text>
+<line x1="120" y1="252" x2="120" y2="274" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="20" y="276" width="200" height="62" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="120.0" y="301.3" font-size="15" text-anchor="middle" fill="#292929"><tspan x="120.0">초동 대응</tspan><tspan x="120.0" dy="21.0">리포트 파일</tspan></text>
+<rect x="260" y="54" width="200" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="80.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" font-weight="bold">실습 8-2 · 승인 게이트</tspan></text>
+<rect x="260" y="114" width="200" height="62" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="139.3" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0">조치 요청 8건</tspan><tspan x="360.0" dy="21.0">+ 승인 기준 설정 파일</tspan></text>
+<line x1="360" y1="178" x2="360" y2="200" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="260" y="202" width="200" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360.0" y="230.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0">approval_gate.py</tspan></text>
+<line x1="360" y1="252" x2="360" y2="274" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="260" y="276" width="200" height="62" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360.0" y="301.3" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0">자동 · 승인 필요</tspan><tspan x="360.0" dy="21.0">· 차단 금지</tspan></text>
+<rect x="500" y="54" width="200" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="600.0" y="80.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="600.0" font-weight="bold">실습 8-3 · 오탐 롤백</tspan></text>
+<rect x="500" y="114" width="200" height="62" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="600.0" y="139.3" font-size="15" text-anchor="middle" fill="#292929"><tspan x="600.0">오탐 신고 2건</tspan><tspan x="600.0" dy="21.0">+ 조치 기록 7건</tspan></text>
+<line x1="600" y1="178" x2="600" y2="200" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="500" y="202" width="200" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="600.0" y="230.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="600.0">false_positive.py</tspan></text>
+<line x1="600" y1="252" x2="600" y2="274" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="500" y="276" width="200" height="62" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="600.0" y="301.3" font-size="15" text-anchor="middle" fill="#292929"><tspan x="600.0">영향 확인 → 롤백</tspan><tspan x="600.0" dy="21.0">→ 복구 확인</tspan></text>
+<text x="360" y="366" font-size="14" text-anchor="middle" fill="#666660"><tspan x="360">모든 실습: Unit 1의 incident.py · 실습 8-3: Unit 5의 rollback.py도 씀</tspan></text>
+</g>
+</svg>

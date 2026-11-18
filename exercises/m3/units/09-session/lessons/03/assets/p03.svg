@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>요청 주소는 서버 주소, 경로 /check, ? 뒤의 이름=값 다섯 개로 이루어진다</title>
+<desc>요청 주소는 http://127.0.0.1:5001 에 경로 /check 를 붙이고 ? 뒤에 user, resource, action, network, time 을 이어 붙인다. 응답 상태 코드는 200 허용, 403 거부, 400 잘못된 요청이다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">요청 주소의 구조와 상태 코드</text>
+<rect x="20" y="52" width="210" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="125" y="80" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">http://127.0.0.1:5001</text>
+<text x="125" y="120" font-size="14" fill="#666660" text-anchor="middle">서버 주소 · 포트 5001</text>
+<rect x="236" y="52" width="90" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="281" y="80" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">/check</text>
+<text x="281" y="120" font-size="14" fill="#666660" text-anchor="middle">경로</text>
+<rect x="332" y="52" width="368" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="516" y="80" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">?user=seoyeon&amp;network=office…</text>
+<text x="516" y="120" font-size="14" fill="#666660" text-anchor="middle">이름=값 다섯 개를 &amp; 로</text>
+<text x="20" y="152" font-size="15" fill="#292929">이름: user · resource · action · network · time(예: 2026-10-30T10:00)</text>
+<rect x="20" y="176" width="90" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="65" y="207" font-size="18" fill="#292929" text-anchor="middle" font-weight="700">200</text>
+<rect x="120" y="176" width="200" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="132" y="206" font-size="15" fill="#292929">성공</text>
+<rect x="330" y="176" width="370" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="342" y="206" font-size="15" fill="#292929">판정이 허용</text>
+<rect x="20" y="234" width="90" height="48" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="65" y="265" font-size="18" fill="#292929" text-anchor="middle" font-weight="700">403</text>
+<rect x="120" y="234" width="200" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="132" y="264" font-size="15" fill="#292929">인가에서 막힘</text>
+<rect x="330" y="234" width="370" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="342" y="264" font-size="15" fill="#292929">판정이 거부</text>
+<rect x="20" y="292" width="90" height="48" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="65" y="323" font-size="18" fill="#292929" text-anchor="middle" font-weight="700">400</text>
+<rect x="120" y="292" width="200" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="132" y="322" font-size="15" fill="#292929">요청이 잘못됨</text>
+<rect x="330" y="292" width="370" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="342" y="322" font-size="15" fill="#292929">값이 빠짐 · 시각 형식이 틀림</text>
+<text x="20" y="376" font-size="15" fill="#666660">401 은 인증에서 막힘 · 이 서버는 인증 단계가 없어 401 을 쓰지 않습니다.</text>
+</g>
+</svg>

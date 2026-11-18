@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
+<title>정답은 한 예이고 핵심이 같으면 맞으며 결과·왜·자주 틀리는 곳·관제 순으로 읽는다</title>
+<desc>내 답과 정답의 핵심이 같으면 표현이나 줄 수가 달라도 맞다. 각 정답은 결과, 왜, 자주 틀리는 곳, 관제에서는 순서로 되어 있다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">정답은 한 예, 핵심이 같으면 맞다</text>
+<rect x="20" y="60" width="180" height="76" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="92.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">내 답</text>
+<text x="110" y="114.2" font-size="15" fill="#292929" text-anchor="middle">보고서에 쓴 것</text>
+<rect x="260" y="60" width="200" height="76" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="92.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">핵심이 같은가?</text>
+<text x="360" y="114.2" font-size="15" fill="#292929" text-anchor="middle">정답의 한 예와 비교</text>
+<rect x="520" y="60" width="180" height="76" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="610" y="92.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">맞음</text>
+<text x="610" y="114.2" font-size="15" fill="#292929" text-anchor="middle">표현 · 줄 수가 달라도</text>
+<polyline points="201,98 259,98" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="461,98 519,98" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<text x="20" y="184" font-size="16" fill="#292929" font-weight="700">정답 한 묶음을 읽는 순서</text>
+<rect x="20" y="200" width="160" height="84" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="100" y="236.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">결과</text>
+<text x="100" y="258.2" font-size="15" fill="#292929" text-anchor="middle">출력 · (가) ~ (다)</text>
+<polyline points="181,242 192,242" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="193" y="200" width="160" height="84" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="273" y="236.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">왜</text>
+<text x="273" y="258.2" font-size="15" fill="#292929" text-anchor="middle">그렇게 되는 원리</text>
+<polyline points="354,242 365,242" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="366" y="200" width="160" height="84" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="446" y="236.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">자주 틀리는 곳</text>
+<text x="446" y="258.2" font-size="15" fill="#292929" text-anchor="middle">흔한 실수</text>
+<polyline points="527,242 538,242" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="539" y="200" width="160" height="84" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="619" y="236.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">관제에서는</text>
+<text x="619" y="258.2" font-size="15" fill="#292929" text-anchor="middle">현업에서 쓰는 곳</text>
+</g>
+</svg>

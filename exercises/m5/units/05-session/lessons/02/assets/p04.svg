@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>실습 5-1 정리: 번호마다 쓰는 코드 모양</title>
+<desc>1·2번은 해제 함수의 결과를 그대로 리턴하고, 3·4번은 같은 인시던트 기록을 모으며, 5·6번은 조치 전후가 같으면 False 를 리턴한다. 7·8번은 되돌릴 기록만 되돌리고, 9번은 기록 파일을 읽는다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<text x="20" y="30" font-size="18" fill="#292929" font-weight="700">실습 5-1 정리 · 번호별 코드</text>
+<rect x="20" y="48" width="680" height="36" fill="#f1f1ef" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="71.04" font-size="14" fill="#292929" font-weight="700">번호</text>
+<text x="150" y="71.04" font-size="14" fill="#292929" font-weight="700">하는 일</text>
+<text x="350" y="71.04" font-size="14" fill="#292929" font-weight="700">코드 모양</text>
+<rect x="20" y="84" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="107.04" font-size="14" fill="#292929">1 · 2</text>
+<text x="150" y="107.04" font-size="14" fill="#292929">결과를 그대로 리턴</text>
+<text x="350" y="107.04" font-size="14" fill="#292929">return unlock_account(…)</text>
+<rect x="20" y="120" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="143.04" font-size="14" fill="#292929">3 · 4</text>
+<text x="150" y="143.04" font-size="14" fill="#292929">같은 인시던트만 모으기</text>
+<text x="350" y="143.04" font-size="14" fill="#292929">if record["incident"] == incident_id:</text>
+<rect x="20" y="156" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="350" y="179.04" font-size="14" fill="#292929">    found.append(record)</text>
+<rect x="20" y="192" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="215.04" font-size="14" fill="#292929">5 · 6</text>
+<text x="150" y="215.04" font-size="14" fill="#292929">전후가 같으면 거짓</text>
+<text x="350" y="215.04" font-size="14" fill="#292929">if record["before"] == record["after"]:</text>
+<rect x="20" y="228" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="350" y="251.04" font-size="14" fill="#292929">    return False</text>
+<rect x="20" y="264" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="287.04" font-size="14" fill="#292929">7 · 8</text>
+<text x="150" y="287.04" font-size="14" fill="#292929">참이면 되돌려 모으기</text>
+<text x="350" y="287.04" font-size="14" fill="#292929">if should_undo(record):</text>
+<rect x="20" y="300" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="323.04" font-size="14" fill="#292929">9</text>
+<text x="150" y="323.04" font-size="14" fill="#292929">기록 파일 읽기</text>
+<text x="350" y="323.04" font-size="14" fill="#292929">log = load_json(LOG_PATH)</text>
+<line x1="140" y1="48" x2="140" y2="336" stroke="#dededb" stroke-width="1"/>
+<line x1="340" y1="48" x2="340" y2="336" stroke="#dededb" stroke-width="1"/>
+</svg>

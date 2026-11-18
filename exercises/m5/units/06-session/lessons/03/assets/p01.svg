@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>dami 알림 다섯 건 중 60분 안에 이어진 네 건은 TCK-1 로 합쳐지고 INC-211 은 새 티켓</title>
+<desc>시간축에 dami 알림 다섯 건을 놓았다. 0, 14, 40, 95분 알림은 마지막 갱신 뒤 60분 이내라 TCK-1 한 장에 합쳐지고, 160분의 INC-211 은 95분보다 65분 늦어 새 티켓이 된다. 알림 11건은 티켓 7장이 된다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<text x="20" y="30" font-size="17" fill="#292929" font-weight="700">dami · 퇴사한 계정 알림 (분)</text>
+<line x1="60" y1="120" x2="678" y2="120" stroke="#666660" stroke-width="2"/>
+<circle cx="60" cy="120" r="8" fill="#2f6fd0"/>
+<text x="60" y="148" font-size="15" fill="#292929" text-anchor="middle">0</text>
+<text x="60" y="100" font-size="14" fill="#292929" text-anchor="middle">INC-201</text>
+<circle cx="113.2" cy="120" r="8" fill="#2f6fd0"/>
+<text x="113.2" y="148" font-size="15" fill="#292929" text-anchor="middle">14</text>
+<text x="113.2" y="76" font-size="14" fill="#292929" text-anchor="middle">INC-205</text>
+<circle cx="212" cy="120" r="8" fill="#2f6fd0"/>
+<text x="212" y="148" font-size="15" fill="#292929" text-anchor="middle">40</text>
+<text x="212" y="100" font-size="14" fill="#292929" text-anchor="middle">INC-209</text>
+<circle cx="421" cy="120" r="8" fill="#2f6fd0"/>
+<text x="421" y="148" font-size="15" fill="#292929" text-anchor="middle">95</text>
+<text x="421" y="76" font-size="14" fill="#292929" text-anchor="middle">INC-210</text>
+<circle cx="668" cy="120" r="8" fill="#e0442e"/>
+<text x="668" y="148" font-size="15" fill="#292929" text-anchor="middle">160</text>
+<text x="668" y="100" font-size="14" fill="#292929" text-anchor="middle">INC-211</text>
+<text x="546.4" y="178" font-size="14" fill="#666660" text-anchor="middle">95 → 160 · 65분 &gt; 60</text>
+<rect x="50" y="196" width="381" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="240.5" y="226.4" font-size="15" fill="#292929" text-anchor="middle">TCK-1 · 합쳐진 알림 4건</text>
+<rect x="548" y="196" width="140" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="618" y="226.4" font-size="15" fill="#292929" text-anchor="middle">새 티켓</text>
+<rect x="20" y="270" width="330" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="185" y="295.24" font-size="14" fill="#292929" text-anchor="middle">198.51.100.90 · 경로 스캔</text>
+<text x="185" y="314.84" font-size="14" fill="#292929" text-anchor="middle">INC-202 · INC-206 → TCK-2</text>
+<rect x="370" y="270" width="330" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="535" y="305.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">알림 11건 → 티켓 7장</text>
+<text x="20" y="370" font-size="15" fill="#666660">티켓 상태는 허용된 순서로만: 열림 → 확인 중 → 해결, 또는 열림 → 해결</text>
+</svg>

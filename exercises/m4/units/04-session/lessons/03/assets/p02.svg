@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>알림 기준을 이벤트 57개에 세 단계로 적용해 알림 대상 주소를 찾는다</title>
+<desc>실습 4-1에서 정한 기준(하루 5번 이상 실패)을 적용합니다. ① 로그인 요청이면서 실패한 것을 고르고 ② IP 주소별로 세고 ③ 5번 이상인 주소만 남깁니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">알림 기준을 이벤트 57개에 세 단계로 적용한다</text>
+<rect x="20" y="56" width="680" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="85" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0">실습 4-1의 알림 기준: 한 주소가 하루에 로그인에 5번 이상 실패하면 알린다</tspan></text>
+<rect x="20" y="140" width="100" height="110" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="70.0" y="190" font-size="15" text-anchor="middle" fill="#292929"><tspan x="70.0" dy="0" font-weight="700">이벤트</tspan><tspan x="70.0" dy="20">57개</tspan></text>
+<rect x="150" y="140" width="170" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="235.0" y="180" font-size="15" text-anchor="middle" fill="#292929"><tspan x="235.0" dy="0" font-weight="700">①</tspan><tspan x="235.0" dy="20">로그인 요청이면서</tspan><tspan x="235.0" dy="20">실패한 것만</tspan></text>
+<rect x="350" y="140" width="170" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="435.0" y="180" font-size="15" text-anchor="middle" fill="#292929"><tspan x="435.0" dy="0" font-weight="700">②</tspan><tspan x="435.0" dy="20">IP 주소별로</tspan><tspan x="435.0" dy="20">세기</tspan></text>
+<rect x="550" y="140" width="150" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="625.0" y="180" font-size="15" text-anchor="middle" fill="#292929"><tspan x="625.0" dy="0" font-weight="700">③</tspan><tspan x="625.0" dy="20">5번 이상인</tspan><tspan x="625.0" dy="20">주소만 남기기</tspan></text>
+<polyline points="123,195 146,195" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<polyline points="323,195 346,195" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<polyline points="523,195 546,195" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<polyline points="625,253 625,278" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="550" y="282" width="150" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="625.0" y="309" font-size="15" text-anchor="middle" fill="#292929"><tspan x="625.0" dy="0" font-weight="700">알림 대상 주소</tspan></text>
+<text x="20" y="310" font-size="15" text-anchor="start" fill="#666660">찾는 순서: 고르기 → 세기 → 기준 이상만 남기기</text>
+</g>
+</svg>

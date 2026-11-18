@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img">
+<title>주석이 말한 일을 하고 핵심이 같으면 정답과 모양이 달라도 맞다</title>
+<desc>정답은 한 예이다. 내 코드가 주석이 말한 일을 하고 핵심이 같으면 줄 수가 달라도 맞은 것이다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">정답을 보는 방법</text>
+<rect x="20" y="70" width="180" height="80" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="103.475" font-size="15" fill="#292929" text-anchor="middle">내가 쓴 코드</text>
+<text x="110" y="125.225" font-size="15" fill="#292929" text-anchor="middle">와 답</text>
+<rect x="260" y="60" width="200" height="100" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="92.6" font-size="15" fill="#292929" text-anchor="middle">주석이 말한 일을</text>
+<text x="360" y="114.35" font-size="15" fill="#292929" text-anchor="middle">하는가?</text>
+<text x="360" y="136.1" font-size="15" fill="#292929" text-anchor="middle">핵심이 같은가?</text>
+<rect x="520" y="60" width="180" height="100" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="610" y="114.35" font-size="15" fill="#292929" text-anchor="middle">맞습니다</text>
+<polyline points="202,110 258,110" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="462,110 518,110" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<text x="490" y="100" font-size="14" fill="#666660" text-anchor="middle">예</text>
+<rect x="20" y="200" width="330" height="70" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="185" y="239.35" font-size="15" fill="#292929" text-anchor="middle">설명하는 답은 한 예입니다</text>
+<rect x="370" y="200" width="330" height="70" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="535" y="239.35" font-size="15" fill="#292929" text-anchor="middle">줄 수가 달라도 괜찮습니다</text>
+</g>
+</svg>

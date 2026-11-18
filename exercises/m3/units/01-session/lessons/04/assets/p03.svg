@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img">
+<title>접속 기록 한 줄은 번호·시각·사용자·자원·행위이고 조회 15건이 있다</title>
+<desc>기록 한 줄은 다섯 값으로 되어 있고 사용자·자원·행위를 check_permission 에 넘긴다. 조회 15건은 batch-night 1건, seoyeon 정산 조회 8건, junho 정산 조회 3건, seoyeon 영업 실적 조회 3건이다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">접속 기록 한 줄의 모양과 조회 15건</text>
+<rect x="20" y="52" width="90" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="65" y="79.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">번호</text>
+<text x="65" y="98.9" font-size="14" fill="#292929" text-anchor="middle">1</text>
+<rect x="120" y="52" width="110" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="175" y="79.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">시각</text>
+<text x="175" y="98.9" font-size="14" fill="#292929" text-anchor="middle">"02:00"</text>
+<rect x="240" y="52" width="170" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="325" y="79.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">사용자</text>
+<text x="325" y="98.9" font-size="14" fill="#292929" text-anchor="middle">"batch-night"</text>
+<rect x="420" y="52" width="140" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="490" y="79.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">자원</text>
+<text x="490" y="98.9" font-size="14" fill="#292929" text-anchor="middle">"SETTLE"</text>
+<rect x="570" y="52" width="130" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="635" y="79.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">행위</text>
+<text x="635" y="98.9" font-size="14" fill="#292929" text-anchor="middle">"QUERY"</text>
+<text x="20" y="142" font-size="14" fill="#666660">파란 세 칸을 check_permission 에 그대로 넘긴다</text>
+<text x="20" y="178" font-size="16" fill="#292929" font-weight="700">조회 15건 (로그인 · 로그아웃 줄은 뺐다)</text>
+<rect x="20" y="190" width="300" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="214.9" font-size="14" fill="#292929">batch-night · SETTLE:QUERY</text>
+<rect x="330" y="190" width="370" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="342" y="214.9" font-size="14" fill="#292929">1번 (02:00 정산 집계)</text>
+<rect x="20" y="236" width="300" height="40" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="32" y="260.9" font-size="14" fill="#292929">seoyeon · SETTLE:QUERY · 새벽</text>
+<rect x="330" y="236" width="370" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="342" y="260.9" font-size="14" fill="#292929">3 · 4 · 5번 (기기 NB-7741)</text>
+<rect x="20" y="282" width="300" height="40" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="32" y="306.9" font-size="14" fill="#292929">seoyeon · SETTLE:QUERY · 낮</text>
+<rect x="330" y="282" width="370" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="342" y="306.9" font-size="14" fill="#292929">12 · 14 · 15 · 16 · 17번 (등록 기기)</text>
+<rect x="20" y="328" width="300" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="352.9" font-size="14" fill="#292929">junho · SETTLE:QUERY</text>
+<rect x="330" y="328" width="370" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="342" y="352.9" font-size="14" fill="#292929">7 · 10 · 13번</text>
+<rect x="20" y="374" width="300" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="398.9" font-size="14" fill="#292929">seoyeon · SALES:QUERY</text>
+<rect x="330" y="374" width="370" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="342" y="398.9" font-size="14" fill="#292929">9 · 11 · 18번</text>
+</g>
+</svg>

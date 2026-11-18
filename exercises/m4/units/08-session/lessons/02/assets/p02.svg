@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>알림이 났는지와 진짜 문제였는지로 나누면 오탐과 미탐 두 가지가 틀립니다</title>
+<desc>알림이 났고 진짜 문제였으면 맞게 찾은 것입니다. 알림이 났는데 문제가 아니면 오탐이라 확인 시간만 쓰고, 진짜 문제인데 알림이 나지 않으면 미탐이라 문제를 놓칩니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">왜 틀린 알림을 세어 봐야 하는가</text>
+<text x="380" y="74" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">진짜 문제였다</text>
+<text x="600" y="74" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">문제가 아니었다</text>
+<rect x="20" y="90" width="160" height="100" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="100.0" y="145.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">알림이 났다</text>
+<rect x="20" y="200" width="160" height="100" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="100.0" y="244.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">알림이 나지</text>
+<text x="100.0" y="267.0" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">않았다</text>
+<rect x="270" y="90" width="220" height="100" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="380.0" y="145.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">맞게 찾음</text>
+<rect x="500" y="90" width="200" height="100" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="600.0" y="135.3" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">오탐</text>
+<text x="600.0" y="156.6" font-size="15" fill="#292929" text-anchor="middle">확인 시간만 씀</text>
+<rect x="270" y="200" width="220" height="100" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="380.0" y="245.3" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">미탐</text>
+<text x="380.0" y="266.6" font-size="15" fill="#292929" text-anchor="middle">진짜 문제를 놓침</text>
+<rect x="500" y="200" width="200" height="100" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="600.0" y="255.4" font-size="15" fill="#292929" text-anchor="middle">해당 없음</text>
+<text x="20" y="328" font-size="15" fill="#666660">틀리는 방식은 두 가지이고, 줄여야 하는 쪽이 다릅니다.</text>
+</g>
+</svg>

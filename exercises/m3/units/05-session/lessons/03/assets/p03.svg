@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>쓰기 모드로 열어 json.dump 로 쓰고, ensure_ascii=False 로 한글을 그대로 남긴다</title>
+<desc>읽기 모드는 파일이 있어야 하고 읽기만 합니다. 쓰기 모드 "w" 는 파일이 없으면 만들고 있으면 지우고 새로 씁니다. json.dump 에서 ensure_ascii=False 를 빼면 한글이 \uXXXX 문자열로 저장됩니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">JSON 파일로 저장하기</text>
+<rect x="20" y="52" width="330" height="84" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="185" y="76.612" font-size="14" fill="#292929" text-anchor="middle">open(path, encoding="utf-8")</text>
+<text x="185" y="98.228" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">읽기 모드</text>
+<text x="185" y="119.62" font-size="15" fill="#292929" text-anchor="middle">파일이 있어야 하고 읽기만</text>
+<rect x="370" y="52" width="330" height="84" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="535" y="76.612" font-size="14" fill="#292929" text-anchor="middle">open(path, "w", encoding="utf-8")</text>
+<text x="535" y="98.228" font-size="16" fill="#9a6200" text-anchor="middle" font-weight="700">쓰기 모드</text>
+<text x="535" y="119.62" font-size="15" fill="#292929" text-anchor="middle">없으면 만들고, 있으면 지우고 새로</text>
+<rect x="20" y="160" width="680" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="188.312" font-size="14" fill="#292929" text-anchor="middle">json.dump(데이터, 파일, ensure_ascii=False, indent=2)</text>
+<rect x="20" y="248" width="330" height="110" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="185" y="287.628" font-size="16" fill="#1f7a4a" text-anchor="middle" font-weight="700">ensure_ascii=False</text>
+<text x="185" y="308.012" font-size="14" fill="#292929" text-anchor="middle">"reason": "정산 확인"</text>
+<text x="185" y="328.62" font-size="15" fill="#292929" text-anchor="middle">한글 그대로 · 사람이 읽음</text>
+<rect x="370" y="248" width="330" height="110" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="535" y="287.628" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">ensure_ascii 를 빼면</text>
+<text x="535" y="308.012" font-size="14" fill="#292929" text-anchor="middle">"\uc815\uc0b0 \ud655\uc778"</text>
+<text x="535" y="328.62" font-size="15" fill="#292929" text-anchor="middle">사람이 읽을 수 없음</text>
+<polyline points="185,208 185,245" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<polyline points="535,208 535,245" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+</g>
+</svg>

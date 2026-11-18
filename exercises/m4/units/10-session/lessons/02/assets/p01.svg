@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img">
+<title>실습 10-1 목표: 점수 기록 5건에서 3명을 골라 사실만으로 AI 요약을 받는다</title>
+<desc>입력은 Unit 7에서 만든 unit05_risk_scores.json 의 점수 기록 5건입니다. event_summary.py 가 low 가 아닌 대상 3명을 고르고 지시문과 [사실]을 합쳐 Gemini API 에 보냅니다. 출력은 대상별 요약 3줄입니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 10-1 · 무엇을 만드나</text>
+<rect x="20" y="60" width="220" height="130" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="130" y="109.3" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">입력</text>
+<text x="130" y="129.3" font-size="14" fill="#292929" text-anchor="middle">unit05_risk_scores.json</text>
+<text x="130" y="149.9" font-size="15" fill="#666660" text-anchor="middle">점수 기록 5건</text>
+<rect x="270" y="60" width="180" height="130" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="98.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">event_summary.py</text>
+<text x="360" y="119.1" font-size="15" fill="#292929" text-anchor="middle">low 아닌 3명 고르기</text>
+<text x="360" y="140.1" font-size="15" fill="#292929" text-anchor="middle">지시문 + [사실]</text>
+<text x="360" y="161.1" font-size="15" fill="#666660" text-anchor="middle">→ Gemini API</text>
+<rect x="480" y="60" width="220" height="130" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="590" y="109.3" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">출력</text>
+<text x="590" y="130.3" font-size="15" fill="#292929" text-anchor="middle">대상별 요약 3줄</text>
+<text x="590" y="150.3" font-size="14" fill="#666660" text-anchor="middle">dami · seoyeon · gaeun</text>
+<polyline points="240,125 266,125" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="450,125 476,125" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="20" y="215" width="680" height="90" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="360" y="243.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">지킬 것</text>
+<text x="360" y="264.6" font-size="15" fill="#292929" text-anchor="middle">AI 는 점수와 등급을 바꾸지 않고, 파일에 있는 사실만 문장으로 씁니다</text>
+<text x="360" y="285.6" font-size="15" fill="#666660" text-anchor="middle">AI 호출이 실패하면 대체 문장(FAIL_TEXT)으로 채웁니다</text>
+</g>
+</svg>

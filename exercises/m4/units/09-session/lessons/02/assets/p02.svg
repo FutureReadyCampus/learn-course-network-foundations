@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 362" role="img">
+<title>서버 두 대를 docker run 두 번 대신 compose.yaml 과 명령 한 줄로 켠다</title>
+<desc>왼쪽은 docker run 을 서버마다 치는 방식, 오른쪽은 설정을 compose.yaml 에 적고 docker compose up -d 한 줄로 켜는 방식이다. 이번 실습의 질문은 서버 두 대를 명령 한 줄로 켤 수 있는가이다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">왜 서버 설정을 파일에 적는가</text>
+<text x="180" y="72" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">docker run 으로</text>
+<text x="540" y="72" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">compose.yaml 로</text>
+<rect x="12" y="86" width="336" height="46" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="180" y="114.175" font-size="15" text-anchor="middle" fill="#292929">docker run … -p 8080:80 …</text>
+<rect x="12" y="142" width="336" height="46" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="180" y="170.175" font-size="15" text-anchor="middle" fill="#292929">docker run … -p 8081:80 …</text>
+<line x1="180" y1="190" x2="180" y2="214" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="12" y="216" width="336" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="180" y="250.175" font-size="15" text-anchor="middle" fill="#292929">긴 명령을 두 번. 서버가 늘수록 틀리기 쉽다</text>
+<rect x="372" y="86" width="336" height="102" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="540" y="120.77" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">compose.yaml</text>
+<text x="540" y="142.9" font-size="15" text-anchor="middle" fill="#292929">services: 아래에 web1 · web2 설정을 한 번</text>
+<text x="540" y="164.65" font-size="15" text-anchor="middle" fill="#292929">적어 둔다</text>
+<line x1="540" y1="190" x2="540" y2="214" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="372" y="216" width="336" height="58" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="540" y="239.3" font-size="15" text-anchor="middle" fill="#292929">docker compose up -d 한 줄로 두 대를 한</text>
+<text x="540" y="261.05" font-size="15" text-anchor="middle" fill="#292929">번에</text>
+<rect x="12" y="300" width="696" height="48" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="329.52" font-size="16" text-anchor="middle" fill="#292929">이번 실습의 질문: 서버 두 대를 명령 한 줄로 켤 수 있는가?</text>
+</g>
+</svg>

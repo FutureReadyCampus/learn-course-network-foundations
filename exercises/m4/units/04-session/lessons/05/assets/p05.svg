@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" role="img">
+<title>pwd 와 ls 로 파일을 확인하고, 깃허브 올리기는 실습 5-2 마지막에 한다</title>
+<desc>터미널에서 pwd 와 ls 를 입력해 이번 Unit 파일 여덟 개와 안내·보고서 두 파일이 보이는지 확인합니다. 깃허브에 올리는 일은 Unit 5 실습 5-2 마지막에 합니다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">정답 마무리</text>
+<rect x="20" y="96" width="180" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="110.0" y="141" font-size="15" text-anchor="middle" fill="#292929"><tspan x="110.0" dy="0" font-weight="700">터미널</tspan><tspan x="110.0" dy="20">pwd · ls</tspan></text>
+<rect x="260" y="96" width="180" height="100" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="350.0" y="141" font-size="15" text-anchor="middle" fill="#292929"><tspan x="350.0" dy="0" font-weight="700">파일 8개</tspan><tspan x="350.0" dy="20">안내 · 보고서 2개</tspan></text>
+<rect x="520" y="96" width="180" height="100" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="610.0" y="141" font-size="15" text-anchor="middle" fill="#292929"><tspan x="610.0" dy="0" font-weight="700">깃허브 올리기</tspan><tspan x="610.0" dy="20">Unit 5 실습 5-2</tspan></text>
+<polyline points="203,146.0 256,146.0" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<polyline points="443,146.0 516,146.0" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<polyline points="203,146 256,146" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+</g>
+</svg>

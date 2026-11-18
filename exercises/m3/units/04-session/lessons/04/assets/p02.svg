@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>사람의 승인 뒤에 코드가 정책으로 다시 확인하는 이중 검증을 거쳐 예외 한 건을 추가한다</title>
+<desc>사람이 승인한 뒤 코드가 check_permission 으로 한 번 더 확인합니다. 이 두 번의 확인이 이중 검증이고, 통과하면 새 규칙 대신 Unit 2의 예외 한 건을 추가합니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">왜 승인 뒤에 정책으로 다시 확인하는가</text>
+<rect x="24" y="50" width="456" height="150" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="40" y="76" font-size="16" fill="#292929" text-anchor="start" font-weight="700">이중 검증</text>
+<rect x="40" y="92" width="190" height="92" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="135" y="120.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">1. 사람이 승인</text>
+<text x="135" y="142.8" font-size="15" fill="#292929" text-anchor="middle">실습 4-2</text>
+<text x="135" y="164.8" font-size="15" fill="#292929" text-anchor="middle">approve_request</text>
+<line x1="230" y1="138" x2="268" y2="138" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<rect x="270" y="92" width="194" height="92" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="367" y="120.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">2. 코드가 확인</text>
+<text x="367" y="142.8" font-size="15" fill="#292929" text-anchor="middle">지금 정책으로</text>
+<text x="367" y="164.8" font-size="15" fill="#292929" text-anchor="middle">check_permission</text>
+<line x1="480" y1="138" x2="518" y2="138" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<rect x="520" y="92" width="180" height="92" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="610" y="120.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">예외 한 건 추가</text>
+<text x="610" y="142.8" font-size="15" fill="#292929" text-anchor="middle">EXCEPTIONS</text>
+<text x="610" y="164.8" font-size="15" fill="#292929" text-anchor="middle">(Unit 2)</text>
+<rect x="24" y="222" width="676" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="362" y="252.6" font-size="15" fill="#292929" text-anchor="middle">예외 = 기간이 정해진 임시 권한 · 부여는 새 규칙을 만들지 않고 예외를 추가하는 일</text>
+</svg>

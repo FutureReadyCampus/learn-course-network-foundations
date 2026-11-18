@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
+<title>send_checks.py 가 /check 로 요청하면 서버가 상태 코드로 답하고 로그를 남긴다</title>
+<desc>요청을 보내는 쪽은 주소로 판정을 묻는다. access_server.py 는 허용이면 200, 거부면 403, 값이 빠지면 400 으로 답하고 판정한 요청마다 server_log.jsonl 에 한 줄을 남긴다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 9-2에서 만드는 것: 판정 서버와 요청 로그</text>
+<rect x="20" y="70" width="200" height="110" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="120" y="108.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">요청하는 쪽</text>
+<text x="120" y="131.8" font-size="15" fill="#292929" text-anchor="middle">send_checks.py</text>
+<text x="120" y="153.6" font-size="15" fill="#292929" text-anchor="middle">(터미널 2)</text>
+<rect x="270" y="70" width="210" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="375" y="108.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">판정 서버</text>
+<text x="375" y="131.8" font-size="15" fill="#292929" text-anchor="middle">access_server.py</text>
+<text x="375" y="153.6" font-size="15" fill="#292929" text-anchor="middle">(터미널 1)</text>
+<polyline points="221,110 269,110" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<text x="245" y="98" font-size="14" fill="#666660" text-anchor="middle">/check</text>
+<polyline points="269,150 221,150" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<text x="245" y="172" font-size="14" fill="#666660" text-anchor="middle">응답</text>
+<rect x="530" y="52" width="170" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="615" y="79.2" font-size="15" fill="#292929" text-anchor="middle">200 허용</text>
+<rect x="530" y="104" width="170" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="615" y="131.2" font-size="15" fill="#292929" text-anchor="middle">403 거부</text>
+<rect x="530" y="156" width="170" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="615" y="183.2" font-size="15" fill="#292929" text-anchor="middle">400 값이 빠짐</text>
+<polyline points="481,110 529,74" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="481,125 529,126" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="481,140 529,178" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="375,181 375,229" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="270" y="230" width="210" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="375" y="259.5" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">server_log.jsonl</text>
+<text x="375" y="282.7" font-size="15" fill="#292929" text-anchor="middle">요청마다 JSON 한 줄</text>
+<text x="20" y="340" font-size="15" fill="#666660">400 으로 답한 요청은 판정하지 않으므로 로그에 남기지 않습니다.</text>
+</g>
+</svg>

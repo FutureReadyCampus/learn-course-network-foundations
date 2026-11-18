@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img">
+<title>권한 있는 담당자의 결정만 적용해 INC-002 는 실행, INC-003 은 종료, INC-005 는 멈춘다</title>
+<desc>승인 대기 3건마다 누가 무엇을 눌렀는지와 그 처리를 보인다. 권한이 없는 intern01 의 승인은 실행되지 않고 기록으로만 남는다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">이번 의뢰: 승인 대기 3건에 담당자 결정을 적용한다</text>
+<text x="120" y="62" font-size="15" fill="#666660" text-anchor="middle" font-weight="700">승인 대기 건</text>
+<text x="360" y="62" font-size="15" fill="#666660" text-anchor="middle" font-weight="700">누른 사람 · 결과</text>
+<text x="600" y="62" font-size="15" fill="#666660" text-anchor="middle" font-weight="700">처리</text>
+<rect x="20" y="76" width="200" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="120" y="105.06" font-size="14" fill="#292929" text-anchor="middle">INC-002 seoyeon</text>
+<rect x="270" y="76" width="180" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="105.35" font-size="15" fill="#292929" text-anchor="middle">kim.sec · 승인</text>
+<rect x="500" y="76" width="200" height="50" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="600" y="105.35" font-size="15" fill="#292929" text-anchor="middle">실행 → 조치됨</text>
+<polyline points="222,101 268,101" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="452,101 498,101" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="20" y="140" width="200" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="120" y="169.06" font-size="14" fill="#292929" text-anchor="middle">INC-003 gaeun (VIP)</text>
+<rect x="270" y="140" width="180" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="169.35" font-size="15" fill="#292929" text-anchor="middle">kim.sec · 거절</text>
+<rect x="500" y="140" width="200" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="600" y="169.35" font-size="15" fill="#292929" text-anchor="middle">거절로 종료</text>
+<polyline points="222,165 268,165" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="452,165 498,165" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="20" y="204" width="200" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="120" y="233.06" font-size="14" fill="#292929" text-anchor="middle">INC-005 198.51.100.90</text>
+<rect x="270" y="204" width="180" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="233.35" font-size="15" fill="#292929" text-anchor="middle">intern01 · 승인</text>
+<rect x="500" y="204" width="200" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="600" y="233.35" font-size="15" fill="#292929" text-anchor="middle">권한 없음 → 멈춤</text>
+<polyline points="222,229 268,229" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="452,229 498,229" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<text x="20" y="290" font-size="14" fill="#666660">권한 있는 담당자: kim.sec · lee.soc   ·   누가 무엇을 결정했는지 모두 기록</text>
+<text x="20" y="314" font-size="14" fill="#666660">상황과 이름은 설명을 위한 예시입니다.</text>
+</g>
+</svg>

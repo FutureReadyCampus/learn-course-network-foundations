@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>같은 알림은 다시 처리하지 않고, 한 번 실행에서 잠그는 계정은 3개까지로 막는다</title>
+<desc>왼쪽은 안전장치가 없는 지금의 문제, 오른쪽은 부탁한 처리다. 중복 실행을 막아 dami 는 한 번만 잠그고, 알림이 몰려도 잠기는 계정이 3개를 넘지 않게 한다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">이번 의뢰: 중복 처리와 대량 잠금 막기</text>
+<text x="180" y="62" font-size="16" fill="#666660" text-anchor="middle" font-weight="700">지금 (Unit 1 실행기)</text>
+<text x="540" y="62" font-size="16" fill="#666660" text-anchor="middle" font-weight="700">부탁</text>
+<rect x="20" y="76" width="320" height="104" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="180" y="110.6" font-size="15" fill="#292929" text-anchor="middle">같은 알림 파일을 두 번 처리</text>
+<text x="180" y="132.35" font-size="15" fill="#292929" text-anchor="middle">dami 를 두 번 잠그고</text>
+<text x="180" y="154.1" font-size="15" fill="#292929" text-anchor="middle">티켓도 두 번 생성</text>
+<rect x="380" y="76" width="320" height="104" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="540" y="110.6" font-size="15" fill="#292929" text-anchor="middle">이미 끝난 인시던트와</text>
+<text x="540" y="132.35" font-size="15" fill="#292929" text-anchor="middle">이미 잠긴 계정은 건너뛰기</text>
+<text x="540" y="154.1" font-size="15" fill="#292929" text-anchor="middle">→ dami 는 한 번만 잠김</text>
+<rect x="20" y="196" width="320" height="104" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="180" y="230.6" font-size="15" fill="#292929" text-anchor="middle">인사 오류로 퇴사자 알림 7건</text>
+<text x="180" y="252.35" font-size="15" fill="#292929" text-anchor="middle">(계정 6개) 이 한꺼번에 들어옴</text>
+<text x="180" y="274.1" font-size="15" fill="#292929" text-anchor="middle">알림 수만큼 모두 잠금</text>
+<rect x="380" y="196" width="320" height="104" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="540" y="230.6" font-size="15" fill="#292929" text-anchor="middle">한 번 실행에서 잠그는 계정은</text>
+<text x="540" y="252.35" font-size="15" fill="#292929" text-anchor="middle">최대 3개</text>
+<text x="540" y="274.1" font-size="15" fill="#292929" text-anchor="middle">→ 담당자가 확인할 시간 확보</text>
+<polyline points="342,128 378,128" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="342,248 378,248" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<text x="20" y="326" font-size="14" fill="#666660">이 샘플에서 실제 퇴사자는 dami 한 명뿐입니다.</text>
+</g>
+</svg>

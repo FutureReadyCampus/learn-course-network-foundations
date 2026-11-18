@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>병합은 네 조건을 모두 만족할 때만, 상태 전이는 허용된 방향으로만</title>
+<desc>위는 병합 판정이다. 같은 대상, 같은 규칙, 해결 아님, 마지막 갱신 뒤 60분 이하를 모두 만족하면 병합하고, 하나라도 아니면 새 티켓을 만든다. 아래는 상태 전이로 열림에서 확인 중이나 해결로, 확인 중에서 해결로만 갈 수 있고 해결에서는 갈 곳이 없다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<text x="20" y="30" font-size="17" fill="#292929" font-weight="700">병합 판정 · 네 가지 모두 예이면 병합</text>
+<rect x="20" y="46" width="124" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="82" y="76.04" font-size="14" fill="#292929" text-anchor="middle">같은 대상?</text>
+<line x1="146" y1="71" x2="158" y2="71" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="160" y="46" width="124" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="222" y="76.04" font-size="14" fill="#292929" text-anchor="middle">같은 규칙?</text>
+<line x1="286" y1="71" x2="298" y2="71" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="300" y="46" width="124" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="362" y="76.04" font-size="14" fill="#292929" text-anchor="middle">해결 아님?</text>
+<line x1="426" y1="71" x2="438" y2="71" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="440" y="46" width="124" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="502" y="66.24" font-size="14" fill="#292929" text-anchor="middle">갱신 뒤</text>
+<text x="502" y="85.84" font-size="14" fill="#292929" text-anchor="middle">60분 이하?</text>
+<line x1="582" y1="71" x2="604" y2="71" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="608" y="46" width="92" height="50" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="654" y="76.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">병합</text>
+<rect x="20" y="118" width="680" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="360" y="145.04" font-size="14" fill="#292929" text-anchor="middle">하나라도 아니오 → 새 티켓 (해결된 티켓에도 합치지 않는다)</text>
+<rect x="20" y="176" width="680" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="206.04" font-size="14" fill="#292929" text-anchor="middle">경과 시간 = 알림 시각 − 마지막 갱신 시각 (만든 시각이 아니다)</text>
+<text x="20" y="268" font-size="17" fill="#292929" font-weight="700">티켓 상태 전이 (ALLOWED_MOVES)</text>
+<rect x="20" y="300" width="160" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="100" y="324.9" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">열림</text>
+<text x="100" y="345.9" font-size="15" fill="#666660" text-anchor="middle">open</text>
+<rect x="280" y="300" width="160" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="324.9" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">확인 중</text>
+<text x="360" y="345.9" font-size="15" fill="#666660" text-anchor="middle">acknowledged</text>
+<rect x="540" y="300" width="160" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="620" y="324.9" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">해결</text>
+<text x="620" y="345.9" font-size="15" fill="#666660" text-anchor="middle">resolved</text>
+<line x1="184" y1="330" x2="276" y2="330" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<line x1="444" y1="330" x2="536" y2="330" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<path d="M100 364 L100 392 L620 392 L620 366" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<text x="360" y="418" font-size="15" fill="#666660" text-anchor="middle">해결 → 어디로도 못 간다 (재개 대신 새 티켓)</text>
+</svg>

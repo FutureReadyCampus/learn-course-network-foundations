@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img"><title>제외 리스트에 있어도 퇴사한 사람의 권한은 회수 제외하지 않는다</title><desc>후보는 확인이 필요한 권한이다. 제외 리스트에 있으면 회수 제외로 가지만, 퇴사한 계정의 권한은 다른 사람이 몰래 쓸 수 있어 리스트에 있어도 회수 대상으로 남긴다.</desc><defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">왜 회수 제외 리스트가 필요한가</text>
+<rect x="20" y="140" width="150" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="95" y="169.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">후보</text>
+<text x="95" y="190.75" font-size="14" fill="#666660" text-anchor="middle">확인이 필요한 권한</text>
+<line x1="174" y1="175" x2="206" y2="175" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="210" y="140" width="180" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
+<text x="300" y="169.75" font-size="15" fill="#292929" text-anchor="middle">제외 리스트에</text>
+<text x="300" y="190.75" font-size="15" fill="#292929" text-anchor="middle">있는가?</text>
+<line x1="394" y1="160" x2="436" y2="110" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<text x="405" y="124" font-size="14" fill="#666660" text-anchor="end">있다</text>
+<rect x="440" y="76" width="160" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
+<text x="520" y="113.25" font-size="15" fill="#292929" text-anchor="middle">퇴사한 계정인가?</text>
+<line x1="604" y1="108" x2="652" y2="146" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<text x="650" y="104" font-size="14" fill="#666660" text-anchor="middle">아니다</text>
+<rect x="600" y="150" width="110" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="2"/>
+<text x="655" y="183.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">회수 제외</text>
+<line x1="520" y1="142" x2="520" y2="230" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<text x="560" y="196" font-size="14" fill="#666660" text-anchor="middle">그렇다</text>
+<line x1="394" y1="190" x2="436" y2="252" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<text x="405" y="244" font-size="14" fill="#666660" text-anchor="end">없다</text>
+<rect x="440" y="234" width="270" height="56" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="2"/>
+<text x="575" y="267.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">회수 대상</text>
+<text x="20" y="330" font-size="15" fill="#666660">제외 리스트는 사람이 적는 것이라 틀릴 수 있다 → 무조건 믿지 않는다</text>
+</g>
+</svg>

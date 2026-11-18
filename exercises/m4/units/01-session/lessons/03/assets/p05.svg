@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img">
+<title>의심을 먼저, 오류를 다음에 확인하고 둘 다 아니면 정상으로 가른다</title>
+<desc>읽은 요청 한 개가 is_suspicious 에 맞으면 의심, 아니면 is_error 에 맞을 때 오류, 둘 다 아니면 정상입니다. 401 은 400 이상이기도 해서 의심을 먼저 확인해야 합니다.</desc>
+<defs><marker id="a-m4u01l03-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker><marker id="a-m4u01l03-p05-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0442e"/></marker></defs>
+<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
+<rect x="210" y="20" width="300" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="50.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">읽은 요청 한 개</text>
+<line x1="360" y1="70" x2="360" y2="106" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l03-p05)"/>
+<rect x="210" y="108" width="300" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="134.8" font-size="15" fill="#9a6200" text-anchor="middle" font-weight="700">is_suspicious</text>
+<text x="360.0" y="155.8" font-size="15" fill="#292929" text-anchor="middle">401 · 403 또는 /admin ?</text>
+<line x1="510" y1="140" x2="556" y2="140" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l03-p05)"/>
+<text x="533" y="130" font-size="14" fill="#666660" text-anchor="middle">그렇다</text>
+<rect x="560" y="116" width="136" height="48" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="628.0" y="145.2" font-size="15" fill="#b32a17" text-anchor="middle" font-weight="700">"의심"</text>
+<line x1="360" y1="172" x2="360" y2="212" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l03-p05)"/>
+<text x="372" y="198" font-size="14" fill="#666660">아니다</text>
+<rect x="210" y="214" width="300" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="240.8" font-size="15" fill="#9a6200" text-anchor="middle" font-weight="700">is_error</text>
+<text x="360.0" y="261.8" font-size="15" fill="#292929" text-anchor="middle">400 이상 ?</text>
+<line x1="510" y1="246" x2="556" y2="246" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l03-p05)"/>
+<text x="533" y="236" font-size="14" fill="#666660" text-anchor="middle">그렇다</text>
+<rect x="560" y="222" width="136" height="48" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="628.0" y="251.2" font-size="15" fill="#9a6200" text-anchor="middle" font-weight="700">"오류"</text>
+<line x1="360" y1="278" x2="360" y2="318" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l03-p05)"/>
+<text x="372" y="304" font-size="14" fill="#666660">아니다</text>
+<rect x="210" y="320" width="300" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360.0" y="349.2" font-size="15" fill="#1f7a4a" text-anchor="middle" font-weight="700">"정상"</text>
+<text x="24" y="402" font-size="15" fill="#b32a17" font-weight="700">의심을 먼저 확인: 401 · 403 은 400 이상이기도 하기 때문</text>
+<text x="24" y="428" font-size="15" fill="#666660">SUSPICIOUS_STATUS = (401, 403) 는 바뀌지 않는 기준이라 튜플</text>
+</g>
+</svg>

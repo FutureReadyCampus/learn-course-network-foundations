@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>실습 1-1 정리: 다섯 함수가 하는 일과 핵심 코드 한 조각</title>
+<desc>왼쪽은 하려는 일과 함수 이름, 오른쪽은 그 일을 하는 핵심 코드입니다. 마지막 줄은 상태 코드 첫 자리의 뜻입니다.</desc>
+<defs><marker id="a-m4u01l02-p09" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker><marker id="a-m4u01l02-p09-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0442e"/></marker></defs>
+<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
+<text x="24" y="30" font-size="19" fill="#292929" font-weight="700">실습 1-1 정리</text>
+<rect x="24" y="46" width="240" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="38" y="66.2" font-size="15" fill="#292929">한 줄을 세 조각으로</text>
+<text x="38" y="87.2" font-size="14" fill="#2558a8">split_request</text>
+<rect x="276" y="46" width="420" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="290" y="76.2" font-size="15" fill="#292929">line.split('"', 2)</text>
+<rect x="24" y="104" width="240" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="38" y="124.2" font-size="15" fill="#292929">요청에서 방법 · 경로</text>
+<text x="38" y="145.2" font-size="14" fill="#2558a8">read_request</text>
+<rect x="276" y="104" width="420" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="290" y="134.2" font-size="15" fill="#292929">request_text.split()</text>
+<rect x="24" y="162" width="240" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="38" y="182.2" font-size="15" fill="#292929">상태 코드를 숫자로</text>
+<text x="38" y="203.2" font-size="14" fill="#2558a8">read_status</text>
+<rect x="276" y="162" width="420" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="290" y="192.2" font-size="15" fill="#292929">suffix.split() → parts[0] → int()</text>
+<rect x="24" y="220" width="240" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="38" y="240.2" font-size="15" fill="#292929">접속자 주소</text>
+<text x="38" y="261.2" font-size="14" fill="#2558a8">read_client</text>
+<rect x="276" y="220" width="420" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="290" y="250.2" font-size="15" fill="#292929">prefix.split() → parts[0]</text>
+<rect x="24" y="278" width="240" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="38" y="298.2" font-size="15" fill="#292929">깨진 줄은 읽기 실패</text>
+<text x="38" y="319.2" font-size="14" fill="#2558a8">parse_line</text>
+<rect x="276" y="278" width="420" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="290" y="308.2" font-size="15" fill="#292929">if line.count('"') &lt; 2: → return None</text>
+<rect x="24" y="336" width="240" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="38" y="366.2" font-size="15" fill="#292929">상태 코드 큰 구분</text>
+<rect x="276" y="336" width="420" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="290" y="366.2" font-size="15" fill="#292929">2 성공 · 3 이동 · 4 요청한 쪽 · 5 서버</text>
+</g>
+</svg>

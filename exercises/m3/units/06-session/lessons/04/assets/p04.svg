@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img"><title>find_unused 는 권한마다 이력이 없거나 90일을 넘으면 후보 리스트에 담는다</title><desc>현황의 권한을 한 건씩 꺼내 「사용자:권한」 키로 used_text 를 찾는다. None 이면 바로 후보, 아니면 days_since 가 limit_days 보다 클 때만 후보가 된다. 끝나면 unused 를 리턴한다.</desc><defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">실습 6-3 · find_unused 가 하는 일</text>
+<rect x="200" y="50" width="320" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="77.25" font-size="15" fill="#292929" text-anchor="middle">unused = [ ]  (빈 리스트)</text>
+<line x1="360" y1="96" x2="360" y2="112" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="140" y="116" width="440" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="138.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">권한 한 건 → key = f"{user}:{permission}"</text>
+<text x="360" y="159.75" font-size="15" fill="#292929" text-anchor="middle">used_text = last_used_map.get(key)</text>
+<line x1="360" y1="174" x2="360" y2="190" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="230" y="194" width="260" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
+<text x="360" y="221.25" font-size="15" fill="#292929" text-anchor="middle">used_text is None ?</text>
+<line x1="492" y1="216" x2="556" y2="216" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<text x="522" y="208" font-size="14" fill="#666660" text-anchor="middle">그렇다</text>
+<rect x="560" y="190" width="150" height="52" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="2"/>
+<text x="635" y="210.75" font-size="15" fill="#292929" text-anchor="middle">후보에 추가</text>
+<text x="635" y="231.75" font-size="14" fill="#666660" text-anchor="middle">last_used = None</text>
+<line x1="360" y1="240" x2="360" y2="262" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<text x="396" y="256" font-size="14" fill="#666660" text-anchor="middle">아니다</text>
+<rect x="180" y="266" width="360" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
+<text x="360" y="293.25" font-size="15" fill="#292929" text-anchor="middle">days_since(used_text, now) &gt; limit_days ?</text>
+<line x1="542" y1="288" x2="596" y2="288" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<text x="568" y="280" font-size="14" fill="#666660" text-anchor="middle">그렇다</text>
+<rect x="600" y="262" width="110" height="52" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="2"/>
+<text x="655" y="282.75" font-size="15" fill="#292929" text-anchor="middle">후보에 추가</text>
+<text x="655" y="303.75" font-size="14" fill="#666660" text-anchor="middle">시각 적음</text>
+<line x1="360" y1="312" x2="360" y2="334" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<text x="396" y="328" font-size="14" fill="#666660" text-anchor="middle">아니다</text>
+<rect x="220" y="338" width="280" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="2"/>
+<text x="360" y="363.25" font-size="15" fill="#292929" text-anchor="middle">최근에 쓴 것 → 그대로 둔다</text>
+<text x="360" y="404" font-size="15" fill="#666660" text-anchor="middle">모든 권한을 꺼낸 뒤 return unused · 90일째는 후보가 아니다(&gt; 이므로)</text>
+</g>
+</svg>

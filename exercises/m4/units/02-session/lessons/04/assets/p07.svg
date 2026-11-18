@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>Unit 2 에서 한 세 가지를 확인하고 normalized_events.json 을 Unit 3 판다스로 넘긴다</title>
+<desc>실습 2-1은 웹 서버 로그, 실습 2-2는 판정 서버와 SaaS 로그, 실습 2-3은 합쳐 시간순 저장입니다. Unit 3에서는 normalized_events.json 같은 파일을 판다스로 읽어 실패를 세고 묶습니다.</desc>
+<defs><marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">이번 Unit 마무리</text>
+<rect x="24" y="58" width="110" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="79" y="86.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">실습 2-1</text>
+<rect x="144" y="58" width="296" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="156" y="86.3" font-size="15" text-anchor="start" fill="#292929">웹 서버 로그 → 공통 이벤트</text>
+<rect x="24" y="120" width="110" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="79" y="148.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">실습 2-2</text>
+<rect x="144" y="120" width="296" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="156" y="148.3" font-size="15" text-anchor="start" fill="#292929">판정 서버 · SaaS → 공통 이벤트</text>
+<rect x="24" y="182" width="110" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="79" y="210.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">실습 2-3</text>
+<rect x="144" y="182" width="296" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="156" y="210.3" font-size="15" text-anchor="start" fill="#292929">합쳐 시간순 정렬 · 저장</text>
+<line x1="442" y1="140" x2="476" y2="140" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<rect x="480" y="58" width="216" height="172" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="588" y="107.8" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">Unit 3</text>
+<text x="588" y="128.5" font-size="14" text-anchor="middle" fill="#292929">normalized_events.json</text>
+<text x="588" y="148.8" font-size="14" text-anchor="middle" fill="#292929">판다스로 읽기</text>
+<text x="588" y="169.1" font-size="14" text-anchor="middle" fill="#292929">실패 고르고 세기</text>
+<text x="588" y="189.4" font-size="14" text-anchor="middle" fill="#292929">사용자별 · 시간대별</text>
+<rect x="24" y="256" width="672" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="288.4" font-size="15" text-anchor="middle" fill="#292929">판다스 설치를 Unit 1 마무리 때 했다면 확인만 합니다.</text>
+</g>
+</svg>

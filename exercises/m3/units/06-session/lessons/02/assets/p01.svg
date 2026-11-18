@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
+<title>실습 6-1: 파일 세 개에 흩어진 권한을 build_access_list 로 한 리스트에 모은다</title>
+<desc>사용자 파일, 역할 파일, 예외 파일에 흩어진 정보를 build_access_list 가 모아 현황 리스트 하나로 만듭니다. 리스트에는 누가 어떤 권한을 역할 또는 예외 중 어떤 방법으로 갖고 있는지 적힙니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">실습 6-1 · 무엇을 만드나</text>
+<rect x="20" y="56" width="200" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="120" y="81.128" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">users.json</text>
+<text x="120" y="101.512" font-size="14" fill="#666660" text-anchor="middle">사용자 · 재직 여부</text>
+<rect x="20" y="132" width="200" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="120" y="157.128" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">roles.json</text>
+<text x="120" y="177.512" font-size="14" fill="#666660" text-anchor="middle">역할 → 권한 리스트</text>
+<rect x="20" y="208" width="200" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="120" y="233.128" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">exceptions.json</text>
+<text x="120" y="253.512" font-size="14" fill="#666660" text-anchor="middle">기간이 정해진 예외</text>
+<rect x="270" y="116" width="190" height="80" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="365" y="150.428" font-size="16" fill="#9a6200" text-anchor="middle" font-weight="700">build_access_list</text>
+<text x="365" y="171.82" font-size="15" fill="#292929" text-anchor="middle">한곳에 모으기</text>
+<rect x="500" y="106" width="200" height="100" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="600" y="139.928" font-size="16" fill="#1f7a4a" text-anchor="middle" font-weight="700">현황 리스트</text>
+<text x="600" y="161.32" font-size="15" fill="#292929" text-anchor="middle">누가 · 어떤 권한을</text>
+<text x="600" y="182.32" font-size="15" fill="#292929" text-anchor="middle">어떤 방법(역할 · 예외)</text>
+<polyline points="220,86 266,156" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="220,162 266,156" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="220,238 266,156" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="460,156 496,156" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<text x="20" y="300" font-size="15" fill="#666660">실습 6-2 · 실습 6-3 의 점검도 이 리스트에서 시작합니다.</text>
+</g>
+</svg>

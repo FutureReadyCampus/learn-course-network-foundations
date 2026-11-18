@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>PB-003 정답 예: IP 차단·티켓 생성, 담당자 승인 필요, 고친 곳은 모두 4군데</title>
+<desc>위는 PB-003 한 예와 그에 따라 system_state.json에서 고친 네 군데, 확인 출력이다. 아래는 쉼표 실수로 나는 두 가지 JSONDecodeError다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 1-1 정답 (한 예)</text>
+<rect x="20" y="52" width="220" height="150" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="90.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="130.0" dy="0.0" font-weight="700">PB-003</tspan><tspan x="130.0" dy="21.0">actions:</tspan><tspan x="130.0" dy="21.0">IP 차단 · 티켓 생성</tspan><tspan x="130.0" dy="21.0">approval:</tspan><tspan x="130.0" dy="21.0">담당자 승인 필요</tspan></text>
+<line x1="242" y1="127" x2="268" y2="127" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="272" y="52" width="428" height="150" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="90.2" font-size="15" fill="#292929"><tspan x="284" dy="0.0" font-weight="700">system_state.json 에서 고친 곳 4군데</tspan><tspan x="284" dy="21.0">1. locked_users: ["dami"]</tspan><tspan x="284" dy="21.0">2. blocked_ips: ["198.51.100.90"]</tspan><tspan x="284" dy="21.0">3. tickets: TCK-1 (INC-001)</tspan><tspan x="284" dy="21.0">4. tickets: TCK-2 (INC-005)</tspan></text>
+<rect x="20" y="216" width="680" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text y="249.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0">확인 출력: ['PB-001', 'PB-002', 'PB-003']   ['dami'] ['198.51.100.90'] 2</tspan></text>
+<text x="20" y="304" font-size="16" fill="#292929" font-weight="700">자주 틀리는 곳</text>
+<rect x="20" y="316" width="330" height="88" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text y="354.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="185.0" dy="0.0" font-weight="700">마지막 플레이북 뒤에 쉼표</tspan><tspan x="185.0" dy="21.0">→ Expecting value</tspan></text>
+<rect x="370" y="316" width="330" height="88" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text y="354.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="535.0" dy="0.0" font-weight="700">플레이북 사이 쉼표 빠짐</tspan><tspan x="535.0" dy="21.0">→ Expecting ',' delimiter</tspan></text>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img">
+<title>이상 징후 다섯 유형과 이번 Unit 샘플 로그에서 보이는 예</title>
+<desc>다섯 유형마다 로그에서 보이는 모양과 샘플 로그의 예를 적었습니다. 호박색 칸은 이번 샘플에 있는 예이고, 회색 칸은 뒤 Unit 에서 다룹니다.</desc>
+<defs><marker id="a-m4u01l03-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker><marker id="a-m4u01l03-p03-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0442e"/></marker></defs>
+<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
+<text x="24" y="30" font-size="19" fill="#292929" font-weight="700">이상 징후 다섯 유형</text>
+<text x="24" y="52" font-size="14" fill="#666660" font-weight="700">유형</text>
+<text x="206" y="52" font-size="14" fill="#666660" font-weight="700">로그에서 보이는 모양</text>
+<text x="468" y="52" font-size="14" fill="#666660" font-weight="700">이번 샘플 로그의 예</text>
+<rect x="24" y="62" width="170" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="109.0" y="96.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">비정상 로그인</text>
+<rect x="206" y="62" width="250" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="331.0" y="96.2" font-size="15" fill="#292929" text-anchor="middle">같은 주소 401 이 연달아</text>
+<rect x="468" y="62" width="228" height="58" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="582.0" y="85.8" font-size="15" fill="#292929" text-anchor="middle">203.0.113.50</text>
+<text x="582.0" y="106.8" font-size="15" fill="#292929" text-anchor="middle">POST /login 401 이 5번</text>
+<rect x="24" y="130" width="170" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="109.0" y="164.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">트래픽 급증</text>
+<rect x="206" y="130" width="250" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="331.0" y="164.2" font-size="15" fill="#292929" text-anchor="middle">짧은 시간에 요청 몰림</text>
+<rect x="468" y="130" width="228" height="58" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="582.0" y="164.2" font-size="15" fill="#666660" text-anchor="middle">Unit 4 · 5 에서 다룸</text>
+<rect x="24" y="198" width="170" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="109.0" y="232.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">비인가 접근</text>
+<rect x="206" y="198" width="250" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="331.0" y="232.2" font-size="15" fill="#292929" text-anchor="middle">권한 없는 주소 → 403</text>
+<rect x="468" y="198" width="228" height="58" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="582.0" y="221.8" font-size="15" fill="#292929" text-anchor="middle">/admin · /admin/users</text>
+<text x="582.0" y="242.8" font-size="15" fill="#292929" text-anchor="middle">403</text>
+<rect x="24" y="266" width="170" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="109.0" y="300.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">SaaS 이상 사용</text>
+<rect x="206" y="266" width="250" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="331.0" y="300.2" font-size="15" fill="#292929" text-anchor="middle">대량 내려받기 · 낯선 위치</text>
+<rect x="468" y="266" width="228" height="58" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="582.0" y="300.2" font-size="15" fill="#666660" text-anchor="middle">Unit 6 에서 다룸</text>
+<rect x="24" y="334" width="170" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="109.0" y="368.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">악성 행위 징후</text>
+<rect x="206" y="334" width="250" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="331.0" y="368.2" font-size="15" fill="#292929" text-anchor="middle">없는 주소까지 차례로 탐색</text>
+<rect x="468" y="334" width="228" height="58" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="582.0" y="357.8" font-size="15" fill="#292929" text-anchor="middle">198.51.100.90</text>
+<text x="582.0" y="378.8" font-size="15" fill="#292929" text-anchor="middle">/.env 등 404</text>
+<text x="24" y="402" font-size="15" fill="#666660">한 줄씩 보면 평범해도 여러 줄을 묶어 보면 드러납니다.</text>
+</g>
+</svg>

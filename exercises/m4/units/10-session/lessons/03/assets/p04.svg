@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img">
+<title>analyze_events 는 리턴값을 차례로 전달하고, build_report 는 세어서 딕셔너리로 모은다</title>
+<desc>analyze_events 의 1 ~ 4번은 events 로 chains 를, events 와 chains 로 findings 를, findings 로 totals 와 reasons 를 구합니다. build_report 의 5 ~ 7번은 source 열을 value_counts 로 세고 to_dict 로 바꿔 report 딕셔너리에 담습니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">pipeline.py · 직접 쓰는 곳 1 ~ 7</text>
+<text x="20" y="62" font-size="16" fill="#292929" font-weight="700">analyze_events</text>
+<rect x="20" y="74" width="110" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="75" y="102.6" font-size="15" fill="#292929" text-anchor="middle">events</text>
+<rect x="160" y="74" width="340" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="330" y="102.6" font-size="15" fill="#292929" text-anchor="middle">1. find_chains_in_events(events)</text>
+<rect x="530" y="74" width="170" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="615" y="102.6" font-size="15" fill="#292929" text-anchor="middle">chains</text>
+<polyline points="130,98 156,98" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<polyline points="500,98 526,98" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="160" y="140" width="340" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="330" y="168.6" font-size="15" fill="#292929" text-anchor="middle">2. collect_findings(events, chains)</text>
+<rect x="530" y="140" width="170" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="615" y="168.6" font-size="15" fill="#292929" text-anchor="middle">findings</text>
+<polyline points="75,122 75,164 156,164" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<polyline points="615,122 615,131 330,131 330,136" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<polyline points="500,164 526,164" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="20" y="210" width="335" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="187.5" y="238.3" font-size="14" fill="#292929" text-anchor="middle">3. score_findings(findings) → totals</text>
+<rect x="365" y="210" width="335" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="532.5" y="238.3" font-size="14" fill="#292929" text-anchor="middle">4. collect_reasons(findings) → reasons</text>
+<polyline points="615,188 615,199 185,199 185,206" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<polyline points="615,188 615,206" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<polyline points="187,258 187,270" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<polyline points="532,258 532,270" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="120" y="274" width="480" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="298.6" font-size="15" fill="#666660" text-anchor="middle">make_records(totals, reasons) → records  (미리 채움)</text>
+<text x="20" y="346" font-size="16" fill="#292929" font-weight="700">build_report</text>
+<rect x="20" y="358" width="220" height="70" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="130" y="387.5" font-size="14" fill="#292929" text-anchor="middle">5. events["source"]</text>
+<text x="130" y="407.1" font-size="14" fill="#292929" text-anchor="middle">.value_counts()</text>
+<rect x="260" y="358" width="200" height="70" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360" y="387.8" font-size="15" fill="#292929" text-anchor="middle">6. .to_dict()</text>
+<text x="360" y="407.8" font-size="14" fill="#666660" text-anchor="middle">JSON 에 저장 가능</text>
+<rect x="480" y="358" width="220" height="70" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="590" y="387.8" font-size="15" fill="#292929" text-anchor="middle">7. report = {</text>
+<text x="590" y="407.8" font-size="14" fill="#292929" text-anchor="middle">"date": … "summaries"}</text>
+<polyline points="240,393 256,393" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<polyline points="460,393 476,393" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+</g>
+</svg>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 612" role="img">
+<title>evaluate_conditional 은 기본 판정이 허용일 때만 같은 권한의 조건을 하나씩 확인한다</title>
+<desc>먼저 evaluate_access 로 기본 판정을 하고, 거부면 그 이유를 그대로 리턴합니다. 허용이면 permission 이 같은 조건마다 업무 시간과 접속 위치를 확인해, 하나라도 어기면 그 이유로 거부합니다. 같은 권한의 조건을 모두 통과하면 기본 판정의 이유로 허용합니다.</desc>
+<defs><marker id="a-f01-0902" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<rect x="30" y="12" width="390" height="52" rx="22" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="225.0" y="33.5" font-size="15" fill="#292929" text-anchor="middle">evaluate_conditional(user, resource,</text>
+<text x="225.0" y="52.5" font-size="14" fill="#292929" text-anchor="middle">action, network, now, rules)</text>
+<path d="M225 64 L225 86" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0902)"/>
+<rect x="30" y="86" width="390" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="225.0" y="107.5" font-size="15" fill="#292929" text-anchor="middle">evaluate_access 로 기본 판정을 한다</text>
+<text x="225.0" y="126.5" font-size="14" fill="#292929" text-anchor="middle">(is_allowed, reason)</text>
+<path d="M225 138 L225 160" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0902)"/>
+<rect x="30" y="160" width="390" height="36" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="225.0" y="183.0" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">is_allowed 가 거짓인가?</text>
+<path d="M420 178 L470 178" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0902)"/>
+<text x="445" y="171" font-size="14" fill="#666660" text-anchor="middle">그렇다</text>
+<rect x="470" y="145" width="240" height="66" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="590.0" y="164.0" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">False, reason 을 리턴한다</text>
+<text x="590.0" y="183.0" font-size="14" fill="#292929" text-anchor="middle">사람 자체가 거부 대상이면</text>
+<text x="590.0" y="202.0" font-size="14" fill="#292929" text-anchor="middle">조건을 볼 필요가 없다</text>
+<path d="M225 196 L225 224" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0902)"/>
+<text x="233" y="215" font-size="14" fill="#666660" text-anchor="start">아니다</text>
+<rect x="30" y="224" width="390" height="36" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="225.0" y="247.0" font-size="15" fill="#292929" text-anchor="middle">permission = 「자원:행위」 문자열</text>
+<path d="M225 260 L225 282" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0902)"/>
+<rect x="30" y="282" width="390" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="225.0" y="303.5" font-size="15" fill="#292929" text-anchor="middle">조건(rule)을 하나씩 꺼내</text>
+<text x="225.0" y="322.5" font-size="14" fill="#292929" text-anchor="middle">permission 이 같은 것을 찾는다</text>
+<path d="M225 334 L225 356" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0902)"/>
+<rect x="30" y="356" width="390" height="52" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="225.0" y="377.5" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">is_work_time(rule, now) 가 참인가?</text>
+<text x="225.0" y="396.5" font-size="14" fill="#292929" text-anchor="middle">(start &lt;= hour &lt; end)</text>
+<path d="M420 382 L470 382" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0902)"/>
+<text x="445" y="375" font-size="14" fill="#666660" text-anchor="middle">아니다</text>
+<rect x="470" y="356" width="240" height="52" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="590.0" y="377.5" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">False, 「업무 시간 밖」을</text>
+<text x="590.0" y="396.5" font-size="14" fill="#292929" text-anchor="middle">리턴한다</text>
+<path d="M225 408 L225 436" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0902)"/>
+<text x="233" y="427" font-size="14" fill="#666660" text-anchor="start">그렇다</text>
+<rect x="30" y="436" width="390" height="52" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="225.0" y="457.5" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">is_allowed_network(rule, network)</text>
+<text x="225.0" y="476.5" font-size="14" fill="#292929" text-anchor="middle">가 참인가? (network in allowed_networks)</text>
+<path d="M420 462 L470 462" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0902)"/>
+<text x="445" y="455" font-size="14" fill="#666660" text-anchor="middle">아니다</text>
+<rect x="470" y="436" width="240" height="52" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="590.0" y="457.5" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">False, 「허용되지 않은</text>
+<text x="590.0" y="476.5" font-size="14" fill="#292929" text-anchor="middle">접속 위치」를 리턴한다</text>
+<path d="M225 488 L225 506 L14 506 L14 308 L30 308" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0902)"/>
+<text x="233" y="502" font-size="14" fill="#666660" text-anchor="start">그렇다</text>
+<text x="110" y="524" font-size="14" fill="#666660" text-anchor="middle">다음 조건으로</text>
+<path d="M225 506 L225 544" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0902)"/>
+<text x="233" y="530" font-size="14" fill="#666660" text-anchor="start">같은 권한의 조건이 더 없으면 반복이 끝난다</text>
+<rect x="30" y="544" width="390" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="225.0" y="565.5" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">True, reason 을 리턴한다</text>
+<text x="225.0" y="584.5" font-size="14" fill="#292929" text-anchor="middle">(기본 판정의 이유로 허용)</text>
+</g>
+</svg>

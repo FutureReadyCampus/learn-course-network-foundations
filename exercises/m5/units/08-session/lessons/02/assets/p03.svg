@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>report.py 함수가 티켓과 조치 기록을 리포트 파일로 바꾸는 흐름</title>
+<desc>티켓 리스트는 make_ticket_table로 표가 되고, 규칙별 수 · 등급별 평균 · 기한 넘긴 티켓을 구합니다. 조치 기록은 티켓과 대조해 티켓 없는 조치를 찾고, make_report_lines가 모두 모아 리포트 파일이 됩니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p03r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p03g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p03b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">report.py 함수 흐름 (직접 쓰는 곳 1~9번)</tspan></text>
+<rect x="20" y="66" width="120" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="80.0" y="94.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="80.0">tickets</tspan></text>
+<rect x="20" y="290" width="120" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="80.0" y="318.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="80.0">actions</tspan></text>
+<rect x="180" y="62" width="230" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="295.0" y="85.0" font-size="15" text-anchor="middle" fill="#292929"><tspan x="295.0">make_ticket_table</tspan><tspan x="295.0" dy="19.6" font-size="14">ack_minutes 열 · 1번</tspan></text>
+<line x1="142" y1="90" x2="178" y2="90" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="460" y="52" width="240" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="580.0" y="74.0" font-size="15" text-anchor="middle" fill="#292929"><tspan x="580.0">count_by_rule</tspan><tspan x="580.0" dy="17.5" font-size="14">2번</tspan></text>
+<line x1="412" y1="90" x2="458" y2="78" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="460" y="116" width="240" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="580.0" y="138.1" font-size="15" text-anchor="middle" fill="#292929"><tspan x="580.0">mean_ack_by_grade</tspan><tspan x="580.0" dy="17.5" font-size="14">3 · 4번</tspan></text>
+<line x1="412" y1="90" x2="458" y2="142" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="460" y="180" width="240" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="580.0" y="202.1" font-size="15" text-anchor="middle" fill="#292929"><tspan x="580.0">find_late_tickets</tspan><tspan x="580.0" dy="17.5" font-size="14">5번</tspan></text>
+<line x1="412" y1="90" x2="458" y2="206" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="180" y="284" width="230" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="295.0" y="309.7" font-size="15" text-anchor="middle" fill="#292929"><tspan x="295.0">find_missing_incidents</tspan><tspan x="295.0" dy="18.2" font-size="14">6 · 7번 · not in covered</tspan></text>
+<path d="M80 116 V262 H240 V282" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="142" y1="314" x2="178" y2="314" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="460" y="268" width="240" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="580.0" y="290.1" font-size="15" text-anchor="middle" fill="#292929"><tspan x="580.0">make_report_lines</tspan><tspan x="580.0" dy="17.5" font-size="14">8번</tspan></text>
+<line x1="580" y1="246" x2="580" y2="266" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="412" y1="312" x2="458" y2="300" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="460" y="350" width="240" height="50" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="580.0" y="379.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="580.0" font-size="14">incident_report_20261112.md</tspan></text>
+<line x1="580" y1="322" x2="580" y2="348" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="20" y="356" width="410" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="225.0" y="382.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="225.0" font-size="14">exercise8-1_run.py · 9번: table 만들기, 파일 쓰기</tspan></text>
+</g>
+</svg>

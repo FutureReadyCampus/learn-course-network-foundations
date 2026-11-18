@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>evaluate_access 는 역할 판정을 먼저 하고 「권한 없음」일 때만 예외를 봅니다</title>
+<desc>실습 2-3 정답의 판정 순서입니다. 역할로 허용되면 끝, 퇴사 같은 이유로 거부되면 예외를 보지 않고, 「권한 없음」일 때만 find_exception 으로 예외를 찾습니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+<text x="24" y="34" font-size="19" font-weight="700">실습 2-3 정답 · evaluate_access 판정 순서</text>
+<rect x="24" y="56" width="340" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="194" y="85.4" font-size="15" text-anchor="middle">1. check_permission (역할 판정)</text>
+<rect x="24" y="136" width="340" height="48" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="194" y="165.4" font-size="15" text-anchor="middle">역할로 허용인가?</text>
+<rect x="24" y="216" width="340" height="48" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="194" y="245.4" font-size="15" text-anchor="middle">이유가 「권한 없음」이 아닌가?</text>
+<rect x="24" y="296" width="340" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="194" y="325.4" font-size="15" text-anchor="middle">2. find_exception(자원:행위)</text>
+<rect x="24" y="364" width="340" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="194" y="391.4" font-size="15" text-anchor="middle">(False, '권한 없음')</text>
+<rect x="430" y="136" width="266" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="563" y="165.4" font-size="15" text-anchor="middle">(True, '역할 권한')</text>
+<rect x="430" y="216" width="266" height="48" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="563" y="245" font-size="14" text-anchor="middle">(False, 그 이유) · 예외 안 봄</text>
+<rect x="430" y="296" width="266" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="563" y="325.4" font-size="15" text-anchor="middle">(True, '예외 N번')</text>
+<path d="M194,104 L194,134" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p04)"/>
+<path d="M194,184 L194,214" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p04)"/>
+<text x="204" y="206" font-size="14" fill="#666660">아니오</text>
+<path d="M194,264 L194,294" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p04)"/>
+<text x="204" y="286" font-size="14" fill="#666660">아니오</text>
+<path d="M194,344 L194,362" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p04)"/>
+<text x="204" y="358" font-size="14" fill="#666660">없음</text>
+<path d="M364,160 L428,160" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p04)"/>
+<text x="380" y="152" font-size="14" fill="#666660">예</text>
+<path d="M364,240 L428,240" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p04)"/>
+<text x="380" y="232" font-size="14" fill="#666660">예</text>
+<path d="M364,320 L428,320" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p04)"/>
+<text x="374" y="312" font-size="14" fill="#666660">찾음</text>
+<text x="438" y="286" font-size="14" fill="#666660">예: dami 는 「퇴사한 계정」으로 여기서 끝</text>
+</g>
+</svg>

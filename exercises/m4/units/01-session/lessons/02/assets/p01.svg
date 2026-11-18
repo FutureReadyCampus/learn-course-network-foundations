@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img">
+<title>parse_line 은 로그 한 줄을 네 값의 딕셔너리로, 깨진 줄은 None 으로 바꾼다</title>
+<desc>로그 한 줄 문자열이 parse_line 을 거칩니다. 큰따옴표가 두 개 이상이면 ip · method · path · status 딕셔너리가 되고, 두 개보다 적으면 None 이 되어 읽기 실패로 셉니다.</desc>
+<defs><marker id="a-m4u01l02-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker><marker id="a-m4u01l02-p01-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0442e"/></marker></defs>
+<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
+<text x="24" y="34" font-size="19" fill="#292929" font-weight="700">log_parse.py 가 하는 일</text>
+<rect x="24" y="56" width="672" height="46" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="84.2" font-size="15" fill="#292929" text-anchor="middle">203.0.113.50 - - [시각] "POST /login HTTP/1.1" 401 312 …</text>
+<line x1="360" y1="102" x2="360" y2="138" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l02-p01)"/>
+<rect x="250" y="140" width="220" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="170.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">parse_line(line)</text>
+<line x1="300" y1="190" x2="220" y2="238" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l02-p01)"/>
+<line x1="420" y1="190" x2="568" y2="238" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l02-p01)"/>
+<text x="150" y="222" font-size="14" fill="#666660" text-anchor="middle">큰따옴표 2개 이상</text>
+<text x="600" y="222" font-size="14" fill="#666660" text-anchor="middle">2개보다 적음</text>
+<rect x="24" y="240" width="390" height="70" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="219.0" y="269.8" font-size="15" fill="#1f7a4a" text-anchor="middle" font-weight="700">읽기 성공 → 딕셔너리</text>
+<text x="219.0" y="290.8" font-size="15" fill="#292929" text-anchor="middle">ip · method · path · status</text>
+<rect x="440" y="240" width="256" height="70" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="568.0" y="269.8" font-size="15" fill="#b32a17" text-anchor="middle" font-weight="700">깨진 줄 → None</text>
+<text x="568.0" y="290.8" font-size="15" fill="#292929" text-anchor="middle">읽기 실패로 세기</text>
+</g>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>실습 4-3 정답: 1번 seoyeon 만 예외 6번을 받아 부여 후 판정이 True 로 바뀐다</title>
+<desc>요청서 네 장의 부여 전 판정, 부여 시도 결과, 부여 후 판정을 표로 비교합니다. 2번은 반려, 3번은 퇴사한 계정, 4번은 이미 허용이라 부여하지 않고, 1번만 예외 6번이 부여됩니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">실습 4-3 정답 · 단계 1 · 2 · 3 비교</text>
+<text x="80" y="66" font-size="15" fill="#666660" text-anchor="middle" font-weight="700">요청서</text>
+<text x="225" y="66" font-size="15" fill="#666660" text-anchor="middle" font-weight="700">단계 1 부여 전</text>
+<text x="425" y="66" font-size="15" fill="#666660" text-anchor="middle" font-weight="700">단계 2 부여</text>
+<text x="625" y="66" font-size="15" fill="#666660" text-anchor="middle" font-weight="700">단계 3 부여 후</text>
+<rect x="20" y="80" width="120" height="54" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="80" y="111.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">1 seoyeon</text>
+<rect x="150" y="80" width="150" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="225" y="101.4" font-size="15" fill="#292929" text-anchor="middle">False</text>
+<text x="225" y="121.4" font-size="15" fill="#292929" text-anchor="middle">권한 없음</text>
+<rect x="310" y="80" width="230" height="54" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="425" y="101.4" font-size="15" fill="#292929" text-anchor="middle">True</text>
+<text x="425" y="121.4" font-size="15" fill="#292929" text-anchor="middle">부여</text>
+<rect x="550" y="80" width="150" height="54" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="625" y="101.4" font-size="15" fill="#292929" text-anchor="middle">True</text>
+<text x="625" y="121.4" font-size="15" fill="#292929" text-anchor="middle">예외 6번</text>
+<rect x="20" y="142" width="120" height="54" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="80" y="173.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">2 gaeun</text>
+<rect x="150" y="142" width="150" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="225" y="163.4" font-size="15" fill="#292929" text-anchor="middle">False</text>
+<text x="225" y="183.4" font-size="15" fill="#292929" text-anchor="middle">권한 없음</text>
+<rect x="310" y="142" width="230" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="425" y="163.4" font-size="15" fill="#292929" text-anchor="middle">False</text>
+<text x="425" y="183.4" font-size="15" fill="#292929" text-anchor="middle">승인되지 않음</text>
+<rect x="550" y="142" width="150" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="625" y="163.4" font-size="15" fill="#292929" text-anchor="middle">False</text>
+<text x="625" y="183.4" font-size="15" fill="#292929" text-anchor="middle">권한 없음</text>
+<rect x="20" y="204" width="120" height="54" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="80" y="235.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">3 dami</text>
+<rect x="150" y="204" width="150" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="225" y="225.4" font-size="15" fill="#292929" text-anchor="middle">False</text>
+<text x="225" y="245.4" font-size="15" fill="#292929" text-anchor="middle">퇴사한 계정</text>
+<rect x="310" y="204" width="230" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="425" y="225.4" font-size="15" fill="#292929" text-anchor="middle">False</text>
+<text x="425" y="245.4" font-size="15" fill="#292929" text-anchor="middle">부여하지 않음(퇴사한 계정)</text>
+<rect x="550" y="204" width="150" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="625" y="225.4" font-size="15" fill="#292929" text-anchor="middle">False</text>
+<text x="625" y="245.4" font-size="15" fill="#292929" text-anchor="middle">퇴사한 계정</text>
+<rect x="20" y="266" width="120" height="54" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="80" y="297.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">4 junho</text>
+<rect x="150" y="266" width="150" height="54" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="225" y="287.4" font-size="15" fill="#292929" text-anchor="middle">True</text>
+<text x="225" y="307.4" font-size="15" fill="#292929" text-anchor="middle">역할 권한</text>
+<rect x="310" y="266" width="230" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="425" y="287.4" font-size="15" fill="#292929" text-anchor="middle">False</text>
+<text x="425" y="307.4" font-size="15" fill="#292929" text-anchor="middle">부여하지 않음(허용)</text>
+<rect x="550" y="266" width="150" height="54" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="625" y="287.4" font-size="15" fill="#292929" text-anchor="middle">True</text>
+<text x="625" y="307.4" font-size="15" fill="#292929" text-anchor="middle">역할 권한</text>
+<rect x="20" y="336" width="680" height="54" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="367.6" font-size="15" fill="#292929" text-anchor="middle">부여된 예외 번호: 6 · 부여 전과 후에 달라진 줄은 1번 seoyeon 하나</text>
+</svg>

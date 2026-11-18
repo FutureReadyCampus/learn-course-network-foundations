@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>load_json 은 오류 종류마다 경고 후 default 를 리턴해 출력 다섯 줄이 나옵니다</title>
+<desc>실습 3-1 정답의 try·except 구조와 실행 결과를 연결했습니다. 정상 파일은 6명을 읽고, 없는 파일과 깨진 파일은 각각 경고를 낸 뒤 사용자 0명이 됩니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+<text x="24" y="34" font-size="19" font-weight="700">실습 3-1 정답 · load_json 과 출력</text>
+<rect x="24" y="52" width="300" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="38" y="77" font-size="14">try:</text>
+<rect x="48" y="98" width="276" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="62" y="123" font-size="14">with open → return json.load</text>
+<rect x="24" y="156" width="300" height="40" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="38" y="181" font-size="14">except FileNotFoundError:</text>
+<rect x="48" y="202" width="276" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="62" y="227" font-size="14">경고 출력 → return default</text>
+<rect x="24" y="260" width="300" height="40" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="38" y="285" font-size="14">except json.JSONDecodeError:</text>
+<rect x="48" y="306" width="276" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="62" y="331" font-size="14">경고 출력 → return default</text>
+<rect x="380" y="52" width="316" height="86" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="538" y="89.9" font-size="15" text-anchor="middle">users.json</text>
+<text x="538" y="110.9" font-size="15" text-anchor="middle">→ 사용자 6 명, 판정 계속</text>
+<path d="M324,118 L378,95" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<rect x="380" y="156" width="316" height="86" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="538" y="193.9" font-size="15" text-anchor="middle">[경고] 설정 파일 없음</text>
+<text x="538" y="214.9" font-size="15" text-anchor="middle">users_typo.json → 0 명</text>
+<path d="M324,222 L378,199" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<rect x="380" y="260" width="316" height="86" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="538" y="297.9" font-size="15" text-anchor="middle">[경고] 설정 파일 깨짐</text>
+<text x="538" y="318.9" font-size="15" text-anchor="middle">users_broken.json → 0 명</text>
+<path d="M324,326 L378,303" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<text x="24" y="384" font-size="15" fill="#666660">자주 틀리는 곳: json. 을 빼고 except JSONDecodeError → NameError</text>
+<text x="24" y="408" font-size="15" fill="#666660">return default 를 빼먹으면 None → TypeError</text>
+</g>
+</svg>

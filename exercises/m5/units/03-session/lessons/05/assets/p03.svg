@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 426" role="img">
+<title>실습 3-2 보고서: 재시도 결과의 차이와 실패 목록, 깃허브 확인을 채웁니다</title>
+<desc>실습 3-2 보고서에 채울 칸입니다. 알림 번호, fail_plan 값에 따른 결과 차이, INC-001 이 조치됨이 아닌 이유를 씁니다. 마무리에는 git status 에서 .env 와 .venv 가 보였는지 씁니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 3-2 보고서와 마무리에 채울 칸</text>
+<rect x="24" y="60" width="130" height="64" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="89.0" y="97.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(가)</tspan></text>
+<rect x="166" y="60" width="530" height="64" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="180" y="86.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180" dy="0">① 출력 전체 (코드 상자에 붙여 넣기)</tspan><tspan x="180" dy="21.0">② 일부 실패 · ③ 승인 대기 · ④ 오탐 종료 번호</tspan></text>
+<rect x="24" y="136" width="130" height="85" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="89.0" y="173.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(나)</tspan><tspan x="89.0" dy="21.0">핵심 질문</tspan></text>
+<rect x="166" y="136" width="530" height="85" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="180" y="162.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180" dy="0">① 단계 1 과 2 의 fail_plan 값</tspan><tspan x="180" dy="21.0">② 결과가 달라진 이유</tspan><tspan x="180" dy="21.0">③ 최대 시도 횟수가 없을 때의 문제</tspan></text>
+<rect x="24" y="233" width="130" height="85" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="89.0" y="270.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(다)</tspan><tspan x="89.0" dy="21.0">핵심 질문</tspan></text>
+<rect x="166" y="233" width="530" height="85" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="180" y="259.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180" dy="0">① INC-001 이 조치됨 이 아닌 이유</tspan><tspan x="180" dy="21.0">② 단계 6 이 담당자에게 알려 주는 것</tspan><tspan x="180" dy="21.0">③ 다시 실행해도 dami 가 두 번 잠기지 않는 이유</tspan></text>
+<rect x="24" y="330" width="130" height="64" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="89.0" y="367.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">마무리</tspan></text>
+<rect x="166" y="330" width="530" height="64" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="180" y="356.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180" dy="0">① git status 에 .env · .venv 가 보였는지</tspan><tspan x="180" dy="21.0">② 보였다면 한 조치</tspan></text>
+</g>
+</svg>

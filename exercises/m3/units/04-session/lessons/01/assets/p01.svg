@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
+<title>Unit 4는 요청서를 접수하고 승인한 뒤 정책으로 다시 확인해 예외 권한을 부여합니다</title>
+<desc>직원의 권한 요청이 실습 4-1 접수, 실습 4-2 승인·반려, 실습 4-3 부여를 거칩니다. 부여 전에 Unit 2에서 만든 evaluate_access 로 한 번 더 확인합니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+<text x="24" y="34" font-size="19" font-weight="700">Unit 4 목표 · 요청서 접수 · 승인 · 부여</text>
+<text x="24" y="66" font-size="15" fill="#666660">직원이 권한을 달라고 요청하면</text>
+<rect x="24" y="80" width="208" height="140" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="128" y="123.9" font-size="16" text-anchor="middle" font-weight="700">실습 4-1 · 접수</text>
+<text x="128" y="144.9" font-size="15" text-anchor="middle">요청서 한 장(딕셔너리)</text>
+<text x="128" y="165.9" font-size="15" text-anchor="middle">을 리스트에 모으고</text>
+<text x="128" y="186.9" font-size="15" text-anchor="middle">접수 못 할 요청은 거름</text>
+<rect x="256" y="80" width="208" height="140" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="123.9" font-size="16" text-anchor="middle" font-weight="700">실습 4-2 · 승인 · 반려</text>
+<text x="360" y="144.9" font-size="15" text-anchor="middle">보안 담당이 결정</text>
+<text x="360" y="165.9" font-size="15" text-anchor="middle">이미 처리한 요청서는</text>
+<text x="360" y="186.9" font-size="15" text-anchor="middle">다시 처리 못 함</text>
+<path d="M232,150 L254,150" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p01)"/>
+<rect x="488" y="80" width="208" height="140" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="592" y="123.9" font-size="16" text-anchor="middle" font-weight="700">실습 4-3 · 부여</text>
+<text x="592" y="144.9" font-size="15" text-anchor="middle">evaluate_access 로</text>
+<text x="592" y="165.9" font-size="15" text-anchor="middle">한 번 더 확인하고</text>
+<text x="592" y="186.9" font-size="15" text-anchor="middle">통과한 것만 예외 권한</text>
+<path d="M464,150 L486,150" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p01)"/>
+<rect x="24" y="244" width="672" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="275.4" font-size="15" text-anchor="middle">Unit 2 · 3 에서 만든 evaluate_access(policy.py) 와 예외 권한을 그대로 씀</text>
+<text x="24" y="334" font-size="15" fill="#666660">깃허브에 올리는 일은 Unit 5 실습 5-2 마지막에 한 번에 합니다</text>
+</g>
+</svg>

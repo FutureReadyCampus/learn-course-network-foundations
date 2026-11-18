@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>앞 실습 파일 완성본 세 개의 위치와 서로 불러 쓰는 관계</title>
+<desc>conditions.json 은 config 폴더에, conditional.py 와 access_server.py 는 access_control 폴더에 둔다. access_server.py 는 conditional.py 를, conditional.py 는 Unit 2의 policy.py 와 Unit 3의 config_loader.py 를 불러 쓴다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">앞 실습 파일 완성본 · 위치와 관계</text>
+<rect x="20" y="60" width="200" height="90" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="120" y="99.5" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">access_server.py</text>
+<text x="120" y="122.7" font-size="15" fill="#292929" text-anchor="middle">실습 9-2 완성본</text>
+<polyline points="221,105 279,105" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<text x="250" y="94" font-size="14" fill="#666660" text-anchor="middle">import</text>
+<rect x="280" y="60" width="200" height="90" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="380" y="99.5" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">conditional.py</text>
+<text x="380" y="122.7" font-size="15" fill="#292929" text-anchor="middle">실습 9-1 완성본</text>
+<polyline points="481,85 519,72" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<polyline points="481,125 519,138" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="520" y="50" width="180" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="610" y="80.2" font-size="15" fill="#292929" text-anchor="middle">policy.py · Unit 2</text>
+<rect x="520" y="112" width="180" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="610" y="142.2" font-size="15" fill="#292929" text-anchor="middle">config_loader.py</text>
+<polyline points="380,151 380,199" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<text x="392" y="182" font-size="14" fill="#666660">load_rules 로 읽음</text>
+<rect x="280" y="200" width="200" height="90" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="380" y="228.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">config/</text>
+<text x="380" y="251.8" font-size="15" fill="#292929" text-anchor="middle">conditions.json</text>
+<text x="380" y="273.6" font-size="15" fill="#292929" text-anchor="middle">실습 9-1 완성본</text>
+<text x="20" y="330" font-size="15" fill="#666660">파일이 없거나 잘 안 될 때 이 코드로 access_control 폴더에 만듭니다.</text>
+<text x="20" y="356" font-size="15" fill="#666660">conditions.json 은 config 폴더 안에 둡니다.</text>
+</g>
+</svg>

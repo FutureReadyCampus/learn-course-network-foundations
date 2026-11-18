@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 390" role="img">
+<title>판정 서버 실패 9개 중 3번 이상인 gaeun 과 dami 의 7개만 먼저 확인한다</title>
+<desc>판정 서버 실패를 사용자별로 나누면 gaeun 3번, dami 4번, seoyeon 2번이다. REPEAT_LIMIT 3 이상인 gaeun 과 dami 의 7개를 먼저 확인하고 seoyeon 의 2건은 이번에 뺀다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
+<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">실패 9개 → 3번 이상인 사용자의 7개</text>
+<rect x="30" y="52" width="200" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="130" y="78.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">gaeun · 3번</text>
+<rect x="30" y="104" width="200" height="32" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="130" y="124.9" font-size="14" fill="#292929" text-anchor="middle">10:05  ACCOUNT:CHANGE</text>
+<rect x="30" y="144" width="200" height="32" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="130" y="164.9" font-size="14" fill="#292929" text-anchor="middle">10:09  ACCOUNT:CHANGE</text>
+<rect x="30" y="184" width="200" height="32" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="130" y="204.9" font-size="14" fill="#292929" text-anchor="middle">10:14  ACCOUNT:CHANGE</text>
+<rect x="30" y="275" width="200" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="130" y="300.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">예 · 먼저 확인</text>
+<rect x="260" y="52" width="200" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="78.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">dami · 4번</text>
+<rect x="260" y="104" width="200" height="32" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="124.9" font-size="14" fill="#292929" text-anchor="middle">11:02  SALES:QUERY</text>
+<rect x="260" y="144" width="200" height="32" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="164.9" font-size="14" fill="#292929" text-anchor="middle">11:03  SALES:QUERY</text>
+<rect x="260" y="184" width="200" height="32" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="204.9" font-size="14" fill="#292929" text-anchor="middle">11:05  SALES:CHANGE</text>
+<rect x="260" y="224" width="200" height="32" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="244.9" font-size="14" fill="#292929" text-anchor="middle">11:08  SALES:QUERY</text>
+<rect x="260" y="275" width="200" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360" y="300.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">예 · 먼저 확인</text>
+<rect x="490" y="52" width="200" height="42" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="590" y="78.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">seoyeon · 2번</text>
+<rect x="490" y="104" width="200" height="32" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="590" y="124.9" font-size="14" fill="#292929" text-anchor="middle">11:40  SETTLE:QUERY</text>
+<rect x="490" y="144" width="200" height="32" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="590" y="164.9" font-size="14" fill="#292929" text-anchor="middle">18:20  SALES:CHANGE</text>
+<rect x="490" y="275" width="200" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="590" y="300.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">아니오 · 이번엔 뺌</text>
+<text x="30" y="350" font-size="15" fill="#292929">먼저 확인 7개 (gaeun 3 + dami 4) · REPEAT_LIMIT = 3 이상</text>
+<text x="30" y="376" font-size="15" fill="#666660">행동 종류와 상관없이 실패 횟수만 셉니다.</text>
+</g>
+</svg>

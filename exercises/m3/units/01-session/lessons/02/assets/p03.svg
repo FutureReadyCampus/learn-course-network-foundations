@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 370" role="img">
+<title>seoyeon 은 인증을 통과했지만 인가에서 SETTLE:QUERY 권한이 없어 거부된다</title>
+<desc>인증은 누구인지 확인하고 인가는 이 일을 해도 되는지 정한다. seoyeon 은 비밀번호로 인증됐지만 sales 역할에 SETTLE:QUERY 권한이 없으므로 인가에서 거부된다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">인증을 통과해도 인가에서 막힌다</text>
+<rect x="20" y="64" width="170" height="100" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="105" y="97.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">요청</text>
+<text x="105" y="119.2" font-size="15" fill="#292929" text-anchor="middle">seoyeon</text>
+<text x="105" y="141.2" font-size="15" fill="#292929" text-anchor="middle">SETTLE:QUERY</text>
+<rect x="230" y="64" width="200" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="330" y="97.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">인증</text>
+<text x="330" y="119.2" font-size="15" fill="#292929" text-anchor="middle">누구인가?</text>
+<text x="330" y="141.2" font-size="15" fill="#292929" text-anchor="middle">비밀번호 · MFA</text>
+<rect x="470" y="64" width="230" height="100" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="585" y="97.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">인가</text>
+<text x="585" y="119.2" font-size="15" fill="#292929" text-anchor="middle">이 일을 해도 되나?</text>
+<text x="585" y="141.2" font-size="15" fill="#292929" text-anchor="middle">역할의 권한 확인</text>
+<polyline points="191,114 229,114" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<polyline points="431,114 469,114" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<polyline points="330,165 330,199" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<polyline points="585,165 585,199" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<rect x="230" y="200" width="200" height="80" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="330" y="234.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">seoyeon 맞음</text>
+<text x="330" y="256.2" font-size="15" fill="#292929" text-anchor="middle">통과</text>
+<rect x="470" y="200" width="230" height="80" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="585" y="223.2" font-size="15" fill="#292929" text-anchor="middle">sales 역할에는</text>
+<text x="585" y="245.2" font-size="15" fill="#292929" text-anchor="middle">SETTLE:QUERY 권한 없음</text>
+<text x="585" y="267.2" font-size="15" fill="#292929" text-anchor="middle">→ 거부</text>
+<rect x="20" y="304" width="680" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="333.2" font-size="15" fill="#292929" text-anchor="middle">앞선 사건: 인증은 됐지만 인가를 확인하는 곳이 없어서 통과했다</text>
+</g>
+</svg>

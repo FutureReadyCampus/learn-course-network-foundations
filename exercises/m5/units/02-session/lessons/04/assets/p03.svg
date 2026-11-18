@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>Unit 1 방식과 안전장치를 건 방식으로 같은 알림을 처리해 잠금 수와 티켓 수를 비교한다</title>
+<desc>세 파일을 만든 뒤 실행하면 단계 1 · 2 는 Unit 1 방식, 단계 3 · 4 는 안전한 방식의 결과가 나온다. 마지막에는 건너뛴 액션과 그 이유가 나온다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 2-3: 같은 알림을 두 방식으로 처리해 비교한다</text>
+<rect x="20" y="60" width="222" height="66" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="131" y="86.475" font-size="15" fill="#292929" text-anchor="middle">bulk_incidents.json</text>
+<text x="131" y="108.225" font-size="15" fill="#292929" text-anchor="middle">퇴사자 알림 7건</text>
+<rect x="20" y="140" width="222" height="86" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="131" y="166.76" font-size="14" fill="#292929" text-anchor="middle">safe_runner.py</text>
+<text x="131" y="187.06" font-size="14" fill="#292929" text-anchor="middle">find_skip_reason (1~4번)</text>
+<text x="131" y="207.36" font-size="14" fill="#292929" text-anchor="middle">safe_run_action (5~7번)</text>
+<rect x="20" y="240" width="222" height="66" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="131" y="266.91" font-size="14" fill="#292929" text-anchor="middle">exercise2-3_run.py</text>
+<text x="131" y="287.21" font-size="14" fill="#292929" text-anchor="middle">건너뜀 골라 출력 (8·9번)</text>
+<rect x="272" y="60" width="204" height="110" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="374" y="97.89" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 1 방식</text>
+<text x="374" y="120.075" font-size="15" fill="#292929" text-anchor="middle">단계 1: 5건 두 번 처리</text>
+<text x="374" y="141.825" font-size="15" fill="#292929" text-anchor="middle">단계 2: 7건 처리</text>
+<rect x="496" y="60" width="204" height="110" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="598" y="87.015" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">안전한 방식</text>
+<text x="598" y="109.2" font-size="15" fill="#292929" text-anchor="middle">단계 3: 5건 두 번 처리</text>
+<text x="598" y="130.95" font-size="15" fill="#292929" text-anchor="middle">단계 4: 7건 처리</text>
+<text x="598" y="152.7" font-size="15" fill="#292929" text-anchor="middle">(최대 3개)</text>
+<rect x="272" y="200" width="428" height="106" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="486" y="225.015" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">읽을 것</text>
+<text x="486" y="247.2" font-size="15" fill="#292929" text-anchor="middle">잠긴 계정 · 티켓 수를 두 방식에서 비교</text>
+<text x="486" y="268.95" font-size="15" fill="#292929" text-anchor="middle">마지막 줄: 건너뛴 액션과 이유</text>
+<text x="486" y="290.7" font-size="15" fill="#292929" text-anchor="middle">(startswith("건너뜀") 으로 고른 기록)</text>
+<polyline points="244,93 270,93" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<polyline points="244,183 486,183 486,140 494,140" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<polyline points="374,172 374,198" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<polyline points="598,172 598,198" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="20" y="360" font-size="14" fill="#666660">safe_runner.py 는 Unit 3 의 실습 3-2 에서 실패 처리를 더해 다시 쓴다</text>
+</g>
+</svg>

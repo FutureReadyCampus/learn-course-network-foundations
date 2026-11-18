@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" role="img">
+<title>설명하는 답은 한 예이며, 내 답과 핵심이 같으면 맞다</title>
+<desc>내 답과 정답의 한 예를 나란히 놓고 핵심이 같은지 봅니다. 핵심이 같으면 표현이 달라도 맞습니다.</desc>
+<defs><marker id="a-m4u01l04-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker><marker id="a-m4u01l04-p01-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0442e"/></marker></defs>
+<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
+<text x="24" y="34" font-size="19" fill="#292929" font-weight="700">정답을 읽는 방법</text>
+<rect x="24" y="56" width="200" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="124.0" y="91.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">내 답</text>
+<rect x="24" y="140" width="200" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="124.0" y="175.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">정답 (한 예)</text>
+<line x1="224" y1="86" x2="286" y2="120" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l04-p01)"/>
+<line x1="224" y1="170" x2="286" y2="140" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l04-p01)"/>
+<rect x="290" y="95" width="200" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="390.0" y="135.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">핵심이 같은가?</text>
+<line x1="490" y1="130" x2="532" y2="130" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l04-p01)"/>
+<text x="511" y="120" font-size="14" fill="#666660" text-anchor="middle">같다</text>
+<rect x="536" y="95" width="160" height="70" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="616.0" y="135.2" font-size="15" fill="#1f7a4a" text-anchor="middle" font-weight="700">맞습니다</text>
+<text x="24" y="250" font-size="15" fill="#666660">표현이나 문장 순서는 달라도 됩니다.</text>
+</g>
+</svg>

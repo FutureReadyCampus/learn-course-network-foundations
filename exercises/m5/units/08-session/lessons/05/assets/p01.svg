@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img">
+<title>정답은 채운 코드 · 결과 · 왜 · 자주 틀리는 곳 · 관제에서는 순서로 읽는다</title>
+<desc>정답마다 다섯 부분이 같은 순서로 나옵니다. 답은 한 예라서 핵심이 같으면 맞고, 자주 틀리는 곳은 번호 줄을 지우고 실행한 결과입니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p01r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p01g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p01b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">정답을 보는 방법</tspan></text>
+<rect x="20" y="60" width="116" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="78.0" y="99.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="78.0" font-weight="bold">채운 코드</tspan></text>
+<line x1="138" y1="95" x2="160" y2="95" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="162" y="60" width="116" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="220.0" y="99.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="220.0" font-weight="bold">결과</tspan></text>
+<line x1="280" y1="95" x2="302" y2="95" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="304" y="60" width="116" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="362.0" y="99.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="362.0" font-weight="bold">왜</tspan></text>
+<line x1="422" y1="95" x2="444" y2="95" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="446" y="60" width="116" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="504.0" y="89.3" font-size="15" text-anchor="middle" fill="#292929"><tspan x="504.0">자주</tspan><tspan x="504.0" dy="21.0">틀리는 곳</tspan></text>
+<line x1="564" y1="95" x2="586" y2="95" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="588" y="60" width="116" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="646.0" y="99.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="646.0" font-weight="bold">관제에서는</tspan></text>
+<rect x="20" y="160" width="330" height="116" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="185.0" y="191.3" font-size="15" text-anchor="middle" fill="#292929"><tspan x="185.0" font-weight="bold">맞는 답</tspan><tspan x="185.0" dy="21.0">핵심이 같으면 맞음</tspan><tspan x="185.0" dy="21.0">줄 수가 달라도</tspan><tspan x="185.0" dy="21.0">주석이 말한 일을 하면 맞음</tspan></text>
+<rect x="370" y="160" width="330" height="116" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="535.0" y="191.3" font-size="15" text-anchor="middle" fill="#292929"><tspan x="535.0" font-weight="bold">자주 틀리는 곳 읽기</tspan><tspan x="535.0" dy="21.0">번호 줄을 지우고</tspan><tspan x="535.0" dy="21.0">실행한 결과를</tspan><tspan x="535.0" dy="21.0">내 출력과 비교</tspan></text>
+</g>
+</svg>

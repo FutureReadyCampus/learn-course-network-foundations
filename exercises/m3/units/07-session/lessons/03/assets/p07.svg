@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img"><title>마무리 정리: 확인하고, 올리고, 브라우저에서 다시 확인한다</title><desc>올릴 파일은 git status 로 먼저 확인하고 .env 나 .venv 가 보이면 멈춘다. git add, commit, push 로 올린 뒤 브라우저에서 파일이 모두 있는지 본다.</desc><defs><marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">마무리 정리</text>
+<rect x="20" y="80" width="190" height="120" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="2"/>
+<text x="115" y="124.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">올릴 파일 확인</text>
+<text x="115" y="145.25" font-size="15" fill="#292929" text-anchor="middle">git status</text>
+<text x="115" y="166.25" font-size="14" fill="#666660" text-anchor="middle">.env · .venv 면 멈춤</text>
+<line x1="214" y1="140.0" x2="249" y2="140.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<rect x="255" y="80" width="210" height="120" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
+<text x="360" y="113.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">올리기</text>
+<text x="360" y="134.75" font-size="15" fill="#292929" text-anchor="middle">git add .</text>
+<text x="360" y="155.75" font-size="15" fill="#292929" text-anchor="middle">git commit -m "…"</text>
+<text x="360" y="176.75" font-size="15" fill="#292929" text-anchor="middle">git push</text>
+<line x1="469" y1="140.0" x2="504" y2="140.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<rect x="510" y="80" width="190" height="120" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="2"/>
+<text x="605" y="124.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">올린 뒤</text>
+<text x="605" y="145.25" font-size="15" fill="#292929" text-anchor="middle">브라우저에서</text>
+<text x="605" y="166.25" font-size="14" fill="#666660" text-anchor="middle">파일이 모두 있나</text>
+<text x="360" y="250" font-size="15" fill="#666660" text-anchor="middle">거절(rejected)되면 git pull 로 받아 온 뒤 git push 를 다시 한다</text>
+</g>
+</svg>

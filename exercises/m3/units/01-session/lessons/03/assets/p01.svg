@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>check_permission 은 요청과 두 설정 파일을 받아 허용 여부와 이유를 리턴한다</title>
+<desc>rbac.py 의 check_permission 은 사용자, 자원, 행위를 받고 users.json 과 roles.json 을 참고한다. 결과는 (True, 허용) 이나 (False, 이유) 모양이고, 이유는 감사 때 설명하는 근거가 된다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 1-2 · check_permission 이 하는 일</text>
+<rect x="20" y="56" width="220" height="110" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="130" y="83.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">요청</text>
+<text x="130" y="105.2" font-size="15" fill="#292929" text-anchor="middle">사용자 · 자원 · 행위</text>
+<text x="130" y="127.2" font-size="15" fill="#292929" text-anchor="middle">seoyeon</text>
+<text x="130" y="149.2" font-size="15" fill="#292929" text-anchor="middle">SETTLE · QUERY</text>
+<rect x="20" y="186" width="220" height="100" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="130" y="219.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">config/</text>
+<text x="130" y="241.2" font-size="15" fill="#292929" text-anchor="middle">users.json</text>
+<text x="130" y="263.2" font-size="15" fill="#292929" text-anchor="middle">roles.json</text>
+<rect x="290" y="116" width="190" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="385" y="154.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">rbac.py</text>
+<text x="385" y="176.2" font-size="15" fill="#292929" text-anchor="middle">check_permission</text>
+<text x="385" y="198.2" font-size="15" fill="#292929" text-anchor="middle">검사 [1] ~ [4]</text>
+<rect x="530" y="76" width="170" height="70" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="615" y="106.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">허용이면</text>
+<text x="615" y="125.9" font-size="14" fill="#292929" text-anchor="middle">(True, "허용")</text>
+<rect x="530" y="186" width="170" height="70" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="615" y="216.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">거부면</text>
+<text x="615" y="235.9" font-size="14" fill="#292929" text-anchor="middle">(False, "권한 없음")</text>
+<polyline points="241,111 289,150" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="241,236 289,194" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="481,150 529,111" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="481,194 529,221" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<text x="615" y="284" font-size="14" fill="#666660" text-anchor="middle">이유가 감사 기록이 된다</text>
+<text x="20" y="320" font-size="15" fill="#666660">끝나면: 보고서 (가) ~ (다)</text>
+</g>
+</svg>

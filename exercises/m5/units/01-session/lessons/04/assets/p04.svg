@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>git status에서 비밀 파일이 없는지 보고 __pycache__는 .gitignore로 뺀 뒤 깃허브에서 확인한다</title>
+<desc>정답 마무리의 한 예다. git status에서 .env와 .venv는 보이지 않았고 __pycache__는 .gitignore에 적어 뺐다. 깃허브에는 soar_response 폴더와 config, incident.py, playbook_runner.py, action_log.json이 보이면 된다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">정답 마무리 (한 예)</text>
+<rect x="20.0" y="56" width="206.7" height="110" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text y="95.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="123.35" dy="0.0" font-weight="700">git status</tspan><tspan x="123.35" dy="21.0">.env · .venv</tspan><tspan x="123.35" dy="21.0">보이지 않음</tspan></text>
+<rect x="256.7" y="56" width="206.7" height="110" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="95.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.04999999999995" dy="0.0" font-weight="700">__pycache__ 보임</tspan><tspan x="360.04999999999995" dy="21.0">.gitignore 맨 아래에</tspan><tspan x="360.04999999999995" dy="21.0">__pycache__/ 추가</tspan></text>
+<line x1="229.7" y1="111.0" x2="252.7" y2="111.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="493.3" y="56" width="206.7" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="95.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="596.65" dy="0.0" font-weight="700">다시 git status</tspan><tspan x="596.65" dy="21.0">확인 후</tspan><tspan x="596.65" dy="21.0">add · commit · push</tspan></text>
+<line x1="466.3" y1="111.0" x2="489.3" y2="111.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="20" y="196" width="680" height="120" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="240.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0" font-weight="700">깃허브의 soar_response 폴더에 보이면 성공</tspan><tspan x="360.0" dy="21.0">config/</tspan><tspan x="360.0" dy="21.0">incident.py · playbook_runner.py · action_log.json</tspan></text>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 610" role="img">
+<title>generate_report 는 권한마다 이유를 모아 이유가 있는 권한만 후보로 담아 리포트를 만든다</title>
+<desc>미리 채운 두 줄로 stale_reason 과 unused_keys 를 만든 뒤, 현황의 권한을 한 건씩 꺼내 식별 키로 collect_reasons 를 부릅니다. reasons 가 하나라도 있으면 복사본에 reasons 키를 적어 findings 에 추가합니다. 모든 권한을 꺼낸 뒤 리포트 딕셔너리를 리턴합니다.</desc>
+<defs><marker id="a-f01-0702" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" font-size="14" fill="#292929">
+<rect x="56" y="14" width="420" height="48" rx="4" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="266.0" y="34" text-anchor="middle" font-weight="700">generate_report(access_list, stale, unused,</text>
+<text x="266.0" y="52" text-anchor="middle">days, generated_at)</text>
+<rect x="56" y="84" width="420" height="66" rx="4" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="266.0" y="104" text-anchor="middle">stale_reason = make_stale_reason(stale)</text>
+<text x="266.0" y="122" text-anchor="middle">unused_keys = make_unused_keys(unused)</text>
+<text x="266.0" y="140" text-anchor="middle">(미리 채운 두 줄)</text>
+<polyline points="266.0,62 266.0,83" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0702)"/>
+<rect x="56" y="172" width="420" height="48" rx="4" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="266.0" y="192" text-anchor="middle">findings = []</text>
+<text x="266.0" y="210" text-anchor="middle">후보를 담을 리스트</text>
+<polyline points="266.0,150 266.0,171" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0702)"/>
+<rect x="56" y="242" width="420" height="30" rx="4" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="266.0" y="262" text-anchor="middle">현황의 권한을 한 건씩 꺼내 식별 키(key)를 만든다</text>
+<polyline points="266.0,220 266.0,241" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0702)"/>
+<rect x="56" y="294" width="420" height="66" rx="4" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="266.0" y="314" text-anchor="middle">reasons = collect_reasons(key, …)</text>
+<text x="266.0" y="332" text-anchor="middle">key 가 stale_reason · unused_keys 에 있으면</text>
+<text x="266.0" y="350" text-anchor="middle">이유를 모은다</text>
+<polyline points="266.0,272 266.0,293" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0702)"/>
+<rect x="56" y="382" width="420" height="48" rx="14" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="266.0" y="402" text-anchor="middle">reasons 가 하나라도 있나?</text>
+<text x="266.0" y="420" text-anchor="middle">(len(reasons) &gt; 0)</text>
+<polyline points="266.0,360 266.0,381" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0702)"/>
+<rect x="56" y="452" width="420" height="48" rx="4" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="266.0" y="472" text-anchor="middle">권한을 복사해 reasons 키를 적고</text>
+<text x="266.0" y="490" text-anchor="middle">findings 에 추가한다</text>
+<polyline points="266.0,430 266.0,451" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0702)"/>
+<text x="256.0" y="446.0" text-anchor="end" fill="#666660">있다</text>
+<rect x="56" y="548" width="420" height="48" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="266.0" y="568" text-anchor="middle">리포트 딕셔너리를 리턴한다</text>
+<text x="266.0" y="586" text-anchor="middle">(generated_at · total · finding_count · findings)</text>
+<polyline points="266.0,500 266.0,547" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0702)"/>
+<text x="276.0" y="539" text-anchor="start" fill="#666660">모든 권한을 꺼낸 뒤</text>
+<rect x="520" y="382.0" width="170" height="48" rx="4" fill="#f1f1ef" stroke="#666660" stroke-width="1.5"/>
+<text x="605.0" y="402.0" text-anchor="middle">후보가 아니므로</text>
+<text x="605.0" y="420.0" text-anchor="middle">다음 권한으로</text>
+<polyline points="476,406.0 519,406.0" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0702)"/>
+<text x="498.0" y="399.0" text-anchor="middle" fill="#666660">없다</text>
+<polyline points="690,406.0 706,406.0 706,515 269.0,515" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0702)"/>
+<polyline points="266.0,515 30,515 30,257.0 55,257.0" fill="none" stroke="#666660" stroke-width="1.5" marker-end="url(#a-f01-0702)"/>
+<text x="22" y="386.0" text-anchor="middle" fill="#666660" transform="rotate(-90 22 386.0)">다음 권한으로</text>
+<circle cx="266.0" cy="515" r="3" fill="#666660"/>
+</g></svg>

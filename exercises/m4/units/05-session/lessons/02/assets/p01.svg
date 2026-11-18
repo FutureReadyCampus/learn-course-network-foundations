@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
+<title>웹 서버 이벤트 28개를 분마다 세어 평소의 3배(6번) 이상인 분을 찾는다</title>
+<desc>9시대 웹 서버 이벤트 28개를 분마다 셉니다. 지난 7일 1분 평균 2번의 3배인 6번 이상이면 급증입니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">요청이 급증한 분을 찾는다</text>
+<rect x="20" y="64" width="140" height="100" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="90.0" y="109" font-size="15" text-anchor="middle" fill="#292929"><tspan x="90.0" dy="0" font-weight="700">웹 서버 이벤트</tspan><tspan x="90.0" dy="20">28개 (9시대)</tspan></text>
+<rect x="200" y="64" width="140" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="270.0" y="109" font-size="15" text-anchor="middle" fill="#292929"><tspan x="270.0" dy="0" font-weight="700">분마다</tspan><tspan x="270.0" dy="20">요청 수 세기</tspan></text>
+<rect x="380" y="64" width="140" height="100" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="450.0" y="109" font-size="15" text-anchor="middle" fill="#292929"><tspan x="450.0" dy="0" font-weight="700">평소 2번의 3배</tspan><tspan x="450.0" dy="20">6번 이상인가?</tspan></text>
+<rect x="560" y="64" width="140" height="100" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="630.0" y="109" font-size="15" text-anchor="middle" fill="#292929"><tspan x="630.0" dy="0" font-weight="700">6번 이상인 분</tspan><tspan x="630.0" dy="20">= 급증</tspan></text>
+<polyline points="163,114.0 196,114.0" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<polyline points="343,114.0 376,114.0" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<polyline points="523,114.0 556,114.0" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="20" y="200" width="680" height="96" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="243" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0">하루 전체 요청 수로는 1분 동안의 급증이 보이지 않는다</tspan><tspan x="360.0" dy="20">요청이 갑자기 늘면 서버가 느려지거나 멈출 수 있고, 공격 징후일 수도 있다</tspan></text>
+</g>
+</svg>

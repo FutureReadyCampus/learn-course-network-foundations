@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>실습 3-1 은 audit.py, approvals.py, 실행 파일로 결정을 적용하고 네 단계를 출력한다</title>
+<desc>pending.json 과 decisions.json 을 읽어 approvals.py 가 권한을 확인하고 결정을 적용하며, audit.py 가 기록 한 건을 만든다. 실행하면 단계 1~4 가 나온다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 3-1 에서 만드는 것: 세 파일과 네 단계 출력</text>
+<rect x="20" y="56" width="170" height="130" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="105" y="85.04" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">입력</text>
+<text x="105" y="106.21" font-size="14" fill="#292929" text-anchor="middle">pending.json</text>
+<text x="105" y="126.51" font-size="14" fill="#292929" text-anchor="middle">승인 대기 3건</text>
+<text x="105" y="146.81" font-size="14" fill="#292929" text-anchor="middle">decisions.json</text>
+<text x="105" y="167.11" font-size="14" fill="#292929" text-anchor="middle">담당자 결정 3건</text>
+<rect x="230" y="56" width="250" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="355" y="79.91" font-size="14" fill="#292929" text-anchor="middle">audit.py</text>
+<text x="355" y="100.21" font-size="14" fill="#292929" text-anchor="middle">log_line (1번)</text>
+<rect x="230" y="126" width="250" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="355" y="144.46" font-size="14" fill="#292929" text-anchor="middle">approvals.py</text>
+<text x="355" y="164.76" font-size="14" fill="#292929" text-anchor="middle">is_authorized (2번)</text>
+<text x="355" y="185.06" font-size="14" fill="#292929" text-anchor="middle">execute_actions (3번)</text>
+<text x="355" y="205.36" font-size="14" fill="#292929" text-anchor="middle">apply_decision (4·5번)</text>
+<text x="355" y="225.66" font-size="14" fill="#292929" text-anchor="middle">finish_decision (6·7번)</text>
+<rect x="230" y="246" width="250" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="355" y="269.91" font-size="14" fill="#292929" text-anchor="middle">exercise3-1_run.py</text>
+<text x="355" y="290.21" font-size="14" fill="#292929" text-anchor="middle">결정이 있으면 적용 (8·9번)</text>
+<rect x="520" y="56" width="180" height="250" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="610" y="104.44" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">출력</text>
+<text x="610" y="125.61" font-size="14" fill="#292929" text-anchor="middle">단계 1</text>
+<text x="610" y="145.91" font-size="14" fill="#292929" text-anchor="middle">승인 대기 건 3줄</text>
+<text x="610" y="166.21" font-size="14" fill="#292929" text-anchor="middle">단계 2</text>
+<text x="610" y="186.51" font-size="14" fill="#292929" text-anchor="middle">결정 적용 결과 3줄</text>
+<text x="610" y="206.81" font-size="14" fill="#292929" text-anchor="middle">단계 3</text>
+<text x="610" y="227.11" font-size="14" fill="#292929" text-anchor="middle">연습용 시스템 3줄</text>
+<text x="610" y="247.41" font-size="14" fill="#292929" text-anchor="middle">단계 4</text>
+<text x="610" y="267.71" font-size="14" fill="#292929" text-anchor="middle">감사 기록 4줄</text>
+<polyline points="192,115 228,115" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<polyline points="482,181 518,181" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="20" y="344" font-size="14" fill="#666660">audit.py · approvals.py 는 실습 3-2 의 flow.py 가 다시 불러 쓴다</text>
+</g>
+</svg>

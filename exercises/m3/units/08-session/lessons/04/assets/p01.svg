@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>목표: 승인 대기를 뺀 계획만 실행하고, 전후 판정을 비교하고, 회수 이력을 남깁니다</title>
+<desc>execute_revocation 은 승인 대기인 계획은 건너뛰고 나머지를 apply_plan 으로 실행합니다. 실행 뒤 evaluate_access 로 같은 사용자와 권한을 다시 판정하고, 이력을 revocation_log.json 에 저장합니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">목표 — 회수 실행, 전후 판정, 회수 이력</text>
+<rect x="20" y="80" width="170" height="100" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="105" y="124.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">계획 8건</text>
+<text x="105" y="145.8" font-size="15" fill="#292929" text-anchor="middle">+ approval</text>
+<path d="M190 130 L226 130" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="230" y="80" width="220" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="340" y="114.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">execute_revocation</text>
+<text x="340" y="135.2" font-size="15" fill="#292929" text-anchor="middle">승인 대기는 건너뛰고</text>
+<text x="340" y="156.2" font-size="15" fill="#292929" text-anchor="middle">나머지는 apply_plan</text>
+<path d="M450 115 L488 88" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<path d="M450 130 L488 158" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<path d="M450 145 L488 228" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="490" y="60" width="210" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="595" y="93.2" font-size="15" fill="#292929" text-anchor="middle">실행 · 대기 결과</text>
+<rect x="490" y="130" width="210" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="595" y="163.2" font-size="15" fill="#292929" text-anchor="middle">회수 전후 판정 비교</text>
+<rect x="490" y="200" width="210" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="595" y="233.2" font-size="15" fill="#292929" text-anchor="middle">revocation_log.json</text>
+<rect x="20" y="280" width="680" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="360" y="307.2" font-size="15" fill="#292929" text-anchor="middle">evaluate_access 로 같은 사용자 · 권한을 다시 판정해 정말 막혔는지 확인</text>
+</g>
+</svg>
