@@ -1,46 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>질문 하나를 골라 세 문장으로 답하고, 필요할 때만 AI 도우미로 정리합니다</title>
-<desc>먼저 공통 질문이나 Unit 끝의 글감 질문 중 하나를 고르고, 답을 세 문장으로 씁니다. 필요하면 코드 설명 정리, 초안 다듬기, 내 글 점검 도우미에 붙여 넣습니다. 붙이기 전에 비밀키·개인정보를 빼고, 내 코드와 내 생각만 바탕으로 합니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>첫 화면이 이렇게 보이면 성공이고, 막히면 Actions 탭에서 오류 줄을 읽습니다</title>
+<desc>왼쪽은 완성된 첫 화면입니다. 위쪽에 사이트 이름과 소개·홈 메뉴, 소개 문단, Module 3·4·5 각 10칸이 모두 회색인 나의 진행, 샘플 글 한 편이 있는 최신 글이 보입니다. 오른쪽은 확인할 세 가지와, 막힐 때 Actions 탭에서 가장 위 실행을 열어 빨간 ✗이면 오류 줄을 읽는 순서입니다.</desc>
 <defs>
 <marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
 </defs>
-<text x="20" y="30" font-size="19" font-weight="700" fill="#292929">막힐 때는 질문 하나부터</text>
-
+<text x="20" y="30" font-size="19" font-weight="700" fill="#292929">첫 화면 확인과 막힐 때 볼 곳</text>
 <g font-size="15" fill="#292929">
-<rect x="10" y="52" width="210" height="220" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="26" y="82" font-size="16" font-weight="700">① 질문 고르기</text>
-<rect x="26" y="100" width="178" height="68" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="40" y="128">공통 질문 10개</text>
-<text x="40" y="152" font-size="14" fill="#666660">아무 실습에나</text>
-<rect x="26" y="184" width="178" height="68" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="40" y="212">Unit 끝 글감 질문</text>
-<text x="40" y="236" font-size="14" fill="#666660">「내 기록 남기기」</text>
-
-<rect x="255" y="52" width="210" height="220" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="271" y="82" font-size="16" font-weight="700">② 답을 세 문장으로</text>
-<text x="271" y="120">블로그처럼 가볍게</text>
-<text x="271" y="150">막힌 이야기도 좋음</text>
-<text x="271" y="180">나중에 고쳐도 됨</text>
-<text x="271" y="240" font-size="14" fill="#666660">여기까지만 해도 글 한 편</text>
-
-<rect x="500" y="52" width="210" height="220" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="516" y="82" font-size="16" font-weight="700">③ AI 도우미</text>
-<text x="516" y="104" font-size="14" fill="#666660">필요할 때만</text>
-<rect x="516" y="118" width="178" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="530" y="143">1. 코드 설명 정리</text>
-<rect x="516" y="168" width="178" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="530" y="193">2. 초안 다듬기</text>
-<rect x="516" y="218" width="178" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="530" y="243">3. 내 글 점검</text>
-
-<rect x="10" y="296" width="700" height="92" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="26" y="324" font-size="16" font-weight="700">붙여 넣기 전에</text>
-<text x="26" y="350">비밀키·토큰·이메일·이름은 넣지 않습니다. [ ] 부분만 내 것으로 바꿉니다.</text>
-<text x="26" y="374">내 코드와 내 생각만 바탕으로 합니다. 대신 써 준 글은 내 글이 아닙니다.</text>
+<rect x="20" y="50" width="400" height="344" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<path d="M20 90H420" stroke="#dededb"/>
+<text x="36" y="76" font-size="16" font-weight="700">사이트 이름</text>
+<text x="324" y="76">소개</text>
+<text x="372" y="76">홈</text>
+<text x="36" y="116" font-size="14" fill="#666660">소개 문단</text>
+<rect x="36" y="126" width="360" height="10" rx="5" fill="#f1f1ef"/>
+<rect x="36" y="144" width="280" height="10" rx="5" fill="#f1f1ef"/>
+<text x="36" y="184" font-weight="700">나의 진행</text>
+<text x="36" y="212" font-size="14">Module 3</text>
+<text x="36" y="242" font-size="14">Module 4</text>
+<text x="36" y="272" font-size="14">Module 5</text>
+<g fill="#dededb">
+<rect x="112" y="196" width="22" height="22" rx="3"/><rect x="138" y="196" width="22" height="22" rx="3"/><rect x="164" y="196" width="22" height="22" rx="3"/><rect x="190" y="196" width="22" height="22" rx="3"/><rect x="216" y="196" width="22" height="22" rx="3"/><rect x="242" y="196" width="22" height="22" rx="3"/><rect x="268" y="196" width="22" height="22" rx="3"/><rect x="294" y="196" width="22" height="22" rx="3"/><rect x="320" y="196" width="22" height="22" rx="3"/><rect x="346" y="196" width="22" height="22" rx="3"/>
+<rect x="112" y="226" width="22" height="22" rx="3"/><rect x="138" y="226" width="22" height="22" rx="3"/><rect x="164" y="226" width="22" height="22" rx="3"/><rect x="190" y="226" width="22" height="22" rx="3"/><rect x="216" y="226" width="22" height="22" rx="3"/><rect x="242" y="226" width="22" height="22" rx="3"/><rect x="268" y="226" width="22" height="22" rx="3"/><rect x="294" y="226" width="22" height="22" rx="3"/><rect x="320" y="226" width="22" height="22" rx="3"/><rect x="346" y="226" width="22" height="22" rx="3"/>
+<rect x="112" y="256" width="22" height="22" rx="3"/><rect x="138" y="256" width="22" height="22" rx="3"/><rect x="164" y="256" width="22" height="22" rx="3"/><rect x="190" y="256" width="22" height="22" rx="3"/><rect x="216" y="256" width="22" height="22" rx="3"/><rect x="242" y="256" width="22" height="22" rx="3"/><rect x="268" y="256" width="22" height="22" rx="3"/><rect x="294" y="256" width="22" height="22" rx="3"/><rect x="320" y="256" width="22" height="22" rx="3"/><rect x="346" y="256" width="22" height="22" rx="3"/>
 </g>
-
-<g stroke="#666660" stroke-width="2" fill="none" marker-end="url(#a-p07)">
-<path d="M222 162H251"/>
-<path d="M467 162H496"/>
+<text x="36" y="314" font-weight="700">최신 글</text>
+<rect x="36" y="326" width="360" height="40" rx="6" fill="#f1f1ef"/>
+<text x="50" y="351">샘플 글 한 편</text>
+<text x="382" y="351" font-size="14" fill="#666660" text-anchor="end">sample: true</text>
+<text x="36" y="386" font-size="14" fill="#666660">Unit 1~10 칸 모두 회색</text>
+<rect x="440" y="50" width="260" height="190" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="456" y="76" font-size="16" font-weight="700">이렇게 보이면 성공</text>
+<text x="456" y="104">① Settings → Pages에</text>
+<text x="476" y="124">Your site is live at</text>
+<text x="456" y="154">② 주소를 열면</text>
+<text x="476" y="174">왼쪽 같은 화면</text>
+<text x="456" y="204">③ 위쪽 소개를 누르면</text>
+<text x="476" y="224">about.md 내용</text>
+<rect x="440" y="256" width="260" height="138" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="456" y="282" font-size="16" font-weight="700">막힐 때</text>
+<text x="456" y="308">Actions 탭</text>
+<text x="476" y="332">가장 위 실행</text>
+<text x="476" y="356">빨간 ✗이면 눌러서</text>
+<text x="476" y="378">오류 줄 읽기</text>
+</g>
+<g stroke="#666660" stroke-width="1.5" marker-end="url(#a-p07)">
+<line x1="462" y1="314" x2="470" y2="326"/>
+<line x1="462" y1="338" x2="470" y2="350"/>
 </g>
 </svg>
