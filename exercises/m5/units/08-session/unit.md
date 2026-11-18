@@ -1,0 +1,13 @@
+---
+id: m5-u08
+title: 초동 대응 리포트와 승인 게이트
+lessons:
+- path: lessons/01/lesson.md
+- path: lessons/02/lesson.md
+- path: lessons/03/lesson.md
+- path: lessons/04/lesson.md
+- path: lessons/05/lesson.md
+- path: lessons/06/lesson.md
+---
+
+# 초동 대응 리포트와 승인 게이트

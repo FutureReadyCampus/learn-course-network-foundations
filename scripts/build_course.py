@@ -459,7 +459,75 @@ def authored_reading_pages(path: Path, lesson_meta: dict, animation_assets: dict
     return pages
 
 
+# Exercise Lessons mark where to work with `**[터미널]**`-style tags; show them as small icons.
+_ICON_PATHS = {
+    "터미널": ("#1f2937", '<path d="M6 8l4 4-4 4" /><path d="M12.5 16.5H18" />'),
+    "VS Code": ("#1e78d6", '<path d="M9.5 8L5.5 12l4 4" /><path d="M14.5 8l4 4-4 4" /><path d="M13 7l-2 10" />'),
+    "보고서": ("#c2410c", '<path d="M8 5.5h6l3 3V18.5H8z" /><path d="M10.5 12h4.5M10.5 15h4.5" />'),
+    "브라우저": ("#0f766e", '<circle cx="12" cy="12" r="6.5" /><path d="M5.5 12h13M12 5.5c2.2 2.6 2.2 10.4 0 13M12 5.5c-2.2 2.6-2.2 10.4 0 13" />'),
+}
+
+
+def _app_icon(name: str, badge: str = "") -> str:
+    color, glyph = _ICON_PATHS[name]
+    label = f"{name} {badge}".strip()
+    num = f'<b class="app-n">{badge}</b>' if badge else ""
+    return (f'<span class="app-icon" role="img" aria-label="{label}" title="{label}">'
+            f'<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect x="1" y="1" width="22" height="22" rx="5" fill="{color}"/>'
+            f'<g fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">{glyph}</g></svg>{num}</span>')
+
+
+def iconize(html: str) -> str:
+    """Turn <strong>[터미널]</strong> style tags into icons; add a one-line legend for the icons on the page."""
+    import re as _re
+
+    used: list[str] = []
+
+    def one(match: "re.Match[str]") -> str:
+        text = match.group(1).strip()
+        pair = _re.fullmatch(r"VS Code 또는 터미널", text)
+        if pair:
+            used.extend(["VS Code", "터미널"])
+            return f'<span class="app-pair">{_app_icon("VS Code")}<span class="app-or">/</span>{_app_icon("터미널")}</span>'
+        numbered = _re.fullmatch(r"터미널 (\d)", text)
+        if numbered:
+            used.append("터미널")
+            return _app_icon("터미널", numbered.group(1))
+        if text in _ICON_PATHS:
+            used.append(text)
+            return _app_icon(text)
+        return match.group(0)
+
+    out = _re.sub(r"<strong>\[([^\]<]{1,14})\]</strong>", one, html)
+    if used:
+        names = list(dict.fromkeys(used))
+        legend = " · ".join(f'{_app_icon(n)} {n}' for n in names)
+        out = f'<p class="app-legend">표시 안내: {legend}</p>' + out
+    return out
+
+
+def markdown_pages(path: Path) -> list[dict]:
+    """Exercise Lessons: each `## ` heading (outside code fences) is a Page rendered from full Markdown."""
+    from markdown_it import MarkdownIt
+
+    md = MarkdownIt("commonmark", {"html": True}).enable("table")
+    _, source = read_front_matter(path)
+    sections, fenced = [], False
+    for line in source.split("\n"):
+        fenced ^= line.startswith("```")
+        if not fenced and line.startswith("## "):
+            sections.append([line[3:].strip(), []])
+        elif sections:
+            sections[-1][1].append(line)
+    if not sections:
+        raise ValueError(f"Lesson source has no Page headings: {path}")
+    return [{"title": title, "paragraphs": [], "html": iconize(md.render("\n".join(body))), "terms": [], "questions": []}
+            for title, body in sections]
+
+
 def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list[dict]:
+    if lesson_meta.get("render") == "markdown":
+        return markdown_pages(path)
     if "pages" in lesson_meta and "concepts" in lesson_meta:
         return authored_reading_pages(path, lesson_meta, animation_assets)
     source = path.read_text(encoding="utf-8")
@@ -618,8 +686,9 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
     return pages
 
 
-def build(source_revision: str = "local-draft", source_label: str = "local draft") -> dict:
-    course_meta = yaml.safe_load((ROOT / "course.yaml").read_text(encoding="utf-8"))
+def build(source_revision: str = "local-draft", source_label: str = "local draft", course_file: Path | None = None) -> dict:
+    course_file = course_file or ROOT / "course.yaml"
+    course_meta = yaml.safe_load(course_file.read_text(encoding="utf-8"))
     units = []
     for item in course_meta["units"]:
         unit_path = ROOT / item["path"]
@@ -668,7 +737,7 @@ def build(source_revision: str = "local-draft", source_label: str = "local draft
             exclusions.extend((lesson["id"], page["term_exclude"]) for page in lesson["pages"] if "term_exclude" in page)
     lessons = [lesson for _, _, lesson in sorted(lessons, key=lambda item: (item[0], item[1]))]
     active_units = {lesson["unit"] for lesson in lessons}
-    built = build_glossary(ROOT, page_ids)
+    built = build_glossary(course_file.parent, page_ids)
     if built:
         validate_term_excludes(exclusions, set(built[1]))
     catalog = {

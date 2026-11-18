@@ -10,6 +10,7 @@ lessons:
 - path: lessons/restructured/02-인라인-구조와-트래픽-처리/lesson.md
 - path: lessons/restructured/03-경로-밖-관찰과-dpi/lesson.md
 - path: lessons/restructured/04-조직의-포워드-프록시와-접속-정책/lesson.md
-- path: lessons/restructured/05-PC의-로컬-프록시로-통신-살펴보기/lesson.md
-- path: lessons/restructured/06-리버스-프록시와-서버-앞단/lesson.md
+- path: lessons/restructured/05-회사-프록시의-검사와-기록/lesson.md
+- path: lessons/restructured/06-PC의-로컬-프록시로-통신-살펴보기/lesson.md
+- path: lessons/restructured/07-리버스-프록시와-서버-앞단/lesson.md
 ---

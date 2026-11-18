@@ -4,8 +4,11 @@
 from __future__ import annotations
 
 import argparse
+from html import escape as html_escape
 import json
 import shutil
+
+import yaml
 from urllib.parse import quote
 from pathlib import Path
 
@@ -15,21 +18,8 @@ from build_course import ROOT, build
 SITE = ROOT / "site"
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, default=SITE / "dist")
-    parser.add_argument("--baseurl", default="", help="GitHub Pages project prefix, e.g. /learn-course-network-foundations")
-    parser.add_argument("--source-revision", default="local-draft")
-    parser.add_argument("--source-label", default="develop local preview")
-    args = parser.parse_args()
-
-    output = args.output.resolve()
-    if output.exists():
-        shutil.rmtree(output)
+def emit(course: dict, output: Path, baseurl: str, revision: str, dispatch: dict | None = None, site: str = "", no_copy: bool = False) -> None:
     output.mkdir(parents=True)
-    baseurl = "/" + args.baseurl.strip("/") if args.baseurl.strip("/") else ""
-    course = build(args.source_revision, args.source_label)
-
     for lesson in course["lessons"]:
         for page in lesson.get("pages", []):
             for illustration in page.get("illustrations", []):
@@ -55,15 +45,60 @@ def main() -> None:
     for name in ("reader.css", "reader.js"):
         shutil.copyfile(SITE / "assets" / name, output / "assets" / name)
 
-    html = (SITE / "index.html").read_text(encoding="utf-8")
-    html = html.replace('window.NETWORK_SITE_BASE = "";', f'window.NETWORK_SITE_BASE = {json.dumps(baseurl)};')
-    revision_query = f"?v={quote(args.source_revision, safe='')}"
+    html = (SITE / "index.html").read_text(encoding="utf-8").replace("__SITE__", site)
+    if baseurl.count("/exercises/"):  # exercise reader: show its own course title
+        html = html.replace("외워서 공부하는 네트워크", html_escape(course["title"]))
+    html = html.replace('window.NETWORK_SITE_BASE = "";', f'window.NETWORK_SITE_BASE = {json.dumps(baseurl)};' + (" window.NETWORK_NO_COPY = true;" if no_copy else ""))
+    revision_query = f"?v={quote(revision, safe='')}"
     html = html.replace('window.NETWORK_COURSE_URL = "/data/course.json";', f'window.NETWORK_COURSE_URL = {json.dumps(baseurl + "/data/course.json" + revision_query)};')
     for name in ("/assets/reader.css", "/assets/reader.js"):
         html = html.replace(f'"{name}"', json.dumps(baseurl + name + revision_query))
     (output / "index.html").write_text(html, encoding="utf-8")
     # GitHub Pages serves this copy for deep links; the reader restores the route from pathname.
+    # The root 404 also serves /exercises/<id>/ deep links, so it switches base and data to that course.
+    if dispatch:
+        script = (f"<script>(function(){{var m=location.pathname.match({json.dumps('^' + baseurl + '/exercises/([^/]+)/')});"
+                  f"var d={json.dumps(dispatch, ensure_ascii=False)};if(m&&d[m[1]]){{window.NETWORK_SITE_BASE={json.dumps(baseurl)}+'/exercises/'+m[1];"
+                  f"window.NETWORK_NO_COPY=true;window.NETWORK_COURSE_URL=window.NETWORK_SITE_BASE+'/data/course.json{revision_query}';"
+                  "document.querySelector('.topbar-course').textContent=d[m[1]];}})();</script></body>")
+        html = html.replace("</body>", script, 1)
     (output / "404.html").write_text(html, encoding="utf-8")
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, default=SITE / "dist")
+    parser.add_argument("--baseurl", default="", help="GitHub Pages project prefix, e.g. /learn-course-network-foundations")
+    parser.add_argument("--source-revision", default="local-draft")
+    parser.add_argument("--source-label", default="develop local preview")
+    args = parser.parse_args()
+
+    output = args.output.resolve()
+    if output.exists():
+        shutil.rmtree(output)
+    baseurl = "/" + args.baseurl.strip("/") if args.baseurl.strip("/") else ""
+    course = build(args.source_revision, args.source_label)
+    # Exercise courses (exercises/<id>/course.yaml) get their own reader copy under /exercises/<id>/.
+    exercises = {f.parent.name: build(args.source_revision, args.source_label, f) for f in sorted((ROOT / "exercises").glob("*/course.yaml"))}
+    emit(course, output, baseurl, args.source_revision, {k: v["title"] for k, v in exercises.items()}, baseurl)
+    for slug, exercise in exercises.items():
+        emit(exercise, output / "exercises" / slug, f"{baseurl}/exercises/{slug}", args.source_revision, site=baseurl, no_copy=True)
+    if exercises:
+        cards = []
+        for slug, exercise in exercises.items():
+            meta = yaml.safe_load((ROOT / "exercises" / slug / "course.yaml").read_text(encoding="utf-8"))["course"]
+            pages = sum(len(lesson["pages"]) for lesson in exercise["lessons"])
+            units = "".join(f"<li>{html_escape(unit['title'])}</li>" for unit in exercise["units"])
+            cards.append(
+                f'<article class="hub-card"><span class="hub-tag">{html_escape(slug.upper())}</span>'
+                f'<h2>{html_escape(meta["title"])}</h2><p>{html_escape(meta.get("description", ""))}</p>'
+                f'<ul class="hub-stats"><li><strong>{len(exercise["units"])}</strong>Units</li>'
+                f'<li><strong>{len(exercise["lessons"])}</strong>Lessons</li><li><strong>{pages}</strong>Pages</li></ul>'
+                f'<details><summary>Unit 목록 보기</summary><ol>{units}</ol></details>'
+                f'<a class="hub-cta" href="{baseurl}/exercises/{slug}/">시작하기</a></article>')
+        page = (SITE / "exercises.html").read_text(encoding="utf-8").replace("__SITE__", baseurl).replace("__CARDS__", "".join(cards))
+        (output / "exercises" / "index.html").write_text(page, encoding="utf-8")
+
     print(f"Built static reader: {len(course['units'])} Units, {len(course['lessons'])} Lessons at {output}")
 
 

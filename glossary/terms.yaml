@@ -1001,6 +1001,18 @@
   anchor:
     lesson: u10-l02-login-and-session-state
     page: cookie-session
+- id: tls
+  tier: none
+  ko: TLS
+  en: Transport Layer Security
+  aliases:
+  - TLS
+  - 전송 계층 보안(TLS)
+  - TLS(Transport Layer Security)
+  hover: 브라우저와 서버 사이의 통신을 암호화해 지켜 주는 규칙이에요. OSI의 4계층(L4)과는 다른 이야기예요.
+  anchor:
+    lesson: u10-l04-api-and-web-security
+    page: https-section
 - id: https
   tier: family
   parent: http
