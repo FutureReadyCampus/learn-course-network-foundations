@@ -302,5 +302,5 @@ TypeError: only list-like objects are allowed to be passed to isin(), you passed
 
 ## 정답 확인 후 점검
 
-- `ls` 결과에 Unit 8의 파일들과 이 안내 · 보고서 두 파일이 모두 보이면 됩니다.
+- `ls` 결과에 Unit 8의 파일들과 `report_u8.md` 가 모두 보이면 됩니다.
 - 보고서에 빈 `답:` 이 없으면 됩니다. 못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.

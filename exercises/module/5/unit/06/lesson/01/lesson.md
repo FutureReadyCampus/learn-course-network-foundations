@@ -39,13 +39,9 @@ source:
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
-3. 이번 Unit에서 받은 파일 두 개(Unit 6 안내 문서, Unit 6 보고서)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
-4. **[터미널]** 데이터 파일과 설정 파일을 만들고 **[VS Code]** 에서 열어 아래 내용을 붙여 넣습니다.
-   ```bash
-   mkdir -p config
-   touch alerts_thu.json config/escalation_rules.json
-   ls config
-   ```
+3. 이 페이지의 파일은 모두 이 페이지의 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 답을 적는 보고서 `report_u6.md` 도 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
+4. **[VS Code]** `soar_response` 폴더 안에 `alerts_thu.json` 을, `config` 폴더 안에 `escalation_rules.json` 을 만들고 아래 내용을 붙여 넣습니다. 각 파일은 해당 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적고 Enter 를 친 뒤, 코드 상자의 복사 버튼으로 복사해 붙여 넣고 `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
+   - `config` 폴더가 없으면 터미널에서 `mkdir -p config` 로 만듭니다.
 
 **`alerts_thu.json`** — 이번 Unit의 근무 3시간 동안 들어온 알림 11건입니다.
 
@@ -119,15 +115,7 @@ source:
 
 ## 이전 파일이 없을 때 (Unit 1 · 알림 파일)
 
-Unit 1을 하지 못했거나 파일을 지운 경우에만 만듭니다. **이미 있는 파일은 건너뜁니다.** 먼저 **[터미널]** 에서 빈 파일을 만듭니다. 이미 있는 파일은 `touch` 가 그대로 둡니다.
-
-```bash
-touch incident.py notifier.py alert_server.py
-ls
-```
-
-- 명령 풀이: `touch 파일이름들` 빈 파일 만들기 · `ls` 폴더 안의 파일 이름 보기
-- 아래 코드 상자 세 개를 **[VS Code]** 에서 같은 이름의 파일에 붙여 넣고 저장합니다. 이미 있는 파일은 붙여 넣지 않습니다.
+Unit 1을 하지 못했거나 파일을 지운 경우에만 만듭니다. **이미 있는 파일은 건너뜁니다.** **[VS Code]** 에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `incident.py` · `notifier.py` · `alert_server.py` 를 이름 그대로 만들고, 아래 코드 상자 세 개를 같은 이름의 파일에 붙여 넣고 저장합니다. 이미 있는 파일은 만들지도 붙여 넣지도 않습니다.
 
 **`incident.py`** — Unit 1 파일에서 이번 Unit에서 쓰는 두 함수(`load_json` · `save_json`)만 담았습니다. Unit 1 파일 전체가 있으면 그것을 그대로 씁니다.
 

@@ -42,9 +42,11 @@ Unit 2에서는 웹 서버 · 판정 서버 · SaaS 로그 3종류를 같은 형
    - <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나야</mark> 합니다.
    - 설치가 끝나면 <mark>`Successfully installed …` 또는 `Requirement already satisfied` 가 나옵니다.</mark> 마지막에 `WARNING: You are using pip version …` 이 나와도 무시합니다.
    - <mark>마지막 명령에서 점이 든 숫자(예: `2.3.3`)가 나오면</mark> 판다스를 쓸 수 있습니다.
-4. **이번 Unit에서 받은 파일 두 개**(Unit 3 안내, Unit 3 보고서)를 `다운로드` 폴더에서 `anomaly_detection` 폴더로 끌어다 놓습니다(안 되면 **File › Save As…**). 이미 있으면 건너뜁니다.
-5. **[VS Code]** 보고서 맨 위 제목 `(이름 · 2026-11-03(화))` 의 `이름` 을 내 이름으로 바꿉니다. 안내 파일은 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다.
-6. **[VS Code 또는 터미널]** `anomaly_detection` 폴더에 `normalized_events.json` 파일을 만들어 아래 내용을 그대로 붙여 넣습니다(터미널에서는 `touch normalized_events.json` 후 VS Code 에서 엽니다).
+4. **파일은 이렇게 만듭니다.** 이 페이지에 나오는 파일은 모두 이 페이지의 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
+   1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다.
+   2. 코드 상자의 복사 버튼으로 내용을 복사해 새 파일에 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
+5. 답을 적는 **보고서**(`report_u3.md`)도 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
+6. **[VS Code]** `anomaly_detection` 폴더에 `normalized_events.json` 파일을 만들어 아래 내용을 그대로 붙여 넣습니다.
 
 **`normalized_events.json`** — 정규화된 이벤트 샘플입니다. 한 줄이 이벤트 1개이고, 시간순으로 정렬되어 있습니다. `raw`(원래 로그 한 줄 전체)는 길어서 이 파일에서 뺐습니다. `null` 은 그 값이 로그에 없다는 뜻입니다.
 

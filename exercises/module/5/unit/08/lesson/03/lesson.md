@@ -180,14 +180,14 @@ print("--- 단계 5: gate_results.json 에", len(results), "건 저장")  # 단�
 
 **순서**
 
-1. **[터미널]** 파일 네 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
+1. **[터미널]** `config` 폴더가 없으면 만듭니다.
    ```bash
    pwd
    mkdir -p config
-   touch config/approval_policy.json gate_requests.json approval_gate.py exercise8-2_run.py
-   ls config
+   ls
    ```
    - 명령 풀이: `mkdir -p config` 는 `config` 폴더가 없을 때만 만듭니다(이미 있으면 그대로 둡니다).
+   - **[VS Code]** 파일 네 개를 만듭니다. `config` 폴더를 오른쪽 클릭 › **New File** 로 `approval_policy.json` 을, `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `gate_requests.json` · `approval_gate.py` · `exercise8-2_run.py` 를 만들고, 각각 코드 상자의 내용을 붙여 넣고 저장합니다.
 2. **[VS Code]** `approval_gate.py` 1 ~ 7번, `exercise8-2_run.py` 8 · 9번을 씁니다. 막히면 아래 「실습 8-2 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -196,7 +196,7 @@ print("--- 단계 5: gate_results.json 에", len(results), "건 저장")  # 단�
 4. 출력은 다섯 단계입니다. 제목 줄은 줄 수에 넣지 않습니다.
    - 단계 1 과 단계 5 는 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
    - 단계 2 는 8줄, 단계 3 은 3줄, 단계 4 는 3줄입니다.
-5. **[보고서]** Unit 8 의 `## 실습 8-2` 아래를 채웁니다.
+5. **[보고서]** `report_u8.md` 의 `## 실습 8-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 결정별 요청 수를 적고, 승인 필요인 요청 번호도 적어 주세요.
    - (나) [핵심 질문] `REQ-1`(`dami`)과 `REQ-6`(`minsu`)은 둘 다 high 등급의 계정 잠금인데 결정이 다릅니다. 단계 2 의 이유를 근거로 결정이 달라진 이유를 적어 주세요. 그리고 대상 수(영향 범위)를 위험 점수에 반영해야 하는 이유도 적어 주세요.
    - (다) [핵심 질문] `REQ-3` 은 high 등급이고 함께 쓰는 IP 인데 차단 금지입니다. `decide_gate` 가 허용 목록을 점수보다 먼저 확인하는 이유를 적고, 승인 기준(임계값)을 코드가 아니라 설정 파일로 분리하면 무엇이 좋은지 적어 주세요.

@@ -38,15 +38,12 @@ Unit 6과 Unit 7에서 만든 탐지 규칙은 알림을 냈지만, **그 알림
    pwd
    python -c "import pandas; print(pandas.__version__)"
    ```
-3. **이번 Unit에서 받은 파일 두 개**(Unit 8 안내 파일과 보고서 파일)를 <mark>`다운로드` 폴더에서 `anomaly_detection` 폴더로 끌어다 놓습니다</mark>(안 되면 **File › Save As…**). 이미 있으면 건너뜁니다.
-4. **[VS Code]** 보고서 맨 위의 <mark>`이름` 을 내 이름으로 바꿉니다</mark>. 안내 파일은 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다.
-5. **[터미널]** 이번 Unit에서 쓸 JSON 파일 세 개를 만들고 확인합니다. 같은 이름의 파일이 이미 있으면 건너뜁니다.
-   ```bash
-   touch review_alerts.json problems.json login_alerts.json
-   ls
-   ```
-   - 명령 풀이: `touch 파일이름` 빈 파일 만들기 · `ls` 폴더 안의 파일 이름 보기
-6. **[VS Code]** 세 파일을 열어 아래 내용을 그대로 붙여 넣습니다(<mark>파일 세 개를 모두 붙인 뒤 맨 아래 7번으로 확인합니다</mark>). <mark>같은 이름의 파일이 이미 있으면 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다). `null` 은 그 값이 없다는 뜻입니다.
+3. **파일은 이렇게 만듭니다.** 이 페이지에 나오는 파일은 모두 이 페이지의 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
+   1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다.
+   2. 코드 상자의 복사 버튼으로 내용을 복사해 새 파일에 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
+4. 답을 적는 **보고서**(`report_u8.md`)도 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
+5. **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 이번 Unit에서 쓸 JSON 파일 세 개 `review_alerts.json` · `problems.json` · `login_alerts.json` 을 만듭니다. 같은 이름의 파일이 이미 있으면 새로 만들지 않고 그 파일을 엽니다.
+6. **[VS Code]** 세 파일에 아래 내용을 그대로 붙여 넣습니다(<mark>파일 세 개를 모두 붙인 뒤 맨 아래 7번으로 확인합니다</mark>). <mark>같은 이름의 파일이 이미 있으면 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다). `null` 은 그 값이 없다는 뜻입니다.
 
 **`review_alerts.json`** — Unit 6과 Unit 7의 탐지 규칙이 11/2 에 낸 알림 7개이고, 사람이 조사한 결과가 붙어 있습니다. `real` 은 조사해 보니 진짜 문제였으면 `true`, `problem` 은 그 진짜 문제의 번호(`problems.json` 의 `id`), `memo` 는 조사 메모입니다.
 

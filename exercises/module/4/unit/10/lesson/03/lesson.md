@@ -261,13 +261,7 @@ run_pipeline()                     # 읽기부터 보고서 저장까지 한 번
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `pipeline.py` · `exercise10-2_run.py` 를 `anomaly_detection` 폴더에 만들어 위 코드를 붙여 넣습니다.
-   ```bash
-   pwd
-   touch pipeline.py exercise10-2_run.py
-   ls
-   ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `touch 파일이름` 빈 파일 만들기 · `ls` 폴더 안의 파일 이름 보기
+1. **[VS Code]** 파일 `pipeline.py` · `exercise10-2_run.py` 를 `anomaly_detection` 폴더에 만들어 위 코드를 붙여 넣습니다. `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 만듭니다.
 2. **[VS Code]** `pipeline.py` 에서 <mark>직접 쓰는 곳 일곱 군데를 씁니다</mark>. 위 판다스 문법 상자와 2.1 의 그림을 참고해 씁니다. 막히면 아래 「실습 10-2 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`). Gemini API 를 3번 호출합니다.
    ```bash
@@ -277,7 +271,7 @@ run_pipeline()                     # 읽기부터 보고서 저장까지 한 번
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise10-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **다섯 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1과 2와 4는 숫자나 파일 이름이 제목 줄에 함께 나와서 그 아래 줄이 없습니다. 단계 3은 제목 아래에 대상마다 요약 1줄씩 3줄이 나오고, 단계 5는 대상마다 등급 · 대상 · 점수 1줄씩 5줄이 나옵니다. <mark>AI 호출이 실패하면 `[LLM 호출 실패]` 줄이 단계 3 제목 줄 위에 나옵니다.</mark>
 5. **[VS Code]** 새로 생긴 `anomaly_detection_report_2026-11-02.json` 을 열어 `event_count` · `records` · `summaries` 를 확인합니다.
-6. **[보고서]** Unit 10 의 `## 실습 10-2` › `#### 실습 10-2` 아래를 채웁니다.
+6. **[보고서]** `report_u10.md` 의 `## 실습 10-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 보고서 파일의 `event_count` · `finding_count` 값과 `records` · `summaries` 의 건수를 적어 주세요.
    - (나) [핵심 질문] 점수와 등급은 코드가 정하고 AI 에게는 요약만 시킨 이유를 적어 주세요. 단계 5 의 확인할 순서와 단계 3 의 요약을 근거로 쓰세요.
    - (다) [핵심 질문] AI 호출이 실패해도 파이프라인이 멈추지 않고 대체 문장을 쓰게 만든 이유를 적어 주세요. 대체 문장이 들어간 대상을 담당자가 어떻게 처리해야 하는지도 적어 주세요.
@@ -299,7 +293,7 @@ run_pipeline()                     # 읽기부터 보고서 저장까지 한 번
 Module 4가 끝나면 `anomaly_detection` 폴더에 Unit별로 아래 파일이 있어야 합니다. 파일을 어디에 저장했는지 헷갈리면 내 VS Code 왼쪽 목록과 비교합니다.
 
 - **`config/` 안에는 JSON 설정 파일만** 둡니다. Unit 6에서 만든 `users.json` · `roles.json` 입니다.
-- **그 밖의 파일은 모두 `anomaly_detection/` 바로 아래**에 둡니다. 코드(`.py`), 실행 파일(`exerciseU-n_…_run.py`), 데이터, 안내와 보고서(`.md`), 컴포즈 파일이 해당합니다. `logs/` 는 Unit 9에서 컴포즈로 만든 접속 기록 폴더입니다.
+- **그 밖의 파일은 모두 `anomaly_detection/` 바로 아래**에 둡니다. 코드(`.py`), 실행 파일(`exerciseU-n_…_run.py`), 데이터, 보고서(`report_u1.md` ~ `report_u10.md`), 컴포즈 파일이 해당합니다. `logs/` 는 Unit 9에서 컴포즈로 만든 접속 기록 폴더입니다.
 - 터미널은 항상 `…/anomaly_detection` 에서 실행합니다(`pwd` 로 확인).
 
 ```
@@ -371,9 +365,8 @@ security-agent-toolkit/
     exercise10-1_run.py
     exercise10-2_run.py
     anomaly_detection_report_2026-11-02.json
-    ── Unit마다 받은 안내와 보고서 ──
-    unit01_pm_*.md  unit03_am_*.md  unit03_pm_*.md  unit05_am_*.md  unit05_pm_*.md
-    unit07_am_*.md  unit07_pm_*.md  unit09_am_*.md  unit09_pm_*.md  unit10_am_*.md
+    ── Unit마다 만든 보고서 ──
+    report_u1.md  ~  report_u10.md
 ```
 
 - `__pycache__/` 는 파이썬이 자동으로 만드는 임시 폴더라서 신경 쓰지 않고 깃허브에도 올리지 않습니다.

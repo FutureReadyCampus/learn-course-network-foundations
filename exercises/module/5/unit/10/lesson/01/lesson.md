@@ -45,7 +45,7 @@ source:
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
-3. 이번 Unit에서 받은 파일 두 개(Unit 10 안내 문서, Unit 10 보고서)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
+3. **파일은 이렇게 만듭니다.** 이 페이지에서 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면, **[VS Code]** 왼쪽 목록에서 알려 준 폴더(`soar_response` 또는 그 안의 `config`)를 오른쪽 클릭 › **New File** 을 누르고 **파일 이름을 그대로** 적고 Enter 를 칩니다. 코드 상자의 복사 버튼으로 내용을 붙여 넣고 `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다. 따로 내려받는 파일은 없습니다. 답을 적는 보고서 `report_u10.md` 도 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
 4. **[터미널]** Unit 1의 플레이북 등록 값을 점검합니다(맥북은 `python3`). 엔진은 이 파일의 `actions` · 트리거 규칙 · 최소 등급을 읽으므로, <mark>아래 출력과 같아야</mark> 이번 Unit의 출력이 문서와 일치합니다. 다르면 아래 「이전 파일이 없을 때」의 `config/playbook_registry.json` 으로 덮어씁니다.
    ```bash
    python -c "import json; print([(p['id'], p['trigger_rule'], p['min_grade'], p['actions']) for p in json.load(open('config/playbook_registry.json', encoding='utf-8'))])"
@@ -53,11 +53,7 @@ source:
    ```
    [('PB-001', '퇴사한 계정', 'high', ['계정 잠금', '티켓 생성']), ('PB-002', '대량 다운로드', 'mid', ['담당자 알림', '티켓 생성']), ('PB-003', '경로 스캔', 'low', ['IP 차단', '티켓 생성'])]
    ```
-5. **[터미널]** 실습 10-1 데이터 파일을 만들고 **[VS Code]** 에서 열어 아래 내용을 붙여 넣습니다.
-   ```bash
-   touch engine_alerts.json
-   ls
-   ```
+5. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `engine_alerts.json` 파일을 만들어 아래 내용을 붙여 넣고 저장합니다.
 
 **`engine_alerts.json`** — 이번 Unit에서 들어온 알림 8건입니다.
 
@@ -87,17 +83,15 @@ source:
 
 ## 이전 파일이 없을 때 (Unit 1 · 4 · 6 · 8 파일)
 
-해당 요일에 결석했거나 파일을 지운 경우에만 만듭니다. **이미 있는 파일은 건너뜁니다.** 먼저 **[터미널]** 에서 빈 파일을 만듭니다. 이미 있는 파일은 `touch` 가 그대로 두고, `config` 폴더가 이미 있으면 `mkdir -p` 도 그대로 둡니다.
+해당 요일에 결석했거나 파일을 지운 경우에만 만듭니다. **이미 있는 파일은 건너뜁니다.** 먼저 **[터미널]** 에서 `config` 폴더가 없으면 만듭니다(이미 있어도 오류가 나지 않습니다).
 
 ```bash
 mkdir -p config
-touch incident.py containment_store.py account_actions.py ip_actions.py ticketing.py approval_gate.py
-touch ip_users.json config/playbook_registry.json config/approval_policy.json config/escalation_rules.json
 ls
 ```
 
-- 명령 풀이: `mkdir -p 폴더이름` 폴더가 없을 때만 만들기 · `touch 파일이름들` 빈 파일 만들기 · `ls` 폴더 안의 파일 이름 보기
-- 아래 코드 상자를 **[VS Code]** 에서 같은 이름의 파일에 붙여 넣고 저장합니다. 이미 있는 파일은 붙여 넣지 않습니다(플레이북 등록 파일만 4번 점검 결과가 다를 때 덮어씁니다).
+- 명령 풀이: `mkdir -p 폴더이름` 폴더가 없을 때만 만들기 · `ls` 폴더 안의 파일 이름 보기
+- 아래 코드 상자마다 **[VS Code]** 에서 `soar_response` 폴더(`config/` 로 시작하는 파일은 `config` 폴더)를 오른쪽 클릭 › **New File** 로 같은 이름의 파일을 만들어 붙여 넣고 저장합니다. 만들 파일은 `incident.py` · `containment_store.py` · `account_actions.py` · `ip_actions.py` · `ticketing.py` · `approval_gate.py` · `ip_users.json` · `config/playbook_registry.json` · `config/approval_policy.json` · `config/escalation_rules.json` 입니다. 이미 있는 파일은 만들지도 붙여 넣지도 않습니다(플레이북 등록 파일만 4번 점검 결과가 다를 때 덮어씁니다).
 
 **`incident.py`** — Unit 1 파일에서 이번 Unit에서 쓰는 부분(`load_json` · `save_json` · `match_playbooks` 와 그 함수가 쓰는 `is_grade_enough`)만 담았습니다. Unit 1 파일 전체가 있으면 그것을 그대로 씁니다.
 

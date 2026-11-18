@@ -40,17 +40,13 @@ source:
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
-3. Unit 8에서 받은 파일 두 개(Unit 8 안내 문서, Unit 8 보고서)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
+3. 이 페이지에 나오는 파일은 모두 이 페이지의 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 답을 적는 **보고서**(`report_u8.md`)도 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
 4. **[터미널]** 판다스를 불러올 수 있는지 확인합니다(맥북은 `python3`). <mark>`판다스 불러오기 성공` 이 나와야</mark> 합니다.
    ```bash
    python -c "import pandas; print('판다스 불러오기 성공')"
    ```
    - `No module named 'pandas'`(판다스가 설치되어 있지 않다는 뜻)가 나오면 터미널(가상환경이 켜진 상태)에서 `pip install pandas`(판다스를 설치하는 명령)를 입력한 뒤 다시 확인합니다.
-5. **[터미널]** 실습 8-1 데이터 파일 두 개를 만들고 **[VS Code]** 에서 열어 아래 내용을 붙여 넣습니다.
-   ```bash
-   touch unit10_tickets.json unit10_actions.json
-   ls
-   ```
+5. **[VS Code]** 실습 8-1 데이터 파일 두 개 `unit10_tickets.json` · `unit10_actions.json` 을 만듭니다. 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
 
 **`unit10_tickets.json`** — Unit 7의 근무 3시간 시뮬레이션이 끝났을 때의 티켓 7장입니다.
 
@@ -106,15 +102,9 @@ source:
 
 ## 이전 파일이 없을 때 (Unit 1 · Unit 4 · Unit 5 파일)
 
-Unit 1 · Unit 4 · Unit 5 중 하지 못한 Unit이 있거나 파일을 지운 경우에만 만듭니다. **이미 있는 파일은 건너뜁니다.** 먼저 **[터미널]** 에서 빈 파일을 만듭니다. 이미 있는 파일은 `touch` 가 그대로 둡니다.
+Unit 1 · Unit 4 · Unit 5 중 하지 못한 Unit이 있거나 파일을 지운 경우에만 만듭니다. **이미 있는 파일은 건너뜁니다.** **[VS Code]** 에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 아래 여섯 파일을 하나씩 만듭니다. 파일 이름은 `incident.py` · `containment_store.py` · `account_actions.py` · `ip_actions.py` · `undo_actions.py` · `rollback.py` 입니다.
 
-```bash
-touch incident.py containment_store.py account_actions.py ip_actions.py undo_actions.py rollback.py
-ls
-```
-
-- 명령 풀이: `touch 파일이름들` 빈 파일 만들기 · `ls` 폴더 안의 파일 이름 보기
-- 아래 코드 상자 여섯 개를 **[VS Code]** 에서 같은 이름의 파일에 순서대로 붙여 넣고 저장합니다. 이미 있는 파일은 붙여 넣지 않습니다. 실습 8-1 · 실습 8-2에는 `incident.py` 만 있으면 되고, 나머지 다섯 개는 실습 8-3에서 씁니다.
+- 아래 코드 상자 여섯 개를 같은 이름의 파일에 순서대로 붙여 넣고 저장합니다. 이미 있는 파일은 새로 만들거나 붙여 넣지 않습니다. 실습 8-1 · 실습 8-2에는 `incident.py` 만 있으면 되고, 나머지 다섯 개는 실습 8-3에서 씁니다.
 
 **`incident.py`** — Unit 1 파일에서 오늘 쓰는 두 함수(`load_json` · `save_json`)만 담았습니다. Unit 1 파일 전체가 있으면 그것을 그대로 씁니다.
 

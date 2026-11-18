@@ -29,11 +29,11 @@ Unit 6에서는 판정 서버 · SaaS · 웹 로그에서 먼저 확인할 것�
 
 | 파일 | 만든 곳 | 쓰는 곳 | 없거나 완성하지 못했을 때 |
 |---|---|---|---|
-| `normalized_events.json` · `rbac.py` · `config/users.json` · `config/roles.json` | Unit 6 안내의 시작하기 6번 | 실습 7-1 · 7-2 | 그 안내 시작하기 6번의 내용으로 파일을 만듭니다 |
-| `access_detection.py` | 실습 6-1 | 실습 7-1 · 7-2가 불러옵니다 | 이 안내 맨 아래 「부록」의 완성본으로 파일을 만듭니다 |
-| `saas_detection.py` | 실습 6-2 | 실습 7-1 · 7-2가 불러옵니다 | 이 안내 맨 아래 「부록」의 완성본으로 파일을 만듭니다 |
-| `malicious_detection.py` | 실습 6-3 | 실습 7-1 · 7-2가 불러옵니다 | 이 안내 맨 아래 「부록」의 완성본으로 파일을 만듭니다 |
-| `correlation.py` | 실습 7-1 | 실습 7-2 `exercise7-2_run.py` 가 불러옵니다 | 이 안내 실습 7-1 의 코드 칸에 「실습 7-1 정답」의 「채운 코드」를 넣어 완성합니다 |
+| `normalized_events.json` · `rbac.py` · `config/users.json` · `config/roles.json` | Unit 6 「시작하기」 6번 | 실습 7-1 · 7-2 | Unit 6 「시작하기」 레슨 6번의 코드 상자로 파일을 만듭니다 |
+| `access_detection.py` | 실습 6-1 | 실습 7-1 · 7-2가 불러옵니다 | Unit 7 「정답」 레슨 맨 아래 「부록 · Unit 6 파일 완성본」의 코드 상자로 파일을 만듭니다 |
+| `saas_detection.py` | 실습 6-2 | 실습 7-1 · 7-2가 불러옵니다 | Unit 7 「정답」 레슨 맨 아래 「부록 · Unit 6 파일 완성본」의 코드 상자로 파일을 만듭니다 |
+| `malicious_detection.py` | 실습 6-3 | 실습 7-1 · 7-2가 불러옵니다 | Unit 7 「정답」 레슨 맨 아래 「부록 · Unit 6 파일 완성본」의 코드 상자로 파일을 만듭니다 |
+| `correlation.py` | 실습 7-1 | 실습 7-2 `exercise7-2_run.py` 가 불러옵니다 | 이 Unit 실습 7-1 레슨의 코드 칸에 「실습 7-1 정답」의 「채운 코드」를 넣어 완성합니다 |
 
 ## 폴더 열고 Unit 6 파일 확인하기
 
@@ -44,8 +44,10 @@ Unit 6에서는 판정 서버 · SaaS · 웹 로그에서 먼저 확인할 것�
    pwd
    ls
    ```
-3. **이번 Unit에서 받은 파일 두 개**(Unit 7 안내 파일과 보고서 파일)를 <mark>`다운로드` 폴더에서 `anomaly_detection` 폴더로 끌어다 놓습니다</mark>(안 되면 **File › Save As…**). 이미 있으면 건너뜁니다.
-4. **[VS Code]** 보고서 맨 위의 <mark>`이름` 을 내 이름으로 바꿉니다</mark>. 안내 파일은 `Ctrl + Shift + V`(맥북은 `Cmd + Shift + V`)로 미리보기를 엽니다.
+3. **파일은 이렇게 만듭니다.** 이 페이지에 나오는 파일은 모두 이 페이지의 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
+   1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다.
+   2. 코드 상자의 복사 버튼으로 내용을 복사해 새 파일에 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
+4. 답을 적는 **보고서**(`report_u7.md`)도 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
 5. **[터미널]** Unit 6의 함수가 잘 불러와지는지 확인합니다. <mark>세 줄 모두 아무 오류도 나오지 않으면</mark> 됩니다. 오류가 나면 그 줄의 파일이 문제입니다.
    ```bash
    python -c "from access_detection import load_events, pick_server_failures, pick_suspicious, judge_failure, EVENTS_PATH"

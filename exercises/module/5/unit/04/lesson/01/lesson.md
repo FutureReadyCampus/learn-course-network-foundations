@@ -21,7 +21,7 @@ Unit 3까지는 판단 단계(맥락 보강 · 처리 경로 분기 · 안전장
 
 깃허브에 올리는 일은 Unit 5의 실습 5-2 마지막에 합니다. 새 문법은 실습 4-1의 `리스트.remove()` 하나입니다. 보고서에서 [핵심 질문]이 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 코드를 쓸 때는 들여쓰기를 미리 채운 줄에 맞추고, 각 번호 주석 바로 아래에 한 줄을 씁니다. 주석은 지우지 않습니다.
 
- **이전 파일**: Unit 1에서 만든 `incident.py` 의 `load_json` · `save_json` 만 씁니다. 없으면 `complete_files.md` 의 1절에서 복사합니다.
+ **이전 파일**: Unit 1에서 만든 `incident.py` 의 `load_json` · `save_json` 만 씁니다. 없으면 Unit 1 실습 1-2 레슨의 `incident.py` 코드 상자에서 복사해 만듭니다.
 
 ## 설정 파일 세 개 만들기
 
@@ -34,12 +34,10 @@ Unit 3까지는 판단 단계(맥락 보강 · 처리 경로 분기 · 안전장
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
-3. 오늘 받은 파일 두 개(안내 파일과 보고서)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
-4. **[터미널]** 설정 · 데이터 파일 세 개를 만들고 **[VS Code]** 에서 열어 아래 내용을 붙여 넣습니다.
-   ```bash
-   touch config/vip_accounts.json config/allowlist_ips.json ip_users.json
-   ls config
-   ```
+3. **[VS Code]** 설정 · 데이터 파일 세 개를 만듭니다. 이 페이지에 나오는 파일은 모두 아래 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 답을 적는 보고서 `report_u4.md` 는 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
+   - `config` 폴더를 오른쪽 클릭 › **New File** 으로 `vip_accounts.json` 과 `allowlist_ips.json` 을 하나씩 만듭니다.
+   - `soar_response` 폴더를 오른쪽 클릭 › **New File** 으로 `ip_users.json` 을 만듭니다.
+   - 각 파일에 아래 코드 상자의 내용을 복사해 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
 
 **`config/vip_accounts.json`** — 자동 조치 대상에서 제외하는 **VIP 계정**(고중요도 계정: 자동 조치로 잠기면 업무 영향이 큰 계정) 리스트입니다. `gaeun` 은 계정 관리자이므로 포함했습니다. 실습 4-1 · 실습 4-3이 읽습니다.
 
@@ -59,7 +57,7 @@ Unit 3까지는 판단 단계(맥락 보강 · 처리 경로 분기 · 안전장
 {"203.0.113.80": ["seoyeon", "jiwoo"], "192.0.2.41": ["junho", "hana"]}
 ```
 
-5. **[터미널]** 파일이 정상인지 확인합니다(맥북은 `python3`). <mark>`1 2 2` 가 나와야</mark> 합니다(VIP 계정 1개 · 허용 목록 IP 2개 · `ip_users.json` 에 적은 IP 2개를 센 값).
+4. **[터미널]** 파일이 정상인지 확인합니다(맥북은 `python3`). <mark>`1 2 2` 가 나와야</mark> 합니다(VIP 계정 1개 · 허용 목록 IP 2개 · `ip_users.json` 에 적은 IP 2개를 센 값).
    ```bash
    python -c "import json; print(len(json.load(open('config/vip_accounts.json', encoding='utf-8'))), len(json.load(open('config/allowlist_ips.json', encoding='utf-8'))), len(json.load(open('ip_users.json', encoding='utf-8'))))"
    ```

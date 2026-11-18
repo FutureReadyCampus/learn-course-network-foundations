@@ -407,7 +407,7 @@ print(text)                                                      # 보고서 내
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `log_summary.py` · `exercise10-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code]** 파일 `log_summary.py` · `exercise10-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `log_summary.py` 에서 직접 쓰는 곳 다섯 군데를 씁니다. 2.1 의 표와 그림, 문법 상자를 보고 씁니다.
 3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -415,7 +415,7 @@ print(text)                                                      # 보고서 내
    python exercise10-2_run.py
    ```
 4. 출력은 세 단계입니다. 단계 1은 한 줄, 단계 2는 거부 사유 네 줄, 단계 3은 두 줄입니다.
-5. **[VS Code 또는 터미널]** 파일 `weekly_report.py` · `exercise10-2-2_run.py` 를 만들어 위 코드를 붙여 넣고 실행합니다. 실습 10-1의 `checklist.py` 를 불러오므로 파일이 없으면 문서 맨 아래 「앞 실습 파일 완성본」으로 먼저 만듭니다.
+5. **[VS Code]** 파일 `weekly_report.py` · `exercise10-2-2_run.py` 를 만들어 위 코드를 붙여 넣고 실행합니다. 실습 10-1의 `checklist.py` 를 불러오므로 파일이 없으면 「정답」 레슨 맨 아래 「앞 실습 파일 완성본」으로 먼저 만듭니다.
    ```bash
    python exercise10-2-2_run.py
    ls
@@ -427,7 +427,7 @@ print(text)                                                      # 보고서 내
    grep dami week_log.jsonl
    ```
    - 명령 풀이: `grep 단어 파일` 파일에서 그 단어가 들어간 줄만 보여 줌
-7. **[보고서]** Unit 10 의 `## 실습 10-2` › `#### 실습 10-2` 아래를 채웁니다.
+7. **[보고서]** `report_u10.md` 의 `## 실습 10-2` 아래를 채웁니다.
    - (가) `exercise10-2_run.py` 의 출력과 `exercise10-2-2_run.py` 의 보고서 내용을 붙여 넣고, 허용 · 거부 · 거부율, 경고 여부, 거부 사유 중 가장 많은 것을 적어 주세요.
    - (나) [핵심 질문] 보고서 4절에 거부가 4번 이상인 사용자로 gaeun 과 dami 가 나왔습니다. 6번에서 찾은 두 사람의 요청을 비교해 주세요. 그리고 두 사람에게 같은 조치를 하면 안 되는 이유와, 각각 무엇부터 확인해야 하는지 적어 주세요.
    - (다) [핵심 질문] 서버가 멈춰서 로그가 빈 주에는 `deny_rate` 가 0.0 을 리턴해 보고서에 「거부율 0%」가 나옵니다. 이 보고서만 보고 「이번 주는 안전했다」고 판단해도 되는지 적어 주세요. 그리고 보고서에서 함께 확인해야 하는 정보와 그 이유도 적어 주세요.
@@ -453,7 +453,7 @@ print(text)                                                      # 보고서 내
 Module 3이 끝나면 `access_control` 폴더는 아래 모양이어야 합니다. 파일을 어디에 저장했는지 헷갈리면 내 VS Code 왼쪽 목록과 비교합니다.
 
 - **`config/` 안에는 JSON 설정 파일만** 둡니다. 이름이 `config/…` 로 시작하는 파일입니다.
-- **그 밖의 파일은 모두 `access_control/` 바로 아래**에 둡니다. 코드(`.py`), 실행 파일(`exerciseN-M_run.py`), Unit마다 받은 안내와 보고서(`.md`), 실행하면 생기는 파일이 모두 해당합니다.
+- **그 밖의 파일은 모두 `access_control/` 바로 아래**에 둡니다. 코드(`.py`), 실행 파일(`exerciseN-M_run.py`), Unit마다 직접 만든 보고서(`report_uN.md`), 실행하면 생기는 파일이 모두 해당합니다.
 - 하위 폴더를 따로 만들지 않습니다. 터미널은 항상 `…/access_control` 에서 실행합니다(`pwd` 로 확인).
 
 ```
@@ -462,7 +462,7 @@ security-agent-toolkit/
   .gitignore
   agent_core/
   network_zt/
-  access_control/ (바로 아래 파일 76개 + config 11개 = 87개)    Module 3  ← 여기서 작업
+  access_control/ (바로 아래 파일 66개 + config 11개 = 77개)    Module 3  ← 여기서 작업
     config/ (11개)           ← JSON 설정만
       access_log.json
       alert.json
@@ -484,47 +484,37 @@ security-agent-toolkit/
     config_loader.py
     exercise1-2_run.py
     exercise1-3_audit.py
-    Unit 1
-    Unit 1
+    report_u1.md
     exercise2-1_run.py
     exercise2-2_run.py
     exercise2-3_run.py
     exercise3-1_broken.py
-    Unit 2
-    Unit 2
-    Unit 3
-    Unit 3
+    report_u2.md
+    report_u3.md
     exercise4-1_run.py
     exercise4-2_run.py
     exercise4-3_run.py
     exercise5-1_run.py
     exercise5-2_run.py
-    Unit 4
-    Unit 4
-    Unit 5
-    Unit 5
+    report_u4.md
+    report_u5.md
     exercise6-1_run.py
     exercise6-2_run.py
     exercise6-3_run.py
     exercise7-1_run.py
     exercise7-2_run.py
-    Unit 6
-    Unit 6
-    Unit 7
-    Unit 7
+    report_u6.md
+    report_u7.md
     exercise8-1_run.py
     exercise8-2_run.py
     exercise8-3_run.py
     exercise9-1_run.py
-    Unit 8
-    Unit 8
-    Unit 9
-    Unit 9
+    report_u8.md
+    report_u9.md
     exercise10-1_run.py
     exercise10-2_run.py
     exercise10-2-2_run.py
-    Unit 10
-    Unit 10
+    report_u10.md
     exception_policy.py
     log_summary.py
     overprivilege.py
@@ -555,7 +545,7 @@ security-agent-toolkit/
   anomaly_detection/         Module 4 (다음 Unit부터)
 ```
 
-- 개수는 안내 · 보고서를 포함해 세었습니다. 실행해야 생기는 파일(`requests.json` · `revocation_log.json` · `server_log.jsonl` · 주간 보고서)은 그 파일을 만드는 실행 파일을 돌리지 않았다면 내 폴더에 없을 수 있습니다.
+- 개수는 보고서(`report_u1.md` ~ `report_u10.md`)를 포함해 세었습니다. 실행해야 생기는 파일(`requests.json` · `revocation_log.json` · `server_log.jsonl` · 주간 보고서)은 그 파일을 만드는 실행 파일을 돌리지 않았다면 내 폴더에 없을 수 있습니다.
 - `__pycache__/` 는 파이썬이 만드는 임시 폴더라서 신경 쓰지 않고 깃허브에도 올리지 않습니다.
 - 다른 Module 폴더는 일부만 적었습니다. 내 폴더에 `.venv`, `docs/` 같은 폴더가 더 있어도 괜찮습니다.
 

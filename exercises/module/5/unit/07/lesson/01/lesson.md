@@ -24,7 +24,7 @@ Unit 6에서는 세 가지를 했습니다. 알림으로 티켓(ticket, 티켓: 
 
 깃허브에 올리는 일은 실습 7-2 마지막에 합니다. 새 문법은 실습 7-2의 `sum()` 과 `%` 둘이고, 나눗셈 `/` 는 문법 상자에서 풀이합니다. 보고서의 [핵심 질문] 표시가 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기는 미리 채운 줄에 맞춥니다. 각 번호 주석 바로 아래에 한 줄을 씁니다. <mark style="background:#ffc4d6">주석은 지우지 않습니다</mark>.
 
- **이전 파일**: Unit 6에서 만든 `ticketing.py` · `ticket_merge.py` · `ticket_notice.py` 와 데이터 `alerts_thu.json` · `config/escalation_rules.json`, <mark style="background:#e0d4ff">Unit 1의 `incident.py`</mark>, <mark style="background:#e0d4ff">`notifier.py` · `alert_server.py`</mark> 를 씁니다. 실습 7-1에서는 Unit 6의 실습 6-3에서 저장한 `tickets_unit09.json` 도 읽습니다. 실습 7-2에서는 실습 7-1에서 만든 `escalation.py` 도 씁니다. 없는 파일은 `complete_files.md` 에서 복사합니다(Unit 6 파일은 6절, `escalation.py` 는 7절). `incident.py` · `notifier.py` · `alert_server.py` 는 Unit 6 안내의 시작하기에 있는 「 이전 파일이 없을 때」 코드 상자로 만듭니다.
+ **이전 파일**: Unit 6에서 만든 `ticketing.py` · `ticket_merge.py` · `ticket_notice.py` 와 데이터 `alerts_thu.json` · `config/escalation_rules.json`, <mark style="background:#e0d4ff">Unit 1의 `incident.py`</mark>, <mark style="background:#e0d4ff">`notifier.py` · `alert_server.py`</mark> 를 씁니다. 실습 7-1에서는 Unit 6의 실습 6-3에서 저장한 `tickets_unit09.json` 도 읽습니다. 실습 7-2에서는 실습 7-1에서 만든 `escalation.py` 도 씁니다. 없는 파일은 이 코스의 앞 레슨 코드 상자로 만듭니다. `ticketing.py` 는 Unit 6 실습 6-1, `ticket_merge.py` 는 실습 6-2, `ticket_notice.py` 는 실습 6-3 레슨의 코드 상자이고, `escalation.py` 는 이 Unit의 실습 7-1 레슨의 코드 상자입니다. `incident.py` · `notifier.py` · `alert_server.py` 는 Unit 6 「시작하기」 레슨의 「이전 파일이 없을 때」 코드 상자로 만듭니다.
 
  **줄임말 이름 안내**: 이 문서의 코드와 파일에는 줄임말로 된 이름이 있습니다. 처음 보면 뜻을 알기 어려워서 아래에 풀어 둡니다. 이미 배포한 파일과 맞추기 위해 이름은 그대로 쓰고 뜻만 설명합니다.
   - `ack` · `acked` 는 acknowledge(확인하다) · acknowledged(확인했다)의 줄임말입니다. 담당자가 티켓을 처음 확인했다는 뜻입니다.
@@ -43,13 +43,9 @@ Unit 6에서는 세 가지를 했습니다. 알림으로 티켓(ticket, 티켓: 
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다. `cd` 가 안 되면 `ls` 로 `soar_response` 폴더가 보이는지 확인합니다.
-   - `tickets_unit09.json` 이 없으면 먼저 아래 6번(알림 서버 켜기)을 합니다. 그다음 이 터미널에서 Unit 6의 실습 6-3 실행 파일(`exercise6-3_run.py`)을 한 번 실행하면 `tickets_unit09.json` 이 생깁니다. 실행 파일이 없으면 Unit 6의 실습 6-3 안내 문서의 `exercise6-3_run.py` 코드로 파일을 만들어 실행합니다. `ticketing.py` 같은 Unit 6 코드 파일은 `complete_files.md` 6절에서 복사합니다. 이 경우 서버 터미널에 Unit 6의 실습 6-3의 `[알림 받음]` 9줄이 먼저 나오므로, 실습 7-1의 4줄은 그 아래부터 셉니다.
-3. Unit 7에서 받은 파일 두 개(Unit 7 안내 문서, Unit 7 보고서)를 `soar_response` 폴더로 옮기고, 보고서 제목의 `이름` 을 내 이름으로 바꿉니다.
-4. **[터미널]** 담당자 동작 파일을 만들고 **[VS Code]** 에서 열어 아래 내용을 붙여 넣습니다.
-   ```bash
-   touch status_events.json
-   ls
-   ```
+   - `tickets_unit09.json` 이 없으면 먼저 아래 6번(알림 서버 켜기)을 합니다. 그다음 이 터미널에서 Unit 6의 실습 6-3 실행 파일(`exercise6-3_run.py`)을 한 번 실행하면 `tickets_unit09.json` 이 생깁니다. 실행 파일이 없으면 Unit 6의 실습 6-3 레슨의 `exercise6-3_run.py` 코드 상자로 파일을 만들어 실행합니다. `ticketing.py` 같은 Unit 6 코드 파일은 Unit 6의 실습 6-1 ~ 6-3 레슨 코드 상자로 만듭니다. 이 경우 서버 터미널에 Unit 6의 실습 6-3의 `[알림 받음]` 9줄이 먼저 나오므로, 실습 7-1의 4줄은 그 아래부터 셉니다.
+3. 이 페이지의 파일은 모두 이 페이지의 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 답을 적는 보고서 `report_u7.md` 도 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
+4. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 `status_events.json` 을 그대로 적고 Enter 를 친 뒤, 아래 내용을 복사해 붙여 넣고 `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다(담당자 동작 파일).
 
 **`status_events.json`** — 실습 7-2 근무 시뮬레이션 3시간 동안 담당자가 티켓 상태를 변경한 기록입니다.
 
@@ -82,7 +78,7 @@ Unit 6에서는 세 가지를 했습니다. 알림으로 티켓(ticket, 티켓: 
 ## 오류가 나면
 
 - `pwd` 가 `soar_response` 로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
-- `ModuleNotFoundError` 는 <mark style="background:#ffc4d6">Unit 6 파일이나 `incident.py` · `notifier.py` 가 이 폴더에 없다는 뜻</mark>입니다. `complete_files.md` 에서 복사합니다.
+- `ModuleNotFoundError` 는 <mark style="background:#ffc4d6">Unit 6 파일이나 `incident.py` · `notifier.py` 가 이 폴더에 없다는 뜻</mark>입니다. 위 「이전 파일」 에서 알려 준 앞 레슨의 코드 상자로 만듭니다.
 - 출력에 `[알림 실패] ConnectionError`(연결 오류)가 나오면 <mark style="background:#ffc4d6">알림 서버가 실행 중이 아니라는 뜻</mark>입니다. 6번을 다시 실행합니다.
 - 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 막히면 맨 아래 「정답」을 보고, 풀리지 않으면 보고서에 「모름 — 막힌 곳: …」 이라고 씁니다.
 

@@ -226,7 +226,7 @@ print("--- 단계 2: 전체 이벤트", total, "개")                           
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `classify.py` · `exercise4-3_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code]** 파일 `classify.py` · `exercise4-3_run.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `classify.py` 에서 직접 쓰는 곳 **다섯 군데**를 씁니다. 3.1 의 규칙 순서와 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -235,7 +235,7 @@ print("--- 단계 2: 전체 이벤트", total, "개")                           
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise4-3_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **두 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 4줄이고, 단계 2는 숫자가 제목 줄에 함께 나오므로 그 아래 줄이 없습니다.
-5. **[보고서]** Unit 4 의 `## 실습 4-3` › `### 실습 4-3` 아래를 채웁니다.
+5. **[보고서]** `report_u4.md` 의 `## 실습 4-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 유형별 이벤트 수를 적어 주세요.
    - (나) [핵심 질문] 「기타 실패」(결과가 실패이면서 `POST /login` 도 아니고 `/admin` 도 없는 이벤트)는 실패한 유형 중 15개로 가장 많습니다. 샘플 이벤트에서 `source` 가 `server` 인 이벤트 하나와 `web` 인 이벤트 하나를 찾아, 각각 `action` 과 함께 적어 주세요(예: `server` 의 `ACCOUNT:CHANGE`, `web` 의 `GET /.env` 처럼 규칙 1 · 2번에 걸리지 않는 것). 그리고 이 둘이 같은 이름 「기타 실패」로 묶여 있으면 담당자가 무엇을 하기 어려운지 적어 주세요.
    - (다) [핵심 질문] 유형 규칙은 위에서부터 차례로 보고 먼저 조건을 충족하는 것으로 정합니다. 「기타 실패」(결과가 실패이면 충족)를 맨 위로 옮겼다고 합시다. 그러면 「비정상 로그인」 · 「비인가 접근」 · 「기타 실패」 이벤트는 각각 몇 개가 될까요? 그리고 그때 담당자가 구분하지 못하게 되는 것은 무엇인가요?
@@ -263,8 +263,8 @@ print("--- 단계 2: 전체 이벤트", total, "개")                           
    ls
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
-   - `baseline.py` · `login_detection.py` · `classify.py` · `exercise4-1_run.py` · `exercise4-2_run.py` · `exercise4-3_run.py` · `normalized_events.json` · `baseline_logins.csv` 와 <mark>이 안내 · 보고서 두 파일이 보여야</mark> 합니다.
-2. **[보고서]** Unit 4 보고서의 실습 4-1 ~ 실습 4-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. 못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.
+   - `baseline.py` · `login_detection.py` · `classify.py` · `exercise4-1_run.py` · `exercise4-2_run.py` · `exercise4-3_run.py` · `normalized_events.json` · `baseline_logins.csv` 와 <mark>`report_u4.md` 가 보여야</mark> 합니다.
+2. **[보고서]** `report_u4.md` 의 실습 4-1 ~ 실습 4-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. 못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.
 
 ---
 

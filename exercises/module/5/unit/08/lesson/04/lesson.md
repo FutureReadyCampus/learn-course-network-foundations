@@ -208,12 +208,7 @@ print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.
 
 **순서**
 
-1. **[터미널]** 파일 다섯 개를 만들고 **[VS Code]** 에서 열어 붙여 넣습니다.
-   ```bash
-   pwd
-   touch fp_state.json fp_log.json fp_reports.json false_positive.py exercise8-3_run.py
-   ls
-   ```
+1. **[VS Code]** 파일 다섯 개 `fp_state.json` · `fp_log.json` · `fp_reports.json` · `false_positive.py` · `exercise8-3_run.py` 를 만듭니다. 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
 2. **[VS Code]** `false_positive.py` 1 ~ 7번, `exercise8-3_run.py` 8 · 9번을 씁니다. 막히면 아래 「실습 8-3 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -223,7 +218,7 @@ print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.
    - 단계 1 은 숫자가 제목 줄에 함께 나오고 그 아래 1줄입니다.
    - 단계 2 는 10줄(신고 한 건에 5줄씩), 단계 3 은 2줄입니다.
    - 단계 4 는 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
-5. **[보고서]** Unit 8 의 `## 실습 8-3` 아래를 채웁니다.
+5. **[보고서]** `report_u8.md` 의 `## 실습 8-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 신고마다 걸린 시간과 처리 뒤 잠긴 계정을 적어 주세요.
    - (나) [핵심 질문] `INC-301` 의 영향 확인에 `IP 차단 198.51.100.120` 이 없습니다. `fp_log.json` 에서 `198.51.100.120` 의 IP 차단 기록이 가진 `before` · `after` 를 근거로 그 이유를 적고, `false_positive.py` 1번의 `if` 줄이 없으면 규칙 조정 제안이 어떻게 잘못되는지 적어 주세요.
    - (다) [핵심 질문] `INC-301` 의 되돌리기에 `되돌리기 불가 jiwoo` 가 있습니다. 무엇을 되돌릴 수 없는지(비가역 조치)와 담당자가 `jiwoo` 에게 따로 안내해야 할 것을 적어 주세요. 그리고 `dami` 가 처리 뒤에도 잠겨 있어야 하는 이유를 따로 적어 주세요.

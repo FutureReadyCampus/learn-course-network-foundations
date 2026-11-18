@@ -273,7 +273,7 @@ print("저장된 이벤트", saved_count, "개")                                
 
 **순서**
 
-1. **[VS Code 또는 터미널]** 파일 `normalize.py` · `exercise2-3_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code]** 파일 `normalize.py` · `exercise2-3_run.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `normalize.py` 에서 직접 쓰는 곳 **다섯 군데**를 씁니다. 3.1 의 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -283,7 +283,7 @@ print("저장된 이벤트", saved_count, "개")                                
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise2-3_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **네 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1은 1줄, 단계 2는 2줄, 단계 3은 5줄, 단계 4는 1줄입니다.
 5. **[VS Code]** 새로 생긴 `normalized_events.json` 을 열어 <mark>이벤트 하나가 7개 키(`time` · `source` · `user` · `ip` · `action` · `result` · `raw`)로 되어 있는지</mark> 봅니다.
-6. **[보고서]** Unit 2 의 `## 실습 2-3` › `### 실습 2-3` 아래를 채웁니다.
+6. **[보고서]** `report_u2.md` 의 `## 실습 2-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 소스별 이벤트 수와 `user` · `ip` 가 비어 있는 이벤트 수, 저장된 이벤트 수를 적어 주세요.
    - (나) [핵심 질문] 단계 3의 gaeun 이벤트를 보고, 서로 다른 소스에서 나온 이벤트가 어떤 순서로 나오는지 적고, 로그를 따로 볼 때와 무엇이 달라지는지 적어 주세요.
    - (다) [핵심 질문] `user` 가 비어 있는 이벤트가 28개입니다. 어느 로그(소스)의 이벤트이고 왜 비어 있는지 적어 주세요. 그리고 사용자 이름별로 개수를 세면 이 28개가 어떻게 될지 예상해 적어 주세요.
@@ -311,8 +311,8 @@ print("저장된 이벤트", saved_count, "개")                                
    ls
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
-   - `normalize_web.py` · `normalize_json_csv.py` · `normalize.py` · `exercise2-1_run.py` · `exercise2-2_run.py` · `exercise2-3_run.py` · `normalized_events.json` · `server_log.jsonl` · `saas_events.csv` 와 이 안내 · 보고서 두 파일이 보여야 합니다.
-2. **[보고서]** Unit 2 보고서의 실습 2-1 ~ 실습 2-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. <mark>못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.</mark>
+   - `normalize_web.py` · `normalize_json_csv.py` · `normalize.py` · `exercise2-1_run.py` · `exercise2-2_run.py` · `exercise2-3_run.py` · `normalized_events.json` · `server_log.jsonl` · `saas_events.csv` 와 `report_u2.md` 가 보여야 합니다.
+2. **[보고서]** `report_u2.md` 의 실습 2-1 ~ 실습 2-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. <mark>못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.</mark>
 
 ---
 

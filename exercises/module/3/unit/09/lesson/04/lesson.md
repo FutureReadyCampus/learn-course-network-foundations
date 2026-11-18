@@ -271,7 +271,7 @@ git push
 
 **결과**
 
-- (가) 한 예: 「줄이 열아홉 개였고(`.py` 열한 개 + `.json` 세 개 + `server_log.jsonl` 한 개 + `.md` 네 개), `.env` · `.venv` 는 없었다」. 이 숫자는 Unit 7까지 올렸고 `__pycache__` 가 보이지 않을 때의 숫자이며, 줄 수와 이름은 학생마다 다를 수 있습니다.
+- (가) 한 예: 「줄이 열일곱 개였고(`.py` 열한 개 + `.json` 세 개 + `server_log.jsonl` 한 개 + 보고서 `report_u8.md` · `report_u9.md` 두 개), `.env` · `.venv` 는 없었다」. 이 숫자는 Unit 7까지 올렸고 `__pycache__` 가 보이지 않을 때의 숫자이며, 줄 수와 이름은 학생마다 다를 수 있습니다.
   - `.env` 나 `.venv` 가 보였다면 `.gitignore` 에 한 줄을 적고 `git status` 를 다시 쳤다고 적습니다.
 
 **왜**

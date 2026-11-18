@@ -231,7 +231,7 @@ git push
 
 **결과**
 
-- (가) 한 예: 「줄이 열여섯 개였고(`.py` 열 개 + `config/access_log.json` · `config/exclude_list.json` 두 개 + `.md` 네 개), `.env` · `.venv` 는 없었다」. 이 숫자는 Unit 5의 파일을 이미 올렸고 `__pycache__` 가 보이지 않을 때의 숫자이며, 줄 수와 이름은 학생마다 다를 수 있습니다.
+- (가) 한 예: 「줄이 열네 개였고(`.py` 열 개 + `config/access_log.json` · `config/exclude_list.json` 두 개 + 보고서 `report_u6.md` · `report_u7.md` 두 개), `.env` · `.venv` 는 없었다」. 이 숫자는 Unit 5의 파일을 이미 올렸고 `__pycache__` 가 보이지 않을 때의 숫자이며, 줄 수와 이름은 학생마다 다를 수 있습니다.
   - `.env` 나 `.venv` 가 보였다면 `.gitignore` 에 한 줄을 적고 `git status` 를 다시 쳤다고 적습니다.
 
 **왜**
@@ -253,7 +253,7 @@ git push
 
 ## 앞 실습 파일 완성본
 
-앞 실습 파일을 못 만들고 다음 실습으로 넘어가야 할 때 그대로 만들어 씁니다. Unit 6의 파일(`review_list.py` · `review_rules.py` · `review_unused.py` · `config/access_log.json`)은 Unit 6 문서 맨 아래에 있습니다. 정답 본문을 함수 머리말과 합친 전체 파일입니다.
+앞 실습 파일을 못 만들고 다음 실습으로 넘어가야 할 때 그대로 만들어 씁니다. Unit 6의 파일(`review_list.py` · `review_rules.py` · `review_unused.py` · `config/access_log.json`)은 Unit 6 의 「정답」 레슨 맨 아래에 있습니다. 정답 본문을 함수 머리말과 합친 전체 파일입니다.
 
 **`overprivilege.py`** (실습 7-1 완성본)
 

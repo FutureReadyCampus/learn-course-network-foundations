@@ -28,7 +28,6 @@ docker pull nginx:1.28
 docker run -d --rm -p 8080:80 --name web-run nginx:1.28
 docker ps
 docker stop web-run
-touch compose.yaml
 ls
 docker compose up -d
 docker compose ps
@@ -124,7 +123,6 @@ curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8081
 ```bash
 docker compose ps
 mkdir logs
-touch compose.secure.yaml
 docker compose -f compose.secure.yaml up -d
 docker compose -f compose.secure.yaml ps
 curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8080
