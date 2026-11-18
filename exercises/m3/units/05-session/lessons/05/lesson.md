@@ -71,3 +71,5 @@ source:
 - (가) `git status` 를 쳤을 때 `Untracked files:` 아래에 줄이 몇 개 보였는지, 그중에 `.env` 나 `.venv` 가 있었는지 적어 주세요.
   - 쓸 내용: 줄 수, `.env` · `.venv` 가 있었는지 없었는지
   - 답:
+
+> **내 기록 남기기** — 이번 Unit에서 쓴 코드와 고민을 내 GitHub 페이지에 글로 남겨 보세요. 쓰기 질문은 [쓰기 프롬프트](__SITE__/exercises/portfolio/prompts/)의 「Module 3 · Unit 5. 요청 처리 기한(SLA) 점검과 이력 저장」 항목에서 고릅니다. [안내 보기](__SITE__/exercises/portfolio/)

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 432" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>저장소 만들기부터 Pages 켜기까지 6단계로 내 실습을 포트폴리오 주소에 남깁니다</title>
+<desc>윗줄은 1단계 저장소 만들기, 2단계 파일 만들기, 3단계 이름·주소 바꾸기이고, 아랫줄은 오른쪽에서 왼쪽으로 4단계 글 쓰기, 5단계 check_publish.py 점검, 6단계 GitHub Pages 켜기입니다. 결과로 https://&lt;내 아이디&gt;.github.io/&lt;저장소 이름&gt;/ 주소가 생기고, 오른쪽 아래에 code/, _posts/, _templates/, assets/ 에 무엇을 놓는지 정리했습니다.</desc>
+<defs>
+<marker id="a-flow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
+</defs>
+<text x="20" y="28" font-size="19" font-weight="700" fill="#292929">내 실습을 포트폴리오로 남기는 흐름</text>
+
+<g font-size="15" fill="#292929">
+<!-- 윗줄: 1 → 2 → 3 -->
+<rect x="20" y="44" width="200" height="100" rx="10" fill="#e6eefb" stroke="#2f6fd0"/>
+<text x="36" y="76" font-size="16" font-weight="700" fill="#2f6fd0">1. 저장소 만들기</text>
+<text x="36" y="102">내 GitHub 계정에</text>
+<text x="36" y="124" fill="#666660">Public으로 만들기</text>
+
+<rect x="260" y="44" width="200" height="100" rx="10" fill="#e6eefb" stroke="#2f6fd0"/>
+<text x="276" y="76" font-size="16" font-weight="700" fill="#2f6fd0">2. 파일 만들기</text>
+<text x="276" y="102">안내 페이지에서 복사해</text>
+<text x="276" y="124" fill="#666660">붙여 넣기</text>
+
+<rect x="500" y="44" width="200" height="100" rx="10" fill="#e6eefb" stroke="#2f6fd0"/>
+<text x="516" y="76" font-size="16" font-weight="700" fill="#2f6fd0">3. 이름·주소 바꾸기</text>
+<text x="516" y="102">설정 파일의 예시를</text>
+<text x="516" y="124" fill="#666660">내 아이디·저장소로</text>
+
+<!-- 아랫줄: 4 ← 5 ← 6 (오른쪽에서 왼쪽) -->
+<rect x="500" y="180" width="200" height="100" rx="10" fill="#e6eefb" stroke="#2f6fd0"/>
+<text x="516" y="212" font-size="16" font-weight="700" fill="#2f6fd0">4. 글 한 편 쓰기</text>
+<text x="516" y="238">_templates/ 글 틀을</text>
+<text x="516" y="260" fill="#666660">_posts/로 복사</text>
+
+<rect x="260" y="180" width="200" height="100" rx="10" fill="#fbf0dc" stroke="#9a6200"/>
+<text x="276" y="212" font-size="16" font-weight="700" fill="#9a6200">5. 공개 전 점검</text>
+<text x="276" y="238">check_publish.py</text>
+<text x="276" y="260" fill="#666660">오류·주의 0줄까지</text>
+
+<rect x="20" y="180" width="200" height="100" rx="10" fill="#e6eefb" stroke="#2f6fd0"/>
+<text x="36" y="212" font-size="16" font-weight="700" fill="#2f6fd0">6. Pages 켜기</text>
+<text x="36" y="238">git push 한 뒤</text>
+<text x="36" y="260" fill="#666660">Settings → Pages</text>
+
+<!-- 결과 -->
+<rect x="20" y="308" width="420" height="72" rx="10" fill="#e4f3ea" stroke="#1f7a4a"/>
+<text x="36" y="336" font-size="16" font-weight="700" fill="#1f7a4a">결과: 내 포트폴리오 주소</text>
+<text x="36" y="362">https://&lt;내 아이디&gt;.github.io/&lt;저장소 이름&gt;/</text>
+
+<!-- 어디에 무엇을 놓나 -->
+<rect x="460" y="300" width="240" height="124" rx="10" fill="#ffffff" stroke="#dededb"/>
+<text x="476" y="324" font-weight="700">어디에 무엇을 놓나</text>
+<g font-size="14">
+<text x="476" y="348" fill="#2f6fd0">code/</text><text x="584" y="348">파이썬 코드</text>
+<text x="476" y="370" fill="#2f6fd0">_posts/</text><text x="584" y="370">글</text>
+<text x="476" y="392" fill="#2f6fd0">_templates/</text><text x="584" y="392">글 틀</text>
+<text x="476" y="414" fill="#2f6fd0">assets/</text><text x="584" y="414">글에 넣는 이미지</text>
+</g>
+</g>
+
+<g stroke="#666660" stroke-width="2" fill="none" marker-end="url(#a-flow)">
+<path d="M222 94H256"/>
+<path d="M462 94H496"/>
+<path d="M600 146V176"/>
+<path d="M498 230H464"/>
+<path d="M258 230H224"/>
+<path d="M120 282V304"/>
+</g>
+</svg>

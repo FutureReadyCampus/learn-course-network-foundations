@@ -142,3 +142,5 @@ source:
 - (다) (선택) LLM 호출이나 알림과 이어 붙일 수 있는 곳을 적어 주세요. 예를 들어 `log_summary.py` 의 `read_log` 가 만든 요청 리스트를 LLM 호출에 넘겨 요약하는 것입니다.
   - 쓸 내용: ① 이어 붙일 수 있는 곳 ② 그 이유
   - 답:
+
+> **내 기록 남기기** — 이번 Unit에서 쓴 코드와 고민을 내 GitHub 페이지에 글로 남겨 보세요. 쓰기 질문은 [쓰기 프롬프트](__SITE__/exercises/portfolio/prompts/)의 「Module 3 · Unit 10. 점검 체크리스트와 주간 보고서」 항목에서 고릅니다. [안내 보기](__SITE__/exercises/portfolio/)
