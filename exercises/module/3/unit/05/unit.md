@@ -9,6 +9,7 @@ lessons:
 - path: lesson/05/lesson.md
 - path: lesson/06/lesson.md
 - path: lesson/07/lesson.md
+- path: lesson/08/lesson.md
 ---
 
 # 결과 보고하기

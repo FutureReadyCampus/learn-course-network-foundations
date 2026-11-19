@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>글 틀을 _posts/ 새 파일에 붙이고 module: 3, unit: 5 로 쓰면 5번 칸이 채워진다</title>
+<desc>Unit 1 시작하기 레슨의 글 틀을 복사해 _posts/2026-11-02-m3-u5-weekly-check.md 새 파일에 붙여 넣고, 머리말을 module: 3, unit: 5 로 고칩니다. checklist.py 는 code/m3_u5_checklist.py 로 올립니다. 1~2분 뒤 첫 화면 「나의 진행」의 Module 3 줄 5번 칸이 채워집니다.</desc>
+<defs><marker id="a-u5w-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+<text x="24" y="32" font-size="19" font-weight="700">GitHub 웹 화면에서 글 한 편 올리기</text>
+<rect x="24" y="56" width="180" height="128" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="114" y="84" font-size="16" text-anchor="middle" font-weight="700">글 틀 고르기</text>
+<text x="40" y="114" font-size="14">post-practice.md</text>
+<text x="40" y="138" font-size="14">post-short.md</text>
+<text x="40" y="162" font-size="14">post-stuck.md</text>
+<line x1="208" y1="120" x2="246" y2="120" stroke="#666660" stroke-width="1.8" marker-end="url(#a-u5w-p02)"/>
+<rect x="252" y="56" width="444" height="128" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="268" y="84" font-size="15" font-weight="700">_posts/2026-11-02-m3-u5-weekly-check.md</text>
+<rect x="268" y="98" width="412" height="72" rx="6" fill="#ffffff" stroke="#dededb"/>
+<text x="284" y="124" font-size="15" font-family="Menlo, Consolas, monospace">module: 3</text>
+<text x="284" y="152" font-size="15" font-family="Menlo, Consolas, monospace">unit: 5</text>
+<text x="420" y="138" font-size="14" fill="#2f6fd0">이 두 줄이 칸을 정합니다</text>
+<rect x="24" y="206" width="180" height="70" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="114" y="234" font-size="15" text-anchor="middle" font-weight="700">VS Code 에서</text>
+<text x="114" y="258" font-size="14" text-anchor="middle">checklist.py 복사</text>
+<line x1="208" y1="241" x2="246" y2="241" stroke="#666660" stroke-width="1.8" marker-end="url(#a-u5w-p02)"/>
+<rect x="252" y="206" width="444" height="70" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="268" y="234" font-size="15" font-weight="700">code/m3_u5_checklist.py</text>
+<text x="268" y="258" font-size="14">글에는 「전체 코드: code/m3_u5_checklist.py」라고 적기</text>
+<line x1="474" y1="280" x2="474" y2="300" stroke="#666660" stroke-width="1.8" marker-end="url(#a-u5w-p02)"/>
+<text x="486" y="296" font-size="14" fill="#666660">Commit changes · 1~2분 뒤</text>
+<rect x="24" y="306" width="672" height="76" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="40" y="332" font-size="15" font-weight="700">첫 화면 「나의 진행」</text>
+<text x="40" y="364" font-size="15">Module 3</text>
+<rect x="124" y="344" width="30" height="30" rx="5" fill="#f1f1ef" stroke="#dededb"/>
+<text x="139" y="364" font-size="14" text-anchor="middle" fill="#666660">1</text>
+<rect x="160" y="344" width="30" height="30" rx="5" fill="#f1f1ef" stroke="#dededb"/>
+<text x="175" y="364" font-size="14" text-anchor="middle" fill="#666660">2</text>
+<rect x="196" y="344" width="30" height="30" rx="5" fill="#f1f1ef" stroke="#dededb"/>
+<text x="211" y="364" font-size="14" text-anchor="middle" fill="#666660">3</text>
+<rect x="232" y="344" width="30" height="30" rx="5" fill="#f1f1ef" stroke="#dededb"/>
+<text x="247" y="364" font-size="14" text-anchor="middle" fill="#666660">4</text>
+<rect x="268" y="344" width="30" height="30" rx="5" fill="#e0442e" stroke="#e0442e"/>
+<text x="283" y="364" font-size="14" text-anchor="middle" fill="#ffffff" font-weight="700">5</text>
+<text x="316" y="364" font-size="14">unit: 5 글을 올리면 5번 칸이 빨갛게 채워집니다</text>
+</g>
+</svg>
