@@ -1,23 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 398" role="img"><title>도전 3-1 보고서: 이유별 건수, 규칙으로 못 거르는 권한, 회수 순서를 채운다</title><desc>보고서 도전 3-1 칸에서 채울 항목이다. (가) 출력과 이유별 건수, (나) 규칙으로 걸러 낼 수 없는 권한의 예와 필요한 정보, (다) 걸린 7건 가운데 먼저 회수할 것과 그 기준을 쓴다.</desc><defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 316" role="img"><title>실습 3-1 보고서: (가) 출력과 건수, (나) 거부되는 권한을 남기는 이유를 채운다</title><desc>보고서 실습 3-1 칸에서 채울 항목이다. (가)는 출력 전체, 전체 건수, 예외 건수, 권한 없는 사용자와 이유이고, (나)는 판정 함수가 이미 거부하는 권한의 예와 그것을 남겨 두는 이유다.</desc><defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">도전 3-1 · 규칙으로 필요 없어진 권한 찾기</text>
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">실습 3-1 · 권한 현황 리스트 만들기</text>
 <rect x="20" y="52" width="680" height="36" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="32" y="75.25" font-size="15" fill="#292929" font-weight="700">(가) 출력 전체와 이유별 건수</text>
+<text x="32" y="75.25" font-size="15" fill="#292929" font-weight="700">(가) 출력 전체와 건수</text>
 <rect x="40" y="98" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="70" y="113" font-size="15" fill="#292929">① 출력 전체(코드 상자에 붙여 넣기)</text>
 <rect x="40" y="128" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="70" y="143" font-size="15" fill="#292929">② 이유별 건수</text>
-<rect x="20" y="164" width="680" height="36" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="2"/>
-<text x="32" y="187.25" font-size="15" fill="#292929" font-weight="700">(나) [핵심 질문] 규칙으로 못 거르는 권한</text>
-<rect x="40" y="210" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="70" y="225" font-size="15" fill="#292929">① 규칙으로 못 거르는 권한의 예</text>
+<text x="70" y="143" font-size="15" fill="#292929">② 전체 건수   ③ 예외로 받은 건수</text>
+<rect x="40" y="158" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="70" y="173" font-size="15" fill="#292929">④ 권한이 하나도 없는 사용자와 그 이유</text>
+<rect x="20" y="194" width="680" height="36" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="2"/>
+<text x="32" y="217.25" font-size="15" fill="#292929" font-weight="700">(나) [핵심 질문] 이미 거부되는 권한을 남겨 두는 까닭</text>
 <rect x="40" y="240" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="70" y="255" font-size="15" fill="#292929">② 찾는 데 필요한 정보</text>
-<rect x="20" y="276" width="680" height="36" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="2"/>
-<text x="32" y="299.25" font-size="15" fill="#292929" font-weight="700">(다) [핵심 질문] 7건 중 무엇부터 회수할까</text>
-<rect x="40" y="322" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="70" y="337" font-size="15" fill="#292929">① 먼저 회수할 것</text>
-<rect x="40" y="352" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="70" y="367" font-size="15" fill="#292929">② 그 기준과 이유</text>
+<text x="70" y="255" font-size="15" fill="#292929">① 이미 거부되는 권한의 예</text>
+<rect x="40" y="270" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="70" y="285" font-size="15" fill="#292929">② 리스트에 남겨 두는 이유</text>
 </g>
 </svg>

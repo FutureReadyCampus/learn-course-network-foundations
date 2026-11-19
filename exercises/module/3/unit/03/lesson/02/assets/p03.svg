@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
 <title>회수는 아무도 확인하지 않아 과다권한이 남으므로 접근 점검으로 가려낸다</title>
-<desc>권한은 부여할 때 절차를 거치지만 회수할 때는 확인하지 않는 일이 많아 퇴사·이동 뒤에도 남습니다. 필요보다 많은 권한이 과다권한이고, 접근 점검으로 정기적으로 가려냅니다. 도전 3-1는 사실로, 실습 3-2은 규칙 밖의 권한을 찾습니다.</desc>
+<desc>권한은 부여할 때 절차를 거치지만 회수할 때는 확인하지 않는 일이 많아 퇴사·이동 뒤에도 남습니다. 필요보다 많은 권한이 과다권한이고, 접근 점검으로 정기적으로 가려냅니다. 실습 3-2 는 먼저 사실(퇴사 · 만료)로 거르고, 남은 권한 가운데 오래 안 쓴 것을 찾습니다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="30" font-size="19" fill="#292929" font-weight="700">왜 접근 점검이 필요한가</text>
@@ -14,11 +14,11 @@
 <rect x="20" y="222" width="680" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="360" y="250.928" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">접근 점검 (access review) · 부여된 권한을 정기적으로 살펴 가려낸다</text>
 <rect x="20" y="298" width="320" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="180" y="324.428" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">도전 3-1</text>
+<text x="180" y="324.428" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">1단계 · review_rules.py</text>
 <text x="180" y="345.82" font-size="15" fill="#292929" text-anchor="middle">파일에 적힌 사실로 (퇴사 · 만료)</text>
 <rect x="380" y="298" width="320" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="540" y="324.428" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">실습 3-2</text>
-<text x="540" y="345.82" font-size="15" fill="#292929" text-anchor="middle">규칙으로 못 거르는 권한</text>
+<text x="540" y="324.428" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">2단계 · 실습 3-2</text>
+<text x="540" y="345.82" font-size="15" fill="#292929" text-anchor="middle">남은 권한 중 오래 안 쓴 것</text>
 <polyline points="540,102 540,127" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
 <polyline points="180,102 180,127" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
 <polyline points="360,194 360,219" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
