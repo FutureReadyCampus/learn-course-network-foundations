@@ -14,6 +14,7 @@ lessons:
 - path: lesson/10/lesson.md
 - path: lesson/11/lesson.md
 - path: lesson/12/lesson.md
+- path: lesson/13/lesson.md
 ---
 
 # 역할로 권한 정하기
