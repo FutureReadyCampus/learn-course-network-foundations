@@ -2,6 +2,11 @@
 id: m3-u01-l01
 title: 시작하기
 render: markdown
+page_videos:
+  5:
+    video_id: ACzFIAOsfpM
+    title: 깃허브(GitHub) 블로그 10분안에 완성하기
+    creator: 테디노트 TeddyNote
 source:
   repository: FutureReadyCampus/learn-missions
   path: network/075_day01_pm_rbac.md
@@ -140,7 +145,7 @@ GitHub Pages는 저장소에 올린 파일을 웹사이트로 보여 주는 무�
 
 ### 영상으로 보기
 
-이 페이지 맨 아래의 영상은 내 컴퓨터에 Jekyll을 설치해서 로컬로 블로그를 만드는 방법(환경설정)을 보여 줍니다. 이 과정에서는 설치 없이 GitHub 웹 화면만 쓰니, **Jekyll이 어떤 도구인지 감을 잡는 용도**로 보시고 설치 부분은 따라 하지 않아도 됩니다. 영상의 화면은 지금과 조금 다를 수 있습니다. Git이 낯설다면 [Git 기초 영상(T아카데미)](https://www.youtube.com/watch?v=YQat_D1C-ps)도 있습니다.
+이 페이지 맨 아래의 영상(테디노트)은 GitHub에서 Jekyll 블로그를 10분 안에 만드는 과정을 보여 줍니다. 먼저 한 번 보면서 **Jekyll이 어떤 도구인지, 블로그가 어떻게 만들어지는지 감을 잡는 용도**입니다. 영상의 화면은 지금과 조금 다를 수 있고, 실제로 만드는 일은 이 페이지 뒤의 순서를 따릅니다. Git이 낯설다면 [Git 기초 영상(T아카데미)](https://www.youtube.com/watch?v=YQat_D1C-ps)도 있습니다.
 
 Jekyll을 깊이 배우지는 않습니다. 필요한 것만 하나씩 해 봅니다.
 
