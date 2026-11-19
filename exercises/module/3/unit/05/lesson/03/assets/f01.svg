@@ -1,23 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>여섯 건을 접수해 처리·점검한 뒤 requests.json 에 저장하고 다시 읽어 확인한다</title>
-<desc>INBOX 여섯 건을 create_request 로 접수하고, approve · reject · grant_request 로 처리합니다. count_by_status 와 check_sla_breach 로 점검한 뒤 save_requests 로 requests.json 에 저장하고, load_json 으로 다시 읽어 건수와 첫 요청서의 상태를 확인합니다.</desc>
-<defs><marker id="a-f01-0503" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
-<text x="24" y="30" font-size="18" fill="#292929" font-weight="700">요청서를 접수부터 저장까지 처리하는 순서</text>
-<rect x="100" y="50" width="520" height="37" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="360" y="73" font-size="14" fill="#292929" text-anchor="middle">INBOX 여섯 건 접수 (create_request)</text>
-<line x1="360" y1="87" x2="360" y2="111" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0503)"/>
-<rect x="100" y="113" width="520" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="360" y="136" font-size="14" fill="#292929" text-anchor="middle">승인 · 반려 · 부여</text>
-<text x="360" y="155" font-size="14" fill="#292929" text-anchor="middle">(approve / reject / grant_request)</text>
-<line x1="360" y1="169" x2="360" y2="193" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0503)"/>
-<rect x="100" y="195" width="520" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="360" y="218" font-size="14" fill="#292929" text-anchor="middle">점검: 상태별 건수 (count_by_status)</text>
-<text x="360" y="237" font-size="14" fill="#292929" text-anchor="middle">+ SLA 초과 (check_sla_breach)</text>
-<line x1="360" y1="251" x2="360" y2="275" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0503)"/>
-<rect x="100" y="277" width="520" height="37" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="360" y="300" font-size="14" fill="#292929" text-anchor="middle">저장: requests.json (save_requests)</text>
-<line x1="360" y1="314" x2="360" y2="338" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0503)"/>
-<rect x="100" y="340" width="520" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="360" y="363" font-size="14" fill="#292929" text-anchor="middle">다시 읽어서 건수와 첫 요청서의 상태를</text>
-<text x="360" y="382" font-size="14" fill="#292929" text-anchor="middle">확인한다 (load_json)</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>요청 한 건은 check 에서 evaluate_conditional, evaluate_access 를 거쳐 판정되고 로그에 남습니다</title>
+<desc>상황 2 · 3 · 7 · 8에서 요청 한 건이 거치는 순서입니다. access_server.py 의 check 가 conditional.py 의 evaluate_conditional(조건: 시간 · 접속 위치)을 부르고, 그 안에서 policy.py 의 evaluate_access(역할 → 예외 → 거부)가 rbac.py 의 check_permission(사용자 · 퇴사 · 역할 · 권한)과 exception_policy.py 의 find_exception(예외 만료)을 부릅니다. 끝으로 write_log 가 server_log.jsonl 에 요청마다 한 줄을 남깁니다.</desc>
+<defs><marker id="a-f01-m3u05l03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<text x="20" y="30" font-size="18" font-weight="700" fill="#292929">요청 한 건이 거치는 순서 <tspan font-size="15" font-weight="400" fill="#666660">(상황 2 · 3 · 7 · 8)</tspan></text>
+<g font-size="15" fill="#292929">
+<rect x="20" y="50" width="680" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="34" y="77"><tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">access_server.py</tspan> 의 <tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">check</tspan></text>
+<rect x="60" y="108" width="640" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="74" y="135"><tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">conditional.py</tspan> 의 <tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">evaluate_conditional</tspan></text>
+<text x="500" y="135" font-size="14" fill="#666660">조건: 시간 · 접속 위치</text>
+<rect x="100" y="166" width="600" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="114" y="193"><tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">policy.py</tspan> 의 <tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">evaluate_access</tspan></text>
+<text x="500" y="193" font-size="14" fill="#666660">역할 → 예외 → 거부</text>
+<rect x="140" y="224" width="560" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="154" y="251"><tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">rbac.py</tspan> 의 <tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">check_permission</tspan></text>
+<text x="500" y="251" font-size="14" fill="#666660">사용자 · 퇴사 · 역할 · 권한</text>
+<rect x="140" y="282" width="560" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="154" y="309"><tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">exception_policy.py</tspan> 의 <tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">find_exception</tspan></text>
+<text x="500" y="309" font-size="14" fill="#666660">예외 만료</text>
+<rect x="60" y="340" width="640" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="74" y="367"><tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">write_log</tspan> → <tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">server_log.jsonl</tspan></text>
+<text x="500" y="367" font-size="14" fill="#666660">요청마다 한 줄</text>
+</g>
+<g stroke="#666660" stroke-width="1.6" fill="none" marker-end="url(#a-f01-m3u05l03)">
+<path d="M40 94V130H56"/><path d="M40 130V362H56"/>
+<path d="M80 152V188H96"/>
+<path d="M120 210V246H136"/><path d="M120 246V304H136"/>
+</g>
 </svg>

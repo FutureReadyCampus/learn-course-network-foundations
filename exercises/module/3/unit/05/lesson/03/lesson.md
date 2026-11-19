@@ -1,300 +1,340 @@
 ---
 id: m3-u05-l03
-title: 실습 5-2 · 요청 이력 저장과 상태별 건수
+title: 실습 5-2 · 상황별 원인과 해결법 정리하기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
-  path: network/084_day03_pm_sla.md
-  mission_id: GichanSource.m3-1023-pm-sla
+  path: network/094_day06_am_weekly_report.md
+  mission_id: GichanSource.m3-1102-am-weekly-report
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 실습 5-2 · 요청 이력 저장과 상태별 건수
+# 실습 5-2 · 상황별 원인과 해결법 정리하기
 
-## 목표: 저장 함수와 건수 세기
+## 이번 실습: Module 3 상황 되짚기
 
-> **오늘 들어온 일**
->
-> A사 관제 담당이 보낸 메시지: 「지금까지 만든 요청서는 프로그램을 끄면 사라집니다. 접수 · 승인 · 반려 · 부여를 한 번 돌리고 나면 요청서 전체를 파일로 남겨 주세요. 그리고 상태별로 몇 건인지 숫자로 보고 싶은데, 손으로 세면 시간이 걸리고 틀리기 쉽습니다.」
-> - 이 실습에서 하는 일: 요청서 리스트를 `requests.json` 으로 저장하는 함수 `save_requests` 와 상태별 건수를 세는 함수 `count_by_status` 를 직접 씁니다. Unit 4와 Unit 5에서 만든 함수를 모두 이어서 한 번 돌려 봅니다. 마지막에 이번 Unit에서 만든 것을 깃허브에 올립니다.
-> - 끝나면 쓰는 것: 보고서 (가)~(다) 답
+> **이번 실습은 새로 배우는 것이 없습니다.** Module 3에서 만든 파일과 함수를 **상황별로 되짚으면서**, 각 상황의 원인과 고치는 방법을 내 말로 정리합니다. 정리한 글이 Module 3의 총정리가 되고, 보고서의 실습 5-2 칸에 씁니다.
 
-> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「문제」 전까지는 이 실습의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
+## 상황을 풀 때 쓰는 틀
 
-## 왜 요청 이력을 파일로 남기는가
+상황이 생기면 같은 네 단계로 생각합니다.
 
-> **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
+- **확인**: 로그나 점검 결과로 무슨 일인지 알아봅니다.
+- **원인**: 왜 이런 일이 생겼는지 가립니다. 원인은 보통 셋 중 하나입니다.
+  - 사람의 일: 사람이 해야 할 일(입사, 퇴사, 부서 이동 등)이 일어났습니다.
+  - 데이터 문제: 파일에 있어야 할 것이 없거나 틀려 있습니다.
+  - 규칙 문제: 「무엇을 허용하고 무엇에 경고할지」 정해 둔 기준이 비어 있거나 현실과 맞지 않습니다(너무 느슨하거나 너무 엄격합니다).
+  - 이 수업에서 기준을 적어 둔 곳은 `conditions.json`(권한마다 몇 시에 어디서 접속하면 허용하는지), `alert.json`(거부율이 얼마 이상이면 경고하는지), 점검의 90일 기준(며칠 안 쓴 권한을 후보로 뽑는지), `sla.json`(요청을 몇 시간 안에 처리해야 하는지)입니다.
+- **고치기**: 어느 파일을 열어서 어떻게 고칠지 정합니다. 방법은 셋 중 하나입니다.
 
-1. 요청서는 프로그램이 켜져 있는 동안에만 남아 있고, 프로그램이 끝나면 사라집니다. 파일로 저장해야 다음 날에도 요청서를 볼 수 있습니다. 여기서 **이력**은 요청이 어떻게 처리됐는지 남은 기록입니다.
-2. 상태별 건수는 매일 아침 한눈에 보는 숫자입니다.
+| 방법 | 뜻 | Module 3에서 한 예 |
+|---|---|---|
+| 새로 넣는다(추가) | 없던 것을 파일에 적어 넣음 | `users.json` 에 새 직원 정보를 적음. `exceptions.json` 에 만료 시각이 있는 예외를 적음 |
+| 값을 바꾼다(수정) | 있는 정보의 값을 다른 값으로 고침 | `"employed": true` 를 `false` 로 바꿈. `conditions.json` 의 허용 접속 위치에 `"vpn"` 을 넣음 |
+| 지운다(삭제) | 있던 정보를 파일에서 없앰 | 퇴사자 정보를 `users.json` 에서 지움. 만료된 예외를 `exceptions.json` 에서 지움 |
 
-## 2.1 JSON 파일로 저장하기
+- **다시 확인**: 고친 뒤에 무엇을 다시 실행하거나 어떤 출력을 보면 고쳐진 것을 알 수 있는지 정합니다.
 
-> **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
+## 3.1 상황 8개와 읽을 핵심 코드
 
-- 지금까지는 JSON 파일을 **읽기**만 했습니다. 이번에는 파일에 **쓰기**를 합니다.
+> 실습 5-2은 코드를 실행하지 않고 읽고 글로 씁니다. 상황 표의 `users.json` · `exceptions.json` 은 Module 3에서 쓰던 파일이고, 이번 Unit의 점검(실습 5-1)은 같은 내용을 한 파일에 모은 `config/week_state.json` 을 읽습니다. 상황의 값은 Module 3 때를 되짚은 것이라 이번 `week_state.json` 과 다를 수 있습니다(예: 상황 3의 예외 번호). Module 3에서 만든 파일이 없으면 문서의 코드 조각만 읽고 답합니다.
 
-| 파일 열기 | 뜻 |
-|---|---|
-| `open(path, encoding="utf-8")` | 읽기 모드. 파일이 있어야 하고, 내용을 읽기만 한다 |
-| `open(path, "w", encoding="utf-8")` | 쓰기 모드. 파일이 없으면 만들고, **있으면 내용을 지우고 새로 쓴다** |
+| # | 상황 (이렇게 알게 됐습니다) | 읽을 핵심 코드 |
+|---|---|---|
+| 1 | 새 직원 hana 가 입사했는데, hana 의 요청이 「등록되지 않은 사용자」로 거부된다 | `role_admin.py` 의 `assign_role`, `config/users.json` 의 사용자 정보 |
+| 2 | 보고서에 dami 가 거부 4번으로 나오고 퇴사자 계정 점검이 실패한다. dami 는 퇴사했다 | `rbac.py` 의 `check_permission` 판정 순서, `config/users.json` |
+| 3 | seoyeon 이 월말 정산 대조를 지원하게 되어 `SETTLE:QUERY` 가 잠시 필요한데 「권한 없음」으로 거부된다 | `exception_policy.py` 의 `find_exception`, `policy.py` 의 `evaluate_access` 순서, `config/exceptions.json` |
+| 4 | junho 가 영업 실적 정정을 위해 `SALES:CHANGE` 를 달라고 하는데, 누가 언제까지 처리할지 정해진 방법이 없다 | `req_create.py` · `req_review.py` · `req_grant.py` · `req_sla.py` |
+| 5 | 정기 점검에서 seoyeon 의 `SALES:CHANGE` 는 마지막 사용이 120일 전이고, gaeun 의 `ACCOUNT:CHANGE` 는 사용 이력이 없다 | `review_rules.py` 의 `find_stale`, `review_unused.py` 의 `find_unused`, `config/exclude_list.json` |
+| 6 | 회수 대상에 쓰기 권한이 섞여 있고, 퇴사자의 역할을 비우면 권한 여러 개가 한꺼번에 사라진다 | `revoke_plan.py` · `revoke_approve.py` · `revoke.py`, `revocation_log.json` |
+| 7 | 새벽에 밖에서 접속해도 요청이 허용된다. 한편 gaeun 은 VPN 으로 계정 변경을 하다가 3번 거부됐다 | `config/conditions.json`, `conditional.py` 의 `evaluate_conditional` |
+| 8 | 사람이 로그를 눈으로 세는 데 오래 걸리고, 기준이 사람마다 다르다 | `access_server.py` 의 `check`, `server_log.jsonl`, `checklist.py`, `log_summary.py`, `weekly_report.py` |
 
-- `json.dump(데이터, 파일, ensure_ascii=False, indent=2)` 는 데이터를 JSON 문자열로 바꿔 파일에 씁니다. `ensure_ascii=False` 는 한글을 그대로 쓰라는 뜻이고, `indent=2` 는 사람이 읽기 쉽게 줄을 나누고 2칸씩 들여 쓰라는 뜻입니다.
+- 파일들은 서로를 부릅니다. 상황 2 · 3 · 7 · 8은 요청 한 건이 같은 순서로 함수를 거칩니다. 아래 그림에서 A 에서 B 로 가는 화살표는 「A 가 B 를 부른다」는 뜻이고, 판정은 안쪽 B 부터 하고 바깥 A 가 그 결과에 조건을 더합니다.
 
-<figure class="page-figure"><img src="assets/f01.svg" alt="여섯 건을 접수해 처리·점검한 뒤 requests.json 에 저장하고 다시 읽어 확인한다"></figure>
+<figure class="page-figure"><img src="assets/f01.svg" alt="요청 한 건은 check 에서 evaluate_conditional, evaluate_access 를 거쳐 판정되고 write_log 로 로그에 남습니다"></figure>
 
-**문법 상자 — 파일에 JSON 쓰기**
+- 상황 4가 만든 예외가 상황 3의 `find_exception` 이 읽는 데이터가 됩니다. `req_grant.py` 의 `grant_request` 가 예외 리스트에 새 예외를 추가합니다.
+- 상황 5 → 6은 점검 결과가 회수로 이어집니다. 점검이 찾은 회수 대상을 `plan_revocation` 이 받아 계획을 세우고, `mark_approvals` · `execute_revocation` 이 이어 처리합니다.
+- 상황 1 · 4 는 함수가 함수를 부르는 관계가 아니라 같은 데이터(사용자 딕셔너리, 예외 리스트)를 읽고 쓰는 관계입니다.
 
-아래 코드는 읽기만 합니다. 따라 치지 않습니다.
+아래는 상황마다 관련된 코드입니다. 각 코드 앞의 문장은 **이 코드를 왜 읽는지**를 알려 줍니다. 답을 알려 주는 것은 아니고, 코드에서 어디를 볼지만 짚어 줍니다. 읽고 나서 보고서의 실습 5-2 상황 정리를 쓸 때 참고합니다.
 
-**① `"w"` 로 열고 `json.dump` 로 쓰기**
+#### 상황 1 · 새 직원이 들어옴
+
+hana 를 시스템에 등록하는 일과 관련된 코드입니다.
+
+`role_admin.py` 의 `assign_role` 은 사용자에게 역할을 주는 함수입니다. 역할을 먼저 확인하는지, 사용자 정보를 어떻게 만드는지 읽습니다.
 
 ```python
-import json                                                         # JSON 을 다루는 모듈을 불러온다
-
-data = [{"id": 1, "reason": "정산 확인"}]                             # 저장할 리스트
-with open("demo.json", "w", encoding="utf-8") as demo_file:                 # 파일을 쓰기 모드("w")로 연다
-    json.dump(data, demo_file, ensure_ascii=False, indent=2)                # 리스트를 파일에 JSON 으로 쓴다
-file = open("demo.json", encoding="utf-8")                       # 파일을 연다
-text = file.read()                                               # 내용을 문자열로 읽는다
-print(text)                                                      # 쓴 파일을 다시 열어 내용을 출력한다
+def assign_role(users, name, role):                              # 사용자 딕셔너리 · 이름 · 역할을 받는 함수
+    """사용자에게 역할을 부여한다.
+    신입이 입사하거나 부서를 옮겼을 때 쓰고 (성공 여부, 이유)를 리턴한다.
+    """
+    if role not in ROLES:                                        # 역할 파일에 없는 역할이면
+        return False, "없는 역할"                                 # 부여하지 않고 거부한다
+    users[name] = {"role": role, "employed": True}               # 사용자 정보를 새로 만들거나 덮어쓴다
+    return True, "부여"                                           # 부여했다고 알린다
 ```
 
-실행 결과:
+#### 상황 2 · 퇴사자 계정으로 요청이 계속 들어옴
 
+퇴사한 dami 의 요청이 왜 거부되는지와 관련된 코드입니다.
+
+`rbac.py` 의 `check_permission` 은 요청이 들어오면 허용할지 가리는 첫 함수입니다. 검사가 어떤 순서로 이루어지는지, 퇴사한 사용자는 어느 단계에서 걸리는지 읽습니다.
+
+```python
+def check_permission(user, resource, action):                    # 사용자 · 자원 · 행위를 받는 함수
+    """요청을 허용할지 (허용 여부, 이유)로 리턴한다. 요청이 들어올 때 가장 먼저 쓰는 판정이고, 허용 리스트에 없으면 모두 거부한다."""   # 함수 첫 줄의 """ … """ 는 함수 설명 글이고 실행에는 영향이 없다
+    if user not in USERS:                                        # 사용자 파일에 없는 계정이면
+        return False, "등록되지 않은 사용자"                       # 바로 거부하고 함수를 끝낸다
+    if not USERS[user]["employed"]:                              # 재직 중이 아니면
+        return False, "퇴사한 계정"                                # 거부하고 함수를 끝낸다
+    role = USERS[user]["role"]                                   # 이 사용자의 역할을 꺼낸다
+    if role not in ROLES:                                        # 역할 파일에 없는 역할이면
+        return False, "역할이 없음"                                # 거부하고 함수를 끝낸다
+    permission = f"{resource}:{action}"                          # "자원:행위" 모양 문자열로 합친다
+    if permission not in ROLES[role]:                            # 그 역할의 권한 리스트에 없으면
+        return False, "권한 없음"                                  # 거부하고 함수를 끝낸다
+
+    return True, "허용"                                          # 모든 검사를 지나면 허용한다
 ```
+
+#### 상황 3 · 다른 팀 업무를 잠시 지원함
+
+역할에 없는 권한을 잠시만 허용하는 일과 관련된 코드입니다.
+
+`config/exceptions.json` 은 예외를 적어 두는 파일입니다. 예외 한 개가 어떤 값으로 이루어져 있는지 읽습니다.
+
+```json
+{"id": 1, "user": "seoyeon", "permission": "SETTLE:QUERY", "expires": "2026-10-22 18:00", "reason": "월말 정산 대조 지원"}
+```
+
+`policy.py` 의 `evaluate_access` 는 역할 판정과 예외 확인을 이어 붙인 함수입니다. 예외를 언제 확인하고 언제 확인하지 않는지 읽습니다.
+
+```python
+def evaluate_access(user, resource, action, now):                # 사용자 · 자원 · 행위 · 지금 시각을 받는 함수
+    """(허용 여부, 이유)를 리턴한다.
+    역할 권한 → 유효한 예외 → 거부 순서로 보며, 임시 예외까지 포함해 요청을 판정할 때 쓴다.
+    """
+    is_allowed, reason = check_permission(user, resource, action)        # 역할 판정을 먼저 한다
+    if is_allowed:                                                       # 역할로 허용되면
+        return True, "역할 권한"                                   # 역할 권한으로 허용한다
+    if reason != "권한 없음":                                     # 사용자 자체가 거부 대상이면(없음 · 퇴사 · 역할이 없음)
+        return False, reason                                     # 예외를 보지 않고 그 이유로 거부한다
+    found, found_exception_id = find_exception(user, f"{resource}:{action}", now)   # 유효한 예외를 찾는다
+    if found:                                                    # 있으면
+        return True, f"예외 {found_exception_id}번"                            # 예외 번호와 함께 허용한다
+    return False, "권한 없음"                                      # 둘 다 없으면 거부한다
+```
+
+`exception_policy.py` 의 `find_exception` 은 유효한 예외를 찾는 함수입니다. 예외가 언제까지 유효한지 어떻게 가리는지 읽습니다.
+
+```python
+def find_exception(user, permission, now):                       # 사용자 · "자원:행위" · 지금 시각을 받는 함수
+    """now 시각에 유효한 예외가 있으면 (True, 예외 번호)를 리턴한다.
+    없으면 (False, None)을 리턴한다.
+    역할에 없는 권한을 임시로 허용해도 되는지 확인할 때 쓴다.
+    """
+    for exception in EXCEPTIONS:                                       # 예외를 하나씩 꺼낸다
+        if exception["user"] == user and exception["permission"] == permission:   # 사람과 권한이 같으면
+            expires = datetime.strptime(exception["expires"], TIME_FORMAT)  # 만료 시각을 시각으로 바꾸고
+            if now < expires:                                    # 아직 만료 전이면
+                return True, exception["id"]                           # 유효한 예외와 그 번호를 리턴한다
+    return False, None                                           # 못 찾았으면 없다고 리턴한다
+```
+
+#### 상황 4 · 새 권한이 필요함
+
+권한을 요청하고, 승인하고, 부여하는 절차와 관련된 코드입니다.
+
+`req_review.py` 의 `approve_request` 는 요청서를 승인하는 함수입니다. 승인하지 않는 경우가 무엇인지, 승인하면 무엇이 바뀌는지 읽습니다.
+
+```python
+def approve_request(request, approver):                          # 요청서와 승인자 이름을 받는 함수
+    """검토 중인 요청서를 승인한다.
+    보안 담당자가 권한 요청을 처리할 때 쓰고 (성공 여부, 이유)를 리턴한다.
+    """
+    if request["status"] != "reviewing":                         # 검토 중이 아니면(이미 처리됐으면)
+        return False, "검토 중이 아님"                             # 바꾸지 않고 이유를 알린다
+    if request["user"] == approver:                              # 요청한 사람이 스스로 처리하려고 하면
+        return False, "본인 요청은 처리할 수 없음"                  # 바꾸지 않고 이유를 알린다
+    request["status"] = "approved"                               # 상태를 승인됨으로 바꾼다
+    request["approver"] = approver                               # 누가 승인했는지 적어 둔다
+    return True, "승인"                                          # 승인했다고 알린다
+```
+
+- 요청서의 상태(`status`)는 `reviewing` → `approved` → `granted` 순서로 바뀌고, 거절하면 `rejected` 입니다. 처리 기한은 `config/sla.json` 의 `hours`(4시간)이고 `req_sla.py` 의 `check_sla_breach` 가 기한을 넘긴 요청서를 찾습니다.
+- 이 세 함수(`approve_request`, `grant_request`, `check_sla_breach`)는 서로 부르지 않습니다. 요청서 딕셔너리를 순서대로 넘겨 받으며 `status` 만 바꿉니다.
+
+#### 상황 5 · 안 쓰는 권한이 쌓임
+
+(Unit 3 · Unit 3의 샘플 데이터 기준이고, 도전 5-1의 주간 로그와는 별개입니다.) 오래 안 쓴 권한을 찾아내는 일과 관련된 코드입니다.
+
+`review_unused.py` 의 `find_unused` 는 권한을 마지막으로 쓴 시각을 보고 후보를 뽑는 함수입니다. 기준 일수와 비교하는 줄이 어디인지, 사용 이력이 없을 때는 어떻게 하는지 읽습니다.
+
+```python
+        used_text = last_used_map.get(key)                       # 마지막 사용 시각 문자열을 꺼낸다(이력이 없으면 None)
+        if used_text is None:                                    # 사용 이력이 없으면
+            unused_entry = make_unused(entry, None)              # 안 쓴 권한 한 건을 만든다
+            unused.append(unused_entry)                          # 마지막 사용 시각을 None 으로 적은 복사본을 후보에 추가한다
+        elif days_since(used_text, now) > limit_days:            # 사용 이력이 있고 기준 일 수보다 오래 안 썼으면
+            unused_entry = make_unused(entry, used_text)         # 안 쓴 권한 한 건을 만든다
+            unused.append(unused_entry)                          # 마지막 사용 시각을 적은 복사본을 후보에 추가한다
+```
+
+`config/exclude_list.json` 은 점검에 걸려도 회수하지 않을 권한을 적어 두는 파일입니다. 제외 대상마다 이유를 왜 함께 적는지 생각하며 읽습니다.
+
+```json
+{"user": "gaeun", "permission": "ACCOUNT:CHANGE", "reason": "계정에 사고가 났을 때만 쓰는 권한이라 평소에는 쓰지 않음"}
+```
+
+#### 상황 6 · 민감한 권한을 회수해야 함
+
+(상황 5처럼 Unit 4의 샘플 데이터 기준입니다.) 권한을 안전하게 없애는 절차와 관련된 코드입니다.
+
+`revoke_approve.py` 의 `needs_approval` 은 회수 계획 중 승인이 필요한 것을 가르는 함수입니다. 어떤 조건이 승인 대상이 되는지 읽습니다.
+
+```python
+def needs_approval(plan, sensitive):                             # 계획 한 건과 민감한 권한 리스트를 받는 함수
+    """민감한 권한이거나 영향이 2개 이상이면 True, 아니면 False 를 리턴한다.
+    승인이 필요한 회수를 가려낼 때 쓴다.
+    """
+    is_sensitive = plan["permission"] in sensitive               # 권한이 민감한 권한 리스트에 있는지(True 또는 False)
+    is_big_impact = plan["impact"] >= 2                          # 영향이 2건 이상인지(True 또는 False)
+    return is_sensitive or is_big_impact                         # 둘 중 하나라도 참이면 True 를 리턴한다
+```
+
+`revoke_plan.py` 의 `plan_revocation` 은 회수 대상마다 회수 방법을 정하는 함수입니다. 세 가지 방법이 어떤 조건에서 나뉘는지 읽습니다.
+
+```python
+        if "예외" in finding["source"]:                          # 예외로 받은 권한이면
+            method = "예외 삭제"                                 # 그 예외를 지운다
+        elif not info["employed"]:                               # 퇴사한 사용자의 역할 권한이면
+            method = "역할 해제"                                 # 그 사용자의 역할을 해제한다
+        else:                                                    # 재직 중인 사용자의 역할 권한이면
+            method = "역할에서 권한 빼기"                        # 역할에서 그 권한을 뺀다
+```
+
+`revoke.py` 의 `execute_revocation` 은 계획을 실제로 실행하는 함수입니다. 승인 상태에 따라 실행하는 것과 하지 않는 것이 어떻게 나뉘는지, 결과를 어떻게 남기는지 읽습니다.
+
+```python
+        if plan["approval"] == "승인 대기":                      # 승인을 기다리는 계획이면
+            result = "대기"                                      # 실행하지 않고 대기로 남긴다
+        else:                                                    # 승인 불필요이거나 승인됨이면
+            apply_plan(plan, users, roles, exceptions)           # 실제로 회수한다
+            result = "실행"                                      # 실행했다고 남긴다
+```
+
+#### 상황 7 · 새벽 외부 접속, 그리고 정상 직원이 계속 거부됨
+
+권한이 있어도 시간이나 접속 위치에 따라 막는 규칙과 관련된 코드입니다.
+
+`config/conditions.json` 은 권한마다 허용하는 시간대와 접속 위치를 적어 둔 파일입니다. 어떤 권한에 어떤 조건이 걸려 있고, 조건이 없는 권한은 무엇인지 읽습니다.
+
+```json
 [
-  {
-    "id": 1,
-    "reason": "정산 확인"
-  }
+  {"permission": "SALES:CHANGE", "hours": [9, 18], "networks": ["office", "vpn"]},
+  {"permission": "SETTLE:QUERY", "hours": [8, 20], "networks": ["office", "vpn"]},
+  {"permission": "ACCOUNT:CHANGE", "hours": [9, 18], "networks": ["office"]}
 ]
 ```
 
-**② `ensure_ascii=False` 를 빼면 한글이 `\uXXXX` 문자열로 바뀌어 사람이 읽을 수 없습니다**
+`conditional.py` 의 `evaluate_conditional` 은 기본 판정이 허용일 때 위 조건을 적용하는 함수입니다. 조건에 어긋나면 어떤 이유로 거부하는지 읽습니다.
 
 ```python
-import json                                                         # JSON 을 다루는 모듈을 불러온다
-
-data = [{"id": 1, "reason": "정산 확인"}]                             # 저장할 리스트
-with open("demo.json", "w", encoding="utf-8") as demo_file:                 # 파일을 쓰기 모드("w")로 연다
-    json.dump(data, demo_file, indent=2)                                    # ensure_ascii=False 를 빼고 쓴다
-file = open("demo.json", encoding="utf-8")                       # 파일을 연다
-text = file.read()                                               # 내용을 문자열로 읽는다
-print(text)                                                      # 쓴 파일을 다시 열어 내용을 출력한다
+    for rule in rules:                                           # 조건을 하나씩 꺼낸다
+        if rule["permission"] == permission:                     # 이 권한에 걸린 조건이면
+            if not is_work_time(rule, now):                      # 업무 시간 안이 아니면
+                return False, "업무 시간 밖"                       # 거부한다
+            if not is_allowed_network(rule, network):            # 허용된 접속 위치가 아니면
+                return False, "허용되지 않은 접속 위치"            # 거부한다
+    return True, reason                                          # 어긋나는 조건이 없으면 기본 판정의 이유로 허용한다
 ```
 
-실행 결과:
+#### 상황 8 · 매주 어긋남을 확인해야 함
 
+점검과 집계를 매주 같은 기준으로 하는 일과 관련된 코드입니다.
+
+`access_server.py` 의 `check` 는 서버가 요청 한 건을 받아 판정하고 로그를 남기는 함수입니다. 값이 빠졌을 때, 허용일 때, 거부일 때 각각 어떤 숫자(상태 코드)로 답하는지 읽습니다.
+
+```python
+    now = parse_time(time_text)                                  # 시각으로 바꾼다(없거나 모양이 틀리면 None)
+    if None in (user, resource, action, network, now):           # 빠졌거나 모양이 틀린 값이 하나라도 있으면
+        return {"allowed": False, "reason": "입력이 잘못됨"}, 400   # 요청이 잘못됐다는 상태 코드 400 으로 답한다
+    allowed, reason = evaluate_conditional(user, resource, action, network, now, RULES)   # 조건까지 판정한다
+    log_entry = {                                                 # 로그 한 줄에 담을 값을 묶는다(여러 줄)
+        "time": request.args.get("time"),                        # 시각
+        "user": user,                                            # 사용자
+        "permission": f"{resource}:{action}",                    # 권한
+        "network": network,                                      # 접속 위치
+        "allowed": allowed,                                      # 허용 여부
+        "reason": reason,                                        # 이유
+    }
+    write_log(log_entry)                                         # 요청 로그를 한 줄 덧붙인다
+    if allowed:                                                  # 허용이면
+        return {"allowed": True, "reason": reason}, 200          # 상태 코드 200 으로 답한다
+    return {"allowed": False, "reason": reason}, 403             # 거부이면 상태 코드 403 으로 답한다
 ```
-[
-  {
-    "id": 1,
-    "reason": "\uc815\uc0b0 \ud655\uc778"
-  }
-]
-```
 
-- `as demo_file` 은 열린 파일을 `demo_file` 이라는 이름으로 부르겠다는 뜻이고, 파일은 `with` 아래에 들여쓴 줄 안에서만 열려 있습니다.
-- `open(…).read()` 는 파일을 열어 내용 전체를 문자열로 읽습니다. 위 코드는 방금 쓴 파일을 확인하려고 한 번 더 읽어 출력한 것입니다.
-- 세는 모양 `old_count = counts.get(키, 0)` → `counts[키] = old_count + 1` 은 Unit 1에서 쓴 것과 같습니다. `counts.get(키, 0)` 은 그 키가 있으면 값을, 없으면 0 을 꺼냅니다.
+아래 그림은 도전 5-1에서 만든 보고서가 어떤 파일의 어떤 함수에서 만들어지는지 보여 줍니다.
 
-> **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
+<figure class="page-figure"><img src="assets/f02.svg" alt="challenge5-1-2_run.py 가 run_checklist, read_log, build_report, save_report 를 차례로 불러 보고서를 만듭니다"></figure>
 
-## 실습 5-2 · 요청서 저장하고 상태별 건수 세기
+## 실습 5-2 · 상황 8개 원인과 해결법 정리하기
 
 **이런 상황이 있습니다**
 
-- **지금은**: 접수 · 승인 · 부여 · 기한 점검 결과가 프로그램이 켜져 있는 동안에만 남아 있어서, 프로그램을 끄면 모두 사라집니다. 관제 담당은 상태별로 몇 건인지도 숫자로 보고 싶어 하는데, 손으로 세면 틀리기 쉽습니다.
-- **그래서 만드는 것**: `save_requests`(요청서 전체를 `requests.json` 파일에 저장하고 저장한 건수를 리턴)와 `count_by_status`(상태별 건수를 딕셔너리로 리턴)입니다.
-- **실행하면**: 세 단계가 나옵니다. 단계 1은 요청 여섯 건의 처리 결과, 단계 2는 상태별 건수와 SLA 초과 요청 번호, 단계 3은 저장 결과입니다. 끝나면 `requests.json` 을 열어 한글이 그대로 저장됐는지 봅니다.
-- **현업에서는**: 신청 도구도 신청 기록을 지우지 않고 보관하고, 상태별 건수를 날마다 세어 보냅니다.
+- **지금은**: Module 3에서 파일과 함수를 하나씩 만들었지만, 상황이 생겼을 때 「무엇이 문제이고 어디를 어떻게 고치는지」를 한 번에 말하기는 어렵습니다.
+- **그래서 하는 것**: 상황 8개마다 원인, 고칠 파일, 어떻게 고치는지, 고친 뒤 확인을 내 말로 정리합니다.
+  - 상황 1 · 2 는 본보기가 있습니다. 먼저 읽고, 상황 3 ~ 8 중에서 내가 약하다고 느끼는 것부터 **4개 이상** 씁니다. 다 쓰고 싶으면 다 써도 됩니다.
+  - 분량은 정하지 않습니다. 짧게 써도 되고, 더 공부하고 싶으면 깊게 써도 됩니다.
+- **끝나면**: 보고서의 실습 5-2 상황 정리가 Module 3 총정리가 됩니다.
+- **현업에서는**: 인수인계 문서는 「이런 일이 생기면 여기를 이렇게 고친다」를 상황별로 적어 둡니다.
 
 **할 일**
 
-1. `request_flow.py` 와 `exercise5-2_run.py` 두 파일을 만들고, `save_requests` 와 `count_by_status` 본문을 직접 씁니다.
-2. 실행해서 <mark>처리 결과</mark>(단계 1: 처리), <mark>상태별 건수와 SLA 초과</mark>(단계 2: 점검), <mark>저장 결과</mark>(단계 3: 저장)를 읽습니다. `requests.json` 파일도 열어 봅니다.
+1. `report_u5.md` 의 `## 실습 5-2` 아래 `### 상황 3` ~ `### 상황 8` 칸을 엽니다. 상황 1 · 2 의 본보기는 「보고서 쓰기」 레슨에 있으니 먼저 읽습니다.
+2. 상황 3 ~ 8 중 4개 이상을 골라 `-` 뒤를 채웁니다. Module 3에서 만든 내 파일을 열어 보면서 써도 됩니다.
 
-**`request_flow.py`**
-
-```python
-import json                                                      # JSON 파일을 쓰는 모듈을 불러온다
-
-
-def save_requests(requests, path):                               # 요청서 리스트와 저장할 파일 경로를 받는 함수
-    """요청서 리스트를 JSON 파일로 저장한다(한글은 그대로).
-    요청 처리 상태를 다음에도 이어 보려고 남길 때 쓴다.
-    """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. path 를 쓰기 모드("w")로, encoding="utf-8" 로 열어 f 로 받는다
-    # 2.   json.dump 로 requests 를 f 에 쓴다. ensure_ascii=False 와 indent=2 를 함께 쓴다
-    # 3. 저장한 요청서 건수 len(requests) 를 리턴한다 (with 블록 밖, 함수 안쪽 줄에 맞춘다)
-
-
-def count_by_status(requests):                                   # 요청서 리스트를 받는 함수
-    """상태별 요청서 개수를 센다.
-    검토 중 · 승인 · 부여가 각각 몇 개인지 현황을 볼 때 쓴다.
-    """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. 빈 딕셔너리 counts 를 만든다
-    # 2. requests 에서 request 를 하나씩 꺼낸다
-    # 3.   request["status"] 를 status 에 담는다
-    # 4.   counts.get(status, 0) 을 old_count 에 담는다 (없으면 0)
-    # 5.   counts[status] 를 old_count + 1 로 정한다
-    # 6. 반복이 끝나면 counts 를 리턴한다
-```
-
-- 본문은 모두 함수 안이라 4칸으로 쓰고, `with` 와 `for` 안쪽은 4칸 더(8칸) 들어갑니다. 각 주석 바로 아래 줄에 씁니다. `save_requests` 의 `return len(requests)` 는 `with` 와 같은 4칸입니다.
-- 채우기 전에 처음 실행하면(`requests.json` 이 아직 없을 때) 단계 2의 첫 줄이 `None` 으로 나옵니다. `count_by_status` 가 아무것도 리턴하지 않기 때문입니다. 이어서 단계 3에서 `저장 함수가 리턴한 건수: None` 과 `[경고] 설정 파일 없음: requests.json` 이 나온 뒤 `IndexError` 가 납니다. `save_requests` 가 파일을 만들지 않았기 때문입니다.
-
-**`exercise5-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 요청 여섯 건을 접수하고 처리한 뒤, 단계 1은 승인 · 반려 · 부여 결과를 출력하고, 단계 2는 상태별 건수와 SLA 초과 요청을 출력합니다. 단계 3은 `requests.json` 으로 저장한 뒤 다시 읽어 확인합니다.
-
-```python
-from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
-from config_loader import load_json                              # Unit 3에서 만든 안전한 읽기 함수를 불러온다
-from req_create import REQUESTS, create_request                  # 실습 4-1에서 만든 요청서 함수와 리스트를 불러온다
-from req_review import approve_request, reject_request           # 실습 4-2에서 만든 승인 · 반려 함수를 불러온다
-from req_grant import grant_request                              # 실습 4-3에서 만든 부여 함수를 불러온다
-from req_sla import check_sla_breach                             # 실습 5-1에서 만든 기한 점검 함수를 불러온다
-from request_flow import save_requests, count_by_status          # 방금 만든 저장 · 집계 함수를 불러온다
-
-NOW = datetime.strptime("2026-10-23 14:00", "%Y-%m-%d %H:%M")    # 이번 실습의 지금 시각(고정)
-
-INBOX = [                                                        # 오늘 들어온 요청 여섯 건. (요청자, 자원, 행위, 희망 만료 시각, 이유, 접수 시각)
-    ("seoyeon", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 대조 지원", "2026-10-23 08:30"),
-    ("gaeun", "SALES", "QUERY", "2026-10-28 18:00", "감사 자료 대응", "2026-10-23 10:30"),
-    ("dami", "SALES", "QUERY", "2026-10-27 18:00", "인수인계 자료 확인", "2026-10-23 12:00"),
-    ("junho", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 확인", "2026-10-23 09:00"),
-    ("seoyeon", "ACCOUNT", "QUERY", "2026-10-27 18:00", "계정 권한 점검", "2026-10-23 07:50"),
-    ("tester", "SALES", "QUERY", "2026-10-27 18:00", "시험 계정 확인", "2026-10-23 10:00"),
-]
-for user, resource, action, until, reason, received_at in INBOX:         # 요청을 하나씩 꺼내
-    create_request(user, resource, action, until, reason, received_at)   # 접수한다
-
-print("--- 단계 1: 처리 - 승인 · 반려 · 부여")                      # 단계 1 시작을 알리는 줄
-approve_request(REQUESTS[0], "security_manager")                 # 1번 승인
-reject_request(REQUESTS[1], "security_manager")                  # 2번 반려
-approve_request(REQUESTS[2], "security_manager")                 # 3번 승인
-approve_request(REQUESTS[3], "security_manager")                 # 4번 승인
-for request in REQUESTS:                                         # 요청서를 하나씩 꺼내
-    is_success, result = grant_request(request)                          # 부여를 시도한다(승인된 것만 의미가 있다)
-    print(request["id"], request["user"], request["status"], "->", result)   # 번호 · 요청자 · 상태 -> 결과 를 출력한다
-
-print("--- 단계 2: 점검 - 상태별 건수와 SLA")                      # 단계 2 시작을 알리는 줄
-print(count_by_status(REQUESTS))                                 # 상태별 건수를 출력한다
-for request in check_sla_breach(REQUESTS, NOW):                  # 기한을 초과한 요청서를 하나씩 꺼낸다
-    print("SLA 초과 요청 번호:", request["id"])                    # 요청 번호를 출력한다
-
-print("--- 단계 3: 저장 - requests.json")                        # 단계 3 시작을 알리는 줄
-count = save_requests(REQUESTS, "requests.json")                 # 요청서 리스트 전체를 파일로 저장하고 저장한 건수를 받는다
-print("저장 함수가 리턴한 건수:", count)                            # 리턴한 건수를 출력한다
-saved = load_json("requests.json", [])                           # 저장한 파일을 다시 읽어
-print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[0]["status"])   # 건수와 첫 요청서의 상태를 출력한다
-```
+- 칸마다 무엇을 쓰는지
+  - **원인**: 사람의 일인지, 데이터 문제인지, 규칙 문제인지 고르고 이유를 씁니다.
+  - **고칠 파일**: 어느 파일을 열어서 고치는지 씁니다.
+  - **어떻게 고치나요**: 새로 넣는지, 값을 바꾸는지, 지우는지 고르고, 정확히 무엇을 넣거나 바꾸거나 지우는지 씁니다.
+  - **고친 뒤 확인**: 무엇을 다시 실행하거나 어떤 출력을 보면 고쳐진 것을 알 수 있는지 씁니다.
+- 상황 하나에서 답이 여러 개일 수 있습니다(예: 상황 7은 규칙을 추가하는 경우와 고치는 경우). 떠오르는 대로 모두 씁니다. 같은 칸에 케이스 A · B 를 쓸 때는 줄을 나눠 「케이스 A: …」 처럼 적습니다.
 
 **순서**
 
-0. **[터미널]** 실습 5-1 파일이 정상인지 먼저 확인합니다. 마지막 줄에 `실습 5-1 파일 정상` 이 나와야 합니다(맥북은 `python3 -c "…"`). 아니면 「정답」 레슨 맨 아래 「앞 실습 파일 완성본」으로 `req_sla.py` 와 `config/sla.json` 을 먼저 만듭니다.
-   ```bash
-   python -c "from req_sla import check_sla_breach; print('실습 5-1 파일 정상')"
-   ```
-1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 세 가지 방법 중 **하나만** 고릅니다.
-   - **VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
-     1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
-     2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `request_flow.py` · `exercise5-2_run.py` 입니다.
-     4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
-2. **[VS Code]** `request_flow.py` 의 두 함수 본문을 직접 씁니다. 2.1 의 표와 문법 상자를 보고 씁니다.
-3. **[터미널]** 위치가 `…/access_control` 인지 확인하고 실행합니다.
-   ```bash
-   pwd
-   python exercise5-2_run.py
-   ```
-   - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `exercise5-2_run.py` 실행할 파일
-   - 맥북은 `python3 exercise5-2_run.py` 로 칩니다.
-4. 출력은 세 단계입니다. 단계 1은 요청 여섯 건의 처리 결과(여섯 줄), 단계 2는 상태별 건수와 SLA 초과 요청 번호, 단계 3은 저장 함수가 리턴한 건수와 저장 결과입니다.
-   - 실습 5-1에서는 SLA 초과가 1번과 5번이었지만 여기서는 5번만 나옵니다. 이 실행에서는 1번이 승인 · 부여까지 끝나 더 이상 `reviewing` 이 아니기 때문입니다.
-5. **[VS Code]** 왼쪽 목록에 새로 생긴 `requests.json` 을 열어 요청서가 한글 그대로 저장됐는지 봅니다.
-6. **[보고서]** `report_u5.md` 의 `## 실습 5-2` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, `requests.json` 에 저장된 요청서가 몇 건인지와 상태별 건수를 적어 주세요.
-   - (나) [핵심 질문] 반려된 요청서(`rejected`)나 승인은 됐지만 부여하지 않은 요청서(`approved`)도 지우지 않고 `requests.json` 에 남기는 이유는 무엇인가요?
-   - (다) [핵심 질문] 상태별 건수가 `granted` 1 · `rejected` 1 · `approved` 2 · `reviewing` 2 로 나왔습니다. 이 숫자를 매일 아침 보면 처리 흐름의 어디가 막혀 있는지 어떻게 알 수 있나요?
+1. **[VS Code]** `report_u5.md` 의 `## 실습 5-2` 아래 `### 상황 3` ~ `### 상황 8` 칸을 엽니다. 본보기(상황 1 · 2)는 「보고서 쓰기」 레슨에서 먼저 읽습니다.
+2. **[VS Code]** 3.1 의 상황 표와 코드를 보면서 상황 3 ~ 8 중 4개 이상의 `-` 뒤를 채웁니다. 막히면 Module 3에서 만든 내 파일을 열어서 읽습니다.
+3. **[보고서]** 같은 `## 실습 5-2` 아래 `### 질문` 의 `- (가) 답:` 을 채웁니다.
+   - (가) [핵심 질문] 상황 8개를 「데이터를 고친 상황」과 「규칙을 고친 상황」으로 나눠 보면 각각 어떤 상황인가요? 어느 쪽에서 실수하면 더 위험한지 이유와 함께 적어 주세요.
+   - (나) [핵심 질문] Module 3에서 가장 헷갈렸던 로직 하나와, 어떻게 이해했는지 적어 주세요.
+   - (다) (선택) LLM 호출이나 알림과 이어 붙일 수 있는 곳을 적어 주세요. 예를 들어 `log_summary.py` 의 `read_log` 가 만든 요청 리스트를 LLM 호출에 넘겨 요약하는 것입니다.
 
 ## 실습 5-2 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 파일에 쓰기 | `with open(path, "w", encoding="utf-8") as output_file:` |
-| 리스트를 JSON 으로 | `json.dump(requests, f, ensure_ascii=False, indent=2)` |
-| 상태별 건수 | `old_count = counts.get(status, 0)` → `counts[status] = old_count + 1` |
-| 저장한 건수 알리기 | `return len(requests)` |
-| 저장했는지 확인 | `load_json("requests.json", [])` 로 다시 읽는다 |
+| 상황이 생기면 | 확인 → 원인 → 고치기(추가 · 수정 · 삭제) → 다시 확인 |
+| 원인 | 사람의 일 · 데이터 문제 · 규칙 문제 |
+| 고칠 파일 | 데이터는 `users.json` · `exceptions.json` · `exclude_list.json`, 규칙은 `conditions.json` · `alert.json` |
+| 퇴사자 · 일시 지원 | `employed` 수정 · 계정 삭제, 만료 시각이 있는 예외 추가 |
+| 새 권한 · 안 쓰는 권한 | 요청 → 승인 → 부여, 점검 후 회수 또는 회수 제외 |
+| 회수 · 조건 · 매주 확인 | 계획 → 승인 → 실행 → 이력, 시간 · 접속 위치 조건, 점검 + 집계 + 보고서 |
 
 ---
 
-## 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기
-
-문제가 아니라 오늘 한 일을 저장소에 올리는 마무리입니다. 실습 5-2를 끝낸 뒤 마지막에 합니다.
-
-- **지금은**: 팀장이 「오늘 만든 요청 처리 코드를 저장소에 남겨 달라」고 합니다.
-- **그래서 하는 것**: 올라갈 파일을 `git status` 로 먼저 확인하고(비밀 키 파일 `.env` 가 섞이면 안 됩니다), `git add` → `git commit` → `git push` 로 올립니다.
-- **끝나면**: 깃허브 저장소의 `access_control` 폴더에서 오늘 만든 파일이 모두 보입니다.
-
-**순서**
-
-1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
-   ```bash
-   cd ..
-   pwd
-   ```
-   - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
-   - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다. 새로 연 뒤 `pwd` 를 한 번 더 쳐서 확인합니다.
-2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
-   ```bash
-   git status
-   ```
-   - 명령 풀이: `git status` 올릴 파일의 상태를 봄
-   - `.env` 가 보이면: VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 도 같은 방법으로 합니다.
-   - Unit 3에서 `access_control` 을 이미 올렸다면 오늘 새로 만든 파일이 `access_control/req_create.py` 처럼 한 줄씩 보입니다. Unit 3에서 올리지 않았다면 `access_control/` 한 줄로 보일 수 있습니다. 어느 쪽이든 `Untracked files:` 아래에 보이는 줄을 센 그대로 적습니다.
-   - `access_control/requests.json` 은 실습 5-2에서 프로그램이 만든 이력 파일입니다. 이것도 올라갑니다.
-   - `access_control/__pycache__/` 가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. 줄 수는 그 뒤에 다시 셉니다.
-3. **[보고서]** `report_u5.md` 의 `## 마무리` 아래를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다.
-   - (가) `git status` 를 쳤을 때 `Untracked files:` 아래에 줄이 몇 개 보였는지, 그중에 `.env` 나 `.venv` 가 있었는지 적어 주세요.
-   - 앞 실습에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다. 올린 뒤에 이어서 적어 다시 올려도 됩니다.
-4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
-   ```bash
-   git add .
-   git commit -m "Add access control day 3 request, approval, grant, SLA and history"
-   git push
-   ```
-   - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - `git push` 가 거절(`rejected`)되면 깃허브에 내 PC 에 없는 기록이 있다는 뜻입니다. `git pull` 을 입력해 받아 온 뒤 `git push` 를 다시 합니다
-   - `git pull` 뒤에 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다
-5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `access_control` 폴더를 열고, 터미널에서 `ls access_control` 로 본 파일들이 깃허브에도 보이는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
-   - 빠진 이름이 있으면 터미널에서 `ls access_control` 로 내 PC 에 있는지 봅니다. 없으면 다른 폴더에 만든 것이니 `access_control` 안으로 옮기고 1 ~ 4번을 다시 합니다.
-
-## 마무리 정리
-
-| 하려는 일 | 코드 · 말 |
-|---|---|
-| 올릴 파일 확인 | `git status` (`.env` · `.venv` 가 보이면 멈춤) |
-| 올리기 | `git add .` → `git commit -m "…"` → `git push` |
-| 올린 뒤 | 브라우저에서 파일이 모두 있는지 확인 |
-
----
-
-## 이번 Unit 마무리
+## Unit 5 마무리
 
 | 확인 | 문제 |
 |---|---|
-| 요청을 요청서로 접수하고 접수 못 할 요청을 걸러 냈다 | 실습 4-1 |
-| 승인 · 반려가 검토 중인 요청서에만 되게 했다 | 실습 4-2 |
-| 승인된 요청서를 정책으로 확인하고 예외 권한을 부여했다 | 실습 4-3 |
-| 처리 기한을 초과한 요청서를 시간 계산으로 찾았다 | 실습 5-1 |
-| 요청서 전체를 `requests.json` 으로 저장하고 상태별 건수를 셌다 | 실습 5-2 |
-| 오늘 만든 파일과 보고서를 깃허브에 올렸다 | 마무리 |
+| 퇴사자 · 만료 예외 · 부서와 역할을 점검해 통과와 실패를 가렸다 | 실습 5-1 |
+| 서버 로그를 집계해 거부율과 경고 여부를 구하고, 점검과 합쳐 주간 보고서 파일을 만들었다 | 도전 5-1 |
+| 상황 8개의 원인과 고치는 방법을 내 말로 정리해 보고서에 Module 3 총정리를 썼다 | 실습 5-2 |
 
-다음 Unit(Unit 6)에서는 부여된 권한 가운데 쓰이지 않는 것 · 넘치는 것을 찾는 과다권한 탐지를 합니다. 오늘 만든 `requests.json` 이 그때 「누가 어떤 권한을 요청해 받았나」를 보는 자료입니다.
+다음 Unit부터 Module 4 이상탐지를 시작합니다. 이번 Unit에서 만든 「로그 한 줄을 읽고, 세고, 기준과 비교하는」 방식이 Module 4에서 로그를 분석할 때의 바탕이 됩니다.
 
 ---
 

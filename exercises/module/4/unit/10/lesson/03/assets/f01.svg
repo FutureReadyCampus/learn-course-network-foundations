@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 470" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>파이프라인은 이벤트 읽기, 연결·탐지·점수, AI 요약, 보고서 저장 네 단계를 차례로 잇습니다</title>
+<desc>단계 1은 normalized_events.json 을 events 표로 읽습니다. 단계 2는 events → chains → findings → totals · reasons → records 로 이어 가고 records 를 unit05_risk_scores.json 에도 저장합니다. 단계 3은 Gemini API 로 records 에서 summaries 를 만들고 실패하면 대체 문장을 씁니다. 단계 4는 events · findings · records · summaries 를 anomaly_detection_report_2026-11-02.json 으로 저장합니다.</desc>
+<defs><marker id="a-f01-m4u10l03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<text x="20" y="30" font-size="18" font-weight="700" fill="#292929">단계 연결 흐름</text>
+<g font-size="15" fill="#292929">
+<rect x="20" y="48" width="680" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="36" y="74" font-weight="700" fill="#666660">단계 1</text><text x="36" y="96" font-weight="700">이벤트 읽기</text>
+<text x="210" y="86" font-size="14" font-family="ui-monospace, Menlo, Consolas, monospace"><tspan font-weight="700">normalized_events.json</tspan> → events <tspan font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">(표)</tspan></text>
+<rect x="20" y="144" width="680" height="76" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="36" y="170" font-weight="700" fill="#666660">단계 2</text><text x="36" y="192" font-weight="700">연결 · 탐지 · 점수</text>
+<text x="210" y="176" font-size="14" font-family="ui-monospace, Menlo, Consolas, monospace">events → chains → findings → totals · reasons → records</text>
+<text x="210" y="202" font-size="14" fill="#666660">(<tspan font-family="ui-monospace, Menlo, Consolas, monospace">records</tspan> 는 <tspan font-family="ui-monospace, Menlo, Consolas, monospace">unit05_risk_scores.json</tspan> 에도 저장)</text>
+<rect x="20" y="252" width="680" height="76" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="36" y="278" font-weight="700" fill="#666660">단계 3</text><text x="36" y="300" font-weight="700">Gemini API 를 활용한</text><text x="36" y="320" font-weight="700">AI 요약</text>
+<text x="210" y="284" font-size="14" font-family="ui-monospace, Menlo, Consolas, monospace">records → summaries</text>
+<text x="210" y="310" font-size="14" fill="#666660">(실패하면 대체 문장)</text>
+<rect x="20" y="360" width="680" height="76" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="36" y="386" font-weight="700" fill="#1f7a4a">단계 4</text><text x="36" y="408" font-weight="700">보고서 저장</text>
+<text x="210" y="392" font-size="14" font-family="ui-monospace, Menlo, Consolas, monospace">events · findings · records · summaries</text>
+<text x="210" y="418" font-size="14" font-family="ui-monospace, Menlo, Consolas, monospace">→ <tspan font-weight="700">anomaly_detection_report_2026-11-02.json</tspan></text>
+</g>
+<g stroke="#666660" stroke-width="1.6" fill="none" marker-end="url(#a-f01-m4u10l03)">
+<path d="M80 112V140"/><path d="M80 220V248"/><path d="M80 328V356"/>
+</g>
+</svg>

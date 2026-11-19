@@ -1,30 +1,55 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 426" role="img">
-<title>실습 2-3 보고서에 채울 칸: 출력, 3번 주석이 없을 때, 파일 흐름 그림</title>
-<desc>실습 2-3 보고서의 (가)~(다) 질문마다 써야 할 내용을 체크리스트로 보여 줍니다. (다)는 exercise2-3_run.py 에서 출발하는 글자 그림입니다.</desc>
-<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
-<text x="24" y="34" font-size="19" font-weight="700">실습 2-3 보고서 · 채울 칸</text>
-<rect x="24" y="52" width="672" height="120" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="40" y="74" font-size="16" font-weight="700">(가) 출력과 만료 뒤 시도</text>
-<rect x="44" y="86" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="68" y="98" font-size="15">출력 전체를 코드 상자에 붙여 넣기</text>
-<rect x="44" y="112" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="68" y="124" font-size="15">[만료 뒤 시도] 세 건의 사용자와 끝난 예외 번호</text>
-<rect x="44" y="138" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="68" y="150" font-size="15">예외 1번이 쓰인 횟수</text>
-<rect x="24" y="184" width="672" height="120" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="40" y="206" font-size="16" font-weight="700">(나) [핵심 질문] 3번 주석이 없다면 dami 는?</text>
-<rect x="44" y="218" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="68" y="230" font-size="15">판정 결과</text>
-<rect x="44" y="244" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="68" y="256" font-size="15">3.1 그림의 어느 단계를 거치는지</text>
-<rect x="44" y="270" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="68" y="282" font-size="15">이어질 수 있는 사고</text>
-<rect x="24" y="316" width="672" height="94" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="40" y="338" font-size="16" font-weight="700">(다) [핵심 질문] 파일 흐름 그림</text>
-<rect x="44" y="350" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="68" y="362" font-size="15">exercise2-3_run.py 에서 출발하는 상자와 화살표 그림</text>
-<rect x="44" y="376" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="68" y="388" font-size="15">exceptions.json 이 깨졌을 때 멈추는 곳</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>도전 2-2 데이터: 요청서 여섯 장의 접수 시각과 4시간 기준선(10:00)</title>
+<desc>지금 14:00 기준으로 요청서마다 접수부터 지금까지 걸린 시간을 막대로 그렸습니다. 10:00 선은 14:00 에서 4시간을 뺀 시각입니다. 4번 junho 는 이미 승인되어 기한을 따지지 않습니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">요청서 여섯 장 (지금 14:00, SLA 4시간)</text>
+<text x="20" y="82" font-size="15" fill="#292929">1 seoyeon</text>
+<text x="110" y="82" font-size="15" fill="#666660">08:30</text>
+<rect x="302.857" y="64" width="377.143" height="26" rx="4" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="310.857" y="82" font-size="14" fill="#292929">reviewing</text>
+<text x="20" y="126" font-size="15" fill="#292929">2 gaeun</text>
+<text x="110" y="126" font-size="15" fill="#666660">10:30</text>
+<rect x="440" y="108" width="240" height="26" rx="4" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="448" y="126" font-size="14" fill="#292929">reviewing</text>
+<text x="20" y="170" font-size="15" fill="#292929">3 dami</text>
+<text x="110" y="170" font-size="15" fill="#666660">12:00</text>
+<rect x="542.857" y="152" width="137.143" height="26" rx="4" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="550.857" y="170" font-size="14" fill="#292929">reviewing</text>
+<text x="20" y="214" font-size="15" fill="#292929">4 junho</text>
+<text x="110" y="214" font-size="15" fill="#666660">09:00</text>
+<rect x="337.143" y="196" width="342.857" height="26" rx="4" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="345.143" y="214" font-size="14" fill="#292929">approved · 처리 끝</text>
+<text x="20" y="258" font-size="15" fill="#292929">5 seoyeon</text>
+<text x="110" y="258" font-size="15" fill="#666660">07:50</text>
+<rect x="257.143" y="240" width="422.857" height="26" rx="4" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="265.143" y="258" font-size="14" fill="#292929">reviewing</text>
+<text x="20" y="302" font-size="15" fill="#292929">6 tester</text>
+<text x="110" y="302" font-size="15" fill="#666660">10:00</text>
+<rect x="405.714" y="284" width="274.286" height="26" rx="4" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="413.714" y="302" font-size="14" fill="#292929">reviewing</text>
+<polyline points="200,336 680,336" fill="none" stroke="#666660" stroke-width="1.5"/>
+<polyline points="200,332 200,340" fill="none" stroke="#666660" stroke-width="1.5"/>
+<text x="200" y="358" font-size="14" fill="#666660" text-anchor="middle">07:00</text>
+<polyline points="268.571,332 268.571,340" fill="none" stroke="#666660" stroke-width="1.5"/>
+<text x="268.571" y="358" font-size="14" fill="#666660" text-anchor="middle">08:00</text>
+<polyline points="337.143,332 337.143,340" fill="none" stroke="#666660" stroke-width="1.5"/>
+<text x="337.143" y="358" font-size="14" fill="#666660" text-anchor="middle">09:00</text>
+<polyline points="405.714,332 405.714,340" fill="none" stroke="#666660" stroke-width="1.5"/>
+<text x="405.714" y="358" font-size="14" fill="#666660" text-anchor="middle">10:00</text>
+<polyline points="474.286,332 474.286,340" fill="none" stroke="#666660" stroke-width="1.5"/>
+<text x="474.286" y="358" font-size="14" fill="#666660" text-anchor="middle">11:00</text>
+<polyline points="542.857,332 542.857,340" fill="none" stroke="#666660" stroke-width="1.5"/>
+<text x="542.857" y="358" font-size="14" fill="#666660" text-anchor="middle">12:00</text>
+<polyline points="611.429,332 611.429,340" fill="none" stroke="#666660" stroke-width="1.5"/>
+<text x="611.429" y="358" font-size="14" fill="#666660" text-anchor="middle">13:00</text>
+<polyline points="680,332 680,340" fill="none" stroke="#666660" stroke-width="1.5"/>
+<text x="680" y="358" font-size="14" fill="#666660" text-anchor="middle">14:00</text>
+<polyline points="405.714,56 405.714,332" fill="none" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="5 4"/>
+<polyline points="680,56 680,332" fill="none" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="411.714" y="52" font-size="14" fill="#9a6200">10:00 = 14:00 − 4시간</text>
+<text x="680" y="52" font-size="14" fill="#2f6fd0" text-anchor="end">지금</text>
+<text x="20" y="388" font-size="14" fill="#666660">막대 = 접수부터 14:00 까지 걸린 시간. 10:00 선보다 먼저 시작한 reviewing 막대는 4시간보다 길다.</text>
+<text x="20" y="410" font-size="14" fill="#666660">정확히 10:00 에 시작하면 4.0 시간이라 초과가 아니다.</text>
 </g>
 </svg>

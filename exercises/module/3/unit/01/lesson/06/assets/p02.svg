@@ -1,30 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img">
-<title>실습 1-1 보고서는 (가) 판정, (나) 필요 이상 ○, (다) tester 판정을 채운다</title>
-<desc>(가)는 요청 여섯 개의 판정과 막히는 곳, 사건과의 연결을 쓴다. (나)는 고른 ○ 와 이유, 위험을, (다)는 tester 의 판정과 기본 거부 이유를 쓴다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 370" role="img">
+<title>새 규칙을 켜기 전 지난 기록으로 판정해 보고 준 권한과 쓴 권한을 맞춰 본다</title>
+<desc>기록 재판정(replay)은 지난 기록을 새 규칙으로 다시 판정해 막아야 할 것과 정상 업무를 확인한다. 준 권한과 기록에서 쓴 권한을 비교하면 쓰이지 않은 권한이 드러나고 이는 Unit 3으로 이어진다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">보고서 · 실습 1-1 채울 칸</text>
-<rect x="20" y="56" width="680" height="126" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="34" y="80" font-size="16" fill="#292929" font-weight="700">(가) 핵심 질문 · 요청 판정</text>
-<rect x="34" y="96" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="60" y="109.5" font-size="15" fill="#292929">① 요청 ① ~ ⑥ 여섯 개의 허용 · 거부</text>
-<rect x="34" y="124" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="60" y="137.5" font-size="15" fill="#292929">② 요청 ② 가 막히는 곳(인증 · 인가)과 매트릭스 칸</text>
-<rect x="34" y="152" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="60" y="165.5" font-size="15" fill="#292929">③ 정산 내역을 조회했는데 막지 못한 사건과 이어지는 점</text>
-<rect x="20" y="194" width="680" height="126" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="34" y="218" font-size="16" fill="#292929" font-weight="700">(나) 핵심 질문 · 필요 이상 ○</text>
-<rect x="34" y="234" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="60" y="247.5" font-size="15" fill="#292929">① 고른 ○ (역할 · 권한)</text>
-<rect x="34" y="262" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="60" y="275.5" font-size="15" fill="#292929">② 필요 이상이라고 본 이유</text>
-<rect x="34" y="290" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="60" y="303.5" font-size="15" fill="#292929">③ 남아 있을 때의 위험</text>
-<rect x="20" y="332" width="680" height="98" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="34" y="356" font-size="16" fill="#292929" font-weight="700">(다) 핵심 질문 · 역할 없는 사용자</text>
-<rect x="34" y="372" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="60" y="385.5" font-size="15" fill="#292929">① tester 의 판정 (허용 · 거부)</text>
-<rect x="34" y="400" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="60" y="413.5" font-size="15" fill="#292929">② 그 이유 (기본 거부)</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">켜기 전에 지난 기록에 먼저 적용한다</text>
+<rect x="20" y="56" width="200" height="80" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="120" y="90.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">지난 기록</text>
+<text x="120" y="112.2" font-size="15" fill="#292929" text-anchor="middle">이미 일어난 일</text>
+<rect x="260" y="56" width="200" height="80" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="90.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">새 규칙으로 판정</text>
+<text x="360" y="112.2" font-size="15" fill="#292929" text-anchor="middle">한 건씩 다시</text>
+<rect x="500" y="50" width="200" height="42" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="600" y="75.9" font-size="14" fill="#292929" text-anchor="middle">① 막아야 할 것이 막히나</text>
+<rect x="500" y="100" width="200" height="42" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="600" y="125.9" font-size="14" fill="#292929" text-anchor="middle">② 정상 업무가 안 막히나</text>
+<polyline points="221,96 259,96" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="461,86 499,71" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="461,106 499,121" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="20" y="186" width="200" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="120" y="215.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">준 권한</text>
+<text x="120" y="237.2" font-size="15" fill="#292929" text-anchor="middle">roles.json 의 권한</text>
+<rect x="20" y="276" width="200" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="120" y="305.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">쓴 권한</text>
+<text x="120" y="327.2" font-size="15" fill="#292929" text-anchor="middle">기록에서 허용된 것</text>
+<rect x="260" y="226" width="200" height="80" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="260.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">맞춰 보기</text>
+<text x="360" y="282.2" font-size="15" fill="#292929" text-anchor="middle">쓰이지 않은 권한</text>
+<rect x="500" y="226" width="200" height="80" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="600" y="260.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">최소권한 점검 시작</text>
+<text x="600" y="282.2" font-size="15" fill="#292929" text-anchor="middle">Unit 3 · 90일 미사용</text>
+<polyline points="221,221 259,252" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="221,311 259,280" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="461,266 499,266" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
 </g>
 </svg>

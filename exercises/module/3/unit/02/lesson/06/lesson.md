@@ -1,238 +1,241 @@
 ---
 id: m3-u02-l06
-title: 정답
+title: 도전 2-1 · 정책 확인 후 예외 권한 부여
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
-  path: network/078_day02_am_policy.md
-  mission_id: GichanSource.m3-1022-am-policy
+  path: network/082_day03_am_request.md
+  mission_id: GichanSource.m3-1023-am-request
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 정답
+# 도전 2-1 · 정책 확인 후 예외 권한 부여
 
-## 정답을 읽는 법
+## 목표: 예외 권한 부여 함수
 
-설명하는 답은 한 예이고, 핵심이 같으면 맞습니다.
+> **오늘 들어온 일**
+>
+> A사 보안 담당이 보낸 메시지: 「승인한 요청서를 제가 직접 예외 파일에 옮겨 적으면 실수가 납니다. 예외 번호를 겹치게 적거나, 만료 시각을 잘못 옮기거나, 하나를 빠뜨립니다. 승인된 요청서를 코드가 정책으로 한 번 더 확인하고, 통과한 것만 예외 권한을 부여하게 해 주세요. 어느 예외를 부여했는지도 요청서에 남겨 주세요.」
+> - 이 실습에서 하는 일: 승인된 요청서를 Unit 1에서 만든 `check_permission` 으로 한 번 더 확인하고, 통과하면 예외를 만들어 `EXCEPTIONS` 에 추가하는 함수 `grant_request` 를 직접 씁니다. 부여 전과 후에 Unit 1의 `evaluate_access` 로 판정해 비교합니다.
+> - 끝나면 쓰는 것: 보고서 (가)~(다) 답
+
+## 왜 승인 뒤에 정책으로 다시 확인하는가
+
+1. 승인은 사람이 합니다. 그 뒤에 코드가 정책으로 한 번 더 확인하는 것을 **이중 검증**이라고 합니다.
+2. 부여는 새 규칙을 만들지 않고, Unit 1에서 만든 **예외**(기간이 정해진 임시 권한)를 한 건 추가하는 일입니다.
+
+## 3.1 부여할지 판단하는 순서
+
+- 요청자를 지금 정책으로 판정한 이유(`judge_reason`)에 따라 처리가 갈립니다.
+- 이 이유는 Unit 1에서 만든 `check_permission` 이 리턴하는 문자열입니다. `check_permission` 은 사용자 파일과 역할 파일만 보고 판정합니다(예외는 보지 않습니다).
+- 단계 1은 Unit 1의 `evaluate_access` 로 판정해 `역할 권한` 이라고 출력하고, 단계 2는 `check_permission` 의 이유를 써서 `부여하지 않음(허용)` 이라고 출력합니다. 두 출력이 다르게 보이는 것이 정상입니다.
+
+| 판정 결과 | 뜻 | 부여 |
+|---|---|---|
+| 허용 (`is_allowed` 가 `True`, 이유 「허용」) | 이미 그 권한이 있음 | 하지 않음 |
+| 「권한 없음」 | 사람은 정상인데 권한만 없음 | **예외 권한 부여** |
+| 「퇴사한 계정」 · 「등록되지 않은 사용자」 · 「역할이 없음」 | 사람 쪽에 문제가 있음 | 하지 않음 |
+
+<figure class="page-figure"><img src="assets/f01.svg" alt="부여 함수는 승인된 요청서 중 「권한 없음」인 경우에만 예외를 만들어 부여한다"></figure>
+
+## 3.2 요청서가 예외가 되는 방법
+
+| 요청서의 키 | 예외의 키 |
+|---|---|
+| (없음. 새 번호) | `id` = `len(EXCEPTIONS) + 1` |
+| `user` | `user` |
+| `permission` | `permission` |
+| `until` | `expires` |
+| `reason` | `reason` |
+
+- 예외를 만든 뒤에는 거꾸로, 예외의 `id` 를 요청서의 `exception_id` 키에 적어 둡니다. 그러면 요청서만 보고도 어느 예외를 부여했는지 찾을 수 있습니다.
+- `EXCEPTIONS` 는 Unit 1의 `exception_policy.py` 가 `exceptions.json` 을 읽어 만든 리스트입니다. 오늘은 이 리스트에 한 건을 추가하기만 하고, `exceptions.json` 파일은 고치지 않습니다. 프로그램이 끝나면 추가한 예외도 사라집니다.
+- Unit 1의 `find_exception` 이 같은 `EXCEPTIONS` 를 읽으므로, 추가한 예외는 바로 판정에 쓰입니다.
+- Unit 1의 예외가 다섯 건이므로 새 예외의 번호는 5 + 1 = 6번입니다. 시작하기에서 본 숫자가 5가 아니면 6번이 아닌 다른 번호가 나옵니다.
+
+**문법 상자 — 부여할지 가르는 조건과 번호 정하기**
+
+**① `or` 로 두 조건 중 하나라도 맞는지 묻기**
+
+```python
+is_allowed = False                                                         # 허용이 아닌 판정
+reason = "퇴사한 계정"                                                # 판정 이유
+print(is_allowed or reason != "권한 없음")                                   # 둘 중 하나라도 참이면 참이다
+
+reason = "권한 없음"                                                  # 이유를 바꾸면
+print(is_allowed or reason != "권한 없음")                                   # 둘 다 거짓이라 거짓이다
+```
+
+실행 결과:
+
+```
+True
+False
+```
+
+**② 리스트에 딕셔너리를 추가하고, 번호는 지금 개수 + 1 로 정하기**
+
+```python
+exceptions = [{"id": 1}, {"id": 2}]                                # 예외 두 건이 든 리스트
+
+new_id = len(exceptions) + 1                                       # 번호는 지금 개수 + 1 로 정한다
+new_exception = {"id": new_id}                                     # 새 예외 한 건을 만든다
+
+exceptions.append(new_exception)                                   # 리스트 끝에 추가한다
+print(exceptions)                                                  # 세 건이 되었다
+```
+
+실행 결과:
+
+```
+[{'id': 1}, {'id': 2}, {'id': 3}]
+```
+
+
+## 도전 2-1 · 정책 확인 후 예외 권한 부여
+
+**이런 상황이 있습니다**
+
+- **지금은**: 승인한 요청서의 내용을 보안 담당이 예외 파일에 직접 옮겨 적습니다. 옮겨 적다 예외 번호를 겹치게 적거나, 만료 시각을 잘못 옮기거나, 하나를 빠뜨리기 쉽고 시간도 걸립니다.
+- **그래서 만드는 것**: `grant_request` 입니다. 승인된 요청서를 받아서 Unit 1에서 만든 `check_permission` 으로 지금 정책을 한 번 더 확인하고, 통과한 것만 Unit 1의 **예외**로 `EXCEPTIONS` 에 추가합니다.
+- **오늘 데이터**: 요청서 네 장입니다. 1번 seoyeon · 3번 dami · 4번 junho 는 승인됐고, 2번 gaeun 은 반려됐습니다.
+- **실행하면**: 세 단계가 차례로 나옵니다. 단계 1은 부여하기 전의 판정, 단계 2는 부여를 시도한 결과, 단계 3은 부여한 뒤의 판정입니다. 부여 전과 후를 비교해 무엇이 달라졌는지 봅니다.
+- **현업에서는**: 권한 부여 도구도 승인된 신청을 바로 부여하지 않고, 지금 정책으로 한 번 더 확인한 뒤에 부여합니다.
+
+**할 일**
+
+1. `req_grant.py` 와 `challenge2-1_run.py` 두 파일을 만들고, `grant_request` 본문을 직접 씁니다.
+2. 실행해서 <mark>부여 전 판정</mark>(단계 1: 판정), <mark>부여 시도의 결과</mark>(단계 2: 부여), <mark>부여 후 판정</mark>(단계 3: 점검)을 읽습니다.
+
+**`req_grant.py`**
+
+```python
+from rbac import check_permission                                # Unit 1에서 만든 역할 판정 함수를 불러온다
+from exception_policy import EXCEPTIONS                          # Unit 1에서 만든 예외 리스트를 불러온다
+
+
+def grant_request(request):                                      # 요청서를 받는 함수
+    """승인된 요청서를 정책으로 한 번 더 확인하고 통과하면 예외 권한을 부여한다.
+    승인 뒤 실제로 권한을 줄 때 쓰며 (성공 여부, 이유)를 리턴한다.
+    """
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 1. request["status"] 가 "approved" 가 아니면 False, "승인되지 않음" 을 리턴한다
+    # 2. request 의 "user" · "resource" · "action" 을 각각 user · resource · action 에 담는다 (세 줄)
+    # 3. check_permission(user, resource, action) 을 is_allowed, judge_reason 으로 나눠 받는다
+    # 4. is_allowed 이거나 judge_reason 이 "권한 없음" 이 아니면 False, f"부여하지 않음({judge_reason})" 을 리턴한다
+    # 5. len(EXCEPTIONS) + 1 을 exception_id 에 담는다 (다음 예외 번호)
+    # 6. 예외 딕셔너리 exception 을 만든다. 키 다섯 개의 값은 이렇게 정한다:
+    #    "id" 는 exception_id, "user" · "permission" · "reason" 은 request 의 같은 이름 키,
+    #    "expires" 는 request["until"] (이름이 다른 것에 주의)
+    # 7. EXCEPTIONS 에 exception 을 추가한다
+    # 8. request["exception_id"] 를 exception["id"] 로 정한다 (어느 예외를 부여했는지 요청서에 적어 둔다)
+    # 9. request["status"] 를 "granted" 로 바꾼다
+    # 10. True, "부여" 를 리턴한다
+```
+
+- 본문은 모두 함수 안이라 4칸으로 쓰고, `if` 아래 `return` 은 4칸 더(8칸) 들어갑니다. 6번의 딕셔너리는 괄호 안이라 줄을 바꿔도 됩니다.
+- 6번에서 딕셔너리를 변수 `exception` 에 담아 두면, 7번(`EXCEPTIONS.append(exception)`)과 8번(`exception["id"]`)에서 같은 값을 다시 쓸 수 있습니다.
+- 4번의 `judge_reason` 은 `check_permission` 이 리턴하는 판정 이유 문자열입니다(요청서의 `reason`, 즉 요청 이유와는 다릅니다). 「허용」이면 이미 가진 권한이라서 부여하지 않습니다.
+- 채우기 전에 실행하면 `TypeError: cannot unpack non-iterable NoneType object` 오류가 납니다. 함수가 아무것도 리턴하지 않기 때문입니다.
+
+**`challenge2-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 요청서 네 장을 접수하고 1 · 3 · 4번은 승인, 2번은 반려한 뒤, 단계 1 · 2 · 3을 차례로 실행합니다. 중간의 `show` 함수는 요청서마다 Unit 1의 `evaluate_access` 로 판정해 출력하고, 단계 2 끝에서는 `exception_id` 키가 있는 요청서(`"exception_id" in request`)의 예외 번호를 출력합니다.
+
+```python
+from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
+from req_create import REQUESTS, create_request                  # 실습 2-1에서 만든 요청서 함수와 리스트를 불러온다
+from req_review import approve_request, reject_request           # 실습 2-2에서 만든 승인 · 반려 함수를 불러온다
+from req_grant import grant_request                              # 방금 만든 부여 함수를 불러온다
+from policy import evaluate_access                               # Unit 1에서 만든 최종 판정 함수를 불러온다
+
+NOW = datetime.strptime("2026-10-23 10:00", "%Y-%m-%d %H:%M")    # 오늘 실습의 지금 시각(고정)
+
+INBOX = [                                                        # 접수에 성공하는 요청 네 건. (요청자, 자원, 행위, 희망 만료 시각, 이유, 접수 시각)
+    ("seoyeon", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 대조 지원", "2026-10-23 08:30"),
+    ("gaeun", "SALES", "QUERY", "2026-10-28 18:00", "감사 자료 대응", "2026-10-23 08:40"),
+    ("dami", "SALES", "QUERY", "2026-10-27 18:00", "인수인계 자료 확인", "2026-10-23 08:50"),
+    ("junho", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 확인", "2026-10-23 09:00"),
+]
+for user, resource, action, until, reason, received_at in INBOX:         # 요청을 하나씩 꺼내
+    create_request(user, resource, action, until, reason, received_at)   # 접수한다
+for number in [1, 3, 4]:                                         # 보안 담당이 1 · 3 · 4번을 승인하고
+    approve_request(REQUESTS[number - 1], "security_manager")    # 승인 처리한다
+reject_request(REQUESTS[1], "security_manager")                  # 2번은 반려한다
+
+
+def show(title):                                                 # 제목을 받아 요청서마다 지금 판정을 출력하는 함수
+    """요청서마다 지금의 최종 판정을 출력한다.
+    승인과 부여 전후에 판정이 어떻게 달라지는지 볼 때 쓴다.
+    """
+    print("---", title)                                          # 제목 줄을 출력한다
+    for request in REQUESTS:                                     # 요청서를 하나씩 꺼낸다
+        user = request["user"]                                   # 요청자
+        resource = request["resource"]                           # 자원
+        action = request["action"]                               # 행위
+        is_allowed, reason = evaluate_access(user, resource, action, NOW)   # 22일의 최종 판정을 받는다
+        print(request["id"], request["user"], request["permission"], "->", is_allowed, reason)   # 요청 번호 · 요청자 · 권한 -> 판정 을 출력한다
+
+
+show("단계 1: 판정 - 부여 전")                                     # 부여하기 전의 판정을 본다
+
+print("--- 단계 2: 부여 - 요청서마다 부여를 시도한다")                # 단계 2 시작을 알리는 줄
+for request in REQUESTS:                                         # 요청서를 하나씩 꺼낸다
+    is_allowed, result = grant_request(request)                          # 부여를 시도한다
+    print(request["id"], request["user"], request["status"], "->", is_allowed, result)   # 요청 번호 · 요청자 · 상태 -> 결과 를 출력한다
+
+for request in REQUESTS:                                         # 요청서를 하나씩 꺼낸다
+    if "exception_id" in request:                                # exception_id 키가 있는 요청서(부여된 것)만
+        print("부여된 예외 번호:", request["exception_id"])         # 그 예외 번호를 출력한다
+
+show("단계 3: 점검 - 부여 후")                                     # 부여한 뒤의 판정을 다시 본다
+```
+
+**순서**
+
+1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 세 가지 방법 중 **하나만** 고릅니다.
+   - **VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
+     1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
+     2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
+     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `req_grant.py` · `challenge2-1_run.py` 입니다.
+     4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
+2. **[VS Code]** `req_grant.py` 의 `grant_request` 본문을 직접 씁니다. 3.1 의 표와 그림을 보고 씁니다.
+3. **[터미널]** `pwd` 를 쳐서 마지막 폴더가 `access_control` 인지 확인한 뒤 실행합니다.
+   ```bash
+   python challenge2-1_run.py
+   ```
+   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `challenge2-1_run.py` 실행할 파일
+   - 맥북은 `python3 challenge2-1_run.py` 로 칩니다.
+4. 출력은 세 단계입니다. 단계 1은 부여 전 판정(네 줄), 단계 2는 부여 시도의 결과(네 줄)와 `부여된 예외 번호:` 한 줄, 단계 3은 부여 후 판정(네 줄)입니다. 부여 전과 후에 달라진 줄이 하나 있습니다.
+5. **[보고서]** `report_u2.md` 의 `## 도전 2-1` 아래를 채웁니다.
+   - (가) 실행한 출력 전체를 붙여 넣고, 부여를 시도한 네 건이 각각 어떻게 됐는지 적어 주세요.
+   - (나) [핵심 질문] 승인자가 승인한 3번 요청(`dami`)을 코드가 부여하지 않았습니다. 코드의 이 확인이 없었다면 어떤 일이 생겼을까요? 승인자가 이 문제를 미리 막기 어려운 이유도 적어 주세요.
+   - (다) [핵심 질문] 부여한 예외의 만료 시각에는 요청서의 희망 만료 시각을 그대로 썼습니다. 그 시각이 지나면 이 예외는 어떻게 될까요? 만료된 예외를 정리하는 점검은 누가 얼마나 자주 하면 좋을까요?
+
+## 도전 2-1 정리
+
+| 하려는 일 | 코드 · 말 |
+|---|---|
+| 승인된 것만 부여 | `if request["status"] != "approved": return False, "승인되지 않음"` |
+| 정책으로 한 번 더 판정 | `is_allowed, judge_reason = check_permission(user, resource, action)` |
+| 부여하지 않는 경우 | `if is_allowed or judge_reason != "권한 없음": return False, f"부여하지 않음({judge_reason})"` |
+| 예외 권한 부여 | `exception_id = len(EXCEPTIONS) + 1` → `exception = {"id": exception_id, …}` → `EXCEPTIONS.append(exception)` |
+| 어느 예외인지 적기 | `request["exception_id"] = exception["id"]` |
+| 부여 끝 표시 | `request["status"] = "granted"` |
 
 ---
 
-## 실습 2-1 정답
+## Unit 2 마무리 — 보고서 실습 2-1 · 4-2 · 4-3 칸 확인
 
- **터미널에 입력합니다.**
+Unit 2 의 실습 2-1 · 4-2 · 4-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. `access_control` 폴더에 오늘 만든 파일이 있는지 확인합니다.
 
 ```bash
-python exercise2-1_run.py
+ls
+ls config
 ```
 
-**채운 코드** (한 예)
+- `req_create.py` · `req_review.py` · `req_grant.py` · `exercise2-1_run.py` · `exercise2-2_run.py` · `challenge2-1_run.py` 가 보여야 합니다. `config` 안은 Unit 1을 마쳤을 때와 같아야 합니다(오늘은 `config` 에 새 파일을 만들지 않았습니다).
 
-```python
-    if role not in ROLES:                                        # 역할 파일에 없는 역할이면
-        return False, "없는 역할"                                 # 부여하지 않고 거부한다
-    users[name] = {"role": role, "employed": True}               # 사용자 항목을 새로 만들거나 덮어쓴다
-    return True, "부여"                                           # 부여했다고 알린다
-```
-
-```python
-    if name not in users:                                        # 사용자 파일에 없는 이름이면
-        return False, "없는 사용자"                               # 회수할 것이 없다고 알린다
-    users[name]["employed"] = False                              # employed 값을 False 로 바꾼다
-    return True, "회수"                                           # 회수했다고 알린다
-```
-
-- 위 코드는 `assign_role` 과 `revoke_access` 의 본문입니다. 줄 수가 달라도 주석이 말한 일을 하면 맞습니다.
-
-**결과**
-
-- (가) 출력은 다음과 같고, `hana` 줄은 `False` 입니다. 역할 이름 `salse` 가 `ROLES` 에 없어서 부여가 거부되고 사용자 항목도 만들어지지 않았습니다.
-
-```
---- 인사 변경 전
-minsu SALES QUERY -> False 등록되지 않은 사용자
-seoyeon SALES CHANGE -> True 허용
-seoyeon SETTLE QUERY -> False 권한 없음
-junho SETTLE QUERY -> True 허용
---- 인사팀 통보 처리
-입사 minsu (True, '부여')
-입사 hana (False, '없는 역할')
-hana 가 사용자에 들어갔나 False
-이동 seoyeon (True, '부여')
-퇴사 junho (True, '회수')
-퇴사 ghost (False, '없는 사용자')
---- 인사 변경 후
-minsu SALES QUERY -> True 허용
-seoyeon SALES CHANGE -> False 권한 없음
-seoyeon SETTLE QUERY -> True 허용
-junho SETTLE QUERY -> False 퇴사한 계정
-```
-
-- (나) `SALES CHANGE` 는 **허용에서 거부**(`권한 없음`)로, `SETTLE QUERY` 는 **거부에서 허용**으로 바뀌었습니다. `seoyeon` 의 역할이 `sales` 에서 `finance` 로 바뀌었고, `finance` 에는 `SALES:QUERY` 와 `SETTLE:QUERY` 만 있고 `SALES:CHANGE` 가 없기 때문입니다. 역할 값 하나만 바꿨는데 권한 전체가 바뀐 것입니다. 이동한 사람에게 이전 역할의 권한(영업 실적 변경)이 남아 있으면 새 업무에 필요 없는 권한이 계속 쌓입니다. 계정이 도용되거나 실수가 생기면 영향받는 범위가 넓어지고, 일에 필요한 만큼만 준다는 최소권한과도 어긋납니다.
-- (다) 사흘 동안 `junho` 의 사용자 항목은 아직 재직(`employed` 가 `true`)이라서 정산 조회가 계속 허용됩니다. 나간 사람이 자료를 내려받거나 변경할 수 있고, 로그에는 정상 사용자의 행동으로 남아서 나중에 가려내기 어렵습니다. 간격을 줄이는 방법은 여러 가지가 있습니다. ① 인사 시스템이 퇴사가 확정되는 즉시 보안 담당에게 알리게 한다 ② 퇴사 예정일을 미리 받아 그 시각에 맞춰 회수한다 ③ 인사 명단과 계정 리스트를 매일 대조해 어긋난 계정을 찾는다 ④ 퇴사 당일 회수 확인을 체크리스트에 넣는다. 두 가지 이상 쓰고 핵심이 같으면 맞습니다.
-
-**왜** — 사람이 바뀔 때마다 파일을 손으로 고치면 오타와 빠뜨림이 생깁니다. 함수로 처리하면 「없는 역할은 거부」 같은 검사가 늘 같은 순서로 들어갑니다. 역할 값 하나만 바꾸면 권한이 통째로 바뀌므로, 이동한 사람에게 이전 권한이 남지 않게 새 역할로 **바꿉니다.**(역할을 하나 더 붙이지 않습니다.) 퇴사자 항목을 삭제하지 않고 `employed` 값만 바꾸면, 거부 이유가 「퇴사한 계정」으로 남아서 처음부터 없던 계정과 구분됩니다.
-
-**자주 틀리는 곳** — `if role in ROLES:` 로 `not` 을 빼먹어 정상 역할을 모두 거부하는 경우가 가장 많습니다. 사용자 항목을 먼저 바꾸고 역할을 검사해서, 오타 역할이 이미 들어간 뒤에 거부하는 경우도 많습니다(`hana 가 사용자에 들어갔나` 가 `True`). `False` 를 소문자 `false` 로 써서 `NameError` 가 나는 경우도 있습니다(소문자는 JSON 파일에서만 씁니다). `return` 을 빼먹으면 통보 처리 줄이 `None` 으로 나옵니다. 함수 안에서 `users = {…}` 로 새 딕셔너리를 만들어 담으면 바깥의 `USERS` 는 바뀌지 않아서, 부여 결과는 `(True, '부여')` 인데 `minsu` 와 `seoyeon` 의 변경 후 판정이 변경 전과 같습니다.
-
-**관제에서는** — 인사 통보와 계정 상태를 정기적으로 대조합니다. 퇴사 당일에 접근을 회수하지 않으면 퇴사자 계정을 쓸 수 있는 시간이 생기고, 이동한 사람은 이전 역할의 권한이 남지 않았는지 확인합니다. 부여와 회수는 누가 언제 했는지 기록으로 남겨 감사에 대비합니다.
+다음 Unit(Unit 2)에서는 접수한 지 오래된 요청서를 시간으로 찾아내고(SLA · 처리 기한), 요청서 이력을 파일로 저장합니다. 올리기(git)는 Unit 2의 도전 2-3 마지막에 한 번에 합니다.
 
 ---
 
-## 실습 2-2 정답
-
- **터미널에 입력합니다.**
-
-```bash
-python exercise2-2_run.py
-```
-
-**`config/exceptions.json` 의 4번 · 5번 예외** (한 예)
-
-```json
-  {"id": 4, "user": "batch-night", "permission": "SALES:QUERY", "expires": "2026-10-23 09:00", "reason": "분기 집계 시험"},
-  {"id": 5, "user": "gaeun", "permission": "SETTLE:QUERY", "expires": "2026-10-22 12:00", "reason": "감사 자료 대응"}
-```
-
-- `"id": 3` 줄 끝에는 쉼표가 있고, `"id": 5` 줄 뒤에는 쉼표가 없어야 합니다.
-
-**채운 코드** (한 예)
-
-```python
-    for exception in EXCEPTIONS:                                       # 예외를 하나씩 꺼낸다
-        if exception["user"] == user and exception["permission"] == permission:   # 사람과 권한이 같으면
-            expires = datetime.strptime(exception["expires"], TIME_FORMAT)  # 만료 시각을 시각으로 바꾸고
-            if now < expires:                                    # 아직 만료 전이면
-                return True, exception["id"]                           # 유효한 예외와 그 번호를 리턴한다
-    return False, None                                           # 못 찾았으면 없다고 리턴한다
-```
-
-**결과**
-
-- (가) 출력은 다음과 같고, 회수할 것은 **2번 · 5번(만료됨)과 3번(퇴사자)** 입니다. 코드는 위의 채운 코드입니다. 줄 수가 달라도 주석이 말한 일을 하면 맞습니다.
-
-```
-seoyeon SETTLE:QUERY -> (True, 1)
-junho SALES:CHANGE -> (False, None)
-dami SALES:QUERY -> (True, 3)
-batch-night SALES:QUERY -> (True, 4)
-gaeun SETTLE:QUERY -> (False, None)
-seoyeon ACCOUNT:CHANGE -> (False, None)
-```
-
-```
-[유지] 1 seoyeon SETTLE:QUERY 2026-10-22 18:00
-[회수] 만료됨 2 junho SALES:CHANGE 2026-10-20 18:00
-[회수] 퇴사자 3 dami SALES:QUERY 2026-10-31 18:00
-[유지] 4 batch-night SALES:QUERY 2026-10-23 09:00
-[회수] 만료됨 5 gaeun SETTLE:QUERY 2026-10-22 12:00
-```
-
-  - 단계 1 에서 `(False, None)` 이 나온 세 건의 이유는 다음과 같습니다. `junho` 는 예외 2번이 10/20(화) 18:00 에 이미 만료됐습니다. `gaeun` 은 예외 5번이 오늘 12:00 에 만료됐고 지금은 14:00 입니다. `seoyeon` 의 `ACCOUNT:CHANGE` 는 예외 자체가 없습니다.
-  - `dami` 의 예외 3번은 `(True, 3)` 으로 유효하게 나오지만 퇴사자입니다. 예외 판정은 재직 여부를 보지 않으므로, 이 결과만 보고 허용하면 안 되고 사용자 파일의 `employed` 칸을 함께 봐야 합니다(실습 2-3).
-- (나) 만료 시각이 없는 예외는 아무도 회수하지 않아서 계속 열린 채로 쌓입니다. 1년 뒤에는 누가 왜 받았는지 아는 사람이 없고, 이동 · 퇴사한 사람에게도 남아서 감사에서 「과다권한」 · 「회수 누락」을 지적받습니다. 규칙 예: 만료 시각이 비어 있으면 접수하지 않는다, 최대 기간(예: 30일)을 정하고 넘기려면 다시 승인받는다, 만료가 가까워지면 알림을 보낸다.
-- (다) 확인할 것: 이 일이 정말 프로그램이 하는 집계 작업인지, 사람이 자기 일을 서비스 계정으로 대신하려는 것인지, 요청자와 승인자가 누구인지, 연장하려는 기간과 권한이 얼마나 되는지. 서비스 계정은 로그인한 사람이 없어서 누가 썼는지 추적하기 어렵고 키가 새면 피해가 크므로, 사람이 쓰려는 것이면 연장하지 않고 사람 계정에 기간을 정해 주도록 제안하는 것이 안전합니다. 프로그램의 집계 작업이 맞다면 다음 조건을 붙여 연장할 수 있습니다. 기간은 짧게(작업이 끝나는 날까지) 하고, 권한은 조회만 주고, 사용 기록을 따로 감시하고, 만료되면 자동으로 회수합니다. 연장 또는 거절 어느 쪽이든 판단 근거가 있으면 맞습니다.
-
-**왜** — 예외는 사람 · 권한 · 시각이 모두 맞아야 유효합니다. 시각을 시각으로 바꿔 비교하면 「언제까지」를 코드가 확인합니다. 코드가 만료된 예외를 거부하더라도 리스트에 남은 예외는 점검을 어렵게 하므로, 퇴사자의 예외는 만료 시각과 상관없이 바로 회수합니다.
-
-**자주 틀리는 곳** — `return False, None` 을 `for` 안에 넣어 첫 예외만 보고 끝나는 경우가 가장 많습니다(`seoyeon` 말고는 모두 `False` 가 됩니다). 형식에서 `%m` 과 `%M` 을 헷갈리면 `ValueError` 가 납니다(`%m` 은 월, `%M` 은 분). `now <= expires` 로 쓰면 18:00 정각이 허용됩니다. 4 · 5번 예외를 빼먹거나 3번 줄 끝 쉼표를 빼먹으면 `json.decoder.JSONDecodeError` 가 납니다.
-
-**관제에서는** — 만료 시각이 지난 예외로 들어온 요청이 거부된 기록은 「예외가 끝난 것을 모르고 계속 시도」한 신호라서 담당자에게 알립니다. 회수 리스트는 매일 만들고, 회수한 예외는 지우지 않고 「회수 시각 · 회수 이유」를 남겨 감사 기록으로 둡니다(Module 3 Unit 8 권한 회수).
-
----
-
-## 실습 2-3 정답
-
- **터미널에 입력합니다.**
-
-```bash
-python exercise2-3_run.py
-```
-
-**채운 코드** (한 예)
-
-```python
-    is_allowed, reason = check_permission(user, resource, action)        # 역할 판정을 먼저 한다
-    if is_allowed:                                                       # 역할로 허용되면
-        return True, "역할 권한"                                   # 역할 권한으로 허용한다
-    if reason != "권한 없음":                                     # 사용자 자체가 거부 대상이면(없음 · 퇴사 · 역할이 없음)
-        return False, reason                                     # 예외를 보지 않고 그 이유로 거부한다
-    found, found_exception_id = find_exception(user, f"{resource}:{action}", now)   # 유효한 예외를 찾는다
-    if found:                                                    # 있으면
-        return True, f"예외 {found_exception_id}번"                            # 예외 번호와 함께 허용한다
-    return False, "권한 없음"                                      # 둘 다 없으면 거부한다
-```
-
-**결과**
-
-- (가) 출력은 다음과 같습니다. 코드는 위의 채운 코드이고, 줄 수가 달라도 주석이 말한 일을 하면 맞습니다.
-
-```
-09:10 seoyeon SETTLE QUERY -> True 예외 1번
-10:00 dami SALES QUERY -> False 퇴사한 계정
-11:40 gaeun SETTLE QUERY -> True 예외 5번
-12:30 gaeun SETTLE QUERY -> False 권한 없음
-[만료 뒤 시도] 12:30 gaeun SETTLE QUERY - 만료된 예외 5 2026-10-22 12:00
-13:00 junho SETTLE QUERY -> True 역할 권한
-14:00 batch-night SALES QUERY -> True 예외 4번
-15:00 junho SALES CHANGE -> False 권한 없음
-[만료 뒤 시도] 15:00 junho SALES CHANGE - 만료된 예외 2 2026-10-20 18:00
-16:20 seoyeon SETTLE QUERY -> True 예외 1번
-18:05 seoyeon SETTLE QUERY -> False 권한 없음
-[만료 뒤 시도] 18:05 seoyeon SETTLE QUERY - 만료된 예외 1 2026-10-22 18:00
-{'예외로 허용': 4, '거부': 4, '역할로 허용': 1}
-예외 사용 {'예외 1번': 2, '예외 5번': 1, '예외 4번': 1}
-```
-
-  `[만료 뒤 시도]` 세 건은 다음과 같고, 「예외 사용」 줄에서 예외 1번은 **2번** 쓰였습니다.
-  - 12:30 `gaeun` 의 정산 조회: 예외 5번이 12:00 에 끝난 뒤의 시도.
-  - 15:00 `junho` 의 영업 실적 변경: 예외 2번이 10/20(화) 18:00 에 끝난 뒤의 시도.
-  - 18:05 `seoyeon` 의 정산 조회: 예외 1번이 18:00 에 끝난 뒤의 시도.
-  `dami` 10:00 요청은 `[역할 판정]` 에서 「퇴사한 계정」으로 거부되어 「권한 없음」이 아니므로 예외 리스트를 보지 않습니다. 사람 자체가 거부 대상이라 예외가 남아 있어도 만료 뒤 시도로 보지 않습니다.
-- (나) **허용**됩니다. `dami` 는 `[역할 판정]` 에서 「퇴사한 계정」으로 거부되지만, 골격의 3번 주석(`# 3. …`)이 없으면 바로 `[예외 판정]` 으로 가서 예외 3번(10/31(토) 까지)을 찾아 「예외 3번」으로 허용됩니다. 현업에서는 퇴사자가 남은 예외로 영업 자료를 조회하고, 로그에는 정상 허용으로 남아 아무도 눈치채지 못하는 사고로 이어질 수 있습니다. 감사에서는 퇴사자 계정이 사용된 기록으로 지적됩니다.
-- (다) 그림은 다음과 같고, 핵심(누가 누구를 호출하는가)이 같으면 맞습니다. `config/exceptions.json` 이 깨지면 `policy.py` 가 `exception_policy.py` 를 불러오는 맨 위의 `import` 에서 멈추고(`JSONDecodeError`), `exercise2-3_run.py` 는 요청을 한 건도 판정하기 전에 끝납니다.
-
-```
-+------------------+
-| exercise2-3_run.py |
-+------------------+
-   |
-   +--> evaluate_access(user, resource, action, now) 호출
-   |       |
-   |       v
-   |    +-------------------------------+
-   |    | policy.py : evaluate_access() |
-   |    +-------------------------------+
-   |       |
-   |       +--> 1. check_permission() 호출
-   |       |       |
-   |       |       v
-   |       |    +---------+
-   |       |    | rbac.py |
-   |       |    +---------+
-   |       |       |  읽음
-   |       |       v
-   |       |    config/users.json · config/roles.json
-   |       |    (허용이면 「역할 권한」 으로 끝 / 「권한 없음」 이 아닌 이유면 그 이유로 거부하고 끝)
-   |       |
-   |       +--> 2. find_exception() 호출
-   |       |       |
-   |       |       v
-   |       |    +---------------------+
-   |       |    | exception_policy.py |
-   |       |    +---------------------+
-   |       |       |  읽음 (파일을 불러올 때 한 번)
-   |       |       v
-   |       |    config/exceptions.json
-   |       |
-   |       v
-   |    (허용 여부, 이유) 를 리턴
-   |       |
-   |       v
-   |    exercise2-3_run.py 가 건수를 세고 출력  (EXCEPTIONS 도 exception_policy.py 에서 가져옴)
-```
-
-**왜** — 여러 규칙을 합칠 때는 「사람이 유효한가」를 먼저 보고, 그다음 「무엇으로 허용하나」를 봅니다. 예외는 역할 권한을 보충할 뿐 사람 검사를 건너뛰게 하면 안 됩니다. 허용을 「역할」과 「예외」로 나눠 세고 예외 번호별로 쓰인 횟수를 세면, 예외로 열리는 일이 얼마나 되는지 숫자로 보입니다.
-
-**자주 틀리는 곳** — `find_exception` 에 `resource` 만 넣어 항상 `(False, None)` 이 나오는 경우가 많습니다. 예외 파일은 `"SETTLE:QUERY"` 처럼 「자원:행위」 문자열로 적혀 있습니다. 3번을 `if reason == "권한 없음"` 으로 뒤집어 써서 반대로 동작하는 경우도 있습니다. `return` 을 빼먹으면 실행할 때 `TypeError: cannot unpack non-iterable NoneType object` 가 납니다.
-
-**관제에서는** — 판정 이유에 「역할 권한」 · 「예외 N번」 · 거부 이유가 남아 있으면, 감사 때 「왜 열렸나」를 예외 번호로 바로 찾아갈 수 있습니다. 거부된 요청이 끝난 예외와 같은 사람 · 같은 권한이면 만료 뒤 시도로 따로 모아 담당자에게 알리고, 같은 예외가 계속 쓰이면 역할을 새로 만들지, 예외를 끝낼지 판단합니다.
+<!-- learn:answers -->

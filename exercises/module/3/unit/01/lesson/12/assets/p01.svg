@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>report_u1.md 를 만들고 틀을 붙여 넣으면, 핵심 실습 칸은 모두 채우고 도전 칸은 한 것만 채운다</title>
+<desc>왼쪽은 보고서 파일을 만드는 세 단계(새 파일, 틀 복사해 붙여 넣기, 이름 바꾸고 저장)입니다. 오른쪽은 파일 안의 칸으로, 실습 1-1 ~ 1-3과 마무리는 모두 채우고 도전 1-1 ~ 1-5는 내가 한 것만 채웁니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+<text x="24" y="34" font-size="19" font-weight="700">보고서 파일 만들기</text>
+<rect x="24" y="56" width="260" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="40" y="84" font-size="16" font-weight="700">1. 새 파일</text>
+<text x="40" y="108" font-size="15">access_control/report_u1.md</text>
+<polyline points="154,127 154,147" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="24" y="148" width="260" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="40" y="176" font-size="16" font-weight="700">2. 틀 복사해 붙여 넣기</text>
+<text x="40" y="200" font-size="15">복사 버튼을 누릅니다</text>
+<polyline points="154,219 154,239" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="24" y="240" width="260" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="40" y="268" font-size="16" font-weight="700">3. 이름 바꾸고 저장</text>
+<text x="40" y="292" font-size="15">제목의 (이름) → 내 이름</text>
+<polyline points="285,183 323,183" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="324" y="56" width="372" height="330" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="340" y="82" font-size="16" font-weight="700">report_u1.md 안의 칸</text>
+<rect x="340" y="96" width="340" height="150" rx="6" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="356" y="120" font-size="15" font-weight="700">핵심 실습 · 모두 채웁니다</text>
+<text x="356" y="146" font-size="15">## 실습 1-1   (가) (나) (다)</text>
+<text x="356" y="170" font-size="15">## 실습 1-2   (가) (나) (다)</text>
+<text x="356" y="194" font-size="15">## 실습 1-3   (가) (나) (다)</text>
+<text x="356" y="218" font-size="15">## 마무리     (가)</text>
+<rect x="340" y="262" width="340" height="108" rx="6" fill="#f1f1ef" stroke="#666660" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="356" y="286" font-size="15" font-weight="700">도전 · 선택</text>
+<text x="356" y="312" font-size="15">## 도전 1-1 ~ ## 도전 1-5</text>
+<text x="356" y="336" font-size="15">내가 한 도전만 채웁니다</text>
+<text x="356" y="358" font-size="14" fill="#666660">하지 않은 도전의 칸은 비워 둡니다</text>
+</g>
+</svg>

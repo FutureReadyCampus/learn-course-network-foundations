@@ -1,25 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
-<title>Unit 3은 Unit 2의 정책을 고장과 테스트에 대비해 믿을 수 있게 만듭니다</title>
-<desc>Unit 2에서 만든 역할 부여·회수, 예외, evaluate_access 위에 두 실습을 더합니다. 실습 3-1은 설정이 고장 나도 모두 거부하게 하고, 실습 3-2는 테스트로 정책을 확인한 뒤 깃허브에 올립니다.</desc>
-<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
-<text x="24" y="34" font-size="19" font-weight="700">Unit 3 목표 · 믿을 수 있는 정책</text>
-<rect x="24" y="64" width="210" height="200" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="129" y="127.4" font-size="16" text-anchor="middle" font-weight="700">Unit 2 에서 만든 것</text>
-<text x="129" y="148.4" font-size="15" text-anchor="middle">역할 부여 · 회수</text>
-<text x="129" y="169.4" font-size="15" text-anchor="middle">기간이 정해진 예외</text>
-<text x="129" y="190.4" font-size="15" text-anchor="middle">evaluate_access</text>
-<text x="129" y="211.4" font-size="15" text-anchor="middle">(policy.py)</text>
-<rect x="280" y="64" width="416" height="88" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="488" y="102.9" font-size="16" text-anchor="middle" font-weight="700">실습 3-1 · 설정이 고장 나도</text>
-<text x="488" y="123.9" font-size="15" text-anchor="middle">멈추지 않고 빈 설정 → 모두 거부</text>
-<rect x="280" y="176" width="416" height="88" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="488" y="214.9" font-size="16" text-anchor="middle" font-weight="700">실습 3-2 · 테스트 케이스로</text>
-<text x="488" y="235.9" font-size="15" text-anchor="middle">정책대로 움직이는지 자동 확인</text>
-<rect x="280" y="288" width="416" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="488" y="317.4" font-size="15" text-anchor="middle">실습 3-2 마지막: 깃허브에 올리기</text>
-<path d="M234,120 L278,108" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p01)"/>
-<path d="M234,208 L278,220" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p01)"/>
-<path d="M488,264 L488,286" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p01)"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>Unit 2까지는 권한을 주는 흐름, Unit 3은 이미 부여된 권한을 점검한다</title>
+<desc>Unit 2와 Unit 2에서는 요청, 승인, 예외 권한 부여, 기한 점검, 기록 저장으로 권한을 주는 흐름을 만들었습니다. Unit 3에서는 현황 리스트를 만들고, 규칙으로 찾고, 규칙으로 못 찾는 권한을 찾습니다. 회수는 Unit 4에서 합니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="36" font-size="17" fill="#292929" font-weight="700">Unit 2 · Unit 2 · 권한을 주는 흐름</text>
+<rect x="40" y="50" width="80" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="80" y="78.62" font-size="15" fill="#292929" text-anchor="middle">요청</text>
+<rect x="150" y="50" width="80" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="190" y="78.62" font-size="15" fill="#292929" text-anchor="middle">승인</text>
+<polyline points="123,74 146,74" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="260" y="50" width="140" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="330" y="78.62" font-size="15" fill="#292929" text-anchor="middle">예외 권한 부여</text>
+<polyline points="233,74 256,74" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="430" y="50" width="110" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="485" y="78.62" font-size="15" fill="#292929" text-anchor="middle">기한 점검</text>
+<polyline points="403,74 426,74" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="570" y="50" width="110" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="625" y="78.62" font-size="15" fill="#292929" text-anchor="middle">기록 저장</text>
+<polyline points="543,74 566,74" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<text x="20" y="150" font-size="17" fill="#292929" font-weight="700">Unit 3 · 이미 부여된 권한을 점검</text>
+<rect x="20" y="164" width="150" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="95" y="197.928" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">실습 3-1</text>
+<text x="95" y="219.32" font-size="15" fill="#292929" text-anchor="middle">현황 리스트</text>
+<text x="95" y="240.32" font-size="15" fill="#292929" text-anchor="middle">만들기</text>
+<rect x="200" y="164" width="150" height="100" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="275" y="198.628" font-size="16" fill="#9a6200" text-anchor="middle" font-weight="700">도전 3-1</text>
+<text x="275" y="220.02" font-size="15" fill="#292929" text-anchor="middle">규칙으로 찾기</text>
+<text x="275" y="240.012" font-size="14" fill="#666660" text-anchor="middle">퇴사 · 만료</text>
+<polyline points="173,214 196,214" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="380" y="164" width="160" height="100" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="460" y="197.928" font-size="16" fill="#9a6200" text-anchor="middle" font-weight="700">실습 3-2</text>
+<text x="460" y="219.32" font-size="15" fill="#292929" text-anchor="middle">규칙으로 못 찾는</text>
+<text x="460" y="240.32" font-size="15" fill="#292929" text-anchor="middle">권한 찾기</text>
+<polyline points="353,214 376,214" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="590" y="164" width="110" height="100" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="645" y="208.428" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 4</text>
+<text x="645" y="229.82" font-size="15" fill="#292929" text-anchor="middle">회수</text>
+<polyline points="540,214 586,214" fill="none" stroke="#666660" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#a-p01)"/>
+<text x="20" y="306" font-size="15" fill="#666660">이번 Unit 은 찾기까지만 합니다. 찾은 권한을 실제로 거두는 일은 Unit 4 에서 합니다.</text>
 </g>
 </svg>

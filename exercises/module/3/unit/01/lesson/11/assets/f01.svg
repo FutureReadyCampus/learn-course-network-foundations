@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>exercise1-3_run.py 가 evaluate_access 를 부르고, 그 안에서 역할과 예외를 차례로 확인합니다</title>
+<desc>실습 1-3의 파일 사이 흐름입니다. exercise1-3_run.py 가 policy.py 의 evaluate_access() 를 호출하고, evaluate_access 는 1. rbac.py 의 check_permission() (config/users.json · config/roles.json 을 읽음), 2. exception_policy.py 의 find_exception() (불러올 때 한 번 config/exceptions.json 을 읽음) 을 차례로 호출합니다. (허용 여부, 이유) 를 리턴하면 exercise1-3_run.py 가 건수를 세고 출력합니다.</desc>
+<defs><marker id="a-f01-m3u01l11" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<text x="20" y="30" font-size="18" font-weight="700" fill="#292929">실습 1-3 파일 사이의 흐름</text>
+<g font-size="15" fill="#292929">
+<rect x="20" y="48" width="240" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="140" y="75" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">exercise1-3_run.py</text>
+<text x="72" y="124" font-size="14"><tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">evaluate_access(user, resource, action, now)</tspan> 호출</text>
+<rect x="20" y="146" width="320" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="180" y="173" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">policy.py : evaluate_access()</text>
+<text x="72" y="236" font-size="14"><tspan font-weight="700">1.</tspan> <tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">check_permission()</tspan> 호출</text>
+<text x="432" y="236" font-size="14"><tspan font-weight="700">2.</tspan> <tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">find_exception()</tspan> 호출</text>
+<rect x="20" y="266" width="200" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="120" y="293" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">rbac.py</text>
+<rect x="380" y="266" width="240" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="500" y="293" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">exception_policy.py</text>
+<text x="72" y="344" font-weight="700">읽음</text>
+<text x="432" y="344"><tspan font-weight="700">읽음</tspan> <tspan font-size="14" fill="#666660">(파일을 불러올 때 한 번)</tspan></text>
+<rect x="20" y="370" width="340" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="190" y="397" text-anchor="middle" font-size="14" font-family="ui-monospace, Menlo, Consolas, monospace">config/users.json · config/roles.json</text>
+<rect x="380" y="370" width="240" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="500" y="397" text-anchor="middle" font-size="14" font-family="ui-monospace, Menlo, Consolas, monospace">config/exceptions.json</text>
+<rect x="20" y="430" width="340" height="80" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="34" y="454" font-size="14">허용이면 「역할 권한」으로 끝</text>
+<text x="34" y="476" font-size="14">「권한 없음」이 아닌 이유면</text>
+<text x="34" y="498" font-size="14">그 이유로 거부하고 끝</text>
+<rect x="20" y="554" width="340" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="190" y="581" text-anchor="middle" font-weight="700">(허용 여부, 이유) 를 리턴</text>
+<rect x="20" y="640" width="560" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="36" y="666"><tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">exercise1-3_run.py</tspan> 가 건수를 세고 출력</text>
+<text x="36" y="690" font-size="14" fill="#666660">(<tspan font-family="ui-monospace, Menlo, Consolas, monospace">EXCEPTIONS</tspan> 도 <tspan font-family="ui-monospace, Menlo, Consolas, monospace">exception_policy.py</tspan> 에서 가져옴)</text>
+</g>
+<g stroke="#666660" stroke-width="1.6" fill="none" marker-end="url(#a-f01-m3u01l11)">
+<path d="M60 92V142"/>
+<path d="M60 190V262"/>
+<path d="M300 190V208H420V262"/>
+<path d="M60 310V366"/>
+<path d="M420 310V366"/>
+<path d="M500 414V576H364"/>
+<path d="M60 510V550"/>
+<path d="M60 598V636"/>
+</g>
+</svg>

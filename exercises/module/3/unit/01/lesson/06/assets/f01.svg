@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
+<title>sales 가 가진 권한 중 기록에서 쓰지 않은 SALES:CHANGE 가 줄일 후보다</title>
+<desc>sales 역할은 SALES:QUERY 와 SALES:CHANGE 를 가지고 있지만, 기록에서 실제로 쓴 것은 SALES:QUERY 뿐이다. 쓰이지 않은 SALES:CHANGE 가 권한을 줄일 후보가 된다.</desc>
+<defs><marker id="a-f01-u1l4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<rect x="20" y="30" width="330" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="185.0" y="59.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">역할이 가진 권한</text>
+<text x="185.0" y="81.1" font-size="15" fill="#292929" text-anchor="middle">sales = SALES:QUERY, SALES:CHANGE</text>
+<rect x="370" y="30" width="330" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="535.0" y="59.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">기록에서 실제로 쓴 것</text>
+<text x="535.0" y="81.1" font-size="15" fill="#292929" text-anchor="middle">sales = SALES:QUERY</text>
+<polyline points="185,100 185,130 290,130 290,168" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f01-u1l4)"/>
+<polyline points="535,100 535,130 430,130 430,168" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f01-u1l4)"/>
+<rect x="160" y="170" width="400" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="199.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">쓰이지 않은 권한</text>
+<text x="360.0" y="221.1" font-size="15" fill="#292929" text-anchor="middle">sales 의 SALES:CHANGE</text>
+<polyline points="360,240 360,288" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f01-u1l4)"/>
+<rect x="285" y="290" width="150" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="360.0" y="317.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">줄일 후보</text>
+</g>
+</svg>

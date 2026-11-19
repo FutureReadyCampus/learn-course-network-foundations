@@ -1,35 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>요청서는 키 아홉 개 딕셔너리이고, status 는 reviewing 에서 approved·rejected·granted 로 간다</title>
-<desc>왼쪽은 seoyeon 의 요청서 한 장을 키와 값으로 보여 줍니다. 오른쪽은 status 값이 실습 4-1 의 reviewing 에서 실습 4-2 의 approved 또는 rejected, 실습 4-3 의 granted 로 바뀌는 순서입니다.</desc>
-<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
-<text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">요청서 한 장과 상태(status)</text>
-<rect x="24" y="52" width="340" height="310" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="38" y="87.2" font-size="15" fill="#292929" text-anchor="start" font-weight="700">요청서 (딕셔너리)</text>
-<text x="38" y="115.2" font-size="15" fill="#292929" text-anchor="start">id: 1</text>
-<text x="38" y="143.2" font-size="15" fill="#292929" text-anchor="start">user: "seoyeon"</text>
-<text x="38" y="171.2" font-size="15" fill="#292929" text-anchor="start">resource: "SETTLE"</text>
-<text x="38" y="199.2" font-size="15" fill="#292929" text-anchor="start">action: "QUERY"</text>
-<text x="38" y="227.2" font-size="15" fill="#292929" text-anchor="start">permission: "SETTLE:QUERY"</text>
-<text x="38" y="255.2" font-size="15" fill="#292929" text-anchor="start">until: "2026-10-27 18:00"</text>
-<text x="38" y="283.2" font-size="15" fill="#292929" text-anchor="start">reason: "정산 대조 지원"</text>
-<text x="38" y="311.2" font-size="15" fill="#292929" text-anchor="start">requested_at: "2026-10-23 08:30"</text>
-<text x="38" y="339.2" font-size="15" fill="#292929" text-anchor="start">status: "reviewing"</text>
-<rect x="450" y="58" width="200" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="550" y="80.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">reviewing</text>
-<text x="550" y="101.1" font-size="15" fill="#292929" text-anchor="middle">검토 중 (실습 4-1)</text>
-<line x1="510" y1="114" x2="460" y2="168" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p03)"/>
-<text x="468" y="140" font-size="14" fill="#666660" text-anchor="end">승인</text>
-<line x1="590" y1="114" x2="640" y2="168" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p03)"/>
-<text x="632" y="140" font-size="14" fill="#666660" text-anchor="start">반려</text>
-<rect x="384" y="170" width="150" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="459" y="192.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">approved</text>
-<text x="459" y="213.1" font-size="15" fill="#292929" text-anchor="middle">승인됨 (실습 4-2)</text>
-<rect x="550" y="170" width="150" height="56" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="625" y="192.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">rejected</text>
-<text x="625" y="213.1" font-size="15" fill="#292929" text-anchor="middle">반려됨 (실습 4-2)</text>
-<line x1="459" y1="226" x2="459" y2="290" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p03)"/>
-<text x="470" y="262" font-size="14" fill="#666660" text-anchor="start">정책 확인을 통과하면</text>
-<rect x="384" y="292" width="150" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="459" y="314.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">granted</text>
-<text x="459" y="335.1" font-size="15" fill="#292929" text-anchor="middle">부여됨 (실습 4-3)</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>승인이 필요 없으면 승인 불필요, 결정이 「승인」이면 승인됨, 없으면 승인 대기</title>
+<desc>needs_approval 로 승인이 필요한지 먼저 봅니다. 필요하면 decisions 에서 「사용자:권한」 키로 결정을 찾아 승인됨이나 승인 대기를 적습니다. 이번 데이터에서 승인이 필요한 계획은 3건입니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">2.1 승인 상태 정하기 — mark_approvals 의 갈림길</text>
+<rect x="20" y="60" width="300" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="170" y="86.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">needs_approval?</text>
+<text x="170" y="107.8" font-size="15" fill="#292929" text-anchor="middle">민감한 권한 또는 영향 2건 이상</text>
+<path d="M320 92 L398 92" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="330" y="84" font-size="14" fill="#666660" text-anchor="start">아니다</text>
+<rect x="400" y="62" width="300" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="550" y="97.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">승인 불필요</text>
+<path d="M170 124 L170 168" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="180" y="151" font-size="14" fill="#666660" text-anchor="start">그렇다</text>
+<rect x="20" y="170" width="300" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="170" y="196.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">decisions[key] 가 「승인」?</text>
+<text x="170" y="217.8" font-size="15" fill="#292929" text-anchor="middle">key = "dami:SALES:QUERY" 모양</text>
+<path d="M320 202 L398 202" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="328" y="194" font-size="14" fill="#666660" text-anchor="start">그렇다</text>
+<rect x="400" y="172" width="300" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="550" y="207.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">승인됨</text>
+<path d="M170 234 L170 300 L398 300" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="180" y="268" font-size="14" fill="#666660" text-anchor="start">아니다 · 결정 없음</text>
+<rect x="400" y="270" width="300" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="550" y="305.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">승인 대기</text>
+<rect x="20" y="350" width="680" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="381.2" font-size="15" fill="#292929" text-anchor="middle">승인이 필요한 계획 3건: junho SALES:CHANGE(예외 2번) · dami 역할 해제 2건</text>
+</g>
 </svg>

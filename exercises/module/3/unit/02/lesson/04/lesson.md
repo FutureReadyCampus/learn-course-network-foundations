@@ -1,235 +1,219 @@
 ---
 id: m3-u02-l04
-title: 실습 2-2 · 기간이 정해진 예외 권한 만들기
+title: 실습 2-2 · 승인·반려 함수 만들기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
-  path: network/078_day02_am_policy.md
-  mission_id: GichanSource.m3-1022-am-policy
+  path: network/082_day03_am_request.md
+  mission_id: GichanSource.m3-1023-am-request
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 실습 2-2 · 기간이 정해진 예외 권한 만들기
+# 실습 2-2 · 승인·반려 함수 만들기
 
-## 목표: 예외 파일과 유효 판정 함수
+## 목표: 승인·반려 함수
 
 > **오늘 들어온 일**
-> A사 보안 담당이 보낸 메시지: 「영업팀 seoyeon 이 오늘 하루 월말 정산 대조를 도와야 합니다. 역할을 바꾸거나 영업 역할 전체에 권한을 주지 않고, 이 사람에게만 오늘 18시까지만 정산 조회를 허용해 줄 수 있나요? 끝난 예외가 그대로 남아 있지 않은지도 점검해 주세요.」
-> - 이 실습에서 하는 일: 예외 권한 파일에 예외 두 건을 직접 쓰고, 「지금 이 예외가 유효한가」를 판정하는 함수를 직접 씁니다. 같은 실행의 아랫부분에서 예외 리스트 중 회수해야 할 것을 읽습니다.
+>
+> A사 보안 담당이 보낸 메시지: 「접수된 요청서를 제가 하나씩 보고 승인하거나 반려합니다. 그런데 같은 요청서를 실수로 두 번 승인하거나, 이미 반려한 요청서를 나중에 승인하는 일이 생기면 안 됩니다. 검토 중인 요청서만 처리되게 하고, 누가 처리했는지도 요청서에 남겨 주세요. 요청한 본인이 자기 요청을 처리하는 일도 막아 주세요.」
+> - 이 실습에서 하는 일: 요청서를 승인하는 함수 `approve_request` 를 직접 쓰고, 반려하는 함수 `reject_request` 는 남은 부분을 채웁니다. 본인 요청과 두 번째 처리를 시도해 막히는 것을 확인합니다.
 > - 끝나면 쓰는 것: 보고서 (가)~(다) 답
 
-> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「실습」 전까지는 이 실습의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
+## 왜 처리 순서와 처리자를 남기는가
 
-## 왜 예외에 만료 시각이 필요한가
+1. 요청서는 **정해진 순서로만** 상태를 바꿉니다.
+2. 누가 승인하거나 반려했는지 적어 두어야, 나중에 문제가 생겼을 때 책임을 찾고 감사에 답할 수 있습니다.
 
-> **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
+## 2.1 상태가 바뀌는 순서
 
-1. 역할에 권한을 추가하면 그 역할의 모든 사람이 함께 늘어나고, 사람의 역할을 바꾸면 그 사람의 권한이 통째로 바뀝니다. 한 사람에게 잠시 필요한 일은 역할이 아니라 **그 사람에게만, 기간을 정해** 줘야 합니다.
-2. 예외는 처음에 허용해 주기는 쉬워도, 일이 끝난 뒤 없애는 일(회수)은 잊기 쉽습니다. 그래서 **만료 시각을 함께 적고, 시각이 지나면 코드가 거부**하게 만듭니다.
+| 지금 상태 | 할 수 있는 처리 | 처리 뒤 상태 | 다시 처리하면 |
+|---|---|---|---|
+| `reviewing` | 승인 | `approved` | — |
+| `reviewing` | 반려 | `rejected` | — |
+| `approved` · `rejected` | (없음) | 그대로 | `(False, "검토 중이 아님")` |
 
-## 2.1 예외 권한과 만료
+- 이 규칙을 코드로 쓰는 방법은 간단합니다. **바꾸기 전에 지금 상태를 먼저 확인**하고, 맞지 않으면 아무것도 바꾸지 않고 `False` 와 이유를 리턴합니다.
+- `approved` 가 된 요청서를 `granted` 로 바꾸는 일은 도전 2-1에 합니다.
 
-> **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
+<figure class="page-figure"><img src="assets/f01.svg" alt="승인·반려 함수는 검토 중인지, 본인 요청인지 확인한 뒤에만 상태를 바꾼다"></figure>
 
-- **예외 권한**(exception · 익셉션, 임시 권한)
-  - 역할에는 없지만 특정 사용자에게 특정 권한을 따로 허용하는 것
-  - 누구에게 · 어떤 권한을 · 언제까지 · 왜 주는지 함께 적는다
-- **만료 시각**(expiry · 익스파이어리)
-  - 예외가 끝나는 시각. 이 시각 **이후에는 거부**한다
-  - 오늘은 「지금 시각이 만료 시각보다 **앞**일 때만 유효」로 정한다(만료 시각 정각에는 이미 거부)
+## 2.2 승인자를 정하는 규칙
 
-여기서 **예외**는 파이썬의 오류(`try` · `except` 의 예외)가 아니라 「역할에는 없는데 특별히 허용한 것」을 뜻합니다.
+- 오늘은 승인자를 `security_manager` 한 사람으로 둡니다. 사람 이름이 아니라 보안 담당자가 쓰는 계정 이름입니다.
+- 현업에서는 요청한 권한에 따라 승인자가 달라집니다.
+- 오늘은 요청한 본인 여부를 확인하는 검사를 승인 · 반려 두 함수에 넣습니다.
 
-오늘 쓰는 예외 파일에 들어갈 예외 다섯 건입니다. 1 ~ 3번은 붙여 넣고, 4 · 5번은 이 표를 보고 직접 씁니다.
+**문법 상자 — 상태 확인과 키의 값 바꾸기**
 
-| 번호 | 사용자 | 권한 | 만료 시각 | 이유 |
-|---|---|---|---|---|
-| 1 | `seoyeon` | `SETTLE:QUERY` | 2026-10-22 18:00 | 월말 정산 대조 지원 |
-| 2 | `junho` | `SALES:CHANGE` | 2026-10-20 18:00 | 영업 실적 정정 |
-| 3 | `dami` | `SALES:QUERY` | 2026-10-31 18:00 | 인수인계 |
-| 4 | `batch-night` | `SALES:QUERY` | 2026-10-23 09:00 | 분기 집계 시험 |
-| 5 | `gaeun` | `SETTLE:QUERY` | 2026-10-22 12:00 | 감사 자료 대응 |
-
-- `batch-night` 는 사람이 아니라 프로그램이 쓰는 서비스 계정입니다.
-
-## 2.2 문자열을 시각으로 바꿔 비교하기
-
-> **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
-
-**문법 상자 — `datetime.strptime` 의 형식 문자열**
-
-앞선 실습에서는 `datetime.strptime(문자열, "%H:%M")` 으로 시 · 분을 읽었습니다. 오늘은 날짜까지 함께 읽습니다.
-
-| 형식 | 뜻 | 예 |
-|---|---|---|
-| `%Y` | 네 자리 연도 | `2026` |
-| `%m` | 두 자리 월 | `10` |
-| `%d` | 두 자리 일 | `22` |
-| `%H:%M` | 시:분(24시간) | `18:00` |
+**① 있는 키는 값을 바꾸고, 없던 키는 이렇게 쓰면 새로 생깁니다**
 
 ```python
-from datetime import datetime                                    # 날짜 · 시각을 다루는 모듈에서 datetime 을 불러온다
+request = {"id": 1, "status": "reviewing"}                          # approver 키가 아직 없는 요청서
 
-now = datetime.strptime("2026-10-22 14:00", "%Y-%m-%d %H:%M")    # 문자열을 시각으로 바꾼다
-expires = datetime.strptime("2026-10-22 18:00", "%Y-%m-%d %H:%M")  # 만료 시각도 시각으로 바꾼다
-print(now < expires)                                             # 지금이 만료 전인가?
-print(now >= expires)                                            # 지금이 만료 시각 이후인가?
+request["status"] = "approved"                                     # 있는 키의 값을 바꾼다
+request["approver"] = "security_manager"                                     # 없던 키는 이렇게 쓰면 새로 생긴다
+
+print(request)                                                     # 요청서 전체를 출력한다
 ```
 
+실행 결과:
+
 ```
-True
-False
+{'id': 1, 'status': 'approved', 'approver': 'security_manager'}
 ```
 
-- 문자열 그대로 `"2026-10-22 14:00" < "2026-10-22 18:00"` 를 비교해도 결과가 맞아 보이지만, 형식이 하나라도 다르면(`"2026-10-22 9:00"`) 틀립니다. 문자열 비교는 앞에서부터 한 글자씩 보기 때문에 `9:00` 이 `18:00` 보다 크다고 나옵니다. 시각은 **시각으로 바꾼 뒤** 비교합니다.
-- 골격과 실행 파일에 나오는 `TIME_FORMAT` 은 `exception_policy.py` 위쪽에 적혀 있는 형식 문자열 `"%Y-%m-%d %H:%M"` 입니다.
-- **오늘은 지금 시각을 `2026-10-22 14:00` 으로 고정합니다.** 실제 운영에서는 `datetime.now()` 를 쓰지만, 그러면 실행할 때마다 결과가 달라져 정답과 비교할 수 없기 때문입니다. 함수가 지금 시각을 `now` 로 받게 만들면 고정 시각과 `datetime.now()` 를 모두 쓸 수 있습니다.
+**② 딕셔너리에 키가 있는지 확실하지 않을 때는 `.get("키 이름")` 으로 꺼냅니다**
 
-## 2.3 예외 리스트에서 회수할 것 찾기
+```python
+request = {"id": 1, "status": "reviewing"}                          # 요청서 한 장. approver 키는 아직 없다
+print(request["status"])                                           # [ ] 로 있는 키의 값을 꺼낸다
+print(request.get("status"))                                       # .get 으로 있는 키의 값을 꺼내도 같은 값이 나온다
+```
 
-> **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
+실행 결과:
 
-- 예외는 만료 시각이 지나도 리스트에 그대로 남습니다. 그래서 리스트를 **정기적으로 점검해** 회수할 것을 뽑습니다. 회수 대상은 두 가지입니다.
-  - **만료됨**: 만료 시각이 이미 지난 예외. 코드가 거부하더라도 리스트에 남아 있으면 누가 언제 무엇을 받았는지 헷갈립니다.
-  - **퇴사자**: 만료 전이라도 사람이 이미 나갔으면 바로 회수합니다.
-- 조건은 위에서부터 차례로 봅니다. 앞 조건에 맞으면 뒤 조건은 보지 않습니다(`if` → `elif` → `else`, 앞선 실습).
+```
+reviewing
+reviewing
+```
 
-<figure class="page-figure"><img src="assets/f01.svg" alt="예외 하나마다 만료 여부를 먼저, 퇴사 여부를 다음에 보고 회수나 유지를 정한다"></figure>
+없는 키를 꺼내면 두 방법이 달라집니다.
 
-- 만료됐으면서 퇴사자이기도 한 예외는 첫 조건에 걸려 「만료됨」으로만 출력됩니다. 회수한다는 결과는 같고 기록에 남는 이유만 달라집니다.
-- 현업에서는 이 점검을 매일 돌려 「회수 리스트」를 만들고, 회수한 예외는 지우지 않고 회수 시각과 이유를 남깁니다.
+```python
+request = {"id": 1, "status": "reviewing"}                          # 요청서 한 장. approver 키는 아직 없다
+print(request.get("approver"))                                     # 없는 키를 .get 으로 꺼내면 오류 없이 None(값 없음)이 나온다
+print(request["approver"])                                         # 없는 키를 [ ] 로 꺼내면 KeyError 오류가 나고 프로그램이 멈춘다
+```
 
-> **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
+실행 결과:
 
-## 실습 2-2 · 유효한 예외 찾기와 회수 대상 읽기
+```
+None
+Traceback (most recent call last):
+  File "…/파일이름.py", line 3, in <module>
+    print(request["approver"])                                         # 없는 키를 [ ] 로 꺼내면 KeyError 오류가 나고 프로그램이 멈춘다
+KeyError: 'approver'
+```
+
+- `[ ]` 는 키가 없으면 오류(`KeyError`)가 나고 프로그램이 멈춥니다. `.get( )` 은 키가 없어도 멈추지 않고 `None`(값이 없다는 뜻의 값)을 꺼냅니다.
+- 이 문제의 단계 2에서는 네 장 모두 처리되어 `approver` 키가 있으므로 `None` 이 나오지 않습니다. 그래도 아직 처리하지 않은 요청서가 섞여 있을 때 멈추지 않도록 `.get` 을 씁니다.
+
+## 실습 2-2 · 승인·반려 함수와 재처리 차단
 
 **이런 상황이 있습니다**
 
-- `seoyeon` 은 영업 역할이라 정산 조회 권한이 없습니다. 그런데 오늘 18시까지 월말 정산 대조를 도와야 해서, 역할은 그대로 두고 이 사람에게만 정산 조회를 잠깐 허용했습니다. 이것이 예외입니다.
-  정산 포털은 요청을 받을 때마다 「이 사람에게 지금 유효한 예외가 있나?」를 확인해야 합니다. 그래서 그 확인을 하는 함수가 필요합니다.
-- 예외는 만들기만 하고 정리하지 않으면 계속 쌓입니다. 이미 만료됐거나, 퇴사한 사람에게 남은 예외를 찾아 「회수 리스트」를 만듭니다.
-- 현업의 임시 권한 기능(JIT · 저스트 인 타임, 필요한 때만 잠깐 접근을 주는 방식)도 요청이 올 때마다 이 확인을 하고, 리스트 점검은 매일 돌립니다.
+- **지금은**: 접수된 요청서 네 장이 `reviewing`(검토 중) 상태로 쌓여 있고, 보안 담당 `security_manager` 가 하나씩 보고 승인하거나 반려합니다. 사람이 하다 보면 같은 요청서를 두 번 처리하거나, 요청한 본인이 자기 요청을 처리하는 일이 생길 수 있습니다.
+- **그래서 만드는 것**: 승인 함수 `approve_request` 와 반려 함수 `reject_request` 입니다. 두 함수는 ① 검토 중인 요청서만 처리하고 ② 요청한 본인이 처리하려 하면 막고 ③ 처리하면 상태를 바꿔 누가 처리했는지 요청서에 적습니다.
+- **실행하면**: 본인 승인을 시험하는 한 줄과 처리 시도 여섯 줄이 나옵니다. 줄마다 성공 여부(`True` / `False`)와 이유가 붙고, 끝에 요청서 리스트의 상태와 처리한 사람이 나옵니다.
+- **현업에서는**: 승인 도구도 처리가 끝난 신청은 다시 처리하지 못하게 막고, 처리한 사람과 시각을 기록으로 남깁니다.
 
 **할 일**
 
-1. `config/exceptions.json` 에 예외 세 건을 붙여 넣고, 2.1 의 표를 보고 **4번 · 5번 예외 두 건을 직접** 씁니다.
-2. `exception_policy.py` 를 만들고 `find_exception` 본문을 직접 씁니다.
-3. `exercise2-2_run.py` 를 실행해서 <mark>여섯 건의 판정</mark>(단계 1: 판정)과 <mark>회수할 예외</mark>(단계 2: 점검)를 읽습니다.
+1. `req_review.py` 와 `exercise2-2_run.py` 두 파일을 만들고, `approve_request` 본문을 직접 쓰고 `reject_request` 는 남은 부분을 채웁니다.
+2. 실행해서 <mark>본인 승인 시험과 처리 여섯 건의 결과</mark>(단계 1: 처리)와 <mark>요청서 리스트</mark>(단계 2: 점검)을 읽습니다.
 
-**`config/exceptions.json`** — 아래 세 건을 붙여 넣습니다.
-
-```json
-[
-  {"id": 1, "user": "seoyeon", "permission": "SETTLE:QUERY", "expires": "2026-10-22 18:00", "reason": "월말 정산 대조 지원"},
-  {"id": 2, "user": "junho", "permission": "SALES:CHANGE", "expires": "2026-10-20 18:00", "reason": "영업 실적 정정"},
-  {"id": 3, "user": "dami", "permission": "SALES:QUERY", "expires": "2026-10-31 18:00", "reason": "인수인계"}
-]
-```
-
-- 4번 · 5번 예외는 `]` 줄 바로 위에, 한 건에 한 줄씩 넣습니다. 모양은 위의 세 건과 같고, 줄 앞에 공백 2칸을 둡니다: `{"id": 번호, "user": "…", "permission": "…", "expires": "…", "reason": "…"}`
-- 쉼표는 **마지막 줄만 빼고** 줄마다 붙습니다. 3번 줄 끝에 쉼표를 추가하고, 4번 줄 끝에도 쉼표를 쓰고, 마지막인 5번 줄 뒤에는 쓰지 않습니다. 끝부분은 이런 모양이 됩니다(`…` 자리는 직접 채웁니다).
-
-```
-  {"id": 3, …},
-  {"id": 4, …},
-  {"id": 5, …}
-]
-```
-
-- 저장한 뒤 `python -m json.tool config/exceptions.json`(맥북은 `python3 -m json.tool config/exceptions.json`)을 꼭 실행합니다. 실습 2-3 에서 이 파일을 읽으므로, 오류가 나면 쉼표를 고친 뒤 실습 2-3으로 갑니다.
-
-**`exception_policy.py`**
+**`req_review.py`**
 
 ```python
-import json                                                      # JSON 파일을 읽는 모듈을 불러온다
-from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
-
-with open("config/exceptions.json", encoding="utf-8") as exceptions_file:      # 예외 파일을 연다
-    EXCEPTIONS = json.load(exceptions_file)                                    # 예외 딕셔너리들의 리스트로 읽는다
-
-TIME_FORMAT = "%Y-%m-%d %H:%M"                                   # 만료 시각 문자열의 형식
-
-
-def find_exception(user, permission, now):                       # 사용자 · "자원:행위" · 지금 시각을 받는 함수
-    """now 시각에 유효한 예외가 있으면 (True, 예외 번호)를 리턴한다.
-    없으면 (False, None)을 리턴한다.
-    역할에 없는 권한을 임시로 허용해도 되는지 확인할 때 쓴다.
+def approve_request(request, approver):                          # 요청서와 승인자 이름을 받는 함수
+    """검토 중인 요청서를 승인한다.
+    보안 담당자가 권한 요청을 처리할 때 쓰고 (성공 여부, 이유)를 리턴한다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. EXCEPTIONS 에서 예외 exception 를 하나씩 꺼낸다
-    # 2.   exception 의 "user" 가 user 와 같고 "permission" 이 permission 과 같으면
-    # 3.     exception 의 "expires" 를 TIME_FORMAT 으로 시각으로 바꿔 expires 에 담는다
-    # 4.     now 가 expires 보다 앞이면 True 와 exception 의 "id" 를 리턴한다
-    # 5. 반복이 끝날 때까지 못 찾았으면 False, None 을 리턴한다
+    # 1. request["status"] 가 "reviewing" 이 아니면 False, "검토 중이 아님" 을 리턴한다
+    # 2. request["user"] 가 approver 와 같으면(요청한 사람이 스스로 처리하려는 것) False, "본인 요청은 처리할 수 없음" 을 리턴한다
+    # 3. request["status"] 를 "approved" 로 바꾼다
+    # 4. request["approver"] 를 approver 로 정한다
+    # 5. True, "승인" 을 리턴한다
+
+
+def reject_request(request, approver):                           # 요청서와 반려하는 사람 이름을 받는 함수
+    """검토 중인 요청서를 반려한다.
+    보안 담당자가 권한 요청을 거절할 때 쓰며 (성공 여부, 이유)를 리턴한다.
+    """
+    if request["status"] != "reviewing":                         # 검토 중이 아니면(이미 처리됐으면)
+        return False, "검토 중이 아님"                             # 바꾸지 않고 이유를 알린다
+    if request["user"] == approver:                              # 요청한 사람이 스스로 처리하려고 하면
+        return False, "본인 요청은 처리할 수 없음"                  # 바꾸지 않고 이유를 알린다
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 1. request["status"] 를 "rejected" 로 바꾼다
+    # 2. request["approver"] 를 approver 로 정한다
+    # 3. True, "반려" 를 리턴한다
 ```
 
-- `find_exception` 의 들여쓰기: 1번 `for` 는 4칸, 2번 `if` 는 8칸, 3번은 12칸, 4번의 `if` 는 12칸이고 그 안의 `return` 은 16칸, 5번은 다시 4칸입니다.
+- `approve_request` 의 본문은 함수 안이라 4칸으로 쓰고, `if` 아래 `return` 은 4칸 더(8칸) 들어갑니다. 1 · 2번 주석 밑에는 각각 `if` 줄과 그 안쪽 `return` 줄을 씁니다.
+- `reject_request` 는 `approve_request` 와 모양이 같고, 바뀌는 문자열(`"rejected"` · `"반려"`)만 다릅니다. 그래서 앞의 두 검사(`if` 두 개)는 미리 채워 두었고, 1 ~ 3번 주석 아래만 씁니다.
+- 채우기 전에 실행하면 `TypeError: cannot unpack non-iterable NoneType object` 오류가 납니다. `approve_request` 가 아무것도 리턴하지 않기 때문입니다.
 
-**`exercise2-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 단계 1(판정)은 `find_exception` 으로 여섯 건을 판정하고, 단계 2(점검)는 2.3 의 순서대로 예외 리스트를 하나씩 점검해 회수할 것을 찾습니다.
+**`exercise2-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 2-1의 `create_request` 로 요청서 네 장을 접수한 뒤, 단계 1은 본인 승인 시험 한 건과 처리 여섯 건을 넣고 단계 2는 요청서 리스트를 출력합니다.
 
 ```python
-import json                                                      # 사용자 파일을 읽는 데 쓴다
-from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
-from exception_policy import find_exception, EXCEPTIONS, TIME_FORMAT   # 판정 함수 · 예외 리스트 · 시각 형식을 불러온다
+from req_create import REQUESTS, create_request                  # 실습 2-1에서 만든 요청서 함수와 리스트를 불러온다
+from req_review import approve_request, reject_request           # 방금 만든 승인 · 반려 함수를 불러온다
 
-NOW = datetime.strptime("2026-10-22 14:00", TIME_FORMAT)         # 오늘 실습의 지금 시각(고정)
+INBOX = [                                                        # 접수에 성공하는 요청 네 건. (요청자, 자원, 행위, 희망 만료 시각, 이유, 접수 시각)
+    ("seoyeon", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 대조 지원", "2026-10-23 08:30"),
+    ("gaeun", "SALES", "QUERY", "2026-10-28 18:00", "감사 자료 대응", "2026-10-23 08:40"),
+    ("dami", "SALES", "QUERY", "2026-10-27 18:00", "인수인계 자료 확인", "2026-10-23 08:50"),
+    ("junho", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 확인", "2026-10-23 09:00"),
+]
+for user, resource, action, until, reason, received_at in INBOX:         # 요청을 하나씩 꺼내
+    create_request(user, resource, action, until, reason, received_at)   # 접수한다(결과는 쓰지 않는다)
 
-CHECKS = [                                                       # 단계 1 에서 판정할 (사용자, "자원:행위") 리스트
-    ("seoyeon", "SETTLE:QUERY"),                                 # 오늘 18시까지 예외
-    ("junho", "SALES:CHANGE"),                                   # 10/20 에 끝난 예외
-    ("dami", "SALES:QUERY"),                                     # 퇴사자에게 남은 예외
-    ("batch-night", "SALES:QUERY"),                              # 다음 날 아침까지 예외
-    ("gaeun", "SETTLE:QUERY"),                                   # 오늘 12시에 끝난 예외
-    ("seoyeon", "ACCOUNT:CHANGE"),                               # 예외가 없는 권한
+DECISIONS = [                                                    # 보안 담당(security_manager)이 내리는 처리 여섯 건. (요청 번호, 처리)
+    (1, "승인"),                                                 # seoyeon 의 정산 조회
+    (2, "반려"),                                                 # gaeun 의 영업 실적 조회
+    (3, "승인"),                                                 # dami 의 영업 실적 조회
+    (4, "승인"),                                                 # junho 의 정산 조회
+    (1, "승인"),                                                 # 이미 승인한 1번을 다시 승인해 본다
+    (2, "승인"),                                                 # 이미 반려한 2번을 승인해 본다
 ]
 
-print("--- 단계 1: 판정 - 지금 유효한 예외가 있나")                 # 단계 1 시작을 알리는 줄
-for user, permission in CHECKS:                                  # 하나씩 꺼낸다
-    print(user, permission, "->", find_exception(user, permission, NOW))   # 사용자 권한 -> (결과, 번호) 를 출력한다
+print("--- 단계 1: 처리 - 본인 요청 시험 한 건, 승인 · 반려 여섯 건을 처리한다")   # 단계 1 시작을 알리는 줄
+is_success, result = approve_request(REQUESTS[0], "seoyeon")             # 요청자 seoyeon 이 자기 요청 1번을 스스로 승인해 본다
+print(1, "본인 승인 ->", is_success, result)                              # 요청 번호 · 처리 -> 성공 여부 · 이유 를 출력한다
+for number, decision in DECISIONS:                               # 처리를 하나씩 꺼낸다
+    request = REQUESTS[number - 1]                               # 요청 번호로 요청서를 찾는다(번호는 1부터, 리스트 자리는 0부터)
+    if decision == "승인":                                       # 승인이면
+        is_success, result = approve_request(request, "security_manager")  # 승인 함수를 호출한다
+    else:                                                        # 반려면
+        is_success, result = reject_request(request, "security_manager")  # 반려 함수를 호출한다
+    print(number, decision, "->", is_success, result)                    # 요청 번호 · 처리 -> 성공 여부 · 이유 를 출력한다
 
-with open("config/users.json", encoding="utf-8") as users_file:           # Unit 1에서 만든 사용자 파일을 연다
-    USERS = json.load(users_file)                                         # 사용자 → 정보 딕셔너리로 읽는다
-
-print("--- 단계 2: 점검 - 예외 리스트에서 회수할 것")                 # 단계 2 시작을 알리는 줄
-for exception in EXCEPTIONS:                                           # 예외를 하나씩 꺼낸다
-    user_info = USERS[exception["user"]]                               # 그 예외를 받은 사용자의 정보 딕셔너리를 꺼낸다
-    expires = datetime.strptime(exception["expires"], TIME_FORMAT)     # 만료 시각을 시각으로 바꾼다
-    if NOW >= expires:                                           # 이미 만료됐으면
-        print("[회수] 만료됨", exception["id"], exception["user"], exception["permission"], exception["expires"])   # 만료된 예외를 출력한다
-    elif not user_info["employed"]:                              # 만료 전인데 재직 중이 아니면(`not` 은 참 · 거짓을 뒤집음)
-        print("[회수] 퇴사자", exception["id"], exception["user"], exception["permission"], exception["expires"])   # 퇴사자의 예외를 출력한다
-    else:                                                        # 둘 다 아니면
-        print("[유지]", exception["id"], exception["user"], exception["permission"], exception["expires"])   # 유지할 예외를 출력한다
+print("--- 단계 2: 점검 - 요청서 리스트")                            # 단계 2 시작을 알리는 줄
+for request in REQUESTS:                                         # 요청서를 하나씩 꺼낸다
+    print(request["id"], request["user"], request["status"], request.get("approver"))   # 번호 · 요청자 · 상태 · 처리한 사람을 출력한다
 ```
-
-- 예외를 세 건만 넣고 실행하면 4번 · 5번 예외가 없어서 `batch-night` · `gaeun` 이 `(False, None)` 으로 나오고 단계 2 도 세 줄만 나옵니다. 다섯 건을 모두 쓴 뒤의 결과를 읽습니다.
-- 채우기 전에 실행해도 오류 없이 실행됩니다. 단계 1 은 여섯 줄 모두 `None` 이고, 단계 2 는 예외 리스트만 읽으므로 그대로 나옵니다.
 
 **순서**
 
-1. **[VS Code]** 세 파일을 만들고 각각 붙여 넣습니다.
-   - 만드는 방법은 실습 2-1 의 순서 1번과 같습니다(VS Code 새 파일 아이콘). 만들 파일 이름은 차례로 `config/exceptions.json` · `exception_policy.py` · `exercise2-2_run.py` 입니다. 앞에 폴더가 붙은 이름은 폴더도 함께 만들어집니다. 붙여 넣을 내용은 위 코드 상자입니다.
-2. **[VS Code]** `config/exceptions.json` 에 4번 · 5번 예외를 직접 씁니다. 2.1 의 표에서 사용자 · 권한 · 만료 시각 · 이유를 글자 그대로 옮깁니다.
-3. **[VS Code]** `exception_policy.py` 의 `find_exception` 본문을 직접 씁니다. 2.2 의 문법 상자를 보고 씁니다.
-4. **[터미널]** 실행합니다.
+1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 세 가지 방법 중 **하나만** 고릅니다.
+   - **VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
+     1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
+     2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
+     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `req_review.py` · `exercise2-2_run.py` 입니다.
+     4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
+2. **[VS Code]** `req_review.py` 의 두 함수 본문을 직접 씁니다. 2.1 의 표와 그림을 보고 씁니다.
+3. **[터미널]** `pwd` 를 쳐서 마지막 폴더가 `access_control` 인지 확인한 뒤 실행합니다.
    ```bash
    python exercise2-2_run.py
    ```
    - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise2-2_run.py` 실행할 파일
-   맥북: `python3 exercise2-2_run.py`
-5. 출력은 두 단계입니다. 단계 1(판정)은 여섯 건의 판정(`(True, 번호)` 또는 `(False, None)`)이고, 단계 2(점검)는 예외 다섯 건마다 `[회수]` 또는 `[유지]` 입니다.
-6. **[보고서]** `report_u2.md` 의 `## 실습 2-2` 아래를 채웁니다.
-   - (가) 단계 1 출력 여섯 줄과 단계 2 출력 다섯 줄을 붙여 넣고, 회수할 예외의 번호를 적어 주세요.
-   - (나) [핵심 질문] 예외 신청서에 만료 시각이 비어 있어도 접수된다면 어떤 일이 쌓이고, 1년 뒤 감사에서 어떤 지적을 받을까요? 만료를 반드시 적게 하려면 시스템에 어떤 규칙을 넣겠습니까?
-   - (다) [핵심 질문] 서비스 계정 `batch-night` 의 예외 4번(영업 실적 조회, 분기 집계 시험)을 다음 분기에도 쓰게 기간을 연장해 달라는 요청이 왔습니다. 연장해 주기 전에 무엇을 확인하고, 연장한다면 어떤 조건을 붙이겠습니까? 연장하지 않는다면 대신 무엇을 제안하겠습니까?
+   - 맥북은 `python3 exercise2-2_run.py` 로 칩니다.
+4. 출력은 두 단계입니다. 단계 1은 본인 승인 시험 한 줄과 처리 여섯 건의 결과(여섯 줄)이고, 단계 2는 요청서 리스트(네 줄)입니다. 본인 승인 시험은 `False`, 처리 여섯 건은 앞의 네 건이 `True`, 뒤의 두 건이 `False` 로 나와야 합니다.
+5. **[보고서]** `report_u2.md` 의 `## 실습 2-2` 아래를 채웁니다.
+   - (가) 실행한 출력 전체를 붙여 넣고, 막힌 세 줄이 각각 왜 막혔는지 적어 주세요.
+   - (나) [핵심 질문] 이미 승인한 요청서를 다시 승인하지 못하게 막는 이유는 무엇인가요? 막지 않으면 어떤 일이 생길 수 있나요?
+   - (다) [핵심 질문] `approve_request` 에서 `request["user"] == approver` 검사를 뺀다면 어떤 위험이 생길까요? 요청자가 친구에게 대신 승인해 달라고 부탁하면 이 검사로는 막을 수 없습니다. 이런 경우를 막으려면 무엇이 더 필요할까요?
 
 ## 실습 2-2 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 예외 한 건 | 사용자 · 권한 · 만료 시각 · 이유 |
-| 문자열을 시각으로 | `datetime.strptime("2026-10-22 18:00", "%Y-%m-%d %H:%M")` |
-| 아직 유효한가 | `now < expires` (만료 시각 정각에는 이미 거부) |
-| 회수 리스트 | 만료됨 · 퇴사자 → [회수], 나머지 → [유지] |
+| 승인 · 반려는 검토 중일 때만 | `if request["status"] != "reviewing": return False, "검토 중이 아님"` |
+| 본인 요청 막기 | `if request["user"] == approver: return False, "본인 요청은 처리할 수 없음"` |
+| 상태 바꾸기 | `request["status"] = "approved"` (또는 `"rejected"`) |
+| 처리한 사람 남기기 | `request["approver"] = approver` |
+| 키가 없을 수 있을 때 꺼내기 | `request.get("approver")` |
 
 ---

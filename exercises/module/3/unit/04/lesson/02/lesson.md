@@ -1,224 +1,202 @@
 ---
 id: m3-u04-l02
-title: 실습 4-1 · 권한 요청서 만들기
+title: 실습 4-1 · 승인이 필요한 회수 계획 가려내기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
-  path: network/082_day03_am_request.md
-  mission_id: GichanSource.m3-1023-am-request
+  path: network/090_day05_am_revoke.md
+  mission_id: GichanSource.m3-1030-am-revoke
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 실습 4-1 · 권한 요청서 만들기
+# 실습 4-1 · 승인이 필요한 회수 계획 가려내기
 
-## 목표: 요청서 접수 함수
+## 목표: 승인 상태가 적힌 회수 계획
 
-> **오늘 들어온 일**
+> **이번 실습에 들어온 일**
 >
-> A사 보안 담당이 보낸 메시지: 「어제 18시에 끝난 정산 예외가 오늘도 필요해서, seoyeon 이 저에게 메신저로 다시 부탁했습니다. 이렇게 메신저나 말로 받으면 나중에 확인할 기록이 남지 않습니다. 요청을 요청서 한 장으로 적어 리스트에 모아 주세요. 정보가 빠졌거나 잘못된 요청은 받지 않게 해 주세요.」
-> - 이 실습에서 하는 일: 요청 하나를 요청서(딕셔너리)로 만들어 리스트에 추가하는 함수 `create_request` 를 직접 씁니다. 실행해서 접수된 요청과 접수되지 않은 요청을 읽습니다.
-> - 끝나면 쓰는 것: 보고서 (가)~(나) 답
+> A사 관제 담당이 보낸 메시지:
+> 「회수할 8건 가운데에는 데이터를 바꾸는 쓰기 권한(`CHANGE`)도 있습니다. 쓰기 권한은 잘못 없애면 영향이 크니 보안 책임자의 승인을 받고 회수하고 싶습니다. 조회 같은 일반 권한 한 건은 바로 회수해도 됩니다.
+>
+> 다만 퇴사한 사람의 역할을 비우면 그 사람이 역할로 받던 권한이 모두 없어집니다. 이렇게 권한이 2개 이상 사라지는 회수는 조회 권한이어도 승인을 받아 주세요. 8건 가운데 어느 것이 승인 대상인지 가려서, 계획마다 승인 상태를 적어 주세요. 보안 책임자가 승인한 것과 아직 기다리는 것도 구분해 주세요.」
+> - **왜 중요한가**: 중요한 권한을 한 사람이 혼자 정하면 실수나 부정이 생길 수 있습니다. 승인 상태가 적혀 있으면 어느 회수가 승인을 받았고 어느 회수가 아직 기다리는지 바로 알 수 있습니다.
 
-> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「문제」 전까지는 이 실습의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
+## 왜 승인이 필요한가
 
-## 왜 요청을 요청서로 받는가
+1. 도전 4-1의 계획은 8건 모두 같은 방식으로 다룹니다. 하지만 권한마다 중요도가 다릅니다. 데이터를 바꾸는 권한(`CHANGE`)은 잘못 없애면 그 권한으로 일하던 사람의 업무가 멈추고 실제 서비스에서는 되돌리기도 어렵습니다.
+2. 그래서 승인이 필요한 경우를 둘로 정합니다. ① **민감한 권한**(sensitive · 센서티브, 잘못 없애면 피해가 큰 권한)인 경우입니다. ② 한 번의 회수로 권한이 2개 이상 사라지는 경우(영향 2건 이상)입니다. 예를 들어 퇴사한 dami 의 역할을 비우면 dami 가 그 역할로 받던 권한 2개가 모두 없어집니다. 이런 경우에는 보안 책임자의 승인을 받고, 그 밖의 일반 권한 한 건은 바로 회수합니다.
+3. 이 실습에서는 계획마다 승인이 필요한지, 필요하다면 승인됐는지를 **승인 상태**로 적습니다. 실제로 지우는 일은 실습 4-2에서 합니다.
 
-> **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
+## 2.1 승인이 필요한 경우와 승인 상태
 
-1. 메신저나 말로 받은 요청은 기록이 남지 않습니다. 승인 기준도 사람마다 다르고, 받아 놓고 회수를 잊습니다.
-2. 요청을 **요청서**(request form · 리퀘스트 폼)라는 정해진 모양의 기록으로 받으면, 필요한 정보가 빠진 요청은 접수 단계에서 걸러 낼 수 있습니다.
-3. 이번 Unit의 전체 흐름은 이렇습니다. 실습 4-1에서 요청서를 **접수**하고, 실습 4-2에서 **승인 · 반려**하고, 실습 4-3에서 정책으로 한 번 더 확인한 뒤 Unit 2의 **예외 권한을 부여**합니다. 부여된 예외는 Unit 2에서 만든 `evaluate_access` 가 그대로 허용으로 판정합니다.
+- 승인이 필요한 계획은 둘 중 하나입니다.
+  - ① `config/sensitive.json` 에 적힌 민감한 권한: junho 의 `SALES:CHANGE`(예외 2번), dami 의 `SALES:CHANGE`(역할 해제) 두 건입니다.
+  - ② 영향(`impact`)이 2건 이상: dami 의 역할 해제 두 건(영향 2건)입니다.
+  - 겹치는 것을 한 번만 세면 승인이 필요한 계획은 모두 3건입니다.
+- 민감한 권한 리스트는 「자원:행위」 문자열의 리스트입니다.
+  - 쓰기 권한인 `SALES:CHANGE` · `ACCOUNT:CHANGE` · `SETTLE:CHANGE` 세 개를 적었습니다.
+  - `QUERY` 는 조회, `CHANGE` 는 변경(쓰기)입니다.
+- 예외 1 · 2 · 4 · 5번은 만료 시각이 이미 지났습니다(Unit 3의 점검 결과에 「만료된 예외」로 나왔습니다).
+  - 접근은 이미 막혀 있지만 예외 기록이 남아 있어서 회수 대상입니다.
+  - 3번은 아직 유효하지만 dami 가 퇴사해서 쓸 수 없습니다.
+- 승인 요청서는 따로 만들지 않고, 계획 한 건마다 `approval` 키에 **승인 상태**를 적습니다. 값은 아래 세 가지 중 하나입니다.
 
-## 1.1 요청서와 상태
+| `approval` 값 | 뜻 |
+|---|---|
+| `승인 불필요` | 승인 없이 바로 회수할 수 있는 계획 |
+| `승인됨` | 승인이 필요한데 보안 책임자가 승인함 |
+| `승인 대기` | 승인이 필요한데 아직 결정이 없음 |
 
-> **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
+- 보안 책임자가 승인할지는 사람이 정하고, 그 결정은 `decisions` 딕셔너리로 주어집니다.
+  - 예: `{"dami:SALES:QUERY": "승인"}` 처럼 키는 「사용자:권한」 문자열입니다. 여기에 없는 계획은 아직 결정하지 않은 것입니다.
+  - dami 의 `SALES:QUERY` 계획은 둘(역할 해제, 예외 3번 삭제)이지만 결정 키 `dami:SALES:QUERY` 는 같습니다.
+  - 이 키는 승인이 필요한 계획에서만 찾는데, 이번 데이터에서는 역할 해제 쪽만 승인이 필요합니다.
+- **직접 쓰는 곳은 세 함수**입니다. 판단이 필요한 함수마다 1 ~ 6줄만 쓰고, 나머지는 미리 채웠습니다.
+  - `plan_key`(1번): 계획에서 「사용자:권한」 문자열을 만듭니다(승인 결정을 찾는 키).
+  - `needs_approval`(2 ~ 4번): 민감한 권한이거나 영향이 2건 이상이면 `True` 를 리턴합니다.
+  - `mark_approvals`(5 ~ 10번): 계획마다 승인 상태(`approval`)를 정합니다.
+- **미리 채운 함수**
+  - `load_sensitive`: 민감한 권한 파일을 읽습니다(판단이 없는 읽기라 미리 채움).
 
-- **요청서**: 요청 한 건을 적은 딕셔너리. 접수할 때 키 아홉 개를 씁니다(아래 표는 `resource` · `action` 을 한 행에 묶어 여덟 행입니다). 실습 4-2에 `approver` 키가, 실습 4-3에 `exception_id` 키가 더 생깁니다.
-- **키**(key · 키): 딕셔너리에서 값을 찾는 이름입니다. `request["status"]` 에서 `"status"` 가 키이고, 그 키에 들어 있는 `"reviewing"` 이 값입니다.
-- **이력**: 무슨 일이 어떤 순서로 있었는지 남겨 둔 기록. 요청서에 처리 결과를 남기면 나중에 되짚어 볼 수 있습니다.
-- **상태**(status · 스테이터스): `status` 키의 값으로, 그 요청서가 지금 어디까지 처리됐는지를 적습니다. 정해 둔 문자열 중 하나만 씁니다.
+<figure class="page-figure"><img src="assets/f01.svg" alt="mark_approvals 는 계획마다 승인 필요 여부와 결정을 보고 승인 상태 세 가지 중 하나를 적는다"></figure>
 
-| 키 | 뜻 | 값의 예 |
-|---|---|---|
-| `id` | 요청 번호 | `1` |
-| `user` | 요청한 사람 | `"seoyeon"` |
-| `resource` · `action` | 달라는 권한의 자원과 행위 | `"SETTLE"` · `"QUERY"` |
-| `permission` | 위 둘을 `자원:행위` 로 합친 문자열 | `"SETTLE:QUERY"` |
-| `until` | 요청자가 바라는 만료 시각 | `"2026-10-27 18:00"` |
-| `reason` | 요청 이유 | `"정산 대조 지원"` |
-| `requested_at` | 접수한 시각 | `"2026-10-23 08:30"` |
-| `status` | 처리 상태 | `"reviewing"` |
-
-| 상태 문자열 | 뜻 | 쓰이는 실습 |
-|---|---|---|
-| `reviewing` | 검토 중. 접수 직후의 상태 | 실습 4-1 |
-| `approved` · `rejected` | 승인됨 · 반려됨(검토한 사람이 거절해서 돌려보냄) | 실습 4-2 |
-| `granted` | 예외 권한이 부여됨 | 실습 4-3 |
-
-<figure class="page-figure"><img src="assets/f01.svg" alt="요청서는 reviewing 에서 승인되면 approved, 반려되면 rejected, 정책 확인을 통과하면 granted 가 됩니다"></figure>
-
-## 1.2 접수할 수 없는 요청
-
-> **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
-
-- 접수 단계에서는 세 가지만 걸러 냅니다. 사용자 파일에 없는 이름, 이유가 비어 있는 요청, 그리고 희망 만료 시각(`until`)이 접수 시각보다 늦지 않은(이미 지난) 요청입니다.
-- 퇴사한 사람이나 이미 권한이 있는 사람의 요청은 접수 단계에서 걸러 내지 않습니다. 그것은 실습 4-3의 부여 단계에서 정책 코드가 확인합니다.
-- 함수가 받는 접수 시각 `received_at` 은 요청서의 `requested_at` 키의 값으로 그대로 들어갑니다.
-- `until` 이 비었는지, 너무 먼 미래인지는 접수 단계에서 확인하지 않습니다.
-
-<figure class="page-figure"><img src="assets/f02.svg" alt="create_request 는 사용자 · 이유 · 만료 시각을 차례로 검사하고, 모두 통과하면 요청서를 추가합니다"></figure>
-
-**문법 상자 — 요청서(딕셔너리)를 만들 때 쓰는 모양**
-
-**① 키가 많은 딕셔너리는 괄호 `{ }` 안에서 줄을 바꿔 쓸 수 있습니다. 한 문장입니다**
-
-```python
-request = {"id": 1, "user": "seoyeon",                            # 요청서 한 장의 값을 묶는다(여러 줄)
-           "status": "reviewing"}                                  # 괄호 안에서는 줄을 바꿔 써도 한 문장이다
-print(request["status"])                                           # 위와 같은 값이 나온다
-```
-
-실행 결과:
-
-```
-reviewing
-```
-
-**② 문자열이 비어 있는지 `== ""` 로 묻기**
-
-```python
-reason = ""                                                        # 비어 있는 문자열
-print(reason == "")                                                # 비어 있는지 묻는다
-
-reason = "정산 확인"                                                 # 문자열이 있는 이유
-print(reason == "")                                                # 비어 있지 않으면 거짓이다
-```
-
-실행 결과:
-
-```
-True
-False
-```
-
-**③ 같은 형식의 시각 문자열은 `<=` · `>` 로 비교해도 시각 순서와 같습니다**
-
-```python
-print("2026-10-27 18:00" > "2026-10-23 09:15")                    # 같은 형식의 문자열은 앞에서부터 비교한다. 늦은 시각이 더 크다
-print("2026-10-22 18:00" <= "2026-10-23 09:15")                   # 어제 시각은 오늘 접수 시각보다 작으므로 참이다
-```
-
-실행 결과:
-
-```
-True
-True
-```
-
-- Unit 2에서는 시각 문자열을 `strptime` 으로 시각으로 바꿔 비교했습니다. 오늘의 `until` 과 `received_at` 은 `"2026-10-23 09:15"` 처럼 자릿수까지 같은 형식이라, 문자열 그대로 비교해도 같은 결과가 나옵니다.
-- `==` 는 「같은가」를 묻는 비교이고, `=` 는 값을 담는 대입입니다. `if` 의 조건에는 `==` 를 씁니다.
-
-> **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
-
-## 실습 4-1 · 요청서 모으고 접수 불가 걸러 내기
+## 실습 4-1 · 승인 필요 여부와 승인 상태 적기
 
 **이런 상황이 있습니다**
 
-- **지금은**: 직원이 메신저로 「정산 조회 권한을 주세요」라고 부탁하면, 보안 담당이 그 메시지를 찾아서 처리합니다. 메시지가 여기저기 흩어져 있어서 누가 · 언제 · 무엇을 부탁했는지 한곳에서 볼 수 없습니다.
-- **그래서 만드는 것**: 요청 하나를 **요청서**(딕셔너리) 한 장으로 적어 리스트 `REQUESTS` 에 모으는 함수 `create_request` 입니다. 정보가 잘못된 요청은 리스트에 넣지 않고 이유를 알려 줍니다.
-- **실행하면**: 들어온 요청 일곱 건이 하나씩 접수가 시도됩니다. 줄마다 「접수됨, 요청 번호 …」 또는 「접수 안 됨: 이유」가 나오고, 끝에 접수된 요청서 리스트가 나옵니다.
-- **현업에서는**: 권한 신청 도구도 요청자 · 시각 · 이유가 없는 신청은 받지 않고, 받은 신청마다 번호를 붙여 기록으로 남깁니다.
+- **지금은**: 도전 4-1의 계획 8건이 모두 같은 리스트에 섞여 있습니다. 쓰기 권한처럼 승인이 필요한 것과 바로 회수해도 되는 것을 담당자가 눈으로 가려야 합니다.
+- **그래서 만드는 것**: `mark_approvals` 입니다.
+  - 승인이 필요 없는 계획은 「승인 불필요」, 승인이 필요하고 보안 책임자가 승인하기로 한 계획은 「승인됨」, 승인이 필요한데 아직 결정이 없는 계획은 「승인 대기」로 `approval` 키에 적습니다.
+- **실행하면**: 단계 1은 계획 8건의 승인 상태를 출력하고, 단계 2는 승인 상태별 건수를 출력합니다.
+- **현업에서는**: 접근 관리 도구도 중요한 권한의 변경은 승인자를 거치고, 승인 여부를 기록으로 남깁니다.
 
 **할 일**
 
-1. `req_create.py` 와 `exercise4-1_run.py` 두 파일을 만들고, `create_request` 본문(함수 안에 들여써서 채우는 줄들)을 직접 씁니다.
-2. 실행해서 <mark>접수된 요청 네 건과 접수되지 않은 세 건</mark>(단계 1: 접수)과 <mark>요청서 리스트</mark>(단계 2: 점검)을 읽습니다.
+1. `config/sensitive.json` · `revoke_approve.py` · `exercise4-1_run.py` 세 파일을 만들고, `plan_key` · `needs_approval` · `mark_approvals` 에서 직접 쓰는 곳 세 군데를 씁니다.
+2. 실행해서 <mark>승인 상태</mark>(단계 1: 승인 상태)와 <mark>승인 상태별 건수</mark>(단계 2: 집계)를 읽습니다.
 
-**`req_create.py`**
+**`config/sensitive.json`** — 그대로 붙여 넣습니다. 민감한 권한 리스트입니다. `access_control` 안의 `config` 폴더에 만듭니다.
 
-```python
-from rbac import USERS                                           # Unit 1에서 만든 사용자 딕셔너리를 불러온다
-
-REQUESTS = []                                                    # 접수한 요청서를 모아 두는 리스트(프로그램이 끝나면 사라진다)
-
-
-def create_request(user, resource, action, until, reason, received_at):  # 요청자 · 자원 · 행위 · 희망 만료 시각 · 이유 · 접수 시각을 받는 함수
-    """권한 요청서를 만들어 REQUESTS 에 넣고 (True, 요청서)를 리턴한다.
-    직원이 권한을 요청할 때 쓰며, 접수할 수 없으면 (False, 이유)를 리턴한다.
-    """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. user 가 USERS 에 없으면 False, "등록되지 않은 사용자" 를 리턴한다
-    # 2. reason 이 빈 문자열("")이면 False, "이유가 없음" 을 리턴한다
-    # 3. until 이 received_at 과 같거나 앞서면(until <= received_at) False, "만료 시각이 이미 지났음" 을 리턴한다
-    # 4. len(REQUESTS) + 1 을 request_id 에 담는다 (다음 요청 번호)
-    # 5. f"{resource}:{action}" 을 permission 에 담는다
-    # 6. 딕셔너리 request 를 만든다. 키 아홉 개의 이름은 1.1 의 표와 같고, 값은 이렇게 정한다:
-    #    "id" 는 request_id, "permission" 은 permission, "requested_at" 은 received_at,
-    #    "status" 는 "reviewing", 나머지 다섯 키(user · resource · action · until · reason)는 같은 이름의 값을 그대로 넣는다
-    # 7. REQUESTS 리스트 끝에 request 를 추가한다
-    # 8. True, request 를 리턴한다
+```json
+["SALES:CHANGE", "ACCOUNT:CHANGE", "SETTLE:CHANGE"]
 ```
 
-- 본문은 모두 함수 안이라 4칸으로 쓰고, `if` 아래 `return` 은 4칸 더(8칸) 들어갑니다. 1 · 2 · 3번 주석 밑에는 각각 `if` 줄과 그 안쪽 `return` 줄을 씁니다. 6번의 딕셔너리는 `{ }` 안이라 `,` 뒤에서 줄을 바꿔도 되고, 이어지는 줄의 들여쓰기 칸 수는 몇 칸이든 됩니다.
-- `status` 의 값은 따옴표를 붙인 문자열 `"reviewing"` 입니다. 1.1 의 표와 철자가 같아야 실습 4-2가 읽습니다.
-- 채우기 전에 실행하면 `TypeError: cannot unpack non-iterable NoneType object` 오류가 납니다. 함수가 아무것도 리턴하지 않아 `is_success, result` 로 나눠 받지 못하기 때문입니다. 본문을 채운 뒤에 실행합니다.
-
-**`exercise4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 단계 1은 요청 일곱 건을 `create_request` 로 접수하고, 단계 2는 접수된 요청서 리스트를 출력합니다.
+**`revoke_approve.py`**
 
 ```python
-from req_create import REQUESTS, create_request                  # 방금 만든 요청서 함수와 리스트를 불러온다
+from config_loader import load_json                              # Unit 1에서 만든 안전한 읽기 함수를 불러온다
 
-INBOX = [                                                        # 들어온 요청 일곱 건. (요청자, 자원, 행위, 희망 만료 시각, 이유, 접수 시각)
-    ("seoyeon", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 대조 지원", "2026-10-23 08:30"),           # 어제 끝난 예외가 아직 필요함
-    ("gaeun", "SALES", "QUERY", "2026-10-28 18:00", "감사 자료 대응", "2026-10-23 08:40"),              # 계정 관리자의 영업 실적 조회
-    ("dami", "SALES", "QUERY", "2026-10-27 18:00", "인수인계 자료 확인", "2026-10-23 08:50"),           # 접수 단계에서는 걸러지지 않는 요청
-    ("junho", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 확인", "2026-10-23 09:00"),                  # 접수 단계에서는 걸러지지 않는 요청
-    ("hana", "SALES", "QUERY", "2026-10-27 18:00", "신규 업무 지원", "2026-10-23 09:05"),               # 접수되는지 실행해서 확인
-    ("seoyeon", "ACCOUNT", "QUERY", "2026-10-27 18:00", "", "2026-10-23 09:10"),                        # 접수되는지 실행해서 확인
-    ("gaeun", "ACCOUNT", "QUERY", "2026-10-22 18:00", "어제 적은 요청서 재사용", "2026-10-23 09:15"),   # 접수되는지 실행해서 확인
-]
 
-print("--- 단계 1: 접수 - 요청 일곱 건을 하나씩 넣는다")             # 단계 1 시작을 알리는 줄
-for user, resource, action, until, reason, received_at in INBOX:         # 요청을 하나씩 꺼낸다
-    is_success, result = create_request(user, resource, action, until, reason, received_at)   # 접수를 시도하고 결과를 받는다
-    if is_success:                                                       # 접수됐으면
-        print(user, resource, action, "-> 접수됨, 요청 번호", result["id"])   # 요청 번호를 출력한다
-    else:                                                        # 접수되지 않았으면
-        print(user, resource, action, "-> 접수 안 됨:", result)    # 이유를 출력한다
+def load_sensitive(path):                                        # 민감한 권한 파일 경로를 받는 함수
+    """민감한 권한 파일을 읽어 「자원:행위」 리스트로 리턴하고, 없거나 깨졌으면 빈 리스트를 리턴한다.
+    승인이 필요한 회수를 가릴 때 쓴다.
+    """
+    return load_json(path, [])                                   # 안전하게 읽어 그대로 리턴한다
 
-print("--- 단계 2: 점검 - 요청서 리스트")                            # 단계 2 시작을 알리는 줄
-for request in REQUESTS:                                         # 요청서를 하나씩 꺼낸다
-    print(request["id"], request["user"], request["permission"], request["status"])   # 번호 · 요청자 · 권한 · 상태를 출력한다
+
+def plan_key(plan):                                              # 계획 한 건을 받는 함수
+    """「사용자:권한」 문자열(예: "dami:SALES:CHANGE")을 리턴한다.
+    계획에 맞는 승인 결정을 찾는 키로 쓴다.
+    """
+    user = plan["user"]                                          # 계획의 사용자
+    permission = plan["permission"]                              # 계획의 권한
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 1. f"{user}:{permission}" 을 리턴한다 (사용자와 권한을 : 로 이어 붙인 문자열)
+
+
+def needs_approval(plan, sensitive):                             # 계획 한 건과 민감한 권한 리스트를 받는 함수
+    """민감한 권한이거나 영향이 2개 이상이면 True, 아니면 False 를 리턴한다.
+    승인이 필요한 회수를 가려낼 때 쓴다.
+    """
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 2. plan["permission"] 이 sensitive 안에 있는지(in)를 is_sensitive 에 담는다
+    # 3. plan["impact"] 가 2 이상인지(>=)를 is_big_impact 에 담는다
+    # 4. is_sensitive 이거나 is_big_impact 이면 True 가 되도록 리턴한다 (or)
+
+
+def mark_approvals(plans, sensitive, decisions):                 # 계획 리스트 · 민감한 권한 리스트 · 승인 결정 딕셔너리를 받는 함수
+    """계획마다 "approval" 키(승인 불필요 · 승인됨 · 승인 대기)를 적은 복사본 리스트를 리턴한다.
+    어떤 회수가 보안 책임자의 승인을 기다려야 하는지 가를 때 쓴다.
+    """
+    results = []                                                 # 결과를 담을 빈 리스트
+    for plan in plans:                                           # 계획을 하나씩 꺼낸다
+        item = plan.copy()                                       # 원래 계획은 바꾸지 않고 복사한다
+        key = plan_key(plan)                                     # 승인 결정을 찾는 「사용자:권한」 문자열을 만든다
+        decision = decisions.get(key)                            # 보안 책임자의 결정을 꺼낸다(결정이 없으면 None)
+        needs = needs_approval(plan, sensitive)                  # 승인이 필요한 계획인지 알아본다(True 또는 False)
+        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+        # 5. needs 가 거짓이면 (not)
+        # 6.   item["approval"] 을 "승인 불필요" 로 정한다
+        # 7. 그렇지 않고 decision 이 "승인" 이면 (elif)
+        # 8.   item["approval"] 을 "승인됨" 으로 정한다
+        # 9. 그렇지 않으면 (else)
+        # 10.  item["approval"] 을 "승인 대기" 로 정한다
+        results.append(item)                                     # 승인 상태를 적은 복사본을 결과 리스트에 추가한다
+    return results                                               # 결과 리스트를 리턴한다
+
+```
+
+- 직접 쓰는 곳은 세 함수이고, 모두 함수 안이라 앞에 공백 4개를 기본으로 넣습니다(Tab 키 한 번).
+  - `plan_key` · `needs_approval` 안: 1 ~ 4번은 모두 4개입니다.
+  - `mark_approvals` 안: 미리 채운 `for` 안쪽이라 `if` · `elif` · `else` 는 8개이고, 그 안쪽 `item["approval"] = …` 는 4개 더(12개)입니다. 위의 `key` · `decision` · `needs` 는 미리 채운 줄입니다.
+  - 나머지 줄은 미리 채워 두었으니 그대로 둡니다.
+- 5번의 `not needs` 는 「승인이 필요하지 않으면」입니다(`needs` 는 승인이 필요한지의 참 · 거짓). `not` 은 참과 거짓을 뒤집습니다.
+- 채우기 전에 실행하면 `KeyError: 'approval'` 오류가 납니다. 승인 상태(`approval`)를 아직 적지 않았기 때문입니다.
+
+**`exercise4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 도전 4-1의 계획을 만든 뒤 `mark_approvals` 로 승인 상태를 정하고 두 단계로 출력합니다.
+
+```python
+from rbac import USERS, ROLES                                    # Unit 1에서 만든 사용자 · 역할 딕셔너리를 불러온다
+from revoke_input import load_to_revoke                          # Unit 3의 점검 결과(회수 대상)를 만드는 함수를 불러온다
+from revoke_plan import plan_revocation                          # 도전 4-1에서 만든 회수 계획 함수를 불러온다
+from revoke_approve import load_sensitive, mark_approvals        # 방금 만든 승인 함수를 불러온다
+
+DECISIONS = {"dami:SALES:QUERY": "승인", "dami:SALES:CHANGE": "승인"}  # 보안 책임자의 결정. 여기 없는 계획은 아직 결정하지 않은 것이다
+
+to_revoke = load_to_revoke()                                     # Unit 3에서 점검한 회수 대상을 만든다
+plans = plan_revocation(to_revoke, USERS, ROLES)                 # 도전 4-1과 같은 방법으로 회수 계획을 세운다
+sensitive = load_sensitive("config/sensitive.json")              # 민감한 권한 리스트를 읽는다
+results = mark_approvals(plans, sensitive, DECISIONS)            # 계획마다 승인 상태를 적는다
+
+print("--- 단계 1: 승인 상태 - 계획 8건")                        # 단계 1 시작을 알리는 줄
+for item in results:                                             # 결과를 하나씩 꺼낸다
+    print(item["user"], item["permission"], "<-", item["source"], "|", item["method"], "| 영향", item["impact"], "건 |", item["approval"])  # 사용자 · 권한 <- 출처 | 방법 | 영향 | 승인 상태를 출력한다
+
+print("--- 단계 2: 집계 - 승인 상태별 건수")                     # 단계 2 시작을 알리는 줄
+counts = {}                                                      # 승인 상태 → 건수를 담을 빈 딕셔너리
+for item in results:                                             # 결과를 하나씩 꺼낸다
+    count_key = item["approval"]                                 # 세는 기준이 되는 키
+    old_count = counts.get(count_key, 0)                         # 그 키의 지금까지 센 수(처음이면 0)
+    counts[count_key] = old_count + 1                            # 1 늘려서 다시 적는다
+print(counts)                                                    # 승인 상태별 건수를 출력한다
 ```
 
 **순서**
 
-1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 세 가지 방법 중 **하나만** 고릅니다.
-   - **VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
-     1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
-     2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `req_create.py` · `exercise4-1_run.py` 입니다.
-     4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
-2. **[VS Code]** `req_create.py` 의 `create_request` 본문을 직접 씁니다. 1.2 의 그림과 문법 상자를 보고 씁니다.
-3. **[터미널]** `pwd` 를 쳐서 마지막 폴더가 `access_control` 인지 확인한 뒤 실행합니다.
+1. **[VS Code]** 파일 `config/sensitive.json` · `revoke_approve.py` · `exercise4-1_run.py` 를 만들어 위 코드를 붙여 넣습니다. 
+   - VS Code: `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력합니다(`config/…` 이름은 이 폴더를 선택한 채 입력하면 `config` 폴더 안에 만들어집니다).
+2. **[터미널]** `ls config` 로 `sensitive.json` 이 `users.json` 과 같은 `config` 폴더에 있는지 보고, `python -m json.tool config/sensitive.json`(맥북은 `python3`)로 내용이 정상인지 확인합니다.
+   - 깨진 채 두면 민감한 권한 리스트를 읽지 못해 junho 의 `SALES:CHANGE` 가 「승인 불필요」로 나오고, 승인이 필요한 계획이 3건에서 2건으로 줄어듭니다.
+3. **[VS Code]** `revoke_approve.py` 의 `plan_key` · `needs_approval` · `mark_approvals` 에서 직접 쓰는 곳 세 군데를 씁니다. 2.1 의 표와 그림을 보고 씁니다.
+4. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
    ```bash
+   pwd
    python exercise4-1_run.py
    ```
-   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise4-1_run.py` 실행할 파일
-   - 맥북은 `python3 exercise4-1_run.py` 로 칩니다.
-4. 출력은 두 단계입니다. 단계 1은 요청 일곱 건의 접수 결과(일곱 줄)이고, 단계 2는 접수된 요청서 리스트(네 줄)입니다.
-5. **[보고서]** `report_u4.md` 의 `## 실습 4-1` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
-   - (가) 실행한 출력 전체를 붙여 넣고, 접수되지 않은 세 건이 각각 `create_request` 의 어느 `if` 조건 때문에 접수되지 않았는지 적어 주세요.
-   - (나) [핵심 질문] 요청서의 `until`(희망 만료 시각)은 요청자가 직접 적습니다. 요청자가 적은 기간을 그대로 믿고 승인해도 될까요? 승인하기 전에 확인할 것을 두 가지 이상 적어 주세요.
+5. 출력은 두 단계입니다. 단계 1은 `계획 8건` 제목 줄과 계획 여덟 줄(줄마다 승인 상태), 단계 2는 승인 상태별 건수 딕셔너리 한 줄입니다.
+6. **[보고서]** `report_u4.md` 의 `## 실습 4-1` 아래를 채웁니다.
+   - (가) 실행한 출력 전체를 붙여 넣고, 「승인 불필요」 · 「승인됨」 · 「승인 대기」가 각각 몇 건인지, 승인 대기인 계획이 무엇인지 적어 주세요.
+   - (나) [핵심 질문] 권한을 없애는 일인데 왜 쓰기 권한 같은 민감한 권한은 승인을 받게 할까요? 조회 같은 일반 권한 한 건은 바로 회수해도 되는 이유도 적어 주세요.
+   - (다) [핵심 질문] junho 의 `SALES:CHANGE`(예외 2번) 계획은 승인 대기입니다. 실습 4-2에서 이 계획은 어떻게 처리될지 예상해서 적고, 승인이 오래 나지 않으면 어떤 문제가 생길지도 적어 주세요.
 
 ## 실습 4-1 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 요청서 한 장 | 딕셔너리. 키는 `id` · `user` · `resource` · `action` · `permission` · `until` · `reason` · `requested_at` · `status` |
-| 다음 요청 번호 | `len(REQUESTS) + 1` |
-| 접수 못 하는 요청 | 사용자 파일에 없음 · 이유가 `""` · `until <= received_at` → `(False, 이유)` |
-| 접수한 요청의 상태 | `"reviewing"` |
-| 리스트에 추가하기 | `REQUESTS.append(request)` |
+| 결정을 찾는 키 | `return f"{user}:{permission}"` (`plan_key` 안) |
+| 승인이 필요한지 | `is_sensitive = plan["permission"] in sensitive` · `is_big_impact = plan["impact"] >= 2` → `return is_sensitive or is_big_impact` (`needs_approval` 안) |
+| 승인이 필요 없을 때 | `if not needs:` → `item["approval"] = "승인 불필요"` |
+| 결정이 「승인」인지 | `elif decision == "승인":` → `item["approval"] = "승인됨"` |
+| 그 밖(결정 없음) | `else:` → `item["approval"] = "승인 대기"` |
 
 ---

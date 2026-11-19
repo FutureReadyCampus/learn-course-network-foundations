@@ -1,46 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 590" role="img">
-<title>지난 기록을 새 규칙으로 다시 판정하고, audit 파일은 두 단계로 결과를 낸다</title>
-<desc>조회 15건의 지난 기록을 check_permission 으로 한 건씩 다시 판정해, 막아야 할 것이 막히는지와 정상 업무가 막히지 않는지를 확인한다. exercise1-3_audit.py 의 단계 1은 기록마다 판정해 건수를 세고 쓴 권한을 모으며, 단계 2는 역할마다 쓴 적 없는 권한을 출력한다.</desc>
-<defs><marker id="a-f02-u1l4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="28" font-size="18" fill="#292929" text-anchor="start" font-weight="700">기록 재판정(replay)</text>
-<rect x="20" y="44" width="200" height="90" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="120.0" y="73.6" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">지난 기록</text>
-<text x="120.0" y="93.9" font-size="14" fill="#292929" text-anchor="middle">(조회 15건,</text>
-<text x="120.0" y="114.2" font-size="14" fill="#292929" text-anchor="middle">이미 일어난 일)</text>
-<polyline points="220,89 248,89" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f02-u1l4)"/>
-<rect x="250" y="44" width="210" height="90" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="355.0" y="73.6" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">새 규칙으로 판정</text>
-<text x="355.0" y="93.9" font-size="14" fill="#292929" text-anchor="middle">(check_permission 으로</text>
-<text x="355.0" y="114.2" font-size="14" fill="#292929" text-anchor="middle">한 건씩 다시)</text>
-<polyline points="460,89 488,89" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f02-u1l4)"/>
-<rect x="490" y="44" width="210" height="90" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="595.0" y="73.6" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">확인할 두 가지</text>
-<text x="595.0" y="93.9" font-size="14" fill="#292929" text-anchor="middle">① 막아야 할 것이 막히나</text>
-<text x="595.0" y="114.2" font-size="14" fill="#292929" text-anchor="middle">② 정상 업무가 막히지 않나</text>
-<text x="20" y="178" font-size="18" fill="#292929" text-anchor="start" font-weight="700">두 파일이 하는 일</text>
-<rect x="20" y="192" width="230" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="135.0" y="217.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">exercise1-3_audit.py</text>
-<polyline points="50,232 50,530" fill="none" stroke="#666660" stroke-width="1.8"/>
-<polyline points="50,270 98,270" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f02-u1l4)"/>
-<rect x="100" y="250" width="600" height="216" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="120" y="276" font-size="16" fill="#292929" text-anchor="start" font-weight="700">단계 1 (기록마다 다시 판정)</text>
-<rect x="120" y="300" width="100" height="92" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="170.0" y="351.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">판정</text>
-<polyline points="220,326 278,326" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f02-u1l4)"/>
-<text x="249" y="318" font-size="14" fill="#666660" text-anchor="middle">허용</text>
-<rect x="280" y="304" width="400" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="480.0" y="331.2" font-size="15" fill="#292929" text-anchor="middle">허용이면 건수 +1 · 쓴 권한 모음</text>
-<polyline points="220,368 278,368" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f02-u1l4)"/>
-<text x="249" y="360" font-size="14" fill="#666660" text-anchor="middle">거부</text>
-<rect x="280" y="350" width="400" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="480.0" y="377.2" font-size="15" fill="#292929" text-anchor="middle">거부면 건수 +1 · [거부] 출력</text>
-<polyline points="400,394 400,414" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f02-u1l4)"/>
-<rect x="120" y="416" width="560" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="400.0" y="441.2" font-size="15" fill="#292929" text-anchor="middle">출력: 허용 · 거부 건수, 사용자별 건수</text>
-<polyline points="50,530 98,530" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f02-u1l4)"/>
-<rect x="100" y="492" width="600" height="76" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="400.0" y="524.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">단계 2 (역할마다 미사용 점검)</text>
-<text x="400.0" y="546.1" font-size="15" fill="#292929" text-anchor="middle">가진 권한 중 쓴 적 없는 것 출력</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 350" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>exercise1-2_run.py 가 check_permission() 을 부르고, rbac.py 는 설정 파일 두 개를 읽습니다</title>
+<desc>실습 1-2의 파일 사이 흐름입니다. 시작 파일 exercise1-2_run.py 가 요청 아홉 건마다 rbac.py 의 check_permission() 을 호출합니다. rbac.py 는 불러올 때 한 번 config/users.json 과 config/roles.json 을 읽습니다.</desc>
+<defs><marker id="a-f02-m3u01l04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<text x="20" y="30" font-size="18" font-weight="700" fill="#292929">실습 1-2 파일 사이의 흐름</text>
+<g font-size="15" fill="#292929">
+<rect x="20" y="50" width="260" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="150" y="79" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">exercise1-2_run.py</text>
+<text x="300" y="70" font-size="14" fill="#666660">시작 파일</text>
+<rect x="20" y="160" width="260" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="150" y="189" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">rbac.py</text>
+<rect x="20" y="270" width="400" height="48" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="220" y="299" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">config/users.json · config/roles.json</text>
+<text x="166" y="128"><tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">check_permission()</tspan> 호출</text>
+<text x="166" y="148" font-size="14" fill="#666660">요청 아홉 건마다</text>
+<text x="166" y="238" font-weight="700">읽음</text>
+<text x="166" y="258" font-size="14" fill="#666660">rbac.py 를 불러올 때 한 번</text>
+</g>
+<g stroke="#666660" stroke-width="1.6" fill="none" marker-end="url(#a-f02-m3u01l04)">
+<path d="M150 98V156"/><path d="M150 208V266"/>
 </g>
 </svg>

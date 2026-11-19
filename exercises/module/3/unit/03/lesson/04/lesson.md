@@ -1,143 +1,173 @@
 ---
 id: m3-u03-l04
-title: 정답
+title: 제공 파일
 render: markdown
-source:
-  repository: FutureReadyCampus/learn-missions
-  path: network/080_day02_pm_tests.md
-  mission_id: GichanSource.m3-1022-pm-tests
-  commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 정답
+# 제공 파일
 
-## 정답을 읽는 법
+## `review_rules.py` 만들기
 
-설명하는 답은 한 예이고, 핵심이 같으면 맞습니다.
-
----
-
-## 실습 3-1 정답
-
- **터미널에 입력합니다.**
-
-```bash
-python exercise3-1_broken.py
-```
-
-**채운 코드** (한 예)
+**`review_rules.py`** 을 만들고 아래 내용을 붙여 넣습니다. 이 파일은 직접 만들지 않고 가져다 씁니다.
 
 ```python
-    try:                                                         # 아래를 시도한다
-        with open(path, encoding="utf-8") as input_file:                  # 파일을 연다
-            return json.load(input_file)                                  # 읽은 내용을 바로 리턴한다
-    except FileNotFoundError:                                    # 파일이 없으면
-        print("[경고] 설정 파일 없음:", path)                      # 경고를 남기고
-        return default                                           # 기본값을 리턴한다
-    except json.JSONDecodeError:                                 # JSON 이 깨졌으면
-        print("[경고] 설정 파일 깨짐:", path)                      # 경고를 남기고
-        return default                                           # 기본값을 리턴한다
+from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
+from exception_policy import TIME_FORMAT                         # 시각 문자열의 형식("%Y-%m-%d %H:%M")을 불러온다
+
+
+def find_stale(access_list, now):                                # 현황 리스트와 지금 시각(datetime)을 받는 함수
+    """규칙에 걸려 필요 없어진 권한을 리턴하고 걸린 이유를 "reason" 키에 적는다.
+    퇴사 · 만료로 남은 권한을 정리할 때 쓴다.
+    """
+    stale = []                                                   # 걸린 권한을 담을 빈 리스트
+    for entry in access_list:                                    # 현황의 권한을 한 건씩 꺼낸다
+        expires = entry.get("expires")                           # 만료 시각을 꺼낸다(역할로 받은 권한에는 이 키가 없어 None)
+        reason = ""                                              # 이유를 빈 문자열로 시작한다
+        if not entry["employed"]:                                # 퇴사한 사용자의 권한이면
+            reason = "퇴사한 계정"                                 # 이유를 적는다
+        elif expires is not None:                                # 아니고, 만료 시각이 적혀 있으면(예외로 받은 권한이면)
+            expires_at = datetime.strptime(expires, TIME_FORMAT)  # 만료 시각 문자열을 시각으로 바꾸고
+            if expires_at <= now:                                # 지금과 같거나 이전이면(만료됐으면)
+                reason = "만료된 예외"                             # 이유를 적는다
+        if reason != "":                                         # 이유가 적혔으면(규칙에 걸렸으면)
+            stale_entry = entry.copy()                           # 권한을 복사해서
+            stale_entry["reason"] = reason                       # 복사본에 이유를 적고
+            stale.append(stale_entry)                            # 걸린 리스트에 추가한다
+    return stale                                                 # 걸린 리스트를 리턴한다
 ```
 
-**결과**
+## `overprivilege.py` 만들기
 
-- 위 코드는 `load_json` 본문입니다. 줄 수가 달라도 주석이 말한 일을 하면 맞습니다.
-- (가) 출력은 다음과 같습니다. 첫 경고는 파일이 없어서(`FileNotFoundError`), 둘째 경고는 마지막 쉼표 때문에 JSON 규칙이 틀려서(`JSONDecodeError`) 나왔습니다.
-
-```
-config/users.json -> 사용자 6 명을 읽음, 판정을 계속한다
-[경고] 설정 파일 없음: config/users_typo.json
-config/users_typo.json -> 사용자 0 명, 등록된 사용자가 없다
-[경고] 설정 파일 깨짐: config/users_broken.json
-config/users_broken.json -> 사용자 0 명, 등록된 사용자가 없다
-```
-- (나) 판정 프로그램이 오류로 멈추면 정산 포털이 판정을 받지 못해 업무가 막힙니다. 그러면 현장에서는 급한 업무를 위해 판정을 끄거나 건너뛰고 **모두 통과**시키기 쉽습니다. 빈 설정을 리턴하면 프로그램은 계속 돌면서 모든 요청을 거부하므로, 열려서는 안 되는 것이 열리는 일은 없습니다. 경고가 남아서 운영자는 무엇을 고쳐야 하는지 바로 압니다.
-- (다) 추가할 것 예: ① 경고를 화면에만 찍지 않고 파일 로그에 남기고 담당자에게 메일 · 메신저로 알린다 ② 판정 프로그램이 지금 빈 설정으로 돌고 있는지 알려 주는 상태 확인 명령이나 화면을 둔다 ③ 마지막으로 정상이던 설정 사본을 보관해 두고 한 번에 되돌릴 수 있게 한다. 가장 먼저 할 것은 알림이 좋습니다. 모두 거부되는 상태를 모르면 업무가 왜 멈췄는지 찾는 데 시간이 걸리고, 그동안 현장에서 판정을 끄자는 요구가 커지기 때문입니다. 다른 것을 먼저 골라도 이유가 있으면 맞습니다.
-
-**왜** — 실패를 피할 수는 없으니, 실패했을 때 어떻게 동작할지를 정해 둡니다. 접근통제는 실패하면 모두 막는 쪽이어야 합니다. 고장을 일부러 만들어 보면 실제 고장 때 어떻게 되는지 미리 알고, 기본값이 원래 자료와 같은 모양이어야 뒤의 코드가 그대로 동작합니다.
-
-**자주 틀리는 곳** — `except JSONDecodeError:` 처럼 `json.` 을 빼서 `NameError` 가 나는 경우가 가장 많습니다. `except:` 만 써서 모든 오류를 그냥 넘기면 코드의 오타까지 숨겨져 원인을 찾기 어렵습니다. 오류 이름을 정확히 적습니다. `return default` 를 빼먹으면 `None` 이 리턴되어 시험 파일에서 `TypeError: argument of type 'NoneType' is not iterable` 이 납니다. `load_json(path)` 처럼 기본값을 빼면 `TypeError: missing 1 required positional argument` 가 납니다. 깨진 파일을 붙여 넣으면서 쉼표를 지워 정상 파일로 만들어 버리는 경우도 있습니다.
-
-**관제에서는** — 「설정 파일 깨짐」 경고는 누군가 설정을 바꿨다는 뜻이기도 해서, 경고가 나면 최근 변경 이력(git)을 함께 봅니다. 고장 시험(장애 주입)을 정기적으로 해 두면, 실제로 모두 막혔을 때 원인을 설정에서 먼저 찾습니다.
-
----
-
-## 실습 3-2 정답
-
- **터미널에 입력합니다.**
-
-```bash
-python test_policy.py
-python test_policy_extra.py
-```
-
-**채운 코드** (한 예)
+**`overprivilege.py`** 을 만들고 아래 내용을 붙여 넣습니다. 이 파일은 직접 만들지 않고 가져다 씁니다.
 
 ```python
-when = at("2026-10-22 14:00")                                    # 요청 시각을 만든다
-is_allowed, reason = evaluate_access("seoyeon", "ACCOUNT", "CHANGE", when)  # 2. 권한 없음
-assert is_allowed == False and reason == "권한 없음", "2. 권한 없음"      # 권한 없음으로 거부되는지 확인한다
+def entry_key(entry):                                            # 현황의 권한 한 건의 식별 키를 만드는 함수
+    """현황의 권한 한 개의 식별 키를 리턴한다.
+    키는 user:permission:source 를 이어 붙인 문자열이다.
+    같은 권한을 찾아 비교할 때 쓴다.
+    """
+    key = entry["user"] + ":" + entry["permission"]              # 사용자와 권한을 : 로 이어 붙이고
+    key = key + ":" + entry["source"]                            # 받은 방식을 이어 붙여 식별 키를 만든다
+    return key                                                   # 식별 키를 리턴한다
 
-when = at("2026-10-22 17:59")                                    # 요청 시각을 만든다
-is_allowed, reason = evaluate_access("seoyeon", "SETTLE", "QUERY", when)  # 3. 만료 1분 전
-assert is_allowed == True and reason == "예외 1번", "3-1. 만료 1분 전 허용"  # 만료 1분 전에는 예외 1번으로 허용되는지 확인한다
-when = at("2026-10-22 18:00")                                    # 요청 시각을 만든다
-is_allowed, reason = evaluate_access("seoyeon", "SETTLE", "QUERY", when)  # 3. 만료 정각
-assert is_allowed == False, "3-2. 만료 정각 거부"                       # 만료 정각에는 거부되는지 확인한다
 
-users = load_json("config/no_such.json", {})                     # 4. 없는 파일을 읽는다
-assert "seoyeon" not in users, "4. 설정 고장이면 사용자 없음"                # 설정이 고장 나면 사용자 딕셔너리에 seoyeon 이 없어야 한다
+def make_stale_reason(stale):                                    # 규칙에 걸린 권한 리스트를 받는 함수
+    """규칙에 걸린 권한의 식별 키를 키로, 걸린 이유를 값으로 하는 딕셔너리를 리턴한다.
+    필요 없어진 권한에 이유를 붙일 때 쓴다.
+    """
+    stale_reason = {}                                            # 식별 키 → 걸린 이유를 담을 빈 딕셔너리
+    for item in stale:                                           # 규칙에 걸린 권한을 하나씩 꺼낸다
+        item_key = entry_key(item)                               # 그 권한의 식별 키를 만든다
+        stale_reason[item_key] = item["reason"]                  # 식별 키로 걸린 이유를 찾을 수 있게 담는다
+    return stale_reason                                          # 딕셔너리를 리턴한다
+
+
+def make_unused_keys(unused):                                    # 안 쓴 권한 리스트를 받는 함수
+    """안 쓴 권한의 식별 키 리스트를 리턴한다.
+    안 쓴 권한을 다른 점검 결과와 비교할 때 쓴다.
+    """
+    unused_keys = []                                             # 안 쓴 권한의 식별 키를 담을 빈 리스트
+    for item in unused:                                          # 안 쓴 권한을 하나씩 꺼낸다
+        item_key = entry_key(item)                               # 식별 키를 만든다
+        unused_keys.append(item_key)                             # 식별 키를 리스트에 추가한다
+    return unused_keys                                           # 리스트를 리턴한다
+
+
+def collect_reasons(key, stale_reason, unused_keys, days):       # 식별 키 · 걸린 이유 딕셔너리 · 안 쓴 권한의 식별 키 리스트 · 기준 일 수를 받는 함수
+    """그 권한에 해당하는 과다권한 이유를 모아 리스트로 리턴한다(없으면 빈 리스트).
+    후보마다 왜 걸렸는지 적을 때 쓴다.
+    """
+    reasons = []                                                 # 이유를 담을 빈 리스트
+    if key in stale_reason:                                      # 규칙에 걸린 권한이면
+        reasons.append(stale_reason[key])                        # 걸린 이유를 추가한다
+    if key in unused_keys:                                       # 안 쓴 권한이면
+        reasons.append(f"{days}일 넘게 안 씀(이력 없음 포함)")   # 안 쓴 이유를 추가한다
+    return reasons                                               # 이유 리스트를 리턴한다
+
+
+def generate_report(access_list, stale, unused, days, generated_at):   # 현황 · 규칙 결과 · 안 쓴 결과 · 기준 일 수 · 만든 시각 문자열을 받는 함수
+    """과다권한 후보 리포트(딕셔너리)를 리턴하고 후보마다 "reasons" 키에 이유 리스트를 적는다.
+    점검 결과를 한눈에 정리해 보고할 때 쓴다.
+    """
+    stale_reason = make_stale_reason(stale)                      # 규칙에 걸린 권한의 식별 키 → 걸린 이유 딕셔너리를 만든다
+    unused_keys = make_unused_keys(unused)                       # 안 쓴 권한의 식별 키 리스트를 만든다
+    findings = []                                                # 후보를 담을 빈 리스트
+    for entry in access_list:                                    # 현황의 권한을 한 건씩 꺼낸다
+        key = entry_key(entry)                                   # 그 권한의 식별 키를 만든다
+        reasons = collect_reasons(key, stale_reason, unused_keys, days)   # 그 권한에 해당하는 이유를 모은다
+        if len(reasons) > 0:                                     # 이유가 하나라도 있으면
+            finding = entry.copy()                               # 권한을 복사해서
+            finding["reasons"] = reasons                         # 복사본에 이유 리스트를 적고
+            findings.append(finding)                             # 후보에 추가한다
+    report = {                                                   # 리포트 딕셔너리를 만든다
+        "generated_at": generated_at,                            # 리포트를 만든 시각
+        "total": len(access_list),                               # 점검한 전체 권한 수
+        "finding_count": len(findings),                          # 후보 수
+        "findings": findings,                                    # 후보 리스트
+    }
+    return report                                                # 리포트를 리턴한다
 ```
 
-**결과**
+## `report_exclude.py` 만들기
 
-- 위 코드는 `test_policy.py` 의 2 ~ 4번 테스트입니다. 줄 수가 달라도 주석이 말한 일을 하면 맞습니다. `python test_policy.py` 의 출력은 다음과 같습니다.
+**`report_exclude.py`** 을 만들고 아래 내용을 붙여 넣습니다. 이 파일은 직접 만들지 않고 가져다 씁니다.
 
+```python
+from config_loader import load_json                              # Unit 1에서 만든 안전한 읽기 함수를 불러온다
+
+
+def exclude_key(entry):                                          # 사용자와 권한이 든 딕셔너리(후보 또는 제외 리스트의 한 건)를 받는 함수
+    """「사용자:권한」 문자열을 리턴한다.
+    제외 리스트와 점검 후보를 비교하는 키로 쓴다.
+    """
+    user = entry["user"]                                         # 그 권한의 사용자
+    permission = entry["permission"]                             # 그 권한의 권한 이름
+    return f"{user}:{permission}"                                # 사용자와 권한을 : 로 이어 붙인다
+
+
+def make_excluded(finding, reason):                              # 후보 한 건과 제외 이유 문자열을 받는 함수
+    """후보를 복사해 "exclude_reason" 키(제외 이유)를 적는다.
+    회수에서 뺀 후보에 이유를 남길 때 쓴다(원래 후보는 바꾸지 않음).
+    """
+    item = finding.copy()                                        # 원래 후보는 바꾸지 않고 복사한다
+    item["exclude_reason"] = reason                              # 복사본에 제외 이유를 적는다
+    return item                                                  # 복사본을 리턴한다
+
+
+def load_exclude_map(path):                                      # 회수 제외 리스트 파일 경로를 받는 함수
+    """회수 제외 리스트 파일을 읽어 「사용자:권한」을 키로, 제외 이유를 값으로 하는 딕셔너리를 리턴한다.
+    계속 필요한 권한을 가려낼 준비를 할 때 쓴다.
+    """
+    exclude_map = {}                                             # 빈 딕셔너리로 시작한다
+    for item in load_json(path, []):                             # 제외 리스트의 권한을 한 건씩 꺼낸다(파일이 없으면 빈 리스트)
+        item_key = exclude_key(item)                             # 그 권한의 「사용자:권한」 문자열을 만든다
+        exclude_map[item_key] = item["reason"]                   # 그 문자열을 키로, 제외 이유를 값으로 담는다
+    return exclude_map                                           # 딕셔너리를 리턴한다
+
+
+def can_exclude(finding, exclude_map):                           # 후보 한 건과 제외 이유 딕셔너리를 받는 함수
+    """후보를 회수 제외해도 되는지 알려 준다.
+    계속 필요한 권한을 가려낼 때 쓰며, 퇴사한 계정은 제외하지 않는다.
+    """
+    key = exclude_key(finding)                                   # 「사용자:권한」 문자열을 만든다
+    in_exclude_list = key in exclude_map                         # 제외 리스트에 있는지
+    is_resigned = "퇴사한 계정" in finding["reasons"]              # 이유에 「퇴사한 계정」이 있는지
+    return in_exclude_list and not is_resigned                   # 제외 리스트에 있고 퇴사한 계정이 아니면 True 를 리턴한다
+
+
+def split_by_exclude(findings, exclude_map):                     # 후보 리스트와 제외 이유 딕셔너리를 받는 함수
+    """후보를 (회수 대상 후보 리스트, 회수 제외 후보 리스트)로 나눠 리턴한다.
+    이유에 「퇴사한 계정」이 있으면 제외하지 않으며, 회수할 것과 남길 것을 가를 때 쓴다.
+    """
+    to_revoke = []                                               # 회수 대상을 담을 빈 리스트
+    excluded = []                                                # 회수 제외를 담을 빈 리스트
+    for finding in findings:                                     # 후보를 하나씩 꺼낸다
+        key = exclude_key(finding)                               # 「사용자:권한」 문자열을 만든다
+        if can_exclude(finding, exclude_map):                    # 회수 제외해도 되는 후보이면
+            reason = exclude_map[key]                            # 그 후보의 제외 이유
+            excluded_entry = make_excluded(finding, reason)      # 회수 제외 후보 한 건을 만든다
+            excluded.append(excluded_entry)                      # 제외 이유를 적은 복사본을 회수 제외에 추가한다
+        else:                                                    # 그렇지 않으면
+            to_revoke.append(finding)                            # 회수 대상에 추가한다
+    return to_revoke, excluded                                   # 두 리스트를 함께 리턴한다
 ```
-[경고] 설정 파일 없음: config/no_such.json
-테스트 4개 모두 통과
-```
-
-- (가) 출력은 다음과 같습니다. 실패한 줄은 6번 `assert` 줄이고(아래 예에서는 `line 19`, 파일에 줄을 추가하거나 빼면 숫자가 달라집니다), 설명은 「6. 만료 정각에도 허용되어야 한다(팀원 제안)」입니다. 파일 앞의 폴더 경로도 PC 마다 다릅니다.
-
-```
-5 통과
-Traceback (most recent call last):
-  File "…/test_policy_extra.py", line 19, in <module>
-    assert is_allowed == True, "6. 만료 정각에도 허용되어야 한다(팀원 제안)"           # 만료 정각에도 허용인지 확인한다
-AssertionError: 6. 만료 정각에도 허용되어야 한다(팀원 제안)
-```
-
-- (나) **제안이 지금 정책과 다르다는 뜻입니다.** 「지금 시각이 만료 시각보다 앞일 때만 유효, 정각에는 이미 거부」로 정했고, 코드(`now < expires`)는 그대로 지키고 있습니다. 위의 3번 테스트(만료 정각 거부)도 같은 규칙을 확인해 통과했습니다. 그래서 코드를 고칠 일이 아니라, 제안을 받아들일지 정책으로 정할 일입니다.
-- (다) 예: 3번 테스트(만료 17:59 허용, 18:00 거부)가 없으면, 누군가 정책 코드를 한 줄 고치다 비교를 잘못 써서 만료된 예외가 정각 뒤에도 열려 있어도 눈으로는 알아채지 못합니다. 그러면 퇴근 뒤 밤에 이미 끝난 예외로 정산 자료가 조회되고, 다음 날 감사에서야 발견됩니다. 다른 예: 4번 테스트(설정 없음)가 없으면 설정 파일 읽기를 고치다 「사용자가 없으면 허용」으로 바뀌어도 잡지 못해 모든 요청이 열립니다. 하나를 골라 구체적인 장면을 적으면 맞습니다.
-
-**왜** — 테스트는 기대를 먼저 적고 실제와 비교합니다. 경계값을 넣어야 비교 기호 하나의 실수까지 잡습니다. 테스트 실패는 「무엇인가 서로 다르다」는 신호일 뿐, 어느 쪽이 틀렸는지는 정책을 보고 판단합니다. 실패를 없애려고 코드부터 바꾸면 정책이 알리지 않고 바뀝니다.
-
-**자주 틀리는 곳** — `assert is_allowed == False and reason == "권한 없음"` 에서 `and` 대신 쉼표를 써서 `assert is_allowed == False, reason == "권한 없음"` 으로 쓰는 경우가 가장 많습니다. 그러면 뒤쪽은 설명으로 읽혀 이유를 검사하지 않습니다. 3번에서 두 번째 판정을 하지 않고 첫 `is_allowed` 를 다시 검사하는 실수도 있습니다. 6번이 실패하자 `exception_policy.py` 의 `<` 를 `<=` 로 고치는 경우도 많은데, 그러면 3번 테스트가 깨지고 정책이 알리지 않고 바뀝니다. `Traceback` 이 나왔다고 프로그램이 망가졌다고 생각하는 경우도 있지만, 이것은 테스트가 정상적으로 차이를 알려 준 것입니다.
-
-**관제에서는** — 정책을 바꾸는 요청에는 「바꾼 뒤에도 통과해야 하는 테스트」를 함께 붙이게 합니다. 테스트가 없는 정책 변경은 받지 않습니다. 규칙 변경 요청은 「테스트로 적은 제안」 형태로 받으면 무엇이 바뀌는지 분명해지고, 실패한 테스트는 변경 검토 회의의 출발점이 됩니다.
-
----
-
-## 정답 마무리
-
- **터미널에 입력합니다.**
-
-```bash
-cd ..
-pwd
-git status
-git add .
-git commit -m "Add access control day 2 role management, exceptions, policy and tests"
-git push
-```
-
-**결과**
-
-- (가) 한 예: 「줄이 열네 개였고(오늘 만든 `.py` 파일 열 개, `config` 의 새 JSON 두 개, 보고서 `report_u2.md` · `report_u3.md` 둘), `.env` · `.venv` 는 없었다」. 줄 수와 이름은 학생마다 다를 수 있습니다. `.env` 나 `.venv` 가 보였다면 `.gitignore` 에 한 줄을 적고 `git status` 를 다시 쳤다고 적습니다.
-
-**왜** — 올리기 전에 올라갈 파일을 확인해야 비밀 키가 섞이지 않습니다. 정책 코드와 테스트가 함께 올라가야 다음에 누가 바꿔도 같은 기준으로 확인할 수 있습니다.
-
-**자주 틀리는 곳** — `.env` 가 보이는데 그대로 `git add .` 를 하는 실수가 가장 위험합니다. `cd ..` 를 두 번 쳐서 `security-agent-toolkit` 바깥으로 나가는 경우도 있습니다. `pwd` 로 확인합니다.
-
-**관제에서는** — 접근통제 정책과 테스트는 같은 커밋에 함께 올려, 어느 정책이 어느 테스트로 확인됐는지 이력으로 남깁니다.

@@ -1,235 +1,216 @@
 ---
 id: m3-u01-l04
-title: 실습 1-3 · 기록 재판정과 미사용 권한 찾기
+title: 실습 1-3 · 최종 판정 policy.py 만들기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
-  path: network/075_day01_pm_rbac.md
-  mission_id: GichanSource.m3-1021-pm-rbac
+  path: network/078_day02_am_policy.md
+  mission_id: GichanSource.m3-1022-am-policy
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 실습 1-3 · 기록 재판정과 미사용 권한 찾기
+# 실습 1-3 · 최종 판정 policy.py 만들기
 
-## 이번에 할 것: 기록 재판정과 미사용 권한
+## 목표: 최종 판정 함수
 
 > **오늘 들어온 일**
-> A사 보안 담당이 보낸 메시지: 「만든 판정 함수가 그때 있었다면 어떤 요청이 막혔을지 기록으로 확인해 주세요. 그리고 역할마다 준 권한 중에 실제로 한 번도 쓰이지 않은 것이 있는지도 찾아 주세요. 필요 없는 권한은 줄이려고 합니다.」
-> - 이 실습에서 하는 일: 접속 기록 가운데 조회 15건을 `check_permission` 으로 다시 판정해 건수를 셉니다. 역할의 권한과 실제 사용을 맞춰 보고 쓰이지 않는 권한을 찾습니다. 마지막으로 오늘 만든 것을 올립니다.
+> A사 보안 담당이 보낸 메시지: 「지금은 "역할로 허용되나?"와 "예외로 허용되나?"를 따로 확인해서, 정산 포털이 어느 결과를 믿어야 할지 모르겠습니다. 요청 하나를 넣으면 "허용인지 거부인지"와 "왜 그런지"가 한 번에 나오게 해 주세요. 이미 퇴사한 사람은 예외가 남아 있어도 열리면 안 됩니다.」
+> - 이 실습에서 하는 일: 실습 1-2에서 만든 `check_permission` 과 「제공 파일」의 `find_exception` 을 불러 최종 판정 함수 `evaluate_access` 를 `policy.py` 에 직접 쓰고, 오늘 요청 아홉 건을 판정한 결과를 읽습니다.
 > - 끝나면 쓰는 것: 보고서 (가)~(다) 답
 
-> **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「실습」 전까지는 이 실습의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
+## 왜 판정을 한 함수에 모으는가
 
-## 왜 지난 기록으로 다시 판정하는가
+1. 판정 기준이 두 곳에 흩어져 있으면 집행하는 쪽(PEP · 피이피, 집행 지점)이 어느 것을 따를지 매번 정해야 합니다. 최종 판정을 한 함수가 하면 규칙이 한 곳에 모입니다.
+2. 예외는 **역할 권한이 없을 때만** 봐야 합니다. 그리고 사용자 자체가 거부 대상인 경우(없는 사용자 · 퇴사자 · 역할이 없음)는 예외가 있어도 열면 안 됩니다. 이 순서가 틀리면 예외 3번이 남아 있는 퇴사자 `dami` 가 예외로 허용됩니다.
+3. `policy.py` 는 다음 Unit 2(권한 주기)의 요청 · 승인 · 부여 흐름이 불러 쓰는 함수입니다.
 
-> **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
+## 3.1 판정 순서
 
-1. 새 규칙을 켜기 전에 지난 기록에 적용해 보면, 막아야 할 것이 막히는지와 정상 업무가 막히지 않는지를 미리 확인할 수 있습니다. 현업에서는 이것을 기록 재판정(replay)이라고 부릅니다.
-2. 권한은 주기는 쉬워도 거두기는 잊기 쉽습니다. 실제 사용 기록과 맞춰 보면 쓰이지 않는 권한이 드러나고, 그것이 최소권한 점검의 출발점입니다.
-3. 오늘의 미사용 권한 찾기는 Unit 6의 과다권한 탐지(90일 미사용)로 이어집니다.
+<figure class="page-figure"><img src="assets/f01.svg" alt="evaluate_access 는 역할 판정을 먼저 하고, 「권한 없음」일 때만 예외를 찾아 판정합니다"></figure>
 
-## 3.1 접속 기록 파일
+- `check_permission` 은 실습 1-2에서 만든 그대로 불러 씁니다. 고치지 않습니다. 이 함수는 `(True 또는 False, 이유)` 를 리턴하고, 이유는 「권한 없음」 · 「퇴사한 계정」 · 「등록되지 않은 사용자」 · 「역할이 없음」 중 하나입니다.
+- `policy.py` 는 실습 1-1에서 만든 역할 파일(`roles.json`)과 사용자 파일(`users.json`)을 `rbac.py` 를 거쳐 그대로 씁니다.
+- `find_exception` 은 「제공 파일」 레슨에서 복사해 만든 `exception_policy.py` 에 들어 있습니다. 사람 · 권한 · 지금 시각을 넣으면 유효한 예외가 있을 때 `(True, 예외 번호)`, 없으면 `(False, None)` 을 리턴합니다. 예외 다섯 건은 `config/exceptions.json` 에 있습니다.
+- **서비스 계정**은 사람이 아니라 프로그램이 쓰는 계정입니다(`batch-night`). 사람이 로그인하지 않고, 키나 비밀번호를 설정 파일에 두고 접속하는 경우가 많습니다.
+- `[역할 판정]` 에서 「권한 없음」일 때만 예외를 봅니다. 사용자 자체가 거부 대상인 경우는 예외 검사까지 가지 않습니다.
 
-> **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
+**이 시간에 나오는 말** (먼저 짧게 봅니다)
 
-접근 기록 20줄 가운데 **조회(QUERY) 15줄**만 남겼습니다(로그인 · 로그아웃 줄은 권한 판정 대상이 아니라 뺐습니다). 번호는 그 기록의 번호 그대로입니다.
+- `from rbac import check_permission` · `from exception_policy import find_exception` 처럼 두 파일의 함수를 함께 불러옵니다.
+- `값 != "권한 없음"` 은 이유 문자열이 「권한 없음」이 아닌지 검사합니다.
+- `f"예외 {found_exception_id}번"` 처럼 f-문자열로 이유를 만듭니다(실습 1-2의 `permission` 과 같은 모양).
 
-**`access_log.py`** — 아래 내용을 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
+## 3.2 허용 방식별로 세기
 
-| 칸 | 예 | 뜻 |
-|---|---|---|
-| 번호 | `1` · `3` | 원래 기록의 번호 그대로입니다. 로그인 줄을 빼서 번호가 띄엄띄엄 있습니다 |
-| 시각 · 사용자 | `"02:00"` · `"batch-night"` | 언제 · 누가 |
-| 자원 · 행위 | `"SETTLE"` · `"QUERY"` | `check_permission` 에 그대로 전달하는 값 |
+- 판정 결과는 세 갈래로 셉니다: **역할로 허용**(이유가 「역할 권한」) · **예외로 허용**(이유가 「예외 N번」) · **거부**.
+- 허용을 둘로 나눠 세는 이유는 **예외로 열린 일이 얼마나 되는지** 숫자로 보기 위해서입니다. 예외가 많아지면 역할 설계가 실제 업무와 맞지 않는다는 신호입니다. 현업에서는 예외 허용 건수를 따로 세어 매주 보고합니다.
+- 세는 모양은 두 줄입니다: `old_count = counts.get(키, 0)` 로 지금까지 센 수를 꺼내고(처음이면 0), `counts[키] = old_count + 1` 로 1 늘려 다시 적습니다. 실행 파일에 이미 적혀 있으니 읽기만 합니다.
+- 요청마다 시각이 다르면 `"2026-10-22 " + 시각` 으로 날짜 문자열과 시각 문자열을 이어 붙인 뒤 `datetime.strptime(문자열, "%Y-%m-%d %H:%M")` 으로 비교할 수 있는 시각을 만듭니다.
+- **만료 뒤 시도**: 거부 이유가 「권한 없음」인데 같은 사람 · 같은 권한의 예외가 예외 리스트에 있으면, 예외가 끝난 뒤에도 다시 시도한 것입니다. 퇴사자(`dami`)처럼 사람이 거부 대상인 경우는 예외가 남아 있어도 만료 뒤 시도로 보지 않습니다.
+- 순서는 「역할 권한으로 허용」을 먼저 검사하고, 그다음 「그 밖의 허용」(예외)을 검사합니다. 거꾸로 하면 역할로 허용된 요청이 예외로 세어집니다.
 
-```python
-LOG = [                                                          # 접근 기록 중 조회 15줄. (번호, 시각, 사용자, 자원, 행위)
-    (1,  "02:00", "batch-night", "SETTLE", "QUERY"),             # 서비스 계정의 정산 집계
-    (3,  "02:14", "seoyeon",     "SETTLE", "QUERY"),             # 새벽 · 등록 안 된 기기 NB-7741
-    (4,  "02:15", "seoyeon",     "SETTLE", "QUERY"),             # 새벽 · NB-7741
-    (5,  "02:15", "seoyeon",     "SETTLE", "QUERY"),             # 새벽 · NB-7741
-    (7,  "09:05", "junho",       "SETTLE", "QUERY"),             # 재무의 정산 조회
-    (9,  "10:44", "seoyeon",     "SALES",  "QUERY"),             # 영업의 영업 실적 조회
-    (10, "11:30", "junho",       "SETTLE", "QUERY"),             # 재무의 정산 조회
-    (11, "13:15", "seoyeon",     "SALES",  "QUERY"),             # 영업의 영업 실적 조회
-    (12, "13:40", "seoyeon",     "SETTLE", "QUERY"),             # 낮 · 등록 기기에서 정산 조회
-    (13, "14:02", "junho",       "SETTLE", "QUERY"),             # 재무의 정산 조회
-    (14, "14:10", "seoyeon",     "SETTLE", "QUERY"),             # 낮 · 등록 기기에서 정산 조회
-    (15, "14:35", "seoyeon",     "SETTLE", "QUERY"),             # 낮 · 등록 기기에서 정산 조회
-    (16, "15:00", "seoyeon",     "SETTLE", "QUERY"),             # 낮 · 등록 기기에서 정산 조회
-    (17, "15:25", "seoyeon",     "SETTLE", "QUERY"),             # 낮 · 등록 기기에서 정산 조회
-    (18, "16:30", "seoyeon",     "SALES",  "QUERY"),             # 영업의 영업 실적 조회
-]
-```
+## 3.3 파일 사이의 흐름을 그림으로 그리기
 
-**이 시간에 나오는 말** (이미 배운 방법입니다)
+- 파일이 여러 개가 되면 「어느 파일이 어느 파일의 무엇을 호출하는가」를 머릿속에만 두기 어렵습니다. 글자로 그림을 그리면 한 곳이 고장 났을 때 어느 화살표에서 멈추는지 바로 보입니다.
+- 그림 규칙은 다음과 같습니다.
+  - 파일은 상자(`+---+` 와 `| 파일 이름 |`)로 그리고, 시작 파일을 맨 위에 둡니다.
+  - 상자 아래로 `|` 와 `v` 로 이어 가고, `+-->` 옆에 **호출하는 함수 이름**을 씁니다.
+  - 파일이 읽는 설정 파일은 `읽음` 아래에 적습니다.
+  - 그림에는 파일 이름 · 호출하는 함수 · 읽는 설정 파일만 넣습니다. 그 밖의 가져오기(`datetime` 등)는 그리지 않습니다.
+  - 오른쪽 선이 한글 때문에 조금 안 맞아도 괜찮습니다.
+- **파일 맨 위에서 설정 파일을 읽는 줄(`with open(…)`)은 그 파일을 불러오는(`import`) 순간 실행됩니다.** 그래서 설정 파일이 깨져 있으면 함수를 부르기도 전에, 그 파일을 불러오는 화살표에서 멈춥니다.
+- 아래는 실습 1-2의 파일들로 그린 본보기를 그림으로 옮긴 것입니다. 보고서 (다)에서는 실습 1-3의 파일들로 위 규칙에 따라 글자로 직접 그립니다.
 
-- 키별 건수는 `old_count = d.get(키, 0)` 로 지금까지 센 수를 꺼내고(처음이면 0), `d[키] = old_count + 1` 로 1 늘려 다시 적습니다(세는 모양을 두 줄로 나눈 것입니다).
-- `for 키, 값 in d.items():` 로 딕셔너리의 키와 값을 함께 꺼냅니다(앞선 실습).
-- `from rbac import check_permission, ROLES, USERS` 처럼 함수뿐 아니라 파일 맨 위의 변수도 같은 방법으로 불러옵니다.
+<figure class="page-figure"><img src="assets/f02.svg" alt="exercise1-2_run.py 가 요청마다 rbac.py 의 check_permission() 을 부르고, rbac.py 는 불러올 때 설정 파일 두 개를 읽습니다"></figure>
 
-<figure class="page-figure"><img src="assets/f01.svg" alt="sales 가 가진 권한 중 기록에서 쓰지 않은 SALES:CHANGE 가 줄일 후보다"></figure>
-
-#### 기록 재판정(replay)과 두 파일이 하는 일
-
-<figure class="page-figure"><img src="assets/f02.svg" alt="지난 기록을 새 규칙으로 다시 판정하고, audit 파일은 두 단계로 결과를 낸다"></figure>
-
-- `allowed` · `denied` · `counts` · `used` 는 파일 맨 위에 미리 만들어져 있습니다.
-- 현업에서는 결과를 숫자로 보고한 뒤에 규칙을 켭니다. 같은 기록으로 실제로 쓴 권한도 함께 모읍니다.
-
-#### 문법 상자 · 단계 1 · 단계 2에서 쓰는 모양 (예시 값 · 읽기만 합니다)
-
-키를 문자열로 만들어 건수 세기 — 예시 사용자 `minsu`
-
-```python
-counts = {}                                                       # 값별 횟수를 담을 빈 딕셔너리
-key = "minsu" + " 허용"                      # "minsu 허용"
-
-old_count = counts.get(key, 0)                                   # 그 키의 지금까지 센 수(처음이면 0)
-counts[key] = old_count + 1                                      # 1 늘려서 다시 적는다
-```
-
-| 읽은 기록(예시) | 만든 키 | 센 뒤 `counts` |
-|---|---|---|
-| minsu 허용 | `"minsu 허용"` | `{'minsu 허용': 1}` |
-| minsu 허용 | `"minsu 허용"` | `{'minsu 허용': 2}` |
-| minsu 거부 | `"minsu 거부"` | `{'minsu 허용': 2, 'minsu 거부': 1}` |
-
-역할마다 빈 리스트를 먼저 만들고 쌓기 — 예시 역할 `hr`
-
-```python
-if role not in used:                          # 이 역할이 처음이면
-    used[role] = []                           # 빈 리스트부터
-used[role].append(f"{resource}:{action}")     # 쓴 권한을 추가함
-```
-
-| 읽은 허용 기록(예시) | 쌓은 뒤 `used` |
-|---|---|
-| hr · STAFF:QUERY | `{'hr': ['STAFF:QUERY']}` |
-| hr · PAY:QUERY | `{'hr': ['STAFF:QUERY', 'PAY:QUERY']}` |
-
-- 빈 리스트 없이 바로 `append` 하면 `KeyError` 가 납니다.
-
-`items()` 와 `used.get(역할, [])` — 기록에 없는 역할은 빈 리스트
-
-```python
-ROLES = {"hr": ["STAFF:QUERY", "PAY:QUERY"], "guest": ["NEWS:QUERY"]}   # 예시
-used  = {"hr": ["STAFF:QUERY"]}                                   # 예시: 실제로 쓴 기록(hr 은 STAFF:QUERY 만 썼다)
-
-for role, role_permissions in ROLES.items():                      # 역할 이름과 그 역할의 권한 리스트를 하나씩 꺼낸다
-    print(role, role_permissions, used.get(role, []))             # 역할 · 권한 · 쓴 기록을 출력한다
-# hr ['STAFF:QUERY', 'PAY:QUERY'] ['STAFF:QUERY']
-# guest ['NEWS:QUERY'] []          ← 기록에 없는 역할은 빈 리스트
-```
-
-- 거부 줄 출력 모양(예시): `[거부] 99 03:00 kim SALES QUERY - 등록되지 않은 사용자` (이 기록에 없는 예시입니다. 이유는 실습 1-2 함수가 리턴한 `reason` 입니다.)
-
-> **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
-
-## 실습 1-3 · 기록 재판정과 미사용 권한 찾기
+## 실습 1-3 · 최종 판정 함수와 아홉 건 읽기
 
 **이런 상황이 있습니다**
 
-- 보안 담당이 「RBAC 를 그때 켰다면 무엇이 막혔을지」 숫자로 알고 싶어 합니다. 막혀야 할 것이 막히는지와 정상 업무가 막히지 않는지를 모두 봐야 합니다.
-- 같은 기록으로 「매트릭스의 ○ 중 실제로 쓰이지 않는 것」도 찾아 달라고 합니다. 쓰이지 않는 권한은 줄일 후보지만, 하루 기록에 안 보였다고 모두 지우면 정상 업무가 막힐 수 있습니다.
-- 현업에서는 새 규칙을 켜기 전에 과거 기록에 적용해 보고 결과를 숫자로 보고합니다.
-- 이 점검을 정기적으로 돌려 「쓰이지 않은 권한 리스트」를 만들고, 담당자 확인을 거쳐 회수합니다.
+- 지금은 역할을 확인하는 함수(`check_permission`)와 예외를 확인하는 함수(`find_exception`)가 따로 있습니다. 정산 포털 개발팀은 요청 하나를 넣으면 「허용인지 거부인지」와 「이유」가 한 번에 나오는 함수 하나를 원합니다. 두 확인을 3.1 의 순서대로 합칩니다.
+- 보안 담당은 하루가 끝나면 세 가지를 알고 싶어 합니다. 오늘 예외로 허용된 요청이 몇 건인지, 예외 번호마다 몇 번 쓰였는지, 이미 끝난 예외로 다시 시도한 요청이 있는지입니다. 오늘 요청 아홉 건을 그 시각대로 판정하면서 이 숫자를 셉니다.
+- 현업에서는 이 집계를 하루가 끝날 때 자동으로 만들어 보안 담당에게 보냅니다. 또 접근통제 제품에는 이렇게 여러 규칙을 정해진 순서로 합쳐 결과 하나를 내는 부분(PDP · 피디피, 판단 지점)이 따로 있습니다.
 
 **할 일**
 
-1. `access_log.py` 와 `exercise1-3_audit.py` 를 만듭니다(3.1).
-2. `exercise1-3_audit.py` 의 <mark>단계 1: 재판정 반복문</mark>(건수 세기 · 거부 출력 · 쓴 권한 모으기)과 <mark>단계 2: 미사용 점검</mark>(쓰이지 않은 권한 출력)를 직접 씁니다.
-3. 실행해서 <mark>거부된 기록</mark>, <mark>사용자별 허용 · 거부 건수</mark>, <mark>쓰이지 않은 권한</mark>을 읽습니다.
-4. 쓰이지 않은 권한 중 <mark>줄일 것과 남길 것</mark>을 이유와 함께 나눕니다.
+1. 「제공 파일」 레슨의 세 파일(`config/exceptions.json` · `exception_policy.py` · `config_loader.py`)이 있는지 확인합니다.
+2. `policy.py` 를 만들고 `evaluate_access` 본문을 직접 씁니다.
+3. `exercise1-3_run.py` 를 실행해서 <mark>아홉 건의 결과</mark>, <mark>만료 뒤 시도</mark>, <mark>예외 번호별 사용 건수</mark>를 읽습니다.
 
-**`exercise1-3_audit.py`**
+**준비** — `policy.py` 는 「제공 파일」의 `exception_policy.py` 를 불러오고, 그 파일은 `config/exceptions.json` 을 읽습니다. 터미널이 `…/access_control` 위치인지 확인한 뒤 파일이 있는지 봅니다.
+
+```bash
+ls
+ls config
+```
+
+- `exception_policy.py` 와 `config/exceptions.json` 이 보이지 않으면 「제공 파일」 레슨에서 먼저 만듭니다. 없는 채로 실행하면 `ModuleNotFoundError: No module named 'exception_policy'` 나 `FileNotFoundError: … 'config/exceptions.json'` 오류가 납니다.
+
+**`policy.py`**
 
 ```python
-from rbac import check_permission, ROLES, USERS                  # 판정 함수와 역할 · 사용자 정보를 불러온다
-from access_log import LOG                                       # access_log.py 의 기록 리스트를 불러온다
+from rbac import check_permission                                # 실습 1-2에서 만든 역할 판정 함수를 불러온다
+from exception_policy import find_exception                      # 제공 파일의 예외 판정 함수를 불러온다
 
-allowed = 0                                                      # 허용 건수
-denied = 0                                                       # 거부 건수
-counts = {}                                                      # "사용자 허용" · "사용자 거부" → 건수
-used = {}                                                        # 역할 → 실제로 쓴 권한 리스트
 
-# ← 단계 1 재판정: 기록을 하나씩 다시 판정하며 건수와 쓴 권한 모으기
-# 1. LOG 에서 (번호, 시각, 사용자, 자원, 행위)를 하나씩 꺼낸다
-# 2. check_permission 으로 판정해 is_allowed, reason 으로 나눠 받는다
-# 3. is_allowed 이면 allowed 를 1 늘리고, counts 의 "사용자 허용" 을 1 늘리고(키를 count_key 에, 지금까지 센 수를 old_count 에 담은 뒤 old_count + 1 로 다시 적는다), 그 사용자의 역할을 role 에 담는다
-# 4. 같은 허용 기록에서, used 에 role 이 아직 없으면 used[role] = [] 로 빈 리스트를 먼저 만들고,
-#    used[role] 리스트에 "자원:행위" 문자열을 추가한다
-# 5. 아니면 denied 를 1 늘리고, "[거부]" 와 번호 · 시각 · 사용자 · 자원 · 행위 · 이유를 출력하고,
-#    counts 의 "사용자 거부" 를 같은 방법(count_key · old_count)으로 1 늘린다
-
-print("허용", allowed, "거부", denied)                           # 전체 건수를 출력한다
-print(counts)                                                    # 사용자별 건수를 출력한다
-
-# ← 단계 2 미사용 점검: 쓰이지 않은 권한 출력하기
-# 6. ROLES 에서 역할과 권한 리스트를 하나씩 꺼낸다
-# 7. 그 리스트의 권한을 하나씩 꺼내, used.get(역할, []) 에 없으면 "쓰이지 않음", 역할, 권한 을 출력한다
+def evaluate_access(user, resource, action, now):                # 사용자 · 자원 · 행위 · 지금 시각을 받는 함수
+    """(허용 여부, 이유)를 리턴한다.
+    역할 권한 → 유효한 예외 → 거부 순서로 보며, 임시 예외까지 포함해 요청을 판정할 때 쓴다.
+    """
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 1. check_permission 으로 판정해 is_allowed, reason 으로 나눠 받는다
+    # 2. is_allowed 이면 True, "역할 권한" 을 리턴한다
+    # 3. reason 이 "권한 없음" 이 아니면 False 와 그 reason 을 그대로 리턴한다
+    # 4. find_exception 에 user, "자원:행위" 문자열(f"{resource}:{action}"), now 를 넣어 found, found_exception_id 로 나눠 받는다
+    # 5. found 이면 True, f"예외 {found_exception_id}번" 을 리턴한다
+    # 6. 여기까지 왔으면 False, "권한 없음" 을 리턴한다
 ```
 
-- 키는 `user + " 허용"` 처럼 사용자 이름과 문자열을 합쳐 만듭니다. 문자열과 문자열은 `+` 로 이어 붙입니다(`"seoyeon" + " 허용"` 은 `seoyeon 허용`).
-- `for log_id, time, user, resource, action in LOG:` 처럼 반복문의 이름은 기록 한 줄의 값 개수(다섯 개)만큼 쓰고, 아래 코드에서는 같은 이름을 씁니다.
-- 거부 줄은 `print("[거부]", log_id, time, user, resource, action, "-", reason)` 모양으로 출력합니다.
-- `used.get(role, [])` 는 그 역할이 기록에 한 번도 없을 때 빈 리스트를 리턴합니다. 그러면 그 역할의 권한은 모두 「쓰이지 않음」이 됩니다.
-- 거부된 기록은 쓴 권한으로 모으지 않습니다. 거부된 요청은 권한을 쓴 것이 아니기 때문입니다.
-- 딕셔너리 안에 리스트를 만들어 쌓는 모양은 이렇습니다: `if role not in used:` 다음 줄에 `used[role] = []` 로 빈 리스트를 먼저 만들고, 그다음 줄에 `used[role].append(값)` 으로 추가합니다(앞선 실습의 `.append`).
-- 코드는 `# ← 단계 1` 주석 아래, `print("허용", …)` 줄 **위**에 씁니다. 단계 2 코드는 `# ← 단계 2` 주석 아래에 씁니다. 들여쓰기 구조는 아래와 같습니다.
+**`exercise1-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 이 파일은 오늘 요청 아홉 건을 그 시각대로 `evaluate_access` 로 판정합니다. 그리고 3.2 의 순서로 방식별 건수와 예외 번호별 사용 건수를 세고, 예외가 끝난 뒤의 시도를 알립니다.
 
+```python
+from datetime import datetime                                    # 요청 시각을 만드는 데 쓴다
+from policy import evaluate_access                               # 방금 만든 최종 판정 함수를 불러온다
+from exception_policy import EXCEPTIONS                          # 제공 파일의 예외 리스트를 불러온다
+
+TODAY_LOG = [                                                    # 오늘 정산 포털 요청 기록. (시각, 사용자, 자원, 행위)
+    ("09:10", "seoyeon", "SETTLE", "QUERY"),                     # 예외 1번 기간 안
+    ("10:00", "dami", "SALES", "QUERY"),                         # 퇴사자(예외 3번이 남아 있음)
+    ("11:40", "gaeun", "SETTLE", "QUERY"),                       # 예외 5번 기간 안
+    ("12:30", "gaeun", "SETTLE", "QUERY"),                       # 예외 5번이 12:00 에 끝난 뒤
+    ("13:00", "junho", "SETTLE", "QUERY"),                       # 역할 권한으로 허용되는 요청
+    ("14:00", "batch-night", "SALES", "QUERY"),                  # 예외 4번 기간 안
+    ("15:00", "junho", "SALES", "CHANGE"),                       # 예외 2번은 10/20(화) 에 끝남
+    ("16:20", "seoyeon", "SETTLE", "QUERY"),                     # 예외 1번 기간 안
+    ("18:05", "seoyeon", "SETTLE", "QUERY"),                     # 예외 1번이 18:00 에 끝난 뒤
+]
+
+counts = {}                                                      # "역할로 허용" · "예외로 허용" · "거부" → 건수
+used = {}                                                        # "예외 N번" → 오늘 쓰인 건수
+
+for time, user, resource, action in TODAY_LOG:                   # 기록을 하나씩 꺼낸다
+    now = datetime.strptime("2026-10-22 " + time, "%Y-%m-%d %H:%M")   # 오늘 날짜와 그 요청의 시각을 시각으로 바꾼다
+    is_allowed, reason = evaluate_access(user, resource, action, now)    # 그 시각으로 최종 판정을 받는다
+    print(time, user, resource, action, "->", is_allowed, reason)        # 결과를 출력한다
+    if is_allowed and reason == "역할 권한":                               # 역할로 허용이면
+        count_key = "역할로 허용"                                     # 세는 기준이 되는 키
+        old_count = counts.get(count_key, 0)                     # 그 키의 지금까지 센 수(처음이면 0)
+        counts[count_key] = old_count + 1                        # 1 늘려서 다시 적는다
+    elif is_allowed:                                                     # 그 밖의 허용은 예외로 허용
+        count_key = "예외로 허용"                                     # 세는 기준이 되는 키
+        old_count = counts.get(count_key, 0)                     # 그 키의 지금까지 센 수(처음이면 0)
+        counts[count_key] = old_count + 1                        # 1 늘려서 다시 적는다
+        old_count = used.get(reason, 0)                          # 그 키의 지금까지 센 수(처음이면 0)
+        used[reason] = old_count + 1                             # 1 늘려서 다시 적는다
+    else:                                                        # 거부면
+        count_key = "거부"                                         # 세는 기준이 되는 키
+        old_count = counts.get(count_key, 0)                     # 그 키의 지금까지 센 수(처음이면 0)
+        counts[count_key] = old_count + 1                        # 1 늘려서 다시 적는다
+        if reason == "권한 없음":                                 # 거부 이유가 「권한 없음」일 때만
+            permission = resource + ":" + action                 # "자원:행위" 모양 권한 문자열을 만든다
+            for exception in EXCEPTIONS:                               # 예외 리스트를 하나씩 꺼낸다
+                if exception["user"] == user and exception["permission"] == permission:   # 같은 사람 · 같은 권한의 예외가 있으면
+                    print("[만료 뒤 시도]", time, user, resource, action, "- 만료된 예외", exception["id"], exception["expires"])   # 만료 뒤 시도로 알린다
+
+print(counts)                                                    # 방식별 건수를 출력한다
+print("예외 사용", used)                                          # 예외 번호별 사용 건수를 출력한다
 ```
-for … in LOG:                  # 단계 1: 들여쓰기 없음
-    is_allowed, reason = …             # 4칸
-    if is_allowed:                     # 4칸
-        …                      # 허용일 때: 8칸 (그 안의 if role not in used: 안쪽은 12칸)
-    else:                      # 4칸
-        …                      # 거부일 때: 8칸
-
-for … in ROLES.items():        # 단계 2: 들여쓰기 없음
-    for … in …:                # 4칸
-        if …:                  # 8칸
-            print(…)           # 12칸
-```
-
-- 맞게 썼다면 단계 1 끝에 `허용 7 거부 8` 이 나오고, 단계 2 에서 `쓰이지 않음` 줄이 7개 나옵니다.
+- `evaluate_access` 의 들여쓰기: 본문은 모두 함수 안이라 4칸으로 쓰고, 2번 `if` 아래 `return` 과 3번 `if` 아래 `return` 은 4칸 더(8칸) 들어갑니다. 5번 `if` 아래 `return` 도 8칸입니다.
+- `evaluate_access` 를 채우기 전에 실행하면 `TypeError: cannot unpack non-iterable NoneType object` 오류가 납니다. 함수가 아무것도 리턴하지 않아 `is_allowed, reason` 으로 나눠 받지 못하기 때문입니다. 본문을 채운 뒤에 실행합니다.
 
 **순서**
 
-1. **[터미널]** 위치가 `…/access_control` 인지 확인합니다. 아니면 그 폴더로 들어갑니다.
+1. **[VS Code]** 두 파일을 만들고 각각 붙여 넣습니다.
+   - 만드는 방법은 실습 1-2 의 순서 1번과 같습니다(VS Code 새 파일 아이콘). 만들 파일 이름은 차례로 `policy.py` · `exercise1-3_run.py` 입니다. 붙여 넣을 내용은 위 코드 상자입니다.
+2. **[VS Code]** `policy.py` 의 `evaluate_access` 본문을 직접 씁니다. 3.1 의 그림을 보고 씁니다.
+3. **[터미널]** 실행합니다.
    ```bash
-   pwd
+   python exercise1-3_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치를 보여 줌
-   - 결과가 `…/access_control` 로 끝나지 않으면 `cd access_control` 로 들어갑니다(`security-agent-toolkit` 에서 시작했다면).
-2. **[VS Code]** `access_log.py` 와 `exercise1-3_audit.py` 를 만들고 각각 붙여 넣습니다. 파일마다 아래 세 가지 방법 중 **하나만** 고릅니다.
-   - **VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
-     1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
-     2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `access_log.py` · `exercise1-3_audit.py` 입니다.
-     4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
-3. **[VS Code]** `exercise1-3_audit.py` 의 `# ←` 아래 단계 1 과 단계 2 를 직접 씁니다. 실습 1-2 의 `exercise1-2_run.py` 반복문과 건수 세기, 3.1 의 권한 대조 그림을 떠올립니다.
-4. **[터미널]** 실행합니다.
-   ```bash
-   python exercise1-3_audit.py
-   ```
-   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise1-3_audit.py` 실행할 파일
-5. 거부된 번호를 기록에서 수상해 보이는 번호(새벽 3 · 4 · 5번, 낮의 12 · 14 · 15 · 16 · 17번)와 비교합니다. 2번은 로그인 줄이라 3.1 의 기록에서 뺐습니다.
-   - 여기서 **보고서 (가) · (나)** 를 먼저 씁니다.
-6. 나온 「쓰이지 않음」 줄마다 1.3 의 매트릭스와 계정 설명을 보고 「하루 기록에 없었을 뿐 필요한 권한」인지 「필요 없는 권한」인지 나눕니다.
-   - 여기서 **보고서 (다)** 를 먼저 씁니다.
-7. **[보고서]** `report_u1.md` 의 `## 실습 1-3` 아래를 채웁니다.
-   - (가) [핵심 질문] 실행한 출력에서 허용 · 거부가 각각 몇 건이고 거부된 번호가 무엇인지 적어 주세요. 또 점수로 판단하던 방식(PDP)은 낮의 12 · 14 ~ 17번을 막지 못했는데 RBAC 는 막은 이유를, 두 방식이 무엇을 보고 판정하는지 비교해 설명해 주세요.
-   - (나) [핵심 질문] 이 결과만으로 「RBAC 를 켜면 정상 업무는 막히지 않는다」고 말할 수 있나요? 이 기록으로 확인되는 것, 확인되지 않는 것, 기록이 하루치뿐이라서 생기는 한계를 적어 주세요.
-   - (다) [핵심 질문] 실습 1-1 (나)에서 필요 이상이라고 고른 ○ 는 이 기록에서도 쓰이지 않았나요? 쓰이지 않은 권한 가운데 줄일 것 하나와 남길 것 하나를 고르고 각각 이유를 적어 주세요(`auditor` 는 사용자가 없어 전부 쓰이지 않음으로 나오므로 이 역할은 빼고 고릅니다).
+   - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise1-3_run.py` 실행할 파일
+   맥북: `python3 exercise1-3_run.py`
+4. 요청 아홉 건의 결과 사이에 `[만료 뒤 시도]` 줄이 섞여 나오고, 마지막 두 줄이 방식별 건수와 예외 번호별 사용 건수입니다.
+5. **[보고서]** `report_u1.md` 의 `## 실습 1-3` 아래를 채웁니다.
+   - (가) 실행한 출력 전체를 붙여 넣고, `[만료 뒤 시도]` 로 출력된 세 건의 사용자와 끝난 예외 번호, 마지막 줄 「예외 사용」에서 예외 1번이 쓰인 횟수를 적어 주세요.
+   - (나) [핵심 질문] 역할 판정에서 「권한 없음」이 아닌 이유(퇴사 · 없는 사용자 · 역할이 없음)로 거부되면 예외를 보지 않게 했습니다. 골격의 3번 주석(`# 3. …`)이 없다고 가정하면 퇴사자 `dami` 의 영업 실적 조회는 어떻게 판정되나요? 코드를 지우지 말고 생각해서 답합니다. 3.1 의 그림으로 설명하고, 현업에서 이런 허점이 어떤 사고로 이어질 수 있는지 적어 주세요.
+   - (다) [핵심 질문] 오늘 실습 1-3까지 만든 파일들이 서로 어떻게 이어지는지 그려 보세요. `exercise1-3_run.py` 에서 출발해, 파일 이름 · 함수 이름 · 읽는 설정 파일을 상자와 화살표(`+---+` · `|` · `v` · `+-->`)로 이어 글자로 그립니다(3.3 의 본보기를 참고). 그린 뒤, `config/exceptions.json` 이 깨졌을 때 이 그림의 어느 화살표에서 멈추는지 적어 주세요.
 
-## 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기
+## 실습 1-3 정리
 
-문제가 아니라 하루를 닫는 마무리입니다.
+| 하려는 일 | 코드 · 말 |
+|---|---|
+| 역할 판정 먼저 | `is_allowed, reason = check_permission(user, resource, action)` |
+| 사람이 막히면 예외도 안 봄 | `if reason != "권한 없음": return False, reason` |
+| 예외 찾기 | `found, found_exception_id = find_exception(user, f"{resource}:{action}", now)` |
+| 이유 남기기 | `"역할 권한"` · `f"예외 {found_exception_id}번"` · 거부 이유 |
+| 방식별로 세기 | 「역할 권한」 허용 → 역할로 · 그 밖의 허용 → 예외로 · 거부 |
+| 만료 뒤 시도 | 거부 이유가 「권한 없음」이고 같은 사람 · 같은 권한의 예외가 리스트에 있음 |
 
-- 팀장이 「Module 3 첫날 만든 설정 파일과 판정 코드를 저장소에 남겨 달라」고 합니다. 올리기 전에 올라갈 파일을 확인하고, 비밀 키 파일(`.env`)이 섞이지 않았는지 봐야 합니다.
+---
 
-**순서**
+## 이번 Unit 마무리 · 깃허브에 올리기
+
+문제가 아니라 하루를 닫는 마무리입니다(15분). 핵심 실습 세 개를 끝낸 뒤 합니다.
+
+**1. 오늘 한 일 확인**
+
+1. 인증과 인가를 구분하고, 매트릭스로 요청을 판정했다 (실습 1-1)
+2. `config/users.json` 과 `config/roles.json` 을 직접 쓰고 JSON 규칙을 확인했다 (실습 1-1)
+3. `check_permission` 이 모든 실패 경로를 서로 다른 이유로 거부한다 (실습 1-2)
+4. `evaluate_access` 가 역할 권한을 먼저 보고, 「권한 없음」일 때만 예외를 본다 (실습 1-3)
+5. 보고서 `report_u1.md` 의 실습 1-1 ~ 1-3 칸에 `답:` 뒤가 비어 있는 질문이 없다
+
+**2. 파일 확인** — **[터미널]** `access_control` 폴더에서 확인합니다.
+
+```bash
+ls
+ls config
+```
+
+- `rbac.py` · `exercise1-2_run.py` · `exception_policy.py` · `config_loader.py` · `policy.py` · `exercise1-3_run.py` · `report_u1.md` 가 보여야 합니다.
+- `config` 안에는 `users.json` · `roles.json` · `exceptions.json` 이 보여야 합니다.
+
+**3. 깃허브에 올리기**
 
 1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
    ```bash
@@ -243,54 +224,26 @@ for … in ROLES.items():        # 단계 2: 들여쓰기 없음
    git status
    ```
    - 명령 풀이: `git status` 올릴 파일의 상태를 봄
-   - `.env` 가 보이면: VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 도 같은 방법으로 합니다.
-   - 새 폴더는 `access_control/` 한 줄로 보입니다. 줄 수는 `Untracked files:` 아래에 보이는 줄을 그대로 셉니다.
-   - 파이썬이 실행하면서 `access_control/__pycache__/` 라는 임시 폴더를 자동으로 만들어 두었을 수 있습니다. 올릴 필요가 없으므로 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 더 적고 저장합니다.
-3. **[보고서]** `report_u1.md` 의 `## 마무리` 아래를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다.
-   - (가) `git status` 를 쳤을 때 빨간 목록에 줄이 몇 개였는지, 그 가운데 `.env` · `.venv` 가 있었는지 적어 주세요.
+   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 도 같은 방법으로 합니다.
+   - `access_control/__pycache__/` 는 파이썬이 실행하면서 자동으로 만든 임시 폴더입니다. 올릴 필요가 없으므로 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 더 적고 저장합니다.
+3. **[보고서]** `report_u1.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
    ```bash
    git add .
-   git commit -m "Add access control day 1 RBAC config, checker and report"
+   git commit -m "Add access control unit 1 roles, checker, policy and report"
    git push
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - `git push` 가 거절(`rejected`)되면 `git pull` 을 입력해 받아 온 뒤 `git push` 를 다시 합니다
-   - 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다
-5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `access_control` 폴더를 열고, 오늘 만든 파일이 모두 있는지 확인합니다: `config` 폴더(안에 `users.json` · `roles.json`) · `rbac.py` · `access_log.py` · `exercise1-2_run.py` · `exercise1-3_audit.py` · `report_u1.md`.
-   - 빠진 파일이 있으면 터미널에서 `ls access_control` 로 내 PC 에 있는지 봅니다. 있으면 2 ~ 4번을 다시 합니다.
+   - `git push` 가 거절(`rejected`)되면 `git pull` 로 받아 온 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다.
+5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `access_control` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다.
 
-## 실습 1-3 정리
+- 시간이 남아 도전을 했다면 도전 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
 
-| 하려는 일 | 코드 · 말 |
-|---|---|
-| 지난 기록에 새 규칙 적용 | 기록 재판정(replay): `for … in LOG:` 안에서 `check_permission(…)`, 같은 반복문에서 쓴 권한도 모음 |
-| 키별 건수 세기 | `old_count = counts.get(키, 0)` → `counts[키] = old_count + 1` |
-| 역할별 사용 모으기 | `used[role].append(f"{resource}:{action}")` |
-| 쓰이지 않은 권한 | 역할의 권한 중 `used.get(role, [])` 에 없는 것 |
-| 올리기(마무리) | `git status` → `git add .` → `git commit -m "…"` → `git push` |
+**4. 이어지는 곳**
 
----
-
-## 이번 Unit 마무리
-
-| 확인 | 문제 |
-|---|---|
-| 인증과 인가를 구분하고 매트릭스로 요청을 판정했다 | 실습 1-1 |
-| `config/users.json` 과 `config/roles.json` 을 직접 쓰고 JSON 규칙을 확인했다 | 실습 1-1 |
-| `check_permission` 이 모든 실패 경로를 다른 이유로 거부한다 | 실습 1-2 |
-| 기록을 다시 판정해 건수를 세고 쓰이지 않은 권한을 찾았다 | 실습 1-3 |
-| 오늘 만든 파일과 보고서를 깃허브에 올렸다 | 마무리 |
-
-| 실습 | 오늘 만든 것 | 이어지는 곳 |
-|---|---|---|
-| 실습 1-1 | 권한 매트릭스 · `users.json` · `roles.json` | Unit 2의 정책이 그대로 읽음 |
-| 실습 1-2 | `check_permission` (`rbac.py`) | Unit 2의 `policy.py`, Unit 9의 서버로 열기 |
-| 실습 1-3 | 기록 재판정 · 쓰이지 않은 권한 | Unit 6의 과다권한 탐지(90일 미사용) |
-
-다음 Unit(Unit 2)에서는 입사 · 이동 · 퇴사에 맞춰 **역할을 부여하고 접근을 회수**하는 함수와, 기간이 정해진 예외 권한을 다루는 정책 `policy.py` 를 만듭니다. 오늘의 `rbac.py` 를 그대로 불러 씁니다.
-
-> **앞으로의 예고** — Module 3 후반(Unit 9)에는 오늘 쓴 `check_permission` 을 **서버**로 열어 봅니다. 이번에는 파이썬 파일(`.py`)로 서버를 만들어 터미널에서 켜 두고 다른 터미널에서 요청을 보냅니다. PDP(판단 서버)와 PEP(집행)를 직접 만져 보는 수업입니다. 그때까지는 오늘 만든 `rbac.py` 를 잘 두면 됩니다.
+1. `users.json` · `roles.json` · `rbac.py` 는 Module 3 끝까지 그대로 불러 씁니다.
+2. `policy.py` 의 `evaluate_access` 는 다음 Unit 2(권한 주기)에서 요청으로 권한을 주기 전과 준 뒤의 판정을 비교할 때 씁니다.
+3. `config_loader.py` 의 `load_json` 은 Unit 2부터 설정 파일을 읽을 때 씁니다.
 
 ---
 

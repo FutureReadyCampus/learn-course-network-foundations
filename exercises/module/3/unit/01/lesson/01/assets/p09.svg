@@ -1,50 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>글 틀 세 가지 중 하나를 골라 _posts/ 아래 새 파일로 만들고 빈칸을 채웁니다</title>
-<desc>왼쪽은 글 틀 post-practice(기본), post-short(세 문장), post-stuck(막힌 일)입니다. 하나를 복사해 _posts/날짜-영문제목.md 새 파일로 만들고 빈칸을 채웁니다. 실행 결과 화면은 assets/images/ 에 올려 글에 연결합니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>첫 화면이 이렇게 보이면 성공이고, 막히면 Actions 탭에서 오류 줄을 읽습니다</title>
+<desc>왼쪽은 완성된 첫 화면입니다. 위쪽에 사이트 이름과 소개·홈 메뉴, 소개 문단, Module 3·4·5 각 10칸이 모두 회색인 나의 진행, 샘플 글 한 편이 있는 최신 글이 보입니다. 오른쪽은 확인할 세 가지와, 막힐 때 Actions 탭에서 가장 위 실행을 열어 빨간 ✗이면 오류 줄을 읽는 순서입니다.</desc>
 <defs>
-<marker id="a-p09" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
+<marker id="a-p08" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
 </defs>
-<text x="20" y="30" font-size="19" font-weight="700" fill="#292929">글 틀로 글 한 편 쓰기</text>
-
+<text x="20" y="30" font-size="19" font-weight="700" fill="#292929">첫 화면 확인과 막힐 때 볼 곳</text>
 <g font-size="15" fill="#292929">
-<text x="20" y="62" font-size="14" fill="#666660">① 하나 고르기</text>
-<rect x="20" y="74" width="220" height="64" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="36" y="100" font-weight="700">post-practice.md</text>
-<text x="36" y="124" font-size="14" fill="#666660">실습 한 개 · 기본 틀</text>
-<rect x="20" y="152" width="220" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="36" y="178" font-weight="700">post-short.md</text>
-<text x="36" y="202" font-size="14" fill="#666660">5분 · 세 문장</text>
-<rect x="20" y="230" width="220" height="64" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="36" y="256" font-weight="700">post-stuck.md</text>
-<text x="36" y="280" font-size="14" fill="#666660">막혔던 일 남기기</text>
-
-<text x="276" y="62" font-size="14" fill="#666660">② 복사해 새 파일</text>
-<rect x="276" y="74" width="230" height="220" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="292" y="104" font-weight="700">_posts/</text>
-<text x="292" y="128" font-weight="700">날짜-영문제목.md</text>
-<line x1="292" y1="148" x2="490" y2="148" stroke="#dededb" stroke-width="1.5"/>
-<text x="292" y="176" font-size="14" fill="#666660">예:</text>
-<text x="292" y="198" font-size="14">_posts/</text>
-<text x="292" y="218" font-size="14">2026-01-15-first-post.md</text>
-<text x="292" y="270" font-size="14" fill="#666660">처음엔 짧은 틀도 좋음</text>
-
-<text x="542" y="62" font-size="14" fill="#666660">③ 채우기</text>
-<rect x="542" y="74" width="160" height="220" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="558" y="104" font-weight="700">빈칸 채우기</text>
-<text x="558" y="138">주석 안내를</text>
-<text x="558" y="160">읽고 내 말로</text>
-<text x="558" y="196" font-size="14" fill="#666660">무엇을 했나</text>
-<text x="558" y="218" font-size="14" fill="#666660">무엇을 골랐나</text>
-<text x="558" y="240" font-size="14" fill="#666660">왜 골랐나</text>
-<text x="558" y="276" font-size="14" fill="#666660">(post-short 예)</text>
-
-<rect x="20" y="314" width="682" height="52" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="36" y="346">실행 결과 화면은 이미지로 저장해 <tspan font-weight="700">assets/images/</tspan> 에 올리고 글에 연결</text>
+<rect x="20" y="50" width="400" height="344" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<path d="M20 90H420" stroke="#dededb"/>
+<text x="36" y="76" font-size="16" font-weight="700">사이트 이름</text>
+<text x="324" y="76">소개</text>
+<text x="372" y="76">홈</text>
+<text x="36" y="116" font-size="14" fill="#666660">소개 문단</text>
+<rect x="36" y="126" width="360" height="10" rx="5" fill="#f1f1ef"/>
+<rect x="36" y="144" width="280" height="10" rx="5" fill="#f1f1ef"/>
+<text x="36" y="184" font-weight="700">나의 진행</text>
+<text x="36" y="212" font-size="14">Module 3</text>
+<text x="36" y="242" font-size="14">Module 4</text>
+<text x="36" y="272" font-size="14">Module 5</text>
+<g fill="#dededb">
+<rect x="112" y="196" width="22" height="22" rx="3"/><rect x="138" y="196" width="22" height="22" rx="3"/><rect x="164" y="196" width="22" height="22" rx="3"/><rect x="190" y="196" width="22" height="22" rx="3"/><rect x="216" y="196" width="22" height="22" rx="3"/><rect x="242" y="196" width="22" height="22" rx="3"/><rect x="268" y="196" width="22" height="22" rx="3"/><rect x="294" y="196" width="22" height="22" rx="3"/><rect x="320" y="196" width="22" height="22" rx="3"/><rect x="346" y="196" width="22" height="22" rx="3"/>
+<rect x="112" y="226" width="22" height="22" rx="3"/><rect x="138" y="226" width="22" height="22" rx="3"/><rect x="164" y="226" width="22" height="22" rx="3"/><rect x="190" y="226" width="22" height="22" rx="3"/><rect x="216" y="226" width="22" height="22" rx="3"/><rect x="242" y="226" width="22" height="22" rx="3"/><rect x="268" y="226" width="22" height="22" rx="3"/><rect x="294" y="226" width="22" height="22" rx="3"/><rect x="320" y="226" width="22" height="22" rx="3"/><rect x="346" y="226" width="22" height="22" rx="3"/>
+<rect x="112" y="256" width="22" height="22" rx="3"/><rect x="138" y="256" width="22" height="22" rx="3"/><rect x="164" y="256" width="22" height="22" rx="3"/><rect x="190" y="256" width="22" height="22" rx="3"/><rect x="216" y="256" width="22" height="22" rx="3"/><rect x="242" y="256" width="22" height="22" rx="3"/><rect x="268" y="256" width="22" height="22" rx="3"/><rect x="294" y="256" width="22" height="22" rx="3"/><rect x="320" y="256" width="22" height="22" rx="3"/><rect x="346" y="256" width="22" height="22" rx="3"/>
 </g>
-
-<path d="M241 106H258V262H241" stroke="#666660" stroke-width="2" fill="none"/>
-<g stroke="#666660" stroke-width="2" fill="none" marker-end="url(#a-p09)">
-<path d="M241 184H272"/>
-<path d="M507 184H538"/>
+<text x="36" y="314" font-weight="700">최신 글</text>
+<rect x="36" y="326" width="360" height="40" rx="6" fill="#f1f1ef"/>
+<text x="50" y="351">샘플 글 한 편</text>
+<text x="382" y="351" font-size="14" fill="#666660" text-anchor="end">sample: true</text>
+<text x="36" y="386" font-size="14" fill="#666660">Unit 1~10 칸 모두 회색</text>
+<rect x="440" y="50" width="260" height="190" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="456" y="76" font-size="16" font-weight="700">이렇게 보이면 성공</text>
+<text x="456" y="104">① Settings → Pages에</text>
+<text x="476" y="124">Your site is live at</text>
+<text x="456" y="154">② 주소를 열면</text>
+<text x="476" y="174">왼쪽 같은 화면</text>
+<text x="456" y="204">③ 위쪽 소개를 누르면</text>
+<text x="476" y="224">about.md 내용</text>
+<rect x="440" y="256" width="260" height="138" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="456" y="282" font-size="16" font-weight="700">막힐 때</text>
+<text x="456" y="308">Actions 탭</text>
+<text x="476" y="332">가장 위 실행</text>
+<text x="476" y="356">빨간 ✗이면 눌러서</text>
+<text x="476" y="378">오류 줄 읽기</text>
+</g>
+<g stroke="#666660" stroke-width="1.5" marker-end="url(#a-p08)">
+<line x1="462" y1="314" x2="470" y2="326"/>
+<line x1="462" y1="338" x2="470" y2="350"/>
 </g>
 </svg>

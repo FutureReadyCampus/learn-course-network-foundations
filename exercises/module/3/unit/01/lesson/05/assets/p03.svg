@@ -1,72 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img">
-<title>채우기 전에는 minsu 만 거부되고 채운 뒤에는 다섯 건이 검사 [1]~[4]에서 거부된다</title>
-<desc>요청 아홉 건의 채우기 전 결과와 채운 뒤 결과, 걸린 검사 번호를 나란히 보여 준다. 채우기 전에는 [1] 검사뿐이라 네 건이 잘못 허용됐다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>find_exception 은 사람과 권한이 같고 지금이 만료 시각보다 앞인 예외만 유효하다고 본다</title>
+<desc>예외를 하나씩 꺼내 사람과 권한이 같은지 보고, 같으면 만료 시각을 시각으로 바꿔 지금과 비교합니다. 만료 전이면 (True, 번호)를 바로 리턴하고, 다르거나 만료면 다음 예외로 가며, 끝까지 못 찾으면 (False, None)을 리턴합니다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 1-2 정답: 채우기 전과 채운 뒤</text>
-<rect x="20" y="46" width="680" height="340" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="20" y="46" width="680" height="34" rx="4" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="30" y="69" font-size="15" fill="#292929" font-weight="700">요청</text>
-<text x="260" y="69" font-size="15" fill="#292929" font-weight="700">채우기 전</text>
-<text x="360" y="69" font-size="15" fill="#292929" font-weight="700">채운 뒤</text>
-<text x="610" y="69" font-size="15" fill="#292929" font-weight="700">걸린 검사</text>
-<rect x="354" y="84" width="242" height="26" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="30" y="102" font-size="14" fill="#292929">seoyeon SALES QUERY</text>
-<text x="260" y="102" font-size="14" fill="#292929">True</text>
-<text x="360" y="102" font-size="14" fill="#292929">True 허용</text>
-<text x="610" y="102" font-size="14" fill="#292929">-</text>
-<line x1="20" y1="114" x2="700" y2="114" stroke="#dededb" stroke-width="1.5"/>
-<rect x="254" y="118" width="92" height="26" rx="4" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<rect x="354" y="118" width="242" height="26" rx="4" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="30" y="136" font-size="14" fill="#292929">seoyeon SETTLE QUERY</text>
-<text x="260" y="136" font-size="14" fill="#292929">True</text>
-<text x="360" y="136" font-size="14" fill="#292929">False 권한 없음</text>
-<text x="610" y="136" font-size="14" fill="#292929">[4]</text>
-<line x1="20" y1="148" x2="700" y2="148" stroke="#dededb" stroke-width="1.5"/>
-<rect x="354" y="152" width="242" height="26" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="30" y="170" font-size="14" fill="#292929">junho SETTLE QUERY</text>
-<text x="260" y="170" font-size="14" fill="#292929">True</text>
-<text x="360" y="170" font-size="14" fill="#292929">True 허용</text>
-<text x="610" y="170" font-size="14" fill="#292929">-</text>
-<line x1="20" y1="182" x2="700" y2="182" stroke="#dededb" stroke-width="1.5"/>
-<rect x="254" y="186" width="92" height="26" rx="4" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<rect x="354" y="186" width="242" height="26" rx="4" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="30" y="204" font-size="14" fill="#292929">junho SALES CHANGE</text>
-<text x="260" y="204" font-size="14" fill="#292929">True</text>
-<text x="360" y="204" font-size="14" fill="#292929">False 권한 없음</text>
-<text x="610" y="204" font-size="14" fill="#292929">[4]</text>
-<line x1="20" y1="216" x2="700" y2="216" stroke="#dededb" stroke-width="1.5"/>
-<rect x="254" y="220" width="92" height="26" rx="4" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<rect x="354" y="220" width="242" height="26" rx="4" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="30" y="238" font-size="14" fill="#292929">dami SALES QUERY</text>
-<text x="260" y="238" font-size="14" fill="#292929">True</text>
-<text x="360" y="238" font-size="14" fill="#292929">False 퇴사한 계정</text>
-<text x="610" y="238" font-size="14" fill="#292929">[2]</text>
-<line x1="20" y1="250" x2="700" y2="250" stroke="#dededb" stroke-width="1.5"/>
-<rect x="354" y="254" width="242" height="26" rx="4" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="30" y="272" font-size="14" fill="#292929">minsu SALES QUERY</text>
-<text x="260" y="272" font-size="14" fill="#292929">False</text>
-<text x="360" y="272" font-size="14" fill="#292929">False 등록되지 않은 사용자</text>
-<text x="610" y="272" font-size="14" fill="#292929">[1]</text>
-<line x1="20" y1="284" x2="700" y2="284" stroke="#dededb" stroke-width="1.5"/>
-<rect x="354" y="288" width="242" height="26" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="30" y="306" font-size="14" fill="#292929">gaeun ACCOUNT CHANGE</text>
-<text x="260" y="306" font-size="14" fill="#292929">True</text>
-<text x="360" y="306" font-size="14" fill="#292929">True 허용</text>
-<text x="610" y="306" font-size="14" fill="#292929">-</text>
-<line x1="20" y1="318" x2="700" y2="318" stroke="#dededb" stroke-width="1.5"/>
-<rect x="354" y="322" width="242" height="26" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="30" y="340" font-size="14" fill="#292929">batch-night SETTLE QUERY</text>
-<text x="260" y="340" font-size="14" fill="#292929">True</text>
-<text x="360" y="340" font-size="14" fill="#292929">True 허용</text>
-<text x="610" y="340" font-size="14" fill="#292929">-</text>
-<line x1="20" y1="352" x2="700" y2="352" stroke="#dededb" stroke-width="1.5"/>
-<rect x="254" y="356" width="92" height="26" rx="4" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<rect x="354" y="356" width="242" height="26" rx="4" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="30" y="374" font-size="14" fill="#292929">tester SALES QUERY</text>
-<text x="260" y="374" font-size="14" fill="#292929">True</text>
-<text x="360" y="374" font-size="14" fill="#292929">False 역할이 없음</text>
-<text x="610" y="374" font-size="14" fill="#292929">[3]</text>
-<text x="20" y="414" font-size="15" fill="#292929">채우기 전에는 [1] 검사뿐이라 네 건이 잘못 허용됐다 (fail-open)</text>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+<text x="24" y="34" font-size="19" font-weight="700">exception_policy.py · find_exception(user, permission, now)</text>
+<rect x="24" y="56" width="250" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="149" y="87" font-size="15" text-anchor="middle">예외를 하나씩 꺼낸다</text>
+<polyline points="149,107 149,131" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<rect x="24" y="132" width="250" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="149" y="158" font-size="15" text-anchor="middle">사람과 권한이</text>
+<text x="149" y="180" font-size="15" text-anchor="middle">둘 다 같은가?</text>
+<polyline points="149,193 149,217" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="160" y="210" font-size="14" fill="#666660">같다</text>
+<rect x="24" y="218" width="250" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="149" y="244" font-size="15" text-anchor="middle">now &lt; expires ?</text>
+<text x="149" y="266" font-size="14" text-anchor="middle" fill="#666660">만료 정각에는 이미 거부</text>
+<polyline points="149,279 149,303" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="160" y="296" font-size="14" fill="#666660">앞이다</text>
+<rect x="24" y="304" width="250" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="149" y="330" font-size="15" text-anchor="middle" font-weight="700">(True, 예외 번호)</text>
+<text x="149" y="352" font-size="14" text-anchor="middle">바로 리턴</text>
+<polyline points="275,162 340,162" fill="none" stroke="#666660" stroke-width="1.8"/>
+<polyline points="275,248 340,248 340,81 276,81" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="352" y="150" font-size="14" fill="#666660">다르거나 만료면</text>
+<text x="352" y="170" font-size="14" fill="#666660">다음 예외로</text>
+<rect x="434" y="304" width="262" height="60" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="565" y="330" font-size="15" text-anchor="middle" font-weight="700">(False, None)</text>
+<text x="565" y="352" font-size="14" text-anchor="middle">모든 예외를 봐도 못 찾으면</text>
+<rect x="476" y="96" width="220" height="132" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="490" y="122" font-size="14" font-weight="700">예 · 지금 14:00</text>
+<text x="490" y="146" font-size="14">seoyeon SETTLE:QUERY</text>
+<text x="490" y="166" font-size="14">→ (True, 1)</text>
+<text x="490" y="192" font-size="14">gaeun SETTLE:QUERY</text>
+<text x="490" y="212" font-size="14">→ (False, None)</text>
 </g>
 </svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>실습 2-2 보고서 칸: (가) 출력과 막힌 세 줄, (나) 다시 승인 막기, (다) 본인 검사</title>
+<desc>실습 2-2 보고서에서 채울 칸입니다. (가)는 출력과 막힌 세 줄의 이유, 핵심 질문 (나)는 재승인을 막는 이유, (다)는 본인 검사를 뺐을 때의 위험과 더 필요한 장치입니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">실습 2-2 · 승인과 반려 · 채울 칸</text>
+<rect x="30" y="56" width="670" height="100" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="46" y="82" font-size="16" fill="#292929" text-anchor="start" font-weight="700">(가) 출력 전체와 막힌 세 줄</text>
+<rect x="60" y="97" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="86" y="110" font-size="15" fill="#292929" text-anchor="start">① 출력 전체 (코드 상자에 붙여 넣기)</text>
+<rect x="60" y="125" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="86" y="138" font-size="15" fill="#292929" text-anchor="start">② 막힌 세 줄 각각의 이유</text>
+<rect x="30" y="168" width="670" height="100" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="46" y="194" font-size="16" fill="#292929" text-anchor="start" font-weight="700">(나) [핵심 질문] 이미 승인한 요청서를 다시 승인하지 못하게 막는 이유</text>
+<rect x="60" y="209" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="86" y="222" font-size="15" fill="#292929" text-anchor="start">① 막는 이유</text>
+<rect x="60" y="237" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="86" y="250" font-size="15" fill="#292929" text-anchor="start">② 막지 않을 때 생길 수 있는 일</text>
+<rect x="30" y="280" width="670" height="100" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="46" y="306" font-size="16" fill="#292929" text-anchor="start" font-weight="700">(다) [핵심 질문] request["user"] == approver 검사를 뺀다면</text>
+<rect x="60" y="321" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="86" y="334" font-size="15" fill="#292929" text-anchor="start">① 검사를 뺐을 때의 위험</text>
+<rect x="60" y="349" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="86" y="362" font-size="15" fill="#292929" text-anchor="start">② 더 필요한 장치 한 가지 이상</text>
+</svg>

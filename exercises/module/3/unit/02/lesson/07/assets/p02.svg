@@ -1,26 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 374" role="img">
-<title>실습 2-1 보고서에 채울 칸: 출력, seoyeon 이동 결과, junho 퇴사 간격</title>
-<desc>실습 2-1 보고서의 (가)~(다) 질문마다 써야 할 내용을 체크리스트로 보여 줍니다. (나)와 (다)는 핵심 질문이라 이유까지 씁니다.</desc>
-<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
-<text x="24" y="34" font-size="19" font-weight="700">실습 2-1 보고서 · 채울 칸</text>
-<rect x="24" y="52" width="672" height="94" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="40" y="74" font-size="16" font-weight="700">(가) 출력과 hana</text>
-<rect x="44" y="86" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="68" y="98" font-size="15">출력 전체를 코드 상자에 붙여 넣기</text>
-<rect x="44" y="112" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="68" y="124" font-size="15">「hana 가 사용자에 들어갔나」 줄의 값</text>
-<rect x="24" y="158" width="672" height="94" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="40" y="180" font-size="16" font-weight="700">(나) [핵심 질문] seoyeon 이 재무로 이동</text>
-<rect x="44" y="192" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="68" y="204" font-size="15">SALES CHANGE · SETTLE QUERY 의 변경 전 → 후 결과</text>
-<rect x="44" y="218" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="68" y="230" font-size="15">이전 역할의 권한이 남아 있을 때 생기는 문제</text>
-<rect x="24" y="264" width="672" height="94" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="40" y="286" font-size="16" font-weight="700">(다) [핵심 질문] junho 퇴사 통보가 사흘 늦음</text>
-<rect x="44" y="298" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="68" y="310" font-size="15">사흘 동안 junho 계정으로 생길 수 있는 일</text>
-<rect x="44" y="324" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="68" y="336" font-size="15">간격을 줄이는 방법 두 가지 이상</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img">
+<title>검토가 미뤄지면 요청자의 일이 막히므로 4시간 처리 기한(SLA)을 코드로 점검한다</title>
+<desc>요청을 접수한 뒤 승인자가 미루면 요청자의 업무가 막히고 재촉이 이어집니다. SLA 는 이 시간 안에 처리한다는 약속이고 오늘은 4시간입니다. 기한을 초과한 요청서를 코드로 찾으면 매일 아침 알림을 보낼 수 있습니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">왜 처리 기한을 점검하는가</text>
+<rect x="64" y="60" width="150" height="84" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="139" y="97.128" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">요청 접수</text>
+<text x="139" y="117.512" font-size="14" fill="#666660" text-anchor="middle">요청서 한 장</text>
+<rect x="250" y="60" width="170" height="84" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="335" y="97.128" font-size="16" fill="#9a6200" text-anchor="middle" font-weight="700">승인자가 미룸</text>
+<text x="335" y="117.512" font-size="14" fill="#666660" text-anchor="middle">검토 중 그대로</text>
+<polyline points="217,102 246,102" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="456" y="60" width="200" height="84" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="556" y="97.128" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">요청자 업무 막힘</text>
+<text x="556" y="117.512" font-size="14" fill="#666660" text-anchor="middle">메신저로 계속 재촉</text>
+<polyline points="423,102 452,102" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="60" y="172" width="600" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="198.428" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">SLA (service level agreement)</text>
+<text x="360" y="219.82" font-size="15" fill="#292929" text-anchor="middle">「이 일은 이 시간 안에 처리한다」는 약속 · 오늘은 4시간</text>
+<rect x="60" y="252" width="600" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360" y="278.428" font-size="16" fill="#1f7a4a" text-anchor="middle" font-weight="700">코드로 기한 초과 요청서를 찾으면</text>
+<text x="360" y="299.82" font-size="15" fill="#292929" text-anchor="middle">리스트를 눈으로 훑지 않아도 매일 아침 알림을 보낼 수 있다</text>
 </g>
 </svg>

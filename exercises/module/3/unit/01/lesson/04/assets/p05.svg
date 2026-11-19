@@ -1,39 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img">
-<title>올리기 전 git status 로 .env 와 .venv 를 확인하고 없을 때만 add, commit, push 한다</title>
-<desc>security-agent-toolkit 으로 옮겨 git status 를 본다. .env 나 .venv 가 보이면 .gitignore 에 적고 다시 확인하며, 없으면 보고서 (가)를 쓰고 올린 뒤 깃허브에서 파일을 확인한다.</desc>
-<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">올리기 전에 git status 로 확인한다</text>
-<rect x="20" y="52" width="220" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="130" y="75.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">① cd .. → pwd</text>
-<text x="130" y="94.9" font-size="14" fill="#292929" text-anchor="middle">security-agent-toolkit</text>
-<rect x="20" y="132" width="220" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="130" y="155.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">② git status</text>
-<text x="130" y="174.9" font-size="14" fill="#292929" text-anchor="middle">빨간 목록 보기</text>
-<rect x="20" y="212" width="220" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="130" y="245.2" font-size="15" fill="#292929" text-anchor="middle">.env · .venv 가 보이나?</text>
-<polyline points="130,109 130,131" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
-<polyline points="130,189 130,211" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
-<rect x="320" y="196" width="380" height="90" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="510" y="226.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">보이면 올리지 않고 멈춤</text>
-<text x="510" y="245.9" font-size="14" fill="#292929" text-anchor="middle">.gitignore 맨 아래에 한 줄씩 적기</text>
-<text x="510" y="265.9" font-size="14" fill="#292929" text-anchor="middle">.env · .venv · __pycache__/</text>
-<polyline points="241,240 319,240" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
-<text x="280" y="232" font-size="14" fill="#666660" text-anchor="middle">보임</text>
-<polyline points="510,195 510,160 241,160" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
-<text x="262" y="152" font-size="14" fill="#666660">고친 뒤 다시 git status</text>
-<polyline points="130,269 130,315" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
-<text x="140" y="297" font-size="14" fill="#666660">없음</text>
-<rect x="20" y="316" width="200" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="120" y="346.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">③ 보고서 (가)</text>
-<text x="120" y="365.9" font-size="14" fill="#292929" text-anchor="middle">줄 수 · .env 유무</text>
-<rect x="260" y="316" width="200" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="360" y="346.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">④ git add .</text>
-<text x="360" y="365.9" font-size="14" fill="#292929" text-anchor="middle">commit → push</text>
-<rect x="500" y="316" width="200" height="70" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="600" y="346.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">⑤ 깃허브에서</text>
-<text x="600" y="365.9" font-size="14" fill="#292929" text-anchor="middle">access_control 확인</text>
-<polyline points="221,351 259,351" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
-<polyline points="461,351 499,351" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>본보기로 실습 1-2 의 파일들이 어떤 함수를 호출하고 어떤 설정 파일을 읽는지 그린 흐름도</title>
+<desc>exercise1-2_run.py 는 요청 아홉 건마다 rbac.py 의 check_permission 을 호출합니다. rbac.py 는 불러올 때 한 번 users.json 과 roles.json 을 읽으므로, 설정 파일이 깨지면 그 파일을 불러오는 화살표에서 멈춥니다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+<text x="360" y="32" font-size="18" text-anchor="middle" font-weight="700">3.3 본보기 · 실습 1-2 파일 사이의 흐름</text>
+<rect x="230" y="50" width="260" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="78" font-size="15" text-anchor="middle" font-weight="700">exercise1-2_run.py</text>
+<line x1="360" y1="94" x2="360" y2="148" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p05)"/>
+<text x="372" y="126" font-size="14">check_permission() 호출 · 요청 아홉 건마다</text>
+<rect x="230" y="152" width="260" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="180" font-size="15" text-anchor="middle" font-weight="700">rbac.py</text>
+<line x1="360" y1="196" x2="360" y2="250" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p05)"/>
+<text x="372" y="228" font-size="14" fill="#666660">읽음 (rbac.py 를 불러올 때 한 번)</text>
+<rect x="230" y="254" width="260" height="62" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="280" font-size="14" text-anchor="middle">config/users.json</text>
+<text x="360" y="300" font-size="14" text-anchor="middle">config/roles.json</text>
+<text x="360" y="352" font-size="14" text-anchor="middle" fill="#666660">상자 = 파일 · 화살표 옆 = 호출하는 함수 · 읽음 = 설정 파일</text>
+<text x="360" y="380" font-size="15" text-anchor="middle">설정 파일이 깨지면 그 파일을 불러오는 화살표에서 멈춥니다</text>
 </g>
 </svg>

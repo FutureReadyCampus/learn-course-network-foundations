@@ -1,36 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>access_control 에서 터미널을 열어 Unit 4 파일을 확인하고 새 파일은 New File 로 만든다</title>
-<desc>가운데는 access_control 폴더에 있어야 할 파일이고, 새 파일은 왼쪽처럼 이 폴더에 New File 로 만들어 코드 상자 내용을 복사해 붙여 넣습니다. 오른쪽은 터미널 확인 순서로, Unit 4 파일 정상이 나오지 않으면 Unit 4 완성본과 Unit 1 ~ Unit 3 코드 상자로 만듭니다.</desc>
-<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
-<text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">시작하기 · 폴더와 확인 순서</text>
-<text x="24" y="60" font-size="15" fill="#666660" text-anchor="start">pwd 결과: …/security-agent-toolkit/access_control</text>
-<rect x="24" y="120" width="166" height="110" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="107" y="156.3" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">새 파일 만들기</text>
-<text x="107" y="180.3" font-size="15" fill="#292929" text-anchor="middle">New File 로 이름</text>
-<text x="107" y="204.3" font-size="15" fill="#292929" text-anchor="middle">복사해 붙여 넣기</text>
-<line x1="190" y1="175" x2="268" y2="175" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
-<text x="229" y="166" font-size="14" fill="#666660" text-anchor="middle">여기에 만듦</text>
-<rect x="270" y="76" width="240" height="300" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="284" y="117.8" font-size="15" fill="#292929" text-anchor="start" font-weight="700">access_control</text>
-<text x="284" y="150.8" font-size="15" fill="#292929" text-anchor="start">rbac.py</text>
-<text x="284" y="183.8" font-size="15" fill="#292929" text-anchor="start">exception_policy.py</text>
-<text x="284" y="216.8" font-size="15" fill="#292929" text-anchor="start">config_loader.py</text>
-<text x="284" y="249.8" font-size="15" fill="#292929" text-anchor="start">req_create.py</text>
-<text x="284" y="282.8" font-size="15" fill="#292929" text-anchor="start">req_review.py</text>
-<text x="284" y="315.8" font-size="15" fill="#292929" text-anchor="start">req_grant.py</text>
-<text x="284" y="348.8" font-size="15" fill="#292929" text-anchor="start">+ 새로 만드는 파일</text>
-<rect x="530" y="76" width="170" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="615" y="107.3" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">[터미널] 확인</text>
-<text x="615" y="131.3" font-size="15" fill="#292929" text-anchor="middle">pwd · ls</text>
-<text x="615" y="155.3" font-size="15" fill="#292929" text-anchor="middle">python -c "…"</text>
-<line x1="615" y1="176" x2="615" y2="200" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
-<rect x="530" y="202" width="170" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="615" y="225.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">마지막 줄</text>
-<text x="615" y="247.8" font-size="15" fill="#292929" text-anchor="middle">Unit 4 파일 정상</text>
-<line x1="615" y1="262" x2="615" y2="286" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
-<text x="626" y="280" font-size="14" fill="#666660" text-anchor="start">아니면</text>
-<rect x="530" y="288" width="170" height="88" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="615" y="314.8" font-size="15" fill="#292929" text-anchor="middle">Unit 4 완성본</text>
-<text x="615" y="336.8" font-size="15" fill="#292929" text-anchor="middle">세 파일 만들기 ·</text>
-<text x="615" y="358.8" font-size="15" fill="#292929" text-anchor="middle">Unit 1~3 코드 상자</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>데이터 파일 세 개를 만들고 json.tool 과 줄 수 40으로 확인한다</title>
+<desc>config 폴더에 week_state.json 과 alert.json 을, access_control 바로 아래에 week_log.jsonl 을 만든다. json.tool 이 내용을 다시 출력하고 로그 줄 수가 40이면 정상이다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">이번 Unit에서 만드는 데이터 파일 세 개</text>
+<rect x="20" y="52" width="330" height="330" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="36" y="80" font-size="16" fill="#292929" font-weight="700">access_control/</text>
+<text x="56" y="112" font-size="15" fill="#292929" font-weight="700">config/</text>
+<text x="76" y="140" font-size="15" fill="#2f6fd0">week_state.json</text>
+<text x="96" y="164" font-size="14" fill="#666660">사용자 6명 · 예외 4개</text>
+<text x="76" y="194" font-size="15" fill="#2f6fd0">alert.json</text>
+<text x="96" y="218" font-size="14" fill="#666660">경고 기준</text>
+<text x="56" y="252" font-size="15" fill="#2f6fd0">week_log.jsonl</text>
+<text x="76" y="276" font-size="14" fill="#666660">일주일 치 샘플 로그 40줄</text>
+<text x="56" y="310" font-size="15" fill="#292929">report_u5.md (보고서 쓰기에서)</text>
+<text x="36" y="362" font-size="14" fill="#666660">config 폴더가 없으면 mkdir config</text>
+<rect x="380" y="52" width="320" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="540" y="83.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">week_state.json · alert.json</text>
+<text x="540" y="106.8" font-size="15" fill="#292929" text-anchor="middle">python -m json.tool 파일</text>
+<text x="540" y="128.6" font-size="15" fill="#292929" text-anchor="middle">→ 내용이 다시 나오면 정상</text>
+<rect x="380" y="164" width="320" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="540" y="195.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">week_log.jsonl</text>
+<text x="540" y="218.8" font-size="15" fill="#292929" text-anchor="middle">줄 수를 세는 python -c …</text>
+<text x="540" y="240.6" font-size="15" fill="#292929" text-anchor="middle">→ 40 이 나오면 정상</text>
+<rect x="380" y="276" width="320" height="106" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="540" y="301.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">alert.json 의 경고 기준</text>
+<text x="540" y="324.9" font-size="15" fill="#292929" text-anchor="middle">거부율 0.3(30%) 이상 → 경고</text>
+<text x="540" y="346.7" font-size="15" fill="#292929" text-anchor="middle">한 명이 4번 이상 거부</text>
+<text x="540" y="368.4" font-size="15" fill="#292929" text-anchor="middle">→ 눈여겨봄</text>
+</g>
 </svg>
