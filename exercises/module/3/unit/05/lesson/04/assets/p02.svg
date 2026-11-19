@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
+<title>log_summary.py 의 다섯 함수는 로그를 읽고, 거부를 모으고, 세고, 비율을 구한다</title>
+<desc>read_log 가 week_log.jsonl 을 요청 리스트로 바꾸고, filter_denied 가 거부된 요청만 모읍니다. count_by 는 값별 횟수를, deny_rate 는 거부율을, find_heavy_users 는 기준 이상 거부된 사용자를 돌려줍니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+<text x="24" y="34" font-size="19" font-weight="700">log_summary.py · 함수 다섯 개</text>
+<rect x="24" y="56" width="200" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="124" y="80" font-size="15" text-anchor="middle">week_log.jsonl</text>
+<text x="124" y="101" font-size="14" text-anchor="middle" fill="#666660">한 줄 = 요청 한 개</text>
+<polyline points="226,84 256,84" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="260" y="56" width="200" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360" y="80" font-size="15" text-anchor="middle" font-weight="700">read_log</text>
+<text x="360" y="101" font-size="14" text-anchor="middle">요청 딕셔너리 리스트</text>
+<polyline points="462,84 492,84" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="496" y="56" width="200" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="596" y="80" font-size="15" text-anchor="middle" font-weight="700">filter_denied</text>
+<text x="596" y="101" font-size="14" text-anchor="middle">거부된 요청만</text>
+<polyline points="596,114 596,150" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="360,114 360,150" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="260" y="152" width="200" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360" y="176" font-size="15" text-anchor="middle" font-weight="700">deny_rate</text>
+<text x="360" y="197" font-size="14" text-anchor="middle">거부 수 ÷ 전체 수</text>
+<rect x="496" y="152" width="200" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="596" y="176" font-size="15" text-anchor="middle" font-weight="700">count_by</text>
+<text x="596" y="197" font-size="14" text-anchor="middle">"reason" · "user" 별 횟수</text>
+<polyline points="596,210 596,246" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="496" y="248" width="200" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="596" y="272" font-size="15" text-anchor="middle" font-weight="700">find_heavy_users</text>
+<text x="596" y="293" font-size="14" text-anchor="middle">기준 횟수 이상 사용자</text>
+<rect x="24" y="152" width="200" height="152" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="124" y="182" font-size="15" text-anchor="middle" font-weight="700">요청이 0개이면</text>
+<text x="124" y="208" font-size="14" text-anchor="middle">0 으로 나누지 않고</text>
+<text x="124" y="230" font-size="14" text-anchor="middle">0.0 을 돌려줍니다</text>
+<text x="124" y="262" font-size="14" text-anchor="middle" fill="#666660">전체 요청 수를</text>
+<text x="124" y="284" font-size="14" text-anchor="middle" fill="#666660">함께 봐야 합니다</text>
+<polyline points="256,180 228,180" fill="none" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#a-p02)"/>
+<text x="24" y="338" font-size="14" fill="#666660">초록 상자 = 제공 파일의 함수 · 도전 5-1에서는 이 다섯 함수의 빈칸을 직접 씁니다</text>
+</g>
+</svg>

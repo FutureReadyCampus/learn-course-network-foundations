@@ -6,9 +6,24 @@ render: markdown
 
 # 제공 파일
 
+## 제공 파일 쓰는 법
+
+**실습 5-1을 마친 뒤, 실습 5-2를 시작하기 전에** 이 레슨의 파일 세 개를 만들고 주간 보고서를 한 번 만들어 봅니다. 로그를 집계하는 함수는 도전 5-1에서 직접 쓰는 것이라, 오늘은 완성본을 받아 씁니다.
+
+1. 파일은 모두 `access_control` 폴더 바로 아래에 만듭니다. 만드는 방법은 실습 5-1과 같습니다(VS Code 왼쪽 목록에서 `access_control` 폴더를 오른쪽 클릭 › **New File**).
+2. 아래 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
+3. 만들 파일은 세 개입니다.
+   1. `log_summary.py`: 로그를 읽고, 거부된 요청을 모으고, 값별로 세고, 거부율을 구하는 함수 다섯 개
+   2. `weekly_report.py`: 점검 결과와 로그 집계를 합쳐 보고서 문자열을 만들고 파일로 저장하는 함수 두 개
+   3. `weekly_run.py`: 위 두 파일과 실습 5-1의 `checklist.py` 를 불러 주간 보고서를 만드는 실행 파일
+4. `weekly_run.py` 는 실습 5-1의 `checklist.py` 를 불러옵니다. `python exercise5-1_run.py` 가 정답과 같은 출력을 내는지 먼저 확인합니다. 아직 안 되면 정답 레슨의 「실습 5-1 정답」에 있는 채운 코드를 넣어 `checklist.py` 를 완성합니다.
+5. 데이터 파일 `config/week_state.json` · `config/alert.json` · `week_log.jsonl` 은 시작하기 레슨에서 만든 것을 그대로 씁니다.
+
+> 시간이 남아 도전 5-1을 하면, `log_summary.py` 를 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 그때는 다 채울 때까지 `weekly_run.py` 가 동작하지 않으니, 다 쓴 뒤 `weekly_run.py` 를 다시 실행해 보고서가 같은지 확인합니다.
+
 ## `log_summary.py` 만들기
 
-**`log_summary.py`** 을 만들고 아래 내용을 붙여 넣습니다. 이 파일은 직접 만들지 않고 가져다 씁니다.
+**`log_summary.py`** 를 만들고 아래 내용을 붙여 넣습니다. 서버 로그를 읽고 세는 함수 다섯 개가 들어 있습니다.
 
 ```python
 import json                                                      # JSON 문자열을 딕셔너리로 바꾸는 모듈을 불러온다
@@ -73,12 +88,16 @@ def find_heavy_users(denied_counts, limit):                      # 사용자별 
     return heavy                                                 # 기준에 걸린 사용자 이름을 리턴한다
 ```
 
+- `read_log` 는 로그 파일의 JSON 한 줄을 딕셔너리 하나로 바꿔 리스트에 모읍니다.
+- `count_by(entries, "user")` 처럼 키 이름을 주면 그 값별로 몇 번인지 셉니다.
+- `deny_rate` 는 요청이 하나도 없으면 0 으로 나누지 않고 `0.0` 을 돌려줍니다.
+
 ## `weekly_report.py` 만들기
 
-**`weekly_report.py`** 을 만들고 아래 내용을 붙여 넣습니다. 이 파일은 직접 만들지 않고 가져다 씁니다.
+**`weekly_report.py`** 를 만들고 아래 내용을 붙여 넣습니다. 점검 결과와 로그 집계를 합쳐 네 절의 보고서 문자열을 만들고, 날짜가 들어간 `.md` 파일로 저장합니다.
 
 ```python
-from log_summary import count_by, filter_denied, deny_rate, find_heavy_users   # 도전 5-1에서 만든 집계 함수를 불러온다
+from log_summary import count_by, filter_denied, deny_rate, find_heavy_users   # 제공 파일 log_summary.py 의 집계 함수를 불러온다
 
 
 def build_report(results, entries, alert, today):                # 점검 결과 · 요청 리스트 · 경고 기준 · 날짜 문자열을 받는 함수
@@ -138,3 +157,83 @@ def save_report(text, today):                                    # 보고서 문
         report_file.write(text)                                            # 보고서 문자열을 파일에 쓴다
     return file_name                                             # 저장한 파일 이름을 리턴한다
 ```
+
+읽어 둘 곳은 세 곳입니다.
+
+1. `if rate >= limit:` 는 거부율이 경고 기준 이상인지 보는 비교입니다. 거부율은 0 ~ 1 사이 소수이고, 경고 기준도 같은 소수입니다. 퍼센트(`round(rate * 100)`)는 보여 줄 때만 씁니다.
+2. 보고서 줄은 `lines.append(…)` 로 하나씩 모으고, 마지막에 `"\n".join(lines)` 로 줄바꿈을 넣어 한 문자열로 만듭니다.
+3. `save_report` 는 파일을 `"w"`(새로 쓰기)로 엽니다. 로그처럼 계속 덧붙이는 파일은 `"a"` 로 열지만, 매주 새로 만드는 보고서는 `"w"` 입니다. 파일 이름에는 `f"…{today}.md"` 로 날짜를 넣습니다.
+
+## 주간 보고서 만들기
+
+**`weekly_run.py`** 를 만들고 아래 내용을 붙여 넣습니다. 실습 5-1의 점검 결과와 일주일 치 로그를 모아 보고서를 만들고 저장합니다.
+
+```python
+import json                                                      # 경고 기준 파일을 읽는 데 쓴다
+from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
+from checklist import TIME_FORMAT, load_state, run_checklist     # 실습 5-1에서 만든 점검 함수를 불러온다
+from log_summary import read_log                                 # 제공 파일의 로그 읽기 함수를 불러온다
+from weekly_report import build_report, save_report             # 제공 파일의 보고서 함수를 불러온다
+
+TODAY = "2026-11-02"                                             # 보고서 날짜
+NOW = datetime.strptime(TODAY + " 10:00", TIME_FORMAT)           # 점검하는 시각
+with open("config/alert.json", encoding="utf-8") as alert_file:           # 경고 기준 파일을 연다
+    ALERT = json.load(alert_file)                                         # 경고 기준 딕셔너리로 읽는다
+
+print("--- 단계 1: 모으기 - 점검 결과와 요청 로그")                    # 단계 1 시작을 알리는 줄
+state = load_state("config/week_state.json")                     # 점검할 데이터 파일을 읽는다
+results = run_checklist(state, NOW)                              # 점검 세 가지를 실행한다
+entries = read_log("week_log.jsonl")                             # 요청 로그를 읽는다
+result_count = len(results)                                      # 점검이 몇 가지인지 센다
+entry_count = len(entries)                                       # 요청이 몇 건인지 센다
+print("점검", result_count, "가지 · 요청", entry_count, "건")    # 모은 양을 출력한다
+print("--- 단계 2: 보고서 만들기와 저장")                              # 단계 2 시작을 알리는 줄
+text = build_report(results, entries, ALERT, TODAY)              # 보고서 문자열을 만든다
+file_name = save_report(text, TODAY)                             # 파일로 저장한다
+print("저장한 파일:", file_name)                                    # 저장한 파일 이름을 출력한다
+print("--- 단계 3: 저장한 보고서 내용")                                # 단계 3 시작을 알리는 줄
+print(text)                                                      # 보고서 내용을 출력한다
+```
+
+1. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
+   ```bash
+   python weekly_run.py
+   ls
+   ```
+2. 출력은 세 단계입니다. 단계 3에 보고서가 네 절로 나오고, `ls` 에 `access_control_weekly_report_2026-11-02.md` 가 보이면 됩니다.
+
+실행 결과:
+
+```
+--- 단계 1: 모으기 - 점검 결과와 요청 로그
+점검 3 가지 · 요청 40 건
+--- 단계 2: 보고서 만들기와 저장
+저장한 파일: access_control_weekly_report_2026-11-02.md
+--- 단계 3: 저장한 보고서 내용
+# 접근통제 주간 보고서 (2026-11-02)
+
+## 1. 요청 현황
+- 전체 요청: 40건 (허용 24건 · 거부 16건)
+- 거부율: 40% (경고 기준 30%) -> 경고
+
+## 2. 거부 사유
+- 역할이 없음: 3건
+- 업무 시간 밖: 4건
+- 퇴사한 계정: 4건
+- 허용되지 않은 접속 위치: 5건
+
+## 3. 점검 결과
+- 퇴사자 계정 점검: 실패 ['dami']
+- 만료 예외 점검: 통과
+- 부서와 역할 점검: 실패 ['junho']
+
+## 4. 조치가 필요한 것
+- 거부 4번 이상 사용자: ['dami', 'gaeun']
+- 확인: 퇴사자 계정 점검 -> ['dami']
+- 확인: 부서와 역할 점검 -> ['junho']
+```
+
+- 1절은 일주일 동안의 요청 수와 거부율, 2절은 거부 사유별 횟수, 3절은 실습 5-1의 점검 결과, 4절은 담당자가 먼저 볼 것입니다.
+- VS Code 왼쪽 목록에서 `access_control_weekly_report_2026-11-02.md` 를 열면 같은 내용이 파일로 저장된 것을 볼 수 있습니다.
+- `ModuleNotFoundError: No module named 'checklist'` 가 나오면 `checklist.py` 가 같은 폴더에 없는 것입니다. `IndentationError` 가 나오면 `checklist.py` 의 직접 쓰는 곳이 아직 비어 있는 것입니다.
+- 이 보고서는 실습 5-2의 상황 8에서 다시 읽습니다. 숫자가 어떻게 나왔는지 직접 세어 보고 싶으면 도전 5-1을 합니다.

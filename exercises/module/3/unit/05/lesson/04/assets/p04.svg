@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>weekly_run.py 를 실행하면 점검 3가지와 요청 40건을 모아 경고가 붙은 주간 보고서가 저장된다</title>
+<desc>단계 1에서 점검 결과와 요청 로그를 모으고, 단계 2에서 보고서를 만들어 저장하고, 단계 3에서 내용을 출력합니다. 거부율 40%가 기준 30% 이상이라 경고이고, 4절에는 dami 와 gaeun, 점검에서 걸린 dami 와 junho 가 나옵니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+<text x="24" y="34" font-size="19" font-weight="700">python weekly_run.py · 세 단계</text>
+<rect x="24" y="56" width="208" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="128" y="84" font-size="15" text-anchor="middle" font-weight="700">단계 1 · 모으기</text>
+<text x="128" y="108" font-size="14" text-anchor="middle">점검 3가지 · 요청 40건</text>
+<polyline points="234,91 252,91" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="256" y="56" width="208" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="84" font-size="15" text-anchor="middle" font-weight="700">단계 2 · 만들기와 저장</text>
+<text x="360" y="108" font-size="14" text-anchor="middle">.md 파일 이름 출력</text>
+<polyline points="466,91 484,91" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="488" y="56" width="208" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="592" y="84" font-size="15" text-anchor="middle" font-weight="700">단계 3 · 내용 출력</text>
+<text x="592" y="108" font-size="14" text-anchor="middle">보고서 네 절</text>
+<rect x="24" y="148" width="330" height="88" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="44" y="176" font-size="15" font-weight="700">1절 · 요청 현황</text>
+<text x="44" y="200" font-size="14">허용 24 · 거부 16 · 거부율 40%</text>
+<text x="44" y="222" font-size="14">기준 30% 이상 → 경고</text>
+<rect x="366" y="148" width="330" height="88" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="386" y="176" font-size="15" font-weight="700">2절 · 거부 사유</text>
+<text x="386" y="200" font-size="14">허용되지 않은 접속 위치 5 · 업무 시간 밖 4</text>
+<text x="386" y="222" font-size="14">퇴사한 계정 4 · 역할이 없음 3</text>
+<rect x="24" y="248" width="330" height="88" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="44" y="276" font-size="15" font-weight="700">3절 · 점검 결과</text>
+<text x="44" y="300" font-size="14">퇴사자 계정 실패 dami · 만료 예외 통과</text>
+<text x="44" y="322" font-size="14">부서와 역할 실패 junho</text>
+<rect x="366" y="248" width="330" height="88" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="386" y="276" font-size="15" font-weight="700">4절 · 조치가 필요한 것</text>
+<text x="386" y="300" font-size="14">거부 4번 이상: dami · gaeun</text>
+<text x="386" y="322" font-size="14">확인: dami(퇴사) · junho(부서)</text>
+<text x="24" y="364" font-size="14" fill="#666660">ls 에 access_control_weekly_report_2026-11-02.md 가 보이면 됩니다</text>
+</g>
+</svg>

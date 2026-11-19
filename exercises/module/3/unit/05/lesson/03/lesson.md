@@ -37,7 +37,9 @@ source:
 
 ## 3.1 상황 8개와 읽을 핵심 코드
 
-> 실습 5-2은 코드를 실행하지 않고 읽고 글로 씁니다. 상황 표의 `users.json` · `exceptions.json` 은 Module 3에서 쓰던 파일이고, 이번 Unit의 점검(실습 5-1)은 같은 내용을 한 파일에 모은 `config/week_state.json` 을 읽습니다. 상황의 값은 Module 3 때를 되짚은 것이라 이번 `week_state.json` 과 다를 수 있습니다(예: 상황 3의 예외 번호). Module 3에서 만든 파일이 없으면 문서의 코드 조각만 읽고 답합니다.
+> 실습 5-2는 코드를 실행하지 않고 읽고 글로 씁니다. 상황 표의 `users.json` · `exceptions.json` 은 Module 3에서 쓰던 파일이고, 이번 Unit의 점검(실습 5-1)은 같은 내용을 한 파일에 모은 `config/week_state.json` 을 읽습니다. 상황의 값은 앞 Unit 때를 되짚은 것이라 이번 `week_state.json` 과 다를 수 있습니다(예: 상황 3의 예외 번호).
+>
+> 상황 표의 파일 중 `role_admin.py`(도전 1-2), `req_sla.py`(도전 2-2), `conditional.py` · `access_server.py`(도전 4-2 · 4-3)는 도전에서 만드는 파일이라 내 폴더에 없을 수 있습니다. 내 폴더에 없는 파일은 이 페이지의 코드 조각만 읽고 답하면 됩니다.
 
 | # | 상황 (이렇게 알게 됐습니다) | 읽을 핵심 코드 |
 |---|---|---|
@@ -169,7 +171,7 @@ def approve_request(request, approver):                          # 요청서와 
 
 #### 상황 5 · 안 쓰는 권한이 쌓임
 
-(Unit 3 · Unit 3의 샘플 데이터 기준이고, 도전 5-1의 주간 로그와는 별개입니다.) 오래 안 쓴 권한을 찾아내는 일과 관련된 코드입니다.
+(Unit 3 점검 실습의 샘플 데이터 기준이고, 이번 Unit의 주간 로그와는 별개입니다.) 오래 안 쓴 권한을 찾아내는 일과 관련된 코드입니다.
 
 `review_unused.py` 의 `find_unused` 는 권한을 마지막으로 쓴 시각을 보고 후보를 뽑는 함수입니다. 기준 일수와 비교하는 줄이 어디인지, 사용 이력이 없을 때는 어떻게 하는지 읽습니다.
 
@@ -191,7 +193,7 @@ def approve_request(request, approver):                          # 요청서와 
 
 #### 상황 6 · 민감한 권한을 회수해야 함
 
-(상황 5처럼 Unit 4의 샘플 데이터 기준입니다.) 권한을 안전하게 없애는 절차와 관련된 코드입니다.
+(상황 5처럼 Unit 4 회수 실습의 샘플 데이터 기준입니다.) 권한을 안전하게 없애는 절차와 관련된 코드입니다.
 
 `revoke_approve.py` 의 `needs_approval` 은 회수 계획 중 승인이 필요한 것을 가르는 함수입니다. 어떤 조건이 승인 대상이 되는지 읽습니다.
 
@@ -277,9 +279,9 @@ def needs_approval(plan, sensitive):                             # 계획 한 �
     return {"allowed": False, "reason": reason}, 403             # 거부이면 상태 코드 403 으로 답한다
 ```
 
-아래 그림은 도전 5-1에서 만든 보고서가 어떤 파일의 어떤 함수에서 만들어지는지 보여 줍니다.
+아래 그림은 「제공 파일」 레슨에서 만든 주간 보고서가 어떤 파일의 어떤 함수에서 만들어지는지 보여 줍니다.
 
-<figure class="page-figure"><img src="assets/f02.svg" alt="challenge5-1-2_run.py 가 run_checklist, read_log, build_report, save_report 를 차례로 불러 보고서를 만듭니다"></figure>
+<figure class="page-figure"><img src="assets/f02.svg" alt="weekly_run.py 가 run_checklist, read_log, build_report, save_report 를 차례로 불러 보고서를 만듭니다"></figure>
 
 ## 실습 5-2 · 상황 8개 원인과 해결법 정리하기
 
@@ -328,13 +330,55 @@ def needs_approval(plan, sensitive):                             # 계획 한 �
 
 ## Unit 5 마무리
 
-| 확인 | 문제 |
-|---|---|
-| 퇴사자 · 만료 예외 · 부서와 역할을 점검해 통과와 실패를 가렸다 | 실습 5-1 |
-| 서버 로그를 집계해 거부율과 경고 여부를 구하고, 점검과 합쳐 주간 보고서 파일을 만들었다 | 도전 5-1 |
-| 상황 8개의 원인과 고치는 방법을 내 말로 정리해 보고서에 Module 3 총정리를 썼다 | 실습 5-2 |
+문제가 아니라 하루를 닫는 마무리입니다(15분). 실습 5-1 · 5-2와 글쓰기를 끝낸 뒤 합니다.
 
-다음 Unit부터 Module 4 이상탐지를 시작합니다. 이번 Unit에서 만든 「로그 한 줄을 읽고, 세고, 기준과 비교하는」 방식이 Module 4에서 로그를 분석할 때의 바탕이 됩니다.
+**1. 오늘 한 일 확인**
+
+1. 퇴사자 계정 · 만료 예외 · 부서와 역할을 점검해 통과와 실패를 가렸다 (실습 5-1)
+2. 제공 파일로 점검 결과와 일주일 치 로그를 합쳐 주간 보고서 파일을 만들었다 (제공 파일)
+3. 상황 8개 중 4개 이상의 원인과 고치는 방법을 내 말로 정리해 Module 3 총정리를 썼다 (실습 5-2)
+4. 보고서 `report_u5.md` 의 실습 5-1 · 5-2 칸에 `답:` 뒤가 비어 있는 질문이 없다
+5. 도전 5-1을 했다면 직접 쓴 `log_summary.py` 로 `weekly_run.py` 를 다시 돌려도 보고서가 같다 (선택)
+
+**2. 파일 확인** — **[터미널]** `access_control` 폴더에서 확인합니다.
+
+```bash
+ls
+ls config
+```
+
+- 이번 Unit에서 만든 파일 `checklist.py` · `exercise5-1_run.py` · `log_summary.py` · `weekly_report.py` · `weekly_run.py` · `week_log.jsonl` · `access_control_weekly_report_2026-11-02.md` · `report_u5.md` 가 보여야 합니다. 도전 5-1을 했다면 `challenge5-1_run.py` 도 있습니다.
+- `config` 안에는 이번 Unit의 `week_state.json` · `alert.json` 이 보여야 합니다. 앞 Unit에서 만든 JSON 파일도 함께 보입니다.
+- Module 3의 파일은 이렇게 둡니다. 파일을 어디에 저장했는지 헷갈리면 이 규칙과 VS Code 왼쪽 목록을 비교합니다.
+  1. `config/` 안에는 JSON 설정 파일만 둡니다. 이름이 `config/…` 로 시작하는 파일입니다.
+  2. 그 밖의 파일(코드 `.py`, 실행 파일 `exerciseN-M_run.py` · `challengeN-M_run.py`, 보고서 `report_uN.md`, 실행하면 생기는 파일)은 모두 `access_control/` 바로 아래에 둡니다.
+  3. 하위 폴더를 따로 만들지 않습니다. `__pycache__/` 는 파이썬이 자동으로 만드는 임시 폴더라 신경 쓰지 않습니다.
+
+```
+security-agent-toolkit/
+  access_control/          Module 3
+    config/
+      week_state.json
+      alert.json
+      (앞 Unit의 JSON 파일들)
+    checklist.py
+    exercise5-1_run.py
+    log_summary.py
+    weekly_report.py
+    weekly_run.py
+    week_log.jsonl
+    access_control_weekly_report_2026-11-02.md
+    report_u5.md
+    (앞 Unit의 파일들)
+```
+
+**3. 깃허브에 올리기** — 오늘은 따로 올리지 않아도 됩니다. Module 4 첫 Unit의 실습 1-2 마지막에 올릴 때 `access_control` 폴더도 같은 저장소라서 함께 올라갑니다. 오늘 올리고 싶으면 Unit 1 마무리의 「깃허브에 올리기」와 같은 순서(`git status` 로 `.env` 확인 → `git add .` → `git commit` → `git push`)로 올립니다.
+
+**4. 이어지는 곳**
+
+1. 여기까지가 Module 3입니다. 다음은 **Module 4 이상탐지**입니다.
+2. Module 3은 요청이 들어오는 순간 「허용할까」를 판정했고, Module 4는 이미 쌓인 로그를 읽고 평소와 다른 일을 찾습니다.
+3. 이번 Unit에서 해 본 「로그 한 줄을 읽고, 세고, 기준과 비교하는」 방식이 Module 4에서 로그를 분석할 때의 바탕이 됩니다.
 
 ---
 
