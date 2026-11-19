@@ -60,13 +60,13 @@ source:
 - 네 이유는 사용자 → 역할 → 권한을 찾아가다 막힐 수 있는 네 곳입니다. 이름은 수업에서 붙였습니다.
 - 「거부」 하나로만 남기면 설정을 고칠 일과 사건 신호가 섞여 구분할 수 없습니다.
 
-**이 시간에 나오는 말** (이미 배운 방법입니다)
+**이 시간에 나오는 말** (먼저 짧게 봅니다)
 
-- `with open(파일, encoding="utf-8") as 파일변수:` 와 `json.load(파일변수)` 로 JSON 파일을 딕셔너리로 읽습니다(앞선 실습).
-- `값 in 딕셔너리` 는 딕셔너리에 그 키가 있는지, `값 not in 딕셔너리` 는 없는지 검사합니다. 예: `role not in ROLES`. `값 not in 리스트` 는 리스트에 없는지 검사합니다(앞선 실습).
-- `return 값1, 값2` 로 두 값을 함께 리턴하고, `is_allowed, reason = 함수(…)` 로 나눠 받습니다(앞선 실습).
-- `f"{resource}:{action}"` 처럼 f-문자열로 문자열을 합칩니다(앞선 실습).
-- `from rbac import check_permission` 처럼 내가 만든 파일의 함수를 불러옵니다(앞선 실습의 `from llm_client import call_llm`).
+- `with open(파일, encoding="utf-8") as 파일변수:` 와 `json.load(파일변수)` 로 JSON 파일을 딕셔너리로 읽습니다.
+- `값 in 딕셔너리` 는 딕셔너리에 그 키가 있는지, `값 not in 딕셔너리` 는 없는지 검사합니다. 예: `role not in ROLES`. `값 not in 리스트` 는 리스트에 없는지 검사합니다.
+- `return 값1, 값2` 로 두 값을 함께 리턴하고, `is_allowed, reason = 함수(…)` 로 나눠 받습니다.
+- `f"{resource}:{action}"` 처럼 f-문자열로 문자열을 합칩니다.
+- `from rbac import check_permission` 처럼 내가 만든 파일의 함수를 불러옵니다. `from 파일이름 import 함수이름` 모양이고, 파일 이름에서 `.py` 는 뺍니다.
 - `if not 값:` 은 값이 거짓(`False`)일 때 실행됩니다.
 - 함수 첫 줄의 `""" … """` 는 **독스트링**(docstring · 닥스트링)이라 부르는 설명 글입니다. 함수가 무엇을 받고 리턴하는지 한 번에 적은 것이고 실행에는 영향이 없습니다.
 
@@ -191,13 +191,13 @@ for user, resource, action in REQUESTS:                          # 요청을 하
 
 **순서**
 
-1. **[VS Code]** `rbac.py` 를 만들고 위 코드를 붙여 넣습니다. 아래 세 가지 방법 중 **하나만** 고릅니다.
+1. **[VS Code]** `rbac.py` 를 만들고 위 코드를 붙여 넣습니다.
    - **VS Code 에서 만들기**
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
      2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
      3. 이름 칸에 `rbac.py` 라고 입력하고 Enter 를 누릅니다.
      4. 열린 파일에 코드를 복사해 붙여 넣고 저장합니다.
-2. **[VS Code]** `exercise1-2_run.py` 도 같은 방법으로 만듭니다. 아래 세 가지 방법 중 **하나만** 고릅니다.
+2. **[VS Code]** `exercise1-2_run.py` 도 같은 방법으로 만듭니다.
    - **VS Code 에서 만들기**
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
      2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.

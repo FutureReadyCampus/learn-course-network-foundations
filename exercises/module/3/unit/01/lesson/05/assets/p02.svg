@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img">
+<title>exceptions.json 의 예외 다섯 건은 사람, 권한, 만료 시각이 한 줄에 함께 적혀 있다</title>
+<desc>예외 한 건은 번호, 사용자, 권한, 만료 시각, 이유로 이루어집니다. 다섯 건 중 2번과 5번은 오늘 14:00 기준으로 이미 만료되었고, 3번은 퇴사자 dami 의 예외입니다.</desc>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+<text x="24" y="34" font-size="19" font-weight="700">config/exceptions.json · 예외 다섯 건</text>
+<rect x="24" y="50" width="672" height="40" rx="6" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="44" y="76" font-size="15" font-weight="700">번호</text>
+<text x="104" y="76" font-size="15" font-weight="700">사용자</text>
+<text x="244" y="76" font-size="15" font-weight="700">권한</text>
+<text x="392" y="76" font-size="15" font-weight="700">만료 시각</text>
+<text x="552" y="76" font-size="15" font-weight="700">눈여겨볼 점</text>
+<rect x="24" y="96" width="672" height="40" rx="6" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="44" y="122" font-size="15">1</text><text x="104" y="122" font-size="15">seoyeon</text><text x="244" y="122" font-size="15">SETTLE:QUERY</text><text x="392" y="122" font-size="15">10-22 18:00</text><text x="552" y="122" font-size="15">오늘 저녁까지</text>
+<rect x="24" y="142" width="672" height="40" rx="6" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="44" y="168" font-size="15">2</text><text x="104" y="168" font-size="15">junho</text><text x="244" y="168" font-size="15">SALES:CHANGE</text><text x="392" y="168" font-size="15">10-20 18:00</text><text x="552" y="168" font-size="15">이미 만료</text>
+<rect x="24" y="188" width="672" height="40" rx="6" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="44" y="214" font-size="15">3</text><text x="104" y="214" font-size="15">dami</text><text x="244" y="214" font-size="15">SALES:QUERY</text><text x="392" y="214" font-size="15">10-31 18:00</text><text x="552" y="214" font-size="15">퇴사자</text>
+<rect x="24" y="234" width="672" height="40" rx="6" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="44" y="260" font-size="15">4</text><text x="104" y="260" font-size="15">batch-night</text><text x="244" y="260" font-size="15">SALES:QUERY</text><text x="392" y="260" font-size="15">10-23 09:00</text><text x="552" y="260" font-size="15">서비스 계정</text>
+<rect x="24" y="280" width="672" height="40" rx="6" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="44" y="306" font-size="15">5</text><text x="104" y="306" font-size="15">gaeun</text><text x="244" y="306" font-size="15">SETTLE:QUERY</text><text x="392" y="306" font-size="15">10-22 12:00</text><text x="552" y="306" font-size="15">오늘 낮에 만료</text>
+</g>
+</svg>

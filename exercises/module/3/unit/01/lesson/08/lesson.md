@@ -13,6 +13,8 @@ source:
 
 ## 목표: 예외 파일과 유효 판정 함수
 
+> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 1-1 ~ 1-3과 글쓰기를 먼저 마칩니다. 이 도전을 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
+
 > **오늘 들어온 일**
 > A사 보안 담당이 보낸 메시지: 「영업팀 seoyeon 이 오늘 하루 월말 정산 대조를 도와야 합니다. 역할을 바꾸거나 영업 역할 전체에 권한을 주지 않고, 이 사람에게만 오늘 18시까지만 정산 조회를 허용해 줄 수 있나요? 끝난 예외가 그대로 남아 있지 않은지도 점검해 주세요.」
 > - 이 실습에서 하는 일: 예외 권한 파일에 예외 두 건을 직접 쓰고, 「지금 이 예외가 유효한가」를 판정하는 함수를 직접 씁니다. 같은 실행의 아랫부분에서 예외 리스트 중 회수해야 할 것을 읽습니다.
@@ -58,7 +60,7 @@ source:
 
 **문법 상자 — `datetime.strptime` 의 형식 문자열**
 
-앞선 실습에서는 `datetime.strptime(문자열, "%H:%M")` 으로 시 · 분을 읽었습니다. 오늘은 날짜까지 함께 읽습니다.
+`datetime.strptime(문자열, 형식)` 은 문자열을 형식대로 읽어 비교할 수 있는 시각으로 바꿉니다. 오늘은 날짜와 시각을 함께 읽습니다.
 
 | 형식 | 뜻 | 예 |
 |---|---|---|
@@ -92,7 +94,7 @@ False
 - 예외는 만료 시각이 지나도 리스트에 그대로 남습니다. 그래서 리스트를 **정기적으로 점검해** 회수할 것을 뽑습니다. 회수 대상은 두 가지입니다.
   - **만료됨**: 만료 시각이 이미 지난 예외. 코드가 거부하더라도 리스트에 남아 있으면 누가 언제 무엇을 받았는지 헷갈립니다.
   - **퇴사자**: 만료 전이라도 사람이 이미 나갔으면 바로 회수합니다.
-- 조건은 위에서부터 차례로 봅니다. 앞 조건에 맞으면 뒤 조건은 보지 않습니다(`if` → `elif` → `else`, 앞선 실습).
+- 조건은 위에서부터 차례로 봅니다. 앞 조건에 맞으면 뒤 조건은 보지 않습니다(`if` → `elif` → `else`).
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="예외 하나마다 만료 여부를 먼저, 퇴사 여부를 다음에 보고 회수나 유지를 정한다"></figure>
 
@@ -116,6 +118,8 @@ False
 2. `exception_policy.py` 를 만들고 `find_exception` 본문을 직접 씁니다.
 3. `challenge1-3_run.py` 를 실행해서 <mark>여섯 건의 판정</mark>(단계 1: 판정)과 <mark>회수할 예외</mark>(단계 2: 점검)를 읽습니다.
 
+**제공 파일과의 관계** — `config/exceptions.json` 과 `exception_policy.py` 는 「제공 파일」 레슨에서 이미 완성본으로 만들었습니다. 이 도전에서는 두 파일의 내용을 아래 골격으로 **바꿔서(덮어써서)** 직접 써 봅니다. 본문을 다 채울 때까지는 실습 1-3의 `exercise1-3_run.py` 가 동작하지 않습니다. 다 쓴 뒤 `python exercise1-3_run.py` 를 다시 실행해 실습 1-3 정답의 출력과 같은지 확인합니다. 막히면 「제공 파일」의 완성본을 다시 붙여 넣으면 됩니다.
+
 **`config/exceptions.json`** — 아래 세 건을 붙여 넣습니다.
 
 ```json
@@ -136,7 +140,7 @@ False
 ]
 ```
 
-- 저장한 뒤 `python -m json.tool config/exceptions.json`(맥북은 `python3 -m json.tool config/exceptions.json`)을 꼭 실행합니다. 실습 1-3 에서 이 파일을 읽으므로, 오류가 나면 쉼표를 고친 뒤 실습 1-3으로 갑니다.
+- 저장한 뒤 `python -m json.tool config/exceptions.json`(맥북은 `python3 -m json.tool config/exceptions.json`)을 꼭 실행합니다. 실습 1-3의 `policy.py` 도 이 파일을 읽으므로, 오류가 나면 쉼표를 먼저 고칩니다.
 
 **`exception_policy.py`**
 
@@ -187,7 +191,7 @@ print("--- 단계 1: 판정 - 지금 유효한 예외가 있나")               
 for user, permission in CHECKS:                                  # 하나씩 꺼낸다
     print(user, permission, "->", find_exception(user, permission, NOW))   # 사용자 권한 -> (결과, 번호) 를 출력한다
 
-with open("config/users.json", encoding="utf-8") as users_file:           # Unit 1에서 만든 사용자 파일을 연다
+with open("config/users.json", encoding="utf-8") as users_file:           # 실습 1-1에서 만든 사용자 파일을 연다
     USERS = json.load(users_file)                                         # 사용자 → 정보 딕셔너리로 읽는다
 
 print("--- 단계 2: 점검 - 예외 리스트에서 회수할 것")                 # 단계 2 시작을 알리는 줄
@@ -207,8 +211,8 @@ for exception in EXCEPTIONS:                                           # 예외�
 
 **순서**
 
-1. **[VS Code]** 세 파일을 만들고 각각 붙여 넣습니다.
-   - 만드는 방법은 도전 1-2 의 순서 1번과 같습니다(VS Code 새 파일 아이콘). 만들 파일 이름은 차례로 `config/exceptions.json` · `exception_policy.py` · `challenge1-3_run.py` 입니다. 앞에 폴더가 붙은 이름은 폴더도 함께 만들어집니다. 붙여 넣을 내용은 위 코드 상자입니다.
+1. **[VS Code]** 세 파일을 만들고(이미 있으면 열고) 내용을 지운 뒤 각각 붙여 넣습니다.
+   - 만드는 방법은 실습 1-2 의 순서 1번과 같습니다(VS Code 새 파일 아이콘). 만들 파일 이름은 차례로 `config/exceptions.json` · `exception_policy.py` · `challenge1-3_run.py` 입니다. 앞에 폴더가 붙은 이름은 폴더도 함께 만들어집니다. 붙여 넣을 내용은 위 코드 상자입니다.
 2. **[VS Code]** `config/exceptions.json` 에 4번 · 5번 예외를 직접 씁니다. 2.1 의 표에서 사용자 · 권한 · 만료 시각 · 이유를 글자 그대로 옮깁니다.
 3. **[VS Code]** `exception_policy.py` 의 `find_exception` 본문을 직접 씁니다. 2.2 의 문법 상자를 보고 씁니다.
 4. **[터미널]** 실행합니다.
