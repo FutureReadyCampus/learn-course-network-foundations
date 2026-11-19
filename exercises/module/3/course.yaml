@@ -6,32 +6,17 @@ course:
   status: draft
 units:
 - id: m3-u01
-  title: 역할로 권한을 정하고 판정하기
+  title: 역할로 권한 정하기
   path: exercises/module/3/unit/01/unit.md
 - id: m3-u02
-  title: 역할 부여·회수와 기간제 예외 권한
+  title: 요청서로 권한 주기
   path: exercises/module/3/unit/02/unit.md
 - id: m3-u03
-  title: 설정이 고장 나도 거부하기와 테스트 설계
+  title: 안 쓰는 권한 점검하기
   path: exercises/module/3/unit/03/unit.md
 - id: m3-u04
-  title: 권한 요청서와 승인·반려
+  title: 권한 거두기
   path: exercises/module/3/unit/04/unit.md
 - id: m3-u05
-  title: 요청 처리 기한(SLA) 점검과 이력 저장
+  title: 결과 보고하기
   path: exercises/module/3/unit/05/unit.md
-- id: m3-u06
-  title: 쓰지 않는 권한 찾기
-  path: exercises/module/3/unit/06/unit.md
-- id: m3-u07
-  title: 과다권한 리포트와 회수 제외
-  path: exercises/module/3/unit/07/unit.md
-- id: m3-u08
-  title: 권한 회수 계획과 실행
-  path: exercises/module/3/unit/08/unit.md
-- id: m3-u09
-  title: 조건으로 판정하는 서버
-  path: exercises/module/3/unit/09/unit.md
-- id: m3-u10
-  title: 점검 체크리스트와 주간 보고서
-  path: exercises/module/3/unit/10/unit.md

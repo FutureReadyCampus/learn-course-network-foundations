@@ -1,29 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
-<title>Unit 4는 요청서를 접수하고 승인한 뒤 정책으로 다시 확인해 예외 권한을 부여합니다</title>
-<desc>직원의 권한 요청이 실습 4-1 접수, 실습 4-2 승인·반려, 실습 4-3 부여를 거칩니다. 부여 전에 Unit 2에서 만든 evaluate_access 로 한 번 더 확인합니다.</desc>
-<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
-<text x="24" y="34" font-size="19" font-weight="700">Unit 4 목표 · 요청서 접수 · 승인 · 부여</text>
-<text x="24" y="66" font-size="15" fill="#666660">직원이 권한을 달라고 요청하면</text>
-<rect x="24" y="80" width="208" height="140" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="128" y="123.9" font-size="16" text-anchor="middle" font-weight="700">실습 4-1 · 접수</text>
-<text x="128" y="144.9" font-size="15" text-anchor="middle">요청서 한 장(딕셔너리)</text>
-<text x="128" y="165.9" font-size="15" text-anchor="middle">을 리스트에 모으고</text>
-<text x="128" y="186.9" font-size="15" text-anchor="middle">접수 못 할 요청은 거름</text>
-<rect x="256" y="80" width="208" height="140" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360" y="123.9" font-size="16" text-anchor="middle" font-weight="700">실습 4-2 · 승인 · 반려</text>
-<text x="360" y="144.9" font-size="15" text-anchor="middle">보안 담당이 결정</text>
-<text x="360" y="165.9" font-size="15" text-anchor="middle">이미 처리한 요청서는</text>
-<text x="360" y="186.9" font-size="15" text-anchor="middle">다시 처리 못 함</text>
-<path d="M232,150 L254,150" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p01)"/>
-<rect x="488" y="80" width="208" height="140" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="592" y="123.9" font-size="16" text-anchor="middle" font-weight="700">실습 4-3 · 부여</text>
-<text x="592" y="144.9" font-size="15" text-anchor="middle">evaluate_access 로</text>
-<text x="592" y="165.9" font-size="15" text-anchor="middle">한 번 더 확인하고</text>
-<text x="592" y="186.9" font-size="15" text-anchor="middle">통과한 것만 예외 권한</text>
-<path d="M464,150 L486,150" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p01)"/>
-<rect x="24" y="244" width="672" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="360" y="275.4" font-size="15" text-anchor="middle">Unit 2 · 3 에서 만든 evaluate_access(policy.py) 와 예외 권한을 그대로 씀</text>
-<text x="24" y="334" font-size="15" fill="#666660">깃허브에 올리는 일은 Unit 5 실습 5-2 마지막에 한 번에 합니다</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>Unit 4은 회수 대상 8건을 계획, 승인, 실행 순서로 회수합니다</title>
+<desc>도전 4-1은 회수 계획, 실습 4-1는 승인 상태, 실습 4-2은 실행과 이력입니다. 회수는 파일이 아니라 메모리 안의 USERS · ROLES · EXCEPTIONS 를 바꾸고, 파일로 남기는 것은 회수 이력뿐입니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">Unit 4 — 회수 대상 8건을 계획 → 승인 → 실행으로</text>
+<rect x="20" y="70" width="130" height="90" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="85" y="99.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">회수 대상</text>
+<text x="85" y="120.2" font-size="15" fill="#292929" text-anchor="middle">8건</text>
+<text x="85" y="141.2" font-size="15" fill="#292929" text-anchor="middle">(Unit 3)</text>
+<path d="M150 115 L186 115" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="190" y="70" width="150" height="90" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="265" y="99.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">도전 4-1</text>
+<text x="265" y="120.2" font-size="15" fill="#292929" text-anchor="middle">회수 계획</text>
+<text x="265" y="141.2" font-size="15" fill="#292929" text-anchor="middle">아직 안 지움</text>
+<path d="M340 115 L376 115" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="380" y="70" width="150" height="90" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="455" y="99.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실습 4-1</text>
+<text x="455" y="120.2" font-size="15" fill="#292929" text-anchor="middle">승인 상태</text>
+<text x="455" y="141.2" font-size="15" fill="#292929" text-anchor="middle">민감한 권한</text>
+<path d="M530 115 L566 115" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="570" y="70" width="130" height="90" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="635" y="109.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실습 4-2</text>
+<text x="635" y="130.8" font-size="15" fill="#292929" text-anchor="middle">실행 · 이력</text>
+<rect x="20" y="200" width="420" height="110" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="239.2" font-size="15" fill="#292929" text-anchor="start">바꾸는 것: 메모리 안의 데이터</text>
+<text x="32" y="260.2" font-size="15" fill="#292929" text-anchor="start">USERS · ROLES · EXCEPTIONS</text>
+<text x="32" y="281.2" font-size="15" fill="#292929" text-anchor="start">프로그램을 끄면 처음 상태로</text>
+<path d="M635 160 L635 198" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="470" y="200" width="230" height="110" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="585" y="239.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">파일로 남기는 것</text>
+<text x="585" y="260.2" font-size="15" fill="#292929" text-anchor="middle">회수 이력뿐</text>
+<text x="585" y="281.2" font-size="15" fill="#292929" text-anchor="middle">revocation_log.json</text>
 </g>
 </svg>

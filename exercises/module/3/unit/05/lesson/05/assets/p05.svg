@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
+<title>도전 5-1 정리: 집계 다섯 함수와 보고서의 핵심 코드 한 줄씩</title>
+<desc>로그 한 줄은 json.loads 로 딕셔너리가 되고, counts.get(value, 0) 으로 값별로 센다. 거부만 모으고, 요청이 0개이면 거부율 0.0 을 리턴한다. count &gt;= limit 이면 반복 거부 사용자이고, 보고서는 lines 를 &quot;\n&quot;.join 으로 합친다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 5-1 정리 · 하려는 일과 핵심 코드</text>
+<rect x="20" y="66" width="220" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="130" y="109.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">로그 한 줄 → 딕셔너리</text>
+<text x="130" y="130.6" font-size="14" fill="#292929" text-anchor="middle">json.loads(line)</text>
+<rect x="250" y="66" width="220" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="109.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">값별로 세기</text>
+<text x="360" y="130.6" font-size="14" fill="#292929" text-anchor="middle">counts.get(value, 0) + 1</text>
+<rect x="480" y="66" width="220" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="590" y="109.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">거부된 요청만</text>
+<text x="590" y="130.6" font-size="14" fill="#292929" text-anchor="middle">if not entry[&quot;allowed&quot;]</text>
+<rect x="20" y="176" width="220" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="130" y="219.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">거부율</text>
+<text x="130" y="240.6" font-size="14" fill="#292929" text-anchor="middle">total == 0 이면 0.0</text>
+<rect x="250" y="176" width="220" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="219.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">거부가 많은 사용자</text>
+<text x="360" y="240.6" font-size="14" fill="#292929" text-anchor="middle">if count &gt;= limit</text>
+<rect x="480" y="176" width="220" height="96" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="590" y="219.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">보고서 줄 합치기</text>
+<text x="590" y="240.6" font-size="14" fill="#292929" text-anchor="middle">&quot;\n&quot;.join(lines)</text>
+<rect x="20" y="290" width="680" height="52" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="321.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">경고: rate &gt;= limit (소수끼리 비교) · 보여 줄 때만 round(rate * 100)</text>
+</g>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img"><title>split_by_exclude 는 can_exclude 가 참이면 회수 제외, 아니면 회수 대상에 넣는다</title><desc>can_exclude 는 제외 리스트에 있고 이유에 퇴사한 계정이 없을 때만 참이다. gaeun 과 seoyeon 의 권한은 회수 제외, 퇴사한 dami 의 SALES:QUERY 는 리스트에 있어도 회수 대상에 남는다.</desc><defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">도전 3-3 · split_by_exclude 가 나누는 방법</text>
+<rect x="180" y="52" width="360" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="79.25" font-size="15" fill="#292929" text-anchor="middle">to_revoke = [ ] · excluded = [ ]</text>
+<line x1="360" y1="98" x2="360" y2="114" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="180" y="118" width="360" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="145.25" font-size="15" fill="#292929" text-anchor="middle">후보 하나 → key = exclude_key(finding)</text>
+<line x1="360" y1="164" x2="360" y2="180" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="110" y="184" width="500" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
+<text x="360" y="210.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">can_exclude(finding, exclude_map) ?</text>
+<text x="360" y="231.75" font-size="14" fill="#666660" text-anchor="middle">in_exclude_list and not is_resigned</text>
+<line x1="250" y1="250" x2="180" y2="282" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<text x="200" y="264" font-size="14" fill="#666660" text-anchor="end">참</text>
+<line x1="470" y1="250" x2="540" y2="282" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<text x="520" y="264" font-size="14" fill="#666660">거짓</text>
+<rect x="20" y="282" width="320" height="78" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="2"/>
+<text x="180" y="305.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">excluded</text>
+<text x="180" y="325.9" font-size="14" fill="#666660" text-anchor="middle">make_excluded(finding, reason)</text>
+<text x="180" y="345.9" font-size="14" fill="#666660" text-anchor="middle">reason = exclude_map[key]</text>
+<rect x="380" y="282" width="320" height="78" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="2"/>
+<text x="540" y="315.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">to_revoke</text>
+<text x="540" y="336.75" font-size="14" fill="#666660" text-anchor="middle">finding 을 그대로 추가</text>
+<text x="30" y="384" font-size="14" fill="#292929">gaeun ACCOUNT:CHANGE</text>
+<text x="30" y="406" font-size="14" fill="#292929">seoyeon SALES:CHANGE</text>
+<text x="390" y="384" font-size="14" fill="#292929">dami SALES:QUERY (퇴사한 계정)</text>
+<text x="390" y="406" font-size="14" fill="#666660">그 밖의 후보</text>
+</g>
+</svg>

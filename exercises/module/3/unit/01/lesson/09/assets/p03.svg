@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>load_json 은 성공하면 내용을, 파일이 없거나 깨지면 경고 후 빈 설정을 리턴합니다</title>
+<desc>설정 파일을 읽는 세 갈래입니다. 성공하면 평소대로 판정하고, FileNotFoundError 나 json.JSONDecodeError 이면 경고를 출력한 뒤 기본값 {} 를 리턴해 모든 요청이 「등록되지 않은 사용자」로 거부됩니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+<text x="24" y="34" font-size="19" font-weight="700">1.1 안전하게 읽고, 실패하면 빈 설정</text>
+<rect x="24" y="60" width="130" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="89" y="89.4" font-size="15" text-anchor="middle">설정 파일</text>
+<rect x="176" y="60" width="130" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="241" y="89.4" font-size="16" text-anchor="middle" font-weight="700">load_json</text>
+<rect x="400" y="60" width="296" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="548" y="89.4" font-size="15" text-anchor="middle">읽은 내용 → 평소대로 판정</text>
+<path d="M154,84 L174,84" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p03)"/>
+<path d="M306,84 L398,84" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p03)"/>
+<text x="334" y="76" font-size="14" fill="#666660">성공</text>
+<rect x="106" y="156" width="270" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="241" y="180.9" font-size="15" text-anchor="middle">파일이 없음</text>
+<text x="241" y="201.9" font-size="15" text-anchor="middle">FileNotFoundError</text>
+<rect x="400" y="156" width="296" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="548" y="180.9" font-size="15" text-anchor="middle">JSON 이 깨짐</text>
+<text x="548" y="201.9" font-size="15" text-anchor="middle">json.JSONDecodeError</text>
+<path d="M241,108 L241,154" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p03)"/>
+<path d="M241,130 L548,130 L548,154" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p03)"/>
+<rect x="106" y="240" width="270" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="241" y="267" font-size="14" text-anchor="middle">[경고] 설정 파일 없음: 경로</text>
+<rect x="400" y="240" width="296" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="548" y="267" font-size="14" text-anchor="middle">[경고] 설정 파일 깨짐: 경로</text>
+<path d="M241,216 L241,238" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p03)"/>
+<path d="M548,216 L548,238" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p03)"/>
+<rect x="150" y="316" width="500" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="400" y="343.4" font-size="15" text-anchor="middle">멈추지 않고 default 리턴 · 오늘은 빈 설정 {}</text>
+<path d="M241,284 L241,314" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p03)"/>
+<path d="M548,284 L548,314" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p03)"/>
+<text x="360" y="396" font-size="15" text-anchor="middle">사용자 0명 → 모든 요청이 「등록되지 않은 사용자」로 거부</text>
+</g>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 618" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>검토 중인 요청서 가운데 SLA_HOURS 보다 오래 걸린 것만 골라 리턴한다</title>
+<desc>요청서를 하나씩 꺼내 status 가 reviewing 이 아니면 건너뜁니다. 검토 중이면 접수 뒤 걸린 시간(hours)을 구해 SLA_HOURS 보다 클 때만 복사본에 wait_hours 를 적어 breached 에 담습니다. 정확히 같으면 아직 초과가 아니며, 모든 요청서를 본 뒤 breached 를 리턴합니다.</desc>
+<defs><marker id="a-f01-0502" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<text x="24" y="30" font-size="18" fill="#292929" font-weight="700">check_sla_breach 가 기한 초과를 찾는 순서</text>
+<rect x="24" y="50" width="350" height="37" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="199" y="73" font-size="14" fill="#292929" text-anchor="middle">check_sla_breach(requests, now)</text>
+<line x1="199" y1="87" x2="199" y2="111" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0502)"/>
+<rect x="24" y="113" width="350" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="199" y="136" font-size="14" fill="#292929" text-anchor="middle">breached = []</text>
+<text x="199" y="155" font-size="14" fill="#292929" text-anchor="middle">(기한을 초과한 요청서를 담을 리스트)</text>
+<line x1="199" y1="169" x2="199" y2="193" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0502)"/>
+<rect x="24" y="195" width="350" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="199" y="218" font-size="14" fill="#292929" text-anchor="middle">요청서를 하나씩 꺼낸다</text>
+<text x="199" y="237" font-size="14" fill="#292929" text-anchor="middle">(아래 판단을 요청서마다 되풀이한다)</text>
+<line x1="199" y1="251" x2="199" y2="275" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0502)"/>
+<rect x="24" y="277" width="350" height="37" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="199" y="300" font-size="14" fill="#292929" text-anchor="middle">status 가 "reviewing" 인가?</text>
+<rect x="470" y="258" width="230" height="75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="585" y="281" font-size="14" fill="#292929" text-anchor="middle">다음 요청서로</text>
+<text x="585" y="300" font-size="14" fill="#666660" text-anchor="middle">처리가 끝난 요청은</text>
+<text x="585" y="319" font-size="14" fill="#666660" text-anchor="middle">기한을 따지지 않는다</text>
+<path d="M374 295.5H468" stroke="#666660" stroke-width="1.6" fill="none" marker-end="url(#a-f01-0502)"/>
+<text x="422" y="288.5" font-size="14" fill="#292929" text-anchor="middle">아님</text>
+<line x1="199" y1="314" x2="199" y2="338" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0502)"/>
+<text x="209" y="332" font-size="14" fill="#666660">맞음</text>
+<rect x="24" y="340" width="350" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="199" y="363" font-size="14" fill="#292929" text-anchor="middle">접수 시각을 시각으로 바꾸고, 지금까지</text>
+<text x="199" y="382" font-size="14" fill="#292929" text-anchor="middle">걸린 시간(hours)을 구한다</text>
+<line x1="199" y1="396" x2="199" y2="420" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0502)"/>
+<rect x="24" y="422" width="350" height="37" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="199" y="445" font-size="14" fill="#292929" text-anchor="middle">hours 가 SLA_HOURS 보다 큰가?</text>
+<rect x="470" y="403" width="230" height="75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="585" y="426" font-size="14" fill="#292929" text-anchor="middle">다음 요청서로</text>
+<text x="585" y="445" font-size="14" fill="#666660" text-anchor="middle">정확히 같으면</text>
+<text x="585" y="464" font-size="14" fill="#666660" text-anchor="middle">아직 초과가 아니다</text>
+<path d="M374 440.5H468" stroke="#666660" stroke-width="1.6" fill="none" marker-end="url(#a-f01-0502)"/>
+<text x="422" y="433.5" font-size="14" fill="#292929" text-anchor="middle">아님</text>
+<line x1="199" y1="459" x2="199" y2="483" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0502)"/>
+<text x="209" y="477" font-size="14" fill="#666660">큼</text>
+<rect x="24" y="485" width="350" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="199" y="508" font-size="14" fill="#292929" text-anchor="middle">요청서를 복사해 wait_hours 를 적고,</text>
+<text x="199" y="527" font-size="14" fill="#292929" text-anchor="middle">breached 에 추가한 뒤 다음 요청서로</text>
+<line x1="199" y1="541" x2="199" y2="565" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0502)"/>
+<text x="209" y="559" font-size="14" fill="#666660">모든 요청서를 꺼낸 뒤</text>
+<rect x="24" y="567" width="350" height="37" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="199" y="590" font-size="14" fill="#292929" text-anchor="middle">breached 를 리턴한다</text>
+</svg>

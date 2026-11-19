@@ -1,30 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>Unit 4의 접수·승인·부여 흐름을 Unit 5에서 처리 기한으로 점검하고 파일로 저장한다</title>
-<desc>위는 Unit 4에서 만든 req_create.py, req_review.py, req_grant.py 흐름입니다. 아래는 이번 Unit 의 실습 5-1 SLA 점검과 실습 5-2 requests.json 저장 · 상태별 건수 · 깃허브 올리기입니다.</desc>
-<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
-<text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">Unit 5 목표: 기한 점검과 기록 저장</text>
-<text x="24" y="66" font-size="15" fill="#666660" text-anchor="start" font-weight="700">Unit 4 에서 만든 흐름</text>
-<rect x="24" y="78" width="200" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="124" y="100.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">req_create.py</text>
-<text x="124" y="121.1" font-size="15" fill="#292929" text-anchor="middle">접수</text>
-<line x1="224" y1="106" x2="254" y2="106" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p01)"/>
-<rect x="256" y="78" width="200" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="356" y="100.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">req_review.py</text>
-<text x="356" y="121.1" font-size="15" fill="#292929" text-anchor="middle">승인 · 반려</text>
-<line x1="456" y1="106" x2="486" y2="106" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p01)"/>
-<rect x="488" y="78" width="200" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="588" y="100.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">req_grant.py</text>
-<text x="588" y="121.1" font-size="15" fill="#292929" text-anchor="middle">예외 부여</text>
-<line x1="360" y1="134" x2="360" y2="168" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p01)"/>
-<text x="372" y="158" font-size="14" fill="#666660" text-anchor="start">정해진 시간 안에 처리되나? 기록이 남나?</text>
-<rect x="24" y="176" width="320" height="120" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="184" y="206.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실습 5-1</text>
-<text x="184" y="229.6" font-size="15" fill="#292929" text-anchor="middle">접수한 지 정해진 시간</text>
-<text x="184" y="252.6" font-size="15" fill="#292929" text-anchor="middle">(SLA, 처리 기한)이 지났는데</text>
-<text x="184" y="275.6" font-size="15" fill="#292929" text-anchor="middle">처리 안 된 요청서 찾기</text>
-<rect x="376" y="176" width="324" height="120" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="538" y="206.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실습 5-2</text>
-<text x="538" y="229.6" font-size="15" fill="#292929" text-anchor="middle">requests.json 으로 저장</text>
-<text x="538" y="252.6" font-size="15" fill="#292929" text-anchor="middle">상태별 건수 세기</text>
-<text x="538" y="275.6" font-size="15" fill="#292929" text-anchor="middle">마지막에 깃허브에 올리기</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>Unit 5은 점검, 로그 집계, 주간 보고서, Module 3 총정리로 이어진다</title>
+<desc>실습 5-1은 퇴사자, 만료된 예외, 부서와 역할 세 가지를 점검 체크리스트로 본다. 도전 5-1는 요청 로그를 집계해 경고 기준과 비교하고 10-1 결과와 합쳐 주간 보고서를 만든다. 실습 5-2은 상황 8개로 Module 3을 총정리한다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">Unit 5에서 할 일: 점검, 집계, 총정리</text>
+<rect x="20" y="56" width="210" height="150" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="125" y="92.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">실습 5-1</text>
+<text x="125" y="116.1" font-size="15" fill="#292929" text-anchor="middle">점검 체크리스트</text>
+<text x="125" y="137.8" font-size="15" fill="#292929" text-anchor="middle">퇴사자</text>
+<text x="125" y="159.6" font-size="15" fill="#292929" text-anchor="middle">만료된 예외</text>
+<text x="125" y="181.3" font-size="15" fill="#292929" text-anchor="middle">부서와 역할</text>
+<rect x="255" y="56" width="210" height="150" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="92.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">도전 5-1</text>
+<text x="360" y="116.1" font-size="15" fill="#292929" text-anchor="middle">요청 로그 집계</text>
+<text x="360" y="137.8" font-size="15" fill="#292929" text-anchor="middle">허용 · 거부 건수</text>
+<text x="360" y="159.6" font-size="15" fill="#292929" text-anchor="middle">거부율 · 거부 사유</text>
+<text x="360" y="181.3" font-size="15" fill="#292929" text-anchor="middle">경고 기준과 비교</text>
+<rect x="490" y="56" width="210" height="150" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="595" y="92.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">실습 5-2</text>
+<text x="595" y="116.1" font-size="15" fill="#292929" text-anchor="middle">Module 3 총정리</text>
+<text x="595" y="137.8" font-size="15" fill="#292929" text-anchor="middle">상황 8개마다</text>
+<text x="595" y="159.6" font-size="15" fill="#292929" text-anchor="middle">원인과 고치는 방법</text>
+<text x="595" y="181.3" font-size="15" fill="#292929" text-anchor="middle">내 말로 정리</text>
+<polyline points="231,131 254,131" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="466,131 489,131" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="125,207 125,250 255,250" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="360,207 360,229" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="256" y="230" width="210" height="50" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="361" y="260.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">주간 보고서 파일</text>
+<text x="20" y="318" font-size="15" fill="#666660">Unit 4까지 만든 파일은 불러오지 않습니다. 데이터 세 개를 붙여 넣고 시작합니다.</text>
+<text x="20" y="346" font-size="15" fill="#666660">깃허브에 올리는 일은 Module 4 Unit 1 실습 1-2 마지막에 합니다.</text>
+</g>
 </svg>

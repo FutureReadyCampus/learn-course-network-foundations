@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>실습 5-1 정리: 세 점검의 핵심 한 줄과 통과·실패 기준</title>
+<desc>퇴사자는 if not info[&quot;employed&quot;], 만료 예외는 strptime 과 expires_at &lt;= now, 부서와 역할은 role_dept 로 찾은 부서와 != 비교로 찾는다. 모은 리스트가 비었으면 통과, 아니면 실패다.</desc>
+<defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 5-1 정리 · 점검마다 핵심 한 줄</text>
+<rect x="20" y="70" width="214" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="127" y="100.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">퇴사자 찾기</text>
+<rect x="20" y="130" width="214" height="110" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="127" y="168.7" font-size="15" fill="#292929" text-anchor="middle">if not</text>
+<text x="127" y="190.4" font-size="15" fill="#292929" text-anchor="middle">info[&quot;employed&quot;]</text>
+<text x="127" y="212.2" font-size="15" fill="#292929" text-anchor="middle">→ append(name)</text>
+<rect x="253" y="70" width="214" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="100.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">만료 예외 찾기</text>
+<rect x="253" y="130" width="214" height="110" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="168.7" font-size="15" fill="#292929" text-anchor="middle">strptime(…)</text>
+<text x="360" y="190.4" font-size="15" fill="#292929" text-anchor="middle">expires_at &lt;= now</text>
+<text x="360" y="212.2" font-size="15" fill="#292929" text-anchor="middle">→ append(id)</text>
+<rect x="486" y="70" width="214" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="593" y="100.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">부서가 다른 사용자</text>
+<rect x="486" y="130" width="214" height="110" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="593" y="168.7" font-size="15" fill="#292929" text-anchor="middle">role_dept[…]</text>
+<text x="593" y="190.4" font-size="15" fill="#292929" text-anchor="middle">!= info[&quot;dept&quot;]</text>
+<text x="593" y="212.2" font-size="15" fill="#292929" text-anchor="middle">→ append(name)</text>
+<rect x="20" y="262" width="680" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360" y="295.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">리스트가 비었으면 통과 · 하나라도 있으면 실패</text>
+</g>
+</svg>

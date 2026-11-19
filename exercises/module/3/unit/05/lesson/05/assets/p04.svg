@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>도전 5-1 는 집계 실행, 보고서 실행, grep 확인의 세 줄 순서로 진행한다</title>
+<desc>challenge5-1_run.py 는 log_summary.py 의 직접 쓰는 곳 1~11을 써서 세 단계로 집계를 출력한다. challenge5-1-2_run.py 는 run_checklist 와 read_log 결과를 weekly_report.py 로 합쳐 .md 파일로 저장한다. 끝으로 grep 으로 gaeun 과 dami 의 요청을 로그에서 찾는다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 5-1 · 실행 두 번과 로그 확인</text>
+<rect x="20" y="66" width="170" height="84" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="105" y="92" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">challenge5-1</text>
+<text x="105" y="115.2" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">_run.py</text>
+<text x="105" y="136.2" font-size="14" fill="#292929" text-anchor="middle">붙여 넣기</text>
+<line x1="192" y1="108" x2="214" y2="108" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="216" y="66" width="220" height="84" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="326" y="92.7" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">log_summary.py</text>
+<text x="326" y="114.9" font-size="15" fill="#292929" text-anchor="middle">직접 쓰는 곳 1 ~ 11</text>
+<text x="326" y="135.5" font-size="14" fill="#292929" text-anchor="middle">다섯 함수</text>
+<line x1="438" y1="108" x2="460" y2="108" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="462" y="66" width="238" height="84" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="581" y="92" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">출력 세 단계</text>
+<text x="581" y="114.1" font-size="15" fill="#292929" text-anchor="middle">집계 · 사유별</text>
+<text x="581" y="135.9" font-size="15" fill="#292929" text-anchor="middle">경고 기준</text>
+<rect x="20" y="176" width="170" height="84" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="105" y="202" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">challenge5-1-2</text>
+<text x="105" y="225.2" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">_run.py</text>
+<text x="105" y="246.2" font-size="14" fill="#292929" text-anchor="middle">붙여 넣기</text>
+<line x1="192" y1="218" x2="214" y2="218" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="216" y="176" width="220" height="84" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="326" y="202" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">run_checklist</text>
+<text x="326" y="225.2" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">+ read_log</text>
+<text x="326" y="246.2" font-size="14" fill="#292929" text-anchor="middle">점검 결과 · 요청 리스트</text>
+<line x1="438" y1="218" x2="460" y2="218" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="462" y="176" width="238" height="84" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="581" y="202" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">weekly_report.py</text>
+<text x="581" y="224.1" font-size="15" fill="#292929" text-anchor="middle">build_report</text>
+<text x="581" y="245.9" font-size="15" fill="#292929" text-anchor="middle">save_report → .md</text>
+<rect x="20" y="286" width="170" height="84" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="105" y="313.5" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">터미널</text>
+<text x="105" y="334.5" font-size="14" fill="#292929" text-anchor="middle">grep gaeun</text>
+<text x="105" y="354.8" font-size="14" fill="#292929" text-anchor="middle">grep dami</text>
+<line x1="192" y1="328" x2="214" y2="328" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="216" y="286" width="220" height="84" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="326" y="322.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">보고서 4절 사용자</text>
+<text x="326" y="345" font-size="15" fill="#292929" text-anchor="middle">로그에서 요청 비교</text>
+<line x1="438" y1="328" x2="460" y2="328" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="462" y="286" width="238" height="84" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="581" y="322.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">report_u5.md</text>
+<text x="581" y="345" font-size="15" fill="#292929" text-anchor="middle">도전 5-1 (가)(나)(다)</text>
+<text x="20" y="392" font-size="14" fill="#666660">순서: 위 줄부터 아래 줄로. 두 번째 줄은 실습 5-1 의 checklist.py 가 있어야 합니다.</text>
+</g>
+</svg>

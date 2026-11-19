@@ -1,6 +1,6 @@
 ---
 id: m3-u01
-title: 역할로 권한을 정하고 판정하기
+title: 역할로 권한 정하기
 lessons:
 - path: lesson/01/lesson.md
 - path: lesson/02/lesson.md
@@ -8,6 +8,12 @@ lessons:
 - path: lesson/04/lesson.md
 - path: lesson/05/lesson.md
 - path: lesson/06/lesson.md
+- path: lesson/07/lesson.md
+- path: lesson/08/lesson.md
+- path: lesson/09/lesson.md
+- path: lesson/10/lesson.md
+- path: lesson/11/lesson.md
+- path: lesson/12/lesson.md
 ---
 
-# 역할로 권한을 정하고 판정하기
+# 역할로 권한 정하기

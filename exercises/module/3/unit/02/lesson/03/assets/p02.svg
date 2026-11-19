@@ -1,1 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img"><title>사용자 파일을 손으로 고칠 때와 함수로 처리할 때의 차이</title><desc>손으로 고치면 salse 같은 역할 이름 오타나 퇴사 처리 누락이 생길 수 있습니다. 함수로 처리하면 검사가 늘 같은 순서로 들어가고, 입사·이동·퇴사는 계정 관리의 기본 흐름입니다.</desc><defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif"><text x="360" y="32" font-size="18" text-anchor="middle" fill="#292929" font-weight="700">왜 입사 · 이동 · 퇴사를 함수로 처리하는가</text><rect x="15" y="55" width="330" height="150" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/><text font-size="15" text-anchor="middle" fill="#292929"><tspan x="180" y="103.75" font-weight="700">손으로 users.json 고치기</tspan><tspan x="180" dy="21">역할 이름 오타: salse</tspan><tspan x="180" dy="21">퇴사 처리를 빠뜨림</tspan><tspan x="180" dy="21">→ 퇴사자 계정이 쓸 수 있게 남음</tspan></text><rect x="375" y="55" width="330" height="150" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/><text font-size="15" text-anchor="middle" fill="#292929"><tspan x="540" y="103.75" font-weight="700">함수로 처리하기</tspan><tspan x="540" dy="21">검사가 늘 같은 순서로</tspan><tspan x="540" dy="21">없는 역할 이름은 거부</tspan><tspan x="540" dy="21">퇴사 = employed 를 false 로</tspan></text><text x="360" y="240" font-size="15" text-anchor="middle" fill="#666660" font-weight="700">계정 관리의 기본 흐름</text><rect x="60" y="258" width="173.333" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/><text font-size="15" text-anchor="middle" fill="#292929"><tspan x="146.667" y="293.25">입사 · joiner</tspan></text><line x1="236.333" y1="288" x2="270.333" y2="288" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/><rect x="273.333" y="258" width="173.333" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/><text font-size="15" text-anchor="middle" fill="#292929"><tspan x="360" y="293.25">이동 · mover</tspan></text><line x1="449.667" y1="288" x2="483.667" y2="288" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/><rect x="486.667" y="258" width="173.333" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/><text font-size="15" text-anchor="middle" fill="#292929"><tspan x="573.333" y="293.25">퇴사 · leaver</tspan></text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 350" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>말로 받은 요청은 기록이 없고, 요청서로 받으면 접수에서 거른 뒤 승인·부여로 이어진다</title>
+<desc>왼쪽은 메신저나 말로 받은 요청의 문제, 오른쪽은 요청서로 받을 때의 장점입니다. 아래는 이번 Unit 의 흐름으로, 실습 2-1 접수, 실습 2-2 승인 · 반려, 도전 2-1 예외 부여를 거쳐 evaluate_access 가 허용으로 판정합니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">왜 요청을 요청서로 받는가</text>
+<rect x="30" y="56" width="300" height="140" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="180" y="99.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">메신저 · 말로 받으면</text>
+<text x="180" y="120.1" font-size="15" fill="#292929" text-anchor="middle">기록이 남지 않음</text>
+<text x="180" y="141.1" font-size="15" fill="#292929" text-anchor="middle">승인 기준이 사람마다 다름</text>
+<text x="180" y="162.1" font-size="15" fill="#292929" text-anchor="middle">받아 놓고 회수를 잊음</text>
+<line x1="330" y1="126" x2="388" y2="126" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<rect x="390" y="56" width="310" height="140" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="545" y="99.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">요청서로 받으면</text>
+<text x="545" y="120.1" font-size="15" fill="#292929" text-anchor="middle">정해진 모양의 기록</text>
+<text x="545" y="141.1" font-size="15" fill="#292929" text-anchor="middle">빠진 정보가 있는 요청은</text>
+<text x="545" y="162.1" font-size="15" fill="#292929" text-anchor="middle">접수 단계에서 걸러 냄</text>
+<text x="30" y="232" font-size="16" fill="#292929" text-anchor="start" font-weight="700">이번 Unit 의 흐름</text>
+<rect x="30" y="250" width="150" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="105" y="282.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실습 2-1</text>
+<text x="105" y="303.1" font-size="15" fill="#292929" text-anchor="middle">요청서 접수</text>
+<line x1="180" y1="288" x2="198" y2="288" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<rect x="200" y="250" width="150" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="275" y="282.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실습 2-2</text>
+<text x="275" y="303.1" font-size="15" fill="#292929" text-anchor="middle">승인 · 반려</text>
+<line x1="350" y1="288" x2="368" y2="288" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<rect x="370" y="250" width="150" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="445" y="271.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">도전 2-1</text>
+<text x="445" y="292.6" font-size="15" fill="#292929" text-anchor="middle">정책 확인 후</text>
+<text x="445" y="313.6" font-size="15" fill="#292929" text-anchor="middle">예외 권한 부여</text>
+<line x1="520" y1="288" x2="538" y2="288" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<rect x="540" y="250" width="150" height="76" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="615" y="271.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">Unit 1</text>
+<text x="615" y="292.6" font-size="15" fill="#292929" text-anchor="middle">evaluate_access</text>
+<text x="615" y="313.6" font-size="15" fill="#292929" text-anchor="middle">허용으로 판정</text>
+</svg>

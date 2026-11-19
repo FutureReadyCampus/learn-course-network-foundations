@@ -1,28 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>실습 2-2 보고서에 채울 칸: 출력, 만료 없는 예외, batch-night 연장 판단</title>
-<desc>실습 2-2 보고서의 (가)~(다) 질문마다 써야 할 내용을 체크리스트로 보여 줍니다. 출력은 단계 1 여섯 줄과 단계 2 다섯 줄입니다.</desc>
-<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
-<text x="24" y="34" font-size="19" font-weight="700">실습 2-2 보고서 · 채울 칸</text>
-<rect x="24" y="52" width="672" height="94" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="40" y="74" font-size="16" font-weight="700">(가) 출력과 회수할 예외</text>
-<rect x="44" y="86" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="68" y="98" font-size="15">단계 1 출력 여섯 줄 · 단계 2 출력 다섯 줄</text>
-<rect x="44" y="112" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="68" y="124" font-size="15">회수할 예외의 번호</text>
-<rect x="24" y="158" width="672" height="94" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="40" y="180" font-size="16" font-weight="700">(나) [핵심 질문] 만료 시각이 비어도 접수된다면</text>
-<rect x="44" y="192" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="68" y="204" font-size="15">쌓이는 일과 1년 뒤 감사 지적</text>
-<rect x="44" y="218" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="68" y="230" font-size="15">만료를 반드시 적게 하는 규칙</text>
-<rect x="24" y="264" width="672" height="120" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="40" y="286" font-size="16" font-weight="700">(다) [핵심 질문] batch-night 예외 4번 연장 요청</text>
-<rect x="44" y="298" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="68" y="310" font-size="15">연장 전에 확인할 것</text>
-<rect x="44" y="324" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="68" y="336" font-size="15">연장 조건, 또는 거절하고 낼 대안</text>
-<rect x="44" y="350" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="68" y="362" font-size="15">그렇게 판단한 이유</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img">
+<title>검토 중인 요청서만, 걸린 시간을 시간 단위로 구해 SLA_HOURS 보다 큰지 본다</title>
+<desc>요청서를 하나씩 꺼내 상태가 reviewing 인지 먼저 봅니다. 맞으면 (지금 − 접수) 를 초로 바꾸고 3600 으로 나눠 시간 단위로 만든 뒤 SLA_HOURS 보다 크면 복사본에 wait_hours 를 적어 breached 에 넣습니다. 정확히 같으면 초과가 아닙니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">기한이 지났는지 가리는 순서</text>
+<rect x="20" y="52" width="320" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="180" y="78.62" font-size="15" fill="#292929" text-anchor="middle">요청서를 하나씩 꺼낸다</text>
+<rect x="20" y="122" width="320" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="180" y="148.62" font-size="15" fill="#292929" text-anchor="middle">status 가 "reviewing" 인가?</text>
+<rect x="20" y="192" width="320" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="180" y="218.512" font-size="14" fill="#292929" text-anchor="middle">hours = (now − requested)</text>
+<text x="180" y="238.112" font-size="14" fill="#292929" text-anchor="middle">.total_seconds() / 3600</text>
+<rect x="20" y="282" width="320" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="180" y="308.62" font-size="15" fill="#292929" text-anchor="middle">hours &gt; SLA_HOURS 인가?</text>
+<rect x="20" y="352" width="320" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="180" y="378.12" font-size="15" fill="#292929" text-anchor="middle">복사본(copy)에 wait_hours 를 적고</text>
+<text x="180" y="399.12" font-size="15" fill="#292929" text-anchor="middle">breached 에 추가</text>
+<polyline points="180,96 180,119" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<polyline points="180,166 180,189" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="188" y="184" font-size="14" fill="#666660">맞음</text>
+<polyline points="180,256 180,279" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<polyline points="180,326 180,349" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="188" y="344" font-size="14" fill="#666660">큼</text>
+<polyline points="340,144 372,144" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="378" y="149" font-size="14" fill="#666660">아님 → 다음 요청서</text>
+<polyline points="340,304 372,304" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="378" y="309" font-size="14" fill="#666660">아님 → 다음 요청서</text>
+<rect x="510" y="52" width="190" height="104" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="605" y="87.928" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">SLA_HOURS = 4</text>
+<text x="605" y="109.32" font-size="15" fill="#292929" text-anchor="middle">config/sla.json 에서</text>
+<text x="605" y="130.32" font-size="15" fill="#292929" text-anchor="middle">읽고, 없으면 기본값 4</text>
+<rect x="510" y="192" width="190" height="104" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="605" y="227.928" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">예: 09:15 접수</text>
+<text x="605" y="249.32" font-size="15" fill="#292929" text-anchor="middle">14:00 기준 4.75시간</text>
+<text x="605" y="270.32" font-size="15" fill="#292929" text-anchor="middle">4.75 &gt; 4 → 초과</text>
+<rect x="510" y="330" width="190" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="605" y="356.12" font-size="15" fill="#292929" text-anchor="middle">정확히 4.0 시간은</text>
+<text x="605" y="377.12" font-size="15" fill="#292929" text-anchor="middle">초과가 아니다</text>
 </g>
 </svg>
