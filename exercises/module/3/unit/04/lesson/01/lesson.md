@@ -48,7 +48,7 @@ Unit 3 점검에서는 이미 부여돼 있는 권한을 살펴 **회수 대상 
 2. **Unit 3 파일**(있으면 씁니다)
    1. 실습 3-1의 `review_list.py`, 실습 3-2의 `review_unused.py` · `config/access_log.json`
    2. Unit 3 제공 파일의 `review_rules.py` · `overprivilege.py` · `report_exclude.py`
-   3. 회수 제외 리스트 `config/exclude_list.json`(Unit 3 도전 3-3 레슨에 있습니다)
+   3. 회수 제외 리스트 `config/exclude_list.json`(Unit 3 「제공 파일」 레슨에서 만듭니다)
 
 **순서**
 

@@ -1,385 +1,239 @@
 ---
 id: m3-u05-l03
-title: 실습 5-2 · 상황별 원인과 해결법 정리하기
+title: 제공 파일
 render: markdown
-source:
-  repository: FutureReadyCampus/learn-missions
-  path: network/094_day06_am_weekly_report.md
-  mission_id: GichanSource.m3-1102-am-weekly-report
-  commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 실습 5-2 · 상황별 원인과 해결법 정리하기
+# 제공 파일
 
-## 이번 실습: Module 3 상황 되짚기
+## 제공 파일 쓰는 법
 
-> **이번 실습은 새로 배우는 것이 없습니다.** Module 3에서 만든 파일과 함수를 **상황별로 되짚으면서**, 각 상황의 원인과 고치는 방법을 내 말로 정리합니다. 정리한 글이 Module 3의 총정리가 되고, 보고서의 실습 5-2 칸에 씁니다.
+**실습 5-1을 마친 뒤, 실습 5-2를 시작하기 전에** 이 레슨의 파일 세 개를 만들고 주간 보고서를 한 번 만들어 봅니다. 로그를 집계하는 함수는 도전 5-1에서 직접 쓰는 것이라, 오늘은 완성본을 받아 씁니다.
 
-## 상황을 풀 때 쓰는 틀
+1. 파일은 모두 `access_control` 폴더 바로 아래에 만듭니다. 만드는 방법은 실습 5-1과 같습니다(VS Code 왼쪽 목록에서 `access_control` 폴더를 오른쪽 클릭 › **New File**).
+2. 아래 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
+3. 만들 파일은 세 개입니다.
+   1. `log_summary.py`: 로그를 읽고, 거부된 요청을 모으고, 값별로 세고, 거부율을 구하는 함수 다섯 개
+   2. `weekly_report.py`: 점검 결과와 로그 집계를 합쳐 보고서 문자열을 만들고 파일로 저장하는 함수 두 개
+   3. `weekly_run.py`: 위 두 파일과 실습 5-1의 `checklist.py` 를 불러 주간 보고서를 만드는 실행 파일
+4. `weekly_run.py` 는 실습 5-1의 `checklist.py` 를 불러옵니다. `python exercise5-1_run.py` 가 정답과 같은 출력을 내는지 먼저 확인합니다. 아직 안 되면 정답 레슨의 「실습 5-1 정답」에 있는 채운 코드를 넣어 `checklist.py` 를 완성합니다.
+5. 데이터 파일 `config/week_state.json` · `config/alert.json` · `week_log.jsonl` 은 시작하기 레슨에서 만든 것을 그대로 씁니다.
 
-상황이 생기면 같은 네 단계로 생각합니다.
+> 시간이 남아 도전 5-1을 하면, `log_summary.py` 를 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 그때는 다 채울 때까지 `weekly_run.py` 가 동작하지 않으니, 다 쓴 뒤 `weekly_run.py` 를 다시 실행해 보고서가 같은지 확인합니다.
 
-- **확인**: 로그나 점검 결과로 무슨 일인지 알아봅니다.
-- **원인**: 왜 이런 일이 생겼는지 가립니다. 원인은 보통 셋 중 하나입니다.
-  - 사람의 일: 사람이 해야 할 일(입사, 퇴사, 부서 이동 등)이 일어났습니다.
-  - 데이터 문제: 파일에 있어야 할 것이 없거나 틀려 있습니다.
-  - 규칙 문제: 「무엇을 허용하고 무엇에 경고할지」 정해 둔 기준이 비어 있거나 현실과 맞지 않습니다(너무 느슨하거나 너무 엄격합니다).
-  - 이 수업에서 기준을 적어 둔 곳은 `conditions.json`(권한마다 몇 시에 어디서 접속하면 허용하는지), `alert.json`(거부율이 얼마 이상이면 경고하는지), 점검의 90일 기준(며칠 안 쓴 권한을 후보로 뽑는지), `sla.json`(요청을 몇 시간 안에 처리해야 하는지)입니다.
-- **고치기**: 어느 파일을 열어서 어떻게 고칠지 정합니다. 방법은 셋 중 하나입니다.
+## `log_summary.py` 만들기
 
-| 방법 | 뜻 | Module 3에서 한 예 |
-|---|---|---|
-| 새로 넣는다(추가) | 없던 것을 파일에 적어 넣음 | `users.json` 에 새 직원 정보를 적음. `exceptions.json` 에 만료 시각이 있는 예외를 적음 |
-| 값을 바꾼다(수정) | 있는 정보의 값을 다른 값으로 고침 | `"employed": true` 를 `false` 로 바꿈. `conditions.json` 의 허용 접속 위치에 `"vpn"` 을 넣음 |
-| 지운다(삭제) | 있던 정보를 파일에서 없앰 | 퇴사자 정보를 `users.json` 에서 지움. 만료된 예외를 `exceptions.json` 에서 지움 |
-
-- **다시 확인**: 고친 뒤에 무엇을 다시 실행하거나 어떤 출력을 보면 고쳐진 것을 알 수 있는지 정합니다.
-
-## 3.1 상황 8개와 읽을 핵심 코드
-
-> 실습 5-2는 코드를 실행하지 않고 읽고 글로 씁니다. 상황 표의 `users.json` · `exceptions.json` 은 Module 3에서 쓰던 파일이고, 이번 Unit의 점검(실습 5-1)은 같은 내용을 한 파일에 모은 `config/week_state.json` 을 읽습니다. 상황의 값은 앞 Unit 때를 되짚은 것이라 이번 `week_state.json` 과 다를 수 있습니다(예: 상황 3의 예외 번호).
->
-> 상황 표의 파일 중 `role_admin.py`(도전 1-2), `req_sla.py`(도전 2-2), `conditional.py` · `access_server.py`(도전 4-2 · 4-3)는 도전에서 만드는 파일이라 내 폴더에 없을 수 있습니다. 내 폴더에 없는 파일은 이 페이지의 코드 조각만 읽고 답하면 됩니다.
-
-| # | 상황 (이렇게 알게 됐습니다) | 읽을 핵심 코드 |
-|---|---|---|
-| 1 | 새 직원 hana 가 입사했는데, hana 의 요청이 「등록되지 않은 사용자」로 거부된다 | `role_admin.py` 의 `assign_role`, `config/users.json` 의 사용자 정보 |
-| 2 | 보고서에 dami 가 거부 4번으로 나오고 퇴사자 계정 점검이 실패한다. dami 는 퇴사했다 | `rbac.py` 의 `check_permission` 판정 순서, `config/users.json` |
-| 3 | seoyeon 이 월말 정산 대조를 지원하게 되어 `SETTLE:QUERY` 가 잠시 필요한데 「권한 없음」으로 거부된다 | `exception_policy.py` 의 `find_exception`, `policy.py` 의 `evaluate_access` 순서, `config/exceptions.json` |
-| 4 | junho 가 영업 실적 정정을 위해 `SALES:CHANGE` 를 달라고 하는데, 누가 언제까지 처리할지 정해진 방법이 없다 | `req_create.py` · `req_review.py` · `req_grant.py` · `req_sla.py` |
-| 5 | 정기 점검에서 seoyeon 의 `SALES:CHANGE` 는 마지막 사용이 120일 전이고, gaeun 의 `ACCOUNT:CHANGE` 는 사용 이력이 없다 | `review_rules.py` 의 `find_stale`, `review_unused.py` 의 `find_unused`, `config/exclude_list.json` |
-| 6 | 회수 대상에 쓰기 권한이 섞여 있고, 퇴사자의 역할을 비우면 권한 여러 개가 한꺼번에 사라진다 | `revoke_plan.py` · `revoke_approve.py` · `revoke.py`, `revocation_log.json` |
-| 7 | 새벽에 밖에서 접속해도 요청이 허용된다. 한편 gaeun 은 VPN 으로 계정 변경을 하다가 3번 거부됐다 | `config/conditions.json`, `conditional.py` 의 `evaluate_conditional` |
-| 8 | 사람이 로그를 눈으로 세는 데 오래 걸리고, 기준이 사람마다 다르다 | `access_server.py` 의 `check`, `server_log.jsonl`, `checklist.py`, `log_summary.py`, `weekly_report.py` |
-
-- 파일들은 서로를 부릅니다. 상황 2 · 3 · 7 · 8은 요청 한 건이 같은 순서로 함수를 거칩니다. 아래 그림에서 A 에서 B 로 가는 화살표는 「A 가 B 를 부른다」는 뜻이고, 판정은 안쪽 B 부터 하고 바깥 A 가 그 결과에 조건을 더합니다.
-
-<figure class="page-figure"><img src="assets/f01.svg" alt="요청 한 건은 check 에서 evaluate_conditional, evaluate_access 를 거쳐 판정되고 write_log 로 로그에 남습니다"></figure>
-
-- 상황 4가 만든 예외가 상황 3의 `find_exception` 이 읽는 데이터가 됩니다. `req_grant.py` 의 `grant_request` 가 예외 리스트에 새 예외를 추가합니다.
-- 상황 5 → 6은 점검 결과가 회수로 이어집니다. 점검이 찾은 회수 대상을 `plan_revocation` 이 받아 계획을 세우고, `mark_approvals` · `execute_revocation` 이 이어 처리합니다.
-- 상황 1 · 4 는 함수가 함수를 부르는 관계가 아니라 같은 데이터(사용자 딕셔너리, 예외 리스트)를 읽고 쓰는 관계입니다.
-
-아래는 상황마다 관련된 코드입니다. 각 코드 앞의 문장은 **이 코드를 왜 읽는지**를 알려 줍니다. 답을 알려 주는 것은 아니고, 코드에서 어디를 볼지만 짚어 줍니다. 읽고 나서 보고서의 실습 5-2 상황 정리를 쓸 때 참고합니다.
-
-#### 상황 1 · 새 직원이 들어옴
-
-hana 를 시스템에 등록하는 일과 관련된 코드입니다.
-
-`role_admin.py` 의 `assign_role` 은 사용자에게 역할을 주는 함수입니다. 역할을 먼저 확인하는지, 사용자 정보를 어떻게 만드는지 읽습니다.
+**`log_summary.py`** 를 만들고 아래 내용을 붙여 넣습니다. 서버 로그를 읽고 세는 함수 다섯 개가 들어 있습니다.
 
 ```python
-def assign_role(users, name, role):                              # 사용자 딕셔너리 · 이름 · 역할을 받는 함수
-    """사용자에게 역할을 부여한다.
-    신입이 입사하거나 부서를 옮겼을 때 쓰고 (성공 여부, 이유)를 리턴한다.
+import json                                                      # JSON 문자열을 딕셔너리로 바꾸는 모듈을 불러온다
+
+
+def read_log(path):                                              # 로그 파일 경로를 받는 함수
+    """서버 로그 파일을 한 줄씩 읽어 요청 딕셔너리 리스트로 만든다.
+    주간 로그를 집계하기 전에 파일을 읽을 때 쓴다.
     """
-    if role not in ROLES:                                        # 역할 파일에 없는 역할이면
-        return False, "없는 역할"                                 # 부여하지 않고 거부한다
-    users[name] = {"role": role, "employed": True}               # 사용자 정보를 새로 만들거나 덮어쓴다
-    return True, "부여"                                           # 부여했다고 알린다
-```
+    entries = []                                                 # 요청 딕셔너리를 모을 리스트
+    with open(path, encoding="utf-8") as log_file:                      # 파일을 연다
+        for line in log_file:                                           # 파일에서 한 줄씩 꺼낸다
+            entry = json.loads(line)                             # JSON 한 줄을 딕셔너리로 바꾼다
+            entries.append(entry)                                # 요청 리스트에 추가한다
+    return entries                                               # 요청 리스트를 리턴한다
 
-#### 상황 2 · 퇴사자 계정으로 요청이 계속 들어옴
 
-퇴사한 dami 의 요청이 왜 거부되는지와 관련된 코드입니다.
-
-`rbac.py` 의 `check_permission` 은 요청이 들어오면 허용할지 가리는 첫 함수입니다. 검사가 어떤 순서로 이루어지는지, 퇴사한 사용자는 어느 단계에서 걸리는지 읽습니다.
-
-```python
-def check_permission(user, resource, action):                    # 사용자 · 자원 · 행위를 받는 함수
-    """요청을 허용할지 (허용 여부, 이유)로 리턴한다. 요청이 들어올 때 가장 먼저 쓰는 판정이고, 허용 리스트에 없으면 모두 거부한다."""   # 함수 첫 줄의 """ … """ 는 함수 설명 글이고 실행에는 영향이 없다
-    if user not in USERS:                                        # 사용자 파일에 없는 계정이면
-        return False, "등록되지 않은 사용자"                       # 바로 거부하고 함수를 끝낸다
-    if not USERS[user]["employed"]:                              # 재직 중이 아니면
-        return False, "퇴사한 계정"                                # 거부하고 함수를 끝낸다
-    role = USERS[user]["role"]                                   # 이 사용자의 역할을 꺼낸다
-    if role not in ROLES:                                        # 역할 파일에 없는 역할이면
-        return False, "역할이 없음"                                # 거부하고 함수를 끝낸다
-    permission = f"{resource}:{action}"                          # "자원:행위" 모양 문자열로 합친다
-    if permission not in ROLES[role]:                            # 그 역할의 권한 리스트에 없으면
-        return False, "권한 없음"                                  # 거부하고 함수를 끝낸다
-
-    return True, "허용"                                          # 모든 검사를 지나면 허용한다
-```
-
-#### 상황 3 · 다른 팀 업무를 잠시 지원함
-
-역할에 없는 권한을 잠시만 허용하는 일과 관련된 코드입니다.
-
-`config/exceptions.json` 은 예외를 적어 두는 파일입니다. 예외 한 개가 어떤 값으로 이루어져 있는지 읽습니다.
-
-```json
-{"id": 1, "user": "seoyeon", "permission": "SETTLE:QUERY", "expires": "2026-10-22 18:00", "reason": "월말 정산 대조 지원"}
-```
-
-`policy.py` 의 `evaluate_access` 는 역할 판정과 예외 확인을 이어 붙인 함수입니다. 예외를 언제 확인하고 언제 확인하지 않는지 읽습니다.
-
-```python
-def evaluate_access(user, resource, action, now):                # 사용자 · 자원 · 행위 · 지금 시각을 받는 함수
-    """(허용 여부, 이유)를 리턴한다.
-    역할 권한 → 유효한 예외 → 거부 순서로 보며, 임시 예외까지 포함해 요청을 판정할 때 쓴다.
+def count_by(entries, key):                                      # 요청 리스트와 센 기준(키 이름)을 받는 함수
+    """요청을 key 의 값별로 세어 {값: 횟수} 딕셔너리를 리턴한다.
+    사용자별 · 이유별로 몇 번인지 알고 싶을 때 쓴다.
+    예: count_by(entries, "user")
     """
-    is_allowed, reason = check_permission(user, resource, action)        # 역할 판정을 먼저 한다
-    if is_allowed:                                                       # 역할로 허용되면
-        return True, "역할 권한"                                   # 역할 권한으로 허용한다
-    if reason != "권한 없음":                                     # 사용자 자체가 거부 대상이면(없음 · 퇴사 · 역할이 없음)
-        return False, reason                                     # 예외를 보지 않고 그 이유로 거부한다
-    found, found_exception_id = find_exception(user, f"{resource}:{action}", now)   # 유효한 예외를 찾는다
-    if found:                                                    # 있으면
-        return True, f"예외 {found_exception_id}번"                            # 예외 번호와 함께 허용한다
-    return False, "권한 없음"                                      # 둘 다 없으면 거부한다
-```
+    counts = {}                                                  # 값별 횟수를 담을 딕셔너리
+    for entry in entries:                                        # 요청을 하나씩 꺼낸다
+        value = entry[key]                                       # 이 요청의 기준 값을 꺼낸다
+        old_count = counts.get(value, 0)                         # 지금까지 센 횟수를 꺼낸다(처음이면 0)
+        counts[value] = old_count + 1                            # 횟수를 1 늘려 넣는다
+    return counts                                                # 값별 횟수를 리턴한다
 
-`exception_policy.py` 의 `find_exception` 은 유효한 예외를 찾는 함수입니다. 예외가 언제까지 유효한지 어떻게 가리는지 읽습니다.
 
-```python
-def find_exception(user, permission, now):                       # 사용자 · "자원:행위" · 지금 시각을 받는 함수
-    """now 시각에 유효한 예외가 있으면 (True, 예외 번호)를 리턴한다.
-    없으면 (False, None)을 리턴한다.
-    역할에 없는 권한을 임시로 허용해도 되는지 확인할 때 쓴다.
+def filter_denied(entries):                                      # 요청 리스트를 받는 함수
+    """거부된 요청만 모아 리스트로 리턴한다.
+    거부 사유와 사용자를 따로 볼 때 쓴다.
     """
-    for exception in EXCEPTIONS:                                       # 예외를 하나씩 꺼낸다
-        if exception["user"] == user and exception["permission"] == permission:   # 사람과 권한이 같으면
-            expires = datetime.strptime(exception["expires"], TIME_FORMAT)  # 만료 시각을 시각으로 바꾸고
-            if now < expires:                                    # 아직 만료 전이면
-                return True, exception["id"]                           # 유효한 예외와 그 번호를 리턴한다
-    return False, None                                           # 못 찾았으면 없다고 리턴한다
-```
+    denied = []                                                  # 거부된 요청을 모을 리스트
+    for entry in entries:                                        # 요청을 하나씩 꺼낸다
+        if not entry["allowed"]:                                 # 거부된 요청이면
+            denied.append(entry)                                 # 거부 리스트에 추가한다
+    return denied                                                # 거부된 요청 리스트를 리턴한다
 
-#### 상황 4 · 새 권한이 필요함
 
-권한을 요청하고, 승인하고, 부여하는 절차와 관련된 코드입니다.
-
-`req_review.py` 의 `approve_request` 는 요청서를 승인하는 함수입니다. 승인하지 않는 경우가 무엇인지, 승인하면 무엇이 바뀌는지 읽습니다.
-
-```python
-def approve_request(request, approver):                          # 요청서와 승인자 이름을 받는 함수
-    """검토 중인 요청서를 승인한다.
-    보안 담당자가 권한 요청을 처리할 때 쓰고 (성공 여부, 이유)를 리턴한다.
+def deny_rate(entries):                                          # 요청 리스트를 받는 함수
+    """전체 요청 중 거부된 요청의 비율(0 ~ 1)을 리턴한다.
+    주간 보고서에서 거부율을 구할 때 쓰며, 요청이 없으면 0.0 이다.
     """
-    if request["status"] != "reviewing":                         # 검토 중이 아니면(이미 처리됐으면)
-        return False, "검토 중이 아님"                             # 바꾸지 않고 이유를 알린다
-    if request["user"] == approver:                              # 요청한 사람이 스스로 처리하려고 하면
-        return False, "본인 요청은 처리할 수 없음"                  # 바꾸지 않고 이유를 알린다
-    request["status"] = "approved"                               # 상태를 승인됨으로 바꾼다
-    request["approver"] = approver                               # 누가 승인했는지 적어 둔다
-    return True, "승인"                                          # 승인했다고 알린다
-```
+    total = len(entries)                                         # 전체 요청 수
+    if total == 0:                                               # 요청이 하나도 없으면
+        return 0.0                                               # 0.0 을 리턴한다(0 으로 나누지 않는다)
+    denied_entries = filter_denied(entries)                      # 거부된 요청 리스트
+    denied = len(denied_entries)                                 # 거부된 요청 수
+    return denied / total                                        # 거부 수를 전체 수로 나눈 비율을 리턴한다
 
-- 요청서의 상태(`status`)는 `reviewing` → `approved` → `granted` 순서로 바뀌고, 거절하면 `rejected` 입니다. 처리 기한은 `config/sla.json` 의 `hours`(4시간)이고 `req_sla.py` 의 `check_sla_breach` 가 기한을 넘긴 요청서를 찾습니다.
-- 이 세 함수(`approve_request`, `grant_request`, `check_sla_breach`)는 서로 부르지 않습니다. 요청서 딕셔너리를 순서대로 넘겨 받으며 `status` 만 바꿉니다.
 
-#### 상황 5 · 안 쓰는 권한이 쌓임
-
-(Unit 3 점검 실습의 샘플 데이터 기준이고, 이번 Unit의 주간 로그와는 별개입니다.) 오래 안 쓴 권한을 찾아내는 일과 관련된 코드입니다.
-
-`review_unused.py` 의 `find_unused` 는 권한을 마지막으로 쓴 시각을 보고 후보를 뽑는 함수입니다. 기준 일수와 비교하는 줄이 어디인지, 사용 이력이 없을 때는 어떻게 하는지 읽습니다.
-
-```python
-        used_text = last_used_map.get(key)                       # 마지막 사용 시각 문자열을 꺼낸다(이력이 없으면 None)
-        if used_text is None:                                    # 사용 이력이 없으면
-            unused_entry = make_unused(entry, None)              # 안 쓴 권한 한 건을 만든다
-            unused.append(unused_entry)                          # 마지막 사용 시각을 None 으로 적은 복사본을 후보에 추가한다
-        elif days_since(used_text, now) > limit_days:            # 사용 이력이 있고 기준 일 수보다 오래 안 썼으면
-            unused_entry = make_unused(entry, used_text)         # 안 쓴 권한 한 건을 만든다
-            unused.append(unused_entry)                          # 마지막 사용 시각을 적은 복사본을 후보에 추가한다
-```
-
-`config/exclude_list.json` 은 점검에 걸려도 회수하지 않을 권한을 적어 두는 파일입니다. 제외 대상마다 이유를 왜 함께 적는지 생각하며 읽습니다.
-
-```json
-{"user": "gaeun", "permission": "ACCOUNT:CHANGE", "reason": "계정에 사고가 났을 때만 쓰는 권한이라 평소에는 쓰지 않음"}
-```
-
-#### 상황 6 · 민감한 권한을 회수해야 함
-
-(상황 5처럼 Unit 4 회수 실습의 샘플 데이터 기준입니다.) 권한을 안전하게 없애는 절차와 관련된 코드입니다.
-
-`revoke_approve.py` 의 `needs_approval` 은 회수 계획 중 승인이 필요한 것을 가르는 함수입니다. 어떤 조건이 승인 대상이 되는지 읽습니다.
-
-```python
-def needs_approval(plan, sensitive):                             # 계획 한 건과 민감한 권한 리스트를 받는 함수
-    """민감한 권한이거나 영향이 2개 이상이면 True, 아니면 False 를 리턴한다.
-    승인이 필요한 회수를 가려낼 때 쓴다.
+def find_heavy_users(denied_counts, limit):                      # 사용자별 거부 횟수 딕셔너리와 기준 횟수를 받는 함수
+    """거부 횟수가 limit 이상인 사용자 이름 리스트를 리턴한다.
+    거부가 한 사람에게 몰렸는지 확인할 때 쓴다.
     """
-    is_sensitive = plan["permission"] in sensitive               # 권한이 민감한 권한 리스트에 있는지(True 또는 False)
-    is_big_impact = plan["impact"] >= 2                          # 영향이 2건 이상인지(True 또는 False)
-    return is_sensitive or is_big_impact                         # 둘 중 하나라도 참이면 True 를 리턴한다
+    heavy = []                                                   # 기준에 걸린 사용자 이름을 모을 리스트
+    for user, count in denied_counts.items():                    # 사용자 이름과 거부 횟수를 하나씩 꺼낸다
+        if count >= limit:                                       # 거부 횟수가 기준 이상이면
+            heavy.append(user)                                   # 사용자 이름을 추가한다
+    return heavy                                                 # 기준에 걸린 사용자 이름을 리턴한다
 ```
 
-`revoke_plan.py` 의 `plan_revocation` 은 회수 대상마다 회수 방법을 정하는 함수입니다. 세 가지 방법이 어떤 조건에서 나뉘는지 읽습니다.
+- `read_log` 는 로그 파일의 JSON 한 줄을 딕셔너리 하나로 바꿔 리스트에 모읍니다.
+- `count_by(entries, "user")` 처럼 키 이름을 주면 그 값별로 몇 번인지 셉니다.
+- `deny_rate` 는 요청이 하나도 없으면 0 으로 나누지 않고 `0.0` 을 돌려줍니다.
+
+## `weekly_report.py` 만들기
+
+**`weekly_report.py`** 를 만들고 아래 내용을 붙여 넣습니다. 점검 결과와 로그 집계를 합쳐 네 절의 보고서 문자열을 만들고, 날짜가 들어간 `.md` 파일로 저장합니다.
 
 ```python
-        if "예외" in finding["source"]:                          # 예외로 받은 권한이면
-            method = "예외 삭제"                                 # 그 예외를 지운다
-        elif not info["employed"]:                               # 퇴사한 사용자의 역할 권한이면
-            method = "역할 해제"                                 # 그 사용자의 역할을 해제한다
-        else:                                                    # 재직 중인 사용자의 역할 권한이면
-            method = "역할에서 권한 빼기"                        # 역할에서 그 권한을 뺀다
+from log_summary import count_by, filter_denied, deny_rate, find_heavy_users   # 제공 파일 log_summary.py 의 집계 함수를 불러온다
+
+
+def build_report(results, entries, alert, today):                # 점검 결과 · 요청 리스트 · 경고 기준 · 날짜 문자열을 받는 함수
+    """점검 결과와 로그 집계를 합쳐 주간 보고서 문자열을 만든다.
+    매주 정기 보고서를 만들 때 쓴다.
+    """
+    denied = filter_denied(entries)                              # 거부된 요청만 모은다
+    total = len(entries)                                         # 전체 요청 수
+    denied_count = len(denied)                                   # 거부된 요청 수
+    allowed_count = total - denied_count                         # 허용된 요청 수
+    rate = deny_rate(entries)                                    # 거부율(0 ~ 1)을 구한다
+    percent = round(rate * 100)                                  # 거부율을 퍼센트 숫자로 바꾼다
+    limit = alert["deny_rate_limit"]                             # 거부율 경고 기준(0 ~ 1)
+    limit_percent = round(limit * 100)                           # 경고 기준을 퍼센트 숫자로 바꾼다
+    status = "경고 없음"                                          # 먼저 경고 없음으로 둔다
+    if rate >= limit:                                            # 거부율이 기준 이상이면
+        status = "경고"                                           # 경고로 바꾼다
+    user_limit = alert["user_denied_limit"]                      # 사용자별 거부 횟수 기준
+    user_counts = count_by(denied, "user")                       # 거부된 요청을 사용자별로 센다
+    heavy = find_heavy_users(user_counts, user_limit)            # 기준 이상 거부된 사용자를 찾는다
+
+    lines = [f"# 접근통제 주간 보고서 ({today})", ""]            # 보고서 줄을 모을 리스트(제목과 빈 줄로 시작)
+    lines.append("## 1. 요청 현황")                                # 첫째 절 제목
+    lines.append(f"- 전체 요청: {total}건 (허용 {allowed_count}건 · 거부 {denied_count}건)")   # 요청 수
+    lines.append(f"- 거부율: {percent}% (경고 기준 {limit_percent}%) -> {status}")             # 거부율과 경고 여부
+    lines.append("")                                             # 빈 줄
+    lines.append("## 2. 거부 사유")                                # 둘째 절 제목
+    reason_counts = count_by(denied, "reason")                   # 거부된 요청을 사유별로 센다
+    for reason, count in reason_counts.items():                  # 사유와 횟수를 하나씩 꺼낸다
+        lines.append(f"- {reason}: {count}건")                    # 사유별 횟수를 추가한다
+    lines.append("")                                             # 빈 줄
+    lines.append("## 3. 점검 결과")                                # 셋째 절 제목
+    for result in results:                                       # 점검 결과를 하나씩 꺼낸다
+        name = result["name"]                                    # 점검 이름
+        problems = result["problems"]                            # 문제가 있는 사용자 · 예외 리스트
+        if len(problems) == 0:                                   # 문제가 없으면
+            lines.append(f"- {name}: 통과")                       # 통과라고 추가한다
+        else:                                                    # 문제가 있으면
+            lines.append(f"- {name}: 실패 {problems}")            # 실패와 문제 리스트를 추가한다
+    lines.append("")                                             # 빈 줄
+    lines.append("## 4. 조치가 필요한 것")                          # 넷째 절 제목
+    lines.append(f"- 거부 {user_limit}번 이상 사용자: {heavy}")     # 기준 이상 거부된 사용자
+    for result in results:                                       # 점검 결과를 하나씩 꺼낸다
+        name = result["name"]                                    # 점검 이름
+        problems = result["problems"]                            # 문제가 있는 사용자 · 예외 리스트
+        if len(problems) > 0:                                    # 문제가 있으면
+            lines.append(f"- 확인: {name} -> {problems}")         # 확인할 것을 추가한다
+    return "\n".join(lines) + "\n"                               # 줄들을 줄바꿈으로 이어 붙인 문자열을 리턴한다
+
+
+def save_report(text, today):                                    # 보고서 문자열과 날짜 문자열을 받는 함수
+    """보고서를 날짜가 들어간 .md 파일로 저장하고 파일 이름을 리턴한다.
+    주간 보고서를 파일로 남길 때 쓴다.
+    """
+    file_name = f"access_control_weekly_report_{today}.md"       # 날짜가 들어간 파일 이름을 만든다
+    with open(file_name, "w", encoding="utf-8") as report_file:            # 파일을 쓰기 모드("w")로 연다
+        report_file.write(text)                                            # 보고서 문자열을 파일에 쓴다
+    return file_name                                             # 저장한 파일 이름을 리턴한다
 ```
 
-`revoke.py` 의 `execute_revocation` 은 계획을 실제로 실행하는 함수입니다. 승인 상태에 따라 실행하는 것과 하지 않는 것이 어떻게 나뉘는지, 결과를 어떻게 남기는지 읽습니다.
+읽어 둘 곳은 세 곳입니다.
+
+1. `if rate >= limit:` 는 거부율이 경고 기준 이상인지 보는 비교입니다. 거부율은 0 ~ 1 사이 소수이고, 경고 기준도 같은 소수입니다. 퍼센트(`round(rate * 100)`)는 보여 줄 때만 씁니다.
+2. 보고서 줄은 `lines.append(…)` 로 하나씩 모으고, 마지막에 `"\n".join(lines)` 로 줄바꿈을 넣어 한 문자열로 만듭니다.
+3. `save_report` 는 파일을 `"w"`(새로 쓰기)로 엽니다. 로그처럼 계속 덧붙이는 파일은 `"a"` 로 열지만, 매주 새로 만드는 보고서는 `"w"` 입니다. 파일 이름에는 `f"…{today}.md"` 로 날짜를 넣습니다.
+
+## 주간 보고서 만들기
+
+**`weekly_run.py`** 를 만들고 아래 내용을 붙여 넣습니다. 실습 5-1의 점검 결과와 일주일 치 로그를 모아 보고서를 만들고 저장합니다.
 
 ```python
-        if plan["approval"] == "승인 대기":                      # 승인을 기다리는 계획이면
-            result = "대기"                                      # 실행하지 않고 대기로 남긴다
-        else:                                                    # 승인 불필요이거나 승인됨이면
-            apply_plan(plan, users, roles, exceptions)           # 실제로 회수한다
-            result = "실행"                                      # 실행했다고 남긴다
+import json                                                      # 경고 기준 파일을 읽는 데 쓴다
+from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
+from checklist import TIME_FORMAT, load_state, run_checklist     # 실습 5-1에서 만든 점검 함수를 불러온다
+from log_summary import read_log                                 # 제공 파일의 로그 읽기 함수를 불러온다
+from weekly_report import build_report, save_report             # 제공 파일의 보고서 함수를 불러온다
+
+TODAY = "2026-11-02"                                             # 보고서 날짜
+NOW = datetime.strptime(TODAY + " 10:00", TIME_FORMAT)           # 점검하는 시각
+with open("config/alert.json", encoding="utf-8") as alert_file:           # 경고 기준 파일을 연다
+    ALERT = json.load(alert_file)                                         # 경고 기준 딕셔너리로 읽는다
+
+print("--- 단계 1: 모으기 - 점검 결과와 요청 로그")                    # 단계 1 시작을 알리는 줄
+state = load_state("config/week_state.json")                     # 점검할 데이터 파일을 읽는다
+results = run_checklist(state, NOW)                              # 점검 세 가지를 실행한다
+entries = read_log("week_log.jsonl")                             # 요청 로그를 읽는다
+result_count = len(results)                                      # 점검이 몇 가지인지 센다
+entry_count = len(entries)                                       # 요청이 몇 건인지 센다
+print("점검", result_count, "가지 · 요청", entry_count, "건")    # 모은 양을 출력한다
+print("--- 단계 2: 보고서 만들기와 저장")                              # 단계 2 시작을 알리는 줄
+text = build_report(results, entries, ALERT, TODAY)              # 보고서 문자열을 만든다
+file_name = save_report(text, TODAY)                             # 파일로 저장한다
+print("저장한 파일:", file_name)                                    # 저장한 파일 이름을 출력한다
+print("--- 단계 3: 저장한 보고서 내용")                                # 단계 3 시작을 알리는 줄
+print(text)                                                      # 보고서 내용을 출력한다
 ```
 
-#### 상황 7 · 새벽 외부 접속, 그리고 정상 직원이 계속 거부됨
+1. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
+   ```bash
+   python weekly_run.py
+   ls
+   ```
+2. 출력은 세 단계입니다. 단계 3에 보고서가 네 절로 나오고, `ls` 에 `access_control_weekly_report_2026-11-02.md` 가 보이면 됩니다.
 
-권한이 있어도 시간이나 접속 위치에 따라 막는 규칙과 관련된 코드입니다.
-
-`config/conditions.json` 은 권한마다 허용하는 시간대와 접속 위치를 적어 둔 파일입니다. 어떤 권한에 어떤 조건이 걸려 있고, 조건이 없는 권한은 무엇인지 읽습니다.
-
-```json
-[
-  {"permission": "SALES:CHANGE", "hours": [9, 18], "networks": ["office", "vpn"]},
-  {"permission": "SETTLE:QUERY", "hours": [8, 20], "networks": ["office", "vpn"]},
-  {"permission": "ACCOUNT:CHANGE", "hours": [9, 18], "networks": ["office"]}
-]
-```
-
-`conditional.py` 의 `evaluate_conditional` 은 기본 판정이 허용일 때 위 조건을 적용하는 함수입니다. 조건에 어긋나면 어떤 이유로 거부하는지 읽습니다.
-
-```python
-    for rule in rules:                                           # 조건을 하나씩 꺼낸다
-        if rule["permission"] == permission:                     # 이 권한에 걸린 조건이면
-            if not is_work_time(rule, now):                      # 업무 시간 안이 아니면
-                return False, "업무 시간 밖"                       # 거부한다
-            if not is_allowed_network(rule, network):            # 허용된 접속 위치가 아니면
-                return False, "허용되지 않은 접속 위치"            # 거부한다
-    return True, reason                                          # 어긋나는 조건이 없으면 기본 판정의 이유로 허용한다
-```
-
-#### 상황 8 · 매주 어긋남을 확인해야 함
-
-점검과 집계를 매주 같은 기준으로 하는 일과 관련된 코드입니다.
-
-`access_server.py` 의 `check` 는 서버가 요청 한 건을 받아 판정하고 로그를 남기는 함수입니다. 값이 빠졌을 때, 허용일 때, 거부일 때 각각 어떤 숫자(상태 코드)로 답하는지 읽습니다.
-
-```python
-    now = parse_time(time_text)                                  # 시각으로 바꾼다(없거나 모양이 틀리면 None)
-    if None in (user, resource, action, network, now):           # 빠졌거나 모양이 틀린 값이 하나라도 있으면
-        return {"allowed": False, "reason": "입력이 잘못됨"}, 400   # 요청이 잘못됐다는 상태 코드 400 으로 답한다
-    allowed, reason = evaluate_conditional(user, resource, action, network, now, RULES)   # 조건까지 판정한다
-    log_entry = {                                                 # 로그 한 줄에 담을 값을 묶는다(여러 줄)
-        "time": request.args.get("time"),                        # 시각
-        "user": user,                                            # 사용자
-        "permission": f"{resource}:{action}",                    # 권한
-        "network": network,                                      # 접속 위치
-        "allowed": allowed,                                      # 허용 여부
-        "reason": reason,                                        # 이유
-    }
-    write_log(log_entry)                                         # 요청 로그를 한 줄 덧붙인다
-    if allowed:                                                  # 허용이면
-        return {"allowed": True, "reason": reason}, 200          # 상태 코드 200 으로 답한다
-    return {"allowed": False, "reason": reason}, 403             # 거부이면 상태 코드 403 으로 답한다
-```
-
-아래 그림은 「제공 파일」 레슨에서 만든 주간 보고서가 어떤 파일의 어떤 함수에서 만들어지는지 보여 줍니다.
-
-<figure class="page-figure"><img src="assets/f02.svg" alt="weekly_run.py 가 run_checklist, read_log, build_report, save_report 를 차례로 불러 보고서를 만듭니다"></figure>
-
-## 실습 5-2 · 상황 8개 원인과 해결법 정리하기
-
-**이런 상황이 있습니다**
-
-- **지금은**: Module 3에서 파일과 함수를 하나씩 만들었지만, 상황이 생겼을 때 「무엇이 문제이고 어디를 어떻게 고치는지」를 한 번에 말하기는 어렵습니다.
-- **그래서 하는 것**: 상황 8개마다 원인, 고칠 파일, 어떻게 고치는지, 고친 뒤 확인을 내 말로 정리합니다.
-  - 상황 1 · 2 는 본보기가 있습니다. 먼저 읽고, 상황 3 ~ 8 중에서 내가 약하다고 느끼는 것부터 **4개 이상** 씁니다. 다 쓰고 싶으면 다 써도 됩니다.
-  - 분량은 정하지 않습니다. 짧게 써도 되고, 더 공부하고 싶으면 깊게 써도 됩니다.
-- **끝나면**: 보고서의 실습 5-2 상황 정리가 Module 3 총정리가 됩니다.
-- **현업에서는**: 인수인계 문서는 「이런 일이 생기면 여기를 이렇게 고친다」를 상황별로 적어 둡니다.
-
-**할 일**
-
-1. `report_u5.md` 의 `## 실습 5-2` 아래 `### 상황 3` ~ `### 상황 8` 칸을 엽니다. 상황 1 · 2 의 본보기는 「보고서 쓰기」 레슨에 있으니 먼저 읽습니다.
-2. 상황 3 ~ 8 중 4개 이상을 골라 `-` 뒤를 채웁니다. Module 3에서 만든 내 파일을 열어 보면서 써도 됩니다.
-
-- 칸마다 무엇을 쓰는지
-  - **원인**: 사람의 일인지, 데이터 문제인지, 규칙 문제인지 고르고 이유를 씁니다.
-  - **고칠 파일**: 어느 파일을 열어서 고치는지 씁니다.
-  - **어떻게 고치나요**: 새로 넣는지, 값을 바꾸는지, 지우는지 고르고, 정확히 무엇을 넣거나 바꾸거나 지우는지 씁니다.
-  - **고친 뒤 확인**: 무엇을 다시 실행하거나 어떤 출력을 보면 고쳐진 것을 알 수 있는지 씁니다.
-- 상황 하나에서 답이 여러 개일 수 있습니다(예: 상황 7은 규칙을 추가하는 경우와 고치는 경우). 떠오르는 대로 모두 씁니다. 같은 칸에 케이스 A · B 를 쓸 때는 줄을 나눠 「케이스 A: …」 처럼 적습니다.
-
-**순서**
-
-1. **[VS Code]** `report_u5.md` 의 `## 실습 5-2` 아래 `### 상황 3` ~ `### 상황 8` 칸을 엽니다. 본보기(상황 1 · 2)는 「보고서 쓰기」 레슨에서 먼저 읽습니다.
-2. **[VS Code]** 3.1 의 상황 표와 코드를 보면서 상황 3 ~ 8 중 4개 이상의 `-` 뒤를 채웁니다. 막히면 Module 3에서 만든 내 파일을 열어서 읽습니다.
-3. **[보고서]** 같은 `## 실습 5-2` 아래 `### 질문` 의 `- (가) 답:` 을 채웁니다.
-   - (가) [핵심 질문] 상황 8개를 「데이터를 고친 상황」과 「규칙을 고친 상황」으로 나눠 보면 각각 어떤 상황인가요? 어느 쪽에서 실수하면 더 위험한지 이유와 함께 적어 주세요.
-   - (나) [핵심 질문] Module 3에서 가장 헷갈렸던 로직 하나와, 어떻게 이해했는지 적어 주세요.
-   - (다) (선택) LLM 호출이나 알림과 이어 붙일 수 있는 곳을 적어 주세요. 예를 들어 `log_summary.py` 의 `read_log` 가 만든 요청 리스트를 LLM 호출에 넘겨 요약하는 것입니다.
-
-## 실습 5-2 정리
-
-| 하려는 일 | 코드 · 말 |
-|---|---|
-| 상황이 생기면 | 확인 → 원인 → 고치기(추가 · 수정 · 삭제) → 다시 확인 |
-| 원인 | 사람의 일 · 데이터 문제 · 규칙 문제 |
-| 고칠 파일 | 데이터는 `users.json` · `exceptions.json` · `exclude_list.json`, 규칙은 `conditions.json` · `alert.json` |
-| 퇴사자 · 일시 지원 | `employed` 수정 · 계정 삭제, 만료 시각이 있는 예외 추가 |
-| 새 권한 · 안 쓰는 권한 | 요청 → 승인 → 부여, 점검 후 회수 또는 회수 제외 |
-| 회수 · 조건 · 매주 확인 | 계획 → 승인 → 실행 → 이력, 시간 · 접속 위치 조건, 점검 + 집계 + 보고서 |
-
----
-
-## Unit 5 마무리
-
-하루를 닫는 마무리입니다(15분). 실습 5-1 · 5-2와 글쓰기를 끝낸 뒤 합니다.
-
-**1. 오늘 한 일 확인**
-
-1. 퇴사자 계정 · 만료 예외 · 부서와 역할을 점검해 통과와 실패를 가렸다 (실습 5-1)
-2. 제공 파일로 점검 결과와 일주일 치 로그를 합쳐 주간 보고서 파일을 만들었다 (제공 파일)
-3. 상황 8개 중 4개 이상의 원인과 고치는 방법을 내 말로 정리해 Module 3 총정리를 썼다 (실습 5-2)
-4. 보고서 `report_u5.md` 의 실습 5-1 · 5-2 칸에 `답:` 뒤가 비어 있는 질문이 없다
-5. 도전 5-1을 했다면 직접 쓴 `log_summary.py` 로 `weekly_run.py` 를 다시 돌려도 보고서가 같다 (선택)
-
-**2. 파일 확인** — **[터미널]** `access_control` 폴더에서 확인합니다.
-
-```bash
-ls
-ls config
-```
-
-- 이번 Unit에서 만든 파일 `checklist.py` · `exercise5-1_run.py` · `log_summary.py` · `weekly_report.py` · `weekly_run.py` · `week_log.jsonl` · `access_control_weekly_report_2026-11-02.md` · `report_u5.md` 가 보여야 합니다. 도전 5-1을 했다면 `challenge5-1_run.py` 도 있습니다.
-- `config` 안에는 이번 Unit의 `week_state.json` · `alert.json` 이 보여야 합니다. 앞 Unit에서 만든 JSON 파일도 함께 보입니다.
-- Module 3의 파일은 이렇게 둡니다. 파일을 어디에 저장했는지 헷갈리면 이 규칙과 VS Code 왼쪽 목록을 비교합니다.
-  1. `config/` 안에는 JSON 설정 파일만 둡니다. 이름이 `config/…` 로 시작하는 파일입니다.
-  2. 그 밖의 파일(코드 `.py`, 실행 파일 `exerciseN-M_run.py` · `challengeN-M_run.py`, 보고서 `report_uN.md`, 실행하면 생기는 파일)은 모두 `access_control/` 바로 아래에 둡니다.
-  3. 하위 폴더를 따로 만들지 않습니다. `__pycache__/` 는 파이썬이 자동으로 만드는 임시 폴더라 신경 쓰지 않습니다.
+실행 결과:
 
 ```
-security-agent-toolkit/
-  access_control/          Module 3
-    config/
-      week_state.json
-      alert.json
-      (앞 Unit의 JSON 파일들)
-    checklist.py
-    exercise5-1_run.py
-    log_summary.py
-    weekly_report.py
-    weekly_run.py
-    week_log.jsonl
-    access_control_weekly_report_2026-11-02.md
-    report_u5.md
-    (앞 Unit의 파일들)
+--- 단계 1: 모으기 - 점검 결과와 요청 로그
+점검 3 가지 · 요청 40 건
+--- 단계 2: 보고서 만들기와 저장
+저장한 파일: access_control_weekly_report_2026-11-02.md
+--- 단계 3: 저장한 보고서 내용
+# 접근통제 주간 보고서 (2026-11-02)
+
+## 1. 요청 현황
+- 전체 요청: 40건 (허용 24건 · 거부 16건)
+- 거부율: 40% (경고 기준 30%) -> 경고
+
+## 2. 거부 사유
+- 역할이 없음: 3건
+- 업무 시간 밖: 4건
+- 퇴사한 계정: 4건
+- 허용되지 않은 접속 위치: 5건
+
+## 3. 점검 결과
+- 퇴사자 계정 점검: 실패 ['dami']
+- 만료 예외 점검: 통과
+- 부서와 역할 점검: 실패 ['junho']
+
+## 4. 조치가 필요한 것
+- 거부 4번 이상 사용자: ['dami', 'gaeun']
+- 확인: 퇴사자 계정 점검 -> ['dami']
+- 확인: 부서와 역할 점검 -> ['junho']
 ```
 
-**3. 깃허브에 올리기** — 오늘은 따로 올리지 않아도 됩니다. Module 4 첫 Unit의 실습 1-2 마지막에 올릴 때 `access_control` 폴더도 같은 저장소라서 함께 올라갑니다. 오늘 올리고 싶으면 Unit 1 마무리의 「깃허브에 올리기」와 같은 순서(`git status` 로 `.env` 확인 → `git add .` → `git commit` → `git push`)로 올립니다.
-
-**4. 이어지는 곳**
-
-1. 여기까지가 Module 3입니다. 다음은 **Module 4 이상탐지**입니다.
-2. Module 3은 요청이 들어오는 순간 「허용할까」를 판정했고, Module 4는 이미 쌓인 로그를 읽고 평소와 다른 일을 찾습니다.
-3. 이번 Unit에서 해 본 「로그 한 줄을 읽고, 세고, 기준과 비교하는」 방식이 Module 4에서 로그를 분석할 때의 바탕이 됩니다.
-
----
-
-<!-- learn:answers -->
+- 1절은 일주일 동안의 요청 수와 거부율, 2절은 거부 사유별 횟수, 3절은 실습 5-1의 점검 결과, 4절은 담당자가 먼저 볼 것입니다.
+- VS Code 왼쪽 목록에서 `access_control_weekly_report_2026-11-02.md` 를 열면 같은 내용이 파일로 저장된 것을 볼 수 있습니다.
+- `ModuleNotFoundError: No module named 'checklist'` 가 나오면 `checklist.py` 가 같은 폴더에 없는 것입니다. `IndentationError` 가 나오면 `checklist.py` 의 직접 쓰는 곳이 아직 비어 있는 것입니다.
+- 이 보고서는 실습 5-2의 상황 8에서 다시 읽습니다. 숫자가 어떻게 나왔는지 직접 세어 보고 싶으면 도전 5-1을 합니다.

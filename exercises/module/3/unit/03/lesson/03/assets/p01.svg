@@ -1,26 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img"><title>사용 이력과 현황을 find_unused 에 넣어 90일 넘게 안 쓴 권한 후보를 뽑는다</title><desc>입력은 규칙에 안 걸린 재직자의 권한 일곱 건과 사용 이력 파일 config/access_log.json 이다. find_unused 가 90일 기준으로 후보를 골라 목록으로 내놓고, 회수는 하지 않는다.</desc><defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 390" role="img">
+<title>실습 3-2 전에 만드는 파일 네 개: 하나는 실습 3-2, 셋은 Unit 4 가 쓴다</title>
+<desc>access_control 폴더에 review_rules.py, overprivilege.py, report_exclude.py, config/exclude_list.json 을 만듭니다. 실습 3-2 는 review_rules.py 의 find_stale 을 쓰고, 나머지 세 파일은 Unit 4 가 씁니다. 도전 3-1 ~ 3-3 을 하면 이 파일들을 골격으로 바꿔 직접 써 봅니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">실습 3-2 · 무엇을 만드는가</text>
-<rect x="20" y="70" width="200" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
-<text x="120" y="102.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">현황(규칙에 안 걸린 것)</text>
-<text x="120" y="123.75" font-size="14" fill="#666660" text-anchor="middle">재직자의 권한 7건</text>
-<rect x="20" y="170" width="200" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
-<text x="120" y="202.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">사용 이력</text>
-<text x="120" y="223.75" font-size="14" fill="#666660" text-anchor="middle">config/access_log.json</text>
-<rect x="270" y="110" width="180" height="96" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="360" y="142.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">find_unused</text>
-<text x="360" y="163.25" font-size="14" fill="#666660" text-anchor="middle">기준 90일</text>
-<text x="360" y="184.25" font-size="14" fill="#666660" text-anchor="middle">지금 2026-10-29 10:00</text>
-<rect x="500" y="110" width="200" height="96" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="2"/>
-<text x="600" y="142.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">미사용 후보 목록</text>
-<text x="600" y="163.25" font-size="14" fill="#666660" text-anchor="middle">90일 넘게 안 씀</text>
-<text x="600" y="184.25" font-size="14" fill="#666660" text-anchor="middle">또는 사용 이력 없음</text>
-<line x1="224" y1="108" x2="266" y2="140" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<line x1="224" y1="208" x2="266" y2="178" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<line x1="454" y1="158" x2="496" y2="158" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="500" y="236" width="200" height="52" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="2"/>
-<text x="600" y="256.75" font-size="15" fill="#292929" text-anchor="middle">이번에는 뽑기만 한다</text>
-<text x="600" y="277.75" font-size="14" fill="#666660" text-anchor="middle">회수는 Unit 4</text>
-<text x="20" y="296" font-size="15" fill="#666660">각 후보에는 last_used 키(마지막 사용 시각, 없으면 None)를 더한다</text>
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">실습 3-2 전에 만드는 파일 네 개</text>
+<rect x="20" y="50" width="400" height="256" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="36" y="76" font-size="15" fill="#666660" font-weight="700">access_control 폴더</text>
+<rect x="36" y="90" width="368" height="44" rx="6" fill="#ffffff" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="50" y="117" font-size="15" fill="#292929" font-weight="700">review_rules.py</text>
+<text x="390" y="117" font-size="14" fill="#1f7a4a" text-anchor="end">find_stale</text>
+<rect x="36" y="142" width="368" height="44" rx="6" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="50" y="169" font-size="15" fill="#292929" font-weight="700">overprivilege.py</text>
+<text x="390" y="169" font-size="14" fill="#666660" text-anchor="end">generate_report</text>
+<rect x="36" y="194" width="368" height="44" rx="6" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="50" y="221" font-size="15" fill="#292929" font-weight="700">report_exclude.py</text>
+<text x="390" y="221" font-size="14" fill="#666660" text-anchor="end">split_by_exclude</text>
+<rect x="36" y="246" width="368" height="44" rx="6" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="50" y="273" font-size="15" fill="#292929" font-weight="700">config/exclude_list.json</text>
+<text x="390" y="273" font-size="14" fill="#666660" text-anchor="end">제외 리스트</text>
+<rect x="480" y="90" width="220" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="590" y="117" font-size="16" fill="#1f7a4a" text-anchor="middle" font-weight="700">실습 3-2 에서 씀</text>
+<rect x="480" y="142" width="220" height="148" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="590" y="208" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">Unit 4 가 씀</text>
+<text x="590" y="232" font-size="14" fill="#292929" text-anchor="middle">오늘은 만들어만 둔다</text>
+<polyline points="404,112 476,112" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="404,164 476,164" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="404,216 476,216" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="404,268 476,268" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="20" y="326" width="680" height="48" rx="8" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="360" y="355" font-size="15" fill="#292929" text-anchor="middle">선택 · 도전 3-1 ~ 3-3 을 하면 이 파일들을 빈칸 골격으로 바꿔 직접 써 본다</text>
 </g>
 </svg>

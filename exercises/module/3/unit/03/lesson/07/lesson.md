@@ -157,7 +157,7 @@ def split_by_exclude(findings, exclude_map):                     # 후보 리스
   - `exclude_key` · `can_exclude` 안: 함수 안이라 앞에 공백 4개입니다.
   - `load_exclude_map` 안: 미리 채운 `for` 안쪽이라 8개입니다.
   - `split_by_exclude` 안: 미리 채운 `for` 안쪽이라 `if` · `else` 는 8개이고, 그 안쪽(8 ~ 10번, 12번)은 4개 더(12개)입니다.
-- 채우기 전에 실행하면 후보가 모두 `회수 제외 0 건` 으로 나옵니다. `can_exclude` 가 아무것도 리턴하지 않아 거짓으로 취급되기 때문입니다.
+- 채우기 전에 실행하면 회수 대상도 회수 제외도 `0 건` 으로 나옵니다. `split_by_exclude` 의 if 와 else 아래가 비어 있어서 후보가 어느 리스트에도 들어가지 않기 때문입니다.
 
 **`challenge3-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `overprivilege.py` 의 `generate_report` 로 리포트를 만든 뒤, 회수 제외 리스트를 읽어 후보를 나누고 세 단계로 출력합니다.
 

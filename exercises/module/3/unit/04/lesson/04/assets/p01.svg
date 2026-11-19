@@ -1,29 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img">
-<title>제공 파일 두 개가 회수 대상 8건과 회수 계획 8건을 만들어 실습 4-1 · 4-2로 넘깁니다</title>
-<desc>revoke_input.py 의 load_to_revoke 가 회수 대상 8건을 돌려주고, revoke_plan.py 의 plan_revocation 이 계획 8건을 만듭니다. 실습 4-1 · 4-2는 이 계획에서 출발합니다. 확인 명령은 제공 파일 정상 8 을 출력합니다.</desc>
-<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>목표: 승인 대기를 뺀 계획만 실행하고, 전후 판정을 비교하고, 회수 이력을 남깁니다</title>
+<desc>execute_revocation 은 승인 대기인 계획은 건너뛰고 나머지를 apply_plan 으로 실행합니다. 실행 뒤 evaluate_access 로 같은 사용자와 권한을 다시 판정하고, 이력을 revocation_log.json 에 저장합니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">제공 파일 — 실습 4-1 전에 복사해 만들기</text>
-<rect x="20" y="56" width="200" height="92" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="120.0" y="85.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">revoke_input.py</text>
-<text x="120.0" y="107.2" font-size="14" fill="#666660" text-anchor="middle">load_to_revoke()</text>
-<text x="120.0" y="129.2" font-size="14" fill="#666660" text-anchor="middle">회수 대상 8건</text>
-<polyline points="222,102 250,102" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<rect x="252" y="56" width="210" height="92" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="357.0" y="85.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">revoke_plan.py</text>
-<text x="357.0" y="107.2" font-size="14" fill="#666660" text-anchor="middle">plan_revocation()</text>
-<text x="357.0" y="129.2" font-size="14" fill="#666660" text-anchor="middle">계획 8건</text>
-<polyline points="464,102 492,102" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<rect x="494" y="56" width="206" height="92" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="597.0" y="85.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실습 4-1 · 4-2</text>
-<text x="597.0" y="107.2" font-size="15" fill="#292929" text-anchor="middle">승인 상태 · 실행</text>
-<text x="597.0" y="129.2" font-size="15" fill="#292929" text-anchor="middle">직접 씀</text>
-<text x="20" y="186" font-size="16" fill="#292929" font-weight="700">확인 명령의 마지막 줄</text>
-<rect x="20" y="200" width="300" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="170.0" y="231.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">제공 파일 정상 8</text>
-<text x="340" y="222" font-size="15" fill="#292929">계획은 지울 대상과 영향만 적고,</text>
-<text x="340" y="246" font-size="15" fill="#292929">실제로는 아무것도 지우지 않습니다</text>
-<rect x="20" y="270" width="680" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="360.0" y="298.2" font-size="15" fill="#292929" text-anchor="middle">도전 4-1을 하면 revoke_plan.py 를 골격으로 바꿔 직접 씁니다</text>
+<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">목표 — 회수 실행, 전후 판정, 회수 이력</text>
+<rect x="20" y="80" width="170" height="100" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="105" y="124.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">계획 8건</text>
+<text x="105" y="145.8" font-size="15" fill="#292929" text-anchor="middle">+ approval</text>
+<path d="M190 130 L226 130" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="230" y="80" width="220" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="340" y="114.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">execute_revocation</text>
+<text x="340" y="135.2" font-size="15" fill="#292929" text-anchor="middle">승인 대기는 건너뛰고</text>
+<text x="340" y="156.2" font-size="15" fill="#292929" text-anchor="middle">나머지는 apply_plan</text>
+<path d="M450 115 L488 88" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<path d="M450 130 L488 158" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<path d="M450 145 L488 228" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="490" y="60" width="210" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="595" y="93.2" font-size="15" fill="#292929" text-anchor="middle">실행 · 대기 결과</text>
+<rect x="490" y="130" width="210" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="595" y="163.2" font-size="15" fill="#292929" text-anchor="middle">회수 전후 판정 비교</text>
+<rect x="490" y="200" width="210" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="595" y="233.2" font-size="15" fill="#292929" text-anchor="middle">revocation_log.json</text>
+<rect x="20" y="280" width="680" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="360" y="307.2" font-size="15" fill="#292929" text-anchor="middle">evaluate_access 로 같은 사용자 · 권한을 다시 판정해 정말 막혔는지 확인</text>
 </g>
 </svg>

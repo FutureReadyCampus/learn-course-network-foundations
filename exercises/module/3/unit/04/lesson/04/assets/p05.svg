@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>실습 4-2 정리: 승인 대기면 대기, 아니면 apply_plan 으로 실행하고 이력에 추가</title>
+<desc>execute_revocation 은 approval 이 승인 대기인지 먼저 봅니다. 아니면 apply_plan 이 방법별로 데이터를 고치고 결과를 실행으로 적습니다. 두 경우 모두 이력 한 건을 log 에 추가합니다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">실습 4-2 정리 — execute_revocation 의 흐름</text>
+<rect x="20" y="60" width="300" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="170" y="95.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">approval == "승인 대기"?</text>
+<path d="M320 90 L378 90" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<text x="326" y="82" font-size="14" fill="#666660" text-anchor="start">그렇다</text>
+<rect x="380" y="60" width="320" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="540" y="95.2" font-size="15" fill="#292929" text-anchor="middle">result = "대기" (실행 안 함)</text>
+<path d="M170 120 L170 158" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<text x="180" y="145" font-size="14" fill="#666660" text-anchor="start">아니다</text>
+<rect x="20" y="160" width="300" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="170" y="184.8" font-size="15" fill="#292929" text-anchor="middle">apply_plan(plan, …)</text>
+<text x="170" y="205.8" font-size="15" fill="#292929" text-anchor="middle">방법별로 데이터를 고침</text>
+<path d="M320 190 L378 195" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="380" y="145" width="280" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="392" y="179.2" font-size="15" fill="#292929" text-anchor="start">예외 삭제: remove_exception</text>
+<text x="392" y="200.2" font-size="15" fill="#292929" text-anchor="start">역할 해제: role 을 "" 로</text>
+<text x="392" y="221.2" font-size="15" fill="#292929" text-anchor="start">권한 빼기: 리스트.remove</text>
+<path d="M170 220 L170 248" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="20" y="250" width="300" height="50" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="170" y="280.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">result = "실행"</text>
+<path d="M170 300 L170 328" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<path d="M685 120 L685 328" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="20" y="330" width="680" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="360.2" font-size="15" fill="#292929" text-anchor="middle">두 경우 모두 이력 한 건: log.append({"time": now, …, "result": result})</text>
+</g>
+</svg>
