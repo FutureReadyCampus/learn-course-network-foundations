@@ -31,5 +31,5 @@
 <text x="470" y="262" font-size="14" fill="#666660" text-anchor="start">정책 확인을 통과하면</text>
 <rect x="384" y="292" width="150" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="459" y="314.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">granted</text>
-<text x="459" y="335.1" font-size="15" fill="#292929" text-anchor="middle">부여됨 (도전 2-1)</text>
+<text x="459" y="335.1" font-size="15" fill="#292929" text-anchor="middle">부여됨 (부여 단계)</text>
 </svg>

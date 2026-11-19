@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 310" role="img">
+<title>req_grant.py 를 access_control 폴더에 만들고 터미널에서 불러지는지 확인한다</title>
+<desc>req_grant.py 는 rbac.py 와 exception_policy.py 를 불러 쓰므로 같은 access_control 폴더에 둡니다. 만든 뒤 python -c 한 줄로 불러 보고 제공 파일 정상이 나오면 됩니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">req_grant.py 만들고 확인하기</text>
+<rect x="20" y="56" width="320" height="200" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="40" y="84" font-size="16" fill="#292929" text-anchor="start" font-weight="700">access_control 폴더</text>
+<rect x="40" y="100" width="280" height="30" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="54" y="120" font-size="15" fill="#292929" text-anchor="start">rbac.py  (Unit 1)</text>
+<rect x="40" y="136" width="280" height="30" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="54" y="156" font-size="15" fill="#292929" text-anchor="start">exception_policy.py  (Unit 1)</text>
+<rect x="40" y="172" width="280" height="30" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="54" y="192" font-size="15" fill="#292929" text-anchor="start">req_create.py · req_review.py</text>
+<rect x="40" y="208" width="280" height="30" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="54" y="228" font-size="15" fill="#292929" text-anchor="start">req_grant.py  ← 새로 만듦</text>
+<polyline points="340,156 376,156" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="380" y="56" width="320" height="200" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="540" y="84" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">터미널에서 확인</text>
+<text x="400" y="118" font-size="15" fill="#292929" text-anchor="start">python -c "from req_grant</text>
+<text x="400" y="140" font-size="15" fill="#292929" text-anchor="start">import grant_request; …"</text>
+<rect x="400" y="164" width="280" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="540" y="190" font-size="15" fill="#1f7a4a" text-anchor="middle" font-weight="700">제공 파일 정상</text>
+<text x="400" y="236" font-size="14" fill="#666660" text-anchor="start">맥북은 python3</text>
+<text x="360" y="290" font-size="15" fill="#666660" text-anchor="middle">고칠 곳은 없습니다 · 복사 버튼으로 그대로 붙여 넣고 저장합니다</text>
+</g>
+</svg>
