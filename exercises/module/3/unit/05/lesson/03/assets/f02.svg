@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 342" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>challenge5-1-2_run.py 가 세 파일의 함수 네 개를 차례로 불러 보고서를 만듭니다</title>
+<desc>도전 5-1에서 보고서를 만든 순서입니다. challenge5-1-2_run.py 가 checklist.py 의 run_checklist(점검 결과), log_summary.py 의 read_log(로그를 요청 리스트로), weekly_report.py 의 build_report(두 결과를 합쳐 보고서 문자열), weekly_report.py 의 save_report(날짜가 들어간 파일로 저장)를 차례로 부릅니다.</desc>
+<defs><marker id="a-f02-m3u05l03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<text x="20" y="30" font-size="18" font-weight="700" fill="#292929">도전 5-1에서 보고서를 만든 순서</text>
+<g font-size="15" fill="#292929">
+<rect x="20" y="50" width="680" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="34" y="77"><tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">challenge5-1-2_run.py</tspan> <tspan font-size="14" fill="#666660">가 세 파일을 부릅니다</tspan></text>
+<rect x="60" y="108" width="640" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="74" y="135"><tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">checklist.py</tspan> 의 <tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">run_checklist</tspan></text>
+<text x="500" y="135" font-size="14" fill="#666660">점검 결과</text>
+<rect x="60" y="166" width="640" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="74" y="193"><tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">log_summary.py</tspan> 의 <tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">read_log</tspan></text>
+<text x="500" y="193" font-size="14" fill="#666660">로그를 요청 리스트로</text>
+<rect x="60" y="224" width="640" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="74" y="251"><tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">weekly_report.py</tspan> 의 <tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">build_report</tspan></text>
+<text x="500" y="251" font-size="14" fill="#666660">두 결과를 합쳐 보고서 문자열</text>
+<rect x="60" y="282" width="640" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="74" y="309"><tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">weekly_report.py</tspan> 의 <tspan font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700">save_report</tspan></text>
+<text x="500" y="309" font-size="14" fill="#666660">날짜가 들어간 파일로 저장</text>
+</g>
+<g stroke="#666660" stroke-width="1.6" fill="none" marker-end="url(#a-f02-m3u05l03)">
+<path d="M40 94V130H56"/><path d="M40 130V188H56"/><path d="M40 188V246H56"/><path d="M40 246V304H56"/>
+</g>
+</svg>

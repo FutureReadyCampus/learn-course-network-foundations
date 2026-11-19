@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 230" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>인시던트 상태는 탐지됨, 분류됨, 조치됨, 보고됨, 종료 순서로만 옮겨 갑니다</title>
+<desc>상태 전이 그림입니다. 탐지됨에서 분류됨, 조치됨, 보고됨을 거쳐 종료로 갑니다. 오탐으로 판단했을 때만 분류됨에서 바로 종료로 갑니다. 화살표가 없는 이동은 거절합니다.</desc>
+<defs><marker id="a-f01-m5u01l03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
+<marker id="a-f01-m5u01l03-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#9a6200"/></marker></defs>
+<text x="20" y="30" font-size="18" font-weight="700" fill="#292929">인시던트 상태 전이</text>
+<g font-size="16" font-weight="700" fill="#292929" text-anchor="middle">
+<rect x="20" y="56" width="108" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/><text x="74" y="87">탐지됨</text>
+<rect x="163" y="56" width="108" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/><text x="217" y="87">분류됨</text>
+<rect x="306" y="56" width="108" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/><text x="360" y="87">조치됨</text>
+<rect x="449" y="56" width="108" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/><text x="503" y="87">보고됨</text>
+<rect x="592" y="56" width="108" height="50" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/><text x="646" y="87">종료</text>
+</g>
+<g stroke="#666660" stroke-width="1.6" fill="none" marker-end="url(#a-f01-m5u01l03)">
+<path d="M128 81H159"/><path d="M271 81H302"/><path d="M414 81H445"/><path d="M557 81H588"/>
+</g>
+<path d="M217 106V160H646V110" stroke="#9a6200" stroke-width="1.6" fill="none" stroke-dasharray="6 4" marker-end="url(#a-f01-m5u01l03-b)"/>
+<text x="431" y="186" font-size="15" text-anchor="middle" fill="#9a6200" font-weight="700">오탐으로 판단했을 때</text>
+<text x="431" y="208" font-size="14" text-anchor="middle" fill="#666660">분류됨에서 바로 종료</text>
+</svg>

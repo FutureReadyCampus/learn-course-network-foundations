@@ -50,17 +50,9 @@ source:
 | 7 | 새벽에 밖에서 접속해도 요청이 허용된다. 한편 gaeun 은 VPN 으로 계정 변경을 하다가 3번 거부됐다 | `config/conditions.json`, `conditional.py` 의 `evaluate_conditional` |
 | 8 | 사람이 로그를 눈으로 세는 데 오래 걸리고, 기준이 사람마다 다르다 | `access_server.py` 의 `check`, `server_log.jsonl`, `checklist.py`, `log_summary.py`, `weekly_report.py` |
 
-- 파일들은 서로를 부릅니다. 상황 2 · 3 · 7 · 8은 요청 한 건이 같은 순서로 함수를 거칩니다. 아래 그림에서 `A -> B` 는 「A 가 B 를 부른다」는 뜻이고, 판정은 안쪽 B 부터 하고 바깥 A 가 그 결과에 조건을 더합니다.
+- 파일들은 서로를 부릅니다. 상황 2 · 3 · 7 · 8은 요청 한 건이 같은 순서로 함수를 거칩니다. 아래 그림에서 A 에서 B 로 가는 화살표는 「A 가 B 를 부른다」는 뜻이고, 판정은 안쪽 B 부터 하고 바깥 A 가 그 결과에 조건을 더합니다.
 
-```
-요청 한 건이 거치는 순서 (상황 2 · 3 · 7 · 8)
-access_server.py 의 check
-   -> conditional.py 의 evaluate_conditional       (조건: 시간 · 접속 위치)
-        -> policy.py 의 evaluate_access            (역할 -> 예외 -> 거부)
-             -> rbac.py 의 check_permission        (사용자 · 퇴사 · 역할 · 권한)
-             -> exception_policy.py 의 find_exception   (예외 만료)
-   -> write_log -> server_log.jsonl                (요청마다 한 줄)
-```
+<figure class="page-figure"><img src="assets/f01.svg" alt="요청 한 건은 check 에서 evaluate_conditional, evaluate_access 를 거쳐 판정되고 write_log 로 로그에 남습니다"></figure>
 
 - 상황 4가 만든 예외가 상황 3의 `find_exception` 이 읽는 데이터가 됩니다. `req_grant.py` 의 `grant_request` 가 예외 리스트에 새 예외를 추가합니다.
 - 상황 5 → 6은 점검 결과가 회수로 이어집니다. 점검이 찾은 회수 대상을 `plan_revocation` 이 받아 계획을 세우고, `mark_approvals` · `execute_revocation` 이 이어 처리합니다.
@@ -287,14 +279,7 @@ def needs_approval(plan, sensitive):                             # 계획 한 �
 
 아래 그림은 도전 5-1에서 만든 보고서가 어떤 파일의 어떤 함수에서 만들어지는지 보여 줍니다.
 
-```
-도전 5-1에서 보고서를 만든 순서 (challenge5-1-2_run.py 가 세 파일을 부릅니다)
-challenge5-1-2_run.py
-   -> checklist.py 의 run_checklist          (점검 결과)
-   -> log_summary.py 의 read_log             (로그를 요청 리스트로)
-   -> weekly_report.py 의 build_report       (두 결과를 합쳐 보고서 문자열)
-   -> weekly_report.py 의 save_report        (날짜가 들어간 파일로 저장)
-```
+<figure class="page-figure"><img src="assets/f02.svg" alt="challenge5-1-2_run.py 가 run_checklist, read_log, build_report, save_report 를 차례로 불러 보고서를 만듭니다"></figure>
 
 ## 실습 5-2 · 상황 8개 원인과 해결법 정리하기
 

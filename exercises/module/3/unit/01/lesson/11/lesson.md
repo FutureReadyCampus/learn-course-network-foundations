@@ -182,45 +182,7 @@ python exercise1-3_run.py
 - (나) **허용**됩니다. `dami` 는 `[역할 판정]` 에서 「퇴사한 계정」으로 거부되지만, 골격의 3번 주석(`# 3. …`)이 없으면 바로 `[예외 판정]` 으로 가서 예외 3번(10/31(토) 까지)을 찾아 「예외 3번」으로 허용됩니다. 현업에서는 퇴사자가 남은 예외로 영업 자료를 조회하고, 로그에는 정상 허용으로 남아 아무도 눈치채지 못하는 사고로 이어질 수 있습니다. 감사에서는 퇴사자 계정이 사용된 기록으로 지적됩니다.
 - (다) 그림은 다음과 같고, 핵심(누가 누구를 호출하는가)이 같으면 맞습니다. `config/exceptions.json` 이 깨지면 `policy.py` 가 `exception_policy.py` 를 불러오는 맨 위의 `import` 에서 멈추고(`JSONDecodeError`), `exercise1-3_run.py` 는 요청을 한 건도 판정하기 전에 끝납니다.
 
-```
-+------------------+
-| exercise1-3_run.py |
-+------------------+
-   |
-   +--> evaluate_access(user, resource, action, now) 호출
-   |       |
-   |       v
-   |    +-------------------------------+
-   |    | policy.py : evaluate_access() |
-   |    +-------------------------------+
-   |       |
-   |       +--> 1. check_permission() 호출
-   |       |       |
-   |       |       v
-   |       |    +---------+
-   |       |    | rbac.py |
-   |       |    +---------+
-   |       |       |  읽음
-   |       |       v
-   |       |    config/users.json · config/roles.json
-   |       |    (허용이면 「역할 권한」 으로 끝 / 「권한 없음」 이 아닌 이유면 그 이유로 거부하고 끝)
-   |       |
-   |       +--> 2. find_exception() 호출
-   |       |       |
-   |       |       v
-   |       |    +---------------------+
-   |       |    | exception_policy.py |
-   |       |    +---------------------+
-   |       |       |  읽음 (파일을 불러올 때 한 번)
-   |       |       v
-   |       |    config/exceptions.json
-   |       |
-   |       v
-   |    (허용 여부, 이유) 를 리턴
-   |       |
-   |       v
-   |    exercise1-3_run.py 가 건수를 세고 출력  (EXCEPTIONS 도 exception_policy.py 에서 가져옴)
-```
+<figure class="page-figure"><img src="assets/f01.svg" alt="exercise1-3_run.py 가 evaluate_access 를 부르고, 그 안에서 rbac.py 의 역할 판정과 exception_policy.py 의 예외 판정을 차례로 합니다"></figure>
 
 **왜** — 여러 규칙을 합칠 때는 「사람이 유효한가」를 먼저 보고, 그다음 「무엇으로 허용하나」를 봅니다. 예외는 역할 권한을 보충할 뿐 사람 검사를 건너뛰게 하면 안 됩니다. 허용을 「역할」과 「예외」로 나눠 세고 예외 번호별로 쓰인 횟수를 세면, 예외로 열리는 일이 얼마나 되는지 숫자로 보입니다.
 

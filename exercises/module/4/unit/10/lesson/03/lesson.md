@@ -28,16 +28,7 @@ source:
 
 ## 2.1 단계 연결 흐름과 앞에서 만든 파일의 자리
 
-```
-단계 1  이벤트 읽기               normalized_events.json  →  events (표)
-   ↓
-단계 2  연결 · 탐지 · 점수         events  →  chains  →  findings  →  totals · reasons  →  records
-   ↓                              (records 는 unit05_risk_scores.json 에도 저장)
-단계 3  Gemini API 를 활용한 AI 요약                   records  →  summaries   (실패하면 대체 문장)
-   ↓
-단계 4  보고서 저장               events · findings · records · summaries
-                                  →  anomaly_detection_report_2026-11-02.json
-```
+<figure class="page-figure"><img src="assets/f01.svg" alt="파이프라인은 이벤트 읽기, 연결·탐지·점수, AI 요약, 보고서 저장 네 단계를 앞 단계의 결과를 넘기며 잇습니다"></figure>
 
 앞에서 만든 파일 가운데 파이프라인에 들어가는 것과 아직 들어가지 않은 것은 다음과 같습니다.
 
