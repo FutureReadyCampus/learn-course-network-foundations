@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>막히면 고른 글감에 맞는 코드 한 줄과 출력 몇 줄을 붙이고 그 줄의 의미부터 쓴다</title>
+<desc>글감 1은 req_create.py 의 until 검사 줄, 글감 2는 req_review.py 의 상태 검사 줄과 검토 중이 아님 출력, 글감 3은 본인 요청 검사 줄과 연결합니다. 그 줄이 막는 것과 막지 못하는 것을 나누어 쓰고, 더 막히면 Unit 1 시작하기의 AI 도우미를 씁니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">막힐 때: 글감 → 코드 한 줄 → 막는 것 · 못 막는 것</text>
+<rect x="20" y="150" width="130" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="85" y="180" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">무엇을</text>
+<text x="85" y="201" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">쓸지 막힘</text>
+<path d="M152 170 L180 90" stroke="#666660" stroke-width="1.5" fill="none" marker-end="url(#a-p03)"/>
+<path d="M152 185 L180 185" stroke="#666660" stroke-width="1.5" fill="none" marker-end="url(#a-p03)"/>
+<path d="M152 200 L180 280" stroke="#666660" stroke-width="1.5" fill="none" marker-end="url(#a-p03)"/>
+<rect x="186" y="52" width="514" height="76" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="200" y="76" font-size="14" fill="#2f6fd0" font-weight="700">글감 1 · req_create.py</text>
+<text x="200" y="98" font-size="15" fill="#292929" font-weight="700">if until &lt;= received_at:</text>
+<text x="200" y="119" font-size="14" fill="#666660">막는 것: 이미 지난 시각  ·  못 막는 것: 너무 먼 미래</text>
+<rect x="186" y="142" width="514" height="86" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="200" y="166" font-size="14" fill="#2f6fd0" font-weight="700">글감 2 · req_review.py</text>
+<text x="200" y="188" font-size="15" fill="#292929" font-weight="700">if request["status"] != "reviewing":</text>
+<text x="200" y="212" font-size="14" fill="#666660">함께 붙일 출력: 1 승인 -&gt; False 검토 중이 아님</text>
+<rect x="186" y="242" width="514" height="76" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="200" y="266" font-size="14" fill="#2f6fd0" font-weight="700">글감 3 · req_review.py</text>
+<text x="200" y="288" font-size="15" fill="#292929" font-weight="700">if request["user"] == approver:</text>
+<text x="200" y="309" font-size="14" fill="#666660">막는 것: 본인 승인  ·  못 막는 것: 친구의 대신 승인</text>
+<rect x="20" y="336" width="680" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="36" y="365" font-size="15" fill="#292929">더 막히면 Unit 1 시작하기 「쓰기 질문과 AI 도우미」 · 비밀키 · 개인정보는 넣지 않기</text>
+</g>
+</svg>
