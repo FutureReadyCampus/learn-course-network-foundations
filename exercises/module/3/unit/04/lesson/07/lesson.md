@@ -260,7 +260,11 @@ print("판정까지 간 응답", answered, "건 / 로그에 남은 줄", len(ent
 1. **[VS Code]** 파일 `access_server.py` · `send_checks.py` 를 만들어 위 코드를 붙여 넣습니다. 
    - VS Code: `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력합니다.
 2. **[VS Code]** `access_server.py` 의 `parse_time` · `write_log` · `check` 에서 직접 쓰는 곳 다섯 군데를 씁니다. 2.1 의 표와 그림을 보고 씁니다.
-3. **[터미널 1]** 서버를 켭니다(맥북은 `python3`).
+3. **[터미널 1]** 먼저 서버와 요청에 쓰는 도구를 설치합니다(맥북은 `python3`). 이미 설치했다면 바로 다음 줄로 갑니다.
+   ```bash
+   python -m pip install flask requests
+   ```
+   그다음 서버를 켭니다.
    ```bash
    pwd
    python access_server.py
@@ -277,7 +281,7 @@ print("판정까지 간 응답", answered, "건 / 로그에 남은 줄", len(ent
    ```
    - 새 터미널이 이미 `access_control` 에서 열렸다면 `cd access_control` 은 건너뜁니다(맥북은 `python3`, 결과 줄 앞의 `NotOpenSSLWarning` 은 무시합니다).
    - `Connection refused` 가 나오면 터미널 1에서 서버가 켜져 있는지 확인합니다.
-   - `No module named 'requests'` 가 나오면 `pip install requests`(맥북은 `pip3`)를 치고 다시 실행합니다.
+   - `No module named 'requests'` 가 나오면 3번의 설치 명령을 다시 칩니다.
 5. 출력은 세 단계입니다. 단계 1은 `요청 9 건` 제목 줄과 응답 아홉 줄, 단계 2는 `서버가 남긴 8 줄` 제목 줄과 로그 여덟 줄, 단계 3은 대조 두 줄입니다.
 6. **[터미널 1]** 서버를 켠 터미널(오른쪽 터미널 리스트에서 선택)에는 요청마다 `"GET /check?… HTTP/1.1" 200 -` 줄이 찍혔습니다. 끝의 숫자가 상태 코드입니다.
    - 확인한 뒤 그 터미널에서 `Ctrl + C` 로 서버를 끕니다(Windows 에서 안 꺼지면 한 번 더 누릅니다).

@@ -49,7 +49,7 @@ source:
 - 판정 순서는 **기본 판정 → 조건**입니다.
   - 퇴사한 사용자처럼 사람 자체가 거부 대상이면 조건을 볼 필요 없이 그 이유로 거부합니다.
 - 요청에는 접속 위치(`network`)가 추가되었습니다. 시각(`now`)에서 시(`now.hour`)를 꺼내 판정에 씁니다.
-- `start, end = rule["hours"]` 는 리스트의 두 값을 두 이름으로 한꺼번에 받습니다.
+- `start_hour, end_hour = rule["hours"]` 는 리스트의 두 값을 두 이름으로 한꺼번에 받습니다.
   - 함수가 리턴한 두 값을 `is_allowed, reason = …` 로 받던 것과 같은 모양입니다.
   - 실행 파일의 `number += 1` 은 `number = number + 1` 과 같은 뜻입니다.
 - **직접 쓰는 곳은 세 함수**입니다. 판단이 필요한 함수마다 2 ~ 4줄만 쓰고, 나머지는 미리 채웠습니다.
@@ -134,9 +134,9 @@ def is_work_time(rule, now):                                     # 조건 한 �
     업무 시간 밖의 요청을 막을 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. rule["hours"] 를 start, end 두 이름으로 받는다
+    # 1. rule["hours"] 를 start_hour, end_hour 두 이름으로 받는다
     # 2. now.hour 를 hour 에 담는다
-    # 3. start <= hour < end 의 결과(True 또는 False)를 리턴한다
+    # 3. start_hour <= hour < end_hour 의 결과(True 또는 False)를 리턴한다
 
 
 def is_allowed_network(rule, network):                           # 조건 한 건과 접속 위치를 받는 함수

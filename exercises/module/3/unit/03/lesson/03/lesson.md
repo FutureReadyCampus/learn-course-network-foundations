@@ -1,353 +1,210 @@
 ---
 id: m3-u03-l03
-title: 실습 3-2 · 90일 넘게 안 쓴 권한 찾기
+title: 제공 파일
 render: markdown
-source:
-  repository: FutureReadyCampus/learn-missions
-  path: network/086_day04_am_access_review.md
-  mission_id: GichanSource.m3-1029-am-access-review
-  commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 실습 3-2 · 90일 넘게 안 쓴 권한 찾기
+# 제공 파일
 
-## 목표: 미사용 권한 후보 목록
+## 제공 파일 쓰는 법
 
-> **이번 실습에 들어온 일**
->
-> A사 관제 담당이 보낸 메시지:
-> 「규칙으로 걸러 낸 뒤에도 재직 중인 사람의 권한이 남습니다. 그중에는 받아 놓고 실제로는 쓰지 않는 권한이 있을 수 있습니다. 사용 기록을 모아 둔 사용 이력 파일이 있으니, 그것으로 90일 넘게 쓰지 않은 권한을 후보로 뽑아 주세요.
->
-> 이번에는 뽑기만 하고 회수하지는 않습니다. 어떤 권한을 회수할지는 후보를 본 뒤에 정하겠습니다.」
-> - **왜 중요한가**: 계정을 다른 사람이 가로채면, 그 계정이 가진 권한만큼 가로챈 사람이 할 수 있는 일이 생깁니다. 쓰지도 않는 권한이 많을수록 그 일만 늘어납니다. 사용 이력의 「마지막으로 쓴 시각」을 보면 90일 넘게 안 쓴 권한을 찾아 줄일 수 있습니다.
+**실습 3-2를 시작하기 전에** 이 레슨의 파일 네 개를 만듭니다. 실습 3-2 의 실행 파일이 퇴사 · 만료 규칙 함수 `find_stale` 을 불러 쓰는데, 그 함수는 도전 3-1 에서 만드는 것이라 오늘은 완성본을 받아 씁니다. 나머지 세 파일은 다음 Unit 4 가 쓰는 파일이라 오늘 함께 만들어 둡니다.
 
-## 왜 안 쓰는 권한을 찾아야 하는가
+1. 파일은 모두 `access_control` 폴더 안에 만듭니다. 만드는 방법은 실습 3-1 과 같습니다(VS Code 왼쪽 목록에서 `access_control` 폴더를 고르고 **새 파일** 아이콘).
+2. 아래 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
+3. 만들 파일은 네 개입니다.
+   1. `review_rules.py`: 퇴사한 계정과 만료된 예외를 찾는 함수 `find_stale` (실습 3-2 에서 씀)
+   2. `overprivilege.py`: 규칙 결과와 안 쓴 결과를 합쳐 과다권한 후보 리포트를 만드는 함수 `generate_report` (Unit 4 가 씀)
+   3. `report_exclude.py`: 후보를 「회수 대상」과 「회수 제외」로 나누는 함수 `split_by_exclude` (Unit 4 가 씀)
+   4. `config/exclude_list.json`: 회수하지 않을 권한 세 건을 적은 회수 제외 리스트 (Unit 4 가 씀)
+4. 네 파일을 다 만들었으면 터미널에서 `ls` 와 `ls config` 로 파일 이름이 보이는지 확인하고 실습 3-2로 돌아갑니다.
 
-1. 규칙(퇴사 · 만료)에 안 걸려도 필요 없는 권한이 있습니다. 부여 때는 필요했지만 일이 끝나서 이제 안 쓰는 권한입니다.
-2. 이런 권한은 **마지막으로 쓴 시각**을 보면 알 수 있습니다. 권한은 있는데 오래 쓴 이력이 없으면 과다권한의 후보입니다.
-3. 이번 실습에서는 **찾기만** 하고 회수하지 않습니다. 회수는 다음 Unit 4(권한 거두기)에서 합니다.
+> 시간이 남아 도전 3-1 ~ 3-3을 하면, 이 파일들을 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 그때는 본문을 다 채울 때까지 실습 3-2 가 동작하지 않을 수 있으니, 다 쓴 뒤 `exercise3-2_run.py` 를 다시 실행해 결과가 같은지 확인합니다.
 
-## 3.1 사용 이력과 비교하는 방법
+## `review_rules.py` 만들기
 
-- 사용 이력 파일 `config/access_log.json` 의 한 건은 「누가 어떤 권한을 마지막으로 언제 썼나」입니다. 사용자와 권한마다 한 건만 있습니다.
-- `load_last_used` 는 사용 이력 파일을 딕셔너리 하나로 바꿉니다. 이 딕셔너리의 키는 `user` 와 `permission` 을 `:` 로 이어 붙인 문자열(예: `"seoyeon:SALES:QUERY"`)이고, 값은 마지막으로 쓴 시각 문자열입니다. 현황의 권한 한 건에서도 같은 방법으로 키 문자열을 만들어 마지막 사용 시각을 찾습니다.
-
-**키 문자열 `seoyeon:SALES:QUERY` 읽는 법** — `:` 가 두 개라 세 덩어리처럼 보이지만, 딕셔너리에는 **문자열 하나**가 키 한 개로 들어 있습니다.
-
-| 조각 | 값 | 뜻 |
-|---|---|---|
-| 사용자 | `seoyeon` | `entry['user']` |
-| 구분하는 문자열 | `:` | 사용자와 권한 이름을 나누려고 코드가 넣은 문자열 |
-| 권한 이름 | `SALES:QUERY` | `entry['permission']` 전체 (안의 `:` 도 이름의 일부) |
-
-```python
-user = "seoyeon"                                          # 사용자
-permission = "SALES:QUERY"                                # 권한 이름(이름 안에 : 가 들어 있다)
-key = f"{user}:{permission}"                              # 사용자 + 구분하는 문자열 : + 권한 이름을 이어 붙인다
-print(key)                                                # 만들어진 키 문자열을 본다
-last_used_map = {"seoyeon:SALES:QUERY": "2026-10-27 09:10"}   # 키 문자열 하나에 마지막 사용 시각 하나가 짝이다
-print(last_used_map.get(key))                             # 키 문자열 전체로 찾는다
-print(len(last_used_map))                                 # 딕셔너리의 키는 몇 개인가
-```
-
-실행 결과:
-
-```
-seoyeon:SALES:QUERY
-2026-10-27 09:10
-1
-```
-
-- 딕셔너리는 이 문자열 **전체**를 키 한 개로 봅니다. 그래서 `last_used_map.get("seoyeon:SALES:QUERY")` 처럼 통째로 찾고, `:` 로 쪼개서 쓰지 않습니다.
-- 이 실습에서 「사용자:권한」 이라고 쓴 것은 `:` 앞이 사용자, 뒤가 권한 이름 **전체**라는 뜻입니다. 뒤쪽 권한 이름 안의 `:` 는 이름의 일부일 뿐입니다.
-
-- 이름이 비슷한 두 가지를 구별합니다. `last_used_map` 은 사용 이력 딕셔너리(「사용자:권한」 문자열 → 마지막으로 쓴 시각 문자열)이고, `"last_used"` 는 후보에 추가하는 키(값은 마지막으로 쓴 시각 문자열, 이력이 없으면 `None`)입니다.
-
-- 실행 파일은 `find_unused` 를 부르기 전에, 「제공 파일」 `review_rules.py` 의 `find_stale` 로 규칙(퇴사 · 만료)에 이미 걸린 권한 일곱 건(퇴사한 dami 포함)을 현황에서 뺍니다. 이때 권한 한 건마다 `user:permission:source` 를 이어 붙인 문자열(**식별 키**)을 만들어 서로 비교합니다. 실행 파일에 이미 적혀 있으니 지금은 붙여 넣기만 합니다(식별 키는 도전 3-2 에서 직접 써 볼 수 있습니다).
-
-| 현황의 권한 한 건의 상태 | 판정 |
-|---|---|
-| 사용 이력이 없음 | 안 쓴 후보 (`last_used` 는 `None`) |
-| 마지막 사용이 90일보다 오래됨 (91일째부터) | 안 쓴 후보 |
-| 마지막 사용이 90일 이내 (90일째 포함) | 쓴 것 → 후보 아님 |
-
-<figure class="page-figure"><img src="assets/f01.svg" alt="find_unused 는 권한마다 사용 이력과 지난 일 수를 보고 오래 안 쓴 권한을 모은다"></figure>
-
-**문법 상자 — 안 쓴 일 수 구하기**
-
-**① `.days` 는 시각 차이에서 「일」만 숫자로 알려 줍니다**
-
-```python
-from datetime import datetime                                       # 시각을 다루는 모듈에서 datetime 을 불러온다
-
-used_at = datetime.strptime("2026-07-31 10:00", "%Y-%m-%d %H:%M")   # 마지막으로 쓴 시각
-now = datetime.strptime("2026-10-29 10:00", "%Y-%m-%d %H:%M")       # 지금 시각
-gap = now - used_at                                                 # 시각에서 시각을 빼면 안 쓴 시간이 나온다
-print(gap)                                                          # 「90 days, 0:00:00」 처럼 일과 시:분:초로 나온다
-
-idle_days = gap.days                                                # .days 는 그중 「일」 부분만 숫자로 준다
-print(idle_days)                                                    # 일 수를 출력한다
-```
-
-실행 결과:
-
-```
-90 days, 0:00:00
-90
-```
-
-그 일 수를 기준과 비교합니다.
-
-```python
-idle_days = 90                                                      # 위에서 구한 안 쓴 일 수
-is_within_limit = idle_days <= 90                                   # 90일째는 90 이하이므로 참이다
-print(is_within_limit)                                              # 비교 결과를 출력한다
-```
-
-실행 결과:
-
-```
-True
-```
-
-- 시각에서 시각을 빼면 `90 days, 0:00:00` 처럼 일과 시:분:초가 함께 나옵니다. 일 수만 비교할 때는 `.days` 를 씁니다.
-- 이 계산은 아래 `review_unused.py` 의 `days_since` 함수에 미리 채워 두었습니다. 직접 쓰지 않고, 읽고 이해만 합니다.
-
-## 실습 3-2 · 90일 넘게 안 쓴 권한 후보 찾기
-
-**이런 상황이 있습니다**
-
-- **지금은**: 규칙에 안 걸린 재직자의 권한 일곱 건은 겉으로는 문제가 없어 보여서, 쓰는 권한인지 안 쓰는 권한인지 알 수 없습니다.
-- **그래서 만드는 것**: `find_unused` 입니다. 현황 · 마지막 사용 시각 딕셔너리 · 지금 시각 · 기준 일 수를 받아, 마지막 사용이 기준 일 수보다 오래됐거나 사용 이력이 없는 권한을 복사해 `last_used` 키를 추가하고 리스트로 리턴합니다.
-- **실행하면**: 단계 1은 규칙에 안 걸린 권한 일곱 건이 며칠째 안 쓰였는지 출력하고, 단계 2는 90일 넘게 안 쓴 후보를 출력합니다. 규칙에 이미 걸린 권한은 실행 파일이 미리 뺍니다.
-- **현업에서는**: 접근 관리 도구도 「마지막 사용일」 기준(예: 90일)으로 안 쓰는 권한을 모아 담당자에게 확인을 요청합니다.
-
-**할 일**
-
-1. 「제공 파일」 레슨의 파일 네 개(`review_rules.py` · `overprivilege.py` · `report_exclude.py` · `config/exclude_list.json`)를 먼저 만듭니다. 이 실습은 그중 `review_rules.py` 를 씁니다.
-2. `config/access_log.json` · `review_unused.py` · `exercise3-2_run.py` 세 파일을 만들고, `find_unused` 본문을 직접 씁니다.
-3. 실행해서 <mark>안 쓴 일 수</mark>(단계 1: 현황)와 <mark>90일 넘게 안 쓴 후보</mark>(단계 2: 판정)를 읽습니다.
-
-**준비** — 터미널이 `…/access_control` 위치인지 확인한 뒤 「제공 파일」이 있는지 봅니다.
-
-```bash
-ls
-```
-
-- `review_rules.py` 가 보이지 않으면 「제공 파일」 레슨에서 먼저 만듭니다. 없는 채로 실행하면 `ModuleNotFoundError: No module named 'review_rules'` 오류가 납니다.
-
-**`config/access_log.json`** — 그대로 붙여 넣습니다. 사용 이력입니다. `access_control` 안의 `config` 폴더에 만듭니다.
-
-```json
-[
-  {"user": "seoyeon", "permission": "SALES:QUERY", "last_used": "2026-10-27 09:10"},
-  {"user": "seoyeon", "permission": "SALES:CHANGE", "last_used": "2026-06-30 14:00"},
-  {"user": "junho", "permission": "SALES:QUERY", "last_used": "2026-07-30 09:00"},
-  {"user": "junho", "permission": "SETTLE:QUERY", "last_used": "2026-07-31 10:00"},
-  {"user": "gaeun", "permission": "ACCOUNT:QUERY", "last_used": "2026-10-20 08:00"},
-  {"user": "batch-night", "permission": "SETTLE:QUERY", "last_used": "2026-10-29 02:00"},
-  {"user": "dami", "permission": "SALES:QUERY", "last_used": "2026-10-10 13:00"}
-]
-```
-
-**`review_unused.py`**
+**`review_rules.py`** 를 만들고 아래 내용을 붙여 넣습니다. `find_stale` 은 현황의 권한마다 퇴사한 계정인지, 만료된 예외인지를 차례로 보고, 걸린 권한을 복사해 이유(`reason`)를 적은 리스트를 리턴합니다.
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
-from config_loader import load_json                              # config_loader.py 의 안전한 읽기 함수를 불러온다
 from exception_policy import TIME_FORMAT                         # 시각 문자열의 형식("%Y-%m-%d %H:%M")을 불러온다
 
 
-def load_last_used():                                            # 사용 이력 파일을 읽어 「마지막 사용 시각」 딕셔너리를 만드는 함수
-    """「사용자:권한」을 키로, 마지막 사용 시각 문자열을 값으로 하는 딕셔너리를 리턴한다.
-    안 쓰는 권한을 찾기 전에 사용 기록을 불러올 때 쓴다.
+def find_stale(access_list, now):                                # 현황 리스트와 지금 시각(datetime)을 받는 함수
+    """규칙에 걸려 필요 없어진 권한을 리턴하고 걸린 이유를 "reason" 키에 적는다.
+    퇴사 · 만료로 남은 권한을 정리할 때 쓴다.
     """
-    last_used_map = {}                                           # 빈 딕셔너리로 시작한다
-    for log in load_json("config/access_log.json", []):          # 사용 이력을 한 건씩 꺼낸다(파일이 없으면 빈 리스트)
-        user = log["user"]                                       # 그 기록의 사용자
-        permission = log["permission"]                           # 그 기록의 권한
-        key = f"{user}:{permission}"                             # 「사용자:권한」 문자열을 키로 만든다
-        last_used_map[key] = log["last_used"]                    # 그 키의 값에 마지막 사용 시각 문자열을 담는다
-    return last_used_map                                         # 딕셔너리를 리턴한다
-
-
-def make_unused(entry, used_text):                               # 현황의 권한 한 건과 마지막 사용 시각 문자열을 받는 함수
-    """권한 한 개를 복사해 "last_used" 키(마지막 사용 시각, 이력이 없으면 None)를 더한다.
-    안 쓴 권한 후보를 만들 때 쓴다(원래 권한은 바꾸지 않음).
-    """
-    unused_entry = entry.copy()                                  # 원래 권한은 바꾸지 않고 복사한다
-    unused_entry["last_used"] = used_text                        # 복사본에 마지막 사용 시각(없으면 None)을 적는다
-    return unused_entry                                          # 복사본을 리턴한다
-
-
-def days_since(used_text, now):                                  # 마지막 사용 시각 문자열과 지금 시각을 받는 함수
-    """마지막 사용 시각부터 지금까지 안 쓴 일 수를 리턴한다.
-    오래 안 쓴 권한을 점검할 때 쓴다.
-    """
-    used_at = datetime.strptime(used_text, TIME_FORMAT)          # 문자열을 시각으로 바꾼다
-    return (now - used_at).days                                  # 지금 - 마지막 사용 시각의 일 수를 리턴한다
-
-
-def find_unused(access_list, last_used_map, now, limit_days):    # 현황 · 마지막 사용 시각 딕셔너리 · 지금 시각 · 기준 일 수를 받는 함수
-    """마지막 사용이 limit_days 일보다 오래됐거나 이력이 없는 권한을 리턴한다.
-    후보마다 "last_used" 키에 마지막 사용 시각(없으면 None)을 적는다.
-    안 쓰는 권한을 찾을 때 쓴다.
-    """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. 후보를 담을 빈 리스트 unused 를 만든다
-    # 2. access_list 에서 entry 를 하나씩 꺼낸다
-    # 3.   entry["user"] 를 user 에, entry["permission"] 을 permission 에 담는다 (두 줄)
-    # 4.   f"{user}:{permission}" 를 key 에 담는다
-    # 5.   last_used_map.get(key) 를 used_text 에 담는다 (이력이 없으면 None)
-    # 6.   used_text 가 None 이면 (is None, 사용 이력이 없음)
-    # 7.     make_unused(entry, None) 을 unused_entry 에 담는다
-    # 8.     unused_entry 를 unused 에 추가한다
-    # 9.   아니고(elif), days_since(used_text, now) 가 limit_days 보다 크면 (>)
-    # 10.    make_unused(entry, used_text) 를 unused_entry 에 담는다
-    # 11.    unused_entry 를 unused 에 추가한다
-    # 12. unused 를 리턴한다
+    stale = []                                                   # 걸린 권한을 담을 빈 리스트
+    for entry in access_list:                                    # 현황의 권한을 한 건씩 꺼낸다
+        expires = entry.get("expires")                           # 만료 시각을 꺼낸다(역할로 받은 권한에는 이 키가 없어 None)
+        reason = ""                                              # 이유를 빈 문자열로 시작한다
+        if not entry["employed"]:                                # 퇴사한 사용자의 권한이면
+            reason = "퇴사한 계정"                                 # 이유를 적는다
+        elif expires is not None:                                # 아니고, 만료 시각이 적혀 있으면(예외로 받은 권한이면)
+            expires_at = datetime.strptime(expires, TIME_FORMAT)  # 만료 시각 문자열을 시각으로 바꾸고
+            if expires_at <= now:                                # 지금과 같거나 이전이면(만료됐으면)
+                reason = "만료된 예외"                             # 이유를 적는다
+        if reason != "":                                         # 이유가 적혔으면(규칙에 걸렸으면)
+            stale_entry = entry.copy()                           # 권한을 복사해서
+            stale_entry["reason"] = reason                       # 복사본에 이유를 적고
+            stale.append(stale_entry)                            # 걸린 리스트에 추가한다
+    return stale                                                 # 걸린 리스트를 리턴한다
 ```
 
-- `find_unused` 의 본문은 함수 안이라 앞에 공백 4개를 넣고(Tab 키 한 번), `for` 안쪽은 공백 4개 더(8개), `if` · `elif` 안쪽은 또 4개 더(12개) 넣습니다. 마지막 `return` 은 `for` 밖이므로 공백 4개입니다. `load_last_used` · `make_unused` · `days_since` 는 미리 채워 두었으니 그대로 둡니다.
-- `used_text is None` 은 「값이 `None` 인가」를 묻는 것입니다. `.get(key)` 는 키가 없으면 `None` 을 주므로 `None` 이면 사용 이력이 없다는 뜻입니다. 그 경우에는 일 수를 계산할 수 없으니, `days_since` 는 사용 이력이 있을 때(`elif`)만 부릅니다. `elif` 는 「앞의 `if` 가 아니고, 이 조건이면」이라는 뜻입니다.
-- 채우기 전에 실행하면 `TypeError: object of type 'NoneType' has no len()` 오류가 납니다. `find_unused` 가 아무것도 리턴하지 않기 때문입니다.
+## `overprivilege.py` 만들기
 
-**`exercise3-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 현황을 만들고, 「제공 파일」의 `find_stale` 에 걸린 권한을 뺀 뒤, 남은 권한이 며칠째 안 쓰였는지 출력하고 `find_unused` 로 후보를 찾습니다.
+**`overprivilege.py`** 를 만들고 아래 내용을 붙여 넣습니다. `generate_report` 는 권한 한 건마다 「사용자:권한:받은 방식」 식별 키를 만들어 두 점검 결과의 이유를 모으고, 이유가 있는 권한만 후보로 담은 리포트 딕셔너리를 리턴합니다. 오늘 실습에서는 쓰지 않고, 다음 Unit 4 가 씁니다.
 
 ```python
-from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
-from review_list import build_access_list                        # 실습 3-1에서 만든 현황 함수를 불러온다
-from review_rules import find_stale                              # 제공 파일의 규칙 점검 함수를 불러온다
-from review_unused import load_last_used, find_unused            # 방금 만든 미사용 점검 함수를 불러온다
+def entry_key(entry):                                            # 현황의 권한 한 건의 식별 키를 만드는 함수
+    """현황의 권한 한 개의 식별 키를 리턴한다.
+    키는 user:permission:source 를 이어 붙인 문자열이다.
+    같은 권한을 찾아 비교할 때 쓴다.
+    """
+    key = entry["user"] + ":" + entry["permission"]              # 사용자와 권한을 : 로 이어 붙이고
+    key = key + ":" + entry["source"]                            # 받은 방식을 이어 붙여 식별 키를 만든다
+    return key                                                   # 식별 키를 리턴한다
 
-NOW = datetime.strptime("2026-10-29 10:00", "%Y-%m-%d %H:%M")    # 이번 실습의 지금 시각(고정)
-TIME_FORMAT = "%Y-%m-%d %H:%M"                                   # 시각 문자열의 형식
 
-access_list = build_access_list()                                # 현황을 만든다
-stale = find_stale(access_list, NOW)                             # 규칙에 이미 걸린 권한을 찾는다
-stale_keys = []                                                  # 이미 걸린 권한의 식별 키(「사용자:권한:출처」 문자열)을 담을 빈 리스트
-for entry in stale:                                              # 이미 걸린 권한을 한 건씩 꺼낸다
-    stale_key = entry["user"] + ":" + entry["permission"]        # 사용자:권한 문자열을 만들고
-    stale_key = stale_key + ":" + entry["source"]                # 받은 방식을 이어 붙여 식별 키를 만든다
-    stale_keys.append(stale_key)                                 # 그 권한의 식별 키를 리스트에 추가한다
-not_stale = []                                                   # 규칙에 안 걸린 권한을 담을 빈 리스트
-for entry in access_list:                                        # 현황의 권한을 한 건씩 꺼낸다
-    entry_text = entry["user"] + ":" + entry["permission"]       # 사용자:권한 문자열을 만들고
-    entry_text = entry_text + ":" + entry["source"]              # 받은 방식을 이어 붙여 식별 키를 만든다
-    if entry_text not in stale_keys:                             # 식별 키가 걸린 리스트에 없으면
-        not_stale.append(entry)                                     # 규칙에 안 걸린 리스트에 추가한다
+def make_stale_reason(stale):                                    # 규칙에 걸린 권한 리스트를 받는 함수
+    """규칙에 걸린 권한의 식별 키를 키로, 걸린 이유를 값으로 하는 딕셔너리를 리턴한다.
+    필요 없어진 권한에 이유를 붙일 때 쓴다.
+    """
+    stale_reason = {}                                            # 식별 키 → 걸린 이유를 담을 빈 딕셔너리
+    for item in stale:                                           # 규칙에 걸린 권한을 하나씩 꺼낸다
+        item_key = entry_key(item)                               # 그 권한의 식별 키를 만든다
+        stale_reason[item_key] = item["reason"]                  # 식별 키로 걸린 이유를 찾을 수 있게 담는다
+    return stale_reason                                          # 딕셔너리를 리턴한다
 
-last_used_map = load_last_used()                                     # 마지막 사용 시각 딕셔너리를 읽는다
-print("--- 단계 1: 현황 - 규칙에 안 걸린 권한", len(not_stale), "건의 안 쓴 일 수")   # 단계 1 시작을 알리는 줄
-for entry in not_stale:                                             # 규칙에 안 걸린 권한을 한 건씩 꺼낸다
-    key = entry["user"] + ":" + entry["permission"]              # 「사용자:권한」 문자열을 만들고
-    used_text = last_used_map.get(key)                           # 마지막 사용 시각 문자열을 꺼낸다
-    if used_text is None:                                        # 사용 이력이 없으면
-        print(entry["user"], entry["permission"], "-> 사용 이력 없음")   # 이력이 없다고 출력한다
-    else:                                                        # 기록이 있으면
-        idle_days = (NOW - datetime.strptime(used_text, TIME_FORMAT)).days   # 안 쓴 일 수를 구해서
-        print(entry["user"], entry["permission"], "->", idle_days, "일째 안 씀")   # 출력한다
 
-unused = find_unused(not_stale, last_used_map, NOW, 90)                 # 90일보다 오래 안 쓴 권한을 찾는다
-print("--- 단계 2: 판정 - 90일 넘게 안 쓴 후보", len(unused), "건")   # 단계 2 시작을 알리는 줄
-for entry in unused:                                             # 후보를 한 건씩 꺼낸다
-    print(entry["user"], entry["permission"], "<-", entry["source"])   # 사용자 · 권한 <- 출처를 출력한다
+def make_unused_keys(unused):                                    # 안 쓴 권한 리스트를 받는 함수
+    """안 쓴 권한의 식별 키 리스트를 리턴한다.
+    안 쓴 권한을 다른 점검 결과와 비교할 때 쓴다.
+    """
+    unused_keys = []                                             # 안 쓴 권한의 식별 키를 담을 빈 리스트
+    for item in unused:                                          # 안 쓴 권한을 하나씩 꺼낸다
+        item_key = entry_key(item)                               # 식별 키를 만든다
+        unused_keys.append(item_key)                             # 식별 키를 리스트에 추가한다
+    return unused_keys                                           # 리스트를 리턴한다
+
+
+def collect_reasons(key, stale_reason, unused_keys, days):       # 식별 키 · 걸린 이유 딕셔너리 · 안 쓴 권한의 식별 키 리스트 · 기준 일 수를 받는 함수
+    """그 권한에 해당하는 과다권한 이유를 모아 리스트로 리턴한다(없으면 빈 리스트).
+    후보마다 왜 걸렸는지 적을 때 쓴다.
+    """
+    reasons = []                                                 # 이유를 담을 빈 리스트
+    if key in stale_reason:                                      # 규칙에 걸린 권한이면
+        reasons.append(stale_reason[key])                        # 걸린 이유를 추가한다
+    if key in unused_keys:                                       # 안 쓴 권한이면
+        reasons.append(f"{days}일 넘게 안 씀(이력 없음 포함)")   # 안 쓴 이유를 추가한다
+    return reasons                                               # 이유 리스트를 리턴한다
+
+
+def generate_report(access_list, stale, unused, days, generated_at):   # 현황 · 규칙 결과 · 안 쓴 결과 · 기준 일 수 · 만든 시각 문자열을 받는 함수
+    """과다권한 후보 리포트(딕셔너리)를 리턴하고 후보마다 "reasons" 키에 이유 리스트를 적는다.
+    점검 결과를 한눈에 정리해 보고할 때 쓴다.
+    """
+    stale_reason = make_stale_reason(stale)                      # 규칙에 걸린 권한의 식별 키 → 걸린 이유 딕셔너리를 만든다
+    unused_keys = make_unused_keys(unused)                       # 안 쓴 권한의 식별 키 리스트를 만든다
+    findings = []                                                # 후보를 담을 빈 리스트
+    for entry in access_list:                                    # 현황의 권한을 한 건씩 꺼낸다
+        key = entry_key(entry)                                   # 그 권한의 식별 키를 만든다
+        reasons = collect_reasons(key, stale_reason, unused_keys, days)   # 그 권한에 해당하는 이유를 모은다
+        if len(reasons) > 0:                                     # 이유가 하나라도 있으면
+            finding = entry.copy()                               # 권한을 복사해서
+            finding["reasons"] = reasons                         # 복사본에 이유 리스트를 적고
+            findings.append(finding)                             # 후보에 추가한다
+    report = {                                                   # 리포트 딕셔너리를 만든다
+        "generated_at": generated_at,                            # 리포트를 만든 시각
+        "total": len(access_list),                               # 점검한 전체 권한 수
+        "finding_count": len(findings),                          # 후보 수
+        "findings": findings,                                    # 후보 리스트
+    }
+    return report                                                # 리포트를 리턴한다
 ```
 
-**순서**
+## `report_exclude.py` 만들기
 
-1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 네 가지를 반복합니다.
-   1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
-   2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-   3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `config/access_log.json` · `review_unused.py` · `exercise3-2_run.py` 입니다. `access_control` 폴더를 선택한 채로 `config/access_log.json` 을 입력하면 `config` 폴더 안에 만들어집니다.
-   4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
-2. **[터미널]** 파일을 만든 뒤 `ls config` 를 쳐서 `access_log.json` 이 `users.json` 과 같은 `config` 폴더 안에 있는지 확인합니다.
-   - `config` 안에 또 `config` 가 생겼다면 위치가 틀린 것이니 옮깁니다.
-   - 붙여 넣은 내용이 맞는지 `python -m json.tool config/access_log.json` 으로 확인합니다(맥북은 `python3 -m json.tool …`). 여러 줄로 정리되어 출력되면 정상이고, 오류가 나면 붙여 넣을 때 글자가 빠진 것입니다. 깨진 채 두면 사용 이력을 못 읽어 모든 권한이 「이력 없음」으로 나옵니다.
-3. **[VS Code]** `review_unused.py` 의 `find_unused` 본문을 직접 씁니다. 3.1 의 표와 그림, 문법 상자를 보고 씁니다.
-4. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 이어서 실행합니다.
-   ```bash
-   pwd
-   python exercise3-2_run.py
-   ```
-   - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `exercise3-2_run.py` 실행할 파일
-   - 맥북은 `python3 exercise3-2_run.py` 로 칩니다.
-5. 출력은 두 단계입니다. 단계 1은 규칙에 안 걸린 권한 일곱 건의 안 쓴 일 수(일곱 줄), 단계 2는 90일 넘게 안 쓴 후보입니다.
-6. **[보고서]** `report_u3.md` 의 `## 실습 3-2` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 90일 넘게 안 쓴 후보가 몇 건인지와 후보마다 며칠째 안 쓰였는지 적어 주세요.
-     - 며칠째인지는 단계 1 출력에서 후보와 같은 사용자 · 권한의 줄을 찾아 적습니다. 사용 이력이 없는 후보는 단계 1 에 「사용 이력 없음」으로 나옵니다.
-   - (나) [핵심 질문] junho 의 `SETTLE:QUERY` 는 마지막 사용이 90일 전이라 후보에서 빠졌고, 같은 junho 의 `SALES:QUERY` 는 91일 전이라 후보에 들어갔습니다. 하루 차이로 나누는 기준은 합리적일까요? 경계 부근에서 담당자가 추가로 확인할 것도 적어 주세요.
-   - (다) [핵심 질문] 사용 이력이 없는 권한을 바로 지우면 위험한 경우가 있습니다. 어떤 경우인지 예를 들고, 지우기 전에 무엇을 확인해야 하는지 적어 주세요.
+**`report_exclude.py`** 를 만들고 아래 내용을 붙여 넣습니다. `split_by_exclude` 는 후보가 회수 제외 리스트에 있으면 「회수 제외」로, 아니면 「회수 대상」으로 나눕니다. 퇴사한 계정의 권한은 제외 리스트에 있어도 회수 대상에 둡니다. 오늘 실습에서는 쓰지 않고, 다음 Unit 4 가 씁니다.
 
-## 실습 3-2 정리
-
-| 하려는 일 | 코드 · 말 |
-|---|---|
-| 마지막 사용 시각을 찾는 키 문자열 | `user = entry["user"]` · `permission = entry["permission"]` → `key = f"{user}:{permission}"` |
-| 마지막 사용 시각 찾기 | `used_text = last_used_map.get(key)` (이력이 없으면 `None`) |
-| 사용 이력이 없는지 | `if used_text is None:` |
-| 사용 이력이 있고 기준을 넘었는지 | `elif days_since(used_text, now) > limit_days:` (`days_since` 는 미리 채움) |
-| 후보 만들기 | `unused_entry = make_unused(entry, used_text)` (`make_unused` 는 미리 채움) |
-| 후보에 추가하기 | `unused.append(unused_entry)` |
-
----
+```python
+from config_loader import load_json                              # config_loader.py 의 안전한 읽기 함수를 불러온다
 
 
-## 이번 Unit 마무리 · 깃허브에 올리기
+def exclude_key(entry):                                          # 사용자와 권한이 든 딕셔너리(후보 또는 제외 리스트의 한 건)를 받는 함수
+    """「사용자:권한」 문자열을 리턴한다.
+    제외 리스트와 점검 후보를 비교하는 키로 쓴다.
+    """
+    user = entry["user"]                                         # 그 권한의 사용자
+    permission = entry["permission"]                             # 그 권한의 권한 이름
+    return f"{user}:{permission}"                                # 사용자와 권한을 : 로 이어 붙인다
 
-하루를 닫는 마무리입니다(15분). 핵심 실습 두 개와 글쓰기를 끝낸 뒤 합니다.
 
-**1. 오늘 한 일 확인**
+def make_excluded(finding, reason):                              # 후보 한 건과 제외 이유 문자열을 받는 함수
+    """후보를 복사해 "exclude_reason" 키(제외 이유)를 적는다.
+    회수에서 뺀 후보에 이유를 남길 때 쓴다(원래 후보는 바꾸지 않음).
+    """
+    item = finding.copy()                                        # 원래 후보는 바꾸지 않고 복사한다
+    item["exclude_reason"] = reason                              # 복사본에 제외 이유를 적는다
+    return item                                                  # 복사본을 리턴한다
 
-1. 역할로 받은 권한과 예외로 받은 권한을 한 리스트로 모아 현황 14건을 만들었다 (실습 3-1)
-2. 규칙에 안 걸린 권한 일곱 건 가운데 90일 넘게 안 썼거나 사용 이력이 없는 후보 3건을 찾았다 (실습 3-2)
-3. 보고서 `report_u3.md` 의 실습 3-1 · 3-2 칸에 `답:` 뒤가 비어 있는 질문이 없다
 
-**2. 파일 확인** — **[터미널]** `access_control` 폴더에서 확인합니다.
+def load_exclude_map(path):                                      # 회수 제외 리스트 파일 경로를 받는 함수
+    """회수 제외 리스트 파일을 읽어 「사용자:권한」을 키로, 제외 이유를 값으로 하는 딕셔너리를 리턴한다.
+    계속 필요한 권한을 가려낼 준비를 할 때 쓴다.
+    """
+    exclude_map = {}                                             # 빈 딕셔너리로 시작한다
+    for item in load_json(path, []):                             # 제외 리스트의 권한을 한 건씩 꺼낸다(파일이 없으면 빈 리스트)
+        item_key = exclude_key(item)                             # 그 권한의 「사용자:권한」 문자열을 만든다
+        exclude_map[item_key] = item["reason"]                   # 그 문자열을 키로, 제외 이유를 값으로 담는다
+    return exclude_map                                           # 딕셔너리를 리턴한다
 
-```bash
-ls
-ls config
+
+def can_exclude(finding, exclude_map):                           # 후보 한 건과 제외 이유 딕셔너리를 받는 함수
+    """후보를 회수 제외해도 되는지 알려 준다.
+    계속 필요한 권한을 가려낼 때 쓰며, 퇴사한 계정은 제외하지 않는다.
+    """
+    key = exclude_key(finding)                                   # 「사용자:권한」 문자열을 만든다
+    in_exclude_list = key in exclude_map                         # 제외 리스트에 있는지
+    is_resigned = "퇴사한 계정" in finding["reasons"]              # 이유에 「퇴사한 계정」이 있는지
+    return in_exclude_list and not is_resigned                   # 제외 리스트에 있고 퇴사한 계정이 아니면 True 를 리턴한다
+
+
+def split_by_exclude(findings, exclude_map):                     # 후보 리스트와 제외 이유 딕셔너리를 받는 함수
+    """후보를 (회수 대상 후보 리스트, 회수 제외 후보 리스트)로 나눠 리턴한다.
+    이유에 「퇴사한 계정」이 있으면 제외하지 않으며, 회수할 것과 남길 것을 가를 때 쓴다.
+    """
+    to_revoke = []                                               # 회수 대상을 담을 빈 리스트
+    excluded = []                                                # 회수 제외를 담을 빈 리스트
+    for finding in findings:                                     # 후보를 하나씩 꺼낸다
+        key = exclude_key(finding)                               # 「사용자:권한」 문자열을 만든다
+        if can_exclude(finding, exclude_map):                    # 회수 제외해도 되는 후보이면
+            reason = exclude_map[key]                            # 그 후보의 제외 이유
+            excluded_entry = make_excluded(finding, reason)      # 회수 제외 후보 한 건을 만든다
+            excluded.append(excluded_entry)                      # 제외 이유를 적은 복사본을 회수 제외에 추가한다
+        else:                                                    # 그렇지 않으면
+            to_revoke.append(finding)                            # 회수 대상에 추가한다
+    return to_revoke, excluded                                   # 두 리스트를 함께 리턴한다
 ```
 
-- `review_list.py` · `exercise3-1_run.py` · `review_rules.py` · `overprivilege.py` · `report_exclude.py` · `review_unused.py` · `exercise3-2_run.py` · `report_u3.md` 가 보여야 합니다.
-- `config` 안에는 `access_log.json` · `exclude_list.json` 이 새로 보여야 합니다.
+## `config/exclude_list.json` 만들기
 
-**3. 깃허브에 올리기**
+**`config/exclude_list.json`** 을 만들고 아래 내용을 붙여 넣습니다. `access_control` 안의 `config` 폴더에 만듭니다(`access_control` 폴더를 선택한 채로 이름에 `config/exclude_list.json` 을 입력하면 `config` 폴더 안에 만들어집니다). 담당자가 「평소에 안 써도 회수하면 안 되는 권한」을 적어 둔 회수 제외 리스트이고, 한 줄이 한 건입니다.
 
-1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
-   ```bash
-   cd ..
-   pwd
-   ```
-   - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
-   - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
-2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
-   ```bash
-   git status
-   ```
-   - 명령 풀이: `git status` 올릴 파일의 상태를 봄
-   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 도 같은 방법으로 합니다.
-   - `access_control/__pycache__/` 는 파이썬이 실행하면서 자동으로 만든 임시 폴더입니다. 올릴 필요가 없으므로 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 더 적고 저장합니다.
-   - `Untracked files:` 는 「아직 깃이 모르는 새 파일」 목록입니다. 이번 Unit 에서 만든 파일이 `access_control/review_list.py` 처럼 한 줄씩 보입니다.
-3. **[보고서]** `report_u3.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
-4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
-   ```bash
-   git add .
-   git commit -m "Add access control unit 3 access review and unused permissions"
-   git push
-   ```
-   - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - `git push` 가 거절(`rejected`)되면 `git pull` 로 받아 온 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다.
-5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `access_control` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다.
+<pre class="copyable"><code>[
+  {"user": "gaeun", "permission": "ACCOUNT:CHANGE", "reason": "계정에 사고가 났을 때만 쓰는 권한이라 평소에는 쓰지 않음"},
+  {"user": "seoyeon", "permission": "SALES:CHANGE", "reason": "6월 말 · 12월 말 결산 때만 쓰는 권한"},
+  {"user": "dami", "permission": "SALES:QUERY", "reason": "일을 넘겨받을 사람이 정해질 때까지 필요"}
+]
+</code></pre>
 
-- 시간이 남아 도전을 했다면 도전 파일까지 만든 뒤 1 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
-
-**4. 이어지는 곳**
-
-1. `review_list.py` · `review_rules.py` · `review_unused.py` 는 다음 Unit 4 가 회수할 후보를 다시 뽑을 때 그대로 불러 씁니다.
-2. `overprivilege.py` 의 리포트와 `report_exclude.py` · `config/exclude_list.json` 의 회수 제외는 Unit 4 가 회수 계획을 세울 때 씁니다. 어떻게 동작하는지 직접 만들어 보려면 도전 3-2 · 3-3 을 합니다.
-
----
-
-<!-- learn:answers -->
+- 저장한 뒤 터미널에서 JSON 규칙에 맞는지 확인합니다. 세 건이 다시 정리되어 나오면 됩니다.
+  ```bash
+  python -m json.tool config/exclude_list.json
+  ```
+  - 명령 풀이: `python -m json.tool` 파이썬의 JSON 검사 도구를 실행 · `config/exclude_list.json` 검사할 파일 (맥북은 `python3`)
+- 모두 만들었으면 터미널에서 확인합니다. `review_rules.py` · `overprivilege.py` · `report_exclude.py` 와 `config` 안의 `exclude_list.json` 이 보이면 실습 3-2로 갑니다.
+  ```bash
+  ls
+  ls config
+  ```

@@ -1,23 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img"><title>규칙에 안 걸려도 오래 안 쓴 권한은 과다권한 후보이고, 이번에는 찾기만 한다</title><desc>퇴사·만료 규칙으로 걸러도 일이 끝나 안 쓰는 권한이 남는다. 마지막으로 쓴 시각을 보면 이런 권한을 찾을 수 있고, 이번 실습은 찾기까지만 하며 회수는 Unit 4에서 한다.</desc><defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img">
+<title>find_stale 은 퇴사를 먼저, 아니면 예외 만료를 보고 걸린 권한에 이유를 붙인다</title>
+<desc>권한을 한 건씩 꺼내 employed 가 False 이면 퇴사한 계정, 아니고 expires 가 있으며 만료 시각이 지금과 같거나 이전이면 만료된 예외로 적습니다. reason 이 적힌 권한만 복사해 이유를 붙이고 stale 에 넣습니다. 현황 14건 중 7건(퇴사 3, 만료 4)이 걸립니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">왜 안 쓰는 권한을 찾아야 하는가</text>
-<rect x="20" y="80" width="200" height="120" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="120" y="113.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">1. 규칙을 통과한 권한</text>
-<text x="120" y="134.75" font-size="14" fill="#666660" text-anchor="middle">퇴사 · 만료에 안 걸림</text>
-<text x="120" y="155.75" font-size="14" fill="#666660" text-anchor="middle">일이 끝나 안 쓰는</text>
-<text x="120" y="176.75" font-size="14" fill="#666660" text-anchor="middle">권한이 남아 있다</text>
-<line x1="224" y1="140.0" x2="254" y2="140.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
-<rect x="260" y="80" width="200" height="120" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
-<text x="360" y="113.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">2. 마지막으로 쓴 시각</text>
-<text x="360" y="134.75" font-size="14" fill="#666660" text-anchor="middle">권한은 있는데</text>
-<text x="360" y="155.75" font-size="14" fill="#666660" text-anchor="middle">오래 쓴 이력이 없으면</text>
-<text x="360" y="176.75" font-size="14" fill="#666660" text-anchor="middle">과다권한 후보</text>
-<line x1="464" y1="140.0" x2="494" y2="140.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
-<rect x="500" y="80" width="200" height="120" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="2"/>
-<text x="600" y="124.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">3. 찾기만 한다</text>
-<text x="600" y="145.25" font-size="14" fill="#666660" text-anchor="middle">후보 목록까지만</text>
-<text x="600" y="166.25" font-size="14" fill="#666660" text-anchor="middle">회수는 Unit 4</text>
-<rect x="110" y="226" width="500" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="2"/>
-<text x="360" y="256.25" font-size="15" fill="#292929" text-anchor="middle">계정을 빼앗기면 쓰지 않는 권한도 공격자가 쓸 수 있다</text>
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">review_rules.py · find_stale 의 판단 순서</text>
+<rect x="20" y="50" width="340" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="190" y="77" font-size="15" fill="#292929" text-anchor="middle">현황의 권한을 한 건씩 꺼낸다</text>
+<rect x="20" y="120" width="340" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="190" y="147" font-size="15" fill="#292929" text-anchor="middle">employed 가 False 인가?</text>
+<rect x="20" y="190" width="340" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="190" y="216" font-size="15" fill="#292929" text-anchor="middle">(elif) expires 가 있고</text>
+<text x="190" y="237" font-size="15" fill="#292929" text-anchor="middle">만료 시각 &lt;= now 인가?</text>
+<rect x="20" y="280" width="340" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="190" y="307" font-size="15" fill="#292929" text-anchor="middle">reason 이 적혔나?</text>
+<rect x="20" y="350" width="340" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="190" y="376" font-size="15" fill="#292929" text-anchor="middle">entry.copy() 에 reason 을 적고</text>
+<text x="190" y="397" font-size="15" fill="#292929" text-anchor="middle">stale 에 추가</text>
+<polyline points="190,94 190,117" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="190,164 190,187" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="198" y="182" font-size="14" fill="#666660">아니다</text>
+<polyline points="190,254 190,277" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="190,324 190,347" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="198" y="342" font-size="14" fill="#666660">그렇다</text>
+<rect x="430" y="120" width="270" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="565" y="147" font-size="15" fill="#292929" text-anchor="middle">reason = "퇴사한 계정"</text>
+<polyline points="360,142 426,142" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="395" y="134" font-size="14" fill="#666660" text-anchor="middle">그렇다</text>
+<rect x="430" y="200" width="270" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="565" y="227" font-size="15" fill="#292929" text-anchor="middle">reason = "만료된 예외"</text>
+<polyline points="360,222 426,222" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="395" y="214" font-size="14" fill="#666660" text-anchor="middle">그렇다</text>
+<rect x="430" y="280" width="270" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="565" y="307" font-size="15" fill="#292929" text-anchor="middle">안 걸림 → 다음 권한</text>
+<polyline points="360,302 426,302" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="395" y="294" font-size="14" fill="#666660" text-anchor="middle">아니다</text>
+<rect x="430" y="350" width="270" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="565" y="376" font-size="15" fill="#2f6fd0" text-anchor="middle" font-weight="700">현황 14건 중 7건</text>
+<text x="565" y="397" font-size="14" fill="#292929" text-anchor="middle">퇴사한 계정 3 · 만료된 예외 4</text>
+<polyline points="360,382 426,382" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
 </g>
 </svg>

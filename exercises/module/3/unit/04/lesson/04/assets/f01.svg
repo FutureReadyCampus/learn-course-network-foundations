@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 596" role="img">
+<title>execute_revocation 은 승인 대기면 그대로 두고 아니면 회수한 뒤 계획마다 이력을 남긴다</title>
+<desc>계획을 하나씩 꺼내 approval 이 승인 대기면 아무것도 지우지 않고 result 를 대기로 둡니다. 아니면 apply_plan 으로 실제로 회수하고 result 를 실행으로 둡니다. 어느 쪽이든 이력 한 건을 log 에 추가하고, 모든 계획을 꺼낸 뒤 log 를 리턴합니다.</desc>
+<defs><marker id="a-f01-0804" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<rect x="50" y="16" width="390" height="56" rx="22" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="245.0" y="39.5" font-size="15" fill="#292929" text-anchor="middle">execute_revocation(</text>
+<text x="245.0" y="58.5" font-size="14" fill="#292929" text-anchor="middle">plans, users, roles, exceptions, now)</text>
+<path d="M245 72 L245 96" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0804)"/>
+<rect x="50" y="96" width="390" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="245.0" y="121.0" font-size="15" fill="#292929" text-anchor="middle">log = []  (이력을 담을 빈 리스트)</text>
+<path d="M245 136 L245 160" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0804)"/>
+<rect x="50" y="160" width="390" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="245.0" y="185.0" font-size="15" fill="#292929" text-anchor="middle">계획을 하나씩 꺼낸다</text>
+<path d="M245 200 L245 224" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0804)"/>
+<rect x="50" y="224" width="390" height="48" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="245.0" y="253.0" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">approval 이 「승인 대기」인가?</text>
+<path d="M440 248 L500 248" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0804)"/>
+<text x="470" y="241" font-size="14" fill="#666660" text-anchor="middle">그렇다</text>
+<rect x="500" y="222" width="200" height="52" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="600.0" y="243.5" font-size="15" fill="#292929" text-anchor="middle">result = "대기"</text>
+<text x="600.0" y="262.5" font-size="14" fill="#292929" text-anchor="middle">(아무것도 지우지 않음)</text>
+<path d="M245 272 L245 302" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0804)"/>
+<text x="253" y="292" font-size="14" fill="#666660" text-anchor="start">아니다</text>
+<rect x="50" y="302" width="390" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="245.0" y="325.5" font-size="15" fill="#292929" text-anchor="middle">apply_plan 으로 실제로 회수한다</text>
+<text x="245.0" y="344.5" font-size="14" fill="#292929" text-anchor="middle">(방법별로 지우는 일은 직접 씀)</text>
+<path d="M245 358 L245 382" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0804)"/>
+<rect x="50" y="382" width="390" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="245.0" y="407.0" font-size="15" fill="#292929" text-anchor="middle">result = "실행"</text>
+<path d="M245 422 L245 446" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0804)"/>
+<path d="M600 274 L600 474 L440 474" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0804)"/>
+<rect x="50" y="446" width="390" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="245.0" y="469.5" font-size="15" fill="#292929" text-anchor="middle">이력 한 건을 만들어 log 에 추가하고</text>
+<text x="245.0" y="488.5" font-size="14" fill="#292929" text-anchor="middle">다음 계획으로</text>
+<path d="M50 474 L24 474 L24 180 L50 180" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0804)"/>
+<text x="18" y="330" font-size="14" fill="#666660" text-anchor="middle" transform="rotate(-90 18 330)">반복 (다음 계획)</text>
+<path d="M245 502 L245 538" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0804)"/>
+<text x="253" y="525" font-size="14" fill="#666660" text-anchor="start">모든 계획을 꺼낸 뒤</text>
+<rect x="50" y="538" width="390" height="40" rx="22" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="245.0" y="563.0" font-size="15" fill="#292929" text-anchor="middle">log 를 리턴한다</text>
+</g>
+</svg>
