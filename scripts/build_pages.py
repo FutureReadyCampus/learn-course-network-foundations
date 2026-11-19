@@ -54,6 +54,10 @@ def emit(course: dict, output: Path, baseurl: str, revision: str, dispatch: dict
                 html_text = html_text.replace(prefix + relative_text, f"{baseurl}/assets/course-assets/{relative.as_posix()}")
             if html_text != page.get("html", ""):
                 page["html"] = html_text
+    for lesson in course["lessons"]:  # links in page HTML use __SITE__ for the site root
+        for page in lesson.get("pages", []):
+            if "html" in page:
+                page["html"] = page["html"].replace("__SITE__", site)
 
     data_dir = output / "data"
     data_dir.mkdir()
@@ -74,7 +78,7 @@ def emit(course: dict, output: Path, baseurl: str, revision: str, dispatch: dict
     # GitHub Pages serves this copy for deep links; the reader restores the route from pathname.
     # The root 404 also serves /exercises/<id>/ deep links, so it switches base and data to that course.
     if dispatch:
-        script = (f"<script>(function(){{var m=location.pathname.match({json.dumps('^' + baseurl + '/exercises/([^/]+)/')});"
+        script = (f"<script>(function(){{var m=location.pathname.match({json.dumps('^' + baseurl + '/exercises/(module/[^/]+)/')});"
                   f"var d={json.dumps(dispatch, ensure_ascii=False)};if(m&&d[m[1]]){{window.NETWORK_SITE_BASE={json.dumps(baseurl)}+'/exercises/'+m[1];"
                   f"window.NETWORK_NO_COPY=true;window.NETWORK_COURSE_URL=window.NETWORK_SITE_BASE+'/data/course.json{revision_query}';"
                   "document.querySelector('.topbar-course').textContent=d[m[1]];}})();</script></body>")
@@ -96,7 +100,7 @@ def main() -> None:
     baseurl = "/" + args.baseurl.strip("/") if args.baseurl.strip("/") else ""
     course = build(args.source_revision, args.source_label)
     # Exercise courses (exercises/<id>/course.yaml) get their own reader copy under /exercises/<id>/.
-    exercises = {f.parent.name: build(args.source_revision, args.source_label, f) for f in sorted((ROOT / "exercises").glob("*/course.yaml"))}
+    exercises = {f.parent.relative_to(ROOT / "exercises").as_posix(): build(args.source_revision, args.source_label, f) for f in sorted((ROOT / "exercises").glob("module/*/course.yaml"))}
     emit(course, output, baseurl, args.source_revision, {k: v["title"] for k, v in exercises.items()}, baseurl)
     for slug, exercise in exercises.items():
         emit(exercise, output / "exercises" / slug, f"{baseurl}/exercises/{slug}", args.source_revision, site=baseurl, no_copy=True)
@@ -107,7 +111,7 @@ def main() -> None:
             pages = sum(len(lesson["pages"]) for lesson in exercise["lessons"])
             units = "".join(f"<li>{html_escape(unit['title'])}</li>" for unit in exercise["units"])
             cards.append(
-                f'<article class="hub-card"><span class="hub-tag">{html_escape(slug.upper())}</span>'
+                f'<article class="hub-card"><span class="hub-tag">{html_escape(slug.replace("/", " ").upper())}</span>'
                 f'<h2>{html_escape(meta["title"])}</h2><p>{html_escape(meta.get("description", ""))}</p>'
                 f'<ul class="hub-stats"><li><strong>{len(exercise["units"])}</strong>Units</li>'
                 f'<li><strong>{len(exercise["lessons"])}</strong>Lessons</li><li><strong>{pages}</strong>Pages</li></ul>'

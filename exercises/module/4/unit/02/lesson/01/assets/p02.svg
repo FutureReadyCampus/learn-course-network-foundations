@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>anomaly_detection 에 Unit 1 파일을 두고 새 로그 두 개를 만든 뒤 줄 수를 확인한다</title>
+<desc>왼쪽은 폴더 배치입니다. Unit 1 의 log_parse.py · access_sample.log 가 있어야 하고, server_log.jsonl 과 saas_events.csv 를 새로 만듭니다. 오른쪽처럼 줄 수가 30 · 15 · 15 인지 확인합니다.</desc>
+<defs><marker id="a-m4u02l01-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker><marker id="a-m4u02l01-p02-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0442e"/></marker></defs>
+<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
+<text x="24" y="30" font-size="19" fill="#292929" font-weight="700">폴더 배치</text>
+<text x="380" y="30" font-size="19" fill="#292929" font-weight="700">줄 수 확인 (순서대로)</text>
+<rect x="24" y="46" width="320" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="184.0" y="71.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">anomaly_detection/  ← pwd 끝</text>
+<line x1="44" y1="86" x2="44" y2="378" stroke="#dededb" stroke-width="2"/>
+<text x="64" y="112" font-size="14" fill="#666660">Unit 1 에서 만든 파일</text>
+<rect x="64" y="120" width="280" height="36" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="204.0" y="143.2" font-size="15" fill="#292929" text-anchor="middle">log_parse.py</text>
+<rect x="64" y="164" width="280" height="36" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="204.0" y="187.2" font-size="15" fill="#292929" text-anchor="middle">access_sample.log (30줄)</text>
+<text x="64" y="232" font-size="14" fill="#666660">이번에 새로 만드는 파일</text>
+<rect x="64" y="240" width="280" height="36" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="204.0" y="263.2" font-size="15" fill="#292929" text-anchor="middle">server_log.jsonl (15줄)</text>
+<rect x="64" y="284" width="280" height="36" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="204.0" y="307.2" font-size="15" fill="#292929" text-anchor="middle">saas_events.csv (15줄)</text>
+<rect x="64" y="342" width="280" height="36" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="204.0" y="365.2" font-size="15" fill="#292929" text-anchor="middle">report_u2.md (보고서 쓰기에서)</text>
+<rect x="380" y="46" width="316" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="394" y="73.2" font-size="15" fill="#292929">access_sample.log → 30</text>
+<rect x="380" y="100" width="316" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="394" y="127.2" font-size="15" fill="#292929">server_log.jsonl → 15</text>
+<rect x="380" y="154" width="316" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="394" y="180.8" font-size="15" fill="#292929">saas_events.csv → 15</text>
+<text x="394" y="201.8" font-size="15" fill="#666660">열 이름 1줄 + 이벤트 14개</text>
+<rect x="380" y="240" width="316" height="50" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="538.0" y="270.2" font-size="15" fill="#1f7a4a" text-anchor="middle" font-weight="700">30 · 15 · 15 가 나와야 함</text>
+<text x="380" y="326" font-size="15" fill="#666660">다르면 줄이 빠졌거나 빈 줄이</text>
+<text x="380" y="348" font-size="15" fill="#666660">끼어든 것이니 다시 붙여 넣습니다.</text>
+</g>
+</svg>

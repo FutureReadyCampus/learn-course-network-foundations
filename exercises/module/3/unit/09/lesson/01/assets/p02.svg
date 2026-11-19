@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>access_control 폴더에서 이전 파일과 flask · requests 를 한 줄로 확인한다</title>
+<desc>access_control 폴더에 Unit 1 ~ Unit 3 파일, config 폴더가 있는지 본다. 새 파일은 New File 로 만들어 코드 상자 내용을 붙여 넣고, 보고서 report_u9.md 는 「보고서 쓰기」 레슨에서 만든다. 확인 명령의 마지막 줄이 이전 파일 · flask · requests 정상 6 (True, &#x27;역할 권한&#x27;) 이면 준비가 끝난다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">폴더 배치와 확인</text>
+<rect x="20" y="52" width="300" height="312" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="36" y="80" font-size="16" fill="#292929" font-weight="700">access_control/</text>
+<text x="56" y="112" font-size="15" fill="#292929">policy.py</text>
+<text x="56" y="146" font-size="15" fill="#292929">rbac.py</text>
+<text x="56" y="180" font-size="15" fill="#292929">exception_policy.py</text>
+<text x="56" y="214" font-size="15" fill="#292929">config_loader.py</text>
+<text x="56" y="248" font-size="15" fill="#292929">config/ (json 3개)</text>
+<text x="56" y="282" font-size="15" fill="#2f6fd0">새 파일: New File 로 만듦</text>
+<text x="56" y="316" font-size="15" fill="#2f6fd0">report_u9.md (보고서 쓰기)</text>
+<text x="36" y="350" font-size="14" fill="#666660">flask · requests 도 설치되어 있어야 함</text>
+<rect x="350" y="52" width="350" height="92" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="525" y="81.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">터미널에서 확인</text>
+<text x="525" y="104.8" font-size="15" fill="#292929" text-anchor="middle">pwd → …/access_control</text>
+<text x="525" y="126.6" font-size="15" fill="#292929" text-anchor="middle">ls · ls config · python -c …</text>
+<polyline points="525,145 525,167" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="350" y="168" width="350" height="92" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="525" y="197.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">마지막 줄이 이렇게 나오면 정상</text>
+<text x="525" y="220.8" font-size="15" fill="#292929" text-anchor="middle">이전 파일 · flask · requests 정상</text>
+<text x="525" y="242.6" font-size="15" fill="#292929" text-anchor="middle">6 (True, &#x27;역할 권한&#x27;)</text>
+<rect x="350" y="276" width="350" height="88" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="525" y="303.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">다르거나 없으면</text>
+<text x="525" y="326.8" font-size="15" fill="#292929" text-anchor="middle">Unit 1~3 코드 상자로 다시 만들기</text>
+<text x="525" y="348.6" font-size="15" fill="#292929" text-anchor="middle">pip install flask requests</text>
+</g>
+</svg>

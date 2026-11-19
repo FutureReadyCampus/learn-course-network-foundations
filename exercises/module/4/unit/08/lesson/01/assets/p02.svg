@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>폴더 준비: anomaly_detection 안에 JSON 세 개를 만들고 7 5 1 을 확인합니다</title>
+<desc>security-agent-toolkit 의 anomaly_detection 폴더에 review_alerts.json, problems.json, login_alerts.json 을 New File 로 만들고 페이지의 내용을 붙여 넣습니다. 보고서 report_u8.md 는 보고서 쓰기 레슨에서 만듭니다. 확인 명령의 출력이 7 5 1 이면 세 파일이 정상입니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">폴더 열고 JSON 파일 준비하기</text>
+<rect x="20" y="56" width="300" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="83.4" font-size="15" fill="#292929">security-agent-toolkit/</text>
+<rect x="50" y="112" width="270" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="62" y="139.4" font-size="15" fill="#292929">anomaly_detection/</text>
+<line x1="34" y1="100" x2="34" y2="134" stroke="#666660" stroke-width="1.5"/>
+<line x1="34" y1="134" x2="50" y2="134" stroke="#666660" stroke-width="1.5"/>
+<line x1="66" y1="188" x2="84" y2="188" stroke="#666660" stroke-width="1.5"/>
+<rect x="84" y="168" width="236" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="96" y="193.4" font-size="15" fill="#292929">review_alerts.json</text>
+<text x="336" y="194" font-size="15" fill="#666660">알림 7개 (A1 ~ A7)</text>
+<line x1="66" y1="238" x2="84" y2="238" stroke="#666660" stroke-width="1.5"/>
+<rect x="84" y="218" width="236" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="96" y="243.4" font-size="15" fill="#292929">problems.json</text>
+<text x="336" y="244" font-size="15" fill="#666660">진짜 문제 5개 (P1 ~ P5)</text>
+<line x1="66" y1="288" x2="84" y2="288" stroke="#666660" stroke-width="1.5"/>
+<rect x="84" y="268" width="236" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="96" y="293.4" font-size="15" fill="#292929">login_alerts.json</text>
+<text x="336" y="294" font-size="15" fill="#666660">알림 1개 (A8 · 실습 8-3)</text>
+<line x1="66" y1="338" x2="84" y2="338" stroke="#666660" stroke-width="1.5"/>
+<rect x="84" y="318" width="236" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="96" y="343.4" font-size="15" fill="#292929">report_u8.md</text>
+<text x="336" y="344" font-size="15" fill="#666660">보고서 쓰기 레슨에서 만듦</text>
+<line x1="66" y1="156" x2="66" y2="338" stroke="#666660" stroke-width="1.5"/>
+<rect x="520" y="168" width="180" height="120" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="610.0" y="210.0" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">확인 명령 출력</text>
+<text x="610.0" y="236.6" font-size="20" fill="#292929" text-anchor="middle" font-weight="700">7 5 1</text>
+<text x="610.0" y="258.2" font-size="14" fill="#666660" text-anchor="middle">세 파일의 행 수</text>
+</g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 350" role="img">
+<title>Unit 9를 시작할 때 soar_response 폴더에 있어야 할 Unit 8 파일과 확인</title>
+<desc>폴더에는 Unit 8 코드 파일 세 개와 리포트 파일, 데이터 파일, Unit 1 · 5 파일이 있어야 합니다. ls로 확인하고 세 파일을 import해 「Unit 8 파일 불러오기 성공」이 나오면 됩니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p02r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p02g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p02b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">폴더 열고 Unit 8 파일 확인하기</tspan></text>
+<rect x="20" y="52" width="380" height="278" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="40" y="120.1" font-size="15" text-anchor="start" fill="#292929"><tspan x="40" font-weight="bold">soar_response/</tspan><tspan x="40" dy="25.5">report.py · approval_gate.py</tspan><tspan x="40" dy="25.5">false_positive.py</tspan><tspan x="40" dy="25.5">incident_report_20261112.md</tspan><tspan x="40" dy="25.5">Unit 8 데이터 파일 6개</tspan><tspan x="40" dy="25.5">incident.py · rollback.py 등</tspan><tspan x="40" dy="23.8" font-size="14" fill="#666660">없는 파일: Unit 8 레슨의 코드 상자로</tspan></text>
+<rect x="430" y="52" width="270" height="80" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="565.0" y="87.0" font-size="15" text-anchor="middle" fill="#292929"><tspan x="565.0" font-weight="bold">1. ls 로 확인</tspan><tspan x="565.0" dy="19.6" font-size="14">Unit 8 파일 네 개가 보이면 OK</tspan></text>
+<line x1="565" y1="134" x2="565" y2="154" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="430" y="156" width="270" height="80" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="565.0" y="191.0" font-size="15" text-anchor="middle" fill="#292929"><tspan x="565.0" font-weight="bold">2. 세 파일 import</tspan><tspan x="565.0" dy="19.6" font-size="14">→ Unit 8 파일 불러오기 성공</tspan></text>
+<rect x="430" y="256" width="270" height="74" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="565.0" y="288.0" font-size="15" text-anchor="middle" fill="#292929"><tspan x="565.0" font-weight="bold">리포트 파일이 없으면</tspan><tspan x="565.0" dy="19.6" font-size="14">Unit 8 의 exercise8-1_run.py 실행</tspan></text>
+</g>
+</svg>

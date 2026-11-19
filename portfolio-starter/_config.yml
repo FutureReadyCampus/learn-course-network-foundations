@@ -1,0 +1,30 @@
+# 사이트 설정 파일입니다. "← 내 것으로 바꾸기"가 붙은 줄만 고치면 됩니다.
+# 이 파일을 고친 뒤에는 저장소에 올려야 사이트에 반영됩니다.
+
+title: 네트워크 실습 노트            # ← 내 것으로 바꾸기
+description: Module 3~5 실습 코드와 고민 기록   # ← 내 것으로 바꾸기
+author: 내 이름                      # ← 내 것으로 바꾸기
+
+# 사이트 주소. url 은 비워 둡니다(그대로 두세요). baseurl 은 슬래시(/) 뒤에 내 저장소 이름을 적습니다.
+url: ""
+baseurl: "/network-study-notes"        # ← 내 저장소 이름으로 바꾸기
+
+lang: ko
+# 한국 시간으로 쓴 글이 "미래 날짜"로 취급되어 안 보이는 일을 막습니다. 지우지 않습니다.
+timezone: Asia/Seoul
+theme: minima
+markdown: kramdown
+
+minima:
+  date_format: "%Y-%m-%d"
+
+# 사이트에 나오면 안 되는 파일입니다. 지우지 않습니다.
+exclude:
+  - README.md
+  - check_publish.py
+  - _templates
+  - code/README.md
+  - .gitignore
+  - .env
+  - Gemfile
+  - Gemfile.lock

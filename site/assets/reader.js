@@ -7,10 +7,11 @@
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     .replace(/\*([^*]+)\*/g, "<em>$1</em>")
     .replace(/\[([^\]]+)\]\((https?:[^\s)]+)\)/g, '<a href="$2" rel="noreferrer">$1</a>');
-  const routeFor = (unitIndex, lessonIndex, pageIndex) => `${base}/m2-network/unit/${unitIndex + 1}/lesson/${lessonIndex + 1}/page/${pageIndex + 1}`;
+  const seg = base.includes("/exercises/") ? "" : "/m2-network"; // Foundations keeps its published /m2-network URLs
+  const routeFor = (unitIndex, lessonIndex, pageIndex) => `${base}${seg}/unit/${unitIndex + 1}/lesson/${lessonIndex + 1}/page/${pageIndex + 1}`;
   const parseRoute = (course) => {
     const path = location.pathname.slice(base.length) || "/";
-    const found = path.match(/\/m2-network\/unit\/(\d+)\/lesson\/(\d+)\/page\/(\d+)/);
+    const found = path.slice(seg.length).match(/^\/unit\/(\d+)\/lesson\/(\d+)\/page\/(\d+)/);
     if (!found) return { unitIndex: 0, lessonIndex: 0, pageIndex: 0 };
     const unitIndex = Number(found[1]) - 1;
     const unit = course.units[unitIndex];
@@ -24,13 +25,29 @@
     : src;
   // Exercise readers: code boxes cannot be selected or copied, so learners type the code themselves.
   const lockCode = (root) => {
-    // Code with "← 아래를 직접 씁니다" blanks is a scaffold: copying it is fine, the learner still writes the blanks.
+    // Python code is copyable (most boxes are scaffolds with blanks the learner still fills in); other boxes stay locked.
     const [open, boxes] = [[], []];
-    root.querySelectorAll("pre").forEach((box) => (box.textContent.includes("직접 씁니다") ? open : boxes).push(box));
+    root.querySelectorAll("pre").forEach((box) => (box.classList.contains("copyable") || box.querySelector("code.language-python") ? open : boxes).push(box));
     boxes.forEach((box) => box.classList.add("no-copy"));
     const addNote = (box, text) => { const note = document.createElement("p"); note.className = "no-copy-note"; note.textContent = text; box.before(note); };
     if (boxes.length) addNote(boxes[0], "코드 상자는 복사할 수 없습니다. 눈으로 읽으면서 직접 입력해 보세요.");
-    if (open.length) addNote(open[0], "빈칸이 있는 코드는 복사해서 쓰고, 「직접 씁니다」 아래 빈칸만 직접 채워 보세요.");
+    open.forEach((box) => {
+      const wrap = document.createElement("div");
+      wrap.className = "code-wrap";
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "code-copy";
+      button.textContent = "복사";
+      button.addEventListener("click", () => navigator.clipboard.writeText(box.textContent).then(() => {
+        button.textContent = "복사됨";
+        setTimeout(() => { button.textContent = "복사"; }, 1500);
+      }));
+      box.before(wrap);
+      wrap.append(box, button);
+    });
+    if (open.length) addNote(open[0], open.every((box) => box.classList.contains("copyable"))
+      ? "복사 버튼을 눌러 내용을 복사하고, 내 저장소에 같은 이름의 파일로 붙여 넣으세요."
+      : "Python 코드는 복사해서 쓸 수 있습니다. 「직접 씁니다」 아래 빈칸은 직접 채워 보세요.");
   };
   if (window.NETWORK_NO_COPY && !window.__noCopyBound) {
     window.__noCopyBound = true;
