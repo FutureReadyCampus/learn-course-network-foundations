@@ -1,31 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
-<title>현황 14건에서 후보 10건, 회수 제외 2건을 빼 회수 대상 8건이 남았습니다</title>
-<desc>Unit 3 · Unit 3은 규칙과 사용 이력으로 후보를 찾고 회수 제외를 뺐습니다. dami 는 제외 리스트에 있지만 퇴사한 계정이라 제외하지 않았습니다. Unit 1의 함수는 실습 4-2에서 다시 씁니다.</desc>
-<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img">
+<title>현황 14건에서 후보 10건을 찾고 회수 제외 2건을 빼서 회수 대상 8건이 남았습니다</title>
+<desc>Unit 3 점검은 현황 14건에서 규칙과 90일 미사용으로 후보 10건을 찾았습니다. 회수 제외 리스트 3건 중 dami 는 퇴사한 계정이라 빼지 않아 실제 제외는 2건이고, 남은 8건이 load_to_revoke 의 결과입니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">앞 Unit 흐름 복습 — 회수 대상 8건이 나오기까지</text>
-<rect x="20" y="70" width="120" height="80" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="80" y="104.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">현황</text>
-<text x="80" y="125.8" font-size="15" fill="#292929" text-anchor="middle">14건</text>
-<path d="M140 110 L166 110" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<rect x="170" y="70" width="130" height="80" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="235" y="104.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">후보</text>
-<text x="235" y="125.8" font-size="15" fill="#292929" text-anchor="middle">10건</text>
-<path d="M300 110 L326 110" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<rect x="330" y="70" width="160" height="80" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="410" y="104.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">회수 제외</text>
-<text x="410" y="125.8" font-size="15" fill="#292929" text-anchor="middle">2건 빼기</text>
-<path d="M490 110 L516 110" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<rect x="520" y="70" width="180" height="80" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="610" y="104.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">회수 대상</text>
-<text x="610" y="125.8" font-size="15" fill="#292929" text-anchor="middle">8건</text>
-<rect x="20" y="180" width="330" height="80" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="185" y="214.8" font-size="15" fill="#292929" text-anchor="middle">후보 = 규칙(퇴사 · 만료)에 걸리거나</text>
-<text x="185" y="235.8" font-size="15" fill="#292929" text-anchor="middle">90일 넘게 안 쓴 권한</text>
-<rect x="370" y="180" width="330" height="80" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="535" y="214.8" font-size="15" fill="#292929" text-anchor="middle">dami 는 제외 리스트에 있지만</text>
-<text x="535" y="235.8" font-size="15" fill="#292929" text-anchor="middle">퇴사한 계정이라 제외 안 함</text>
-<rect x="20" y="290" width="680" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5" stroke-dasharray="5 4"/>
-<text x="360" y="325.2" font-size="15" fill="#292929" text-anchor="middle">Unit 1: revoke_access · evaluate_access → 실습 4-2의 회수 확인에 다시 씀</text>
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">회수 대상 8건이 나오기까지</text>
+<rect x="20" y="56" width="150" height="80" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="95.0" y="90.1" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">현황</text>
+<text x="95.0" y="113.1" font-size="15" fill="#666660" text-anchor="middle">14건</text>
+<polyline points="172,96 192,96" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="194" y="56" width="160" height="80" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="274.0" y="90.1" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">후보</text>
+<text x="274.0" y="113.1" font-size="16" fill="#292929" text-anchor="middle">10건</text>
+<polyline points="356,96 376,96" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="378" y="56" width="150" height="80" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="453.0" y="90.1" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">회수 제외</text>
+<text x="453.0" y="113.1" font-size="16" fill="#292929" text-anchor="middle">2건 뺌</text>
+<polyline points="530,96 550,96" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="552" y="56" width="148" height="80" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="626.0" y="90.1" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">회수 대상</text>
+<text x="626.0" y="113.1" font-size="16" fill="#292929" text-anchor="middle">8건</text>
+<text x="194" y="162" font-size="14" fill="#666660">규칙(퇴사 · 만료)과</text>
+<text x="194" y="184" font-size="14" fill="#666660">90일 미사용으로 찾음</text>
+<text x="552" y="162" font-size="14" fill="#666660">load_to_revoke 결과</text>
+<rect x="20" y="210" width="680" height="100" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="243.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">회수 제외 리스트는 3건이지만 실제 제외는 2건</text>
+<text x="360.0" y="265.2" font-size="14" fill="#666660" text-anchor="middle">gaeun 의 ACCOUNT:CHANGE · seoyeon 의 SALES:CHANGE 는 뺌</text>
+<text x="360.0" y="287.2" font-size="14" fill="#666660" text-anchor="middle">dami 는 퇴사한 계정이라 리스트에 있어도 빼지 않음</text>
 </g>
 </svg>

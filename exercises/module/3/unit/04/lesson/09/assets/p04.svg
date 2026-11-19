@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 374" role="img">
+<title>실습 4-2 보고서에는 실행 · 대기 건수, 바뀐 판정, 이력으로 감사에 답할 수 있는지 쓴다</title>
+<desc>실습 4-2 보고서의 (가) (나) (다) 세 칸에 채울 내용을 체크리스트로 보여 준다. 이력의 키는 시각, 사용자, 권한, 방법, 승인 상태, 결과다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 4-2 보고서 · 채울 칸</text>
+<rect x="20" y="50" width="96" height="130" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="68" y="121" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">(가)</text>
+<rect x="126" y="50" width="574" height="130" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="140" y="74" font-size="15" fill="#292929" font-weight="700">실행한 출력</text>
+<rect x="142" y="85" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="164" y="97" font-size="15" fill="#292929">출력 전체(코드 상자에 붙여 넣기)</text>
+<rect x="142" y="109" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="164" y="121" font-size="15" fill="#292929">결과가 「실행」 · 「대기」인 건수</text>
+<rect x="142" y="133" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="164" y="145" font-size="15" fill="#292929">회수 전후 판정이 바뀐 권한</text>
+<rect x="142" y="157" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="164" y="169" font-size="15" fill="#292929">저장한 이력 건수</text>
+<rect x="20" y="190" width="96" height="82" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="68" y="228" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">(나)</text>
+<text x="68" y="249" font-size="14" fill="#e0442e" text-anchor="middle" font-weight="700">핵심 질문</text>
+<rect x="126" y="190" width="574" height="82" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="140" y="214" font-size="15" fill="#292929" font-weight="700">회수를 실행한 7건 중 판정이 그대로인 권한</text>
+<rect x="142" y="225" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="164" y="237" font-size="15" fill="#292929">판정이 그대로인 이유</text>
+<rect x="142" y="249" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="164" y="261" font-size="15" fill="#292929">그래도 회수하고 이력을 남기는 이유</text>
+<rect x="20" y="282" width="96" height="82" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="68" y="320" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">(다)</text>
+<text x="68" y="341" font-size="14" fill="#e0442e" text-anchor="middle" font-weight="700">핵심 질문</text>
+<rect x="126" y="282" width="574" height="82" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="140" y="306" font-size="15" fill="#292929" font-weight="700">반년 뒤 감사: 「이 권한이 왜 없어졌나요?」</text>
+<rect x="142" y="317" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="164" y="329" font-size="15" fill="#292929">이 이력만으로 답할 수 있는지</text>
+<rect x="142" y="341" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="164" y="353" font-size="15" fill="#292929">부족한 정보와 추가할 키</text>
+</g>
+</svg>

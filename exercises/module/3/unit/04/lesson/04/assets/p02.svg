@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
+<title>Unit 3 파일이 있으면 점검을 다시 하고, 없으면 적어 둔 8건을 써서 같은 회수 대상을 얻습니다</title>
+<desc>시작하기의 확인 결과가 14 7 3 이면 Unit 3 파일로 현황, 규칙, 미사용, 리포트, 회수 제외를 거쳐 8건을 만듭니다. 아니면 8건이 코드에 적힌 판을 씁니다. 어느 쪽이든 load_to_revoke 는 같은 8건을 돌려줍니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">revoke_input.py — 두 코드 중 하나만 붙여 넣기</text>
+<rect x="20" y="50" width="680" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="78.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">시작하기의 Unit 3 확인 결과가 14 7 3 인가?</text>
+<polyline points="190,98 190,116" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="530,98 530,116" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="20" y="118" width="340" height="150" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="190.0" y="154.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">예 · Unit 3 파일이 있을 때</text>
+<text x="190.0" y="176.2" font-size="15" fill="#292929" text-anchor="middle">현황 14건 (build_access_list)</text>
+<text x="190.0" y="198.2" font-size="15" fill="#292929" text-anchor="middle">규칙 · 90일 미사용 후보</text>
+<text x="190.0" y="220.2" font-size="15" fill="#292929" text-anchor="middle">리포트 후보 10건</text>
+<text x="190.0" y="242.2" font-size="15" fill="#292929" text-anchor="middle">회수 제외 2건을 뺌</text>
+<rect x="380" y="118" width="320" height="150" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="540.0" y="165.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">아니오 · 없을 때</text>
+<text x="540.0" y="187.2" font-size="15" fill="#292929" text-anchor="middle">회수 대상 8건을</text>
+<text x="540.0" y="209.2" font-size="15" fill="#292929" text-anchor="middle">코드 안에 그대로 적음</text>
+<text x="540.0" y="231.2" font-size="15" fill="#292929" text-anchor="middle">Unit 3 파일이 없어도 됨</text>
+<polyline points="190,270 300,292" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="540,270 420,292" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="200" y="294" width="320" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360.0" y="325.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">load_to_revoke() → 같은 8건</text>
+</g>
+</svg>

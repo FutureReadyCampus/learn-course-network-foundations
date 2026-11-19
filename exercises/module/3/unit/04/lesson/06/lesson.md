@@ -13,6 +13,8 @@ source:
 
 ## 목표: 조건기반 판정
 
+> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 4-1 · 4-2와 글쓰기를 먼저 마칩니다. 이 도전은 실습 4-1 · 4-2의 파일을 쓰지 않으므로 도전 4-1을 건너뛰고 바로 해도 됩니다.
+
 > **이번 실습에 들어온 일**
 >
 > A사 관제 담당이 보낸 메시지:
@@ -93,7 +95,7 @@ False
 
 - **지금은**: 권한이 있는 사용자는 새벽이든 외부든 모두 허용됩니다. 탈취된 계정이 한밤중에 외부에서 들어와도 판정 함수로는 막을 수 없습니다.
 - **그래서 만드는 것**: `evaluate_conditional` 입니다.
-  - 먼저 Unit 1의 `evaluate_access` 로 기본 판정을 하고, 허용이면 그 권한의 조건(업무 시간, 접속 위치)에 어긋나는지 확인합니다.
+  - 먼저 실습 1-3의 `evaluate_access` 로 기본 판정을 하고, 허용이면 그 권한의 조건(업무 시간, 접속 위치)에 어긋나는지 확인합니다.
   - 어긋나면 이유와 함께 거부합니다.
 - **실행하면**: 단계 1은 요청 여덟 건의 판정, 단계 2는 조건 파일에 적힌 조건을 출력합니다.
 - **현업에서는**: 접근 제어 도구도 신원만 보지 않고 접속 시간, 위치, 기기 같은 조건을 함께 확인합니다.
@@ -105,19 +107,18 @@ False
 
 **`config/conditions.json`** — 그대로 붙여 넣습니다. 권한별 조건입니다. `access_control` 안의 `config` 폴더에 만듭니다.
 
-```json
-[
+<pre class="copyable"><code>[
   {"permission": "SALES:CHANGE", "hours": [9, 18], "networks": ["office", "vpn"]},
   {"permission": "SETTLE:QUERY", "hours": [8, 20], "networks": ["office", "vpn"]},
   {"permission": "ACCOUNT:CHANGE", "hours": [9, 18], "networks": ["office"]}
 ]
-```
+</code></pre>
 
 **`conditional.py`**
 
 ```python
-from config_loader import load_json                              # Unit 1에서 만든 안전한 읽기 함수를 불러온다
-from policy import evaluate_access                               # Unit 1에서 만든 기본 판정 함수를 불러온다
+from config_loader import load_json                              # Unit 1 제공 파일의 안전한 읽기 함수를 불러온다
+from policy import evaluate_access                               # 실습 1-3의 기본 판정 함수를 불러온다
 
 
 def load_rules(path):                                            # 조건 파일 경로를 받는 함수
@@ -152,7 +153,7 @@ def evaluate_conditional(user, resource, action, network, now, rules):   # 사�
     기본 판정이 허용이어도 업무 시간 · 접속 위치 조건에 어긋나면 거부한다.
     새벽 · 외부 접속을 막을 때 쓴다.
     """
-    is_allowed, reason = evaluate_access(user, resource, action, now)    # 먼저 Unit 1의 기본 판정을 한다 (미리 채움)
+    is_allowed, reason = evaluate_access(user, resource, action, now)    # 먼저 실습 1-3의 기본 판정을 한다 (미리 채움)
     if not is_allowed:                                                   # 기본 판정이 거부이면
         return False, reason                                     # 그 이유로 바로 거부한다
     permission = f"{resource}:{action}"                          # "자원:행위" 모양 문자열로 합친다
