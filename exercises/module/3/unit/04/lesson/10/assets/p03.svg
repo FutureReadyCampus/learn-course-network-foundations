@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>막히면 고른 글감에 맞는 코드 한 줄이나 출력 두세 줄을 붙이고 그 뜻을 쓴다</title>
+<desc>글감 1은 needs_approval 의 return 줄과 승인 대기 줄을, 글감 2는 바뀜 줄과 그대로 줄을, 글감 3은 revocation_log.json 의 이력 한 건을 붙입니다. 붙인 줄 아래에 무엇을 보았는지 한 문장으로 쓰고, AI 도우미 프롬프트는 Unit 1 시작하기 레슨에 있습니다.</desc>
+<defs><marker id="a-p03-u4w" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="30" y="30" font-size="16" font-weight="700" fill="#292929">고른 글감</text>
+<text x="250" y="30" font-size="16" font-weight="700" fill="#292929">글에 붙일 것</text>
+<rect x="30" y="44" width="180" height="64" rx="6" fill="#f8e8e3" stroke="#e0442e"/>
+<text x="44" y="70" font-size="15" font-weight="700" fill="#292929">1. 승인</text>
+<text x="44" y="94" font-size="14" fill="#292929">실습 4-1</text>
+<line x1="214" y1="76" x2="244" y2="76" stroke="#666660" stroke-width="2" marker-end="url(#a-p03-u4w)"/>
+<rect x="250" y="44" width="440" height="64" rx="6" fill="#f1f1ef" stroke="#dededb"/>
+<text x="264" y="70" font-size="14" fill="#292929">return is_sensitive or is_big_impact</text>
+<text x="264" y="94" font-size="14" fill="#292929">+ 「승인 대기」 줄: junho SALES:CHANGE</text>
+<rect x="30" y="122" width="180" height="64" rx="6" fill="#f8e8e3" stroke="#e0442e"/>
+<text x="44" y="148" font-size="15" font-weight="700" fill="#292929">2. 그대로인 권한</text>
+<text x="44" y="172" font-size="14" fill="#292929">실습 4-2 단계 2</text>
+<line x1="214" y1="154" x2="244" y2="154" stroke="#666660" stroke-width="2" marker-end="url(#a-p03-u4w)"/>
+<rect x="250" y="122" width="440" height="64" rx="6" fill="#f1f1ef" stroke="#dededb"/>
+<text x="264" y="148" font-size="14" fill="#292929">「바뀜」 줄: junho SALES:QUERY 허용 -&gt; 거부</text>
+<text x="264" y="172" font-size="14" fill="#292929">+ 「그대로」 줄 하나를 나란히</text>
+<rect x="30" y="200" width="180" height="64" rx="6" fill="#f8e8e3" stroke="#e0442e"/>
+<text x="44" y="226" font-size="15" font-weight="700" fill="#292929">3. 회수 이력</text>
+<text x="44" y="250" font-size="14" fill="#292929">revocation_log.json</text>
+<line x1="214" y1="232" x2="244" y2="232" stroke="#666660" stroke-width="2" marker-end="url(#a-p03-u4w)"/>
+<rect x="250" y="200" width="440" height="64" rx="6" fill="#f1f1ef" stroke="#dededb"/>
+<text x="264" y="226" font-size="14" fill="#292929">이력 한 건의 여섯 키 + 키마다 답하는 질문</text>
+<text x="264" y="250" font-size="14" fill="#292929">답 못 하는 질문에는 필요한 키 이름 붙이기</text>
+<rect x="30" y="284" width="660" height="48" rx="6" fill="#e6eefb" stroke="#2f6fd0"/>
+<text x="44" y="314" font-size="15" fill="#292929">붙인 줄 아래에 「이 줄에서 무엇을 보았는지」 한 문장 쓰기</text>
+<rect x="30" y="348" width="400" height="56" rx="6" fill="#ffffff" stroke="#dededb"/>
+<text x="44" y="372" font-size="14" fill="#292929">그래도 막히면 AI 도우미 프롬프트 세 가지</text>
+<text x="44" y="394" font-size="14" fill="#666660">Unit 1 시작하기 「쓰기 질문과 AI 도우미」</text>
+<rect x="446" y="348" width="244" height="56" rx="6" fill="#f8e8e3" stroke="#e0442e"/>
+<text x="460" y="372" font-size="14" font-weight="700" fill="#e0442e">붙여 넣기 전에</text>
+<text x="460" y="394" font-size="14" fill="#292929">비밀키 · 개인정보 빼기</text>
+</g>
+</svg>

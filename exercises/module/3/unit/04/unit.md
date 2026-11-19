@@ -11,6 +11,7 @@ lessons:
 - path: lesson/07/lesson.md
 - path: lesson/08/lesson.md
 - path: lesson/09/lesson.md
+- path: lesson/10/lesson.md
 ---
 
 # 권한 거두기

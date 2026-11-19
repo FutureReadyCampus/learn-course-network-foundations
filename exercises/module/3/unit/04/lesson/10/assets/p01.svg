@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>40분을 고르기 5분, 쓰기 25분, 점검·올리기 10분으로 나누고 글감 하나를 고른다</title>
+<desc>글쓰기 40분의 시간 배분 막대입니다. 아래에는 실습 4-1 · 4-2 글감 세 가지와, 도전 4-2 · 4-3을 했을 때 고를 수 있는 선택 글감 두 가지가 있습니다.</desc>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="40" y="34" font-size="18" font-weight="700" fill="#292929">Unit 4 글쓰기 40분</text>
+<rect x="40" y="52" width="80" height="56" rx="6" fill="#e6eefb" stroke="#2f6fd0"/>
+<text x="80" y="77" font-size="15" font-weight="700" fill="#292929" text-anchor="middle">고르기</text>
+<text x="80" y="98" font-size="14" fill="#292929" text-anchor="middle">5분</text>
+<rect x="120" y="52" width="400" height="56" rx="6" fill="#f8e8e3" stroke="#e0442e"/>
+<text x="320" y="77" font-size="15" font-weight="700" fill="#292929" text-anchor="middle">쓰기</text>
+<text x="320" y="98" font-size="14" fill="#292929" text-anchor="middle">25분 · 글 틀에 내 답을 풀어 쓰기</text>
+<rect x="520" y="52" width="160" height="56" rx="6" fill="#e4f3ea" stroke="#1f7a4a"/>
+<text x="600" y="77" font-size="15" font-weight="700" fill="#292929" text-anchor="middle">점검 · 올리기</text>
+<text x="600" y="98" font-size="14" fill="#292929" text-anchor="middle">10분</text>
+<text x="40" y="146" font-size="16" font-weight="700" fill="#292929">글감 하나 고르기 (실습 4-1 · 4-2)</text>
+<rect x="40" y="160" width="200" height="104" rx="8" fill="#ffffff" stroke="#dededb"/>
+<text x="56" y="186" font-size="15" font-weight="700" fill="#e0442e">1. 승인</text>
+<text x="56" y="210" font-size="14" fill="#292929">승인 없이 바로 회수하면</text>
+<text x="56" y="230" font-size="14" fill="#292929">무엇이 위험할까</text>
+<text x="56" y="252" font-size="14" fill="#666660">revoke_approve.py</text>
+<rect x="260" y="160" width="200" height="104" rx="8" fill="#ffffff" stroke="#dededb"/>
+<text x="276" y="186" font-size="15" font-weight="700" fill="#e0442e">2. 그대로인 권한</text>
+<text x="276" y="210" font-size="14" fill="#292929">이미 막힌 권한도</text>
+<text x="276" y="230" font-size="14" fill="#292929">정리하는 이유</text>
+<text x="276" y="252" font-size="14" fill="#666660">revoke.py</text>
+<rect x="480" y="160" width="200" height="104" rx="8" fill="#ffffff" stroke="#dededb"/>
+<text x="496" y="186" font-size="15" font-weight="700" fill="#e0442e">3. 회수 이력</text>
+<text x="496" y="210" font-size="14" fill="#292929">「왜 없어졌나요?」에</text>
+<text x="496" y="230" font-size="14" fill="#292929">답하려면 더 필요한 것</text>
+<text x="496" y="252" font-size="14" fill="#666660">revocation_log.json</text>
+<rect x="40" y="282" width="640" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-dasharray="6 4"/>
+<text x="56" y="307" font-size="15" font-weight="700" fill="#9a6200">선택 글감 · 도전 4-2 · 4-3을 했다면</text>
+<text x="56" y="331" font-size="14" fill="#292929">거부 이유를 하나만 알려 줄까 모두 알려 줄까 · 새벽 2시 외부 요청을 거부하는 이유</text>
+<text x="40" y="378" font-size="15" fill="#666660">세 문장만 써도, 막힌 이야기를 써도 한 편의 글입니다.</text>
+</g>
+</svg>
