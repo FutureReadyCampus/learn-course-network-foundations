@@ -24,10 +24,10 @@ source:
 ## 왜 전후 판정과 이력이 필요한가
 
 1. 승인 상태까지 정해진 계획을 이제 실행합니다. 승인 상태가 「승인 불필요」 또는 「승인됨」인 계획만 실행하고, 「승인 대기」인 계획은 실행하지 않습니다.
-2. 실행한 뒤에는 **같은 사용자 · 권한을 다시 판정**합니다. Unit 1의 `evaluate_access` 가 회수 전과 후에 같은 요청을 어떻게 판정하는지 비교하면 회수가 정말 효과가 있었는지 알 수 있습니다.
-3. 실행한 내용은 **회수 이력**(`revocation_log.json`)으로 남깁니다. Unit 3의 「사용 이력」(권한을 마지막으로 쓴 시각의 기록)과 다른 것입니다. 회수 이력은 이번 Unit에서 무엇을 회수했는지의 기록입니다.
+2. 실행한 뒤에는 **같은 사용자 · 권한을 다시 판정**합니다. 실습 1-3의 `evaluate_access` 가 회수 전과 후에 같은 요청을 어떻게 판정하는지 비교하면 회수가 정말 효과가 있었는지 알 수 있습니다.
+3. 실행한 내용은 **회수 이력**(`revocation_log.json`)으로 남깁니다. Unit 3 실습 3-2의 「사용 이력」(권한을 마지막으로 쓴 시각의 기록)과 다른 것입니다. 회수 이력은 오늘 무엇을 회수했는지의 기록입니다.
 
-## 3.1 실행 방법과 이력
+## 2.1 실행 방법과 이력
 
 | 방법 | 실제로 하는 일 |
 |---|---|
@@ -42,7 +42,7 @@ source:
   - `apply_plan`(4 ~ 8번): 회수 방법별로 실제로 지우는 일(세 곳)입니다.
   - `execute_revocation`(9 ~ 13번): 계획마다 「대기」인지 「실행」인지 정합니다.
 - **미리 채운 함수**
-  - `save_log`: 이력을 JSON 파일로 저장합니다(판단이 없는 저장이라 미리 채움, Unit 2의 `save_requests` 와 같은 방법입니다).
+  - `save_log`: 이력을 JSON 파일로 저장합니다(판단이 없는 저장이라 미리 채움).
 - 회수한 뒤에 다시 판정하면 결과가 달라질 수 있습니다.
   - `execute_revocation` 이 바꾼 `USERS` · `ROLES` · `EXCEPTIONS` 를 `evaluate_access` 도 같은 것으로 읽기 때문입니다.
   - `evaluate_access(사용자, 자원, 행위, 시각)` 는 `(허용 여부, 이유)` 두 값을 리턴합니다(Unit 1).
@@ -149,20 +149,20 @@ def execute_revocation(plans, users, roles, exceptions, now):    # 계획 · 사
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
-from rbac import USERS, ROLES                                    # Unit 1에서 만든 사용자 · 역할 딕셔너리를 불러온다
-from exception_policy import EXCEPTIONS, TIME_FORMAT             # Unit 1에서 만든 예외 리스트와 시각 형식을 불러온다
-from policy import evaluate_access                               # Unit 1에서 만든 최종 판정 함수를 불러온다
-from config_loader import load_json                              # Unit 1에서 만든 안전한 읽기 함수를 불러온다
-from revoke_input import load_to_revoke                          # Unit 3의 점검 결과(회수 대상)를 만드는 함수를 불러온다
-from revoke_plan import plan_revocation                          # 도전 4-1에서 만든 회수 계획 함수를 불러온다
+from rbac import USERS, ROLES                                    # 실습 1-2의 사용자 · 역할 딕셔너리를 불러온다
+from exception_policy import EXCEPTIONS, TIME_FORMAT             # Unit 1 제공 파일의 예외 리스트와 시각 형식을 불러온다
+from policy import evaluate_access                               # 실습 1-3의 최종 판정 함수를 불러온다
+from config_loader import load_json                              # Unit 1 제공 파일의 안전한 읽기 함수를 불러온다
+from revoke_input import load_to_revoke                          # 제공 파일의 회수 대상 함수를 불러온다
+from revoke_plan import plan_revocation                          # 제공 파일의 회수 계획 함수를 불러온다
 from revoke_approve import load_sensitive, mark_approvals        # 실습 4-1에서 만든 승인 함수를 불러온다
 from revoke import execute_revocation, save_log                  # 방금 만든 회수 실행 함수와 이력 저장 함수를 불러온다
 
 NOW_TEXT = "2026-10-30 10:00"                                    # 이번 실습의 지금 시각 문자열(고정)
 NOW = datetime.strptime(NOW_TEXT, TIME_FORMAT)                   # 같은 시각을 시각으로 바꾼다. 판정 함수가 쓴다
-DECISIONS = {"dami:SALES:QUERY": "승인", "dami:SALES:CHANGE": "승인"}  # 보안 책임자의 결정(실습 4-1와 같다)
+DECISIONS = {"dami:SALES:QUERY": "승인", "dami:SALES:CHANGE": "승인"}  # 보안 책임자의 결정(실습 4-1과 같다)
 
-to_revoke = load_to_revoke()                                     # Unit 3에서 점검한 회수 대상을 만든다
+to_revoke = load_to_revoke()                                     # Unit 3 점검 결과인 회수 대상 8건을 만든다
 plans = plan_revocation(to_revoke, USERS, ROLES)                 # 회수 계획을 세운다
 sensitive = load_sensitive("config/sensitive.json")              # 민감한 권한 리스트를 읽는다
 plans = mark_approvals(plans, sensitive, DECISIONS)              # 계획마다 승인 상태를 적는다
@@ -219,7 +219,7 @@ print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력
 
 1. **[VS Code]** 파일 `revoke.py` · `exercise4-2_run.py` 를 만들어 위 코드를 붙여 넣습니다. 
    - VS Code: `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력합니다.
-2. **[VS Code]** `revoke.py` 에서 `remove_exception` · `apply_plan` · `execute_revocation` 의 직접 쓰는 곳 다섯 군데를 씁니다. 3.1 의 표와 그림을 보고 씁니다.
+2. **[VS Code]** `revoke.py` 에서 `remove_exception` · `apply_plan` · `execute_revocation` 의 직접 쓰는 곳 다섯 군데를 씁니다. 2.1 의 표와 그림을 보고 씁니다.
 3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
@@ -246,19 +246,61 @@ print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력
 
 ---
 
-## Unit 4 마무리 — 보고서 도전 4-1 · 실습 4-1 · 실습 4-2 칸 확인
+## 이번 Unit 마무리 · 깃허브에 올리기
 
-Unit 4 의 도전 4-1 · 실습 4-1 · 실습 4-2 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. `access_control` 폴더에 이번 Unit에서 만든 파일이 있는지 확인합니다.
+하루를 닫는 마무리입니다(15분). 핵심 실습 두 개를 끝낸 뒤 합니다.
+
+**1. 오늘 한 일 확인**
+
+1. 민감한 권한이거나 영향이 2건 이상인 계획을 가려 승인 상태를 적었다 (실습 4-1)
+2. 승인 대기가 아닌 계획만 실행하고, 회수 전후의 판정을 비교했다 (실습 4-2)
+3. 회수 이력 `revocation_log.json` 을 저장하고 다시 읽어 건수를 확인했다 (실습 4-2)
+4. 보고서 `report_u4.md` 의 실습 4-1 · 4-2 칸에 `답:` 뒤가 비어 있는 질문이 없다
+
+**2. 파일 확인** — **[터미널]** `access_control` 폴더에서 확인합니다.
 
 ```bash
 ls
 ls config
 ```
 
-- `revoke_input.py` · `revoke_plan.py` · `revoke_approve.py` · `revoke.py` · `challenge4-1_run.py` · `exercise4-1_run.py` · `exercise4-2_run.py` · `revocation_log.json` 이 보여야 합니다.
-  - `config` 안에는 `sensitive.json` 이 새로 보여야 합니다.
+- `revoke_input.py` · `revoke_plan.py` · `revoke_approve.py` · `revoke.py` · `exercise4-1_run.py` · `exercise4-2_run.py` · `revocation_log.json` · `report_u4.md` 가 보여야 합니다.
+- `config` 안에는 `sensitive.json` 이 새로 보여야 합니다.
 
-Unit 4에서는 회수한 뒤에도 조건을 따져 접근을 판단하는 **조건기반 정책**과 판정 함수를 서버로 여는 실습을 합니다. 올리기(git)는 Unit 4의 도전 4-3 마지막에 한 번에 합니다.
+**3. 깃허브에 올리기**
+
+1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
+   ```bash
+   cd ..
+   pwd
+   ```
+   - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
+   - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
+2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
+   ```bash
+   git status
+   ```
+   - 명령 풀이: `git status` 올릴 파일의 상태를 봄
+   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 도 같은 방법으로 합니다.
+   - `access_control/__pycache__/` 는 파이썬이 실행하면서 자동으로 만든 임시 폴더입니다. 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장합니다.
+   - `access_control/revocation_log.json` 은 실습 4-2에서 프로그램이 만든 회수 이력입니다. 이것도 올라갑니다.
+3. **[보고서]** `report_u4.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
+4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
+   ```bash
+   git add .
+   git commit -m "Add access control unit 4 revocation approval, execution and log"
+   git push
+   ```
+   - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
+   - `git push` 가 거절(`rejected`)되면 `git pull` 로 받아 온 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다.
+5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `access_control` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다.
+
+- 시간이 남아 도전을 했다면 도전 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
+
+**4. 이어지는 곳**
+
+1. 다음 Unit 5(결과 보고하기)에서는 점검 체크리스트로 어긋난 곳을 찾고, 상황별 원인과 해결법을 정리합니다.
+2. 오늘 만든 `revoke_approve.py` · `revoke.py` 와 `revocation_log.json` 은 Unit 5 실습 5-2(상황별 원인과 해결법)에서 다시 봅니다.
 
 ---
 

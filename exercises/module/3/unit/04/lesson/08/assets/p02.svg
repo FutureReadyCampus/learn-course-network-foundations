@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
 <title>실습 4-1 정답: 승인 불필요 5건, 승인됨 2건, 승인 대기 1건</title>
 <desc>계획 8건 가운데 승인이 필요한 3건 중 dami 의 역할 해제 두 건은 승인됨, junho 의 SALES:CHANGE 예외 2번은 승인 대기입니다. elif decision == "승인": 줄을 빼면 승인 대기가 3건이 됩니다.</desc>
-<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">실습 4-1 정답 — 승인 상태 5 · 2 · 1</text>
 <rect x="20" y="90" width="140" height="90" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="90" y="129.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">계획</text>
 <text x="90" y="150.8" font-size="15" fill="#292929" text-anchor="middle">8건</text>
-<path d="M160 120 L218 78" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<path d="M160 135 L218 148" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<path d="M160 150 L218 218" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<path d="M160 120 L218 78" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<path d="M160 135 L218 148" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<path d="M160 150 L218 218" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
 <rect x="220" y="50" width="480" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="460" y="83.2" font-size="15" fill="#292929" text-anchor="middle">승인 불필요 5건 · 민감하지 않고 영향 1</text>
 <rect x="220" y="120" width="480" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>

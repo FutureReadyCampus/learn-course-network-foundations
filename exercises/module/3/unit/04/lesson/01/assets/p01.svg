@@ -1,35 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
-<title>Unit 4은 회수 대상 8건을 계획, 승인, 실행 순서로 회수합니다</title>
-<desc>도전 4-1은 회수 계획, 실습 4-1는 승인 상태, 실습 4-2은 실행과 이력입니다. 회수는 파일이 아니라 메모리 안의 USERS · ROLES · EXCEPTIONS 를 바꾸고, 파일로 남기는 것은 회수 이력뿐입니다.</desc>
-<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>오늘은 회수 대상 8건을 계획, 승인, 실행 순서로 회수하고 도전은 선택입니다</title>
+<desc>제공 파일 revoke_plan.py 가 계획을 세우고, 실습 4-1은 승인 상태를 적고, 실습 4-2는 실행하고 이력을 남깁니다. 3시간은 시작 15분, 실습 약 110분, 글쓰기 40분, 마무리 15분이고 도전 4-1~4-3은 시간이 남을 때 합니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">Unit 4 — 회수 대상 8건을 계획 → 승인 → 실행으로</text>
-<rect x="20" y="70" width="130" height="90" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="85" y="99.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">회수 대상</text>
-<text x="85" y="120.2" font-size="15" fill="#292929" text-anchor="middle">8건</text>
-<text x="85" y="141.2" font-size="15" fill="#292929" text-anchor="middle">(Unit 3)</text>
-<path d="M150 115 L186 115" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<rect x="190" y="70" width="150" height="90" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="265" y="99.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">도전 4-1</text>
-<text x="265" y="120.2" font-size="15" fill="#292929" text-anchor="middle">회수 계획</text>
-<text x="265" y="141.2" font-size="15" fill="#292929" text-anchor="middle">아직 안 지움</text>
-<path d="M340 115 L376 115" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<rect x="380" y="70" width="150" height="90" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="455" y="99.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실습 4-1</text>
-<text x="455" y="120.2" font-size="15" fill="#292929" text-anchor="middle">승인 상태</text>
-<text x="455" y="141.2" font-size="15" fill="#292929" text-anchor="middle">민감한 권한</text>
-<path d="M530 115 L566 115" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<rect x="570" y="70" width="130" height="90" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="635" y="109.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실습 4-2</text>
-<text x="635" y="130.8" font-size="15" fill="#292929" text-anchor="middle">실행 · 이력</text>
-<rect x="20" y="200" width="420" height="110" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="32" y="239.2" font-size="15" fill="#292929" text-anchor="start">바꾸는 것: 메모리 안의 데이터</text>
-<text x="32" y="260.2" font-size="15" fill="#292929" text-anchor="start">USERS · ROLES · EXCEPTIONS</text>
-<text x="32" y="281.2" font-size="15" fill="#292929" text-anchor="start">프로그램을 끄면 처음 상태로</text>
-<path d="M635 160 L635 198" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<rect x="470" y="200" width="230" height="110" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="585" y="239.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">파일로 남기는 것</text>
-<text x="585" y="260.2" font-size="15" fill="#292929" text-anchor="middle">회수 이력뿐</text>
-<text x="585" y="281.2" font-size="15" fill="#292929" text-anchor="middle">revocation_log.json</text>
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">오늘의 흐름 — 회수 대상 8건을 계획 → 승인 → 실행</text>
+<rect x="20" y="50" width="210" height="92" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="125.0" y="79.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">계획</text>
+<text x="125.0" y="101.2" font-size="14" fill="#666660" text-anchor="middle">revoke_plan.py</text>
+<text x="125.0" y="123.2" font-size="14" fill="#666660" text-anchor="middle">제공 파일 · 그대로</text>
+<polyline points="232,96 252,96" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="254" y="50" width="210" height="92" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="359.0" y="79.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">승인 상태 적기</text>
+<text x="359.0" y="101.2" font-size="15" fill="#292929" text-anchor="middle">revoke_approve.py</text>
+<text x="359.0" y="123.2" font-size="15" fill="#292929" text-anchor="middle">실습 4-1</text>
+<polyline points="466,96 486,96" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="488" y="50" width="212" height="92" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="594.0" y="79.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실행 · 이력</text>
+<text x="594.0" y="101.2" font-size="15" fill="#292929" text-anchor="middle">revoke.py</text>
+<text x="594.0" y="123.2" font-size="15" fill="#292929" text-anchor="middle">실습 4-2</text>
+<text x="20" y="170" font-size="14" fill="#666660">회수는 메모리 안의 USERS · ROLES · EXCEPTIONS 만 바꾸고, 파일로 남기는 것은 회수 이력뿐입니다</text>
+<text x="20" y="210" font-size="17" fill="#292929" font-weight="700">오늘의 3시간</text>
+<rect x="20" y="222" width="90" height="58" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="65.0" y="245.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">시작</text>
+<text x="65.0" y="267.2" font-size="14" fill="#666660" text-anchor="middle">15분</text>
+<rect x="116" y="222" width="360" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="296.0" y="245.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">핵심 실습 4-1 · 4-2</text>
+<text x="296.0" y="267.2" font-size="15" fill="#292929" text-anchor="middle">약 110분</text>
+<rect x="482" y="222" width="120" height="58" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="542.0" y="245.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">글쓰기</text>
+<text x="542.0" y="267.2" font-size="15" fill="#292929" text-anchor="middle">40분</text>
+<rect x="608" y="222" width="92" height="58" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="654.0" y="245.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">마무리</text>
+<text x="654.0" y="267.2" font-size="14" fill="#666660" text-anchor="middle">15분</text>
+<text x="20" y="318" font-size="17" fill="#292929" font-weight="700">도전(선택) — 시간이 남을 때</text>
+<rect x="20" y="330" width="220" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="130.0" y="353.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">도전 4-1</text>
+<text x="130.0" y="375.2" font-size="14" fill="#666660" text-anchor="middle">revoke_plan.py 직접 쓰기</text>
+<rect x="250" y="330" width="220" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="360.0" y="353.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">도전 4-2</text>
+<text x="360.0" y="375.2" font-size="14" fill="#666660" text-anchor="middle">시간 · 위치 조건 판정</text>
+<rect x="480" y="330" width="220" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="590.0" y="353.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">도전 4-3</text>
+<text x="590.0" y="375.2" font-size="14" fill="#666660" text-anchor="middle">판정 서버와 요청 로그</text>
 </g>
 </svg>

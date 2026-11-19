@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
 <title>도전 4-2 정답: 8건 중 허용 3건, 조건 거부 4건, 기본 판정 거부 1건</title>
 <desc>1·2·6번은 허용, 3·5번은 업무 시간 밖, 4·7번은 허용되지 않은 접속 위치로 거부된다. 8번 dami 는 조건을 보기 전에 퇴사한 계정으로 거부된다. 18시 정각인 3번이 허용으로 나오면 hour &lt;= end 로 쓴 실수다.</desc>
-<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 4-2 정답 · 요청 8건의 판정</text>
 <rect x="20" y="48" width="400" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
