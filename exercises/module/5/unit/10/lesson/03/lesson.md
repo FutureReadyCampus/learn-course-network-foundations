@@ -20,8 +20,6 @@ source:
 > - **부탁**: Module 4 탐지 결과를 엔진이 읽는 알림으로 바꾸되, 바꾸기 전에 모양을 점검해 문제가 있는 기록은 이유와 함께 따로 모아 주세요. 엔진을 실행한 뒤에는 처리 결과별 알림 수 · 티켓 수 · 실제로 실행한 조치를 운영 요약으로 정리해 주세요.
 > - **바뀌는 점**: 5건이 알림 `INC-501` ~ `INC-505` 로 바뀌어 모두 엔진에 들어가고(거절 <mark style="background:#bde3ff">0건</mark>), <mark style="background:#bde3ff">자동 실행 2건</mark>(`dami` 잠금 · `198.51.100.90` 차단)과 <mark style="background:#bde3ff">조치 없음 3건</mark>으로 처리됩니다. 티켓 <mark style="background:#bde3ff">5장</mark>이 만들어지고, 운영 요약은 `engine_summary.json` 에 저장됩니다. 상황과 숫자는 설명을 위한 예시입니다.
 
-> **읽을거리 — 문제가 아닙니다.** 읽고 이해만 합니다.
-
 ## 2.1 입력 검증과 운영 요약
 
 | Module 4 `unit07_risk_scores.json` 의 키 | 엔진이 읽는 알림의 키 | 하는 일 |
@@ -46,8 +44,6 @@ engine_input.py   find_schema_problem  : 필수 키가 없으면 (1번) · 모�
                   summarize            : 처리 결과별 알림 수를 세고 (7번) 실행한 조치만 (8번) 모은다
 실행 파일         exercise10-2_run.py     : 엔진을 실행한다 (9번)
 ```
-
-> **여기부터 문제입니다.**
 
 ## 실습 10-2 · 탐지 결과 연결과 운영 요약
 
