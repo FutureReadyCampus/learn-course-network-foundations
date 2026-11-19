@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>Unit 1에서 확인할 다섯 가지와 다음 Unit 2의 요청·승인·부여 흐름</title>
+<desc>도전 1-4, 도전 1-5, 마무리에서 해낸 일을 체크리스트로 모았습니다. 다음 Unit 2에서는 요청, 승인·반려, 부여 흐름을 만들고 evaluate_access 를 이중 검증에 씁니다.</desc>
+<defs><marker id="a-p09" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+<text x="24" y="34" font-size="19" font-weight="700">이번 Unit 마무리</text>
+<rect x="24" y="52" width="540" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="40" y="69" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="64" y="81" font-size="15">설정 파일이 없거나 깨져도 멈추지 않고 경고를 남긴다</text>
+<rect x="576" y="52" width="120" height="46" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="636" y="80.4" font-size="15" text-anchor="middle">도전 1-4</text>
+<rect x="24" y="108" width="540" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="40" y="125" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="64" y="137" font-size="15">고장 시험 두 가지(없는 파일 · 깨진 파일)를 확인했다</text>
+<rect x="576" y="108" width="120" height="46" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="636" y="136.4" font-size="15" text-anchor="middle">도전 1-4</text>
+<rect x="24" y="164" width="540" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="40" y="181" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="64" y="193" font-size="15">테스트 네 가지를 직접 설계해 모두 통과했다</text>
+<rect x="576" y="164" width="120" height="46" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="636" y="192.4" font-size="15" text-anchor="middle">도전 1-5</text>
+<rect x="24" y="220" width="540" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="40" y="237" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="64" y="249" font-size="15">실패한 테스트를 읽고 코드와 기대 중 무엇이 다른지 판단</text>
+<rect x="576" y="220" width="120" height="46" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="636" y="248.4" font-size="15" text-anchor="middle">도전 1-5</text>
+<rect x="24" y="276" width="540" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="40" y="293" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="64" y="305" font-size="15">오늘 만든 파일과 보고서를 깃허브에 올렸다</text>
+<rect x="576" y="276" width="120" height="46" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="636" y="304.4" font-size="15" text-anchor="middle">마무리</text>
+<text x="24" y="364" font-size="15" font-weight="700">다음 Unit 2: 요청 → 승인 · 반려 → 부여</text>
+<text x="24" y="388" font-size="15" fill="#666660">evaluate_access 를 이중 검증에 그대로 불러 씁니다</text>
+</g>
+</svg>

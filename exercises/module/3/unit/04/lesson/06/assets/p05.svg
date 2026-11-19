@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>도전 4-2 정리: 기본 판정 먼저, 그다음 시간대와 접속 위치를 확인한다</title>
+<desc>evaluate_conditional 은 evaluate_access 로 먼저 판정하고 거부면 바로 리턴한다. 허용이면 is_work_time 의 start &lt;= hour &lt; end 와 is_allowed_network 의 network in allowed_networks 로 조건을 확인한다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 4-2 정리 · 코드 지도</text>
+<rect x="20" y="52" width="260" height="54" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="85" font-size="15" fill="#292929" font-weight="700">기본 판정 먼저</text>
+<rect x="290" y="52" width="410" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="302" y="85" font-size="14" fill="#292929">is_allowed, reason = evaluate_access(…)</text>
+<polyline points="150,107 150,115" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="20" y="116" width="260" height="54" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="149" font-size="15" fill="#292929" font-weight="700">기본 판정이 거부이면</text>
+<rect x="290" y="116" width="410" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="302" y="149" font-size="14" fill="#292929">if not is_allowed: return False, reason</text>
+<polyline points="150,171 150,179" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="20" y="180" width="260" height="54" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="32" y="213" font-size="15" fill="#292929" font-weight="700">요청 시각의 시 · 시간대 안인지</text>
+<rect x="290" y="180" width="410" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="302" y="213" font-size="14" fill="#292929">hour = now.hour · return start &lt;= hour &lt; end</text>
+<polyline points="150,235 150,243" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="20" y="244" width="260" height="54" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="32" y="277" font-size="15" fill="#292929" font-weight="700">접속 위치가 허용 리스트에 있는지</text>
+<rect x="290" y="244" width="410" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="302" y="277" font-size="14" fill="#292929">return network in allowed_networks</text>
+<polyline points="150,299 150,307" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="20" y="308" width="260" height="54" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="32" y="341" font-size="15" fill="#292929" font-weight="700">조건에 어긋나면 거부</text>
+<rect x="290" y="308" width="410" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="302" y="341" font-size="14" fill="#292929">if not is_work_time(rule, now): return False, …</text>
+</g>
+</svg>

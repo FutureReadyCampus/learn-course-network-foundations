@@ -1,61 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
-<title>테스트 케이스 네 가지의 입력과 기대 결과, assert 가 참·거짓일 때의 동작</title>
-<desc>오늘 설계할 테스트 네 가지를 표로 보여 줍니다. 3번은 만료 경계 17:59 와 18:00 을 함께 봅니다. assert 는 조건이 참이면 다음 줄로 가고, 거짓이면 AssertionError: 설명 으로 멈춥니다.</desc>
-<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
-<text x="24" y="34" font-size="19" font-weight="700">2.1 테스트 케이스와 assert</text>
-<rect x="24" y="50" width="56" height="36" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="52" y="73" font-size="15" text-anchor="middle" font-weight="700">번호</text>
-<rect x="86" y="50" width="164" height="36" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="168" y="73" font-size="15" text-anchor="middle" font-weight="700">지킬 것</text>
-<rect x="256" y="50" width="236" height="36" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="374" y="73" font-size="15" text-anchor="middle" font-weight="700">입력</text>
-<rect x="498" y="50" width="198" height="36" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="597" y="73" font-size="15" text-anchor="middle" font-weight="700">기대 결과</text>
-<rect x="24" y="92" width="56" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="52" y="123" font-size="14" text-anchor="middle">1</text>
-<rect x="86" y="92" width="164" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="168" y="123" font-size="14" text-anchor="middle">정상 허용</text>
-<rect x="256" y="92" width="236" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="374" y="113.2" font-size="14" text-anchor="middle">junho · SETTLE · QUERY</text>
-<text x="374" y="132.8" font-size="14" text-anchor="middle">14:00</text>
-<rect x="498" y="92" width="198" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="597" y="113.2" font-size="14" text-anchor="middle">허용</text>
-<text x="597" y="132.8" font-size="14" text-anchor="middle">「역할 권한」</text>
-<rect x="24" y="150" width="56" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="52" y="181" font-size="14" text-anchor="middle">2</text>
-<rect x="86" y="150" width="164" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="168" y="181" font-size="14" text-anchor="middle">권한 없음은 거부</text>
-<rect x="256" y="150" width="236" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="374" y="171.2" font-size="14" text-anchor="middle">seoyeon · ACCOUNT</text>
-<text x="374" y="190.8" font-size="14" text-anchor="middle">CHANGE · 14:00</text>
-<rect x="498" y="150" width="198" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="597" y="171.2" font-size="14" text-anchor="middle">거부</text>
-<text x="597" y="190.8" font-size="14" text-anchor="middle">「권한 없음」</text>
-<rect x="24" y="208" width="56" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="52" y="239" font-size="14" text-anchor="middle">3</text>
-<rect x="86" y="208" width="164" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="168" y="239" font-size="14" text-anchor="middle">만료 경계</text>
-<rect x="256" y="208" width="236" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="374" y="229.2" font-size="14" text-anchor="middle">seoyeon · SETTLE · QUERY</text>
-<text x="374" y="248.8" font-size="14" text-anchor="middle">17:59 와 18:00</text>
-<rect x="498" y="208" width="198" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="597" y="229.2" font-size="14" text-anchor="middle">17:59 허용 (예외 1번)</text>
-<text x="597" y="248.8" font-size="14" text-anchor="middle">18:00 거부</text>
-<rect x="24" y="266" width="56" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="52" y="297" font-size="14" text-anchor="middle">4</text>
-<rect x="86" y="266" width="164" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="168" y="287.2" font-size="14" text-anchor="middle">설정 고장이면</text>
-<text x="168" y="306.8" font-size="14" text-anchor="middle">아무도 없음</text>
-<rect x="256" y="266" width="236" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="374" y="287.2" font-size="14" text-anchor="middle">config/no_such.json 을</text>
-<text x="374" y="306.8" font-size="14" text-anchor="middle">load_json 으로 읽기</text>
-<rect x="498" y="266" width="198" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="597" y="287.2" font-size="14" text-anchor="middle">seoyeon 이</text>
-<text x="597" y="306.8" font-size="14" text-anchor="middle">들어 있지 않음</text>
-<rect x="24" y="332" width="320" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="184" y="363.4" font-size="15" text-anchor="middle">조건이 참 → 다음 줄로</text>
-<rect x="376" y="332" width="320" height="52" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="536" y="363.4" font-size="15" text-anchor="middle">거짓 → AssertionError: 설명</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img"><title>사용자와 권한 이름을 : 로 이어 만든 문자열 하나가 사용 이력 딕셔너리의 키다</title><desc>"seoyeon" 과 "SALES:QUERY" 를 : 로 이어 키 문자열 하나를 만들고, last_used_map.get(key) 로 마지막 사용 시각을 찾는다. 아래 표는 사용 이력이 없거나 91일째부터면 후보, 90일 이내면 후보가 아니라는 판정이다.</desc><defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">「사용자:권한」 키로 마지막 사용 시각 찾기</text>
+<rect x="20" y="60" width="140" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
+<text x="90" y="82.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">사용자</text>
+<text x="90" y="103.75" font-size="15" fill="#292929" text-anchor="middle">seoyeon</text>
+<rect x="176" y="60" width="70" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="211" y="82.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">구분</text>
+<text x="211" y="103.75" font-size="15" fill="#292929" text-anchor="middle">:</text>
+<rect x="262" y="60" width="160" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="2"/>
+<text x="342" y="82.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">권한 이름 전체</text>
+<text x="342" y="103.75" font-size="15" fill="#292929" text-anchor="middle">SALES:QUERY</text>
+<line x1="342" y1="120" x2="342" y2="146" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="182" y="150" width="320" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="342" y="179.25" font-size="15" fill="#292929" text-anchor="middle">key = "seoyeon:SALES:QUERY"</text>
+<line x1="506" y1="174" x2="540" y2="174" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="546" y="140" width="160" height="68" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="2"/>
+<text x="626" y="168.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">.get(key)</text>
+<text x="626" y="189.75" font-size="15" fill="#292929" text-anchor="middle">2026-10-27 09:10</text>
+<text x="440" y="92" font-size="14" fill="#666660">이름 안의 : 는 이름의 일부</text>
+<rect x="20" y="226" width="330" height="40" rx="0" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="185" y="251.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">현황의 권한 한 건의 상태</text>
+<rect x="350" y="226" width="350" height="40" rx="0" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="525" y="251.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">판정</text>
+<rect x="20" y="266" width="330" height="42" rx="0" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="185" y="292.25" font-size="15" fill="#292929" text-anchor="middle">사용 이력이 없음</text>
+<rect x="350" y="266" width="350" height="42" rx="0" fill="#f8e8e3" stroke="#e0442e" stroke-width="2"/>
+<text x="525" y="292.25" font-size="15" fill="#292929" text-anchor="middle">안 쓴 후보 (last_used 는 None)</text>
+<rect x="20" y="308" width="330" height="42" rx="0" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="185" y="334.25" font-size="15" fill="#292929" text-anchor="middle">마지막 사용이 91일째부터</text>
+<rect x="350" y="308" width="350" height="42" rx="0" fill="#f8e8e3" stroke="#e0442e" stroke-width="2"/>
+<text x="525" y="334.25" font-size="15" fill="#292929" text-anchor="middle">안 쓴 후보</text>
+<rect x="20" y="350" width="330" height="42" rx="0" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="185" y="376.25" font-size="15" fill="#292929" text-anchor="middle">마지막 사용이 90일 이내</text>
+<rect x="350" y="350" width="350" height="42" rx="0" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="2"/>
+<text x="525" y="376.25" font-size="15" fill="#292929" text-anchor="middle">쓴 것 → 후보 아님</text>
 </g>
 </svg>

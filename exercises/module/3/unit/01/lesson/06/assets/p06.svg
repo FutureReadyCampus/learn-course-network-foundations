@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img">
+<title>도전 1-1 요점은 기록 재판정, 건수 세기, 쓴 권한 모으기, 미사용 찾기, 올리기다</title>
+<desc>지난 기록을 반복문 안에서 check_permission 으로 다시 판정하고, counts.get 으로 건수를 세며, used 에 쓴 권한을 모은다. 역할의 권한 중 used 에 없는 것이 쓰이지 않은 권한이고, 마지막에 git 으로 올린다.</desc>
+<defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 1-1 요점</text>
+<rect x="20" y="52" width="210" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="125" y="79.2" font-size="15" fill="#292929" text-anchor="middle">지난 기록에 새 규칙</text>
+<rect x="250" y="52" width="450" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="262" y="78.9" font-size="14" fill="#292929">for … in LOG: 안에서 check_permission(…)</text>
+<polyline points="231,74 249,74" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p06)"/>
+<rect x="20" y="106" width="210" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="125" y="133.2" font-size="15" fill="#292929" text-anchor="middle">키별 건수 세기</text>
+<rect x="250" y="106" width="450" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="262" y="132.9" font-size="14" fill="#292929">counts[키] = counts.get(키, 0) + 1 모양</text>
+<polyline points="231,128 249,128" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p06)"/>
+<rect x="20" y="160" width="210" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="125" y="187.2" font-size="15" fill="#292929" text-anchor="middle">역할별 사용 모으기</text>
+<rect x="250" y="160" width="450" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="262" y="186.9" font-size="14" fill="#292929">used[role].append(f"{resource}:{action}")</text>
+<polyline points="231,182 249,182" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p06)"/>
+<rect x="20" y="214" width="210" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="125" y="241.2" font-size="15" fill="#292929" text-anchor="middle">쓰이지 않은 권한</text>
+<rect x="250" y="214" width="450" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="262" y="240.9" font-size="14" fill="#292929">역할의 권한 중 used.get(role, []) 에 없는 것</text>
+<polyline points="231,236 249,236" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p06)"/>
+<rect x="20" y="268" width="210" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="125" y="295.2" font-size="15" fill="#292929" text-anchor="middle">올리기</text>
+<rect x="250" y="268" width="450" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="262" y="294.9" font-size="14" fill="#292929">git status → git add . → commit → push</text>
+<polyline points="231,290 249,290" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p06)"/>
+</g>
+</svg>

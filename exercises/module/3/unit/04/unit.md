@@ -1,6 +1,6 @@
 ---
 id: m3-u04
-title: 권한 요청서와 승인·반려
+title: 권한 거두기
 lessons:
 - path: lesson/01/lesson.md
 - path: lesson/02/lesson.md
@@ -8,6 +8,9 @@ lessons:
 - path: lesson/04/lesson.md
 - path: lesson/05/lesson.md
 - path: lesson/06/lesson.md
+- path: lesson/07/lesson.md
+- path: lesson/08/lesson.md
+- path: lesson/09/lesson.md
 ---
 
-# 권한 요청서와 승인·반려
+# 권한 거두기

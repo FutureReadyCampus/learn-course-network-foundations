@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img">
+<title>도전 2-2 정리: 설정 읽기부터 복사본에 지난 시간 적기까지 여섯 단계</title>
+<desc>SLA 시간을 설정 파일에서 읽고, 검토 중인 요청서만 골라 접수 시각을 시각으로 바꿉니다. 걸린 시간을 시간 단위로 구해 SLA_HOURS 보다 크면 복사본에 wait_hours 를 반올림해 적습니다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">도전 2-2 정리</text>
+<rect x="15" y="52" width="210" height="96" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="120" y="85.328" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">① 처리 기한 읽기</text>
+<text x="120" y="105.712" font-size="14" fill="#292929" text-anchor="middle">load_json(</text>
+<text x="120" y="125.312" font-size="14" fill="#292929" text-anchor="middle">"config/sla.json", …)</text>
+<rect x="255" y="52" width="210" height="96" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="95.128" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">② 검토 중만</text>
+<text x="360" y="115.512" font-size="14" fill="#292929" text-anchor="middle">status == "reviewing"</text>
+<polyline points="228,100 251,100" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="495" y="52" width="210" height="96" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="600" y="85.328" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">③ 접수 시각을 시각으로</text>
+<text x="600" y="105.712" font-size="14" fill="#292929" text-anchor="middle">datetime.strptime(</text>
+<text x="600" y="125.312" font-size="14" fill="#292929" text-anchor="middle">…, TIME_FORMAT)</text>
+<polyline points="468,100 491,100" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="15" y="184" width="210" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="120" y="219.328" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">④ 걸린 시간</text>
+<text x="120" y="239.712" font-size="14" fill="#292929" text-anchor="middle">(now − requested)</text>
+<text x="120" y="259.312" font-size="14" fill="#292929" text-anchor="middle">.total_seconds() / 3600</text>
+<rect x="255" y="184" width="210" height="100" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="219.328" font-size="16" fill="#9a6200" text-anchor="middle" font-weight="700">⑤ 초과했나</text>
+<text x="360" y="239.712" font-size="14" fill="#292929" text-anchor="middle">hours &gt; SLA_HOURS</text>
+<text x="360" y="259.312" font-size="14" fill="#666660" text-anchor="middle">같으면 아직 아님</text>
+<polyline points="228,234 251,234" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="495" y="184" width="210" height="100" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="600" y="219.328" font-size="16" fill="#1f7a4a" text-anchor="middle" font-weight="700">⑥ 복사해 적기</text>
+<text x="600" y="239.712" font-size="14" fill="#292929" text-anchor="middle">request.copy()</text>
+<text x="600" y="259.312" font-size="14" fill="#292929" text-anchor="middle">round(hours, 1)</text>
+<polyline points="468,234 491,234" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<polyline points="600,148 600,166 120,166 120,181" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+</g>
+</svg>

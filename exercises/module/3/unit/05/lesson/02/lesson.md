@@ -1,255 +1,234 @@
 ---
 id: m3-u05-l02
-title: 실습 5-1 · 처리 기한 넘긴 요청 찾기(SLA)
+title: 실습 5-1 · 점검 체크리스트로 어긋난 곳 찾기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
-  path: network/084_day03_pm_sla.md
-  mission_id: GichanSource.m3-1023-pm-sla
+  path: network/094_day06_am_weekly_report.md
+  mission_id: GichanSource.m3-1102-am-weekly-report
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 실습 5-1 · 처리 기한 넘긴 요청 찾기(SLA)
+# 실습 5-1 · 점검 체크리스트로 어긋난 곳 찾기
 
-## 목표: 기한 초과 점검 함수
+## 목표: 점검 체크리스트 결과
 
-> **오늘 들어온 일**
+> **이번 실습에 들어온 일**
 >
-> A사 관제 담당(요청이 정해진 시간 안에 처리되는지 지켜보는 사람)이 보낸 메시지: 「요청서를 접수해 놓고 승인자가 처리를 미루는 일이 있습니다. 그러면 권한이 필요한 직원은 일을 못 하고 메신저로 계속 재촉합니다. 리스트를 눈으로 훑어서는 오래된 요청을 놓치기 쉽습니다. 접수한 지 4시간이 지났는데도 아직 검토 중인 요청서를 찾아서 알려 주세요.」
-> - 이 실습에서 하는 일: 접수한 지 정해진 시간(SLA, 오늘은 4시간)이 지났는데도 아직 검토 중인 요청서를 찾는 함수 `check_sla_breach` 를 직접 씁니다. 요청서 여섯 장 가운데 어느 것이 몇 시간 지났는지 읽습니다.
-> - 끝나면 쓰는 것: 보고서 (가)~(다) 답
+> A사 보안 팀장이 보낸 메시지:
+> 「앞서 회수를 마쳤는데, 시간이 지나면 다시 불안합니다. 그 사이에 퇴사 처리가 된 사람이 있는지, 만료 시각이 지났는데 남아 있는 예외가 있는지, 부서를 옮겼는데 역할은 그대로인 사람이 있는지가 궁금합니다. 저는 이것을 사용자 파일과 예외 파일을 열어 눈으로 맞춰 봅니다. 사용자가 여섯 명, 예외가 네 개뿐인데도 오래 걸립니다. 지난달에는 부서를 옮긴 사람의 역할 확인을 빠뜨려 감사팀에서 지적을 받았고, 회사가 커지면 이 방식은 쓸 수 없습니다.
+>
+> 퇴사자 계정 · 만료 예외 · 부서와 역할, 이 세 가지를 매주 같은 순서로 점검해서 걸린 사용자 이름이나 예외 번호를 알려 주세요. 점검은 찾기만 하고, 권한을 바로 지우지는 않습니다.」
+> - **왜 중요한가**: 회수를 한 번 해도 사람은 계속 퇴사하고 부서를 옮깁니다. 눈으로 맞추면 오래 걸리고 한 명을 빠뜨릴 수 있는데, 코드가 같은 기준으로 한 번에 점검하면 걸린 대상의 이름이 바로 나옵니다. 이 결과는 도전 5-1에서 만드는 주간 보고서에 그대로 들어갑니다.
 
 > **읽을거리 — 문제가 아닙니다.** 이 아래부터 첫 「문제」 전까지는 이 실습의 배경지식입니다. 답할 질문도 따라 칠 명령도 없으니 읽고 이해만 합니다.
 
-## 왜 처리 기한을 점검하는가
+## Unit 3부터 Unit 4까지 흐름 복습
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
-1. 요청은 접수한 뒤에 승인자가 봐 주어야 진행됩니다. 오래 방치되면 요청자의 업무가 막히고, 그사이에 요청자가 퇴사하거나 역할이 바뀌면 승인할 때의 판단도 달라집니다.
-2. **SLA**(service level agreement · 서비스 레벨 어그리먼트)는 「이 일은 이 시간 안에 처리한다」는 처리 기한의 약속입니다. 오늘은 검토 중인 요청서를 접수 후 4시간 안에 처리하는 것으로 정합니다.
-3. 기한을 초과한 요청서를 코드로 찾아 두면, 사람이 리스트를 눈으로 훑지 않아도 매일 아침 알림을 보낼 수 있습니다.
+| Unit | 한 일 | 이번 Unit으로 이어지는 것 |
+|---|---|---|
+| Unit 3 · Unit 3 | 현황 리스트를 만들고, 규칙(퇴사 · 만료)과 사용 이력으로 안 쓰는 권한 후보를 찾고, 회수 제외를 가려냄 | 이번 점검 세 가지 중 퇴사자 · 만료 예외 점검의 출발 |
+| Unit 4 | 회수 대상을 계획 → 승인 → 실행 순서로 회수하고 이력을 남김 | 회수한 뒤에도 생기는 어긋남을 매주 다시 점검 |
+| Unit 4 | 업무 시간 · 접속 위치 조건을 판정에 더하고, 판정을 서버로 열어 요청마다 `server_log.jsonl` 에 한 줄씩 남김 | 도전 5-1 로그 집계의 입력. 이번에는 같은 모양의 일주일 치 샘플 40줄을 씁니다 |
 
-## 1.1 기한이 지났는지 가리는 방법
+## 왜 같은 기준으로 반복 점검하는가
 
 > **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
-- **어떤 요청서를 보나**: 아직 처리 중인 요청서, 즉 상태가 `reviewing`(검토 중)인 것만 봅니다. 이미 승인되거나 반려된 요청서는 처리가 끝났으므로 기한을 따지지 않습니다.
-- **얼마나 지났나**: `지금 시각 − 접수 시각` 으로 구합니다. 이 값을 시간(hour) 단위 숫자로 바꿔서 SLA 시간(`SLA_HOURS`, 오늘은 4)과 비교합니다.
-- **SLA 시간은 어디에 두나**: 코드에 4를 직접 쓰지 않고 `config/sla.json` 파일에 적어 두고 읽습니다. 그러면 기한을 4시간에서 2시간으로 바꿀 때 코드는 그대로 두고 파일만 고치면 됩니다.
-- **파일은 어떻게 읽나**: Unit 3에서 만든 `load_json` 으로 읽습니다. 파일이 없거나 깨졌을 때는 기본값 4를 씁니다.
-- **기한이 지난 요청은 어떻게 하나**: 현업에서는 승인자의 윗사람이나 대리 승인자(승인자가 자리에 없을 때 대신 승인하는 사람)에게 넘깁니다. 이것을 **에스컬레이션**(escalation · 에스컬레이션)이라고 합니다. 오늘은 넘기는 일은 만들지 않고, 기한이 지난 요청을 찾는 데까지만 합니다.
-- **`now` 이름**: 함수가 받는 `now` 는 **지금 시각**(datetime)입니다. Unit 2의 `evaluate_access` 의 `now` 와 같은 뜻입니다.
+1. 권한 점검은 한 번 하고 끝내는 일이 아니라 **주기마다 같은 기준으로 반복**하는 일입니다.
+2. 반복하려면 점검할 것을 미리 정해 둡니다. 이것을 **점검 체크리스트**라고 부릅니다.
+   - 점검 한 가지는 문제가 있는 사용자나 예외를 **리스트로 모읍니다.**
+   - 리스트가 비어 있으면 **통과**, 하나라도 있으면 **실패**입니다.
+3. 이번 실습에서는 점검 세 가지를 함수로 만듭니다. 점검할 데이터는 `config/week_state.json` 하나에 모아 두었습니다.
 
-<figure class="page-figure"><img src="assets/f01.svg" alt="검토 중인 요청서 가운데 SLA_HOURS 보다 오래 걸린 것만 골라 리턴한다"></figure>
+## 1.1 점검할 데이터와 세 가지 점검
 
-**문법 상자 — 걸린 시간을 시간 단위 숫자로 바꾸기**
+> **읽을거리 — 읽기만 합니다.** 문제가 아닙니다. 답할 질문도, 따라 칠 명령도 없습니다.
 
-- 시각 문자열을 시각으로 바꾸는 `datetime.strptime(문자열, 형식)` 은 Unit 2에서 쓴 것과 같습니다. 형식 문자열 `"%Y-%m-%d %H:%M"` 은 `exception_policy.py` 의 `TIME_FORMAT` 에 이미 적혀 있어서 오늘은 그것을 불러다 씁니다. 아래 상자에서는 그 모양을 그대로 볼 수 있습니다.
+`config/week_state.json` 은 세 부분으로 이루어집니다.
 
-**① 시각에서 시각을 빼면 「걸린 시간」이 나옵니다**
+| 키 | 담긴 것 | 값의 예 |
+|---|---|---|
+| `users` | 사용자 이름 → 사용자 정보(부서 · 역할 · 재직 여부) | `"dami": {"dept": "영업", "role": "sales", "employed": false}` |
+| `role_dept` | 역할 → 그 역할이 속해야 하는 부서 | `"finance": "재무"` |
+| `exceptions` | 예외 리스트(번호 · 사용자 · 권한 · 만료 시각) | `{"id": 3, "user": "dami", "permission": "SALES:QUERY", "expires": "2026-11-03 18:00"}` |
 
-```python
-from datetime import datetime                                       # 시각을 다루는 모듈에서 datetime 을 불러온다
+점검 세 가지는 아래와 같습니다.
 
-requested = datetime.strptime("2026-10-23 09:15", "%Y-%m-%d %H:%M")   # 접수 시각
-now = datetime.strptime("2026-10-23 14:00", "%Y-%m-%d %H:%M")         # 지금 시각
-gap = now - requested                                               # 시각에서 시각을 빼면 「걸린 시간」이 나온다
-print(gap)                                                          # 시:분:초 모양이라 숫자처럼 비교할 수 없다
-```
+| 점검 | 문제로 보는 경우 | 모으는 것 |
+|---|---|---|
+| 퇴사자 계정 점검 | `employed` 가 `false`(퇴사)인데 `users` 에 계정이 남아 있다 | 사용자 이름 |
+| 만료 예외 점검 | 만료 시각이 지금과 같거나 지났는데 예외가 남아 있다 | 예외 번호(`id`) |
+| 부서와 역할 점검 | 사용자의 부서가 그 사용자 역할이 속해야 하는 부서와 다르다 | 사용자 이름 |
 
-실행 결과:
+**한 장 정리**
 
-```
-4:45:00
-```
+| 함수 | 받는 것 | 리턴하는 것 |
+|---|---|---|
+| `check_employed` | 사용자 딕셔너리 | 퇴사한(`employed` 가 `false`) 사용자 이름의 리스트 |
+| `check_expired` | 예외 리스트, 지금 시각 | 만료 시각이 지금과 같거나 지난 예외 번호의 리스트 |
+| `check_dept` | 사용자 딕셔너리, 역할별 부서 딕셔너리 | 부서가 역할의 부서와 다른 사용자 이름의 리스트 |
+| `run_checklist` | 읽은 데이터, 지금 시각 | 점검 이름과 문제 리스트를 묶은 딕셔너리의 리스트(미리 채움) |
 
-- 걸린 시간은 `4:45:00` 처럼 「시:분:초」 모양입니다. 숫자가 아니라서 `SLA_HOURS`(4)와 `>` 로 비교할 수 없습니다.
+- 점검하는 시각은 `2026-11-02 10:00` 으로 고정합니다.
+- `for name, info in users.items():` 는 딕셔너리의 키(사용자 이름)와 값(사용자 정보)을 한꺼번에 꺼냅니다.
+- JSON 의 `true` · `false` 는 파이썬으로 읽으면 `True` · `False` 가 됩니다.
+- **직접 쓰는 곳은 세 함수**(번호 1 ~ 8)입니다. 함수마다 2 ~ 3줄만 쓰고, 나머지는 미리 채웠습니다.
+  - `check_employed`(1 · 2번): 퇴사한 사용자의 이름을 모읍니다.
+  - `check_expired`(3 ~ 5번): 만료된 예외의 번호를 모읍니다.
+  - `check_dept`(6 ~ 8번): 부서가 다른 사용자의 이름을 모읍니다.
+- **미리 채운 것**: `load_state`(파일 읽기)와 `run_checklist`(세 점검을 묶기)입니다.
 
-**② `.total_seconds()` 로 걸린 시간을 초 단위 숫자로 바꿉니다**
-
-```python
-from datetime import datetime                                       # 시각을 다루는 모듈에서 datetime 을 불러온다
-
-requested = datetime.strptime("2026-10-23 09:15", "%Y-%m-%d %H:%M")   # 접수 시각
-now = datetime.strptime("2026-10-23 14:00", "%Y-%m-%d %H:%M")         # 지금 시각
-gap = now - requested                                               # 시각에서 시각을 빼면 「걸린 시간」이 나온다
-seconds = gap.total_seconds()                                    # 시간 차이를 초 단위 숫자로 바꾼다
-print(seconds)                                                   # 걸린 시간을 전부 초로 센 숫자다(4시간 45분 = 17100초)
-```
-
-실행 결과:
-
-```
-17100.0
-```
-
-- `.total_seconds()` 는 걸린 시간을 전부 초로 세어 숫자로 줍니다. 4시간 45분은 4 × 3600 + 45 × 60 = 17100초입니다.
-- 실제 코드에서는 `gap` 없이 한 줄로 `(now - requested).total_seconds()` 처럼 씁니다. 뺄셈을 괄호로 묶은 뒤에 `.total_seconds()` 를 붙이는 것입니다. 괄호 없이 `now - requested.total_seconds()` 로 쓰면 `requested` 에 먼저 `.total_seconds()` 가 붙어 오류가 납니다.
-
-**③ 3600 으로 나눠 시간 단위 숫자로 만듭니다**
-
-```python
-from datetime import datetime                                       # 시각을 다루는 모듈에서 datetime 을 불러온다
-
-requested = datetime.strptime("2026-10-23 09:15", "%Y-%m-%d %H:%M")   # 접수 시각
-now = datetime.strptime("2026-10-23 14:00", "%Y-%m-%d %H:%M")         # 지금 시각
-gap = now - requested                                               # 시각에서 시각을 빼면 「걸린 시간」이 나온다
-seconds = gap.total_seconds()                                    # 시간 차이를 초 단위 숫자로 바꾼다
-hours = seconds / 3600                                           # 3600 으로 나눠 시간 단위로 바꾼다
-print(hours)                                                     # 1시간은 3600초라서, 나누면 시간 단위 숫자가 된다
-```
-
-실행 결과:
-
-```
-4.75
-```
-
-- 1시간은 3600초이므로 초 숫자를 3600 으로 나누면 시간 단위 숫자(4.75)가 됩니다. 이제 `SLA_HOURS` 와 비교할 수 있습니다.
-- 3600 으로 나누는 것을 빼먹으면 숫자가 초 단위(17100.0)라서 항상 4보다 커집니다.
-- 걸린 시간이 SLA 시간보다 「큰」 것만 초과로 셉니다. 정확히 4시간이면 초과가 아닙니다(`4.0 > 4` 는 거짓).
-
-**④ `.copy()` 로 복사하면 원래 요청서는 그대로 두고, `round(숫자, 1)` 은 소수 첫째 자리로 반올림합니다**
-
-```python
-request = {"id": 1, "status": "reviewing"}                          # 요청서 한 장
-
-overdue = request.copy()                                            # .copy() 는 딕셔너리를 복사한 새 딕셔너리를 만든다
-overdue["wait_hours"] = round(4.26, 1)                              # 복사본에만 키를 추가한다. round(숫자, 1) 은 소수 첫째 자리까지 반올림한다
-
-print(request)                                                      # 원래 요청서는 그대로다
-print(overdue)                                                      # 복사본에만 wait_hours 키가 생겼다
-```
-
-실행 결과:
-
-```
-{'id': 1, 'status': 'reviewing'}
-{'id': 1, 'status': 'reviewing', 'wait_hours': 4.3}
-```
-
+<figure class="page-figure"><img src="assets/f01.svg" alt="run_checklist 는 점검 세 가지를 차례로 호출해 문제 리스트로 통과와 실패를 가린다"></figure>
 
 > **여기부터 문제입니다.** 위는 읽을거리였고, 아래에서 직접 합니다.
 
-## 실습 5-1 · 처리 기한 초과 요청 찾기
+## 실습 5-1 · 세 점검으로 통과·실패 가리기
 
 **이런 상황이 있습니다**
 
-- **지금은**: 요청서를 접수해 놓고 승인자가 오래 확인하지 않으면 요청자의 일이 막힙니다. 지금은 사람이 리스트를 눈으로 훑어서 오래된 요청을 찾기 때문에 놓치기 쉽습니다.
-- **그래서 만드는 것**: `check_sla_breach` 입니다. 요청서 리스트와 지금 시각을 받아, **검토 중이고 접수한 지 SLA 시간(4시간)을 초과한** 요청서만 골라 리스트로 리턴합니다. SLA 시간은 코드에 쓰지 않고 `config/sla.json` 에서 읽습니다.
-- **오늘 데이터**: 요청서 여섯 장이고, 지금 시각은 14:00 으로 고정합니다. 그중 한 장은 이미 승인되어 있습니다.
-- **실행하면**: 단계 1은 요청서 현황(번호 · 요청자 · 상태 · 접수 시각), 단계 2는 SLA 를 초과한 요청서와 접수한 뒤 지난 시간이 나옵니다.
-- **현업에서는**: 신청 처리 도구도 접수 후 정해진 시간이 지난 신청에 알림을 보내거나 윗사람에게 넘깁니다(에스컬레이션).
+- **지금은**: 점검은 사람이 `config/week_state.json` 같은 데이터 파일을 눈으로 읽어야 합니다. 사용자가 늘면 놓치기 쉽고, 지난주와 같은 기준으로 봤는지도 알 수 없습니다.
+- **그래서 만드는 것**: `checklist.py` 입니다.
+  - 점검 세 가지를 함수로 만들고, 문제가 있는 사용자 이름이나 예외 번호를 리스트로 모읍니다.
+  - 예를 들어 dami 는 퇴사했는데 계정이 남아 있으므로 첫째 점검에서 걸립니다.
+- **실행하면**: 단계 1은 점검 대상의 수, 단계 2는 점검 세 가지의 통과와 실패, 그리고 문제 리스트를 출력합니다.
+- **현업에서는**: 접근 권한 점검도 점검할 것을 정해 두고 주기마다 반복하며, 결과(통과 · 실패와 대상)를 보고서에 남깁니다.
 
 **할 일**
 
-1. `req_sla.py` · `config/sla.json` · `exercise5-1_run.py` 세 파일을 만들고, `check_sla_breach` 본문을 직접 씁니다.
-2. 실행해서 <mark>요청서 현황</mark>(단계 1: 현황)과 <mark>기한을 초과한 요청</mark>(단계 2: 판정)을 읽습니다.
+1. `checklist.py` · `exercise5-1_run.py` 두 파일을 만들고, `checklist.py` 의 `check_employed` · `check_expired` · `check_dept` 에서 직접 쓰는 곳 세 군데를 씁니다.
+2. 실행해서 <mark>점검 대상의 수</mark>(단계 1: 점검 대상)와 <mark>점검 세 가지의 결과</mark>(단계 2: 점검 결과)를 읽습니다.
 
-**`config/sla.json`** — 그대로 붙여 넣습니다. 처리 기한(시간)을 적은 설정 파일이고, `access_control` 안의 `config` 폴더(Unit 1부터 `users.json` 이 있던 곳)에 만듭니다.
+**`checklist.py`**
 
-```json
-{"hours": 4}
+```python
+import json                                                      # JSON 파일을 읽는 모듈을 불러온다
+from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
+
+TIME_FORMAT = "%Y-%m-%d %H:%M"                                   # 만료 시각 문자열의 형식 (예: 2026-11-03 18:00)
+
+
+def load_state(path):                                            # 파일 경로를 받는 함수
+    """점검할 데이터(사용자 · 역할의 부서 · 예외)를 읽어 딕셔너리로 리턴한다.
+    정기 점검을 시작할 때 쓴다.
+    """
+    with open(path, encoding="utf-8") as json_file:                      # 파일을 연다
+        return json.load(json_file)                                      # 읽은 내용을 바로 리턴한다
+
+
+def check_employed(users):                                       # 사용자 딕셔너리를 받는 함수
+    """퇴사했는데 계정이 남아 있는 사용자 이름 리스트를 리턴한다.
+    정기 점검에서 퇴사자 계정을 찾을 때 쓴다.
+    """
+    problems = []                                                # 문제가 있는 사용자 이름을 모을 리스트
+    for name, info in users.items():                             # 사용자 이름과 사용자 정보를 하나씩 꺼낸다
+        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+        # 1. info["employed"] 가 거짓이면 (if not …)
+        # 2.   name 을 problems 에 추가한다
+    return problems                                              # 문제가 있는 사용자 이름을 리턴한다
+
+
+def check_expired(exceptions, now):                              # 예외 리스트와 지금 시각(datetime)을 받는 함수
+    """만료 시각이 지났는데 남아 있는 예외의 번호 리스트를 리턴한다.
+    정기 점검에서 기간이 끝난 예외를 찾을 때 쓴다.
+    """
+    problems = []                                                # 문제가 있는 예외 번호를 모을 리스트
+    for exception in exceptions:                                       # 예외를 하나씩 꺼낸다
+        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+        # 3. exception["expires"] 를 TIME_FORMAT 으로 읽어 시각 expires_at 에 담는다 (datetime.strptime)
+        # 4. expires_at 이 now 보다 이르거나 같으면 (<=)
+        # 5.   exception["id"] 를 problems 에 추가한다
+    return problems                                              # 문제가 있는 예외 번호를 리턴한다
+
+
+def check_dept(users, role_dept):                                # 사용자 딕셔너리와 역할별 부서 딕셔너리를 받는 함수
+    """부서가 역할의 부서와 다른 사용자 이름 리스트를 리턴한다.
+    정기 점검에서 엉뚱한 부서에 역할이 남은 사람을 찾을 때 쓴다.
+    """
+    problems = []                                                # 문제가 있는 사용자 이름을 모을 리스트
+    for name, info in users.items():                             # 사용자 이름과 사용자 정보를 하나씩 꺼낸다
+        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+        # 6. role_dept 에서 info["role"] 의 부서를 찾아 expected_dept 에 담는다
+        # 7. expected_dept 가 info["dept"] 와 다르면 (!=)
+        # 8.   name 을 problems 에 추가한다
+    return problems                                              # 문제가 있는 사용자 이름을 리턴한다
+
+
+def run_checklist(state, now):                                   # 읽은 데이터와 지금 시각을 받는 함수
+    """점검 세 가지를 실행한다.
+    점검 이름과 문제 리스트를 담은 딕셔너리의 리스트를 리턴한다.
+    매주 어긋난 곳을 한 번에 찾을 때 쓴다.
+    """
+    users = state["users"]                                       # 사용자 딕셔너리를 꺼낸다
+    exceptions = state["exceptions"]                             # 예외 리스트를 꺼낸다
+    role_dept = state["role_dept"]                               # 역할별 부서 딕셔너리를 꺼낸다
+    results = []                                                 # 점검 결과를 모을 리스트
+    results.append({"name": "퇴사자 계정 점검", "problems": check_employed(users)})            # 첫째 점검 결과를 추가한다
+    results.append({"name": "만료 예외 점검", "problems": check_expired(exceptions, now)})     # 둘째 점검 결과를 추가한다
+    results.append({"name": "부서와 역할 점검", "problems": check_dept(users, role_dept)})     # 셋째 점검 결과를 추가한다
+    return results                                               # 점검 결과 리스트를 리턴한다
 ```
 
-**`req_sla.py`**
+- 들여쓰기는 미리 채운 줄에 맞춥니다.
+  - 세 함수 모두 `for` 안쪽이라 `if` · 변수 줄은 앞에 공백 8개이고, `if` 안쪽 `problems.append(…)` 는 4개 더(12개)입니다.
+  - 나머지 줄은 미리 채워 두었으니 그대로 둡니다.
+- 3번은 `datetime.strptime(문자열, TIME_FORMAT)` 으로 문자열을 시각으로 바꿉니다. Unit 1에서 예외의 만료 시각을 읽을 때와 같은 방법입니다.
+- 4번의 `<=` 는 「같거나 이전」입니다. 만료 시각 정각도 만료로 봅니다.
+- 6번의 `role_dept[info["role"]]` 는 키가 `info["role"]` 인 값을 찾습니다. 사용자의 역할이 `finance` 이면 `"재무"` 가 나옵니다.
+- 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다(파이썬 버전에 따라 뒤에 `after 'for' statement on line …` 가 붙습니다). `for` 아래에 실행할 줄이 아직 없기 때문입니다.
+
+**`exercise5-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 데이터 파일을 읽고 점검을 실행해 결과를 출력합니다.
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
-from config_loader import load_json                              # Unit 3에서 만든 안전한 읽기 함수를 불러온다
-from exception_policy import TIME_FORMAT                         # 시각 문자열의 형식("%Y-%m-%d %H:%M")을 불러온다
+from checklist import TIME_FORMAT, load_state, run_checklist     # 방금 만든 점검 함수를 불러온다
 
-SLA_HOURS = load_json("config/sla.json", {"hours": 4})["hours"]  # 처리 기한(시간). 파일이 없거나 깨졌으면 기본값 4
+NOW = datetime.strptime("2026-11-02 10:00", TIME_FORMAT)         # 점검하는 시각을 2026-11-02 10:00 으로 고정한다
+state = load_state("config/week_state.json")                     # 점검할 데이터 파일을 읽는다
+users = state["users"]                                           # 사용자 딕셔너리를 꺼낸다
+exceptions = state["exceptions"]                                 # 예외 리스트를 꺼낸다
 
-
-def check_sla_breach(requests, now):                             # 요청서 리스트와 지금 시각(datetime)을 받는 함수
-    """처리 기한(SLA_HOURS)을 넘긴 검토 중 요청서 리스트를 리턴한다.
-    오래 방치된 요청을 담당자에게 알릴 때 쓴다.
-    """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. 기한을 초과한 요청서를 담을 빈 리스트 breached 를 만든다
-    # 2. requests 에서 request 를 하나씩 꺼낸다
-    # 3.   request["status"] 가 "reviewing" 이면(검토 중인 것만 본다)
-    # 4.     request["requested_at"] 을 TIME_FORMAT 으로 시각으로 바꿔 requested 에 담는다
-    # 5.     (now - requested) 를 .total_seconds() 로 초 단위 숫자로 바꾸고 3600 으로 나눠 hours 에 담는다
-    # 6.     hours 가 SLA_HOURS 보다 크면(같으면 아직 아니다)
-    # 7.       request.copy() 로 요청서를 복사해 overdue 에 담는다
-    # 8.       overdue["wait_hours"] 를 round(hours, 1) 로 정한다 (지난 시간을 소수 첫째 자리까지 반올림)
-    # 9.       breached 에 overdue 를 추가한다
-    # 10. 반복이 끝나면 breached 를 리턴한다
-```
-
-- **영어 이름의 뜻**: `breach`(브리치)는 약속이나 기준을 「어기다」라는 뜻이고, `breached` 는 「어긴」입니다. 그래서 `check_sla_breach` 는 「SLA 를 어겼는지(기한을 초과했는지) 확인」, `breached` 는 「기한을 어긴 요청서를 담는 리스트」입니다.
-- 코드는 각 주석 바로 아래 줄에 씁니다. 주석 안에서 들여쓴 모양은 코드의 깊이를 보여 줍니다. 칸 수는 아래와 같습니다.
-- 칸 수: `breached = []` 와 `for` 는 4칸, `for` 아래의 `if request["status"] …` 는 8칸, 그 `if` 안의 두 줄(`requested` · `hours`)과 `if hours > …` 는 12칸, 그 `if` 안의 세 줄(`overdue` · `wait_hours` · `breached.append`)은 16칸, 마지막 `return` 은 4칸입니다.
-- `SLA_HOURS` 와 `TIME_FORMAT` 은 파일 위쪽에 이미 있습니다. 새로 만들지 않고 그대로 씁니다.
-- 채우기 전에 실행하면 단계 1은 정상으로 나오고, 단계 2에서 `TypeError: 'NoneType' object is not iterable` 오류가 납니다. 함수가 아무것도 리턴하지 않아 `for` 가 돌 리스트가 없기 때문입니다.
-
-**`exercise5-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 요청 여섯 건을 접수하고 4번을 승인한 뒤, 단계 1은 요청서 현황을 출력하고 단계 2는 `check_sla_breach` 로 기한을 초과한 요청서를 출력합니다.
-
-```python
-from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
-from req_create import REQUESTS, create_request                  # 실습 4-1에서 만든 요청서 함수와 리스트를 불러온다
-from req_review import approve_request                           # 실습 4-2에서 만든 승인 함수를 불러온다
-from req_sla import SLA_HOURS, check_sla_breach                  # 방금 만든 기한 점검 함수와 SLA 시간을 불러온다
-
-NOW = datetime.strptime("2026-10-23 14:00", "%Y-%m-%d %H:%M")    # 이번 실습의 지금 시각(고정)
-
-INBOX = [                                                        # 오늘 들어온 요청 여섯 건. (요청자, 자원, 행위, 희망 만료 시각, 이유, 접수 시각)
-    ("seoyeon", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 대조 지원", "2026-10-23 08:30"),    # 08:30 에 접수한 요청
-    ("gaeun", "SALES", "QUERY", "2026-10-28 18:00", "감사 자료 대응", "2026-10-23 10:30"),       # 10:30 에 접수한 요청
-    ("dami", "SALES", "QUERY", "2026-10-27 18:00", "인수인계 자료 확인", "2026-10-23 12:00"),    # 낮에 접수한 요청
-    ("junho", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 확인", "2026-10-23 09:00"),           # 나중에 승인해서 처리가 끝나게 될 요청
-    ("seoyeon", "ACCOUNT", "QUERY", "2026-10-27 18:00", "계정 권한 점검", "2026-10-23 07:50"),   # 07:50 에 접수한 요청
-    ("tester", "SALES", "QUERY", "2026-10-27 18:00", "시험 계정 확인", "2026-10-23 10:00"),      # 10:00 정각에 접수한 요청
-]
-for user, resource, action, until, reason, received_at in INBOX:         # 요청을 하나씩 꺼내
-    create_request(user, resource, action, until, reason, received_at)   # 접수한다
-approve_request(REQUESTS[3], "security_manager")                 # 4번(junho)은 이미 승인해 처리가 끝난 요청으로 만든다
-
-print("--- 단계 1: 현황 - SLA 시간", SLA_HOURS, "시간, 지금 14:00")   # 단계 1 시작을 알리는 줄
-for request in REQUESTS:                                         # 요청서를 하나씩 꺼낸다
-    print(request["id"], request["user"], request["status"], request["requested_at"])   # 번호 · 요청자 · 상태 · 접수 시각을 출력한다
-
-print("--- 단계 2: 판정 - SLA 를 초과한 요청")                       # 단계 2 시작을 알리는 줄
-for request in check_sla_breach(REQUESTS, NOW):                  # 기한을 초과한 요청서를 하나씩 꺼낸다
-    print(request["id"], request["user"], "접수", request["requested_at"], "->", request["wait_hours"], "시간 지남")   # 번호 · 요청자 · 접수 시각 · 지난 시간을 출력한다
+user_count = len(users)                                          # 사용자가 몇 명인지 센다
+exception_count = len(exceptions)                                # 예외가 몇 개인지 센다
+print("--- 단계 1: 점검 대상 - 사용자", user_count, "명 · 예외", exception_count, "개")  # 단계 1 시작을 알리는 줄
+results = run_checklist(state, NOW)                              # 점검 세 가지를 실행한다
+print("--- 단계 2: 점검 결과")                                      # 단계 2 시작을 알리는 줄
+for result in results:                                           # 점검 결과를 하나씩 꺼낸다
+    name = result["name"]                                        # 점검 이름을 꺼낸다
+    problems = result["problems"]                                # 문제가 있는 사용자 · 예외 리스트를 꺼낸다
+    if len(problems) == 0:                                       # 문제가 하나도 없으면
+        status = "통과"                                           # 통과라고 적는다
+    else:                                                        # 문제가 있으면
+        status = "실패"                                           # 실패라고 적는다
+    print(name, "|", status, "|", problems)                      # 점검 이름 | 결과 | 문제 리스트를 출력한다
 ```
 
 **순서**
 
-1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 세 가지 방법 중 **하나만** 고릅니다.
-   - **VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
-     1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
-     2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `req_sla.py` · `config/sla.json` · `exercise5-1_run.py` 입니다.
-     4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
-2. **[터미널]** 파일을 만든 뒤 `ls config` 를 쳐서 `sla.json` 이 `users.json` 과 같은 `config` 폴더 안에 있는지 확인합니다.
-   - `config` 안에 또 `config` 가 생겼다면 위치가 틀린 것이니 옮깁니다.
-   - `sla.json` 을 비워 두면 실행할 때 `[경고] 설정 파일 깨짐: config/sla.json` 이 나옵니다. 그래도 기본값 4로 돌아가 실행은 되니, 이 경고가 보이면 붙여 넣은 내용을 확인합니다.
-3. **[VS Code]** `req_sla.py` 의 `check_sla_breach` 본문을 직접 씁니다. 1.1 의 그림과 문법 상자를 보고 씁니다.
-4. **[터미널]** 위치가 `…/access_control` 인지 확인하고 실행합니다.
+1. **[VS Code]** 파일 `checklist.py` · `exercise5-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+2. **[VS Code]** `checklist.py` 에서 직접 쓰는 곳 세 군데를 씁니다. 1.1 의 표와 그림을 보고 씁니다.
+3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
    python exercise5-1_run.py
    ```
-   - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `exercise5-1_run.py` 실행할 파일
-   - 맥북은 `python3 exercise5-1_run.py` 로 칩니다.
-5. 출력은 두 단계입니다. 단계 1은 요청서 현황(여섯 줄)이고, 단계 2는 기한을 초과한 요청서와 지난 시간입니다.
-6. **[보고서]** `report_u5.md` 의 `## 실습 5-1` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
-   - (가) 실행한 출력 전체를 붙여 넣고, 접수한 뒤 4시간을 초과한 요청이 몇 번인지, 접수한 뒤 몇 시간이 지났는지 적어 주세요.
-   - (나) [핵심 질문] 승인자(`security_manager`)가 4시간을 초과하도록 처리하지 않은 요청을 찾았다면, 관제 담당은 누구에게 어떤 조치를 하면 좋을까요? 알림만 보낼 때와 윗사람에게 넘길 때(에스컬레이션)는 어떤 기준(예: 얼마나 더 지났을 때)으로 나누면 좋을까요?
-   - (다) [핵심 질문] 상태(`reviewing` 인지)는 확인하지 않고 접수 시각만 보고 기한을 따진다면, 리스트에 어떤 문제가 생기나요? 그 리스트를 받은 사람은 무엇이 곤란할까요?
+4. 출력은 두 단계입니다. 단계 1은 한 줄, 단계 2는 점검 이름 세 줄입니다.
+5. **[보고서]** `report_u5.md` 의 `## 실습 5-1` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
+   - (가) 실행한 출력 전체를 붙여 넣고, 통과한 점검과 실패한 점검, 실패한 점검에서 나온 사용자 이름이나 예외 번호를 적어 주세요.
+   - (나) [핵심 질문] 만료 예외 점검은 「통과」인데, 예외 3번은 퇴사한 dami 의 예외입니다. 「통과」를 「문제 없음」으로만 읽으면 안 되는 이유와, 이 예외를 볼 때 함께 읽어야 하는 다른 점검을 적어 주세요.
+   - (다) [핵심 질문] 점검은 junho 가 영업 부서인데 역할은 `finance` 라고 알려 줍니다. 점검 코드가 알려 주는 것과 알려 주지 못하는 것을 구분해 주세요. 그리고 이 결과를 받은 담당자가 무엇을 확인해야 하는지, 코드가 바로 권한을 회수하면 안 되는 이유가 무엇인지 적어 주세요.
 
 ## 실습 5-1 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 처리 기한 읽기 | `load_json("config/sla.json", {"hours": 4})["hours"]` |
-| 검토 중인 것만 보기 | `if request["status"] == "reviewing":` |
-| 접수 시각을 시각으로 | `datetime.strptime(request["requested_at"], TIME_FORMAT)` |
-| 걸린 시간(시간 단위) | `(now - requested).total_seconds() / 3600` |
-| 기한을 초과했는지 | `hours > SLA_HOURS` (정확히 같으면 아직 아님) |
-| 복사해서 지난 시간 적기 | `overdue = request.copy()` → `overdue["wait_hours"] = round(hours, 1)` |
+| 점검할 데이터 읽기 | `state = load_state("config/week_state.json")` (미리 채움) |
+| 사용자 이름과 정보 꺼내기 | `for name, info in users.items():` (미리 채움) |
+| 퇴사자 찾기 | `if not info["employed"]:` → `problems.append(name)` |
+| 만료 예외 찾기 | `datetime.strptime(exception["expires"], TIME_FORMAT)` → `if expires_at <= now:` → `problems.append(exception["id"])` |
+| 부서가 다른 사용자 찾기 | `role_dept[info["role"]]` → `if expected_dept != info["dept"]:` → `problems.append(name)` |
+| 통과 · 실패 | 문제 리스트가 비었으면 통과, 아니면 실패 |
 
 ---

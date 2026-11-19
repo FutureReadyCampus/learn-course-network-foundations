@@ -1,29 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
-<title>실습 5-2 정리: 저장은 with open 과 json.dump, 건수는 counts.get 으로 센다</title>
-<desc>save_requests 는 쓰기 모드로 파일을 열어 json.dump 로 쓰고 저장한 건수를 돌려줍니다. count_by_status 는 counts.get(상태, 0) 에 1을 더해 셉니다. 저장했는지는 load_json 으로 다시 읽어 확인합니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
+<title>실습 5-2 정리: 네 단계 틀과 데이터 파일·규칙 파일의 구분</title>
+<desc>상황이 생기면 확인, 원인, 고치기, 다시 확인 순서로 본다. 데이터는 users.json, exceptions.json, exclude_list.json 에, 규칙은 conditions.json 과 alert.json 에 있다. 새 권한은 요청·승인·부여, 회수는 계획·승인·실행·이력으로 처리한다.</desc>
 <defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">실습 5-2 정리</text>
-<text x="20" y="64" font-size="16" fill="#9a6200" font-weight="700">save_requests</text>
-<text x="380" y="64" font-size="16" fill="#9a6200" font-weight="700">count_by_status</text>
-<rect x="20" y="76" width="330" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="185" y="104.312" font-size="14" fill="#292929" text-anchor="middle">with open(path, "w", encoding="utf-8")</text>
-<rect x="20" y="146" width="330" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="185" y="172.512" font-size="14" fill="#292929" text-anchor="middle">json.dump(requests, f,</text>
-<text x="185" y="192.112" font-size="14" fill="#292929" text-anchor="middle">ensure_ascii=False, indent=2)</text>
-<rect x="20" y="232" width="330" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="185" y="258.312" font-size="14" fill="#292929" text-anchor="middle">return len(requests)</text>
-<rect x="380" y="76" width="320" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="540" y="104.312" font-size="14" fill="#292929" text-anchor="middle">old_count = counts.get(status, 0)</text>
-<rect x="380" y="146" width="320" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="540" y="172.512" font-size="14" fill="#292929" text-anchor="middle">counts[status] = old_count + 1</text>
-<text x="540" y="192.112" font-size="14" fill="#666660" text-anchor="middle">요청서마다 되풀이</text>
-<rect x="380" y="232" width="320" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="540" y="258.312" font-size="14" fill="#292929" text-anchor="middle">return counts</text>
-<polyline points="185,124 185,143" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
-<polyline points="185,210 185,229" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
-<polyline points="540,124 540,143" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
-<polyline points="540,210 540,229" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
-<text x="20" y="306" font-size="15" fill="#666660">확인: load_json("requests.json", []) 로 다시 읽어 건수를 본다</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 5-2 정리</text>
+<rect x="20" y="66" width="140" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="90" y="96.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">확인</text>
+<rect x="200" y="66" width="140" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="270" y="96.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">원인</text>
+<rect x="380" y="66" width="140" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="450" y="96.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">고치기</text>
+<rect x="560" y="66" width="140" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="630" y="96.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">다시 확인</text>
+<line x1="162" y1="91" x2="196" y2="91" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<line x1="342" y1="91" x2="376" y2="91" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<line x1="522" y1="91" x2="556" y2="91" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="20" y="140" width="330" height="100" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="185" y="175.5" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">데이터 파일</text>
+<text x="185" y="196.5" font-size="14" fill="#292929" text-anchor="middle">users.json · exceptions.json</text>
+<text x="185" y="216.8" font-size="14" fill="#292929" text-anchor="middle">exclude_list.json</text>
+<rect x="370" y="140" width="330" height="100" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="535" y="185.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">규칙 파일</text>
+<text x="535" y="206.6" font-size="14" fill="#292929" text-anchor="middle">conditions.json · alert.json</text>
+<rect x="20" y="260" width="330" height="80" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="185" y="294.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">새 권한</text>
+<text x="185" y="317" font-size="15" fill="#292929" text-anchor="middle">요청 → 승인 → 부여</text>
+<rect x="370" y="260" width="330" height="80" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="535" y="294.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">회수</text>
+<text x="535" y="317" font-size="15" fill="#292929" text-anchor="middle">계획 → 승인 → 실행 → 이력</text>
 </g>
 </svg>

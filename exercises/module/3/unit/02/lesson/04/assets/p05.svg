@@ -1,1 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img"><title>예외 하나를 만료 여부와 재직 여부 순서로 보고 회수나 유지를 정하는 순서도</title><desc>먼저 NOW &gt;= expires 이면 만료됨으로 회수합니다. 아니면 재직 중이 아닌 사용자의 예외를 퇴사자로 회수하고, 둘 다 아니면 유지합니다.</desc><defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif"><text x="360" y="32" font-size="18" text-anchor="middle" fill="#292929" font-weight="700">2.3 예외 리스트에서 회수할 것 찾기</text><rect x="250" y="50" width="220" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/><text font-size="15" text-anchor="middle" fill="#292929"><tspan x="360" y="77.25">예외 하나를 꺼낸다</tspan></text><line x1="360" y1="96" x2="360" y2="124" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p05)"/><rect x="180" y="128" width="360" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/><text font-size="15" text-anchor="middle" fill="#292929"><tspan x="360" y="158.25">만료 시각이 지났나? (NOW &gt;= expires)</tspan></text><line x1="543" y1="153" x2="571" y2="153" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p05)"/><text x="557" y="143" font-size="14" text-anchor="middle" fill="#666660">예</text><rect x="575" y="128" width="130" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/><text font-size="15" text-anchor="middle" fill="#292929"><tspan x="640" y="158.25">[회수] 만료됨</tspan></text><line x1="360" y1="180" x2="360" y2="214" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p05)"/><text x="370" y="202" font-size="14" text-anchor="start" fill="#666660">아니오</text><rect x="180" y="218" width="360" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/><text font-size="15" text-anchor="middle" fill="#292929"><tspan x="360" y="248.25">그 사용자가 재직 중이 아닌가?</tspan></text><line x1="543" y1="243" x2="571" y2="243" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p05)"/><text x="557" y="233" font-size="14" text-anchor="middle" fill="#666660">예</text><rect x="575" y="218" width="130" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/><text font-size="15" text-anchor="middle" fill="#292929"><tspan x="640" y="248.25">[회수] 퇴사자</tspan></text><line x1="360" y1="270" x2="360" y2="304" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p05)"/><text x="370" y="292" font-size="14" text-anchor="start" fill="#666660">아니오</text><rect x="270" y="308" width="180" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/><text font-size="15" text-anchor="middle" fill="#292929"><tspan x="360" y="335.25">[유지]</tspan></text><text x="360" y="388" font-size="15" text-anchor="middle" fill="#666660">둘 다 해당하면 첫 조건에 걸려 「만료됨」으로만 출력됩니다</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>실습 2-2를 실행하면 본인 승인 한 줄과 처리 여섯 줄, 요청서 리스트 네 줄이 나온다</title>
+<desc>req_review.py 와 exercise2-2_run.py 를 만들어 실행합니다. 단계 1은 본인 승인 시험이 False, 처리 여섯 건은 앞 네 건이 True, 뒤 두 건이 False 이고, 단계 2는 요청서 네 줄입니다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">실습 2-2 · 파일 두 개와 실행 결과</text>
+<rect x="24" y="56" width="270" height="290" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="40" y="82" font-size="16" fill="#292929" text-anchor="start" font-weight="700">access_control 폴더</text>
+<rect x="40" y="96" width="238" height="92" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="159" y="116.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">req_review.py</text>
+<text x="159" y="136.4" font-size="15" fill="#292929" text-anchor="middle">approve_request 직접 쓰기</text>
+<text x="159" y="156.4" font-size="15" fill="#292929" text-anchor="middle">reject_request</text>
+<text x="159" y="176.4" font-size="15" fill="#292929" text-anchor="middle">남은 부분 채우기</text>
+<rect x="40" y="200" width="238" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="159" y="226.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">exercise2-2_run.py</text>
+<text x="159" y="247.1" font-size="15" fill="#292929" text-anchor="middle">그대로 붙여 넣기</text>
+<rect x="40" y="278" width="238" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="159" y="308.4" font-size="14" fill="#292929" text-anchor="middle">python exercise2-2_run.py</text>
+<line x1="294" y1="200" x2="318" y2="200" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p05)"/>
+<rect x="320" y="56" width="380" height="228" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="336" y="82" font-size="16" fill="#292929" text-anchor="start" font-weight="700">단계 1: 처리 (일곱 줄)</text>
+<text x="340" y="104" font-size="15" fill="#292929" text-anchor="start">1 본인 승인</text>
+<text x="560" y="104" font-size="15" fill="#292929" text-anchor="start" font-weight="700">False</text>
+<text x="340" y="129" font-size="15" fill="#292929" text-anchor="start">1 승인</text>
+<text x="560" y="129" font-size="15" fill="#1f7a4a" text-anchor="start">True</text>
+<text x="340" y="154" font-size="15" fill="#292929" text-anchor="start">2 반려</text>
+<text x="560" y="154" font-size="15" fill="#1f7a4a" text-anchor="start">True</text>
+<text x="340" y="179" font-size="15" fill="#292929" text-anchor="start">3 승인</text>
+<text x="560" y="179" font-size="15" fill="#1f7a4a" text-anchor="start">True</text>
+<text x="340" y="204" font-size="15" fill="#292929" text-anchor="start">4 승인</text>
+<text x="560" y="204" font-size="15" fill="#1f7a4a" text-anchor="start">True</text>
+<text x="340" y="229" font-size="15" fill="#292929" text-anchor="start">1 승인 (다시)</text>
+<text x="560" y="229" font-size="15" fill="#292929" text-anchor="start" font-weight="700">False</text>
+<text x="340" y="254" font-size="15" fill="#292929" text-anchor="start">2 승인 (반려된 것)</text>
+<text x="560" y="254" font-size="15" fill="#292929" text-anchor="start" font-weight="700">False</text>
+<rect x="320" y="296" width="380" height="50" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="510" y="315.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">단계 2: 점검</text>
+<text x="510" y="335.4" font-size="15" fill="#292929" text-anchor="middle">요청서 네 줄 · 상태와 처리한 사람</text>
+</svg>

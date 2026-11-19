@@ -1,33 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>멈춰서 모두 통과되는 열림 기본 값 대신 모두 막는 닫힘 기본 값을 고릅니다</title>
-<desc>설정이 고장 났을 때 두 가지 결과를 비교합니다. 프로그램이 멈추면 현장에서 판정을 건너뛰어 모두 통과시키고(fail-open), 빈 설정을 쓰면 check_permission 이 모든 요청을 거부합니다(fail-closed).</desc>
-<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
-<text x="24" y="34" font-size="19" font-weight="700">왜 설정이 고장 나면 모두 거부하는가</text>
-<rect x="24" y="56" width="320" height="64" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="184" y="82.9" font-size="16" text-anchor="middle" font-weight="700">열림 기본 값</text>
-<text x="184" y="103.9" font-size="15" text-anchor="middle">fail-open</text>
-<rect x="24" y="148" width="320" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="184" y="179.4" font-size="15" text-anchor="middle">설정 파일 고장</text>
-<path d="M184,120 L184,146" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
-<rect x="24" y="228" width="320" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="184" y="259.4" font-size="15" text-anchor="middle">FileNotFoundError 로 멈춤</text>
-<path d="M184,200 L184,226" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
-<rect x="24" y="308" width="320" height="52" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="184" y="339.4" font-size="15" text-anchor="middle">판정을 건너뛰고 모두 통과</text>
-<path d="M184,280 L184,306" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
-<rect x="376" y="56" width="320" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="536" y="82.9" font-size="16" text-anchor="middle" font-weight="700">닫힘 기본 값</text>
-<text x="536" y="103.9" font-size="15" text-anchor="middle">fail-closed</text>
-<rect x="376" y="148" width="320" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="536" y="179.4" font-size="15" text-anchor="middle">설정 파일 고장</text>
-<path d="M536,120 L536,146" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
-<rect x="376" y="228" width="320" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="536" y="259.4" font-size="15" text-anchor="middle">빈 설정: 사용자 0명</text>
-<path d="M536,200 L536,226" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
-<rect x="376" y="308" width="320" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="536" y="339.4" font-size="15" text-anchor="middle">「사용자 파일에 있나?」에서 거부</text>
-<path d="M536,280 L536,306" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
-<text x="24" y="386" font-size="15" fill="#666660">멈추지 않고 모두 막는 쪽이 접근통제에 안전합니다</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img">
+<title>Unit 1~5 복습: 판정 함수, 예외와 최종 판정, 요청서 흐름 다음이 접근 점검</title>
+<desc>Unit 1은 역할·권한 파일과 check_permission, Unit 1·3은 기간 있는 예외와 evaluate_access, Unit 2·5는 요청서 접수부터 부여, SLA 점검, 이력 저장까지 만들었습니다. Unit 3은 부여된 권한을 점검합니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">Unit 1 ~ Unit 2 흐름 복습</text>
+<rect x="10" y="52" width="210" height="150" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="115" y="101.828" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 1</text>
+<text x="115" y="123.22" font-size="15" fill="#292929" text-anchor="middle">역할 · 권한 파일</text>
+<text x="115" y="143.212" font-size="14" fill="#292929" text-anchor="middle">check_permission</text>
+<text x="115" y="162.812" font-size="14" fill="#666660" text-anchor="middle">허용 리스트에 없으면 거부</text>
+<rect x="255" y="52" width="210" height="150" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="101.828" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 1 · Unit 1</text>
+<text x="360" y="123.22" font-size="15" fill="#292929" text-anchor="middle">기간이 정해진 예외</text>
+<text x="360" y="143.212" font-size="14" fill="#292929" text-anchor="middle">evaluate_access</text>
+<text x="360" y="162.812" font-size="14" fill="#666660" text-anchor="middle">만료 · 퇴사면 거부</text>
+<polyline points="223,127 251,127" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="500" y="52" width="210" height="150" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="605" y="91.328" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 2 · Unit 2</text>
+<text x="605" y="112.72" font-size="15" fill="#292929" text-anchor="middle">요청 → 승인 → 부여</text>
+<text x="605" y="133.72" font-size="15" fill="#292929" text-anchor="middle">SLA 점검 · 이력 저장</text>
+<text x="605" y="153.712" font-size="14" fill="#666660" text-anchor="middle">reviewing → approved</text>
+<text x="605" y="173.312" font-size="14" fill="#666660" text-anchor="middle">→ granted</text>
+<polyline points="468,127 496,127" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="160" y="228" width="400" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="256.928" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">Unit 3 · 이미 부여된 권한을 점검</text>
+<polyline points="605,202 605,252 564,252" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
 </g>
 </svg>

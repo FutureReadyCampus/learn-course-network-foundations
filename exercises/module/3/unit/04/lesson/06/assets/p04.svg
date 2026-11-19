@@ -1,24 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>실습 4-3 보고서 칸: (가) 네 건의 결과, (나) dami 를 막은 확인, (다) 만료 뒤 점검</title>
-<desc>실습 4-3 보고서에서 채울 칸입니다. (가)는 출력과 네 건의 결과, 핵심 질문 (나)는 3번 dami 를 막은 코드 확인, (다)는 만료 뒤 예외와 점검 담당 · 주기입니다.</desc>
-<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
-<text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">실습 4-3 · 정책 확인 후 예외 권한 부여 · 채울 칸</text>
-<rect x="30" y="56" width="670" height="100" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="46" y="82" font-size="16" fill="#292929" text-anchor="start" font-weight="700">(가) 출력 전체와 부여를 시도한 네 건</text>
-<rect x="60" y="97" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="86" y="110" font-size="15" fill="#292929" text-anchor="start">① 출력 전체 (코드 상자에 붙여 넣기)</text>
-<rect x="60" y="125" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="86" y="138" font-size="15" fill="#292929" text-anchor="start">② 네 건 각각의 결과</text>
-<rect x="30" y="168" width="670" height="100" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="46" y="194" font-size="16" fill="#292929" text-anchor="start" font-weight="700">(나) [핵심 질문] 승인한 3번 요청(dami)을 코드가 부여하지 않음</text>
-<rect x="60" y="209" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="86" y="222" font-size="15" fill="#292929" text-anchor="start">① 확인이 없을 때 생기는 일</text>
-<rect x="60" y="237" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="86" y="250" font-size="15" fill="#292929" text-anchor="start">② 승인자가 미리 막기 어려운 이유</text>
-<rect x="30" y="280" width="670" height="100" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="46" y="306" font-size="16" fill="#292929" text-anchor="start" font-weight="700">(다) [핵심 질문] 희망 만료 시각이 지나면 예외는?</text>
-<rect x="60" y="321" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="86" y="334" font-size="15" fill="#292929" text-anchor="start">① 만료 뒤 예외가 어떻게 되는지</text>
-<rect x="60" y="349" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="86" y="362" font-size="15" fill="#292929" text-anchor="start">② 점검을 누가 얼마나 자주 할지</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>도전 4-2은 파일 세 개를 만들고 conditional.py 의 세 함수에 2~4줄씩 쓴다</title>
+<desc>conditions.json 과 challenge4-2_run.py 는 그대로 붙여 넣는다. conditional.py 에서는 is_work_time(1~3번), is_allowed_network(4·5번), evaluate_conditional(6~9번)을 쓰고, 실행하면 판정 여덟 줄과 조건 세 줄이 나온다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 4-2 · 만들 파일과 직접 쓰는 곳</text>
+<rect x="20" y="52" width="220" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="130" y="78.5" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">config/conditions.json</text>
+<text x="130" y="101.7" font-size="15" fill="#292929" text-anchor="middle">그대로 붙여 넣기</text>
+<rect x="20" y="130" width="220" height="140" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="130" y="172.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">conditional.py</text>
+<text x="130" y="195.9" font-size="15" fill="#292929" text-anchor="middle">직접 쓰는 곳 세 군데</text>
+<text x="130" y="217.7" font-size="15" fill="#292929" text-anchor="middle">load_rules 와 마지막</text>
+<text x="130" y="239.4" font-size="15" fill="#292929" text-anchor="middle">return 은 미리 채움</text>
+<rect x="20" y="284" width="220" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="130" y="310.5" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">challenge4-2_run.py</text>
+<text x="130" y="333.7" font-size="15" fill="#292929" text-anchor="middle">그대로 붙여 넣기</text>
+<rect x="280" y="52" width="420" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="490" y="78.5" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">is_work_time · 1 ~ 3번</text>
+<text x="490" y="101.7" font-size="15" fill="#292929" text-anchor="middle">return start &lt;= hour &lt; end</text>
+<polyline points="241,200 279,84" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="280" y="128" width="420" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="490" y="154.5" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">is_allowed_network · 4 · 5번</text>
+<text x="490" y="177.7" font-size="15" fill="#292929" text-anchor="middle">return network in allowed_networks</text>
+<polyline points="241,200 279,160" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="280" y="204" width="420" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="490" y="230.5" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">evaluate_conditional · 6 ~ 9번</text>
+<text x="490" y="253.7" font-size="15" fill="#292929" text-anchor="middle">if not … : return False, 이유</text>
+<polyline points="241,200 279,236" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<polyline points="241,316 279,316" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="280" y="284" width="420" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="490" y="310.5" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">python challenge4-2_run.py</text>
+<text x="490" y="333.7" font-size="15" fill="#292929" text-anchor="middle">단계 1: 판정 8줄 · 단계 2: 조건 3줄</text>
+<text x="20" y="384" font-size="15" fill="#666660">채우기 전에 실행하면 IndentationError: expected an indented block</text>
+</g>
 </svg>

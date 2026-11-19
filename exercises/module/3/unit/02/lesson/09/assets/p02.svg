@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>실습 2-1 정답: 요청 일곱 건 중 네 건은 접수되고 세 건은 각기 다른 if 조건에 걸린다</title>
+<desc>앞의 네 건은 요청 번호 1~4로 접수됩니다. hana 는 user not in USERS, seoyeon 의 ACCOUNT:QUERY 는 reason == "", gaeun 의 ACCOUNT:QUERY 는 until &lt;= received_at 에 걸립니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">실습 2-1 정답 · 일곱 건의 접수 결과</text>
+<rect x="24" y="52" width="240" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="38" y="73.6" font-size="15" fill="#292929" text-anchor="start">seoyeon SETTLE QUERY</text>
+<line x1="264" y1="69" x2="290" y2="69" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<rect x="292" y="52" width="408" height="34" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="306" y="73.6" font-size="15" fill="#292929" text-anchor="start">접수됨 · 요청 번호 1</text>
+<rect x="24" y="94" width="240" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="38" y="115.6" font-size="15" fill="#292929" text-anchor="start">gaeun SALES QUERY</text>
+<line x1="264" y1="111" x2="290" y2="111" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<rect x="292" y="94" width="408" height="34" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="306" y="115.6" font-size="15" fill="#292929" text-anchor="start">접수됨 · 요청 번호 2</text>
+<rect x="24" y="136" width="240" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="38" y="157.6" font-size="15" fill="#292929" text-anchor="start">dami SALES QUERY</text>
+<line x1="264" y1="153" x2="290" y2="153" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<rect x="292" y="136" width="408" height="34" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="306" y="157.6" font-size="15" fill="#292929" text-anchor="start">접수됨 · 요청 번호 3</text>
+<rect x="24" y="178" width="240" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="38" y="199.6" font-size="15" fill="#292929" text-anchor="start">junho SETTLE QUERY</text>
+<line x1="264" y1="195" x2="290" y2="195" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<rect x="292" y="178" width="408" height="34" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="306" y="199.6" font-size="15" fill="#292929" text-anchor="start">접수됨 · 요청 번호 4</text>
+<rect x="24" y="220" width="240" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="38" y="241.6" font-size="15" fill="#292929" text-anchor="start">hana SALES QUERY</text>
+<line x1="264" y1="237" x2="290" y2="237" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<rect x="292" y="220" width="408" height="34" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="306" y="241.6" font-size="15" fill="#292929" text-anchor="start">등록되지 않은 사용자 · user not in USERS</text>
+<rect x="24" y="262" width="240" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="38" y="283.6" font-size="15" fill="#292929" text-anchor="start">seoyeon ACCOUNT QUERY</text>
+<line x1="264" y1="279" x2="290" y2="279" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<rect x="292" y="262" width="408" height="34" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="306" y="283.6" font-size="15" fill="#292929" text-anchor="start">이유가 없음 · reason == ""</text>
+<rect x="24" y="304" width="240" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="38" y="325.6" font-size="15" fill="#292929" text-anchor="start">gaeun ACCOUNT QUERY</text>
+<line x1="264" y1="321" x2="290" y2="321" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<rect x="292" y="304" width="408" height="34" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="306" y="325.6" font-size="15" fill="#292929" text-anchor="start">만료 시각이 이미 지났음 · until &lt;= received_at</text>
+<rect x="24" y="360" width="676" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="362" y="383.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">자주 틀리는 곳: REQUESTS.append(request) 를 빼먹으면</text>
+<text x="362" y="405.8" font-size="15" fill="#292929" text-anchor="middle">요청 번호가 모두 1 로 나오고 단계 2 리스트가 비어 나옵니다</text>
+</svg>

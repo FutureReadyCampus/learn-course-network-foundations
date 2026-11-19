@@ -1,29 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
-<title>보고서는 질문마다 쓸 내용을 보고 답: 뒤에 이유까지 씁니다</title>
-<desc>질문, 쓸 내용, 답 칸의 순서로 보고서를 채우는 방법을 보여 줍니다. 코드와 출력은 빈 코드 상자에, 핵심 질문은 이유까지 쓰고 모르면 「모름 — 막힌 곳」으로 적습니다.</desc>
-<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
-<text x="24" y="34" font-size="19" font-weight="700">보고서 쓰는 법</text>
-<text x="24" y="66" font-size="15" fill="#666660">문제를 하나 풀 때마다 그 문제 제목 아래를 채웁니다</text>
-<rect x="24" y="84" width="200" height="72" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="124" y="114.9" font-size="16" text-anchor="middle" font-weight="700">질문</text>
-<text x="124" y="135.9" font-size="15" text-anchor="middle">(가) · (나) · (다)</text>
-<rect x="260" y="84" width="200" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="360" y="114.9" font-size="16" text-anchor="middle" font-weight="700">쓸 내용:</text>
-<text x="360" y="135.9" font-size="15" text-anchor="middle">무엇을 쓸지 확인</text>
-<rect x="496" y="84" width="200" height="72" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="596" y="114.9" font-size="16" text-anchor="middle" font-weight="700">답:</text>
-<text x="596" y="135.9" font-size="15" text-anchor="middle">그 내용대로 쓰기</text>
-<path d="M224,120 L258,120" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p01)"/>
-<path d="M460,120 L494,120" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p01)"/>
-<rect x="24" y="190" width="320" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="184" y="220.9" font-size="16" text-anchor="middle" font-weight="700">코드 · 출력을 붙일 때</text>
-<text x="184" y="241.9" font-size="15" text-anchor="middle">답: 아래 빈 코드 상자 안에</text>
-<rect x="376" y="190" width="320" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="536" y="220.9" font-size="16" text-anchor="middle" font-weight="700">「왜 그럴까요?」 질문</text>
-<text x="536" y="241.9" font-size="15" text-anchor="middle">본 값 · 배운 내용으로 이유까지</text>
-<rect x="24" y="282" width="672" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360" y="308.9" font-size="15" text-anchor="middle">[핵심 질문] 은 꼭 이유까지 설명합니다</text>
-<text x="360" y="329.9" font-size="15" text-anchor="middle">답을 못 찾았으면 「모름 — 막힌 곳: …」 이라고 씁니다</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
+<title>도전 2-2: 요청서와 지금 시각을 받아 기한을 초과한 요청서를 골라낸다</title>
+<desc>요청서 여섯 장과 지금 시각 14:00 이 check_sla_breach 에 들어갑니다. 함수는 config/sla.json 의 4시간을 기준으로 검토 중인 요청서만 따져, 기한을 초과한 요청서에 wait_hours 를 적어 돌려줍니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">도전 2-2 · 무엇을 만드나</text>
+<rect x="29" y="70" width="190" height="120" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="124" y="113.928" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">입력</text>
+<text x="124" y="135.32" font-size="15" fill="#292929" text-anchor="middle">요청서 여섯 장</text>
+<text x="124" y="156.32" font-size="15" fill="#292929" text-anchor="middle">지금 시각 14:00</text>
+<rect x="255" y="70" width="210" height="120" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="113.928" font-size="16" fill="#9a6200" text-anchor="middle" font-weight="700">check_sla_breach</text>
+<text x="360" y="135.32" font-size="15" fill="#292929" text-anchor="middle">검토 중이고</text>
+<text x="360" y="156.32" font-size="15" fill="#292929" text-anchor="middle">4시간을 초과했나?</text>
+<polyline points="222,130 251,130" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="501" y="70" width="190" height="120" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="596" y="113.928" font-size="16" fill="#1f7a4a" text-anchor="middle" font-weight="700">출력</text>
+<text x="596" y="135.32" font-size="15" fill="#292929" text-anchor="middle">기한 초과 요청서</text>
+<text x="596" y="156.32" font-size="15" fill="#292929" text-anchor="middle">+ wait_hours</text>
+<polyline points="468,130 497,130" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="255" y="236" width="210" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="262.512" font-size="14" fill="#292929" text-anchor="middle">config/sla.json</text>
+<text x="360" y="282.112" font-size="14" fill="#292929" text-anchor="middle">{"hours": 4}</text>
+<polyline points="360,234 360,194" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="501" y="236" width="190" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="596" y="262.82" font-size="15" fill="#292929" text-anchor="middle">보고서 (가)~(다)</text>
+<text x="596" y="282.812" font-size="14" fill="#666660" text-anchor="middle">출력을 읽고 답하기</text>
+<polyline points="596,190 596,232" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<text x="30" y="262" font-size="14" fill="#666660">SLA 시간은 코드에 쓰지 않고</text>
+<text x="30" y="284" font-size="14" fill="#666660">설정 파일에서 읽는다</text>
 </g>
 </svg>

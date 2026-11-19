@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>assign_role 은 역할을 먼저 검사하고, revoke_access 는 employed 만 바꿉니다</title>
+<desc>도전 1-2 정답의 두 함수 흐름입니다. 없는 역할은 부여하지 않고, 회수는 항목을 지우지 않고 employed 를 False 로 바꿉니다. 그래서 hana 는 사용자에 들어가지 않고, junho 는 「퇴사한 계정」으로 거부됩니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+<text x="24" y="34" font-size="19" font-weight="700">도전 1-2 정답 · 부여와 회수</text>
+<rect x="24" y="60" width="150" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="99" y="86.9" font-size="16" text-anchor="middle" font-weight="700">assign_role</text>
+<text x="99" y="107.9" font-size="15" text-anchor="middle">(name, role)</text>
+<rect x="198" y="60" width="150" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="273" y="86.9" font-size="15" text-anchor="middle">role 이</text>
+<text x="273" y="107.9" font-size="15" text-anchor="middle">ROLES 에 있나?</text>
+<rect x="372" y="60" width="150" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="447" y="86.9" font-size="15" text-anchor="middle">users[name] =</text>
+<text x="447" y="107.9" font-size="15" text-anchor="middle">새 역할 · 재직</text>
+<rect x="546" y="60" width="150" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="621" y="97.4" font-size="15" text-anchor="middle">(True, '부여')</text>
+<rect x="188" y="160" width="172" height="48" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="274" y="189" font-size="14" text-anchor="middle">(False, '없는 역할')</text>
+<path d="M174,92 L196,92" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<path d="M348,92 L370,92" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<text x="352" y="84" font-size="14" fill="#666660">예</text>
+<path d="M522,92 L544,92" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<path d="M273,124 L273,158" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<text x="282" y="146" font-size="14" fill="#666660">아니오</text>
+<rect x="24" y="228" width="150" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="99" y="254.9" font-size="16" text-anchor="middle" font-weight="700">revoke_access</text>
+<text x="99" y="275.9" font-size="15" text-anchor="middle">(name)</text>
+<rect x="198" y="228" width="150" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="273" y="254.9" font-size="15" text-anchor="middle">name 이</text>
+<text x="273" y="275.9" font-size="15" text-anchor="middle">users 에 있나?</text>
+<rect x="372" y="228" width="150" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="447" y="254.9" font-size="15" text-anchor="middle">employed</text>
+<text x="447" y="275.9" font-size="15" text-anchor="middle">= False</text>
+<rect x="546" y="228" width="150" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="621" y="265.4" font-size="15" text-anchor="middle">(True, '회수')</text>
+<rect x="188" y="328" width="172" height="48" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="274" y="357" font-size="14" text-anchor="middle">(False, '없는 사용자')</text>
+<path d="M174,260 L196,260" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<path d="M348,260 L370,260" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<text x="352" y="252" font-size="14" fill="#666660">예</text>
+<path d="M522,260 L544,260" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<path d="M273,292 L273,326" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p02)"/>
+<text x="282" y="314" font-size="14" fill="#666660">아니오</text>
+<text x="372" y="170" font-size="14" fill="#666660">hana: 'salse' 는 ROLES 에 없어 거부</text>
+<text x="372" y="192" font-size="14" fill="#666660">→ 사용자 항목도 만들지 않음</text>
+<text x="372" y="338" font-size="14" fill="#666660">seoyeon: sales → finance 로 바꿈</text>
+<text x="372" y="360" font-size="14" fill="#666660">→ SALES CHANGE 거부, SETTLE QUERY 허용</text>
+<text x="24" y="404" font-size="15">역할을 하나 더 붙이지 않고 새 역할로 바꿔서 이전 권한이 남지 않게 합니다</text>
+</g>
+</svg>

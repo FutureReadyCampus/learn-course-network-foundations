@@ -1,42 +1,46 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>세 경로로 일부러 고장을 만들어 경고와 빈 설정이 나오는지 시험합니다</title>
-<desc>정상 파일, 없는 경로, 마지막 쉼표가 남은 깨진 파일을 load_json 으로 읽어 결과를 비교합니다. 기본값은 원래 자료와 같은 모양이어서 사용자 파일은 {}, 예외 파일은 [] 입니다.</desc>
-<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
-<text x="24" y="34" font-size="19" font-weight="700">1.2 고장을 일부러 만들어 시험하기</text>
-<rect x="24" y="52" width="250" height="36" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="149" y="75.4" font-size="16" text-anchor="middle" font-weight="700">경로</text>
-<rect x="280" y="52" width="190" height="36" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="375" y="75.4" font-size="16" text-anchor="middle" font-weight="700">상태</text>
-<rect x="476" y="52" width="220" height="36" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="586" y="75.4" font-size="16" text-anchor="middle" font-weight="700">기대하는 일</text>
-<rect x="24" y="94" width="250" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="149" y="129.4" font-size="15" text-anchor="middle">config/users.json</text>
-<rect x="280" y="94" width="190" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="375" y="129.4" font-size="15" text-anchor="middle">정상 파일</text>
-<rect x="476" y="94" width="220" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="586" y="118.9" font-size="15" text-anchor="middle">사용자 6명을 읽고</text>
-<text x="586" y="139.9" font-size="15" text-anchor="middle">판정을 계속</text>
-<rect x="24" y="160" width="250" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="149" y="195.4" font-size="15" text-anchor="middle">config/users_typo.json</text>
-<rect x="280" y="160" width="190" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="375" y="184.9" font-size="15" text-anchor="middle">없는 경로</text>
-<text x="375" y="205.9" font-size="15" text-anchor="middle">FileNotFoundError</text>
-<rect x="476" y="160" width="220" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="586" y="184.9" font-size="15" text-anchor="middle">경고 + 빈 설정</text>
-<text x="586" y="205.9" font-size="15" text-anchor="middle">(0명) → 모두 거부</text>
-<rect x="24" y="226" width="250" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="149" y="261.4" font-size="15" text-anchor="middle">config/users_broken.json</text>
-<rect x="280" y="226" width="190" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="375" y="250.9" font-size="15" text-anchor="middle">마지막 쉼표</text>
-<text x="375" y="271.9" font-size="15" text-anchor="middle">JSONDecodeError</text>
-<rect x="476" y="226" width="220" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="586" y="250.9" font-size="15" text-anchor="middle">경고 + 빈 설정</text>
-<text x="586" y="271.9" font-size="15" text-anchor="middle">(0명) → 모두 거부</text>
-<text x="24" y="314" font-size="16" font-weight="700">기본값은 원래 자료와 같은 모양</text>
-<rect x="24" y="328" width="320" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="184" y="355.4" font-size="15" text-anchor="middle">사용자 파일 (딕셔너리) → {}</text>
-<rect x="376" y="328" width="320" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="536" y="355.4" font-size="15" text-anchor="middle">예외 파일 (리스트) → []</text>
+<title>현황 리스트의 한 건은 사용자 한 명의 권한 하나를 적은 딕셔너리다</title>
+<desc>한 건은 user, permission, source, employed 키를 가진 딕셔너리이고, 예외로 받은 권한에만 expires 가 있습니다. 역할로 받으면 그 역할의 권한이 모두 들어오고, 예외로 받으면 기간이 정해진 권한 한 건이 들어옵니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">현황 리스트의 한 건 (entry)</text>
+<rect x="20" y="52" width="130" height="36" rx="4" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="85" y="74.928" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">키</text>
+<rect x="150" y="52" width="270" height="36" rx="4" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="285" y="74.928" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">값의 예</text>
+<rect x="20" y="88" width="130" height="40" rx="0" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="112.312" font-size="14" fill="#292929">user</text>
+<rect x="150" y="88" width="270" height="40" rx="0" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="162" y="112.312" font-size="14" fill="#292929">"seoyeon"</text>
+<rect x="20" y="128" width="130" height="40" rx="0" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="152.312" font-size="14" fill="#292929">permission</text>
+<rect x="150" y="128" width="270" height="40" rx="0" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="162" y="152.312" font-size="14" fill="#292929">"SALES:QUERY"</text>
+<rect x="20" y="168" width="130" height="40" rx="0" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="192.312" font-size="14" fill="#292929">source</text>
+<rect x="150" y="168" width="270" height="40" rx="0" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="162" y="192.312" font-size="14" fill="#292929">"역할 sales" · "예외 1번"</text>
+<rect x="20" y="208" width="130" height="40" rx="0" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="232.312" font-size="14" fill="#292929">employed</text>
+<rect x="150" y="208" width="270" height="40" rx="0" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="162" y="232.312" font-size="14" fill="#292929">True · False</text>
+<rect x="20" y="248" width="130" height="40" rx="0" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="32" y="272.312" font-size="14" fill="#292929">expires</text>
+<rect x="150" y="248" width="270" height="40" rx="0" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="162" y="272.312" font-size="14" fill="#292929">"2026-10-22 18:00"</text>
+<text x="20" y="312" font-size="14" fill="#9a6200">노란 줄 expires 는 예외로 받은 권한에만 있다</text>
+<rect x="450" y="52" width="250" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="575" y="81.128" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">역할로 받으면</text>
+<text x="575" y="102.52" font-size="15" fill="#292929" text-anchor="middle">roles.json 의 권한이</text>
+<text x="575" y="123.52" font-size="15" fill="#292929" text-anchor="middle">모두 들어온다</text>
+<text x="575" y="143.512" font-size="14" fill="#666660" text-anchor="middle">expires 없음</text>
+<rect x="450" y="182" width="250" height="110" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="575" y="211.128" font-size="16" fill="#9a6200" text-anchor="middle" font-weight="700">예외로 받으면</text>
+<text x="575" y="232.52" font-size="15" fill="#292929" text-anchor="middle">exceptions.json 의</text>
+<text x="575" y="253.52" font-size="15" fill="#292929" text-anchor="middle">기간이 정해진 권한 한 건</text>
+<text x="575" y="273.512" font-size="14" fill="#666660" text-anchor="middle">expires 있음</text>
+<rect x="20" y="330" width="680" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="352.82" font-size="15" fill="#292929" text-anchor="middle">같은 사용자가 권한을 세 개 가졌으면 세 건</text>
+<text x="360" y="372.812" font-size="14" fill="#666660" text-anchor="middle">batch-night 은 밤에 도는 집계 프로그램의 계정 (employed 는 True)</text>
 </g>
 </svg>

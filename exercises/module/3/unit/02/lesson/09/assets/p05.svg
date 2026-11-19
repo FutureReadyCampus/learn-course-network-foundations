@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>도전 2-2 정답: 1번 5.5시간, 5번 6.2시간이 기한 초과이고 6번은 정확히 4시간</title>
+<desc>정답 출력의 단계 2에는 1번(08:30 접수, 5.5시간)과 5번(07:50 접수, 6.2시간)이 나옵니다. 6번은 정확히 4시간이라 초과가 아닙니다. 3600 으로 나누지 않거나 &gt;= 를 쓰면 결과가 틀어집니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">정답 출력 · 단계 2 (SLA 를 초과한 요청)</text>
+<rect x="20" y="50" width="680" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="32" y="74.312" font-size="14" fill="#292929">1 seoyeon 접수 2026-10-23 08:30 -&gt; 5.5 시간 지남</text>
+<rect x="20" y="98" width="680" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="32" y="122.312" font-size="14" fill="#292929">5 seoyeon 접수 2026-10-23 07:50 -&gt; 6.2 시간 지남</text>
+<rect x="20" y="146" width="680" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="170.62" font-size="15" fill="#292929">6번은 10:00 접수로 정확히 4시간 → 초과 아님 · 4번은 승인돼서 제외</text>
+<text x="20" y="230" font-size="17" fill="#292929" font-weight="700">자주 틀리는 곳</text>
+<rect x="20" y="246" width="330" height="110" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="185" y="284.928" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">/ 3600 을 빼먹으면</text>
+<text x="185" y="306.32" font-size="15" fill="#292929" text-anchor="middle">초 단위 숫자(예: 19800.0)라</text>
+<text x="185" y="327.32" font-size="15" fill="#292929" text-anchor="middle">검토 중 다섯 장이 모두 초과로 나옴</text>
+<rect x="370" y="246" width="330" height="110" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="535" y="284.928" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">&gt; 대신 &gt;= 를 쓰면</text>
+<text x="535" y="306.32" font-size="15" fill="#292929" text-anchor="middle">정확히 4시간인 6번도</text>
+<text x="535" y="327.32" font-size="15" fill="#292929" text-anchor="middle">초과로 나옴</text>
+</g>
+</svg>

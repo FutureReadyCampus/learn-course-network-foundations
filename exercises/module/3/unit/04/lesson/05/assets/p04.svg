@@ -1,56 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>실습 4-3 정답: 1번 seoyeon 만 예외 6번을 받아 부여 후 판정이 True 로 바뀐다</title>
-<desc>요청서 네 장의 부여 전 판정, 부여 시도 결과, 부여 후 판정을 표로 비교합니다. 2번은 반려, 3번은 퇴사한 계정, 4번은 이미 허용이라 부여하지 않고, 1번만 예외 6번이 부여됩니다.</desc>
-<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
-<text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">실습 4-3 정답 · 단계 1 · 2 · 3 비교</text>
-<text x="80" y="66" font-size="15" fill="#666660" text-anchor="middle" font-weight="700">요청서</text>
-<text x="225" y="66" font-size="15" fill="#666660" text-anchor="middle" font-weight="700">단계 1 부여 전</text>
-<text x="425" y="66" font-size="15" fill="#666660" text-anchor="middle" font-weight="700">단계 2 부여</text>
-<text x="625" y="66" font-size="15" fill="#666660" text-anchor="middle" font-weight="700">단계 3 부여 후</text>
-<rect x="20" y="80" width="120" height="54" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="80" y="111.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">1 seoyeon</text>
-<rect x="150" y="80" width="150" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="225" y="101.4" font-size="15" fill="#292929" text-anchor="middle">False</text>
-<text x="225" y="121.4" font-size="15" fill="#292929" text-anchor="middle">권한 없음</text>
-<rect x="310" y="80" width="230" height="54" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="425" y="101.4" font-size="15" fill="#292929" text-anchor="middle">True</text>
-<text x="425" y="121.4" font-size="15" fill="#292929" text-anchor="middle">부여</text>
-<rect x="550" y="80" width="150" height="54" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="625" y="101.4" font-size="15" fill="#292929" text-anchor="middle">True</text>
-<text x="625" y="121.4" font-size="15" fill="#292929" text-anchor="middle">예외 6번</text>
-<rect x="20" y="142" width="120" height="54" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="80" y="173.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">2 gaeun</text>
-<rect x="150" y="142" width="150" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="225" y="163.4" font-size="15" fill="#292929" text-anchor="middle">False</text>
-<text x="225" y="183.4" font-size="15" fill="#292929" text-anchor="middle">권한 없음</text>
-<rect x="310" y="142" width="230" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="425" y="163.4" font-size="15" fill="#292929" text-anchor="middle">False</text>
-<text x="425" y="183.4" font-size="15" fill="#292929" text-anchor="middle">승인되지 않음</text>
-<rect x="550" y="142" width="150" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="625" y="163.4" font-size="15" fill="#292929" text-anchor="middle">False</text>
-<text x="625" y="183.4" font-size="15" fill="#292929" text-anchor="middle">권한 없음</text>
-<rect x="20" y="204" width="120" height="54" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="80" y="235.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">3 dami</text>
-<rect x="150" y="204" width="150" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="225" y="225.4" font-size="15" fill="#292929" text-anchor="middle">False</text>
-<text x="225" y="245.4" font-size="15" fill="#292929" text-anchor="middle">퇴사한 계정</text>
-<rect x="310" y="204" width="230" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="425" y="225.4" font-size="15" fill="#292929" text-anchor="middle">False</text>
-<text x="425" y="245.4" font-size="15" fill="#292929" text-anchor="middle">부여하지 않음(퇴사한 계정)</text>
-<rect x="550" y="204" width="150" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="625" y="225.4" font-size="15" fill="#292929" text-anchor="middle">False</text>
-<text x="625" y="245.4" font-size="15" fill="#292929" text-anchor="middle">퇴사한 계정</text>
-<rect x="20" y="266" width="120" height="54" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="80" y="297.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">4 junho</text>
-<rect x="150" y="266" width="150" height="54" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="225" y="287.4" font-size="15" fill="#292929" text-anchor="middle">True</text>
-<text x="225" y="307.4" font-size="15" fill="#292929" text-anchor="middle">역할 권한</text>
-<rect x="310" y="266" width="230" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="425" y="287.4" font-size="15" fill="#292929" text-anchor="middle">False</text>
-<text x="425" y="307.4" font-size="15" fill="#292929" text-anchor="middle">부여하지 않음(허용)</text>
-<rect x="550" y="266" width="150" height="54" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="625" y="287.4" font-size="15" fill="#292929" text-anchor="middle">True</text>
-<text x="625" y="307.4" font-size="15" fill="#292929" text-anchor="middle">역할 권한</text>
-<rect x="20" y="336" width="680" height="54" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360" y="367.6" font-size="15" fill="#292929" text-anchor="middle">부여된 예외 번호: 6 · 부여 전과 후에 달라진 줄은 1번 seoyeon 하나</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>두 갈림길로 예외 삭제, 역할 해제, 역할에서 권한 빼기 중 하나를 고릅니다</title>
+<desc>source 에 「예외」가 있으면 예외 삭제, 없고 퇴사한 사용자이면 역할 해제, 그 밖이면 역할에서 권한 빼기입니다. 방법마다 지울 대상(target)과 영향(impact)이 다릅니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">1.1 회수 방법 고르기 — 두 갈림길과 세 방법</text>
+<rect x="20" y="60" width="240" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="140" y="93.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">source 에 「예외」가 있나?</text>
+<path d="M260 88 L318 88" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<text x="272" y="80" font-size="14" fill="#666660" text-anchor="start">있다</text>
+<rect x="320" y="60" width="380" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="510" y="93.2" font-size="15" fill="#292929" text-anchor="middle">① 예외 삭제 · target 예외 번호 · 영향 1</text>
+<path d="M140 116 L140 158" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<text x="150" y="143" font-size="14" fill="#666660" text-anchor="start">없다</text>
+<rect x="20" y="160" width="240" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="140" y="193.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">퇴사한 사용자인가?</text>
+<path d="M260 188 L318 188" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<text x="264" y="180" font-size="14" fill="#666660" text-anchor="start">그렇다</text>
+<rect x="320" y="150" width="380" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="510" y="182.8" font-size="15" fill="#292929" text-anchor="middle">② 역할 해제 · target 사용자 이름</text>
+<text x="510" y="203.8" font-size="15" fill="#292929" text-anchor="middle">영향 = 역할에 든 권한 수 (dami 2)</text>
+<path d="M140 216 L140 288 L318 288" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<text x="150" y="254" font-size="14" fill="#666660" text-anchor="start">아니다</text>
+<rect x="320" y="250" width="380" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="510" y="282.8" font-size="15" fill="#292929" text-anchor="middle">③ 역할에서 권한 빼기 · target 역할 이름</text>
+<text x="510" y="303.8" font-size="15" fill="#292929" text-anchor="middle">영향 = 그 역할의 사용자 수 (junho 1)</text>
+<rect x="20" y="350" width="680" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360" y="381.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">계획 한 건 = 회수 대상 + method · target · impact</text>
+</g>
 </svg>

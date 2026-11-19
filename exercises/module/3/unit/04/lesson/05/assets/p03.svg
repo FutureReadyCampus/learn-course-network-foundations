@@ -1,44 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>실습 4-2 정답: 본인 승인과 두 번째 처리 두 건이 막히고, 나머지 네 건은 처리된다</title>
-<desc>본인 승인은 본인 요청은 처리할 수 없음, 다시 처리한 1번과 2번은 검토 중이 아님으로 막힙니다. 단계 2에서 1 · 3 · 4번은 approved, 2번은 rejected 이고 처리한 사람은 모두 security_manager 입니다.</desc>
-<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
-<text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">실습 4-2 정답 · 단계 1의 일곱 줄</text>
-<rect x="24" y="52" width="220" height="32" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="38" y="72.6" font-size="15" fill="#292929" text-anchor="start">1 본인 승인</text>
-<line x1="244" y1="68" x2="270" y2="68" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p03)"/>
-<rect x="272" y="52" width="428" height="32" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="286" y="72.6" font-size="15" fill="#292929" text-anchor="start">False · 본인 요청은 처리할 수 없음</text>
-<rect x="24" y="92" width="220" height="32" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="38" y="112.6" font-size="15" fill="#292929" text-anchor="start">1 승인</text>
-<line x1="244" y1="108" x2="270" y2="108" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p03)"/>
-<rect x="272" y="92" width="428" height="32" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="286" y="112.6" font-size="15" fill="#292929" text-anchor="start">True · 승인</text>
-<rect x="24" y="132" width="220" height="32" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="38" y="152.6" font-size="15" fill="#292929" text-anchor="start">2 반려</text>
-<line x1="244" y1="148" x2="270" y2="148" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p03)"/>
-<rect x="272" y="132" width="428" height="32" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="286" y="152.6" font-size="15" fill="#292929" text-anchor="start">True · 반려</text>
-<rect x="24" y="172" width="220" height="32" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="38" y="192.6" font-size="15" fill="#292929" text-anchor="start">3 승인</text>
-<line x1="244" y1="188" x2="270" y2="188" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p03)"/>
-<rect x="272" y="172" width="428" height="32" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="286" y="192.6" font-size="15" fill="#292929" text-anchor="start">True · 승인</text>
-<rect x="24" y="212" width="220" height="32" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="38" y="232.6" font-size="15" fill="#292929" text-anchor="start">4 승인</text>
-<line x1="244" y1="228" x2="270" y2="228" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p03)"/>
-<rect x="272" y="212" width="428" height="32" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="286" y="232.6" font-size="15" fill="#292929" text-anchor="start">True · 승인</text>
-<rect x="24" y="252" width="220" height="32" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="38" y="272.6" font-size="15" fill="#292929" text-anchor="start">1 승인 (두 번째)</text>
-<line x1="244" y1="268" x2="270" y2="268" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p03)"/>
-<rect x="272" y="252" width="428" height="32" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="286" y="272.6" font-size="15" fill="#292929" text-anchor="start">False · 검토 중이 아님</text>
-<rect x="24" y="292" width="220" height="32" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="38" y="312.6" font-size="15" fill="#292929" text-anchor="start">2 승인 (반려된 것)</text>
-<line x1="244" y1="308" x2="270" y2="308" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p03)"/>
-<rect x="272" y="292" width="428" height="32" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="286" y="312.6" font-size="15" fill="#292929" text-anchor="start">False · 검토 중이 아님</text>
-<rect x="24" y="340" width="676" height="62" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="362" y="364.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">단계 2: 1 approved · 2 rejected · 3 approved · 4 approved</text>
-<text x="362" y="386.8" font-size="15" fill="#292929" text-anchor="middle">처리한 사람(approver)은 모두 security_manager</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
+<title>권한을 받은 방식에 따라 회수 방법과 영향받는 사람이 달라 계획이 먼저 필요합니다</title>
+<desc>예외로 받은 권한은 그 예외 한 건만 지우면 됩니다. 역할로 받은 권한은 역할 해제나 역할에서 권한 빼기가 필요하고, 역할에서 빼면 그 역할의 모든 사용자가 권한을 잃습니다. 그래서 지우기 전에 회수 계획을 만듭니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">왜 회수 계획이 필요한가 — 받은 방식마다 영향이 다르다</text>
+<rect x="20" y="60" width="320" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="180" y="90.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">예외로 받은 권한</text>
+<path d="M180 110 L180 133" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<rect x="20" y="135" width="320" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="180" y="159.8" font-size="15" fill="#292929" text-anchor="middle">그 예외 한 건만 지움</text>
+<text x="180" y="180.8" font-size="15" fill="#292929" text-anchor="middle">그 사람의 권한만 사라짐</text>
+<rect x="380" y="60" width="320" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="540" y="90.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">역할로 받은 권한</text>
+<path d="M540 110 L540 133" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<rect x="380" y="135" width="320" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="540" y="159.8" font-size="15" fill="#292929" text-anchor="middle">역할 해제 또는</text>
+<text x="540" y="180.8" font-size="15" fill="#292929" text-anchor="middle">역할에서 권한 빼기</text>
+<path d="M540 195 L540 218" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<rect x="380" y="220" width="320" height="60" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="540" y="244.8" font-size="15" fill="#292929" text-anchor="middle">역할에서 빼면 그 역할의</text>
+<text x="540" y="265.8" font-size="15" fill="#292929" text-anchor="middle">모든 사용자가 잃음</text>
+<rect x="20" y="300" width="680" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360" y="327.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">그래서 지우기 전에 회수 계획(dry-run)부터 만듭니다</text>
+</g>
 </svg>
