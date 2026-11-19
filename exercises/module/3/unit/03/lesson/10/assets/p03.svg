@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img"><title>막히면 글감마다 출력 한 줄과 코드 한 줄을 나란히 놓고 이유를 내 말로 쓴다</title><desc>글감 1은 dami 의 재직 False 줄과 build_access_list, 글감 2는 junho 의 90일째와 91일째 줄과 elif 의 비교 한 줄, 글감 3은 gaeun 의 사용 이력 없음 줄과 if used_text is None 줄을 연결한다. 오류가 안 풀렸으면 post-stuck 틀로 오류 메시지와 고친 줄을 적는다.</desc><defs><marker id="a-p03-u3w" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">출력 한 줄 + 코드 한 줄 → 내 말로 이유 쓰기</text>
+<text x="40" y="62" font-size="14" fill="#666660">출력에서 붙일 줄</text>
+<text x="410" y="62" font-size="14" fill="#666660">연결할 코드</text>
+<rect x="20" y="74" width="340" height="62" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="34" y="98" font-size="14" fill="#666660">글감 1 · 실습 3-1</text>
+<text x="34" y="122" font-size="14" fill="#292929">dami SALES:QUERY ... 재직 False</text>
+<line x1="366" y1="105" x2="390" y2="105" stroke="#666660" stroke-width="1.5" marker-end="url(#a-p03-u3w)"/>
+<rect x="396" y="74" width="304" height="62" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="410" y="98" font-size="14" fill="#292929">build_access_list</text>
+<text x="410" y="122" font-size="14" fill="#666660">재직 여부와 상관없이 모두 담음</text>
+<rect x="20" y="148" width="340" height="62" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="34" y="172" font-size="14" fill="#666660">글감 2 · 실습 3-2</text>
+<text x="34" y="196" font-size="14" fill="#292929">junho 91 일째는 후보, 90 일째는 아님</text>
+<line x1="366" y1="179" x2="390" y2="179" stroke="#666660" stroke-width="1.5" marker-end="url(#a-p03-u3w)"/>
+<rect x="396" y="148" width="304" height="62" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="410" y="172" font-size="14" fill="#292929">elif days_since(...) &gt; limit_days:</text>
+<text x="410" y="196" font-size="14" fill="#666660">&gt;= 로 바꾸면 후보가 4건</text>
+<rect x="20" y="222" width="340" height="62" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="34" y="246" font-size="14" fill="#666660">글감 3 · 실습 3-2</text>
+<text x="34" y="270" font-size="14" fill="#292929">gaeun ACCOUNT:CHANGE -&gt; 사용 이력 없음</text>
+<line x1="366" y1="253" x2="390" y2="253" stroke="#666660" stroke-width="1.5" marker-end="url(#a-p03-u3w)"/>
+<rect x="396" y="222" width="304" height="62" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="410" y="246" font-size="14" fill="#292929">if used_text is None:</text>
+<text x="410" y="270" font-size="14" fill="#666660">이력 없음은 곧 필요 없음일까</text>
+<rect x="20" y="302" width="680" height="96" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="36" y="328" font-size="15" fill="#e0442e" font-weight="700">오류가 안 풀렸다면 post-stuck.md</text>
+<text x="36" y="354" font-size="14" fill="#292929">TypeError: strptime() argument 1 must be str, not None</text>
+<text x="36" y="380" font-size="14" fill="#292929">오류 메시지 → 고친 줄(if 를 elif 로) → 아직 모르는 것 순서로 적기</text>
+</g>
+</svg>
