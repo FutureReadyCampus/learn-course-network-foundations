@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img"><title>Unit 3 글을 올리기 전에 비밀키, 개인정보, 다른 사람 이름, 머리말 네 가지를 확인한다</title><desc>Commit changes 를 누르기 전에 네 칸을 확인한다. API 키와 토큰과 .env 내용이 없는지, 이메일과 전화번호가 없는지, 다른 사람의 실제 이름이 없는지, 머리말이 module: 3, unit: 3 인지 본다. 실습의 seoyeon, junho 같은 이름은 연습용이라 써도 된다.</desc>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">Commit changes 누르기 전 네 가지</text>
+<rect x="20" y="50" width="332" height="96" rx="8" fill="#ffffff" stroke="#e0442e" stroke-width="1.5"/>
+<rect x="36" y="68" width="20" height="20" rx="4" fill="#ffffff" stroke="#e0442e" stroke-width="1.5"/>
+<text x="68" y="84" font-size="16" fill="#292929" font-weight="700">비밀 값</text>
+<text x="68" y="112" font-size="15" fill="#292929">API 키 · 토큰 · .env 내용이</text>
+<text x="68" y="134" font-size="15" fill="#292929">글과 코드에 없다</text>
+<rect x="368" y="50" width="332" height="96" rx="8" fill="#ffffff" stroke="#e0442e" stroke-width="1.5"/>
+<rect x="384" y="68" width="20" height="20" rx="4" fill="#ffffff" stroke="#e0442e" stroke-width="1.5"/>
+<text x="416" y="84" font-size="16" fill="#292929" font-weight="700">개인정보</text>
+<text x="416" y="112" font-size="15" fill="#292929">개인 이메일 · 전화번호가</text>
+<text x="416" y="134" font-size="15" fill="#292929">없다</text>
+<rect x="20" y="162" width="332" height="96" rx="8" fill="#ffffff" stroke="#9a6200" stroke-width="1.5"/>
+<rect x="36" y="180" width="20" height="20" rx="4" fill="#ffffff" stroke="#9a6200" stroke-width="1.5"/>
+<text x="68" y="196" font-size="16" fill="#292929" font-weight="700">이름</text>
+<text x="68" y="224" font-size="15" fill="#292929">다른 사람의 실제 이름이 없다</text>
+<text x="68" y="246" font-size="14" fill="#666660">seoyeon · junho 는 연습용이라 괜찮음</text>
+<rect x="368" y="162" width="332" height="96" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
+<rect x="384" y="180" width="20" height="20" rx="4" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="416" y="196" font-size="16" fill="#292929" font-weight="700">머리말</text>
+<text x="416" y="224" font-size="15" fill="#292929">module: 3</text>
+<text x="416" y="246" font-size="15" fill="#292929">unit: 3</text>
+<text x="20" y="294" font-size="15" fill="#666660">하나라도 걸리면 고친 뒤에 올립니다. 한 번 올린 비밀 값은 지워도 기록에 남습니다.</text>
+</g>
+</svg>

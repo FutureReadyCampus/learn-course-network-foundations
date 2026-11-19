@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 432" role="img"><title>실습 3-2 보고서: 출력과 후보, 90일·91일 경계, 이력 없는 권한, 마무리 git status 를 채운다</title><desc>실습 3-2 칸의 (가)에는 출력 전체, 후보 건수, 후보별 안 쓴 일 수를, 핵심 질문 (나)에는 90일과 91일 경계, (다)에는 이력 없는 권한을 바로 지울 때의 위험을 쓴다. 마무리 (가)에는 git status 의 Untracked files 줄 수와 .env·.venv 여부를 쓰고, 그중 하나로 내 기록 남기기 글을 쓴다.</desc><defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 432" role="img"><title>실습 3-2 보고서: 출력과 후보, 90일·91일 경계, 이력 없는 권한, 마무리 git status 를 채운다</title><desc>실습 3-2 칸의 (가)에는 출력 전체, 후보 건수, 후보별 안 쓴 일 수를, 핵심 질문 (나)에는 90일과 91일 경계, (다)에는 이력 없는 권한을 바로 지울 때의 위험을 쓴다. 마무리 (가)에는 git status 의 Untracked files 줄 수와 .env·.venv 여부를 쓴다. 글쓰기는 다음 레슨 오늘의 글 쓰기에서 한다.</desc><defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="30" font-size="19" fill="#292929" font-weight="700">실습 3-2 · 90일 넘게 안 쓴 권한 찾기</text>
 <rect x="20" y="48" width="332" height="166" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
@@ -34,7 +34,7 @@
 <rect x="384" y="308" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="412" y="323" font-size="15" fill="#292929">② .env · .venv 가 있었나</text>
 <rect x="20" y="356" width="680" height="62" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="36" y="381" font-size="15" fill="#9a6200" font-weight="700">내 기록 남기기 · 글감 하나를 골라 글 한 편 (글쓰기 40분)</text>
-<text x="36" y="405" font-size="14" fill="#292929">① 거부되는 권한을 남긴 이유  ② 90일 · 91일 기준  ③ 이력 없는 권한 지우기</text>
+<text x="36" y="381" font-size="15" fill="#9a6200" font-weight="700">다음 레슨 「오늘의 글 쓰기」</text>
+<text x="36" y="405" font-size="14" fill="#292929">질문에 답한 뒤, 글 한 편은 다음 레슨에서 씁니다</text>
 </g>
 </svg>

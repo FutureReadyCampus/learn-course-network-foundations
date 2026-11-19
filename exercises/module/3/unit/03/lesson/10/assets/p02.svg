@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img"><title>글 틀을 골라 _posts 에 Unit 3 글을 만들면 첫 화면 Module 3의 3번 칸이 채워진다</title><desc>오늘의 상황에 맞게 post-practice, post-short, post-stuck 중 하나를 고른다. 글은 _posts/2026-11-21-m3-u3-unused-permissions.md 로, 코드는 code/m3_u3_review_unused.py 로 GitHub 웹 화면에서 만든다. 머리말이 module: 3, unit: 3 이면 올리고 1~2분 뒤 나의 진행에서 Module 3 줄의 3번 칸이 채워진다.</desc><defs><marker id="a-p02-u3w" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">글 틀 고르기 → 글과 코드 올리기 → 첫 화면 확인</text>
+<rect x="20" y="52" width="200" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="34" y="77" font-size="15" fill="#292929" font-weight="700">post-practice.md</text>
+<text x="34" y="99" font-size="14" fill="#666660">실습 한 개를 끝까지 했다</text>
+<rect x="20" y="124" width="200" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="34" y="149" font-size="15" fill="#292929" font-weight="700">post-short.md</text>
+<text x="34" y="171" font-size="14" fill="#666660">5분밖에 없다</text>
+<rect x="20" y="196" width="200" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="34" y="221" font-size="15" fill="#292929" font-weight="700">post-stuck.md</text>
+<text x="34" y="243" font-size="14" fill="#666660">오류가 안 풀렸다</text>
+<line x1="226" y1="154" x2="262" y2="154" stroke="#666660" stroke-width="1.5" marker-end="url(#a-p02-u3w)"/>
+<rect x="270" y="52" width="430" height="128" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="286" y="78" font-size="15" fill="#2f6fd0" font-weight="700">글 · Add file › Create new file</text>
+<text x="286" y="104" font-size="15" fill="#292929">_posts/2026-11-21-m3-u3-unused-permissions.md</text>
+<rect x="286" y="118" width="190" height="48" rx="6" fill="#ffffff" stroke="#2f6fd0" stroke-width="1"/>
+<text x="300" y="138" font-size="15" fill="#292929">module: 3</text>
+<text x="300" y="158" font-size="15" fill="#e0442e" font-weight="700">unit: 3</text>
+<text x="490" y="138" font-size="14" fill="#666660">날짜는 오늘 날짜,</text>
+<text x="490" y="158" font-size="14" fill="#666660">sample: true 는 빼기</text>
+<rect x="270" y="192" width="430" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="286" y="218" font-size="15" fill="#1f7a4a" font-weight="700">코드 · 파일 전체</text>
+<text x="286" y="242" font-size="15" fill="#292929">code/m3_u3_review_unused.py</text>
+<line x1="485" y1="262" x2="485" y2="290" stroke="#666660" stroke-width="1.5" marker-end="url(#a-p02-u3w)"/>
+<text x="497" y="282" font-size="14" fill="#666660">Commit changes, 1~2분 기다리기</text>
+<rect x="20" y="298" width="680" height="104" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="36" y="324" font-size="15" fill="#292929" font-weight="700">내 사이트 첫 화면 · 나의 진행</text>
+<text x="36" y="364" font-size="15" fill="#292929">Module 3</text>
+<rect x="130" y="344" width="34" height="30" rx="4" fill="#f1f1ef" stroke="#dededb"/>
+<rect x="172" y="344" width="34" height="30" rx="4" fill="#f1f1ef" stroke="#dededb"/>
+<rect x="214" y="344" width="34" height="30" rx="4" fill="#e0442e" stroke="#e0442e"/>
+<text x="231" y="365" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="700">3</text>
+<rect x="256" y="344" width="34" height="30" rx="4" fill="#f1f1ef" stroke="#dededb"/>
+<rect x="298" y="344" width="34" height="30" rx="4" fill="#f1f1ef" stroke="#dededb"/>
+<text x="346" y="365" font-size="15" fill="#666660">…</text>
+<text x="390" y="358" font-size="14" fill="#666660">unit: 3 글이 올라가면</text>
+<text x="390" y="380" font-size="14" fill="#666660">Unit 3 칸이 빨갛게 채워집니다</text>
+</g>
+</svg>
