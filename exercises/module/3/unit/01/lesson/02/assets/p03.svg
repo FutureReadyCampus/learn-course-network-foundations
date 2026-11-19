@@ -28,6 +28,6 @@
 <text x="585" y="245.2" font-size="15" fill="#292929" text-anchor="middle">SETTLE:QUERY 권한 없음</text>
 <text x="585" y="267.2" font-size="15" fill="#292929" text-anchor="middle">→ 거부</text>
 <rect x="20" y="304" width="680" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="360" y="333.2" font-size="15" fill="#292929" text-anchor="middle">앞선 사건: 인증은 됐지만 인가를 확인하는 곳이 없어서 통과했다</text>
+<text x="360" y="333.2" font-size="15" fill="#292929" text-anchor="middle">얼마 전 사건: 인증은 됐지만 인가를 확인하는 곳이 없어서 통과했다</text>
 </g>
 </svg>
