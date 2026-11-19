@@ -1,46 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>질문 하나를 골라 세 문장으로 답하고, 필요할 때만 AI 도우미로 정리합니다</title>
-<desc>먼저 공통 질문이나 Unit 끝의 글감 질문 중 하나를 고르고, 답을 세 문장으로 씁니다. 필요하면 코드 설명 정리, 초안 다듬기, 내 글 점검 도우미에 붙여 넣습니다. 붙이기 전에 비밀키·개인정보를 빼고, 내 코드와 내 생각만 바탕으로 합니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>글 틀 세 가지 중 하나를 골라 _posts/ 아래 새 파일로 만들고 빈칸을 채웁니다</title>
+<desc>왼쪽은 글 틀 post-practice(기본), post-short(세 문장), post-stuck(막힌 일)입니다. 하나를 복사해 _posts/날짜-영문제목.md 새 파일로 만들고 빈칸을 채웁니다. 실행 결과 화면은 assets/images/ 에 올려 글에 연결합니다.</desc>
 <defs>
-<marker id="a-p10" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
+<marker id="a-p09" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
 </defs>
-<text x="20" y="30" font-size="19" font-weight="700" fill="#292929">막힐 때는 질문 하나부터</text>
+<text x="20" y="30" font-size="19" font-weight="700" fill="#292929">글 틀로 글 한 편 쓰기</text>
 
 <g font-size="15" fill="#292929">
-<rect x="10" y="52" width="210" height="220" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="26" y="82" font-size="16" font-weight="700">① 질문 고르기</text>
-<rect x="26" y="100" width="178" height="68" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="40" y="128">공통 질문 10개</text>
-<text x="40" y="152" font-size="14" fill="#666660">아무 실습에나</text>
-<rect x="26" y="184" width="178" height="68" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="40" y="212">Unit 끝 글감 질문</text>
-<text x="40" y="236" font-size="14" fill="#666660">「내 기록 남기기」</text>
+<text x="20" y="62" font-size="14" fill="#666660">① 하나 고르기</text>
+<rect x="20" y="74" width="220" height="64" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="36" y="100" font-weight="700">post-practice.md</text>
+<text x="36" y="124" font-size="14" fill="#666660">실습 한 개 · 기본 틀</text>
+<rect x="20" y="152" width="220" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="36" y="178" font-weight="700">post-short.md</text>
+<text x="36" y="202" font-size="14" fill="#666660">5분 · 세 문장</text>
+<rect x="20" y="230" width="220" height="64" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="36" y="256" font-weight="700">post-stuck.md</text>
+<text x="36" y="280" font-size="14" fill="#666660">막혔던 일 남기기</text>
 
-<rect x="255" y="52" width="210" height="220" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="271" y="82" font-size="16" font-weight="700">② 답을 세 문장으로</text>
-<text x="271" y="120">블로그처럼 가볍게</text>
-<text x="271" y="150">막힌 이야기도 좋음</text>
-<text x="271" y="180">나중에 고쳐도 됨</text>
-<text x="271" y="240" font-size="14" fill="#666660">여기까지만 해도 글 한 편</text>
+<text x="276" y="62" font-size="14" fill="#666660">② 복사해 새 파일</text>
+<rect x="276" y="74" width="230" height="220" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="292" y="104" font-weight="700">_posts/</text>
+<text x="292" y="128" font-weight="700">날짜-영문제목.md</text>
+<line x1="292" y1="148" x2="490" y2="148" stroke="#dededb" stroke-width="1.5"/>
+<text x="292" y="176" font-size="14" fill="#666660">예:</text>
+<text x="292" y="198" font-size="14">_posts/</text>
+<text x="292" y="218" font-size="14">2026-01-15-first-post.md</text>
+<text x="292" y="270" font-size="14" fill="#666660">처음엔 짧은 틀도 좋음</text>
 
-<rect x="500" y="52" width="210" height="220" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="516" y="82" font-size="16" font-weight="700">③ AI 도우미</text>
-<text x="516" y="104" font-size="14" fill="#666660">필요할 때만</text>
-<rect x="516" y="118" width="178" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="530" y="143">1. 코드 설명 정리</text>
-<rect x="516" y="168" width="178" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="530" y="193">2. 초안 다듬기</text>
-<rect x="516" y="218" width="178" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="530" y="243">3. 내 글 점검</text>
+<text x="542" y="62" font-size="14" fill="#666660">③ 채우기</text>
+<rect x="542" y="74" width="160" height="220" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="558" y="104" font-weight="700">빈칸 채우기</text>
+<text x="558" y="138">주석 안내를</text>
+<text x="558" y="160">읽고 내 말로</text>
+<text x="558" y="196" font-size="14" fill="#666660">무엇을 했나</text>
+<text x="558" y="218" font-size="14" fill="#666660">무엇을 골랐나</text>
+<text x="558" y="240" font-size="14" fill="#666660">왜 골랐나</text>
+<text x="558" y="276" font-size="14" fill="#666660">(post-short 예)</text>
 
-<rect x="10" y="296" width="700" height="92" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="26" y="324" font-size="16" font-weight="700">붙여 넣기 전에</text>
-<text x="26" y="350">비밀키·토큰·이메일·이름은 넣지 않습니다. [ ] 부분만 내 것으로 바꿉니다.</text>
-<text x="26" y="374">내 코드와 내 생각만 바탕으로 합니다. 대신 써 준 글은 내 글이 아닙니다.</text>
+<rect x="20" y="314" width="682" height="52" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="36" y="346">실행 결과 화면은 이미지로 저장해 <tspan font-weight="700">assets/images/</tspan> 에 올리고 글에 연결</text>
 </g>
 
-<g stroke="#666660" stroke-width="2" fill="none" marker-end="url(#a-p10)">
-<path d="M222 162H251"/>
-<path d="M467 162H496"/>
+<path d="M241 106H258V262H241" stroke="#666660" stroke-width="2" fill="none"/>
+<g stroke="#666660" stroke-width="2" fill="none" marker-end="url(#a-p09)">
+<path d="M241 184H272"/>
+<path d="M507 184H538"/>
 </g>
 </svg>

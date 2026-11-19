@@ -1,47 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>GitHub 웹에서 파일을 하나씩 만들어 필수 파일 다섯 개를 저장소에 놓습니다</title>
-<desc>왼쪽은 파일 하나를 만드는 순서입니다. Create new file을 누르고, 이름 칸에 파일 이름을 적고(_posts/처럼 / 가 있으면 폴더도 생김), 복사해 붙여 넣고, Commit changes를 누릅니다. 오른쪽은 그렇게 만든 _config.yml, index.md, about.md, _posts/2026-01-01-hello.md, .gitignore가 저장소에 놓인 모습입니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>Git은 파일이 바뀐 기록을 저장해 두는 도구이고 GitHub는 그 기록을 인터넷에 올려 두는 곳입니다</title>
+<desc>왼쪽은 내 컴퓨터의 Git이 파일을 바꿀 때마다 저장본(commit)을 남기는 모습입니다. 오른쪽은 그 저장본을 인터넷의 GitHub에 올려 두는 모습입니다. GitHub Pages는 올라온 글로 내 사이트를 만듭니다.</desc>
 <defs>
 <marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
 </defs>
-<text x="20" y="30" font-size="19" font-weight="700" fill="#292929">파일 하나 만드는 순서와 만들 파일 5개</text>
-
+<text x="20" y="30" font-size="19" font-weight="700" fill="#292929">Git은 저장본을 남기고, GitHub는 그것을 올려 둡니다</text>
 <g font-size="15" fill="#292929">
-<rect x="20" y="52" width="320" height="76" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="36" y="78" font-size="16" font-weight="700">① Create new file</text>
-<text x="36" y="102">빈 저장소: creating a new file</text>
-<text x="36" y="120" font-size="14" fill="#666660">파일이 있으면 Add file 메뉴에서</text>
-
-<rect x="20" y="144" width="320" height="76" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="36" y="170" font-size="16" font-weight="700">② 이름 칸에 파일 이름</text>
-<text x="36" y="194">_posts/2026-01-01-hello.md</text>
-<text x="36" y="212" font-size="14" fill="#666660">/ 가 들어가면 폴더도 함께 생김</text>
-
-<rect x="20" y="236" width="320" height="76" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="36" y="262" font-size="16" font-weight="700">③ 복사해 붙여 넣기</text>
-<text x="36" y="286">상자의 복사 버튼 → 편집 칸</text>
-
-<rect x="20" y="328" width="320" height="76" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="36" y="354" font-size="16" font-weight="700">④ Commit changes</text>
-<text x="36" y="378">두 번 눌러 저장</text>
-
-<rect x="380" y="52" width="320" height="352" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="398" y="82" font-size="16" font-weight="700">network-study-notes/</text>
-<text x="420" y="122">_config.yml</text><text x="590" y="122" font-size="14" fill="#666660">사이트 설정</text>
-<text x="420" y="160">index.md</text><text x="590" y="160" font-size="14" fill="#666660">첫 화면</text>
-<text x="420" y="198">about.md</text><text x="590" y="198" font-size="14" fill="#666660">소개</text>
-<text x="420" y="236">_posts/</text>
-<text x="440" y="270">2026-01-01-hello.md</text><text x="618" y="270" font-size="14" fill="#666660">샘플 글</text>
-<text x="420" y="308">.gitignore</text><text x="590" y="308" font-size="14" fill="#666660">비밀키 막기</text>
-<line x1="398" y1="334" x2="682" y2="334" stroke="#dededb" stroke-width="1.5"/>
-<text x="420" y="362" fill="#666660">code/</text><text x="490" y="362" font-size="14" fill="#666660">내 .py 파일은 여기에</text>
-<text x="420" y="386" font-size="14" fill="#666660">(code/README.md 만들면 생김)</text>
+<rect x="20" y="56" width="300" height="250" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="38" y="86" font-size="16" font-weight="700">내 컴퓨터 (Git)</text>
+<rect x="40" y="104" width="260" height="44" rx="8" fill="#ffffff" stroke="#2f6fd0"/>
+<text x="54" y="132">저장본 1: 글 첫 줄 쓰기</text>
+<rect x="40" y="160" width="260" height="44" rx="8" fill="#ffffff" stroke="#2f6fd0"/>
+<text x="54" y="188">저장본 2: 제목 고치기</text>
+<rect x="40" y="216" width="260" height="44" rx="8" fill="#ffffff" stroke="#2f6fd0"/>
+<text x="54" y="244">저장본 3: 사진 넣기</text>
+<text x="38" y="290" font-size="14" fill="#666660">바꿀 때마다 한 칸씩 쌓입니다</text>
+<rect x="400" y="56" width="300" height="250" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="418" y="86" font-size="16" font-weight="700">인터넷 (GitHub)</text>
+<rect x="420" y="104" width="260" height="70" rx="8" fill="#ffffff" stroke="#1f7a4a"/>
+<text x="434" y="132">올라온 저장본을</text>
+<text x="434" y="154">그대로 보관합니다</text>
+<rect x="420" y="190" width="260" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200"/>
+<text x="434" y="218">GitHub Pages가</text>
+<text x="434" y="240">내 사이트로 만듭니다</text>
 </g>
-
-<g stroke="#666660" stroke-width="2" fill="none" marker-end="url(#a-p06)">
-<path d="M180 129V142"/>
-<path d="M180 221V234"/>
-<path d="M180 313V326"/>
-<path d="M342 180H376"/>
-</g>
+<line x1="324" y1="180" x2="394" y2="180" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
+<text x="330" y="168" font-size="14" fill="#292929">올리기</text>
+<text x="20" y="350" font-size="15" fill="#292929">이 과정에서는 GitHub 웹 화면의 Commit 버튼이 이 저장본을 만듭니다.</text>
 </svg>
