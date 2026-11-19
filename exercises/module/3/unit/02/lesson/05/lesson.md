@@ -6,13 +6,28 @@ render: markdown
 
 # 제공 파일
 
+## 제공 파일 쓰는 법
+
+**실습 2-2를 마친 뒤** 이 레슨의 파일 하나를 만듭니다. 요청서 흐름은 접수 → 승인 · 반려 → **부여** 순서인데, 마지막 부여 함수 `grant_request` 는 도전 2-1에서 만드는 것이라 오늘은 완성본을 받아 씁니다.
+
+1. 파일은 `access_control` 폴더 안에 만듭니다. 만드는 방법은 실습 2-1과 같습니다(VS Code 왼쪽 목록에서 `access_control` 폴더를 고르고 **새 파일** 아이콘).
+2. 아래 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
+3. 만들 파일은 `req_grant.py` 하나입니다. 승인된(`approved`) 요청서를 받아 `rbac.py` 의 `check_permission` 으로 지금 정책을 한 번 더 확인하고, 「권한 없음」일 때만 `exception_policy.py` 의 `EXCEPTIONS` 에 예외 한 건을 추가합니다. 그다음 요청서의 상태를 `granted` 로 바꿉니다.
+4. 파일을 만들었으면 터미널에서 불러지는지 확인합니다. `제공 파일 정상` 이 나오면 됩니다(맥북은 `python3`).
+   ```bash
+   python -c "from req_grant import grant_request; print('제공 파일 정상')"
+   ```
+5. 오늘 핵심 실습에서는 이 파일을 실행하지 않습니다. 도전 2-3이 이 파일을 불러 쓰고, 「이번 Unit 마무리」에서 다른 파일과 함께 깃허브에 올립니다.
+
+> 시간이 남아 도전 2-1을 하면, 이 파일을 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 다 쓴 뒤 `challenge2-1_run.py` 의 출력이 도전 2-1 정답과 같으면 이 완성본과 같게 동작하는 것입니다.
+
 ## `req_grant.py` 만들기
 
-**`req_grant.py`** 을 만들고 아래 내용을 붙여 넣습니다. 이 파일은 직접 만들지 않고 가져다 씁니다.
+**`req_grant.py`** 를 만들고 아래 내용을 붙여 넣습니다. 함수가 하는 일은 앞 페이지 3번과 같고, 주석에 줄마다 하는 일이 적혀 있습니다.
 
 ```python
-from rbac import check_permission                                # Unit 1에서 만든 역할 판정 함수를 불러온다
-from exception_policy import EXCEPTIONS                          # Unit 1에서 만든 예외 리스트를 불러온다
+from rbac import check_permission                                # rbac.py 의 역할 판정 함수를 불러온다
+from exception_policy import EXCEPTIONS                          # exception_policy.py 의 예외 리스트를 불러온다
 
 
 def grant_request(request):                                      # 요청서를 받는 함수

@@ -13,9 +13,7 @@ source:
 
 ## 목표: 앞 사람 흔적 정리하기
 
-Unit 1 · 준비 과제
-
-**이번에 하는 일:** 앞서 자리를 바꿨습니다. 지금 앉은 PC 에는 **앞 사람의 폴더와 깃허브 로그인**이 남아 있을 수 있습니다. 그대로 쓰면 내 코드가 **앞 사람 이름 · 앞 사람 계정**으로 올라갑니다. 이번 준비 과제에서는 앞 사람 흔적을 확인해 끊고, Unit 1 마지막에 올려 둔 **내 폴더를 깃허브에서 받아** 내 것이 맞는지 확인합니다.
+**이번에 하는 일:** Unit 2를 시작하기 전에 자리를 바꿨습니다. 자리를 옮기지 않았다면 이 레슨은 건너뛰고 「시작하기」로 갑니다. 지금 앉은 PC 에는 **앞 사람의 폴더와 깃허브 로그인**이 남아 있을 수 있습니다. 그대로 쓰면 내 코드가 **앞 사람 이름 · 앞 사람 계정**으로 올라갑니다. 이번 준비 과제에서는 앞 사람 흔적을 확인해 끊고, Unit 1 마무리에서 깃허브에 올려 둔 **내 폴더를 받아** 내 것이 맞는지 확인합니다.
 
 **끝나면 이렇게 됩니다**
 - `문서(Documents)` 안에 앞 사람 폴더는 `security-agent-toolkit_old`, 내 폴더는 `security-agent-toolkit`
@@ -36,6 +34,7 @@ Unit 1 · 준비 과제
    ```
    - 명령 풀이: `cd ~/Documents` 내 문서 폴더로 이동 · `pwd` 지금 위치를 보여 줌
    - `…/Documents` 로 끝나면 됩니다.
+   - 이 레슨은 문서 폴더를 기준으로 씁니다. 앞 사람 폴더가 바탕화면에 있으면 `cd ~/Desktop` 으로 가서 같은 순서로 합니다.
 
 ---
 
@@ -123,11 +122,11 @@ Unit 1 · 준비 과제
 
 ## 5. 내 폴더를 깃허브에서 받습니다
 
-**왜 하나요** — Unit 1 마지막에 내 파일을 모두 깃허브에 올렸습니다. 이 PC 에는 내 폴더가 없으니 **처음 받는 것**이라 `git pull` 이 아니라 **`git clone`** 을 씁니다. `pull` 은 이미 받은 폴더를 최신으로 맞출 때 씁니다.
+**왜 하나요** — Unit 1 마무리에서 내 파일을 모두 깃허브에 올렸습니다. 이 PC 에는 내 폴더가 없으니 **처음 받는 것**이라 `git pull` 이 아니라 **`git clone`** 을 씁니다. `pull` 은 이미 받은 폴더를 최신으로 맞출 때 씁니다.
 
 1. **[브라우저]** github.com 에 **내 계정**으로 들어가 **내 저장소**를 엽니다.
    - 저장소 이름이 `security-agent-toolkit` 이 **아닐 수도** 있습니다. 내가 처음 만들 때 다른 이름을 붙였다면 그 이름입니다.
-   - 이름이 기억나지 않으면: 오른쪽 위 **내 프로필 사진** → **Your repositories** → 리스트에서 하나씩 열어, 안에 `agent_core` · `network_zt` · `access_control` 폴더가 있는 저장소를 찾습니다. 그것이 내 저장소입니다.
+   - 이름이 기억나지 않으면: 오른쪽 위 **내 프로필 사진** → **Your repositories** → 리스트에서 하나씩 열어, 안에 `access_control` 폴더가 있는 저장소를 찾습니다. 그것이 내 저장소입니다.
    - 찾은 저장소 이름을 적어 둡니다(예: `my-toolkit`).
 2. **[브라우저]** 초록색 **Code** 단추 → **HTTPS** → 주소 오른쪽 **복사** 아이콘을 누릅니다.
 3. **[터미널]** 문서 폴더에서 받습니다. `git clone ` 뒤에 복사한 주소를 붙여 넣습니다(Git Bash 붙여 넣기 = **Shift + Insert** 또는 마우스 오른쪽 클릭).
@@ -150,7 +149,7 @@ Unit 1 · 준비 과제
 
 ## 6. 받은 폴더가 내 것인지 확인합니다
 
-**왜 하나요** — 이름이 같은 폴더가 두 개 있으니, 지금 연 것이 **내 저장소의 Unit 1 마지막 상태**인지 눈으로 확인합니다.
+**왜 하나요** — 이름이 같은 폴더가 두 개 있으니, 지금 연 것이 **Unit 1 마무리에서 올린 내 저장소**인지 눈으로 확인합니다.
 
 1. **[터미널]** VS Code 에서 터미널을 새로 엽니다(1장 1~2번). 위치가 `…/security-agent-toolkit` 인지 봅니다.
    ```bash
@@ -165,9 +164,10 @@ Unit 1 · 준비 과제
    | 명령 | 이렇게 나오면 됩니다 |
    |---|---|
    | `git remote -v` | 주소의 `github.com/` 뒤가 **내 아이디** |
-   | `git log --oneline -3` | 맨 위 줄이 Unit 1 마지막 커밋 **`Save all files before seat change`** |
-   | `ls` | `agent_core` · `network_zt` · `access_control` 폴더가 보임 |
+   | `git log --oneline -3` | 맨 위 줄이 Unit 1 마무리의 커밋 |
+   | `ls` | `access_control` 폴더가 보임 |
    - 명령 풀이: `git log --oneline -3` 최근 커밋 3개를 한 줄씩 보여 줌
+   - Unit 1 마무리의 커밋 설명은 `Add access control unit 1 roles, checker, policy and report` 입니다. 그 뒤에 도전 파일을 더 올렸다면 그때 쓴 설명이 맨 위에 보입니다.
 3. **[브라우저]** 깃허브 내 저장소 화면의 폴더 리스트와 VS Code 왼쪽 목록이 같은지 봅니다.
 
 ---
@@ -181,7 +181,7 @@ Unit 1 · 준비 과제
    mkdir -p docs
    ```
    - 명령 풀이: `mkdir -p docs` docs 폴더가 없으면 만들고, 있으면 그냥 넘어감
-   - **[VS Code]** `docs` 폴더에 새 파일 `2026-10-22_seat.md` 를 만들고 `새 자리 준비 완료` 한 줄을 쓴 뒤 저장합니다.
+   - **[VS Code]** `docs` 폴더에 새 파일 `2026-10-23_seat.md` 를 만들고 `새 자리 준비 완료` 한 줄을 쓴 뒤 저장합니다.
 2. **[터미널]** 올립니다.
    ```bash
    git status
@@ -191,7 +191,7 @@ Unit 1 · 준비 과제
    ```
    - `git status` 의 빨간 목록에 `.env` 가 보이면 멈추고 `.gitignore` 에 `.env` 한 줄이 있는지 확인합니다.
    - `git push` 때 **로그인 창**이 뜨면 **Sign in with your browser** → 브라우저에서 **내 계정**으로 로그인 → **Authorize** 를 누릅니다.
-3. **[브라우저]** 내 저장소에서 `docs/2026-10-22_seat.md` 가 보이는지, 그 파일의 커밋 옆 이름이 **내 아이디**인지 확인합니다.
+3. **[브라우저]** 내 저장소에서 `docs/2026-10-23_seat.md` 가 보이는지, 그 파일의 커밋 옆 이름이 **내 아이디**인지 확인합니다.
 
 ---
 
@@ -247,13 +247,21 @@ Unit 1 · 준비 과제
 
 ## 막히면
 
-| 화면에 나온 것 | 뜻 | 할 일 |
-|---|---|---|
-| `fatal: destination path 'security-agent-toolkit' already exists and is not an empty directory.` | 같은 이름 폴더가 아직 있음 | 4장(`_old` 로 이름 바꾸기)을 먼저 합니다 |
-| `mv` 뒤에 `Permission denied` 또는 `Device or resource busy` | 그 폴더가 어딘가에 열려 있음 | VS Code 에서 **File › Close Folder**, 파일 탐색기 창도 닫고 다시 `mv` |
-| `git push` 에 `Permission … denied to 앞사람아이디` | 앞 사람 로그인이 아직 남아 있음 | 3장 1번(자격 증명 제거)을 하고 다시 `git push` |
-| 깃허브 커밋 옆 이름이 앞 사람 | git 이름 · 이메일이 앞 사람 것 | 3장 2번을 하고, 다음 커밋부터 내 이름으로 찍힘 |
-| `git log` 맨 위에 Unit 1 마지막 커밋이 없음 | Unit 1 마지막 push 가 안 됐거나 다른 저장소를 받음 | 6장 `git remote -v` 주소가 내 아이디인지, 브라우저 저장소에 Unit 1 파일이 있는지 봅니다 |
+1. `git clone` 에 `fatal: destination path 'security-agent-toolkit' already exists and is not an empty directory.` 가 나오면
+   - 뜻: 같은 이름 폴더가 아직 있습니다.
+   - 할 일: 4장(`_old` 로 이름 바꾸기)을 먼저 합니다.
+2. `mv` 뒤에 `Permission denied` 또는 `Device or resource busy` 가 나오면
+   - 뜻: 그 폴더가 어딘가에 열려 있습니다.
+   - 할 일: VS Code 에서 **File › Close Folder** 를 누르고, 파일 탐색기 창도 닫은 뒤 다시 `mv` 를 칩니다.
+3. `git push` 에 `Permission … denied to 앞사람아이디` 가 나오면
+   - 뜻: 앞 사람 로그인이 아직 남아 있습니다.
+   - 할 일: 3장 1번(자격 증명 제거)을 하고 다시 `git push` 를 칩니다.
+4. 깃허브에서 커밋 옆 이름이 앞 사람이면
+   - 뜻: git 이름 · 이메일이 앞 사람 것입니다.
+   - 할 일: 3장 2번을 합니다. 다음 커밋부터 내 이름으로 찍힙니다.
+5. `git log` 맨 위에 Unit 1 마무리 커밋이 없으면
+   - 뜻: Unit 1 마무리의 push 가 안 됐거나 다른 저장소를 받았습니다.
+   - 할 일: 6장의 `git remote -v` 주소가 내 아이디인지, 브라우저의 내 저장소에 `access_control` 폴더가 있는지 봅니다.
 
 ---
 
@@ -262,6 +270,6 @@ Unit 1 · 준비 과제
 - [ ] `문서` 에 `security-agent-toolkit_old`(앞 사람)와 `security-agent-toolkit`(내 것)이 따로 있다 (앞 사람 폴더가 없었으면 내 것만)
 - [ ] `git config --global user.name` 이 내 이름이다
 - [ ] `git remote -v` 주소에 내 아이디가 있다
-- [ ] `git log --oneline -3` 맨 위가 Unit 1 마지막 커밋이다
-- [ ] 깃허브 내 저장소에 `docs/2026-10-22_seat.md` 가 내 아이디로 올라가 있다
+- [ ] `git log --oneline -3` 맨 위가 Unit 1 마무리에서 올린 커밋이다
+- [ ] 깃허브 내 저장소에 `docs/2026-10-23_seat.md` 가 내 아이디로 올라가 있다
 - [ ] `docker ps -a` 에 제목 줄만 나온다 (Docker Desktop 이 없으면 건너뜀)

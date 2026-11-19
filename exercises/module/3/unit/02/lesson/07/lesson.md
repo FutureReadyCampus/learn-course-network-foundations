@@ -13,6 +13,8 @@ source:
 
 ## 목표: 기한 초과 점검 함수
 
+> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 2-1 · 2-2와 글쓰기를 먼저 마칩니다. 이 도전을 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
+
 > **오늘 들어온 일**
 >
 > A사 관제 담당(요청이 정해진 시간 안에 처리되는지 지켜보는 사람)이 보낸 메시지: 「요청서를 접수해 놓고 승인자가 처리를 미루는 일이 있습니다. 그러면 권한이 필요한 직원은 일을 못 하고 메신저로 계속 재촉합니다. 리스트를 눈으로 훑어서는 오래된 요청을 놓치기 쉽습니다. 접수한 지 4시간이 지났는데도 아직 검토 중인 요청서를 찾아서 알려 주세요.」
@@ -30,15 +32,15 @@ source:
 - **어떤 요청서를 보나**: 아직 처리 중인 요청서, 즉 상태가 `reviewing`(검토 중)인 것만 봅니다. 이미 승인되거나 반려된 요청서는 처리가 끝났으므로 기한을 따지지 않습니다.
 - **얼마나 지났나**: `지금 시각 − 접수 시각` 으로 구합니다. 이 값을 시간(hour) 단위 숫자로 바꿔서 SLA 시간(`SLA_HOURS`, 오늘은 4)과 비교합니다.
 - **SLA 시간은 어디에 두나**: 코드에 4를 직접 쓰지 않고 `config/sla.json` 파일에 적어 두고 읽습니다. 그러면 기한을 4시간에서 2시간으로 바꿀 때 코드는 그대로 두고 파일만 고치면 됩니다.
-- **파일은 어떻게 읽나**: Unit 1에서 만든 `load_json` 으로 읽습니다. 파일이 없거나 깨졌을 때는 기본값 4를 씁니다.
+- **파일은 어떻게 읽나**: `config_loader.py` 의 `load_json` 으로 읽습니다. 파일이 없거나 깨졌을 때는 기본값 4를 씁니다.
 - **기한이 지난 요청은 어떻게 하나**: 현업에서는 승인자의 윗사람이나 대리 승인자(승인자가 자리에 없을 때 대신 승인하는 사람)에게 넘깁니다. 이것을 **에스컬레이션**(escalation · 에스컬레이션)이라고 합니다. 오늘은 넘기는 일은 만들지 않고, 기한이 지난 요청을 찾는 데까지만 합니다.
-- **`now` 이름**: 함수가 받는 `now` 는 **지금 시각**(datetime)입니다. Unit 1의 `evaluate_access` 의 `now` 와 같은 뜻입니다.
+- **`now` 이름**: 함수가 받는 `now` 는 **지금 시각**(datetime)입니다. `policy.py` 의 `evaluate_access` 가 받는 `now` 와 같은 뜻입니다.
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="검토 중인 요청서 가운데 SLA_HOURS 보다 오래 걸린 것만 골라 리턴한다"></figure>
 
 **문법 상자 — 걸린 시간을 시간 단위 숫자로 바꾸기**
 
-- 시각 문자열을 시각으로 바꾸는 `datetime.strptime(문자열, 형식)` 은 Unit 1에서 쓴 것과 같습니다. 형식 문자열 `"%Y-%m-%d %H:%M"` 은 `exception_policy.py` 의 `TIME_FORMAT` 에 이미 적혀 있어서 오늘은 그것을 불러다 씁니다. 아래 상자에서는 그 모양을 그대로 볼 수 있습니다.
+- 시각 문자열을 시각으로 바꾸는 `datetime.strptime(문자열, 형식)` 은 `exception_policy.py` 에서 쓴 것과 같습니다. 형식 문자열 `"%Y-%m-%d %H:%M"` 은 `exception_policy.py` 의 `TIME_FORMAT` 에 이미 적혀 있어서 오늘은 그것을 불러다 씁니다. 아래 상자에서는 그 모양을 그대로 볼 수 있습니다.
 
 **① 시각에서 시각을 빼면 「걸린 시간」이 나옵니다**
 
@@ -138,17 +140,16 @@ print(overdue)                                                      # 복사본�
 1. `req_sla.py` · `config/sla.json` · `challenge2-2_run.py` 세 파일을 만들고, `check_sla_breach` 본문을 직접 씁니다.
 2. 실행해서 <mark>요청서 현황</mark>(단계 1: 현황)과 <mark>기한을 초과한 요청</mark>(단계 2: 판정)을 읽습니다.
 
-**`config/sla.json`** — 그대로 붙여 넣습니다. 처리 기한(시간)을 적은 설정 파일이고, `access_control` 안의 `config` 폴더(Unit 1부터 `users.json` 이 있던 곳)에 만듭니다.
+**`config/sla.json`** — 그대로 붙여 넣습니다. 처리 기한(시간)을 적은 설정 파일이고, `access_control` 안의 `config` 폴더(`users.json` 이 있는 곳)에 만듭니다.
 
-```json
-{"hours": 4}
-```
+<pre class="copyable"><code>{"hours": 4}
+</code></pre>
 
 **`req_sla.py`**
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
-from config_loader import load_json                              # Unit 1에서 만든 안전한 읽기 함수를 불러온다
+from config_loader import load_json                              # config_loader.py 의 안전한 읽기 함수를 불러온다
 from exception_policy import TIME_FORMAT                         # 시각 문자열의 형식("%Y-%m-%d %H:%M")을 불러온다
 
 SLA_HOURS = load_json("config/sla.json", {"hours": 4})["hours"]  # 처리 기한(시간). 파일이 없거나 깨졌으면 기본값 4
@@ -210,12 +211,11 @@ for request in check_sla_breach(REQUESTS, NOW):                  # 기한을 초
 
 **순서**
 
-1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 세 가지 방법 중 **하나만** 고릅니다.
-   - **VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
-     1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
-     2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `req_sla.py` · `config/sla.json` · `challenge2-2_run.py` 입니다.
-     4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
+1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 네 가지를 반복합니다.
+   1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
+   2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
+   3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `req_sla.py` · `config/sla.json` · `challenge2-2_run.py` 입니다.
+   4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
 2. **[터미널]** 파일을 만든 뒤 `ls config` 를 쳐서 `sla.json` 이 `users.json` 과 같은 `config` 폴더 안에 있는지 확인합니다.
    - `config` 안에 또 `config` 가 생겼다면 위치가 틀린 것이니 옮깁니다.
    - `sla.json` 을 비워 두면 실행할 때 `[경고] 설정 파일 깨짐: config/sla.json` 이 나옵니다. 그래도 기본값 4로 돌아가 실행은 되니, 이 경고가 보이면 붙여 넣은 내용을 확인합니다.

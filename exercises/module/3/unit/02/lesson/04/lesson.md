@@ -33,7 +33,7 @@ source:
 | `approved` · `rejected` | (없음) | 그대로 | `(False, "검토 중이 아님")` |
 
 - 이 규칙을 코드로 쓰는 방법은 간단합니다. **바꾸기 전에 지금 상태를 먼저 확인**하고, 맞지 않으면 아무것도 바꾸지 않고 `False` 와 이유를 리턴합니다.
-- `approved` 가 된 요청서를 `granted` 로 바꾸는 일은 도전 2-1에 합니다.
+- `approved` 가 된 요청서를 `granted` 로 바꾸는 일은 제공 파일 `req_grant.py` 가 합니다(도전 2-1에서 직접 써 볼 수 있습니다).
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="승인·반려 함수는 검토 중인지, 본인 요청인지 확인한 뒤에만 상태를 바꾼다"></figure>
 
@@ -187,12 +187,11 @@ for request in REQUESTS:                                         # 요청서를 
 
 **순서**
 
-1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 세 가지 방법 중 **하나만** 고릅니다.
-   - **VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
-     1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
-     2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `req_review.py` · `exercise2-2_run.py` 입니다.
-     4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
+1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 네 가지를 반복합니다.
+   1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
+   2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
+   3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `req_review.py` · `exercise2-2_run.py` 입니다.
+   4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
 2. **[VS Code]** `req_review.py` 의 두 함수 본문을 직접 씁니다. 2.1 의 표와 그림을 보고 씁니다.
 3. **[터미널]** `pwd` 를 쳐서 마지막 폴더가 `access_control` 인지 확인한 뒤 실행합니다.
    ```bash
@@ -217,3 +216,63 @@ for request in REQUESTS:                                         # 요청서를 
 | 키가 없을 수 있을 때 꺼내기 | `request.get("approver")` |
 
 ---
+
+## 이번 Unit 마무리 · 깃허브에 올리기
+
+문제가 아니라 하루를 닫는 마무리입니다(15분). 핵심 실습 두 개와 「제공 파일」 `req_grant.py` 를 끝내고, 보고서를 쓴 뒤에 합니다.
+
+**1. 오늘 한 일 확인**
+
+1. 요청을 요청서(딕셔너리)로 접수하고, 접수할 수 없는 요청 세 건을 이유와 함께 걸러 냈다 (실습 2-1)
+2. 승인 · 반려가 검토 중인 요청서에만 되고, 본인 요청과 두 번째 처리는 막힌다 (실습 2-2)
+3. 승인된 요청서에 예외 권한을 주는 `req_grant.py` 를 「제공 파일」에서 복사해 두었다
+4. 보고서 `report_u2.md` 의 실습 2-1 · 2-2 칸에 `답:` 뒤가 비어 있는 질문이 없다
+
+**2. 파일 확인** — **[터미널]** `access_control` 폴더에서 확인합니다.
+
+```bash
+ls
+ls config
+```
+
+- 오늘 만든 `req_create.py` · `exercise2-1_run.py` · `req_review.py` · `exercise2-2_run.py` · `req_grant.py` · `report_u2.md` 가 보여야 합니다. `req_grant.py` 가 없으면 다음 레슨 「제공 파일」로 먼저 만듭니다.
+- `config` 안은 Unit 1을 마쳤을 때와 같습니다(`users.json` · `roles.json` · `exceptions.json`). 오늘은 `config` 에 새 파일을 만들지 않았습니다.
+
+**3. 깃허브에 올리기**
+
+1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
+   ```bash
+   cd ..
+   pwd
+   ```
+   - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
+   - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
+2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
+   ```bash
+   git status
+   ```
+   - 명령 풀이: `git status` 올릴 파일의 상태를 봄
+   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 도 같은 방법으로 합니다.
+   - `access_control/__pycache__/` 가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다.
+   - 오늘 새로 만든 파일은 `Untracked files:` 아래에 `access_control/req_create.py` 처럼 한 줄씩 보입니다.
+3. **[보고서]** `report_u2.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
+4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
+   ```bash
+   git add .
+   git commit -m "Add access control unit 2 request, review, grant and report"
+   git push
+   ```
+   - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
+   - `git push` 가 거절(`rejected`)되면 `git pull` 로 받아 온 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다.
+5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `access_control` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다.
+
+- 시간이 남아 도전을 했다면 도전 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
+
+**4. 이어지는 곳**
+
+1. `req_create.py` 의 요청서 모양(`id` · `user` · `permission` · `status` …)과 상태 이름(`reviewing` · `approved` · `rejected` · `granted`)은 Module 3 끝까지 같은 뜻으로 씁니다.
+2. 다음 Unit 3(권한 점검하기)에서는 이렇게 준 권한 가운데 오래 쓰이지 않는 것을 찾습니다.
+
+---
+
+<!-- learn:answers -->

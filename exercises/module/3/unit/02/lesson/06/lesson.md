@@ -13,22 +13,24 @@ source:
 
 ## 목표: 예외 권한 부여 함수
 
+> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 2-1 · 2-2와 글쓰기를 먼저 마칩니다. 이 도전을 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
+
 > **오늘 들어온 일**
 >
 > A사 보안 담당이 보낸 메시지: 「승인한 요청서를 제가 직접 예외 파일에 옮겨 적으면 실수가 납니다. 예외 번호를 겹치게 적거나, 만료 시각을 잘못 옮기거나, 하나를 빠뜨립니다. 승인된 요청서를 코드가 정책으로 한 번 더 확인하고, 통과한 것만 예외 권한을 부여하게 해 주세요. 어느 예외를 부여했는지도 요청서에 남겨 주세요.」
-> - 이 실습에서 하는 일: 승인된 요청서를 Unit 1에서 만든 `check_permission` 으로 한 번 더 확인하고, 통과하면 예외를 만들어 `EXCEPTIONS` 에 추가하는 함수 `grant_request` 를 직접 씁니다. 부여 전과 후에 Unit 1의 `evaluate_access` 로 판정해 비교합니다.
+> - 이 실습에서 하는 일: 승인된 요청서를 `rbac.py` 의 `check_permission` 으로 한 번 더 확인하고, 통과하면 예외를 만들어 `EXCEPTIONS` 에 추가하는 함수 `grant_request` 를 직접 씁니다. 부여 전과 후에 `policy.py` 의 `evaluate_access` 로 판정해 비교합니다. 「제공 파일」로 받은 `req_grant.py` 를 내가 직접 쓰는 도전입니다.
 > - 끝나면 쓰는 것: 보고서 (가)~(다) 답
 
 ## 왜 승인 뒤에 정책으로 다시 확인하는가
 
 1. 승인은 사람이 합니다. 그 뒤에 코드가 정책으로 한 번 더 확인하는 것을 **이중 검증**이라고 합니다.
-2. 부여는 새 규칙을 만들지 않고, Unit 1에서 만든 **예외**(기간이 정해진 임시 권한)를 한 건 추가하는 일입니다.
+2. 부여는 새 규칙을 만들지 않고, `config/exceptions.json` 에 적힌 것과 같은 **예외**(기간이 정해진 임시 권한)를 한 건 추가하는 일입니다.
 
 ## 3.1 부여할지 판단하는 순서
 
 - 요청자를 지금 정책으로 판정한 이유(`judge_reason`)에 따라 처리가 갈립니다.
-- 이 이유는 Unit 1에서 만든 `check_permission` 이 리턴하는 문자열입니다. `check_permission` 은 사용자 파일과 역할 파일만 보고 판정합니다(예외는 보지 않습니다).
-- 단계 1은 Unit 1의 `evaluate_access` 로 판정해 `역할 권한` 이라고 출력하고, 단계 2는 `check_permission` 의 이유를 써서 `부여하지 않음(허용)` 이라고 출력합니다. 두 출력이 다르게 보이는 것이 정상입니다.
+- 이 이유는 `rbac.py` 의 `check_permission` 이 리턴하는 문자열입니다. `check_permission` 은 사용자 파일과 역할 파일만 보고 판정합니다(예외는 보지 않습니다).
+- 단계 1은 `policy.py` 의 `evaluate_access` 로 판정해 `역할 권한` 이라고 출력하고, 단계 2는 `check_permission` 의 이유를 써서 `부여하지 않음(허용)` 이라고 출력합니다. 두 출력이 다르게 보이는 것이 정상입니다.
 
 | 판정 결과 | 뜻 | 부여 |
 |---|---|---|
@@ -49,9 +51,9 @@ source:
 | `reason` | `reason` |
 
 - 예외를 만든 뒤에는 거꾸로, 예외의 `id` 를 요청서의 `exception_id` 키에 적어 둡니다. 그러면 요청서만 보고도 어느 예외를 부여했는지 찾을 수 있습니다.
-- `EXCEPTIONS` 는 Unit 1의 `exception_policy.py` 가 `exceptions.json` 을 읽어 만든 리스트입니다. 오늘은 이 리스트에 한 건을 추가하기만 하고, `exceptions.json` 파일은 고치지 않습니다. 프로그램이 끝나면 추가한 예외도 사라집니다.
-- Unit 1의 `find_exception` 이 같은 `EXCEPTIONS` 를 읽으므로, 추가한 예외는 바로 판정에 쓰입니다.
-- Unit 1의 예외가 다섯 건이므로 새 예외의 번호는 5 + 1 = 6번입니다. 시작하기에서 본 숫자가 5가 아니면 6번이 아닌 다른 번호가 나옵니다.
+- `EXCEPTIONS` 는 `exception_policy.py` 가 `config/exceptions.json` 을 읽어 만든 리스트입니다. 오늘은 이 리스트에 한 건을 추가하기만 하고, `exceptions.json` 파일은 고치지 않습니다. 프로그램이 끝나면 추가한 예외도 사라집니다.
+- `exception_policy.py` 의 `find_exception` 이 같은 `EXCEPTIONS` 를 읽으므로, 추가한 예외는 바로 판정에 쓰입니다.
+- `exceptions.json` 의 예외가 다섯 건이므로 새 예외의 번호는 5 + 1 = 6번입니다. 시작하기에서 본 숫자가 5가 아니면 6번이 아닌 다른 번호가 나옵니다.
 
 **문법 상자 — 부여할지 가르는 조건과 번호 정하기**
 
@@ -97,21 +99,21 @@ print(exceptions)                                                  # 세 건이 
 **이런 상황이 있습니다**
 
 - **지금은**: 승인한 요청서의 내용을 보안 담당이 예외 파일에 직접 옮겨 적습니다. 옮겨 적다 예외 번호를 겹치게 적거나, 만료 시각을 잘못 옮기거나, 하나를 빠뜨리기 쉽고 시간도 걸립니다.
-- **그래서 만드는 것**: `grant_request` 입니다. 승인된 요청서를 받아서 Unit 1에서 만든 `check_permission` 으로 지금 정책을 한 번 더 확인하고, 통과한 것만 Unit 1의 **예외**로 `EXCEPTIONS` 에 추가합니다.
+- **그래서 만드는 것**: `grant_request` 입니다. 승인된 요청서를 받아서 `rbac.py` 의 `check_permission` 으로 지금 정책을 한 번 더 확인하고, 통과한 것만 **예외**로 `EXCEPTIONS` 에 추가합니다.
 - **오늘 데이터**: 요청서 네 장입니다. 1번 seoyeon · 3번 dami · 4번 junho 는 승인됐고, 2번 gaeun 은 반려됐습니다.
 - **실행하면**: 세 단계가 차례로 나옵니다. 단계 1은 부여하기 전의 판정, 단계 2는 부여를 시도한 결과, 단계 3은 부여한 뒤의 판정입니다. 부여 전과 후를 비교해 무엇이 달라졌는지 봅니다.
 - **현업에서는**: 권한 부여 도구도 승인된 신청을 바로 부여하지 않고, 지금 정책으로 한 번 더 확인한 뒤에 부여합니다.
 
 **할 일**
 
-1. `req_grant.py` 와 `challenge2-1_run.py` 두 파일을 만들고, `grant_request` 본문을 직접 씁니다.
+1. `req_grant.py` 와 `challenge2-1_run.py` 두 파일을 만들고, `grant_request` 본문을 직접 씁니다. 「제공 파일」로 만든 `req_grant.py` 가 이미 있으면, 그 내용을 모두 지우고 아래 골격으로 바꿔 씁니다.
 2. 실행해서 <mark>부여 전 판정</mark>(단계 1: 판정), <mark>부여 시도의 결과</mark>(단계 2: 부여), <mark>부여 후 판정</mark>(단계 3: 점검)을 읽습니다.
 
 **`req_grant.py`**
 
 ```python
-from rbac import check_permission                                # Unit 1에서 만든 역할 판정 함수를 불러온다
-from exception_policy import EXCEPTIONS                          # Unit 1에서 만든 예외 리스트를 불러온다
+from rbac import check_permission                                # rbac.py 의 역할 판정 함수를 불러온다
+from exception_policy import EXCEPTIONS                          # exception_policy.py 의 예외 리스트를 불러온다
 
 
 def grant_request(request):                                      # 요청서를 받는 함수
@@ -138,14 +140,14 @@ def grant_request(request):                                      # 요청서를 
 - 4번의 `judge_reason` 은 `check_permission` 이 리턴하는 판정 이유 문자열입니다(요청서의 `reason`, 즉 요청 이유와는 다릅니다). 「허용」이면 이미 가진 권한이라서 부여하지 않습니다.
 - 채우기 전에 실행하면 `TypeError: cannot unpack non-iterable NoneType object` 오류가 납니다. 함수가 아무것도 리턴하지 않기 때문입니다.
 
-**`challenge2-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 요청서 네 장을 접수하고 1 · 3 · 4번은 승인, 2번은 반려한 뒤, 단계 1 · 2 · 3을 차례로 실행합니다. 중간의 `show` 함수는 요청서마다 Unit 1의 `evaluate_access` 로 판정해 출력하고, 단계 2 끝에서는 `exception_id` 키가 있는 요청서(`"exception_id" in request`)의 예외 번호를 출력합니다.
+**`challenge2-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 요청서 네 장을 접수하고 1 · 3 · 4번은 승인, 2번은 반려한 뒤, 단계 1 · 2 · 3을 차례로 실행합니다. 중간의 `show` 함수는 요청서마다 `policy.py` 의 `evaluate_access` 로 판정해 출력하고, 단계 2 끝에서는 `exception_id` 키가 있는 요청서(`"exception_id" in request`)의 예외 번호를 출력합니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
 from req_create import REQUESTS, create_request                  # 실습 2-1에서 만든 요청서 함수와 리스트를 불러온다
 from req_review import approve_request, reject_request           # 실습 2-2에서 만든 승인 · 반려 함수를 불러온다
-from req_grant import grant_request                              # 방금 만든 부여 함수를 불러온다
-from policy import evaluate_access                               # Unit 1에서 만든 최종 판정 함수를 불러온다
+from req_grant import grant_request                              # 방금 직접 쓴 부여 함수를 불러온다
+from policy import evaluate_access                               # policy.py 의 최종 판정 함수를 불러온다
 
 NOW = datetime.strptime("2026-10-23 10:00", "%Y-%m-%d %H:%M")    # 오늘 실습의 지금 시각(고정)
 
@@ -171,7 +173,7 @@ def show(title):                                                 # 제목을 받
         user = request["user"]                                   # 요청자
         resource = request["resource"]                           # 자원
         action = request["action"]                               # 행위
-        is_allowed, reason = evaluate_access(user, resource, action, NOW)   # 22일의 최종 판정을 받는다
+        is_allowed, reason = evaluate_access(user, resource, action, NOW)   # 23일 10:00 의 최종 판정을 받는다
         print(request["id"], request["user"], request["permission"], "->", is_allowed, reason)   # 요청 번호 · 요청자 · 권한 -> 판정 을 출력한다
 
 
@@ -191,12 +193,11 @@ show("단계 3: 점검 - 부여 후")                                     # 부�
 
 **순서**
 
-1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 세 가지 방법 중 **하나만** 고릅니다.
-   - **VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
-     1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
-     2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `req_grant.py` · `challenge2-1_run.py` 입니다.
-     4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
+1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 네 가지를 반복합니다.
+   1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
+   2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
+   3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `req_grant.py` · `challenge2-1_run.py` 입니다.
+   4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
 2. **[VS Code]** `req_grant.py` 의 `grant_request` 본문을 직접 씁니다. 3.1 의 표와 그림을 보고 씁니다.
 3. **[터미널]** `pwd` 를 쳐서 마지막 폴더가 `access_control` 인지 확인한 뒤 실행합니다.
    ```bash
@@ -221,20 +222,7 @@ show("단계 3: 점검 - 부여 후")                                     # 부�
 | 어느 예외인지 적기 | `request["exception_id"] = exception["id"]` |
 | 부여 끝 표시 | `request["status"] = "granted"` |
 
----
-
-## Unit 2 마무리 — 보고서 실습 2-1 · 4-2 · 4-3 칸 확인
-
-Unit 2 의 실습 2-1 · 4-2 · 4-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. `access_control` 폴더에 오늘 만든 파일이 있는지 확인합니다.
-
-```bash
-ls
-ls config
-```
-
-- `req_create.py` · `req_review.py` · `req_grant.py` · `exercise2-1_run.py` · `exercise2-2_run.py` · `challenge2-1_run.py` 가 보여야 합니다. `config` 안은 Unit 1을 마쳤을 때와 같아야 합니다(오늘은 `config` 에 새 파일을 만들지 않았습니다).
-
-다음 Unit(Unit 2)에서는 접수한 지 오래된 요청서를 시간으로 찾아내고(SLA · 처리 기한), 요청서 이력을 파일로 저장합니다. 올리기(git)는 Unit 2의 도전 2-3 마지막에 한 번에 합니다.
+- 다 쓴 뒤에는 「제공 파일」 완성본과 같게 동작하므로 도전 2-3에서 그대로 불러 씁니다. 깃허브에는 실습 2-2 끝 「이번 Unit 마무리」의 2 ~ 4번을 한 번 더 해서 올립니다.
 
 ---
 
