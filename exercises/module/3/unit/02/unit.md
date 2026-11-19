@@ -12,6 +12,7 @@ lessons:
 - path: lesson/08/lesson.md
 - path: lesson/09/lesson.md
 - path: lesson/10/lesson.md
+- path: lesson/11/lesson.md
 ---
 
 # 요청서로 권한 주기
