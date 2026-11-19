@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img">
+<title>generate_report 는 식별 키로 두 점검 결과의 이유를 모아 이유 있는 권한만 후보로 담는다</title>
+<desc>식별 키는 user:permission:source 입니다. 규칙 결과는 키와 이유의 딕셔너리로, 안 쓴 결과는 키 리스트로 바꾼 뒤 권한마다 collect_reasons 로 이유를 모읍니다. 이유가 있는 권한만 findings 에 담아 리포트를 만들고, 14건 중 10건이 후보가 됩니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">overprivilege.py · generate_report 의 흐름</text>
+<rect x="20" y="48" width="680" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="75" font-size="15" fill="#292929" text-anchor="middle">식별 키 entry_key = user : permission : source (받은 방식까지 붙인다)</text>
+<rect x="20" y="110" width="330" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="185" y="135" font-size="15" fill="#9a6200" text-anchor="middle" font-weight="700">규칙 결과 stale</text>
+<text x="185" y="157" font-size="14" fill="#292929" text-anchor="middle">stale_reason = {키: 걸린 이유}</text>
+<rect x="370" y="110" width="330" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="535" y="135" font-size="15" fill="#9a6200" text-anchor="middle" font-weight="700">안 쓴 결과 unused</text>
+<text x="535" y="157" font-size="14" fill="#292929" text-anchor="middle">unused_keys = [키, 키, ...]</text>
+<polyline points="185,170 185,193" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<polyline points="535,170 535,193" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<rect x="20" y="196" width="680" height="64" rx="8" fill="#ffffff" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="222" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">현황 권한마다 collect_reasons → reasons 리스트</text>
+<text x="360" y="244" font-size="14" fill="#666660" text-anchor="middle">stale_reason 에 키가 있으면 걸린 이유 · unused_keys 에 있으면 안 쓴 이유</text>
+<polyline points="185,260 185,283" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<polyline points="535,260 535,283" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<rect x="20" y="286" width="330" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="185" y="309" font-size="15" fill="#1f7a4a" text-anchor="middle" font-weight="700">reasons 가 있으면</text>
+<text x="185" y="330" font-size="14" fill="#292929" text-anchor="middle">복사본 + reasons → findings</text>
+<rect x="370" y="286" width="330" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="535" y="309" font-size="15" fill="#666660" text-anchor="middle" font-weight="700">reasons 가 비면</text>
+<text x="535" y="330" font-size="14" fill="#292929" text-anchor="middle">후보에 넣지 않는다</text>
+<polyline points="185,342 185,365" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<rect x="20" y="368" width="680" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="393" font-size="15" fill="#2f6fd0" text-anchor="middle" font-weight="700">report = { generated_at, total: 14, finding_count: 10, findings: [...] }</text>
+<text x="360" y="415" font-size="14" fill="#292929" text-anchor="middle">점검한 14건 중 후보 10건 · Unit 4 가 쓴다</text>
+</g>
+</svg>

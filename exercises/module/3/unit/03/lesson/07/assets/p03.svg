@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img"><title>제외 리스트 한 건은 user, permission, reason 이고 「사용자:권한」 키로 후보와 비교한다</title><desc>config/exclude_list.json 에는 gaeun, seoyeon, dami 세 건이 있고 기간 키는 없다. 비교 키는 도전 3-2 식별 키와 달리 source 를 넣지 않은 「사용자:권한」 문자열이다.</desc><defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img"><title>제외 리스트 한 건은 user, permission, reason 이고 「사용자:권한」 키로 후보와 비교한다</title><desc>config/exclude_list.json 에는 gaeun, seoyeon, dami 세 건이 있고 기간 키는 없다. 비교 키는 리포트의 식별 키와 달리 source 를 넣지 않은 「사용자:권한」 문자열이다.</desc><defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">회수 제외 리스트의 모양</text>
 <rect x="20" y="56" width="150" height="40" rx="0" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
@@ -27,10 +27,10 @@
 <text x="540" y="201.25" font-size="15" fill="#292929" text-anchor="middle">넘겨받을 사람이 정해질 때까지</text>
 <text x="20" y="240" font-size="14" fill="#666660">기간을 적는 키는 없다</text>
 <rect x="20" y="258" width="330" height="70" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="2"/>
-<text x="185" y="287.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">도전 3-3 비교 키 (exclude_key)</text>
+<text x="185" y="287.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">제외 비교 키 (exclude_key)</text>
 <text x="185" y="308.75" font-size="15" fill="#292929" text-anchor="middle">"gaeun:ACCOUNT:CHANGE"</text>
 <rect x="370" y="258" width="330" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="535" y="287.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">도전 3-2 식별 키 (entry_key)</text>
+<text x="535" y="287.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">리포트 식별 키 (entry_key)</text>
 <text x="535" y="308.75" font-size="14" fill="#666660" text-anchor="middle">"gaeun:ACCOUNT:CHANGE:역할 …"</text>
 <text x="20" y="360" font-size="15" fill="#292929">source 를 넣지 않는다: 어떻게 받은 권한이든 그 사람의 그 권한을 기준으로 적기 때문</text>
 <text x="20" y="388" font-size="15" fill="#666660">exclude_map = {"gaeun:ACCOUNT:CHANGE": "계정에 사고가 …", …}</text>

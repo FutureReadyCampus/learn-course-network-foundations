@@ -25,7 +25,7 @@ source:
 
 1. 규칙(퇴사 · 만료)에 안 걸려도 필요 없는 권한이 있습니다. 부여 때는 필요했지만 일이 끝나서 이제 안 쓰는 권한입니다.
 2. 이런 권한은 **마지막으로 쓴 시각**을 보면 알 수 있습니다. 권한은 있는데 오래 쓴 이력이 없으면 과다권한의 후보입니다.
-3. 이번 실습에서는 **찾기만** 하고 회수하지 않습니다. 회수는 Unit 4에서 합니다.
+3. 이번 실습에서는 **찾기만** 하고 회수하지 않습니다. 회수는 다음 Unit 4(권한 거두기)에서 합니다.
 
 ## 3.1 사용 이력과 비교하는 방법
 
@@ -38,7 +38,7 @@ source:
 |---|---|---|
 | 사용자 | `seoyeon` | `entry['user']` |
 | 구분하는 문자열 | `:` | 사용자와 권한 이름을 나누려고 코드가 넣은 문자열 |
-| 권한 이름 | `SALES:QUERY` | `entry['permission']` 전체입니다. 이 이름 안의 `:` 는 자원(`SALES`)과 행위(`QUERY`)를 나누는, 이름의 일부입니다. |
+| 권한 이름 | `SALES:QUERY` | `entry['permission']` 전체 (안의 `:` 도 이름의 일부) |
 
 ```python
 user = "seoyeon"                                          # 사용자
@@ -63,7 +63,7 @@ seoyeon:SALES:QUERY
 
 - 이름이 비슷한 두 가지를 구별합니다. `last_used_map` 은 사용 이력 딕셔너리(「사용자:권한」 문자열 → 마지막으로 쓴 시각 문자열)이고, `"last_used"` 는 후보에 추가하는 키(값은 마지막으로 쓴 시각 문자열, 이력이 없으면 `None`)입니다.
 
-- 실행 파일은 `find_unused` 를 부르기 전에 도전 3-1 규칙에 이미 걸린 권한(퇴사한 dami 포함)을 현황에서 뺍니다. 이때 권한 한 건마다 `user:permission:source` 를 이어 붙인 문자열(**식별 키**)을 만들어 서로 비교합니다. 이 방법은 Unit 3의 도전 3-2에서 자세히 설명하므로 지금은 붙여 넣기만 합니다.
+- 실행 파일은 `find_unused` 를 부르기 전에, 「제공 파일」 `review_rules.py` 의 `find_stale` 로 규칙(퇴사 · 만료)에 이미 걸린 권한 일곱 건(퇴사한 dami 포함)을 현황에서 뺍니다. 이때 권한 한 건마다 `user:permission:source` 를 이어 붙인 문자열(**식별 키**)을 만들어 서로 비교합니다. 실행 파일에 이미 적혀 있으니 지금은 붙여 넣기만 합니다(식별 키는 도전 3-2 에서 직접 써 볼 수 있습니다).
 
 | 현황의 권한 한 건의 상태 | 판정 |
 |---|---|
@@ -124,8 +124,17 @@ True
 
 **할 일**
 
-1. `config/access_log.json` · `review_unused.py` · `exercise3-2_run.py` 세 파일을 만들고, `find_unused` 본문을 직접 씁니다.
-2. 실행해서 <mark>안 쓴 일 수</mark>(단계 1: 현황)와 <mark>90일 넘게 안 쓴 후보</mark>(단계 2: 판정)를 읽습니다.
+1. 「제공 파일」 레슨의 파일 네 개(`review_rules.py` · `overprivilege.py` · `report_exclude.py` · `config/exclude_list.json`)를 먼저 만듭니다. 이 실습은 그중 `review_rules.py` 를 씁니다.
+2. `config/access_log.json` · `review_unused.py` · `exercise3-2_run.py` 세 파일을 만들고, `find_unused` 본문을 직접 씁니다.
+3. 실행해서 <mark>안 쓴 일 수</mark>(단계 1: 현황)와 <mark>90일 넘게 안 쓴 후보</mark>(단계 2: 판정)를 읽습니다.
+
+**준비** — 터미널이 `…/access_control` 위치인지 확인한 뒤 「제공 파일」이 있는지 봅니다.
+
+```bash
+ls
+```
+
+- `review_rules.py` 가 보이지 않으면 「제공 파일」 레슨에서 먼저 만듭니다. 없는 채로 실행하면 `ModuleNotFoundError: No module named 'review_rules'` 오류가 납니다.
 
 **`config/access_log.json`** — 그대로 붙여 넣습니다. 사용 이력입니다. `access_control` 안의 `config` 폴더에 만듭니다.
 
@@ -145,7 +154,7 @@ True
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
-from config_loader import load_json                              # Unit 1에서 만든 안전한 읽기 함수를 불러온다
+from config_loader import load_json                              # config_loader.py 의 안전한 읽기 함수를 불러온다
 from exception_policy import TIME_FORMAT                         # 시각 문자열의 형식("%Y-%m-%d %H:%M")을 불러온다
 
 
@@ -200,15 +209,15 @@ def find_unused(access_list, last_used_map, now, limit_days):    # 현황 · 마
 ```
 
 - `find_unused` 의 본문은 함수 안이라 앞에 공백 4개를 넣고(Tab 키 한 번), `for` 안쪽은 공백 4개 더(8개), `if` · `elif` 안쪽은 또 4개 더(12개) 넣습니다. 마지막 `return` 은 `for` 밖이므로 공백 4개입니다. `load_last_used` · `make_unused` · `days_since` 는 미리 채워 두었으니 그대로 둡니다.
-- `used_text is None` 은 「값이 `None` 인가」를 묻는 것입니다. `.get(key)` 는 키가 없으면 `None` 을 주므로 `None` 이면 사용 이력이 없다는 뜻입니다. 그 경우에는 일 수를 계산할 수 없으니, `days_since` 는 사용 이력이 있을 때(`elif`)만 부릅니다. `elif` 는 도전 3-1의 `find_stale` 에서 쓴 것과 같습니다.
+- `used_text is None` 은 「값이 `None` 인가」를 묻는 것입니다. `.get(key)` 는 키가 없으면 `None` 을 주므로 `None` 이면 사용 이력이 없다는 뜻입니다. 그 경우에는 일 수를 계산할 수 없으니, `days_since` 는 사용 이력이 있을 때(`elif`)만 부릅니다. `elif` 는 「앞의 `if` 가 아니고, 이 조건이면」이라는 뜻입니다.
 - 채우기 전에 실행하면 `TypeError: object of type 'NoneType' has no len()` 오류가 납니다. `find_unused` 가 아무것도 리턴하지 않기 때문입니다.
 
-**`exercise3-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 현황을 만들고, 도전 3-1의 `find_stale` 에 걸린 권한을 뺀 뒤, 남은 권한이 며칠째 안 쓰였는지 출력하고 `find_unused` 로 후보를 찾습니다.
+**`exercise3-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 현황을 만들고, 「제공 파일」의 `find_stale` 에 걸린 권한을 뺀 뒤, 남은 권한이 며칠째 안 쓰였는지 출력하고 `find_unused` 로 후보를 찾습니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
 from review_list import build_access_list                        # 실습 3-1에서 만든 현황 함수를 불러온다
-from review_rules import find_stale                              # 도전 3-1에서 만든 규칙 점검 함수를 불러온다
+from review_rules import find_stale                              # 제공 파일의 규칙 점검 함수를 불러온다
 from review_unused import load_last_used, find_unused            # 방금 만든 미사용 점검 함수를 불러온다
 
 NOW = datetime.strptime("2026-10-29 10:00", "%Y-%m-%d %H:%M")    # 이번 실습의 지금 시각(고정)
@@ -247,12 +256,11 @@ for entry in unused:                                             # 후보를 한
 
 **순서**
 
-1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 세 가지 방법 중 **하나만** 고릅니다.
-   - **VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
-     1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
-     2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `config/access_log.json` · `review_unused.py` · `exercise3-2_run.py` 입니다. `access_control` 폴더를 선택한 채로 `config/access_log.json` 을 입력하면 `config` 폴더 안에 만들어집니다.
-     4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
+1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 네 가지를 반복합니다.
+   1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
+   2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
+   3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `config/access_log.json` · `review_unused.py` · `exercise3-2_run.py` 입니다. `access_control` 폴더를 선택한 채로 `config/access_log.json` 을 입력하면 `config` 폴더 안에 만들어집니다.
+   4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
 2. **[터미널]** 파일을 만든 뒤 `ls config` 를 쳐서 `access_log.json` 이 `users.json` 과 같은 `config` 폴더 안에 있는지 확인합니다.
    - `config` 안에 또 `config` 가 생겼다면 위치가 틀린 것이니 옮깁니다.
    - 붙여 넣은 내용이 맞는지 `python -m json.tool config/access_log.json` 으로 확인합니다(맥북은 `python3 -m json.tool …`). 여러 줄로 정리되어 출력되면 정상이고, 오류가 나면 붙여 넣을 때 글자가 빠진 것입니다. 깨진 채 두면 사용 이력을 못 읽어 모든 권한이 「이력 없음」으로 나옵니다.
@@ -284,18 +292,61 @@ for entry in unused:                                             # 후보를 한
 
 ---
 
-## Unit 3 마무리 — 보고서 실습 3-1 · 도전 3-1 · 실습 3-2 칸 확인
 
-Unit 3 의 실습 3-1 · 도전 3-1 · 실습 3-2 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. `access_control` 폴더에 이번 Unit에서 만든 파일이 있는지 확인합니다.
+## 이번 Unit 마무리 · 깃허브에 올리기
+
+문제가 아니라 하루를 닫는 마무리입니다(15분). 핵심 실습 두 개와 글쓰기를 끝낸 뒤 합니다.
+
+**1. 오늘 한 일 확인**
+
+1. 역할로 받은 권한과 예외로 받은 권한을 한 리스트로 모아 현황 14건을 만들었다 (실습 3-1)
+2. 규칙에 안 걸린 권한 일곱 건 가운데 90일 넘게 안 썼거나 사용 이력이 없는 후보 3건을 찾았다 (실습 3-2)
+3. 보고서 `report_u3.md` 의 실습 3-1 · 3-2 칸에 `답:` 뒤가 비어 있는 질문이 없다
+
+**2. 파일 확인** — **[터미널]** `access_control` 폴더에서 확인합니다.
 
 ```bash
 ls
 ls config
 ```
 
-- `review_list.py` · `review_rules.py` · `review_unused.py` · `exercise3-1_run.py` · `challenge3-1_run.py` · `exercise3-2_run.py` 가 보여야 합니다. `config` 안에는 `access_log.json` 이 새로 보여야 합니다.
+- `review_list.py` · `exercise3-1_run.py` · `review_rules.py` · `overprivilege.py` · `report_exclude.py` · `review_unused.py` · `exercise3-2_run.py` · `report_u3.md` 가 보여야 합니다.
+- `config` 안에는 `access_log.json` · `exclude_list.json` 이 새로 보여야 합니다.
 
-Unit 3에서는 이번 Unit에서 찾은 결과를 합쳐 **과다권한 종합 리포트**를 만들고 회수하지 않을 권한을 가려냅니다. 올리기(git)는 Unit 3의 도전 3-3 마지막에 한 번에 합니다.
+**3. 깃허브에 올리기**
+
+1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
+   ```bash
+   cd ..
+   pwd
+   ```
+   - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
+   - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
+2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
+   ```bash
+   git status
+   ```
+   - 명령 풀이: `git status` 올릴 파일의 상태를 봄
+   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 도 같은 방법으로 합니다.
+   - `access_control/__pycache__/` 는 파이썬이 실행하면서 자동으로 만든 임시 폴더입니다. 올릴 필요가 없으므로 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 더 적고 저장합니다.
+   - `Untracked files:` 는 「아직 깃이 모르는 새 파일」 목록입니다. 이번 Unit 에서 만든 파일이 `access_control/review_list.py` 처럼 한 줄씩 보입니다.
+3. **[보고서]** `report_u3.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
+4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
+   ```bash
+   git add .
+   git commit -m "Add access control unit 3 access review and unused permissions"
+   git push
+   ```
+   - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
+   - `git push` 가 거절(`rejected`)되면 `git pull` 로 받아 온 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다.
+5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `access_control` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다.
+
+- 시간이 남아 도전을 했다면 도전 파일까지 만든 뒤 1 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
+
+**4. 이어지는 곳**
+
+1. `review_list.py` · `review_rules.py` · `review_unused.py` 는 다음 Unit 4 가 회수할 후보를 다시 뽑을 때 그대로 불러 씁니다.
+2. `overprivilege.py` 의 리포트와 `report_exclude.py` · `config/exclude_list.json` 의 회수 제외는 Unit 4 가 회수 계획을 세울 때 씁니다. 어떻게 동작하는지 직접 만들어 보려면 도전 3-2 · 3-3 을 합니다.
 
 ---
 

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 450" role="img">
+<title>split_by_exclude 는 후보 10건을 회수 대상 8건과 회수 제외 2건으로 나눈다</title>
+<desc>제외 리스트와 후보는 user:permission 키로 비교합니다. 제외 리스트에 있고 이유에 퇴사한 계정이 없으면 회수 제외, 아니면 회수 대상입니다. dami 의 SALES:QUERY 는 리스트에 있어도 퇴사라 회수 대상에 남습니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">report_exclude.py · split_by_exclude 의 흐름</text>
+<rect x="20" y="48" width="330" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="185" y="73" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">exclude_key = user : permission</text>
+<text x="185" y="95" font-size="14" fill="#666660" text-anchor="middle">source 는 붙이지 않는다</text>
+<rect x="370" y="48" width="330" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="535" y="73" font-size="15" fill="#2f6fd0" text-anchor="middle" font-weight="700">load_exclude_map</text>
+<text x="535" y="95" font-size="14" fill="#292929" text-anchor="middle">config/exclude_list.json → {키: 이유}</text>
+<rect x="20" y="136" width="200" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="120" y="162" font-size="15" fill="#2f6fd0" text-anchor="middle" font-weight="700">후보 findings</text>
+<text x="120" y="184" font-size="14" fill="#292929" text-anchor="middle">10건, 한 건씩</text>
+<polyline points="220,168 256,168" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<polyline points="535,108 535,133" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="260" y="136" width="440" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="480" y="162" font-size="15" fill="#292929" text-anchor="middle">can_exclude: 제외 리스트에 있고</text>
+<text x="480" y="184" font-size="15" fill="#292929" text-anchor="middle">이유에 「퇴사한 계정」이 없나?</text>
+<polyline points="330,200 330,216 185,216 185,239" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<text x="258" y="232" font-size="14" fill="#666660" text-anchor="middle">아니다</text>
+<polyline points="600,200 600,239" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<text x="608" y="226" font-size="14" fill="#666660">그렇다</text>
+<rect x="20" y="242" width="330" height="128" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="185" y="270" font-size="16" fill="#e0442e" text-anchor="middle" font-weight="700">to_revoke · 회수 대상 8건</text>
+<text x="185" y="304" font-size="15" fill="#292929" text-anchor="middle">dami SALES:QUERY 는</text>
+<text x="185" y="326" font-size="15" fill="#292929" text-anchor="middle">제외 리스트에 있지만</text>
+<text x="185" y="348" font-size="15" fill="#292929" text-anchor="middle">퇴사한 계정이라 여기에 남는다</text>
+<rect x="370" y="242" width="330" height="128" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="535" y="270" font-size="16" fill="#1f7a4a" text-anchor="middle" font-weight="700">excluded · 회수 제외 2건</text>
+<text x="535" y="304" font-size="15" fill="#292929" text-anchor="middle">seoyeon SALES:CHANGE</text>
+<text x="535" y="326" font-size="15" fill="#292929" text-anchor="middle">gaeun ACCOUNT:CHANGE</text>
+<text x="535" y="348" font-size="14" fill="#666660" text-anchor="middle">복사본에 exclude_reason 을 적음</text>
+<rect x="20" y="392" width="680" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="419" font-size="15" fill="#292929" text-anchor="middle">리턴: (to_revoke, excluded) 두 리스트를 함께 돌려준다 · Unit 4 가 쓴다</text>
+</g>
+</svg>

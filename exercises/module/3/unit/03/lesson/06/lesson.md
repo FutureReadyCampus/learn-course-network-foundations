@@ -13,6 +13,8 @@ source:
 
 ## 목표: 과다권한 후보 리포트
 
+> 선택입니다. 시간이 남을 때 합니다. 「제공 파일」로 받은 `overprivilege.py` 를 이번에는 직접 써 봅니다.
+
 > **이번 실습에 들어온 일**
 >
 > A사 관제 담당이 보낸 메시지:
@@ -25,7 +27,7 @@ source:
 
 1. 규칙으로 찾은 결과와 90일 넘게 안 쓴 권한을 찾은 결과가 따로 나오면, 담당자가 같은 권한이 두 곳에 나오는지 직접 맞춰 봐야 합니다. 두 결과를 합쳐 모은 것이 **후보**입니다. 후보는 **과다권한**(over-privilege · 오버 프리빌리지), 곧 업무에 필요한 것보다 많이 가진 권한일 수 있는 권한입니다.
 2. 후보 하나에 걸린 **이유**를 붙여 한곳에 모읍니다.
-3. 이번 실습의 리포트는 **리포트 한 장 = 딕셔너리 하나**입니다. 여기서 「리포트」는 프로그램이 만드는 점검 결과이고, 「보고서」는 내가 답을 적는 Unit 3 입니다.
+3. 이번 실습의 리포트는 **리포트 한 장 = 딕셔너리 하나**입니다. 여기서 「리포트」는 프로그램이 만드는 점검 결과이고, 「보고서」는 내가 답을 적는 `report_u3.md` 입니다.
 4. 실습 3-2에서는 규칙에 걸린 권한을 빼고 안 쓴 권한을 찾았지만, 이번에는 **전체 현황**에 두 점검을 따로 돌립니다. 그래서 권한 한 건이 두 이유에 모두 걸릴 수 있고, 안 쓴 권한도 실습 3-2보다 더 많이 나옵니다. 코드가 틀려서가 아니라 규칙에 걸린 권한도 함께 검사하기 때문입니다.
 
 ## 1.1 리포트의 모양
@@ -41,11 +43,11 @@ source:
 - `reasons` 는 이유 문자열의 **리스트**입니다.
   - 규칙에 걸렸으면 그 이유(`"퇴사한 계정"` 등)가, 오래 안 썼으면 `"90일 넘게 안 씀(이력 없음 포함)"` 이 들어갑니다.
   - 이유가 하나도 없는 권한은 후보가 아니므로 `findings` 에 넣지 않습니다.
-- 「90일 넘게」는 실습 3-2과 같은 기준입니다. 마지막으로 쓴 뒤 지난 일 수가 91일 이상이거나 사용 이력이 없으면 해당합니다.
+- 「90일 넘게」는 실습 3-2 와 같은 기준입니다. 마지막으로 쓴 뒤 지난 일 수가 91일 이상이거나 사용 이력이 없으면 해당합니다.
 - `stale`(스테일)은 「오래돼서 쓸모없어진」이라는 뜻으로, 퇴사 · 만료로 필요 없어진 권한을 말합니다.
-  - 변수 `stale` 은 도전 3-1의 `find_stale` 이 리턴한 「규칙에 걸린 권한」 리스트이고(여기서 「걸렸다」는 퇴사 · 만료 규칙에 해당한다는 뜻), `unused` 는 실습 3-2의 `find_unused` 가 리턴한 「90일 넘게 안 쓴 권한」 리스트입니다.
+  - 변수 `stale` 은 `review_rules.py` 의 `find_stale` 이 리턴한 「규칙에 걸린 권한」 리스트이고(여기서 「걸렸다」는 퇴사 · 만료 규칙에 해당한다는 뜻), `unused` 는 실습 3-2의 `find_unused` 가 리턴한 「90일 넘게 안 쓴 권한」 리스트입니다.
 - 이번에 새로 하는 것은 두 점검 결과를 권한 한 건마다 하나의 `reasons` 리스트로 합치는 것입니다.
-  - 복사해서 키를 추가하는 `entry.copy()` 는 도전 3-1, 문자열로 이어 붙인 키로 찾는 방법은 실습 3-2과 같습니다.
+  - 복사해서 키를 추가하는 `entry.copy()` 와 문자열로 이어 붙인 키로 찾는 방법은 실습 3-2 의 `review_unused.py` 와 같습니다.
 
 **식별 키**
 
@@ -96,7 +98,7 @@ source:
 
 **할 일**
 
-1. `overprivilege.py` 와 `challenge3-2_run.py` 두 파일을 만들고, `entry_key` · `make_stale_reason` · `make_unused_keys` · `collect_reasons` · `generate_report` 에서 직접 쓰는 곳 다섯 군데를 씁니다.
+1. 「제공 파일」로 만든 `overprivilege.py` 의 내용을 모두 지우고 아래 골격으로 바꾼 뒤, `challenge3-2_run.py` 를 새로 만듭니다. 그다음 `entry_key` · `make_stale_reason` · `make_unused_keys` · `collect_reasons` · `generate_report` 에서 직접 쓰는 곳 다섯 군데를 씁니다.
 2. 실행해서 <mark>리포트 요약과 후보</mark>(단계 1: 요약)와 <mark>후보가 아닌 권한</mark>(단계 2: 확인)을 읽습니다.
 
 **`overprivilege.py`**
@@ -185,12 +187,12 @@ def generate_report(access_list, stale, unused, days, generated_at):   # 현황 
   - `generate_report` 안: 미리 채운 `for` 안쪽이라 8번 `if` 는 8개, 그 안쪽(9 ~ 11번)은 4개 더(12개)입니다.
 - 채우기 전에 실행해도 오류는 나지 않고 후보가 `0 건` 으로 나옵니다. 아직 이유를 모으지 않았기 때문입니다.
 
-**`challenge3-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 3-1 ~ 6-3의 함수로 현황과 규칙 결과, 안 쓴 결과를 만든 뒤 `generate_report` 로 리포트를 만들어 출력합니다.
+**`challenge3-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 3-1 · 3-2 와 `review_rules.py` 의 함수로 현황과 규칙 결과, 안 쓴 결과를 만든 뒤 `generate_report` 로 리포트를 만들어 출력합니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
 from review_list import build_access_list                        # 실습 3-1에서 만든 현황 함수를 불러온다
-from review_rules import find_stale                              # 도전 3-1에서 만든 규칙 점검 함수를 불러온다
+from review_rules import find_stale                              # review_rules.py 의 규칙 점검 함수를 불러온다
 from review_unused import load_last_used, find_unused            # 실습 3-2에서 만든 안 쓴 권한 점검 함수를 불러온다
 from overprivilege import generate_report, entry_key             # 방금 만든 리포트 함수와 식별 키 함수를 불러온다
 
@@ -224,8 +226,7 @@ print(names)                                                     # 후보가 아
 
 **순서**
 
-1. **[VS Code]** 파일 `overprivilege.py` · `challenge3-2_run.py` 를 만들어 위 코드를 붙여 넣습니다. 
-   - VS Code: `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력합니다.
+1. **[VS Code]** `overprivilege.py` 를 열어 내용을 모두 지우고 위 골격을 붙여 넣고 저장합니다. 이어서 `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘으로 `challenge3-2_run.py` 를 만들어 붙여 넣고 저장합니다.
 2. **[VS Code]** `overprivilege.py` 에서 직접 쓰는 곳 다섯 군데(`entry_key` · `make_stale_reason` · `make_unused_keys` · `collect_reasons` · `generate_report`)를 씁니다. 1.1 의 표와 그림을 보고 씁니다.
 3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
    ```bash

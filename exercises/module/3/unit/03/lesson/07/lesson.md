@@ -13,6 +13,8 @@ source:
 
 ## 목표: 회수 제외 리스트
 
+> 선택입니다. 시간이 남을 때 합니다. 「제공 파일」로 받은 `report_exclude.py` 를 이번에는 직접 써 봅니다.
+
 > **이번 실습에 들어온 일**
 >
 > A사 관제 담당이 보낸 메시지:
@@ -20,12 +22,12 @@ source:
 > - 가은의 `ACCOUNT:CHANGE`(계정 설정을 바꾸는 권한): 계정에 사고가 났을 때만 씁니다.
 > - 서연의 `SALES:CHANGE`(영업 자료를 바꾸는 권한): 6월 말과 12월 말, 반년에 한 번 결산 때만 씁니다.
 >
-> Unit 4에서 권한을 회수할 때 이 두 권한까지 없어지면 필요한 날 일을 못 합니다. 회수하지 않을 권한은 파일에 적어 둘 테니, 후보를 「회수 대상」과 「회수 제외」로 나눠 주세요.」
+> 다음에 권한을 회수할 때 이 두 권한까지 없어지면 필요한 날 일을 못 합니다. 회수하지 않을 권한은 파일에 적어 둘 테니, 후보를 「회수 대상」과 「회수 제외」로 나눠 주세요.」
 > - **왜 중요한가**: 후보를 전부 회수하면, 가은은 계정에 사고가 난 날 서연은 결산하는 날 필요한 권한이 없어 일을 못 합니다. 그래서 회수하기 전에 「회수 제외」를 먼저 가려냅니다.
 
 ## 왜 회수 제외 리스트가 필요한가
 
-1. 도전 3-2 리포트의 후보 10건은 「바로 회수할 권한」이 아니라 「확인이 필요한 권한」입니다.
+1. 과다권한 후보 리포트(`overprivilege.py` 의 `generate_report`)에 나온 후보 10건은 「바로 회수할 권한」이 아니라 「확인이 필요한 권한」입니다.
 2. 후보 중에는 평소에 안 써도 되는 권한이 있습니다. 담당자가 이런 권한을 **회수 제외 리스트**(exclude list · 익스클루드 리스트, 줄여서 제외 리스트)에 적어 두면, 프로그램이 후보를 「회수 대상」과 「회수 제외」로 나눕니다.
 3. 단, 퇴사한 사람의 권한은 제외 리스트에 있어도 제외하지 않습니다. 이미 회사에 없는 사람의 계정에 권한이 열려 있으면 다른 사람이 몰래 쓸 수 있어 위험하기 때문입니다.
 4. 제외 리스트는 사람이 적기 때문에 잘못 적을 수 있습니다. 리스트에 있다는 이유만으로 무조건 믿으면, 퇴사한 사람의 권한처럼 제외하면 안 되는 것까지 남게 됩니다.
@@ -44,16 +46,16 @@ source:
   - 가은(`gaeun`) `ACCOUNT:CHANGE`, 서연(`seoyeon`) `SALES:CHANGE`, 다미(`dami`) `SALES:QUERY` 입니다.
   - 메시지에는 두 개만 나왔고, 세 번째 다미 권한은 문제 (나)에서 다룹니다.
 - 제외 리스트와 후보는 「사용자:권한」 문자열(예: `"gaeun:ACCOUNT:CHANGE"`)이 같은지 비교합니다.
-  - 도전 3-2의 식별 키와 달리 `source`(역할인지 예외인지)는 붙이지 않습니다.
+  - `overprivilege.py` 의 식별 키와 달리 `source`(역할인지 예외인지)는 붙이지 않습니다.
   - 제외 리스트는 어떻게 받은 권한이든 그 사람의 그 권한을 기준으로 적기 때문입니다.
 - 함수 네 개를 씁니다.
-  - `exclude_key`(1번): 「사용자:권한」 문자열을 만듭니다. 도전 3-2의 식별 키와 달리 `source` 는 넣지 않습니다.
+  - `exclude_key`(1번): 「사용자:권한」 문자열을 만듭니다. `overprivilege.py` 의 식별 키와 달리 `source` 는 넣지 않습니다.
   - `load_exclude_map`(2번): 파일을 읽어 `{"gaeun:ACCOUNT:CHANGE": "계정에 사고가 …", …}` 모양의 딕셔너리(`exclude_map`)를 만듭니다.
     - 한 줄만 씁니다.
   - `can_exclude`(3 ~ 6번): 후보를 회수 제외해도 되는지 `True` · `False` 로 알려 줍니다.
   - `split_by_exclude`(7 ~ 12번): `can_exclude` 의 결과로 후보를 둘로 나눕니다.
 - `make_excluded` 는 후보를 복사해 `exclude_reason` 키(제외 이유)를 적은 복사본을 리턴합니다(판단이 없는 복사라 미리 채움).
-- `reason`(제외 리스트 파일에 적힌 제외 이유 문자열)과 `reasons`(도전 3-2 후보에 붙은 이유 리스트)는 한 글자 차이이니 헷갈리지 마세요.
+- `reason`(제외 리스트 파일에 적힌 제외 이유 문자열)과 `reasons`(리포트 후보에 붙은 이유 리스트)는 한 글자 차이이니 헷갈리지 마세요.
 - `to_revoke`(투 리보크)는 회수 대상 리스트, `excluded`(익스클루디드)는 제외된 후보 리스트입니다.
   - 두 리스트는 `return to_revoke, excluded` 로 한꺼번에 리턴하고, 받는 쪽은 `to_revoke, excluded = …` 로 두 이름에 나눠 받습니다(리턴한 두 값이 차례로 두 이름에 들어갑니다).
 
@@ -63,7 +65,7 @@ source:
 
 **이런 상황이 있습니다**
 
-- **지금은**: 도전 3-2 리포트의 후보 10건이 한 리스트에 섞여 있습니다. 회수하지 않을 권한을 담당자가 눈으로 골라야 합니다.
+- **지금은**: 과다권한 후보 리포트의 후보 10건이 한 리스트에 섞여 있습니다. 회수하지 않을 권한을 담당자가 눈으로 골라야 합니다.
 - **그래서 만드는 것**: `split_by_exclude` 입니다.
   - 제외 리스트에 있는 후보는 `exclude_reason` 키를 붙여 「회수 제외」로, 나머지는 「회수 대상」으로 나눕니다.
   - 후보에 붙은 이유(`reasons`)에 「퇴사한 계정」이 있으면 제외 리스트에 있어도 제외하지 않습니다.
@@ -72,10 +74,10 @@ source:
 
 **할 일**
 
-1. `config/exclude_list.json` · `report_exclude.py` · `challenge3-3_run.py` 세 파일을 만들고, `exclude_key` · `load_exclude_map` · `can_exclude` · `split_by_exclude` 에서 직접 쓰는 곳 네 군데를 씁니다.
+1. `config/exclude_list.json` 은 「제공 파일」에서 이미 만들었으니 그대로 둡니다. 「제공 파일」로 만든 `report_exclude.py` 의 내용을 모두 지우고 아래 골격으로 바꾼 뒤, `challenge3-3_run.py` 를 새로 만듭니다. 그다음 `exclude_key` · `load_exclude_map` · `can_exclude` · `split_by_exclude` 에서 직접 쓰는 곳 네 군데를 씁니다.
 2. 실행해서 <mark>분류 건수</mark>(단계 1: 분류), <mark>회수 제외한 후보</mark>(단계 2: 제외), <mark>회수 대상으로 남은 후보</mark>(단계 3: 확인)를 읽습니다.
 
-**`config/exclude_list.json`** — 그대로 붙여 넣습니다. 회수 제외 리스트입니다. `access_control` 안의 `config` 폴더에 만듭니다.
+**`config/exclude_list.json`** — 「제공 파일」에서 만든 회수 제외 리스트입니다. 다시 만들지 않고, 내 파일이 아래와 같은지만 봅니다. 없으면 「제공 파일」 레슨에서 만듭니다.
 
 ```json
 [
@@ -88,7 +90,7 @@ source:
 **`report_exclude.py`**
 
 ```python
-from config_loader import load_json                              # Unit 1에서 만든 안전한 읽기 함수를 불러온다
+from config_loader import load_json                              # config_loader.py 의 안전한 읽기 함수를 불러온다
 
 
 def exclude_key(entry):                                          # 사용자와 권한이 든 딕셔너리(후보 또는 제외 리스트의 한 건)를 받는 함수
@@ -157,14 +159,14 @@ def split_by_exclude(findings, exclude_map):                     # 후보 리스
   - `split_by_exclude` 안: 미리 채운 `for` 안쪽이라 `if` · `else` 는 8개이고, 그 안쪽(8 ~ 10번, 12번)은 4개 더(12개)입니다.
 - 채우기 전에 실행하면 후보가 모두 `회수 제외 0 건` 으로 나옵니다. `can_exclude` 가 아무것도 리턴하지 않아 거짓으로 취급되기 때문입니다.
 
-**`challenge3-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 도전 3-2과 같은 방법으로 리포트를 만든 뒤, 회수 제외 리스트를 읽어 후보를 나누고 세 단계로 출력합니다.
+**`challenge3-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `overprivilege.py` 의 `generate_report` 로 리포트를 만든 뒤, 회수 제외 리스트를 읽어 후보를 나누고 세 단계로 출력합니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
 from review_list import build_access_list                        # 실습 3-1에서 만든 현황 함수를 불러온다
-from review_rules import find_stale                              # 도전 3-1에서 만든 규칙 점검 함수를 불러온다
+from review_rules import find_stale                              # review_rules.py 의 규칙 점검 함수를 불러온다
 from review_unused import load_last_used, find_unused            # 실습 3-2에서 만든 안 쓴 권한 점검 함수를 불러온다
-from overprivilege import generate_report                        # 도전 3-2에서 만든 리포트 함수를 불러온다
+from overprivilege import generate_report                        # overprivilege.py 의 리포트 함수를 불러온다
 from report_exclude import load_exclude_map, split_by_exclude   # 방금 만든 회수 제외 함수를 불러온다
 
 NOW = datetime.strptime("2026-10-29 14:00", "%Y-%m-%d %H:%M")    # 이번 실습의 지금 시각(고정)
@@ -175,7 +177,7 @@ stale = find_stale(access_list, NOW)                             # 규칙에 걸
 last_used_map = load_last_used()                                 # 마지막 사용 시각 딕셔너리를 읽는다
 unused = find_unused(access_list, last_used_map, NOW, 90)        # 같은 현황에서 90일 넘게 안 쓴 권한을 찾는다(규칙에 걸린 권한도 빼지 않고 전부 넣는다)
 generated_at = NOW.strftime(TIME_FORMAT)                         # 리포트를 만든 시각을 문자열로 바꾼다
-report = generate_report(access_list, stale, unused, 90, generated_at)  # 도전 3-2과 같은 방법으로 리포트를 만든다
+report = generate_report(access_list, stale, unused, 90, generated_at)  # 과다권한 후보 리포트를 만든다
 
 exclude_map = load_exclude_map("config/exclude_list.json")   # 회수 제외 리스트를 읽는다
 to_revoke, excluded = split_by_exclude(report["findings"], exclude_map)   # 후보를 회수 대상과 회수 제외로 나눈다
@@ -195,8 +197,7 @@ for item in to_revoke:                                           # 회수 대상
 
 **순서**
 
-1. **[VS Code]** 파일 `config/exclude_list.json` · `report_exclude.py` · `challenge3-3_run.py` 를 만들어 위 코드를 붙여 넣습니다. 
-   - VS Code: `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력합니다(`config/…` 이름은 이 폴더를 선택한 채 입력하면 `config` 폴더 안에 만들어집니다).
+1. **[VS Code]** `report_exclude.py` 를 열어 내용을 모두 지우고 위 골격을 붙여 넣고 저장합니다. 이어서 `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘으로 `challenge3-3_run.py` 를 만들어 붙여 넣고 저장합니다.
 2. **[터미널]** `ls config` 로 `exclude_list.json` 이 `access_log.json` 과 같은 `config` 폴더에 있는지 보고, `python -m json.tool config/exclude_list.json`(맥북은 `python3`)로 내용이 정상인지 확인합니다.
    - 깨진 채 두면 제외 리스트를 읽지 못해 아무것도 제외되지 않습니다.
 3. **[VS Code]** `report_exclude.py` 에서 직접 쓰는 곳 네 군데(`exclude_key` · `load_exclude_map` · `can_exclude` · `split_by_exclude`)를 씁니다. 2.1 의 표와 그림을 보고 씁니다.
@@ -223,77 +224,7 @@ for item in to_revoke:                                           # 회수 대상
 | 제외된 후보 만들기 | `reason = exclude_map[key]` → `excluded_entry = make_excluded(finding, reason)` → `excluded.append(excluded_entry)` (`split_by_exclude` 안) |
 | 둘로 나눠 리턴 | `return to_revoke, excluded` |
 
----
-
-## 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기
-
-문제가 아니라 이번 Unit에서 한 일을 저장소에 올리는 마무리입니다. 도전 3-3를 마친 뒤에 합니다.
-
-**이런 상황이 있습니다**
-
-- **지금은**: 팀장이 「이번 Unit에서 만든 접근 점검 코드와 리포트를 저장소에 남겨 달라」고 합니다.
-- **그래서 하는 것**: 올라갈 파일을 `git status` 로 먼저 확인하고(비밀 키 파일 `.env` 가 섞이면 안 됩니다), `git add` → `git commit` → `git push` 로 올립니다.
-- **끝나면**: 깃허브 저장소의 `access_control` 폴더에서 이번 Unit에서 만든 파일이 모두 보입니다.
-
-**순서**
-
-1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
-   ```bash
-   cd ..
-   pwd
-   ```
-   - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
-   - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
-     - 새로 연 뒤 `pwd` 를 한 번 더 쳐서 확인합니다.
-2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
-   ```bash
-   git status
-   ```
-   - 명령 풀이: `git status` 올릴 파일의 상태를 봄
-   - `.env` 가 보이면: VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다.
-     - `.venv` 도 같은 방법으로 합니다.
-   - Unit 2에서 올린 뒤 새로 만든 파일이 `access_control/review_list.py` 처럼 한 줄씩 보입니다.
-     - 앞서 올리지 않았다면 `access_control/` 한 줄로 보일 수 있습니다.
-     - 어느 쪽이든 `Untracked files:` 아래에 보이는 줄을 센 그대로 적습니다.
-   - `access_control/config/exclude_list.json` 은 도전 3-3에서 만든 회수 제외 리스트입니다. 이것도 올라갑니다.
-   - `Untracked files:` 는 「아직 깃이 모르는 새 파일」 목록입니다.
-   - `access_control/__pycache__/` (파이썬이 실행하면서 자동으로 만드는 임시 폴더)가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다.
-     - 줄 수는 그 뒤에 다시 셉니다.
-3. **[보고서]** `report_u3.md` 의 `## 마무리` 아래를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다.
-   - (가) `git status` 를 쳤을 때 `Untracked files:` 아래에 줄이 몇 개 보였는지, 그중에 `.env` 나 `.venv` 가 있었는지 적어 주세요.
-   - 앞 실습에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다. 올린 뒤에 이어서 적어 다시 올려도 됩니다.
-4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
-   ```bash
-   git add .
-   git commit -m "Add access control access review and overprivilege report"
-   git push
-   ```
-   - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - `git push` 가 거절(`rejected`)되면 깃허브에 내 PC 에 없는 기록이 있다는 뜻입니다. `git pull` 을 입력해 받아 온 뒤 `git push` 를 다시 합니다.
-   - `git pull` 뒤에 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다.
-5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `access_control` 폴더를 열고, VS Code 왼쪽 목록의 `access_control` 폴더에 있는 파일들이 깃허브에도 보이는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
-   - 빠진 이름이 있으면 VS Code 왼쪽 목록의 `access_control` 폴더에 내 PC 에도 있는지 봅니다.
-     - 없으면 다른 폴더에 만든 것이니 `access_control` 안으로 옮기고 1 ~ 4번을 다시 합니다.
-
-## 마무리 정리
-
-| 하려는 일 | 코드 · 말 |
-|---|---|
-| 올릴 파일 확인 | `git status` (`.env` · `.venv` 가 보이면 멈춤) |
-| 올리기 | `git add .` → `git commit -m "…"` → `git push` |
-| 올린 뒤 | 브라우저에서 파일이 모두 있는지 확인 |
-
----
-
-## Unit 3 마무리
-
-| 확인 | 문제 |
-|---|---|
-| 현황과 규칙 · 안 쓴 결과를 합쳐 이유가 붙은 후보 리포트를 만들었다 | 도전 3-2 |
-| 후보를 「회수 대상」과 「회수 제외」로 나눴다 | 도전 3-3 |
-| 이번 Unit에서 만든 파일과 보고서를 깃허브에 올렸다 | 마무리 |
-
-Unit 4에서는 이번 Unit에서 찾은 후보를 실제로 **회수**하는 일을 하고, 회수한 이력을 남깁니다. Unit 4에서는 판정 함수를 서버로 여는 실습이 이어집니다. 이번 Unit에서 만든 후보 리포트와 회수 제외 리스트로 Unit 4에서 회수할 대상을 정합니다.
+- 도전을 마쳤으면 실습 3-2 끝의 「이번 Unit 마무리」 3번으로 바뀐 파일을 다시 올립니다.
 
 ---
 

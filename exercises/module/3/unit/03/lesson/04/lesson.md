@@ -6,9 +6,24 @@ render: markdown
 
 # 제공 파일
 
+## 제공 파일 쓰는 법
+
+**실습 3-2를 시작하기 전에** 이 레슨의 파일 네 개를 만듭니다. 실습 3-2 의 실행 파일이 퇴사 · 만료 규칙 함수 `find_stale` 을 불러 쓰는데, 그 함수는 도전 3-1 에서 만드는 것이라 오늘은 완성본을 받아 씁니다. 나머지 세 파일은 다음 Unit 4 가 쓰는 파일이라 오늘 함께 만들어 둡니다.
+
+1. 파일은 모두 `access_control` 폴더 안에 만듭니다. 만드는 방법은 실습 3-1 과 같습니다(VS Code 왼쪽 목록에서 `access_control` 폴더를 고르고 **새 파일** 아이콘).
+2. 아래 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
+3. 만들 파일은 네 개입니다.
+   1. `review_rules.py`: 퇴사한 계정과 만료된 예외를 찾는 함수 `find_stale` (실습 3-2 에서 씀)
+   2. `overprivilege.py`: 규칙 결과와 안 쓴 결과를 합쳐 과다권한 후보 리포트를 만드는 함수 `generate_report` (Unit 4 가 씀)
+   3. `report_exclude.py`: 후보를 「회수 대상」과 「회수 제외」로 나누는 함수 `split_by_exclude` (Unit 4 가 씀)
+   4. `config/exclude_list.json`: 회수하지 않을 권한 세 건을 적은 회수 제외 리스트 (Unit 4 가 씀)
+4. 네 파일을 다 만들었으면 터미널에서 `ls` 와 `ls config` 로 파일 이름이 보이는지 확인하고 실습 3-2로 돌아갑니다.
+
+> 시간이 남아 도전 3-1 ~ 3-3을 하면, 이 파일들을 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 그때는 본문을 다 채울 때까지 실습 3-2 가 동작하지 않을 수 있으니, 다 쓴 뒤 `exercise3-2_run.py` 를 다시 실행해 결과가 같은지 확인합니다.
+
 ## `review_rules.py` 만들기
 
-**`review_rules.py`** 을 만들고 아래 내용을 붙여 넣습니다. 이 파일은 직접 만들지 않고 가져다 씁니다.
+**`review_rules.py`** 를 만들고 아래 내용을 붙여 넣습니다. `find_stale` 은 현황의 권한마다 퇴사한 계정인지, 만료된 예외인지를 차례로 보고, 걸린 권한을 복사해 이유(`reason`)를 적은 리스트를 리턴합니다.
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
@@ -38,7 +53,7 @@ def find_stale(access_list, now):                                # 현황 리스
 
 ## `overprivilege.py` 만들기
 
-**`overprivilege.py`** 을 만들고 아래 내용을 붙여 넣습니다. 이 파일은 직접 만들지 않고 가져다 씁니다.
+**`overprivilege.py`** 를 만들고 아래 내용을 붙여 넣습니다. `generate_report` 는 권한 한 건마다 「사용자:권한:받은 방식」 식별 키를 만들어 두 점검 결과의 이유를 모으고, 이유가 있는 권한만 후보로 담은 리포트 딕셔너리를 리턴합니다. 오늘 실습에서는 쓰지 않고, 다음 Unit 4 가 씁니다.
 
 ```python
 def entry_key(entry):                                            # 현황의 권한 한 건의 식별 키를 만드는 함수
@@ -110,10 +125,10 @@ def generate_report(access_list, stale, unused, days, generated_at):   # 현황 
 
 ## `report_exclude.py` 만들기
 
-**`report_exclude.py`** 을 만들고 아래 내용을 붙여 넣습니다. 이 파일은 직접 만들지 않고 가져다 씁니다.
+**`report_exclude.py`** 를 만들고 아래 내용을 붙여 넣습니다. `split_by_exclude` 는 후보가 회수 제외 리스트에 있으면 「회수 제외」로, 아니면 「회수 대상」으로 나눕니다. 퇴사한 계정의 권한은 제외 리스트에 있어도 회수 대상에 둡니다. 오늘 실습에서는 쓰지 않고, 다음 Unit 4 가 씁니다.
 
 ```python
-from config_loader import load_json                              # Unit 1에서 만든 안전한 읽기 함수를 불러온다
+from config_loader import load_json                              # config_loader.py 의 안전한 읽기 함수를 불러온다
 
 
 def exclude_key(entry):                                          # 사용자와 권한이 든 딕셔너리(후보 또는 제외 리스트의 한 건)를 받는 함수
@@ -171,3 +186,25 @@ def split_by_exclude(findings, exclude_map):                     # 후보 리스
             to_revoke.append(finding)                            # 회수 대상에 추가한다
     return to_revoke, excluded                                   # 두 리스트를 함께 리턴한다
 ```
+
+## `config/exclude_list.json` 만들기
+
+**`config/exclude_list.json`** 을 만들고 아래 내용을 붙여 넣습니다. `access_control` 안의 `config` 폴더에 만듭니다(`access_control` 폴더를 선택한 채로 이름에 `config/exclude_list.json` 을 입력하면 `config` 폴더 안에 만들어집니다). 담당자가 「평소에 안 써도 회수하면 안 되는 권한」을 적어 둔 회수 제외 리스트이고, 한 줄이 한 건입니다.
+
+<pre class="copyable"><code>[
+  {"user": "gaeun", "permission": "ACCOUNT:CHANGE", "reason": "계정에 사고가 났을 때만 쓰는 권한이라 평소에는 쓰지 않음"},
+  {"user": "seoyeon", "permission": "SALES:CHANGE", "reason": "6월 말 · 12월 말 결산 때만 쓰는 권한"},
+  {"user": "dami", "permission": "SALES:QUERY", "reason": "일을 넘겨받을 사람이 정해질 때까지 필요"}
+]
+</code></pre>
+
+- 저장한 뒤 터미널에서 JSON 규칙에 맞는지 확인합니다. 세 건이 다시 정리되어 나오면 됩니다.
+  ```bash
+  python -m json.tool config/exclude_list.json
+  ```
+  - 명령 풀이: `python -m json.tool` 파이썬의 JSON 검사 도구를 실행 · `config/exclude_list.json` 검사할 파일 (맥북은 `python3`)
+- 모두 만들었으면 터미널에서 확인합니다. `review_rules.py` · `overprivilege.py` · `report_exclude.py` 와 `config` 안의 `exclude_list.json` 이 보이면 실습 3-2로 갑니다.
+  ```bash
+  ls
+  ls config
+  ```
