@@ -3,7 +3,9 @@ layout: page
 title: 홈
 ---
 
-이 사이트는 내가 네트워크 과정을 공부하며 남기는 실습 기록입니다. (이 문단을 내 소개로 바꾸세요. 예: 무엇을 배우려고 만들었는지, 누가 읽으면 좋은지)
+이 사이트는 내가 네트워크 과정을 공부하며 남기는 실습 기록입니다.
+
+<!-- 이 문단 아래에 내 소개를 한두 문장 더 적어 보세요. 예: 무엇을 배우려고 만들었는지, 누가 읽으면 좋은지. 이 주석은 화면에 보이지 않습니다. -->
 
 Module 3~5 실습에서 직접 쓴 파이썬 코드와, 코드를 쓰며 한 고민(무엇을 골랐고 왜 골랐는지)을 글로 정리해 둡니다. 코드는 `code/` 폴더에, 글은 아래 목록에 쌓입니다.
 
@@ -21,12 +23,16 @@ Module 3~5 실습에서 직접 쓴 파이썬 코드와, 코드를 쓰며 한 고
 </style>
 
 {% assign mods = "3,4,5" | split: "," %}
+{% assign counts = "5,10,10" | split: "," %}
 {% assign real_posts = site.posts | where_exp: "p", "p.sample != true" %}
 {% assign total = 0 %}
+{% assign grand = 0 %}
 <div class="prog">
 {% for m in mods %}
+  {% assign n = counts[forloop.index0] | plus: 0 %}
+  {% assign grand = grand | plus: n %}
   <div class="prog-row"><strong>Module {{ m }}</strong>
-  {% for u in (1..10) %}
+  {% for u in (1..n) %}
     {% assign hits = real_posts | where: "module", m | where: "unit", u %}
     {% if hits.size > 0 %}{% assign total = total | plus: 1 %}
     <a class="cell done" href="{{ hits.last.url | relative_url }}" title="Unit {{ u }}: {{ hits.last.title }}">{{ u }}</a>
@@ -35,7 +41,7 @@ Module 3~5 실습에서 직접 쓴 파이썬 코드와, 코드를 쓰며 한 고
   </div>
 {% endfor %}
 </div>
-<p class="prog-sum">30개 Unit 중 {{ total }}개에 글을 남겼습니다.</p>
+<p class="prog-sum">{{ grand }}개 Unit 중 {{ total }}개에 글을 남겼습니다.</p>
 
 ## 최신 글
 
