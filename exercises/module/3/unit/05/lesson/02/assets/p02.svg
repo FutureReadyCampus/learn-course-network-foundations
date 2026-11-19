@@ -1,33 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
-<title>Unit 3~9에서 한 일 위에 Unit 5 은 같은 기준의 매주 점검을 더한다</title>
-<desc>Unit 3·7은 현황 리스트와 회수 후보, Unit 4은 계획·승인·실행 회수, Unit 4는 조건 판정과 서버 로그를 만들었다. Unit 5은 이것을 매주 같은 기준으로 다시 점검하고 일주일 치 샘플 로그 40줄을 집계한다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>Unit 1~4에서 정하고 주고 점검하고 거둔 권한을 Unit 5에서 매주 같은 기준으로 다시 점검한다</title>
+<desc>Unit 1은 사용자·역할과 예외, Unit 2는 요청서 승인과 예외 부여, Unit 3은 현황과 90일 미사용 점검, Unit 4는 계획·승인·실행 회수를 했습니다. Unit 5는 이 결과를 매주 같은 기준으로 점검하고, 판정 서버 로그와 같은 모양의 샘플 로그 40줄로 주간 보고서를 만듭니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">Unit 3부터 Unit 4까지, 그리고 이번 Unit</text>
-<rect x="20" y="70" width="150" height="160" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="95" y="123.1" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 3 · 7</text>
-<text x="95" y="145.2" font-size="15" fill="#292929" text-anchor="middle">현황 리스트</text>
-<text x="95" y="167" font-size="15" fill="#292929" text-anchor="middle">규칙 · 사용 이력</text>
-<text x="95" y="188.8" font-size="15" fill="#292929" text-anchor="middle">회수 후보 찾기</text>
-<rect x="196" y="70" width="150" height="160" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="271" y="123.1" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 4</text>
-<text x="271" y="145.2" font-size="15" fill="#292929" text-anchor="middle">계획 → 승인</text>
-<text x="271" y="167" font-size="15" fill="#292929" text-anchor="middle">→ 실행</text>
-<text x="271" y="188.8" font-size="15" fill="#292929" text-anchor="middle">이력 남기기</text>
-<rect x="372" y="70" width="150" height="160" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="447" y="123.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 4</text>
-<text x="447" y="146" font-size="15" fill="#292929" text-anchor="middle">시간 · 위치 조건</text>
-<text x="447" y="167.7" font-size="15" fill="#292929" text-anchor="middle">판정 서버</text>
-<text x="447" y="188.4" font-size="14" fill="#292929" text-anchor="middle">server_log.jsonl</text>
-<rect x="548" y="70" width="150" height="160" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="623" y="123.1" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 5</text>
-<text x="623" y="145.2" font-size="15" fill="#292929" text-anchor="middle">같은 기준으로</text>
-<text x="623" y="167" font-size="15" fill="#292929" text-anchor="middle">매주 점검</text>
-<text x="623" y="188.8" font-size="15" fill="#292929" text-anchor="middle">샘플 로그 40줄</text>
-<line x1="172" y1="150" x2="194" y2="150" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<line x1="348" y1="150" x2="370" y2="150" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<line x1="524" y1="150" x2="546" y2="150" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<text x="20" y="275" font-size="15" fill="#292929">회수를 한 번 해도 사람은 계속 퇴사하고 부서를 옮깁니다.</text>
-<text x="20" y="300" font-size="15" fill="#292929">그래서 회수 뒤에 생기는 어긋남을 매주 같은 순서로 다시 점검합니다.</text>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+<text x="24" y="34" font-size="19" font-weight="700">Unit 1 ~ Unit 4에서 한 일, 그리고 이번 Unit</text>
+<rect x="24" y="58" width="140" height="132" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="94" y="88" font-size="16" text-anchor="middle" font-weight="700">Unit 1</text>
+<text x="94" y="112" font-size="15" text-anchor="middle">권한 정하기</text>
+<text x="94" y="144" font-size="14" text-anchor="middle" fill="#666660">사용자 · 역할</text>
+<text x="94" y="168" font-size="14" text-anchor="middle" fill="#666660">예외 판정</text>
+<polyline points="166,124 176,124" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="180" y="58" width="140" height="132" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="250" y="88" font-size="16" text-anchor="middle" font-weight="700">Unit 2</text>
+<text x="250" y="112" font-size="15" text-anchor="middle">권한 주기</text>
+<text x="250" y="144" font-size="14" text-anchor="middle" fill="#666660">요청서 승인</text>
+<text x="250" y="168" font-size="14" text-anchor="middle" fill="#666660">예외 부여</text>
+<polyline points="322,124 332,124" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="336" y="58" width="140" height="132" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="406" y="88" font-size="16" text-anchor="middle" font-weight="700">Unit 3</text>
+<text x="406" y="112" font-size="15" text-anchor="middle">점검하기</text>
+<text x="406" y="144" font-size="14" text-anchor="middle" fill="#666660">현황 리스트</text>
+<text x="406" y="168" font-size="14" text-anchor="middle" fill="#666660">90일 미사용</text>
+<polyline points="478,124 488,124" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="492" y="58" width="140" height="132" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="562" y="88" font-size="16" text-anchor="middle" font-weight="700">Unit 4</text>
+<text x="562" y="112" font-size="15" text-anchor="middle">거두기</text>
+<text x="562" y="144" font-size="14" text-anchor="middle" fill="#666660">계획 → 승인</text>
+<text x="562" y="168" font-size="14" text-anchor="middle" fill="#666660">→ 실행 · 이력</text>
+<rect x="24" y="222" width="672" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="44" y="250" font-size="16" font-weight="700">Unit 5 · 결과 보고하기</text>
+<text x="44" y="274" font-size="14">매주 같은 기준으로 다시 점검 · 서버 로그 모양의 샘플 40줄로 주간 보고서</text>
+<polyline points="360,192 360,218" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="360" y="318" font-size="14" text-anchor="middle" fill="#666660">회수를 한 번 해도 사람은 계속 퇴사하고 부서를 옮깁니다. 그래서 매주 다시 봅니다.</text>
 </g>
 </svg>

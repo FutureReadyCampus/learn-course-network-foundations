@@ -10,6 +10,11 @@ render: markdown
 
 설명하는 답은 한 예이고, 핵심이 같으면 맞습니다.
 
+1. **핵심 실습**: 실습 5-1 · 5-2 정답입니다. 오늘 모두가 하는 실습이니 먼저 맞춰 봅니다.
+2. **도전(선택)**: 도전 5-1 정답입니다. 도전을 한 사람만 봅니다.
+3. 정답마다 결과, 왜, 자주 틀리는 곳, 관제에서는 순서로 읽습니다.
+4. 제공 파일 `weekly_run.py` 의 실행 결과는 「제공 파일」 레슨의 「주간 보고서 만들기」에 있습니다.
+
 ---
 
 ## 실습 5-1 정답
@@ -303,11 +308,14 @@ python exercise5-1_run.py
 
 ## 도전 5-1 정답
 
+> 여기부터는 **도전(선택)** 정답입니다. 도전 5-1을 한 사람만 봅니다.
+
 **터미널에 입력합니다.**
 
 ```bash
 pwd
 python challenge5-1_run.py
+python weekly_run.py
 ```
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 다섯 함수입니다.
@@ -350,7 +358,7 @@ python challenge5-1_run.py
 
 **결과**
 
-- (가) 도전 5-1 의 출력은 다음과 같고, 허용 **24**, 거부 **16**, 거부율 **40%** 입니다.
+- (가) `challenge5-1_run.py` 의 출력은 다음과 같고, 허용 **24**, 거부 **16**, 거부율 **40%** 입니다.
   - 거부 사유 중 가장 많은 것은 `허용되지 않은 접속 위치`(5개)입니다.
 
 ```
@@ -366,36 +374,8 @@ python challenge5-1_run.py
 거부 4 번 이상 사용자: ['dami', 'gaeun']
 ```
 
-  - `challenge5-1-2_run.py` 의 출력은 다음과 같고, 거부율 40% 는 경고 기준 30% 이상이라 **경고**입니다. 실패한 점검은 퇴사자 계정 점검과 부서와 역할 점검입니다.
-
-```
---- 단계 1: 모으기 - 점검 결과와 요청 로그
-점검 3 가지 · 요청 40 건
---- 단계 2: 보고서 만들기와 저장
-저장한 파일: access_control_weekly_report_2026-11-02.md
---- 단계 3: 저장한 보고서 내용
-# 접근통제 주간 보고서 (2026-11-02)
-
-## 1. 요청 현황
-- 전체 요청: 40건 (허용 24건 · 거부 16건)
-- 거부율: 40% (경고 기준 30%) -> 경고
-
-## 2. 거부 사유
-- 역할이 없음: 3건
-- 업무 시간 밖: 4건
-- 퇴사한 계정: 4건
-- 허용되지 않은 접속 위치: 5건
-
-## 3. 점검 결과
-- 퇴사자 계정 점검: 실패 ['dami']
-- 만료 예외 점검: 통과
-- 부서와 역할 점검: 실패 ['junho']
-
-## 4. 조치가 필요한 것
-- 거부 4번 이상 사용자: ['dami', 'gaeun']
-- 확인: 퇴사자 계정 점검 -> ['dami']
-- 확인: 부서와 역할 점검 -> ['junho']
-```
+  - `weekly_run.py` 를 다시 실행한 보고서는 「제공 파일」 레슨의 실행 결과와 같습니다. 거부율 40% 는 경고 기준 30% 이상이라 **경고**이고, 실패한 점검은 퇴사자 계정 점검과 부서와 역할 점검입니다.
+  - 다르게 나오면 내가 쓴 `log_summary.py` 의 함수가 완성본과 다르게 센 것입니다. 바로 위 `challenge5-1_run.py` 의 출력부터 맞춰 봅니다.
 
 - (나) 두 사람의 요청은 다음과 같이 다릅니다.
   - dami 는 4번 모두 `퇴사한 계정` 으로 거부됐고, 접속 위치가 `office` · `vpn` · `external` 로 바뀝니다. 퇴사한 사람의 계정이 정리되지 않고 남아 있어 누군가 계속 시도하고 있다는 신호입니다.
@@ -432,18 +412,19 @@ python challenge5-1_run.py
 거부 4 번 이상 사용자: []
 ```
 
-- `deny_rate` 의 8 · 9번을 빼먹으면 이번 로그에서는 잘 되지만, 빈 로그 파일(`empty.jsonl`)로 실행하면 다음 오류가 납니다.
+- `deny_rate` 의 8 · 9번을 빼먹으면 이번 로그에서는 잘 되지만, 빈 로그로 실행하면 다음 오류가 납니다.
+  - 직접 시험하려면 `access_control` 폴더에 빈 파일 `empty.jsonl` 을 만들고, `challenge5-1_run.py` 의 `LOG_PATH = "week_log.jsonl"` 을 `"empty.jsonl"` 로 바꿔 실행합니다. 시험이 끝나면 `"week_log.jsonl"` 로 되돌립니다.
 
 ```
 Traceback (most recent call last):
   File "…/access_control/challenge5-1_run.py", line 10, in <module>
     rate = deny_rate(entries)                                        # 거부율(0 ~ 1)을 구한다
-  File "…/access_control/log_summary.py", line 47, in deny_rate
+  File "…/access_control/log_summary.py", line 49, in deny_rate
     return denied / total                                        # 거부 수를 전체 수로 나눈 비율을 리턴한다
 ZeroDivisionError: division by zero
 ```
 
-  - 줄 번호(`line 37`)는 사람마다 다릅니다. `ZeroDivisionError: division by zero` 가 같으면 이 실수입니다.
+  - `log_summary.py` 의 줄 번호(`line 49`)는 직접 쓴 줄 수에 따라 사람마다 다릅니다. `ZeroDivisionError: division by zero` 가 같으면 이 실수입니다.
 
   - 8 · 9번을 쓰고 같은 빈 로그로 실행하면 다음처럼 오류 없이 끝납니다.
 
