@@ -41,7 +41,7 @@ render: markdown
 
 ## `exception_policy.py` 만들기
 
-**`exception_policy.py`** 를 만들고 아래 내용을 붙여 넣습니다. 파일을 불러올 때 `config/exceptions.json` 을 한 번 읽어 `EXCEPTIONS` 에 담고, `find_exception` 은 사람과 권한이 같고 지금 시각이 만료 시각보다 앞인 예외를 찾습니다.
+**`exception_policy.py`** 를 만들고 아래 내용을 붙여 넣습니다. 다른 파일이 `import` 로 이 파일을 불러올 때 `config/exceptions.json` 을 한 번 읽어 `EXCEPTIONS` 에 담고, `find_exception` 은 사람과 권한이 같고 지금 시각이 만료 시각보다 앞인 예외를 찾습니다.
 
 ```python
 import json                                                      # JSON 파일을 읽는 모듈을 불러온다
