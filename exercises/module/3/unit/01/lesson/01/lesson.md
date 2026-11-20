@@ -88,7 +88,8 @@ Unit 1은 첫 단계인 권한 정하기입니다. 사용자와 역할을 파일
        access_control/      Module 3
          config/
      ```
-5. 각 실습은 **「할 일」을 위에서부터 차례로** 따라 합니다. `[창 이름]` 이 지금 쓸 창입니다. 코드를 채울 때는 코드 안 `#` 설명이 시키는 일을 하면 몇 줄이든 맞습니다. 막히면 이 Unit 뒤쪽의 정답을 봅니다. 답을 적는 **보고서**는 「보고서 쓰기」 레슨의 틀을 복사해 만듭니다. 실습 중간에 「보고서 (가)를 먼저 씁니다」라는 안내가 나오므로, 실습 1-1을 시작하기 전에 그 레슨의 첫 페이지에서 보고서 파일을 먼저 만들어 두면 편합니다.
+5. 이 폴더를 깃허브에 올리는 설정은 처음 한 번만 하면 되고, 이 레슨의 마지막 페이지 「코드 저장소 만들고 GitHub에 연결하기」에 있습니다. 실습 1-3 끝에서 올리기 전에 해 두면 됩니다.
+6. 각 실습은 **「할 일」을 위에서부터 차례로** 따라 합니다. `[창 이름]` 이 지금 쓸 창입니다. 코드를 채울 때는 코드 안 `#` 설명이 시키는 일을 하면 몇 줄이든 맞습니다. 막히면 이 Unit 뒤쪽의 정답을 봅니다. 답을 적는 **보고서**는 「보고서 쓰기」 레슨의 틀을 복사해 만듭니다. 실습 중간에 「보고서 (가)를 먼저 씁니다」라는 안내가 나오므로, 실습 1-1을 시작하기 전에 그 레슨의 첫 페이지에서 보고서 파일을 먼저 만들어 두면 편합니다.
 
 > 오늘 명령은 모두 **터미널**에서 칩니다. `python` 이 없다는 오류가 나오면 `python3` 으로 칩니다(맥북은 `python3`). 오늘 나오는 이름 · 자원 · 숫자는 연습용 예시입니다.
 
@@ -331,3 +332,49 @@ python check_publish.py
 `[오류]`와 `[주의]` 줄이 하나도 나오지 않을 때까지 고친 뒤 다시 돌립니다. 이미 올린 키가 있다면 지우기 전에 해당 서비스에서 키부터 폐기해야 합니다.
 
 <!-- include: portfolio-starter/check_publish.py -->
+
+## 코드 저장소 만들고 GitHub에 연결하기
+
+각 Unit 끝에서 만든 파일을 깃허브에 올립니다. 올리려면 먼저 `security-agent-toolkit` 폴더를 **깃 저장소**(git repository · 깃 리포지토리: 파일이 바뀐 기록을 모아 두는 폴더)로 만들고, 깃허브에 같은 이름의 저장소를 만들어 둘을 이어야 합니다. 이 저장소는 코드를 올리는 곳이고, 앞 페이지에서 만든 포트폴리오 저장소(`network-study-notes`)와는 **다른 저장소**입니다. 한 번만 하면 이후 Unit에서는 「깃허브에 올리기」의 명령만 치면 됩니다.
+
+실습 1-3 끝의 「이번 Unit 마무리」에서 올리기 전에, 이 페이지를 먼저 해 둡니다. 이미 `security-agent-toolkit` 폴더를 깃허브에 올려 둔 적이 있다면 이 페이지는 건너뜁니다. 확인하는 방법은 터미널에서 `git status` 를 쳤을 때 `fatal: not a git repository` 가 나오지 않는 것입니다.
+
+1. **[터미널]** 깃이 설치되어 있는지 봅니다. 위치는 `security-agent-toolkit` 폴더여야 합니다.
+   ```bash
+   pwd
+   git --version
+   ```
+   - 명령 풀이: `pwd` 지금 위치 확인 · `git --version` 깃이 설치되어 있으면 버전을 보여 줌
+   - `git version 2.…` 처럼 나오면 다음으로 갑니다. 명령을 찾을 수 없다는 오류가 나오면 **Git for Windows** 를 설치합니다. 브라우저에서 git-scm.com 에 들어가 Windows 용 설치 파일을 받고, 설치 화면은 모두 기본값으로 **Next** 를 눌러 끝냅니다. 설치가 끝나면 VS Code 를 껐다 다시 켜고 이 단계를 다시 합니다.
+2. **[터미널]** 깃에게 내 이름과 이메일을 알려 줍니다. 컴퓨터에서 처음 한 번만 합니다. 올린 기록에 이 이름과 이메일이 붙습니다. 이메일은 깃허브 계정에 쓰는 것이나, 깃허브 **Settings › Emails** 에 있는 `…@users.noreply.github.com` 주소를 씁니다.
+   ```bash
+   git config --global user.name "내 이름"
+   git config --global user.email "내 이메일"
+   ```
+   - 명령 풀이: `git config --global` 이 컴퓨터의 깃 설정을 저장함 · 따옴표 안을 내 것으로 바꿔 씀
+3. **[브라우저]** 깃허브에서 새 저장소를 만듭니다.
+   1. 깃허브 오른쪽 위의 `+` 아이콘 › **New repository** 를 누릅니다.
+   2. **Repository name** 에 `security-agent-toolkit` 을 적습니다.
+   3. 공개 범위는 **Private**(나만 볼 수 있음)을 고릅니다. 실습 코드에 실수로 키가 섞여도 남에게 보이지 않게 하기 위해서입니다.
+   4. **Add a README file**, **.gitignore**, **license** 는 모두 체크하지 않은 채 **Create repository** 를 누릅니다.
+   5. 다음 화면에 보이는 주소(`https://github.com/내아이디/security-agent-toolkit.git`)를 복사해 둡니다.
+4. **[VS Code]** `security-agent-toolkit` 폴더 바로 아래에 `.gitignore` 파일을 만듭니다. 올리면 안 되는 파일을 깃이 무시하게 하는 목록입니다. 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **New File** 로 파일 이름을 `.gitignore` 로 적고, 아래 내용을 붙여 넣고 저장합니다.
+
+<pre class="copyable"><code>.env
+.venv/
+__pycache__/</code></pre>
+
+   - `.env` 는 비밀번호나 키를 적어 두는 파일, `.venv/` 는 파이썬이 쓰는 가상 환경 폴더, `__pycache__/` 는 파이썬이 실행하면서 만드는 임시 폴더입니다. 모두 올릴 필요가 없습니다.
+5. **[터미널]** 폴더를 깃 저장소로 만들고, 방금 만든 깃허브 저장소와 이은 뒤, 처음 한 번 올립니다. 주소는 3번에서 복사한 것으로 바꿉니다.
+   ```bash
+   git init
+   git branch -M main
+   git remote add origin https://github.com/내아이디/security-agent-toolkit.git
+   git add .
+   git commit -m "First commit"
+   git push -u origin main
+   ```
+   - 명령 풀이: `git init` 이 폴더를 깃 저장소로 만듦 · `git branch -M main` 기본 가지(브랜치)의 이름을 `main` 으로 함 · `git remote add origin 주소` 깃허브 저장소를 `origin` 이라는 이름으로 이음 · `git add .` 바뀐 파일을 모두 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push -u origin main` 깃허브로 올리고, 앞으로는 `git push` 만 쳐도 되게 함
+   - `git push` 때 깃허브 로그인 창이 뜨면 **Sign in with your browser** 로 내 깃허브 계정에 로그인합니다. 한 번 로그인하면 Windows 가 기억해 줍니다.
+   - `rejected`, `failed to push` 가 나오면 3번의 주소가 맞는지, 깃허브 저장소를 비어 있는 채로 만들었는지(README 를 체크하지 않았는지) 확인합니다.
+6. **[브라우저]** 깃허브의 `security-agent-toolkit` 저장소를 새로 고칩니다. `.gitignore` 파일이 보이면 연결이 끝난 것입니다. 이제 실습 1-3 끝의 「깃허브에 올리기」로 올릴 수 있습니다.
