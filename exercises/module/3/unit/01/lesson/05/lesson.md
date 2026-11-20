@@ -39,6 +39,8 @@ source:
 - `from rbac import check_permission` · `from exception_policy import find_exception` 처럼 두 파일의 함수를 함께 불러옵니다.
 - `값 != "권한 없음"` 은 이유 문자열이 「권한 없음」이 아닌지 검사합니다.
 - `f"예외 {found_exception_id}번"` 처럼 f-문자열로 이유를 만듭니다(실습 1-2의 `permission` 과 같은 모양).
+- `exercise1-3_run.py` 의 `if … elif … else` 는 `if` 조건이 아니면 `elif` 조건을 보고, 둘 다 아니면 `else` 아래를 실행합니다. `A and B` 는 두 조건이 모두 참일 때만 참이고, `==` 는 「같은가」를 묻는 비교입니다(값을 담는 `=` 와 다릅니다).
+- `counts = {}` 처럼 `{}` 만 쓰면 아무것도 없는 빈 딕셔너리가 만들어지고, 세면서 키가 하나씩 생깁니다.
 
 ## 3.2 허용 방식별로 세기
 
@@ -219,7 +221,7 @@ ls config
    ```
    - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
    - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
-2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
+2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 목록에 `.env`(비밀번호 · 키를 적어 두는 파일)나 `.venv`(파이썬이 쓰는 가상 환경 폴더)가 보이면 올리지 않고 멈춥니다.
    ```bash
    git status
    ```
