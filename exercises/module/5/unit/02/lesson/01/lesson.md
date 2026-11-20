@@ -13,7 +13,7 @@ source:
 
 ## 목표와 오늘의 계획
 
-Unit 1 은 알림을 플레이북으로 처리하고 알림에 맥락을 붙이는 판단 단계였습니다. 오늘은 판단한 대응 조치를 연습용 시스템(실제 서버 대신 연습용으로 만든 시뮬레이션 환경)에서 **실행하고, 사후 검증하고, 감사 기록으로 남깁니다**. 사후 검증(post-action verification)은 조치 후 실제 상태를 다시 확인하는 일이고, 감사 기록(audit log)은 조치를 순서대로 남긴 기록입니다. 침해 사고 대응에서 이 단계는 봉쇄(containment, 컨테인먼트: 피해가 더 확산되기 전에 사고를 차단하는 단계)에 해당합니다. NIST SP 800-61 Rev. 2 는 봉쇄를 「봉쇄 · 제거 · 복구」(Containment, Eradication, and Recovery) 단계 안에 둡니다.
+Unit 1 은 알림을 플레이북으로 처리하고 알림에 맥락을 붙이는 판단 단계였습니다. 오늘은 판단한 대응 조치를 연습용 시스템(실제 서버 대신 연습용으로 만든 시뮬레이션 환경)에서 **실행하고, 사후 검증하고, 감사 기록으로 남깁니다**. 사후 검증(post-action verification)은 조치 후 실제 상태를 다시 확인하는 일이고, 감사 기록(audit log)은 조치를 순서대로 남긴 기록입니다. 침해 사고 대응에서 이 단계는 봉쇄(containment, 컨테인먼트: 피해가 더 확산되기 전에 사고를 차단하는 단계)에 해당합니다. 미국 국립표준기술연구원(NIST)이 낸 침해 사고 대응 안내서 NIST SP 800-61 Rev. 2 는 봉쇄를 「봉쇄 · 제거 · 복구」(Containment, Eradication, and Recovery) 단계 안에 둡니다.
 
 **오늘의 계획 (3시간)**
 
@@ -41,7 +41,7 @@ Unit 1 은 알림을 플레이북으로 처리하고 알림에 맥락을 붙이�
 오늘 핵심 실습은 Unit 1 실습 1-2 레슨에서 만든 `incident.py` 의 `load_json` · `save_json` 만 씁니다. 먼저 이 파일이 있는지 봅니다.
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** Module 5 폴더로 들어가 Unit 1 파일을 확인합니다(맥북은 `python3`).
+2. **[터미널]** Module 5 폴더 `soar_response` 로 들어가 Unit 1 파일을 확인합니다(맥북은 `python3`).
    ```bash
    pwd
    cd soar_response
