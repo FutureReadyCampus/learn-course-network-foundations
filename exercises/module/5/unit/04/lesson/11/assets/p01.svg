@@ -1,26 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img">
-<title>보고서 쓰는 법 여섯 가지 체크리스트</title>
-<desc>문제마다 질문에 답하고, 쓸 내용을 보고 답 뒤에 쓰며, 출력은 코드 상자에 붙여 넣습니다. 왜를 묻는 질문은 내 값을 근거로 쓰고, 모르면 「모름 — 막힌 곳: …」이라고 씁니다.</desc>
-<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p01r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p01g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p01b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>report_u4.md 를 만들고 틀을 붙여 넣는 순서와 틀의 두 부분</title>
+<desc>왼쪽은 soar_response 에서 New File 로 report_u4.md 를 만들고 틀을 붙여 넣은 뒤 이름을 바꿔 저장하는 순서입니다. 오른쪽은 틀의 구조로, 실습 4-1 · 4-2 · 마무리는 모두 채우고 도전 4-1~4-5 는 한 도전만 채웁니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">보고서 쓰는 법</tspan></text>
-<rect x="20" y="52" width="680" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="36" y="67" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="70" y="82" font-size="15" text-anchor="start" fill="#292929"><tspan x="70">문제를 풀 때마다 그 문제 제목 아래 질문에 답한다</tspan></text>
-<rect x="20" y="110" width="680" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="36" y="125" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="70" y="140" font-size="15" text-anchor="start" fill="#292929"><tspan x="70">「쓸 내용:」을 보고 그대로 「답:」 뒤에 쓴다</tspan></text>
-<rect x="20" y="168" width="680" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="36" y="183" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="70" y="198" font-size="15" text-anchor="start" fill="#292929"><tspan x="70">출력 · 코드는 「답:」 아래 빈 코드 상자에 붙여 넣는다</tspan></text>
-<rect x="20" y="226" width="680" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="36" y="241" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="70" y="256" font-size="15" text-anchor="start" fill="#292929"><tspan x="70">「왜」는 내 화면의 값이나 배운 내용을 근거로 이유까지</tspan></text>
-<rect x="20" y="284" width="680" height="48" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<rect x="36" y="299" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="70" y="314" font-size="15" text-anchor="start" fill="#292929"><tspan x="70">[핵심 질문] = 이 실습에서 꼭 알아야 할 질문</tspan></text>
-<rect x="20" y="342" width="680" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="36" y="357" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="70" y="372" font-size="15" text-anchor="start" fill="#292929"><tspan x="70">답을 못 찾으면 「모름 — 막힌 곳: …」이라고 쓴다</tspan></text>
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">보고서 파일 만들기</tspan></text>
+<rect x="20" y="56" width="270" height="70" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="155.0" y="85.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="155.0" font-weight="bold">1. [VS Code] New File</tspan><tspan x="155.0" dy="21">report_u4.md</tspan></text>
+<rect x="20" y="152" width="270" height="70" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="155.0" y="181.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="155.0" font-weight="bold">2. 틀의 복사 버튼</tspan><tspan x="155.0" dy="21">붙여 넣기</tspan></text>
+<line x1="155" y1="128" x2="155" y2="150" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="20" y="248" width="270" height="70" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="155.0" y="277.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="155.0" font-weight="bold">3. (이름) 을 내 이름으로</tspan><tspan x="155.0" dy="21">Ctrl + S 로 저장</tspan></text>
+<line x1="155" y1="224" x2="155" y2="246" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<text x="20" y="360" font-size="14" text-anchor="start" fill="#666660"><tspan x="20">이미 있으면 새로 만들지 않고</tspan><tspan x="20" dy="20">그 파일을 엽니다.</tspan></text>
+<rect x="320" y="52" width="380" height="334" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="336" y="78" font-size="15" text-anchor="start" fill="#292929"><tspan x="336" font-weight="bold"># Unit 4 보고서 (이름)</tspan></text>
+<rect x="336" y="92" width="348" height="150" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="350" y="116" font-size="15" text-anchor="start" fill="#292929"><tspan x="350" font-weight="bold">핵심 실습 · 모두 채움</tspan><tspan x="350" dy="24">## 실습 4-1</tspan><tspan x="350" dy="24">## 실습 4-2</tspan><tspan x="350" dy="24">## 마무리</tspan></text>
+<text x="670" y="140" font-size="14" text-anchor="end" fill="#666660"><tspan x="670">(가) 답: + 출력 상자</tspan><tspan x="670" dy="24">(나) 답:</tspan><tspan x="670" dy="24">(다) 답:</tspan></text>
+<text x="350" y="228" font-size="14" text-anchor="start" fill="#666660"><tspan x="350">마무리는 (가) 하나</tspan></text>
+<rect x="336" y="256" width="348" height="114" rx="8" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="350" y="282" font-size="15" text-anchor="start" fill="#292929"><tspan x="350" font-weight="bold">도전(선택) · 한 도전만 채움</tspan><tspan x="350" dy="26">## 도전 4-1 ~ ## 도전 4-5</tspan><tspan x="350" dy="26">하지 않은 도전의 칸은 비워 둠</tspan></text>
 </g>
 </svg>

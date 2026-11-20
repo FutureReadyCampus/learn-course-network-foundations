@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>escalation.py: 기한을 넘긴 열림 티켓을 넘긴 시간에 맞는 단계로 올리기</title>
+<desc>열림 상태이고 응답 기한(SLA)이 지난 티켓만 올립니다. 넘긴 시간이 0분 이상이면 1단계 team.lead, 30분 이상이면 2단계 soc.head 이고, 같은 단계는 한 번만 올립니다. 알림은 Unit 3 의 send_with_retry 로 보냅니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">escalation.py 가 하는 일</tspan></text>
+<rect x="20" y="56" width="150" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="95.0" y="80.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="95.0" font-weight="bold">티켓</tspan><tspan x="95.0" dy="21">지금 시각(분)</tspan></text>
+<line x1="172" y1="86" x2="196" y2="86" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="200" y="56" width="230" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="315.0" y="80.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="315.0" font-weight="bold">needs_escalation</tspan><tspan x="315.0" dy="21">열림 · 기한 지남?</tspan></text>
+<line x1="432" y1="86" x2="456" y2="86" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="460" y="56" width="240" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="580.0" y="80.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="580.0" font-weight="bold">overdue_minutes</tspan><tspan x="580.0" dy="21">기한을 넘긴 시간(분)</tspan></text>
+<text x="20" y="156" font-size="15" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">pick_level: 넘긴 시간으로 단계 고르기</tspan></text>
+<line x1="40" y1="200" x2="680" y2="200" stroke="#666660" stroke-width="2"/>
+<line x1="40" y1="192" x2="40" y2="208" stroke="#292929" stroke-width="2"/>
+<text x="40" y="226" font-size="14" text-anchor="middle" fill="#292929"><tspan x="40">0분</tspan></text>
+<line x1="360" y1="192" x2="360" y2="208" stroke="#292929" stroke-width="2"/>
+<text x="360" y="226" font-size="14" text-anchor="middle" fill="#292929"><tspan x="360">30분</tspan></text>
+<rect x="44" y="170" width="312" height="24" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="200.0" y="187.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="200.0" font-weight="bold"></tspan></text>
+<text x="200" y="187" font-size="14" text-anchor="middle" fill="#292929"><tspan x="200" font-weight="bold">1단계 team.lead</tspan></text>
+<rect x="364" y="170" width="316" height="24" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="522.0" y="187.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="522.0" font-weight="bold"></tspan></text>
+<text x="522" y="187" font-size="14" text-anchor="middle" fill="#292929"><tspan x="522" font-weight="bold">2단계 soc.head</tspan></text>
+<line x1="580" y1="118" x2="580" y2="166" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="20" y="250" width="330" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="185.0" y="274.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="185.0" font-weight="bold">escalate_ticket</tspan><tspan x="185.0" dy="21">같은 단계는 한 번만 올림</tspan></text>
+<line x1="352" y1="280" x2="376" y2="280" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="380" y="250" width="320" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="540.0" y="274.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="540.0" font-weight="bold">send_with_retry</tspan><tspan x="540.0" dy="21">Unit 3 · ticket_notice.py</tspan></text>
+<rect x="20" y="330" width="680" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="350.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="360.0">도전 4-2 는 needs_escalation · escalate_ticket 을 불러 씁니다</tspan><tspan x="360.0" dy="20">규칙 파일 config/escalation_rules.json 은 도전 4-1 에서 다룹니다</tspan></text>
+</g>
+</svg>

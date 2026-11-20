@@ -1,30 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>도전 4-1 에서 직접 쓰는 코드를 함수별로 묶은 요점 지도</title>
-<desc>왼쪽은 함수 이름, 오른쪽은 그 함수에서 직접 쓰는 줄이다. 빼서 리턴, 같지 않으면, 이상인지 리턴, 단계 번호 저장, 함수 결과가 참이면, 결과 저장, 1 늘리기를 모았다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>escalate 흐름: 열림이고 기한 지났으면 단계를 골라 더 높을 때만 올린다</title>
+<desc>점검 시각마다 티켓을 needs_escalation 으로 거른다. 통과하면 pick_level 로 단계를 고르고, 이미 올린 단계보다 높을 때만 send_with_retry 로 상급자에게 알린다. 결과는 그대로, 올림, 실패 가운데 하나다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">도전 4-1 정리 · 함수별로 쓰는 줄</text>
-<rect x="20" y="60" width="210" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="125.0" y="90.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">overdue_minutes</text>
-<rect x="250" y="60" width="450" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="264" y="89.9" font-size="14" fill="#292929">return now - ticket["sla_due"]</text>
-<line x1="232" y1="85.0" x2="248" y2="85.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="20" y="122" width="210" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="125.0" y="163.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">needs_escalation</text>
-<rect x="250" y="122" width="450" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="264" y="153.1" font-size="14" fill="#292929">if ticket["status"] != "열림":</text>
-<text x="264" y="172.7" font-size="14" fill="#292929">return overdue_minutes(ticket, now) &gt;= 0</text>
-<line x1="232" y1="158.0" x2="248" y2="158.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="20" y="206" width="210" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="125.0" y="247.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">pick_level</text>
-<rect x="250" y="206" width="450" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="264" y="237.1" font-size="14" fill="#292929">if overdue &gt;= step["overdue_minutes"]:</text>
-<text x="264" y="256.7" font-size="14" fill="#292929">level = index + 1</text>
-<line x1="232" y1="242.0" x2="248" y2="242.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="20" y="290" width="210" height="94" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="125.0" y="342.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">challenge4-1_run.py</text>
-<rect x="250" y="290" width="450" height="94" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="264" y="322.3" font-size="14" fill="#292929">if needs_escalation(ticket, now):</text>
-<text x="264" y="341.9" font-size="14" fill="#292929">result = escalate_ticket(ticket, now, rules)</text>
-<text x="264" y="361.5" font-size="14" fill="#292929">escalated_count = escalated_count + 1</text>
-<line x1="232" y1="337.0" x2="248" y2="337.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">도전 4-1 · 티켓 한 장을 올리는 길</text>
+<rect x="20" y="56" width="170" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="105.0" y="82.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">점검 시각</text>
+<text x="105.0" y="103.8" font-size="15" fill="#292929" text-anchor="middle">20 · 60 · 110분</text>
+<rect x="230" y="52" width="240" height="72" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="350.0" y="82.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">needs_escalation (2~4번)</text>
+<text x="350.0" y="103.8" font-size="15" fill="#292929" text-anchor="middle">열림이고 기한 지났나?</text>
+<rect x="520" y="60" width="180" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="610.0" y="93.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">넘어감</text>
+<rect x="230" y="152" width="240" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="350.0" y="176.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">pick_level (5·6번)</text>
+<text x="350.0" y="197.8" font-size="15" fill="#292929" text-anchor="middle">넘긴 시간 → 단계 번호</text>
+<rect x="230" y="240" width="240" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="350.0" y="266.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">escalate_ticket</text>
+<text x="350.0" y="287.8" font-size="15" fill="#292929" text-anchor="middle">이미 올린 단계보다 높나?</text>
+<rect x="520" y="244" width="180" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="610.0" y="277.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">그대로</text>
+<rect x="230" y="332" width="240" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="350.0" y="354.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">send_with_retry</text>
+<text x="350.0" y="375.8" font-size="15" fill="#292929" text-anchor="middle">상급자에게 알림</text>
+<rect x="520" y="318" width="180" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="610.0" y="343.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">올림</text>
+<rect x="520" y="370" width="180" height="40" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="610.0" y="395.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">실패</text>
+<line x1="192" y1="88" x2="228" y2="88" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<line x1="472" y1="88" x2="518" y2="88" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<text x="474" y="80" font-size="14" fill="#666660">아니오</text>
+<line x1="350" y1="126" x2="350" y2="150" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<text x="358" y="143" font-size="14" fill="#666660">예</text>
+<line x1="350" y1="214" x2="350" y2="238" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<line x1="472" y1="272" x2="518" y2="272" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<text x="474" y="264" font-size="14" fill="#666660">아니오</text>
+<line x1="350" y1="306" x2="350" y2="330" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<text x="358" y="323" font-size="14" fill="#666660">예</text>
+<line x1="472" y1="352" x2="518" y2="338" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<line x1="472" y1="370" x2="518" y2="388" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="20" y="240" width="170" height="148" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="105.0" y="289.5" font-size="14" font-weight="bold" fill="#292929" text-anchor="middle">challenge4-1_run.py</text>
+<text x="105.0" y="309.1" font-size="14" fill="#292929" text-anchor="middle">7번 if 로 고르기</text>
+<text x="105.0" y="328.7" font-size="14" fill="#292929" text-anchor="middle">8번 result 저장</text>
+<text x="105.0" y="348.3" font-size="14" fill="#292929" text-anchor="middle">9번 올림이면 + 1</text>
 </svg>

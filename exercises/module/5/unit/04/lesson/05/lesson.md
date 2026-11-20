@@ -13,9 +13,11 @@ source:
 
 ## 목표: 에스컬레이션 함수
 
+> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 4-1 · 4-2와 글쓰기를 먼저 마칩니다. 도전 4-1 ~ 4-5 가운데 하고 싶은 것만 골라 해도 됩니다. 이 도전과 도전 4-2 는 `flask` · `requests` 와 알림 서버를 쓰고, 다음 페이지 「필요한 파일 준비하기」를 먼저 합니다. 하지 않아도 다음 Unit 을 따라가는 데 문제가 없습니다.
+
 > **오늘 들어온 일**
 >
-> - **상황**: Unit 3에서 만든 `TCK-1`(퇴사한 `dami` 계정, 등급 high)은 <mark style="background:#ffdcb0">응답 기한(SLA)이 15분입니다</mark>. 즉, 티켓이 생성된 뒤 15분 안에 담당자가 확인해야 합니다. 확인(acknowledge, 애크날리지)은 알림을 받았고 처리를 맡았다고 표시하는 일입니다. 티켓 상태 `열림`(open, 오픈)은 아직 아무도 확인하지 않은 상태입니다. 그런데 20분이 되도록 어떤 담당자도 `TCK-1` 을 확인하지 않아 `열림` 그대로라고 해 봅시다. 이때는 응답 기한을 5분 넘긴 것입니다.
+> - **상황**: Unit 3 티켓 파일에 있는 `TCK-1`(퇴사한 `dami` 계정, 등급 high)은 <mark style="background:#ffdcb0">응답 기한(SLA)이 15분입니다</mark>. 즉, 티켓이 생성된 뒤 15분 안에 담당자가 확인해야 합니다. 확인(acknowledge, 애크날리지)은 알림을 받았고 처리를 맡았다고 표시하는 일입니다. 티켓 상태 `열림`(open, 오픈)은 아직 아무도 확인하지 않은 상태입니다. 그런데 20분이 되도록 어떤 담당자도 `TCK-1` 을 확인하지 않아 `열림` 그대로라고 해 봅시다. 이때는 응답 기한을 5분 넘긴 것입니다.
 > - **문제**: 두 가지입니다. 먼저 용어를 정리합니다. 에스컬레이션(escalation)은 처리되지 않는 일을 상급자에게 추가로 통보하는 일입니다.
 > - 첫째, <mark style="background:#ffc4d6">티켓이 `열림` 상태로 응답 기한을 초과해도 통보 체계가 없으면 위험도가 높은 사건이 처리되지 않은 채 남습니다</mark>. `TCK-1` 은 high 등급의 퇴사자 계정 사건인데도 방치될 수 있습니다.
 > - 둘째, 담당자가 이미 확인 중인 티켓까지 반복해서 에스컬레이션하면 상급자에게 알림이 지나치게 많아집니다. 그러면 상급자가 알림 피로(alert fatigue: 알림이 지나치게 많아 중요한 알림에도 반응이 둔해지는 현상)를 겪고 알림을 무시하게 됩니다.
@@ -28,6 +30,51 @@ source:
 > - 60분: `TCK-1` 은 `확인 중` 이므로 대상에서 제외됩니다. 통보는 없습니다.
 > - 110분: `TCK-3`(42분 초과)과 `TCK-4`(38분 초과)는 `soc.head` 에게, `TCK-6`(15분 초과)은 `team.lead` 에게 통보합니다.
 > - 세 번의 점검에서 에스컬레이션이 실행된 횟수를 모두 합하면 4번입니다. 상황과 숫자는 설명을 위한 예시입니다.
+
+## 필요한 파일 준비하기
+
+도전 4-1 과 도전 4-2 는 Unit 3 티켓 파일과 알림 서버를 씁니다. 아래 순서대로 준비합니다.
+
+1. **Unit 3 파일**: `soar_response` 폴더에 아래 파일이 있어야 합니다. 없는 파일은 알려 준 레슨의 코드 상자로 만듭니다.
+   1. Unit 3 「시작하기」 레슨: `notifier.py` · `alert_server.py` · `alerts_thu.json` · `config/escalation_rules.json`
+   2. Unit 3 실습 3-2: `ticketing.py`
+   3. Unit 3 「제공 파일」 레슨: `ticket_merge.py` · `ticket_notice.py`
+2. **티켓 파일** `tickets_unit09.json`: Unit 3 도전 3-3 을 실행했다면 그때 저장된 파일이 이미 있습니다. 없으면 아래 내용으로 만듭니다(파일 이름 속 `unit09` 는 이름을 바꾸지 않고 그대로 씁니다).
+
+**`tickets_unit09.json`** — Unit 3 근무(알림 11건)가 끝났을 때의 티켓 7장입니다. Unit 3 도전 3-3 의 `challenge3-3_run.py` 가 저장하는 파일과 내용이 같습니다. 모든 티켓이 아직 `열림` 이고 `escalation_level` 은 0 입니다.
+
+<pre class="copyable"><code>[
+  {"id": "TCK-1", "title": "[high] dami — 퇴사한 계정", "entity": "dami", "rule": "퇴사한 계정", "grade": "high", "playbook": "PB-001", "done": ["계정 잠금: 잠기지 않음 → 잠김", "세션 종료: 세션 2개 → 세션 0개", "계정 잠금: 잠김 → 잠김 (이미 잠겨 있어 변경 없음)", "계정 잠금: 잠김 → 잠김 (이미 잠겨 있어 변경 없음)", "계정 잠금: 잠김 → 잠김 (이미 잠겨 있어 변경 없음)"], "status": "열림", "next_step": "조치 결과가 맞는지 확인하고 계정이나 IP 상태를 점검한다", "needs_manual": false, "created_at": 0, "updated_at": 95, "sla_due": 15, "count": 4, "incidents": ["INC-201", "INC-205", "INC-209", "INC-210"], "notified_count": 3, "last_notified": 95, "acked_at": -1, "resolved_at": -1, "escalation_level": 0, "comments": []},
+  {"id": "TCK-2", "title": "[low] 198.51.100.90 — 경로 스캔", "entity": "198.51.100.90", "rule": "경로 스캔", "grade": "low", "playbook": "PB-003", "done": ["IP 차단: 차단되지 않음 → 차단됨", "IP 차단: 차단됨 → 차단됨 (이미 차단되어 변경 없음)"], "status": "열림", "next_step": "조치 결과가 맞는지 확인하고 계정이나 IP 상태를 점검한다", "needs_manual": false, "created_at": 3, "updated_at": 20, "sla_due": 243, "count": 2, "incidents": ["INC-202", "INC-206"], "notified_count": 1, "last_notified": 3, "acked_at": -1, "resolved_at": -1, "escalation_level": 0, "comments": []},
+  {"id": "TCK-3", "title": "[mid] gaeun — 규칙은 허용인데 서버가 거절", "entity": "gaeun", "rule": "규칙은 허용인데 서버가 거절", "grade": "mid", "playbook": "VIP 확인", "done": [], "status": "열림", "next_step": "승인할지 거절할지 정하고 정한 사람의 이름을 남긴다", "needs_manual": false, "created_at": 8, "updated_at": 8, "sla_due": 68, "count": 1, "incidents": ["INC-203"], "notified_count": 1, "last_notified": 8, "acked_at": -1, "resolved_at": -1, "escalation_level": 0, "comments": []},
+  {"id": "TCK-4", "title": "[mid] seoyeon — 대량 다운로드", "entity": "seoyeon", "rule": "대량 다운로드", "grade": "mid", "playbook": "PB-002", "done": [], "status": "열림", "next_step": "승인할지 거절할지 정하고 정한 사람의 이름을 남긴다", "needs_manual": false, "created_at": 12, "updated_at": 12, "sla_due": 72, "count": 1, "incidents": ["INC-204"], "notified_count": 1, "last_notified": 12, "acked_at": -1, "resolved_at": -1, "escalation_level": 0, "comments": []},
+  {"id": "TCK-5", "title": "[low] 203.0.113.250 — 경로 스캔", "entity": "203.0.113.250", "rule": "경로 스캔", "grade": "low", "playbook": "PB-003", "done": ["IP 차단: 차단되지 않음 → 차단되지 않음 (확인 실패)"], "status": "열림", "next_step": "조치가 확인되지 않았다. 담당자가 직접 계정이나 IP 상태를 보고 조치한다", "needs_manual": true, "created_at": 30, "updated_at": 30, "sla_due": 270, "count": 1, "incidents": ["INC-207"], "notified_count": 1, "last_notified": 30, "acked_at": -1, "resolved_at": -1, "escalation_level": 0, "comments": []},
+  {"id": "TCK-6", "title": "[mid] hana — 업무 시간 밖 로그인", "entity": "hana", "rule": "업무 시간 밖 로그인", "grade": "mid", "playbook": "없음", "done": [], "status": "열림", "next_step": "자동 조치가 없는 알림이니 직접 보고 조치가 필요한지 정한다", "needs_manual": false, "created_at": 35, "updated_at": 35, "sla_due": 95, "count": 1, "incidents": ["INC-208"], "notified_count": 1, "last_notified": 35, "acked_at": -1, "resolved_at": -1, "escalation_level": 0, "comments": []},
+  {"id": "TCK-7", "title": "[high] dami — 퇴사한 계정", "entity": "dami", "rule": "퇴사한 계정", "grade": "high", "playbook": "PB-001", "done": ["계정 잠금: 잠김 → 잠김 (이미 잠겨 있어 변경 없음)"], "status": "열림", "next_step": "조치 결과가 맞는지 확인하고 계정이나 IP 상태를 점검한다", "needs_manual": false, "created_at": 160, "updated_at": 160, "sla_due": 175, "count": 1, "incidents": ["INC-211"], "notified_count": 1, "last_notified": 160, "acked_at": -1, "resolved_at": -1, "escalation_level": 0, "comments": []}
+]
+</code></pre>
+
+**순서**
+
+1. **[터미널]** 서버와 알림 전송에 쓰는 도구를 설치합니다(맥북은 `python3`). 이미 설치했다면 바로 다음 줄로 갑니다.
+   ```bash
+   python -m pip install flask requests
+   ```
+   - 터미널 맨 앞에 가상환경 이름(예: `(.venv)`)이 보이는 상태에서 칩니다.
+2. **[터미널]** 파일을 확인합니다. <mark style="background:#bde3ff">`도전 준비 정상 7` 이 나와야</mark> 합니다.
+   ```bash
+   pwd
+   python -c "import ticketing, ticket_merge, ticket_notice, notifier; from incident import load_json; print('도전 준비 정상', len(load_json('tickets_unit09.json')))"
+   ```
+   - `No module named '…'` 가 나오면 1번 목록에서 그 이름의 파일을 찾아 만듭니다. `No module named 'requests'` 는 1번 설치를 다시 합니다.
+3. **[터미널]** 알림 서버를 켭니다. VS Code 터미널 창 오른쪽 위의 `+` 로 **새 터미널**을 하나 더 열고, `soar_response` 폴더에서 서버를 실행합니다. <mark style="background:#bde3ff">`Running on http://127.0.0.1:5001` 이 보이면</mark> 됩니다.
+   ```bash
+   cd soar_response
+   python alert_server.py
+   ```
+   - 새 터미널은 `security-agent-toolkit` 폴더에서 열리므로 `cd soar_response` 를 먼저 칩니다. 새 터미널 맨 앞에도 가상환경 이름(예: `(.venv)`)이 보여야 합니다.
+   - 이 터미널(서버 터미널)은 도전 4-1 · 4-2 를 마칠 때까지 켜 둡니다. 다른 명령은 처음 쓰던 터미널에서 칩니다.
+   - `Address already in use` 가 나오면 이미 켜진 서버가 있는 것입니다. 그 서버를 그대로 쓰거나, 서버를 켠 터미널에서 `Ctrl + C` 로 끄고 다시 켭니다.
 
 ## 1.1 에스컬레이션 규칙의 세 요소
 
@@ -43,7 +90,7 @@ source:
 - 이미 실행한 에스컬레이션 단계는 반복하지 않습니다. 티켓의 `escalation_level` 에 실행한 단계를 기록합니다. 그리고 기록된 단계보다 더 높은 단계에 해당할 때만 에스컬레이션합니다. 예를 들어 `escalation_level` 이 1 인 티켓은 1단계에 해당하는 동안 다시 통보하지 않고, 초과 시간이 30분 이상이 되어 2단계에 해당할 때 통보합니다. <mark style="background:#ffc4d6">점검할 때마다 같은 티켓을 반복해서 통보하면 상급자가 알림 피로를 겪어 알림을 무시하게 됩니다</mark>.
 - 등급 low 는 응답 기한이 240분입니다. 그래서 오늘 점검 시각(20 · 60 · 110분)은 모두 응답 기한 시각보다 이릅니다. 예를 들어 `TCK-2` 의 응답 기한 시각은 243분입니다. 따라서 등급 low 티켓은 에스컬레이션 대상이 아닙니다.
 - 점검 시각은 20분, 60분, 110분입니다(근무 시작 시점을 0분으로 하는 상대 시각). 이처럼 정해진 주기로 상태를 반복 조회하는 방식을 폴링(polling, 폴링: 일정한 간격으로 상태를 반복해서 확인하는 방식)이라고 합니다. 실제 운영에서는 몇 분마다 자동으로 점검합니다.
-- 상급자에게 통보하는 기능은 Unit 3의 도전 3-3의 `send_with_retry`(알림 전송에 실패하면 최대 3회까지 재시도(retry)하는 함수)를 재사용합니다. Unit 3의 도전 3-3 `ticket_notice.py` 를 가져와 사용(import)합니다.
+- 상급자에게 통보하는 기능은 `send_with_retry`(알림 전송에 실패하면 최대 3회까지 재시도(retry)하는 함수)를 재사용합니다. 이 함수가 든 `ticket_notice.py` 는 Unit 3 「제공 파일」 레슨의 파일입니다(Unit 3 도전 3-3 에서 직접 써 보는 파일).
 
 아래 함수 네 개와 실행 파일 가운데 직접 쓰는 곳은 **아홉 군데**입니다.
 
@@ -65,10 +112,10 @@ escalation.py   overdue_minutes   : 응답 기한을 넘긴 시간(분)을 구�
 
 **할 일**: 두 파일을 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 알림 서버를 실행한 상태에서 프로그램을 실행합니다. 그리고 단계 2 · 3 의 출력과 서버 터미널의 수신 로그를 해석합니다.
 
-**`escalation.py`** — 응답 기한이 지난 티켓을 상급자에게 올립니다. 도전 4-2에서도 이 파일을 가져와 사용(import)합니다. 직접 쓰는 곳은 1 ~ 6번입니다. 5번 아래에는 `if` 한 줄을, 6번 아래에는 한 단계 더 들여쓴 줄을 씁니다.
+**`escalation.py`** — 응답 기한이 지난 티켓을 상급자에게 올립니다. 도전 4-2에서도 이 파일을 가져와 사용(import)합니다. 「제공 파일」 레슨에서 완성본을 만들어 두었다면 그 파일을 아래 골격으로 바꿔 직접 써 봅니다. 직접 쓰는 곳은 1 ~ 6번입니다. 5번 아래에는 `if` 한 줄을, 6번 아래에는 한 단계 더 들여쓴 줄을 씁니다.
 
 ```python
-from ticket_notice import send_with_retry, MAX_TRIES                                       # 도전 3-3에 만든 재시도 함수를 불러온다
+from ticket_notice import send_with_retry, MAX_TRIES                                       # Unit 3 에 있는 재시도 함수를 불러온다
 
 
 def overdue_minutes(ticket, now):                                                          # 티켓과 지금 시각(분)을 받는 함수
@@ -126,10 +173,10 @@ def escalate_ticket(ticket, now, rules):                                        
 
 ```python
 from incident import load_json                                                       # Unit 1 파일의 JSON 읽기 함수를 불러온다
-from ticket_merge import change_ticket_status                                        # 도전 3-2에 만든 상태 바꾸기 함수를 불러온다
+from ticket_merge import change_ticket_status                                        # Unit 3 에 있는 상태 바꾸기 함수를 불러온다
 from escalation import overdue_minutes, needs_escalation, escalate_ticket            # 방금 만든 함수를 불러온다
 
-tickets = load_json("tickets_unit09.json")                                             # Unit 3의 도전 3-3에서 저장한 티켓을 읽는다
+tickets = load_json("tickets_unit09.json")                                           # Unit 3 근무가 끝났을 때의 티켓을 읽는다
 rules = load_json("config/escalation_rules.json")                                    # 규칙 파일을 읽는다
 steps_count = len(rules["escalation_steps"])                                         # 올림 단계가 몇 개인지 센다
 print("--- 단계 1: 불러온 티켓", len(tickets), "장 · 올림 단계", steps_count, "개")  # 단계 1 시작을 알리는 줄
@@ -158,14 +205,16 @@ for ticket in tickets:                                                          
 
 **순서**
 
-1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `escalation.py` 와 `challenge4-1_run.py` 를 이름 그대로 만들고, 위 코드 상자를 복사해 붙여 넣고 저장합니다.
-2. **[VS Code]** `escalation.py` 1 ~ 6번, `challenge4-1_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「도전 4-1 정리」를 봅니다.
-3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`). 알림 서버 터미널은 켜 둡니다.
+1. **[터미널]** 「필요한 파일 준비하기」의 서버 터미널에 `Running on http://127.0.0.1:5001` 이 떠 있는지 봅니다. 꺼져 있으면 그 페이지의 3번으로 다시 켭니다.
+2. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `escalation.py` 와 `challenge4-1_run.py` 를 이름 그대로 만들고, 위 코드 상자를 복사해 붙여 넣고 저장합니다.
+3. **[VS Code]** `escalation.py` 1 ~ 6번, `challenge4-1_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「도전 4-1 정리」를 봅니다.
+4. **[터미널]** 처음 쓰던 터미널에서 <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python challenge4-1_run.py
    ```
-4. 출력은 세 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 제목 줄 하나만 나옵니다(숫자가 제목 줄 안에 함께 나옵니다). 단계 2 는 제목 아래 8줄입니다. 단계 3 은 제목 아래 4줄입니다(올린 횟수는 제목 줄 안에 있습니다). <mark>알림 서버 터미널에는 `[알림 받음]` 줄이 4개 찍힙니다.</mark>
-5. **[보고서]** `report_u4.md` 의 `## 도전 4-1` 아래를 채웁니다.
+5. 출력은 세 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 제목 줄 하나만 나옵니다(숫자가 제목 줄 안에 함께 나옵니다). 단계 2 는 제목 아래 8줄입니다. 단계 3 은 제목 아래 4줄입니다(올린 횟수는 제목 줄 안에 있습니다). <mark>알림 서버 터미널에는 `[알림 받음]` 줄이 4개 찍힙니다.</mark> 같은 서버로 Unit 3 도전 3-3 을 먼저 실행했다면 그 줄 아래부터 셉니다.
+   - `challenge4-1_run.py` 는 `tickets_unit09.json` 을 읽기만 하고 다시 저장하지 않아서, 몇 번을 실행해도 같은 결과가 나옵니다(서버 터미널의 줄은 실행할 때마다 4줄씩 늘어납니다).
+6. **[보고서]** `report_u4.md` 의 `## 도전 4-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣어 주세요. 그리고 알림 서버 터미널에 출력된 `[알림 받음]` 줄 수와 단계 3 의 올린 횟수(에스컬레이션 실행 횟수)를 적어 주세요.
    - (나) [핵심 질문] `TCK-1` 은 20분 점검에서 1단계로 에스컬레이션되었지만, 60분 점검에서는 에스컬레이션되지 않았습니다. 그 이유를 설명해 주세요. 이때 25분에 변경된 상태와 `needs_escalation` 의 조건을 근거로 쓰고, 이 조건이 없을 때 발생하는 문제도 함께 설명해 주세요.
    - (다) [핵심 질문] 110분 점검에서 `TCK-3` 은 2단계로, `TCK-6` 은 1단계로 에스컬레이션되었습니다. 두 티켓의 응답 기한과 초과 시간을 근거로 단계가 달라진 이유를 설명해 주세요. 또한 등급 low 인 `TCK-2` 가 에스컬레이션되지 않은 이유도 설명해 주세요.
