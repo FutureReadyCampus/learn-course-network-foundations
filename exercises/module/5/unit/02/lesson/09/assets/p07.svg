@@ -1,20 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 371" role="img">
-<title>실습 2-2 보고서: 빈틈 계정, dami 의 두 조치, gaeun 의 세션을 끊지 않은 이유</title>
-<desc>실습 2-2 보고서에 채울 칸입니다. (가)는 출력과 빈틈 계정, 잠긴 계정, (나)는 junho 가 발견된 이유와 dami 의 두 조치, (다)는 gaeun 이 조치를 받지 않은 이유를 씁니다.</desc>
-<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 329" role="img">
+<title>도전 2-3 보고서: 차단된 IP 와 이유, 공유 IP 의 영향, 자동 해제의 근거</title>
+<desc>도전 2-3 보고서에 채울 칸입니다. (가)는 출력과 차단 여부, (나)는 ip_users.json 을 근거로 공유 IP 를 차단하지 않은 이유, (다)는 만료 시각과 시계를 근거로 자동 해제된 이유를 씁니다.</desc>
+<defs><marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 2-2 보고서에 채울 칸</text>
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">도전 2-3 보고서에 채울 칸</text>
 <rect x="24" y="60" width="130" height="85" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="89.0" y="107.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(가)</tspan></text>
 <rect x="166" y="60" width="530" height="85" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="180" y="86.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180" dy="0">① 출력 전체 (코드 상자에 붙여 넣기)</tspan><tspan x="180" dy="21.0">② 단계 3 에서 빈틈이 남은 계정</tspan><tspan x="180" dy="21.0">③ 단계 4 의 잠긴 계정</tspan></text>
-<rect x="24" y="157" width="130" height="85" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="89.0" y="194.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(나)</tspan><tspan x="89.0" dy="21.0">핵심 질문</tspan></text>
-<rect x="166" y="157" width="530" height="85" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="180" y="183.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180" dy="0">① junho 가 점검에서 발견된 이유</tspan><tspan x="180" dy="21.0">② dami 가 받은 두 조치</tspan><tspan x="180" dy="21.0">③ 잠금만 했을 때 남는 접속</tspan></text>
-<rect x="24" y="254" width="130" height="85" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="89.0" y="291.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(다)</tspan><tspan x="89.0" dy="21.0">핵심 질문</tspan></text>
-<rect x="166" y="254" width="530" height="85" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="180" y="280.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180" dy="0">① gaeun 이 조치를 받지 않은 이유</tspan><tspan x="180" dy="21.0">    (5번 조건과 단계 2 의 줄)</tspan><tspan x="180" dy="21.0">② 잠기지 않은 계정의 세션을 끊으면 안 되는 이유</tspan></text>
+<text x="180" y="86.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180" dy="0">① 출력 전체 (코드 상자에 붙여 넣기)</tspan><tspan x="180" dy="21.0">② 실제로 차단된 IP</tspan><tspan x="180" dy="21.0">③ 차단하지 않은 IP 와 각 이유</tspan></text>
+<rect x="24" y="157" width="130" height="64" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="89.0" y="183.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(나)</tspan><tspan x="89.0" dy="21.0">핵심 질문</tspan></text>
+<rect x="166" y="157" width="530" height="64" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="180" y="183.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180" dy="0">① ip_users.json 의 값   ② 차단하지 않은 이유</tspan><tspan x="180" dy="21.0">③ 그대로 차단했을 때의 영향</tspan></text>
+<rect x="24" y="233" width="130" height="64" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="89.0" y="259.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(다)</tspan><tspan x="89.0" dy="21.0">핵심 질문</tspan></text>
+<rect x="166" y="233" width="530" height="64" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="180" y="259.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180" dy="0">① 단계 2 의 만료 시각과 단계 3 의 시계</tspan><tspan x="180" dy="21.0">② 풀린 이유   ③ 자동으로 풀리게 두는 장점</tspan></text>
 </g>
 </svg>

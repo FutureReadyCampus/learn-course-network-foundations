@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>잠금 다음 세션 종료 순서여야 다시 로그인할 틈 없이 접속이 끊깁니다</title>
+<desc>세 가지 순서를 비교합니다. 잠금 다음 세션 종료는 접속을 끊고, 세션 종료 다음 잠금은 그 사이 재로그인 틈이 생기며, 잠금만 하면 활성 세션으로 계속 접속합니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">2.1 조치 순서에 따른 결과</text>
+<rect x="24" y="64" width="210" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="129.0" y="90.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="129.0" dy="0" font-weight="700">잠금 → 세션 종료</tspan><tspan x="129.0" dy="21.0">(오늘 구현)</tspan></text>
+<rect x="254" y="64" width="442" height="64" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="475.0" y="101.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="475.0" dy="0">새 로그인이 막힌 뒤 세션이 끊겨 더는 접속 불가</tspan></text>
+<rect x="24" y="144" width="210" height="64" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="129.0" y="181.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="129.0" dy="0" font-weight="700">세션 종료 → 잠금</tspan></text>
+<rect x="254" y="144" width="442" height="64" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="475.0" y="181.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="475.0" dy="0">두 조치 사이에 재로그인해 새 세션이 생길 수 있음</tspan></text>
+<rect x="24" y="224" width="210" height="64" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="129.0" y="261.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="129.0" dy="0" font-weight="700">잠금만</tspan></text>
+<rect x="254" y="224" width="442" height="64" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="475.0" y="261.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="475.0" dy="0">열린 세션으로 계속 접속할 수 있음</tspan></text>
+<text x="24" y="316" font-size="15" text-anchor="start" fill="#666660">세션 종료는 잠금이 사후 검증으로 확인된 뒤에만 실행합니다.</text>
+</g>
+</svg>
