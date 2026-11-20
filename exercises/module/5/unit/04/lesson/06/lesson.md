@@ -93,7 +93,7 @@ shift_metrics.py   average                 : 숫자 리스트의 평균을 구�
 ]
 </code></pre>
 
-**`shift_metrics.py`** — 근무 지표를 계산합니다. 직접 쓰는 곳은 1 ~ 7번입니다. 4번 아래에는 `if` 한 줄을, 5번 아래에는 한 단계 더 들여쓴 줄을 씁니다. 6번과 7번도 같은 모양입니다.
+**`shift_metrics.py`** — 근무 지표를 계산합니다. 직접 쓰는 곳은 1 ~ 7번입니다. 4번 아래에는 `if` 한 줄을, 5번 아래에는 한 단계 더 들여쓴 줄을 씁니다. 6번과 7번도 같은 모양입니다. 1번과 2번도 마찬가지로, 1번 아래에 `if` 한 줄을 쓰고 2번은 그 안쪽이라 주석 위치보다 한 단계(공백 4개) 더 들여 씁니다.
 
 ```python
 def average(numbers):                                                   # 숫자 리스트를 받는 함수
@@ -144,7 +144,7 @@ def count_sla_breaches(tickets, now):                                   # 티켓
     return late                                                         # 기한을 넘긴 티켓 수를 리턴한다 — 미리 채운 줄
 ```
 
-**`challenge4-2_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. Unit 3 파일 `ticket_merge.py` · `ticket_notice.py` 와 `escalation.py`(도전 4-1 또는 「제공 파일」 레슨)가 같은 폴더에 있어야 합니다.
+**`challenge4-2_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. Unit 3 파일 `ticket_merge.py` · `ticket_notice.py` 와 `escalation.py`(도전 4-1 또는 「제공 파일」 레슨)가 같은 폴더에 있어야 합니다. 미리 채운 `for now in range(0, 181):` 는 0 부터 180 까지 1씩 늘어나는 숫자를 꺼냅니다(끝 숫자 181 은 들어가지 않습니다). 그래서 1분마다 그 시각에 온 알림과 담당자 동작을 처리합니다.
 
 ```python
 from incident import load_json, save_json                                             # Unit 1 파일의 JSON 읽기 · 저장 함수를 불러온다

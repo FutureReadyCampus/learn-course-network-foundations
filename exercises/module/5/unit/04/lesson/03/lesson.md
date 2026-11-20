@@ -90,6 +90,7 @@ false_positive.py   list_changes           : 바뀐 기록이면 (1번) 추가�
 **`false_positive.py`** — 오탐 처리 함수 모음입니다. 도전 4-5 도 가져와 사용(import)합니다. Unit 3 파일 `rollback.py` 와 그 파일이 불러 쓰는 Unit 2 · 3 파일이 같은 폴더에 있어야 합니다(「시작하기」 레슨에서 확인). 직접 쓰는 곳은 1 ~ 7번입니다.
 
 - 3번과 4번은 `if` 한 줄만 씁니다. 그 아래 미리 채운 `remaining.append(target)` 줄이 `if` 안쪽입니다.
+- 6번의 `return` 은 5번 `if` 안쪽이라 한 단계 더 들여 씁니다. `for` 안에서 `return` 하면 그 자리에서 함수가 끝나므로, IP 차단 기록을 하나 찾으면 바로 제안을 돌려줍니다. IP 차단 기록이 하나도 없으면 `for` 를 다 돈 뒤 아래 미리 채운 줄로 내려가, 첫 번째 기록(`changes[0]`)으로 계정 예외를 제안합니다.
 
 ```python
 from rollback import find_incident_records, rollback_incident                        # Unit 3 실습 3-1 의 되돌리기 함수를 불러온다
@@ -164,7 +165,7 @@ def handle_false_positive(report, log, state, now):                             
     return result                                                                    # 처리 결과를 리턴한다 — 미리 채운 줄
 ```
 
-**`exercise4-2_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+**`exercise4-2_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 두 번째 줄은 함수뿐 아니라 파일 맨 위에 적은 변수 `RECOVERY_LIMIT` 도 같은 `import` 로 불러옵니다.
 
 ```python
 from incident import load_json, save_json                                                   # Unit 1 파일의 JSON 읽기 · 쓰기 함수를 불러온다

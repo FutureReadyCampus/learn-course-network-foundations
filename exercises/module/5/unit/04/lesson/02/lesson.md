@@ -94,6 +94,7 @@ approval_gate.py   is_allowlisted  : 대상이 허용 목록에 있는지 리턴
 
 - 3번 아래에는 `if` 한 줄을 씁니다. 그 아래 미리 채운 `reasons.append(…)` 줄은 4번과 함께 `if` 안쪽입니다.
 - 5번과 7번도 `if` 한 줄만 씁니다. 그 아래 미리 채운 `return` 줄이 `if` 안쪽입니다.
+- 미리 채운 줄의 `str(score)` 는 숫자를 문자열(글자로 된 값)로 바꿉니다. 숫자는 `+` 로 문자열과 바로 이어 붙일 수 없어서 먼저 바꿉니다.
 
 ```python
 def is_allowlisted(request, policy):                                        # 조치 요청 한 건과 승인 정책을 받는 함수
@@ -138,7 +139,7 @@ def decide_gate(request, policy):                                           # �
     return "자동", reasons                                                  # 기준보다 낮으면 자동으로 실행한다 — 미리 채운 줄
 ```
 
-**`exercise4-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+**`exercise4-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 단계 3 의 `for decision in counts:` 처럼 딕셔너리를 `for` 로 돌리면 키(여기서는 결정 이름)가 하나씩 나옵니다.
 
 ```python
 from incident import load_json, save_json                           # Unit 1 파일의 JSON 읽기 · 쓰기 함수를 불러온다
