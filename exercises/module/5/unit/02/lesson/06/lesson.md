@@ -13,6 +13,8 @@ source:
 
 ## 이번 의뢰: 티켓 서비스 장애
 
+> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 2-1 · 2-2와 글쓰기를 먼저 마칩니다. 이 도전은 Unit 1 파일과 제공 파일 `audit.py` · `approvals.py`, 도전 2-1 레슨의 `decisions.json` 을 씁니다. 도전 2-1 을 건너뛰었다면 도전 2-1 레슨의 「도전 2-1 · 권한 확인 후 담당자 결정 적용」 페이지에서 `decisions.json` 만 만들고 옵니다. 하지 않아도 Unit 3 을 따라가는 데 문제가 없습니다.
+
 > **오늘 들어온 일**
 >
 > - **상황**: 어젯밤 티켓 서비스가 3분 동안 응답하지 않았습니다. 그 사이 들어온 알림 4건은 계정을 막는 데까지는 됐지만 티켓 생성은 오류로 끝났습니다.
@@ -28,7 +30,7 @@ source:
 |---|---|
 | 잠깐 생긴 오류만 다시 시도한다 (권한이 없다는 오류는 몇 번을 해도 같은 결과다) | 연결 오류(`ConnectionError`)가 날 때만 다시 시도한다 |
 | 최대 횟수를 정한다 (서비스가 계속 멈춰 있어도 끝없이 반복하지 않는다) | 처음 시도를 포함해 `MAX_TRIES` 3번 |
-| 다시 해도 안전해야 한다 (같은 계정을 두 번 잠그면 안 된다) | Unit 1의 `safe_run_action` 이 이미 잠긴 계정은 건너뛴다 |
+| 다시 해도 안전해야 한다 (같은 계정을 두 번 잠그면 안 된다) | Unit 1 제공 파일 `safe_runner.py` 의 `safe_run_action` 이 이미 잠긴 계정은 건너뛴다 |
 | 끝내 실패하면 숨기지 않는다 | 실패를 기록하고 담당자 확인 목록에 올린다 |
 
 - 오늘 수업은 <mark>서비스가 요청을 받기 전에 실패하는 경우만 흉내 냅니다.</mark> 실제로는 서비스가 티켓을 이미 만들었는데 「만들었다」는 응답만 우리 프로그램에 도착하지 않는 일도 있습니다. 프로그램은 실패로 알고 같은 요청을 다시 보내므로 티켓이 두 개 만들어질 수 있습니다. 이를 막으려면 같은 요청인지 알아보는 장치가 따로 필요합니다.
@@ -61,12 +63,12 @@ print("다음 줄도 실행됨")
 retry_runner.py     run_with_retry          : 실행해 보고(1번), 성공하면 시도 횟수를 붙여 리턴한다(2번) / 연결 오류면 오류 문장을 기억한다(3번)
 flow.py             run_playbook_with_retry : 결과가 「실패」로 시작하면 실패 표시를 한다 (4 · 5번)
 failure_report.py   collect_failures        : 기록에서 「실패」로 시작하는 것만 모은다 (6 · 7번)
-실행 파일           challenge2-2_run.py        : 실패 목록을 받고(8번) 출력한다(9번)
-
-하루 흐름(flow.py 의 run_day_flow, 미리 채움) : 알림 하나가 아래 순서로 지나갑니다
-  ① 맥락 붙이기(Unit 1의 실습 1-3) → ② 경로 정하기(Unit 1의 도전 1-1)
-  → ③ 경로에 따라 셋 중 하나를 한다: 오탐 종료 | 승인 대기로 멈추기(도전 2-1) | 재시도하며 실행(Unit 1의 도전 1-2 + 도전 2-2)
+실행 파일           challenge2-2_run.py     : 실패 목록을 받고(8번) 출력한다(9번)
 ```
+
+`flow.py` 의 `run_day_flow`(미리 채움)는 **하루 흐름**입니다. 알림 하나가 맥락 붙이기 → 경로 정하기를 거친 뒤, 경로에 따라 셋 중 하나로 처리됩니다.
+
+<figure class="page-figure"><img src="assets/f01.svg" alt="알림은 맥락 붙이기와 경로 정하기를 거쳐 오탐 종료, 승인 대기, 재시도하며 실행 중 하나로 처리된다"></figure>
 
 ## 도전 2-2 · 최대 3번 재시도하고 실패 목록 만들기
 
@@ -76,18 +78,29 @@ failure_report.py   collect_failures        : 기록에서 「실패」로 시�
 - **만드는 것**: 재시도(`retry_runner.py`), 실패 표시(`flow.py`), 실패 목록(`failure_report.py`), 목록 출력(`challenge2-2_run.py`).
 - **실행하면**: <mark>단계 1: 일시 장애, 단계 2: 서비스 중단, 단계 3: 하루 흐름, 단계 4: 담당자 결정 처리, 단계 5: 하루가 끝난 뒤 연습용 시스템 상태, 단계 6: 담당자 확인이 필요한 건의 목록이 나옵니다.</mark>
 
-**할 일**: 파일 네 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 1 · 2 와 단계 6 을 읽습니다.
+**할 일**: 준비할 파일을 확인하고, 파일 네 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 1 · 2 와 단계 6 을 읽습니다.
+
+**준비** — 이 도전은 앞 파일을 많이 씁니다. `soar_response` 폴더에 아래 파일이 있어야 합니다.
+
+1. Unit 1 파일: `incident.py` · `playbook_runner.py`(실습 1-2), `enrichment.py`(실습 1-3), `routing.py` · `safe_runner.py`(Unit 1 「제공 파일」 레슨), `incident_samples.json` · `users_info.json` · `source_ips.json` · `trusted_ips.json`(Unit 1 시작하기), `config/playbook_registry.json`(실습 1-1)
+2. 이번 Unit 파일: `audit.py` · `approvals.py`(「제공 파일」 레슨 또는 도전 2-1), `decisions.json`(도전 2-1 레슨)
+
+**[터미널]** 아래 명령으로 확인합니다(맥북은 `python3`). <mark>`준비 완료 ['PB-001', 'PB-002', 'PB-003'] 3`</mark> 이 나오면 됩니다. `ModuleNotFoundError` 나 `FileNotFoundError` 가 나오면 오류 끝에 적힌 이름의 파일을 위 목록의 레슨에서 만듭니다.
+
+```bash
+python -c "import json; from safe_runner import safe_run_action; from enrichment import enrich_incident; from routing import decide_route, apply_route; from approvals import apply_decision; print('준비 완료', [p['id'] for p in json.load(open('config/playbook_registry.json', encoding='utf-8'))], len(json.load(open('decisions.json', encoding='utf-8'))))"
+```
 
 **`retry_runner.py`** — 실패를 흉내 내고 다시 시도합니다. 직접 쓰는 곳은 1 ~ 3번입니다.
 
 ```python
-from safe_runner import safe_run_action                                            # Unit 1의 도전 1-2에서 만든 안전한 액션 실행 함수를 불러온다
+from safe_runner import safe_run_action                                            # Unit 1 제공 파일의 안전한 액션 실행 함수를 불러온다
 
 MAX_TRIES = 3                                                                      # 한 액션을 시도하는 최대 횟수
 
 
 def flaky_run_action(action, incident, state, fail_plan):                          # 액션 · 인시던트 · 연습용 시스템 · 실패 계획을 받는 함수
-    """실패 계획에 이 액션이 앞으로 실패할 횟수가 남아 있으면 연결 오류를 일으키고, 없으면 Unit 1의 safe_run_action 으로 실행한다.
+    """실패 계획에 이 액션이 앞으로 실패할 횟수가 남아 있으면 연결 오류를 일으키고, 없으면 safe_run_action(Unit 1 제공 파일)으로 실행한다.
     외부 서비스가 잠깐 응답하지 않는 상황을 흉내 낼 때 쓴다.
     """
     key = incident["id"] + "|" + action                                            # 실패 계획에서 찾을 이름 (인시던트 번호 | 액션)
@@ -118,10 +131,10 @@ def run_with_retry(action, incident, state, fail_plan, max_tries):              
 
 ```python
 from incident import change_status, match_playbooks                             # Unit 1 파일의 함수를 불러온다
-from enrichment import enrich_incident                                          # Unit 1의 실습 1-3 : 맥락 붙이기
-from routing import decide_route, apply_route                                   # Unit 1의 도전 1-1 : 경로 정하기
-from approvals import hold_for_approval                                         # 도전 2-1 : 승인 대기로 멈추기
-from audit import log_line                                                      # 도전 2-1 : 감사 기록 한 건 만들기
+from enrichment import enrich_incident                                          # Unit 1 실습 1-3 : 맥락 붙이기
+from routing import decide_route, apply_route                                   # Unit 1 제공 파일 : 경로 정하기
+from approvals import hold_for_approval                                         # 제공 파일 : 승인 대기로 멈추기
+from audit import log_line                                                      # 제공 파일 : 감사 기록 한 건 만들기
 from retry_runner import run_with_retry, MAX_TRIES                              # 도전 2-2 : 재시도하며 실행하기
 
 VIP_REVIEW_ACTIONS = ["담당자 알림", "티켓 생성"]                               # VIP 계정 알림을 담당자가 승인하면 실행할 액션
@@ -153,9 +166,9 @@ def run_day_flow(incidents, registry, users_info, source_ips, trusted_ips, state
     pending = []                                                                # 승인 대기 건을 담을 빈 리스트
     route_log = []                                                              # 경로 기록을 담을 빈 리스트
     for incident in incidents:                                                  # 인시던트를 하나씩 꺼낸다
-        enrich_incident(incident, users_info, source_ips, trusted_ips)          # [Unit 1의 실습 1-3] 맥락을 붙인다
-        route, reason = decide_route(incident)                                  # [Unit 1의 도전 1-1] 처리 경로와 이유를 정한다
-        apply_route(incident, route, reason, route_log)                         # [Unit 1의 도전 1-1] 경로를 적용한다 (오탐 종료이면 여기서 닫힌다)
+        enrich_incident(incident, users_info, source_ips, trusted_ips)          # [Unit 1 실습 1-3] 맥락을 붙인다
+        route, reason = decide_route(incident)                                  # [Unit 1 routing.py] 처리 경로와 이유를 정한다
+        apply_route(incident, route, reason, route_log)                         # [Unit 1 routing.py] 경로를 적용한다 (오탐 종료이면 여기서 닫힌다)
         result_text = "맞는 플레이북 없음"                                      # 처음에는 없다고 적어 둔다
         if route == "오탐 종료":                                                # 오탐으로 닫았으면
             result_text = "오탐 종료"                                           # 오탐 종료라고 적는다
@@ -192,7 +205,7 @@ def collect_failures(action_log):  # 감사 기록 리스트를 받는 함수
 
 ```python
 from incident import load_json, INCIDENTS_PATH                                              # Unit 1 파일의 함수를 불러온다
-from approvals import apply_decision                                                        # 도전 2-1에 만든 결정 적용 함수를 불러온다
+from approvals import apply_decision                                                        # 제공 파일의 결정 적용 함수를 불러온다
 from retry_runner import run_with_retry, MAX_TRIES                                          # 방금 만든 재시도 함수를 불러온다
 from flow import run_day_flow                                                               # 하루 흐름 함수를 불러온다
 from failure_report import collect_failures                                                 # 실패한 기록을 모으는 함수를 불러온다
@@ -257,17 +270,17 @@ for item in pending:                                                            
 
 **순서**
 
-1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `retry_runner.py` · `flow.py` · `failure_report.py` · `challenge2-2_run.py` 네 파일을 하나씩 만들고(파일 이름 그대로), 코드를 붙여 넣어 저장합니다. <mark>도전 2-1의 `audit.py` · `approvals.py` 가 완성돼 있어야(`flow.py` 가 이 두 파일을 불러오기 때문)</mark> 합니다.
+1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `retry_runner.py` · `flow.py` · `failure_report.py` · `challenge2-2_run.py` 네 파일을 하나씩 만들고(파일 이름 그대로), 코드를 붙여 넣어 저장합니다. <mark>`audit.py` · `approvals.py` 가 완성돼 있어야(`flow.py` 가 이 두 파일을 불러오기 때문)</mark> 합니다.
 2. **[VS Code]** `retry_runner.py` 1 ~ 3번, `flow.py` 4 · 5번, `failure_report.py` 6 · 7번, `challenge2-2_run.py` 8 · 9번을 씁니다. 막히면 아래 「도전 2-2 정리」를 봅니다.
 3. **[터미널]** 실행합니다(맥북은 `python3`).
    ```bash
    python challenge2-2_run.py
    ```
-4. 출력은 여섯 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 2줄, 단계 2 도 2줄, 단계 3 은 5줄, 단계 4 는 3줄, 단계 5 는 3줄, 단계 6 은 2줄입니다.
+4. 출력은 여섯 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 2줄, 단계 2 도 2줄, 단계 3 은 5줄, 단계 4 는 3줄, 단계 5 는 3줄, 단계 6 은 2줄입니다. 정답의 출력은 Unit 1 실습 1-1 에서 PB-003 의 승인 값을 `담당자 승인 필요` 로 쓴 경우입니다. `자동` 으로 썼다면 INC-005 가 승인 대기 대신 바로 실행되어 단계 3 ~ 6 이 조금 다릅니다.
 5. **[보고서]** `report_u2.md` 의 `## 도전 2-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 단계 3 에서 `일부 실패` · `승인 대기` · `오탐 종료`(오탐: 위험하지 않은데 위험하다고 잘못 알린 경우) 인 알림의 번호를 각각 적어 주세요.
    - (나) [핵심 질문] 단계 1 과 2 는 같은 `run_with_retry` 인데 결과가 다릅니다. 두 단계의 `fail_plan` 값을 근거로 이유를 적어 주세요. 그리고 최대 횟수가 없으면 서비스가 계속 멈춰 있을 때 어떤 문제가 생기는지도 적어 주세요.
-   - (다) [핵심 질문] 단계 3 에서 INC-001 은 계정은 잠겼는데 상태가 `조치됨` 이 아닙니다. 그 이유를 적어 주세요. 또 단계 6 의 출력이 담당자에게 무엇을 알려 주는지 적어 주세요. 마지막으로, 같은 `state` 로 다시 처리해도 `dami` 가 두 번 잠기지 않는 이유를 Unit 1의 도전 1-2에서 만든 장치와 연결해 적어 주세요.
+   - (다) [핵심 질문] 단계 3 에서 INC-001 은 계정은 잠겼는데 상태가 `조치됨` 이 아닙니다. 그 이유를 적어 주세요. 또 단계 6 의 출력이 담당자에게 무엇을 알려 주는지 적어 주세요. 마지막으로, 같은 `state` 로 다시 처리해도 `dami` 가 두 번 잠기지 않는 이유를 Unit 1 도전 1-2 의 안전장치(`safe_runner.py`)와 연결해 적어 주세요.
 
 ## 도전 2-2 정리
 

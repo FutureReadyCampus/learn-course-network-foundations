@@ -1,21 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
-<title>잠금 다음 세션 종료 순서여야 다시 로그인할 틈 없이 접속이 끊깁니다</title>
-<desc>세 가지 순서를 비교합니다. 잠금 다음 세션 종료는 접속을 끊고, 세션 종료 다음 잠금은 그 사이 재로그인 틈이 생기며, 잠금만 하면 활성 세션으로 계속 접속합니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 384" role="img">
+<title>ip_actions.py 는 허용 목록과 공유 IP 를 먼저 거르고, 차단에는 끝나는 시각을 둡니다</title>
+<desc>허용 목록에 있거나 쓰는 계정이 2개 이상인 IP 는 차단하지 않습니다. 나머지는 block_ip 로 차단하고 끝나는 시각을 clock + ttl 로 적으며, expire_blocks 가 끝나는 시각이 지난 차단을 풉니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">3.1 조치 순서에 따른 결과</text>
-<rect x="24" y="64" width="210" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="129.0" y="90.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="129.0" dy="0" font-weight="700">잠금 → 세션 종료</tspan><tspan x="129.0" dy="21.0">(오늘 구현)</tspan></text>
-<rect x="254" y="64" width="442" height="64" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="475.0" y="101.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="475.0" dy="0">새 로그인이 막힌 뒤 세션이 끊겨 더는 접속 불가</tspan></text>
-<rect x="24" y="144" width="210" height="64" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="129.0" y="181.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="129.0" dy="0" font-weight="700">세션 종료 → 잠금</tspan></text>
-<rect x="254" y="144" width="442" height="64" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="475.0" y="181.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="475.0" dy="0">두 조치 사이에 재로그인해 새 세션이 생길 수 있음</tspan></text>
-<rect x="24" y="224" width="210" height="64" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="129.0" y="261.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="129.0" dy="0" font-weight="700">잠금만</tspan></text>
-<rect x="254" y="224" width="442" height="64" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="475.0" y="261.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="475.0" dy="0">열린 세션으로 계속 접속할 수 있음</tspan></text>
-<text x="24" y="316" font-size="15" text-anchor="start" fill="#666660">세션 종료는 잠금이 사후 검증으로 확인된 뒤에만 실행합니다.</text>
+<text x="24" y="34" font-size="19" fill="#292929" font-weight="700">ip_actions.py: 막을 이유부터 보고, 차단에는 끝나는 시각</text>
+<rect x="24" y="58" width="260" height="58" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="154.0" y="81.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="154.0" dy="0" font-weight="700">허용 목록에 있나?</tspan><tspan x="154.0" dy="21">config/allowlist_ips.json</tspan></text>
+<rect x="420" y="58" width="276" height="58" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="558.0" y="81.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="558.0" dy="0" font-weight="700">차단하지 않음</tspan><tspan x="558.0" dy="21">허용 목록 IP 라서 차단하지 않음</tspan></text>
+<line x1="284" y1="87" x2="418" y2="87" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="350" y="80" font-size="14" text-anchor="middle" fill="#666660">예</text>
+<rect x="24" y="140" width="260" height="58" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="154.0" y="163.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="154.0" dy="0" font-weight="700">공유 IP 인가?</tspan><tspan x="154.0" dy="21">쓰는 계정이 2개 이상</tspan></text>
+<rect x="420" y="140" width="276" height="58" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="558.0" y="163.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="558.0" dy="0" font-weight="700">차단하지 않음</tspan><tspan x="558.0" dy="21">담당자 승인 필요</tspan></text>
+<line x1="284" y1="169" x2="418" y2="169" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="350" y="162" font-size="14" text-anchor="middle" fill="#666660">예</text>
+<line x1="154" y1="116" x2="154" y2="138" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="196" y="132" font-size="14" text-anchor="middle" fill="#666660">아니오</text>
+<rect x="24" y="222" width="260" height="58" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="154.0" y="245.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="154.0" dy="0" font-weight="700">block_ip</tspan><tspan x="154.0" dy="21">끝나는 시각 = clock + ttl</tspan></text>
+<rect x="420" y="222" width="276" height="58" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="558.0" y="245.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="558.0" dy="0" font-weight="700">198.51.100.90 차단</tspan><tspan x="558.0" dy="21">0 + 120 = 120분에 끝남</tspan></text>
+<line x1="154" y1="198" x2="154" y2="220" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="196" y="214" font-size="14" text-anchor="middle" fill="#666660">아니오</text>
+<line x1="284" y1="251" x2="418" y2="251" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="24" y="304" width="260" height="58" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="154.0" y="327.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="154.0" dy="0" font-weight="700">expire_blocks</tspan><tspan x="154.0" dy="21">끝나는 시각 &lt;= clock 이면</tspan></text>
+<rect x="420" y="304" width="276" height="58" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="558.0" y="327.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="558.0" dy="0" font-weight="700">unblock_ip</tspan><tspan x="558.0" dy="21">차단을 풀고 해제 기록</tspan></text>
+<line x1="154" y1="280" x2="154" y2="302" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<line x1="284" y1="333" x2="418" y2="333" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
 </g>
 </svg>
