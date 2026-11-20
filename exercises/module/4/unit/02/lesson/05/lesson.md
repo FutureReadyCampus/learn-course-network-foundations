@@ -44,6 +44,7 @@ date,failed_logins
    ```bash
    python -c "print(len(open('baseline_logins.csv', encoding='utf-8').read().splitlines()))"
    ```
+   - 파일 전체를 읽어(`read()`) 줄마다 나눈(`splitlines()`) 뒤, 그 줄이 몇 개인지 셉니다(`len`).
    - <mark>`8`(헤더 줄 포함)이 나와야</mark> 합니다. 다르면 줄이 빠졌거나 빈 줄이 들어간 것이니 다시 붙여 넣습니다.
 
 ## 왜 평소 기준이 먼저 필요한가

@@ -44,7 +44,7 @@ source:
 | 17 | 09:12:27 | `GET /admin/users` | 실패 | 아니오 | 예 | 아니오 |
 
 - `GET /login` 은 로그인 화면을 보여 달라는 요청이고, `POST /login` 은 아이디와 비밀번호를 보내는 요청입니다. <mark>오늘은 `POST /login` 이 실패한 이벤트만 셉니다.</mark>
-- SaaS 의 `login` 실패 1건(jiwoo, 02:14)은 SaaS 로그를 따로 보는 Unit 3 도전 3-2(SaaS 이상 사용)에서 다루므로 오늘은 세지 않습니다. <mark>그래서 로그인 실패 이벤트는 5개입니다.</mark>
+- SaaS 의 `login` 실패 1건(jiwoo, 02:14)은 SaaS 로그를 따로 보는 Unit 3 도전 3-2(SaaS 이상 사용)에서 다루므로 오늘은 세지 않습니다. 샘플 전체에서 `POST /login` 이 실패한 이벤트는 위 표의 5개뿐입니다. <mark>그래서 로그인 실패 이벤트는 5개입니다.</mark>
 
 **문법 상자 — `=` 와 `==`**
 
@@ -149,7 +149,7 @@ print(login_failures)             # 새 표를 출력한다
 
 **<mark>`ip_fail_counts >= 기준`</mark> 은 값이 기준 이상이면 `True`, 아니면 `False` 로 만들고, 그 열을 `ip_fail_counts[…]` 에 넣으면 `True` 인 것만 남습니다**
 
-위에서 배운 `==` 처럼 `>=` 도 값을 하나씩 비교해 `True` · `False` 를 만듭니다. 아래 `ip_fail_counts` 는 주소별 실패 횟수입니다(왼쪽 인덱스가 주소, 오른쪽이 횟수). `ip_fail_counts >= 3` 은 주소마다 「3번 이상인가」를 `True` · `False` 로 만듭니다.
+위에서 배운 `==` 처럼 `>=` 도 값을 하나씩 비교해 `True` · `False` 를 만듭니다. 아래 `ip_fail_counts` 는 주소별 실패 횟수입니다. `groupby` 로 센 결과에서는 행 번호 자리(인덱스)에 0, 1, 2 대신 그룹 이름이 옵니다. 그래서 왼쪽 인덱스가 주소, 오른쪽이 횟수입니다. `ip_fail_counts >= 3` 은 주소마다 「3번 이상인가」를 `True` · `False` 로 만듭니다.
 
 ```python
 import pandas as pd                                                                                           # 판다스를 pd 라는 짧은 이름으로 불러온다
