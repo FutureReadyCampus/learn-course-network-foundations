@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>report.py: 티켓 표를 집계하고 조치 기록과 대조해 리포트 줄 만들기</title>
+<desc>티켓 리스트를 make_ticket_table 로 판다스 표로 바꾸고, 규칙별 개수 · 등급별 평균 확인 시간 · 늦은 티켓을 셉니다. find_missing_incidents 로 조치 기록과 대조한 뒤 make_report_lines 가 리포트 줄 리스트를 만듭니다. 파일 쓰기는 도전 4-3 실행 파일이 합니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">report.py 가 하는 일</tspan></text>
+<rect x="20" y="56" width="150" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="95.0" y="78.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="95.0" font-weight="bold">티켓 리스트</tspan><tspan x="95.0" dy="21">tickets</tspan></text>
+<line x1="172" y1="84" x2="196" y2="84" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="200" y="56" width="230" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="315.0" y="78.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="315.0" font-weight="bold">make_ticket_table</tspan><tspan x="315.0" dy="21">판다스 표로 바꾸기</tspan></text>
+<rect x="480" y="56" width="220" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="590.0" y="78.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="590.0" font-weight="bold">조치 기록</tspan><tspan x="590.0" dy="21">actions</tspan></text>
+<rect x="200" y="136" width="230" height="38" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="315.0" y="160.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="315.0">count_by_rule</tspan></text>
+<rect x="200" y="186" width="230" height="38" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="315.0" y="210.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="315.0">mean_ack_by_grade</tspan></text>
+<rect x="200" y="236" width="230" height="38" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="315.0" y="260.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="315.0">find_late_tickets</tspan></text>
+<line x1="315" y1="114" x2="315" y2="132" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="590" y1="114" x2="590" y2="156" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="460" y="160" width="240" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="580.0" y="186.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="580.0" font-weight="bold">find_missing_incidents</tspan><tspan x="580.0" dy="21">티켓과 조치 기록 대조</tspan></text>
+<line x1="315" y1="276" x2="315" y2="306" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="580" y1="226" x2="580" y2="306" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="200" y="310" width="500" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="450.0" y="337.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="450.0" font-weight="bold">make_report_lines → 리포트 줄 리스트</tspan></text>
+<text x="20" y="384" font-size="14" text-anchor="start" fill="#666660"><tspan x="20">파일로 쓰는 일은 도전 4-3 의 실행 파일이 합니다.</tspan><tspan x="20" dy="22">도전 4-5 는 find_missing_incidents 를 불러 씁니다.</tspan></text>
+</g>
+</svg>

@@ -15,7 +15,7 @@ source:
 
 > **오늘 들어온 일**
 >
-> - **상황**: <mark style="background:#e0d4ff">Unit 1에서는 플레이북</mark>(playbook, 플레이북: 사건 종류별로 미리 정한 대응 순서)마다 승인 값을 하나(`자동` 또는 `담당자 승인 필요`)씩 정했습니다. <mark style="background:#e0d4ff">Unit 1에서는</mark> 「VIP(브이아이피: 막히면 업무에 큰 영향을 주는 중요한 계정) 이면 승인 필요」를 `decide_route` 함수 안의 조건문으로 작성했습니다. 이 방식은 승인 여부를 정하는 규칙이 코드 안에 있어서, 규칙을 바꾸려면 코드를 고쳐야 합니다. Unit 4에서는 자동 대응이 실행하려는 조치 요청 8건이 들어왔습니다.
+> - **상황**: <mark style="background:#e0d4ff">Unit 1 실습 1-1 에서는 플레이북</mark>(playbook, 플레이북: 사건 종류별로 미리 정한 대응 순서)마다 승인 값을 하나(`자동` 또는 `담당자 승인 필요`)씩 정했습니다. <mark style="background:#e0d4ff">Unit 1 「제공 파일」 레슨의 `routing.py`</mark> 에는 「VIP(브이아이피: 막히면 업무에 큰 영향을 주는 중요한 계정) 이면 승인 필요」가 `decide_route` 함수 안의 조건문으로 들어 있습니다. 이 방식은 승인 여부를 정하는 규칙이 코드 안에 있어서, 규칙을 바꾸려면 코드를 고쳐야 합니다. 오늘은 자동 대응이 실행하려는 조치 요청 8건이 들어왔습니다.
 > - **문제**: 같은 계정 잠금이라도 위험이 다릅니다. 퇴사자 한 명(`REQ-1` `dami`)을 잠그는 것과 계정 6개를 한꺼번에 잠그는 것(`REQ-6`)은 잘못 실행했을 때 업무에 미치는 피해의 범위(영향 범위)가 다릅니다. <mark style="background:#ffc4d6">그런데 승인 값은 플레이북 하나에 하나뿐이어서 요청마다 위험에 맞게 다르게 정할 수 없습니다.</mark> 또 「공유 IP(여러 계정이 함께 쓰는 IP)도 승인을 받자」처럼 기준을 바꾸려면 코드를 수정해야 합니다.
 > - **부탁**: 승인 기준을 설정 파일 `config/approval_policy.json` 에 따로 두어 주세요. 그리고 요청마다 위험 점수를 더해 「자동 · 승인 필요 · 차단 금지」 가운데 하나로 나눠 주세요. 허용 목록(allowlist, 얼라우리스트: 차단 대상에서 제외하기로 미리 정한 IP 의 목록) 대상은 <mark style="background:#ffc4d6">점수와 상관없이 차단 금지</mark>입니다.
 > - **바뀌는 점**: 8건이 <mark style="background:#bde3ff">자동 3건 · 승인 필요 3건 · 차단 금지 2건</mark>으로 분류되고, 결정마다 점수를 합산한 근거가 함께 출력됩니다. 상황과 숫자는 설명을 위한 예시입니다.
@@ -32,14 +32,14 @@ source:
 
 - 허용 목록(allowlist)은 차단 대상에서 제외하기로 미리 정해 둔 IP 의 목록입니다. 오늘은 협력사 사무실 IP `203.0.113.80` 과 점검 서버 `192.0.2.10` 이 있습니다.
 - <mark>허용 목록을 점수보다 먼저 판단합니다.</mark> 차단하면 업무가 중단되는 IP 는 위험 점수와 무관하게 차단하지 않는 것이 원칙이기 때문입니다.
-- 공유 IP(함께 쓰는 IP, shared IP)는 그 IP 를 쓰는 계정이 <mark style="background:#ffdcb0">2개 이상(`shared_ip_limit`)</mark>인 경우입니다. <mark style="background:#e0d4ff">Unit 2에서 「여러 계정이 함께 쓰는 IP 라서 담당자 승인 필요」로 처리하던 규칙</mark>을 점수로 바꾼 것입니다.
-- 대상 수는 요청 하나가 한꺼번에 조치하는 대상(계정 또는 IP)의 수이고, 잘못 실행했을 때 영향이 미치는 범위(영향 범위)를 나타냅니다. <mark style="background:#e0d4ff">Unit 1의 도전 1-2에서는 한 번에 3개를 넘게 잠그지 못하도록 차단했습니다.</mark> 오늘은 차단하는 대신, <mark style="background:#ffdcb0">3개를 넘으면 위험 점수 2점을 더해</mark> 사람이 승인하게 바꿨습니다.
+- 공유 IP(함께 쓰는 IP, shared IP)는 그 IP 를 쓰는 계정이 <mark style="background:#ffdcb0">2개 이상(`shared_ip_limit`)</mark>인 경우입니다. <mark style="background:#e0d4ff">Unit 2 파일 `ip_actions.py` 가 「여러 계정이 함께 쓰는 IP 라서 담당자 승인 필요」로 처리하던 규칙</mark>을 점수로 바꾼 것입니다.
+- 대상 수는 요청 하나가 한꺼번에 조치하는 대상(계정 또는 IP)의 수이고, 잘못 실행했을 때 영향이 미치는 범위(영향 범위)를 나타냅니다. <mark style="background:#e0d4ff">Unit 1 파일 `safe_runner.py`(도전 1-2 · 제공 파일)는 한 번에 3개를 넘게 잠그지 못하도록 막았습니다.</mark> 오늘은 차단하는 대신, <mark style="background:#ffdcb0">3개를 넘으면 위험 점수 2점을 더해</mark> 사람이 승인하게 바꿨습니다.
 - 업계에서 자동 조치와 승인 필요 조치를 나눌 때는 <mark>가역성 · 영향 범위 · 확실성</mark> 세 가지를 봅니다.
   - 가역성(reversibility)은 조치를 되돌릴 수 있는 정도입니다.
   - 영향 범위는 조치가 미치는 계정 · IP 의 범위입니다.
   - 확실성은 탐지가 진짜 공격일 가능성이 얼마나 확실한지입니다.
 
-  오늘의 위험 점수는 영향 범위를 VIP 계정 · 공유 IP · 대상 수로 나타냅니다. 확실성은 허용 목록 확인으로 나타내서, 정상임이 확실한 대상은 차단 금지로 둡니다. 탐지 등급은 사건의 심각도로 점수에 더합니다. 가역성은 점수에 넣지 않았습니다. 계정 잠금과 IP 차단은 Unit 3에서 되돌리기(롤백)를 만들었습니다. 되돌릴 수 없는 세션 종료는 Unit 4의 도전 4-4 리스크 평가에서 다룹니다.
+  오늘의 위험 점수는 영향 범위를 VIP 계정 · 공유 IP · 대상 수로 나타냅니다. 확실성은 허용 목록 확인으로 나타내서, 정상임이 확실한 대상은 차단 금지로 둡니다. 탐지 등급은 사건의 심각도로 점수에 더합니다. 가역성은 점수에 넣지 않았습니다. 계정 잠금과 IP 차단은 Unit 3 실습 3-1 에서 되돌리기(롤백)를 만들었습니다. 되돌릴 수 없는 세션 종료는 이 Unit 의 도전 4-4(선택) 리스크 평가에서 다룹니다.
 - 점수와 기준은 모두 `config/approval_policy.json` 에 있습니다. 코드에는 점수를 더하는 계산만 쓰고, <mark>더할 점수 값은 설정 파일에 따로 둡니다</mark>. 그래서 정책을 바꿀 때 코드를 수정하지 않고 설정 파일만 바꾸면 됩니다.
 
 함수 세 개와 실행 파일 가운데 직접 쓰는 곳은 **아홉 군데**입니다.
@@ -63,8 +63,7 @@ approval_gate.py   is_allowlisted  : 대상이 허용 목록에 있는지 리턴
 
 **`config/approval_policy.json`** — 승인 게이트의 기준입니다. 점수 값은 위 2.1 표와 같습니다. 코드는 이 파일의 키 이름으로 읽습니다.
 
-```
-{
+<pre class="copyable"><code>{
   "allowlist_ips": ["203.0.113.80", "192.0.2.10"],
   "vip_accounts": ["gaeun"],
   "grade_points": {"high": 2, "mid": 1, "low": 0},
@@ -75,12 +74,11 @@ approval_gate.py   is_allowlisted  : 대상이 허용 목록에 있는지 리턴
   "many_targets_limit": 3,
   "approval_score": 3
 }
-```
+</code></pre>
 
-**`gate_requests.json`** — Unit 4에서 자동 대응이 실행하려는 조치 요청 8건입니다. `users_on_ip` 는 그 IP 를 쓰는 계정 수(계정 조치면 0), `target_count` 는 요청 하나가 한꺼번에 조치하는 대상 수입니다.
+**`gate_requests.json`** — 오늘 자동 대응이 실행하려는 조치 요청 8건입니다. `users_on_ip` 는 그 IP 를 쓰는 계정 수(계정 조치면 0), `target_count` 는 요청 하나가 한꺼번에 조치하는 대상 수입니다.
 
-```
-[
+<pre class="copyable"><code>[
   {"id": "REQ-1", "incident": "INC-311", "action": "계정 잠금", "target": "dami", "grade": "high", "users_on_ip": 0, "target_count": 1},
   {"id": "REQ-2", "incident": "INC-312", "action": "계정 잠금", "target": "gaeun", "grade": "mid", "users_on_ip": 0, "target_count": 1},
   {"id": "REQ-3", "incident": "INC-313", "action": "IP 차단", "target": "203.0.113.80", "grade": "high", "users_on_ip": 4, "target_count": 1},
@@ -90,9 +88,9 @@ approval_gate.py   is_allowlisted  : 대상이 허용 목록에 있는지 리턴
   {"id": "REQ-7", "incident": "INC-317", "action": "세션 종료", "target": "hana", "grade": "mid", "users_on_ip": 0, "target_count": 1},
   {"id": "REQ-8", "incident": "INC-318", "action": "IP 차단", "target": "192.0.2.10", "grade": "low", "users_on_ip": 1, "target_count": 1}
 ]
-```
+</code></pre>
 
-**`approval_gate.py`** — 승인 게이트 함수 모음입니다. 도전 4-5도 가져와 사용(import)합니다. 직접 쓰는 곳은 1 ~ 7번입니다.
+**`approval_gate.py`** — 승인 게이트 함수 모음입니다. Unit 5 와 도전 4-5 도 가져와 사용(import)합니다. 직접 쓰는 곳은 1 ~ 7번입니다.
 
 - 3번 아래에는 `if` 한 줄을 씁니다. 그 아래 미리 채운 `reasons.append(…)` 줄은 4번과 함께 `if` 안쪽입니다.
 - 5번과 7번도 `if` 한 줄만 씁니다. 그 아래 미리 채운 `return` 줄이 `if` 안쪽입니다.

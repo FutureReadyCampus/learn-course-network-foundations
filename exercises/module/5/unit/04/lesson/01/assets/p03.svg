@@ -1,32 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img">
-<title>Unit 1 · 4 · 5 파일이 서로 가져와 쓰는 순서</title>
-<desc>rollback.py는 undo_actions.py와 containment_store.py를, undo_actions.py는 계정 · IP 조치 파일을 가져와 씁니다. 맨 아래는 Unit 1의 incident.py입니다. 도전 4-3 · 8-2는 incident.py만, 실습 4-2은 여섯 개 모두 필요합니다.</desc>
-<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p03r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p03g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p03b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
+<title>이전 파일 여섯 개가 서로 불러 쓰는 순서</title>
+<desc>rollback.py 는 undo_actions.py 와 containment_store.py 를, undo_actions.py 는 account_actions.py 와 ip_actions.py 를 불러 씁니다. 두 조치 파일은 containment_store.py 를, containment_store.py 는 incident.py 를 불러 씁니다. 없는 파일만 코드 상자로 만듭니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">이전 파일이 없을 때: 필요한 여섯 파일</tspan></text>
-<text x="700" y="32" font-size="14" text-anchor="end" fill="#666660"><tspan x="700">화살표 = 가져와 사용(import)</tspan></text>
-<rect x="260" y="52" width="220" height="46" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="370.0" y="79.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="370.0">rollback.py · Unit 3</tspan></text>
-<rect x="260" y="126" width="220" height="46" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="370.0" y="153.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="370.0">undo_actions.py · Unit 3</tspan></text>
-<rect x="110" y="200" width="220" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="220.0" y="219.1" font-size="14" text-anchor="middle" fill="#292929"><tspan x="220.0">account_actions.py</tspan><tspan x="220.0" dy="16.8">Unit 2</tspan></text>
-<rect x="410" y="200" width="220" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="520.0" y="227.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="520.0">ip_actions.py · Unit 2</tspan></text>
-<rect x="260" y="274" width="220" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="370.0" y="293.1" font-size="14" text-anchor="middle" fill="#292929"><tspan x="370.0">containment_store.py</tspan><tspan x="370.0" dy="16.8">Unit 2</tspan></text>
-<rect x="260" y="348" width="220" height="46" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="370.0" y="375.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="370.0">incident.py · Unit 1</tspan></text>
-<line x1="370" y1="100" x2="370" y2="124" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<line x1="330" y1="174" x2="260" y2="198" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<line x1="410" y1="174" x2="480" y2="198" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<line x1="260" y1="248" x2="330" y2="272" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<line x1="480" y1="248" x2="410" y2="272" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<line x1="370" y1="322" x2="370" y2="346" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<path d="M482 75 H675 V297 H484" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<rect x="20" y="52" width="220" height="120" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="130.0" y="85.3" font-size="15" text-anchor="middle" fill="#292929"><tspan x="130.0" font-weight="bold">도전 4-3 · 8-2</tspan><tspan x="130.0" dy="21.0">incident.py 만</tspan><tspan x="130.0" dy="21.0" font-weight="bold">실습 4-2</tspan><tspan x="130.0" dy="21.0">여섯 개 모두</tspan></text>
-<rect x="20" y="338" width="220" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="130.0" y="364.7" font-size="14" text-anchor="middle" fill="#292929"><tspan x="130.0">이미 있는 파일은</tspan><tspan x="130.0" dy="19.6">붙여 넣지 않고 건너뜀</tspan></text>
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">이전 파일이 없을 때: 없는 파일만 만들기</tspan></text>
+<rect x="130" y="60" width="230" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="245.0" y="79.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="245.0" font-weight="bold">rollback.py</tspan><tspan x="245.0" dy="20">Unit 3 실습 3-1</tspan></text>
+<rect x="130" y="138" width="230" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="245.0" y="157.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="245.0" font-weight="bold">undo_actions.py</tspan><tspan x="245.0" dy="20">Unit 3 실습 3-1</tspan></text>
+<rect x="10" y="216" width="230" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="125.0" y="235.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="125.0" font-weight="bold">account_actions.py</tspan><tspan x="125.0" dy="20">Unit 2 실습 2-1</tspan></text>
+<rect x="250" y="216" width="230" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="365.0" y="235.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="365.0" font-weight="bold">ip_actions.py</tspan><tspan x="365.0" dy="20">Unit 2 「제공 파일」</tspan></text>
+<rect x="130" y="294" width="230" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="245.0" y="313.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="245.0" font-weight="bold">containment_store.py</tspan><tspan x="245.0" dy="20">Unit 2 실습 2-1</tspan></text>
+<rect x="130" y="372" width="230" height="50" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="245.0" y="391.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="245.0" font-weight="bold">incident.py</tspan><tspan x="245.0" dy="20">Unit 1 · load_json · save_json</tspan></text>
+<line x1="245" y1="112" x2="245" y2="136" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="215" y1="190" x2="140" y2="214" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="275" y1="190" x2="350" y2="214" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="140" y1="268" x2="215" y2="292" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="350" y1="268" x2="275" y2="292" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="245" y1="346" x2="245" y2="370" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<path d="M362 85 H480 V319 H364" fill="none" stroke="#666660" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a-p03)"/>
+<text x="492" y="80" font-size="14" text-anchor="start" fill="#666660"><tspan x="492">아래쪽 화살표</tspan><tspan x="492" dy="20">= 불러 씀(import)</tspan></text>
+<rect x="500" y="140" width="200" height="220" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="516" y="168" font-size="15" text-anchor="start" fill="#292929"><tspan x="516" font-weight="bold">만드는 법</tspan><tspan x="516" dy="30">1. 이미 있으면 건너뜀</tspan><tspan x="516" dy="30">2. New File 로</tspan><tspan x="516" dy="30">   이름 그대로 만들기</tspan><tspan x="516" dy="30">3. 코드 상자 복사</tspan><tspan x="516" dy="30">4. 붙여 넣고 저장</tspan></text>
 </g>
 </svg>

@@ -13,9 +13,11 @@ source:
 
 ## 목표: 초동 대응 리포트
 
+> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 4-1 · 4-2와 글쓰기를 먼저 마칩니다. 이 도전은 판다스(pandas)를 씁니다. 도전 4-1 · 4-2 를 하지 않았어도 이 레슨의 데이터 파일 두 개로 진행합니다.
+
 > **오늘 들어온 일**
 >
-> - **상황**: <mark style="background:#e0d4ff">Unit 4의 도전 4-2 프로그램</mark>은 티켓 7장을 파일로 저장했습니다. 화면에는 근무 중 발생한 사건 · 평균 확인 시간 · 평균 해결 시간 · 응답 기한(SLA)을 넘긴 티켓 수 · 다음 근무자에게 인계할 티켓 목록이 나왔습니다. 이번 Unit에서 팀장이 「Unit 4 근무의 초동 대응 리포트를 고객사에 보낼 수 있게 파일로 만들어 주세요」라고 요청합니다. **초동 대응**(initial response, 이니셜 리스폰스)은 사건이 발생한 직후 처음 한 대응입니다.
+> - **상황**: <mark style="background:#e0d4ff">도전 4-2 의 근무 시뮬레이션</mark>은 티켓 7장을 파일로 저장합니다. 화면에는 근무 중 발생한 사건 · 평균 확인 시간 · 평균 해결 시간 · 응답 기한(SLA)을 넘긴 티켓 수 · 다음 근무자에게 인계할 티켓 목록이 나옵니다. 근무가 끝나자 팀장이 「이번 근무의 초동 대응 리포트를 고객사에 보낼 수 있게 파일로 만들어 주세요」라고 요청합니다. **초동 대응**(initial response, 이니셜 리스폰스)은 사건이 발생한 직후 처음 한 대응입니다.
 > - **문제**: 티켓 파일과 조치 기록 파일이 따로 있어서, 사람이 손으로 옮겨 적으면 누락이 생기기 쉽습니다. 예를 들어 `INC-212`(`yuna` 계정 잠금)는 조치는 실행됐는데 티켓이 없습니다(티켓 추적 누락). <mark style="background:#ffc4d6">티켓만 보고 리포트를 쓰면 이 사건이 누락됩니다.</mark>
 > - **부탁**: 티켓 파일은 판다스 표로 바꿔 집계하고, 조치 기록 파일은 티켓과 대조해 주세요. 그 결과를 리포트 파일 하나로 써 주세요. 리포트에는 여섯 가지가 들어갑니다. 티켓별 상태, 탐지 규칙별 티켓 수, 등급별 평균 확인 시간, 응답 기한(SLA)을 넘겨 확인한 티켓, 티켓이 없는 조치, 높음 등급 티켓의 처리 경위입니다. 평균 확인 시간(MTTA, Mean Time To Acknowledge, 엠티티에이)은 티켓 생성부터 담당자가 처음 확인하기까지 걸린 평균 시간입니다. 처리 경위는 생성 → 확인 → 해결 시각을 시간순으로 이은 기록입니다.
 > - **바뀌는 점**: 실행 한 번으로 `incident_report_20261112.md` <mark style="background:#bde3ff">32줄</mark>이 생성됩니다. 오늘 샘플에서는 응답 기한(SLA)을 넘겨 확인한 티켓 <mark style="background:#bde3ff">2장</mark>(`TCK-3` · `TCK-4`)과 티켓이 없는 조치 <mark style="background:#bde3ff">1건</mark>(`INC-212`)이 리포트에 따로 적힙니다. 상황과 이름은 설명을 위한 예시입니다.
@@ -52,13 +54,13 @@ print(grade_means.round(1).to_dict())
 
 | 코드 | 뜻 |
 |---|---|
-| `groups["ack_minutes"].mean()` | <mark style="background:#e0d4ff">Module 4에서 배운 `그룹["열"].sum()`</mark> 과 같은 모양입니다. 합계 대신 그룹마다 평균을 구하는 그룹별 집계입니다. 그룹은 `table.groupby("grade")` 처럼 grade 값이 같은 행끼리 묶은 것입니다 |
+| `groups["ack_minutes"].mean()` | <mark style="background:#e0d4ff">Module 4 Unit 4 실습 4-1 에서 배운 `그룹["열"].sum()`</mark> 과 같은 모양입니다. 합계 대신 그룹마다 평균을 구하는 그룹별 집계입니다. 그룹은 `table.groupby("grade")` 처럼 grade 값이 같은 행끼리 묶은 것입니다 |
 | `.round(1)` | 소수 첫째 자리까지 반올림합니다 |
 | 위 코드의 출력 | <mark style="background:#bde3ff">`{'high': 10.0, 'mid': 63.5}`</mark> 입니다. mid 는 <mark style="background:#bde3ff">(72 + 55) ÷ 2 = 63.5</mark> 입니다 |
 
 - 4절은 <mark style="background:#ffdcb0">확인 시각(`acked_at`)이 응답 기한 시각(`sla_due`)보다 늦은</mark> 티켓, 즉 SLA 위반 티켓만 집계합니다.
 - 오늘 샘플에서 아직 확인하지 않은 티켓은 `TCK-2` · `TCK-5` 입니다. 근무는 180분에 끝났는데 둘의 응답 기한 시각은 243분 · 270분이라서, <mark style="background:#bde3ff">기한이 아직 지나지 않았으므로 위반으로 집계하지 않습니다</mark>.
-- `table[table["acked_at"] > table["sla_due"]]` 는 <mark style="background:#e0d4ff">Module 4에서 배운</mark> 「조건으로 행 필터링(filtering, 필터링: 조건에 맞는 행만 남기기)하기」와 같은 모양입니다. 여기서 `table` 은 DataFrame(데이터프레임: 행과 열로 이루어진 판다스의 표)입니다. 조건에 숫자 대신 다른 열을 쓴 것만 다릅니다. 바로 아래 문법 상자에서 작은 예로 확인합니다.
+- `table[table["acked_at"] > table["sla_due"]]` 는 <mark style="background:#e0d4ff">Module 4 Unit 2 실습 2-1 에서 배운</mark> 「조건으로 행 필터링(filtering, 필터링: 조건에 맞는 행만 남기기)하기」와 같은 모양입니다. 여기서 `table` 은 DataFrame(데이터프레임: 행과 열로 이루어진 판다스의 표)입니다. 조건에 숫자 대신 다른 열을 쓴 것만 다릅니다. 바로 아래 문법 상자에서 작은 예로 확인합니다.
 
 **판다스 문법 상자 — 두 열로 계산하고 비교하기 `표["열1"] - 표["열2"]` · `표[표["열1"] > 표["열2"]]`**
 
@@ -149,9 +151,54 @@ report.py   make_ticket_table       : 티켓 리스트를 표로 바꾸고 확�
 - **만드는 것**: 표 만들기 · 규칙별 수 · 등급별 평균 · 기한 넘긴 티켓 · 티켓 없는 조치 찾기 · 리포트 줄 만들기(`report.py`), 리포트 파일 쓰기(`challenge4-3_run.py`).
 - **실행하면**: <mark>단계 1: 불러온 수, 단계 2: 규칙별 티켓 수, 단계 3: 등급별 평균 확인 시간, 단계 4: 기한을 넘긴 티켓과 티켓이 없는 조치, 단계 5: 저장한 리포트 파일이 나옵니다.</mark>
 
-**할 일**: 두 파일을 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행한 뒤 리포트 파일을 열어 읽습니다.
+**할 일**: 데이터 파일 두 개와 코드 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행한 뒤 리포트 파일을 열어 읽습니다.
 
-**`report.py`** — 리포트를 만드는 함수 모음입니다. 직접 쓰는 곳은 1 ~ 8번입니다.
+**`unit10_tickets.json`** — 도전 4-2 의 근무 3시간 시뮬레이션이 끝났을 때의 티켓 7장입니다.
+
+- **무엇인가**:
+  - 도전 4-2 가 저장하는 `shift_tickets.json` 에서 리포트에 쓰는 키만 남긴 것입니다. 도전 4-2 를 하지 않았어도 이 파일로 진행합니다.
+  - `incidents` 는 티켓 하나로 병합(merge)된 인시던트(incident, 인시던트: 탐지된 보안 사건 하나)의 번호 리스트입니다.
+  - 시각을 나타내는 키는 네 개입니다.
+    - `created_at`: 티켓 생성 시각입니다.
+    - `sla_due`: 응답 기한 시각입니다. 담당자가 이 시각까지 확인해야 하는 마감 시각입니다. SLA 는 Service Level Agreement(에스엘에이)의 줄임말이고, 담당자가 응답해야 하는 시간을 미리 약속한 서비스 수준 협약입니다.
+    - `acked_at`: 확인 시각입니다. acknowledge 는 담당자가 사건을 처음 확인했다는 뜻입니다.
+    - `resolved_at`: 해결 시각입니다.
+    - 네 값은 모두 근무를 시작한 때를 0분으로 놓고, 그때부터 몇 분이 지났는지를 적은 숫자입니다. <mark style="background:#ffdcb0">아직 확인하지 않았거나 해결하지 않았으면 `-1` 입니다.</mark>
+- **어디에 쓰나**: 도전 4-3 리포트의 재료입니다. 도전 4-5 도 이 파일을 읽습니다.
+
+<pre class="copyable"><code>[
+  {"id": "TCK-1", "incidents": ["INC-201", "INC-205", "INC-209"], "entity": "dami", "rule": "퇴사한 계정", "grade": "high", "status": "해결", "created_at": 0, "sla_due": 15, "acked_at": 10, "resolved_at": 45},
+  {"id": "TCK-2", "incidents": ["INC-202", "INC-206"], "entity": "198.51.100.90", "rule": "경로 스캔", "grade": "low", "status": "열림", "created_at": 3, "sla_due": 243, "acked_at": -1, "resolved_at": -1},
+  {"id": "TCK-3", "incidents": ["INC-203"], "entity": "gaeun", "rule": "규칙은 허용인데 서버가 거절", "grade": "mid", "status": "해결", "created_at": 8, "sla_due": 68, "acked_at": 80, "resolved_at": 120},
+  {"id": "TCK-4", "incidents": ["INC-204"], "entity": "seoyeon", "rule": "대량 다운로드", "grade": "mid", "status": "확인 중", "created_at": 12, "sla_due": 72, "acked_at": 140, "resolved_at": -1},
+  {"id": "TCK-5", "incidents": ["INC-207"], "entity": "203.0.113.250", "rule": "경로 스캔", "grade": "low", "status": "열림", "created_at": 30, "sla_due": 270, "acked_at": -1, "resolved_at": -1},
+  {"id": "TCK-6", "incidents": ["INC-208"], "entity": "hana", "rule": "업무 시간 밖 로그인", "grade": "mid", "status": "해결", "created_at": 35, "sla_due": 95, "acked_at": 90, "resolved_at": 130},
+  {"id": "TCK-7", "incidents": ["INC-210", "INC-211"], "entity": "dami", "rule": "퇴사한 계정", "grade": "high", "status": "확인 중", "created_at": 95, "sla_due": 110, "acked_at": 105, "resolved_at": -1}
+]
+</code></pre>
+
+**`unit10_actions.json`** — 근무 중 자동 대응이 남긴 조치 기록 9건에, 설명을 위해 만든 `INC-212` 1건을 더한 10건입니다.
+
+- **무엇인가**:
+  - <mark style="background:#e0d4ff">Unit 2 실습 2-1 의 조치 기록</mark>(감사 기록, audit log: 조치를 순서대로 남긴 기록)에서 `reason` 키만 뺀 모양입니다. `before` 는 조치 전 상태, `after` 는 조치 후 상태입니다.
+  - `INC-212` 는 근무가 끝나기 직전에 `yuna` 계정을 잠근 기록입니다. 티켓 생성 단계가 실패해서 이 인시던트에는 티켓이 없습니다.
+- **어디에 쓰나**: 도전 4-3 리포트는 티켓과 조치 기록을 대조해 티켓마다 조치 기록 수를 세고, 티켓이 없는 조치(추적 누락)를 찾습니다.
+
+<pre class="copyable"><code>[
+  {"incident": "INC-201", "action": "계정 잠금", "target": "dami", "before": "잠기지 않음", "after": "잠김"},
+  {"incident": "INC-201", "action": "세션 종료", "target": "dami", "before": "세션 2개", "after": "세션 0개"},
+  {"incident": "INC-202", "action": "IP 차단", "target": "198.51.100.90", "before": "차단되지 않음", "after": "차단됨"},
+  {"incident": "INC-205", "action": "계정 잠금", "target": "dami", "before": "잠김", "after": "잠김"},
+  {"incident": "INC-206", "action": "IP 차단", "target": "198.51.100.90", "before": "차단됨", "after": "차단됨"},
+  {"incident": "INC-207", "action": "IP 차단", "target": "203.0.113.250", "before": "차단되지 않음", "after": "차단되지 않음 (확인 실패)"},
+  {"incident": "INC-209", "action": "계정 잠금", "target": "dami", "before": "잠김", "after": "잠김"},
+  {"incident": "INC-210", "action": "계정 잠금", "target": "dami", "before": "잠김", "after": "잠김"},
+  {"incident": "INC-211", "action": "계정 잠금", "target": "dami", "before": "잠김", "after": "잠김"},
+  {"incident": "INC-212", "action": "계정 잠금", "target": "yuna", "before": "잠기지 않음", "after": "잠김"}
+]
+</code></pre>
+
+**`report.py`** — 리포트를 만드는 함수 모음입니다. 도전 4-5 도 가져와 사용(import)합니다. 「제공 파일」 레슨에서 완성본을 만들어 두었다면 그 파일을 아래 골격으로 바꿔 직접 써 봅니다. 직접 쓰는 곳은 1 ~ 8번입니다.
 
 ```python
 import pandas as pd                                                                        # 표를 다루기 위해 판다스를 pd 라는 이름으로 불러온다
@@ -282,8 +329,8 @@ from report import make_ticket_table, count_by_rule, mean_ack_by_grade, find_lat
 
 REPORT_PATH = "incident_report_20261112.md"                                                   # 리포트를 저장할 파일 이름
 
-tickets = load_json("unit10_tickets.json")                                                     # Unit 4 근무의 티켓 파일을 리스트로 읽는다
-actions = load_json("unit10_actions.json")                                                     # Unit 4 근무의 조치 기록 파일을 리스트로 읽는다
+tickets = load_json("unit10_tickets.json")                                                     # 근무가 끝났을 때의 티켓 파일을 리스트로 읽는다
+actions = load_json("unit10_actions.json")                                                     # 근무 중 조치 기록 파일을 리스트로 읽는다
 print("--- 단계 1: 불러온 티켓", len(tickets), "장 · 조치 기록", len(actions), "건")          # 단계 1 시작을 알리는 줄
 
 # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
@@ -316,18 +363,27 @@ print("--- 단계 5: 리포트 파일", REPORT_PATH, "·", len(lines), "줄 저�
 
 **순서**
 
-1. **[VS Code]** 파일 두 개 `report.py` · `challenge4-3_run.py` 를 만듭니다. 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
-2. **[VS Code]** `report.py` 1 ~ 8번, `challenge4-3_run.py` 9번을 씁니다. 막히면 위 문법 상자와 아래 「도전 4-3 정리」를 봅니다.
-3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+1. **[터미널]** 판다스를 설치합니다(맥북은 `python3`). 이미 설치했다면 바로 다음 줄로 갑니다. 두 번째 줄을 쳐서 <mark>`판다스 불러오기 성공` 이 나와야</mark> 합니다.
+   ```bash
+   python -m pip install pandas
+   python -c "import pandas; print('판다스 불러오기 성공')"
+   ```
+   - 터미널 맨 앞에 가상환경 이름(예: `(.venv)`)이 보이는 상태에서 칩니다.
+2. **[VS Code]** 파일 네 개 `unit10_tickets.json` · `unit10_actions.json` · `report.py` · `challenge4-3_run.py` 를 만듭니다. 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`). 데이터 파일은 아래 명령으로 확인합니다. <mark>`7 10` 이 나와야</mark> 합니다.
+   ```bash
+   python -c "import json; print(len(json.load(open('unit10_tickets.json', encoding='utf-8'))), len(json.load(open('unit10_actions.json', encoding='utf-8'))))"
+   ```
+3. **[VS Code]** `report.py` 1 ~ 8번, `challenge4-3_run.py` 9번을 씁니다. 막히면 위 문법 상자와 아래 「도전 4-3 정리」를 봅니다.
+4. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python challenge4-3_run.py
    ```
-4. 출력은 다섯 단계입니다. 제목 줄은 줄 수에 넣지 않습니다.
+5. 출력은 다섯 단계입니다. 제목 줄은 줄 수에 넣지 않습니다.
    - 단계 1 과 단계 5 는 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
    - 단계 2 는 5줄, 단계 3 은 2줄입니다.
    - 단계 4 는 숫자가 제목 줄에 함께 나오고 그 아래 3줄입니다.
-5. **[VS Code]** 왼쪽 목록에서 `incident_report_20261112.md` 를 열고 `Ctrl+Shift+V`(맥북은 `Cmd+Shift+V`)로 모양을 봅니다. <mark>1 ~ 6절이 보이면</mark> 됩니다.
-6. **[보고서]** `report_u4.md` 의 `## 도전 4-3` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
+6. **[VS Code]** 왼쪽 목록에서 `incident_report_20261112.md` 를 열고 `Ctrl+Shift+V`(맥북은 `Cmd+Shift+V`)로 모양을 봅니다. <mark>1 ~ 6절이 보이면</mark> 됩니다.
+7. **[보고서]** `report_u4.md` 의 `## 도전 4-3` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
    - (가) 실행한 출력 전체를 붙여 넣고, 티켓이 가장 많은 규칙 두 개와 리포트 파일의 줄 수를 적어 주세요.
    - (나) [핵심 질문] 단계 3 에 low 등급이 없습니다. `unit10_tickets.json` 의 low 티켓 두 장(`TCK-2` · `TCK-5`)의 `acked_at` 을 근거로 그 이유를 적어 주세요. 또 `report.py` 3번(확인한 티켓만 필터링하는 줄)이 없으면 low 의 평균 확인 시간(MTTA)이 얼마로 나오는지도 적어 주세요.
    - (다) [핵심 질문] 리포트 5절에 `INC-212` 가 나왔습니다. `find_missing_incidents` 의 `covered` 리스트를 근거로 그 이유를 적고, 이 절이 없으면 고객사에 보내는 리포트에서 어떤 사건이 추적 누락되는지 적어 주세요.

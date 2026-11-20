@@ -15,7 +15,7 @@ source:
 
 > **오늘 들어온 일**
 >
-> - **상황**: <mark style="background:#e0d4ff">Unit 3에서 자동 조치를 원래 상태로 복원(롤백, rollback)하는 `rollback_incident` 를 만들었습니다.</mark> Unit 4에서는 **오탐**(false positive, 폴스 포지티브: 정상 활동을 공격으로 잘못 판정한 것) 신고가 2건 들어왔습니다.
+> - **상황**: <mark style="background:#e0d4ff">Unit 3 실습 3-1 에서 자동 조치를 원래 상태로 복원(롤백, rollback)하는 `rollback_incident` 를 만들었습니다.</mark> 오늘은 **오탐**(false positive, 폴스 포지티브: 정상 활동을 공격으로 잘못 판정한 것) 신고가 2건 들어왔습니다.
 > - `INC-301`: 해외 IP 에서 로그인한 `jiwoo` 계정을 자동으로 잠그고 세션(session, 세션: 로그인한 뒤 서버가 유지하는 접속 상태)을 종료했는데, 영업팀장이 「출장 중이고 출장 등록도 했다」고 알려 왔습니다.
 > - `INC-202`: 경로 스캔(서버의 여러 주소에 차례로 요청을 보내 약점을 찾는 일)으로 자동 차단한 IP `198.51.100.90` 이 회사가 계약한 점검 업체의 스캐너라고 인프라팀이 알려 왔습니다.
 > - **문제**: 롤백 함수만 실행하면 오탐 대응이 끝나지 않습니다.
@@ -30,14 +30,14 @@ source:
 | 순서 | 하는 일 | 오늘 쓰는 함수 |
 |---|---|---|
 | 1. 영향 확인 | 그 인시던트의 기록 가운데 조치 전(`before`)과 조치 후(`after`)가 다른 기록만 찾는다 | `list_changes` (1 · 2번) |
-| 2. 되돌리기 | 자동 조치가 바꾼 것만 조치 이전 상태로 롤백한다 | <mark style="background:#e0d4ff">Unit 3의 `rollback_incident`</mark> (7번) |
+| 2. 되돌리기 | 자동 조치가 바꾼 것만 조치 이전 상태로 롤백한다 | <mark style="background:#e0d4ff">Unit 3 함수 `rollback_incident`</mark> (7번) |
 | 3. 복구 확인 | 롤백한 뒤에도 잠겨 있는 계정 · 차단된 IP 가 남았는지 점검한다 | `find_not_recovered` (3 · 4번) |
 | 4. 규칙 조정 제안 | IP 차단이었으면 허용 목록 추가 검토, 계정이었으면 탐지 규칙 예외(exception) 검토를 담당자에게 제안한다 | `make_tuning_note` (5 · 6번) |
 
-- <mark style="background:#e0d4ff">Module 4에서는 탐지 규칙을 고쳐(튜닝) 오탐 알림을 줄였습니다.</mark> 오늘은 오탐 때문에 **이미 실행된 자동 조치**를 원래 상태로 복원(롤백)하는 일입니다.
+- <mark style="background:#e0d4ff">Module 4 Unit 4 실습 4-2 에서는 예외 규칙으로 탐지 규칙을 고쳐(튜닝) 오탐 알림을 줄였습니다.</mark> 오늘은 오탐 때문에 **이미 실행된 자동 조치**를 원래 상태로 복원(롤백)하는 일입니다.
 - `INC-301` 에는 IP `198.51.100.120` 의 차단 기록도 있지만 `before` 와 `after` 가 모두 <mark style="background:#bde3ff">「변경 없음」</mark>입니다. 바뀐 것이 없으므로 영향 확인 대상에서 제외합니다.
 - `rollback_incident` 는 신고된 인시던트의 기록만 롤백합니다. 같은 기록 파일에 있는 `INC-201`(`dami`)은 <mark style="background:#ffc4d6">변경하지 않습니다.</mark>
-- <mark style="background:#ffc4d6">세션 종료는 되돌릴 수 없는 조치(비가역, irreversible)입니다.</mark> 이미 종료된 세션은 재개할 수 없고, 사용자가 다시 로그인해야 새 세션이 생성되기 때문입니다. Unit 3의 `rollback_incident` 가 「되돌리기 불가」 기록을 남기므로, 담당자는 사용자에게 다시 로그인하라고 안내해야 합니다.
+- <mark style="background:#ffc4d6">세션 종료는 되돌릴 수 없는 조치(비가역, irreversible)입니다.</mark> 이미 종료된 세션은 재개할 수 없고, 사용자가 다시 로그인해야 새 세션이 생성되기 때문입니다. Unit 3 함수 `rollback_incident` 가 「되돌리기 불가」 기록을 남기므로, 담당자는 사용자에게 다시 로그인하라고 안내해야 합니다.
 - 규칙 조정 제안은 즉시 적용하지 않습니다. 담당자가 IP 의 소유자와 용도, 예외로 둘 사용자를 검토하고 승인한 뒤에 변경합니다.
 - <mark style="background:#ffdcb0">30분(`RECOVERY_LIMIT`)</mark>은 이 수업에서 정한 복구 기준 시간입니다. 지금 시각(`NOW` = 45분)에서 신고 접수 시각을 빼서 복구까지 걸린 시간을 구합니다. 예를 들어 `INC-301` 은 신고 접수 시각이 20분이라 <mark style="background:#bde3ff">45 − 20 = 25분</mark>입니다.
 
@@ -61,16 +61,14 @@ false_positive.py   list_changes           : 바뀐 기록이면 (1번) 추가�
 
 **할 일**: 데이터 파일 세 개와 코드 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 · 3 을 읽습니다.
 
-**`fp_state.json`** — 오탐을 처리하기 전 연습용 시스템 상태입니다. Unit 2의 `containment_state.json` 과 같은 모양입니다. `junho` 는 Unit 4을 시작하기 전부터 잠겨 있던 계정입니다. 연습용 시스템(실제 서버를 대신하는 시스템)의 시계(`clock`)는 0 에서 움직이지 않습니다. 끝난 차단을 해제하는 Unit 2의 함수 `expire_blocks` 도 호출하지 않습니다. 그래서 `block_expiry`(차단이 끝나는 시각)가 있어도 차단이 자동으로 풀리지 않습니다.
+**`fp_state.json`** — 오탐을 처리하기 전 연습용 시스템 상태입니다. Unit 2 실습 2-1 의 `containment_state.json` 과 같은 모양입니다. `junho` 는 이 실습을 시작하기 전부터 잠겨 있던 계정입니다. 연습용 시스템(실제 서버를 대신하는 시스템)의 시계(`clock`)는 0 에서 움직이지 않습니다. 끝난 차단을 해제하는 `ip_actions.py` 의 함수 `expire_blocks` 도 호출하지 않습니다. 그래서 `block_expiry`(차단이 끝나는 시각)가 있어도 차단이 자동으로 풀리지 않습니다.
 
-```
-{"locked_users": ["junho", "dami", "jiwoo"], "blocked_ips": ["198.51.100.90"], "block_expiry": {"198.51.100.90": 120}, "clock": 0, "sessions": {"dami": [], "jiwoo": [], "junho": [], "hana": ["S-601"]}}
-```
+<pre class="copyable"><code>{"locked_users": ["junho", "dami", "jiwoo"], "blocked_ips": ["198.51.100.90"], "block_expiry": {"198.51.100.90": 120}, "clock": 0, "sessions": {"dami": [], "jiwoo": [], "junho": [], "hana": ["S-601"]}}
+</code></pre>
 
-**`fp_log.json`** — 자동 조치 기록 7건입니다. Unit 2의 `containment_log.json` 과 같은 모양입니다.
+**`fp_log.json`** — 자동 조치 기록 7건입니다. Unit 2 실습 2-1 의 `containment_log.json` 과 같은 모양입니다.
 
-```
-[
+<pre class="copyable"><code>[
   {"action": "계정 잠금", "target": "dami", "incident": "INC-201", "before": "잠기지 않음", "after": "잠김", "reason": "퇴사한 계정의 서버 요청"},
   {"action": "세션 종료", "target": "dami", "incident": "INC-201", "before": "세션 2개", "after": "세션 0개", "reason": "퇴사한 계정의 서버 요청"},
   {"action": "IP 차단", "target": "198.51.100.90", "incident": "INC-202", "before": "차단되지 않음", "after": "차단됨", "reason": "경로 스캔 (120분 뒤 자동 해제)"},
@@ -79,23 +77,22 @@ false_positive.py   list_changes           : 바뀐 기록이면 (1번) 추가�
   {"action": "IP 차단", "target": "198.51.100.120", "incident": "INC-301", "before": "변경 없음", "after": "변경 없음", "reason": "여러 계정이 함께 쓰는 IP 라서 담당자 승인 필요"},
   {"action": "계정 잠금", "target": "dami", "incident": "INC-205", "before": "잠김", "after": "잠김", "reason": "이미 잠겨 있어 변경 없음"}
 ]
-```
+</code></pre>
 
 **`fp_reports.json`** — 오탐 신고 2건입니다. `reported_at` 은 신고를 받은 시각(분)입니다.
 
-```
-[
+<pre class="copyable"><code>[
   {"incident": "INC-301", "reported_at": 20, "reporter": "영업팀장", "reason": "jiwoo 는 출장 중이고 출장 등록이 되어 있다"},
   {"incident": "INC-202", "reported_at": 40, "reporter": "인프라팀", "reason": "198.51.100.90 은 회사가 계약한 점검 업체의 스캐너 IP 다"}
 ]
-```
+</code></pre>
 
-**`false_positive.py`** — 오탐 처리 함수 모음입니다. 도전 4-5도 가져와 사용(import)합니다. Unit 3의 `rollback.py` 가 같은 폴더에 있어야 합니다. 직접 쓰는 곳은 1 ~ 7번입니다.
+**`false_positive.py`** — 오탐 처리 함수 모음입니다. 도전 4-5 도 가져와 사용(import)합니다. Unit 3 파일 `rollback.py` 와 그 파일이 불러 쓰는 Unit 2 · 3 파일이 같은 폴더에 있어야 합니다(「시작하기」 레슨에서 확인). 직접 쓰는 곳은 1 ~ 7번입니다.
 
 - 3번과 4번은 `if` 한 줄만 씁니다. 그 아래 미리 채운 `remaining.append(target)` 줄이 `if` 안쪽입니다.
 
 ```python
-from rollback import find_incident_records, rollback_incident                        # Unit 3에서 만든 되돌리기 함수를 불러온다
+from rollback import find_incident_records, rollback_incident                        # Unit 3 실습 3-1 의 되돌리기 함수를 불러온다
 
 RECOVERY_LIMIT = 30                                                                  # 오탐 신고를 받은 뒤 복구를 끝내야 하는 시간(분)
 
@@ -232,17 +229,62 @@ print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.
 
 ---
 
-## 이번 Unit 마무리
 
-| 확인 | 문제 |
-|---|---|
-| 티켓과 조치 기록을 대조해 리포트 파일을 생성하고, 티켓이 없는 조치까지 찾았다 | 도전 4-3 |
-| 조치 요청을 위험 점수로 자동 · 승인 필요 · 차단 금지로 분류했다 | 실습 4-1 |
-| 오탐 신고를 영향 확인 · 롤백 · 복구 확인 · 규칙 조정 제안까지 처리했다 | 실습 4-2 |
+## 이번 Unit 마무리 · 깃허브에 올리기
 
-<mark>Unit 4의 도전 4-4에서는 자동 조치마다 운영 위험을 평가한 문서(`risk_assessment.md`)를 새로 작성합니다. 도전 4-5에서는 Unit 4의 `report.py` · `approval_gate.py` · `false_positive.py` 를 가져와 사용(import)해 Unit 4에서 만든 것을 한 번에 점검합니다.</mark>
+하루를 닫는 마무리입니다(15분). 핵심 실습 두 개와 「보고서 쓰기」 · 「오늘의 글 쓰기」를 끝낸 뒤 합니다. 도전을 하지 않았어도 이것으로 이 Unit 이 끝납니다.
 
----
+**1. 오늘 한 일 확인**
+
+1. 조치 요청 8건을 위험 점수로 자동 · 승인 필요 · 차단 금지로 나눴다 (실습 4-1)
+2. 오탐 신고 2건을 영향 확인 · 롤백 · 복구 확인 · 규칙 조정 제안까지 처리했다 (실습 4-2)
+3. 보고서 `report_u4.md` 의 실습 4-1 · 4-2 칸에 `답:` 뒤가 비어 있는 질문이 없다
+
+**2. 파일 확인** — **[터미널]** `soar_response` 폴더에서 확인합니다.
+
+```bash
+pwd
+ls
+ls config
+```
+
+- `approval_gate.py` · `exercise4-1_run.py` · `gate_requests.json` · `gate_results.json` · `false_positive.py` · `exercise4-2_run.py` · `fp_state.json` · `fp_log.json` · `fp_reports.json` · `fp_results.json` · `fp_state_after.json` · `report_u4.md` 가 보여야 합니다.
+- `config` 안에는 `approval_policy.json` 이 새로 보여야 합니다.
+- `gate_results.json` · `fp_results.json` · `fp_state_after.json` 은 실행할 때 프로그램이 만든 결과 파일입니다. 이것도 올라갑니다.
+
+**3. 깃허브에 올리기**
+
+1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
+   ```bash
+   cd ..
+   pwd
+   ```
+   - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
+   - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
+2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. <mark style="background:#ffc4d6">빨간 목록에 `.env`(API 키가 들어 있는 파일)나 `.venv`(가상환경 폴더)가 보이면 올리지 않고 멈춥니다.</mark>
+   ```bash
+   git status
+   ```
+   - 명령 풀이: `git status` 올릴 파일의 상태를 봄
+   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
+   - `soar_response/__pycache__/` 는 파이썬이 실행하면서 자동으로 만든 임시 폴더입니다. 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장합니다.
+3. **[보고서]** `report_u4.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
+4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
+   ```bash
+   git add .
+   git commit -m "Add approval gate and false positive rollback"
+   git push
+   ```
+   - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
+   - <mark style="background:#ffc4d6">`git push` 가 거절(`rejected`)되면</mark> 깃허브에 내 PC 에 없는 기록이 있다는 뜻입니다. `git pull --no-rebase` 로 받아 온 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다.
+5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `soar_response` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
+
+- 시간이 남아 도전을 했다면 도전 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
+
+**4. 이어지는 곳**
+
+1. 다음 Unit 5(통합 엔진과 최종 회고)에서는 지금까지 만든 플레이북 · 조치 · 티켓 · 승인 게이트를 엔진 하나로 연결합니다.
+2. 오늘 만든 `approval_gate.py` 와 `config/approval_policy.json` 은 Unit 5 실습 5-1 · 5-2 에서 그대로 가져와 씁니다.
 
 ---
 

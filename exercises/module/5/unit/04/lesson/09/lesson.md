@@ -13,9 +13,11 @@ source:
 
 ## 목표: Unit 4 점검 프로그램
 
+> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 4-1 · 4-2와 글쓰기를 먼저 마칩니다. 이 도전은 실습 4-1 · 4-2 의 파일과 도전 4-3 의 결과물을 함께 점검합니다. 도전 4-3 을 하지 않았다면 다음 페이지 「2.1 기대 결과와 실제 결과 비교」의 「준비할 파일」대로 만들면 됩니다.
+
 > **오늘 들어온 일**
 >
-> - **상황**: <mark style="background:#e0d4ff">Unit 4에서 리포트 · 승인 게이트 · 오탐 복구를 따로 구현하고</mark> 하나씩 실행해 출력을 사람이 읽어 검증했습니다(수동 검증). 강의계획서의 Unit 4 평가 기준은 <mark style="background:#ffdcb0">① 근무 데이터가 리포트에 빠짐없이 들어갔는가 ② 위험에 따라 자동 · 승인이 맞게 나뉘는가 ③ 오탐 복구가 신속하고 완전한가</mark>, 세 가지입니다. 오늘 점검 프로그램은 ①을 「티켓 번호와 티켓 없는 조치의 인시던트 번호가 리포트에 들어 있는가」로 판정합니다.
+> - **상황**: <mark style="background:#e0d4ff">이 Unit 에서 리포트 · 승인 게이트 · 오탐 복구를 따로 구현하고</mark> 하나씩 실행해 출력을 사람이 읽어 검증했습니다(수동 검증). 강의계획서의 Unit 4 평가 기준은 <mark style="background:#ffdcb0">① 근무 데이터가 리포트에 빠짐없이 들어갔는가 ② 위험에 따라 자동 · 승인이 맞게 나뉘는가 ③ 오탐 복구가 신속하고 완전한가</mark>, 세 가지입니다. 오늘 점검 프로그램은 ①을 「티켓 번호와 티켓 없는 조치의 인시던트 번호가 리포트에 들어 있는가」로 판정합니다.
 > - **문제**: 출력을 사람이 읽는 수동 검증만으로는 승인 기준 숫자를 바꾸거나 리포트 틀을 고친 뒤에 <mark style="background:#ffc4d6">무엇이 달라졌는지 놓치기 쉽습니다.</mark> 예를 들어 <mark style="background:#ffdcb0">승인 기준을 3점에서 4점으로 올리면</mark> `REQ-5`(함께 쓰는 IP, 3점)의 결정이 승인 필요에서 「자동」으로 바뀌는데, 출력 8줄을 다시 읽어야 알 수 있습니다. 변경 뒤에는 같은 점검을 다시 실행해 결과를 비교하는 방법이 필요합니다.
 > - **부탁**: 세 기준을 한 번에 검증하는 점검 프로그램을 만들어 주세요. 승인 게이트는 <mark>기대한 결정(기대 결과)을 미리 적어 둔 시험 사례 7개로 검증해 주세요.</mark>
 > - **바뀌는 점**: 실행 한 번으로 점검 목록 `unit09_checklist.md` 5줄이 생성되고, 오늘 샘플에서는 <mark style="background:#bde3ff">세 기준이 모두 「통과」</mark>입니다. 기준을 지키지 못하면 <mark style="background:#ffc4d6">「확인 필요」와 문제 문장</mark>이 나옵니다. 상황과 숫자는 설명을 위한 예시입니다.
@@ -24,19 +26,60 @@ source:
 
 | 기준 | 기대한 결과(미리 적어 둔 것) | 실제 결과 | 불일치로 남기는 것(문제 목록) |
 |---|---|---|---|
-| ① 리포트 반영 | 티켓 번호 7개 + 티켓 없는 조치의 인시던트 번호 1개 | <mark style="background:#e0d4ff">Unit 4의 도전 4-3에서 쓴 `incident_report_20261112.md`</mark> 의 본문 | 리포트에 없는 번호 (1 · 2번) |
-| ② 자동 · 승인 분기 | `gate_cases.json` 의 사례마다 기대한 결정 | <mark style="background:#e0d4ff">Unit 4의 실습 4-1 `decide_gate`</mark> 의 결정 | 기대와 다른 사례 (3 · 4번) |
-| ③ 오탐 복구 | <mark style="background:#ffdcb0">남은 대상 0개 · 30분 안</mark> · 정탐(진짜 공격) 계정 `dami` 는 잠김 유지 | <mark style="background:#e0d4ff">Unit 4의 실습 4-2 `handle_false_positive`</mark> 의 결과와 처리 뒤 상태 | 복구 안 된 대상 · 시간 초과(5번) · 잠금이 풀린 정탐 계정(6 · 7번) |
+| ① 리포트 반영 | 티켓 번호 7개 + 티켓 없는 조치의 인시던트 번호 1개 | <mark style="background:#e0d4ff">도전 4-3 에서 만드는 `incident_report_20261112.md`</mark> 의 본문 | 리포트에 없는 번호 (1 · 2번) |
+| ② 자동 · 승인 분기 | `gate_cases.json` 의 사례마다 기대한 결정 | <mark style="background:#e0d4ff">실습 4-1 의 `decide_gate`</mark> 의 결정 | 기대와 다른 사례 (3 · 4번) |
+| ③ 오탐 복구 | <mark style="background:#ffdcb0">남은 대상 0개 · 30분 안</mark> · 정탐(진짜 공격) 계정 `dami` 는 잠김 유지 | <mark style="background:#e0d4ff">실습 4-2 의 `handle_false_positive`</mark> 의 결과와 처리 뒤 상태 | 복구 안 된 대상 · 시간 초과(5번) · 잠금이 풀린 정탐 계정(6 · 7번) |
 
-- **시험 사례**(test case, 테스트 케이스: 입력과 기대한 결과를 짝지어 적어 둔 것)는 **경계값 분석**(boundary value analysis, 바운더리 밸류 애널리시스: 기준 숫자 바로 앞뒤의 값, 즉 경계값으로 시험 사례를 만드는 방법)에 따라 경계의 양쪽을 꼭 포함합니다. 오늘은 대상 3개(1점, 자동)와 대상 4개(3점, 승인 필요)를 함께 포함해 <mark style="background:#ffdcb0">「4개 이상」 경계</mark>를 검증합니다. 경계에서는 `>` 를 `>=` 로 잘못 쓰는 경계 조건 오류(Unit 1에서 배운 off-by-one error)가 가장 잘 드러나기 때문입니다.
+- **시험 사례**(test case, 테스트 케이스: 입력과 기대한 결과를 짝지어 적어 둔 것)는 **경계값 분석**(boundary value analysis, 바운더리 밸류 애널리시스: 기준 숫자 바로 앞뒤의 값, 즉 경계값으로 시험 사례를 만드는 방법)에 따라 경계의 양쪽을 꼭 포함합니다. 오늘은 대상 3개(1점, 자동)와 대상 4개(3점, 승인 필요)를 함께 포함해 <mark style="background:#ffdcb0">「4개 이상」 경계</mark>를 검증합니다. 경계에서는 `>` 를 `>=` 로 잘못 쓰는 경계 조건 오류(off-by-one error: 기준 숫자를 하나 잘못 포함하거나 빠뜨리는 오류)가 가장 잘 드러나기 때문입니다.
 - 리포트 점검은 번호 문자열이 리포트 본문 안에 포함되어 있는지(`in`)로 판정합니다. 번호의 포함 여부만 검사하고, <mark style="background:#ffc4d6">줄의 모양(형식)은 검사하지 않습니다.</mark>
-- 오탐 복구 점검은 <mark style="background:#e0d4ff">Unit 4의 실습 4-2과 같은 입력으로 다시 처리한 결과</mark>를 대상으로 합니다. 같은 입력이면 같은 결과가 나오므로(재현성) Unit 4의 실습 4-2 출력과 같은 결과가 나와야 합니다.
+- 오탐 복구 점검은 <mark style="background:#e0d4ff">실습 4-2 와 같은 입력으로 다시 처리한 결과</mark>를 대상으로 합니다. 같은 입력이면 같은 결과가 나오므로(재현성) 실습 4-2 출력과 같은 결과가 나와야 합니다.
 - 기준 숫자나 코드를 바꾼 뒤 같은 점검을 다시 실행해, 이전에 맞던 결과가 그대로 맞는지 확인하는 방식을 **회귀 시험**(regression test, 리그레션 테스트: 변경 뒤에 기존에 되던 것이 깨지지 않았는지 다시 확인하는 시험)이라고 합니다. 오늘의 점검 프로그램은 이 회귀 시험으로 쓸 수 있습니다.
 
-**`gate_cases.json`** — 승인 게이트 시험 사례 7개입니다. `case` 는 사례 이름, `expected` 는 기대한 결정(기대 결과), `request` 는 <mark style="background:#e0d4ff">Unit 4의 실습 4-1 요청</mark>에서 `incident` 만 뺀 형식의 조치 요청입니다.
+**준비할 파일** — 점검 프로그램은 아래 파일을 읽거나 불러 씁니다. 모두 `soar_response` 폴더에 있어야 합니다.
 
-```
-[
+1. 실습 4-1 · 4-2 파일: `approval_gate.py` · `config/approval_policy.json` · `false_positive.py` · `fp_state.json` · `fp_log.json` · `fp_reports.json` 과, `false_positive.py` 가 불러 쓰는 `rollback.py` 등 Unit 2 · 3 파일(「시작하기」 레슨에서 확인)
+2. 도전 4-3 파일: `report.py`(도전 4-3 을 하지 않았다면 「제공 파일」 레슨의 완성본) · `unit10_tickets.json` · `unit10_actions.json`(도전 4-3 레슨의 코드 상자)
+3. 리포트 파일 `incident_report_20261112.md`: 도전 4-3 의 `challenge4-3_run.py` 를 실행하면 생깁니다. 도전 4-3 을 하지 않았다면 아래 내용으로 직접 만듭니다. 도전 4-3 을 정답대로 실행했을 때 저장되는 파일과 내용이 같습니다(32줄).
+
+**`incident_report_20261112.md`** — 도전 4-3 이 만드는 초동 대응 리포트입니다.
+
+<pre class="copyable"><code>&#35; 초동 대응 리포트 — 2026-11-12(목) 오전 근무
+
+&#35;# 1. 티켓별 초동 대응
+- TCK-1 [high] dami — 퇴사한 계정 · 상태 해결 · 조치 기록 4건
+- TCK-2 [low] 198.51.100.90 — 경로 스캔 · 상태 열림 · 조치 기록 2건
+- TCK-3 [mid] gaeun — 규칙은 허용인데 서버가 거절 · 상태 해결 · 조치 기록 0건
+- TCK-4 [mid] seoyeon — 대량 다운로드 · 상태 확인 중 · 조치 기록 0건
+- TCK-5 [low] 203.0.113.250 — 경로 스캔 · 상태 열림 · 조치 기록 1건
+- TCK-6 [mid] hana — 업무 시간 밖 로그인 · 상태 해결 · 조치 기록 0건
+- TCK-7 [high] dami — 퇴사한 계정 · 상태 확인 중 · 조치 기록 2건
+
+&#35;# 2. 규칙별 티켓 수
+- 퇴사한 계정: 2장
+- 경로 스캔: 2장
+- 규칙은 허용인데 서버가 거절: 1장
+- 대량 다운로드: 1장
+- 업무 시간 밖 로그인: 1장
+
+&#35;# 3. 등급별 평균 확인 시간(분)
+- high: 10.0분
+- mid: 85.0분
+
+&#35;# 4. 응답 기한을 넘겨 확인한 티켓
+- TCK-3 · 기한 68분 · 확인 80분
+- TCK-4 · 기한 72분 · 확인 140분
+
+&#35;# 5. 티켓이 없는 조치 (사람이 티켓을 만들어야 함)
+- INC-212 · 계정 잠금 · yuna
+
+&#35;# 6. 높음(high) 티켓의 처리 경위
+- TCK-1 · dami: 0분 티켓 생성 → 10분 담당자 확인 → 45분 해결
+- TCK-7 · dami: 95분 티켓 생성 → 105분 담당자 확인
+</code></pre>
+
+**`gate_cases.json`** — 승인 게이트 시험 사례 7개입니다. `case` 는 사례 이름, `expected` 는 기대한 결정(기대 결과), `request` 는 <mark style="background:#e0d4ff">실습 4-1 요청</mark>에서 `incident` 만 뺀 형식의 조치 요청입니다.
+
+<pre class="copyable"><code>[
   {"case": "high 등급 한 명", "expected": "자동", "request": {"id": "T-1", "action": "계정 잠금", "target": "dami", "grade": "high", "users_on_ip": 0, "target_count": 1}},
   {"case": "VIP 계정", "expected": "승인 필요", "request": {"id": "T-2", "action": "계정 잠금", "target": "gaeun", "grade": "low", "users_on_ip": 0, "target_count": 1}},
   {"case": "함께 쓰는 IP", "expected": "승인 필요", "request": {"id": "T-3", "action": "IP 차단", "target": "198.51.100.77", "grade": "mid", "users_on_ip": 2, "target_count": 1}},
@@ -45,7 +88,7 @@ source:
   {"case": "허용 목록 IP", "expected": "차단 금지", "request": {"id": "T-6", "action": "IP 차단", "target": "203.0.113.80", "grade": "high", "users_on_ip": 4, "target_count": 1}},
   {"case": "점검 서버", "expected": "차단 금지", "request": {"id": "T-7", "action": "IP 차단", "target": "192.0.2.10", "grade": "low", "users_on_ip": 0, "target_count": 1}}
 ]
-```
+</code></pre>
 
 함수 네 개와 실행 파일 가운데 직접 쓰는 곳은 **아홉 군데**입니다.
 
@@ -72,8 +115,8 @@ unit09_check.py   check_report    : 있어야 할 번호가 리포트에 없으�
 - 4번과 5번은 `if` 한 줄만 씁니다. 그 아래 미리 채운 `append` 줄이 `if` 안쪽입니다.
 
 ```python
-from report import find_missing_incidents                        # Unit 4의 도전 4-3의 티켓 없는 조치 찾기 함수를 불러온다
-from approval_gate import decide_gate                            # Unit 4의 실습 4-1의 승인 게이트 함수를 불러온다
+from report import find_missing_incidents                        # 도전 4-3 의 티켓 없는 조치 찾기 함수를 불러온다
+from approval_gate import decide_gate                            # 실습 4-1 의 승인 게이트 함수를 불러온다
 
 
 def check_report(report_text, tickets, actions):                 # 리포트 문자열 · 티켓 리스트 · 조치 기록 리스트를 받는 함수
@@ -136,15 +179,15 @@ def mark(problems):                                              # 문제 리스
 
 ```python
 from incident import load_json                                                              # Unit 1 파일의 JSON 읽기 함수를 불러온다
-from false_positive import handle_false_positive                                            # Unit 4의 실습 4-2의 오탐 처리 함수를 불러온다
+from false_positive import handle_false_positive                                            # 실습 4-2 의 오탐 처리 함수를 불러온다
 from unit09_check import check_report, check_gate, check_recovery, mark                       # 방금 만든 점검 함수를 불러온다
 
-REPORT_PATH = "incident_report_20261112.md"                                                 # Unit 4의 도전 4-3에서 만든 리포트 파일 이름
+REPORT_PATH = "incident_report_20261112.md"                                                 # 도전 4-3 에서 만드는 리포트 파일 이름
 TRUE_POSITIVE_USERS = ["dami"]                                                              # 진짜 공격으로 확인된 계정 (오탐 처리로 풀면 안 된다)
 NOW = 45                                                                                    # 오탐 신고를 처리하는 지금 시각(분)
 
-tickets = load_json("unit10_tickets.json")                                                   # Unit 4 근무의 티켓 파일을 읽는다
-actions = load_json("unit10_actions.json")                                                   # Unit 4 근무의 조치 기록 파일을 읽는다
+tickets = load_json("unit10_tickets.json")                                                   # 근무가 끝났을 때의 티켓 파일을 읽는다
+actions = load_json("unit10_actions.json")                                                   # 근무 중 조치 기록 파일을 읽는다
 policy = load_json("config/approval_policy.json")                                           # 승인 정책 파일을 읽는다
 cases = load_json("gate_cases.json")                                                        # 승인 게이트 시험 사례 파일을 읽는다
 print("--- 단계 1: 점검 재료 · 티켓", len(tickets), "장 · 조치 기록", len(actions), "건 · 시험 사례", len(cases), "개")  # 단계 1 시작을 알리는 줄
@@ -186,19 +229,27 @@ print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")            
 
 **순서**
 
-1. **[VS Code]** 파일 세 개 `gate_cases.json` · `unit09_check.py` · `challenge4-5_run.py` 를 만듭니다. 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
-2. **[VS Code]** `unit09_check.py` 1 ~ 7번, `challenge4-5_run.py` 8 · 9번을 씁니다. 막히면 아래 「도전 4-5 정리」를 봅니다.
-3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+1. **[터미널]** 판다스를 설치합니다(맥북은 `python3`). `report.py` 가 판다스를 쓰기 때문입니다. 이미 설치했다면 바로 다음 줄로 갑니다. 그다음 준비할 파일을 확인합니다. <mark>`점검 준비 정상` 이 나와야</mark> 합니다.
+   ```bash
+   python -m pip install pandas
+   python -c "import report, approval_gate, false_positive; open('incident_report_20261112.md', encoding='utf-8'); print('점검 준비 정상')"
+   ```
+   - `No module named '…'` 나 `FileNotFoundError` 가 나오면 위 「준비할 파일」에서 그 이름의 파일을 찾아 만듭니다.
+2. **[VS Code]** 파일 세 개 `gate_cases.json` · `unit09_check.py` · `challenge4-5_run.py` 를 만듭니다. 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
+3. **[VS Code]** `unit09_check.py` 1 ~ 7번, `challenge4-5_run.py` 8 · 9번을 씁니다. 막히면 아래 「도전 4-5 정리」를 봅니다.
+4. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python challenge4-5_run.py
    ```
-4. 출력은 세 단계입니다. 제목 줄은 줄 수에 넣지 않습니다.
+5. 출력은 세 단계입니다. 제목 줄은 줄 수에 넣지 않습니다.
    - 단계 1 과 단계 3 은 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
    - 단계 2 는 기준마다 한 줄씩 3줄입니다. 문제가 있으면 문제마다 한 줄이 더 나옵니다.
-5. **[보고서]** `report_u4.md` 의 `## 도전 4-5` 아래를 채웁니다.
+6. **[보고서]** `report_u4.md` 의 `## 도전 4-5` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 세 기준의 결과와 `unit09_checklist.md` 의 줄 수를 적어 주세요.
    - (나) [핵심 질문] `gate_cases.json` 에는 「대상 3개」와 「대상 4개」 사례가 함께 있습니다. 두 사례의 점수와 기대한 결정을 근거로, 경계값 분석에 따라 기준 숫자 바로 앞뒤 값(경계값)의 사례를 함께 넣는 이유를 적어 주세요.
-   - (다) [핵심 질문] ③ 기준은 오탐 신고를 처리한 뒤에도 정탐 계정 `dami` 의 잠금이 유지되는지 확인합니다. 오탐 복구 점검에 이 확인이 없으면 어떤 실수를 놓칠 수 있는지 적어 주세요. Unit 3의 `rollback_incident`(Unit 4의 실습 4-2에서 가져와 사용(import)하는 함수)가 어떻게 동작할 때 그 실수가 생기는지도 함께 적어 주세요.
+   - (다) [핵심 질문] ③ 기준은 오탐 신고를 처리한 뒤에도 정탐 계정 `dami` 의 잠금이 유지되는지 확인합니다. 오탐 복구 점검에 이 확인이 없으면 어떤 실수를 놓칠 수 있는지 적어 주세요. Unit 3 함수 `rollback_incident`(실습 4-2 에서 가져와 사용(import)하는 함수)가 어떻게 동작할 때 그 실수가 생기는지도 함께 적어 주세요.
+
+7. **[터미널]** 도전 파일도 깃허브에 올립니다. 실습 4-2 끝 「이번 Unit 마무리 · 깃허브에 올리기」의 3번 1 ~ 4번을 한 번 더 하고, 기록 설명은 `git commit -m "Add unit 4 challenges"` 처럼 바꿔 씁니다. 도전 4-1 · 4-2 를 했다면 서버 터미널에서 `Ctrl + C` 로 서버를 끈 뒤에 합니다.
 
 ## 도전 4-5 정리
 

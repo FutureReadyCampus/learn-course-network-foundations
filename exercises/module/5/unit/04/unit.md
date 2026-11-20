@@ -13,6 +13,7 @@ lessons:
 - path: lesson/09/lesson.md
 - path: lesson/10/lesson.md
 - path: lesson/11/lesson.md
+- path: lesson/12/lesson.md
 ---
 
 # 승인 게이트와 오탐 되돌리기

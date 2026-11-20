@@ -1,26 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
-<title>Unit 4에서 확인한 세 실습과 Unit 4에서 이어지는 일</title>
-<desc>도전 4-3 리포트, 실습 4-1 승인 게이트, 실습 4-2 오탐 처리를 확인합니다. Unit 4에서는 운영 위험 평가 문서를 쓰고, Unit 4 파일 세 개를 가져와 한 번에 점검합니다.</desc>
-<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p05r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p05g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p05b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img">
+<title>Unit 4 마무리: 파일 확인 후 git status · add · commit · push</title>
+<desc>왼쪽은 soar_response 폴더에 있어야 할 실습 4-1 · 4-2 파일과 보고서입니다. 오른쪽은 cd .. 로 옮긴 뒤 git status 에서 .env · .venv 를 확인하고, 보고서 마무리 (가)를 채운 다음 add · commit · push 하고 브라우저로 확인하는 순서입니다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">이번 Unit 마무리 → Unit 4</tspan></text>
-<rect x="20" y="54" width="420" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="36" y="77" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<path d="M40 86.0 l4.5 4.5 l7.2 -9.0" fill="none" stroke="#1f7a4a" stroke-width="2.5"/>
-<text x="66" y="81" font-size="15" text-anchor="start" fill="#292929"><tspan x="66">도전 4-3 · 티켓과 조치 기록 대조</tspan><tspan x="66" dy="18.2" font-size="14">리포트 파일 + 티켓이 없는 조치</tspan></text>
-<rect x="20" y="130" width="420" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="36" y="153" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<path d="M40 162.0 l4.5 4.5 l7.2 -9.0" fill="none" stroke="#1f7a4a" stroke-width="2.5"/>
-<text x="66" y="157" font-size="15" text-anchor="start" fill="#292929"><tspan x="66">실습 4-1 · 위험 점수로 분류</tspan><tspan x="66" dy="18.2" font-size="14">자동 · 승인 필요 · 차단 금지</tspan></text>
-<rect x="20" y="206" width="420" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="36" y="229" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<path d="M40 238.0 l4.5 4.5 l7.2 -9.0" fill="none" stroke="#1f7a4a" stroke-width="2.5"/>
-<text x="66" y="233" font-size="15" text-anchor="start" fill="#292929"><tspan x="66">실습 4-2 · 오탐 신고 처리</tspan><tspan x="66" dy="18.2" font-size="14">영향 확인 · 롤백 · 복구 확인 · 규칙 조정</tspan></text>
-<line x1="442" y1="168" x2="478" y2="168" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
-<rect x="480" y="54" width="220" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="590.0" y="88.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="590.0" font-weight="bold">도전 4-4</tspan><tspan x="590.0" dy="21.0">운영 위험 평가</tspan><tspan x="590.0" dy="19.6" font-size="14">risk_assessment.md</tspan></text>
-<rect x="480" y="174" width="220" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="590.0" y="212.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="590.0" font-weight="bold">도전 4-5</tspan><tspan x="590.0" dy="21.0">Unit 4 파일 세 개를</tspan><tspan x="590.0" dy="21.0">가져와 한 번에 점검</tspan></text>
-<text x="360" y="318" font-size="14" text-anchor="middle" fill="#666660"><tspan x="360">report.py · approval_gate.py · false_positive.py 를 Unit 4에서 다시 씀</tspan></text>
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">이번 Unit 마무리 · 깃허브에 올리기</tspan></text>
+<rect x="20" y="52" width="320" height="374" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="34" y="78" font-size="15" text-anchor="start" fill="#292929"><tspan x="34" font-weight="bold">2. 파일 확인 (soar_response)</tspan></text>
+<rect x="32" y="90" width="296" height="136" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="44" y="112" font-size="14" text-anchor="start" fill="#292929"><tspan x="44" font-weight="bold">실습 4-1</tspan><tspan x="44" dy="23">approval_gate.py</tspan><tspan x="44" dy="23">exercise4-1_run.py</tspan><tspan x="44" dy="23">gate_requests.json · gate_results.json</tspan><tspan x="44" dy="23">config/approval_policy.json</tspan></text>
+<rect x="32" y="236" width="296" height="136" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="44" y="258" font-size="14" text-anchor="start" fill="#292929"><tspan x="44" font-weight="bold">실습 4-2</tspan><tspan x="44" dy="23">false_positive.py · exercise4-2_run.py</tspan><tspan x="44" dy="23">fp_state.json · fp_log.json</tspan><tspan x="44" dy="23">fp_reports.json · fp_results.json</tspan><tspan x="44" dy="23">fp_state_after.json</tspan></text>
+<rect x="32" y="382" width="296" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="180.0" y="403.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="180.0">보고서 report_u4.md</tspan></text>
+<text x="366" y="78" font-size="15" text-anchor="start" fill="#292929"><tspan x="366" font-weight="bold">3. 깃허브에 올리기</tspan></text>
+<rect x="366" y="90" width="334" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="533.0" y="111.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="533.0" font-weight="bold">cd ..  →  pwd</tspan><tspan x="533.0" dy="20">…/security-agent-toolkit</tspan></text>
+<rect x="366" y="158" width="334" height="54" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="533.0" y="179.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="533.0" font-weight="bold">git status</tspan><tspan x="533.0" dy="20">.env · .venv 보이면 멈춤</tspan></text>
+<line x1="533" y1="145" x2="533" y2="157" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<rect x="366" y="226" width="334" height="54" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="533.0" y="247.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="533.0" font-weight="bold">[보고서] ## 마무리 (가)</tspan><tspan x="533.0" dy="20">올리기 전에 채우기</tspan></text>
+<line x1="533" y1="213" x2="533" y2="225" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<rect x="366" y="294" width="334" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="533.0" y="315.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="533.0" font-weight="bold">git add . → commit → push</tspan><tspan x="533.0" dy="20">rejected 면 git pull --no-rebase</tspan></text>
+<line x1="533" y1="281" x2="533" y2="293" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<rect x="366" y="362" width="334" height="54" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="533.0" y="383.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="533.0" font-weight="bold">[브라우저] 저장소 새로 고침</tspan><tspan x="533.0" dy="20">soar_response 파일 확인</tspan></text>
+<line x1="533" y1="349" x2="533" y2="361" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<text x="366" y="432" font-size="14" text-anchor="start" fill="#666660"><tspan x="366">다음 Unit 5 에서 approval_gate.py 를 그대로 씁니다</tspan></text>
 </g>
 </svg>
