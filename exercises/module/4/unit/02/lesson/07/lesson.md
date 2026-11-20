@@ -106,7 +106,7 @@ KeyError: 'times'
 ```
 
   - 줄 번호는 사람마다 다릅니다. 열 이름은 파일에 적힌 키와 똑같이 써야 합니다. 판다스 안쪽 파일의 줄은 길어서 생략했습니다.
-- `count_values` 에서 `values.value_counts()` 의 괄호를 빼면 오류는 나지 않지만 개수가 아니라 `<bound method …>` 가 나옵니다. **`value_counts` 는 뒤에 괄호를 붙여 호출하는 메서드입니다.**
+- `count_values` 에서 `values.value_counts()` 의 괄호를 빼면 오류는 나지 않지만 개수가 아니라 `<bound method …>` 가 나옵니다. **`value_counts` 는 뒤에 괄호를 붙여 호출하는 메서드입니다.** 메서드(method · 메서드)는 `열.value_counts()` 처럼 표나 열 뒤에 점(`.`)을 찍어 부르는 함수입니다.
 
 **관제에서는**
 
