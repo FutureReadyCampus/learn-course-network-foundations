@@ -63,7 +63,7 @@ source:
 
 **할 일**: 도구를 설치하고 알림 서버를 켠 뒤, 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 1 ~ 4 와 서버 터미널을 읽습니다.
 
-**`alert_server.py`** — 알림 서버입니다. `/alert` 로 알림이 오면 터미널에 `[알림 받음]` 과 내용을 보여 줍니다. 쓰는 줄이 없습니다. 이미 있으면 다시 만들지 않습니다(`agent_core` 폴더에 있으면 `cp ../agent_core/alert_server.py .` 로 복사해도 됩니다). Unit 4 도전 4-1 · 4-2에서도 이 서버를 켭니다.
+**`alert_server.py`** — 알림 서버입니다. Flask(플라스크)는 파이썬으로 작은 웹 서버를 만드는 도구이고, `requests` 는 그런 서버에 요청을 보내는 도구입니다. `/alert` 로 알림이 오면 터미널에 `[알림 받음]` 과 내용을 보여 줍니다. 쓰는 줄이 없습니다. 이미 있으면 다시 만들지 않습니다(`agent_core` 폴더에 있으면 `cp ../agent_core/alert_server.py .` 로 복사해도 됩니다). Unit 4 도전 4-1 · 4-2에서도 이 서버를 켭니다.
 
 ```python
 from flask import Flask, request        # 웹 서버를 만드는 Flask 와 요청 정보를 담은 request 를 불러온다
@@ -81,7 +81,7 @@ def alert():                            # 알림을 받는 함수
 app.run(port=5001)                      # 5001 번 포트에서 기다린다
 ```
 
-**`ticket_notice.py`** — 담당자에게 알림을 전파합니다. 직접 쓰는 곳은 1 ~ 6번입니다. 「제공 파일」 레슨의 `ticket_merge.py`(도전 3-2를 했다면 직접 쓴 파일)와 `notifier.py` 가 같은 폴더에 있어야 합니다. 제공 파일의 완성본이 있으면 그 파일의 내용을 모두 지우고 아래 골격을 붙여 넣은 뒤 씁니다.
+**`ticket_notice.py`** — 담당자에게 알림을 전파합니다. 직접 쓰는 곳은 1 ~ 6번입니다. 3번은 2번에서 쓴 `if` 의 안쪽이라 주석보다 한 단계 더 오른쪽에, 6번은 이미 한 단계 들어가 있는 주석과 같은 위치에 씁니다. 「제공 파일」 레슨의 `ticket_merge.py`(도전 3-2를 했다면 직접 쓴 파일)와 `notifier.py` 가 같은 폴더에 있어야 합니다. 제공 파일의 완성본이 있으면 그 파일의 내용을 모두 지우고 아래 골격을 붙여 넣은 뒤 씁니다.
 
 ```python
 from notifier import notify                                            # notifier.py 의 알림 함수를 불러온다 (성공하면 True, 실패하면 False)
@@ -226,17 +226,17 @@ print("--- 단계 4: 파일에 저장된 티켓", len(saved), "장")            
 
 도전 3-1 ~ 3-3 가운데 하나라도 했다면 그 파일도 깃허브에 올립니다. 알림 서버는 `Ctrl + C` 로 끈 뒤에 합니다.
 
-1. **[터미널]** 실습 3-2 끝 「이번 Unit 마무리 · 깃허브에 올리기」의 **4. 깃허브에 올리기** 1 ~ 4번을 한 번 더 합니다. 기록 설명은 아래처럼 바꿔 씁니다.
+1. **[보고서]** 올리기 전에 `report_u3.md` 의 내가 한 도전 칸을 먼저 채웁니다.
+2. **[터미널]** 실습 3-2 끝 「이번 Unit 마무리 · 깃허브에 올리기」의 **4. 깃허브에 올리기** 1 ~ 4번을 한 번 더 합니다. 기록 설명은 아래처럼 바꿔 씁니다.
    ```bash
    git add .
    git commit -m "Add SOAR unit 3 challenges: shift drill, ticket merge and notice"
    git push
    ```
-2. `git status` 에는 내가 한 도전의 파일이 보입니다.
+3. 그 2번에서 `git status` 를 치면 내가 한 도전의 파일이 보입니다.
    1. 도전 3-1: `drill.py` · `shift_report.py` · `challenge3-1_run.py` 와 실행이 만든 근무 기록 `shift_log.json`
    2. 도전 3-2: `challenge3-2_run.py`(직접 쓴 `ticket_merge.py` 는 바뀐 파일로 보입니다)
    3. 도전 3-3: `alert_server.py` · `challenge3-3_run.py` 와 실행이 저장한 티켓 `tickets_unit09.json`(직접 쓴 `ticket_notice.py` 는 바뀐 파일로 보입니다)
-3. **[보고서]** `report_u3.md` 의 내가 한 도전 칸을 채운 뒤 올립니다.
 4. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `soar_response` 폴더에 위 파일이 보이는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
 
 다음 Unit 4 도전 4-1은 도전 3-3이 저장한 `tickets_unit09.json` 을 읽습니다. 이 도전을 하지 않았다면 Unit 4 도전 4-1 레슨의 상자로 같은 파일을 만들 수 있습니다.

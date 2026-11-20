@@ -50,7 +50,7 @@ source:
   - `is_failure`(6번): 조치 후 상태에 확인 실패가 있는지 구합니다.
   - `is_unchanged`(7번): 조치 전과 후가 같은지 구합니다.
   - `summarize`(8번): 기록을 종류별로 셉니다.
-- `challenge3-1_run.py`(9번): 알림마다 처리 결과를 두 값으로 나눠 받습니다(언패킹).
+- `challenge3-1_run.py`(9번): 알림마다 처리 결과를 두 값으로 나눠 받습니다(언패킹, unpacking: 함께 리턴된 두 값을 변수 두 개에 하나씩 나눠 담는 일).
 
 ## 도전 3-1 · 알림 8건 처리와 확인 목록 만들기
 
@@ -215,7 +215,7 @@ for record in log:                                                              
 
 **순서**
 
-1. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `drill.py` · `shift_report.py` · `challenge3-1_run.py` 을 하나씩 그대로 적어 세 개의 파일을 만듭니다. 각 파일에 이 페이지의 코드 상자를 복사해 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
+1. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `drill.py` · `shift_report.py` · `challenge3-1_run.py` 를 하나씩 그대로 적어 세 개의 파일을 만듭니다. 각 파일에 이 페이지의 코드 상자를 복사해 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
 2. **[VS Code]** `drill.py` 1 ~ 5번, `shift_report.py` 6 ~ 8번, `challenge3-1_run.py` 9번을 씁니다. 막히면 아래 「도전 3-1 정리」를 봅니다.
 3. **[터미널]** 실행합니다(맥북은 `python3`).
    ```bash

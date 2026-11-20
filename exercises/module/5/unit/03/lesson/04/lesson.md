@@ -20,6 +20,7 @@ render: markdown
    ```bash
    python -c "from incident import load_json; from ticket_merge import handle_alert; rules = load_json('config/escalation_rules.json'); tickets = []; [handle_alert(a, tickets, rules) for a in load_json('alerts_thu.json')]; print('제공 파일 정상', len(tickets))"
    ```
+   - 명령 풀이: 알림 파일의 알림을 하나씩 `handle_alert` 로 처리한 뒤, 만들어진 티켓 수를 출력합니다. 길지만 그대로 복사해 붙여 넣으면 됩니다.
    - `No module named 'ticketing'` 이 나오면 실습 3-2의 `ticketing.py` 가 이 폴더에 없는 것입니다.
    - `notifier.py` 와 `ticket_notice.py` 는 `requests` 도구가 있어야 불러올 수 있어서 여기서는 확인하지 않습니다. 도전 3-3 순서 1번에서 도구를 설치한 뒤 확인합니다.
 

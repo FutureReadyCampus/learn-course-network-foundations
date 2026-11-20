@@ -35,7 +35,8 @@ source:
 | 조치 후 상태에 `확인 실패` | 되돌리지 않는다 | 실제로 바뀐 적이 없다 |
 
 - 먼저 `before` 와 `after` 를 비교합니다. 같으면 원래 그랬던 것이고, 다르면 자동이 바꾼 것입니다. 다만 확인 실패와 세션 종료는 다르더라도 해제로 되돌리지 않습니다.
-- 순서를 뒤집는 `reversed` 는 `find_incident_records` 에 이미 채워져 있습니다.
+- 순서를 뒤집는 줄 `list(reversed(found))` 는 `find_incident_records` 에 이미 채워져 있습니다. `reversed(found)` 가 리스트를 뒤에서부터 읽게 하고, `list(…)` 가 그 결과를 다시 리스트로 만듭니다.
+- 미리 채운 `should_undo` 의 `in` 은 두 가지로 쓰입니다. `"확인 실패" in record["after"]` 는 문자열 안에 그 글자가 들어 있는지, `record["action"] in UNDOABLE_ACTIONS` 는 리스트에 그 이름이 있는지 검사합니다.
 
 - **직접 쓰는 곳은 아홉 군데**이고, 함수는 세 파일에 나뉘어 있습니다.
   - `undo_actions.py`
@@ -139,7 +140,7 @@ def rollback_incident(incident_id, log, state):                              # �
     return records                                                           # 되돌리기 기록 리스트를 리턴한다
 ```
 
-**`exercise3-1_run.py`** — 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이 실행 파일은 실습 2-2 결과 파일 두 개를 읽고, INC-005 의 IP 차단을 새로 실행해 기록에 추가한 뒤, 세 인시던트를 되돌립니다. 결과 파일이 없으면 시작하기 레슨의 「이전 파일이 없을 때」를 봅니다.
+**`exercise3-1_run.py`** — 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이 실행 파일은 실습 2-2 결과 파일 두 개를 읽고, INC-005 의 IP 차단을 새로 실행해 기록에 추가한 뒤, 세 인시던트를 되돌립니다. 아래쪽 `for incident_id, title in [...]` 줄은 (번호, 제목) 두 값을 묶은 쌍을 하나씩 꺼내 `incident_id` 와 `title` 에 나눠 담습니다. 결과 파일이 없으면 시작하기 레슨의 「이전 파일이 없을 때」를 봅니다.
 
 ```python
 from incident import load_json                                                     # Unit 1 파일의 함수를 불러온다
@@ -169,8 +170,9 @@ print("차단한 IP:", state["blocked_ips"])                                    
 
 **순서**
 
-1. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `undo_actions.py` · `rollback.py` · `exercise3-1_run.py` 을 하나씩 그대로 적어 세 개의 파일을 만듭니다. 각 파일에 이 페이지의 코드 상자를 복사해 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
+1. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `undo_actions.py` · `rollback.py` · `exercise3-1_run.py` 를 하나씩 그대로 적어 세 개의 파일을 만듭니다. 각 파일에 이 페이지의 코드 상자를 복사해 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
 2. **[VS Code]** `undo_actions.py` 1 · 2번, `rollback.py` 3 ~ 8번, `exercise3-1_run.py` 9번을 씁니다. 막히면 아래 「실습 3-1 정리」를 봅니다.
+   - 4 · 6 · 8번은 바로 위 번호에서 쓴 `if` 의 안쪽에서 실행할 줄입니다. 그래서 주석보다 한 단계(스페이스 4칸) 더 오른쪽에서 씁니다. 주석의 `4.   ` 처럼 번호 뒤 빈칸이 넓은 것이 그 표시입니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python exercise3-1_run.py
