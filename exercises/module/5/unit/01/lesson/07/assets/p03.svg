@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
-<title>Unit 1 방식과 안전장치를 건 방식으로 같은 알림을 처리해 잠금 수와 티켓 수를 비교한다</title>
-<desc>세 파일을 만든 뒤 실행하면 단계 1 · 2 는 Unit 1 방식, 단계 3 · 4 는 안전한 방식의 결과가 나온다. 마지막에는 건너뛴 액션과 그 이유가 나온다.</desc>
+<title>실습 1-2 방식과 안전장치를 건 방식으로 같은 알림을 처리해 잠금 수와 티켓 수를 비교한다</title>
+<desc>세 파일을 만든 뒤 실행하면 단계 1 · 2 는 실습 1-2 방식, 단계 3 · 4 는 안전한 방식의 결과가 나온다. 마지막에는 건너뛴 액션과 그 이유가 나온다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 1-2: 같은 알림을 두 방식으로 처리해 비교한다</text>
@@ -15,7 +15,7 @@
 <text x="131" y="266.91" font-size="14" fill="#292929" text-anchor="middle">challenge1-2_run.py</text>
 <text x="131" y="287.21" font-size="14" fill="#292929" text-anchor="middle">건너뜀 골라 출력 (8·9번)</text>
 <rect x="272" y="60" width="204" height="110" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="374" y="97.89" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 1 방식</text>
+<text x="374" y="97.89" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">실습 1-2 방식</text>
 <text x="374" y="120.075" font-size="15" fill="#292929" text-anchor="middle">단계 1: 5건 두 번 처리</text>
 <text x="374" y="141.825" font-size="15" fill="#292929" text-anchor="middle">단계 2: 7건 처리</text>
 <rect x="496" y="60" width="204" height="110" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>

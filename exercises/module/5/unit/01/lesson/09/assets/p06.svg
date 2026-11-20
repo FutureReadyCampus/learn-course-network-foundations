@@ -1,24 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
-<title>도전 1-2 보고서는 출력과 잠금 수, 안전장치에 관한 핵심 질문 두 개를 채운다</title>
-<desc>(가) 출력 전체와 단계별 잠긴 계정 · 티켓 수를 적는다. (나) 두 번째 실행을 막은 장치, (다) 잘못 잠긴 계정과 한도의 한계, 줄이는 방법은 핵심 질문이다.</desc>
-<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 318" role="img">
+<title>도전 1-1 보고서는 출력 붙여 넣기와 경로 분기에 관한 핵심 질문 두 개를 채운다</title>
+<desc>(가) 출력 전체와 경로별 건수, 종료된 알림 번호를 적는다. (나) 두 알림의 경로가 갈린 이유, (다) VIP 판정을 먼저 두는 이유는 핵심 질문이다.</desc>
+<defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">보고서 · 도전 1-2 에서 채울 칸</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">보고서 · 도전 1-1 에서 채울 칸</text>
 <rect x="20" y="52" width="72" height="72" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="56" y="92.64" font-size="16" fill="#292929" text-anchor="middle">(가)</text>
 <rect x="102" y="52" width="598" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="114" y="81.475" font-size="15" fill="#292929">① 출력 전체 (코드 상자)</text>
-<text x="114" y="103.225" font-size="15" fill="#292929">② 단계 1 · 3 · 4 의 잠긴 계정 ③ 단계 1 · 3 · 4 의 티켓 수</text>
+<text x="114" y="103.225" font-size="15" fill="#292929">② 경로별 건수 ③ 「종료」 상태가 된 알림 번호</text>
 <rect x="20" y="136" width="72" height="72" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
 <text x="56" y="176.64" font-size="16" fill="#292929" text-anchor="middle">(나)</text>
 <rect x="102" y="136" width="598" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="114" y="165.475" font-size="15" fill="#292929">[핵심 질문] 두 번째 실행을 막은 장치</text>
-<text x="114" y="187.225" font-size="15" fill="#292929">근거가 된 단계 3 「두 번째 처리」 출력 줄</text>
-<rect x="20" y="220" width="72" height="94" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="56" y="271.64" font-size="16" fill="#292929" text-anchor="middle">(다)</text>
-<rect x="102" y="220" width="598" height="94" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="114" y="249.6" font-size="15" fill="#292929">[핵심 질문] ① 잘못 잠긴 계정 (employed 기준)</text>
-<text x="114" y="271.35" font-size="15" fill="#292929">② 한도가 없을 때와 비교한 피해 ③ 한도가 막지 못한 문제</text>
-<text x="114" y="293.1" font-size="15" fill="#292929">④ 실습 1-3 보강 · 도전 1-1 경로 분기로 줄이는 방법</text>
+<text x="114" y="165.475" font-size="15" fill="#292929">[핵심 질문] INC-002 와 INC-004 의 reasons</text>
+<text x="114" y="187.225" font-size="15" fill="#292929">둘 다 신뢰 IP 인데 경로가 갈린 이유</text>
+<rect x="20" y="220" width="72" height="72" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="56" y="260.64" font-size="16" fill="#292929" text-anchor="middle">(다)</text>
+<rect x="102" y="220" width="598" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="114" y="249.475" font-size="15" fill="#292929">[핵심 질문] 신뢰 IP · 평소와 다른 IP 하나뿐인 VIP 알림의 경로</text>
+<text x="114" y="271.225" font-size="15" fill="#292929">4번과 6번 조건의 순서를 바꾸면 달라지는 점</text>
 </g>
 </svg>

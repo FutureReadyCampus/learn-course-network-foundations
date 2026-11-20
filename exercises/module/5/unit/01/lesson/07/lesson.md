@@ -13,9 +13,11 @@ source:
 
 ## 이번 의뢰: 중복 처리와 대량 잠금
 
+> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 1-1 ~ 1-3과 글쓰기를 먼저 마칩니다. 이 도전을 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
+
 > **오늘 들어온 일**
 >
-> - **상황**: Unit 1에서 만든 실행기(playbook runner, 플레이북 러너: 플레이북의 액션을 실제로 실행하는 프로그램)는 같은 알림 파일을 두 번 처리하면 `dami` 계정을 두 번 잠그고 티켓(ticket, 티켓: 담당자에게 일을 맡기려고 만드는 작업 요청 기록)을 두 번 생성합니다. 더 큰 위험은 인사 시스템의 오류입니다. 직원 전체가 퇴사자로 잘못 표시되면 퇴사자 알림이 대량으로 들어옵니다. 오늘 샘플에서는 이런 알림 7건(계정 6개)이 한꺼번에 들어옵니다.
+> - **상황**: 실습 1-2에서 만든 실행기(playbook runner, 플레이북 러너: 플레이북의 액션을 실제로 실행하는 프로그램)는 같은 알림 파일을 두 번 처리하면 `dami` 계정을 두 번 잠그고 티켓(ticket, 티켓: 담당자에게 일을 맡기려고 만드는 작업 요청 기록)을 두 번 생성합니다. 더 큰 위험은 인사 시스템의 오류입니다. 직원 전체가 퇴사자로 잘못 표시되면 퇴사자 알림이 대량으로 들어옵니다. 오늘 샘플에서는 이런 알림 7건(계정 6개)이 한꺼번에 들어옵니다.
 > - **문제**: 실행기는 알림 수만큼 계정을 모두 잠급니다. 7건이 들어오면 서로 다른 계정 6개가 잠기고(`dami` 알림이 두 건이라 잠긴 계정 리스트에는 `dami` 가 두 번 기록됩니다), 100건이 들어오면 100개가 잠깁니다. 이 샘플에서 실제 퇴사자는 `dami` 한 명뿐입니다.
 > - **부탁**: 이미 끝난 인시던트는 다시 처리하지 말고, 이미 잠긴 계정은 다시 잠그지 마세요. 또 한 번 실행할 때 잠글 수 있는 계정은 최대 3개로 제한해 주세요.
 > - **바뀌는 점**: 같은 알림을 두 번 처리해도 `dami` 는 한 번만 잠기고, 알림이 몰려도 잠기는 계정이 3개를 넘지 않습니다. 그 사이에 담당자가 확인할 시간이 생깁니다.
@@ -54,7 +56,7 @@ print(result_text.startswith("실행"))
 
 ```
 safe_runner.py   find_skip_reason : 이미 잠긴 계정이면 (1 · 2번), 잠근 계정 수가 한도 이상이면 (3 · 4번) 건너뛸 이유를 리턴한다
-                 safe_run_action  : 이유가 있으면 그 이유를 리턴하고 (5 · 6번), 없으면 Unit 1의 run_action 으로 실행한다 (7번)
+                 safe_run_action  : 이유가 있으면 그 이유를 리턴하고 (5 · 6번), 없으면 incident.py 의 run_action 으로 실행한다 (7번)
                  run_playbook_safe · process_safe : 결과를 이미 처리됨 · 승인 대기 · 일부 건너뜀 · 실행 완료로 나누고, 결과마다 몇 건인지 센다 (미리 채움)
 실행 파일        challenge1-2_run.py : 기록에서 「건너뜀」으로 시작하는 결과만 골라 출력한다 (8 · 9번)
 ```
@@ -65,14 +67,13 @@ safe_runner.py   find_skip_reason : 이미 잠긴 계정이면 (1 · 2번), 잠�
 
 - **지금은**: <mark>같은 알림을 두 번 처리하면 계정이 두 번 잠기고, 인사 오류 알림이 몰리면 모든 계정이 잠깁니다</mark>.
 - **만드는 것**: 건너뛸 이유 판정과 안전장치를 적용한 액션 실행(`safe_runner.py`), 건너뛴 액션 선별 출력(`challenge1-2_run.py`).
-- **실행하면**: <mark>단계 1 ~ 2: Unit 1 방식의 결과, 단계 3 ~ 4: 안전한 방식의 결과, 마지막에 건너뛴 액션과 이유가 나옵니다.</mark>
+- **실행하면**: <mark>단계 1 ~ 2: 실습 1-2 방식(안전장치 없음)의 결과, 단계 3 ~ 4: 안전한 방식의 결과, 마지막에 건너뛴 액션과 이유가 나옵니다.</mark>
 
-**할 일**: 파일 세 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 Unit 1 방식과 안전한 방식의 차이를 읽습니다.
+**할 일**: 파일 세 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 실습 1-2 방식과 안전한 방식의 차이를 읽습니다.
 
 **`bulk_incidents.json`** — 인사 시스템 오류로 몰린 퇴사자 알림 7건입니다(모두 `퇴사한 계정` · `high`). `INC-B01` 과 `INC-B02` 는 같은 계정 `dami` 의 알림으로, 번호가 다른 알림 두 건이 같은 계정을 가리키는 경우를 일부러 만들어 둔 것입니다.
 
-```
-[
+<pre class="copyable"><code>[
   {"id": "INC-B01", "entity": "dami", "grade": "high", "score": 60, "reasons": ["퇴사한 계정"], "status": "탐지됨"},
   {"id": "INC-B02", "entity": "dami", "grade": "high", "score": 60, "reasons": ["퇴사한 계정"], "status": "탐지됨"},
   {"id": "INC-B03", "entity": "seoyeon", "grade": "high", "score": 60, "reasons": ["퇴사한 계정"], "status": "탐지됨"},
@@ -81,12 +82,14 @@ safe_runner.py   find_skip_reason : 이미 잠긴 계정이면 (1 · 2번), 잠�
   {"id": "INC-B06", "entity": "junho", "grade": "high", "score": 60, "reasons": ["퇴사한 계정"], "status": "탐지됨"},
   {"id": "INC-B07", "entity": "hana", "grade": "high", "score": 60, "reasons": ["퇴사한 계정"], "status": "탐지됨"}
 ]
-```
+</code></pre>
 
-**`safe_runner.py`** — 안전장치를 건 실행기입니다. Unit 2의 도전 2-2에서 실패 처리를 더합니다. 직접 쓰는 곳은 1 ~ 7번입니다.
+**`safe_runner.py`** — 안전장치를 건 실행기입니다. Unit 2 도전 2-2 에서 실패 처리를 더합니다. 직접 쓰는 곳은 1 ~ 7번입니다.
+
+**제공 파일과의 관계** — `safe_runner.py` 는 「제공 파일」 레슨에서 이미 완성본으로 만들었습니다. 이 도전에서는 그 내용을 아래 골격으로 **바꿔서(덮어써서)** 직접 써 봅니다. 다음 Unit에서도 이 파일을 쓰므로, 다 쓴 뒤 실행 결과가 「정답」과 같은지 확인하고, 막히면 「제공 파일」의 완성본을 다시 붙여 넣습니다.
 
 ```python
-from incident import change_status, match_playbooks, run_action, make_log_entry     # Unit 1 파일의 함수를 불러온다
+from incident import change_status, match_playbooks, run_action, make_log_entry     # 실습 1-2 의 incident.py 에서 함수를 불러온다
 
 DONE_STATUSES = ["조치됨", "보고됨", "종료"]                                        # 이미 대응이 끝난 상태들
 MAX_LOCKS_PER_RUN = 3                                                               # 한 번 실행에서 잠글 수 있는 계정의 최대 수
@@ -105,7 +108,7 @@ def find_skip_reason(action, entity, state):                                    
 
 
 def safe_run_action(action, incident, state):                                       # 액션 · 인시던트 · 연습용 시스템을 받는 함수
-    """액션을 실행하기 전에 건너뛸 이유가 있는지 먼저 확인한다. 이유가 있으면 실행하지 않고 그 이유를, 없으면 Unit 1의 run_action 으로 실행한 결과를 리턴한다.
+    """액션을 실행하기 전에 건너뛸 이유가 있는지 먼저 확인한다. 이유가 있으면 실행하지 않고 그 이유를, 없으면 incident.py 의 run_action 으로 실행한 결과를 리턴한다.
     같은 일을 두 번 하거나 너무 많이 하는 것을 막고 싶을 때 쓴다.
     """
     entity = incident["entity"]                                                     # 대응할 대상
@@ -157,11 +160,11 @@ def process_safe(incidents, registry, state, action_log):                       
     return counts                                                                   # 결과별 건수를 리턴한다
 ```
 
-**`challenge1-2_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. Unit 1의 `playbook_runner.py` 의 완성된 `run_playbook` 이 필요합니다.
+**`challenge1-2_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실습 1-2의 `playbook_runner.py` 에 채운 `run_playbook` 이 필요합니다.
 
 ```python
-from incident import load_json, match_playbooks, INCIDENTS_PATH, REGISTRY_PATH           # Unit 1 파일의 함수를 불러온다
-from playbook_runner import run_playbook                                                 # Unit 1에서 만든 실행기를 불러온다
+from incident import load_json, match_playbooks, INCIDENTS_PATH, REGISTRY_PATH           # 실습 1-2 의 incident.py 에서 함수를 불러온다
+from playbook_runner import run_playbook                                                 # 실습 1-2에서 만든 실행기를 불러온다
 from safe_runner import process_safe, MAX_LOCKS_PER_RUN                                  # 방금 만든 안전한 실행기를 불러온다
 
 BULK_PATH = "bulk_incidents.json"                                                        # 인사 시스템 오류로 퇴사자 알림이 몰린 상황의 알림 파일 이름
@@ -175,32 +178,32 @@ def new_state():                                                                
     return state                                                                         # 상태를 리턴한다
 
 
-def run_monday_way(incidents, registry, state, action_log):                              # Unit 1 방식으로 처리하는 함수
-    """Unit 1에서 만든 run_playbook 으로 알림을 모두 처리한다. 오늘 만든 안전장치는 쓰지 않는다.
+def run_without_guard(incidents, registry, state, action_log):                           # 실습 1-2 방식으로 처리하는 함수
+    """실습 1-2에서 만든 run_playbook 으로 알림을 모두 처리한다. 오늘 만든 안전장치는 쓰지 않는다.
     안전장치가 없으면 어떤 일이 생기는지 보고 싶을 때 쓴다.
     """
     for incident in incidents:                                                           # 인시던트를 하나씩 꺼낸다
         playbooks = match_playbooks(incident, registry)                                  # 맞는 플레이북을 찾는다
         for playbook in playbooks:                                                       # 맞는 플레이북을 하나씩 꺼낸다
-            run_playbook(incident, playbook, state, action_log)                          # Unit 1 방식으로 실행한다
+            run_playbook(incident, playbook, state, action_log)                          # 실습 1-2 방식으로 실행한다
 
 
 registry = load_json(REGISTRY_PATH)                                                      # 플레이북 등록 파일을 읽는다
 
-print("--- 단계 1: Unit 1 방식(안전장치 없음)으로 같은 알림 5건을 두 번 처리")             # 단계 1 시작을 알리는 줄
+print("--- 단계 1: 실습 1-2 방식(안전장치 없음)으로 같은 알림 5건을 두 번 처리")          # 단계 1 시작을 알리는 줄
 incidents = load_json(INCIDENTS_PATH)                                                    # 알림 5건을 읽는다
 state = new_state()                                                                      # 깨끗한 상태로 시작한다
 action_log = []                                                                          # 기록 리스트를 만든다
-run_monday_way(incidents, registry, state, action_log)                                   # 첫 번째 처리
-run_monday_way(incidents, registry, state, action_log)                                   # 같은 알림을 한 번 더 처리한다
+run_without_guard(incidents, registry, state, action_log)                                # 첫 번째 처리
+run_without_guard(incidents, registry, state, action_log)                                # 같은 알림을 한 번 더 처리한다
 print("잠긴 계정:", state["locked_users"])                                               # 잠긴 계정을 출력한다
 print("티켓:", len(state["tickets"]), "건")                                              # 티켓 수를 출력한다
 
-print("--- 단계 2: Unit 1 방식(안전장치 없음)으로 인사 오류 알림 7건 처리")                # 단계 2 시작을 알리는 줄
+print("--- 단계 2: 실습 1-2 방식(안전장치 없음)으로 인사 오류 알림 7건 처리")             # 단계 2 시작을 알리는 줄
 bulk_incidents = load_json(BULK_PATH)                                                    # 인사 오류 알림 7건을 읽는다
 state = new_state()                                                                      # 깨끗한 상태로 시작한다
 action_log = []                                                                          # 기록 리스트를 만든다
-run_monday_way(bulk_incidents, registry, state, action_log)                              # Unit 1 방식으로 처리한다
+run_without_guard(bulk_incidents, registry, state, action_log)                           # 실습 1-2 방식으로 처리한다
 locked_count = len(state["locked_users"])                                                # 잠긴 계정이 몇 개인지 센다
 print("잠긴 계정", locked_count, "개:", state["locked_users"])                           # 잠긴 계정 수와 이름을 출력한다
 
@@ -234,7 +237,7 @@ for entry in action_log:                                                        
 
 **순서**
 
-1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `bulk_incidents.json` · `safe_runner.py` · `challenge1-2_run.py` 세 파일을 하나씩 만들고(파일 이름 그대로), 코드를 붙여 넣어 저장합니다.
+1. **[VS Code]** `safe_runner.py` 를 열어 내용을 모두 지우고 위 골격을 붙여 넣습니다. `bulk_incidents.json` · `challenge1-2_run.py` 는 `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 새로 만들어(파일 이름 그대로) 붙여 넣고 저장합니다.
 2. **[VS Code]** `safe_runner.py` 1 ~ 7번, `challenge1-2_run.py` 8 · 9번을 씁니다. 막히면 아래 「도전 1-2 정리」를 봅니다.
 3. **[터미널]** 실행합니다(맥북은 `python3`).
    ```bash
@@ -243,7 +246,7 @@ for entry in action_log:                                                        
 4. 출력은 네 단계와 건너뛴 이유입니다. 단계 1 은 2줄, 단계 2 는 1줄, 단계 3 은 14줄(「첫 번째 처리」 · 「두 번째 처리」 제목 2줄과 결과 10줄, 마지막의 잠긴 계정 · 티켓 2줄), 단계 4 는 알림 7건의 결과 7줄과 요약 3줄(잠긴 계정 · 결과별 건수 · 티켓)입니다. 마지막 `건너뛴 액션과 이유:` 아래는 건너뛴 액션만큼 줄이 나옵니다.
 5. **[보고서]** `report_u1.md` 의 `## 도전 1-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 단계 1 · 3 · 4 의 잠긴 계정과 티켓 수를 적어 주세요.
-   - (나) [핵심 질문] 단계 1(Unit 1 방식)에서는 `dami` 가 두 번 잠기고 티켓이 2건 생성되었는데, 단계 3(안전한 방식)에서는 1건입니다. 단계 3 의 「두 번째 처리」 줄을 근거로 어떤 안전장치가 두 번째 실행을 차단했는지 적어 주세요.
+   - (나) [핵심 질문] 단계 1(실습 1-2 방식)에서는 `dami` 가 두 번 잠기고 티켓이 2건 생성되었는데, 단계 3(안전한 방식)에서는 1건입니다. 단계 3 의 「두 번째 처리」 줄을 근거로 어떤 안전장치가 두 번째 실행을 차단했는지 적어 주세요.
    - (다) [핵심 질문] 단계 4 에서 잠긴 계정 3개 가운데 `users_info.json` 의 `employed` 값으로 볼 때 잘못 잠긴 계정이 있는지 적고, 한도가 없을 때와 비교해 잘못 잠긴 계정이 몇 개 감소했는지 적어 주세요. 한도로 방지하지 못하는 문제가 무엇인지도 적어 주세요. 마지막으로, 실습 1-3의 맥락(보강)과 도전 1-1의 경로 분기 중 무엇을 적용하면 잘못 잠긴 계정을 줄일 수 있는지 적어 주세요.
 
 ## 도전 1-2 정리

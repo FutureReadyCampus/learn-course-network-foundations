@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
 <title>실습 1-3 정답 출력: 퇴사는 INC-001, VIP 는 INC-003, VIP 계정 알림은 1건</title>
 <desc>알림 5건마다 붙은 재직 · VIP · 접속 IP · 신뢰 IP 맥락을 표로 보인다. INC-002 와 INC-004 는 같은 신뢰 IP 이고, INC-005 는 계정 정보에 없어 초기값이 그대로 남는다.</desc>
-<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 1-3 정답: 알림 5건에 붙은 맥락</text>
 <rect x="20" y="52" width="110" height="36" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>

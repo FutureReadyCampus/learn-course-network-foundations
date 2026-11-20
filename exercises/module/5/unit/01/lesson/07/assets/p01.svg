@@ -4,7 +4,7 @@
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">이번 의뢰: 중복 처리와 대량 잠금 막기</text>
-<text x="180" y="62" font-size="16" fill="#666660" text-anchor="middle" font-weight="700">지금 (Unit 1 실행기)</text>
+<text x="180" y="62" font-size="16" fill="#666660" text-anchor="middle" font-weight="700">지금 (실습 1-2 실행기)</text>
 <text x="540" y="62" font-size="16" fill="#666660" text-anchor="middle" font-weight="700">부탁</text>
 <rect x="20" y="76" width="320" height="104" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
 <text x="180" y="110.6" font-size="15" fill="#292929" text-anchor="middle">같은 알림 파일을 두 번 처리</text>
