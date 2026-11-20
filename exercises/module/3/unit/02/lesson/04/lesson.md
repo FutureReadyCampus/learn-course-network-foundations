@@ -96,7 +96,7 @@ KeyError: 'approver'
 ```
 
 - `[ ]` 는 키가 없으면 오류(`KeyError`)가 나고 프로그램이 멈춥니다. `.get( )` 은 키가 없어도 멈추지 않고 `None`(값이 없다는 뜻의 값)을 꺼냅니다.
-- 이 문제의 단계 2에서는 네 장 모두 처리되어 `approver` 키가 있으므로 `None` 이 나오지 않습니다. 그래도 아직 처리하지 않은 요청서가 섞여 있을 때 멈추지 않도록 `.get` 을 씁니다.
+- 이 실습의 단계 2에서는 네 장 모두 처리되어 `approver` 키가 있으므로 `None` 이 나오지 않습니다. 그래도 아직 처리하지 않은 요청서가 섞여 있을 때 멈추지 않도록 `.get` 을 씁니다.
 
 ## 실습 2-2 · 승인·반려 함수와 재처리 차단
 
@@ -145,7 +145,7 @@ def reject_request(request, approver):                           # 요청서와 
 - `reject_request` 는 `approve_request` 와 모양이 같고, 바뀌는 문자열(`"rejected"` · `"반려"`)만 다릅니다. 그래서 앞의 두 검사(`if` 두 개)는 미리 채워 두었고, 1 ~ 3번 주석 아래만 씁니다.
 - 채우기 전에 실행하면 `TypeError: cannot unpack non-iterable NoneType object` 오류가 납니다. `approve_request` 가 아무것도 리턴하지 않기 때문입니다.
 
-**`exercise2-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 2-1의 `create_request` 로 요청서 네 장을 접수한 뒤, 단계 1은 본인 승인 시험 한 건과 처리 여섯 건을 넣고 단계 2는 요청서 리스트를 출력합니다.
+**`exercise2-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 2-1의 `create_request` 로 요청서 네 장을 접수한 뒤, 단계 1은 본인 승인 시험 한 건과 처리 여섯 건을 넣고 단계 2는 요청서 리스트를 출력합니다. `REQUESTS[0]` 처럼 리스트 이름 뒤 `[ ]` 에 자리 번호를 쓰면 그 자리의 항목을 꺼냅니다. 자리 번호는 0부터 세므로 `REQUESTS[0]` 이 1번 요청서입니다.
 
 ```python
 from req_create import REQUESTS, create_request                  # 실습 2-1에서 만든 요청서 함수와 리스트를 불러온다
