@@ -10,6 +10,11 @@ render: markdown
 
 설명하는 답은 한 예이고, 핵심이 같으면 맞습니다.
 
+1. **핵심 실습**: 실습 2-1 ~ 2-3 정답입니다. 오늘 모두가 하는 실습이니 먼저 맞춰 봅니다.
+2. **도전(선택)**: 도전 2-1 · 2-2 정답입니다. 도전을 한 사람만 봅니다.
+3. 정답마다 채운 코드, 결과, 왜, 자주 틀리는 곳, 관제에서는 순서로 읽습니다.
+4. 오류 메시지의 줄 번호와 `^^^^` 표시 줄은 사람마다, 파이썬 버전마다 다를 수 있습니다. 마지막 줄의 오류 이름과 내용을 봅니다.
+
 ---
 
 ## 실습 2-1 정답
@@ -268,7 +273,7 @@ Traceback (most recent call last):
     login_failures = pick_login_failures(events)  # 로그인 실패 이벤트만 골라낸다
   File "…/anomaly_detection/login_detection.py", line 29, in pick_login_failures
     both_true = is_login and is_fail  # & 대신 and 를 썼다
-ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.item(), a.any() or a.all().
 ```
 
   - 줄 번호는 사람마다 다릅니다.
@@ -281,6 +286,8 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 ---
 
 ## 도전 2-1 정답
+
+> 선택입니다. 시간이 남을 때 합니다. 여기부터는 **도전(선택)** 정답입니다. 핵심 실습 정답은 앞의 실습 2-1 ~ 2-3 정답에 있습니다.
 
  **터미널에 입력합니다.**
 
@@ -420,7 +427,7 @@ python challenge2-2_run.py
   - `server`(판정 서버) 실패 9개: gaeun 의 `ACCOUNT:CHANGE` 3번, dami 의 `SALES:QUERY` 3번과 `SALES:CHANGE` 1번, seoyeon 의 `SETTLE:QUERY` 1번과 `SALES:CHANGE` 1번입니다.
   - `web`(웹 서버) 실패 5개: 198.51.100.90 이 09:20:10 ~ 09:20:12 에 `/.env` · `/wp-login.php` · `/phpmyadmin` 을 차례로 요청한 것 3개와, 페이지 요청 실패 2개(`/board/99` · `/report`)입니다.
   - `saas`(SaaS) 실패 1개: jiwoo 의 `login` 입니다.
-  - <mark>하나로 묶으면 이 일들이 모두 같은 유형으로 보여서, 담당자가 대응을 정할 수 없습니다.</mark> 예를 들어 같은 사용자의 계정 변경이 3번 실패한 것과 `/.env` · `/wp-login.php` · `/phpmyadmin` 을 차례로 요청한 것은 대응이 전혀 다릅니다. 그래서 Unit 3에서 유형을 더 나눕니다.
+  - <mark>하나로 묶으면 이 일들이 모두 같은 유형으로 보여서, 담당자가 대응을 정할 수 없습니다.</mark> 예를 들어 같은 사용자의 계정 변경이 3번 실패한 것과 `/.env` · `/wp-login.php` · `/phpmyadmin` 을 차례로 요청한 것은 대응이 전혀 다릅니다. 그래서 다음 Unit 3 은 로그 종류마다 먼저 확인할 일을 따로 찾습니다.
 - (다) 「기타 실패」를 맨 위에 두면 결과가 실패인 이벤트 23개가 모두 먼저 조건을 충족해서 **기타 실패 23개**가 되고, 비정상 로그인과 비인가 접근은 **0개**가 됩니다. 정상은 34개 그대로입니다.
   - 담당자는 로그인 실패와 관리자 경로 요청 실패를 구분할 수 없게 되어, 비밀번호 대응과 접근 차단 중 무엇을 할지 정하지 못합니다.
   - 먼저 조건을 충족한 규칙에서 멈추기 때문입니다. <mark>좁은 조건(로그인 실패, 관리자 경로)을 위에 두고 넓은 조건(모든 실패)을 아래에 두어야 유형이 나뉩니다.</mark>
@@ -440,7 +447,7 @@ Traceback (most recent call last):
     type_event_counts = count_types(events)  # 유형별로 센다
   File "…/anomaly_detection/classify.py", line 42, in count_types
     action = event["action"]  # 그 이벤트의 행동
-TypeError: string indices must be integers
+TypeError: string indices must be integers, not 'str'
 ```
 
   - 줄 번호는 사람마다 다릅니다.
