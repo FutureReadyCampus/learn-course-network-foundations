@@ -99,6 +99,7 @@ def expire_blocks(state, incident_id):                                          
 ```
 
 - 기록 한 건은 실습 2-1 의 `make_record` 가 만듭니다. 그래서 IP 조치도 계정 잠금과 같은 여섯 키(`action` · `target` · `incident` · `before` · `after` · `reason`)로 남습니다.
+- 처음 보는 모양 세 가지: `str(ttl)` 은 숫자를 글자로 바꿉니다(숫자는 `+` 로 글자와 바로 이어 붙일 수 없습니다). `state["block_expiry"].pop(ip)` 는 딕셔너리에서 그 키와 값을 지웁니다. `list(state["blocked_ips"])` 는 리스트의 복사본을 만듭니다.
 - 허용 목록과 공유 IP 를 왜 먼저 거르는지, 끝나는 시각을 어떻게 비교하는지는 도전 2-3 레슨에서 자세히 다룹니다.
 
 ## `audit.py` 만들기

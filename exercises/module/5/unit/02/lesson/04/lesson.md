@@ -55,6 +55,8 @@ containment.py      contain_account     : 계정을 잠그고 (4번), 잠금이 
 
 **`session_actions.py`** — 세션 종료와 점검입니다. 직접 쓰는 곳은 1 ~ 3번입니다.
 
+- 미리 채운 줄의 `state["sessions"].get(user, [])` 는 그 계정의 세션 리스트를 꺼내고, 세션 기록이 없는 계정이면 빈 리스트 `[]` 를 꺼냅니다. 그래서 `len(…)` 이 오류 없이 0 이 됩니다. `str(before_count)` 는 「제공 파일」 레슨에서 본 대로 숫자를 글자로 바꿉니다.
+
 ```python
 from containment_store import make_record                  # 기록 한 건을 만드는 함수를 불러온다
 

@@ -79,6 +79,9 @@ account_actions.py    check_policy      : VIP 계정이면 자동 조치를 막�
 
 **`containment_store.py`** — 연습용 시스템의 상태와 조치 기록 파일을 관리합니다. 실습 2-2 와 제공 파일 `ip_actions.py`, Unit 3 실습 3-1 도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 1 · 2번입니다. `INITIAL_STATE` 의 `junho` 는 수업 전부터 잠겨 있는 계정입니다.
 
+- `new_state` 의 `copy.deepcopy(값)` 은 딕셔너리를 안쪽 리스트까지 통째로 새로 복사합니다. `INITIAL_STATE` 를 복사하지 않고 그대로 쓰면 잠금 · 해제가 처음 상태 자체를 바꿔 버려서, 실행할 때마다 같은 처음 상태에서 시작할 수 없기 때문입니다.
+- `append_log` 의 `try:` · `except FileNotFoundError:` 는 Module 4 Unit 5 에서 본 「해 보고, 이 오류가 나면 멈추지 않고 아래 줄을 실행한다」는 모양입니다. 기록 파일이 아직 없을 때 프로그램이 멈추지 않고 빈 리스트로 시작하게 합니다(미리 채운 줄이라 읽기만 합니다).
+
 ```python
 import copy                                                           # 처음 상태를 복사해 쓰기 위해 copy 를 불러온다
 from incident import load_json, save_json                             # Unit 1 파일의 파일 읽기 · 쓰기 함수를 불러온다
@@ -200,6 +203,9 @@ def unlock_account(user, state, incident_id, reason):                           
 ```
 
 **`exercise2-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+
+- `requests` 의 괄호 하나 `("INC-001", "dami", "퇴사한 계정의 서버 요청")` 가 요청 한 건이고, 값 세 개를 괄호로 묶은 이 모양을 튜플(tuple)이라고 합니다. `for incident_id, user, reason in requests:` 는 한 건을 꺼낼 때마다 세 값을 순서대로 세 변수에 나눠 담습니다.
+- 여기서 `requests` 는 「요청 목록」이라는 뜻의 변수 이름일 뿐이고, Module 4 에서 설치한 `requests` 라이브러리와는 관계가 없습니다.
 
 ```python
 from incident import load_json                                                          # Unit 1 파일의 함수를 불러온다
