@@ -30,7 +30,7 @@ source:
 ## 3.1 사용 이력과 비교하는 방법
 
 - 사용 이력 파일 `config/access_log.json` 의 한 건은 「누가 어떤 권한을 마지막으로 언제 썼나」입니다. 사용자와 권한마다 한 건만 있습니다.
-- `load_last_used` 는 사용 이력 파일을 딕셔너리 하나로 바꿉니다. 이 딕셔너리의 키는 `user` 와 `permission` 을 `:` 로 이어 붙인 문자열(예: `"seoyeon:SALES:QUERY"`)이고, 값은 마지막으로 쓴 시각 문자열입니다. 현황의 권한 한 건에서도 같은 방법으로 키 문자열을 만들어 마지막 사용 시각을 찾습니다.
+- `load_last_used`(아래 `review_unused.py` 에 미리 채워 둔 함수)는 사용 이력 파일을 딕셔너리 하나로 바꿉니다. 이 딕셔너리의 키는 `user` 와 `permission` 을 `:` 로 이어 붙인 문자열(예: `"seoyeon:SALES:QUERY"`)이고, 값은 마지막으로 쓴 시각 문자열입니다. 현황의 권한 한 건에서도 같은 방법으로 키 문자열을 만들어 마지막 사용 시각을 찾습니다.
 
 **키 문자열 `seoyeon:SALES:QUERY` 읽는 법** — `:` 가 두 개라 세 덩어리처럼 보이지만, 딕셔너리에는 **문자열 하나**가 키 한 개로 들어 있습니다.
 
@@ -207,6 +207,7 @@ def find_unused(access_list, last_used_map, now, limit_days):    # 현황 · 마
 ```
 
 - `find_unused` 의 본문은 함수 안이라 앞에 공백 4개를 넣고(Tab 키 한 번), `for` 안쪽은 공백 4개 더(8개), `if` · `elif` 안쪽은 또 4개 더(12개) 넣습니다. 마지막 `return` 은 `for` 밖이므로 공백 4개입니다. `load_last_used` · `make_unused` · `days_since` 는 미리 채워 두었으니 그대로 둡니다.
+- 미리 채운 `make_unused` 의 `entry.copy()` 는 딕셔너리를 복사한 새 딕셔너리를 만듭니다. 복사본에만 `last_used` 키를 더하므로, 현황 리스트의 원래 권한은 그대로 남아 다른 점검에 다시 쓸 수 있습니다.
 - `used_text is None` 은 「값이 `None` 인가」를 묻는 것입니다. `.get(key)` 는 키가 없으면 `None` 을 주므로 `None` 이면 사용 이력이 없다는 뜻입니다. 그 경우에는 일 수를 계산할 수 없으니, `days_since` 는 사용 이력이 있을 때(`elif`)만 부릅니다. `elif` 는 「앞의 `if` 가 아니고, 이 조건이면」이라는 뜻입니다.
 - 채우기 전에 실행하면 `TypeError: object of type 'NoneType' has no len()` 오류가 납니다. `find_unused` 가 아무것도 리턴하지 않기 때문입니다.
 
