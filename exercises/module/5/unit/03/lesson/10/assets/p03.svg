@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 390" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>막힐 때 힌트 다섯 개: 글감마다 붙일 줄과 풀어 쓸 방향</title>
+<desc>글감 1은 should_undo 의 5 · 6번과 junho 의 잠김 → 잠김 기록, 글감 2는 dami 의 기록 두 건, 글감 3은 sla_due 계산 한 줄과 TCK-1 · TCK-2 를 붙인다. 실행 결과는 두세 줄만 붙이고, 막힌 이야기는 post-stuck.md 의 증상에 내 출력을 붙인다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<rect x="20" y="20" width="190" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="115.0" y="54.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">글감 1 · junho</text>
+<rect x="240" y="20" width="460" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="470.0" y="43.8" font-size="15" fill="#292929" text-anchor="middle">before == after 이면 return False</text>
+<text x="470.0" y="64.8" font-size="15" fill="#666660" text-anchor="middle">잠김 → 잠김 · 잠긴 계정: ['junho']</text>
+<line x1="212" y1="49" x2="236" y2="49" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="20" y="92" width="190" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="115.0" y="126.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">글감 2 · 기록</text>
+<rect x="240" y="92" width="460" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="470.0" y="115.8" font-size="15" fill="#292929" text-anchor="middle">dami 계정 잠금 → 계정 해제</text>
+<text x="470.0" y="136.8" font-size="15" fill="#666660" text-anchor="middle">세션 2개 → 세션 0개 → 되돌리기 불가</text>
+<line x1="212" y1="121" x2="236" y2="121" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="20" y="164" width="190" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="115.0" y="198.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">글감 3 · 응답 기한</text>
+<rect x="240" y="164" width="460" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="470.0" y="187.8" font-size="15" fill="#292929" text-anchor="middle">sla_due = alert["minute"] + sla_minutes</text>
+<text x="470.0" y="208.8" font-size="15" fill="#666660" text-anchor="middle">TCK-1 15분 · TCK-2 243분 · TCK-7</text>
+<line x1="212" y1="193" x2="236" y2="193" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="20" y="236" width="190" height="58" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="115.0" y="270.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실행 결과</text>
+<rect x="240" y="236" width="460" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="470.0" y="259.8" font-size="15" fill="#292929" text-anchor="middle">내 말과 이어지는 두세 줄만</text>
+<text x="470.0" y="280.8" font-size="15" fill="#666660" text-anchor="middle">그 아래에 무엇을 보았는지 한 문장</text>
+<line x1="212" y1="265" x2="236" y2="265" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="20" y="308" width="190" height="58" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="115.0" y="342.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">막힌 이야기</text>
+<rect x="240" y="308" width="460" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="470.0" y="331.8" font-size="15" fill="#292929" text-anchor="middle">post-stuck.md 「증상」에 내 출력</text>
+<text x="470.0" y="352.8" font-size="15" fill="#666660" text-anchor="middle">의심한 줄과 찾은 방법</text>
+<line x1="212" y1="337" x2="236" y2="337" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+</svg>

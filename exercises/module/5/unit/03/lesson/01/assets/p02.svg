@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
-<title>실습 2-2이 남긴 두 파일을 확인해 ['junho', 'dami'] 5 가 나와야 합니다</title>
+<title>실습 2-2가 남긴 두 파일을 확인해 ['junho', 'dami'] 5 가 나와야 합니다</title>
 <desc>soar_response 폴더에 containment_state.json 과 containment_log.json 이 있어야 합니다. 확인 명령이 junho, dami 와 5를 출력하면 정상이고, junho 와 4가 나오면 exercise2-2_run.py 를 한 번 실행합니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
@@ -15,7 +15,7 @@
 <rect x="380" y="64" width="316" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="538.0" y="90.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="538.0" dy="0" font-weight="700">확인 명령 결과</tspan><tspan x="538.0" dy="21.0">['junho', 'dami'] 5</tspan></text>
 <rect x="380" y="152" width="316" height="82" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="538.0" y="177.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="538.0" dy="0" font-weight="700">['junho'] 4 가 나오면</tspan><tspan x="538.0" dy="21.0">실습 2-2을 아직 안 돌린 것</tspan><tspan x="538.0" dy="21.0">exercise2-2_run.py 실행</tspan></text>
+<text x="538.0" y="177.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="538.0" dy="0" font-weight="700">['junho'] 4 가 나오면</tspan><tspan x="538.0" dy="21.0">실습 2-2를 아직 안 돌린 것</tspan><tspan x="538.0" dy="21.0">exercise2-2_run.py 실행</tspan></text>
 <rect x="24" y="262" width="672" height="50" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="360.0" y="292.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0">잠긴 계정 = locked_users · 5 = 조치 기록 수</tspan></text>
 </g>
