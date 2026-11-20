@@ -1,29 +1,42 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>이번 Unit 마무리: 실습 5-1·10-2·10-3·마무리 네 가지를 했고 다음은 Module 5</title>
-<desc>사실만 보내 요약 받기(실습 5-1), pipeline.py 한 번으로 보고서까지(도전 5-3), 상황 8개 정리(실습 5-2), 깃허브에 올리기(마무리)를 확인합니다. 다음 Unit은 high 대상을 만났을 때 할 일을 프로그램이 대신하는 Module 5 입니다.</desc>
+<title>마무리 정리: 확인 · 올리기 순서와 다음 Module 5 자동 대응</title>
+<desc>pwd · ls 로 파일을 확인하고, git status 로 .env · .venv 를 본 뒤 git add, commit, push 로 올리고 브라우저에서 확인합니다. 다음 Module 5는 high 대상에 사람이 하던 대응을 프로그램이 대신하게 하며, 새 폴더 soar_response 에서 작업합니다.</desc>
 <defs><marker id="a-p08" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">이번 Unit 마무리</text>
-<rect x="20" y="52" width="680" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<polyline points="36,75 43,82 56,67" fill="none" stroke="#1f7a4a" stroke-width="2.5"/>
-<text x="72" y="81" font-size="15" fill="#292929" font-weight="700">실습 5-1</text>
-<text x="170" y="81" font-size="15" fill="#292929">점수 파일의 사실만 보내 3명 요약 · 실패하면 대체 문장</text>
-<rect x="20" y="108" width="680" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<polyline points="36,131 43,138 56,123" fill="none" stroke="#1f7a4a" stroke-width="2.5"/>
-<text x="72" y="137" font-size="15" fill="#292929" font-weight="700">도전 5-3</text>
-<text x="170" y="137" font-size="15" fill="#292929">pipeline.py 한 번으로 읽기부터 보고서 저장까지</text>
-<rect x="20" y="164" width="680" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<polyline points="36,187 43,194 56,179" fill="none" stroke="#1f7a4a" stroke-width="2.5"/>
-<text x="72" y="193" font-size="15" fill="#292929" font-weight="700">실습 5-2</text>
-<text x="170" y="193" font-size="15" fill="#292929">상황 8개의 원인과 고치는 방법 · Module 4 총정리</text>
-<rect x="20" y="220" width="680" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<polyline points="36,243 43,250 56,235" fill="none" stroke="#1f7a4a" stroke-width="2.5"/>
-<text x="72" y="249" font-size="15" fill="#292929" font-weight="700">마무리</text>
-<text x="170" y="249" font-size="15" fill="#292929">Module 4 작업과 보고서를 깃허브에 올림</text>
-<polyline points="360,276 360,296" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p08)"/>
-<rect x="20" y="300" width="680" height="84" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="360" y="325.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">다음 Unit · Module 5 (자동 대응)</text>
-<text x="360" y="346.6" font-size="15" fill="#292929" text-anchor="middle">등급이 high 인 대상을 만나면 사람이 하던 일을 프로그램이 대신</text>
-<text x="360" y="367.6" font-size="15" fill="#666660" text-anchor="middle">새 폴더 soar_response · 실습 5-2 「먼저 할 일」이 참고 자료</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">마무리 정리</text>
+<g fill="#f1f1ef" stroke="#dededb" stroke-width="1.5">
+<rect x="20" y="48" width="158" height="84" rx="8"/><rect x="194" y="48" width="158" height="84" rx="8"/>
+<rect x="368" y="48" width="158" height="84" rx="8"/><rect x="542" y="48" width="158" height="84" rx="8"/>
+</g>
+<g fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p08)">
+<polyline points="178,90 190,90"/><polyline points="352,90 364,90"/><polyline points="526,90 538,90"/>
+</g>
+<text font-size="16" fill="#292929" text-anchor="middle" font-weight="700">
+<tspan x="99" y="76">파일 확인</tspan><tspan x="273" y="76">올릴 파일 확인</tspan><tspan x="447" y="76">올리기</tspan><tspan x="621" y="76">올린 뒤</tspan>
+</text>
+<text font-size="14" fill="#292929" text-anchor="middle">
+<tspan x="99" y="102">pwd · ls</tspan><tspan x="99" y="121" fill="#666660">anomaly_detection 에서</tspan>
+<tspan x="273" y="102">git status</tspan><tspan x="273" y="121" fill="#e0442e">.env · .venv 면 멈춤</tspan>
+<tspan x="447" y="102">git add . → commit</tspan><tspan x="447" y="121">→ git push</tspan>
+<tspan x="621" y="102">브라우저에서</tspan><tspan x="621" y="121">폴더와 파일 확인</tspan>
+</text>
+<text x="20" y="172" font-size="19" fill="#292929" font-weight="700">이어지는 곳</text>
+<rect x="20" y="190" width="250" height="120" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="145" y="222" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Module 4 이상탐지</text>
+<text x="145" y="250" font-size="14" fill="#292929" text-anchor="middle">쌓인 로그에서</text>
+<text x="145" y="270" font-size="14" fill="#292929" text-anchor="middle">평소와 다른 일 찾기</text>
+<text x="145" y="290" font-size="14" fill="#292929" text-anchor="middle">대상마다 점수와 등급</text>
+<polyline points="270,250 306,250" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p08)"/>
+<text x="288" y="238" font-size="14" fill="#666660" text-anchor="middle">high</text>
+<rect x="312" y="190" width="388" height="120" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="506" y="222" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Module 5 자동 대응</text>
+<text x="506" y="248" font-size="14" fill="#292929" text-anchor="middle">사람이 하던 일을 프로그램이 대신</text>
+<g fill="#ffffff" stroke="#1f7a4a" stroke-width="1.2">
+<rect x="326" y="262" width="112" height="34" rx="6"/><rect x="450" y="262" width="112" height="34" rx="6"/><rect x="574" y="262" width="112" height="34" rx="6"/>
+</g>
+<text font-size="14" fill="#292929" text-anchor="middle"><tspan x="382" y="284">계정 잠그기</tspan><tspan x="506" y="284">티켓 남기기</tspan><tspan x="630" y="284">담당자 알리기</tspan></text>
+<rect x="20" y="328" width="680" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="36" y="352" font-size="14" fill="#292929">실습 5-2 마지막 칸(담당자가 가장 먼저 할 일)이 대응 목록의 참고 자료가 됩니다.</text>
+<text x="36" y="374" font-size="14" fill="#292929">Module 5는 새 폴더 <tspan font-weight="700">soar_response</tspan> 에서 작업합니다 (Module 5의 시작하기에서 만듦).</text>
 </g>
 </svg>
