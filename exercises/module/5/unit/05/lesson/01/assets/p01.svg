@@ -27,7 +27,7 @@
 <text x="127.0" y="323" font-size="15" fill="#292929" text-anchor="middle">오류 격리</text>
 <text x="127" y="375" font-size="14" fill="#666660" text-anchor="middle">soar_engine.py</text>
 <rect x="253" y="240" width="214" height="110" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360.0" y="278" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">도전 5-1</text>
+<text x="360.0" y="278" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">도전 5-1 (선택)</text>
 <text x="360.0" y="302" font-size="15" fill="#292929" text-anchor="middle">탐지 결과 연결</text>
 <text x="360.0" y="323" font-size="15" fill="#292929" text-anchor="middle">운영 요약</text>
 <text x="360" y="375" font-size="14" fill="#666660" text-anchor="middle">engine_input.py</text>

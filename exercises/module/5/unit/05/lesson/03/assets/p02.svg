@@ -1,49 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>점검 네 가지는 재수행·불변 조건·기록 확인으로 위반을 찾고 judge가 판정한다</title>
-<desc>점검 ①은 로그의 request 로 decide_gate 를 다시 호출하는 재수행입니다. 점검 ②③은 target 과 after 만 보는 불변 조건 점검이라 게이트 코드에 오류가 있어도 위반을 찾고, 점검 ④는 실행한 조치가 있는데 ticket 이 빈 알림을 찾습니다. judge 가 위반이 없으면 PASS, 있으면 FAIL 로 정합니다.</desc>
-<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="bold">로그로 정책 준수 점검하기: 네 점검이 보는 것</text>
-<text x="20" y="64" font-size="15" fill="#666660" text-anchor="start">점검</text>
-<text x="203" y="64" font-size="15" fill="#666660" text-anchor="start">찾는 방법</text>
-<text x="503" y="64" font-size="15" fill="#666660" text-anchor="start">방식</text>
-<rect x="20" y="76" width="175" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="32" y="106.2" font-size="15" fill="#292929" text-anchor="start">① 게이트 우회 실행</text>
-<rect x="203" y="76" width="292" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="215" y="105.9" font-size="14" fill="#292929" text-anchor="start">request 로 decide_gate 다시 호출</text>
-<rect x="503" y="76" width="92" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="549.0" y="106.2" font-size="15" fill="#292929" text-anchor="middle">재수행</text>
-<line x1="597" y1="101" x2="613" y2="101" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
-<rect x="20" y="138" width="175" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="32" y="168.2" font-size="15" fill="#292929" text-anchor="start">② 허용 목록 IP 차단</text>
-<rect x="203" y="138" width="292" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="215" y="167.9" font-size="14" fill="#292929" text-anchor="start">target 이 허용 목록 · after 「차단됨」</text>
-<rect x="503" y="138" width="92" height="50" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="549.0" y="168.2" font-size="15" fill="#292929" text-anchor="middle">불변 조건</text>
-<line x1="597" y1="163" x2="613" y2="163" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
-<rect x="20" y="200" width="175" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="32" y="230.2" font-size="15" fill="#292929" text-anchor="start">③ VIP 계정 잠금</text>
-<rect x="203" y="200" width="292" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="215" y="229.9" font-size="14" fill="#292929" text-anchor="start">target 이 VIP · after 「잠김」</text>
-<rect x="503" y="200" width="92" height="50" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="549.0" y="230.2" font-size="15" fill="#292929" text-anchor="middle">불변 조건</text>
-<line x1="597" y1="225" x2="613" y2="225" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
-<rect x="20" y="262" width="175" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="32" y="292.2" font-size="15" fill="#292929" text-anchor="start">④ 티켓 없는 조치</text>
-<rect x="203" y="262" width="292" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="215" y="291.9" font-size="14" fill="#292929" text-anchor="start">count_executed &gt; 0 · ticket 빔</text>
-<rect x="503" y="262" width="92" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="549.0" y="292.2" font-size="15" fill="#292929" text-anchor="middle">기록 확인</text>
-<line x1="597" y1="287" x2="613" y2="287" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
-<rect x="615" y="76" width="85" height="236" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="657.5" y="136.4" font-size="16" fill="#292929" text-anchor="middle" font-weight="bold">judge</text>
-<text x="657.5" y="157.9" font-size="15" fill="#292929" text-anchor="middle">위반</text>
-<text x="657.5" y="178.9" font-size="15" fill="#292929" text-anchor="middle">리스트</text>
-<text x="657.5" y="199.9" font-size="15" fill="#292929" text-anchor="middle">없으면</text>
-<text x="657.5" y="220.9" font-size="15" fill="#292929" text-anchor="middle">PASS</text>
-<text x="657.5" y="241.9" font-size="15" fill="#292929" text-anchor="middle">있으면</text>
-<text x="657.5" y="262.9" font-size="15" fill="#292929" text-anchor="middle">FAIL</text>
-<rect x="20" y="334" width="680" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="360.0" y="365.2" font-size="15" fill="#292929" text-anchor="middle">②③은 게이트의 계산을 거치지 않고 결과만 봐서, 게이트 코드가 틀려도 위반을 찾습니다.</text>
+<title>Module 4 탐지 결과 5건을 엔진으로 처리한 로그: 자동 실행 2건 · 조치 없음 3건</title>
+<desc>unit05_risk_scores.json 의 5건을 알림 INC-501 ~ INC-505 로 바꿔 run_all 로 처리한 로그입니다. dami 잠금과 198.51.100.90 차단 두 건이 자동 실행이고 나머지 세 건은 조치 없음이며 티켓은 5장입니다. 실습 5-2가 두 번째 로그로 읽습니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, &#x27;Noto Sans KR&#x27;, -apple-system, &#x27;Segoe UI&#x27;, sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">risk_engine_log.json 에 들어 있는 것</text>
+<rect x="20" y="56" width="170" height="84" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="105" y="86" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">Module 4</text>
+<text x="105" y="105" font-size="14" fill="#292929" text-anchor="middle">unit05_risk</text>
+<text x="105" y="124" font-size="14" fill="#292929" text-anchor="middle">_scores.json 5건</text>
+<line x1="192" y1="98" x2="218" y2="98" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="220" y="56" width="150" height="84" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="295" y="86" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">실습 5-1 엔진</text>
+<text x="295" y="105" font-size="14" fill="#292929" text-anchor="middle">run_all</text>
+<text x="295" y="124" font-size="14" fill="#292929" text-anchor="middle">INC-501~505</text>
+<line x1="372" y1="98" x2="398" y2="98" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="400" y="56" width="300" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="414" y="84" font-size="14" fill="#292929" text-anchor="start">INC-501 dami</text>
+<text x="688" y="84" font-size="14" fill="#292929" text-anchor="end">자동 실행 · 잠김</text>
+<rect x="400" y="108" width="300" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="414" y="136" font-size="14" fill="#292929" text-anchor="start">INC-502 seoyeon</text>
+<text x="688" y="136" font-size="14" fill="#292929" text-anchor="end">조치 없음</text>
+<rect x="400" y="160" width="300" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="414" y="188" font-size="14" fill="#292929" text-anchor="start">INC-503 gaeun</text>
+<text x="688" y="188" font-size="14" fill="#292929" text-anchor="end">조치 없음</text>
+<rect x="400" y="212" width="300" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="414" y="240" font-size="14" fill="#292929" text-anchor="start">INC-504 jiwoo</text>
+<text x="688" y="240" font-size="14" fill="#292929" text-anchor="end">조치 없음</text>
+<rect x="400" y="264" width="300" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="414" y="292" font-size="14" fill="#292929" text-anchor="start">INC-505 198.51.100.90</text>
+<text x="688" y="292" font-size="14" fill="#292929" text-anchor="end">자동 실행 · 차단됨</text>
+<rect x="20" y="170" width="350" height="110" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="36" y="198" font-size="14" fill="#292929" text-anchor="start">알림 한 건이 한 줄</text>
+<text x="36" y="220" font-size="14" fill="#292929" text-anchor="start">조치마다 decision · executed</text>
+<text x="36" y="242" font-size="14" fill="#292929" text-anchor="start">before · after · request</text>
+<text x="36" y="264" font-size="14" fill="#292929" text-anchor="start">티켓 TCK-1 ~ TCK-5</text>
+<rect x="20" y="330" width="680" height="52" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="362" font-size="15" fill="#292929" text-anchor="middle">exercise5-2_run.py 가 LOG_FILES 의 두 번째 로그로 읽는다</text>
 </g>
 </svg>

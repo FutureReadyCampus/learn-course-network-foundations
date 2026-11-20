@@ -1,25 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
-<title>도전 5-1 보고서: 출력 전체, 조치 없음 세 알림의 이유, minsu 거절 이유를 채운다</title>
-<desc>(가)에는 출력 전체와 단계 5 처리 결과별 알림 수, 실제로 실행한 조치 두 개를 씁니다. (나)는 seoyeon · gaeun · jiwoo 의 플레이북 번호로 조치가 없는 이유와 티켓의 역할을, (다)는 minsu 의 critical 등급을 거절하는 이유와 실습 5-1 INC-402 와의 연결을 씁니다.</desc>
-<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>실습 5-2 정답: 로그의 decision 대신 request로 결정을 다시 구해 우회를 찾는다</title>
+<desc>gate_off_log.json 의 INC-405 는 로그 decision 이 자동이지만, request(mid, users_on_ip 2)로 decide_gate 를 다시 부르면 1점+2점=3점으로 승인 기준 3점 이상이라 승인 필요입니다. 승인 필요인데 executed 가 참이라 위반입니다. 결과는 gate_off_log.json 의 점검 ① 위반 3건과 점검 ② 위반 1건입니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="bold">도전 5-1 보고서: 채울 칸</text>
-<rect x="20" y="54" width="100" height="80" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="70.0" y="99.2" font-size="15" fill="#292929" text-anchor="middle">(가)</text>
-<rect x="128" y="54" width="572" height="80" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="140" y="88.8" font-size="15" fill="#292929" text-anchor="start">출력 전체(코드 상자) · 단계 5 처리 결과별 알림 수</text>
-<text x="140" y="109.8" font-size="15" fill="#292929" text-anchor="start">실제로 실행한 조치 두 개</text>
-<rect x="20" y="146" width="100" height="80" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="70.0" y="180.8" font-size="15" fill="#292929" text-anchor="middle">(나)</text>
-<text x="70.0" y="201.8" font-size="15" fill="#292929" text-anchor="middle">핵심 질문</text>
-<rect x="128" y="146" width="572" height="80" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="140" y="180.8" font-size="15" fill="#292929" text-anchor="start">seoyeon · gaeun · jiwoo 의 단계 4 플레이북 번호</text>
-<text x="140" y="201.8" font-size="15" fill="#292929" text-anchor="start">조치가 없는 이유 · 티켓이 없을 때 생기는 일</text>
-<rect x="20" y="238" width="100" height="80" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="70.0" y="272.8" font-size="15" fill="#292929" text-anchor="middle">(다)</text>
-<text x="70.0" y="293.8" font-size="15" fill="#292929" text-anchor="middle">핵심 질문</text>
-<rect x="128" y="238" width="572" height="80" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="140" y="272.8" font-size="15" fill="#292929" text-anchor="start">minsu 기록의 등급 critical · 엔진 앞에서 거절하는 이유</text>
-<text x="140" y="293.8" font-size="15" fill="#292929" text-anchor="start">거절 없이 넣을 때의 오류 (실습 5-1 INC-402 와 연결)</text>
+<text x="20" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="bold">실습 5-2 정답: INC-405 를 다시 계산하기</text>
+<rect x="20" y="52" width="320" height="100" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="180.0" y="77.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="bold">로그에 적힌 값</text>
+<text x="180.0" y="98.5" font-size="14" fill="#292929" text-anchor="middle">decision: 「자동」</text>
+<text x="180.0" y="118.1" font-size="14" fill="#292929" text-anchor="middle">이유: 「승인 게이트 끔」</text>
+<text x="180.0" y="137.7" font-size="14" fill="#292929" text-anchor="middle">이 값만 읽으면 위반이 안 보임</text>
+<rect x="380" y="52" width="320" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="540.0" y="77.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="bold">decide_gate 로 다시 구함</text>
+<text x="540.0" y="98.5" font-size="14" fill="#292929" text-anchor="middle">request: mid · users_on_ip 2</text>
+<text x="540.0" y="118.1" font-size="14" fill="#292929" text-anchor="middle">mid 1점 + 함께 쓰는 IP 2점</text>
+<text x="540.0" y="137.7" font-size="14" fill="#292929" text-anchor="middle">= 3점 ≥ 승인 기준 3점</text>
+<line x1="540" y1="154" x2="540" y2="180" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="380" y="182" width="320" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="540.0" y="215.2" font-size="15" fill="#292929" text-anchor="middle">new_decision = 「승인 필요」</text>
+<line x1="540" y1="240" x2="540" y2="262" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="20" y="264" width="680" height="52" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="360.0" y="294.9" font-size="14" fill="#292929" text-anchor="middle">if new_decision != "자동" and step["executed"]: → 위반 리스트에 INC-405 추가</text>
+<text x="20" y="346" font-size="15" fill="#666660" text-anchor="start">gate_off_log.json 결과</text>
+<rect x="20" y="356" width="330" height="52" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="185.0" y="386.9" font-size="14" fill="#292929" text-anchor="middle">① 게이트 우회: INC-404 · 405 · 406</text>
+<rect x="370" y="356" width="330" height="52" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="535.0" y="386.9" font-size="14" fill="#292929" text-anchor="middle">② 허용 목록 IP 차단: INC-404</text>
 </g>
 </svg>

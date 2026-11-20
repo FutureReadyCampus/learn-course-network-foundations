@@ -15,7 +15,7 @@ source:
 
 > **오늘 들어온 일**
 >
-> - **상황**: Unit 1의 `match_playbooks` 는 알림에 맞는 플레이북을 찾고, Unit 2의 `lock_account` · `block_ip` 는 조치를 실행하고, Unit 3의 `make_ticket` 은 티켓을 만들고, Unit 4의 `decide_gate` 는 자동 · 승인 필요 · 차단 금지를 정합니다. <mark style="background:#e0d4ff">Unit 2의 `flow.py` 는 알림 처리 흐름을 한 번에 실행하지만, 조치는 Unit 1의 간단한 `run_action` 으로 실행합니다.</mark> 그래서 Unit 2 이후에 만든 함수는 그 흐름에 연결되어 있지 않습니다. 이번 Unit에서 알림 8건(`INC-401` ~ `INC-408`)이 들어옵니다.
+> - **상황**: Unit 1 실습 1-2 `match_playbooks` 는 알림에 맞는 플레이북을 찾고, Unit 2 `lock_account` · `block_ip` 는 조치를 실행하고, Unit 3 실습 3-2 `make_ticket` 은 티켓을 만들고, Unit 4 실습 4-1 `decide_gate` 는 자동 · 승인 필요 · 차단 금지를 정합니다. <mark style="background:#e0d4ff">지금까지는 이 함수들을 실습마다 따로 호출했고, 네 단계를 하나의 흐름으로 잇는 프로그램은 없습니다.</mark> 이번 Unit에서 알림 8건(`INC-401` ~ `INC-408`)이 들어옵니다.
 > - **문제**: 함수를 사람이 순서대로 호출하면 승인 게이트를 건너뛰고 `lock_account` 를 바로 호출하는 실수를 막을 수 없습니다. 또 알림 한 건에서 오류가 나면 프로그램 전체가 멈춥니다. `INC-402` 는 등급(`grade`) 키가 없어서 플레이북을 찾는 단계에서 오류가 납니다. <mark style="background:#ffc4d6">오류를 처리하지 않으면 앞의 `INC-401` 은 `dami` 계정을 이미 잠갔는데 로그와 티켓 파일이 저장되지 않고, 뒤의 알림 6건은 처리되지 않습니다.</mark>
 > - **부탁**: 알림 한 건을 「플레이북 찾기 → 승인 게이트 → 조치 실행 → 티켓」 순서로 처리하는 통합 엔진 `soar_engine.py` 를 만들어 주세요. 오류가 난 알림은 오류 이름과 함께 실패로 기록하고, 다음 알림을 계속 처리해야 합니다.
 > - **바뀌는 점**: 알림 8건이 <mark style="background:#bde3ff">자동 실행 2 · 승인 대기 2 · 차단 금지 1 · 조치 없음 2 · 실패 1</mark>로 처리되고, 티켓 <mark style="background:#bde3ff">7장</mark>이 `engine_tickets.json` 에 저장됩니다. 상황과 이름은 설명을 위한 예시입니다.
@@ -32,12 +32,12 @@ source:
 | 6. 오류 격리 | 알림 하나의 오류를 그 알림의 실패 기록으로 한정하고 다음 알림으로 넘어간다 | `try` / `except` | `run_all` (7 · 8번) |
 
 - 알림 한 건의 처리 결과(`outcome`)는 <mark>자동 실행 · 승인 대기 · 차단 금지 · 조치 없음 · 실패</mark> 다섯 가지입니다. 조치 없음은 승인 게이트를 거칠 조치가 없는 알림입니다. `decide_outcome` 은 사람이 먼저 봐야 하는 결과가 앞서도록 승인 대기부터 판단합니다.
-- <mark style="background:#e0d4ff">Unit 1 플레이북의 승인 값(`approval`)은 이 엔진이 읽지 않습니다.</mark> Unit 4에서 승인 여부를 플레이북 하나에 값 하나로 정하는 대신 요청마다 위험 점수로 정하도록 바꿨기 때문입니다. 플레이북에서는 `actions` 만 읽습니다.
-- 플레이북의 액션 가운데 `계정 잠금` · `IP 차단` 만 승인 게이트를 거쳐 실행합니다(`CONTAINMENT_ACTIONS`). 티켓은 처리한 알림마다 항상 만듭니다. 실패한 알림은 티켓이 없어서 알림 8건에 티켓 7장이 됩니다. `담당자 알림` 은 <mark style="background:#e0d4ff">Unit 3 · Unit 4의 알림 서버(5001번 포트)</mark>가 켜져 있어야 보낼 수 있어서 오늘은 연결하지 않고, 담당자에게 넘기는 일은 티켓이 맡습니다.
+- <mark style="background:#e0d4ff">Unit 1 플레이북의 승인 값(`approval`)은 이 엔진이 읽지 않습니다.</mark> Unit 4 실습 4-1 에서 승인 여부를 플레이북 하나에 값 하나로 정하는 대신 요청마다 위험 점수로 정하도록 바꿨기 때문입니다. 플레이북에서는 `actions` 만 읽습니다.
+- 플레이북의 액션 가운데 `계정 잠금` · `IP 차단` 만 승인 게이트를 거쳐 실행합니다(`CONTAINMENT_ACTIONS`). 티켓은 처리한 알림마다 항상 만듭니다. 실패한 알림은 티켓이 없어서 알림 8건에 티켓 7장이 됩니다. `담당자 알림` 은 <mark style="background:#e0d4ff">Unit 3 · Unit 4 도전에서 쓴 알림 서버(5001번 포트)</mark>가 켜져 있어야 보낼 수 있어서 오늘은 연결하지 않고, 담당자에게 넘기는 일은 티켓이 맡습니다.
 - 오류 격리(failure isolation, 페일러 아이솔레이션: 한 작업의 오류가 다른 작업으로 번지지 않게 막는 방식)로 오류의 영향 범위를 알림 한 건으로 제한합니다. 대신 <mark style="background:#ffc4d6">코드의 실수도 알림마다 「실패」로 나타납니다.</mark> 실패 건수가 알림 수에 가까우면 데이터가 아니라 코드를 의심합니다.
 - `executed` 는 조치 함수를 호출했다는 뜻입니다. 이미 잠긴 계정처럼 호출해도 조치 전 · 후 상태가 같을 수 있어서, 무엇이 바뀌었는지는 `before` · `after` 로 확인합니다.
 - 티켓의 시각은 엔진을 실행한 때를 0분으로 놓습니다(Unit 3 티켓처럼 분 단위 숫자입니다). 연습용 시스템(실제 서버를 대신하는 시스템)은 실행할 때마다 처음 상태(`junho` 만 잠김)에서 시작합니다.
-- 오늘 엔진에 연결하지 않은 것: Unit 2의 재시도(`run_with_retry`) · Unit 2의 세션 종료 · Unit 4의 에스컬레이션입니다.
+- 오늘 엔진에 연결하지 않은 것: 재시도(`run_with_retry`, Unit 2 도전 2-2) · 세션 종료(Unit 2 실습 2-2) · 에스컬레이션(Unit 4 도전 4-1)입니다.
 
 **문법 상자 — `except Exception as error` 는 어떤 종류의 오류든 받아서 프로그램이 멈추지 않게 한다**
 
@@ -61,7 +61,7 @@ for student in students:                                                        
 
 | 코드 | 뜻 |
 |---|---|
-| `except Exception as error:` | <mark style="background:#e0d4ff">Unit 2의 `except ConnectionError as error` 는 연결 오류 한 종류만 받았습니다.</mark> `Exception` 은 `KeyError` 같은 거의 모든 오류의 부모 이름이라 어떤 종류든 받습니다 |
+| `except Exception as error:` | <mark style="background:#e0d4ff">`except ConnectionError as error` 처럼 오류 이름을 적으면 그 한 종류만 받습니다.</mark> `Exception` 은 `KeyError` 같은 거의 모든 오류의 부모 이름이라 어떤 종류든 받습니다 |
 | `type(error).__name__` | 오류의 종류 이름(`KeyError`)입니다. 오류를 받은 뒤에는 이 이름과 내용을 반드시 기록해서 사람이 볼 수 있게 합니다 |
 | 위 코드의 출력 | <mark style="background:#bde3ff">`서준` 줄에서 오류가 나도 `하은` 줄까지 출력됩니다</mark>. `try` 없이 쓰면 `서준` 에서 멈추고 `하은` 은 출력되지 않습니다 |
 
