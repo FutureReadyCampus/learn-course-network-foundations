@@ -209,7 +209,7 @@ for comment in first["comments"]:                                               
 
 **순서**
 
-1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `ticket_merge.py` 와 `challenge3-2_run.py` 를 이름 그대로 만들고, 위 코드 상자를 복사해 붙여 넣고 저장합니다.
+1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `challenge3-2_run.py` 를 이름 그대로 만들고 위 코드 상자를 복사해 붙여 넣고 저장합니다. `ticket_merge.py` 는 「제공 파일」 레슨에서 이미 만들었으니 새로 만들지 않고, 열어서 안의 내용을 위 골격으로 바꿔 저장합니다.
 2. **[VS Code]** `ticket_merge.py` 1 ~ 9번을 씁니다. 막히면 아래 「도전 3-2 정리」를 봅니다.
 3. **[터미널]** 실행합니다(맥북은 `python3`).
    ```bash

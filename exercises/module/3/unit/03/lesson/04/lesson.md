@@ -138,8 +138,7 @@ ls
 
 **`config/access_log.json`** — 그대로 붙여 넣습니다. 사용 이력입니다. `access_control` 안의 `config` 폴더에 만듭니다.
 
-```json
-[
+<pre class="copyable"><code>[
   {"user": "seoyeon", "permission": "SALES:QUERY", "last_used": "2026-10-27 09:10"},
   {"user": "seoyeon", "permission": "SALES:CHANGE", "last_used": "2026-06-30 14:00"},
   {"user": "junho", "permission": "SALES:QUERY", "last_used": "2026-07-30 09:00"},
@@ -147,8 +146,7 @@ ls
   {"user": "gaeun", "permission": "ACCOUNT:QUERY", "last_used": "2026-10-20 08:00"},
   {"user": "batch-night", "permission": "SETTLE:QUERY", "last_used": "2026-10-29 02:00"},
   {"user": "dami", "permission": "SALES:QUERY", "last_used": "2026-10-10 13:00"}
-]
-```
+]</code></pre>
 
 **`review_unused.py`**
 

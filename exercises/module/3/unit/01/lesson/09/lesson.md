@@ -96,11 +96,9 @@ def load_json(path, default):                                    # 파일 경로
 
 **`config/users_broken.json`** — 그대로 붙여 넣습니다. 마지막 항목 뒤에 쉼표가 남은 **일부러 깨진** 파일입니다. VS Code 가 이 파일에 빨간 줄을 긋는 것이 정상이니 쉼표를 지우지 않습니다. (`config/users_typo.json` 은 없는 파일이 목적이라 만들지 않습니다.)
 
-```json
-{
+<pre class="copyable"><code>{
   "seoyeon": {"role": "sales", "employed": true},
-}
-```
+}</code></pre>
 
 **`challenge1-4_broken.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 1.2 의 세 경로를 `load_json` 으로 읽어 결과를 출력합니다.
 

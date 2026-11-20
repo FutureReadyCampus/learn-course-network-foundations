@@ -23,7 +23,7 @@ Module 3~5 실습에서 직접 쓴 파이썬 코드와, 코드를 쓰며 한 고
 </style>
 
 {% assign mods = "3,4,5" | split: "," %}
-{% assign counts = "5,10,10" | split: "," %}
+{% assign counts = "5,5,5" | split: "," %}
 {% assign real_posts = site.posts | where_exp: "p", "p.sample != true" %}
 {% assign total = 0 %}
 {% assign grand = 0 %}

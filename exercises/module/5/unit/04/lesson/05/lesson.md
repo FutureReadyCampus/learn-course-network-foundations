@@ -36,9 +36,10 @@ source:
 도전 4-1 과 도전 4-2 는 Unit 3 티켓 파일과 알림 서버를 씁니다. 아래 순서대로 준비합니다.
 
 1. **Unit 3 파일**: `soar_response` 폴더에 아래 파일이 있어야 합니다. 없는 파일은 알려 준 레슨의 코드 상자로 만듭니다.
-   1. Unit 3 「시작하기」 레슨: `notifier.py` · `alert_server.py` · `alerts_thu.json` · `config/escalation_rules.json`
+   1. Unit 3 「시작하기」 레슨: `alerts_thu.json` · `config/escalation_rules.json`
    2. Unit 3 실습 3-2: `ticketing.py`
-   3. Unit 3 「제공 파일」 레슨: `ticket_merge.py` · `ticket_notice.py`
+   3. Unit 3 「제공 파일」 레슨: `notifier.py` · `ticket_merge.py` · `ticket_notice.py`
+   4. Unit 3 도전 3-3 레슨의 코드 상자: `alert_server.py`(도전 3-3 을 하지 않았어도 그 레슨의 `alert_server.py` 상자만 복사해 만듭니다)
 2. **티켓 파일** `tickets_unit09.json`: Unit 3 도전 3-3 을 실행했다면 그때 저장된 파일이 이미 있습니다. 없으면 아래 내용으로 만듭니다(파일 이름 속 `unit09` 는 이름을 바꾸지 않고 그대로 씁니다).
 
 **`tickets_unit09.json`** — Unit 3 근무(알림 11건)가 끝났을 때의 티켓 7장입니다. Unit 3 도전 3-3 의 `challenge3-3_run.py` 가 저장하는 파일과 내용이 같습니다. 모든 티켓이 아직 `열림` 이고 `escalation_level` 은 0 입니다.
@@ -64,7 +65,7 @@ source:
 2. **[터미널]** 파일을 확인합니다. <mark style="background:#bde3ff">`도전 준비 정상 7` 이 나와야</mark> 합니다.
    ```bash
    pwd
-   python -c "import ticketing, ticket_merge, ticket_notice, notifier; from incident import load_json; print('도전 준비 정상', len(load_json('tickets_unit09.json')))"
+   python -c "import ticketing, ticket_merge, ticket_notice, notifier, alert_server; from incident import load_json; print('도전 준비 정상', len(load_json('tickets_unit09.json')))"
    ```
    - `No module named '…'` 가 나오면 1번 목록에서 그 이름의 파일을 찾아 만듭니다. `No module named 'requests'` 는 1번 설치를 다시 합니다.
 3. **[터미널]** 알림 서버를 켭니다. VS Code 터미널 창 오른쪽 위의 `+` 로 **새 터미널**을 하나 더 열고, `soar_response` 폴더에서 서버를 실행합니다. <mark style="background:#bde3ff">`Running on http://127.0.0.1:5001` 이 보이면</mark> 됩니다.
