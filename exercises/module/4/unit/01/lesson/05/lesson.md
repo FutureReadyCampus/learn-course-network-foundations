@@ -13,15 +13,71 @@ source:
 
 ## 목표: JSON·CSV 이벤트 변환
 
+> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 1-1 · 1-2와 글쓰기를 먼저 마칩니다. 이 도전은 실습 1-2와 같은 방법을 나머지 두 로그에 씁니다. 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
+
 > **오늘 들어온 일**
 >
 > A사 보안 팀장이 보낸 메시지입니다:
 > 「웹 서버 로그는 공통 이벤트로 바꿨습니다. 나머지 두 로그도 같은 모양으로 맞춰 주세요.
 >
-> - 판정 서버 로그(Module 3에서 만든 서버가 남기는 JSON): 접속 주소가 없습니다.
+> - 판정 서버 로그(Module 3의 판정 서버 같은 서버가 남기는 JSON): 접속 주소가 없습니다.
 > - SaaS 로그(CSV): 사용자가 메일 주소(`seoyeon@a-corp.example`)로 적혀 있으니 이름만 꺼내 주세요.
 > - 두 로그 모두 성공 · 실패를 웹 서버 로그처럼 `성공` · `실패` 로 통일해 주세요.」
 > - **왜 중요한가**: <mark>같은 사람이 로그마다 `seoyeon` 과 `seoyeon@a-corp.example` 로 적히면 사용자별로 세거나 이어 볼 수 없습니다.</mark> 접속 주소가 원래 없는 로그에는 임의의 주소를 채우지 말고 `None` 으로 둡니다. 가짜 주소로 세어지는 이벤트가 생기기 때문입니다.
+
+## 로그 파일 두 개 준비하기
+
+이 도전과 도전 1-3에서 쓰는 로그 파일 두 개를 먼저 만듭니다. 시작하기에서 만든 `access_sample.log` 와 같은 `anomaly_detection` 폴더에 둡니다.
+
+1. **[VS Code]** `anomaly_detection` 폴더에 `server_log.jsonl` 과 `saas_events.csv` 파일을 만들어 아래 내용을 그대로 붙여 넣고 저장합니다.
+
+**`server_log.jsonl`** — 판정 서버가 남긴 로그 샘플입니다. Module 3 도전 4-3의 판정 서버(`access_server.py`)가 남기는 로그와 같은 모양이고, 한 줄이 요청 1개인 JSON 입니다(15줄).
+
+```
+{"time": "2026-11-02T09:40", "user": "seoyeon", "permission": "SALES:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-11-02T09:52", "user": "junho", "permission": "SALES:CHANGE", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-11-02T10:05", "user": "gaeun", "permission": "ACCOUNT:CHANGE", "network": "vpn", "allowed": false, "reason": "허용되지 않은 접속 위치"}
+{"time": "2026-11-02T10:09", "user": "gaeun", "permission": "ACCOUNT:CHANGE", "network": "vpn", "allowed": false, "reason": "허용되지 않은 접속 위치"}
+{"time": "2026-11-02T10:14", "user": "gaeun", "permission": "ACCOUNT:CHANGE", "network": "vpn", "allowed": false, "reason": "허용되지 않은 접속 위치"}
+{"time": "2026-11-02T11:02", "user": "dami", "permission": "SALES:QUERY", "network": "office", "allowed": false, "reason": "퇴사한 계정"}
+{"time": "2026-11-02T11:03", "user": "dami", "permission": "SALES:QUERY", "network": "office", "allowed": false, "reason": "퇴사한 계정"}
+{"time": "2026-11-02T11:05", "user": "dami", "permission": "SALES:CHANGE", "network": "office", "allowed": false, "reason": "퇴사한 계정"}
+{"time": "2026-11-02T11:08", "user": "dami", "permission": "SALES:QUERY", "network": "office", "allowed": false, "reason": "퇴사한 계정"}
+{"time": "2026-11-02T11:40", "user": "seoyeon", "permission": "SETTLE:QUERY", "network": "office", "allowed": false, "reason": "권한 없음"}
+{"time": "2026-11-02T13:15", "user": "junho", "permission": "SALES:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-11-02T14:30", "user": "seoyeon", "permission": "SALES:CHANGE", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-11-02T15:05", "user": "junho", "permission": "SALES:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-11-02T16:10", "user": "gaeun", "permission": "SALES:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-11-02T18:20", "user": "seoyeon", "permission": "SALES:CHANGE", "network": "vpn", "allowed": false, "reason": "업무 시간 밖"}
+```
+
+**`saas_events.csv`** — SaaS 서비스가 내보낸 로그 샘플입니다. 첫 줄은 열 이름이고, 둘째 줄부터 한 줄이 이벤트 1개이며 값은 쉼표로 나뉩니다(첫 줄이 열 이름이라 이벤트는 14개이고, 파일은 15줄입니다). 시각은 내보낼 때 한국 시간으로 설정되어 있습니다.
+
+```
+time,account,event,ip_address,outcome
+2026-11-02 02:14:08,jiwoo@a-corp.example,login,203.0.113.80,failure
+2026-11-02 09:05:30,seoyeon@a-corp.example,login,198.51.100.9,success
+2026-11-02 09:30:12,junho@a-corp.example,login,192.0.2.41,success
+2026-11-02 10:12:55,gaeun@a-corp.example,login,198.51.100.77,success
+2026-11-02 11:25:40,seoyeon@a-corp.example,file.download,198.51.100.9,success
+2026-11-02 13:50:21,junho@a-corp.example,file.upload,192.0.2.41,success
+2026-11-02 15:20:03,junho@a-corp.example,login,192.0.2.41,success
+2026-11-02 16:02:18,jiwoo@a-corp.example,login,198.51.100.52,success
+2026-11-02 17:38:10,seoyeon@a-corp.example,login,203.0.113.80,success
+2026-11-02 17:40:02,seoyeon@a-corp.example,file.download,203.0.113.80,success
+2026-11-02 17:40:31,seoyeon@a-corp.example,file.download,203.0.113.80,success
+2026-11-02 17:41:05,seoyeon@a-corp.example,file.download,203.0.113.80,success
+2026-11-02 17:41:48,seoyeon@a-corp.example,file.download,203.0.113.80,success
+2026-11-02 17:42:20,seoyeon@a-corp.example,file.download,203.0.113.80,success
+```
+
+2. **[터미널]** 두 파일의 줄 수를 확인합니다(맥북은 `python3`).
+   ```bash
+   python -c "print(len(open('server_log.jsonl', encoding='utf-8').read().splitlines()))"
+   python -c "print(len(open('saas_events.csv', encoding='utf-8').read().splitlines()))"
+   ```
+   - 명령 풀이: `python -c "…"` 따옴표 안의 파이썬 한 줄을 실행해 파일의 줄 수를 출력
+   - <mark>순서대로 `15` · `15` 가 나와야</mark> 합니다. 다르면 줄이 빠졌거나 빈 줄이 끼어든 것이니 다시 붙여 넣습니다.
 
 ## 왜 두 로그도 같은 키로 맞추는가
 
@@ -30,7 +86,7 @@ source:
    - 판정 서버 로그: 시각이 `2026-11-02T09:40` 처럼 `T` 로 나뉘어 있고 초가 없습니다. 접속 주소가 없습니다.
    - SaaS 로그: 시각은 이미 공통 모양입니다. 사용자가 메일 주소입니다.
 
-## 2.1 CSV 읽기와 딕셔너리로 값 바꾸기
+## CSV 읽기와 딕셔너리로 값 바꾸기
 
 **문법 상자 — CSV 파일을 딕셔너리로 읽기**
 
@@ -107,7 +163,7 @@ print(allowed_result)                                # 바꾼 값을 출력한�
 | `load_server` · `load_saas` | 파일 경로 | 공통 이벤트 리스트(미리 채움) |
 
 - **직접 쓰는 곳은 세 함수**(번호 1 ~ 6)입니다.
-  - `convert_server_time`(1 · 2번): 실습 1-2과 같은 방식으로 시각 모양을 바꿉니다(시간대가 없어서 `replace` 는 필요 없습니다).
+  - `convert_server_time`(1 · 2번): 실습 1-2와 같은 방식으로 시각 모양을 바꿉니다(시간대가 없어서 `replace` 는 필요 없습니다).
   - `normalize_server`(3번): 딕셔너리에서 `allowed` 를 `"성공"` / `"실패"` 로 바꿉니다.
   - `normalize_saas`(4 ~ 6번): 메일 주소에서 이름을 꺼내고, 딕셔너리에서 `outcome` 을 바꿉니다.
 - **미리 채운 것**: 파일을 읽어 이벤트 리스트로 만드는 `load_server` · `load_saas` 와 이벤트를 묶는 줄입니다.
@@ -221,7 +277,7 @@ def load_saas(path):                                             # SaaS CSV 파�
 ```
 
 - 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 6번은 모두 함수 안이라 앞에 공백 4개입니다.
-- 4번의 `split("@")` 는 Unit 1의 `split('"', 2)` 처럼 구분 문자로 나눈 리스트를 만듭니다. `seoyeon@a-corp.example` 은 `["seoyeon", "a-corp.example"]` 이 되고, <mark>5번에서 첫 값(`account_parts[0]`)을 씁니다.</mark>
+- 4번의 `split("@")` 는 실습 1-1의 `split('"', 2)` 처럼 구분 문자로 나눈 리스트를 만듭니다. `seoyeon@a-corp.example` 은 `["seoyeon", "a-corp.example"]` 이 되고, <mark>5번에서 첫 값(`account_parts[0]`)을 씁니다.</mark>
 - 번호 주석이 연달아 붙어 있어도(예: 4 · 5번), <mark>주석 사이마다 줄을 끼워 넣어 각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark>
 - **채우기 전에 실행하면 `UnboundLocalError` 또는 `NameError` 가 납니다.** 예를 들어 1 · 2번을 아직 안 썼으면 `time_out` 을 찾지 못합니다.
 
@@ -259,7 +315,7 @@ print(first_saas)                                                           # Sa
 **순서**
 
 1. **[VS Code]** 파일 `normalize_json_csv.py` · `challenge1-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
-2. **[VS Code]** `normalize_json_csv.py` 에서 직접 쓰는 곳 **여섯 군데**를 씁니다. 2.1 의 문법 상자를 보고 씁니다.
+2. **[VS Code]** `normalize_json_csv.py` 에서 직접 쓰는 곳 **여섯 군데**를 씁니다. 「CSV 읽기와 딕셔너리로 값 바꾸기」 쪽의 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd

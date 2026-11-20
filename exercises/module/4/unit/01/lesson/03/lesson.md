@@ -27,21 +27,21 @@ source:
 > - 판정 서버: `true`
 > - SaaS: `success`
 >
-> 이대로는 같은 계정이 여러 곳에서 한 일을 시간 순서로 볼 수 없습니다. 먼저 웹 서버 로그 한 줄을 언제 · 누가 · 무엇을 · 결과를 같은 키에 담은 이벤트로 바꿔 주세요(키 이름은 아래 1.1 에서 설명합니다). 시각은 `2026-11-02 09:12:03` 모양으로 맞추고, 원래 줄은 그대로 남겨 주세요.」
+> 이대로는 같은 계정이 여러 곳에서 한 일을 시간 순서로 볼 수 없습니다. 먼저 웹 서버 로그 한 줄을 언제 · 누가 · 무엇을 · 결과를 같은 키에 담은 이벤트로 바꿔 주세요(키 이름은 아래 「세 로그의 모양과 공통 이벤트」 쪽에서 설명합니다). 시각은 `2026-11-02 09:12:03` 모양으로 맞추고, 원래 줄은 그대로 남겨 주세요.」
 > - **왜 중요한가**: <mark>모양이 다른 로그는 시간순으로 놓을 수도, 같은 기준으로 셀 수도 없습니다.</mark> 같은 키로 맞추면 탐지 규칙을 로그 종류마다 따로 만들지 않고 한 번만 만들면 됩니다. 원래 줄을 남겨 두면 변환이 틀렸을 때 원본과 대조할 수 있습니다.
 
 ## 왜 로그 모양을 맞춰야 하는가
 
 1. SIEM(심)은 여러 곳의 로그를 한곳에 모아 같은 기준으로 찾습니다. <mark>모양이 다르면 같은 기준을 적용할 수 없습니다.</mark>
 2. 그래서 로그를 모은 다음 **같은 키 · 같은 모양으로 맞추는 일**이 필요합니다. 이것을 **정규화(normalization, 노멀라이제이션)** 라고 합니다.
-3. 이번 Unit에서는 로그 3종류를 같은 키로 맞춘 **공통 이벤트**로 바꿉니다. 키는 아래 1.1 에서 설명합니다.
+3. 이번 Unit에서는 로그 3종류를 같은 키로 맞춘 **공통 이벤트**로 바꿉니다. 실습 1-2에서는 웹 서버 로그를 바꾸고, 나머지 두 로그는 도전 1-2에서 바꿉니다. 키는 다음 쪽에서 설명합니다.
 
-## 1.1 세 로그의 모양과 공통 이벤트
+## 세 로그의 모양과 공통 이벤트
 
 세 로그는 모두 **언제 · 누가 · 어디서 · 무엇을 · 성공했나**를 적고 있지만, <mark>적는 방식이 다릅니다.</mark>
 
 - **웹 서버 로그**(`access_sample.log`): 웹 서비스를 돌리는 웹 서버(nginx)가 페이지를 열거나 로그인할 때마다 남깁니다.
-- **판정 서버 로그**(`server_log.jsonl`): Module 3에서 만든 권한 판정 서버가 「이 권한을 써도 되나?」라는 물음을 받을 때마다 남깁니다.
+- **판정 서버 로그**(`server_log.jsonl`): Module 3 도전 4-3의 권한 판정 서버 같은 서버가 「이 권한을 써도 되나?」라는 물음을 받을 때마다 남깁니다.
 - **SaaS 로그**(`saas_events.csv`): 회사가 빌려 쓰는 SaaS(인터넷으로 쓰는 소프트웨어, 예: 파일 보관 서비스)에서 로그인하거나 파일을 올리고 내려받을 때마다 남깁니다.
 
 **① 실제 한 줄** — 세 줄이 얼마나 다르게 생겼는지만 봅니다.
@@ -91,7 +91,7 @@ source:
 - <mark>원래 로그에 없는 값은 임의로 만들어 넣지 않고 `None` 으로 둡니다.</mark> 없는 값을 지어내면 분석 결과가 틀려집니다.
 - <mark>`raw` 는 바꾸지 않은 원래 로그입니다.</mark> 정규화 과정에서 사라지는 정보를 나중에 찾아볼 수 있게 남깁니다.
 
-## 1.2 시각 문자열 바꾸기
+## 시각 문자열 바꾸기
 
 **문법 상자 — 시각 값을 원하는 모양의 문자열로**
 
@@ -174,7 +174,7 @@ UTC+09:00
 - **직접 쓰는 곳은 두 함수**(번호 1 ~ 6)입니다.
   - `convert_time`(1 ~ 3번): 문자열을 시각 값으로 바꾸고, 시간대를 떼고, 공통 모양 문자열로 만듭니다.
   - `convert_result`(4 ~ 6번): 상태 코드 400 이상이면 `"실패"`, 아니면 `"성공"` 입니다.
-- **미리 채운 것**: Unit 1에서 만든 함수를 불러 조각을 꺼내 공통 이벤트로 묶는 `normalize_web` 과 `read_time_text` 입니다.
+- **미리 채운 것**: 실습 1-1에서 만든 `log_parse.py` 의 함수를 불러 조각을 꺼내 공통 이벤트로 묶는 `normalize_web` 과 `read_time_text` 입니다.
 
 ## 실습 1-2 · 웹 로그 한 줄을 이벤트로
 
@@ -190,14 +190,14 @@ UTC+09:00
 
 **할 일**
 
-1. **`normalize_web.py` · `exercise1-2_run.py`** 두 파일을 만들고, `normalize_web.py` 의 `convert_time` · `convert_result` 에서 직접 쓰는 곳을 씁니다.
+1. **`normalize_web.py` · `exercise1-2_run.py`** 두 파일을 만들고(실습 1-1의 `log_parse.py` 와 시작하기의 `access_sample.log` 가 같은 폴더에 있어야 합니다), `normalize_web.py` 의 `convert_time` · `convert_result` 에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>정규화한 이벤트 수와 읽기 실패한 줄</mark>(단계 1), <mark>처음 나오는 실패 이벤트</mark>(단계 2), <mark>성공 · 실패별 개수</mark>(단계 3)를 읽습니다.
 
 **`normalize_web.py`**
 
 ```python
 from datetime import datetime                                                # 날짜와 시각을 다루는 datetime 클래스를 불러온다
-from log_parse import split_request, read_request, read_status, read_client  # Unit 1에서 만든 로그 읽기 함수를 불러온다
+from log_parse import split_request, read_request, read_status, read_client  # 실습 1-1에서 만든 로그 읽기 함수를 불러온다
 
 NGINX_TIME_FORMAT = "%d/%b/%Y:%H:%M:%S %z"                                   # nginx 시각의 모양(예: 02/Nov/2026:09:12:03 +0900)
 COMMON_TIME_FORMAT = "%Y-%m-%d %H:%M:%S"                                     # 공통 시각의 모양(예: 2026-11-02 09:12:03)
@@ -305,7 +305,7 @@ print(result_counts)                                                            
 **순서**
 
 1. **[VS Code]** 파일 `normalize_web.py` · `exercise1-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
-2. **[VS Code]** `normalize_web.py` 에서 직접 쓰는 곳 **여섯 군데**를 씁니다. 1.2 의 문법 상자를 보고 씁니다.
+2. **[VS Code]** `normalize_web.py` 에서 직접 쓰는 곳 **여섯 군데**를 씁니다. 「시각 문자열 바꾸기」 쪽의 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
@@ -329,32 +329,61 @@ print(result_counts)                                                            
 
 ---
 
-## 마무리 · 이번 Unit 작업 확인하기
+## 이번 Unit 마무리 · 깃허브에 올리기
 
-이번 Unit의 작업을 깃허브에 올리는 일은 Unit 2의 실습 2-2 마지막에 한 번에 합니다. <mark>이번 Unit에서는 파일이 모두 있는지만 확인합니다.</mark>
+하루를 닫는 마무리입니다(15분). 핵심 실습 두 개를 끝낸 뒤 합니다. 오늘은 Module 3 마지막 Unit에서 미뤄 둔 `access_control` 폴더도 같은 저장소라서 함께 올라갑니다.
 
-**순서**
+**1. 오늘 한 일 확인**
 
-1. **[터미널]** `anomaly_detection` 폴더에서 이번 Unit에서 만든 파일이 있는지 확인합니다.
+1. 접속 로그 30줄을 읽어 28줄을 주소 · 방법 · 경로 · 상태 코드로 나누고, 깨진 2줄을 읽기 실패로 셌다 (실습 1-1)
+2. 웹 서버 로그 한 줄을 시각 · 결과를 맞춘 공통 이벤트로 바꿨다 (실습 1-2)
+3. 보고서 `report_u1.md` 의 실습 1-1 · 1-2 칸에 `답:` 뒤가 비어 있는 질문이 없다. <mark>못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.</mark>
+
+**2. 파일 확인** — **[터미널]** `anomaly_detection` 폴더에서 확인합니다.
+
+```bash
+pwd
+ls
+```
+
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
+- `access_sample.log` · `log_parse.py` · `exercise1-1_run.py` · `normalize_web.py` · `exercise1-2_run.py` · `report_u1.md` 가 보여야 합니다.
+- 도전을 했다면 그 도전의 파일(`log_classify.py` · `server_log.jsonl` · `saas_events.csv` · `normalize_json_csv.py` · `normalize.py` · `challenge1-1_run.py` ~ `challenge1-3_run.py` · `normalized_events.json` 중 만든 것)도 보입니다.
+
+**3. 깃허브에 올리기**
+
+1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
    ```bash
+   cd ..
    pwd
-   ls
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
-   - `normalize_web.py` · `normalize_json_csv.py` · `normalize.py` · `exercise1-2_run.py` · `challenge1-2_run.py` · `challenge1-3_run.py` · `normalized_events.json` · `server_log.jsonl` · `saas_events.csv` 와 `report_u1.md` 가 보여야 합니다.
-2. **[보고서]** `report_u1.md` 의 실습 1-2 ~ 도전 1-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. <mark>못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.</mark>
+   - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
+   - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
+2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
+   ```bash
+   git status
+   ```
+   - 명령 풀이: `git status` 올릴 파일의 상태를 봄
+   - `anomaly_detection/` 가 새 폴더로 보입니다. Module 3 마지막 Unit의 파일을 아직 올리지 않았다면 `access_control/` 안의 파일도 함께 보입니다. 둘 다 올리면 됩니다.
+   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 도 같은 방법으로 합니다.
+   - `anomaly_detection/__pycache__/` 는 파이썬이 실행하면서 자동으로 만든 임시 폴더입니다. 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장합니다.
+3. **[보고서]** `report_u1.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다.
+4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
+   ```bash
+   git add .
+   git commit -m "Add anomaly detection unit 1 log parsing and web log normalization"
+   git push
+   ```
+   - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
+   - `git push` 가 거절(`rejected`)되면 `git pull` 로 받아 온 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다.
+5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `anomaly_detection` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다.
 
----
+- 시간이 남아 도전을 했다면 도전 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
 
-## 이번 Unit 마무리
+**4. 이어지는 곳**
 
-| 확인 | 문제 |
-|---|---|
-| 웹 서버 로그 한 줄을 공통 이벤트로 바꿨다 | 실습 1-2 |
-| 판정 서버 로그와 SaaS 로그를 공통 이벤트로 바꿨다 | 도전 1-2 |
-| 세 로그를 합쳐 시간순으로 정렬하고 `normalized_events.json` 으로 저장했다 | 도전 1-3 |
-
-Unit 2에서는 이 `normalized_events.json` 과 같은 모양의 파일을 **판다스**로 읽어서 실패한 이벤트를 골라 세고, 사용자별 · 시간대별로 묶습니다. 판다스 설치를 Unit 1 마무리 때 미리 했다면 확인만 합니다.
+1. 다음 Unit 2(판다스로 세고 기준 정하기)는 공통 이벤트 57개를 **판다스**로 표처럼 읽어 실패한 이벤트를 골라 세고, 사용자별 · 주소별로 묶습니다.
+2. 이벤트 파일 `normalized_events.json` 은 Unit 2 시작하기에서 샘플로 만들기 때문에, 도전 1-3을 하지 않았어도 됩니다. 판다스 설치도 Unit 2 시작하기에서 합니다.
 
 ---
 

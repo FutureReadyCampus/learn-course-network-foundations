@@ -10,6 +10,7 @@ lessons:
 - path: lesson/06/lesson.md
 - path: lesson/07/lesson.md
 - path: lesson/08/lesson.md
+- path: lesson/09/lesson.md
 ---
 
 # 로그를 같은 모양으로 맞추기

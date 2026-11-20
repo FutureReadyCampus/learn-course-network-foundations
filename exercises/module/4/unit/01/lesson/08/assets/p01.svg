@@ -1,23 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
-<title>보고서는 쓸 내용을 보고 답: 뒤에, 출력은 코드 상자에, 모르면 모름이라고 쓴다</title>
-<desc>보고서를 쓰는 다섯 가지 규칙을 체크리스트로 놓았습니다. 왜를 묻는 질문은 화면의 값이나 배운 내용을 근거로 쓰고, 답을 못 찾으면 모름과 막힌 곳을 씁니다.</desc>
-<defs><marker id="a-m4u01l05-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker><marker id="a-m4u01l05-p01-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0442e"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>report_u1.md 틀은 핵심 실습 칸을 모두 채우고, 도전 칸은 한 것만 채운다</title>
+<desc>anomaly_detection 폴더에 New File 로 report_u1.md 를 만들고 틀을 붙여 넣습니다. 칸은 실습 1-1, 실습 1-2, 마무리 순서이고 모두 채웁니다. 그 아래 도전 1-1 ~ 1-3 칸은 선택이라 내가 한 도전만 채웁니다.</desc>
+<defs><marker id="a-m4u01l08-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
-<text x="24" y="30" font-size="19" fill="#292929" font-weight="700">보고서 쓰는 법</text>
-<rect x="24" y="48" width="672" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="40" y="64" width="20" height="20" rx="4" fill="#ffffff" stroke="#1f7a4a" stroke-width="2"/><polyline points="44,74 49,79 56,69" fill="none" stroke="#1f7a4a" stroke-width="2.5"/>
-<text x="74" y="80" font-size="15" fill="#292929">문제를 풀 때마다 그 문제 제목 아래 질문에 답하기</text>
-<rect x="24" y="112" width="672" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="40" y="128" width="20" height="20" rx="4" fill="#ffffff" stroke="#1f7a4a" stroke-width="2"/><polyline points="44,138 49,143 56,133" fill="none" stroke="#1f7a4a" stroke-width="2.5"/>
-<text x="74" y="144" font-size="15" fill="#292929">쓸 내용: 을 보고 답: 뒤에 쓰기</text>
-<rect x="24" y="176" width="672" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="40" y="192" width="20" height="20" rx="4" fill="#ffffff" stroke="#1f7a4a" stroke-width="2"/><polyline points="44,202 49,207 56,197" fill="none" stroke="#1f7a4a" stroke-width="2.5"/>
-<text x="74" y="208" font-size="15" fill="#292929">출력 · 코드는 답: 아래 빈 코드 상자에 붙여 넣기</text>
-<rect x="24" y="240" width="672" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="40" y="256" width="20" height="20" rx="4" fill="#ffffff" stroke="#1f7a4a" stroke-width="2"/><polyline points="44,266 49,271 56,261" fill="none" stroke="#1f7a4a" stroke-width="2.5"/>
-<text x="74" y="272" font-size="15" fill="#292929">「왜」는 내 화면의 값이나 배운 내용을 근거로</text>
-<rect x="24" y="304" width="672" height="52" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<rect x="40" y="320" width="20" height="20" rx="4" fill="#ffffff" stroke="#e0442e" stroke-width="2"/><polyline points="44,330 49,335 56,325" fill="none" stroke="#e0442e" stroke-width="2.5"/>
-<text x="74" y="336" font-size="15" fill="#292929">[핵심 질문]은 꼭 · 모르면 「모름 — 막힌 곳: …」</text>
+<text x="24" y="32" font-size="19" fill="#292929" font-weight="700">report_u1.md 틀의 칸 순서</text>
+<rect x="24" y="48" width="672" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="40" y="76" font-size="15" fill="#292929">anomaly_detection › New File › report_u1.md › 틀 붙여 넣기 › 이름 바꾸고 저장</text>
+<text x="24" y="124" font-size="17" fill="#1f7a4a" font-weight="700">핵심 실습 · 모두 채움</text>
+<rect x="24" y="136" width="320" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="40" y="160" font-size="15" fill="#292929" font-weight="700">## 실습 1-1</text>
+<text x="40" y="181" font-size="15" fill="#666660">(가) 출력 상자 · (나) · (다)</text>
+<line x1="184" y1="192" x2="184" y2="208" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l08-p01)"/>
+<rect x="24" y="210" width="320" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="40" y="234" font-size="15" fill="#292929" font-weight="700">## 실습 1-2</text>
+<text x="40" y="255" font-size="15" fill="#666660">(가) 출력 상자 · (나) · (다)</text>
+<line x1="184" y1="266" x2="184" y2="282" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l08-p01)"/>
+<rect x="24" y="284" width="320" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="40" y="308" font-size="15" fill="#292929" font-weight="700">## 마무리</text>
+<text x="40" y="329" font-size="15" fill="#666660">(가) 하나</text>
+<text x="376" y="124" font-size="17" fill="#9a6200" font-weight="700">도전 (선택) · 한 것만 채움</text>
+<rect x="376" y="136" width="320" height="56" rx="8" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="392" y="160" font-size="15" fill="#292929" font-weight="700">## 도전 1-1</text>
+<text x="392" y="181" font-size="15" fill="#666660">(가) 출력 상자 · (나) · (다)</text>
+<rect x="376" y="210" width="320" height="56" rx="8" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="392" y="234" font-size="15" fill="#292929" font-weight="700">## 도전 1-2</text>
+<text x="392" y="255" font-size="15" fill="#666660">(가) 출력 상자 · (나) · (다)</text>
+<rect x="376" y="284" width="320" height="56" rx="8" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="392" y="308" font-size="15" fill="#292929" font-weight="700">## 도전 1-3</text>
+<text x="392" y="329" font-size="15" fill="#666660">(가) 출력 상자 · (나) · (다)</text>
+<text x="24" y="376" font-size="15" fill="#666660">질문 글은 이 레슨의 다음 페이지들에 있고, 파일에는 번호와 답: 칸만 있습니다.</text>
+<text x="24" y="400" font-size="15" fill="#666660">하지 않은 도전의 칸은 비워 둡니다.</text>
 </g>
 </svg>
