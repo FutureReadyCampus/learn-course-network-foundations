@@ -1,30 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img">
-<title>정답 마무리: git status 에 .env 나 .venv 가 없을 때만 add, commit, push 한다</title>
-<desc>cd .. 와 pwd 로 위치를 확인하고 git status 를 본다. .env 나 .venv 가 없으면 add, commit, push 로 올린다. 보이면 .gitignore 에 한 줄 적고 git status 를 다시 본다.</desc>
-<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
-<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">정답 마무리 · 비밀 키가 없을 때만 올리기</text>
-<rect x="30" y="70" width="140" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="100" y="99.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">cd ..</text>
-<text x="100" y="120.8" font-size="15" fill="#292929" text-anchor="middle">pwd</text>
-<rect x="200" y="70" width="140" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="270" y="110.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">git status</text>
-<rect x="370" y="70" width="150" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="445" y="99.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">.env · .venv</text>
-<text x="445" y="120.8" font-size="15" fill="#292929" text-anchor="middle">있나?</text>
-<rect x="560" y="70" width="130" height="70" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="625" y="100.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">add</text>
-<text x="625" y="119.7" font-size="14" fill="#292929" text-anchor="middle">commit · push</text>
-<line x1="170" y1="105" x2="198" y2="105" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<line x1="340" y1="105" x2="368" y2="105" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<line x1="520" y1="105" x2="558" y2="105" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<text x="539" y="97" font-size="14" fill="#666660" text-anchor="middle">없음</text>
-<rect x="370" y="200" width="150" height="70" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="445" y="230.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">.gitignore 에</text>
-<text x="445" y="249.7" font-size="14" fill="#292929" text-anchor="middle">한 줄 적기</text>
-<line x1="445" y1="140" x2="445" y2="198" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<text x="475" y="175" font-size="14" fill="#666660" text-anchor="middle">있음</text>
-<path d="M370,235 L270,235 L270,142" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<text x="30" y="310" font-size="15" fill="#666660">가장 위험한 실수: .env 가 보이는데 그대로 git add . 하기</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 439" role="img">
+<title>YAML 은 이름: 값, 들여쓰기, - 값, # 설명 네 모양으로 읽는다</title>
+<desc>왼쪽은 compose.yaml 의 앞부분이고 오른쪽은 YAML 의 네 가지 모양과 뜻이다. 들여쓰기는 공백으로 하고 한 단계마다 공백 2칸을 쓴다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">YAML 파일 읽는 법</text>
+<rect x="336" y="52" width="372" height="60.95" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="344" y="77.12" font-size="16" text-anchor="start" fill="#292929" font-weight="700">이름: 값</text>
+<text x="344" y="99.25" font-size="15" text-anchor="start" fill="#292929">이름과 값을 짝으로 (콜론 뒤 공백 한 칸)</text>
+<rect x="336" y="120.95" width="372" height="60.95" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="344" y="146.07" font-size="16" text-anchor="start" fill="#292929" font-weight="700">들여쓰기</text>
+<text x="344" y="168.2" font-size="15" text-anchor="start" fill="#292929">어느 이름 아래에 속하는지</text>
+<rect x="336" y="189.9" width="372" height="60.95" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="344" y="215.02" font-size="16" text-anchor="start" fill="#292929" font-weight="700">- 값</text>
+<text x="344" y="237.15" font-size="15" text-anchor="start" fill="#292929">값이 여러 개면 한 줄에 하나씩</text>
+<rect x="336" y="258.85" width="372" height="60.95" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="344" y="283.97" font-size="16" text-anchor="start" fill="#292929" font-weight="700"># 설명</text>
+<text x="344" y="306.1" font-size="15" text-anchor="start" fill="#292929">실행에는 영향이 없다</text>
+<rect x="12" y="52" width="300" height="267.8" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="86" font-size="16" text-anchor="start" fill="#292929">services:</text>
+<text x="56" y="116" font-size="16" text-anchor="start" fill="#292929">web1:</text>
+<text x="80" y="146" font-size="16" text-anchor="start" fill="#292929">image: nginx:1.28</text>
+<text x="80" y="176" font-size="16" text-anchor="start" fill="#292929">ports:</text>
+<text x="104" y="206" font-size="16" text-anchor="start" fill="#292929">- "8080:80"</text>
+<text x="80" y="236" font-size="16" text-anchor="start" fill="#292929"># 사람이 읽는 설명</text>
+<rect x="12" y="331.8" width="696" height="45.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="359.85" font-size="15" text-anchor="middle" fill="#292929">같은 내용을 JSON 으로: {"services": {"web1": {"image": "nginx:1.28"}}}</text>
+<rect x="12" y="379.8" width="696" height="45.75" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="360" y="407.85" font-size="15" text-anchor="middle" fill="#292929">주의: 들여쓰기는 공백 2칸씩 (탭 문자는 오류), 같은 단계는 공백 수를 같게</text>
 </g>
 </svg>

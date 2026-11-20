@@ -1,48 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>실습 3-1: events_basic.py 네 함수와 실행 파일이 내는 네 단계 출력</title>
-<desc>events_basic.py 의 load_events, describe_events, count_values 에서 직접 쓰고 pick_failed 는 미리 채워져 있습니다. exercise3-1_run.py 가 이 함수들을 불러 단계 1~4를 출력합니다.</desc>
-<defs><marker id="a-0302-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">실습 3-1: events_basic.py 와 실행 파일</text>
-<rect x="24" y="72" width="240" height="52" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="144.0" y="93.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">load_events</text>
-<text x="144.0" y="112.7" font-size="14" fill="#666660" text-anchor="middle">1번 직접 · 표로 읽기</text>
-<line x1="267" y1="98" x2="297" y2="196" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p05)"/>
-<rect x="516" y="72" width="180" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="606.0" y="93.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">단계 1</text>
-<text x="606.0" y="112.7" font-size="14" fill="#666660" text-anchor="middle">표 크기 · 시각 3개</text>
-<line x1="483" y1="196" x2="513" y2="98" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p05)"/>
-<rect x="24" y="136" width="240" height="52" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="144.0" y="157.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">describe_events</text>
-<text x="144.0" y="176.7" font-size="14" fill="#666660" text-anchor="middle">2번 직접 · time 열</text>
-<line x1="267" y1="162" x2="297" y2="196" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p05)"/>
-<rect x="516" y="136" width="180" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="606.0" y="157.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">단계 2</text>
-<text x="606.0" y="176.7" font-size="14" fill="#666660" text-anchor="middle">성공 · 실패 개수</text>
-<line x1="483" y1="196" x2="513" y2="162" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p05)"/>
-<rect x="24" y="200" width="240" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="144.0" y="221.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">pick_failed</text>
-<text x="144.0" y="240.7" font-size="14" fill="#666660" text-anchor="middle">미리 채움 · 실패만</text>
-<line x1="267" y1="226" x2="297" y2="196" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p05)"/>
-<rect x="516" y="200" width="180" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="606.0" y="221.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">단계 3</text>
-<text x="606.0" y="240.7" font-size="14" fill="#666660" text-anchor="middle">실패의 소스별 개수</text>
-<line x1="483" y1="196" x2="513" y2="226" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p05)"/>
-<rect x="24" y="264" width="240" height="52" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="144.0" y="285.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">count_values</text>
-<text x="144.0" y="304.7" font-size="14" fill="#666660" text-anchor="middle">3 · 4번 직접 · 값별 개수</text>
-<line x1="267" y1="290" x2="297" y2="196" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p05)"/>
-<rect x="516" y="264" width="180" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="606.0" y="285.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">단계 4</text>
-<text x="606.0" y="304.7" font-size="14" fill="#666660" text-anchor="middle">전체의 소스별 개수</text>
-<line x1="483" y1="196" x2="513" y2="290" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p05)"/>
-<rect x="300" y="160" width="180" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="390.0" y="191.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">exercise3-1_run.py</text>
-<text x="390.0" y="210.7" font-size="14" fill="#666660" text-anchor="middle">그대로 붙여 넣기</text>
-<rect x="24" y="337" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200"/>
-<text x="48" y="350" font-size="14" fill="#666660" text-anchor="start">직접 쓰는 곳</text>
-<rect x="154.4" y="337" width="16" height="16" rx="3" fill="#f1f1ef" stroke="#dededb"/>
-<text x="178.4" y="350" font-size="14" fill="#666660" text-anchor="start">미리 채운 곳</text>
-<rect x="284.8" y="337" width="16" height="16" rx="3" fill="#e4f3ea" stroke="#1f7a4a"/>
-<text x="308.8" y="350" font-size="14" fill="#666660" text-anchor="start">출력</text>
-<text x="24" y="384" font-size="14" fill="#666660" text-anchor="start">실행: python exercise3-1_run.py (맥북은 python3)</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 310" role="img">
+<title>실습 3-1 정리: 초를 버려 분으로, 웹만, 급증 기준, 기준 이상인 분</title>
+<desc>times.dt.floor("min") 으로 minute 열을 만들고, source 가 web 인 행만 고릅니다. 급증 기준은 평균 2.0 × 3 = 6.0이고, is_spike 로 기준 이상인 분만 spike_minutes 에 남깁니다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 3-1 정리</text>
+<rect x="20" y="60" width="150" height="160" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="95.0" y="116" font-size="14" text-anchor="middle" fill="#292929"><tspan x="95.0" dy="0" font-weight="700">초를 버려 분으로</tspan><tspan x="95.0" dy="19">times.dt</tspan><tspan x="95.0" dy="19">.floor("min")</tspan><tspan x="95.0" dy="19">→ minute 열</tspan></text>
+<rect x="196" y="60" width="150" height="160" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="271.0" y="126" font-size="14" text-anchor="middle" fill="#292929"><tspan x="271.0" dy="0" font-weight="700">웹 서버만</tspan><tspan x="271.0" dy="19">source == "web"</tspan><tspan x="271.0" dy="19">→ web_events</tspan></text>
+<rect x="372" y="60" width="150" height="160" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="447.0" y="116" font-size="14" text-anchor="middle" fill="#292929"><tspan x="447.0" dy="0" font-weight="700">급증 기준</tspan><tspan x="447.0" dy="19">average</tspan><tspan x="447.0" dy="19">* multiple</tspan><tspan x="447.0" dy="19">2.0 × 3 = 6.0</tspan></text>
+<rect x="548" y="60" width="150" height="160" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="623.0" y="126" font-size="14" text-anchor="middle" fill="#292929"><tspan x="623.0" dy="0" font-weight="700">기준 이상인 분</tspan><tspan x="623.0" dy="19">is_spike</tspan><tspan x="623.0" dy="19">→ spike_minutes</tspan></text>
+<polyline points="173,140.0 192,140.0" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<polyline points="349,140.0 368,140.0" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<polyline points="525,140.0 544,140.0" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<text x="20" y="262" font-size="14" text-anchor="start" fill="#666660">분마다 세는 groupby("minute").size() 줄은 미리 채움</text>
+<text x="20" y="288" font-size="14" text-anchor="start" fill="#666660">실습 2-3의 pick_alert_ips 와 같은 모양으로 기준 이상만 남긴다</text>
+</g>
 </svg>

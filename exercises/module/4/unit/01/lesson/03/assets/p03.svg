@@ -1,45 +1,57 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img">
-<title>이상 징후 다섯 유형과 이번 Unit 샘플 로그에서 보이는 예</title>
-<desc>다섯 유형마다 로그에서 보이는 모양과 샘플 로그의 예를 적었습니다. 호박색 칸은 이번 샘플에 있는 예이고, 회색 칸은 뒤 Unit 에서 다룹니다.</desc>
-<defs><marker id="a-m4u01l03-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker><marker id="a-m4u01l03-p03-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0442e"/></marker></defs>
-<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
-<text x="24" y="30" font-size="19" fill="#292929" font-weight="700">이상 징후 다섯 유형</text>
-<text x="24" y="52" font-size="14" fill="#666660" font-weight="700">유형</text>
-<text x="206" y="52" font-size="14" fill="#666660" font-weight="700">로그에서 보이는 모양</text>
-<text x="468" y="52" font-size="14" fill="#666660" font-weight="700">이번 샘플 로그의 예</text>
-<rect x="24" y="62" width="170" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="109.0" y="96.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">비정상 로그인</text>
-<rect x="206" y="62" width="250" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="331.0" y="96.2" font-size="15" fill="#292929" text-anchor="middle">같은 주소 401 이 연달아</text>
-<rect x="468" y="62" width="228" height="58" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="582.0" y="85.8" font-size="15" fill="#292929" text-anchor="middle">203.0.113.50</text>
-<text x="582.0" y="106.8" font-size="15" fill="#292929" text-anchor="middle">POST /login 401 이 5번</text>
-<rect x="24" y="130" width="170" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="109.0" y="164.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">트래픽 급증</text>
-<rect x="206" y="130" width="250" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="331.0" y="164.2" font-size="15" fill="#292929" text-anchor="middle">짧은 시간에 요청 몰림</text>
-<rect x="468" y="130" width="228" height="58" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="582.0" y="164.2" font-size="15" fill="#666660" text-anchor="middle">Unit 4 · 5 에서 다룸</text>
-<rect x="24" y="198" width="170" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="109.0" y="232.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">비인가 접근</text>
-<rect x="206" y="198" width="250" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="331.0" y="232.2" font-size="15" fill="#292929" text-anchor="middle">권한 없는 주소 → 403</text>
-<rect x="468" y="198" width="228" height="58" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="582.0" y="221.8" font-size="15" fill="#292929" text-anchor="middle">/admin · /admin/users</text>
-<text x="582.0" y="242.8" font-size="15" fill="#292929" text-anchor="middle">403</text>
-<rect x="24" y="266" width="170" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="109.0" y="300.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">SaaS 이상 사용</text>
-<rect x="206" y="266" width="250" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="331.0" y="300.2" font-size="15" fill="#292929" text-anchor="middle">대량 내려받기 · 낯선 위치</text>
-<rect x="468" y="266" width="228" height="58" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="582.0" y="300.2" font-size="15" fill="#666660" text-anchor="middle">Unit 6 에서 다룸</text>
-<rect x="24" y="334" width="170" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="109.0" y="368.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">악성 행위 징후</text>
-<rect x="206" y="334" width="250" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="331.0" y="368.2" font-size="15" fill="#292929" text-anchor="middle">없는 주소까지 차례로 탐색</text>
-<rect x="468" y="334" width="228" height="58" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="582.0" y="357.8" font-size="15" fill="#292929" text-anchor="middle">198.51.100.90</text>
-<text x="582.0" y="378.8" font-size="15" fill="#292929" text-anchor="middle">/.env 등 404</text>
-<text x="24" y="402" font-size="15" fill="#666660">한 줄씩 보면 평범해도 여러 줄을 묶어 보면 드러납니다.</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>공통 이벤트의 키 7개와 각 키가 답하는 질문, 웹 서버 한 줄의 값</title>
+<desc>공통 이벤트는 time, source, user, ip, action, result 여섯 질문의 답과 원래 줄 raw 를 담은 키 7개입니다. 웹 서버 로그에는 사용자가 없어 user 는 None 입니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">공통 이벤트의 키 7개 (웹 서버 한 줄의 예)</text>
+<rect x="24" y="52" width="146" height="36" rx="4" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="97" y="74.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">키</text>
+<rect x="174" y="52" width="206" height="36" rx="4" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="277" y="74.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">답하는 질문</text>
+<rect x="384" y="52" width="312" height="36" rx="4" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="540" y="74.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">웹 서버 한 줄</text>
+<rect x="24" y="92" width="146" height="36" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="97" y="114.3" font-size="15" text-anchor="middle" fill="#292929">time</text>
+<rect x="174" y="92" width="206" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="277" y="114.3" font-size="15" text-anchor="middle" fill="#292929">언제?</text>
+<rect x="384" y="92" width="312" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="540" y="114.3" font-size="15" text-anchor="middle" fill="#292929">2026-11-02 09:12:03</text>
+<rect x="24" y="132" width="146" height="36" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="97" y="154.3" font-size="15" text-anchor="middle" fill="#292929">source</text>
+<rect x="174" y="132" width="206" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="277" y="154.3" font-size="15" text-anchor="middle" fill="#292929">어느 로그에서?</text>
+<rect x="384" y="132" width="312" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="540" y="154.3" font-size="15" text-anchor="middle" fill="#292929">web</text>
+<rect x="24" y="172" width="146" height="36" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="97" y="194.3" font-size="15" text-anchor="middle" fill="#292929">user</text>
+<rect x="174" y="172" width="206" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="277" y="194.3" font-size="15" text-anchor="middle" fill="#292929">누가?</text>
+<rect x="384" y="172" width="312" height="36" rx="4" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="540" y="194.3" font-size="15" text-anchor="middle" fill="#292929">None (원래 없음)</text>
+<rect x="24" y="212" width="146" height="36" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="97" y="234.3" font-size="15" text-anchor="middle" fill="#292929">ip</text>
+<rect x="174" y="212" width="206" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="277" y="234.3" font-size="15" text-anchor="middle" fill="#292929">어디서?</text>
+<rect x="384" y="212" width="312" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="540" y="234.3" font-size="15" text-anchor="middle" fill="#292929">203.0.113.50</text>
+<rect x="24" y="252" width="146" height="36" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="97" y="274.4" font-size="15" text-anchor="middle" fill="#292929">action</text>
+<rect x="174" y="252" width="206" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="277" y="274.4" font-size="15" text-anchor="middle" fill="#292929">무엇을?</text>
+<rect x="384" y="252" width="312" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="540" y="274.4" font-size="15" text-anchor="middle" fill="#292929">POST /login</text>
+<rect x="24" y="292" width="146" height="36" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="97" y="314.4" font-size="15" text-anchor="middle" fill="#292929">result</text>
+<rect x="174" y="292" width="206" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="277" y="314.4" font-size="15" text-anchor="middle" fill="#292929">성공했나?</text>
+<rect x="384" y="292" width="312" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="540" y="314.4" font-size="15" text-anchor="middle" fill="#292929">실패</text>
+<rect x="24" y="332" width="146" height="36" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="97" y="354.4" font-size="15" text-anchor="middle" fill="#292929">raw</text>
+<rect x="174" y="332" width="206" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="277" y="354.4" font-size="15" text-anchor="middle" fill="#292929">(보관용)</text>
+<rect x="384" y="332" width="312" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="540" y="354.4" font-size="15" text-anchor="middle" fill="#292929">원래 줄 그대로</text>
+<text x="24" y="388" font-size="15" text-anchor="start" fill="#666660">원래 로그에 없는 값은 지어내지 않고 None 으로 둡니다.</text>
 </g>
 </svg>

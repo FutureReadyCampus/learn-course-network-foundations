@@ -1,34 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
-<title>세 로그의 이벤트를 normalize.py 로 합쳐 시간순 normalized_events.json 으로 저장</title>
-<desc>웹 서버 28개, 판정 서버 15개, SaaS 14개 이벤트를 normalize.py 가 하나로 합쳐 시간순으로 정렬합니다. 저장한 normalized_events.json 은 Unit 3 분석의 입력이 됩니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
+<title>이벤트 57개에서 로그인 실패를 주소별로 세어 5번 이상인 주소를 알린다</title>
+<desc>샘플 이벤트 57개에서 POST /login 실패만 골라 IP 주소별로 셉니다. 알림 기준 5번 이상인 주소만 담당자에게 알립니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">목표: 세 로그 → 시간순 이벤트 파일 하나</text>
-<rect x="24" y="58" width="180" height="62" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="114" y="83.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">웹 서버 이벤트</text>
-<text x="114" y="103.9" font-size="14" text-anchor="middle" fill="#666660">28개</text>
-<line x1="206" y1="89" x2="242" y2="165" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="24" y="134" width="180" height="62" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="114" y="159.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">판정 서버 이벤트</text>
-<text x="114" y="179.9" font-size="14" text-anchor="middle" fill="#666660">15개</text>
-<line x1="206" y1="165" x2="242" y2="165" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="24" y="210" width="180" height="62" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="114" y="235.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">SaaS 이벤트</text>
-<text x="114" y="255.9" font-size="14" text-anchor="middle" fill="#666660">14개</text>
-<line x1="206" y1="241" x2="242" y2="165" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="246" y="112" width="200" height="106" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="346" y="149.0" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">normalize.py</text>
-<text x="346" y="169.8" font-size="14" text-anchor="middle" fill="#292929">합치기 · 정렬</text>
-<text x="346" y="190.1" font-size="14" text-anchor="middle" fill="#292929">세기 · 저장</text>
-<line x1="448" y1="165" x2="478" y2="165" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="482" y="112" width="214" height="106" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="589" y="149.0" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">저장한 파일</text>
-<text x="589" y="169.8" font-size="14" text-anchor="middle" fill="#292929">normalized_events.json</text>
-<text x="589" y="190.1" font-size="14" text-anchor="middle" fill="#666660">시간순 57개</text>
-<line x1="589" y1="220" x2="589" y2="252" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="482" y="256" width="214" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="589" y="287.4" font-size="15" text-anchor="middle" fill="#292929">Unit 3 분석의 입력</text>
-<rect x="24" y="256" width="422" height="54" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="235" y="287.4" font-size="15" text-anchor="middle" fill="#292929">함께 확인: 소스별 수 · 빈 값 수 · gaeun 의 일</text>
+<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">로그인 실패가 많은 주소를 찾아 담당자에게 알린다</text>
+<rect x="20" y="72" width="140" height="96" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="90.0" y="115" font-size="15" text-anchor="middle" fill="#292929"><tspan x="90.0" dy="0" font-weight="700">샘플 이벤트</tspan><tspan x="90.0" dy="20">57개</tspan></text>
+<rect x="200" y="72" width="140" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="270.0" y="115" font-size="15" text-anchor="middle" fill="#292929"><tspan x="270.0" dy="0" font-weight="700">POST /login</tspan><tspan x="270.0" dy="20">실패만 세기</tspan></text>
+<rect x="380" y="72" width="140" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="450.0" y="115" font-size="15" text-anchor="middle" fill="#292929"><tspan x="450.0" dy="0" font-weight="700">IP 주소별</tspan><tspan x="450.0" dy="20">실패 횟수</tspan></text>
+<rect x="560" y="72" width="140" height="96" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="630.0" y="115" font-size="15" text-anchor="middle" fill="#292929"><tspan x="630.0" dy="0" font-weight="700">5번 이상인</tspan><tspan x="630.0" dy="20">주소만 알림</tspan></text>
+<polyline points="163,120.0 196,120.0" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<polyline points="343,120.0 376,120.0" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<polyline points="523,120.0 556,120.0" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="20" y="200" width="680" height="92" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="241" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0">로그인에 연달아 실패 = 비밀번호를 맞혀 보는 대표적인 모습</tspan><tspan x="360.0" dy="20">기준 이상인 주소만 보여 주면 담당자가 먼저 볼 곳이 정해진다</tspan></text>
 </g>
 </svg>

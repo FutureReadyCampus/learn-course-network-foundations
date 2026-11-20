@@ -1,30 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img">
-<title>웹 서버 로그 한 줄이 normalize_web.py 를 거쳐 공통 이벤트가 되는 흐름</title>
-<desc>왼쪽은 웹 서버 로그의 원래 시각과 상태 코드, 가운데는 직접 만드는 normalize_web.py, 오른쪽은 결과인 공통 이벤트입니다. 시각은 2026-11-02 09:12:03 모양이 되고 원래 줄은 raw 에 남습니다.</desc>
-<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">목표: 웹 서버 로그 한 줄 → 공통 이벤트</text>
-<rect x="24" y="64" width="210" height="160" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="129" y="107.8" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">입력: 웹 서버 로그</text>
-<text x="129" y="128.5" font-size="14" text-anchor="middle" fill="#292929">access_sample.log</text>
-<text x="129" y="148.8" font-size="14" text-anchor="middle" fill="#292929">02/Nov/2026:09:12:03</text>
-<text x="129" y="169.1" font-size="14" text-anchor="middle" fill="#292929">+0900</text>
-<text x="129" y="189.4" font-size="14" text-anchor="middle" fill="#292929">상태 코드 401</text>
-<rect x="272" y="64" width="176" height="160" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="360" y="117.9" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">프로그램</text>
-<text x="360" y="138.6" font-size="14" text-anchor="middle" fill="#292929">normalize_web.py</text>
-<text x="360" y="158.9" font-size="14" text-anchor="middle" fill="#292929">convert_time</text>
-<text x="360" y="179.2" font-size="14" text-anchor="middle" fill="#292929">convert_result</text>
-<rect x="486" y="64" width="210" height="160" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="591" y="107.8" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">출력: 공통 이벤트</text>
-<text x="591" y="128.5" font-size="14" text-anchor="middle" fill="#292929">time</text>
-<text x="591" y="148.8" font-size="14" text-anchor="middle" fill="#292929">2026-11-02 09:12:03</text>
-<text x="591" y="169.1" font-size="14" text-anchor="middle" fill="#292929">result: 실패</text>
-<text x="591" y="189.4" font-size="14" text-anchor="middle" fill="#292929">raw: 원래 줄 그대로</text>
-<line x1="236" y1="144" x2="268" y2="144" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<line x1="450" y1="144" x2="482" y2="144" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="24" y="248" width="672" height="62" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="360" y="272.5" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">exercise2-1_run.py 로 실행하면</text>
-<text x="360" y="294.2" font-size="15" text-anchor="middle" fill="#292929">단계 1 이벤트 수 · 단계 2 처음 나오는 실패 · 단계 3 성공 · 실패별 수</text>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>이벤트 파일 57개를 표로 읽어 성공·실패와 소스별 실패 개수를 세는 목표</title>
+<desc>입력은 normalized_events.json 의 이벤트 57개입니다. events_basic.py 가 표로 읽고 실패만 걸러 세어, 성공·실패 개수와 소스별 실패 개수를 냅니다.</desc>
+<defs><marker id="a-0302-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">목표: 실패 이벤트를 소스별로 세기</text>
+<rect x="24" y="84" width="230" height="130" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="139.0" y="133.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">입력</text>
+<text x="139.0" y="154.2" font-size="15" fill="#292929" text-anchor="middle">normalized_events.json</text>
+<text x="139.0" y="175.2" font-size="15" fill="#666660" text-anchor="middle">이벤트 57개</text>
+<rect x="290" y="84" width="190" height="130" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="385.0" y="122.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">events_basic.py</text>
+<text x="385.0" y="143.8" font-size="15" fill="#666660" text-anchor="middle">표로 읽기</text>
+<text x="385.0" y="164.8" font-size="15" fill="#666660" text-anchor="middle">실패만 걸러 내기</text>
+<text x="385.0" y="185.8" font-size="15" fill="#666660" text-anchor="middle">값별로 세기</text>
+<rect x="516" y="84" width="180" height="130" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="606.0" y="133.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">출력</text>
+<text x="606.0" y="154.2" font-size="15" fill="#666660" text-anchor="middle">성공 · 실패 개수</text>
+<text x="606.0" y="175.2" font-size="15" fill="#666660" text-anchor="middle">실패의 소스별 개수</text>
+<line x1="257" y1="149" x2="287" y2="149" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p01)"/>
+<line x1="483" y1="149" x2="513" y2="149" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p01)"/>
+<text x="24" y="248" font-size="15" fill="#666660" text-anchor="start">실패를 나눠 세는 소스 세 가지</text>
+<rect x="24" y="260" width="208.0" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="128.0" y="287.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">web · 웹 서버</text>
+<line x1="235.0" y1="282.0" x2="253.0" y2="282.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p01)"/>
+<rect x="256.0" y="260" width="208.0" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="287.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">server · 판정 서버</text>
+<line x1="467.0" y1="282.0" x2="485.0" y2="282.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p01)"/>
+<rect x="488.0" y="260" width="208.0" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="592.0" y="287.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">saas · SaaS</text>
 </svg>

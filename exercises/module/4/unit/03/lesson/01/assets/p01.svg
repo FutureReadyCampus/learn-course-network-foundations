@@ -1,29 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
-<title>정규화된 이벤트 57개를 판다스 표로 읽어 실습 3-1 과 실습 3-2 에서 센다</title>
-<desc>Unit 2 에서 맞춘 normalized_events.json 을 판다스로 표처럼 읽습니다. 실습 3-1은 실패만 골라 소스별로 세고, 실습 3-2는 사용자별·시간대별로 묶어 세고 CSV 로 저장합니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
+<title>Unit 3: 트래픽 급증을 찾고, 두 알림을 alerts.json 한 파일로 모은다</title>
+<desc>Unit 2의 규칙과 파일을 이어 받아 실습 3-1에서 분마다 요청을 세어 평균의 3배 이상인 분을 찾습니다. 도전 3-1에서 두 알림을 같은 모양으로 alerts.json 에 저장하고 깃허브에 올립니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">목표: 판다스로 이벤트 세기</text>
-<rect x="24" y="58" width="220" height="96" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="134" y="90.0" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">입력</text>
-<text x="134" y="110.8" font-size="14" text-anchor="middle" fill="#292929">normalized_events.json</text>
-<text x="134" y="131.1" font-size="14" text-anchor="middle" fill="#666660">이벤트 57개</text>
-<line x1="246" y1="106" x2="262" y2="106" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="266" y="58" width="150" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="341" y="100.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">판다스</text>
-<text x="341" y="120.9" font-size="14" text-anchor="middle" fill="#666660">표처럼 읽기</text>
-<line x1="418" y1="92" x2="462" y2="82" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<line x1="418" y1="122" x2="462" y2="196" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="466" y="50" width="230" height="80" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="581" y="74.0" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">실습 3-1</text>
-<text x="581" y="94.8" font-size="14" text-anchor="middle" fill="#292929">실패만 골라</text>
-<text x="581" y="115.1" font-size="14" text-anchor="middle" fill="#292929">소스별로 세기</text>
-<rect x="466" y="148" width="230" height="104" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="581" y="173.9" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">실습 3-2</text>
-<text x="581" y="194.6" font-size="14" text-anchor="middle" fill="#292929">사용자별 · 시간대별 묶기</text>
-<text x="581" y="214.9" font-size="14" text-anchor="middle" fill="#292929">실패를 CSV 로 저장</text>
-<text x="581" y="235.2" font-size="14" text-anchor="middle" fill="#292929">깃허브에 올리기</text>
-<rect x="24" y="272" width="672" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360" y="301.4" font-size="15" text-anchor="middle" fill="#292929">SIEM(심)의 다음 단계인 탐지를 위한 준비 · 실습마다 문제는 하나</text>
+<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">Unit 3: 트래픽 급증을 찾고 알림을 한 파일로</text>
+<rect x="20" y="56" width="220" height="110" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="130.0" y="96" font-size="15" text-anchor="middle" fill="#292929"><tspan x="130.0" dy="0" font-weight="700">Unit 2</tspan><tspan x="130.0" dy="20">로그인 실패 규칙</tspan><tspan x="130.0" dy="20">이벤트 유형 규칙</tspan></text>
+<rect x="20" y="186" width="220" height="110" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="130.0" y="227" font-size="14" text-anchor="middle" fill="#292929"><tspan x="130.0" dy="0" font-weight="700">불러 쓰는 파일</tspan><tspan x="130.0" dy="19">login_detection.py</tspan><tspan x="130.0" dy="19">normalized_events.json</tspan></text>
+<rect x="280" y="56" width="200" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="380.0" y="96" font-size="15" text-anchor="middle" fill="#292929"><tspan x="380.0" dy="0" font-weight="700">실습 3-1</tspan><tspan x="380.0" dy="20">분마다 요청 세기</tspan><tspan x="380.0" dy="20">평균의 3배 이상</tspan></text>
+<rect x="280" y="186" width="200" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="380.0" y="227" font-size="14" text-anchor="middle" fill="#292929"><tspan x="380.0" dy="0" font-weight="700">도전 3-1</tspan><tspan x="380.0" dy="19">두 알림을 같은 모양으로</tspan><tspan x="380.0" dy="19">alerts.json 한 파일</tspan></text>
+<rect x="530" y="56" width="170" height="110" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="615.0" y="96" font-size="15" text-anchor="middle" fill="#292929"><tspan x="615.0" dy="0" font-weight="700">SIEM 단계</tspan><tspan x="615.0" dy="20">탐지 마무리</tspan><tspan x="615.0" dy="20">→ 알림</tspan></text>
+<rect x="530" y="186" width="170" height="110" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="615.0" y="227" font-size="14" text-anchor="middle" fill="#292929"><tspan x="615.0" dy="0" font-weight="700">alerts.json</tspan><tspan x="615.0" dy="19">깃허브 올리기는</tspan><tspan x="615.0" dy="19">도전 3-1 마지막</tspan></text>
+<polyline points="243,111 276,111" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<polyline points="243,241 276,241" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<polyline points="380,169 380,182" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<polyline points="483,241 526,241" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<text x="20" y="324" font-size="14" text-anchor="start" fill="#666660">도구: 파이썬 · 판다스 · VS Code · 터미널 · git</text>
+<text x="20" y="348" font-size="14" text-anchor="start" fill="#666660">급증 기준은 지난 7일 평균의 3배로 고정한다</text>
 </g>
 </svg>

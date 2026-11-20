@@ -1,24 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>정답 마무리: cd .. 와 pwd, git status 로 .env 가 없는지 본 뒤 올리기</title>
-<desc>cd .. 로 한 단계 위로 가서 pwd 로 위치를 보고 git status 로 올릴 파일을 확인합니다. .env 나 .venv 가 없을 때만 git add, commit, push 합니다.</desc>
-<defs><marker id="a-0304-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">정답 마무리: 확인한 뒤에 올리기</text>
-<rect x="24" y="66" width="145.5" height="84" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="96.75" y="102.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">cd ..</text>
-<text x="96.75" y="123.8" font-size="15" fill="#666660" text-anchor="middle">한 단계 위로</text>
-<line x1="172.5" y1="108.0" x2="196.5" y2="108.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0304-p04)"/>
-<rect x="199.5" y="66" width="145.5" height="84" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="272.25" y="102.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">pwd</text>
-<text x="272.25" y="123.8" font-size="15" fill="#666660" text-anchor="middle">위치 확인</text>
-<line x1="348.0" y1="108.0" x2="372.0" y2="108.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0304-p04)"/>
-<rect x="375.0" y="66" width="145.5" height="84" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="447.75" y="102.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">git status</text>
-<text x="447.75" y="123.8" font-size="15" fill="#666660" text-anchor="middle">.env 없는지 확인</text>
-<line x1="523.5" y1="108.0" x2="547.5" y2="108.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0304-p04)"/>
-<rect x="550.5" y="66" width="145.5" height="84" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="623.25" y="102.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">add → commit</text>
-<text x="623.25" y="123.8" font-size="15" fill="#666660" text-anchor="middle">→ push</text>
-<rect x="24" y="186" width="672" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="360.0" y="216.2" font-size="15" fill="#292929" text-anchor="middle">가장 위험한 실수: .env 가 보이는데 그대로 git add . 하기</text>
-<text x="24" y="270" font-size="14" fill="#666660" text-anchor="start">cd .. 를 두 번 쳐서 security-agent-toolkit 바깥으로 나가지 않았는지 pwd 로 봅니다</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>도전 3-1 는 두 알림 리스트를 만들어 이어 붙이고 alerts.json 에 저장한다</title>
+<desc>로그인 실패 결과는 make_login_alerts, 트래픽 급증 결과는 make_traffic_alerts 가 알림으로 바꾼다. 두 리스트를 + 로 이어 붙여 save_alerts 가 alerts.json 에 저장한다. 출력은 단계 1부터 4까지다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
+<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">도전 3-1 · alerts.py 가 하는 일</text>
+<rect x="30" y="60" width="190" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="125" y="87.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">login_detection.py</text>
+<text x="125" y="106.7" font-size="14" fill="#292929" text-anchor="middle">알림 대상 주소</text>
+<rect x="30" y="150" width="190" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="125" y="177.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">traffic_detection.py</text>
+<text x="125" y="196.7" font-size="14" fill="#292929" text-anchor="middle">급증한 분</text>
+<rect x="255" y="60" width="210" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="87.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">make_login_alerts</text>
+<text x="360" y="106.7" font-size="14" fill="#292929" text-anchor="middle">단계 1: 1건</text>
+<rect x="255" y="150" width="210" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="177.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">make_traffic_alerts</text>
+<text x="360" y="196.7" font-size="14" fill="#292929" text-anchor="middle">str(minute) · 단계 2: 1건</text>
+<line x1="220" y1="92" x2="253" y2="92" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<line x1="220" y1="182" x2="253" y2="182" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="500" y="100" width="190" height="74" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="595" y="132.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">리스트 이어 붙이기</text>
+<text x="595" y="151.7" font-size="14" fill="#292929" text-anchor="middle">login + traffic</text>
+<line x1="465" y1="92" x2="498" y2="125" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<line x1="465" y1="182" x2="498" y2="150" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="500" y="240" width="190" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="595" y="267.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">save_alerts</text>
+<text x="595" y="286.7" font-size="14" fill="#292929" text-anchor="middle">json.dump</text>
+<line x1="595" y1="174" x2="595" y2="238" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="255" y="240" width="210" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360" y="267.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">alerts.json</text>
+<text x="360" y="286.7" font-size="14" fill="#292929" text-anchor="middle">단계 3: 2건 저장</text>
+<line x1="500" y1="272" x2="467" y2="272" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="30" y="240" width="190" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="125" y="267.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">단계 4</text>
+<text x="125" y="286.7" font-size="14" fill="#292929" text-anchor="middle">저장된 알림 2줄</text>
+<line x1="255" y1="272" x2="222" y2="272" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="30" y="330" width="660" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="360.2" font-size="15" fill="#292929" text-anchor="middle">두 함수 모두 make_alert 로 키 다섯 개 딕셔너리를 만듭니다</text>
+</g>
 </svg>

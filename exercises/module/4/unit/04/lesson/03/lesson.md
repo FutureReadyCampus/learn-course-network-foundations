@@ -1,427 +1,279 @@
 ---
 id: m4-u04-l03
-title: 실습 4-2 · 로그인 실패 5번 이상인 주소 찾기
+title: 실습 4-2 · 예외 규칙으로 오탐 줄이기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
-  path: network/102_day03_am_baseline_login.md
-  mission_id: GichanSource.m4-1104-am-baseline-login
+  path: network/110_day05_am_false_alarm_tuning.md
+  mission_id: GichanSource.m4-1106-am-false-alarm-tuning
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 실습 4-2 · 로그인 실패 5번 이상인 주소 찾기
+# 실습 4-2 · 예외 규칙으로 오탐 줄이기
 
-## 이번 의뢰: 로그인 실패가 많은 주소
+## 목표: 믿는 IP 예외 규칙
 
-> **오늘 들어온 일**
+> **이번 실습에 들어온 일**
 >
 > A사 보안 팀장이 보낸 메시지입니다:
-> 「실습 4-1에서 정한 대로, 같은 주소가 하루에 로그인에 5번 이상 실패하면 담당자에게 알리기로 했습니다.
+> 「오탐 4건 중 'SaaS 평소와 다른 IP' 알림 2건(알림 번호 `A4` jiwoo · `A5` seoyeon, `review_alerts.json` 에 있습니다)은 모두 협력사 사무실 IP `203.0.113.80` 에서 로그인한 것이었습니다. 협력사 사무실은 직원이 출장이나 외근으로 자주 쓰는 곳입니다.
 >
-> 샘플 이벤트 57개 중에서 로그인 요청(`POST /login`)이 실패한 것이 모두 몇 개인지 세 주세요. 주소별로 몇 번씩 실패했는지 정리하고, 5번 이상 실패한 주소가 있으면 알려 주세요.」
-> - **왜 중요한가**: <mark>로그인에 연달아 실패하는 것은 다른 사람이 비밀번호를 맞혀 보는 대표적인 모습입니다.</mark> 이벤트 수만 개를 사람이 하나씩 읽지 않고, 알림 기준(5번) 이상인 주소만 추출해 보여 주면 담당자가 먼저 볼 곳이 정해집니다.
+> 이 IP 에서 온 'SaaS 평소와 다른 IP' 알림만 빠지도록 규칙을 고쳐 주세요. 단, 진짜 문제까지 같이 지워지면 안 됩니다.」
+> - **왜 중요한가**: <mark>같은 원인의 오탐을 규칙 하나로 줄이면 담당자가 매일 열어 보는 알림이 줄지만, 예외를 넓게 만들면 진짜 문제까지 지워질 수 있습니다.</mark>
 
-## 왜 세 단계로 찾는가
+## 왜 예외를 한 규칙에만 거는가
 
-1. 실습 4-1에서 「한 주소가 하루에 로그인에 5번 이상 실패하면 알린다」는 알림 기준(임계값)을 정했습니다. <mark>이제 이벤트 57개에 그 기준을 적용합니다.</mark>
-2. <mark>찾는 순서는 세 단계입니다</mark>: ① **로그인 요청이면서 실패한 것**만 고르고, ② **IP 주소별로 센** 뒤, ③ **5번 이상인 주소**만 남깁니다.
+1. 오탐을 줄이는 가장 쉬운 방법은 **예외 규칙**입니다. 「이 IP 에서 온 이 규칙의 알림은 뺀다」처럼 조건을 정해 틀린 알림을 빼냅니다.
+2. 이번 실습의 질문은 하나입니다. <mark>**예외 규칙 하나로 오탐을 몇 개 줄일 수 있고, 진짜 문제는 지워지지 않았는가?**</mark>
+3. 예외는 **한 규칙에만** 적용합니다. 같은 IP `203.0.113.80` 에서 온 알림이라도 다른 규칙의 알림은 그대로 둡니다.
 
-## 2.1 로그인 실패 규칙과 문법 상자 네 개
+## 2.1 같은 IP 에서 온 알림 네 개
 
-샘플에서 203.0.113.50 이 보낸 이벤트 전부입니다(9개, 표에서의 행 번호 포함).
+`203.0.113.80` 에서 온 알림은 A3 · A4 · A5 · A6 네 개입니다. A1 · A2 는 서버 알림이라 IP 가 없어서 이 표에서 뺐습니다. 예외 규칙은 `IP_RULE`(SaaS 평소와 다른 IP)의 알림 중 믿는 IP 에서 온 것만 뺍니다.
 
-| 행 번호 | 시각 | `action` | `result` | 로그인 요청인가 | 실패인가 | 둘 다인가 |
-|---|---|---|---|---|---|---|
-| 9 | 09:12:01 | `GET /login` | 성공 | 아니오 | 아니오 | 아니오 |
-| 10 | 09:12:03 | `POST /login` | 실패 | 예 | 예 | **예** |
-| 11 | 09:12:06 | `POST /login` | 실패 | 예 | 예 | **예** |
-| 12 | 09:12:09 | `POST /login` | 실패 | 예 | 예 | **예** |
-| 13 | 09:12:12 | `POST /login` | 실패 | 예 | 예 | **예** |
-| 14 | 09:12:15 | `POST /login` | 실패 | 예 | 예 | **예** |
-| 15 | 09:12:18 | `POST /login` | 성공 | 예 | 아니오 | 아니오 |
-| 16 | 09:12:25 | `GET /admin` | 실패 | 아니오 | 예 | 아니오 |
-| 17 | 09:12:27 | `GET /admin/users` | 실패 | 아니오 | 예 | 아니오 |
+| id | 규칙 | 대상 | real | 예외 규칙이 빼는가 |
+|---|---|---|---|---|
+| A3 | SaaS 업무 시간 밖 로그인 | jiwoo | `False` | 아니오 (다른 규칙) |
+| A4 | SaaS 평소와 다른 IP | jiwoo | `False` | **예** |
+| A5 | SaaS 평소와 다른 IP | seoyeon | `False` | **예** |
+| A6 | SaaS 대량 다운로드 | seoyeon | `True` | 아니오 (다른 규칙) |
 
-- `GET /login` 은 로그인 화면을 보여 달라는 요청이고, `POST /login` 은 아이디와 비밀번호를 보내는 요청입니다. <mark>이번 Unit에서는 `POST /login` 이 실패한 이벤트만 셉니다.</mark>
-- SaaS 의 `login` 실패 1건(jiwoo, 02:14)은 Unit 6에서 다루므로 이번 Unit에서는 세지 않습니다. <mark>그래서 로그인 실패 이벤트는 5개입니다.</mark>
+- A4 · A5 두 개가 빠지면 오탐은 4개에서 2개(A2 · A3)로 줄어듭니다.
+- <mark>A6 은 같은 IP 에서 왔지만 진짜 문제입니다.</mark> 규칙을 가리지 않고 이 IP 의 알림을 모두 빼면 A6 까지 지워집니다.
+- <mark style="background:#ffc4d6">예외에는 위험도 있습니다. 믿는 IP 에서 누군가 계정을 도용해 로그인해도, 그 규칙은 알림을 내지 않습니다.</mark>
 
-**알아 둘 것 — 열 꺼내기와 평균도 실무에서는 한 줄로 씁니다**
+**판다스 문법 상자 — 같은 값을 한 번씩만 꺼내기 `.unique()`**
 
-실습 4-1에서 쓴 두 줄(`daily_failed_logins = daily["failed_logins"]` → `average = daily_failed_logins.mean()`)은 실무에서 아래 한 줄로 자주 씁니다. 같은 일입니다. **직접 쓰지 않고 읽기만 합니다.** 자세한 쓰임은 다음에 차차 배웁니다.
+**<mark>`열.unique()`</mark> 는 열에서 같은 값을 한 번씩만 모아 줍니다**
 
-```python
-import pandas as pd                         # 판다스를 pd 라는 짧은 이름으로 불러온다
-daily = pd.read_csv("baseline_logins.csv")  # CSV 파일을 읽어 표로 만든다 — 한 행이 하루
-
-average = daily["failed_logins"].mean()     # 열 꺼내기와 평균을 한 줄로 쓴 모양 — 위 두 줄과 같은 결과
-print(average)                              # 2.4285714285714284 — 소수점 아래가 길게 나오는 것은 round 를 쓰지 않았기 때문이다
-```
-
-실행 결과:
-
-```
-2.4285714285714284
-```
-
-**문법 상자 — `=` 와 `==`**
-
-**`=` 는 오른쪽 값을 왼쪽 이름에 담고, `==` 는 두 값이 같은지 비교합니다. 한 줄에 같이 쓰면 비교(`==`)를 먼저 하고 그 결과를 `=` 로 담습니다**
+아래는 알림이 난 기록이고, 같은 사용자가 여러 번 나옵니다. 어떤 사용자가 나왔는지만 한 번씩 봅니다.
 
 ```python
-age = 20              # age 에 20을 담는다 (=)
-is_adult = age == 20  # age 가 20과 같은지 비교하고(==), 그 결과를 is_adult 에 담는다(=)
-print(is_adult)       # True
-```
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-실행 결과:
-
-```
-True
-```
-
-- 읽는 법: <mark>오른쪽의 비교 `age == 20` 을 먼저 계산하고,</mark> 그 결과 `True` 를 왼쪽 이름에 담습니다. `(age == 20)` 처럼 괄호를 넣어도 같은 뜻이고, 계산 순서가 눈에 보일 뿐입니다.
-- `is_fail = results == "실패"` 를 `is_fail = results = "실패"` 로 잘못 쓰면 그 줄은 오류 없이 지나가지만 `is_fail` 이 열이 아니라 문자열 `"실패"` 가 되어, 다음 줄 `events[is_fail]` 에서 `KeyError` 가 납니다. **비교는 항상 `==` 로 씁니다.**
-
-**판다스 문법 상자 — 조건으로 행 필터링하기**
-
-**<mark>`표[조건]`</mark> 은 조건이 `True` 인 행만 남겨 새 표를 만듭니다**
-
-`results == "실패"` 는 `result` 열의 값을 하나씩 `"실패"` 와 비교합니다. 같으면 `True`, 다르면 `False` 입니다. 결과는 `True` · `False` 로 된 열(시리즈)입니다. <mark>이 열을 `표[…]` 안에 넣으면 `True` 인 행만 남습니다.</mark>
-
-```python
-import pandas as pd                                                 # 판다스를 pd 라는 짧은 이름으로 불러온다
-
-data = {                                                            # 연습용 작은 데이터(열 이름: 값들)
-    "user": ["gaeun", "dami", "seoyeon", "junho", "dami"],          # user 열에 들어갈 값들
-    "action": ["login", "login", "download", "login", "download"],  # action 열에 들어갈 값들
-    "result": ["성공", "실패", "실패", "실패", "성공"],             # result 열에 들어갈 값들
+data = {                                                          # 표에 넣을 내용(열 이름: 값들)
+    "user": ["dami", "gaeun", "dami", "seoyeon", "dami"],         # user 열
+    "action": ["login", "login", "download", "login", "upload"],  # action 열
 }
-logs = pd.DataFrame(data)                                           # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
-print(logs)                                                         # 표를 출력한다
+df = pd.DataFrame(data)                                           # 내용으로 표(DataFrame)를 만든다
+print(df)                                                         # 표를 출력한다
 ```
 
 실행 결과:
 
 ```
-      user    action result
-0    gaeun     login     성공
-1     dami     login     실패
-2  seoyeon  download     실패
-3    junho     login     실패
-4     dami  download     성공
+      user    action
+0     dami     login
+1    gaeun     login
+2     dami  download
+3  seoyeon     login
+4     dami    upload
 ```
 
 위 코드에 이어서 실행하는 다음 코드입니다.
 
 ```python
-results = logs["result"]     # result 열만 꺼낸다
-is_fail = results == "실패"  # 값이 "실패" 와 같은지 하나씩 비교해 True 또는 False 로 만든다
-print(is_fail)               # True · False 를 출력한다
+users = df["user"].unique()  # user 열에서 같은 값을 한 번씩만 꺼낸다
+print(users)                 # 사용자 이름을 출력한다
 ```
 
 실행 결과:
 
 ```
-0    False
-1     True
-2     True
-3     True
-4    False
-Name: result, dtype: bool
+['dami' 'gaeun' 'seoyeon']
 ```
 
-위 코드에 이어서 실행하는 다음 코드입니다.
-
-```python
-failed = logs[is_fail]  # True 인 행만 남겨 새 표(failed)를 만든다
-print(failed)           # 새 표를 출력한다
-```
-
-실행 결과:
-
-```
-      user    action result
-1     dami     login     실패
-2  seoyeon  download     실패
-3    junho     login     실패
-```
-
-- 읽는 법: <mark>두 번째 출력에서 1·2·3번 행이 `True`(실패)</mark>이고, 세 번째 출력은 그 세 행만 남은 표입니다. 열은 그대로 3개입니다. 왼쪽 숫자(1, 2, 3)는 원래 표의 행 번호를 그대로 가져온 것입니다.
-
-**판다스 문법 상자 — 두 조건을 함께 걸기**
-
-**<mark>`조건A & 조건B`</mark> 는 두 조건이 모두 `True` 이면 `True`, 하나라도 `False` 이면 `False` 입니다. 이 열을 `표[…]` 에 넣으면 두 조건을 모두 만족하는 행만 남습니다**
-
-위에서는 조건 하나(`results == "실패"`)로 걸렀습니다. 「로그인 요청이면서 실패」처럼 조건이 둘이면 각각 `True` · `False` 열로 만든 뒤 `&` 로 합칩니다(둘 다 `True` 인 행만 `True`). **`and` 가 아니라 `&` 를 씁니다.**
-
-```python
-import pandas as pd                                                 # 판다스를 pd 라는 짧은 이름으로 불러온다
-
-data = {                                                            # 연습용 작은 데이터(열 이름: 값들)
-    "user": ["gaeun", "dami", "seoyeon", "junho", "dami"],          # user 열에 들어갈 값들
-    "action": ["login", "login", "download", "login", "download"],  # action 열에 들어갈 값들
-    "result": ["성공", "실패", "실패", "실패", "성공"],             # result 열에 들어갈 값들
-}
-logs = pd.DataFrame(data)                                           # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
-print(logs)                                                         # 표를 출력한다
-```
-
-실행 결과:
-
-```
-      user    action result
-0    gaeun     login     성공
-1     dami     login     실패
-2  seoyeon  download     실패
-3    junho     login     실패
-4     dami  download     성공
-```
-
-위 코드에 이어서 실행하는 다음 코드입니다.
-
-```python
-actions = logs["action"]        # action 열만 꺼낸다
-is_login = actions == "login"   # 값이 "login" 과 같은지 하나씩 비교해 True 또는 False 로 만든다
-results = logs["result"]        # result 열만 꺼낸다
-is_fail = results == "실패"     # 값이 "실패" 와 같은지 하나씩 비교해 True 또는 False 로 만든다
-
-both_true = is_login & is_fail  # 두 조건이 모두 True 인 행만 True 로 만든다
-print(both_true)                # True · False 를 출력한다
-```
-
-실행 결과:
-
-```
-0    False
-1     True
-2    False
-3     True
-4    False
-dtype: bool
-```
-
-위 코드에 이어서 실행하는 다음 코드입니다.
-
-```python
-login_failures = logs[both_true]  # True 인 행만 남겨 새 표를 만든다
-print(login_failures)             # 새 표를 출력한다
-```
-
-실행 결과:
-
-```
-    user action result
-1   dami  login     실패
-3  junho  login     실패
-```
-
-- 읽는 법: <mark>로그인이면서 실패인 1번 행과 3번 행만 `True`</mark> 이고, 세 번째 출력은 그 두 행만 남은 표입니다.
-- 한 줄씩 따라가면 이렇습니다.
-
-| 코드 | 만들어지는 것 |
-|---|---|
-| `is_login = actions == "login"` | 로그인인 행만 `True` |
-| `is_fail = results == "실패"` | 실패인 행만 `True` |
-| `both_true = is_login & is_fail` | 둘 다 `True` 인 행만 `True` |
-| `login_failures = logs[both_true]` | `True` 인 행만 모은 새 표 |
-
-- `&` 는 파이썬에서 원래 다른 용도로 쓰는 기호인데, 판다스에서는 열 두 개를 같은 줄끼리 짝지어 합치는 데 씁니다. `==` 가 열의 값을 하나씩 비교하는 것과 같은 이유입니다.
-- `and` 는 `True` 또는 `False` 하나씩 두 개를 이을 때만 씁니다. 열에는 값이 여러 개 있어서 `and` 로 이을 수 없고(`ValueError` 오류), **열을 이을 때는 `&` 를 씁니다.** 실습 4-3의 `result == "실패" and …` 는 값이 하나씩이라 `and` 를 씁니다.
-- 비교를 `&` 로 바로 이을 때는 **괄호가 꼭 필요합니다**: `(a == 1) & (b == 2)`. `&` 가 `==` 보다 먼저 계산되기 때문입니다. 이번 Unit에서는 비교를 이름에 먼저 담은 뒤 `is_login & is_fail` 로 이어서 괄호가 필요 없습니다.
-
-**판다스 문법 상자 — 기준 이상인 것만 남기기**
-
-**<mark>`ip_fail_counts >= 기준`</mark> 은 값이 기준 이상이면 `True`, 아니면 `False` 로 만들고, 그 열을 `ip_fail_counts[…]` 에 넣으면 `True` 인 것만 남습니다**
-
-위에서 배운 `==` 처럼 `>=` 도 값을 하나씩 비교해 `True` · `False` 를 만듭니다. 아래 `ip_fail_counts` 는 주소별 실패 횟수입니다(왼쪽 인덱스가 주소, 오른쪽이 횟수). `ip_fail_counts >= 3` 은 주소마다 「3번 이상인가」를 `True` · `False` 로 만듭니다.
-
-```python
-import pandas as pd                                                                                           # 판다스를 pd 라는 짧은 이름으로 불러온다
-
-data = {                                                                                                      # 실패한 이벤트만 적은 연습용 작은 데이터
-    "ip": ["198.51.100.90", "203.0.113.50", "198.51.100.90", "203.0.113.50", "198.51.100.90", "192.0.2.15"],  # ip 열에 들어갈 값들
-    "result": ["실패", "실패", "실패", "실패", "실패", "실패"],                                               # result 열에 들어갈 값들
-}
-failed = pd.DataFrame(data)                                                                                   # 데이터로 표를 만든다
-print(failed)                                                                                                 # 표를 출력한다
-```
-
-실행 결과:
-
-```
-              ip result
-0  198.51.100.90     실패
-1   203.0.113.50     실패
-2  198.51.100.90     실패
-3   203.0.113.50     실패
-4  198.51.100.90     실패
-5     192.0.2.15     실패
-```
-
-위 코드에 이어서 실행하는 다음 코드입니다.
-
-```python
-ip_fail_counts = failed.groupby("ip").size()  # ip 가 같은 행끼리 그룹으로 만들고(groupby) 바로 그룹마다 행이 몇 개인지 센다(size) — 주소별 실패 횟수
-print(ip_fail_counts)                         # 주소와 실패 횟수가 줄마다 나온다
-```
-
-실행 결과:
-
-```
-ip
-192.0.2.15       1
-198.51.100.90    3
-203.0.113.50     2
-dtype: int64
-```
-
-위 코드에 이어서 실행하는 다음 코드입니다.
-
-```python
-is_many = ip_fail_counts >= 3   # 주소마다 「3번 이상인가?」를 비교해 True 또는 False 로 만든다
-many = ip_fail_counts[is_many]  # True 인 주소만 남긴다
-print(many)                     # 3번 이상인 주소와 횟수
-```
-
-실행 결과:
-
-```
-ip
-198.51.100.90    3
-dtype: int64
-```
-
-- 읽는 법: 두 번째 출력은 주소 3개의 실패 횟수이고, <mark>세 번째 출력은 그중 3번 이상인 주소 1개</mark>입니다(198.51.100.90 이 3번).
-- `failed.groupby("ip").size()` 는 Unit 3에서 두 줄로 나눠 배운 동작을 점(`.`)으로 이은 한 줄입니다. 왼쪽부터 차례로 읽습니다. ① `groupby("ip")` 가 ip 가 같은 행끼리 그룹을 만들고, ② 바로 이어서 `.size()` 가 그룹마다 행이 몇 개인지 셉니다. 이 수업에서는 점으로 이어 쓰는 것을 **두 개까지만** 씁니다.
-- 이 예는 연습용 작은 표이고, 문제에서는 로그인 요청의 실패 이벤트를 주소별로 셉니다.
+- 읽는 법: 표에는 사용자가 다섯 번 나오지만, <mark style="background:#bde3ff">두 번째 출력에는 `dami` · `gaeun` · `seoyeon` 이 한 번씩만</mark> 나옵니다. 처음 나온 순서대로 나옵니다.
+- 출력의 `[` `]` 안에 따옴표로 묶인 이름이 공백으로 이어지는 모양은 정상입니다.
 
 **한 장 정리**
 
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
-| `load_events` | 파일 경로 | 이벤트 표(미리 채움) |
-| `pick_login_failures` | 이벤트 표 | 로그인 요청이면서 실패한 행만 담은 표 |
-| `count_by_ip` | 로그인 실패 표 | 주소별 실패 횟수(미리 채움) |
-| `pick_alert_ips` | 주소별 횟수와 알림 기준 | 기준 이상인 주소와 횟수 |
+| `load_table` · `count_false_alarms` | 파일 경로 · 알림 표 | 표 · 오탐 수(미리 채움) |
+| `apply_exception` | 알림 표 | 빼낸 알림 표와 남은 알림 표 |
+| `count_real_removed` | 빼낸 알림 표 | 빼낸 알림 중 진짜 문제였던 알림 수 |
+| `find_removed_users` | 빼낸 알림 표 | 빼낸 알림에 나온 사용자(중복 없이) |
 
-- **직접 쓰는 곳은 여덟 군데**(번호 1 ~ 8)이고, 함수 두 개 안에 나뉘어 있습니다.
-  - `pick_login_failures`(1 ~ 6번): 로그인 요청인 행과 실패인 행을 `&` 로 이어 걸러 냅니다.
-  - `pick_alert_ips`(7 · 8번): 횟수가 기준 이상인 주소만 남깁니다.
-- 주소별로 그룹화해 세는 `count_by_ip` 는 Unit 3에서 배운 `groupby().size()` 와 같아서 미리 채웠습니다.
+- **직접 쓰는 곳은 일곱 군데**(번호 1 ~ 7)이고, 함수 세 개 안에 나뉘어 있습니다.
+  - `apply_exception`(1 ~ 4번, 4곳): 알림의 규칙이 IP 규칙인지 비교하고, 믿는 IP 인지 구하고, 둘을 합쳐 빼낼 알림을 정한 뒤, 남은 알림을 고릅니다.
+  - `count_real_removed`(5 · 6번, 2곳): 빼낸 알림 중 진짜 문제였던 것을 고릅니다.
+  - `find_removed_users`(7번, 1곳): 빼낸 알림에 나온 사용자를 중복 없이 꺼냅니다.
+- 이번 실습에서 새 문법은 `.unique()` 하나입니다. Unit 3에서 쓴 `isin` · `&` 와 도전 4-2의 `~` 는 다시 씁니다.
 
-## 실습 4-2 · 로그인 실패 5번 이상인 주소 찾기
+## 실습 4-2 · 예외 규칙으로 오탐 줄이기
 
 **이런 상황이 있습니다**
 
-- **지금은**: 57개 이벤트 중 로그인 실패가 몇 개이고 어느 주소가 많은지 사람이 하나씩 읽어야 합니다.
-- **그래서 만드는 것**: `login_detection.py` 입니다.
-  - 로그인 요청이면서 실패한 이벤트를 골라냅니다.
-  - IP 주소별로 실패를 셉니다.
-  - 횟수가 5번 이상인 주소만 남깁니다.
-- **실행하면**: 단계 1: 로그인 실패 이벤트 수, 단계 2: 주소별 횟수, 단계 3: 알림 대상 주소가 나옵니다.
-- **현업에서는**: 로그인 실패 규칙은 거의 모든 관제 화면에 있는 기본 규칙입니다. 알림이 난 주소를 막을지 판단하는 첫 단서가 됩니다.
+- **지금은**: <mark>협력사 사무실 IP 에서 온 'SaaS 평소와 다른 IP' 알림이 오탐으로 계속 쌓입니다</mark>.
+- **그래서 만드는 것**: `tuning.py` 입니다.
+  - IP 규칙의 알림 중 믿는 IP 에서 온 것을 찾아 빼냅니다.
+  - 적용 전과 후의 오탐 수를 비교합니다.
+  - 빼낸 알림 중 진짜 문제가 있었는지 확인합니다.
+  - 빼낸 알림에 나온 사용자를 중복 없이 모읍니다.
+- **실행하면**: <mark>단계 1: 적용 전 알림 수와 오탐 수, 단계 2: 빠진 알림과 그 사용자, 단계 3: 적용 후 알림 수와 오탐 수, 단계 4: 빠진 알림 중 진짜 문제였던 알림 수(0이면 진짜 문제는 지워지지 않은 것)가 나옵니다.</mark>
+- **현업에서는**: 예외를 넣을 때마다 「빠진 알림 중 진짜 문제가 있는가」를 확인합니다. 예외 리스트는 근거(협력사 사무실 IP)와 함께 기록해 두어야 나중에 지울 수 있습니다.
 
 **할 일**
 
-1. `login_detection.py` · `exercise4-2_run.py` **두 파일**을 만들고, `login_detection.py` 의 `pick_login_failures` · `pick_alert_ips` 에서 직접 쓰는 곳을 씁니다.
-2. 실행해서 <mark>로그인 실패 이벤트 수</mark>(단계 1), <mark>주소별 횟수</mark>(단계 2), <mark>알림 대상 주소</mark>(단계 3)를 읽습니다.
+1. `tuning.py` · `exercise4-2_run.py` 두 파일을 만들고, `tuning.py` 의 세 함수에서 직접 쓰는 곳을 씁니다.
+2. 실행해서 <mark>적용 전 오탐 수</mark>(단계 1), <mark>빠진 알림</mark>(단계 2), <mark>적용 후 오탐 수</mark>(단계 3), <mark>빠진 알림 중 진짜 문제였던 알림 수</mark>(단계 4)를 읽습니다.
 
-**`login_detection.py`**
+**`tuning.py`**
 
 ```python
-import pandas as pd                                             # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-EVENTS_PATH = "normalized_events.json"                          # 읽을 정규화 이벤트 파일 이름
-LOGIN_LIMIT = 5                                                 # 알림 기준: 평소 하루 최대가 4번이라 5번 이상이면 알린다
+ALERTS_PATH = "review_alerts.json"                    # 읽을 알림 파일 이름
+IP_RULE = "SaaS 평소와 다른 IP"                       # 예외를 적용할 규칙 이름
+TRUSTED_IPS = ["203.0.113.80"]                        # 믿는 IP 리스트 : 협력사 사무실 IP 한 개
 
 
-def load_events(path):                                          # 파일 경로를 받는 함수
-    """이벤트 파일을 표로 읽는다.
+def load_table(path):                                 # 파일 경로를 받는 함수
+    """JSON 파일을 표로 읽는다.
     분석을 시작할 때 맨 먼저 쓴다.
     """
-    events = pd.read_json(path)                                 # 파일 속 이벤트를 표 한 개로 읽는다
-    return events                                               # 이벤트 표를 리턴한다
+    table = pd.read_json(path)                        # 파일 속 내용을 표 한 개로 읽는다
+    return table                                      # 표를 리턴한다
 
 
-def pick_login_failures(events):                                # 이벤트 표를 받는 함수
-    """로그인 요청이 실패한 이벤트만 골라 새 표로 만든다.
-    로그인 실패가 많은 주소를 조사하기 전에 쓴다.
+def count_false_alarms(alerts):                       # 알림 표를 받는 함수
+    """진짜 문제가 아니었는데 난 알림(오탐)이 몇 개인지 센다.
+    튜닝 전과 후를 비교할 때 쓴다.
+    """
+    is_real = alerts["real"]                          # real 열(진짜 문제이면 True)을 꺼낸다
+    is_false = ~is_real                               # 문제가 아니었던 알림을 True 로 만든다
+    false_alarms = alerts[is_false]                   # True 인 행만 골라 새 표로 만든다
+    false_alarm_count = len(false_alarms)             # 오탐이 몇 개인지 센다
+    return false_alarm_count                          # 오탐 개수를 리턴한다
+
+
+def apply_exception(alerts):                          # 알림 표를 받는 함수
+    """IP 규칙 알림 중 믿는 IP 에서 온 것만 빼낸다.
+    오탐을 줄이는 예외 규칙을 적용할 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. events 의 "action" 열을 꺼내 actions 에 담는다
-    # 2. actions 가 "POST /login" 과 같은지 비교한 결과(==)를 is_login 에 담는다
-    # 3. events 의 "result" 열을 꺼내 results 에 담는다
-    # 4. results 가 "실패" 와 같은지 비교한 결과(==)를 is_fail 에 담는다
-    # 5. is_login & is_fail 로 두 조건을 합쳐 both_true 에 담는다 (둘 다 True 인 행만 True)
-    # 6. events 에서 both_true 가 True 인 행만 골라 login_failures 에 담는다 (events[both_true])
-    return login_failures                                       # 로그인 실패 이벤트만 담은 표를 리턴한다
+    # 1. alerts 의 "rule" 열이 IP_RULE 과 같은지 비교해 is_ip_rule 에 담는다
+    # 2. alerts 의 "ip" 열이 TRUSTED_IPS 안에 있는지 isin 으로 구해 is_trusted 에 담는다
+    # 3. is_ip_rule 과 is_trusted 가 모두 True 인 행을 & 로 구해 is_removed 에 담는다
+    removed_alerts = alerts[is_removed]               # 빼낼 알림만 골라 새 표로 만든다
+    is_kept = ~is_removed                             # 빼지 않을 알림을 True 로 만든다
+    # 4. alerts 에서 is_kept 가 True 인 행만 골라 kept_alerts 에 담는다
+    return removed_alerts, kept_alerts                # 빼낸 알림 표와 남은 알림 표를 리턴한다
 
 
-def count_by_ip(login_failures):                                # 로그인 실패 표를 받는 함수
-    """로그인 실패를 IP 주소별로 센다.
-    같은 주소가 반복해서 실패했는지 볼 때 쓴다.
-    """
-    ip_login_fail_counts = login_failures.groupby("ip").size()  # ip 가 같은 행끼리 그룹으로 만들고(groupby) 바로 그룹마다 행이 몇 개인지 센다(size)
-    return ip_login_fail_counts                                 # 주소별 실패 횟수를 리턴한다
-
-
-def pick_alert_ips(ip_login_fail_counts, limit):                # 주소별 횟수와 알림 기준을 받는 함수
-    """실패 횟수가 알림 기준 이상인 주소만 골라 리턴한다.
-    알림을 보낼 주소를 가릴 때 쓴다.
+def count_real_removed(removed_alerts):               # 빼낸 알림 표를 받는 함수
+    """빼낸 알림 중 진짜 문제였던 것이 몇 개인지 센다.
+    예외 규칙이 진짜 문제를 지우지 않았는지 확인할 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 7. ip_login_fail_counts 가 limit 이상인지 비교한 결과(>=)를 is_many 에 담는다
-    # 8. ip_login_fail_counts 에서 is_many 가 True 인 것만 골라 alert_ips 에 담는다 (ip_login_fail_counts[is_many])
-    return alert_ips                                            # 알림 기준 이상인 주소와 횟수를 리턴한다
+    # 5. removed_alerts 의 "real" 열을 꺼내 is_real_removed 에 담는다
+    # 6. removed_alerts 에서 is_real_removed 가 True 인 행만 골라 real_removed 에 담는다
+    real_removed_count = len(real_removed)            # 진짜 문제였던 알림이 몇 개 빠졌는지 센다
+    return real_removed_count                         # 그 개수를 리턴한다
+
+
+def find_removed_users(removed_alerts):               # 빼낸 알림 표를 받는 함수
+    """빼낸 알림에 나온 사용자를 중복 없이 모은다.
+    예외로 빠진 알림이 누구의 것인지 확인할 때 쓴다.
+    """
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 7. removed_alerts 의 "user" 열에서 같은 값은 한 번씩만 .unique() 로 꺼내 removed_users 에 담는다
+    return removed_users                              # 중복 없는 사용자 이름을 리턴한다
 ```
 
-- 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 8번은 모두 함수 안이라 앞에 공백 4개입니다.
-- 미리 채운 `count_by_ip` 의 `groupby("ip").size()` 는 2.1 에서 본 것처럼 두 동작을 점으로 이은 한 줄입니다. ① `groupby("ip")` 로 ip 가 같은 행끼리 그룹을 만들고 ② `.size()` 로 그룹마다 행 수를 셉니다.
+- 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 7번은 모두 함수 안이라 앞에 공백 4개입니다.
 - 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
-- 채우기 전에 실행하면 `NameError: name 'login_failures' is not defined` 오류가 납니다. 1 ~ 6번을 아직 안 썼기 때문입니다.
+- 채우기 전에 실행하면 `NameError: name 'is_removed' is not defined` 오류가 납니다. 3번을 아직 안 썼기 때문입니다.
 
-**`exercise4-2_run.py`** — <mark>그대로 붙여 넣습니다.</mark> 직접 쓰는 줄은 없습니다. `len(표)` 는 표의 행 수입니다.
+**`exercise4-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
 
 ```python
-from login_detection import load_events, pick_login_failures, count_by_ip, pick_alert_ips, EVENTS_PATH, LOGIN_LIMIT  # 방금 만든 함수를 불러온다
+from tuning import load_table, count_false_alarms, apply_exception, count_real_removed, find_removed_users, ALERTS_PATH  # 방금 만든 함수를 불러온다
 
-events = load_events(EVENTS_PATH)                              # 이벤트 파일을 표로 읽는다
-login_failures = pick_login_failures(events)                   # 로그인 실패 이벤트만 골라낸다
-failure_count = len(login_failures)                            # 로그인 실패가 모두 몇 개인지 센다
-print("--- 단계 1: 로그인 실패 이벤트", failure_count, "개")   # 단계 1 시작을 알리는 줄과 개수
+alerts = load_table(ALERTS_PATH)                      # 알림 파일을 표로 읽는다
+alert_count = len(alerts)                             # 알림이 모두 몇 개인지 센다
+false_alarm_count_before = count_false_alarms(alerts)  # 예외 규칙을 적용하기 전의 오탐 수를 센다
+print("--- 단계 1: 예외 규칙을 적용하기 전 ---")      # 단계 1 제목
+print("알림 수:", alert_count)                        # 적용 전 알림 수를 출력한다
+print("오탐 수:", false_alarm_count_before)           # 적용 전 오탐 수를 출력한다
 
-ip_login_fail_counts = count_by_ip(login_failures)             # 주소별로 실패 횟수를 센다
-print("--- 단계 2: 주소별 로그인 실패 횟수")                   # 단계 2 시작을 알리는 줄
-print(ip_login_fail_counts)                                    # 주소별 횟수를 출력한다
+removed_alerts, kept_alerts = apply_exception(alerts)  # 믿는 IP 에서 온 IP 규칙 알림을 빼낸다
+removed_count = len(removed_alerts)                   # 빠진 알림이 몇 개인지 센다
+print("--- 단계 2: 예외 규칙으로 빠진 알림 ---")      # 단계 2 제목
+print("빠진 알림 수:", removed_count)                 # 빠진 알림 수를 출력한다
+removed_list = removed_alerts.to_dict("records")      # 표를 알림 딕셔너리 리스트로 바꾼다
+for alert in removed_list:                            # 빠진 알림을 하나씩 꺼낸다
+    print("빠진 알림:", alert["id"], alert["rule"], alert["user"], alert["ip"])  # 번호 · 규칙 · 사용자 · IP 를 출력한다
+removed_users = find_removed_users(removed_alerts)    # 빠진 알림에 나온 사용자를 중복 없이 모은다
+print("빠진 알림의 사용자:", removed_users)           # 사용자 이름을 출력한다
 
-alert_ips = pick_alert_ips(ip_login_fail_counts, LOGIN_LIMIT)  # 알림 기준 이상인 주소만 고른다
-print("--- 단계 3: 알림 기준", LOGIN_LIMIT, "번 이상인 주소")  # 단계 3 시작을 알리는 줄과 알림 기준
-print(alert_ips)                                               # 알림을 보낼 주소를 출력한다
+kept_count = len(kept_alerts)                         # 남은 알림이 몇 개인지 센다
+false_alarm_count_after = count_false_alarms(kept_alerts)  # 적용 후의 오탐 수를 센다
+print("--- 단계 3: 예외 규칙을 적용한 뒤 ---")        # 단계 3 제목
+print("알림 수:", kept_count)                         # 적용 후 알림 수를 출력한다
+print("오탐 수:", false_alarm_count_after)            # 적용 후 오탐 수를 출력한다
+
+real_removed_count = count_real_removed(removed_alerts)  # 빠진 알림 중 진짜 문제였던 것을 센다
+print("--- 단계 4: 빠진 알림 중 진짜 문제였던 것 ---")  # 단계 4 제목
+print("진짜 문제였던 알림 수:", real_removed_count)   # 0 이면 진짜 문제는 지워지지 않은 것이다
 ```
 
 **순서**
 
-1. **[VS Code]** 파일 `login_detection.py` · `exercise4-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
-2. **[VS Code]** `login_detection.py` 에서 직접 쓰는 곳 **여덟 군데**를 씁니다. 2.1 의 문법 상자를 보고 씁니다.
+1. **[VS Code]** 파일 `tuning.py` · `exercise4-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+2. **[VS Code]** `tuning.py` 에서 <mark>직접 쓰는 곳 일곱 군데를 씁니다</mark>. 도전 4-2에서 쓴 방식과 위 판다스 문법 상자, 2.1 의 표를 참고해 씁니다. 막히면 아래 「실습 4-2 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
    python exercise4-2_run.py
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise4-2_run.py` 파이썬으로 실행 파일 실행
-4. 출력은 **세 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 숫자가 제목 줄에 함께 나오므로 그 아래 줄이 없고, 단계 2와 단계 3은 각각 3줄입니다.
+4. 출력은 **네 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 2줄(알림 수 · 오탐 수), 단계 2는 4줄(빠진 알림 수 1줄 · 빠진 알림 2줄 · 사용자 1줄), 단계 3은 2줄, 단계 4는 1줄입니다.
 5. **[보고서]** `report_u4.md` 의 `## 실습 4-2` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 로그인 실패 이벤트 수와 알림 대상 주소, 그 횟수를 적어 주세요.
-   - (나) [핵심 질문] 203.0.113.50 이 알림 대상이 되었습니다. 공격이라고 확정할 수 있는지 적고, 2.1 의 표에서 시각 간격과 성공 뒤에 요청한 경로를 보고 의심스러운 점을 적어 주세요. 그리고 5번 실패가 공격인지 판단하려면 이 표에 없는 정보 중 무엇이 더 필요한지 한 가지 적어 주세요(예: 어떤 사용자 이름으로 시도했는지).
-   - (다) [핵심 질문] 한 주소가 로그인에 4번 실패하고 5번째에 성공했습니다. 이 규칙(실패 5번 이상)으로 이 접속에 알림이 생성될까요? 생성된다 · 생성되지 않는다와 이유를 적고, 생성되지 않는다면 담당자가 확인하지 못하는 정보가 무엇인지 적어 주세요.
+   - (가) 실행한 출력 전체를 붙여 넣고, 적용 전후의 오탐 수와 빠진 알림을 적어 주세요.
+   - (나) [핵심 질문] 예외 규칙을 적용한 뒤 오탐이 몇 개에서 몇 개로 줄었나요? A3(jiwoo 의 업무 시간 밖 로그인)은 같은 IP 인데 왜 줄어들지 않았는지도 적어 주세요.
+   - (다) [핵심 질문] `SaaS 평소와 다른 IP` 규칙에서 `203.0.113.80` 을 믿는 IP 로 두면, 이 IP 에서 오는 진짜 공격을 그 규칙으로는 놓칠 수 있습니다. 어떤 경우인지 한 가지 적어 주세요.
 
 ## 실습 4-2 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 로그인 요청인 행 | `actions = events["action"]` → `is_login = actions == "POST /login"` |
-| 실패인 행 | `results = events["result"]` → `is_fail = results == "실패"` |
-| 둘 다인 행 | `both_true = is_login & is_fail` → `login_failures = events[both_true]` |
-| 기준 이상인 주소 | `is_many = ip_login_fail_counts >= limit` → `alert_ips = ip_login_fail_counts[is_many]` |
+| 값이 같은지 비교 | `is_ip_rule = alerts["rule"] == IP_RULE` |
+| 리스트 안에 있는지 | `is_trusted = alerts["ip"].isin(TRUSTED_IPS)` |
+| 두 조건이 모두 맞는 행 | `is_removed = is_ip_rule & is_trusted` |
+| 조건에 맞는 행만 | `kept_alerts = alerts[is_kept]` |
+| 같은 값을 한 번씩만 | `removed_users = removed_alerts["user"].unique()` |
 
 ---
+
+## 마무리 · 이번 Unit 작업 확인하기
+
+이번 Unit의 작업을 깃허브에 올리는 일은 Unit 5의 도전 5-2 마지막에 한 번에 합니다. <mark>이번 Unit에서는 파일이 모두 있는지만 확인합니다</mark>.
+
+**순서**
+
+1. **[터미널]** `anomaly_detection` 폴더에서 <mark>이번 Unit에서 만든 파일이 있는지 확인합니다.</mark>
+   ```bash
+   pwd
+   ls
+   ```
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
+   - `evaluation.py` · `tuning.py` · `final_check.py` · `challenge4-2_run.py` · `exercise4-2_run.py` · `challenge4-3_run.py` · `review_alerts.json` · `problems.json` · `login_alerts.json` 과 `report_u4.md` 가 보여야 합니다.
+2. **[보고서]** `report_u4.md` 의 도전 4-2 · 8-2 · 8-3 칸에서 <mark>`답:` 뒤가 비어 있는 질문이 없는지</mark> 봅니다. 못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.
+
+---
+
+## 이번 Unit 마무리
+
+| 확인 | 문제 |
+|---|---|
+| 알림 7개 중 오탐 4개, 진짜 문제 5개 중 미탐 2개를 세었다 | 도전 4-2 |
+| 믿는 IP 예외 규칙으로 오탐을 4개에서 2개로 줄이고, 진짜 문제가 지워지지 않았음을 확인했다 | 실습 4-2 |
+| 로그인 규칙의 알림을 합쳐 놓친 문제를 2개에서 1개로 줄이고 한 문장으로 요약했다 | 도전 4-3 |
+
+Unit 5에서는 도커 컴포즈로 서버를 켜고, <mark>정상 요청과 스캐너 요청을 보내 로그를 만든 뒤</mark> Unit 5의 통합 실습에 쓸 로그를 저장합니다.
+
+---
+
+<!-- learn:answers -->

@@ -1,32 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
-<title>nginx 시각 문자열을 strptime, replace, strftime 으로 공통 모양 문자열로 바꾸는 단계</title>
-<desc>문자열을 strptime 으로 시각 값으로 바꾸고, replace(tzinfo=None)로 시간대를 떼고, strftime 으로 공통 모양 문자열로 만듭니다. 오른쪽은 각 단계에서 쓰는 형식입니다.</desc>
-<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">시각 문자열 바꾸기: 세 단계</text>
-<rect x="24" y="56" width="320" height="66" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="184" y="82.5" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">nginx 시각 문자열</text>
-<text x="184" y="104.2" font-size="15" text-anchor="middle" fill="#292929">02/Nov/2026:09:12:03 +0900</text>
-<line x1="184" y1="124" x2="184" y2="146" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="24" y="148" width="320" height="66" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="184" y="174.5" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">시각 값 (시간대 있음)</text>
-<text x="184" y="196.2" font-size="15" text-anchor="middle" fill="#292929">2026-11-02 09:12:03+09:00</text>
-<line x1="184" y1="216" x2="184" y2="238" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="24" y="240" width="320" height="66" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="184" y="266.5" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">시각 값 (시간대 없음)</text>
-<text x="184" y="288.2" font-size="15" text-anchor="middle" fill="#292929">2026-11-02 09:12:03</text>
-<line x1="184" y1="308" x2="184" y2="330" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="24" y="332" width="320" height="66" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="184" y="358.5" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">공통 모양 문자열</text>
-<text x="184" y="380.2" font-size="15" text-anchor="middle" fill="#292929">2026-11-02 09:12:03</text>
-<rect x="372" y="104" width="324" height="62" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="534" y="129.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">.strptime(문자열, 형식)</text>
-<text x="534" y="149.9" font-size="14" text-anchor="middle" fill="#666660">%d/%b/%Y:%H:%M:%S %z</text>
-<rect x="372" y="196" width="324" height="62" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="534" y="221.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">.replace(tzinfo=None)</text>
-<text x="534" y="241.9" font-size="14" text-anchor="middle" fill="#666660">+0900 정보를 지운다</text>
-<rect x="372" y="288" width="324" height="62" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="534" y="313.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">.strftime(형식)</text>
-<text x="534" y="333.9" font-size="14" text-anchor="middle" fill="#666660">%Y-%m-%d %H:%M:%S</text>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>read_json 으로 표를 읽고 열 꺼내기·값별 세기·조건으로 거르기</title>
+<desc>pd.read_json 이 이벤트 57개를 (57, 6) 표로 읽습니다. source 열의 value_counts 는 web 28, server 15, saas 14를, result 가 실패인 행만 남기면 (23, 6) 표가 됩니다.</desc>
+<defs><marker id="a-0302-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">1.2 표 읽기 · 열 꺼내기 · 세기 · 거르기</text>
+<rect x="24" y="70" width="220" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="134.0" y="107.2" font-size="15" fill="#292929" text-anchor="middle">normalized_events.json</text>
+<rect x="278" y="70" width="180" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="368.0" y="107.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">pd.read_json(...)</text>
+<rect x="492" y="70" width="204" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="594.0" y="96.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">events 표</text>
+<text x="594.0" y="117.8" font-size="15" fill="#666660" text-anchor="middle">(57, 6) · 57행 6열</text>
+<line x1="247" y1="102" x2="275" y2="102" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p04)"/>
+<line x1="461" y1="102" x2="489" y2="102" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p04)"/>
+<path d="M594,134 L594,152 L30,152 L30,314" fill="none" stroke="#666660" stroke-width="2"/>
+<line x1="30" y1="208" x2="41" y2="208" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p04)"/>
+<line x1="30" y1="314" x2="41" y2="314" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p04)"/>
+<rect x="44" y="176" width="190" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="139.0" y="202.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">events["source"]</text>
+<text x="139.0" y="223.8" font-size="15" fill="#666660" text-anchor="middle">시리즈 · 값 57개</text>
+<line x1="237" y1="208.0" x2="261" y2="208.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p04)"/>
+<rect x="264" y="176" width="160" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="344.0" y="213.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">.value_counts()</text>
+<line x1="427" y1="208.0" x2="451" y2="208.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p04)"/>
+<rect x="454" y="176" width="242" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="575.0" y="202.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">값별 개수</text>
+<text x="575.0" y="223.8" font-size="15" fill="#666660" text-anchor="middle">web 28 · server 15 · saas 14</text>
+<rect x="44" y="282" width="190" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="139.0" y="308.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">results == "실패"</text>
+<text x="139.0" y="329.8" font-size="15" fill="#666660" text-anchor="middle">행마다 True/False</text>
+<line x1="237" y1="314.0" x2="261" y2="314.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p04)"/>
+<rect x="264" y="282" width="160" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="344.0" y="319.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">events[is_fail]</text>
+<line x1="427" y1="314.0" x2="451" y2="314.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p04)"/>
+<rect x="454" y="282" width="242" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="575.0" y="308.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">failed 표</text>
+<text x="575.0" y="329.8" font-size="15" fill="#666660" text-anchor="middle">(23, 6) · 실패 23개</text>
+<text x="24" y="380" font-size="14" fill="#666660" text-anchor="start">이벤트가 57개든 5만 개든 같은 코드를 씁니다</text>
 </svg>

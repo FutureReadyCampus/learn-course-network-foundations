@@ -1,34 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
-<title>login_detection.py 의 함수 네 개가 이어져 세 단계 결과를 출력한다</title>
-<desc>normalized_events.json 을 load_events 로 읽고, pick_login_failures(직접 쓰기 1~6), count_by_ip, pick_alert_ips(직접 쓰기 7·8)를 차례로 거칩니다. exercise4-2_run.py 가 단계 1~3을 출력합니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>실습 4-2: 두 조건을 &amp; 로 합쳐 빠질 알림을 정하고, 전후 오탐 수와 빠진 진짜 문제를 셉니다</title>
+<desc>apply_exception 은 rule 이 IP_RULE 인지와 ip 가 TRUSTED_IPS 안에 있는지를 &amp; 로 합쳐 빠질 알림과 남을 알림을 나눕니다. count_false_alarms 로 적용 전후 오탐을 비교하고, count_real_removed 로 빠진 진짜 문제가 0인지, find_removed_users 로 사용자를 확인합니다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">login_detection.py 함수 네 개를 차례로 거친다</text>
-<rect x="20" y="56" width="250" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="145.0" y="86" font-size="14" text-anchor="middle" fill="#292929"><tspan x="145.0" dy="0" font-weight="700">normalized_events.json</tspan></text>
-<rect x="20" y="126" width="250" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="145.0" y="146" font-size="14" text-anchor="middle" fill="#292929"><tspan x="145.0" dy="0" font-weight="700">load_events</tspan><tspan x="145.0" dy="19">미리 채움</tspan></text>
-<polyline points="145,108 145,123" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="20" y="196" width="250" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="145.0" y="216" font-size="14" text-anchor="middle" fill="#292929"><tspan x="145.0" dy="0" font-weight="700">pick_login_failures</tspan><tspan x="145.0" dy="19">직접 쓰기 1~6</tspan></text>
-<polyline points="145,178 145,193" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="20" y="266" width="250" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="145.0" y="286" font-size="14" text-anchor="middle" fill="#292929"><tspan x="145.0" dy="0" font-weight="700">count_by_ip</tspan><tspan x="145.0" dy="19">미리 채움</tspan></text>
-<polyline points="145,248 145,263" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="20" y="336" width="250" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="145.0" y="356" font-size="14" text-anchor="middle" fill="#292929"><tspan x="145.0" dy="0" font-weight="700">pick_alert_ips(…, 5)</tspan><tspan x="145.0" dy="19">직접 쓰기 7 · 8</tspan></text>
-<polyline points="145,318 145,333" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="340" y="196" width="360" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="520.0" y="226" font-size="15" text-anchor="middle" fill="#292929"><tspan x="520.0" dy="0">단계 1: 로그인 실패 이벤트 수</tspan></text>
-<polyline points="273,221 336,221" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="340" y="266" width="360" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="520.0" y="296" font-size="15" text-anchor="middle" fill="#292929"><tspan x="520.0" dy="0">단계 2: 주소별 로그인 실패 횟수</tspan></text>
-<polyline points="273,291 336,291" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="340" y="336" width="360" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="520.0" y="366" font-size="15" text-anchor="middle" fill="#292929"><tspan x="520.0" dy="0">단계 3: 5번 이상인 주소</tspan></text>
-<polyline points="273,361 336,361" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="340" y="56" width="360" height="120" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="520.0" y="92" font-size="14" text-anchor="middle" fill="#292929"><tspan x="520.0" dy="0" font-weight="700">exercise4-2_run.py</tspan><tspan x="520.0" dy="19">그대로 붙여 넣는 실행 파일</tspan><tspan x="520.0" dy="19">함수를 불러와 차례로 부르고</tspan><tspan x="520.0" dy="19">단계마다 결과를 출력한다</tspan></text>
-<text x="20" y="405" font-size="14" text-anchor="start" fill="#666660">파란 상자가 직접 쓰는 곳 (모두 8군데)</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 4-2 · 예외 규칙으로 오탐 줄이기</text>
+<text x="700" y="32" font-size="15" fill="#666660" text-anchor="end">직접 쓰는 곳 7군데</text>
+<rect x="20" y="56" width="210" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="125.0" y="81.2" font-size="14" fill="#292929" text-anchor="middle">is_ip_rule</text>
+<text x="125.0" y="100.8" font-size="14" fill="#292929" text-anchor="middle">rule == IP_RULE</text>
+<rect x="20" y="128" width="210" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="125.0" y="153.2" font-size="14" fill="#292929" text-anchor="middle">is_trusted</text>
+<text x="125.0" y="172.8" font-size="14" fill="#292929" text-anchor="middle">ip.isin(TRUSTED_IPS)</text>
+<rect x="270" y="88" width="160" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="350.0" y="115.2" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">is_removed</text>
+<text x="350.0" y="134.8" font-size="14" fill="#292929" text-anchor="middle">두 조건 &amp;</text>
+<polyline points="230,86 266,108" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<polyline points="230,158 266,136" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="470" y="56" width="230" height="60" rx="8" fill="#f1f1ef" stroke="#666660" stroke-width="1.5"/>
+<text x="585.0" y="81.2" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">removed_alerts</text>
+<text x="585.0" y="100.8" font-size="14" fill="#292929" text-anchor="middle">빠진 알림</text>
+<rect x="470" y="128" width="230" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="585.0" y="153.2" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">kept_alerts</text>
+<text x="585.0" y="172.8" font-size="14" fill="#292929" text-anchor="middle">~is_removed 로 남긴 것</text>
+<polyline points="430,108 466,86" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<polyline points="430,136 466,158" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<text x="20" y="232" font-size="16" fill="#292929" font-weight="700">실행하면</text>
+<text x="20" y="266" font-size="15" fill="#292929" font-weight="700">단계 1</text>
+<text x="100" y="266" font-size="15" fill="#292929">적용 전 알림 수 · 오탐 수</text>
+<text x="20" y="302" font-size="15" fill="#292929" font-weight="700">단계 2</text>
+<text x="100" y="302" font-size="15" fill="#292929">빠진 알림과 그 사용자 (.unique())</text>
+<text x="20" y="338" font-size="15" fill="#292929" font-weight="700">단계 3</text>
+<text x="100" y="338" font-size="15" fill="#292929">적용 후 알림 수 · 오탐 수</text>
+<text x="20" y="374" font-size="15" fill="#292929" font-weight="700">단계 4</text>
+<text x="100" y="374" font-size="15" fill="#292929">빠진 알림 중 진짜 문제 수 (0이면 지워지지 않음)</text>
 </g>
 </svg>

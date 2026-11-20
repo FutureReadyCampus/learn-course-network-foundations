@@ -1,37 +1,34 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
-<title>normalize.py 에서 세 리스트를 합치고 세고 저장하는 함수와 직접 쓰는 번호</title>
-<desc>미리 채운 load_web, load_server, load_saas 가 만든 리스트를 merge_events(1·2번)가 합쳐 정렬합니다. count_by_source(3·4번)가 소스별로 세고 save_events(5번)가 파일로 저장하며, 실행하면 네 단계가 나옵니다.</desc>
+<title>login_detection.py 의 함수 네 개가 이어져 세 단계 결과를 출력한다</title>
+<desc>normalized_events.json 을 load_events 로 읽고, pick_login_failures(직접 쓰기 1~6), count_by_ip, pick_alert_ips(직접 쓰기 7·8)를 차례로 거칩니다. exercise2-3_run.py 가 단계 1~3을 출력합니다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 2-3: normalize.py 의 흐름</text>
-<rect x="24" y="56" width="208" height="46" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="128" y="83.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">load_web</text>
-<line x1="128" y1="104" x2="360" y2="128" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="256" y="56" width="208" height="46" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="360" y="83.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">load_server</text>
-<line x1="360" y1="104" x2="360" y2="128" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="488" y="56" width="208" height="46" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="592" y="83.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">load_saas</text>
-<line x1="592" y1="104" x2="360" y2="128" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="200" y="132" width="320" height="58" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="360" y="155.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">merge_events (1 · 2번 직접)</text>
-<text x="360" y="175.9" font-size="14" text-anchor="middle" fill="#666660">이어 붙이고 시간순 정렬</text>
-<line x1="360" y1="192" x2="128" y2="218" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="24" y="222" width="208" height="62" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="128" y="247.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">count_by_source</text>
-<text x="128" y="267.9" font-size="14" text-anchor="middle" fill="#666660">3 · 4번 직접</text>
-<line x1="360" y1="192" x2="360" y2="218" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="256" y="222" width="208" height="62" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="360" y="247.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">count_missing</text>
-<text x="360" y="267.9" font-size="14" text-anchor="middle" fill="#666660">미리 채움</text>
-<line x1="360" y1="192" x2="592" y2="218" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="488" y="222" width="208" height="62" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="592" y="247.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">save_events</text>
-<text x="592" y="267.9" font-size="14" text-anchor="middle" fill="#666660">5번 직접</text>
-<line x1="360" y1="286" x2="360" y2="306" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="24" y="310" width="672" height="92" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="360" y="340.1" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">exercise2-3_run.py 의 출력</text>
-<text x="360" y="360.8" font-size="14" text-anchor="middle" fill="#292929">단계 1 소스별 이벤트 수 · 단계 2 user · ip 가 None 인 수</text>
-<text x="360" y="381.1" font-size="14" text-anchor="middle" fill="#292929">단계 3 gaeun 의 이벤트(시간순) · 단계 4 저장한 이벤트 수</text>
+<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">login_detection.py 함수 네 개를 차례로 거친다</text>
+<rect x="20" y="56" width="250" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="145.0" y="86" font-size="14" text-anchor="middle" fill="#292929"><tspan x="145.0" dy="0" font-weight="700">normalized_events.json</tspan></text>
+<rect x="20" y="126" width="250" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="145.0" y="146" font-size="14" text-anchor="middle" fill="#292929"><tspan x="145.0" dy="0" font-weight="700">load_events</tspan><tspan x="145.0" dy="19">미리 채움</tspan></text>
+<polyline points="145,108 145,123" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="20" y="196" width="250" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="145.0" y="216" font-size="14" text-anchor="middle" fill="#292929"><tspan x="145.0" dy="0" font-weight="700">pick_login_failures</tspan><tspan x="145.0" dy="19">직접 쓰기 1~6</tspan></text>
+<polyline points="145,178 145,193" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="20" y="266" width="250" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="145.0" y="286" font-size="14" text-anchor="middle" fill="#292929"><tspan x="145.0" dy="0" font-weight="700">count_by_ip</tspan><tspan x="145.0" dy="19">미리 채움</tspan></text>
+<polyline points="145,248 145,263" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="20" y="336" width="250" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="145.0" y="356" font-size="14" text-anchor="middle" fill="#292929"><tspan x="145.0" dy="0" font-weight="700">pick_alert_ips(…, 5)</tspan><tspan x="145.0" dy="19">직접 쓰기 7 · 8</tspan></text>
+<polyline points="145,318 145,333" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="340" y="196" width="360" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="520.0" y="226" font-size="15" text-anchor="middle" fill="#292929"><tspan x="520.0" dy="0">단계 1: 로그인 실패 이벤트 수</tspan></text>
+<polyline points="273,221 336,221" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="340" y="266" width="360" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="520.0" y="296" font-size="15" text-anchor="middle" fill="#292929"><tspan x="520.0" dy="0">단계 2: 주소별 로그인 실패 횟수</tspan></text>
+<polyline points="273,291 336,291" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="340" y="336" width="360" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="520.0" y="366" font-size="15" text-anchor="middle" fill="#292929"><tspan x="520.0" dy="0">단계 3: 5번 이상인 주소</tspan></text>
+<polyline points="273,361 336,361" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="340" y="56" width="360" height="120" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="520.0" y="92" font-size="14" text-anchor="middle" fill="#292929"><tspan x="520.0" dy="0" font-weight="700">exercise2-3_run.py</tspan><tspan x="520.0" dy="19">그대로 붙여 넣는 실행 파일</tspan><tspan x="520.0" dy="19">함수를 불러와 차례로 부르고</tspan><tspan x="520.0" dy="19">단계마다 결과를 출력한다</tspan></text>
+<text x="20" y="405" font-size="14" text-anchor="start" fill="#666660">파란 상자가 직접 쓰는 곳 (모두 8군데)</text>
 </g>
 </svg>

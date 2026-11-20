@@ -1,286 +1,406 @@
 ---
 id: m4-u04-l05
-title: 정답
+title: 도전 4-1 · 로그를 한 사용자로 연결하기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
-  path: network/102_day03_am_baseline_login.md
-  mission_id: GichanSource.m4-1104-am-baseline-login
+  path: network/108_day04_pm_correlation_risk.md
+  mission_id: GichanSource.m4-1105-pm-correlation-risk
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 정답
+# 도전 4-1 · 로그를 한 사용자로 연결하기
 
-## 정답 보는 법
+## 목표: 한 사용자 기준 사건 연결
 
-설명하는 답은 한 예이고, 핵심이 같으면 맞습니다.
+> **이번 실습에 들어온 일**
+>
+> A사 보안 팀장이 보낸 메시지입니다:
+> 「Unit 3에서 서버 · SaaS · 웹 로그를 각각 따로 탐지했더니 결과 목록이 세 개가 됐습니다. 목록을 번갈아 보다가 같은 사람 이름이 서버 결과에도, SaaS 결과에도 나오는 것을 봤습니다. 같은 사용자가 짧은 시간 안에 여러 로그에서 이상 징후를 보였다면 하나의 사건일 수 있습니다.
+>
+> 같은 사용자에게 서로 다른 로그의 이벤트가 짧은 시간 안에 모여 있으면 하나의 사건으로 연결해서 알려 주세요. 웹 로그에는 사용자 이름이 없고 IP 만 있으니, SaaS 에 로그인한 기록에서 IP 로 사용자를 찾아 연결해 주세요.」
+> - **왜 중요한가**: <mark>로그 하나에서는 작은 이상 징후도 같은 사용자에게 짧은 시간 안에 여러 로그에서 겹치면 먼저 확인할 이유가 분명하지만, 아침과 저녁처럼 시간이 멀리 떨어진 기록까지 한 사건으로 보면 안 됩니다.</mark>
+
+## 왜 IP 로 사용자를 채워 연결하는가
+
+1. 서버 로그와 SaaS 로그에는 사용자(`user`)가 있고, 웹 로그에는 IP 만 있습니다. SaaS 의 <mark>**성공한 로그인**</mark>은 IP 와 사용자가 함께 있으므로 「IP → 사용자」 딕셔너리를 만들어 웹 로그의 IP 로 사용자를 찾습니다.
+2. 세 로그를 표 하나로 합쳐 **사용자 순, 같은 사용자는 시각 순**으로 놓으면 <mark>사용자별 이벤트를 시각 순서로 확인할 수 있습니다.</mark>
+3. 연결됐다고 보는 조건은 둘입니다. ① 서로 다른 로그(`source`)가 2종류 이상이다. ② 그 사용자의 첫 이벤트부터 마지막 이벤트까지가 60분 이내이다. <mark>하나만 맞으면 연결된 것으로 보지 않습니다.</mark>
+
+## 1.1 사용자 채우고 표 잇고 정렬하기
+
+SaaS 의 성공한 로그인에서 만든 「IP → 사용자」 딕셔너리는 이렇게 생깁니다(`make_ip_user_map` 이 만들며, 미리 채워져 있습니다).
+
+| IP | 사용자 | 만들어진 곳 |
+|---|---|---|
+| 198.51.100.9 | seoyeon | 09:05 성공한 로그인 |
+| 192.0.2.41 | junho | 09:30 성공한 로그인 |
+| 198.51.100.77 | gaeun | 10:12 성공한 로그인 |
+| 198.51.100.52 | jiwoo | 16:02 성공한 로그인 |
+| 203.0.113.80 | seoyeon | 17:38 성공한 로그인 |
+
+- 딕셔너리에는 <mark>**성공한 로그인**만</mark> 넣습니다. 02:14 에 jiwoo 가 203.0.113.80 으로 시도한 로그인은 실패였으므로 넣지 않고, 같은 IP 로 성공한 17:38 의 seoyeon 이 이 IP 의 사용자로 기록됩니다.
+- 서버 로그는 실패 이벤트 **전체**(9개)를 씁니다. 먼저 확인할 이벤트만 고르면 어떤 사용자가 서버 로그에 나오는지가 Unit 3의 결과에 따라 달라지기 때문입니다.
+- 웹 실패 이벤트의 IP 가 위 표에 있으면 그 사용자의 이벤트로 연결해 분석할 수 있고, <mark>딕셔너리에 IP 가 없으면 사용자를 확인할 수 없어 이번 연결에서 제외합니다.</mark>
+
+**판다스 문법 상자 — 딕셔너리로 값을 바꾸기 `map`**
+
+**<mark>`열.map(딕셔너리)`</mark> 은 열의 값을 딕셔너리에서 찾아, 짝지어진 값으로 바꿉니다. 딕셔너리에 없는 값은 `NaN`(연결할 값이 없다는 표시)이 됩니다**
+
+Unit 1에서 배운 딕셔너리로 값 바꾸기를 열 전체에 한 번에 하는 것이 `map` 입니다. 아래에서는 웹 로그의 IP 를 사용자 이름으로 바꿉니다.
+
+```python
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
+
+data = {                                                    # 표에 넣을 내용(열 이름: 값들)
+    "ip": ["203.0.113.80", "198.51.100.77", "192.0.2.15"],  # ip 열
+    "action": ["GET /admin", "GET /admin", "GET /board"],   # action 열
+}
+df = pd.DataFrame(data)                                     # 내용으로 표(DataFrame)를 만든다
+print(df)                                                   # 표를 출력한다
+```
+
+실행 결과:
+
+```
+              ip      action
+0   203.0.113.80  GET /admin
+1  198.51.100.77  GET /admin
+2     192.0.2.15  GET /board
+```
+
+위 코드에 이어서 실행하는 다음 코드입니다.
+
+```python
+ip_user = {"203.0.113.80": "seoyeon", "198.51.100.77": "gaeun"}  # IP → 사용자 딕셔너리(세 번째 IP 는 없다)
+users = df["ip"].map(ip_user)                                    # ip 열의 각 값을 딕셔너리에서 찾아 사용자 이름으로 바꾼다
+print(users)                                                     # 바뀐 값을 출력한다
+```
+
+실행 결과:
+
+```
+0    seoyeon
+1      gaeun
+2        NaN
+Name: ip, dtype: object
+```
+
+- 읽는 법: <mark style="background:#bde3ff">앞의 두 IP 는 딕셔너리에 있어서 `seoyeon` 과 `gaeun` 이 되고, 세 번째 IP 는 딕셔너리에 없어서 `NaN`</mark> 입니다. 맨 아래 `Name: ip, dtype: object` 줄은 몰라도 됩니다.
+
+**판다스 문법 상자 — 표를 위아래로 이어 붙이기 `pd.concat`**
+
+**<mark>`pd.concat([표1, 표2, …])`</mark> 는 열 이름이 같은 표 여러 개를 위아래로 이어 붙여 표 하나로 만듭니다. 표는 대괄호 `[ ]` 안의 리스트로 전달합니다**
+
+아래에서는 판정 서버 로그 표와 SaaS 로그 표를 하나로 이어 붙입니다.
+
+```python
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
+
+server_data = {                                      # 판정 서버 로그에 넣을 내용
+    "user": ["gaeun", "gaeun"],                      # user 열
+    "action": ["ACCOUNT:CHANGE", "ACCOUNT:CHANGE"],  # action 열
+}
+server_logs = pd.DataFrame(server_data)              # 내용으로 표(DataFrame)를 만든다
+print(server_logs)                                   # 판정 서버 표를 출력한다
+```
+
+실행 결과:
+
+```
+    user          action
+0  gaeun  ACCOUNT:CHANGE
+1  gaeun  ACCOUNT:CHANGE
+```
+
+위 코드에 이어서 실행하는 다음 코드입니다.
+
+```python
+saas_data = {                        # SaaS 로그에 넣을 내용 — 열 이름이 서버 표와 같다
+    "user": ["gaeun"],               # user 열
+    "action": ["login"],             # action 열
+}
+saas_logs = pd.DataFrame(saas_data)  # 내용으로 표(DataFrame)를 만든다
+print(saas_logs)                     # SaaS 표를 출력한다
+```
+
+실행 결과:
+
+```
+    user action
+0  gaeun  login
+```
+
+위 코드에 이어서 실행하는 다음 코드입니다.
+
+```python
+both = pd.concat([server_logs, saas_logs])  # 표 두 개를 위아래로 이어 붙여 표 하나로 만든다
+print(both)                                 # 이어 붙인 표를 출력한다
+```
+
+실행 결과:
+
+```
+    user          action
+0  gaeun  ACCOUNT:CHANGE
+1  gaeun  ACCOUNT:CHANGE
+0  gaeun           login
+```
+
+- 읽는 법: <mark style="background:#bde3ff">판정 서버 2행 아래에 SaaS 1행이 붙어 3행이 되었습니다.</mark> 왼쪽 번호는 원래 표의 번호를 그대로 가져와서 0 이 두 번 나옵니다.
+- <mark>표를 대괄호 안에 넣지 않고 쉼표로 따로 전달하면 오류가 납니다.</mark>
+
+**판다스 문법 상자 — 열 두 개로 정렬하기 `sort_values([열1, 열2])`**
+
+**<mark>`표.sort_values(["열1", "열2"])`</mark> 는 열1 순으로 정렬하고, 열1 의 값이 같은 행은 열2 순으로 정렬합니다. 열 이름은 리스트로 전달합니다**
+
+아래는 사용자 순서가 섞여 있는 로그입니다. 사용자(`user`) 순으로 먼저 정렬하고, 같은 사용자 안에서는 시각(`time`) 순으로 정렬합니다.
+
+```python
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
+
+data = {                                               # 표에 넣을 내용(열 이름: 값들)
+    "user": ["seoyeon", "gaeun", "seoyeon", "gaeun"],  # user 열
+    "time": ["17:38", "10:14", "09:05", "10:05"],      # time 열
+}
+df = pd.DataFrame(data)                                # 내용으로 표(DataFrame)를 만든다
+print(df)                                              # 표를 출력한다
+```
+
+실행 결과:
+
+```
+      user   time
+0  seoyeon  17:38
+1    gaeun  10:14
+2  seoyeon  09:05
+3    gaeun  10:05
+```
+
+위 코드에 이어서 실행하는 다음 코드입니다.
+
+```python
+sorted_df = df.sort_values(["user", "time"])  # user 순으로, 같은 user 는 time 순으로 정렬한다
+print(sorted_df)                              # 정렬한 표를 출력한다
+```
+
+실행 결과:
+
+```
+      user   time
+3    gaeun  10:05
+1    gaeun  10:14
+2  seoyeon  09:05
+0  seoyeon  17:38
+```
+
+- 읽는 법: <mark style="background:#bde3ff">먼저 `user` 순(gaeun → seoyeon)으로 놓이고, 같은 사용자 안에서는 `time` 순(10:05 → 10:14, 09:05 → 17:38)으로 놓였습니다.</mark> 왼쪽 번호는 원래 행의 번호라서 바뀐 순서로 나옵니다.
+
+**한 장 정리**
+
+| 함수 | 받는 것 | 리턴하는 것 |
+|---|---|---|
+| `make_ip_user_map` | SaaS 로그인 표 | IP → 사용자 딕셔너리(미리 채움) |
+| `attach_user_to_web` | 웹 실패 표 · 딕셔너리 | `user` 열이 붙은 웹 이벤트 표 |
+| `build_timeline` | 서버 · SaaS · 웹 표 | 사용자 · 시각 순으로 정렬된 표 |
+| `find_chains` | 정렬된 표 | 연결된 사건 리스트와 연결되지 않은 사용자 |
+| `find_chains_in_events` | 이벤트 표 | 연결된 사건 리스트(미리 채움, 실습 4-1에서 씀) |
+
+- 미리 채운 줄 가운데 처음 보는 것은 이렇습니다.
+  - `hours * 60 + minutes` 는 시각을 「자정부터 몇 분이 지났는지」로 바꿉니다(09:33 → 573). 사용자별로 가장 늦은 시각에서 가장 이른 시각을 빼면 첫 이벤트와 마지막 이벤트의 시간 차(분)가 나오고, 이 값을 60분 기준과 비교합니다. 분 단위로 계산하므로 초는 버립니다.
+  - `times.dt.minute` 는 Unit 3의 `.dt.hour` 처럼 시각 값에서 분(0~59)만 꺼냅니다. `latest - earliest` 는 사용자별로 가장 늦은 시각(분)에서 가장 이른 시각(분)을 뺍니다.
+  - `source_counts.index` 는 사용자 이름들입니다. `source_counts[user]` 는 그 사용자의 값입니다.
+  - `.copy()` 는 원본 표를 바꾸지 않도록 복사본을 만듭니다.
+  - `grouped["source"].nunique()` 는 사용자별로 `source` 값이 몇 종류인지 세는 한 줄입니다. 왼쪽부터 ① `grouped["source"]` 가 `source` 열을 고르고 ② `.nunique()` 가 서로 다른 값의 수를 셉니다.
+- **직접 쓰는 곳은 다섯 군데**(번호 1 ~ 5)이고, 함수 세 개 안에 나뉘어 있습니다.
+  - `attach_user_to_web`(1번): IP 마다 사용자를 `map` 으로 채웁니다.
+  - `build_timeline`(2 · 3번): 세 표를 연결하고 사용자 · 시각 순으로 정렬합니다.
+  - `find_chains`(4 · 5번): 연결 조건을 확인하는 `if` 줄은 미리 채웠고, 그 안에서 이유 문장을 만들어 사건 리스트에 추가합니다.
+
+## 도전 4-1 · 로그를 한 사용자로 연결하기
+
+**이런 상황이 있습니다**
+
+- **지금은**: <mark>서버 · SaaS · 웹 로그의 탐지 결과가 따로 있어서, 같은 사용자의 기록이 로그별로 나뉘어 있습니다</mark>.
+- **그래서 만드는 것**: `correlation.py` 입니다.
+  - 웹 이벤트에 IP 로 사용자를 채웁니다.
+  - 세 로그를 한 표로 합쳐 사용자 · 시각 순으로 정렬합니다.
+  - 서로 다른 로그가 2종류 이상이고 첫 이벤트부터 마지막 이벤트까지 60분 이내인 사용자를 하나의 사건으로 연결합니다.
+- **실행하면**: <mark>단계 1: 사용자를 알 수 있는 웹 이벤트 수, 단계 2: 합친 이벤트 수와 한 사용자의 흐름, 단계 3: 연결된 사건, 단계 4: 로그가 2종류 이상이지만 시간 차가 60분을 넘어 연결되지 않은 사용자가 나옵니다.</mark>
+- **현업에서는**: 이벤트 하나씩이 아니라 한 사용자 단위의 사건으로 연결하면 담당자가 읽을 양이 줄어듭니다. 시간 기준 밖에 있는 이벤트는 따로 두어 관계없는 일이 섞이지 않게 합니다.
+
+**할 일**
+
+1. `correlation.py` · `challenge4-1_run.py` 두 파일을 만들고, `correlation.py` 의 세 함수에서 직접 쓰는 곳을 씁니다.
+2. 실행해서 <mark>사용자를 알 수 있는 웹 이벤트 수</mark>(단계 1), <mark>합친 이벤트 수와 한 사용자의 흐름</mark>(단계 2), <mark>연결된 사건</mark>(단계 3), <mark>연결되지 않은 사용자</mark>(단계 4)를 읽습니다.
+
+**`correlation.py`**
+
+```python
+import pandas as pd                                    # 판다스를 pd 라는 짧은 이름으로 불러온다
+from access_detection import load_events, pick_server_failures, EVENTS_PATH  # 실습 3-2 함수를 불러온다
+from saas_detection import pick_saas, pick_logins      # 도전 3-2 함수를 불러온다
+from malicious_detection import pick_web_failures      # 도전 3-3 함수를 불러온다
+
+MIN_SOURCES = 2                                        # 서로 다른 로그(source)가 이 개수 이상이면 연결된 것으로 본다
+WINDOW_MINUTES = 60                                    # 한 사용자의 이벤트가 이 분 안에 모여 있어야 연결된 것으로 본다
+
+
+def make_ip_user_map(logins):                          # SaaS 로그인 표를 받는 함수
+    """성공한 SaaS 로그인에서 IP 마다 사용자를 찾아 딕셔너리로 만든다.
+    웹 서버 로그에는 사용자가 없어서 IP 로 사용자를 찾을 때 쓴다.
+    """
+    ip_user = {}                                       # IP → 사용자 딕셔너리
+    login_list = logins.to_dict("records")             # 표를 이벤트 딕셔너리 리스트로 바꾼다
+    for login in login_list:                           # 로그인을 하나씩 꺼낸다
+        if login["result"] == "성공":                  # 성공한 로그인이면
+            ip_user[login["ip"]] = login["user"]       # 그 IP 의 사용자를 딕셔너리에 담는다
+    return ip_user                                     # IP → 사용자 딕셔너리를 리턴한다
+
+
+def attach_user_to_web(web_failures, ip_user):         # 웹 실패 표와 IP → 사용자 딕셔너리를 받는 함수
+    """IP 로 사용자를 알 수 있는 웹 실패 이벤트에 user 열을 붙인다.
+    웹 로그를 서버 · SaaS 로그와 같은 사용자 기준으로 연결해 분석할 때 쓴다.
+    """
+    ips = web_failures["ip"]                           # ip 열만 꺼낸다
+    known_ips = list(ip_user)                          # 딕셔너리의 키(IP)만 리스트로 만든다
+    is_known = ips.isin(known_ips)                     # 행마다 사용자를 아는 IP 인지 구해 True 또는 False 를 만든다
+    known_web = web_failures[is_known]                 # True 인 행만 골라 새 표를 만든다
+    web_part = known_web.copy()                        # 원본을 바꾸지 않도록 복사한다 — 미리 채운 줄
+
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 1. web_part 의 "ip" 열을 꺼내 .map(ip_user) 를 붙여 IP 마다 사용자를 구해 users 에 담는다
+    web_part["user"] = users                           # 표에 user 열을 붙인다 — 미리 채운 줄
+    return web_part                                    # user 열이 붙은 웹 이벤트 표를 리턴한다
+
+
+def build_timeline(server_part, saas_part, web_part):  # 세 로그의 표를 받는 함수
+    """세 로그의 표를 하나로 합쳐 사용자 · 시각 순으로 정렬하고, 하루 중 몇 분인지 열을 붙인다.
+    사용자마다 서로 다른 로그의 이벤트를 시간순으로 놓고 볼 때 쓴다.
+    """
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 2. pd.concat 에 [server_part, saas_part, web_part] 리스트를 전달해 timeline 에 담는다
+    # 3. timeline 에 .sort_values 를 붙이고 ["user", "time"] 리스트를 전달해 사용자 순, 같은 사용자는 시각 순으로 정렬한 결과를 timeline 에 담는다
+    times = pd.to_datetime(timeline["time"])           # 문자열 시각을 시각 값으로 바꾼다
+    hours = times.dt.hour                              # 시각 값에서 시(0~23)만 꺼낸다
+    minutes = times.dt.minute                          # 시각 값에서 분(0~59)만 꺼낸다
+    timeline["minute_of_day"] = hours * 60 + minutes   # 자정부터 몇 분이 지났는지 열을 붙인다 — 미리 채운 줄
+    return timeline                                    # 정렬된 이벤트 표를 리턴한다
+
+
+def find_chains(timeline):                             # 정렬된 이벤트 표를 받는 함수
+    """서로 다른 로그가 짧은 시간 안에 한 사용자에게 모여 있는 사건을 찾는다.
+    이벤트 하나씩이 아니라 한 사용자의 사건으로 연결해 분석할 때 쓴다.
+    """
+    grouped = timeline.groupby("user")                 # user 가 같은 행끼리 그룹으로 만든다
+    source_counts = grouped["source"].nunique()        # 그룹마다 서로 다른 로그(source)가 몇 종류인지 센다
+    latest = grouped["minute_of_day"].max()            # 그룹마다 가장 늦은 시각(분)을 구한다
+    earliest = grouped["minute_of_day"].min()          # 그룹마다 가장 이른 시각(분)을 구한다
+    spans = latest - earliest                          # 그룹마다 처음부터 마지막까지 몇 분인지 구한다
+
+    chains = []                                        # 연결된 사건을 담을 빈 리스트
+    not_chained = []                                   # 로그 종류는 여럿이지만 시간 차가 60분을 초과해 연결되지 않은 사용자 정보
+    for user in source_counts.index:                   # 사용자를 하나씩 꺼낸다
+        source_count = source_counts[user]             # 그 사용자의 로그 종류 수
+        span = spans[user]                             # 그 사용자의 처음부터 마지막까지 분
+        has_many_sources = source_count >= MIN_SOURCES  # 로그 종류가 기준 이상인지 구한다
+        is_close = span <= WINDOW_MINUTES              # 시간 간격이 기준 이내인지 구한다
+        if has_many_sources and is_close:              # 로그 종류도 충분하고 60분 이내이면 — 미리 채운 줄
+            # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+            # 4. "서로 다른 로그 " 와 str(source_count) 와 "종류 · " 와 str(span) 과 "분 안" 을 + 로 연결해 reason 에 담는다
+            # 5. chains 에 키 "user" 에 user, 키 "reason" 에 reason 을 담은 딕셔너리를 추가한다
+        if has_many_sources and not is_close:          # 로그 종류는 여럿인데 시간 차가 60분을 초과하면 — 미리 채운 줄
+            not_chained.append({"user": user, "source_count": int(source_count), "span_minutes": int(span)})  # 연결되지 않은 사용자와 두 숫자를 추가한다
+    return chains, not_chained                         # 연결된 사건과 연결되지 않은 사용자를 리턴한다
+
+
+def find_chains_in_events(events):                     # 이벤트 표를 받는 함수
+    """이벤트 표 하나로 위 함수를 차례로 불러 연결된 사건 리스트를 만든다.
+    실습 4-1에서 점수를 매기기 전에 한 번에 쓴다.
+    """
+    server_failures = pick_server_failures(events)     # 판정 서버 실패 이벤트를 고른다
+    server_part = server_failures                      # 서버 실패 이벤트 전체를 쓴다
+    saas_part = pick_saas(events)                      # SaaS 이벤트를 고른다
+    logins = pick_logins(saas_part)                    # 로그인 이벤트를 고른다
+    ip_user = make_ip_user_map(logins)                 # IP → 사용자 딕셔너리를 만든다
+    web_failures = pick_web_failures(events)           # 웹 실패 이벤트를 고른다
+    web_part = attach_user_to_web(web_failures, ip_user)  # 사용자를 아는 웹 이벤트에 user 열을 붙인다
+    timeline = build_timeline(server_part, saas_part, web_part)  # 세 로그를 합쳐 정렬한다
+    chains, not_chained = find_chains(timeline)        # 연결된 사건을 찾는다
+    return chains                                      # 연결된 사건 리스트를 리턴한다
+```
+
+- 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 3번은 함수 안이라 앞에 공백 4개이고, 4 · 5번은 `for` 와 `if` 안이라 12개입니다.
+- 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
+- 정렬은 새 표를 만들어 주므로 3번은 <mark>`timeline = timeline.sort_values(…)` 로 다시 담아야</mark> 합니다. `timeline.sort_values(…)` 만 쓰면 정렬한 결과가 사라집니다.
+- 4번의 완성 모양은 `서로 다른 로그 2종류 · 30분 안` 입니다(숫자는 사용자마다 다릅니다). <mark>공백 하나까지 같아야 출력이 같습니다.</mark>
+- 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다. `if` 안쪽의 4 · 5번이 비어 있기 때문입니다.
+
+**`challenge4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
+
+```python
+from access_detection import load_events, pick_server_failures, EVENTS_PATH  # 실습 3-2 함수를 불러온다
+from saas_detection import pick_saas, pick_logins      # 도전 3-2 함수를 불러온다
+from malicious_detection import pick_web_failures      # 도전 3-3 함수를 불러온다
+from correlation import make_ip_user_map, attach_user_to_web, build_timeline, find_chains, WINDOW_MINUTES  # 방금 만든 함수를 불러온다
+
+events = load_events(EVENTS_PATH)                      # 이벤트 파일을 표로 읽는다
+server_failures = pick_server_failures(events)         # 판정 서버 실패 이벤트를 고른다
+server_part = server_failures                           # 서버 실패 이벤트 전체를 쓴다
+saas_part = pick_saas(events)                          # SaaS 이벤트를 고른다
+logins = pick_logins(saas_part)                        # 로그인 이벤트를 고른다
+ip_user = make_ip_user_map(logins)                     # 성공한 로그인에서 IP → 사용자 딕셔너리를 만든다
+
+web_failures = pick_web_failures(events)               # 웹 실패 이벤트를 고른다
+web_part = attach_user_to_web(web_failures, ip_user)   # 사용자를 아는 웹 이벤트에 user 열을 붙인다
+web_count = len(web_part)                              # 그 이벤트가 몇 개인지 센다
+print("--- 단계 1: IP 로 사용자를 알 수 있는 웹 실패 이벤트", web_count, "개")  # 단계 1 시작을 알리는 줄과 개수
+
+timeline = build_timeline(server_part, saas_part, web_part)  # 세 로그를 합쳐 사용자 · 시각 순으로 정렬한다
+timeline_count = len(timeline)                         # 합친 이벤트가 몇 개인지 센다
+print("--- 단계 2: 사용자별로 시간순으로 놓은 이벤트", timeline_count, "개")  # 단계 2 시작을 알리는 줄과 개수
+print("gaeun 의 이벤트 (시각 · 로그 · 행동 · 결과)")  # 아래 줄들이 gaeun 의 이벤트라는 것을 알리는 줄
+
+users = timeline["user"]                               # user 열만 꺼낸다
+is_gaeun = users == "gaeun"                            # 행마다 gaeun 인지 비교해 True 또는 False 를 만든다
+gaeun_rows = timeline[is_gaeun]                        # True 인 행만 골라 gaeun 의 이벤트 표를 만든다
+gaeun_list = gaeun_rows.to_dict("records")             # 표를 이벤트 딕셔너리 리스트로 바꾼다
+for event in gaeun_list:                               # gaeun 의 이벤트를 시간순으로 하나씩 꺼낸다
+    print(event["time"], event["source"], event["action"], event["result"])  # 시각 · 로그 · 행동 · 결과를 출력한다
+
+chains, not_chained = find_chains(timeline)            # 연결된 사건과 연결되지 않은 사용자를 찾는다
+print("--- 단계 3:", WINDOW_MINUTES, "분 안에 서로 다른 로그로 연결된 사건")  # 단계 3 시작을 알리는 줄
+for chain in chains:                                   # 연결된 사건을 하나씩 꺼낸다
+    print(chain)                                       # 사건을 출력한다
+
+print("--- 단계 4: 로그 종류는 여럿이지만 시간 차가 60분을 초과해 연결되지 않은 사용자")  # 단계 4 시작을 알리는 줄
+for item in not_chained:                               # 연결되지 않은 사용자를 하나씩 꺼낸다
+    print(item)                                        # 사용자 · 로그 종류 수 · 첫 이벤트부터 마지막 이벤트까지의 분을 출력한다
+```
+
+**순서**
+
+1. **[VS Code]** 파일 `correlation.py` · `challenge4-1_run.py` 를 `anomaly_detection` 폴더에 만들어 위 코드를 붙여 넣습니다. `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 만듭니다.
+2. **[VS Code]** `correlation.py` 에서 <mark>직접 쓰는 곳 다섯 군데를 씁니다</mark>. 1.1 의 문법 상자를 보고 쓰고, 막히면 아래 「도전 4-1 정리」를 봅니다.
+3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+   ```bash
+   pwd
+   python challenge4-1_run.py
+   ```
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python challenge4-1_run.py` 파이썬으로 실행 파일 실행
+4. 출력은 **네 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 숫자가 제목 줄에 함께 나오므로 그 아래 줄이 없고, 단계 2는 제목 아래 6줄(`gaeun 의 이벤트 …` 안내 줄 1줄과 gaeun 의 이벤트 5줄), 단계 3은 1줄, 단계 4는 제목 아래 1줄입니다.
+5. **[보고서]** `report_u4.md` 의 `## 도전 4-1` 아래를 채웁니다.
+   - (가) 실행한 출력 전체를 붙여 넣고, 연결된 사건의 사용자와 이유를 적어 주세요.
+   - (나) [핵심 질문] 단계 2에 나온 gaeun 의 이벤트 5개는 어느 로그(`source`)에서 왔고, 왜 한 사건으로 연결됐나요? 이 사건만으로 공격이라고 확정할 수 있는지도 적어 주세요.
+   - (다) [핵심 질문] seoyeon 은 서로 다른 로그에 나오지만 연결되지 않았습니다. 단계 4 의 두 숫자(로그 종류 수와 처음부터 마지막까지의 분)로 두 조건을 비교해 연결되지 않은 이유를 설명하고, 하나의 사건으로 연결하지 않아서 탐지하지 못할 수 있는 것을 도전 3-2 출력에서 seoyeon 이 나온 규칙과 연결해 적어 주세요.
+
+## 도전 4-1 정리
+
+| 하려는 일 | 코드 · 말 |
+|---|---|
+| IP 로 사용자 채우기 | `users = web_part["ip"].map(ip_user)` |
+| 표 위아래로 잇기 | `timeline = pd.concat([server_part, saas_part, web_part])` |
+| 열 두 개로 정렬 | `timeline = timeline.sort_values(["user", "time"])` |
+| 이유 문장 만들기 | `reason = "서로 다른 로그 " + str(source_count) + "종류 · " + str(span) + "분 안"` |
 
 ---
-
-## 실습 4-1 정답
-
- **터미널에 입력합니다.**
-
-```bash
-pwd
-python exercise4-1_run.py
-```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise4-1_run.py` 파이썬으로 실행 파일 실행
-
-**채운 코드** (한 예) — 직접 쓰는 곳은 네 함수입니다.
-
-① `load_daily_failures` 안
-
-```python
-    daily = pd.read_csv(path)  # CSV 파일을 읽어 표로 만든다 — 한 행이 하루
-```
-
-② `average_failures` 안
-
-```python
-    daily_failed_logins = daily["failed_logins"]  # failed_logins 열만 꺼낸다 — 하루 실패 횟수 7개가 나열된 열
-    average = daily_failed_logins.mean()          # 7개의 평균을 구한다
-```
-
-③ `maximum_failures` 안
-
-```python
-    daily_failed_logins = daily["failed_logins"]  # failed_logins 열만 꺼낸다 — 하루 실패 횟수 7개가 나열된 열
-    maximum = daily_failed_logins.max()           # 7개 중 가장 큰 값을 구한다
-```
-
-④ `make_limit` 안
-
-```python
-    limit = maximum + 1  # 평소 최댓값보다 1 큰 숫자를 기준으로 삼는다
-```
-
-**결과**
-
-- (가) 출력은 다음과 같고, 하루 평균은 <mark>**2.4번**</mark>, 최댓값은 <mark>**4번**</mark>, 알림 기준은 <mark>**5번 이상**</mark>입니다.
-
-```
---- 단계 1: 지난 7일 하루 로그인 실패 횟수
-         date  failed_logins
-0  2026-10-26              2
-1  2026-10-27              3
-2  2026-10-28              1
-3  2026-10-29              4
-4  2026-10-30              2
-5  2026-10-31              3
-6  2026-11-01              2
---- 단계 2: 하루 평균 2.4 번
---- 단계 3: 하루 최대 4 번
---- 단계 4: 알림 기준(임계값) 5 번 이상
-```
-
-- (나) ① 평균(2.4번) 이상인 날은 10/27(3번) · 10/29(4번) · 10/31(3번)으로 7일 중 **3일**입니다.
-  - ② 평균을 기준으로 하면 지난 7일 중 위 3일에 알림이 발생하고, <mark>이 3일은 모두 평소와 같은 평범한 날입니다.</mark> 평범한 날에도 알림이 나서 담당자가 알림에 익숙해지고 진짜 알림도 무시하게 됩니다.
-  - ③ 최댓값보다 1 큰 숫자(5번)를 기준으로 하면 지난 7일 중 알림이 발생한 날이 **0일**입니다. <mark>평소에는 알림이 나지 않고, 평소보다 많아졌을 때만 알림이 나게 하려는 것입니다.</mark>
-- (다) <mark>12번이 섞이면 최댓값은 4번에서 12번이 되고, 알림 기준은 5번에서 13번이 됩니다.</mark> <mark>그러면 5 ~ 12번 실패는 알림이 나지 않아 놓칩니다.</mark>
-  - <mark>7일 중 하루만 평소와 달라도 평소 최댓값이 커져서 알림 기준이 높아집니다.</mark> 지난 7일 표가 7일 치뿐이라 그 하루의 영향을 크게 받습니다.
-  - 그래서 지난 7일 표에 평소와 다른 날이 섞이지 않았는지 확인하고, 며칠 쓴 뒤에는 새 데이터로 다시 구합니다.
-
-**왜**
-
-- <mark>평소를 구해서 기준을 정하면 숫자에 근거가 생깁니다.</mark> 「왜 5번인가」에 「지난 7일 중 가장 많은 날이 4번이었다」로 답할 수 있습니다.
-
-**자주 틀리는 곳**
-
-- 열 이름을 틀리면 `KeyError` 오류가 납니다. **열 이름은 파일 첫 줄의 `failed_logins` 와 정확히 같아야 합니다.**
-  - 실행하면 다음 오류가 납니다(<mark>`KeyError: 'failed_login'`</mark> 처럼 열 이름이 나오면 이 실수입니다).
-
-```
-Traceback (most recent call last):
-KeyError: 'failed_login'
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "…/anomaly_detection/exercise4-1_run.py", line 7, in <module>
-    average = average_failures(daily)  # 하루 평균을 구한다
-  File "…/anomaly_detection/baseline.py", line 22, in average_failures
-    daily_failed_logins = daily["failed_login"]  # 열 이름을 잘못 썼다
-KeyError: 'failed_login'
-```
-
-  - 줄 번호는 사람마다 다릅니다.
-- `daily_failed_logins.mean` 처럼 괄호를 빼면 값이 아니라 메서드가 담겨서, 실행 파일의 `round(average, 1)` 에서 `TypeError` 가 납니다. `mean` 과 `max` 는 **뒤에 괄호를 붙여 호출하는 메서드입니다.**
-
-**관제에서는**
-
-- <mark>알림 기준은 몇 주마다 최근 데이터로 다시 구합니다.</mark> 기준을 구한 날짜와 이유를 남겨 두어야 나중에 바꿀 때 근거가 됩니다.
-
----
-
-## 실습 4-2 정답
-
- **터미널에 입력합니다.**
-
-```bash
-pwd
-python exercise4-2_run.py
-```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise4-2_run.py` 파이썬으로 실행 파일 실행
-
-**채운 코드** (한 예) — 직접 쓰는 곳은 두 함수입니다.
-
-① `pick_login_failures` 안
-
-```python
-    actions = events["action"]           # action 열만 꺼낸다 — 무엇을 했는지가 57개 나열된 열
-    is_login = actions == "POST /login"  # 행마다 로그인 요청인지 비교해 True 또는 False 를 만든다
-    results = events["result"]           # result 열만 꺼낸다 — 성공 · 실패가 57개 나열된 열
-    is_fail = results == "실패"          # 행마다 실패인지 비교해 True 또는 False 를 만든다
-    both_true = is_login & is_fail       # 행마다 「로그인 요청이면서 실패」일 때만 True 가 된다
-    login_failures = events[both_true]   # True 인 행만 골라 새 표를 만든다
-```
-
-② `pick_alert_ips` 안
-
-```python
-    is_many = ip_login_fail_counts >= limit    # 주소마다 「횟수가 기준 이상인가?」를 비교해 True 또는 False 를 만든다
-    alert_ips = ip_login_fail_counts[is_many]  # True 인 주소만 남긴다
-```
-
-**결과**
-
-- (가) 출력은 다음과 같고, 로그인 실패 이벤트는 <mark>**5개**</mark>, 알림 대상은 <mark>**203.0.113.50(5번)**</mark> 한 주소입니다.
-
-```
---- 단계 1: 로그인 실패 이벤트 5 개
---- 단계 2: 주소별 로그인 실패 횟수
-ip
-203.0.113.50    5
-dtype: int64
---- 단계 3: 알림 기준 5 번 이상인 주소
-ip
-203.0.113.50    5
-dtype: int64
-```
-
-- (나) <mark>203.0.113.50 이 공격이라고 확정할 수는 없습니다.</mark> 다만 의심할 단서는 여럿 있습니다.
-  - 단서: <mark>일정한 3초 간격으로 5번 연달아 실패했고(자동 입력처럼 보임),</mark> 6번째에 로그인에 성공한 뒤 곧바로 관리자 경로(`/admin` · `/admin/users`)를 두 번 요청했습니다.
-  - 이 표에 없는 더 필요한 정보: <mark>그 주소가 회사 직원의 주소인지, 로그인에 성공한 계정이 누구인지</mark>입니다(웹 서버 로그에는 계정 이름이 없으므로 판정 서버 · SaaS 로그와 시각을 맞춰 봐야 합니다).
-  - **알림은 「먼저 살펴볼 곳」이고 공격의 확정이 아닙니다.**
-- (다) <mark>알림이 나지 않습니다.</mark>
-  - 이 규칙은 실패한 이벤트만 주소별로 세어 5번 이상인지 봅니다. 4번 실패한 주소는 기준(5번)보다 적고, 5번째의 성공은 세는 대상이 아닙니다. 그래서 그 주소 하나만 있다면 단계 3 이 비어 알림이 나지 않습니다. 샘플에서 단계 3 에 나오는 것은 203.0.113.50 이 따로 있기 때문입니다.
-  - 그래서 담당자는 이 접속이 있었다는 것을 알림으로는 알 수 없습니다. <mark>알림이 없다는 것은 안전하다는 뜻이 아니라 「이 규칙의 조건을 충족하지 않았다」는 뜻일 뿐</mark>입니다.
-  - 알림 기준(5번) 미만으로 천천히 시도하는 공격도 이 규칙의 조건을 충족하지 않습니다. 그래서 <mark>「알림 없음 ≠ 안전」</mark>입니다.
-
-**왜**
-
-- <mark>로그인 실패 5번을 사람이 57개 이벤트에서 직접 찾으면 놓치기 쉽습니다.</mark> 조건 두 개와 주소별 센 값을 이어 쓰면 몇 줄로 끝나고, 이벤트가 수만 개여도 같은 코드입니다.
-
-**자주 틀리는 곳**
-
-- **두 조건을 이을 때 `&` 대신 `and` 를 쓰면 `ValueError` 오류가 납니다.**
-  - 실행하면 다음 오류가 납니다(<mark>`The truth value of a Series is ambiguous`</mark> 가 나오면 이 실수입니다).
-
-```
-Traceback (most recent call last):
-  File "…/anomaly_detection/exercise4-2_run.py", line 4, in <module>
-    login_failures = pick_login_failures(events)  # 로그인 실패 이벤트만 골라낸다
-  File "…/anomaly_detection/login_detection.py", line 29, in pick_login_failures
-    both_true = is_login and is_fail  # & 대신 and 를 썼다
-ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
-```
-
-  - 줄 번호는 사람마다 다릅니다.
-- `GET /login` 까지 세는 실수가 있습니다. 이 규칙은 로그인 정보를 보내는 **`POST /login` 만 셉니다.**
-
-**관제에서는**
-
-- 로그인 실패 규칙의 알림에는 보통 주소와 횟수, 실패 뒤 성공이 있었는지가 함께 표시됩니다. <mark>성공이 있었다면 계정이 탈취됐을 수 있어 우선순위가 올라갑니다.</mark>
-
----
-
-## 실습 4-3 정답
-
- **터미널에 입력합니다.**
-
-```bash
-pwd
-python exercise4-3_run.py
-```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise4-3_run.py` 파이썬으로 실행 파일 실행
-
-**채운 코드** (한 예) — 직접 쓰는 곳은 두 함수입니다.
-
-① `classify_event` 안
-
-```python
-    if result == "실패" and action == "POST /login":  # 로그인 요청이 실패했으면
-        return "비정상 로그인"                        # 비정상 로그인으로 분류한다
-    if result == "실패" and "/admin" in action:       # 관리자 경로 요청이 실패했으면
-        return "비인가 접근"                          # 비인가 접근으로 분류한다
-```
-
-② `count_types` 안
-
-```python
-    event_list = events.to_dict("records")  # 표를 딕셔너리 리스트로 바꾼다 — 이벤트 하나가 딕셔너리 하나
-```
-
-**결과**
-
-- (가) 출력은 다음과 같고, 비정상 로그인 <mark>**5**</mark>, 비인가 접근 <mark>**3**</mark>, 기타 실패 <mark>**15**</mark>, 정상 <mark>**34**</mark>(합계 57)입니다.
-
-```
---- 단계 1: 유형별 이벤트 수
-비정상 로그인 5
-비인가 접근 3
-기타 실패 15
-정상 34
---- 단계 2: 전체 이벤트 57 개
-```
-
-- (나) 「기타 실패」 15개에는 <mark>서로 다른 일이 섞여 있습니다.</mark>
-  - `server`(판정 서버) 실패 9개: gaeun 의 `ACCOUNT:CHANGE` 3번, dami 의 `SALES:QUERY` 3번과 `SALES:CHANGE` 1번, seoyeon 의 `SETTLE:QUERY` 1번과 `SALES:CHANGE` 1번입니다.
-  - `web`(웹 서버) 실패 5개: 198.51.100.90 이 09:20:10 ~ 09:20:12 에 `/.env` · `/wp-login.php` · `/phpmyadmin` 을 차례로 요청한 것 3개와, 페이지 요청 실패 2개(`/board/99` · `/report`)입니다.
-  - `saas`(SaaS) 실패 1개: jiwoo 의 `login` 입니다.
-  - <mark>하나로 묶으면 이 일들이 모두 같은 유형으로 보여서, 담당자가 대응을 정할 수 없습니다.</mark> 예를 들어 같은 사용자의 계정 변경이 3번 실패한 것과 `/.env` · `/wp-login.php` · `/phpmyadmin` 을 차례로 요청한 것은 대응이 전혀 다릅니다. 그래서 Unit 6에서 유형을 더 나눕니다.
-- (다) 「기타 실패」를 맨 위에 두면 결과가 실패인 이벤트 23개가 모두 먼저 조건을 충족해서 **기타 실패 23개**가 되고, 비정상 로그인과 비인가 접근은 **0개**가 됩니다. 정상은 34개 그대로입니다.
-  - 담당자는 로그인 실패와 관리자 경로 요청 실패를 구분할 수 없게 되어, 비밀번호 대응과 접근 차단 중 무엇을 할지 정하지 못합니다.
-  - 먼저 조건을 충족한 규칙에서 멈추기 때문입니다. <mark>좁은 조건(로그인 실패, 관리자 경로)을 위에 두고 넓은 조건(모든 실패)을 아래에 두어야 유형이 나뉩니다.</mark>
-
-**왜**
-
-- <mark>유형 이름을 정하는 규칙은 위에서부터 차례로 보고 먼저 조건을 충족하는 것을 씁니다.</mark> 로그인 실패를 먼저 보고, 그다음 관리자 경로를 보고, 나머지 실패를 「기타 실패」로 모읍니다.
-
-**자주 틀리는 곳**
-
-- `events.to_dict("records")` 를 빼고 `event_list = events` 로 쓰면, `for event in event_list` 가 이벤트가 아니라 **열 이름**을 하나씩 꺼내서 오류가 납니다.
-  - 실행하면 다음 오류가 납니다(<mark>`string indices must be integers`</mark> 가 나오면 이 실수입니다).
-
-```
-Traceback (most recent call last):
-  File "…/anomaly_detection/exercise4-3_run.py", line 4, in <module>
-    type_event_counts = count_types(events)  # 유형별로 센다
-  File "…/anomaly_detection/classify.py", line 42, in count_types
-    action = event["action"]  # 그 이벤트의 행동
-TypeError: string indices must be integers
-```
-
-  - 줄 번호는 사람마다 다릅니다.
-- `if` 두 조건을 `and` 로 잇지 않고 `result == "실패"` 만 쓰면 <mark>모든 실패가 첫 번째 규칙의 조건을 충족해 「비정상 로그인」으로 나옵니다.</mark>
-
-**관제에서는**
-
-- 유형 규칙은 운영하면서 계속 고칩니다. <mark>「기타」가 너무 크면 규칙이 부족하다는 신호입니다.</mark>
-
----
-
-## 정답 마무리
-
- **터미널에 입력합니다.**
-
-```bash
-pwd
-ls
-```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
-
-**결과**
-
-- 이번 Unit에서 만든 파일 **여덟 개**와 `report_u4.md` 가 보여야 합니다. 깃허브에 올리는 일은 Unit 5의 실습 5-2 마지막에 합니다.

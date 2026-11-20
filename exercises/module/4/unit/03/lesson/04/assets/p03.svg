@@ -1,34 +1,61 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>실습 3-2 정답: 사용자별 합 10 + user 없는 web 13 = 실패 23, 9시 13개는 web</title>
-<desc>사용자별 실패는 dami 4, gaeun 3, seoyeon 2, jiwoo 1로 합이 10이고, user 가 없는 web 실패 13개는 빠졌습니다. 시간대별로는 9시가 13개로 가장 많고 실습 3-1 의 web 실패 13개와 같은 숫자입니다.</desc>
-<defs><marker id="a-0304-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">실습 3-2 정답: 빠진 13개와 9시의 13개</text>
-<rect x="24" y="66" width="292" height="44" rx="4" fill="#e4f3ea" stroke="#1f7a4a"/>
-<text x="170" y="94" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">사용자별 합 10</text>
-<rect x="316" y="66" width="380" height="44" rx="4" fill="#f8e8e3" stroke="#e0442e"/>
-<text x="506" y="94" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">user 없는 web 13 · 그룹에서 빠짐</text>
-<text x="24" y="134" font-size="14" fill="#666660" text-anchor="start">실패 23개 = dami 4 · gaeun 3 · seoyeon 2 · jiwoo 1 + web 13</text>
-<text x="24" y="176" font-size="16" fill="#292929" text-anchor="start" font-weight="700">시간대별 실패 횟수</text>
-<rect x="40" y="354" width="56" height="12" rx="3" fill="#e6eefb" stroke="#2f6fd0"/>
-<text x="68" y="346" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">1</text>
-<text x="68" y="390" font-size="15" fill="#666660" text-anchor="middle">2시</text>
-<rect x="130" y="210" width="56" height="156" rx="3" fill="#f8e8e3" stroke="#e0442e"/>
-<text x="158" y="202" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">13</text>
-<text x="158" y="390" font-size="15" fill="#666660" text-anchor="middle">9시</text>
-<rect x="220" y="330" width="56" height="36" rx="3" fill="#e6eefb" stroke="#2f6fd0"/>
-<text x="248" y="322" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">3</text>
-<text x="248" y="390" font-size="15" fill="#666660" text-anchor="middle">10시</text>
-<rect x="310" y="306" width="56" height="60" rx="3" fill="#e6eefb" stroke="#2f6fd0"/>
-<text x="338" y="298" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">5</text>
-<text x="338" y="390" font-size="15" fill="#666660" text-anchor="middle">11시</text>
-<rect x="400" y="354" width="56" height="12" rx="3" fill="#e6eefb" stroke="#2f6fd0"/>
-<text x="428" y="346" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">1</text>
-<text x="428" y="390" font-size="15" fill="#666660" text-anchor="middle">18시</text>
-<line x1="30" y1="366" x2="470" y2="366" stroke="#666660" stroke-width="1.5"/>
-<rect x="510" y="210" width="186" height="110" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="603.0" y="240.5" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">9시 13개</text>
-<text x="603.0" y="260.1" font-size="14" fill="#666660" text-anchor="middle">= 실습 3-1 단계 3</text>
-<text x="603.0" y="279.7" font-size="14" fill="#666660" text-anchor="middle">web 실패 13개</text>
-<text x="603.0" y="299.3" font-size="14" fill="#666660" text-anchor="middle">CSV 로 source 확인</text>
-<line x1="507" y1="240" x2="192" y2="225" stroke="#666660" stroke-width="2" marker-end="url(#a-0304-p03)"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>알림 한 건은 키 다섯 개의 딕셔너리이고 알림 있음과 없음 모두 판단에 주의한다</title>
+<desc>알림 한 건은 type, target, count, note, status 키를 가진 딕셔너리다. 처리 상태는 확인 필요에서 조사 중, 조사 완료로 바뀐다. 알림이 있어도 공격 확정이 아니고, 알림이 없어도 안전하다는 뜻이 아니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
+<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">알림 한 건 = 키 다섯 개짜리 딕셔너리</text>
+<rect x="30" y="50" width="100" height="34" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="80" y="71.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">키</text>
+<rect x="130" y="50" width="200" height="34" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="230" y="71.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">로그인 실패 알림</text>
+<rect x="330" y="50" width="220" height="34" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="440" y="71.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">트래픽 급증 알림</text>
+<rect x="30" y="84" width="100" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="80" y="105.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">type</text>
+<rect x="130" y="84" width="200" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="230" y="105.9" font-size="14" fill="#292929" text-anchor="middle">비정상 로그인</text>
+<rect x="330" y="84" width="220" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="440" y="105.9" font-size="14" fill="#292929" text-anchor="middle">트래픽 급증</text>
+<rect x="30" y="118" width="100" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="80" y="139.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">target</text>
+<rect x="130" y="118" width="200" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="230" y="139.9" font-size="14" fill="#292929" text-anchor="middle">203.0.113.50</text>
+<rect x="330" y="118" width="220" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="440" y="139.9" font-size="14" fill="#292929" text-anchor="middle">2026-11-02 09:12:00</text>
+<rect x="30" y="152" width="100" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="80" y="173.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">count</text>
+<rect x="130" y="152" width="200" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="230" y="173.9" font-size="14" fill="#292929" text-anchor="middle">5</text>
+<rect x="330" y="152" width="220" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="440" y="173.9" font-size="14" fill="#292929" text-anchor="middle">9</text>
+<rect x="30" y="186" width="100" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="80" y="207.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">note</text>
+<rect x="130" y="186" width="200" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="230" y="207.9" font-size="14" fill="#292929" text-anchor="middle">실패가 기준 이상</text>
+<rect x="330" y="186" width="220" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="440" y="207.9" font-size="14" fill="#292929" text-anchor="middle">평소의 3배 이상</text>
+<rect x="30" y="220" width="100" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="80" y="241.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">status</text>
+<rect x="130" y="220" width="200" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="230" y="241.9" font-size="14" fill="#292929" text-anchor="middle">확인 필요</text>
+<rect x="330" y="220" width="220" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="440" y="241.9" font-size="14" fill="#292929" text-anchor="middle">확인 필요</text>
+<text x="630" y="62" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">처리 상태</text>
+<rect x="575" y="75" width="110" height="40" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="630" y="99.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">확인 필요</text>
+<rect x="575" y="139" width="110" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="630" y="163.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">조사 중</text>
+<line x1="630" y1="115" x2="630" y2="137" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="575" y="203" width="110" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="630" y="227.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">조사 완료</text>
+<line x1="630" y1="179" x2="630" y2="201" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="30" y="280" width="320" height="110" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="190" y="319.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">알림 있음 ≠ 공격 확정</text>
+<text x="190" y="340.2" font-size="15" fill="#292929" text-anchor="middle">먼저 살펴볼 곳일 뿐</text>
+<text x="190" y="361.2" font-size="15" fill="#292929" text-anchor="middle">status 는 모두 「확인 필요」</text>
+<rect x="370" y="280" width="320" height="110" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="530" y="319.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">알림 없음 ≠ 안전</text>
+<text x="530" y="340.2" font-size="15" fill="#292929" text-anchor="middle">규칙에 해당하지 않았다는</text>
+<text x="530" y="361.2" font-size="15" fill="#292929" text-anchor="middle">뜻일 뿐</text>
+</g>
 </svg>

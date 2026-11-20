@@ -1,21 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" role="img">
-<title>설명하는 답은 한 예이므로 핵심이 같으면 맞은 것으로 본다</title>
-<desc>정답에 적힌 설명은 한 가지 예다. 내 답과 정답 예를 비교해 핵심이 같으면 맞다. 문장이 달라도 괜찮다.</desc>
-<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
-<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">정답 보는 법</text>
-<rect x="30" y="70" width="170" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="115" y="107.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">내 답</text>
-<rect x="30" y="160" width="170" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="115" y="197.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">정답 (한 예)</text>
-<rect x="260" y="105" width="220" height="84" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="370" y="141.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">핵심이 같은가?</text>
-<text x="370" y="162.8" font-size="15" fill="#292929" text-anchor="middle">문장은 달라도 됨</text>
-<line x1="200" y1="102" x2="258" y2="132" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<line x1="200" y1="192" x2="258" y2="165" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="540" y="115" width="150" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="615" y="152.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">맞음</text>
-<line x1="480" y1="147" x2="538" y2="147" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<text x="509" y="139" font-size="14" fill="#666660" text-anchor="middle">예</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img">
+<title>compose.yaml 하나와 명령 한 줄로 서버 두 대를 켜고 둘 다 200을 확인한다</title>
+<desc>긴 docker run 을 서버마다 치던 방식 대신, compose.yaml 에 설정을 적고 docker compose up -d 로 web1 과 web2 를 한 번에 켠다. 8080번과 8081번에 curl 을 보내 200 이 나오면 성공이다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">도전 5-1이 만드는 것</text>
+<rect x="12" y="52" width="696" height="45.75" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="360" y="80.05" font-size="15" text-anchor="middle" fill="#292929">지금: 서버마다 긴 docker run 명령을 따로 친다 → 한 군데만 틀려도 다르게 켜진다</text>
+<rect x="12" y="130" width="154.5" height="90.7" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="89.25" y="159.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">입력</text>
+<text x="89.25" y="181.25" font-size="15" text-anchor="middle" fill="#292929">compose.yaml</text>
+<text x="89.25" y="203" font-size="15" text-anchor="middle" fill="#292929">(web1 · web2)</text>
+<rect x="192.5" y="130" width="154.5" height="90.7" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="269.75" y="159.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">명령 한 줄</text>
+<text x="269.75" y="181.25" font-size="15" text-anchor="middle" fill="#292929">docker compose</text>
+<text x="269.75" y="203" font-size="15" text-anchor="middle" fill="#292929">up -d</text>
+<line x1="169.5" y1="175.35" x2="189.5" y2="175.35" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="373" y="130" width="154.5" height="90.7" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="450.25" y="159.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">켜진 서버</text>
+<text x="450.25" y="181.25" font-size="15" text-anchor="middle" fill="#292929">web1 :8080 Up</text>
+<text x="450.25" y="203" font-size="15" text-anchor="middle" fill="#292929">web2 :8081 Up</text>
+<line x1="350" y1="175.35" x2="370" y2="175.35" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="553.5" y="130" width="154.5" height="90.7" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="630.75" y="159.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">확인</text>
+<text x="630.75" y="181.25" font-size="15" text-anchor="middle" fill="#292929">curl 8080 → 200</text>
+<text x="630.75" y="203" font-size="15" text-anchor="middle" fill="#292929">curl 8081 → 200</text>
+<line x1="530.5" y1="175.35" x2="550.5" y2="175.35" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="12" y="248.7" width="696" height="67.5" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="276.75" font-size="15" text-anchor="middle" fill="#292929">왜 중요한가: 설정을 파일로 적으면 누가 켜도 같은 서버가 켜지고, 저장소에 올리면 설정 기록도</text>
+<text x="360" y="298.5" font-size="15" text-anchor="middle" fill="#292929">남는다</text>
 </g>
 </svg>

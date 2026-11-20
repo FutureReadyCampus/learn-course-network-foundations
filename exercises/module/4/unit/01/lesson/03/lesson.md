@@ -1,301 +1,348 @@
 ---
 id: m4-u01-l03
-title: 실습 1-2 · 로그 줄 가르기와 SIEM 고르기
+title: 실습 1-2 · 웹 서버 로그를 이벤트로 바꾸기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
-  path: network/096_day01_pm_log_basics.md
-  mission_id: GichanSource.m4-1102-pm-log-basics
+  path: network/098_day02_am_normalize.md
+  mission_id: GichanSource.m4-1103-am-normalize
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 실습 1-2 · 로그 줄 가르기와 SIEM 고르기
+# 실습 1-2 · 웹 서버 로그를 이벤트로 바꾸기
 
-## 목표: 줄 분류 규칙
+## 목표: 웹 서버 로그 이벤트
 
 > **오늘 들어온 일**
 >
-> A사 보안 팀장이 보낸 메시지입니다:
-> 「얼마 전에 한 주소에서 로그인 실패가 몰렸는데 하루가 지나서야 알았습니다. 로그는 있었지만 수만 줄 속에서 눈에 띄지 않았습니다.
+> A사 보안 팀장이 보낸 메시지입니다(웹 서버 · 판정 서버 · SaaS 서비스, 세 군데의 로그 이야기입니다):
+> 「로그가 세 군데에서 쌓이는데 적는 방식이 다 다릅니다.
 >
-> 줄마다 정상인지, 오류인지, 먼저 살펴볼 줄인지 나누고, 살펴볼 줄만 따로 보여 주세요. 상태 코드와 경로만 보는 단순한 규칙으로 시작해도 됩니다. SIEM(심)이라는 도구를 사자는 이야기도 있어서, 다른 회사는 어떻게 쓰는지와 우리 규모에는 어떤 방식이 맞는지도 알고 싶습니다.」
-> - **왜 중요한가**: <mark>하루 수만 줄을 사람이 다 볼 수는 없습니다.</mark> 줄을 정상 · 오류 · 의심으로 나누면 의심만 먼저 볼 수 있습니다. 이 일을 대규모로 해 주는 도구가 SIEM(심)입니다. 도구를 고르려면 규칙이 무엇을 놓치는지부터 알아야 해서, 이번 Unit에서는 가장 단순한 규칙을 직접 만들어 한계를 확인합니다.
+> - 시각
+> - 웹 서버: `02/Nov/2026:09:12:03 +0900`
+> - 판정 서버: `2026-11-02T09:40`
+> - SaaS: `2026-11-02 02:14:08`
+> - 성공 · 실패
+> - 웹 서버: `200`
+> - 판정 서버: `true`
+> - SaaS: `success`
+>
+> 이대로는 같은 계정이 여러 곳에서 한 일을 시간 순서로 볼 수 없습니다. 먼저 웹 서버 로그 한 줄을 언제 · 누가 · 무엇을 · 결과를 같은 키에 담은 이벤트로 바꿔 주세요(키 이름은 아래 1.1 에서 설명합니다). 시각은 `2026-11-02 09:12:03` 모양으로 맞추고, 원래 줄은 그대로 남겨 주세요.」
+> - **왜 중요한가**: <mark>모양이 다른 로그는 시간순으로 놓을 수도, 같은 기준으로 셀 수도 없습니다.</mark> 같은 키로 맞추면 탐지 규칙을 로그 종류마다 따로 만들지 않고 한 번만 만들면 됩니다. 원래 줄을 남겨 두면 변환이 틀렸을 때 원본과 대조할 수 있습니다.
 
-## 왜 줄을 세 갈래로 가르는가
+## 왜 로그 모양을 맞춰야 하는가
 
-1. 실습 1-1에서는 로그 한 줄을 읽어 값을 꺼냈습니다. 이제 **그 값으로 줄을 가릅니다.**
-2. 가르는 기준을 **규칙(rule, 룰)** 이라고 합니다. 이번 Unit의 규칙은 가장 단순한 것입니다.
-   - 상태 코드가 401 · 403 이거나 경로에 `/admin` 이 있으면 **의심**
-   - 그 밖에 상태 코드가 400 이상이면 **오류**
-   - 나머지는 **정상**
-3. <mark>이런 단순한 규칙은 놓치는 것도 많습니다.</mark> 어떤 것을 놓치는지 이번 Unit의 샘플 로그에서 직접 확인합니다.
+1. SIEM(심)은 여러 곳의 로그를 한곳에 모아 같은 기준으로 찾습니다. <mark>모양이 다르면 같은 기준을 적용할 수 없습니다.</mark>
+2. 그래서 로그를 모은 다음 **같은 키 · 같은 모양으로 맞추는 일**이 필요합니다. 이것을 **정규화(normalization, 노멀라이제이션)** 라고 합니다.
+3. 이번 Unit에서는 로그 3종류를 같은 키로 맞춘 **공통 이벤트**로 바꿉니다. 키는 아래 1.1 에서 설명합니다.
 
-## 2.1 이상 징후 다섯 유형
+## 1.1 세 로그의 모양과 공통 이벤트
 
-이 수업에서는 관제에서 찾는 이상 징후를 다섯 유형으로 나눕니다.
+세 로그는 모두 **언제 · 누가 · 어디서 · 무엇을 · 성공했나**를 적고 있지만, <mark>적는 방식이 다릅니다.</mark>
 
-| 유형 | 로그에서 보이는 모양 | 이번 Unit 샘플 로그의 예 |
+- **웹 서버 로그**(`access_sample.log`): 웹 서비스를 돌리는 웹 서버(nginx)가 페이지를 열거나 로그인할 때마다 남깁니다.
+- **판정 서버 로그**(`server_log.jsonl`): Module 3에서 만든 권한 판정 서버가 「이 권한을 써도 되나?」라는 물음을 받을 때마다 남깁니다.
+- **SaaS 로그**(`saas_events.csv`): 회사가 빌려 쓰는 SaaS(인터넷으로 쓰는 소프트웨어, 예: 파일 보관 서비스)에서 로그인하거나 파일을 올리고 내려받을 때마다 남깁니다.
+
+**① 실제 한 줄** — 세 줄이 얼마나 다르게 생겼는지만 봅니다.
+
+| 로그 | 샘플의 실제 한 줄 |
+|---|---|
+| 웹 서버 | `203.0.113.50 - - [02/Nov/2026:09:12:03 +0900] "POST /login HTTP/1.1" 401 312 "-" "python-requests/2.31.0"` |
+| 판정 서버 | `{"time": "2026-11-02T09:40", "user": "seoyeon", "permission": "SALES:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}` |
+| SaaS | `2026-11-02 02:14:08,jiwoo@a-corp.example,login,203.0.113.80,failure` |
+
+**② 이번 Unit에서 맞출 차이** — 형광펜으로 표시한 칸은 값이 없거나 메일 주소로 적힌 곳입니다. 시각과 성공 · 실패 행은 로그마다 모양이 달라서 고칩니다. <mark>마지막 열이 공통 이벤트에서의 모양입니다.</mark>
+
+| 정보 | 웹 서버 | 판정 서버 | SaaS | 공통 이벤트에서는 |
+|---|---|---|---|---|
+| 시각 | `02/Nov/2026:09:12:03 +0900` | `2026-11-02T09:40` | `2026-11-02 02:14:08` | 모두 `2026-11-02 09:12:03` 모양 |
+| 사용자 | <mark>없음</mark> | `seoyeon` | <mark>메일 주소</mark> `jiwoo@a-corp.example` | 이름만. 원래 없으면 `None` |
+| 접속 주소 | 있음 | <mark>없음</mark> | 있음 | 원래 없으면 `None` |
+| 성공 · 실패 | 상태 코드(`200` · `401` …) | `true` 또는 `false` | `success` 또는 `failure` | 모두 `성공` 또는 `실패` |
+
+- 접속 주소(`ip`)는 <mark>사람이 아니라 **접속한 곳**의 주소입니다.</mark> 한 사무실의 여러 사람이 같은 주소로 보일 수 있고, 한 사람이 집과 회사에서 다른 주소로 접속할 수도 있습니다.
+- 판정 서버 로그에는 주소 대신 접속 위치(`office` · `vpn` · `external`)만 있습니다. 이 수업의 `203.0.113.50` · `198.51.100.x` · `192.0.2.x` 는 문서에서 예시로 쓰라고 정해 둔 주소 범위라서 <mark>실제 장비를 가리키지 않습니다.</mark>
+
+**③ 공통 이벤트의 키** — 로그 한 줄이 답하는 질문은 세 로그가 같습니다. **언제? 어느 로그에서? 누가? 어디서? 무엇을? 성공했나?** 이 여섯 질문의 답을 같은 키에 담고, 원래 줄을 보관하는 키 하나를 더한 것이 **공통 이벤트(키 7개)** 입니다. <mark>이벤트는 「일어난 일 1개」입니다.</mark>
+
+| 키 | 답하는 질문 | 값의 모양 |
 |---|---|---|
-| 비정상 로그인 | 같은 주소에서 로그인 실패(401)가 연달아 나옴 | 203.0.113.50 의 `POST /login` 401 이 5번 |
-| 트래픽 급증 | 짧은 시간에 요청이 몰림 | 샘플은 30줄이라 Unit 4와 Unit 5에서 다룹니다 |
-| 비인가 접근 | 권한이 없는 주소를 요청해 403 이 나옴 | `/admin` · `/admin/users` 403 |
-| SaaS(사스, 인터넷으로 빌려 쓰는 소프트웨어. 예: Google Docs) 이상 사용 | 평소와 다른 서비스 사용(대량 내려받기, 낯선 위치) | 이번 Unit의 로그에는 없고 Unit 6에서 다룹니다 |
-| 악성 행위 징후 | 서버에 무엇이 있는지 없는 주소까지 차례로 확인하는 탐색 | 198.51.100.90 의 `/.env` · `/wp-login.php` · `/phpmyadmin` 404 |
+| `time` | 언제? | `2026-11-02 09:12:03` 문자열(한국 시간) |
+| `source` | 어느 로그에서? | `web` · `server` · `saas` |
+| `user` | 누가? | 사용자 이름. 원래 없으면 `None` |
+| `ip` | 어디서? | 주소 문자열. 원래 없으면 `None` |
+| `action` | 무엇을? | `POST /login` · `SALES:CHANGE` · `file.download` |
+| `result` | 성공했나? | `성공` 또는 `실패` |
+| `raw` | (질문이 아니라 보관용) | 원래 줄(또는 원래 행) 그대로 |
 
-- 한 줄만 보면 평범해 보여도 **여러 줄을 묶어 보면** 공격이 의심되는 일이 드러납니다.
-  - 예를 들어 로그인 실패가 연달아 난 뒤의 성공 한 줄은 그 줄만 보면 평범합니다. <mark>이번 Unit의 규칙은 줄을 하나씩만 보기 때문에 이런 것을 놓칩니다.</mark>
-  - 이렇게 공격이 의심되는 일을 놓치는 것을 **미탐(false negative, 폴스 네거티브)** 이라고 합니다.
-- 반대로 정상인데 의심으로 가르는 것은 **오탐(false positive, 폴스 포지티브)** 입니다. <mark>오탐이 많으면 경고를 아무도 보지 않게 됩니다.</mark>
-- 경고는 「살펴볼 곳」이지 **공격이 확정된 것이 아닙니다.**
+**④ 바뀐 결과** — ①의 서로 다르던 세 줄이 같은 일곱 키가 됩니다. 이 표는 키가 세로입니다.
 
-## 2.2 SIEM(심) · XDR(엑스디알) · SOAR(쏘아)는 무엇이 다른가
+| 키 | 웹 서버 한 줄 | 판정 서버 한 줄 | SaaS 한 줄 |
+|---|---|---|---|
+| `time` | `2026-11-02 09:12:03` | `2026-11-02 09:40:00` | `2026-11-02 02:14:08` |
+| `source` | `web` | `server` | `saas` |
+| `user` | `None` | `seoyeon` | `jiwoo` |
+| `ip` | `203.0.113.50` | `None` | `203.0.113.80` |
+| `action` | `POST /login` | `SALES:QUERY` | `login` |
+| `result` | `실패` | `성공` | `실패` |
+| `raw` | ①의 원래 줄 | ①의 원래 줄 | ①의 원래 행(딕셔너리) |
 
-SIEM(심)이 무엇인지와 현업에서 쓰는 방식은 실습 1-1 맨 위에서 읽었습니다. 이름이 비슷해서 헷갈리는 XDR(엑스디알), SOAR(쏘아)와 비교합니다.
+- <mark>원래 로그에 없는 값은 임의로 만들어 넣지 않고 `None` 으로 둡니다.</mark> 없는 값을 지어내면 분석 결과가 틀려집니다.
+- <mark>`raw` 는 바꾸지 않은 원래 로그입니다.</mark> 정규화 과정에서 사라지는 정보를 나중에 찾아볼 수 있게 남깁니다.
 
-| 이름 | 해결하려는 문제 | 하는 일 |
+## 1.2 시각 문자열 바꾸기
+
+**문법 상자 — 시각 값을 원하는 모양의 문자열로**
+
+**<mark>`.strftime(형식)`</mark> 은 시각 값을 원하는 모양의 문자열로 만듭니다. 형식에 적은 모양대로 시각이 문자열이 됩니다**
+
+로그마다 시각 모양이 달라서, <mark>먼저 시각 값으로 바꾼 뒤 공통 모양의 문자열로 다시 만듭니다.</mark> 문자열을 시각 값으로 바꾸는 `strptime` 은 Module 3에서 쓴 방법 그대로라서 여기서는 설명하지 않습니다.
+
+```python
+from datetime import datetime                                  # 날짜와 시각을 다루는 datetime 클래스를 불러온다
+
+time_text = "02/Nov/2026:09:12:03 +0900"                       # nginx 시각 문자열
+parsed = datetime.strptime(time_text, "%d/%b/%Y:%H:%M:%S %z")  # 문자열을 시각 값으로 바꾼다(모양을 형식으로 알려 준다)
+print(parsed)                                                  # 시각 값을 출력한다
+
+time_out = parsed.strftime("%Y-%m-%d %H:%M:%S")                # 시각 값을 공통 모양의 문자열로 바꾼다
+print(time_out)                                                # 문자열을 출력한다
+```
+
+실행 결과:
+
+```
+2026-11-02 09:12:03+09:00
+2026-11-02 09:12:03
+```
+
+- 형식 코드는 `%Y`(년) · `%m`(월) 처럼 `%` 로 시작하는 기호로, <mark>시각 문자열의 어느 부분이 일 · 달 · 연도인지 알려 줍니다</mark>.
+  - `%d` 는 일, `%b` 는 영어 달 이름(Nov), `%Y` 는 연도 4자리입니다.
+  - `%H` `%M` `%S` 는 시 · 분 · 초이고, `%z` 는 시간대(+0900)입니다.
+
+nginx 시각 문자열을 부분마다 형식 코드와 하나씩 맞춰 봅니다.
+
+| 문자열 부분 | 형식 코드 | 뜻 |
 |---|---|---|
-| SIEM(심) | 로그가 흩어져 조사하기 어렵다 | 모으고, 같은 형식으로 정리하고, 조회하고, 탐지해서 알린다 |
-| XDR(엑스디알) | 보안 도구의 탐지가 따로 보인다 | 메일 · PC · 서버 등 여러 영역의 탐지를 연결해 사건으로 조사하고 대응한다 |
-| SOAR(쏘아) | 대응할 때마다 같은 작업을 반복한다 | 사건 등록 · 알림 · 승인 · 조치 같은 절차를 자동화한다 |
+| `02` | `%d` | 일 |
+| `Nov` | `%b` | 영어 달 이름 |
+| `2026` | `%Y` | 연도 4자리 |
+| `09` | `%H` | 시 |
+| `12` | `%M` | 분 |
+| `03` | `%S` | 초 |
+| `+0900` | `%z` | 시간대 |
 
-- <mark>세 가지는 반드시 순서대로 거치는 단계가 아닙니다.</mark> Module 4는 SIEM(심)의 수집 · 정규화 · 탐지 · 알림을 만들고, Module 5에서 SOAR(쏘아)를 다룹니다.
+- 문자열 `02/Nov/2026:09:12:03 +0900` 에서 부분 사이의 `/` · `:` · 공백은 형식에도 똑같이 적습니다. <mark>그래서 형식은 `%d/%b/%Y:%H:%M:%S %z` 입니다.</mark>
+- <mark>`.strftime(형식)` 은 반대로 시각 값을 같은 형식 코드로 문자열로 만듭니다.</mark> 위에서는 `2026-11-02 09:12:03` 모양입니다.
+- 이번 Unit에서 새로 나오는 것은 형식 코드 `%b` · `%z` 와, <mark>시각 값을 문자열로 만드는 `strftime` 입니다.</mark>
 
-## 2.3 이번 Unit에서 만드는 규칙
+**문법 상자 — 시간대 정보 지우기**
 
-<figure class="page-figure"><img src="assets/f01.svg" alt="요청 한 개를 의심부터 확인하고, 아니면 오류, 둘 다 아니면 정상으로 나눈다"></figure>
+**시각 값에 붙은 시간대(`+0900`)는 <mark>`.replace(tzinfo=None)`</mark> 으로 지울 수 있고, 지우면 한국 시각만 남은 시각 값이 됩니다**
 
-- 의심을 오류보다 **먼저** 확인합니다. <mark>401 은 400 이상이기도 해서, 순서가 바뀌면 로그인 실패가 모두 오류에 섞여 구분되지 않습니다.</mark>
-- `SUSPICIOUS_STATUS = (401, 403)` 의 괄호 묶음은 **튜플(tuple, 튜플)** 입니다. 리스트처럼 값 여러 개를 담지만 <mark>만든 뒤에 바꿀 수 없어서, 바뀌지 않는 기준에 씁니다.</mark> 안에 들어 있는지 `in` 으로 묻는 것은 리스트와 같습니다.
+```python
+from datetime import datetime                                  # 날짜와 시각을 다루는 datetime 클래스를 불러온다
+
+time_text = "02/Nov/2026:09:12:03 +0900"                       # nginx 시각 문자열
+parsed = datetime.strptime(time_text, "%d/%b/%Y:%H:%M:%S %z")  # 문자열을 시각 값으로 바꾼다
+print(parsed.tzinfo)                                           # 시간대 정보를 출력한다
+
+local_time = parsed.replace(tzinfo=None)                       # 시간대 정보를 지우고 한국 시각만 남긴다
+print(local_time)                                              # 시간대 없는 시각을 출력한다
+```
+
+실행 결과:
+
+```
+UTC+09:00
+2026-11-02 09:12:03
+```
+
+- 시각 값이 `+0900`(한국 시간대)을 갖고 있으면 **시간대 정보가 없는 시각 값과 직접 비교할 때 오류가 납니다.**
+- 세 로그의 시각은 모두 한국 시간이므로, 이번 Unit에서는 <mark>시간대 정보를 지우고 한국 시각만 남겨 세 로그의 시각 값을 같은 종류로 맞춥니다</mark>.
 
 **한 장 정리**
 
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
-| `is_suspicious` | 읽은 요청 딕셔너리 | 401 · 403 이거나 경로에 `/admin` 이 있으면 `True` |
-| `is_error` | 읽은 요청 딕셔너리 | 상태 코드가 400 이상이면 `True` |
-| `classify_line` | 읽은 요청 딕셔너리 | `"의심"` · `"오류"` · `"정상"` 중 하나 |
-| `label_entries` | 읽은 요청 리스트 | 분류(`group`)를 적은 복사본 리스트 (미리 채움) |
-| `count_groups` | 분류를 적은 리스트 | `{분류: 횟수}` 딕셔너리 (미리 채움) |
+| `read_time_text` | 요청 앞 조각 | 대괄호 안의 시각 문자열(미리 채움) |
+| `convert_time` | nginx 시각 문자열 | 공통 모양 시각 문자열 |
+| `convert_result` | 상태 코드(정수) | `"성공"` 또는 `"실패"` |
+| `normalize_web` | 로그 한 줄 | 공통 이벤트 딕셔너리. 깨진 줄이면 `None`(미리 채움) |
 
-- **직접 쓰는 곳은 세 함수**(번호 1 ~ 8)입니다. 판단이 필요한 함수마다 1 ~ 4줄만 쓰고, 나머지는 미리 채웠습니다.
-  - `is_suspicious`(1 ~ 3번): 상태 코드와 경로로 의심인지 알려 줍니다.
-  - `is_error`(4번): 상태 코드가 400 이상인지 알려 줍니다.
-  - `classify_line`(5 ~ 8번): 의심 → 오류 → 정상 순서로 가릅니다.
-- **미리 채운 것**: 분류를 적은 복사본 리스트를 만드는 `label_entries` 와 분류별로 세는 `count_groups` 입니다.
+- **직접 쓰는 곳은 두 함수**(번호 1 ~ 6)입니다.
+  - `convert_time`(1 ~ 3번): 문자열을 시각 값으로 바꾸고, 시간대를 떼고, 공통 모양 문자열로 만듭니다.
+  - `convert_result`(4 ~ 6번): 상태 코드 400 이상이면 `"실패"`, 아니면 `"성공"` 입니다.
+- **미리 채운 것**: Unit 1에서 만든 함수를 불러 조각을 꺼내 공통 이벤트로 묶는 `normalize_web` 과 `read_time_text` 입니다.
 
-## 실습 1-2 · 로그 줄을 세 갈래로 가르기
+## 실습 1-2 · 웹 로그 한 줄을 이벤트로
 
 **이런 상황이 있습니다**
 
-- **지금은**: 요청 28개 중 어느 것부터 봐야 하는지 사람이 하나씩 판단해야 합니다.
-- **그래서 만드는 것**: `log_classify.py` 입니다.
-  - 요청마다 상태 코드와 경로로 정상 · 오류 · 의심 중 하나를 정합니다.
-  - 분류별 개수를 세고, 의심과 오류 요청을 보여 줍니다.
-- **실행하면**: 단계 1: 분류별 요청 수, 단계 2: 의심 요청, 단계 3: 오류 요청이 나옵니다.
-- **현업에서는**: 관제 담당자도 단순한 규칙으로 먼저 나눈 뒤 의심 요청만 조사합니다. 규칙은 쓰면서 계속 고칩니다.
+- **지금은**: 웹 서버 로그의 시각(`02/Nov/2026:09:12:03 +0900`)은 다른 로그와 비교하기 어렵고, 성공 · 실패는 상태 코드라서 따로 판단해야 합니다.
+- **그래서 만드는 것**: `normalize_web.py` 입니다.
+  - 시각을 `2026-11-02 09:12:03` 모양으로 바꿉니다.
+  - 상태 코드를 `성공` · `실패` 로 바꿉니다.
+  - 원래 줄은 `raw` 에 남깁니다.
+- **실행하면**: 단계 1: 이벤트 수와 첫 이벤트, 단계 2: 처음 나오는 실패 이벤트, 단계 3: 성공 · 실패별 이벤트 수가 나옵니다.
+- **현업에서는**: 로그를 모으는 도구에는 로그 종류마다 이 변환을 하는 부분(파서)이 있습니다. <mark>변환이 틀리면 그 로그 전체가 잘못 분석되므로 `raw` 와 대조합니다.</mark>
 
 **할 일**
 
-1. <mark>`log_classify.py` · `exercise1-2_run.py` 두 파일</mark>을 만들고, `log_classify.py` 의 `is_suspicious` · `is_error` · `classify_line` 에서 **직접 쓰는 곳 세 군데**를 씁니다.
-2. 실행해서 <mark>분류별 요청 수</mark>(단계 1), <mark>의심으로 분류한 요청</mark>(단계 2), <mark>오류로 분류한 요청</mark>(단계 3)을 읽습니다.
+1. **`normalize_web.py` · `exercise1-2_run.py`** 두 파일을 만들고, `normalize_web.py` 의 `convert_time` · `convert_result` 에서 직접 쓰는 곳을 씁니다.
+2. 실행해서 <mark>정규화한 이벤트 수와 읽기 실패한 줄</mark>(단계 1), <mark>처음 나오는 실패 이벤트</mark>(단계 2), <mark>성공 · 실패별 개수</mark>(단계 3)를 읽습니다.
 
-**`log_classify.py`**
+**`normalize_web.py`**
 
 ```python
-SUSPICIOUS_STATUS = (401, 403)                                         # 의심으로 보는 상태 코드(로그인 실패 · 접근 거부)
+from datetime import datetime                                                # 날짜와 시각을 다루는 datetime 클래스를 불러온다
+from log_parse import split_request, read_request, read_status, read_client  # Unit 1에서 만든 로그 읽기 함수를 불러온다
+
+NGINX_TIME_FORMAT = "%d/%b/%Y:%H:%M:%S %z"                                   # nginx 시각의 모양(예: 02/Nov/2026:09:12:03 +0900)
+COMMON_TIME_FORMAT = "%Y-%m-%d %H:%M:%S"                                     # 공통 시각의 모양(예: 2026-11-02 09:12:03)
 
 
-def is_suspicious(entry):                                              # 읽은 요청 딕셔너리를 받는 함수
-    """상태 코드가 401 · 403 이거나 경로에 /admin 이 있으면 True, 아니면 False 를 리턴한다.
-    먼저 살펴볼 만한 요청을 가려낼 때 쓴다.
+def read_time_text(prefix):                                                  # 요청 앞 조각을 받는 함수
+    """요청 앞 조각에서 대괄호 안의 시각 문자열을 꺼낸다.
+    웹 서버 로그의 시각을 공통 모양으로 바꾸기 전에 쓴다.
+    """
+    parts = prefix.split()                                                   # 공백 기준으로 나눈다
+    bracket_text = parts[3] + " " + parts[4]                                 # '[02/Nov/2026:09:12:03' 과 '+0900]' 를 이어 붙인다
+    time_text = bracket_text.strip("[]")                                     # 양쪽 끝의 대괄호를 지운다
+    return time_text                                                         # 대괄호 없는 시각 문자열을 리턴한다
+
+
+def convert_time(time_text):                                                 # nginx 시각 문자열을 받는 함수
+    """nginx 시각을 공통 모양의 문자열로 바꾼다.
+    예: 02/Nov/2026:09:12:03 +0900 → 2026-11-02 09:12:03.
+    웹 서버 로그를 공통 이벤트로 만들 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. entry["status"] 가 SUSPICIOUS_STATUS 안에 있는지(in)의 결과를 bad_status 에 담는다
-    # 2. entry["path"] 안에 "/admin" 이 들어 있는지(in)의 결과를 admin_path 에 담는다
-    # 3. bad_status 또는 admin_path 가 참인지(or)의 결과를 리턴한다
+    # 1. datetime.strptime(time_text, NGINX_TIME_FORMAT) 의 결과를 parsed 에 담는다
+    # 2. parsed.replace(tzinfo=None) 의 결과를 local_time 에 담는다 (+0900 정보를 떼고 한국 시각만 남긴다)
+    # 3. local_time.strftime(COMMON_TIME_FORMAT) 의 결과를 time_out 에 담는다
+    return time_out                                                          # 공통 모양의 시각 문자열을 리턴한다
 
 
-def is_error(entry):                                                   # 읽은 요청 딕셔너리를 받는 함수
-    """상태 코드가 400 이상이면 True, 아니면 False 를 리턴한다.
-    오류로 끝난 요청을 가려낼 때 쓴다.
+def convert_result(status):                                                  # 상태 코드(정수)를 받는 함수
+    """상태 코드가 400 이상이면 「실패」, 아니면 「성공」을 리턴한다.
+    웹 서버 로그의 결과를 공통 이벤트의 result 로 바꿀 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 4. entry["status"] 가 400 이상인지의 결과(True 또는 False)를 리턴한다
+    # 4. status 가 400 이상이면 (if)
+    # 5.   "실패" 를 리턴한다
+    # 6. 그 밖에는 "성공" 을 리턴한다
 
 
-def classify_line(entry):                                              # 읽은 요청 딕셔너리를 받는 함수
-    """요청을 「의심」 · 「오류」 · 「정상」 중 하나로 가른다.
-    로그를 훑어 먼저 살펴볼 줄을 고를 때 쓰며, 의심을 먼저 확인한다.
+def normalize_web(line):                                                     # 로그 한 줄을 받는 함수
+    """웹 서버 로그 한 줄을 공통 이벤트 딕셔너리로 바꾸고, 깨진 줄이면 None 을 리턴한다.
+    웹 서버 로그를 다른 로그와 같은 모양으로 맞출 때 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 5. is_suspicious(entry) 가 참이면 (if)
-    # 6.   "의심" 을 리턴한다
-    # 7. is_error(entry) 가 참이면 (if)
-    # 8.   "오류" 를 리턴한다
-    return "정상"                                                      # 어느 조건에도 안 맞으면 정상이다
-
-
-def label_entries(entries):                                            # 읽은 요청 리스트를 받는 함수
-    """요청마다 "group" 키(정상 · 오류 · 의심)를 적은 복사본 리스트를 리턴한다.
-    읽은 로그에 분류 이름표를 붙일 때 쓴다.
-    """
-    labeled = []                                                       # 결과를 담을 빈 리스트
-    for entry in entries:                                              # 요청을 하나씩 꺼낸다
-        item = entry.copy()                                            # 원래 요청은 바꾸지 않고 복사한다
-        item["group"] = classify_line(entry)                           # 분류를 복사본에 적는다
-        labeled.append(item)                                           # 복사본을 결과 리스트에 추가한다
-    return labeled                                                     # 분류를 적은 리스트를 리턴한다
-
-
-def count_groups(labeled):                                             # 분류를 적은 요청 리스트를 받는 함수
-    """분류별 요청 수를 {분류: 횟수} 딕셔너리로 센다.
-    정상 · 오류 · 의심이 각각 몇 개인지 볼 때 쓴다.
-    """
-    group_request_counts = {"정상": 0, "오류": 0, "의심": 0}           # 세 분류를 0 으로 시작한다
-    for item in labeled:                                               # 요청을 하나씩 꺼낸다
-        group = item["group"]                                          # 그 요청의 분류
-        group_request_counts[group] = group_request_counts[group] + 1  # 그 분류의 횟수를 1 늘린다
-    return group_request_counts                                        # 분류별 횟수를 리턴한다
+    if line.count('"') < 2:                                                  # 큰따옴표가 두 개보다 적은 깨진 줄이면
+        return None                                                          # 읽지 않고 None 을 리턴한다
+    prefix, request_text, suffix = split_request(line)                       # 세 조각으로 나눈다
+    method, path = read_request(request_text)                                # 요청 조각에서 방법과 경로를 꺼낸다
+    status = read_status(suffix)                                             # 뒤 조각에서 상태 코드를 꺼낸다
+    client_ip = read_client(prefix)                                          # 앞 조각에서 접속자 주소를 꺼낸다
+    time_text = read_time_text(prefix)                                       # 앞 조각에서 시각 문자열을 꺼낸다
+    time_out = convert_time(time_text)                                       # 공통 모양의 시각으로 바꾼다
+    result = convert_result(status)                                          # 상태 코드를 성공 · 실패로 바꾼다
+    action = method + " " + path                                             # 방법과 경로를 하나의 행동으로 합친다
+    raw_text = line.strip()                                                  # 원래 줄(양끝 공백과 줄바꿈 뺀 것)을 보관한다
+    event = {                                                                # 공통 이벤트의 키로 묶는다
+        "time": time_out,                                                    # 일어난 시각
+        "source": "web",                                                     # 어느 로그에서 왔는지
+        "user": None,                                                        # 웹 서버 로그에는 사용자가 없다
+        "ip": client_ip,                                                     # 접속자 주소
+        "action": action,                                                    # 무엇을 했는지
+        "result": result,                                                    # 성공인지 실패인지
+        "raw": raw_text,                                                     # 원래 로그 줄
+    }
+    return event                                                             # 공통 이벤트를 리턴한다
 ```
 
-- <mark>들여쓰기는 미리 채운 줄에 맞춥니다.</mark> 번호 주석이 연달아 붙어 있어도 주석 사이마다 줄을 끼워 넣어 <mark>각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark> `if` 아래의 `return` 처럼 안쪽 줄은 `if` 보다 한 단계 안쪽으로 씁니다.
-  - 1 ~ 4번: 함수 안이라 앞에 공백 4개입니다.
-  - 5 ~ 8번: `classify_line` 안이라 `if` 줄은 공백 4개이고, `if` 안쪽 `return`(6번 · 8번)은 8개입니다.
-- 1번의 `in SUSPICIOUS_STATUS` 는 상태 코드가 그 튜플에 들어 있는지 묻습니다. 2번의 `"/admin" in entry["path"]` 는 경로 문자열 안에 `/admin` 이 들어 있는지 묻습니다. <mark>둘 다 결과가 `True` 또는 `False` 입니다.</mark>
-- 채우기 전에 실행하면 <mark>오류는 나지 않고, 단계 1에서 모든 요청이 「정상」으로 나오고 단계 2 · 3이 비어 있습니다.</mark>
+- 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 6번은 함수 안이라 앞에 공백 4개이고, 그중 5번의 `return` 만 `if` 안쪽이라 공백 8개입니다.
+- 번호 주석이 연달아 붙어 있어도(예: 1 · 2 · 3번), <mark>주석 사이마다 줄을 끼워 넣어 각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark>
+- **채우기 전에 실행하면 `NameError: name 'time_out' is not defined` 오류가 납니다.** 1 ~ 3번을 아직 안 썼기 때문입니다.
+- `convert_result` 는 6번까지 쓰면 끝나는 함수라서 아래에 미리 채운 `return` 이 없습니다. <mark>5번과 6번의 `return` 을 직접 씁니다.</mark>
 
-**`exercise1-2_run.py`** — <mark>그대로 붙여 넣습니다.</mark> 학생이 쓰는 줄은 없습니다. 실습 1-1의 `parse_line` 으로 로그를 읽고, 방금 만든 함수로 가른 뒤 세 단계로 출력합니다.
+**`exercise1-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 샘플 로그를 한 줄씩 공통 이벤트로 바꿔 세 단계로 출력합니다. `len(리스트)` 는 리스트의 개수입니다.
 
 ```python
-from log_parse import parse_line                                                # 실습 1-1에서 만든 로그 한 줄 읽기 함수를 불러온다
-from log_classify import label_entries, count_groups                            # 방금 만든 분류 함수를 불러온다
+from normalize_web import normalize_web                                                # 방금 만든 웹 서버 로그 정규화 함수를 불러온다
 
+events = []                                                                            # 정규화한 이벤트를 모을 리스트
+fail_count = 0                                                                         # 읽기 실패한 줄 수를 0 으로 시작한다
+with open("access_sample.log", encoding="utf-8") as log_file:                          # 샘플 로그 파일을 연다
+    for line in log_file:                                                              # 파일에서 한 줄씩 꺼낸다
+        event = normalize_web(line)                                                    # 한 줄을 공통 이벤트로 바꾼다
+        if event is None:                                                              # 깨진 줄이라 읽지 못했으면
+            fail_count = fail_count + 1                                                # 읽기 실패한 줄 수를 1 늘린다
+        else:                                                                          # 바꿨으면
+            events.append(event)                                                       # 이벤트 리스트에 추가한다
 
-def show_request(item):                                                         # 분류를 적은 요청 한 개를 받는 함수
-    """분류를 적은 요청 한 개의 주소 · 방법 · 경로 · 상태 코드를 출력한다.
-    의심 · 오류로 분류한 요청을 한 줄씩 보여 줄 때 쓴다.
-    """
-    ip_address = item["ip"]                                                     # 접속자 주소를 꺼낸다
-    method = item["method"]                                                     # 요청 방법을 꺼낸다
-    path = item["path"]                                                         # 요청 경로를 꺼낸다
-    status = item["status"]                                                     # 상태 코드를 꺼낸다
-    print(ip_address, method, path, status)                                     # 주소 · 방법 · 경로 · 상태 코드를 출력한다
+event_count = len(events)                                                              # 정규화한 이벤트 수를 센다
+print("--- 단계 1: 정규화한 이벤트", event_count, "개 · 읽기 실패", fail_count, "줄")  # 단계 1 시작을 알리는 줄
+first_event = events[0]                                                                # 첫 이벤트를 꺼낸다
+print(first_event)                                                                     # 첫 이벤트를 출력한다
 
+first_failed = None                                                                    # 처음 나오는 실패 이벤트를 담을 변수(아직 없음)
+for event in events:                                                                   # 이벤트를 하나씩 꺼낸다
+    if event["result"] == "실패" and first_failed is None:                             # 실패 이벤트이고 아직 담은 것이 없으면
+        first_failed = event                                                           # 이 이벤트를 담는다
+print("--- 단계 2: 처음 나오는 실패 이벤트")                                           # 단계 2 시작을 알리는 줄
+print(first_failed)                                                                    # 처음 나오는 실패 이벤트를 출력한다
 
-entries = []                                                                    # 읽은 요청을 모을 리스트
-with open("access_sample.log", encoding="utf-8") as log_file:                   # 샘플 로그 파일을 연다
-    for line in log_file:                                                       # 파일에서 한 줄씩 꺼낸다
-        entry = parse_line(line)                                                # 한 줄을 읽어 딕셔너리로 바꾼다
-        if entry is not None:                                                   # 읽을 수 있는 줄이면
-            entries.append(entry)                                               # 요청 리스트에 추가한다
-
-labeled = label_entries(entries)                                                # 요청마다 분류를 적는다
-group_request_counts = count_groups(labeled)                                    # 분류별 요청 수를 센다
-total = len(labeled)                                                            # 전체 요청 수를 센다
-normal_count = group_request_counts["정상"]                                     # 정상 요청 수를 꺼낸다
-error_count = group_request_counts["오류"]                                      # 오류 요청 수를 꺼낸다
-suspicious_count = group_request_counts["의심"]                                 # 의심 요청 수를 꺼낸다
-print("--- 단계 1: 분류별 요청 수 - 전체", total, "개")                         # 단계 1 시작을 알리는 줄
-print("정상", normal_count, "· 오류", error_count, "· 의심", suspicious_count)  # 분류별 요청 수를 출력한다
-print("--- 단계 2: 의심으로 분류한 요청")                                       # 단계 2 시작을 알리는 줄
-for item in labeled:                                                            # 분류를 적은 요청을 하나씩 꺼낸다
-    if item["group"] == "의심":                                                 # 의심으로 분류한 요청이면
-        show_request(item)                                                      # 주소 · 방법 · 경로 · 상태 코드를 출력한다
-print("--- 단계 3: 오류로 분류한 요청")                                         # 단계 3 시작을 알리는 줄
-for item in labeled:                                                            # 분류를 적은 요청을 하나씩 꺼낸다
-    if item["group"] == "오류":                                                 # 오류로 분류한 요청이면
-        show_request(item)                                                      # 주소 · 방법 · 경로 · 상태 코드를 출력한다
+result_counts = {}                                                                     # 결과별 횟수를 담을 딕셔너리
+for event in events:                                                                   # 이벤트를 하나씩 꺼낸다
+    result = event["result"]                                                           # 그 이벤트의 결과
+    result_counts[result] = result_counts.get(result, 0) + 1                           # 그 결과의 횟수를 1 늘린다
+print("--- 단계 3: 성공 · 실패별 이벤트 수")                                           # 단계 3 시작을 알리는 줄
+print(result_counts)                                                                   # 성공 · 실패별 개수를 출력한다
 ```
 
 **순서**
 
-1. **[VS Code]** 파일 `log_classify.py` · `exercise1-2_run.py` 를 만들어 위 코드를 붙여 넣습니다. 실습 1-1의 `log_parse.py` 를 불러오므로 <mark>없으면 문서 맨 아래 「앞 실습 파일 완성본」으로 먼저 만듭니다.</mark>
-2. **[VS Code]** `log_classify.py` 에서 직접 쓰는 곳 세 군데를 씁니다. 2.3 의 그림을 보고 씁니다.
-3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지 확인하고</mark> 실행합니다(맥북은 `python3`).
+1. **[VS Code]** 파일 `normalize_web.py` · `exercise1-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+2. **[VS Code]** `normalize_web.py` 에서 직접 쓰는 곳 **여섯 군데**를 씁니다. 1.2 의 문법 상자를 보고 씁니다.
+3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
    python exercise1-2_run.py
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise1-2_run.py` 파이썬으로 실행 파일 실행
-4. 출력은 세 단계입니다. <mark>단계 1은 한 줄, 단계 2는 의심 요청 여덟 줄, 단계 3은 오류 요청 다섯 줄입니다.</mark>
+4. 출력은 **세 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1은 1줄, 단계 2는 1줄, 단계 3은 1줄입니다.
 5. **[보고서]** `report_u1.md` 의 `## 실습 1-2` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 분류별 요청 수와, 의심으로 분류한 요청 중 같은 주소에서 반복된 것을 적어 주세요.
-   - (나) [핵심 질문] 상태 코드와 경로만으로 분류를 정하면 놓치는 것이 있습니다. 샘플 로그에서 놓친 예를 두 가지 찾아(정상이나 오류로 분류됐지만 살펴볼 만한 요청) 왜 놓쳤는지 적어 주세요.
-   - (다) [핵심 질문] 실습 1-1 「현업에서 SIEM(심)을 쓰는 방식 여섯 가지」 표의 방식 중에서, 보안 전담 직원이 1명뿐이고 쓰는 서비스 대부분이 클라우드에 있는 작은 회사라면 어느 방식을 고를지 이유와 함께 적어 주세요. 고르지 않은 방식 하나가 왜 맞지 않는지도 적어 주세요.
+   - (가) 실행한 출력 전체를 붙여 넣고, 정규화한 이벤트 수와 읽기 실패한 줄 수, 성공과 실패 개수를 적어 주세요.
+   - (나) [핵심 질문] 시각을 `02/Nov/2026:09:00:00 +0900` 모양 그대로 문자열로 정렬하면 12월 1일 요청(`01/Dec/2026:…`)과 11월 2일 요청(`02/Nov/2026:…`) 중 어느 쪽이 앞에 놓일지 예상하고, 공통 모양(`2026-11-02 09:00:00`)으로 바꾸면 무엇이 달라지는지 이유와 함께 적어 주세요.
+   - (다) [핵심 질문] 이벤트에 원래 로그 줄(`raw`)을 그대로 남겨 두는 이유는 무엇인가요? 정규화하면 사라지는 정보를 한 가지 예로 들어 함께 적어 주세요.
 
 ## 실습 1-2 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 상태 코드가 401 이나 403 인지 | `bad_status = entry["status"] in SUSPICIOUS_STATUS` (`is_suspicious`) |
-| 경로에 /admin 이 있는지 | `admin_path = "/admin" in entry["path"]` |
-| 둘 중 하나라도 맞으면 의심 | `return bad_status or admin_path` |
-| 오류인지 | `return entry["status"] >= 400` (`is_error`) |
-| 가르는 순서 | `if is_suspicious(entry):` → `return "의심"` → `if is_error(entry):` → `return "오류"` → 나머지는 `"정상"` |
-| SIEM(심)이 하는 일 | 수집 → 정규화 → 탐지 → 알림 · 조사 |
+| 문자열 시각을 시각 값으로 | `parsed = datetime.strptime(time_text, NGINX_TIME_FORMAT)` |
+| 시간대 정보 떼기 | `local_time = parsed.replace(tzinfo=None)` |
+| 공통 모양 문자열로 | `time_out = local_time.strftime(COMMON_TIME_FORMAT)` |
+| 상태 코드 → 결과 | `if status >= 400:` → `return "실패"` → `return "성공"` |
 
 ---
 
-## 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기
+## 마무리 · 이번 Unit 작업 확인하기
 
-이번 Unit에서 한 일을 저장소에 올리는 마무리입니다. 실습 1-2 마지막 약 10분에 합니다. 어느 터미널을 써도 되고, `pwd` 로 위치를 먼저 확인한 뒤 <mark>결과가 `anomaly_detection` 으로 끝나면 아래 1번의 `cd ..` 를 칩니다.</mark>
-
-**이런 상황이 있습니다**
-
-- **지금은**: 팀장이 「이번 Unit에서 만든 로그 읽기 코드를 저장소에 남겨 달라」고 합니다.
-- **그래서 하는 것**: `git status` 로 올라갈 파일을 확인한 뒤(`.env` 같은 비밀 키 파일이 섞이면 안 됩니다) `git add` → `git commit` → `git push` 순서로 올립니다.
-- **끝나면**: 깃허브 저장소에 `anomaly_detection` 폴더가 생기고 이번 Unit에서 만든 파일이 보입니다.
+이번 Unit의 작업을 깃허브에 올리는 일은 Unit 2의 실습 2-2 마지막에 한 번에 합니다. <mark>이번 Unit에서는 파일이 모두 있는지만 확인합니다.</mark>
 
 **순서**
 
-0. **[터미널]** 이번 Unit에서 만든 파일이 있는지 `anomaly_detection` 폴더에서 확인합니다. `report_u1.md` 의 실습 1-2 칸에서 `답:` 뒤가 비어 있는 질문이 없는지도 봅니다.
+1. **[터미널]** `anomaly_detection` 폴더에서 이번 Unit에서 만든 파일이 있는지 확인합니다.
    ```bash
    pwd
    ls
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
-   - <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나야 합니다.</mark> 아니면 `cd anomaly_detection` 을 먼저 칩니다.
-   - `access_sample.log` · `log_parse.py` · `log_classify.py` · `exercise1-1_run.py` · `exercise1-2_run.py` 와 `report_u1.md` 가 보여야 합니다.
-1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
-   ```bash
-   cd ..
-   pwd
-   ```
-   - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
-   - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
-2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 글씨 줄에 <mark>`.env` 나 가상환경 폴더(`.venv` 등)가 보이면 올리지 않고 멈춥니다.</mark>
-   ```bash
-   git status
-   ```
-   - 명령 풀이: `git status` 올릴 파일의 상태를 봄
-   - Module 3에서 `access_control` 폴더에 만든 파일도 같은 저장소라서 이 올리기 한 번에 함께 올라갑니다(`git status` 에 `access_control/` 도 보입니다).
-   - `anomaly_detection/` 한 줄이 보이면 정상입니다(새 폴더라서 안의 파일이 한 줄로 묶여 보입니다).
-   - `.env` 가 보이면: VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다.
-     - `.venv` 도 같은 방법으로 합니다. 가상환경 폴더 이름이 `.venv` 가 아니면 그 이름으로 적습니다.
-   - `anomaly_detection/` 안에는 파이썬이 실행하면서 만든 임시 폴더 `__pycache__/` 가 들어 있을 수 있어서 한 줄로 묶인 `git status` 에는 보이지 않습니다. `.gitignore` 맨 아래에 `__pycache__/` 한 줄도 적고 저장한 뒤 `git status` 를 다시 칩니다.
-3. **[보고서]** `report_u1.md` 의 `## 마무리` 아래를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다.
-   - (가) `git status` 를 쳤을 때 `.env` 나 `.venv` 가 보였는지, 보였다면 어떻게 했는지 적어 주세요.
-   - 실습 1-1이나 실습 1-2에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다. 올린 뒤에 이어서 적어 다시 올려도 됩니다.
-4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
-   ```bash
-   git add .
-   git commit -m "Add access control and anomaly detection unit 1"
-   git push
-   ```
-   - 명령 풀이: `git add .` 바뀐 파일을 올릴 대상에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - `git push` 가 거절(`rejected`)되면 깃허브에 내 PC 에 없는 기록이 있다는 뜻입니다. <mark>`git pull` 을 입력해 받아 온 뒤 `git push` 를 다시 합니다.</mark>
-   - `git pull` 뒤에 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다.
-5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `anomaly_detection` 폴더를 열고, VS Code 왼쪽 목록의 `anomaly_detection` 폴더에 있는 파일들이 깃허브에도 보이는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
-   - 빠진 이름이 있으면 VS Code 왼쪽 목록의 `anomaly_detection` 폴더에 내 PC 에도 있는지 봅니다.
-     - 없으면 다른 폴더에 만든 것이니 `anomaly_detection` 안으로 옮기고, `pwd` 로 위치를 확인한 뒤 2번의 `git status` 부터 다시 합니다.
-
-## 마무리 정리
-
-| 하려는 일 | 코드 · 말 |
-|---|---|
-| 올릴 파일 확인 | `git status` (`.env` · `.venv` 가 보이면 멈춤) |
-| 올리기 | `git add .` → `git commit -m "…"` → `git push` |
-| 올린 뒤 | 브라우저에서 `anomaly_detection` 폴더와 파일이 있는지 확인 |
+   - `normalize_web.py` · `normalize_json_csv.py` · `normalize.py` · `exercise1-2_run.py` · `challenge1-2_run.py` · `challenge1-3_run.py` · `normalized_events.json` · `server_log.jsonl` · `saas_events.csv` 와 `report_u1.md` 가 보여야 합니다.
+2. **[보고서]** `report_u1.md` 의 실습 1-2 ~ 도전 1-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. <mark>못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.</mark>
 
 ---
 
@@ -303,44 +350,11 @@ for item in labeled:                                                            
 
 | 확인 | 문제 |
 |---|---|
-| 접속 로그 한 줄을 주소 · 방법 · 경로 · 상태 코드로 나눠 읽었다 | 실습 1-1 |
-| 읽은 요청을 정상 · 오류 · 의심으로 가르고, 심이 무엇이며 현업에서 어떻게 쓰는지 읽었다 | 실습 1-2 |
-| 이번 Unit에서 만든 파일과 보고서를 깃허브에 올렸다 | 마무리 |
+| 웹 서버 로그 한 줄을 공통 이벤트로 바꿨다 | 실습 1-2 |
+| 판정 서버 로그와 SaaS 로그를 공통 이벤트로 바꿨다 | 도전 1-2 |
+| 세 로그를 합쳐 시간순으로 정렬하고 `normalized_events.json` 으로 저장했다 | 도전 1-3 |
 
-다음은 Unit 2입니다. 이번 Unit에서 읽은 로그와 Module 3의 판정 서버 로그처럼 **모양이 다른 로그를 같은 키로 맞추는 정규화**를 합니다.
-
-## 다음 Unit 준비 · 판다스 미리 설치하기 (선택)
-
-이번 Unit에서는 아직 판다스를 쓰지 않습니다. 판다스(pandas, 판다스)는 Unit 3의 실습 3-1에서 처음 나옵니다. 그때 시간을 아끼려면 이번 Unit 마무리 뒤에 설치해 둘 수 있습니다. 설치 방법은 이 과정에서 `requests` · `flask` 를 설치한 것과 같은 `python -m pip install` 입니다.
-
-**순서**
-
-1. **[터미널]** `anomaly_detection` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널(Git Bash)을 엽니다.
-2. **[터미널]** 가상환경이 켜져 있는지 봅니다.
-   - 터미널 줄 맨 앞에 `(.venv)` 처럼 가상환경 이름이 붙어 있으면 켜진 것입니다.
-   - 표시가 없으면 `cd ..` 로 `security-agent-toolkit` 폴더에 올라가서(`pwd` 로 위치를 확인합니다) 아래를 칩니다. 맥북은 `Scripts` 를 `bin` 으로 바꿉니다. 가상환경 폴더 이름이 `.venv` 가 아니면 그 이름으로 바꿉니다.
-     ```bash
-     source .venv/Scripts/activate
-     ```
-     - 명령 풀이: `source .venv/Scripts/activate` 가상환경 켜기
-3. **[터미널]** 판다스를 설치합니다(맥북은 `python3`).
-   ```bash
-   python -m pip install pandas
-   ```
-   - 명령 풀이: `python -m pip install pandas` 판다스 설치
-   - 마지막에 <mark>`Successfully installed …` 또는 `Requirement already satisfied …` 가 나오면</mark> 됩니다.
-4. **[터미널]** 설치됐는지 확인합니다(맥북은 `python3`).
-   ```bash
-   python -c "import pandas; print(pandas.__version__)"
-   ```
-   - 명령 풀이: `python -c "…"` 따옴표 안의 파이썬 한 줄을 실행해 설치된 판다스 버전을 출력
-   - <mark>점이 들어간 숫자(예: `2.3.3`)가 나오면 성공입니다.</mark> 버전 숫자는 사람마다 달라도 됩니다.
-   - `ModuleNotFoundError` 가 나오면 설치가 안 된 것입니다. 2번에서 가상환경이 켜져 있었는지 보고 3번을 다시 칩니다.
-
-**자주 틀리는 곳**
-
-- 가상환경을 켜지 않고 설치하면, 나중에 가상환경을 켠 터미널에서 `ModuleNotFoundError` 가 납니다.
-- 터미널을 새로 열면 가상환경이 꺼져 있을 수 있습니다. 줄 맨 앞에 `(.venv)` 가 있는지 먼저 봅니다.
+Unit 2에서는 이 `normalized_events.json` 과 같은 모양의 파일을 **판다스**로 읽어서 실패한 이벤트를 골라 세고, 사용자별 · 시간대별로 묶습니다. 판다스 설치를 Unit 1 마무리 때 미리 했다면 확인만 합니다.
 
 ---
 

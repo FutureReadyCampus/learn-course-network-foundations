@@ -1,28 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img">
-<title>실습 2-1 정리: 시각 세 줄 변환과 상태 코드 판정</title>
-<desc>시각은 strptime, replace, strftime 세 줄로 공통 모양이 됩니다. 상태 코드는 400 이상이면 실패, 아니면 성공입니다.</desc>
-<defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 2-1 정리</text>
-<rect x="24" y="58" width="190" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="119" y="87.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">문자열 → 시각 값</text>
-<line x1="216" y1="83" x2="236" y2="83" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
-<rect x="240" y="58" width="456" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="252" y="87.1" font-size="14" text-anchor="start" fill="#292929">datetime.strptime(time_text, NGINX_TIME_FORMAT)</text>
-<rect x="24" y="122" width="190" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="119" y="151.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">시간대 떼기</text>
-<line x1="216" y1="147" x2="236" y2="147" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
-<rect x="240" y="122" width="456" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="252" y="151.1" font-size="14" text-anchor="start" fill="#292929">parsed.replace(tzinfo=None)</text>
-<rect x="24" y="186" width="190" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="119" y="215.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">공통 모양 문자열로</text>
-<line x1="216" y1="211" x2="236" y2="211" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
-<rect x="240" y="186" width="456" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="252" y="215.1" font-size="14" text-anchor="start" fill="#292929">local_time.strftime(COMMON_TIME_FORMAT)</text>
-<rect x="24" y="250" width="190" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="119" y="279.4" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">상태 코드 → 결과</text>
-<line x1="216" y1="275" x2="236" y2="275" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
-<rect x="240" y="250" width="456" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="252" y="279.1" font-size="14" text-anchor="start" fill="#292929">status &gt;= 400 → "실패", 아니면 "성공"</text>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>실습 2-1 정리: 읽기 → 열 꺼내기 → 거르기 → 세기와 각 코드</title>
+<desc>pd.read_json 으로 표를 읽고, events["time"] 처럼 열을 꺼내고, events[is_fail] 로 실패만 거르고, value_counts 로 값별 개수를 셉니다. 크기는 shape, 앞 3개는 head(3) 로 봅니다.</desc>
+<defs><marker id="a-0302-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">실습 2-1 정리</text>
+<rect x="24" y="74" width="172" height="104" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="110.0" y="121.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">읽기</text>
+<text x="110.0" y="140.7" font-size="14" fill="#666660" text-anchor="middle">pd.read_json(path)</text>
+<line x1="199" y1="126.0" x2="215" y2="126.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p06)"/>
+<rect x="218" y="74" width="142" height="104" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="289.0" y="121.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">열 꺼내기</text>
+<text x="289.0" y="140.7" font-size="14" fill="#666660" text-anchor="middle">events["time"]</text>
+<line x1="363" y1="126.0" x2="379" y2="126.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p06)"/>
+<rect x="382" y="74" width="146" height="104" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="455.0" y="121.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">거르기</text>
+<text x="455.0" y="140.7" font-size="14" fill="#666660" text-anchor="middle">events[is_fail]</text>
+<line x1="531" y1="126.0" x2="547" y2="126.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p06)"/>
+<rect x="550" y="74" width="146" height="104" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="623.0" y="121.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">값별 개수</text>
+<text x="623.0" y="140.7" font-size="14" fill="#666660" text-anchor="middle">.value_counts()</text>
+<rect x="24" y="210" width="324" height="80" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="186.0" y="244.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">표 크기 보기</text>
+<text x="186.0" y="265.8" font-size="15" fill="#666660" text-anchor="middle">events.shape → (57, 6)</text>
+<rect x="372" y="210" width="324" height="80" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="534.0" y="244.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">앞 3개만 보기</text>
+<text x="534.0" y="265.8" font-size="15" fill="#666660" text-anchor="middle">times.head(3)</text>
 </svg>

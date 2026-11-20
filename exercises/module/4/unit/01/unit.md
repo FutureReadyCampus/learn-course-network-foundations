@@ -1,12 +1,15 @@
 ---
 id: m4-u01
-title: 접속 로그 읽기와 이상 징후 가르기
+title: 로그를 같은 모양으로 맞추기
 lessons:
 - path: lesson/01/lesson.md
 - path: lesson/02/lesson.md
 - path: lesson/03/lesson.md
 - path: lesson/04/lesson.md
 - path: lesson/05/lesson.md
+- path: lesson/06/lesson.md
+- path: lesson/07/lesson.md
+- path: lesson/08/lesson.md
 ---
 
-# 접속 로그 읽기와 이상 징후 가르기
+# 로그를 같은 모양으로 맞추기

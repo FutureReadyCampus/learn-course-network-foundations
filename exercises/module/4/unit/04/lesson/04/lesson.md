@@ -1,275 +1,259 @@
 ---
 id: m4-u04-l04
-title: 실습 4-3 · 이벤트 유형 정하고 유형별로 세기
+title: 제공 파일
 render: markdown
-source:
-  repository: FutureReadyCampus/learn-missions
-  path: network/102_day03_am_baseline_login.md
-  mission_id: GichanSource.m4-1104-am-baseline-login
-  commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 실습 4-3 · 이벤트 유형 정하고 유형별로 세기
+# 제공 파일
 
-## 이번 의뢰: 이벤트 유형 나누기
+## `saas_detection.py` 만들기
 
-> **오늘 들어온 일**
->
-> A사 보안 팀장이 보낸 메시지입니다:
-> 「알림이 와도 담당자는 어떤 유형의 일인지부터 알아야 다음에 할 일을 정합니다. 이벤트마다 유형을 분류하고, 유형별로 몇 개씩인지 보여 주세요.
->
-> 이번에는 두 유형만 구분하면 됩니다. 하나는 로그인에 실패한 것, 다른 하나는 관리자 경로에 접근했다가 실패한 것입니다. 나머지 실패는 「기타 실패」, 성공은 「정상」으로 분류해 주세요.」
-> - **왜 중요한가**: <mark>알림이 100개 와도 유형을 모르면 처음부터 하나씩 읽어야 합니다.</mark> 유형별 개수를 보면 비정상 로그인이 많은지, 비인가 접근이 많은지 보고 어디부터 볼지 정할 수 있습니다.
-
-## 왜 이벤트에 유형 이름을 붙이는가
-
-1. 실습 4-2에서는 「로그인 실패」 하나만 찾았습니다. 실제 관제에서는 로그인 실패 · 관리자 경로 접근 · 요청 급증처럼 <mark>평소와 다른 일이 여러 유형으로 동시에 들어옵니다.</mark>
-2. 이벤트마다 **유형 이름**을 정해 두면, <mark>유형별로 세고 유형별로 다르게 대응할 수 있습니다.</mark>
-
-## 3.1 이벤트 유형과 이번 Unit에서 쓰는 규칙
-
-관제에서 알리는 일은 다섯 가지 유형으로 나눕니다. 이번 Unit에서는 <mark>표의 첫 두 가지(비정상 로그인 · 비인가 접근)만 구분하고</mark>, 나머지 실패는 「기타 실패」, 성공은 「정상」으로 모읍니다(나머지 유형은 Unit 5와 Unit 6에서 다룹니다).
-
-| 유형 | 로그에서 보이는 모양 | 다루는 Unit |
-|---|---|---|
-| 비정상 로그인 | 로그인 요청이 실패함 | 이번 Unit |
-| 비인가 접근 | 관리자 경로(`/admin`)를 요청했다가 실패함 | 이번 Unit |
-| 트래픽 급증 | 짧은 시간에 요청이 많이 들어옴 | Unit 5 |
-| SaaS 이상 사용 | 평소와 다른 서비스 사용(대량 내려받기 등) | Unit 6 |
-| 악성 행위 징후 | 없는 경로를 차례로 확인하는 시도 등 | Unit 6 |
-
-이번 Unit에서 유형 이름을 정하는 순서입니다. **1번 규칙부터 차례로 확인해서, 처음 조건을 충족하는 규칙의 유형 이름을 붙이고 멈춥니다.** 예: 결과가 실패이고 행동이 `POST /login` 인 이벤트는 1번 조건을 충족하므로 「비정상 로그인」이고, <mark>2번부터는 보지 않습니다.</mark>
-
-| 순서 | 조건 | 유형 이름 |
-|---|---|---|
-| 1 | 결과가 실패이고 행동이 `POST /login` | 비정상 로그인 |
-| 2 | 결과가 실패이고 행동에 `/admin` 이 들어 있음 | 비인가 접근 |
-| 3 | 결과가 실패(위 두 가지가 아님) | 기타 실패 |
-| 4 | 그 밖(성공) | 정상 |
-
-- 유형 이름은 이벤트 **한 건**에 붙이는 이름입니다.
-- <mark>로그인에 1번만 실패한 이벤트도 「비정상 로그인」입니다.</mark> 알림을 낼지는 실습 4-2처럼 실패 횟수로 따로 정합니다.
-- 「정상」은 결과가 성공이라는 유형 이름이며, <mark>공격이 아니라는 뜻이 아닙니다.</mark> 실습 4-2의 2.1 표에서 본 203.0.113.50 의 15번 행(`POST /login` 성공)도 유형은 「정상」이고, 실패 뒤 성공이 먼저 살펴볼 일인지는 그 전후의 이벤트를 함께 봐서 판단합니다.
-- SaaS 로그의 로그인 실패(jiwoo, 행동 `login`)는 행동이 `POST /login` 이 아니라서 1번 규칙의 <mark>조건을 충족하지 않아 「기타 실패」가 됩니다.</mark>
-- 샘플에서 실패한 이벤트는 모두 **23개**입니다.
-- 규칙의 `and` 는 <mark>이벤트 한 건의 값 하나씩을 이으므로 `and` 를 씁니다.</mark> 실습 4-2에서 표의 열끼리 이을 때만 `&` 를 썼습니다.
-
-**문법 상자 — 문자열 안에 다른 문자열이 있는지 `in`**
-
-**<mark>`작은 문자열 in 큰 문자열`</mark> 은 큰 문자열 안에 작은 문자열이 들어 있으면 `True`, 없으면 `False` 입니다**
-
-`==` 는 문자열 전체가 같아야 `True` 이지만, <mark>`in` 은 일부만 들어 있어도 `True` 입니다.</mark> 그래서 `GET /admin` 도 `GET /admin/users` 도 `"/admin" in action` 으로 한 번에 찾습니다.
+TODO(assemble): `saas_detection.py` 완성 코드를 옛 실습의 시작 코드와 정답을 합쳐 채운다.
 
 ```python
-action = "GET /admin/users"                 # 이벤트의 action 값 예
-has_admin = "/admin" in action              # action 안에 /admin 이 있는지 True 또는 False 로 구한다
-print(has_admin)                            # True
+import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-other_action = "GET /login"                 # /admin 이 없는 action 값 예
-has_admin_other = "/admin" in other_action  # other_action 안에 /admin 이 있는지 구한다
-print(has_admin_other)                      # False
-```
-
-실행 결과:
-
-```
-True
-False
-```
-
-- 읽는 법: <mark>첫 번째 출력은 `GET /admin/users` 안에 `/admin` 이 있어서 `True`</mark>, 두 번째 출력은 `GET /login` 안에 없어서 `False` 입니다.
-- `if` 조건에 그대로 씁니다(`if "/admin" in action:`). **`== True` 는 붙이지 않습니다.** `for … in` 과는 다른 쓰임입니다.
-
-**판다스 문법 상자 — 표를 딕셔너리 리스트로 바꾸기**
-
-**<mark>`표.to_dict("records")`</mark> 는 표의 행을 딕셔너리 하나씩으로 바꾸고, 그 딕셔너리들을 리스트로 리턴합니다. 열 이름은 키가 되고, 그 행의 데이터는 그 키의 값이 됩니다**
-
-이벤트 표의 한 행이 딕셔너리 하나로 바뀌므로, 이후에는 판다스가 아니라 Module 3(접근통제)에서 쓰던 `for` 와 `event["키"]` 로 하나씩 처리할 수 있습니다.
-
-| 표의 0번 행 | `to_dict("records")` 로 바꾼 뒤 |
-|---|---|
-| `time` 열이 2026-11-02 02:14:08 | `{"time": "2026-11-02 02:14:08", …}` |
-| `user` 열이 jiwoo | `"user": "jiwoo"` |
-| `action` 열이 login | `"action": "login"` |
-
-```python
-import pandas as pd                                          # 판다스를 pd 라는 짧은 이름으로 불러온다
-
-data = {                                                     # 연습용 작은 데이터 — 행 하나가 이벤트 하나
-    "time": ["2026-11-02 02:14:08", "2026-11-02 09:05:30"],  # time 열에 들어갈 값들
-    "user": ["jiwoo", "seoyeon"],                            # user 열에 들어갈 값들
-    "action": ["login", "login"],                            # action 열에 들어갈 값들
-}
-events = pd.DataFrame(data)                                  # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
-print(events)                                                # 표를 출력한다
-event_list = events.to_dict("records")                       # 표를 「한 행이 딕셔너리 하나」인 리스트로 바꾼다
-first_event = event_list[0]                                  # 첫 번째 딕셔너리(표의 0번 행)를 꺼낸다
-print(first_event)                                           # 열 이름이 키, 그 행의 값이 값이 된 딕셔너리
-```
-
-실행 결과:
-
-```
-                  time     user action
-0  2026-11-02 02:14:08    jiwoo  login
-1  2026-11-02 09:05:30  seoyeon  login
-{'time': '2026-11-02 02:14:08', 'user': 'jiwoo', 'action': 'login'}
-```
-
-- 읽는 법: <mark>출력은 0번 행 하나가 딕셔너리로 바뀐 모양입니다.</mark> 키는 열 이름 3개이고 값은 그 행의 값입니다.
-- `"records"` 는 **정해진 문구라서 그대로 씁니다.** 빼거나 다른 문구를 쓰면 행마다 딕셔너리 하나인 리스트가 만들어지지 않습니다.
-- `classify_event` 함수는 이벤트 하나의 행동과 결과를 전달받아 규칙(`if`)을 적용합니다. <mark>그래서 표를 딕셔너리 리스트로 바꿔 이벤트를 하나씩 꺼냅니다.</mark> `if` 는 값 하나씩만 판단하기 때문입니다.
-- 미리 채운 `type_event_counts.get(type_name, 0) + 1` 은 처음 보는 유형이면 0 에서 시작해 1 을 더한다는 뜻입니다.
-
-**한 장 정리**
-
-| 함수 | 받는 것 | 리턴하는 것 |
-|---|---|---|
-| `load_events` | 파일 경로 | 이벤트 표(미리 채움) |
-| `classify_event` | 이벤트 하나의 행동과 결과 | 유형 이름(`비정상 로그인` · `비인가 접근` · `기타 실패` · `정상`) |
-| `count_types` | 이벤트 표 | `{유형: 개수}` 딕셔너리 |
-
-- **직접 쓰는 곳은 다섯 군데**(번호 1 ~ 5)이고, 함수 두 개 안에 나뉘어 있습니다.
-  - `classify_event`(1 ~ 4번): 위 순서대로 1번 · 2번 규칙을 `if` 로 씁니다. 나머지 두 규칙은 미리 채웠습니다.
-  - `count_types`(5번): 표를 딕셔너리 리스트로 바꿉니다. 하나씩 꺼내 세는 줄은 미리 채웠습니다.
-
-## 실습 4-3 · 이벤트 유형 정하고 유형별로 세기
-
-**이런 상황이 있습니다**
-
-- **지금은**: 이벤트 57개는 성공 · 실패만 나뉘어 있어서, 실패가 어떤 일인지 알 수 없습니다.
-- **그래서 만드는 것**: `classify.py` 입니다.
-  - 이벤트 하나의 행동과 결과로 유형 이름을 정합니다.
-  - 유형 이름별로 몇 개인지 셉니다.
-- **실행하면**: 단계 1: 유형별 이벤트 수(4줄), 단계 2: 전체 이벤트 수가 나옵니다.
-- **현업에서는**: 알림에 유형 이름이 적혀 있으면 담당자가 그 유형의 처리 절차(비밀번호 초기화, 주소 차단 등)를 바로 찾습니다.
-
-**할 일**
-
-1. `classify.py` · `exercise4-3_run.py` **두 파일**을 만들고, `classify.py` 의 `classify_event` · `count_types` 에서 직접 쓰는 곳을 씁니다.
-2. 실행해서 <mark>유형별 이벤트 수</mark>(단계 1)와 <mark>전체 이벤트 수</mark>(단계 2)를 읽습니다.
-
-**`classify.py`**
-
-```python
-import pandas as pd                                                             # 판다스를 pd 라는 짧은 이름으로 불러온다
-
-EVENTS_PATH = "normalized_events.json"                                          # 읽을 정규화 이벤트 파일 이름
-TYPE_ORDER = ["비정상 로그인", "비인가 접근", "기타 실패", "정상"]              # 결과를 보여 줄 유형 순서
+EVENTS_PATH = "normalized_events.json"                # 읽을 정규화 이벤트 파일 이름
+USUAL_IPS = {"seoyeon": "198.51.100.9", "junho": "192.0.2.41", "jiwoo": "198.51.100.52"}  # 사용자별 평소 IP. gaeun 은 평소 기록이 없어 넣지 않았다
+BUSINESS_START = 8                                    # 업무 시간이 시작하는 시
+BUSINESS_END = 20                                     # 업무 시간이 끝나는 시(20시대, 20:59 까지가 업무 시간)
+DOWNLOAD_LIMIT = 5                                    # 파일을 이 횟수 이상 내려받으면 대량 다운로드로 본다
 
 
-def load_events(path):                                                          # 파일 경로를 받는 함수
+def load_events(path):                                # 파일 경로를 받는 함수
     """이벤트 파일을 표로 읽는다.
     분석을 시작할 때 맨 먼저 쓴다.
     """
-    events = pd.read_json(path)                                                 # 파일 속 이벤트를 표 한 개로 읽는다
-    return events                                                               # 이벤트 표를 리턴한다
+    events = pd.read_json(path)                       # 파일 속 이벤트를 표 한 개로 읽는다
+    return events                                     # 이벤트 표를 리턴한다
 
 
-def classify_event(action, result):                                             # 행동과 결과를 받는 함수
-    """이벤트 하나의 유형 이름을 정한다.
-    알림이 온 이벤트가 어떤 유형의 일인지 담당자가 바로 알 수 있게 할 때 쓴다.
+def pick_saas(events):                                # 이벤트 표를 받는 함수
+    """SaaS 로그의 이벤트만 골라 새 표로 만든다.
+    SaaS 이상 사용을 찾기 전에 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. if 로 시작한다: result 가 "실패" 이고(and) action 이 "POST /login" 과 같으면
-    # 2.   그 if 안쪽에서 "비정상 로그인" 을 리턴한다
-    # 3. if 로 시작한다: result 가 "실패" 이고(and) "/admin" in action 이 True 이면
-    # 4.   그 if 안쪽에서 "비인가 접근" 을 리턴한다
-    if result == "실패":                                                        # 위 두 유형이 아닌 실패이면
-        return "기타 실패"                                                      # 기타 실패로 분류한다
-    return "정상"                                                               # 실패가 아니면 정상이다
+    sources = events["source"]                        # source 열만 꺼낸다
+    is_saas = sources == "saas"                       # 각 행이 SaaS 이벤트인지 비교해 True 또는 False 를 만든다
+    saas = events[is_saas]                            # True 인 행만 골라 새 표로 만든다
+    return saas                                       # SaaS 이벤트 표를 리턴한다
 
 
-def count_types(events):                                                        # 이벤트 표를 받는 함수
-    """유형별 이벤트 수를 {유형: 개수} 딕셔너리로 센다.
-    어떤 유형의 일이 얼마나 있는지 한눈에 볼 때 쓴다.
+def pick_logins(saas):                                # SaaS 이벤트 표를 받는 함수
+    """로그인 이벤트만 골라 새 표로 만든다.
+    로그인 시각과 IP 를 살펴보기 전에 쓴다.
     """
+    actions = saas["action"]                          # action 열만 꺼낸다
+    is_login = actions == "login"                     # 각 행이 로그인인지 비교해 True 또는 False 를 만든다
+    logins = saas[is_login]                           # True 인 행만 골라 새 표로 만든다
+    return logins                                     # 로그인 이벤트 표를 리턴한다
+
+
+def find_off_hours_logins(logins):                    # 로그인 표를 받는 함수
+    """업무 시간 밖에 시도한 로그인만 골라 새 표로 만든다.
+    새벽 로그인처럼 평소에 없는 시각을 찾을 때 쓴다.
+    """
+    times = pd.to_datetime(logins["time"])            # 문자열 시각을 시각 값으로 바꾼다 — 미리 채운 줄
+    hours = times.dt.hour                             # 시각 값에서 시(0~23)만 꺼낸다 — 미리 채운 줄
+
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 5. events.to_dict("records") 로 표를 딕셔너리 리스트로 바꿔 event_list 에 담는다
-    type_event_counts = {}                                                      # 유형별 횟수를 담을 딕셔너리
-    for event in event_list:                                                    # 이벤트를 하나씩 꺼낸다
-        action = event["action"]                                                # 그 이벤트의 행동
-        result = event["result"]                                                # 그 이벤트의 결과
-        type_name = classify_event(action, result)                              # 유형 이름을 정한다
-        type_event_counts[type_name] = type_event_counts.get(type_name, 0) + 1  # type_event_counts 에 이 유형이 있으면 그 값을, 없으면 0 을 꺼내 1 을 더하고 다시 저장한다
-    return type_event_counts                                                    # 유형별 횟수를 리턴한다
+    # 1. hours 가 BUSINESS_START 이상 BUSINESS_END 이하인지 between 으로 구해 is_business_hour 에 담는다
+    is_business_hour = hours.between(BUSINESS_START, BUSINESS_END)  # 시가 업무 시간 안인지 구해 True 또는 False 를 만든다
+    # 2. is_business_hour 의 반대를 ~ 로 구해 is_off_hours 에 담는다
+    is_off_hours = ~is_business_hour                  # True 와 False 를 뒤집어 업무 시간 밖인 행을 True 로 만든다
+    off_hours_logins = logins[is_off_hours]           # True 인 행만 골라 새 표로 만든다
+    return off_hours_logins                           # 업무 시간 밖 로그인 표를 리턴한다
+
+
+def find_new_ip_users(logins):                        # 로그인 표를 받는 함수
+    """평소와 다른 IP 로 로그인한 사용자를 골라 리스트로 만든다.
+    계정을 다른 사람이 쓰는지 의심할 때 쓴다.
+    """
+    new_ip_users = []                                 # 사용자를 담을 빈 리스트
+    login_list = logins.to_dict("records")            # 표를 이벤트 딕셔너리 리스트로 바꾼다
+    for login in login_list:                          # 로그인을 하나씩 꺼낸다
+        user = login["user"]                          # 그 로그인의 사용자
+        ip = login["ip"]                              # 그 로그인의 IP
+        usual_ip = USUAL_IPS.get(user)                # 그 사용자의 평소 IP(기록이 없으면 None)
+        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+        # 3. usual_ip 가 None 이 아닌지 구해 has_usual_ip 에 담는다 (None 인지는 is None, 아닌지는 is not None)
+        has_usual_ip = usual_ip is not None           # 평소 IP 기록이 있는지 구한다
+        # 4. ip 가 usual_ip 와 다른지 != 로 구해 is_new_ip 에 담는다 (같은지는 ==, 다른지는 !=)
+        is_new_ip = ip != usual_ip                    # 이번 IP 가 평소 IP 와 다른지 구한다
+        if has_usual_ip and is_new_ip:                # 평소 IP 기록이 있고, 이번 IP 가 평소와 다르면
+            # 5. new_ip_users 에 user 를 추가한다
+            new_ip_users.append(user)                 # 리스트에 사용자를 추가한다
+    return new_ip_users                               # 평소와 다른 IP 로 로그인한 사용자를 리턴한다
+
+
+def find_bulk_download_users(saas):                   # SaaS 이벤트 표를 받는 함수
+    """파일을 기준 횟수 이상 내려받은 사용자를 리스트로 만든다.
+    자료를 한꺼번에 빼 가는 사용자를 찾을 때 쓴다.
+    """
+    actions = saas["action"]                          # action 열만 꺼낸다
+    is_download = actions == "file.download"          # 각 행이 다운로드인지 비교해 True 또는 False 를 만든다
+    downloads = saas[is_download]                     # True 인 행만 골라 새 표로 만든다
+    counts = downloads.groupby("user").size()         # user 가 같은 행끼리 그룹으로 만들고(groupby) 바로 그룹마다 행이 몇 개인지 센다(size) — 사용자별 다운로드 횟수
+    is_bulk = counts >= DOWNLOAD_LIMIT                # 사용자마다 횟수가 기준 이상인지 비교해 True 또는 False 를 만든다
+    bulk_counts = counts[is_bulk]                     # 기준 이상인 사용자와 횟수만 남긴다
+    bulk_users = list(bulk_counts.index)              # 사용자 이름만 리스트로 만든다
+    return bulk_users                                 # 대량 다운로드 사용자를 리턴한다
 ```
 
-- 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 · 3번은 함수 안이라 앞에 공백 4개이고, 2 · 4번의 `return` 은 `if` 안쪽이라 8개이며, 5번은 공백 4개입니다.
-- 번호 주석이 연달아 붙어 있어도, 주석 사이마다 줄을 끼워 넣어 **각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.**
-- 채우기 전에 실행하면 `NameError: name 'event_list' is not defined` 오류가 납니다. 5번을 아직 안 썼기 때문입니다.
+## `malicious_detection.py` 만들기
 
-**`exercise4-3_run.py`** — <mark>그대로 붙여 넣습니다.</mark> 직접 쓰는 줄은 없습니다. `.values()` 는 딕셔너리의 값(개수)만 꺼내고, `sum(…)` 은 그 숫자를 모두 더합니다.
+TODO(assemble): `malicious_detection.py` 완성 코드를 옛 실습의 시작 코드와 정답을 합쳐 채운다.
 
 ```python
-from classify import load_events, count_types, EVENTS_PATH, TYPE_ORDER  # 방금 만든 함수를 불러온다
+import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-events = load_events(EVENTS_PATH)                                       # 이벤트 파일을 표로 읽는다
-type_event_counts = count_types(events)                                 # 유형별로 센다
-print("--- 단계 1: 유형별 이벤트 수")                                   # 단계 1 시작을 알리는 줄
-for type_name in TYPE_ORDER:                                            # 정해 둔 유형 순서대로 꺼낸다
-    count = type_event_counts.get(type_name, 0)                         # 그 유형의 개수(없으면 0)
-    print(type_name, count)                                             # 유형과 개수를 출력한다
+EVENTS_PATH = "normalized_events.json"                # 읽을 정규화 이벤트 파일 이름
+SCANNER_PATTERN = "/.env|/wp-login|/phpmyadmin"       # 스캐너가 자주 요청하는 경로. | 는 「또는」이라는 뜻이다
 
-values = type_event_counts.values()                                     # 유형별 개수만 꺼낸다
-total = sum(values)                                                     # 모든 유형의 개수를 더한다
-print("--- 단계 2: 전체 이벤트", total, "개")                           # 단계 2 시작을 알리는 줄과 전체 개수
+
+def load_events(path):                                # 파일 경로를 받는 함수
+    """이벤트 파일을 표로 읽는다.
+    분석을 시작할 때 맨 먼저 쓴다.
+    """
+    events = pd.read_json(path)                       # 파일 속 이벤트를 표 한 개로 읽는다
+    return events                                     # 이벤트 표를 리턴한다
+
+
+def pick_web_failures(events):                        # 이벤트 표를 받는 함수
+    """웹 서버 로그에서 실패한 이벤트만 골라 새 표로 만든다.
+    경로 스캔 요청을 찾기 전에 쓴다.
+    """
+    sources = events["source"]                        # source 열만 꺼낸다
+    is_web = sources == "web"                         # 각 행이 웹 서버 이벤트인지 비교해 True 또는 False 를 만든다
+    results = events["result"]                        # result 열만 꺼낸다
+    is_fail = results == "실패"                       # 각 행이 실패인지 비교해 True 또는 False 를 만든다
+    both_true = is_web & is_fail                      # 두 조건이 모두 True 인 행만 True 로 만든다
+    web_failures = events[both_true]                  # True 인 행만 골라 새 표로 만든다
+    return web_failures                               # 웹 실패 이벤트 표를 리턴한다
+
+
+def find_scan_ips(web_failures):                      # 웹 실패 표를 받는 함수
+    """스캐너가 요청하는 경로를 요청한 IP 와 요청 횟수를 찾는다.
+    한 번의 오타 요청이나 로그인 실패만 있는 IP 를 거르고 경로 스캔만 가려낼 때 쓴다.
+    """
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 1. web_failures 의 "action" 열을 꺼내 actions 에 담는다
+    actions = web_failures["action"]                  # action 열만 꺼낸다
+    # 2. actions 에 .str.contains(SCANNER_PATTERN) 을 붙여 스캐너 경로가 들어 있는지 구해 is_scanner 에 담는다
+    is_scanner = actions.str.contains(SCANNER_PATTERN)  # 각 행에 스캐너 경로가 들어 있는지 구해 True 또는 False 를 만든다
+    # 3. web_failures 에서 is_scanner 가 True 인 행만 골라 scanner_rows 에 담는다
+    scanner_rows = web_failures[is_scanner]           # True 인 행만 골라 새 표로 만든다
+    # 4. scanner_rows 의 "ip" 열에 .value_counts() 를 붙여 IP 별로 몇 번 요청했는지 세어 scan_counts 에 담는다
+    scan_counts = scanner_rows["ip"].value_counts()   # IP 별로 스캐너 경로를 몇 번 요청했는지 센다
+    scan_ips = list(scan_counts.index)                # 스캔으로 보는 IP 이름만 리스트로 만든다
+    return scan_ips, scan_counts                      # 스캔 IP 리스트와 IP 별 요청 횟수를 리턴한다
+
+
+def explain_scan(ip, request_count):                  # IP 와 스캐너 경로 요청 횟수를 받는 함수
+    """스캔으로 본 IP 하나를 담당자가 읽을 설명 딕셔너리로 만든다.
+    왜 의심했는지 이유를 알림에 남길 때 쓴다.
+    """
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 5. "스캐너 경로를 " 와 str(request_count) 와 "번 요청" 을 + 로 연결해 reason 에 담는다 (문구는 복사해 붙여도 된다)
+    reason = "스캐너 경로를 " + str(request_count) + "번 요청"  # 문자열을 연결해 이유 문장을 만든다
+    # 6. 키 "ip" 에 ip, 키 "reason" 에 reason 을 담은 딕셔너리를 scan_info 에 담는다
+    scan_info = {"ip": ip, "reason": reason}          # IP 와 이유를 딕셔너리로 만든다
+    return scan_info                                  # 설명 딕셔너리를 리턴한다
 ```
 
-**순서**
+## `correlation.py` 만들기
 
-1. **[VS Code]** 파일 `classify.py` · `exercise4-3_run.py` 를 만들어 위 코드를 붙여 넣습니다.
-2. **[VS Code]** `classify.py` 에서 직접 쓰는 곳 **다섯 군데**를 씁니다. 3.1 의 규칙 순서와 문법 상자를 보고 씁니다.
-3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
-   ```bash
-   pwd
-   python exercise4-3_run.py
-   ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise4-3_run.py` 파이썬으로 실행 파일 실행
-4. 출력은 **두 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 4줄이고, 단계 2는 숫자가 제목 줄에 함께 나오므로 그 아래 줄이 없습니다.
-5. **[보고서]** `report_u4.md` 의 `## 실습 4-3` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 유형별 이벤트 수를 적어 주세요.
-   - (나) [핵심 질문] 「기타 실패」(결과가 실패이면서 `POST /login` 도 아니고 `/admin` 도 없는 이벤트)는 실패한 유형 중 15개로 가장 많습니다. 샘플 이벤트에서 `source` 가 `server` 인 이벤트 하나와 `web` 인 이벤트 하나를 찾아, 각각 `action` 과 함께 적어 주세요(예: `server` 의 `ACCOUNT:CHANGE`, `web` 의 `GET /.env` 처럼 규칙 1 · 2번에 걸리지 않는 것). 그리고 이 둘이 같은 이름 「기타 실패」로 묶여 있으면 담당자가 무엇을 하기 어려운지 적어 주세요.
-   - (다) [핵심 질문] 유형 규칙은 위에서부터 차례로 보고 먼저 조건을 충족하는 것으로 정합니다. 「기타 실패」(결과가 실패이면 충족)를 맨 위로 옮겼다고 합시다. 그러면 「비정상 로그인」 · 「비인가 접근」 · 「기타 실패」 이벤트는 각각 몇 개가 될까요? 그리고 그때 담당자가 구분하지 못하게 되는 것은 무엇인가요?
+TODO(assemble): `correlation.py` 완성 코드를 옛 실습의 시작 코드와 정답을 합쳐 채운다.
 
-## 실습 4-3 정리
+```python
+import pandas as pd                                    # 판다스를 pd 라는 짧은 이름으로 불러온다
+from access_detection import load_events, pick_server_failures, EVENTS_PATH  # 실습 3-2 함수를 불러온다
+from saas_detection import pick_saas, pick_logins      # 도전 3-2 함수를 불러온다
+from malicious_detection import pick_web_failures      # 도전 3-3 함수를 불러온다
 
-| 하려는 일 | 코드 · 말 |
-|---|---|
-| 비정상 로그인 | `if result == "실패" and action == "POST /login":` → `return "비정상 로그인"` |
-| 비인가 접근 | `if result == "실패" and "/admin" in action:` → `return "비인가 접근"` |
-| 표를 리스트로 | `event_list = events.to_dict("records")` |
-| 유형별 세기 | `type_event_counts[type_name] = type_event_counts.get(type_name, 0) + 1` (미리 채움) |
+MIN_SOURCES = 2                                        # 서로 다른 로그(source)가 이 개수 이상이면 연결된 것으로 본다
+WINDOW_MINUTES = 60                                    # 한 사용자의 이벤트가 이 분 안에 모여 있어야 연결된 것으로 본다
 
----
 
-## 마무리 · 만든 파일 확인하기
+def make_ip_user_map(logins):                          # SaaS 로그인 표를 받는 함수
+    """성공한 SaaS 로그인에서 IP 마다 사용자를 찾아 딕셔너리로 만든다.
+    웹 서버 로그에는 사용자가 없어서 IP 로 사용자를 찾을 때 쓴다.
+    """
+    ip_user = {}                                       # IP → 사용자 딕셔너리
+    login_list = logins.to_dict("records")             # 표를 이벤트 딕셔너리 리스트로 바꾼다
+    for login in login_list:                           # 로그인을 하나씩 꺼낸다
+        if login["result"] == "성공":                  # 성공한 로그인이면
+            ip_user[login["ip"]] = login["user"]       # 그 IP 의 사용자를 딕셔너리에 담는다
+    return ip_user                                     # IP → 사용자 딕셔너리를 리턴한다
 
-이번 Unit의 작업을 깃허브에 올리는 일은 Unit 5의 실습 5-2 마지막에 한 번에 합니다. <mark>이번 Unit에서는 파일이 모두 있는지만 확인합니다.</mark>
 
-**순서**
+def attach_user_to_web(web_failures, ip_user):         # 웹 실패 표와 IP → 사용자 딕셔너리를 받는 함수
+    """IP 로 사용자를 알 수 있는 웹 실패 이벤트에 user 열을 붙인다.
+    웹 로그를 서버 · SaaS 로그와 같은 사용자 기준으로 연결해 분석할 때 쓴다.
+    """
+    ips = web_failures["ip"]                           # ip 열만 꺼낸다
+    known_ips = list(ip_user)                          # 딕셔너리의 키(IP)만 리스트로 만든다
+    is_known = ips.isin(known_ips)                     # 행마다 사용자를 아는 IP 인지 구해 True 또는 False 를 만든다
+    known_web = web_failures[is_known]                 # True 인 행만 골라 새 표를 만든다
+    web_part = known_web.copy()                        # 원본을 바꾸지 않도록 복사한다 — 미리 채운 줄
 
-1. **[터미널]** `anomaly_detection` 폴더에서 이번 Unit에서 만든 파일이 있는지 확인합니다.
-   ```bash
-   pwd
-   ls
-   ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
-   - `baseline.py` · `login_detection.py` · `classify.py` · `exercise4-1_run.py` · `exercise4-2_run.py` · `exercise4-3_run.py` · `normalized_events.json` · `baseline_logins.csv` 와 <mark>`report_u4.md` 가 보여야</mark> 합니다.
-2. **[보고서]** `report_u4.md` 의 실습 4-1 ~ 실습 4-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. 못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 1. web_part 의 "ip" 열을 꺼내 .map(ip_user) 를 붙여 IP 마다 사용자를 구해 users 에 담는다
+    web_part["user"] = users                           # 표에 user 열을 붙인다 — 미리 채운 줄
+    return web_part                                    # user 열이 붙은 웹 이벤트 표를 리턴한다
 
----
 
-## 이번 Unit 마무리
+def build_timeline(server_part, saas_part, web_part):  # 세 로그의 표를 받는 함수
+    """세 로그의 표를 하나로 합쳐 사용자 · 시각 순으로 정렬하고, 하루 중 몇 분인지 열을 붙인다.
+    사용자마다 서로 다른 로그의 이벤트를 시간순으로 놓고 볼 때 쓴다.
+    """
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 2. pd.concat 에 [server_part, saas_part, web_part] 리스트를 전달해 timeline 에 담는다
+    # 3. timeline 에 .sort_values 를 붙이고 ["user", "time"] 리스트를 전달해 사용자 순, 같은 사용자는 시각 순으로 정렬한 결과를 timeline 에 담는다
+    times = pd.to_datetime(timeline["time"])           # 문자열 시각을 시각 값으로 바꾼다
+    hours = times.dt.hour                              # 시각 값에서 시(0~23)만 꺼낸다
+    minutes = times.dt.minute                          # 시각 값에서 분(0~59)만 꺼낸다
+    timeline["minute_of_day"] = hours * 60 + minutes   # 자정부터 몇 분이 지났는지 열을 붙인다 — 미리 채운 줄
+    return timeline                                    # 정렬된 이벤트 표를 리턴한다
 
-| 확인 | 문제 |
-|---|---|
-| 지난 7일 숫자로 평소 기준을 구하고 알림 기준(5번)을 정했다 | 실습 4-1 |
-| 같은 주소의 로그인 실패가 알림 기준(5번) 이상인 곳을 찾았다 | 실습 4-2 |
-| 이벤트의 유형을 정하고 유형별로 셌다 | 실습 4-3 |
 
-Unit 5에서는 분 단위로 요청 수를 세어 **요청이 갑자기 늘어난 때**(트래픽 급증)를 찾고, Unit 4의 알림을 한 파일로 모읍니다.
+def find_chains(timeline):                             # 정렬된 이벤트 표를 받는 함수
+    """서로 다른 로그가 짧은 시간 안에 한 사용자에게 모여 있는 사건을 찾는다.
+    이벤트 하나씩이 아니라 한 사용자의 사건으로 연결해 분석할 때 쓴다.
+    """
+    grouped = timeline.groupby("user")                 # user 가 같은 행끼리 그룹으로 만든다
+    source_counts = grouped["source"].nunique()        # 그룹마다 서로 다른 로그(source)가 몇 종류인지 센다
+    latest = grouped["minute_of_day"].max()            # 그룹마다 가장 늦은 시각(분)을 구한다
+    earliest = grouped["minute_of_day"].min()          # 그룹마다 가장 이른 시각(분)을 구한다
+    spans = latest - earliest                          # 그룹마다 처음부터 마지막까지 몇 분인지 구한다
 
----
+    chains = []                                        # 연결된 사건을 담을 빈 리스트
+    not_chained = []                                   # 로그 종류는 여럿이지만 시간 차가 60분을 초과해 연결되지 않은 사용자 정보
+    for user in source_counts.index:                   # 사용자를 하나씩 꺼낸다
+        source_count = source_counts[user]             # 그 사용자의 로그 종류 수
+        span = spans[user]                             # 그 사용자의 처음부터 마지막까지 분
+        has_many_sources = source_count >= MIN_SOURCES  # 로그 종류가 기준 이상인지 구한다
+        is_close = span <= WINDOW_MINUTES              # 시간 간격이 기준 이내인지 구한다
+        if has_many_sources and is_close:              # 로그 종류도 충분하고 60분 이내이면 — 미리 채운 줄
+            # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+            # 4. "서로 다른 로그 " 와 str(source_count) 와 "종류 · " 와 str(span) 과 "분 안" 을 + 로 연결해 reason 에 담는다
+            # 5. chains 에 키 "user" 에 user, 키 "reason" 에 reason 을 담은 딕셔너리를 추가한다
+        if has_many_sources and not is_close:          # 로그 종류는 여럿인데 시간 차가 60분을 초과하면 — 미리 채운 줄
+            not_chained.append({"user": user, "source_count": int(source_count), "span_minutes": int(span)})  # 연결되지 않은 사용자와 두 숫자를 추가한다
+    return chains, not_chained                         # 연결된 사건과 연결되지 않은 사용자를 리턴한다
 
-<!-- learn:answers -->
+
+def find_chains_in_events(events):                     # 이벤트 표를 받는 함수
+    """이벤트 표 하나로 위 함수를 차례로 불러 연결된 사건 리스트를 만든다.
+    실습 4-1에서 점수를 매기기 전에 한 번에 쓴다.
+    """
+    server_failures = pick_server_failures(events)     # 판정 서버 실패 이벤트를 고른다
+    server_part = server_failures                      # 서버 실패 이벤트 전체를 쓴다
+    saas_part = pick_saas(events)                      # SaaS 이벤트를 고른다
+    logins = pick_logins(saas_part)                    # 로그인 이벤트를 고른다
+    ip_user = make_ip_user_map(logins)                 # IP → 사용자 딕셔너리를 만든다
+    web_failures = pick_web_failures(events)           # 웹 실패 이벤트를 고른다
+    web_part = attach_user_to_web(web_failures, ip_user)  # 사용자를 아는 웹 이벤트에 user 열을 붙인다
+    timeline = build_timeline(server_part, saas_part, web_part)  # 세 로그를 합쳐 정렬한다
+    chains, not_chained = find_chains(timeline)        # 연결된 사건을 찾는다
+    return chains                                      # 연결된 사건 리스트를 리턴한다
+```

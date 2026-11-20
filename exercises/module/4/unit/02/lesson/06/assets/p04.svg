@@ -1,43 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 436" role="img">
-<title>실습 2-3 보고서에 채울 칸: 출력과 수, gaeun 이벤트 순서, user 가 빈 28개</title>
-<desc>(가)는 출력과 소스별 수, 빈 값 수, 저장된 수를 씁니다. (나)는 gaeun 이벤트의 순서, (다)는 user 가 빈 28개의 소스와 이유를 씁니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img">
+<title>classify.py: 표를 딕셔너리 리스트로 바꿔 이벤트마다 유형을 정하고 센다</title>
+<desc>load_events 로 읽은 표를 to_dict("records") 로 바꿉니다(5번). 이벤트를 하나씩 꺼내 classify_event(1~4번)로 유형을 정하고 유형마다 1을 더해 {유형: 개수}를 만듭니다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">보고서 실습 2-3 칸 체크리스트</text>
-<rect x="24" y="54" width="170" height="154" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="109" y="125.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">(가)</text>
-<text x="109" y="145.9" font-size="14" text-anchor="middle" fill="#666660">출력 · 수</text>
-<rect x="210" y="69" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<rect x="240" y="62" width="456" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="252" y="82.1" font-size="14" text-anchor="start" fill="#292929">① 출력 전체 (코드 상자에 붙여 넣기)</text>
-<rect x="210" y="105" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<rect x="240" y="98" width="456" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="252" y="118.1" font-size="14" text-anchor="start" fill="#292929">② 소스별 이벤트 수</text>
-<rect x="210" y="141" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<rect x="240" y="134" width="456" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="252" y="154.1" font-size="14" text-anchor="start" fill="#292929">③ user · ip 가 비어 있는 이벤트 수</text>
-<rect x="210" y="177" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<rect x="240" y="170" width="456" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="252" y="190.1" font-size="14" text-anchor="start" fill="#292929">④ 저장된 이벤트 수</text>
-<rect x="24" y="222" width="170" height="82" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="109" y="247.0" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">(나)</text>
-<text x="109" y="267.8" font-size="14" text-anchor="middle" fill="#666660">gaeun 의 순서</text>
-<text x="109" y="288.1" font-size="14" text-anchor="middle" fill="#292929">[핵심 질문]</text>
-<rect x="210" y="237" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<rect x="240" y="230" width="456" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="252" y="250.1" font-size="14" text-anchor="start" fill="#292929">① 여러 소스에 걸친 이벤트의 순서</text>
-<rect x="210" y="273" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<rect x="240" y="266" width="456" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="252" y="286.1" font-size="14" text-anchor="start" fill="#292929">② 로그를 따로 볼 때와 달라지는 점</text>
-<rect x="24" y="318" width="170" height="82" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="109" y="343.1" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">(다)</text>
-<text x="109" y="363.8" font-size="14" text-anchor="middle" fill="#666660">user 가 빈 28개</text>
-<text x="109" y="384.1" font-size="14" text-anchor="middle" fill="#292929">[핵심 질문]</text>
-<rect x="210" y="333" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<rect x="240" y="326" width="456" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="252" y="346.1" font-size="14" text-anchor="start" fill="#292929">① 비어 있는 이벤트의 소스와 이유</text>
-<rect x="210" y="369" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<rect x="240" y="362" width="456" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="252" y="382.1" font-size="14" text-anchor="start" fill="#292929">② 사용자 이름별로 셀 때의 예상</text>
+<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">classify.py: 하나씩 꺼내 유형을 정하고 센다</text>
+<rect x="20" y="58" width="180" height="62" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="110.0" y="84" font-size="14" text-anchor="middle" fill="#292929"><tspan x="110.0" dy="0" font-weight="700">load_events</tspan><tspan x="110.0" dy="19">이벤트 표 · 미리 채움</tspan></text>
+<rect x="250" y="58" width="200" height="62" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="350.0" y="84" font-size="14" text-anchor="middle" fill="#292929"><tspan x="350.0" dy="0" font-weight="700">event_list (5번)</tspan><tspan x="350.0" dy="19">to_dict("records")</tspan></text>
+<rect x="500" y="58" width="200" height="62" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="600.0" y="84" font-size="14" text-anchor="middle" fill="#292929"><tspan x="600.0" dy="0" font-weight="700">for event in</tspan><tspan x="600.0" dy="19">event_list</tspan></text>
+<polyline points="203,89 246,89" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<polyline points="453,89 496,89" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="500" y="176" width="200" height="62" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="600.0" y="202" font-size="14" text-anchor="middle" fill="#292929"><tspan x="600.0" dy="0" font-weight="700">classify_event</tspan><tspan x="600.0" dy="19">1~4번: 규칙 1 · 2</tspan></text>
+<rect x="250" y="176" width="200" height="62" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="350.0" y="202" font-size="14" text-anchor="middle" fill="#292929"><tspan x="350.0" dy="0" font-weight="700">type_event_counts</tspan><tspan x="350.0" dy="19">유형마다 +1 · 미리 채움</tspan></text>
+<rect x="20" y="176" width="180" height="62" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="110.0" y="202" font-size="14" text-anchor="middle" fill="#292929"><tspan x="110.0" dy="0" font-weight="700">{유형: 개수}</tspan><tspan x="110.0" dy="19">딕셔너리</tspan></text>
+<polyline points="600,123 600,172" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<polyline points="497,207 454,207" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<polyline points="247,207 204,207" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<polyline points="420,173 530,126" fill="none" stroke="#666660" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a-p04)"/>
+<text x="440" y="146" font-size="14" text-anchor="end" fill="#666660">다음 이벤트</text>
+<polyline points="110,241 110,282" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="20" y="286" width="680" height="104" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="323" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">challenge2-2_run.py 출력</tspan><tspan x="360.0" dy="20">단계 1: TYPE_ORDER 순서로 유형별 이벤트 수 4줄</tspan><tspan x="360.0" dy="20">단계 2: sum(values) 로 더한 전체 이벤트 수</tspan></text>
 </g>
 </svg>

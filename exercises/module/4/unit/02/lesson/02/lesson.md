@@ -1,330 +1,408 @@
 ---
 id: m4-u02-l02
-title: 실습 2-1 · 웹 서버 로그를 이벤트로 바꾸기
+title: 실습 2-1 · 이벤트 표에서 실패만 골라 세기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
-  path: network/098_day02_am_normalize.md
-  mission_id: GichanSource.m4-1103-am-normalize
+  path: network/100_day02_pm_pandas_basics.md
+  mission_id: GichanSource.m4-1103-pm-pandas-basics
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 실습 2-1 · 웹 서버 로그를 이벤트로 바꾸기
+# 실습 2-1 · 이벤트 표에서 실패만 골라 세기
 
-## 목표: 웹 서버 로그 이벤트
+## 목표: 소스별 실패 횟수
 
 > **오늘 들어온 일**
 >
-> A사 보안 팀장이 보낸 메시지입니다(웹 서버 · 판정 서버 · SaaS 서비스, 세 군데의 로그 이야기입니다):
-> 「로그가 세 군데에서 쌓이는데 적는 방식이 다 다릅니다.
+> A사 보안 팀장이 보낸 메시지입니다(Module 3의 판정 서버가 아니라, 여러 로그를 같은 모양으로 맞춘 이벤트 이야기입니다):
+> 「이벤트 파일이 생겼습니다. 지금은 57개뿐이지만 실제로는 하루에 수만 개가 쌓입니다. 지금까지는 파이썬 리스트와 딕셔너리를 `for` 로 돌려 하나씩 세었는데, 이벤트가 늘수록 코드도 길어집니다.
 >
-> - 시각
-> - 웹 서버: `02/Nov/2026:09:12:03 +0900`
-> - 판정 서버: `2026-11-02T09:40`
-> - SaaS: `2026-11-02 02:14:08`
-> - 성공 · 실패
-> - 웹 서버: `200`
-> - 판정 서버: `true`
-> - SaaS: `success`
->
-> 이대로는 같은 계정이 여러 곳에서 한 일을 시간 순서로 볼 수 없습니다. 먼저 웹 서버 로그 한 줄을 언제 · 누가 · 무엇을 · 결과를 같은 키에 담은 이벤트로 바꿔 주세요(키 이름은 아래 1.1 에서 설명합니다). 시각은 `2026-11-02 09:12:03` 모양으로 맞추고, 원래 줄은 그대로 남겨 주세요.」
-> - **왜 중요한가**: <mark>모양이 다른 로그는 시간순으로 놓을 수도, 같은 기준으로 셀 수도 없습니다.</mark> 같은 키로 맞추면 탐지 규칙을 로그 종류마다 따로 만들지 않고 한 번만 만들면 됩니다. 원래 줄을 남겨 두면 변환이 틀렸을 때 원본과 대조할 수 있습니다.
+> 이 파일을 표로 읽어 몇 개가 들어 있는지 알려 주세요. 성공과 실패가 각각 몇 개인지, 실패는 어느 소스(웹 서버 · 판정 서버 · SaaS)에서 몇 개씩 났는지도 알려 주세요.」
+> - **왜 중요한가**: <mark>실패한 이벤트만 걸러 내고 소스별로 세는 일은 로그를 조사할 때마다 합니다.</mark> 표로 읽으면 이 일이 몇 줄로 끝나고, 이벤트가 57개든 5만 개든 같은 코드를 씁니다.
 
-## 왜 로그 모양을 맞춰야 하는가
+## 왜 판다스로 표를 읽는가
 
-1. SIEM(심)은 여러 곳의 로그를 한곳에 모아 같은 기준으로 찾습니다. <mark>모양이 다르면 같은 기준을 적용할 수 없습니다.</mark>
-2. 그래서 로그를 모은 다음 **같은 키 · 같은 모양으로 맞추는 일**이 필요합니다. 이것을 **정규화(normalization, 노멀라이제이션)** 라고 합니다.
-3. 이번 Unit에서는 로그 3종류를 같은 키로 맞춘 **공통 이벤트**로 바꿉니다. 키는 아래 1.1 에서 설명합니다.
+1. 지금까지 이벤트나 요청은 파이썬 **리스트와 딕셔너리**로 다뤘습니다. <mark>값별로 세려면 `for` 로 하나씩 꺼내 딕셔너리에 더해 가야 했습니다.</mark>
+2. **판다스(pandas)** 는 데이터를 표로 읽고, <mark>짧은 코드로 걸러 내고 셀 수 있게 해 주는 파이썬 라이브러리</mark>입니다.
+   - 판다스의 표를 **데이터프레임(DataFrame)** 이라고 부릅니다.
+   - 가로 한 줄이 **행**, 세로 한 줄이 **열**입니다. 이 수업에서는 <mark>행 하나가 이벤트 1개이고, 열 하나는</mark> `time` 같은 키 하나의 값 전체입니다.
+3. 이번 Unit에서 가르치는 판다스는 로그 분석에 실제로 자주 쓰는 것만 골랐습니다. 실습 2-1에서는 읽기 · 걸러 내기 · 세기를, 실습 2-2에서는 묶기 · 시간 다루기 · 저장을 다룹니다.
 
-## 1.1 세 로그의 모양과 공통 이벤트
+**라이브러리(library)는 다른 사람이 미리 만들어 둔 파이썬 코드입니다. 판다스는 표 형태의 데이터를 다루는 라이브러리입니다.**
 
-세 로그는 모두 **언제 · 누가 · 어디서 · 무엇을 · 성공했나**를 적고 있지만, <mark>적는 방식이 다릅니다.</mark>
+**파이썬과 판다스의 관계**
 
-- **웹 서버 로그**(`access_sample.log`): 웹 서비스를 돌리는 웹 서버(nginx)가 페이지를 열거나 로그인할 때마다 남깁니다.
-- **판정 서버 로그**(`server_log.jsonl`): Module 3에서 만든 권한 판정 서버가 「이 권한을 써도 되나?」라는 물음을 받을 때마다 남깁니다.
-- **SaaS 로그**(`saas_events.csv`): 회사가 빌려 쓰는 SaaS(인터넷으로 쓰는 소프트웨어, 예: 파일 보관 서비스)에서 로그인하거나 파일을 올리고 내려받을 때마다 남깁니다.
+- **파이썬**: 프로그래밍 언어입니다. 변수, 리스트, 딕셔너리, 함수, 반복문 같은 기본 문법을 제공합니다.
+- **판다스**: 먼저 설치(`pip install pandas`)하고, <mark>코드 맨 위에서 `import pandas as pd` 로 불러와야 씁니다</mark>.
+- 판다스 코드는 파이썬 파일 안에서만 실행됩니다.
+  - 그래서 이번 Unit의 코드에는 지금까지 배운 파이썬 문법(함수, `for`, 딕셔너리)과 판다스 문법이 함께 나옵니다.
+  - 판다스 문법은 두 가지 모양입니다. 하나는 `pd.read_json(...)` 처럼 `pd.` 로 시작하는 것이고, 다른 하나는 `events.shape` · `sources.value_counts()` 처럼 표나 열 뒤에 `.이름` 이 붙은 것입니다.
 
-**① 실제 한 줄** — 세 줄이 얼마나 다르게 생겼는지만 봅니다.
+## 1.1 정규화된 이벤트의 모양
 
-| 로그 | 샘플의 실제 한 줄 |
-|---|---|
-| 웹 서버 | `203.0.113.50 - - [02/Nov/2026:09:12:03 +0900] "POST /login HTTP/1.1" 401 312 "-" "python-requests/2.31.0"` |
-| 판정 서버 | `{"time": "2026-11-02T09:40", "user": "seoyeon", "permission": "SALES:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}` |
-| SaaS | `2026-11-02 02:14:08,jiwoo@a-corp.example,login,203.0.113.80,failure` |
+정규화는 서로 다른 모양의 로그를 같은 키로 맞추는 일입니다. 먼저 이번 Unit에서 쓰는 이벤트가 **어느 로그에서 왔는지**부터 봅니다. 로그는 세 종류입니다.
 
-**② 이번 Unit에서 맞출 차이** — 형광펜으로 표시한 칸은 값이 없거나 메일 주소로 적힌 곳입니다. 시각과 성공 · 실패 행은 로그마다 모양이 달라서 고칩니다. <mark>마지막 열이 공통 이벤트에서의 모양입니다.</mark>
-
-| 정보 | 웹 서버 | 판정 서버 | SaaS | 공통 이벤트에서는 |
-|---|---|---|---|---|
-| 시각 | `02/Nov/2026:09:12:03 +0900` | `2026-11-02T09:40` | `2026-11-02 02:14:08` | 모두 `2026-11-02 09:12:03` 모양 |
-| 사용자 | <mark>없음</mark> | `seoyeon` | <mark>메일 주소</mark> `jiwoo@a-corp.example` | 이름만. 원래 없으면 `None` |
-| 접속 주소 | 있음 | <mark>없음</mark> | 있음 | 원래 없으면 `None` |
-| 성공 · 실패 | 상태 코드(`200` · `401` …) | `true` 또는 `false` | `success` 또는 `failure` | 모두 `성공` 또는 `실패` |
-
-- 접속 주소(`ip`)는 <mark>사람이 아니라 **접속한 곳**의 주소입니다.</mark> 한 사무실의 여러 사람이 같은 주소로 보일 수 있고, 한 사람이 집과 회사에서 다른 주소로 접속할 수도 있습니다.
-- 판정 서버 로그에는 주소 대신 접속 위치(`office` · `vpn` · `external`)만 있습니다. 이 수업의 `203.0.113.50` · `198.51.100.x` · `192.0.2.x` 는 문서에서 예시로 쓰라고 정해 둔 주소 범위라서 <mark>실제 장비를 가리키지 않습니다.</mark>
-
-**③ 공통 이벤트의 키** — 로그 한 줄이 답하는 질문은 세 로그가 같습니다. **언제? 어느 로그에서? 누가? 어디서? 무엇을? 성공했나?** 이 여섯 질문의 답을 같은 키에 담고, 원래 줄을 보관하는 키 하나를 더한 것이 **공통 이벤트(키 7개)** 입니다. <mark>이벤트는 「일어난 일 1개」입니다.</mark>
-
-| 키 | 답하는 질문 | 값의 모양 |
-|---|---|---|
-| `time` | 언제? | `2026-11-02 09:12:03` 문자열(한국 시간) |
-| `source` | 어느 로그에서? | `web` · `server` · `saas` |
-| `user` | 누가? | 사용자 이름. 원래 없으면 `None` |
-| `ip` | 어디서? | 주소 문자열. 원래 없으면 `None` |
-| `action` | 무엇을? | `POST /login` · `SALES:CHANGE` · `file.download` |
-| `result` | 성공했나? | `성공` 또는 `실패` |
-| `raw` | (질문이 아니라 보관용) | 원래 줄(또는 원래 행) 그대로 |
-
-**④ 바뀐 결과** — ①의 서로 다르던 세 줄이 같은 일곱 키가 됩니다. 이 표는 키가 세로입니다.
-
-| 키 | 웹 서버 한 줄 | 판정 서버 한 줄 | SaaS 한 줄 |
+| `source` | 무엇이 남기나 | 한 줄이 생기는 때 | 예 |
 |---|---|---|---|
-| `time` | `2026-11-02 09:12:03` | `2026-11-02 09:40:00` | `2026-11-02 02:14:08` |
-| `source` | `web` | `server` | `saas` |
-| `user` | `None` | `seoyeon` | `jiwoo` |
-| `ip` | `203.0.113.50` | `None` | `203.0.113.80` |
-| `action` | `POST /login` | `SALES:QUERY` | `login` |
-| `result` | `실패` | `성공` | `실패` |
-| `raw` | ①의 원래 줄 | ①의 원래 줄 | ①의 원래 행(딕셔너리) |
+| `web` | 회사 게시판 같은 웹 서비스를 돌리는 웹 서버(nginx) | 누가 페이지를 열거나 로그인할 때 | 203.0.113.50 이 `POST /login` 을 요청함 |
+| `server` | Module 3에서 만든 권한 판정 서버 | 누가 어떤 권한을 써도 되는지 물을 때 | seoyeon 이 `SALES:CHANGE` 를 요청해 거부됨 |
+| `saas` | 회사가 빌려 쓰는 SaaS(인터넷으로 쓰는 소프트웨어, 예: 파일 보관 서비스) | 로그인하거나 파일을 올리고 내려받을 때 | seoyeon 이 `file.download` 를 함 |
 
-- <mark>원래 로그에 없는 값은 임의로 만들어 넣지 않고 `None` 으로 둡니다.</mark> 없는 값을 지어내면 분석 결과가 틀려집니다.
-- <mark>`raw` 는 바꾸지 않은 원래 로그입니다.</mark> 정규화 과정에서 사라지는 정보를 나중에 찾아볼 수 있게 남깁니다.
+이벤트 하나는 위 세 로그 중 한 곳의 로그 한 줄을 같은 형식으로 맞춘 것입니다. <mark>이번 Unit에서 쓰는 파일의 키는 여섯 개입니다.</mark> Unit 1의 공통 이벤트에는 `raw` 키가 하나 더 있었는데, 이 샘플 파일은 길어서 `raw` 를 뺐습니다.
 
-## 1.2 시각 문자열 바꾸기
-
-**문법 상자 — 시각 값을 원하는 모양의 문자열로**
-
-**<mark>`.strftime(형식)`</mark> 은 시각 값을 원하는 모양의 문자열로 만듭니다. 형식에 적은 모양대로 시각이 문자열이 됩니다**
-
-로그마다 시각 모양이 달라서, <mark>먼저 시각 값으로 바꾼 뒤 공통 모양의 문자열로 다시 만듭니다.</mark> 문자열을 시각 값으로 바꾸는 `strptime` 은 Module 3에서 쓴 방법 그대로라서 여기서는 설명하지 않습니다.
-
-```python
-from datetime import datetime                                  # 날짜와 시각을 다루는 datetime 클래스를 불러온다
-
-time_text = "02/Nov/2026:09:12:03 +0900"                       # nginx 시각 문자열
-parsed = datetime.strptime(time_text, "%d/%b/%Y:%H:%M:%S %z")  # 문자열을 시각 값으로 바꾼다(모양을 형식으로 알려 준다)
-print(parsed)                                                  # 시각 값을 출력한다
-
-time_out = parsed.strftime("%Y-%m-%d %H:%M:%S")                # 시각 값을 공통 모양의 문자열로 바꾼다
-print(time_out)                                                # 문자열을 출력한다
-```
-
-실행 결과:
-
-```
-2026-11-02 09:12:03+09:00
-2026-11-02 09:12:03
-```
-
-- 형식 코드는 `%Y`(년) · `%m`(월) 처럼 `%` 로 시작하는 기호로, <mark>시각 문자열의 어느 부분이 일 · 달 · 연도인지 알려 줍니다</mark>.
-  - `%d` 는 일, `%b` 는 영어 달 이름(Nov), `%Y` 는 연도 4자리입니다.
-  - `%H` `%M` `%S` 는 시 · 분 · 초이고, `%z` 는 시간대(+0900)입니다.
-
-nginx 시각 문자열을 부분마다 형식 코드와 하나씩 맞춰 봅니다.
-
-| 문자열 부분 | 형식 코드 | 뜻 |
+| 키 | 뜻 | 예 |
 |---|---|---|
-| `02` | `%d` | 일 |
-| `Nov` | `%b` | 영어 달 이름 |
-| `2026` | `%Y` | 연도 4자리 |
-| `09` | `%H` | 시 |
-| `12` | `%M` | 분 |
-| `03` | `%S` | 초 |
-| `+0900` | `%z` | 시간대 |
+| `time` | 일어난 시각(한국 시간) | `2026-11-02 09:12:03` |
+| `source` | 어느 로그에서 왔는지 | `web`(웹 서버) · `server`(판정 서버) · `saas`(SaaS 서비스) |
+| `user` | 누가 했는지 | `seoyeon`. 웹 서버 로그에는 사용자 이름이 없어서 `null` |
+| `ip` | 어느 주소에서 왔는지 | `203.0.113.50`. 판정 서버 로그에는 주소가 없어서 `null` |
+| `action` | 무엇을 했는지 | `POST /login` · `SALES:CHANGE` · `file.download` |
+| `result` | 성공했는지 | `성공` 또는 `실패` |
 
-- 문자열 `02/Nov/2026:09:12:03 +0900` 에서 부분 사이의 `/` · `:` · 공백은 형식에도 똑같이 적습니다. <mark>그래서 형식은 `%d/%b/%Y:%H:%M:%S %z` 입니다.</mark>
-- <mark>`.strftime(형식)` 은 반대로 시각 값을 같은 형식 코드로 문자열로 만듭니다.</mark> 위에서는 `2026-11-02 09:12:03` 모양입니다.
-- 이번 Unit에서 새로 나오는 것은 형식 코드 `%b` · `%z` 와, <mark>시각 값을 문자열로 만드는 `strftime` 입니다.</mark>
+**`ip` · `user` · `result` 는 로그마다 이렇게 정해집니다.**
 
-**문법 상자 — 시간대 정보 지우기**
+| 키 | `web` | `server` | `saas` |
+|---|---|---|---|
+| `ip` | 웹 서버에 요청을 보낸 쪽의 주소 | 없음(`null`). 원래 로그에 주소가 없고 접속 위치만 있음 | 서비스에 로그인한 사람이 접속한 곳의 주소 |
+| `user` | 없음(`null`). 웹 서버는 로그인한 계정을 모름 | 요청한 계정 | 메일 주소의 앞부분(`seoyeon@…` → `seoyeon`) |
+| `result` | 상태 코드가 400 이상이면 `실패` | `allowed` 가 거짓이면 `실패` | `outcome` 이 `failure` 이면 `실패` |
 
-**시각 값에 붙은 시간대(`+0900`)는 <mark>`.replace(tzinfo=None)`</mark> 으로 지울 수 있고, 지우면 한국 시각만 남은 시각 값이 됩니다**
+- 주소(`ip`)는 사람이 아니라 **접속한 곳**입니다. 요청을 보낸 곳은 직원의 PC일 수도, 집이나 카페일 수도, 공격하는 쪽일 수도 있습니다.
+  - 한 사무실의 여러 사람이 같은 주소로 보일 수 있습니다.
+  - 한 사람이 집과 회사에서 다른 주소로 접속할 수도 있습니다.
+  - 이 수업의 `203.0.113.50` · `198.51.100.x` · `192.0.2.x` 는 문서에서 예시로 쓰라고 정해 둔 주소 범위라서 실제 장비를 가리키지 않습니다.
+- 원래 로그에 없는 값(**결측값**, missing value)은 <mark>임의로 채우지 않고 `null` 로 둡니다</mark>. 없는 값을 임의로 채우면 분석 결과가 틀려지기 때문입니다.
+  - 이 값은 JSON 파일에서는 `null`, 파이썬과 판다스 표에서는 `None` 또는 `NaN` 으로 보이며, 모두 「값이 없다」는 같은 뜻입니다.
+- 판다스로 읽으면 이 파일이 아래 같은 표가 됩니다. 맨 왼쪽 숫자는 판다스가 붙이는 **행 번호**(인덱스, index)입니다.
+
+| 행 번호 | time | source | user | ip | action | result |
+|---|---|---|---|---|---|---|
+| 0 | 2026-11-02 02:14:08 | saas | jiwoo | 203.0.113.80 | login | 실패 |
+| 1 | 2026-11-02 09:01:05 | web | None | 198.51.100.21 | GET / | 성공 |
+| 2 | 2026-11-02 09:01:06 | web | None | 198.51.100.21 | GET /static/app.css | 성공 |
+
+## 1.2 판다스로 표 읽기 · 세기
+
+**판다스 문법 상자 — 파일을 표로 읽기**
+
+**<mark>`pd.read_json(파일 이름)`</mark> 은 JSON 파일을 열어 「표」(데이터프레임, DataFrame)로 만듭니다**
+
+표는 가로 한 줄(행)과 세로 한 줄(열)로 이루어집니다. 이 수업의 이벤트 표에서는 **행 하나가 이벤트 1개**이고, **열 하나가 같은 키**(`time` · `source` …)입니다. 지금까지는 `for` 로 이벤트를 하나씩 꺼내 확인했습니다. 파일을 표로 읽으면 걸러 내기와 세기를 코드 한 줄로 할 수 있습니다(아래에서 차례로 배웁니다).
 
 ```python
-from datetime import datetime                                  # 날짜와 시각을 다루는 datetime 클래스를 불러온다
-
-time_text = "02/Nov/2026:09:12:03 +0900"                       # nginx 시각 문자열
-parsed = datetime.strptime(time_text, "%d/%b/%Y:%H:%M:%S %z")  # 문자열을 시각 값으로 바꾼다
-print(parsed.tzinfo)                                           # 시간대 정보를 출력한다
-
-local_time = parsed.replace(tzinfo=None)                       # 시간대 정보를 지우고 한국 시각만 남긴다
-print(local_time)                                              # 시간대 없는 시각을 출력한다
+import pandas as pd                              # 판다스를 pd 라는 짧은 이름으로 불러온다
+events = pd.read_json("normalized_events.json")  # 파일 속 이벤트 57개를 표 한 개(events)로 읽는다 — 행 하나가 이벤트 하나
+row_count = len(events)                          # 표의 행이 몇 개인지 센다 — 리스트의 길이를 세던 len 과 같다
+print(row_count)                                 # 57 이 나온다 — 이벤트 57개
 ```
 
 실행 결과:
 
 ```
-UTC+09:00
-2026-11-02 09:12:03
+57
 ```
 
-- 시각 값이 `+0900`(한국 시간대)을 갖고 있으면 **시간대 정보가 없는 시각 값과 직접 비교할 때 오류가 납니다.**
-- 세 로그의 시각은 모두 한국 시간이므로, 이번 Unit에서는 <mark>시간대 정보를 지우고 한국 시각만 남겨 세 로그의 시각 값을 같은 종류로 맞춥니다</mark>.
+- 읽는 법: <mark>`57` 은 표의 행 수</mark>이고, 행 하나가 이벤트 하나이므로 이벤트 57개라는 뜻입니다.
+- `import pandas as pd` 는 판다스를 불러오고, 이름을 `pd` 로 줄여 쓰겠다는 뜻입니다. `read_json` 처럼 표를 만드는 판다스 함수는 앞에 `pd.` 를 붙여 부릅니다.
+- `pd.read_json(파일 이름)` 은 JSON 파일의 이벤트 57개를 읽어 표 하나로 만들어 리턴합니다.
+
+**알아 둘 것 — 표의 크기 보기**
+
+`.shape` 는 표가 몇 행 몇 열인지 알려 줍니다. 실습 2-1 의 `describe_events` 에 미리 채워져 있어서 직접 쓰지 않고 읽기만 합니다. 자세한 쓰임은 다음에 차차 배웁니다.
+
+```python
+import pandas as pd                              # 판다스를 pd 라는 짧은 이름으로 불러온다
+events = pd.read_json("normalized_events.json")  # 이벤트 파일을 표로 읽는다
+
+shape = events.shape                             # 표의 크기를 (행 수, 열 수) 로 구한다
+print(shape)                                     # (57, 6) 이 나온다 — 이벤트 57개(행), 열 6개
+```
+
+실행 결과:
+
+```
+(57, 6)
+```
+
+- 읽는 법: `(57, 6)` 은 <mark>57행 6열</mark>, 이벤트 57개에 열 6개라는 뜻입니다.
+
+**판다스 문법 상자 — 열 하나 꺼내기**
+
+**<mark>`표["열 이름"]`</mark> 은 표에서 열 하나를 꺼냅니다. 꺼낸 열을 시리즈(Series)라고 합니다**
+
+`events["source"]` 로 꺼낸 시리즈입니다. 값마다 그 값이 있던 행의 번호(인덱스)가 왼쪽에 함께 나옵니다. 아래는 처음 4개와 마지막 1개입니다.
+
+| 행 번호 | `events["source"]` |
+|---|---|
+| 0 | saas |
+| 1 | web |
+| 2 | web |
+| 3 | web |
+| … | … |
+| 56 | server |
+
+```python
+import pandas as pd                              # 판다스를 pd 라는 짧은 이름으로 불러온다
+events = pd.read_json("normalized_events.json")  # 이벤트 파일을 표로 읽는다
+
+sources = events["source"]                       # source 열 하나를 꺼낸다 — web · server · saas 값이 57개 들어 있다
+source_count = len(sources)                      # 꺼낸 열에 값이 몇 개 있는지 센다
+print(source_count)                              # 57 이 나온다 — 행마다 값이 하나씩이라 행 수와 같다
+```
+
+실행 결과:
+
+```
+57
+```
+
+- 읽는 법: <mark>`57` 은 꺼낸 열에 든 값의 개수입니다.</mark> 행이 57개이므로 값도 57개입니다.
+- `events["source"]` 는 표에서 `source` 열만 꺼냅니다(판다스에서는 열 하나를 Series, 시리즈라고 부릅니다).
+- 열 이름은 파일에 적힌 키와 똑같이 써야 합니다. **없는 열 이름을 쓰면 `KeyError` 오류가 납니다.**
+
+**알아 둘 것 — 열의 앞 몇 개만 보기**
+
+`열.head(3)` 은 열의 앞에서 3개만 남깁니다. 실습 2-1 의 `describe_events` 에 미리 채워져 있어서 직접 쓰지 않고 읽기만 합니다. 자세한 쓰임은 다음에 차차 배웁니다.
+
+```python
+import pandas as pd                              # 판다스를 pd 라는 짧은 이름으로 불러온다
+events = pd.read_json("normalized_events.json")  # 이벤트 파일을 표로 읽는다
+
+times = events["time"]                           # 표에서 time 열만 꺼낸다 — 이벤트 57개의 시각이 한 줄로 나열된 열
+first_times = times.head(3)                      # 그 열의 처음 3개(0 ~ 2번 행)만 남긴다
+for time_text in first_times:                    # 처음 3개를 하나씩 꺼낸다
+    print(time_text)                             # 시각 하나를 한 줄에 출력한다(모두 3줄)
+```
+
+실행 결과:
+
+```
+2026-11-02 02:14:08
+2026-11-02 09:01:05
+2026-11-02 09:01:06
+```
+
+- 읽는 법: 시각 57개 중 앞의 3개입니다.
+
+**판다스 문법 상자 — 값별로 개수 세기**
+
+**<mark>`.value_counts()`</mark> 는 열에서 같은 값이 몇 번 나왔는지 세어 많은 순서로 알려 줍니다**
+
+`events["source"]` 열에 `.value_counts()` 를 하면 같은 값끼리 모아 개수를 세고, 많은 값부터 보여 줍니다.
+
+| 값 | 개수 |
+|---|---|
+| web | 28 |
+| server | 15 |
+| saas | 14 |
+
+```python
+import pandas as pd                              # 판다스를 pd 라는 짧은 이름으로 불러온다
+events = pd.read_json("normalized_events.json")  # 이벤트 파일을 표로 읽는다
+
+sources = events["source"]                       # source 열 하나를 꺼낸다 — web · server · saas 값이 57개 들어 있다
+source_event_counts = sources.value_counts()     # 같은 값이 몇 번 나왔는지 센다 — 많은 값부터 정렬되어 나온다
+print(source_event_counts)                       # 값(web · server · saas)과 그 개수가 줄마다 나온다
+```
+
+실행 결과:
+
+```
+source
+web       28
+server    15
+saas      14
+Name: count, dtype: int64
+```
+
+- 읽는 법: 첫 줄 `source` 는 센 열의 이름이고, 아래 줄은 <mark>왼쪽이 값, 오른쪽이 나온 횟수</mark>입니다. 28 + 15 + 14 = 57 이라 이벤트 전체 개수와 같습니다.
+- `value_counts()` 는 같은 값이 몇 번 나왔는지 세어 **많은 순서**로 리턴합니다. 맨 아래 `Name: count, dtype: int64` 줄은 읽지 않아도 됩니다.
+- Module 3에서 딕셔너리로 값별 횟수를 세던 `counts[value] = counts.get(value, 0) + 1` 과 같은 일을 한 줄로 합니다.
+
+**알아 둘 것 — 열 꺼내기와 값별 세기는 실무에서 한 줄로 씁니다**
+
+앞의 두 줄(`sources = events["source"]` → `source_event_counts = sources.value_counts()`)은 실무에서 아래 한 줄로 자주 씁니다. 같은 일입니다. 직접 쓰지 않고 읽기만 합니다. 자세한 쓰임은 다음에 차차 배웁니다.
+
+```python
+import pandas as pd                                    # 판다스를 pd 라는 짧은 이름으로 불러온다
+events = pd.read_json("normalized_events.json")        # 이벤트 파일을 표로 읽는다
+
+source_event_counts = events["source"].value_counts()  # 열 꺼내기와 값별 세기를 한 줄로 쓴 모양 — 위 두 줄과 같은 결과
+print(source_event_counts)                             # 값(web · server · saas)과 그 개수가 줄마다 나온다
+```
+
+실행 결과:
+
+```
+source
+web       28
+server    15
+saas      14
+Name: count, dtype: int64
+```
+
+**알아 둘 것 — 조건에 맞는 행만 걸러 내기**
+
+`표[조건]` 은 <mark>조건이 `True` 인 행만 남긴 새 표를 만듭니다</mark>. 이 일을 **필터링**(filtering)이라고 합니다. 여기서 조건은 행마다 `True` 또는 `False` 가 하나씩 있는 열입니다(아래 코드의 `is_fail`). 실습 2-1 의 `pick_failed` 에 미리 채워져 있어서 직접 쓰지 않고 읽기만 합니다. 자세한 쓰임은 다음에 차차 배웁니다.
+
+```python
+import pandas as pd                              # 판다스를 pd 라는 짧은 이름으로 불러온다
+events = pd.read_json("normalized_events.json")  # 이벤트 파일을 표로 읽는다
+
+results = events["result"]                       # result 열만 꺼낸다 — 성공 · 실패가 57개 나열된 열
+is_fail = results == "실패"                      # result 열의 각 값이 "실패"와 같은지 비교해 행마다 True 또는 False 를 하나씩 만든다(57개)
+failed = events[is_fail]                         # True 인 행만 남겨 새 표(failed)를 만든다
+failed_shape = failed.shape                      # 새 표의 크기를 꺼낸다
+print(failed_shape)                              # (23, 6) — 실패한 이벤트 23개, 열은 그대로 6개
+```
+
+실행 결과:
+
+```
+(23, 6)
+```
+
+- 읽는 법: <mark>실패한 이벤트 23개만 남았다는 뜻</mark>입니다.
 
 **한 장 정리**
 
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
-| `read_time_text` | 요청 앞 조각 | 대괄호 안의 시각 문자열(미리 채움) |
-| `convert_time` | nginx 시각 문자열 | 공통 모양 시각 문자열 |
-| `convert_result` | 상태 코드(정수) | `"성공"` 또는 `"실패"` |
-| `normalize_web` | 로그 한 줄 | 공통 이벤트 딕셔너리. 깨진 줄이면 `None`(미리 채움) |
+| `load_events` | 파일 경로 | 이벤트 표 |
+| `describe_events` | 이벤트 표 | 표 크기 `(행 수, 열 수)` 와 `time` 열의 처음 3개 |
+| `pick_failed` | 이벤트 표 | `result` 가 `실패` 인 행만 담은 표 |
+| `count_values` | 표와 열 이름 | 그 열의 값별 개수 |
 
-- **직접 쓰는 곳은 두 함수**(번호 1 ~ 6)입니다.
-  - `convert_time`(1 ~ 3번): 문자열을 시각 값으로 바꾸고, 시간대를 떼고, 공통 모양 문자열로 만듭니다.
-  - `convert_result`(4 ~ 6번): 상태 코드 400 이상이면 `"실패"`, 아니면 `"성공"` 입니다.
-- **미리 채운 것**: Unit 1에서 만든 함수를 불러 조각을 꺼내 공통 이벤트로 묶는 `normalize_web` 과 `read_time_text` 입니다.
+- **직접 쓰는 곳은 세 함수**(번호 1 ~ 4)입니다. 아직 배우지 않은 문법(`.shape` · `.head(3)` · 조건으로 걸러 내기)이 나오는 줄은 미리 채웠습니다. `import` 와 실행 파일도 미리 채웠습니다.
+  - `load_events`(1번): 파일을 표로 읽습니다.
+  - `describe_events`(2번): 시각 열을 꺼냅니다. 크기(`.shape`)와 앞 3개(`.head(3)`)는 미리 채웠습니다.
+  - `count_values`(3 · 4번): 열 하나의 값별 개수를 셉니다.
+  - `pick_failed`(미리 채움): 실패인 행만 걸러 냅니다. 읽어 보기만 합니다.
 
-## 실습 2-1 · 웹 로그 한 줄을 이벤트로
+## 실습 2-1 · 실패 이벤트를 소스별로 세기
 
 **이런 상황이 있습니다**
 
-- **지금은**: 웹 서버 로그의 시각(`02/Nov/2026:09:12:03 +0900`)은 다른 로그와 비교하기 어렵고, 성공 · 실패는 상태 코드라서 따로 판단해야 합니다.
-- **그래서 만드는 것**: `normalize_web.py` 입니다.
-  - 시각을 `2026-11-02 09:12:03` 모양으로 바꿉니다.
-  - 상태 코드를 `성공` · `실패` 로 바꿉니다.
-  - 원래 줄은 `raw` 에 남깁니다.
-- **실행하면**: 단계 1: 이벤트 수와 첫 이벤트, 단계 2: 처음 나오는 실패 이벤트, 단계 3: 성공 · 실패별 이벤트 수가 나옵니다.
-- **현업에서는**: 로그를 모으는 도구에는 로그 종류마다 이 변환을 하는 부분(파서)이 있습니다. <mark>변환이 틀리면 그 로그 전체가 잘못 분석되므로 `raw` 와 대조합니다.</mark>
+- **지금은**: 이벤트 파일에 57개가 있지만, 실패가 몇 개이고 어느 소스에서 났는지는 사람이 한 줄씩 읽어야 압니다.
+- **그래서 만드는 것**: `events_basic.py` 입니다.
+  - 파일을 표로 읽습니다.
+  - 실패한 이벤트만 골라냅니다.
+  - 열 하나의 값별 개수를 셉니다.
+- **실행하면**: 단계 1: 표 크기(행 수, 열 수)와 처음 3개 시각, 단계 2: 성공 · 실패 개수, 단계 3: 실패한 이벤트의 소스별 개수, 단계 4: 전체 이벤트의 소스별 개수가 나옵니다.
+- **현업에서는**: 관제 화면의 「실패 이벤트 수 · 소스별 분포」 그래프가 이 계산입니다. 어느 소스부터 조사할지 정할 때 봅니다.
 
 **할 일**
 
-1. **`normalize_web.py` · `exercise2-1_run.py`** 두 파일을 만들고, `normalize_web.py` 의 `convert_time` · `convert_result` 에서 직접 쓰는 곳을 씁니다.
-2. 실행해서 <mark>정규화한 이벤트 수와 읽기 실패한 줄</mark>(단계 1), <mark>처음 나오는 실패 이벤트</mark>(단계 2), <mark>성공 · 실패별 개수</mark>(단계 3)를 읽습니다.
+1. **`events_basic.py` · `exercise2-1_run.py` 두 파일**을 만들고, `events_basic.py` 의 `load_events` · `describe_events` · `count_values` 에서 직접 쓰는 곳을 씁니다.
+2. 실행해서 <mark>표 크기(행 수, 열 수)와 처음 3개 시각</mark>(단계 1), <mark>성공 · 실패 개수</mark>(단계 2), <mark>실패한 이벤트의 소스별 개수</mark>(단계 3), <mark>전체 이벤트의 소스별 개수</mark>(단계 4)를 읽습니다.
 
-**`normalize_web.py`**
+**`events_basic.py`**
 
 ```python
-from datetime import datetime                                                # 날짜와 시각을 다루는 datetime 클래스를 불러온다
-from log_parse import split_request, read_request, read_status, read_client  # Unit 1에서 만든 로그 읽기 함수를 불러온다
+import pandas as pd                     # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-NGINX_TIME_FORMAT = "%d/%b/%Y:%H:%M:%S %z"                                   # nginx 시각의 모양(예: 02/Nov/2026:09:12:03 +0900)
-COMMON_TIME_FORMAT = "%Y-%m-%d %H:%M:%S"                                     # 공통 시각의 모양(예: 2026-11-02 09:12:03)
+EVENTS_PATH = "normalized_events.json"  # 읽을 정규화 이벤트 파일 이름
 
 
-def read_time_text(prefix):                                                  # 요청 앞 조각을 받는 함수
-    """요청 앞 조각에서 대괄호 안의 시각 문자열을 꺼낸다.
-    웹 서버 로그의 시각을 공통 모양으로 바꾸기 전에 쓴다.
-    """
-    parts = prefix.split()                                                   # 공백 기준으로 나눈다
-    bracket_text = parts[3] + " " + parts[4]                                 # '[02/Nov/2026:09:12:03' 과 '+0900]' 를 이어 붙인다
-    time_text = bracket_text.strip("[]")                                     # 양쪽 끝의 대괄호를 지운다
-    return time_text                                                         # 대괄호 없는 시각 문자열을 리턴한다
-
-
-def convert_time(time_text):                                                 # nginx 시각 문자열을 받는 함수
-    """nginx 시각을 공통 모양의 문자열로 바꾼다.
-    예: 02/Nov/2026:09:12:03 +0900 → 2026-11-02 09:12:03.
-    웹 서버 로그를 공통 이벤트로 만들 때 쓴다.
+def load_events(path):                  # 파일 경로를 받는 함수
+    """이벤트 파일을 표로 읽는다.
+    분석을 시작할 때 맨 먼저 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. datetime.strptime(time_text, NGINX_TIME_FORMAT) 의 결과를 parsed 에 담는다
-    # 2. parsed.replace(tzinfo=None) 의 결과를 local_time 에 담는다 (+0900 정보를 떼고 한국 시각만 남긴다)
-    # 3. local_time.strftime(COMMON_TIME_FORMAT) 의 결과를 time_out 에 담는다
-    return time_out                                                          # 공통 모양의 시각 문자열을 리턴한다
+    # 1. pd.read_json 으로 path 의 파일을 읽어 events 에 담는다
+    return events                       # 표를 리턴한다
 
 
-def convert_result(status):                                                  # 상태 코드(정수)를 받는 함수
-    """상태 코드가 400 이상이면 「실패」, 아니면 「성공」을 리턴한다.
-    웹 서버 로그의 결과를 공통 이벤트의 result 로 바꿀 때 쓴다.
+def describe_events(events):            # 표를 받는 함수
+    """표의 크기와 앞 시각 3개를 구한다.
+    새 파일을 받았을 때 내용이 제대로 들어 있는지 확인하는 데 쓴다.
+    """
+    shape = events.shape                # 표의 크기 (행 수, 열 수) — 미리 채운 줄
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 2. events 의 "time" 열을 꺼내 times 에 담는다 (events["time"])
+    first_times = times.head(3)         # 그 열의 앞 3개만 남긴다 — 미리 채운 줄
+    return shape, first_times           # 크기와 처음 3개를 리턴한다
+
+
+def pick_failed(events):                # 표를 받는 함수
+    """실패한 이벤트만 골라 새 표로 만든다.
+    무엇이 잘못됐는지 조사할 때 성공한 이벤트는 빼고 보는 데 쓴다.
+    """
+    results = events["result"]          # result 열 하나를 꺼낸다
+    is_fail = results == "실패"         # 행마다 실패면 True, 아니면 False
+    failed = events[is_fail]            # True 인 행만 남긴다
+    return failed                       # 실패한 행만 담은 표를 리턴한다
+
+
+def count_values(table, column):        # 표와 열 이름을 받는 함수
+    """한 열의 값별 개수를 센다.
+    소스별 · 결과별 · 사용자별로 몇 개인지 알고 싶을 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 4. status 가 400 이상이면 (if)
-    # 5.   "실패" 를 리턴한다
-    # 6. 그 밖에는 "성공" 을 리턴한다
-
-
-def normalize_web(line):                                                     # 로그 한 줄을 받는 함수
-    """웹 서버 로그 한 줄을 공통 이벤트 딕셔너리로 바꾸고, 깨진 줄이면 None 을 리턴한다.
-    웹 서버 로그를 다른 로그와 같은 모양으로 맞출 때 쓴다.
-    """
-    if line.count('"') < 2:                                                  # 큰따옴표가 두 개보다 적은 깨진 줄이면
-        return None                                                          # 읽지 않고 None 을 리턴한다
-    prefix, request_text, suffix = split_request(line)                       # 세 조각으로 나눈다
-    method, path = read_request(request_text)                                # 요청 조각에서 방법과 경로를 꺼낸다
-    status = read_status(suffix)                                             # 뒤 조각에서 상태 코드를 꺼낸다
-    client_ip = read_client(prefix)                                          # 앞 조각에서 접속자 주소를 꺼낸다
-    time_text = read_time_text(prefix)                                       # 앞 조각에서 시각 문자열을 꺼낸다
-    time_out = convert_time(time_text)                                       # 공통 모양의 시각으로 바꾼다
-    result = convert_result(status)                                          # 상태 코드를 성공 · 실패로 바꾼다
-    action = method + " " + path                                             # 방법과 경로를 하나의 행동으로 합친다
-    raw_text = line.strip()                                                  # 원래 줄(양끝 공백과 줄바꿈 뺀 것)을 보관한다
-    event = {                                                                # 공통 이벤트의 키로 묶는다
-        "time": time_out,                                                    # 일어난 시각
-        "source": "web",                                                     # 어느 로그에서 왔는지
-        "user": None,                                                        # 웹 서버 로그에는 사용자가 없다
-        "ip": client_ip,                                                     # 접속자 주소
-        "action": action,                                                    # 무엇을 했는지
-        "result": result,                                                    # 성공인지 실패인지
-        "raw": raw_text,                                                     # 원래 로그 줄
-    }
-    return event                                                             # 공통 이벤트를 리턴한다
+    # 3. table 의 column 열을 꺼내 values 에 담는다
+    # 4. values 에서 값별 개수를 value_counts() 로 세어 value_event_counts 에 담는다
+    return value_event_counts           # 값별 개수를 리턴한다
 ```
 
-- 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 6번은 함수 안이라 앞에 공백 4개이고, 그중 5번의 `return` 만 `if` 안쪽이라 공백 8개입니다.
-- 번호 주석이 연달아 붙어 있어도(예: 1 · 2 · 3번), <mark>주석 사이마다 줄을 끼워 넣어 각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark>
-- **채우기 전에 실행하면 `NameError: name 'time_out' is not defined` 오류가 납니다.** 1 ~ 3번을 아직 안 썼기 때문입니다.
-- `convert_result` 는 6번까지 쓰면 끝나는 함수라서 아래에 미리 채운 `return` 이 없습니다. <mark>5번과 6번의 `return` 을 직접 씁니다.</mark>
+- 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 4번은 모두 함수 안이라 앞에 공백 4개입니다.
+- 번호 주석이 연달아 붙어 있어도(예: 3 · 4번), <mark>주석 3번 아래에 코드 한 줄, 주석 4번 아래에 코드 한 줄을 씁니다</mark>.
+- **채우기 전에 실행하면 `NameError: name 'events' is not defined` 오류가 납니다.** `events` 를 만드는 1번 줄이 비어 있기 때문입니다. 다른 번호가 비어 있어도 비슷한 오류가 납니다.
+- 2번의 `events["time"]` 과 3번의 `table[column]` 은 같은 열 꺼내기이고, 3번은 열 이름을 `column` 이라는 변수로 받는 것이 다릅니다.
 
-**`exercise2-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 샘플 로그를 한 줄씩 공통 이벤트로 바꿔 세 단계로 출력합니다. `len(리스트)` 는 리스트의 개수입니다.
+**`exercise2-1_run.py`** — <mark>그대로 붙여 넣습니다.</mark> 학생이 쓰는 줄은 없습니다. 이벤트 파일을 읽어 **네 단계**로 출력합니다. `len(표)` 는 표의 행 수입니다.
 
 ```python
-from normalize_web import normalize_web                                                # 방금 만든 웹 서버 로그 정규화 함수를 불러온다
+from events_basic import load_events, describe_events, pick_failed, count_values, EVENTS_PATH  # 방금 만든 함수를 불러온다
 
-events = []                                                                            # 정규화한 이벤트를 모을 리스트
-fail_count = 0                                                                         # 읽기 실패한 줄 수를 0 으로 시작한다
-with open("access_sample.log", encoding="utf-8") as log_file:                          # 샘플 로그 파일을 연다
-    for line in log_file:                                                              # 파일에서 한 줄씩 꺼낸다
-        event = normalize_web(line)                                                    # 한 줄을 공통 이벤트로 바꾼다
-        if event is None:                                                              # 깨진 줄이라 읽지 못했으면
-            fail_count = fail_count + 1                                                # 읽기 실패한 줄 수를 1 늘린다
-        else:                                                                          # 바꿨으면
-            events.append(event)                                                       # 이벤트 리스트에 추가한다
+events = load_events(EVENTS_PATH)                                                              # 이벤트 파일을 표로 읽는다
+shape, first_times = describe_events(events)                                                   # 표 크기와 time 열의 처음 3개를 구한다
+print("--- 단계 1: 표 크기(행 수, 열 수)와 처음 3개 시각")                                     # 단계 1 시작을 알리는 줄
+print(shape)                                                                                   # (행 수, 열 수)를 출력한다
+for time_text in first_times:                                                                  # 처음 3개 시각을 하나씩 꺼낸다
+    print(time_text)                                                                           # 시각 하나를 한 줄에 출력한다(모두 3줄)
 
-event_count = len(events)                                                              # 정규화한 이벤트 수를 센다
-print("--- 단계 1: 정규화한 이벤트", event_count, "개 · 읽기 실패", fail_count, "줄")  # 단계 1 시작을 알리는 줄
-first_event = events[0]                                                                # 첫 이벤트를 꺼낸다
-print(first_event)                                                                     # 첫 이벤트를 출력한다
+result_event_counts = count_values(events, "result")                                           # result 열의 값별 개수를 센다
+print("--- 단계 2: 성공 · 실패별 개수")                                                        # 단계 2 시작을 알리는 줄
+print(result_event_counts)                                                                     # 성공 · 실패 개수를 출력한다
 
-first_failed = None                                                                    # 처음 나오는 실패 이벤트를 담을 변수(아직 없음)
-for event in events:                                                                   # 이벤트를 하나씩 꺼낸다
-    if event["result"] == "실패" and first_failed is None:                             # 실패 이벤트이고 아직 담은 것이 없으면
-        first_failed = event                                                           # 이 이벤트를 담는다
-print("--- 단계 2: 처음 나오는 실패 이벤트")                                           # 단계 2 시작을 알리는 줄
-print(first_failed)                                                                    # 처음 나오는 실패 이벤트를 출력한다
+failed = pick_failed(events)                                                                   # 실패한 이벤트만 골라낸다
+failed_count = len(failed)                                                                     # 실패한 이벤트가 몇 개인지 센다
+source_fail_counts = count_values(failed, "source")                                            # 실패한 이벤트의 소스별 개수를 센다
+print("--- 단계 3: 실패한 이벤트", failed_count, "개의 소스별 개수")                           # 단계 3 시작을 알리는 줄
+print(source_fail_counts)                                                                      # 소스별 개수를 출력한다
 
-result_counts = {}                                                                     # 결과별 횟수를 담을 딕셔너리
-for event in events:                                                                   # 이벤트를 하나씩 꺼낸다
-    result = event["result"]                                                           # 그 이벤트의 결과
-    result_counts[result] = result_counts.get(result, 0) + 1                           # 그 결과의 횟수를 1 늘린다
-print("--- 단계 3: 성공 · 실패별 이벤트 수")                                           # 단계 3 시작을 알리는 줄
-print(result_counts)                                                                   # 성공 · 실패별 개수를 출력한다
+source_event_counts = count_values(events, "source")                                           # 전체 이벤트의 소스별 개수를 센다
+print("--- 단계 4: 전체 이벤트의 소스별 개수")                                                 # 단계 4 시작을 알리는 줄
+print(source_event_counts)                                                                     # 소스별 전체 개수를 출력한다
 ```
 
 **순서**
 
-1. **[VS Code]** 파일 `normalize_web.py` · `exercise2-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
-2. **[VS Code]** `normalize_web.py` 에서 직접 쓰는 곳 **여섯 군데**를 씁니다. 1.2 의 문법 상자를 보고 씁니다.
+1. **[VS Code]** 파일 **`events_basic.py` · `exercise2-1_run.py`** 를 만들어 위 코드를 붙여 넣습니다.
+2. **[VS Code]** `events_basic.py` 에서 **직접 쓰는 곳 네 군데**를 씁니다. 1.2 의 판다스 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
    python exercise2-1_run.py
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise2-1_run.py` 파이썬으로 실행 파일 실행
-4. 출력은 **세 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1은 1줄, 단계 2는 1줄, 단계 3은 1줄입니다.
+4. 출력은 **네 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1은 4줄, 단계 2는 4줄, 단계 3은 5줄, 단계 4는 5줄입니다.
 5. **[보고서]** `report_u2.md` 의 `## 실습 2-1` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 정규화한 이벤트 수와 읽기 실패한 줄 수, 성공과 실패 개수를 적어 주세요.
-   - (나) [핵심 질문] 시각을 `02/Nov/2026:09:00:00 +0900` 모양 그대로 문자열로 정렬하면 12월 1일 요청(`01/Dec/2026:…`)과 11월 2일 요청(`02/Nov/2026:…`) 중 어느 쪽이 앞에 놓일지 예상하고, 공통 모양(`2026-11-02 09:00:00`)으로 바꾸면 무엇이 달라지는지 이유와 함께 적어 주세요.
-   - (다) [핵심 질문] 이벤트에 원래 로그 줄(`raw`)을 그대로 남겨 두는 이유는 무엇인가요? 정규화하면 사라지는 정보를 한 가지 예로 들어 함께 적어 주세요.
+   - (가) 실행한 출력 전체를 붙여 넣고, 표의 행 수와 열 수, 성공과 실패 개수, 실패한 이벤트의 소스별 개수를 적어 주세요.
+   - (나) [핵심 질문] 실패 개수만 보면 web 이 가장 많습니다. 그렇다면 web 이 가장 문제가 큰 소스라고 말할 수 있을까요? 단계 4의 전체 이벤트 수와 함께 보고 이유를 적어 주세요.
+   - (다) [핵심 질문] web 이벤트에는 `user` 가 비어 있습니다. 사용자 이름으로 실패를 세려 할 때 web 의 실패 13개는 어떻게 될지 예상하고, 사용자 대신 어떤 열을 보면 같은 대상이 반복했는지 알 수 있을지 이유와 함께 적어 주세요.
 
 ## 실습 2-1 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 문자열 시각을 시각 값으로 | `parsed = datetime.strptime(time_text, NGINX_TIME_FORMAT)` |
-| 시간대 정보 떼기 | `local_time = parsed.replace(tzinfo=None)` |
-| 공통 모양 문자열로 | `time_out = local_time.strftime(COMMON_TIME_FORMAT)` |
-| 상태 코드 → 결과 | `if status >= 400:` → `return "실패"` → `return "성공"` |
+| 판다스 불러오기 | `import pandas as pd` |
+| JSON 파일을 표로 읽기 | `events = pd.read_json(path)` (`load_events`) |
+| 표 크기 | `shape = events.shape` (`describe_events`) |
+| 열 하나 꺼내기 | `times = events["time"]` |
+| 처음 3개만 보기 | `first_times = times.head(3)` |
+| 실패한 행만 걸러 내기 | `results = events["result"]` → `is_fail = results == "실패"` → `failed = events[is_fail]` (`pick_failed`) |
+| 값별 개수 | `values = table[column]` → `value_event_counts = values.value_counts()` (`count_values`) |
 
 ---

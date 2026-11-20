@@ -1,296 +1,313 @@
 ---
 id: m4-u04-l02
-title: 실습 4-1 · 평소 기준과 알림 기준 정하기
+title: 실습 4-1 · 위험 점수와 등급·이유 저장하기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
-  path: network/102_day03_am_baseline_login.md
-  mission_id: GichanSource.m4-1104-am-baseline-login
+  path: network/108_day04_pm_correlation_risk.md
+  mission_id: GichanSource.m4-1105-pm-correlation-risk
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 실습 4-1 · 평소 기준과 알림 기준 정하기
+# 실습 4-1 · 위험 점수와 등급·이유 저장하기
 
-## 이번 의뢰: 평소 기준과 알림 기준
+## 목표: 점수·등급·이유 파일
 
-> **오늘 들어온 일**
+> **이번 실습에 들어온 일**
 >
 > A사 보안 팀장이 보낸 메시지입니다:
-> 「로그인 실패 알림을 만들려는데, 한 주소가 하루 동안 로그인에 몇 번 실패하면 알려야 할지 모르겠습니다. 너무 낮아도, 너무 높아도 곤란합니다.
+> 「Unit 3과 도전 4-1에서 탐지된 규칙이 여러 개인데, 결과가 모두 `탐지됨` 이라고만 나와서 어느 대상부터 확인할지 정할 수 없습니다. 퇴사한 계정이 계속 시도한 것과 파일을 한 번 더 내려받은 것이 같은 무게일 수는 없습니다.
 >
-> 지난 7일 동안 하루에 로그인에 가장 많이 실패한 주소가 몇 번 실패했는지 표를 드립니다. 하루 평균과 가장 많았던 날의 횟수를 구해서, 알림 기준 숫자를 하나 정해 주세요(정하는 방법은 아래 1.1 에서 설명합니다).」
-> - **왜 중요한가**: <mark>「하루 로그인 실패가 몇 번 이상이면 평소보다 많다고 볼 것인가」는 평소를 모르면 정할 수 없습니다.</mark> 평소 기준(baseline, 베이스라인)을 먼저 구해 두면 기준 숫자에 근거가 생기고, 담당자가 바뀌어도 같은 이유로 설명할 수 있습니다.
+> 탐지된 규칙마다 점수를 정하고 대상(사용자 또는 IP)마다 더해서 high · mid · low 로 나눠 주세요. 담당자가 왜 그 등급인지 알 수 있게, 탐지된 규칙 이름도 같이 파일에 적어 주세요.」
+> - **왜 중요한가**: <mark>점수만 있고 이유가 없으면 담당자가 근거를 확인하기 어려워서, 탐지된 규칙 이름을 이유로 함께 저장합니다.</mark>
 
-## 왜 평소 기준이 먼저 필요한가
+## 왜 점수를 더하고 이유를 남기는가
 
-1. Unit 3까지는 이벤트를 **세기**만 했습니다. <mark>이번 Unit부터는 세어 낸 숫자가 「많은가?」를 판단합니다.</mark>
-2. 판단하려면 비교할 **평소**가 있어야 합니다. <mark>평소를 모르고 정한 기준에는 두 가지 문제가 생깁니다.</mark>
-   - 너무 낮으면 평범한 날에도 알림이 발생해서, **담당자가 알림을 무시하게 됩니다.**
-   - 너무 높으면 누군가 비밀번호를 계속 바꿔 가며 로그인을 시도해도 **알림이 나지 않습니다.**
-3. 그래서 **지난 며칠의 숫자(평소 기준)** 를 먼저 구하고, <mark>거기서 알림 기준 숫자를 정합니다.</mark>
+1. 규칙마다 **점수**를 주고, 대상(사용자 또는 IP)마다 탐지된 규칙의 점수를 **더합니다**. <mark>같은 규칙이 한 대상의 여러 이벤트에서 탐지되어도 그 규칙의 점수는 대상마다 한 번만 더합니다.</mark>
+2. 합계를 high · mid · low 로 나누고, <mark>탐지된 규칙 이름을 함께 저장하면 담당자가 점수가 나온 근거를 확인할 수 있습니다.</mark>
 
-## 1.1 평소 기준과 알림 기준
+## 2.1 규칙마다 점수와 등급 기준
 
-| 말 | 뜻 | 이번 Unit의 예 |
+| 탐지된 규칙 | 점수 | 어느 단계에서 탐지되나 |
 |---|---|---|
-| 평소 기준(baseline, 베이스라인) | 지난 7일에 실제로 나온 숫자들 | 지난 7일 표의 숫자 7개(하루마다 주소 하나가 가장 많이 실패한 횟수) |
-| 임계값(threshold, 쓰레숄드) | 한 주소의 하루 로그인 실패 횟수가 이 숫자 이상이면 알리기로 정한 숫자 | 5번(평소 기준의 최댓값 4 에 1 을 더함) |
-| 알림(alert, 얼럿) | 한 주소의 하루 로그인 실패 횟수가 임계값 이상일 때 담당자에게 먼저 확인해 달라고 보내는 통지 | 한 주소가 하루에 로그인에 5번 이상 실패함 |
+| 퇴사한 계정 | 60 | 실습 3-2: 서버가 거절한 요청을 `check_permission` 으로 다시 판정했을 때 나온 이유 단어 |
+| 권한 없음 | 20 | 실습 3-2 |
+| 규칙은 허용인데 서버가 거절 | 10 | 실습 3-2 |
+| 업무 시간 밖 로그인 | 15 | 도전 3-2 |
+| 평소와 다른 IP | 20 | 도전 3-2 |
+| 대량 다운로드 | 25 | 도전 3-2 |
+| 경로 스캔 | 30 | 도전 3-3: 대상이 사용자가 아니라 IP |
+| 여러 로그 연결 | 30 | 도전 4-1 |
 
-지난 7일의 숫자는 이렇게 생겼습니다(연습용 숫자입니다).
+- 등급 기준은 점수가 **60 이상이면 high, 35 이상 60 미만이면 mid, 35 미만이면 low** 입니다. 「이상」은 `>=` 이고, <mark>높은 기준(high)부터 먼저 검사합니다.</mark> 등급은 위험이 없다는 판정이 아니라 **확인할 순서를 정하는 기준**입니다.
+- 표의 「규칙」은 **탐지 규칙의 이름**입니다. 서버 거절은 판정 이유 단어(`퇴사한 계정` · `권한 없음` · `허용`)를 그대로 이름으로 쓰고, `허용` 은 「규칙은 허용인데 서버가 거절」이라는 이름으로 바꿔 씁니다.
+- 대상은 사용자(`seoyeon` · `dami` …)와 IP(경로 스캔)입니다. 코드의 `entity`(엔티티, 점수를 매길 대상)가 이 대상입니다. 이 숫자들은 <mark>이번 실습에서 정해 고정한 값</mark>이고, 현업에서는 조직이 정합니다.
+- 출력 맨 아래의 `dtype: int64` 는 값이 정수라는 표시이고 읽지 않아도 됩니다(Unit 2과 Unit 3에서 본 줄과 같습니다).
 
-| 날짜 | 하루 최다 로그인 실패 횟수 |
-|---|---|
-| 10/26 | 2 |
-| 10/27 | 3 |
-| 10/28 | 1 |
-| 10/29 | 4 |
-| 10/30 | 2 |
-| 10/31 | 3 |
-| 11/1 | 2 |
+**판다스 문법 상자 — 그룹마다 합계 `sum`**
 
-- **평균**은 7개 숫자를 모두 더해 7로 나눈 값으로, 하루에 보통 몇 번인지 알려 줍니다. **최댓값**은 7개 중 가장 큰 숫자로, 가장 많았던 날이 몇 번인지 알려 줍니다.
-- 이 수업에서는 **최댓값보다 1 큰 숫자**를 알림 기준으로 삼습니다. <mark>지난 7일의 최댓값은 4번이므로 알림 기준은 5번입니다.</mark> 5번은 지난 7일에 한 번도 없었던 횟수라서, 평소에는 알림이 발생하지 않습니다.
-- 「5번 이상」은 <mark>5번 · 6번 · 7번 …을 모두 포함합니다.</mark>
-- 이번에 정한 기준은 이 규칙에서 나온 값 하나로 **고정**하고, 값을 바꿔 가며 비교하지 않습니다.
+**<mark>`그룹["열"].sum()`</mark> 은 `groupby` 로 만든 그룹마다 그 열의 숫자를 모두 더합니다**
 
-**판다스 문법 상자 — CSV 파일을 표로 읽기**
-
-**<mark>`pd.read_csv(파일 이름)`</mark> 은 쉼표로 나뉜 CSV 파일을 열어 표로 만듭니다. 첫 줄은 헤더(열 이름)가 되고, 둘째 줄부터 한 줄이 한 행이 됩니다**
-
-CSV 파일 안은 이렇게 생겼고(왼쪽), 읽으면 표가 됩니다(오른쪽). Unit 3에서 `pd.read_json` 으로 JSON 파일을 표로 읽은 것과 같은 일을 CSV 로 합니다.
-
-| CSV 파일의 줄 | 표에서의 모양 |
-|---|---|
-| `date,failed_logins` | 헤더(열 이름 두 개): `date` · `failed_logins` |
-| `2026-10-26,2` | 0번 행: `date` 가 2026-10-26, `failed_logins` 가 2 |
-| `2026-10-27,3` | 1번 행: `date` 가 2026-10-27, `failed_logins` 가 3 |
+Unit 3에서 같은 값끼리 묶는 `groupby` 를 썼습니다. 아래는 탐지된 규칙마다 점수를 적은 표이고, 대상(`entity`)마다 점수를 더합니다.
 
 ```python
-import pandas as pd                         # 판다스를 pd 라는 짧은 이름으로 불러온다
-daily = pd.read_csv("baseline_logins.csv")  # CSV 파일을 읽어 표로 만든다 — 한 행이 하루
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-shape = daily.shape                         # 표의 크기를 (행 수, 열 수) 로 구한다
-print(shape)                                # (7, 2) — 하루 7개(행), 열 2개
+data = {                                       # 표에 넣을 내용(열 이름: 값들)
+    "entity": ["seoyeon", "seoyeon", "dami"],  # entity 열
+    "points": [20, 25, 60],                    # points 열
+}
+df = pd.DataFrame(data)                        # 내용으로 표(DataFrame)를 만든다
+print(df)                                      # 표를 출력한다
 ```
 
 실행 결과:
 
 ```
-(7, 2)
+    entity  points
+0  seoyeon      20
+1  seoyeon      25
+2     dami      60
 ```
 
 위 코드에 이어서 실행하는 다음 코드입니다.
 
 ```python
-print(daily)  # 표 전체를 출력한다 — 왼쪽 숫자는 판다스가 붙인 행 번호
+grouped = df.groupby("entity")    # entity 가 같은 행끼리 그룹으로 묶는다
+totals = grouped["points"].sum()  # 그룹에서 points 열을 골라 바로 합계를 구한다
+print(totals)                     # 대상별 점수 합계를 출력한다
 ```
 
 실행 결과:
 
 ```
-         date  failed_logins
-0  2026-10-26              2
-1  2026-10-27              3
-2  2026-10-28              1
-3  2026-10-29              4
-4  2026-10-30              2
-5  2026-10-31              3
-6  2026-11-01              2
+entity
+dami       60
+seoyeon    45
+Name: points, dtype: int64
 ```
 
-- 읽는 법: `(7, 2)` 는 **7행 2열**입니다. <mark>하루가 7개(행), 열이 `date` · `failed_logins` 2개라는 뜻입니다.</mark> 왼쪽 숫자 0 ~ 6 은 판다스가 붙인 행 번호입니다.
-- Unit 3에서 배운 `pd.read_json` 과 이름만 다르고 쓰는 모양은 같습니다. <mark>파일이 JSON 이면 `read_json`, CSV 면 `read_csv` 를 씁니다.</mark>
-
-**판다스 문법 상자 — 열의 평균 구하기**
-
-**<mark>`열.mean()`</mark> 은 열에 있는 숫자들의 평균을 구합니다**
-
-`daily["failed_logins"]` 는 숫자 7개로 이루어진 열(시리즈)입니다. 여기에 `.mean()` 을 쓰면 평균 숫자 하나를 리턴합니다.
-
-- `mean`(민)은 줄임말이 아니라 영어 단어이고, 통계에서 「평균」을 뜻합니다. 모든 값을 더해 개수로 나눈 값입니다.
-
-| 행 번호 | `daily["failed_logins"]` |
-|---|---|
-| 0 | 2 |
-| 1 | 3 |
-| 2 | 1 |
-| 3 | 4 |
-| 4 | 2 |
-| 5 | 3 |
-| 6 | 2 |
-
-합은 2 + 3 + 1 + 4 + 2 + 3 + 2 = 17 이고, 17 ÷ 7 = 2.428… 입니다. 이 값을 아래에서 `round` 로 소수 첫째 자리인 2.4 까지만 남깁니다.
-
-```python
-import pandas as pd                           # 판다스를 pd 라는 짧은 이름으로 불러온다
-daily = pd.read_csv("baseline_logins.csv")    # CSV 파일을 읽어 표로 만든다 — 한 행이 하루
-
-daily_failed_logins = daily["failed_logins"]  # failed_logins 열만 꺼낸다 — 하루 실패 횟수 7개가 나열된 열
-average = daily_failed_logins.mean()          # 7개의 평균을 구한다
-rounded_average = round(average, 1)           # 소수 첫째 자리까지 반올림한다 (2.428571… → 2.4)
-print(rounded_average)                        # 2.4 — 하루 평균 약 2.4번
-```
-
-실행 결과:
-
-```
-2.4
-```
-
-- 읽는 법: `2.4` 는 하루마다 가장 많이 실패한 주소의 실패 횟수 7개를 평균한 값입니다. <mark>하루에 가장 많이 실패한 주소가 보통 약 2.4번 실패했다는 뜻입니다.</mark>
-- `round`(라운드)는 판다스가 아니라 파이썬 기본 함수입니다. 영어로 「둥글게 만들다」라는 뜻이고, 숫자를 **반올림**합니다.
-- `round(숫자, 1)` 의 `1` 은 소수 몇째 자리까지 남길지입니다. 평균 2.428571… 에서 소수 첫째 자리(4)까지 남기고, 그 아래 자리(2)가 5 보다 작아서 버리면 2.4 가 됩니다.
-- 열을 꺼내는 `daily["failed_logins"]` 는 Unit 3에서 배운 `표["열 이름"]` 과 같습니다.
-
-**판다스 문법 상자 — 열의 최댓값 구하기**
-
-**<mark>`열.max()`</mark> 는 열에 있는 숫자 중 가장 큰 숫자를 구합니다**
-
-- `max`(맥스)는 maximum(맥시멈, 최댓값)의 줄임말입니다.
-
-```python
-import pandas as pd                           # 판다스를 pd 라는 짧은 이름으로 불러온다
-daily = pd.read_csv("baseline_logins.csv")    # CSV 파일을 읽어 표로 만든다 — 한 행이 하루
-
-daily_failed_logins = daily["failed_logins"]  # failed_logins 열만 꺼낸다 — 하루 실패 횟수 7개가 나열된 열
-maximum = daily_failed_logins.max()           # 7개 중 가장 큰 값을 구한다
-print(maximum)                                # 4 — 가장 많았던 날이 4번
-```
-
-실행 결과:
-
-```
-4
-```
-
-- 읽는 법: <mark>`4` 는 지난 7일 중 가장 많았던 날이 4번이라는 뜻입니다.</mark> 위 표의 3번 행입니다.
+- 읽는 법: <mark style="background:#bde3ff">`seoyeon` 은 20 과 25 를 더한 45, `dami` 는 60</mark> 입니다. 문제에서는 딕셔너리 리스트로 표를 만드는 `pd.DataFrame(리스트)` 줄이 미리 채워져 있습니다.
+- <mark>`groupby` 결과는 이름순(dami → seoyeon)으로 나옵니다.</mark> 문제에서는 미리 채운 줄이 점수가 높은 순으로 다시 정렬합니다.
 
 **한 장 정리**
 
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
-| `load_daily_failures` | 파일 경로 | 하루가 한 행인 표 |
-| `average_failures` | 그 표 | 하루 평균 실패 횟수 |
-| `maximum_failures` | 그 표 | 하루 최대 실패 횟수 |
-| `make_limit` | 평소 최댓값 | 알림 기준(최댓값 + 1) |
+| `collect_findings` | 이벤트 표 · 연결된 사건 | 탐지된 규칙 리스트(미리 채움) |
+| `score_findings` | 탐지된 규칙 리스트 | 대상별 점수(높은 순) |
+| `make_grade` | 점수 | `"high"` · `"mid"` · `"low"` |
+| `collect_reasons` · `save_records` | 탐지된 규칙 · 기록 리스트 | 대상별 규칙 이름 · 저장한 건수(미리 채움) |
+| `make_records` | 대상별 점수 · 이유 | 점수 · 등급 · 이유 기록 리스트 |
 
-- **직접 쓰는 곳은 여섯 군데**(번호 1 ~ 6)이고, 함수 네 개 안에 나뉘어 있습니다. 함수마다 1 ~ 2줄만 쓰고, `import` 와 실행 파일은 미리 채웠습니다.
-  - `load_daily_failures`(1번): 파일을 표로 읽습니다.
-  - `average_failures`(2 · 3번): 열을 꺼내 평균을 구합니다.
-  - `maximum_failures`(4 · 5번): 열을 꺼내 최댓값을 구합니다.
-  - `make_limit`(6번): 최댓값에 1을 더해 알림 기준을 정합니다.
+- `make_records` 의 `totals.items()` 는 점수 집계 결과(시리즈)에서 「대상, 점수」를 한 쌍씩 꺼냅니다. 딕셔너리의 `.items()` 와 같은 모양입니다.
+- **직접 쓰는 곳은 다섯 군데**(번호 1 ~ 5)이고, 함수 세 개 안에 나뉘어 있습니다.
+  - `score_findings`(1 · 2번): 규칙마다 점수를 `map` 으로 채우고 대상마다 `sum` 으로 더합니다.
+  - `make_grade`(3 · 4번): 점수가 high 기준 이상이면 `"high"` 를 리턴합니다. mid 와 low 는 같은 모양이라 미리 채웠습니다.
+  - `make_records`(5번): 대상 · 점수 · 등급 · 이유를 딕셔너리로 만듭니다.
 
-## 실습 4-1 · 평소 기준과 알림 기준 정하기
+## 실습 4-1 · 위험 점수와 등급·이유 저장하기
 
 **이런 상황이 있습니다**
 
-- **지금은**: 로그인 실패가 몇 번이면 알려야 하는지 정해진 숫자가 없습니다.
-- **그래서 만드는 것**: `baseline.py` 입니다.
-  - 지난 7일 파일을 표로 읽습니다.
-  - 하루 평균과 하루 최대를 구합니다.
-  - 최대보다 1 큰 숫자를 알림 기준으로 정합니다.
-- **실행하면**: 단계 1: 지난 7일 표, 단계 2: 평균, 단계 3: 최대, 단계 4: 알림 기준이 나옵니다.
-- **현업에서는**: 알림 규칙을 만들 때는 며칠 치 평소 숫자부터 모아 기준을 정합니다. 근거가 남아 있으면 「왜 5번인가」에 답할 수 있습니다.
+- **지금은**: <mark>Unit 3과 도전 4-1에서 탐지된 규칙이 8건 있지만 대상별 우선순위가 정해져 있지 않습니다</mark>.
+- **그래서 만드는 것**: `risk_scores.py` 입니다.
+  - 규칙마다 점수를 채우고 대상마다 더합니다.
+  - 점수로 high · mid · low 등급을 정합니다.
+  - 대상 · 점수 · 등급 · 이유를 `unit05_risk_scores.json` 한 파일에 저장합니다.
+- **실행하면**: <mark>단계 1: 탐지된 규칙 수, 단계 2: 대상별 점수, 단계 3: 저장한 건수, 단계 4: 저장된 기록이 한 건씩 나옵니다.</mark>
+- **현업에서는**: 점수와 이유를 함께 남기면 등급이 올라간 근거를 설명할 수 있습니다. 조직은 필요에 따라 점수 기준을 바꿀 수 있고, 바꾼 날짜와 이유를 기록합니다.
 
 **할 일**
 
-1. `baseline.py` · `exercise4-1_run.py` **두 파일**을 만들고, `baseline.py` 의 네 함수에서 직접 쓰는 곳을 씁니다.
-2. 실행해서 <mark>지난 7일 표</mark>(단계 1), <mark>하루 평균</mark>(단계 2), <mark>하루 최대</mark>(단계 3), <mark>알림 기준</mark>(단계 4)를 읽습니다.
+1. `risk_scores.py` · `exercise4-1_run.py` 두 파일을 만들고, `risk_scores.py` 의 세 함수에서 직접 쓰는 곳을 씁니다.
+2. 실행해서 <mark>탐지된 규칙 수</mark>(단계 1), <mark>대상별 점수</mark>(단계 2), <mark>저장한 건수</mark>(단계 3), <mark>저장된 기록</mark>(단계 4)를 읽고, 새로 생긴 `unit05_risk_scores.json` 을 VS Code 에서 열어 봅니다.
 
-**`baseline.py`**
+`collect_findings` 는 읽기만 하는 미리 채운 함수입니다. Unit 3의 탐지 결과를 (대상, 규칙) 쌍으로 모으는 일이라 직접 쓰는 곳이 없습니다.
+
+**`risk_scores.py`**
 
 ```python
-import pandas as pd                 # 판다스를 pd 라는 짧은 이름으로 불러온다
+import json                                        # 점수를 JSON 파일로 쓰기 위해 json 을 불러온다
+import pandas as pd                                    # 판다스를 pd 라는 짧은 이름으로 불러온다
+from access_detection import load_events, pick_server_failures, pick_suspicious, judge_failure, EVENTS_PATH  # 실습 3-2 함수를 불러온다
+from saas_detection import pick_saas, pick_logins, find_off_hours_logins, find_new_ip_users, find_bulk_download_users  # 도전 3-2 함수를 불러온다
+from malicious_detection import pick_web_failures, find_scan_ips  # 도전 3-3 함수를 불러온다
 
-LOGIN_PATH = "baseline_logins.csv"  # 지난 7일의 하루 로그인 실패 횟수 파일 이름
+RISK_PATH = "unit05_risk_scores.json"                   # 점수를 저장할 파일 이름
+HIGH_LIMIT = 60                                        # 점수가 이 값 이상이면 high
+MID_LIMIT = 35                                         # 점수가 이 값 이상이면 mid, 그보다 낮으면 low
+WEIGHTS = {"퇴사한 계정": 60, "권한 없음": 20, "규칙은 허용인데 서버가 거절": 10,
+           "업무 시간 밖 로그인": 15, "평소와 다른 IP": 20, "대량 다운로드": 25,
+           "경로 스캔": 30, "여러 로그 연결": 30}      # 탐지된 규칙마다 점수
+SERVER_RULES = {"퇴사한 계정": "퇴사한 계정", "권한 없음": "권한 없음", "허용": "규칙은 허용인데 서버가 거절"}  # 서버 판정 이유를 규칙 이름으로 바꾼다
 
 
-def load_daily_failures(path):      # 파일 경로를 받는 함수
-    """지난 7일의 하루 로그인 실패 횟수 파일을 표로 읽는다.
-    평소 기준을 만들기 전에 맨 먼저 쓴다.
+def add_finding(findings, entity, rule):               # 리스트 · 대상 · 규칙 이름을 받는 함수
+    """대상과 탐지된 규칙을 한 건 추가하되 같은 건은 한 번만 추가한다.
+    같은 규칙이 여러 이벤트에 해당해도 점수가 중복되지 않게 할 때 쓴다.
+    """
+    finding = {"entity": entity, "rule": rule}         # 대상과 규칙을 딕셔너리로 만든다
+    if finding not in findings:                        # 아직 없는 건이면
+        findings.append(finding)                       # 리스트에 추가한다
+
+
+def collect_findings(events, chains):                  # 이벤트 표와 연결된 사건을 받는 함수
+    """Unit 3의 탐지 3개와 도전 4-1 연결 결과를 (대상, 탐지된 규칙) 리스트로 모은다.
+    점수를 매기기 전에 한 번에 쓴다.
+    """
+    findings = []                                      # 탐지된 규칙을 담을 빈 리스트
+
+    server_failures = pick_server_failures(events)     # 판정 서버 실패 이벤트를 고른다
+    suspicious = pick_suspicious(server_failures)      # 먼저 확인할 서버 이벤트를 고른다
+    suspicious_list = suspicious.to_dict("records")    # 표를 이벤트 딕셔너리 리스트로 바꾼다
+    for event in suspicious_list:                      # 이벤트를 하나씩 꺼낸다
+        reason, priority = judge_failure(event["user"], event["action"])  # Module 3 규칙으로 다시 판정한다
+        rule = SERVER_RULES.get(reason, reason)        # 판정 이유를 규칙 이름으로 바꾼다
+        add_finding(findings, event["user"], rule)     # 사용자와 규칙을 추가한다
+
+    saas = pick_saas(events)                           # SaaS 이벤트를 고른다
+    logins = pick_logins(saas)                         # 로그인 이벤트를 고른다
+    off_hours_logins = find_off_hours_logins(logins)   # 업무 시간 밖 로그인을 찾는다
+    off_hours_users = list(off_hours_logins["user"])   # 그 로그인의 사용자 이름만 리스트로 만든다
+    new_ip_users = find_new_ip_users(logins)           # 평소와 다른 IP 로 로그인한 사용자를 찾는다
+    bulk_users = find_bulk_download_users(saas)        # 대량 다운로드 사용자를 찾는다
+    for user in off_hours_users:                       # 업무 시간 밖 로그인 사용자를 하나씩 꺼낸다
+        add_finding(findings, user, "업무 시간 밖 로그인")  # 사용자와 규칙을 추가한다
+    for user in new_ip_users:                          # 평소와 다른 IP 사용자를 하나씩 꺼낸다
+        add_finding(findings, user, "평소와 다른 IP")  # 사용자와 규칙을 추가한다
+    for user in bulk_users:                            # 대량 다운로드 사용자를 하나씩 꺼낸다
+        add_finding(findings, user, "대량 다운로드")   # 사용자와 규칙을 추가한다
+
+    web_failures = pick_web_failures(events)           # 웹 실패 이벤트를 고른다
+    scan_ips, many_kinds = find_scan_ips(web_failures)  # 경로 스캔 IP 를 찾는다
+    for ip in scan_ips:                                # 스캔 IP 를 하나씩 꺼낸다
+        add_finding(findings, ip, "경로 스캔")         # IP 와 규칙을 추가한다
+
+    for chain in chains:                               # 연결된 사건을 하나씩 꺼낸다
+        add_finding(findings, chain["user"], "여러 로그 연결")  # 사용자와 규칙을 추가한다
+    return findings                                    # 탐지된 규칙 리스트를 리턴한다
+
+
+def score_findings(findings):                          # 탐지된 규칙 리스트를 받는 함수
+    """대상마다 탐지된 규칙의 점수를 더해 점수가 높은 순으로 정렬한다.
+    어느 대상부터 볼지 순서를 정할 때 쓴다.
+    """
+    findings_table = pd.DataFrame(findings)            # 딕셔너리 리스트를 표로 만든다 — 미리 채운 줄
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 1. findings_table 의 "rule" 열을 꺼내 .map(WEIGHTS) 를 붙여 규칙마다 점수를 구해 points 에 담는다
+    findings_table["points"] = points                  # 표에 points 열을 붙인다 — 미리 채운 줄
+    grouped = findings_table.groupby("entity")         # entity 가 같은 행끼리 그룹으로 만든다
+    # 2. grouped 에서 "points" 열을 골라 .sum() 을 붙여 그룹마다 점수 합계를 구해 totals 에 담는다
+    totals = totals.sort_values(ascending=False)       # 점수가 높은 순으로 정렬한다 — 미리 채운 줄
+    return totals                                      # 대상별 점수를 리턴한다
+
+
+def make_grade(score):                                 # 점수를 받는 함수
+    """점수로 high · mid · low 등급을 정한다.
+    점수가 높은 대상부터 먼저 보게 할 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. pd.read_csv 로 path 의 파일을 읽어 daily 에 담는다 (path 는 따옴표 없이 그대로 쓴다)
-    return daily                    # 하루가 한 행인 표를 리턴한다
+    # 3. if 로 시작한다: score 가 HIGH_LIMIT 이상이면
+    # 4.   그 if 안쪽에서 "high" 를 리턴한다
+    if score >= MID_LIMIT:                             # 점수가 mid 기준 이상이면 — 미리 채운 줄 (위 high 와 같은 모양)
+        return "mid"                                   # mid 이다 — 미리 채운 줄
+    return "low"                                       # 둘 다 아니면 low 이다
 
 
-def average_failures(daily):        # 표를 받는 함수
-    """지난 7일 표 숫자 7개의 평균을 구한다.
-    「평소 하루에 몇 번쯤 실패하는가」를 알고 싶을 때 쓴다.
+def collect_reasons(findings):                         # 탐지된 규칙 리스트를 받는 함수
+    """대상마다 탐지된 규칙 이름을 모아 딕셔너리로 만든다.
+    왜 그 등급인지 이유를 함께 저장할 때 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 2. daily 의 "failed_logins" 열을 꺼내 daily_failed_logins 에 담는다
-    # 3. daily_failed_logins 의 평균을 .mean() 으로 구해 average 에 담는다
-    return average                  # 평균을 리턴한다
+    reasons = {}                                       # 대상 → 규칙 이름 리스트 딕셔너리
+    for finding in findings:                           # 탐지된 규칙을 하나씩 꺼낸다
+        entity = finding["entity"]                     # 그 건의 대상
+        if entity not in reasons:                      # 처음 나온 대상이면
+            reasons[entity] = []                       # 빈 리스트를 만든다
+        reasons[entity].append(finding["rule"])        # 그 대상의 규칙 이름을 추가한다
+    return reasons                                     # 대상별 규칙 이름을 리턴한다
 
 
-def maximum_failures(daily):        # 표를 받는 함수
-    """하루 최대 로그인 실패 횟수를 구한다.
-    「평소 가장 많았던 날」이 얼마나 많았는지 알고 싶을 때 쓴다.
+def make_records(totals, reasons):                     # 대상별 점수와 이유를 받는 함수
+    """대상마다 점수 · 등급 · 이유를 담은 딕셔너리 리스트를 만든다.
+    담당자가 읽을 파일의 내용을 만들 때 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 4. daily 의 "failed_logins" 열을 꺼내 daily_failed_logins 에 담는다
-    # 5. daily_failed_logins 의 최댓값을 .max() 로 구해 maximum 에 담는다
-    return maximum                  # 최댓값을 리턴한다
+    records = []                                       # 기록을 담을 빈 리스트
+    for entity, score in totals.items():               # 대상과 점수를 한 쌍씩 꺼낸다
+        grade = make_grade(score)                      # 점수로 등급을 정한다
+        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+        # 5. 키 "entity" 에 entity, "score" 에 int(score), "grade" 에 grade, "reasons" 에 reasons[entity] 를 담은 딕셔너리를 record 에 담는다 (int 는 JSON 저장용)
+        records.append(record)                         # 기록을 리스트에 추가한다
+    return records                                     # 기록 리스트를 리턴한다
 
 
-def make_limit(maximum):            # 평소 최댓값을 받는 함수
-    """평소 최댓값보다 1 큰 숫자를 알림 기준(임계값)으로 정한다.
-    이 숫자 이상이면 평소보다 많다고 보고 알릴 때 쓴다.
+def save_records(records, path):                       # 기록 리스트와 파일 경로를 받는 함수
+    """기록 리스트를 JSON 파일로 저장하고 저장한 건수를 리턴한다.
+    담당자와 다른 프로그램이 같은 파일을 읽게 할 때 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 6. maximum 에 1 을 더해 limit 에 담는다
-    return limit                    # 알림 기준을 리턴한다
+    with open(path, "w", encoding="utf-8") as file:    # path 파일을 쓰기 모드로 연다
+        json.dump(records, file, ensure_ascii=False, indent=2)  # 한글은 그대로, 줄을 나눠 저장한다
+    saved_count = len(records)                         # 저장한 기록이 몇 건인지 센다
+    return saved_count                                 # 저장한 건수를 리턴한다
 ```
 
-- 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 6번은 모두 함수 안이라 앞에 공백 4개입니다.
+- 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 · 2번은 함수 안이라 앞에 공백 4개이고, 3 · 4번도 함수 안이라 `if` 는 4개, `return` 은 8개이며, 5번은 `for` 안이라 8개입니다.
 - 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
-- 채우기 전에 실행하면 `NameError: name 'daily' is not defined` 오류가 납니다. 1번을 아직 안 썼기 때문입니다.
+- 5번의 `int(score)` 는 <mark>JSON 으로 저장하려고 판다스의 숫자를 파이썬 정수로 바꾸는 것</mark>입니다. 빼면 저장할 때 `TypeError: Object of type int64 is not JSON serializable` 오류가 납니다.
+- `collect_findings` 는 읽기만 하는 미리 채운 함수입니다. `SERVER_RULES.get(reason, reason)` 은 딕셔너리에서 reason 을 찾고, 없으면 reason 을 그대로 쓴다는 뜻입니다.
+- 채우기 전에 실행하면 `NameError: name 'points' is not defined` 오류가 납니다. 1번을 아직 안 썼기 때문입니다.
 
-**`exercise4-1_run.py`** — <mark>그대로 붙여 넣습니다.</mark> 직접 쓰는 줄은 없습니다. 네 단계로 출력합니다.
+**`exercise4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `len(리스트)` 는 리스트의 개수입니다.
 
 ```python
-from baseline import load_daily_failures, average_failures, maximum_failures, make_limit, LOGIN_PATH  # 방금 만든 함수를 불러온다
+from access_detection import load_events, EVENTS_PATH  # 실습 3-2 함수를 불러온다
+from correlation import find_chains_in_events          # 도전 4-1 함수를 불러온다
+from risk_scores import collect_findings, score_findings, collect_reasons, make_records, save_records, RISK_PATH  # 방금 만든 함수를 불러온다
 
-daily = load_daily_failures(LOGIN_PATH)                                                               # 지난 7일 파일을 표로 읽는다
-print("--- 단계 1: 지난 7일 하루 로그인 실패 횟수")                                                   # 단계 1 시작을 알리는 줄
-print(daily)                                                                                          # 표를 출력한다
+events = load_events(EVENTS_PATH)                      # 이벤트 파일을 표로 읽는다
+chains = find_chains_in_events(events)                 # 도전 4-1에서 만든 연결된 사건을 찾는다
+findings = collect_findings(events, chains)            # Unit 3의 탐지와 연결 결과에서 탐지된 규칙을 모은다
+finding_count = len(findings)                          # 탐지된 규칙이 모두 몇 건인지 센다
+print("--- 단계 1: 탐지된 규칙", finding_count, "건")    # 단계 1 시작을 알리는 줄과 건수
 
-average = average_failures(daily)                                                                     # 하루 평균을 구한다
-rounded_average = round(average, 1)                                                                   # 소수 첫째 자리까지 반올림한다
-print("--- 단계 2: 하루 평균", rounded_average, "번")                                                 # 단계 2 시작을 알리는 줄과 평균
+totals = score_findings(findings)                      # 대상마다 점수를 더한다
+print("--- 단계 2: 대상별 점수")                       # 단계 2 시작을 알리는 줄
+print(totals)                                          # 점수가 높은 순으로 출력한다
 
-maximum = maximum_failures(daily)                                                                     # 하루 최대를 구한다
-print("--- 단계 3: 하루 최대", maximum, "번")                                                         # 단계 3 시작을 알리는 줄과 최댓값
+reasons = collect_reasons(findings)                    # 대상마다 탐지된 규칙 이름을 모은다
+records = make_records(totals, reasons)                # 점수 · 등급 · 이유를 담은 기록을 만든다
+saved_count = save_records(records, RISK_PATH)         # 기록을 파일에 저장한다
+print("--- 단계 3:", RISK_PATH, "에", saved_count, "건 저장")  # 단계 3 시작을 알리는 줄과 건수
 
-limit = make_limit(maximum)                                                                           # 알림 기준을 정한다
-print("--- 단계 4: 알림 기준(임계값)", limit, "번 이상")                                              # 단계 4 시작을 알리는 줄과 알림 기준
+print("--- 단계 4: 등급 · 대상 · 점수 · 이유")         # 단계 4 시작을 알리는 줄
+for record in records:                                 # 기록을 하나씩 꺼낸다
+    print(record["grade"], record["entity"], record["score"], record["reasons"])  # 등급 · 대상 · 점수 · 이유를 출력한다
 ```
 
 **순서**
 
-1. **[VS Code]** 파일 `baseline.py` · `exercise4-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
-2. **[VS Code]** `baseline.py` 에서 직접 쓰는 곳 **여섯 군데**를 씁니다. 위 판다스 문법 상자를 보고 씁니다.
+1. **[VS Code]** 파일 `risk_scores.py` · `exercise4-1_run.py` 를 `anomaly_detection` 폴더에 만들어 위 코드를 붙여 넣습니다.
+2. **[VS Code]** `risk_scores.py` 에서 <mark>직접 쓰는 곳 다섯 군데를 씁니다</mark>. 2.1 의 표와 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
    python exercise4-1_run.py
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise4-1_run.py` 파이썬으로 실행 파일 실행
-4. 출력은 **네 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 표 8줄이고, 단계 2 · 3 · 4는 숫자가 제목 줄에 함께 나오므로 그 아래 줄이 없습니다.
-5. **[보고서]** `report_u4.md` 의 `## 실습 4-1` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 하루 평균과 최댓값, 알림 기준을 적어 주세요.
-   - (나) [핵심 질문] ① 지난 7일 중 평균(2.4번) 이상인 날은 며칠인가요? ② 평균(2.4번)을 알림 기준으로 했다면 지난 7일 중 알림이 발생했을 날은 며칠이고, 그 날들은 평소와 다른 날이었나요? ③ 그래서 알림 기준을 평균이 아니라 최댓값보다 1 큰 숫자(5번)로 정한 이유를 적어 주세요.
-   - (다) [핵심 질문] 지난 7일 중 하루가 평소와 달랐다고 가정합니다(예: 어느 하루에 실패가 12번). 그러면 최댓값과 알림 기준(최댓값 + 1)이 어떻게 바뀌는지 적고, 바뀐 알림 기준을 쓰면 어떤 문제가 생기는지 적어 주세요.
+4. 출력은 **네 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1과 단계 3은 숫자가 제목 줄에 함께 나오고, 단계 2는 제목 아래 7줄(맨 위 `entity`, 대상 5줄, 맨 아래 `Name: points, dtype: int64`), 단계 4는 5줄입니다.
+5. **[VS Code]** 새로 생긴 `unit05_risk_scores.json` 을 열어 <mark>대상 5개가 점수 순으로 들어 있는지</mark> 확인합니다.
+6. **[보고서]** `report_u4.md` 의 `## 실습 4-1` 아래를 채웁니다.
+   - (가) 실행한 출력 전체를 붙여 넣고, high · mid · low 에 각각 어떤 대상이 들어갔는지 적어 주세요.
+   - (나) [핵심 질문] seoyeon 의 점수가 어떤 규칙의 점수를 더해 나왔는지 적고, 점수만 저장하지 않고 이유(`reasons`)를 함께 저장하는 까닭을 적어 주세요.
+   - (다) [핵심 질문] 198.51.100.90 은 경로 스캔 하나에 해당하지만 low 입니다. low 는 점수 기준상 낮은 등급이라는 뜻입니다. low 인 이유를 점수와 기준으로 설명하고, 이 IP 의 기록을 무시해도 되는지 샘플의 값(그 IP 의 요청 3개의 `result`)으로 판단해 적어 주세요.
 
 ## 실습 4-1 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| CSV 파일을 표로 읽기 | `daily = pd.read_csv(path)` (`load_daily_failures`) |
-| 열 꺼내기 | `daily_failed_logins = daily["failed_logins"]` |
-| 평균 · 최댓값 | `average = daily_failed_logins.mean()` · `maximum = daily_failed_logins.max()` |
-| 알림 기준 | `limit = maximum + 1` (`make_limit`) |
+| 규칙마다 점수 채우기 | `points = findings_table["rule"].map(WEIGHTS)` |
+| 대상마다 점수 더하기 | `totals = grouped["points"].sum()` |
+| 등급 정하기 | `if score >= HIGH_LIMIT:` → `return "high"` |
+| 기록 만들기 | `record = {"entity": entity, "score": int(score), …}` |
 
 ---

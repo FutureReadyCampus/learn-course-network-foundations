@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>Unit 4 목표: 알림이 맞았는지 세고(평가), 틀린 알림을 줄이고(튜닝), 다시 셉니다</title>
+<desc>도전 4-2에서 알림 7개와 진짜 문제 5개를 비교해 오탐과 미탐을 셉니다. 실습 4-2에서 예외 규칙으로 같은 원인의 오탐을 줄이고, 도전 4-3에서 로그인 규칙의 알림을 합쳐 다시 세고 한 문장으로 정리합니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">목표: 알림 평가와 오탐 줄이기</text>
+<rect x="20" y="62" width="210" height="150" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="125.0" y="111.3" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">도전 4-2 · 평가</text>
+<text x="125.0" y="132.6" font-size="15" fill="#292929" text-anchor="middle">알림 7개와</text>
+<text x="125.0" y="153.6" font-size="15" fill="#292929" text-anchor="middle">진짜 문제 5개 비교</text>
+<text x="125.0" y="174.6" font-size="15" fill="#292929" text-anchor="middle">오탐 · 미탐 세기</text>
+<rect x="255" y="62" width="210" height="150" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="111.3" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">실습 4-2 · 튜닝</text>
+<text x="360.0" y="132.6" font-size="15" fill="#292929" text-anchor="middle">같은 원인의 오탐을</text>
+<text x="360.0" y="153.6" font-size="15" fill="#292929" text-anchor="middle">예외 규칙 하나로</text>
+<text x="360.0" y="174.6" font-size="15" fill="#292929" text-anchor="middle">줄이기</text>
+<rect x="490" y="62" width="210" height="150" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="595.0" y="111.3" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">도전 4-3 · 다시 평가</text>
+<text x="595.0" y="132.6" font-size="15" fill="#292929" text-anchor="middle">로그인 규칙 알림을</text>
+<text x="595.0" y="153.6" font-size="15" fill="#292929" text-anchor="middle">합쳐 다시 세고</text>
+<text x="595.0" y="174.6" font-size="15" fill="#292929" text-anchor="middle">한 문장으로 정리</text>
+<polyline points="230,137 251,137" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="465,137 486,137" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<text x="20" y="252" font-size="15" fill="#292929">오탐: 문제가 아닌데 난 알림 · 미탐: 진짜 문제인데 알림이 나지 않은 것</text>
+<text x="20" y="282" font-size="15" fill="#666660">도구: 파이썬 · 판다스 · VS Code · 터미널 · 새 문법 .unique() · .dropna()</text>
+<text x="20" y="312" font-size="15" fill="#666660">예외로 믿는 IP 203.0.113.80 은 고정하고, 값을 바꿔 가며 비교하지 않습니다.</text>
+</g>
+</svg>

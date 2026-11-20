@@ -1,299 +1,434 @@
 ---
 id: m4-u02-l04
-title: 실습 2-3 · 세 로그를 합쳐 시간순 저장
+title: 실습 2-3 · 로그인 실패 5번 이상인 주소 찾기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
-  path: network/098_day02_am_normalize.md
-  mission_id: GichanSource.m4-1103-am-normalize
+  path: network/102_day03_am_baseline_login.md
+  mission_id: GichanSource.m4-1104-am-baseline-login
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 실습 2-3 · 세 로그를 합쳐 시간순 저장
+# 실습 2-3 · 로그인 실패 5번 이상인 주소 찾기
 
-## 목표: 시간순 이벤트 파일
+## 이번 의뢰: 로그인 실패가 많은 주소
 
 > **오늘 들어온 일**
 >
 > A사 보안 팀장이 보낸 메시지입니다:
-> 「세 로그가 같은 모양이 되었습니다. 하나로 합쳐 시간 순서로 정렬해 파일로 저장해 주세요. Unit 3에서 이 파일로 실패가 몇 번 났는지 세겠습니다.
+> 「도전 2-1에서 정한 대로, 같은 주소가 하루에 로그인에 5번 이상 실패하면 담당자에게 알리기로 했습니다.
 >
-> 소스별로 이벤트가 몇 개씩인지, 사용자나 주소가 비어 있는 이벤트가 몇 개인지도 알려 주세요. 합친 결과로 gaeun 이 한 일을 시간순으로 보여 주세요.」
-> - **왜 중요한가**: <mark>로그가 따로 있을 때는 보이지 않던 같은 계정의 일이 시간순으로 합치면 보입니다.</mark> 값이 비어 있는 이벤트 수는 분석에서 빠지는 이벤트가 얼마나 되는지 미리 알려 줍니다. 저장한 파일은 Unit 3 분석의 입력이 됩니다.
+> 샘플 이벤트 57개 중에서 로그인 요청(`POST /login`)이 실패한 것이 모두 몇 개인지 세 주세요. 주소별로 몇 번씩 실패했는지 정리하고, 5번 이상 실패한 주소가 있으면 알려 주세요.」
+> - **왜 중요한가**: <mark>로그인에 연달아 실패하는 것은 다른 사람이 비밀번호를 맞혀 보는 대표적인 모습입니다.</mark> 이벤트 수만 개를 사람이 하나씩 읽지 않고, 알림 기준(5번) 이상인 주소만 추출해 보여 주면 담당자가 먼저 볼 곳이 정해집니다.
 
-## 왜 하나로 합쳐 시간순으로 놓는가
+## 왜 세 단계로 찾는가
 
-1. 실습 2-1 · 실습 2-2에서 만든 함수는 로그 한 종류씩 공통 이벤트 리스트를 만듭니다. 이제 세 리스트를 **합치고, 시간순으로 정렬하고, 파일로 저장**합니다.
-2. 순서는 이렇습니다.
-   - 웹 서버 이벤트 28개 · 판정 서버 이벤트 15개 · SaaS 이벤트 14개를 각각 만듭니다.
-   - 하나의 리스트로 이어 붙입니다(57개).
-   - `time` 문자열 순서로 정렬합니다. 공통 모양(`2026-11-02 09:12:03`)은 연 · 월 · 일 · 시 · 분 · 초 순서라서 <mark>문자열 순서가 곧 시간 순서입니다.</mark>
-   - `normalized_events.json` 파일로 저장합니다.
+1. 도전 2-1에서 「한 주소가 하루에 로그인에 5번 이상 실패하면 알린다」는 알림 기준(임계값)을 정했습니다. <mark>이제 이벤트 57개에 그 기준을 적용합니다.</mark>
+2. <mark>찾는 순서는 세 단계입니다</mark>: ① **로그인 요청이면서 실패한 것**만 고르고, ② **IP 주소별로 센** 뒤, ③ **5번 이상인 주소**만 남깁니다.
 
-## 3.1 이어 붙이기 · 정렬하기 · 저장하기
+## 2.1 로그인 실패 규칙과 문법 상자 네 개
 
-**문법 상자 — 리스트를 이벤트의 time 값 순서로 정렬하기**
+샘플에서 203.0.113.50 이 보낸 이벤트 전부입니다(9개, 표에서의 행 번호 포함).
 
-**<mark>`리스트.sort(key=함수)`</mark> 는 각 이벤트를 함수에 전달해 리턴된 값의 순서로 리스트를 정렬합니다**
+| 행 번호 | 시각 | `action` | `result` | 로그인 요청인가 | 실패인가 | 둘 다인가 |
+|---|---|---|---|---|---|---|
+| 9 | 09:12:01 | `GET /login` | 성공 | 아니오 | 아니오 | 아니오 |
+| 10 | 09:12:03 | `POST /login` | 실패 | 예 | 예 | **예** |
+| 11 | 09:12:06 | `POST /login` | 실패 | 예 | 예 | **예** |
+| 12 | 09:12:09 | `POST /login` | 실패 | 예 | 예 | **예** |
+| 13 | 09:12:12 | `POST /login` | 실패 | 예 | 예 | **예** |
+| 14 | 09:12:15 | `POST /login` | 실패 | 예 | 예 | **예** |
+| 15 | 09:12:18 | `POST /login` | 성공 | 예 | 아니오 | 아니오 |
+| 16 | 09:12:25 | `GET /admin` | 실패 | 아니오 | 예 | 아니오 |
+| 17 | 09:12:27 | `GET /admin/users` | 실패 | 아니오 | 예 | 아니오 |
 
-두 리스트를 `+` 로 이어 붙이는 것은 파이썬에서 배운 대로입니다. 새로 나오는 것은 `sort(key=함수)` 하나입니다.
+- `GET /login` 은 로그인 화면을 보여 달라는 요청이고, `POST /login` 은 아이디와 비밀번호를 보내는 요청입니다. <mark>이번 Unit에서는 `POST /login` 이 실패한 이벤트만 셉니다.</mark>
+- SaaS 의 `login` 실패 1건(jiwoo, 02:14)은 Unit 3에서 다루므로 이번 Unit에서는 세지 않습니다. <mark>그래서 로그인 실패 이벤트는 5개입니다.</mark>
+
+**알아 둘 것 — 열 꺼내기와 평균도 실무에서는 한 줄로 씁니다**
+
+도전 2-1에서 쓴 두 줄(`daily_failed_logins = daily["failed_logins"]` → `average = daily_failed_logins.mean()`)은 실무에서 아래 한 줄로 자주 씁니다. 같은 일입니다. **직접 쓰지 않고 읽기만 합니다.** 자세한 쓰임은 다음에 차차 배웁니다.
 
 ```python
-web_events = [{"time": "2026-11-02 11:00:00", "source": "server"}, {"time": "2026-11-02 09:12:03", "source": "web"}]  # 이벤트 두 개
-saas_events = [{"time": "2026-11-02 10:12:55", "source": "saas"}]  # 이벤트 한 개
-merged = web_events + saas_events                                  # 리스트 두 개를 이어 붙인다
+import pandas as pd                         # 판다스를 pd 라는 짧은 이름으로 불러온다
+daily = pd.read_csv("baseline_logins.csv")  # CSV 파일을 읽어 표로 만든다 — 한 행이 하루
 
-
-def get_time(event):                                               # 이벤트 하나를 받는 함수
-    """정렬 기준으로 쓸 시각 문자열을 리턴한다.
-    이벤트를 시간순으로 정렬할 때 쓴다.
-    """
-    return event["time"]                                           # 이벤트의 time 값을 리턴한다
-
-
-merged.sort(key=get_time)                                          # get_time 이 리턴하는 time 이 이른 것부터(오름차순) 정렬한다
-for event in merged:                                               # 이벤트를 하나씩 꺼낸다
-    print(event["time"], event["source"])                          # 시각과 소스를 출력한다
+average = daily["failed_logins"].mean()     # 열 꺼내기와 평균을 한 줄로 쓴 모양 — 위 두 줄과 같은 결과
+print(average)                              # 2.4285714285714284 — 소수점 아래가 길게 나오는 것은 round 를 쓰지 않았기 때문이다
 ```
 
 실행 결과:
 
 ```
-2026-11-02 09:12:03 web
-2026-11-02 10:12:55 saas
-2026-11-02 11:00:00 server
+2.4285714285714284
 ```
 
-- `a + b` 는 리스트 `a` 뒤에 `b` 를 이어 붙인 새 리스트입니다(배운 대로입니다).
-- `events.sort(key=get_time)` 은 리스트 `events` 의 각 이벤트를 `get_time` 함수에 전달해 리턴된 값(`time`) 순서로 정렬합니다. <mark>`get_time` 뒤에 괄호를 붙이지 않습니다</mark>(함수를 호출하는 것이 아니라 함수 자체를 전달하는 것입니다).
+**문법 상자 — `=` 와 `==`**
 
-위 코드의 `sort(key=get_time)` 이 하는 일을 따라가 봅니다.
+**`=` 는 오른쪽 값을 왼쪽 이름에 담고, `==` 는 두 값이 같은지 비교합니다. 한 줄에 같이 쓰면 비교(`==`)를 먼저 하고 그 결과를 `=` 로 담습니다**
 
-| 정렬 전 순서 | `get_time` 이 리턴하는 값 |
+```python
+age = 20              # age 에 20을 담는다 (=)
+is_adult = age == 20  # age 가 20과 같은지 비교하고(==), 그 결과를 is_adult 에 담는다(=)
+print(is_adult)       # True
+```
+
+실행 결과:
+
+```
+True
+```
+
+- 읽는 법: <mark>오른쪽의 비교 `age == 20` 을 먼저 계산하고,</mark> 그 결과 `True` 를 왼쪽 이름에 담습니다. `(age == 20)` 처럼 괄호를 넣어도 같은 뜻이고, 계산 순서가 눈에 보일 뿐입니다.
+- `is_fail = results == "실패"` 를 `is_fail = results = "실패"` 로 잘못 쓰면 그 줄은 오류 없이 지나가지만 `is_fail` 이 열이 아니라 문자열 `"실패"` 가 되어, 다음 줄 `events[is_fail]` 에서 `KeyError` 가 납니다. **비교는 항상 `==` 로 씁니다.**
+
+**판다스 문법 상자 — 조건으로 행 필터링하기**
+
+**<mark>`표[조건]`</mark> 은 조건이 `True` 인 행만 남겨 새 표를 만듭니다**
+
+`results == "실패"` 는 `result` 열의 값을 하나씩 `"실패"` 와 비교합니다. 같으면 `True`, 다르면 `False` 입니다. 결과는 `True` · `False` 로 된 열(시리즈)입니다. <mark>이 열을 `표[…]` 안에 넣으면 `True` 인 행만 남습니다.</mark>
+
+```python
+import pandas as pd                                                 # 판다스를 pd 라는 짧은 이름으로 불러온다
+
+data = {                                                            # 연습용 작은 데이터(열 이름: 값들)
+    "user": ["gaeun", "dami", "seoyeon", "junho", "dami"],          # user 열에 들어갈 값들
+    "action": ["login", "login", "download", "login", "download"],  # action 열에 들어갈 값들
+    "result": ["성공", "실패", "실패", "실패", "성공"],             # result 열에 들어갈 값들
+}
+logs = pd.DataFrame(data)                                           # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
+print(logs)                                                         # 표를 출력한다
+```
+
+실행 결과:
+
+```
+      user    action result
+0    gaeun     login     성공
+1     dami     login     실패
+2  seoyeon  download     실패
+3    junho     login     실패
+4     dami  download     성공
+```
+
+위 코드에 이어서 실행하는 다음 코드입니다.
+
+```python
+results = logs["result"]     # result 열만 꺼낸다
+is_fail = results == "실패"  # 값이 "실패" 와 같은지 하나씩 비교해 True 또는 False 로 만든다
+print(is_fail)               # True · False 를 출력한다
+```
+
+실행 결과:
+
+```
+0    False
+1     True
+2     True
+3     True
+4    False
+Name: result, dtype: bool
+```
+
+위 코드에 이어서 실행하는 다음 코드입니다.
+
+```python
+failed = logs[is_fail]  # True 인 행만 남겨 새 표(failed)를 만든다
+print(failed)           # 새 표를 출력한다
+```
+
+실행 결과:
+
+```
+      user    action result
+1     dami     login     실패
+2  seoyeon  download     실패
+3    junho     login     실패
+```
+
+- 읽는 법: <mark>두 번째 출력에서 1·2·3번 행이 `True`(실패)</mark>이고, 세 번째 출력은 그 세 행만 남은 표입니다. 열은 그대로 3개입니다. 왼쪽 숫자(1, 2, 3)는 원래 표의 행 번호를 그대로 가져온 것입니다.
+
+**판다스 문법 상자 — 두 조건을 함께 걸기**
+
+**<mark>`조건A & 조건B`</mark> 는 두 조건이 모두 `True` 이면 `True`, 하나라도 `False` 이면 `False` 입니다. 이 열을 `표[…]` 에 넣으면 두 조건을 모두 만족하는 행만 남습니다**
+
+위에서는 조건 하나(`results == "실패"`)로 걸렀습니다. 「로그인 요청이면서 실패」처럼 조건이 둘이면 각각 `True` · `False` 열로 만든 뒤 `&` 로 합칩니다(둘 다 `True` 인 행만 `True`). **`and` 가 아니라 `&` 를 씁니다.**
+
+```python
+import pandas as pd                                                 # 판다스를 pd 라는 짧은 이름으로 불러온다
+
+data = {                                                            # 연습용 작은 데이터(열 이름: 값들)
+    "user": ["gaeun", "dami", "seoyeon", "junho", "dami"],          # user 열에 들어갈 값들
+    "action": ["login", "login", "download", "login", "download"],  # action 열에 들어갈 값들
+    "result": ["성공", "실패", "실패", "실패", "성공"],             # result 열에 들어갈 값들
+}
+logs = pd.DataFrame(data)                                           # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
+print(logs)                                                         # 표를 출력한다
+```
+
+실행 결과:
+
+```
+      user    action result
+0    gaeun     login     성공
+1     dami     login     실패
+2  seoyeon  download     실패
+3    junho     login     실패
+4     dami  download     성공
+```
+
+위 코드에 이어서 실행하는 다음 코드입니다.
+
+```python
+actions = logs["action"]        # action 열만 꺼낸다
+is_login = actions == "login"   # 값이 "login" 과 같은지 하나씩 비교해 True 또는 False 로 만든다
+results = logs["result"]        # result 열만 꺼낸다
+is_fail = results == "실패"     # 값이 "실패" 와 같은지 하나씩 비교해 True 또는 False 로 만든다
+
+both_true = is_login & is_fail  # 두 조건이 모두 True 인 행만 True 로 만든다
+print(both_true)                # True · False 를 출력한다
+```
+
+실행 결과:
+
+```
+0    False
+1     True
+2    False
+3     True
+4    False
+dtype: bool
+```
+
+위 코드에 이어서 실행하는 다음 코드입니다.
+
+```python
+login_failures = logs[both_true]  # True 인 행만 남겨 새 표를 만든다
+print(login_failures)             # 새 표를 출력한다
+```
+
+실행 결과:
+
+```
+    user action result
+1   dami  login     실패
+3  junho  login     실패
+```
+
+- 읽는 법: <mark>로그인이면서 실패인 1번 행과 3번 행만 `True`</mark> 이고, 세 번째 출력은 그 두 행만 남은 표입니다.
+- 한 줄씩 따라가면 이렇습니다.
+
+| 코드 | 만들어지는 것 |
 |---|---|
-| 1. `server` 이벤트 | `2026-11-02 11:00:00` |
-| 2. `web` 이벤트 | `2026-11-02 09:12:03` |
-| 3. `saas` 이벤트 | `2026-11-02 10:12:55` |
+| `is_login = actions == "login"` | 로그인인 행만 `True` |
+| `is_fail = results == "실패"` | 실패인 행만 `True` |
+| `both_true = is_login & is_fail` | 둘 다 `True` 인 행만 `True` |
+| `login_failures = logs[both_true]` | `True` 인 행만 모은 새 표 |
 
-- `sort` 는 이 값을 서로 비교해 **작은 값부터 큰 값 순서(오름차순)** 로 놓습니다. 시각 문자열은 이른 시각일수록 작은 값이라서 <mark>이른 시각이 앞, 늦은 시각이 뒤에 옵니다.</mark> 결과는 `web`(09:12:03) → `saas`(10:12:55) → `server`(11:00:00) 순서입니다.
-- `sort` 는 리스트 자체를 바꾸고 **아무것도 리턴하지 않습니다.** **`events = events.sort(…)` 라고 쓰면 `events` 가 `None` 이 됩니다.**
+- `&` 는 파이썬에서 원래 다른 용도로 쓰는 기호인데, 판다스에서는 열 두 개를 같은 줄끼리 짝지어 합치는 데 씁니다. `==` 가 열의 값을 하나씩 비교하는 것과 같은 이유입니다.
+- `and` 는 `True` 또는 `False` 하나씩 두 개를 이을 때만 씁니다. 열에는 값이 여러 개 있어서 `and` 로 이을 수 없고(`ValueError` 오류), **열을 이을 때는 `&` 를 씁니다.** 도전 2-2의 `result == "실패" and …` 는 값이 하나씩이라 `and` 를 씁니다.
+- 비교를 `&` 로 바로 이을 때는 **괄호가 꼭 필요합니다**: `(a == 1) & (b == 2)`. `&` 가 `==` 보다 먼저 계산되기 때문입니다. 이번 Unit에서는 비교를 이름에 먼저 담은 뒤 `is_login & is_fail` 로 이어서 괄호가 필요 없습니다.
 
-**문법 상자 — 리스트를 JSON 파일로 저장하기**
+**판다스 문법 상자 — 기준 이상인 것만 남기기**
 
-**<mark>`json.dump(값, 파일)`</mark> 은 파이썬 값을 JSON 형식으로 파일에 씁니다. `ensure_ascii=False` 는 한글을 그대로, `indent=2` 는 보기 좋게 들여쓰기를 합니다**
+**<mark>`ip_fail_counts >= 기준`</mark> 은 값이 기준 이상이면 `True`, 아니면 `False` 로 만들고, 그 열을 `ip_fail_counts[…]` 에 넣으면 `True` 인 것만 남습니다**
+
+위에서 배운 `==` 처럼 `>=` 도 값을 하나씩 비교해 `True` · `False` 를 만듭니다. 아래 `ip_fail_counts` 는 주소별 실패 횟수입니다(왼쪽 인덱스가 주소, 오른쪽이 횟수). `ip_fail_counts >= 3` 은 주소마다 「3번 이상인가」를 `True` · `False` 로 만듭니다.
 
 ```python
-import json                                                         # json 모듈을 불러온다
+import pandas as pd                                                                                           # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-events = [{"user": "seoyeon", "result": "성공"}]                    # 저장할 값
-with open("demo_events.json", "w", encoding="utf-8") as demo_file:  # 쓰기 모드("w")로 파일을 연다
-    json.dump(events, demo_file, ensure_ascii=False, indent=2)      # 한글은 그대로, 들여쓰기를 해서 파일에 쓴다
-with open("demo_events.json", encoding="utf-8") as demo_file:       # 방금 쓴 파일을 다시 연다
-    text = demo_file.read()                                         # 내용을 문자열로 읽는다
-print(text)                                                         # 파일 내용을 출력한다
+data = {                                                                                                      # 실패한 이벤트만 적은 연습용 작은 데이터
+    "ip": ["198.51.100.90", "203.0.113.50", "198.51.100.90", "203.0.113.50", "198.51.100.90", "192.0.2.15"],  # ip 열에 들어갈 값들
+    "result": ["실패", "실패", "실패", "실패", "실패", "실패"],                                               # result 열에 들어갈 값들
+}
+failed = pd.DataFrame(data)                                                                                   # 데이터로 표를 만든다
+print(failed)                                                                                                 # 표를 출력한다
 ```
 
 실행 결과:
 
 ```
-[
-  {
-    "user": "seoyeon",
-    "result": "성공"
-  }
-]
+              ip result
+0  198.51.100.90     실패
+1   203.0.113.50     실패
+2  198.51.100.90     실패
+3   203.0.113.50     실패
+4  198.51.100.90     실패
+5     192.0.2.15     실패
 ```
 
-- `json.dumps` 는 값을 JSON **문자열**로 만들고, <mark>`json.dump` 는 값을 JSON **파일**에 바로 씁니다</mark>(`s` 가 없습니다).
-- **`ensure_ascii=False` 를 빼면 한글이 `성공` 같은 코드로 저장됩니다.**
+위 코드에 이어서 실행하는 다음 코드입니다.
+
+```python
+ip_fail_counts = failed.groupby("ip").size()  # ip 가 같은 행끼리 그룹으로 만들고(groupby) 바로 그룹마다 행이 몇 개인지 센다(size) — 주소별 실패 횟수
+print(ip_fail_counts)                         # 주소와 실패 횟수가 줄마다 나온다
+```
+
+실행 결과:
+
+```
+ip
+192.0.2.15       1
+198.51.100.90    3
+203.0.113.50     2
+dtype: int64
+```
+
+위 코드에 이어서 실행하는 다음 코드입니다.
+
+```python
+is_many = ip_fail_counts >= 3   # 주소마다 「3번 이상인가?」를 비교해 True 또는 False 로 만든다
+many = ip_fail_counts[is_many]  # True 인 주소만 남긴다
+print(many)                     # 3번 이상인 주소와 횟수
+```
+
+실행 결과:
+
+```
+ip
+198.51.100.90    3
+dtype: int64
+```
+
+- 읽는 법: 두 번째 출력은 주소 3개의 실패 횟수이고, <mark>세 번째 출력은 그중 3번 이상인 주소 1개</mark>입니다(198.51.100.90 이 3번).
+- `failed.groupby("ip").size()` 는 Unit 2에서 두 줄로 나눠 배운 동작을 점(`.`)으로 이은 한 줄입니다. 왼쪽부터 차례로 읽습니다. ① `groupby("ip")` 가 ip 가 같은 행끼리 그룹을 만들고, ② 바로 이어서 `.size()` 가 그룹마다 행이 몇 개인지 셉니다. 이 수업에서는 점으로 이어 쓰는 것을 **두 개까지만** 씁니다.
+- 이 예는 연습용 작은 표이고, 문제에서는 로그인 요청의 실패 이벤트를 주소별로 셉니다.
 
 **한 장 정리**
 
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
-| `load_web` | 웹 서버 로그 파일 경로 | 공통 이벤트 리스트(미리 채움) |
-| `merge_events` | 이벤트 리스트 세 개 | 하나로 합쳐 시간순으로 정렬한 리스트 |
-| `count_by_source` | 이벤트 리스트 | `{소스: 개수}` 딕셔너리 |
-| `count_missing` | 이벤트 리스트와 키 이름 | 그 키의 값이 `None` 인 이벤트 수(미리 채움) |
-| `save_events` | 이벤트 리스트와 파일 이름 | 없음(파일로 저장) |
+| `load_events` | 파일 경로 | 이벤트 표(미리 채움) |
+| `pick_login_failures` | 이벤트 표 | 로그인 요청이면서 실패한 행만 담은 표 |
+| `count_by_ip` | 로그인 실패 표 | 주소별 실패 횟수(미리 채움) |
+| `pick_alert_ips` | 주소별 횟수와 알림 기준 | 기준 이상인 주소와 횟수 |
 
-- **직접 쓰는 곳은 세 함수**(번호 1 ~ 5)입니다.
-  - `merge_events`(1 · 2번): 이어 붙이고 시간순으로 정렬합니다.
-  - `count_by_source`(3 · 4번): 소스별 이벤트 수를 셉니다. 값별 횟수를 세는 `counts.get(…, 0) + 1` 은 Module 3에서 쓴 방식과 같습니다.
-  - `save_events`(5번): JSON 파일로 저장합니다.
+- **직접 쓰는 곳은 여덟 군데**(번호 1 ~ 8)이고, 함수 두 개 안에 나뉘어 있습니다.
+  - `pick_login_failures`(1 ~ 6번): 로그인 요청인 행과 실패인 행을 `&` 로 이어 걸러 냅니다.
+  - `pick_alert_ips`(7 · 8번): 횟수가 기준 이상인 주소만 남깁니다.
+- 주소별로 그룹화해 세는 `count_by_ip` 는 Unit 2에서 배운 `groupby().size()` 와 같아서 미리 채웠습니다.
 
-## 실습 2-3 · 이벤트를 합쳐 시간순 저장
+## 실습 2-3 · 로그인 실패 5번 이상인 주소 찾기
 
 **이런 상황이 있습니다**
 
-- **지금은**: 공통 이벤트가 로그 종류별로 따로 있어서, 같은 계정이 여러 곳에서 한 일을 시간순으로 볼 수 없습니다.
-- **그래서 만드는 것**: `normalize.py` 입니다.
-  - 세 리스트를 하나로 이어 붙여 시간순으로 정렬합니다.
-  - 소스별 이벤트 수를 셉니다.
-  - `normalized_events.json` 파일로 저장합니다.
-- **실행하면**: 단계 1: 소스별 이벤트 수, 단계 2: `user` · `ip` 가 비어 있는 이벤트 수, 단계 3: gaeun 의 이벤트(시간순), 단계 4: 저장한 이벤트 수가 나옵니다.
-- **현업에서는**: <mark>같은 모양으로 맞춘 이벤트를 한곳에 쌓아 두면 탐지 규칙은 그곳만 읽으면 됩니다.</mark> 이렇게 쌓아 두는 곳이 SIEM(심)의 저장소입니다.
+- **지금은**: 57개 이벤트 중 로그인 실패가 몇 개이고 어느 주소가 많은지 사람이 하나씩 읽어야 합니다.
+- **그래서 만드는 것**: `login_detection.py` 입니다.
+  - 로그인 요청이면서 실패한 이벤트를 골라냅니다.
+  - IP 주소별로 실패를 셉니다.
+  - 횟수가 5번 이상인 주소만 남깁니다.
+- **실행하면**: 단계 1: 로그인 실패 이벤트 수, 단계 2: 주소별 횟수, 단계 3: 알림 대상 주소가 나옵니다.
+- **현업에서는**: 로그인 실패 규칙은 거의 모든 관제 화면에 있는 기본 규칙입니다. 알림이 난 주소를 막을지 판단하는 첫 단서가 됩니다.
 
 **할 일**
 
-1. **`normalize.py` · `exercise2-3_run.py`** 두 파일을 만들고, `normalize.py` 의 `merge_events` · `count_by_source` · `save_events` 에서 직접 쓰는 곳을 씁니다. 실습 2-1의 `normalize_web.py` 와 실습 2-2의 `normalize_json_csv.py` 가 필요합니다.
-2. 실행해서 <mark>소스별 이벤트 수</mark>(단계 1), <mark>값이 비어 있는 이벤트 수</mark>(단계 2), <mark>gaeun 의 이벤트</mark>(단계 3), <mark>저장된 이벤트 수</mark>(단계 4)를 읽습니다.
+1. `login_detection.py` · `exercise2-3_run.py` **두 파일**을 만들고, `login_detection.py` 의 `pick_login_failures` · `pick_alert_ips` 에서 직접 쓰는 곳을 씁니다.
+2. 실행해서 <mark>로그인 실패 이벤트 수</mark>(단계 1), <mark>주소별 횟수</mark>(단계 2), <mark>알림 대상 주소</mark>(단계 3)를 읽습니다.
 
-**`normalize.py`**
+**`login_detection.py`**
 
 ```python
-import json                                                 # 파일에 JSON 으로 저장하는 json 모듈을 불러온다
-from normalize_web import normalize_web                     # 웹 서버 로그 정규화 함수를 불러온다
-from normalize_json_csv import load_server, load_saas       # 판정 서버 · SaaS 로그 읽기 함수를 불러온다
+import pandas as pd                                             # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-EVENTS_PATH = "normalized_events.json"                      # 정규화한 이벤트를 저장할 파일 이름
+EVENTS_PATH = "normalized_events.json"                          # 읽을 정규화 이벤트 파일 이름
+LOGIN_LIMIT = 5                                                 # 알림 기준: 평소 하루 최대가 4번이라 5번 이상이면 알린다
 
 
-def load_web(path):                                         # 웹 서버 로그 파일 경로를 받는 함수
-    """웹 서버 로그 파일의 모든 줄을 공통 이벤트 리스트로 바꾸고 깨진 줄은 건너뛴다.
-    웹 서버 로그를 정규화 결과에 합칠 준비를 할 때 쓴다.
+def load_events(path):                                          # 파일 경로를 받는 함수
+    """이벤트 파일을 표로 읽는다.
+    분석을 시작할 때 맨 먼저 쓴다.
     """
-    events = []                                             # 결과를 담을 리스트
-    with open(path, encoding="utf-8") as web_file:          # 파일을 연다
-        for line in web_file:                               # 한 줄씩 꺼낸다
-            event = normalize_web(line)                     # 공통 이벤트로 바꾼다
-            if event is not None:                           # 읽을 수 있는 줄이면
-                events.append(event)                        # 리스트에 추가한다
-    return events                                           # 이벤트 리스트를 리턴한다
+    events = pd.read_json(path)                                 # 파일 속 이벤트를 표 한 개로 읽는다
+    return events                                               # 이벤트 표를 리턴한다
 
 
-def get_time(event):                                        # 이벤트 하나를 받는 함수
-    """정렬 기준으로 쓸 시각 문자열을 리턴한다.
-    이벤트를 시간순으로 정렬할 때 쓴다.
-    """
-    return event["time"]                                    # 이벤트의 time 값을 리턴한다
-
-
-def merge_events(web, server, saas):                        # 세 이벤트 리스트를 받는 함수
-    """이벤트 리스트 세 개를 하나로 이어 붙이고 시간순으로 정렬한다.
-    여러 로그에서 같은 계정이 한 일을 시간순으로 함께 보고 싶을 때 쓴다.
+def pick_login_failures(events):                                # 이벤트 표를 받는 함수
+    """로그인 요청이 실패한 이벤트만 골라 새 표로 만든다.
+    로그인 실패가 많은 주소를 조사하기 전에 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. web, server, saas 를 + 로 이어 붙여 events 에 담는다
-    # 2. events.sort(key=get_time) 로 time 이 이른 것부터(오름차순) 정렬한다 (sort 는 events 자체를 바꾸고 아무것도 리턴하지 않는다)
-    return events                                           # 시간순으로 정렬한 이벤트 리스트를 리턴한다
+    # 1. events 의 "action" 열을 꺼내 actions 에 담는다
+    # 2. actions 가 "POST /login" 과 같은지 비교한 결과(==)를 is_login 에 담는다
+    # 3. events 의 "result" 열을 꺼내 results 에 담는다
+    # 4. results 가 "실패" 와 같은지 비교한 결과(==)를 is_fail 에 담는다
+    # 5. is_login & is_fail 로 두 조건을 합쳐 both_true 에 담는다 (둘 다 True 인 행만 True)
+    # 6. events 에서 both_true 가 True 인 행만 골라 login_failures 에 담는다 (events[both_true])
+    return login_failures                                       # 로그인 실패 이벤트만 담은 표를 리턴한다
 
 
-def count_by_source(events):                                # 이벤트 리스트를 받는 함수
-    """소스별 이벤트 수를 {소스: 개수} 딕셔너리로 센다.
-    합친 이벤트가 로그 종류마다 몇 개씩 들어왔는지 확인할 때 쓴다.
+def count_by_ip(login_failures):                                # 로그인 실패 표를 받는 함수
+    """로그인 실패를 IP 주소별로 센다.
+    같은 주소가 반복해서 실패했는지 볼 때 쓴다.
     """
-    source_event_counts = {}                                # 결과를 담을 딕셔너리
-    for event in events:                                    # 이벤트를 하나씩 꺼낸다
-        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-        # 3. event 의 "source" 값을 source 에 담는다
-        # 4. source_event_counts 에서 source 의 현재 횟수(없으면 0)에 1 을 더해 source_event_counts[source] 에 담는다 (source_event_counts.get)
-    return source_event_counts                              # 소스별 개수를 리턴한다
+    ip_login_fail_counts = login_failures.groupby("ip").size()  # ip 가 같은 행끼리 그룹으로 만들고(groupby) 바로 그룹마다 행이 몇 개인지 센다(size)
+    return ip_login_fail_counts                                 # 주소별 실패 횟수를 리턴한다
 
 
-def count_missing(events, key):                             # 이벤트 리스트와 키 이름을 받는 함수
-    """key 키의 값이 비어 있는(None) 이벤트 수를 리턴한다.
-    분석에서 빠질 이벤트가 얼마나 되는지 미리 알아볼 때 쓴다.
+def pick_alert_ips(ip_login_fail_counts, limit):                # 주소별 횟수와 알림 기준을 받는 함수
+    """실패 횟수가 알림 기준 이상인 주소만 골라 리턴한다.
+    알림을 보낼 주소를 가릴 때 쓴다.
     """
-    missing = 0                                             # 비어 있는 개수를 0 으로 시작한다
-    for event in events:                                    # 이벤트를 하나씩 꺼낸다
-        if event[key] is None:                              # 그 키의 값이 비어 있으면
-            missing = missing + 1                           # 비어 있는 개수를 1 늘린다
-    return missing                                          # 비어 있는 개수를 리턴한다
-
-
-def save_events(events, path):                              # 이벤트 리스트와 저장할 파일 이름을 받는 함수
-    """이벤트 리스트를 JSON 파일로 저장한다.
-    정규화 결과를 다음 분석의 입력으로 남길 때 쓴다.
-    """
-    with open(path, "w", encoding="utf-8") as events_file:  # 파일을 쓰기 모드("w")로 연다
-        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-        # 5. json.dump(events, events_file, ensure_ascii=False, indent=2) 로 events 를 events_file 에 저장한다
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 7. ip_login_fail_counts 가 limit 이상인지 비교한 결과(>=)를 is_many 에 담는다
+    # 8. ip_login_fail_counts 에서 is_many 가 True 인 것만 골라 alert_ips 에 담는다 (ip_login_fail_counts[is_many])
+    return alert_ips                                            # 알림 기준 이상인 주소와 횟수를 리턴한다
 ```
 
-- 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 · 2번은 함수 안이라 앞에 공백 4개이고, 3 · 4번은 `for` 안쪽이라 8개이고, 5번은 `with` 안쪽이라 8개입니다.
-- 4번의 `source_event_counts.get(source, 0) + 1` 에서 `get` 은 키가 없으면 두 번째 값(0)을 리턴하는 딕셔너리 메서드입니다. <mark>같은 소스가 나올 때마다 횟수가 1씩 늘어납니다.</mark>
-- 번호 주석이 연달아 붙어 있어도(예: 3 · 4번), <mark>주석 사이마다 줄을 끼워 넣어 각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark>
-- **채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다.** `for` 아래와 `with` 아래가 주석뿐이기 때문입니다.
+- 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 8번은 모두 함수 안이라 앞에 공백 4개입니다.
+- 미리 채운 `count_by_ip` 의 `groupby("ip").size()` 는 2.1 에서 본 것처럼 두 동작을 점으로 이은 한 줄입니다. ① `groupby("ip")` 로 ip 가 같은 행끼리 그룹을 만들고 ② `.size()` 로 그룹마다 행 수를 셉니다.
+- 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
+- 채우기 전에 실행하면 `NameError: name 'login_failures' is not defined` 오류가 납니다. 1 ~ 6번을 아직 안 썼기 때문입니다.
 
-**`exercise2-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 세 로그를 읽어 합치고 네 단계로 출력합니다.
+**`exercise2-3_run.py`** — <mark>그대로 붙여 넣습니다.</mark> 직접 쓰는 줄은 없습니다. `len(표)` 는 표의 행 수입니다.
 
 ```python
-from normalize import load_web, merge_events, count_by_source, count_missing, save_events, EVENTS_PATH  # 방금 만든 함수를 불러온다
-from normalize_json_csv import load_server, load_saas                                                   # 판정 서버 · SaaS 로그 읽기 함수를 불러온다
-import json                                                                                             # 저장한 파일을 다시 읽을 수 있게 불러온다
+from login_detection import load_events, pick_login_failures, count_by_ip, pick_alert_ips, EVENTS_PATH, LOGIN_LIMIT  # 방금 만든 함수를 불러온다
 
+events = load_events(EVENTS_PATH)                              # 이벤트 파일을 표로 읽는다
+login_failures = pick_login_failures(events)                   # 로그인 실패 이벤트만 골라낸다
+failure_count = len(login_failures)                            # 로그인 실패가 모두 몇 개인지 센다
+print("--- 단계 1: 로그인 실패 이벤트", failure_count, "개")   # 단계 1 시작을 알리는 줄과 개수
 
-def show_user(events, name):                                                                            # 이벤트 리스트와 사용자 이름을 받는 함수
-    """한 사용자의 이벤트를 시각 · 소스 · 행동 · 결과로 한 줄씩 출력한다.
-    같은 사용자가 여러 로그에서 한 일을 시간순으로 볼 때 쓴다.
-    """
-    for event in events:                                                                                # 이벤트를 하나씩 꺼낸다
-        if event["user"] == name:                                                                       # 그 사용자의 이벤트이면
-            time_text = event["time"]                                                                   # 시각
-            source = event["source"]                                                                    # 소스
-            action = event["action"]                                                                    # 행동
-            result = event["result"]                                                                    # 결과
-            print(time_text, source, action, result)                                                    # 한 줄로 출력한다
+ip_login_fail_counts = count_by_ip(login_failures)             # 주소별로 실패 횟수를 센다
+print("--- 단계 2: 주소별 로그인 실패 횟수")                   # 단계 2 시작을 알리는 줄
+print(ip_login_fail_counts)                                    # 주소별 횟수를 출력한다
 
-
-web = load_web("access_sample.log")                                                                     # 웹 서버 로그를 공통 이벤트로 바꾼다
-server = load_server("server_log.jsonl")                                                                # 판정 서버 로그를 공통 이벤트로 바꾼다
-saas = load_saas("saas_events.csv")                                                                     # SaaS 로그를 공통 이벤트로 바꾼다
-events = merge_events(web, server, saas)                                                                # 하나로 합쳐 시간순으로 정렬한다
-
-source_event_counts = count_by_source(events)                                                           # 소스별 개수를 센다
-print("--- 단계 1: 소스별 이벤트 수")                                                                   # 단계 1 시작을 알리는 줄
-print(source_event_counts)                                                                              # 소스별 개수를 출력한다
-
-user_missing = count_missing(events, "user")                                                            # user 가 비어 있는 이벤트 수를 센다
-ip_missing = count_missing(events, "ip")                                                                # ip 가 비어 있는 이벤트 수를 센다
-print("--- 단계 2: user · ip 가 None 인 이벤트 수")                                                     # 단계 2 시작을 알리는 줄
-print("user 가 비어 있는 이벤트", user_missing, "개")                                                   # user 가 비어 있는 개수를 출력한다
-print("ip 가 비어 있는 이벤트", ip_missing, "개")                                                       # ip 가 비어 있는 개수를 출력한다
-
-print("--- 단계 3: gaeun 의 이벤트를 시간순으로")                                                       # 단계 3 시작을 알리는 줄
-show_user(events, "gaeun")                                                                              # gaeun 의 이벤트를 출력한다
-
-save_events(events, EVENTS_PATH)                                                                        # 이벤트를 JSON 파일로 저장한다
-with open(EVENTS_PATH, encoding="utf-8") as events_file:                                                # 저장한 파일을 다시 연다
-    saved_events = json.load(events_file)                                                               # JSON 을 리스트로 읽는다
-saved_count = len(saved_events)                                                                         # 저장된 이벤트 수를 센다
-print("--- 단계 4: 저장한 파일", EVENTS_PATH)                                                           # 단계 4 시작을 알리는 줄
-print("저장된 이벤트", saved_count, "개")                                                               # 저장된 이벤트 수를 출력한다
+alert_ips = pick_alert_ips(ip_login_fail_counts, LOGIN_LIMIT)  # 알림 기준 이상인 주소만 고른다
+print("--- 단계 3: 알림 기준", LOGIN_LIMIT, "번 이상인 주소")  # 단계 3 시작을 알리는 줄과 알림 기준
+print(alert_ips)                                               # 알림을 보낼 주소를 출력한다
 ```
 
 **순서**
 
-1. **[VS Code]** 파일 `normalize.py` · `exercise2-3_run.py` 를 만들어 위 코드를 붙여 넣습니다.
-2. **[VS Code]** `normalize.py` 에서 직접 쓰는 곳 **다섯 군데**를 씁니다. 3.1 의 문법 상자를 보고 씁니다.
+1. **[VS Code]** 파일 `login_detection.py` · `exercise2-3_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+2. **[VS Code]** `login_detection.py` 에서 직접 쓰는 곳 **여덟 군데**를 씁니다. 2.1 의 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
    python exercise2-3_run.py
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise2-3_run.py` 파이썬으로 실행 파일 실행
-4. 출력은 **네 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1은 1줄, 단계 2는 2줄, 단계 3은 5줄, 단계 4는 1줄입니다.
-5. **[VS Code]** 새로 생긴 `normalized_events.json` 을 열어 <mark>이벤트 하나가 7개 키(`time` · `source` · `user` · `ip` · `action` · `result` · `raw`)로 되어 있는지</mark> 봅니다.
-6. **[보고서]** `report_u2.md` 의 `## 실습 2-3` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 소스별 이벤트 수와 `user` · `ip` 가 비어 있는 이벤트 수, 저장된 이벤트 수를 적어 주세요.
-   - (나) [핵심 질문] 단계 3의 gaeun 이벤트를 보고, 서로 다른 소스에서 나온 이벤트가 어떤 순서로 나오는지 적고, 로그를 따로 볼 때와 무엇이 달라지는지 적어 주세요.
-   - (다) [핵심 질문] `user` 가 비어 있는 이벤트가 28개입니다. 어느 로그(소스)의 이벤트이고 왜 비어 있는지 적어 주세요. 그리고 사용자 이름별로 개수를 세면 이 28개가 어떻게 될지 예상해 적어 주세요.
+4. 출력은 **세 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 숫자가 제목 줄에 함께 나오므로 그 아래 줄이 없고, 단계 2와 단계 3은 각각 3줄입니다.
+5. **[보고서]** `report_u2.md` 의 `## 실습 2-3` 아래를 채웁니다.
+   - (가) 실행한 출력 전체를 붙여 넣고, 로그인 실패 이벤트 수와 알림 대상 주소, 그 횟수를 적어 주세요.
+   - (나) [핵심 질문] 203.0.113.50 이 알림 대상이 되었습니다. 공격이라고 확정할 수 있는지 적고, 2.1 의 표에서 시각 간격과 성공 뒤에 요청한 경로를 보고 의심스러운 점을 적어 주세요. 그리고 5번 실패가 공격인지 판단하려면 이 표에 없는 정보 중 무엇이 더 필요한지 한 가지 적어 주세요(예: 어떤 사용자 이름으로 시도했는지).
+   - (다) [핵심 질문] 한 주소가 로그인에 4번 실패하고 5번째에 성공했습니다. 이 규칙(실패 5번 이상)으로 이 접속에 알림이 생성될까요? 생성된다 · 생성되지 않는다와 이유를 적고, 생성되지 않는다면 담당자가 확인하지 못하는 정보가 무엇인지 적어 주세요.
 
 ## 실습 2-3 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 리스트 세 개를 하나로 | `events = web + server + saas` |
-| 시간순으로 정렬(이른 시각이 앞, 오름차순) | `events.sort(key=get_time)` (`sort` 는 리턴값이 없음) |
-| 소스별 개수 | `source = event["source"]` → `source_event_counts[source] = source_event_counts.get(source, 0) + 1` |
-| JSON 파일로 저장 | `json.dump(events, f, ensure_ascii=False, indent=2)` |
+| 로그인 요청인 행 | `actions = events["action"]` → `is_login = actions == "POST /login"` |
+| 실패인 행 | `results = events["result"]` → `is_fail = results == "실패"` |
+| 둘 다인 행 | `both_true = is_login & is_fail` → `login_failures = events[both_true]` |
+| 기준 이상인 주소 | `is_many = ip_login_fail_counts >= limit` → `alert_ips = ip_login_fail_counts[is_many]` |
 
 ---
 
-## 마무리 · 이번 Unit 작업 확인하기
+## 마무리 · 만든 파일 확인하기
 
-이번 Unit의 작업을 깃허브에 올리는 일은 Unit 3의 실습 3-2 마지막에 한 번에 합니다. <mark>이번 Unit에서는 파일이 모두 있는지만 확인합니다.</mark>
+이번 Unit의 작업을 깃허브에 올리는 일은 Unit 3의 도전 3-1 마지막에 한 번에 합니다. <mark>이번 Unit에서는 파일이 모두 있는지만 확인합니다.</mark>
 
 **순서**
 
@@ -303,8 +438,8 @@ print("저장된 이벤트", saved_count, "개")                                
    ls
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
-   - `normalize_web.py` · `normalize_json_csv.py` · `normalize.py` · `exercise2-1_run.py` · `exercise2-2_run.py` · `exercise2-3_run.py` · `normalized_events.json` · `server_log.jsonl` · `saas_events.csv` 와 `report_u2.md` 가 보여야 합니다.
-2. **[보고서]** `report_u2.md` 의 실습 2-1 ~ 실습 2-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. <mark>못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.</mark>
+   - `baseline.py` · `login_detection.py` · `classify.py` · `challenge2-1_run.py` · `exercise2-3_run.py` · `challenge2-2_run.py` · `normalized_events.json` · `baseline_logins.csv` 와 <mark>`report_u2.md` 가 보여야</mark> 합니다.
+2. **[보고서]** `report_u2.md` 의 도전 2-1 ~ 도전 2-2 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. 못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.
 
 ---
 
@@ -312,11 +447,11 @@ print("저장된 이벤트", saved_count, "개")                                
 
 | 확인 | 문제 |
 |---|---|
-| 웹 서버 로그 한 줄을 공통 이벤트로 바꿨다 | 실습 2-1 |
-| 판정 서버 로그와 SaaS 로그를 공통 이벤트로 바꿨다 | 실습 2-2 |
-| 세 로그를 합쳐 시간순으로 정렬하고 `normalized_events.json` 으로 저장했다 | 실습 2-3 |
+| 지난 7일 숫자로 평소 기준을 구하고 알림 기준(5번)을 정했다 | 도전 2-1 |
+| 같은 주소의 로그인 실패가 알림 기준(5번) 이상인 곳을 찾았다 | 실습 2-3 |
+| 이벤트의 유형을 정하고 유형별로 셌다 | 도전 2-2 |
 
-Unit 3에서는 이 `normalized_events.json` 과 같은 모양의 파일을 **판다스**로 읽어서 실패한 이벤트를 골라 세고, 사용자별 · 시간대별로 묶습니다. 판다스 설치를 Unit 1 마무리 때 미리 했다면 확인만 합니다.
+Unit 3에서는 분 단위로 요청 수를 세어 **요청이 갑자기 늘어난 때**(트래픽 급증)를 찾고, Unit 2의 알림을 한 파일로 모읍니다.
 
 ---
 

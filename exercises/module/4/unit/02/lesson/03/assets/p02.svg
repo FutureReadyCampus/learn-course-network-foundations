@@ -1,34 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img">
-<title>판정 서버와 SaaS 로그는 어려운 곳이 달라 고치는 방법도 다르다</title>
-<desc>판정 서버 로그는 시각이 T 로 나뉘고 초가 없으며 접속 주소가 없습니다. SaaS 로그는 시각은 이미 공통 모양이지만 사용자가 메일 주소입니다.</desc>
-<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">로그마다 어려운 곳이 다르다</text>
-<rect x="24" y="56" width="672" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="360" y="80.3" font-size="15" text-anchor="middle" fill="#292929">실습 2-1 의 웹 서버 방법을 나머지 두 종류에 적용합니다</text>
-<rect x="24" y="112" width="324" height="36" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="186" y="134.6" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">판정 서버 로그</text>
-<rect x="24" y="160" width="150" height="60" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="99" y="194.1" font-size="14" text-anchor="middle" fill="#292929">시각에 T, 초가 없음</text>
-<line x1="176" y1="190" x2="192" y2="190" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
-<rect x="196" y="160" width="152" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="272" y="194.1" font-size="14" text-anchor="middle" fill="#292929">초는 :00 으로</text>
-<rect x="24" y="236" width="150" height="60" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="99" y="270.1" font-size="14" text-anchor="middle" fill="#292929">접속 주소가 없음</text>
-<line x1="176" y1="266" x2="192" y2="266" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
-<rect x="196" y="236" width="152" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="272" y="270.1" font-size="14" text-anchor="middle" fill="#292929">ip 는 None</text>
-<rect x="372" y="112" width="324" height="36" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="534" y="134.6" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">SaaS 로그</text>
-<rect x="372" y="160" width="150" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="447" y="194.1" font-size="14" text-anchor="middle" fill="#292929">시각은 공통 모양</text>
-<line x1="524" y1="190" x2="540" y2="190" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
-<rect x="544" y="160" width="152" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="620" y="194.1" font-size="14" text-anchor="middle" fill="#292929">시각은 그대로</text>
-<rect x="372" y="236" width="150" height="60" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="447" y="270.1" font-size="14" text-anchor="middle" fill="#292929">사용자가 메일 주소</text>
-<line x1="524" y1="266" x2="540" y2="266" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
-<rect x="544" y="236" width="152" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="620" y="270.1" font-size="14" text-anchor="middle" fill="#292929">@ 앞 이름만 꺼냄</text>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 350" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>이번에 새로 하는 세 가지: 다른 열로 묶어 세기, 시각에서 시 꺼내기, CSV 저장</title>
+<desc>실패한 이벤트를 사용자별로 묶어 묶음마다 셉니다. 문자열 시각은 날짜·시간 값으로 바꿔야 시를 꺼낼 수 있고, 결과는 CSV 로 저장해 엑셀로 엽니다.</desc>
+<defs><marker id="a-0303-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">왜 실패를 묶어서 세는가</text>
+<rect x="24" y="72" width="110" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="79.0" y="109.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">묶기</text>
+<rect x="160" y="72" width="158.7" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="239.35" y="109.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실패한 이벤트</text>
+<line x1="321.7" y1="104.0" x2="345.7" y2="104.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p02)"/>
+<rect x="348.7" y="72" width="158.7" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="428.04999999999995" y="109.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">사용자별로 묶기</text>
+<line x1="510.4" y1="104.0" x2="534.4" y2="104.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p02)"/>
+<rect x="537.4" y="72" width="158.7" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="616.75" y="109.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">묶음마다 개수</text>
+<rect x="24" y="162" width="110" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="79.0" y="199.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">시간</text>
+<rect x="160" y="162" width="158.7" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="239.35" y="188.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">"09:01:05"</text>
+<text x="239.35" y="209.8" font-size="15" fill="#666660" text-anchor="middle">문자열</text>
+<line x1="321.7" y1="194.0" x2="345.7" y2="194.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p02)"/>
+<rect x="348.7" y="162" width="158.7" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="428.04999999999995" y="199.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">날짜·시간 값</text>
+<line x1="510.4" y1="194.0" x2="534.4" y2="194.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p02)"/>
+<rect x="537.4" y="162" width="158.7" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="616.75" y="199.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">「시」 = 9</text>
+<rect x="24" y="252" width="110" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="79.0" y="289.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">저장</text>
+<rect x="160" y="252" width="158.7" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="239.35" y="289.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">분석 결과 표</text>
+<line x1="321.7" y1="284.0" x2="345.7" y2="284.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p02)"/>
+<rect x="348.7" y="252" width="158.7" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="428.04999999999995" y="289.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">CSV 파일</text>
+<line x1="510.4" y1="284.0" x2="534.4" y2="284.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p02)"/>
+<rect x="537.4" y="252" width="158.7" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="616.75" y="289.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">엑셀로 열기</text>
 </svg>

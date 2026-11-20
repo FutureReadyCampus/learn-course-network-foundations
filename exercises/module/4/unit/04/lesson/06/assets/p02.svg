@@ -1,35 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 307" role="img">
-<title>실습 4-1 보고서: (가) · (나) · (다) 에 채울 칸 체크리스트</title>
-<desc>실습 4-1 보고서의 (가)는 출력 전체와 평균·최댓값·알림 기준, (나)는 평균 대신 최댓값보다 1 큰 숫자를 쓰는 이유, (다)는 12번인 날이 섞였을 때 생기는 문제를 씁니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>알림이 났는지와 진짜 문제였는지로 나누면 오탐과 미탐 두 가지가 틀립니다</title>
+<desc>알림이 났고 진짜 문제였으면 맞게 찾은 것입니다. 알림이 났는데 문제가 아니면 오탐이라 확인 시간만 쓰고, 진짜 문제인데 알림이 나지 않으면 미탐이라 문제를 놓칩니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 4-1 보고서: 채울 칸</text>
-<rect x="20" y="52" width="214" height="241" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="20" y="52" width="214" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="127.0" y="79" font-size="15" text-anchor="middle" fill="#292929"><tspan x="127.0" dy="0" font-weight="700">(가) 출력과 값</tspan></text>
-<rect x="32" y="110" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="54" y="122" font-size="14" text-anchor="start" fill="#292929"><tspan x="54" dy="0">출력 전체 (코드 상자)</tspan></text>
-<rect x="32" y="143" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="54" y="155" font-size="14" text-anchor="start" fill="#292929"><tspan x="54" dy="0">하루 평균</tspan></text>
-<rect x="32" y="176" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="54" y="188" font-size="14" text-anchor="start" fill="#292929"><tspan x="54" dy="0">하루 최댓값</tspan></text>
-<rect x="32" y="209" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="54" y="221" font-size="14" text-anchor="start" fill="#292929"><tspan x="54" dy="0">알림 기준</tspan></text>
-<rect x="253" y="52" width="214" height="241" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="253" y="52" width="214" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="360.0" y="79" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">(나) 핵심 질문</tspan></text>
-<rect x="265" y="110" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="287" y="122" font-size="14" text-anchor="start" fill="#292929"><tspan x="287" dy="0">평균(2.4번) 이상인 날의</tspan><tspan x="287" dy="19">수</tspan></text>
-<rect x="265" y="162" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="287" y="174" font-size="14" text-anchor="start" fill="#292929"><tspan x="287" dy="0">평균이 기준이면 알림이</tspan><tspan x="287" dy="19">났을 날의 수와 그날이</tspan><tspan x="287" dy="19">평소와 달랐는지</tspan></text>
-<rect x="265" y="233" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="287" y="245" font-size="14" text-anchor="start" fill="#292929"><tspan x="287" dy="0">최댓값보다 1 큰 숫자를</tspan><tspan x="287" dy="19">쓰는 이유</tspan></text>
-<rect x="486" y="52" width="214" height="241" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="486" y="52" width="214" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="593.0" y="79" font-size="15" text-anchor="middle" fill="#292929"><tspan x="593.0" dy="0" font-weight="700">(다) 핵심 질문</tspan></text>
-<rect x="498" y="110" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="520" y="122" font-size="14" text-anchor="start" fill="#292929"><tspan x="520" dy="0">12번인 날이 섞였을 때의</tspan><tspan x="520" dy="19">최댓값과 알림 기준</tspan></text>
-<rect x="498" y="162" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="520" y="174" font-size="14" text-anchor="start" fill="#292929"><tspan x="520" dy="0">바뀐 알림 기준 때문에</tspan><tspan x="520" dy="19">생기는 문제</tspan></text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">왜 틀린 알림을 세어 봐야 하는가</text>
+<text x="380" y="74" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">진짜 문제였다</text>
+<text x="600" y="74" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">문제가 아니었다</text>
+<rect x="20" y="90" width="160" height="100" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="100.0" y="145.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">알림이 났다</text>
+<rect x="20" y="200" width="160" height="100" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="100.0" y="244.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">알림이 나지</text>
+<text x="100.0" y="267.0" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">않았다</text>
+<rect x="270" y="90" width="220" height="100" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="380.0" y="145.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">맞게 찾음</text>
+<rect x="500" y="90" width="200" height="100" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="600.0" y="135.3" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">오탐</text>
+<text x="600.0" y="156.6" font-size="15" fill="#292929" text-anchor="middle">확인 시간만 씀</text>
+<rect x="270" y="200" width="220" height="100" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="380.0" y="245.3" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">미탐</text>
+<text x="380.0" y="266.6" font-size="15" fill="#292929" text-anchor="middle">진짜 문제를 놓침</text>
+<rect x="500" y="200" width="200" height="100" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="600.0" y="255.4" font-size="15" fill="#292929" text-anchor="middle">해당 없음</text>
+<text x="20" y="328" font-size="15" fill="#666660">틀리는 방식은 두 가지이고, 줄여야 하는 쪽이 다릅니다.</text>
 </g>
 </svg>

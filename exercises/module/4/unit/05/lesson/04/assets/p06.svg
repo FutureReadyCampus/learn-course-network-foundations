@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 334" role="img">
+<title>도전 5-1에서 쓴 명령을 하려는 일 네 가지로 정리했다</title>
+<desc>서버 한 대 켜기와 끄기, 두 대 한 번에 켜기, 상태 보기, 응답 확인에 쓰는 명령을 짝지은 요점 지도다.</desc>
+<defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">도전 5-1 정리</text>
+<text x="117" y="66" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">하려는 일</text>
+<text x="478" y="66" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">명령</text>
+<rect x="12" y="80" width="210" height="63.5" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="117" y="106.05" font-size="15" text-anchor="middle" fill="#292929">서버 한 대 켜기 · 확인 ·</text>
+<text x="117" y="127.8" font-size="15" text-anchor="middle" fill="#292929">끄기</text>
+<rect x="248" y="80" width="460" height="63.5" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="478" y="106.05" font-size="15" text-anchor="middle" fill="#292929">docker run -d --rm -p 8080:80 --name web-run</text>
+<text x="478" y="127.8" font-size="15" text-anchor="middle" fill="#292929">nginx:1.28 → docker ps → docker stop web-run</text>
+<line x1="225" y1="111.75" x2="245" y2="111.75" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
+<rect x="12" y="153.5" width="210" height="41.75" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="117" y="179.55" font-size="15" text-anchor="middle" fill="#292929">서버 두 대 한 번에 켜기</text>
+<rect x="248" y="153.5" width="460" height="41.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="478" y="179.55" font-size="15" text-anchor="middle" fill="#292929">docker compose up -d</text>
+<line x1="225" y1="174.375" x2="245" y2="174.375" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
+<rect x="12" y="205.25" width="210" height="41.75" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="117" y="231.3" font-size="15" text-anchor="middle" fill="#292929">켜진 서버 상태 보기</text>
+<rect x="248" y="205.25" width="460" height="41.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="478" y="231.3" font-size="15" text-anchor="middle" fill="#292929">docker compose ps</text>
+<line x1="225" y1="226.125" x2="245" y2="226.125" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
+<rect x="12" y="257" width="210" height="63.5" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="117" y="293.925" font-size="15" text-anchor="middle" fill="#292929">응답 확인</text>
+<rect x="248" y="257" width="460" height="63.5" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="478" y="283.05" font-size="15" text-anchor="middle" fill="#292929">curl -s -o /dev/null -w "%{http_code}\n"</text>
+<text x="478" y="304.8" font-size="15" text-anchor="middle" fill="#292929">http://localhost:8080</text>
+<line x1="225" y1="288.75" x2="245" y2="288.75" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
+</g>
+</svg>

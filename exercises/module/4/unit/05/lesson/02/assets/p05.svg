@@ -1,21 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 310" role="img">
-<title>실습 5-1 정리: 초를 버려 분으로, 웹만, 급증 기준, 기준 이상인 분</title>
-<desc>times.dt.floor("min") 으로 minute 열을 만들고, source 가 web 인 행만 고릅니다. 급증 기준은 평균 2.0 × 3 = 6.0이고, is_spike 로 기준 이상인 분만 spike_minutes 에 남깁니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>event_summary.py 의 직접 쓰는 곳 1~7 이 고르기 → 잇기 → 글 만들기 → 호출로 이어진다</title>
+<desc>pick_records_to_summarize(1 · 2번)가 3명을 고르고, describe_reasons(3번)가 사실 문장을 잇고, build_prompt(4번)가 [사실] 한 줄을 만들고, summarize_record(5 · 6 · 7번)가 AI 를 호출합니다. 실행하면 단계 1 ~ 4 가 출력됩니다.</desc>
 <defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 5-1 정리</text>
-<rect x="20" y="60" width="150" height="160" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="95.0" y="116" font-size="14" text-anchor="middle" fill="#292929"><tspan x="95.0" dy="0" font-weight="700">초를 버려 분으로</tspan><tspan x="95.0" dy="19">times.dt</tspan><tspan x="95.0" dy="19">.floor("min")</tspan><tspan x="95.0" dy="19">→ minute 열</tspan></text>
-<rect x="196" y="60" width="150" height="160" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="271.0" y="126" font-size="14" text-anchor="middle" fill="#292929"><tspan x="271.0" dy="0" font-weight="700">웹 서버만</tspan><tspan x="271.0" dy="19">source == "web"</tspan><tspan x="271.0" dy="19">→ web_events</tspan></text>
-<rect x="372" y="60" width="150" height="160" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="447.0" y="116" font-size="14" text-anchor="middle" fill="#292929"><tspan x="447.0" dy="0" font-weight="700">급증 기준</tspan><tspan x="447.0" dy="19">average</tspan><tspan x="447.0" dy="19">* multiple</tspan><tspan x="447.0" dy="19">2.0 × 3 = 6.0</tspan></text>
-<rect x="548" y="60" width="150" height="160" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="623.0" y="126" font-size="14" text-anchor="middle" fill="#292929"><tspan x="623.0" dy="0" font-weight="700">기준 이상인 분</tspan><tspan x="623.0" dy="19">is_spike</tspan><tspan x="623.0" dy="19">→ spike_minutes</tspan></text>
-<polyline points="173,140.0 192,140.0" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
-<polyline points="349,140.0 368,140.0" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
-<polyline points="525,140.0 544,140.0" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
-<text x="20" y="262" font-size="14" text-anchor="start" fill="#666660">분마다 세는 groupby("minute").size() 줄은 미리 채움</text>
-<text x="20" y="288" font-size="14" text-anchor="start" fill="#666660">실습 4-2의 pick_alert_ips 와 같은 모양으로 기준 이상만 남긴다</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">event_summary.py · 직접 쓰는 곳 1 ~ 7</text>
+<rect x="20" y="60" width="320" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="180" y="93.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">pick_records_to_summarize</text>
+<text x="180" y="114.6" font-size="15" fill="#292929" text-anchor="middle">1 · 2번: low 가 아니고(and)</text>
+<text x="180" y="135.6" font-size="15" fill="#292929" text-anchor="middle">3명 미만이면 append</text>
+<rect x="380" y="60" width="320" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="540" y="93.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">describe_reasons</text>
+<text x="540" y="114.6" font-size="15" fill="#292929" text-anchor="middle">3번: "; ".join(meanings)</text>
+<text x="540" y="135.6" font-size="15" fill="#666660" text-anchor="middle">→ meaning_text</text>
+<rect x="20" y="190" width="320" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="180" y="223.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">build_prompt</text>
+<text x="180" y="244.6" font-size="15" fill="#292929" text-anchor="middle">4번: f"[사실] 대상: {entity} …"</text>
+<text x="180" y="265.6" font-size="15" fill="#666660" text-anchor="middle">→ PROMPT_RULES + facts</text>
+<rect x="380" y="190" width="320" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="540" y="223.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">summarize_record</text>
+<text x="540" y="244.6" font-size="15" fill="#292929" text-anchor="middle">5번: call_llm(prompt)</text>
+<text x="540" y="265.6" font-size="15" fill="#292929" text-anchor="middle">6 · 7번: "" 이면 FAIL_TEXT</text>
+<polyline points="340,110 376,110" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<polyline points="540,160 540,175 180,175 180,186" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<polyline points="340,240 376,240" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<text x="20" y="322" font-size="15" fill="#666660">exercise5-1_run.py 를 실행하면</text>
+<rect x="20" y="334" width="164" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="102" y="356.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">단계 1</text>
+<text x="102" y="377.1" font-size="15" fill="#292929" text-anchor="middle">기록 5 건</text>
+<rect x="192" y="334" width="164" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="274" y="356.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">단계 2</text>
+<text x="274" y="377.1" font-size="15" fill="#292929" text-anchor="middle">대상 3명</text>
+<rect x="364" y="334" width="164" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="446" y="356.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">단계 3</text>
+<text x="446" y="377.1" font-size="15" fill="#292929" text-anchor="middle">보내는 글</text>
+<rect x="536" y="334" width="164" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="618" y="356.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">단계 4</text>
+<text x="618" y="377.1" font-size="15" fill="#292929" text-anchor="middle">AI 요약 3줄</text>
 </g>
 </svg>

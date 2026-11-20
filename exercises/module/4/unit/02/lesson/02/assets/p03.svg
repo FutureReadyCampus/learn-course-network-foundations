@@ -1,57 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>공통 이벤트의 키 7개와 각 키가 답하는 질문, 웹 서버 한 줄의 값</title>
-<desc>공통 이벤트는 time, source, user, ip, action, result 여섯 질문의 답과 원래 줄 raw 를 담은 키 7개입니다. 웹 서버 로그에는 사용자가 없어 user 는 None 입니다.</desc>
-<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">공통 이벤트의 키 7개 (웹 서버 한 줄의 예)</text>
-<rect x="24" y="52" width="146" height="36" rx="4" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="97" y="74.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">키</text>
-<rect x="174" y="52" width="206" height="36" rx="4" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="277" y="74.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">답하는 질문</text>
-<rect x="384" y="52" width="312" height="36" rx="4" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="540" y="74.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">웹 서버 한 줄</text>
-<rect x="24" y="92" width="146" height="36" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="97" y="114.3" font-size="15" text-anchor="middle" fill="#292929">time</text>
-<rect x="174" y="92" width="206" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="277" y="114.3" font-size="15" text-anchor="middle" fill="#292929">언제?</text>
-<rect x="384" y="92" width="312" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="540" y="114.3" font-size="15" text-anchor="middle" fill="#292929">2026-11-02 09:12:03</text>
-<rect x="24" y="132" width="146" height="36" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="97" y="154.3" font-size="15" text-anchor="middle" fill="#292929">source</text>
-<rect x="174" y="132" width="206" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="277" y="154.3" font-size="15" text-anchor="middle" fill="#292929">어느 로그에서?</text>
-<rect x="384" y="132" width="312" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="540" y="154.3" font-size="15" text-anchor="middle" fill="#292929">web</text>
-<rect x="24" y="172" width="146" height="36" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="97" y="194.3" font-size="15" text-anchor="middle" fill="#292929">user</text>
-<rect x="174" y="172" width="206" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="277" y="194.3" font-size="15" text-anchor="middle" fill="#292929">누가?</text>
-<rect x="384" y="172" width="312" height="36" rx="4" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="540" y="194.3" font-size="15" text-anchor="middle" fill="#292929">None (원래 없음)</text>
-<rect x="24" y="212" width="146" height="36" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="97" y="234.3" font-size="15" text-anchor="middle" fill="#292929">ip</text>
-<rect x="174" y="212" width="206" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="277" y="234.3" font-size="15" text-anchor="middle" fill="#292929">어디서?</text>
-<rect x="384" y="212" width="312" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="540" y="234.3" font-size="15" text-anchor="middle" fill="#292929">203.0.113.50</text>
-<rect x="24" y="252" width="146" height="36" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="97" y="274.4" font-size="15" text-anchor="middle" fill="#292929">action</text>
-<rect x="174" y="252" width="206" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="277" y="274.4" font-size="15" text-anchor="middle" fill="#292929">무엇을?</text>
-<rect x="384" y="252" width="312" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="540" y="274.4" font-size="15" text-anchor="middle" fill="#292929">POST /login</text>
-<rect x="24" y="292" width="146" height="36" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="97" y="314.4" font-size="15" text-anchor="middle" fill="#292929">result</text>
-<rect x="174" y="292" width="206" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="277" y="314.4" font-size="15" text-anchor="middle" fill="#292929">성공했나?</text>
-<rect x="384" y="292" width="312" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="540" y="314.4" font-size="15" text-anchor="middle" fill="#292929">실패</text>
-<rect x="24" y="332" width="146" height="36" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="97" y="354.4" font-size="15" text-anchor="middle" fill="#292929">raw</text>
-<rect x="174" y="332" width="206" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="277" y="354.4" font-size="15" text-anchor="middle" fill="#292929">(보관용)</text>
-<rect x="384" y="332" width="312" height="36" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="540" y="354.4" font-size="15" text-anchor="middle" fill="#292929">원래 줄 그대로</text>
-<text x="24" y="388" font-size="15" text-anchor="start" fill="#666660">원래 로그에 없는 값은 지어내지 않고 None 으로 둡니다.</text>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>web·server·saas 세 로그를 같은 키 여섯 개로 맞춘 정규화 이벤트</title>
+<desc>웹 서버, 권한 판정 서버, SaaS 로그 한 줄을 정규화해 time, source, user, ip, action, result 여섯 키로 맞춥니다. 원래 로그에 없는 값은 채우지 않고 null 로 둡니다.</desc>
+<defs><marker id="a-0302-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">1.1 세 로그 → 같은 키 여섯 개</text>
+<rect x="24" y="72" width="200" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="124.0" y="95.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">web</text>
+<text x="124.0" y="116.8" font-size="15" fill="#666660" text-anchor="middle">웹 서버(nginx)</text>
+<line x1="227" y1="101" x2="262" y2="175" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p03)"/>
+<rect x="24" y="144" width="200" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="124.0" y="167.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">server</text>
+<text x="124.0" y="188.8" font-size="15" fill="#666660" text-anchor="middle">권한 판정 서버</text>
+<line x1="227" y1="173" x2="262" y2="175" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p03)"/>
+<rect x="24" y="216" width="200" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="124.0" y="239.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">saas</text>
+<text x="124.0" y="260.8" font-size="15" fill="#666660" text-anchor="middle">SaaS 서비스</text>
+<line x1="227" y1="245" x2="262" y2="175" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p03)"/>
+<rect x="266" y="120" width="150" height="110" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="341.0" y="159.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">정규화</text>
+<text x="341.0" y="180.2" font-size="15" fill="#666660" text-anchor="middle">같은 키로</text>
+<text x="341.0" y="201.2" font-size="15" fill="#666660" text-anchor="middle">맞추기</text>
+<line x1="419" y1="175" x2="452" y2="175" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p03)"/>
+<rect x="456" y="72" width="240" height="202" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="576.0" y="146.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">이벤트 키 6개</text>
+<text x="576.0" y="167.8" font-size="15" fill="#666660" text-anchor="middle">time · source</text>
+<text x="576.0" y="188.8" font-size="15" fill="#666660" text-anchor="middle">user · ip</text>
+<text x="576.0" y="209.8" font-size="15" fill="#666660" text-anchor="middle">action · result</text>
+<rect x="24" y="296" width="672" height="46" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="324.2" font-size="15" fill="#292929" text-anchor="middle">없는 값은 null: web 은 user 없음 · server 는 ip 없음</text>
 </svg>

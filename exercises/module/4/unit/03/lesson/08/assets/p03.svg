@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>도전 3-1 보고서는 출력과 alerts.json, 두 알림의 관계, 상태 변경, 올리기를 채운다</title>
+<desc>도전 3-1 보고서의 칸이다. (가)는 출력과 alerts.json 내용, 건수를 붙인다. (나)와 (다)는 핵심 질문이고, 마무리 (가)는 git status 에서 .env 나 .venv 를 봤는지 쓴다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
+<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">도전 3-1 보고서 · 채울 칸</text>
+<rect x="30" y="52" width="90" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="75" y="87.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(가)</text>
+<rect x="135" y="52" width="555" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="147" y="77.1" font-size="14" fill="#292929">① 출력 전체 ② alerts.json 내용 (코드 상자 두 개)</text>
+<text x="147" y="96.7" font-size="14" fill="#292929">③ 알림 건수</text>
+<rect x="30" y="124" width="90" height="60" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="75" y="159.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(나) 핵심</text>
+<rect x="135" y="124" width="555" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="147" y="149.1" font-size="14" fill="#292929">① 203.0.113.50 이 web 줄에 나오는 시각 ② 09:12 와 같은지</text>
+<text x="147" y="168.7" font-size="14" fill="#292929">③ 같은 일인지와 두 건을 다루는 방법</text>
+<rect x="30" y="196" width="90" height="60" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="75" y="231.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(다) 핵심</text>
+<rect x="135" y="196" width="555" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="147" y="221.1" font-size="14" fill="#292929">① 바꿀 status 이름 ② note 에 더 적을 내용</text>
+<text x="147" y="240.7" font-size="14" fill="#292929">③ 알림을 지우지 않고 남겨 두는 이유</text>
+<rect x="30" y="268" width="90" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="75" y="303.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">마무리</text>
+<rect x="135" y="268" width="555" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="147" y="293.1" font-size="14" fill="#292929">(가) git status 에서 .env · .venv 가 보였는지</text>
+<text x="147" y="312.7" font-size="14" fill="#292929">보였다면 한 조치</text>
+</g>
+</svg>

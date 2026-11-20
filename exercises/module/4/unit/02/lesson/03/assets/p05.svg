@@ -1,33 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
-<title>실습 2-2 정리: 시각, 결과, 이름 꺼내기, CSV 읽기 코드</title>
-<desc>판정 서버 시각은 strptime 과 strftime, 결과는 ALLOWED_MAP 과 RESULT_MAP 으로 바꿉니다. 메일 주소는 split("@")의 첫 값이 이름이고, CSV 는 DictReader 로 읽습니다.</desc>
-<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 2-2 정리</text>
-<rect x="24" y="56" width="190" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="119" y="84.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">판정 서버 시각</text>
-<line x1="216" y1="80" x2="236" y2="80" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
-<rect x="240" y="56" width="456" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="252" y="84.1" font-size="14" text-anchor="start" fill="#292929">strptime(…, SERVER_TIME_FORMAT) → strftime</text>
-<rect x="24" y="118" width="190" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="119" y="146.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">allowed → 결과</text>
-<line x1="216" y1="142" x2="236" y2="142" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
-<rect x="240" y="118" width="456" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="252" y="146.1" font-size="14" text-anchor="start" fill="#292929">result = ALLOWED_MAP[allowed]</text>
-<rect x="24" y="180" width="190" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="119" y="208.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">메일에서 이름</text>
-<line x1="216" y1="204" x2="236" y2="204" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
-<rect x="240" y="180" width="456" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="252" y="208.1" font-size="14" text-anchor="start" fill="#292929">row["account"].split("@") → [0]</text>
-<rect x="24" y="242" width="190" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="119" y="270.4" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">outcome → 결과</text>
-<line x1="216" y1="266" x2="236" y2="266" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
-<rect x="240" y="242" width="456" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="252" y="270.1" font-size="14" text-anchor="start" fill="#292929">result = RESULT_MAP[outcome]</text>
-<rect x="24" y="304" width="190" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="119" y="332.4" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">CSV 읽기</text>
-<line x1="216" y1="328" x2="236" y2="328" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
-<rect x="240" y="304" width="456" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="252" y="332.1" font-size="14" text-anchor="start" fill="#292929">csv.DictReader(saas_file) → for row in reader:</text>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>실습 2-2: exercise2-2_run.py 가 events_time.py 함수를 부르는 순서와 세 단계 출력</title>
+<desc>load_events, add_hour, pick_failed 로 실패 표를 만든 뒤 count_by_user, count_by_hour, save_failed 를 부릅니다. 직접 쓰는 곳은 count_by_user(1~3번)와 count_by_hour(4·5번)입니다.</desc>
+<defs><marker id="a-0303-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">실습 2-2: exercise2-2_run.py 가 부르는 순서</text>
+<rect x="24" y="70" width="201.3" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="124.65" y="94.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">load_events</text>
+<text x="124.65" y="115.8" font-size="15" fill="#666660" text-anchor="middle">미리 채움 · 읽기</text>
+<line x1="228.3" y1="100.0" x2="256.3" y2="100.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p05)"/>
+<rect x="259.3" y="70" width="201.3" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="359.95000000000005" y="94.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">add_hour</text>
+<text x="359.95000000000005" y="115.8" font-size="15" fill="#666660" text-anchor="middle">미리 채움 · hour 열</text>
+<line x1="463.6" y1="100.0" x2="491.6" y2="100.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p05)"/>
+<rect x="494.6" y="70" width="201.3" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="595.25" y="94.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">pick_failed</text>
+<text x="595.25" y="115.8" font-size="15" fill="#666660" text-anchor="middle">미리 채움 · 실패만</text>
+<path d="M595.5,130 L595.5,156 L124.5,156" fill="none" stroke="#666660" stroke-width="2"/>
+<line x1="124.5" y1="156" x2="124.5" y2="183" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p05)"/>
+<rect x="24" y="186" width="201" height="66" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="124.5" y="213.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">count_by_user</text>
+<text x="124.5" y="234.8" font-size="15" fill="#666660" text-anchor="middle">1 ~ 3번 직접</text>
+<line x1="124.5" y1="255" x2="124.5" y2="283" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p05)"/>
+<rect x="24" y="286" width="201" height="66" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="124.5" y="313.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">단계 1</text>
+<text x="124.5" y="334.8" font-size="15" fill="#666660" text-anchor="middle">사용자별 실패 횟수</text>
+<line x1="359.5" y1="156" x2="359.5" y2="183" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p05)"/>
+<rect x="259" y="186" width="201" height="66" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="359.5" y="213.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">count_by_hour</text>
+<text x="359.5" y="234.8" font-size="15" fill="#666660" text-anchor="middle">4 · 5번 직접</text>
+<line x1="359.5" y1="255" x2="359.5" y2="283" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p05)"/>
+<rect x="259" y="286" width="201" height="66" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="359.5" y="313.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">단계 2</text>
+<text x="359.5" y="334.8" font-size="15" fill="#666660" text-anchor="middle">시간대별 실패 횟수</text>
+<line x1="594.5" y1="156" x2="594.5" y2="183" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p05)"/>
+<rect x="494" y="186" width="201" height="66" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="594.5" y="213.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">save_failed</text>
+<text x="594.5" y="234.8" font-size="15" fill="#666660" text-anchor="middle">미리 채움</text>
+<line x1="594.5" y1="255" x2="594.5" y2="283" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p05)"/>
+<rect x="494" y="286" width="201" height="66" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="594.5" y="313.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">단계 3</text>
+<text x="594.5" y="334.8" font-size="15" fill="#666660" text-anchor="middle">저장한 행 수 · CSV</text>
+<rect x="24" y="381" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200"/>
+<text x="48" y="394" font-size="14" fill="#666660" text-anchor="start">직접 쓰는 곳</text>
+<rect x="154.4" y="381" width="16" height="16" rx="3" fill="#f1f1ef" stroke="#dededb"/>
+<text x="178.4" y="394" font-size="14" fill="#666660" text-anchor="start">미리 채운 곳</text>
+<rect x="284.8" y="381" width="16" height="16" rx="3" fill="#e4f3ea" stroke="#1f7a4a"/>
+<text x="308.8" y="394" font-size="14" fill="#666660" text-anchor="start">출력</text>
 </svg>

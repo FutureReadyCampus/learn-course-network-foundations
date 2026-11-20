@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>도전 1-1 보고서 세 칸과 마무리 칸: 출력 · 놓친 예 · SIEM 방식 · .env 확인</title>
+<desc>도전 1-1 보고서의 세 질문과 마무리 질문 하나, 그리고 각각의 쓸 내용입니다. (나)와 (다)는 핵심 질문입니다.</desc>
+<defs><marker id="a-m4u01l05-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker><marker id="a-m4u01l05-p03-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0442e"/></marker></defs>
+<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
+<text x="24" y="30" font-size="19" fill="#292929" font-weight="700">도전 1-1 · 마무리 · 채울 칸</text>
+<rect x="24" y="50" width="82" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="65.0" y="91.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(가)</text>
+<rect x="118" y="50" width="578" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="132" y="80.8" font-size="15" fill="#292929" font-weight="700">출력 전체 · 분류별 요청 수</text>
+<text x="132" y="101.8" font-size="15" fill="#666660">쓸 내용: 출력 · 분류별 수 · 같은 주소에서 반복된 의심 요청</text>
+<rect x="24" y="134" width="82" height="72" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="65.0" y="165.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(나)</text>
+<text x="65.0" y="186.2" font-size="14" fill="#b32a17" text-anchor="middle">핵심</text>
+<rect x="118" y="134" width="578" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="132" y="164.8" font-size="15" fill="#292929" font-weight="700">상태 코드 · 경로만 보는 규칙이 놓친 예 두 가지</text>
+<text x="132" y="185.8" font-size="15" fill="#666660">쓸 내용: 놓친 예 두 가지 · 각각 왜 놓쳤는지</text>
+<rect x="24" y="218" width="82" height="72" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="65.0" y="249.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(다)</text>
+<text x="65.0" y="270.2" font-size="14" fill="#b32a17" text-anchor="middle">핵심</text>
+<rect x="118" y="218" width="578" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="132" y="248.8" font-size="15" fill="#292929" font-weight="700">보안 담당 1명 · 클라우드 위주 회사의 SIEM(심) 방식</text>
+<text x="132" y="269.8" font-size="15" fill="#666660">쓸 내용: 고른 방식과 이유 · 고르지 않은 방식 하나</text>
+<rect x="24" y="302" width="82" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="65.0" y="343.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">마무리</text>
+<rect x="118" y="302" width="578" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="132" y="332.8" font-size="15" fill="#292929" font-weight="700">git status 에서 .env · .venv 가 보였는지</text>
+<text x="132" y="353.8" font-size="15" fill="#666660">쓸 내용: 보였는지 · 보였다면 한 조치</text>
+</g>
+</svg>

@@ -1,32 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>anomaly_detection 폴더에 baseline_traffic.csv 를 만들고 8줄인지 확인한다</title>
-<desc>security-agent-toolkit 안의 anomaly_detection 폴더에 Unit 4 파일 두 개가 있어야 합니다. baseline_traffic.csv 를 New File 로 만들어 붙여 넣고 줄 수가 헤더 포함 8인지 확인합니다. 보고서 report_u5.md 는 「보고서 쓰기」 레슨에서 만듭니다.</desc>
-<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 403" role="img">
+<title>anomaly_detection 에 llm_client.py 를 복사하고 점수 파일 5건을 만든다</title>
+<desc>왼쪽은 폴더 배치이고 오른쪽은 준비 순서다. agent_core 의 llm_client.py 를 복사해 키가 읽히면 True, New File 로 만들어 붙여 넣은 점수 파일을 읽으면 5 가 나와야 한다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">폴더 준비: baseline_traffic.csv 를 만든다</text>
-<rect x="20" y="52" width="420" height="332" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="40" y="84" font-size="15" text-anchor="start" fill="#292929" font-weight="700">security-agent-toolkit/</text>
-<text x="60" y="114" font-size="15" text-anchor="start" fill="#292929" font-weight="700">anomaly_detection/</text>
-<text x="84" y="146" font-size="15" text-anchor="start" fill="#292929">login_detection.py</text>
-<text x="424" y="146" font-size="14" text-anchor="end" fill="#666660">Unit 4</text>
-<text x="84" y="176" font-size="15" text-anchor="start" fill="#292929">normalized_events.json</text>
-<text x="424" y="176" font-size="14" text-anchor="end" fill="#666660">Unit 4</text>
-<text x="84" y="206" font-size="15" text-anchor="start" fill="#292929">report_u5.md</text>
-<text x="424" y="206" font-size="14" text-anchor="end" fill="#666660">「보고서 쓰기」에서</text>
-<text x="84" y="236" font-size="15" text-anchor="start" fill="#292929" font-weight="700">baseline_traffic.csv</text>
-<text x="424" y="236" font-size="14" text-anchor="end" fill="#9a6200">새로 만듦</text>
-<rect x="84" y="270" width="340" height="100" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="94" y="306" font-size="14" text-anchor="start" fill="#292929"><tspan x="94" dy="0" font-weight="700">date,requests_per_minute</tspan><tspan x="94" dy="19">2026-10-26,2</tspan><tspan x="94" dy="19">… 하루에 한 줄씩 7일</tspan></text>
-<rect x="470" y="52" width="230" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="585.0" y="79" font-size="14" text-anchor="middle" fill="#292929"><tspan x="585.0" dy="0" font-weight="700">폴더로 이동</tspan><tspan x="585.0" dy="19">cd anomaly_detection</tspan></text>
-<rect x="470" y="138" width="230" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="585.0" y="165" font-size="14" text-anchor="middle" fill="#292929"><tspan x="585.0" dy="0" font-weight="700">파일 만드는 법</tspan><tspan x="585.0" dy="19">New File › 이름 › 붙여 넣기</tspan></text>
-<polyline points="585,118 585,135" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
-<rect x="470" y="224" width="230" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="585.0" y="251" font-size="14" text-anchor="middle" fill="#292929"><tspan x="585.0" dy="0" font-weight="700">CSV 만들기</tspan><tspan x="585.0" dy="19">baseline_traffic.csv</tspan></text>
-<polyline points="585,204 585,221" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
-<rect x="470" y="310" width="230" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="585.0" y="337" font-size="14" text-anchor="middle" fill="#292929"><tspan x="585.0" dy="0" font-weight="700">줄 수 확인</tspan><tspan x="585.0" dy="19">8 이 나오면 정상</tspan></text>
-<polyline points="585,290 585,307" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">폴더 배치와 준비 순서</text>
+<rect x="12" y="52" width="330" height="320" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="28" y="86" font-size="15" text-anchor="start" fill="#292929" font-weight="700">security-agent-toolkit/</text>
+<text x="46" y="123" font-size="15" text-anchor="start" fill="#292929">.env</text>
+<text x="330" y="123" font-size="14" text-anchor="end" fill="#666660">API 키</text>
+<text x="46" y="160" font-size="15" text-anchor="start" fill="#292929">agent_core/llm_client.py</text>
+<text x="330" y="160" font-size="14" text-anchor="end" fill="#666660">원본</text>
+<text x="46" y="197" font-size="15" text-anchor="start" fill="#292929" font-weight="700">anomaly_detection/</text>
+<text x="64" y="234" font-size="15" text-anchor="start" fill="#292929">llm_client.py</text>
+<text x="330" y="234" font-size="14" text-anchor="end" fill="#666660">cp 로 복사</text>
+<text x="64" y="271" font-size="15" text-anchor="start" fill="#292929">unit05_risk_scores.json</text>
+<text x="330" y="271" font-size="14" text-anchor="end" fill="#666660">5건</text>
+<text x="64" y="308" font-size="15" text-anchor="start" fill="#292929">Unit 3 · 7 파일</text>
+<text x="330" y="308" font-size="14" text-anchor="end" fill="#666660">없으면 만들기</text>
+<text x="64" y="345" font-size="15" text-anchor="start" fill="#292929">report_u5.md</text>
+<text x="330" y="345" font-size="14" text-anchor="end" fill="#666660">보고서 쓰기에서</text>
+<rect x="366" y="52" width="342" height="62.95" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="375" y="78.12" font-size="16" text-anchor="start" fill="#292929" font-weight="700">2. 위치와 파일</text>
+<text x="375" y="100.25" font-size="15" text-anchor="start" fill="#292929">cd anomaly_detection → pwd → ls</text>
+<line x1="537" y1="115.95" x2="537" y2="127.95" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="366" y="128.95" width="342" height="84.7" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="375" y="155.07" font-size="16" text-anchor="start" fill="#292929" font-weight="700">3. 키 파일 복사</text>
+<text x="375" y="177.2" font-size="15" text-anchor="start" fill="#292929">cp ../agent_core/llm_client.py . →</text>
+<text x="375" y="198.95" font-size="15" text-anchor="start" fill="#292929">read_api_key 가 True</text>
+<line x1="537" y1="214.65" x2="537" y2="226.65" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="366" y="227.65" width="342" height="84.7" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="375" y="253.77" font-size="16" text-anchor="start" fill="#292929" font-weight="700">5. 점수 파일</text>
+<text x="375" y="275.9" font-size="15" text-anchor="start" fill="#292929">New File 로 unit05_risk_scores.json</text>
+<text x="375" y="297.65" font-size="15" text-anchor="start" fill="#292929">붙여 넣기 (덮어쓰기)</text>
+<line x1="537" y1="313.35" x2="537" y2="325.35" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="366" y="326.35" width="342" height="62.95" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="375" y="352.47" font-size="16" text-anchor="start" fill="#292929" font-weight="700">6. 확인</text>
+<text x="375" y="374.6" font-size="15" text-anchor="start" fill="#292929">5 가 나오고 import 두 줄에 오류 없음</text>
 </g>
 </svg>

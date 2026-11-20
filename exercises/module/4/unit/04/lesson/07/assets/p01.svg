@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>도전 4-3 목표: 남은 알림에 로그인 규칙 알림을 합쳐 다시 세고 한 문장으로 적습니다</title>
+<desc>실습 4-2의 예외 규칙을 적용해 남은 알림에 login_alerts.json 의 A8 을 합칩니다. final_check.py 가 합친 알림의 오탐 수와 놓친 문제를 다시 구하고, 세 숫자를 한 문장으로 만듭니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">목표: 합친 알림과 평가 한 문장</text>
+<rect x="20" y="62" width="200" height="76" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="120.0" y="95.3" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">예외 적용 뒤</text>
+<text x="120.0" y="116.6" font-size="15" fill="#292929" text-anchor="middle">남은 알림</text>
+<rect x="20" y="158" width="200" height="76" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="120.0" y="191.2" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">login_alerts.json</text>
+<text x="120.0" y="210.8" font-size="14" fill="#292929" text-anchor="middle">A8 · 203.0.113.50</text>
+<rect x="260" y="100" width="180" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="350.0" y="143.3" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">final_check.py</text>
+<text x="350.0" y="164.6" font-size="15" fill="#292929" text-anchor="middle">합치고 다시 세기</text>
+<polyline points="220,100 256,130" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="220,196 256,166" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="480" y="62" width="220" height="172" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="590.0" y="122.3" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">한 문장 요약</text>
+<text x="590.0" y="143.6" font-size="15" fill="#292929" text-anchor="middle">알림 ?개 중</text>
+<text x="590.0" y="164.6" font-size="15" fill="#292929" text-anchor="middle">오탐 ?개 ·</text>
+<text x="590.0" y="185.6" font-size="15" fill="#292929" text-anchor="middle">놓친 문제 ?개</text>
+<polyline points="440,148 476,148" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<text x="20" y="290" font-size="15" fill="#666660">규칙을 하나 더 합치면 놓친 문제는 줄지만, 오탐이 늘 수도 있어 다시 셉니다.</text>
+</g>
+</svg>

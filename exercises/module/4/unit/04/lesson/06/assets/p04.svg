@@ -1,29 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img">
-<title>실습 4-3 보고서: (가) · (나) · (다) 에 채울 칸 체크리스트</title>
-<desc>실습 4-3 보고서의 (가)는 출력 전체와 유형별 개수, (나)는 기타 실패에 섞인 server·web 이벤트, (다)는 규칙 순서를 바꿨을 때의 개수와 잃는 정보를 씁니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>도전 4-2: evaluation.py 의 함수들이 단계 1 ~ 4 의 숫자를 만듭니다</title>
+<desc>load_table 로 두 파일을 읽고, count_real_alerts 가 진짜 문제였던 알림 수를, find_false_alarms 가 오탐과 규칙별 개수를, find_missed 가 알림이 나지 않은 진짜 문제를 구합니다. challenge4-2_run.py 가 이 결과를 네 단계로 출력합니다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 4-3 보고서: 채울 칸</text>
-<rect x="20" y="52" width="214" height="234" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="20" y="52" width="214" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="127.0" y="79" font-size="15" text-anchor="middle" fill="#292929"><tspan x="127.0" dy="0" font-weight="700">(가) 출력과 값</tspan></text>
-<rect x="32" y="110" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="54" y="122" font-size="14" text-anchor="start" fill="#292929"><tspan x="54" dy="0">출력 전체 (코드 상자)</tspan></text>
-<rect x="32" y="143" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="54" y="155" font-size="14" text-anchor="start" fill="#292929"><tspan x="54" dy="0">유형별 이벤트 수</tspan></text>
-<rect x="253" y="52" width="214" height="234" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="253" y="52" width="214" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="360.0" y="79" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">(나) 핵심 질문</tspan></text>
-<rect x="265" y="110" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="287" y="122" font-size="14" text-anchor="start" fill="#292929"><tspan x="287" dy="0">server 이벤트 하나와</tspan><tspan x="287" dy="19">web 이벤트 하나의</tspan><tspan x="287" dy="19">action</tspan></text>
-<rect x="265" y="181" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="287" y="193" font-size="14" text-anchor="start" fill="#292929"><tspan x="287" dy="0">「기타 실패」로 묶으면</tspan><tspan x="287" dy="19">담당자가 하기 어려운 일</tspan></text>
-<rect x="486" y="52" width="214" height="234" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="486" y="52" width="214" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="593.0" y="79" font-size="15" text-anchor="middle" fill="#292929"><tspan x="593.0" dy="0" font-weight="700">(다) 핵심 질문</tspan></text>
-<rect x="498" y="110" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="520" y="122" font-size="14" text-anchor="start" fill="#292929"><tspan x="520" dy="0">「기타 실패」를 맨 위로</tspan><tspan x="520" dy="19">옮긴 뒤의 유형별 개수</tspan></text>
-<rect x="498" y="162" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="520" y="174" font-size="14" text-anchor="start" fill="#292929"><tspan x="520" dy="0">담당자가 알 수 없게 되는</tspan><tspan x="520" dy="19">것</tspan></text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 4-2 · 알림의 오탐과 미탐 세기</text>
+<text x="700" y="32" font-size="15" fill="#666660" text-anchor="end">직접 쓰는 곳 7군데</text>
+<rect x="20" y="56" width="220" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="130.0" y="81.2" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">load_table</text>
+<text x="130.0" y="100.8" font-size="14" fill="#292929" text-anchor="middle">두 JSON 을 표로</text>
+<polyline points="240,86 266,86" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="270" y="56" width="430" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="485.0" y="91.0" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">단계 1 · 알림 수  len(alerts)</text>
+<rect x="20" y="136" width="330" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="185.0" y="163.2" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">count_real_alerts</text>
+<text x="185.0" y="182.8" font-size="14" fill="#292929" text-anchor="middle">7번 · is_real.sum()</text>
+<polyline points="350,168 366,168" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="370" y="136" width="330" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="535.0" y="173.0" font-size="14" fill="#292929" text-anchor="middle">단계 2 · 진짜 문제였던 알림 수</text>
+<rect x="20" y="216" width="330" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="185.0" y="243.2" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">find_false_alarms</text>
+<text x="185.0" y="262.8" font-size="14" fill="#292929" text-anchor="middle">1 ~ 3번 · ~ · value_counts()</text>
+<polyline points="350,248 366,248" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="370" y="216" width="330" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="535.0" y="253.0" font-size="14" fill="#292929" text-anchor="middle">단계 3 · 오탐 수 · 규칙별 개수</text>
+<rect x="20" y="296" width="330" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="185.0" y="323.2" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">find_missed</text>
+<text x="185.0" y="342.8" font-size="14" fill="#292929" text-anchor="middle">4 ~ 6번 · isin · ~</text>
+<polyline points="350,328 366,328" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="370" y="296" width="330" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="535.0" y="333.0" font-size="14" fill="#292929" text-anchor="middle">단계 4 · 놓친 진짜 문제</text>
+<polyline points="130,116 130,132" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<text x="20" y="388" font-size="15" fill="#666660">채우기 전에 실행하면 NameError 가 납니다. 주석은 지우지 않습니다.</text>
 </g>
 </svg>

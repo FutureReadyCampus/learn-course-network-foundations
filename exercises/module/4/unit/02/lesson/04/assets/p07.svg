@@ -1,29 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
-<title>Unit 2 에서 한 세 가지를 확인하고 normalized_events.json 을 Unit 3 판다스로 넘긴다</title>
-<desc>실습 2-1은 웹 서버 로그, 실습 2-2는 판정 서버와 SaaS 로그, 실습 2-3은 합쳐 시간순 저장입니다. Unit 3에서는 normalized_events.json 같은 파일을 판다스로 읽어 실패를 세고 묶습니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img">
+<title>Unit 2: 평소 기준을 정하고, 로그인 실패 주소를 찾고, 유형별로 센 뒤 Unit 3로</title>
+<desc>도전 2-1에서 지난 7일로 알림 기준 5번을 정하고, 실습 2-3에서 5번 이상 실패한 주소를 찾고, 도전 2-2에서 유형을 정해 셉니다. Unit 3에서는 트래픽 급증을 찾고 알림을 한 파일로 모읍니다.</desc>
 <defs><marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">이번 Unit 마무리</text>
-<rect x="24" y="58" width="110" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="79" y="86.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">실습 2-1</text>
-<rect x="144" y="58" width="296" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="156" y="86.3" font-size="15" text-anchor="start" fill="#292929">웹 서버 로그 → 공통 이벤트</text>
-<rect x="24" y="120" width="110" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="79" y="148.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">실습 2-2</text>
-<rect x="144" y="120" width="296" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="156" y="148.3" font-size="15" text-anchor="start" fill="#292929">판정 서버 · SaaS → 공통 이벤트</text>
-<rect x="24" y="182" width="110" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="79" y="210.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">실습 2-3</text>
-<rect x="144" y="182" width="296" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="156" y="210.3" font-size="15" text-anchor="start" fill="#292929">합쳐 시간순 정렬 · 저장</text>
-<line x1="442" y1="140" x2="476" y2="140" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
-<rect x="480" y="58" width="216" height="172" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="588" y="107.8" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">Unit 3</text>
-<text x="588" y="128.5" font-size="14" text-anchor="middle" fill="#292929">normalized_events.json</text>
-<text x="588" y="148.8" font-size="14" text-anchor="middle" fill="#292929">판다스로 읽기</text>
-<text x="588" y="169.1" font-size="14" text-anchor="middle" fill="#292929">실패 고르고 세기</text>
-<text x="588" y="189.4" font-size="14" text-anchor="middle" fill="#292929">사용자별 · 시간대별</text>
-<rect x="24" y="256" width="672" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="360" y="288.4" font-size="15" text-anchor="middle" fill="#292929">판다스 설치를 Unit 1 마무리 때 했다면 확인만 합니다.</text>
+<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">이번 Unit 마무리</text>
+<rect x="20" y="64" width="150" height="116" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="95.0" y="107" font-size="15" text-anchor="middle" fill="#292929"><tspan x="95.0" dy="0" font-weight="700">도전 2-1</tspan><tspan x="95.0" dy="20">지난 7일로</tspan><tspan x="95.0" dy="20">알림 기준 5번</tspan></text>
+<rect x="195" y="64" width="150" height="116" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="270.0" y="107" font-size="15" text-anchor="middle" fill="#292929"><tspan x="270.0" dy="0" font-weight="700">실습 2-3</tspan><tspan x="270.0" dy="20">로그인 실패</tspan><tspan x="270.0" dy="20">5번 이상 주소</tspan></text>
+<rect x="370" y="64" width="150" height="116" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="445.0" y="107" font-size="15" text-anchor="middle" fill="#292929"><tspan x="445.0" dy="0" font-weight="700">도전 2-2</tspan><tspan x="445.0" dy="20">이벤트 유형</tspan><tspan x="445.0" dy="20">정하고 세기</tspan></text>
+<rect x="545" y="64" width="150" height="116" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="620.0" y="107" font-size="15" text-anchor="middle" fill="#292929"><tspan x="620.0" dy="0" font-weight="700">Unit 3</tspan><tspan x="620.0" dy="20">트래픽 급증</tspan><tspan x="620.0" dy="20">알림 한 파일로</tspan></text>
+<polyline points="173,122.0 191,122.0" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<polyline points="348,122.0 366,122.0" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<polyline points="523,122.0 541,122.0" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p07)"/>
+<rect x="20" y="214" width="680" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="249" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0">평소를 구해 기준을 정하고 → 그 기준으로 찾고 → 유형을 붙여 센다</tspan></text>
 </g>
 </svg>

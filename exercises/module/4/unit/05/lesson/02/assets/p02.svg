@@ -1,26 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
-<title>초까지 다른 시각에서 초를 버리면 같은 분끼리 묶어 셀 수 있다</title>
-<desc>Unit 4 규칙은 같은 주소의 실패 횟수를, 이번 규칙은 짧은 시간의 요청 수를 봅니다. 09:12:03, 09:12:06, 09:12:15 는 초까지 보면 모두 다르지만 초를 버리면 09:12:00 으로 같아집니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>seoyeon 은 20점 + 25점 = 45점이라 등급이 mid 인 점수 기록 한 건이 된다</title>
+<desc>규칙마다 점수가 정해져 있고 같은 대상에게 걸린 규칙 점수를 더합니다. 합계가 60점 이상이면 high, 35점 이상이면 mid, 그보다 낮으면 low 입니다. 한 건에는 entity · score · grade · reasons 네 가지가 들어 있습니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">왜 초를 버리고 분 단위로 세는가</text>
-<rect x="20" y="52" width="330" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="185.0" y="79" font-size="15" text-anchor="middle" fill="#292929"><tspan x="185.0" dy="0" font-weight="700">Unit 4 로그인 실패 규칙</tspan><tspan x="185.0" dy="20">같은 주소가 몇 번 실패했나</tspan></text>
-<rect x="370" y="52" width="330" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="535.0" y="79" font-size="15" text-anchor="middle" fill="#292929"><tspan x="535.0" dy="0" font-weight="700">이번 Unit 트래픽 급증 규칙</tspan><tspan x="535.0" dy="20">짧은 시간에 요청이 몇 개인가</tspan></text>
-<rect x="60" y="150" width="150" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="135.0" y="174" font-size="15" text-anchor="middle" fill="#292929"><tspan x="135.0" dy="0">09:12:03</tspan></text>
-<polyline points="213,169 446,222" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
-<rect x="60" y="202" width="150" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="135.0" y="226" font-size="15" text-anchor="middle" fill="#292929"><tspan x="135.0" dy="0">09:12:06</tspan></text>
-<polyline points="213,221 446,222" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
-<rect x="60" y="254" width="150" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="135.0" y="278" font-size="15" text-anchor="middle" fill="#292929"><tspan x="135.0" dy="0">09:12:15</tspan></text>
-<polyline points="213,273 446,222" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
-<text x="330" y="150" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">초를 버림</text>
-<rect x="450" y="182" width="210" height="80" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="555.0" y="217" font-size="15" text-anchor="middle" fill="#292929"><tspan x="555.0" dy="0" font-weight="700">09:12:00</tspan><tspan x="555.0" dy="20">같은 분으로 묶임</tspan></text>
-<text x="135" y="326" font-size="14" text-anchor="middle" fill="#666660">초까지 보면 모두 다른 시각</text>
-<text x="555" y="326" font-size="14" text-anchor="middle" fill="#666660">같은 분끼리 그룹화해 센다</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">점수 기록 한 건은 이렇게 만들어졌습니다</text>
+<text x="20" y="66" font-size="15" fill="#666660">규칙마다 점수</text>
+<rect x="20" y="78" width="210" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="125" y="104.6" font-size="15" fill="#292929" text-anchor="middle">퇴사한 계정 60점</text>
+<rect x="20" y="132" width="210" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="125" y="158.6" font-size="15" fill="#292929" text-anchor="middle">대량 다운로드 25점</text>
+<rect x="20" y="186" width="210" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="125" y="212.6" font-size="15" fill="#292929" text-anchor="middle">평소와 다른 IP 20점</text>
+<rect x="260" y="132" width="170" height="98" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="345" y="175.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">seoyeon 합계</text>
+<text x="345" y="196.1" font-size="15" fill="#292929" text-anchor="middle">20 + 25 = 45점</text>
+<polyline points="230,154 256,166" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="230,208 256,196" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="460" y="60" width="240" height="170" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="474" y="98.5" font-size="15" fill="#292929" font-weight="700">한 건에 든 네 가지</text>
+<text x="474" y="119.5" font-size="15" fill="#292929">entity: seoyeon</text>
+<text x="474" y="140.5" font-size="15" fill="#292929">score: 45</text>
+<text x="474" y="161.5" font-size="15" fill="#292929">grade: mid</text>
+<text x="474" y="181.5" font-size="14" fill="#292929">reasons: 평소와 다른 IP ·</text>
+<text x="474" y="201.1" font-size="14" fill="#292929">대량 다운로드</text>
+<polyline points="430,181 456,181" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="20" y="275" font-size="15" fill="#666660">합계로 등급 정하기</text>
+<rect x="20" y="288" width="238" height="40" rx="4" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<rect x="258" y="288" width="170" height="40" rx="4" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<rect x="428" y="288" width="272" height="40" rx="4" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="139" y="314" font-size="15" fill="#292929" text-anchor="middle">low  (35점 미만)</text>
+<text x="343" y="314" font-size="15" fill="#292929" text-anchor="middle">mid  (35점 이상)</text>
+<text x="564" y="314" font-size="15" fill="#292929" text-anchor="middle">high  (60점 이상)</text>
+<polyline points="326,352 326,332" fill="none" stroke="#292929" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="340" y="366" font-size="15" fill="#292929" font-weight="700">45점 = mid</text>
 </g>
 </svg>

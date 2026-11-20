@@ -1,37 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 350" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>이번에 새로 하는 세 가지: 다른 열로 묶어 세기, 시각에서 시 꺼내기, CSV 저장</title>
-<desc>실패한 이벤트를 사용자별로 묶어 묶음마다 셉니다. 문자열 시각은 날짜·시간 값으로 바꿔야 시를 꺼낼 수 있고, 결과는 CSV 로 저장해 엑셀로 엽니다.</desc>
-<defs><marker id="a-0303-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">왜 실패를 묶어서 세는가</text>
-<rect x="24" y="72" width="110" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="79.0" y="109.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">묶기</text>
-<rect x="160" y="72" width="158.7" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="239.35" y="109.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실패한 이벤트</text>
-<line x1="321.7" y1="104.0" x2="345.7" y2="104.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p02)"/>
-<rect x="348.7" y="72" width="158.7" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="428.04999999999995" y="109.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">사용자별로 묶기</text>
-<line x1="510.4" y1="104.0" x2="534.4" y2="104.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p02)"/>
-<rect x="537.4" y="72" width="158.7" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="616.75" y="109.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">묶음마다 개수</text>
-<rect x="24" y="162" width="110" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="79.0" y="199.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">시간</text>
-<rect x="160" y="162" width="158.7" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="239.35" y="188.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">"09:01:05"</text>
-<text x="239.35" y="209.8" font-size="15" fill="#666660" text-anchor="middle">문자열</text>
-<line x1="321.7" y1="194.0" x2="345.7" y2="194.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p02)"/>
-<rect x="348.7" y="162" width="158.7" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="428.04999999999995" y="199.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">날짜·시간 값</text>
-<line x1="510.4" y1="194.0" x2="534.4" y2="194.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p02)"/>
-<rect x="537.4" y="162" width="158.7" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="616.75" y="199.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">「시」 = 9</text>
-<rect x="24" y="252" width="110" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="79.0" y="289.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">저장</text>
-<rect x="160" y="252" width="158.7" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="239.35" y="289.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">분석 결과 표</text>
-<line x1="321.7" y1="284.0" x2="345.7" y2="284.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p02)"/>
-<rect x="348.7" y="252" width="158.7" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="428.04999999999995" y="289.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">CSV 파일</text>
-<line x1="510.4" y1="284.0" x2="534.4" y2="284.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p02)"/>
-<rect x="537.4" y="252" width="158.7" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="616.75" y="289.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">엑셀로 열기</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
+<title>거절 이유가 퇴사한 계정, 권한 없음, 허용인지에 따라 할 일과 순서가 다르다</title>
+<desc>check_permission 은 허용 여부와 이유를 돌려준다. 퇴사한 계정은 계정 정리로 1순위, 권한 없음은 요청 이유 확인으로 2순위, 규칙은 허용인데 서버가 거절한 것은 서버 설정 확인으로 3순위다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
+<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">거절 이유에 따라 할 일과 순서가 다름</text>
+<rect x="30" y="52" width="660" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="79.2" font-size="15" fill="#292929" text-anchor="middle">check_permission(사용자, 자원, 행위) → (허용 여부, 이유)</text>
+<text x="130" y="124" font-size="15" fill="#666660" text-anchor="middle" font-weight="700">거절 이유</text>
+<text x="375" y="124" font-size="15" fill="#666660" text-anchor="middle" font-weight="700">할 일</text>
+<text x="620" y="124" font-size="15" fill="#666660" text-anchor="middle" font-weight="700">순서</text>
+<rect x="30" y="138" width="200" height="54" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="130" y="170.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">퇴사한 계정</text>
+<rect x="275" y="138" width="200" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="375" y="170.2" font-size="15" fill="#292929" text-anchor="middle">계정 정리</text>
+<rect x="550" y="138" width="140" height="54" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="620" y="170.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">1순위</text>
+<line x1="230" y1="165" x2="273" y2="165" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<line x1="475" y1="165" x2="548" y2="165" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="30" y="208" width="200" height="54" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="130" y="240.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">권한 없음</text>
+<rect x="275" y="208" width="200" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="375" y="240.2" font-size="15" fill="#292929" text-anchor="middle">요청한 이유 확인</text>
+<rect x="550" y="208" width="140" height="54" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="620" y="240.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">2순위</text>
+<line x1="230" y1="235" x2="273" y2="235" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<line x1="475" y1="235" x2="548" y2="235" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="30" y="278" width="200" height="54" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="130" y="310.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">허용</text>
+<rect x="275" y="278" width="200" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="375" y="310.2" font-size="15" fill="#292929" text-anchor="middle">서버 설정 확인</text>
+<rect x="550" y="278" width="140" height="54" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="620" y="310.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">3순위</text>
+<line x1="230" y1="305" x2="273" y2="305" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<line x1="475" y1="305" x2="548" y2="305" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+</g>
 </svg>
