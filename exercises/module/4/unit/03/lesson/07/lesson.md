@@ -160,11 +160,23 @@ python exercise3-2_run.py
     suspicious = server_failures[is_repeated_user]    # True 인 행만 골라 새 표로 만든다
 ```
 
-② `judge_failure` 안
+② `judge_failure` 안 — 4번과 5번 주석 사이에 미리 채운 `resource = parts[0]` · `permission_action = parts[1]` 두 줄이 있습니다. 세 줄을 한 번에 붙이지 말고, 아래 상자를 하나씩 해당 번호 주석 바로 아래에 붙입니다.
+
+4번 주석 아래(미리 채운 `resource` 줄보다 위)
 
 ```python
     parts = action.split(":")                         # ":" 로 나눠 두 조각의 리스트로 만든다
+```
+
+5번 주석 아래
+
+```python
     is_allowed, reason = check_permission(user, resource, permission_action)  # Module 3 판정 결과를 허용 여부와 이유로 나눠 받는다
+```
+
+6번 주석 아래
+
+```python
     priority = PRIORITY.get(reason, 4)                # 이유의 우선순위를 꺼낸다(없으면 4)
 ```
 
@@ -352,12 +364,23 @@ python challenge3-2_run.py
     is_off_hours = ~is_business_hour                  # True 와 False 를 뒤집어 업무 시간 밖인 행을 True 로 만든다
 ```
 
-② `find_new_ip_users` 안
+② `find_new_ip_users` 안 — 4번과 5번 주석 사이의 `if has_usual_ip and is_new_ip:` 줄은 이미 있으니 붙이지 않습니다.
+
+3번 주석 아래
 
 ```python
         has_usual_ip = usual_ip is not None           # 평소 IP 기록이 있는지 구한다
+```
+
+4번 주석 아래(미리 채운 `if` 줄보다 위)
+
+```python
         is_new_ip = ip != usual_ip                    # 이번 IP 가 평소 IP 와 다른지 구한다
-        if has_usual_ip and is_new_ip:                # 평소 IP 기록이 있고, 이번 IP 가 평소와 다르면 — 미리 채운 줄
+```
+
+5번 주석 아래(미리 채운 `if` 줄 안쪽)
+
+```python
             new_ip_users.append(user)                 # 리스트에 사용자를 추가한다
 ```
 

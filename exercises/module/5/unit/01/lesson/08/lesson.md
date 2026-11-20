@@ -146,16 +146,38 @@ python exercise1-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 `run_playbook` 한 함수입니다.
+**채운 코드** (한 예) — 직접 쓰는 곳은 `run_playbook` 한 함수이고, `playbook_runner.py` 의 1 ~ 6번입니다. 각 줄을 같은 번호 주석 바로 아래에 씁니다. 3번과 4번 주석 사이의 `for action in playbook["actions"]:` 줄은 이미 있으니 붙이지 않습니다.
 
 ```python
+    # 1. playbook 의 "approval" 값이 "자동" 이 아니면 (if, !=)
+    if playbook["approval"] != "자동":                                              # 승인 값이 자동이 아니면
+    # 2.   make_log_entry(incident, playbook, "전체", "승인 대기") 의 결과를 action_log 에 추가한다 (append)
+        action_log.append(make_log_entry(incident, playbook, "전체", "승인 대기"))  # 승인 대기로 기록하고
+    # 3.   False 를 리턴한다 (실행하지 않았다)
+        return False                                                                # 실행하지 않고 끝낸다
+        # 4. run_action(action, incident, state) 의 결과를 result 에 담는다
+        result = run_action(action, incident, state)                                # 액션을 실행하고 결과 문장을 받는다
+        # 5. make_log_entry(incident, playbook, action, result) 의 결과를 action_log 에 추가한다 (append)
+        action_log.append(make_log_entry(incident, playbook, action, result))       # 결과를 감사 기록에 추가한다
+    # 6. change_status(incident, "조치됨") 를 호출한다 (실행이 끝났으니 조치됨으로 옮긴다)
+    change_status(incident, "조치됨")                                               # 실행이 끝났으니 조치됨으로 옮긴다
+```
+
+위 줄만 보면 들여쓰기가 헷갈리니, 미리 채운 줄까지 넣은 완성된 모양을 함께 봅니다.
+
+**전체 모양 — `run_playbook`**
+
+```python
+def run_playbook(incident, playbook, state, action_log):                            # 인시던트 · 플레이북 · 시스템 상태 · 감사 기록 리스트를 받는 함수
+    change_status(incident, "분류됨")                                               # 대응을 시작하기 전에 분류됨 상태로 옮긴다 — 미리 채운 줄
     if playbook["approval"] != "자동":                                              # 승인 값이 자동이 아니면
         action_log.append(make_log_entry(incident, playbook, "전체", "승인 대기"))  # 승인 대기로 기록하고
         return False                                                                # 실행하지 않고 끝낸다
-    for action in playbook["actions"]:                                              # 액션을 하나씩 꺼낸다
+    for action in playbook["actions"]:                                              # 액션을 하나씩 꺼낸다 — 미리 채운 줄
         result = run_action(action, incident, state)                                # 액션을 실행하고 결과 문장을 받는다
         action_log.append(make_log_entry(incident, playbook, action, result))       # 결과를 감사 기록에 추가한다
     change_status(incident, "조치됨")                                               # 실행이 끝났으니 조치됨으로 옮긴다
+    return True                                                                     # 모두 실행했으니 True 를 리턴한다 — 미리 채운 줄
 ```
 
 위 코드는 한 예입니다. <mark>줄 수가 달라도 주석이 말한 일을 하면 맞습니다.</mark>

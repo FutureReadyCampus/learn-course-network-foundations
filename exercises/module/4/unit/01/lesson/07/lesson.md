@@ -353,11 +353,23 @@ python challenge1-2_run.py
     result = ALLOWED_MAP[allowed]  # True 면 "성공", False 면 "실패"
 ```
 
-③ `normalize_saas` 안
+③ `normalize_saas` 안 — 5번과 6번 주석 사이에 미리 채운 `outcome = row["outcome"]` 줄이 있습니다. 세 줄을 한 번에 붙이지 말고, 아래 상자를 하나씩 해당 번호 주석 바로 아래에 붙입니다.
+
+4번 주석 아래
 
 ```python
     account_parts = row["account"].split("@")  # 메일 주소를 @ 앞뒤로 나눈다
+```
+
+5번 주석 아래
+
+```python
     user = account_parts[0]                    # @ 앞이 사용자 이름이다
+```
+
+6번 주석 아래(미리 채운 `outcome = row["outcome"]` 줄보다 아래)
+
+```python
     result = RESULT_MAP[outcome]               # success 면 "성공", failure 면 "실패"
 ```
 

@@ -12,7 +12,7 @@ Unit 5는 Module 4 **이상탐지**의 마지막 Unit입니다. 지금까지 로
 
 **오늘의 계획 (3시간)**
 
-1. 시작하기 15분: 이 레슨을 읽고 LLM 호출 파일 `llm_client.py` 와 점수 파일 `unit05_risk_scores.json` 을 만듭니다.
+1. 시작하기 15분: 이 레슨을 읽고 `requests` 를 설치한 뒤 LLM 호출 파일 `llm_client.py` 와 점수 파일 `unit05_risk_scores.json` 을 만듭니다.
 2. 실습 약 110분: 실습 5-1을 하고, 실습 5-2를 합니다.
 3. 글쓰기 40분: 「보고서 쓰기」 레슨에서 핵심 실습의 질문에 답하고, 「오늘의 글 쓰기」 레슨에서 글 한 편을 씁니다.
 4. 마무리 15분: 실습 5-2 끝의 「이번 Unit 마무리」에서 파일을 확인하고 깃허브에 올린 뒤 Module 5로 넘어갈 준비를 합니다.
@@ -44,13 +44,17 @@ Unit 5는 Module 4 **이상탐지**의 마지막 Unit입니다. 지금까지 로
 ## 폴더 열고 LLM 호출 파일 준비하기
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치를 확인합니다(맥북은 `python3`). <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나면</mark> 됩니다.
+2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치를 확인하고, `llm_client.py` 가 쓰는 `requests` 를 설치합니다(맥북은 `python3`). <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나면</mark> 됩니다. Unit 2 에서 가상환경을 켜고 판다스를 설치했다면 먼저 같은 가상환경을 켭니다.
    ```bash
    cd anomaly_detection
    pwd
    ls
+   python -m pip install requests
+   python -c "import requests; print(requests.__version__)"
    ```
-   - 명령 풀이: `cd 폴더이름` 그 폴더로 이동 · `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
+   - 명령 풀이: `cd 폴더이름` 그 폴더로 이동 · `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기 · `python -m pip install requests` 인터넷으로 요청을 보내는 도구 `requests` 설치 · `python -c "…"` 설치한 `requests` 의 버전 출력
+   - 설치가 끝나면 <mark>`Successfully installed …` 또는 `Requirement already satisfied` 가 나옵니다.</mark> 마지막에 `WARNING: You are using pip version …` 이 나와도 무시합니다.
+   - <mark>마지막 명령에서 점이 든 숫자(예: `2.34.2`)가 나오면</mark> `requests` 를 쓸 수 있습니다. 숫자는 설치한 때에 따라 다릅니다.
 3. **파일은 이렇게 만듭니다.** 이 레슨에 나오는 파일은 모두 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
    1. **[VS Code]** 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다.
    2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
@@ -115,7 +119,7 @@ def call_llm(question):                                              # 질문 �
 - 키 값은 이 파일에 적지 않습니다. 키는 `.env` 에만 있고, 이 파일은 깃허브에 올라가도 됩니다.
 - `try:` · `except` 는 「해 보고, 이 오류가 나면 멈추지 않고 아래 줄을 실행한다」는 뜻입니다. 이 파일에서만 쓰고, 직접 쓰지는 않습니다.
 
-5. **[VS Code]** `unit05_risk_scores.json` 파일을 만들어 아래 내용을 그대로 붙여 넣습니다. Unit 4 실습 4-1 이 저장한 점수 파일과 같은 내용입니다. <mark>이미 있으면 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다). 파일 이름의 `unit05` 는 강의계획서가 정한 이름이라 그대로 씁니다.
+5. **[VS Code]** `unit05_risk_scores.json` 파일을 만들어 아래 내용을 그대로 붙여 넣습니다. Unit 4 실습 4-1 이 저장한 점수 파일과 같은 내용입니다. <mark>이미 있으면 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다). 파일 이름의 `05` 는 예전 번호라서 지금 Unit 번호와 맞지 않지만, Module 4 Unit 5와 Module 5가 같은 이름으로 읽으니 이름을 바꾸지 않고 그대로 씁니다.
 
 **`unit05_risk_scores.json`** — 대상별 점수 기록 5건입니다. `entity` 는 점수를 매긴 대상(사용자 또는 IP), `score` 는 점수, `grade` 는 등급, `reasons` 는 탐지된 규칙 이름입니다. 점수가 높은 순서로 저장돼 있습니다.
 
@@ -262,7 +266,7 @@ def call_llm(question):                                              # 질문 �
 
 - 먼저 `pwd` 가 `anomaly_detection` 으로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
 - `ModuleNotFoundError: No module named 'llm_client'`: <mark>`llm_client.py` 가 `anomaly_detection` 폴더 바로 아래에 없다는 뜻</mark>입니다. 시작하기 4번의 코드 상자로 만듭니다.
-- `ModuleNotFoundError: No module named 'requests'`: 이 PC 의 가상환경에 `requests` 가 없는 것입니다. 가상환경을 활성화한 뒤 `python -m pip install requests` 를 칩니다.
+- `ModuleNotFoundError: No module named 'requests'`: 이 터미널의 파이썬에 `requests` 가 없는 것입니다. 시작하기 2번의 `python -m pip install requests` 를 칩니다(맥북은 `python3`). 가상환경을 쓴다면 먼저 가상환경을 켭니다.
 - `FileNotFoundError: … 'unit05_risk_scores.json'`: 점수 파일이 없거나 이름이 다릅니다. 시작하기 5번의 코드 상자로 만듭니다.
 - `[LLM 호출 실패] API 키 없음`: `.env` 를 찾지 못했거나 키 줄이 없습니다. <mark>오류가 아니라, 키 없이 대체 문장으로 진행하는 정상 동작</mark>입니다. 키를 쓰려면 「Gemini API 키와 .env 만들기」를 합니다.
 - `[LLM 호출 실패] 상태 코드 400`(또는 `401` · `403`): 키가 틀렸습니다. 2단계로 키를 확인하고 `.env` 에 다시 붙여 넣습니다.

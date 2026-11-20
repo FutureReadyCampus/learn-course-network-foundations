@@ -28,10 +28,17 @@ python exercise4-1_run.py
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
 
-① `score_findings` 안
+① `score_findings` 안 — 1번과 2번 주석 사이에 미리 채운 `findings_table["points"] = points` 줄과 `grouped = …` 줄이 있습니다. 두 줄을 한 번에 붙이지 말고, 아래 상자를 하나씩 해당 번호 주석 바로 아래에 붙입니다.
+
+1번 주석 아래
 
 ```python
     points = findings_table["rule"].map(WEIGHTS)       # rule 열을 꺼내 바로 규칙마다 점수를 채운다(map)
+```
+
+2번 주석 아래(미리 채운 `grouped = …` 줄보다 아래)
+
+```python
     totals = grouped["points"].sum()                   # 그룹에서 points 열을 골라 바로 합계를 구한다(sum)
 ```
 
@@ -117,12 +124,29 @@ python exercise4-2_run.py
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
 
-① `apply_exception` 안
+① `apply_exception` 안 — 3번과 4번 주석 사이에 미리 채운 `removed_alerts = …` · `is_kept = …` 두 줄이 있습니다. 네 줄을 한 번에 붙이지 말고, 아래 상자를 하나씩 해당 번호 주석 바로 아래에 붙입니다.
+
+1번 주석 아래
 
 ```python
     is_ip_rule = alerts["rule"] == IP_RULE            # 각 알림이 IP 규칙의 알림인지 비교한다
+```
+
+2번 주석 아래
+
+```python
     is_trusted = alerts["ip"].isin(TRUSTED_IPS)       # 각 알림의 IP 가 믿는 IP 리스트에 있는지 구한다
+```
+
+3번 주석 아래
+
+```python
     is_removed = is_ip_rule & is_trusted              # IP 규칙의 알림이면서 믿는 IP 에서 온 것만 True 로 만든다
+```
+
+4번 주석 아래(미리 채운 `is_kept = …` 줄보다 아래)
+
+```python
     kept_alerts = alerts[is_kept]                     # True 인 행만 골라 새 표로 만든다
 ```
 
@@ -226,11 +250,17 @@ python challenge4-1_run.py
     timeline = timeline.sort_values(["user", "time"])  # user 순으로, 같은 user 는 time 순으로 정렬한다
 ```
 
-③ `find_chains` 안
+③ `find_chains` 안 — 4번 주석 위의 `if has_many_sources and is_close:` 줄은 이미 있으니 붙이지 않습니다. 두 줄 모두 그 `if` 안쪽입니다.
+
+4번 주석 아래
 
 ```python
-        if has_many_sources and is_close:             # 로그 종류도 충분하고 60분 이내이면 — 미리 채운 줄
             reason = "서로 다른 로그 " + str(source_count) + "종류 · " + str(span) + "분 안"  # 문자열을 연결해 이유 문장을 만든다
+```
+
+5번 주석 아래
+
+```python
             chains.append({"user": user, "reason": reason})  # 연결된 사건에 사용자와 이유를 추가한다
 ```
 
@@ -307,11 +337,23 @@ python challenge4-2_run.py
     false_alarm_rule_counts = false_alarms["rule"].value_counts()  # 오탐이 규칙마다 몇 개인지 센다
 ```
 
-② `find_missed` 안
+② `find_missed` 안 — 4번과 5번 주석 사이에 미리 채운 `is_caught = …` 줄이 있습니다. 세 줄을 한 번에 붙이지 말고, 아래 상자를 하나씩 해당 번호 주석 바로 아래에 붙입니다.
+
+4번 주석 아래(미리 채운 `is_caught = …` 줄보다 위)
 
 ```python
     caught_ids = real_alerts["problem"]               # 진짜 알림이 가리키는 문제 번호를 꺼낸다
+```
+
+5번 주석 아래
+
+```python
     is_missed = ~is_caught                            # 알림이 나지 않은 문제를 True 로 만든다
+```
+
+6번 주석 아래
+
+```python
     missed_problems = problems[is_missed]             # True 인 행만 골라 새 표로 만든다
 ```
 
