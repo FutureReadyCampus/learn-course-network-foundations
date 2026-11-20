@@ -1,35 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>오류가 나면 증상을 보고 위치와 JSON 문법을 확인한 뒤 고친다</title>
-<desc>증상, 확인, 고치기 세 칸으로 나눈 표다. FileNotFoundError는 파일 위치를, JSONDecodeError는 쉼표와 괄호를 확인한다. 그래도 막히면 AI에게 묻고 정답을 보거나 보고서에 모름이라고 쓴다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>soar_response 폴더에 config 폴더와 데이터 파일 다섯 개를 만들고 5 6 4 1 을 확인한다</title>
+<desc>security-agent-toolkit 아래 soar_response 폴더와 config 폴더를 만든다. 데이터 파일 다섯 개는 지금 붙여 넣어 만들고, 플레이북 등록 파일은 실습 1-1에서 만든다. 확인 명령은 5 6 4 1 을 출력해야 한다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">오류가 나면: 증상 → 확인 → 고치기</text>
-<text x="130" y="64" font-size="16" fill="#666660" text-anchor="middle" font-weight="700">증상</text>
-<text x="360" y="64" font-size="16" fill="#666660" text-anchor="middle" font-weight="700">확인</text>
-<text x="590" y="64" font-size="16" fill="#666660" text-anchor="middle" font-weight="700">고치기</text>
-<rect x="20" y="80" width="220" height="74" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text y="122.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="130.0" dy="0.0" font-weight="700">FileNotFoundError</tspan></text>
-<rect x="250" y="80" width="220" height="74" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="101.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0">ls 로 파일이</tspan><tspan x="360.0" dy="21.0">soar_response 바로 아래</tspan><tspan x="360.0" dy="21.0">(또는 config 안)인지</tspan></text>
-<rect x="480" y="80" width="220" height="74" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text y="111.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="590.0" dy="0.0">파일을 맞는 폴더로</tspan><tspan x="590.0" dy="21.0">옮긴다</tspan></text>
-<line x1="241" y1="117" x2="248" y2="117" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<line x1="471" y1="117" x2="478" y2="117" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<rect x="20" y="166" width="220" height="74" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text y="208.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="130.0" dy="0.0" font-weight="700">JSONDecodeError</tspan></text>
-<rect x="250" y="166" width="220" height="74" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="197.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0">쉼표 · 대괄호 · 중괄호가</tspan><tspan x="360.0" dy="21.0">빠졌거나 남았는지</tspan></text>
-<rect x="480" y="166" width="220" height="74" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text y="197.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="590.0" dy="0.0">오류에 적힌 줄 번호의</tspan><tspan x="590.0" dy="21.0">앞뒤 줄을 고친다</tspan></text>
-<line x1="241" y1="203" x2="248" y2="203" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<line x1="471" y1="203" x2="478" y2="203" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<rect x="20" y="252" width="220" height="74" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text y="294.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="130.0" dy="0.0" font-weight="700">그래도 막히면</tspan></text>
-<rect x="250" y="252" width="220" height="74" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="283.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0">오류 전체와 친 명령을</tspan><tspan x="360.0" dy="21.0">AI 에게 묻기 (.env · 키 지움)</tspan></text>
-<rect x="480" y="252" width="220" height="74" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text y="283.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="590.0" dy="0.0">정답 보기 또는</tspan><tspan x="590.0" dy="21.0">보고서에 「모름 — 막힌 곳」</tspan></text>
-<line x1="241" y1="289" x2="248" y2="289" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<line x1="471" y1="289" x2="478" y2="289" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<rect x="20" y="338" width="680" height="34" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text y="360.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0">실행은 VS Code 의 ▶ 단추가 아니라 터미널에서 한다 (파일을 지금 위치 기준으로 찾음)</tspan></text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">soar_response 폴더에 지금 만들 파일</text>
+<rect x="20" y="52" width="300" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text y="77.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="170.0" dy="0" font-weight="700">security-agent-toolkit/</tspan></text>
+<rect x="50" y="104" width="270" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="129.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="185.0" dy="0" font-weight="700">soar_response/ (새로 만듦)</tspan></text>
+<path d="M34,92 V124 H50" fill="none" stroke="#666660" stroke-width="2"/>
+<rect x="90" y="156" width="320" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="179.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="250.0" dy="0">config/playbook_registry.json · 실습 1-1</tspan></text>
+<path d="M70,144 V175 H90" fill="none" stroke="#666660" stroke-width="2"/>
+<rect x="90" y="200" width="320" height="38" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="223.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="250.0" dy="0">incident_samples.json · 알림 5건</tspan></text>
+<path d="M70,144 V219 H90" fill="none" stroke="#666660" stroke-width="2"/>
+<rect x="90" y="244" width="320" height="38" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="267.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="250.0" dy="0">system_state.json · 빈 상태</tspan></text>
+<path d="M70,144 V263 H90" fill="none" stroke="#666660" stroke-width="2"/>
+<rect x="90" y="288" width="320" height="38" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="311.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="250.0" dy="0">users_info.json · 재직 · VIP</tspan></text>
+<path d="M70,144 V307 H90" fill="none" stroke="#666660" stroke-width="2"/>
+<rect x="90" y="332" width="320" height="38" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="355.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="250.0" dy="0">source_ips.json · 접속 IP</tspan></text>
+<path d="M70,144 V351 H90" fill="none" stroke="#666660" stroke-width="2"/>
+<rect x="90" y="376" width="320" height="38" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="399.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="250.0" dy="0">trusted_ips.json · 신뢰 IP</tspan></text>
+<path d="M70,144 V395 H90" fill="none" stroke="#666660" stroke-width="2"/>
+<rect x="440" y="104" width="260" height="150" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text y="142.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="570.0" dy="0" font-weight="700">확인 명령</tspan><tspan x="570.0" dy="21.0">네 파일의 건수를 출력</tspan><tspan x="570.0" dy="21.0">알림 · 계정 · IP · 신뢰 IP</tspan><tspan x="570.0" dy="21.0">→ 5 6 4 1 이면 성공</tspan><tspan x="570.0" dy="21.0">맥북은 python3</tspan></text>
+<rect x="440" y="270" width="260" height="80" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="294.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="570.0" dy="0" font-weight="700">파일 만드는 법</tspan><tspan x="570.0" dy="21.0">New File · 이름 그대로</tspan><tspan x="570.0" dy="21.0">복사 버튼으로 붙여 넣기</tspan></text>
 </svg>

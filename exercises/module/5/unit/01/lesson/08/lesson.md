@@ -6,9 +6,13 @@ render: markdown
 
 # 정답
 
-## 정답을 보는 방법
+## 정답을 읽는 법
 
 설명하는 답은 한 예이고, <mark>핵심이 같으면 맞습니다.</mark>
+
+1. **핵심 실습**: 실습 1-1 · 1-2 · 1-3 정답입니다. 오늘 모두가 하는 실습이니 먼저 맞춰 봅니다.
+2. **도전(선택)**: 도전 1-1 · 1-2 정답입니다. 도전을 한 사람만 봅니다.
+3. 정답마다 결과, 왜, 자주 틀리는 곳, 관제에서는 순서로 읽습니다.
 
 ---
 
@@ -111,16 +115,16 @@ python -c "import json; s = json.load(open('system_state.json', encoding='utf-8'
 **자주 틀리는 곳**
 
 - 등록 파일의 마지막 플레이북 뒤에 쉼표를 남기면 확인 명령에서 `JSONDecodeError` 가 납니다. <mark>**마지막 플레이북 뒤에는 쉼표를 붙이지 않습니다.**</mark>
-  - 실행하면 다음 오류가 납니다(<mark style="background:#ffc4d6">`Expecting value`</mark> 로 시작하면 이 실수이고, 줄 번호는 사람마다 다릅니다).
+  - 실행하면 다음 오류가 납니다(<mark style="background:#ffc4d6">`Expecting value`</mark> 로 시작하면 이 실수이고, 줄 번호는 사람마다 다릅니다). 파이썬 3.13 이상에서는 같은 실수에 `Illegal trailing comma before end of array` 라는 문구가 나옵니다.
 
 ```
 json.decoder.JSONDecodeError: Expecting value: line 38 column 1 (char 875)
 ```
 
-- PB-002 의 `}` 뒤에 쉼표를 빼고 PB-003 을 붙이면 같은 명령에서 다른 오류가 납니다. <mark>**플레이북과 플레이북 사이에는 쉼표가 있어야 합니다.**</mark>
+- PB-002 의 `}` 뒤에 쉼표를 빼고 PB-003 을 붙이면 같은 명령에서 다른 오류가 납니다. <mark>**플레이북과 플레이북 사이에는 쉼표가 있어야 합니다.**</mark> 줄 번호는 사람마다 다릅니다.
 
 ```
-json.decoder.JSONDecodeError: Expecting ',' delimiter: line 14 column 3 (char 298)
+json.decoder.JSONDecodeError: Expecting ',' delimiter: line 26 column 3 (char 581)
 ```
 
 - `actions` 를 `"IP 차단", "티켓 생성"` 처럼 대괄호 없이 쓰면 JSON 문법에 맞지 않아 오류가 납니다. <mark>**`actions` 의 값은 `[ ]` 로 감싼 리스트입니다.**</mark>
@@ -395,6 +399,8 @@ VIP 계정 알림 0 건
 
 ## 도전 1-1 정답
 
+> **선택입니다. 시간이 남을 때 합니다.** 여기부터는 도전(선택) 정답입니다. 핵심 실습 정답은 앞의 실습 1-1 ~ 1-3 정답에 있습니다.
+
  **터미널에 입력합니다.**
 
 ```bash
@@ -517,6 +523,8 @@ NameError: name 'route' is not defined
 
 ## 도전 1-2 정답
 
+> **선택입니다. 시간이 남을 때 합니다.** 도전 1-2를 한 사람만 봅니다.
+
  **터미널에 입력합니다.**
 
 ```bash
@@ -541,7 +549,7 @@ python challenge1-2_run.py
     # 6.   skip_reason 을 리턴한다
         return skip_reason                                                         # 실행하지 않고 이유를 리턴한다
     # 7. run_action(action, incident, state) 의 결과를 리턴한다 (건너뛸 이유가 없으면 원래대로 실행한다)
-    return run_action(action, incident, state)                                     # 이유가 없으면 Unit 1의 방식대로 실행한 결과를 리턴한다
+    return run_action(action, incident, state)                                     # 이유가 없으면 원래 run_action 으로 실행한 결과를 리턴한다
 ```
 
 `challenge1-2_run.py` 의 8 · 9번입니다.
@@ -558,10 +566,10 @@ python challenge1-2_run.py
 - (가) 출력은 다음과 같습니다. 단계 1 의 잠긴 계정은 <mark style="background:#bde3ff">**`['dami', 'dami']`, 티켓 2건**</mark>, 단계 3 은 <mark style="background:#bde3ff">**`['dami']`, 티켓 1건**</mark>, 단계 4 는 <mark style="background:#bde3ff">**3개(`dami` · `seoyeon` · `gaeun`), 티켓 7건**</mark> 입니다.
 
 ```
---- 단계 1: Unit 1 방식(안전장치 없음)으로 같은 알림 5건을 두 번 처리
+--- 단계 1: 실습 1-2 방식(안전장치 없음)으로 같은 알림 5건을 두 번 처리
 잠긴 계정: ['dami', 'dami']
 티켓: 2 건
---- 단계 2: Unit 1 방식(안전장치 없음)으로 인사 오류 알림 7건 처리
+--- 단계 2: 실습 1-2 방식(안전장치 없음)으로 인사 오류 알림 7건 처리
 잠긴 계정 7 개: ['dami', 'dami', 'seoyeon', 'gaeun', 'jiwoo', 'junho', 'hana']
 --- 단계 3: 안전한 방식으로 같은 알림 5건을 두 번 처리
 첫 번째 처리
@@ -598,11 +606,11 @@ INC-B07 계정 잠금 -> 건너뜀: 한 번에 잠글 수 있는 계정 수를 �
 
 - (나) 단계 3 의 「두 번째 처리」에서 INC-001 이 <mark style="background:#bde3ff">`이미 처리됨 (상태: 조치됨)`</mark> 으로 나옵니다.
   - 장치: 중복 실행 방지(idempotency)입니다. `run_playbook_safe` 의 첫 `if` 가 인시던트 상태를 점검해서, `조치됨` · `보고됨` · `종료` 이면 실행하지 않고 건너뜁니다. 첫 번째 처리에서 INC-001 이 `조치됨` 이 되었기 때문입니다.
-  - Unit 1 방식에는 이 확인이 없어서 두 번째 처리에서 `dami` 를 다시 잠그고 티켓을 또 만들었습니다.
+  - 실습 1-2 방식에는 이 확인이 없어서 두 번째 처리에서 `dami` 를 다시 잠그고 티켓을 또 만들었습니다.
 - (다) 잠긴 3개 가운데 <mark style="background:#bde3ff">`seoyeon` 과 `gaeun` 은 `employed` 가 `true` 인 재직자라 잘못 잠긴 계정</mark>입니다. 실제 퇴사자는 `dami` 한 명입니다.
   - 한도가 없고 중복 방지만 있다면 서로 다른 계정 6개가 모두 잠깁니다. 이 가운데 실제 퇴사자는 `dami` 한 명이라 5명이 잘못 잠깁니다(`dami` 는 알림이 두 건이라도 한 번만 잠깁니다). 한도 3개로 잘못 잠긴 계정이 5명에서 2명으로 줄었습니다.
   - 한도가 방지하지 못하는 문제: 한도 안에서는 잘못된 알림도 그대로 실행됩니다. 한도는 영향 범위(잠기는 계정 수)를 제한할 뿐, 잘못된 알림을 알아내지는 못합니다.
-  - 줄이는 방법: 실습 1-3에서 보강한 `employed` 맥락을 잠금 실행 전에 점검하면 `seoyeon` 과 `gaeun` 은 재직 중이라 잠금 대상에서 제외됩니다. `gaeun` 은 VIP 계정이라 도전 1-1의 `승인 필요` 경로에서도 자동 잠금 대상에서 제외됩니다. Unit 2의 도전 2-2 하루 흐름은 이 가운데 VIP 경로와 신뢰 IP 오탐 판단을 하나의 흐름으로 연결합니다. 재직 여부 점검은 연결하지 않습니다.
+  - 줄이는 방법: 실습 1-3에서 보강한 `employed` 맥락을 잠금 실행 전에 점검하면 `seoyeon` 과 `gaeun` 은 재직 중이라 잠금 대상에서 제외됩니다. `gaeun` 은 VIP 계정이라 도전 1-1의 `승인 필요` 경로에서도 자동 잠금 대상에서 제외됩니다. Unit 2 도전 2-2 의 하루 흐름은 이 가운데 VIP 경로와 신뢰 IP 오탐 판단을 하나의 흐름으로 연결합니다. 재직 여부 점검은 연결하지 않습니다.
   - 계정 잠금을 건너뛴 알림에도 티켓은 만들어집니다(티켓 7건). 건너뛰는 것이 알림 전체가 아니라 계정 잠금 액션 하나뿐이기 때문이며, 담당자가 티켓을 보고 이어서 확인합니다.
 
 **왜**

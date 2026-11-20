@@ -19,9 +19,9 @@
 <rect x="197.5" y="122" width="147.5" height="96" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text y="165.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="271.25" dy="0.0">오늘 실습 1-2</tspan><tspan x="271.25" dy="19.6">분류됨 상태</tspan></text>
 <rect x="375.0" y="122" width="147.5" height="96" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="155.3" font-size="14" fill="#292929" text-anchor="middle"><tspan x="448.75" dy="0.0">오늘은 연습용</tspan><tspan x="448.75" dy="19.6">시스템에서</tspan><tspan x="448.75" dy="19.6">실제는 Unit 2 ~ 5</tspan></text>
+<text y="155.3" font-size="14" fill="#292929" text-anchor="middle"><tspan x="448.75" dy="0.0">오늘은 연습용</tspan><tspan x="448.75" dy="19.6">시스템에서</tspan><tspan x="448.75" dy="19.6">실제는 Unit 2</tspan></text>
 <rect x="552.5" y="122" width="147.5" height="96" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="155.3" font-size="14" fill="#292929" text-anchor="middle"><tspan x="626.25" dy="0.0">오늘 감사 기록</tspan><tspan x="626.25" dy="19.6">Unit 3 ~ 8 에서</tspan><tspan x="626.25" dy="19.6">티켓 · 알림 · 리포트</tspan></text>
+<text y="155.3" font-size="14" fill="#292929" text-anchor="middle"><tspan x="626.25" dy="0.0">오늘 감사 기록</tspan><tspan x="626.25" dy="19.6">Unit 3 · 4 에서</tspan><tspan x="626.25" dy="19.6">티켓 · 리포트</tspan></text>
 <text x="20" y="256" font-size="16" fill="#292929" font-weight="700">현장의 SOAR 제품에도 플레이북이 있다</text>
 <rect x="20.0" y="270" width="210.7" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text y="300.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="125.35" dy="0.0">Splunk SOAR</tspan></text>

@@ -11,6 +11,7 @@ lessons:
 - path: lesson/07/lesson.md
 - path: lesson/08/lesson.md
 - path: lesson/09/lesson.md
+- path: lesson/10/lesson.md
 ---
 
 # 플레이북으로 알림 처리하기

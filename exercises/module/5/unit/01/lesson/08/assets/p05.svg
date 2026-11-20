@@ -1,24 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
 <title>도전 1-1 정답: 기본 3건, 승인 필요 1건(INC-003), 오탐 종료 1건(INC-004)</title>
 <desc>알림 5건이 기본 · 승인 필요 · 오탐 종료 경로로 나뉜다. 같은 신뢰 IP 인 INC-002 와 INC-004 는 reasons 에 대량 다운로드가 있는지에 따라 경로가 갈린다.</desc>
-<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 1-1 정답: 알림 5건이 세 경로로 나뉜다</text>
 <rect x="20" y="56" width="240" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="140" y="81.35" font-size="15" fill="#292929" text-anchor="middle">INC-001 dami</text>
-<polyline points="262,77 330,77 330,81 438,81" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<polyline points="262,77 330,77 330,81 438,81" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
 <rect x="20" y="104" width="240" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="140" y="129.35" font-size="15" fill="#292929" text-anchor="middle">INC-002 seoyeon</text>
-<polyline points="262,125 350,125 350,91 438,91" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<polyline points="262,125 350,125 350,91 438,91" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
 <rect x="20" y="152" width="240" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="140" y="177.35" font-size="15" fill="#292929" text-anchor="middle">INC-005 198.51.100.90</text>
-<polyline points="262,173 370,173 370,101 438,101" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<polyline points="262,173 370,173 370,101 438,101" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
 <rect x="20" y="210" width="240" height="42" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
 <text x="140" y="235.35" font-size="15" fill="#292929" text-anchor="middle">INC-003 gaeun</text>
-<polyline points="262,231 390,231 390,177 438,177" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<polyline points="262,231 390,231 390,177 438,177" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
 <rect x="20" y="262" width="240" height="42" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="140" y="287.35" font-size="15" fill="#292929" text-anchor="middle">INC-004 jiwoo</text>
-<polyline points="262,283 410,283 410,263 438,263" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<polyline points="262,283 410,283 410,263 438,263" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
 <rect x="440" y="56" width="260" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="570" y="84.475" font-size="15" fill="#292929" text-anchor="middle">기본 3건</text>
 <text x="570" y="106.225" font-size="15" fill="#292929" text-anchor="middle">INC-001 · 002 · 005</text>
