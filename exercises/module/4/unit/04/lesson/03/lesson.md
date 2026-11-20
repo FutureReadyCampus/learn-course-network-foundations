@@ -1,279 +1,316 @@
 ---
 id: m4-u04-l03
-title: 실습 4-2 · 예외 규칙으로 오탐 줄이기
+title: 실습 4-1 · 위험 점수와 등급·이유 저장하기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
-  path: network/110_day05_am_false_alarm_tuning.md
-  mission_id: GichanSource.m4-1106-am-false-alarm-tuning
+  path: network/108_day04_pm_correlation_risk.md
+  mission_id: GichanSource.m4-1105-pm-correlation-risk
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 실습 4-2 · 예외 규칙으로 오탐 줄이기
+# 실습 4-1 · 위험 점수와 등급·이유 저장하기
 
-## 목표: 믿는 IP 예외 규칙
+## 목표: 점수·등급·이유 파일
 
 > **이번 실습에 들어온 일**
 >
 > A사 보안 팀장이 보낸 메시지입니다:
-> 「오탐 4건 중 'SaaS 평소와 다른 IP' 알림 2건(알림 번호 `A4` jiwoo · `A5` seoyeon, `review_alerts.json` 에 있습니다)은 모두 협력사 사무실 IP `203.0.113.80` 에서 로그인한 것이었습니다. 협력사 사무실은 직원이 출장이나 외근으로 자주 쓰는 곳입니다.
+> 「서버 · SaaS · 웹 로그의 탐지와 로그 연결에서 탐지된 규칙이 여러 개인데, 결과가 모두 `탐지됨` 이라고만 나와서 어느 대상부터 확인할지 정할 수 없습니다. 퇴사한 계정이 계속 시도한 것과 파일을 한 번 더 내려받은 것이 같은 무게일 수는 없습니다.
 >
-> 이 IP 에서 온 'SaaS 평소와 다른 IP' 알림만 빠지도록 규칙을 고쳐 주세요. 단, 진짜 문제까지 같이 지워지면 안 됩니다.」
-> - **왜 중요한가**: <mark>같은 원인의 오탐을 규칙 하나로 줄이면 담당자가 매일 열어 보는 알림이 줄지만, 예외를 넓게 만들면 진짜 문제까지 지워질 수 있습니다.</mark>
+> 탐지된 규칙마다 점수를 정하고 대상(사용자 또는 IP)마다 더해서 high · mid · low 로 나눠 주세요. 담당자가 왜 그 등급인지 알 수 있게, 탐지된 규칙 이름도 같이 파일에 적어 주세요.」
+> - **왜 중요한가**: <mark>점수만 있고 이유가 없으면 담당자가 근거를 확인하기 어려워서, 탐지된 규칙 이름을 이유로 함께 저장합니다.</mark>
 
-## 왜 예외를 한 규칙에만 거는가
+## 왜 점수를 더하고 이유를 남기는가
 
-1. 오탐을 줄이는 가장 쉬운 방법은 **예외 규칙**입니다. 「이 IP 에서 온 이 규칙의 알림은 뺀다」처럼 조건을 정해 틀린 알림을 빼냅니다.
-2. 이번 실습의 질문은 하나입니다. <mark>**예외 규칙 하나로 오탐을 몇 개 줄일 수 있고, 진짜 문제는 지워지지 않았는가?**</mark>
-3. 예외는 **한 규칙에만** 적용합니다. 같은 IP `203.0.113.80` 에서 온 알림이라도 다른 규칙의 알림은 그대로 둡니다.
+1. 규칙마다 **점수**를 주고, 대상(사용자 또는 IP)마다 탐지된 규칙의 점수를 **더합니다**. <mark>같은 규칙이 한 대상의 여러 이벤트에서 탐지되어도 그 규칙의 점수는 대상마다 한 번만 더합니다.</mark>
+2. 합계를 high · mid · low 로 나누고, <mark>탐지된 규칙 이름을 함께 저장하면 담당자가 점수가 나온 근거를 확인할 수 있습니다.</mark>
 
-## 2.1 같은 IP 에서 온 알림 네 개
+## 1.1 규칙마다 점수와 등급 기준
 
-`203.0.113.80` 에서 온 알림은 A3 · A4 · A5 · A6 네 개입니다. A1 · A2 는 서버 알림이라 IP 가 없어서 이 표에서 뺐습니다. 예외 규칙은 `IP_RULE`(SaaS 평소와 다른 IP)의 알림 중 믿는 IP 에서 온 것만 뺍니다.
+| 탐지된 규칙 | 점수 | 찾는 파일 |
+|---|---|---|
+| 퇴사한 계정 | 60 | `access_detection.py`(Unit 3 실습 3-2) |
+| 권한 없음 | 20 | `access_detection.py` |
+| 규칙은 허용인데 서버가 거절 | 10 | `access_detection.py` |
+| 업무 시간 밖 로그인 | 15 | `saas_detection.py`(제공 파일) |
+| 평소와 다른 IP | 20 | `saas_detection.py` |
+| 대량 다운로드 | 25 | `saas_detection.py` |
+| 경로 스캔 | 30 | `malicious_detection.py`(제공 파일) |
+| 여러 로그 연결 | 30 | `correlation.py`(제공 파일) |
 
-| id | 규칙 | 대상 | real | 예외 규칙이 빼는가 |
-|---|---|---|---|---|
-| A3 | SaaS 업무 시간 밖 로그인 | jiwoo | `False` | 아니오 (다른 규칙) |
-| A4 | SaaS 평소와 다른 IP | jiwoo | `False` | **예** |
-| A5 | SaaS 평소와 다른 IP | seoyeon | `False` | **예** |
-| A6 | SaaS 대량 다운로드 | seoyeon | `True` | 아니오 (다른 규칙) |
+- 등급 기준은 점수가 **60 이상이면 high, 35 이상 60 미만이면 mid, 35 미만이면 low** 입니다. 「이상」은 `>=` 이고, <mark>높은 기준(high)부터 먼저 검사합니다.</mark> 등급은 위험이 없다는 판정이 아니라 **확인할 순서를 정하는 기준**입니다.
+- 표의 「규칙」은 **탐지 규칙의 이름**입니다. 서버 거절은 서버가 거절한 요청을 `check_permission` 으로 다시 판정한 이유 단어(`퇴사한 계정` · `권한 없음` · `허용`)를 그대로 이름으로 쓰고, `허용` 은 「규칙은 허용인데 서버가 거절」이라는 이름으로 바꿔 씁니다.
+- 대상은 사용자(`seoyeon` · `dami` …)와 IP(경로 스캔)입니다. 코드의 `entity`(엔티티, 점수를 매길 대상)가 이 대상입니다. 이 숫자들은 <mark>이번 실습에서 정해 고정한 값</mark>이고, 현업에서는 조직이 정합니다.
+- 출력 맨 아래의 `dtype: int64` 는 값이 정수라는 표시이고 읽지 않아도 됩니다.
 
-- A4 · A5 두 개가 빠지면 오탐은 4개에서 2개(A2 · A3)로 줄어듭니다.
-- <mark>A6 은 같은 IP 에서 왔지만 진짜 문제입니다.</mark> 규칙을 가리지 않고 이 IP 의 알림을 모두 빼면 A6 까지 지워집니다.
-- <mark style="background:#ffc4d6">예외에는 위험도 있습니다. 믿는 IP 에서 누군가 계정을 도용해 로그인해도, 그 규칙은 알림을 내지 않습니다.</mark>
+**판다스 문법 상자 — 규칙마다 점수 붙이기 `map` 과 그룹마다 합계 `sum`**
 
-**판다스 문법 상자 — 같은 값을 한 번씩만 꺼내기 `.unique()`**
+**<mark>`열.map(딕셔너리)`</mark> 는 열의 값을 딕셔너리에서 찾아 짝지어진 값으로 바꾸고, <mark>`그룹["열"].sum()`</mark> 은 `groupby` 로 만든 그룹마다 그 열의 숫자를 모두 더합니다**
 
-**<mark>`열.unique()`</mark> 는 열에서 같은 값을 한 번씩만 모아 줍니다**
-
-아래는 알림이 난 기록이고, 같은 사용자가 여러 번 나옵니다. 어떤 사용자가 나왔는지만 한 번씩 봅니다.
+아래는 대상(`entity`)마다 탐지된 규칙(`rule`)을 적은 표입니다. 먼저 규칙 이름을 딕셔너리에서 찾아 점수로 바꿉니다. 딕셔너리에 없는 값은 `NaN`(값이 없다는 표시)이 됩니다.
 
 ```python
 import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-data = {                                                          # 표에 넣을 내용(열 이름: 값들)
-    "user": ["dami", "gaeun", "dami", "seoyeon", "dami"],         # user 열
-    "action": ["login", "login", "download", "login", "upload"],  # action 열
+weights = {"평소와 다른 IP": 20, "대량 다운로드": 25, "퇴사한 계정": 60}  # 규칙 → 점수 딕셔너리
+data = {                                                     # 표에 넣을 내용(열 이름: 값들)
+    "entity": ["seoyeon", "seoyeon", "dami"],                # entity 열
+    "rule": ["평소와 다른 IP", "대량 다운로드", "퇴사한 계정"],  # rule 열
 }
-df = pd.DataFrame(data)                                           # 내용으로 표(DataFrame)를 만든다
-print(df)                                                         # 표를 출력한다
+df = pd.DataFrame(data)                                      # 내용으로 표(DataFrame)를 만든다
+df["points"] = df["rule"].map(weights)                       # rule 열의 값을 딕셔너리에서 찾아 점수로 바꿔 points 열로 붙인다
+print(df)                                                    # 표를 출력한다
 ```
 
 실행 결과:
 
 ```
-      user    action
-0     dami     login
-1    gaeun     login
-2     dami  download
-3  seoyeon     login
-4     dami    upload
+    entity       rule  points
+0  seoyeon  평소와 다른 IP      20
+1  seoyeon    대량 다운로드      25
+2     dami     퇴사한 계정      60
 ```
 
-위 코드에 이어서 실행하는 다음 코드입니다.
+위 코드에 이어서 실행하는 다음 코드입니다. `groupby` 는 Unit 2 실습 2-2에서 쓴 「같은 값끼리 묶기」입니다.
 
 ```python
-users = df["user"].unique()  # user 열에서 같은 값을 한 번씩만 꺼낸다
-print(users)                 # 사용자 이름을 출력한다
+grouped = df.groupby("entity")    # entity 가 같은 행끼리 그룹으로 묶는다
+totals = grouped["points"].sum()  # 그룹에서 points 열을 골라 바로 합계를 구한다
+print(totals)                     # 대상별 점수 합계를 출력한다
 ```
 
 실행 결과:
 
 ```
-['dami' 'gaeun' 'seoyeon']
+entity
+dami       60
+seoyeon    45
+Name: points, dtype: int64
 ```
 
-- 읽는 법: 표에는 사용자가 다섯 번 나오지만, <mark style="background:#bde3ff">두 번째 출력에는 `dami` · `gaeun` · `seoyeon` 이 한 번씩만</mark> 나옵니다. 처음 나온 순서대로 나옵니다.
-- 출력의 `[` `]` 안에 따옴표로 묶인 이름이 공백으로 이어지는 모양은 정상입니다.
+- 읽는 법: 첫 출력에서 <mark style="background:#bde3ff">규칙 이름마다 점수(20 · 25 · 60)가 붙었고</mark>, 두 번째 출력에서 <mark style="background:#bde3ff">`seoyeon` 은 20 과 25 를 더한 45, `dami` 는 60</mark> 입니다.
+- 문제에서는 딕셔너리 리스트로 표를 만드는 `pd.DataFrame(리스트)` 줄과 points 열을 붙이는 줄이 미리 채워져 있고, `map` 한 줄과 `sum` 한 줄을 직접 씁니다.
+- <mark>`groupby` 결과는 이름순(dami → seoyeon)으로 나옵니다.</mark> 문제에서는 미리 채운 줄이 점수가 높은 순으로 다시 정렬합니다.
 
 **한 장 정리**
 
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
-| `load_table` · `count_false_alarms` | 파일 경로 · 알림 표 | 표 · 오탐 수(미리 채움) |
-| `apply_exception` | 알림 표 | 빼낸 알림 표와 남은 알림 표 |
-| `count_real_removed` | 빼낸 알림 표 | 빼낸 알림 중 진짜 문제였던 알림 수 |
-| `find_removed_users` | 빼낸 알림 표 | 빼낸 알림에 나온 사용자(중복 없이) |
+| `collect_findings` | 이벤트 표 · 연결된 사건 | 탐지된 규칙 리스트(미리 채움) |
+| `score_findings` | 탐지된 규칙 리스트 | 대상별 점수(높은 순) |
+| `make_grade` | 점수 | `"high"` · `"mid"` · `"low"` |
+| `collect_reasons` · `save_records` | 탐지된 규칙 · 기록 리스트 | 대상별 규칙 이름 · 저장한 건수(미리 채움) |
+| `make_records` | 대상별 점수 · 이유 | 점수 · 등급 · 이유 기록 리스트 |
 
-- **직접 쓰는 곳은 일곱 군데**(번호 1 ~ 7)이고, 함수 세 개 안에 나뉘어 있습니다.
-  - `apply_exception`(1 ~ 4번, 4곳): 알림의 규칙이 IP 규칙인지 비교하고, 믿는 IP 인지 구하고, 둘을 합쳐 빼낼 알림을 정한 뒤, 남은 알림을 고릅니다.
-  - `count_real_removed`(5 · 6번, 2곳): 빼낸 알림 중 진짜 문제였던 것을 고릅니다.
-  - `find_removed_users`(7번, 1곳): 빼낸 알림에 나온 사용자를 중복 없이 꺼냅니다.
-- 이번 실습에서 새 문법은 `.unique()` 하나입니다. Unit 3에서 쓴 `isin` · `&` 와 도전 4-2의 `~` 는 다시 씁니다.
+- `make_records` 의 `totals.items()` 는 점수 집계 결과(시리즈)에서 「대상, 점수」를 한 쌍씩 꺼냅니다. 딕셔너리의 `.items()` 와 같은 모양입니다.
+- **직접 쓰는 곳은 다섯 군데**(번호 1 ~ 5)이고, 함수 세 개 안에 나뉘어 있습니다.
+  - `score_findings`(1 · 2번): 규칙마다 점수를 `map` 으로 채우고 대상마다 `sum` 으로 더합니다.
+  - `make_grade`(3 · 4번): 점수가 high 기준 이상이면 `"high"` 를 리턴합니다. mid 와 low 는 같은 모양이라 미리 채웠습니다.
+  - `make_records`(5번): 대상 · 점수 · 등급 · 이유를 딕셔너리로 만듭니다.
 
-## 실습 4-2 · 예외 규칙으로 오탐 줄이기
+## 실습 4-1 · 위험 점수와 등급·이유 저장하기
 
 **이런 상황이 있습니다**
 
-- **지금은**: <mark>협력사 사무실 IP 에서 온 'SaaS 평소와 다른 IP' 알림이 오탐으로 계속 쌓입니다</mark>.
-- **그래서 만드는 것**: `tuning.py` 입니다.
-  - IP 규칙의 알림 중 믿는 IP 에서 온 것을 찾아 빼냅니다.
-  - 적용 전과 후의 오탐 수를 비교합니다.
-  - 빼낸 알림 중 진짜 문제가 있었는지 확인합니다.
-  - 빼낸 알림에 나온 사용자를 중복 없이 모읍니다.
-- **실행하면**: <mark>단계 1: 적용 전 알림 수와 오탐 수, 단계 2: 빠진 알림과 그 사용자, 단계 3: 적용 후 알림 수와 오탐 수, 단계 4: 빠진 알림 중 진짜 문제였던 알림 수(0이면 진짜 문제는 지워지지 않은 것)가 나옵니다.</mark>
-- **현업에서는**: 예외를 넣을 때마다 「빠진 알림 중 진짜 문제가 있는가」를 확인합니다. 예외 리스트는 근거(협력사 사무실 IP)와 함께 기록해 두어야 나중에 지울 수 있습니다.
+- **지금은**: <mark>세 로그의 탐지 결과와 로그 연결 결과에서 탐지된 규칙이 8건 있지만 대상별 우선순위가 정해져 있지 않습니다</mark>.
+- **그래서 만드는 것**: `risk_scores.py` 입니다.
+  - 규칙마다 점수를 채우고 대상마다 더합니다.
+  - 점수로 high · mid · low 등급을 정합니다.
+  - 대상 · 점수 · 등급 · 이유를 `unit05_risk_scores.json` 한 파일에 저장합니다.
+- **실행하면**: <mark>단계 1: 탐지된 규칙 수, 단계 2: 대상별 점수, 단계 3: 저장한 건수, 단계 4: 저장된 기록이 한 건씩 나옵니다.</mark>
+- **현업에서는**: 점수와 이유를 함께 남기면 등급이 올라간 근거를 설명할 수 있습니다. 조직은 필요에 따라 점수 기준을 바꿀 수 있고, 바꾼 날짜와 이유를 기록합니다.
 
 **할 일**
 
-1. `tuning.py` · `exercise4-2_run.py` 두 파일을 만들고, `tuning.py` 의 세 함수에서 직접 쓰는 곳을 씁니다.
-2. 실행해서 <mark>적용 전 오탐 수</mark>(단계 1), <mark>빠진 알림</mark>(단계 2), <mark>적용 후 오탐 수</mark>(단계 3), <mark>빠진 알림 중 진짜 문제였던 알림 수</mark>(단계 4)를 읽습니다.
+1. `risk_scores.py` · `exercise4-1_run.py` 두 파일을 만들고, `risk_scores.py` 의 세 함수에서 직접 쓰는 곳을 씁니다.
+2. 실행해서 <mark>탐지된 규칙 수</mark>(단계 1), <mark>대상별 점수</mark>(단계 2), <mark>저장한 건수</mark>(단계 3), <mark>저장된 기록</mark>(단계 4)를 읽고, 새로 생긴 `unit05_risk_scores.json` 을 VS Code 에서 열어 봅니다.
 
-**`tuning.py`**
+`collect_findings` 는 읽기만 하는 미리 채운 함수입니다. 세 탐지 파일과 `correlation.py` 의 결과를 (대상, 규칙) 쌍으로 모으는 일이라 직접 쓰는 곳이 없습니다.
+
+**`risk_scores.py`**
 
 ```python
-import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
+import json                                        # 점수를 JSON 파일로 쓰기 위해 json 을 불러온다
+import pandas as pd                                    # 판다스를 pd 라는 짧은 이름으로 불러온다
+from access_detection import load_events, pick_server_failures, pick_suspicious, judge_failure, EVENTS_PATH  # 실습 3-2 함수를 불러온다
+from saas_detection import pick_saas, pick_logins, find_off_hours_logins, find_new_ip_users, find_bulk_download_users  # 제공 파일의 SaaS 탐지 함수를 불러온다
+from malicious_detection import pick_web_failures, find_scan_ips  # 제공 파일의 경로 스캔 함수를 불러온다
 
-ALERTS_PATH = "review_alerts.json"                    # 읽을 알림 파일 이름
-IP_RULE = "SaaS 평소와 다른 IP"                       # 예외를 적용할 규칙 이름
-TRUSTED_IPS = ["203.0.113.80"]                        # 믿는 IP 리스트 : 협력사 사무실 IP 한 개
+RISK_PATH = "unit05_risk_scores.json"                   # 점수를 저장할 파일 이름
+HIGH_LIMIT = 60                                        # 점수가 이 값 이상이면 high
+MID_LIMIT = 35                                         # 점수가 이 값 이상이면 mid, 그보다 낮으면 low
+WEIGHTS = {"퇴사한 계정": 60, "권한 없음": 20, "규칙은 허용인데 서버가 거절": 10,
+           "업무 시간 밖 로그인": 15, "평소와 다른 IP": 20, "대량 다운로드": 25,
+           "경로 스캔": 30, "여러 로그 연결": 30}      # 탐지된 규칙마다 점수
+SERVER_RULES = {"퇴사한 계정": "퇴사한 계정", "권한 없음": "권한 없음", "허용": "규칙은 허용인데 서버가 거절"}  # 서버 판정 이유를 규칙 이름으로 바꾼다
 
 
-def load_table(path):                                 # 파일 경로를 받는 함수
-    """JSON 파일을 표로 읽는다.
-    분석을 시작할 때 맨 먼저 쓴다.
+def add_finding(findings, entity, rule):               # 리스트 · 대상 · 규칙 이름을 받는 함수
+    """대상과 탐지된 규칙을 한 건 추가하되 같은 건은 한 번만 추가한다.
+    같은 규칙이 여러 이벤트에 해당해도 점수가 중복되지 않게 할 때 쓴다.
     """
-    table = pd.read_json(path)                        # 파일 속 내용을 표 한 개로 읽는다
-    return table                                      # 표를 리턴한다
+    finding = {"entity": entity, "rule": rule}         # 대상과 규칙을 딕셔너리로 만든다
+    if finding not in findings:                        # 아직 없는 건이면
+        findings.append(finding)                       # 리스트에 추가한다
 
 
-def count_false_alarms(alerts):                       # 알림 표를 받는 함수
-    """진짜 문제가 아니었는데 난 알림(오탐)이 몇 개인지 센다.
-    튜닝 전과 후를 비교할 때 쓴다.
+def collect_findings(events, chains):                  # 이벤트 표와 연결된 사건을 받는 함수
+    """세 로그의 탐지 결과와 로그 연결 결과를 (대상, 탐지된 규칙) 리스트로 모은다.
+    점수를 매기기 전에 한 번에 쓴다.
     """
-    is_real = alerts["real"]                          # real 열(진짜 문제이면 True)을 꺼낸다
-    is_false = ~is_real                               # 문제가 아니었던 알림을 True 로 만든다
-    false_alarms = alerts[is_false]                   # True 인 행만 골라 새 표로 만든다
-    false_alarm_count = len(false_alarms)             # 오탐이 몇 개인지 센다
-    return false_alarm_count                          # 오탐 개수를 리턴한다
+    findings = []                                      # 탐지된 규칙을 담을 빈 리스트
+
+    server_failures = pick_server_failures(events)     # 판정 서버 실패 이벤트를 고른다
+    suspicious = pick_suspicious(server_failures)      # 먼저 확인할 서버 이벤트를 고른다
+    suspicious_list = suspicious.to_dict("records")    # 표를 이벤트 딕셔너리 리스트로 바꾼다
+    for event in suspicious_list:                      # 이벤트를 하나씩 꺼낸다
+        reason, priority = judge_failure(event["user"], event["action"])  # Module 3 규칙으로 다시 판정한다
+        rule = SERVER_RULES.get(reason, reason)        # 판정 이유를 규칙 이름으로 바꾼다
+        add_finding(findings, event["user"], rule)     # 사용자와 규칙을 추가한다
+
+    saas = pick_saas(events)                           # SaaS 이벤트를 고른다
+    logins = pick_logins(saas)                         # 로그인 이벤트를 고른다
+    off_hours_logins = find_off_hours_logins(logins)   # 업무 시간 밖 로그인을 찾는다
+    off_hours_users = list(off_hours_logins["user"])   # 그 로그인의 사용자 이름만 리스트로 만든다
+    new_ip_users = find_new_ip_users(logins)           # 평소와 다른 IP 로 로그인한 사용자를 찾는다
+    bulk_users = find_bulk_download_users(saas)        # 대량 다운로드 사용자를 찾는다
+    for user in off_hours_users:                       # 업무 시간 밖 로그인 사용자를 하나씩 꺼낸다
+        add_finding(findings, user, "업무 시간 밖 로그인")  # 사용자와 규칙을 추가한다
+    for user in new_ip_users:                          # 평소와 다른 IP 사용자를 하나씩 꺼낸다
+        add_finding(findings, user, "평소와 다른 IP")  # 사용자와 규칙을 추가한다
+    for user in bulk_users:                            # 대량 다운로드 사용자를 하나씩 꺼낸다
+        add_finding(findings, user, "대량 다운로드")   # 사용자와 규칙을 추가한다
+
+    web_failures = pick_web_failures(events)           # 웹 실패 이벤트를 고른다
+    scan_ips, many_kinds = find_scan_ips(web_failures)  # 경로 스캔 IP 를 찾는다
+    for ip in scan_ips:                                # 스캔 IP 를 하나씩 꺼낸다
+        add_finding(findings, ip, "경로 스캔")         # IP 와 규칙을 추가한다
+
+    for chain in chains:                               # 연결된 사건을 하나씩 꺼낸다
+        add_finding(findings, chain["user"], "여러 로그 연결")  # 사용자와 규칙을 추가한다
+    return findings                                    # 탐지된 규칙 리스트를 리턴한다
 
 
-def apply_exception(alerts):                          # 알림 표를 받는 함수
-    """IP 규칙 알림 중 믿는 IP 에서 온 것만 빼낸다.
-    오탐을 줄이는 예외 규칙을 적용할 때 쓴다.
+def score_findings(findings):                          # 탐지된 규칙 리스트를 받는 함수
+    """대상마다 탐지된 규칙의 점수를 더해 점수가 높은 순으로 정렬한다.
+    어느 대상부터 볼지 순서를 정할 때 쓴다.
+    """
+    findings_table = pd.DataFrame(findings)            # 딕셔너리 리스트를 표로 만든다 — 미리 채운 줄
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 1. findings_table 의 "rule" 열을 꺼내 .map(WEIGHTS) 를 붙여 규칙마다 점수를 구해 points 에 담는다
+    findings_table["points"] = points                  # 표에 points 열을 붙인다 — 미리 채운 줄
+    grouped = findings_table.groupby("entity")         # entity 가 같은 행끼리 그룹으로 만든다
+    # 2. grouped 에서 "points" 열을 골라 .sum() 을 붙여 그룹마다 점수 합계를 구해 totals 에 담는다
+    totals = totals.sort_values(ascending=False)       # 점수가 높은 순으로 정렬한다 — 미리 채운 줄
+    return totals                                      # 대상별 점수를 리턴한다
+
+
+def make_grade(score):                                 # 점수를 받는 함수
+    """점수로 high · mid · low 등급을 정한다.
+    점수가 높은 대상부터 먼저 보게 할 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. alerts 의 "rule" 열이 IP_RULE 과 같은지 비교해 is_ip_rule 에 담는다
-    # 2. alerts 의 "ip" 열이 TRUSTED_IPS 안에 있는지 isin 으로 구해 is_trusted 에 담는다
-    # 3. is_ip_rule 과 is_trusted 가 모두 True 인 행을 & 로 구해 is_removed 에 담는다
-    removed_alerts = alerts[is_removed]               # 빼낼 알림만 골라 새 표로 만든다
-    is_kept = ~is_removed                             # 빼지 않을 알림을 True 로 만든다
-    # 4. alerts 에서 is_kept 가 True 인 행만 골라 kept_alerts 에 담는다
-    return removed_alerts, kept_alerts                # 빼낸 알림 표와 남은 알림 표를 리턴한다
+    # 3. if 로 시작한다: score 가 HIGH_LIMIT 이상이면
+    # 4.   그 if 안쪽에서 "high" 를 리턴한다
+    if score >= MID_LIMIT:                             # 점수가 mid 기준 이상이면 — 미리 채운 줄 (위 high 와 같은 모양)
+        return "mid"                                   # mid 이다 — 미리 채운 줄
+    return "low"                                       # 둘 다 아니면 low 이다
 
 
-def count_real_removed(removed_alerts):               # 빼낸 알림 표를 받는 함수
-    """빼낸 알림 중 진짜 문제였던 것이 몇 개인지 센다.
-    예외 규칙이 진짜 문제를 지우지 않았는지 확인할 때 쓴다.
+def collect_reasons(findings):                         # 탐지된 규칙 리스트를 받는 함수
+    """대상마다 탐지된 규칙 이름을 모아 딕셔너리로 만든다.
+    왜 그 등급인지 이유를 함께 저장할 때 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 5. removed_alerts 의 "real" 열을 꺼내 is_real_removed 에 담는다
-    # 6. removed_alerts 에서 is_real_removed 가 True 인 행만 골라 real_removed 에 담는다
-    real_removed_count = len(real_removed)            # 진짜 문제였던 알림이 몇 개 빠졌는지 센다
-    return real_removed_count                         # 그 개수를 리턴한다
+    reasons = {}                                       # 대상 → 규칙 이름 리스트 딕셔너리
+    for finding in findings:                           # 탐지된 규칙을 하나씩 꺼낸다
+        entity = finding["entity"]                     # 그 건의 대상
+        if entity not in reasons:                      # 처음 나온 대상이면
+            reasons[entity] = []                       # 빈 리스트를 만든다
+        reasons[entity].append(finding["rule"])        # 그 대상의 규칙 이름을 추가한다
+    return reasons                                     # 대상별 규칙 이름을 리턴한다
 
 
-def find_removed_users(removed_alerts):               # 빼낸 알림 표를 받는 함수
-    """빼낸 알림에 나온 사용자를 중복 없이 모은다.
-    예외로 빠진 알림이 누구의 것인지 확인할 때 쓴다.
+def make_records(totals, reasons):                     # 대상별 점수와 이유를 받는 함수
+    """대상마다 점수 · 등급 · 이유를 담은 딕셔너리 리스트를 만든다.
+    담당자가 읽을 파일의 내용을 만들 때 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 7. removed_alerts 의 "user" 열에서 같은 값은 한 번씩만 .unique() 로 꺼내 removed_users 에 담는다
-    return removed_users                              # 중복 없는 사용자 이름을 리턴한다
+    records = []                                       # 기록을 담을 빈 리스트
+    for entity, score in totals.items():               # 대상과 점수를 한 쌍씩 꺼낸다
+        grade = make_grade(score)                      # 점수로 등급을 정한다
+        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+        # 5. 키 "entity" 에 entity, "score" 에 int(score), "grade" 에 grade, "reasons" 에 reasons[entity] 를 담은 딕셔너리를 record 에 담는다 (int 는 JSON 저장용)
+        records.append(record)                         # 기록을 리스트에 추가한다
+    return records                                     # 기록 리스트를 리턴한다
+
+
+def save_records(records, path):                       # 기록 리스트와 파일 경로를 받는 함수
+    """기록 리스트를 JSON 파일로 저장하고 저장한 건수를 리턴한다.
+    담당자와 다른 프로그램이 같은 파일을 읽게 할 때 쓴다.
+    """
+    with open(path, "w", encoding="utf-8") as file:    # path 파일을 쓰기 모드로 연다
+        json.dump(records, file, ensure_ascii=False, indent=2)  # 한글은 그대로, 줄을 나눠 저장한다
+    saved_count = len(records)                         # 저장한 기록이 몇 건인지 센다
+    return saved_count                                 # 저장한 건수를 리턴한다
 ```
 
-- 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 7번은 모두 함수 안이라 앞에 공백 4개입니다.
+- 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 · 2번은 함수 안이라 앞에 공백 4개이고, 3 · 4번도 함수 안이라 `if` 는 4개, `return` 은 8개이며, 5번은 `for` 안이라 8개입니다.
 - 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
-- 채우기 전에 실행하면 `NameError: name 'is_removed' is not defined` 오류가 납니다. 3번을 아직 안 썼기 때문입니다.
+- 5번의 `int(score)` 는 <mark>JSON 으로 저장하려고 판다스의 숫자를 파이썬 정수로 바꾸는 것</mark>입니다. 빼면 저장할 때 `TypeError: Object of type int64 is not JSON serializable` 오류가 납니다.
+- `collect_findings` 는 읽기만 하는 미리 채운 함수입니다. `SERVER_RULES.get(reason, reason)` 은 딕셔너리에서 reason 을 찾고, 없으면 reason 을 그대로 쓴다는 뜻입니다.
+- 채우기 전에 실행하면 `NameError: name 'points' is not defined` 오류가 납니다. 1번을 아직 안 썼기 때문입니다.
 
-**`exercise4-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
+**`exercise4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `len(리스트)` 는 리스트의 개수입니다.
 
 ```python
-from tuning import load_table, count_false_alarms, apply_exception, count_real_removed, find_removed_users, ALERTS_PATH  # 방금 만든 함수를 불러온다
+from access_detection import load_events, EVENTS_PATH  # 실습 3-2 함수를 불러온다
+from correlation import find_chains_in_events          # 제공 파일의 로그 연결 함수를 불러온다
+from risk_scores import collect_findings, score_findings, collect_reasons, make_records, save_records, RISK_PATH  # 방금 만든 함수를 불러온다
 
-alerts = load_table(ALERTS_PATH)                      # 알림 파일을 표로 읽는다
-alert_count = len(alerts)                             # 알림이 모두 몇 개인지 센다
-false_alarm_count_before = count_false_alarms(alerts)  # 예외 규칙을 적용하기 전의 오탐 수를 센다
-print("--- 단계 1: 예외 규칙을 적용하기 전 ---")      # 단계 1 제목
-print("알림 수:", alert_count)                        # 적용 전 알림 수를 출력한다
-print("오탐 수:", false_alarm_count_before)           # 적용 전 오탐 수를 출력한다
+events = load_events(EVENTS_PATH)                      # 이벤트 파일을 표로 읽는다
+chains = find_chains_in_events(events)                 # 세 로그를 이어 연결된 사건을 찾는다
+findings = collect_findings(events, chains)            # 탐지 결과와 연결 결과에서 탐지된 규칙을 모은다
+finding_count = len(findings)                          # 탐지된 규칙이 모두 몇 건인지 센다
+print("--- 단계 1: 탐지된 규칙", finding_count, "건")    # 단계 1 시작을 알리는 줄과 건수
 
-removed_alerts, kept_alerts = apply_exception(alerts)  # 믿는 IP 에서 온 IP 규칙 알림을 빼낸다
-removed_count = len(removed_alerts)                   # 빠진 알림이 몇 개인지 센다
-print("--- 단계 2: 예외 규칙으로 빠진 알림 ---")      # 단계 2 제목
-print("빠진 알림 수:", removed_count)                 # 빠진 알림 수를 출력한다
-removed_list = removed_alerts.to_dict("records")      # 표를 알림 딕셔너리 리스트로 바꾼다
-for alert in removed_list:                            # 빠진 알림을 하나씩 꺼낸다
-    print("빠진 알림:", alert["id"], alert["rule"], alert["user"], alert["ip"])  # 번호 · 규칙 · 사용자 · IP 를 출력한다
-removed_users = find_removed_users(removed_alerts)    # 빠진 알림에 나온 사용자를 중복 없이 모은다
-print("빠진 알림의 사용자:", removed_users)           # 사용자 이름을 출력한다
+totals = score_findings(findings)                      # 대상마다 점수를 더한다
+print("--- 단계 2: 대상별 점수")                       # 단계 2 시작을 알리는 줄
+print(totals)                                          # 점수가 높은 순으로 출력한다
 
-kept_count = len(kept_alerts)                         # 남은 알림이 몇 개인지 센다
-false_alarm_count_after = count_false_alarms(kept_alerts)  # 적용 후의 오탐 수를 센다
-print("--- 단계 3: 예외 규칙을 적용한 뒤 ---")        # 단계 3 제목
-print("알림 수:", kept_count)                         # 적용 후 알림 수를 출력한다
-print("오탐 수:", false_alarm_count_after)            # 적용 후 오탐 수를 출력한다
+reasons = collect_reasons(findings)                    # 대상마다 탐지된 규칙 이름을 모은다
+records = make_records(totals, reasons)                # 점수 · 등급 · 이유를 담은 기록을 만든다
+saved_count = save_records(records, RISK_PATH)         # 기록을 파일에 저장한다
+print("--- 단계 3:", RISK_PATH, "에", saved_count, "건 저장")  # 단계 3 시작을 알리는 줄과 건수
 
-real_removed_count = count_real_removed(removed_alerts)  # 빠진 알림 중 진짜 문제였던 것을 센다
-print("--- 단계 4: 빠진 알림 중 진짜 문제였던 것 ---")  # 단계 4 제목
-print("진짜 문제였던 알림 수:", real_removed_count)   # 0 이면 진짜 문제는 지워지지 않은 것이다
+print("--- 단계 4: 등급 · 대상 · 점수 · 이유")         # 단계 4 시작을 알리는 줄
+for record in records:                                 # 기록을 하나씩 꺼낸다
+    print(record["grade"], record["entity"], record["score"], record["reasons"])  # 등급 · 대상 · 점수 · 이유를 출력한다
 ```
 
 **순서**
 
-1. **[VS Code]** 파일 `tuning.py` · `exercise4-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
-2. **[VS Code]** `tuning.py` 에서 <mark>직접 쓰는 곳 일곱 군데를 씁니다</mark>. 도전 4-2에서 쓴 방식과 위 판다스 문법 상자, 2.1 의 표를 참고해 씁니다. 막히면 아래 「실습 4-2 정리」를 봅니다.
+1. **[VS Code]** 파일 `risk_scores.py` · `exercise4-1_run.py` 를 `anomaly_detection` 폴더에 만들어 위 코드를 붙여 넣습니다.
+2. **[VS Code]** `risk_scores.py` 에서 <mark>직접 쓰는 곳 다섯 군데를 씁니다</mark>. 1.1 의 표와 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python exercise4-2_run.py
+   python exercise4-1_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise4-2_run.py` 파이썬으로 실행 파일 실행
-4. 출력은 **네 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 2줄(알림 수 · 오탐 수), 단계 2는 4줄(빠진 알림 수 1줄 · 빠진 알림 2줄 · 사용자 1줄), 단계 3은 2줄, 단계 4는 1줄입니다.
-5. **[보고서]** `report_u4.md` 의 `## 실습 4-2` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 적용 전후의 오탐 수와 빠진 알림을 적어 주세요.
-   - (나) [핵심 질문] 예외 규칙을 적용한 뒤 오탐이 몇 개에서 몇 개로 줄었나요? A3(jiwoo 의 업무 시간 밖 로그인)은 같은 IP 인데 왜 줄어들지 않았는지도 적어 주세요.
-   - (다) [핵심 질문] `SaaS 평소와 다른 IP` 규칙에서 `203.0.113.80` 을 믿는 IP 로 두면, 이 IP 에서 오는 진짜 공격을 그 규칙으로는 놓칠 수 있습니다. 어떤 경우인지 한 가지 적어 주세요.
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise4-1_run.py` 파이썬으로 실행 파일 실행
+4. 출력은 **네 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1과 단계 3은 숫자가 제목 줄에 함께 나오고, 단계 2는 제목 아래 7줄(맨 위 `entity`, 대상 5줄, 맨 아래 `Name: points, dtype: int64`), 단계 4는 5줄입니다.
+5. **[VS Code]** 새로 생긴 `unit05_risk_scores.json` 을 열어 <mark>대상 5개가 점수 순으로 들어 있는지</mark> 확인합니다. 이 파일은 Module 4 Unit 5와 Module 5에서 다시 쓰니 지우거나 이름을 바꾸지 않습니다.
+6. **[보고서]** `report_u4.md` 의 `## 실습 4-1` 아래를 채웁니다.
+   - (가) 실행한 출력 전체를 붙여 넣고, high · mid · low 에 각각 어떤 대상이 들어갔는지 적어 주세요.
+   - (나) [핵심 질문] seoyeon 의 점수가 어떤 규칙의 점수를 더해 나왔는지 적고, 점수만 저장하지 않고 이유(`reasons`)를 함께 저장하는 까닭을 적어 주세요.
+   - (다) [핵심 질문] 198.51.100.90 은 경로 스캔 하나에 해당하지만 low 입니다. low 는 점수 기준상 낮은 등급이라는 뜻입니다. low 인 이유를 점수와 기준으로 설명하고, 이 IP 의 기록을 무시해도 되는지 샘플의 값(그 IP 의 요청 3개의 `result`)으로 판단해 적어 주세요.
 
-## 실습 4-2 정리
+## 실습 4-1 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 값이 같은지 비교 | `is_ip_rule = alerts["rule"] == IP_RULE` |
-| 리스트 안에 있는지 | `is_trusted = alerts["ip"].isin(TRUSTED_IPS)` |
-| 두 조건이 모두 맞는 행 | `is_removed = is_ip_rule & is_trusted` |
-| 조건에 맞는 행만 | `kept_alerts = alerts[is_kept]` |
-| 같은 값을 한 번씩만 | `removed_users = removed_alerts["user"].unique()` |
+| 규칙마다 점수 채우기 | `points = findings_table["rule"].map(WEIGHTS)` |
+| 대상마다 점수 더하기 | `totals = grouped["points"].sum()` |
+| 등급 정하기 | `if score >= HIGH_LIMIT:` → `return "high"` |
+| 기록 만들기 | `record = {"entity": entity, "score": int(score), …}` |
 
 ---
-
-## 마무리 · 이번 Unit 작업 확인하기
-
-이번 Unit의 작업을 깃허브에 올리는 일은 Unit 5의 도전 5-2 마지막에 한 번에 합니다. <mark>이번 Unit에서는 파일이 모두 있는지만 확인합니다</mark>.
-
-**순서**
-
-1. **[터미널]** `anomaly_detection` 폴더에서 <mark>이번 Unit에서 만든 파일이 있는지 확인합니다.</mark>
-   ```bash
-   pwd
-   ls
-   ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
-   - `evaluation.py` · `tuning.py` · `final_check.py` · `challenge4-2_run.py` · `exercise4-2_run.py` · `challenge4-3_run.py` · `review_alerts.json` · `problems.json` · `login_alerts.json` 과 `report_u4.md` 가 보여야 합니다.
-2. **[보고서]** `report_u4.md` 의 도전 4-2 · 8-2 · 8-3 칸에서 <mark>`답:` 뒤가 비어 있는 질문이 없는지</mark> 봅니다. 못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.
-
----
-
-## 이번 Unit 마무리
-
-| 확인 | 문제 |
-|---|---|
-| 알림 7개 중 오탐 4개, 진짜 문제 5개 중 미탐 2개를 세었다 | 도전 4-2 |
-| 믿는 IP 예외 규칙으로 오탐을 4개에서 2개로 줄이고, 진짜 문제가 지워지지 않았음을 확인했다 | 실습 4-2 |
-| 로그인 규칙의 알림을 합쳐 놓친 문제를 2개에서 1개로 줄이고 한 문장으로 요약했다 | 도전 4-3 |
-
-Unit 5에서는 도커 컴포즈로 서버를 켜고, <mark>정상 요청과 스캐너 요청을 보내 로그를 만든 뒤</mark> Unit 5의 통합 실습에 쓸 로그를 저장합니다.
-
----
-
-<!-- learn:answers -->
