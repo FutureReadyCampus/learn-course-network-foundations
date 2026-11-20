@@ -39,6 +39,7 @@ source:
   - `result` 의 「대기」는 `approval` 이 「승인 대기」라서 실행하지 않았다는 뜻입니다.
 - **직접 쓰는 곳은 세 함수**입니다. 판단이 필요한 함수마다 3 ~ 5줄만 쓰고, 나머지는 미리 채웠습니다.
   - `remove_exception`(1 ~ 3번): 번호가 같은 예외를 찾아 지웁니다(`리스트.remove(값)` 은 리스트에서 그 값을 지웁니다).
+    - 지운 뒤에는 바로 `return True` 로 함수를 끝냅니다. 지금 `for` 로 돌고 있는 리스트에서 값을 지운 채 반복을 계속하면 다음 항목을 건너뛸 수 있기 때문입니다.
   - `apply_plan`(4 ~ 8번): 회수 방법별로 실제로 지우는 일(세 곳)입니다.
   - `execute_revocation`(9 ~ 13번): 계획마다 「대기」인지 「실행」인지 정합니다.
 - **미리 채운 함수**
@@ -214,6 +215,9 @@ count = save_log(log, "revocation_log.json")                     # 이력을 파
 saved = load_json("revocation_log.json", [])                     # 저장한 파일을 다시 읽어
 print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력:", saved[0]["user"], saved[0]["permission"], saved[0]["result"])  # 건수와 첫 이력을 출력한다
 ```
+
+- `judge` 의 `plan["permission"].split(":")` 는 문자열을 `:` 자리에서 잘라 리스트로 만듭니다. `"SALES:QUERY"` 는 `["SALES", "QUERY"]` 가 되고, 그 두 값을 `resource, action` 두 이름으로 한꺼번에 받습니다.
+- 단계 2의 `range(plan_count)` 는 0부터 `plan_count - 1` 까지의 번호를 차례로 만듭니다(계획이 8건이면 0 ~ 7). 리스트 번호도 0부터 시작하므로 `before[index]` 와 `after[index]` 는 같은 계획의 회수 전 판정과 회수 후 판정입니다.
 
 **순서**
 
