@@ -1,24 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img">
 <title>마무리 정리: 올릴 파일 확인, 세 명령으로 올리기, 브라우저에서 확인</title>
-<desc>먼저 git status 로 .env 나 .venv 가 없는지 확인하고, git add, git commit, git push 순서로 올린 뒤, 브라우저에서 soar_response 폴더와 파일이 있는지 본다.</desc>
-<defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
-<text x="20" y="32" font-size="18" fill="#292929" font-weight="700">마무리 정리</text>
-<rect x="20" y="60" width="200" height="150" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="120" y="108.9" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">① 올릴 파일 확인</text>
-<text x="120" y="129.9" font-size="15" fill="#292929" text-anchor="middle">git status</text>
-<text x="120" y="150.9" font-size="15" fill="#292929" text-anchor="middle">.env · .venv 가</text>
-<text x="120" y="171.9" font-size="15" fill="#292929" text-anchor="middle">보이면 멈춤</text>
-<line x1="226" y1="135" x2="254" y2="135" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
-<rect x="260" y="60" width="200" height="150" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="360" y="108.9" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">② 올리기</text>
-<text x="360" y="129.9" font-size="15" fill="#292929" text-anchor="middle">git add .</text>
-<text x="360" y="150.9" font-size="15" fill="#292929" text-anchor="middle">git commit -m "…"</text>
-<text x="360" y="171.9" font-size="15" fill="#292929" text-anchor="middle">git push</text>
-<line x1="466" y1="135" x2="494" y2="135" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
-<rect x="500" y="60" width="200" height="150" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="600" y="108.9" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">③ 올린 뒤</text>
-<text x="600" y="129.9" font-size="15" fill="#292929" text-anchor="middle">브라우저에서</text>
-<text x="600" y="150.9" font-size="15" fill="#292929" text-anchor="middle">soar_response</text>
-<text x="600" y="171.9" font-size="15" fill="#292929" text-anchor="middle">폴더와 파일 확인</text>
-<text x="360" y="250" font-size="15" fill="#666660" text-anchor="middle">__pycache__ 폴더는 깃허브에 없어도 된다</text>
+<desc>먼저 git status 로 올릴 파일을 보고 .env 나 .venv 가 보이면 멈춥니다. git add ., git commit -m, git push 순서로 올리고, 마지막으로 브라우저에서 soar_response 폴더와 파일이 있는지 확인합니다.</desc>
+<defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="bold">마무리 정리</text>
+<rect x="20" y="60" width="210" height="200" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="125.0" y="133.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="bold">올릴 파일 확인</text>
+<text x="125.0" y="155.4" font-size="15" fill="#292929" text-anchor="middle">git status</text>
+<text x="125.0" y="176.4" font-size="15" fill="#292929" text-anchor="middle">.env · .venv 가</text>
+<text x="125.0" y="197.4" font-size="15" fill="#292929" text-anchor="middle">보이면 멈춤</text>
+<line x1="232" y1="160" x2="253" y2="160" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
+<rect x="255" y="60" width="210" height="200" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360.0" y="133.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="bold">올리기</text>
+<text x="360.0" y="155.4" font-size="15" fill="#292929" text-anchor="middle">git add .</text>
+<text x="360.0" y="176.4" font-size="15" fill="#292929" text-anchor="middle">git commit -m "…"</text>
+<text x="360.0" y="197.4" font-size="15" fill="#292929" text-anchor="middle">git push</text>
+<line x1="467" y1="160" x2="488" y2="160" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
+<rect x="490" y="60" width="210" height="200" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="595.0" y="133.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="bold">올린 뒤</text>
+<text x="595.0" y="155.4" font-size="15" fill="#292929" text-anchor="middle">브라우저에서</text>
+<text x="595.0" y="176.4" font-size="15" fill="#292929" text-anchor="middle">soar_response 폴더와</text>
+<text x="595.0" y="197.4" font-size="15" fill="#292929" text-anchor="middle">파일 확인</text>
+</g>
 </svg>

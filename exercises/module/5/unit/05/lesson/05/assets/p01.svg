@@ -1,26 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>보고서 쓰는 법: 질문 아래 답 칸에 쓸 내용을 근거와 함께 채운다</title>
-<desc>문제를 풀 때마다 그 문제 제목 아래 질문에 답한다. 쓸 내용을 따라 답 뒤에 쓰고, 출력은 코드 상자에 붙여 넣으며, 왜를 묻는 질문은 내 화면의 값으로 이유까지 쓴다. 모르면 모름과 막힌 곳을 쓴다.</desc>
-<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
-<text x="20" y="32" font-size="18" fill="#292929" font-weight="700">보고서 쓰는 법</text>
-<rect x="20" y="52" width="48" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="44" y="81.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">1</text>
-<rect x="80" y="52" width="620" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="92" y="81.4" font-size="15" fill="#292929">문제를 풀 때마다 그 문제 제목 아래 질문에 답한다</text>
-<rect x="20" y="114" width="48" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="44" y="143.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">2</text>
-<rect x="80" y="114" width="620" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="92" y="143.4" font-size="15" fill="#292929">「쓸 내용:」을 보고 「답:」 뒤에 쓴다</text>
-<rect x="20" y="176" width="48" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="44" y="205.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">3</text>
-<rect x="80" y="176" width="620" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="92" y="205.4" font-size="15" fill="#292929">출력 · 코드는 「답:」 아래 빈 코드 상자에 붙여 넣는다</text>
-<rect x="20" y="238" width="48" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="44" y="267.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">4</text>
-<rect x="80" y="238" width="620" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="92" y="267.4" font-size="15" fill="#292929">「왜」는 내 화면의 값이나 배운 내용으로 이유까지</text>
-<rect x="20" y="300" width="48" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="44" y="329.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">5</text>
-<rect x="80" y="300" width="620" height="48" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="92" y="329.4" font-size="15" fill="#292929">모르면 「모름 — 막힌 곳: …」 이라고 쓴다</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img">
+<title>내 코드가 주석이 말한 일을 하면 정답과 줄 수가 달라도 맞습니다</title>
+<desc>정답은 한 예입니다. 내 코드를 정답과 글자 하나하나 비교하지 않고, 주석이 말한 일을 하는지와 핵심이 같은지를 봅니다. 줄 수가 달라도 그 일을 하면 맞습니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="bold">정답을 보는 방법</text>
+<rect x="20" y="70" width="170" height="80" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="105.0" y="115.2" font-size="15" fill="#292929" text-anchor="middle">내가 채운 코드</text>
+<line x1="192" y1="110" x2="222" y2="110" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="225" y="60" width="250" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="350.0" y="94.4" font-size="16" fill="#292929" text-anchor="middle" font-weight="bold">확인</text>
+<text x="350.0" y="115.9" font-size="15" fill="#292929" text-anchor="middle">주석이 말한 일을</text>
+<text x="350.0" y="136.9" font-size="15" fill="#292929" text-anchor="middle">하고, 핵심이 같은가?</text>
+<line x1="477" y1="84" x2="515" y2="84" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<line x1="477" y1="138" x2="515" y2="138" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="518" y="58" width="182" height="50" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="609.0" y="88.2" font-size="15" fill="#292929" text-anchor="middle">예 → 맞습니다</text>
+<rect x="518" y="114" width="182" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="609.0" y="143.9" font-size="14" fill="#292929" text-anchor="middle">아니오 → 주석 다시 읽기</text>
+<rect x="20" y="200" width="330" height="76" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="185.0" y="232.8" font-size="15" fill="#292929" text-anchor="middle">정답은 「한 예」입니다</text>
+<text x="185.0" y="253.8" font-size="15" fill="#292929" text-anchor="middle">글자까지 같을 필요는 없습니다</text>
+<rect x="370" y="200" width="330" height="76" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="535.0" y="232.8" font-size="15" fill="#292929" text-anchor="middle">줄 수가 달라도</text>
+<text x="535.0" y="253.8" font-size="15" fill="#292929" text-anchor="middle">주석이 말한 일을 하면 맞습니다</text>
+</g>
 </svg>

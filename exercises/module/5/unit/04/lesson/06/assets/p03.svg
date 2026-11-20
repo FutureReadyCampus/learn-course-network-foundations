@@ -1,20 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 329" role="img">
-<title>실습 4-2 보고서: 차단된 IP 와 이유, 공유 IP 의 영향, 자동 해제의 근거</title>
-<desc>실습 4-2 보고서에 채울 칸입니다. (가)는 출력과 차단 여부, (나)는 ip_users.json 을 근거로 공유 IP 를 차단하지 않은 이유, (다)는 만료 시각과 시계를 근거로 자동 해제된 이유를 씁니다.</desc>
-<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 4-2 보고서에 채울 칸</text>
-<rect x="24" y="60" width="130" height="85" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="89.0" y="107.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(가)</tspan></text>
-<rect x="166" y="60" width="530" height="85" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="180" y="86.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180" dy="0">① 출력 전체 (코드 상자에 붙여 넣기)</tspan><tspan x="180" dy="21.0">② 실제로 차단된 IP</tspan><tspan x="180" dy="21.0">③ 차단하지 않은 IP 와 각 이유</tspan></text>
-<rect x="24" y="157" width="130" height="64" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="89.0" y="183.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(나)</tspan><tspan x="89.0" dy="21.0">핵심 질문</tspan></text>
-<rect x="166" y="157" width="530" height="64" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="180" y="183.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180" dy="0">① ip_users.json 의 값   ② 차단하지 않은 이유</tspan><tspan x="180" dy="21.0">③ 그대로 차단했을 때의 영향</tspan></text>
-<rect x="24" y="233" width="130" height="64" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="89.0" y="259.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(다)</tspan><tspan x="89.0" dy="21.0">핵심 질문</tspan></text>
-<rect x="166" y="233" width="530" height="64" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="180" y="259.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180" dy="0">① 단계 2 의 만료 시각과 단계 3 의 시계</tspan><tspan x="180" dy="21.0">② 풀린 이유   ③ 자동으로 풀리게 두는 장점</tspan></text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 370" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>도전 4-2: 티켓에서 확인까지 걸린 시간을 모아 평균 확인 시간을 구합니다</title>
+<desc>티켓 리스트에서 확인한 티켓만 골라 확인 시각에서 만든 시각을 뺀 시간 리스트를 만들고, average 함수로 합계를 개수로 나누어 평균 확인 시간(MTTA)을 구하는 흐름입니다. 아직 확인하지 않은 티켓은 리스트에서 뺍니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<text x="30" y="32" font-size="19" font-weight="700" fill="#292929">도전 4-2: 확인 시간을 모아 평균 내기</text>
+<g stroke-width="1.5">
+<rect x="30" y="60" width="190" height="86" rx="10" fill="#f1f1ef" stroke="#dededb"/>
+<rect x="250" y="60" width="220" height="86" rx="10" fill="#e6eefb" stroke="#2f6fd0"/>
+<rect x="500" y="60" width="190" height="86" rx="10" fill="#ffffff" stroke="#2f6fd0"/>
+<rect x="470" y="196" width="220" height="92" rx="10" fill="#e6eefb" stroke="#2f6fd0"/>
+<rect x="170" y="196" width="250" height="92" rx="10" fill="#e4f3ea" stroke="#1f7a4a"/>
+<rect x="30" y="312" width="660" height="46" rx="10" fill="#fbf0dc" stroke="#9a6200"/>
+</g>
+<g fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)">
+<path d="M220 103H248"/><path d="M470 103H498"/><path d="M595 148V194"/><path d="M468 242H422"/>
+</g>
+<g text-anchor="middle" fill="#292929">
+<text x="125" y="95" font-size="15" font-weight="700">티켓 리스트</text>
+<text x="125" y="117" font-size="14">created_at</text>
+<text x="125" y="136" font-size="14">acked_at</text>
+<text x="360" y="88" font-size="14" font-weight="700">collect_response_times</text>
+<text x="360" y="112" font-size="14">확인한 티켓만 골라</text>
+<text x="360" y="132" font-size="14">(확인 − 만든 시각)을 추가</text>
+<text x="595" y="97" font-size="15" font-weight="700">확인 시간 리스트</text>
+<text x="595" y="121" font-size="14">(분 단위)</text>
+<text x="580" y="226" font-size="15" font-weight="700">average(리스트)</text>
+<text x="580" y="250" font-size="14">합계 ÷ 개수</text>
+<text x="580" y="270" font-size="14">비어 있으면 0</text>
+<text x="295" y="236" font-size="15" font-weight="700">평균 확인 시간(MTTA)</text>
+<text x="295" y="262" font-size="14">출력 단계 2 에서 보이는 값</text>
+<text x="360" y="332" font-size="14">아직 확인하지 않은 티켓(acked_at = -1)은 리스트에서 뺍니다.</text>
+<text x="360" y="350" font-size="14">평균 해결 시간(MTTR)도 같은 방식으로 구합니다.</text>
 </g>
 </svg>

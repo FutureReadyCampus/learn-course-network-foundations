@@ -1,33 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
-<title>경로 스캔 알림 IP 3개 중 외부 IP 하나만 차단하고 2시간 뒤 자동 해제합니다</title>
-<desc>외부 IP 198.51.100.90 은 차단되고 120분 뒤 자동 해제됩니다. 자사 점검 서버 192.0.2.10 은 허용 목록이라 차단하지 않고, 공유 IP 192.0.2.41 은 담당자 승인이 필요합니다.</desc>
-<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 396" role="img">
+<title>오탐 신고 2건을 영향 확인 · 롤백 · 복구 확인으로 처리한다</title>
+<desc>jiwoo 잠금(INC-301)은 25분, 점검 업체 IP 차단(INC-202)은 5분 만에 복구됩니다. jiwoo의 세션은 되돌릴 수 없어 다시 로그인해야 하고, 정탐인 dami는 그대로 잠겨 있습니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p01r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p01g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p01b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 4-2 목표: 차단할 IP 와 차단하면 안 되는 IP</text>
-<rect x="24" y="70" width="200" height="66" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="124.0" y="97.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="124.0" dy="0" font-weight="700">198.51.100.90</tspan><tspan x="124.0" dy="21.0">외부 IP</tspan></text>
-<rect x="274" y="70" width="150" height="66" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="349.0" y="97.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="349.0" dy="0">정책 검사</tspan><tspan x="349.0" dy="21.0">먼저</tspan></text>
-<rect x="474" y="70" width="222" height="66" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="585.0" y="97.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="585.0" dy="0" font-weight="700">차단됨</tspan><tspan x="585.0" dy="21.0">120분 뒤 자동 해제</tspan></text>
-<line x1="224" y1="103" x2="272" y2="103" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<line x1="424" y1="103" x2="472" y2="103" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<rect x="24" y="154" width="200" height="66" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="124.0" y="181.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="124.0" dy="0" font-weight="700">192.0.2.10</tspan><tspan x="124.0" dy="21.0">자사 점검 서버</tspan></text>
-<rect x="274" y="154" width="150" height="66" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="349.0" y="181.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="349.0" dy="0">정책 검사</tspan><tspan x="349.0" dy="21.0">먼저</tspan></text>
-<rect x="474" y="154" width="222" height="66" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="585.0" y="181.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="585.0" dy="0" font-weight="700">차단하지 않음</tspan><tspan x="585.0" dy="21.0">허용 목록 IP</tspan></text>
-<line x1="224" y1="187" x2="272" y2="187" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<line x1="424" y1="187" x2="472" y2="187" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<rect x="24" y="238" width="200" height="66" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="124.0" y="265.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="124.0" dy="0" font-weight="700">192.0.2.41</tspan><tspan x="124.0" dy="21.0">junho · hana 공유</tspan></text>
-<rect x="274" y="238" width="150" height="66" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="349.0" y="265.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="349.0" dy="0">정책 검사</tspan><tspan x="349.0" dy="21.0">먼저</tspan></text>
-<rect x="474" y="238" width="222" height="66" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="585.0" y="265.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="585.0" dy="0" font-weight="700">차단하지 않음</tspan><tspan x="585.0" dy="21.0">담당자 승인 필요</tspan></text>
-<line x1="224" y1="271" x2="272" y2="271" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<line x1="424" y1="271" x2="472" y2="271" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<text x="24" y="330" font-size="15" text-anchor="start" fill="#666660">모두 차단하면 점검이 멈추고, 공유 IP 의 정상 사용자 두 명이 접속하지 못합니다.</text>
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">실습 4-2: 오탐 신고 2건 처리</tspan></text>
+<rect x="20" y="54" width="230" height="110" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="135.0" y="93.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="135.0" font-weight="bold">INC-301 · 영업팀장</tspan><tspan x="135.0" dy="21.0">jiwoo 잠금 · 세션 종료</tspan><tspan x="135.0" dy="19.6" font-size="14">「출장 중」</tspan></text>
+<line x1="252" y1="109" x2="288" y2="109" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="290" y="54" width="200" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="390.0" y="92.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="390.0">영향 확인</tspan><tspan x="390.0" dy="21.0">→ 롤백</tspan><tspan x="390.0" dy="21.0">→ 복구 확인</tspan></text>
+<line x1="492" y1="109" x2="528" y2="109" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="530" y="54" width="170" height="110" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="615.0" y="94.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="615.0" font-weight="bold">25분 만에 복구</tspan><tspan x="615.0" dy="19.6" font-size="14">세션은 되돌리기 불가</tspan><tspan x="615.0" dy="19.6" font-size="14">→ 다시 로그인 안내</tspan></text>
+<rect x="20" y="182" width="230" height="110" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="135.0" y="221.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="135.0" font-weight="bold">INC-202 · 인프라팀</tspan><tspan x="135.0" dy="21.0">IP 198.51.100.90 차단</tspan><tspan x="135.0" dy="19.6" font-size="14">「점검 업체 스캐너」</tspan></text>
+<line x1="252" y1="237" x2="288" y2="237" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="290" y="182" width="200" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="390.0" y="220.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="390.0">영향 확인</tspan><tspan x="390.0" dy="21.0">→ 롤백</tspan><tspan x="390.0" dy="21.0">→ 복구 확인</tspan></text>
+<line x1="492" y1="237" x2="528" y2="237" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="530" y="182" width="170" height="110" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="615.0" y="232.0" font-size="15" text-anchor="middle" fill="#292929"><tspan x="615.0" font-weight="bold">5분 만에 복구</tspan><tspan x="615.0" dy="19.6" font-size="14">IP 차단 해제</tspan></text>
+<rect x="20" y="316" width="330" height="64" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="185.0" y="342.7" font-size="14" text-anchor="middle" fill="#292929"><tspan x="185.0" font-weight="bold">dami(INC-201)는 정탐</tspan><tspan x="185.0" dy="19.6">오탐이 아니므로 그대로 잠김</tspan></text>
+<rect x="370" y="316" width="330" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="535.0" y="342.7" font-size="14" text-anchor="middle" fill="#292929"><tspan x="535.0" font-weight="bold">기준: 신고 받고 30분 이내</tspan><tspan x="535.0" dy="19.6">규칙 조정 제안도 남긴다</tspan></text>
 </g>
 </svg>

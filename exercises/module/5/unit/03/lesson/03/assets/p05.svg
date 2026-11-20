@@ -1,49 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
-<title>pwd 로 위치를 확인하고 git status 점검 뒤 add, commit, push 하고 브라우저에서 확인한다</title>
-<desc>0~5단계 순서도다. 위치를 security-agent-toolkit 으로 옮기고, git status 에서 .env 가 보이면 .gitignore 에 적고, 보고서를 채운 뒤 add · commit · push 하고 깃허브에서 파일을 확인한다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>Unit 3 은 티켓 생성, 병합, 알림 전파로 이어지고 Unit 4 에스컬레이션으로 간다</title>
+<desc>Unit 3 에서 만든 세 실습이 차례로 이어진다. 실습 3-2 티켓 생성과 응답 기한, 도전 3-2 병합과 상태 전이, 도전 3-3 알림 전파와 재시도 다음에 Unit 4 에스컬레이션과 근무 시뮬레이션이 온다.</desc>
 <defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">깃허브에 올리기: 확인하고 add → commit → push</text>
-<rect x="20" y="52" width="44" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="42" y="81.22" font-size="18" fill="#292929" text-anchor="middle">0</text>
-<rect x="76" y="52" width="250" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="201" y="80.35" font-size="15" fill="#292929" text-anchor="middle">pwd · ls</text>
-<rect x="338" y="52" width="362" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="519" y="80.06" font-size="14" fill="#292929" text-anchor="middle">soar_response 에서 오늘 파일 확인</text>
-<polyline points="42,102 42,110" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
-<rect x="20" y="112" width="44" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="42" y="141.22" font-size="18" fill="#292929" text-anchor="middle">1</text>
-<rect x="76" y="112" width="250" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="201" y="140.35" font-size="15" fill="#292929" text-anchor="middle">cd .. → pwd</text>
-<rect x="338" y="112" width="362" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="519" y="140.06" font-size="14" fill="#292929" text-anchor="middle">…/security-agent-toolkit 으로 끝남</text>
-<polyline points="42,162 42,170" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
-<rect x="20" y="172" width="44" height="48" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="42" y="201.22" font-size="18" fill="#292929" text-anchor="middle">2</text>
-<rect x="76" y="172" width="250" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="201" y="200.35" font-size="15" fill="#292929" text-anchor="middle">git status</text>
-<rect x="338" y="172" width="362" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="519" y="200.06" font-size="14" fill="#292929" text-anchor="middle">.env · .venv 가 보이면 .gitignore 에 적기</text>
-<polyline points="42,222 42,230" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
-<rect x="20" y="232" width="44" height="48" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="42" y="261.22" font-size="18" fill="#292929" text-anchor="middle">3</text>
-<rect x="76" y="232" width="250" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="201" y="260.35" font-size="15" fill="#292929" text-anchor="middle">보고서 채우기</text>
-<rect x="338" y="232" width="362" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="519" y="260.06" font-size="14" fill="#292929" text-anchor="middle">마무리 (가) 와 빈칸을 올리기 전에</text>
-<polyline points="42,282 42,290" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
-<rect x="20" y="292" width="44" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="42" y="321.22" font-size="18" fill="#292929" text-anchor="middle">4</text>
-<rect x="76" y="292" width="250" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="201" y="320.35" font-size="15" fill="#292929" text-anchor="middle">git add . → commit → push</text>
-<rect x="338" y="292" width="362" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="519" y="320.06" font-size="14" fill="#292929" text-anchor="middle">rejected 면 git pull --no-rebase</text>
-<polyline points="42,342 42,350" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
-<rect x="20" y="352" width="44" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="42" y="381.22" font-size="18" fill="#292929" text-anchor="middle">5</text>
-<rect x="76" y="352" width="250" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="201" y="380.35" font-size="15" fill="#292929" text-anchor="middle">브라우저에서 확인</text>
-<rect x="338" y="352" width="362" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="519" y="380.06" font-size="14" fill="#292929" text-anchor="middle">soar_response 폴더의 파일이 보이는지</text>
-</g>
+<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">이번 Unit 마무리</text>
+<rect x="20" y="70" width="155" height="130" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="97.5" y="119.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">실습 3-2</text>
+<text x="97.5" y="140.2" font-size="15" fill="#292929" text-anchor="middle">티켓 생성</text>
+<text x="97.5" y="161.2" font-size="15" fill="#292929" text-anchor="middle">응답 기한 계산</text>
+<rect x="195" y="70" width="155" height="130" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="272.5" y="119.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">도전 3-2</text>
+<text x="272.5" y="140.2" font-size="15" fill="#292929" text-anchor="middle">병합 (중복 제거)</text>
+<text x="272.5" y="161.2" font-size="15" fill="#292929" text-anchor="middle">상태 전이</text>
+<rect x="370" y="70" width="155" height="130" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="447.5" y="108.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">도전 3-3</text>
+<text x="447.5" y="129.8" font-size="15" fill="#292929" text-anchor="middle">등급별 알림</text>
+<text x="447.5" y="150.8" font-size="15" fill="#292929" text-anchor="middle">30분 간격</text>
+<text x="447.5" y="171.8" font-size="15" fill="#292929" text-anchor="middle">3번 재시도</text>
+<rect x="545" y="70" width="155" height="130" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="622.5" y="119.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">Unit 4</text>
+<text x="622.5" y="140.2" font-size="15" fill="#292929" text-anchor="middle">에스컬레이션</text>
+<text x="622.5" y="161.2" font-size="15" fill="#292929" text-anchor="middle">근무 시뮬레이션</text>
+<line x1="177" y1="135" x2="193" y2="135" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<line x1="352" y1="135" x2="368" y2="135" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<line x1="527" y1="135" x2="543" y2="135" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<rect x="20" y="225" width="680" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="256.2" font-size="15" fill="#292929" text-anchor="middle">도전 3-3 에서 저장한 tickets_unit09.json 을 Unit 4 에서 읽는다</text>
 </svg>

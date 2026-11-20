@@ -1,12 +1,13 @@
 ---
 id: m5-u05
-title: 자동 조치 되돌리기와 근무 요약
+title: 통합 엔진과 최종 회고
 lessons:
 - path: lesson/01/lesson.md
 - path: lesson/02/lesson.md
 - path: lesson/03/lesson.md
 - path: lesson/04/lesson.md
 - path: lesson/05/lesson.md
+- path: lesson/06/lesson.md
 ---
 
-# 자동 조치 되돌리기와 근무 요약
+# 통합 엔진과 최종 회고

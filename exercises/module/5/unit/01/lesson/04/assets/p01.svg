@@ -1,21 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>설명하는 답은 한 예이고 핵심이 같으면 맞다</title>
-<desc>내 답과 정답 예를 비교하는 판단 그림이다. 핵심이 같으면 맞고, 다르면 해당 실습을 다시 읽고 고친다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>같은 절차라도 퇴사자·VIP·협력사 접속은 상황이 달라 조치 전에 맥락이 필요하다</title>
+<desc>세 인시던트의 상황 비교다. INC-001 dami는 퇴사자라 잠가도 지장이 없고, INC-003 gaeun은 VIP 계정이라 잠기면 업무가 중단되며, INC-004 jiwoo는 협력사에서 평소처럼 접속해 잠글 사유가 없다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">정답을 보는 방법</text>
-<rect x="20" y="90" width="150" height="80" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="135.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="95.0" dy="0.0" font-weight="700">내 답</tspan></text>
-<rect x="20" y="190" width="150" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text y="225.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="95.0" dy="0.0" font-weight="700">정답 (한 예)</tspan></text>
-<line x1="172" y1="130" x2="226" y2="160" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<line x1="172" y1="220" x2="226" y2="180" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<polygon points="330,110 430,170 330,230 230,170" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="330" y="166" font-size="15" fill="#292929" text-anchor="middle">핵심이</text>
-<text x="330" y="186" font-size="15" fill="#292929" text-anchor="middle">같은가?</text>
-<polyline points="430,170 460,170 460,110 486,110" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<polyline points="430,170 460,170 460,230 486,230" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="490" y="80" width="210" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text y="115.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="595.0" dy="0.0" font-weight="700">예 → 맞음</tspan></text>
-<rect x="490" y="200" width="210" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text y="224.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="595.0" dy="0.0" font-weight="700">아니요 → 실습을</tspan><tspan x="595.0" dy="21.0">다시 읽고 고치기</tspan></text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">이번 의뢰: 맥락 없이 같은 절차를 실행하는 문제</text>
+<rect x="20.0" y="52" width="210.7" height="130" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text y="92.5" font-size="14" fill="#292929" text-anchor="middle"><tspan x="125.35" dy="0.0" font-weight="700">INC-001 dami</tspan><tspan x="125.35" dy="19.6">퇴사자 계정</tspan><tspan x="125.35" dy="19.6">→ 잠가도</tspan><tspan x="125.35" dy="19.6">업무 지장 없음</tspan></text>
+<rect x="254.7" y="52" width="210.7" height="130" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text y="92.5" font-size="14" fill="#292929" text-anchor="middle"><tspan x="360.04999999999995" dy="0.0" font-weight="700">INC-003 gaeun</tspan><tspan x="360.04999999999995" dy="19.6">VIP 계정 (계정 관리자)</tspan><tspan x="360.04999999999995" dy="19.6">→ 잠기면</tspan><tspan x="360.04999999999995" dy="19.6">계정 관리 업무 중단</tspan></text>
+<rect x="489.3" y="52" width="210.7" height="130" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="92.5" font-size="14" fill="#292929" text-anchor="middle"><tspan x="594.65" dy="0.0" font-weight="700">INC-004 jiwoo</tspan><tspan x="594.65" dy="19.6">협력사 사무실에서</tspan><tspan x="594.65" dy="19.6">평소처럼 접속</tspan><tspan x="594.65" dy="19.6">→ 잠글 사유 없음</tspan></text>
+<rect x="20" y="204" width="330" height="110" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text y="243.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="185.0" dy="0.0" font-weight="700">지금 프로그램이 보는 것</tspan><tspan x="185.0" dy="21.0">탐지 규칙 이름</tspan><tspan x="185.0" dy="21.0">위험 등급</tspan></text>
+<line x1="352" y1="259" x2="368" y2="259" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="370" y="204" width="330" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="243.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="535.0" dy="0.0" font-weight="700">부탁: 조치 전에 조회해 추가</tspan><tspan x="535.0" dy="21.0">대상이 누구인가 (퇴사 · VIP)</tspan><tspan x="535.0" dy="21.0">어디에서 접속했는가 (신뢰 IP)</tspan></text>
+<rect x="20" y="330" width="680" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="360.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0">판단 근거는 계정 이름이 아니라 알림에 추가된 정보(맥락)</tspan></text>
 </svg>

@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>실습 1-3 정답 출력: 퇴사는 INC-001, VIP 는 INC-003, VIP 계정 알림은 1건</title>
+<desc>알림 5건마다 붙은 재직 · VIP · 접속 IP · 신뢰 IP 맥락을 표로 보인다. INC-002 와 INC-004 는 같은 신뢰 IP 이고, INC-005 는 계정 정보에 없어 초기값이 그대로 남는다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 1-3 정답: 알림 5건에 붙은 맥락</text>
+<rect x="20" y="52" width="110" height="36" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="75" y="74.35" font-size="15" fill="#292929" text-anchor="middle">번호</text>
+<rect x="130" y="52" width="150" height="36" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="205" y="74.35" font-size="15" fill="#292929" text-anchor="middle">대상</text>
+<rect x="280" y="52" width="90" height="36" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="325" y="74.35" font-size="15" fill="#292929" text-anchor="middle">재직</text>
+<rect x="370" y="52" width="80" height="36" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="410" y="74.35" font-size="15" fill="#292929" text-anchor="middle">VIP</text>
+<rect x="450" y="52" width="150" height="36" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="525" y="74.35" font-size="15" fill="#292929" text-anchor="middle">접속 IP</text>
+<rect x="600" y="52" width="100" height="36" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="650" y="74.35" font-size="15" fill="#292929" text-anchor="middle">신뢰 IP</text>
+<rect x="20" y="94" width="110" height="40" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="75" y="118.06" font-size="14" fill="#292929" text-anchor="middle">INC-001</text>
+<rect x="130" y="94" width="150" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="205" y="118.06" font-size="14" fill="#292929" text-anchor="middle">dami</text>
+<rect x="280" y="94" width="90" height="40" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="325" y="118.06" font-size="14" fill="#292929" text-anchor="middle">퇴사</text>
+<rect x="370" y="94" width="80" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="410" y="118.06" font-size="14" fill="#292929" text-anchor="middle">아니오</text>
+<rect x="450" y="94" width="150" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="525" y="118.06" font-size="14" fill="#292929" text-anchor="middle">없음</text>
+<rect x="600" y="94" width="100" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="650" y="118.06" font-size="14" fill="#292929" text-anchor="middle">아니오</text>
+<rect x="20" y="140" width="110" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="75" y="164.06" font-size="14" fill="#292929" text-anchor="middle">INC-002</text>
+<rect x="130" y="140" width="150" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="205" y="164.06" font-size="14" fill="#292929" text-anchor="middle">seoyeon</text>
+<rect x="280" y="140" width="90" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="325" y="164.06" font-size="14" fill="#292929" text-anchor="middle">재직</text>
+<rect x="370" y="140" width="80" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="410" y="164.06" font-size="14" fill="#292929" text-anchor="middle">아니오</text>
+<rect x="450" y="140" width="150" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="525" y="164.06" font-size="14" fill="#292929" text-anchor="middle">203.0.113.80</text>
+<rect x="600" y="140" width="100" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="650" y="164.06" font-size="14" fill="#292929" text-anchor="middle">예</text>
+<rect x="20" y="186" width="110" height="40" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="75" y="210.06" font-size="14" fill="#292929" text-anchor="middle">INC-003</text>
+<rect x="130" y="186" width="150" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="205" y="210.06" font-size="14" fill="#292929" text-anchor="middle">gaeun</text>
+<rect x="280" y="186" width="90" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="325" y="210.06" font-size="14" fill="#292929" text-anchor="middle">재직</text>
+<rect x="370" y="186" width="80" height="40" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="410" y="210.06" font-size="14" fill="#292929" text-anchor="middle">예</text>
+<rect x="450" y="186" width="150" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="525" y="210.06" font-size="14" fill="#292929" text-anchor="middle">198.51.100.77</text>
+<rect x="600" y="186" width="100" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="650" y="210.06" font-size="14" fill="#292929" text-anchor="middle">아니오</text>
+<rect x="20" y="232" width="110" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="75" y="256.06" font-size="14" fill="#292929" text-anchor="middle">INC-004</text>
+<rect x="130" y="232" width="150" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="205" y="256.06" font-size="14" fill="#292929" text-anchor="middle">jiwoo</text>
+<rect x="280" y="232" width="90" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="325" y="256.06" font-size="14" fill="#292929" text-anchor="middle">재직</text>
+<rect x="370" y="232" width="80" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="410" y="256.06" font-size="14" fill="#292929" text-anchor="middle">아니오</text>
+<rect x="450" y="232" width="150" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="525" y="256.06" font-size="14" fill="#292929" text-anchor="middle">203.0.113.80</text>
+<rect x="600" y="232" width="100" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="650" y="256.06" font-size="14" fill="#292929" text-anchor="middle">예</text>
+<rect x="20" y="278" width="110" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="75" y="302.06" font-size="14" fill="#292929" text-anchor="middle">INC-005</text>
+<rect x="130" y="278" width="150" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="205" y="302.06" font-size="14" fill="#292929" text-anchor="middle">198.51.100.90</text>
+<rect x="280" y="278" width="90" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="325" y="302.06" font-size="14" fill="#292929" text-anchor="middle">계정 아님</text>
+<rect x="370" y="278" width="80" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="410" y="302.06" font-size="14" fill="#292929" text-anchor="middle">아니오</text>
+<rect x="450" y="278" width="150" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="525" y="302.06" font-size="14" fill="#292929" text-anchor="middle">없음</text>
+<rect x="600" y="278" width="100" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="650" y="302.06" font-size="14" fill="#292929" text-anchor="middle">아니오</text>
+<text x="20" y="344" font-size="15" fill="#292929" font-weight="700">퇴사: INC-001 · VIP 예: INC-003 · 단계 3 의 VIP 계정 알림 1건</text>
+<text x="20" y="372" font-size="14" fill="#666660">INC-005 는 users_info 에도 source_ips 에도 키가 없어 초기값(False · None)이 남는다</text>
+</g>
+</svg>

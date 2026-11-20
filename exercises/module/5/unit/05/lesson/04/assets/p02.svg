@@ -1,38 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>실습 5-1 정답: 인시던트 세 건의 기록을 거꾸로 읽어 되돌린 결과</title>
-<desc>INC-001 은 세션 종료가 되돌리기 불가로 표시되고 계정은 해제된다. INC-006 의 junho 는 잠김에서 잠김이라 해제하지 않는다. INC-005 의 IP 는 해제되어, 단계 5 에서 잠긴 계정은 junho, 차단한 IP 는 없다.</desc>
-<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
-<rect x="20" y="20" width="680" height="40" fill="#f1f1ef" stroke="#dededb" stroke-width="1"/>
-<text x="30" y="45.04" font-size="14" fill="#292929" font-weight="700">단계</text>
-<text x="160" y="45.04" font-size="14" fill="#292929" font-weight="700">기록 (나중 것부터)</text>
-<text x="450" y="45.04" font-size="14" fill="#292929" font-weight="700">결과</text>
-<rect x="20" y="60" width="680" height="40" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
-<text x="30" y="85.04" font-size="14" fill="#292929">단계 2 · INC-001</text>
-<text x="160" y="85.04" font-size="14" fill="#292929">세션 종료 · 세션 2개 → 0개</text>
-<text x="450" y="85.04" font-size="14" fill="#292929">되돌리기 불가</text>
-<rect x="20" y="100" width="680" height="40" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
-<text x="160" y="125.04" font-size="14" fill="#292929">계정 잠금 · 잠기지 않음 → 잠김</text>
-<text x="450" y="125.04" font-size="14" fill="#292929">계정 해제</text>
-<rect x="20" y="140" width="680" height="40" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
-<text x="30" y="165.04" font-size="14" fill="#292929">단계 3 · INC-006</text>
-<text x="160" y="165.04" font-size="14" fill="#292929">세션 종료 · 세션 1개 → 0개</text>
-<text x="450" y="165.04" font-size="14" fill="#292929">되돌리기 불가</text>
-<rect x="20" y="180" width="680" height="40" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
-<text x="160" y="205.04" font-size="14" fill="#292929">계정 잠금 · 잠김 → 잠김</text>
-<text x="450" y="205.04" font-size="14" fill="#292929">건너뜀 (전후가 같음)</text>
-<rect x="20" y="220" width="680" height="40" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
-<text x="30" y="245.04" font-size="14" fill="#292929">단계 4 · INC-005</text>
-<text x="160" y="245.04" font-size="14" fill="#292929">IP 차단 · 차단되지 않음 → 차단됨</text>
-<text x="450" y="245.04" font-size="14" fill="#292929">IP 해제</text>
-<line x1="150" y1="20" x2="150" y2="260" stroke="#dededb" stroke-width="1"/>
-<line x1="440" y1="20" x2="440" y2="260" stroke="#dededb" stroke-width="1"/>
-<rect x="20" y="280" width="330" height="110" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="185" y="319.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">단계 1 · 되돌리기 전</text>
-<text x="185" y="340.4" font-size="15" fill="#292929" text-anchor="middle">잠긴 계정 ['junho', 'dami']</text>
-<text x="185" y="361.4" font-size="15" fill="#292929" text-anchor="middle">차단한 IP ['198.51.100.90']</text>
-<line x1="356" y1="335" x2="384" y2="335" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
-<rect x="390" y="280" width="310" height="110" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="545" y="319.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">단계 5 · 되돌린 뒤</text>
-<text x="545" y="340.4" font-size="15" fill="#292929" text-anchor="middle">잠긴 계정 ['junho']</text>
-<text x="545" y="361.4" font-size="15" fill="#292929" text-anchor="middle">차단한 IP []</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img"><title>Module 4 기록에 id 와 status 를 붙이고, 엔진 앞에서 모양을 점검한다</title><desc>entity, score, grade, reasons 는 그대로 옮기고 id 와 status 를 새로 붙입니다. 필수 키가 없거나 모르는 등급이면 거절 리스트에 이유와 함께 모으고, 걸러 내지 못한 문제는 엔진의 오류 격리가 막습니다.</desc><defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">입력 검증과 공통 스키마</text>
+<rect x="20" y="55" width="250" height="150" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="145.0" y="92" font-size="16" fill="#666660" text-anchor="middle" font-weight="700">Module 4 기록</text>
+<text x="145.0" y="115" font-size="15" fill="#292929" text-anchor="middle">entity</text>
+<text x="145.0" y="137" font-size="15" fill="#292929" text-anchor="middle">score</text>
+<text x="145.0" y="158" font-size="15" fill="#292929" text-anchor="middle">grade</text>
+<text x="145.0" y="180" font-size="15" fill="#292929" text-anchor="middle">reasons</text>
+<rect x="450" y="55" width="250" height="150" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="575.0" y="92" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">엔진이 읽는 알림</text>
+<text x="575.0" y="115" font-size="15" fill="#292929" text-anchor="middle">entity · score</text>
+<text x="575.0" y="137" font-size="15" fill="#292929" text-anchor="middle">grade · reasons</text>
+<text x="575.0" y="158" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">+ id  INC-501 부터</text>
+<text x="575.0" y="180" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">+ status  탐지됨</text>
+<rect x="300" y="95" width="120" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="124" font-size="15" fill="#292929" text-anchor="middle">점검 후</text>
+<text x="360.0" y="146" font-size="15" fill="#292929" text-anchor="middle">바꾸기</text>
+<line x1="272" y1="130" x2="296" y2="130" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<line x1="422" y1="130" x2="446" y2="130" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<text x="20" y="245" font-size="16" fill="#292929" font-weight="700">방어는 두 겹</text>
+<rect x="20" y="258" width="330" height="110" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="185.0" y="296" font-size="16" fill="#9a6200" text-anchor="middle" font-weight="700">1겹 · 입력 검증 (엔진 앞)</text>
+<text x="185.0" y="320" font-size="15" fill="#292929" text-anchor="middle">필수 키가 없거나 모르는 등급</text>
+<text x="185.0" y="341" font-size="15" fill="#292929" text-anchor="middle">→ 거절 리스트에 이유와 함께</text>
+<rect x="370" y="258" width="330" height="110" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="535.0" y="296" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">2겹 · 오류 격리 (실습 5-1)</text>
+<text x="535.0" y="320" font-size="15" fill="#292929" text-anchor="middle">걸러 내지 못한 오류</text>
+<text x="535.0" y="341" font-size="15" fill="#292929" text-anchor="middle">→ 그 알림만 「실패」</text>
+<text x="20" y="405" font-size="15" fill="#666660">등급: 60점 이상 high, 35점 이상 mid, 그 아래 low</text>
+</g></svg>

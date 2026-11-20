@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>Unit 3 흐름: 조치 결과를 티켓으로 만들고, 합치고, 담당자에게 알린다</title>
+<desc>Unit 3까지는 조치와 롤백을 했다. Unit 3에서는 실습 3-2에서 티켓을 만들고, 도전 3-2에서 같은 사건의 알림을 병합하고 상태를 전이하며, 도전 3-3에서 등급에 맞는 수신자에게 알림을 전파한다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<rect x="20" y="20" width="680" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="47.4" font-size="15" fill="#292929" text-anchor="middle">Unit 3까지 · 알림에 맞는 조치 실행과 롤백</text>
+<line x1="360" y1="68" x2="360" y2="92" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="20" y="96" width="210" height="140" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="125" y="139.9" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실습 3-2</text>
+<text x="125" y="160.9" font-size="15" fill="#292929" text-anchor="middle">티켓 생성</text>
+<text x="125" y="181.9" font-size="15" fill="#666660" text-anchor="middle">응답 기한(SLA) 기재</text>
+<text x="125" y="202.9" font-size="15" fill="#666660" text-anchor="middle">ticketing.py</text>
+<line x1="234" y1="166" x2="251" y2="166" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="255" y="96" width="210" height="140" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="139.9" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">도전 3-2</text>
+<text x="360" y="160.9" font-size="15" fill="#292929" text-anchor="middle">병합 · 상태 전이</text>
+<text x="360" y="181.9" font-size="15" fill="#666660" text-anchor="middle">중복 제거</text>
+<text x="360" y="202.9" font-size="15" fill="#666660" text-anchor="middle">ticket_merge.py</text>
+<line x1="469" y1="166" x2="486" y2="166" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="490" y="96" width="210" height="140" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="595" y="139.9" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">도전 3-3</text>
+<text x="595" y="160.9" font-size="15" fill="#292929" text-anchor="middle">알림 전파</text>
+<text x="595" y="181.9" font-size="15" fill="#666660" text-anchor="middle">간격 제한 · 재시도</text>
+<text x="595" y="202.9" font-size="15" fill="#666660" text-anchor="middle">ticket_notice.py</text>
+<line x1="595" y1="240" x2="595" y2="266" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="470" y="270" width="230" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="585" y="294.9" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">담당자</text>
+<text x="585" y="315.9" font-size="15" fill="#292929" text-anchor="middle">티켓 · 알림으로 인계</text>
+<text x="20" y="300" font-size="15" fill="#666660">새 문법: return None · is None</text>
+</svg>

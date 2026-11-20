@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 392" role="img">
+<title>오류가 나면: 증상을 보고 뜻을 확인한 뒤 고치는 순서</title>
+<desc>No module named 오류는 Unit 1이나 Unit 3 파일이 폴더에 없다는 뜻이라 이전 파일 코드 상자로 만듭니다. 그래도 막히면 AI, 정답, 「모름 — 막힌 곳」 순서로 넘어갑니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p04r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p04g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p04b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">오류가 나면: 증상 → 뜻 → 고치기</tspan></text>
+<text x="125" y="64" font-size="15" text-anchor="middle" fill="#666660" font-weight="bold"><tspan x="125">증상</tspan></text>
+<text x="360" y="64" font-size="15" text-anchor="middle" fill="#666660" font-weight="bold"><tspan x="360">뜻</tspan></text>
+<text x="595" y="64" font-size="15" text-anchor="middle" fill="#666660" font-weight="bold"><tspan x="595">고치기</tspan></text>
+<rect x="20" y="78" width="210" height="64" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="125.0" y="104.7" font-size="14" text-anchor="middle" fill="#292929"><tspan x="125.0">No module named</tspan><tspan x="125.0" dy="19.6">'incident'</tspan></text>
+<line x1="232" y1="110" x2="258" y2="110" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="260" y="78" width="200" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="104.7" font-size="14" text-anchor="middle" fill="#292929"><tspan x="360.0">Unit 1 incident.py</tspan><tspan x="360.0" dy="19.6">가 이 폴더에 없음</tspan></text>
+<line x1="462" y1="110" x2="488" y2="110" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="490" y="78" width="210" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="595.0" y="104.7" font-size="14" text-anchor="middle" fill="#292929"><tspan x="595.0">「이전 파일이 없을 때」</tspan><tspan x="595.0" dy="19.6">코드 상자로 만들기</tspan></text>
+<rect x="20" y="162" width="210" height="64" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="125.0" y="188.7" font-size="14" text-anchor="middle" fill="#292929"><tspan x="125.0">No module named</tspan><tspan x="125.0" dy="19.6">'rollback'</tspan></text>
+<line x1="232" y1="194" x2="258" y2="194" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="260" y="162" width="200" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="198.5" font-size="14" text-anchor="middle" fill="#292929"><tspan x="360.0">Unit 3 파일이 없음</tspan></text>
+<line x1="462" y1="194" x2="488" y2="194" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="490" y="162" width="210" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="595.0" y="188.7" font-size="14" text-anchor="middle" fill="#292929"><tspan x="595.0">「이전 파일이 없을 때」</tspan><tspan x="595.0" dy="19.6">코드 상자로 만들기</tspan></text>
+<rect x="20" y="246" width="210" height="64" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="125.0" y="272.7" font-size="14" text-anchor="middle" fill="#292929"><tspan x="125.0">pwd · ls 결과가</tspan><tspan x="125.0" dy="19.6">문서와 다름</tspan></text>
+<line x1="232" y1="278" x2="258" y2="278" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="260" y="246" width="200" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="272.7" font-size="14" text-anchor="middle" fill="#292929"><tspan x="360.0">다른 폴더에 있거나</tspan><tspan x="360.0" dy="19.6">파일 이름이 다름</tspan></text>
+<line x1="462" y1="278" x2="488" y2="278" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="490" y="246" width="210" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="595.0" y="272.7" font-size="14" text-anchor="middle" fill="#292929"><tspan x="595.0">soar_response 로 이동,</tspan><tspan x="595.0" dy="19.6">파일 이름 맞추기</tspan></text>
+<rect x="20" y="336" width="150" height="40" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="95.0" y="360.5" font-size="14" text-anchor="middle" fill="#292929"><tspan x="95.0">그래도 막히면</tspan></text>
+<line x1="172" y1="356" x2="188" y2="356" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="190" y="336" width="150" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="265.0" y="360.5" font-size="14" text-anchor="middle" fill="#292929"><tspan x="265.0">AI에 오류 + 명령</tspan></text>
+<line x1="342" y1="356" x2="358" y2="356" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="360" y="336" width="150" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="435.0" y="360.5" font-size="14" text-anchor="middle" fill="#292929"><tspan x="435.0">정답 보기</tspan></text>
+<line x1="512" y1="356" x2="528" y2="356" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="530" y="336" width="150" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="605.0" y="360.5" font-size="14" text-anchor="middle" fill="#292929"><tspan x="605.0">「모름 — 막힌 곳」</tspan></text>
+</g>
+</svg>

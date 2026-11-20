@@ -1,181 +1,191 @@
 ---
 id: m5-u04-l04
-title: 실습 4-3 · 활성 세션 종료와 잔존 세션 점검하기
+title: 제공 파일
 render: markdown
-source:
-  repository: FutureReadyCampus/learn-missions
-  path: network/122_day03_am_containment.md
-  mission_id: GichanSource.m5-1111-am-containment
-  commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 실습 4-3 · 활성 세션 종료와 잔존 세션 점검하기
+# 제공 파일
 
-## 목표: 세션 종료와 빈틈 점검
+## `escalation.py` 만들기
 
-> **오늘 들어온 일**
->
-> - **상황**: 퇴사자 `dami` 의 계정을 잠갔다고 기록했는데, 잠근 후에도 `dami` 의 서버 요청이 두 건 더 들어왔습니다. 잠금 실행 전에 이미 인증을 마친 **세션**(session, 세션: 로그인한 뒤 서버가 유지하는 접속 상태)이 두 개 남아 있었기 때문입니다.
-> - **문제**: 계정을 잠그면 새 로그인(인증)만 차단되고, 이미 열려 있는 세션은 계속 유효합니다. 잠금만 하고 끝내면 퇴사자가 세션이 만료될 때까지 접속할 수 있는데, 이 상태를 점검하는 절차가 없습니다.
-> - **부탁**: 계정을 잠근 후에는 열린 세션도 모두 종료해 주세요. 그리고 잠겼는데 활성 세션이 남은 계정이 있는지 점검하는 기능도 만들어 주세요.
-> - **바뀌는 점**: 잠금과 세션 종료가 함께 실행되고, 조치가 누락된 계정은 점검에서 즉시 탐지됩니다. 오늘 샘플에서는 이미 잠겨 있는데 세션 하나가 열려 있는 `junho` 가 점검에서 발견됩니다. 상황은 설명을 위한 예시입니다.
-
-## 3.1 계정 잠금은 새 로그인을 차단하고, 세션 종료는 이미 열린 접속을 종료한다
-
-**세션**(session, 세션: 로그인한 뒤 서버가 유지하는 접속 상태)이 유효하면 서버는 비밀번호를 다시 요구하지 않습니다. 따라서 계정을 잠가도 이미 발급된 세션은 계속 사용할 수 있습니다. 예를 들어 아침에 로그인해 둔 `dami` 의 세션 `S-101` 은 계정을 잠근 후에도 서버에 요청을 보낼 수 있습니다. 세션은 서버 쪽에서 무효화(invalidate, 인밸리데이트: 그 세션을 더는 인증에 쓸 수 없게 만드는 일)해야 종료되므로, 잠금 뒤에 세션 종료 조치가 따로 필요합니다. 조치 순서도 중요합니다.
-
-| 순서 | 결과 |
-|---|---|
-| 잠금 → 세션 종료 (오늘 구현) | 새 로그인이 이미 차단되어 있어서, 세션을 종료하면 더는 접속할 수 없다 |
-| 세션 종료 → 잠금 | 두 조치 사이에 재로그인(re-login)이 가능해 새 세션이 생길 수 있다 |
-| 잠금만 | 활성 세션으로 계속 접속할 수 있다 |
-
-- 이 표는 오늘 연습용 시스템의 동작 규칙입니다. 실제 서비스는 시스템마다 동작이 다르므로, 계정을 잠글 때 세션이 어떻게 처리되는지 먼저 확인해야 합니다.
-- 따라서 세션 종료는 **잠금이 사후 검증으로 확인된 뒤에만** 실행합니다. 잠금이 적용되지 않았거나 VIP 정책으로 차단된 계정의 세션은 종료하면 안 됩니다.
-- 수업 시작 상태에서 `junho` 는 이미 잠겨 있지만 세션이 하나 열려 있습니다. 이처럼 계정은 잠겼는데 활성 세션이 잔존(residual, 레지듀얼: 조치 후에도 남아 있음)하는 상태를 이 문서에서는 **빈틈**이라 부릅니다(출력에도 「빈틈」으로 표시됩니다). 이 빈틈을 찾아내는 점검이 `find_open_sessions` 입니다.
-
-함수는 두 파일에 나뉘어 있고, 직접 쓰는 곳은 **아홉 군데**입니다.
-
-```
-session_actions.py  terminate_sessions  : 계정의 세션 리스트를 비운다 (1번)
-                    find_open_sessions  : 잠긴 계정 중 열린 세션이 남은 계정을 모은다 (2 · 3번)
-containment.py      contain_account     : 계정을 잠그고 (4번), 잠금이 확인되면 (5번) 세션을 종료한다 (6번)
-실행 파일           exercise4-3_run.py    : 요청마다 contain_account 를 호출하고 (7번), 다시 점검하고 (8번), 상태를 저장한다 (9번)
-```
-
-## 실습 4-3 · 활성 세션 종료와 잔존 세션 점검하기
-
-**이런 상황이 있습니다**
-
-- **지금은**: <mark>계정만 잠그면 활성 세션이 잔존하고, 잔존 여부를 확인하는 점검도 없습니다</mark>.
-- **만드는 것**: 세션 종료와 빈틈 점검(`session_actions.py`), 잠금 → 세션 종료를 순서대로 수행하는 통합 함수(`containment.py`), 호출 · 재점검 · 저장(`exercise4-3_run.py`).
-- **실행하면**: <mark>단계 1: 수업 전부터 잠겨 있는데 세션이 열려 있던 계정, 단계 2: 잠금과 세션 종료 기록, 단계 3: 조치 후 재점검, 단계 4: 저장한 파일에서 읽은 값이 나옵니다.</mark>
-
-**할 일**: 파일 세 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 1 ~ 3 을 읽습니다.
-
-**`session_actions.py`** — 세션 종료와 점검입니다. 직접 쓰는 곳은 1 ~ 3번입니다.
+TODO(assemble): `escalation.py` 완성 코드를 옛 실습의 시작 코드와 정답을 합쳐 채운다.
 
 ```python
-from containment_store import make_record                  # 기록 한 건을 만드는 함수를 불러온다
+from ticket_notice import send_with_retry, MAX_TRIES                                       # 도전 3-3에 만든 재시도 함수를 불러온다
 
 
-def terminate_sessions(user, state, incident_id, reason):  # 계정 · 상태 · 인시던트 번호 · 이유를 받는 함수
-    """계정에 열려 있는 로그인 세션을 모두 종료하고, 조치 전과 후의 세션 수를 기록 한 건으로 리턴한다.
-    계정을 잠가도 이미 로그인한 세션은 남기 때문에, 잠근 뒤에 이어서 쓴다.
+def overdue_minutes(ticket, now):                                                          # 티켓과 지금 시각(분)을 받는 함수
+    """응답 기한을 넘긴 시간(분)을 리턴한다. 기한이 아직 안 됐으면 음수가 나온다.
+    얼마나 늦었는지 알아야 어느 상급자에게 올릴지 정할 수 있어서 쓴다.
     """
-    before_count = len(state["sessions"].get(user, []))    # 조치 전 세션 수 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. state["sessions"][user] 에 빈 리스트를 저장한다 (세션을 모두 종료한다)
-    after_count = len(state["sessions"].get(user, []))     # 조치 뒤 세션 수를 다시 구한다 — 미리 채운 줄
-    return make_record("세션 종료", user, incident_id, "세션 " + str(before_count) + "개", "세션 " + str(after_count) + "개", reason)  # 조치 전 · 후 세션 수와 함께 기록한다 — 미리 채운 줄
+    # 1. now 에서 ticket["sla_due"] 를 뺀 값을 리턴한다
 
 
-def find_open_sessions(state):                             # 연습용 시스템 상태를 받는 함수
-    """잠겨 있는데도 열린 세션이 남아 있는 계정의 리스트를 리턴한다.
-    잠금만 하고 세션을 끝내지 않아 생긴 빈틈을 점검할 때 쓴다.
+def needs_escalation(ticket, now):                                                         # 티켓과 지금 시각(분)을 받는 함수
+    """아직 열림 상태이고 응답 기한이 지났으면 True, 아니면 False 를 리턴한다. 담당자가 이미 확인 중이거나 해결한 티켓은 올리지 않는다.
+    아무도 열어 보지 않은 티켓만 골라낼 때 쓴다.
     """
-    gaps = []                                              # 빈틈이 있는 계정을 저장할 빈 리스트
-    for user in state["locked_users"]:                     # 잠긴 계정을 하나씩 꺼낸다
-        open_count = len(state["sessions"].get(user, []))  # 그 계정에 열린 세션 수 — 미리 채운 줄
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 2. ticket 의 "status" 가 "열림" 이 아니면 (if, !=)
+    # 3.   False 를 리턴한다
+    # 4. overdue_minutes(ticket, now) 가 0 이상인지(>=)의 결과를 리턴한다
+
+
+def pick_level(overdue, steps):                                                            # 넘긴 시간과 올림 단계 리스트를 받는 함수
+    """넘긴 시간에 해당하는 가장 높은 올림 단계 번호(1부터)를 리턴한다. 해당하는 단계가 없으면 0 을 리턴한다.
+    오래 방치된 티켓일수록 더 높은 상급자에게 올릴 때 쓴다.
+    """
+    level = 0                                                                              # 처음에는 올릴 단계가 없다 — 미리 채운 줄
+    for index in range(len(steps)):                                                        # 단계 번호를 0 부터 하나씩 읽는다 — 미리 채운 줄
+        step = steps[index]                                                                # 그 번호의 올림 단계 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-        # 2. open_count 가 0 보다 크면 (if, >)
-        # 3.   gaps 에 user 를 추가한다 (append)
-    return gaps                                            # 빈틈이 있는 계정 리스트를 리턴한다
-```
-
-**`containment.py`** — 잠금과 세션 종료를 한 함수에서 순서대로 수행합니다. Unit 5에서도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 4 ~ 6번입니다.
-
-```python
-from account_actions import lock_account                              # 실습 4-1에 만든 계정 잠금 함수를 불러온다
-from session_actions import terminate_sessions                        # 방금 만든 세션 종료 함수를 불러온다
+        # 5. overdue 가 step 의 "overdue_minutes" 이상이면 (if, >=)
+            # 6. level 에 index + 1 을 저장한다
+    return level                                                                           # 가장 높은 단계 번호를 리턴한다 — 미리 채운 줄
 
 
-def contain_account(user, state, vip_accounts, incident_id, reason):  # 계정 · 상태 · VIP 리스트 · 인시던트 번호 · 이유를 받는 함수
-    """계정을 먼저 잠그고, 잠겼다고 확인되면 이어서 열린 세션을 종료한 뒤, 조치 기록 리스트를 리턴한다.
-    잠금과 세션 종료를 따로 하다가 생기는 빈틈을 막고 싶을 때 쓴다.
+def escalate_ticket(ticket, now, rules):                                                   # 티켓 · 지금 시각(분) · 규칙을 받는 함수
+    """티켓을 상급자에게 올린다. 이미 올린 단계이거나 올릴 때가 아니면 「그대로」, 올렸으면 「올림」, 알림이 모두 실패했으면 「실패」를 리턴한다.
+    응답 기한이 지나도 아무도 확인하지 않은 티켓을 놓치지 않을 때 쓴다.
     """
-    records = []                                                      # 조치 기록을 저장할 빈 리스트
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 4. lock_account(user, state, vip_accounts, incident_id, reason) 의 결과를 lock_record 에 저장한다
-    records.append(lock_record)                                       # 잠금 기록을 리스트에 추가한다 — 미리 채운 줄
-    # 5. lock_record 의 "after" 가 "잠김" 이면 (if, ==)
-    # 6.   terminate_sessions(user, state, incident_id, reason) 의 결과를 records 에 추가한다 (append)
-    return records                                                    # 조치 기록 리스트를 리턴한다
+    overdue = overdue_minutes(ticket, now)                                                 # 기한을 얼마나 넘겼는지
+    steps = rules["escalation_steps"]                                                      # 규칙 파일의 올림 단계 리스트
+    level = pick_level(overdue, steps)                                                     # 지금 해당하는 올림 단계
+    if level <= ticket["escalation_level"]:                                                # 이미 올린 단계이거나 아직 올릴 때가 아니면
+        return "그대로"                                                                    # 아무것도 하지 않는다
+    step = steps[level - 1]                                                                # 그 단계의 규칙(받는 사람)
+    message = "[올림 " + str(level) + "단계] " + ticket["id"] + " " + ticket["title"] + " · 기한을 " + str(overdue) + "분 넘김 · 받는 사람: " + step["notify"]  # 알림 내용을 만든다
+    attempt = send_with_retry(message, rules["alert_url"], MAX_TRIES)                      # 최대 3번까지 보내 본다
+    if attempt == 0:                                                                       # 모두 실패했으면
+        return "실패"                                                                      # 올리지 못했다고 「실패」를 리턴한다
+    ticket["escalation_level"] = level                                                     # 올린 단계를 적는다
+    comment = str(now) + "분 · " + str(level) + "단계로 " + step["notify"] + " 에게 올림"  # 댓글 내용을 만든다
+    ticket["comments"].append(comment)                                                     # 댓글 리스트에 추가한다
+    return "올림"                                                                          # 「올림」을 리턴한다
 ```
 
-**`exercise4-3_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실습 4-1의 `containment_store.py` 와 `account_actions.py` 가 같은 폴더에 있어야 합니다.
+## `report.py` 만들기
+
+TODO(assemble): `report.py` 완성 코드를 옛 실습의 시작 코드와 정답을 합쳐 채운다.
 
 ```python
-from incident import load_json                                                          # Unit 1 파일의 함수를 불러온다
-from containment_store import new_state, save_state, load_state, reset_log, append_log  # 상태 · 기록 함수를 불러온다
-from session_actions import find_open_sessions                                          # 방금 만든 세션 점검 함수를 불러온다
-from containment import contain_account                                                 # 방금 만든 통합 조치 함수를 불러온다
+import pandas as pd                                                                        # 표를 다루기 위해 판다스를 pd 라는 이름으로 불러온다
 
-vip_accounts = load_json("config/vip_accounts.json")                                    # VIP 계정 리스트를 읽는다
-requests = [("INC-001", "dami", "퇴사한 계정의 서버 요청"), ("INC-003", "gaeun", "여러 로그 연결"), ("INC-006", "junho", "퇴사 처리 확인")]  # 조치 요청 3건 : (인시던트 번호, 계정, 이유)
-state = new_state()                                                                     # 처음 상태에서 시작한다
-reset_log()                                                                             # 기록 파일을 비운다
+REPORT_TITLE = "# 초동 대응 리포트 — 2026-11-12(목) 오전 근무"                             # 리포트 맨 위 제목
 
-print("--- 단계 1: 점검 — 잠겼는데 세션이 열려 있는 계정")                              # 단계 1 시작을 알리는 줄
-print(find_open_sessions(state))                                                        # 수업 전부터 있는 빈틈을 출력한다
 
-print("--- 단계 2: 잠금 → 세션 종료")                                                   # 단계 2 시작을 알리는 줄
-for incident_id, user, reason in requests:                                              # 요청을 하나씩 꺼낸다
+def make_ticket_table(tickets):                                                            # 티켓 리스트를 받는 함수
+    """티켓 리스트를 표(DataFrame)로 바꾸고, 확인까지 걸린 분(ack_minutes) 열을 더해 리턴한다.
+    티켓마다 담당자가 얼마나 빨리 확인했는지를 표 하나로 계산할 때 쓴다.
+    """
+    table = pd.DataFrame(tickets)                                                          # 티켓 리스트를 표로 바꾼다 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 7. contain_account(user, state, vip_accounts, incident_id, reason) 의 결과를 records 에 저장한다
-    for record in records:                                                              # 조치 기록을 하나씩 꺼낸다
-        append_log(record)                                                              # 조치 기록을 파일에 남긴다
-        print(record["incident"], record["target"], "·", record["before"], "→", record["after"], "·", record["reason"])  # 기록 한 건을 출력한다
+    # 1. table["acked_at"] - table["created_at"] 를 table["ack_minutes"] 에 저장한다 (확인까지 걸린 분)
+    return table                                                                           # 열을 더한 표를 리턴한다 — 미리 채운 줄
 
-print("--- 단계 3: 조치 뒤 다시 점검")                                                  # 단계 3 시작을 알리는 줄
-# ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-# 8. find_open_sessions(state) 의 결과를 gaps_after 에 저장한다
-print("빈틈이 남은 계정:", gaps_after)                                                  # 점검 결과를 출력한다
-print("잠긴 계정:", state["locked_users"])                                              # 잠긴 계정을 출력한다
 
-# 9. save_state(state) 를 호출한다 (상태를 파일에 저장한다)
-print("--- 단계 4: 파일에 저장된 값 다시 읽기")                                         # 단계 4 시작을 알리는 줄
-print("잠긴 계정:", load_state()["locked_users"])                                       # 저장된 잠긴 계정을 출력한다
-print("조치 기록:", len(load_json("containment_log.json")), "건")                       # 저장된 기록 수를 출력한다
+def count_by_rule(table):                                                                  # 티켓 표를 받는 함수
+    """탐지 규칙마다 티켓이 몇 장인지 세어 딕셔너리로 리턴한다.
+    어떤 규칙의 사건이 많았는지 리포트 첫머리에 보여 줄 때 쓴다.
+    """
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 2. table["rule"].value_counts() 를 rule_counts 에 저장한다
+    return rule_counts.to_dict()                                                           # 센 결과를 딕셔너리로 바꿔 리턴한다 — 미리 채운 줄
+
+
+def mean_ack_by_grade(table):                                                              # 티켓 표를 받는 함수
+    """확인한 티켓만 남겨 등급마다 확인까지 걸린 분의 평균을 구하고, 소수 첫째 자리까지 딕셔너리로 리턴한다.
+    급한 등급일수록 빨리 확인했는지 리포트로 보여 줄 때 쓴다.
+    """
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 3. table["acked_at"] >= 0 인 행만 남겨 acked 에 저장한다 (확인한 티켓만)
+    groups = acked.groupby("grade")                                                        # 등급이 같은 행끼리 묶는다 — 미리 채운 줄
+    # 4. groups["ack_minutes"].mean() 을 grade_means 에 저장한다 (등급마다 평균)
+    rounded = grade_means.round(1)                                                         # 소수 첫째 자리까지 반올림한다 — 미리 채운 줄
+    return rounded.to_dict()                                                               # 등급별 평균을 딕셔너리로 바꿔 리턴한다 — 미리 채운 줄
+
+
+def find_late_tickets(table):                                                              # 티켓 표를 받는 함수
+    """응답 기한 시각(sla_due)보다 늦게 확인한 티켓을 딕셔너리 리스트로 리턴한다.
+    응답 기한을 넘긴 티켓을 리포트에 이름으로 남길 때 쓴다.
+    """
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 5. table["acked_at"] > table["sla_due"] 인 행만 남겨 late 에 저장한다
+    return late.to_dict("records")                                                         # 남은 행을 딕셔너리 리스트로 바꿔 리턴한다 — 미리 채운 줄
+
+
+def find_missing_incidents(actions, tickets):                                              # 조치 기록 리스트와 티켓 리스트를 받는 함수
+    """조치 기록 가운데 어느 티켓에도 들어 있지 않은 인시던트의 기록을 리스트로 리턴한다.
+    조치는 했는데 티켓이 없어 리포트에서 빠지는 사건을 찾을 때 쓴다.
+    """
+    covered = []                                                                           # 티켓에 들어 있는 인시던트 번호를 모을 빈 리스트 — 미리 채운 줄
+    for ticket in tickets:                                                                 # 티켓을 하나씩 읽는다 — 미리 채운 줄
+        for incident_id in ticket["incidents"]:                                            # 티켓에 합쳐진 인시던트 번호를 하나씩 읽는다 — 미리 채운 줄
+            covered.append(incident_id)                                                    # 번호를 추가한다 — 미리 채운 줄
+    missing = []                                                                           # 티켓이 없는 조치 기록을 모을 빈 리스트 — 미리 채운 줄
+    for action in actions:                                                                 # 조치 기록을 하나씩 읽는다 — 미리 채운 줄
+        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+        # 6. action["incident"] 가 covered 안에 없으면 (if, not in)
+            # 7. missing 에 action 을 추가한다 (append)
+    return missing                                                                         # 티켓이 없는 조치 기록 리스트를 리턴한다 — 미리 채운 줄
+
+
+def count_actions(ticket, actions):                                                        # 티켓 한 장과 조치 기록 리스트를 받는 함수
+    """티켓에 합쳐진 인시던트의 조치 기록이 몇 건인지 세어 리턴한다.
+    리포트의 티켓 줄에 조치 기록 수를 함께 적을 때 쓴다.
+    """
+    count = 0                                                                              # 조치 기록 수 : 처음에는 0
+    for action in actions:                                                                 # 조치 기록을 하나씩 읽는다
+        if action["incident"] in ticket["incidents"]:                                      # 이 티켓의 인시던트 기록이면
+            count = count + 1                                                              # 1 늘린다
+    return count                                                                           # 센 수를 리턴한다
+
+
+def make_timeline_line(ticket):                                                            # 티켓 한 장을 받는 함수
+    """티켓 한 장의 생성 · 확인 · 해결 시각을 시간순으로 이은 한 줄을 리턴한다.
+    높음 등급 사건이 어떤 순서로 처리됐는지 리포트에 처리 경위로 남길 때 쓴다.
+    """
+    steps = [str(ticket["created_at"]) + "분 티켓 생성"]                                   # 생성 시각으로 시작한다
+    if ticket["acked_at"] >= 0:                                                            # 확인했으면 (확인 전이면 -1)
+        steps.append(str(ticket["acked_at"]) + "분 담당자 확인")                           # 확인 시각을 추가한다
+    if ticket["resolved_at"] >= 0:                                                         # 해결했으면 (해결 전이면 -1)
+        steps.append(str(ticket["resolved_at"]) + "분 해결")                               # 해결 시각을 추가한다
+    return "- " + ticket["id"] + " · " + ticket["entity"] + ": " + " → ".join(steps)       # 시각을 화살표로 이어 한 줄로 리턴한다
+
+
+def make_report_lines(tickets, actions, rule_counts, grade_means, late_tickets, missing):  # 리포트에 넣을 재료를 받는 함수
+    """리포트에 넣을 재료로 마크다운 문서의 줄 리스트를 만들어 리턴한다.
+    근무가 끝난 뒤 사람이 읽을 초동 대응 리포트를 자동으로 쓸 때 쓴다.
+    """
+    lines = [REPORT_TITLE, ""]                                                             # 제목과 빈 줄로 시작한다 — 미리 채운 줄
+    lines.append("## 1. 티켓별 초동 대응")                                                 # 1절 제목 — 미리 채운 줄
+    for ticket in tickets:                                                                 # 티켓을 하나씩 읽는다 — 미리 채운 줄
+        action_count = count_actions(ticket, actions)                                      # 이 티켓의 조치 기록 수 — 미리 채운 줄
+        head = "- " + ticket["id"] + " [" + ticket["grade"] + "] " + ticket["entity"] + " — " + ticket["rule"]  # 티켓 번호 · 등급 · 대상 · 규칙 — 미리 채운 줄
+        lines.append(head + " · 상태 " + ticket["status"] + " · 조치 기록 " + str(action_count) + "건")  # 티켓 한 줄을 추가한다 — 미리 채운 줄
+    lines.append("")                                                                       # 빈 줄 — 미리 채운 줄
+    lines.append("## 2. 규칙별 티켓 수")                                                   # 2절 제목 — 미리 채운 줄
+    for rule in rule_counts:                                                               # 규칙 이름을 하나씩 읽는다 — 미리 채운 줄
+        count = rule_counts[rule]                                                          # 그 규칙의 티켓 수 — 미리 채운 줄
+        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+        # 8. "- " + rule + ": " + str(count) + "장" 을 lines 에 추가한다 (append)
+    lines.append("")                                                                       # 빈 줄 — 미리 채운 줄
+    lines.append("## 3. 등급별 평균 확인 시간(분)")                                        # 3절 제목 — 미리 채운 줄
+    for grade in grade_means:                                                              # 등급을 하나씩 읽는다 — 미리 채운 줄
+        lines.append("- " + grade + ": " + str(grade_means[grade]) + "분")                 # 등급 한 줄을 추가한다 — 미리 채운 줄
+    lines.append("")                                                                       # 빈 줄 — 미리 채운 줄
+    lines.append("## 4. 응답 기한을 넘겨 확인한 티켓")                                     # 4절 제목 — 미리 채운 줄
+    for ticket in late_tickets:                                                            # 늦게 확인한 티켓을 하나씩 읽는다 — 미리 채운 줄
+        lines.append("- " + ticket["id"] + " · 기한 " + str(ticket["sla_due"]) + "분 · 확인 " + str(ticket["acked_at"]) + "분")  # 티켓 한 줄을 추가한다 — 미리 채운 줄
+    lines.append("")                                                                       # 빈 줄 — 미리 채운 줄
+    lines.append("## 5. 티켓이 없는 조치 (사람이 티켓을 만들어야 함)")                     # 5절 제목 — 미리 채운 줄
+    for action in missing:                                                                 # 티켓이 없는 조치 기록을 하나씩 읽는다 — 미리 채운 줄
+        lines.append("- " + action["incident"] + " · " + action["action"] + " · " + action["target"])  # 기록 한 줄을 추가한다 — 미리 채운 줄
+    lines.append("")                                                                       # 빈 줄 — 미리 채운 줄
+    lines.append("## 6. 높음(high) 티켓의 처리 경위")                                      # 6절 제목 — 미리 채운 줄
+    for ticket in tickets:                                                                 # 티켓을 하나씩 읽는다 — 미리 채운 줄
+        if ticket["grade"] == "high":                                                      # 높음 등급 티켓이면 — 미리 채운 줄
+            lines.append(make_timeline_line(ticket))                                       # 처리 경위 한 줄을 추가한다 — 미리 채운 줄
+    return lines                                                                           # 완성한 줄 리스트를 리턴한다 — 미리 채운 줄
 ```
-
-**순서**
-
-1. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `session_actions.py` · `containment.py` · `exercise4-3_run.py` 을(를) 하나씩 그대로 적어 세 개의 파일을 만듭니다. 각 파일에 이 페이지의 코드 상자를 복사해 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
-2. **[VS Code]** `session_actions.py` 1 ~ 3번, `containment.py` 4 ~ 6번, `exercise4-3_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「실습 4-3 정리」를 봅니다.
-3. **[터미널]** 실행합니다(맥북은 `python3`).
-   ```bash
-   python exercise4-3_run.py
-   ```
-4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 1줄, 단계 2 는 5줄, 단계 3 은 2줄, 단계 4 는 2줄입니다.
-5. **[보고서]** `report_u4.md` 의 `## 실습 4-3` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 단계 3 에서 빈틈이 남은 계정과 단계 4 의 잠긴 계정을 적어 주세요.
-   - (나) [핵심 질문] 단계 1 에서 `junho` 가 점검에서 발견된 이유를 적어 주세요. 그리고 `dami` 가 단계 2 에서 받은 두 가지 조치와, 잠금만 했다면 유효하게 남았을 접속(세션)을 적어 주세요.
-   - (다) [핵심 질문] `gaeun` 은 잠금도 세션 종료도 받지 않았습니다. `containment.py` 5번의 `if` 조건과 단계 2 의 출력 줄을 근거로 그 이유를 적어 주세요. 그리고 잠금이 적용되지 않은 계정의 세션을 종료하면 안 되는 이유도 적어 주세요.
-
-## 실습 4-3 정리
-
-| 하려는 일 | 코드 · 말 |
-|---|---|
-| 딕셔너리에 값 저장하기 | `state["sessions"][user] = []` |
-| 보다 크면 | `if open_count > 0:` |
-| 리스트에 추가 | `gaps.append(user)` |
-| 함수 결과를 변수에 저장하기 | `lock_record = lock_account(...)` |
-| 같으면 | `if lock_record["after"] == "잠김":` |
-| 함수 호출만 하기 | `save_state(state)` |
-
----
-
-## 이번 Unit 마무리
-
-| 달성 기준 | 문제 |
-|---|---|
-| 계정 잠금을 실행하고 사후 검증했으며, 조치 전 · 후 상태를 감사 기록으로 남겼다 | 실습 4-1 |
-| 허용 목록 IP 와 공유 IP 를 판별해 차단하고, 유효 기간이 지나면 자동 해제했다 | 실습 4-2 |
-| 잠금 뒤 활성 세션을 종료하고, 빈틈(잔존 세션)이 남았는지 점검했다 | 실습 4-3 |
-
-Unit 5에서는 두 가지를 합니다. ① 이번 Unit에서 만든 조치를 기록만 근거로 **롤백**합니다(조치 전부터 잠겨 있던 계정은 변경하지 않습니다). ② Unit 2에서 만든 맥락 보강 · 경로 판단과 함께 알림 8건을 일괄 처리합니다. 마지막에는 처리 결과를 근무 보고로 요약합니다.
-
----
-
-<!-- learn:answers -->

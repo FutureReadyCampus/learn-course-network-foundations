@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>경로 스캔 알림 IP 3개 중 외부 IP 하나만 차단하고 2시간 뒤 자동 해제합니다</title>
+<desc>외부 IP 198.51.100.90 은 차단되고 120분 뒤 자동 해제됩니다. 자사 점검 서버 192.0.2.10 은 허용 목록이라 차단하지 않고, 공유 IP 192.0.2.41 은 담당자 승인이 필요합니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">도전 2-3 목표: 차단할 IP 와 차단하면 안 되는 IP</text>
+<rect x="24" y="70" width="200" height="66" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="124.0" y="97.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="124.0" dy="0" font-weight="700">198.51.100.90</tspan><tspan x="124.0" dy="21.0">외부 IP</tspan></text>
+<rect x="274" y="70" width="150" height="66" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="349.0" y="97.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="349.0" dy="0">정책 검사</tspan><tspan x="349.0" dy="21.0">먼저</tspan></text>
+<rect x="474" y="70" width="222" height="66" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="585.0" y="97.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="585.0" dy="0" font-weight="700">차단됨</tspan><tspan x="585.0" dy="21.0">120분 뒤 자동 해제</tspan></text>
+<line x1="224" y1="103" x2="272" y2="103" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<line x1="424" y1="103" x2="472" y2="103" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="24" y="154" width="200" height="66" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="124.0" y="181.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="124.0" dy="0" font-weight="700">192.0.2.10</tspan><tspan x="124.0" dy="21.0">자사 점검 서버</tspan></text>
+<rect x="274" y="154" width="150" height="66" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="349.0" y="181.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="349.0" dy="0">정책 검사</tspan><tspan x="349.0" dy="21.0">먼저</tspan></text>
+<rect x="474" y="154" width="222" height="66" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="585.0" y="181.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="585.0" dy="0" font-weight="700">차단하지 않음</tspan><tspan x="585.0" dy="21.0">허용 목록 IP</tspan></text>
+<line x1="224" y1="187" x2="272" y2="187" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<line x1="424" y1="187" x2="472" y2="187" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="24" y="238" width="200" height="66" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="124.0" y="265.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="124.0" dy="0" font-weight="700">192.0.2.41</tspan><tspan x="124.0" dy="21.0">junho · hana 공유</tspan></text>
+<rect x="274" y="238" width="150" height="66" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="349.0" y="265.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="349.0" dy="0">정책 검사</tspan><tspan x="349.0" dy="21.0">먼저</tspan></text>
+<rect x="474" y="238" width="222" height="66" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="585.0" y="265.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="585.0" dy="0" font-weight="700">차단하지 않음</tspan><tspan x="585.0" dy="21.0">담당자 승인 필요</tspan></text>
+<line x1="224" y1="271" x2="272" y2="271" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<line x1="424" y1="271" x2="472" y2="271" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<text x="24" y="330" font-size="15" text-anchor="start" fill="#666660">모두 차단하면 점검이 멈추고, 공유 IP 의 정상 사용자 두 명이 접속하지 못합니다.</text>
+</g>
+</svg>

@@ -1,30 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
-<title>차단 전에 허용 목록과 공유 IP 를 검사하고, 차단하면 만료 시각을 정합니다</title>
-<desc>허용 목록에 있으면 차단하지 않고, 그 IP 를 쓰는 계정이 2개 이상이면 담당자 승인으로 넘깁니다. 둘 다 아니면 차단하고 만료 시각을 clock 더하기 ttl 로 기록합니다.</desc>
-<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img">
+<title>오탐 대응 네 단계: 영향 확인 → 되돌리기 → 복구 확인 → 규칙 조정 제안</title>
+<desc>네 단계마다 list_changes, rollback_incident, find_not_recovered, make_tuning_note를 씁니다. 바뀌지 않은 기록은 영향 확인에서 빼고, 세션 종료는 되돌릴 수 없으며, 복구 시간은 45분에서 신고 시각을 뺍니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p02r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p02g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p02b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">2.1 차단 전 정책 검사</text>
-<rect x="24" y="70" width="210" height="64" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="129.0" y="96.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="129.0" dy="0" font-weight="700">허용 목록에 있나?</tspan><tspan x="129.0" dy="21.0">allowlist_ips.json</tspan></text>
-<rect x="470" y="70" width="226" height="64" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="583.0" y="96.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="583.0" dy="0" font-weight="700">차단하지 않음</tspan><tspan x="583.0" dy="21.0">이유를 기록</tspan></text>
-<line x1="234" y1="102" x2="468" y2="102" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<text x="340" y="94" font-size="14" text-anchor="start" fill="#666660">예</text>
-<rect x="24" y="170" width="210" height="64" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="129.0" y="196.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="129.0" dy="0" font-weight="700">공유 IP 인가?</tspan><tspan x="129.0" dy="21.0">쓰는 계정 2개 이상</tspan></text>
-<rect x="470" y="170" width="226" height="64" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="583.0" y="196.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="583.0" dy="0" font-weight="700">차단하지 않음</tspan><tspan x="583.0" dy="21.0">담당자 승인 필요</tspan></text>
-<line x1="234" y1="202" x2="468" y2="202" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<text x="340" y="194" font-size="14" text-anchor="start" fill="#666660">예</text>
-<line x1="129" y1="134" x2="129" y2="168" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<text x="137" y="158" font-size="14" text-anchor="start" fill="#666660">아니오</text>
-<rect x="24" y="270" width="210" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="129.0" y="296.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="129.0" dy="0" font-weight="700">차단 (block_ip)</tspan><tspan x="129.0" dy="21.0">blocked_ips 에 추가</tspan></text>
-<line x1="129" y1="234" x2="129" y2="268" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<text x="137" y="258" font-size="14" text-anchor="start" fill="#666660">아니오</text>
-<rect x="290" y="270" width="406" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="493.0" y="296.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="493.0" dy="0" font-weight="700">만료 시각 = clock + ttl</tspan><tspan x="493.0" dy="21.0">0분 + 120분 = 120분</tspan></text>
-<line x1="234" y1="302" x2="288" y2="302" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<text x="24" y="366" font-size="15" text-anchor="start" fill="#666660">영구 차단은 사람이 사유를 확인한 뒤 결정합니다.</text>
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">오탐 대응의 네 단계 (위에서 아래 순서)</tspan></text>
+<rect x="20" y="52" width="160" height="40" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="100.0" y="76.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="100.0" font-weight="bold">1. 영향 확인</tspan></text>
+<rect x="190" y="52" width="240" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="310.0" y="76.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="310.0" font-size="14">list_changes · 1 · 2번</tspan></text>
+<rect x="440" y="52" width="260" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="570.0" y="76.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="570.0" font-size="14">before ≠ after 인 기록만</tspan></text>
+<rect x="20" y="102" width="160" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="100.0" y="126.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="100.0" font-weight="bold">2. 되돌리기</tspan></text>
+<rect x="190" y="102" width="240" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="310.0" y="126.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="310.0" font-size="14">rollback_incident · 7번</tspan></text>
+<rect x="440" y="102" width="260" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="570.0" y="126.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="570.0" font-size="14">Unit 3 함수로 롤백</tspan></text>
+<rect x="20" y="152" width="160" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="100.0" y="176.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="100.0" font-weight="bold">3. 복구 확인</tspan></text>
+<rect x="190" y="152" width="240" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="310.0" y="176.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="310.0" font-size="14">find_not_recovered · 3 · 4번</tspan></text>
+<rect x="440" y="152" width="260" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="570.0" y="176.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="570.0" font-size="14">남은 대상 = [] 이면 끝</tspan></text>
+<rect x="20" y="202" width="160" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="100.0" y="226.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="100.0" font-weight="bold">4. 규칙 조정 제안</tspan></text>
+<rect x="190" y="202" width="240" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="310.0" y="226.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="310.0" font-size="14">make_tuning_note · 5 · 6번</tspan></text>
+<rect x="440" y="202" width="260" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="570.0" y="226.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="570.0" font-size="14">IP → 허용 목록 · 계정 → 규칙 예외</tspan></text>
+<rect x="20" y="266" width="680" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="36" y="292.5" font-size="15" text-anchor="start" fill="#292929"><tspan x="36" font-size="14">INC-301 의 198.51.100.120 차단 기록은 before · after 모두 「변경 없음」 → 제외</tspan></text>
+<rect x="20" y="320" width="680" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="36" y="346.5" font-size="15" text-anchor="start" fill="#292929"><tspan x="36" font-size="14">세션 종료는 되돌릴 수 없음 → 「되돌리기 불가」 기록, 다시 로그인 안내</tspan></text>
+<rect x="20" y="374" width="680" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="36" y="400.5" font-size="15" text-anchor="start" fill="#292929"><tspan x="36" font-size="14">복구 시간 = 지금(45분) − 신고 시각 · INC-301: 45 − 20 = 25분 ≤ 30분</tspan></text>
 </g>
 </svg>

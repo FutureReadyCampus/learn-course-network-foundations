@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>보강, 경로 분기, 안전장치가 이어지고 Unit 2 에서 승인 처리와 실패 처리를 더한다</title>
+<desc>실습 1-3 보강, 도전 1-1 경로 분기, 도전 1-2 안전장치가 차례로 이어진다. Unit 2 에서는 승인 필요 경로의 승인 처리와 실행기의 실패 처리를 더해 한 흐름으로 연결한다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">Unit 1 마무리: 세 실습이 하나의 흐름으로 이어진다</text>
+<rect x="20" y="60" width="200" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="120" y="97.89" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">실습 1-3</text>
+<text x="120" y="120.075" font-size="15" fill="#292929" text-anchor="middle">알림 보강</text>
+<text x="120" y="141.825" font-size="15" fill="#292929" text-anchor="middle">재직 · VIP · 접속 IP</text>
+<rect x="260" y="60" width="200" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="87.015" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">도전 1-1</text>
+<text x="360" y="109.2" font-size="15" fill="#292929" text-anchor="middle">경로 분기</text>
+<text x="360" y="130.95" font-size="15" fill="#292929" text-anchor="middle">승인 필요 · 오탐 종료</text>
+<text x="360" y="152.7" font-size="15" fill="#292929" text-anchor="middle">· 기본</text>
+<rect x="500" y="60" width="200" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="600" y="97.89" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">도전 1-2</text>
+<text x="600" y="120.075" font-size="15" fill="#292929" text-anchor="middle">안전장치</text>
+<text x="600" y="141.825" font-size="15" fill="#292929" text-anchor="middle">중복 방지 · 잠금 3개</text>
+<polyline points="222,115 258,115" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<polyline points="462,115 498,115" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="140" y="220" width="260" height="90" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="270" y="247.89" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 2 · 승인 처리</text>
+<text x="270" y="270.075" font-size="15" fill="#292929" text-anchor="middle">승인 필요 경로로 간 알림을</text>
+<text x="270" y="291.825" font-size="15" fill="#292929" text-anchor="middle">승인하거나 거절</text>
+<rect x="440" y="220" width="260" height="90" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="570" y="247.89" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 2 · 실패 처리</text>
+<text x="570" y="270.075" font-size="15" fill="#292929" text-anchor="middle">도전 1-2 실행기에서</text>
+<text x="570" y="291.825" font-size="15" fill="#292929" text-anchor="middle">액션이 실패했을 때</text>
+<polyline points="360,172 270,218" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<polyline points="600,172 570,218" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+</g>
+</svg>

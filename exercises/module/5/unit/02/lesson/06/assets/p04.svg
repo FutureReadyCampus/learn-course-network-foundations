@@ -1,24 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
-<title>실습 2-3 보고서는 출력과 잠금 수, 안전장치에 관한 핵심 질문 두 개를 채운다</title>
-<desc>(가) 출력 전체와 단계별 잠긴 계정 · 티켓 수를 적는다. (나) 두 번째 실행을 막은 장치, (다) 잘못 잠긴 계정과 한도의 한계, 줄이는 방법은 핵심 질문이다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
+<title>도전 2-2 의 할 일을 각각 한 줄 코드와 짝지은 요점 지도</title>
+<desc>왼쪽은 하려는 일, 오른쪽은 그 일을 하는 코드다. 재시도 함수의 결과와 오류 문장을 저장하고, startswith 로 실패 기록을 골라 목록에 추가한다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">보고서 · 실습 2-3 에서 채울 칸</text>
-<rect x="20" y="52" width="72" height="72" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="56" y="92.64" font-size="16" fill="#292929" text-anchor="middle">(가)</text>
-<rect x="102" y="52" width="598" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="114" y="81.475" font-size="15" fill="#292929">① 출력 전체 (코드 상자)</text>
-<text x="114" y="103.225" font-size="15" fill="#292929">② 단계 1 · 3 · 4 의 잠긴 계정 ③ 단계 1 · 3 · 4 의 티켓 수</text>
-<rect x="20" y="136" width="72" height="72" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="56" y="176.64" font-size="16" fill="#292929" text-anchor="middle">(나)</text>
-<rect x="102" y="136" width="598" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="114" y="165.475" font-size="15" fill="#292929">[핵심 질문] 두 번째 실행을 막은 장치</text>
-<text x="114" y="187.225" font-size="15" fill="#292929">근거가 된 단계 3 「두 번째 처리」 출력 줄</text>
-<rect x="20" y="220" width="72" height="94" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="56" y="271.64" font-size="16" fill="#292929" text-anchor="middle">(다)</text>
-<rect x="102" y="220" width="598" height="94" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="114" y="249.6" font-size="15" fill="#292929">[핵심 질문] ① 잘못 잠긴 계정 (employed 기준)</text>
-<text x="114" y="271.35" font-size="15" fill="#292929">② 한도가 없을 때와 비교한 피해 ③ 한도가 막지 못한 문제</text>
-<text x="114" y="293.1" font-size="15" fill="#292929">④ 실습 2-1 보강 · 실습 2-2 경로 분기로 줄이는 방법</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 2-2 정리: 하려는 일과 코드</text>
+<rect x="20" y="56" width="160" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="100" y="80.35" font-size="15" fill="#292929" text-anchor="middle">함수 결과 담기</text>
+<polyline points="182,76 208,76" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="212" y="56" width="488" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="456" y="80.06" font-size="14" fill="#292929" text-anchor="middle">result = flaky_run_action(action, incident, state, fail_plan)</text>
+<rect x="20" y="106" width="160" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="100" y="130.35" font-size="15" fill="#292929" text-anchor="middle">숫자를 글자로 잇기</text>
+<polyline points="182,126 208,126" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="212" y="106" width="488" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="456" y="130.06" font-size="14" fill="#292929" text-anchor="middle">result + " (시도 " + str(attempt) + "회)"</text>
+<rect x="20" y="156" width="160" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="100" y="180.35" font-size="15" fill="#292929" text-anchor="middle">오류 내용을 저장</text>
+<polyline points="182,176 208,176" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="212" y="156" width="488" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="456" y="180.06" font-size="14" fill="#292929" text-anchor="middle">last_error = str(error)</text>
+<rect x="20" y="206" width="160" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="100" y="230.35" font-size="15" fill="#292929" text-anchor="middle">어떤 말로 시작하면</text>
+<polyline points="182,226 208,226" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="212" y="206" width="488" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="456" y="230.06" font-size="14" fill="#292929" text-anchor="middle">if result.startswith("실패"):</text>
+<rect x="20" y="256" width="160" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="100" y="280.35" font-size="15" fill="#292929" text-anchor="middle">리스트에 추가</text>
+<polyline points="182,276 208,276" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="212" y="256" width="488" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="456" y="280.06" font-size="14" fill="#292929" text-anchor="middle">failures.append(entry)</text>
 </g>
 </svg>

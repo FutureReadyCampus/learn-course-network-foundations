@@ -1,22 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
-<title>실습 4-3이 남긴 두 파일을 확인해 ['junho', 'dami'] 5 가 나와야 합니다</title>
-<desc>soar_response 폴더에 containment_state.json 과 containment_log.json 이 있어야 합니다. 확인 명령이 junho, dami 와 5를 출력하면 정상이고, junho 와 4가 나오면 exercise4-3_run.py 를 한 번 실행합니다.</desc>
-<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">이전 조치 기록 확인하기</text>
-<rect x="24" y="64" width="260" height="46" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="154.0" y="92.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="154.0" dy="0" font-weight="700">soar_response/</tspan></text>
-<rect x="64" y="128" width="260" height="46" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="194.0" y="156.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="194.0" dy="0">containment_state.json</tspan></text>
-<rect x="64" y="188" width="260" height="46" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="194.0" y="216.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="194.0" dy="0">containment_log.json</tspan></text>
-<polyline points="44,110 44,151 62,151" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<polyline points="44,151 44,211 62,211" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<rect x="380" y="64" width="316" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="538.0" y="90.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="538.0" dy="0" font-weight="700">확인 명령 결과</tspan><tspan x="538.0" dy="21.0">['junho', 'dami'] 5</tspan></text>
-<rect x="380" y="152" width="316" height="82" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="538.0" y="177.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="538.0" dy="0" font-weight="700">['junho'] 4 가 나오면</tspan><tspan x="538.0" dy="21.0">실습 4-3을 아직 안 돌린 것</tspan><tspan x="538.0" dy="21.0">exercise4-3_run.py 실행</tspan></text>
-<rect x="24" y="262" width="672" height="50" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="360.0" y="292.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0">잠긴 계정 = locked_users · 5 = 조치 기록 수</tspan></text>
-</g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img"><title>soar_response 폴더에 이전 파일을 확인하고 engine_alerts.json 을 만든다</title><desc>security-agent-toolkit 안의 soar_response 폴더에서 ls 와 ls config 로 이전 파일을 확인하고, 파일은 New File 로 만들어 붙여 넣는 법을 봅니다. 플레이북 등록 값을 점검한 뒤 알림 8건이 든 engine_alerts.json 을 만들고 개수가 8인지 확인합니다.</desc><defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">폴더 열고 파일 준비하기</text>
+<rect x="20" y="50" width="400" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="75" font-size="15" fill="#292929" font-weight="700">security-agent-toolkit/</text>
+<rect x="50" y="100" width="370" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="62" y="125" font-size="15" fill="#292929" font-weight="700">soar_response/</text>
+<text x="100" y="170" font-size="15" fill="#292929">incident.py</text>
+<text x="100" y="196" font-size="15" fill="#292929">approval_gate.py</text>
+<text x="100" y="222" font-size="15" fill="#292929">ticketing.py</text>
+<text x="100" y="248" font-size="15" fill="#292929">ip_users.json</text>
+<text x="100" y="274" font-size="15" fill="#292929">containment_store.py 외 2개</text>
+<line x1="80" y1="145" x2="80" y2="330" stroke="#dededb" stroke-width="1.5"/>
+<rect x="90" y="300" width="330" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="102" y="325" font-size="15" fill="#292929">config/  3개 JSON</text>
+<rect x="90" y="352" width="330" height="46" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="102" y="380" font-size="15" fill="#292929" font-weight="700">engine_alerts.json  새로 만듦</text>
+<text x="450" y="60" font-size="16" fill="#292929" font-weight="700">순서</text>
+<rect x="450" y="72" width="250" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="462" y="99" font-size="15" fill="#292929">1. 터미널 열기</text>
+<rect x="450" y="126" width="250" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="462" y="153" font-size="15" fill="#292929">2. cd soar_response · ls</text>
+<rect x="450" y="180" width="250" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="462" y="207" font-size="15" fill="#292929">3. New File 로 만드는 법</text>
+<rect x="450" y="234" width="250" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="462" y="261" font-size="15" fill="#292929">4. 플레이북 등록 값 점검</text>
+<rect x="450" y="288" width="250" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="462" y="315" font-size="15" fill="#292929">5. engine_alerts.json 붙이기</text>
+<rect x="450" y="342" width="250" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="462" y="369" font-size="15" fill="#292929">6. 알림 개수 8 확인</text>
+</g></svg>

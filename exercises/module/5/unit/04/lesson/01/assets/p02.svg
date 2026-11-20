@@ -1,31 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>soar_response 폴더의 config 안팎에 설정 파일 세 개를 만들고 1 2 2 를 확인합니다</title>
-<desc>config 폴더에 vip_accounts.json 과 allowlist_ips.json, soar_response 폴더에 ip_users.json 을 만듭니다. 확인 명령이 1 2 2 를 출력하면 세 파일이 정상입니다.</desc>
-<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<title>soar_response 폴더에 둘 파일과 세 가지 확인</title>
+<desc>왼쪽은 soar_response 폴더에 있어야 할 이전 파일과 오늘 New File 로 만들어 붙여 넣는 데이터 파일 두 개, 「보고서 쓰기」에서 만드는 report_u4.md 입니다. 오른쪽은 ls, 판다스 불러오기, JSON 개수 확인 세 단계와 기대 출력입니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p02r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p02g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p02b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">설정 파일 세 개의 위치와 내용</text>
-<rect x="24" y="64" width="220" height="46" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="134.0" y="92.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="134.0" dy="0" font-weight="700">soar_response/</tspan></text>
-<rect x="64" y="128" width="180" height="42" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="154.0" y="154.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="154.0" dy="0" font-weight="700">config/</tspan></text>
-<rect x="104" y="186" width="210" height="42" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="209.0" y="212.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="209.0" dy="0">vip_accounts.json</tspan></text>
-<rect x="104" y="242" width="210" height="42" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="209.0" y="268.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="209.0" dy="0">allowlist_ips.json</tspan></text>
-<rect x="64" y="300" width="250" height="42" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="189.0" y="326.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="189.0" dy="0">ip_users.json</tspan></text>
-<polyline points="44,110 44,149 62,149" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<polyline points="84,170 84,207 102,207" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<polyline points="84,207 84,263 102,263" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<polyline points="44,149 44,321 62,321" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<rect x="350" y="182" width="346" height="50" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="523.0" y="212.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="523.0" dy="0">["gaeun"] · VIP 계정 1개</tspan></text>
-<rect x="350" y="238" width="346" height="50" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="523.0" y="268.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="523.0" dy="0">203.0.113.80 · 192.0.2.10 (2개)</tspan></text>
-<rect x="350" y="296" width="346" height="50" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="523.0" y="326.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="523.0" dy="0">IP 2개 → 함께 쓰는 계정 리스트</tspan></text>
-<rect x="350" y="64" width="346" height="96" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="523.0" y="96.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="523.0" dy="0" font-weight="700">확인 명령 결과</tspan><tspan x="523.0" dy="21.0">1 2 2</tspan><tspan x="523.0" dy="21.0">(VIP 1 · 허용 IP 2 · IP 2)</tspan></text>
-<text x="24" y="380" font-size="15" text-anchor="start" fill="#666660">incident.py 도 같은 폴더에 있어야 합니다 (Unit 1 파일).</text>
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">폴더 열고 파일 준비하기</tspan></text>
+<rect x="20" y="52" width="340" height="330" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="40" y="130.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="40" font-weight="bold">soar_response/</tspan><tspan x="40" dy="26.2">incident.py  (Unit 1)</tspan><tspan x="40" dy="26.2">rollback.py  (Unit 3)</tspan><tspan x="40" dy="26.2">undo_actions.py 외 3개 (Unit 2 · 5)</tspan><tspan x="40" dy="26.2">unit10_tickets.json  티켓 7장</tspan><tspan x="40" dy="26.2">unit10_actions.json  조치 기록 10건</tspan><tspan x="40" dy="26.2">report_u4.md  「보고서 쓰기」에서</tspan><tspan x="40" dy="24.5" font-size="14" fill="#666660">시각 값 -1 = 아직 확인 · 해결 안 함</tspan></text>
+<rect x="390" y="52" width="310" height="92" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="545.0" y="92.3" font-size="15" text-anchor="middle" fill="#292929"><tspan x="545.0" font-weight="bold">1. ls 로 파일 확인</tspan><tspan x="545.0" dy="21.0">incident.py · rollback.py 보이면 OK</tspan></text>
+<line x1="545" y1="146" x2="545" y2="168" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="390" y="170" width="310" height="92" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="545.0" y="210.3" font-size="15" text-anchor="middle" fill="#292929"><tspan x="545.0" font-weight="bold">2. 판다스 불러오기</tspan><tspan x="545.0" dy="21.0">→ 판다스 불러오기 성공</tspan></text>
+<line x1="545" y1="264" x2="545" y2="286" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="390" y="288" width="310" height="92" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="545.0" y="328.3" font-size="15" text-anchor="middle" fill="#292929"><tspan x="545.0" font-weight="bold">3. 두 JSON 개수 확인</tspan><tspan x="545.0" dy="21.0">→ 7 10</tspan></text>
 </g>
 </svg>

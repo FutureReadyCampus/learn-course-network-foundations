@@ -1,289 +1,194 @@
 ---
 id: m5-u01-l04
-title: 정답
+title: 실습 1-3 · 알림에 맥락 정보 보강하기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
-  path: network/116_day01_pm_playbook_incident.md
-  mission_id: GichanSource.m5-1109-pm-playbook-incident
+  path: network/118_day02_am_context_route_safety.md
+  mission_id: GichanSource.m5-1110-am-context-route-safety
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 정답
+# 실습 1-3 · 알림에 맥락 정보 보강하기
 
-## 정답을 보는 방법
+## 이번 의뢰: 맥락 없는 자동 조치
 
-설명하는 답은 한 예이고, <mark>핵심이 같으면 맞습니다.</mark>
+> **오늘 들어온 일**
+>
+> - **상황**: Unit 1에서 만든 프로그램은 알림에 맞는 플레이북이 있으면 계정 잠금(account lockout, 어카운트 락아웃: 계정의 로그인을 비활성화하는 조치) 같은 조치를 즉시 실행했습니다. 오늘 샘플 알림 5건 가운데 세 건은 상황이 서로 다릅니다.
+> - `INC-001`(알림 한 건에 부여한 식별 번호): 퇴사자 `dami` 의 계정입니다. 잠가도 업무에 지장이 없습니다.
+> - `INC-003`: `gaeun` 은 직원 계정을 관리하는 계정 관리자입니다. 이 계정이 잠기면 계정 관리 업무가 중단됩니다. 이처럼 잠겼을 때 업무에 미치는 영향이 큰 고중요도 계정을 **VIP 계정**(VIP account)이라고 합니다.
+> - `INC-004`: `jiwoo` 는 협력사 사무실에서 평소와 같이 접속했을 뿐이므로 잠글 사유가 없습니다.
+> - **문제**: 프로그램은 알림에 적힌 탐지 규칙 이름과 위험 등급만 참조합니다. 퇴사 여부, VIP 계정 여부, 접속 IP 의 신뢰 여부를 알지 못한 채 모든 알림에 같은 절차를 실행합니다. Unit 1 샘플에서는 `INC-003` · `INC-004` 가 맞는 플레이북이 없어 조치가 실행되지 않았지만, 맞는 플레이북이 생기면 상황과 무관하게 같은 절차로 처리됩니다.
+> - **부탁**: 조치를 실행하기 전에 「대상이 누구이고 어디에서 접속했는가」를 알림마다 조회해 알림에 추가해 주세요.
+> - **바뀌는 점**: 「즉시 자동으로 잠글지, 담당자 승인을 받을지」를 정할 때 계정 이름이 아니라 알림에 추가된 정보(맥락)를 근거로 삼습니다. 상황과 이름은 설명을 위한 예시입니다.
+> - **용어**: **인시던트**(incident, 인시던트)는 조사와 대응이 필요한 보안 사건 한 건입니다. 이 문서에서는 알림 한 건을 인시던트 한 건으로 취급합니다. `INC-001` 의 `INC` 는 incident 의 앞 세 글자입니다.
 
----
+## 1.1 보강(enrichment) — 조치 실행 전에 알림에 맥락 정보를 추가한다
 
-## 실습 1-1 정답
+알림 한 건에 `context`(맥락)라는 딕셔너리를 추가합니다. 이 일을 **보강**(enrichment, 인리치먼트: 판단에 필요한 정보를 알림에 추가로 붙이는 일)이라고 합니다. SOAR 플레이북에서는 조치를 실행하기 전에 보강 단계를 두어, 대상의 재직 상태나 접속 출처 같은 맥락을 먼저 확인합니다.
 
- **터미널에 입력합니다.**
+알림이 가리키는 사용자 이름 또는 IP 를 알림 대상(entity, 엔티티)이라고 하며, 코드에서는 `entity` 라고 씁니다. `context` 에는 알림 대상에 대한 정보 다섯 가지가 키로 들어 있습니다. 아래 표의 예는 VIP 계정인 `gaeun` 의 경우입니다.
 
-```bash
-pwd
-ls config
-python -c "import json; print([p['id'] for p in json.load(open('config/playbook_registry.json', encoding='utf-8'))])"
-python -c "import json; s = json.load(open('system_state.json', encoding='utf-8')); print(s['locked_users'], s['blocked_ips'], len(s['tickets']))"
-```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls 폴더이름` 폴더 안의 파일 이름 보기
+| 키(이름표) | 알려 주는 것 | `gaeun` 의 값 | 정보를 못 찾으면 |
+|---|---|---|---|
+| `account_known` | 계정 정보 파일에 등록된 대상인가 | `True`(있다) | `False`(IP 주소처럼 계정이 아닌 대상) |
+| `employed` | 지금 재직 중인가 | `True`(재직) | `False` |
+| `vip` | VIP 계정인가 | `True`(VIP 다) | `False` |
+| `source_ip` | 로그인한 접속 IP | `198.51.100.77` | `None`(값이 없다) |
+| `ip_trusted` | 그 IP 가 신뢰 IP 목록에 있는가 | `False`(목록에 없다) | `False` |
 
-**채운 파일** (한 예)
+- **값의 출처 파일**: `account_known` · `employed` · `vip` 는 `users_info.json`, `source_ip` 는 `source_ips.json` 에서 조회합니다. `ip_trusted` 는 `source_ips.json` 에서 조회한 접속 IP 가 `trusted_ips.json` 목록에 포함되면 `True`, 포함되지 않으면 `False` 입니다.
+- **`True` · `False` · `None`**: `True` 는 「참」(그렇다), `False` 는 「거짓」(아니다), `None` 은 「값 없음」입니다.
+- **정보를 찾지 못했을 때**: 「확인되지 않음」을 뜻하는 초기값(`False` 또는 `None`)을 그대로 둡니다. 확인되지 않은 대상을 재직 중인 정상 사용자로 간주하면 안 되기 때문입니다.
+- **주의할 점**: 계정 정보에 없는 대상의 `employed` · `vip` 가 `False` 여도 「퇴사했다」나 「VIP 가 아니다」라는 판정이 아니라, 「계정 정보에 없어 확인할 수 없다」는 뜻입니다.
 
-`config/playbook_registry.json` 의 PB-003 한 건과 전체 파일은 다음과 같습니다.
-
-```
-[
-  {
-    "id": "PB-001",
-    "name": "퇴사한 계정의 서버 요청",
-    "trigger_rule": "퇴사한 계정",
-    "min_grade": "high",
-    "actions": [
-      "계정 잠금",
-      "티켓 생성"
-    ],
-    "approval": "자동",
-    "reason": "퇴사한 사람의 계정으로 서버에 요청이 오면 그 계정이 아직 사용할 수 있는 상태라는 뜻입니다. 퇴사한 사람이 쓰는 계정이 없으므로 잠가도 막히는 업무가 없습니다."
-  },
-  {
-    "id": "PB-002",
-    "name": "대량 다운로드",
-    "trigger_rule": "대량 다운로드",
-    "min_grade": "mid",
-    "actions": [
-      "담당자 알림",
-      "티켓 생성"
-    ],
-    "approval": "담당자 승인 필요",
-    "reason": "파일을 많이 내려받은 것은 업무 때문일 수도 있습니다. 사람이 확인하기 전에는 정상인지 알 수 없으므로 담당자가 허락한 뒤에 실행합니다."
-  },
-  {
-    "id": "PB-003",
-    "name": "경로 스캔",
-    "trigger_rule": "경로 스캔",
-    "min_grade": "low",
-    "actions": [
-      "IP 차단",
-      "티켓 생성"
-    ],
-    "approval": "담당자 승인 필요",
-    "reason": "경로 스캔의 대상은 사용자가 아니라 IP 입니다. 같은 IP 를 여러 사람이 쓰고 있으면 차단했을 때 정상 사용자의 업무도 막히므로, 담당자가 확인한 뒤에 차단합니다."
-  }
-]
-```
-
-수동 처리한 뒤의 `system_state.json` 은 다음과 같습니다(PB-003 을 `IP 차단` · `티켓 생성` 으로 쓴 경우).
+함수 세 개가 각각 다른 일을 하고, 직접 쓰는 곳은 **아홉 군데**입니다.
 
 ```
-{
-  "locked_users": ["dami"],
-  "blocked_ips": ["198.51.100.90"],
-  "tickets": [
-    {"id": "TCK-1", "incident": "INC-001", "target": "dami"},
-    {"id": "TCK-2", "incident": "INC-005", "target": "198.51.100.90"}
-  ],
-  "notifications": []
-}
+enrichment.py   lookup_account   : 대상이 users_info 안에 있으면 재직 · VIP 를 담는다 (1 ~ 3번)
+                lookup_source_ip : 대상이 source_ips 안에 있으면 접속 IP 와 신뢰 IP 여부를 담는다 (4 ~ 6번)
+                enrich_incident  : 두 결과를 합쳐 incident["context"] 에 붙인다 (미리 채움)
+실행 파일       exercise1-3_run.py : 알림마다 맥락을 붙이는 함수를 호출하고 (7번), VIP 이면 (8번) VIP 알림 수를 1 늘린다 (9번)
 ```
 
-위 파일은 한 예입니다. <mark>액션과 승인은 다르게 골라도 이유가 맞으면 맞습니다.</mark>
+## 실습 1-3 · 알림 5건 보강하고 VIP 알림 수 세기
 
-**결과**
+**이런 상황이 있습니다**
 
-- (가) PB-003 의 액션은 <mark style="background:#bde3ff">**IP 차단 · 티켓 생성**</mark>, 승인은 <mark style="background:#bde3ff">**담당자 승인 필요**</mark>입니다. 두 확인 명령의 출력은 다음과 같습니다.
+- **지금은**: <mark>알림 5건에는 대상 이름과 위험 등급만 있어서 퇴사자 · VIP 계정 · 신뢰 IP 에서 온 접속을 구별할 수 없습니다</mark>.
+- **만드는 것**: 계정 정보 조회와 접속 IP 정보 조회(`enrichment.py`), 보강 함수 호출과 VIP 계정 알림 수 집계(`exercise1-3_run.py`).
+- **실행하면**: <mark>단계 1: 불러온 개수, 단계 2: 알림마다 붙인 정보, 단계 3: VIP 계정 알림 수가 나옵니다.</mark>
 
-```
-['PB-001', 'PB-002', 'PB-003']
-['dami'] ['198.51.100.90'] 2
-```
+**할 일**: 두 파일을 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 · 3 을 읽습니다.
 
-- (나) 위 예에서 고친 곳은 <mark style="background:#bde3ff">**모두 4군데**</mark>입니다.
-  - `locked_users` 에 `"dami"` 1군데, `blocked_ips` 에 IP 1군데, `tickets` 에 티켓 2군데입니다.
-  - 알림 두 건에 이 정도이니, 알림이 100건이면 수백 군데를 고쳐야 합니다.
-  - 같은 모양의 줄을 반복해 쓰다 보면 쉼표나 대괄호를 빠뜨려 파일을 읽을 때 오류가 나기 쉽습니다. 또 어떤 알림을 처리했는지 빠뜨려도 아무도 알지 못합니다.
-  - 티켓 번호(`TCK-1` · `TCK-2`)를 사람이 직접 세어야 하는 것도 틀리기 쉬운 부분입니다.
-- (다) 승인을 <mark style="background:#bde3ff">`담당자 승인 필요`</mark> 로 정한 이유는 대상이 IP 이기 때문입니다.
-  - 사용자 계정은 한 사람의 것이지만, IP 하나는 여러 사람이 함께 쓸 수 있습니다. 그 IP 를 차단하면 경로 스캔과 상관없는 사람도 접속하지 못합니다.
-  - 오늘 샘플에서 `198.51.100.90` 은 점수 30점으로 등급이 `low` 입니다. 급하게 막지 않아도 되는 등급이라, 담당자가 확인할 시간을 두는 쪽이 안전합니다.
-  - 한 예로 `자동` 을 고르려면 「차단을 바로 풀 수 있다」는 전제가 있어야 합니다. 그 경우에도 `reason` 에 전제를 적어 둡니다.
-
-**왜**
-
-- <mark>플레이북은 「무엇을 할지」뿐 아니라 「누구의 허락을 받고 할지」까지 정해야 완성됩니다.</mark> 수동 처리를 해 보면 같은 일을 반복하는 데 시간이 들고 틀리기 쉽습니다. 그래서 실습 1-2에서는 프로그램이 대신하게 만듭니다.
-
-**자주 틀리는 곳**
-
-- 등록 파일의 마지막 플레이북 뒤에 쉼표를 남기면 확인 명령에서 `JSONDecodeError` 가 납니다. <mark>**마지막 플레이북 뒤에는 쉼표를 붙이지 않습니다.**</mark>
-  - 실행하면 다음 오류가 납니다(<mark style="background:#ffc4d6">`Expecting value`</mark> 로 시작하면 이 실수이고, 줄 번호는 사람마다 다릅니다).
-
-```
-json.decoder.JSONDecodeError: Expecting value: line 38 column 1 (char 875)
-```
-
-- PB-002 의 `}` 뒤에 쉼표를 빼고 PB-003 을 붙이면 같은 명령에서 다른 오류가 납니다. <mark>**플레이북과 플레이북 사이에는 쉼표가 있어야 합니다.**</mark>
-
-```
-json.decoder.JSONDecodeError: Expecting ',' delimiter: line 14 column 3 (char 298)
-```
-
-- `actions` 를 `"IP 차단", "티켓 생성"` 처럼 대괄호 없이 쓰면 JSON 문법에 맞지 않아 오류가 납니다. <mark>**`actions` 의 값은 `[ ]` 로 감싼 리스트입니다.**</mark>
-- 알림의 대상이 IP 인데 액션에 `계정 잠금` 을 고르면 대상과 맞지 않는 액션입니다. 이 알림은 IP 가 대상이므로 1.2 의 표에서 「대상」이 IP 인 액션을 골라야 합니다. 실습 1-2 실행기는 이런 액션을 실행하지 않고 「건너뜀」으로 기록합니다.
-
-**관제에서는**
-
-- 플레이북은 새 담당자가 와도 같은 순서로 대응하게 하는 문서이고, 승인 값은 자동화를 안전하게 쓰는 기준입니다. <mark>처음에는 사람의 승인을 넣어 두고, 같은 알림을 여러 번 처리해도 잘못된 대응이 없었다고 확인되면 `자동` 으로 바꾸는 방식이 흔합니다.</mark>
-
----
-
-## 실습 1-2 정답
-
- **터미널에 입력합니다.**
-
-```bash
-pwd
-python exercise1-2_run.py
-```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
-
-**채운 코드** (한 예) — 직접 쓰는 곳은 `run_playbook` 한 함수입니다.
+**`enrichment.py`** — 알림에 맥락을 추가하는 보강 함수를 정의합니다. 도전 1-1 실행 파일도 `enrich_incident` 를 가져와 사용(import)합니다. 직접 쓰는 곳은 1 ~ 6번입니다.
 
 ```python
-    if playbook["approval"] != "자동":                                              # 승인 값이 자동이 아니면
-        action_log.append(make_log_entry(incident, playbook, "전체", "승인 대기"))  # 승인 대기로 기록하고
-        return False                                                                # 실행하지 않고 끝낸다
-    for action in playbook["actions"]:                                              # 액션을 하나씩 꺼낸다
-        result = run_action(action, incident, state)                                # 액션을 실행하고 결과 문장을 받는다
-        action_log.append(make_log_entry(incident, playbook, action, result))       # 결과를 감사 기록에 추가한다
-    change_status(incident, "조치됨")                                               # 실행이 끝났으니 조치됨으로 옮긴다
+def lookup_account(entity, users_info):                              # 대상 이름과 계정 정보 딕셔너리를 받는 함수
+    """계정 정보 파일에서 이 대상이 재직 중인지, VIP 계정인지 찾아 딕셔너리로 리턴한다.
+    파일에 이름이 없는 대상(IP 등)은 처음 값(False)을 그대로 리턴한다.
+    """
+    account = {"employed": False, "vip": False}                      # 처음에는 모르는 상태로 시작한다
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 1. entity 가 users_info 안에 있으면 (if, in)
+    # 2.   account 의 "employed" 에 users_info[entity]["employed"] 를 담는다
+    # 3.   account 의 "vip" 에 users_info[entity]["vip"] 를 담는다
+    return account                                                   # 계정 정보를 리턴한다
+
+
+def lookup_source_ip(entity, source_ips, trusted_ips):               # 대상 이름 · 접속 IP 딕셔너리 · 신뢰 IP 리스트를 받는 함수
+    """이 대상이 접속한 IP 와, 그 IP 가 신뢰 IP 목록에 있는지 찾아 딕셔너리로 리턴한다.
+    접속 IP 를 모르는 대상은 처음 값(None 과 False)을 그대로 리턴한다.
+    """
+    ip_info = {"source_ip": None, "ip_trusted": False}               # 처음에는 모르는 상태로 시작한다
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 4. entity 가 source_ips 안에 있으면 (if, in)
+    # 5.   ip_info 의 "source_ip" 에 source_ips[entity] 를 담는다
+    # 6.   ip_info 의 "ip_trusted" 에 source_ips[entity] 가 trusted_ips 안에 있는지(in)의 결과를 담는다
+    return ip_info                                                   # 접속 IP 정보를 리턴한다
+
+
+def enrich_incident(incident, users_info, source_ips, trusted_ips):  # 인시던트 · 계정 정보 · 접속 IP 딕셔너리 · 신뢰 IP 리스트를 받는 함수
+    """위 두 함수가 찾은 정보를 모아 알림에 context 라는 이름으로 붙이고, 붙인 알림을 리턴한다.
+    붙이고 나면 알림만 봐도 퇴사 · VIP · 접속 IP 를 알 수 있어서, 조치하기 전에 확인할 때 쓴다.
+    """
+    entity = incident["entity"]                                      # 대응할 대상(사용자 이름 또는 IP)
+    account = lookup_account(entity, users_info)                     # 계정 정보를 찾는다
+    ip_info = lookup_source_ip(entity, source_ips, trusted_ips)      # 접속 IP 정보를 찾는다
+    account_known = entity in users_info                             # 계정 정보에 있는 대상인지 구한다
+    context = {"account_known": account_known, "employed": account["employed"], "vip": account["vip"], "source_ip": ip_info["source_ip"], "ip_trusted": ip_info["ip_trusted"]}  # 다섯 가지 맥락을 합친다
+    incident["context"] = context                                    # 인시던트에 맥락을 붙인다
+    return incident                                                  # 맥락이 붙은 인시던트를 리턴한다
 ```
 
-위 코드는 한 예입니다. <mark>줄 수가 달라도 주석이 말한 일을 하면 맞습니다.</mark>
+**`exercise1-3_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 파일을 저장하지는 않습니다.
 
-**결과**
+```python
+from incident import load_json, INCIDENTS_PATH                 # Unit 1 파일의 함수를 불러온다
+from enrichment import enrich_incident                         # 방금 만든 함수를 불러온다
 
-- (가) 출력은 다음과 같습니다(PB-003 이 `담당자 승인 필요` 인 경우). 실행 후 잠긴 계정은 <mark style="background:#bde3ff">**`dami` 1개**</mark>, 차단한 IP는 <mark style="background:#bde3ff">**0개**</mark>, 티켓은 <mark style="background:#bde3ff">**1건**</mark>, 승인 대기는 <mark style="background:#bde3ff">**2건**</mark>(INC-002 · INC-005)입니다.
+incidents = load_json(INCIDENTS_PATH)                          # 인시던트 파일을 리스트로 읽는다
+users_info = load_json("users_info.json")                      # 계정 정보 파일을 딕셔너리로 읽는다
+source_ips = load_json("source_ips.json")                      # 알림이 난 접속의 IP 파일을 딕셔너리로 읽는다
+trusted_ips = load_json("trusted_ips.json")                    # 신뢰 IP 파일을 리스트로 읽는다
+incident_count = len(incidents)                                # 인시던트가 몇 건인지 센다
+user_count = len(users_info)                                   # 계정 정보가 몇 명인지 센다
+trusted_count = len(trusted_ips)                               # 신뢰 IP 가 몇 개인지 센다
+print("--- 단계 1: 불러온 알림", incident_count, "건 · 계정 정보", user_count, "명 · 신뢰 IP", trusted_count, "개")  # 단계 1 시작을 알리는 줄
 
-```
---- 단계 1: 불러온 인시던트 5 건 · 등록된 플레이북 3 개
---- 단계 2: 실행 전 연습용 시스템 상태
-잠긴 계정: []
-차단한 IP: []
-티켓: 0 건 · 담당자 알림: 0 건
---- 단계 3: 인시던트마다 플레이북 실행
-INC-001 dami high -> PB-001 실행 완료 (상태: 조치됨)
-INC-002 seoyeon mid -> PB-002 승인 대기 (상태: 분류됨)
-INC-003 gaeun mid -> 맞는 플레이북 없음 (상태: 탐지됨)
-INC-004 jiwoo mid -> 맞는 플레이북 없음 (상태: 탐지됨)
-INC-005 198.51.100.90 low -> PB-003 승인 대기 (상태: 분류됨)
---- 단계 4: 실행 후 연습용 시스템 상태
-잠긴 계정: ['dami']
-차단한 IP: []
-티켓: 1 건 · 담당자 알림: 0 건
---- 단계 5: 승인 대기 2 건
-INC-002 seoyeon PB-002 · 담당자 승인 필요
-INC-005 198.51.100.90 PB-003 · 담당자 승인 필요
---- 단계 6: 감사 기록 4 건을 action_log.json 에 저장
-INC-001 PB-001 계정 잠금 : 계정 dami 잠금 완료
-INC-001 PB-001 티켓 생성 : 티켓 TCK-1 생성
-INC-002 PB-002 전체 : 승인 대기
-INC-005 PB-003 전체 : 승인 대기
-```
+print("--- 단계 2: 알림마다 붙인 정보(재직 · VIP · 접속 IP)")  # 단계 2 시작을 알리는 줄
+for incident in incidents:                                     # 인시던트를 하나씩 꺼낸다
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 7. enrich_incident(incident, users_info, source_ips, trusted_ips) 를 호출한다 (인시던트에 맥락이 붙는다)
+    context = incident["context"]                              # 붙은 맥락을 꺼낸다
+    if context["account_known"]:                               # 계정 정보가 있으면
+        if context["employed"]:                                # 재직 중이면
+            employed_text = "재직"                             # 재직이라고 적는다
+        else:                                                  # 아니면
+            employed_text = "퇴사"                             # 퇴사라고 적는다
+    else:                                                      # 계정 정보가 없으면
+        employed_text = "계정 아님"                            # 계정이 아니라고 적는다
+    vip_text = "아니오"                                        # 처음에는 아니오로 적는다
+    if context["vip"]:                                         # VIP 이면
+        vip_text = "예"                                        # 예라고 적는다
+    ip_text = "없음"                                           # 처음에는 없음으로 적는다
+    if context["source_ip"]:                                   # 접속 IP 가 있으면
+        ip_text = context["source_ip"]                         # 그 IP 를 적는다
+    trusted_text = "아니오"                                    # 처음에는 아니오로 적는다
+    if context["ip_trusted"]:                                  # 신뢰 IP 이면
+        trusted_text = "예"                                    # 예라고 적는다
+    print(incident["id"], incident["entity"], "· 재직:", employed_text, "· VIP:", vip_text, "· 접속 IP:", ip_text, "· 신뢰 IP:", trusted_text)  # 한 줄로 출력한다
 
-- (나) 실습 1-1에서는 INC-005 를 처리한다고 가정하고 `198.51.100.90` 을 차단했지만, <mark style="background:#bde3ff">실행기는 INC-005 를 처리하지 않고 승인 대기로 멈췄습니다.</mark>
-  - 근거: 단계 3 에 `INC-005 … -> PB-003 승인 대기 (상태: 분류됨)`, 단계 4 에 `차단한 IP: []`, 단계 5 에 `INC-005 … PB-003 · 담당자 승인 필요` 가 나옵니다.
-  - 이유: `run_playbook` 이 플레이북의 `approval` 이 `자동` 이 아니면 액션을 실행하지 않기 때문입니다. 수동 처리할 때는 이 확인을 사람이 기억해야 했지만, 실행기는 매번 확인합니다.
-  - PB-003 의 승인 값을 `자동` 으로 쓴 경우에는 단계 4 의 `차단한 IP` 에 `198.51.100.90` 이 들어갑니다. 또 INC-005 가 `실행 완료 (상태: 조치됨)` 로 나옵니다. 승인 값 하나가 실제 결과를 바꿉니다.
-- (다) INC-002 의 기록 한 줄은 `INC-002 PB-002 전체 : 승인 대기` 입니다.
-  - 일어난 일: 플레이북 PB-002 가 인시던트 INC-002 에 맞아서 시작됐고, 승인이 필요해 승인 대기로 기록됐습니다.
-  - 일어나지 않은 일: 담당자 알림도 티켓 생성도 실행하지 않았습니다. 이 인시던트의 상태는 `분류됨` 입니다.
-  - 필요한 이유: 사고가 난 뒤 「그때 왜 조치하지 않았나」를 물으면 이 기록으로 「승인을 기다리고 있었다」고 설명할 수 있습니다. 기록이 없으면 실행하지 않은 일은 아무 흔적도 남지 않습니다.
-
-PB-003 을 `자동` 으로 쓴 경우의 단계 3 ~ 6 은 다음과 같습니다.
-
-```
---- 단계 3: 인시던트마다 플레이북 실행
-INC-001 dami high -> PB-001 실행 완료 (상태: 조치됨)
-INC-002 seoyeon mid -> PB-002 승인 대기 (상태: 분류됨)
-INC-003 gaeun mid -> 맞는 플레이북 없음 (상태: 탐지됨)
-INC-004 jiwoo mid -> 맞는 플레이북 없음 (상태: 탐지됨)
-INC-005 198.51.100.90 low -> PB-003 실행 완료 (상태: 조치됨)
---- 단계 4: 실행 후 연습용 시스템 상태
-잠긴 계정: ['dami']
-차단한 IP: ['198.51.100.90']
-티켓: 2 건 · 담당자 알림: 0 건
---- 단계 5: 승인 대기 1 건
-INC-002 seoyeon PB-002 · 담당자 승인 필요
---- 단계 6: 감사 기록 5 건을 action_log.json 에 저장
-INC-001 PB-001 계정 잠금 : 계정 dami 잠금 완료
-INC-001 PB-001 티켓 생성 : 티켓 TCK-1 생성
-INC-002 PB-002 전체 : 승인 대기
-INC-005 PB-003 IP 차단 : IP 198.51.100.90 차단 완료
-INC-005 PB-003 티켓 생성 : 티켓 TCK-2 생성
+print("--- 단계 3: VIP 계정 알림 수")                          # 단계 3 시작을 알리는 줄
+vip_count = 0                                                  # VIP 계정 알림 수 : 처음에는 0 이다
+for incident in incidents:                                     # 인시던트를 하나씩 꺼낸다
+    context = incident["context"]                              # 붙은 맥락을 꺼낸다
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 8. context 의 "vip" 가 참이면 (if)
+    # 9.   vip_count 에 vip_count + 1 을 담는다 (1 늘린다)
+print("VIP 계정 알림", vip_count, "건")                        # VIP 계정 알림 수를 출력한다
 ```
 
-PB-003 의 액션에 `계정 잠금` 을 골랐고 승인을 `자동` 으로 쓴 경우의 단계 3 과 단계 6 은 다음과 같습니다. 대상이 IP 라서 실행하지 않고 건너뜁니다.
+**순서**
 
-```
---- 단계 3: 인시던트마다 플레이북 실행
-INC-001 dami high -> PB-001 실행 완료 (상태: 조치됨)
-INC-002 seoyeon mid -> PB-002 승인 대기 (상태: 분류됨)
-INC-003 gaeun mid -> 맞는 플레이북 없음 (상태: 탐지됨)
-INC-004 jiwoo mid -> 맞는 플레이북 없음 (상태: 탐지됨)
-INC-005 198.51.100.90 low -> PB-003 실행 완료 (상태: 조치됨)
-…
---- 단계 6: 감사 기록 5 건을 action_log.json 에 저장
-INC-001 PB-001 계정 잠금 : 계정 dami 잠금 완료
-INC-001 PB-001 티켓 생성 : 티켓 TCK-1 생성
-INC-002 PB-002 전체 : 승인 대기
-INC-005 PB-003 계정 잠금 : 건너뜀: 대상이 IP 라서 계정 잠금을 할 수 없습니다
-INC-005 PB-003 티켓 생성 : 티켓 TCK-2 생성
-```
+1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `enrichment.py` · `exercise1-3_run.py` 두 파일을 하나씩 만들고(파일 이름 그대로), 코드를 붙여 넣어 저장합니다.
+2. **[VS Code]** `enrichment.py` 1 ~ 6번, `exercise1-3_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「실습 1-3 정리」를 봅니다.
+3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+   ```bash
+   python exercise1-3_run.py
+   ```
+4. 출력은 세 단계입니다. 단계 1 은 숫자가 제목 줄에 함께 나옵니다. 단계 2 는 알림 5건이 한 줄씩 나오고 한 줄에는 번호 · 대상 · 재직 · VIP · 접속 IP · 신뢰 IP 가 순서대로 있습니다. 단계 3 은 1줄입니다.
+5. **[보고서]** `report_u1.md` 의 `## 실습 1-3` 아래를 채웁니다.
+   - (가) 실행한 출력 전체를 붙여 넣고, 재직 여부가 「퇴사」인 알림과 VIP 가 「예」인 알림의 번호, 단계 3 의 VIP 계정 알림 수를 적어 주세요.
+   - (나) [핵심 질문] INC-005 는 맥락이 모두 초기값(`False` · `None`)으로 남았습니다. 그 원인을 `lookup_account` 와 `lookup_source_ip` 의 `if` 조건을 근거로 설명해 주세요. 또 INC-005 의 `employed` 가 `True`(재직)로 판정된다면 어떤 문제가 생기는지도 적어 주세요.
+   - (다) [핵심 질문] INC-002 와 INC-004 는 접속 IP 가 같고 둘 다 「신뢰 IP: 예」입니다. 두 알림의 `reasons`(알림을 발생시킨 탐지 규칙 이름 목록)를 비교해 보세요. 접속 IP 가 같은 신뢰 IP 라는 근거만으로 두 알림을 동일하게 처리해도 되는지 적어 주세요.
 
-**왜**
+## 실습 1-3 정리
 
-- <mark>승인 값을 코드가 매번 확인해 멈추게 하면, 사람이 기억하지 않아도 허락 없이 실행되는 일이 막힙니다.</mark> 그리고 실행한 일과 멈춘 일을 모두 기록하면 나중에 설명할 수 있습니다.
-
-**자주 틀리는 곳**
-
-- 1 ~ 3번을 빠뜨리면 오류는 나지 않지만 <mark>**승인이 필요한 플레이북도 바로 실행됩니다.**</mark> 단계 4 에 차단한 IP 가 들어 있고 단계 5 의 승인 대기가 0건으로 나오는 것이 이 실수의 결과입니다.
-
-```
---- 단계 4: 실행 후 연습용 시스템 상태
-잠긴 계정: ['dami']
-차단한 IP: ['198.51.100.90']
-티켓: 3 건 · 담당자 알림: 1 건
---- 단계 5: 승인 대기 0 건
-```
-
-- 1번을 `!=` 대신 `==` 로 쓰면 반대로 동작합니다. <mark>**자동이어야 하는 PB-001 이 승인 대기로 멈추고, 승인이 필요한 플레이북이 실행됩니다.**</mark> 단계 5 에 `INC-001 dami PB-001 · 자동` 이 나오는 것이 이 실수의 결과입니다.
-
-```
---- 단계 5: 승인 대기 1 건
-INC-001 dami PB-001 · 자동
-```
-
-- 4번을 빠뜨리고 5번에서 `result` 를 쓰면 오류가 납니다. <mark>**`result` 는 4번에서 만들어야 쓸 수 있습니다.**</mark>
-  - 실행하면 다음 오류가 납니다(<mark style="background:#ffc4d6">`name 'result' is not defined`</mark>).
-
-```
-NameError: name 'result' is not defined
-```
-
-- 6번을 빠뜨리면 오류는 나지 않지만 <mark>**실행을 마친 인시던트의 상태가 `조치됨` 이 아니라 `분류됨` 으로 남습니다.**</mark> 단계 3 의 INC-001 줄 끝이 이 실수의 결과입니다.
-
-```
-INC-001 dami high -> PB-001 실행 완료 (상태: 분류됨)
-```
-
-**관제에서는**
-
-- 자동 대응을 켤 때 가장 먼저 확인하는 것은 「허락이 필요한 일이 멈추는가」와 「한 일이 모두 기록되는가」입니다. <mark>승인 대기 목록은 담당자가 아침에 가장 먼저 보는 목록</mark>이고, 감사 기록은 사고가 난 뒤 대응을 다시 확인할 때 쓰는 자료입니다.
+| 하려는 일 | 코드 · 말 |
+|---|---|
+| 딕셔너리에 그 이름(키)이 있는지 | `if entity in users_info:` |
+| 딕셔너리 안의 딕셔너리 값 꺼내기 (`users_info["gaeun"]["vip"]` 는 `True`) | `users_info[entity]["employed"]` |
+| 딕셔너리에 값 저장하기 | `account["vip"] = users_info[entity]["vip"]` |
+| 리스트에 포함되는지 검사한 결과(`True` · `False`) 저장 | `ip_info["ip_trusted"] = source_ips[entity] in trusted_ips` |
+| 함수 호출하기 | `enrich_incident(incident, users_info, source_ips, trusted_ips)` |
+| 1 늘려 다시 저장하기 | `vip_count = vip_count + 1` |
 
 ---
 
-## 정답 마무리
+## 이번 Unit 마무리
 
-- (가) 한 예: <mark>`git status` 에서 `.env` 와 `.venv` 가 보이지 않았습니다.</mark> `__pycache__` 가 보여서 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 다시 확인했습니다.
-- 깃허브에 `soar_response` 폴더가 생기고 `config` 폴더와 `incident.py` · `playbook_runner.py` · `action_log.json` 이 보이면 됩니다.
+| 확인 | 문제 |
+|---|---|
+| 알림 보강으로 재직 · VIP · 접속 IP 맥락을 추가했다 | 실습 1-3 |
+| 맥락에 따라 승인 필요 · 오탐 종료 · 기본 경로로 분기하고 판정 사유를 기록했다 | 도전 1-1 |
+| 중복 실행을 방지하고 1회 실행당 잠글 수 있는 계정 수를 제한했다 | 도전 1-2 |
+
+이번 Unit에서 구현한 보강 · 경로 분기 · 안전장치는 하나의 흐름으로 이어집니다. <mark>Unit 2에서는 두 가지를 구현합니다. 첫째, 도전 1-1에서 `승인 필요` 경로로 분기된 알림을 담당자가 승인하거나 거절하는 승인 처리입니다. 둘째, 도전 1-2의 실행기에서 액션이 실패했을 때의 실패 처리입니다. 그리고 보강 · 경로 분기 · 안전장치 적용 실행을 하나의 흐름으로 연결해 한 번에 실행합니다.</mark> 도전 1-2 마지막에 확인한 「한도 안에서도 잘못 잠긴 계정」 문제는, Unit 2의 하루 흐름에서 VIP 경로와 신뢰 IP 판단을 함께 적용하면 일부 줄어듭니다.
+
+---
+
+---
+
+<!-- learn:answers -->

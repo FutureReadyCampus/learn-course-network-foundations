@@ -1,22 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
-<title>보고서는 질문의 쓸 내용을 보고 답: 뒤에 근거와 이유까지 씁니다</title>
-<desc>질문마다 쓸 내용을 확인하고 답: 뒤에 씁니다. 출력은 빈 코드 상자에 붙여 넣고, 왜 질문은 내 화면의 값을 근거로 이유까지 씁니다. 모르면 모름 — 막힌 곳을 적습니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>도전 4-2: 알림과 담당자 동작으로 3시간을 돌려 MTTA·MTTR·위반·인계를 낸다</title>
+<desc>알림 11건과 담당자 동작 8건을 challenge4-2_run.py 가 0분부터 180분까지 1분씩 재현한다. 결과로 평균 확인 시간 55.0분, 평균 해결 시간 84.0분, 기한 위반 2장, 인계할 미해결 티켓 4장이 나온다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">보고서 쓰는 순서</text>
-<rect x="24" y="84" width="156" height="96" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="102.0" y="116.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="102.0" dy="0" font-weight="700">1. 질문 읽기</tspan><tspan x="102.0" dy="21.0">[핵심 질문]은</tspan><tspan x="102.0" dy="21.0">꼭 답한다</tspan></text>
-<line x1="180" y1="132" x2="194" y2="132" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<rect x="196" y="84" width="156" height="96" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="274.0" y="116.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="274.0" dy="0" font-weight="700">2. 쓸 내용 확인</tspan><tspan x="274.0" dy="21.0">①②③ 항목을</tspan><tspan x="274.0" dy="21.0">하나씩 본다</tspan></text>
-<line x1="352" y1="132" x2="366" y2="132" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<rect x="368" y="84" width="156" height="96" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="446.0" y="116.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="446.0" dy="0" font-weight="700">3. 답: 뒤에 쓰기</tspan><tspan x="446.0" dy="21.0">출력·코드는</tspan><tspan x="446.0" dy="21.0">빈 코드 상자에</tspan></text>
-<line x1="524" y1="132" x2="538" y2="132" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<rect x="540" y="84" width="156" height="96" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="618.0" y="116.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="618.0" dy="0" font-weight="700">4. 이유까지</tspan><tspan x="618.0" dy="21.0">내 화면의 값을</tspan><tspan x="618.0" dy="21.0">근거로 쓴다</tspan></text>
-<rect x="120" y="230" width="480" height="70" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360.0" y="259.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">답을 못 찾으면</tspan><tspan x="360.0" dy="21.0">「모름 — 막힌 곳: …」 이라고 씁니다</tspan></text>
-<line x1="360" y1="182" x2="360" y2="228" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-</g>
+<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">도전 4-2 · 무엇을 만드나</text>
+<rect x="20" y="60" width="200" height="80" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="120.0" y="94.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">alerts_thu.json</text>
+<text x="120.0" y="115.8" font-size="15" fill="#292929" text-anchor="middle">알림 11건</text>
+<rect x="20" y="160" width="200" height="80" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="120.0" y="194.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">status_events.json</text>
+<text x="120.0" y="215.8" font-size="15" fill="#292929" text-anchor="middle">담당자 동작 8건</text>
+<rect x="260" y="60" width="200" height="180" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="123.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">challenge4-2_run.py</text>
+<text x="360.0" y="144.8" font-size="15" fill="#292929" text-anchor="middle">0분 ~ 180분</text>
+<text x="360.0" y="165.8" font-size="15" fill="#292929" text-anchor="middle">1분씩 진행</text>
+<text x="360.0" y="186.8" font-size="15" fill="#292929" text-anchor="middle">10분마다 점검</text>
+<rect x="500" y="56" width="200" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="600.0" y="81.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">MTTA 55.0분 (5장)</text>
+<rect x="500" y="104" width="200" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="600.0" y="129.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">MTTR 84.0분 (3장)</text>
+<rect x="500" y="152" width="200" height="40" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="600.0" y="177.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">기한 위반 2장</text>
+<rect x="500" y="200" width="200" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="600.0" y="225.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">인계 4장</text>
+<line x1="222" y1="100" x2="258" y2="130" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<line x1="222" y1="200" x2="258" y2="170" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<line x1="462" y1="150" x2="498" y2="76" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<line x1="462" y1="150" x2="498" y2="124" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<line x1="462" y1="150" x2="498" y2="172" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<line x1="462" y1="150" x2="498" y2="220" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="20" y="270" width="680" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="296.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">인계 목록 (해결되지 않은 티켓)</text>
+<text x="360.0" y="317.8" font-size="15" fill="#292929" text-anchor="middle">TCK-2 · TCK-4 · TCK-5 · TCK-7</text>
 </svg>

@@ -2,27 +2,26 @@
 id: m5-u02-l01
 title: 시작하기
 render: markdown
-source:
-  repository: FutureReadyCampus/learn-missions
-  path: network/118_day02_am_context_route_safety.md
-  mission_id: GichanSource.m5-1110-am-context-route-safety
-  commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
 # 시작하기
 
-## 목표: 보강·분기·안전장치
+## 목표: 실행 · 검증 · 기록
 
-이번 Unit은 SOAR 자동 대응의 판단 단계를 구현합니다. 실습 2-1은 알림 보강(enrichment, 인리치먼트: 판단에 필요한 정보를 알림에 추가하는 일)을 다룹니다. 실습 2-2는 맥락에 따른 조건 분기(branching, 브랜칭: 조건에 따라 처리 경로를 나누는 일)를 다룹니다. 실습 2-3은 안전장치(guardrail, 가드레일: 자동 대응이 잘못 실행되어도 피해가 커지지 않도록 미리 두는 점검과 제한)를 다룹니다.
+Unit 2까지는 판단 단계(맥락 보강 · 처리 경로 분기 · 안전장치 · 승인 · 재시도)를 만들었습니다. 이번 Unit에서는 판단한 대응 조치를 연습용 시스템(실제 서버 대신 연습용으로 만든 시뮬레이션 환경)에서 **실행하고, 사후 검증하고, 감사 기록으로 남기고, 롤백할 수 있게** 구현합니다. 사후 검증(post-action verification)은 조치 후 실제 상태를 다시 확인하는 일입니다. 감사 기록(audit log)은 조치를 순서대로 남긴 기록입니다. 롤백(rollback)은 조치 이전 상태로 되돌리는 일입니다. 침해 사고 대응에서 이 구현 단계는 봉쇄(containment, 컨테인먼트: 피해가 더 확산되기 전에 사고를 차단하는 단계)에 해당합니다. NIST SP 800-61 Rev. 2 는 봉쇄를 「봉쇄 · 제거 · 복구」(Containment, Eradication, and Recovery) 단계 안에 둡니다. 이번 Unit에서는 현업에서 자주 생기는 결함 세 가지를 하나씩 해소합니다.
 
-깃허브 업로드는 Unit 3의 실습 3-2 마지막에 합니다. 새 문법은 실습 2-2의 **튜플 리턴과 언패킹**(두 값을 한 번에 리턴하고 한 번에 받는 문법)과 실습 2-3의 **`startswith`**(문자열이 지정한 문자열로 시작하는지 확인하는 메서드) 둘입니다. 보고서에서 [핵심 질문]이 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기는 미리 채운 줄에 맞춥니다. 각 번호 주석 바로 아래에 한 줄을 씁니다. 주석은 지우지 않습니다.
+- **실습 2-1**: 계정 잠금(account lockout, 어카운트 락아웃: 계정의 로그인을 비활성화하는 조치)을 실행하고 <mark>잠금 상태를 사후 검증</mark>하며, 조치 전 · 후 상태를 감사 기록으로 남깁니다(`containment_store.py` · `account_actions.py`).
+- **도전 2-3**: IP 를 차단(block)하되 <mark>허용 목록(allowlist: 차단 대상에서 제외하기로 미리 정한 IP 의 목록)에 있는 IP 와 여러 계정이 공유하는 IP 는 자동 차단에서 제외하고</mark>, 차단에는 유효 기간(TTL, Time To Live, 티티엘)을 두어 기간이 지나면 자동 해제합니다(`ip_actions.py`).
+- **실습 2-2**: 계정을 잠가도 <mark>이미 발급된 세션(session, 세션: 로그인한 뒤 서버가 유지하는 접속 상태)이 활성 상태(active, 액티브: 아직 유효한 상태)로 남는 문제</mark>를 세션 종료(session termination)로 해소하고, 잠긴 계정에 활성 세션이 잔존하는지 점검합니다(`session_actions.py` · `containment.py`).
 
- **이전 파일**: Unit 1에서 만든 `incident.py` · `playbook_runner.py` · `incident_samples.json` · `config/playbook_registry.json` 을 씁니다. 없는 파일은 Unit 1의 코드 상자로 만듭니다(`incident_samples.json` 은 Unit 1 「시작하기」, `config/playbook_registry.json` 은 실습 1-1, `incident.py` · `playbook_runner.py` 는 실습 1-2 레슨).
+깃허브에 올리는 일은 Unit 3의 도전 3-1 마지막에 합니다. 새 문법은 실습 2-1의 `리스트.remove()` 하나입니다. 보고서에서 [핵심 질문]이 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 코드를 쓸 때는 들여쓰기를 미리 채운 줄에 맞추고, 각 번호 주석 바로 아래에 한 줄을 씁니다. 주석은 지우지 않습니다.
 
-## Unit 1 파일 확인하고 데이터 파일 만들기
+ **이전 파일**: Unit 1에서 만든 `incident.py` 의 `load_json` · `save_json` 만 씁니다. 없으면 Unit 1 실습 1-2 레슨의 `incident.py` 코드 상자에서 복사해 만듭니다.
+
+## 설정 파일 세 개 만들기
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** Module 5 폴더로 들어가 Unit 1 파일을 확인합니다. <mark>`ls` 결과에 `config` · `incident.py` · `incident_samples.json` · `playbook_runner.py` 가 보이면</mark> 됩니다.
+2. **[터미널]** Module 5 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `config` 와 `incident.py` 가 보이면</mark> 됩니다.
    ```bash
    pwd
    cd soar_response
@@ -30,59 +29,40 @@ source:
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
-3. **파일은 이렇게 만듭니다.** 이 페이지에 나오는 파일은 모두 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, **파일 이름을 확장자까지 그대로** 적고 Enter 를 친 뒤, 내용을 붙여 넣고 `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다. 답을 적는 보고서(`report_u2.md`)는 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
-4. **[VS Code]** 데이터 파일 세 개 `users_info.json` · `source_ips.json` · `trusted_ips.json` 을 `soar_response` 폴더에 만들고, 아래 각 파일의 코드 상자 내용을 붙여 넣습니다.
+3. **[VS Code]** 설정 · 데이터 파일 세 개를 만듭니다. 이 페이지에 나오는 파일은 모두 아래 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 답을 적는 보고서 `report_u2.md` 는 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
+   - `config` 폴더를 오른쪽 클릭 › **New File** 으로 `vip_accounts.json` 과 `allowlist_ips.json` 을 하나씩 만듭니다.
+   - `soar_response` 폴더를 오른쪽 클릭 › **New File** 으로 `ip_users.json` 을 만듭니다.
+   - 각 파일에 아래 코드 상자의 내용을 복사해 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
 
-**`users_info.json`** — 계정 이름별 재직 여부(`employed`)와 VIP 계정(VIP account, 브이아이피 계정: 잠기면 업무에 미치는 영향이 큰 중요도가 높은 계정) 여부(`vip`)를 기록한 파일입니다. `true` 는 「그렇다」, `false` 는 「아니다」입니다. 실제 조직에서는 인사 시스템과 IAM(Identity and Access Management, 아이덴티티 앤 액세스 매니지먼트: 계정과 접근 권한을 관리하는 체계)이 보유한 정보이고, 오늘은 파일로 대신합니다. `dami` 는 퇴사자(`employed` 가 `false`), `gaeun` 은 VIP 계정(`vip` 가 `true`)입니다. 실습 2-1 ~ 실습 2-3에서 읽어 사용합니다.
-
-```
-{
-  "dami": {"employed": false, "vip": false},
-  "seoyeon": {"employed": true, "vip": false},
-  "gaeun": {"employed": true, "vip": true},
-  "jiwoo": {"employed": true, "vip": false},
-  "junho": {"employed": true, "vip": false},
-  "hana": {"employed": true, "vip": false}
-}
-```
-
-**`source_ips.json`** — 사용자 이름별로 로그인에 사용한 접속 IP(source IP, 소스 아이피: 로그인 요청이 출발한 출발지 IP)를 기록한 파일입니다. 이 파일에 이름이 없는 사용자는 접속 IP 기록이 없는 사용자입니다. 실습 2-1에서 읽습니다.
+**`config/vip_accounts.json`** — 자동 조치 대상에서 제외하는 **VIP 계정**(고중요도 계정: 자동 조치로 잠기면 업무 영향이 큰 계정) 리스트입니다. `gaeun` 은 계정 관리자이므로 포함했습니다. 실습 2-1 · 실습 2-2이 읽습니다.
 
 ```
-{
-  "seoyeon": "203.0.113.80",
-  "jiwoo": "203.0.113.80",
-  "gaeun": "198.51.100.77",
-  "junho": "192.0.2.41"
-}
+["gaeun"]
 ```
 
-**`trusted_ips.json`** — **신뢰 IP**(trusted IP, 트러스티드 아이피: 정상 접속의 출처로 사전에 확인해 등록한 IP) 목록입니다. 협력사 사무실 IP 한 개가 등록되어 있고, `seoyeon` 과 `jiwoo` 가 이 IP 에서 접속합니다. 실습 2-1에서 읽습니다.
+**`config/allowlist_ips.json`** — **허용 목록**(allowlist, 얼라우리스트: 정상 접속이 발생하는 출처라서 차단 대상에서 제외하기로 미리 정한 IP 의 목록)입니다. 협력사 사무실 `203.0.113.80` 과 자사 취약점(vulnerability, 벌너러빌리티: 공격에 이용될 수 있는 보안상의 약점) 점검 서버 `192.0.2.10` 이 들어 있습니다. 점검 서버(취약점 스캐너)는 취약점을 찾기 위해 경로 스캔(path scan, 패스 스캔: 서버의 여러 주소에 차례로 요청을 보내 확인하는 일) 같은 요청을 보내므로 탐지 알림이 발생합니다. 그러나 자사가 의도적으로 수행하는 점검이므로 차단하면 안 됩니다. 도전 2-3가 읽습니다.
 
 ```
-[
-  "203.0.113.80"
-]
+["203.0.113.80", "192.0.2.10"]
 ```
 
-5. **[터미널]** 두 가지를 확인합니다. 먼저 데이터 파일입니다. <mark>`6 4 1` 이 나와야</mark> 합니다.
+**`ip_users.json`** — IP 별로 해당 IP 를 사용하는 계정의 리스트입니다. 여러 사용자가 함께 쓰는 IP(공유 IP, shared IP, 셰어드 아이피: 사무실 공용 회선처럼 한 주소를 여러 사람이 함께 쓰는 IP)를 차단하면 정상 사용자까지 접속하지 못하는 부수적 피해(collateral damage, 콜래터럴 대미지: 의도하지 않은 대상까지 영향을 받는 일)가 생깁니다. 그래서 도전 2-3에서 IP 별 사용 계정 수를 계산합니다.
+
+```
+{"203.0.113.80": ["seoyeon", "jiwoo"], "192.0.2.41": ["junho", "hana"]}
+```
+
+4. **[터미널]** 파일이 정상인지 확인합니다(맥북은 `python3`). <mark>`1 2 2` 가 나와야</mark> 합니다(VIP 계정 1개 · 허용 목록 IP 2개 · `ip_users.json` 에 적은 IP 2개를 센 값).
    ```bash
-   python -c "import json; print(len(json.load(open('users_info.json', encoding='utf-8'))), len(json.load(open('source_ips.json', encoding='utf-8'))), len(json.load(open('trusted_ips.json', encoding='utf-8'))))"
-   ```
-6. **[터미널]** Unit 1에서 만든 플레이북(playbook, 플레이북: 알림 유형별 대응 절차를 사전에 정의한 문서)의 등록 값을 점검합니다. 오늘 출력이 문서와 일치하려면 이 값이 <mark>아래 출력과 같아야</mark> 합니다. 다르면 `config/playbook_registry.json` 을 열어 해당 값을 같게 고칩니다(Unit 1에서 만든 내 파일은 깃허브에 올라가 있습니다).
-   ```bash
-   python -c "import json; print([(p['id'], p['trigger_rule'], p['min_grade'], p['approval']) for p in json.load(open('config/playbook_registry.json', encoding='utf-8'))])"
-   ```
-   ```
-   [('PB-001', '퇴사한 계정', 'high', '자동'), ('PB-002', '대량 다운로드', 'mid', '담당자 승인 필요'), ('PB-003', '경로 스캔', 'low', '담당자 승인 필요')]
+   python -c "import json; print(len(json.load(open('config/vip_accounts.json', encoding='utf-8'))), len(json.load(open('config/allowlist_ips.json', encoding='utf-8'))), len(json.load(open('ip_users.json', encoding='utf-8'))))"
    ```
 
 ## 오류가 나면
 
 - `pwd` 가 `soar_response` 로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
-- `ModuleNotFoundError: No module named 'incident'` 는 <mark>Unit 1에서 만든 `incident.py` 가 이 폴더에 없다는 뜻</mark>입니다. Unit 1 실습 1-2 레슨의 `incident.py` 코드 상자로 만듭니다.
+- `ModuleNotFoundError: No module named 'incident'` 는 <mark>Unit 1에서 만든 `incident.py` 가 이 폴더에 없다는 뜻</mark>입니다. Unit 1 실습 1-2 레슨의 코드 상자로 다시 만듭니다.
 - 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 막히면 맨 아래 「정답」을 보고, 풀리지 않으면 보고서에 「모름 — 막힌 곳: …」 이라고 씁니다.
 
-> 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다.
+> 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다. 실행할 때마다 처음 상태에서 시작해 같은 결과가 나옵니다.
 
 ---
