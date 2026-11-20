@@ -82,12 +82,12 @@ Unit 5는 Module 3 **접근통제 자동화**의 마지막 단계인 **결과 �
 }
 </code></pre>
 
-**`config/alert.json`** — 경고 기준입니다. 거부율이 0.3(30%) 이상이면 경고이고, 사용자 한 명이 4번 이상 거부되면 눈여겨봅니다.
+**`config/alert.json`** — 경고 기준입니다. 거부율은 전체 요청 가운데 거부된 요청의 비율입니다. 거부율이 0.3(30%) 이상이면 경고이고, 사용자 한 명이 4번 이상 거부되면 눈여겨봅니다.
 
 <pre class="copyable"><code>{"deny_rate_limit": 0.3, "user_denied_limit": 4}
 </code></pre>
 
-**`week_log.jsonl`** — 일주일 치 샘플 로그입니다. 한 줄이 요청 한 개이고 JSON 한 줄입니다. `access_control` 폴더 바로 아래에 만듭니다.
+**`week_log.jsonl`** — 일주일 치 샘플 로그입니다. 한 줄이 요청 한 개이고 JSON 한 줄입니다. 이름 끝의 `.jsonl` 은 이렇게 한 줄에 JSON 한 건씩 적은 파일이라는 뜻입니다(JSON Lines · 제이슨 라인즈). `access_control` 폴더 바로 아래에 만듭니다.
 
 <pre class="copyable"><code>{"time": "2026-10-26T09:10", "user": "seoyeon", "permission": "SALES:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
 {"time": "2026-10-26T09:40", "user": "seoyeon", "permission": "SALES:CHANGE", "network": "office", "allowed": true, "reason": "역할 권한"}
@@ -137,13 +137,14 @@ Unit 5는 Module 3 **접근통제 자동화**의 마지막 단계인 **결과 �
    python -m json.tool config/alert.json
    python -c "print(len(open('week_log.jsonl', encoding='utf-8').read().splitlines()))"
    ```
-   - 앞의 두 명령은 내용이 다시 출력되면 정상입니다(한글이 `\uc601…` 로 보여도 정상). 마지막은 `40` 이 나와야 합니다. 다르면 줄이 빠졌거나 빈 줄이 끼어든 것이니 위 내용과 비교해 다시 셉니다.
+   - 앞의 두 명령은 내용이 다시 출력되면 정상입니다(한글이 `\uc601…` 로 보여도 정상).
+   - `python -c "…"` 는 따옴표 안의 파이썬 코드를 파일로 만들지 않고 바로 실행합니다. 여기서는 `week_log.jsonl` 의 줄 수를 셉니다. 마지막은 `40` 이 나와야 합니다. 다르면 줄이 빠졌거나 빈 줄이 끼어든 것이니 위 내용과 비교해 다시 셉니다.
 
 ## 오류가 나면
 
 - 먼저 `pwd` 가 `access_control` 로 끝나는지, `ls` 로 파일 이름이 문서와 같은지 봅니다.
   - `ModuleNotFoundError` · `FileNotFoundError`: 위치나 파일 이름이 틀렸습니다.
-  - `JSONDecodeError`: 붙여 넣다가 쉼표나 괄호가 빠졌습니다. `python -m json.tool 파일이름` 으로 어느 줄인지 봅니다.
+  - `JSONDecodeError`: 붙여 넣다가 쉼표나 괄호가 빠졌습니다. `python -m json.tool 파일이름` 으로 어느 줄인지 봅니다. `week_log.jsonl` 은 JSON 이 여러 줄이라 이 명령이 늘 오류를 내니, 위 내용과 한 줄씩 비교합니다.
   - `IndentationError` · `NameError`: 직접 쓴 줄의 들여쓰기가 틀렸거나 빠뜨린 줄이 있습니다.
 - AI 에게 물을 때는 운영체제와 터미널(예: Windows Git Bash), 친 명령 한 줄, 오류 전체를 함께 붙여 넣습니다. `.env` 내용이나 API 키가 보이면 지우고 붙여 넣습니다.
 - AI 가 알려 준 명령은 뜻을 읽고 치고, `rm` · `del` 처럼 지우는 명령은 뜻을 되물은 뒤에 칩니다. 풀리지 않으면 보고서 (가)에 「모름 — 막힌 곳: …」 이라고 쓰고 넘어갑니다.

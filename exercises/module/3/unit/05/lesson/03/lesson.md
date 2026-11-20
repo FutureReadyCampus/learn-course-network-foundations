@@ -16,7 +16,7 @@ render: markdown
    1. `log_summary.py`: 로그를 읽고, 거부된 요청을 모으고, 값별로 세고, 거부율을 구하는 함수 다섯 개
    2. `weekly_report.py`: 점검 결과와 로그 집계를 합쳐 보고서 문자열을 만들고 파일로 저장하는 함수 두 개
    3. `weekly_run.py`: 위 두 파일과 실습 5-1의 `checklist.py` 를 불러 주간 보고서를 만드는 실행 파일
-4. `weekly_run.py` 는 실습 5-1의 `checklist.py` 를 불러옵니다. `python exercise5-1_run.py` 가 정답과 같은 출력을 내는지 먼저 확인합니다. 아직 안 되면 정답 레슨의 「실습 5-1 정답」에 있는 채운 코드를 넣어 `checklist.py` 를 완성합니다.
+4. `weekly_run.py` 는 실습 5-1의 `checklist.py` 를 불러옵니다. `python exercise5-1_run.py` 가 정답 레슨 「실습 5-1 정답」의 출력과 같은 출력을 내는지 먼저 확인합니다. 아직 안 되면 정답 레슨의 「실습 5-1 정답」에 있는 채운 코드를 넣어 `checklist.py` 를 완성합니다.
 5. 데이터 파일 `config/week_state.json` · `config/alert.json` · `week_log.jsonl` 은 시작하기 레슨에서 만든 것을 그대로 씁니다.
 
 > 시간이 남아 도전 5-1을 하면, `log_summary.py` 를 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 그때는 다 채울 때까지 `weekly_run.py` 가 동작하지 않으니, 다 쓴 뒤 `weekly_run.py` 를 다시 실행해 보고서가 같은지 확인합니다.
@@ -89,12 +89,14 @@ def find_heavy_users(denied_counts, limit):                      # 사용자별 
 ```
 
 - `read_log` 는 로그 파일의 JSON 한 줄을 딕셔너리 하나로 바꿔 리스트에 모읍니다.
+  - 파일 전체를 읽는 `json.load` 와 달리, `json.loads` 는 문자열 하나(여기서는 한 줄)를 받아 딕셔너리로 바꿉니다. 끝의 `s` 는 문자열(string)의 `s` 입니다.
 - `count_by(entries, "user")` 처럼 키 이름을 주면 그 값별로 몇 번인지 셉니다.
+  - 세는 두 줄(`counts.get(value, 0)` 으로 지금까지 센 수를 꺼내고, 1 늘려 다시 넣기)은 Unit 1에서 읽은 모양과 같습니다.
 - `deny_rate` 는 요청이 하나도 없으면 0 으로 나누지 않고 `0.0` 을 돌려줍니다.
 
 ## `weekly_report.py` 만들기
 
-**`weekly_report.py`** 를 만들고 아래 내용을 붙여 넣습니다. 점검 결과와 로그 집계를 합쳐 네 절의 보고서 문자열을 만들고, 날짜가 들어간 `.md` 파일로 저장합니다.
+**`weekly_report.py`** 를 만들고 아래 내용을 붙여 넣습니다. 점검 결과와 로그 집계를 합쳐 네 절(`## ` 로 시작하는 제목 하나와 그 아래 줄들)의 보고서 문자열을 만들고, 날짜가 들어간 `.md` 파일로 저장합니다.
 
 ```python
 from log_summary import count_by, filter_denied, deny_rate, find_heavy_users   # 제공 파일 log_summary.py 의 집계 함수를 불러온다
@@ -160,7 +162,7 @@ def save_report(text, today):                                    # 보고서 문
 
 읽어 둘 곳은 세 곳입니다.
 
-1. `if rate >= limit:` 는 거부율이 경고 기준 이상인지 보는 비교입니다. 거부율은 0 ~ 1 사이 소수이고, 경고 기준도 같은 소수입니다. 퍼센트(`round(rate * 100)`)는 보여 줄 때만 씁니다.
+1. `if rate >= limit:` 는 거부율이 경고 기준 이상인지 보는 비교입니다. 거부율은 0 ~ 1 사이 소수이고, 경고 기준도 같은 소수입니다. 퍼센트(`round(rate * 100)`)는 보여 줄 때만 씁니다. `round(숫자)` 는 가장 가까운 정수로 반올림합니다(0.4 × 100 → 40).
 2. 보고서 줄은 `lines.append(…)` 로 하나씩 모으고, 마지막에 `"\n".join(lines)` 로 줄바꿈을 넣어 한 문자열로 만듭니다.
 3. `save_report` 는 파일을 `"w"`(새로 쓰기)로 엽니다. 로그처럼 계속 덧붙이는 파일은 `"a"` 로 열지만, 매주 새로 만드는 보고서는 `"w"` 입니다. 파일 이름에는 `f"…{today}.md"` 로 날짜를 넣습니다.
 
@@ -234,6 +236,8 @@ print(text)                                                      # 보고서 내
 ```
 
 - 1절은 일주일 동안의 요청 수와 거부율, 2절은 거부 사유별 횟수, 3절은 실습 5-1의 점검 결과, 4절은 담당자가 먼저 볼 것입니다.
+  - 거부율 40% 는 거부 16건 ÷ 전체 40건 = 0.4 이고, 경고 기준 0.3 이상이라 「경고」입니다.
+  - 4절의 `['dami', 'gaeun']` 은 거부가 `alert.json` 의 기준 4번 이상인 사람입니다(dami 4번, gaeun 5번).
 - VS Code 왼쪽 목록에서 `access_control_weekly_report_2026-11-02.md` 를 열면 같은 내용이 파일로 저장된 것을 볼 수 있습니다.
 - `ModuleNotFoundError: No module named 'checklist'` 가 나오면 `checklist.py` 가 같은 폴더에 없는 것입니다. `IndentationError` 가 나오면 `checklist.py` 의 직접 쓰는 곳이 아직 비어 있는 것입니다.
 - 이 보고서는 실습 5-2의 상황 8에서 다시 읽습니다. 숫자가 어떻게 나왔는지 직접 세어 보고 싶으면 도전 5-1을 합니다.
