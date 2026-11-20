@@ -10,6 +10,7 @@ lessons:
 - path: lesson/06/lesson.md
 - path: lesson/07/lesson.md
 - path: lesson/08/lesson.md
+- path: lesson/09/lesson.md
 ---
 
 # 요청 급증과 반복 거절 찾기

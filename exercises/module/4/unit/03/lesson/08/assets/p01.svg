@@ -1,23 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
-<title>보고서는 질문마다 쓸 내용을 보고 답 뒤에 근거와 함께 쓴다</title>
-<desc>보고서를 쓰는 다섯 가지 방법을 체크리스트로 보인다. 쓸 내용을 보고 답 뒤에 쓰고, 출력은 코드 상자에 붙인다. 왜를 묻는 질문은 근거를 쓰고, 모르면 모름과 막힌 곳을 쓴다.</desc>
-<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
-<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">보고서 쓰는 법 · 다섯 가지</text>
-<rect x="30" y="55" width="660" height="42" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="46" y="65" width="22" height="22" rx="4" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="84" y="81" font-size="15" fill="#292929">문제를 풀 때마다 그 문제 제목 아래 질문에 답한다</text>
-<rect x="30" y="107" width="660" height="42" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="46" y="117" width="22" height="22" rx="4" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="84" y="133" font-size="15" fill="#292929">「쓸 내용:」을 보고 「답:」 뒤에 쓴다</text>
-<rect x="30" y="159" width="660" height="42" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="46" y="169" width="22" height="22" rx="4" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="84" y="185" font-size="15" fill="#292929">출력 · 코드는 「답:」 아래 빈 코드 상자에 붙인다</text>
-<rect x="30" y="211" width="660" height="42" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="46" y="221" width="22" height="22" rx="4" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="84" y="237" font-size="15" fill="#292929">「왜」는 내 화면의 값이나 배운 내용을 근거로 쓴다</text>
-<rect x="30" y="263" width="660" height="42" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="46" y="273" width="22" height="22" rx="4" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="84" y="289" font-size="15" fill="#292929">모르면 「모름 — 막힌 곳: …」이라고 쓴다</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
+<title>report_u3.md 틀을 복사해 만들고, 핵심 칸은 모두, 도전 칸은 한 것만 채운다</title>
+<desc>anomaly_detection 폴더에 report_u3.md 를 만들고 틀을 붙여 넣는다. 실습 3-1, 실습 3-2, 마무리는 모두 채우고, 도전 3-1 ~ 3-3 칸은 내가 한 도전만 채운다.</desc>
+<defs><marker id="a-p01-u3r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="30" y="32" font-size="19" font-weight="700" fill="#292929">보고서 파일 만들기 · report_u3.md</text>
+<rect x="30" y="56" width="200" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="130" y="80" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">New File</text>
+<text x="130" y="100" font-size="14" fill="#666660" text-anchor="middle">anomaly_detection/</text>
+<rect x="30" y="140" width="200" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="130" y="164" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">틀 복사 · 붙여 넣기</text>
+<text x="130" y="184" font-size="14" fill="#666660" text-anchor="middle">이름만 내 이름으로</text>
+<rect x="30" y="224" width="200" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="130" y="248" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">저장</text>
+<text x="130" y="268" font-size="14" fill="#666660" text-anchor="middle">Ctrl + S (Cmd + S)</text>
+<line x1="130" y1="112" x2="130" y2="136" stroke="#666660" stroke-width="2" marker-end="url(#a-p01-u3r)"/>
+<line x1="130" y1="196" x2="130" y2="220" stroke="#666660" stroke-width="2" marker-end="url(#a-p01-u3r)"/>
+<line x1="236" y1="168" x2="276" y2="168" stroke="#666660" stroke-width="2" marker-end="url(#a-p01-u3r)"/>
+<rect x="282" y="56" width="408" height="134" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="300" y="82" font-size="15" fill="#2f6fd0" font-weight="700">핵심 · 모두 채움</text>
+<text x="300" y="110" font-size="15" fill="#292929">## 실습 3-1   (가) (나) (다)</text>
+<text x="300" y="138" font-size="15" fill="#292929">## 실습 3-2   (가) (나) (다)</text>
+<text x="300" y="166" font-size="15" fill="#292929">## 마무리      (가)</text>
+<rect x="282" y="206" width="408" height="134" rx="8" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="300" y="232" font-size="15" fill="#9a6200" font-weight="700">도전 · 선택, 한 것만 채움</text>
+<text x="300" y="260" font-size="15" fill="#292929">## 도전 3-1   (가) (나) (다)</text>
+<text x="300" y="288" font-size="15" fill="#292929">## 도전 3-2   (가) (나) (다)</text>
+<text x="300" y="316" font-size="15" fill="#292929">## 도전 3-3   (가) (나) (다)</text>
 </g>
 </svg>

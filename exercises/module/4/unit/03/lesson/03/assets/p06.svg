@@ -1,1 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif"><title>anomaly_detection 폴더에 Unit 3 파일이 모두 있는지와 보고서 빈칸을 확인한다</title><desc>깃허브에 올리는 일은 실습 4-1 마지막에 하므로 이번에는 ls로 파일이 있는지만 확인합니다. 보고서에서 답: 뒤가 빈 질문이 없는지도 봅니다.</desc><defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="700">마무리: 만든 파일 확인하기 (올리기는 실습 4-1에서)</text><rect x="20" y="52" width="420" height="300" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/><text x="36" y="80" font-size="16" text-anchor="start" fill="#292929" font-weight="700">anomaly_detection/</text><text x="56" y="112" font-size="15" text-anchor="start" fill="#292929">access_detection.py</text><text x="56" y="142" font-size="15" text-anchor="start" fill="#292929">saas_detection.py</text><text x="56" y="172" font-size="15" text-anchor="start" fill="#292929">malicious_detection.py</text><text x="56" y="202" font-size="15" text-anchor="start" fill="#292929">advanced_detection.py</text><text x="56" y="232" font-size="15" text-anchor="start" fill="#292929">exercise3-2_run.py · 6-2 · 6-3</text><text x="56" y="262" font-size="15" text-anchor="start" fill="#292929">rbac.py · config/</text><text x="56" y="292" font-size="15" text-anchor="start" fill="#292929">normalized_events.json</text><text x="56" y="322" font-size="15" text-anchor="start" fill="#292929">안내 · 보고서 두 파일</text><rect x="470" y="52" width="230" height="130" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/><text x="585" y="90.8" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">[터미널]</text><text x="585" y="111.8" font-size="15" text-anchor="middle" fill="#666660">pwd</text><text x="585" y="132.8" font-size="15" text-anchor="middle" fill="#666660">ls</text><text x="585" y="153.8" font-size="15" text-anchor="middle" fill="#666660">왼쪽 이름이 다 보이나</text><rect x="470" y="210" width="230" height="142" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/><text x="585" y="244.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">[보고서]</text><text x="585" y="265.2" font-size="15" text-anchor="middle" fill="#666660">실습 3-2 · 6-2 · 6-3</text><text x="585" y="286.2" font-size="15" text-anchor="middle" fill="#666660">답: 뒤 빈칸 없나</text><text x="585" y="307.2" font-size="15" text-anchor="middle" fill="#666660">못 적으면</text><text x="585" y="328.2" font-size="15" text-anchor="middle" fill="#666660">모름 — 막힌 곳: …</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>오늘 한 일과 파일을 확인한 뒤 git status, 보고서 마무리, add · commit · push 순서로 올린다</title>
+<desc>실습 3-1, 3-2 와 보고서 칸을 확인하고 anomaly_detection 폴더의 파일을 본다. security-agent-toolkit 폴더로 옮겨 git status 로 .env 와 .venv 가 없는지 보고, 보고서 마무리 칸을 채운 뒤 add, commit, push 하고 브라우저에서 확인한다.</desc>
+<defs><marker id="a-p06-u3m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="30" y="32" font-size="19" font-weight="700" fill="#292929">이번 Unit 마무리 · 깃허브에 올리기</text>
+<rect x="30" y="50" width="300" height="140" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="46" y="76" font-size="15" font-weight="700" fill="#292929">1. 오늘 한 일 확인</text>
+<text x="46" y="104" font-size="14" fill="#292929">실습 3-1 · 09:12 급증 분 찾기</text>
+<text x="46" y="128" font-size="14" fill="#292929">실습 3-2 · 반복 거절 7건 순서</text>
+<text x="46" y="152" font-size="14" fill="#292929">report_u3.md 빈 답: 없음</text>
+<text x="46" y="176" font-size="14" fill="#666660">못 쓴 칸은 「모름 — 막힌 곳」</text>
+<rect x="30" y="206" width="300" height="160" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="46" y="232" font-size="15" font-weight="700" fill="#292929">2. 파일 확인 (ls · ls config)</text>
+<text x="46" y="258" font-size="14" fill="#292929">baseline_traffic.csv · rbac.py</text>
+<text x="46" y="280" font-size="14" fill="#292929">traffic_detection.py</text>
+<text x="46" y="302" font-size="14" fill="#292929">access_detection.py</text>
+<text x="46" y="324" font-size="14" fill="#292929">exercise3-1 · 3-2_run.py</text>
+<text x="46" y="346" font-size="14" fill="#292929">config/users.json · roles.json</text>
+<text x="370" y="76" font-size="15" font-weight="700" fill="#292929">3. 올리기 (security-agent-toolkit)</text>
+<rect x="370" y="90" width="320" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="530" y="116" font-size="15" fill="#292929" text-anchor="middle">cd .. → pwd</text>
+<rect x="370" y="148" width="320" height="42" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="530" y="174" font-size="15" fill="#292929" text-anchor="middle">git status · .env · .venv 보이면 멈춤</text>
+<rect x="370" y="206" width="320" height="42" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="530" y="232" font-size="15" fill="#292929" text-anchor="middle">보고서 ## 마무리 (가) 채우기</text>
+<rect x="370" y="264" width="320" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="530" y="290" font-size="15" fill="#292929" text-anchor="middle">git add . → commit → push</text>
+<rect x="370" y="322" width="320" height="42" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="530" y="348" font-size="15" fill="#292929" text-anchor="middle">브라우저에서 파일 확인</text>
+<line x1="530" y1="132" x2="530" y2="146" stroke="#666660" stroke-width="2" marker-end="url(#a-p06-u3m)"/>
+<line x1="530" y1="190" x2="530" y2="204" stroke="#666660" stroke-width="2" marker-end="url(#a-p06-u3m)"/>
+<line x1="530" y1="248" x2="530" y2="262" stroke="#666660" stroke-width="2" marker-end="url(#a-p06-u3m)"/>
+<line x1="530" y1="306" x2="530" y2="320" stroke="#666660" stroke-width="2" marker-end="url(#a-p06-u3m)"/>
+</g>
+</svg>
