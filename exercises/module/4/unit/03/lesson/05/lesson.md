@@ -360,7 +360,7 @@ def find_bulk_download_users(saas):                   # SaaS 이벤트 표를 �
 - 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
 - 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다(파이썬 버전에 따라 뒤에 `after 'if' statement on line …` 이 붙기도 합니다). `if` 안쪽의 5번이 비어 있기 때문입니다.
 
-**`challenge3-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `list(열)` 은 열의 값을 리스트로 만듭니다.
+**`challenge3-2_run.py`** — 그대로 붙여 넣습니다. 직접 쓰는 줄은 없습니다.
 
 ```python
 from saas_detection import load_events, pick_saas, pick_logins, find_off_hours_logins, find_new_ip_users, find_bulk_download_users, EVENTS_PATH  # 방금 만든 함수를 불러온다
