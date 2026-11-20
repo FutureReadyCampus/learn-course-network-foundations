@@ -1,23 +1,43 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>도전 3-2 보고서 칸: 출력과 티켓 수, INC-210·211 처리 이유, 상태 되돌리기 문제</title>
-<desc>도전 3-2 보고서의 (가) (나) (다) 세 칸과 각 칸에 쓸 내용을 체크리스트로 보여 준다. (나)와 (다)는 핵심 질문이라 호박색으로 표시했다.</desc>
-<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">도전 3-2 보고서 · 채울 칸</text>
-<rect x="20" y="60" width="100" height="90" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="70.0" y="110.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">(가)</text>
-<rect x="130" y="60" width="570" height="90" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="144" y="99.8" font-size="15" font-weight="bold" fill="#292929">출력 전체를 코드 상자에 붙여 넣기</text>
-<text x="144" y="120.8" font-size="15" fill="#292929">쓸 내용: ① 출력 전체 ② 단계 2 티켓 수 ③ TCK-1 에 병합된 알림</text>
-<rect x="20" y="165" width="100" height="90" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="70.0" y="204.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">(나)</text>
-<text x="70.0" y="225.8" font-size="15" fill="#292929" text-anchor="middle">핵심 질문</text>
-<rect x="130" y="165" width="570" height="90" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="144" y="204.8" font-size="15" font-weight="bold" fill="#292929">INC-210 은 병합, INC-211 은 새 티켓</text>
-<text x="144" y="225.8" font-size="15" fill="#292929">쓸 내용: ① 온 시각 ② 마지막 갱신 시각 ③ 이유 ④ 0분부터 잴 때</text>
-<rect x="20" y="270" width="100" height="90" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="70.0" y="309.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">(다)</text>
-<text x="70.0" y="330.8" font-size="15" fill="#292929" text-anchor="middle">핵심 질문</text>
-<rect x="130" y="270" width="570" height="90" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="144" y="309.8" font-size="15" font-weight="bold" fill="#292929">해결 → 열림 이 거절된 이유</text>
-<text x="144" y="330.8" font-size="15" fill="#292929">쓸 내용: ① 되돌리기를 허용할 때 문제 ② 해결 확인을 뺄 때</text>
+<title>실습 3-2 보고서와 마무리에서 채울 칸: 출력, INC-207, 응답 기한, .env · .venv</title>
+<desc>(가)에는 출력 전체, 직접 확인이 필요한 티켓 번호, 기한이 가장 이른 티켓을 적는다. (나)는 INC-207 의 done 문장과 next_step 이 「조치됨」용이 아닌 이유, (다)는 TCK-1 15분과 TCK-2 243분 계산과 같은 기한의 문제를 적는다. 마무리 (가)에는 .env · .venv 와 제공 파일 정상 7 을 적는다.</desc>
+<text x="20" y="32.0" font-size="18" fill="#292929" font-weight="700">실습 3-2 · 마무리 · 채울 칸</text>
+<rect x="20.0" y="50" width="162.5" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="101.25" y="77.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(가)</text>
+<rect x="20.0" y="104" width="162.5" height="170" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="32.0" y="154.8" font-size="14" fill="#292929">① 출력 전체</text>
+<text x="32.0" y="174.4" font-size="14" fill="#292929">② 직접 확인</text>
+<text x="32.0" y="194.0" font-size="14" fill="#292929">티켓 번호 (단계 4)</text>
+<text x="32.0" y="213.6" font-size="14" fill="#292929">③ 기한이 가장</text>
+<text x="32.0" y="233.2" font-size="14" fill="#292929">이른 티켓</text>
+<rect x="192.5" y="50" width="162.5" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="273.75" y="77.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(나) 핵심</text>
+<rect x="192.5" y="104" width="162.5" height="170" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="204.5" y="145.0" font-size="14" fill="#292929">① INC-207 의</text>
+<text x="204.5" y="164.6" font-size="14" fill="#292929">done 문장</text>
+<text x="204.5" y="184.2" font-size="14" fill="#292929">② next_step 이</text>
+<text x="204.5" y="203.8" font-size="14" fill="#292929">「조치됨」용이</text>
+<text x="204.5" y="223.4" font-size="14" fill="#292929">아닌 이유</text>
+<text x="204.5" y="243.0" font-size="14" fill="#292929">③ 없을 때 놓칠 일</text>
+<rect x="365.0" y="50" width="162.5" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="446.25" y="77.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(다) 핵심</text>
+<rect x="365.0" y="104" width="162.5" height="170" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="377.0" y="145.0" font-size="14" fill="#292929">① TCK-1 15분 ·</text>
+<text x="377.0" y="164.6" font-size="14" fill="#292929">TCK-2 243분</text>
+<text x="377.0" y="184.2" font-size="14" fill="#292929">등급과 만든 시각</text>
+<text x="377.0" y="203.8" font-size="14" fill="#292929">으로 기한 계산</text>
+<text x="377.0" y="223.4" font-size="14" fill="#292929">② 같은 기한의</text>
+<text x="377.0" y="243.0" font-size="14" fill="#292929">문제</text>
+<rect x="537.5" y="50" width="162.5" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="618.75" y="77.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">마무리 (가)</text>
+<rect x="537.5" y="104" width="162.5" height="170" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="549.5" y="145.0" font-size="14" fill="#292929">① .env · .venv</text>
+<text x="549.5" y="164.6" font-size="14" fill="#292929">보였는지</text>
+<text x="549.5" y="184.2" font-size="14" fill="#292929">② 보였다면</text>
+<text x="549.5" y="203.8" font-size="14" fill="#292929">한 조치</text>
+<text x="549.5" y="223.4" font-size="14" fill="#292929">③ 제공 파일</text>
+<text x="549.5" y="243.0" font-size="14" fill="#292929">정상 7 인지</text>
+<rect x="20" y="296" width="680" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="322.8" font-size="15" fill="#292929" text-anchor="middle">근거는 내 출력의 값으로 — done 문장 · 등급 · 만든 시각</text>
+<text x="360.0" y="343.8" font-size="15" fill="#666660" text-anchor="middle">마무리 (가)는 git status 와 「제공 파일」 확인 결과로 채운다</text>
 </svg>

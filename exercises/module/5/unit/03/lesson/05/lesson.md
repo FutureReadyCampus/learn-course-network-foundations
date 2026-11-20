@@ -13,9 +13,11 @@ source:
 
 ## 목표: 알림 8건 일괄 처리
 
+> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 3-1 · 3-2와 글쓰기를 먼저 마칩니다. 이 도전은 Unit 1 · Unit 2 파일을 여럿 불러 쓰므로, 도전 3-1 페이지의 「먼저 확인할 파일」부터 봅니다. 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
+
 > **오늘 들어온 일**
 >
-> - **상황**: 교대 직전에 알림 8건이 한꺼번에 들어왔습니다. Unit 1에서 만든 판단(맥락 붙이기 · 경로 정하기)과 오늘 만든 조치를 이어서 한 번에 처리해야 합니다.
+> - **상황**: 교대 직전에 알림 8건이 한꺼번에 들어왔습니다. Unit 1 파일의 판단(맥락 붙이기 · 경로 정하기)과 Unit 2 파일의 조치(계정 잠금 · 세션 종료 · IP 차단)를 이어서 한 번에 처리해야 합니다.
 > - `INC-001`: 퇴사한 `dami` 의 계정
 > - `INC-002`: `seoyeon` 의 알림. 자동 조치를 연결해 둔 규칙이 아니라서 조치하지 않는 건
 > - `INC-003` · `INC-010`: 계정 관리자 `gaeun`(VIP 계정: 잠기면 업무 영향이 큰 중요한 계정)의 알림 2건. `INC-010` 은 인사 시스템 입력 실수로 퇴사자로 표시된 알림이고, `INC-003` 은 서버가 요청을 거절한 알림입니다
@@ -39,16 +41,16 @@ source:
 | 변경 없음 | 조치 전과 후가 같다 | 보류한 이유(승인 필요 등)가 있으면 확인 |
 | 확인 실패 | 조치 후 상태에 `확인 실패` 가 있다 | 반드시 사람이 확인 |
 
-함수는 두 파일에 나뉘어 있고, 직접 쓰는 곳은 **아홉 군데**입니다.
+**직접 쓰는 곳은 아홉 군데**이고, 함수는 두 파일에 나뉘어 있습니다.
 
-```
-drill.py          choose_containment : 탐지된 규칙에 연결된 조치 이름을 고른다 (1 ~ 3번)
-                  handle_incident    : 경로가 오탐 종료이면 종료하고, 승인 필요(VIP)이면 승인 대기로 두고 (4 · 5번), 나머지는 규칙에 맞는 조치를 한다 (미리 채움). 여러 계정이 함께 쓰는 IP 의 차단도 승인 대기로 둔다
-shift_report.py   is_failure         : 조치 후 상태에 확인 실패가 있는지 구한다 (6번)
-                  is_unchanged       : 조치 전과 후가 같은지 구한다 (7번)
-                  summarize          : 기록을 종류별로 센다 (8번)
-실행 파일         challenge3-1_run.py   : 알림마다 처리 결과를 두 값으로 나눠 받는다(언패킹) (9번)
-```
+- `drill.py`
+  - `choose_containment`(1 ~ 3번): 탐지된 규칙에 연결된 조치 이름을 고릅니다.
+  - `handle_incident`(4 · 5번): 경로가 오탐 종료이면 종료하고, 승인 필요(VIP)이면 승인 대기로 둡니다. 나머지는 규칙에 맞는 조치를 합니다(미리 채움). 여러 계정이 함께 쓰는 IP 의 차단도 승인 대기로 둡니다.
+- `shift_report.py`
+  - `is_failure`(6번): 조치 후 상태에 확인 실패가 있는지 구합니다.
+  - `is_unchanged`(7번): 조치 전과 후가 같은지 구합니다.
+  - `summarize`(8번): 기록을 종류별로 셉니다.
+- `challenge3-1_run.py`(9번): 알림마다 처리 결과를 두 값으로 나눠 받습니다(언패킹).
 
 ## 도전 3-1 · 알림 8건 처리와 확인 목록 만들기
 
@@ -58,16 +60,27 @@ shift_report.py   is_failure         : 조치 후 상태에 확인 실패가 있
 - **만드는 것**: 규칙에 맞는 조치 고르기와 VIP 승인 대기(`drill.py`), 기록 종류 나누기와 세기(`shift_report.py`), 처리 결과 받기(`challenge3-1_run.py`).
 - **실행하면**: <mark>단계 1: 알림 8건의 처리 결과, 단계 2: 조치 기록, 단계 3: 근무 보고 요약과 최종 상태, 단계 4: 담당자 확인이 필요한 건이 나옵니다.</mark>
 
-**할 일**: 파일 세 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 1 ~ 4 를 읽습니다.
+**할 일**: 먼저 앞 Unit 파일을 확인하고, 파일 세 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 1 ~ 4 를 읽습니다.
 
-**`drill.py`** — 알림 한 건을 처리합니다. Unit 1의 `enrichment.py` · `routing.py` 와 Unit 2 파일을 불러옵니다(import). 직접 쓰는 곳은 1 ~ 5번입니다. `FIREWALL_DOWN_FOR` 는 방화벽 연결이 끊긴 상황을 흉내 내려고 수업에서만 쓰는 목록입니다.
+**먼저 확인할 파일** — 이 도전은 앞 Unit 파일을 많이 씁니다. 없는 파일은 그 레슨의 코드 상자로 만들고, 빈칸은 그 Unit 정답 레슨의 채운 코드로 채웁니다.
+
+1. Unit 1: `incident.py` 전체(`INCIDENTS_PATH` 가 있어야 합니다, 실습 1-2) · `enrichment.py`(실습 1-3) · `routing.py`(「제공 파일」 레슨) · `incident_samples.json` · `users_info.json` · `source_ips.json` · `trusted_ips.json`(시작하기 레슨)
+2. Unit 2: `containment_store.py` · `account_actions.py`(실습 2-1) · `session_actions.py` · `containment.py`(실습 2-2) · `ip_actions.py`(「제공 파일」 레슨) · `config/vip_accounts.json` · `config/allowlist_ips.json` · `ip_users.json`(시작하기 레슨)
+
+**[터미널]** 아래 명령으로 확인합니다(맥북은 `python3`). `앞 Unit 파일 정상` 이 나오면 됩니다. 시작하기 레슨의 두 함수짜리 `incident.py` 를 쓰고 있다면 `cannot import name 'INCIDENTS_PATH'` 가 나오니, Unit 1 실습 1-2의 `incident.py` 전체로 바꿉니다.
+
+```bash
+python -c "from incident import load_json, save_json, INCIDENTS_PATH; from enrichment import enrich_incident; from routing import decide_route; from containment import contain_account; from containment_store import new_state; from ip_actions import check_ip_policy, block_ip; print('앞 Unit 파일 정상')"
+```
+
+**`drill.py`** — 알림 한 건을 처리합니다. Unit 1 `enrichment.py` · `routing.py` 와 Unit 2 파일을 불러옵니다(import). 직접 쓰는 곳은 1 ~ 5번입니다. `FIREWALL_DOWN_FOR` 는 방화벽 연결이 끊긴 상황을 흉내 내려고 수업에서만 쓰는 목록입니다.
 
 ```python
-from enrichment import enrich_incident                                                      # Unit 1의 실습 1-3 : 맥락 붙이기
-from routing import decide_route                                                            # Unit 1의 도전 1-1 : 경로 정하기
+from enrichment import enrich_incident                                                      # Unit 1 실습 1-3 : 맥락 붙이기
+from routing import decide_route                                                            # Unit 1 제공 파일 : 경로 정하기
 from containment_store import make_record                                                   # 기록 한 건을 만드는 함수를 불러온다
-from containment import contain_account                                                     # Unit 2의 실습 2-2 : 잠금 → 세션 종료
-from ip_actions import check_ip_policy, block_ip, DEFAULT_TTL                               # Unit 2의 도전 2-3 : IP 차단
+from containment import contain_account                                                     # Unit 2 실습 2-2 : 잠금 → 세션 종료
+from ip_actions import check_ip_policy, block_ip, DEFAULT_TTL                               # Unit 2 제공 파일 : IP 차단
 
 CONTAINMENT_BY_RULE = {"퇴사한 계정": "계정 조치", "경로 스캔": "IP 차단"}                  # 탐지된 규칙에 따라 할 조치 : 이 표에 없는 규칙은 조치하지 않는다
 FIREWALL_DOWN_FOR = ["INC-005"]                                                             # 방화벽 연결이 끊긴 상황을 흉내 낼 인시던트 번호 : 이 인시던트의 IP 차단은 실패한다
@@ -155,16 +168,16 @@ def summarize(log):                                         # 기록 리스트�
     return counts                                           # 종류별 건수를 리턴한다
 ```
 
-**`challenge3-1_run.py`** — 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이번 근무의 기록은 `shift_log.json` 에 따로 저장하고, 실습 2-2이 저장한 파일은 건드리지 않습니다.
+**`challenge3-1_run.py`** — 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이번 근무의 기록은 `shift_log.json` 에 따로 저장하고, 실습 2-2가 저장한 파일은 건드리지 않습니다.
 
 ```python
 from incident import load_json, save_json, INCIDENTS_PATH                                 # Unit 1 파일의 함수를 불러온다
-from containment_store import new_state                                                   # Unit 2의 실습 2-1의 처음 상태 함수를 불러온다
+from containment_store import new_state                                                   # Unit 2 실습 2-1 의 처음 상태 함수를 불러온다
 from drill import handle_incident                                                         # 방금 만든 사건 처리 함수를 불러온다
 from shift_report import summarize, is_failure                                            # 방금 만든 근무 보고 함수를 불러온다
 
 extra_incidents = [{"id": "INC-008", "entity": "192.0.2.41", "grade": "low", "score": 30, "reasons": ["경로 스캔"], "status": "탐지됨"}, {"id": "INC-009", "entity": "192.0.2.10", "grade": "low", "score": 30, "reasons": ["경로 스캔"], "status": "탐지됨"}, {"id": "INC-010", "entity": "gaeun", "grade": "high", "score": 60, "reasons": ["퇴사한 계정"], "status": "탐지됨"}]  # 오늘 추가로 들어온 알림 3건 : 인사 오류로 퇴사자로 잘못 표시된 VIP, 함께 쓰는 IP, 점검 서버
-incidents = load_json(INCIDENTS_PATH) + extra_incidents                                   # Unit 1에 만든 알림 5건에 오늘 알림 3건을 이어 붙인다
+incidents = load_json(INCIDENTS_PATH) + extra_incidents                                   # Unit 1 알림 5건에 오늘 알림 3건을 이어 붙인다
 refs = {"users_info": load_json("users_info.json"), "source_ips": load_json("source_ips.json"), "trusted_ips": load_json("trusted_ips.json"), "vip_accounts": load_json("config/vip_accounts.json"), "allowlist_ips": load_json("config/allowlist_ips.json"), "ip_users": load_json("ip_users.json")}  # 판단에 쓰는 참고 데이터를 한 딕셔너리로 모은다
 state = new_state()                                                                       # 처음 상태에서 시작한다
 log = []                                                                                  # 이번 실행의 조치 기록을 모을 빈 리스트
@@ -179,7 +192,7 @@ for incident in incidents:                                                      
         log.append(record)                                                                # 이번 근무의 기록에 모은다
     print(incident["id"], incident["entity"], "->", status, "(조치 기록 " + str(len(records)) + "건)")  # 한 줄로 출력한다
 
-save_json(log, "shift_log.json")                                                          # 이번 근무의 기록을 따로 저장한다 (실습 2-2이 저장한 기록 파일은 건드리지 않는다)
+save_json(log, "shift_log.json")                                                          # 이번 근무의 기록을 따로 저장한다 (실습 2-2가 저장한 기록 파일은 건드리지 않는다)
 print("--- 단계 2: 조치 기록")                                                            # 단계 2 시작을 알리는 줄
 for record in log:                                                                        # 기록을 하나씩 꺼낸다
     print(record["incident"], record["target"], "·", record["action"], "·", record["before"], "→", record["after"], "·", record["reason"])  # 기록 한 건을 출력한다
@@ -202,7 +215,7 @@ for record in log:                                                              
 
 **순서**
 
-1. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `drill.py` · `shift_report.py` · `challenge3-1_run.py` 을(를) 하나씩 그대로 적어 세 개의 파일을 만듭니다. 각 파일에 이 페이지의 코드 상자를 복사해 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
+1. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `drill.py` · `shift_report.py` · `challenge3-1_run.py` 을 하나씩 그대로 적어 세 개의 파일을 만듭니다. 각 파일에 이 페이지의 코드 상자를 복사해 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
 2. **[VS Code]** `drill.py` 1 ~ 5번, `shift_report.py` 6 ~ 8번, `challenge3-1_run.py` 9번을 씁니다. 막히면 아래 「도전 3-1 정리」를 봅니다.
 3. **[터미널]** 실행합니다(맥북은 `python3`).
    ```bash
@@ -213,6 +226,7 @@ for record in log:                                                              
    - (가) 실행한 출력 전체를 붙여 넣어 주세요. 그리고 단계 3 의 요약과 단계 4 의 건수를 적어 주세요.
    - (나) [핵심 질문] INC-005 는 `조치 실패` 로 나왔고 요약의 `확인 실패` 가 1 입니다. 단계 2 의 줄을 근거로 이유를 적고, 6번(`is_failure`, 확인 실패인지 구하는 함수)이 없다면 이 건이 근무 보고에서 어떻게 보일지 적어 주세요.
    - (다) [핵심 질문] INC-008 과 INC-009 는 모두 차단되지 않았습니다. INC-008 은 승인 대기이고 INC-009 는 조치하지 않음입니다. INC-003 과 INC-010 도 승인 대기입니다. INC-003 · INC-008 · INC-009 · INC-010 네 건이 왜 그렇게 나왔는지 단계 2 와 단계 4 의 줄을 근거로 적어 주세요. 또 이 네 건을 그대로 자동 처리했다면 누가 어떤 영향을 받았을지 적어 주세요.
+6. 만든 파일은 도전 3-3 끝의 「도전 파일 올리기」를 따라 깃허브에 올립니다. 도전 3-3을 하지 않아도 그 페이지의 순서만 따라 하면 됩니다.
 
 ## 도전 3-1 정리
 

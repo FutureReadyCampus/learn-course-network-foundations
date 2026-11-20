@@ -15,7 +15,7 @@ source:
 
 > **오늘 들어온 일**
 >
-> - **상황**: Unit 2에서 자동 대응이 세 건의 조치를 했습니다. `INC-001` 은 `dami` 의 계정을 잠그고 세션을 종료했습니다. `INC-006` 은 이미 잠겨 있던 `junho` 의 계정은 그대로 두고 세션만 종료했습니다. `INC-005` 는 IP `198.51.100.90` 을 차단했습니다(오늘 실습 3-1 실행 파일이 이 차단을 다시 만듭니다). 그런데 인사 담당자가 「`dami` 는 휴직 복귀 처리 중이라 퇴사자가 아닙니다」라고 알려 왔고, 세 건 모두 **오탐**(false positive, 폴스 포지티브: 위협이 아닌데 위협으로 낸 알림)으로 확인됐습니다(이 실습에서만 가정한 상황이고, Unit 1의 `users_info.json` 의 `dami` 는 퇴사자입니다).
+> - **상황**: Unit 2 실습 2-2에서 자동 대응이 두 건의 조치를 했습니다. `INC-001` 은 `dami` 의 계정을 잠그고 세션을 종료했습니다. `INC-006` 은 이미 잠겨 있던 `junho` 의 계정은 그대로 두고 세션만 종료했습니다. 여기에 `INC-005` 의 IP `198.51.100.90` 차단이 더해집니다. 이 차단은 Unit 2 도전 2-3에서 다룬 조치라서, 오늘 실습 3-1 실행 파일이 먼저 한 번 다시 실행해 기록에 넣습니다. 그런데 인사 담당자가 「`dami` 는 휴직 복귀 처리 중이라 퇴사자가 아닙니다」라고 알려 왔고, 세 건 모두 **오탐**(false positive, 폴스 포지티브: 위협이 아닌데 위협으로 낸 알림)으로 확인됐습니다(이 실습에서만 가정한 상황이고, Unit 1 `users_info.json` 에서는 `dami` 가 퇴사자입니다).
 > - **문제**:
 > - 사람이 계정 화면에서 직접 풀면, 어느 것이 자동 대응이 한 일인지 알 수 없습니다. 그래서 원래 잠겨 있던 `junho` 까지 풀 수 있습니다.
 > - 세션 종료는 되돌릴 수 없습니다(사용자가 다시 로그인해야 합니다). 그런데 「모두 원래대로 되돌렸다」고 보고하면 사실과 다릅니다.
@@ -37,17 +37,16 @@ source:
 - 먼저 `before` 와 `after` 를 비교합니다. 같으면 원래 그랬던 것이고, 다르면 자동이 바꾼 것입니다. 다만 확인 실패와 세션 종료는 다르더라도 해제로 되돌리지 않습니다.
 - 순서를 뒤집는 `reversed` 는 `find_incident_records` 에 이미 채워져 있습니다.
 
-함수는 세 파일에 나뉘어 있고, 직접 쓰는 곳은 **아홉 군데**입니다.
-
-```
-undo_actions.py   undo_account         : 계정 잠금 기록을 계정 해제로 되돌린다 (1번)
-                  undo_ip              : IP 차단 기록을 IP 해제로 되돌린다 (2번)
-                  undo_record          : 조치 종류에 맞는 되돌리기를 고른다 (미리 채움)
-rollback.py       find_incident_records: 그 인시던트(알림 한 건)의 기록만 모은다 (3 · 4번)
-                  should_undo          : 조치 전과 후가 같으면 되돌리지 않는다 (5 · 6번). 확인 실패와 되돌릴 수 없는 조치는 미리 채운 줄이 되돌리기 대상에서 뺀다
-                  rollback_incident    : 되돌릴 수 있는 기록은 되돌리고 (7 · 8번), 되돌릴 수 없는 조치는 따로 기록한다 (미리 채움)
-실행 파일         exercise3-1_run.py     : 실습 2-2이 저장한 기록을 읽는다 (9번)
-```
+- **직접 쓰는 곳은 아홉 군데**이고, 함수는 세 파일에 나뉘어 있습니다.
+  - `undo_actions.py`
+    - `undo_account`(1번): 계정 잠금 기록을 계정 해제로 되돌립니다.
+    - `undo_ip`(2번): IP 차단 기록을 IP 해제로 되돌립니다.
+    - `undo_record`(미리 채움): 조치 종류에 맞는 되돌리기를 고릅니다.
+  - `rollback.py`
+    - `find_incident_records`(3 · 4번): 그 인시던트(알림 한 건)의 기록만 모읍니다.
+    - `should_undo`(5 · 6번): 조치 전과 후가 같으면 되돌리지 않습니다. 확인 실패와 되돌릴 수 없는 조치는 미리 채운 줄이 되돌리기 대상에서 뺍니다.
+    - `rollback_incident`(7 · 8번): 되돌릴 수 있는 기록은 되돌리고, 되돌릴 수 없는 조치는 따로 기록합니다(미리 채움).
+  - `exercise3-1_run.py`(9번): 실습 2-2가 저장한 기록을 읽습니다.
 
 ## 실습 3-1 · 기록을 보고 자동이 바꾼 것만 되돌리기
 
@@ -55,15 +54,15 @@ rollback.py       find_incident_records: 그 인시던트(알림 한 건)의 기
 
 - **지금은**: <mark>오탐이 확인돼도 어느 것이 자동 조치인지 구분하는 기능이 없어서, 사람이 추측으로 풀고 있습니다</mark>.
 - **만드는 것**: 계정 · IP 되돌리기(`undo_actions.py`), 기록 찾기 · 되돌릴지 정하기 · 되돌리기(`rollback.py`), 기록 읽기(`exercise3-1_run.py`).
-- **실행하면**: <mark>단계 1: 실습 2-2이 남긴 파일(그리고 이 실행이 새로 차단한 IP), 단계 2 ~ 4: 인시던트(incident, 인시던트: 알림 한 건을 처리하는 단위) 세 건의 되돌리기 결과, 단계 5: 되돌린 뒤 상태가 나옵니다.</mark>
+- **실행하면**: <mark>단계 1: 실습 2-2가 남긴 파일(그리고 이 실행이 새로 차단한 IP), 단계 2 ~ 4: 인시던트(incident, 인시던트: 알림 한 건을 처리하는 단위) 세 건의 되돌리기 결과, 단계 5: 되돌린 뒤 상태가 나옵니다.</mark>
 
 **할 일**: 파일 세 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 ~ 5 를 읽습니다.
 
 **`undo_actions.py`** — 되돌리기 실행입니다. 직접 쓰는 곳은 1 · 2번입니다.
 
 ```python
-from account_actions import unlock_account  # Unit 2의 실습 2-1에서 만든 계정 해제 함수를 불러온다
-from ip_actions import unblock_ip           # Unit 2의 도전 2-3에서 만든 IP 해제 함수를 불러온다
+from account_actions import unlock_account  # Unit 2 실습 2-1 에서 만든 계정 해제 함수를 불러온다
+from ip_actions import unblock_ip           # Unit 2 제공 파일의 IP 해제 함수를 불러온다
 
 
 def undo_account(record, state):            # 되돌릴 조치 기록과 연습용 시스템 상태를 받는 함수
@@ -140,19 +139,19 @@ def rollback_incident(incident_id, log, state):                              # �
     return records                                                           # 되돌리기 기록 리스트를 리턴한다
 ```
 
-**`exercise3-1_run.py`** — 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이 실행 파일은 먼저 INC-005 의 IP 차단을 새로 실행해 기록에 추가한 뒤, 그것을 되돌립니다.
+**`exercise3-1_run.py`** — 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이 실행 파일은 실습 2-2 결과 파일 두 개를 읽고, INC-005 의 IP 차단을 새로 실행해 기록에 추가한 뒤, 세 인시던트를 되돌립니다. 결과 파일이 없으면 시작하기 레슨의 「이전 파일이 없을 때」를 봅니다.
 
 ```python
 from incident import load_json                                                     # Unit 1 파일의 함수를 불러온다
-from containment_store import load_state, LOG_PATH                                 # 실습 2-2이 저장한 상태 · 기록 파일을 읽는 함수를 불러온다
-from ip_actions import block_ip, DEFAULT_TTL                                       # Unit 2의 도전 2-3의 IP 차단 함수를 불러온다
+from containment_store import load_state, LOG_PATH                                 # 실습 2-2가 저장한 상태 · 기록 파일을 읽는 함수를 불러온다
+from ip_actions import block_ip, DEFAULT_TTL                                       # Unit 2 제공 파일의 IP 차단 함수를 불러온다
 from rollback import rollback_incident                                             # 방금 만든 되돌리기 함수를 불러온다
 
-state = load_state()                                                               # 실습 2-2이 저장한 연습용 시스템 상태를 읽는다
+state = load_state()                                                               # 실습 2-2가 저장한 연습용 시스템 상태를 읽는다
 # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-# 9. load_json(LOG_PATH) 의 결과를 log 에 저장한다 (실습 2-2이 저장한 조치 기록을 읽는다)
+# 9. load_json(LOG_PATH) 의 결과를 log 에 저장한다 (실습 2-2가 저장한 조치 기록을 읽는다)
 
-print("--- 단계 1: 실습 2-2이 남긴 파일")                                             # 단계 1 시작을 알리는 줄
+print("--- 단계 1: 실습 2-2가 남긴 파일")                                             # 단계 1 시작을 알리는 줄
 print("잠긴 계정:", state["locked_users"])                                         # 잠긴 계정을 출력한다
 print("조치 기록:", len(log), "건")                                                # 기록 수를 출력한다
 log.append(block_ip("198.51.100.90", state, "INC-005", "경로 스캔", DEFAULT_TTL))  # INC-005 의 IP 차단을 이 실행에서 추가한다
@@ -170,7 +169,7 @@ print("차단한 IP:", state["blocked_ips"])                                    
 
 **순서**
 
-1. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `undo_actions.py` · `rollback.py` · `exercise3-1_run.py` 을(를) 하나씩 그대로 적어 세 개의 파일을 만듭니다. 각 파일에 이 페이지의 코드 상자를 복사해 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
+1. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `undo_actions.py` · `rollback.py` · `exercise3-1_run.py` 을 하나씩 그대로 적어 세 개의 파일을 만듭니다. 각 파일에 이 페이지의 코드 상자를 복사해 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
 2. **[VS Code]** `undo_actions.py` 1 · 2번, `rollback.py` 3 ~ 8번, `exercise3-1_run.py` 9번을 씁니다. 막히면 아래 「실습 3-1 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
