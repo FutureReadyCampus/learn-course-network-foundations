@@ -49,7 +49,7 @@ source:
 - 액션을 실행하면 `state` 에 값이 들어갑니다. 예를 들어 `계정 잠금` 을 실행하면 `locked_users` 에 `"dami"` 가 추가됩니다.
 - `run_action` 은 대상과 맞지 않는 액션(IP 에 계정 잠금, 사용자에게 IP 차단)을 <mark>실행하지 않고, 「건너뜀」과 그 이유를 결과로 리턴합니다.</mark> 잘못 고른 액션이 연습용 시스템에 반영되지 않게 막는 확인입니다.
 
-**상태** — 인시던트가 지금 처리의 어느 단계에 있는지를 나타내는 글자입니다(status, 스테이터스). 상태가 바뀌는 것을 **상태 전이**(state transition, 스테이트 트랜지션)라고 합니다.
+**상태**(status, 스테이터스) — 인시던트가 지금 처리의 어느 단계에 있는지를 나타내는 글자입니다. 상태가 바뀌는 것을 **상태 전이**(state transition, 스테이트 트랜지션)라고 합니다.
 
 <figure class="page-figure"><img src="assets/u01l03_f01.svg" alt="인시던트 상태는 탐지됨, 분류됨, 조치됨, 보고됨, 종료 순서로 옮겨 가고, 오탐이면 분류됨에서 바로 종료합니다"></figure>
 
@@ -213,6 +213,8 @@ def make_log_entry(incident, playbook, action, result):                         
     entry = {"time": now_text, "incident": incident["id"], "playbook": playbook["id"], "action": action, "result": result}  # 기록 한 건
     return entry                                                                  # 기록을 리턴한다
 ```
+
+- 코드에서 처음 보는 것은 두 가지입니다. `datetime.now()` 는 지금 시각을 구하고, 뒤의 `.strftime("%H:%M:%S")` 가 그 시각을 `14:52:07` 같은 시:분:초 글자로 바꿉니다(Module 4 Unit 1 에서 본 `strftime`). `str(숫자)` 는 숫자를 글자로 바꿉니다. 숫자는 글자와 `+` 로 바로 이어 붙일 수 없어서 `"TCK-" + str(1)` 처럼 바꾼 뒤 이어 붙입니다.
 
 **`playbook_runner.py`**
 

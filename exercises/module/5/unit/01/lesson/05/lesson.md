@@ -38,7 +38,7 @@ source:
 | `ip_trusted` | 그 IP 가 신뢰 IP 목록에 있는가 | `False`(목록에 없다) | `False` |
 
 - **값의 출처 파일**: `account_known` · `employed` · `vip` 는 `users_info.json`, `source_ip` 는 `source_ips.json` 에서 조회합니다. `ip_trusted` 는 `source_ips.json` 에서 조회한 접속 IP 가 `trusted_ips.json` 목록에 포함되면 `True`, 포함되지 않으면 `False` 입니다.
-- **`True` · `False` · `None`**: `True` 는 「참」(그렇다), `False` 는 「거짓」(아니다), `None` 은 「값 없음」입니다.
+- **`True` · `False` · `None`**: `True` 는 「참」(그렇다), `False` 는 「거짓」(아니다), `None` 은 「값 없음」입니다. JSON 파일에 적은 `true` · `false` 는 파이썬으로 읽으면 `True` · `False` 가 됩니다.
 - **정보를 찾지 못했을 때**: 「확인되지 않음」을 뜻하는 초기값(`False` 또는 `None`)을 그대로 둡니다. 확인되지 않은 대상을 재직 중인 정상 사용자로 간주하면 안 되기 때문입니다.
 - **주의할 점**: 계정 정보에 없는 대상의 `employed` · `vip` 가 `False` 여도 「퇴사했다」나 「VIP 가 아니다」라는 판정이 아니라, 「계정 정보에 없어 확인할 수 없다」는 뜻입니다.
 
@@ -101,7 +101,7 @@ def enrich_incident(incident, users_info, source_ips, trusted_ips):  # 인시던
     return incident                                                  # 맥락이 붙은 인시던트를 리턴한다
 ```
 
-**`exercise1-3_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 파일을 저장하지는 않습니다.
+**`exercise1-3_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이 실행 파일은 결과를 JSON 파일로 저장하지 않고 화면에만 출력합니다.
 
 ```python
 from incident import load_json, INCIDENTS_PATH                 # 실습 1-2 의 incident.py 에서 함수를 불러온다
@@ -148,6 +148,9 @@ for incident in incidents:                                     # 인시던트를
     # 9.   vip_count 에 vip_count + 1 을 담는다 (1 늘린다)
 print("VIP 계정 알림", vip_count, "건")                        # VIP 계정 알림 수를 출력한다
 ```
+
+- 들여쓰기는 **미리 채운 줄에 맞춥니다.** `enrichment.py` 의 1 · 4번은 함수 안이라 공백 4개, 2 · 3 · 5 · 6번은 `if` 안이라 공백 8개입니다. `exercise1-3_run.py` 의 7 · 8번은 `for` 안이라 공백 4개, 9번은 `if` 안이라 공백 8개입니다.
+- `if context["source_ip"]:` 처럼 `if` 뒤에 비교 없이 값만 쓰면, 파이썬은 `None` 을 거짓으로, `"203.0.113.80"` 처럼 글자가 들어 있는 값을 참으로 봅니다. 그래서 접속 IP 를 찾은 알림만 그 IP 를 적고, 못 찾은 알림은 「없음」으로 남습니다.
 
 **순서**
 
