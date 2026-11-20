@@ -1,25 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img">
-<title>정답은 한 예이며, 주석이 말한 일을 하면 줄 수가 달라도 맞습니다</title>
-<desc>내 코드와 정답 코드를 비교할 때 줄 수나 모양이 아니라 주석이 말한 일을 하는지를 봅니다. 핵심이 같으면 맞은 것입니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>도전 4-1: 20·60·110분에 점검해 열림 상태로 기한을 넘긴 티켓만 4번 올린다</title>
+<desc>20분 점검에서 TCK-1 이 5분 넘겨 team.lead 에게 올라가고, 25분에 확인 중이 된다. 60분에는 올릴 티켓이 없고, 110분에 TCK-3 과 TCK-4 는 soc.head, TCK-6 은 team.lead 에게 올라가 모두 4번이다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">정답을 보는 기준</text>
-<text x="24" y="58" font-size="15" text-anchor="start" fill="#666660">정답은 한 예입니다. 핵심이 같으면 맞습니다.</text>
-<rect x="40" y="100" width="180" height="64" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="130.0" y="126.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="130.0" dy="0" font-weight="700">내 코드</tspan><tspan x="130.0" dy="21.0">(내가 쓴 줄)</tspan></text>
-<rect x="40" y="190" width="180" height="64" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="130.0" y="216.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="130.0" dy="0" font-weight="700">정답 코드</tspan><tspan x="130.0" dy="21.0">(한 예)</tspan></text>
-<rect x="280" y="130" width="190" height="90" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="375.0" y="169.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="375.0" dy="0" font-weight="700">주석이 말한 일을</tspan><tspan x="375.0" dy="21.0">하고 있는가?</tspan></text>
-<line x1="220" y1="132" x2="278" y2="160" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<line x1="220" y1="222" x2="278" y2="192" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<rect x="530" y="92" width="160" height="70" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="610.0" y="121.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="610.0" dy="0" font-weight="700">맞음</tspan><tspan x="610.0" dy="21.0">줄 수가 달라도 됨</tspan></text>
-<rect x="530" y="190" width="160" height="70" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="610.0" y="219.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="610.0" dy="0" font-weight="700">다시 보기</tspan><tspan x="610.0" dy="21.0">자주 틀리는 곳 확인</tspan></text>
-<line x1="470" y1="160" x2="528" y2="128" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<text x="488" y="132" font-size="14" text-anchor="start" fill="#666660">예</text>
-<line x1="470" y1="190" x2="528" y2="224" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<text x="470" y="228" font-size="14" text-anchor="start" fill="#666660">아니오</text>
-</g>
+<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">도전 4-1 · 점검 시각마다 일어나는 일</text>
+<rect x="20" y="60" width="155" height="170" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="97.5" y="118.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">20분 점검</text>
+<text x="97.5" y="139.8" font-size="15" fill="#292929" text-anchor="middle">TCK-1</text>
+<text x="97.5" y="160.8" font-size="15" fill="#292929" text-anchor="middle">5분 넘김</text>
+<text x="97.5" y="181.8" font-size="15" fill="#292929" text-anchor="middle">→ team.lead</text>
+<rect x="195" y="60" width="155" height="170" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="272.5" y="118.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">25분</text>
+<text x="272.5" y="139.8" font-size="15" fill="#292929" text-anchor="middle">TCK-1</text>
+<text x="272.5" y="160.8" font-size="15" fill="#292929" text-anchor="middle">→ 확인 중</text>
+<text x="272.5" y="181.8" font-size="15" fill="#292929" text-anchor="middle">(kim.sec)</text>
+<rect x="370" y="60" width="155" height="170" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="447.5" y="118.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">60분 점검</text>
+<text x="447.5" y="139.8" font-size="15" fill="#292929" text-anchor="middle">TCK-1 은</text>
+<text x="447.5" y="160.8" font-size="15" fill="#292929" text-anchor="middle">확인 중이라</text>
+<text x="447.5" y="181.8" font-size="15" fill="#292929" text-anchor="middle">통보 없음</text>
+<rect x="545" y="60" width="155" height="170" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="622.5" y="108.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">110분 점검</text>
+<text x="622.5" y="129.2" font-size="15" fill="#292929" text-anchor="middle">TCK-3 · TCK-4</text>
+<text x="622.5" y="150.2" font-size="15" fill="#292929" text-anchor="middle">→ soc.head</text>
+<text x="622.5" y="171.2" font-size="15" fill="#292929" text-anchor="middle">TCK-6</text>
+<text x="622.5" y="192.2" font-size="15" fill="#292929" text-anchor="middle">→ team.lead</text>
+<line x1="177" y1="145" x2="193" y2="145" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<line x1="352" y1="145" x2="368" y2="145" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<line x1="527" y1="145" x2="543" y2="145" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="20" y="258" width="680" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="282.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">올린 횟수 합계 4번</text>
+<text x="360.0" y="303.8" font-size="15" fill="#292929" text-anchor="middle">같은 단계는 한 번만 올린다 · 확인 중인 티켓은 뺀다</text>
 </svg>

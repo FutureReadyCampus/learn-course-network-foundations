@@ -1,23 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>Unit 1 파일을 확인하고 데이터 파일 세 개를 만들어 6 4 1이 나오는지 본다</title>
-<desc>soar_response 폴더 배치도다. Unit 1에서 만든 파일 네 개를 확인하고 users_info.json, source_ips.json, trusted_ips.json을 새로 만든다. 확인 명령은 6 4 1을 출력하고, 플레이북 등록 값도 점검한다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>soar_response 폴더의 config 안팎에 설정 파일 세 개를 만들고 1 2 2 를 확인합니다</title>
+<desc>config 폴더에 vip_accounts.json 과 allowlist_ips.json, soar_response 폴더에 ip_users.json 을 만듭니다. 확인 명령이 1 2 2 를 출력하면 세 파일이 정상입니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">soar_response 폴더: Unit 1 파일 + 새 데이터 파일</text>
-<rect x="20" y="52" width="320" height="196" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text y="113.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="180.0" dy="0.0" font-weight="700">Unit 1 에서 만든 파일 (확인)</tspan><tspan x="180.0" dy="21.0">config/</tspan><tspan x="180.0" dy="21.0">incident.py</tspan><tspan x="180.0" dy="21.0">incident_samples.json</tspan><tspan x="180.0" dy="21.0">playbook_runner.py</tspan></text>
-<rect x="380" y="52" width="320" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text y="77.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="540.0" dy="0.0" font-weight="700">users_info.json · 6명</tspan><tspan x="540.0" dy="19.6">재직(employed) · VIP(vip)</tspan></text>
-<rect x="380" y="120" width="320" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text y="145.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="540.0" dy="0.0" font-weight="700">source_ips.json · 4명</tspan><tspan x="540.0" dy="19.6">사용자별 접속 IP</tspan></text>
-<rect x="380" y="188" width="320" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text y="213.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="540.0" dy="0.0" font-weight="700">trusted_ips.json · 1개</tspan><tspan x="540.0" dy="19.6">신뢰 IP 203.0.113.80</tspan></text>
-<rect x="20" y="266" width="680" height="50" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text y="296.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0">확인 1: 세 파일의 개수 → 6 4 1 이 나오면 성공</tspan></text>
-<text x="20" y="346" font-size="15" fill="#292929" font-weight="700">확인 2: 플레이북 등록 값이 아래와 같아야 한다</text>
-<rect x="20.0" y="358" width="216.0" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="386.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="128.0" dy="0.0">PB-001 · high · 자동</tspan></text>
-<rect x="252.0" y="358" width="216.0" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="386.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0">PB-002 · mid · 승인 필요</tspan></text>
-<rect x="484.0" y="358" width="216.0" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="386.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="592.0" dy="0.0">PB-003 · low · 승인 필요</tspan></text>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">설정 파일 세 개의 위치와 내용</text>
+<rect x="24" y="64" width="220" height="46" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="134.0" y="92.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="134.0" dy="0" font-weight="700">soar_response/</tspan></text>
+<rect x="64" y="128" width="180" height="42" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="154.0" y="154.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="154.0" dy="0" font-weight="700">config/</tspan></text>
+<rect x="104" y="186" width="210" height="42" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="209.0" y="212.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="209.0" dy="0">vip_accounts.json</tspan></text>
+<rect x="104" y="242" width="210" height="42" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="209.0" y="268.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="209.0" dy="0">allowlist_ips.json</tspan></text>
+<rect x="64" y="300" width="250" height="42" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="189.0" y="326.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="189.0" dy="0">ip_users.json</tspan></text>
+<polyline points="44,110 44,149 62,149" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="84,170 84,207 102,207" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="84,207 84,263 102,263" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="44,149 44,321 62,321" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="350" y="182" width="346" height="50" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="523.0" y="212.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="523.0" dy="0">["gaeun"] · VIP 계정 1개</tspan></text>
+<rect x="350" y="238" width="346" height="50" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="523.0" y="268.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="523.0" dy="0">203.0.113.80 · 192.0.2.10 (2개)</tspan></text>
+<rect x="350" y="296" width="346" height="50" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="523.0" y="326.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="523.0" dy="0">IP 2개 → 함께 쓰는 계정 리스트</tspan></text>
+<rect x="350" y="64" width="346" height="96" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="523.0" y="96.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="523.0" dy="0" font-weight="700">확인 명령 결과</tspan><tspan x="523.0" dy="21.0">1 2 2</tspan><tspan x="523.0" dy="21.0">(VIP 1 · 허용 IP 2 · IP 2)</tspan></text>
+<text x="24" y="380" font-size="15" text-anchor="start" fill="#666660">incident.py 도 같은 폴더에 있어야 합니다 (Unit 1 파일).</text>
+</g>
 </svg>

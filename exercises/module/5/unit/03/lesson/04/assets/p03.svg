@@ -1,33 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
-<title>실습 3-2: 최대 3번 다시 시도하고, 끝내 실패하면 실패 목록에 남깁니다</title>
-<desc>run_with_retry 는 같은 액션을 최대 3번 시도합니다. fail_plan 이 2이면 3번째에 성공하고, 99이면 3번 모두 실패합니다. 실패한 기록은 collect_failures 로 모아 담당자 확인 목록에 보여 줍니다.</desc>
-<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 3-2 정답: 다시 시도와 실패 목록</text>
-<rect x="24" y="74" width="92" height="48" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="70.0" y="103.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="70.0" dy="0" font-weight="700">시도 1</tspan></text>
-<line x1="116" y1="98" x2="132" y2="98" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<rect x="134" y="74" width="92" height="48" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="180.0" y="103.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="180.0" dy="0" font-weight="700">시도 2</tspan></text>
-<line x1="226" y1="98" x2="242" y2="98" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<rect x="244" y="74" width="92" height="48" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="290.0" y="103.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="290.0" dy="0" font-weight="700">시도 3</tspan></text>
-<text x="24" y="146" font-size="14" text-anchor="start" fill="#666660">오류가 나면 last_error 에 담고 다음 시도로</text>
-<rect x="380" y="64" width="316" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="538.0" y="90.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="538.0" dy="0" font-weight="700">단계 1 · fail_plan 2</tspan><tspan x="538.0" dy="21.0">티켓 TCK-1 생성 (시도 3회)</tspan></text>
-<rect x="380" y="140" width="316" height="64" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="538.0" y="166.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="538.0" dy="0" font-weight="700">단계 2 · fail_plan 99</tspan><tspan x="538.0" dy="21.0">실패: … (3회 모두 실패)</tspan></text>
-<line x1="336" y1="98" x2="378" y2="96" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<line x1="336" y1="106" x2="378" y2="168" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<rect x="24" y="238" width="200" height="76" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="124.0" y="260.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="124.0" dy="0" font-weight="700">flow.py</tspan><tspan x="124.0" dy="21.0">"실패"로 시작하면</tspan><tspan x="124.0" dy="21.0">failed = True</tspan></text>
-<rect x="260" y="238" width="200" height="76" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360.0" y="260.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">INC-001</tspan><tspan x="360.0" dy="21.0">일부 실패</tspan><tspan x="360.0" dy="21.0">(분류됨에 남음)</tspan></text>
-<rect x="496" y="238" width="200" height="76" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="596.0" y="260.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="596.0" dy="0" font-weight="700">단계 6 목록</tspan><tspan x="596.0" dy="21.0">collect_failures</tspan><tspan x="596.0" dy="21.0">담당자 확인</tspan></text>
-<line x1="224" y1="276" x2="258" y2="276" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<line x1="460" y1="276" x2="494" y2="276" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<polyline points="538,204 538,222 596,222 596,236" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<text x="24" y="352" font-size="15" text-anchor="start" fill="#666660">최대 횟수가 없으면 멈춘 서비스에 요청을 끝없이 보내 대응 전체가 멈춥니다.</text>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>send_ticket_notice 는 보낼지 정하고 수신자를 골라 최대 3번 보낸다</title>
+<desc>ticket_notice.py 는 notifier.py 의 notify 를 불러 쓴다. send_ticket_notice 는 should_send(처음이거나 30분이 지났는지)로 보낼지 정하고, pick_recipients 로 등급별 수신자를 고른 뒤 send_with_retry 로 최대 3번 보낸다. 결과는 「전송」 · 「건너뜀」 · 「실패」 중 하나다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<rect x="20" y="20" width="220" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="130.0" y="50.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">notifier.py · notify</text>
+<rect x="480" y="20" width="220" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="590.0" y="50.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">ticket_notice.py</text>
+<line x1="476" y1="45" x2="244" y2="45" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<text x="360" y="37.0" font-size="14" fill="#666660" text-anchor="middle">import</text>
+<text x="20" y="108.0" font-size="17" fill="#292929" font-weight="700">send_ticket_notice</text>
+<rect x="20" y="125" width="200" height="70" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="120.0" y="154.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">should_send</text>
+<text x="120.0" y="175.8" font-size="15" fill="#666660" text-anchor="middle">처음 또는 30분 지남</text>
+<rect x="260" y="125" width="200" height="70" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="154.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">pick_recipients</text>
+<text x="360.0" y="175.8" font-size="15" fill="#666660" text-anchor="middle">등급별 수신자</text>
+<rect x="500" y="125" width="200" height="70" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="600.0" y="154.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">send_with_retry</text>
+<text x="600.0" y="175.8" font-size="15" fill="#666660" text-anchor="middle">최대 3번</text>
+<line x1="220" y1="160" x2="256" y2="160" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="460" y1="160" x2="496" y2="160" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="120" y1="195" x2="120" y2="251" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<text x="130" y="228.0" font-size="14" fill="#666660">아니면</text>
+<rect x="20" y="255" width="200" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="120.0" y="285.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">「건너뜀」</text>
+<line x1="560" y1="195" x2="520" y2="251" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="640" y1="195" x2="640" y2="251" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<text x="500" y="228.0" font-size="14" fill="#666660" text-anchor="end">성공</text>
+<text x="650" y="228.0" font-size="14" fill="#666660">모두 실패</text>
+<rect x="440" y="255" width="120" height="50" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="500.0" y="285.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">「전송」</text>
+<rect x="580" y="255" width="120" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="640.0" y="285.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">「실패」</text>
 </svg>

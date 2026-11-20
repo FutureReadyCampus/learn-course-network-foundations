@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>도전 3-2 정리: 번호마다 쓰는 코드 모양</title>
+<desc>1번은 두 조건이 모두 맞는지, 2번은 이하인지 확인한다. 4~6번은 티켓의 숫자, 리스트, 갱신 시각을 바꾸고, 7~9번은 합칠 티켓을 찾아 None 인지 확인한 뒤 병합 함수를 부른다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<text x="20" y="30" font-size="18" fill="#292929" font-weight="700">도전 3-2 정리 · 번호별 코드</text>
+<rect x="20" y="48" width="680" height="36" fill="#f1f1ef" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="71.04" font-size="14" fill="#292929" font-weight="700">번호</text>
+<text x="110" y="71.04" font-size="14" fill="#292929" font-weight="700">하는 일</text>
+<text x="300" y="71.04" font-size="14" fill="#292929" font-weight="700">코드 모양</text>
+<rect x="20" y="84" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="107.04" font-size="14" fill="#292929">1</text>
+<text x="110" y="107.04" font-size="14" fill="#292929">두 조건이 모두 맞으면</text>
+<text x="300" y="107.04" font-size="14" fill="#292929">if ticket["entity"] == … and ticket["rule"] == …:</text>
+<rect x="20" y="120" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="143.04" font-size="14" fill="#292929">2 · 3</text>
+<text x="110" y="143.04" font-size="14" fill="#292929">이하이면 리턴</text>
+<text x="300" y="143.04" font-size="14" fill="#292929">if gap &lt;= window:  return ticket</text>
+<rect x="20" y="156" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="179.04" font-size="14" fill="#292929">4</text>
+<text x="110" y="179.04" font-size="14" fill="#292929">숫자 1 늘리기</text>
+<text x="300" y="179.04" font-size="14" fill="#292929">ticket["count"] = ticket["count"] + 1</text>
+<rect x="20" y="192" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="215.04" font-size="14" fill="#292929">5</text>
+<text x="110" y="215.04" font-size="14" fill="#292929">리스트에 추가</text>
+<text x="300" y="215.04" font-size="14" fill="#292929">ticket["incidents"].append(alert["id"])</text>
+<rect x="20" y="228" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="251.04" font-size="14" fill="#292929">6</text>
+<text x="110" y="251.04" font-size="14" fill="#292929">갱신 시각 저장</text>
+<text x="300" y="251.04" font-size="14" fill="#292929">ticket["updated_at"] = alert["minute"]</text>
+<rect x="20" y="264" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="287.04" font-size="14" fill="#292929">7 · 8</text>
+<text x="110" y="287.04" font-size="14" fill="#292929">찾고 없는지 확인</text>
+<text x="300" y="287.04" font-size="14" fill="#292929">existing = find_open_ticket(…)  if existing is None:</text>
+<rect x="20" y="300" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="323.04" font-size="14" fill="#292929">9</text>
+<text x="110" y="323.04" font-size="14" fill="#292929">함수 호출만 하기</text>
+<text x="300" y="323.04" font-size="14" fill="#292929">merge_alert(existing, alert)</text>
+<line x1="100" y1="48" x2="100" y2="336" stroke="#dededb" stroke-width="1"/>
+<line x1="290" y1="48" x2="290" y2="336" stroke="#dededb" stroke-width="1"/>
+</svg>

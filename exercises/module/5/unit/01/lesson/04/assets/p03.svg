@@ -1,52 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>실행기 결과: INC-001만 조치되고 INC-002·INC-005는 승인 대기, 감사 기록 4건</title>
-<desc>PB-003이 담당자 승인 필요인 경우의 정답 출력을 표로 옮겼다. 인시던트별 플레이북, 결과, 상태와 실행 후 합계(잠긴 계정 1, 차단 IP 0, 티켓 1, 승인 대기 2, 감사 기록 4)를 보여 준다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>safe_runner 는 끝난 알림, 승인 필요, 이미 잠긴 계정, 잠금 한도 3개를 차례로 점검한다</title>
+<desc>run_playbook_safe 는 이미 끝난 알림이면 이미 처리됨, 승인이 자동이 아니면 승인 대기를 리턴한다. 액션마다 find_skip_reason 이 이미 잠긴 계정과 잠금 한도 3개를 점검하고, 이유가 없을 때만 run_action 으로 실행한다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 1-2 정답 (PB-003 이 담당자 승인 필요인 경우)</text>
-<rect x="20" y="50" width="200" height="36" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text y="73.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="120.0" dy="0.0" font-weight="700">인시던트</tspan></text>
-<rect x="230" y="50" width="270" height="36" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text y="73.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="365.0" dy="0.0" font-weight="700">플레이북 · 결과</tspan></text>
-<rect x="510" y="50" width="190" height="36" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text y="73.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="605.0" dy="0.0" font-weight="700">상태</tspan></text>
-<rect x="20" y="92" width="200" height="36" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="114.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="120.0" dy="0.0">INC-001 dami</tspan></text>
-<rect x="230" y="92" width="270" height="36" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text y="114.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="365.0" dy="0.0">PB-001 실행 완료</tspan></text>
-<rect x="510" y="92" width="190" height="36" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text y="114.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="605.0" dy="0.0">조치됨</tspan></text>
-<rect x="20" y="134" width="200" height="36" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="156.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="120.0" dy="0.0">INC-002 seoyeon</tspan></text>
-<rect x="230" y="134" width="270" height="36" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text y="156.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="365.0" dy="0.0">PB-002 승인 대기</tspan></text>
-<rect x="510" y="134" width="190" height="36" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text y="156.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="605.0" dy="0.0">분류됨</tspan></text>
-<rect x="20" y="176" width="200" height="36" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="198.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="120.0" dy="0.0">INC-003 gaeun</tspan></text>
-<rect x="230" y="176" width="270" height="36" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="198.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="365.0" dy="0.0">맞는 플레이북 없음</tspan></text>
-<rect x="510" y="176" width="190" height="36" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="198.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="605.0" dy="0.0">탐지됨</tspan></text>
-<rect x="20" y="218" width="200" height="36" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="240.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="120.0" dy="0.0">INC-004 jiwoo</tspan></text>
-<rect x="230" y="218" width="270" height="36" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="240.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="365.0" dy="0.0">맞는 플레이북 없음</tspan></text>
-<rect x="510" y="218" width="190" height="36" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="240.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="605.0" dy="0.0">탐지됨</tspan></text>
-<rect x="20" y="260" width="200" height="36" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="282.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="120.0" dy="0.0">INC-005 198.51.100.90</tspan></text>
-<rect x="230" y="260" width="270" height="36" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text y="282.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="365.0" dy="0.0">PB-003 승인 대기</tspan></text>
-<rect x="510" y="260" width="190" height="36" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text y="282.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="605.0" dy="0.0">분류됨</tspan></text>
-<rect x="20.0" y="310" width="124.8" height="90" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="349.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="82.4" dy="0.0" font-weight="700">잠긴 계정</tspan><tspan x="82.4" dy="21.0">dami 1개</tspan></text>
-<rect x="158.8" y="310" width="124.8" height="90" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="349.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="221.20000000000002" dy="0.0" font-weight="700">차단한 IP</tspan><tspan x="221.20000000000002" dy="21.0">0개</tspan></text>
-<rect x="297.6" y="310" width="124.8" height="90" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="349.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0" font-weight="700">티켓</tspan><tspan x="360.0" dy="21.0">1건</tspan></text>
-<rect x="436.4" y="310" width="124.8" height="90" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text y="349.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="498.79999999999995" dy="0.0" font-weight="700">승인 대기</tspan><tspan x="498.79999999999995" dy="21.0">2건</tspan></text>
-<rect x="575.2" y="310" width="124.8" height="90" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text y="349.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="637.6" dy="0.0" font-weight="700">감사 기록</tspan><tspan x="637.6" dy="21.0">4건</tspan></text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">safe_runner.py 의 점검 순서</text>
+<rect x="20" y="56" width="430" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="86.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="235.0" dy="0">① 이미 끝난 알림인가? (조치됨 · 보고됨 · 종료)</tspan></text>
+<line x1="450" y1="81" x2="488" y2="81" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<text x="469" y="72" font-size="14" fill="#1f7a4a" text-anchor="middle" font-weight="700">예</text>
+<rect x="490" y="56" width="210" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="86.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="595.0" dy="0" font-weight="700">이미 처리됨</tspan></text>
+<line x1="235" y1="106" x2="235" y2="118" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="20" y="120" width="430" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="150.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="235.0" dy="0">② 승인이 「자동」이 아닌가?</tspan></text>
+<line x1="450" y1="145" x2="488" y2="145" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<text x="469" y="136" font-size="14" fill="#1f7a4a" text-anchor="middle" font-weight="700">예</text>
+<rect x="490" y="120" width="210" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="150.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="595.0" dy="0" font-weight="700">승인 대기</tspan></text>
+<line x1="235" y1="170" x2="235" y2="182" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="20" y="184" width="430" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="214.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="235.0" dy="0">③ 계정 잠금인데 이미 잠긴 계정인가?</tspan></text>
+<line x1="450" y1="209" x2="488" y2="209" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<text x="469" y="200" font-size="14" fill="#1f7a4a" text-anchor="middle" font-weight="700">예</text>
+<rect x="490" y="184" width="210" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text y="214.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="595.0" dy="0" font-weight="700">건너뜀</tspan></text>
+<line x1="235" y1="234" x2="235" y2="246" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="20" y="248" width="430" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="278.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="235.0" dy="0">④ 잠근 계정이 3개 이상인가?</tspan></text>
+<line x1="450" y1="273" x2="488" y2="273" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<text x="469" y="264" font-size="14" fill="#1f7a4a" text-anchor="middle" font-weight="700">예</text>
+<rect x="490" y="248" width="210" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text y="278.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="595.0" dy="0" font-weight="700">건너뜀 (담당자 확인)</tspan></text>
+<line x1="235" y1="306" x2="235" y2="324" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="20" y="326" width="430" height="50" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text y="356.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="235.0" dy="0" font-weight="700">모두 아니면 run_action 으로 실행</tspan></text>
+<text x="470" y="356" font-size="14" fill="#666660" text-anchor="start">①② 는 알림 한 건, ③④ 는 액션 하나</text>
 </svg>

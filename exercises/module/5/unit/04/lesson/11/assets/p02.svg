@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>질문 하나에 답 적는 법: 쓸 내용대로, 출력은 상자에, 이유까지</title>
+<desc>왼쪽은 보고서 질문 하나의 모양입니다. 쓸 내용에 적힌 것을 답: 뒤에 쓰고, 출력은 아래 빈 코드 상자에 붙여 넣습니다. 왜를 묻는 질문은 내 화면의 값을 근거로 이유까지 쓰고, 모르면 모름 — 막힌 곳 이라고 씁니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">보고서 쓰는 법</tspan></text>
+<rect x="20" y="56" width="330" height="300" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<rect x="36" y="72" width="298" height="50" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="48" y="102.2" font-size="15" text-anchor="start" fill="#292929"><tspan x="48">(나) [핵심 질문] 질문 글</tspan></text>
+<rect x="36" y="134" width="298" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="48" y="164.2" font-size="15" text-anchor="start" fill="#292929"><tspan x="48">쓸 내용: ① … ② … ③ …</tspan></text>
+<rect x="36" y="196" width="298" height="50" rx="8" fill="#ffffff" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="48" y="226.2" font-size="15" text-anchor="start" fill="#292929"><tspan x="48">답: 내 답</tspan></text>
+<rect x="36" y="258" width="298" height="82" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="48" y="283.9" font-size="14" text-anchor="start" fill="#292929"><tspan x="48">```</tspan><tspan x="48" dy="20">출력 붙여 넣기</tspan><tspan x="48" dy="20">```</tspan></text>
+<line x1="400" y1="97" x2="354" y2="97" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<text x="410" y="102" font-size="15" text-anchor="start" fill="#292929"><tspan x="410">꼭 알아야 할 질문</tspan></text>
+<line x1="400" y1="159" x2="354" y2="159" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<text x="410" y="164" font-size="15" text-anchor="start" fill="#292929"><tspan x="410">무엇을 쓸지 그대로 따라 씀</tspan></text>
+<line x1="400" y1="221" x2="354" y2="221" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<text x="410" y="226" font-size="15" text-anchor="start" fill="#292929"><tspan x="410">「왜」는 내 화면의 값을 근거로 이유까지</tspan></text>
+<line x1="400" y1="299" x2="354" y2="299" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<text x="410" y="304" font-size="15" text-anchor="start" fill="#292929"><tspan x="410">출력 · 코드는 빈 코드 상자에</tspan></text>
+<rect x="380" y="326" width="320" height="40" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="540.0" y="351.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="540.0">못 찾으면 「모름 — 막힌 곳: …」</tspan></text>
+</g>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>도전 3-1 보고서에서 채울 칸: (가) 출력 (나) INC-005 (다) 네 건의 이유와 영향</title>
+<desc>도전 3-1 의 (가)에는 출력 전체와 단계 3 요약, 단계 4 건수를 적는다. (나)는 INC-005 가 조치 실패인 이유와 6번이 없을 때, (다)는 INC-003, 008, 009, 010 네 건의 이유와 자동 처리 영향을 적는다.</desc>
+<text x="20" y="32.0" font-size="18" fill="#292929" font-weight="700">도전 3-1 · 채울 칸</text>
+<rect x="20.0" y="50" width="220.0" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="130.0" y="77.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(가)</text>
+<rect x="20.0" y="104" width="220.0" height="170" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="32.0" y="174.4" font-size="14" fill="#292929">① 출력 전체 (코드 상자)</text>
+<text x="32.0" y="194.0" font-size="14" fill="#292929">② 단계 3 의 요약</text>
+<text x="32.0" y="213.6" font-size="14" fill="#292929">③ 단계 4 의 건수</text>
+<rect x="250.0" y="50" width="220.0" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="77.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(나) 핵심</text>
+<rect x="250.0" y="104" width="220.0" height="170" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="262.0" y="164.6" font-size="14" fill="#292929">① INC-005 가 조치 실패인</text>
+<text x="262.0" y="184.2" font-size="14" fill="#292929">이유 (단계 2 의 줄)</text>
+<text x="262.0" y="203.8" font-size="14" fill="#292929">② 6번(is_failure)이</text>
+<text x="262.0" y="223.4" font-size="14" fill="#292929">없을 때 근무 보고</text>
+<rect x="480.0" y="50" width="220.0" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="590.0" y="77.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(다) 핵심</text>
+<rect x="480.0" y="104" width="220.0" height="170" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="492.0" y="145.0" font-size="14" fill="#292929">① INC-008 · 009 가</text>
+<text x="492.0" y="164.6" font-size="14" fill="#292929">차단되지 않은 이유</text>
+<text x="492.0" y="184.2" font-size="14" fill="#292929">② INC-003 · 010 이</text>
+<text x="492.0" y="203.8" font-size="14" fill="#292929">승인 대기인 이유</text>
+<text x="492.0" y="223.4" font-size="14" fill="#292929">③ 그대로 자동 처리했을 때</text>
+<text x="492.0" y="243.0" font-size="14" fill="#292929">의 영향</text>
+<rect x="20" y="296" width="680" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="322.8" font-size="15" fill="#292929" text-anchor="middle">근거는 단계 2 와 단계 4 의 줄로</text>
+<text x="360.0" y="343.8" font-size="15" fill="#666660" text-anchor="middle">도전은 선택 — 내가 한 도전의 질문만 채운다</text>
+</svg>

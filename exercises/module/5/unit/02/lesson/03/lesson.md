@@ -1,179 +1,197 @@
 ---
 id: m5-u02-l03
-title: 실습 2-2 · 맥락에 따라 처리 경로 나누기
+title: 제공 파일
 render: markdown
-source:
-  repository: FutureReadyCampus/learn-missions
-  path: network/118_day02_am_context_route_safety.md
-  mission_id: GichanSource.m5-1110-am-context-route-safety
-  commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 실습 2-2 · 맥락에 따라 처리 경로 나누기
+# 제공 파일
 
-## 이번 의뢰: 오탐과 VIP 계정 구분
+## 제공 파일 쓰는 법
 
-> **오늘 들어온 일**
->
-> - **상황**: 지난주 협력사 사무실(`203.0.113.80`)에서 온 `평소와 다른 IP` 알림이 12건 있었습니다. 분석팀이 한 건씩 열어 분석(triage, 트리아지: 알림의 진위와 우선순위를 판정하는 초기 분류)했고 12건 모두 정상 업무로 판정되었습니다. 12건을 분석하는 데 1시간이 걸렸습니다(한 건당 5분).
-> - **문제**:
-> - 그 1시간 동안 다른 알림을 확인하는 일이 늦어졌습니다.
-> - 반대로 계정 관리자 `gaeun`(VIP 계정)의 알림이 플레이북에 맞으면 지금은 일반 계정과 같은 절차로 처리됩니다. 이 계정이 잘못 잠기면 직원 계정 관리 업무가 중단됩니다.
-> - **부탁**: 협력사의 정상 접속 알림은 종료 사유를 기록하고 자동으로 종료(close)해 주세요. 이처럼 실제로는 위협이 아닌데 위협으로 탐지된 알림을 **오탐**(false positive, 폴스 포지티브)이라고 합니다. VIP 계정은 담당자가 승인한 뒤에만 조치해 주세요.
-> - **바뀌는 점**: 분석팀은 아낀 1시간을 위험도가 높은 알림 분석에 씁니다. VIP 계정은 담당자가 승인하기 전에는 조치되지 않습니다. 오늘 샘플에서는 5건 가운데 `INC-004` 한 건이 자동 종료되고 `INC-003` 한 건이 담당자 승인 경로로 분기됩니다. 12건과 5분은 설명을 위한 예시 숫자입니다.
+**실습 2-1 을 마친 뒤, 실습 2-2 를 시작하기 전에** 이 레슨의 파일 세 개를 만듭니다. 오늘 핵심 실습에서는 이 파일을 부르지 않지만, 도전 2-2 와 Unit 3 이 불러 씁니다. 그래서 도전을 하지 않아도 오늘 만들어 두고 함께 깃허브에 올립니다.
 
-## 2.1 조건 분기(branching) — 맥락에 따라 알림을 서로 다른 처리 경로로 분기한다
-
-알림을 조건에 따라 세 가지 처리 경로(route) 가운데 하나로 분류해 보냅니다. 이처럼 조건에 따라 실행 경로를 나누는 일을 **조건 분기**(branching, 브랜칭)라고 하며, SOAR 플레이북에서는 알림의 맥락이나 신뢰도에 따라 자동 실행과 분석가 검토 중 하나를 선택하는 데 씁니다.
-
-| 경로 | 보내는 조건 | 하는 일 | 오늘 샘플 |
-|---|---|---|---|
-| `승인 필요` | 대상이 VIP 계정이다 | 담당자가 확인하기 전에는 조치하지 않는다 | `INC-003`(`gaeun`) |
-| `오탐 종료` | 접속 IP 가 신뢰 IP 이고, 탐지된 규칙이 **모두** IP 관련 규칙이다 | 상태(status: 알림의 처리 진행 단계를 나타내는 값)를 `분류됨` 으로, 이어서 `종료` 로 변경하고 종료 사유를 기록한다 | `INC-004`(`jiwoo`) |
-| `기본` | 위 두 경우가 아니다 | Unit 1에서 만든 플레이북 절차대로 처리한다 | `INC-001` · `INC-002` · `INC-005` |
-
-- **탐지 규칙**(detection rule, 디텍션 룰: 알림을 발생시키는 조건): 알림에는 `reasons` 라는 리스트가 있고, 이 알림을 발생시킨 탐지 규칙의 이름이 들어 있습니다. 예를 들어 `INC-002` 는 `["평소와 다른 IP", "대량 다운로드"]` 입니다.
-- **IP 관련 규칙**: 접속 IP 를 보고 낸 규칙입니다. 오늘은 `평소와 다른 IP` 와 `업무 시간 밖 로그인` 두 가지입니다.
-
-- **상태**는 알림을 어디까지 처리했는지 나타내는 값이고, `탐지됨` → `분류됨` → `조치됨` 또는 `종료` 순서로 바뀝니다.
-- <mark>VIP 를 먼저 확인합니다.</mark> VIP 계정의 알림이 신뢰 IP 에서 접속했다는 이유만으로 자동으로 닫히면 안 되기 때문입니다.
-- <mark>탐지 규칙이 **모두** IP 관련일 때만 종료합니다.</mark> 신뢰 IP 에서 접속했어도 `대량 다운로드` 처럼 IP 와 무관한 규칙이 함께 탐지되었다면, 그 다운로드가 정상이라는 근거는 되지 못하기 때문입니다. `INC-002` 가 이에 해당합니다.
-
-**문법 상자 — 튜플 리턴과 언패킹(tuple unpacking): 두 값을 한 번에 리턴하고 한 번에 받는다**
-
-```python
-def check(score):
-    if score >= 60:
-        return "높음", "바로 확인"
-    return "낮음", "나중에 확인"
-
-level, action = check(70)
-print(level)
-print(action)
-```
-
-| 코드 | 뜻 |
-|---|---|
-| `return "높음", "바로 확인"` | 값 두 개를 쉼표로 이어 함께 리턴한다. 이렇게 쉼표로 이은 값 묶음을 **튜플**(tuple)이라고 한다 |
-| `level, action = check(70)` | 튜플로 온 두 값을 순서대로 변수 두 개에 하나씩 저장한다. 이렇게 묶음을 풀어 변수에 저장하는 것을 **언패킹**(unpacking)이라고 한다 |
-| 위 코드의 출력 | `높음` 과 `바로 확인` 이 한 줄씩 나온다 |
-
-- 리턴하는 값의 개수와 받는 변수의 개수가 다르면 `ValueError`(밸류 에러: 값의 개수나 형태가 맞지 않을 때 나는 오류)가 납니다.
-
-직접 쓰는 곳은 함수와 실행 파일을 합쳐 **아홉 군데**입니다.
-
-```
-routing.py   is_only_ip_related : 규칙을 하나씩 꺼내 IP 관련이 아닌 것이 있으면 False 를 리턴한다 (1 ~ 3번)
-             decide_route       : VIP 이면 「승인 필요」 (4 · 5번) / 신뢰 IP 이고 규칙이 모두 IP 관련이면 「오탐 종료」 (6 · 7번) / 아니면 「기본」 (미리 채움)
-             apply_route        : 오탐 종료이면 상태를 종료로 옮기고 이유를 기록한다 (미리 채움)
-실행 파일    exercise2-2_run.py   : decide_route 가 리턴한 두 값을 언패킹으로 받고 (8번), 경로별 건수를 센다 (9번)
-```
-
-## 실습 2-2 · 경로 분기하고 경로별 건수 세기
-
-**이런 상황이 있습니다**
-
-- **지금은**: <mark>알림을 규칙 이름과 등급만 보고 처리하므로 계정 관리자(VIP)의 알림과 협력사의 정상 접속 알림을 따로 다룰 수 없습니다</mark>.
-- **만드는 것**: 규칙이 모두 IP 관련인지 판별하는 함수와 처리 경로를 결정하는 함수(`routing.py`), 경로를 받아 적용하는 부분과 경로별 건수 집계(`exercise2-2_run.py`). 경로를 결정할 때마다 판정 이유도 문장으로 함께 리턴합니다.
-- **실행하면**: <mark>단계 1: 알림마다 경로 · 이유 · 상태, 단계 2: 경로별 건수가 나옵니다.</mark>
-
-**할 일**: 두 파일을 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 1 · 2 를 읽습니다.
-
-**`routing.py`** — 맥락을 보고 처리 경로를 정합니다. 이 파일이 정한 경로(`승인 필요` · `오탐 종료` · `기본`)를 Unit 3의 실습 3-1 이후에도 씁니다. 직접 쓰는 곳은 1 ~ 7번입니다.
-
-```python
-from incident import change_status                                          # Unit 1 파일의 상태 바꾸기 함수를 불러온다
-
-IP_RELATED_RULES = ["평소와 다른 IP", "업무 시간 밖 로그인"]                # 접속 IP 만 보고 낸 알림의 규칙 이름
-
-
-def is_only_ip_related(incident):                                           # 인시던트 하나를 받는 함수
-    """알림이 난 이유(규칙)가 모두 IP 와 관련된 것이면 True, 하나라도 다른 이유가 있으면 False 를 리턴한다.
-    IP 때문에만 난 알림인지, 다른 증거도 있는 알림인지 구별할 때 쓴다.
-    """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. incident["reasons"] 의 규칙을 하나씩 꺼낸다 (for, rule)
-    # 2.   rule 이 IP_RELATED_RULES 안에 없으면 (if, not in)
-    # 3.     False 를 리턴한다 (IP 와 관계없는 다른 증거가 있다)
-    return True                                                             # 모두 IP 관련이면 True 를 리턴한다 — 미리 채운 줄
-
-
-def decide_route(incident):                                                 # 맥락이 붙은 인시던트를 받는 함수
-    """붙어 있는 맥락을 보고 이 알림을 어느 경로(승인 필요 · 오탐 종료 · 기본)로 보낼지 정해, 이유 문장과 함께 리턴한다.
-    같은 플레이북이어도 누구의 알림이냐에 따라 처리를 다르게 하고 싶을 때 쓴다.
-    """
-    context = incident["context"]                                           # 붙어 있는 맥락
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 4. context 의 "vip" 가 참이면 (if)
-    # 5.   "승인 필요" 와 "VIP 계정이라 담당자 승인이 필요함" 을 쉼표로 이어 함께 리턴한다
-    # 6. context 의 "ip_trusted" 가 참이고(and) is_only_ip_related(incident) 가 참이면 (if)
-    # 7.   "오탐 종료" 와 "신뢰 IP 에서 온 IP 관련 규칙뿐이라 정상 접속으로 봄" 을 쉼표로 이어 함께 리턴한다
-    return "기본", "플레이북 기본 절차대로 처리함"                          # 어느 경우도 아니면 기본 경로로 보낸다
-
-
-def apply_route(incident, route, reason, incident_log):                     # 인시던트 · 경로 · 이유 · 기록 리스트를 받는 함수
-    """정한 경로를 알림에 적용한다. 오탐 종료이면 상태를 분류됨을 거쳐 종료로 바꾸고, 경로와 이유를 기록에 남긴다.
-    나중에 「왜 이 알림을 이렇게 처리했나」에 답할 수 있게 하려고 쓴다.
-    """
-    if route == "오탐 종료":                                                # 오탐 종료이면
-        change_status(incident, "분류됨")                                   # 먼저 분류됨으로 옮기고
-        change_status(incident, "종료")                                     # 종료로 옮긴다
-    entry = {"incident": incident["id"], "route": route, "reason": reason}  # 기록 한 건을 만든다
-    incident_log.append(entry)                                              # 기록 리스트에 추가한다
-```
-
-**`exercise2-2_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실습 2-1의 `enrichment.py` 가 같은 폴더에 있어야 합니다.
-
-```python
-from incident import load_json, INCIDENTS_PATH                      # Unit 1 파일의 함수를 불러온다
-from enrichment import enrich_incident                              # 실습 2-1에서 만든 함수를 불러온다
-from routing import decide_route, apply_route                       # 방금 만든 함수를 불러온다
-
-incidents = load_json(INCIDENTS_PATH)                               # 인시던트 파일을 리스트로 읽는다
-users_info = load_json("users_info.json")                           # 계정 정보 파일을 읽는다
-source_ips = load_json("source_ips.json")                           # 알림이 난 접속의 IP 파일을 읽는다
-trusted_ips = load_json("trusted_ips.json")                         # 신뢰 IP 파일을 읽는다
-incident_log = []                                                   # 경로 기록을 담을 빈 리스트
-route_counts = {"기본": 0, "승인 필요": 0, "오탐 종료": 0}          # 경로마다 몇 건인지 셀 딕셔너리
-
-print("--- 단계 1: 알림마다 정한 처리 경로 · 이유 · 상태")          # 단계 1 시작을 알리는 줄
-for incident in incidents:                                          # 인시던트를 하나씩 꺼낸다
-    enrich_incident(incident, users_info, source_ips, trusted_ips)  # 맥락을 붙인다
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 8. decide_route(incident) 가 리턴한 두 값을 route 와 reason 에 한 번에 받는다
-    apply_route(incident, route, reason, incident_log)              # 경로를 적용하고 기록한다
-    # 9. route_counts[route] 에 route_counts[route] + 1 을 담는다 (그 경로의 건수를 1 늘린다)
-    print(incident["id"], incident["entity"], incident["grade"], "->", route, "·", reason, "(상태: " + incident["status"] + ")")  # 한 줄로 출력한다
-
-print("--- 단계 2: 경로별 건수")                                    # 단계 2 시작을 알리는 줄
-for route in route_counts:                                          # 경로를 하나씩 꺼낸다
-    print(route, route_counts[route], "건")                         # 경로와 건수를 출력한다
-```
-
-**순서**
-
-1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `routing.py` · `exercise2-2_run.py` 두 파일을 하나씩 만들고(파일 이름 그대로), 코드를 붙여 넣어 저장합니다.
-2. **[VS Code]** `routing.py` 1 ~ 7번, `exercise2-2_run.py` 8 · 9번을 씁니다. 막히면 아래 「실습 2-2 정리」를 봅니다.
-3. **[터미널]** 실행합니다(맥북은 `python3`).
+1. 파일은 모두 `soar_response` 폴더 안에 만듭니다(VS Code 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File**).
+2. 파일 이름을 그대로 적고, 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
+3. 만들 파일은 세 개입니다.
+   1. `ip_actions.py`: 허용 목록 IP 와 공유 IP 를 가려 차단하고, 유효 기간(TTL)이 지나면 자동 해제하는 함수. 실습 2-1 의 `containment_store.py` 를 불러 씁니다. 도전 2-3 과 Unit 3 실습 3-1 이 씁니다.
+   2. `audit.py`: 감사 기록 한 건을 딕셔너리로 만드는 함수 `log_line`
+   3. `approvals.py`: 담당자의 승인 · 거절을 권한 확인 뒤 적용하는 함수. `audit.py` 와 Unit 1 실습 1-2 의 `incident.py` 를 불러 씁니다. 도전 2-2 가 씁니다.
+4. 세 파일을 다 만들었으면 아래 명령으로 확인하고 실습 2-2 로 갑니다(맥북은 `python3`).
    ```bash
-   python exercise2-2_run.py
+   python -c "from ip_actions import check_ip_policy; from approvals import is_authorized; from audit import log_line; print('제공 파일 정상', check_ip_policy('192.0.2.10', ['192.0.2.10'], {}), is_authorized('intern01'))"
    ```
-4. 출력은 두 단계입니다. 단계 1 은 알림 5건이 한 줄씩 나오고 한 줄에는 번호 · 대상 · 등급이 나오고, `->` 뒤에 경로 · 이유가 나오며, 괄호 안에 상태가 나옵니다. 단계 2 는 경로마다 한 줄씩 3줄입니다.
-5. **[보고서]** `report_u2.md` 의 `## 실습 2-2` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 경로별 건수와 `종료` 상태가 된 알림의 번호를 적어 주세요.
-   - (나) [핵심 질문] INC-002 와 INC-004 는 둘 다 신뢰 IP 에서 접속했는데 INC-002 는 `기본`, INC-004 는 `오탐 종료` 입니다. 두 알림의 `reasons` 를 근거로 경로가 달라진 이유를 적어 주세요.
-   - (다) [핵심 질문] 6번 조건보다 4번 VIP 판정을 먼저 두었습니다. VIP 계정이 신뢰 IP 에서 접속했고 `평소와 다른 IP` 규칙 하나만 탐지되었다고 가정해 보세요. 이 알림이 어느 경로로 분기되는지 적어 주세요. 그리고 4번과 6번 조건의 순서를 바꾸면 무엇이 달라지는지 적어 주세요.
+   - `제공 파일 정상 허용 목록 IP 라서 차단하지 않음 False` 가 나오면 됩니다.
+   - `ModuleNotFoundError: No module named 'containment_store'` 가 나오면 실습 2-1 의 `containment_store.py` 가 이 폴더에 없는 것입니다. 실습 2-1 을 먼저 합니다.
 
-## 실습 2-2 정리
+> 시간이 남아 도전 2-1 이나 도전 2-3 을 하면, `audit.py` · `approvals.py` 나 `ip_actions.py` 를 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 그때는 다 채울 때까지 그 파일을 부르는 프로그램이 동작하지 않으니, 다 쓴 뒤 그 도전의 실행 파일로 결과가 정답과 같은지 확인합니다.
 
-| 하려는 일 | 코드 · 말 |
-|---|---|
-| 리스트의 요소를 하나씩 반복 | `for rule in incident["reasons"]:` |
-| 리스트 안에 없으면 | `if rule not in IP_RELATED_RULES:` |
-| 참이면 | `if context["vip"]:` |
-| 두 조건이 모두 참이면 | `if context["ip_trusted"] and is_only_ip_related(incident):` |
-| 값 두 개를 함께 리턴 | `return "승인 필요", "VIP 계정이라 담당자 승인이 필요함"` |
-| 리턴된 값 두 개를 한 번에 받기(언패킹) | `route, reason = decide_route(incident)` |
-| 1 늘려 다시 저장하기 | `route_counts[route] = route_counts[route] + 1` |
+## `ip_actions.py` 만들기
+
+**`ip_actions.py`** 를 만들고 아래 내용을 붙여 넣습니다. IP 를 차단하기 전에 정책을 검사하고, 차단에는 끝나는 시각을 적어 두었다가 시간이 지나면 풉니다.
+
+1. `check_ip_policy`: 허용 목록(`config/allowlist_ips.json`)에 있는 IP 나, 쓰는 계정이 `SHARED_IP_LIMIT`(2) 개 이상인 공유 IP(`ip_users.json`)이면 차단을 막는 이유 문장을 리턴합니다. 막을 이유가 없으면 빈 글자(`""`)를 리턴합니다.
+2. `block_ip`: 차단 리스트에 IP 를 넣고, 끝나는 시각 = 지금 시각(`clock`) + 유지 시간(`ttl`, 기본 `DEFAULT_TTL` 120분)을 적은 뒤, 실제로 차단됐는지 확인해 기록 한 건을 리턴합니다.
+3. `expire_blocks`: 끝나는 시각이 지금 시각 이하인 차단을 모두 풀고(`unblock_ip`) 해제 기록 리스트를 리턴합니다.
+
+```python
+from containment_store import make_record                                              # 기록 한 건을 만드는 함수를 불러온다
+
+SHARED_IP_LIMIT = 2                                                                    # 한 IP 를 쓰는 계정이 이 수 이상이면 공유 IP 로 본다
+DEFAULT_TTL = 120                                                                      # 차단을 유지하는 시간(분)
+
+
+def is_in_allowlist(ip, allowlist_ips):                                                # IP 와 허용 목록을 받는 함수
+    """IP 가 허용 목록에 있으면 True, 없으면 False 를 리턴한다.
+    협력사 사무실처럼 차단하면 안 되는 IP 를 찾아낼 때 쓴다.
+    """
+    return ip in allowlist_ips                                                         # 허용 목록 안에 있는지 확인한 결과를 리턴한다
+
+
+def count_users_on_ip(ip, ip_users):                                                   # IP 와 IP 별 사용 계정 딕셔너리를 받는 함수
+    """그 IP 를 쓰는 계정이 몇 개인지 리턴한다. ip_users.json 에 없는 IP 는 0 을 리턴한다.
+    차단하면 정상 사용자가 몇 명 영향을 받는지 확인할 때 쓴다.
+    """
+    return len(ip_users.get(ip, []))                                                   # 그 IP 를 쓰는 계정 수를 리턴한다 (목록에 없으면 0)
+
+
+def check_ip_policy(ip, allowlist_ips, ip_users):                                      # IP · 허용 목록 · 사용 계정 딕셔너리를 받는 함수
+    """자동으로 차단하면 안 되는 IP 이면 그 이유 문장을, 아니면 빈 글자("")를 리턴한다.
+    허용 목록 IP 이거나 여러 계정이 함께 쓰는 IP 를 차단하기 전에 가려낼 때 쓴다.
+    """
+    if is_in_allowlist(ip, allowlist_ips):                                             # 허용 목록 IP 이면
+        return "허용 목록 IP 라서 차단하지 않음"                                       # 이유를 리턴한다
+    if count_users_on_ip(ip, ip_users) >= SHARED_IP_LIMIT:                             # 여러 계정이 함께 쓰는 IP 이면
+        return "여러 계정이 함께 쓰는 IP 라서 담당자 승인 필요"                        # 이유를 리턴한다
+    return ""                                                                          # 막을 이유가 없으면 빈 글자를 리턴한다
+
+
+def block_ip(ip, state, incident_id, reason, ttl):                                     # IP · 상태 · 인시던트 번호 · 이유 · 유지 시간을 받는 함수
+    """IP 를 차단하고 끝나는 시각을 적은 뒤, 실제로 차단됐는지 확인해 기록 한 건을 리턴한다.
+    영구 차단 대신, 시간이 지나면 자동으로 풀리는 임시 차단을 만들 때 쓴다.
+    """
+    state["blocked_ips"].append(ip)                                                    # 차단한 IP 리스트에 추가한다
+    state["block_expiry"][ip] = state["clock"] + ttl                                   # 차단이 끝나는 시각을 적는다
+    after = "차단됨"                                                                   # 조치 뒤 상태 : 일단 차단됐다고 적고
+    if ip not in state["blocked_ips"]:                                                 # 실제로 확인해 차단되지 않았으면
+        after = "차단되지 않음 (확인 실패)"                                            # 확인 실패라고 고쳐 적는다
+    return make_record("IP 차단", ip, incident_id, "차단되지 않음", after, reason + " (" + str(ttl) + "분 뒤 자동 해제)")  # 조치 전 · 후 상태와 함께 기록한다
+
+
+def unblock_ip(ip, state, incident_id, reason):                                        # IP · 상태 · 인시던트 번호 · 이유를 받는 함수
+    """차단한 IP 를 풀고 끝나는 시각 기록도 지운 뒤 기록 한 건을 리턴한다.
+    시간이 끝나서 풀거나 오탐으로 풀 때 쓴다.
+    """
+    state["blocked_ips"].remove(ip)                                                    # 차단 리스트에서 제거한다
+    state["block_expiry"].pop(ip)                                                      # 끝나는 시각 기록도 지운다
+    return make_record("IP 해제", ip, incident_id, "차단됨", "차단되지 않음", reason)  # 조치 전 · 후 상태와 함께 기록한다
+
+
+def expire_blocks(state, incident_id):                                                 # 상태와 인시던트 번호를 받는 함수
+    """끝나는 시각이 지난 차단을 모두 풀고 해제 기록 리스트를 리턴한다.
+    임시 차단이 사람 손 없이 풀리게 할 때 쓴다.
+    """
+    records = []                                                                       # 해제 기록을 저장할 빈 리스트
+    for ip in list(state["blocked_ips"]):                                              # 차단 리스트의 복사본에서 IP 를 하나씩 꺼낸다 (원본을 바꾸며 돌면 안 되기 때문이다)
+        end_time = state["block_expiry"][ip]                                           # 그 IP 의 차단이 끝나는 시각
+        if end_time <= state["clock"]:                                                 # 끝나는 시각이 지났으면
+            records.append(unblock_ip(ip, state, incident_id, "차단 시간이 끝나 자동 해제"))  # 차단을 풀고 해제 기록을 모은다
+    return records                                                                     # 해제 기록 리스트를 리턴한다
+```
+
+- 기록 한 건은 실습 2-1 의 `make_record` 가 만듭니다. 그래서 IP 조치도 계정 잠금과 같은 여섯 키(`action` · `target` · `incident` · `before` · `after` · `reason`)로 남습니다.
+- 허용 목록과 공유 IP 를 왜 먼저 거르는지, 끝나는 시각을 어떻게 비교하는지는 도전 2-3 레슨에서 자세히 다룹니다.
+
+## `audit.py` 만들기
+
+**`audit.py`** 를 만들고 아래 내용을 붙여 넣습니다. 알림 한 건에 어떤 액션을 해서 결과가 무엇이었는지를 딕셔너리 한 건(`incident` · `playbook` · `action` · `result`)으로 만듭니다.
+
+```python
+def log_line(item, action, text):  # 인시던트 · 액션 · 결과 문장을 받는 함수
+    """감사 기록(어떤 알림에 · 어떤 액션을 해서 · 결과가 무엇인지) 한 건을 딕셔너리로 만들어 리턴한다.
+    모든 대응을 같은 모양으로 남겨 두면 나중에 한 목록으로 되짚을 수 있어서 쓴다.
+    """
+    entry = {"incident": item["id"], "playbook": item["playbook"], "action": action, "result": text}  # 기록 한 건을 딕셔너리로 만든다
+    return entry                   # 기록 한 건을 리턴한다
+```
+
+- 모든 대응을 같은 모양으로 남겨 두면 승인 · 거절 · 실패를 한 목록에서 다시 볼 수 있습니다. `approvals.py` 와 도전 2-2 의 `flow.py` 가 이 함수를 씁니다.
+
+## `approvals.py` 만들기
+
+**`approvals.py`** 를 만들고 아래 내용을 붙여 넣습니다. 승인이 필요한 알림을 멈춰 두고(`hold_for_approval`), 담당자의 결정이 오면 권한부터 확인한 뒤 적용합니다(`apply_decision`).
+
+1. 결정한 사람이 승인 권한이 있는 담당자 목록 `APPROVERS`(`kim.sec` · `lee.soc`)에 없으면 실행하지 않고 「권한 없음」 기록만 남깁니다.
+2. 권한이 있고 결정이 「승인」이면 멈춰 있던 액션을 실행하고 알림을 `조치됨` 으로 옮깁니다.
+3. 권한이 있고 결정이 「거절」이면 알림을 `종료` 로 옮기고 거절 사유를 기록합니다.
+
+```python
+from incident import change_status, run_action                                           # Unit 1 파일의 함수를 불러온다
+from audit import log_line                                                               # audit.py 의 기록 함수를 불러온다
+
+APPROVERS = ["kim.sec", "lee.soc"]                                                       # 승인할 권한이 있는 담당자 이름 리스트
+
+
+def hold_for_approval(incident, playbook_id, actions, why, action_log):                  # 승인 대기로 멈출 인시던트와 정보를 받는 함수
+    """알림의 상태를 분류됨으로 바꾸고 승인 대기 기록을 남긴 뒤, 담당자에게 보여 줄 대기 건 한 건으로 리턴한다.
+    승인이 필요한 알림을 실행하지 않고 담당자에게 넘길 때 쓴다(도전 2-2 하루 흐름에서 호출한다).
+    """
+    incident["playbook"] = playbook_id                                                   # 어떤 플레이북 때문인지 적고
+    incident["actions"] = actions                                                        # 승인되면 실행할 액션을 적고
+    incident["why"] = why                                                                # 승인이 필요한 이유를 적는다
+    change_status(incident, "분류됨")                                                    # 대응을 시작했으니 분류됨으로 옮기고
+    action_log.append(log_line(incident, "전체", "승인 대기 — " + why))                  # 승인 대기 기록을 남긴다
+    return incident                                                                      # 대기 건을 리턴한다
+
+
+def is_authorized(approver):                                                             # 승인한 사람 이름을 받는 함수
+    """승인한 사람이 승인 권한이 있는 담당자 목록(APPROVERS)에 있으면 True, 없으면 False 를 리턴한다.
+    권한이 없는 사람이 누른 승인을 걸러 낼 때 쓴다.
+    """
+    return approver in APPROVERS                                                         # 권한 목록 안에 있는지 확인한 결과를 리턴한다
+
+
+def execute_actions(item, state, action_log, approver):                                  # 대기 건 · 연습용 시스템 · 기록 리스트 · 승인자를 받는 함수
+    """대기 건에 적힌 액션을 하나씩 실행하고 누가 승인했는지 붙여 기록한 뒤, 알림을 조치됨으로 바꾸고 「실행 완료」를 리턴한다.
+    담당자가 승인한 알림을 실제로 처리할 때 쓴다.
+    """
+    for action in item["actions"]:                                                       # 액션을 하나씩 꺼낸다
+        result = run_action(action, item, state)                                         # 액션을 실행해 결과 문장을 받는다
+        action_log.append(log_line(item, action, result + " (승인: " + approver + ")"))  # 승인자를 붙여 기록한다
+    change_status(item, "조치됨")                                                        # 모두 실행했으니 조치됨으로 옮긴다
+    return "실행 완료"                                                                   # 실행 완료를 리턴한다
+
+
+def reject_unauthorized(item, approver, action_log):                                     # 대기 건 · 승인자 · 기록 리스트를 받는 함수
+    """권한 없는 사람이 승인하려 한 사실을 기록에 남기고 「권한 없음」을 리턴한다. 알림의 상태는 바꾸지 않는다.
+    누가 권한 없이 승인하려 했는지 보안 기록으로 남길 때 쓴다.
+    """
+    action_log.append(log_line(item, "전체", "권한 없음 — 승인 시도: " + approver))      # 권한 없음 기록을 남기고
+    return "권한 없음"                                                                   # 권한 없음을 리턴한다
+
+
+def apply_decision(item, decision, state, action_log):                                   # 대기 건 · 담당자 결정 · 연습용 시스템 · 기록 리스트를 받는 함수
+    """담당자의 결정(승인 또는 거절)을 알림에 적용한다. 먼저 결정한 사람에게 권한이 있는지 확인한다.
+    담당자의 결정을 받아 처리할 때 쓰고, 결과는 「권한 없음」 · 「실행 완료」 · 「거절 처리」 중 하나로 리턴한다.
+    """
+    approver = decision["approver"]                                                      # 결정한 담당자 이름
+    if not is_authorized(approver):                                                      # 승인 권한이 없으면
+        return reject_unauthorized(item, approver, action_log)                           # 기록만 남기고 멈춘다
+    return finish_decision(item, decision, state, action_log)                            # 권한이 있으면 결정을 적용한다
+
+
+def finish_decision(item, decision, state, action_log):                                  # 대기 건 · 담당자 결정 · 연습용 시스템 · 기록 리스트를 받는 함수
+    """권한 확인을 통과한 결정을 처리한다. 승인이면 액션을 실행하고, 거절이면 알림을 종료하고 거절 사유를 기록한다.
+    권한이 확인된 뒤 결정 내용에 따라 나눠 처리할 때 쓴다.
+    """
+    approver = decision["approver"]                                                      # 결정한 담당자 이름
+    if decision["result"] == "승인":                                                     # 결정이 승인이면
+        return execute_actions(item, state, action_log, approver)                        # 액션을 실행하고 그 결과를 리턴한다
+    change_status(item, "종료")                                                          # 승인이 아니면 거절로 보고 종료로 옮긴다
+    action_log.append(log_line(item, "전체", "거절됨 (승인: " + approver + " — " + decision["comment"] + ")"))  # 거절 사유를 기록한다
+    return "거절 처리"                                                                   # 거절 처리를 리턴한다
+```
+
+- 액션 실행은 Unit 1 실습 1-2 의 `incident.py` 에 있는 `run_action` 이 합니다.
+- 권한 확인을 왜 가장 먼저 하는지는 도전 2-1 레슨에서 자세히 다룹니다.
 
 ---

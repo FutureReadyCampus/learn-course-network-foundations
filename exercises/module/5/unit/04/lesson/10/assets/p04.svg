@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>도전 4-1 정답: 넘긴 시간 = 점검 시각 − sla_due, 30분 이상이면 2단계</title>
+<desc>티켓마다 점검 시각에서 응답 기한 시각을 뺀 넘긴 시간과 그 결과를 짝지었다. TCK-1 5분과 TCK-6 15분은 1단계, TCK-3 42분과 TCK-4 38분은 2단계이고, 확인 중인 TCK-1 과 기한 전인 TCK-2 는 올리지 않아 모두 4번이다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">도전 4-1 정답 · 넘긴 시간으로 단계 정하기</text>
+<rect x="20" y="56" width="360" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="200.0" y="81.2" font-size="15" fill="#292929" text-anchor="middle">TCK-1 · 20 − 15 = 5분</text>
+<rect x="420" y="56" width="280" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="560.0" y="81.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">1단계 → team.lead</text>
+<line x1="382" y1="76" x2="418" y2="76" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="20" y="106" width="360" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="200.0" y="131.2" font-size="15" fill="#292929" text-anchor="middle">TCK-1 · 60분에는 확인 중</text>
+<rect x="420" y="106" width="280" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="560.0" y="131.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">올리지 않음</text>
+<line x1="382" y1="126" x2="418" y2="126" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="20" y="156" width="360" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="200.0" y="181.2" font-size="15" fill="#292929" text-anchor="middle">TCK-3 · 110 − 68 = 42분</text>
+<rect x="420" y="156" width="280" height="40" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="560.0" y="181.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">2단계 → soc.head</text>
+<line x1="382" y1="176" x2="418" y2="176" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="20" y="206" width="360" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="200.0" y="231.2" font-size="15" fill="#292929" text-anchor="middle">TCK-4 · 110 − 72 = 38분</text>
+<rect x="420" y="206" width="280" height="40" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="560.0" y="231.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">2단계 → soc.head</text>
+<line x1="382" y1="226" x2="418" y2="226" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="20" y="256" width="360" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="200.0" y="281.2" font-size="15" fill="#292929" text-anchor="middle">TCK-6 · 110 − 95 = 15분</text>
+<rect x="420" y="256" width="280" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="560.0" y="281.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">1단계 → team.lead</text>
+<line x1="382" y1="276" x2="418" y2="276" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="20" y="306" width="360" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="200.0" y="331.2" font-size="15" fill="#292929" text-anchor="middle">TCK-2 · 110 − 243 = −133분</text>
+<rect x="420" y="306" width="280" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="560.0" y="331.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">기한 전 · 대상 아님</text>
+<line x1="382" y1="326" x2="418" y2="326" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="20" y="360" width="680" height="30" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360.0" y="380.2" font-size="15" fill="#292929" text-anchor="middle">올린 횟수 4번 = 알림 서버 [알림 받음] 4줄</text>
+</svg>

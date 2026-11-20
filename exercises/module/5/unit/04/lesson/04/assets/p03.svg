@@ -1,27 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
-<title>contain_account 는 잠금이 확인된 계정만 세션을 끊고, 뒤에 빈틈을 다시 점검합니다</title>
-<desc>contain_account 는 lock_account 로 잠근 뒤 after 가 잠김일 때만 terminate_sessions 를 실행합니다. gaeun 처럼 잠기지 않은 계정은 세션을 그대로 둡니다. 마지막에 find_open_sessions 로 다시 점검합니다.</desc>
-<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>report.py: 티켓 표를 집계하고 조치 기록과 대조해 리포트 줄 만들기</title>
+<desc>티켓 리스트를 make_ticket_table 로 판다스 표로 바꾸고, 규칙별 개수 · 등급별 평균 확인 시간 · 늦은 티켓을 셉니다. find_missing_incidents 로 조치 기록과 대조한 뒤 make_report_lines 가 리포트 줄 리스트를 만듭니다. 파일 쓰기는 도전 4-3 실행 파일이 합니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 4-3: contain_account 의 순서</text>
-<rect x="24" y="70" width="196" height="64" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="122.0" y="96.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="122.0" dy="0" font-weight="700">lock_account</tspan><tspan x="122.0" dy="21.0">잠금 (4번)</tspan></text>
-<rect x="262" y="70" width="196" height="64" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360.0" y="96.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">after == "잠김" ?</tspan><tspan x="360.0" dy="21.0">(5번)</tspan></text>
-<rect x="496" y="70" width="200" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="596.0" y="96.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="596.0" dy="0" font-weight="700">terminate_sessions</tspan><tspan x="596.0" dy="21.0">세션 비우기 (6번)</tspan></text>
-<line x1="220" y1="102" x2="260" y2="102" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<line x1="458" y1="102" x2="494" y2="102" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<text x="466" y="94" font-size="14" text-anchor="start" fill="#666660">예</text>
-<rect x="262" y="176" width="196" height="64" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="360.0" y="202.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">세션 종료 안 함</tspan><tspan x="360.0" dy="21.0">gaeun (VIP)</tspan></text>
-<line x1="360" y1="134" x2="360" y2="174" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<text x="368" y="160" font-size="14" text-anchor="start" fill="#666660">아니오</text>
-<rect x="496" y="176" width="200" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="596.0" y="203.1" font-size="14" text-anchor="middle" fill="#292929"><tspan x="596.0" dy="0">dami 세션 2개 → 0개</tspan><tspan x="596.0" dy="19.6">junho 세션 1개 → 0개</tspan></text>
-<line x1="598" y1="134" x2="598" y2="174" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<rect x="24" y="280" width="672" height="64" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="360.0" y="306.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">find_open_sessions (2 · 3번): 잠겼는데 세션이 남은 계정</tspan><tspan x="360.0" dy="21.0">조치 전 ['junho'] → 조치 뒤 빈틈이 남은 계정: []</tspan></text>
-<line x1="598" y1="240" x2="598" y2="278" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">report.py 가 하는 일</tspan></text>
+<rect x="20" y="56" width="150" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="95.0" y="78.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="95.0" font-weight="bold">티켓 리스트</tspan><tspan x="95.0" dy="21">tickets</tspan></text>
+<line x1="172" y1="84" x2="196" y2="84" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="200" y="56" width="230" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="315.0" y="78.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="315.0" font-weight="bold">make_ticket_table</tspan><tspan x="315.0" dy="21">판다스 표로 바꾸기</tspan></text>
+<rect x="480" y="56" width="220" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="590.0" y="78.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="590.0" font-weight="bold">조치 기록</tspan><tspan x="590.0" dy="21">actions</tspan></text>
+<rect x="200" y="136" width="230" height="38" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="315.0" y="160.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="315.0">count_by_rule</tspan></text>
+<rect x="200" y="186" width="230" height="38" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="315.0" y="210.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="315.0">mean_ack_by_grade</tspan></text>
+<rect x="200" y="236" width="230" height="38" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="315.0" y="260.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="315.0">find_late_tickets</tspan></text>
+<line x1="315" y1="114" x2="315" y2="132" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="590" y1="114" x2="590" y2="156" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="460" y="160" width="240" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="580.0" y="186.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="580.0" font-weight="bold">find_missing_incidents</tspan><tspan x="580.0" dy="21">티켓과 조치 기록 대조</tspan></text>
+<line x1="315" y1="276" x2="315" y2="306" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="580" y1="226" x2="580" y2="306" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="200" y="310" width="500" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="450.0" y="337.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="450.0" font-weight="bold">make_report_lines → 리포트 줄 리스트</tspan></text>
+<text x="20" y="384" font-size="14" text-anchor="start" fill="#666660"><tspan x="20">파일로 쓰는 일은 도전 4-3 의 실행 파일이 합니다.</tspan><tspan x="20" dy="22">도전 4-5 는 find_missing_incidents 를 불러 씁니다.</tspan></text>
 </g>
 </svg>

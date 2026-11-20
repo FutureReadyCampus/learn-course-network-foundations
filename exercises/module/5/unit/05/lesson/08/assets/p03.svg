@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
+<title>글감마다 붙일 출력 한두 줄을 골라 그 줄에서 본 것을 쓴다</title>
+<desc>오류 격리 글감은 INC-402 실패 줄을, 게이트 순서 글감은 허용 목록 대상과 합계 5점 줄을, 다시 구하기 글감은 INC-405 의 decision 과 users_on_ip 를 붙입니다. 막혔다면 오류 줄과 의심한 코드를 씁니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, &#x27;Noto Sans KR&#x27;, -apple-system, &#x27;Segoe UI&#x27;, sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">막힐 때 힌트: 붙일 줄 고르기</text>
+<rect x="20" y="52" width="220" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="130" y="86" font-size="14" fill="#292929" text-anchor="middle">글감 1 · 오류 격리</text>
+<rect x="260" y="52" width="440" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="480" y="86" font-size="14" fill="#292929" text-anchor="middle">INC-402 hana → 실패 · KeyError: 'grade'</text>
+<line x1="242" y1="81" x2="256" y2="81" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="20" y="122" width="220" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="130" y="156" font-size="14" fill="#292929" text-anchor="middle">글감 2 · 게이트 순서</text>
+<rect x="260" y="122" width="440" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="480" y="156" font-size="14" fill="#292929" text-anchor="middle">허용 목록 대상 / VIP 계정 +3, 합계 5점</text>
+<line x1="242" y1="151" x2="256" y2="151" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="20" y="192" width="220" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="130" y="226" font-size="14" fill="#292929" text-anchor="middle">글감 3 · 다시 구하기</text>
+<rect x="260" y="192" width="440" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="480" y="226" font-size="14" fill="#292929" text-anchor="middle">"decision": "자동" · "users_on_ip": 2 → 3점</text>
+<line x1="242" y1="221" x2="256" y2="221" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="20" y="262" width="220" height="58" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="130" y="296" font-size="14" fill="#292929" text-anchor="middle">막힌 이야기</text>
+<rect x="260" y="262" width="440" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="480" y="296" font-size="14" fill="#292929" text-anchor="middle">IndentationError: unexpected indent</text>
+<line x1="242" y1="291" x2="256" y2="291" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<text x="20" y="345" font-size="15" fill="#666660" text-anchor="start">두세 줄만 붙이고 「이 줄에서 무엇을 보았는지」 한 문장을 쓴다</text>
+</g>
+</svg>

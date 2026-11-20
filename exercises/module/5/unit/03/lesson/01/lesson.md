@@ -2,39 +2,44 @@
 id: m5-u03-l01
 title: 시작하기
 render: markdown
-source:
-  repository: FutureReadyCampus/learn-missions
-  path: network/120_day02_pm_approval_retry_flow.md
-  mission_id: GichanSource.m5-1110-pm-approval-retry-flow
-  commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
 # 시작하기
 
-## 목표: 승인과 실패 처리
+## 목표와 오늘의 계획
 
-Unit 2에서 알림에 맥락을 붙이고(`enrichment.py`), 처리 경로를 나누고(`routing.py`), 실행 전에 중복과 한도를 확인하는 안전장치를 만들었습니다(`safe_runner.py`). 그 결과 VIP 계정 알림은 `승인 필요` 경로로 갔고, 플레이북이 승인을 요구하는 알림은 `승인 대기` 로 멈췄습니다. 이번 Unit에서는 두 가지를 더 만듭니다.
+Unit 2 실습 2-1 · 2-2에서는 계정 잠금과 세션 종료(세션, session: 로그인한 뒤 서버에 이어져 있는 접속 상태)를 실행하고, 조치 전 · 후 상태를 기록으로 남겼습니다. 오늘은 그 기록을 써서 두 가지를 합니다. 오탐으로 확인된 조치는 **안전하게 되돌리고**(롤백, rollback: 조치 이전 상태로 복원하는 일), 알림은 담당자가 바로 읽을 수 있는 **티켓**으로 남깁니다.
 
-- **실습 3-1**: 멈춰 있던 알림에 담당자의 결정(승인 또는 거절)을 적용합니다. 승인할 권한이 없는 사람의 승인은 막고, 모든 결정을 기록합니다.
-- **실습 3-2**: 티켓(ticket, 티켓: 처리할 일을 한 건씩 적어 담당자에게 맡기는 요청서) 서비스 같은 외부 서비스가 잠깐 응답하지 않으면 다시 시도하고, 그래도 안 되면 담당자가 확인할 목록에 올립니다. 그리고 Unit 2부터 만든 것을 **하루 흐름**(아래 용어 설명 참고) 하나로 이어서 실행합니다.
+**오늘의 계획 (3시간)**
 
-이번 Unit에서 자주 나오는 말은 이렇습니다.
+1. 시작하기 15분: 이 레슨을 읽고 앞 Unit 파일과 실습 2-2 결과 파일을 확인한 뒤, 알림 데이터와 설정 파일 두 개를 만듭니다.
+2. 실습 약 110분: 핵심 실습 두 개를 차례로 합니다.
+3. 글쓰기 40분: 「보고서 쓰기」 레슨에서 핵심 실습의 질문에 답하고, 「오늘의 글 쓰기」 레슨에서 글 한 편을 씁니다.
+4. 마무리 15분: 실습 3-2 끝의 「이번 Unit 마무리 · 깃허브에 올리기」에서 「제공 파일」 레슨의 파일 두 개를 만들고, 파일을 확인한 뒤 깃허브에 올립니다.
 
-- **승인 권한**: 승인 단추를 눌러도 되는 사람입니다. 오늘 권한이 있는 사람은 `kim.sec` 과 `lee.soc` 입니다.
-- **감사 기록**(audit log, 오딧 로그): 어떤 알림에 무슨 일을 했고 결과가 무엇인지 한 건씩 남긴 기록입니다. 사고가 난 뒤에 어떤 대응을 했는지 다시 확인할 때 씁니다.
-- **재시도**(retry, 리트라이): 실패했을 때 같은 일을 다시 해 보는 것입니다.
-- **연결 오류**(`ConnectionError`): 외부 서비스에 연결하지 못했을 때 파이썬이 내는 오류입니다.
-- **연습용 시스템**(`state`): 진짜 계정 · 방화벽(firewall, 파이어월: 허용하지 않은 접속을 막는 장비나 프로그램) 대신 잠긴 계정 · 차단한 IP · 티켓을 적어 두는 연습용 딕셔너리입니다.
-- **하루 흐름**: 알림 하나가 처음부터 끝까지 지나가는 전체 처리 과정입니다. Unit 2의 맥락 붙이기 · 경로 정하기 · 안전장치(이미 잠긴 계정 건너뛰기, 잠금 한도)와 이번 Unit의 승인 · 재시도를 합친 것입니다. 알림 한 건은 맥락 붙이기 → 경로 정하기를 거친 뒤, 경로에 따라 오탐 종료 · 승인 대기 · 재시도하며 실행(이때 안전장치가 함께 쓰입니다) 중 하나로 처리됩니다.
+**오늘 만들 것 두 가지**
 
-깃허브에 올리는 일은 실습 3-2 마지막에 합니다. 새 문법은 실습 3-2의 `try` / `except` 하나입니다. 보고서에서 [핵심 질문]이 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기는 미리 채운 줄에 맞춥니다. 각 번호 주석 바로 아래에 한 줄을 씁니다. 주석은 지우지 않습니다.
+1. **실습 3-1**: 오탐으로 확인된 알림의 조치를 기록을 보고 되돌립니다. <mark>자동이 바꾼 것만</mark> 되돌리고, 되돌릴 수 없는 조치(세션 종료)는 따로 표시합니다(`undo_actions.py` · `rollback.py`).
+2. **실습 3-2**: 알림 한 건으로 담당자가 바로 판단할 수 있는 **티켓을 생성**(ticketing, 티케팅: 알림을 추적 가능한 티켓으로 등록하는 일)합니다. 티켓에는 응답 기한(SLA)을 계산해 적고, 사후 검증에 실패한 조치는 직접 확인 대상으로 따로 표시합니다(`ticketing.py`).
 
- **이전 파일**: 실습 3-1은 Unit 1의 `incident.py` 만 씁니다. 실습 3-2는 Unit 2 파일(`enrichment.py` · `routing.py` · `safe_runner.py`)을 씁니다. 또 Unit 2에서 쓴 데이터 파일 `users_info.json` · `source_ips.json` · `trusted_ips.json` 도 씁니다(JSON, 제이슨: 이름과 값을 짝지어 적는 파일 형식). 여기에 Unit 1의 `incident_samples.json` · `config/playbook_registry.json` 도 씁니다. 없는 파일은 앞 Unit 레슨의 코드 상자로 만듭니다(Unit 1은 「시작하기」 · 실습 1-1 · 실습 1-2, Unit 2는 「시작하기」와 실습 2-1 ~ 2-3 레슨).
+**도전 3-1 ~ 3-3은 선택입니다.** 핵심 실습 두 개와 글쓰기를 마치고 시간이 남을 때 합니다. 도전 3-1에서는 알림 8건을 한 번에 처리하고 근무 보고를 만들고, 도전 3-2에서는 같은 사건의 알림을 티켓 한 장으로 **병합**(merge)하고 티켓 상태를 바꾸고, 도전 3-3에서는 등급에 맞는 담당자에게 알림을 보내고 실패하면 다시 보냅니다. 도전 3-2 · 3-3의 완성 파일은 「제공 파일」 레슨에서 받으므로, 도전을 하지 않아도 다음 Unit을 따라갈 수 있습니다.
 
-## Unit 2 파일 확인하고 데이터 파일 만들기
+핵심 실습에는 새 문법이 없습니다. 보고서에서 [핵심 질문]이 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 코드를 쓸 때는 들여쓰기를 미리 채운 줄에 맞추고, 각 번호 주석 바로 아래에 한 줄을 씁니다. 주석은 지우지 않습니다.
+
+## 폴더 열고 이전 파일 확인하기
+
+오늘 코드는 앞 Unit 파일을 `import` 로 불러 씁니다. 먼저 `soar_response` 폴더에 아래 파일이 있는지 봅니다.
+
+1. **Unit 1 파일**: 실습 1-2의 `incident.py`(`load_json` · `save_json`)
+2. **Unit 2 파일**
+   1. 실습 2-1의 `containment_store.py` · `account_actions.py`
+   2. Unit 2 「제공 파일」 레슨의 `ip_actions.py`(`block_ip` · `unblock_ip`)
+   3. 실습 2-2를 실행하면 생기는 결과 파일 `containment_state.json`(잠긴 계정 같은 연습용 시스템 상태)과 `containment_log.json`(조치 기록 5건). 실습 3-1이 이 두 파일을 읽습니다.
+
+**순서**
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** Module 5 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `config` · `incident.py` · `incident_samples.json` · `enrichment.py` · `routing.py` · `safe_runner.py` · `users_info.json` · `source_ips.json` · `trusted_ips.json` 이 보이면</mark> 됩니다.
+2. **[터미널]** Module 5 폴더로 들어가 파일을 확인합니다.
    ```bash
    pwd
    cd soar_response
@@ -42,40 +47,150 @@ Unit 2에서 알림에 맥락을 붙이고(`enrichment.py`), 처리 경로를 �
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
-3. **파일은 이렇게 만듭니다.** 이 페이지에 나오는 파일은 모두 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, **파일 이름을 확장자까지 그대로** 적고 Enter 를 친 뒤, 내용을 붙여 넣고 `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다. 답을 적는 보고서(`report_u3.md`)는 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
-4. **[VS Code]** 데이터 파일 두 개 `pending.json` · `decisions.json` 을 `soar_response` 폴더에 만들고, 아래 각 파일의 코드 상자 내용을 붙여 넣습니다.
+3. **[터미널]** 앞 Unit 파일을 불러올 수 있는지 확인합니다(맥북은 `python3`). <mark>`앞 Unit 파일 정상` 이 나와야</mark> 합니다.
+   ```bash
+   python -c "from incident import load_json, save_json; from containment_store import load_state, make_record, LOG_PATH; from account_actions import unlock_account; from ip_actions import block_ip, unblock_ip, DEFAULT_TTL; print('앞 Unit 파일 정상')"
+   ```
+   - `ModuleNotFoundError` 나 `ImportError` 가 나오면 다음 페이지 「이전 파일이 없을 때」를 봅니다.
+4. **[터미널]** 실습 2-2 결과 파일이 맞는지 확인합니다. <mark>`['junho', 'dami'] 5` 가 나와야</mark> 합니다.
+   ```bash
+   python -c "import json; print(json.load(open('containment_state.json', encoding='utf-8'))['locked_users'], len(json.load(open('containment_log.json', encoding='utf-8'))))"
+   ```
+   - `['junho'] 4` 가 나오면 실습 2-1만 실행하고 실습 2-2 실행 파일은 아직 실행하지 않은 것입니다. `python exercise2-2_run.py` 를 한 번 실행한 뒤 다시 확인합니다.
+   - `FileNotFoundError` 가 나오면 다음 페이지 「이전 파일이 없을 때」의 두 상자로 파일을 만듭니다.
+5. **파일은 이렇게 만듭니다.** 따로 내려받는 파일은 없고, 모두 코드 상자에서 복사해 만듭니다.
+   1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다.
+   2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
+   - 답을 적는 **보고서** `report_u3.md` 는 「보고서 쓰기」 레슨의 틀을 복사해 만듭니다.
 
-**`pending.json`** — 승인을 기다리는 건 3건입니다(Unit 2에서 `승인 필요` 경로로 간 VIP 알림 1건과, 플레이북이 승인을 요구해 멈춘 2건). `INC-002` 같은 번호는 **인시던트**(incident, 보안 알림 가운데 사람이 확인하고 대응해야 하는 사건 한 건)에 붙인 관리 번호입니다. 각 건에는 어떤 플레이북(playbook, 플레이북: 알림 종류별로 어떤 대응을 할지 적어 둔 절차) 때문에 멈췄는지, 승인되면 어떤 액션을 실행하는지, 왜 승인이 필요한지가 적혀 있습니다. 실습 3-1은 이 파일을 읽어서 씁니다. 실습 3-2 하루 흐름은 이 파일을 읽지 않고, 코드가 같은 내용을 직접 만듭니다.
+> 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다(맥북은 `python3`). **앞 Unit 파일은 고치지 않습니다.** 실습 3-1 실행 파일은 두 결과 파일을 읽기만 하고 다시 저장하지 않아서, 몇 번을 실행해도 같은 결과가 나옵니다.
+
+## 이전 파일이 없을 때
+
+앞 페이지의 확인에서 오류가 난 파일만 만듭니다. **이미 있는 파일은 건너뜁니다.**
+
+**파이썬 파일** — 앞 Unit 레슨의 코드 상자로 만들고, 빈칸은 그 Unit 정답 레슨의 채운 코드로 채웁니다.
+
+1. `containment_store.py` · `account_actions.py`: Unit 2 실습 2-1 레슨
+2. `ip_actions.py`: Unit 2 「제공 파일」 레슨(완성본이라 빈칸이 없습니다)
+3. `incident.py`: Unit 1 실습 1-2 레슨. Unit 1 파일이 아예 없으면 아래 상자로 오늘 쓰는 두 함수만 담은 `incident.py` 를 만들어도 핵심 실습 두 개를 할 수 있습니다. 도전 3-1은 Unit 1 파일 전체가 있어야 합니다.
+
+**`incident.py`** — Unit 1 파일에서 오늘 쓰는 두 함수(`load_json` · `save_json`)만 담았습니다. Unit 1 파일 전체가 있으면 그것을 그대로 씁니다.
+
+```python
+import json                                                  # JSON 파일을 읽고 쓰기 위해 json 을 불러온다
+
+
+def load_json(path):                                         # 파일 경로를 받는 함수
+    """JSON 파일을 읽어 리스트나 딕셔너리로 리턴한다.
+    인시던트와 플레이북 등록 파일을 읽을 때 쓴다.
+    """
+    with open(path, encoding="utf-8") as file:               # 파일을 읽기 모드로 연다
+        data = json.load(file)                               # JSON 글자를 파이썬 값으로 바꾼다
+    return data                                              # 읽은 값을 리턴한다
+
+
+def save_json(data, path):                                   # 저장할 값과 파일 경로를 받는 함수
+    """값을 JSON 파일로 저장한다.
+    실행 결과 상태와 감사 기록을 남길 때 쓴다.
+    """
+    with open(path, "w", encoding="utf-8") as file:          # 파일을 쓰기 모드로 연다
+        json.dump(data, file, ensure_ascii=False, indent=2)  # 한글은 그대로, 줄을 나눠 저장한다
+```
+
+**실습 2-2 결과 파일** — Unit 2 파일이 있으면 `python exercise2-2_run.py` 를 한 번 실행하는 것이 가장 쉽습니다. 실습 2-2를 하지 못했다면 아래 두 상자를 `soar_response` 폴더에 같은 이름의 파일로 만듭니다. 실습 2-2 실행 파일이 저장하는 내용과 같습니다.
+
+**`containment_state.json`** — 실습 2-2가 끝난 뒤의 연습용 시스템 상태입니다. `junho` 는 수업 전부터, `dami` 는 실습 2-2에서 잠겼고, 두 계정의 세션은 모두 종료됐습니다.
+
+```
+{"locked_users": ["junho", "dami"], "blocked_ips": [], "block_expiry": {}, "clock": 0, "sessions": {"dami": [], "seoyeon": ["S-201"], "gaeun": ["S-301"], "jiwoo": ["S-401"], "junho": [], "hana": ["S-601"]}}
+```
+
+**`containment_log.json`** — 실습 2-2가 남긴 조치 기록 5건입니다. 기록마다 조치 전(`before`)과 조치 후(`after`) 상태가 들어 있습니다.
 
 ```
 [
-  {"id": "INC-002", "entity": "seoyeon", "playbook": "PB-002", "actions": ["담당자 알림", "티켓 생성"], "why": "플레이북 승인 값이 담당자 승인 필요", "status": "분류됨"},
-  {"id": "INC-003", "entity": "gaeun", "playbook": "VIP 확인", "actions": ["담당자 알림", "티켓 생성"], "why": "VIP 계정이라 경로가 승인 필요", "status": "분류됨"},
-  {"id": "INC-005", "entity": "198.51.100.90", "playbook": "PB-003", "actions": ["IP 차단", "티켓 생성"], "why": "플레이북 승인 값이 담당자 승인 필요", "status": "분류됨"}
+  {"action": "계정 잠금", "target": "dami", "incident": "INC-001", "before": "잠기지 않음", "after": "잠김", "reason": "퇴사한 계정의 서버 요청"},
+  {"action": "세션 종료", "target": "dami", "incident": "INC-001", "before": "세션 2개", "after": "세션 0개", "reason": "퇴사한 계정의 서버 요청"},
+  {"action": "계정 잠금", "target": "gaeun", "incident": "INC-003", "before": "변경 없음", "after": "변경 없음", "reason": "VIP 계정이라 자동 조치 대상이 아님"},
+  {"action": "계정 잠금", "target": "junho", "incident": "INC-006", "before": "잠김", "after": "잠김", "reason": "이미 잠겨 있어 변경 없음"},
+  {"action": "세션 종료", "target": "junho", "incident": "INC-006", "before": "세션 1개", "after": "세션 0개", "reason": "퇴사 처리 확인"}
 ]
 ```
 
-**`decisions.json`** — 담당자가 메신저에서 누른 승인 · 거절 결과를 파일로 흉내 낸 것입니다. 건마다 적힌 것은 세 가지입니다. 누가 눌렀는지(`approver`), 승인과 거절 중 무엇을 눌렀는지(`result`), 남긴 말(`comment`)입니다. 권한이 있는 담당자는 `kim.sec` · `lee.soc` 이고 `intern01` 은 권한이 없습니다. 실습 3-1과 실습 3-2가 읽습니다.
+다 만들었으면 앞 페이지의 3 · 4번 확인을 다시 합니다.
+
+## 알림 데이터와 설정 파일 만들기
+
+실습 3-2가 읽는 데이터 파일 두 개를 만듭니다. 도전 3-2 · 3-3도 같은 파일을 읽습니다.
+
+1. **[VS Code]** `soar_response` 폴더 안에 `alerts_thu.json` 을, `config` 폴더 안에 `escalation_rules.json` 을 만들고 아래 내용을 붙여 넣고 저장합니다.
+   - `config` 폴더가 없으면 터미널에서 `mkdir -p config` 로 만듭니다.
+2. **[터미널]** 파일이 정상인지 확인합니다(맥북은 `python3`). <mark>`11 6` 이 나와야</mark> 합니다(알림이 11건, 규칙 파일의 키가 6개라는 뜻입니다).
+   ```bash
+   python -c "import json; print(len(json.load(open('alerts_thu.json', encoding='utf-8'))), len(json.load(open('config/escalation_rules.json', encoding='utf-8'))))"
+   ```
+
+**`alerts_thu.json`** — 오늘 근무 3시간 동안 들어온 알림 11건입니다.
+
+- **무엇인가**:
+  - 알림 한 건은 `id`(알림 번호), `minute`(알림 수신 시각), `entity`(대상: 사용자 이름 또는 IP), `rule`(탐지 규칙), `grade`(심각도 등급, severity)로 구성됩니다.
+  - 알림에는 처리 정보도 들어 있습니다. `status` 는 알림 처리 상태입니다. `playbook` 은 실행한 플레이북(playbook: 알림 유형별로 정해 둔 대응 절차)입니다. `done` 은 이미 수행한 조치 내역을 문장으로 적은 리스트입니다.
+  - `minute` 은 근무를 시작한 때를 0분으로 센 분 단위 숫자입니다. `INC-201` 은 0분, `INC-211` 은 160분에 왔습니다.
+- **어디에 쓰나**: 실습 3-2 · 도전 3-2 · 도전 3-3 실행 파일이 이 파일을 읽어 알림을 하나씩 처리합니다.
+
+```
+[
+  {"id": "INC-201", "minute": 0, "entity": "dami", "rule": "퇴사한 계정", "grade": "high", "status": "조치됨", "playbook": "PB-001", "done": ["계정 잠금: 잠기지 않음 → 잠김", "세션 종료: 세션 2개 → 세션 0개"]},
+  {"id": "INC-202", "minute": 3, "entity": "198.51.100.90", "rule": "경로 스캔", "grade": "low", "status": "조치됨", "playbook": "PB-003", "done": ["IP 차단: 차단되지 않음 → 차단됨"]},
+  {"id": "INC-203", "minute": 8, "entity": "gaeun", "rule": "규칙은 허용인데 서버가 거절", "grade": "mid", "status": "승인 대기", "playbook": "VIP 확인", "done": []},
+  {"id": "INC-204", "minute": 12, "entity": "seoyeon", "rule": "대량 다운로드", "grade": "mid", "status": "승인 대기", "playbook": "PB-002", "done": []},
+  {"id": "INC-205", "minute": 14, "entity": "dami", "rule": "퇴사한 계정", "grade": "high", "status": "조치됨", "playbook": "PB-001", "done": ["계정 잠금: 잠김 → 잠김 (이미 잠겨 있어 변경 없음)"]},
+  {"id": "INC-206", "minute": 20, "entity": "198.51.100.90", "rule": "경로 스캔", "grade": "low", "status": "조치됨", "playbook": "PB-003", "done": ["IP 차단: 차단됨 → 차단됨 (이미 차단되어 변경 없음)"]},
+  {"id": "INC-207", "minute": 30, "entity": "203.0.113.250", "rule": "경로 스캔", "grade": "low", "status": "조치됨", "playbook": "PB-003", "done": ["IP 차단: 차단되지 않음 → 차단되지 않음 (확인 실패)"]},
+  {"id": "INC-208", "minute": 35, "entity": "hana", "rule": "업무 시간 밖 로그인", "grade": "mid", "status": "조치 없음", "playbook": "없음", "done": []},
+  {"id": "INC-209", "minute": 40, "entity": "dami", "rule": "퇴사한 계정", "grade": "high", "status": "조치됨", "playbook": "PB-001", "done": ["계정 잠금: 잠김 → 잠김 (이미 잠겨 있어 변경 없음)"]},
+  {"id": "INC-210", "minute": 95, "entity": "dami", "rule": "퇴사한 계정", "grade": "high", "status": "조치됨", "playbook": "PB-001", "done": ["계정 잠금: 잠김 → 잠김 (이미 잠겨 있어 변경 없음)"]},
+  {"id": "INC-211", "minute": 160, "entity": "dami", "rule": "퇴사한 계정", "grade": "high", "status": "조치됨", "playbook": "PB-001", "done": ["계정 잠금: 잠김 → 잠김 (이미 잠겨 있어 변경 없음)"]}
+]
+```
+
+**`config/escalation_rules.json`** — 티켓 생성 · 병합 · 알림 전파에 적용하는 정책 설정(policy configuration, 폴리시 컨피규레이션: 코드를 수정하지 않고 값만 바꿔 동작을 조정하는 설정 파일)입니다.
+
+- **무엇인가**:
+  - `sla_minutes` 는 등급별 응답 기한(SLA, 서비스 수준 협약)입니다. 알림을 수신한 뒤 담당자가 응답해야 하는 시간이며, 단위는 분입니다. 실습 3-2가 씁니다.
+  - `recipients` 는 등급별 알림 수신자(recipient, 리서피언트: 알림을 받는 사람)입니다. 도전 3-3이 씁니다.
+  - `merge_window_minutes` 는 병합 시간 범위(merge window, 머지 윈도우: 이 시간 안에 수신된 같은 사건의 알림만 병합하는 기준)이며 단위는 분입니다. 값이 60이므로, 티켓이 마지막으로 갱신된 뒤 60분 이내에 수신된 같은 사건의 알림만 그 티켓에 병합합니다. 도전 3-2가 씁니다.
+  - `send_gap_minutes` 는 같은 티켓에 알림을 다시 전송하기까지 두는 최소 간격이며 단위는 분입니다. 값이 30이므로, <mark>마지막으로 알린 뒤 30분이 지나야</mark> 같은 티켓에 다시 전송합니다. 도전 3-3이 씁니다.
+  - `alert_url` 은 알림 서버 주소입니다. 알림 서버는 도전 3-3에서 두 번째 터미널로 켭니다.
+  - `escalation_steps` 는 응답 기한이 지난 티켓을 상급자에게 올리는 에스컬레이션(escalation, 에스컬레이션: 미처리 사건을 상위 담당자에게 넘기는 일) 단계로, Unit 4 도전 4-1에서 씁니다.
+- **어디에 쓰나**: 코드를 바꾸지 않고 이 파일만 고쳐도 응답 기한과 수신자(알림을 받는 사람)가 바뀝니다.
 
 ```
 {
-  "INC-002": {"approver": "kim.sec", "result": "승인", "comment": "대량 다운로드 사유를 확인해야 함"},
-  "INC-003": {"approver": "kim.sec", "result": "거절", "comment": "계정 관리자의 정상 작업으로 확인됨"},
-  "INC-005": {"approver": "intern01", "result": "승인", "comment": "IP 차단 진행"}
+  "sla_minutes": {"high": 15, "mid": 60, "low": 240},
+  "recipients": {
+    "high": ["kim.sec", "lee.soc", "team.lead"],
+    "mid": ["kim.sec", "lee.soc"],
+    "low": ["kim.sec"]
+  },
+  "merge_window_minutes": 60,
+  "send_gap_minutes": 30,
+  "alert_url": "http://127.0.0.1:5001/alert",
+  "escalation_steps": [
+    {"overdue_minutes": 0, "notify": "team.lead"},
+    {"overdue_minutes": 30, "notify": "soc.head"}
+  ]
 }
 ```
-
-5. **[터미널]** 파일이 정상인지 확인합니다(맥북은 `python3`). <mark>`3 3` 이 나와야</mark> 합니다.
-   ```bash
-   python -c "import json; print(len(json.load(open('pending.json', encoding='utf-8'))), len(json.load(open('decisions.json', encoding='utf-8'))))"
-   ```
 
 ## 오류가 나면
 
 - `pwd` 가 `soar_response` 로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
-- `ModuleNotFoundError` 는 <mark>`incident.py` · `enrichment.py` 같은 앞 파일이 이 폴더에 없다는 뜻</mark>입니다. 앞 Unit 레슨의 코드 상자로 만듭니다.
-- 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env`(API 키를 적어 둔 파일) · API 키(외부 서비스를 쓸 수 있게 확인하는 비밀 문자열)는 지웁니다). 막히면 맨 아래 「정답」을 보고, 풀리지 않으면 보고서에 「모름 — 막힌 곳: …」 이라고 씁니다.
-
-> 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다.
+- `ModuleNotFoundError: No module named 'incident'` 는 <mark>Unit 1 `incident.py` 가 이 폴더에 없다는 뜻</mark>입니다. `No module named 'containment_store'` · `'account_actions'` · `'ip_actions'` 는 Unit 2 파일이 없다는 뜻입니다. 「이전 파일이 없을 때」 페이지를 보고 만듭니다.
+- `ImportError: cannot import name 'unblock_ip'` 처럼 `cannot import name` 이 나오면 파일은 있지만 그 함수가 빠진 것입니다. `ip_actions.py` 는 Unit 2 「제공 파일」 레슨의 완성본으로 바꿔 붙여 넣습니다.
+- `FileNotFoundError` 는 `containment_state.json` 이나 `alerts_thu.json` 같은 데이터 파일이 없다는 뜻입니다. 이름과 폴더(`config/` 로 시작하는 파일은 `config` 폴더)를 확인하고 이 레슨의 코드 상자로 다시 만듭니다.
+- `json.decoder.JSONDecodeError` 는 붙여 넣을 때 괄호나 따옴표가 빠졌다는 뜻입니다. 파일 내용을 지우고 복사 버튼으로 다시 붙여 넣습니다.
+- 오류 전체와 입력한 명령을 AI 에게 붙여 넣어 물어봅니다. 이때 <mark>`.env` 와 API 키는 지웁니다</mark>. 그래도 막히면 이 Unit 뒤쪽의 정답을 봅니다. 그래도 풀리지 않으면 보고서에 「모름 — 막힌 곳: …」 이라고 씁니다.
 
 ---

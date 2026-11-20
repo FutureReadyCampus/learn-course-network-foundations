@@ -1,32 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>세 데이터 파일과 알림 5건을 보강하고 단계 1~3에서 알림별 맥락과 VIP 알림 수를 출력한다</title>
-<desc>입력, 프로그램, 출력 흐름도다. 알림 5건과 계정 정보, 접속 IP, 신뢰 IP 파일을 enrichment.py와 exercise2-1_run.py가 처리해 단계 1 개수, 단계 2 알림별 정보, 단계 3 VIP 계정 알림 수를 출력한다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>lock_account 는 VIP와 이미 잠김을 먼저 거르고, 잠근 뒤 실제로 잠겼는지 확인합니다</title>
+<desc>lock_account 는 check_policy 로 VIP 를 거르고, 이미 잠긴 계정은 바꾸지 않고 기록합니다. 그 밖에는 잠금 리스트에 추가한 뒤 verify_locked 로 확인해 잠김 또는 확인 실패를 기록합니다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 2-1: 알림 5건 보강하고 VIP 알림 수 세기</text>
-<text x="110" y="70" font-size="16" fill="#666660" text-anchor="middle" font-weight="700">입력</text>
-<text x="360" y="70" font-size="16" fill="#666660" text-anchor="middle" font-weight="700">프로그램</text>
-<text x="605" y="70" font-size="16" fill="#666660" text-anchor="middle" font-weight="700">출력</text>
-<rect x="20" y="84" width="180" height="42" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text y="109.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="110.0" dy="0.0">incident_samples.json</tspan></text>
-<line x1="202" y1="105" x2="246" y2="108" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<rect x="20" y="134" width="180" height="42" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text y="159.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="110.0" dy="0.0">users_info.json</tspan></text>
-<line x1="202" y1="155" x2="246" y2="124" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<rect x="20" y="184" width="180" height="42" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text y="209.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="110.0" dy="0.0">source_ips.json</tspan></text>
-<line x1="202" y1="205" x2="246" y2="140" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<rect x="20" y="234" width="180" height="42" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text y="259.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="110.0" dy="0.0">trusted_ips.json</tspan></text>
-<line x1="202" y1="255" x2="246" y2="156" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<rect x="250" y="84" width="220" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text y="117.3" font-size="14" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0" font-weight="700">exercise2-1_run.py</tspan><tspan x="360.0" dy="19.6">7번 보강 호출</tspan><tspan x="360.0" dy="19.6">8 · 9번 VIP 수 세기</tspan></text>
-<line x1="360" y1="182" x2="360" y2="196" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<text x="372" y="194" font-size="14" fill="#666660">import</text>
-<rect x="250" y="200" width="220" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text y="233.3" font-size="14" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0" font-weight="700">enrichment.py</tspan><tspan x="360.0" dy="19.6">1 ~ 6번 직접 씀</tspan><tspan x="360.0" dy="19.6">계정 · 접속 IP 조회</tspan></text>
-<line x1="472" y1="132" x2="506" y2="160" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<rect x="510" y="84" width="190" height="212" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text y="136.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="605.0" dy="0.0">단계 1</tspan><tspan x="605.0" dy="19.6">불러온 개수</tspan><tspan x="605.0" dy="19.6">단계 2</tspan><tspan x="605.0" dy="19.6">알림마다 재직 · VIP</tspan><tspan x="605.0" dy="19.6">· 접속 IP · 신뢰 IP</tspan><tspan x="605.0" dy="19.6">단계 3</tspan><tspan x="605.0" dy="19.6">VIP 계정 알림 수</tspan></text>
-<rect x="20" y="316" width="680" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="343.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0">단계 2 한 줄 예: INC-003 gaeun · 재직: 재직 · VIP: 예</tspan><tspan x="360.0" dy="19.6">· 접속 IP: 198.51.100.77 · 신뢰 IP: 아니오</tspan></text>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 2-1: lock_account 의 판단 순서</text>
+<rect x="24" y="66" width="196" height="60" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="122.0" y="90.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="122.0" dy="0" font-weight="700">check_policy</tspan><tspan x="122.0" dy="21.0">VIP 인가? (3 · 4번)</tspan></text>
+<rect x="500" y="66" width="196" height="60" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="598.0" y="90.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="598.0" dy="0" font-weight="700">변경 없음 → 변경 없음</tspan><tspan x="598.0" dy="21.0">gaeun</tspan></text>
+<line x1="220" y1="96" x2="498" y2="96" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="300" y="88" font-size="14" text-anchor="start" fill="#666660">예 · 이유 기록</text>
+<rect x="24" y="156" width="196" height="60" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="122.0" y="180.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="122.0" dy="0" font-weight="700">이미 잠겨 있나?</tspan><tspan x="122.0" dy="21.0">locked_users 확인</tspan></text>
+<rect x="500" y="156" width="196" height="60" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="598.0" y="180.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="598.0" dy="0" font-weight="700">잠김 → 잠김</tspan><tspan x="598.0" dy="21.0">junho</tspan></text>
+<line x1="220" y1="186" x2="498" y2="186" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="300" y="178" font-size="14" text-anchor="start" fill="#666660">예 · 변경 없음</text>
+<line x1="122" y1="126" x2="122" y2="154" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="130" y="146" font-size="14" text-anchor="start" fill="#666660">아니오</text>
+<rect x="24" y="246" width="196" height="60" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="122.0" y="270.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="122.0" dy="0" font-weight="700">잠금 리스트에 추가</tspan><tspan x="122.0" dy="21.0">(6번, append)</tspan></text>
+<line x1="122" y1="216" x2="122" y2="244" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="130" y="236" font-size="14" text-anchor="start" fill="#666660">아니오</text>
+<rect x="262" y="246" width="196" height="60" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="270.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">verify_locked</tspan><tspan x="360.0" dy="21.0">실제로 있나? (5번)</tspan></text>
+<line x1="220" y1="276" x2="260" y2="276" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<rect x="500" y="236" width="196" height="46" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="598.0" y="264.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="598.0" dy="0" font-weight="700">잠기지 않음 → 잠김</tspan></text>
+<rect x="500" y="296" width="196" height="60" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="598.0" y="320.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="598.0" dy="0" font-weight="700">잠기지 않음</tspan><tspan x="598.0" dy="21.0">(확인 실패)</tspan></text>
+<line x1="458" y1="268" x2="498" y2="259" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<line x1="458" y1="286" x2="498" y2="320" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="24" y="386" font-size="15" text-anchor="start" fill="#666660">기록은 append_log 로 containment_log.json 에 한 건씩 더합니다 (9번).</text>
+</g>
 </svg>

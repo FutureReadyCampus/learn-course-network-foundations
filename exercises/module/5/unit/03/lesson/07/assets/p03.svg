@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>send_ticket_notice 는 간격을 보고 건너뛰거나, 수신자를 골라 최대 3번 보낸다</title>
+<desc>알림 한 건마다 should_send 로 보낼 때인지 판단한다. 아니면 건너뜀, 맞으면 pick_recipients 로 수신자를 고르고 send_with_retry 로 최대 3번 보낸다. 성공하면 전송, 모두 실패하면 실패를 리턴한다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">도전 3-3 · 알림 한 건이 처리되는 길</text>
+<rect x="20" y="60" width="170" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="105.0" y="89.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">알림 한 건</text>
+<text x="105.0" y="110.8" font-size="15" fill="#292929" text-anchor="middle">티켓 · 지금 시각</text>
+<rect x="230" y="55" width="230" height="80" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="345.0" y="79.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">should_send (2~4번)</text>
+<text x="345.0" y="100.2" font-size="15" fill="#292929" text-anchor="middle">처음이거나</text>
+<text x="345.0" y="121.2" font-size="15" fill="#292929" text-anchor="middle">30분 지났나?</text>
+<rect x="510" y="65" width="190" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="605.0" y="100.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">건너뜀</text>
+<rect x="230" y="175" width="230" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="345.0" y="201.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">pick_recipients (1번)</text>
+<text x="345.0" y="222.8" font-size="15" fill="#292929" text-anchor="middle">등급별 수신자 리스트</text>
+<rect x="230" y="279" width="230" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="345.0" y="305.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">send_with_retry (5·6번)</text>
+<text x="345.0" y="326.8" font-size="15" fill="#292929" text-anchor="middle">최대 3번 보내 보기</text>
+<rect x="510" y="262" width="190" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="605.0" y="289.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">전송</text>
+<rect x="510" y="318" width="190" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="605.0" y="345.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">실패 (0 리턴)</text>
+<line x1="192" y1="95" x2="228" y2="95" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="462" y1="95" x2="508" y2="95" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<text x="464" y="86" font-size="14" fill="#666660">아니오</text>
+<line x1="345" y1="137" x2="345" y2="173" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<text x="353" y="160" font-size="14" fill="#666660">예</text>
+<line x1="345" y1="241" x2="345" y2="277" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="462" y1="300" x2="508" y2="284" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<text x="466" y="280" font-size="14" fill="#666660">성공</text>
+<line x1="462" y1="322" x2="508" y2="340" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="20" y="175" width="170" height="168" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="105.0" y="224.7" font-size="14" font-weight="bold" fill="#292929" text-anchor="middle">challenge3-3_run.py</text>
+<text x="105.0" y="244.3" font-size="14" fill="#292929" text-anchor="middle">7번 result 저장</text>
+<text x="105.0" y="263.9" font-size="14" fill="#292929" text-anchor="middle">8번 전송이면</text>
+<text x="105.0" y="283.5" font-size="14" fill="#292929" text-anchor="middle">9번 sent_count</text>
+<text x="105.0" y="303.1" font-size="14" fill="#292929" text-anchor="middle">+ 1</text>
+</svg>

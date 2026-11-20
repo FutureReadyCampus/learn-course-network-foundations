@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>report_u1.md 는 틀을 복사해 만들고, 핵심 칸은 모두, 도전 칸은 한 것만 채운다</title>
+<desc>soar_response 폴더에 report_u1.md 를 새로 만들어 복사한 틀을 붙여 넣는다. 실습 1-1 · 1-2 · 1-3 과 마무리 칸은 모두 채우고, 도전 1-1 · 1-2 칸은 한 도전만 채운다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">보고서 파일 report_u1.md 만들기</text>
+<rect x="20" y="56" width="680" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text y="86.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0">soar_response › New File › report_u1.md  →  틀 복사 · 붙여 넣기 · 이름 바꾸기</tspan></text>
+<rect x="20" y="126" width="330" height="190" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text y="184.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="185.0" dy="0" font-weight="700">핵심 (모두 채움)</tspan><tspan x="185.0" dy="21.0">## 실습 1-1</tspan><tspan x="185.0" dy="21.0">## 실습 1-2</tspan><tspan x="185.0" dy="21.0">## 실습 1-3</tspan><tspan x="185.0" dy="21.0">## 마무리</tspan></text>
+<rect x="370" y="126" width="330" height="190" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="184.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="535.0" dy="0" font-weight="700">도전 (선택)</tspan><tspan x="535.0" dy="21.0">## 도전 1-1</tspan><tspan x="535.0" dy="21.0">## 도전 1-2</tspan><tspan x="535.0" dy="21.0">한 도전만 채우고</tspan><tspan x="535.0" dy="21.0">나머지는 비워 둔다</tspan></text>
+<text x="20" y="350" font-size="14" fill="#666660" text-anchor="start">실습 하나를 마칠 때마다 그 실습의 질문을 읽고 같은 번호의 답: 뒤에 쓴다</text>
+</svg>

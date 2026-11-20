@@ -1,41 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>VIP 여부를 먼저 묻고, 신뢰 IP 이며 규칙이 모두 IP 관련이면 오탐 종료, 아니면 기본 경로</title>
-<desc>알림은 VIP 이면 승인 필요, 신뢰 IP 이고 탐지 규칙이 모두 IP 관련이면 오탐 종료, 둘 다 아니면 기본 경로로 간다. INC-002 는 신뢰 IP 지만 대량 다운로드 규칙이 함께 있어 기본 경로다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 384" role="img">
+<title>ip_actions.py 는 허용 목록과 공유 IP 를 먼저 거르고, 차단에는 끝나는 시각을 둡니다</title>
+<desc>허용 목록에 있거나 쓰는 계정이 2개 이상인 IP 는 차단하지 않습니다. 나머지는 block_ip 로 차단하고 끝나는 시각을 clock + ttl 로 적으며, expire_blocks 가 끝나는 시각이 지난 차단을 풉니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">조건 분기: 위에서부터 차례로 묻고 처음 맞는 경로로 보낸다</text>
-<rect x="20" y="160" width="130" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="85" y="183.475" font-size="15" fill="#292929" text-anchor="middle">맥락이 붙은</text>
-<text x="85" y="205.225" font-size="15" fill="#292929" text-anchor="middle">알림</text>
-<rect x="190" y="60" width="250" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="315" y="88.475" font-size="15" fill="#292929" text-anchor="middle">① context["vip"] 가</text>
-<text x="315" y="110.225" font-size="15" fill="#292929" text-anchor="middle">참인가?</text>
-<rect x="190" y="210" width="250" height="90" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="315" y="237.6" font-size="15" fill="#292929" text-anchor="middle">② ip_trusted 가 참이고</text>
-<text x="315" y="259.35" font-size="15" fill="#292929" text-anchor="middle">reasons 가 모두</text>
-<text x="315" y="281.1" font-size="15" fill="#292929" text-anchor="middle">IP 관련 규칙인가?</text>
-<rect x="500" y="60" width="200" height="70" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="600" y="88.475" font-size="15" fill="#292929" text-anchor="middle">승인 필요</text>
-<text x="600" y="110.225" font-size="15" fill="#292929" text-anchor="middle">INC-003 (gaeun)</text>
-<rect x="500" y="220" width="200" height="70" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="600" y="248.475" font-size="15" fill="#292929" text-anchor="middle">오탐 종료</text>
-<text x="600" y="270.225" font-size="15" fill="#292929" text-anchor="middle">INC-004 (jiwoo)</text>
-<rect x="500" y="320" width="200" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="600" y="348.475" font-size="15" fill="#292929" text-anchor="middle">기본</text>
-<text x="600" y="370.225" font-size="15" fill="#292929" text-anchor="middle">INC-001 · 002 · 005</text>
-<polyline points="150,175 170,175 170,95 188,95" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<polyline points="442,95 498,95" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<text x="470" y="86" font-size="14" fill="#666660" text-anchor="middle">예</text>
-<polyline points="315,132 315,208" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<text x="325" y="176" font-size="14" fill="#666660">아니오</text>
-<polyline points="442,255 498,255" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<text x="470" y="246" font-size="14" fill="#666660" text-anchor="middle">예</text>
-<polyline points="315,302 315,355 498,355" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<text x="325" y="345" font-size="14" fill="#666660">아니오</text>
-<text x="20" y="260" font-size="14" fill="#666660">VIP 를</text>
-<text x="20" y="280" font-size="14" fill="#666660">먼저 확인</text>
-<text x="20" y="330" font-size="14" fill="#666660">INC-002 는 대량</text>
-<text x="20" y="350" font-size="14" fill="#666660">다운로드가 있어</text>
-<text x="20" y="370" font-size="14" fill="#666660">기본으로 간다</text>
+<text x="24" y="34" font-size="19" fill="#292929" font-weight="700">ip_actions.py: 막을 이유부터 보고, 차단에는 끝나는 시각</text>
+<rect x="24" y="58" width="260" height="58" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="154.0" y="81.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="154.0" dy="0" font-weight="700">허용 목록에 있나?</tspan><tspan x="154.0" dy="21">config/allowlist_ips.json</tspan></text>
+<rect x="420" y="58" width="276" height="58" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="558.0" y="81.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="558.0" dy="0" font-weight="700">차단하지 않음</tspan><tspan x="558.0" dy="21">허용 목록 IP 라서 차단하지 않음</tspan></text>
+<line x1="284" y1="87" x2="418" y2="87" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="350" y="80" font-size="14" text-anchor="middle" fill="#666660">예</text>
+<rect x="24" y="140" width="260" height="58" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="154.0" y="163.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="154.0" dy="0" font-weight="700">공유 IP 인가?</tspan><tspan x="154.0" dy="21">쓰는 계정이 2개 이상</tspan></text>
+<rect x="420" y="140" width="276" height="58" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="558.0" y="163.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="558.0" dy="0" font-weight="700">차단하지 않음</tspan><tspan x="558.0" dy="21">담당자 승인 필요</tspan></text>
+<line x1="284" y1="169" x2="418" y2="169" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="350" y="162" font-size="14" text-anchor="middle" fill="#666660">예</text>
+<line x1="154" y1="116" x2="154" y2="138" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="196" y="132" font-size="14" text-anchor="middle" fill="#666660">아니오</text>
+<rect x="24" y="222" width="260" height="58" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="154.0" y="245.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="154.0" dy="0" font-weight="700">block_ip</tspan><tspan x="154.0" dy="21">끝나는 시각 = clock + ttl</tspan></text>
+<rect x="420" y="222" width="276" height="58" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="558.0" y="245.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="558.0" dy="0" font-weight="700">198.51.100.90 차단</tspan><tspan x="558.0" dy="21">0 + 120 = 120분에 끝남</tspan></text>
+<line x1="154" y1="198" x2="154" y2="220" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="196" y="214" font-size="14" text-anchor="middle" fill="#666660">아니오</text>
+<line x1="284" y1="251" x2="418" y2="251" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="24" y="304" width="260" height="58" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="154.0" y="327.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="154.0" dy="0" font-weight="700">expire_blocks</tspan><tspan x="154.0" dy="21">끝나는 시각 &lt;= clock 이면</tspan></text>
+<rect x="420" y="304" width="276" height="58" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="558.0" y="327.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="558.0" dy="0" font-weight="700">unblock_ip</tspan><tspan x="558.0" dy="21">차단을 풀고 해제 기록</tspan></text>
+<line x1="154" y1="280" x2="154" y2="302" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<line x1="284" y1="333" x2="418" y2="333" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
 </g>
 </svg>

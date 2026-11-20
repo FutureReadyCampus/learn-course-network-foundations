@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 352" role="img">
+<title>티켓 파일과 조치 기록을 대조해 초동 대응 리포트 한 장을 만든다</title>
+<desc>티켓 7장과 조치 기록 10건을 report.py가 집계하고 대조해 32줄짜리 리포트 파일을 씁니다. 응답 기한을 넘겨 확인한 티켓 2장과 티켓이 없는 조치 INC-212가 따로 적힙니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p01r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p01g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p01b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">도전 4-3: 두 파일을 대조해 리포트 한 장으로</tspan></text>
+<rect x="20" y="58" width="200" height="62" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="120.0" y="83.3" font-size="15" text-anchor="middle" fill="#292929"><tspan x="120.0">unit10_tickets.json</tspan><tspan x="120.0" dy="21.0">티켓 7장</tspan></text>
+<rect x="20" y="140" width="200" height="62" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="120.0" y="165.3" font-size="15" text-anchor="middle" fill="#292929"><tspan x="120.0">unit10_actions.json</tspan><tspan x="120.0" dy="21.0">조치 기록 10건</tspan></text>
+<rect x="270" y="70" width="180" height="120" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360.0" y="113.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" font-weight="bold">report.py</tspan><tspan x="360.0" dy="21.0">판다스 표로 집계</tspan><tspan x="360.0" dy="21.0">+ 기록 대조</tspan></text>
+<line x1="222" y1="89" x2="268" y2="110" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<line x1="222" y1="171" x2="268" y2="150" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<line x1="452" y1="130" x2="488" y2="130" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="490" y="58" width="210" height="144" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="595.0" y="114.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="595.0" font-size="14">incident_report_</tspan><tspan x="595.0" dy="19.6" font-size="14">20261112.md</tspan><tspan x="595.0" dy="21.0" font-weight="bold">32줄 · 1~6절</tspan></text>
+<text x="20" y="238" font-size="15" text-anchor="start" fill="#666660" font-weight="bold"><tspan x="20">리포트에 따로 적히는 것</tspan></text>
+<rect x="20" y="250" width="330" height="84" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="185.0" y="286.3" font-size="15" text-anchor="middle" fill="#292929"><tspan x="185.0" font-weight="bold">응답 기한(SLA)을 넘겨 확인 2장</tspan><tspan x="185.0" dy="21.0">TCK-3 · TCK-4</tspan></text>
+<rect x="370" y="250" width="330" height="84" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="535.0" y="276.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="535.0" font-weight="bold">티켓이 없는 조치 1건</tspan><tspan x="535.0" dy="21.0">INC-212 · yuna 계정 잠금</tspan><tspan x="535.0" dy="19.6" font-size="14">티켓만 보면 리포트에서 빠짐</tspan></text>
+</g>
+</svg>

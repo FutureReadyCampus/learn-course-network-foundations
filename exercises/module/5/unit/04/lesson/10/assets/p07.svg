@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img"><title>도전 4-4 정답: 점수 순 결과 6줄과 바로 보완할 조치 2개</title><desc>점수 6인 계정 잠금, 세션 종료, IP 차단이 높음이고 세션 종료에 승인 게이트, 담당자 알림에 감사 기록이 빠졌습니다. &gt;= 대신 &gt; 를 쓰거나 4번을 비우거나 ascending=False 를 빠뜨리면 오류 없이 결과가 달라집니다.</desc><defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="28" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">도전 4-4 정답 · 단계 2 결과</text>
+<text x="20" y="58" font-size="15" fill="#666660" font-weight="700">자동 조치</text>
+<text x="220" y="58" font-size="15" fill="#666660" font-weight="700">점수</text>
+<text x="290" y="58" font-size="15" fill="#666660" font-weight="700">등급</text>
+<text x="370" y="58" font-size="15" fill="#666660" font-weight="700">빠진 통제</text>
+<rect x="20" y="68" width="520" height="30" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="30" y="89" font-size="15" fill="#292929">계정 잠금</text>
+<text x="230" y="89" font-size="15" fill="#292929">6</text>
+<text x="290" y="89" font-size="15" fill="#292929">높음</text>
+<text x="370" y="89" font-size="15" fill="#666660">없음</text>
+<rect x="20" y="104" width="520" height="30" rx="4" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="30" y="125" font-size="15" fill="#292929">세션 종료</text>
+<text x="230" y="125" font-size="15" fill="#292929">6</text>
+<text x="290" y="125" font-size="15" fill="#292929">높음</text>
+<text x="370" y="125" font-size="15" fill="#292929">승인 게이트</text>
+<rect x="20" y="140" width="520" height="30" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="30" y="161" font-size="15" fill="#292929">IP 차단</text>
+<text x="230" y="161" font-size="15" fill="#292929">6</text>
+<text x="290" y="161" font-size="15" fill="#292929">높음</text>
+<text x="370" y="161" font-size="15" fill="#666660">없음</text>
+<rect x="20" y="176" width="520" height="30" rx="4" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="30" y="197" font-size="15" fill="#292929">담당자 알림</text>
+<text x="230" y="197" font-size="15" fill="#292929">3</text>
+<text x="290" y="197" font-size="15" fill="#292929">보통</text>
+<text x="370" y="197" font-size="15" fill="#292929">감사 기록</text>
+<rect x="20" y="212" width="520" height="30" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="30" y="233" font-size="15" fill="#292929">티켓 자동 작성</text>
+<text x="230" y="233" font-size="15" fill="#292929">2</text>
+<text x="290" y="233" font-size="15" fill="#292929">낮음</text>
+<text x="370" y="233" font-size="15" fill="#666660">없음</text>
+<rect x="20" y="248" width="520" height="30" rx="4" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="30" y="269" font-size="15" fill="#292929">상급자 에스컬레이션</text>
+<text x="230" y="269" font-size="15" fill="#292929">2</text>
+<text x="290" y="269" font-size="15" fill="#292929">낮음</text>
+<text x="370" y="269" font-size="15" fill="#666660">없음</text>
+<rect x="560" y="68" width="140" height="210" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="630.0" y="156" font-size="15" fill="#292929" text-anchor="middle">바로 보완할</text>
+<text x="630.0" y="178" font-size="15" fill="#292929" text-anchor="middle">조치 2개</text>
+<text x="630.0" y="200" font-size="15" fill="#666660" text-anchor="middle">문서 16줄</text>
+<text x="20" y="312" font-size="16" fill="#292929" font-weight="700">자주 틀리는 곳 (오류 없이 결과만 달라짐)</text>
+<rect x="20" y="324" width="220" height="100" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="130.0" y="357" font-size="15" fill="#292929" text-anchor="middle">&gt;= 대신 &gt;</text>
+<text x="130.0" y="379" font-size="15" fill="#292929" text-anchor="middle">점수 6이 모두 보통</text>
+<text x="130.0" y="401" font-size="15" fill="#292929" text-anchor="middle">보완 1개</text>
+<rect x="250" y="324" width="220" height="100" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="360.0" y="357" font-size="15" fill="#292929" text-anchor="middle">4번 비움</text>
+<text x="360.0" y="379" font-size="15" fill="#292929" text-anchor="middle">필수 통제가 모두 빠짐</text>
+<text x="360.0" y="401" font-size="15" fill="#292929" text-anchor="middle">보완 4개</text>
+<rect x="480" y="324" width="220" height="100" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="590.0" y="368" font-size="15" fill="#292929" text-anchor="middle">ascending=False 빠짐</text>
+<text x="590.0" y="390" font-size="15" fill="#292929" text-anchor="middle">점수가 작은 것부터</text>
+</g></svg>
