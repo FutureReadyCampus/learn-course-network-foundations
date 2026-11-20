@@ -13,6 +13,8 @@ source:
 
 ## 이번 의뢰: 경로 스캔 IP 찾기
 
+> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 3-1 · 3-2와 글쓰기를 먼저 마칩니다. 이 도전에서 만드는 `malicious_detection.py` 는 다음 Unit 「제공 파일」 레슨에 완성본이 있으므로, 하지 않아도 다음 Unit 을 따라가는 데 문제가 없습니다.
+
 > **이번 실습에 들어온 일**
 >
 > A사 보안 팀장이 보낸 메시지입니다:
@@ -221,7 +223,7 @@ for ip in all_ips:                                           # IP 를 하나씩 
         print(ip)                                            # 제외한 IP 를 출력한다
 ```
 
-**`advanced_detection.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 3-2 · 6-2 · 6-3에서 만든 함수를 모두 불러 한 번에 돌립니다. 실습 3-2 · 6-2 파일을 아직 완성하지 못했다면 지금은 이 파일을 건너뛰고, 완성한 뒤에 실행합니다.
+**`advanced_detection.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 3-2 · 도전 3-2 · 도전 3-3 에서 만든 함수를 모두 불러 한 번에 돌립니다. 도전 3-2 의 `saas_detection.py` 를 만들지 않았다면 이 파일은 건너뜁니다(`No module named 'saas_detection'` 오류가 납니다).
 
 ```python
 from access_detection import load_events, pick_server_failures, pick_suspicious, EVENTS_PATH  # 실습 3-2 함수를 불러온다
