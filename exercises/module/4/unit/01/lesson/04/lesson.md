@@ -1,6 +1,6 @@
 ---
 id: m4-u01-l04
-title: 정답
+title: 도전 1-1 · 로그 줄 가르기와 SIEM 고르기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,326 +9,231 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 정답
+# 도전 1-1 · 로그 줄 가르기와 SIEM 고르기
 
-## 정답을 읽는 방법
+## 목표: 줄 분류 규칙
 
-설명하는 답은 한 예이고, <mark>핵심이 같으면 맞습니다.</mark>
+> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 1-1 · 1-2와 글쓰기를 먼저 마칩니다. 실습 1-1의 `log_parse.py` 가 있어야 하고, 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
+
+> **오늘 들어온 일**
+>
+> A사 보안 팀장이 보낸 메시지입니다:
+> 「얼마 전에 한 주소에서 로그인 실패가 몰렸는데 하루가 지나서야 알았습니다. 로그는 있었지만 수만 줄 속에서 눈에 띄지 않았습니다.
+>
+> 줄마다 정상인지, 오류인지, 먼저 살펴볼 줄인지 나누고, 살펴볼 줄만 따로 보여 주세요. 상태 코드와 경로만 보는 단순한 규칙으로 시작해도 됩니다. SIEM(심)이라는 도구를 사자는 이야기도 있어서, 다른 회사는 어떻게 쓰는지와 우리 규모에는 어떤 방식이 맞는지도 알고 싶습니다.」
+> - **왜 중요한가**: <mark>하루 수만 줄을 사람이 다 볼 수는 없습니다.</mark> 줄을 정상 · 오류 · 의심으로 나누면 의심만 먼저 볼 수 있습니다. 이 일을 대규모로 해 주는 도구가 SIEM(심)입니다. 도구를 고르려면 규칙이 무엇을 놓치는지부터 알아야 해서, 이번 도전에서는 가장 단순한 규칙을 직접 만들어 한계를 확인합니다.
+
+## 왜 줄을 세 갈래로 가르는가
+
+1. 실습 1-1에서는 로그 한 줄을 읽어 값을 꺼냈습니다. 이제 **그 값으로 줄을 가릅니다.**
+2. 가르는 기준을 **규칙(rule, 룰)** 이라고 합니다. 이번 도전의 규칙은 가장 단순한 것입니다.
+   - 상태 코드가 401 · 403 이거나 경로에 `/admin` 이 있으면 **의심**
+   - 그 밖에 상태 코드가 400 이상이면 **오류**
+   - 나머지는 **정상**
+3. <mark>이런 단순한 규칙은 놓치는 것도 많습니다.</mark> 어떤 것을 놓치는지 이번 Unit의 샘플 로그에서 직접 확인합니다.
+
+## 이상 징후 다섯 유형
+
+이 수업에서는 관제에서 찾는 이상 징후를 다섯 유형으로 나눕니다.
+
+| 유형 | 로그에서 보이는 모양 | 이번 Unit 샘플 로그의 예 |
+|---|---|---|
+| 비정상 로그인 | 같은 주소에서 로그인 실패(401)가 연달아 나옴 | 203.0.113.50 의 `POST /login` 401 이 5번 |
+| 트래픽 급증 | 짧은 시간에 요청이 몰림 | 샘플은 30줄이라 없음. Unit 3 실습 3-1이 다룹니다 |
+| 비인가 접근 | 권한이 없는 주소를 요청해 403 이 나옴 | `/admin` · `/admin/users` 403 |
+| SaaS(사스, 인터넷으로 빌려 쓰는 소프트웨어. 예: Google Docs) 이상 사용 | 평소와 다른 서비스 사용(대량 내려받기, 낯선 위치) | 접속 로그 샘플에는 없음. Unit 3 도전 3-2가 다룹니다 |
+| 악성 행위 징후 | 서버에 무엇이 있는지 없는 주소까지 차례로 확인하는 탐색 | 198.51.100.90 의 `/.env` · `/wp-login.php` · `/phpmyadmin` 404 |
+
+- 한 줄만 보면 평범해 보여도 **여러 줄을 묶어 보면** 공격이 의심되는 일이 드러납니다.
+  - 예를 들어 로그인 실패가 연달아 난 뒤의 성공 한 줄은 그 줄만 보면 평범합니다. <mark>이번 도전의 규칙은 줄을 하나씩만 보기 때문에 이런 것을 놓칩니다.</mark>
+  - 이렇게 공격이 의심되는 일을 놓치는 것을 **미탐(false negative, 폴스 네거티브)** 이라고 합니다.
+- 반대로 정상인데 의심으로 가르는 것은 **오탐(false positive, 폴스 포지티브)** 입니다. <mark>오탐이 많으면 경고를 아무도 보지 않게 됩니다.</mark>
+- 경고는 「살펴볼 곳」이지 **공격이 확정된 것이 아닙니다.**
+
+## SIEM(심) · XDR(엑스디알) · SOAR(쏘아)는 무엇이 다른가
+
+SIEM(심)이 무엇인지와 현업에서 쓰는 방식은 시작하기 레슨에서 읽었습니다. 이름이 비슷해서 헷갈리는 XDR(엑스디알), SOAR(쏘아)와 비교합니다.
+
+| 이름 | 해결하려는 문제 | 하는 일 |
+|---|---|---|
+| SIEM(심) | 로그가 흩어져 조사하기 어렵다 | 모으고, 같은 형식으로 정리하고, 조회하고, 탐지해서 알린다 |
+| XDR(엑스디알) | 보안 도구의 탐지가 따로 보인다 | 메일 · PC · 서버 등 여러 영역의 탐지를 연결해 사건으로 조사하고 대응한다 |
+| SOAR(쏘아) | 대응할 때마다 같은 작업을 반복한다 | 사건 등록 · 알림 · 승인 · 조치 같은 절차를 자동화한다 |
+
+- <mark>세 가지는 반드시 순서대로 거치는 단계가 아닙니다.</mark> Module 4는 SIEM(심)의 수집 · 정규화 · 탐지 · 알림을 만들고, Module 5에서 SOAR(쏘아)를 다룹니다.
+
+## 이번 도전에서 만드는 규칙
+
+<figure class="page-figure"><img src="assets/u01l03_f01.svg" alt="요청 한 개를 의심부터 확인하고, 아니면 오류, 둘 다 아니면 정상으로 나눈다"></figure>
+
+- 의심을 오류보다 **먼저** 확인합니다. <mark>401 은 400 이상이기도 해서, 순서가 바뀌면 로그인 실패가 모두 오류에 섞여 구분되지 않습니다.</mark>
+- `SUSPICIOUS_STATUS = (401, 403)` 의 괄호 묶음은 **튜플(tuple, 튜플)** 입니다. 리스트처럼 값 여러 개를 담지만 <mark>만든 뒤에 바꿀 수 없어서, 바뀌지 않는 기준에 씁니다.</mark> 안에 들어 있는지 `in` 으로 묻는 것은 리스트와 같습니다.
+
+**한 장 정리**
+
+| 함수 | 받는 것 | 리턴하는 것 |
+|---|---|---|
+| `is_suspicious` | 읽은 요청 딕셔너리 | 401 · 403 이거나 경로에 `/admin` 이 있으면 `True` |
+| `is_error` | 읽은 요청 딕셔너리 | 상태 코드가 400 이상이면 `True` |
+| `classify_line` | 읽은 요청 딕셔너리 | `"의심"` · `"오류"` · `"정상"` 중 하나 |
+| `label_entries` | 읽은 요청 리스트 | 분류(`group`)를 적은 복사본 리스트 (미리 채움) |
+| `count_groups` | 분류를 적은 리스트 | `{분류: 횟수}` 딕셔너리 (미리 채움) |
+
+- **직접 쓰는 곳은 세 함수**(번호 1 ~ 8)입니다. 판단이 필요한 함수마다 1 ~ 4줄만 쓰고, 나머지는 미리 채웠습니다.
+  - `is_suspicious`(1 ~ 3번): 상태 코드와 경로로 의심인지 알려 줍니다.
+  - `is_error`(4번): 상태 코드가 400 이상인지 알려 줍니다.
+  - `classify_line`(5 ~ 8번): 의심 → 오류 → 정상 순서로 가릅니다.
+- **미리 채운 것**: 분류를 적은 복사본 리스트를 만드는 `label_entries` 와 분류별로 세는 `count_groups` 입니다.
+
+## 도전 1-1 · 로그 줄을 세 갈래로 가르기
+
+**이런 상황이 있습니다**
+
+- **지금은**: 요청 28개 중 어느 것부터 봐야 하는지 사람이 하나씩 판단해야 합니다.
+- **그래서 만드는 것**: `log_classify.py` 입니다.
+  - 요청마다 상태 코드와 경로로 정상 · 오류 · 의심 중 하나를 정합니다.
+  - 분류별 개수를 세고, 의심과 오류 요청을 보여 줍니다.
+- **실행하면**: 단계 1: 분류별 요청 수, 단계 2: 의심 요청, 단계 3: 오류 요청이 나옵니다.
+- **현업에서는**: 관제 담당자도 단순한 규칙으로 먼저 나눈 뒤 의심 요청만 조사합니다. 규칙은 쓰면서 계속 고칩니다.
+
+**할 일**
+
+1. <mark>`log_classify.py` · `challenge1-1_run.py` 두 파일</mark>을 만들고, `log_classify.py` 의 `is_suspicious` · `is_error` · `classify_line` 에서 **직접 쓰는 곳 세 군데**를 씁니다.
+2. 실행해서 <mark>분류별 요청 수</mark>(단계 1), <mark>의심으로 분류한 요청</mark>(단계 2), <mark>오류로 분류한 요청</mark>(단계 3)을 읽습니다.
+
+**`log_classify.py`**
+
+```python
+SUSPICIOUS_STATUS = (401, 403)                                         # 의심으로 보는 상태 코드(로그인 실패 · 접근 거부)
+
+
+def is_suspicious(entry):                                              # 읽은 요청 딕셔너리를 받는 함수
+    """상태 코드가 401 · 403 이거나 경로에 /admin 이 있으면 True, 아니면 False 를 리턴한다.
+    먼저 살펴볼 만한 요청을 가려낼 때 쓴다.
+    """
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 1. entry["status"] 가 SUSPICIOUS_STATUS 안에 있는지(in)의 결과를 bad_status 에 담는다
+    # 2. entry["path"] 안에 "/admin" 이 들어 있는지(in)의 결과를 admin_path 에 담는다
+    # 3. bad_status 또는 admin_path 가 참인지(or)의 결과를 리턴한다
+
+
+def is_error(entry):                                                   # 읽은 요청 딕셔너리를 받는 함수
+    """상태 코드가 400 이상이면 True, 아니면 False 를 리턴한다.
+    오류로 끝난 요청을 가려낼 때 쓴다.
+    """
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 4. entry["status"] 가 400 이상인지의 결과(True 또는 False)를 리턴한다
+
+
+def classify_line(entry):                                              # 읽은 요청 딕셔너리를 받는 함수
+    """요청을 「의심」 · 「오류」 · 「정상」 중 하나로 가른다.
+    로그를 훑어 먼저 살펴볼 줄을 고를 때 쓰며, 의심을 먼저 확인한다.
+    """
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 5. is_suspicious(entry) 가 참이면 (if)
+    # 6.   "의심" 을 리턴한다
+    # 7. is_error(entry) 가 참이면 (if)
+    # 8.   "오류" 를 리턴한다
+    return "정상"                                                      # 어느 조건에도 안 맞으면 정상이다
+
+
+def label_entries(entries):                                            # 읽은 요청 리스트를 받는 함수
+    """요청마다 "group" 키(정상 · 오류 · 의심)를 적은 복사본 리스트를 리턴한다.
+    읽은 로그에 분류 이름표를 붙일 때 쓴다.
+    """
+    labeled = []                                                       # 결과를 담을 빈 리스트
+    for entry in entries:                                              # 요청을 하나씩 꺼낸다
+        item = entry.copy()                                            # 원래 요청은 바꾸지 않고 복사한다
+        item["group"] = classify_line(entry)                           # 분류를 복사본에 적는다
+        labeled.append(item)                                           # 복사본을 결과 리스트에 추가한다
+    return labeled                                                     # 분류를 적은 리스트를 리턴한다
+
+
+def count_groups(labeled):                                             # 분류를 적은 요청 리스트를 받는 함수
+    """분류별 요청 수를 {분류: 횟수} 딕셔너리로 센다.
+    정상 · 오류 · 의심이 각각 몇 개인지 볼 때 쓴다.
+    """
+    group_request_counts = {"정상": 0, "오류": 0, "의심": 0}           # 세 분류를 0 으로 시작한다
+    for item in labeled:                                               # 요청을 하나씩 꺼낸다
+        group = item["group"]                                          # 그 요청의 분류
+        group_request_counts[group] = group_request_counts[group] + 1  # 그 분류의 횟수를 1 늘린다
+    return group_request_counts                                        # 분류별 횟수를 리턴한다
+```
+
+- <mark>들여쓰기는 미리 채운 줄에 맞춥니다.</mark> 번호 주석이 연달아 붙어 있어도 주석 사이마다 줄을 끼워 넣어 <mark>각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark> `if` 아래의 `return` 처럼 안쪽 줄은 `if` 보다 한 단계 안쪽으로 씁니다.
+  - 1 ~ 4번: 함수 안이라 앞에 공백 4개입니다.
+  - 5 ~ 8번: `classify_line` 안이라 `if` 줄은 공백 4개이고, `if` 안쪽 `return`(6번 · 8번)은 8개입니다.
+- 1번의 `in SUSPICIOUS_STATUS` 는 상태 코드가 그 튜플에 들어 있는지 묻습니다. 2번의 `"/admin" in entry["path"]` 는 경로 문자열 안에 `/admin` 이 들어 있는지 묻습니다. <mark>둘 다 결과가 `True` 또는 `False` 입니다.</mark>
+- 채우기 전에 실행하면 <mark>오류는 나지 않고, 단계 1에서 모든 요청이 「정상」으로 나오고 단계 2 · 3이 비어 있습니다.</mark>
+
+**`challenge1-1_run.py`** — <mark>그대로 붙여 넣습니다.</mark> 학생이 쓰는 줄은 없습니다. 실습 1-1의 `parse_line` 으로 로그를 읽고, 방금 만든 함수로 가른 뒤 세 단계로 출력합니다.
+
+```python
+from log_parse import parse_line                                                # 실습 1-1에서 만든 로그 한 줄 읽기 함수를 불러온다
+from log_classify import label_entries, count_groups                            # 방금 만든 분류 함수를 불러온다
+
+
+def show_request(item):                                                         # 분류를 적은 요청 한 개를 받는 함수
+    """분류를 적은 요청 한 개의 주소 · 방법 · 경로 · 상태 코드를 출력한다.
+    의심 · 오류로 분류한 요청을 한 줄씩 보여 줄 때 쓴다.
+    """
+    ip_address = item["ip"]                                                     # 접속자 주소를 꺼낸다
+    method = item["method"]                                                     # 요청 방법을 꺼낸다
+    path = item["path"]                                                         # 요청 경로를 꺼낸다
+    status = item["status"]                                                     # 상태 코드를 꺼낸다
+    print(ip_address, method, path, status)                                     # 주소 · 방법 · 경로 · 상태 코드를 출력한다
+
+
+entries = []                                                                    # 읽은 요청을 모을 리스트
+with open("access_sample.log", encoding="utf-8") as log_file:                   # 샘플 로그 파일을 연다
+    for line in log_file:                                                       # 파일에서 한 줄씩 꺼낸다
+        entry = parse_line(line)                                                # 한 줄을 읽어 딕셔너리로 바꾼다
+        if entry is not None:                                                   # 읽을 수 있는 줄이면
+            entries.append(entry)                                               # 요청 리스트에 추가한다
+
+labeled = label_entries(entries)                                                # 요청마다 분류를 적는다
+group_request_counts = count_groups(labeled)                                    # 분류별 요청 수를 센다
+total = len(labeled)                                                            # 전체 요청 수를 센다
+normal_count = group_request_counts["정상"]                                     # 정상 요청 수를 꺼낸다
+error_count = group_request_counts["오류"]                                      # 오류 요청 수를 꺼낸다
+suspicious_count = group_request_counts["의심"]                                 # 의심 요청 수를 꺼낸다
+print("--- 단계 1: 분류별 요청 수 - 전체", total, "개")                         # 단계 1 시작을 알리는 줄
+print("정상", normal_count, "· 오류", error_count, "· 의심", suspicious_count)  # 분류별 요청 수를 출력한다
+print("--- 단계 2: 의심으로 분류한 요청")                                       # 단계 2 시작을 알리는 줄
+for item in labeled:                                                            # 분류를 적은 요청을 하나씩 꺼낸다
+    if item["group"] == "의심":                                                 # 의심으로 분류한 요청이면
+        show_request(item)                                                      # 주소 · 방법 · 경로 · 상태 코드를 출력한다
+print("--- 단계 3: 오류로 분류한 요청")                                         # 단계 3 시작을 알리는 줄
+for item in labeled:                                                            # 분류를 적은 요청을 하나씩 꺼낸다
+    if item["group"] == "오류":                                                 # 오류로 분류한 요청이면
+        show_request(item)                                                      # 주소 · 방법 · 경로 · 상태 코드를 출력한다
+```
+
+**순서**
+
+1. **[VS Code]** 파일 `log_classify.py` · `challenge1-1_run.py` 를 만들어 위 코드를 붙여 넣습니다. 실습 1-1의 `log_parse.py` 를 불러오므로 <mark>없으면 실습 1-1 레슨에서 먼저 만듭니다</mark>(채우다 막히면 정답 레슨의 「실습 1-1 정답」을 봅니다).
+2. **[VS Code]** `log_classify.py` 에서 직접 쓰는 곳 세 군데를 씁니다. 「이번 도전에서 만드는 규칙」 쪽의 그림을 보고 씁니다.
+3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지 확인하고</mark> 실행합니다(맥북은 `python3`).
+   ```bash
+   pwd
+   python challenge1-1_run.py
+   ```
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python challenge1-1_run.py` 파이썬으로 실행 파일 실행
+4. 출력은 세 단계입니다. <mark>단계 1은 한 줄, 단계 2는 의심 요청 여덟 줄, 단계 3은 오류 요청 다섯 줄입니다.</mark>
+5. **[보고서]** `report_u1.md` 의 `## 도전 1-1` 아래를 채웁니다.
+   - (가) 실행한 출력 전체를 붙여 넣고, 분류별 요청 수와, 의심으로 분류한 요청 중 같은 주소에서 반복된 것을 적어 주세요.
+   - (나) [핵심 질문] 상태 코드와 경로만으로 분류를 정하면 놓치는 것이 있습니다. 샘플 로그에서 놓친 예를 두 가지 찾아(정상이나 오류로 분류됐지만 살펴볼 만한 요청) 왜 놓쳤는지 적어 주세요.
+   - (다) [핵심 질문] 시작하기 레슨 「현업에서 SIEM(심)을 쓰는 방식 여섯 가지」 표의 방식 중에서, 보안 전담 직원이 1명뿐이고 쓰는 서비스 대부분이 클라우드에 있는 작은 회사라면 어느 방식을 고를지 이유와 함께 적어 주세요. 고르지 않은 방식 하나가 왜 맞지 않는지도 적어 주세요.
+
+## 도전 1-1 정리
+
+| 하려는 일 | 코드 · 말 |
+|---|---|
+| 상태 코드가 401 이나 403 인지 | `bad_status = entry["status"] in SUSPICIOUS_STATUS` (`is_suspicious`) |
+| 경로에 /admin 이 있는지 | `admin_path = "/admin" in entry["path"]` |
+| 둘 중 하나라도 맞으면 의심 | `return bad_status or admin_path` |
+| 오류인지 | `return entry["status"] >= 400` (`is_error`) |
+| 가르는 순서 | `if is_suspicious(entry):` → `return "의심"` → `if is_error(entry):` → `return "오류"` → 나머지는 `"정상"` |
+| SIEM(심)이 하는 일 | 수집 → 정규화 → 탐지 → 알림 · 조사 |
 
 ---
-
-## 실습 1-1 정답
-
- **터미널에 입력합니다.**
-
-```bash
-pwd
-python exercise1-1_run.py
-```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise1-1_run.py` 파이썬으로 실행 파일 실행
-
-**채운 코드** (한 예) — 직접 쓰는 곳은 다섯 함수입니다.
-
-① `split_request` 안
-
-```python
-    prefix, request_text, suffix = line.split('"', 2)  # 큰따옴표 두 개를 기준으로 앞 · 요청 · 뒤 세 조각으로 나눈다
-```
-
-② `read_request` 안
-
-```python
-    method, path, protocol = request_text.split()  # 공백 기준으로 나눈 세 값을 세 이름에 한꺼번에 담는다
-```
-
-③ `read_status` 안
-
-```python
-    parts = suffix.split()     # 공백 기준으로 나눈 조각 리스트를 만든다
-    status_text = parts[0]     # 첫 조각이 상태 코드 문자열이다
-    status = int(status_text)  # 숫자로 바꿔야 400 이상인지 비교할 수 있다
-```
-
-④ `read_client` 안
-
-```python
-    parts = prefix.split()  # 공백 기준으로 나눈 조각 리스트를 만든다
-    client_ip = parts[0]    # 첫 조각이 접속자 주소이다
-```
-
-⑤ `parse_line` 안(`if` 줄 하나)
-
-```python
-    if line.count('"') < 2:  # 큰따옴표가 두 개보다 적은 줄이면(잘렸거나 깨진 줄이면)
-```
-
-**결과**
-
-- (가) 출력은 다음과 같고, 읽기 성공은 <mark>**28**</mark>줄, 읽기 실패는 <mark>**2**</mark>줄입니다.
-  - 읽기 실패한 두 줄은 `GET /board/5 HTTP/1.1` 에서 잘린 줄과 `-` 하나만 있는 줄입니다. 큰따옴표가 두 개보다 적어서 읽지 못했습니다.
-
-```
---- 단계 1: 로그 파일 읽기 - 전체 30 줄
-읽기 성공 28 줄 · 읽기 실패 2 줄
---- 단계 2: 로그 첫 3줄을 읽은 결과
-{'ip': '198.51.100.21', 'method': 'GET', 'path': '/', 'status': 200}
-{'ip': '198.51.100.21', 'method': 'GET', 'path': '/static/app.css', 'status': 200}
-{'ip': '198.51.100.34', 'method': 'GET', 'path': '/login', 'status': 200}
---- 단계 3: 값이 덧붙은 요청 (경로에 ? 포함)
-192.0.2.15 /board?page=2
-192.0.2.15 /search?q=network
-```
-
-- (나) 로그 한 줄만 보고 알 수 있는 것과 알 수 없는 것은 다음과 같습니다.
-  - 알 수 있는 것: 접속자 주소(`203.0.113.50`), 시각, 요청한 방법과 경로, 결과 코드(401), 요청을 보낸 프로그램(`python-requests`).
-  - 알 수 없는 것: 접속자가 **누구인지**(사용자 계정 이름이 로그에 없습니다. 같은 주소를 여러 사람이 쓸 수도 있습니다), 로그인 **시도한 계정**, 시도가 **성공했는지**의 확정.
-  - 401 이 나온 줄은 로그인 실패로 짐작할 수 있지만, <mark>성공 여부는 그다음 줄들(같은 주소에서 302 가 나왔는지)을 함께 봐야 합니다.</mark>
-- (다) <mark>두 경우는 같은 일이 아닙니다.</mark>
-  - 198.51.100.21 의 `GET /board/99` 404 는 글이 없거나 주소를 잘못 친 한 번의 오류일 수 있습니다.
-  - 198.51.100.90 은 1초 간격으로 `/.env` · `/wp-login.php` · `/phpmyadmin` 을 연달아 요청했고, 모두 404 가 났습니다.
-    - 이 세 주소는 서버 설정 파일이나 관리 화면이 있을 때 자주 확인하는 주소입니다(`.env` 는 비밀 설정 파일, `wp-login.php` 는 워드프레스 사이트의 관리자 로그인 화면, `phpmyadmin` 은 데이터베이스 관리 화면의 흔한 주소입니다).
-    - 이 서버에는 없어서 404 가 났습니다. 도구(`curl`)로 서버에 무엇이 있는지 차례로 확인하는 탐색으로 볼 수 있습니다.
-  - 한 줄만 보면 둘 다 「404」일 뿐이라 구분할 수 없습니다. **같은 주소에서 시간순으로 여러 줄을 묶어 봐야** 반복과 패턴이 보입니다. 이것이 상관분석의 출발점입니다.
-
-**왜**
-
-- <mark>로그는 문자열이라 분석하려면 값으로 나눠야 합니다.</mark>
-  - 큰따옴표 안에 요청이 있다는 로그의 약속된 모양을 이용해서, 복잡한 도구 없이 `split` 만으로도 읽을 수 있습니다.
-  - 상태 코드는 숫자로 바꿔야 400 이상인지 비교할 수 있습니다.
-
-**자주 틀리는 곳**
-
-- `split_request` 에서 <mark>나눌 횟수 `2` 를 빼고 `line.split('"')` 로 쓰면</mark>, 큰따옴표 여섯 개로 일곱 조각이 되어 세 이름에 담을 수 없습니다.
-  - 실행하면 다음 오류가 납니다(<mark>`too many values to unpack`</mark> 이면 이 실수입니다).
-
-```
-Traceback (most recent call last):
-  File "…/anomaly_detection/exercise1-1_run.py", line 10, in <module>
-    entry = parse_line(line)  # 한 줄을 읽어 딕셔너리로 바꾼다
-  File "…/anomaly_detection/log_parse.py", line 43, in parse_line
-    prefix, request_text, suffix = split_request(line)  # 세 조각으로 나눈다
-  File "…/anomaly_detection/log_parse.py", line 5, in split_request
-    prefix, request_text, suffix = line.split('"')  # 큰따옴표 두 개를 기준으로 앞 · 요청 · 뒤 세 조각으로 나눈다
-ValueError: too many values to unpack (expected 3)
-```
-
-  - 줄 번호는 사람마다 다릅니다.
-- `read_status` 에서 `int(…)` 를 빼먹으면 실습 1-1 출력은 `'status': '401'` 처럼 <mark>따옴표가 붙은 문자열로 나오고 오류는 나지 않습니다.</mark> 실습 1-2에서 `400` 과 비교할 때 비로소 `TypeError` 가 납니다.
-
-**관제에서는**
-
-- 로그 분석 도구는 먼저 한 줄을 부분으로 나누고, 읽지 못한 줄은 개수를 세어 따로 봅니다. <mark>읽지 못한 줄이 갑자기 늘면 로그 형식이 바뀌었거나 수집이 깨졌다는 신호입니다.</mark>
-
----
-
-## 실습 1-2 정답
-
- **터미널에 입력합니다.**
-
-```bash
-pwd
-python exercise1-2_run.py
-```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise1-2_run.py` 파이썬으로 실행 파일 실행
-
-**채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
-
-① `is_suspicious` 안
-
-```python
-    bad_status = entry["status"] in SUSPICIOUS_STATUS  # 상태 코드가 401 이나 403 인지(True 또는 False)
-    admin_path = "/admin" in entry["path"]             # 경로에 /admin 이 들어 있는지(True 또는 False)
-    return bad_status or admin_path                    # 둘 중 하나라도 참이면 True 를 리턴한다
-```
-
-② `is_error` 안
-
-```python
-    return entry["status"] >= 400  # 400 이상이면 True 를 리턴한다
-```
-
-③ `classify_line` 안(미리 채운 `return "정상"` 앞)
-
-```python
-    if is_suspicious(entry):  # 의심 조건에 맞으면
-        return "의심"         # 의심으로 가른다
-    if is_error(entry):       # 의심은 아니지만 오류 조건에 맞으면
-        return "오류"         # 오류로 가른다
-```
-
-**결과**
-
-- (가) 출력은 다음과 같고, 정상 <mark>**15**</mark>, 오류 <mark>**5**</mark>, 의심 <mark>**8**</mark> 입니다.
-  - 의심 8개 중 같은 주소에서 반복된 것은 203.0.113.50 의 `POST /login` 401 이 **5번**과, 같은 주소의 `/admin` · `/admin/users` 403 이 2번입니다. 198.51.100.77 의 `/admin` 403 은 한 번뿐입니다.
-
-```
---- 단계 1: 분류별 요청 수 - 전체 28 개
-정상 15 · 오류 5 · 의심 8
---- 단계 2: 의심으로 분류한 요청
-203.0.113.50 POST /login 401
-203.0.113.50 POST /login 401
-203.0.113.50 POST /login 401
-203.0.113.50 POST /login 401
-203.0.113.50 POST /login 401
-203.0.113.50 GET /admin 403
-203.0.113.50 GET /admin/users 403
-198.51.100.77 GET /admin 403
---- 단계 3: 오류로 분류한 요청
-198.51.100.90 GET /.env 404
-198.51.100.90 GET /wp-login.php 404
-198.51.100.90 GET /phpmyadmin 404
-198.51.100.21 GET /board/99 404
-198.51.100.34 GET /report 500
-```
-
-- (나) 놓친 예 두 가지는 다음과 같습니다.
-  - 203.0.113.50 이 401 을 5번 받은 **뒤에** `POST /login` 302 가 나온 줄은 「정상」입니다. 상태 코드만 보면 정상 이동이지만, <mark>연속 실패 뒤의 성공이라 로그인에 성공했을 수 있어 가장 먼저 봐야 합니다.</mark> 규칙이 줄 하나만 보기 때문에 놓쳤습니다.
-  - 198.51.100.90 의 `/.env` · `/wp-login.php` · `/phpmyadmin` 은 「오류」(404)입니다. 한 줄씩 보면 흔한 404 이지만, 1초 간격으로 연속해서 서버에 무엇이 있는지 확인하는 탐색입니다. <mark>규칙이 같은 주소의 반복을 보지 못했습니다.</mark>
-  - 그 밖에 파일 크기, 시각, 요청 도구(`python-requests`, `curl`)도 보지 않아 사람이 보면 의심스러운 단서를 쓰지 못합니다. <mark>이런 것을 놓치는 것이 미탐입니다.</mark>
-- (다) 한 예: <mark>② 클라우드(SaaS) 또는 ④ 관리형 보안관제 서비스를 고릅니다.</mark>
-  - 보안 전담이 1명이면 직접 운영하기 어렵습니다. 서비스 대부분이 클라우드에 있으면 로그도 클라우드에 있어서, 클라우드 방식의 SIEM(심)이 로그를 모으기 쉽습니다. 예를 들어 Microsoft Sentinel 처럼 설치 없이 쓰는 제품입니다.
-  - 24시간 감시가 필요하면 ④로 외부 업체에 맡기는 것도 방법입니다.
-  - 맞지 않는 방식 예: ① 설치형은 장비 구입과 운영을 1명이 감당하기 어렵습니다. ⑤ 오픈소스 직접 구축은 저장소와 규칙 관리를 모두 직접 해야 해서 1명에게 부담이 큽니다.
-  - 이유가 로그 양 · 인력 · 데이터 위치에 닿아 있으면 다른 방식을 골라도 맞습니다.
-
-**왜**
-
-- <mark>하루 수만 줄을 사람이 다 볼 수 없으니 단순한 규칙으로 1차로 가르고 의심만 먼저 조사합니다.</mark>
-  - 의심을 오류보다 먼저 확인하는 이유는, 401 · 403 은 400 이상이기도 해서 순서가 바뀌면 로그인 실패가 오류로 분류되어 의심에서 빠지기 때문입니다.
-  - 규칙은 단순할수록 놓치는 것이 많아서, Unit 2 이후 같은 주소의 반복과 시간 간격을 보는 규칙을 더합니다.
-
-**자주 틀리는 곳**
-
-- `classify_line` 에서 `is_error` 를 `is_suspicious` 보다 먼저 확인하면, <mark>401 · 403 이 모두 「오류」가 됩니다.</mark> 오류는 나지 않고 숫자만 달라집니다.
-  - 실행하면 다음처럼 됩니다(의심이 0개이고 오류가 13개이면 이 실수입니다).
-
-```
---- 단계 1: 분류별 요청 수 - 전체 28 개
-정상 15 · 오류 13 · 의심 0
-```
-
-- `read_status` 에서 `int(…)` 를 빼먹으면 `is_error` 에서 <mark>`400` 과 문자열을 비교하게 되어 다음 오류가 납니다.</mark>
-
-```
-Traceback (most recent call last):
-  File "…/anomaly_detection/exercise1-2_run.py", line 23, in <module>
-    labeled = label_entries(entries)  # 요청마다 분류를 적는다
-  File "…/anomaly_detection/log_classify.py", line 38, in label_entries
-    item["group"] = classify_line(entry)  # 분류를 복사본에 적는다
-  File "…/anomaly_detection/log_classify.py", line 26, in classify_line
-    if is_error(entry):  # 의심은 아니지만 오류 조건에 맞으면
-  File "…/anomaly_detection/log_classify.py", line 17, in is_error
-    return entry["status"] >= 400  # 400 이상이면 True 를 리턴한다
-TypeError: '>=' not supported between instances of 'str' and 'int'
-```
-
-  - 줄 번호는 사람마다 다릅니다. `TypeError` 가 같으면 이 실수입니다.
-
-**관제에서는**
-
-- SIEM(심)의 탐지 규칙은 처음에는 이렇게 단순하게 시작해서 오탐과 미탐을 보며 고칩니다. <mark>규칙을 많이 만들수록 오탐도 늘어서 담당자가 경고를 무시하게 될 수 있습니다.</mark>
-  - 경고는 공격이라는 뜻이 아니라 「먼저 살펴볼 곳」입니다.
-
----
-
-## 정답 마무리
-
- **터미널에 입력합니다.**
-
-```bash
-cd ..
-pwd
-git status
-```
-- 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 있는 폴더의 위치 확인 · `git status` 올릴 파일의 상태를 봄
-
-`.env` 나 `.venv` 가 없는 것을 확인한 뒤에 아래를 칩니다.
-
-```bash
-git add .
-git commit -m "Add access control and anomaly detection unit 1"
-git push
-```
-- 명령 풀이: `git add .` 바뀐 파일을 올릴 대상에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-
-**결과**
-
-- (가) 한 예: 「`.env` · `.venv` 는 보이지 않았다」. 보였다면 `.gitignore` 에 `.env`(또는 `.venv`) 한 줄을 적고 저장한 뒤 `git status` 를 다시 쳤다고 적습니다.
-
-**왜**
-
-- <mark>올리기 전에 올라갈 파일을 확인해야 비밀 키가 섞이지 않습니다.</mark>
-  - 새 Module 폴더는 처음 올리는 것이라 `anomaly_detection/` 한 줄로 보일 수 있습니다.
-
-**자주 틀리는 곳**
-
-- <mark>`.env` 가 보이는데 그대로 `git add .` 를 하는 실수가 가장 위험합니다.</mark>
-  - `cd ..` 를 두 번 쳐서 `security-agent-toolkit` 바깥으로 나가는 경우도 있습니다. `pwd` 로 확인합니다.
-
-**관제에서는**
-
-- 분석 코드와 샘플 로그는 같은 저장소에 함께 남겨, <mark>어느 코드로 어떤 로그를 분석했는지 이력으로 추적합니다.</mark>
-
----
-
-## 앞 실습 파일 완성본
-
-앞 실습 파일이 없거나 잘 안 될 때 이 코드로 만듭니다. 샘플 로그는 「시작하기」 6번의 내용입니다.
-
-**`log_parse.py`** (실습 1-1 완성본)
-
-```python
-def split_request(line):                                # 로그 한 줄(문자열)을 받는 함수
-    """로그 한 줄을 큰따옴표 기준으로 앞 · 요청 · 뒤 세 조각으로 나눈다.
-    나뉘지 않은 하나의 문자열인 로그에서 값을 꺼내기 시작할 때 쓴다.
-    """
-    prefix, request_text, suffix = line.split('"', 2)   # 큰따옴표 두 개를 기준으로 앞 · 요청 · 뒤 세 조각으로 나눈다
-    return prefix, request_text, suffix                 # 세 조각을 리턴한다
-
-
-def read_request(request_text):                         # 요청 조각(예: GET /login HTTP/1.1)을 받는 함수
-    """요청 조각에서 방법(method)과 경로(path)를 꺼낸다.
-    무엇을 요청했는지 알고 싶을 때 쓴다.
-    """
-    method, path, protocol = request_text.split()       # 공백 기준으로 나눈 세 값을 세 이름에 한꺼번에 담는다
-    return method, path                                 # 방법과 경로를 리턴한다
-
-
-def read_status(suffix):                                # 요청 뒤 조각(예:  401 312 "-" "Mozilla/5.0")을 받는 함수
-    """요청 뒤 조각에서 상태 코드를 꺼내 정수로 리턴한다.
-    요청이 성공했는지 실패했는지 가를 때 쓴다.
-    """
-    parts = suffix.split()                              # 공백 기준으로 나눈 조각 리스트를 만든다
-    status_text = parts[0]                              # 첫 조각이 상태 코드 문자열이다
-    status = int(status_text)                           # 숫자로 바꿔야 400 이상인지 비교할 수 있다
-    return status                                       # 상태 코드(정수)를 리턴한다
-
-
-def read_client(prefix):                                # 요청 앞 조각(예: 203.0.113.50 - - [02/Nov/2026:09:12:03 +0900] )을 받는 함수
-    """요청 앞 조각에서 접속자 주소를 꺼낸다.
-    어느 주소가 요청했는지 알고 싶을 때 쓴다.
-    """
-    parts = prefix.split()                              # 공백 기준으로 나눈 조각 리스트를 만든다
-    client_ip = parts[0]                                # 첫 조각이 접속자 주소이다
-    return client_ip                                    # 접속자 주소를 리턴한다
-
-
-def parse_line(line):                                   # 로그 한 줄을 받는 함수
-    """로그 한 줄을 ip · method · path · status 딕셔너리로 바꾼다.
-    깨진 줄이면 None 을 리턴한다.
-    접속 로그를 분석하기 전에 한 줄을 값으로 나눌 때 쓴다.
-    """
-    if line.count('"') < 2:                             # 큰따옴표가 두 개보다 적은 줄이면(잘렸거나 깨진 줄이면)
-        return None                                     # 읽을 수 없으니 None 을 리턴한다
-    prefix, request_text, suffix = split_request(line)  # 세 조각으로 나눈다
-    method, path = read_request(request_text)           # 요청 조각에서 방법과 경로를 꺼낸다
-    status = read_status(suffix)                        # 뒤 조각에서 상태 코드를 꺼낸다
-    client_ip = read_client(prefix)                     # 앞 조각에서 접속자 주소를 꺼낸다
-    entry = {                                           # 꺼낸 값을 딕셔너리로 묶는다
-        "ip": client_ip,                                # 접속자 주소
-        "method": method,                               # 요청 방법
-        "path": path,                                   # 요청 경로
-        "status": status,                               # 상태 코드(정수)
-    }
-    return entry                                        # 딕셔너리를 리턴한다
-```

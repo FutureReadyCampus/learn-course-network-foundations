@@ -1,33 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
-<title>실습 3-2 의 할 일을 각각 한 줄 코드와 짝지은 요점 지도</title>
-<desc>왼쪽은 하려는 일, 오른쪽은 그 일을 하는 코드다. 재시도 함수의 결과와 오류 문장을 저장하고, startswith 로 실패 기록을 골라 목록에 추가한다.</desc>
-<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 3-2 정리: 하려는 일과 코드</text>
-<rect x="20" y="56" width="160" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="100" y="80.35" font-size="15" fill="#292929" text-anchor="middle">함수 결과 담기</text>
-<polyline points="182,76 208,76" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
-<rect x="212" y="56" width="488" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="456" y="80.06" font-size="14" fill="#292929" text-anchor="middle">result = flaky_run_action(action, incident, state, fail_plan)</text>
-<rect x="20" y="106" width="160" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="100" y="130.35" font-size="15" fill="#292929" text-anchor="middle">숫자를 글자로 잇기</text>
-<polyline points="182,126 208,126" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
-<rect x="212" y="106" width="488" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="456" y="130.06" font-size="14" fill="#292929" text-anchor="middle">result + " (시도 " + str(attempt) + "회)"</text>
-<rect x="20" y="156" width="160" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="100" y="180.35" font-size="15" fill="#292929" text-anchor="middle">오류 내용을 저장</text>
-<polyline points="182,176 208,176" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
-<rect x="212" y="156" width="488" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="456" y="180.06" font-size="14" fill="#292929" text-anchor="middle">last_error = str(error)</text>
-<rect x="20" y="206" width="160" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="100" y="230.35" font-size="15" fill="#292929" text-anchor="middle">어떤 말로 시작하면</text>
-<polyline points="182,226 208,226" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
-<rect x="212" y="206" width="488" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="456" y="230.06" font-size="14" fill="#292929" text-anchor="middle">if result.startswith("실패"):</text>
-<rect x="20" y="256" width="160" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="100" y="280.35" font-size="15" fill="#292929" text-anchor="middle">리스트에 추가</text>
-<polyline points="182,276 208,276" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
-<rect x="212" y="256" width="488" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="456" y="280.06" font-size="14" fill="#292929" text-anchor="middle">failures.append(entry)</text>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>실습 3-2 정리: 번호마다 쓰는 코드 모양</title>
+<desc>1번은 문자열을 이어 붙이고, 2번은 키가 없으면 기본값을 주며 읽는다. 3·4번은 확인 실패가 있으면 True, 5·6번은 응답 기한 시각을 계산하고, 7~9번은 티켓을 저장하고 모으고 센다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<text x="20" y="30" font-size="18" fill="#292929" font-weight="700">실습 3-2 정리 · 번호별 코드</text>
+<rect x="20" y="48" width="680" height="36" fill="#f1f1ef" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="71.04" font-size="14" fill="#292929" font-weight="700">번호</text>
+<text x="120" y="71.04" font-size="14" fill="#292929" font-weight="700">하는 일</text>
+<text x="320" y="71.04" font-size="14" fill="#292929" font-weight="700">코드 모양</text>
+<rect x="20" y="84" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="107.04" font-size="14" fill="#292929">1</text>
+<text x="120" y="107.04" font-size="14" fill="#292929">문자열 이어 붙이기</text>
+<text x="320" y="107.04" font-size="14" fill="#292929">return "[" + grade + "] " + entity + …</text>
+<rect x="20" y="120" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="143.04" font-size="14" fill="#292929">2</text>
+<text x="120" y="143.04" font-size="14" fill="#292929">키가 없으면 기본값</text>
+<text x="320" y="143.04" font-size="14" fill="#292929">return next_steps.get(status, DEFAULT_…)</text>
+<rect x="20" y="156" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="179.04" font-size="14" fill="#292929">3 · 4</text>
+<text x="120" y="179.04" font-size="14" fill="#292929">문자열 안에 있으면</text>
+<text x="320" y="179.04" font-size="14" fill="#292929">if "확인 실패" in text:  return True</text>
+<rect x="20" y="192" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="215.04" font-size="14" fill="#292929">5</text>
+<text x="120" y="215.04" font-size="14" fill="#292929">등급의 기한 읽기</text>
+<text x="320" y="215.04" font-size="14" fill="#292929">sla_minutes = sla_table[alert["grade"]]</text>
+<rect x="20" y="228" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="251.04" font-size="14" fill="#292929">6</text>
+<text x="120" y="251.04" font-size="14" fill="#292929">더해서 저장</text>
+<text x="320" y="251.04" font-size="14" fill="#292929">sla_due = alert["minute"] + sla_minutes</text>
+<rect x="20" y="264" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="287.04" font-size="14" fill="#292929">7 · 8</text>
+<text x="120" y="287.04" font-size="14" fill="#292929">만들고 모으기</text>
+<text x="320" y="287.04" font-size="14" fill="#292929">ticket = make_ticket(…) · tickets.append(ticket)</text>
+<rect x="20" y="300" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
+<text x="30" y="323.04" font-size="14" fill="#292929">9</text>
+<text x="120" y="323.04" font-size="14" fill="#292929">1 늘리기</text>
+<text x="320" y="323.04" font-size="14" fill="#292929">manual_count = manual_count + 1</text>
+<line x1="110" y1="48" x2="110" y2="336" stroke="#dededb" stroke-width="1"/>
+<line x1="310" y1="48" x2="310" y2="336" stroke="#dededb" stroke-width="1"/>
 </svg>

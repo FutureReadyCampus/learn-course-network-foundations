@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>글 틀을 골라 _posts 에 글을 만들고 code 폴더에 코드를 올리기</title>
+<desc>상황에 맞는 글 틀을 고르고, _posts 폴더에 날짜-영문제목.md 파일을 만들어 머리말을 module: 5, unit: 4 로 고칩니다. 코드는 code 폴더에 올리고, 첫 화면 나의 진행에서 Module 5 의 4번 칸이 채워졌는지 확인합니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">글 틀로 쓰고 올리기 (GitHub 웹 화면)</tspan></text>
+<text x="20" y="66" font-size="15" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">1. 글 틀 고르기</tspan></text>
+<rect x="20" y="80" width="200" height="42" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="120.0" y="105.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="120.0">실습 4-1 · 4-2 를 한 편으로</tspan></text>
+<line x1="222" y1="101" x2="240" y2="101" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="244" y="80" width="160" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="324.0" y="105.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="324.0">post-practice.md</tspan></text>
+<rect x="20" y="132" width="200" height="42" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="120.0" y="157.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="120.0">시간이 5분뿐</tspan></text>
+<line x1="222" y1="153" x2="240" y2="153" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="244" y="132" width="160" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="324.0" y="157.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="324.0">post-short.md</tspan></text>
+<rect x="20" y="184" width="200" height="42" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="120.0" y="209.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="120.0">실습하다 막혔다</tspan></text>
+<line x1="222" y1="205" x2="240" y2="205" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="244" y="184" width="160" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="324.0" y="209.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="324.0">post-stuck.md</tspan></text>
+<text x="430" y="66" font-size="15" text-anchor="start" fill="#292929"><tspan x="430" font-weight="bold">2. 새 글 파일 (_posts)</tspan></text>
+<rect x="430" y="80" width="270" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="565.0" y="101.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="565.0" font-weight="bold">Add file › Create new file</tspan><tspan x="565.0" dy="20">날짜-영문제목.md</tspan></text>
+<line x1="565" y1="136" x2="565" y2="150" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="430" y="152" width="270" height="82" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="565.0" y="177.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="565.0" font-weight="bold">머리말 고치기</tspan><tspan x="565.0" dy="20">module: 5</tspan><tspan x="565.0" dy="20">unit: 4</tspan></text>
+<line x1="565" y1="236" x2="565" y2="250" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="430" y="252" width="270" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="565.0" y="277.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="565.0" font-weight="bold">Commit changes</tspan></text>
+<text x="20" y="266" font-size="15" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">3. 코드 올리기 (code 폴더)</tspan></text>
+<rect x="20" y="280" width="384" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="212.0" y="304.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="212.0">code/m5_u4_approval_gate.py</tspan><tspan x="212.0" dy="20">code/m5_u4_false_positive.py</tspan></text>
+<text x="20" y="364" font-size="15" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">4. 확인하기 (1~2분 뒤)</tspan></text>
+<rect x="20" y="376" width="680" height="38" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360.0" y="399.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="360.0">첫 화면 최신 글 · 「나의 진행」 Module 5 · 4번 칸 → 안 보이면 Actions 탭</tspan></text>
+</g>
+</svg>

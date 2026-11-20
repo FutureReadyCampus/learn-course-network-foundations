@@ -1,6 +1,6 @@
 ---
 id: m5-u04
-title: 계정 잠금·IP 차단·세션 종료
+title: 승인 게이트와 오탐 되돌리기
 lessons:
 - path: lesson/01/lesson.md
 - path: lesson/02/lesson.md
@@ -8,6 +8,12 @@ lessons:
 - path: lesson/04/lesson.md
 - path: lesson/05/lesson.md
 - path: lesson/06/lesson.md
+- path: lesson/07/lesson.md
+- path: lesson/08/lesson.md
+- path: lesson/09/lesson.md
+- path: lesson/10/lesson.md
+- path: lesson/11/lesson.md
+- path: lesson/12/lesson.md
 ---
 
-# 계정 잠금·IP 차단·세션 종료
+# 승인 게이트와 오탐 되돌리기

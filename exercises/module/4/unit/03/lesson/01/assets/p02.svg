@@ -1,52 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
-<title>가상환경을 켜고 anomaly_detection 에 판다스를 설치한 뒤 이벤트 파일을 만든다</title>
-<desc>왼쪽은 준비 순서로, 가상환경 확인, 판다스 설치와 버전 확인, New File 로 파일 만드는 법, report_u3.md 는 「보고서 쓰기」 레슨에서 만든다는 점, normalized_events.json 만들기, 57개 확인입니다. 오른쪽은 준비가 끝난 폴더 배치입니다.</desc>
-<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>Unit 2 와 Module 3 Unit 1 의 파일을 anomaly_detection 폴더에서 불러 쓴다</title>
+<desc>normalized_events.json 과 login_detection.py 는 Unit 2 에서 만들었다. rbac.py 와 config 의 JSON 두 개는 Module 3 Unit 1 실습 1-1, 1-2 에서 만들었고 access_control 폴더에 있으므로, 다음 페이지에서 anomaly_detection 폴더에 새로 만든다.</desc>
+<defs><marker id="a-p02-u3s" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">폴더 열고 판다스 준비하기</text>
-<rect x="24" y="54" width="60" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="54" y="78.1" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">1 · 2</text>
-<rect x="92" y="54" width="300" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="104" y="78.1" font-size="14" text-anchor="start" fill="#292929">터미널 열기 · (.venv) 확인</text>
-<rect x="24" y="104" width="60" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="54" y="128.1" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">3</text>
-<rect x="92" y="104" width="300" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="104" y="128.1" font-size="14" text-anchor="start" fill="#292929">cd anomaly_detection · pwd</text>
-<rect x="24" y="154" width="60" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="54" y="178.1" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">3</text>
-<rect x="92" y="154" width="300" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="104" y="178.1" font-size="14" text-anchor="start" fill="#292929">pip install pandas</text>
-<rect x="24" y="204" width="60" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="54" y="228.1" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">3</text>
-<rect x="92" y="204" width="300" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="104" y="228.1" font-size="14" text-anchor="start" fill="#292929">버전 숫자 확인 (예: 2.3.3)</text>
-<rect x="24" y="254" width="60" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="54" y="278.1" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">4 · 5</text>
-<rect x="92" y="254" width="300" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="104" y="278.1" font-size="14" text-anchor="start" fill="#292929">New File 로 만들고 복사해 붙여 넣기</text>
-<rect x="24" y="304" width="60" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="54" y="328.1" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">6</text>
-<rect x="92" y="304" width="300" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="104" y="328.1" font-size="14" text-anchor="start" fill="#292929">normalized_events.json 붙여 넣기</text>
-<rect x="24" y="354" width="60" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="54" y="378.1" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">7</text>
-<rect x="92" y="354" width="300" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="104" y="378.1" font-size="14" text-anchor="start" fill="#292929">이벤트 57 확인</text>
-<rect x="412" y="54" width="284" height="350" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="428" y="88" font-size="14" text-anchor="start" fill="#292929" font-weight="700">security-agent-toolkit/</text>
-<line x1="436" y1="102" x2="436" y2="123" stroke="#666660" stroke-width="1.5"/>
-<line x1="436" y1="123" x2="446" y2="123" stroke="#666660" stroke-width="1.5"/>
-<text x="450" y="128" font-size="14" text-anchor="start" fill="#292929">.venv/</text>
-<line x1="436" y1="142" x2="436" y2="163" stroke="#666660" stroke-width="1.5"/>
-<line x1="436" y1="163" x2="446" y2="163" stroke="#666660" stroke-width="1.5"/>
-<text x="450" y="168" font-size="14" text-anchor="start" fill="#292929" font-weight="700">anomaly_detection/</text>
-<line x1="458" y1="182" x2="458" y2="203" stroke="#666660" stroke-width="1.5"/>
-<line x1="458" y1="203" x2="468" y2="203" stroke="#666660" stroke-width="1.5"/>
-<text x="472" y="208" font-size="14" text-anchor="start" fill="#292929">normalized_events.json</text>
-<line x1="458" y1="222" x2="458" y2="243" stroke="#666660" stroke-width="1.5"/>
-<line x1="458" y1="243" x2="468" y2="243" stroke="#666660" stroke-width="1.5"/>
-<text x="472" y="248" font-size="14" text-anchor="start" fill="#292929">report_u3.md (보고서 쓰기)</text>
-<text x="428" y="340" font-size="14" text-anchor="start" fill="#666660">pwd 가 …/anomaly_detection</text>
-<text x="428" y="362" font-size="14" text-anchor="start" fill="#666660">으로 끝나야 합니다</text>
+<text x="30" y="32" font-size="19" font-weight="700" fill="#292929">이전 파일은 어디서 오나</text>
+<rect x="30" y="52" width="300" height="122" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="46" y="78" font-size="15" font-weight="700" fill="#292929">Unit 2 · anomaly_detection/</text>
+<text x="46" y="106" font-size="15" fill="#292929">normalized_events.json</text>
+<text x="46" y="130" font-size="15" fill="#292929">login_detection.py</text>
+<text x="46" y="154" font-size="14" fill="#666660">실습 2-3 · 도전 3-1 에서만 씀</text>
+<rect x="30" y="192" width="300" height="122" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="46" y="218" font-size="15" font-weight="700" fill="#292929">Module 3 Unit 1 · access_control/</text>
+<text x="46" y="246" font-size="15" fill="#292929">rbac.py (실습 1-2)</text>
+<text x="46" y="270" font-size="15" fill="#292929">config/users.json · roles.json</text>
+<text x="46" y="294" font-size="14" fill="#666660">(실습 1-1) 다른 폴더에 있음</text>
+<line x1="336" y1="113" x2="404" y2="160" stroke="#666660" stroke-width="2" marker-end="url(#a-p02-u3s)"/>
+<line x1="336" y1="253" x2="404" y2="206" stroke="#666660" stroke-width="2" marker-end="url(#a-p02-u3s)"/>
+<rect x="410" y="112" width="280" height="140" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="426" y="140" font-size="15" font-weight="700" fill="#292929">오늘 작업 폴더</text>
+<text x="426" y="166" font-size="15" fill="#292929">anomaly_detection/</text>
+<text x="426" y="198" font-size="14" fill="#292929">이벤트 · rbac.py · config 는</text>
+<text x="426" y="220" font-size="14" fill="#292929">다음 페이지 완성본으로</text>
+<text x="426" y="242" font-size="14" fill="#292929">이 폴더에 새로 만든다</text>
+<rect x="30" y="330" width="660" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="355" font-size="15" fill="#292929" text-anchor="middle">cd anomaly_detection → pwd → 판다스 버전 → ls</text>
 </g>
 </svg>

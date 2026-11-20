@@ -1,36 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img">
-<title>오류가 나면 증상을 보고 원인을 확인한 뒤 고친다</title>
-<desc>No module named pandas 는 가상환경을 활성화하고 pandas 를 설치합니다. No module named login_detection 은 Unit 4 파일을 다시 만듭니다. 그 밖의 오류는 pwd 와 ls 를 확인하고 오류 전체를 AI 에 묻습니다.</desc>
-<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 384" role="img">
+<title>.env 가 없으면 키를 만들고 확인한 뒤 .env 에 넣고 .gitignore 로 막는다</title>
+<desc>먼저 ls -a .. 로 .env 와 .gitignore 가 있는지 본다. 없으면 AI Studio 에서 키 만들기, curl 로 확인, .env 만들기, .gitignore 로 막기, True 확인의 다섯 단계를 한다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">오류가 나면: 증상 → 확인 → 고치기</text>
-<text x="125" y="66" font-size="15" text-anchor="middle" fill="#666660" font-weight="700">증상</text>
-<text x="360" y="66" font-size="15" text-anchor="middle" fill="#666660" font-weight="700">확인</text>
-<text x="595" y="66" font-size="15" text-anchor="middle" fill="#666660" font-weight="700">고치기</text>
-<rect x="20" y="78" width="210" height="88" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="125.0" y="117" font-size="14" text-anchor="middle" fill="#292929"><tspan x="125.0" dy="0">No module named</tspan><tspan x="125.0" dy="19">'pandas'</tspan></text>
-<rect x="255" y="78" width="210" height="88" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360.0" y="117" font-size="14" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0">가상환경이</tspan><tspan x="360.0" dy="19">활성화되지 않음</tspan></text>
-<rect x="490" y="78" width="210" height="88" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="595.0" y="100" font-size="14" text-anchor="middle" fill="#292929"><tspan x="595.0" dy="0">source .venv/</tspan><tspan x="595.0" dy="18">Scripts/activate</tspan><tspan x="595.0" dy="18">python -m pip</tspan><tspan x="595.0" dy="18">install pandas</tspan></text>
-<polyline points="232,122 251,122" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<polyline points="467,122 486,122" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<rect x="20" y="182" width="210" height="88" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="125.0" y="221" font-size="14" text-anchor="middle" fill="#292929"><tspan x="125.0" dy="0">No module named</tspan><tspan x="125.0" dy="19">'login_detection'</tspan></text>
-<rect x="255" y="182" width="210" height="88" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360.0" y="221" font-size="14" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0">Unit 4 파일이 없거나</tspan><tspan x="360.0" dy="19">함수 이름이 다름</tspan></text>
-<rect x="490" y="182" width="210" height="88" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="595.0" y="213" font-size="14" text-anchor="middle" fill="#292929"><tspan x="595.0" dy="0">시작하기 표의</tspan><tspan x="595.0" dy="18">「없거나 안 풀렸을 때」</tspan><tspan x="595.0" dy="18">대로 다시 만들기</tspan></text>
-<polyline points="232,226 251,226" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<polyline points="467,226 486,226" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<rect x="20" y="286" width="210" height="88" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="125.0" y="335" font-size="14" text-anchor="middle" fill="#292929"><tspan x="125.0" dy="0">그 밖의 오류</tspan></text>
-<rect x="255" y="286" width="210" height="88" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360.0" y="316" font-size="14" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0">pwd 끝이</tspan><tspan x="360.0" dy="19">anomaly_detection 인지</tspan><tspan x="360.0" dy="19">ls 의 파일 이름</tspan></text>
-<rect x="490" y="286" width="210" height="88" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="595.0" y="326" font-size="14" text-anchor="middle" fill="#292929"><tspan x="595.0" dy="0">오류 전체를 AI 에 묻기</tspan><tspan x="595.0" dy="18">.env · API 키는 지움</tspan></text>
-<polyline points="232,330 251,330" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<polyline points="467,330 486,330" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<text x="20" y="398" font-size="14" text-anchor="start" fill="#666660">실행은 VS Code 실행 단추가 아니라 터미널에서 한다</text>
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">Gemini API 키와 .env 만들기 (키를 쓸 사람만)</text>
+<rect x="12" y="52" width="420" height="45.75" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="222" y="80.05" font-size="15" text-anchor="middle" fill="#292929">ls -a .. 에 .env 와 .gitignore 가 둘 다 있나?</text>
+<line x1="434" y1="74" x2="476" y2="74" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="478" y="52" width="230" height="45.75" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="593" y="80.05" font-size="15" text-anchor="middle" fill="#292929">있으면 이 절은 건너뜀</text>
+<line x1="222" y1="98" x2="222" y2="116" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="12" y="118" width="696" height="39.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="21" y="143.05" font-size="15" text-anchor="start" fill="#292929">1단계 · 키 만들기 — AI Studio › Create API key. 보통 AIza 로 시작. 결제 정보는 넣지 않는다</text>
+<rect x="12" y="165.75" width="696" height="39.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="21" y="190.8" font-size="15" text-anchor="start" fill="#292929">2단계 · 키 확인 — curl 로 요청해 "models" 목록이 나오면 맞는 키</text>
+<rect x="12" y="213.5" width="696" height="61.5" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="21" y="238.55" font-size="15" text-anchor="start" fill="#292929">3단계 · .env 만들기 — security-agent-toolkit 에 GEMINI_API_KEY=키 한 줄 (빈칸 ·</text>
+<text x="21" y="260.3" font-size="15" text-anchor="start" fill="#292929">따옴표 없이)</text>
+<rect x="12" y="283" width="696" height="39.75" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="21" y="308.05" font-size="15" text-anchor="start" fill="#292929">4단계 · 깃허브 막기 — .gitignore 에 .env 한 줄. git status 에 .env 가 안 보이면 OK</text>
+<rect x="12" y="330.75" width="696" height="39.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="21" y="355.8" font-size="15" text-anchor="start" fill="#292929">5단계 · 읽히는지 확인 — anomaly_detection 에서 read_api_key → True</text>
 </g>
 </svg>

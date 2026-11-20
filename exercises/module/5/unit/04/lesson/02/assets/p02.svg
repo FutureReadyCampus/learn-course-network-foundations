@@ -1,58 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img">
-<title>대응 조치는 실행, 사후 검증, 감사 기록의 세 단계를 마쳐야 완료됩니다</title>
-<desc>조치를 실행한 뒤 실제 상태를 다시 확인하고, 감사 기록 한 건에 action, target, incident, before, after, reason 여섯 키를 남깁니다. after 는 사후 검증으로 확인한 상태입니다.</desc>
-<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 460" role="img">
+<title>승인 게이트: 허용 목록 확인 → 점수 합산 → 3점 이상이면 승인 필요</title>
+<desc>먼저 대상이 허용 목록에 있으면 점수를 보지 않고 차단 금지입니다. 아니면 등급 · VIP · 공유 IP · 대상 수 점수를 더하고, 합계가 3점 이상이면 승인 필요, 아니면 자동입니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p02r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p02g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p02b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">1.1 실행 → 사후 검증 → 감사 기록</text>
-<rect x="24" y="66" width="208" height="70" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="128.0" y="95.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="128.0" dy="0" font-weight="700">① 실행</tspan><tspan x="128.0" dy="21.0">dami 를 잠근다</tspan></text>
-<line x1="232" y1="101" x2="254" y2="101" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<rect x="256" y="66" width="208" height="70" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360.0" y="95.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">② 사후 검증</tspan><tspan x="360.0" dy="21.0">잠긴 리스트에 있나?</tspan></text>
-<line x1="464" y1="101" x2="486" y2="101" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
-<rect x="488" y="66" width="208" height="70" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="592.0" y="95.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="592.0" dy="0" font-weight="700">③ 감사 기록</tspan><tspan x="592.0" dy="21.0">여섯 키 한 건</tspan></text>
-<rect x="24" y="160" width="130" height="34" fill="#f1f1ef" stroke="#dededb"/>
-<text x="36" y="182.2" font-size="15" fill="#292929" font-weight="700">키</text>
-<rect x="154" y="160" width="290" height="34" fill="#f1f1ef" stroke="#dededb"/>
-<text x="166" y="182.2" font-size="15" fill="#292929" font-weight="700">뜻</text>
-<rect x="444" y="160" width="252" height="34" fill="#f1f1ef" stroke="#dededb"/>
-<text x="456" y="182.2" font-size="15" fill="#292929" font-weight="700">예</text>
-<rect x="24" y="194" width="130" height="34" fill="#ffffff" stroke="#dededb"/>
-<text x="36" y="216.2" font-size="15" fill="#292929">action</text>
-<rect x="154" y="194" width="290" height="34" fill="#ffffff" stroke="#dededb"/>
-<text x="166" y="216.2" font-size="15" fill="#292929">수행한 조치</text>
-<rect x="444" y="194" width="252" height="34" fill="#ffffff" stroke="#dededb"/>
-<text x="456" y="216.2" font-size="15" fill="#292929">"계정 잠금"</text>
-<rect x="24" y="228" width="130" height="34" fill="#ffffff" stroke="#dededb"/>
-<text x="36" y="250.2" font-size="15" fill="#292929">target</text>
-<rect x="154" y="228" width="290" height="34" fill="#ffffff" stroke="#dededb"/>
-<text x="166" y="250.2" font-size="15" fill="#292929">조치 대상</text>
-<rect x="444" y="228" width="252" height="34" fill="#ffffff" stroke="#dededb"/>
-<text x="456" y="250.2" font-size="15" fill="#292929">"dami"</text>
-<rect x="24" y="262" width="130" height="34" fill="#ffffff" stroke="#dededb"/>
-<text x="36" y="284.2" font-size="15" fill="#292929">incident</text>
-<rect x="154" y="262" width="290" height="34" fill="#ffffff" stroke="#dededb"/>
-<text x="166" y="284.2" font-size="15" fill="#292929">인시던트 번호</text>
-<rect x="444" y="262" width="252" height="34" fill="#ffffff" stroke="#dededb"/>
-<text x="456" y="284.2" font-size="15" fill="#292929">"INC-001"</text>
-<rect x="24" y="296" width="130" height="34" fill="#ffffff" stroke="#dededb"/>
-<text x="36" y="318.2" font-size="15" fill="#292929">before</text>
-<rect x="154" y="296" width="290" height="34" fill="#ffffff" stroke="#dededb"/>
-<text x="166" y="318.2" font-size="15" fill="#292929">조치 전 상태</text>
-<rect x="444" y="296" width="252" height="34" fill="#ffffff" stroke="#dededb"/>
-<text x="456" y="318.2" font-size="15" fill="#292929">"잠기지 않음"</text>
-<rect x="24" y="330" width="130" height="34" fill="#ffffff" stroke="#dededb"/>
-<text x="36" y="352.2" font-size="15" fill="#292929">after</text>
-<rect x="154" y="330" width="290" height="34" fill="#ffffff" stroke="#dededb"/>
-<text x="166" y="352.2" font-size="15" fill="#292929">사후 검증으로 확인한 상태</text>
-<rect x="444" y="330" width="252" height="34" fill="#ffffff" stroke="#dededb"/>
-<text x="456" y="352.2" font-size="15" fill="#292929">"잠김"</text>
-<rect x="24" y="364" width="130" height="34" fill="#ffffff" stroke="#dededb"/>
-<text x="36" y="386.2" font-size="15" fill="#292929">reason</text>
-<rect x="154" y="364" width="290" height="34" fill="#ffffff" stroke="#dededb"/>
-<text x="166" y="386.2" font-size="15" fill="#292929">조치 사유</text>
-<rect x="444" y="364" width="252" height="34" fill="#ffffff" stroke="#dededb"/>
-<text x="456" y="386.2" font-size="15" fill="#292929">"퇴사한 계정의 서버 요청"</text>
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">승인 게이트의 판단 순서</tspan></text>
+<rect x="40" y="54" width="300" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="190.0" y="80.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="190.0">조치 요청 한 건</tspan></text>
+<line x1="190" y1="100" x2="190" y2="126" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="40" y="128" width="300" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="190.0" y="160.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="190.0" font-weight="bold">① 대상이 허용 목록에 있나?</tspan></text>
+<line x1="342" y1="156" x2="398" y2="156" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<text x="370" y="148" font-size="14" text-anchor="middle" fill="#666660"><tspan x="370">예</tspan></text>
+<rect x="400" y="128" width="180" height="56" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="490.0" y="160.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="490.0" font-weight="bold">차단 금지</tspan></text>
+<line x1="190" y1="186" x2="190" y2="216" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<text x="200" y="206" font-size="14" text-anchor="start" fill="#666660"><tspan x="200">아니오</tspan></text>
+<rect x="40" y="218" width="300" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="190.0" y="248.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="190.0" font-weight="bold">② 위험 점수를 합산한다</tspan></text>
+<rect x="400" y="204" width="300" height="140" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="418" y="236.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="418" font-weight="bold">더하는 점수</tspan><tspan x="418" dy="21.0">high 2 · mid 1 · low 0</tspan><tspan x="418" dy="21.0">VIP 계정 +3</tspan><tspan x="418" dy="21.0">공유 IP(2개 이상) +2</tspan><tspan x="418" dy="21.0">대상 4개 이상 +2</tspan></text>
+<line x1="398" y1="244" x2="342" y2="244" stroke="#666660" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a-p02)"/>
+<line x1="190" y1="272" x2="190" y2="302" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="40" y="304" width="300" height="52" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="190.0" y="334.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="190.0" font-weight="bold">③ 합계가 3점 이상인가?</tspan></text>
+<line x1="110" y1="358" x2="110" y2="394" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<text x="120" y="382" font-size="14" text-anchor="start" fill="#666660"><tspan x="120">예</tspan></text>
+<line x1="270" y1="358" x2="270" y2="394" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<text x="280" y="382" font-size="14" text-anchor="start" fill="#666660"><tspan x="280">아니오</tspan></text>
+<rect x="40" y="396" width="140" height="48" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="110.0" y="424.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="110.0" font-weight="bold">승인 필요</tspan></text>
+<rect x="200" y="396" width="140" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="270.0" y="424.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="270.0" font-weight="bold">자동</tspan></text>
+<text x="400" y="380" font-size="14" text-anchor="start" fill="#666660"><tspan x="400">기준 값은 모두</tspan></text>
+<text x="400" y="402" font-size="14" text-anchor="start" fill="#666660"><tspan x="400">config/approval_policy.json</tspan></text>
 </g>
 </svg>

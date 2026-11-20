@@ -110,13 +110,11 @@ False
 
 **`config/exceptions.json`** — 아래 세 건을 붙여 넣습니다.
 
-```json
-[
+<pre class="copyable"><code>[
   {"id": 1, "user": "seoyeon", "permission": "SETTLE:QUERY", "expires": "2026-10-22 18:00", "reason": "월말 정산 대조 지원"},
   {"id": 2, "user": "junho", "permission": "SALES:CHANGE", "expires": "2026-10-20 18:00", "reason": "영업 실적 정정"},
   {"id": 3, "user": "dami", "permission": "SALES:QUERY", "expires": "2026-10-31 18:00", "reason": "인수인계"}
-]
-```
+]</code></pre>
 
 - 4번 · 5번 예외는 `]` 줄 바로 위에, 한 건에 한 줄씩 넣습니다. 모양은 위의 세 건과 같고, 줄 앞에 공백 2칸을 둡니다: `{"id": 번호, "user": "…", "permission": "…", "expires": "…", "reason": "…"}`
 - 쉼표는 **마지막 줄만 빼고** 줄마다 붙습니다. 3번 줄 끝에 쉼표를 추가하고, 4번 줄 끝에도 쉼표를 쓰고, 마지막인 5번 줄 뒤에는 쓰지 않습니다. 끝부분은 이런 모양이 됩니다(`…` 자리는 직접 채웁니다).

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 359" role="img">
+<title>도전 5-1은 한 대 켜기에서 시작해 compose.yaml 로 두 대를 켜고 200을 확인한다</title>
+<desc>이미지 확인, docker run 으로 한 대 켜기, VS Code 의 New File 로 compose.yaml 만들기, 붙여 넣기, docker compose up -d, curl 확인 순서다. 마지막에 report_u5.md 를 채운다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">도전 5-1 순서</text>
+<rect x="12" y="52" width="212" height="90.7" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="118" y="81.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">1. 이미지 확인</text>
+<text x="118" y="103.25" font-size="15" text-anchor="middle" fill="#292929">docker images</text>
+<text x="118" y="125" font-size="15" text-anchor="middle" fill="#292929">nginx:1.28 (없으면 pull)</text>
+<rect x="254" y="52" width="212" height="90.7" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="81.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">2. 한 대 켜기</text>
+<text x="360" y="103.25" font-size="15" text-anchor="middle" fill="#292929">docker run → docker ps</text>
+<text x="360" y="125" font-size="15" text-anchor="middle" fill="#292929">→ docker stop web-run</text>
+<line x1="227" y1="97.35" x2="251" y2="97.35" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<rect x="496" y="52" width="212" height="90.7" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="602" y="81.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">3. 파일 만들기</text>
+<text x="602" y="103.25" font-size="15" text-anchor="middle" fill="#292929">New File 로 이름 입력</text>
+<text x="602" y="125" font-size="15" text-anchor="middle" fill="#292929">compose.yaml → ls</text>
+<line x1="469" y1="97.35" x2="493" y2="97.35" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<rect x="12" y="176.7" width="212" height="90.7" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="118" y="205.82" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">4. 붙여 넣기</text>
+<text x="118" y="227.95" font-size="15" text-anchor="middle" fill="#292929">web1 은 8080, web2 는</text>
+<text x="118" y="249.7" font-size="15" text-anchor="middle" fill="#292929">8081</text>
+<path d="M602 142.7 L602 159.7 L118 159.7 L118 174.7" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<rect x="254" y="176.7" width="212" height="90.7" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="205.82" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">5. 두 대 켜기</text>
+<text x="360" y="227.95" font-size="15" text-anchor="middle" fill="#292929">docker compose up -d →</text>
+<text x="360" y="249.7" font-size="15" text-anchor="middle" fill="#292929">docker compose ps</text>
+<line x1="227" y1="222.05" x2="251" y2="222.05" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<rect x="496" y="176.7" width="212" height="90.7" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="602" y="205.82" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">6. 응답 확인</text>
+<text x="602" y="227.95" font-size="15" text-anchor="middle" fill="#292929">curl 8080 · 8081 → 둘 다</text>
+<text x="602" y="249.7" font-size="15" text-anchor="middle" fill="#292929">200</text>
+<line x1="469" y1="222.05" x2="493" y2="222.05" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
+<rect x="12" y="300" width="696" height="45.75" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="328.05" font-size="15" text-anchor="middle" fill="#292929">7. report_u5.md 도전 5-1 (가)~(라)를 채운다. 한 대짜리 서버 web-run 은 꼭 끈 뒤 5번으로 간다.</text>
+</g>
+</svg>

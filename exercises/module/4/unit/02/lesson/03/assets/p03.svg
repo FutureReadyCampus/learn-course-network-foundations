@@ -1,36 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>DictReader 는 CSV 한 줄을 열 이름 딕셔너리로, 바꾸기 딕셔너리는 값을 바꾼다</title>
-<desc>위쪽은 CSV 첫 줄의 열 이름과 둘째 줄의 값이 DictReader 로 딕셔너리 하나가 되는 모습입니다. 아래쪽은 RESULT_MAP 과 ALLOWED_MAP 이 원래 값을 성공, 실패로 바꾸고 없는 키는 KeyError 가 나는 모습입니다.</desc>
-<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">CSV 를 딕셔너리로 읽기 · 딕셔너리로 값 바꾸기</text>
-<rect x="24" y="56" width="300" height="92" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="174" y="86.0" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">CSV 두 줄</text>
-<text x="174" y="106.8" font-size="14" text-anchor="middle" fill="#292929">열 이름: time,account,…</text>
-<text x="174" y="127.1" font-size="14" text-anchor="middle" fill="#292929">값: 2026-11-02 02:14:08,…</text>
-<line x1="326" y1="102" x2="362" y2="102" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<text x="344" y="92" font-size="14" text-anchor="middle" fill="#666660">DictReader</text>
-<rect x="366" y="56" width="330" height="92" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="531" y="86.0" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">딕셔너리 한 행</text>
-<text x="531" y="106.8" font-size="14" text-anchor="middle" fill="#292929">row["account"]</text>
-<text x="531" y="127.1" font-size="14" text-anchor="middle" fill="#292929">→ "jiwoo@a-corp.example"</text>
-<line x1="24" y1="170" x2="696" y2="170" stroke="#dededb" stroke-width="1.5"/>
-<rect x="24" y="190" width="300" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="174" y="218.3" font-size="15" text-anchor="middle" fill="#292929">RESULT_MAP["failure"]</text>
-<line x1="326" y1="214" x2="362" y2="214" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<rect x="366" y="190" width="160" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="446" y="218.3" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">"실패"</text>
-<rect x="24" y="252" width="300" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="174" y="280.4" font-size="15" text-anchor="middle" fill="#292929">ALLOWED_MAP[True]</text>
-<line x1="326" y1="276" x2="362" y2="276" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<rect x="366" y="252" width="160" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="446" y="280.4" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">"성공"</text>
-<rect x="24" y="314" width="300" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="174" y="342.4" font-size="15" text-anchor="middle" fill="#292929">RESULT_MAP["pending"]</text>
-<line x1="326" y1="338" x2="362" y2="338" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<rect x="366" y="314" width="160" height="48" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="446" y="342.4" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">KeyError</text>
-<rect x="540" y="314" width="156" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="618" y="342.1" font-size="14" text-anchor="middle" fill="#666660">예상 못 한 값</text>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>groupby→size→sort_values 로 묶어 세고, to_datetime→dt.hour 로 hour 열 만들기</title>
+<desc>groupby 는 묶기만 하고 size 가 그룹마다 행 수를 셉니다. sort_values(ascending=False) 는 큰 값부터 정렬합니다. 시각 문자열은 to_datetime 과 dt.hour 로 시를 꺼내 새 열로 붙이고 to_csv 로 저장합니다.</desc>
+<defs><marker id="a-0303-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">2.1 묶고 세기 · 시간 다루기 · 저장하기</text>
+<rect x="24" y="68" width="204.0" height="112" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="126.0" y="108.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">groupby("source")</text>
+<text x="126.0" y="129.2" font-size="15" fill="#666660" text-anchor="middle">같은 값끼리 묶기</text>
+<text x="126.0" y="150.2" font-size="15" fill="#666660" text-anchor="middle">개수는 아직 없음</text>
+<line x1="231.0" y1="124.0" x2="255.0" y2="124.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p03)"/>
+<rect x="258.0" y="68" width="204.0" height="112" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360.0" y="97.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">.size()</text>
+<text x="360.0" y="118.8" font-size="15" fill="#666660" text-anchor="middle">saas 1</text>
+<text x="360.0" y="139.8" font-size="15" fill="#666660" text-anchor="middle">server 2</text>
+<text x="360.0" y="160.8" font-size="15" fill="#666660" text-anchor="middle">web 3</text>
+<line x1="465.0" y1="124.0" x2="489.0" y2="124.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p03)"/>
+<rect x="492.0" y="68" width="204.0" height="112" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="594.0" y="97.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">sort_values</text>
+<text x="594.0" y="118.8" font-size="15" fill="#666660" text-anchor="middle">web 3</text>
+<text x="594.0" y="139.8" font-size="15" fill="#666660" text-anchor="middle">server 2</text>
+<text x="594.0" y="160.8" font-size="15" fill="#666660" text-anchor="middle">saas 1</text>
+<text x="24" y="204" font-size="14" fill="#666660" text-anchor="start">sort_values(ascending=False) = 큰 값부터 · 빼면 작은 값부터</text>
+<rect x="24" y="222" width="145.5" height="96" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="96.75" y="264.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">"09:01:05"</text>
+<text x="96.75" y="285.8" font-size="15" fill="#666660" text-anchor="middle">문자열</text>
+<line x1="172.5" y1="270.0" x2="196.5" y2="270.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p03)"/>
+<rect x="199.5" y="222" width="145.5" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="272.25" y="264.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">pd.to_datetime</text>
+<text x="272.25" y="285.8" font-size="15" fill="#666660" text-anchor="middle">날짜·시간 값</text>
+<line x1="348.0" y1="270.0" x2="372.0" y2="270.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p03)"/>
+<rect x="375.0" y="222" width="145.5" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="447.75" y="264.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">.dt.hour</text>
+<text x="447.75" y="285.8" font-size="15" fill="#666660" text-anchor="middle">시만 꺼냄 → 9</text>
+<line x1="523.5" y1="270.0" x2="547.5" y2="270.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p03)"/>
+<rect x="550.5" y="222" width="145.5" height="96" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="623.25" y="264.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">events["hour"]</text>
+<text x="623.25" y="285.8" font-size="15" fill="#666660" text-anchor="middle">새 열 · (57, 7)</text>
+<rect x="24" y="340" width="672" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="364.9" font-size="14" fill="#292929" text-anchor="middle">to_csv("failed_events.csv", index=False) → 행 번호 없이 CSV 로 저장</text>
 </svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>실습 4-1 정답: 요청 8건의 위험 점수와 3점 기준으로 나뉜 결정</title>
+<desc>REQ-2 · REQ-6은 4점, REQ-5는 3점이라 승인 필요이고, REQ-1 · REQ-4 · REQ-7은 3점 미만이라 자동입니다. REQ-3 · REQ-8은 허용 목록 대상이라 점수 없이 차단 금지입니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p03r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p03g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p03b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">실습 4-1 정답: 요청별 위험 점수와 결정</tspan></text>
+<rect x="90" y="50" width="16" height="16" rx="3" fill="#1f7a4a"/>
+<text x="114" y="63" font-size="14" text-anchor="start" fill="#292929"><tspan x="114">자동 3건</tspan></text>
+<rect x="240" y="50" width="16" height="16" rx="3" fill="#9a6200"/>
+<text x="264" y="63" font-size="14" text-anchor="start" fill="#292929"><tspan x="264">승인 필요 3건</tspan></text>
+<rect x="420" y="50" width="16" height="16" rx="3" fill="#e0442e"/>
+<text x="444" y="63" font-size="14" text-anchor="start" fill="#292929"><tspan x="444">차단 금지 2건 (허용 목록)</tspan></text>
+<line x1="90" y1="330" x2="700" y2="330" stroke="#666660" stroke-width="1.5"/>
+<text x="80" y="335" font-size="14" text-anchor="end" fill="#666660"><tspan x="80">0점</tspan></text>
+<line x1="90" y1="280" x2="700" y2="280" stroke="#dededb" stroke-width="1"/>
+<text x="80" y="285" font-size="14" text-anchor="end" fill="#666660"><tspan x="80">1점</tspan></text>
+<line x1="90" y1="230" x2="700" y2="230" stroke="#dededb" stroke-width="1"/>
+<text x="80" y="235" font-size="14" text-anchor="end" fill="#666660"><tspan x="80">2점</tspan></text>
+<line x1="90" y1="180" x2="700" y2="180" stroke="#dededb" stroke-width="1"/>
+<text x="80" y="185" font-size="14" text-anchor="end" fill="#666660"><tspan x="80">3점</tspan></text>
+<line x1="90" y1="130" x2="700" y2="130" stroke="#dededb" stroke-width="1"/>
+<text x="80" y="135" font-size="14" text-anchor="end" fill="#666660"><tspan x="80">4점</tspan></text>
+<rect x="106" y="230" width="44" height="100" fill="#1f7a4a"/>
+<text x="128" y="222" font-size="14" text-anchor="middle" fill="#292929" font-weight="bold"><tspan x="128">2점</tspan></text>
+<text x="128" y="352" font-size="14" text-anchor="middle" fill="#292929"><tspan x="128">REQ-1</tspan></text>
+<text x="128" y="374" font-size="14" text-anchor="middle" fill="#666660"><tspan x="128">자동</tspan></text>
+<rect x="182" y="130" width="44" height="200" fill="#9a6200"/>
+<text x="204" y="122" font-size="14" text-anchor="middle" fill="#292929" font-weight="bold"><tspan x="204">4점</tspan></text>
+<text x="204" y="352" font-size="14" text-anchor="middle" fill="#292929"><tspan x="204">REQ-2</tspan></text>
+<text x="204" y="374" font-size="14" text-anchor="middle" fill="#666660"><tspan x="204">승인 필요</tspan></text>
+<rect x="254" y="286" width="52" height="44" rx="4" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5" stroke-dasharray="4 3"/>
+<text x="280" y="304" font-size="14" text-anchor="middle" fill="#292929"><tspan x="280">허용</tspan></text>
+<text x="280" y="322" font-size="14" text-anchor="middle" fill="#292929"><tspan x="280">목록</tspan></text>
+<text x="280" y="352" font-size="14" text-anchor="middle" fill="#292929"><tspan x="280">REQ-3</tspan></text>
+<text x="280" y="374" font-size="14" text-anchor="middle" fill="#666660"><tspan x="280">차단 금지</tspan></text>
+<text x="356" y="322" font-size="14" text-anchor="middle" fill="#292929" font-weight="bold"><tspan x="356">0점</tspan></text>
+<text x="356" y="352" font-size="14" text-anchor="middle" fill="#292929"><tspan x="356">REQ-4</tspan></text>
+<text x="356" y="374" font-size="14" text-anchor="middle" fill="#666660"><tspan x="356">자동</tspan></text>
+<rect x="410" y="180" width="44" height="150" fill="#9a6200"/>
+<text x="432" y="172" font-size="14" text-anchor="middle" fill="#292929" font-weight="bold"><tspan x="432">3점</tspan></text>
+<text x="432" y="352" font-size="14" text-anchor="middle" fill="#292929"><tspan x="432">REQ-5</tspan></text>
+<text x="432" y="374" font-size="14" text-anchor="middle" fill="#666660"><tspan x="432">승인 필요</tspan></text>
+<rect x="486" y="130" width="44" height="200" fill="#9a6200"/>
+<text x="508" y="122" font-size="14" text-anchor="middle" fill="#292929" font-weight="bold"><tspan x="508">4점</tspan></text>
+<text x="508" y="352" font-size="14" text-anchor="middle" fill="#292929"><tspan x="508">REQ-6</tspan></text>
+<text x="508" y="374" font-size="14" text-anchor="middle" fill="#666660"><tspan x="508">승인 필요</tspan></text>
+<rect x="562" y="280" width="44" height="50" fill="#1f7a4a"/>
+<text x="584" y="272" font-size="14" text-anchor="middle" fill="#292929" font-weight="bold"><tspan x="584">1점</tspan></text>
+<text x="584" y="352" font-size="14" text-anchor="middle" fill="#292929"><tspan x="584">REQ-7</tspan></text>
+<text x="584" y="374" font-size="14" text-anchor="middle" fill="#666660"><tspan x="584">자동</tspan></text>
+<rect x="634" y="286" width="52" height="44" rx="4" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5" stroke-dasharray="4 3"/>
+<text x="660" y="304" font-size="14" text-anchor="middle" fill="#292929"><tspan x="660">허용</tspan></text>
+<text x="660" y="322" font-size="14" text-anchor="middle" fill="#292929"><tspan x="660">목록</tspan></text>
+<text x="660" y="352" font-size="14" text-anchor="middle" fill="#292929"><tspan x="660">REQ-8</tspan></text>
+<text x="660" y="374" font-size="14" text-anchor="middle" fill="#666660"><tspan x="660">차단 금지</tspan></text>
+<line x1="90" y1="180" x2="700" y2="180" stroke="#e0442e" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="250" y="172" font-size="14" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="250">기준 3점 이상</tspan></text>
+</g>
+</svg>

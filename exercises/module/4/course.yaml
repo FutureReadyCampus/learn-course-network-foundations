@@ -6,32 +6,17 @@ course:
   status: draft
 units:
 - id: m4-u01
-  title: 접속 로그 읽기와 이상 징후 가르기
+  title: 로그를 같은 모양으로 맞추기
   path: exercises/module/4/unit/01/unit.md
 - id: m4-u02
-  title: 서로 다른 로그를 같은 모양으로 맞추기
+  title: 판다스로 세고 기준 정하기
   path: exercises/module/4/unit/02/unit.md
 - id: m4-u03
-  title: 판다스로 로그인 실패 세기
+  title: 요청 급증과 반복 거절 찾기
   path: exercises/module/4/unit/03/unit.md
 - id: m4-u04
-  title: 평소 기준과 알림 기준 정하기
+  title: 위험 점수 매기고 오탐 줄이기
   path: exercises/module/4/unit/04/unit.md
 - id: m4-u05
-  title: 요청 급증 찾기와 알림 모으기
+  title: AI 요약과 총정리
   path: exercises/module/4/unit/05/unit.md
-- id: m4-u06
-  title: 거절 요청·SaaS 이상 사용·경로 스캔 찾기
-  path: exercises/module/4/unit/06/unit.md
-- id: m4-u07
-  title: 로그를 연결하고 위험 점수 매기기
-  path: exercises/module/4/unit/07/unit.md
-- id: m4-u08
-  title: 오탐과 미탐 줄이기
-  path: exercises/module/4/unit/08/unit.md
-- id: m4-u09
-  title: Docker Compose로 서버 로그 만들기
-  path: exercises/module/4/unit/09/unit.md
-- id: m4-u10
-  title: AI 요약과 탐지 파이프라인
-  path: exercises/module/4/unit/10/unit.md

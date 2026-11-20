@@ -1,274 +1,310 @@
 ---
 id: m4-u04-l04
-title: 실습 4-3 · 이벤트 유형 정하고 유형별로 세기
+title: 실습 4-2 · 예외 규칙으로 오탐 줄이기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
-  path: network/102_day03_am_baseline_login.md
-  mission_id: GichanSource.m4-1104-am-baseline-login
+  path: network/110_day05_am_false_alarm_tuning.md
+  mission_id: GichanSource.m4-1106-am-false-alarm-tuning
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 실습 4-3 · 이벤트 유형 정하고 유형별로 세기
+# 실습 4-2 · 예외 규칙으로 오탐 줄이기
 
-## 이번 의뢰: 이벤트 유형 나누기
+## 목표: 믿는 IP 예외 규칙
 
-> **오늘 들어온 일**
+> **이번 실습에 들어온 일**
 >
 > A사 보안 팀장이 보낸 메시지입니다:
-> 「알림이 와도 담당자는 어떤 유형의 일인지부터 알아야 다음에 할 일을 정합니다. 이벤트마다 유형을 분류하고, 유형별로 몇 개씩인지 보여 주세요.
+> 「11/2 의 알림 7건을 조사해 보니 문제가 아닌 알림이 4건이었습니다. 그중 'SaaS 평소와 다른 IP' 알림 2건(알림 번호 `A4` jiwoo · `A5` seoyeon, `review_alerts.json` 에 있습니다)은 모두 협력사 사무실 IP `203.0.113.80` 에서 로그인한 것이었습니다. 협력사 사무실은 직원이 출장이나 외근으로 자주 쓰는 곳입니다.
 >
-> 이번에는 두 유형만 구분하면 됩니다. 하나는 로그인에 실패한 것, 다른 하나는 관리자 경로에 접근했다가 실패한 것입니다. 나머지 실패는 「기타 실패」, 성공은 「정상」으로 분류해 주세요.」
-> - **왜 중요한가**: <mark>알림이 100개 와도 유형을 모르면 처음부터 하나씩 읽어야 합니다.</mark> 유형별 개수를 보면 비정상 로그인이 많은지, 비인가 접근이 많은지 보고 어디부터 볼지 정할 수 있습니다.
+> 이 IP 에서 온 'SaaS 평소와 다른 IP' 알림만 빠지도록 규칙을 고쳐 주세요. 단, 진짜 문제까지 같이 지워지면 안 됩니다.」
+> - **왜 중요한가**: <mark>같은 원인의 오탐을 규칙 하나로 줄이면 담당자가 매일 열어 보는 알림이 줄지만, 예외를 넓게 만들면 진짜 문제까지 지워질 수 있습니다.</mark>
 
-## 왜 이벤트에 유형 이름을 붙이는가
+## 왜 예외를 한 규칙에만 거는가
 
-1. 실습 4-2에서는 「로그인 실패」 하나만 찾았습니다. 실제 관제에서는 로그인 실패 · 관리자 경로 접근 · 요청 급증처럼 <mark>평소와 다른 일이 여러 유형으로 동시에 들어옵니다.</mark>
-2. 이벤트마다 **유형 이름**을 정해 두면, <mark>유형별로 세고 유형별로 다르게 대응할 수 있습니다.</mark>
+1. 문제가 아닌데 난 알림을 **오탐**(false positive, 폴스 포지티브)이라고 합니다. 오탐을 줄이는 가장 쉬운 방법은 **예외 규칙**(튜닝: 규칙을 고쳐 틀린 알림을 줄이는 일)입니다. 「이 IP 에서 온 이 규칙의 알림은 뺀다」처럼 조건을 정해 틀린 알림을 빼냅니다.
+2. 이번 실습의 질문은 하나입니다. <mark>**예외 규칙 하나로 오탐을 몇 개 줄일 수 있고, 진짜 문제는 지워지지 않았는가?**</mark>
+3. 예외는 **한 규칙에만** 적용합니다. 같은 IP `203.0.113.80` 에서 온 알림이라도 다른 규칙의 알림은 그대로 둡니다.
 
-## 3.1 이벤트 유형과 이번 Unit에서 쓰는 규칙
+## 2.1 같은 IP 에서 온 알림 네 개
 
-관제에서 알리는 일은 다섯 가지 유형으로 나눕니다. 이번 Unit에서는 <mark>표의 첫 두 가지(비정상 로그인 · 비인가 접근)만 구분하고</mark>, 나머지 실패는 「기타 실패」, 성공은 「정상」으로 모읍니다(나머지 유형은 Unit 5와 Unit 6에서 다룹니다).
+`203.0.113.80` 에서 온 알림은 A3 · A4 · A5 · A6 네 개입니다. A1 · A2 는 서버 알림이라 IP 가 없어서 이 표에서 뺐습니다. 예외 규칙은 `IP_RULE`(SaaS 평소와 다른 IP)의 알림 중 믿는 IP 에서 온 것만 뺍니다.
 
-| 유형 | 로그에서 보이는 모양 | 다루는 Unit |
-|---|---|---|
-| 비정상 로그인 | 로그인 요청이 실패함 | 이번 Unit |
-| 비인가 접근 | 관리자 경로(`/admin`)를 요청했다가 실패함 | 이번 Unit |
-| 트래픽 급증 | 짧은 시간에 요청이 많이 들어옴 | Unit 5 |
-| SaaS 이상 사용 | 평소와 다른 서비스 사용(대량 내려받기 등) | Unit 6 |
-| 악성 행위 징후 | 없는 경로를 차례로 확인하는 시도 등 | Unit 6 |
+| id | 규칙 | 대상 | real | 예외 규칙이 빼는가 |
+|---|---|---|---|---|
+| A3 | SaaS 업무 시간 밖 로그인 | jiwoo | `False` | 아니오 (다른 규칙) |
+| A4 | SaaS 평소와 다른 IP | jiwoo | `False` | **예** |
+| A5 | SaaS 평소와 다른 IP | seoyeon | `False` | **예** |
+| A6 | SaaS 대량 다운로드 | seoyeon | `True` | 아니오 (다른 규칙) |
 
-이번 Unit에서 유형 이름을 정하는 순서입니다. **1번 규칙부터 차례로 확인해서, 처음 조건을 충족하는 규칙의 유형 이름을 붙이고 멈춥니다.** 예: 결과가 실패이고 행동이 `POST /login` 인 이벤트는 1번 조건을 충족하므로 「비정상 로그인」이고, <mark>2번부터는 보지 않습니다.</mark>
+- A4 · A5 두 개가 빠지면 오탐은 4개에서 2개(A2 · A3)로 줄어듭니다.
+- <mark>A6 은 같은 IP 에서 왔지만 진짜 문제입니다.</mark> 규칙을 가리지 않고 이 IP 의 알림을 모두 빼면 A6 까지 지워집니다.
+- <mark style="background:#ffc4d6">예외에는 위험도 있습니다. 믿는 IP 에서 누군가 계정을 도용해 로그인해도, 그 규칙은 알림을 내지 않습니다.</mark>
 
-| 순서 | 조건 | 유형 이름 |
-|---|---|---|
-| 1 | 결과가 실패이고 행동이 `POST /login` | 비정상 로그인 |
-| 2 | 결과가 실패이고 행동에 `/admin` 이 들어 있음 | 비인가 접근 |
-| 3 | 결과가 실패(위 두 가지가 아님) | 기타 실패 |
-| 4 | 그 밖(성공) | 정상 |
+**판다스 문법 상자 — 같은 값을 한 번씩만 꺼내기 `.unique()`**
 
-- 유형 이름은 이벤트 **한 건**에 붙이는 이름입니다.
-- <mark>로그인에 1번만 실패한 이벤트도 「비정상 로그인」입니다.</mark> 알림을 낼지는 실습 4-2처럼 실패 횟수로 따로 정합니다.
-- 「정상」은 결과가 성공이라는 유형 이름이며, <mark>공격이 아니라는 뜻이 아닙니다.</mark> 실습 4-2의 2.1 표에서 본 203.0.113.50 의 15번 행(`POST /login` 성공)도 유형은 「정상」이고, 실패 뒤 성공이 먼저 살펴볼 일인지는 그 전후의 이벤트를 함께 봐서 판단합니다.
-- SaaS 로그의 로그인 실패(jiwoo, 행동 `login`)는 행동이 `POST /login` 이 아니라서 1번 규칙의 <mark>조건을 충족하지 않아 「기타 실패」가 됩니다.</mark>
-- 샘플에서 실패한 이벤트는 모두 **23개**입니다.
-- 규칙의 `and` 는 <mark>이벤트 한 건의 값 하나씩을 이으므로 `and` 를 씁니다.</mark> 실습 4-2에서 표의 열끼리 이을 때만 `&` 를 썼습니다.
+**<mark>`열.unique()`</mark> 는 열에서 같은 값을 한 번씩만 모아 줍니다**
 
-**문법 상자 — 문자열 안에 다른 문자열이 있는지 `in`**
-
-**<mark>`작은 문자열 in 큰 문자열`</mark> 은 큰 문자열 안에 작은 문자열이 들어 있으면 `True`, 없으면 `False` 입니다**
-
-`==` 는 문자열 전체가 같아야 `True` 이지만, <mark>`in` 은 일부만 들어 있어도 `True` 입니다.</mark> 그래서 `GET /admin` 도 `GET /admin/users` 도 `"/admin" in action` 으로 한 번에 찾습니다.
+아래는 알림이 난 기록이고, 같은 사용자가 여러 번 나옵니다. 어떤 사용자가 나왔는지만 한 번씩 봅니다.
 
 ```python
-action = "GET /admin/users"                 # 이벤트의 action 값 예
-has_admin = "/admin" in action              # action 안에 /admin 이 있는지 True 또는 False 로 구한다
-print(has_admin)                            # True
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-other_action = "GET /login"                 # /admin 이 없는 action 값 예
-has_admin_other = "/admin" in other_action  # other_action 안에 /admin 이 있는지 구한다
-print(has_admin_other)                      # False
-```
-
-실행 결과:
-
-```
-True
-False
-```
-
-- 읽는 법: <mark>첫 번째 출력은 `GET /admin/users` 안에 `/admin` 이 있어서 `True`</mark>, 두 번째 출력은 `GET /login` 안에 없어서 `False` 입니다.
-- `if` 조건에 그대로 씁니다(`if "/admin" in action:`). **`== True` 는 붙이지 않습니다.** `for … in` 과는 다른 쓰임입니다.
-
-**판다스 문법 상자 — 표를 딕셔너리 리스트로 바꾸기**
-
-**<mark>`표.to_dict("records")`</mark> 는 표의 행을 딕셔너리 하나씩으로 바꾸고, 그 딕셔너리들을 리스트로 리턴합니다. 열 이름은 키가 되고, 그 행의 데이터는 그 키의 값이 됩니다**
-
-이벤트 표의 한 행이 딕셔너리 하나로 바뀌므로, 이후에는 판다스가 아니라 Module 3(접근통제)에서 쓰던 `for` 와 `event["키"]` 로 하나씩 처리할 수 있습니다.
-
-| 표의 0번 행 | `to_dict("records")` 로 바꾼 뒤 |
-|---|---|
-| `time` 열이 2026-11-02 02:14:08 | `{"time": "2026-11-02 02:14:08", …}` |
-| `user` 열이 jiwoo | `"user": "jiwoo"` |
-| `action` 열이 login | `"action": "login"` |
-
-```python
-import pandas as pd                                          # 판다스를 pd 라는 짧은 이름으로 불러온다
-
-data = {                                                     # 연습용 작은 데이터 — 행 하나가 이벤트 하나
-    "time": ["2026-11-02 02:14:08", "2026-11-02 09:05:30"],  # time 열에 들어갈 값들
-    "user": ["jiwoo", "seoyeon"],                            # user 열에 들어갈 값들
-    "action": ["login", "login"],                            # action 열에 들어갈 값들
+data = {                                                          # 표에 넣을 내용(열 이름: 값들)
+    "user": ["dami", "gaeun", "dami", "seoyeon", "dami"],         # user 열
+    "action": ["login", "login", "download", "login", "upload"],  # action 열
 }
-events = pd.DataFrame(data)                                  # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
-print(events)                                                # 표를 출력한다
-event_list = events.to_dict("records")                       # 표를 「한 행이 딕셔너리 하나」인 리스트로 바꾼다
-first_event = event_list[0]                                  # 첫 번째 딕셔너리(표의 0번 행)를 꺼낸다
-print(first_event)                                           # 열 이름이 키, 그 행의 값이 값이 된 딕셔너리
+df = pd.DataFrame(data)                                           # 내용으로 표(DataFrame)를 만든다
+print(df)                                                         # 표를 출력한다
 ```
 
 실행 결과:
 
 ```
-                  time     user action
-0  2026-11-02 02:14:08    jiwoo  login
-1  2026-11-02 09:05:30  seoyeon  login
-{'time': '2026-11-02 02:14:08', 'user': 'jiwoo', 'action': 'login'}
+      user    action
+0     dami     login
+1    gaeun     login
+2     dami  download
+3  seoyeon     login
+4     dami    upload
 ```
 
-- 읽는 법: <mark>출력은 0번 행 하나가 딕셔너리로 바뀐 모양입니다.</mark> 키는 열 이름 3개이고 값은 그 행의 값입니다.
-- `"records"` 는 **정해진 문구라서 그대로 씁니다.** 빼거나 다른 문구를 쓰면 행마다 딕셔너리 하나인 리스트가 만들어지지 않습니다.
-- `classify_event` 함수는 이벤트 하나의 행동과 결과를 전달받아 규칙(`if`)을 적용합니다. <mark>그래서 표를 딕셔너리 리스트로 바꿔 이벤트를 하나씩 꺼냅니다.</mark> `if` 는 값 하나씩만 판단하기 때문입니다.
-- 미리 채운 `type_event_counts.get(type_name, 0) + 1` 은 처음 보는 유형이면 0 에서 시작해 1 을 더한다는 뜻입니다.
+위 코드에 이어서 실행하는 다음 코드입니다.
+
+```python
+users = df["user"].unique()  # user 열에서 같은 값을 한 번씩만 꺼낸다
+print(users)                 # 사용자 이름을 출력한다
+```
+
+실행 결과:
+
+```
+['dami' 'gaeun' 'seoyeon']
+```
+
+- 읽는 법: 표에는 사용자가 다섯 번 나오지만, <mark style="background:#bde3ff">두 번째 출력에는 `dami` · `gaeun` · `seoyeon` 이 한 번씩만</mark> 나옵니다. 처음 나온 순서대로 나옵니다.
+- 출력의 `[` `]` 안에 따옴표로 묶인 이름이 공백으로 이어지는 모양은 정상입니다. 판다스 3 이상에서는 `<StringArray>` 줄과 `Length: 3, dtype: str` 줄이 위아래에 붙어 세 줄로 나오는데, 내용은 같습니다.
+
+**미리 채운 줄의 `~`**
+
+`~조건` 은 `True` 는 `False` 로, `False` 는 `True` 로 뒤집습니다. 열에는 파이썬의 `not` 대신 `~` 를 씁니다. 이번 실습에서는 `~is_real`(진짜 문제가 아닌 알림)과 `~is_removed`(빼지 않을 알림) 두 줄이 미리 채워져 있습니다.
 
 **한 장 정리**
 
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
-| `load_events` | 파일 경로 | 이벤트 표(미리 채움) |
-| `classify_event` | 이벤트 하나의 행동과 결과 | 유형 이름(`비정상 로그인` · `비인가 접근` · `기타 실패` · `정상`) |
-| `count_types` | 이벤트 표 | `{유형: 개수}` 딕셔너리 |
+| `load_table` · `count_false_alarms` | 파일 경로 · 알림 표 | 표 · 오탐 수(미리 채움) |
+| `apply_exception` | 알림 표 | 빼낸 알림 표와 남은 알림 표 |
+| `count_real_removed` | 빼낸 알림 표 | 빼낸 알림 중 진짜 문제였던 알림 수 |
+| `find_removed_users` | 빼낸 알림 표 | 빼낸 알림에 나온 사용자(중복 없이) |
 
-- **직접 쓰는 곳은 다섯 군데**(번호 1 ~ 5)이고, 함수 두 개 안에 나뉘어 있습니다.
-  - `classify_event`(1 ~ 4번): 위 순서대로 1번 · 2번 규칙을 `if` 로 씁니다. 나머지 두 규칙은 미리 채웠습니다.
-  - `count_types`(5번): 표를 딕셔너리 리스트로 바꿉니다. 하나씩 꺼내 세는 줄은 미리 채웠습니다.
+- **직접 쓰는 곳은 일곱 군데**(번호 1 ~ 7)이고, 함수 세 개 안에 나뉘어 있습니다.
+  - `apply_exception`(1 ~ 4번, 4곳): 알림의 규칙이 IP 규칙인지 비교하고, 믿는 IP 인지 구하고, 둘을 합쳐 빼낼 알림을 정한 뒤, 남은 알림을 고릅니다.
+  - `count_real_removed`(5 · 6번, 2곳): 빼낸 알림 중 진짜 문제였던 것을 고릅니다.
+  - `find_removed_users`(7번, 1곳): 빼낸 알림에 나온 사용자를 중복 없이 꺼냅니다.
+- 이번 실습에서 새 문법은 `.unique()` 하나입니다. `isin` 은 Unit 3 실습 3-2, `&` 는 Unit 2 실습 2-3에서 쓴 것을 다시 씁니다.
 
-## 실습 4-3 · 이벤트 유형 정하고 유형별로 세기
+## 실습 4-2 · 예외 규칙으로 오탐 줄이기
 
 **이런 상황이 있습니다**
 
-- **지금은**: 이벤트 57개는 성공 · 실패만 나뉘어 있어서, 실패가 어떤 일인지 알 수 없습니다.
-- **그래서 만드는 것**: `classify.py` 입니다.
-  - 이벤트 하나의 행동과 결과로 유형 이름을 정합니다.
-  - 유형 이름별로 몇 개인지 셉니다.
-- **실행하면**: 단계 1: 유형별 이벤트 수(4줄), 단계 2: 전체 이벤트 수가 나옵니다.
-- **현업에서는**: 알림에 유형 이름이 적혀 있으면 담당자가 그 유형의 처리 절차(비밀번호 초기화, 주소 차단 등)를 바로 찾습니다.
+- **지금은**: <mark>협력사 사무실 IP 에서 온 'SaaS 평소와 다른 IP' 알림이 오탐으로 계속 쌓입니다</mark>.
+- **그래서 만드는 것**: `tuning.py` 입니다.
+  - IP 규칙의 알림 중 믿는 IP 에서 온 것을 찾아 빼냅니다.
+  - 적용 전과 후의 오탐 수를 비교합니다.
+  - 빼낸 알림 중 진짜 문제가 있었는지 확인합니다.
+  - 빼낸 알림에 나온 사용자를 중복 없이 모읍니다.
+- **실행하면**: <mark>단계 1: 적용 전 알림 수와 오탐 수, 단계 2: 빠진 알림과 그 사용자, 단계 3: 적용 후 알림 수와 오탐 수, 단계 4: 빠진 알림 중 진짜 문제였던 알림 수(0이면 진짜 문제는 지워지지 않은 것)가 나옵니다.</mark>
+- **현업에서는**: 예외를 넣을 때마다 「빠진 알림 중 진짜 문제가 있는가」를 확인합니다. 예외 리스트는 근거(협력사 사무실 IP)와 함께 기록해 두어야 나중에 지울 수 있습니다.
 
 **할 일**
 
-1. `classify.py` · `exercise4-3_run.py` **두 파일**을 만들고, `classify.py` 의 `classify_event` · `count_types` 에서 직접 쓰는 곳을 씁니다.
-2. 실행해서 <mark>유형별 이벤트 수</mark>(단계 1)와 <mark>전체 이벤트 수</mark>(단계 2)를 읽습니다.
+1. `tuning.py` · `exercise4-2_run.py` 두 파일을 만들고, `tuning.py` 의 세 함수에서 직접 쓰는 곳을 씁니다.
+2. 실행해서 <mark>적용 전 오탐 수</mark>(단계 1), <mark>빠진 알림</mark>(단계 2), <mark>적용 후 오탐 수</mark>(단계 3), <mark>빠진 알림 중 진짜 문제였던 알림 수</mark>(단계 4)를 읽습니다.
 
-**`classify.py`**
+**`tuning.py`**
 
 ```python
-import pandas as pd                                                             # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-EVENTS_PATH = "normalized_events.json"                                          # 읽을 정규화 이벤트 파일 이름
-TYPE_ORDER = ["비정상 로그인", "비인가 접근", "기타 실패", "정상"]              # 결과를 보여 줄 유형 순서
+ALERTS_PATH = "review_alerts.json"                    # 읽을 알림 파일 이름
+IP_RULE = "SaaS 평소와 다른 IP"                       # 예외를 적용할 규칙 이름
+TRUSTED_IPS = ["203.0.113.80"]                        # 믿는 IP 리스트 : 협력사 사무실 IP 한 개
 
 
-def load_events(path):                                                          # 파일 경로를 받는 함수
-    """이벤트 파일을 표로 읽는다.
+def load_table(path):                                 # 파일 경로를 받는 함수
+    """JSON 파일을 표로 읽는다.
     분석을 시작할 때 맨 먼저 쓴다.
     """
-    events = pd.read_json(path)                                                 # 파일 속 이벤트를 표 한 개로 읽는다
-    return events                                                               # 이벤트 표를 리턴한다
+    table = pd.read_json(path)                        # 파일 속 내용을 표 한 개로 읽는다
+    return table                                      # 표를 리턴한다
 
 
-def classify_event(action, result):                                             # 행동과 결과를 받는 함수
-    """이벤트 하나의 유형 이름을 정한다.
-    알림이 온 이벤트가 어떤 유형의 일인지 담당자가 바로 알 수 있게 할 때 쓴다.
+def count_false_alarms(alerts):                       # 알림 표를 받는 함수
+    """진짜 문제가 아니었는데 난 알림(오탐)이 몇 개인지 센다.
+    튜닝 전과 후를 비교할 때 쓴다.
+    """
+    is_real = alerts["real"]                          # real 열(진짜 문제이면 True)을 꺼낸다
+    is_false = ~is_real                               # 문제가 아니었던 알림을 True 로 만든다
+    false_alarms = alerts[is_false]                   # True 인 행만 골라 새 표로 만든다
+    false_alarm_count = len(false_alarms)             # 오탐이 몇 개인지 센다
+    return false_alarm_count                          # 오탐 개수를 리턴한다
+
+
+def apply_exception(alerts):                          # 알림 표를 받는 함수
+    """IP 규칙 알림 중 믿는 IP 에서 온 것만 빼낸다.
+    오탐을 줄이는 예외 규칙을 적용할 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. if 로 시작한다: result 가 "실패" 이고(and) action 이 "POST /login" 과 같으면
-    # 2.   그 if 안쪽에서 "비정상 로그인" 을 리턴한다
-    # 3. if 로 시작한다: result 가 "실패" 이고(and) "/admin" in action 이 True 이면
-    # 4.   그 if 안쪽에서 "비인가 접근" 을 리턴한다
-    if result == "실패":                                                        # 위 두 유형이 아닌 실패이면
-        return "기타 실패"                                                      # 기타 실패로 분류한다
-    return "정상"                                                               # 실패가 아니면 정상이다
+    # 1. alerts 의 "rule" 열이 IP_RULE 과 같은지 비교해 is_ip_rule 에 담는다
+    # 2. alerts 의 "ip" 열이 TRUSTED_IPS 안에 있는지 isin 으로 구해 is_trusted 에 담는다
+    # 3. is_ip_rule 과 is_trusted 가 모두 True 인 행을 & 로 구해 is_removed 에 담는다
+    removed_alerts = alerts[is_removed]               # 빼낼 알림만 골라 새 표로 만든다
+    is_kept = ~is_removed                             # 빼지 않을 알림을 True 로 만든다
+    # 4. alerts 에서 is_kept 가 True 인 행만 골라 kept_alerts 에 담는다
+    return removed_alerts, kept_alerts                # 빼낸 알림 표와 남은 알림 표를 리턴한다
 
 
-def count_types(events):                                                        # 이벤트 표를 받는 함수
-    """유형별 이벤트 수를 {유형: 개수} 딕셔너리로 센다.
-    어떤 유형의 일이 얼마나 있는지 한눈에 볼 때 쓴다.
+def count_real_removed(removed_alerts):               # 빼낸 알림 표를 받는 함수
+    """빼낸 알림 중 진짜 문제였던 것이 몇 개인지 센다.
+    예외 규칙이 진짜 문제를 지우지 않았는지 확인할 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 5. events.to_dict("records") 로 표를 딕셔너리 리스트로 바꿔 event_list 에 담는다
-    type_event_counts = {}                                                      # 유형별 횟수를 담을 딕셔너리
-    for event in event_list:                                                    # 이벤트를 하나씩 꺼낸다
-        action = event["action"]                                                # 그 이벤트의 행동
-        result = event["result"]                                                # 그 이벤트의 결과
-        type_name = classify_event(action, result)                              # 유형 이름을 정한다
-        type_event_counts[type_name] = type_event_counts.get(type_name, 0) + 1  # type_event_counts 에 이 유형이 있으면 그 값을, 없으면 0 을 꺼내 1 을 더하고 다시 저장한다
-    return type_event_counts                                                    # 유형별 횟수를 리턴한다
+    # 5. removed_alerts 의 "real" 열을 꺼내 is_real_removed 에 담는다
+    # 6. removed_alerts 에서 is_real_removed 가 True 인 행만 골라 real_removed 에 담는다
+    real_removed_count = len(real_removed)            # 진짜 문제였던 알림이 몇 개 빠졌는지 센다
+    return real_removed_count                         # 그 개수를 리턴한다
+
+
+def find_removed_users(removed_alerts):               # 빼낸 알림 표를 받는 함수
+    """빼낸 알림에 나온 사용자를 중복 없이 모은다.
+    예외로 빠진 알림이 누구의 것인지 확인할 때 쓴다.
+    """
+    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
+    # 7. removed_alerts 의 "user" 열에서 같은 값은 한 번씩만 .unique() 로 꺼내 removed_users 에 담는다
+    return removed_users                              # 중복 없는 사용자 이름을 리턴한다
 ```
 
-- 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 · 3번은 함수 안이라 앞에 공백 4개이고, 2 · 4번의 `return` 은 `if` 안쪽이라 8개이며, 5번은 공백 4개입니다.
-- 번호 주석이 연달아 붙어 있어도, 주석 사이마다 줄을 끼워 넣어 **각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.**
-- 채우기 전에 실행하면 `NameError: name 'event_list' is not defined` 오류가 납니다. 5번을 아직 안 썼기 때문입니다.
+- 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 7번은 모두 함수 안이라 앞에 공백 4개입니다.
+- 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
+- 채우기 전에 실행하면 `NameError: name 'is_removed' is not defined` 오류가 납니다. 3번을 아직 안 썼기 때문입니다.
 
-**`exercise4-3_run.py`** — <mark>그대로 붙여 넣습니다.</mark> 직접 쓰는 줄은 없습니다. `.values()` 는 딕셔너리의 값(개수)만 꺼내고, `sum(…)` 은 그 숫자를 모두 더합니다.
+**`exercise4-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
 
 ```python
-from classify import load_events, count_types, EVENTS_PATH, TYPE_ORDER  # 방금 만든 함수를 불러온다
+from tuning import load_table, count_false_alarms, apply_exception, count_real_removed, find_removed_users, ALERTS_PATH  # 방금 만든 함수를 불러온다
 
-events = load_events(EVENTS_PATH)                                       # 이벤트 파일을 표로 읽는다
-type_event_counts = count_types(events)                                 # 유형별로 센다
-print("--- 단계 1: 유형별 이벤트 수")                                   # 단계 1 시작을 알리는 줄
-for type_name in TYPE_ORDER:                                            # 정해 둔 유형 순서대로 꺼낸다
-    count = type_event_counts.get(type_name, 0)                         # 그 유형의 개수(없으면 0)
-    print(type_name, count)                                             # 유형과 개수를 출력한다
+alerts = load_table(ALERTS_PATH)                      # 알림 파일을 표로 읽는다
+alert_count = len(alerts)                             # 알림이 모두 몇 개인지 센다
+false_alarm_count_before = count_false_alarms(alerts)  # 예외 규칙을 적용하기 전의 오탐 수를 센다
+print("--- 단계 1: 예외 규칙을 적용하기 전 ---")      # 단계 1 제목
+print("알림 수:", alert_count)                        # 적용 전 알림 수를 출력한다
+print("오탐 수:", false_alarm_count_before)           # 적용 전 오탐 수를 출력한다
 
-values = type_event_counts.values()                                     # 유형별 개수만 꺼낸다
-total = sum(values)                                                     # 모든 유형의 개수를 더한다
-print("--- 단계 2: 전체 이벤트", total, "개")                           # 단계 2 시작을 알리는 줄과 전체 개수
+removed_alerts, kept_alerts = apply_exception(alerts)  # 믿는 IP 에서 온 IP 규칙 알림을 빼낸다
+removed_count = len(removed_alerts)                   # 빠진 알림이 몇 개인지 센다
+print("--- 단계 2: 예외 규칙으로 빠진 알림 ---")      # 단계 2 제목
+print("빠진 알림 수:", removed_count)                 # 빠진 알림 수를 출력한다
+removed_list = removed_alerts.to_dict("records")      # 표를 알림 딕셔너리 리스트로 바꾼다
+for alert in removed_list:                            # 빠진 알림을 하나씩 꺼낸다
+    print("빠진 알림:", alert["id"], alert["rule"], alert["user"], alert["ip"])  # 번호 · 규칙 · 사용자 · IP 를 출력한다
+removed_users = find_removed_users(removed_alerts)    # 빠진 알림에 나온 사용자를 중복 없이 모은다
+print("빠진 알림의 사용자:", list(removed_users))     # 사용자 이름을 리스트로 바꿔 출력한다
+
+kept_count = len(kept_alerts)                         # 남은 알림이 몇 개인지 센다
+false_alarm_count_after = count_false_alarms(kept_alerts)  # 적용 후의 오탐 수를 센다
+print("--- 단계 3: 예외 규칙을 적용한 뒤 ---")        # 단계 3 제목
+print("알림 수:", kept_count)                         # 적용 후 알림 수를 출력한다
+print("오탐 수:", false_alarm_count_after)            # 적용 후 오탐 수를 출력한다
+
+real_removed_count = count_real_removed(removed_alerts)  # 빠진 알림 중 진짜 문제였던 것을 센다
+print("--- 단계 4: 빠진 알림 중 진짜 문제였던 것 ---")  # 단계 4 제목
+print("진짜 문제였던 알림 수:", real_removed_count)   # 0 이면 진짜 문제는 지워지지 않은 것이다
 ```
 
 **순서**
 
-1. **[VS Code]** 파일 `classify.py` · `exercise4-3_run.py` 를 만들어 위 코드를 붙여 넣습니다.
-2. **[VS Code]** `classify.py` 에서 직접 쓰는 곳 **다섯 군데**를 씁니다. 3.1 의 규칙 순서와 문법 상자를 보고 씁니다.
+1. **[VS Code]** 파일 `tuning.py` · `exercise4-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+2. **[VS Code]** `tuning.py` 에서 <mark>직접 쓰는 곳 일곱 군데를 씁니다</mark>. 위 판다스 문법 상자와 2.1 의 표를 참고해 씁니다. 막히면 아래 「실습 4-2 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python exercise4-3_run.py
+   python exercise4-2_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise4-3_run.py` 파이썬으로 실행 파일 실행
-4. 출력은 **두 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 4줄이고, 단계 2는 숫자가 제목 줄에 함께 나오므로 그 아래 줄이 없습니다.
-5. **[보고서]** `report_u4.md` 의 `## 실습 4-3` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 유형별 이벤트 수를 적어 주세요.
-   - (나) [핵심 질문] 「기타 실패」(결과가 실패이면서 `POST /login` 도 아니고 `/admin` 도 없는 이벤트)는 실패한 유형 중 15개로 가장 많습니다. 샘플 이벤트에서 `source` 가 `server` 인 이벤트 하나와 `web` 인 이벤트 하나를 찾아, 각각 `action` 과 함께 적어 주세요(예: `server` 의 `ACCOUNT:CHANGE`, `web` 의 `GET /.env` 처럼 규칙 1 · 2번에 걸리지 않는 것). 그리고 이 둘이 같은 이름 「기타 실패」로 묶여 있으면 담당자가 무엇을 하기 어려운지 적어 주세요.
-   - (다) [핵심 질문] 유형 규칙은 위에서부터 차례로 보고 먼저 조건을 충족하는 것으로 정합니다. 「기타 실패」(결과가 실패이면 충족)를 맨 위로 옮겼다고 합시다. 그러면 「비정상 로그인」 · 「비인가 접근」 · 「기타 실패」 이벤트는 각각 몇 개가 될까요? 그리고 그때 담당자가 구분하지 못하게 되는 것은 무엇인가요?
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise4-2_run.py` 파이썬으로 실행 파일 실행
+4. 출력은 **네 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 2줄(알림 수 · 오탐 수), 단계 2는 4줄(빠진 알림 수 1줄 · 빠진 알림 2줄 · 사용자 1줄), 단계 3은 2줄, 단계 4는 1줄입니다.
+5. **[보고서]** `report_u4.md` 의 `## 실습 4-2` 아래를 채웁니다.
+   - (가) 실행한 출력 전체를 붙여 넣고, 적용 전후의 오탐 수와 빠진 알림을 적어 주세요.
+   - (나) [핵심 질문] 예외 규칙을 적용한 뒤 오탐이 몇 개에서 몇 개로 줄었나요? A3(jiwoo 의 업무 시간 밖 로그인)은 같은 IP 인데 왜 줄어들지 않았는지도 적어 주세요.
+   - (다) [핵심 질문] `SaaS 평소와 다른 IP` 규칙에서 `203.0.113.80` 을 믿는 IP 로 두면, 이 IP 에서 오는 진짜 공격을 그 규칙으로는 놓칠 수 있습니다. 어떤 경우인지 한 가지 적어 주세요.
 
-## 실습 4-3 정리
+## 실습 4-2 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 비정상 로그인 | `if result == "실패" and action == "POST /login":` → `return "비정상 로그인"` |
-| 비인가 접근 | `if result == "실패" and "/admin" in action:` → `return "비인가 접근"` |
-| 표를 리스트로 | `event_list = events.to_dict("records")` |
-| 유형별 세기 | `type_event_counts[type_name] = type_event_counts.get(type_name, 0) + 1` (미리 채움) |
+| 값이 같은지 비교 | `is_ip_rule = alerts["rule"] == IP_RULE` |
+| 리스트 안에 있는지 | `is_trusted = alerts["ip"].isin(TRUSTED_IPS)` |
+| 두 조건이 모두 맞는 행 | `is_removed = is_ip_rule & is_trusted` |
+| 조건에 맞는 행만 | `kept_alerts = alerts[is_kept]` |
+| 같은 값을 한 번씩만 | `removed_users = removed_alerts["user"].unique()` |
 
 ---
 
-## 마무리 · 만든 파일 확인하기
+## 이번 Unit 마무리 · 깃허브에 올리기
 
-이번 Unit의 작업을 깃허브에 올리는 일은 Unit 5의 실습 5-2 마지막에 한 번에 합니다. <mark>이번 Unit에서는 파일이 모두 있는지만 확인합니다.</mark>
+하루를 닫는 마무리입니다(15분). 핵심 실습 두 개를 끝낸 뒤 합니다. 도전을 하지 않았어도 이 순서대로 마무리하면 됩니다.
 
-**순서**
+**1. 오늘 한 일 확인**
 
-1. **[터미널]** `anomaly_detection` 폴더에서 이번 Unit에서 만든 파일이 있는지 확인합니다.
+1. 탐지된 규칙 8건에 점수를 더해 대상 5개를 high · mid · low 로 나누고, 점수 · 등급 · 이유를 `unit05_risk_scores.json` 에 저장했다 (실습 4-1)
+2. 믿는 IP 예외 규칙으로 오탐을 4개에서 2개로 줄이고, 빠진 알림 중 진짜 문제가 0개임을 확인했다 (실습 4-2)
+3. 보고서 `report_u4.md` 의 실습 4-1 · 4-2 칸에 `답:` 뒤가 비어 있는 질문이 없다
+
+**2. 파일 확인** — **[터미널]** `anomaly_detection` 폴더에서 확인합니다.
+
+```bash
+pwd
+ls
+```
+
+- `pwd` 의 결과가 `anomaly_detection` 으로 끝나야 합니다.
+- `saas_detection.py` · `malicious_detection.py` · `correlation.py`(제공 파일), `risk_scores.py` · `exercise4-1_run.py` · `unit05_risk_scores.json`(실습 4-1), `review_alerts.json` · `tuning.py` · `exercise4-2_run.py`(실습 4-2), `report_u4.md` 가 보여야 합니다.
+- `unit05_risk_scores.json` 은 실습 4-1에서 프로그램이 만든 점수 파일입니다. 이것도 올라갑니다.
+
+**3. 깃허브에 올리기**
+
+1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
    ```bash
+   cd ..
    pwd
-   ls
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
-   - `baseline.py` · `login_detection.py` · `classify.py` · `exercise4-1_run.py` · `exercise4-2_run.py` · `exercise4-3_run.py` · `normalized_events.json` · `baseline_logins.csv` 와 <mark>`report_u4.md` 가 보여야</mark> 합니다.
-2. **[보고서]** `report_u4.md` 의 실습 4-1 ~ 실습 4-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. 못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.
+   - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
+   - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
+2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
+   ```bash
+   git status
+   ```
+   - 명령 풀이: `git status` 올릴 파일의 상태를 봄
+   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
+   - `anomaly_detection/__pycache__/` 는 파이썬이 실행하면서 자동으로 만든 임시 폴더입니다. 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장합니다.
+3. **[보고서]** `report_u4.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
+4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
+   ```bash
+   git add .
+   git commit -m "Add anomaly detection unit 4 risk scores and false alarm tuning"
+   git push
+   ```
+   - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
+   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다. 이 화면은 git 이 두 기록을 합친 기록에 붙일 메시지를 확인하라고 여는 편집기(vim)라서, 메시지는 고치지 않고 저장하고 닫기만 하면 됩니다.
+5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `anomaly_detection` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
 
----
+- 시간이 남아 도전을 했다면 도전 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
 
-## 이번 Unit 마무리
+**4. 이어지는 곳**
 
-| 확인 | 문제 |
-|---|---|
-| 지난 7일 숫자로 평소 기준을 구하고 알림 기준(5번)을 정했다 | 실습 4-1 |
-| 같은 주소의 로그인 실패가 알림 기준(5번) 이상인 곳을 찾았다 | 실습 4-2 |
-| 이벤트의 유형을 정하고 유형별로 셌다 | 실습 4-3 |
-
-Unit 5에서는 분 단위로 요청 수를 세어 **요청이 갑자기 늘어난 때**(트래픽 급증)를 찾고, Unit 4의 알림을 한 파일로 모읍니다.
+1. 다음 Unit 5(AI 요약과 총정리)에서는 오늘 저장한 점수 파일의 사실만 골라 AI 에게 요약을 받고, 상황별 원인과 해결법을 정리합니다.
+2. Unit 5 시작하기 레슨에서 `unit05_risk_scores.json` 을 같은 내용으로 다시 만들기 때문에, 오늘 파일이 달라도 다음 Unit은 그대로 따라갈 수 있습니다.
 
 ---
 

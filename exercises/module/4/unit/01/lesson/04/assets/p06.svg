@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>도전 1-1 는 parse_line 으로 읽고 label_entries · count_groups 로 가르고 센다</title>
+<desc>access_sample.log 를 parse_line 이 읽고, label_entries 가 classify_line 으로 요청마다 group 을 적고, count_groups 가 분류별로 셉니다. 직접 쓰는 곳은 log_classify.py 의 세 함수입니다.</desc>
+<defs><marker id="a-m4u01l03-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker><marker id="a-m4u01l03-p06-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0442e"/></marker></defs>
+<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
+<rect x="24" y="40" width="180" height="72" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="114.0" y="81.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">access_sample.log</text>
+<line x1="204" y1="76" x2="236" y2="76" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l03-p06)"/>
+<rect x="240" y="40" width="190" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="335.0" y="71.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">parse_line</text>
+<text x="335.0" y="92.2" font-size="14" fill="#666660" text-anchor="middle">log_parse.py</text>
+<line x1="430" y1="76" x2="462" y2="76" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l03-p06)"/>
+<rect x="466" y="30" width="230" height="92" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="581.0" y="60.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">label_entries</text>
+<text x="581.0" y="81.2" font-size="15" fill="#292929" text-anchor="middle">classify_line 으로</text>
+<text x="581.0" y="102.2" font-size="15" fill="#292929" text-anchor="middle">group 적기</text>
+<line x1="581" y1="122" x2="581" y2="158" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l03-p06)"/>
+<rect x="466" y="160" width="230" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="581.0" y="189.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">count_groups</text>
+<text x="581.0" y="210.8" font-size="15" fill="#292929" text-anchor="middle">{분류: 횟수}</text>
+<rect x="24" y="160" width="406" height="70" rx="8" fill="#ffffff" stroke="#e0442e" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="227.0" y="189.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">직접 쓰는 세 함수 (log_classify.py)</text>
+<text x="227.0" y="210.8" font-size="15" fill="#292929" text-anchor="middle">is_suspicious · is_error · classify_line</text>
+<line x1="581" y1="230" x2="581" y2="270" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l03-p06)"/>
+<rect x="24" y="272" width="672" height="80" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360.0" y="306.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">challenge1-1_run.py 출력</text>
+<text x="360.0" y="327.8" font-size="15" fill="#292929" text-anchor="middle">단계 1: 분류별 요청 수 · 단계 2: 의심 요청 · 단계 3: 오류 요청</text>
+</g>
+</svg>

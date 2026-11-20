@@ -1,36 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>실습 5-1 정리: 번호마다 쓰는 코드 모양</title>
-<desc>1·2번은 해제 함수의 결과를 그대로 리턴하고, 3·4번은 같은 인시던트 기록을 모으며, 5·6번은 조치 전후가 같으면 False 를 리턴한다. 7·8번은 되돌릴 기록만 되돌리고, 9번은 기록 파일을 읽는다.</desc>
-<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
-<text x="20" y="30" font-size="18" fill="#292929" font-weight="700">실습 5-1 정리 · 번호별 코드</text>
-<rect x="20" y="48" width="680" height="36" fill="#f1f1ef" stroke="#dededb" stroke-width="1"/>
-<text x="30" y="71.04" font-size="14" fill="#292929" font-weight="700">번호</text>
-<text x="150" y="71.04" font-size="14" fill="#292929" font-weight="700">하는 일</text>
-<text x="350" y="71.04" font-size="14" fill="#292929" font-weight="700">코드 모양</text>
-<rect x="20" y="84" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
-<text x="30" y="107.04" font-size="14" fill="#292929">1 · 2</text>
-<text x="150" y="107.04" font-size="14" fill="#292929">결과를 그대로 리턴</text>
-<text x="350" y="107.04" font-size="14" fill="#292929">return unlock_account(…)</text>
-<rect x="20" y="120" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
-<text x="30" y="143.04" font-size="14" fill="#292929">3 · 4</text>
-<text x="150" y="143.04" font-size="14" fill="#292929">같은 인시던트만 모으기</text>
-<text x="350" y="143.04" font-size="14" fill="#292929">if record["incident"] == incident_id:</text>
-<rect x="20" y="156" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
-<text x="350" y="179.04" font-size="14" fill="#292929">    found.append(record)</text>
-<rect x="20" y="192" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
-<text x="30" y="215.04" font-size="14" fill="#292929">5 · 6</text>
-<text x="150" y="215.04" font-size="14" fill="#292929">전후가 같으면 거짓</text>
-<text x="350" y="215.04" font-size="14" fill="#292929">if record["before"] == record["after"]:</text>
-<rect x="20" y="228" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
-<text x="350" y="251.04" font-size="14" fill="#292929">    return False</text>
-<rect x="20" y="264" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
-<text x="30" y="287.04" font-size="14" fill="#292929">7 · 8</text>
-<text x="150" y="287.04" font-size="14" fill="#292929">참이면 되돌려 모으기</text>
-<text x="350" y="287.04" font-size="14" fill="#292929">if should_undo(record):</text>
-<rect x="20" y="300" width="680" height="36" fill="#ffffff" stroke="#dededb" stroke-width="1"/>
-<text x="30" y="323.04" font-size="14" fill="#292929">9</text>
-<text x="150" y="323.04" font-size="14" fill="#292929">기록 파일 읽기</text>
-<text x="350" y="323.04" font-size="14" fill="#292929">log = load_json(LOG_PATH)</text>
-<line x1="140" y1="48" x2="140" y2="336" stroke="#dededb" stroke-width="1"/>
-<line x1="340" y1="48" x2="340" y2="336" stroke="#dededb" stroke-width="1"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img"><title>실습 5-1 정리: 직접 쓴 코드 여섯 가지</title><desc>함수 결과 저장, 두 결과 받기, 같으면, 리스트 안에 있으면, 어떤 오류든 받기, 1 늘려 저장하기의 코드 조각입니다. 왼쪽은 하려는 일, 오른쪽은 코드입니다.</desc><defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">실습 5-1 정리</text>
+<rect x="20" y="50" width="250" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="145.0" y="79" font-size="15" fill="#292929" text-anchor="middle">함수 결과를 변수에 저장</text>
+<line x1="272" y1="74" x2="296" y2="74" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="300" y="50" width="400" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="312" y="79" font-size="14" fill="#292929">users_on_ip = count_users_on_ip(...)</text>
+<rect x="20" y="110" width="250" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="145.0" y="139" font-size="15" fill="#292929" text-anchor="middle">두 결과를 함께 받기</text>
+<line x1="272" y1="134" x2="296" y2="134" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="300" y="110" width="400" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="312" y="139" font-size="14" fill="#292929">decision, reasons = decide_gate(...)</text>
+<rect x="20" y="170" width="250" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="145.0" y="199" font-size="15" fill="#292929" text-anchor="middle">같으면</text>
+<line x1="272" y1="194" x2="296" y2="194" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="300" y="170" width="400" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="312" y="199" font-size="14" fill="#292929">if decision == &quot;자동&quot;:</text>
+<rect x="20" y="230" width="250" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="145.0" y="259" font-size="15" fill="#292929" text-anchor="middle">리스트 안에 있으면</text>
+<line x1="272" y1="254" x2="296" y2="254" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="300" y="230" width="400" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="312" y="259" font-size="14" fill="#292929">if action in CONTAINMENT_ACTIONS:</text>
+<rect x="20" y="290" width="250" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="145.0" y="319" font-size="15" fill="#292929" text-anchor="middle">어떤 종류의 오류든 받기</text>
+<line x1="272" y1="314" x2="296" y2="314" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="300" y="290" width="400" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="312" y="319" font-size="14" fill="#292929">except Exception as error:</text>
+<rect x="20" y="350" width="250" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="145.0" y="379" font-size="15" fill="#292929" text-anchor="middle">1 늘려 다시 저장하기</text>
+<line x1="272" y1="374" x2="296" y2="374" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="300" y="350" width="400" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="312" y="379" font-size="14" fill="#292929">counts[outcome] = counts[outcome] + 1</text>
+</g></svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>실습 1-2 보고서에 채울 칸과 마무리 칸: 출력 · 시각 정렬 · raw · git status</title>
+<desc>실습 1-2 보고서의 세 질문과 마무리 질문 하나, 그리고 각각의 쓸 내용입니다. (나)와 (다)는 핵심 질문입니다. 마무리 (가)는 이번 Unit 마무리에서 git status 를 친 뒤 씁니다.</desc>
+<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
+<text x="24" y="30" font-size="19" fill="#292929" font-weight="700">실습 1-2 · 마무리 · 채울 칸</text>
+<rect x="24" y="50" width="82" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="65" y="91.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(가)</text>
+<rect x="118" y="50" width="578" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="132" y="80.8" font-size="15" fill="#292929" font-weight="700">출력 전체 · 이벤트 수 · 읽기 실패 줄 수</text>
+<text x="132" y="101.8" font-size="15" fill="#666660">쓸 내용: 출력 · 이벤트 수와 실패한 줄 수 · 성공 / 실패 개수</text>
+<rect x="24" y="134" width="82" height="72" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="65" y="165.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(나)</text>
+<text x="65" y="186.2" font-size="14" fill="#b32a17" text-anchor="middle">핵심</text>
+<rect x="118" y="134" width="578" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="132" y="164.8" font-size="15" fill="#292929" font-weight="700">시각 문자열 그대로 정렬하면 12월 1일과 11월 2일 중 앞은?</text>
+<text x="132" y="185.8" font-size="15" fill="#666660">쓸 내용: 어느 쪽이 앞인지 · 공통 모양으로 바꾸면 달라지는 점</text>
+<rect x="24" y="218" width="82" height="72" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="65" y="249.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(다)</text>
+<text x="65" y="270.2" font-size="14" fill="#b32a17" text-anchor="middle">핵심</text>
+<rect x="118" y="218" width="578" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="132" y="248.8" font-size="15" fill="#292929" font-weight="700">이벤트에 원래 로그 줄 raw 를 남기는 이유</text>
+<text x="132" y="269.8" font-size="15" fill="#666660">쓸 내용: raw 를 남기는 이유 · 정규화하면 사라지는 정보의 예</text>
+<rect x="24" y="314" width="82" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="65" y="355.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">마무리</text>
+<rect x="118" y="314" width="578" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="132" y="344.8" font-size="15" fill="#292929" font-weight="700">git status 에 access_control/ · .env · .venv 가 보였는지</text>
+<text x="132" y="365.8" font-size="15" fill="#666660">쓸 내용: access_control/ 파일 · .env · .venv · 보였다면 한 조치</text>
+<line x1="24" y1="302" x2="696" y2="302" stroke="#dededb" stroke-width="1.5" stroke-dasharray="6 5"/>
+</g>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 390" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>soar_response 폴더에 알림 11건 파일과 config 규칙 파일(키 6개)을 만든다</title>
+<desc>soar_response 폴더에 alerts_thu.json(알림 11건)을, config 폴더에 escalation_rules.json(키 6개)을 만든다. 규칙 파일의 키는 sla_minutes, recipients, merge_window_minutes, send_gap_minutes, alert_url, escalation_steps 이다. 확인 명령이 11 6 을 출력하면 된다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<text x="20" y="32.0" font-size="18" fill="#292929" font-weight="700">폴더 배치</text>
+<text x="310" y="32.0" font-size="18" fill="#292929" font-weight="700">파일 안에 든 것</text>
+<rect x="20" y="50" width="260" height="40" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="150.0" y="75.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">soar_response/</text>
+<path d="M40 90 V210 M40 130 H60 M40 210 H60 M70 230 V270 H80" fill="none" stroke="#666660" stroke-width="1.5"/>
+<rect x="60" y="110" width="220" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="170.0" y="135.2" font-size="15" fill="#292929" text-anchor="middle">alerts_thu.json</text>
+<rect x="60" y="190" width="220" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="170.0" y="215.2" font-size="15" fill="#292929" text-anchor="middle">config/</text>
+<rect x="80" y="250" width="200" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="180.0" y="275.2" font-size="14" fill="#292929" text-anchor="middle">escalation_rules.json</text>
+<rect x="310" y="100" width="390" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="505.0" y="124.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">alerts_thu.json · 알림 11건</text>
+<text x="505.0" y="145.8" font-size="15" fill="#666660" text-anchor="middle">INC-201 (0분) ~ INC-211 (160분)</text>
+<rect x="310" y="190" width="390" height="120" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="505.0" y="223.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">escalation_rules.json · 키 6개</text>
+<text x="505.0" y="244.8" font-size="15" fill="#666660" text-anchor="middle">sla_minutes · recipients</text>
+<text x="505.0" y="265.8" font-size="15" fill="#666660" text-anchor="middle">merge_window_minutes · send_gap_minutes</text>
+<text x="505.0" y="286.8" font-size="15" fill="#666660" text-anchor="middle">alert_url · escalation_steps</text>
+<line x1="282" y1="130" x2="306" y2="130" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<line x1="282" y1="270" x2="306" y2="270" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="20" y="328" width="680" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360.0" y="357.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">확인 출력  11 6  ·  알림 11건, 키 6개</text>
+</svg>

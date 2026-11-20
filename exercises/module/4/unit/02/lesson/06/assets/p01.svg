@@ -1,28 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
-<title>보고서는 문제마다 쓸 내용을 보고 답: 뒤에 쓰고, 못 찾으면 모름이라고 쓴다</title>
-<desc>문제를 풀 때마다 그 제목 아래 질문에 답합니다. 출력은 코드 상자에 붙이고, 왜를 묻는 질문은 근거까지 쓰며, 답을 못 찾으면 모름 — 막힌 곳: … 으로 씁니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>이벤트마다 네 가지 유형 이름을 붙이고 유형별 개수로 어디부터 볼지 정한다</title>
+<desc>이벤트 57개를 비정상 로그인, 비인가 접근, 기타 실패, 정상 네 유형으로 나눕니다. 유형별 개수를 보면 담당자가 어디부터 볼지 정할 수 있습니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">보고서 쓰는 법</text>
-<rect x="24" y="56" width="46" height="46" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="47" y="84.2" font-size="18" text-anchor="middle" fill="#292929" font-weight="700">1</text>
-<rect x="82" y="56" width="614" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="94" y="83.3" font-size="15" text-anchor="start" fill="#292929">문제를 풀 때마다 그 제목 아래 질문에 답합니다</text>
-<rect x="24" y="114" width="46" height="46" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="47" y="142.2" font-size="18" text-anchor="middle" fill="#292929" font-weight="700">2</text>
-<rect x="82" y="114" width="614" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="94" y="141.3" font-size="15" text-anchor="start" fill="#292929">쓸 내용: 을 보고 그대로 답: 뒤에 씁니다</text>
-<rect x="24" y="172" width="46" height="46" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="47" y="200.2" font-size="18" text-anchor="middle" fill="#292929" font-weight="700">3</text>
-<rect x="82" y="172" width="614" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="94" y="199.3" font-size="15" text-anchor="start" fill="#292929">출력 · 코드는 답: 아래 빈 코드 상자에 붙입니다</text>
-<rect x="24" y="230" width="46" height="46" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="47" y="258.2" font-size="18" text-anchor="middle" fill="#292929" font-weight="700">4</text>
-<rect x="82" y="230" width="614" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="94" y="257.4" font-size="15" text-anchor="start" fill="#292929">「왜」는 내 화면의 값 · 배운 내용을 근거로 씁니다</text>
-<rect x="24" y="288" width="46" height="46" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="47" y="316.2" font-size="18" text-anchor="middle" fill="#292929" font-weight="700">5</text>
-<rect x="82" y="288" width="614" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="94" y="315.4" font-size="15" text-anchor="start" fill="#292929">못 찾으면 「모름 — 막힌 곳: …」 이라고 씁니다</text>
+<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">이벤트마다 유형 이름을 붙이고 유형별로 센다</text>
+<rect x="20" y="64" width="140" height="224" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="90.0" y="151" font-size="15" text-anchor="middle" fill="#292929"><tspan x="90.0" dy="0" font-weight="700">이벤트</tspan><tspan x="90.0" dy="20">57개</tspan><tspan x="90.0" dy="20">성공 · 실패만</tspan><tspan x="90.0" dy="20">나뉘어 있음</tspan></text>
+<rect x="210" y="64" width="260" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="340.0" y="91" font-size="15" text-anchor="middle" fill="#292929"><tspan x="340.0" dy="0">비정상 로그인 · 로그인 실패</tspan></text>
+<polyline points="162,176 206,86" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="210" y="124" width="260" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="340.0" y="151" font-size="15" text-anchor="middle" fill="#292929"><tspan x="340.0" dy="0">비인가 접근 · 관리자 경로 실패</tspan></text>
+<polyline points="162,176 206,146" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="210" y="184" width="260" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="340.0" y="211" font-size="15" text-anchor="middle" fill="#292929"><tspan x="340.0" dy="0">기타 실패 · 나머지 실패</tspan></text>
+<polyline points="162,176 206,206" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="210" y="244" width="260" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="340.0" y="271" font-size="15" text-anchor="middle" fill="#292929"><tspan x="340.0" dy="0">정상 · 성공</tspan></text>
+<polyline points="162,176 206,266" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="520" y="64" width="180" height="224" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="610.0" y="161" font-size="15" text-anchor="middle" fill="#292929"><tspan x="610.0" dy="0" font-weight="700">유형별 개수</tspan><tspan x="610.0" dy="20">어디부터 볼지</tspan><tspan x="610.0" dy="20">정한다</tspan></text>
+<polyline points="473,176 516,176" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<text x="360" y="324" font-size="15" text-anchor="middle" fill="#666660">알림이 100개 와도 유형을 모르면 처음부터 하나씩 읽어야 한다</text>
 </g>
 </svg>

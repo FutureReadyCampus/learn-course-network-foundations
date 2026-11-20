@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>report_u5.md 를 만들어 틀을 붙여 넣고, 핵심 칸은 모두 · 도전 칸은 했을 때만 채운다</title>
+<desc>soar_response 폴더에 report_u5.md 를 새로 만들고 틀을 복사해 붙여 넣은 뒤 이름을 바꿔 저장합니다. 실습 5-1 · 실습 5-2 · 마무리 칸은 모두 채우고, 도전 5-1 칸은 도전을 했을 때만 채웁니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, &#x27;Noto Sans KR&#x27;, -apple-system, &#x27;Segoe UI&#x27;, sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">보고서 파일 만들기</text>
+<rect x="20" y="56" width="210" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="125" y="86" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">1. New File</text>
+<text x="125" y="110" font-size="14" fill="#292929" text-anchor="middle">report_u5.md</text>
+<line x1="232" y1="91" x2="253" y2="91" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="255" y="56" width="210" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="86" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">2. 틀 복사</text>
+<text x="360" y="110" font-size="14" fill="#292929" text-anchor="middle">붙여 넣기</text>
+<line x1="467" y1="91" x2="488" y2="91" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="490" y="56" width="210" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="595" y="86" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">3. 이름 바꾸기</text>
+<text x="595" y="110" font-size="14" fill="#292929" text-anchor="middle">Ctrl + S 저장</text>
+<rect x="20" y="150" width="440" height="200" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="240" y="180" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">핵심 칸: 모두 채운다</text>
+<text x="240" y="216" font-size="15" fill="#292929" text-anchor="middle">## 실습 5-1  (가) · (나) · (다)</text>
+<text x="240" y="248" font-size="15" fill="#292929" text-anchor="middle">## 실습 5-2  (가) · (나) · (다)</text>
+<text x="240" y="280" font-size="15" fill="#292929" text-anchor="middle">## 마무리  (가)</text>
+<text x="240" y="312" font-size="15" fill="#292929" text-anchor="middle">모르면 「모름 — 막힌 곳: …」</text>
+<rect x="480" y="150" width="220" height="200" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="590" y="180" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">도전 칸 (선택)</text>
+<text x="590" y="216" font-size="15" fill="#292929" text-anchor="middle">## 도전 5-1</text>
+<text x="590" y="248" font-size="15" fill="#292929" text-anchor="middle">(가) · (나) · (다)</text>
+<text x="590" y="280" font-size="15" fill="#292929" text-anchor="middle">했을 때만 채운다</text>
+<text x="590" y="312" font-size="15" fill="#292929" text-anchor="middle">안 했으면 비워 둔다</text>
+</g>
+</svg>

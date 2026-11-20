@@ -1,43 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img">
-<title>파일 확인 후 git status 로 비밀 키를 걸러 내고 add, commit, push 로 올린다</title>
-<desc>anomaly_detection 에서 파일을 확인하고 cd .. 로 security-agent-toolkit 으로 옮긴다. git status 에 .env 나 .venv 가 보이면 .gitignore 에 적고 다시 본다. 보고서를 채운 뒤 add, commit, push 하고 브라우저에서 확인한다.</desc>
-<defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
-<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">마무리 · 깃허브에 올리는 순서</text>
-<rect x="30" y="55" width="200" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="130" y="84.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">0. pwd · ls</text>
-<text x="130" y="105.8" font-size="15" fill="#292929" text-anchor="middle">만든 파일 확인</text>
-<rect x="255" y="55" width="210" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="360" y="85.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">1. cd ..</text>
-<text x="360" y="104.7" font-size="14" fill="#292929" text-anchor="middle">security-agent-toolkit</text>
-<rect x="490" y="55" width="200" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="590" y="84.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">2. git status</text>
-<text x="590" y="105.8" font-size="15" fill="#292929" text-anchor="middle">올라갈 파일 보기</text>
-<line x1="230" y1="90" x2="253" y2="90" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
-<line x1="465" y1="90" x2="488" y2="90" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
-<rect x="490" y="170" width="200" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="590" y="199.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">.env · .venv</text>
-<text x="590" y="220.8" font-size="15" fill="#292929" text-anchor="middle">보이나?</text>
-<line x1="590" y1="125" x2="590" y2="168" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
-<rect x="230" y="170" width="210" height="70" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="335" y="199.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">.gitignore 에</text>
-<text x="335" y="220.8" font-size="15" fill="#292929" text-anchor="middle">한 줄 적고 다시 보기</text>
-<line x1="490" y1="205" x2="442" y2="205" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
-<text x="466" y="197" font-size="14" fill="#666660" text-anchor="middle">예</text>
-<path d="M335,170 L335,148 L540,148 L540,127" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
-<rect x="490" y="290" width="200" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="590" y="319.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">3. 보고서</text>
-<text x="590" y="340.8" font-size="15" fill="#292929" text-anchor="middle">(가) 채우기</text>
-<line x1="590" y1="240" x2="590" y2="288" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
-<text x="625" y="268" font-size="14" fill="#666660" text-anchor="middle">아니오</text>
-<rect x="255" y="290" width="210" height="70" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="360" y="319.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">4. git add .</text>
-<text x="360" y="340.8" font-size="15" fill="#292929" text-anchor="middle">commit → push</text>
-<line x1="490" y1="325" x2="467" y2="325" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
-<rect x="30" y="290" width="210" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="135" y="319.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">5. 브라우저</text>
-<text x="135" y="340.8" font-size="15" fill="#292929" text-anchor="middle">깃허브에서 확인</text>
-<line x1="255" y1="325" x2="242" y2="325" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
-<text x="30" y="405" font-size="15" fill="#666660">push 가 rejected 이면 git pull 로 받아 온 뒤 git push 를 다시 합니다.</text>
+<title>이번 Unit 마무리: 오늘 한 일 체크와 anomaly_detection 폴더의 파일 배치</title>
+<desc>왼쪽은 실습 5-1 · 5-2와 보고서를 끝냈는지 확인하는 목록입니다. 오른쪽은 pwd · ls 로 볼 파일입니다. config/ 안에는 JSON 설정 파일만 두고, 그 밖의 파일은 모두 anomaly_detection/ 바로 아래에 둡니다.</desc>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">1. 오늘 한 일 확인</text>
+<g fill="#ffffff" stroke="#dededb" stroke-width="1.5">
+<rect x="20" y="48" width="320" height="66" rx="8"/><rect x="20" y="124" width="320" height="66" rx="8"/>
+<rect x="20" y="200" width="320" height="66" rx="8"/>
+</g>
+<rect x="20" y="276" width="320" height="66" rx="8" fill="#ffffff" stroke="#666660" stroke-width="1.5" stroke-dasharray="6 4"/>
+<g fill="#ffffff" stroke="#1f7a4a" stroke-width="2">
+<rect x="34" y="64" width="16" height="16" rx="3"/><rect x="34" y="140" width="16" height="16" rx="3"/>
+<rect x="34" y="216" width="16" height="16" rx="3"/><rect x="34" y="292" width="16" height="16" rx="3"/>
+</g>
+<text font-size="15" fill="#292929">
+<tspan x="62" y="78" font-weight="700">실습 5-1</tspan><tspan x="62" y="100" font-size="14" fill="#666660">대상 3명 AI 요약 · 실패하면 대체 문장</tspan>
+<tspan x="62" y="154" font-weight="700">실습 5-2 · Module 4 총정리</tspan><tspan x="62" y="176" font-size="14" fill="#666660">상황 8개 중 4개 이상 원인과 해결</tspan>
+<tspan x="62" y="230" font-weight="700">report_u5.md</tspan><tspan x="62" y="252" font-size="14" fill="#666660">5-1 · 5-2 칸에 비어 있는 답: 없음</tspan>
+<tspan x="62" y="306" font-weight="700">도전 5-1 ~ 5-3 (선택)</tspan><tspan x="62" y="328" font-size="14" fill="#666660">했다면 그 파일도 있음</tspan>
+</text>
+<text x="370" y="32" font-size="19" fill="#292929" font-weight="700">2. 파일 확인 (pwd · ls)</text>
+<rect x="370" y="48" width="330" height="294" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text font-size="15" fill="#292929">
+<tspan x="386" y="76" font-weight="700">anomaly_detection/</tspan>
+<tspan x="406" y="102" fill="#2f6fd0" font-weight="700">config/</tspan>
+<tspan x="430" y="126" fill="#666660">users.json · roles.json</tspan>
+<tspan x="406" y="156">llm_client.py</tspan>
+<tspan x="406" y="180">unit05_risk_scores.json</tspan>
+<tspan x="406" y="204">event_summary.py</tspan>
+<tspan x="406" y="228">exercise5-1_run.py</tspan>
+<tspan x="406" y="252">report_u5.md</tspan>
+<tspan x="406" y="280" fill="#666660">(앞 Unit의 파일들)</tspan>
+<tspan x="406" y="308" fill="#666660">(도전을 했다면 그 파일들)</tspan>
+</text>
+<text x="20" y="378" font-size="16" fill="#292929" font-weight="700">파일 두는 규칙</text>
+<rect x="20" y="390" width="330" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="36" y="416" font-size="15" fill="#292929"><tspan font-weight="700">config/</tspan> 안에는 JSON 설정 파일만</text>
+<rect x="366" y="390" width="334" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="382" y="416" font-size="15" fill="#292929">그 밖은 모두 <tspan font-weight="700">anomaly_detection/</tspan> 바로 아래</text>
 </g>
 </svg>

@@ -1,25 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 362" role="img">
-<title>실습 2-1 보고서는 출력 붙여 넣기와 핵심 질문 두 개를 채운다</title>
-<desc>(가) 출력 전체와 퇴사 · VIP 알림 번호, VIP 알림 수를 적는다. (나) INC-005 가 초기값으로 남은 원인, (다) INC-002 와 INC-004 의 reasons 비교는 핵심 질문이다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>연결 오류면 최대 3번까지 다시 시도하고, 끝내 실패하면 실패 문장을 남긴다</title>
+<desc>시도 1~3 에서 ConnectionError 가 나면 except 가 오류 문장을 기억하고 다음 시도로 간다. 성공하면 시도 횟수를 붙여 바로 리턴하고, 세 번 모두 실패하면 실패 문장이 담당자 확인 목록으로 간다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">보고서 · 실습 2-1 에서 채울 칸</text>
-<rect x="20" y="52" width="72" height="94" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="56" y="103.64" font-size="16" fill="#292929" text-anchor="middle">(가)</text>
-<rect x="102" y="52" width="598" height="94" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="114" y="81.6" font-size="15" fill="#292929">① 출력 전체 (코드 상자)</text>
-<text x="114" y="103.35" font-size="15" fill="#292929">② 재직 「퇴사」 알림 번호 ③ VIP 「예」 알림 번호</text>
-<text x="114" y="125.1" font-size="15" fill="#292929">④ 단계 3 의 VIP 계정 알림 수</text>
-<rect x="20" y="158" width="72" height="94" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="56" y="209.64" font-size="16" fill="#292929" text-anchor="middle">(나)</text>
-<rect x="102" y="158" width="598" height="94" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="114" y="187.6" font-size="15" fill="#292929">[핵심 질문] INC-005 의 맥락이 초기값으로 남은 원인</text>
-<text x="114" y="209.35" font-size="15" fill="#292929">(lookup_account · lookup_source_ip 의 if 조건)</text>
-<text x="114" y="231.1" font-size="15" fill="#292929">확인되지 않은 대상이 「재직」이면 생기는 문제</text>
-<rect x="20" y="264" width="72" height="72" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="56" y="304.64" font-size="16" fill="#292929" text-anchor="middle">(다)</text>
-<rect x="102" y="264" width="598" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="114" y="293.475" font-size="15" fill="#292929">[핵심 질문] INC-002 · INC-004 의 reasons 비교</text>
-<text x="114" y="315.225" font-size="15" fill="#292929">같은 신뢰 IP 라는 근거만으로 같게 처리해도 되는지</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">run_with_retry: 연결 오류면 다시, 3번 다 실패하면 실패 문장</text>
+<text x="20" y="64" font-size="14" fill="#666660">오른쪽 화살표: 연결 오류(ConnectionError) → except 가 last_error 에 기억하고 다음 시도</text>
+<rect x="20" y="76" width="160" height="54" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="100" y="96.91" font-size="14" fill="#292929" text-anchor="middle">시도 1</text>
+<text x="100" y="117.21" font-size="14" fill="#292929" text-anchor="middle">flaky_run_action</text>
+<polyline points="182,103 198,103" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="100,132 100,196" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="108" y="170" font-size="14" fill="#1f7a4a" font-weight="700">성공</text>
+<rect x="200" y="76" width="160" height="54" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="280" y="96.91" font-size="14" fill="#292929" text-anchor="middle">시도 2</text>
+<text x="280" y="117.21" font-size="14" fill="#292929" text-anchor="middle">flaky_run_action</text>
+<polyline points="362,103 378,103" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="280,132 280,196" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="288" y="170" font-size="14" fill="#1f7a4a" font-weight="700">성공</text>
+<rect x="380" y="76" width="160" height="54" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="460" y="96.91" font-size="14" fill="#292929" text-anchor="middle">시도 3</text>
+<text x="460" y="117.21" font-size="14" fill="#292929" text-anchor="middle">flaky_run_action</text>
+<polyline points="542,103 558,103" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="460,132 460,196" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="468" y="170" font-size="14" fill="#1f7a4a" font-weight="700">성공</text>
+<rect x="560" y="76" width="140" height="54" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="630" y="96.91" font-size="14" fill="#292929" text-anchor="middle">실패: …</text>
+<text x="630" y="117.21" font-size="14" fill="#292929" text-anchor="middle">(3회 모두 실패)</text>
+<rect x="20" y="198" width="510" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="275" y="230.35" font-size="15" fill="#292929" text-anchor="middle">성공하면 바로 리턴: result + " (시도 N회)"</text>
+<polyline points="630,132 630,196" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="560" y="198" width="140" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="630" y="219.475" font-size="15" fill="#292929" text-anchor="middle">담당자 확인</text>
+<text x="630" y="241.225" font-size="15" fill="#292929" text-anchor="middle">목록</text>
+<rect x="20" y="278" width="680" height="110" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="307.19" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">재시도 규칙</text>
+<text x="360" y="328.36" font-size="14" fill="#292929" text-anchor="middle">연결 오류(ConnectionError) 만 다시 시도 · 최대 MAX_TRIES 3번 (처음 포함)</text>
+<text x="360" y="348.66" font-size="14" fill="#292929" text-anchor="middle">다시 해도 안전해야 함: safe_run_action 이 이미 잠긴 계정은 건너뜀</text>
+<text x="360" y="368.96" font-size="14" fill="#292929" text-anchor="middle">끝내 실패하면 숨기지 않고 기록한다</text>
 </g>
 </svg>

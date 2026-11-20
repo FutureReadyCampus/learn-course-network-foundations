@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 372" role="img">
+<title>Commit changes 전에 비밀키, 개인정보, 실명, 머리말 네 가지를 확인합니다</title>
+<desc>글과 code 파일에 비밀키와 토큰이 없는지, 개인정보와 실제 사람의 이름이 없는지, 머리말이 module 5, unit 2 이고 sample 줄이 없는지 확인한 뒤 Commit changes 를 누릅니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" fill="#292929" font-weight="700">공개 전 점검 네 가지</text>
+<rect x="24" y="56" width="56" height="46" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="52.0" y="84.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="52.0" dy="0" font-weight="700">1</tspan></text>
+<rect x="92" y="56" width="604" height="46" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="106.0" y="84.2" font-size="15" text-anchor="start" fill="#292929"><tspan x="106.0" dy="0">비밀키 · 토큰 · .env 내용이 없다</tspan></text>
+<rect x="24" y="114" width="56" height="46" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="52.0" y="142.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="52.0" dy="0" font-weight="700">2</tspan></text>
+<rect x="92" y="114" width="604" height="46" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="106.0" y="142.2" font-size="15" text-anchor="start" fill="#292929"><tspan x="106.0" dy="0">이메일 · 전화번호 같은 개인정보가 없다</tspan></text>
+<rect x="24" y="172" width="56" height="46" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="52.0" y="200.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="52.0" dy="0" font-weight="700">3</tspan></text>
+<rect x="92" y="172" width="604" height="46" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="106.0" y="200.2" font-size="15" text-anchor="start" fill="#292929"><tspan x="106.0" dy="0">실제 사람의 이름(나와 동료의 실명)이 없다</tspan></text>
+<rect x="24" y="230" width="56" height="46" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="52.0" y="258.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="52.0" dy="0" font-weight="700">4</tspan></text>
+<rect x="92" y="230" width="604" height="46" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="106.0" y="258.2" font-size="15" text-anchor="start" fill="#292929"><tspan x="106.0" dy="0">머리말이 module: 5 · unit: 2 이고 sample: true 가 없다</tspan></text>
+<line x1="360" y1="288" x2="360" y2="304" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="220" y="306" width="280" height="48" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360.0" y="335.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">모두 맞으면 Commit changes</tspan></text>
+</g>
+</svg>

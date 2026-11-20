@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>협력사 정상 알림은 자동 종료하고 VIP 계정 알림은 담당자 승인 경로로 보낸다</title>
+<desc>왼쪽은 지금의 문제(오탐 12건을 손으로 분석, VIP 계정도 일반 절차), 오른쪽은 바뀐 뒤의 처리다. 오늘 샘플에서는 INC-004 가 자동 종료되고 INC-003 이 승인 경로로 간다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">이번 의뢰: 오탐은 자동 종료, VIP 는 승인 뒤 조치</text>
+<text x="180" y="62" font-size="16" fill="#666660" text-anchor="middle" font-weight="700">지금</text>
+<text x="540" y="62" font-size="16" fill="#666660" text-anchor="middle" font-weight="700">바뀐 뒤</text>
+<rect x="20" y="76" width="320" height="104" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="180" y="110.6" font-size="15" fill="#292929" text-anchor="middle">협력사 IP 정상 접속 알림 12건</text>
+<text x="180" y="132.35" font-size="15" fill="#292929" text-anchor="middle">한 건씩 분석해 1시간이 걸림</text>
+<text x="180" y="154.1" font-size="15" fill="#292929" text-anchor="middle">그동안 다른 알림 확인이 늦어짐</text>
+<rect x="380" y="76" width="320" height="104" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="540" y="110.6" font-size="15" fill="#292929" text-anchor="middle">오탐(false positive)은</text>
+<text x="540" y="132.35" font-size="15" fill="#292929" text-anchor="middle">종료 사유를 기록하고 자동 종료</text>
+<text x="540" y="154.1" font-size="15" fill="#292929" text-anchor="middle">오늘 샘플: INC-004</text>
+<rect x="20" y="196" width="320" height="104" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="180" y="230.6" font-size="15" fill="#292929" text-anchor="middle">VIP 계정 gaeun 의 알림도</text>
+<text x="180" y="252.35" font-size="15" fill="#292929" text-anchor="middle">일반 계정과 같은 절차로 처리</text>
+<text x="180" y="274.1" font-size="15" fill="#292929" text-anchor="middle">잘못 잠기면 계정 관리 업무 중단</text>
+<rect x="380" y="196" width="320" height="104" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="540" y="230.6" font-size="15" fill="#292929" text-anchor="middle">VIP 계정의 알림은</text>
+<text x="540" y="252.35" font-size="15" fill="#292929" text-anchor="middle">담당자가 승인한 뒤에만 조치</text>
+<text x="540" y="274.1" font-size="15" fill="#292929" text-anchor="middle">오늘 샘플: INC-003</text>
+<polyline points="342,128 378,128" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="342,248 378,248" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<text x="20" y="326" font-size="14" fill="#666660">12건 · 5분은 설명을 위한 예시 숫자입니다.</text>
+</g>
+</svg>

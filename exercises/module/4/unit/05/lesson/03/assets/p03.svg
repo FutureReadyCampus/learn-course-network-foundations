@@ -1,61 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
-<title>알림 한 건은 키 다섯 개의 딕셔너리이고 알림 있음과 없음 모두 판단에 주의한다</title>
-<desc>알림 한 건은 type, target, count, note, status 키를 가진 딕셔너리다. 처리 상태는 확인 필요에서 조사 중, 조사 완료로 바뀐다. 알림이 있어도 공격 확정이 아니고, 알림이 없어도 안전하다는 뜻이 아니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img">
+<title>상황 8개와 각 상황에서 읽을 핵심 코드 파일</title>
+<desc>상황 1 ~ 8 마다 읽을 파일과 함수를 짝지었습니다. 상황 5 · 6 은 예시입니다. 상황 3 · 4 는 같은 이벤트 표에서, 상황 5 · 6 · 7 은 평가 결과에서 이어집니다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
-<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">알림 한 건 = 키 다섯 개짜리 딕셔너리</text>
-<rect x="30" y="50" width="100" height="34" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="80" y="71.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">키</text>
-<rect x="130" y="50" width="200" height="34" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="230" y="71.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">로그인 실패 알림</text>
-<rect x="330" y="50" width="220" height="34" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="440" y="71.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">트래픽 급증 알림</text>
-<rect x="30" y="84" width="100" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="80" y="105.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">type</text>
-<rect x="130" y="84" width="200" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="230" y="105.9" font-size="14" fill="#292929" text-anchor="middle">비정상 로그인</text>
-<rect x="330" y="84" width="220" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="440" y="105.9" font-size="14" fill="#292929" text-anchor="middle">트래픽 급증</text>
-<rect x="30" y="118" width="100" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="80" y="139.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">target</text>
-<rect x="130" y="118" width="200" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="230" y="139.9" font-size="14" fill="#292929" text-anchor="middle">203.0.113.50</text>
-<rect x="330" y="118" width="220" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="440" y="139.9" font-size="14" fill="#292929" text-anchor="middle">2026-11-02 09:12:00</text>
-<rect x="30" y="152" width="100" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="80" y="173.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">count</text>
-<rect x="130" y="152" width="200" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="230" y="173.9" font-size="14" fill="#292929" text-anchor="middle">5</text>
-<rect x="330" y="152" width="220" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="440" y="173.9" font-size="14" fill="#292929" text-anchor="middle">9</text>
-<rect x="30" y="186" width="100" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="80" y="207.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">note</text>
-<rect x="130" y="186" width="200" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="230" y="207.9" font-size="14" fill="#292929" text-anchor="middle">실패가 기준 이상</text>
-<rect x="330" y="186" width="220" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="440" y="207.9" font-size="14" fill="#292929" text-anchor="middle">평소의 3배 이상</text>
-<rect x="30" y="220" width="100" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="80" y="241.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">status</text>
-<rect x="130" y="220" width="200" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="230" y="241.9" font-size="14" fill="#292929" text-anchor="middle">확인 필요</text>
-<rect x="330" y="220" width="220" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="440" y="241.9" font-size="14" fill="#292929" text-anchor="middle">확인 필요</text>
-<text x="630" y="62" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">처리 상태</text>
-<rect x="575" y="75" width="110" height="40" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="630" y="99.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">확인 필요</text>
-<rect x="575" y="139" width="110" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="630" y="163.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">조사 중</text>
-<line x1="630" y1="115" x2="630" y2="137" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<rect x="575" y="203" width="110" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="630" y="227.9" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">조사 완료</text>
-<line x1="630" y1="179" x2="630" y2="201" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<rect x="30" y="280" width="320" height="110" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="190" y="319.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">알림 있음 ≠ 공격 확정</text>
-<text x="190" y="340.2" font-size="15" fill="#292929" text-anchor="middle">먼저 살펴볼 곳일 뿐</text>
-<text x="190" y="361.2" font-size="15" fill="#292929" text-anchor="middle">status 는 모두 「확인 필요」</text>
-<rect x="370" y="280" width="320" height="110" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="530" y="319.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">알림 없음 ≠ 안전</text>
-<text x="530" y="340.2" font-size="15" fill="#292929" text-anchor="middle">규칙에 해당하지 않았다는</text>
-<text x="530" y="361.2" font-size="15" fill="#292929" text-anchor="middle">뜻일 뿐</text>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">상황 8개와 읽을 핵심 코드</text>
+<rect x="20" y="48" width="330" height="78" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="34" y="71.3" font-size="15" fill="#292929" font-weight="700">상황 1</text>
+<text x="34" y="92.3" font-size="15" fill="#292929">설정 파일 주소 요청이 「오류」로 분류</text>
+<text x="34" y="112.3" font-size="14" fill="#666660">log_classify.py · is_suspicious</text>
+<rect x="370" y="48" width="330" height="78" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="384" y="71.3" font-size="15" fill="#292929" font-weight="700">상황 2</text>
+<text x="384" y="92.3" font-size="15" fill="#292929">로그 30줄이 이벤트 28개가 됨</text>
+<text x="384" y="112.3" font-size="14" fill="#666660">normalize_web 의 깨진 줄 검사</text>
+<rect x="20" y="134" width="330" height="78" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="34" y="157.3" font-size="15" fill="#292929" font-weight="700">상황 3</text>
+<text x="34" y="178.3" font-size="15" fill="#292929">사용자를 알 수 있는 요청이 1개뿐</text>
+<text x="34" y="198.3" font-size="14" fill="#666660">correlation.py · make_ip_user_map</text>
+<rect x="370" y="134" width="330" height="78" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="384" y="157.3" font-size="15" fill="#292929" font-weight="700">상황 4</text>
+<text x="384" y="178.3" font-size="15" fill="#292929">두 로그의 seoyeon 이 연결 안 됨</text>
+<text x="384" y="198.3" font-size="14" fill="#666660">correlation.py · find_chains</text>
+<rect x="20" y="220" width="330" height="78" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="34" y="243.3" font-size="15" fill="#292929" font-weight="700">상황 5</text>
+<text x="34" y="264.3" font-size="15" fill="#292929">협력사 IP 정상 접속에 알림 (예시)</text>
+<text x="34" y="284.3" font-size="14" fill="#666660">tuning.py · apply_exception</text>
+<rect x="370" y="220" width="330" height="78" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="384" y="243.3" font-size="15" fill="#292929" font-weight="700">상황 6</text>
+<text x="384" y="264.3" font-size="15" fill="#292929">로그인 알림이 평가에서 빠짐 (예시)</text>
+<text x="384" y="284.3" font-size="14" fill="#666660">final_check.py · merge_alerts</text>
+<rect x="20" y="306" width="330" height="78" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="34" y="329.3" font-size="15" fill="#292929" font-weight="700">상황 7</text>
+<text x="34" y="350.3" font-size="15" fill="#292929">정산 조회 시도에 알림이 안 남</text>
+<text x="34" y="370.3" font-size="14" fill="#666660">access_detection.py · REPEAT_LIMIT</text>
+<rect x="370" y="306" width="330" height="78" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="384" y="329.3" font-size="15" fill="#292929" font-weight="700">상황 8</text>
+<text x="384" y="350.3" font-size="15" fill="#292929">서버가 열려 있고 기록이 사라짐</text>
+<text x="384" y="370.3" font-size="14" fill="#666660">compose.yaml · ports · volumes</text>
+<text x="20" y="424" font-size="15" fill="#666660">이어짐: 상황 3 → 4 (같은 이벤트 표) · 상황 5 → 6 → 7 (평가 결과)</text>
 </g>
 </svg>

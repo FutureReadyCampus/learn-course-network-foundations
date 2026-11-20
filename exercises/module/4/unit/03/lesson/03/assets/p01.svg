@@ -1,26 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>실패 이벤트 23개를 사용자별·시간대별로 묶어 세고 CSV 로 저장하는 목표</title>
-<desc>실패한 이벤트 23개를 events_time.py 가 묶고 셉니다. 결과는 사용자별 실패 횟수, 시간대별 실패 횟수, 그리고 엑셀로 열어 볼 failed_events.csv 입니다.</desc>
-<defs><marker id="a-0303-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">목표: 실패를 묶어 세고 CSV 로 저장</text>
-<rect x="24" y="112" width="190" height="110" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="119.0" y="161.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실패한 이벤트</text>
-<text x="119.0" y="182.8" font-size="15" fill="#666660" text-anchor="middle">23개</text>
-<line x1="217" y1="167" x2="243" y2="167" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p01)"/>
-<rect x="246" y="112" width="180" height="110" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="336.0" y="161.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">events_time.py</text>
-<text x="336.0" y="182.8" font-size="15" fill="#666660" text-anchor="middle">묶기 · 세기 · 저장</text>
-<rect x="460" y="72" width="236" height="58" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="578.0" y="95.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">사용자별 실패 횟수</text>
-<text x="578.0" y="116.8" font-size="15" fill="#666660" text-anchor="middle">많은 순서대로</text>
-<line x1="429" y1="167" x2="457" y2="101" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p01)"/>
-<rect x="460" y="142" width="236" height="58" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="578.0" y="165.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">시간대별 실패 횟수</text>
-<text x="578.0" y="186.8" font-size="15" fill="#666660" text-anchor="middle">몇 시에 몇 개</text>
-<line x1="429" y1="167" x2="457" y2="171" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p01)"/>
-<rect x="460" y="212" width="236" height="58" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="578.0" y="235.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">failed_events.csv</text>
-<text x="578.0" y="256.8" font-size="15" fill="#666660" text-anchor="middle">엑셀로 근거 확인</text>
-<line x1="429" y1="167" x2="457" y2="241" stroke="#666660" stroke-width="2" marker-end="url(#a-0303-p01)"/>
-<text x="24" y="310" font-size="14" fill="#666660" text-anchor="start">합계만 보면 평범한 숫자 → 묶으면 한 사용자 · 한 시간대에 몰린 실패가 드러납니다</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img">
+<title>판정 서버 거절 9건에서 반복 거절을 고르고 거절 이유로 순서를 정한다</title>
+<desc>판정 서버 로그에는 실패라고만 적혀 있다. 같은 사람이 3번 이상 거절당한 기록을 고르고, check_permission 으로 거절 이유를 붙여 퇴사한 계정부터 순서를 정한다. 공격이라고 단정하지는 않는다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
+<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">이번 의뢰 · 반복 거절과 거절 이유</text>
+<rect x="30" y="80" width="154" height="100" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="107" y="125.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">거절 9건</text>
+<text x="107" y="144.7" font-size="14" fill="#292929" text-anchor="middle">결과는 실패뿐</text>
+<rect x="202" y="80" width="154" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="279" y="125.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">같은 사람</text>
+<text x="279" y="144.7" font-size="14" fill="#292929" text-anchor="middle">3번 이상</text>
+<line x1="185" y1="130" x2="200" y2="130" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="374" y="80" width="154" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="451" y="125.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">check_permission</text>
+<text x="451" y="144.7" font-size="14" fill="#292929" text-anchor="middle">으로 이유 붙이기</text>
+<line x1="357" y1="130" x2="372" y2="130" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="546" y="80" width="154" height="100" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="623" y="125.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">이유별 순서</text>
+<text x="623" y="144.7" font-size="14" fill="#292929" text-anchor="middle">퇴사자 먼저</text>
+<line x1="529" y1="130" x2="544" y2="130" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="30" y="220" width="660" height="54" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="252.2" font-size="15" fill="#292929" text-anchor="middle">거절이 전부 문제는 아니므로 공격이라고 단정하지 않습니다</text>
+</g>
 </svg>

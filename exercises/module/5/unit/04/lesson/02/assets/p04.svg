@@ -1,36 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 370" role="img">
-<title>실습 4-1에서 쓴 코드: 딕셔너리 만들기, append, in 확인, remove</title>
-<desc>실습 4-1의 빈칸에 쓴 코드 모양을 하려는 일과 짝지어 정리한 표입니다. 딕셔너리 저장, 리스트에 추가와 제거, 리스트 안에 있는지 확인, 함수 결과 저장이 있습니다.</desc>
-<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>실습 4-1에서 쓴 조건문과 점수 더하기 문법 여덟 가지</title>
+<desc>리스트 안에 있는지 리턴하기, 딕셔너리 값 읽기, 리스트 안에 있으면, 더해서 다시 저장하기, 함수 결과가 참이면, 두 결과 함께 받기, 기준 이상이면, 1 늘리기를 코드와 짝지었습니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p04r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p04g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p04b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 4-1 정리: 하려는 일과 코드</text>
-<rect x="24" y="60" width="250" height="40" fill="#f1f1ef" stroke="#dededb"/>
-<text x="36" y="85.2" font-size="15" fill="#292929" font-weight="700">하려는 일</text>
-<rect x="274" y="60" width="422" height="40" fill="#f1f1ef" stroke="#dededb"/>
-<text x="286" y="85.2" font-size="15" fill="#292929" font-weight="700">코드</text>
-<rect x="24" y="100" width="250" height="40" fill="#ffffff" stroke="#dededb"/>
-<text x="36" y="125.2" font-size="15" fill="#292929">딕셔너리를 만들어 저장</text>
-<rect x="274" y="100" width="422" height="40" fill="#ffffff" stroke="#dededb"/>
-<text x="286" y="125.2" font-size="15" fill="#292929">record = {"action": action, ...}</text>
-<rect x="24" y="140" width="250" height="40" fill="#ffffff" stroke="#dededb"/>
-<text x="36" y="165.2" font-size="15" fill="#292929">리스트에 추가</text>
-<rect x="274" y="140" width="422" height="40" fill="#ffffff" stroke="#dededb"/>
-<text x="286" y="165.2" font-size="15" fill="#292929">log.append(record)</text>
-<rect x="24" y="180" width="250" height="40" fill="#ffffff" stroke="#dededb"/>
-<text x="36" y="205.2" font-size="15" fill="#292929">리스트 안에 있으면</text>
-<rect x="274" y="180" width="422" height="40" fill="#ffffff" stroke="#dededb"/>
-<text x="286" y="205.2" font-size="15" fill="#292929">if user in vip_accounts:</text>
-<rect x="24" y="220" width="250" height="40" fill="#ffffff" stroke="#dededb"/>
-<text x="36" y="245.2" font-size="15" fill="#292929">있는지 확인한 결과 리턴</text>
-<rect x="274" y="220" width="422" height="40" fill="#ffffff" stroke="#dededb"/>
-<text x="286" y="245.2" font-size="15" fill="#292929">return user in state["locked_users"]</text>
-<rect x="24" y="260" width="250" height="40" fill="#ffffff" stroke="#dededb"/>
-<text x="36" y="285.2" font-size="15" fill="#292929">리스트에서 제거</text>
-<rect x="274" y="260" width="422" height="40" fill="#ffffff" stroke="#dededb"/>
-<text x="286" y="285.2" font-size="15" fill="#292929">state["locked_users"].remove(user)</text>
-<rect x="24" y="300" width="250" height="40" fill="#ffffff" stroke="#dededb"/>
-<text x="36" y="325.2" font-size="15" fill="#292929">함수 결과를 저장</text>
-<rect x="274" y="300" width="422" height="40" fill="#ffffff" stroke="#dededb"/>
-<text x="286" y="325.2" font-size="15" fill="#292929">record = lock_account(user, state, ...)</text>
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">실습 4-1 정리: 하려는 일 → 코드</tspan></text>
+<rect x="20" y="52" width="335" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="32" y="83.0" font-size="15" text-anchor="start" fill="#292929"><tspan x="32" font-weight="bold">리스트 안에 있는지 리턴</tspan><tspan x="32" dy="19.6" font-size="14">return ... in policy["allowlist_ips"]</tspan></text>
+<rect x="365" y="52" width="335" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="377" y="83.0" font-size="15" text-anchor="start" fill="#292929"><tspan x="377" font-weight="bold">딕셔너리 값 읽어 저장</tspan><tspan x="377" dy="19.6" font-size="14">score = grade_table[request["grade"]]</tspan></text>
+<rect x="20" y="136" width="335" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="32" y="167.0" font-size="15" text-anchor="start" fill="#292929"><tspan x="32" font-weight="bold">리스트 안에 있으면</tspan><tspan x="32" dy="19.6" font-size="14">if ... in policy["vip_accounts"]:</tspan></text>
+<rect x="365" y="136" width="335" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="377" y="167.0" font-size="15" text-anchor="start" fill="#292929"><tspan x="377" font-weight="bold">더해서 다시 저장</tspan><tspan x="377" dy="19.6" font-size="14">score = score + policy["vip_points"]</tspan></text>
+<rect x="20" y="220" width="335" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="32" y="251.0" font-size="15" text-anchor="start" fill="#292929"><tspan x="32" font-weight="bold">함수 결과가 참이면</tspan><tspan x="32" dy="19.6" font-size="14">if is_allowlisted(request, policy):</tspan></text>
+<rect x="365" y="220" width="335" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="377" y="251.0" font-size="15" text-anchor="start" fill="#292929"><tspan x="377" font-weight="bold">두 결과를 함께 받기</tspan><tspan x="377" dy="19.6" font-size="14">score, reasons = risk_score(...)</tspan></text>
+<rect x="20" y="304" width="335" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="32" y="335.0" font-size="15" text-anchor="start" fill="#292929"><tspan x="32" font-weight="bold">기준 이상이면</tspan><tspan x="32" dy="19.6" font-size="14">if score &gt;= policy["approval_score"]:</tspan></text>
+<rect x="365" y="304" width="335" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="377" y="335.0" font-size="15" text-anchor="start" fill="#292929"><tspan x="377" font-weight="bold">1 늘려 다시 저장</tspan><tspan x="377" dy="19.6" font-size="14">counts[decision] = counts[decision] + 1</tspan></text>
 </g>
 </svg>

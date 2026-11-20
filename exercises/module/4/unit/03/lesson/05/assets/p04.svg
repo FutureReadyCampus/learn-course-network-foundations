@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>도전 3-2 는 로그인 표와 SaaS 표에서 세 규칙을 각각 돌려 단계별로 출력한다</title>
+<desc>pick_logins 가 고른 로그인 7건에 업무 시간 밖 규칙과 평소와 다른 IP 규칙을 적용하고, pick_saas 가 고른 SaaS 이벤트 14개에 대량 다운로드 규칙을 적용한다. 결과는 jiwoo 1건, jiwoo 와 seoyeon, seoyeon 이다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
+<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">도전 3-2 · saas_detection.py 의 흐름</text>
+<rect x="30" y="55" width="170" height="170" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="115" y="124.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">pick_logins</text>
+<text x="115" y="145.2" font-size="15" fill="#292929" text-anchor="middle">SaaS 로그인</text>
+<text x="115" y="166.2" font-size="15" fill="#292929" text-anchor="middle">7건</text>
+<rect x="30" y="245" width="170" height="80" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="115" y="280.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">pick_saas</text>
+<text x="115" y="299.7" font-size="14" fill="#292929" text-anchor="middle">SaaS 이벤트 14개</text>
+<rect x="240" y="55" width="230" height="80" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="355" y="90.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">find_off_hours_logins</text>
+<text x="355" y="109.7" font-size="14" fill="#292929" text-anchor="middle">between → ~  (1 · 2번)</text>
+<rect x="505" y="55" width="185" height="80" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="597.5" y="90.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">단계 1: 1건</text>
+<text x="597.5" y="109.7" font-size="14" fill="#292929" text-anchor="middle">jiwoo 02:14</text>
+<line x1="470" y1="95" x2="503" y2="95" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="240" y="150" width="230" height="80" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="355" y="185.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">find_new_ip_users</text>
+<text x="355" y="204.7" font-size="14" fill="#292929" text-anchor="middle">is not None · !=  (3 ~ 5번)</text>
+<rect x="505" y="150" width="185" height="80" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="597.5" y="185.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">단계 2:</text>
+<text x="597.5" y="204.7" font-size="14" fill="#292929" text-anchor="middle">['jiwoo', 'seoyeon']</text>
+<line x1="470" y1="190" x2="503" y2="190" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="240" y="245" width="230" height="80" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="355" y="280.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">find_bulk_download_users</text>
+<text x="355" y="299.7" font-size="14" fill="#292929" text-anchor="middle">미리 채움</text>
+<rect x="505" y="245" width="185" height="80" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="597.5" y="280.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">단계 3:</text>
+<text x="597.5" y="299.7" font-size="14" fill="#292929" text-anchor="middle">['seoyeon']</text>
+<line x1="470" y1="285" x2="503" y2="285" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<line x1="200" y1="95" x2="238" y2="95" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<line x1="200" y1="190" x2="238" y2="190" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<line x1="200" y1="285" x2="238" y2="285" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<text x="30" y="370" font-size="15" fill="#666660">직접 쓰는 곳 다섯 군데: 1 · 2번은 함수 안(공백 4개),</text>
+<text x="30" y="396" font-size="15" fill="#666660">3 · 4번은 for 안(8개), 5번은 if 안(12개)</text>
+</g>
+</svg>

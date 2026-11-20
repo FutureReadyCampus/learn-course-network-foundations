@@ -1,40 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>실습 5-1 파일 세 개가 기록을 읽어 되돌리고 단계 1~5 로 출력하는 흐름</title>
-<desc>exercise5-1_run.py 가 실습 4-3 기록을 읽고(9번), rollback.py 가 인시던트 기록을 거꾸로 모아(3·4번) 되돌릴지 정한다(5·6번). 되돌릴 기록은 undo_actions.py 로 해제하고(7·8번, 1·2번), 되돌릴 수 없는 조치는 따로 기록한다.</desc>
-<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
-<rect x="20" y="20" width="220" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="130" y="49.9" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">exercise5-1_run.py</text>
-<text x="130" y="70.9" font-size="15" fill="#292929" text-anchor="middle">9번 · 기록 읽기</text>
-<rect x="20" y="120" width="220" height="70" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="130" y="149.9" font-size="15" fill="#292929" text-anchor="middle">실습 4-3 기록 + 이번에</text>
-<text x="130" y="170.9" font-size="15" fill="#666660" text-anchor="middle">새로 만든 IP 차단</text>
-<line x1="130" y1="90" x2="130" y2="116" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<rect x="270" y="20" width="430" height="30" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="485" y="40.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">rollback.py</text>
-<rect x="270" y="60" width="430" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="485" y="84.9" font-size="15" fill="#292929" text-anchor="middle">find_incident_records  3 · 4번</text>
-<text x="485" y="105.9" font-size="15" fill="#666660" text-anchor="middle">그 인시던트 기록만 모아 거꾸로</text>
-<rect x="270" y="130" width="430" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="485" y="154.9" font-size="15" fill="#292929" text-anchor="middle">should_undo  5 · 6번</text>
-<text x="485" y="175.9" font-size="15" fill="#666660" text-anchor="middle">before == after 이면 False</text>
-<rect x="270" y="200" width="430" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="485" y="224.9" font-size="15" fill="#292929" text-anchor="middle">rollback_incident  7 · 8번</text>
-<text x="485" y="245.9" font-size="15" fill="#666660" text-anchor="middle">should_undo 가 참이면 되돌린다</text>
-<line x1="244" y1="155" x2="264" y2="90" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<line x1="485" y1="120" x2="485" y2="128" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<line x1="485" y1="190" x2="485" y2="198" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<rect x="270" y="290" width="205" height="80" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="372.5" y="314.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">undo_actions.py</text>
-<text x="372.5" y="335.4" font-size="15" fill="#292929" text-anchor="middle">1 · 2번 · 계정 해제</text>
-<text x="372.5" y="356.4" font-size="15" fill="#292929" text-anchor="middle">IP 해제</text>
-<rect x="495" y="290" width="205" height="80" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="597.5" y="314.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">되돌리기 불가</text>
-<text x="597.5" y="335.4" font-size="15" fill="#292929" text-anchor="middle">세션 종료 기록</text>
-<text x="597.5" y="356.4" font-size="15" fill="#292929" text-anchor="middle">(미리 채움)</text>
-<line x1="400" y1="260" x2="380" y2="286" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<line x1="570" y1="260" x2="590" y2="286" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-<rect x="20" y="290" width="220" height="80" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="130" y="324.9" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">출력 다섯 단계</text>
-<text x="130" y="345.9" font-size="15" fill="#292929" text-anchor="middle">단계 1 · 2~4 · 5</text>
-<line x1="266" y1="330" x2="244" y2="330" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img"><title>실습 5-1 함수 호출 흐름: run_all → 파이프라인 → 게이트 → 조치</title><desc>run_all 이 알림마다 run_soar_pipeline 을 부르고 오류는 실패로 기록합니다. 파이프라인은 게이트를 거칠 조치만 run_step 으로 보내고, run_step 은 make_request 와 decide_gate 를 거쳐 자동이면 execute_action 을 실행합니다.</desc><defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="28" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">실습 5-1 · 직접 쓰는 아홉 군데</text>
+<rect x="20" y="50" width="200" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="120.0" y="82" font-size="15" fill="#292929" text-anchor="middle">run_all</text>
+<text x="120.0" y="104" font-size="15" fill="#292929" text-anchor="middle">처리 (7번) · 오류 (8번)</text>
+<rect x="260" y="50" width="200" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360.0" y="82" font-size="15" fill="#292929" text-anchor="middle">run_soar_pipeline</text>
+<text x="360.0" y="104" font-size="15" fill="#292929" text-anchor="middle">게이트 조치만 (6번)</text>
+<rect x="500" y="50" width="200" height="76" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="600.0" y="82" font-size="15" fill="#292929" text-anchor="middle">open_ticket</text>
+<text x="600.0" y="104" font-size="15" fill="#292929" text-anchor="middle">(미리 채움)</text>
+<line x1="222" y1="88" x2="256" y2="88" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="462" y1="88" x2="496" y2="88" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="260" y="160" width="200" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360.0" y="192" font-size="15" fill="#292929" text-anchor="middle">run_step</text>
+<text x="360.0" y="214" font-size="15" fill="#292929" text-anchor="middle">게이트 4번 · 자동 5번</text>
+<line x1="360" y1="128" x2="360" y2="156" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="20" y="270" width="200" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="120.0" y="302" font-size="15" fill="#292929" text-anchor="middle">make_request</text>
+<text x="120.0" y="324" font-size="15" fill="#292929" text-anchor="middle">계정 수 세기 (1번)</text>
+<rect x="260" y="270" width="200" height="76" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="302" font-size="15" fill="#292929" text-anchor="middle">decide_gate</text>
+<text x="360.0" y="324" font-size="15" fill="#292929" text-anchor="middle">Unit 4</text>
+<rect x="500" y="270" width="200" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="600.0" y="302" font-size="15" fill="#292929" text-anchor="middle">execute_action</text>
+<text x="600.0" y="324" font-size="15" fill="#292929" text-anchor="middle">잠금 (2번) · 차단 (3번)</text>
+<line x1="300" y1="238" x2="140" y2="266" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="360" y1="238" x2="360" y2="266" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="420" y1="238" x2="580" y2="266" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="20" y="370" width="680" height="54" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="402" font-size="15" fill="#292929" text-anchor="middle">exercise5-1_run.py : 처리 결과별 알림 수 세기 (9번) → 단계 1 ~ 4 출력</text>
+</g></svg>

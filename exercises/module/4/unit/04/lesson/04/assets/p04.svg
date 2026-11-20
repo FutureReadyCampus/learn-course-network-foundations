@@ -1,30 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img">
-<title>classify.py: 표를 딕셔너리 리스트로 바꿔 이벤트마다 유형을 정하고 센다</title>
-<desc>load_events 로 읽은 표를 to_dict("records") 로 바꿉니다(5번). 이벤트를 하나씩 꺼내 classify_event(1~4번)로 유형을 정하고 유형마다 1을 더해 {유형: 개수}를 만듭니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>실습 4-2: 두 조건을 &amp; 로 합쳐 빠질 알림을 정하고, 전후 오탐 수와 빠진 진짜 문제를 셉니다</title>
+<desc>apply_exception 은 rule 이 IP_RULE 인지와 ip 가 TRUSTED_IPS 안에 있는지를 &amp; 로 합쳐 빠질 알림과 남을 알림을 나눕니다. count_false_alarms 로 적용 전후 오탐을 비교하고, count_real_removed 로 빠진 진짜 문제가 0인지, find_removed_users 로 사용자를 확인합니다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">classify.py: 하나씩 꺼내 유형을 정하고 센다</text>
-<rect x="20" y="58" width="180" height="62" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="110.0" y="84" font-size="14" text-anchor="middle" fill="#292929"><tspan x="110.0" dy="0" font-weight="700">load_events</tspan><tspan x="110.0" dy="19">이벤트 표 · 미리 채움</tspan></text>
-<rect x="250" y="58" width="200" height="62" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="350.0" y="84" font-size="14" text-anchor="middle" fill="#292929"><tspan x="350.0" dy="0" font-weight="700">event_list (5번)</tspan><tspan x="350.0" dy="19">to_dict("records")</tspan></text>
-<rect x="500" y="58" width="200" height="62" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="600.0" y="84" font-size="14" text-anchor="middle" fill="#292929"><tspan x="600.0" dy="0" font-weight="700">for event in</tspan><tspan x="600.0" dy="19">event_list</tspan></text>
-<polyline points="203,89 246,89" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<polyline points="453,89 496,89" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="500" y="176" width="200" height="62" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="600.0" y="202" font-size="14" text-anchor="middle" fill="#292929"><tspan x="600.0" dy="0" font-weight="700">classify_event</tspan><tspan x="600.0" dy="19">1~4번: 규칙 1 · 2</tspan></text>
-<rect x="250" y="176" width="200" height="62" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="350.0" y="202" font-size="14" text-anchor="middle" fill="#292929"><tspan x="350.0" dy="0" font-weight="700">type_event_counts</tspan><tspan x="350.0" dy="19">유형마다 +1 · 미리 채움</tspan></text>
-<rect x="20" y="176" width="180" height="62" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="110.0" y="202" font-size="14" text-anchor="middle" fill="#292929"><tspan x="110.0" dy="0" font-weight="700">{유형: 개수}</tspan><tspan x="110.0" dy="19">딕셔너리</tspan></text>
-<polyline points="600,123 600,172" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<polyline points="497,207 454,207" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<polyline points="247,207 204,207" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<polyline points="420,173 530,126" fill="none" stroke="#666660" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a-p04)"/>
-<text x="440" y="146" font-size="14" text-anchor="end" fill="#666660">다음 이벤트</text>
-<polyline points="110,241 110,282" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="20" y="286" width="680" height="104" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360.0" y="323" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">exercise4-3_run.py 출력</tspan><tspan x="360.0" dy="20">단계 1: TYPE_ORDER 순서로 유형별 이벤트 수 4줄</tspan><tspan x="360.0" dy="20">단계 2: sum(values) 로 더한 전체 이벤트 수</tspan></text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 4-2 · 예외 규칙으로 오탐 줄이기</text>
+<text x="700" y="32" font-size="15" fill="#666660" text-anchor="end">직접 쓰는 곳 7군데</text>
+<rect x="20" y="56" width="210" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="125.0" y="81.2" font-size="14" fill="#292929" text-anchor="middle">is_ip_rule</text>
+<text x="125.0" y="100.8" font-size="14" fill="#292929" text-anchor="middle">rule == IP_RULE</text>
+<rect x="20" y="128" width="210" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="125.0" y="153.2" font-size="14" fill="#292929" text-anchor="middle">is_trusted</text>
+<text x="125.0" y="172.8" font-size="14" fill="#292929" text-anchor="middle">ip.isin(TRUSTED_IPS)</text>
+<rect x="270" y="88" width="160" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="350.0" y="115.2" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">is_removed</text>
+<text x="350.0" y="134.8" font-size="14" fill="#292929" text-anchor="middle">두 조건 &amp;</text>
+<polyline points="230,86 266,108" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<polyline points="230,158 266,136" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="470" y="56" width="230" height="60" rx="8" fill="#f1f1ef" stroke="#666660" stroke-width="1.5"/>
+<text x="585.0" y="81.2" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">removed_alerts</text>
+<text x="585.0" y="100.8" font-size="14" fill="#292929" text-anchor="middle">빠진 알림</text>
+<rect x="470" y="128" width="230" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="585.0" y="153.2" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">kept_alerts</text>
+<text x="585.0" y="172.8" font-size="14" fill="#292929" text-anchor="middle">~is_removed 로 남긴 것</text>
+<polyline points="430,108 466,86" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<polyline points="430,136 466,158" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<text x="20" y="232" font-size="16" fill="#292929" font-weight="700">실행하면</text>
+<text x="20" y="266" font-size="15" fill="#292929" font-weight="700">단계 1</text>
+<text x="100" y="266" font-size="15" fill="#292929">적용 전 알림 수 · 오탐 수</text>
+<text x="20" y="302" font-size="15" fill="#292929" font-weight="700">단계 2</text>
+<text x="100" y="302" font-size="15" fill="#292929">빠진 알림과 그 사용자 (.unique())</text>
+<text x="20" y="338" font-size="15" fill="#292929" font-weight="700">단계 3</text>
+<text x="100" y="338" font-size="15" fill="#292929">적용 후 알림 수 · 오탐 수</text>
+<text x="20" y="374" font-size="15" fill="#292929" font-weight="700">단계 4</text>
+<text x="100" y="374" font-size="15" fill="#292929">빠진 알림 중 진짜 문제 수 (0이면 지워지지 않음)</text>
 </g>
 </svg>

@@ -1,36 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>lock_account 는 VIP와 이미 잠김을 먼저 거르고, 잠근 뒤 실제로 잠겼는지 확인합니다</title>
-<desc>lock_account 는 check_policy 로 VIP 를 거르고, 이미 잠긴 계정은 바꾸지 않고 기록합니다. 그 밖에는 잠금 리스트에 추가한 뒤 verify_locked 로 확인해 잠김 또는 확인 실패를 기록합니다.</desc>
-<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>approval_gate.py의 세 함수와 실행 파일이 요청 한 건을 처리하는 흐름</title>
+<desc>decide_gate는 is_allowlisted로 허용 목록을 먼저 보고, risk_score로 점수를 받아 3점 기준과 비교합니다. 실행 파일은 요청마다 결정을 받아 결정별로 세고 gate_results.json에 저장합니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p03r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p03g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p03b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 4-1: lock_account 의 판단 순서</text>
-<rect x="24" y="66" width="196" height="60" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="122.0" y="90.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="122.0" dy="0" font-weight="700">check_policy</tspan><tspan x="122.0" dy="21.0">VIP 인가? (3 · 4번)</tspan></text>
-<rect x="500" y="66" width="196" height="60" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="598.0" y="90.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="598.0" dy="0" font-weight="700">변경 없음 → 변경 없음</tspan><tspan x="598.0" dy="21.0">gaeun</tspan></text>
-<line x1="220" y1="96" x2="498" y2="96" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<text x="300" y="88" font-size="14" text-anchor="start" fill="#666660">예 · 이유 기록</text>
-<rect x="24" y="156" width="196" height="60" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="122.0" y="180.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="122.0" dy="0" font-weight="700">이미 잠겨 있나?</tspan><tspan x="122.0" dy="21.0">locked_users 확인</tspan></text>
-<rect x="500" y="156" width="196" height="60" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="598.0" y="180.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="598.0" dy="0" font-weight="700">잠김 → 잠김</tspan><tspan x="598.0" dy="21.0">junho</tspan></text>
-<line x1="220" y1="186" x2="498" y2="186" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<text x="300" y="178" font-size="14" text-anchor="start" fill="#666660">예 · 변경 없음</text>
-<line x1="122" y1="126" x2="122" y2="154" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<text x="130" y="146" font-size="14" text-anchor="start" fill="#666660">아니오</text>
-<rect x="24" y="246" width="196" height="60" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="122.0" y="270.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="122.0" dy="0" font-weight="700">잠금 리스트에 추가</tspan><tspan x="122.0" dy="21.0">(6번, append)</tspan></text>
-<line x1="122" y1="216" x2="122" y2="244" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<text x="130" y="236" font-size="14" text-anchor="start" fill="#666660">아니오</text>
-<rect x="262" y="246" width="196" height="60" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360.0" y="270.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">verify_locked</tspan><tspan x="360.0" dy="21.0">실제로 있나? (5번)</tspan></text>
-<line x1="220" y1="276" x2="260" y2="276" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<rect x="500" y="236" width="196" height="46" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="598.0" y="264.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="598.0" dy="0" font-weight="700">잠기지 않음 → 잠김</tspan></text>
-<rect x="500" y="296" width="196" height="60" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="598.0" y="320.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="598.0" dy="0" font-weight="700">잠기지 않음</tspan><tspan x="598.0" dy="21.0">(확인 실패)</tspan></text>
-<line x1="458" y1="268" x2="498" y2="259" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<line x1="458" y1="286" x2="498" y2="320" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<text x="24" y="386" font-size="15" text-anchor="start" fill="#666660">기록은 append_log 로 containment_log.json 에 한 건씩 더합니다 (9번).</text>
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">approval_gate.py 흐름 (직접 쓰는 곳 1~9번)</tspan></text>
+<rect x="20" y="160" width="120" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="80.0" y="186.3" font-size="15" text-anchor="middle" fill="#292929"><tspan x="80.0">요청</tspan><tspan x="80.0" dy="21.0">한 건</tspan></text>
+<rect x="170" y="52" width="360" height="308" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="2"/>
+<text x="350" y="78" font-size="15" text-anchor="middle" fill="#292929" font-weight="bold"><tspan x="350">decide_gate · 5 · 6 · 7번</tspan></text>
+<line x1="142" y1="192" x2="188" y2="124" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="190" y="94" width="320" height="60" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="350.0" y="119.7" font-size="15" text-anchor="middle" fill="#292929"><tspan x="350.0">is_allowlisted · 1번</tspan><tspan x="350.0" dy="18.2" font-size="14">허용 목록이면 → 차단 금지</tspan></text>
+<line x1="350" y1="156" x2="350" y2="176" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="190" y="178" width="320" height="80" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="350.0" y="204.6" font-size="15" text-anchor="middle" fill="#292929"><tspan x="350.0">risk_score · 2 · 3 · 4번</tspan><tspan x="350.0" dy="18.2" font-size="14">등급 점수 + VIP 점수</tspan><tspan x="350.0" dy="18.2" font-size="14">+ 공유 IP · 대상 수 (미리 채움)</tspan></text>
+<line x1="350" y1="260" x2="350" y2="280" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="190" y="282" width="320" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="350.0" y="307.7" font-size="15" text-anchor="middle" fill="#292929"><tspan x="350.0">score &gt;= 3 이면 승인 필요</tspan><tspan x="350.0" dy="18.2" font-size="14">아니면 자동</tspan></text>
+<rect x="560" y="112" width="140" height="140" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="630.0" y="157.1" font-size="15" text-anchor="middle" fill="#292929"><tspan x="630.0" font-size="14">exercise4-1</tspan><tspan x="630.0" dy="19.6" font-size="14">_run.py</tspan><tspan x="630.0" dy="19.6" font-size="14">8번 결정 받기</tspan><tspan x="630.0" dy="19.6" font-size="14">9번 결정별 +1</tspan></text>
+<line x1="532" y1="182" x2="558" y2="182" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="630" y1="254" x2="630" y2="284" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="560" y="286" width="140" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="630.0" y="310.7" font-size="15" text-anchor="middle" fill="#292929"><tspan x="630.0" font-size="14">gate_results</tspan><tspan x="630.0" dy="19.6" font-size="14">.json · 8건</tspan></text>
 </g>
 </svg>

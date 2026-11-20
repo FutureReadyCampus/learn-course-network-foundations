@@ -1,18 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>PB-003 정답 예: IP 차단·티켓 생성, 담당자 승인 필요, 고친 곳은 모두 4군데</title>
-<desc>위는 PB-003 한 예와 그에 따라 system_state.json에서 고친 네 군데, 확인 출력이다. 아래는 쉼표 실수로 나는 두 가지 JSONDecodeError다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>decide_route 는 VIP 를 먼저 보고, 신뢰 IP 의 IP 관련 규칙뿐이면 오탐 종료, 아니면 기본으로 보낸다</title>
+<desc>맥락이 붙은 알림이 들어오면 먼저 VIP 인지 묻고 그렇다면 승인 필요로 보낸다. 아니면 신뢰 IP 이고 규칙이 모두 IP 관련인지 묻고 그렇다면 오탐 종료, 아니면 기본 경로로 보낸다. apply_route 가 경로와 이유를 기록한다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 1-1 정답 (한 예)</text>
-<rect x="20" y="52" width="220" height="150" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text y="90.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="130.0" dy="0.0" font-weight="700">PB-003</tspan><tspan x="130.0" dy="21.0">actions:</tspan><tspan x="130.0" dy="21.0">IP 차단 · 티켓 생성</tspan><tspan x="130.0" dy="21.0">approval:</tspan><tspan x="130.0" dy="21.0">담당자 승인 필요</tspan></text>
-<line x1="242" y1="127" x2="268" y2="127" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
-<rect x="272" y="52" width="428" height="150" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="90.2" font-size="15" fill="#292929"><tspan x="284" dy="0.0" font-weight="700">system_state.json 에서 고친 곳 4군데</tspan><tspan x="284" dy="21.0">1. locked_users: ["dami"]</tspan><tspan x="284" dy="21.0">2. blocked_ips: ["198.51.100.90"]</tspan><tspan x="284" dy="21.0">3. tickets: TCK-1 (INC-001)</tspan><tspan x="284" dy="21.0">4. tickets: TCK-2 (INC-005)</tspan></text>
-<rect x="20" y="216" width="680" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text y="249.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0">확인 출력: ['PB-001', 'PB-002', 'PB-003']   ['dami'] ['198.51.100.90'] 2</tspan></text>
-<text x="20" y="304" font-size="16" fill="#292929" font-weight="700">자주 틀리는 곳</text>
-<rect x="20" y="316" width="330" height="88" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text y="354.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="185.0" dy="0.0" font-weight="700">마지막 플레이북 뒤에 쉼표</tspan><tspan x="185.0" dy="21.0">→ Expecting value</tspan></text>
-<rect x="370" y="316" width="330" height="88" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text y="354.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="535.0" dy="0.0" font-weight="700">플레이북 사이 쉼표 빠짐</tspan><tspan x="535.0" dy="21.0">→ Expecting ',' delimiter</tspan></text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">routing.py 의 판단 순서</text>
+<rect x="20" y="60" width="200" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text y="85.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="120.0" dy="0" font-weight="700">맥락이 붙은 알림</tspan><tspan x="120.0" dy="19.6">incident[&quot;context&quot;]</tspan></text>
+<line x1="220" y1="90" x2="258" y2="90" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="260" y="60" width="220" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="95.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="370.0" dy="0" font-weight="700">① vip 가 참인가?</tspan></text>
+<line x1="480" y1="90" x2="518" y2="90" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<text x="499" y="80" font-size="14" fill="#1f7a4a" text-anchor="middle" font-weight="700">예</text>
+<rect x="520" y="60" width="180" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="84.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="610.0" dy="0" font-weight="700">승인 필요</tspan><tspan x="610.0" dy="21.0">예: INC-003</tspan></text>
+<line x1="370" y1="120" x2="370" y2="158" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<text x="384" y="144" font-size="14" fill="#666660" text-anchor="start" font-weight="700">아니오</text>
+<rect x="260" y="160" width="220" height="80" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text y="185.3" font-size="14" fill="#292929" text-anchor="middle"><tspan x="370.0" dy="0" font-weight="700">② 신뢰 IP 이고</tspan><tspan x="370.0" dy="19.6">규칙이 모두</tspan><tspan x="370.0" dy="19.6">IP 관련인가?</tspan></text>
+<line x1="480" y1="200" x2="518" y2="200" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<text x="499" y="190" font-size="14" fill="#1f7a4a" text-anchor="middle" font-weight="700">예</text>
+<rect x="520" y="170" width="180" height="60" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text y="194.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="610.0" dy="0" font-weight="700">오탐 종료</tspan><tspan x="610.0" dy="21.0">예: INC-004</tspan></text>
+<line x1="370" y1="240" x2="370" y2="278" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<text x="384" y="264" font-size="14" fill="#666660" text-anchor="start" font-weight="700">아니오</text>
+<rect x="260" y="280" width="220" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="304.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="370.0" dy="0" font-weight="700">기본</tspan><tspan x="370.0" dy="21.0">INC-001 · 002 · 005</tspan></text>
+<rect x="20" y="160" width="200" height="180" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text y="215.7" font-size="14" fill="#292929" text-anchor="middle"><tspan x="120.0" dy="0" font-weight="700">apply_route</tspan><tspan x="120.0" dy="19.6">오탐 종료이면</tspan><tspan x="120.0" dy="19.6">분류됨 → 종료</tspan><tspan x="120.0" dy="19.6">경로와 이유를</tspan><tspan x="120.0" dy="19.6">기록에 남긴다</tspan></text>
+<text x="20" y="380" font-size="14" fill="#666660" text-anchor="start">경로와 이유 두 값을 함께 리턴한다 (튜플)</text>
 </svg>

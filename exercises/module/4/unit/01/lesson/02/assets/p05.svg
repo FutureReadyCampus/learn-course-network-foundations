@@ -1,49 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img">
-<title>Module 4 는 Unit 1 로그 읽기부터 Unit 10 파이프라인까지 파일을 하나씩 만든다</title>
-<desc>Unit 묶음마다 하는 일과 만드는 파일을 위에서 아래로 놓았습니다. 맨 위 Unit 1 이 이번 Unit 이며, 이 구성은 예정안이라 조금 바뀔 수 있습니다.</desc>
-<defs><marker id="a-m4u01l02-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker><marker id="a-m4u01l02-p05-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0442e"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>split_request 로 세 조각을 낸 뒤 세 함수가 주소 · 방법 · 경로 · 상태 코드를 꺼낸다</title>
+<desc>로그 한 줄을 큰따옴표 기준으로 두 번 나눠 prefix · request_text · suffix 세 조각을 만듭니다. read_client · read_request · read_status 가 각 조각에서 값을 꺼내고, parse_line 이 딕셔너리로 묶습니다.</desc>
+<defs><marker id="a-m4u01l02-p08" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker><marker id="a-m4u01l02-p08-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0442e"/></marker></defs>
 <g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
-<text x="24" y="34" font-size="19" fill="#292929" font-weight="700">Module 4 의 흐름 (예정안)</text>
-<rect x="24" y="52" width="120" height="54" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="84.0" y="84.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">Unit 1</text>
-<rect x="156" y="52" width="290" height="54" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="301.0" y="84.2" font-size="15" fill="#292929" text-anchor="middle">로그 한 줄 읽기 · 가르기</text>
-<rect x="458" y="52" width="238" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="577.0" y="73.8" font-size="15" fill="#292929" text-anchor="middle">log_parse.py</text>
-<text x="577.0" y="94.8" font-size="15" fill="#292929" text-anchor="middle">log_classify.py</text>
-<rect x="24" y="114" width="120" height="54" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="84.0" y="146.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">Unit 2 ~ 3</text>
-<rect x="156" y="114" width="290" height="54" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="301.0" y="146.2" font-size="15" fill="#292929" text-anchor="middle">정규화 (같은 키로 정리)</text>
-<rect x="458" y="114" width="238" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="577.0" y="146.2" font-size="15" fill="#292929" text-anchor="middle">normalize.py</text>
-<rect x="24" y="176" width="120" height="54" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="84.0" y="208.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">Unit 4 ~ 5</text>
-<rect x="156" y="176" width="290" height="54" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="301.0" y="208.2" font-size="15" fill="#292929" text-anchor="middle">로그인 실패 · 요청 급증</text>
-<rect x="458" y="176" width="238" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="577.0" y="197.8" font-size="15" fill="#292929" text-anchor="middle">login_detection.py</text>
-<text x="577.0" y="218.8" font-size="15" fill="#292929" text-anchor="middle">traffic_detection.py</text>
-<rect x="24" y="238" width="120" height="54" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="84.0" y="270.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">Unit 6 ~ 7</text>
-<rect x="156" y="238" width="290" height="54" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="301.0" y="259.8" font-size="15" fill="#292929" text-anchor="middle">비인가 · SaaS · 악성</text>
-<text x="301.0" y="280.8" font-size="15" fill="#292929" text-anchor="middle">여러 로그 함께 보기</text>
-<rect x="458" y="238" width="238" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="577.0" y="259.8" font-size="15" fill="#292929" text-anchor="middle">advanced_detection.py</text>
-<text x="577.0" y="280.8" font-size="15" fill="#292929" text-anchor="middle">correlation.py</text>
-<rect x="24" y="300" width="120" height="54" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="84.0" y="332.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">Unit 8 ~ 9</text>
-<rect x="156" y="300" width="290" height="54" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="301.0" y="332.2" font-size="15" fill="#292929" text-anchor="middle">도커로 오탐 · 미탐 세기</text>
-<rect x="458" y="300" width="238" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="577.0" y="332.2" font-size="15" fill="#292929" text-anchor="middle">evaluation.py</text>
-<rect x="24" y="362" width="120" height="54" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="84.0" y="394.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">Unit 10</text>
-<rect x="156" y="362" width="290" height="54" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="301.0" y="394.2" font-size="15" fill="#292929" text-anchor="middle">AI 요약 · 한 번에 돌리기</text>
-<rect x="458" y="362" width="238" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="577.0" y="394.2" font-size="15" fill="#292929" text-anchor="middle">pipeline.py</text>
-<text x="24" y="424" font-size="14" fill="#666660">이번 Unit = 빨간 칸</text>
+<rect x="24" y="20" width="672" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="47.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">로그 한 줄 (문자열)</text>
+<line x1="360" y1="64" x2="360" y2="108" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l02-p08)"/>
+<text x="372" y="92" font-size="15" fill="#9a6200">split_request: 큰따옴표로 두 번 나눔</text>
+<rect x="24" y="110" width="212" height="66" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="130.0" y="137.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">prefix (앞)</text>
+<text x="130.0" y="158.8" font-size="15" fill="#292929" text-anchor="middle">주소 · 시각</text>
+<rect x="260" y="110" width="212" height="66" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="366.0" y="137.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">request_text (요청)</text>
+<text x="366.0" y="158.8" font-size="15" fill="#292929" text-anchor="middle">POST /login HTTP/1.1</text>
+<rect x="496" y="110" width="212" height="66" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="602.0" y="137.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">suffix (뒤)</text>
+<text x="602.0" y="158.8" font-size="15" fill="#292929" text-anchor="middle">401 312 "-" …</text>
+<line x1="64" y1="176" x2="64" y2="236" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l02-p08)"/>
+<text x="76" y="212" font-size="15" fill="#9a6200" font-weight="700">read_client</text>
+<rect x="24" y="238" width="212" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="130.0" y="269.2" font-size="15" fill="#292929" text-anchor="middle">접속자 주소</text>
+<line x1="130" y1="290" x2="130" y2="334" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l02-p08)"/>
+<line x1="300" y1="176" x2="300" y2="236" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l02-p08)"/>
+<text x="312" y="212" font-size="15" fill="#9a6200" font-weight="700">read_request</text>
+<rect x="260" y="238" width="212" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="366.0" y="269.2" font-size="15" fill="#292929" text-anchor="middle">방법 · 경로</text>
+<line x1="366" y1="290" x2="366" y2="334" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l02-p08)"/>
+<line x1="536" y1="176" x2="536" y2="236" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l02-p08)"/>
+<text x="548" y="212" font-size="15" fill="#9a6200" font-weight="700">read_status</text>
+<rect x="496" y="238" width="212" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="602.0" y="269.2" font-size="15" fill="#292929" text-anchor="middle">상태 코드 (정수)</text>
+<line x1="602" y1="290" x2="602" y2="334" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l02-p08)"/>
+<rect x="24" y="336" width="672" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="362.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">parse_line → {"ip", "method", "path", "status"}</text>
+<text x="360.0" y="383.8" font-size="15" fill="#b32a17" text-anchor="middle">큰따옴표가 2개보다 적은 깨진 줄은 None</text>
 </g>
 </svg>

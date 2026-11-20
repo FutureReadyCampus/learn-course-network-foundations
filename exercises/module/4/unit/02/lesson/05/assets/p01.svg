@@ -1,25 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img">
-<title>정답은 한 예이고 내 답과 핵심이 같으면 맞다</title>
-<desc>설명하는 답은 정답에 적힌 문장이 한 예입니다. 표현이 달라도 핵심이 같으면 맞은 답으로 봅니다.</desc>
-<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">정답을 읽는 방법</text>
-<rect x="24" y="64" width="200" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="124" y="93.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">내 답</text>
-<text x="124" y="113.9" font-size="14" text-anchor="middle" fill="#666660">내 말로 쓴 설명</text>
-<rect x="24" y="160" width="200" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="124" y="189.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">정답</text>
-<text x="124" y="209.9" font-size="14" text-anchor="middle" fill="#666660">설명은 한 예</text>
-<line x1="226" y1="99" x2="280" y2="140" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<line x1="226" y1="195" x2="280" y2="156" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="284" y="108" width="190" height="80" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="379" y="141.5" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">비교</text>
-<text x="379" y="163.2" font-size="15" text-anchor="middle" fill="#292929">핵심이 같은가?</text>
-<line x1="476" y1="148" x2="508" y2="148" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="512" y="98" width="184" height="100" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="604" y="132.0" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">맞습니다</text>
-<text x="604" y="152.8" font-size="14" text-anchor="middle" fill="#292929">핵심이 같으면</text>
-<text x="604" y="173.1" font-size="14" text-anchor="middle" fill="#666660">문장은 달라도 됨</text>
-<text x="24" y="276" font-size="15" text-anchor="start" fill="#666660">문장을 똑같이 맞추는 것이 아니라 핵심을 맞춥니다.</text>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 310" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>지난 7일 하루 최다 로그인 실패 표로 평균·최댓값을 구해 알림 기준 하나 정하기</title>
+<desc>팀장이 지난 7일 동안 하루에 로그인에 가장 많이 실패한 주소의 실패 횟수 표를 줍니다. 하루 평균과 최댓값을 구해 알림 기준 숫자 하나를 정합니다.</desc>
+<defs><marker id="a-0402-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">이번 의뢰: 알림 기준 숫자 하나 정하기</text>
+<rect x="24" y="74" width="200.0" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="124.0" y="113.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">지난 7일 표</text>
+<text x="124.0" y="134.2" font-size="15" fill="#666660" text-anchor="middle">하루 최다</text>
+<text x="124.0" y="155.2" font-size="15" fill="#666660" text-anchor="middle">로그인 실패 횟수</text>
+<line x1="227.0" y1="129.0" x2="257.0" y2="129.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0402-p01)"/>
+<rect x="260.0" y="74" width="200.0" height="110" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="113.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">계산</text>
+<text x="360.0" y="134.2" font-size="15" fill="#666660" text-anchor="middle">하루 평균</text>
+<text x="360.0" y="155.2" font-size="15" fill="#666660" text-anchor="middle">하루 최댓값</text>
+<line x1="463.0" y1="129.0" x2="493.0" y2="129.0" stroke="#666660" stroke-width="2" marker-end="url(#a-0402-p01)"/>
+<rect x="496.0" y="74" width="200.0" height="110" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="596.0" y="123.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">알림 기준</text>
+<text x="596.0" y="144.8" font-size="15" fill="#666660" text-anchor="middle">숫자 하나</text>
+<text x="24" y="240" font-size="14" fill="#666660" text-anchor="start">평소를 먼저 알아야 기준 숫자에 근거가 생깁니다</text>
+<text x="24" y="266" font-size="14" fill="#666660" text-anchor="start">담당자가 바뀌어도 같은 이유로 설명할 수 있습니다</text>
 </svg>

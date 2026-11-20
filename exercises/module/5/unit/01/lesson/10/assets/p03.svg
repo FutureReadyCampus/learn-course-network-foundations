@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>글감마다 붙일 코드 한 줄과 출력 한 줄을 고르고, 보고서의 내 답에서 문장을 늘린다</title>
+<desc>막힐 때 힌트를 글감별로 나눈 표다. 글감 1 은 확인 명령 출력, 글감 2 는 승인 확인 세 줄과 INC-005 비교, 글감 3 은 if entity in users_info 와 INC-005 출력 줄을 붙인다. 감사 기록은 한두 줄만 붙인다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">막힐 때: 붙일 줄 고르기</text>
+<rect x="20" y="54" width="150" height="52" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="85.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="95.0" dy="0" font-weight="700">글감 1</tspan></text>
+<rect x="180" y="54" width="520" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="84.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="440.0" dy="0">[&#x27;dami&#x27;] [&#x27;198.51.100.90&#x27;] 2 를 붙이고 고친 곳을 하나씩 적기</tspan></text>
+<rect x="20" y="116" width="150" height="52" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="147.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="95.0" dy="0" font-weight="700">글감 2</tspan></text>
+<rect x="180" y="116" width="520" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="146.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="440.0" dy="0">approval != &quot;자동&quot; 세 줄과 INC-005 승인 대기를 비교</tspan></text>
+<rect x="20" y="178" width="150" height="52" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text y="209.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="95.0" dy="0" font-weight="700">글감 3</tspan></text>
+<rect x="180" y="178" width="520" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="208.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="440.0" dy="0">if entity in users_info: 와 INC-005 출력 줄을 함께</tspan></text>
+<rect x="20" y="240" width="150" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text y="271.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="95.0" dy="0" font-weight="700">감사 기록</tspan></text>
+<rect x="180" y="240" width="520" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="270.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="440.0" dy="0">INC-002 PB-002 전체 : 승인 대기 처럼 한두 줄만</tspan></text>
+<rect x="20" y="302" width="150" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text y="333.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="95.0" dy="0" font-weight="700">시작이 막힐 때</tspan></text>
+<rect x="180" y="302" width="520" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text y="332.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="440.0" dy="0">report_u1.md 의 내 답을 「고민한 선택과 이유」로</tspan></text>
+<text x="20" y="380" font-size="14" fill="#666660" text-anchor="start">AI 도우미 프롬프트: Module 3 Unit 1 시작하기 11쪽 (비밀키 · 개인정보는 넣지 않는다)</text>
+</svg>

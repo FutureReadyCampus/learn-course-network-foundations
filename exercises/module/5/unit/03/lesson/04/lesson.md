@@ -1,307 +1,193 @@
 ---
 id: m5-u03-l04
-title: 정답
+title: 제공 파일
 render: markdown
-source:
-  repository: FutureReadyCampus/learn-missions
-  path: network/120_day02_pm_approval_retry_flow.md
-  mission_id: GichanSource.m5-1110-pm-approval-retry-flow
-  commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 정답
+# 제공 파일
 
-## 정답을 보는 방법
+## 제공 파일 쓰는 법
 
-설명하는 답은 한 예이고, <mark>핵심이 같으면 맞습니다.</mark> 줄 수가 달라도 주석이 말한 일을 하면 맞습니다.
+이 레슨의 파일은 **실습 3-2를 마친 뒤**, 실습 3-2 끝의 「이번 Unit 마무리 · 깃허브에 올리기」 2번에서 만듭니다. 오늘 핵심 실습에는 쓰지 않지만, 도전 3-2 · 3-3과 Unit 4 도전 4-1 · 4-2가 이 파일을 가져와 사용(import)합니다. 도전을 하지 않아도 완성본을 받아 두면 다음 Unit을 따라갈 수 있습니다.
 
----
+1. 파일은 모두 `soar_response` 폴더 안에 만듭니다(VS Code 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File**).
+2. 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
+3. 만들 파일은 세 개입니다.
+   1. `ticket_merge.py`: 같은 사건의 알림을 티켓 한 장으로 병합하는 함수 `handle_alert` 와 티켓 상태를 바꾸는 함수 `change_ticket_status`. 실습 3-2의 `ticketing.py` 를 가져와 씁니다.
+   2. `notifier.py`: 메시지를 알림 서버로 보내는 함수 `notify`. `agent_core` 폴더에 이미 있으면 복사해 씁니다.
+   3. `ticket_notice.py`: 등급에 맞는 수신자에게 티켓 알림을 보내고, 실패하면 최대 3번까지 다시 보내는 함수 `send_ticket_notice` · `send_with_retry`
+4. `ticket_merge.py` 를 만들었으면 아래 명령으로 확인합니다(맥북은 `python3`). `제공 파일 정상 7` 이 나오면 됩니다(알림 11건이 티켓 7장으로 병합된다는 뜻입니다).
+   ```bash
+   python -c "from incident import load_json; from ticket_merge import handle_alert; rules = load_json('config/escalation_rules.json'); tickets = []; [handle_alert(a, tickets, rules) for a in load_json('alerts_thu.json')]; print('제공 파일 정상', len(tickets))"
+   ```
+   - `No module named 'ticketing'` 이 나오면 실습 3-2의 `ticketing.py` 가 이 폴더에 없는 것입니다.
+   - `notifier.py` 와 `ticket_notice.py` 는 `requests` 도구가 있어야 불러올 수 있어서 여기서는 확인하지 않습니다. 도전 3-3 순서 1번에서 도구를 설치한 뒤 확인합니다.
 
-## 실습 3-1 정답
+> 시간이 남아 도전 3-2 · 3-3을 하면, `ticket_merge.py` · `ticket_notice.py` 를 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 다 쓴 뒤에는 도전의 실행 결과가 정답과 같은지 확인합니다. 결과가 다르면 이 레슨의 완성본을 다시 붙여 넣으면 다음 Unit에 지장이 없습니다.
 
-**채운 코드** (한 예)
+## `ticket_merge.py` 만들기
 
-`audit.py` 의 1번입니다.
+**`ticket_merge.py`** 를 만들고 아래 내용을 붙여 넣습니다. 알림이 올 때마다 `handle_alert` 가 합칠 티켓을 찾아, 있으면 그 티켓에 병합하고 없으면 새 티켓을 만듭니다.
 
-```python
-    # 1. 키 "incident"(item 의 "id"), "playbook"(item 의 "playbook"), "action"(action), "result"(text) 를 가진 딕셔너리를 entry 에 담는다
-    entry = {"incident": item["id"], "playbook": item["playbook"], "action": action, "result": text}  # 기록 한 건을 딕셔너리로 만든다
-```
-
-`approvals.py` 의 2 ~ 7번입니다.
-
-```python
-    # 2. approver 가 APPROVERS 안에 있는지(in)의 결과를 리턴한다
-    return approver in APPROVERS                                   # 권한 목록 안에 있는지 확인한 결과를 리턴한다
-        # 3. run_action(action, item, state) 의 결과를 result 에 담는다
-        result = run_action(action, item, state)                   # 액션을 실행해 결과 문장을 받는다
-    # 4. is_authorized(approver) 가 거짓이면 (if, not)
-    if not is_authorized(approver):                                # 승인 권한이 없으면
-    # 5.   reject_unauthorized(item, approver, action_log) 의 결과를 리턴한다
-        return reject_unauthorized(item, approver, action_log)     # 기록만 남기고 멈춘다
-    # 6. decision["result"] 가 "승인" 이면 (if, ==)
-    if decision["result"] == "승인":                               # 결정이 승인이면
-    # 7.   execute_actions(item, state, action_log, approver) 의 결과를 리턴한다
-        return execute_actions(item, state, action_log, approver)  # 액션을 실행하고 그 결과를 리턴한다
-```
-
-`exercise3-1_run.py` 의 8 · 9번입니다.
+- 병합 조건은 네 가지입니다. 같은 대상(`entity`), 같은 규칙(`rule`), 해결되지 않은 티켓, 티켓의 마지막 갱신(`updated_at`) 뒤 `merge_window_minutes`(60분) 이내에 온 알림입니다.
+- `change_ticket_status` 는 허용된 이동(열림 → 확인 중 → 해결, 또는 열림 → 해결)일 때만 상태를 바꾸고, 바꾼 사람과 시각을 댓글(`comments`)로 남깁니다.
+- 병합 기준과 상태 이동은 도전 3-2 레슨에서 자세히 다룹니다.
 
 ```python
-    # 8. item["id"] 가 decisions 안에 있으면 (if, in)
-    if item["id"] in decisions:                                                       # 이 건에 대한 담당자 결정이 있으면
-    # 9.   apply_decision(item, decisions[item["id"]], state, action_log) 의 결과를 result_text 에 담는다
-        result_text = apply_decision(item, decisions[item["id"]], state, action_log)  # 결정을 적용한다
+from ticketing import make_ticket, has_failed_action, NEXT_STEPS, MANUAL_STEP  # 실습 3-2에 만든 함수와 문장을 불러온다
+
+ALLOWED_MOVES = {                                                              # 티켓 상태마다 옮겨 갈 수 있는 상태의 리스트
+    "열림": ["확인 중", "해결"],                                               # 열림에서는 확인 중이나 해결로 갈 수 있다
+    "확인 중": ["해결"],                                                       # 확인 중에서는 해결로만 갈 수 있다
+    "해결": [],                                                                # 해결에서는 어디로도 갈 수 없다
+}
+
+
+def find_open_ticket(tickets, alert, window):                                  # 티켓 리스트 · 알림 · 병합 시간(분)을 받는 함수
+    """같은 대상 · 같은 규칙이고, 해결되지 않았고, window 분 안에 갱신된 티켓을 찾아 리턴한다. 없으면 None 을 리턴한다.
+    같은 사건의 알림이 티켓 여러 장이 되는 것을 막을 때 쓴다.
+    """
+    for ticket in tickets:                                                     # 티켓을 하나씩 읽는다
+        if ticket["entity"] == alert["entity"] and ticket["rule"] == alert["rule"]:  # 같은 대상 · 같은 규칙이면
+            if ticket["status"] != "해결":                                     # 해결되지 않은 티켓이면
+                gap = alert["minute"] - ticket["updated_at"]                   # 마지막 갱신 뒤 몇 분 지났는지
+                if gap <= window:                                              # 합치는 시간 안이면
+                    return ticket                                              # 그 티켓을 리턴한다
+    return None                                                                # 맞는 티켓이 없으면 None 을 리턴한다
+
+
+def merge_alert(ticket, alert):                                                # 티켓과 새 알림을 받는 함수
+    """이미 있는 티켓에 새 알림을 합친다. 합친 알림 수를 1 늘리고, 알림 번호를 더하고, 갱신 시각을 알림이 온 시각으로 바꾼다.
+    같은 사건이 되풀이될 때 새 티켓 대신 기존 티켓에 기록을 더할 때 쓴다.
+    """
+    ticket["count"] = ticket["count"] + 1                                      # 합쳐진 알림 수를 1 늘린다
+    ticket["incidents"].append(alert["id"])                                    # 합쳐진 알림 번호를 추가한다
+    ticket["updated_at"] = alert["minute"]                                     # 갱신 시각을 이 알림이 온 시각으로 바꾼다
+    ticket["done"] = ticket["done"] + alert["done"]                            # 새 알림의 조치 내역을 티켓의 조치 내역 뒤에 이어 붙인다
+    if has_failed_action(alert["done"]):                                       # 새 알림의 조치 확인이 실패했으면
+        ticket["needs_manual"] = True                                          # 직접 확인이 필요하다고 표시하고
+        ticket["next_step"] = MANUAL_STEP                                      # 다음 할 일도 직접 확인하라는 문장으로 바꾼다
+
+
+def handle_alert(alert, tickets, rules):                                       # 알림 · 티켓 리스트 · 규칙을 받는 함수
+    """알림 한 건을 처리한다. 합칠 티켓이 있으면 합치고, 없으면 새 티켓을 만든다. 처리한 티켓과 「새 티켓」 또는 「병합」을 함께 리턴한다.
+    알림이 올 때마다 부른다.
+    """
+    window = rules["merge_window_minutes"]                                     # 같은 사건으로 보는 시간(분)
+    existing = find_open_ticket(tickets, alert, window)                        # 합칠 티켓을 찾는다
+    if existing is None:                                                       # 합칠 티켓이 없으면
+        ticket_no = len(tickets) + 1                                           # 새 티켓 번호
+        ticket = make_ticket(alert, ticket_no, rules, NEXT_STEPS)              # 새 티켓을 만들고
+        tickets.append(ticket)                                                 # 티켓 리스트에 추가한다
+        return ticket, "새 티켓"                                               # 티켓과 「새 티켓」을 함께 리턴하고 끝낸다
+    merge_alert(existing, alert)                                               # 찾은 티켓에 새 알림을 합친다
+    return existing, "병합"                                                    # 티켓과 「병합」을 함께 리턴한다
+
+
+def change_ticket_status(ticket, new_status, minute, who):                     # 티켓 · 바꿀 상태 · 시각(분) · 바꾼 사람을 받는 함수
+    """허용된 이동이면 티켓 상태를 바꾸고 True, 아니면 바꾸지 않고 False 를 리턴한다. 바꾼 사람과 시각을 댓글로 남긴다.
+    담당자가 티켓을 확인하기 시작했는지 끝냈는지 추적할 때 쓴다.
+    """
+    old_status = ticket["status"]                                              # 지금 상태
+    if new_status not in ALLOWED_MOVES[old_status]:                            # 갈 수 없는 이동이면
+        return False                                                           # 바꾸지 않고 False 를 리턴한다
+    ticket["status"] = new_status                                              # 상태를 바꾼다
+    if ticket["acked_at"] == -1:                                               # 처음 확인하는 것이면
+        ticket["acked_at"] = minute                                            # 확인한 시각을 적는다
+    if new_status == "해결":                                                   # 해결로 바꾸는 것이면
+        ticket["resolved_at"] = minute                                         # 해결한 시각을 적는다
+    ticket["updated_at"] = minute                                              # 갱신 시각을 적는다
+    comment = who + " · " + str(minute) + "분 · " + old_status + " → " + new_status  # 누가 언제 무엇을 했는지 문자열로 만든다
+    ticket["comments"].append(comment)                                         # 댓글 리스트에 추가한다
+    return True                                                                # 바꿨다고 True 를 리턴한다
 ```
 
-**결과**
+## `ticket_notice.py` 만들기
 
-- (가) 출력은 다음과 같습니다. 티켓은 <mark style="background:#bde3ff">**1건**</mark>, 담당자 알림은 <mark style="background:#bde3ff">**1건**</mark>이고, `분류됨` 으로 남은 건은 <mark style="background:#bde3ff">**INC-005**</mark> 입니다.
+`ticket_notice.py` 는 `notifier.py` 의 `notify` 를 불러 쓰므로 `notifier.py` 를 먼저 만듭니다.
 
-```
---- 단계 1: 승인 대기 건
-INC-002 seoyeon · PB-002 · 플레이북 승인 값이 담당자 승인 필요
-INC-003 gaeun · VIP 확인 · VIP 계정이라 경로가 승인 필요
-INC-005 198.51.100.90 · PB-003 · 플레이북 승인 값이 담당자 승인 필요
---- 단계 2: 담당자 결정 처리
-INC-002 seoyeon -> 실행 완료 (상태: 조치됨)
-INC-003 gaeun -> 거절 처리 (상태: 종료)
-INC-005 198.51.100.90 -> 권한 없음 (상태: 분류됨)
---- 단계 3: 처리 뒤 연습용 시스템 상태
-잠긴 계정: []
-차단한 IP: []
-티켓: 1 건 · 담당자 알림: 1 건
---- 단계 4: 감사 기록
-INC-002 PB-002 담당자 알림 : 담당자 알림 전송 (승인: kim.sec)
-INC-002 PB-002 티켓 생성 : 티켓 TCK-1 생성 (승인: kim.sec)
-INC-003 VIP 확인 전체 : 거절됨 (승인: kim.sec — 계정 관리자의 정상 작업으로 확인됨)
-INC-005 PB-003 전체 : 권한 없음 — 승인 시도: intern01
-```
+1. **[터미널]** `agent_core` 폴더에 `notifier.py` 가 있으면 이 폴더로 복사합니다.
+   ```bash
+   cp ../agent_core/notifier.py .
+   ls
+   ```
+   - 명령 풀이: `cp 원본 복사본` 파일 복사하기(`.` 은 지금 폴더)
+   - `No such file` 이 나오면 `ls ..` 로 `agent_core` 폴더 이름이 맞는지 봅니다. 그래도 없으면 아래 `notifier.py` 상자를 같은 이름의 파일에 붙여 넣습니다.
+2. **[VS Code]** `ticket_notice.py` 를 만들고 맨 아래 `ticket_notice.py` 상자를 붙여 넣습니다.
 
-- (나) INC-005 는 결정한 `intern01` 이 <mark style="background:#bde3ff">`APPROVERS` 에 없어서</mark> 실행되지 않았습니다.
-  - 근거: 단계 2 에 `권한 없음 (상태: 분류됨)`, 단계 3 에 `차단한 IP: []`, 단계 4 에 `권한 없음 — 승인 시도: intern01` 이 나옵니다.
-  - 위험: 이 확인이 없으면 권한 없는 사람이 `승인` 만 눌러도 IP 가 차단됩니다.
-  - 같은 IP 를 여러 사람이 쓰면 정상 사용자의 업무가 막힙니다.
-  - 승인 권한이 있는 담당자의 허락 없이 차단한 것이라, 왜 차단했는지 나중에 설명할 수 없습니다.
-- (다) INC-003 은 `pending.json` 의 이유가 <mark style="background:#bde3ff">`VIP 계정이라 경로가 승인 필요`</mark> 입니다. Unit 2의 실습 2-2에서 VIP 계정(막히면 업무에 큰 영향을 주는 중요한 계정)은 담당자가 확인하기 전에는 처리하지 않도록 `승인 필요` 경로로 보냈기 때문입니다.
-  - 거절된 뒤 상태는 <mark style="background:#bde3ff">`종료`</mark> 이고, 감사 기록에 `거절됨 (승인: kim.sec — 계정 관리자의 정상 작업으로 확인됨)` 이 남습니다. 누가 어떤 사유로 닫았는지 사고 뒤에 설명할 수 있습니다.
-
-**왜**: <mark>승인은 「누가 눌렀는지 확인」과 「누가 눌렀는지 기록」이 둘 다 있어야 믿을 수 있습니다.</mark> 누른 사람이 누구인지 확인하지 않고 실행하면, 아무나 자동 대응을 실행시킬 수 있습니다. 누가 허락했는지 기록이 없으면, 나중에 누구 책임인지 설명할 수 없습니다.
-
-**자주 틀리는 곳**
-
-- 1번을 비워 두면 기록 한 건을 만들지 못해 오류가 납니다. <mark>**`entry` 변수에 딕셔너리를 저장해 두지 않으면 `return entry` 가 실패합니다.**</mark>
-
-```
---- 단계 2: 담당자 결정 처리
-NameError: name 'entry' is not defined
-```
-
-- 2번을 비워 두면 `is_authorized` 가 `return` 이 없어 `None`(값 없음)을 리턴하고, `if not None` 이 참이 되어 <mark>**권한 있는 담당자도 모두 「권한 없음」이 됩니다.**</mark>
-
-```
---- 단계 2: 담당자 결정 처리
-INC-002 seoyeon -> 권한 없음 (상태: 분류됨)
-INC-003 gaeun -> 권한 없음 (상태: 분류됨)
-INC-005 198.51.100.90 -> 권한 없음 (상태: 분류됨)
-```
-
-- 4 · 5번을 비워 두면 오류는 나지 않지만 <mark>**권한 없는 `intern01` 의 승인으로 IP 가 차단됩니다.**</mark> 이 실수를 하면 단계 2 에서 INC-005 가 `실행 완료` 로 나옵니다.
-
-```
---- 단계 2: 담당자 결정 처리
-INC-002 seoyeon -> 실행 완료 (상태: 조치됨)
-INC-003 gaeun -> 거절 처리 (상태: 종료)
-INC-005 198.51.100.90 -> 실행 완료 (상태: 조치됨)
---- 단계 3: 처리 뒤 연습용 시스템 상태
-잠긴 계정: []
-차단한 IP: ['198.51.100.90']
-티켓: 2 건 · 담당자 알림: 1 건
-```
-
-- 6 · 7번을 비워 두면 <mark>**승인한 건도 모두 거절 처리됩니다.**</mark>
-
-```
---- 단계 2: 담당자 결정 처리
-INC-002 seoyeon -> 거절 처리 (상태: 종료)
-INC-003 gaeun -> 거절 처리 (상태: 종료)
-INC-005 198.51.100.90 -> 권한 없음 (상태: 분류됨)
-```
-
-- 7번에서 `return` 을 빼고 `execute_actions(…)` 만 호출하면 <mark>**함수가 거기서 끝나지 않습니다. 그래서 실행한 다음 줄도 실행되어 거절 기록까지 남습니다.**</mark> INC-002 가 `거절 처리` 인데 상태는 `조치됨` 이고, 단계 4 에 실행 기록과 거절 기록이 함께 남습니다. 서로 맞지 않는 이런 결과가 나오면 이 실수입니다.
-
-```
---- 단계 2: 담당자 결정 처리
-INC-002 seoyeon -> 거절 처리 (상태: 조치됨)
-INC-003 gaeun -> 거절 처리 (상태: 종료)
-INC-005 198.51.100.90 -> 권한 없음 (상태: 분류됨)
-…
---- 단계 4: 감사 기록
-INC-002 PB-002 담당자 알림 : 담당자 알림 전송 (승인: kim.sec)
-INC-002 PB-002 티켓 생성 : 티켓 TCK-1 생성 (승인: kim.sec)
-INC-002 PB-002 전체 : 거절됨 (승인: kim.sec — 대량 다운로드 사유를 확인해야 함)
-INC-003 VIP 확인 전체 : 거절됨 (승인: kim.sec — 계정 관리자의 정상 작업으로 확인됨)
-INC-005 PB-003 전체 : 권한 없음 — 승인 시도: intern01
-```
-
-- 6번에서 `==` 대신 `!=` 를 쓰면 거꾸로 동작합니다. <mark>**승인한 건은 종료되고, 거절한 건이 실행됩니다.**</mark>
-
-```
---- 단계 2: 담당자 결정 처리
-INC-002 seoyeon -> 거절 처리 (상태: 종료)
-INC-003 gaeun -> 실행 완료 (상태: 조치됨)
-INC-005 198.51.100.90 -> 권한 없음 (상태: 분류됨)
-```
-
-- 8 · 9번을 비워 두면 <mark>**모든 건이 「결정 없음」으로 남습니다.**</mark>
-
-```
---- 단계 2: 담당자 결정 처리
-INC-002 seoyeon -> 결정 없음 (상태: 분류됨)
-INC-003 gaeun -> 결정 없음 (상태: 분류됨)
-INC-005 198.51.100.90 -> 결정 없음 (상태: 분류됨)
-```
-
-**관제에서는**: 승인 요청을 받으면 가장 먼저 「누른 사람이 승인 권한이 있는가」를 확인합니다. <mark>승인 · 거절 · 권한 없는 시도를 같은 감사 기록에 남기면</mark> 사고가 난 뒤에 누가 무엇을 허락했는지 한 목록에서 다시 확인할 수 있습니다.
-
----
-
-## 실습 3-2 정답
-
-**채운 코드** (한 예)
-
-`retry_runner.py` 의 1 ~ 3번입니다.
+**`notifier.py`** — 알림 함수 `notify` 입니다. 메시지를 알림 서버로 보내고, 보내면 `True`, 실패하면 `[알림 실패]` 와 오류 이름을 출력하고 `False` 를 리턴합니다.
 
 ```python
-            # 1. flaky_run_action(action, incident, state, fail_plan) 의 결과를 result 에 담는다
-            result = flaky_run_action(action, incident, state, fail_plan)  # 액션을 실행해 결과를 받는다
-            # 2. result + " (시도 " + str(attempt) + "회)" 를 리턴한다 (성공하면 여기서 끝난다)
-            return result + " (시도 " + str(attempt) + "회)"               # 성공하면 시도 횟수를 붙여 리턴하고 끝낸다
-            # 3. str(error) 를 last_error 에 담는다 (오류 문장을 기억해 두고 다음 시도로 간다)
-            last_error = str(error)                                        # 오류 문장을 기억해 두고 다음 시도로 간다
+import requests                                                # 인터넷으로 요청을 보내는 도구
+
+
+def notify(message, url):                                      # 메시지를 알림 서버로 보내는 함수
+    try:                                                       # 아래 줄을 해 본다
+        requests.post(url, json={"text": message}, timeout=5)  # 메시지를 POST 한다 — 5초만 기다린다
+        return True                                            # 보냈다
+    except Exception as e:                                     # 에러가 나면 e 에 담아 여기로 온다
+        print("[알림 실패]", type(e).__name__)                 # 에러 이름을 알린다 — 숨기지 않는다
+        return False                                           # 못 보냈다 — 부른 쪽은 계속 간다
 ```
 
-`flow.py` 의 4 · 5번입니다.
+**`ticket_notice.py`** — 티켓 알림을 보낼지 정하고 보냅니다.
+
+- 수신자는 `config/escalation_rules.json` 의 `recipients` 에서 등급별로 고릅니다(`pick_recipients`).
+- 처음 보내는 티켓은 바로 보내고, 같은 티켓은 마지막으로 보낸 뒤 `send_gap_minutes`(30분)가 지나야 다시 보냅니다(`should_send`).
+- 보내기에 실패하면 최대 `MAX_TRIES`(3)번까지 다시 보내 봅니다(`send_with_retry`). 성공한 시도 번호를, 모두 실패하면 0 을 리턴합니다.
+- 보낼지 정하는 방법과 재시도는 도전 3-3 레슨에서 자세히 다룹니다.
 
 ```python
-        # 4. result 가 "실패" 로 시작하면 (if, startswith)
-        if result.startswith("실패"):  # 결과 문장이 「실패」로 시작하면
-        # 5.   failed 에 True 를 담는다 (실패한 액션이 있다고 적는다)
-            failed = True              # 실패한 액션이 있다고 적는다
+from notifier import notify                                            # notifier.py 의 알림 함수를 불러온다 (성공하면 True, 실패하면 False)
+
+MAX_TRIES = 3                                                          # 알림을 보내 보는 최대 횟수
+
+
+def pick_recipients(grade, rules):                                     # 등급과 규칙을 받는 함수
+    """등급에 맞는 수신자 이름 리스트를 리턴한다.
+    위험한 알림일수록 더 많은 사람에게 알려야 할 때 쓴다.
+    """
+    table = rules["recipients"]                                        # 등급마다 정한 수신자 표
+    return table[grade]                                                # 이 등급의 수신자 리스트를 리턴한다
+
+
+def should_send(ticket, now, gap):                                     # 티켓 · 지금 시각(분) · 알림 간격(분)을 받는 함수
+    """이 티켓의 알림을 지금 보내도 되면 True, 너무 일러서 건너뛰어야 하면 False 를 리턴한다.
+    같은 티켓의 알림이 연달아 가서 사람이 알림을 무시하게 되는 일을 막을 때 쓴다.
+    """
+    if ticket["notified_count"] == 0:                                  # 처음 보내는 것이면
+        return True                                                    # 바로 보내도 된다고 True 를 리턴한다
+    elapsed = now - ticket["last_notified"]                            # 마지막으로 보낸 뒤 몇 분 지났는지
+    return elapsed >= gap                                              # 알림 간격 이상 지났는지의 결과를 리턴한다
+
+
+def send_with_retry(message, url, max_tries):                          # 메시지 · 알림 주소 · 최대 횟수를 받는 함수
+    """알림을 최대 max_tries 번 보내 본다. 성공한 시도 번호를, 모두 실패하면 0 을 리턴한다.
+    알림 서버가 잠깐 응답하지 않을 때 바로 포기하지 않고 다시 보내 보려고 쓴다.
+    """
+    for attempt in range(1, max_tries + 1):                            # 시도 번호를 1 부터 최대 횟수까지 하나씩 읽는다
+        if notify(message, url):                                       # 알림을 보냈으면
+            return attempt                                             # 성공한 시도 번호를 리턴한다
+    return 0                                                           # 모두 실패했으면 0 을 리턴한다
+
+
+def send_ticket_notice(ticket, now, rules):                            # 티켓 · 지금 시각(분) · 규칙을 받는 함수
+    """티켓 알림을 보낼지 정하고, 보내야 하면 수신자를 붙여 보낸다. 「전송」 · 「건너뜀」 · 「실패」 중 하나를 리턴한다.
+    티켓이 만들어지거나 합쳐질 때마다 부른다.
+    """
+    if not should_send(ticket, now, rules["send_gap_minutes"]):        # 너무 일러서 보내면 안 되면
+        return "건너뜀"                                                # 보내지 않고 「건너뜀」을 리턴한다
+    recipients = pick_recipients(ticket["grade"], rules)               # 이 등급의 수신자 리스트를 구한다
+    names = ""                                                         # 수신자 이름을 이어 붙일 빈 문자열
+    for name in recipients:                                            # 수신자를 하나씩 읽는다
+        if names != "":                                                # 이미 이름이 있으면
+            names = names + ", "                                       # 쉼표를 붙이고
+        names = names + name                                           # 이름을 이어 붙인다
+    message = ticket["title"] + " · " + ticket["id"] + " · 알림 " + str(ticket["count"]) + "건 · 기한 " + str(ticket["sla_due"]) + "분 · 수신: " + names  # 알림 내용을 만든다
+    attempt = send_with_retry(message, rules["alert_url"], MAX_TRIES)  # 최대 3번까지 보내 본다
+    if attempt == 0:                                                   # 모두 실패했으면
+        return "실패"                                                  # 「실패」를 리턴한다
+    ticket["notified_count"] = ticket["notified_count"] + 1            # 보낸 횟수를 1 늘린다
+    ticket["last_notified"] = now                                      # 마지막으로 보낸 시각을 적는다
+    return "전송"                                                      # 「전송」을 리턴한다
 ```
-
-`failure_report.py` 의 6 · 7번입니다.
-
-```python
-        # 6. entry["result"] 가 "실패" 로 시작하면 (if, startswith)
-        if entry["result"].startswith("실패"):  # 결과 문장이 「실패」로 시작하면
-        # 7.   failures 에 entry 를 추가한다 (append)
-            failures.append(entry)              # 실패한 기록을 리스트에 추가한다
-```
-
-`exercise3-2_run.py` 의 8 · 9번입니다.
-
-```python
-# 8. collect_failures(action_log) 의 결과를 failures 에 담는다
-failures = collect_failures(action_log)                        # 실패한 기록을 모은다
-    # 9. incident_id · entry["action"] · ":" · entry["result"] 를 출력한다 (print)
-    print(incident_id, entry["action"], ":", entry["result"])  # 실패한 액션을 출력한다
-```
-
-**결과**
-
-- (가) 출력은 다음과 같습니다. 단계 3 에서 `일부 실패` 는 <mark style="background:#bde3ff">**INC-001**</mark>, `승인 대기` 는 <mark style="background:#bde3ff">**INC-002 · INC-003 · INC-005**</mark>, `오탐 종료` 는 <mark style="background:#bde3ff">**INC-004**</mark> 입니다.
-
-```
---- 단계 1: 일시 장애 — 티켓 서비스가 2번 실패한 뒤 복구
-티켓 TCK-1 생성 (시도 3회)
-만든 티켓: 1 건
---- 단계 2: 서비스 중단 — 티켓 서비스가 계속 실패
-실패: 연결 실패: 티켓 생성 서비스가 응답하지 않음 (3회 모두 실패)
-만든 티켓: 0 건
---- 단계 3: 하루 흐름 — 티켓 서비스가 계속 실패하는 상황
-INC-001 dami -> 일부 실패 (상태: 분류됨)
-INC-002 seoyeon -> 승인 대기 (상태: 분류됨)
-INC-003 gaeun -> 승인 대기 (상태: 분류됨)
-INC-004 jiwoo -> 오탐 종료 (상태: 종료)
-INC-005 198.51.100.90 -> 승인 대기 (상태: 분류됨)
---- 단계 4: 담당자 결정 처리
-INC-002 seoyeon -> 실행 완료 (상태: 조치됨)
-INC-003 gaeun -> 거절 처리 (상태: 종료)
-INC-005 198.51.100.90 -> 권한 없음 (상태: 분류됨)
---- 단계 5: 하루가 끝난 뒤 연습용 시스템 상태
-잠긴 계정: ['dami']
-차단한 IP: []
-티켓: 1 건 · 담당자 알림: 1 건
---- 단계 6: 담당자 확인이 필요한 건
-INC-001 티켓 생성 : 실패: 연결 실패: 티켓 생성 서비스가 응답하지 않음 (3회 모두 실패)
-INC-005 승인 대기 : 플레이북 승인 값이 담당자 승인 필요
-```
-
-- (나) 단계 1 의 `fail_plan` 은 <mark style="background:#bde3ff">`{"INC-001|티켓 생성": 2}`</mark> 라서 2번 실패한 뒤 3번째 시도에서 성공합니다(`시도 3회`). 단계 2 의 값은 <mark style="background:#bde3ff">`99`</mark> 라서 3번 모두 실패합니다. 같은 코드라도 서비스 상태에 따라 결과가 다릅니다.
-  - 최대 횟수가 없으면 서비스가 계속 멈춰 있을 때 같은 요청을 끝없이 보내서 대응 전체가 멈춥니다.
-  - 이미 멈춘 서비스에 요청을 계속 보내면 복구도 늦어집니다.
-  - 실제로는 서비스가 복구될 시간을 주려고, 시도 사이의 기다리는 시간을 점점 늘립니다. 오늘 수업은 기다림 없이 횟수만 정합니다.
-- (다) INC-001 은 계정 잠금은 성공했고 티켓 생성은 3번 모두 실패했습니다. <mark style="background:#bde3ff">모든 액션이 성공한 것이 아니므로 `조치됨` 으로 옮기지 않고 `분류됨` 에 남기며 `일부 실패` 를 리턴합니다.</mark>
-  - 단계 6 의 `INC-001 티켓 생성 : 실패: …` 줄은 담당자에게 「이 알림의 티켓이 아직 없다」는 사실과 이유를 알려 줍니다.
-  - 같은 `state` 에서 다시 처리해도 `dami` 가 두 번 잠기지 않는 이유는, Unit 2의 실습 2-3의 `safe_run_action` 이 이미 잠긴 계정을 <mark style="background:#bde3ff">「건너뜀: 이미 잠겨 있음」</mark> 으로 리턴하기 때문입니다.
-  - 오늘 실행 파일은 실행할 때마다 `state` 를 새로 만듭니다. 그래서 `dami` 가 두 번 잠기지 않는 모습은 같은 `state` 로 한 번 더 처리할 때만 볼 수 있습니다.
-  - 티켓과 담당자 알림은 오늘 코드가 중복을 막지 않습니다. 같은 `state` 로 다시 처리하면 한 번 더 만들어집니다.
-
-**왜**: <mark>잠깐 생긴 실패는 정해진 횟수까지 다시 시도해서 해결하고, 끝내 실패하면 숨기지 않고 기록해 사람에게 넘겨야 합니다.</mark> 그래야 자동 대응이 일부만 실행된 채 아무도 모르게 남는 일이 없습니다.
-
-**자주 틀리는 곳**
-
-- `try` 아래를 비워 둔 채 실행하면 파이썬이 실행 전에 멈춥니다. `IndentationError`(인덴테이션 에러: 들여쓰기 오류)로 시작하는 오류입니다(문구는 버전마다 다릅니다).
-- 3번 자리에 `pass`(아무 일도 하지 않는 파이썬 문장)만 써 두면 오류는 나지 않지만 <mark>**실패 문장에 이유가 비어 나옵니다.**</mark> 담당자가 왜 실패했는지 알 수 없습니다. 아예 비워 두면 `except` 아래가 비어 `IndentationError` 가 납니다.
-
-```
---- 단계 2: 서비스 중단 — 티켓 서비스가 계속 실패
-실패:  (3회 모두 실패)
-```
-
-- 2번에서 `return` 대신 `print(result)` 를 쓰면 <mark>**성공했는데도 함수가 끝나지 않습니다. `print` 는 화면에 보여 줄 뿐 함수를 끝내지 않으므로, 반복이 계속되다가 마지막에 실패 문장을 리턴합니다.**</mark> 단계 1 에서 `티켓 TCK-1 생성` 다음에 `실패: …` 가 이어서 나오는 것이 이 실수의 결과입니다.
-
-```
---- 단계 1: 일시 장애 — 티켓 서비스가 2번 실패한 뒤 복구
-티켓 TCK-1 생성
-실패: 연결 실패: 티켓 생성 서비스가 응답하지 않음 (3회 모두 실패)
-만든 티켓: 1 건
-```
-
-- 4 · 5번을 비워 두면 오류는 나지 않지만 <mark>**티켓 생성이 실패했는데도 INC-001 이 `실행 완료 (상태: 조치됨)` 으로 나옵니다.**</mark> 단계 3 은 성공이라고 하는데 단계 6 은 실패라고 합니다. 서로 맞지 않는 이런 결과가 나오면 이 실수입니다.
-
-```
---- 단계 3: 하루 흐름 — 티켓 서비스가 계속 실패하는 상황
-INC-001 dami -> 실행 완료 (상태: 조치됨)
-INC-002 seoyeon -> 승인 대기 (상태: 분류됨)
-INC-003 gaeun -> 승인 대기 (상태: 분류됨)
-INC-004 jiwoo -> 오탐 종료 (상태: 종료)
-INC-005 198.51.100.90 -> 승인 대기 (상태: 분류됨)
-…
---- 단계 6: 담당자 확인이 필요한 건
-INC-001 티켓 생성 : 실패: 연결 실패: 티켓 생성 서비스가 응답하지 않음 (3회 모두 실패)
-INC-005 승인 대기 : 플레이북 승인 값이 담당자 승인 필요
-```
-
-- 6 · 7번 자리에 `pass` 만 써 두면 <mark>**실패한 액션이 담당자 확인 목록에서 빠집니다.**</mark> 단계 6 에 `승인 대기` 한 건만 나옵니다. 아예 비워 두면 `for` 아래가 비어 `IndentationError` 가 납니다.
-
-```
---- 단계 6: 담당자 확인이 필요한 건
-INC-005 승인 대기 : 플레이북 승인 값이 담당자 승인 필요
-```
-
-- 8번을 비워 두면 `failures` 가 만들어지지 않아 오류가 납니다(`NameError`, 네임 에러: 만들지 않은 이름을 쓸 때 나는 오류). 파이썬 버전에 따라 뒤에 `Did you mean: …` 이 붙을 수 있습니다.
-
-```
-NameError: name 'failures' is not defined
-```
-
-**관제에서는**: 자동 대응을 켤 때는 「외부 서비스가 실패하면 어디까지 다시 시도하고, 그 뒤에는 누구에게 알리는가」를 먼저 정합니다. <mark>실패한 건의 목록은 담당자가 아침에 가장 먼저 보는 목록</mark>입니다. 실제 제품에서도 정해진 시간 안에 응답이 오지 않거나(타임아웃) 서버 오류(서비스 쪽 문제로 요청을 처리하지 못했다는 응답)가 나면, 정해 둔 규칙대로 같은 요청을 다시 보냅니다. 예를 들어 Microsoft Sentinel(보안 관제 제품)의 플레이북이 쓰는 Azure Logic Apps(자동화 서비스)가 그렇게 합니다.
-
----
-
-## 정답 마무리
-
-- (가) 한 예: <mark>`git status` 에서 `.env` 와 `.venv` 가 보이지 않았습니다.</mark> `__pycache__` 가 보여서 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 다시 확인했습니다.
-- 깃허브 `soar_response` 폴더에 오늘 만든 `.py` 파일이 보이면 됩니다.

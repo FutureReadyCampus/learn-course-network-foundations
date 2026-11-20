@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>Commit changes 전에 보는 공개 전 점검 네 가지</title>
+<desc>글과 code 파일에 비밀키 · 토큰 · .env 내용이 없는지, 개인정보와 실제 사람의 이름이 없는지, 머리말이 module: 5, unit: 3 이고 sample: true 줄이 없는지 확인한다.</desc>
+<text x="20" y="32.0" font-size="18" fill="#292929" font-weight="700">Commit changes 를 누르기 전에</text>
+<rect x="20" y="50" width="680" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="38" y="64" width="20" height="20" rx="4" fill="#ffffff" stroke="#1f7a4a" stroke-width="2"/><path d="M42 74 l5 5 l8 -10" fill="none" stroke="#1f7a4a" stroke-width="2.5"/>
+<text x="76" y="79.5" font-size="15" fill="#292929">1. 글과 code/ 파일에 비밀키 · 토큰 · .env 내용이 없다</text>
+<rect x="20" y="110" width="680" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="38" y="124" width="20" height="20" rx="4" fill="#ffffff" stroke="#1f7a4a" stroke-width="2"/><path d="M42 134 l5 5 l8 -10" fill="none" stroke="#1f7a4a" stroke-width="2.5"/>
+<text x="76" y="139.5" font-size="15" fill="#292929">2. 이메일 · 전화번호 같은 개인정보가 없다</text>
+<rect x="20" y="170" width="680" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="38" y="184" width="20" height="20" rx="4" fill="#ffffff" stroke="#1f7a4a" stroke-width="2"/><path d="M42 194 l5 5 l8 -10" fill="none" stroke="#1f7a4a" stroke-width="2.5"/>
+<text x="76" y="199.5" font-size="15" fill="#292929">3. 실습 데이터가 아닌 실제 사람의 이름(실명)이 없다</text>
+<rect x="20" y="230" width="680" height="48" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<rect x="38" y="244" width="20" height="20" rx="4" fill="#ffffff" stroke="#1f7a4a" stroke-width="2"/><path d="M42 254 l5 5 l8 -10" fill="none" stroke="#1f7a4a" stroke-width="2.5"/>
+<text x="76" y="259.5" font-size="15" fill="#292929">4. 머리말이 module: 5, unit: 3 이고 sample: true 줄이 없다</text>
+</svg>

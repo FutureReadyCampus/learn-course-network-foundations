@@ -1,33 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
-<title>보강, 경로 분기, 안전장치가 이어지고 Unit 3 에서 승인 처리와 실패 처리를 더한다</title>
-<desc>실습 2-1 보강, 실습 2-2 경로 분기, 실습 2-3 안전장치가 차례로 이어진다. Unit 3 에서는 승인 필요 경로의 승인 처리와 실행기의 실패 처리를 더해 한 흐름으로 연결한다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>마무리에서 네 가지를 확인하고 상태 파일 값을 본 뒤 깃허브에 올립니다</title>
+<desc>실습 2-1, 실습 2-2, 제공 파일, 보고서를 확인하고, 상태 파일이 junho 와 dami 두 계정과 기록 5건인지 봅니다. 그다음 git status, 보고서 마무리 칸, add · commit · push, 브라우저 확인 순서로 올립니다.</desc>
 <defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">Unit 2 마무리: 세 실습이 하나의 흐름으로 이어진다</text>
-<rect x="20" y="60" width="200" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="120" y="97.89" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">실습 2-1</text>
-<text x="120" y="120.075" font-size="15" fill="#292929" text-anchor="middle">알림 보강</text>
-<text x="120" y="141.825" font-size="15" fill="#292929" text-anchor="middle">재직 · VIP · 접속 IP</text>
-<rect x="260" y="60" width="200" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="360" y="87.015" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">실습 2-2</text>
-<text x="360" y="109.2" font-size="15" fill="#292929" text-anchor="middle">경로 분기</text>
-<text x="360" y="130.95" font-size="15" fill="#292929" text-anchor="middle">승인 필요 · 오탐 종료</text>
-<text x="360" y="152.7" font-size="15" fill="#292929" text-anchor="middle">· 기본</text>
-<rect x="500" y="60" width="200" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="600" y="97.89" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">실습 2-3</text>
-<text x="600" y="120.075" font-size="15" fill="#292929" text-anchor="middle">안전장치</text>
-<text x="600" y="141.825" font-size="15" fill="#292929" text-anchor="middle">중복 방지 · 잠금 3개</text>
-<polyline points="222,115 258,115" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
-<polyline points="462,115 498,115" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
-<rect x="140" y="220" width="260" height="90" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="270" y="247.89" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 3 · 승인 처리</text>
-<text x="270" y="270.075" font-size="15" fill="#292929" text-anchor="middle">승인 필요 경로로 간 알림을</text>
-<text x="270" y="291.825" font-size="15" fill="#292929" text-anchor="middle">승인하거나 거절</text>
-<rect x="440" y="220" width="260" height="90" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="570" y="247.89" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 3 · 실패 처리</text>
-<text x="570" y="270.075" font-size="15" fill="#292929" text-anchor="middle">실습 2-3 실행기에서</text>
-<text x="570" y="291.825" font-size="15" fill="#292929" text-anchor="middle">액션이 실패했을 때</text>
-<polyline points="360,172 270,218" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
-<polyline points="600,172 570,218" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<text x="24" y="34" font-size="19" fill="#292929" font-weight="700">이번 Unit 마무리 · 깃허브에 올리기</text>
+<rect x="24" y="54" width="159" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="103.5" y="80.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="103.5" dy="0" font-weight="700">실습 2-1</tspan><tspan x="103.5" dy="21">잠금 · 사후 검증</tspan></text>
+<rect x="195" y="54" width="159" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="274.5" y="80.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="274.5" dy="0" font-weight="700">실습 2-2</tspan><tspan x="274.5" dy="21">세션 종료 · 재점검</tspan></text>
+<rect x="366" y="54" width="159" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="445.5" y="80.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="445.5" dy="0" font-weight="700">제공 파일</tspan><tspan x="445.5" dy="21">세 개 · 정상</tspan></text>
+<rect x="537" y="54" width="159" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="616.5" y="80.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="616.5" dy="0" font-weight="700">보고서</tspan><tspan x="616.5" dy="21">report_u2.md</tspan></text>
+<rect x="24" y="144" width="672" height="70" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="173.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">파일 확인: 상태 파일의 마지막 줄</tspan><tspan x="360.0" dy="21">[&#x27;junho&#x27;, &#x27;dami&#x27;] 5   (다르면 python exercise2-2_run.py 다시 실행)</tspan></text>
+<rect x="24" y="244" width="159" height="80" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="103.5" y="268.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="103.5" dy="0" font-weight="700">상태 보기</tspan><tspan x="103.5" dy="21">cd ..</tspan><tspan x="103.5" dy="21">git status</tspan></text>
+<rect x="195" y="244" width="159" height="80" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="274.5" y="278.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="274.5" dy="0" font-weight="700">보고서</tspan><tspan x="274.5" dy="21">## 마무리 (가)</tspan></text>
+<rect x="366" y="244" width="159" height="80" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="445.5" y="268.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="445.5" dy="0" font-weight="700">올리기</tspan><tspan x="445.5" dy="21">git add .</tspan><tspan x="445.5" dy="21">commit · push</tspan></text>
+<rect x="537" y="244" width="159" height="80" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="616.5" y="278.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="616.5" dy="0" font-weight="700">브라우저</tspan><tspan x="616.5" dy="21">파일이 다 있나</tspan></text>
+<line x1="183" y1="284" x2="193" y2="284" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<line x1="354" y1="284" x2="364" y2="284" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<line x1="525" y1="284" x2="535" y2="284" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<text x="24" y="362" font-size="15" text-anchor="start" fill="#666660">Unit 3 실습 3-1 은 이 상태 파일을 읽어 자동 조치를 되돌립니다.</text>
 </g>
 </svg>

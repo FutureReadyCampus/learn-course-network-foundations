@@ -1,48 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
-<title>이벤트를 만들고 이어 붙이고 time 순으로 정렬해 저장하는 네 단계와 문자열 순서</title>
-<desc>세 리스트를 이어 붙여 57개로 만들고 time 문자열 순서로 정렬해 파일로 저장합니다. 공통 모양 시각은 연, 월, 일, 시, 분, 초 순서라서 문자열 순서가 곧 시간 순서입니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>알림 기준을 이벤트 57개에 세 단계로 적용해 알림 대상 주소를 찾는다</title>
+<desc>팀장이 정한 기준(하루 5번 이상 실패)을 적용합니다. ① 로그인 요청이면서 실패한 것을 고르고 ② IP 주소별로 세고 ③ 5번 이상인 주소만 남깁니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">합쳐서 시간순으로 놓는 네 단계</text>
-<rect x="24" y="58" width="156" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="102" y="100.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">① 각각 만들기</text>
-<text x="102" y="120.9" font-size="14" text-anchor="middle" fill="#666660">28 · 15 · 14개</text>
-<line x1="181" y1="106" x2="194" y2="106" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
-<rect x="196" y="58" width="156" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="274" y="100.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">② 이어 붙이기</text>
-<text x="274" y="120.9" font-size="14" text-anchor="middle" fill="#666660">하나의 리스트 57개</text>
-<line x1="353" y1="106" x2="366" y2="106" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
-<rect x="368" y="58" width="156" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="446" y="100.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">③ 정렬하기</text>
-<text x="446" y="120.9" font-size="14" text-anchor="middle" fill="#666660">time 문자열 순서</text>
-<line x1="525" y1="106" x2="538" y2="106" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
-<rect x="540" y="58" width="156" height="96" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="618" y="90.0" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">④ 파일로 저장</text>
-<text x="618" y="110.8" font-size="14" text-anchor="middle" fill="#666660">normalized_</text>
-<text x="618" y="131.1" font-size="14" text-anchor="middle" fill="#666660">events.json</text>
-<text x="24" y="196" font-size="16" text-anchor="start" fill="#292929" font-weight="700">왜 문자열 순서가 곧 시간 순서인가</text>
-<rect x="24" y="214" width="92" height="50" rx="4" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="70" y="244.2" font-size="18" text-anchor="middle" fill="#292929" font-weight="700">2026</text>
-<text x="70" y="290" font-size="15" text-anchor="middle" fill="#666660">연</text>
-<text x="128" y="246" font-size="18" text-anchor="middle" fill="#292929">-</text>
-<rect x="134" y="214" width="70" height="50" rx="4" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="169" y="244.2" font-size="18" text-anchor="middle" fill="#292929" font-weight="700">11</text>
-<text x="169" y="290" font-size="15" text-anchor="middle" fill="#666660">월</text>
-<text x="216" y="246" font-size="18" text-anchor="middle" fill="#292929">-</text>
-<rect x="222" y="214" width="70" height="50" rx="4" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="257" y="244.2" font-size="18" text-anchor="middle" fill="#292929" font-weight="700">02</text>
-<text x="257" y="290" font-size="15" text-anchor="middle" fill="#666660">일</text>
-<rect x="316" y="214" width="70" height="50" rx="4" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="351" y="244.2" font-size="18" text-anchor="middle" fill="#292929" font-weight="700">09</text>
-<text x="351" y="290" font-size="15" text-anchor="middle" fill="#666660">시</text>
-<text x="398" y="246" font-size="18" text-anchor="middle" fill="#292929">:</text>
-<rect x="404" y="214" width="70" height="50" rx="4" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="439" y="244.2" font-size="18" text-anchor="middle" fill="#292929" font-weight="700">12</text>
-<text x="439" y="290" font-size="15" text-anchor="middle" fill="#666660">분</text>
-<text x="486" y="246" font-size="18" text-anchor="middle" fill="#292929">:</text>
-<rect x="492" y="214" width="70" height="50" rx="4" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="527" y="244.2" font-size="18" text-anchor="middle" fill="#292929" font-weight="700">03</text>
-<text x="527" y="290" font-size="15" text-anchor="middle" fill="#666660">초</text>
-<text x="24" y="334" font-size="15" text-anchor="start" fill="#666660">큰 단위가 앞에 있어서 앞 글자부터 비교하면 시각 순서와 같습니다.</text>
+<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">알림 기준을 이벤트 57개에 세 단계로 적용한다</text>
+<rect x="20" y="56" width="680" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="85" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0">팀장이 정한 알림 기준: 한 주소가 하루에 로그인에 5번 이상 실패하면 알린다</tspan></text>
+<rect x="20" y="140" width="100" height="110" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="70.0" y="190" font-size="15" text-anchor="middle" fill="#292929"><tspan x="70.0" dy="0" font-weight="700">이벤트</tspan><tspan x="70.0" dy="20">57개</tspan></text>
+<rect x="150" y="140" width="170" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="235.0" y="180" font-size="15" text-anchor="middle" fill="#292929"><tspan x="235.0" dy="0" font-weight="700">①</tspan><tspan x="235.0" dy="20">로그인 요청이면서</tspan><tspan x="235.0" dy="20">실패한 것만</tspan></text>
+<rect x="350" y="140" width="170" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="435.0" y="180" font-size="15" text-anchor="middle" fill="#292929"><tspan x="435.0" dy="0" font-weight="700">②</tspan><tspan x="435.0" dy="20">IP 주소별로</tspan><tspan x="435.0" dy="20">세기</tspan></text>
+<rect x="550" y="140" width="150" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="625.0" y="180" font-size="15" text-anchor="middle" fill="#292929"><tspan x="625.0" dy="0" font-weight="700">③</tspan><tspan x="625.0" dy="20">5번 이상인</tspan><tspan x="625.0" dy="20">주소만 남기기</tspan></text>
+<polyline points="123,195 146,195" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<polyline points="323,195 346,195" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<polyline points="523,195 546,195" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<polyline points="625,253 625,278" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="550" y="282" width="150" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="625.0" y="309" font-size="15" text-anchor="middle" fill="#292929"><tspan x="625.0" dy="0" font-weight="700">알림 대상 주소</tspan></text>
+<text x="20" y="310" font-size="15" text-anchor="start" fill="#666660">찾는 순서: 고르기 → 세기 → 기준 이상만 남기기</text>
 </g>
 </svg>

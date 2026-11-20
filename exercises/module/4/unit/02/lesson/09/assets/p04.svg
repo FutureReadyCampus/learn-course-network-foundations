@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
+<title>Commit changes 를 누르기 전에 비밀키, 개인정보, 실명, 머리말 네 가지를 본다</title>
+<desc>글과 code/ 파일을 올리기 전 점검표입니다. 비밀키와 .env 내용, 이메일과 전화번호, 실제 사람 이름이 없는지 보고, 머리말이 module: 4, unit: 2 인지 확인한 뒤 올립니다.</desc>
+<defs><marker id="a-p04-u2w" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="30" y="32" font-size="18" font-weight="700" fill="#292929">올리기 전 점검 (Unit 2 글)</text>
+<rect x="30" y="50" width="460" height="54" rx="6" fill="#ffffff" stroke="#dededb"/>
+<rect x="46" y="66" width="22" height="22" rx="3" fill="#ffffff" stroke="#1f7a4a" stroke-width="2"/>
+<text x="84" y="83" font-size="15" fill="#292929">비밀키 · 토큰 · .env 내용이 없다</text>
+<rect x="30" y="114" width="460" height="54" rx="6" fill="#ffffff" stroke="#dededb"/>
+<rect x="46" y="130" width="22" height="22" rx="3" fill="#ffffff" stroke="#1f7a4a" stroke-width="2"/>
+<text x="84" y="147" font-size="15" fill="#292929">이메일 · 전화번호가 없다</text>
+<rect x="30" y="178" width="460" height="54" rx="6" fill="#ffffff" stroke="#dededb"/>
+<rect x="46" y="194" width="22" height="22" rx="3" fill="#ffffff" stroke="#1f7a4a" stroke-width="2"/>
+<text x="84" y="211" font-size="15" fill="#292929">나와 동료의 실명이 없다</text>
+<rect x="30" y="242" width="460" height="54" rx="6" fill="#ffffff" stroke="#dededb"/>
+<rect x="46" y="258" width="22" height="22" rx="3" fill="#ffffff" stroke="#1f7a4a" stroke-width="2"/>
+<text x="84" y="275" font-size="15" fill="#292929">module: 4 · unit: 2 · sample: true 없음</text>
+<line x1="498" y1="173" x2="534" y2="173" stroke="#666660" stroke-width="2" marker-end="url(#a-p04-u2w)"/>
+<rect x="540" y="128" width="150" height="90" rx="8" fill="#e4f3ea" stroke="#1f7a4a"/>
+<text x="615" y="166" font-size="15" font-weight="700" fill="#1f7a4a" text-anchor="middle">Commit</text>
+<text x="615" y="190" font-size="15" font-weight="700" fill="#1f7a4a" text-anchor="middle">changes</text>
+</g>
+</svg>

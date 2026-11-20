@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img">
+<title>오류 메시지별 뜻과 고치는 방법: 파일 없음, requests 없음, 키 없음, 400, 429, 인터넷</title>
+<desc>먼저 pwd 와 ls 로 위치와 파일 이름을 봅니다. 메시지마다 뜻과 고치는 방법을 표로 정리했습니다. API 키 없음은 오류가 아니라 대체 문장으로 진행하는 정상 동작입니다.</desc>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">오류가 나면: 메시지 → 뜻 → 고치기</text>
+<text x="20" y="54" font-size="14" fill="#666660">먼저 pwd 가 anomaly_detection 으로 끝나는지, ls 로 파일 이름이 문서와 같은지 봅니다.</text>
+<rect x="20" y="66" width="250" height="30" fill="#f1f1ef" stroke="#dededb"/>
+<rect x="270" y="66" width="210" height="30" fill="#f1f1ef" stroke="#dededb"/>
+<rect x="480" y="66" width="220" height="30" fill="#f1f1ef" stroke="#dededb"/>
+<text x="32" y="86" font-size="15" fill="#292929" font-weight="700">메시지</text>
+<text x="282" y="86" font-size="15" fill="#292929" font-weight="700">뜻</text>
+<text x="492" y="86" font-size="15" fill="#292929" font-weight="700">고치기</text>
+<g fill="none" stroke="#dededb">
+<rect x="20" y="96" width="680" height="48"/><rect x="20" y="144" width="680" height="48"/><rect x="20" y="192" width="680" height="48"/>
+<rect x="20" y="288" width="680" height="48"/><rect x="20" y="336" width="680" height="48"/><rect x="20" y="384" width="680" height="48"/>
+</g>
+<rect x="20" y="240" width="680" height="48" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<line x1="270" y1="96" x2="270" y2="432" stroke="#dededb"/><line x1="480" y1="96" x2="480" y2="432" stroke="#dededb"/>
+<text font-size="14" fill="#292929">
+<tspan x="32" y="116">ModuleNotFoundError</tspan><tspan x="32" y="135">No module named 'llm_client'</tspan>
+<tspan x="32" y="164">ModuleNotFoundError</tspan><tspan x="32" y="183">No module named 'requests'</tspan>
+<tspan x="32" y="212">FileNotFoundError</tspan><tspan x="32" y="231">unit05_risk_scores.json</tspan>
+<tspan x="32" y="269" font-weight="700">[LLM 호출 실패] API 키 없음</tspan>
+<tspan x="32" y="308">[LLM 호출 실패]</tspan><tspan x="32" y="327">상태 코드 400 (401 · 403)</tspan>
+<tspan x="32" y="356">[LLM 호출 실패]</tspan><tspan x="32" y="375">상태 코드 429</tspan>
+<tspan x="32" y="404">[LLM 호출 실패]</tspan><tspan x="32" y="423">인터넷 연결 오류</tspan>
+</text>
+<text font-size="14" fill="#292929">
+<tspan x="282" y="116">llm_client.py 가 폴더</tspan><tspan x="282" y="135">바로 아래에 없음</tspan>
+<tspan x="282" y="164">가상환경에</tspan><tspan x="282" y="183">requests 가 없음</tspan>
+<tspan x="282" y="212">점수 파일이 없거나</tspan><tspan x="282" y="231">이름이 다름</tspan>
+<tspan x="282" y="269" font-weight="700">오류 아님 · 정상 동작</tspan>
+<tspan x="282" y="318">키가 틀림</tspan>
+<tspan x="282" y="366">1분에 15번을 넘음</tspan>
+<tspan x="282" y="404">연결이 끊겼거나</tspan><tspan x="282" y="423">30초 안에 답이 없음</tspan>
+</text>
+<text font-size="14" fill="#292929">
+<tspan x="492" y="116">시작하기 4번의</tspan><tspan x="492" y="135">코드 상자로 만들기</tspan>
+<tspan x="492" y="164">가상환경 활성화 뒤</tspan><tspan x="492" y="183">python -m pip install requests</tspan>
+<tspan x="492" y="212">시작하기 5번의</tspan><tspan x="492" y="231">코드 상자로 만들기</tspan>
+<tspan x="492" y="269" font-weight="700">대체 문장으로 그대로 진행</tspan>
+<tspan x="492" y="308">키를 확인하고</tspan><tspan x="492" y="327">.env 에 다시 붙여 넣기</tspan>
+<tspan x="492" y="366">1분 기다린 뒤 다시 실행</tspan>
+<tspan x="492" y="404">연결을 확인하고</tspan><tspan x="492" y="423">다시 실행</tspan>
+</text>
+</g>
+</svg>

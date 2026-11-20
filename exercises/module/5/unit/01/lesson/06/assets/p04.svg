@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>도전 1-1 의 일곱 가지 할 일을 각각 한 줄 코드와 짝지은 요점 지도</title>
+<desc>왼쪽은 하려는 일, 오른쪽은 그 일을 하는 코드 한 줄이다. 반복과 not in 으로 IP 관련 규칙을 판별하고, 튜플 리턴과 언패킹으로 경로와 이유를 함께 주고받는다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 1-1 정리: 하려는 일과 코드</text>
+<rect x="20" y="56" width="180" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="80.35" font-size="15" fill="#292929" text-anchor="middle">리스트를 하나씩 반복</text>
+<polyline points="202,76 228,76" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="232" y="56" width="468" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="466" y="80.06" font-size="14" fill="#292929" text-anchor="middle">for rule in incident["reasons"]:</text>
+<rect x="20" y="106" width="180" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="130.35" font-size="15" fill="#292929" text-anchor="middle">리스트 안에 없으면</text>
+<polyline points="202,126 228,126" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="232" y="106" width="468" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="466" y="130.06" font-size="14" fill="#292929" text-anchor="middle">if rule not in IP_RELATED_RULES:</text>
+<rect x="20" y="156" width="180" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="180.35" font-size="15" fill="#292929" text-anchor="middle">참이면</text>
+<polyline points="202,176 228,176" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="232" y="156" width="468" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="466" y="180.06" font-size="14" fill="#292929" text-anchor="middle">if context["vip"]:</text>
+<rect x="20" y="206" width="180" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="230.35" font-size="15" fill="#292929" text-anchor="middle">두 조건이 모두 참이면</text>
+<polyline points="202,226 228,226" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="232" y="206" width="468" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="466" y="230.06" font-size="14" fill="#292929" text-anchor="middle">if context["ip_trusted"] and is_only_ip_related(incident):</text>
+<rect x="20" y="256" width="180" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="280.35" font-size="15" fill="#292929" text-anchor="middle">값 두 개를 함께 리턴</text>
+<polyline points="202,276 228,276" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="232" y="256" width="468" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="466" y="280.06" font-size="14" fill="#292929" text-anchor="middle">return "승인 필요", "VIP 계정이라 담당자 승인이 필요함"</text>
+<rect x="20" y="306" width="180" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="330.35" font-size="15" fill="#292929" text-anchor="middle">두 값을 한 번에 받기</text>
+<polyline points="202,326 228,326" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="232" y="306" width="468" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="466" y="330.06" font-size="14" fill="#292929" text-anchor="middle">route, reason = decide_route(incident)</text>
+<rect x="20" y="356" width="180" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="380.35" font-size="15" fill="#292929" text-anchor="middle">1 늘려 다시 저장</text>
+<polyline points="202,376 228,376" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="232" y="356" width="468" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="466" y="380.06" font-size="14" fill="#292929" text-anchor="middle">route_counts[route] = route_counts[route] + 1</text>
+</g>
+</svg>

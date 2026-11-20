@@ -1,26 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>보고서 쓰는 법: 질문 아래 답 칸에 쓸 내용을 근거와 함께 채운다</title>
-<desc>문제를 풀 때마다 그 문제 제목 아래 질문에 답한다. 쓸 내용을 따라 답 뒤에 쓰고, 출력은 코드 상자에 붙여 넣으며, 왜를 묻는 질문은 내 화면의 값으로 이유까지 쓴다. 모르면 모름과 막힌 곳을 쓴다.</desc>
-<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
-<text x="20" y="32" font-size="18" fill="#292929" font-weight="700">보고서 쓰는 법</text>
-<rect x="20" y="52" width="48" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="44" y="81.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">1</text>
-<rect x="80" y="52" width="620" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="92" y="81.4" font-size="15" fill="#292929">문제를 풀 때마다 그 문제 제목 아래 질문에 답한다</text>
-<rect x="20" y="114" width="48" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="44" y="143.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">2</text>
-<rect x="80" y="114" width="620" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="92" y="143.4" font-size="15" fill="#292929">「쓸 내용:」을 보고 「답:」 뒤에 쓴다</text>
-<rect x="20" y="176" width="48" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="44" y="205.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">3</text>
-<rect x="80" y="176" width="620" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="92" y="205.4" font-size="15" fill="#292929">출력 · 코드는 「답:」 아래 빈 코드 상자에 붙여 넣는다</text>
-<rect x="20" y="238" width="48" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="44" y="267.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">4</text>
-<rect x="80" y="238" width="620" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="92" y="267.4" font-size="15" fill="#292929">「왜」는 내 화면의 값이나 배운 내용으로 이유까지</text>
-<rect x="20" y="300" width="48" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="44" y="329.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">5</text>
-<rect x="80" y="300" width="620" height="48" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="92" y="329.4" font-size="15" fill="#292929">모르면 「모름 — 막힌 곳: …」 이라고 쓴다</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img"><title>Module 4 탐지 결과 5건을 점검해 알림으로 바꾸고 엔진 결과를 요약한다</title><desc>unit05_risk_scores.json 의 5건을 모양 점검한 뒤 INC-501 ~ INC-505 알림으로 바꿔 엔진에 넣습니다. 거절 0건, 자동 실행 2건, 조치 없음 3건, 티켓 5장이고 운영 요약은 engine_summary.json 에 저장됩니다.</desc><defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">도전 5-1 · 무엇을 만드나</text>
+<rect x="20" y="55" width="150" height="130" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="95.0" y="93" font-size="16" fill="#666660" text-anchor="middle" font-weight="700">Module 4</text>
+<text x="95.0" y="116" font-size="15" fill="#292929" text-anchor="middle">unit05_risk</text>
+<text x="95.0" y="138" font-size="15" fill="#292929" text-anchor="middle">_scores.json</text>
+<text x="95.0" y="159" font-size="15" fill="#292929" text-anchor="middle">5건</text>
+<rect x="195" y="55" width="150" height="130" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="270.0" y="93" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">입력 점검</text>
+<text x="270.0" y="116" font-size="15" fill="#292929" text-anchor="middle">모양 점검</text>
+<text x="270.0" y="138" font-size="15" fill="#292929" text-anchor="middle">알림으로 바꾸기</text>
+<text x="270.0" y="159" font-size="15" fill="#292929" text-anchor="middle">INC-501~505</text>
+<rect x="370" y="55" width="150" height="130" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="445.0" y="103" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">통합 엔진</text>
+<text x="445.0" y="127" font-size="15" fill="#292929" text-anchor="middle">soar_engine.py</text>
+<text x="445.0" y="148" font-size="15" fill="#292929" text-anchor="middle">실습 5-1</text>
+<rect x="545" y="55" width="155" height="130" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="622.5" y="93" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">운영 요약</text>
+<text x="622.5" y="116" font-size="15" fill="#292929" text-anchor="middle">결과별 알림 수</text>
+<text x="622.5" y="138" font-size="15" fill="#292929" text-anchor="middle">티켓 수</text>
+<text x="622.5" y="159" font-size="15" fill="#292929" text-anchor="middle">실행한 조치</text>
+<line x1="172" y1="120" x2="191" y2="120" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<line x1="347" y1="120" x2="366" y2="120" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<line x1="522" y1="120" x2="541" y2="120" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<text x="270" y="210" font-size="15" fill="#666660" text-anchor="middle">거절 0건</text>
+<text x="622" y="210" font-size="14" fill="#666660" text-anchor="middle">engine_summary.json</text>
+<text x="20" y="258" font-size="16" fill="#292929" font-weight="700">오늘 샘플의 결과</text>
+<rect x="20" y="272" width="330" height="100" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="185.0" y="305" font-size="16" fill="#1f7a4a" text-anchor="middle" font-weight="700">자동 실행 2건</text>
+<text x="185.0" y="329" font-size="15" fill="#292929" text-anchor="middle">dami 잠금</text>
+<text x="185.0" y="350" font-size="15" fill="#292929" text-anchor="middle">198.51.100.90 차단</text>
+<rect x="370" y="272" width="330" height="100" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="535.0" y="305" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">조치 없음 3건</text>
+<text x="535.0" y="329" font-size="15" fill="#292929" text-anchor="middle">seoyeon · gaeun · jiwoo</text>
+<text x="535.0" y="350" font-size="15" fill="#292929" text-anchor="middle">티켓은 만듦 (티켓 5장)</text>
+</g></svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 377" role="img">
+<title>도전 5-1 정답: web1 · web2, 컴포즈의 장점, 버전으로 재현, 왼쪽 포트만 바꾸기</title>
+<desc>(가)부터 (라)까지 정답의 핵심을 카드로 모았다. 아래 빨간 칸은 web-run 을 끄지 않아 port is already allocated 가 나는 자주 틀리는 곳이다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">도전 5-1 정답 요점</text>
+<rect x="12" y="52" width="342" height="86.7" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="22" y="89.995" font-size="16" text-anchor="start" fill="#292929" font-weight="700">(가) 서비스와 포트</text>
+<text x="22" y="112.125" font-size="15" text-anchor="start" fill="#292929">web1 · 8080, web2 · 8081</text>
+<rect x="366" y="52" width="342" height="86.7" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="376" y="79.12" font-size="16" text-anchor="start" fill="#292929" font-weight="700">(나) 컴포즈가 나은 점</text>
+<text x="376" y="101.25" font-size="15" text-anchor="start" fill="#292929">파일에 적어 누가 켜도 같은 서버. 명령 한 줄로</text>
+<text x="376" y="123" font-size="15" text-anchor="start" fill="#292929">두 대를 켜고 끈다</text>
+<rect x="12" y="150.7" width="342" height="108.45" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="22" y="177.82" font-size="16" text-anchor="start" fill="#292929" font-weight="700">(다) 재현</text>
+<text x="22" y="199.95" font-size="15" text-anchor="start" fill="#292929">docker run 팀은 명령을 몰라 다시 못 켠다.</text>
+<text x="22" y="221.7" font-size="15" text-anchor="start" fill="#292929">컴포즈 팀은 up -d 한 줄. nginx:1.28 로 같은</text>
+<text x="22" y="243.45" font-size="15" text-anchor="start" fill="#292929">버전</text>
+<rect x="366" y="150.7" width="342" height="108.45" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="376" y="188.695" font-size="16" text-anchor="start" fill="#292929" font-weight="700">(라) 8081 이 막히면</text>
+<text x="376" y="210.825" font-size="15" text-anchor="start" fill="#292929">"8081:80" 의 왼쪽만 "8082:80" 으로. 오른쪽</text>
+<text x="376" y="232.575" font-size="15" text-anchor="start" fill="#292929">80 은 서버 안. curl 은 localhost:8082</text>
+<rect x="12" y="273.15" width="696" height="90.7" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="24" y="302.27" font-size="16" text-anchor="start" fill="#292929" font-weight="700">자주 틀리는 곳</text>
+<text x="24" y="324.4" font-size="15" text-anchor="start" fill="#292929">port is already allocated → 복습 서버 web-run 이 8080 을 쓰는 중. docker stop web-run,</text>
+<text x="24" y="346.15" font-size="15" text-anchor="start" fill="#292929">docker compose down 뒤 다시 up -d</text>
+</g>
+</svg>

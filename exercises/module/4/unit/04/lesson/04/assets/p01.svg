@@ -1,26 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
-<title>이벤트마다 네 가지 유형 이름을 붙이고 유형별 개수로 어디부터 볼지 정한다</title>
-<desc>이벤트 57개를 비정상 로그인, 비인가 접근, 기타 실패, 정상 네 유형으로 나눕니다. 유형별 개수를 보면 담당자가 어디부터 볼지 정할 수 있습니다.</desc>
+<title>실습 4-2 목표: 협력사 IP 의 'SaaS 평소와 다른 IP' 알림만 빼고 진짜 문제는 남깁니다</title>
+<desc>오탐 A4 · A5 는 모두 협력사 사무실 IP 203.0.113.80 에서 왔습니다. tuning.py 가 이 IP 에서 온 IP 규칙 알림만 빼면 오탐이 줄고, 빼낸 알림 중 진짜 문제가 0개인지 확인합니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">이벤트마다 유형 이름을 붙이고 유형별로 센다</text>
-<rect x="20" y="64" width="140" height="224" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="90.0" y="151" font-size="15" text-anchor="middle" fill="#292929"><tspan x="90.0" dy="0" font-weight="700">이벤트</tspan><tspan x="90.0" dy="20">57개</tspan><tspan x="90.0" dy="20">성공 · 실패만</tspan><tspan x="90.0" dy="20">나뉘어 있음</tspan></text>
-<rect x="210" y="64" width="260" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="340.0" y="91" font-size="15" text-anchor="middle" fill="#292929"><tspan x="340.0" dy="0">비정상 로그인 · 로그인 실패</tspan></text>
-<polyline points="162,176 206,86" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="210" y="124" width="260" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="340.0" y="151" font-size="15" text-anchor="middle" fill="#292929"><tspan x="340.0" dy="0">비인가 접근 · 관리자 경로 실패</tspan></text>
-<polyline points="162,176 206,146" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="210" y="184" width="260" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="340.0" y="211" font-size="15" text-anchor="middle" fill="#292929"><tspan x="340.0" dy="0">기타 실패 · 나머지 실패</tspan></text>
-<polyline points="162,176 206,206" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="210" y="244" width="260" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="340.0" y="271" font-size="15" text-anchor="middle" fill="#292929"><tspan x="340.0" dy="0">정상 · 성공</tspan></text>
-<polyline points="162,176 206,266" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="520" y="64" width="180" height="224" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="610.0" y="161" font-size="15" text-anchor="middle" fill="#292929"><tspan x="610.0" dy="0" font-weight="700">유형별 개수</tspan><tspan x="610.0" dy="20">어디부터 볼지</tspan><tspan x="610.0" dy="20">정한다</tspan></text>
-<polyline points="473,176 516,176" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<text x="360" y="324" font-size="15" text-anchor="middle" fill="#666660">알림이 100개 와도 유형을 모르면 처음부터 하나씩 읽어야 한다</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">목표: 믿는 IP 예외 규칙</text>
+<rect x="20" y="62" width="200" height="110" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="120.0" y="101.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">알림 7개</text>
+<text x="120.0" y="123.1" font-size="15" fill="#292929" text-anchor="middle">오탐 A4 · A5 가</text>
+<text x="120.0" y="144.1" font-size="15" fill="#292929" text-anchor="middle">203.0.113.80 에서</text>
+<rect x="260" y="62" width="200" height="110" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360.0" y="101.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">tuning.py</text>
+<text x="360.0" y="123.1" font-size="15" fill="#292929" text-anchor="middle">IP 규칙 + 믿는 IP</text>
+<text x="360.0" y="144.1" font-size="15" fill="#292929" text-anchor="middle">인 알림만 빼기</text>
+<rect x="500" y="62" width="200" height="50" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="600.0" y="92.0" font-size="14" fill="#292929" text-anchor="middle">오탐 수가 줄었는가</text>
+<rect x="500" y="122" width="200" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="600.0" y="152.0" font-size="14" fill="#292929" text-anchor="middle">빠진 진짜 문제 0개?</text>
+<polyline points="220,117 256,117" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="460,105 496,87" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="460,129 496,147" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="20" y="200" width="680" height="100" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="360.0" y="245.3" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">단, 진짜 문제까지 같이 지워지면 안 됩니다</text>
+<text x="360.0" y="266.6" font-size="15" fill="#292929" text-anchor="middle">예외를 넓게 만들면 같은 IP 에서 온 진짜 문제 알림까지 사라질 수 있습니다</text>
 </g>
 </svg>

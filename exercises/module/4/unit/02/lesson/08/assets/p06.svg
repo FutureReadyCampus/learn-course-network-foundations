@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
+<title>도전 2-1 보고서: (가) · (나) · (다) 에 채울 칸 체크리스트</title>
+<desc>도전 2-1 보고서의 (가)는 출력 전체와 평균 · 최댓값 · 알림 기준, (나)는 평균을 기준으로 했을 때와 최댓값 + 1 로 정한 이유, (다)는 평소와 다른 하루가 섞였을 때 기준이 어떻게 바뀌는지를 씁니다.</desc>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">도전 2-1 보고서: 채울 칸 (선택)</text>
+<rect x="20" y="52" width="214" height="250" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="20" y="52" width="214" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="127" y="79" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">(가) 출력과 값</text>
+<rect x="32" y="110" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="54" y="122" font-size="14" text-anchor="start" fill="#292929"><tspan x="54" dy="0">출력 전체 (코드 상자)</tspan></text>
+<rect x="32" y="143" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="54" y="155" font-size="14" text-anchor="start" fill="#292929"><tspan x="54" dy="0">하루 평균</tspan></text>
+<rect x="32" y="176" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="54" y="188" font-size="14" text-anchor="start" fill="#292929"><tspan x="54" dy="0">하루 최댓값</tspan></text>
+<rect x="32" y="209" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="54" y="221" font-size="14" text-anchor="start" fill="#292929"><tspan x="54" dy="0">알림 기준</tspan></text>
+<rect x="253" y="52" width="214" height="250" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="253" y="52" width="214" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="360" y="79" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">(나) 핵심 질문</text>
+<rect x="265" y="110" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="287" y="122" font-size="14" text-anchor="start" fill="#292929"><tspan x="287" dy="0">평균(2.4) 이상인 날은</tspan><tspan x="287" dy="19">며칠인가</tspan></text>
+<rect x="265" y="162" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="287" y="174" font-size="14" text-anchor="start" fill="#292929"><tspan x="287" dy="0">평균을 기준으로 하면</tspan><tspan x="287" dy="19">알림이 난 날과 그 날들</tspan></text>
+<rect x="265" y="214" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="287" y="226" font-size="14" text-anchor="start" fill="#292929"><tspan x="287" dy="0">최댓값 + 1 로 정한 이유</tspan></text>
+<rect x="486" y="52" width="214" height="250" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="486" y="52" width="214" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="593" y="79" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">(다) 핵심 질문</text>
+<rect x="498" y="110" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="520" y="122" font-size="14" text-anchor="start" fill="#292929"><tspan x="520" dy="0">12번인 날이 섞이면</tspan><tspan x="520" dy="19">최댓값과 알림 기준은</tspan></text>
+<rect x="498" y="162" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="520" y="174" font-size="14" text-anchor="start" fill="#292929"><tspan x="520" dy="0">바뀐 기준 때문에</tspan><tspan x="520" dy="19">생기는 문제</tspan></text>
+</g>
+</svg>

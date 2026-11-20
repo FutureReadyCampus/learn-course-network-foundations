@@ -1,56 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img">
-<title>실습 5-1 정답: 분당 요청 수 중 급증 기준 6.0 이상은 09:12 의 9개 하나다</title>
-<desc>웹 서버 요청을 분마다 센 14개 막대다. 평소 평균의 3배인 6.0 이 급증 기준이고, 넘는 분은 09:12(요청 9개) 하나다. 09:20 의 3개는 기준보다 적어서 탐지되지 않았다.</desc>
-<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
-<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">실습 5-1 정답 · 분당 웹 요청 수</text>
-<rect x="78" y="270" width="26" height="50" rx="3" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="91" y="264" font-size="14" fill="#292929" text-anchor="middle">2</text>
-<text x="91" y="340" font-size="14" fill="#666660" text-anchor="middle">01</text>
-<rect x="120" y="270" width="26" height="50" rx="3" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="133" y="264" font-size="14" fill="#292929" text-anchor="middle">2</text>
-<text x="133" y="340" font-size="14" fill="#666660" text-anchor="middle">03</text>
-<rect x="162" y="295" width="26" height="25" rx="3" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="175" y="289" font-size="14" fill="#292929" text-anchor="middle">1</text>
-<text x="175" y="340" font-size="14" fill="#666660" text-anchor="middle">04</text>
-<rect x="204" y="270" width="26" height="50" rx="3" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="217" y="264" font-size="14" fill="#292929" text-anchor="middle">2</text>
-<text x="217" y="340" font-size="14" fill="#666660" text-anchor="middle">05</text>
-<rect x="246" y="95" width="26" height="225" rx="3" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="259" y="89" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">9</text>
-<text x="259" y="340" font-size="14" fill="#666660" text-anchor="middle">12</text>
-<rect x="288" y="245" width="26" height="75" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="301" y="239" font-size="14" fill="#292929" text-anchor="middle">3</text>
-<text x="301" y="340" font-size="14" fill="#666660" text-anchor="middle">20</text>
-<rect x="330" y="295" width="26" height="25" rx="3" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="343" y="289" font-size="14" fill="#292929" text-anchor="middle">1</text>
-<text x="343" y="340" font-size="14" fill="#666660" text-anchor="middle">22</text>
-<rect x="372" y="295" width="26" height="25" rx="3" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="385" y="289" font-size="14" fill="#292929" text-anchor="middle">1</text>
-<text x="385" y="340" font-size="14" fill="#666660" text-anchor="middle">25</text>
-<rect x="414" y="295" width="26" height="25" rx="3" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="427" y="289" font-size="14" fill="#292929" text-anchor="middle">1</text>
-<text x="427" y="340" font-size="14" fill="#666660" text-anchor="middle">26</text>
-<rect x="456" y="270" width="26" height="50" rx="3" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="469" y="264" font-size="14" fill="#292929" text-anchor="middle">2</text>
-<text x="469" y="340" font-size="14" fill="#666660" text-anchor="middle">28</text>
-<rect x="498" y="295" width="26" height="25" rx="3" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="511" y="289" font-size="14" fill="#292929" text-anchor="middle">1</text>
-<text x="511" y="340" font-size="14" fill="#666660" text-anchor="middle">31</text>
-<rect x="540" y="295" width="26" height="25" rx="3" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="553" y="289" font-size="14" fill="#292929" text-anchor="middle">1</text>
-<text x="553" y="340" font-size="14" fill="#666660" text-anchor="middle">33</text>
-<rect x="582" y="295" width="26" height="25" rx="3" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="595" y="289" font-size="14" fill="#292929" text-anchor="middle">1</text>
-<text x="595" y="340" font-size="14" fill="#666660" text-anchor="middle">35</text>
-<rect x="624" y="295" width="26" height="25" rx="3" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="637" y="289" font-size="14" fill="#292929" text-anchor="middle">1</text>
-<text x="637" y="340" font-size="14" fill="#666660" text-anchor="middle">36</text>
-<line x1="60" y1="320" x2="680" y2="320" stroke="#666660" stroke-width="1.5"/>
-<line x1="60" y1="170" x2="680" y2="170" stroke="#e0442e" stroke-width="2" stroke-dasharray="6 4"/>
-<text x="680" y="162" font-size="14" fill="#292929" text-anchor="end">급증 기준 6.0 (평소 평균 × 3)</text>
-<text x="370" y="364" font-size="14" fill="#666660" text-anchor="middle">09시 몇 분 (요청이 있던 분만 나옴)</text>
-<text x="30" y="398" font-size="15" fill="#292929">09:12 의 9개는 모두 203.0.113.50 (로그인 5번 실패 뒤 성공 · /admin 요청)</text>
-<text x="30" y="424" font-size="15" fill="#292929">09:20 의 3개는 기준 미만이라 탐지 안 됨 · 수만 보는 규칙의 한계</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 362" role="img">
+<title>서버 두 대를 docker run 두 번 대신 compose.yaml 과 명령 한 줄로 켠다</title>
+<desc>왼쪽은 docker run 을 서버마다 치는 방식, 오른쪽은 설정을 compose.yaml 에 적고 docker compose up -d 한 줄로 켜는 방식이다. 이번 실습의 질문은 서버 두 대를 명령 한 줄로 켤 수 있는가이다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">왜 서버 설정을 파일에 적는가</text>
+<text x="180" y="72" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">docker run 으로</text>
+<text x="540" y="72" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">compose.yaml 로</text>
+<rect x="12" y="86" width="336" height="46" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="180" y="114.175" font-size="15" text-anchor="middle" fill="#292929">docker run … -p 8080:80 …</text>
+<rect x="12" y="142" width="336" height="46" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="180" y="170.175" font-size="15" text-anchor="middle" fill="#292929">docker run … -p 8081:80 …</text>
+<line x1="180" y1="190" x2="180" y2="214" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="12" y="216" width="336" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="180" y="250.175" font-size="15" text-anchor="middle" fill="#292929">긴 명령을 두 번. 서버가 늘수록 틀리기 쉽다</text>
+<rect x="372" y="86" width="336" height="102" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="540" y="120.77" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">compose.yaml</text>
+<text x="540" y="142.9" font-size="15" text-anchor="middle" fill="#292929">services: 아래에 web1 · web2 설정을 한 번</text>
+<text x="540" y="164.65" font-size="15" text-anchor="middle" fill="#292929">적어 둔다</text>
+<line x1="540" y1="190" x2="540" y2="214" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
+<rect x="372" y="216" width="336" height="58" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="540" y="239.3" font-size="15" text-anchor="middle" fill="#292929">docker compose up -d 한 줄로 두 대를 한</text>
+<text x="540" y="261.05" font-size="15" text-anchor="middle" fill="#292929">번에</text>
+<rect x="12" y="300" width="696" height="48" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="329.52" font-size="16" text-anchor="middle" fill="#292929">이번 실습의 질문: 서버 두 대를 명령 한 줄로 켤 수 있는가?</text>
 </g>
 </svg>

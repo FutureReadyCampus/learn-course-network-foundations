@@ -1,32 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img">
-<title>log_classify.py 는 읽은 요청마다 정상 · 오류 · 의심 중 하나를 정한다</title>
-<desc>실습 1-1에서 읽은 요청이 log_classify.py 를 거쳐 정상 · 오류 · 의심으로 나뉩니다. 실행하면 분류별 요청 수, 의심 요청, 오류 요청이 세 단계로 나옵니다.</desc>
-<defs><marker id="a-m4u01l03-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker><marker id="a-m4u01l03-p01-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0442e"/></marker></defs>
-<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
-<text x="24" y="34" font-size="19" fill="#292929" font-weight="700">log_classify.py 가 하는 일</text>
-<rect x="24" y="80" width="180" height="90" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="114.0" y="119.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">읽은 요청</text>
-<text x="114.0" y="140.8" font-size="15" fill="#292929" text-anchor="middle">(실습 1-1 결과)</text>
-<line x1="204" y1="125" x2="236" y2="125" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l03-p01)"/>
-<rect x="240" y="70" width="220" height="110" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="350.0" y="109.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">log_classify.py</text>
-<text x="350.0" y="130.2" font-size="15" fill="#292929" text-anchor="middle">상태 코드 · 경로로</text>
-<text x="350.0" y="151.2" font-size="15" fill="#292929" text-anchor="middle">한 갈래 정하기</text>
-<rect x="520" y="56" width="176" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="608.0" y="81.2" font-size="15" fill="#1f7a4a" text-anchor="middle" font-weight="700">정상</text>
-<line x1="460" y1="125" x2="516" y2="76" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l03-p01)"/>
-<rect x="520" y="104" width="176" height="40" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="608.0" y="129.2" font-size="15" fill="#9a6200" text-anchor="middle" font-weight="700">오류</text>
-<line x1="460" y1="125" x2="516" y2="124" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l03-p01)"/>
-<rect x="520" y="152" width="176" height="40" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="608.0" y="177.2" font-size="15" fill="#b32a17" text-anchor="middle" font-weight="700">의심</text>
-<line x1="460" y1="125" x2="516" y2="172" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l03-p01)"/>
-<text x="24" y="232" font-size="17" fill="#292929" font-weight="700">실행하면 나오는 것</text>
-<rect x="24" y="248" width="212" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="130.0" y="278.2" font-size="15" fill="#292929" text-anchor="middle">단계 1: 분류별 요청 수</text>
-<rect x="254" y="248" width="212" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="360.0" y="278.2" font-size="15" fill="#292929" text-anchor="middle">단계 2: 의심 요청</text>
-<rect x="484" y="248" width="212" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="590.0" y="278.2" font-size="15" fill="#292929" text-anchor="middle">단계 3: 오류 요청</text>
+<title>웹 서버 로그 한 줄이 normalize_web.py 를 거쳐 공통 이벤트가 되는 흐름</title>
+<desc>왼쪽은 웹 서버 로그의 원래 시각과 상태 코드, 가운데는 직접 만드는 normalize_web.py, 오른쪽은 결과인 공통 이벤트입니다. 시각은 2026-11-02 09:12:03 모양이 되고 원래 줄은 raw 에 남습니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">목표: 웹 서버 로그 한 줄 → 공통 이벤트</text>
+<rect x="24" y="64" width="210" height="160" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="129" y="107.8" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">입력: 웹 서버 로그</text>
+<text x="129" y="128.5" font-size="14" text-anchor="middle" fill="#292929">access_sample.log</text>
+<text x="129" y="148.8" font-size="14" text-anchor="middle" fill="#292929">02/Nov/2026:09:12:03</text>
+<text x="129" y="169.1" font-size="14" text-anchor="middle" fill="#292929">+0900</text>
+<text x="129" y="189.4" font-size="14" text-anchor="middle" fill="#292929">상태 코드 401</text>
+<rect x="272" y="64" width="176" height="160" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="117.9" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">프로그램</text>
+<text x="360" y="138.6" font-size="14" text-anchor="middle" fill="#292929">normalize_web.py</text>
+<text x="360" y="158.9" font-size="14" text-anchor="middle" fill="#292929">convert_time</text>
+<text x="360" y="179.2" font-size="14" text-anchor="middle" fill="#292929">convert_result</text>
+<rect x="486" y="64" width="210" height="160" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="591" y="107.8" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">출력: 공통 이벤트</text>
+<text x="591" y="128.5" font-size="14" text-anchor="middle" fill="#292929">time</text>
+<text x="591" y="148.8" font-size="14" text-anchor="middle" fill="#292929">2026-11-02 09:12:03</text>
+<text x="591" y="169.1" font-size="14" text-anchor="middle" fill="#292929">result: 실패</text>
+<text x="591" y="189.4" font-size="14" text-anchor="middle" fill="#292929">raw: 원래 줄 그대로</text>
+<line x1="236" y1="144" x2="268" y2="144" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<line x1="450" y1="144" x2="482" y2="144" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="24" y="248" width="672" height="62" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="272.5" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">exercise1-2_run.py 로 실행하면</text>
+<text x="360" y="294.2" font-size="15" text-anchor="middle" fill="#292929">단계 1 이벤트 수 · 단계 2 처음 나오는 실패 · 단계 3 성공 · 실패별 수</text>
 </g>
 </svg>

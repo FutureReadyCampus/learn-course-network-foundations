@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
+<title>차단 전에 허용 목록과 공유 IP 를 검사하고, 차단하면 만료 시각을 정합니다</title>
+<desc>허용 목록에 있으면 차단하지 않고, 그 IP 를 쓰는 계정이 2개 이상이면 담당자 승인으로 넘깁니다. 둘 다 아니면 차단하고 만료 시각을 clock 더하기 ttl 로 기록합니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">3.1 차단 전 정책 검사</text>
+<rect x="24" y="70" width="210" height="64" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="129.0" y="96.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="129.0" dy="0" font-weight="700">허용 목록에 있나?</tspan><tspan x="129.0" dy="21.0">allowlist_ips.json</tspan></text>
+<rect x="470" y="70" width="226" height="64" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="583.0" y="96.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="583.0" dy="0" font-weight="700">차단하지 않음</tspan><tspan x="583.0" dy="21.0">이유를 기록</tspan></text>
+<line x1="234" y1="102" x2="468" y2="102" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="340" y="94" font-size="14" text-anchor="start" fill="#666660">예</text>
+<rect x="24" y="170" width="210" height="64" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="129.0" y="196.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="129.0" dy="0" font-weight="700">공유 IP 인가?</tspan><tspan x="129.0" dy="21.0">쓰는 계정 2개 이상</tspan></text>
+<rect x="470" y="170" width="226" height="64" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="583.0" y="196.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="583.0" dy="0" font-weight="700">차단하지 않음</tspan><tspan x="583.0" dy="21.0">담당자 승인 필요</tspan></text>
+<line x1="234" y1="202" x2="468" y2="202" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="340" y="194" font-size="14" text-anchor="start" fill="#666660">예</text>
+<line x1="129" y1="134" x2="129" y2="168" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="137" y="158" font-size="14" text-anchor="start" fill="#666660">아니오</text>
+<rect x="24" y="270" width="210" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="129.0" y="296.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="129.0" dy="0" font-weight="700">차단 (block_ip)</tspan><tspan x="129.0" dy="21.0">blocked_ips 에 추가</tspan></text>
+<line x1="129" y1="234" x2="129" y2="268" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="137" y="258" font-size="14" text-anchor="start" fill="#666660">아니오</text>
+<rect x="290" y="270" width="406" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="493.0" y="296.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="493.0" dy="0" font-weight="700">만료 시각 = clock + ttl</tspan><tspan x="493.0" dy="21.0">0분 + 120분 = 120분</tspan></text>
+<line x1="234" y1="302" x2="288" y2="302" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<text x="24" y="366" font-size="15" text-anchor="start" fill="#666660">영구 차단은 사람이 사유를 확인한 뒤 결정합니다.</text>
+</g>
+</svg>

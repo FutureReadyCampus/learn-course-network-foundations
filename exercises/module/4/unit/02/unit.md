@@ -1,6 +1,6 @@
 ---
 id: m4-u02
-title: 서로 다른 로그를 같은 모양으로 맞추기
+title: 판다스로 세고 기준 정하기
 lessons:
 - path: lesson/01/lesson.md
 - path: lesson/02/lesson.md
@@ -8,6 +8,9 @@ lessons:
 - path: lesson/04/lesson.md
 - path: lesson/05/lesson.md
 - path: lesson/06/lesson.md
+- path: lesson/07/lesson.md
+- path: lesson/08/lesson.md
+- path: lesson/09/lesson.md
 ---
 
-# 서로 다른 로그를 같은 모양으로 맞추기
+# 판다스로 세고 기준 정하기

@@ -1,37 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
-<title>Unit 1 방식과 안전장치를 건 방식으로 같은 알림을 처리해 잠금 수와 티켓 수를 비교한다</title>
-<desc>세 파일을 만든 뒤 실행하면 단계 1 · 2 는 Unit 1 방식, 단계 3 · 4 는 안전한 방식의 결과가 나온다. 마지막에는 건너뛴 액션과 그 이유가 나온다.</desc>
+<title>contain_account 는 잠금이 확인된 계정만 세션을 끊고, 뒤에 빈틈을 다시 점검합니다</title>
+<desc>contain_account 는 lock_account 로 잠근 뒤 after 가 잠김일 때만 terminate_sessions 를 실행합니다. gaeun 처럼 잠기지 않은 계정은 세션을 그대로 둡니다. 마지막에 find_open_sessions 로 다시 점검합니다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 2-3: 같은 알림을 두 방식으로 처리해 비교한다</text>
-<rect x="20" y="60" width="222" height="66" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="131" y="86.475" font-size="15" fill="#292929" text-anchor="middle">bulk_incidents.json</text>
-<text x="131" y="108.225" font-size="15" fill="#292929" text-anchor="middle">퇴사자 알림 7건</text>
-<rect x="20" y="140" width="222" height="86" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="131" y="166.76" font-size="14" fill="#292929" text-anchor="middle">safe_runner.py</text>
-<text x="131" y="187.06" font-size="14" fill="#292929" text-anchor="middle">find_skip_reason (1~4번)</text>
-<text x="131" y="207.36" font-size="14" fill="#292929" text-anchor="middle">safe_run_action (5~7번)</text>
-<rect x="20" y="240" width="222" height="66" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="131" y="266.91" font-size="14" fill="#292929" text-anchor="middle">exercise2-3_run.py</text>
-<text x="131" y="287.21" font-size="14" fill="#292929" text-anchor="middle">건너뜀 골라 출력 (8·9번)</text>
-<rect x="272" y="60" width="204" height="110" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="374" y="97.89" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 1 방식</text>
-<text x="374" y="120.075" font-size="15" fill="#292929" text-anchor="middle">단계 1: 5건 두 번 처리</text>
-<text x="374" y="141.825" font-size="15" fill="#292929" text-anchor="middle">단계 2: 7건 처리</text>
-<rect x="496" y="60" width="204" height="110" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="598" y="87.015" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">안전한 방식</text>
-<text x="598" y="109.2" font-size="15" fill="#292929" text-anchor="middle">단계 3: 5건 두 번 처리</text>
-<text x="598" y="130.95" font-size="15" fill="#292929" text-anchor="middle">단계 4: 7건 처리</text>
-<text x="598" y="152.7" font-size="15" fill="#292929" text-anchor="middle">(최대 3개)</text>
-<rect x="272" y="200" width="428" height="106" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="486" y="225.015" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">읽을 것</text>
-<text x="486" y="247.2" font-size="15" fill="#292929" text-anchor="middle">잠긴 계정 · 티켓 수를 두 방식에서 비교</text>
-<text x="486" y="268.95" font-size="15" fill="#292929" text-anchor="middle">마지막 줄: 건너뛴 액션과 이유</text>
-<text x="486" y="290.7" font-size="15" fill="#292929" text-anchor="middle">(startswith("건너뜀") 으로 고른 기록)</text>
-<polyline points="244,93 270,93" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<polyline points="244,183 486,183 486,140 494,140" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<polyline points="374,172 374,198" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<polyline points="598,172 598,198" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
-<text x="20" y="360" font-size="14" fill="#666660">safe_runner.py 는 Unit 3 의 실습 3-2 에서 실패 처리를 더해 다시 쓴다</text>
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 2-2: contain_account 의 순서</text>
+<rect x="24" y="70" width="196" height="64" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="122.0" y="96.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="122.0" dy="0" font-weight="700">lock_account</tspan><tspan x="122.0" dy="21.0">잠금 (4번)</tspan></text>
+<rect x="262" y="70" width="196" height="64" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="96.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">after == "잠김" ?</tspan><tspan x="360.0" dy="21.0">(5번)</tspan></text>
+<rect x="496" y="70" width="200" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="596.0" y="96.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="596.0" dy="0" font-weight="700">terminate_sessions</tspan><tspan x="596.0" dy="21.0">세션 비우기 (6번)</tspan></text>
+<line x1="220" y1="102" x2="260" y2="102" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<line x1="458" y1="102" x2="494" y2="102" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="466" y="94" font-size="14" text-anchor="start" fill="#666660">예</text>
+<rect x="262" y="176" width="196" height="64" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="202.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">세션 종료 안 함</tspan><tspan x="360.0" dy="21.0">gaeun (VIP)</tspan></text>
+<line x1="360" y1="134" x2="360" y2="174" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<text x="368" y="160" font-size="14" text-anchor="start" fill="#666660">아니오</text>
+<rect x="496" y="176" width="200" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="596.0" y="203.1" font-size="14" text-anchor="middle" fill="#292929"><tspan x="596.0" dy="0">dami 세션 2개 → 0개</tspan><tspan x="596.0" dy="19.6">junho 세션 1개 → 0개</tspan></text>
+<line x1="598" y1="134" x2="598" y2="174" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<rect x="24" y="280" width="672" height="64" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360.0" y="306.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">find_open_sessions (2 · 3번): 잠겼는데 세션이 남은 계정</tspan><tspan x="360.0" dy="21.0">조치 전 ['junho'] → 조치 뒤 빈틈이 남은 계정: []</tspan></text>
+<line x1="598" y1="240" x2="598" y2="278" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
 </g>
 </svg>

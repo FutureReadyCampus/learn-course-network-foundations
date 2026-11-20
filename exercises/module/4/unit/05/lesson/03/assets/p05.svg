@@ -1,26 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
-<title>실습 5-2 정리: 알림 한 건, 한 쌍씩 꺼내기, 문자열 바꾸기, JSON 저장 코드</title>
-<desc>실습 5-2 에서 쓴 코드 네 가지를 하려는 일과 짝지었다. 알림은 키 다섯 개 딕셔너리, 센 결과는 items() 로 한 쌍씩, 시각은 str() 로 문자열, 저장은 with open 과 json.dump 로 한다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>실습 5-2 정리: 원인을 셋으로 나누고, 각 원인에 따라 고칠 곳이 정해진다</title>
+<desc>상황이 생기면 확인, 원인, 고치기, 다시 확인 순서로 생각합니다. 데이터 문제는 로그와 알림 파일을, 규칙 문제는 기준 값 다섯 곳을, 운영 설정 문제는 compose.yaml 의 ports · volumes 를 고칩니다.</desc>
 <defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
-<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">실습 5-2 정리</text>
-<rect x="30" y="55" width="180" height="66" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="120" y="93.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">알림 한 건</text>
-<rect x="225" y="55" width="465" height="66" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="237" y="83.1" font-size="14" fill="#292929">alert = {"type": alert_type, ...,</text>
-<text x="237" y="102.7" font-size="14" fill="#292929">"status": "확인 필요"}</text>
-<rect x="30" y="135" width="180" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="120" y="162.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">센 결과를 한 쌍씩</text>
-<rect x="225" y="135" width="465" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="237" y="161.9" font-size="14" fill="#292929">for ip_address, count in alert_ips.items():</text>
-<rect x="30" y="193" width="180" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="120" y="220.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">시각 값을 문자열로</text>
-<rect x="225" y="193" width="465" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="237" y="219.9" font-size="14" fill="#292929">target = str(minute)</text>
-<rect x="30" y="251" width="180" height="66" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="120" y="289.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">파일에 저장</text>
-<rect x="225" y="251" width="465" height="66" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="237" y="279.1" font-size="14" fill="#292929">with open(path, "w", encoding="utf-8") as file:</text>
-<text x="237" y="298.7" font-size="14" fill="#292929">json.dump(alerts, file, ensure_ascii=False, indent=2)</text>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 5-2 정리</text>
+<rect x="20" y="50" width="680" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="74.6" font-size="15" fill="#292929" text-anchor="middle">확인 → 원인 → 고치기(추가 · 수정 · 삭제) → 다시 확인</text>
+<rect x="20" y="106" width="214" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="127" y="132.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">데이터 문제</text>
+<rect x="20" y="158" width="214" height="130" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="127" y="197.9" font-size="14" fill="#292929" text-anchor="middle">로그 줄</text>
+<text x="127" y="217.5" font-size="14" fill="#292929" text-anchor="middle">normalized_events.json</text>
+<text x="127" y="237.1" font-size="14" fill="#292929" text-anchor="middle">review_alerts.json</text>
+<text x="127" y="256.7" font-size="14" fill="#292929" text-anchor="middle">login_alerts.json</text>
+<polyline points="127,150 127,155" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="253" y="106" width="214" height="44" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="360" y="132.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">규칙 문제</text>
+<rect x="253" y="158" width="214" height="130" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="197.9" font-size="14" fill="#292929" text-anchor="middle">SUSPICIOUS_STATUS</text>
+<text x="360" y="217.5" font-size="14" fill="#292929" text-anchor="middle">REPEAT_LIMIT</text>
+<text x="360" y="237.1" font-size="14" fill="#292929" text-anchor="middle">WINDOW_MINUTES</text>
+<text x="360" y="256.7" font-size="14" fill="#292929" text-anchor="middle">WEIGHTS · TRUSTED_IPS</text>
+<polyline points="360,150 360,155" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="486" y="106" width="214" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="593" y="132.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">운영 설정 문제</text>
+<rect x="486" y="158" width="214" height="130" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="593" y="217.5" font-size="14" fill="#292929" text-anchor="middle">compose.yaml 의</text>
+<text x="593" y="237.1" font-size="14" fill="#292929" text-anchor="middle">ports · volumes</text>
+<polyline points="593,150 593,155" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<text x="20" y="318" font-size="15" fill="#666660">틀린 알림: 오탐(문제가 아닌데 난 알림) · 미탐(진짜 문제인데 나지 않은 알림)</text>
 </g>
 </svg>

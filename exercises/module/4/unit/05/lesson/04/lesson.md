@@ -1,282 +1,319 @@
 ---
 id: m4-u05-l04
-title: 정답
+title: 도전 5-1 · 컴포즈로 서버 두 대 한 번에 켜기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
-  path: network/104_day03_pm_traffic_alerts.md
-  mission_id: GichanSource.m4-1104-pm-traffic-alerts
+  path: network/112_day05_pm_docker_compose_logs.md
+  mission_id: GichanSource.m4-1106-pm-docker-compose-logs
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 정답
+# 도전 5-1 · 컴포즈로 서버 두 대 한 번에 켜기
 
-## 정답 보는 법
+## 목표: compose.yaml 로 서버 두 대
 
-설명하는 답은 한 예이고, 핵심이 같으면 맞습니다.
+> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 5-1 · 5-2와 글쓰기를 먼저 마칩니다. 이 도전은 **Docker Desktop** 이 있는 PC 에서만 할 수 있고, 하지 않아도 이번 Unit을 마무리하고 Module 5를 따라가는 데 문제가 없습니다. 여기서는 파이썬 · 판다스 코드를 쓰지 않고 터미널 명령만 씁니다.
+
+> **이번 실습에 들어온 일**
+>
+> A사 보안 팀장이 보낸 메시지입니다:
+> 「지금까지 만든 탐지를 실제 웹 서버 로그로도 돌려 보려고 합니다. 로그를 남길 웹 서버를 두 대 켜려고 합니다. 그런데 서버 한 대를 켜는 `docker run` 명령이 옵션이 길어서, 두 대를 켜려면 긴 명령을 두 번 쳐야 하고 한 군데만 틀려도 서버가 다르게 켜집니다.
+>
+> 서버 설정을 파일 하나에 적어 두고, 명령 한 줄로 두 대를 켤 수 있을까요?」
+> - **왜 중요한가**: <mark>설정을 파일로 적어 두면 누가 켜도 같은 서버가 켜지고, 파일을 저장소에 올려 두면 설정 기록도 남습니다.</mark>
+
+## 왜 서버 설정을 파일에 적는가
+
+1. 서버(server, 서버: 요청을 받아 응답을 돌려주는 프로그램)를 도커로 켜는 기본 명령은 `docker run` 입니다. 서버 한 대를 켤 때도 옵션을 여러 개 씁니다.
+2. 서버가 두 대가 되면 같은 명령을 두 번 쳐야 합니다. <mark>설정을 `compose.yaml` 파일에 적어 두면 `docker compose up -d` 한 줄로 두 대를 한 번에 켭니다.</mark>
+3. 이번 실습의 질문은 하나입니다. <mark>**서버 두 대를 명령 한 줄로 켤 수 있는가?**</mark>
+
+## 1.1 docker run 옵션은 compose.yaml 의 어디에 적을까
+
+| `docker run` 에서 | `compose.yaml` 에서 | 뜻 |
+|---|---|---|
+| `--name web-run` | `web1:` · `web2:` (서비스 이름) | 서버를 구분하는 이름. 컴포즈에서는 서비스(service, 서비스: 컴포즈 파일에 적은 서버 한 대의 설정)라고 부릅니다 |
+| `nginx:1.28` | `image: nginx:1.28` | 서버를 켜는 데 쓰는 이미지(image, 이미지: 서버 프로그램과 설정을 묶어 둔 파일) |
+| `-p 8080:80` | `ports:` 아래 `- "8080:80"` | 내 컴퓨터의 8080번 포트로 온 요청을 서버의 80번 포트로 보냄 |
+| `-d` | `docker compose up -d` 의 `-d` | 백그라운드(background, 백그라운드: 터미널 화면을 차지하지 않고 안에서 계속 실행되는 방식)에서 실행함 |
+
+- `nginx`(엔진엑스)는 웹 서버 프로그램입니다. 서버를 켜면 컨테이너가 하나 생깁니다.
+- 컴포즈 파일은 YAML(야믈) 형식으로 씁니다. YAML 은 바로 아래 1.2 에서 설명합니다.
+
+## 1.2 YAML(야믈) 파일이란
+
+1. **정의**: YAML(야믈)은 설정 내용을 사람이 읽기 쉽게 글로 적는 파일 형식입니다. 파일 이름이 `.yaml` 이나 `.yml` 로 끝나고, 이번 Unit에서 쓰는 `compose.yaml` 이 이 형식입니다. 처음 보는 형식이지만 아래 네 가지 모양만 알면 읽을 수 있습니다.
+
+| 모양 | 뜻 | `compose.yaml` 에서 |
+|---|---|---|
+| `이름: 값` | 이름과 값을 짝으로 적음 (콜론 뒤에 공백 한 칸) | `image: nginx:1.28` |
+| 줄 앞의 공백 (들여쓰기) | 그 줄이 어느 이름 아래에 속하는지 나타냄 | `web1:` 아래에 `image:` 와 `ports:` 가 속함 |
+| `- 값` | 값이 여러 개일 때 한 줄에 하나씩 적음 | `ports:` 아래의 `- "8080:80"` |
+| `#` 뒤의 글 | 사람이 읽는 설명 (실행에는 영향이 없음) | 각 줄 끝의 설명 |
+
+2. **같은 내용을 JSON 과 비교하면**: 점수 파일 `unit05_risk_scores.json` 같은 JSON 파일과 같은 정보를 담지만 모양이 다릅니다. 아래 둘은 같은 내용입니다.
+
+```
+JSON : {"services": {"web1": {"image": "nginx:1.28"}}}
+```
+
+```
+YAML :
+services:
+  web1:
+    image: nginx:1.28
+```
+
+3. **장점**
+   - <mark>읽기 쉽습니다.</mark> 중괄호(`{ }`)와 따옴표가 거의 없어서 위에서 아래로 읽으면 구조가 보입니다.
+   - <mark>설명(주석)을 적을 수 있습니다.</mark> JSON 은 주석을 쓸 수 없지만, YAML 은 `#` 로 「왜 이 값인지」를 파일에 남길 수 있습니다.
+   - <mark>여러 도구가 같은 형식을 씁니다.</mark> Docker Compose 외에도 GitHub Actions(깃허브에서 작업을 자동으로 실행하는 설정), Kubernetes(쿠버네티스: 서버 여러 대를 관리하는 도구), Ansible(앤서블: 서버 설정을 자동화하는 도구)의 설정 파일이 YAML 입니다. 이번 실습에서 읽는 방법을 그대로 쓸 수 있습니다.
+4. **주의할 점**
+   - <mark style="background:#ffc4d6">들여쓰기는 공백으로 합니다. 탭 문자를 넣으면 오류가 납니다.</mark> VS Code 에서 붙여 넣으면 공백으로 들어가서 괜찮습니다.
+   - <mark style="background:#ffc4d6">같은 단계의 줄은 공백 수가 같아야 합니다.</mark> 이 파일은 한 단계 안쪽마다 공백 2칸입니다. 공백이 어긋나면 다른 이름 아래에 속하는 것으로 읽혀서 오류가 나거나 다른 뜻이 됩니다.
+   - `이름: 값` 에서 콜론 뒤에 공백 한 칸을 씁니다.
+
+## Docker Desktop 켜고 포트 확인하기
+
+> **먼저 Docker Desktop 앱을 켭니다.** 시작 메뉴(맥북은 응용 프로그램)에서 Docker Desktop 을 열고, <mark>화면 구석에 **고래 모양 아이콘**이 보이고 움직임이 멈추면</mark> 준비된 것입니다. Docker Desktop 이 이 PC 에 없으면 도전 5-1 · 5-2는 건너뜁니다.
+
+- 도전 5-1 · 5-2에서 만드는 파일은 모두 `anomaly_detection` 폴더 안에 둡니다. 만드는 파일은 `compose.yaml` · `compose.secure.yaml` 과 `logs` 폴더의 `web_404.log` 입니다.
+- <mark style="background:#ffc4d6">터미널에서 `pwd` 를 쳐서 결과가 `…/anomaly_detection` 으로 끝나는지 확인한 뒤 시작합니다.</mark> 다른 폴더에서 `docker compose` 를 치면 그 폴더에 있는 다른 `compose.yaml` 이 켜질 수 있습니다.
+- 서버가 쓰는 포트(port, 포트: 컴퓨터로 들어오는 요청을 구분하는 번호)는 `8080` · `8081` · `8082` 로 **고정**합니다. <mark>번호를 바꾸지 않습니다.</mark>
+
+1. **[터미널]** 도커 프로그램이 켜져 있는지 확인합니다.
+
+   ```bash
+   docker ps
+   ```
+
+   - 하는 일: 지금 켜져 있는 컨테이너(container, 컨테이너: 이미지로 실제로 켜진 서버 하나)를 보여 줍니다.
+   - 나오는 것: <mark>`CONTAINER ID` 로 시작하는 머리글 줄이 나오면</mark> 도커가 켜져 있는 것입니다. 다른 서버가 없으면 머리글 줄만 나와도 됩니다.
+
+2. **[터미널]** 쓸 포트 `8080` · `8081` · `8082` 를 이미 켜져 있는 서버가 쓰고 있지 않은지 확인합니다. <mark>쓰고 있으면 내가 켤 서버가 켜지지 않습니다.</mark>
+
+   ① 세 포트를 쓰는 서버가 있는지 봅니다.
+
+   ```bash
+   docker ps --filter publish=8080 --filter publish=8081 --filter publish=8082
+   ```
+
+   - 하는 일: `--filter publish=포트번호` 는 그 포트를 쓰는 서버만 보여 줍니다.
+   - 나오는 것: <mark>`CONTAINER ID` 로 시작하는 머리글 줄만 나오면</mark> 아무도 쓰고 있지 않은 것이니 다음 페이지로 갑니다.
+
+   ```
+   CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+   ```
+
+   ② (서버가 나왔을 때만) 줄 맨 끝 `NAMES` 열의 이름을 보고, <mark>내가 켠 서버가 맞는지 확인한 뒤</mark> 그 서버를 끕니다. 다른 수업에서 쓰는 서버일 수 있습니다.
+
+   ```bash
+   docker stop 이름
+   ```
+
+   - 하는 일: `이름` 자리에 `NAMES` 열의 이름을 넣어 그 서버를 끕니다.
+   - 나오는 것: 끈 서버의 이름이 한 줄 나옵니다. 그 뒤 ① 의 명령을 다시 쳐서 머리글 줄만 나오는지 봅니다.
+
+**오류가 나면**
+
+- `Cannot connect to the Docker daemon` 처럼 도커에 연결할 수 없다는 오류(Windows 에서는 `error during connect` 처럼 문구가 다를 수 있습니다): <mark>Docker Desktop 이 꺼져 있는 것입니다.</mark> Docker Desktop 을 실행하고, 아래쪽 상태가 초록색(Running)이 될 때까지 1분쯤 기다린 뒤 다시 칩니다.
+- `toomanyrequests` 가 나오면 이미지를 너무 많이 받았다는 뜻입니다. <mark>1시간 뒤에 다시 합니다.</mark>
+- `docker: command not found` 가 나오면 이 PC 에 도커가 없는 것입니다. 도전 5-1 · 5-2는 건너뜁니다.
+
+## 도전 5-1 · 컴포즈로 서버 두 대 한 번에 켜기
+
+**이런 상황이 있습니다**
+
+- **지금은**: <mark>서버를 켤 때마다 긴 `docker run` 명령을 쳐야 하고, 서버가 늘수록 틀리기 쉽습니다</mark>.
+- **그래서 하는 것**:
+  - `docker run` 으로 서버 한 대를 켜고 끄는 것을 먼저 해 봅니다.
+  - `compose.yaml` 을 읽고, 서버 두 대를 한 번에 켭니다.
+  - 두 서버가 모두 응답하는지 확인합니다.
+- **실행하면**: <mark>`docker compose ps` 에 서버 두 개(`web1` · `web2`)가 `Up` 으로 나오고, 8080번과 8081번 모두 결과 번호 `200` 이 나옵니다.</mark>
+- **현업에서는**: 서버가 늘수록 설정 파일 하나로 관리하는 방식을 씁니다. 파일에 포트와 이미지 버전이 적혀 있어서 누가 켜도 같은 결과가 나옵니다.
+
+**할 일**
+
+1. 서버 한 대를 `docker run` 으로 켜고 확인한 뒤 끕니다.
+2. `compose.yaml` 파일을 만들어 붙여 넣고 읽습니다.
+3. `docker compose up -d` 로 서버 두 대를 켜고, 두 서버가 응답하는지 확인합니다.
+
+**순서**
+
+1. **[터미널]** 서버를 켜는 데 쓸 이미지가 내 PC 에 이미 있는지 먼저 확인합니다. <mark>이미 있으면 다시 받지 않아도 됩니다.</mark>
+
+   ① 이미지가 있는지 봅니다.
+
+   ```bash
+   docker images nginx:1.28
+   ```
+
+   - 하는 일: 내 PC 에 받아 둔 이미지 중 `nginx:1.28` 을 보여 줍니다.
+   - 나오는 것: <mark>`nginx:1.28` 이 적힌 줄이 있으면</mark> 이미 받은 것이니 ② 는 건너뛰고 2번으로 갑니다. 머리글 줄만 나오면 아직 없는 것입니다. 도커 버전에 따라 머리글의 글자는 다를 수 있습니다.
+
+   ```
+   IMAGE        ID             DISK USAGE   CONTENT SIZE   EXTRA
+   nginx:1.28   146adea4768b        258MB         64.1MB   U
+   ```
+
+   ② (없을 때만) 이미지를 받습니다.
+
+   ```bash
+   docker pull nginx:1.28
+   ```
+
+   - 하는 일: `nginx:1.28` 이미지를 인터넷에서 내려받습니다.
+   - 나오는 것: 마지막에 `Status: Downloaded newer image` 가 나오면 됩니다.
+
+2. **[터미널]** 먼저 한 대입니다. 서버 한 대를 켜고, 확인하고, 끕니다. 아래 세 명령을 <mark>하나씩 쳐서</mark> 결과를 봅니다.
+
+   ① 서버를 켭니다.
+
+   ```bash
+   docker run -d --rm -p 8080:80 --name web-run nginx:1.28
+   ```
+
+   - 하는 일: 서버 한 대를 켭니다. 옵션은 이렇습니다.
+     - `-d`: 백그라운드에서 켬 (터미널을 계속 쓸 수 있음)
+     - `--rm`: 서버를 끄면 그 서버(컨테이너)를 자동으로 지움
+     - `-p 8080:80`: 내 컴퓨터의 8080번 포트를 서버의 80번 포트에 연결
+     - `--name web-run`: 서버 이름을 `web-run` 으로 정함
+   - 나오는 것: 서버의 고유 번호(긴 글자)가 한 줄 나옵니다.
+
+   ② 켜졌는지 봅니다.
+
+   ```bash
+   docker ps
+   ```
+
+   - 하는 일: 켜져 있는 서버를 보여 줍니다.
+   - 나오는 것: <mark>`web-run` 이 `Up` 으로 보이고, PORTS 에 `0.0.0.0:8080->80/tcp` 가 있으면</mark> 됩니다.
+
+   ```
+   CONTAINER ID   IMAGE        COMMAND                  CREATED                  STATUS                  PORTS                                     NAMES
+   e1a2ad01c544   nginx:1.28   "/docker-entrypoint.…"   Less than a second ago   Up Less than a second   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   web-run
+   ```
+
+   ③ 서버를 끕니다.
+
+   ```bash
+   docker stop web-run
+   ```
+
+   - 하는 일: `web-run` 서버를 끕니다.
+   - 나오는 것: `web-run` 이 한 줄 나옵니다. <mark>이어서 `docker ps` 를 쳤을 때 `web-run` 이 없으면</mark> 정상입니다. `--rm` 때문에 끄면 서버가 지워집니다.
+
+3. **[VS Code]** 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `compose.yaml` 을 그대로 적고 Enter 를 칩니다. 내용은 다음 4번에서 붙여 넣으니 지금은 비워 둡니다.
+
+   이어서 **[터미널]** 에서 파일이 생겼는지 봅니다.
+
+   ```bash
+   ls
+   ```
+
+   - 하는 일: 폴더 안의 파일 이름을 보여 줍니다.
+   - 나오는 것: <mark>`compose.yaml` 이 보이면</mark> 됩니다.
+
+4. **[VS Code]** `compose.yaml` 을 열어 아래 내용을 그대로 붙여 넣고 저장합니다. <mark>각 줄의 `#` 뒤 설명을 읽으면서 붙여 넣습니다.</mark>
+
+<pre class="copyable"><code>services:                      # 켤 서버들을 적는 곳이 여기서 시작된다
+  web1:                        # 첫 번째 서버의 이름 (명령에서 이 이름으로 부른다)
+    image: nginx:1.28          # 사용할 프로그램 : nginx 웹 서버 1.28 버전
+    ports:                     # 내 컴퓨터와 서버를 이어 주는 포트를 적는 곳
+      - "8080:80"              # 내 컴퓨터의 8080번으로 보낸 요청이 서버의 80번으로 들어간다
+    restart: unless-stopped    # 서버가 저절로 꺼지면 다시 켠다 (내가 직접 끈 경우는 그대로 둔다)
+  web2:                        # 두 번째 서버의 이름
+    image: nginx:1.28          # 같은 nginx 웹 서버를 하나 더 켠다
+    ports:                     # 내 컴퓨터와 서버를 이어 주는 포트를 적는 곳
+      - "8081:80"              # 두 번째 서버는 8081번으로 받는다 (8080번과 겹치면 안 된다)
+    restart: unless-stopped    # 서버가 저절로 꺼지면 다시 켠다
+</code></pre>
+
+   - `restart: unless-stopped` 는 서버가 저절로 꺼지면 다시 켜라는 설정입니다. 내가 직접 끈 서버는 다시 켜지 않습니다.
+   - <mark style="background:#ffc4d6">`web1` 은 8080번, `web2` 는 8081번입니다. 두 서버가 같은 번호를 쓰면 한쪽이 켜지지 않습니다.</mark>
+
+5. **[터미널]** 서버 두 대를 한 번에 켜고 상태를 봅니다. <mark>컴포즈 파일이 있는 폴더(`anomaly_detection`)에서 칩니다.</mark>
+
+   ① 서버 두 대를 한 번에 켭니다.
+
+   ```bash
+   docker compose up -d
+   ```
+
+   - 하는 일: 컴포즈 파일의 서버를 모두 백그라운드에서 켭니다.
+   - 나오는 것: 서버마다 `Created`, `Started` 줄이 차례로 나옵니다.
+
+   ```
+    Network anomaly_detection_default Creating
+    Network anomaly_detection_default Created
+    Container anomaly_detection-web1-1 Creating
+    Container anomaly_detection-web2-1 Creating
+    Container anomaly_detection-web1-1 Created
+    Container anomaly_detection-web2-1 Created
+    Container anomaly_detection-web2-1 Starting
+    Container anomaly_detection-web1-1 Starting
+    Container anomaly_detection-web2-1 Started
+    Container anomaly_detection-web1-1 Started
+   ```
+
+   ② 켜진 상태를 봅니다.
+
+   ```bash
+   docker compose ps
+   ```
+
+   - 하는 일: 컴포즈로 켠 서버의 상태를 보여 줍니다.
+   - 나오는 것: <mark>`web1` 과 `web2` 가 모두 `Up` 이고, PORTS 에 `8080` 과 `8081` 이 보이면</mark> 됩니다. 서버 이름 앞의 `anomaly_detection` 은 컴포즈 파일이 있는 폴더 이름이고, 끝의 `-1` 은 컴포즈가 자동으로 붙이는 번호입니다.
+
+   ```
+   NAME                       IMAGE        COMMAND                  SERVICE   CREATED                  STATUS                  PORTS
+   anomaly_detection-web1-1   nginx:1.28   "/docker-entrypoint.…"   web1      Less than a second ago   Up Less than a second   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp
+   anomaly_detection-web2-1   nginx:1.28   "/docker-entrypoint.…"   web2      Less than a second ago   Up Less than a second   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp
+   ```
+
+6. **[터미널]** 두 서버가 모두 응답하는지 확인합니다. 명령 끝의 `-s -o /dev/null -w "%{http_code}\n"` 는 HTML 을 화면에 안 보이고 결과 번호만 보여 주는 설정이라 외우지 않아도 됩니다. 결과 번호 `200` 은 요청이 성공했다는 뜻입니다.
+
+   ① 8080번 서버(`web1`)를 확인합니다.
+
+   ```bash
+   curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8080
+   ```
+
+   - 하는 일: 그 주소에 요청을 보내고 결과 번호만 보여 줍니다.
+   - 나오는 것: <mark>결과 번호가 `200` 이면</mark> 됩니다.
+
+   ```
+   200
+   ```
+
+   ② 8081번 서버(`web2`)를 확인합니다.
+
+   ```bash
+   curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8081
+   ```
+
+   - 하는 일: 같은 방법으로 두 번째 서버를 확인합니다.
+   - 나오는 것: <mark>결과 번호가 `200` 이면</mark> 됩니다.
+
+   ```
+   200
+   ```
+
+
+7. **[보고서]** `report_u5.md` 의 `## 도전 5-1` 아래를 채웁니다.
+   - (가) 도전 5-1의 서버 켜기 · 확인 명령(`docker images` 부터 `curl` 까지)과 그 결과를 친 순서대로 붙여 넣고, 서비스 이름 두 개와 각 서비스의 포트를 적어 주세요.
+   - (나) [핵심 질문] 서버 두 대를 `docker run` 으로 켜는 것과 `compose.yaml` 과 `docker compose up -d` 로 켜는 것을 비교해, 컴포즈가 더 나은 점을 두 가지 적어 주세요.
+   - (다) [핵심 질문] 보안 사고가 난 뒤 감사팀이 「사고 당시와 같은 구성으로 서버를 다시 켜 보라」고 요청했습니다. 팀원 한 명은 3주 전에 긴 `docker run` 명령을 직접 쳐서 서버를 켰는데 그 명령을 기억하지 못합니다. 다른 팀은 `compose.yaml` 을 깃허브에 올려 두었습니다. 두 팀이 같은 구성을 다시 켤 수 있는지 비교하고, 파일에 `nginx:1.28` 처럼 버전을 적어 두는 것이 이런 재현에 왜 중요한지 적어 주세요.
+   - (라) [핵심 질문] 팀원 세 명이 같은 `compose.yaml` 로 서버를 켰는데 한 명의 PC 에서만 `8081` 번 포트를 다른 프로그램이 쓰고 있어서 `web2` 가 켜지지 않았습니다. 이 사람이 파일의 어느 줄을 어떻게 바꾸면 되는지 적고, 바꿔도 서버 안에서는 여전히 `80` 번 포트로 동작하는 이유를 적어 주세요. 이 사람이 `curl` 로 확인할 때 달라지는 점도 적어 주세요.
+
+## 도전 5-1 정리
+
+| 하려는 일 | 명령 |
+|---|---|
+| 서버 한 대 켜기 · 확인 · 끄기 | `docker run -d --rm -p 8080:80 --name web-run nginx:1.28` → `docker ps` → `docker stop web-run` |
+| 서버 두 대 한 번에 켜기 | `docker compose up -d` |
+| 켜진 서버 상태 보기 | `docker compose ps` |
+| 응답 확인 | `curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8080` |
 
 ---
-
-## 실습 5-1 정답
-
- **터미널에 입력합니다.**
-
-```bash
-pwd
-python exercise5-1_run.py
-```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise5-1_run.py` 파이썬으로 실행 파일 실행
-
-**채운 코드** (한 예) — 직접 쓰는 곳은 네 함수입니다.
-
-① `add_minute_column` 안
-
-```python
-    minutes = times.dt.floor("min")  # 시각에서 초를 버린다 (09:12:03 → 09:12:00)
-```
-
-② `count_web_per_minute` 안
-
-```python
-    is_web = events["source"] == "web"  # 행마다 웹 서버 이벤트인지 비교해 True 또는 False 를 만든다
-    web_events = events[is_web]         # True 인 행만 골라 웹 서버 이벤트의 표를 만든다
-```
-
-③ `make_traffic_limit` 안
-
-```python
-    limit = average * multiple  # 평소 평균에 3 을 곱한 값이 급증 기준이다
-```
-
-④ `pick_spike_minutes` 안
-
-```python
-    is_spike = minute_request_counts >= limit        # 분마다 「기준 이상인가?」를 비교해 True 또는 False 를 만든다
-    spike_minutes = minute_request_counts[is_spike]  # True 인 분만 남긴다
-```
-
-**결과**
-
-- (가) 출력은 다음과 같고, 급증 기준은 <mark>**6.0번 이상**</mark>, 요청이 급증한 분은 <mark>**09:12(요청 9개)**</mark> 한 분입니다.
-
-```
---- 단계 1: time 열과 minute 열의 처음 3개 비교
-0    2026-11-02 02:14:08
-1    2026-11-02 09:01:05
-2    2026-11-02 09:01:06
-Name: time, dtype: object
-0   2026-11-02 02:14:00
-1   2026-11-02 09:01:00
-2   2026-11-02 09:01:00
-Name: minute, dtype: datetime64[ns]
---- 단계 2: 웹 서버의 분당 요청 수
-minute
-2026-11-02 09:01:00    2
-2026-11-02 09:03:00    2
-2026-11-02 09:04:00    1
-2026-11-02 09:05:00    2
-2026-11-02 09:12:00    9
-2026-11-02 09:20:00    3
-2026-11-02 09:22:00    1
-2026-11-02 09:25:00    1
-2026-11-02 09:26:00    1
-2026-11-02 09:28:00    2
-2026-11-02 09:31:00    1
-2026-11-02 09:33:00    1
-2026-11-02 09:35:00    1
-2026-11-02 09:36:00    1
-dtype: int64
---- 단계 3: 급증 기준(평소 평균의 3 배) 6.0 번 이상
---- 단계 4: 요청이 급증한 분
-minute
-2026-11-02 09:12:00    9
-dtype: int64
-```
-
-- (나) 09:12 에 들어온 요청 9개는 모두 **203.0.113.50** 이 보낸 것입니다. 이 분의 이벤트는 다음과 같습니다.
-
-| 시각 | 주소 | 행동 | 결과 |
-|---|---|---|---|
-| 09:12:01 | 203.0.113.50 | `GET /login` | 성공 |
-| 09:12:03 | 203.0.113.50 | `POST /login` | 실패 |
-| 09:12:06 | 203.0.113.50 | `POST /login` | 실패 |
-| 09:12:09 | 203.0.113.50 | `POST /login` | 실패 |
-| 09:12:12 | 203.0.113.50 | `POST /login` | 실패 |
-| 09:12:15 | 203.0.113.50 | `POST /login` | 실패 |
-| 09:12:18 | 203.0.113.50 | `POST /login` | 성공 |
-| 09:12:25 | 203.0.113.50 | `GET /admin` | 실패 |
-| 09:12:27 | 203.0.113.50 | `GET /admin/users` | 실패 |
-
-  - 로그인 화면을 열고(`GET /login`), 로그인 정보를 6번 보냈고(`POST /login`, 5번 실패 뒤 1번 성공), 관리자 경로를 2번 요청했습니다(`/admin`, `/admin/users`).
-  - <mark>이 급증이 공격이라고 확정할 수는 없습니다.</mark> 하지만 <mark>실습 4-2에서 로그인 실패 5번으로 알림 대상이 된 주소와 같은 IP 주소입니다.</mark> 한 주소가 1분도 안 되는 사이에 로그인을 반복하다 성공했고, 이어서 관리자 경로까지 요청했습니다. 이것은 먼저 살펴볼 일입니다.
-  - 확정하려면 이 주소가 회사 직원의 주소인지, 성공한 계정이 누구인지 <mark>판정 서버 · SaaS 로그와 시각을 맞춰 봐야 합니다.</mark>
-- (다) 09:20 의 요청 3개는 <mark>급증 기준(6.0번 이상)보다 적어서 탐지되지 않았습니다.</mark>
-  - 그 3개는 모두 198.51.100.90 이 09:20:10 ~ 09:20:12 에 보낸 `GET /.env` · `GET /wp-login.php` · `GET /phpmyadmin` 이고 모두 실패했습니다. 서로 다른 경로를 차례로 요청한 모양입니다.
-  - 급증 규칙은 요청의 **수**만 보기 때문에, <mark>수가 적으면 요청의 내용과 상관없이 알리지 못합니다.</mark> 이런 경로 스캔(취약한 경로를 하나씩 찾아보는 시도)은 Unit 6에서 다른 규칙으로 찾습니다.
-
-**왜**
-
-- <mark>「짧은 시간에 늘어난 요청」은 시간을 일정한 구간(여기서는 1분)으로 나눠 구간마다 세어야 보입니다.</mark> 구간 길이를 정하는 일이 초를 버리는 일입니다.
-
-**자주 틀리는 곳**
-
-- `times.dt.floor("min")` 에서 **`.dt` 를 빠뜨리고 `times.floor("min")` 으로 쓰면 오류가 납니다.**
-  - 실행하면 다음 오류가 납니다(<mark>`'Series' object has no attribute 'floor'`</mark> 가 나오면 이 실수입니다).
-
-```
-Traceback (most recent call last):
-  File "…/anomaly_detection/exercise5-1_run.py", line 4, in <module>
-    events = add_minute_column(events)  # 시각에서 초를 버린 minute 열을 붙인다
-  File "…/anomaly_detection/traffic_detection.py", line 23, in add_minute_column
-    minutes = times.floor("min")  # .dt 를 빼먹었다
-AttributeError: 'Series' object has no attribute 'floor'
-```
-
-  - 줄 번호는 사람마다 다릅니다.
-- <mark>요청이 하나도 없던 분은 결과에 나오지 않습니다.</mark> 분당 요청 수 14줄은 요청이 있던 분만 센 것입니다.
-
-**관제에서는**
-
-- <mark>급증 기준은 요일 · 시간대마다 평소가 다르므로 시간대별 평소 평균을 따로 둡니다.</mark> 이 문서의 `baseline_traffic.csv`(지난 7일, 오전 9시대)는 연습용 하나뿐입니다.
-
----
-
-## 실습 5-2 정답
-
- **터미널에 입력합니다.**
-
-```bash
-pwd
-python exercise5-2_run.py
-```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise5-2_run.py` 파이썬으로 실행 파일 실행
-
-**채운 코드** (한 예) — 직접 쓰는 곳은 네 함수입니다.
-
-① `make_alert` 안
-
-```python
-    alert = {"type": alert_type, "target": target, "count": count, "note": note, "status": "확인 필요"}  # 알림 한 건의 키 다섯 개
-```
-
-② `make_login_alerts` 안
-
-```python
-        alert = make_alert("비정상 로그인", ip_address, count, note)  # 로그인 실패 알림 한 건을 만든다
-```
-
-③ `make_traffic_alerts` 안
-
-```python
-        target = str(minute)                                    # 시각 값을 문자열로 바꾼다 — JSON 에는 시각 값을 그대로 쓸 수 없다
-        alert = make_alert("트래픽 급증", target, count, note)  # 트래픽 급증 알림 한 건을 만든다
-```
-
-④ `save_alerts` 안
-
-```python
-    with open(path, "w", encoding="utf-8") as file:            # 파일을 쓰기 위해 열고 file 변수로 쓴다
-        json.dump(alerts, file, ensure_ascii=False, indent=2)  # 한글은 그대로, 들여쓰기를 해서 파일에 쓴다
-```
-
-**결과**
-
-- (가) 출력은 다음과 같고, 알림은 모두 <mark>**2건**</mark>(로그인 실패 1건 + 트래픽 급증 1건)입니다.
-
-```
---- 단계 1: 로그인 실패 알림 1 건
---- 단계 2: 트래픽 급증 알림 1 건
---- 단계 3: alerts.json 에 알림 2 건 저장
---- 단계 4: 저장된 알림
-{'type': '비정상 로그인', 'target': '203.0.113.50', 'count': 5, 'note': '로그인 실패가 기준 이상 — 공격 확정이 아니라 먼저 살펴볼 곳', 'status': '확인 필요'}
-{'type': '트래픽 급증', 'target': '2026-11-02 09:12:00', 'count': 9, 'note': '요청이 평소의 3배 이상으로 늘어남 — 공격 확정이 아니라 먼저 살펴볼 곳', 'status': '확인 필요'}
-```
-
-  - `alerts.json` 의 내용은 다음과 같습니다.
-
-```
-[
-  {
-    "type": "비정상 로그인",
-    "target": "203.0.113.50",
-    "count": 5,
-    "note": "로그인 실패가 기준 이상 — 공격 확정이 아니라 먼저 살펴볼 곳",
-    "status": "확인 필요"
-  },
-  {
-    "type": "트래픽 급증",
-    "target": "2026-11-02 09:12:00",
-    "count": 9,
-    "note": "요청이 평소의 3배 이상으로 늘어남 — 공격 확정이 아니라 먼저 살펴볼 곳",
-    "status": "확인 필요"
-  }
-]
-```
-
-- (나) <mark>두 알림은 같은 일과 관련이 있어 보입니다.</mark>
-  - 겹치는 단서: 로그인 실패 알림의 주소 `203.0.113.50` 이 09:12:03 ~ 09:12:15 에 로그인(`POST /login`)을 5번 실패했고, 트래픽 급증 알림의 분 `09:12` 에 들어온 요청 9개도 모두 이 주소의 것입니다.
-  - 다루는 법: <mark>알림 두 건을 따로 처리하지 않고 「203.0.113.50 이 09:12 에 로그인을 반복한 한 사건」으로 통합해 한 번에 조사합니다.</mark> 성공한 로그인 계정과 뒤이은 관리자 경로 요청까지 함께 봅니다.
-- (다) <mark>`status` 를 「조사 완료」로 바꾸고,</mark> `note` 에 「직원이 비밀번호를 잊어 반복 입력함」과 확인한 사람 · 날짜를 적습니다.
-  - 알림을 지우지 않고 남겨 두면, 같은 주소에서 다시 알림이 났을 때 <mark>이전 조사 결과를 보고 빨리 판단할 수 있습니다.</mark> 같은 일이 자주 생기면 알림 기준을 고칠 근거도 됩니다.
-  - 알림이 있어도 공격으로 확정된 것이 아니므로 <mark>조사 결과가 정상이든 공격이든 처리 상태는 「조사 완료」이고</mark>, 정상인지 대응이 필요한지는 `note` 에 적습니다.
-
-**왜**
-
-- <mark>알림의 모양을 하나로 맞추면 탐지 규칙이 늘어도 담당자의 처리 방법과 알림을 보내는 코드가 그대로입니다.</mark> `make_login_alerts` · `make_traffic_alerts` 처럼 규칙마다 알림을 만드는 함수 하나만 더 만들면 됩니다.
-
-**자주 틀리는 곳**
-
-- `target = str(minute)` 대신 **`target = minute` 으로 두면 `json.dump` 에서 오류가 납니다.** 판다스의 시각 값은 JSON 에 쓸 수 없습니다.
-  - 실행하면 다음 오류가 납니다(<mark>`Object of type Timestamp is not JSON serializable`</mark> 이 나오면 이 실수입니다).
-
-```
-Traceback (most recent call last):
-  File "…/anomaly_detection/exercise5-2_run.py", line 23, in <module>
-    saved_count = save_alerts(all_alerts, ALERTS_PATH)  # 모은 알림을 파일에 저장하고 저장한 건수를 받는다
-  File "…/anomaly_detection/alerts.py", line 54, in save_alerts
-    json.dump(alerts, file, ensure_ascii=False, indent=2)  # 한글은 그대로, 들여쓰기를 해서 파일에 쓴다
-TypeError: Object of type Timestamp is not JSON serializable
-```
-
-  - 줄 번호는 사람마다 다릅니다.
-- `json.dump` 에서 `ensure_ascii=False` 를 빼면 한글이 `\ube44\uc815\uc0c1` 같은 코드(「비정상」을 코드로 쓴 모양)로 저장됩니다. <mark>오류는 나지 않지만 파일을 열어 보면 알림 내용을 알아볼 수 없습니다.</mark>
-- `with` 줄 아래의 6번 코드는 **공백 8개로 씁니다.** 4개로 쓰면 `IndentationError` 오류가 납니다. `with` 줄 끝의 `:` 도 빠뜨리지 않습니다.
-
-**관제에서는**
-
-- 알림 파일에는 처리 상태 키(`status`)가 있어서, 담당자가 「확인 필요」 → 「조사 중」 → 「조사 완료」처럼 바꿔 가며 <mark>어디까지 봤는지 남깁니다.</mark>
-
----
-
-## 정답 마무리
-
- **터미널에 입력합니다.**
-
-```bash
-cd ..
-pwd
-git status
-```
-- 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 있는 폴더의 위치 확인 · `git status` 올릴 파일의 상태를 봄
-
-<mark>`.env` 나 `.venv` 가 없는 것을 확인한 뒤에 아래를 칩니다.</mark>
-
-```bash
-git add .
-git commit -m "Add anomaly detection unit 4 and unit 5 baseline and alerts"
-git push
-```
-- 명령 풀이: `git add .` 바뀐 파일을 올릴 대상에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-
-**결과**
-
-- (가) 한 예: 「`.env` · `.venv` 는 보이지 않았다」. 보였다면 `.gitignore` 에 `.env`(또는 `.venv`) 한 줄을 적고 저장한 뒤 `git status` 를 다시 쳤다고 적습니다.
-
-**왜**
-
-- <mark>올리기 전에 올라갈 파일을 확인해야 비밀 키가 섞이지 않습니다.</mark>
-
-**자주 틀리는 곳**
-
-- <mark>`.env` 가 보이는데 그대로 `git add .` 를 하는 실수가 가장 위험합니다.</mark>
-  - `cd ..` 를 두 번 쳐서 `security-agent-toolkit` 바깥으로 나가는 경우도 있습니다. `pwd` 로 확인합니다.

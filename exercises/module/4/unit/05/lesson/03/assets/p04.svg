@@ -1,41 +1,44 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>실습 5-2 는 두 알림 리스트를 만들어 이어 붙이고 alerts.json 에 저장한다</title>
-<desc>로그인 실패 결과는 make_login_alerts, 트래픽 급증 결과는 make_traffic_alerts 가 알림으로 바꾼다. 두 리스트를 + 로 이어 붙여 save_alerts 가 alerts.json 에 저장한다. 출력은 단계 1부터 4까지다.</desc>
+<title>보고서 실습 5-2: 상황 1·2·3·4·7·8 중 4개 이상에 다섯 칸을 채운다</title>
+<desc>상황 5 · 6 은 예시로 이미 적혀 있습니다. 나머지 여섯 개 중 4개 이상을 골라 원인, 고칠 파일, 어떻게 고치나요, 고친 뒤 확인, 담당자가 가장 먼저 할 일(선택)을 씁니다. 그다음 질문 (가) · (나) · (다)를 채웁니다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
-<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">실습 5-2 · alerts.py 가 하는 일</text>
-<rect x="30" y="60" width="190" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="125" y="87.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">login_detection.py</text>
-<text x="125" y="106.7" font-size="14" fill="#292929" text-anchor="middle">알림 대상 주소</text>
-<rect x="30" y="150" width="190" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="125" y="177.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">traffic_detection.py</text>
-<text x="125" y="196.7" font-size="14" fill="#292929" text-anchor="middle">급증한 분</text>
-<rect x="255" y="60" width="210" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="360" y="87.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">make_login_alerts</text>
-<text x="360" y="106.7" font-size="14" fill="#292929" text-anchor="middle">단계 1: 1건</text>
-<rect x="255" y="150" width="210" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="360" y="177.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">make_traffic_alerts</text>
-<text x="360" y="196.7" font-size="14" fill="#292929" text-anchor="middle">str(minute) · 단계 2: 1건</text>
-<line x1="220" y1="92" x2="253" y2="92" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<line x1="220" y1="182" x2="253" y2="182" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="500" y="100" width="190" height="74" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="595" y="132.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">리스트 이어 붙이기</text>
-<text x="595" y="151.7" font-size="14" fill="#292929" text-anchor="middle">login + traffic</text>
-<line x1="465" y1="92" x2="498" y2="125" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<line x1="465" y1="182" x2="498" y2="150" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="500" y="240" width="190" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="595" y="267.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">save_alerts</text>
-<text x="595" y="286.7" font-size="14" fill="#292929" text-anchor="middle">json.dump</text>
-<line x1="595" y1="174" x2="595" y2="238" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="255" y="240" width="210" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="360" y="267.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">alerts.json</text>
-<text x="360" y="286.7" font-size="14" fill="#292929" text-anchor="middle">단계 3: 2건 저장</text>
-<line x1="500" y1="272" x2="467" y2="272" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="30" y="240" width="190" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="125" y="267.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">단계 4</text>
-<text x="125" y="286.7" font-size="14" fill="#292929" text-anchor="middle">저장된 알림 2줄</text>
-<line x1="255" y1="272" x2="222" y2="272" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="30" y="330" width="660" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="360" y="360.2" font-size="15" fill="#292929" text-anchor="middle">두 함수 모두 make_alert 로 키 다섯 개 딕셔너리를 만듭니다</text>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">보고서 실습 5-2 · 채울 칸</text>
+<rect x="20" y="50" width="400" height="300" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="36" y="80" font-size="16" fill="#292929" font-weight="700">상황 하나에 채울 다섯 칸</text>
+<rect x="36" y="103" width="14" height="14" rx="2" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="58" y="116" font-size="15" fill="#292929">원인</text>
+<text x="58" y="136" font-size="14" fill="#666660">데이터 · 규칙 · 운영 설정 + 이유</text>
+<rect x="36" y="153" width="14" height="14" rx="2" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="58" y="166" font-size="15" fill="#292929">고칠 파일</text>
+<text x="58" y="186" font-size="14" fill="#666660">어느 파일을 여는지</text>
+<rect x="36" y="203" width="14" height="14" rx="2" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="58" y="216" font-size="15" fill="#292929">어떻게 고치나요</text>
+<text x="58" y="236" font-size="14" fill="#666660">추가 · 수정 · 삭제 + 무엇을</text>
+<rect x="36" y="253" width="14" height="14" rx="2" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="58" y="266" font-size="15" fill="#292929">고친 뒤 확인</text>
+<text x="58" y="286" font-size="14" fill="#666660">어떤 출력이 어떻게 바뀌나</text>
+<rect x="36" y="303" width="14" height="14" rx="2" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="58" y="316" font-size="15" fill="#292929">먼저 할 일 (선택)</text>
+<text x="58" y="336" font-size="14" fill="#666660">사람이 가장 먼저 할 일</text>
+<text x="450" y="80" font-size="16" fill="#292929" font-weight="700">고를 상황</text>
+<rect x="450" y="94" width="74" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="487" y="119.6" font-size="15" fill="#292929" text-anchor="middle">상황 1</text>
+<rect x="536" y="94" width="74" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="573" y="119.6" font-size="15" fill="#292929" text-anchor="middle">상황 2</text>
+<rect x="622" y="94" width="74" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="659" y="119.6" font-size="15" fill="#292929" text-anchor="middle">상황 3</text>
+<rect x="450" y="146" width="74" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="487" y="171.6" font-size="15" fill="#292929" text-anchor="middle">상황 4</text>
+<rect x="536" y="146" width="74" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="573" y="171.6" font-size="15" fill="#292929" text-anchor="middle">상황 7</text>
+<rect x="622" y="146" width="74" height="42" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="659" y="171.6" font-size="15" fill="#292929" text-anchor="middle">상황 8</text>
+<text x="450" y="218" font-size="15" fill="#292929" font-weight="700">→ 4개 이상 씁니다</text>
+<rect x="450" y="236" width="250" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="575" y="260.8" font-size="15" fill="#292929" text-anchor="middle">상황 5 · 6 은 예시</text>
+<text x="575" y="280.8" font-size="14" fill="#666660" text-anchor="middle">먼저 읽고 따라 씁니다</text>
+<rect x="20" y="366" width="680" height="30" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="385.3" font-size="14" fill="#292929" text-anchor="middle">그다음 질문 (가) 쓴 상황 번호 · (나) 원인 셋으로 나누기 · (다) 헷갈린 로직</text>
 </g>
 </svg>

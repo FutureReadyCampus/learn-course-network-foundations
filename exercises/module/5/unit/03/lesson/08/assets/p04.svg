@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>도전 3-1 정답: 알림 8건 처리 결과와 근무 보고 요약, 확인 목록 4건</title>
+<desc>왼쪽은 단계 1 의 알림 8건 처리 결과다. 오른쪽 위는 단계 3 요약으로 변경됨 2, 변경 없음 2, 확인 실패 1 이고, 오른쪽 아래는 단계 4 의 담당자 확인 4건이다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
+<text x="20" y="30" font-size="17" fill="#292929" font-weight="700">단계 1 · 알림 8건</text>
+<rect x="20" y="44" width="230" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="68.04" font-size="14" fill="#292929">INC-001 dami</text>
+<rect x="258" y="44" width="130" height="38" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="323" y="68.04" font-size="14" fill="#292929" text-anchor="middle">조치함</text>
+<rect x="20" y="91" width="230" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="115.04" font-size="14" fill="#292929">INC-002 seoyeon</text>
+<rect x="258" y="91" width="130" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="323" y="115.04" font-size="14" fill="#292929" text-anchor="middle">조치하지 않음</text>
+<rect x="20" y="138" width="230" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="162.04" font-size="14" fill="#292929">INC-003 gaeun</text>
+<rect x="258" y="138" width="130" height="38" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="323" y="162.04" font-size="14" fill="#292929" text-anchor="middle">승인 대기</text>
+<rect x="20" y="185" width="230" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="209.04" font-size="14" fill="#292929">INC-004 jiwoo</text>
+<rect x="258" y="185" width="130" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="323" y="209.04" font-size="14" fill="#292929" text-anchor="middle">오탐 종료</text>
+<rect x="20" y="232" width="230" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="256.04" font-size="14" fill="#292929">INC-005 198.51.100.90</text>
+<rect x="258" y="232" width="130" height="38" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="323" y="256.04" font-size="14" fill="#292929" text-anchor="middle">조치 실패</text>
+<rect x="20" y="279" width="230" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="303.04" font-size="14" fill="#292929">INC-008 192.0.2.41</text>
+<rect x="258" y="279" width="130" height="38" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="323" y="303.04" font-size="14" fill="#292929" text-anchor="middle">승인 대기</text>
+<rect x="20" y="326" width="230" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="350.04" font-size="14" fill="#292929">INC-009 192.0.2.10</text>
+<rect x="258" y="326" width="130" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="323" y="350.04" font-size="14" fill="#292929" text-anchor="middle">조치하지 않음</text>
+<rect x="20" y="373" width="230" height="38" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="397.04" font-size="14" fill="#292929">INC-010 gaeun</text>
+<rect x="258" y="373" width="130" height="38" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="323" y="397.04" font-size="14" fill="#292929" text-anchor="middle">승인 대기</text>
+<text x="410" y="30" font-size="17" fill="#292929" font-weight="700">단계 3 · 요약</text>
+<rect x="410" y="44" width="92" height="70" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="456" y="73.9" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">변경됨</text>
+<text x="456" y="94.9" font-size="15" fill="#292929" text-anchor="middle">2</text>
+<rect x="509" y="44" width="92" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="555" y="74.24" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">변경 없음</text>
+<text x="555" y="93.84" font-size="14" fill="#292929" text-anchor="middle">2</text>
+<rect x="608" y="44" width="92" height="70" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="654" y="74.24" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">확인 실패</text>
+<text x="654" y="93.84" font-size="14" fill="#292929" text-anchor="middle">1</text>
+<text x="410" y="148" font-size="17" fill="#292929" font-weight="700">단계 4 · 담당자 확인 4건</text>
+<rect x="410" y="162" width="290" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="555" y="181.24" font-size="14" fill="#292929" text-anchor="middle">INC-003 gaeun</text>
+<text x="555" y="200.84" font-size="14" fill="#666660" text-anchor="middle">VIP 승인 필요</text>
+<rect x="410" y="218" width="290" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="555" y="237.24" font-size="14" fill="#292929" text-anchor="middle">INC-010 gaeun</text>
+<text x="555" y="256.84" font-size="14" fill="#666660" text-anchor="middle">VIP 승인 필요</text>
+<rect x="410" y="274" width="290" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="555" y="293.24" font-size="14" fill="#292929" text-anchor="middle">INC-005</text>
+<text x="555" y="312.84" font-size="14" fill="#666660" text-anchor="middle">조치 후 확인 실패</text>
+<rect x="410" y="330" width="290" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="555" y="349.24" font-size="14" fill="#292929" text-anchor="middle">INC-008</text>
+<text x="555" y="368.84" font-size="14" fill="#666660" text-anchor="middle">함께 쓰는 IP 승인 필요</text>
+</svg>

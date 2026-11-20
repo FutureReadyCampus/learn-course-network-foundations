@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>실습 4-1 정답: 규칙 점수를 더해 60 이상 high, 35 이상 mid, 그 아래 low</title>
+<desc>score_findings 가 규칙마다 점수를 매겨 대상별로 더하고, make_grade 가 high 기준 60부터 차례로 확인합니다. dami 60점은 high, seoyeon 45 · gaeun 40 · jiwoo 35 는 mid, 198.51.100.90 은 30점으로 low 입니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 4-1 정답</text>
+<text x="700" y="32" font-size="15" fill="#666660" text-anchor="end">점수 → 등급</text>
+<text x="158" y="92" font-size="15" fill="#292929" text-anchor="end">dami</text>
+<rect x="170" y="74" width="390.0" height="28" rx="4" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="570.0" y="94" font-size="15" fill="#292929">60점 · high</text>
+<text x="158" y="138" font-size="15" fill="#292929" text-anchor="end">seoyeon</text>
+<rect x="170" y="120" width="292.5" height="28" rx="4" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="472.5" y="140" font-size="15" fill="#292929">45점 · mid</text>
+<text x="158" y="184" font-size="15" fill="#292929" text-anchor="end">gaeun</text>
+<rect x="170" y="166" width="260.0" height="28" rx="4" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="440.0" y="186" font-size="15" fill="#292929">40점 · mid</text>
+<text x="158" y="230" font-size="15" fill="#292929" text-anchor="end">jiwoo</text>
+<rect x="170" y="212" width="227.5" height="28" rx="4" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="407.5" y="232" font-size="15" fill="#292929">35점 · mid</text>
+<text x="158" y="276" font-size="15" fill="#292929" text-anchor="end">198.51.100.90</text>
+<rect x="170" y="258" width="195.0" height="28" rx="4" fill="#f1f1ef" stroke="#666660" stroke-width="1.5"/>
+<text x="375.0" y="278" font-size="15" fill="#292929">30점 · low</text>
+<line x1="397.5" y1="62" x2="397.5" y2="300" stroke="#666660" stroke-width="1.2" stroke-dasharray="6 4"/>
+<text x="397.5" y="320" font-size="14" fill="#666660" text-anchor="middle">mid 기준 35</text>
+<line x1="560.0" y1="62" x2="560.0" y2="300" stroke="#666660" stroke-width="1.2" stroke-dasharray="6 4"/>
+<text x="560.0" y="320" font-size="14" fill="#666660" text-anchor="middle">high 기준 60</text>
+<text x="20" y="354" font-size="15" fill="#292929">seoyeon 45 = 평소와 다른 IP 20 + 대량 다운로드 25 · 이유(reasons)도 함께 저장</text>
+<text x="20" y="382" font-size="15" fill="#666660">make_grade 는 high 를 먼저, 그다음 mid 를 확인합니다. low 도 기록은 남깁니다.</text>
+</g>
+</svg>

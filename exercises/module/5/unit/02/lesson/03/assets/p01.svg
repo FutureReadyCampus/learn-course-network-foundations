@@ -1,29 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
-<title>협력사 정상 알림은 자동 종료하고 VIP 계정 알림은 담당자 승인 경로로 보낸다</title>
-<desc>왼쪽은 지금의 문제(오탐 12건을 손으로 분석, VIP 계정도 일반 절차), 오른쪽은 바뀐 뒤의 처리다. 오늘 샘플에서는 INC-004 가 자동 종료되고 INC-003 이 승인 경로로 간다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 372" role="img">
+<title>제공 파일 세 개는 실습 2-1 뒤, 실습 2-2 앞에 복사해 만듭니다</title>
+<desc>실습 2-1 의 containment_store.py 를 만든 뒤 제공 파일 ip_actions.py, audit.py, approvals.py 를 복사해 만들고 확인 명령으로 정상인지 봅니다. 도전 2-3 과 Unit 3 실습 3-1, 도전 2-1 과 2-2 가 이 파일을 씁니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">이번 의뢰: 오탐은 자동 종료, VIP 는 승인 뒤 조치</text>
-<text x="180" y="62" font-size="16" fill="#666660" text-anchor="middle" font-weight="700">지금</text>
-<text x="540" y="62" font-size="16" fill="#666660" text-anchor="middle" font-weight="700">바뀐 뒤</text>
-<rect x="20" y="76" width="320" height="104" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="180" y="110.6" font-size="15" fill="#292929" text-anchor="middle">협력사 IP 정상 접속 알림 12건</text>
-<text x="180" y="132.35" font-size="15" fill="#292929" text-anchor="middle">한 건씩 분석해 1시간이 걸림</text>
-<text x="180" y="154.1" font-size="15" fill="#292929" text-anchor="middle">그동안 다른 알림 확인이 늦어짐</text>
-<rect x="380" y="76" width="320" height="104" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="540" y="110.6" font-size="15" fill="#292929" text-anchor="middle">오탐(false positive)은</text>
-<text x="540" y="132.35" font-size="15" fill="#292929" text-anchor="middle">종료 사유를 기록하고 자동 종료</text>
-<text x="540" y="154.1" font-size="15" fill="#292929" text-anchor="middle">오늘 샘플: INC-004</text>
-<rect x="20" y="196" width="320" height="104" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="180" y="230.6" font-size="15" fill="#292929" text-anchor="middle">VIP 계정 gaeun 의 알림도</text>
-<text x="180" y="252.35" font-size="15" fill="#292929" text-anchor="middle">일반 계정과 같은 절차로 처리</text>
-<text x="180" y="274.1" font-size="15" fill="#292929" text-anchor="middle">잘못 잠기면 계정 관리 업무 중단</text>
-<rect x="380" y="196" width="320" height="104" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="540" y="230.6" font-size="15" fill="#292929" text-anchor="middle">VIP 계정의 알림은</text>
-<text x="540" y="252.35" font-size="15" fill="#292929" text-anchor="middle">담당자가 승인한 뒤에만 조치</text>
-<text x="540" y="274.1" font-size="15" fill="#292929" text-anchor="middle">오늘 샘플: INC-003</text>
-<polyline points="342,128 378,128" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<polyline points="342,248 378,248" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<text x="20" y="326" font-size="14" fill="#666660">12건 · 5분은 설명을 위한 예시 숫자입니다.</text>
+<text x="24" y="34" font-size="19" fill="#292929" font-weight="700">제공 파일: 실습 2-1 뒤, 실습 2-2 앞에 만든다</text>
+<rect x="24" y="58" width="200" height="70" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="124.0" y="87.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="124.0" dy="0" font-weight="700">실습 2-1</tspan><tspan x="124.0" dy="21">containment_store.py</tspan></text>
+<rect x="252" y="58" width="216" height="70" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360.0" y="87.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">제공 파일 세 개</tspan><tspan x="360.0" dy="21">복사해 붙여 넣기</tspan></text>
+<rect x="496" y="58" width="200" height="70" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="596.0" y="87.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="596.0" dy="0" font-weight="700">실습 2-2</tspan><tspan x="596.0" dy="21">그다음 실습</tspan></text>
+<line x1="224" y1="93" x2="250" y2="93" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<line x1="468" y1="93" x2="494" y2="93" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="24" y="162" width="208" height="84" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="128.0" y="188.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="128.0" dy="0" font-weight="700">ip_actions.py</tspan><tspan x="128.0" dy="21">IP 차단 · 자동 해제</tspan><tspan x="128.0" dy="21">도전 2-3 · Unit 3 이 씀</tspan></text>
+<rect x="256" y="162" width="208" height="84" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="188.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">audit.py</tspan><tspan x="360.0" dy="21">감사 기록 한 건</tspan><tspan x="360.0" dy="21">approvals · flow 가 씀</tspan></text>
+<rect x="488" y="162" width="208" height="84" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="592.0" y="188.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="592.0" dy="0" font-weight="700">approvals.py</tspan><tspan x="592.0" dy="21">승인 · 거절 적용</tspan><tspan x="592.0" dy="21">도전 2-2 가 씀</tspan></text>
+<line x1="300" y1="128" x2="140" y2="160" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<line x1="360" y1="128" x2="360" y2="160" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<line x1="420" y1="128" x2="580" y2="160" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="24" y="276" width="672" height="56" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="298.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">확인 명령 결과</tspan><tspan x="360.0" dy="21">제공 파일 정상 허용 목록 IP 라서 차단하지 않음 False</tspan></text>
+<text x="24" y="358" font-size="15" text-anchor="start" fill="#666660">도전 2-1 · 2-3 을 하면 이 파일을 빈칸이 있는 골격으로 바꿔 직접 써 봅니다.</text>
 </g>
 </svg>

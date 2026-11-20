@@ -1,33 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img">
-<title>실습 4-2 보고서: (가) · (나) · (다) 에 채울 칸 체크리스트</title>
-<desc>실습 4-2 보고서의 (가)는 출력 전체와 알림 대상 주소, (나)는 203.0.113.50 을 공격으로 확정할 수 있는지와 단서, (다)는 4번 실패 뒤 성공한 접속에 알림이 생성되는지를 씁니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>알림 7개 중 A1 · A6 · A7 만 진짜 문제를 가리키고 P4 · P5 는 알림이 없습니다</title>
+<desc>왼쪽은 review_alerts.json 의 알림 7개, 오른쪽은 진짜 문제 5개입니다. A1 은 P1, A6 은 P2, A7 은 P3 을 가리키고, A2 · A3 · A4 · A5 는 real 이 False 인 오탐입니다. P4 와 P5 는 가리키는 알림이 없어 미탐입니다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 4-2 보고서: 채울 칸</text>
-<rect x="20" y="52" width="214" height="234" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="20" y="52" width="214" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="127.0" y="79" font-size="15" text-anchor="middle" fill="#292929"><tspan x="127.0" dy="0" font-weight="700">(가) 출력과 값</tspan></text>
-<rect x="32" y="110" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="54" y="122" font-size="14" text-anchor="start" fill="#292929"><tspan x="54" dy="0">출력 전체 (코드 상자)</tspan></text>
-<rect x="32" y="143" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="54" y="155" font-size="14" text-anchor="start" fill="#292929"><tspan x="54" dy="0">로그인 실패 이벤트 수</tspan></text>
-<rect x="32" y="176" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="54" y="188" font-size="14" text-anchor="start" fill="#292929"><tspan x="54" dy="0">알림 대상 주소와 횟수</tspan></text>
-<rect x="253" y="52" width="214" height="234" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="253" y="52" width="214" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="360.0" y="79" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">(나) 핵심 질문</tspan></text>
-<rect x="265" y="110" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="287" y="122" font-size="14" text-anchor="start" fill="#292929"><tspan x="287" dy="0">공격이라고 확정할 수</tspan><tspan x="287" dy="19">있는지</tspan></text>
-<rect x="265" y="162" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="287" y="174" font-size="14" text-anchor="start" fill="#292929"><tspan x="287" dy="0">의심할 단서 (시각 간격,</tspan><tspan x="287" dy="19">성공 뒤 경로)</tspan></text>
-<rect x="265" y="214" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="287" y="226" font-size="14" text-anchor="start" fill="#292929"><tspan x="287" dy="0">판단하려면 더 필요한 정보</tspan></text>
-<rect x="486" y="52" width="214" height="234" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="486" y="52" width="214" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="593.0" y="79" font-size="15" text-anchor="middle" fill="#292929"><tspan x="593.0" dy="0" font-weight="700">(다) 핵심 질문</tspan></text>
-<rect x="498" y="110" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="520" y="122" font-size="14" text-anchor="start" fill="#292929"><tspan x="520" dy="0">4번 실패 뒤 성공: 알림이</tspan><tspan x="520" dy="19">생성되는지와 이유</tspan></text>
-<rect x="498" y="162" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="520" y="174" font-size="14" text-anchor="start" fill="#292929"><tspan x="520" dy="0">생성되지 않을 때 담당자가</tspan><tspan x="520" dy="19">확인하지 못하는 정보</tspan></text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">1.1 알림 7개와 진짜 문제 5개</text>
+<rect x="20" y="50" width="330" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="32" y="75.0" font-size="14" fill="#292929">A1  서버 반복 거절 · dami</text>
+<rect x="20" y="98" width="330" height="40" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="32" y="123.0" font-size="14" fill="#292929">A2  서버 반복 거절 · gaeun</text>
+<rect x="20" y="146" width="330" height="40" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="32" y="171.0" font-size="14" fill="#292929">A3  업무 시간 밖 로그인 · jiwoo</text>
+<rect x="20" y="194" width="330" height="40" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="32" y="219.0" font-size="14" fill="#292929">A4  평소와 다른 IP · jiwoo</text>
+<rect x="20" y="242" width="330" height="40" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="32" y="267.0" font-size="14" fill="#292929">A5  평소와 다른 IP · seoyeon</text>
+<rect x="20" y="290" width="330" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="32" y="315.0" font-size="14" fill="#292929">A6  대량 다운로드 · seoyeon</text>
+<rect x="20" y="338" width="330" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="32" y="363.0" font-size="14" fill="#292929">A7  웹 경로 스캔 · 198.51.100.90</text>
+<rect x="490" y="60" width="210" height="44" rx="8" fill="#ffffff" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="502" y="87.0" font-size="14" fill="#292929">P1  dami</text>
+<polyline points="350,70 486,82" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<rect x="490" y="126" width="210" height="44" rx="8" fill="#ffffff" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="502" y="153.0" font-size="14" fill="#292929">P2  seoyeon</text>
+<polyline points="350,310 486,148" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<rect x="490" y="192" width="210" height="44" rx="8" fill="#ffffff" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="502" y="219.0" font-size="14" fill="#292929">P3  198.51.100.90</text>
+<polyline points="350,358 486,214" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<rect x="490" y="258" width="210" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="502" y="285.0" font-size="14" fill="#292929">P4  203.0.113.50</text>
+<text x="480" y="286" font-size="14" fill="#666660" text-anchor="end">알림 없음</text>
+<rect x="490" y="324" width="210" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="502" y="351.0" font-size="14" fill="#292929">P5  seoyeon</text>
+<text x="480" y="352" font-size="14" fill="#666660" text-anchor="end">알림 없음</text>
+<text x="20" y="400" font-size="15" fill="#666660">초록: 진짜 문제였던 알림 3개 · 호박: 오탐 4개 · 빨강 테두리: 미탐 2개</text>
 </g>
 </svg>

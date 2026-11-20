@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>도전 3-3 에서 직접 쓰는 코드를 함수별로 묶은 요점 지도</title>
+<desc>왼쪽은 함수 이름, 오른쪽은 그 함수에서 직접 쓰는 한두 줄이다. 리턴, 같은지 비교, 이상인지 비교, 함수 결과가 참이면, 결과 저장, 1 늘리기를 함수별로 모았다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">도전 3-3 정리 · 함수별로 쓰는 줄</text>
+<rect x="20" y="60" width="210" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="125.0" y="90.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">pick_recipients</text>
+<rect x="250" y="60" width="450" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="264" y="89.9" font-size="14" fill="#292929">return table[grade]</text>
+<line x1="232" y1="85.0" x2="248" y2="85.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="20" y="122" width="210" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="125.0" y="163.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">should_send</text>
+<rect x="250" y="122" width="450" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="264" y="153.1" font-size="14" fill="#292929">if ticket["notified_count"] == 0:</text>
+<text x="264" y="172.7" font-size="14" fill="#292929">return elapsed &gt;= gap</text>
+<line x1="232" y1="158.0" x2="248" y2="158.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="20" y="206" width="210" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="125.0" y="247.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">send_with_retry</text>
+<rect x="250" y="206" width="450" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="264" y="237.1" font-size="14" fill="#292929">for attempt in range(1, max_tries + 1):</text>
+<text x="264" y="256.7" font-size="14" fill="#292929">if notify(message, url):</text>
+<line x1="232" y1="242.0" x2="248" y2="242.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+<rect x="20" y="290" width="210" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="125.0" y="331.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">challenge3-3_run.py</text>
+<rect x="250" y="290" width="450" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="264" y="321.1" font-size="14" fill="#292929">result = send_ticket_notice(...)</text>
+<text x="264" y="340.7" font-size="14" fill="#292929">sent_count = sent_count + 1</text>
+<line x1="232" y1="326.0" x2="248" y2="326.0" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
+</svg>

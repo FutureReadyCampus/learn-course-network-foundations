@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>도전 1-2 정답: 한도 3개로 dami · seoyeon · gaeun 만 잠기고 나머지는 건너뛴다</title>
+<desc>단계 4 에서 INC-B02 는 이미 잠겨 건너뛰고 INC-B05~B07 은 한도를 넘어 건너뛴다. 단계 1 과 3 을 비교하면 중복 실행 방지로 dami 가 한 번만 잠기고 티켓이 1건이 된다.</desc>
+<defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 1-2 정답: 단계 4 에서 알림 7건이 처리된 결과</text>
+<rect x="20" y="52" width="180" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="73.06" font-size="14" fill="#292929" text-anchor="middle">INC-B01 dami</text>
+<polyline points="202,69 226,69" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p06)"/>
+<rect x="230" y="52" width="230" height="34" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="345" y="73.06" font-size="14" fill="#292929" text-anchor="middle">실행 완료 (잠금 1)</text>
+<rect x="20" y="92" width="180" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="113.06" font-size="14" fill="#292929" text-anchor="middle">INC-B02 dami</text>
+<polyline points="202,109 226,109" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p06)"/>
+<rect x="230" y="92" width="230" height="34" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="345" y="113.06" font-size="14" fill="#292929" text-anchor="middle">건너뜀: 이미 잠겨 있음</text>
+<rect x="20" y="132" width="180" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="153.06" font-size="14" fill="#292929" text-anchor="middle">INC-B03 seoyeon</text>
+<polyline points="202,149 226,149" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p06)"/>
+<rect x="230" y="132" width="230" height="34" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="345" y="153.06" font-size="14" fill="#292929" text-anchor="middle">실행 완료 (잠금 2)</text>
+<rect x="20" y="172" width="180" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="193.06" font-size="14" fill="#292929" text-anchor="middle">INC-B04 gaeun</text>
+<polyline points="202,189 226,189" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p06)"/>
+<rect x="230" y="172" width="230" height="34" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="345" y="193.06" font-size="14" fill="#292929" text-anchor="middle">실행 완료 (잠금 3)</text>
+<rect x="20" y="212" width="180" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="233.06" font-size="14" fill="#292929" text-anchor="middle">INC-B05 jiwoo</text>
+<polyline points="202,229 226,229" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p06)"/>
+<rect x="230" y="212" width="230" height="34" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="345" y="233.06" font-size="14" fill="#292929" text-anchor="middle">건너뜀: 한도 넘음</text>
+<rect x="20" y="252" width="180" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="273.06" font-size="14" fill="#292929" text-anchor="middle">INC-B06 junho</text>
+<polyline points="202,269 226,269" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p06)"/>
+<rect x="230" y="252" width="230" height="34" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="345" y="273.06" font-size="14" fill="#292929" text-anchor="middle">건너뜀: 한도 넘음</text>
+<rect x="20" y="292" width="180" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="110" y="313.06" font-size="14" fill="#292929" text-anchor="middle">INC-B07 hana</text>
+<polyline points="202,309 226,309" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p06)"/>
+<rect x="230" y="292" width="230" height="34" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="345" y="313.06" font-size="14" fill="#292929" text-anchor="middle">건너뜀: 한도 넘음</text>
+<rect x="490" y="52" width="210" height="104" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="595" y="78.19" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">단계 4 요약</text>
+<text x="595" y="99.36" font-size="14" fill="#292929" text-anchor="middle">잠긴 계정 3개</text>
+<text x="595" y="119.66" font-size="14" fill="#292929" text-anchor="middle">dami · seoyeon · gaeun</text>
+<text x="595" y="139.96" font-size="14" fill="#292929" text-anchor="middle">티켓 7건</text>
+<rect x="490" y="170" width="210" height="154" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="595" y="200.89" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">중복 처리 비교</text>
+<text x="595" y="222.06" font-size="14" fill="#292929" text-anchor="middle">단계 1 (실습 1-2 방식)</text>
+<text x="595" y="242.36" font-size="14" fill="#292929" text-anchor="middle">['dami', 'dami'] · 티켓 2</text>
+<text x="595" y="262.66" font-size="14" fill="#292929" text-anchor="middle">단계 3 (안전한 방식)</text>
+<text x="595" y="282.96" font-size="14" fill="#292929" text-anchor="middle">['dami'] · 티켓 1</text>
+<text x="595" y="303.26" font-size="14" fill="#292929" text-anchor="middle">→ 중복 실행 방지</text>
+<rect x="20" y="340" width="680" height="66" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="360" y="366.91" font-size="14" fill="#292929" text-anchor="middle">seoyeon · gaeun 은 재직자라 잘못 잠김 → 한도 없으면 5명, 한도 3개면 2명</text>
+<text x="360" y="387.21" font-size="14" fill="#292929" text-anchor="middle">한도는 잘못된 알림을 알아내지 못하고 영향 범위만 줄인다</text>
+</g>
+</svg>

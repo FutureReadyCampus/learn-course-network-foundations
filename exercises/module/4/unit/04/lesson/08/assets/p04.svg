@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>도전 4-1 정답: 세 함수를 거쳐 gaeun 한 명이 연결된 사건으로 나옵니다</title>
+<desc>attach_user_to_web 이 IP 로 사용자를 채우고, build_timeline 이 세 표를 합쳐 user · time 순으로 정렬하고, find_chains 가 로그 종류 2 이상이면서 60분 이내인 사용자를 고릅니다. gaeun 은 3종류 · 41분이라 연결되고, seoyeon 은 2종류지만 555분이라 연결되지 않습니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 4-1 정답</text>
+<text x="700" y="32" font-size="15" fill="#666660" text-anchor="end">직접 쓰는 곳은 세 함수</text>
+<rect x="20" y="56" width="210" height="110" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="125.0" y="96.4" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">① attach_user_to_web</text>
+<text x="125.0" y="116.0" font-size="14" fill="#292929" text-anchor="middle">ip 열을 map(ip_user)</text>
+<text x="125.0" y="135.6" font-size="14" fill="#292929" text-anchor="middle">IP 마다 사용자 채우기</text>
+<rect x="255" y="56" width="210" height="110" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="96.4" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">② build_timeline</text>
+<text x="360.0" y="116.0" font-size="14" fill="#292929" text-anchor="middle">pd.concat([세 표])</text>
+<text x="360.0" y="135.6" font-size="14" fill="#292929" text-anchor="middle">user · time 순으로 정렬</text>
+<rect x="490" y="56" width="210" height="110" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="595.0" y="96.4" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">③ find_chains</text>
+<text x="595.0" y="116.0" font-size="14" fill="#292929" text-anchor="middle">로그 종류 2 이상</text>
+<text x="595.0" y="135.6" font-size="14" fill="#292929" text-anchor="middle">그리고 60분 이내</text>
+<polyline points="230,111 251,111" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="465,111 486,111" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="595,166 595,186 480,186 480,200" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="595,186 240,186 240,200" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="20" y="204" width="340" height="120" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="190.0" y="239.6" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">gaeun: 연결됨</text>
+<text x="190.0" y="259.2" font-size="14" fill="#292929" text-anchor="middle">web 1 · server 3 · saas 1</text>
+<text x="190.0" y="278.8" font-size="14" fill="#292929" text-anchor="middle">서로 다른 로그 3종류 · 41분 안</text>
+<text x="190.0" y="298.4" font-size="14" fill="#292929" text-anchor="middle">공격이라고 확정할 수는 없음</text>
+<rect x="380" y="204" width="320" height="120" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="540.0" y="239.6" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">seoyeon: 연결 안 됨</text>
+<text x="540.0" y="259.2" font-size="14" fill="#292929" text-anchor="middle">로그 종류 2 → 조건 ① 만족</text>
+<text x="540.0" y="278.8" font-size="14" fill="#292929" text-anchor="middle">555분 → 조건 ② 60분 초과</text>
+<text x="540.0" y="298.4" font-size="14" fill="#292929" text-anchor="middle">탐지 결과에서 확인하기 어려움</text>
+<text x="20" y="356" font-size="15" fill="#666660">자주 틀리는 곳: pd.concat 에는 표를 대괄호 [ ] 리스트로 전달합니다.</text>
+<text x="20" y="382" font-size="15" fill="#666660">sort_values 결과는 다시 timeline 에 담아야 정렬이 남습니다.</text>
+</g>
+</svg>

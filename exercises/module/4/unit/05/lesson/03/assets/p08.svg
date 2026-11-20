@@ -1,28 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
-<title>Unit 5 에서 한 세 가지를 확인하고 Unit 6 으로 넘어간다</title>
-<desc>Unit 5 에서는 실습 5-1 에서 요청이 급증한 분을 찾고, 실습 5-2 에서 두 알림을 alerts.json 에 모았고, 마무리에서 깃허브에 올렸다. 다음 Unit 6 에서는 알림 형식에 새 유형을 더한다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>마무리 정리: 확인 · 올리기 순서와 다음 Module 5 자동 대응</title>
+<desc>pwd · ls 로 파일을 확인하고, git status 로 .env · .venv 를 본 뒤 git add, commit, push 로 올리고 브라우저에서 확인합니다. 다음 Module 5는 high 대상에 사람이 하던 대응을 프로그램이 대신하게 하며, 새 폴더 soar_response 에서 작업합니다.</desc>
 <defs><marker id="a-p08" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
-<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">이번 Unit 마무리 · 확인 목록</text>
-<rect x="30" y="60" width="520" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="46" y="75" width="24" height="24" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<path d="M51,87 L57,93 L66,81" fill="none" stroke="#1f7a4a" stroke-width="2"/>
-<text x="84" y="92" font-size="15" fill="#292929">분마다 세고 평소 평균의 3배 이상인 분 찾기</text>
-<rect x="570" y="60" width="120" height="54" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="630" y="92.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실습 5-1</text>
-<rect x="30" y="130" width="520" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="46" y="145" width="24" height="24" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<path d="M51,157 L57,163 L66,151" fill="none" stroke="#1f7a4a" stroke-width="2"/>
-<text x="84" y="162" font-size="15" fill="#292929">두 알림을 같은 모양으로 alerts.json 에 모으기</text>
-<rect x="570" y="130" width="120" height="54" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="630" y="162.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실습 5-2</text>
-<rect x="30" y="200" width="520" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="46" y="215" width="24" height="24" rx="4" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<path d="M51,227 L57,233 L66,221" fill="none" stroke="#1f7a4a" stroke-width="2"/>
-<text x="84" y="232" font-size="15" fill="#292929">만든 파일과 보고서를 깃허브에 올리기</text>
-<rect x="570" y="200" width="120" height="54" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="630" y="232.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">마무리</text>
-<rect x="30" y="280" width="660" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="360" y="315.2" font-size="15" fill="#292929" text-anchor="middle">다음은 Unit 6 · 알림 형식에 SaaS 이상 사용과 악성 행위 징후 유형을 더합니다</text>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">마무리 정리</text>
+<g fill="#f1f1ef" stroke="#dededb" stroke-width="1.5">
+<rect x="20" y="48" width="158" height="84" rx="8"/><rect x="194" y="48" width="158" height="84" rx="8"/>
+<rect x="368" y="48" width="158" height="84" rx="8"/><rect x="542" y="48" width="158" height="84" rx="8"/>
+</g>
+<g fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p08)">
+<polyline points="178,90 190,90"/><polyline points="352,90 364,90"/><polyline points="526,90 538,90"/>
+</g>
+<text font-size="16" fill="#292929" text-anchor="middle" font-weight="700">
+<tspan x="99" y="76">파일 확인</tspan><tspan x="273" y="76">올릴 파일 확인</tspan><tspan x="447" y="76">올리기</tspan><tspan x="621" y="76">올린 뒤</tspan>
+</text>
+<text font-size="14" fill="#292929" text-anchor="middle">
+<tspan x="99" y="102">pwd · ls</tspan><tspan x="99" y="121" fill="#666660">anomaly_detection 에서</tspan>
+<tspan x="273" y="102">git status</tspan><tspan x="273" y="121" fill="#e0442e">.env · .venv 면 멈춤</tspan>
+<tspan x="447" y="102">git add . → commit</tspan><tspan x="447" y="121">→ git push</tspan>
+<tspan x="621" y="102">브라우저에서</tspan><tspan x="621" y="121">폴더와 파일 확인</tspan>
+</text>
+<text x="20" y="172" font-size="19" fill="#292929" font-weight="700">이어지는 곳</text>
+<rect x="20" y="190" width="250" height="120" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="145" y="222" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Module 4 이상탐지</text>
+<text x="145" y="250" font-size="14" fill="#292929" text-anchor="middle">쌓인 로그에서</text>
+<text x="145" y="270" font-size="14" fill="#292929" text-anchor="middle">평소와 다른 일 찾기</text>
+<text x="145" y="290" font-size="14" fill="#292929" text-anchor="middle">대상마다 점수와 등급</text>
+<polyline points="270,250 306,250" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p08)"/>
+<text x="288" y="238" font-size="14" fill="#666660" text-anchor="middle">high</text>
+<rect x="312" y="190" width="388" height="120" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="506" y="222" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Module 5 자동 대응</text>
+<text x="506" y="248" font-size="14" fill="#292929" text-anchor="middle">사람이 하던 일을 프로그램이 대신</text>
+<g fill="#ffffff" stroke="#1f7a4a" stroke-width="1.2">
+<rect x="326" y="262" width="112" height="34" rx="6"/><rect x="450" y="262" width="112" height="34" rx="6"/><rect x="574" y="262" width="112" height="34" rx="6"/>
+</g>
+<text font-size="14" fill="#292929" text-anchor="middle"><tspan x="382" y="284">계정 잠그기</tspan><tspan x="506" y="284">티켓 남기기</tspan><tspan x="630" y="284">담당자 알리기</tspan></text>
+<rect x="20" y="328" width="680" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="36" y="352" font-size="14" fill="#292929">실습 5-2 마지막 칸(담당자가 가장 먼저 할 일)이 대응 목록의 참고 자료가 됩니다.</text>
+<text x="36" y="374" font-size="14" fill="#292929">Module 5는 새 폴더 <tspan font-weight="700">soar_response</tspan> 에서 작업합니다 (Module 5의 시작하기에서 만듦).</text>
 </g>
 </svg>
