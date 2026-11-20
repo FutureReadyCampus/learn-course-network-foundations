@@ -91,7 +91,7 @@ low 198.51.100.90 30 ['경로 스캔']
 
 **자주 틀리는 곳**
 
-- `.sum()` 에서 괄호를 빼면 오류가 납니다. 괄호 없는 `grouped["points"].sum` 은 값이 아니라 메서드라서 다음 줄의 `totals.sort_values` 에서 `AttributeError` 가 납니다.
+- `.sum()` 에서 괄호를 빼면 오류가 납니다. 괄호 없는 `grouped["points"].sum` 은 합계 값이 아니라 아직 실행하지 않은 메서드(method · 메서드, 점 뒤에 붙여 쓰는 함수)라서 다음 줄의 `totals.sort_values` 에서 `AttributeError` 가 납니다.
   - 실행하면 다음 오류가 납니다(<mark style="background:#ffc4d6">`'function' object has no attribute 'sort_values'`</mark> 또는 비슷한 문구가 나오면 이 실수입니다).
 
 ```
