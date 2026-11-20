@@ -47,7 +47,7 @@
 <rect x="154" y="266" width="80" height="30" rx="0" fill="#e6eefb" stroke="#dededb"/>
 <text x="194.0" y="285.9" font-size="14" fill="#292929" text-anchor="middle">web</text>
 <rect x="234" y="266" width="70" height="30" rx="0" fill="#ffffff" stroke="#dededb"/>
-<text x="269.0" y="285.9" font-size="14" fill="#292929" text-anchor="middle">None</text>
+<text x="269.0" y="285.9" font-size="14" fill="#292929" text-anchor="middle">NaN</text>
 <rect x="304" y="266" width="122" height="30" rx="0" fill="#ffffff" stroke="#dededb"/>
 <text x="365.0" y="285.9" font-size="14" fill="#292929" text-anchor="middle">198.51.100.21</text>
 <rect x="426" y="266" width="176" height="30" rx="0" fill="#ffffff" stroke="#dededb"/>
@@ -61,7 +61,7 @@
 <rect x="154" y="296" width="80" height="30" rx="0" fill="#e6eefb" stroke="#dededb"/>
 <text x="194.0" y="315.9" font-size="14" fill="#292929" text-anchor="middle">web</text>
 <rect x="234" y="296" width="70" height="30" rx="0" fill="#ffffff" stroke="#dededb"/>
-<text x="269.0" y="315.9" font-size="14" fill="#292929" text-anchor="middle">None</text>
+<text x="269.0" y="315.9" font-size="14" fill="#292929" text-anchor="middle">NaN</text>
 <rect x="304" y="296" width="122" height="30" rx="0" fill="#ffffff" stroke="#dededb"/>
 <text x="365.0" y="315.9" font-size="14" fill="#292929" text-anchor="middle">198.51.100.21</text>
 <rect x="426" y="296" width="176" height="30" rx="0" fill="#ffffff" stroke="#dededb"/>

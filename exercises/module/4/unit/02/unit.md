@@ -10,6 +10,7 @@ lessons:
 - path: lesson/06/lesson.md
 - path: lesson/07/lesson.md
 - path: lesson/08/lesson.md
+- path: lesson/09/lesson.md
 ---
 
 # 판다스로 세고 기준 정하기

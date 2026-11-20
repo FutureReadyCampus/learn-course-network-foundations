@@ -1,29 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
-<title>정규화된 이벤트 57개를 판다스 표로 읽어 실습 2-1 과 실습 2-2 에서 센다</title>
-<desc>Unit 1 에서 맞춘 normalized_events.json 을 판다스로 표처럼 읽습니다. 실습 2-1은 실패만 골라 소스별로 세고, 실습 2-2는 사용자별·시간대별로 묶어 세고 CSV 로 저장합니다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>오늘은 이벤트 57개를 판다스로 세고, 로그인 실패 5번 이상인 주소를 찾는다</title>
+<desc>normalized_events.json 을 판다스 표로 읽어 실습 2-1 에서 실패를 소스별로 세고, 실습 2-2 에서 사용자별·시간대별로 묶어 CSV 로 저장하고, 실습 2-3 에서 알림 기준 5번 이상인 주소를 찾습니다. 도전 2-1 · 2-2 는 선택이고, 3시간은 15 · 110 · 40 · 15분으로 나눕니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">목표: 판다스로 이벤트 세기</text>
-<rect x="24" y="58" width="220" height="96" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="134" y="90.0" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">입력</text>
-<text x="134" y="110.8" font-size="14" text-anchor="middle" fill="#292929">normalized_events.json</text>
-<text x="134" y="131.1" font-size="14" text-anchor="middle" fill="#666660">이벤트 57개</text>
-<line x1="246" y1="106" x2="262" y2="106" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="266" y="58" width="150" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="341" y="100.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">판다스</text>
-<text x="341" y="120.9" font-size="14" text-anchor="middle" fill="#666660">표처럼 읽기</text>
-<line x1="418" y1="92" x2="462" y2="82" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<line x1="418" y1="122" x2="462" y2="196" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="466" y="50" width="230" height="80" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="581" y="74.0" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">실습 2-1</text>
-<text x="581" y="94.8" font-size="14" text-anchor="middle" fill="#292929">실패만 골라</text>
-<text x="581" y="115.1" font-size="14" text-anchor="middle" fill="#292929">소스별로 세기</text>
-<rect x="466" y="148" width="230" height="104" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="581" y="173.9" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">실습 2-2</text>
-<text x="581" y="194.6" font-size="14" text-anchor="middle" fill="#292929">사용자별 · 시간대별 묶기</text>
-<text x="581" y="214.9" font-size="14" text-anchor="middle" fill="#292929">실패를 CSV 로 저장</text>
-<text x="581" y="235.2" font-size="14" text-anchor="middle" fill="#292929">깃허브에 올리기</text>
-<rect x="24" y="272" width="672" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360" y="301.4" font-size="15" text-anchor="middle" fill="#292929">SIEM(심)의 다음 단계인 탐지를 위한 준비 · 실습마다 문제는 하나</text>
+<text x="24" y="34" font-size="19" fill="#292929" font-weight="700">오늘의 계획: 판다스로 세고 기준과 비교하기</text>
+<rect x="24" y="58" width="180" height="90" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="114" y="88" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">시작하기</text>
+<text x="114" y="110" font-size="14" text-anchor="middle" fill="#292929">pandas 설치</text>
+<text x="114" y="130" font-size="14" text-anchor="middle" fill="#666660">이벤트 57개 파일</text>
+<line x1="206" y1="103" x2="226" y2="103" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="230" y="58" width="146" height="90" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="303" y="88" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">실습 2-1</text>
+<text x="303" y="110" font-size="14" text-anchor="middle" fill="#292929">실패만 골라</text>
+<text x="303" y="130" font-size="14" text-anchor="middle" fill="#292929">소스별로 세기</text>
+<line x1="378" y1="103" x2="392" y2="103" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="396" y="58" width="146" height="90" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="469" y="88" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">실습 2-2</text>
+<text x="469" y="110" font-size="14" text-anchor="middle" fill="#292929">묶어 세기</text>
+<text x="469" y="130" font-size="14" text-anchor="middle" fill="#292929">CSV 로 저장</text>
+<line x1="544" y1="103" x2="558" y2="103" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
+<rect x="562" y="58" width="134" height="90" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="629" y="88" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">실습 2-3</text>
+<text x="629" y="110" font-size="14" text-anchor="middle" fill="#292929">로그인 실패</text>
+<text x="629" y="130" font-size="14" text-anchor="middle" fill="#292929">5번 이상 주소</text>
+<rect x="230" y="170" width="466" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="463" y="196" font-size="15" text-anchor="middle" fill="#666660" font-weight="700">도전 2-1 · 2-2 (선택)</text>
+<text x="463" y="215" font-size="14" text-anchor="middle" fill="#666660">알림 기준 직접 정하기 · 이벤트 유형별로 세기</text>
+<text x="24" y="266" font-size="15" fill="#292929" font-weight="700">3시간 나누기</text>
+<rect x="24" y="280" width="62" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="55" y="304" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">15분</text>
+<text x="55" y="324" font-size="14" text-anchor="middle" fill="#666660">시작</text>
+<rect x="90" y="280" width="430" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="305" y="304" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">110분</text>
+<text x="305" y="324" font-size="14" text-anchor="middle" fill="#292929">핵심 실습 세 개 (35 · 40 · 35분)</text>
+<rect x="524" y="280" width="114" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="581" y="304" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">40분</text>
+<text x="581" y="324" font-size="14" text-anchor="middle" fill="#292929">보고서 · 글</text>
+<rect x="642" y="280" width="54" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="669" y="304" font-size="14" text-anchor="middle" fill="#292929" font-weight="700">15분</text>
+<text x="669" y="324" font-size="14" text-anchor="middle" fill="#292929">올리기</text>
+<text x="24" y="372" font-size="14" fill="#666660">실습 2-3 의 login_detection.py 는 Unit 3 에서 다시 불러 씁니다</text>
 </g>
 </svg>

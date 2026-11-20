@@ -22,7 +22,7 @@ source:
 > - 하루 중 언제 많이 났는지: 몇 시에 몇 개인지
 >
 > 그리고 실패한 이벤트만 따로 파일로 저장해 주세요. 담당자가 엑셀로 열어 근거를 확인합니다.」
-> - **왜 중요한가**: <mark>실패 23개를 전체 합계로만 보면 평범한 숫자입니다.</mark> 사용자별 · 시간대별로 묶으면 한 사용자나 한 시간대에 많이 난 실패가 드러납니다. 근거 이벤트를 파일로 저장해야 담당자가 알림이 왜 났는지 확인할 수 있습니다. Unit 2에서 평소 기준을 세우는 기초 계산이기도 합니다.
+> - **왜 중요한가**: <mark>실패 23개를 전체 합계로만 보면 평범한 숫자입니다.</mark> 사용자별 · 시간대별로 묶으면 한 사용자나 한 시간대에 많이 난 실패가 드러납니다. 근거 이벤트를 파일로 저장해야 담당자가 알림이 왜 났는지 확인할 수 있습니다. 실습 2-3에서 주소별 로그인 실패를 셀 때도 이 묶어 세기를 씁니다.
 
 ## 왜 실패를 묶어서 세는가
 
@@ -61,41 +61,21 @@ print(grouped)                                                                  
 3    saas           login
 4     web      GET /admin
 5  server  ACCOUNT:CHANGE
-<pandas.core.groupby.generic.DataFrameGroupBy object at 0x10a3a7430>
+<pandas.api.typing.DataFrameGroupBy object at 0x10656da90>
 ```
 
-위 코드에 이어서 실행하는 다음 코드입니다.
-
-```python
-group_count = len(grouped)  # 그룹이 몇 개인지 센다
-print(group_count)          # 3 이 나온다 — saas · server · web 세 그룹
-```
-
-실행 결과:
-
-```
-3
-```
-
-- 읽는 법: <mark>첫 번째 출력에는 그룹의 개수나 내용이 없습니다.</mark> 묶기만 했고 아직 세지 않았기 때문입니다. `0x` 로 시작하는 부분은 실행할 때마다 달라도 괜찮습니다. <mark>두 번째 출력 `3` 은 그룹이 3개라는 뜻</mark>입니다. `source` 값이 `saas` · `server` · `web` 세 가지이기 때문입니다.
+- 읽는 법: <mark>마지막 줄에는 그룹의 개수나 내용이 없습니다.</mark> 묶기만 했고 아직 세지 않았기 때문입니다. `0x` 로 시작하는 부분은 실행할 때마다 다르고, `DataFrameGroupBy` 앞부분은 판다스 버전에 따라 달라도 괜찮습니다(예: `pandas.core.groupby.generic.`).
 - <mark>묶기만 해서는 그룹마다 몇 개인지 알 수 없습니다.</mark> 개수는 다음 상자의 `.size()` 로 셉니다.
 
 **판다스 문법 상자 — 그룹마다 행 수 세기**
 
 **<mark>`.size()`</mark> 는 그룹마다 행이 몇 개인지 셉니다**
 
+위 코드에 이어서 실행하는 다음 코드입니다.
+
 ```python
-import pandas as pd                                                                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
-
-data = {                                                                                              # 실패한 이벤트만 적은 연습용 작은 데이터
-    "source": ["web", "server", "web", "saas", "web", "server"],                                      # source 열에 들어갈 값들
-    "action": ["GET /board", "POST /login", "GET /report", "login", "GET /admin", "ACCOUNT:CHANGE"],  # action 열에 들어갈 값들
-}
-failed = pd.DataFrame(data)                                                                           # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
-grouped = failed.groupby("source")                                                                    # source 값이 같은 줄끼리 묶는다
-
-source_fail_counts = grouped.size()                                                                   # 그룹마다 행이 몇 개인지 센다 — 그룹 이름이 왼쪽에 나온다
-print(source_fail_counts)                                                                             # saas 1 · server 2 · web 3 (그룹 이름 순서)
+source_fail_counts = grouped.size()  # 그룹마다 행이 몇 개인지 센다 — 그룹 이름이 왼쪽에 나온다
+print(source_fail_counts)            # saas 1 · server 2 · web 3 (그룹 이름 순서)
 ```
 
 실행 결과:
@@ -109,7 +89,31 @@ dtype: int64
 ```
 
 - 읽는 법: 왼쪽이 그룹 이름(`source` 값), 오른쪽이 그 그룹의 행 수입니다. 그룹 이름은 가나다 · 알파벳 순서로 나옵니다. 1 + 2 + 3 = 6 이라 표의 행 수와 같습니다.
-- 개수만 세려면 실습 2-1의 `value_counts()` 로도 같은 결과가 나옵니다. <mark>그래도 `groupby` 를 배우는 것은 Unit 2에서 그룹마다 평균 같은 다른 계산도 하기 때문입니다.</mark> 이번 Unit에서는 개수(`size`)만 씁니다.
+- 개수만 세려면 실습 2-1의 `value_counts()` 로도 같은 결과가 나옵니다. <mark>그래도 `groupby` 를 배우는 것은 묶은 그룹마다 평균 같은 다른 계산도 할 수 있기 때문입니다.</mark> 오늘은 개수(`size`)만 씁니다.
+
+**판다스 문법 상자 — 큰 값부터 정렬하기**
+
+**<mark>`.sort_values(ascending=False)`</mark> 는 값이 큰 것부터 다시 정렬합니다**
+
+위 코드에 이어서 실행하는 다음 코드입니다.
+
+```python
+sorted_source_fail_counts = source_fail_counts.sort_values(ascending=False)  # 개수가 큰 그룹부터 다시 정렬한다(ascending=False 는 큰 값부터 정렬)
+print(sorted_source_fail_counts)                                             # web 3 · server 2 · saas 1
+```
+
+실행 결과:
+
+```
+source
+web       3
+server    2
+saas      1
+dtype: int64
+```
+
+- 읽는 법: 값은 앞의 묶어 세기와 같고 <mark>행 순서만 바뀐 것</mark>입니다. 그룹 이름 순서(saas → server → web)에서 개수가 큰 순서(web → server → saas)가 되었습니다.
+- `ascending=False` 는 큰 값부터 정렬하라는 뜻이고, <mark>이 부분을 빼면 작은 값부터 나옵니다</mark>.
 
 **알아 둘 것 — 묶고 세기를 한 줄로 쓰기**
 
@@ -137,93 +141,25 @@ web       13
 dtype: int64
 ```
 
-- 읽는 법: 두 줄로 나눠 쓴 앞의 결과와 같습니다. `failed.groupby("source")` 가 만든 그룹에 바로 `.size()` 를 붙여서, 중간 이름(`grouped`)을 따로 만들지 않을 뿐입니다.
+- 읽는 법: 이번에는 실제 이벤트 파일의 실패 23개를 셌습니다. `failed.groupby("source")` 가 만든 그룹에 바로 `.size()` 를 붙여서, 중간 이름(`grouped`)을 따로 만들지 않을 뿐입니다.
 
-**판다스 문법 상자 — 큰 값부터 정렬하기**
+**알아 둘 것 — 미리 채운 `add_hour` 읽기: 시각에서 「시」만 꺼내 새 열로 붙이기**
 
-**<mark>`.sort_values(ascending=False)`</mark> 는 값이 큰 것부터 다시 정렬합니다**
+`add_hour` 는 세 줄입니다. 실습 2-2 에 미리 채워져 있어서 직접 쓰지 않고 읽기만 합니다.
 
-```python
-import pandas as pd                                                                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
-
-data = {                                                                                              # 실패한 이벤트만 적은 연습용 작은 데이터
-    "source": ["web", "server", "web", "saas", "web", "server"],                                      # source 열에 들어갈 값들
-    "action": ["GET /board", "POST /login", "GET /report", "login", "GET /admin", "ACCOUNT:CHANGE"],  # action 열에 들어갈 값들
-}
-failed = pd.DataFrame(data)                                                                           # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
-grouped = failed.groupby("source")                                                                    # source 값이 같은 줄끼리 묶는다
-source_fail_counts = grouped.size()                                                                   # 그룹마다 행이 몇 개인지 센다 — saas 1 · server 2 · web 3
-print(source_fail_counts)                                                                             # 정렬하기 전의 개수를 출력한다
-```
-
-실행 결과:
-
-```
-source
-saas      1
-server    2
-web       3
-dtype: int64
-```
-
-위 코드에 이어서 실행하는 다음 코드입니다.
-
-```python
-sorted_source_fail_counts = source_fail_counts.sort_values(ascending=False)  # 개수가 큰 그룹부터 다시 정렬한다(ascending=False 는 큰 값부터 정렬)
-print(sorted_source_fail_counts)                                             # web 3 · server 2 · saas 1
-```
-
-실행 결과:
-
-```
-source
-web       3
-server    2
-saas      1
-dtype: int64
-```
-
-- 읽는 법: 값은 앞의 묶어 세기와 같고 <mark>행 순서만 바뀐 것</mark>입니다. 그룹 이름 순서(saas → server → web)에서 개수가 큰 순서(web → server → saas)가 되었습니다.
-- `ascending=False` 는 큰 값부터 정렬하라는 뜻이고, <mark>이 부분을 빼면 작은 값부터 나옵니다</mark>.
-
-**알아 둘 것 — 정렬까지 이어 쓴 모양도 읽을 수 있어야 합니다**
-
-묶기, 세기, 정렬은 실무에서 아래처럼 점으로 이어 한 줄에 쓰기도 합니다. 왼쪽부터 차례로 하나씩 일어난다고 읽으면 됩니다. 직접 쓰지 않고 읽기만 합니다. 자세한 쓰임은 다음에 차차 배웁니다.
-
-```python
-import pandas as pd                                                                       # 판다스를 pd 라는 짧은 이름으로 불러온다
-events = pd.read_json("normalized_events.json")                                           # 이벤트 파일을 표로 읽는다
-
-results = events["result"]                                                                # result 열만 꺼낸다
-is_fail = results == "실패"                                                               # 행마다 실패면 True, 아니면 False 를 만든다
-failed = events[is_fail]                                                                  # True 인 행만 남겨 새 표(failed)를 만든다
-
-sorted_source_fail_counts = failed.groupby("source").size().sort_values(ascending=False)  # 묶기 → 세기 → 큰 값부터 정렬을 한 줄로 이은 모양
-print(sorted_source_fail_counts)                                                          # web 13 · server 9 · saas 1
-```
-
-실행 결과:
-
-```
-source
-web       13
-server     9
-saas       1
-dtype: int64
-```
-
-**알아 둘 것 — 문자열 시각을 시각 값으로 바꾸기**
-
-`pd.to_datetime` 은 `"2026-11-02 09:01:05"` 같은 문자열을 날짜·시간 값으로 바꿉니다. <mark>날짜·시간 값이어야 「시」나 「분」 같은 부분만 꺼낼 수 있습니다.</mark> 실습 2-2 의 `add_hour` 에 미리 채워져 있어서 직접 쓰지 않고 읽기만 합니다. 자세한 쓰임은 다음에 차차 배웁니다.
+1. `pd.to_datetime(열)` 은 `"2026-11-02 09:01:05"` 같은 문자열을 날짜·시간 값으로 바꿉니다. <mark>날짜·시간 값이어야 「시」나 「분」 같은 부분만 꺼낼 수 있습니다.</mark>
+2. <mark>`.dt.hour` 는 시각 값에서 「시」만 숫자로 꺼냅니다</mark>(02:14 → 2, 09:01 → 9).
+3. `표["새 열 이름"] = 값` 은 <mark>표 맨 오른쪽에 새 열을 붙입니다</mark>.
 
 ```python
 import pandas as pd                              # 판다스를 pd 라는 짧은 이름으로 불러온다
 events = pd.read_json("normalized_events.json")  # 이벤트 파일을 표로 읽는다
 
-time_texts = events["time"]                      # time 열만 꺼낸다 — 문자열 시각 57개
-times = pd.to_datetime(time_texts)               # 문자열 시각 57개를 시각 값으로 바꾼다
-first_times = times.head(3)                      # 처음 3개만 남긴다
-print(first_times)                               # 시각 3개와 열 이름, 종류(datetime64)가 나온다
+times = pd.to_datetime(events["time"])           # 1. 문자열 시각 57개를 시각 값으로 바꾼다
+hours = times.dt.hour                            # 2. 시각 값에서 「시」만 숫자로 꺼낸다
+events["hour"] = hours                           # 3. 표 맨 오른쪽에 hour 라는 새 열을 붙인다
+print(times.head(3))                             # 바꾼 시각의 처음 3개 — 맨 아래에 종류(datetime64)가 나온다
+print(events.shape)                              # (57, 7) — 열이 6개에서 7개가 되었다
 ```
 
 실행 결과:
@@ -232,66 +168,15 @@ print(first_times)                               # 시각 3개와 열 이름, �
 0   2026-11-02 02:14:08
 1   2026-11-02 09:01:05
 2   2026-11-02 09:01:06
-Name: time, dtype: datetime64[ns]
-```
-
-- 읽는 법: 겉모습은 같지만, 맨 아래 <mark>`datetime64` 는 이 열이 날짜·시간 값으로 바뀌었다는 표시</mark>입니다.
-
-**알아 둘 것 — 시각 값에서 「시」만 꺼내기**
-
-<mark>`.dt.hour` 는 시각 값에서 「시」만 숫자로 꺼냅니다.</mark> 실습 2-2 의 `add_hour` 에 미리 채워져 있어서 직접 쓰지 않고 읽기만 합니다. 자세한 쓰임은 다음에 차차 배웁니다.
-
-```python
-import pandas as pd                              # 판다스를 pd 라는 짧은 이름으로 불러온다
-events = pd.read_json("normalized_events.json")  # 이벤트 파일을 표로 읽는다
-
-time_texts = events["time"]                      # time 열만 꺼낸다
-times = pd.to_datetime(time_texts)               # 문자열 시각을 시각 값으로 바꾼다
-
-hours = times.dt.hour                            # 시각 값에서 「시」만 숫자로 꺼낸다(02:14 → 2, 09:01 → 9)
-first_hours = hours.head(3)                      # 처음 3개만 남긴다
-for hour in first_hours:                         # 처음 3개를 하나씩 꺼낸다
-    print(hour)                                  # 2, 9, 9 가 한 줄씩 나온다
-```
-
-실행 결과:
-
-```
-2
-9
-9
-```
-
-- 읽는 법: 첫 이벤트(02:14)는 2, 둘째와 셋째(09:01)는 9입니다.
-
-**알아 둘 것 — 표에 새 열 붙이기**
-
-`표["새 열 이름"] = 값` 은 <mark>표 맨 오른쪽에 새 열을 붙입니다</mark>. 실습 2-2 의 `add_hour` 에 미리 채워져 있어서 직접 쓰지 않고 읽기만 합니다. 자세한 쓰임은 다음에 차차 배웁니다.
-
-```python
-import pandas as pd                              # 판다스를 pd 라는 짧은 이름으로 불러온다
-events = pd.read_json("normalized_events.json")  # 이벤트 파일을 표로 읽는다
-
-time_texts = events["time"]                      # time 열만 꺼낸다
-times = pd.to_datetime(time_texts)               # 문자열 시각을 시각 값으로 바꾼다
-hours = times.dt.hour                            # 시각 값에서 「시」만 숫자로 꺼낸다
-
-events["hour"] = hours                           # 표 맨 오른쪽에 hour 라는 새 열을 붙인다
-shape = events.shape                             # 붙인 뒤 표의 크기를 꺼낸다
-print(shape)                                     # (57, 7) — 열이 6개에서 7개가 되었다
-```
-
-실행 결과:
-
-```
+Name: time, dtype: datetime64[us]
 (57, 7)
 ```
 
-- 읽는 법: 행은 그대로 57개이고, <mark>열이 6개에서 7개로 늘었습니다</mark>.
+- 읽는 법: 시각은 겉모습이 같지만, <mark>`datetime64` 는 이 열이 날짜·시간 값으로 바뀌었다는 표시</mark>입니다. 괄호 안(`[us]` · `[ns]`)은 판다스 버전에 따라 다를 수 있습니다. 행은 그대로 57개이고, <mark>`hour` 열이 붙어 열이 7개로 늘었습니다</mark>.
 
 **알아 둘 것 — 표를 CSV 파일로 저장하기**
 
-`표.to_csv(파일 이름, index=False)` 는 표를 엑셀로도 열 수 있는 CSV 파일(값을 쉼표(,)로 구분해 적은 텍스트 파일)로 저장합니다. 실습 2-2 의 `save_failed` 에 미리 채워져 있어서 직접 쓰지 않고 읽기만 합니다. 자세한 쓰임은 다음에 차차 배웁니다.
+`표.to_csv(파일 이름, index=False)` 는 표를 엑셀로도 열 수 있는 CSV 파일(값을 쉼표(,)로 구분해 적은 텍스트 파일)로 저장합니다. 실습 2-2 의 `save_failed` 에 미리 채워져 있어서 직접 쓰지 않고 읽기만 합니다.
 
 ```python
 failed.to_csv("failed_events.csv", index=False)  # 표를 failed_events.csv 파일로 저장한다 — index=False 는 행 번호를 저장하지 않는다는 뜻
