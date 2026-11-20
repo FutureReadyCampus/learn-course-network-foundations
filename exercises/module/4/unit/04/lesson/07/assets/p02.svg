@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
 <title>규칙마다 찾는 문제가 달라서, 알림 표를 합쳐 한꺼번에 평가합니다</title>
-<desc>Unit 3 · 7 규칙의 알림은 P1 · P2 · P3 을 찾고, 로그인 규칙의 알림은 P4 를 찾습니다. 두 알림 표를 합쳐 평가하면 놓친 문제가 줄고, 알림 수 · 오탐 수 · 놓친 문제 수 세 숫자로 전후를 비교합니다.</desc>
+<desc>기존 탐지 규칙의 알림은 P1 · P2 · P3 을 찾고, 로그인 규칙의 알림은 P4 를 찾습니다. 두 알림 표를 합쳐 평가하면 놓친 문제가 줄고, 알림 수 · 오탐 수 · 놓친 문제 수 세 숫자로 전후를 비교합니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">왜 규칙을 합쳐 미탐을 줄이는가</text>
 <rect x="20" y="60" width="250" height="80" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="145.0" y="95.2" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">Unit 3 · 7 규칙 알림</text>
+<text x="145.0" y="95.2" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">기존 규칙 알림</text>
 <text x="145.0" y="114.8" font-size="14" fill="#292929" text-anchor="middle">P1 · P2 · P3 을 찾음</text>
 <rect x="20" y="156" width="250" height="80" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="145.0" y="191.2" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">로그인 규칙 알림</text>

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>203.0.113.80 에서 온 알림 네 개 중 예외 규칙은 A4 · A5 만 뺍니다</title>
+<desc>A3 은 업무 시간 밖 로그인, A6 은 대량 다운로드라 다른 규칙이므로 남습니다. A4 · A5 가 빠지면 오탐은 4개에서 2개(A2 · A3)로 줄어듭니다. 믿는 IP 에서 계정이 도용되면 그 규칙은 알림을 내지 않는 위험도 있습니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">2.1 같은 IP 에서 온 알림 네 개</text>
+<text x="700" y="32" font-size="15" fill="#666660" text-anchor="end">IP_RULE = SaaS 평소와 다른 IP</text>
+<rect x="20" y="52" width="70" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="55.0" y="77.0" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">id</text>
+<rect x="90" y="52" width="260" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="220.0" y="77.0" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">규칙</text>
+<rect x="350" y="52" width="110" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="405.0" y="77.0" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">대상</text>
+<rect x="460" y="52" width="90" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="505.0" y="77.0" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">real</text>
+<rect x="550" y="52" width="150" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="625.0" y="77.0" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">예외가 빼는가</text>
+<rect x="20" y="98" width="70" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="55.0" y="123.0" font-size="14" fill="#292929" text-anchor="middle">A3</text>
+<rect x="90" y="98" width="260" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="220.0" y="123.0" font-size="14" fill="#292929" text-anchor="middle">SaaS 업무 시간 밖 로그인</text>
+<rect x="350" y="98" width="110" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="405.0" y="123.0" font-size="14" fill="#292929" text-anchor="middle">jiwoo</text>
+<rect x="460" y="98" width="90" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="505.0" y="123.0" font-size="14" fill="#292929" text-anchor="middle">False</text>
+<rect x="550" y="98" width="150" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="625.0" y="123.0" font-size="14" fill="#292929" text-anchor="middle">아니오</text>
+<rect x="20" y="144" width="70" height="40" rx="8" fill="#fbf0dc" stroke="#dededb" stroke-width="1.5"/>
+<text x="55.0" y="169.0" font-size="14" fill="#292929" text-anchor="middle">A4</text>
+<rect x="90" y="144" width="260" height="40" rx="8" fill="#fbf0dc" stroke="#dededb" stroke-width="1.5"/>
+<text x="220.0" y="169.0" font-size="14" fill="#292929" text-anchor="middle">SaaS 평소와 다른 IP</text>
+<rect x="350" y="144" width="110" height="40" rx="8" fill="#fbf0dc" stroke="#dededb" stroke-width="1.5"/>
+<text x="405.0" y="169.0" font-size="14" fill="#292929" text-anchor="middle">jiwoo</text>
+<rect x="460" y="144" width="90" height="40" rx="8" fill="#fbf0dc" stroke="#dededb" stroke-width="1.5"/>
+<text x="505.0" y="169.0" font-size="14" fill="#292929" text-anchor="middle">False</text>
+<rect x="550" y="144" width="150" height="40" rx="8" fill="#fbf0dc" stroke="#dededb" stroke-width="1.5"/>
+<text x="625.0" y="169.0" font-size="14" fill="#292929" text-anchor="middle">예</text>
+<rect x="20" y="190" width="70" height="40" rx="8" fill="#fbf0dc" stroke="#dededb" stroke-width="1.5"/>
+<text x="55.0" y="215.0" font-size="14" fill="#292929" text-anchor="middle">A5</text>
+<rect x="90" y="190" width="260" height="40" rx="8" fill="#fbf0dc" stroke="#dededb" stroke-width="1.5"/>
+<text x="220.0" y="215.0" font-size="14" fill="#292929" text-anchor="middle">SaaS 평소와 다른 IP</text>
+<rect x="350" y="190" width="110" height="40" rx="8" fill="#fbf0dc" stroke="#dededb" stroke-width="1.5"/>
+<text x="405.0" y="215.0" font-size="14" fill="#292929" text-anchor="middle">seoyeon</text>
+<rect x="460" y="190" width="90" height="40" rx="8" fill="#fbf0dc" stroke="#dededb" stroke-width="1.5"/>
+<text x="505.0" y="215.0" font-size="14" fill="#292929" text-anchor="middle">False</text>
+<rect x="550" y="190" width="150" height="40" rx="8" fill="#fbf0dc" stroke="#dededb" stroke-width="1.5"/>
+<text x="625.0" y="215.0" font-size="14" fill="#292929" text-anchor="middle">예</text>
+<rect x="20" y="236" width="70" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="55.0" y="261.0" font-size="14" fill="#292929" text-anchor="middle">A6</text>
+<rect x="90" y="236" width="260" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="220.0" y="261.0" font-size="14" fill="#292929" text-anchor="middle">SaaS 대량 다운로드</text>
+<rect x="350" y="236" width="110" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="405.0" y="261.0" font-size="14" fill="#292929" text-anchor="middle">seoyeon</text>
+<rect x="460" y="236" width="90" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="505.0" y="261.0" font-size="14" fill="#292929" text-anchor="middle">True</text>
+<rect x="550" y="236" width="150" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="625.0" y="261.0" font-size="14" fill="#292929" text-anchor="middle">아니오</text>
+<rect x="20" y="294" width="680" height="86" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="360.0" y="322.4" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">예외의 위험</text>
+<text x="360.0" y="342.0" font-size="14" fill="#292929" text-anchor="middle">믿는 IP 에서 누군가 계정을 도용해 로그인해도</text>
+<text x="360.0" y="361.6" font-size="14" fill="#292929" text-anchor="middle">SaaS 평소와 다른 IP 규칙은 알림을 내지 않습니다</text>
+</g>
+</svg>

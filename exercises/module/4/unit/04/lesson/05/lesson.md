@@ -13,10 +13,12 @@ source:
 
 ## 목표: 한 사용자 기준 사건 연결
 
+> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 4-1 · 4-2와 글쓰기를 먼저 마칩니다. 이 도전에서는 제공 파일로 받아 쓴 `correlation.py` 를 직접 써 봅니다. 아래 골격을 붙여 넣으면 제공 파일이 덮어써져 다 채울 때까지 실습 4-1이 동작하지 않으니, 다 쓴 뒤 `exercise4-1_run.py` 를 다시 실행해 결과가 같은지 확인합니다. 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
+
 > **이번 실습에 들어온 일**
 >
 > A사 보안 팀장이 보낸 메시지입니다:
-> 「Unit 3에서 서버 · SaaS · 웹 로그를 각각 따로 탐지했더니 결과 목록이 세 개가 됐습니다. 목록을 번갈아 보다가 같은 사람 이름이 서버 결과에도, SaaS 결과에도 나오는 것을 봤습니다. 같은 사용자가 짧은 시간 안에 여러 로그에서 이상 징후를 보였다면 하나의 사건일 수 있습니다.
+> 「서버 · SaaS · 웹 로그를 각각 따로 탐지했더니 결과 목록이 세 개가 됐습니다. 목록을 번갈아 보다가 같은 사람 이름이 서버 결과에도, SaaS 결과에도 나오는 것을 봤습니다. 같은 사용자가 짧은 시간 안에 여러 로그에서 이상 징후를 보였다면 하나의 사건일 수 있습니다.
 >
 > 같은 사용자에게 서로 다른 로그의 이벤트가 짧은 시간 안에 모여 있으면 하나의 사건으로 연결해서 알려 주세요. 웹 로그에는 사용자 이름이 없고 IP 만 있으니, SaaS 에 로그인한 기록에서 IP 로 사용자를 찾아 연결해 주세요.」
 > - **왜 중요한가**: <mark>로그 하나에서는 작은 이상 징후도 같은 사용자에게 짧은 시간 안에 여러 로그에서 겹치면 먼저 확인할 이유가 분명하지만, 아침과 저녁처럼 시간이 멀리 떨어진 기록까지 한 사건으로 보면 안 됩니다.</mark>
@@ -40,14 +42,14 @@ SaaS 의 성공한 로그인에서 만든 「IP → 사용자」 딕셔너리는
 | 203.0.113.80 | seoyeon | 17:38 성공한 로그인 |
 
 - 딕셔너리에는 <mark>**성공한 로그인**만</mark> 넣습니다. 02:14 에 jiwoo 가 203.0.113.80 으로 시도한 로그인은 실패였으므로 넣지 않고, 같은 IP 로 성공한 17:38 의 seoyeon 이 이 IP 의 사용자로 기록됩니다.
-- 서버 로그는 실패 이벤트 **전체**(9개)를 씁니다. 먼저 확인할 이벤트만 고르면 어떤 사용자가 서버 로그에 나오는지가 Unit 3의 결과에 따라 달라지기 때문입니다.
+- 서버 로그는 실패 이벤트 **전체**(9개)를 씁니다. 먼저 확인할 이벤트만 고르면 어떤 사용자가 서버 로그에 나오는지가 반복 거절 기준(Unit 3 실습 3-2의 3번)에 따라 달라지기 때문입니다.
 - 웹 실패 이벤트의 IP 가 위 표에 있으면 그 사용자의 이벤트로 연결해 분석할 수 있고, <mark>딕셔너리에 IP 가 없으면 사용자를 확인할 수 없어 이번 연결에서 제외합니다.</mark>
 
 **판다스 문법 상자 — 딕셔너리로 값을 바꾸기 `map`**
 
 **<mark>`열.map(딕셔너리)`</mark> 은 열의 값을 딕셔너리에서 찾아, 짝지어진 값으로 바꿉니다. 딕셔너리에 없는 값은 `NaN`(연결할 값이 없다는 표시)이 됩니다**
 
-Unit 1에서 배운 딕셔너리로 값 바꾸기를 열 전체에 한 번에 하는 것이 `map` 입니다. 아래에서는 웹 로그의 IP 를 사용자 이름으로 바꿉니다.
+실습 4-1 문법 상자에서 규칙 이름을 점수로 바꿀 때 쓴 `map` 입니다. 아래에서는 웹 로그의 IP 를 사용자 이름으로 바꿉니다.
 
 ```python
 import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
@@ -86,7 +88,7 @@ print(users)                                                     # 바뀐 값을
 Name: ip, dtype: object
 ```
 
-- 읽는 법: <mark style="background:#bde3ff">앞의 두 IP 는 딕셔너리에 있어서 `seoyeon` 과 `gaeun` 이 되고, 세 번째 IP 는 딕셔너리에 없어서 `NaN`</mark> 입니다. 맨 아래 `Name: ip, dtype: object` 줄은 몰라도 됩니다.
+- 읽는 법: <mark style="background:#bde3ff">앞의 두 IP 는 딕셔너리에 있어서 `seoyeon` 과 `gaeun` 이 되고, 세 번째 IP 는 딕셔너리에 없어서 `NaN`</mark> 입니다. 맨 아래 `Name: ip, dtype: object` 줄은 몰라도 됩니다(판다스 3 이상에서는 `dtype: str` 로 나옵니다).
 
 **판다스 문법 상자 — 표를 위아래로 이어 붙이기 `pd.concat`**
 
@@ -208,7 +210,7 @@ print(sorted_df)                              # 정렬한 표를 출력한다
 
 - 미리 채운 줄 가운데 처음 보는 것은 이렇습니다.
   - `hours * 60 + minutes` 는 시각을 「자정부터 몇 분이 지났는지」로 바꿉니다(09:33 → 573). 사용자별로 가장 늦은 시각에서 가장 이른 시각을 빼면 첫 이벤트와 마지막 이벤트의 시간 차(분)가 나오고, 이 값을 60분 기준과 비교합니다. 분 단위로 계산하므로 초는 버립니다.
-  - `times.dt.minute` 는 Unit 3의 `.dt.hour` 처럼 시각 값에서 분(0~59)만 꺼냅니다. `latest - earliest` 는 사용자별로 가장 늦은 시각(분)에서 가장 이른 시각(분)을 뺍니다.
+  - `times.dt.minute` 는 제공 파일 `saas_detection.py` 의 `.dt.hour` 처럼 시각 값에서 분(0~59)만 꺼냅니다. `latest - earliest` 는 사용자별로 가장 늦은 시각(분)에서 가장 이른 시각(분)을 뺍니다.
   - `source_counts.index` 는 사용자 이름들입니다. `source_counts[user]` 는 그 사용자의 값입니다.
   - `.copy()` 는 원본 표를 바꾸지 않도록 복사본을 만듭니다.
   - `grouped["source"].nunique()` 는 사용자별로 `source` 값이 몇 종류인지 세는 한 줄입니다. 왼쪽부터 ① `grouped["source"]` 가 `source` 열을 고르고 ② `.nunique()` 가 서로 다른 값의 수를 셉니다.
@@ -239,8 +241,8 @@ print(sorted_df)                              # 정렬한 표를 출력한다
 ```python
 import pandas as pd                                    # 판다스를 pd 라는 짧은 이름으로 불러온다
 from access_detection import load_events, pick_server_failures, EVENTS_PATH  # 실습 3-2 함수를 불러온다
-from saas_detection import pick_saas, pick_logins      # 도전 3-2 함수를 불러온다
-from malicious_detection import pick_web_failures      # 도전 3-3 함수를 불러온다
+from saas_detection import pick_saas, pick_logins      # saas_detection.py 의 함수를 불러온다
+from malicious_detection import pick_web_failures      # malicious_detection.py 의 함수를 불러온다
 
 MIN_SOURCES = 2                                        # 서로 다른 로그(source)가 이 개수 이상이면 연결된 것으로 본다
 WINDOW_MINUTES = 60                                    # 한 사용자의 이벤트가 이 분 안에 모여 있어야 연결된 것으로 본다
@@ -340,8 +342,8 @@ def find_chains_in_events(events):                     # 이벤트 표를 받는
 
 ```python
 from access_detection import load_events, pick_server_failures, EVENTS_PATH  # 실습 3-2 함수를 불러온다
-from saas_detection import pick_saas, pick_logins      # 도전 3-2 함수를 불러온다
-from malicious_detection import pick_web_failures      # 도전 3-3 함수를 불러온다
+from saas_detection import pick_saas, pick_logins      # saas_detection.py 의 함수를 불러온다
+from malicious_detection import pick_web_failures      # malicious_detection.py 의 함수를 불러온다
 from correlation import make_ip_user_map, attach_user_to_web, build_timeline, find_chains, WINDOW_MINUTES  # 방금 만든 함수를 불러온다
 
 events = load_events(EVENTS_PATH)                      # 이벤트 파일을 표로 읽는다
@@ -392,7 +394,7 @@ for item in not_chained:                               # 연결되지 않은 사
 5. **[보고서]** `report_u4.md` 의 `## 도전 4-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 연결된 사건의 사용자와 이유를 적어 주세요.
    - (나) [핵심 질문] 단계 2에 나온 gaeun 의 이벤트 5개는 어느 로그(`source`)에서 왔고, 왜 한 사건으로 연결됐나요? 이 사건만으로 공격이라고 확정할 수 있는지도 적어 주세요.
-   - (다) [핵심 질문] seoyeon 은 서로 다른 로그에 나오지만 연결되지 않았습니다. 단계 4 의 두 숫자(로그 종류 수와 처음부터 마지막까지의 분)로 두 조건을 비교해 연결되지 않은 이유를 설명하고, 하나의 사건으로 연결하지 않아서 탐지하지 못할 수 있는 것을 도전 3-2 출력에서 seoyeon 이 나온 규칙과 연결해 적어 주세요.
+   - (다) [핵심 질문] seoyeon 은 서로 다른 로그에 나오지만 연결되지 않았습니다. 단계 4 의 두 숫자(로그 종류 수와 처음부터 마지막까지의 분)로 두 조건을 비교해 연결되지 않은 이유를 설명하고, 하나의 사건으로 연결하지 않아서 탐지하지 못할 수 있는 것을 실습 4-1 출력의 seoyeon 이유(규칙)와 연결해 적어 주세요.
 
 ## 도전 4-1 정리
 
