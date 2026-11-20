@@ -12,7 +12,7 @@ Unit 5는 Module 4 **이상탐지**의 마지막 Unit입니다. 지금까지 로
 
 **오늘의 계획 (3시간)**
 
-1. 시작하기 15분: 이 레슨을 읽고 `requests` 를 설치한 뒤 LLM 호출 파일 `llm_client.py` 와 점수 파일 `unit05_risk_scores.json` 을 만듭니다.
+1. 시작하기 15분: 이 레슨을 읽고 `requests` 를 설치한 뒤 LLM(대형 언어 모델, Large Language Model · 엘엘엠: 글을 읽고 글로 답하는 AI) 호출 파일 `llm_client.py` 와 점수 파일 `unit05_risk_scores.json` 을 만듭니다.
 2. 실습 약 110분: 실습 5-1을 하고, 실습 5-2를 합니다.
 3. 글쓰기 40분: 「보고서 쓰기」 레슨에서 핵심 실습의 질문에 답하고, 「오늘의 글 쓰기」 레슨에서 글 한 편을 씁니다.
 4. 마무리 15분: 실습 5-2 끝의 「이번 Unit 마무리」에서 파일을 확인하고 깃허브에 올린 뒤 Module 5로 넘어갈 준비를 합니다.
@@ -27,7 +27,7 @@ Unit 5는 Module 4 **이상탐지**의 마지막 Unit입니다. 지금까지 로
 **이번 Unit에서 쓰는 것**
 
 - 도구는 **파이썬 · VS Code · 터미널 · git** 이고, 실습 5-1에는 **LLM 호출 함수**(`llm_client.py` 의 `call_llm`)를 씁니다.
-  - 이 레슨에서 말하는 **AI** 는 구글의 **Gemini API** 입니다. `call_llm` 이 Gemini API 에 글을 보내고 답을 받아 옵니다.
+  - 이 레슨에서 말하는 **AI** 는 구글의 **Gemini API** 입니다. API(에이피아이)는 내 프로그램이 다른 회사의 프로그램에 요청을 보내 그 기능을 빌려 쓰는 창구입니다. `call_llm` 이 Gemini API 에 글을 보내고 답을 받아 옵니다.
   - `llm_client.py` 는 다음 페이지의 코드 상자를 붙여 넣어 만듭니다. 직접 쓰는 곳은 없습니다.
 - 새로 배우는 문법은 실습 5-1의 문자열 이어 붙이기 `"구분 글자".join(리스트)` 하나입니다. 나머지는 앞에서 쓴 문법(f-문자열 · `if` · `and` · 리스트 · `json.load`)을 다시 씁니다.
 - 점수 기준(high 60 이상 · mid 35 이상)과 AI 에게 요약시킬 대상 수(3명)는 **고정**하고, <mark>값을 바꿔 가며 비교하지 않습니다</mark>.
@@ -35,16 +35,16 @@ Unit 5는 Module 4 **이상탐지**의 마지막 Unit입니다. 지금까지 로
 
 **API 키가 없어도 끝까지 할 수 있습니다**
 
-- 진짜 AI 요약을 받으려면 **Gemini API 키**가 `.env` 파일에 있어야 합니다. 키를 만드는 방법은 이 레슨의 「Gemini API 키와 .env 만들기」에 있습니다.
+- 진짜 AI 요약을 받으려면 **Gemini API 키**가 `.env` 파일에 있어야 합니다. API 키는 구글에 「내가 누구인지」 알리는 비밀 글자라서 비밀번호처럼 다룹니다. `.env` 는 이런 비밀 값을 적어 두는 파일이고, 깃허브에 올리지 않습니다. 키를 만드는 방법은 이 레슨의 「Gemini API 키와 .env 만들기」에 있습니다.
 - <mark>키가 없으면 `call_llm` 이 `[LLM 호출 실패] API 키 없음` 을 출력하고 빈 문자열을 돌려주고, 요약 자리에는 대체 문장 `(요약 실패 — 점수와 이유를 직접 확인)` 이 들어갑니다.</mark> 프로그램은 멈추지 않고 끝까지 실행됩니다.
-- [주의] <mark style="background:#ffc4d6">**키가 없을 때는 출력과 보고서 답이 정답 레슨의 「키가 있을 때」 예와 다릅니다.**</mark> 단계 1 ~ 3과 점수 · 등급 · 대상은 같고, 단계 4 의 요약만 대체 문장으로 바뀝니다. 이때는 정답 레슨의 「키가 없을 때」 출력과 맞춰 보고, AI 요약 문장을 읽어야 하는 보고서 질문은 정답 레슨에 실린 요약 예시로 답합니다.
+- [주의] <mark style="background:#ffc4d6">**키가 없을 때는 출력과 보고서 답이 정답 레슨의 「키가 있을 때」 예와 다릅니다.**</mark> 실습 5-1 의 출력은 단계 1 ~ 4 로 나뉘는데, 단계 1 ~ 3과 점수 · 등급 · 대상은 같고, 단계 4 의 요약만 대체 문장으로 바뀝니다. 이때는 정답 레슨의 「키가 없을 때」 출력과 맞춰 보고, AI 요약 문장을 읽어야 하는 보고서 질문은 정답 레슨에 실린 요약 예시로 답합니다.
 - AI 가 쓰는 요약 문장은 실행할 때마다 조금씩 달라집니다. 키가 있는 사람도 문장은 정답 레슨과 달라도 정상이고, 점수 · 등급 · 건수는 같아야 합니다.
 - **무료 Gemini 키는 1분에 15번까지만 호출할 수 있습니다.** 실습 5-1은 한 번 실행에 3번 호출합니다. `[LLM 호출 실패] 상태 코드 429` 가 나오면 <mark>1분 기다린 뒤 다시 실행</mark>합니다.
 
 ## 폴더 열고 LLM 호출 파일 준비하기
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치를 확인하고, `llm_client.py` 가 쓰는 `requests` 를 설치합니다(맥북은 `python3`). <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나면</mark> 됩니다. Unit 2 에서 가상환경을 켜고 판다스를 설치했다면 먼저 같은 가상환경을 켭니다.
+2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치를 확인하고, `llm_client.py` 가 쓰는 `requests` 를 설치합니다(맥북은 `python3`). <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나면</mark> 됩니다. Unit 2 에서 가상환경을 켜고 판다스를 설치했다면 먼저 `security-agent-toolkit` 폴더에서 같은 가상환경을 켭니다(`source .venv/Scripts/activate`, 맥북은 `Scripts` 를 `bin` 으로).
    ```bash
    cd anomaly_detection
    pwd
@@ -118,6 +118,8 @@ def call_llm(question):                                              # 질문 �
 
 - 키 값은 이 파일에 적지 않습니다. 키는 `.env` 에만 있고, 이 파일은 깃허브에 올라가도 됩니다.
 - `try:` · `except` 는 「해 보고, 이 오류가 나면 멈추지 않고 아래 줄을 실행한다」는 뜻입니다. 이 파일에서만 쓰고, 직접 쓰지는 않습니다.
+- `call_llm` 은 `requests.post` 로 Gemini API 주소에 POST 요청을 보냅니다. 머리글(`headers`)에는 API 키를 담고, 본문(`body`)에는 쓸 모델(구글이 만든 여러 AI 가운데 하나의 이름)과 질문 글을 담습니다. `temperature` 를 0 으로 두면 답 문장이 덜 흔들립니다.
+- 답이 오면 상태 코드가 200(성공)인지 먼저 보고, 응답 안에 여러 겹으로 들어 있는 답 문장만 꺼내 돌려줍니다.
 
 5. **[VS Code]** `unit05_risk_scores.json` 파일을 만들어 아래 내용을 그대로 붙여 넣습니다. Unit 4 실습 4-1 이 저장한 점수 파일과 같은 내용입니다. <mark>이미 있으면 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다). 파일 이름의 `05` 는 예전 번호라서 지금 Unit 번호와 맞지 않지만, Module 4 Unit 5와 Module 5가 같은 이름으로 읽으니 이름을 바꾸지 않고 그대로 씁니다.
 
@@ -214,12 +216,13 @@ def call_llm(question):                                              # 질문 �
   curl -H "x-goog-api-key: 여기에_내_키" "https://generativelanguage.googleapis.com/v1beta/models"
   ```
   - 명령 풀이: `curl 주소` 주소로 요청을 보내 답을 받아 오기 · `-H "이름: 값"` 요청에 붙이는 머리글(여기서는 키)
-- 나오는 것: <mark>`"models"` 로 시작하는 긴 목록이 나오면</mark> 키가 맞습니다. `UNAUTHENTICATED` 나 `API key not valid` 같은 오류 글자가 나오면 키를 다시 복사합니다.
+- 나오는 것: <mark>`"models"` 가 든 긴 목록이 나오면</mark> 키가 맞습니다. `UNAUTHENTICATED` 나 `API key not valid` 같은 오류 글자가 나오면 키를 다시 복사합니다.
 - 같은 명령을 여러 번 반복하지 않습니다. 호출 횟수에 한도가 있습니다.
 
 **3단계 · `.env` 파일 만들기**
 
 - **[VS Code]** 왼쪽 목록에서 `security-agent-toolkit` 폴더(`anomaly_detection` 의 바깥)를 오른쪽 클릭 › **New File** 을 누르고 `.env` 를, 같은 방법으로 `.gitignore` 를 만듭니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다. 파일 이름 뒤에 `.txt` 같은 것이 붙지 않아야 합니다.
+- `.env` 를 `anomaly_detection` 바깥에 두어도 되는 이유: `llm_client.py` 의 `find_env` 가 지금 폴더부터 한 단계씩 위쪽 폴더로 올라가며 찾기 때문입니다. 그래서 `anomaly_detection` 에서 실행해도 바깥의 `.env` 가 읽힙니다.
 - **[VS Code]** 왼쪽 파일 목록에서 `security-agent-toolkit` 바로 아래의 `.env` 를 열고 아래 한 줄만 적습니다. <mark>등호 앞뒤에 빈칸을 넣지 않고, 따옴표도 넣지 않습니다.</mark>
 
 <pre class="copyable"><code>GEMINI_API_KEY=여기에_복사한_키를_붙여넣습니다
