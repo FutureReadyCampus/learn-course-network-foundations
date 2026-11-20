@@ -196,7 +196,7 @@ def explain_scan(ip, request_count):                  # IP 와 스캐너 경로 
 - 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
 - 채우기 전에 실행하면 `NameError: name 'scan_counts' is not defined` 오류가 납니다. 1 ~ 4번을 아직 안 썼기 때문입니다.
 
-**`challenge3-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
+**`challenge3-3_run.py`** — 그대로 붙여 넣습니다. 직접 쓰는 줄은 없습니다. `scan_counts[ip]` 는 센 결과에서 그 IP 의 횟수를 꺼내고, `.unique()` 는 열의 값을 중복 없이 한 번씩만 모읍니다.
 
 ```python
 from malicious_detection import load_events, pick_web_failures, find_scan_ips, explain_scan, EVENTS_PATH  # 방금 만든 함수를 불러온다
@@ -223,7 +223,7 @@ for ip in all_ips:                                           # IP 를 하나씩 
         print(ip)                                            # 제외한 IP 를 출력한다
 ```
 
-**`advanced_detection.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 3-2 · 도전 3-2 · 도전 3-3 에서 만든 함수를 모두 불러 한 번에 돌립니다. 도전 3-2 의 `saas_detection.py` 를 만들지 않았다면 이 파일은 건너뜁니다(`No module named 'saas_detection'` 오류가 납니다).
+**`advanced_detection.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 3-2 · 도전 3-2 · 도전 3-3 에서 만든 함수를 모두 불러 한 번에 돌립니다. `list(열)` 은 열의 값을 리스트로 만듭니다. 도전 3-2 의 `saas_detection.py` 를 만들지 않았다면 이 파일은 건너뜁니다(`No module named 'saas_detection'` 오류가 납니다).
 
 ```python
 from access_detection import load_events, pick_server_failures, pick_suspicious, EVENTS_PATH  # 실습 3-2 함수를 불러온다

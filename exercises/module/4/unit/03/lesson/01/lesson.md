@@ -20,7 +20,7 @@ render: markdown
 **오늘 만들 것 두 가지**
 
 1. **실습 3-1**: 웹 서버 요청을 분마다 세고, 지난 7일 평균의 3배 이상으로 늘어난 분을 찾는 `traffic_detection.py` 를 씁니다.
-2. **실습 3-2**: 판정 서버가 거절한 요청 9개에서 한 사용자가 3번 이상 거절당한 기록을 고르고, Module 3 의 권한 판정 함수 `check_permission` 으로 거절 이유를 붙여 순서를 정하는 `access_detection.py` 를 씁니다.
+2. **실습 3-2**: 판정 서버(직원이 누른 기능을 허용할지 정하는 A사 서버)가 거절한 요청 9개에서 한 사용자가 3번 이상 거절당한 기록을 고르고, Module 3 의 권한 판정 함수 `check_permission` 으로 거절 이유를 붙여 순서를 정하는 `access_detection.py` 를 씁니다.
 
 **도전 3-1 ~ 3-3은 선택입니다.** 핵심 실습 두 개와 글쓰기를 마치고 시간이 남을 때 합니다.
 
@@ -184,6 +184,10 @@ def check_permission(user, resource, action):                    # 사용자 · 
         return False, "권한 없음"                                # 거부하고 함수를 끝낸다
     return True, "허용"                                          # 모든 검사를 지나면 허용한다
 ```
+
+- 읽는 법: 자원은 `SALES`(영업 실적) · `SETTLE`(정산 내역) · `ACCOUNT`(계정)처럼 다루는 대상이고, 행위는 `QUERY`(조회) · `CHANGE`(변경)처럼 그 대상에 하는 일입니다.
+- 함수는 등록된 사용자인가 → 재직 중인가 → 역할이 있는가 → 그 역할에 「자원:행위」 권한이 있는가를 차례로 보고, 처음 걸린 곳의 이유를 돌려줍니다. 예를 들어 dami 는 `users.json` 에서 `employed` 가 `false` 라서 둘째 검사에서 「퇴사한 계정」이 됩니다.
+- 이 파일은 불러오는(`import`) 순간 `config/roles.json` · `config/users.json` 을 지금 터미널 위치 기준으로 읽습니다. 그래서 `config` 폴더가 `anomaly_detection` 안에 있어야 하고, 실행도 그 폴더에서 합니다.
 
 **`config/users.json`** — Module 3 Unit 1 실습 1-1 의 사용자 파일입니다. 사용자마다 역할과 재직 여부(`employed`)가 있습니다.
 
