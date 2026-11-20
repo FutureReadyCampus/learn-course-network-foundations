@@ -170,7 +170,7 @@ def run_checklist(state, now):                                   # 읽은 데이
 - 들여쓰기는 미리 채운 줄에 맞춥니다.
   - 세 함수 모두 `for` 안쪽이라 `if` · 변수 줄은 앞에 공백 8개이고, `if` 안쪽 `problems.append(…)` 는 4개 더(12개)입니다.
   - 나머지 줄은 미리 채워 두었으니 그대로 둡니다.
-- 3번은 `datetime.strptime(문자열, TIME_FORMAT)` 으로 문자열을 시각으로 바꿉니다. 제공 파일 `exception_policy.py` 의 `find_exception` 이 예외의 만료 시각을 읽을 때와 같은 방법입니다.
+- 3번은 `datetime.strptime(문자열, TIME_FORMAT)` 으로 문자열을 시각으로 바꿉니다. Unit 1 제공 파일 `exception_policy.py` 의 `find_exception` 이 예외의 만료 시각을 읽을 때와 같은 방법입니다.
 - 4번의 `<=` 는 「같거나 이전」입니다. 만료 시각 정각도 만료로 봅니다.
 - 6번의 `role_dept[info["role"]]` 는 키가 `info["role"]` 인 값을 찾습니다. 사용자의 역할이 `finance` 이면 `"재무"` 가 나옵니다.
 - 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다(파이썬 버전에 따라 뒤에 `after 'for' statement on line …` 가 붙습니다). `for` 아래에 실행할 줄이 아직 없기 때문입니다.
