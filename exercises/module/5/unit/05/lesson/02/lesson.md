@@ -35,11 +35,14 @@ source:
 - <mark style="background:#e0d4ff">Unit 1 플레이북의 승인 값(`approval`)은 이 엔진이 읽지 않습니다.</mark> Unit 4 실습 4-1 에서 승인 여부를 플레이북 하나에 값 하나로 정하는 대신 요청마다 위험 점수로 정하도록 바꿨기 때문입니다. 플레이북에서는 `actions` 만 읽습니다.
 - 플레이북의 액션 가운데 `계정 잠금` · `IP 차단` 만 승인 게이트를 거쳐 실행합니다(`CONTAINMENT_ACTIONS`). 티켓은 처리한 알림마다 항상 만듭니다. 실패한 알림은 티켓이 없어서 알림 8건에 티켓 7장이 됩니다. `담당자 알림` 은 <mark style="background:#e0d4ff">Unit 3 · Unit 4 도전에서 쓴 알림 서버(5001번 포트)</mark>가 켜져 있어야 보낼 수 있어서 오늘은 연결하지 않고, 담당자에게 넘기는 일은 티켓이 맡습니다.
 - 오류 격리(failure isolation, 페일러 아이솔레이션: 한 작업의 오류가 다른 작업으로 번지지 않게 막는 방식)로 오류의 영향 범위를 알림 한 건으로 제한합니다. 대신 <mark style="background:#ffc4d6">코드의 실수도 알림마다 「실패」로 나타납니다.</mark> 실패 건수가 알림 수에 가까우면 데이터가 아니라 코드를 의심합니다.
+- 실패 기록을 만드는 `make_failure_result` 는 `alert["grade"]` 대신 `alert.get("grade", "")` 처럼 Unit 3 실습 3-2 의 `.get(키, 기본값)` 으로 읽습니다. 실패한 알림에는 키가 빠져 있을 수 있어서, `[ ]` 로 읽으면 `except` 안에서 오류가 또 나고 프로그램이 멈추기 때문입니다.
 - `executed` 는 조치 함수를 호출했다는 뜻입니다. 이미 잠긴 계정처럼 호출해도 조치 전 · 후 상태가 같을 수 있어서, 무엇이 바뀌었는지는 `before` · `after` 로 확인합니다.
 - 티켓의 시각은 엔진을 실행한 때를 0분으로 놓습니다(Unit 3 티켓처럼 분 단위 숫자입니다). 연습용 시스템(실제 서버를 대신하는 시스템)은 실행할 때마다 처음 상태(`junho` 만 잠김)에서 시작합니다.
 - 오늘 엔진에 연결하지 않은 것: 재시도(`run_with_retry`, Unit 2 도전 2-2) · 세션 종료(Unit 2 실습 2-2) · 에스컬레이션(Unit 4 도전 4-1)입니다.
 
 **문법 상자 — `except Exception as error` 는 어떤 종류의 오류든 받아서 프로그램이 멈추지 않게 한다**
+
+`try:` 아래 줄을 실행하다 오류가 나면 남은 줄을 건너뛰고 바로 `except` 아래 줄을 실행합니다. 오류가 없으면 `except` 아래 줄은 실행하지 않습니다.
 
 ```python
 students = [{"name": "민지", "score": 80}, {"name": "서준"}, {"name": "하은", "score": 95}]  # 서준에게는 score 키가 없다
@@ -61,7 +64,7 @@ for student in students:                                                        
 
 | 코드 | 뜻 |
 |---|---|
-| `except Exception as error:` | <mark style="background:#e0d4ff">`except ConnectionError as error` 처럼 오류 이름을 적으면 그 한 종류만 받습니다.</mark> `Exception` 은 `KeyError` 같은 거의 모든 오류의 부모 이름이라 어떤 종류든 받습니다 |
+| `except Exception as error:` | <mark style="background:#e0d4ff">`except ConnectionError as error` 처럼 오류 이름을 적으면 그 한 종류만 받습니다.</mark> `Exception` 은 `KeyError` 같은 거의 모든 오류를 한데 묶어 부르는 이름이라 어떤 종류든 받습니다 |
 | `type(error).__name__` | 오류의 종류 이름(`KeyError`)입니다. 오류를 받은 뒤에는 이 이름과 내용을 반드시 기록해서 사람이 볼 수 있게 합니다 |
 | 위 코드의 출력 | <mark style="background:#bde3ff">`서준` 줄에서 오류가 나도 `하은` 줄까지 출력됩니다</mark>. `try` 없이 쓰면 `서준` 에서 멈추고 `하은` 은 출력되지 않습니다 |
 
@@ -95,6 +98,7 @@ soar_engine.py  load_context          : 설정 파일을 읽어 엔진 재료를
 - 1번 · 2번 · 3번은 `if` · `else` 줄이 미리 채워져 있어서 그 아래에 들여쓴 한 줄만 씁니다.
 - 5번과 6번은 `if` 한 줄만 씁니다. 그 아래 미리 채운 줄이 `if` 안쪽입니다.
 - 7번은 `try:` 아래에 한 줄, 8번은 `except` 줄 한 줄을 씁니다. 8번 아래 미리 채운 줄이 `except` 안쪽입니다.
+- 코드가 길지만 처음부터 전부 이해하지 않아도 됩니다. 붙여 넣은 뒤 번호 주석이 있는 함수 다섯 개(`make_request` · `execute_action` · `run_step` · `run_soar_pipeline` · `run_all`)를 위에서부터 채웁니다. 미리 채운 함수(`load_context` · `decide_outcome` · `open_ticket` · `make_failure_result`)는 실행한 뒤 출력과 맞춰 읽으면 됩니다.
 
 ```python
 from incident import load_json, match_playbooks                                         # Unit 1 파일의 JSON 읽기 · 플레이북 찾기 함수를 불러온다
@@ -271,6 +275,8 @@ def run_all(alerts, context):                                                   
 ```
 
 **`exercise5-1_run.py`** — 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+
+- 단계 3 의 `for outcome in counts:` 처럼 딕셔너리를 `for` 로 돌리면 키(처리 결과 이름)가 하나씩 나오고, 그 키의 값은 `counts[outcome]` 으로 꺼냅니다.
 
 ```python
 from incident import load_json, save_json                                                # Unit 1 파일의 JSON 읽기 · 쓰기 함수를 불러온다
