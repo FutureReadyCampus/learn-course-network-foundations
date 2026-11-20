@@ -139,6 +139,7 @@ def count_by_status(requests):                                   # 요청서 리
 ```
 
 - 본문은 모두 함수 안이라 4칸으로 쓰고, `with` 와 `for` 안쪽은 4칸 더(8칸) 들어갑니다. 각 주석 바로 아래 줄에 씁니다. `save_requests` 의 `return len(requests)` 는 `with` 와 같은 4칸입니다.
+- `save_requests` 1번의 「f 로 받는다」는 문법 상자의 `as demo_file` 처럼 `as` 뒤에 열린 파일의 이름을 붙이라는 뜻입니다. 이름은 `f` 가 아니어도 되고, 정답은 `output_file` 을 씁니다.
 - 채우기 전에 처음 실행하면(`requests.json` 이 아직 없을 때) 단계 2의 첫 줄이 `None` 으로 나옵니다. `count_by_status` 가 아무것도 리턴하지 않기 때문입니다. 이어서 단계 3에서 `저장 함수가 리턴한 건수: None` 과 `[경고] 설정 파일 없음: requests.json` 이 나온 뒤 `IndexError` 가 납니다. `save_requests` 가 파일을 만들지 않았기 때문입니다.
 
 **`challenge2-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 요청 여섯 건을 접수하고 처리한 뒤, 단계 1은 승인 · 반려 · 부여 결과를 출력하고, 단계 2는 상태별 건수와 SLA 초과 요청을 출력합니다. 단계 3은 `requests.json` 으로 저장한 뒤 다시 읽어 확인합니다.
@@ -220,7 +221,7 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
 | 하려는 일 | 코드 · 말 |
 |---|---|
 | 파일에 쓰기 | `with open(path, "w", encoding="utf-8") as output_file:` |
-| 리스트를 JSON 으로 | `json.dump(requests, f, ensure_ascii=False, indent=2)` |
+| 리스트를 JSON 으로 | `json.dump(requests, output_file, ensure_ascii=False, indent=2)` |
 | 상태별 건수 | `old_count = counts.get(status, 0)` → `counts[status] = old_count + 1` |
 | 저장한 건수 알리기 | `return len(requests)` |
 | 저장했는지 확인 | `load_json("requests.json", [])` 로 다시 읽는다 |
@@ -232,7 +233,7 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
 핵심 실습의 파일은 실습 2-2 끝 「이번 Unit 마무리」에서 이미 올렸습니다. 도전을 했다면 도전 파일도 같은 방법으로 올립니다.
 
 1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고(`cd ..`) `git status` 로 올라갈 파일을 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
-   - 도전 2-1 · 2-2 · 2-3을 모두 했다면 `access_control/challenge2-1_run.py` · `access_control/req_sla.py` · `access_control/challenge2-2_run.py` · `access_control/request_flow.py` · `access_control/challenge2-3_run.py` · `access_control/requests.json`  · `access_control/config/sla.json` 이 보입니다. 도전 2-1에서 `req_grant.py` 를 직접 다시 썼다면 `modified:` 줄에 보입니다.
+   - 도전 2-1 · 2-2 · 2-3을 모두 했다면 `access_control/challenge2-1_run.py` · `access_control/req_sla.py` · `access_control/challenge2-2_run.py` · `access_control/request_flow.py` · `access_control/challenge2-3_run.py` · `access_control/requests.json` · `access_control/config/sla.json` 이 보입니다. 도전 2-1에서 `req_grant.py` 를 직접 다시 썼다면 `modified:` 줄에 보입니다.
    - `access_control/requests.json` 은 도전 2-3에서 프로그램이 만든 이력 파일입니다. 이것도 올라갑니다.
 2. **[보고서]** `report_u2.md` 의 도전 칸 가운데 내가 한 도전의 칸을 채웁니다.
 3. **[터미널]** 올립니다.
