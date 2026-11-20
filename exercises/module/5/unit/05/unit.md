@@ -8,6 +8,8 @@ lessons:
 - path: lesson/04/lesson.md
 - path: lesson/05/lesson.md
 - path: lesson/06/lesson.md
+- path: lesson/07/lesson.md
+- path: lesson/08/lesson.md
 ---
 
 # 통합 엔진과 최종 회고

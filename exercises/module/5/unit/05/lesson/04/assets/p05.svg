@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>최종 회고 문서는 세 절의 표로 사실만 정리하고, 이야기는 오늘의 글에서 쓴다</title>
+<desc>unit10_final_retrospective.md 는 1절 Unit 1 ~ 5 파일과 엔진에서 하는 일, 2절 운영하면 깨질 곳 2가지, 3절 캡스톤 주제와 설정 파일로 이루어집니다. 칸마다 한두 문장으로 사실만 적고, 왜 그렇게 했는지는 오늘의 글 쓰기 레슨에서 질문 하나로 풉니다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, &#x27;Noto Sans KR&#x27;, -apple-system, &#x27;Segoe UI&#x27;, sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">최종 회고 문서 unit10_final_retrospective.md</text>
+<rect x="20" y="52" width="210" height="210" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="125" y="80" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">1절 만든 것</text>
+<text x="125" y="112" font-size="14" fill="#292929" text-anchor="middle">Unit 1 incident.py</text>
+<text x="125" y="140" font-size="14" fill="#292929" text-anchor="middle">Unit 2 계정 · IP 조치</text>
+<text x="125" y="168" font-size="14" fill="#292929" text-anchor="middle">Unit 3 ticketing.py</text>
+<text x="125" y="196" font-size="14" fill="#292929" text-anchor="middle">Unit 4 approval_gate.py</text>
+<text x="125" y="224" font-size="14" fill="#292929" text-anchor="middle">Unit 5 엔진 · 점검</text>
+<rect x="255" y="52" width="210" height="210" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="80" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">2절 깨질 곳 2가지</text>
+<text x="360" y="112" font-size="14" fill="#292929" text-anchor="middle">깨질 곳</text>
+<text x="360" y="140" font-size="14" fill="#292929" text-anchor="middle">근거(파일 · 단계)</text>
+<text x="360" y="168" font-size="14" fill="#292929" text-anchor="middle">막는 방법</text>
+<text x="360" y="196" font-size="14" fill="#292929" text-anchor="middle">예: INC-402 실패</text>
+<text x="360" y="224" font-size="14" fill="#292929" text-anchor="middle">예: 게이트 끔 FAIL</text>
+<rect x="490" y="52" width="210" height="210" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="595" y="80" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">3절 캡스톤</text>
+<text x="595" y="112" font-size="14" fill="#292929" text-anchor="middle">고를 주제</text>
+<text x="595" y="140" font-size="14" fill="#292929" text-anchor="middle">바꿔 볼 설정 파일 2개</text>
+<text x="595" y="168" font-size="14" fill="#292929" text-anchor="middle">가져다 쓸 내 파일 3개</text>
+<rect x="20" y="282" width="330" height="96" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="185" y="312" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">회고 문서</text>
+<text x="185" y="336" font-size="14" fill="#292929" text-anchor="middle">Module 5 전체를 표로 정리</text>
+<text x="185" y="360" font-size="14" fill="#292929" text-anchor="middle">칸마다 한두 문장 · 저장소에 올림</text>
+<rect x="370" y="282" width="330" height="96" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="535" y="312" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">오늘의 글</text>
+<text x="535" y="336" font-size="14" fill="#292929" text-anchor="middle">질문 하나를 골라 이야기로</text>
+<text x="535" y="360" font-size="14" fill="#292929" text-anchor="middle">왜 그렇게 했는지 · 포트폴리오</text>
+</g>
+</svg>

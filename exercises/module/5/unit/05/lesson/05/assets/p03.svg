@@ -1,29 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
-<title>실습 5-2 정답: 로그의 decision 대신 request로 결정을 다시 구해 우회를 찾는다</title>
-<desc>gate_off_log.json 의 INC-405 는 로그 decision 이 자동이지만, request(mid, users_on_ip 2)로 decide_gate 를 다시 부르면 1점+2점=3점으로 승인 기준 3점 이상이라 승인 필요입니다. 승인 필요인데 executed 가 참이라 위반입니다. 결과는 gate_off_log.json 의 점검 ① 위반 3건과 점검 ② 위반 1건입니다.</desc>
-<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="bold">실습 5-2 정답: INC-405 를 다시 계산하기</text>
-<rect x="20" y="52" width="320" height="100" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="180.0" y="77.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="bold">로그에 적힌 값</text>
-<text x="180.0" y="98.5" font-size="14" fill="#292929" text-anchor="middle">decision: 「자동」</text>
-<text x="180.0" y="118.1" font-size="14" fill="#292929" text-anchor="middle">이유: 「승인 게이트 끔」</text>
-<text x="180.0" y="137.7" font-size="14" fill="#292929" text-anchor="middle">이 값만 읽으면 위반이 안 보임</text>
-<rect x="380" y="52" width="320" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="540.0" y="77.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="bold">decide_gate 로 다시 구함</text>
-<text x="540.0" y="98.5" font-size="14" fill="#292929" text-anchor="middle">request: mid · users_on_ip 2</text>
-<text x="540.0" y="118.1" font-size="14" fill="#292929" text-anchor="middle">mid 1점 + 함께 쓰는 IP 2점</text>
-<text x="540.0" y="137.7" font-size="14" fill="#292929" text-anchor="middle">= 3점 ≥ 승인 기준 3점</text>
-<line x1="540" y1="154" x2="540" y2="180" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="380" y="182" width="320" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="540.0" y="215.2" font-size="15" fill="#292929" text-anchor="middle">new_decision = 「승인 필요」</text>
-<line x1="540" y1="240" x2="540" y2="262" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
-<rect x="20" y="264" width="680" height="52" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="360.0" y="294.9" font-size="14" fill="#292929" text-anchor="middle">if new_decision != "자동" and step["executed"]: → 위반 리스트에 INC-405 추가</text>
-<text x="20" y="346" font-size="15" fill="#666660" text-anchor="start">gate_off_log.json 결과</text>
-<rect x="20" y="356" width="330" height="52" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="185.0" y="386.9" font-size="14" fill="#292929" text-anchor="middle">① 게이트 우회: INC-404 · 405 · 406</text>
-<rect x="370" y="356" width="330" height="52" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="535.0" y="386.9" font-size="14" fill="#292929" text-anchor="middle">② 허용 목록 IP 차단: INC-404</text>
-</g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img"><title>도전 5-1 흐름: 기록 점검 → 알림 → 엔진 실행 → 운영 요약</title><desc>split_records 가 find_schema_problem 으로 기록을 점검하고, 문제가 없으면 make_alert 로 알림을 만듭니다. challenge5-1_run.py 는 엔진을 실행하고 summarize 로 운영 요약을 만듭니다. 시험 기록 hana 는 grade 키가 없고 minsu 는 critical 등급이라 거절됩니다.</desc><defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="28" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">도전 5-1 · 직접 쓰는 아홉 군데</text>
+<rect x="20" y="50" width="160" height="92" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="100.0" y="79" font-size="15" fill="#292929" text-anchor="middle">split_records</text>
+<text x="100.0" y="101" font-size="15" fill="#292929" text-anchor="middle">점검 (5번)</text>
+<text x="100.0" y="123" font-size="15" fill="#292929" text-anchor="middle">문제 없으면 (6번)</text>
+<rect x="200" y="50" width="160" height="92" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="280.0" y="79" font-size="15" fill="#292929" text-anchor="middle">find_schema</text>
+<text x="280.0" y="101" font-size="15" fill="#292929" text-anchor="middle">_problem</text>
+<text x="280.0" y="123" font-size="15" fill="#292929" text-anchor="middle">1번 · 2번</text>
+<rect x="380" y="50" width="150" height="92" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="455.0" y="79" font-size="15" fill="#292929" text-anchor="middle">make_alert</text>
+<text x="455.0" y="101" font-size="15" fill="#292929" text-anchor="middle">번호 (3번)</text>
+<text x="455.0" y="123" font-size="15" fill="#292929" text-anchor="middle">딕셔너리 (4번)</text>
+<rect x="550" y="50" width="150" height="92" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="625.0" y="79" font-size="15" fill="#292929" text-anchor="middle">summarize</text>
+<text x="625.0" y="101" font-size="15" fill="#292929" text-anchor="middle">알림 수 (7번)</text>
+<text x="625.0" y="123" font-size="15" fill="#292929" text-anchor="middle">실행한 조치 (8번)</text>
+<line x1="182" y1="96" x2="196" y2="96" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<line x1="362" y1="96" x2="376" y2="96" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
+<rect x="20" y="170" width="680" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360.0" y="200" font-size="15" fill="#292929" text-anchor="middle">challenge5-1_run.py : 엔진 실행 (9번)</text>
+<text x="20" y="258" font-size="16" fill="#292929" font-weight="700">단계 2 · 일부러 틀린 기록</text>
+<rect x="20" y="270" width="330" height="56" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="185.0" y="303" font-size="15" fill="#292929" text-anchor="middle">hana · grade 키 없음 → 거절</text>
+<rect x="370" y="270" width="330" height="56" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="535.0" y="303" font-size="15" fill="#292929" text-anchor="middle">minsu · critical 등급 → 거절</text>
+<text x="20" y="362" font-size="16" fill="#292929" font-weight="700">실행 출력 여섯 단계</text>
+<rect x="20" y="374" width="110" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="75.0" y="394" font-size="14" fill="#666660" text-anchor="middle">단계 1</text>
+<text x="75.0" y="415" font-size="14" fill="#292929" text-anchor="middle">탐지 결과</text>
+<rect x="134" y="374" width="110" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="189.0" y="394" font-size="14" fill="#666660" text-anchor="middle">단계 2</text>
+<text x="189.0" y="415" font-size="14" fill="#292929" text-anchor="middle">점검 시험</text>
+<rect x="248" y="374" width="110" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="303.0" y="394" font-size="14" fill="#666660" text-anchor="middle">단계 3</text>
+<text x="303.0" y="415" font-size="14" fill="#292929" text-anchor="middle">넣을 알림</text>
+<rect x="362" y="374" width="110" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="417.0" y="394" font-size="14" fill="#666660" text-anchor="middle">단계 4</text>
+<text x="417.0" y="415" font-size="14" fill="#292929" text-anchor="middle">엔진 결과</text>
+<rect x="476" y="374" width="110" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="531.0" y="394" font-size="14" fill="#666660" text-anchor="middle">단계 5</text>
+<text x="531.0" y="415" font-size="14" fill="#292929" text-anchor="middle">운영 요약</text>
+<rect x="590" y="374" width="110" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="645.0" y="394" font-size="14" fill="#666660" text-anchor="middle">단계 6</text>
+<text x="645.0" y="415" font-size="14" fill="#292929" text-anchor="middle">파일 저장</text>
+</g></svg>

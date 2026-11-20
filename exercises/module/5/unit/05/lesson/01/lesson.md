@@ -6,32 +6,47 @@ render: markdown
 
 # 시작하기
 
-## 목표: 통합 엔진과 정책 점검
+## 목표와 오늘의 계획
 
-<mark style="background:#e0d4ff">Unit 1~4에서는 플레이북 찾기(Unit 1) · 계정 잠금과 IP 차단(Unit 2) · 티켓(Unit 3) · 승인 게이트(Unit 4)</mark>를 단계마다 따로 구현했습니다. 이번 Unit에서는 <mark>**이 모듈들을 하나의 엔진으로 연결해 알림 한 건을 처음부터 끝까지 처리하고, Module 4의 탐지 결과를 입력으로 받아 실행하고, 엔진이 정책을 지켰는지 로그로 점검하는 부분**</mark>을 구현합니다. 통합 엔진(orchestration engine, 오케스트레이션 엔진: 여러 모듈을 정해진 순서로 호출해 하나의 흐름으로 실행하는 프로그램)은 SOAR(Security Orchestration, Automation and Response, 쏘아: 보안 오케스트레이션 · 자동화 · 대응) 제품의 핵심 부분입니다.
+Unit 1 ~ 4에서는 플레이북 찾기(Unit 1) · 계정 잠금과 IP 차단(Unit 2) · 티켓(Unit 3) · 승인 게이트(Unit 4)를 단계마다 따로 만들었습니다. 이번 Unit에서는 <mark>**이 모듈들을 하나의 엔진으로 연결해 알림 한 건을 처음부터 끝까지 처리하고, 엔진이 정책을 지켰는지 로그로 점검합니다.**</mark> 통합 엔진(orchestration engine, 오케스트레이션 엔진: 여러 모듈을 정해진 순서로 호출해 하나의 흐름으로 실행하는 프로그램)은 SOAR(Security Orchestration, Automation and Response, 쏘아: 보안 오케스트레이션 · 자동화 · 대응) 제품의 핵심 부분입니다. 이번 Unit은 Module 5의 마지막 Unit이라, 끝에 Module 5 전체를 돌아보는 최종 회고 문서를 씁니다.
 
-- **실습 5-1**: 알림 한 건을 <mark>플레이북 찾기 → 승인 게이트 → 조치 실행 → 티켓</mark> 순서로 처리하는 엔진을 만듭니다. 알림 하나에서 오류가 나도 그 알림만 실패(failure)로 기록하고 나머지 알림을 계속 처리합니다(`soar_engine.py`).
-- **도전 5-1**: Module 4가 저장한 탐지 결과 `unit07_risk_scores.json` 을 엔진이 읽는 알림으로 바꾸고, 파일 모양을 엔진 앞에서 점검합니다. 엔진 실행 결과는 운영 요약(operations summary: 처리 결과별 알림 수 · 티켓 수 · 실제로 실행한 조치를 한 번에 보여 주는 요약)으로 정리합니다(`engine_input.py`). 종단간(end-to-end: 처음 입력부터 마지막 결과까지 중간에 끊기지 않고 한 흐름으로 이어지는 것) 연결입니다.
-- **실습 5-2**: 엔진이 남긴 로그로 <mark>정책 준수 점검</mark>(policy compliance check: 승인 게이트와 허용 목록 같은 통제가 실제로 지켜졌는지 확인하는 일)을 하고, Unit 1~5 전체 회고 문서 `unit10_final_retrospective.md` 를 쓴 뒤 깃허브에 올립니다(`policy_check.py`).
+**오늘의 계획 (3시간)**
 
-새 문법은 실습 5-1의 `except Exception as error` 하나입니다. 이번 Unit에서는 판다스를 쓰지 않습니다. 보고서의 [핵심 질문] 표시가 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기(줄 앞의 빈칸)는 각 번호 주석과 같은 위치에서 시작합니다. 각 번호 주석 바로 아래에 직접 쓰고(도전 5-1 4번만 딕셔너리라서 여러 줄), 주석은 지우지 않습니다.
+1. 시작하기 15분: 이 레슨을 읽고 앞 Unit 파일을 확인한 뒤, 알림 파일 `engine_alerts.json` 을 만듭니다.
+2. 실습 약 110분: 핵심 실습 두 개를 차례로 합니다. 실습 5-2 앞에서 「제공 파일」 레슨의 로그 파일 하나를 복사해 만들고, 실습 5-2 끝에서 최종 회고 문서를 씁니다.
+3. 글쓰기 40분: 「보고서 쓰기」 레슨에서 핵심 실습의 질문에 답하고, 「오늘의 글 쓰기」 레슨에서 글 한 편을 씁니다.
+4. 마무리 15분: 실습 5-2 끝의 「이번 Unit 마무리」에서 파일을 확인하고 깃허브에 올립니다.
 
- **이전 파일**: 오늘 가져와 사용(import)하는 이전 파일은 아래 표와 같습니다. 없는 파일은 시작하기 뒤의 「이전 파일이 없을 때」 코드 상자로 만듭니다.
+**오늘 만들 것 두 가지**
 
-| 파일 | 만든 날 | 가져다 쓰는 것 | 쓰는 실습 |
+1. **실습 5-1**: 알림 한 건을 <mark>플레이북 찾기 → 승인 게이트 → 조치 실행 → 티켓</mark> 순서로 처리하는 엔진 `soar_engine.py` 를 만듭니다. 알림 하나에서 오류가 나도 그 알림만 실패(failure)로 기록하고 나머지 알림을 계속 처리합니다.
+2. **실습 5-2**: 엔진이 남긴 로그로 <mark>정책 준수 점검</mark>(policy compliance check: 승인 게이트와 허용 목록 같은 통제가 실제로 지켜졌는지 확인하는 일)을 하는 `policy_check.py` 를 만들고, Module 5 전체를 돌아보는 회고 문서 `unit10_final_retrospective.md` 를 쓴 뒤 깃허브에 올립니다.
+
+**오늘 받아 쓰는 것** — 「제공 파일」 레슨의 `risk_engine_log.json` 입니다. Module 4 탐지 결과 5건을 엔진으로 처리한 로그이고, 실습 5-2가 점검하는 로그 세 개 가운데 하나입니다.
+
+**도전 5-1은 선택입니다.** 핵심 실습 두 개와 글쓰기를 마치고 시간이 남을 때 합니다. 도전 5-1에서는 Module 4가 저장한 탐지 결과 `unit05_risk_scores.json` 을 엔진이 읽는 알림으로 바꾸고 운영 요약을 만듭니다. 제공 파일 `risk_engine_log.json` 을 직접 만들어 보는 실습이라, 도전을 하지 않아도 실습 5-2를 똑같이 할 수 있습니다.
+
+새 문법은 실습 5-1의 `except Exception as error` 하나입니다. 이번 Unit에서는 판다스를 쓰지 않습니다. 코드는 각 번호 주석 바로 아래에 쓰고, 들여쓰기(줄 앞의 빈칸)는 그 번호 주석과 같은 위치에서 시작합니다. 주석은 지우지 않습니다.
+
+## 폴더 열고 이전 파일 확인하기
+
+오늘 코드는 앞 Unit 파일을 `import` 로 불러 씁니다. 먼저 `soar_response` 폴더에 아래 파일이 있는지 봅니다.
+
+| 파일 | 만든 곳 | 가져다 쓰는 것 | 쓰는 실습 |
 |---|---|---|---|
-| `incident.py` | Unit 1 | `load_json` · `save_json` · `match_playbooks` | 실습 5-1 · 도전 5-1 · 실습 5-2 |
-| `config/playbook_registry.json` | Unit 1 | 플레이북 3개(`actions` · 트리거 규칙 · 최소 등급) | 실습 5-1 · 도전 5-1 |
-| `containment_store.py` · `account_actions.py` · `ip_actions.py` | Unit 2 | `new_state` · `lock_account` · `block_ip` · `count_users_on_ip` | 실습 5-1 |
-| `ip_users.json` | Unit 2 | IP 별로 그 IP 를 쓰는 계정 리스트 | 실습 5-1 |
-| `ticketing.py` · `config/escalation_rules.json` | Unit 3 | `make_ticket` · 등급별 응답 기한(`sla_minutes`) | 실습 5-1 |
-| `approval_gate.py` · `config/approval_policy.json` | Unit 4 | `decide_gate` · 승인 정책 | 실습 5-1 · 실습 5-2 |
-| `unit07_risk_scores.json` | Module 4 Unit 7 | 대상별 점수 · 등급 · 이유 5건 | 도전 5-1 |
+| `incident.py` | Unit 1 실습 1-2 | `load_json` · `save_json` · `match_playbooks` | 실습 5-1 · 실습 5-2 |
+| `config/playbook_registry.json` | Unit 1 실습 1-1 | 플레이북 3개 | 실습 5-1 |
+| `containment_store.py` · `account_actions.py` | Unit 2 실습 2-1 | `new_state` · `lock_account` | 실습 5-1 |
+| `ip_actions.py` | Unit 2 「제공 파일」 레슨 | `block_ip` · `count_users_on_ip` | 실습 5-1 |
+| `ip_users.json` | Unit 2 시작하기 | IP 별 사용 계정 | 실습 5-1 |
+| `ticketing.py` | Unit 3 실습 3-2 | `make_ticket` · `NEXT_STEPS` | 실습 5-1 |
+| `config/escalation_rules.json` | Unit 3 시작하기 | 등급별 응답 기한 | 실습 5-1 |
+| `approval_gate.py` · `config/approval_policy.json` | Unit 4 실습 4-1 | `decide_gate` · 승인 정책 | 실습 5-1 · 실습 5-2 |
 
-## 폴더 열고 파일 준비하기
+**순서**
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** Module 5 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 `incident.py` · `approval_gate.py` · `ticketing.py` · `ip_users.json` 과 `config` 가 보이고, `ls config` 결과에 `playbook_registry.json` · `approval_policy.json` · `escalation_rules.json` 이 보이면</mark> 됩니다. Unit 2 파일 세 개(`containment_store.py` · `account_actions.py` · `ip_actions.py`)도 필요합니다. 없는 파일은 아래 「이전 파일이 없을 때」에서 만듭니다.
+2. **[터미널]** Module 5 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 위 표의 파일과 `config` 가 보이고, `ls config` 결과에 `playbook_registry.json` · `approval_policy.json` · `escalation_rules.json` 이 보이면</mark> 됩니다.
    ```bash
    pwd
    cd soar_response
@@ -40,26 +55,34 @@ render: markdown
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
-3. **파일은 이렇게 만듭니다.** 이 페이지에서 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면, **[VS Code]** 왼쪽 목록에서 알려 준 폴더(`soar_response` 또는 그 안의 `config`)를 오른쪽 클릭 › **New File** 을 누르고 **파일 이름을 그대로** 적고 Enter 를 칩니다. 코드 상자의 복사 버튼으로 내용을 붙여 넣고 `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다. 따로 내려받는 파일은 없습니다. 답을 적는 보고서 `report_u5.md` 도 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
-4. **[터미널]** Unit 1의 플레이북 등록 값을 점검합니다(맥북은 `python3`). 엔진은 이 파일의 `actions` · 트리거 규칙 · 최소 등급을 읽으므로, <mark>아래 출력과 같아야</mark> 이번 Unit의 출력이 문서와 일치합니다. 다르면 아래 「이전 파일이 없을 때」의 `config/playbook_registry.json` 으로 덮어씁니다.
+3. **[터미널]** 앞 Unit 파일을 한 번에 불러 봅니다(맥북은 `python3`). <mark>`앞 Unit 파일 정상` 이 나오면</mark> 됩니다.
+   ```bash
+   python -c "from incident import load_json, match_playbooks; from containment_store import new_state; from account_actions import lock_account; from ip_actions import block_ip, count_users_on_ip; from ticketing import make_ticket, NEXT_STEPS; from approval_gate import decide_gate; print('앞 Unit 파일 정상')"
+   ```
+   - `ModuleNotFoundError: No module named '…'` 가 나오면 따옴표 안 이름의 파일이 이 폴더에 없는 것입니다. 다음 페이지 「이전 파일이 없을 때」에서 그 파일만 만들고 다시 칩니다. 승인 게이트 `approval_gate.py` 가 없으면 실습 5-1의 엔진이 시작부터 멈추니 꼭 만듭니다.
+   - `ImportError: cannot import name '…'` 가 나오면 파일은 있지만 그 이름의 함수가 없는 것이고, `IndentationError` 가 나오면 그 파일의 빈칸이 덜 채워진 것입니다. 그 Unit의 정답 레슨으로 채우거나, 다음 페이지의 코드 상자로 덮어씁니다.
+4. **[터미널]** 플레이북 등록 값을 점검합니다. 엔진은 이 파일의 `actions` · 트리거 규칙 · 최소 등급을 읽으므로, <mark>아래 출력과 같아야</mark> 이번 Unit의 출력이 문서와 일치합니다. 다르면 다음 페이지의 `config/playbook_registry.json` 으로 덮어씁니다.
    ```bash
    python -c "import json; print([(p['id'], p['trigger_rule'], p['min_grade'], p['actions']) for p in json.load(open('config/playbook_registry.json', encoding='utf-8'))])"
    ```
    ```
    [('PB-001', '퇴사한 계정', 'high', ['계정 잠금', '티켓 생성']), ('PB-002', '대량 다운로드', 'mid', ['담당자 알림', '티켓 생성']), ('PB-003', '경로 스캔', 'low', ['IP 차단', '티켓 생성'])]
    ```
-5. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `engine_alerts.json` 파일을 만들어 아래 내용을 붙여 넣고 저장합니다.
+5. **파일은 이렇게 만듭니다.** 따로 내려받는 파일은 없고, 모두 코드 상자에서 복사해 만듭니다.
+   1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더(`soar_response` 또는 그 안의 `config`)를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다.
+   2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
+   - 답을 적는 보고서 `report_u5.md` 는 「보고서 쓰기」 레슨의 틀을 복사해 만듭니다.
+6. **[VS Code]** `soar_response` 폴더에 `engine_alerts.json` 파일을 만들어 아래 내용을 붙여 넣고 저장합니다.
 
 **`engine_alerts.json`** — 이번 Unit에서 들어온 알림 8건입니다.
 
 - **무엇인가**:
-  - Unit 1의 `incident_samples.json` 과 같은 알림 모양입니다. 키는 `id`(알림 번호) · `entity`(대상 계정 또는 IP) · `grade`(등급) · `score`(점수) · `reasons`(탐지된 규칙 이름 리스트) · `status`(상태)입니다.
+  - Unit 1 시작하기 `incident_samples.json` 과 같은 알림 모양입니다. 키는 `id`(알림 번호) · `entity`(대상 계정 또는 IP) · `grade`(등급) · `score`(점수) · `reasons`(탐지된 규칙 이름 리스트) · `status`(상태)입니다.
   - 알림마다 다른 처리 경로를 지나도록 만든 시험용 데이터입니다. `INC-402` 는 `grade` 키가 없는 알림입니다.
   - `203.0.113.80` 은 허용 목록(allowlist, 얼라우리스트: 차단 대상에서 제외하기로 미리 정한 IP 의 목록)에 있는 협력사 사무실 IP 이고, `192.0.2.41` 은 `junho` 와 `hana` 가 함께 쓰는 IP 이며, `gaeun` 은 VIP 계정입니다.
 - **어디에 쓰나**: 실습 5-1 엔진이 알림을 하나씩 처리합니다.
 
-```
-[
+<pre class="copyable"><code>[
   {"id": "INC-401", "entity": "dami", "grade": "high", "score": 60, "reasons": ["퇴사한 계정"], "status": "탐지됨"},
   {"id": "INC-402", "entity": "hana", "score": 40, "reasons": ["업무 시간 밖 로그인"], "status": "탐지됨"},
   {"id": "INC-403", "entity": "198.51.100.45", "grade": "low", "score": 30, "reasons": ["경로 스캔"], "status": "탐지됨"},
@@ -69,16 +92,18 @@ render: markdown
   {"id": "INC-407", "entity": "seoyeon", "grade": "mid", "score": 45, "reasons": ["대량 다운로드"], "status": "탐지됨"},
   {"id": "INC-408", "entity": "jiwoo", "grade": "mid", "score": 35, "reasons": ["업무 시간 밖 로그인"], "status": "탐지됨"}
 ]
-```
+</code></pre>
 
-6. **[터미널]** 파일이 정상인지 확인합니다(맥북은 `python3`). <mark>`8` 이 나와야</mark> 합니다.
+7. **[터미널]** 파일이 정상인지 확인합니다(맥북은 `python3`). <mark>`8` 이 나와야</mark> 합니다.
    ```bash
    python -c "import json; print(len(json.load(open('engine_alerts.json', encoding='utf-8'))))"
    ```
 
-## 이전 파일이 없을 때 (Unit 1 · 4 · 6 · 8 파일)
+> 실행은 VS Code 의 ▶ 단추가 아니라 **터미널**에서 합니다. **앞 Unit 파일은 고치지 않습니다.** 오늘 만드는 파일은 모두 새 파일입니다.
 
-해당 요일에 결석했거나 파일을 지운 경우에만 만듭니다. **이미 있는 파일은 건너뜁니다.** 먼저 **[터미널]** 에서 `config` 폴더가 없으면 만듭니다(이미 있어도 오류가 나지 않습니다).
+## 이전 파일이 없을 때 (Unit 1 ~ 4 파일)
+
+앞 Unit을 빠졌거나 파일을 지운 경우에만 만듭니다. **이미 있는 파일은 건너뜁니다.** 먼저 **[터미널]** 에서 `config` 폴더가 없으면 만듭니다(이미 있어도 오류가 나지 않습니다).
 
 ```bash
 mkdir -p config
@@ -86,9 +111,10 @@ ls
 ```
 
 - 명령 풀이: `mkdir -p 폴더이름` 폴더가 없을 때만 만들기 · `ls` 폴더 안의 파일 이름 보기
-- 아래 코드 상자마다 **[VS Code]** 에서 `soar_response` 폴더(`config/` 로 시작하는 파일은 `config` 폴더)를 오른쪽 클릭 › **New File** 로 같은 이름의 파일을 만들어 붙여 넣고 저장합니다. 만들 파일은 `incident.py` · `containment_store.py` · `account_actions.py` · `ip_actions.py` · `ticketing.py` · `approval_gate.py` · `ip_users.json` · `config/playbook_registry.json` · `config/approval_policy.json` · `config/escalation_rules.json` 입니다. 이미 있는 파일은 만들지도 붙여 넣지도 않습니다(플레이북 등록 파일만 4번 점검 결과가 다를 때 덮어씁니다).
+- 아래 코드 상자마다 **[VS Code]** 에서 `soar_response` 폴더(`config/` 로 시작하는 파일은 `config` 폴더)를 오른쪽 클릭 › **New File** 로 같은 이름의 파일을 만들어 붙여 넣고 저장합니다. 만들 수 있는 파일은 `incident.py` · `config/playbook_registry.json` · `containment_store.py` · `account_actions.py` · `ip_actions.py` · `ip_users.json` · `ticketing.py` · `config/escalation_rules.json` · `approval_gate.py` · `config/approval_policy.json` 입니다. 이미 있는 파일은 만들지도 붙여 넣지도 않습니다(플레이북 등록 파일만 앞 페이지 4번 점검 결과가 다를 때 덮어씁니다).
+- 다 만들었으면 앞 페이지 3번 명령을 다시 쳐서 `앞 Unit 파일 정상` 이 나오는지 확인합니다.
 
-**`incident.py`** — Unit 1 파일에서 이번 Unit에서 쓰는 부분(`load_json` · `save_json` · `match_playbooks` 와 그 함수가 쓰는 `is_grade_enough`)만 담았습니다. Unit 1 파일 전체가 있으면 그것을 그대로 씁니다.
+**`incident.py`** — Unit 1 실습 1-2 파일에서 이번 Unit이 쓰는 부분(`load_json` · `save_json` · `match_playbooks` 와 그 함수가 쓰는 `is_grade_enough`)만 담았습니다. Unit 1 파일 전체가 있으면 그것을 그대로 씁니다.
 
 ```python
 import json                                                                   # JSON 파일을 읽고 쓰기 위해 json 을 불러온다
@@ -133,10 +159,9 @@ def match_playbooks(incident, registry):                                      # 
     return matched                                                            # 맞는 플레이북 리스트를 리턴한다
 ```
 
-**`config/playbook_registry.json`** — Unit 1의 플레이북 3개입니다. 이번 Unit의 엔진은 `trigger_rule` · `min_grade` · `actions` 만 읽습니다.
+**`config/playbook_registry.json`** — Unit 1 실습 1-1 플레이북 3개입니다. 이번 Unit의 엔진은 `trigger_rule` · `min_grade` · `actions` 만 읽습니다.
 
-```
-[
+<pre class="copyable"><code>[
   {
     "id": "PB-001",
     "name": "퇴사한 계정의 서버 요청",
@@ -174,9 +199,9 @@ def match_playbooks(incident, registry):                                      # 
     "reason": "경로 스캔의 대상은 사용자가 아니라 IP 입니다. 같은 IP 를 여러 사람이 쓰고 있으면 차단했을 때 정상 사용자의 업무도 막히므로, 담당자가 확인한 뒤에 차단합니다."
   }
 ]
-```
+</code></pre>
 
-**`containment_store.py`** — Unit 2 파일에서 이번 Unit에서 쓰는 부분(`new_state` · `make_record`)만 담았습니다. 조치 기록 한 건을 만들고 연습용 시스템의 처음 상태를 만듭니다. Unit 2 파일 전체가 있으면 그것을 그대로 씁니다.
+**`containment_store.py`** — Unit 2 실습 2-1 파일에서 이번 Unit이 쓰는 부분(`new_state` · `make_record`)만 담았습니다. 조치 기록 한 건을 만들고 연습용 시스템의 처음 상태를 만듭니다. Unit 2 파일 전체가 있으면 그것을 그대로 씁니다.
 
 ```python
 import copy                                                           # 처음 상태를 복사해 쓰기 위해 copy 를 불러온다
@@ -205,7 +230,7 @@ def make_record(action, target, incident_id, before, after, reason):  # 조치 �
     return record                                                     # 기록 한 건을 리턴한다
 ```
 
-**`account_actions.py`** — Unit 2 파일에서 이번 Unit에서 쓰는 부분(`lock_account` 와 그 함수가 쓰는 `check_policy` · `verify_locked`)만 담았습니다. VIP 이면 잠그지 않고, 아니면 계정을 잠급니다.
+**`account_actions.py`** — Unit 2 실습 2-1 파일에서 이번 Unit이 쓰는 부분(`lock_account` 와 그 함수가 쓰는 `check_policy` · `verify_locked`)만 담았습니다. VIP 이면 잠그지 않고, 아니면 계정을 잠급니다.
 
 ```python
 from containment_store import make_record                                             # 기록 한 건을 만드는 함수를 불러온다
@@ -243,7 +268,7 @@ def lock_account(user, state, vip_accounts, incident_id, reason):               
     return make_record("계정 잠금", user, incident_id, "잠기지 않음", after, reason)  # 조치 전 · 후 상태와 함께 기록한다 — 미리 채운 줄
 ```
 
-**`ip_actions.py`** — Unit 2 파일에서 이번 Unit에서 쓰는 부분(`block_ip` · `count_users_on_ip` · `DEFAULT_TTL`)만 담았습니다. IP 를 차단하고, 그 IP 를 쓰는 계정 수를 셉니다.
+**`ip_actions.py`** — Unit 2 「제공 파일」 레슨 파일에서 이번 Unit이 쓰는 부분(`block_ip` · `count_users_on_ip` · `DEFAULT_TTL`)만 담았습니다. IP 를 차단하고, 그 IP 를 쓰는 계정 수를 셉니다.
 
 ```python
 from containment_store import make_record             # 기록 한 건을 만드는 함수를 불러온다
@@ -270,13 +295,12 @@ def block_ip(ip, state, incident_id, reason, ttl):    # IP · 상태 · 인시�
     return make_record("IP 차단", ip, incident_id, "차단되지 않음", after, reason + " (" + str(ttl) + "분 뒤 자동 해제)")  # 조치 전 · 후 상태와 함께 기록한다 — 미리 채운 줄
 ```
 
-**`ip_users.json`** — Unit 2 파일입니다. IP 별로 그 IP 를 쓰는 계정 리스트입니다.
+**`ip_users.json`** — Unit 2 시작하기에서 만든 파일입니다. IP 별로 그 IP 를 쓰는 계정 리스트입니다.
 
-```
-{"203.0.113.80": ["seoyeon", "jiwoo"], "192.0.2.41": ["junho", "hana"]}
-```
+<pre class="copyable"><code>{"203.0.113.80": ["seoyeon", "jiwoo"], "192.0.2.41": ["junho", "hana"]}
+</code></pre>
 
-**`ticketing.py`** — Unit 3 파일입니다. 알림 한 건으로 티켓 한 장을 만듭니다.
+**`ticketing.py`** — Unit 3 실습 3-2 파일입니다. 알림 한 건으로 티켓 한 장을 만듭니다.
 
 ```python
 DEFAULT_NEXT_STEP = "담당자가 알림 내용을 읽고 필요한 일을 정한다"                      # 알림 상태를 모를 때 쓰는 다음 할 일
@@ -353,10 +377,9 @@ def make_ticket(alert, ticket_no, rules, next_steps):                           
     return ticket                                                                       # 만든 티켓을 리턴한다
 ```
 
-**`config/escalation_rules.json`** — Unit 3 파일입니다. 이번 Unit에서는 등급별 응답 기한(`sla_minutes`)만 읽습니다.
+**`config/escalation_rules.json`** — Unit 3 시작하기에서 만든 파일입니다. 이번 Unit에서는 등급별 응답 기한(`sla_minutes`)만 읽습니다.
 
-```
-{
+<pre class="copyable"><code>{
   "sla_minutes": {"high": 15, "mid": 60, "low": 240},
   "recipients": {
     "high": ["kim.sec", "lee.soc", "team.lead"],
@@ -371,9 +394,9 @@ def make_ticket(alert, ticket_no, rules, next_steps):                           
     {"overdue_minutes": 30, "notify": "soc.head"}
   ]
 }
-```
+</code></pre>
 
-**`approval_gate.py`** — Unit 4 파일입니다. 조치 요청 한 건을 자동 · 승인 필요 · 차단 금지로 정합니다.
+**`approval_gate.py`** — Unit 4 실습 4-1 파일입니다. 실습 5-1 엔진과 실습 5-2 점검이 모두 이 파일을 불러 씁니다. 조치 요청 한 건을 자동 · 승인 필요 · 차단 금지로 정합니다.
 
 ```python
 def is_allowlisted(request, policy):                                        # 조치 요청 한 건과 승인 정책을 받는 함수
@@ -415,10 +438,9 @@ def decide_gate(request, policy):                                           # �
     return "자동", reasons                                                  # 기준보다 낮으면 자동으로 실행한다 — 미리 채운 줄
 ```
 
-**`config/approval_policy.json`** — Unit 4 파일입니다. 승인 게이트의 점수 기준입니다.
+**`config/approval_policy.json`** — Unit 4 실습 4-1 파일입니다. 승인 게이트의 점수 기준입니다.
 
-```
-{
+<pre class="copyable"><code>{
   "allowlist_ips": ["203.0.113.80", "192.0.2.10"],
   "vip_accounts": ["gaeun"],
   "grade_points": {"high": 2, "mid": 1, "low": 0},
@@ -429,15 +451,17 @@ def decide_gate(request, policy):                                           # �
   "many_targets_limit": 3,
   "approval_score": 3
 }
-```
+</code></pre>
 
 ## 오류가 나면
 
 - `pwd` 가 `soar_response` 로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
-- `ModuleNotFoundError: No module named 'approval_gate'` 처럼 `No module named` 이 나오면 <mark style="background:#ffc4d6">그 이름의 파일이 이 폴더에 없다는 뜻</mark>입니다. 위 「이전 파일이 없을 때」의 코드 상자로 만듭니다.
-- `FileNotFoundError` 가 나오면 오류 문장에 적힌 파일(`ip_users.json` · `config/playbook_registry.json` · `config/approval_policy.json` · `config/escalation_rules.json`)이 그 위치에 없는 것입니다. `ls` 와 `ls config` 로 확인한 뒤 위 「이전 파일이 없을 때」의 코드 상자로 만듭니다.
+- `ModuleNotFoundError: No module named 'approval_gate'` 처럼 `No module named` 이 나오면 <mark style="background:#ffc4d6">그 이름의 파일이 이 폴더에 없다는 뜻</mark>입니다. 「이전 파일이 없을 때」 페이지의 코드 상자로 만듭니다.
+- `FileNotFoundError` 가 나오면 오류 문장에 적힌 파일(`ip_users.json` · `config/playbook_registry.json` · `config/approval_policy.json` · `config/escalation_rules.json`)이 그 위치에 없는 것입니다. `ls` 와 `ls config` 로 확인한 뒤 「이전 파일이 없을 때」 페이지의 코드 상자로 만듭니다.
 - `json.decoder.JSONDecodeError` 가 나오면 붙여 넣은 JSON 파일에서 쉼표나 괄호가 빠졌거나 남은 것입니다. 오류 문장의 `line` 숫자 근처를 확인하고, 모르겠으면 파일 내용을 모두 지운 뒤 문서의 코드 상자를 다시 붙여 넣습니다.
-- 먼저 오류 전체와 내가 친 명령을 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 그래도 막히면 맨 아래 「정답」을 봅니다. 그래도 풀리지 않으면 보고서에 「모름 — 막힌 곳: …」 이라고 씁니다.
+- `IndentationError` 나 `SyntaxError` 가 앞 Unit 파일 이름과 함께 나오면 그 파일의 빈칸이 덜 채워진 것입니다. 그 Unit의 정답 레슨을 보고 채우거나, 「이전 파일이 없을 때」 페이지의 코드 상자로 덮어씁니다.
+- 먼저 오류 전체와 내가 친 명령을 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 그래도 막히면 이 Unit 뒤쪽의 정답 레슨을 봅니다. 그래도 풀리지 않으면 보고서에 「모름 — 막힌 곳: …」 이라고 씁니다.
 
-> 실행은 VS Code 의 ▶ 단추가 아니라 <mark style="background:#ffc4d6">**터미널**에서</mark> 합니다. 실행할 때마다 같은 입력 파일에서 시작해 같은 결과가 나옵니다.
+> 실행할 때마다 같은 입력 파일에서 시작해 같은 결과가 나옵니다.
+
 ---

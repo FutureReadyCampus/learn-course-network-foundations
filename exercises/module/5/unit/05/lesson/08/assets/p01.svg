@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>글쓰기 40분: 회고 문서와 다른 글감 하나를 골라 25분 쓰고 10분 점검해 올린다</title>
+<desc>40분을 고르기 5분, 쓰기 25분, 점검과 올리기 10분으로 나눕니다. 회고 문서는 표로 정리한 것이고 오늘의 글은 질문 하나를 이야기로 씁니다. 핵심 글감은 오류 격리, 차단 금지와 승인 대기, 결정 다시 구하기이고 도전을 했다면 입력 검증 글감을 고릅니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, &#x27;Noto Sans KR&#x27;, -apple-system, &#x27;Segoe UI&#x27;, sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">오늘 쓸 글 고르기</text>
+<rect x="20" y="52" width="110" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="75.0" y="75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">고르기</text>
+<text x="75.0" y="96" font-size="15" fill="#666660" text-anchor="middle">5분</text>
+<rect x="140" y="52" width="400" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="340.0" y="75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">쓰기</text>
+<text x="340.0" y="96" font-size="15" fill="#666660" text-anchor="middle">25분</text>
+<rect x="550" y="52" width="150" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="625.0" y="75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">점검 · 올리기</text>
+<text x="625.0" y="96" font-size="15" fill="#666660" text-anchor="middle">10분</text>
+<rect x="20" y="124" width="330" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="185" y="156" font-size="15" fill="#292929" text-anchor="middle">회고 문서: Module 5 전체를 표로</text>
+<rect x="370" y="124" width="330" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="535" y="156" font-size="15" fill="#292929" text-anchor="middle">오늘의 글: 질문 하나를 이야기로</text>
+<rect x="20" y="194" width="440" height="186" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="240" y="228" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">핵심 글감 (실습 5-1 · 5-2)</text>
+<text x="240" y="266" font-size="15" fill="#666660" text-anchor="middle">① 실패한 알림 하나를 가두는 오류 격리</text>
+<text x="240" y="304" font-size="15" fill="#666660" text-anchor="middle">② 차단 금지와 승인 대기가 갈린 이유</text>
+<text x="240" y="342" font-size="15" fill="#666660" text-anchor="middle">③ 적힌 결정 대신 다시 구해 보기</text>
+<rect x="480" y="194" width="220" height="186" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="590" y="248" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">선택 글감 (도전)</text>
+<text x="590" y="288" font-size="15" fill="#666660" text-anchor="middle">입력 검증과</text>
+<text x="590" y="314" font-size="15" fill="#666660" text-anchor="middle">오류 격리의 차이</text>
+</g>
+</svg>
