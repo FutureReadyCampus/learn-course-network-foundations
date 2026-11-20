@@ -279,7 +279,7 @@ def load_saas(path):                                             # SaaS CSV 파�
 - 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 6번은 모두 함수 안이라 앞에 공백 4개입니다.
 - 4번의 `split("@")` 는 실습 1-1의 `split('"', 2)` 처럼 구분 문자로 나눈 리스트를 만듭니다. `seoyeon@a-corp.example` 은 `["seoyeon", "a-corp.example"]` 이 되고, <mark>5번에서 첫 값(`account_parts[0]`)을 씁니다.</mark>
 - 번호 주석이 연달아 붙어 있어도(예: 4 · 5번), <mark>주석 사이마다 줄을 끼워 넣어 각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark>
-- **채우기 전에 실행하면 `UnboundLocalError` 또는 `NameError` 가 납니다.** 예를 들어 1 · 2번을 아직 안 썼으면 `time_out` 을 찾지 못합니다.
+- **채우기 전에 실행하면 `UnboundLocalError` 또는 `NameError` 가 납니다.** 둘 다 아직 값을 담지 않은 이름을 썼다는 오류입니다. 예를 들어 1 · 2번을 아직 안 썼으면 `time_out` 을 찾지 못합니다.
 
 **`challenge1-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 두 로그를 공통 이벤트로 바꿔 세 단계로 출력합니다.
 
