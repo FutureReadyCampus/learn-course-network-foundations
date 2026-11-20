@@ -1,40 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 403" role="img">
-<title>anomaly_detection 에 llm_client.py 를 복사하고 점수 파일 5건을 만든다</title>
-<desc>왼쪽은 폴더 배치이고 오른쪽은 준비 순서다. agent_core 의 llm_client.py 를 복사해 키가 읽히면 True, New File 로 만들어 붙여 넣은 점수 파일을 읽으면 5 가 나와야 한다.</desc>
-<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img">
+<title>코드 상자로 llm_client.py 와 unit05_risk_scores.json 을 만들고 두 줄로 확인한다</title>
+<desc>anomaly_detection 폴더에서 New File 로 파일을 만들고 코드 상자 내용을 붙여 넣어 저장합니다. 확인 명령 첫 줄은 5, 둘째 줄은 키가 있으면 True, 없으면 False 가 나옵니다. False 여도 실습 5-1로 갑니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">폴더 배치와 준비 순서</text>
-<rect x="12" y="52" width="330" height="320" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="28" y="86" font-size="15" text-anchor="start" fill="#292929" font-weight="700">security-agent-toolkit/</text>
-<text x="46" y="123" font-size="15" text-anchor="start" fill="#292929">.env</text>
-<text x="330" y="123" font-size="14" text-anchor="end" fill="#666660">API 키</text>
-<text x="46" y="160" font-size="15" text-anchor="start" fill="#292929">agent_core/llm_client.py</text>
-<text x="330" y="160" font-size="14" text-anchor="end" fill="#666660">원본</text>
-<text x="46" y="197" font-size="15" text-anchor="start" fill="#292929" font-weight="700">anomaly_detection/</text>
-<text x="64" y="234" font-size="15" text-anchor="start" fill="#292929">llm_client.py</text>
-<text x="330" y="234" font-size="14" text-anchor="end" fill="#666660">cp 로 복사</text>
-<text x="64" y="271" font-size="15" text-anchor="start" fill="#292929">unit05_risk_scores.json</text>
-<text x="330" y="271" font-size="14" text-anchor="end" fill="#666660">5건</text>
-<text x="64" y="308" font-size="15" text-anchor="start" fill="#292929">Unit 3 · 7 파일</text>
-<text x="330" y="308" font-size="14" text-anchor="end" fill="#666660">없으면 만들기</text>
-<text x="64" y="345" font-size="15" text-anchor="start" fill="#292929">report_u5.md</text>
-<text x="330" y="345" font-size="14" text-anchor="end" fill="#666660">보고서 쓰기에서</text>
-<rect x="366" y="52" width="342" height="62.95" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="375" y="78.12" font-size="16" text-anchor="start" fill="#292929" font-weight="700">2. 위치와 파일</text>
-<text x="375" y="100.25" font-size="15" text-anchor="start" fill="#292929">cd anomaly_detection → pwd → ls</text>
-<line x1="537" y1="115.95" x2="537" y2="127.95" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
-<rect x="366" y="128.95" width="342" height="84.7" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="375" y="155.07" font-size="16" text-anchor="start" fill="#292929" font-weight="700">3. 키 파일 복사</text>
-<text x="375" y="177.2" font-size="15" text-anchor="start" fill="#292929">cp ../agent_core/llm_client.py . →</text>
-<text x="375" y="198.95" font-size="15" text-anchor="start" fill="#292929">read_api_key 가 True</text>
-<line x1="537" y1="214.65" x2="537" y2="226.65" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
-<rect x="366" y="227.65" width="342" height="84.7" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="375" y="253.77" font-size="16" text-anchor="start" fill="#292929" font-weight="700">5. 점수 파일</text>
-<text x="375" y="275.9" font-size="15" text-anchor="start" fill="#292929">New File 로 unit05_risk_scores.json</text>
-<text x="375" y="297.65" font-size="15" text-anchor="start" fill="#292929">붙여 넣기 (덮어쓰기)</text>
-<line x1="537" y1="313.35" x2="537" y2="325.35" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
-<rect x="366" y="326.35" width="342" height="62.95" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="375" y="352.47" font-size="16" text-anchor="start" fill="#292929" font-weight="700">6. 확인</text>
-<text x="375" y="374.6" font-size="15" text-anchor="start" fill="#292929">5 가 나오고 import 두 줄에 오류 없음</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">파일은 코드 상자로 만듭니다 (내려받지 않음)</text>
+<rect x="20" y="50" width="152" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="96" y="76" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">cd anomaly_detection</text>
+<text x="96" y="99" font-size="14" fill="#666660" text-anchor="middle">pwd 로 위치 확인</text>
+<polyline points="172,82 192,82" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="196" y="50" width="152" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="272" y="76" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">New File</text>
+<text x="272" y="99" font-size="14" fill="#666660" text-anchor="middle">이름을 그대로 적기</text>
+<polyline points="348,82 368,82" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="372" y="50" width="152" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="448" y="76" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">붙여 넣기</text>
+<text x="448" y="99" font-size="14" fill="#666660" text-anchor="middle">코드 상자 복사 버튼</text>
+<polyline points="524,82 544,82" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="548" y="50" width="152" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="624" y="76" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">Ctrl + S 저장</text>
+<text x="624" y="99" font-size="14" fill="#666660" text-anchor="middle">맥북은 Cmd + S</text>
+<text x="20" y="146" font-size="16" fill="#292929" font-weight="700">만들 파일 두 개 (이미 있어도 덮어씀)</text>
+<rect x="20" y="158" width="332" height="74" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="36" y="184" font-size="16" fill="#292929" font-weight="700">4. llm_client.py</text>
+<text x="36" y="208" font-size="14" fill="#666660">find_env · read_api_key · call_llm</text>
+<text x="36" y="225" font-size="14" fill="#666660">키 값은 적지 않음 (키는 .env 에만)</text>
+<rect x="368" y="158" width="332" height="74" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="384" y="184" font-size="16" fill="#292929" font-weight="700">5. unit05_risk_scores.json</text>
+<text x="384" y="208" font-size="14" fill="#666660">대상별 점수 기록 5건</text>
+<text x="384" y="225" font-size="14" fill="#666660">entity · score · grade · reasons</text>
+<text x="20" y="266" font-size="16" fill="#292929" font-weight="700">6. 터미널에서 확인</text>
+<rect x="20" y="278" width="332" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="36" y="307" font-size="15" fill="#292929">첫째 줄: 점수 파일 건수</text>
+<polyline points="352,302 384,302" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="390" y="278" width="310" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="406" y="307" font-size="15" fill="#292929"><tspan font-weight="700">5</tspan> 가 나오면 됨</text>
+<rect x="20" y="338" width="332" height="80" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="36" y="370" font-size="15" fill="#292929">둘째 줄: 키를 읽었는지</text>
+<text x="36" y="394" font-size="14" fill="#666660">read_api_key() is not None</text>
+<polyline points="352,362 384,362" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<polyline points="352,398 384,398" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="390" y="338" width="310" height="36" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="406" y="362" font-size="15" fill="#292929"><tspan font-weight="700">True</tspan> 키 있음 → 진짜 AI 요약</text>
+<rect x="390" y="382" width="310" height="36" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="406" y="406" font-size="15" fill="#292929"><tspan font-weight="700">False</tspan> 그대로 실습 5-1로 (대체 문장)</text>
 </g>
 </svg>

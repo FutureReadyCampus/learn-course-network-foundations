@@ -1,39 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 359" role="img">
-<title>도전 5-1은 복습에서 시작해 compose.yaml 로 두 대를 켜고 200을 확인한다</title>
-<desc>이미지 확인, docker run 복습, VS Code 의 New File 로 compose.yaml 만들기, 붙여 넣기, docker compose up -d, curl 확인 순서다. 마지막에 report_u5.md 를 채운다.</desc>
-<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>Docker Desktop 을 켜고 docker ps 로 8080 · 8081 · 8082 포트가 비었는지 확인한다</title>
+<desc>Docker Desktop 을 켜고 docker ps 에서 CONTAINER ID 머리글 줄이 나오는지 봅니다. 세 포트로 걸러 머리글 줄만 나오면 비어 있는 것이고, 서버가 나오면 NAMES 열을 확인한 뒤 docker stop 이름 으로 끄고 다시 확인합니다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">도전 5-1 순서</text>
-<rect x="12" y="52" width="212" height="90.7" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="118" y="81.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">1. 이미지 확인</text>
-<text x="118" y="103.25" font-size="15" text-anchor="middle" fill="#292929">docker images</text>
-<text x="118" y="125" font-size="15" text-anchor="middle" fill="#292929">nginx:1.28 (없으면 pull)</text>
-<rect x="254" y="52" width="212" height="90.7" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="360" y="81.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">2. 복습</text>
-<text x="360" y="103.25" font-size="15" text-anchor="middle" fill="#292929">docker run → docker ps</text>
-<text x="360" y="125" font-size="15" text-anchor="middle" fill="#292929">→ docker stop web-run</text>
-<line x1="227" y1="97.35" x2="251" y2="97.35" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
-<rect x="496" y="52" width="212" height="90.7" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="602" y="81.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">3. 파일 만들기</text>
-<text x="602" y="103.25" font-size="15" text-anchor="middle" fill="#292929">New File 로 이름 입력</text>
-<text x="602" y="125" font-size="15" text-anchor="middle" fill="#292929">compose.yaml → ls</text>
-<line x1="469" y1="97.35" x2="493" y2="97.35" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
-<rect x="12" y="176.7" width="212" height="90.7" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="118" y="205.82" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">4. 붙여 넣기</text>
-<text x="118" y="227.95" font-size="15" text-anchor="middle" fill="#292929">web1 은 8080, web2 는</text>
-<text x="118" y="249.7" font-size="15" text-anchor="middle" fill="#292929">8081</text>
-<path d="M602 142.7 L602 159.7 L118 159.7 L118 174.7" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
-<rect x="254" y="176.7" width="212" height="90.7" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="360" y="205.82" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">5. 두 대 켜기</text>
-<text x="360" y="227.95" font-size="15" text-anchor="middle" fill="#292929">docker compose up -d →</text>
-<text x="360" y="249.7" font-size="15" text-anchor="middle" fill="#292929">docker compose ps</text>
-<line x1="227" y1="222.05" x2="251" y2="222.05" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
-<rect x="496" y="176.7" width="212" height="90.7" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="602" y="205.82" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">6. 응답 확인</text>
-<text x="602" y="227.95" font-size="15" text-anchor="middle" fill="#292929">curl 8080 · 8081 → 둘 다</text>
-<text x="602" y="249.7" font-size="15" text-anchor="middle" fill="#292929">200</text>
-<line x1="469" y1="222.05" x2="493" y2="222.05" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
-<rect x="12" y="300" width="696" height="45.75" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360" y="328.05" font-size="15" text-anchor="middle" fill="#292929">7. report_u5.md 도전 5-1 (가)~(라)를 채운다. 복습 서버 web-run 은 꼭 끈 뒤 5번으로 간다.</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">Docker Desktop 켜고 포트 확인하기</text>
+<rect x="20" y="50" width="210" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="125" y="78" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Docker Desktop 켜기</text>
+<text x="125" y="102" font-size="14" fill="#666660" text-anchor="middle">고래 아이콘이 멈추면 준비</text>
+<polyline points="230,85 250,85" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="256" y="50" width="444" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="272" y="78" font-size="16" fill="#292929" font-weight="700">1. docker ps</text>
+<text x="272" y="102" font-size="14" fill="#292929">CONTAINER ID 로 시작하는 머리글 줄이 나오면 도커가 켜짐</text>
+<polyline points="478,120 478,140" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="20" y="146" width="680" height="76" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="36" y="172" font-size="16" fill="#292929" font-weight="700">2. 쓸 포트 8080 · 8081 · 8082 를 누가 쓰는지 확인</text>
+<text x="36" y="200" font-size="14" fill="#292929">docker ps --filter publish=8080 --filter publish=8081 --filter publish=8082</text>
+<polyline points="190,222 190,250" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<polyline points="530,222 530,250" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
+<rect x="20" y="256" width="340" height="150" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="36" y="282" font-size="16" fill="#292929" font-weight="700">머리글 줄만 나옴</text>
+<rect x="36" y="296" width="308" height="30" rx="4" fill="#ffffff" stroke="#dededb"/>
+<text x="44" y="316" font-size="14" fill="#292929" style="white-space:pre">CONTAINER ID   IMAGE   …   PORTS   NAMES</text>
+<text x="36" y="356" font-size="15" fill="#292929">아무도 쓰지 않음</text>
+<text x="36" y="380" font-size="15" fill="#292929" font-weight="700">→ 다음 페이지로</text>
+<rect x="380" y="256" width="320" height="150" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="396" y="282" font-size="16" fill="#292929" font-weight="700">서버가 나옴 (쓰는 중)</text>
+<text x="396" y="308" font-size="14" fill="#292929">① 맨 끝 NAMES 열의 이름을 보고</text>
+<text x="396" y="328" font-size="14" fill="#292929">내가 켠 서버가 맞는지 확인</text>
+<text x="396" y="354" font-size="14" fill="#292929">② docker stop 이름</text>
+<text x="396" y="380" font-size="14" fill="#292929">③ 2번 명령을 다시 쳐서</text>
+<text x="396" y="398" font-size="14" fill="#292929">머리글 줄만 나오는지 확인</text>
 </g>
 </svg>

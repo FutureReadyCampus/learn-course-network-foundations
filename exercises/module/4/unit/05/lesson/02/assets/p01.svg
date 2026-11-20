@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img">
 <title>실습 5-1 목표: 점수 기록 5건에서 3명을 골라 사실만으로 AI 요약을 받는다</title>
-<desc>입력은 Unit 4에서 만든 unit05_risk_scores.json 의 점수 기록 5건입니다. event_summary.py 가 low 가 아닌 대상 3명을 고르고 지시문과 [사실]을 합쳐 Gemini API 에 보냅니다. 출력은 대상별 요약 3줄입니다.</desc>
+<desc>입력은 Unit 4 실습 4-1 이 저장한 unit05_risk_scores.json 의 점수 기록 5건입니다. event_summary.py 가 low 가 아닌 대상 3명을 고르고 지시문과 [사실]을 합쳐 Gemini API 에 보냅니다. 출력은 대상별 요약 3줄입니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 5-1 · 무엇을 만드나</text>

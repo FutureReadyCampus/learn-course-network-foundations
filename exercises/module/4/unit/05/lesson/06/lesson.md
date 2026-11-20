@@ -13,10 +13,12 @@ source:
 
 ## 목표: 한 번에 도는 pipeline.py
 
+> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 5-1 · 5-2와 글쓰기를 먼저 마칩니다. 이 도전은 Unit 3 · 4의 파일을 모두 불러 쓰므로, 「2.1 단계 연결 흐름과 앞에서 만든 파일의 자리」 페이지의 표에 있는 파일이 `anomaly_detection` 폴더에 있어야 합니다. 하지 않아도 이번 Unit을 마무리하고 Module 5를 따라가는 데 문제가 없습니다.
+
 > **이번 실습에 들어온 일**
 >
 > A사 보안 팀장이 보낸 메시지입니다:
-> 「Unit 3 · 7에서 만든 탐지를 확인하려면 지금은 파일을 하나씩 따로 실행해야 합니다. 순서를 하나 빠뜨리면 점수가 틀리게 나오는데, 틀린 줄도 모르고 보고하게 됩니다.
+> 「Unit 3 · 4에서 만든 탐지를 확인하려면 지금은 파일을 하나씩 따로 실행해야 합니다. 순서를 하나 빠뜨리면 점수가 틀리게 나오는데, 틀린 줄도 모르고 보고하게 됩니다.
 >
 > 명령 한 번으로 읽기부터 점수 저장, 요약, 보고서 저장까지 끝나게 해 주세요. 그리고 AI 가 응답하지 않는 날에도 점수와 등급이 담긴 보고서는 나와야 합니다.」
 > - **왜 중요한가**: <mark>단계를 따로 실행하면 순서를 빠뜨리거나 앞 단계의 결과를 잘못 넘길 수 있고, AI 호출 하나가 실패해서 보고서 전체가 만들어지지 않으면 담당자가 아침에 아무것도 볼 수 없습니다.</mark>
@@ -32,16 +34,20 @@ source:
 
 앞에서 만든 파일 가운데 파이프라인에 들어가는 것과 아직 들어가지 않은 것은 다음과 같습니다.
 
-| 만든 날 | 파일 | 파이프라인에서 |
+| 만든 곳 | 파일 | 파이프라인에서 |
 |---|---|---|
-| Unit 1 | `normalized_events.json` | 단계 1 의 입력 |
-| Unit 3 | `access_detection.py` · `saas_detection.py` · `malicious_detection.py` | 단계 2 안에서 `collect_findings` 가 호출합니다 |
-| Unit 4 | `correlation.py` · `risk_scores.py` | 단계 2 |
-| 실습 5-1 | `event_summary.py` | 단계 3 |
-| Unit 2 · 5 | 로그인 · 트래픽 규칙(`login_detection.py` · `traffic_detection.py` · `alerts.py`) | **넣지 않았습니다.** 알림을 `alerts.json` 에 따로 모으는 방식이라 점수 기록과 모양이 다릅니다 |
-| Unit 4 | 평가 · 튜닝(`evaluation.py` · `tuning.py` · `final_check.py`) | **넣지 않았습니다.** 입력이 사람이 조사한 결과가 붙은 파일(`review_alerts.json`)이라 이벤트 표가 아닙니다 |
+| Unit 3 「시작하기」 | `normalized_events.json` · `rbac.py` · `config/users.json` · `config/roles.json` | 단계 1 의 입력 |
+| Unit 3 실습 3-2 | `access_detection.py` | 단계 1 · 2 |
+| Unit 4 「제공 파일」 | `saas_detection.py` · `malicious_detection.py` · `correlation.py` | 단계 2 |
+| Unit 4 실습 4-1 | `risk_scores.py` | 단계 2 |
+| 이 Unit 실습 5-1 | `event_summary.py` · `llm_client.py` | 단계 3 |
+| Unit 2 · 3 | `login_detection.py` · `traffic_detection.py` · `alerts.py` | **넣지 않음** |
+| Unit 4 | `evaluation.py` · `tuning.py` · `final_check.py` | **넣지 않음** |
 
-- 이번 파이프라인은 점수 기록 쪽만 이어 붙였습니다. Unit 2 · 5의 알림이나 Unit 4의 평가를 더하려면 입력과 출력의 모양을 맞추는 단계가 필요하고, 현업에서도 이 단계를 따로 만들어 이어 붙입니다.
+- **없는 파일이 있으면** 표의 「만든 곳」 레슨에서 만듭니다. 「시작하기」와 「제공 파일」은 코드 상자를 그대로 붙여 넣고, 실습 3-2 · 4-1 · 5-1은 그 레슨의 코드 칸에 정답 레슨의 「채운 코드」를 넣어 완성합니다. `llm_client.py` 는 이 Unit 시작하기 4번에 있습니다.
+- 로그인 · 트래픽 규칙(Unit 2 실습 2-3, Unit 3 실습 3-1 · 도전 3-1)은 알림을 `alerts.json` 에 따로 모으는 방식이라 점수 기록과 모양이 달라서 넣지 않았습니다.
+- 평가 · 튜닝(Unit 4 실습 4-2, 도전 4-2 · 4-3)은 입력이 사람이 조사한 결과가 붙은 파일(`review_alerts.json`)이라 이벤트 표가 아니어서 넣지 않았습니다.
+- 이번 파이프라인은 점수 기록 쪽만 이어 붙였습니다. 알림이나 평가를 더하려면 입력과 출력의 모양을 맞추는 단계가 필요하고, 현업에서도 이 단계를 따로 만들어 이어 붙입니다.
 - 보고서 파일 `anomaly_detection_report_2026-11-02.json` 에 들어가는 키는 다음과 같습니다. 파일 이름의 날짜 `2026-11-02` 는 샘플 이벤트의 날짜입니다.
 
 | 키 | 값 |
@@ -138,9 +144,9 @@ print(fruit_count_dict)                    # 딕셔너리를 출력한다
 
 ```python
 import json                                                                                # 보고서를 JSON 파일로 저장하기 위해 json 을 불러온다
-from access_detection import load_events, EVENTS_PATH                                      # Unit 3 : 이벤트 파일을 읽는 함수를 불러온다
-from correlation import find_chains_in_events                                              # Unit 4 : 서로 다른 로그를 연결하는 함수를 불러온다
-from risk_scores import collect_findings, score_findings, collect_reasons, make_records, save_records, RISK_PATH  # Unit 4 : 탐지 · 점수 함수를 불러온다
+from access_detection import load_events, EVENTS_PATH                                      # Unit 3 실습 3-2 : 이벤트 파일을 읽는 함수를 불러온다
+from correlation import find_chains_in_events                                              # Unit 4 제공 파일 : 서로 다른 로그를 연결하는 함수를 불러온다
+from risk_scores import collect_findings, score_findings, collect_reasons, make_records, save_records, RISK_PATH  # Unit 4 실습 4-1 : 탐지 · 점수 함수를 불러온다
 from event_summary import pick_records_to_summarize, summarize_record, FAIL_TEXT           # 실습 5-1 : Gemini API 를 활용한 AI 요약 함수를 불러온다
 
 REPORT_DATE = "2026-11-02"                                                                 # 샘플 이벤트의 날짜
@@ -149,7 +155,7 @@ REPORT_PATH = "anomaly_detection_report_" + REPORT_DATE + ".json"               
 
 def analyze_events(events):                                                                # 이벤트 표를 받는 함수
     """이벤트에서 연결된 사건을 찾고, 탐지된 규칙을 모아 대상별 점수 기록을 만든다.
-    Unit 4에서 하나씩 실행한 단계를 한 함수에서 이어 쓸 때 쓴다.
+    Unit 4 실습 4-1 에서 하나씩 실행한 단계를 한 함수에서 이어 쓸 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. events 를 find_chains_in_events 에 전달해 연결된 사건을 구해 chains 에 담는다
@@ -244,15 +250,20 @@ run_pipeline()                     # 읽기부터 보고서 저장까지 한 번
 
 **순서**
 
+0. **[터미널]** 앞 Unit의 파일이 모두 있는지 먼저 확인합니다(맥북은 `python3`). <mark>두 줄 모두 아무것도 나오지 않으면</mark> 됩니다. `ModuleNotFoundError` 나 `ImportError` 가 나오면 그 이름의 파일이 없거나 덜 만든 것이니 2.1 의 표에 적힌 레슨에서 만든 뒤 다시 칩니다.
+   ```bash
+   python -c "from access_detection import load_events, EVENTS_PATH; from saas_detection import pick_saas; from malicious_detection import pick_web_failures"
+   python -c "from correlation import find_chains_in_events; from risk_scores import collect_findings, save_records; from event_summary import summarize_record"
+   ```
 1. **[VS Code]** 파일 `pipeline.py` · `challenge5-3_run.py` 를 `anomaly_detection` 폴더에 만들어 위 코드를 붙여 넣습니다. `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 만듭니다.
 2. **[VS Code]** `pipeline.py` 에서 <mark>직접 쓰는 곳 일곱 군데를 씁니다</mark>. 위 판다스 문법 상자와 2.1 의 그림을 참고해 씁니다. 막히면 아래 「도전 5-3 정리」를 봅니다.
-3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`). Gemini API 를 3번 호출합니다.
+3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`). Gemini API 를 3번 호출합니다. 키가 없어도 끝까지 실행됩니다.
    ```bash
    pwd
    python challenge5-3_run.py
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python challenge5-3_run.py` 파이썬으로 실행 파일 실행
-4. 출력은 **다섯 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1과 2와 4는 숫자나 파일 이름이 제목 줄에 함께 나와서 그 아래 줄이 없습니다. 단계 3은 제목 아래에 대상마다 요약 1줄씩 3줄이 나오고, 단계 5는 대상마다 등급 · 대상 · 점수 1줄씩 5줄이 나옵니다. <mark>AI 호출이 실패하면 `[LLM 호출 실패]` 줄이 단계 3 제목 줄 위에 나옵니다.</mark>
+4. 출력은 **다섯 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1과 2와 4는 숫자나 파일 이름이 제목 줄에 함께 나와서 그 아래 줄이 없습니다. 단계 3은 제목 아래에 대상마다 요약 1줄씩 3줄이 나오고, 단계 5는 대상마다 등급 · 대상 · 점수 1줄씩 5줄이 나옵니다. <mark>AI 호출이 실패하면 `[LLM 호출 실패] …` 줄이 단계 3 제목 줄 위에 나오고, 요약은 대체 문장이 됩니다.</mark> 키가 없으면 `[LLM 호출 실패] API 키 없음` 이 세 줄 나오고 단계 3 제목 줄이 `(실패 3 건)` 으로 끝납니다. 이때 출력은 정답 레슨의 「키가 없을 때」와 같습니다.
 5. **[VS Code]** 새로 생긴 `anomaly_detection_report_2026-11-02.json` 을 열어 `event_count` · `records` · `summaries` 를 확인합니다.
 6. **[보고서]** `report_u5.md` 의 `## 도전 5-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 보고서 파일의 `event_count` · `finding_count` 값과 `records` · `summaries` 의 건수를 적어 주세요.
@@ -268,88 +279,5 @@ run_pipeline()                     # 읽기부터 보고서 저장까지 한 번
 | 로그 종류마다 개수 | `source_event_counts = events["source"].value_counts()` |
 | 시리즈를 딕셔너리로 | `source_count_dict = source_event_counts.to_dict()` |
 | 보고서 딕셔너리 | `report = {"date": REPORT_DATE, … "summaries": summaries}` |
-
-## Module 4 폴더 구조 정리
-
-Module 4가 끝나면 `anomaly_detection` 폴더에 Unit별로 아래 파일이 있어야 합니다. 파일을 어디에 저장했는지 헷갈리면 내 VS Code 왼쪽 목록과 비교합니다.
-
-- **`config/` 안에는 JSON 설정 파일만** 둡니다. Unit 3에서 만든 `users.json` · `roles.json` 입니다.
-- **그 밖의 파일은 모두 `anomaly_detection/` 바로 아래**에 둡니다. 코드(`.py`), 실행 파일(`exerciseU-n_…_run.py`), 데이터, 보고서(`report_u1.md` ~ `report_u5.md`), 컴포즈 파일이 해당합니다. `logs/` 는 Unit 5에서 컴포즈로 만든 접속 기록 폴더입니다.
-- 터미널은 항상 `…/anomaly_detection` 에서 실행합니다(`pwd` 로 확인).
-
-```
-security-agent-toolkit/
-  .env
-  .gitignore
-  agent_core/
-  network_zt/
-  access_control/                   Module 3
-  anomaly_detection/                Module 4   ← 여기서 작업
-    config/                         ← JSON 설정만
-      roles.json
-      users.json
-    logs/                           ← Unit 5에서 컴포즈가 남긴 접속 기록
-      access.log
-      error.log
-      web_404.log
-    __pycache__/                    ← 파이썬이 자동으로 만듦
-    ── Unit 1 ──
-    access_sample.log
-    log_parse.py
-    log_classify.py
-    exercise1-1_run.py
-    challenge1-1_run.py
-    ── Unit 1 · 3 ──
-    server_log.jsonl
-    saas_events.csv
-    normalize_web.py
-    normalize_json_csv.py
-    normalize.py
-    normalized_events.json
-    events_basic.py
-    events_time.py
-    exercise1-2_run.py  ~  exercise2-2_run.py
-    ── Unit 2 · 5 ──
-    baseline_logins.csv
-    baseline_traffic.csv
-    baseline.py
-    login_detection.py
-    classify.py
-    traffic_detection.py
-    alerts.py
-    alerts.json
-    challenge2-1_run.py  ~  challenge3-1_run.py
-    ── Unit 3 · 7 ──
-    rbac.py
-    access_detection.py
-    saas_detection.py
-    malicious_detection.py
-    advanced_detection.py
-    correlation.py
-    risk_scores.py
-    unit05_risk_scores.json
-    exercise3-2_run.py  ~  exercise4-1_run.py
-    ── Unit 4 · 9 ──
-    review_alerts.json
-    problems.json
-    login_alerts.json
-    evaluation.py
-    tuning.py
-    final_check.py
-    challenge4-2_run.py  ~  challenge4-3_run.py
-    compose.yaml
-    compose.secure.yaml
-    ── Unit 5 (이번 Unit) ──
-    llm_client.py
-    event_summary.py
-    pipeline.py
-    exercise5-1_run.py
-    challenge5-3_run.py
-    anomaly_detection_report_2026-11-02.json
-    ── Unit마다 만든 보고서 ──
-    report_u1.md  ~  report_u5.md
-```
-
-- `__pycache__/` 는 파이썬이 자동으로 만드는 임시 폴더라서 신경 쓰지 않고 깃허브에도 올리지 않습니다.
 
 ---

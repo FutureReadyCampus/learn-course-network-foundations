@@ -1,54 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 411" role="img">
-<title>Unit 5: 점수 파일을 AI 로 요약하고 pipeline.py 로 전 과정을 한 번에 돌린다</title>
-<desc>실습 5-1은 점수 파일에서 대상 3명을 골라 event_summary.py 로 AI 요약을 만든다. 도전 5-3의 pipeline.py 는 이벤트 읽기부터 보고서 저장까지 이어서 실행하고, 실습 5-2은 총정리다.</desc>
-<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img">
+<title>3시간 계획과 오늘 만들 것: 실습 5-1 event_summary.py, 실습 5-2 Module 4 총정리</title>
+<desc>시작하기 15분, 실습 약 110분, 글쓰기 40분, 마무리 15분으로 하루를 나눕니다. 핵심은 실습 5-1과 5-2이고 도전 5-1 ~ 5-3은 선택입니다. API 키가 없어도 요약 자리에 대체 문장이 들어가 끝까지 실행되지만, 출력은 키가 있을 때와 다릅니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">Unit 5에서 만드는 것</text>
-<text x="24" y="70" font-size="15" text-anchor="start" fill="#2f6fd0" font-weight="700">실습 5-1 · event_summary.py</text>
-<rect x="12" y="80" width="151.5" height="90.7" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="87.75" y="109.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">점수 파일</text>
-<text x="87.75" y="131.25" font-size="15" text-anchor="middle" fill="#292929">unit05_risk_</text>
-<text x="87.75" y="153" font-size="15" text-anchor="middle" fill="#292929">scores.json</text>
-<rect x="193.5" y="80" width="151.5" height="90.7" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="269.25" y="119.995" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">대상 고르기</text>
-<text x="269.25" y="142.125" font-size="15" text-anchor="middle" fill="#292929">먼저 볼 3명</text>
-<line x1="166.5" y1="125.35" x2="190.5" y2="125.35" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="375" y="80" width="151.5" height="90.7" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="450.75" y="109.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">AI 요약</text>
-<text x="450.75" y="131.25" font-size="15" text-anchor="middle" fill="#292929">파일에 있는</text>
-<text x="450.75" y="153" font-size="15" text-anchor="middle" fill="#292929">사실만으로</text>
-<line x1="348" y1="125.35" x2="372" y2="125.35" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="556" y="80" width="152" height="90.7" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="632" y="109.88" font-size="14" text-anchor="middle" fill="#292929">AI 문장은 매번</text>
-<text x="632" y="130.18" font-size="14" text-anchor="middle" fill="#292929">달라도 정상. 점수 ·</text>
-<text x="632" y="150.48" font-size="14" text-anchor="middle" fill="#292929">등급 · 건수는 같다</text>
-<text x="24" y="206.7" font-size="15" text-anchor="start" fill="#2f6fd0" font-weight="700">도전 5-3 · pipeline.py</text>
-<rect x="12" y="216.7" width="151.5" height="70.4" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="87.75" y="257.42" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">1. 이벤트 읽기</text>
-<rect x="193.5" y="216.7" width="151.5" height="70.4" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="269.25" y="245.82" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">2. 연결 · 탐지 ·</text>
-<text x="269.25" y="269.02" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">점수</text>
-<line x1="166.5" y1="251.9" x2="190.5" y2="251.9" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="375" y="216.7" width="151.5" height="70.4" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="450.75" y="246.545" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">3. AI 요약</text>
-<text x="450.75" y="268.675" font-size="15" text-anchor="middle" fill="#292929">Gemini · call_llm</text>
-<line x1="348" y1="251.9" x2="372" y2="251.9" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="556.5" y="216.7" width="151.5" height="70.4" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="632.25" y="246.545" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">4. 보고서 저장</text>
-<text x="632.25" y="268.675" font-size="15" text-anchor="middle" fill="#292929">파일 하나</text>
-<line x1="529.5" y1="251.9" x2="553.5" y2="251.9" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<line x1="450.75" y1="172.7" x2="450.75" y2="214.7" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="12" y="311.1" width="224" height="86.35" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="124" y="339.15" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">실습 5-2</text>
-<text x="124" y="359.83" font-size="14" text-anchor="middle" fill="#292929">Module 4 총정리와 깃허브</text>
-<text x="124" y="380.13" font-size="14" text-anchor="middle" fill="#292929">올리기</text>
-<rect x="248" y="311.1" width="224" height="86.35" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360" y="339.15" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">고정 값</text>
-<text x="360" y="359.83" font-size="14" text-anchor="middle" fill="#292929">high 60 이상 · mid 35 이상,</text>
-<text x="360" y="380.13" font-size="14" text-anchor="middle" fill="#292929">요약 대상 3명</text>
-<rect x="484" y="311.1" width="224" height="86.35" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="596" y="339.15" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">무료 키 한도</text>
-<text x="596" y="359.83" font-size="14" text-anchor="middle" fill="#292929">1분에 15번. 429 면 1분 뒤</text>
-<text x="596" y="380.13" font-size="14" text-anchor="middle" fill="#292929">다시</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">오늘의 계획 (3시간)</text>
+<rect x="20" y="48" width="158" height="68" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="99" y="74" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">시작하기 15분</text>
+<text x="99" y="98" font-size="14" fill="#666660" text-anchor="middle">파일 두 개 만들기</text>
+<rect x="194" y="48" width="158" height="68" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="273" y="74" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">실습 약 110분</text>
+<text x="273" y="98" font-size="14" fill="#666660" text-anchor="middle">실습 5-1 · 5-2</text>
+<rect x="368" y="48" width="158" height="68" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="447" y="74" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">글쓰기 40분</text>
+<text x="447" y="98" font-size="14" fill="#666660" text-anchor="middle">보고서 · 오늘의 글</text>
+<rect x="542" y="48" width="158" height="68" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="621" y="74" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">마무리 15분</text>
+<text x="621" y="98" font-size="14" fill="#666660" text-anchor="middle">깃허브에 올리기</text>
+<text x="20" y="150" font-size="16" fill="#292929" font-weight="700">오늘 만들 것 두 가지 (핵심)</text>
+<rect x="20" y="162" width="260" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="150" y="188" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">실습 5-1 · event_summary.py</text>
+<text x="150" y="212" font-size="14" fill="#666660" text-anchor="middle">대상 3명을 골라 파일의 사실만으로</text>
+<text x="150" y="230" font-size="14" fill="#666660" text-anchor="middle">AI 요약 받기</text>
+<rect x="296" y="162" width="240" height="76" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="416" y="188" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">실습 5-2 · Module 4 총정리</text>
+<text x="416" y="212" font-size="14" fill="#666660" text-anchor="middle">상황 8개의 원인과</text>
+<text x="416" y="230" font-size="14" fill="#666660" text-anchor="middle">고치는 방법을 내 말로</text>
+<rect x="552" y="162" width="148" height="76" rx="8" fill="#ffffff" stroke="#666660" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="626" y="192" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">도전 5-1 ~ 5-3</text>
+<text x="626" y="216" font-size="14" fill="#666660" text-anchor="middle">선택 · 시간이 남을 때</text>
+<text x="20" y="274" font-size="16" fill="#292929" font-weight="700">API 키가 없어도 끝까지 실행됩니다</text>
+<rect x="20" y="288" width="140" height="104" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="90" y="334" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">call_llm</text>
+<text x="90" y="356" font-size="14" fill="#666660" text-anchor="middle">.env 의 키 확인</text>
+<polyline points="160,316 190,316" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="160,364 190,364" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="196" y="288" width="504" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="212" y="318" font-size="15" fill="#292929"><tspan font-weight="700">키 있음</tspan> → 진짜 AI 요약 문장 (실행마다 조금씩 다름)</text>
+<rect x="196" y="344" width="504" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="212" y="366" font-size="15" fill="#292929"><tspan font-weight="700">키 없음</tspan> → [LLM 호출 실패] API 키 없음</text>
+<text x="212" y="389" font-size="14" fill="#292929">요약 자리에 대체 문장 (요약 실패 — 점수와 이유를 직접 확인)</text>
+<text x="20" y="428" font-size="14" fill="#e0442e" font-weight="700">키가 없으면 출력이 「키가 있을 때」 예와 다릅니다. 점수 · 등급 · 대상은 같습니다.</text>
 </g>
 </svg>
