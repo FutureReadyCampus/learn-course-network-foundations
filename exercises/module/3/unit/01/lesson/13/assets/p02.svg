@@ -33,8 +33,8 @@
 <text x="40" y="330" font-size="14">VS Code 내용을 복사해 붙여 넣기</text>
 <rect x="356" y="222" width="340" height="134" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="372" y="250" font-size="16" font-weight="700">글 틀 고르기</text>
-<text x="372" y="278" font-size="14">실습 하나를 쓴다 → post-practice</text>
-<text x="372" y="304" font-size="14">5분밖에 없다 → post-short</text>
+<text x="372" y="278" font-size="14">기본 · 세 문장 글 → post-short</text>
+<text x="372" y="304" font-size="14">응용 · 긴 글 → post-practice</text>
 <text x="372" y="330" font-size="14">막혀서 못 끝냈다 → post-stuck</text>
 </g>
 </svg>

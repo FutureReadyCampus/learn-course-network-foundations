@@ -87,33 +87,27 @@ python exercise1-2_run.py
 **채운 코드** (한 예)
 
 ```python
-    if not USERS[user]["employed"]:                              # 재직 중이 아니면
-        return False, "퇴사한 계정"                                # 거부하고 함수를 끝낸다
-    role = USERS[user]["role"]                                   # 이 사용자의 역할을 꺼낸다
-    if role not in ROLES:                                        # 역할 파일에 없는 역할이면
-        return False, "역할이 없음"                                # 거부하고 함수를 끝낸다
-    permission = f"{resource}:{action}"                          # "자원:행위" 모양 문자열로 합친다
+    # ① permission 이 ROLES[role] 리스트에 없으면   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     if permission not in ROLES[role]:                            # 그 역할의 권한 리스트에 없으면
+    # ② "권한 없음" 을 이유로 거부한다   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
         return False, "권한 없음"                                  # 거부하고 함수를 끝낸다
 ```
 
 **결과**
 
-- 채우기 전 출력은 다음과 같습니다(`minsu` 만 거부).
+- 채우기 전 출력은 다음과 같습니다(`minsu` · `dami` · `tester` 만 거부).
 
 ```
 seoyeon SALES QUERY -> True 허용
 seoyeon SETTLE QUERY -> True 허용
 junho SETTLE QUERY -> True 허용
 junho SALES CHANGE -> True 허용
-dami SALES QUERY -> True 허용
+dami SALES QUERY -> False 퇴사한 계정
 minsu SALES QUERY -> False 등록되지 않은 사용자
 gaeun ACCOUNT CHANGE -> True 허용
 batch-night SETTLE QUERY -> True 허용
-tester SALES QUERY -> True 허용
+tester SALES QUERY -> False 역할이 없음
 ```
-
-  내가 채운 코드는 위의 코드입니다. 줄 수가 달라도 주석이 말한 일을 하면 맞습니다.
 
 
 - (가) 채운 뒤의 출력입니다.
@@ -139,7 +133,7 @@ tester SALES QUERY -> False 역할이 없음
   | `tester` | [3](역할 없음) |
   | `seoyeon` 의 정산 조회 · `junho` 의 영업 실적 변경 | [4](권한 없음) |
 
-- (나) 허용되면 안 되는 요청은 네 건입니다: `seoyeon` 의 정산 조회(영업에는 정산 권한이 없음), `junho` 의 영업 실적 변경(재무에는 변경 권한이 없음), `dami` 의 영업 실적 조회(퇴사자), `tester` 의 영업 실적 조회(역할 `intern` 이 역할 파일에 없음). 검사가 [1] 하나뿐이면 [2] ~ [4] 의 경우가 모두 마지막 `return True` 까지 내려가 허용됩니다. seoyeon 사건(영업 계정의 정산 조회)도 다시 통과합니다. 이것이 **열림 기본 값(fail-open)** 문제입니다. 확인하지 못한 경우를 통과시키면 그 틈이 그대로 공격 경로가 됩니다.
+- (나) 허용되면 안 되는 요청은 두 건입니다: `seoyeon` 의 정산 조회(영업에는 정산 권한이 없음), `junho` 의 영업 실적 변경(재무에는 변경 권한이 없음). 둘 다 사람과 역할은 정상이라 [1] ~ [3] 을 모두 지나고, 권한을 보는 [4] 가 없으니 마지막 `return True` 까지 내려가 허용됩니다. seoyeon 사건(영업 계정의 정산 조회)도 다시 통과합니다. 이것이 **열림 기본 값(fail-open)** 문제입니다. 확인하지 못한 경우를 통과시키면 그 틈이 그대로 공격 경로가 됩니다.
 - (다) 판정은 둘 다 거부지만 **이유가 달라집니다.** 지금 순서([2] → [3])면 「퇴사한 계정」으로 남습니다. 순서를 바꾸면([3] → [2]) 역할 `none` 이 역할 파일에 없어서 [3] 에서 먼저 걸려 「역할이 없음」으로 남고, 퇴사자라는 진짜 이유가 기록에서 사라집니다. 사람 자체를 먼저 확인하고(있나 · 재직 중인가) 그다음 역할 · 권한을 보는 순서가 이유를 정확하게 남깁니다.
 
 **왜** — 접근통제 함수는 「허용할 조건을 모두 확인한 뒤에만 허용」해야 합니다. 맨 끝의 `return True` 앞에 빠진 검사가 있으면 그 경우는 모두 허용됩니다.
@@ -148,10 +142,9 @@ tester SALES QUERY -> False 역할이 없음
 
 | 틀리는 곳 | 얼마나 | 결과 |
 |---|---|---|
-| `return` 을 빼고 `False, "퇴사한 계정"` 만 씀 | 많음 | 검사가 아무 일도 안 함 |
-| `f"{resource}:{action}"` 에서 `f` 를 뺌 | — | 글자 그대로 `{resource}:{action}` 이 되어 모두 「권한 없음」 |
-| `role` 을 담기 전에 `role not in ROLES` 를 씀 | 있음 | `NameError` |
-| 들여쓰기가 `if` 와 맞지 않음 | — | `IndentationError` |
+| ② 에서 `return` 을 빼고 `False, "권한 없음"` 만 씀 | 많음 | 검사가 아무 일도 안 함. 채우기 전과 같은 출력 |
+| ① 에서 `not` 을 빼고 `permission in ROLES[role]` 로 씀 | 있음 | 반대로 동작. 정상 요청은 「권한 없음」, seoyeon 의 정산 조회는 허용 |
+| ① 만 쓰고 ② 를 안 씀 · ② 를 4칸으로 씀 | 있음 | `IndentationError: expected an indented block after 'if' statement` |
 
 **관제에서는** — 거부 이유가 구분돼 있으면 「권한 없음」이 몰리는 계정(사건 신호)과 「역할이 없음」이 몰리는 계정(설정 누락)을 나눠 볼 수 있습니다.
 
@@ -168,20 +161,16 @@ python exercise1-3_run.py
 **채운 코드** (한 예)
 
 ```python
-    is_allowed, reason = check_permission(user, resource, action)        # 역할 판정을 먼저 한다
-    if is_allowed:                                                       # 역할로 허용되면
-        return True, "역할 권한"                                   # 역할 권한으로 허용한다
+    # ① reason 이 "권한 없음" 이 아니면   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     if reason != "권한 없음":                                     # 사용자 자체가 거부 대상이면(없음 · 퇴사 · 역할이 없음)
+    # ② False 와 그 reason 을 그대로 리턴한다   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
         return False, reason                                     # 예외를 보지 않고 그 이유로 거부한다
-    found, found_exception_id = find_exception(user, f"{resource}:{action}", now)   # 유효한 예외를 찾는다
-    if found:                                                    # 있으면
-        return True, f"예외 {found_exception_id}번"                            # 예외 번호와 함께 허용한다
-    return False, "권한 없음"                                      # 둘 다 없으면 거부한다
 ```
 
 **결과**
 
-- (가) 출력은 다음과 같습니다. 코드는 위의 채운 코드이고, 줄 수가 달라도 주석이 말한 일을 하면 맞습니다.
+- 채우기 전에 실행하면 `10:00 dami SALES QUERY -> True 예외 3번` 으로 퇴사자가 허용되고, 마지막 두 줄이 `{'예외로 허용': 5, '거부': 3, '역할로 허용': 1}` · `예외 사용 {'예외 1번': 2, '예외 3번': 1, '예외 5번': 1, '예외 4번': 1}` 로 나옵니다. 나머지 줄은 아래 (가)와 같습니다.
+- (가) 채운 뒤의 출력은 다음과 같습니다.
 
 ```
 09:10 seoyeon SETTLE QUERY -> True 예외 1번
@@ -209,7 +198,7 @@ python exercise1-3_run.py
   | 18:05 | `seoyeon` 의 정산 조회 | 예외 1번이 18:00 에 끝난 뒤의 시도 |
 
   `dami` 10:00 요청은 `[역할 판정]` 에서 「퇴사한 계정」으로 거부되어 「권한 없음」이 아니므로 예외 리스트를 보지 않습니다. 사람 자체가 거부 대상이라 예외가 남아 있어도 만료 뒤 시도로 보지 않습니다.
-- (나) **허용**됩니다. `dami` 는 `[역할 판정]` 에서 「퇴사한 계정」으로 거부되지만, 골격의 3번 주석(`# 3. …`)이 없으면 바로 `[예외 판정]` 으로 가서 예외 3번(10/31(토) 까지)을 찾아 「예외 3번」으로 허용됩니다. 현업에서는 퇴사자가 남은 예외로 영업 자료를 조회하고, 로그에는 정상 허용으로 남아 아무도 눈치채지 못하는 사고로 이어질 수 있습니다. 감사에서는 퇴사자 계정이 사용된 기록으로 지적됩니다.
+- (나) **허용**됩니다. `dami` 는 `[역할 판정]` 에서 「퇴사한 계정」으로 거부되지만, 골격의 3번 주석(`# 3. …`)이 없으면 바로 `[예외 판정]` 으로 가서 예외 3번(10/31(토) 까지)을 찾아 「예외 3번」으로 허용됩니다. 채우기 전 출력의 10:00 줄이 바로 이 모습입니다. 현업에서는 퇴사자가 남은 예외로 영업 자료를 조회하고, 로그에는 정상 허용으로 남아 아무도 눈치채지 못하는 사고로 이어질 수 있습니다. 감사에서는 퇴사자 계정이 사용된 기록으로 지적됩니다.
 - (다) 그림은 다음과 같고, 핵심(누가 누구를 호출하는가)이 같으면 맞습니다. `config/exceptions.json` 이 깨지면 `policy.py` 가 `exception_policy.py` 를 불러오는 맨 위의 `import` 에서 멈추고(`JSONDecodeError`), `exercise1-3_run.py` 는 요청을 한 건도 판정하기 전에 끝납니다.
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="exercise1-3_run.py 가 evaluate_access 를 부르고, 그 안에서 rbac.py 의 역할 판정과 exception_policy.py 의 예외 판정을 차례로 합니다"></figure>
@@ -220,11 +209,10 @@ python exercise1-3_run.py
 
 | 틀리는 곳 | 얼마나 | 결과 |
 |---|---|---|
-| `find_exception` 에 `resource` 만 넣음 | 많음 | 항상 `(False, None)`. 예외 파일은 `"SETTLE:QUERY"` 처럼 「자원:행위」 문자열로 적혀 있음 |
-| 3번을 `if reason == "권한 없음"` 으로 뒤집어 씀 | 있음 | 반대로 동작 |
-| `return` 을 빼먹음 | — | 실행할 때 `TypeError`(아래 문구) |
-
-`return` 을 빼먹었을 때 나오는 문구는 `TypeError: cannot unpack non-iterable NoneType object` 입니다.
+| ② 에서 `return` 을 빼고 `False, reason` 만 씀 | 많음 | 검사가 아무 일도 안 함. `dami` 가 `True 예외 3번` |
+| ② 를 `return reason` 으로 씀 | 있음 | `ValueError: too many values to unpack (expected 2)` |
+| ① 을 `if reason == "권한 없음"` 으로 뒤집어 씀 | 있음 | 반대로 동작. 예외가 안 열리고 `dami` 만 예외 3번으로 허용 |
+| ① 만 쓰고 ② 를 안 씀 · ② 를 4칸으로 씀 | 있음 | `IndentationError: expected an indented block after 'if' statement` |
 
 **관제에서는** — 판정 이유에 「역할 권한」 · 「예외 N번」 · 거부 이유가 남아 있으면, 감사 때 「왜 열렸나」를 예외 번호로 바로 찾아갈 수 있습니다. 거부된 요청이 끝난 예외와 같은 사람 · 같은 권한이면 만료 뒤 시도로 따로 모아 담당자에게 알리고, 같은 예외가 계속 쓰이면 역할을 새로 만들지, 예외를 끝낼지 판단합니다.
 

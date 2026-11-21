@@ -245,7 +245,7 @@ def validate_page_video(metadata: dict, page_id: str, path: Path) -> dict:
     ):
         raise ValueError(f"Page video duration_seconds must be positive in {path}: {page_id}")
     return {"video": {
-        key: video[key] for key in ("video_id", "title", "creator", "duration_seconds") if key in video
+        key: video[key] for key in ("video_id", "title", "creator", "duration_seconds", "required") if key in video
     }}
 
 

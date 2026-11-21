@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img">
-<title>채우기 전에는 minsu 만 거부되고 채운 뒤에는 다섯 건이 검사 [1]~[4]에서 거부된다</title>
-<desc>요청 아홉 건의 채우기 전 결과와 채운 뒤 결과, 걸린 검사 번호를 나란히 보여 준다. 채우기 전에는 [1] 검사뿐이라 네 건이 잘못 허용됐다.</desc>
+<title>채우기 전에는 세 건만 거부되고 채운 뒤에는 다섯 건이 검사 [1]~[4]에서 거부된다</title>
+<desc>요청 아홉 건의 채우기 전 결과와 채운 뒤 결과, 걸린 검사 번호를 나란히 보여 준다. 채우기 전에는 [4] 권한 검사가 없어 seoyeon 의 정산 조회와 junho 의 영업 실적 변경 두 건이 잘못 허용됐다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 1-2 정답: 채우기 전과 채운 뒤</text>
@@ -36,10 +36,9 @@
 <text x="360" y="204" font-size="14" fill="#292929">False 권한 없음</text>
 <text x="610" y="204" font-size="14" fill="#292929">[4]</text>
 <line x1="20" y1="216" x2="700" y2="216" stroke="#dededb" stroke-width="1.5"/>
-<rect x="254" y="220" width="92" height="26" rx="4" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
 <rect x="354" y="220" width="242" height="26" rx="4" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
 <text x="30" y="238" font-size="14" fill="#292929">dami SALES QUERY</text>
-<text x="260" y="238" font-size="14" fill="#292929">True</text>
+<text x="260" y="238" font-size="14" fill="#292929">False</text>
 <text x="360" y="238" font-size="14" fill="#292929">False 퇴사한 계정</text>
 <text x="610" y="238" font-size="14" fill="#292929">[2]</text>
 <line x1="20" y1="250" x2="700" y2="250" stroke="#dededb" stroke-width="1.5"/>
@@ -61,12 +60,11 @@
 <text x="360" y="340" font-size="14" fill="#292929">True 허용</text>
 <text x="610" y="340" font-size="14" fill="#292929">-</text>
 <line x1="20" y1="352" x2="700" y2="352" stroke="#dededb" stroke-width="1.5"/>
-<rect x="254" y="356" width="92" height="26" rx="4" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
 <rect x="354" y="356" width="242" height="26" rx="4" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
 <text x="30" y="374" font-size="14" fill="#292929">tester SALES QUERY</text>
-<text x="260" y="374" font-size="14" fill="#292929">True</text>
+<text x="260" y="374" font-size="14" fill="#292929">False</text>
 <text x="360" y="374" font-size="14" fill="#292929">False 역할이 없음</text>
 <text x="610" y="374" font-size="14" fill="#292929">[3]</text>
-<text x="20" y="414" font-size="15" fill="#292929">채우기 전에는 [1] 검사뿐이라 네 건이 잘못 허용됐다 (fail-open)</text>
+<text x="20" y="414" font-size="15" fill="#292929">채우기 전에는 [4] 가 없어 두 건이 잘못 허용됐다 (fail-open)</text>
 </g>
 </svg>

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 412" role="img">
 <title>실습 1-2 보고서는 (가) 출력과 검사 번호, (나) 잘못 허용된 요청, (다) 검사 순서를 채운다</title>
-<desc>(가)는 채운 뒤 출력 아홉 줄과 걸린 검사 번호를 쓴다. (나)는 채우기 전 허용되면 안 되는 요청과 이유를, (다)는 검사 순서를 바꿨을 때 이유가 어떻게 달라지는지 쓴다.</desc>
+<desc>(가)는 채운 뒤 출력 아홉 줄과 걸린 검사 번호를 쓴다. 응용 (나)는 채우기 전 허용되면 안 되는 요청과 이유를, 응용 (다)는 검사 순서를 바꿨을 때 이유가 어떻게 달라지는지 쓴다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">보고서 · 실습 1-2 채울 칸</text>
@@ -11,7 +11,7 @@
 <rect x="34" y="124" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="60" y="137.5" font-size="15" fill="#292929">② 거부된 요청마다 걸린 검사 번호</text>
 <rect x="20" y="166" width="680" height="126" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="34" y="190" font-size="16" fill="#292929" font-weight="700">(나) 핵심 질문 · 채우기 전 출력</text>
+<text x="34" y="190" font-size="16" fill="#292929" font-weight="700">(나) 응용 · 채우기 전 출력</text>
 <rect x="34" y="206" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="60" y="219.5" font-size="15" fill="#292929">① 허용되면 안 되는 요청</text>
 <rect x="34" y="234" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
@@ -19,7 +19,7 @@
 <rect x="34" y="262" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="60" y="275.5" font-size="15" fill="#292929">③ 검사가 하나뿐일 때 이런 일이 생기는 이유</text>
 <rect x="20" y="304" width="680" height="98" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="34" y="328" font-size="16" fill="#292929" font-weight="700">(다) 핵심 질문 · dami 와 검사 순서</text>
+<text x="34" y="328" font-size="16" fill="#292929" font-weight="700">(다) 응용 · dami 와 검사 순서</text>
 <rect x="34" y="344" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="60" y="357.5" font-size="15" fill="#292929">① 순서를 바꿨을 때 판정 · 이유가 달라지는지</text>
 <rect x="34" y="372" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
