@@ -32,18 +32,34 @@ source:
 | 방법 | 실제로 하는 일 |
 |---|---|
 | 예외 삭제 | 예외 리스트(`EXCEPTIONS`)에서 번호가 `target` 인 예외 한 건을 지움 |
-| 역할 해제 | `users[target]["role"]` 을 빈 문자열(`""`)로 바꿈. 어떤 역할의 권한도 받지 않게 됨 |
+| 역할 해제 | `users[target]["role"]` 을 빈 문자열(`""`)로 바꿈 |
 | 역할에서 권한 빼기 | `roles[target]` 권한 리스트에서 그 권한을 지움 |
 
-- 이력 한 건은 여섯 키로 이루어집니다: `time`(회수 시각) · `user` · `permission` · `method` · `approval`(승인 상태) · `result`(「실행」 또는 「대기」).
-  - `result` 의 「대기」는 `approval` 이 「승인 대기」라서 실행하지 않았다는 뜻입니다.
+- 역할 해제를 하면 그 사용자는 어떤 역할의 권한도 받지 않게 됩니다.
+
+이력 한 건은 여섯 키로 이루어집니다.
+
+| 키 | 뜻 |
+|---|---|
+| `time` | 회수 시각 |
+| `user` | 사용자 |
+| `permission` | 권한 |
+| `method` | 회수 방법 |
+| `approval` | 승인 상태 |
+| `result` | 「실행」 또는 「대기」 |
+
+- `result` 의 「대기」는 `approval` 이 「승인 대기」라서 실행하지 않았다는 뜻입니다.
 - **직접 쓰는 곳은 세 함수**입니다. 판단이 필요한 함수마다 3 ~ 5줄만 쓰고, 나머지는 미리 채웠습니다.
-  - `remove_exception`(1 ~ 3번): 번호가 같은 예외를 찾아 지웁니다(`리스트.remove(값)` 은 리스트에서 그 값을 지웁니다).
-    - 지운 뒤에는 바로 `return True` 로 함수를 끝냅니다. 지금 `for` 로 돌고 있는 리스트에서 값을 지운 채 반복을 계속하면 다음 항목을 건너뛸 수 있기 때문입니다.
-  - `apply_plan`(4 ~ 8번): 회수 방법별로 실제로 지우는 일(세 곳)입니다.
-  - `execute_revocation`(9 ~ 13번): 계획마다 「대기」인지 「실행」인지 정합니다.
-- **미리 채운 함수**
-  - `save_log`: 이력을 JSON 파일로 저장합니다(판단이 없는 저장이라 미리 채움).
+
+| 함수 | 직접 쓰는 번호 | 하는 일 |
+|---|---|---|
+| `remove_exception` | 1 ~ 3번 | 번호가 같은 예외를 찾아 지움 |
+| `apply_plan` | 4 ~ 8번 | 회수 방법별로 실제로 지우는 일(세 곳) |
+| `execute_revocation` | 9 ~ 13번 | 계획마다 「대기」인지 「실행」인지 정함 |
+| `save_log` | 미리 채움 | 이력을 JSON 파일로 저장함(판단이 없는 저장이라 미리 채움) |
+
+- `remove_exception` 의 `리스트.remove(값)` 은 리스트에서 그 값을 지웁니다.
+  - 지운 뒤에는 바로 `return True` 로 함수를 끝냅니다. 지금 `for` 로 돌고 있는 리스트에서 값을 지운 채 반복을 계속하면 다음 항목을 건너뛸 수 있기 때문입니다.
 - 회수한 뒤에 다시 판정하면 결과가 달라질 수 있습니다.
   - `execute_revocation` 이 바꾼 `USERS` · `ROLES` · `EXCEPTIONS` 를 `evaluate_access` 도 같은 것으로 읽기 때문입니다.
   - `evaluate_access(사용자, 자원, 행위, 시각)` 는 `(허용 여부, 이유)` 두 값을 리턴합니다(Unit 1).
@@ -140,10 +156,17 @@ def execute_revocation(plans, users, roles, exceptions, now):    # 계획 · 사
 ```
 
 - 직접 쓰는 곳은 세 함수이고, 모두 함수 안이라 앞에 공백 4개를 기본으로 넣습니다(Tab 키 한 번).
-  - `remove_exception` 안: 미리 채운 `for` 안쪽이라 1번 `if` 는 8개이고, 그 안쪽(2 · 3번)은 4개 더(12개)입니다.
-  - `apply_plan` 안: 미리 채운 `if` · `elif` · `else` 가 4개이고, 그 안쪽 줄(4 ~ 8번)은 4개 더(8개)입니다.
-  - `execute_revocation` 안: 미리 채운 `for` 안쪽이라 `if` · `else` 는 8개이고, 그 안쪽은 4개 더(12개)입니다.
-  - 나머지 줄은 미리 채워 두었으니 그대로 둡니다.
+
+| 함수 | 쓰는 줄 | 앞의 공백 |
+|---|---|---|
+| `remove_exception` | 1번 `if`(미리 채운 `for` 안쪽) | 8개 |
+| `remove_exception` | 그 안쪽 2 · 3번 | 12개(4개 더) |
+| `apply_plan` | 미리 채운 `if` · `elif` · `else` | 4개 |
+| `apply_plan` | 그 안쪽 4 ~ 8번 | 8개(4개 더) |
+| `execute_revocation` | `if` · `else`(미리 채운 `for` 안쪽) | 8개 |
+| `execute_revocation` | 그 안쪽 | 12개(4개 더) |
+
+- 나머지 줄은 미리 채워 두었으니 그대로 둡니다.
 - 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다(파이썬 버전에 따라 뒤에 `after 'for' statement on line …` 가 붙습니다). `remove_exception` 의 `for` 아래에 실행할 줄이 아직 없기 때문입니다.
 
 **`exercise4-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 4-1까지의 계획과 승인 상태를 만든 뒤 회수 전 판정을 모으고, `execute_revocation` 으로 회수하고, 회수 후 판정을 모아 비교하고, 이력을 저장합니다.
@@ -241,12 +264,17 @@ print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력
 | 하려는 일 | 코드 · 말 |
 |---|---|
 | 아직 승인을 기다리는 계획인지 | `if plan["approval"] == "승인 대기":` |
-| 실제로 회수하기 | `apply_plan(plan, users, roles, exceptions)` (방법별로 지우는 일은 `apply_plan` 안에서 직접 씀) |
-| 번호가 같은 예외 찾기 | `if exception["id"] == target_id:` → `exceptions.remove(exception)` → `return True` (`remove_exception` 안) |
+| 실제로 회수하기 | `apply_plan(plan, users, roles, exceptions)` |
+| 번호가 같은 예외 찾기 | `if exception["id"] == target_id:` (`remove_exception` 안) |
+| 찾은 예외 지우고 끝내기 | `exceptions.remove(exception)` → `return True` |
 | 예외 삭제 | `remove_exception(exceptions, plan["target"])` |
-| 역할 해제 | `user_info = users[plan["target"]]` → `user_info["role"] = ""` |
-| 역할에서 권한 빼기 | `role_permissions = roles[plan["target"]]` → `role_permissions.remove(plan["permission"])` |
+| 역할 해제: 사용자 정보 꺼내기 | `user_info = users[plan["target"]]` |
+| 역할 해제: 역할 비우기 | `user_info["role"] = ""` |
+| 역할에서 권한 빼기: 권한 리스트 꺼내기 | `role_permissions = roles[plan["target"]]` |
+| 역할에서 권한 빼기: 그 권한 지우기 | `role_permissions.remove(plan["permission"])` |
 | 이력 한 건 | `{"time": now, "user": …, "result": result}` 딕셔너리를 `log.append(…)` |
+
+- 방법별로 지우는 일(예외 삭제 · 역할 해제 · 역할에서 권한 빼기)은 `apply_plan` 안에서 직접 씁니다.
 
 ---
 
