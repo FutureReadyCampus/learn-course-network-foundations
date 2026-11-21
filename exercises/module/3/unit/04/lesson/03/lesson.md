@@ -30,16 +30,23 @@ source:
 ## 1.1 승인이 필요한 경우와 승인 상태
 
 - 출발점은 회수 계획 8건입니다. 계획 한 건은 회수 대상(`user` · `permission` · `source`)에 `method`(회수 방법) · `target`(지울 대상) · `impact`(영향: 이 회수로 사라지는 권한 수) 키를 더한 딕셔너리입니다. 자세한 모양은 「제공 파일」 레슨의 `revoke_plan.py` 설명에 있습니다.
-- 승인이 필요한 계획은 둘 중 하나입니다.
-  - ① `config/sensitive.json` 에 적힌 민감한 권한: junho 의 `SALES:CHANGE`(예외 2번), dami 의 `SALES:CHANGE`(역할 해제) 두 건입니다.
-  - ② 영향(`impact`)이 2건 이상: dami 의 역할 해제 두 건(영향 2건)입니다.
-  - 겹치는 것을 한 번만 세면 승인이 필요한 계획은 모두 3건입니다.
+- 승인이 필요한 계획은 아래 둘 중 하나입니다. 겹치는 것을 한 번만 세면 승인이 필요한 계획은 모두 3건입니다.
+
+| 승인이 필요한 경우 | 이번 데이터의 계획 |
+|---|---|
+| ① `config/sensitive.json` 에 적힌 민감한 권한 | junho 의 `SALES:CHANGE`(예외 2번), dami 의 `SALES:CHANGE`(역할 해제) 두 건 |
+| ② 영향(`impact`)이 2건 이상 | dami 의 역할 해제 두 건(영향 2건) |
+
 - 민감한 권한 리스트는 「자원:행위」 문자열의 리스트입니다.
   - 쓰기 권한인 `SALES:CHANGE` · `ACCOUNT:CHANGE` · `SETTLE:CHANGE` 세 개를 적었습니다.
   - `QUERY` 는 조회, `CHANGE` 는 변경(쓰기)입니다.
-- 예외 1 · 2 · 4 · 5번은 만료 시각이 이미 지났습니다(Unit 3 점검 결과에 「만료된 예외」로 나왔습니다).
-  - 접근은 이미 막혀 있지만 예외 기록이 남아 있어서 회수 대상입니다.
-  - 3번은 아직 유효하지만 dami 가 퇴사해서 쓸 수 없습니다.
+- 회수 대상인 예외의 상태는 이렇습니다.
+
+| 예외 | 상태 | 회수 대상인 까닭 |
+|---|---|---|
+| 1 · 2 · 4 · 5번 | 만료 시각이 이미 지남(Unit 3 점검 결과의 「만료된 예외」) | 접근은 이미 막혀 있지만 예외 기록이 남아 있음 |
+| 3번 | 아직 유효함 | dami 가 퇴사해서 쓸 수 없음 |
+
 - 승인 요청서는 따로 만들지 않고, 계획 한 건마다 `approval` 키에 **승인 상태**를 적습니다. 값은 아래 세 가지 중 하나입니다.
 
 | `approval` 값 | 뜻 |
@@ -53,11 +60,13 @@ source:
   - dami 의 `SALES:QUERY` 계획은 둘(역할 해제, 예외 3번 삭제)이지만 결정 키 `dami:SALES:QUERY` 는 같습니다.
   - 찾은 결정은 승인이 필요한 계획에서만 쓰는데, 이번 데이터에서는 역할 해제 쪽만 승인이 필요합니다. 그래서 예외 3번 삭제 쪽은 결정과 상관없이 「승인 불필요」가 됩니다.
 - **직접 쓰는 곳은 세 함수**입니다. 판단이 필요한 함수마다 1 ~ 6줄만 쓰고, 나머지는 미리 채웠습니다.
-  - `plan_key`(1번): 계획에서 「사용자:권한」 문자열을 만듭니다(승인 결정을 찾는 키).
-  - `needs_approval`(2 ~ 4번): 민감한 권한이거나 영향이 2건 이상이면 `True` 를 리턴합니다.
-  - `mark_approvals`(5 ~ 10번): 계획마다 승인 상태(`approval`)를 정합니다.
-- **미리 채운 함수**
-  - `load_sensitive`: 민감한 권한 파일을 읽습니다(판단이 없는 읽기라 미리 채움).
+
+| 함수 | 직접 쓰는 번호 | 하는 일 |
+|---|---|---|
+| `plan_key` | 1번 | 계획에서 「사용자:권한」 문자열을 만듦(승인 결정을 찾는 키) |
+| `needs_approval` | 2 ~ 4번 | 민감한 권한이거나 영향이 2건 이상이면 `True` 를 리턴함 |
+| `mark_approvals` | 5 ~ 10번 | 계획마다 승인 상태(`approval`)를 정함 |
+| `load_sensitive` | 미리 채움 | 민감한 권한 파일을 읽음(판단이 없는 읽기라 미리 채움) |
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="mark_approvals 는 계획마다 승인 필요 여부와 결정을 보고 승인 상태 세 가지 중 하나를 적는다"></figure>
 
@@ -137,9 +146,14 @@ def mark_approvals(plans, sensitive, decisions):                 # 계획 리스
 ```
 
 - 직접 쓰는 곳은 세 함수이고, 모두 함수 안이라 앞에 공백 4개를 기본으로 넣습니다(Tab 키 한 번).
-  - `plan_key` · `needs_approval` 안: 1 ~ 4번은 모두 4개입니다.
-  - `mark_approvals` 안: 미리 채운 `for` 안쪽이라 `if` · `elif` · `else` 는 8개이고, 그 안쪽 `item["approval"] = …` 는 4개 더(12개)입니다. 위의 `key` · `decision` · `needs` 는 미리 채운 줄입니다.
-  - 나머지 줄은 미리 채워 두었으니 그대로 둡니다.
+
+| 함수 | 쓰는 줄 | 앞의 공백 |
+|---|---|---|
+| `plan_key` · `needs_approval` | 1 ~ 4번 모두 | 4개 |
+| `mark_approvals` | `if` · `elif` · `else`(미리 채운 `for` 안쪽) | 8개 |
+| `mark_approvals` | 그 안쪽 `item["approval"] = …` | 12개(4개 더) |
+
+- `mark_approvals` 위의 `key` · `decision` · `needs` 는 미리 채운 줄입니다. 나머지 줄도 미리 채워 두었으니 그대로 둡니다.
 - 5번의 `not needs` 는 「승인이 필요하지 않으면」입니다(`needs` 는 승인이 필요한지의 참 · 거짓). `not` 은 참과 거짓을 뒤집습니다.
 - 채우기 전에 실행하면 `KeyError: 'approval'` 오류가 납니다. 승인 상태(`approval`)를 아직 적지 않았기 때문입니다.
 
@@ -195,7 +209,9 @@ print(counts)                                                    # 승인 상태
 | 하려는 일 | 코드 · 말 |
 |---|---|
 | 결정을 찾는 키 | `return f"{user}:{permission}"` (`plan_key` 안) |
-| 승인이 필요한지 | `is_sensitive = plan["permission"] in sensitive` · `is_big_impact = plan["impact"] >= 2` → `return is_sensitive or is_big_impact` (`needs_approval` 안) |
+| 민감한 권한인지 | `is_sensitive = plan["permission"] in sensitive` (`needs_approval` 안) |
+| 영향이 2건 이상인지 | `is_big_impact = plan["impact"] >= 2` (`needs_approval` 안) |
+| 승인이 필요한지 | `return is_sensitive or is_big_impact` (`needs_approval` 안) |
 | 승인이 필요 없을 때 | `if not needs:` → `item["approval"] = "승인 불필요"` |
 | 결정이 「승인」인지 | `elif decision == "승인":` → `item["approval"] = "승인됨"` |
 | 그 밖(결정 없음) | `else:` → `item["approval"] = "승인 대기"` |

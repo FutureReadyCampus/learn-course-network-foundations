@@ -27,10 +27,15 @@ source:
 
 회수 대상 8건은 이렇게 나왔습니다.
 
-1. **Unit 3 점검**: 권한 현황 14건을 만들고, 규칙(퇴사 · 만료)과 사용 이력(권한을 마지막으로 쓴 시각의 기록, 90일 기준)으로 후보 10건을 찾았습니다.
-2. **회수 제외**: 후보 10건에서 회수 제외 2건(gaeun 의 `ACCOUNT:CHANGE` · seoyeon 의 `SALES:CHANGE`)을 뺐습니다. 제외 리스트에는 3건이 있지만 dami 의 권한은 「퇴사한 계정」이라 제외하지 않습니다.
-3. **남은 8건**: 제공 파일 `revoke_input.py` 의 `load_to_revoke` 가 리턴하는 리스트입니다. 코드에서는 `findings` 라고 부릅니다.
-4. **판정 함수**: 실습 1-3의 `evaluate_access` 는 실습 4-2에서 회수 전후를 비교할 때 썼습니다.
+| 단계 | 한 일 | 남은 건수 |
+|---|---|---|
+| **Unit 3 점검** | 권한 현황 14건에서 규칙(퇴사 · 만료)과 사용 이력(90일 기준)으로 후보를 찾음 | 후보 10건 |
+| **회수 제외** | 회수 제외 2건(gaeun 의 `ACCOUNT:CHANGE` · seoyeon 의 `SALES:CHANGE`)을 뺌 | 8건 |
+
+- 사용 이력은 권한을 마지막으로 쓴 시각의 기록입니다.
+- 제외 리스트에는 3건이 있지만 dami 의 권한은 「퇴사한 계정」이라 제외하지 않습니다.
+- **남은 8건**은 제공 파일 `revoke_input.py` 의 `load_to_revoke` 가 리턴하는 리스트입니다. 코드에서는 `findings` 라고 부릅니다.
+- **판정 함수**: 실습 1-3의 `evaluate_access` 는 실습 4-2에서 회수 전후를 비교할 때 썼습니다.
 
 ## 왜 회수 계획이 필요한가
 
@@ -83,10 +88,13 @@ source:
 
 **어떤 방법을 고르나**
 
-- 아래 「`plan_revocation` 의 흐름」 그림의 두 갈림길로 정합니다.
-  - 예외로 받았나? 그렇다 → ① 예외 삭제
-  - 아니고, 퇴사한 사용자인가? 그렇다 → ② 역할 해제
-  - 그 밖(재직 중인 사용자의 역할 권한) → ③ 역할에서 권한 빼기
+아래 「`plan_revocation` 의 흐름」 그림의 두 갈림길로 정합니다.
+
+| 묻는 것 | 그렇다면 |
+|---|---|
+| 예외로 받았나? | ① 예외 삭제 |
+| 아니고, 퇴사한 사용자인가? | ② 역할 해제 |
+| 그 밖(재직 중인 사용자의 역할 권한) | ③ 역할에서 권한 빼기 |
 
 **한 장 정리**
 
@@ -196,15 +204,26 @@ def plan_revocation(findings, users, roles):                     # 회수 대상
 ```
 
 - **직접 쓰는 곳은 네 함수의 다섯 군데**입니다. 판단이 필요한 함수마다 1 ~ 6줄만 쓰고, 나머지는 미리 채웠습니다.
-  - `exception_id`(1 · 2번): 「번」을 지우고 숫자로 바꿉니다.
-    - `문자열.replace("번", "")` 은 문자열 안의 「번」을 빈 문자열로 바꾼 **새 문자열**을 돌려줍니다. 원래 문자열은 그대로라서 결과를 `number_text` 에 다시 담아야 합니다.
-  - `count_users_by_role`(3 · 4번): 역할마다 사용자 수를 1 늘려 적습니다.
-  - `build_plan`(5 · 6번, 7번): 역할 해제와 역할에서 권한 빼기의 영향을 정합니다.
-  - `plan_revocation`(8 ~ 13번): 회수 대상마다 **어떤 방법으로 회수할지**(`method`)를 정합니다.
+
+| 함수 | 직접 쓰는 번호 | 하는 일 |
+|---|---|---|
+| `exception_id` | 1 · 2번 | 「번」을 지우고 숫자로 바꿈 |
+| `count_users_by_role` | 3 · 4번 | 역할마다 사용자 수를 1 늘려 적음 |
+| `build_plan` | 5 · 6번, 7번 | 역할 해제와 역할에서 권한 빼기의 영향을 정함 |
+| `plan_revocation` | 8 ~ 13번 | 회수 대상마다 **어떤 방법으로 회수할지**(`method`)를 정함 |
+
+- `문자열.replace("번", "")` 은 문자열 안의 「번」을 빈 문자열로 바꾼 **새 문자열**을 돌려줍니다. 원래 문자열은 그대로라서 결과를 `number_text` 에 다시 담아야 합니다.
 - 들여쓰기는 미리 채운 줄에 맞춥니다.
-  - `exception_id` · `count_users_by_role`: 함수 안이라 `for` 밖은 4개, `for` 안쪽은 8개입니다.
-  - `build_plan`: `if method == "역할 해제":` 안쪽(5 · 6번)은 8개이고, 7번은 `if` 밖이라 4개입니다.
-  - `plan_revocation`: 미리 채운 `for` 안쪽이라 `if` · `elif` · `else` 는 8개, 그 안쪽 `method = …` 는 4개 더(12개)입니다.
+
+| 함수 | 쓰는 줄 | 앞의 공백 |
+|---|---|---|
+| `exception_id` · `count_users_by_role` | `for` 밖(함수 안) | 4개 |
+| `exception_id` · `count_users_by_role` | `for` 안쪽 | 8개 |
+| `build_plan` | `if method == "역할 해제":` 안쪽(5 · 6번) | 8개 |
+| `build_plan` | 7번(`if` 밖) | 4개 |
+| `plan_revocation` | `if` · `elif` · `else`(미리 채운 `for` 안쪽) | 8개 |
+| `plan_revocation` | 그 안쪽 `method = …` | 12개(4개 더) |
+
 - **미리 채운 함수**
   - `make_plan`: 회수 대상을 복사해 세 키를 추가한 계획을 만듭니다(판단이 없는 복사라 미리 채움).
   - `count_users_by_role` 의 `for info in users.values():` 에서 `.values()` 는 딕셔너리의 값만 하나씩 꺼냅니다.
@@ -275,11 +294,18 @@ for role in names_by_role:                                       # 두 역할을
 |---|---|
 | 예외로 받은 권한인지 | `if "예외" in finding["source"]:` |
 | 퇴사한 사용자인지 | `elif not info["employed"]:` |
-| 회수 방법 정하기 | `method = "예외 삭제"` · `method = "역할 해제"` · `method = "역할에서 권한 빼기"` |
-| 계획 한 건 만들기 | `build_plan(finding, method, users, roles, role_counts)` (지울 대상과 영향을 정함. 역할 두 경우의 영향은 직접 씀) |
-| 예외 번호 꺼내기 | `number_text = number_text.replace("번", "")` → `return int(number_text)` |
-| 역할별 사용자 수 세기 | `old_count = counts.get(role, 0)` → `counts[role] = old_count + 1` |
-| 역할 해제의 영향 | `role_permissions = roles[info["role"]]` → `impact = len(role_permissions)` |
+| 회수 방법 정하기: 예외 삭제 | `method = "예외 삭제"` |
+| 회수 방법 정하기: 역할 해제 | `method = "역할 해제"` |
+| 회수 방법 정하기: 역할에서 권한 빼기 | `method = "역할에서 권한 빼기"` |
+| 계획 한 건 만들기 | `build_plan(finding, method, users, roles, role_counts)` |
+| 예외 번호에서 「번」 지우기 | `number_text = number_text.replace("번", "")` |
+| 예외 번호를 숫자로 리턴 | `return int(number_text)` |
+| 역할의 지금까지 센 수 | `old_count = counts.get(role, 0)` |
+| 1 늘려 다시 적기 | `counts[role] = old_count + 1` |
+| 역할 해제: 역할의 권한 리스트 | `role_permissions = roles[info["role"]]` |
+| 역할 해제의 영향 | `impact = len(role_permissions)` |
 | 역할에서 권한 빼기의 영향 | `impact = role_counts[info["role"]]` |
+
+- `build_plan` 은 지울 대상과 영향을 정합니다. 역할 두 경우의 영향은 직접 씁니다.
 
 ---

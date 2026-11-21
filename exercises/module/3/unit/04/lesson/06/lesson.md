@@ -39,14 +39,25 @@ source:
 | `hours` | 허용 시간대 `[시작 시, 끝 시]`. 끝 시각은 **포함하지 않음** | `[9, 18]` (9시부터 18시 **전까지**) |
 | `networks` | 허용하는 접속 위치 | `["office", "vpn"]` |
 
-- 접속 위치는 세 가지입니다.
-  - `office`(사내망) · `vpn`(VPN으로 회사에 연결한 상태) · `external`(그 밖의 외부)
-  - VPN(가상 사설망 · 브이피엔)은 회사 밖에서도 암호로 보호한 통로를 거쳐 회사망에 들어오는 방법입니다.
-- 이번 실습의 조건은 세 권한에만 걸려 있습니다.
-  - `SALES:CHANGE`: 9시부터 18시 전까지, 사내망 · VPN
-  - `SETTLE:QUERY`: 8시부터 20시 전까지, 사내망 · VPN
-  - `ACCOUNT:CHANGE`: 9시부터 18시 전까지, 사내망만
-  - 조건이 없는 권한(예: `SALES:QUERY`)은 기본 판정 그대로입니다.
+접속 위치는 세 가지입니다.
+
+| 값 | 뜻 |
+|---|---|
+| `office` | 사내망 |
+| `vpn` | VPN으로 회사에 연결한 상태 |
+| `external` | 그 밖의 외부 |
+
+- VPN(가상 사설망 · 브이피엔)은 회사 밖에서도 암호로 보호한 통로를 거쳐 회사망에 들어오는 방법입니다.
+
+이번 실습의 조건은 세 권한에만 걸려 있습니다.
+
+| 권한 | 허용 시간대 | 허용 접속 위치 |
+|---|---|---|
+| `SALES:CHANGE` | 9시부터 18시 전까지 | 사내망 · VPN |
+| `SETTLE:QUERY` | 8시부터 20시 전까지 | 사내망 · VPN |
+| `ACCOUNT:CHANGE` | 9시부터 18시 전까지 | 사내망만 |
+
+- 조건이 없는 권한(예: `SALES:QUERY`)은 기본 판정 그대로입니다.
 - 판정 순서는 **기본 판정 → 조건**입니다.
   - 퇴사한 사용자처럼 사람 자체가 거부 대상이면 조건을 볼 필요 없이 그 이유로 거부합니다.
 - 요청에는 접속 위치(`network`)가 추가되었습니다. 시각(`now`)에서 시(`now.hour`)를 꺼내 판정에 씁니다.
@@ -54,9 +65,13 @@ source:
   - 함수가 리턴한 두 값을 `is_allowed, reason = …` 로 받던 것과 같은 모양입니다.
   - 실행 파일의 `number += 1` 은 `number = number + 1` 과 같은 뜻입니다.
 - **직접 쓰는 곳은 세 함수**입니다. 판단이 필요한 함수마다 2 ~ 4줄만 쓰고, 나머지는 미리 채웠습니다.
-  - `is_work_time`(1 ~ 3번): 요청 시각이 허용 시간대 안인지 알려 줍니다.
-  - `is_allowed_network`(4 · 5번): 접속 위치가 허용 리스트에 있는지 알려 줍니다.
-  - `evaluate_conditional`(6 ~ 9번): 두 확인이 거짓이면 이유와 함께 거부합니다.
+
+| 함수 | 직접 쓰는 번호 | 하는 일 |
+|---|---|---|
+| `is_work_time` | 1 ~ 3번 | 요청 시각이 허용 시간대 안인지 알려 줌 |
+| `is_allowed_network` | 4 · 5번 | 접속 위치가 허용 리스트에 있는지 알려 줌 |
+| `evaluate_conditional` | 6 ~ 9번 | 두 확인이 거짓이면 이유와 함께 거부함 |
+
 - **미리 채운 것**: `load_rules` 와 `evaluate_conditional` 의 기본 판정 · 조건 찾기 반복 · 마지막 `return` 입니다.
 
 **문법 상자 — 범위 비교**
@@ -169,9 +184,15 @@ def evaluate_conditional(user, resource, action, network, now, rules):   # 사�
 ```
 
 - 들여쓰기는 미리 채운 줄에 맞춥니다.
-  - `is_work_time` · `is_allowed_network`: 함수 안이라 앞에 공백 4개입니다(1 ~ 5번).
-  - `evaluate_conditional`: 미리 채운 `if rule["permission"] == permission:` 의 안쪽이라 앞에 공백 12개이고, `if` 안쪽 `return`(7번 · 9번)은 4개 더(16개)입니다.
-  - 나머지 줄은 미리 채워 두었으니 그대로 둡니다.
+
+| 함수 | 쓰는 줄 | 앞의 공백 |
+|---|---|---|
+| `is_work_time` · `is_allowed_network` | 1 ~ 5번(함수 안) | 4개 |
+| `evaluate_conditional` | 6번 · 8번(미리 채운 `if` 안쪽) | 12개 |
+| `evaluate_conditional` | `if` 안쪽 `return`(7번 · 9번) | 16개(4개 더) |
+
+- `evaluate_conditional` 의 6번 · 8번은 미리 채운 `if rule["permission"] == permission:` 의 안쪽에 씁니다.
+- 나머지 줄은 미리 채워 두었으니 그대로 둡니다.
 - 3번의 `start <= hour < end` 는 start 이상이고 end 미만인지의 참 · 거짓입니다. 이 결과를 그대로 `return` 하므로 `if` 가 필요 없습니다.
 - 6번 · 8번의 `not` 은 함수가 리턴한 참과 거짓을 뒤집습니다.
 - 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다(파이썬 버전에 따라 뒤에 `after 'if' statement on line …` 가 붙습니다). `evaluate_conditional` 의 `if` 아래에 실행할 줄이 아직 없기 때문입니다. `is_work_time` · `is_allowed_network` 는 채우기 전에 아무것도 리턴하지 않습니다.
@@ -245,7 +266,9 @@ for rule in RULES:                                               # 조건을 하
 | 기본 판정이 거부이면 | `if not is_allowed:` → `return False, reason` (미리 채움) |
 | 요청 시각의 시 | `hour = now.hour` (`is_work_time` 안) |
 | 시간대 안인지 | `return start <= hour < end` (끝 시각은 포함하지 않음) |
-| 접속 위치가 허용 리스트에 있는지 | `allowed_networks = rule["networks"]` → `return network in allowed_networks` (`is_allowed_network` 안) |
-| 조건에 어긋나면 거부 | `if not is_work_time(rule, now):` · `if not is_allowed_network(rule, network):` → `return False, …` |
+| 허용 접속 위치 리스트 | `allowed_networks = rule["networks"]` (`is_allowed_network` 안) |
+| 접속 위치가 리스트에 있는지 | `return network in allowed_networks` |
+| 업무 시간 밖이면 거부 | `if not is_work_time(rule, now):` → `return False, …` |
+| 허용되지 않은 위치면 거부 | `if not is_allowed_network(rule, network):` → `return False, …` |
 
 ---
