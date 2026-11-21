@@ -1,18 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img">
-<title>오늘은 3시간 동안 실습 1-1 · 1-2를 만들고, Module 4 다섯 Unit 중 Unit 1을 한다</title>
-<desc>위는 오늘의 계획으로 시작하기 15분, 실습 약 110분, 글쓰기 40분, 마무리 15분입니다. 가운데는 핵심 실습 1-1(log_parse.py)과 1-2(normalize_web.py)이고 응용 1-1 ~ 1-3은 선택입니다. 아래는 Module 4 다섯 Unit 지도입니다.</desc>
+<title>오늘은 약 2시간 40분 동안 실습 1-1 · 1-2를 만들고, Module 4 다섯 Unit 중 Unit 1을 한다</title>
+<desc>위는 오늘의 계획으로 시작 15분, 핵심 실습 약 110분, 글쓰기 20분, 마무리 15분입니다. 가운데는 핵심 실습 1-1(log_parse.py)과 1-2(normalize_web.py)이고 응용 1-1 ~ 1-3은 여유가 되면 합니다. 아래는 Module 4 다섯 Unit 지도입니다.</desc>
 <defs><marker id="a-m4u01l01-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
-<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">오늘의 계획 (3시간)</text>
+<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">오늘의 계획 (약 2시간 40분)</text>
 <rect x="24" y="46" width="112" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="80.0" y="71" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">시작하기</text>
+<text x="80.0" y="71" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">시작</text>
 <text x="80.0" y="93" font-size="15" fill="#666660" text-anchor="middle">15분</text>
 <rect x="148" y="46" width="248" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="272.0" y="71" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실습</text>
+<text x="272.0" y="71" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">핵심 실습</text>
 <text x="272.0" y="93" font-size="15" fill="#666660" text-anchor="middle">약 110분</text>
 <rect x="408" y="46" width="164" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="490.0" y="71" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">글쓰기</text>
-<text x="490.0" y="93" font-size="15" fill="#666660" text-anchor="middle">40분</text>
+<text x="490.0" y="93" font-size="15" fill="#666660" text-anchor="middle">20분</text>
 <rect x="584" y="46" width="112" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="640.0" y="71" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">마무리</text>
 <text x="640.0" y="93" font-size="15" fill="#666660" text-anchor="middle">15분</text>
@@ -29,7 +29,7 @@
 <rect x="584" y="154" width="112" height="84" rx="8" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
 <text x="640" y="180" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">응용</text>
 <text x="640" y="203" font-size="15" fill="#292929" text-anchor="middle">1-1 ~ 1-3</text>
-<text x="640" y="225" font-size="15" fill="#9a6200" text-anchor="middle" font-weight="700">선택</text>
+<text x="640" y="225" font-size="15" fill="#9a6200" text-anchor="middle" font-weight="700">여유가 되면</text>
 <text x="24" y="278" font-size="17" fill="#292929" text-anchor="start" font-weight="700">Module 4 전체 지도</text>
 <rect x="24.0" y="292" width="126.4" height="88" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
 <text x="87.2" y="316" font-size="15" fill="#b32a17" text-anchor="middle" font-weight="700">Unit 1 · 오늘</text>

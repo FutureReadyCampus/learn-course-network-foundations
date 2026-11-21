@@ -26,40 +26,23 @@ python exercise1-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise1-1_run.py` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 다섯 함수입니다.
+**채운 코드** (한 예) — 직접 쓰는 곳은 두 곳(① · ②)입니다.
 
 ① `split_request` 안
 
 ```python
+    # ① line 을 큰따옴표(")로 두 번만 나눠 prefix, request_text, suffix 세 이름에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     prefix, request_text, suffix = line.split('"', 2)  # 큰따옴표 두 개를 기준으로 앞 · 요청 · 뒤 세 조각으로 나눈다
 ```
 
-② `read_request` 안
+② `read_status` 안
 
 ```python
-    method, path, protocol = request_text.split()  # 공백 기준으로 나눈 세 값을 세 이름에 한꺼번에 담는다
-```
-
-③ `read_status` 안
-
-```python
-    parts = suffix.split()     # 공백 기준으로 나눈 조각 리스트를 만든다
-    status_text = parts[0]     # 첫 조각이 상태 코드 문자열이다
+    # ② status_text 를 정수로 바꿔 status 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     status = int(status_text)  # 숫자로 바꿔야 400 이상인지 비교할 수 있다
 ```
 
-④ `read_client` 안
-
-```python
-    parts = prefix.split()  # 공백 기준으로 나눈 조각 리스트를 만든다
-    client_ip = parts[0]    # 첫 조각이 접속자 주소이다
-```
-
-⑤ `parse_line` 안(`if` 줄 하나)
-
-```python
-    if line.count('"') < 2:  # 큰따옴표가 두 개보다 적은 줄이면(잘렸거나 깨진 줄이면)
-```
+- 채우기 전 출력은 `NameError: name 'prefix' is not defined`, ① 만 채우면 `NameError: name 'status' is not defined` 입니다. ② 까지 채우면 아래 출력이 나옵니다.
 
 **결과**
 
@@ -99,8 +82,9 @@ python exercise1-1_run.py
 
 | 실수 | 나타나는 것 | 이유 |
 |---|---|---|
-| `split_request` 에서 <mark>나눌 횟수 `2` 를 빼고 `line.split('"')` 로 씀</mark> | <mark>`too many values to unpack`</mark> 오류 | 큰따옴표 여섯 개로 일곱 조각이 되어 세 이름에 담을 수 없음 |
-| `read_status` 에서 `int(…)` 를 빼먹음 | 실습 1-1 출력은 `'status': '401'` 처럼 <mark>따옴표가 붙은 문자열로 나오고 오류는 나지 않음</mark> | 실습 1-2 `convert_result` · 응용 1-1 `is_error` 에서 `400` 과 비교할 때 비로소 `TypeError` 가 남 |
+| ① 에서 <mark>나눌 횟수 `2` 를 빼고 `line.split('"')` 로 씀</mark> | <mark>`too many values to unpack`</mark> 오류 | 큰따옴표 여섯 개로 일곱 조각이 되어 세 이름에 담을 수 없음 |
+| ② 에서 `int(…)` 를 빼고 `status = status_text` 로 씀 | 실습 1-1 출력은 `'status': '401'` 처럼 <mark>따옴표가 붙은 문자열로 나오고 오류는 나지 않음</mark> | 실습 1-2 `convert_result` · 응용 1-1 `is_error` 에서 `400` 과 비교할 때 비로소 `TypeError` 가 남 |
+| ① · ② 를 4칸이 아니라 줄 맨 앞(0칸)에서 씀 | `IndentationError: unexpected indent` | 함수 밖 줄이 되어 아래 `return` 이 갑자기 들여 쓴 줄이 됨 |
 
 - `int(…)` 를 빼먹었을 때 나는 오류는 `TypeError: '>=' not supported between instances of 'str' and 'int'` 입니다.
 - 나눌 횟수 `2` 를 빼고 실행하면 다음 오류가 납니다(<mark>`too many values to unpack`</mark> 이면 이 실수입니다).
@@ -134,23 +118,23 @@ python exercise1-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise1-2_run.py` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 두 함수입니다.
+**채운 코드** (한 예) — 직접 쓰는 곳은 두 곳(① · ②)입니다.
 
 ① `convert_time` 안
 
 ```python
-    parsed = datetime.strptime(time_text, NGINX_TIME_FORMAT)  # 문자열을 시각 값으로 바꾼다(시간대 +0900 포함)
-    local_time = parsed.replace(tzinfo=None)                  # 시간대 정보를 지우고 한국 시각만 남긴다
+    # ① local_time 을 공통 모양(COMMON_TIME_FORMAT)의 문자열로 바꿔 time_out 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     time_out = local_time.strftime(COMMON_TIME_FORMAT)        # 공통 모양의 문자열로 바꾼다
 ```
 
 ② `convert_result` 안
 
 ```python
+    # ② status 가 400 이상이면   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     if status >= 400:  # 400 이상이면 요청이 실패한 것이다
-        return "실패"  # 실패를 리턴한다
-    return "성공"      # 그 밖에는 성공을 리턴한다
 ```
+
+- 채우기 전에는 `IndentationError: unexpected indent` 가 나오고, ① 만 채워도 같습니다. ② 만 채우고 ① 을 비우면 `NameError: name 'time_out' is not defined` 입니다. 둘 다 채우면 아래 출력이 나옵니다.
 
 **결과**
 
@@ -199,23 +183,17 @@ False
 
 | 실수 | 나타나는 것 | 이유 |
 |---|---|---|
-| `strptime` 에 공통 형식을 넣음 | `ValueError` 오류(<mark>`does not match format`</mark>) | nginx 형식(`NGINX_TIME_FORMAT`) 대신 공통 형식(`COMMON_TIME_FORMAT`)을 넣어 문자열 모양과 형식이 다름 |
-| `replace(tzinfo=None)` 를 뺌 | 오류는 나지 않고 `strftime` 결과도 같음 | <mark>이 수업에서는 세 로그의 시각 값을 같은 종류(시간대 없음)로 맞춰 두려고 지웁니다.</mark> |
+| ① 에서 <mark>`NGINX_TIME_FORMAT` 을 넣음</mark> | 오류 없이 시각이 nginx 모양 그대로 나옴 | 형식 이름을 바꿔 넣음. `%z` 자리가 비어 끝에 공백 |
+| ② 끝의 `:` 를 빠뜨림 | `SyntaxError: expected ':'` | `if` 줄 끝에는 `:` 가 꼭 있어야 함 |
+| ② 에서 `400` 을 `"400"` 으로 씀 | `TypeError: '>=' not supported between instances of 'int' and 'str'` | 정수와 문자열은 크기를 비교할 수 없음 |
 
-- <mark>두 형식 이름을 헷갈리지 않습니다.</mark> 공통 형식을 넣고 실행하면 다음 오류가 납니다(<mark>`does not match format`</mark> 이면 이 실수입니다).
+- <mark>두 형식 이름을 헷갈리지 않습니다.</mark> `NGINX_TIME_FORMAT` 은 원래 로그의 모양이라 읽을 때(`strptime`) 쓰고, `COMMON_TIME_FORMAT` 은 공통 모양이라 만들 때(`strftime`) 씁니다. ① 에 `NGINX_TIME_FORMAT` 을 넣고 실행하면 단계 1 의 첫 이벤트가 이렇게 나옵니다.
 
 ```
-Traceback (most recent call last):
-  File "…/anomaly_detection/exercise1-2_run.py", line 7, in <module>
-    event = normalize_web(line)  # 한 줄을 공통 이벤트로 바꾼다
-  File "…/anomaly_detection/normalize_web.py", line 57, in normalize_web
-    time_out = convert_time(time_text)  # 공통 모양의 시각으로 바꾼다
-  File "…/anomaly_detection/normalize_web.py", line 25, in convert_time
-    parsed = datetime.strptime(time_text, COMMON_TIME_FORMAT)  # 문자열을 시각 값으로 바꾼다(시간대 +0900 포함)
-ValueError: time data '02/Nov/2026:09:01:05 +0900' does not match format '%Y-%m-%d %H:%M:%S'
+{'time': '02/Nov/2026:09:01:05 ', 'source': 'web', …
 ```
 
-- 줄 번호는 사람마다 다릅니다.
+- 단계 3 의 개수(`{'성공': 15, '실패': 13}`)는 그대로라서, 시각 모양이 정답과 같은지 단계 1 의 첫 이벤트로 꼭 확인합니다.
 
 **관제에서는**
 
