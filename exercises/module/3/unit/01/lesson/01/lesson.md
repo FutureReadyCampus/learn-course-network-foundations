@@ -11,6 +11,7 @@ page_videos:
     video_id: ACzFIAOsfpM
     title: 깃허브(GitHub) 블로그 10분안에 완성하기
     creator: 테디노트 TeddyNote
+    required: true
 source:
   repository: FutureReadyCampus/learn-missions
   path: network/075_day01_pm_rbac.md

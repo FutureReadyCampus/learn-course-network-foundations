@@ -333,7 +333,7 @@
     section.append(iframe);
     const note = document.createElement("p");
     note.className = "page-video-note";
-    note.textContent = "[참고용] 가볍게 시청해 보세요.";
+    note.textContent = video.required ? "[필수] 꼭 시청해 주세요." : "[참고용] 가볍게 시청해 보세요.";
     section.append(note);
     const details = [video.title, video.creator].filter(Boolean);
     if (Number.isSafeInteger(video.duration_seconds) && video.duration_seconds > 0) {
