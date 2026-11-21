@@ -23,7 +23,9 @@ render: markdown
 2. 아래 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
 3. 네 파일을 다 만들었으면 터미널에서 `ls` 와 `ls config` 로 파일 이름이 보이는지 확인하고 실습 3-2로 돌아갑니다.
 
-> 시간이 남아 응용 3-1 ~ 3-3을 하면, 이 파일들을 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 그때는 본문을 다 채울 때까지 실습 3-2 가 동작하지 않을 수 있으니, 다 쓴 뒤 `exercise3-2_run.py` 를 다시 실행해 결과가 같은지 확인합니다.
+> 응용 3-1 ~ 3-3(여유가 되면 해 보세요)을 하면, 이 파일들을 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 그때는 본문을 다 채울 때까지 실습 3-2 가 동작하지 않을 수 있으니, 다 쓴 뒤 `exercise3-2_run.py` 를 다시 실행해 결과가 같은지 확인합니다.
+
+> **확인** — 만들 파일 네 개의 이름과, 그중 오늘 실습 3-2 가 쓰는 파일이 `review_rules.py` 라는 것을 말할 수 있으면 성공입니다. 헷갈리면 위 표의 「쓰는 곳」 칸을 봅니다.
 
 ## `review_rules.py` 만들기
 
@@ -54,6 +56,8 @@ def find_stale(access_list, now):                                # 현황 리스
             stale.append(stale_entry)                            # 걸린 리스트에 추가한다
     return stale                                                 # 걸린 리스트를 리턴한다
 ```
+
+> **확인** — VS Code 왼쪽 목록에서 `access_control` 바로 아래(`config` 안이 아님)에 `review_rules.py` 이 보이고, 탭 제목 옆에 저장 안 됨 표시(●)가 없으면 성공입니다. `config` 안에 만들어졌으면 `access_control` 로 끌어다 옮깁니다.
 
 ## `overprivilege.py` 만들기
 
@@ -127,6 +131,8 @@ def generate_report(access_list, stale, unused, days, generated_at):   # 현황 
     return report                                                # 리포트를 리턴한다
 ```
 
+> **확인** — VS Code 왼쪽 목록에서 `access_control` 바로 아래(`config` 안이 아님)에 `overprivilege.py` 이 보이고, 탭 제목 옆에 저장 안 됨 표시(●)가 없으면 성공입니다. `config` 안에 만들어졌으면 `access_control` 로 끌어다 옮깁니다.
+
 ## `report_exclude.py` 만들기
 
 **`report_exclude.py`** 를 만들고 아래 내용을 붙여 넣습니다. `split_by_exclude` 는 후보가 회수 제외 리스트에 있으면 「회수 제외」로, 아니면 「회수 대상」으로 나눕니다. 퇴사한 계정의 권한은 제외 리스트에 있어도 회수 대상에 둡니다. 오늘 실습에서는 쓰지 않고, 다음 Unit 4 가 씁니다.
@@ -191,6 +197,8 @@ def split_by_exclude(findings, exclude_map):                     # 후보 리스
     return to_revoke, excluded                                   # 두 리스트를 함께 리턴한다
 ```
 
+> **확인** — VS Code 왼쪽 목록에서 `access_control` 바로 아래(`config` 안이 아님)에 `report_exclude.py` 이 보이고, 탭 제목 옆에 저장 안 됨 표시(●)가 없으면 성공입니다. `config` 안에 만들어졌으면 `access_control` 로 끌어다 옮깁니다.
+
 ## `config/exclude_list.json` 만들기
 
 **`config/exclude_list.json`** 을 만들고 아래 내용을 붙여 넣습니다. `access_control` 안의 `config` 폴더에 만듭니다(`access_control` 폴더를 선택한 채로 이름에 `config/exclude_list.json` 을 입력하면 `config` 폴더 안에 만들어집니다). 담당자가 「평소에 안 써도 회수하면 안 되는 권한」을 적어 둔 회수 제외 리스트이고, 한 줄이 한 건입니다.
@@ -211,4 +219,8 @@ def split_by_exclude(findings, exclude_map):                     # 후보 리스
   ```bash
   ls
   ls config
+  python -c "import review_rules, overprivilege, report_exclude; print('제공 파일 정상')"
   ```
+  - 마지막 줄은 세 파일을 불러와 보는 명령입니다(맥북은 `python3`).
+
+> **확인** — 마지막 줄에 `제공 파일 정상` 이 나오면 성공입니다. `ModuleNotFoundError` 가 나면 그 이름의 파일이 `access_control` 바로 아래에 없는 것이고, `SyntaxError` 가 나면 붙여 넣을 때 글자가 빠진 것이니 그 파일을 지우고 다시 복사합니다.

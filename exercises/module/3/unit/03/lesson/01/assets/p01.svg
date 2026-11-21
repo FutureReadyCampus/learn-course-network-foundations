@@ -1,23 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img"><title>오늘 3시간 계획과 만들 것: 실습 3-1 현황 14건, 제공 파일 4개, 실습 3-2 안 쓴 권한 후보</title><desc>3시간은 시작하기 15분, 실습 약 110분, 글쓰기 40분, 마무리 15분으로 나눈다. 실습 3-1에서 review_list.py 의 build_access_list 로 현황 14건을 만들고, 제공 파일 4개를 복사한 뒤 실습 3-2에서 review_unused.py 의 find_unused 로 90일 넘게 안 쓴 후보를 찾는다. 응용 3-1~3-3은 선택이고, 실제로 거두는 일은 Unit 4에서 한다.</desc><defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img"><title>오늘 약 2시간 40분 계획과 만들 것: 실습 3-1 현황 14건, 제공 파일 4개, 실습 3-2 안 쓴 권한 후보</title><desc>약 2시간 40분은 시작 15분, 핵심 실습 약 110분, 글쓰기 20분, 마무리 15분으로 나누고 남는 시간은 여유다. 두 실습 모두 빈칸 두 곳만 직접 쓴다. 실습 3-1에서 review_list.py 의 build_access_list 로 현황 14건을 만들고, 제공 파일 4개를 복사한 뒤 실습 3-2에서 review_unused.py 의 find_unused 로 90일 넘게 안 쓴 후보를 찾는다. 응용 3-1~3-3은 여유가 되면 하고, 실제로 거두는 일은 Unit 4에서 한다.</desc><defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">오늘의 계획 (3시간)</text>
-<rect x="20" y="48" width="57" height="56" rx="6" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="48.5" y="71" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">시작</text>
-<text x="48.5" y="92" font-size="14" fill="#666660" text-anchor="middle">15분</text>
-<rect x="81" y="48" width="407" height="56" rx="6" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="284.5" y="71" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">실습 약 110분</text>
-<text x="284.5" y="92" font-size="14" fill="#292929" text-anchor="middle">실습 3-1 → 제공 파일 → 실습 3-2</text>
-<rect x="492" y="48" width="147" height="56" rx="6" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="565.5" y="71" font-size="16" fill="#9a6200" text-anchor="middle" font-weight="700">글쓰기 40분</text>
-<text x="565.5" y="92" font-size="14" fill="#292929" text-anchor="middle">보고서 · 내 기록</text>
-<rect x="643" y="48" width="57" height="56" rx="6" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="671.5" y="71" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">마무리</text>
-<text x="671.5" y="92" font-size="14" fill="#666660" text-anchor="middle">15분</text>
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">오늘의 계획 (약 2시간 40분)</text>
+<rect x="20" y="48" width="60" height="56" rx="6" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="50" y="71" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">시작</text>
+<text x="50" y="92" font-size="14" fill="#666660" text-anchor="middle">15분</text>
+<rect x="84" y="48" width="455" height="56" rx="6" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="311.5" y="71" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">핵심 실습 약 110분</text>
+<text x="311.5" y="92" font-size="14" fill="#292929" text-anchor="middle">실습 3-1 → 제공 파일 → 실습 3-2</text>
+<rect x="543" y="48" width="93" height="56" rx="6" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="589.5" y="71" font-size="15" fill="#9a6200" text-anchor="middle" font-weight="700">글쓰기 20분</text>
+<text x="589.5" y="92" font-size="14" fill="#292929" text-anchor="middle">세 문장 글</text>
+<rect x="640" y="48" width="60" height="56" rx="6" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="670" y="71" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">마무리</text>
+<text x="670" y="92" font-size="14" fill="#666660" text-anchor="middle">15분</text>
 <text x="20" y="146" font-size="17" fill="#292929" font-weight="700">오늘 만들 것</text>
 <rect x="20" y="162" width="196" height="108" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="118" y="187" font-size="16" fill="#1f7a4a" text-anchor="middle" font-weight="700">실습 3-1</text>
 <text x="118" y="210" font-size="14" fill="#292929" text-anchor="middle">review_list.py</text>
-<text x="118" y="231" font-size="14" fill="#292929" text-anchor="middle">build_access_list</text>
+<text x="118" y="231" font-size="14" fill="#292929" text-anchor="middle">build_access_list · 빈칸 2</text>
 <text x="118" y="255" font-size="15" fill="#1f7a4a" text-anchor="middle" font-weight="700">현황 14건</text>
 <rect x="250" y="180" width="124" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="312" y="209" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">제공 파일</text>
@@ -25,7 +25,7 @@
 <rect x="408" y="162" width="196" height="108" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="506" y="187" font-size="16" fill="#1f7a4a" text-anchor="middle" font-weight="700">실습 3-2</text>
 <text x="506" y="210" font-size="14" fill="#292929" text-anchor="middle">review_unused.py</text>
-<text x="506" y="231" font-size="14" fill="#292929" text-anchor="middle">find_unused</text>
+<text x="506" y="231" font-size="14" fill="#292929" text-anchor="middle">find_unused · 빈칸 2</text>
 <text x="506" y="255" font-size="15" fill="#1f7a4a" text-anchor="middle" font-weight="700">90일 넘게 안 쓴 후보</text>
 <rect x="632" y="180" width="68" height="72" rx="8" fill="#ffffff" stroke="#666660" stroke-width="1.5" stroke-dasharray="5 4"/>
 <text x="666" y="209" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">Unit 4</text>
@@ -34,7 +34,7 @@
 <polyline points="374,216 404,216" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
 <polyline points="604,216 628,216" fill="none" stroke="#666660" stroke-width="1.8" stroke-dasharray="4 3" marker-end="url(#a-p01)"/>
 <rect x="20" y="298" width="680" height="80" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="40" y="327" font-size="16" fill="#9a6200" font-weight="700">응용 3-1 ~ 3-3 · 선택</text>
+<text x="40" y="327" font-size="16" fill="#9a6200" font-weight="700">응용 3-1 ~ 3-3 · 여유가 되면</text>
 <text x="40" y="353" font-size="15" fill="#292929">핵심 실습 두 개와 글쓰기를 마치고 시간이 남을 때 합니다.</text>
 <text x="40" y="371" font-size="14" fill="#666660">하지 않아도 제공 파일로 Unit 4 를 그대로 따라갈 수 있습니다.</text>
 </g>
