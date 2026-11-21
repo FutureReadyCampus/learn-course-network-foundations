@@ -1,32 +1,32 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img">
 <title>실습 5-1 정리: 고르기, 잇기, f-문자열, 호출, 대체 문장의 코드 한 줄씩</title>
-<desc>1 · 2번은 두 조건이 모두 참일 때 append 합니다. 3번은 "; ".join 으로 문장을 잇고, 4번은 f-문자열로 값을 넣습니다. 5번에서 call_llm 을 부르고, 6 · 7번에서 빈 문자열이면 FAIL_TEXT 로 바꿉니다.</desc>
+<desc>직접 쓰는 곳은 ① 과 ② · ③ 입니다. ① 은 "; ".join 으로 문장을 잇고, ② · ③ 은 빈 문자열이면 FAIL_TEXT 로 바꿉니다. 두 조건이 모두 참일 때 append, f-문자열로 값 넣기, call_llm 호출은 미리 채운 줄입니다.</desc>
 <defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 5-1 정리</text>
 <rect x="20" y="52" width="220" height="62" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="34" y="87.6" font-size="15" fill="#292929">1 · 조건 두 개 모두 참</text>
+<text x="34" y="87.6" font-size="15" fill="#292929">미리 · 조건 두 개 모두 참</text>
 <rect x="250" y="52" width="450" height="62" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="264" y="77.1" font-size="15" fill="#292929">if record["grade"] != "low"</text>
 <text x="264" y="98.1" font-size="15" fill="#292929">and len(picked) &lt; SUMMARY_LIMIT:</text>
 <rect x="20" y="124" width="220" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="34" y="150.6" font-size="15" fill="#292929">2 · 리스트에 추가</text>
+<text x="34" y="150.6" font-size="15" fill="#292929">미리 · 리스트에 추가</text>
 <rect x="250" y="124" width="450" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="264" y="150.6" font-size="15" fill="#292929">picked.append(record)</text>
-<rect x="20" y="178" width="220" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="34" y="204.6" font-size="15" fill="#292929">3 · 문장을 한 문자열로</text>
+<rect x="20" y="178" width="220" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="34" y="204.6" font-size="15" fill="#292929">① · 문장을 한 문자열로</text>
 <rect x="250" y="178" width="450" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="264" y="204.6" font-size="15" fill="#292929">meaning_text = "; ".join(meanings)</text>
 <rect x="20" y="232" width="220" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="34" y="258.6" font-size="15" fill="#292929">4 · 값을 문장에 넣기</text>
+<text x="34" y="258.6" font-size="15" fill="#292929">미리 · 값을 문장에 넣기</text>
 <rect x="250" y="232" width="450" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="264" y="258.6" font-size="15" fill="#292929">facts = f"… {entity} … {score}점 …"</text>
 <rect x="20" y="286" width="220" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="34" y="312.6" font-size="15" fill="#292929">5 · AI 호출</text>
+<text x="34" y="312.6" font-size="15" fill="#292929">미리 · AI 호출</text>
 <rect x="250" y="286" width="450" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="264" y="312.6" font-size="15" fill="#292929">summary = call_llm(prompt)</text>
-<rect x="20" y="340" width="220" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="34" y="366.6" font-size="15" fill="#292929">6 · 7 · 실패하면 대체</text>
+<rect x="20" y="340" width="220" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="34" y="366.6" font-size="15" fill="#292929">② · ③ · 실패하면 대체</text>
 <rect x="250" y="340" width="450" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="264" y="366.6" font-size="15" fill="#292929">if summary == "": summary = FAIL_TEXT</text>
 </g>

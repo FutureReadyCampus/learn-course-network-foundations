@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img">
 <title>실습 5-1 정답: 5건에서 3명을 골라 요약 3줄, 자주 틀리는 곳 네 가지</title>
-<desc>점수 기록 5건 가운데 dami · seoyeon · gaeun 3명을 요약하고 실패는 0명입니다. 지시문이 금지한 것은 지어내기와 공격이라고 단정하기입니다. and 대신 or, join 누락, f 누락, 6 · 7번 누락이 자주 틀리는 곳입니다.</desc>
+<desc>점수 기록 5건 가운데 dami · seoyeon · gaeun 3명을 요약하고 실패는 0명입니다. 지시문이 금지한 것은 지어내기와 공격이라고 단정하기입니다. ① 에서 join 누락, ② 에서 == 대신 =, ③ 을 4칸에 씀, ② · ③ 누락이 자주 틀리는 곳입니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 5-1 정답</text>
@@ -24,16 +24,16 @@
 <text x="360" y="177.1" font-size="15" fill="#292929" text-anchor="middle">[사실]에 없는 내용 지어내기 · 공격이라고 단정하기</text>
 <text x="20" y="228" font-size="16" fill="#292929" font-weight="700">자주 틀리는 곳: 실수 → 화면에 보이는 모습</text>
 <rect x="20" y="244" width="330" height="84" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="185" y="280.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">1번 and 대신 or</text>
-<text x="185" y="301.1" font-size="15" fill="#292929" text-anchor="middle">→ 요약할 대상 4 명 (최대 3 명)</text>
+<text x="185" y="280.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">① join 을 안 씀</text>
+<text x="185" y="301.1" font-size="15" fill="#292929" text-anchor="middle">→ ['…', '…'] 대괄호 · 따옴표</text>
 <rect x="370" y="244" width="330" height="84" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="535" y="280.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">3번 join 을 안 씀</text>
-<text x="535" y="301.1" font-size="15" fill="#292929" text-anchor="middle">→ ['…', '…'] 대괄호 · 따옴표</text>
+<text x="535" y="280.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">② == 대신 = 를 씀</text>
+<text x="535" y="301.1" font-size="15" fill="#292929" text-anchor="middle">→ 실행하자마자 SyntaxError</text>
 <rect x="20" y="340" width="330" height="84" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="185" y="376.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">4번 따옴표 앞 f 를 뺌</text>
-<text x="185" y="397.1" font-size="15" fill="#292929" text-anchor="middle">→ {entity} 글자가 그대로 감</text>
+<text x="185" y="376.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">③ 을 4칸에서 시작</text>
+<text x="185" y="397.1" font-size="15" fill="#292929" text-anchor="middle">→ IndentationError</text>
 <rect x="370" y="340" width="330" height="84" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="535" y="376.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">6 · 7번을 빠뜨림</text>
-<text x="535" y="397.1" font-size="15" fill="#292929" text-anchor="middle">→ 429 실패 때 요약이 빈칸</text>
+<text x="535" y="376.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">② · ③ 을 빠뜨림</text>
+<text x="535" y="397.1" font-size="15" fill="#292929" text-anchor="middle">→ 호출 실패 때 요약이 빈칸</text>
 </g>
 </svg>
