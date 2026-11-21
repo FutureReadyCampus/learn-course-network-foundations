@@ -100,7 +100,7 @@ Name: count, dtype: int64
 | ① 에서 `pd.read_json("path")` 처럼 따옴표를 붙임 | `path` 라는 파일을 찾아서 `FileNotFoundError` | 변수 `path` 는 따옴표 없이 씁니다 |
 | ② 에서 `value_counts()` 의 괄호를 뺌 | 오류는 없지만 개수 대신 `<bound method …>` | 뒤에 괄호를 붙여 호출합니다 |
 
-- **① 에서 `path` 에 따옴표를 붙이면 `FileNotFoundError` 오류가 납니다.** `"path"` 는 변수가 아니라 글자 그대로의 파일 이름이 되기 때문입니다. 실행하면 다음 오류가 납니다(<mark>`No such file or directory: 'path'`</mark> 가 나오면 이 실수입니다).
+- **① 에서 `path` 에 따옴표를 붙이면 `FileNotFoundError` 오류가 납니다(판다스 2.x 에서는 `FutureWarning` 경고 뒤에 `ValueError: Expected object or value` 가 날 수도 있습니다).** `"path"` 는 변수가 아니라 글자 그대로의 파일 이름이 되기 때문입니다. 실행하면 다음 오류가 납니다(<mark>`No such file or directory: 'path'`</mark> 가 나오면 이 실수입니다).
 
 ```
 Traceback (most recent call last):
@@ -133,12 +133,15 @@ python exercise2-2_run.py
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 `count_by_user` 의 두 곳(① · ②)입니다.
 
-```python
-    # ① failed 를 "user" 열 기준으로 묶어(groupby) grouped 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
-    grouped = failed.groupby("user")  # user 가 같은 행끼리 묶는다
+① 은 `# ①` 주석 바로 아래(4칸)에 씁니다.
 
-    user_fail_counts = grouped.size()       # 그룹마다 행이 몇 개인지 센다
-    # ② user_fail_counts 를 큰 값부터 정렬해(sort_values, ascending=False) sorted_user_fail_counts 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+```python
+    grouped = failed.groupby("user")  # user 가 같은 행끼리 묶는다
+```
+
+② 는 미리 채운 `user_fail_counts = grouped.size()` 줄 뒤, `# ②` 주석 바로 아래(4칸)에 씁니다. ① 과 ② 는 떨어져 있으니 한 상자처럼 이어 붙이지 않습니다.
+
+```python
     sorted_user_fail_counts = user_fail_counts.sort_values(ascending=False)  # 큰 값부터 순서대로 정렬한다
 ```
 

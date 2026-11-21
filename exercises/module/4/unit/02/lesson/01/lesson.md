@@ -67,7 +67,7 @@ CSV 파일은 값을 쉼표로 구분해 적은 텍스트 파일이고, 엑셀�
    - <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나야</mark> 합니다. `cd anomaly_detection` 이 안 되면 `ls` 로 폴더 이름을 확인하고, 없으면 `mkdir anomaly_detection` 으로 만든 뒤 들어갑니다.
    - 설치가 끝나면 <mark>`Successfully installed …` 또는 `Requirement already satisfied` 가 나옵니다.</mark> 마지막에 `WARNING: You are using pip version …` 이 나와도 무시합니다.
    - <mark>마지막 명령에서 점이 든 숫자(예: `3.1.1`)가 나오면</mark> 판다스를 쓸 수 있습니다. 숫자는 설치한 때에 따라 다릅니다.
-   - 판다스 버전에 따라 표 아래의 `dtype` 표시(`object` 또는 `str`), 시각 종류(`datetime64[ns]` 또는 `[us]`), `<StringArray>` 줄 같은 **종류 표시만** 조금 다르게 나올 수 있습니다. 숫자와 이름이 레슨의 결과와 같으면 정상입니다.
+   - 판다스 버전에 따라 표 아래의 `dtype` 표시(`object` 또는 `str`), 시각 종류(`datetime64[ns]` 또는 `[us]`), `<StringArray>` 줄, 빈 값이 `None` 이나 `NaN` 으로 보이는 것 같은 **종류 표시만** 조금 다르게 나올 수 있습니다. 숫자와 이름이 레슨의 결과와 같으면 정상입니다.
 4. **파일은 이렇게 만듭니다.** 따로 내려받는 파일은 없고, 모두 코드 상자에서 복사해 만듭니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
    1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다.
    2. 코드 상자의 복사 버튼으로 내용을 복사해 새 파일에 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
