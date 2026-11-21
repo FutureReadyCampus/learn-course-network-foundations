@@ -10,12 +10,15 @@ render: markdown
 
 **실습 4-1을 시작하기 전에** 이 레슨의 파일 세 개를 만듭니다. 실습 4-1의 `risk_scores.py` 는 SaaS · 웹 로그의 탐지 결과와 로그 연결 결과까지 모아 점수를 매기는데, 그 결과를 만드는 코드는 오늘 직접 쓰지 않고 완성본을 받아 씁니다.
 
+| 만들 파일 | 하는 일 | 어떤 코드인가 |
+|---|---|---|
+| `saas_detection.py` | SaaS 로그에서 업무 시간 밖 로그인 · 평소와 다른 IP · 대량 다운로드를 찾습니다 | Unit 3 도전 3-2와 같은 코드 |
+| `malicious_detection.py` | 웹 로그에서 경로 스캔 IP 를 찾습니다 | Unit 3 도전 3-3과 같은 코드 |
+| `correlation.py` | 세 로그를 한 사용자 기준으로 이어 60분 안의 사건을 찾습니다 | 도전 4-1에서 직접 써 보는 코드 |
+
 1. 파일은 모두 `anomaly_detection` 폴더 안에 만듭니다(VS Code 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File**).
 2. 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다. 같은 이름의 파일이 이미 있으면 내용을 모두 지우고 붙여 넣습니다.
-3. 만들 파일은 세 개입니다.
-   1. `saas_detection.py`: SaaS 로그에서 업무 시간 밖 로그인 · 평소와 다른 IP · 대량 다운로드를 찾습니다(Unit 3 도전 3-2와 같은 코드).
-   2. `malicious_detection.py`: 웹 로그에서 경로 스캔 IP 를 찾습니다(Unit 3 도전 3-3과 같은 코드).
-   3. `correlation.py`: 세 로그를 한 사용자 기준으로 이어 60분 안의 사건을 찾습니다(도전 4-1에서 직접 써 보는 코드).
+3. 만들 파일은 위 표의 세 개입니다.
    - 앞의 두 파일에는 Unit 3 도전에서만 설명한 문법(`.between` · `.str.contains` · `.dt.hour` 등)이 나옵니다. 오늘은 붙여 넣어 쓰기만 하므로, 도전을 하지 않았다면 줄 끝 주석으로 무슨 일을 하는지만 읽고 넘어가도 됩니다.
 4. 시작하기 레슨의 확인에서 `Unit 3 파일 정상 57` 이 나오지 않았다면, 이 레슨 마지막 페이지의 `access_detection.py` 예비 코드도 만듭니다.
 5. 다 만들었으면 아래 명령으로 확인하고 실습 4-1로 갑니다(맥북은 `python3`).
@@ -30,9 +33,11 @@ render: markdown
 
 **`saas_detection.py`** 를 만들고 아래 내용을 붙여 넣습니다. SaaS 이벤트에서 세 가지 이상 사용을 찾습니다.
 
-1. `find_off_hours_logins`: 업무 시간(8시 ~ 20시대) 밖에 시도한 로그인
-2. `find_new_ip_users`: 평소 IP(`USUAL_IPS`)와 다른 IP 로 로그인한 사용자
-3. `find_bulk_download_users`: 파일을 5번 이상 내려받은 사용자
+| 함수 | 찾는 것 | 오늘 데이터에서 나오는 것 |
+|---|---|---|
+| `find_off_hours_logins` | 업무 시간(8시 ~ 20시대) 밖에 시도한 로그인 | jiwoo(02:14) |
+| `find_new_ip_users` | 평소 IP(`USUAL_IPS`)와 다른 IP 로 로그인한 사용자 | jiwoo · seoyeon |
+| `find_bulk_download_users` | 파일을 5번 이상 내려받은 사용자 | seoyeon |
 
 ```python
 import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
@@ -116,7 +121,6 @@ def find_bulk_download_users(saas):                   # SaaS 이벤트 표를 �
     return bulk_users                                 # 대량 다운로드 사용자를 리턴한다
 ```
 
-- 오늘 데이터에서는 업무 시간 밖 로그인 jiwoo(02:14), 평소와 다른 IP jiwoo · seoyeon, 대량 다운로드 seoyeon 이 나옵니다.
 - `~` 는 `True` 와 `False` 를 뒤집는 기호입니다. `~is_business_hour` 는 「업무 시간 안이 아닌」 행을 `True` 로 만듭니다.
 
 ## `malicious_detection.py` 만들기

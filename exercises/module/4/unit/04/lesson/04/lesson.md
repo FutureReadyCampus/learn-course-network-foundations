@@ -101,9 +101,13 @@ print(users)                 # 사용자 이름을 출력한다
 | `find_removed_users` | 빼낸 알림 표 | 빼낸 알림에 나온 사용자(중복 없이) |
 
 - **직접 쓰는 곳은 일곱 군데**(번호 1 ~ 7)이고, 함수 세 개 안에 나뉘어 있습니다.
-  - `apply_exception`(1 ~ 4번, 4곳): 알림의 규칙이 IP 규칙인지 비교하고, 믿는 IP 인지 구하고, 둘을 합쳐 빼낼 알림을 정한 뒤, 남은 알림을 고릅니다.
-  - `count_real_removed`(5 · 6번, 2곳): 빼낸 알림 중 진짜 문제였던 것을 고릅니다.
-  - `find_removed_users`(7번, 1곳): 빼낸 알림에 나온 사용자를 중복 없이 꺼냅니다.
+
+| 함수 | 번호 | 직접 쓰는 일 |
+|---|---|---|
+| `apply_exception` | 1 ~ 4번(4곳) | IP 규칙인지 비교, 믿는 IP 인지 구하기, 둘을 합쳐 빼낼 알림 정하기, 남은 알림 고르기 |
+| `count_real_removed` | 5 · 6번(2곳) | 빼낸 알림 중 진짜 문제였던 것을 고릅니다 |
+| `find_removed_users` | 7번(1곳) | 빼낸 알림에 나온 사용자를 중복 없이 꺼냅니다 |
+
 - 이번 실습에서 새 문법은 `.unique()` 하나입니다. `isin` 은 Unit 3 실습 3-2, `&` 는 Unit 2 실습 2-3에서 쓴 것을 다시 씁니다.
 
 ## 실습 4-2 · 예외 규칙으로 오탐 줄이기
@@ -270,7 +274,15 @@ ls
 ```
 
 - `pwd` 의 결과가 `anomaly_detection` 으로 끝나야 합니다.
-- `saas_detection.py` · `malicious_detection.py` · `correlation.py`(제공 파일), `risk_scores.py` · `exercise4-1_run.py` · `unit05_risk_scores.json`(실습 4-1), `review_alerts.json` · `tuning.py` · `exercise4-2_run.py`(실습 4-2), `report_u4.md` 가 보여야 합니다.
+- `ls` 결과에 아래 파일이 보여야 합니다.
+
+| 만든 곳 | 파일 |
+|---|---|
+| 제공 파일 | `saas_detection.py` · `malicious_detection.py` · `correlation.py` |
+| 실습 4-1 | `risk_scores.py` · `exercise4-1_run.py` · `unit05_risk_scores.json` |
+| 실습 4-2 | `review_alerts.json` · `tuning.py` · `exercise4-2_run.py` |
+| 보고서 | `report_u4.md` |
+
 - `unit05_risk_scores.json` 은 실습 4-1에서 프로그램이 만든 점수 파일입니다. 이것도 올라갑니다.
 
 **3. 깃허브에 올리기**
