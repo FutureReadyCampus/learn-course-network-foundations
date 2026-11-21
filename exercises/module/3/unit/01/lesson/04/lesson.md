@@ -37,7 +37,7 @@ render: markdown
 ]
 </code></pre>
 
-- 저장한 뒤 터미널에서 JSON 규칙에 맞는지 확인합니다. 다섯 건이 다시 정리되어 나오면 됩니다.
+- 저장한 뒤 터미널에서 JSON 규칙에 맞는지 확인합니다. 다섯 건이 다시 정리되어 나오면 성공입니다. `Expecting …` 나 `Unterminated string …` 같은 오류 문구가 나오면 복사가 덜 된 것이니 내용을 지우고 다시 붙여 넣습니다.
   ```bash
   python -m json.tool config/exceptions.json
   ```
@@ -93,7 +93,7 @@ def load_json(path, default):                                    # 파일 경로
         return default                                           # 기본값을 리턴한다
 ```
 
-- 모두 만들었으면 터미널에서 확인합니다. `exception_policy.py` · `config_loader.py` 와 `config` 안의 `exceptions.json` 이 보이면 실습 1-3으로 갑니다.
+- 모두 만들었으면 터미널에서 확인합니다. `exception_policy.py` · `config_loader.py` 와 `config` 안의 `exceptions.json` 이 보이면 성공이고 실습 1-3으로 갑니다. 안 보이면 다른 폴더에 만든 것이니 VS Code 왼쪽 목록에서 그 파일을 `access_control` 폴더로 끌어 옮깁니다.
   ```bash
   ls
   ls config
