@@ -35,12 +35,18 @@ source:
 
 도전 4-1 과 도전 4-2 는 Unit 3 티켓 파일과 알림 서버를 씁니다. 아래 순서대로 준비합니다.
 
-1. **Unit 3 파일**: `soar_response` 폴더에 아래 파일이 있어야 합니다. 없는 파일은 알려 준 레슨의 코드 상자로 만듭니다.
-   1. Unit 3 「시작하기」 레슨: `alerts_thu.json` · `config/escalation_rules.json`
-   2. Unit 3 실습 3-2: `ticketing.py`
-   3. Unit 3 「제공 파일」 레슨: `notifier.py` · `ticket_merge.py` · `ticket_notice.py`
-   4. Unit 3 도전 3-3 레슨의 코드 상자: `alert_server.py`(도전 3-3 을 하지 않았어도 그 레슨의 `alert_server.py` 상자만 복사해 만듭니다)
-2. **티켓 파일** `tickets_unit09.json`: Unit 3 도전 3-3 을 실행했다면 그때 저장된 파일이 이미 있습니다. 없으면 아래 내용으로 만듭니다(파일 이름 속 `unit09` 는 이름을 바꾸지 않고 그대로 씁니다).
+**1. Unit 3 파일**: `soar_response` 폴더에 아래 파일이 있어야 합니다. 없는 파일은 알려 준 레슨의 코드 상자로 만듭니다.
+
+| 만드는 레슨 | 파일 |
+|---|---|
+| Unit 3 「시작하기」 레슨 | `alerts_thu.json` · `config/escalation_rules.json` |
+| Unit 3 실습 3-2 | `ticketing.py` |
+| Unit 3 「제공 파일」 레슨 | `notifier.py` · `ticket_merge.py` · `ticket_notice.py` |
+| Unit 3 도전 3-3 레슨의 코드 상자 | `alert_server.py` |
+
+도전 3-3 을 하지 않았어도 그 레슨의 `alert_server.py` 상자만 복사해 만듭니다.
+
+**2. 티켓 파일** `tickets_unit09.json`: Unit 3 도전 3-3 을 실행했다면 그때 저장된 파일이 이미 있습니다. 없으면 아래 내용으로 만듭니다(파일 이름 속 `unit09` 는 이름을 바꾸지 않고 그대로 씁니다).
 
 **`tickets_unit09.json`** — Unit 3 근무(알림 11건)가 끝났을 때의 티켓 7장입니다. Unit 3 도전 3-3 의 `challenge3-3_run.py` 가 저장하는 파일과 내용이 같습니다. 모든 티켓이 아직 `열림` 이고 `escalation_level` 은 0 입니다.
 
@@ -83,9 +89,17 @@ source:
 
 | 정의할 것 | 오늘 정한 방법 | 규칙 파일의 키 |
 |---|---|---|
-| 발동 시점(trigger, 트리거: 에스컬레이션을 시작하는 조건) | <mark style="background:#ffdcb0">지금 시각이 응답 기한 시각(`sla_due`, due 는 마감이라는 뜻)을 지났을 때</mark> | 티켓의 `sla_due`(규칙 파일의 `sla_minutes` 로 계산) |
-| 대상 티켓 | <mark style="background:#ffdcb0">상태가 `열림` 인 티켓만 해당한다</mark>. `확인 중`(담당자가 확인함)이나 `해결`(처리 완료)은 대상에서 제외한다 | |
-| 통보 대상 | <mark style="background:#ffdcb0">응답 기한 초과 시간이 0분 이상 30분 미만이면 1단계로 `team.lead`(팀장)에게, 30분 이상이면 2단계로 `soc.head`(관제 센터장)에게 통보한다</mark>. 예를 들어 `TCK-1` 은 5분 초과라 1단계, `TCK-3` 은 42분 초과라 2단계다 | `escalation_steps` |
+| 발동 시점(trigger) | <mark style="background:#ffdcb0">지금 시각이 응답 기한 시각(`sla_due`)을 지났을 때</mark> | 티켓의 `sla_due`(규칙 파일의 `sla_minutes` 로 계산) |
+| 대상 티켓 | <mark style="background:#ffdcb0">상태가 `열림` 인 티켓만 해당한다</mark> | |
+| 통보 대상 | <mark style="background:#ffdcb0">초과 시간에 따라 단계별로 통보한다</mark>(아래 표) | `escalation_steps` |
+
+- 트리거(trigger)는 에스컬레이션을 시작하는 조건입니다. `sla_due` 의 due 는 마감이라는 뜻입니다.
+- `확인 중`(담당자가 확인함)이나 `해결`(처리 완료)인 티켓은 대상에서 제외합니다.
+
+| 응답 기한 초과 시간 | 단계 | 통보 대상 | 오늘의 예 |
+|---|---|---|---|
+| <mark style="background:#ffdcb0">0분 이상 30분 미만</mark> | 1단계 | `team.lead`(팀장) | `TCK-1` 5분 초과 |
+| <mark style="background:#ffdcb0">30분 이상</mark> | 2단계 | `soc.head`(관제 센터장) | `TCK-3` 42분 초과 |
 
 - 규칙 파일의 `escalation_steps` 는 단계마다 기준 시간(`overdue_minutes`, 넘긴 분)과 받는 사람(`notify`)을 적은 리스트입니다. 오늘은 `{"overdue_minutes": 0, "notify": "team.lead"}` 와 `{"overdue_minutes": 30, "notify": "soc.head"}` 두 단계가 이 순서로 들어 있습니다.
 - 담당자가 티켓을 확인하면 상태가 `열림` 에서 `확인 중` 으로 변경됩니다. 출력과 코드에서는 에스컬레이션 단계를 「올림 단계」라고 표시합니다.

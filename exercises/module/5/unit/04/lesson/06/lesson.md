@@ -27,11 +27,13 @@ source:
 
 ## 2.1 MTTA · MTTR · 기한 위반 수의 뜻
 
-| 지표 | 정의 | 계산 방법 |
-|---|---|---|
-| **평균 확인 시간**(MTTA, Mean Time To Acknowledge) | 티켓이 생성된 시점부터 담당자가 처음 확인(acknowledge)하기까지 걸린 시간의 평균 | <mark style="background:#ffdcb0">(확인 시각 − 생성 시각)의 평균</mark> |
-| **평균 해결 시간**(MTTR, Mean Time To Resolve) | 티켓이 생성된 시점부터 해결(resolve)되기까지 걸린 시간의 평균 | <mark style="background:#ffdcb0">(해결 시각 − 생성 시각)의 평균</mark> |
-| 응답 기한 위반(SLA breach, 에스엘에이 브리치: 약속한 응답 기한을 지키지 못한 것) | 응답 기한 시각보다 늦게 확인된 티켓 | <mark style="background:#ffdcb0">확인 시각 > `sla_due`</mark> |
+| 지표 | 영어 이름 | 정의 | 계산 방법 |
+|---|---|---|---|
+| **평균 확인 시간** | MTTA, Mean Time To Acknowledge | 티켓이 생성된 시점부터 담당자가 처음 확인(acknowledge)하기까지 걸린 시간의 평균 | <mark style="background:#ffdcb0">(확인 시각 − 생성 시각)의 평균</mark> |
+| **평균 해결 시간** | MTTR, Mean Time To Resolve | 티켓이 생성된 시점부터 해결(resolve)되기까지 걸린 시간의 평균 | <mark style="background:#ffdcb0">(해결 시각 − 생성 시각)의 평균</mark> |
+| 응답 기한 위반 | SLA breach, 에스엘에이 브리치 | 응답 기한 시각보다 늦게 확인된 티켓 | <mark style="background:#ffdcb0">확인 시각 > `sla_due`</mark> |
+
+응답 기한 위반(SLA breach)은 약속한 응답 기한을 지키지 못한 것입니다.
 
 - 예를 들어 `TCK-1` 은 0분에 생성되어 10분에 확인되었으므로 확인 시간이 10 − 0 = 10분입니다. `TCK-3` 은 8분에 생성되어 80분에 확인되었으므로 80 − 8 = 72분입니다. 평균 확인 시간은 이런 확인 시간을 모두 더해 확인한 티켓 수로 나눈 값입니다.
 - 평균 해결 시간도 같은 방식으로 구합니다. 오늘 샘플에서 해결한 티켓 3장의 해결 시간은 `TCK-1` 45분, `TCK-3` 112분, `TCK-6` 95분입니다. 합계 252분을 3으로 나누면 평균 해결 시간은 84.0분입니다.
