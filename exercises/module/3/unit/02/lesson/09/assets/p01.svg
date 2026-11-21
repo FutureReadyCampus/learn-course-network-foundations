@@ -16,5 +16,5 @@
 <text x="610" y="99.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">맞음</text>
 <text x="610" y="120.1" font-size="15" fill="#292929" text-anchor="middle">표현이 달라도 됨</text>
 <rect x="30" y="180" width="670" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="365" y="214.6" font-size="15" fill="#292929" text-anchor="middle">코드도 주석이 말한 일을 하면 줄 수가 달라도 맞습니다</text>
+<text x="365" y="214.6" font-size="15" fill="#292929" text-anchor="middle">코드는 빈칸 번호별 조각으로 맞춰 보고, 출력이 같으면 맞습니다</text>
 </svg>

@@ -19,7 +19,9 @@ render: markdown
    ```
 5. 오늘 핵심 실습에서는 이 파일을 실행하지 않습니다. 응용 2-3이 이 파일을 불러 쓰고, 「이번 Unit 마무리」에서 다른 파일과 함께 깃허브에 올립니다.
 
-> 시간이 남아 응용 2-1을 하면, 이 파일을 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 다 쓴 뒤 `apply2-1_run.py` 의 출력이 응용 2-1 정답과 같으면 이 완성본과 같게 동작하는 것입니다.
+> 여유가 되어 응용 2-1을 하면, 이 파일을 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 다 쓴 뒤 `apply2-1_run.py` 의 출력이 응용 2-1 정답과 같으면 이 완성본과 같게 동작하는 것입니다.
+
+> **확인** — 만들 파일이 `req_grant.py` 하나이고, 4번 명령으로 확인한다는 것을 알면 성공입니다. 다음 페이지에서 파일을 만듭니다.
 
 ## `req_grant.py` 만들기
 
@@ -55,3 +57,5 @@ def grant_request(request):                                      # 요청서를 
     request["status"] = "granted"                                # 상태를 부여됨으로 바꾼다
     return True, "부여"                                          # 부여했다고 알린다
 ```
+
+**확인** — `access_control` 폴더에서 4번 명령(`python -c "from req_grant import grant_request; print('제공 파일 정상')"`)을 쳐서 `제공 파일 정상` 이 나오면 성공입니다. `ModuleNotFoundError: No module named 'req_grant'` 가 나오면 파일 이름과 폴더를, `SyntaxError` 나 `IndentationError` 가 나오면 복사가 덜 된 것이니 내용을 지우고 다시 붙여 넣습니다.

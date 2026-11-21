@@ -36,6 +36,8 @@ source:
    - `…/Documents` 로 끝나면 됩니다.
    - 이 레슨은 문서 폴더를 기준으로 씁니다. 앞 사람 폴더가 바탕화면에 있으면 `cd ~/Desktop` 으로 가서 같은 순서로 합니다.
 
+> **확인** — `pwd` 결과가 `…/Documents` 로 끝나면 성공입니다. 다르면 `cd ~/Documents` 를 다시 칩니다. 터미널 이름이 bash 가 아니면 2번처럼 **Git Bash** 를 고릅니다.
+
 ---
 
 ## 2. 앞 사람의 흔적을 확인합니다
@@ -82,6 +84,8 @@ source:
    3. 리스트에 **`git:https://github.com`** 이 있는지 봅니다. 펼치면 **사용자 이름**에 로그인한 깃허브 아이디가 보입니다.
    - 이 항목이 있으면, 이 PC 에서 `git push` 할 때 **그 아이디로** 올리려고 합니다.
 
+> **확인** — 앞 사람 폴더가 있는지, 그 저장소 주인 아이디, git 이름 · 이메일, 자격 증명 항목이 있는지 네 가지를 적어 두었으면 성공입니다. `git remote -v` 에서 `not a git repository` 가 나오면 깃 저장소가 아닌 폴더이니 4장에서 이름만 바꿉니다.
+
 ---
 
 ## 3. 앞 사람 연결을 끊고 내 것으로 바꿉니다
@@ -103,6 +107,8 @@ source:
      git config --global user.email
      ```
 
+> **확인** — `git config --global user.name` 과 `user.email` 이 방금 적은 내 값으로 나오면 성공입니다. 앞 사람 값이 그대로면 따옴표까지 포함해 2번 명령을 다시 칩니다.
+
 ---
 
 ## 4. 앞 사람 폴더 이름 끝에 _old 를 붙입니다
@@ -120,6 +126,8 @@ source:
    - 명령 풀이: `mv 지금이름 새이름` 폴더 이름을 바꿈
    - `ls` 에 `security-agent-toolkit_old` 가 보이고 `security-agent-toolkit` 은 없어야 합니다.
    - 앞 사람 폴더 이름이 **다르면** 그 이름 끝에 `_old` 를 붙입니다(예: `mv toolkit toolkit_old`). 내 것과 헷갈리지 않게 표시해 두는 것입니다.
+
+> **확인** — `ls` 에 `security-agent-toolkit_old` 가 보이고 `security-agent-toolkit` 이 없으면 성공입니다. `mv` 가 막히면 「막히면」 페이지의 `mv` 줄을 봅니다.
 
 ---
 
@@ -148,6 +156,8 @@ source:
 
 4. **[VS Code]** **File › Open Folder** → `문서(Documents)` → **`security-agent-toolkit`**(뒤에 `_old` 가 **없는** 것)을 엽니다.
 
+> **확인** — `Cloning into 'security-agent-toolkit'...` 뒤에 `done.` 이 나오고 VS Code 에 `_old` 가 없는 폴더가 열리면 성공입니다. `already exists` 가 나오면 4장을 먼저 합니다.
+
 ---
 
 ## 6. 받은 폴더가 내 것인지 확인합니다
@@ -173,6 +183,8 @@ source:
    - Unit 1 마무리의 커밋 설명은 `Add access control unit 1 roles, checker, policy and report` 입니다. 그 뒤에 응용 파일을 더 올렸다면 그때 쓴 설명이 맨 위에 보입니다.
 3. **[브라우저]** 깃허브 내 저장소 화면의 폴더 리스트와 VS Code 왼쪽 목록이 같은지 봅니다.
 
+> **확인** — 표의 세 명령이 모두 「이렇게 나오면 됩니다」와 같으면 성공입니다. 주소가 내 아이디가 아니면 5장으로 돌아가 내 저장소 주소로 다시 받습니다.
+
 ---
 
 ## 7. 내 계정으로 올라가는지 확인합니다
@@ -195,6 +207,8 @@ source:
    - `git status` 의 빨간 목록에 `.env` 가 보이면 멈추고 `.gitignore` 에 `.env` 한 줄이 있는지 확인합니다.
    - `git push` 때 **로그인 창**이 뜨면 **Sign in with your browser** → 브라우저에서 **내 계정**으로 로그인 → **Authorize** 를 누릅니다.
 3. **[브라우저]** 내 저장소에서 `docs/2026-10-23_seat.md` 가 보이는지, 그 파일의 커밋 옆 이름이 **내 아이디**인지 확인합니다.
+
+> **확인** — 깃허브 내 저장소에 `docs/2026-10-23_seat.md` 가 보이고 커밋 옆 이름이 내 아이디이면 성공입니다. `Permission … denied` 가 나오면 3장 1번(자격 증명 제거) 뒤 다시 `git push` 합니다.
 
 ---
 
@@ -247,6 +261,8 @@ source:
 
 - 이미지(컨테이너를 만드는 원본. 예: 웹 서버 프로그램 nginx)는 지우지 않아도 됩니다. 컨테이너만 지우면 포트와 이름이 비워집니다.
 - 화면에 `error during connect` 나 `Cannot connect to the Docker daemon` 이 나오면 Docker Desktop 이 아직 안 켜진 것입니다. 1번처럼 켜고 초록색이 될 때까지 기다린 뒤 다시 칩니다.
+
+> **확인** — 마지막 `docker ps -a` 에 제목 줄 한 줄만 나오면 성공입니다(Docker Desktop 이 없으면 건너뜀). `Cannot connect to the Docker daemon` 이 나오면 Docker Desktop 이 초록색이 될 때까지 기다린 뒤 다시 칩니다.
 
 ---
 

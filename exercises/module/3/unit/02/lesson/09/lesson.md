@@ -27,32 +27,34 @@ python exercise2-1_run.py
 **채운 코드** (한 예)
 
 ```python
-    if user not in USERS:                                        # 사용자 파일에 없는 이름이면
-        return False, "등록되지 않은 사용자"                       # 접수하지 않고 이유를 알린다
-    if reason == "":                                             # 이유가 비어 있으면
-        return False, "이유가 없음"                                # 접수하지 않고 이유를 알린다
+    # ① until 이 received_at 과 같거나 앞서면   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     if until <= received_at:                                             # 희망 만료 시각이 접수 시각보다 늦지 않으면(같은 형식의 문자열은 앞에서부터 비교해도 시각 순서와 같다)
+    # ② "만료 시각이 이미 지났음" 을 이유로 접수하지 않는다   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
         return False, "만료 시각이 이미 지났음"                     # 접수하지 않고 이유를 알린다
-    request_id = len(REQUESTS) + 1                               # 다음 요청 번호(지금 개수 + 1)
-    permission = f"{resource}:{action}"                          # "자원:행위" 모양 권한 문자열
-    request = {                                                  # 요청서 한 장. 상태는 검토 중으로 시작한다
-        "id": request_id,                                        # 요청 번호
-        "user": user,                                            # 요청자
-        "resource": resource,                                    # 자원
-        "action": action,                                        # 행위
-        "permission": permission,                                # 권한
-        "until": until,                                          # 희망 만료 시각
-        "reason": reason,                                        # 요청 이유
-        "requested_at": received_at,                             # 접수 시각
-        "status": "reviewing",                                   # 상태: 검토 중
-    }
+```
+
+```python
+    # ③ REQUESTS 리스트 끝에 request 를 추가한다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     REQUESTS.append(request)                                     # 요청서 리스트 끝에 추가한다
-    return True, request                                         # 접수했다고 알리고 요청서를 리턴한다
 ```
 
 **결과**
 
-- (가) 출력은 다음과 같습니다. 접수되지 않은 세 건이 걸린 조건은 이렇습니다. 줄 수가 달라도 주석이 말한 일을 하면 코드는 맞습니다.
+- 채우기 전 출력은 다음과 같습니다(이미 지난 만료 시각의 `gaeun` 요청까지 접수되고, 번호가 모두 `1`, 단계 2가 비어 있음).
+
+```
+--- 단계 1: 접수 - 요청 일곱 건을 하나씩 넣는다
+seoyeon SETTLE QUERY -> 접수됨, 요청 번호 1
+gaeun SALES QUERY -> 접수됨, 요청 번호 1
+dami SALES QUERY -> 접수됨, 요청 번호 1
+junho SETTLE QUERY -> 접수됨, 요청 번호 1
+hana SALES QUERY -> 접수 안 됨: 등록되지 않은 사용자
+seoyeon ACCOUNT QUERY -> 접수 안 됨: 이유가 없음
+gaeun ACCOUNT QUERY -> 접수됨, 요청 번호 1
+--- 단계 2: 점검 - 요청서 리스트
+```
+
+- (가) 채운 뒤의 출력은 다음과 같습니다. 접수되지 않은 세 건이 걸린 조건은 이렇습니다.
 
 | 요청 | 걸린 조건 | 이유 |
 |---|---|---|
@@ -80,7 +82,16 @@ gaeun ACCOUNT QUERY -> 접수 안 됨: 만료 시각이 이미 지났음
 
 **왜** — 요청을 기록으로 받아야 「누가 언제 무엇을 왜 요청했나」를 나중에 증명할 수 있습니다. 필요한 정보가 빠진 요청은 접수 단계에서 걸러 내야 뒤의 승인 · 부여 단계가 단순해집니다. 상태를 `"reviewing"` 으로 시작해 두면 실습 2-2가 「검토 중인 것만 처리」라는 규칙을 쓸 수 있습니다.
 
-**자주 틀리는 곳** — `REQUESTS.append(request)` 를 빼먹는 경우가 가장 많습니다. 그러면 요청 번호가 모두 `1` 로 나오고 단계 2의 요청서 리스트가 비어 나옵니다. 실행하면 다음처럼 됩니다(번호가 `1` 만 나오는 것이 신호입니다).
+**자주 틀리는 곳**
+
+| 틀리는 곳 | 얼마나 | 결과 |
+|---|---|---|
+| ③ 을 빼먹음 · `return` 줄 아래에 씀 | 가장 많음 | 요청 번호가 모두 `1`, 단계 2가 비어 나옴 |
+| ② 에서 `return` 을 빼고 `False, "만료 시각이 이미 지났음"` 만 씀 | 많음 | 검사가 아무 일도 안 함. `gaeun ACCOUNT QUERY` 가 접수됨 |
+| ① 을 `if until > received_at:` 로 뒤집어 씀 | 있음 | 반대로 동작. 정상 네 건은 거절, 지난 `gaeun` 요청만 접수 |
+| ① 만 쓰고 ② 를 안 씀 · ② 를 4칸으로 씀 | 있음 | `IndentationError: expected an indented block after 'if' statement` |
+
+③ 을 빼먹고(① · ② 는 채움) 실행하면 다음처럼 됩니다(번호가 `1` 만 나오는 것이 신호입니다).
 
 ```
 --- 단계 1: 접수 - 요청 일곱 건을 하나씩 넣는다
@@ -93,13 +104,6 @@ seoyeon ACCOUNT QUERY -> 접수 안 됨: 이유가 없음
 gaeun ACCOUNT QUERY -> 접수 안 됨: 만료 시각이 이미 지났음
 --- 단계 2: 점검 - 요청서 리스트
 ```
-
-그 밖에 이렇게 틀리기도 합니다.
-
-| 이렇게 쓰면 | 결과 |
-|---|---|
-| `status` 철자를 `"reviewing"` 이 아니게 | 실습 2-2에서 모든 요청서가 「검토 중이 아님」으로 막힘 |
-| `if reason = ""` 처럼 `=` 한 개 | `SyntaxError` |
 
 **관제에서는** — 요청서 리스트는 권한 관리의 첫 기록입니다. 이유 없이 접수하려던 요청 · 사용자 파일에 없는 이름의 요청 · 이미 지난 만료 시각의 요청은 건수를 세어 두고, 같은 사람이 같은 권한을 반복해서 요청하면 역할 설계가 업무와 맞지 않는다는 신호로 봅니다.
 
@@ -116,26 +120,33 @@ python exercise2-2_run.py
 **채운 코드** (한 예)
 
 ```python
+    # ① request["status"] 가 "reviewing" 이 아니면   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     if request["status"] != "reviewing":                         # 검토 중이 아니면(이미 처리됐으면)
+    # ② "검토 중이 아님" 을 이유로 처리하지 않는다   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
         return False, "검토 중이 아님"                             # 바꾸지 않고 이유를 알린다
-    if request["user"] == approver:                              # 요청한 사람이 스스로 처리하려고 하면
-        return False, "본인 요청은 처리할 수 없음"                  # 바꾸지 않고 이유를 알린다
-    request["status"] = "approved"                               # 상태를 승인됨으로 바꾼다
-    request["approver"] = approver                               # 누가 승인했는지 적어 둔다
-    return True, "승인"                                          # 승인했다고 알린다
-```
-
-`reject_request` 는 미리 채워진 두 검사 아래 부분입니다.
-
-```python
-    request["status"] = "rejected"                               # 상태를 반려됨으로 바꾼다
-    request["approver"] = approver                               # 누가 반려했는지 적어 둔다
-    return True, "반려"                                          # 반려했다고 알린다
 ```
 
 **결과**
 
-- (가) 출력은 다음과 같고, 막힌 세 줄은 이렇습니다.
+- 채우기 전 출력은 다음과 같습니다(이미 승인한 1번과 이미 반려한 2번이 다시 `True 승인`, 2번이 `approved` 로 바뀜).
+
+```
+--- 단계 1: 처리 - 본인 요청 시험 한 건, 승인 · 반려 여섯 건을 처리한다
+1 본인 승인 -> False 본인 요청은 처리할 수 없음
+1 승인 -> True 승인
+2 반려 -> True 반려
+3 승인 -> True 승인
+4 승인 -> True 승인
+1 승인 -> True 승인
+2 승인 -> True 승인
+--- 단계 2: 점검 - 요청서 리스트
+1 seoyeon approved security_manager
+2 gaeun approved security_manager
+3 dami approved security_manager
+4 junho approved security_manager
+```
+
+- (가) 채운 뒤의 출력은 다음과 같고, 막힌 세 줄은 이렇습니다.
 
 | 막힌 줄 | 나온 이유 | 왜 |
 |---|---|---|
@@ -166,28 +177,28 @@ python exercise2-2_run.py
 
 **자주 틀리는 곳**
 
-| 틀린 곳 | 이렇게 쓰면 | 결과 |
+| 틀리는 곳 | 얼마나 | 결과 |
 |---|---|---|
-| 상태 확인 | `==` 로 씀: `if request["status"] == "reviewing":` | 거꾸로 동작. 모든 처리가 「검토 중이 아님」으로 막히거나 이미 처리한 것만 통과 |
-| 상태 바꾸기 | `request["status"] = "approved"` 줄을 빼먹음 | `True` 는 나오는데 상태가 그대로라 같은 요청서를 또 승인해도 통과 |
-| 본인 요청 검사 | `==` 대신 `!=` 로 거꾸로 씀 | security_manager 의 정상 처리가 모두 막힘 |
+| ② 에서 `return` 을 빼고 `False, "검토 중이 아님"` 만 씀 | 많음 | 검사가 아무 일도 안 함. 채우기 전과 같은 출력 |
+| ① 을 `if request["status"] == "reviewing":` 로 뒤집어 씀 | 있음 | 반대로 동작. 검토 중인 것은 막히고 반려된 2번만 승인됨 |
+| ① 만 쓰고 ② 를 안 씀 · ② 를 4칸으로 씀 | 있음 | `IndentationError: expected an indented block after 'if' statement` |
 
-상태 바꾸는 줄을 빼먹고 실행하면 다음처럼 됩니다(`1 승인 -> True 승인` 줄이 두 번 나오면 상태를 안 바꾼 것입니다).
+① 을 `==` 로 뒤집어 쓰고 실행하면 다음처럼 됩니다(맨 위 본인 승인 시험까지 「검토 중이 아님」으로 나오고, 반려한 2번이 `approved` 가 되는 것이 신호입니다).
 
 ```
 --- 단계 1: 처리 - 본인 요청 시험 한 건, 승인 · 반려 여섯 건을 처리한다
-1 본인 승인 -> False 본인 요청은 처리할 수 없음
-1 승인 -> True 승인
+1 본인 승인 -> False 검토 중이 아님
+1 승인 -> False 검토 중이 아님
 2 반려 -> True 반려
-3 승인 -> True 승인
-4 승인 -> True 승인
-1 승인 -> True 승인
-2 승인 -> False 검토 중이 아님
+3 승인 -> False 검토 중이 아님
+4 승인 -> False 검토 중이 아님
+1 승인 -> False 검토 중이 아님
+2 승인 -> True 승인
 --- 단계 2: 점검 - 요청서 리스트
-1 seoyeon reviewing security_manager
-2 gaeun rejected security_manager
-3 dami reviewing security_manager
-4 junho reviewing security_manager
+1 seoyeon reviewing None
+2 gaeun approved security_manager
+3 dami reviewing None
+4 junho reviewing None
 ```
 
 **관제에서는** — 승인 · 반려 이력에 요청서 번호 · 처리한 사람 · 처리 시각을 남기고, 같은 요청서에 두 번째 처리 시도가 있었다면 실수인지 조작인지 확인합니다. 승인자와 요청자가 같은 요청서가 있는지 정기적으로 대조합니다.
