@@ -25,6 +25,8 @@ render: markdown
 
 > 시간이 남아 응용 5-1을 하면, `log_summary.py` 를 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 그때는 다 채울 때까지 `weekly_run.py` 가 동작하지 않으니, 다 쓴 뒤 `weekly_run.py` 를 다시 실행해 보고서가 같은지 확인합니다.
 
+**확인** — `python exercise5-1_run.py` 의 단계 2가 `['dami']` · 통과 · `['junho']` 세 줄로 나오면 준비가 된 것입니다. 안 나오면 실습 5-1의 「직접 쓰는 곳」 확인을 다시 보거나, 정답 레슨 「실습 5-1 정답」의 ① ~ ③ 을 넣습니다.
+
 ## `log_summary.py` 만들기
 
 **`log_summary.py`** 를 만들고 아래 내용을 붙여 넣습니다. 서버 로그를 읽고 세는 함수 다섯 개가 들어 있습니다.
@@ -103,6 +105,8 @@ def find_heavy_users(denied_counts, limit):                      # 사용자별 
 - 파일 전체를 읽는 `json.load` 와 달리, `json.loads` 는 문자열 하나(여기서는 한 줄)를 받아 딕셔너리로 바꿉니다. 끝의 `s` 는 문자열(string)의 `s` 입니다.
 - `count_by` 의 세는 두 줄(`counts.get(value, 0)` 으로 지금까지 센 수를 꺼내고, 1 늘려 다시 넣기)은 Unit 1에서 읽은 모양과 같습니다.
 
+**확인** — VS Code 왼쪽 목록의 `access_control` 바로 아래에 `log_summary.py` 가 보이면 성공입니다. `config` 안에 만들어졌으면 `access_control` 로 끌어다 옮깁니다. 실행은 「주간 보고서 만들기」 페이지에서 한 번에 합니다.
+
 ## `weekly_report.py` 만들기
 
 **`weekly_report.py`** 를 만들고 아래 내용을 붙여 넣습니다. 점검 결과와 로그 집계를 합쳐 네 절(`## ` 로 시작하는 제목 하나와 그 아래 줄들)의 보고서 문자열을 만들고, 날짜가 들어간 `.md` 파일로 저장합니다.
@@ -174,6 +178,8 @@ def save_report(text, today):                                    # 보고서 문
 1. `if rate >= limit:` 는 거부율이 경고 기준 이상인지 보는 비교입니다. 거부율은 0 ~ 1 사이 소수이고, 경고 기준도 같은 소수입니다. 퍼센트(`round(rate * 100)`)는 보여 줄 때만 씁니다. `round(숫자)` 는 가장 가까운 정수로 반올림합니다(0.4 × 100 → 40).
 2. 보고서 줄은 `lines.append(…)` 로 하나씩 모으고, 마지막에 `"\n".join(lines)` 로 줄바꿈을 넣어 한 문자열로 만듭니다.
 3. `save_report` 는 파일을 `"w"`(새로 쓰기)로 엽니다. 로그처럼 계속 덧붙이는 파일은 `"a"` 로 열지만, 매주 새로 만드는 보고서는 `"w"` 입니다. 파일 이름에는 `f"…{today}.md"` 로 날짜를 넣습니다.
+
+**확인** — `access_control` 바로 아래에 `log_summary.py` 와 `weekly_report.py` 가 나란히 보이면 성공입니다. 이름이 한 글자라도 다르면 다음 페이지에서 `ModuleNotFoundError` 가 나니, 문서의 이름과 비교해 고칩니다.
 
 ## 주간 보고서 만들기
 
@@ -260,6 +266,9 @@ print(text)                                                      # 보고서 내
 | 오류 | 원인 |
 |---|---|
 | `ModuleNotFoundError: No module named 'checklist'` | `checklist.py` 가 같은 폴더에 없음 |
-| `IndentationError` | `checklist.py` 의 직접 쓰는 곳이 아직 비어 있음 |
+| `IndentationError` | `checklist.py` 의 빈칸 ① ~ ③ 중 비어 있는 곳이 있음 |
+| `NameError: name 'expected_dept' is not defined` | `checklist.py` 의 빈칸 ③ 이 비어 있음 |
 
 - 이 보고서는 실습 5-2의 상황 8에서 다시 읽습니다. 숫자가 어떻게 나왔는지 직접 세어 보고 싶으면 응용 5-1을 합니다.
+
+**확인** — 단계 3의 1절에 `전체 요청: 40건 (허용 24건 · 거부 16건)`, 4절에 `['dami', 'gaeun']` 이 나오고 `ls` 에 보고서 파일이 보이면 성공입니다. 3절이 다르면 `checklist.py` 를, 1 · 2절이 다르면 `week_log.jsonl` 의 줄 수(40줄)를 먼저 봅니다.

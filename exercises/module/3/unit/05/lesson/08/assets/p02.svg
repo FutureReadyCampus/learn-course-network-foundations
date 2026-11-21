@@ -6,8 +6,8 @@
 <text x="24" y="32" font-size="19" font-weight="700">GitHub 웹 화면에서 글 한 편 올리기</text>
 <rect x="24" y="56" width="180" height="128" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="114" y="84" font-size="16" text-anchor="middle" font-weight="700">글 틀 고르기</text>
-<text x="40" y="114" font-size="14">post-practice.md</text>
-<text x="40" y="138" font-size="14">post-short.md</text>
+<text x="40" y="114" font-size="14" font-weight="700">post-short.md · 기본</text>
+<text x="40" y="138" font-size="14">post-practice.md · 응용</text>
 <text x="40" y="162" font-size="14">post-stuck.md</text>
 <line x1="208" y1="120" x2="246" y2="120" stroke="#666660" stroke-width="1.8" marker-end="url(#a-u5w-p02)"/>
 <rect x="252" y="56" width="444" height="128" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
