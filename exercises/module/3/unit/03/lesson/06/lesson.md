@@ -69,16 +69,27 @@ source:
 
 **미리 채워 둔 함수와 리포트의 이름들**
 
-- `reason`(문자열 하나, 규칙 결과에 있는 이유)과 `reasons`(리스트, 이번 실습에서 후보에 적는 이유들)는 한 글자 차이입니다. 후보에는 `reasons` 를 씁니다.
-- `findings`(파인딩스)는 「찾아낸 것들」, 곧 후보 리스트입니다.
-- `entry_key` 는 식별 키를 만드는 함수입니다(1번: 받은 방식까지 이어 붙입니다).
-- `make_stale_reason`(메이크 스테일 리즌)은 규칙에 걸린 권한의 「식별 키 → 걸린 이유」 딕셔너리를 리턴합니다.
-  - 예: `{"dami:SALES:QUERY:역할 sales": "퇴사한 계정", "dami:SALES:CHANGE:역할 sales": "퇴사한 계정", …}`
-- `make_unused_keys`(메이크 언유즈드 키즈)는 90일 넘게 안 쓴 권한의 식별 키 리스트를 리턴합니다.
-  - 예: `["seoyeon:SALES:CHANGE:역할 sales", "junho:SALES:QUERY:역할 finance", …]`
-- 이 두 함수를 부르는 줄은 `generate_report` 의 처음 두 줄에 미리 채워 두었습니다. 두 함수의 본문은 각각 한 줄(2번 · 3번)만 직접 씁니다.
-- `collect_reasons` 는 권한 하나의 식별 키로 이유를 모아 리스트로 리턴합니다(4 ~ 7번).
-- `generate_report` 는 `collect_reasons` 가 모은 이유가 있는 권한만 후보로 만들어 모읍니다(8 ~ 11번). 리포트 딕셔너리 만들기와 `return` 은 미리 채웠습니다.
+`reason` 과 `reasons` 는 한 글자 차이입니다. 후보에는 `reasons` 를 씁니다.
+
+| 이름 | 무엇 |
+|---|---|
+| `reason` | 문자열 하나, 규칙 결과에 있는 이유 |
+| `reasons` | 리스트, 이번 실습에서 후보에 적는 이유들 |
+| `findings`(파인딩스) | 「찾아낸 것들」, 곧 후보 리스트 |
+
+함수 다섯 개는 아래와 같습니다. 번호는 골격에서 직접 쓰는 줄의 번호입니다.
+
+| 함수 | 하는 일 | 직접 쓰는 줄 |
+|---|---|---|
+| `entry_key` | 식별 키를 만듦 (받은 방식까지 이어 붙임) | 1번 |
+| `make_stale_reason` (메이크 스테일 리즌) | 규칙에 걸린 권한의 「식별 키 → 걸린 이유」 딕셔너리를 리턴 | 2번 한 줄 |
+| `make_unused_keys` (메이크 언유즈드 키즈) | 90일 넘게 안 쓴 권한의 식별 키 리스트를 리턴 | 3번 한 줄 |
+| `collect_reasons` | 권한 하나의 식별 키로 이유를 모아 리스트로 리턴 | 4 ~ 7번 |
+| `generate_report` | `collect_reasons` 가 모은 이유가 있는 권한만 후보로 만들어 모음 | 8 ~ 11번 |
+
+- `make_stale_reason` 이 리턴하는 딕셔너리의 예: `{"dami:SALES:QUERY:역할 sales": "퇴사한 계정", "dami:SALES:CHANGE:역할 sales": "퇴사한 계정", …}`
+- `make_unused_keys` 가 리턴하는 리스트의 예: `["seoyeon:SALES:CHANGE:역할 sales", "junho:SALES:QUERY:역할 finance", …]`
+- 이 두 함수를 부르는 줄은 `generate_report` 의 처음 두 줄에 미리 채워 두었습니다. `generate_report` 의 리포트 딕셔너리 만들기와 `return` 도 미리 채웠습니다.
 - 실행 파일은 이유 리스트를 한 줄로 출력할 때 `", ".join(리스트)` 을 씁니다. 리스트의 문자열들을 쉼표로 이어 붙여 하나의 문자열로 만드는 것입니다.
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="generate_report 는 권한마다 이유를 모아 이유가 있는 권한만 후보로 담아 리포트를 만든다"></figure>
@@ -182,9 +193,14 @@ def generate_report(access_list, stale, unused, days, generated_at):   # 현황 
   - `collect_reasons`(4 ~ 7번): 규칙에 걸린 이유와 안 쓴 이유를 모읍니다.
   - `generate_report`(8 ~ 11번): 이유가 있는 권한만 후보로 모읍니다.
 - 들여쓰기는 미리 채운 줄에 맞춥니다.
-  - `entry_key` · `collect_reasons` 안: 함수 안이라 앞에 공백 4개이고, 5 · 7번은 4개 더(8개)입니다.
-  - `make_stale_reason` · `make_unused_keys` 안: 미리 채운 `for` 안쪽이라 8개입니다.
-  - `generate_report` 안: 미리 채운 `for` 안쪽이라 8번 `if` 는 8개, 그 안쪽(9 ~ 11번)은 4개 더(12개)입니다.
+
+| 쓰는 곳 | 앞 공백 | 까닭 |
+|---|---|---|
+| `entry_key` · `collect_reasons` 안 | 4개 (5 · 7번은 8개) | 함수 안 (5 · 7번은 4개 더) |
+| `make_stale_reason` · `make_unused_keys` 안 | 8개 | 미리 채운 `for` 안쪽 |
+| `generate_report` 의 8번 `if` | 8개 | 미리 채운 `for` 안쪽 |
+| `generate_report` 의 9 ~ 11번 | 12개 | 8번 `if` 안쪽 (4개 더) |
+
 - 채우기 전에 실행해도 오류는 나지 않고 후보가 `0 건` 으로 나옵니다. 아직 이유를 모으지 않았기 때문입니다.
 
 **`challenge3-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 3-1 · 3-2 와 `review_rules.py` 의 함수로 현황과 규칙 결과, 안 쓴 결과를 만든 뒤 `generate_report` 로 리포트를 만들어 출력합니다. 실행 파일의 `NOW.strftime(TIME_FORMAT)` 은 `strptime` 과 반대로, 시각을 `"2026-10-29 14:00"` 같은 문자열로 바꿉니다.
@@ -241,14 +257,14 @@ print(names)                                                     # 후보가 아
 
 ## 도전 3-2 정리
 
-| 하려는 일 | 코드 · 말 |
-|---|---|
-| 권한의 식별 키 만들기 | `key = key + ":" + entry["source"]` (`entry_key` 안) |
-| 걸린 이유 딕셔너리에 담기 | `stale_reason[item_key] = item["reason"]` (`make_stale_reason` 안) |
-| 안 쓴 권한의 식별 키 리스트에 담기 | `unused_keys.append(item_key)` (`make_unused_keys` 안) |
-| 규칙에 걸렸는지 (딕셔너리의 키로 찾기) | `if key in stale_reason:` → `reasons.append(stale_reason[key])` (`collect_reasons` 안) |
-| 90일 넘게 안 썼는지 (리스트에서 찾기) | `if key in unused_keys:` → `reasons.append(…)` (`collect_reasons` 안) |
-| 이유가 하나라도 있는지 | `if len(reasons) > 0:` |
-| 후보 만들기 | `finding = entry.copy()` → `finding["reasons"] = reasons` |
+| 하려는 일 | 코드 · 말 | 쓰는 곳 |
+|---|---|---|
+| 권한의 식별 키 만들기 | `key = key + ":" + entry["source"]` | `entry_key` |
+| 걸린 이유 딕셔너리에 담기 | `stale_reason[item_key] = item["reason"]` | `make_stale_reason` |
+| 안 쓴 권한의 식별 키 리스트에 담기 | `unused_keys.append(item_key)` | `make_unused_keys` |
+| 규칙에 걸렸는지 (딕셔너리의 키로 찾기) | `if key in stale_reason:` → `reasons.append(stale_reason[key])` | `collect_reasons` |
+| 90일 넘게 안 썼는지 (리스트에서 찾기) | `if key in unused_keys:` → `reasons.append(…)` | `collect_reasons` |
+| 이유가 하나라도 있는지 | `if len(reasons) > 0:` | `generate_report` |
+| 후보 만들기 | `finding = entry.copy()` → `finding["reasons"] = reasons` | `generate_report` |
 
 ---

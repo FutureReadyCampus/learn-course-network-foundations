@@ -85,7 +85,16 @@ def find_stale(access_list, now):                                # 현황 리스
     # 14. stale 을 리턴한다
 ```
 
-- `find_stale` 의 본문은 함수 안이라 앞에 공백 4개를 넣고(Tab 키 한 번), `for` 안쪽은 공백 4개 더(8개), `if` · `elif` 안쪽은 또 4개 더(12개), `elif` 안의 `if` 안쪽은 또 4개 더(16개) 넣습니다. 마지막 `return` 은 `for` 밖이므로 공백 4개입니다.
+- `find_stale` 본문의 들여쓰기는 아래와 같습니다. 공백 4개는 Tab 키 한 번입니다.
+
+| 줄의 위치 | 앞 공백 |
+|---|---|
+| 본문 (함수 안) | 4개 |
+| `for` 안쪽 | 8개 (4개 더) |
+| `if` · `elif` 안쪽 | 12개 (또 4개 더) |
+| `elif` 안의 `if` 안쪽 | 16개 (또 4개 더) |
+| 마지막 `return` (`for` 밖) | 4개 |
+
 - `expires` 가 `None` 인지는 `== None` 이 아니라 `is None`(아니면 `is not None`)으로 묻습니다. `expires is not None` 은 「`expires` 가 `None` 이 아니다」, 곧 만료 시각이 적혀 있다(예외로 받은 권한)는 뜻입니다.
 - 순서는 「`expires` 가 `None` 이 아니다(6번) → 그러면 시각으로 바꾸고(7번) → 지금과 비교한다(8번)」입니다. `None` 일 때는 `strptime` 이 오류를 내므로, 6번 안쪽에서만 시각으로 바꿉니다.
 - 채우기 전에 실행하면 `TypeError: object of type 'NoneType' has no len()` 오류가 납니다. `find_stale` 이 아무것도 리턴하지 않기 때문입니다.
@@ -138,7 +147,9 @@ print(counts)                                                    # 이유별 건
 |---|---|
 | 없을 수도 있는 키 꺼내기 | `expires = entry.get("expires")` |
 | 퇴사 규칙 | `if not entry["employed"]: reason = "퇴사한 계정"` |
-| 예외 만료 규칙 | `elif expires is not None:` → `expires_at = datetime.strptime(expires, TIME_FORMAT)` → `if expires_at <= now:` |
+| 예외로 받은 권한인지 | `elif expires is not None:` |
+| 만료 시각을 시각으로 바꾸기 | `expires_at = datetime.strptime(expires, TIME_FORMAT)` |
+| 예외 만료 규칙 | `if expires_at <= now:` |
 | 걸린 권한에 이유 적기 | `stale_entry = entry.copy()` → `stale_entry["reason"] = reason` |
 
 ---

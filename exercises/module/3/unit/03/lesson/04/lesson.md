@@ -61,7 +61,12 @@ seoyeon:SALES:QUERY
 - 딕셔너리는 이 문자열 **전체**를 키 한 개로 봅니다. 그래서 `last_used_map.get("seoyeon:SALES:QUERY")` 처럼 통째로 찾고, `:` 로 쪼개서 쓰지 않습니다.
 - 이 실습에서 「사용자:권한」 이라고 쓴 것은 `:` 앞이 사용자, 뒤가 권한 이름 **전체**라는 뜻입니다. 뒤쪽 권한 이름 안의 `:` 는 이름의 일부일 뿐입니다.
 
-- 이름이 비슷한 두 가지를 구별합니다. `last_used_map` 은 사용 이력 딕셔너리(「사용자:권한」 문자열 → 마지막으로 쓴 시각 문자열)이고, `"last_used"` 는 후보에 추가하는 키(값은 마지막으로 쓴 시각 문자열, 이력이 없으면 `None`)입니다.
+- 이름이 비슷한 두 가지를 구별합니다.
+
+| 이름 | 무엇 | 담긴 것 |
+|---|---|---|
+| `last_used_map` | 사용 이력 딕셔너리 | 「사용자:권한」 문자열 → 마지막으로 쓴 시각 문자열 |
+| `"last_used"` | 후보에 추가하는 키 | 마지막으로 쓴 시각 문자열 (이력이 없으면 `None`) |
 
 - 실행 파일은 `find_unused` 를 부르기 전에, 「제공 파일」 `review_rules.py` 의 `find_stale` 로 규칙(퇴사 · 만료)에 이미 걸린 권한 일곱 건(퇴사한 dami 포함)을 현황에서 뺍니다. 이때 권한 한 건마다 `user:permission:source` 를 이어 붙인 문자열(**식별 키**)을 만들어 서로 비교합니다. 실행 파일에 이미 적혀 있으니 지금은 붙여 넣기만 합니다(식별 키는 도전 3-2 에서 직접 써 볼 수 있습니다).
 
@@ -206,7 +211,15 @@ def find_unused(access_list, last_used_map, now, limit_days):    # 현황 · 마
     # 12. unused 를 리턴한다
 ```
 
-- `find_unused` 의 본문은 함수 안이라 앞에 공백 4개를 넣고(Tab 키 한 번), `for` 안쪽은 공백 4개 더(8개), `if` · `elif` 안쪽은 또 4개 더(12개) 넣습니다. 마지막 `return` 은 `for` 밖이므로 공백 4개입니다. `load_last_used` · `make_unused` · `days_since` 는 미리 채워 두었으니 그대로 둡니다.
+- `find_unused` 본문의 들여쓰기는 아래와 같습니다. 공백 4개는 Tab 키 한 번입니다. `load_last_used` · `make_unused` · `days_since` 는 미리 채워 두었으니 그대로 둡니다.
+
+| 줄의 위치 | 앞 공백 |
+|---|---|
+| 본문 (함수 안) | 4개 |
+| `for` 안쪽 | 8개 (4개 더) |
+| `if` · `elif` 안쪽 | 12개 (또 4개 더) |
+| 마지막 `return` (`for` 밖) | 4개 |
+
 - 미리 채운 `make_unused` 의 `entry.copy()` 는 딕셔너리를 복사한 새 딕셔너리를 만듭니다. 복사본에만 `last_used` 키를 더하므로, 현황 리스트의 원래 권한은 그대로 남아 다른 점검에 다시 쓸 수 있습니다.
 - `used_text is None` 은 「값이 `None` 인가」를 묻는 것입니다. `.get(key)` 는 키가 없으면 `None` 을 주므로 `None` 이면 사용 이력이 없다는 뜻입니다. 그 경우에는 일 수를 계산할 수 없으니, `days_since` 는 사용 이력이 있을 때(`elif`)만 부릅니다. `elif` 는 「앞의 `if` 가 아니고, 이 조건이면」이라는 뜻입니다.
 - 채우기 전에 실행하면 `TypeError: object of type 'NoneType' has no len()` 오류가 납니다. `find_unused` 가 아무것도 리턴하지 않기 때문입니다.
@@ -282,7 +295,8 @@ for entry in unused:                                             # 후보를 한
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 마지막 사용 시각을 찾는 키 문자열 | `user = entry["user"]` · `permission = entry["permission"]` → `key = f"{user}:{permission}"` |
+| 사용자와 권한 꺼내기 | `user = entry["user"]` · `permission = entry["permission"]` |
+| 마지막 사용 시각을 찾는 키 문자열 | `key = f"{user}:{permission}"` |
 | 마지막 사용 시각 찾기 | `used_text = last_used_map.get(key)` (이력이 없으면 `None`) |
 | 사용 이력이 없는지 | `if used_text is None:` |
 | 사용 이력이 있고 기준을 넘었는지 | `elif days_since(used_text, now) > limit_days:` (`days_since` 는 미리 채움) |
@@ -344,8 +358,12 @@ ls config
 
 **4. 이어지는 곳**
 
-1. `review_list.py` · `review_rules.py` · `review_unused.py` 는 다음 Unit 4 가 회수할 후보를 다시 뽑을 때 그대로 불러 씁니다.
-2. `overprivilege.py` 의 리포트와 `report_exclude.py` · `config/exclude_list.json` 의 회수 제외는 Unit 4 가 회수 계획을 세울 때 씁니다. 어떻게 동작하는지 직접 만들어 보려면 도전 3-2 · 3-3 을 합니다.
+| Unit 4 에서 할 일 | 쓰는 파일 |
+|---|---|
+| 회수할 후보 다시 뽑기 | `review_list.py` · `review_rules.py` · `review_unused.py` (그대로 불러 씀) |
+| 회수 계획 세우기 | `overprivilege.py` 의 리포트 · `report_exclude.py` 와 `config/exclude_list.json` 의 회수 제외 |
+
+리포트와 회수 제외가 어떻게 동작하는지 직접 만들어 보려면 도전 3-2 · 3-3 을 합니다.
 
 ---
 
