@@ -34,7 +34,7 @@
 <text x="264" y="259" font-size="14" fill="#292929">실패 이벤트: 'result': '실패' 와 raw 의 401</text>
 <text x="264" y="281" font-size="14" fill="#292929">401 이 500 이어도 result 는 같았을 것</text>
 <rect x="30" y="304" width="660" height="40" rx="6" fill="#e6eefb" stroke="#2f6fd0"/>
-<text x="44" y="329" font-size="15" fill="#292929">막힌 이야기: post-stuck.md 「증상」에 오류를 그대로 (예: IndentationError)</text>
+<text x="44" y="329" font-size="15" fill="#292929">막힌 이야기: post-stuck.md 「증상」에 오류를 그대로 (예: NameError: name 'prefix' …)</text>
 <rect x="30" y="356" width="400" height="56" rx="6" fill="#ffffff" stroke="#dededb"/>
 <text x="44" y="380" font-size="14" fill="#292929">그래도 막히면 AI 도우미 프롬프트 세 가지</text>
 <text x="44" y="402" font-size="14" fill="#666660">Module 3 Unit 1 시작하기 「쓰기 질문과 AI 도우미」</text>

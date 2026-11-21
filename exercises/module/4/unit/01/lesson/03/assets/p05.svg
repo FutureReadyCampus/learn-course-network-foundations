@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
 <title>normalize_web 이 한 줄을 이벤트로 바꾸고 직접 쓰는 두 함수가 시각과 결과를 바꾼다</title>
-<desc>미리 채운 normalize_web 이 로그 한 줄을 조각으로 나눈 뒤, 직접 쓰는 convert_time(1~3번)과 convert_result(4~6번)를 불러 공통 이벤트를 만듭니다. exercise1-2_run.py 가 세 단계로 출력합니다.</desc>
+<desc>미리 채운 normalize_web 이 로그 한 줄을 조각으로 나눈 뒤, convert_time 과 convert_result 를 불러 공통 이벤트를 만듭니다. 직접 쓰는 곳은 convert_time 의 마지막 strftime 줄(①)과 convert_result 의 if 줄(②) 두 곳입니다. exercise1-2_run.py 가 세 단계로 출력합니다.</desc>
 <defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 1-2: normalize_web.py 안의 흐름</text>
@@ -14,12 +14,12 @@
 <line x1="310" y1="132" x2="200" y2="160" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
 <line x1="400" y1="132" x2="510" y2="160" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
 <rect x="24" y="164" width="330" height="96" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="189" y="196.0" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">convert_time (1 ~ 3번 직접)</text>
+<text x="189" y="196.0" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">convert_time (① 직접)</text>
 <text x="189" y="216.8" font-size="14" text-anchor="middle" fill="#292929">strptime → replace</text>
-<text x="189" y="237.1" font-size="14" text-anchor="middle" fill="#292929">→ strftime</text>
+<text x="189" y="237.1" font-size="14" text-anchor="middle" fill="#292929">→ ① strftime (직접)</text>
 <rect x="372" y="164" width="324" height="96" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="534" y="196.0" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">convert_result (4 ~ 6번 직접)</text>
-<text x="534" y="216.8" font-size="14" text-anchor="middle" fill="#292929">status &gt;= 400 → "실패"</text>
+<text x="534" y="196.0" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">convert_result (② 직접)</text>
+<text x="534" y="216.8" font-size="14" text-anchor="middle" fill="#292929">② if status &gt;= 400 → "실패"</text>
 <text x="534" y="237.1" font-size="14" text-anchor="middle" fill="#292929">그 밖에는 → "성공"</text>
 <line x1="190" y1="262" x2="300" y2="290" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
 <line x1="534" y1="262" x2="420" y2="290" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
