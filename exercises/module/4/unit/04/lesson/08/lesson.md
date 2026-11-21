@@ -412,8 +412,15 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 ```
 
   - 줄 번호는 사람마다 다릅니다.
-- `is_real.sum()` 에서 괄호를 빼고 `is_real.sum` 으로 쓰면 오류는 나지 않지만 <mark>**숫자가 아니라 `<bound method Series.sum of …>` 라는 긴 글자가 나옵니다.**</mark> 단계 2의 `진짜 문제였던 알림 수:` 줄에 숫자 대신 `<bound method Series.sum of …>` 가 나오면 이 실수입니다. `.sum()` 은 괄호까지 써야 합니다.
-- `is_missed = ~is_caught` 에서 `~` 를 빼고 `is_missed = is_caught` 로 쓰면 오류는 나지 않지만 <mark>**단계 4의 `미탐 수:` 가 2가 아니라 3으로 나옵니다.**</mark> 알림이 난 P1 · P2 · P3 이 놓친 문제로 나오는 것이 이 실수의 모습입니다.
+
+아래 두 실수는 오류는 나지 않지만 출력이 달라집니다.
+
+| 잘못 쓴 코드 | 빠진 것 | 출력이 이렇게 나오면 이 실수입니다 |
+|---|---|---|
+| `is_real.sum` | 괄호 `()` | <mark>**단계 2의 `진짜 문제였던 알림 수:` 줄에 숫자 대신 `<bound method Series.sum of …>`**</mark> |
+| `is_missed = is_caught` | `~` | <mark>**단계 4의 `미탐 수:` 가 2가 아니라 3**</mark>, 알림이 난 P1 · P2 · P3 이 놓친 문제로 나옴 |
+
+- `.sum()` 은 괄호까지 써야 숫자가 나옵니다. 괄호를 빼면 숫자가 아니라 `<bound method Series.sum of …>` 라는 긴 글자가 나옵니다.
 
 **관제에서는**
 

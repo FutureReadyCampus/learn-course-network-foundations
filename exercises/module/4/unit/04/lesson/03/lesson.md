@@ -90,7 +90,8 @@ Name: points, dtype: int64
 ```
 
 - 읽는 법: 첫 출력에서 <mark style="background:#bde3ff">규칙 이름마다 점수(20 · 25 · 60)가 붙었고</mark>, 두 번째 출력에서 <mark style="background:#bde3ff">`seoyeon` 은 20 과 25 를 더한 45, `dami` 는 60</mark> 입니다.
-- 문제에서는 딕셔너리 리스트로 표를 만드는 `pd.DataFrame(리스트)` 줄과 points 열을 붙이는 줄이 미리 채워져 있습니다. 리스트 안의 딕셔너리 하나가 표의 한 행이 되고, 딕셔너리의 키(`entity` · `rule`)가 열 이름이 됩니다. 직접 쓰는 것은 `map` 한 줄과 `sum` 한 줄입니다.- <mark>`groupby` 결과는 이름순(dami → seoyeon)으로 나옵니다.</mark> 문제에서는 미리 채운 줄이 점수가 높은 순으로 다시 정렬합니다.
+- 문제에서는 딕셔너리 리스트로 표를 만드는 `pd.DataFrame(리스트)` 줄과 points 열을 붙이는 줄이 미리 채워져 있습니다. 리스트 안의 딕셔너리 하나가 표의 한 행이 되고, 딕셔너리의 키(`entity` · `rule`)가 열 이름이 됩니다. 직접 쓰는 것은 `map` 한 줄과 `sum` 한 줄입니다.
+- <mark>`groupby` 결과는 이름순(dami → seoyeon)으로 나옵니다.</mark> 문제에서는 미리 채운 줄이 점수가 높은 순으로 다시 정렬합니다.
 
 **한 장 정리**
 
@@ -104,9 +105,14 @@ Name: points, dtype: int64
 
 - `make_records` 의 `totals.items()` 는 점수 집계 결과(시리즈)에서 「대상, 점수」를 한 쌍씩 꺼냅니다. 딕셔너리의 `.items()` 와 같은 모양입니다.
 - **직접 쓰는 곳은 다섯 군데**(번호 1 ~ 5)이고, 함수 세 개 안에 나뉘어 있습니다.
-  - `score_findings`(1 · 2번): 규칙마다 점수를 `map` 으로 채우고 대상마다 `sum` 으로 더합니다.
-  - `make_grade`(3 · 4번): 점수가 high 기준 이상이면 `"high"` 를 리턴합니다. mid 와 low 는 같은 모양이라 미리 채웠습니다.
-  - `make_records`(5번): 대상 · 점수 · 등급 · 이유를 딕셔너리로 만듭니다.
+
+| 함수 | 번호 | 직접 쓰는 일 |
+|---|---|---|
+| `score_findings` | 1 · 2번 | 규칙마다 점수를 `map` 으로 채우고 대상마다 `sum` 으로 더합니다 |
+| `make_grade` | 3 · 4번 | 점수가 high 기준 이상이면 `"high"` 를 리턴합니다 |
+| `make_records` | 5번 | 대상 · 점수 · 등급 · 이유를 딕셔너리로 만듭니다 |
+
+- `make_grade` 의 mid 와 low 는 high 와 같은 모양이라 미리 채웠습니다.
 
 ## 실습 4-1 · 위험 점수와 등급·이유 저장하기
 
