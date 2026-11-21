@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <title>실습 2-2를 실행하면 본인 승인 한 줄과 처리 여섯 줄, 요청서 리스트 네 줄이 나온다</title>
-<desc>req_review.py 와 exercise2-2_run.py 를 만들어 실행합니다. 단계 1은 본인 승인 시험이 False, 처리 여섯 건은 앞 네 건이 True, 뒤 두 건이 False 이고, 단계 2는 요청서 네 줄입니다.</desc>
+<desc>req_review.py 와 exercise2-2_run.py 를 만들고, approve_request 의 빈칸 두 곳을 채워 실행합니다. 단계 1은 본인 승인 시험이 False, 처리 여섯 건은 앞 네 건이 True, 뒤 두 건이 False 이고, 단계 2는 요청서 네 줄입니다.</desc>
 <defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">실습 2-2 · 파일 두 개와 실행 결과</text>
 <rect x="24" y="56" width="270" height="290" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="40" y="82" font-size="16" fill="#292929" text-anchor="start" font-weight="700">access_control 폴더</text>
 <rect x="40" y="96" width="238" height="92" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="159" y="116.4" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">req_review.py</text>
-<text x="159" y="136.4" font-size="15" fill="#292929" text-anchor="middle">approve_request 직접 쓰기</text>
+<text x="159" y="136.4" font-size="15" fill="#292929" text-anchor="middle">approve_request 빈칸 두 곳</text>
 <text x="159" y="156.4" font-size="15" fill="#292929" text-anchor="middle">reject_request</text>
-<text x="159" y="176.4" font-size="15" fill="#292929" text-anchor="middle">남은 부분 채우기</text>
+<text x="159" y="176.4" font-size="15" fill="#292929" text-anchor="middle">미리 다 써 둠</text>
 <rect x="40" y="200" width="238" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="159" y="226.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">exercise2-2_run.py</text>
 <text x="159" y="247.1" font-size="15" fill="#292929" text-anchor="middle">그대로 붙여 넣기</text>

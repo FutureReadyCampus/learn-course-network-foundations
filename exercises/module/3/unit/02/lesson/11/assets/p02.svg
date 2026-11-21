@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
 <title>글 틀을 _posts/ 에 붙여 넣고 unit: 2 로 올리면 첫 화면 Module 3의 2번 칸이 채워진다</title>
-<desc>왼쪽에서 오늘에 맞는 글 틀 하나를 고릅니다. 가운데처럼 GitHub 웹 화면에서 _posts/ 에 새 글을, code/ 에 코드 파일을 만듭니다. 1~2분 뒤 첫 화면의 나의 진행에서 Module 3의 2번 칸이 채워집니다.</desc>
+<desc>왼쪽에서 글 틀을 고릅니다. 기본은 세 문장 글 post-short 이고, 긴 글 post-practice 는 응용입니다. 가운데처럼 GitHub 웹 화면에서 _posts/ 에 새 글을, code/ 에 코드 파일을 만듭니다. 1~2분 뒤 첫 화면의 나의 진행에서 Module 3의 2번 칸이 채워집니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="30" font-size="19" fill="#292929" font-weight="700">글 틀 고르기 → GitHub 웹 화면에 올리기 → 칸 확인</text>
 <text x="20" y="64" font-size="15" fill="#666660" font-weight="700">1. 글 틀 고르기</text>
 <rect x="20" y="76" width="200" height="56" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="32" y="99" font-size="14" fill="#292929" font-weight="700">post-practice.md</text>
-<text x="32" y="120" font-size="14" fill="#292929">실습 2-2 한 편</text>
+<text x="32" y="99" font-size="14" fill="#292929" font-weight="700">post-short.md</text>
+<text x="32" y="120" font-size="14" fill="#292929">기본 · 세 문장</text>
 <rect x="20" y="142" width="200" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="32" y="165" font-size="14" fill="#292929" font-weight="700">post-short.md</text>
-<text x="32" y="186" font-size="14" fill="#292929">5분, 세 문장</text>
+<text x="32" y="165" font-size="14" fill="#292929" font-weight="700">post-stuck.md</text>
+<text x="32" y="186" font-size="14" fill="#292929">막혔던 일</text>
 <rect x="20" y="208" width="200" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="32" y="231" font-size="14" fill="#292929" font-weight="700">post-stuck.md</text>
-<text x="32" y="252" font-size="14" fill="#292929">막혔던 일</text>
+<text x="32" y="231" font-size="14" fill="#292929" font-weight="700">post-practice.md</text>
+<text x="32" y="252" font-size="14" fill="#292929">응용 · 긴 글</text>
 <path d="M224 170 L254 170" stroke="#666660" stroke-width="1.5" fill="none" marker-end="url(#a-p02)"/>
 <text x="260" y="64" font-size="15" fill="#666660" font-weight="700">2. Add file → Create new file</text>
 <rect x="260" y="76" width="440" height="128" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
