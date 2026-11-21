@@ -64,9 +64,13 @@ for student in students:                                                        
 
 | 코드 | 뜻 |
 |---|---|
-| `except Exception as error:` | <mark style="background:#e0d4ff">`except ConnectionError as error` 처럼 오류 이름을 적으면 그 한 종류만 받습니다.</mark> `Exception` 은 `KeyError` 같은 거의 모든 오류를 한데 묶어 부르는 이름이라 어떤 종류든 받습니다 |
-| `type(error).__name__` | 오류의 종류 이름(`KeyError`)입니다. 오류를 받은 뒤에는 이 이름과 내용을 반드시 기록해서 사람이 볼 수 있게 합니다 |
-| 위 코드의 출력 | <mark style="background:#bde3ff">`서준` 줄에서 오류가 나도 `하은` 줄까지 출력됩니다</mark>. `try` 없이 쓰면 `서준` 에서 멈추고 `하은` 은 출력되지 않습니다 |
+| `except ConnectionError as error:` | <mark style="background:#e0d4ff">오류 이름을 적으면 그 한 종류만 받습니다</mark> |
+| `except Exception as error:` | `Exception` 은 `KeyError` 같은 거의 모든 오류를 한데 묶어 부르는 이름이라 어떤 종류든 받습니다 |
+| `type(error).__name__` | 오류의 종류 이름(`KeyError`)입니다 |
+| 위 코드의 출력 | <mark style="background:#bde3ff">`서준` 줄에서 오류가 나도 `하은` 줄까지 출력됩니다</mark> |
+| `try` 없이 쓰면 | `서준` 에서 멈추고 `하은` 은 출력되지 않습니다 |
+
+오류를 받은 뒤에는 오류의 종류 이름과 내용을 반드시 기록해서 사람이 볼 수 있게 합니다.
 
 함수 아홉 개와 실행 파일 가운데 직접 쓰는 곳은 **아홉 군데**입니다.
 
@@ -95,9 +99,13 @@ soar_engine.py  load_context          : 설정 파일을 읽어 엔진 재료를
 
 **`soar_engine.py`** — 엔진 함수 모음입니다. 도전 5-1에서 가져와 사용(import)합니다. 실습 5-2에서는 이 파일을 가져오지 않고 엔진이 남긴 로그 파일을 읽습니다. 직접 쓰는 곳은 1 ~ 8번입니다.
 
-- 1번 · 2번 · 3번은 `if` · `else` 줄이 미리 채워져 있어서 그 아래에 들여쓴 한 줄만 씁니다.
-- 5번과 6번은 `if` 한 줄만 씁니다. 그 아래 미리 채운 줄이 `if` 안쪽입니다.
-- 7번은 `try:` 아래에 한 줄, 8번은 `except` 줄 한 줄을 씁니다. 8번 아래 미리 채운 줄이 `except` 안쪽입니다.
+| 번호 | 쓰는 것 |
+|---|---|
+| 1번 · 2번 · 3번 | 미리 채운 `if` · `else` 줄 아래에 들여쓴 한 줄 |
+| 5번 · 6번 | `if` 한 줄(그 아래 미리 채운 줄이 `if` 안쪽) |
+| 7번 | `try:` 아래에 한 줄 |
+| 8번 | `except` 줄 한 줄(그 아래 미리 채운 줄이 `except` 안쪽) |
+
 - 코드가 길지만 처음부터 전부 이해하지 않아도 됩니다. 붙여 넣은 뒤 번호 주석이 있는 함수 다섯 개(`make_request` · `execute_action` · `run_step` · `run_soar_pipeline` · `run_all`)를 위에서부터 채웁니다. 미리 채운 함수(`load_context` · `decide_outcome` · `open_ticket` · `make_failure_result`)는 실행한 뒤 출력과 맞춰 읽으면 됩니다.
 
 ```python
