@@ -12,11 +12,11 @@
 <text x="360" y="104.7" font-size="14" fill="#292929" text-anchor="middle">단계 1: 9개</text>
 <rect x="490" y="55" width="200" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="590" y="85.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">pick_suspicious</text>
-<text x="590" y="104.7" font-size="14" fill="#292929" text-anchor="middle">단계 2: 7개 (1 ~ 3번)</text>
+<text x="590" y="104.7" font-size="14" fill="#292929" text-anchor="middle">단계 2: 7개 (① · ②)</text>
 <line x1="230" y1="90" x2="258" y2="90" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
 <line x1="460" y1="90" x2="488" y2="90" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
 <rect x="150" y="165" width="540" height="90" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="420" y="195.3" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">judge_failure(user, action)  · 4 ~ 6번</text>
+<text x="420" y="195.3" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">judge_failure(user, action)  · ③</text>
 <text x="420" y="214.9" font-size="14" fill="#292929" text-anchor="middle">"SALES:QUERY" → SALES, QUERY → check_permission</text>
 <text x="420" y="234.5" font-size="14" fill="#292929" text-anchor="middle">→ reason → PRIORITY.get(reason, 4)</text>
 <line x1="590" y1="125" x2="590" y2="163" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>

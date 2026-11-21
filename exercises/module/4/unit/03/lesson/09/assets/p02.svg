@@ -5,11 +5,11 @@
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="30" y="32" font-size="16" font-weight="700" fill="#292929">1. 글 틀 고르기</text>
 <rect x="30" y="46" width="190" height="56" rx="6" fill="#f8e8e3" stroke="#e0442e"/>
-<text x="44" y="70" font-size="14" font-weight="700" fill="#292929">post-practice</text>
-<text x="44" y="91" font-size="14" fill="#292929">실습 하나를 한 편으로</text>
+<text x="44" y="70" font-size="14" font-weight="700" fill="#292929">post-short</text>
+<text x="44" y="91" font-size="14" fill="#292929">기본 · 세 문장 글</text>
 <rect x="30" y="112" width="190" height="56" rx="6" fill="#ffffff" stroke="#dededb"/>
-<text x="44" y="136" font-size="14" font-weight="700" fill="#292929">post-short</text>
-<text x="44" y="157" font-size="14" fill="#292929">5분 · 세 문장</text>
+<text x="44" y="136" font-size="14" font-weight="700" fill="#292929">post-practice</text>
+<text x="44" y="157" font-size="14" fill="#292929">응용 · 여유가 되면 긴 글</text>
 <rect x="30" y="178" width="190" height="56" rx="6" fill="#ffffff" stroke="#dededb"/>
 <text x="44" y="202" font-size="14" font-weight="700" fill="#292929">post-stuck</text>
 <text x="44" y="223" font-size="14" fill="#292929">막혔던 일 남기기</text>
