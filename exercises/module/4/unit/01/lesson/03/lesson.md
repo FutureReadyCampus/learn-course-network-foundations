@@ -40,9 +40,13 @@ source:
 
 세 로그는 모두 **언제 · 누가 · 어디서 · 무엇을 · 성공했나**를 적고 있지만, <mark>적는 방식이 다릅니다.</mark>
 
-- **웹 서버 로그**(`access_sample.log`): 웹 서비스를 돌리는 웹 서버(nginx)가 페이지를 열거나 로그인할 때마다 남깁니다.
-- **판정 서버 로그**(`server_log.jsonl`): Module 3 도전 4-3의 권한 판정 서버 같은 서버가 「이 권한을 써도 되나?」라는 물음을 받을 때마다 남깁니다.
-- **SaaS 로그**(`saas_events.csv`): 회사가 빌려 쓰는 SaaS(인터넷으로 쓰는 소프트웨어, 예: 파일 보관 서비스)에서 로그인하거나 파일을 올리고 내려받을 때마다 남깁니다.
+| 로그 | 파일 | 누가 남기나 | 언제 남기나 |
+|---|---|---|---|
+| **웹 서버 로그** | `access_sample.log` | 웹 서비스를 돌리는 웹 서버(nginx) | 페이지를 열거나 로그인할 때마다 |
+| **판정 서버 로그** | `server_log.jsonl` | Module 3 도전 4-3의 권한 판정 서버 같은 서버 | 「이 권한을 써도 되나?」라는 물음을 받을 때마다 |
+| **SaaS 로그** | `saas_events.csv` | 회사가 빌려 쓰는 SaaS(예: 파일 보관 서비스) | 로그인하거나 파일을 올리고 내려받을 때마다 |
+
+SaaS 는 인터넷으로 쓰는 소프트웨어입니다.
 
 **① 실제 한 줄** — 세 줄이 얼마나 다르게 생겼는지만 봅니다.
 
@@ -263,7 +267,13 @@ def normalize_web(line):                                                     # �
 ```
 
 - 미리 채운 `read_time_text` 를 읽어 봅니다. 앞 조각을 공백으로 나누면 `['203.0.113.50', '-', '-', '[02/Nov/2026:09:12:03', '+0900]']` 다섯 조각이 됩니다. 번호는 0부터 세므로 시각은 `parts[3]` 과 `parts[4]` 이고, 이 둘을 공백 하나로 다시 이어 붙입니다.
-  - `strip("[]")` 는 문자열 양쪽 끝에 붙은 `[` 와 `]` 를 지웁니다. 괄호를 비운 `line.strip()` 은 양쪽 끝의 공백과 줄바꿈을 지웁니다. 파일에서 읽은 줄은 끝에 줄바꿈이 붙어 있기 때문입니다.
+
+  | 코드 | 문자열 양쪽 끝에서 지우는 것 |
+  |---|---|
+  | `strip("[]")` | `[` 와 `]` |
+  | `line.strip()`(괄호를 비움) | 공백과 줄바꿈 |
+
+  - 파일에서 읽은 줄은 끝에 줄바꿈이 붙어 있어서 `line.strip()` 으로 지웁니다.
 - 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 6번은 함수 안이라 앞에 공백 4개이고, 그중 5번의 `return` 만 `if` 안쪽이라 공백 8개입니다.
 - 번호 주석이 연달아 붙어 있어도(예: 1 · 2 · 3번), <mark>주석 사이마다 줄을 끼워 넣어 각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark>
 - **채우기 전에 실행하면 `NameError: name 'time_out' is not defined` 오류가 납니다.** 1 ~ 3번을 아직 안 썼기 때문입니다.
@@ -351,7 +361,15 @@ ls
 ```
 
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
-- `access_sample.log` · `log_parse.py` · `exercise1-1_run.py` · `normalize_web.py` · `exercise1-2_run.py` · `report_u1.md` 가 보여야 합니다.
+- 아래 파일이 보여야 합니다.
+
+| 파일 | 만든 곳 |
+|---|---|
+| `access_sample.log` | 시작하기 |
+| `log_parse.py` · `exercise1-1_run.py` | 실습 1-1 |
+| `normalize_web.py` · `exercise1-2_run.py` | 실습 1-2 |
+| `report_u1.md` | 「보고서 쓰기」 레슨 |
+
 - 도전을 했다면 그 도전의 파일(`log_classify.py` · `server_log.jsonl` · `saas_events.csv` · `normalize_json_csv.py` · `normalize.py` · `challenge1-1_run.py` ~ `challenge1-3_run.py` · `normalized_events.json` 중 만든 것)도 보입니다.
 
 **3. 깃허브에 올리기**
@@ -368,9 +386,15 @@ ls
    git status
    ```
    - 명령 풀이: `git status` 올릴 파일의 상태를 봄
-   - `anomaly_detection/` 가 새 폴더로 보입니다. Module 3 마지막 Unit의 파일을 아직 올리지 않았다면 `access_control/` 안의 파일도 함께 보입니다. 둘 다 올리면 됩니다.
-   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 도 같은 방법으로 합니다.
-   - `anomaly_detection/__pycache__/` 는 파이썬이 실행하면서 자동으로 만든 임시 폴더입니다. 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장합니다.
+
+   | 보이는 것 | 뜻 | 할 일 |
+   |---|---|---|
+   | `anomaly_detection/` | 오늘 만든 새 폴더 | 올리면 됨 |
+   | `access_control/` 안의 파일 | Module 3 마지막 Unit의 파일을 아직 올리지 않음 | 함께 올리면 됨 |
+   | `.env` · `.venv` | 올리면 안 되는 파일 | `.gitignore` 맨 아래에 그 이름 한 줄을 적고 저장한 뒤 `git status` 를 다시 침 |
+   | `anomaly_detection/__pycache__/` | 파이썬이 실행하면서 자동으로 만든 임시 폴더 | `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장 |
+
+   - `.gitignore` 는 VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래에 있습니다.
 3. **[보고서]** `report_u1.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
    ```bash

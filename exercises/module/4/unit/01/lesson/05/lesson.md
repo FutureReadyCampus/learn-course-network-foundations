@@ -83,8 +83,11 @@ time,account,event,ip_address,outcome
 
 1. 실습 1-2에서는 웹 서버 로그 한 종류를 바꿨습니다. 같은 방법을 나머지 두 종류에 적용합니다.
 2. <mark>로그마다 어려운 곳이 다릅니다.</mark>
-   - 판정 서버 로그: 시각이 `2026-11-02T09:40` 처럼 `T` 로 나뉘어 있고 초가 없습니다. 접속 주소가 없습니다.
-   - SaaS 로그: 시각은 이미 공통 모양입니다. 사용자가 메일 주소입니다.
+
+   | 로그 | 시각 | 그 밖에 어려운 곳 |
+   |---|---|---|
+   | 판정 서버 로그 | `2026-11-02T09:40` 처럼 `T` 로 나뉘어 있고 초가 없음 | 접속 주소가 없음 |
+   | SaaS 로그 | 이미 공통 모양 | 사용자가 메일 주소 |
 
 ## CSV 읽기와 딕셔너리로 값 바꾸기
 
@@ -149,23 +152,27 @@ print(allowed_result)                                # 바꾼 값을 출력한�
 성공
 ```
 
-- `RESULT_MAP = {"success": "성공", "failure": "실패"}` 처럼 왼쪽(키)과 오른쪽(바꾼 값)을 짝지어 둡니다. <mark>`RESULT_MAP["failure"]` 는 `"실패"` 입니다.</mark>
-- 판정 서버의 `allowed` 는 `true` / `false` 이고 파이썬에서는 `True` / `False` 입니다. `ALLOWED_MAP = {True: "성공", False: "실패"}` 로 만들면 <mark>`ALLOWED_MAP[True]` 가 `"성공"` 입니다.</mark>
+- 딕셔너리에는 왼쪽(키)과 오른쪽(바꾼 값)을 짝지어 둡니다.
+
+| 딕셔너리 | 짝지은 값 | 바꾸는 값 | 꺼낸 예 |
+|---|---|---|---|
+| `RESULT_MAP` | `{"success": "성공", "failure": "실패"}` | SaaS 의 `outcome` | <mark>`RESULT_MAP["failure"]` 는 `"실패"`</mark> |
+| `ALLOWED_MAP` | `{True: "성공", False: "실패"}` | 판정 서버의 `allowed` | <mark>`ALLOWED_MAP[True]` 는 `"성공"`</mark> |
+
+- 판정 서버의 `allowed` 는 `true` / `false` 이고 파이썬에서는 `True` / `False` 입니다.
 - **딕셔너리에 없는 키로 꺼내면 `KeyError` 오류가 납니다.** 예상 못 한 값(`pending` 등)이 들어오면 멈추기 때문에 오류가 나는 것이 오히려 단서가 됩니다.
 
 **한 장 정리**
 
-| 함수 | 받는 것 | 리턴하는 것 |
-|---|---|---|
-| `convert_server_time` | 판정 서버 시각 문자열 | 공통 모양 시각 문자열 |
-| `normalize_server` | 판정 서버 로그 한 줄(JSON 문자열) | 공통 이벤트(`ip` 는 `None`) |
-| `normalize_saas` | CSV 한 행(딕셔너리) | 공통 이벤트(`user` 는 메일에서 꺼낸 이름) |
-| `load_server` · `load_saas` | 파일 경로 | 공통 이벤트 리스트(미리 채움) |
+| 함수 | 받는 것 | 리턴하는 것 | 직접 쓰는 곳 |
+|---|---|---|---|
+| `convert_server_time` | 판정 서버 시각 문자열 | 공통 모양 시각 문자열 | 1 · 2번: 시각 모양 바꾸기 |
+| `normalize_server` | 판정 서버 로그 한 줄(JSON 문자열) | 공통 이벤트(`ip` 는 `None`) | 3번: 딕셔너리로 `allowed` 를 `"성공"` / `"실패"` 로 |
+| `normalize_saas` | CSV 한 행(딕셔너리) | 공통 이벤트(`user` 는 메일에서 꺼낸 이름) | 4 ~ 6번: 메일 주소에서 이름 꺼내기, 딕셔너리로 `outcome` 바꾸기 |
+| `load_server` · `load_saas` | 파일 경로 | 공통 이벤트 리스트 | 미리 채움 |
 
 - **직접 쓰는 곳은 세 함수**(번호 1 ~ 6)입니다.
-  - `convert_server_time`(1 · 2번): 실습 1-2와 같은 방식으로 시각 모양을 바꿉니다(시간대가 없어서 `replace` 는 필요 없습니다).
-  - `normalize_server`(3번): 딕셔너리에서 `allowed` 를 `"성공"` / `"실패"` 로 바꿉니다.
-  - `normalize_saas`(4 ~ 6번): 메일 주소에서 이름을 꺼내고, 딕셔너리에서 `outcome` 을 바꿉니다.
+  - `convert_server_time` 은 실습 1-2와 같은 방식으로 바꿉니다(시간대가 없어서 `replace` 는 필요 없습니다).
 - **미리 채운 것**: 파일을 읽어 이벤트 리스트로 만드는 `load_server` · `load_saas` 와 이벤트를 묶는 줄입니다.
 
 ## 도전 1-2 · JSON·CSV 로그를 이벤트로

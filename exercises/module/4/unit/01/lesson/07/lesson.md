@@ -97,8 +97,13 @@ python exercise1-1_run.py
 
 **자주 틀리는 곳**
 
-- `split_request` 에서 <mark>나눌 횟수 `2` 를 빼고 `line.split('"')` 로 쓰면</mark>, 큰따옴표 여섯 개로 일곱 조각이 되어 세 이름에 담을 수 없습니다.
-  - 실행하면 다음 오류가 납니다(<mark>`too many values to unpack`</mark> 이면 이 실수입니다).
+| 실수 | 나타나는 것 | 이유 |
+|---|---|---|
+| `split_request` 에서 <mark>나눌 횟수 `2` 를 빼고 `line.split('"')` 로 씀</mark> | <mark>`too many values to unpack`</mark> 오류 | 큰따옴표 여섯 개로 일곱 조각이 되어 세 이름에 담을 수 없음 |
+| `read_status` 에서 `int(…)` 를 빼먹음 | 실습 1-1 출력은 `'status': '401'` 처럼 <mark>따옴표가 붙은 문자열로 나오고 오류는 나지 않음</mark> | 실습 1-2 `convert_result` · 도전 1-1 `is_error` 에서 `400` 과 비교할 때 비로소 `TypeError` 가 남 |
+
+- `int(…)` 를 빼먹었을 때 나는 오류는 `TypeError: '>=' not supported between instances of 'str' and 'int'` 입니다.
+- 나눌 횟수 `2` 를 빼고 실행하면 다음 오류가 납니다(<mark>`too many values to unpack`</mark> 이면 이 실수입니다).
 
 ```
 Traceback (most recent call last):
@@ -111,8 +116,7 @@ Traceback (most recent call last):
 ValueError: too many values to unpack (expected 3)
 ```
 
-  - 줄 번호는 사람마다 다릅니다.
-- `read_status` 에서 `int(…)` 를 빼먹으면 실습 1-1 출력은 `'status': '401'` 처럼 <mark>따옴표가 붙은 문자열로 나오고 오류는 나지 않습니다.</mark> 실습 1-2의 `convert_result` 에서 `400` 과 비교할 때 비로소 `TypeError: '>=' not supported between instances of 'str' and 'int'` 가 납니다(도전 1-1의 `is_error` 에서도 같습니다).
+- 줄 번호는 사람마다 다릅니다.
 
 **관제에서는**
 
@@ -193,8 +197,12 @@ False
 
 **자주 틀리는 곳**
 
-- `strptime` 에 nginx 형식(`NGINX_TIME_FORMAT`) 대신 공통 형식(`COMMON_TIME_FORMAT`)을 넣으면 문자열 모양과 형식이 달라 `ValueError` 오류가 납니다. <mark>두 형식 이름을 헷갈리지 않습니다.</mark>
-  - 실행하면 다음 오류가 납니다(<mark>`does not match format`</mark> 이면 이 실수입니다).
+| 실수 | 나타나는 것 | 이유 |
+|---|---|---|
+| `strptime` 에 공통 형식을 넣음 | `ValueError` 오류(<mark>`does not match format`</mark>) | nginx 형식(`NGINX_TIME_FORMAT`) 대신 공통 형식(`COMMON_TIME_FORMAT`)을 넣어 문자열 모양과 형식이 다름 |
+| `replace(tzinfo=None)` 를 뺌 | 오류는 나지 않고 `strftime` 결과도 같음 | <mark>이 수업에서는 세 로그의 시각 값을 같은 종류(시간대 없음)로 맞춰 두려고 지웁니다.</mark> |
+
+- <mark>두 형식 이름을 헷갈리지 않습니다.</mark> 공통 형식을 넣고 실행하면 다음 오류가 납니다(<mark>`does not match format`</mark> 이면 이 실수입니다).
 
 ```
 Traceback (most recent call last):
@@ -207,8 +215,7 @@ Traceback (most recent call last):
 ValueError: time data '02/Nov/2026:09:01:05 +0900' does not match format '%Y-%m-%d %H:%M:%S'
 ```
 
-  - 줄 번호는 사람마다 다릅니다.
-- `replace(tzinfo=None)` 를 빼도 오류는 나지 않고 `strftime` 결과도 같습니다. <mark>이 수업에서는 세 로그의 시각 값을 같은 종류(시간대 없음)로 맞춰 두려고 지웁니다.</mark>
+- 줄 번호는 사람마다 다릅니다.
 
 **관제에서는**
 
@@ -296,15 +303,19 @@ python challenge1-1_run.py
 
 **자주 틀리는 곳**
 
-- `classify_line` 에서 `is_error` 를 `is_suspicious` 보다 먼저 확인하면, <mark>401 · 403 이 모두 「오류」가 됩니다.</mark> 오류는 나지 않고 숫자만 달라집니다.
-  - 실행하면 다음처럼 됩니다(의심이 0개이고 오류가 13개이면 이 실수입니다).
+| 실수 | 나타나는 것 | 이유 |
+|---|---|---|
+| `classify_line` 에서 `is_error` 를 `is_suspicious` 보다 먼저 확인 | 오류는 나지 않고 숫자만 달라짐(의심 0개, 오류 13개) | <mark>401 · 403 이 모두 「오류」가 됩니다.</mark> |
+| `read_status` 에서 `int(…)` 를 빼먹음 | `is_error` 에서 `TypeError` 오류 | <mark>`400` 과 문자열을 비교하게 됩니다.</mark> |
+
+- 확인 순서를 바꾸고 실행하면 다음처럼 됩니다(의심이 0개이고 오류가 13개이면 이 실수입니다).
 
 ```
 --- 단계 1: 분류별 요청 수 - 전체 28 개
 정상 15 · 오류 13 · 의심 0
 ```
 
-- `read_status` 에서 `int(…)` 를 빼먹으면 `is_error` 에서 <mark>`400` 과 문자열을 비교하게 되어 다음 오류가 납니다.</mark>
+- `int(…)` 를 빼먹고 실행하면 다음 오류가 납니다.
 
 ```
 Traceback (most recent call last):
@@ -319,7 +330,7 @@ Traceback (most recent call last):
 TypeError: '>=' not supported between instances of 'str' and 'int'
 ```
 
-  - 줄 번호는 사람마다 다릅니다. `TypeError` 가 같으면 이 실수입니다.
+- 줄 번호는 사람마다 다릅니다. `TypeError` 가 같으면 이 실수입니다.
 
 **관제에서는**
 
@@ -401,9 +412,12 @@ python challenge1-2_run.py
 
 **자주 틀리는 곳**
 
-- `account_parts[0]` 대신 `account_parts[1]` 을 쓰면 사용자 이름이 아니라 `a-corp.example` 이 나옵니다. <mark>`@` 앞이 이름입니다.</mark>
-- 판정 서버의 `allowed` 를 바꿀 때 **`ALLOWED_MAP` 대신 `RESULT_MAP` 을 쓰면 `KeyError: True` 오류가 납니다.** 두 딕셔너리는 키가 다릅니다(`True` · `False` 와 `"success"` · `"failure"`).
-  - 실행하면 다음 오류가 납니다(<mark>`KeyError: True`</mark> 이면 이 실수입니다).
+| 실수 | 나타나는 것 | 이유 |
+|---|---|---|
+| `account_parts[0]` 대신 `account_parts[1]` 을 씀 | 사용자 이름이 아니라 `a-corp.example` 이 나옴 | <mark>`@` 앞이 이름입니다.</mark> |
+| 판정 서버의 `allowed` 를 바꿀 때 **`ALLOWED_MAP` 대신 `RESULT_MAP` 을 씀** | **`KeyError: True` 오류** | 두 딕셔너리는 키가 다름(`True` · `False` 와 `"success"` · `"failure"`) |
+
+- `RESULT_MAP` 을 쓰고 실행하면 다음 오류가 납니다(<mark>`KeyError: True`</mark> 이면 이 실수입니다).
 
 ```
 Traceback (most recent call last):
@@ -416,7 +430,7 @@ Traceback (most recent call last):
 KeyError: True
 ```
 
-  - 줄 번호는 사람마다 다릅니다.
+- 줄 번호는 사람마다 다릅니다.
 
 **관제에서는**
 
@@ -491,8 +505,12 @@ ip 가 비어 있는 이벤트 15 개
 
 **자주 틀리는 곳**
 
-- **`events = events.sort(key=get_time)` 처럼 `sort` 의 결과를 변수에 담으면 `events` 가 `None` 이 되어 다음 줄에서 오류가 납니다.** `sort` 는 리스트 자체를 바꾸고 아무것도 리턴하지 않습니다.
-  - 실행하면 다음 오류가 납니다(<mark>`'NoneType'`</mark> 이 들어간 오류이면 이 실수입니다).
+| 실수 | 나타나는 것 | 이유 |
+|---|---|---|
+| **`sort` 의 결과를 변수에 담음** | **`events` 가 `None` 이 되어 다음 줄에서 오류가 남** | `sort` 는 리스트 자체를 바꾸고 아무것도 리턴하지 않음 |
+| `json.dump` 에서 `ensure_ascii=False` 를 뺌 | **오류는 나지 않지만 한글이 `\uc131\uacf5` 같은 코드로 저장됨** | 한글을 그대로 쓰라는 설정이 빠짐 |
+
+- `events = events.sort(key=get_time)` 처럼 쓰고 실행하면 다음 오류가 납니다(<mark>`'NoneType'`</mark> 이 들어간 오류이면 이 실수입니다).
 
 ```
 Traceback (most recent call last):
@@ -503,8 +521,7 @@ Traceback (most recent call last):
 TypeError: 'NoneType' object is not iterable
 ```
 
-  - 줄 번호는 사람마다 다릅니다.
-- `json.dump` 에서 `ensure_ascii=False` 를 빼면 **오류는 나지 않지만 한글이 `\uc131\uacf5` 같은 코드로 저장됩니다.**
+- 줄 번호는 사람마다 다릅니다.
 
 **관제에서는**
 
