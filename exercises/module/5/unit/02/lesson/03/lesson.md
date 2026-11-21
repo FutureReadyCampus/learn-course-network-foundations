@@ -29,6 +29,8 @@ render: markdown
 
 > 시간이 남아 응용 2-1 이나 응용 2-3 을 하면, `audit.py` · `approvals.py` 나 `ip_actions.py` 를 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 그때는 다 채울 때까지 그 파일을 부르는 프로그램이 동작하지 않으니, 다 쓴 뒤 그 응용의 실행 파일로 결과가 정답과 같은지 확인합니다.
 
+**확인** — 4번 명령에서 `제공 파일 정상 허용 목록 IP 라서 차단하지 않음 False` 가 나오면 성공입니다. 안 나오면 오류에 나온 파일 이름의 페이지로 가서 코드 상자를 다시 복사해 붙여 넣습니다.
+
 ## `ip_actions.py` 만들기
 
 **`ip_actions.py`** 를 만들고 아래 내용을 붙여 넣습니다. IP 를 차단하기 전에 정책을 검사하고, 차단에는 끝나는 시각을 적어 두었다가 시간이 지나면 풉니다.
@@ -120,6 +122,8 @@ def expire_blocks(state, incident_id):                                          
 
 - 허용 목록과 공유 IP 를 왜 먼저 거르는지, 끝나는 시각을 어떻게 비교하는지는 응용 2-3 레슨에서 자세히 다룹니다.
 
+**확인** — `python -c "from ip_actions import check_ip_policy; print('ip_actions 정상')"` 를 쳐서 `ip_actions 정상` 이 나오면 성공입니다. `ModuleNotFoundError: No module named 'containment_store'` 가 나오면 실습 2-1 의 `containment_store.py` 를 먼저 만듭니다.
+
 ## `audit.py` 만들기
 
 **`audit.py`** 를 만들고 아래 내용을 붙여 넣습니다. 알림 한 건에 어떤 액션을 해서 결과가 무엇이었는지를 딕셔너리 한 건(`incident` · `playbook` · `action` · `result`)으로 만듭니다.
@@ -134,6 +138,8 @@ def log_line(item, action, text):  # 인시던트 · 액션 · 결과 문장을 
 ```
 
 - 모든 대응을 같은 모양으로 남겨 두면 승인 · 거절 · 실패를 한 목록에서 다시 볼 수 있습니다. `approvals.py` 와 응용 2-2 의 `flow.py` 가 이 함수를 씁니다.
+
+**확인** — `python -c "from audit import log_line; print(log_line({'id': 'INC-001', 'playbook': 'PB-001'}, '계정 잠금', '확인'))"` 를 쳐서 `{'incident': 'INC-001', 'playbook': 'PB-001', 'action': '계정 잠금', 'result': '확인'}` 이 나오면 성공입니다. 안 나오면 코드 상자를 다시 복사해 붙여 넣습니다.
 
 ## `approvals.py` 만들기
 
@@ -216,5 +222,7 @@ def finish_decision(item, decision, state, action_log):                         
 
 - 액션 실행은 Unit 1 실습 1-2 의 `incident.py` 에 있는 `run_action` 이 합니다.
 - 권한 확인을 왜 가장 먼저 하는지는 응용 2-1 레슨에서 자세히 다룹니다.
+
+**확인** — 세 파일을 다 만든 뒤 이 레슨 첫 페이지 4번의 명령을 쳐서 `제공 파일 정상 허용 목록 IP 라서 차단하지 않음 False` 가 나오면 성공입니다. `ModuleNotFoundError: No module named 'audit'` 가 나오면 `audit.py` 가 `soar_response` 폴더에 있는지 봅니다.
 
 ---

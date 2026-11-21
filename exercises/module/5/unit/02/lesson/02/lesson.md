@@ -42,30 +42,35 @@ source:
 - 연습용 시스템의 상태 `state` 는 잠긴 계정(`locked_users`) · 차단한 IP · 열린 세션을 저장하는 딕셔너리입니다. 이 상태는 실행할 때마다 초기값에서 다시 시작하므로 결과를 똑같이 다시 만들 수 있습니다.
 - 조치 기록은 파일에 추가한 순서대로 남습니다. 그래서 이 기록은 감사 추적(audit trail, 오딧 트레일: 어떤 일이 어떤 순서로 있었는지 다시 짚어 볼 수 있게 남긴 시간순 기록)으로 쓸 수 있습니다.
 
-**문법 상자 — `리스트.remove(값)` 은 리스트에서 그 값을 제거한다**
+**문법 상자 · 직접 쓰는 곳의 모양 (예시 값 · 읽기만 합니다)**
+
+직접 쓰는 세 곳은 이 두 모양만 씁니다.
 
 ```python
-locked = ["junho", "dami"]
-locked.remove("dami")
-print(locked)
+locked = ["junho"]               # 예시 값
+locked.append("dami")            # 리스트 끝에 dami 를 더한다
+print(locked)                    # ['junho', 'dami']
+print("dami" in locked)          # True  · 리스트 안에 있음
+print("gaeun" in locked)         # False · 리스트 안에 없음
 ```
 
 | 코드 | 뜻 |
 |---|---|
-| `locked.remove("dami")` | 리스트에서 `dami` 를 제거한다 |
-| 리스트에 그 값이 없으면 | `ValueError`(밸류 에러: 값이 맞지 않아 나는 오류)가 난다 |
-| 위 코드의 출력 | `['junho']` |
+| `리스트.append(값)` | 리스트 끝에 값을 더한다 (① · ③) |
+| `return 값 in 리스트` | 안에 있으면 `True`, 없으면 `False` 를 리턴 (②) |
 
-함수는 두 파일에 나뉘어 있고 실행 파일이 하나 더 있습니다. 직접 쓰는 곳은 **아홉 군데**입니다.
+- 미리 채운 `unlock_account` 에는 `리스트.remove(값)` 이 나옵니다. 리스트에서 그 값을 빼는 모양이고, 리스트에 없는 값이면 `ValueError`(밸류 에러: 값이 맞지 않아 나는 오류)가 납니다. 그래서 바로 위 줄에서 잠겨 있는지 먼저 확인합니다.
+
+함수는 두 파일에 나뉘어 있고 실행 파일이 하나 더 있습니다. 대부분은 미리 채워 두었고, 직접 쓰는 곳은 1.1 의 세 단계와 짝을 이루는 **세 곳**(① · ② · ③)입니다.
 
 ```
-containment_store.py  make_record       : 위 표의 여섯 키를 가진 조치 기록 한 건을 만든다 (1번)
-                      append_log        : 기록을 기록 파일에 한 건 더한다 (2번)
-account_actions.py    check_policy      : VIP 계정이면 자동 조치를 막는 이유를 리턴한다 (3 · 4번)
-                      verify_locked     : 실제로 잠긴 계정 리스트에 있는지 확인한다 (5번)
-                      lock_account      : 잠그고, 확인하고, 기록을 만든다 (6번이 잠그는 줄)
-                      unlock_account    : 해제하고, 확인하고, 기록을 만든다 (7번이 해제하는 줄)
-실행 파일             exercise2-1_run.py  : 잠금 요청마다 잠그고 (8번) 기록을 남긴다 (9번)
+containment_store.py  make_record       : 위 표의 여섯 키를 가진 조치 기록 한 건을 만든다 (미리 채움)
+                      append_log        : 기록을 기록 파일에 한 건 더한다 (① 감사 기록)
+account_actions.py    check_policy      : VIP 계정이면 자동 조치를 막는 이유를 리턴한다 (미리 채움)
+                      verify_locked     : 실제로 잠긴 계정 리스트에 있는지 확인한다 (② 사후 검증)
+                      lock_account      : 잠그고, 확인하고, 기록을 만든다 (③ 실행 · 잠그는 줄)
+                      unlock_account    : 해제하고, 확인하고, 기록을 만든다 (미리 채움)
+실행 파일             exercise2-1_run.py  : 잠금 요청마다 잠그고 기록을 남긴다 (미리 채움)
 ```
 
 ## 실습 2-1 · 계정 잠금 실행과 감사 기록 남기기
@@ -76,12 +81,15 @@ account_actions.py    check_policy      : VIP 계정이면 자동 조치를 막�
 - **만드는 것**: 조치 기록 생성과 기록 파일 추가(`containment_store.py`), VIP 정책 검사 · 잠금 사후 검증 · 잠금 · 해제(`account_actions.py`), 잠금 요청 처리(`exercise2-1_run.py`).
 - **실행하면**: <mark>단계 1: 조치 전 잠긴 계정, 단계 2: 잠금 요청 3건의 조치 전 → 후, 단계 3: 해제, 단계 4: 파일에 저장해 둔 잠긴 계정과 조치 기록 수를 다시 읽은 결과가 나옵니다.</mark>
 
-**할 일**: 파일 세 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 ~ 4 를 읽습니다.
+**할 일**
 
-**`containment_store.py`** — 연습용 시스템의 상태와 조치 기록 파일을 관리합니다. 실습 2-2 와 제공 파일 `ip_actions.py`, Unit 3 실습 3-1 도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 1 · 2번입니다. `INITIAL_STATE` 의 `junho` 는 수업 전부터 잠겨 있는 계정입니다.
+1. 아래 코드로 파일 세 개를 만들고, `# ←` 가 있는 <mark>세 곳</mark>(① · ② · ③)을 한 줄씩 채웁니다.
+2. 채우기 <mark>전과 후</mark>에 한 번씩 실행해 단계 2 ~ 4 를 비교합니다.
+
+**`containment_store.py`** — 연습용 시스템의 상태와 조치 기록 파일을 관리합니다. 실습 2-2 와 제공 파일 `ip_actions.py`, Unit 3 실습 3-1 도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 ① 입니다. `INITIAL_STATE` 의 `junho` 는 수업 전부터 잠겨 있는 계정입니다.
 
 - `new_state` 의 `copy.deepcopy(값)` 은 딕셔너리를 안쪽 리스트까지 통째로 새로 복사합니다. `INITIAL_STATE` 를 복사하지 않고 그대로 쓰면 잠금 · 해제가 처음 상태 자체를 바꿔 버려서, 실행할 때마다 같은 처음 상태에서 시작할 수 없기 때문입니다.
-- `append_log` 의 `try:` · `except FileNotFoundError:` 는 Module 4 Unit 5 에서 본 「해 보고, 이 오류가 나면 멈추지 않고 아래 줄을 실행한다」는 모양입니다. 기록 파일이 아직 없을 때 프로그램이 멈추지 않고 빈 리스트로 시작하게 합니다(미리 채운 줄이라 읽기만 합니다).
+- `append_log` 의 `try:` · `except FileNotFoundError:` 는 Module 4 Unit 5 에서 본 「해 보고, 이 오류가 나면 멈추지 않고 아래 줄을 실행한다」는 모양입니다. 기록 파일이 아직 없을 때 프로그램이 멈추지 않고 빈 리스트로 시작하게 합니다(읽기만 합니다).
 
 ```python
 import copy                                                           # 처음 상태를 복사해 쓰기 위해 copy 를 불러온다
@@ -130,8 +138,7 @@ def make_record(action, target, incident_id, before, after, reason):  # 조치 �
     """조치 한 건(무엇을 · 누구에게 · 조치 전 · 조치 후 · 이유)의 기록을 딕셔너리로 만들어 리턴한다.
     조치 전과 후 상태를 함께 남겨 두고 싶을 때 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. 키 "action"(action), "target"(target), "incident"(incident_id), "before"(before), "after"(after), "reason"(reason) 를 가진 딕셔너리를 record 에 저장한다
+    record = {"action": action, "target": target, "incident": incident_id, "before": before, "after": after, "reason": reason}  # 1.1 표의 여섯 키로 기록 한 건을 만든다
     return record                                                     # 기록 한 건을 리턴한다
 
 
@@ -139,16 +146,15 @@ def append_log(record):                                               # 기록 �
     """기록 파일을 읽어 기록 한 건을 더하고 다시 저장한다. 파일이 아직 없으면 빈 리스트로 시작한다.
     조치할 때마다 기록을 한 건씩 추가해 둘 때 쓴다.
     """
-    try:                                                              # 파일 읽기를 시도한다 — 미리 채운 줄
-        log = load_json(LOG_PATH)                                     # 기록 파일을 읽는다 — 미리 채운 줄
-    except FileNotFoundError:                                         # 파일이 없으면 — 미리 채운 줄
-        log = []                                                      # 빈 리스트로 시작한다 — 미리 채운 줄
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 2. log 에 record 를 추가한다 (append)
+    try:                                                              # 파일 읽기를 시도한다
+        log = load_json(LOG_PATH)                                     # 기록 파일을 읽는다
+    except FileNotFoundError:                                         # 파일이 없으면
+        log = []                                                      # 빈 리스트로 시작한다
+    # ① log 리스트에 record 를 더한다 (append)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     save_json(log, LOG_PATH)                                          # 기록 파일로 다시 저장한다
 ```
 
-**`account_actions.py`** — 계정 잠금과 해제를 구현합니다. 실습 2-2 와 Unit 3 실습 3-1 도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 3 ~ 7번입니다.
+**`account_actions.py`** — 계정 잠금과 해제를 구현합니다. 실습 2-2 와 Unit 3 실습 3-1 도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 ② · ③ 입니다.
 
 ```python
 from containment_store import make_record                                             # 기록 한 건을 만드는 함수를 불러온다
@@ -158,52 +164,48 @@ def check_policy(user, vip_accounts):                                           
     """자동으로 조치하면 안 되는 계정(VIP)이면 그 이유 문장을, 아니면 빈 글자("")를 리턴한다.
     경로에서 이미 `승인 필요` 로 보냈어도 조치 함수가 마지막으로 한 번 더 막고 싶을 때 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 3. user 가 vip_accounts 안에 있으면 (if, in)
-    # 4.   "VIP 계정이라 자동 조치 대상이 아님" 을 리턴한다
-    return ""                                                                         # 막을 이유가 없으면 빈 글자를 리턴한다 — 미리 채운 줄
+    if user in vip_accounts:                                                          # VIP 계정이면
+        return "VIP 계정이라 자동 조치 대상이 아님"                                   # 막는 이유를 리턴한다
+    return ""                                                                         # 막을 이유가 없으면 빈 글자를 리턴한다
 
 
 def verify_locked(user, state):                                                       # 계정 이름과 연습용 시스템 상태를 받는 함수
     """계정이 잠긴 계정 리스트에 들어 있으면 True, 없으면 False 를 리턴한다.
     잠그라고 호출한 것과 실제로 잠긴 것이 같은지 조치 뒤에 확인할 때 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 5. user 가 state["locked_users"] 안에 있는지(in)의 결과를 리턴한다
+    # ② user 가 state["locked_users"] 안에 있는지(in)의 결과를 리턴한다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
 
 
 def lock_account(user, state, vip_accounts, incident_id, reason):                     # 계정 · 상태 · VIP 리스트 · 인시던트 번호 · 이유를 받는 함수
     """VIP 인지 먼저 확인하고 계정을 잠근 뒤, 실제로 잠겼는지 다시 확인해 조치 기록 한 건을 리턴한다.
     VIP 이거나 이미 잠겨 있으면 잠그지 않고 그 이유를 기록에 남긴다.
     """
-    blocked = check_policy(user, vip_accounts)                                        # 자동 조치를 막을 이유를 구한다 — 미리 채운 줄
-    if blocked != "":                                                                 # 막을 이유가 있으면 — 미리 채운 줄
-        return make_record("계정 잠금", user, incident_id, "변경 없음", "변경 없음", blocked)  # 바꾸지 않고 이유를 기록한다 — 미리 채운 줄
-    if user in state["locked_users"]:                                                 # 이미 잠겨 있으면 — 미리 채운 줄
-        return make_record("계정 잠금", user, incident_id, "잠김", "잠김", "이미 잠겨 있어 변경 없음")  # 바꾸지 않고 기록한다 — 미리 채운 줄
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 6. state["locked_users"] 에 user 를 추가한다 (append)
-    after = "잠김"                                                                    # 조치 뒤 상태 : 일단 잠겼다고 적고 — 미리 채운 줄
-    if not verify_locked(user, state):                                                # 실제로 확인해 잠기지 않았으면 — 미리 채운 줄
-        after = "잠기지 않음 (확인 실패)"                                             # 확인 실패라고 고쳐 적는다 — 미리 채운 줄
-    return make_record("계정 잠금", user, incident_id, "잠기지 않음", after, reason)  # 조치 전 · 후 상태와 함께 기록한다 — 미리 채운 줄
+    blocked = check_policy(user, vip_accounts)                                        # 자동 조치를 막을 이유를 구한다
+    if blocked != "":                                                                 # 막을 이유가 있으면
+        return make_record("계정 잠금", user, incident_id, "변경 없음", "변경 없음", blocked)  # 바꾸지 않고 이유를 기록한다
+    if user in state["locked_users"]:                                                 # 이미 잠겨 있으면
+        return make_record("계정 잠금", user, incident_id, "잠김", "잠김", "이미 잠겨 있어 변경 없음")  # 바꾸지 않고 기록한다
+    # ③ state["locked_users"] 리스트에 user 를 더한다 (append · 잠그는 줄)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+    after = "잠김"                                                                    # 조치 뒤 상태 : 일단 잠겼다고 적고
+    if not verify_locked(user, state):                                                # 실제로 확인해 잠기지 않았으면
+        after = "잠기지 않음 (확인 실패)"                                             # 확인 실패라고 고쳐 적는다
+    return make_record("계정 잠금", user, incident_id, "잠기지 않음", after, reason)  # 조치 전 · 후 상태와 함께 기록한다
 
 
 def unlock_account(user, state, incident_id, reason):                                 # 계정 · 상태 · 인시던트 번호 · 이유를 받는 함수
     """잠긴 계정을 해제하고 실제로 해제됐는지 확인해 조치 기록 한 건을 리턴한다.
     오탐으로 확인된 계정을 되돌릴 때 쓴다.
     """
-    if user not in state["locked_users"]:                                             # 잠겨 있지 않으면 — 미리 채운 줄
-        return make_record("계정 해제", user, incident_id, "잠기지 않음", "잠기지 않음", "잠겨 있지 않아 변경 없음")  # 바꾸지 않고 기록한다 — 미리 채운 줄
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 7. state["locked_users"] 에서 user 를 제거한다 (remove)
-    after = "잠기지 않음"                                                             # 조치 뒤 상태 : 일단 해제됐다고 적고 — 미리 채운 줄
-    if verify_locked(user, state):                                                    # 실제로 확인해 아직 잠겨 있으면 — 미리 채운 줄
-        after = "잠김 (확인 실패)"                                                    # 확인 실패라고 고쳐 적는다 — 미리 채운 줄
-    return make_record("계정 해제", user, incident_id, "잠김", after, reason)         # 조치 전 · 후 상태와 함께 기록한다 — 미리 채운 줄
+    if user not in state["locked_users"]:                                             # 잠겨 있지 않으면
+        return make_record("계정 해제", user, incident_id, "잠기지 않음", "잠기지 않음", "잠겨 있지 않아 변경 없음")  # 바꾸지 않고 기록한다
+    state["locked_users"].remove(user)                                                # 잠긴 계정 리스트에서 뺀다 (해제하는 줄)
+    after = "잠기지 않음"                                                             # 조치 뒤 상태 : 일단 해제됐다고 적고
+    if verify_locked(user, state):                                                    # 실제로 확인해 아직 잠겨 있으면
+        after = "잠김 (확인 실패)"                                                    # 확인 실패라고 고쳐 적는다
+    return make_record("계정 해제", user, incident_id, "잠김", after, reason)         # 조치 전 · 후 상태와 함께 기록한다
 ```
 
-**`exercise2-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+**`exercise2-1_run.py`** — 직접 쓰는 곳 없이 그대로 붙여 넣습니다.
 
 - `requests` 의 괄호 하나 `("INC-001", "dami", "퇴사한 계정의 서버 요청")` 가 요청 한 건이고, 값 세 개를 괄호로 묶은 이 모양을 튜플(tuple)이라고 합니다. `for incident_id, user, reason in requests:` 는 한 건을 꺼낼 때마다 세 값을 순서대로 세 변수에 나눠 담습니다.
 - 여기서 `requests` 는 「요청 목록」이라는 뜻의 변수 이름일 뿐이고, Module 4 에서 설치한 `requests` 라이브러리와는 관계가 없습니다.
@@ -223,9 +225,8 @@ print(state["locked_users"])                                                    
 
 print("--- 단계 2: 잠금 요청 3건")                                                      # 단계 2 시작을 알리는 줄
 for incident_id, user, reason in requests:                                              # 요청을 하나씩 꺼낸다
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 8. lock_account(user, state, vip_accounts, incident_id, reason) 의 결과를 record 에 저장한다
-    # 9. append_log(record) 를 호출한다 (조치 기록을 파일에 남긴다)
+    record = lock_account(user, state, vip_accounts, incident_id, reason)               # 계정을 잠그고 기록을 받는다
+    append_log(record)                                                                  # 조치 기록을 파일에 남긴다
     print(record["incident"], record["target"], "·", record["before"], "→", record["after"], "·", record["reason"])  # 기록 한 건을 출력한다
 
 print("--- 단계 3: 오탐으로 확인되어 dami 해제")                                        # 단계 3 시작을 알리는 줄
@@ -241,28 +242,48 @@ print("잠긴 계정:", saved_state["locked_users"])                            
 print("조치 기록:", len(saved_log), "건")                                               # 파일에 저장된 기록 수를 출력한다
 ```
 
+- 주석 줄은 그대로 두고, **각 주석 바로 아래 줄**에 씁니다. 세 곳 모두 함수 바로 안쪽 줄이라 4칸에서 시작합니다.
+
+**직접 쓰는 곳**
+
+| 빈칸 | 파일 · 함수 | 쓰는 줄 | 들여쓰기 |
+|---|---|---|---|
+| ① | `containment_store.py` · `append_log` | `log` 에 `record` 더하기 (`append`) | 4칸 |
+| ② | `account_actions.py` · `verify_locked` | 잠긴 리스트 안에 있는지 리턴 (`return … in`) | 4칸 |
+| ③ | `account_actions.py` · `lock_account` | 잠긴 리스트에 `user` 더하기 (`append`) | 4칸 |
+
+- **채우기 전에 실행하면**: 오류 없이 돌아갑니다. 그러나 단계 2 의 `dami` 가 `잠기지 않음 → 잠기지 않음 (확인 실패)`, 단계 3 의 `dami` 가 `잠기지 않음 → 잠기지 않음 · 잠겨 있지 않아 변경 없음` 으로 나오고, 단계 4 는 `조치 기록: 0 건` 입니다. 잠그는 줄도, 확인하는 줄도, 기록하는 줄도 없다는 뜻입니다.
+- ① 확인: ① 을 채우고 실행하면 단계 4 가 `조치 기록: 4 건` 으로 바뀌어야 합니다. 그대로 `0 건` 이면 `log.append(…)` 의 괄호 안이 `record` 인지 봅니다. 막히면: 문법 상자의 `locked.append("dami")` 에서 `locked` 자리에 `log`, `"dami"` 자리에 `record` 를 넣습니다.
+- ② 확인: ② 까지 채워도 단계 2 의 `dami` 는 아직 `확인 실패` 입니다. ③ 잠그는 줄이 아직 없어서 실제로 안 잠긴 것을, 방금 쓴 사후 검증이 잡아낸 것이니 정상입니다. 막히면: 문법 상자의 `"dami" in locked` 에서 `"dami"` 자리에 `user`, `locked` 자리에 `state["locked_users"]` 를 넣고 앞에 `return` 을 붙입니다.
+- ③ 확인: ③ 까지 채우고 실행하면 단계 2 가 `INC-001 dami · 잠기지 않음 → 잠김 · 퇴사한 계정의 서버 요청` 으로 나와야 합니다. 그래도 `확인 실패` 면 ② 의 줄 맨 앞에 `return` 이 있는지 봅니다. 막히면: ① 과 같은 `append` 모양이고, 리스트가 `state["locked_users"]`, 넣을 값이 `user` 입니다.
+
 **순서**
 
 1. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `containment_store.py` · `account_actions.py` · `exercise2-1_run.py` 를 하나씩 그대로 적어 세 개의 파일을 만듭니다. 각 파일에 이 페이지의 코드 상자를 복사해 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
-2. **[VS Code]** `containment_store.py` 1 · 2번, `account_actions.py` 3 ~ 7번, `exercise2-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「실습 2-1 정리」를 봅니다.
-3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+2. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고, **채우기 전에** 한 번 실행해 단계 2 의 `dami` 줄과 단계 4 의 기록 수를 봅니다(맥북은 `python3`).
    ```bash
    python exercise2-1_run.py
    ```
-4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 1줄, 단계 2 는 3줄, 단계 3 은 1줄, 단계 4 는 2줄입니다. 실행하면 `containment_state.json` 과 `containment_log.json` 이 생깁니다.
+3. **[VS Code]** `containment_store.py` 의 ①, `account_actions.py` 의 ② · ③ 을 씁니다. 하나 쓸 때마다 다시 실행해 위 「직접 쓰는 곳」의 확인과 맞춰 봅니다.
+4. **[터미널]** 다시 실행합니다. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 1줄, 단계 2 는 3줄, 단계 3 은 1줄, 단계 4 는 2줄입니다. 실행하면 `containment_state.json` 과 `containment_log.json` 이 생깁니다.
+   ```bash
+   python exercise2-1_run.py
+   ```
 5. **[보고서]** `report_u2.md` 의 `## 실습 2-1` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 단계 4 의 잠긴 계정과 조치 기록 수를 적어 주세요.
-   - (나) [핵심 질문] INC-003 의 `gaeun` 은 잠기지 않았습니다. 단계 2 의 줄을 근거로 이유를 적어 주세요. 그리고 경로 정하기(Unit 1 제공 파일 `routing.py`)가 VIP 계정을 이미 `승인 필요` 경로로 분기했는데도 조치 함수가 정책을 한 번 더 검사하는 이유도 적어 주세요.
+   - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 단계 4 의 잠긴 계정과 조치 기록 수를 적어 주세요.
+   - (나) [응용] INC-003 의 `gaeun` 은 잠기지 않았습니다. 단계 2 의 줄을 근거로 이유를 적어 주세요. 그리고 경로 정하기(Unit 1 제공 파일 `routing.py`)가 VIP 계정을 이미 `승인 필요` 경로로 분기했는데도 조치 함수가 정책을 한 번 더 검사하는 이유도 적어 주세요.
    - (다) [핵심 질문] INC-006 의 `junho` 는 `잠김 → 잠김` 으로 기록됐고, 단계 3 에서 해제한 `dami` 는 `잠김 → 잠기지 않음` 입니다. `before` 를 남기면 롤백할 때 어떤 판단이 가능해지는지 적어 주세요. 그리고 잠금 뒤 사후 검증(`verify_locked`)이 없으면 어떤 문제가 생기는지도 적어 주세요.
+
+**확인** — 단계 2 가 `dami` 「잠기지 않음 → 잠김」 · `gaeun` 「변경 없음 → 변경 없음」 · `junho` 「잠김 → 잠김」 세 줄이고, 단계 4 가 `잠긴 계정: ['junho']` · `조치 기록: 4 건` 이면 성공입니다. 안 나오면 「정답」 레슨의 실습 2-1 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 ## 실습 2-1 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
 | 딕셔너리를 만들어 변수에 저장하기 | `record = {"action": action, ..., "reason": reason}` |
-| 리스트에 추가 | `log.append(record)` |
+| 리스트에 추가 (① · ③) | `log.append(record)` |
 | 리스트 안에 있으면 | `if user in vip_accounts:` |
-| 리스트 안에 있는지 확인한 결과 리턴 | `return user in state["locked_users"]` |
+| 있는지 확인한 결과 리턴 (②) | `return user in state["locked_users"]` |
 | 리스트에서 제거 | `state["locked_users"].remove(user)` |
 | 함수 결과를 변수에 저장하기 | `record = lock_account(user, state, vip_accounts, incident_id, reason)` |
 

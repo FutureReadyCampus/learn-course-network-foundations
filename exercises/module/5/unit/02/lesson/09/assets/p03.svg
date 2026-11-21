@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 329" role="img">
 <title>실습 2-1 보고서: 출력, gaeun 이 안 잠긴 이유, before 와 사후 검증의 쓸모</title>
-<desc>실습 2-1 보고서에 채울 칸입니다. (가)는 출력과 잠긴 계정, 기록 수, (나)는 gaeun 이 잠기지 않은 이유와 정책을 한 번 더 검사하는 이유, (다)는 before 와 사후 검증이 필요한 이유를 씁니다.</desc>
+<desc>실습 2-1 보고서에 채울 칸입니다. (가)는 출력과 잠긴 계정, 기록 수, (나)는 응용 질문으로 gaeun 이 잠기지 않은 이유와 정책을 한 번 더 검사하는 이유, (다)는 before 와 사후 검증이 필요한 이유를 씁니다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 2-1 보고서에 채울 칸</text>
-<rect x="24" y="60" width="130" height="64" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="89.0" y="97.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(가)</tspan></text>
+<rect x="24" y="60" width="130" height="64" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="89.0" y="86.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(가)</tspan><tspan x="89.0" dy="21.0">핵심 질문</tspan></text>
 <rect x="166" y="60" width="530" height="64" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="180" y="86.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180" dy="0">① 출력 전체 (코드 상자에 붙여 넣기)</tspan><tspan x="180" dy="21.0">② 단계 4 의 잠긴 계정   ③ 조치 기록 수</tspan></text>
-<rect x="24" y="136" width="130" height="85" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="89.0" y="173.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(나)</tspan><tspan x="89.0" dy="21.0">핵심 질문</tspan></text>
+<rect x="24" y="136" width="130" height="85" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="89.0" y="173.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(나)</tspan><tspan x="89.0" dy="21.0">응용</tspan></text>
 <rect x="166" y="136" width="530" height="85" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="180" y="162.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180" dy="0">① INC-003 의 단계 2 줄   ② 잠기지 않은 이유</tspan><tspan x="180" dy="21.0">③ 경로에서 먼저 막아도 조치 함수에서</tspan><tspan x="180" dy="21.0">    한 번 더 막는 이유</tspan></text>
 <rect x="24" y="233" width="130" height="64" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>

@@ -5,11 +5,11 @@
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 2-2: contain_account 의 순서</text>
 <rect x="24" y="70" width="196" height="64" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="122.0" y="96.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="122.0" dy="0" font-weight="700">lock_account</tspan><tspan x="122.0" dy="21.0">잠금 (4번)</tspan></text>
+<text x="122.0" y="96.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="122.0" dy="0" font-weight="700">lock_account</tspan><tspan x="122.0" dy="21.0">잠금</tspan></text>
 <rect x="262" y="70" width="196" height="64" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360.0" y="96.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">after == "잠김" ?</tspan><tspan x="360.0" dy="21.0">(5번)</tspan></text>
+<text x="360.0" y="96.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">after == "잠김" ?</tspan><tspan x="360.0" dy="21.0">(②)</tspan></text>
 <rect x="496" y="70" width="200" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="596.0" y="96.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="596.0" dy="0" font-weight="700">terminate_sessions</tspan><tspan x="596.0" dy="21.0">세션 비우기 (6번)</tspan></text>
+<text x="596.0" y="96.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="596.0" dy="0" font-weight="700">terminate_sessions</tspan><tspan x="596.0" dy="21.0">세션 비우기 (③ → ①)</tspan></text>
 <line x1="220" y1="102" x2="260" y2="102" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
 <line x1="458" y1="102" x2="494" y2="102" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
 <text x="466" y="94" font-size="14" text-anchor="start" fill="#666660">예</text>
@@ -21,7 +21,7 @@
 <text x="596.0" y="203.1" font-size="14" text-anchor="middle" fill="#292929"><tspan x="596.0" dy="0">dami 세션 2개 → 0개</tspan><tspan x="596.0" dy="19.6">junho 세션 1개 → 0개</tspan></text>
 <line x1="598" y1="134" x2="598" y2="174" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
 <rect x="24" y="280" width="672" height="64" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="360.0" y="306.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">find_open_sessions (2 · 3번): 잠겼는데 세션이 남은 계정</tspan><tspan x="360.0" dy="21.0">조치 전 ['junho'] → 조치 뒤 빈틈이 남은 계정: []</tspan></text>
+<text x="360.0" y="306.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">find_open_sessions: 잠겼는데 세션이 남은 계정</tspan><tspan x="360.0" dy="21.0">조치 전 ['junho'] → 조치 뒤 빈틈이 남은 계정: []</tspan></text>
 <line x1="598" y1="240" x2="598" y2="278" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
 </g>
 </svg>
