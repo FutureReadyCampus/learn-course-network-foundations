@@ -12,10 +12,12 @@ render: markdown
 
 **오늘의 계획 (3시간)**
 
-1. 시작하기 15분: 이 레슨을 읽고, 오늘 쓸 데이터 파일과 Module 3 의 권한 판정 파일을 만듭니다.
-2. 실습 약 110분: 핵심 실습 두 개를 차례로 합니다.
-3. 글쓰기 40분: 「보고서 쓰기」 레슨에서 핵심 실습의 질문에 답하고, 「오늘의 글 쓰기」 레슨에서 글 한 편을 씁니다.
-4. 마무리 15분: 실습 3-2 끝의 「이번 Unit 마무리」에서 파일을 확인하고 깃허브에 올립니다.
+| 순서 | 시간 | 하는 일 |
+|---|---|---|
+| 1. 시작하기 | 15분 | 이 레슨을 읽고, 오늘 쓸 데이터 파일과 Module 3 의 권한 판정 파일을 만듭니다 |
+| 2. 실습 | 약 110분 | 핵심 실습 두 개를 차례로 합니다 |
+| 3. 글쓰기 | 40분 | 「보고서 쓰기」 레슨에서 핵심 실습의 질문에 답하고, 「오늘의 글 쓰기」 레슨에서 글 한 편을 씁니다 |
+| 4. 마무리 | 15분 | 실습 3-2 끝의 「이번 Unit 마무리」에서 파일을 확인하고 깃허브에 올립니다 |
 
 **오늘 만들 것 두 가지**
 
@@ -24,9 +26,11 @@ render: markdown
 
 **도전 3-1 ~ 3-3은 선택입니다.** 핵심 실습 두 개와 글쓰기를 마치고 시간이 남을 때 합니다.
 
-- 도전 3-1: 로그인 실패 알림과 트래픽 급증 알림을 같은 모양으로 만들어 `alerts.json` 한 파일에 모읍니다.
-- 도전 3-2: SaaS 로그에서 업무 시간 밖 로그인 · 평소와 다른 IP · 파일 대량 다운로드를 규칙마다 따로 찾습니다.
-- 도전 3-3: 웹 로그에서 해킹 도구가 자주 요청하는 경로를 요청한 IP 를 찾습니다.
+| 도전 | 하는 일 |
+|---|---|
+| 도전 3-1 | 로그인 실패 알림과 트래픽 급증 알림을 같은 모양으로 만들어 `alerts.json` 한 파일에 모읍니다 |
+| 도전 3-2 | SaaS 로그에서 업무 시간 밖 로그인 · 평소와 다른 IP · 파일 대량 다운로드를 규칙마다 따로 찾습니다 |
+| 도전 3-3 | 웹 로그에서 해킹 도구가 자주 요청하는 경로를 요청한 IP 를 찾습니다 |
 
 다음 Unit 은 실습 3-2 의 `access_detection.py` 를 여러 곳에서 불러 씁니다. 도전 3-2 · 3-3 의 파일은 다음 Unit 「제공 파일」 레슨에 완성본이 있으므로, 도전을 하지 않아도 다음 Unit 을 따라갈 수 있습니다.
 
@@ -185,8 +189,27 @@ def check_permission(user, resource, action):                    # 사용자 · 
     return True, "허용"                                          # 모든 검사를 지나면 허용한다
 ```
 
-- 읽는 법: 자원은 `SALES`(영업 실적) · `SETTLE`(정산 내역) · `ACCOUNT`(계정)처럼 다루는 대상이고, 행위는 `QUERY`(조회) · `CHANGE`(변경)처럼 그 대상에 하는 일입니다.
-- 함수는 등록된 사용자인가 → 재직 중인가 → 역할이 있는가 → 그 역할에 「자원:행위」 권한이 있는가를 차례로 보고, 처음 걸린 곳의 이유를 돌려줍니다. 예를 들어 dami 는 `users.json` 에서 `employed` 가 `false` 라서 둘째 검사에서 「퇴사한 계정」이 됩니다.
+읽는 법: 자원은 다루는 대상이고, 행위는 그 대상에 하는 일입니다.
+
+| 이름 | 종류 | 뜻 |
+|---|---|---|
+| `SALES` | 자원 | 영업 실적 |
+| `SETTLE` | 자원 | 정산 내역 |
+| `ACCOUNT` | 자원 | 계정 |
+| `QUERY` | 행위 | 조회 |
+| `CHANGE` | 행위 | 변경 |
+
+함수는 아래 검사를 차례로 보고, 처음 걸린 곳의 이유를 돌려줍니다.
+
+| 순서 | 검사 | 걸리면 돌려주는 이유 |
+|---|---|---|
+| 1 | 등록된 사용자인가 | 등록되지 않은 사용자 |
+| 2 | 재직 중인가 | 퇴사한 계정 |
+| 3 | 역할이 있는가 | 역할이 없음 |
+| 4 | 그 역할에 「자원:행위」 권한이 있는가 | 권한 없음 |
+| 끝 | 네 검사를 모두 지났는가 | 허용 |
+
+- 예를 들어 dami 는 `users.json` 에서 `employed` 가 `false` 라서 둘째 검사에서 「퇴사한 계정」이 됩니다.
 - 이 파일은 불러오는(`import`) 순간 `config/roles.json` · `config/users.json` 을 지금 터미널 위치 기준으로 읽습니다. 그래서 `config` 폴더가 `anomaly_detection` 안에 있어야 하고, 실행도 그 폴더에서 합니다.
 
 **`config/users.json`** — Module 3 Unit 1 실습 1-1 의 사용자 파일입니다. 사용자마다 역할과 재직 여부(`employed`)가 있습니다.
@@ -221,14 +244,23 @@ def check_permission(user, resource, action):                    # 사용자 · 
    python -c "from rbac import check_permission; print(check_permission('dami', 'SALES', 'QUERY'))"
    ```
    - <mark>순서대로 `57`, `8`(헤더 줄 포함), `(False, '퇴사한 계정')` 이 나와야</mark> 합니다.
-   - `8` 이 아니면 `baseline_traffic.csv` 에 줄이 빠졌거나 빈 줄이 들어간 것이니 다시 붙여 넣습니다. 셋째 줄이 다르면 `rbac.py` 내용이나 두 JSON 파일의 위치(`config` 폴더 안인지)를 다시 봅니다.
+
+   | 다르게 나온 것 | 원인 · 고치는 법 |
+   |---|---|
+   | 둘째 줄이 `8` 이 아님 | `baseline_traffic.csv` 에 줄이 빠졌거나 빈 줄이 들어간 것이니 다시 붙여 넣습니다 |
+   | 셋째 줄이 다름 | `rbac.py` 내용이나 두 JSON 파일의 위치(`config` 폴더 안인지)를 다시 봅니다 |
 
 ## 오류가 나면
 
-- 먼저 `pwd` 가 `anomaly_detection` 으로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
-- `No module named 'pandas'`: <mark>판다스가 설치되지 않은 터미널입니다</mark>. `python -m pip install pandas` 를 칩니다(맥북은 `python3`). 가상환경을 쓴다면 먼저 `security-agent-toolkit` 폴더에서 가상환경을 켠 뒤(`source .venv/Scripts/activate`, 맥북은 `Scripts` 를 `bin` 으로) 칩니다.
-- `FileNotFoundError: … 'config/roles.json'` · `No module named 'rbac'`: <mark>`config` 폴더 안에 두 JSON 파일이 있는지</mark>, `rbac.py` 가 `anomaly_detection` 폴더 바로 아래에 있는지 `ls` 와 `ls config` 로 봅니다.
-- `No module named 'login_detection'`(도전 3-1): Unit 2 실습 2-3 의 `login_detection.py` 가 없는 것입니다. 「폴더 열고 이전 파일 확인하기」 페이지의 표 아래 설명대로 만듭니다.
+먼저 `pwd` 가 `anomaly_detection` 으로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
+
+| 오류 | 원인 | 고치는 법 |
+|---|---|---|
+| `No module named 'pandas'` | <mark>판다스가 설치되지 않은 터미널입니다</mark> | `python -m pip install pandas` 를 칩니다(맥북은 `python3`) |
+| `FileNotFoundError: … 'config/roles.json'` · `No module named 'rbac'` | 파일 위치가 다릅니다 | <mark>`config` 폴더 안에 두 JSON 파일이 있는지</mark>, `rbac.py` 가 `anomaly_detection` 폴더 바로 아래에 있는지 `ls` 와 `ls config` 로 봅니다 |
+| `No module named 'login_detection'`(도전 3-1) | Unit 2 실습 2-3 의 `login_detection.py` 가 없습니다 | 「폴더 열고 이전 파일 확인하기」 페이지의 표 아래 설명대로 만듭니다 |
+
+- 가상환경을 쓴다면 판다스를 설치하기 전에 `security-agent-toolkit` 폴더에서 가상환경을 켭니다(`source .venv/Scripts/activate`, 맥북은 `Scripts` 를 `bin` 으로).
 - 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). <mark>막히면 이 Unit 뒤쪽의 「정답」을 보고</mark>, 풀리지 않으면 보고서 (가)에 「모름 — 막힌 곳: …」 이라고 쓰고 넘어갑니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다. 파일을 지금 위치 기준으로 찾기 때문입니다. **앞 Unit 과 Module 3 의 파일은 고치지 않습니다.**
