@@ -18,11 +18,17 @@ render: markdown
    |---|---|---|
    | `config/exceptions.json` | 사용자 한 명에게 기간을 정해 따로 허용한 권한(예외) 다섯 건 | 실습 1-3 |
    | `exception_policy.py` | 지금 시각에 유효한 예외가 있는지 찾는 함수 `find_exception` | 실습 1-3 |
-   | `config_loader.py` | 설정 파일이 없거나 깨져도 멈추지 않고 빈 설정을 돌려주는 함수 `load_json` | 오늘은 쓰지 않고, 다음 Unit부터 |
+   | `config_loader.py` | 설정 파일이 없거나 깨져도 멈추지 않고 빈 설정을 돌려주는 함수 `load_json` | 핵심 실습에서는 쓰지 않고(응용 1-5와 다음 Unit부터 씁니다) |
 
-4. 세 파일을 다 만들었으면 터미널에서 `ls` 와 `ls config` 로 파일 이름이 보이는지 확인하고 실습 1-3으로 돌아갑니다.
+4. 세 파일을 다 만들었으면 터미널에서 파일 이름이 보이는지 확인하고 실습 1-3으로 돌아갑니다. 마지막 줄에 `제공 파일 정상` 이 나오면 성공입니다.
+   ```bash
+   ls
+   ls config
+   python -c "import exception_policy, config_loader; print('제공 파일 정상')"
+   ```
+   - 명령 풀이: `ls` · `ls config` 폴더 안의 파일 이름을 보여 줌 · `python -c "…"` 따옴표 안의 파이썬을 바로 실행해 두 파일을 불러 와 봄(맥북은 `python3`)
 
-> 시간이 남아 응용 1-3이나 응용 1-4를 하면, 이 파일들을 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 그때는 본문을 다 채울 때까지 실습 1-3이 동작하지 않으니, 다 쓴 뒤 `exercise1-3_run.py` 를 다시 실행해 결과가 같은지 확인합니다.
+> 시간이 남아 응용 1-3이나 응용 1-4를 하면, 이 파일들을 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 응용 1-3(`exception_policy.py`)은 다 채울 때까지 실습 1-3이 동작하지 않고, 응용 1-4(`config_loader.py`)는 다 채울 때까지 응용 1-5의 `test_policy.py` 4번이 멈춥니다. 다 쓴 뒤 `exercise1-3_run.py` (응용 1-4는 `test_policy.py`)를 다시 실행해 결과가 같은지 확인합니다.
 
 ## `config/exceptions.json` 만들기
 
