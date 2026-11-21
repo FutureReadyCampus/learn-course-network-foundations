@@ -26,34 +26,18 @@ python exercise4-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise4-1_run.py` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
-
-① `score_findings` 안 — 1번과 2번 주석 사이에 미리 채운 `findings_table["points"] = points` 줄과 `grouped = …` 줄이 있습니다. 두 줄을 한 번에 붙이지 말고, 아래 상자를 하나씩 해당 번호 주석 바로 아래에 붙입니다.
-
-1번 주석 아래
+**채운 코드** (한 예) — `score_findings` 안의 두 곳입니다.
 
 ```python
+    # ① findings_table 의 "rule" 열에 .map(WEIGHTS) 를 붙여 규칙마다 점수를 구해 points 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     points = findings_table["rule"].map(WEIGHTS)       # rule 열을 꺼내 바로 규칙마다 점수를 채운다(map)
-```
-
-2번 주석 아래(미리 채운 `grouped = …` 줄보다 아래)
-
-```python
+    findings_table["points"] = points                  # 표에 points 열을 붙인다
+    grouped = findings_table.groupby("entity")         # entity 가 같은 행끼리 그룹으로 만든다
+    # ② grouped 에서 "points" 열을 골라 .sum() 을 붙여 그룹마다 합계를 구해 totals 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     totals = grouped["points"].sum()                   # 그룹에서 points 열을 골라 바로 합계를 구한다(sum)
 ```
 
-② `make_grade` 안
-
-```python
-    if score >= HIGH_LIMIT:                            # 점수가 high 기준 이상이면
-        return "high"                                  # high 이다
-```
-
-③ `make_records` 안
-
-```python
-        record = {"entity": entity, "score": int(score), "grade": grade, "reasons": reasons[entity]}  # 대상 · 점수 · 등급 · 이유를 딕셔너리로 만든다
-```
+- 가운데 두 줄(`findings_table["points"] = …` · `grouped = …`)은 미리 채운 줄입니다. ① · ② 의 줄만 붙입니다.
 
 내가 채운 코드는 위의 코드입니다. <mark>줄 수가 달라도 주석이 말한 일을 하면 맞습니다.</mark>
 
@@ -91,20 +75,21 @@ low 198.51.100.90 30 ['경로 스캔']
 
 **자주 틀리는 곳**
 
-- `.sum()` 에서 괄호를 빼면 오류가 납니다. 괄호 없는 `grouped["points"].sum` 은 합계 값이 아니라 아직 실행하지 않은 메서드(method · 메서드, 점 뒤에 붙여 쓰는 함수)라서 다음 줄의 `totals.sort_values` 에서 `AttributeError` 가 납니다.
+- ① 에서 `WEIGHTS` 를 따옴표로 묶어 `.map("WEIGHTS")` 로 쓰면 `TypeError: 'str' object is not callable` 오류가 납니다. **`WEIGHTS` 는 딕셔너리 변수 이름이라 따옴표 없이 씁니다.**
+- ② `.sum()` 에서 괄호를 빼면 오류가 납니다. 괄호 없는 `grouped["points"].sum` 은 합계 값이 아니라 아직 실행하지 않은 메서드(method · 메서드, 점 뒤에 붙여 쓰는 함수)라서 다음 줄의 `totals.sort_values` 에서 `AttributeError` 가 납니다.
   - 실행하면 다음 오류가 납니다(<mark style="background:#ffc4d6">`'function' object has no attribute 'sort_values'`</mark> 또는 비슷한 문구가 나오면 이 실수입니다).
 
 ```
 Traceback (most recent call last):
   File "…/anomaly_detection/exercise4-1_run.py", line 11, in <module>
     totals = score_findings(findings)                      # 대상마다 점수를 더한다
-  File "…/anomaly_detection/risk_scores.py", line 74, in score_findings
-    totals = totals.sort_values(ascending=False)       # 점수가 높은 순으로 정렬한다 — 미리 채운 줄
+  File "…/anomaly_detection/risk_scores.py", line 73, in score_findings
+    totals = totals.sort_values(ascending=False)       # 점수가 높은 순으로 정렬한다
 AttributeError: 'function' object has no attribute 'sort_values'
 ```
 
   - 줄 번호는 사람마다 다릅니다.
-- `make_grade` 는 **높은 기준부터 차례로 확인합니다.** high 기준을 먼저 확인하고, 아니면 mid 기준을 확인하는 순서입니다. 순서를 바꿔 mid 를 먼저 확인하면 높은 점수도 mid 가 됩니다.
+- 미리 채운 `make_grade` 는 **높은 기준부터 차례로 확인합니다.** high 기준을 먼저 확인하고, 아니면 mid 기준을 확인하는 순서입니다. 순서를 바꿔 mid 를 먼저 확인하면 높은 점수도 mid 가 됩니다.
 
 **관제에서는**
 
@@ -122,44 +107,21 @@ python exercise4-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
+**채운 코드** (한 예) — `apply_exception` 안의 두 곳과 `find_removed_users` 안의 한 곳입니다.
 
-① `apply_exception` 안 — 3번과 4번 주석 사이에 미리 채운 `removed_alerts = …` · `is_kept = …` 두 줄이 있습니다. 네 줄을 한 번에 붙이지 말고, 아래 상자를 하나씩 해당 번호 주석 바로 아래에 붙입니다.
-
-1번 주석 아래
+`apply_exception` 안
 
 ```python
-    is_ip_rule = alerts["rule"] == IP_RULE            # 각 알림이 IP 규칙의 알림인지 비교한다
-```
-
-2번 주석 아래
-
-```python
+    # ① alerts 의 "ip" 열이 TRUSTED_IPS 안에 있는지 isin 으로 구해 is_trusted 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     is_trusted = alerts["ip"].isin(TRUSTED_IPS)       # 각 알림의 IP 가 믿는 IP 리스트에 있는지 구한다
-```
-
-3번 주석 아래
-
-```python
+    # ② is_ip_rule 과 is_trusted 가 모두 True 인 행을 & 로 구해 is_removed 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     is_removed = is_ip_rule & is_trusted              # IP 규칙의 알림이면서 믿는 IP 에서 온 것만 True 로 만든다
 ```
 
-4번 주석 아래(미리 채운 `is_kept = …` 줄보다 아래)
+`find_removed_users` 안
 
 ```python
-    kept_alerts = alerts[is_kept]                     # True 인 행만 골라 새 표로 만든다
-```
-
-② `count_real_removed` 안
-
-```python
-    is_real_removed = removed_alerts["real"]          # real 열(진짜 문제이면 True)을 꺼낸다
-    real_removed = removed_alerts[is_real_removed]    # True 인 행만 골라 새 표로 만든다
-```
-
-③ `find_removed_users` 안
-
-```python
+    # ③ removed_alerts 의 "user" 열에서 같은 값은 한 번씩만 .unique() 로 꺼내 removed_users 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     removed_users = removed_alerts["user"].unique()   # 같은 사용자는 한 번씩만 꺼낸다
 ```
 
@@ -196,7 +158,7 @@ python exercise4-2_run.py
 
 **자주 틀리는 곳**
 
-- `is_removed = is_ip_rule & is_trusted` 에서 `is_ip_rule &` 를 빼고 `is_removed = is_trusted` 로 쓰면 오류는 나지 않지만 <mark>**단계 4의 `진짜 문제였던 알림 수:` 가 0이 아니라 1로 나옵니다.**</mark> 같은 IP 에서 온 A3 · A6 까지 빠지고, 빠진 A6 은 진짜 문제입니다.
+- ② `is_removed = is_ip_rule & is_trusted` 에서 `is_ip_rule &` 를 빼고 `is_removed = is_trusted` 로 쓰면 오류는 나지 않지만 <mark>**단계 4의 `진짜 문제였던 알림 수:` 가 0이 아니라 1로 나옵니다.**</mark> 같은 IP 에서 온 A3 · A6 까지 빠지고, 빠진 A6 은 진짜 문제입니다.
   - 이때 출력은 다음과 같습니다(<mark style="background:#ffc4d6">`빠진 알림 수: 4`</mark> 와 <mark style="background:#ffc4d6">`진짜 문제였던 알림 수: 1`</mark> 이 나오면 이 실수입니다).
 
 ```
@@ -216,6 +178,16 @@ python exercise4-2_run.py
 --- 단계 4: 빠진 알림 중 진짜 문제였던 것 ---
 진짜 문제였던 알림 수: 1
 ```
+
+아래 세 실수는 오류가 납니다.
+
+| 잘못 쓴 코드 | 나오는 오류 |
+|---|---|
+| ① `alerts["ip"] == TRUSTED_IPS` | `ValueError: ('Lengths must match to compare', …)` |
+| ② `is_ip_rule and is_trusted` | `ValueError: The truth value of a Series is ambiguous. …` |
+| ③ `.unique` (괄호 빠짐) | `TypeError: 'method' object is not iterable` |
+
+- ① 리스트 안에 있는지는 `==` 가 아니라 `.isin(리스트)` 로 구합니다. ② 표의 열 두 개를 합칠 때는 `and` 가 아니라 `&` 를 씁니다. ③ `.unique()` 는 괄호까지 써야 값이 나옵니다.
 
 **관제에서는**
 

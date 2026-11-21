@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
 <title>실습 4-2 보고서: 예외 규칙 전후 오탐 수와 A3, 믿는 IP의 위험, 마무리 칸을 채운다</title>
-<desc>실습 4-2 보고서의 세 칸에 채울 내용을 체크리스트로 보여 준다. 믿는 IP 예외 규칙이 줄인 것과 놓칠 수 있는 것을 함께 묻는다.</desc>
+<desc>실습 4-2 보고서의 세 칸에 채울 내용을 체크리스트로 보여 준다. (가)와 (나)는 [핵심 질문]이고, 믿는 IP 로 놓칠 수 있는 것을 묻는 (다)는 여유가 되면 하는 [응용]이다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 4-2 · 채울 칸</text>
 <rect x="12" y="54" width="224" height="70.4" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="124" y="94.72" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">(가) 출력과 전후 비교</text>
+<text x="124" y="83.12" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">(가) [핵심 질문] 출력과</text><text x="124" y="106.32" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">전후 비교</text>
 <rect x="12" y="134.4" width="224" height="41.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <rect x="22.0" y="148.9" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
 <text x="44" y="160.45" font-size="15" text-anchor="start" fill="#292929">출력 전체를 코드 상자에</text>
@@ -29,8 +29,8 @@
 <text x="280" y="210.2" font-size="15" text-anchor="start" fill="#292929">A3(jiwoo, 업무 시간 밖</text>
 <text x="280" y="231.95" font-size="15" text-anchor="start" fill="#292929">로그인)이 같은 IP 인데</text>
 <text x="280" y="253.7" font-size="15" text-anchor="start" fill="#292929">줄지 않은 이유</text>
-<rect x="484" y="54" width="224" height="70.4" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="596" y="94.72" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">(다) [핵심 질문] 믿는 IP</text>
+<rect x="484" y="54" width="224" height="70.4" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="596" y="94.72" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">(다) [응용] 믿는 IP</text>
 <rect x="484" y="134.4" width="224" height="85.25" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <rect x="494.0" y="148.9" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
 <text x="516" y="160.45" font-size="15" text-anchor="start" fill="#292929">203.0.113.80 을 믿는 IP</text>
