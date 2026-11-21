@@ -146,21 +146,14 @@ python exercise1-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 `run_playbook` 한 함수이고, `playbook_runner.py` 의 1 ~ 6번입니다. 각 줄을 같은 번호 주석 바로 아래에 씁니다. 3번과 4번 주석 사이의 `for action in playbook["actions"]:` 줄은 이미 있으니 붙이지 않습니다.
+**채운 코드** (한 예) — 직접 쓰는 곳은 `playbook_runner.py` 의 `run_playbook` 안 ① · ② 두 줄입니다. 각 줄을 같은 번호 주석 바로 아래에 씁니다. ① 과 ② 사이의 `action_log.append(…)` 줄은 미리 채운 줄이라 그대로 둡니다.
 
 ```python
-    # 1. playbook 의 "approval" 값이 "자동" 이 아니면 (if, !=)
+    # ① playbook 의 "approval" 값이 "자동" 이 아니면 (if, !=)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     if playbook["approval"] != "자동":                                              # 승인 값이 자동이 아니면
-    # 2.   make_log_entry(incident, playbook, "전체", "승인 대기") 의 결과를 action_log 에 추가한다 (append)
-        action_log.append(make_log_entry(incident, playbook, "전체", "승인 대기"))  # 승인 대기로 기록하고
-    # 3.   False 를 리턴한다 (실행하지 않았다)
+        action_log.append(make_log_entry(incident, playbook, "전체", "승인 대기"))  # 승인 대기로 기록한다 (미리 채운 줄)
+        # ② False 를 리턴해 여기서 끝낸다 (액션을 실행하지 않는다)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
         return False                                                                # 실행하지 않고 끝낸다
-        # 4. run_action(action, incident, state) 의 결과를 result 에 담는다
-        result = run_action(action, incident, state)                                # 액션을 실행하고 결과 문장을 받는다
-        # 5. make_log_entry(incident, playbook, action, result) 의 결과를 action_log 에 추가한다 (append)
-        action_log.append(make_log_entry(incident, playbook, action, result))       # 결과를 감사 기록에 추가한다
-    # 6. change_status(incident, "조치됨") 를 호출한다 (실행이 끝났으니 조치됨으로 옮긴다)
-    change_status(incident, "조치됨")                                               # 실행이 끝났으니 조치됨으로 옮긴다
 ```
 
 위 줄만 보면 들여쓰기가 헷갈리니, 미리 채운 줄까지 넣은 완성된 모양을 함께 봅니다.
@@ -169,18 +162,18 @@ python exercise1-2_run.py
 
 ```python
 def run_playbook(incident, playbook, state, action_log):                            # 인시던트 · 플레이북 · 시스템 상태 · 감사 기록 리스트를 받는 함수
-    change_status(incident, "분류됨")                                               # 대응을 시작하기 전에 분류됨 상태로 옮긴다 — 미리 채운 줄
-    if playbook["approval"] != "자동":                                              # 승인 값이 자동이 아니면
+    change_status(incident, "분류됨")                                               # 대응을 시작하기 전에 분류됨 상태로 옮긴다
+    if playbook["approval"] != "자동":                                              # 승인 값이 자동이 아니면 — ① 직접 쓴 줄
         action_log.append(make_log_entry(incident, playbook, "전체", "승인 대기"))  # 승인 대기로 기록하고
-        return False                                                                # 실행하지 않고 끝낸다
-    for action in playbook["actions"]:                                              # 액션을 하나씩 꺼낸다 — 미리 채운 줄
+        return False                                                                # 실행하지 않고 끝낸다 — ② 직접 쓴 줄
+    for action in playbook["actions"]:                                              # 액션을 하나씩 꺼낸다
         result = run_action(action, incident, state)                                # 액션을 실행하고 결과 문장을 받는다
         action_log.append(make_log_entry(incident, playbook, action, result))       # 결과를 감사 기록에 추가한다
     change_status(incident, "조치됨")                                               # 실행이 끝났으니 조치됨으로 옮긴다
-    return True                                                                     # 모두 실행했으니 True 를 리턴한다 — 미리 채운 줄
+    return True                                                                     # 모두 실행했으니 True 를 리턴한다
 ```
 
-위 코드는 한 예입니다. <mark>줄 수가 달라도 주석이 말한 일을 하면 맞습니다.</mark>
+위 코드는 한 예입니다. <mark>주석이 말한 일을 하면 맞습니다.</mark> ① · ② 말고는 모두 미리 채운 줄입니다.
 
 **결과**
 
@@ -268,7 +261,7 @@ INC-005 PB-003 티켓 생성 : 티켓 TCK-2 생성
 
 **자주 틀리는 곳**
 
-- 1 ~ 3번을 빠뜨리면 오류는 나지 않지만 <mark>**승인이 필요한 플레이북도 바로 실행됩니다.**</mark> 단계 4 에 차단한 IP 가 들어 있고 단계 5 의 승인 대기가 0건으로 나오는 것이 이 실수의 결과입니다.
+- ② 를 빠뜨리면(① 만 쓰면) 오류는 나지 않지만 <mark>**승인이 필요한 플레이북도 바로 실행됩니다.**</mark> 승인 대기 기록은 남기고도 멈추지 않고 `for` 로 내려가기 때문입니다. 단계 3 에 `INC-002 … -> PB-002 실행 완료 (상태: 조치됨)` 가 나오고, 단계 4 에 차단한 IP 가 들어 있고, 단계 5 의 승인 대기가 0건으로 나오는 것이 이 실수의 결과입니다.
 
 ```
 --- 단계 4: 실행 후 연습용 시스템 상태
@@ -278,24 +271,26 @@ INC-005 PB-003 티켓 생성 : 티켓 TCK-2 생성
 --- 단계 5: 승인 대기 0 건
 ```
 
-- 1번을 `!=` 대신 `==` 로 쓰면 반대로 동작합니다. <mark>**자동이어야 하는 PB-001 이 승인 대기로 멈추고, 승인이 필요한 플레이북이 실행됩니다.**</mark> 단계 5 에 `INC-001 dami PB-001 · 자동` 이 나오는 것이 이 실수의 결과입니다.
+- ① 을 `!=` 대신 `==` 로 쓰면 반대로 동작합니다. <mark>**자동이어야 하는 PB-001 이 승인 대기로 멈추고, 승인이 필요한 플레이북이 실행됩니다.**</mark> 단계 5 에 `INC-001 dami PB-001 · 자동` 이 나오는 것이 이 실수의 결과입니다.
 
 ```
 --- 단계 5: 승인 대기 1 건
 INC-001 dami PB-001 · 자동
 ```
 
-- 4번을 빠뜨리고 5번에서 `result` 를 쓰면 오류가 납니다. <mark>**`result` 는 4번에서 만들어야 쓸 수 있습니다.**</mark>
-  - 실행하면 다음 오류가 납니다(<mark style="background:#ffc4d6">`name 'result' is not defined`</mark>).
+- ② 를 8칸이 아니라 4칸으로 쓰면 `return False` 가 `if` 밖으로 나가 <mark>**모든 플레이북이 멈춥니다.**</mark> 자동인 PB-001 도 승인 대기로 나오고, 액션은 하나도 실행되지 않습니다.
 
 ```
-NameError: name 'result' is not defined
+--- 단계 5: 승인 대기 3 건
+INC-001 dami PB-001 · 자동
+INC-002 seoyeon PB-002 · 담당자 승인 필요
+INC-005 198.51.100.90 PB-003 · 담당자 승인 필요
 ```
 
-- 6번을 빠뜨리면 오류는 나지 않지만 <mark>**실행을 마친 인시던트의 상태가 `조치됨` 이 아니라 `분류됨` 으로 남습니다.**</mark> 단계 3 의 INC-001 줄 끝이 이 실수의 결과입니다.
+- ① 끝의 `:` 를 빠뜨리면 실행하자마자 오류가 납니다(<mark style="background:#ffc4d6">`expected ':'`</mark>). <mark>**`if` 줄은 `:` 로 끝납니다.**</mark>
 
 ```
-INC-001 dami high -> PB-001 실행 완료 (상태: 분류됨)
+SyntaxError: expected ':'
 ```
 
 **관제에서는**
@@ -314,32 +309,23 @@ python exercise1-3_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — `enrichment.py` 의 1 ~ 6번입니다.
+**채운 코드** (한 예) — `enrichment.py` 의 ① · ② 입니다. 각 줄을 같은 번호 주석 바로 아래에 씁니다.
 
 ```python
-    # 1. entity 가 users_info 안에 있으면 (if, in)
-    if entity in users_info:                                       # 계정 정보에 있는 대상이면
-    # 2.   account 의 "employed" 에 users_info[entity]["employed"] 를 담는다
-        account["employed"] = users_info[entity]["employed"]       # 재직 여부를 담는다
-    # 3.   account 의 "vip" 에 users_info[entity]["vip"] 를 담는다
-        account["vip"] = users_info[entity]["vip"]                 # VIP 여부를 담는다
-    # 4. entity 가 source_ips 안에 있으면 (if, in)
-    if entity in source_ips:                                       # 접속 IP 를 아는 대상이면
-    # 5.   ip_info 의 "source_ip" 에 source_ips[entity] 를 담는다
-        ip_info["source_ip"] = source_ips[entity]                  # 접속 IP 를 담는다
-    # 6.   ip_info 의 "ip_trusted" 에 source_ips[entity] 가 trusted_ips 안에 있는지(in)의 결과를 담는다
-        ip_info["ip_trusted"] = source_ips[entity] in trusted_ips  # 신뢰 IP 안에 있는지 확인한 결과를 담는다
+    # ① entity 가 users_info 안에 있으면 (if, in)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+    if entity in users_info:                                         # 계정 정보에 있는 대상이면
 ```
 
-`exercise1-3_run.py` 의 7 ~ 9번입니다.
+```python
+        # ② ip_info 의 "ip_trusted" 에 source_ips[entity] 가 trusted_ips 안에 있는지(in)의 결과를 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+        ip_info["ip_trusted"] = source_ips[entity] in trusted_ips    # 신뢰 IP 안에 있는지 확인한 결과를 담는다
+```
+
+`exercise1-3_run.py` 의 ③ 입니다.
 
 ```python
-    # 7. enrich_incident(incident, users_info, source_ips, trusted_ips) 를 호출한다 (인시던트에 맥락이 붙는다)
+    # ③ enrich_incident(incident, users_info, source_ips, trusted_ips) 를 호출한다 (인시던트에 맥락이 붙는다)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     enrich_incident(incident, users_info, source_ips, trusted_ips)  # 맥락을 붙인다
-    # 8. context 의 "vip" 가 참이면 (if)
-    if context["vip"]:                                              # VIP 계정이면
-    # 9.   vip_count 에 vip_count + 1 을 담는다 (1 늘린다)
-        vip_count = vip_count + 1                                   # VIP 계정 알림 수를 1 늘린다
 ```
 
 **결과**
@@ -359,7 +345,7 @@ VIP 계정 알림 1 건
 ```
 
 - (나) INC-005 의 대상 `198.51.100.90` 은 <mark style="background:#bde3ff">`users_info` 에도 `source_ips` 에도 키로 없습니다.</mark>
-  - 근거: `lookup_account` 의 `if entity in users_info:`(1번)와 `lookup_source_ip` 의 `if entity in source_ips:`(4번)가 모두 거짓이라 `if` 안의 2 · 3번과 5 · 6번이 실행되지 않고, 초기값(`False` · `None`)이 그대로 남습니다.
+  - 근거: `lookup_account` 의 `if entity in users_info:`(①)와 `lookup_source_ip` 의 `if entity in source_ips:` 가 모두 거짓이라 두 `if` 안의 줄이 실행되지 않고, 초기값(`False` · `None`)이 그대로 남습니다.
   - 문제: 확인되지 않은 대상의 `employed` 가 `True`(재직)로 판정되면 사용자 계정이 아닌 IP 를 「재직 중인 정상 사용자」로 오인하게 되어, 이후 경로 판단이 잘못됩니다. 확인되지 않은 대상은 「확인되지 않음」을 뜻하는 `False` 로 유지해야 안전합니다.
 - (다) 두 알림의 `reasons` 는 다릅니다.
   - INC-002: `평소와 다른 IP` · <mark style="background:#bde3ff">**`대량 다운로드`**</mark>. INC-004: `업무 시간 밖 로그인` · `평소와 다른 IP`.
@@ -371,14 +357,14 @@ VIP 계정 알림 1 건
 
 **자주 틀리는 곳**
 
-- 4번의 `if` 를 빼고 5 · 6번만 쓰면 `source_ips` 에 없는 대상에서 오류가 납니다. <mark>**딕셔너리에서 꺼내기 전에 `in` 으로 키가 있는지 먼저 확인합니다.**</mark>
-  - 실행하면 다음 오류가 납니다(<mark style="background:#ffc4d6">`KeyError: 'dami'`</mark>, 키 에러: 딕셔너리에 없는 키를 꺼내려 할 때 나는 오류). `dami` 는 `source_ips.json` 에 없는 키입니다.
+- ① 의 `if` 를 쓰지 않고 그 아래 두 줄을 4칸으로 당기면 계정 정보에 없는 대상에서 오류가 납니다. <mark>**딕셔너리에서 꺼내기 전에 `in` 으로 키가 있는지 먼저 확인합니다.**</mark>
+  - 실행하면 INC-004 까지 네 줄이 나온 뒤 다음 오류가 납니다(<mark style="background:#ffc4d6">`KeyError: '198.51.100.90'`</mark>, 키 에러: 딕셔너리에 없는 키를 꺼내려 할 때 나는 오류). `198.51.100.90` 은 `users_info.json` 에 없는 키입니다.
 
 ```
-KeyError: 'dami'
+KeyError: '198.51.100.90'
 ```
 
-- 6번을 빠뜨리면 오류는 나지 않지만 <mark>**신뢰 IP 가 모두 「아니오」로 나옵니다.**</mark> INC-002 와 INC-004 의 접속 IP 는 `203.0.113.80` 인데 신뢰 IP 가 「아니오」인 것이 이 실수의 결과입니다.
+- ② 를 빠뜨리면 오류는 나지 않지만 <mark>**신뢰 IP 가 모두 「아니오」로 나옵니다.**</mark> INC-002 와 INC-004 의 접속 IP 는 `203.0.113.80` 인데 신뢰 IP 가 「아니오」인 것이 이 실수의 결과입니다.
 
 ```
 INC-001 dami · 재직: 퇴사 · VIP: 아니오 · 접속 IP: 없음 · 신뢰 IP: 아니오
@@ -386,31 +372,17 @@ INC-002 seoyeon · 재직: 재직 · VIP: 아니오 · 접속 IP: 203.0.113.80 �
 INC-003 gaeun · 재직: 재직 · VIP: 예 · 접속 IP: 198.51.100.77 · 신뢰 IP: 아니오
 ```
 
-- 두 함수를 채우지 않고 실행하면 <mark>**오류 없이 계정 정보에 있는 대상이 모두 「퇴사」로 나오고 VIP 계정 알림이 0건입니다.**</mark> `employed` 의 초기값이 `False` 이기 때문이며, 오류가 발생하지 않아도 출력 내용이 올바른지 직접 읽고 검증해야 합니다.
+- ② 에서 `in trusted_ips` 를 빼고 `source_ips[entity]` 만 담으면 오류는 나지 않지만 <mark>**접속 IP 가 있는 알림이 모두 「신뢰 IP: 예」로 나옵니다.**</mark> IP 글자가 들어 있는 값은 `if` 에서 참으로 보기 때문입니다. 신뢰 IP 목록에 없는 `198.51.100.77` 의 INC-003 이 「예」인 것이 이 실수의 결과입니다.
 
 ```
---- 단계 2: 알림마다 붙인 정보(재직 · VIP · 접속 IP)
-INC-001 dami · 재직: 퇴사 · VIP: 아니오 · 접속 IP: 없음 · 신뢰 IP: 아니오
-INC-002 seoyeon · 재직: 퇴사 · VIP: 아니오 · 접속 IP: 없음 · 신뢰 IP: 아니오
-INC-003 gaeun · 재직: 퇴사 · VIP: 아니오 · 접속 IP: 없음 · 신뢰 IP: 아니오
-INC-004 jiwoo · 재직: 퇴사 · VIP: 아니오 · 접속 IP: 없음 · 신뢰 IP: 아니오
-INC-005 198.51.100.90 · 재직: 계정 아님 · VIP: 아니오 · 접속 IP: 없음 · 신뢰 IP: 아니오
---- 단계 3: VIP 계정 알림 수
-VIP 계정 알림 0 건
+INC-003 gaeun · 재직: 재직 · VIP: 예 · 접속 IP: 198.51.100.77 · 신뢰 IP: 예
 ```
 
-- 실행 파일의 7번을 비워 두면 맥락이 추가되지 않아 오류가 발생합니다. <mark>**보강 함수를 호출해야 `incident["context"]` 가 생성됩니다.**</mark>
+- 실행 파일의 ③ 을 비워 두면 맥락이 추가되지 않아 오류가 발생합니다. <mark>**보강 함수를 호출해야 `incident["context"]` 가 생성됩니다.**</mark>
   - 실행하면 다음 오류가 납니다(<mark style="background:#ffc4d6">`KeyError: 'context'`</mark>).
 
 ```
 KeyError: 'context'
-```
-
-- 9번에서 `vip_count + 1` 대신 `vip_count` 를 그대로 다시 저장하면 오류는 나지 않지만 <mark>**VIP 계정 알림이 항상 0건으로 나옵니다.**</mark> 센 값이 늘지 않기 때문입니다.
-
-```
---- 단계 3: VIP 계정 알림 수
-VIP 계정 알림 0 건
 ```
 
 **관제에서는**

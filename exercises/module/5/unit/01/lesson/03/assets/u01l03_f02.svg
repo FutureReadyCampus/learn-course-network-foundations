@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <title>run_playbook 은 승인이 「자동」이 아니면 승인 대기를 기록하고 멈추고, 자동이면 액션을 실행합니다</title>
-<desc>인시던트 한 건을 처리하는 순서입니다. 상태를 분류됨으로 옮긴 뒤(미리 채움) 승인이 「자동」이 아닌지 묻습니다. 예이면 「승인 대기」를 기록하고 멈추고(1 · 2 · 3번), 아니요이면 액션을 하나씩 실행하고(4번) 기록한 뒤(5번) 상태를 조치됨으로 옮깁니다(6번).</desc>
+<desc>인시던트 한 건을 처리하는 순서입니다. 상태를 분류됨으로 옮긴 뒤(미리 채움) 승인이 「자동」이 아닌지 묻습니다. 예이면 「승인 대기」를 기록하고 멈추고(직접 쓰는 ① · ②), 아니요이면 액션을 하나씩 실행하고 기록한 뒤 상태를 조치됨으로 옮깁니다(미리 채움).</desc>
 <defs><marker id="a-f02-m5u01l03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <text x="20" y="30" font-size="18" font-weight="700" fill="#292929">인시던트 한 건을 처리하는 순서</text>
 <g font-size="15" fill="#292929">
@@ -11,13 +11,13 @@
 <rect x="440" y="120" width="260" height="80" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
 <text x="456" y="146" font-weight="700">「승인 대기」를 기록하고</text>
 <text x="456" y="168" font-weight="700">멈춘다</text>
-<text x="456" y="189" font-size="14" fill="#666660">(1 · 2 · 3번)</text>
+<text x="456" y="189" font-size="14" fill="#666660">(① · ② 직접 씀)</text>
 <text x="400" y="150" font-size="15" font-weight="700" text-anchor="middle">예</text>
 <text x="76" y="216" font-size="15" font-weight="700">아니요</text>
 <rect x="20" y="238" width="340" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="36" y="272"><tspan font-weight="700">액션을 하나씩 실행하고</tspan><tspan font-size="14" fill="#666660">(4번)</tspan> <tspan font-weight="700">기록한다</tspan><tspan font-size="14" fill="#666660">(5번)</tspan></text>
+<text x="36" y="272"><tspan font-weight="700">액션을 하나씩 실행하고</tspan><tspan font-weight="700"> 기록한다</tspan> <tspan font-size="14" fill="#666660">(미리 채움)</tspan></text>
 <rect x="20" y="328" width="340" height="48" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="36" y="357"><tspan font-weight="700">상태를 조치됨으로 옮긴다</tspan> <tspan font-size="14" fill="#666660">(6번)</tspan></text>
+<text x="36" y="357"><tspan font-weight="700">상태를 조치됨으로 옮긴다</tspan> <tspan font-size="14" fill="#666660">(미리 채움)</tspan></text>
 </g>
 <g stroke="#666660" stroke-width="1.6" fill="none" marker-end="url(#a-f02-m5u01l03)">
 <path d="M60 98V128"/><path d="M360 160H436"/><path d="M60 188V234"/><path d="M60 294V324"/>

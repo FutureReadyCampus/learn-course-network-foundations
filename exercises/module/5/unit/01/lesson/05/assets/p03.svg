@@ -19,11 +19,11 @@
 <text y="259.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="110.0" dy="0.0">trusted_ips.json</tspan></text>
 <line x1="202" y1="255" x2="246" y2="156" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
 <rect x="250" y="84" width="220" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text y="117.3" font-size="14" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0" font-weight="700">exercise1-3_run.py</tspan><tspan x="360.0" dy="19.6">7번 보강 호출</tspan><tspan x="360.0" dy="19.6">8 · 9번 VIP 수 세기</tspan></text>
+<text y="117.3" font-size="14" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0" font-weight="700">exercise1-3_run.py</tspan><tspan x="360.0" dy="19.6">③ 보강 호출 (직접 씀)</tspan><tspan x="360.0" dy="19.6">VIP 수 세기 (미리 채움)</tspan></text>
 <line x1="360" y1="182" x2="360" y2="196" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
 <text x="372" y="194" font-size="14" fill="#666660">import</text>
 <rect x="250" y="200" width="220" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text y="233.3" font-size="14" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0" font-weight="700">enrichment.py</tspan><tspan x="360.0" dy="19.6">1 ~ 6번 직접 씀</tspan><tspan x="360.0" dy="19.6">계정 · 접속 IP 조회</tspan></text>
+<text y="233.3" font-size="14" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0" font-weight="700">enrichment.py</tspan><tspan x="360.0" dy="19.6">① · ② 직접 씀</tspan><tspan x="360.0" dy="19.6">계정 · 접속 IP 조회</tspan></text>
 <line x1="472" y1="132" x2="506" y2="160" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
 <rect x="510" y="84" width="190" height="212" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text y="136.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="605.0" dy="0.0">단계 1</tspan><tspan x="605.0" dy="19.6">불러온 개수</tspan><tspan x="605.0" dy="19.6">단계 2</tspan><tspan x="605.0" dy="19.6">알림마다 재직 · VIP</tspan><tspan x="605.0" dy="19.6">· 접속 IP · 신뢰 IP</tspan><tspan x="605.0" dy="19.6">단계 3</tspan><tspan x="605.0" dy="19.6">VIP 계정 알림 수</tspan></text>

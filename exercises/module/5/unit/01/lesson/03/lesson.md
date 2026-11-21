@@ -23,18 +23,18 @@ source:
 
 ## 2.1 이번에 쓰는 파일과 프로그램이 처리하는 순서
 
-실습 1-1에서는 사람이 `system_state.json` 을 열어 값을 직접 고쳤습니다. 실습 1-2에서는 <mark>같은 일을 프로그램이 합니다.</mark> `incident.py` 는 완성본을 그대로 붙여 넣고, `playbook_runner.py` 의 핵심 6곳만 직접 씁니다.
+실습 1-1에서는 사람이 `system_state.json` 을 열어 값을 직접 고쳤습니다. 실습 1-2에서는 <mark>같은 일을 프로그램이 합니다.</mark> `incident.py` 는 완성본을 그대로 붙여 넣고, `playbook_runner.py` 에서는 승인을 확인하는 두 줄(① · ②)만 직접 씁니다. 나머지 줄은 미리 채워 두었습니다.
 
 **① 오늘 쓰는 파일 네 개**
 
 | 파일 | 들어 있는 것 | 오늘 |
 |---|---|---|
 | `incident.py` | 상태 바꾸기 · 플레이북 찾기 · 액션 실행 · 감사 기록 만들기 함수 | 완성본을 붙여 넣는다 |
-| `playbook_runner.py` | `run_playbook`(한 건에 플레이북 실행) · `process_incidents`(5건을 하나씩 처리) | **`run_playbook` 의 핵심 6곳을 직접 쓴다** |
+| `playbook_runner.py` | `run_playbook`(한 건에 플레이북 실행) · `process_incidents`(5건을 하나씩 처리) | **`run_playbook` 의 두 줄(① · ②)을 직접 쓴다** |
 | `exercise1-2_run.py` | 파일을 읽어 `process_incidents` 를 부르고, 결과를 출력 · 저장하는 시작 파일 | 그대로 붙여 넣고 터미널에서 실행한다 |
 | `action_log.json` | 프로그램이 실행한 일을 한 건씩 적은 감사 기록 파일 | 실행하면 자동으로 생긴다 |
 
-**② 인시던트 한 건을 처리하는 순서** — `run_playbook` 이 한 번 실행되면 아래 순서로 한 건을 처리합니다. 직접 쓰는 6곳이 이 순서입니다.
+**② 인시던트 한 건을 처리하는 순서** — `run_playbook` 이 한 번 실행되면 아래 순서로 한 건을 처리합니다. 직접 쓰는 ① · ② 는 그림의 「예」 쪽(승인 대기를 기록하고 멈추는 곳)에 있습니다.
 
 <figure class="page-figure"><img src="assets/u01l03_f02.svg" alt="상태를 분류됨으로 옮긴 뒤, 승인이 자동이 아니면 승인 대기를 기록하고 멈추고, 자동이면 액션을 실행·기록하고 조치됨으로 옮깁니다"></figure>
 
@@ -88,7 +88,23 @@ source:
 | `run_playbook` | 인시던트 · 플레이북 · 연습용 시스템 · 기록 리스트 | 실행했으면 `True`, 승인 대기면 `False` (**직접 쓴다**) |
 | `process_incidents` | 인시던트 리스트 · 플레이북 리스트 · 연습용 시스템 · 기록 리스트 | 승인 대기 건의 리스트 (미리 채움) |
 
-- **직접 쓰는 곳은 여섯 군데**(번호 1 ~ 6)이고, 함수 한 개(`run_playbook`) 안에 있습니다.
+- **직접 쓰는 곳은 두 군데**(① · ②)이고, 함수 한 개(`run_playbook`) 안의 승인 확인 부분입니다.
+
+#### 문법 상자 · 직접 쓰는 곳의 모양 (예시 값 · 읽기만 합니다)
+
+```python
+playbook = {"id": "PB-002", "approval": "담당자 승인 필요"}   # 예시 값
+
+print(playbook["approval"] != "자동")    # True  · 자동이 아니다 → 멈춰야 한다
+print("자동" != "자동")                  # False · 같으면 False
+
+def stop_here():                         # return 을 만나면 그 자리에서 함수가 끝난다
+    return False                         # 이 줄 아래는 실행되지 않는다
+    print("여기는 안 나옴")
+```
+
+- `!=` 는 「다르면 참」입니다. `==`(같으면 참)와 반대입니다.
+- `return False` 는 함수가 `False` 를 돌려주고 **그 자리에서 끝난다**는 뜻입니다.
 
 ## 실습 1-2 · 실행기로 알림 5건 처리하기
 
@@ -102,7 +118,7 @@ source:
 
 **할 일**
 
-1. `incident.py` · `playbook_runner.py` · `exercise1-2_run.py` 세 파일을 만듭니다. `incident.py` 와 실행 파일은 그대로 붙여 넣고, `playbook_runner.py` 의 `run_playbook` 에서 직접 쓰는 곳을 씁니다.
+1. `incident.py` · `playbook_runner.py` · `exercise1-2_run.py` 세 파일을 만듭니다. `incident.py` 와 실행 파일은 그대로 붙여 넣고, `playbook_runner.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
 2. 실행해서 <mark>인시던트마다 실행 결과</mark>(단계 3), <mark>실행 전후 상태</mark>(단계 2 · 4), <mark>승인 대기</mark>(단계 5), <mark>감사 기록</mark>(단계 6)를 읽습니다.
 
 **`incident.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
@@ -226,7 +242,7 @@ def make_log_entry(incident, playbook, action, result):                         
 
 **`playbook_runner.py`**
 
-- **무엇인가**: 플레이북 하나를 실행하는 **프로그램의 핵심**입니다. 승인을 확인하고, 액션을 차례로 실행하고, 기록을 남깁니다. 여기서 직접 6곳을 씁니다.
+- **무엇인가**: 플레이북 하나를 실행하는 **프로그램의 핵심**입니다. 승인을 확인하고, 액션을 차례로 실행하고, 기록을 남깁니다. 승인을 확인하는 두 줄(① · ②)을 직접 씁니다.
 - **어디에 쓰나**: 실행 파일이 인시던트 5건을 이 파일의 함수에 넘겨 처리합니다.
 
 ```python
@@ -237,15 +253,16 @@ def run_playbook(incident, playbook, state, action_log):                        
     """플레이북의 액션을 차례로 실행하고 감사 기록을 남긴다. 승인이 필요하면 실행하지 않고 승인 대기로 기록한다.
     실행했으면 True, 승인 대기로 멈췄으면 False 를 리턴한다.
     """
-    change_status(incident, "분류됨")                                            # 대응을 시작하기 전에 분류됨 상태로 옮긴다 — 미리 채운 줄
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. playbook 의 "approval" 값이 "자동" 이 아니면 (if, !=)
-    # 2.   make_log_entry(incident, playbook, "전체", "승인 대기") 의 결과를 action_log 에 추가한다 (append)
-    # 3.   False 를 리턴한다 (실행하지 않았다)
+    change_status(incident, "분류됨")                                            # 대응을 시작하기 전에 분류됨 상태로 옮긴다
+    # [승인 확인] 승인 값이 「자동」이 아니면 승인 대기를 기록하고 멈춘다
+    # ① playbook 의 "approval" 값이 "자동" 이 아니면 (if, !=)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+        action_log.append(make_log_entry(incident, playbook, "전체", "승인 대기"))  # 승인 대기로 기록한다
+        # ② False 를 리턴해 여기서 끝낸다 (액션을 실행하지 않는다)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+    # [액션 실행] 승인이 「자동」이면 액션을 차례로 실행하고 한 건씩 기록한다
     for action in playbook["actions"]:                                           # 액션을 하나씩 꺼낸다
-        # 4. run_action(action, incident, state) 의 결과를 result 에 담는다
-        # 5. make_log_entry(incident, playbook, action, result) 의 결과를 action_log 에 추가한다 (append)
-    # 6. change_status(incident, "조치됨") 를 호출한다 (실행이 끝났으니 조치됨으로 옮긴다)
+        result = run_action(action, incident, state)                             # 액션을 실행하고 결과 문장을 받는다
+        action_log.append(make_log_entry(incident, playbook, action, result))    # 결과를 감사 기록에 추가한다
+    change_status(incident, "조치됨")                                            # 실행이 끝났으니 조치됨으로 옮긴다
     return True                                                                  # 모두 실행했으니 True 를 리턴한다
 
 
@@ -270,17 +287,17 @@ def process_incidents(incidents, registry, state, action_log):                  
     return pending                                                               # 승인 대기 리스트를 리턴한다
 ```
 
-들여쓰기는 **미리 채운 줄에 맞춥니다.**
+**직접 쓰는 곳**
 
-| 번호 | 들어가는 곳 | 앞 공백 |
+| 빈칸 | 쓰는 줄 | 들여쓰기 |
 |---|---|---|
-| 1 · 6번 | 함수 안 | 4개 |
-| 2 · 3번 | `if` 안 | 8개 |
-| 4 · 5번 | `for` 안 | 8개 |
+| ① | 승인 값이 「자동」이 아니면 (`if`) | 4칸 |
+| ② | `False` 를 리턴해 끝냄 (`return`) | 8칸 |
 
-- 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
-- 3번의 `return False` 는 「더 실행하지 않고 여기서 끝낸다」는 뜻입니다. 2번에서 기록을 남긴 뒤 바로 끝내야 `for` 문의 액션이 실행되지 않습니다.
-- 채우기 전에 실행하면 `IndentationError: expected an indented block` 으로 시작하는 오류가 납니다(문구는 파이썬 버전마다 조금 다릅니다). `for` 안쪽의 4 · 5번이 비어 있기 때문입니다.
+- 주석 줄은 그대로 두고, **각 주석 바로 아래 줄**에 씁니다. ① 은 함수 안의 `if` 줄이라 4칸, ② 는 그 `if` 안쪽이라 바로 위 `action_log.append(…)` 줄과 같은 8칸에서 시작합니다.
+- 채우기 전에 실행하면 `IndentationError: unexpected indent` 가 나옵니다. ① 의 `if` 가 없어서 8칸으로 들여 쓴 `action_log.append(…)` 줄이 갈 곳이 없기 때문이니 정상입니다.
+- ① 확인: ① 만 쓰고 실행하면 오류 없이 끝나지만, 단계 3 에 `INC-002 seoyeon mid -> PB-002 실행 완료 (상태: 조치됨)` 가 나오고 단계 5 는 `승인 대기 0 건` 입니다. 승인 대기 기록은 남겼는데 멈추지 않고 액션까지 실행한 것입니다. ② 를 아직 안 써서 생기는 결과이니 정상입니다. 막히면: 위 문법 상자의 `playbook["approval"] != "자동"` 앞에 `if`, 끝에 `:` 를 붙입니다.
+- ② 확인: ② 까지 쓰고 실행하면 단계 3 에 `INC-002 seoyeon mid -> PB-002 승인 대기 (상태: 분류됨)` 가 나와야 합니다. 그래도 `실행 완료` 가 나오면 ② 의 들여쓰기가 8칸인지 봅니다. 막히면: `return` 뒤에 한 칸 띄우고 `False` 를 씁니다. 앞의 `change_status` 처럼 `True` · `False` 를 리턴하는 함수와 같은 모양입니다.
 
 **`exercise1-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `len(리스트)` 는 리스트의 개수입니다.
 
@@ -328,7 +345,7 @@ for entry in action_log:                                                        
 **순서**
 
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `incident.py` · `playbook_runner.py` · `exercise1-2_run.py` 세 파일을 하나씩 만들고(파일 이름 그대로), 위 코드를 붙여 넣어 저장합니다. <mark>`config/playbook_registry.json` 에 PB-001 ~ PB-003 이 있어야</mark> 합니다.
-2. **[VS Code]** `playbook_runner.py` 에서 <mark>직접 쓰는 곳 여섯 군데를 씁니다</mark>. 위 2.1 의 그림과 표를 참고해 씁니다. 막히면 아래 「실습 1-2 정리」를 봅니다.
+2. **[VS Code]** `playbook_runner.py` 의 <mark>`# ←` 두 곳(① · ②)을 채웁니다</mark>. 위 2.1 의 그림에서 「예」 쪽을 보고 씁니다. 막히면 위 「직접 쓰는 곳」의 확인과 힌트를 봅니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
@@ -350,16 +367,19 @@ for entry in action_log:                                                        
    - `action_log.json`: 감사 기록입니다. 누가 무엇을 언제 했는지 남은 파일이고, 사고가 난 뒤 대응이 적절했는지 다시 확인할 때 읽습니다. 시각(`time`)이 있는지 확인합니다.
    - `system_state.json`: 실행 후 연습용 시스템의 상태입니다. 잠긴 계정과 티켓이 들어 있는지 확인합니다.
 6. **[보고서]** `report_u1.md` 의 `## 실습 1-2` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 실행 후 잠긴 계정 · 차단한 IP · 티켓의 개수와 승인 대기 건수를 적어 주세요.
-   - (나) [핵심 질문] 실습 1-1에서 INC-005 를 수동 처리할 때와 달리, 실행기는 INC-005 를 어떻게 처리했는지 적어 주세요. 근거는 단계 3 · 4 · 5 의 출력으로 쓰고, 그렇게 처리한 이유도 적어 주세요.
-   - (다) [핵심 질문] 감사 기록(단계 6)에서 INC-002 의 한 줄을 읽고, 그 인시던트에 실제로 무엇이 일어났고 무엇이 일어나지 않았는지 적어 주세요. 이런 기록이 현업에서 필요한 이유도 적어 주세요.
+   - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 실행 후 잠긴 계정 · 차단한 IP · 티켓의 개수와 승인 대기 건수를 적어 주세요.
+   - (나) [응용] 실습 1-1에서 INC-005 를 수동 처리할 때와 달리, 실행기는 INC-005 를 어떻게 처리했는지 적어 주세요. 근거는 단계 3 · 4 · 5 의 출력으로 쓰고, 그렇게 처리한 이유도 적어 주세요.
+   - (다) [응용] 감사 기록(단계 6)에서 INC-002 의 한 줄을 읽고, 그 인시던트에 실제로 무엇이 일어났고 무엇이 일어나지 않았는지 적어 주세요. 이런 기록이 현업에서 필요한 이유도 적어 주세요.
+   - (가)는 꼭 씁니다. (나) · (다)는 여유가 되면 하는 응용이고, 답은 보고서 틀의 `## 실습 응용 질문` 칸에 씁니다.
+
+**확인** — 단계 5 가 `승인 대기 2 건`(INC-002 · INC-005)이고 단계 6 이 `감사 기록 4 건` 이면 성공입니다(PB-003 을 `담당자 승인 필요` 로 쓴 경우. `자동` 으로 썼다면 승인 대기 1 건 · 감사 기록 5 건). 안 나오면 「정답」 레슨의 실습 1-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 ## 실습 1-2 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 값이 다르면 | `if playbook["approval"] != "자동":` |
+| 값이 다르면 (①) | `if playbook["approval"] != "자동":` |
 | 리스트에 추가 | `action_log.append(make_log_entry(incident, playbook, "전체", "승인 대기"))` |
-| 여기서 끝내기 | `return False` |
+| 여기서 끝내기 (②) | `return False` |
 | 액션 실행하고 결과 받기 | `result = run_action(action, incident, state)` |
 | 상태 옮기기 | `change_status(incident, "조치됨")` |
