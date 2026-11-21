@@ -193,7 +193,7 @@ def evaluate_conditional(user, resource, action, network, now, rules):   # 사�
 
 - `evaluate_conditional` 의 6번 · 8번은 미리 채운 `if rule["permission"] == permission:` 의 안쪽에 씁니다.
 - 나머지 줄은 미리 채워 두었으니 그대로 둡니다.
-- 3번의 `start <= hour < end` 는 start 이상이고 end 미만인지의 참 · 거짓입니다. 이 결과를 그대로 `return` 하므로 `if` 가 필요 없습니다.
+- 3번의 `start_hour <= hour < end_hour` 는 start 이상이고 end 미만인지의 참 · 거짓입니다. 이 결과를 그대로 `return` 하므로 `if` 가 필요 없습니다.
 - 6번 · 8번의 `not` 은 함수가 리턴한 참과 거짓을 뒤집습니다.
 - 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다(파이썬 버전에 따라 뒤에 `after 'if' statement on line …` 가 붙습니다). `evaluate_conditional` 의 `if` 아래에 실행할 줄이 아직 없기 때문입니다. `is_work_time` · `is_allowed_network` 는 채우기 전에 아무것도 리턴하지 않습니다.
 
@@ -265,7 +265,7 @@ for rule in RULES:                                               # 조건을 하
 | 기본 판정 먼저 | `is_allowed, reason = evaluate_access(user, resource, action, now)` (미리 채움) |
 | 기본 판정이 거부이면 | `if not is_allowed:` → `return False, reason` (미리 채움) |
 | 요청 시각의 시 | `hour = now.hour` (`is_work_time` 안) |
-| 시간대 안인지 | `return start <= hour < end` (끝 시각은 포함하지 않음) |
+| 시간대 안인지 | `return start_hour <= hour < end_hour` (끝 시각은 포함하지 않음) |
 | 허용 접속 위치 리스트 | `allowed_networks = rule["networks"]` (`is_allowed_network` 안) |
 | 접속 위치가 리스트에 있는지 | `return network in allowed_networks` |
 | 업무 시간 밖이면 거부 | `if not is_work_time(rule, now):` → `return False, …` |

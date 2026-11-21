@@ -57,7 +57,7 @@ def find_stale(access_list, now):                                # 현황 리스
     return stale                                                 # 걸린 리스트를 리턴한다
 ```
 
-> **확인** — VS Code 왼쪽 목록에서 `access_control` 바로 아래(`config` 안이 아님)에 `review_rules.py` 이 보이고, 탭 제목 옆에 저장 안 됨 표시(●)가 없으면 성공입니다. `config` 안에 만들어졌으면 `access_control` 로 끌어다 옮깁니다.
+> **확인** — VS Code 왼쪽 목록에서 `access_control` 바로 아래(`config` 안이 아님)에 `review_rules.py` 가 보이고, 탭 제목 옆에 저장 안 됨 표시(●)가 없으면 성공입니다. `config` 안에 만들어졌으면 `access_control` 로 끌어다 옮깁니다.
 
 ## `overprivilege.py` 만들기
 
@@ -131,7 +131,7 @@ def generate_report(access_list, stale, unused, days, generated_at):   # 현황 
     return report                                                # 리포트를 리턴한다
 ```
 
-> **확인** — VS Code 왼쪽 목록에서 `access_control` 바로 아래(`config` 안이 아님)에 `overprivilege.py` 이 보이고, 탭 제목 옆에 저장 안 됨 표시(●)가 없으면 성공입니다. `config` 안에 만들어졌으면 `access_control` 로 끌어다 옮깁니다.
+> **확인** — VS Code 왼쪽 목록에서 `access_control` 바로 아래(`config` 안이 아님)에 `overprivilege.py` 가 보이고, 탭 제목 옆에 저장 안 됨 표시(●)가 없으면 성공입니다. `config` 안에 만들어졌으면 `access_control` 로 끌어다 옮깁니다.
 
 ## `report_exclude.py` 만들기
 
@@ -197,7 +197,7 @@ def split_by_exclude(findings, exclude_map):                     # 후보 리스
     return to_revoke, excluded                                   # 두 리스트를 함께 리턴한다
 ```
 
-> **확인** — VS Code 왼쪽 목록에서 `access_control` 바로 아래(`config` 안이 아님)에 `report_exclude.py` 이 보이고, 탭 제목 옆에 저장 안 됨 표시(●)가 없으면 성공입니다. `config` 안에 만들어졌으면 `access_control` 로 끌어다 옮깁니다.
+> **확인** — VS Code 왼쪽 목록에서 `access_control` 바로 아래(`config` 안이 아님)에 `report_exclude.py` 가 보이고, 탭 제목 옆에 저장 안 됨 표시(●)가 없으면 성공입니다. `config` 안에 만들어졌으면 `access_control` 로 끌어다 옮깁니다.
 
 ## `config/exclude_list.json` 만들기
 

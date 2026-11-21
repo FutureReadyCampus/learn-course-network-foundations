@@ -47,7 +47,7 @@ render: markdown
   ```bash
   python -m json.tool config/exceptions.json
   ```
-  - 명령 풀이: `python -m json.tool` 파이썬의 JSON 검사 도구를 실행 · `config/exceptions.json` 검사할 파일 (맥북은 `python3`)
+  - 명령 풀이: `python -m json.tool` 파이썬의 JSON 검사 도구를 실행 · `config/exceptions.json` 검사할 파일 (맥북은 `python3`). 한글이 `\uXXXX` 로 보여도 정상입니다
 
 ## `exception_policy.py` 만들기
 
