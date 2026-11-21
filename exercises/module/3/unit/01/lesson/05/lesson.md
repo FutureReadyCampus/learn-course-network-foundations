@@ -28,23 +28,41 @@ source:
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="evaluate_access 는 역할 판정을 먼저 하고, 「권한 없음」일 때만 예외를 찾아 판정합니다"></figure>
 
-- `check_permission` 은 실습 1-2에서 만든 그대로 불러 씁니다. 고치지 않습니다. 이 함수는 `(True 또는 False, 이유)` 를 리턴하고, 이유는 「권한 없음」 · 「퇴사한 계정」 · 「등록되지 않은 사용자」 · 「역할이 없음」 중 하나입니다.
+`policy.py` 가 불러 쓰는 두 함수입니다.
+
+| 함수 | 들어 있는 파일 | 넣는 값 | 리턴 |
+|---|---|---|---|
+| `check_permission` | `rbac.py`(실습 1-2에서 만든 그대로, 고치지 않음) | 사용자 · 자원 · 행위 | `(True 또는 False, 이유)` |
+| `find_exception` | `exception_policy.py`(「제공 파일」 레슨에서 복사해 만듦) | 사람 · 권한 · 지금 시각 | 유효한 예외가 있으면 `(True, 예외 번호)`, 없으면 `(False, None)` |
+
+- `check_permission` 의 이유는 「권한 없음」 · 「퇴사한 계정」 · 「등록되지 않은 사용자」 · 「역할이 없음」 중 하나입니다.
 - `policy.py` 는 실습 1-1에서 만든 역할 파일(`roles.json`)과 사용자 파일(`users.json`)을 `rbac.py` 를 거쳐 그대로 씁니다.
-- `find_exception` 은 「제공 파일」 레슨에서 복사해 만든 `exception_policy.py` 에 들어 있습니다. 사람 · 권한 · 지금 시각을 넣으면 유효한 예외가 있을 때 `(True, 예외 번호)`, 없으면 `(False, None)` 을 리턴합니다. 예외 다섯 건은 `config/exceptions.json` 에 있습니다.
+- `find_exception` 이 보는 예외 다섯 건은 `config/exceptions.json` 에 있습니다.
 - **서비스 계정**은 사람이 아니라 프로그램이 쓰는 계정입니다(`batch-night`). 사람이 로그인하지 않고, 키나 비밀번호를 설정 파일에 두고 접속하는 경우가 많습니다.
 - `[역할 판정]` 에서 「권한 없음」일 때만 예외를 봅니다. 사용자 자체가 거부 대상인 경우는 예외 검사까지 가지 않습니다.
 
 **이 시간에 나오는 말** (먼저 짧게 봅니다)
 
-- `from rbac import check_permission` · `from exception_policy import find_exception` 처럼 두 파일의 함수를 함께 불러옵니다.
-- `값 != "권한 없음"` 은 이유 문자열이 「권한 없음」이 아닌지 검사합니다.
-- `f"예외 {found_exception_id}번"` 처럼 f-문자열로 이유를 만듭니다(실습 1-2의 `permission` 과 같은 모양).
-- `exercise1-3_run.py` 의 `if … elif … else` 는 `if` 조건이 아니면 `elif` 조건을 보고, 둘 다 아니면 `else` 아래를 실행합니다. `A and B` 는 두 조건이 모두 참일 때만 참이고, `==` 는 「같은가」를 묻는 비교입니다(값을 담는 `=` 와 다릅니다).
-- `counts = {}` 처럼 `{}` 만 쓰면 아무것도 없는 빈 딕셔너리가 만들어지고, 세면서 키가 하나씩 생깁니다.
+| 쓰는 모양 | 뜻 |
+|---|---|
+| `from … import …` 두 줄 | `from rbac import check_permission` · `from exception_policy import find_exception` 처럼 두 파일의 함수를 함께 불러옴 |
+| `값 != "권한 없음"` | 이유 문자열이 「권한 없음」이 아닌지 검사 |
+| `f"예외 {found_exception_id}번"` | f-문자열로 이유를 만듦(실습 1-2의 `permission` 과 같은 모양) |
+| `if … elif … else` | `if` 조건이 아니면 `elif` 조건을 보고, 둘 다 아니면 `else` 아래를 실행(`exercise1-3_run.py`) |
+| `A and B` | 두 조건이 모두 참일 때만 참 |
+| `==` | 「같은가」를 묻는 비교. 값을 담는 `=` 와 다름 |
+| `counts = {}` | 아무것도 없는 빈 딕셔너리를 만듦. 세면서 키가 하나씩 생김 |
 
 ## 3.2 허용 방식별로 세기
 
-- 판정 결과는 세 갈래로 셉니다: **역할로 허용**(이유가 「역할 권한」) · **예외로 허용**(이유가 「예외 N번」) · **거부**.
+판정 결과는 세 갈래로 셉니다.
+
+| 갈래 | 판정 | 이유 |
+|---|---|---|
+| **역할로 허용** | 허용 | 「역할 권한」 |
+| **예외로 허용** | 허용 | 「예외 N번」 |
+| **거부** | 거부 | 거부 이유 |
+
 - 허용을 둘로 나눠 세는 이유는 **예외로 열린 일이 얼마나 되는지** 숫자로 보기 위해서입니다. 예외가 많아지면 역할 설계가 실제 업무와 맞지 않는다는 신호입니다. 현업에서는 예외 허용 건수를 따로 세어 매주 보고합니다.
 - 세는 모양은 두 줄입니다: `old_count = counts.get(키, 0)` 로 지금까지 센 수를 꺼내고(처음이면 0), `counts[키] = old_count + 1` 로 1 늘려 다시 적습니다. 실행 파일에 이미 적혀 있으니 읽기만 합니다.
 - 요청마다 시각이 다르면 `"2026-10-22 " + 시각` 으로 날짜 문자열과 시각 문자열을 이어 붙인 뒤 `datetime.strptime(문자열, "%Y-%m-%d %H:%M")` 으로 비교할 수 있는 시각을 만듭니다.
@@ -209,8 +227,16 @@ ls
 ls config
 ```
 
-- `rbac.py` · `exercise1-2_run.py` · `exception_policy.py` · `config_loader.py` · `policy.py` · `exercise1-3_run.py` · `report_u1.md` 가 보여야 합니다.
-- `config` 안에는 `users.json` · `roles.json` · `exceptions.json` 이 보여야 합니다.
+아래 파일이 모두 보여야 합니다. `config/` 가 붙은 파일은 `ls config` 에서 보입니다.
+
+| 파일 | 만든 곳 |
+|---|---|
+| `rbac.py` · `exercise1-2_run.py` | 실습 1-2 |
+| `exception_policy.py` · `config_loader.py` | 「제공 파일」 |
+| `policy.py` · `exercise1-3_run.py` | 실습 1-3 |
+| `report_u1.md` | 「보고서 쓰기」 |
+| `config/users.json` · `config/roles.json` | 실습 1-1 |
+| `config/exceptions.json` | 「제공 파일」 |
 
 **3. 깃허브에 올리기**
 
@@ -245,9 +271,11 @@ ls config
 
 **4. 이어지는 곳**
 
-1. `users.json` · `roles.json` · `rbac.py` 는 Module 3 끝까지 그대로 불러 씁니다.
-2. `policy.py` 의 `evaluate_access` 는 다음 Unit 2(권한 주기)에서 요청으로 권한을 주기 전과 준 뒤의 판정을 비교할 때 씁니다.
-3. `config_loader.py` 의 `load_json` 은 Unit 2부터 설정 파일을 읽을 때 씁니다.
+| 파일 · 함수 | 다음에 쓰는 곳 |
+|---|---|
+| `users.json` · `roles.json` · `rbac.py` | Module 3 끝까지 그대로 불러 씀 |
+| `policy.py` 의 `evaluate_access` | 다음 Unit 2(권한 주기)에서 요청으로 권한을 주기 전과 준 뒤의 판정을 비교할 때 |
+| `config_loader.py` 의 `load_json` | Unit 2부터 설정 파일을 읽을 때 |
 
 ---
 
