@@ -22,30 +22,32 @@ source:
 
 ## 2.1 로그로 정책 준수 점검하기
 
-| 점검 | 위반으로 보는 것 | 찾는 방법 | 번호 |
+| 점검 | 위반으로 보는 것 | 찾는 방법 | 빈칸 |
 |---|---|---|---|
-| ① 게이트 우회 실행 | 다시 구한 결정이 「자동」이 아닌데 실행한 조치 | 로그의 `request` 로 `decide_gate` 를 다시 호출 | 1 · 2번 |
-| ② 허용 목록 IP 차단 | 조치 후 상태가 「차단됨」인 허용 목록 IP | `target` 과 `after` 를 허용 목록과 비교 | 3번 |
-| ③ VIP 계정 잠금 | 조치 후 상태가 「잠김」인 VIP 계정 | `target` 과 `after` 를 VIP 리스트와 비교 | 4번 |
-| ④ 티켓 없는 조치 | 실행한 조치가 있는데 `ticket` 이 빈 알림 | `count_executed` 로 센 뒤 `ticket` 확인 | 5번 |
+| ① 게이트 우회 실행 | 다시 구한 결정이 「자동」이 아닌데 실행한 조치 | 로그의 `request` 로 `decide_gate` 를 다시 호출 | ① · ② |
+| ② 허용 목록 IP 차단 | 조치 후 상태가 「차단됨」인 허용 목록 IP | `target` 과 `after` 를 허용 목록과 비교 | 미리 채움 |
+| ③ VIP 계정 잠금 | 조치 후 상태가 「잠김」인 VIP 계정 | `target` 과 `after` 를 VIP 리스트와 비교 | 미리 채움 |
+| ④ 티켓 없는 조치 | 실행한 조치가 있는데 `ticket` 이 빈 알림 | `count_executed` 로 센 뒤 `ticket` 확인 | 미리 채움 |
+
+- 점검 이름의 ① ~ ④ 는 점검 번호이고, 직접 쓰는 빈칸 ① · ② 는 모두 점검 ①(게이트 우회 실행) 안에 있습니다.
 
 - 정책 준수 점검(policy compliance check)은 통제가 설계한 대로 작동했는지 실제 기록으로 확인하는 일이고, 이때 로그가 증거(audit evidence, 오딧 에비던스: 사실을 뒷받침하는 기록)가 됩니다.
 - ①은 재수행(re-performance, 리퍼포먼스: 기록된 입력으로 판단을 다시 계산해 기록된 결과와 비교하는 방법)입니다. 로그의 `request` 는 <mark style="background:#e0d4ff">Unit 4 실습 4-1 승인 게이트가 본 입력</mark>이라서, 같은 정책으로 다시 계산하면 그 조치가 원래 자동이었는지 알 수 있습니다.
 - ②와 ③은 불변 조건(invariant, 인베리언트: 어떤 경우에도 항상 지켜져야 하는 조건)을 점검합니다. 게이트의 계산을 거치지 않고 결과만 보므로 <mark>게이트 코드에 오류가 있어도 위반을 찾습니다.</mark>
 - <mark style="background:#e0d4ff">Unit 2 실습 2-1 `lock_account` 는 VIP 계정이면 잠그지 않고 이유를 기록합니다.</mark> 그래서 VIP 계정은 승인 게이트를 꺼도 잠기지 않을 수 있습니다. 다만 방어를 여러 겹 두는 것(다층 방어, defense in depth)과 각 겹을 따로 점검하는 것은 별개입니다. 겹이 여러 개 있어도 그 겹이 실제로 작동했는지는 ③처럼 따로 확인해야 합니다.
-- 점검 결과는 `judge`(6번)가 PASS 또는 FAIL 로 정하고, 실행 파일이 로그마다 네 줄씩 출력합니다. FAIL 이 나오면 위반한 알림 번호로 로그를 열어 그 알림의 `request` 와 `decision` 을 확인합니다.
+- 점검 결과는 `judge` 가 PASS 또는 FAIL 로 정하고, 실행 파일이 로그마다 네 줄씩 출력합니다. FAIL 이 나오면 위반한 알림 번호로 로그를 열어 그 알림의 `request` 와 `decision` 을 확인합니다.
 
-함수 일곱 개와 실행 파일 가운데 직접 쓰는 곳은 **아홉 군데**입니다.
+함수 일곱 개와 실행 파일 가운데 직접 쓰는 곳은 **두 줄**(① · ②)입니다. 나머지는 모두 미리 채워 두었습니다.
 
 ```
-policy_check.py   count_executed         : 실행한 조치 수를 센다 (미리 채움)
-                  find_gate_bypass       : 저장된 조치 요청으로 결정을 다시 구하고 (1번) 자동이 아닌데 실행했으면 (2번) 모은다
-                  find_allowlist_blocks  : 허용 목록 IP 가 차단되었으면 (3번) 모은다
-                  find_vip_locks         : VIP 계정이 잠겼으면 (4번) 모은다
-                  find_missing_tickets   : 실행했는데 티켓이 없으면 (5번) 모은다
-                  run_checks             : 점검 네 가지를 한꺼번에 실행한다 (미리 채움)
-                  judge                  : 위반이 없으면 PASS 를 리턴한다 (6번)
-실행 파일         exercise5-2_run.py       : 로그를 읽고 (7번) 점검에 실패하면 (8번) 세고, 결과를 저장한다 (9번)
+policy_check.py   count_executed         : 실행한 조치 수를 센다
+                  find_gate_bypass       : 저장된 조치 요청으로 결정을 다시 구하고 (①) 자동이 아닌데 실행했으면 (②) 모은다
+                  find_allowlist_blocks  : 허용 목록 IP 가 차단되었으면 모은다
+                  find_vip_locks         : VIP 계정이 잠겼으면 모은다
+                  find_missing_tickets   : 실행했는데 티켓이 없으면 모은다
+                  run_checks             : 점검 네 가지를 한꺼번에 실행한다
+                  judge                  : 위반이 없으면 PASS 를 리턴한다
+실행 파일         exercise5-2_run.py       : 로그를 읽고 점검에 실패하면 세고, 결과를 저장한다 (직접 쓰는 줄 없음)
 ```
 
 ## 실습 5-2 · 정책 준수 PASS · FAIL 표
@@ -56,7 +58,11 @@ policy_check.py   count_executed         : 실행한 조치 수를 센다 (미�
 - **만드는 것**: 점검 네 가지와 PASS · FAIL 판정(`policy_check.py`), 로그 세 개를 읽어 점검하고 결과를 저장하기(`exercise5-2_run.py`).
 - **실행하면**: <mark>단계 1: 점검할 로그 수, 단계 2: 로그마다 네 점검의 PASS · FAIL 과 위반한 알림 번호, 단계 3: FAIL 이 나온 점검 수, 단계 4: 저장한 파일이 나옵니다.</mark>
 
-**할 일**: 데이터 파일 한 개와 코드 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 를 읽은 뒤, 다음 페이지에서 최종 회고 문서를 씁니다.
+**할 일**
+
+1. 데이터 파일 한 개와 코드 파일 두 개를 만들어 붙여 넣습니다.
+2. `policy_check.py` 의 `# ←` 두 곳(① · ②)을 한 줄씩 채웁니다.
+3. 실행해서 단계 2 를 읽은 뒤, 다음 페이지에서 최종 회고 문서를 씁니다.
 
 **`gate_off_log.json`** — 시험 운영 때 승인 게이트를 끄고(모든 조치 요청의 결정을 「자동」으로 바꾸고) 알림 5건을 처리한 로그입니다.
 
@@ -72,9 +78,7 @@ policy_check.py   count_executed         : 실행한 조치 수를 센다 (미�
 ]
 </code></pre>
 
-**`policy_check.py`** — 정책 점검 함수 모음입니다. 직접 쓰는 곳은 1 ~ 6번입니다.
-
-- 2번 · 3번 · 4번 · 5번 · 6번은 `if` 한 줄만 쓰고, 그 아래 미리 채운 줄이 `if` 안쪽입니다. 1번과 2번은 같은 함수에 있고 둘 다 같은 들여쓰기에서 시작합니다.
+**`policy_check.py`** — 정책 점검 함수 모음입니다. 직접 쓰는 곳은 `find_gate_bypass` 의 ① · ② 두 줄입니다.
 
 ```python
 from approval_gate import decide_gate                                                      # Unit 4 파일의 승인 게이트 함수를 불러온다
@@ -94,9 +98,8 @@ def find_gate_bypass(results, policy):                                          
     violations = []                                                                        # 위반한 알림 번호를 모을 빈 리스트 — 미리 채운 줄
     for result in results:                                                                 # 결과 기록을 하나씩 꺼낸다 — 미리 채운 줄
         for step in result["steps"]:                                                       # 조치 결과를 하나씩 꺼낸다 — 미리 채운 줄
-            # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-            # 1. decide_gate(step["request"], policy) 의 두 결과를 new_decision, new_reasons 에 저장한다
-            # 2. new_decision 이 "자동" 이 아니고(and) step["executed"] 가 참이면 (if, !=, and)
+            # ① decide_gate(step["request"], policy) 의 두 결과를 new_decision, new_reasons 에 저장한다   # ← 이 주석 바로 아래 줄에 씁니다 (12칸)
+            # ② new_decision 이 "자동" 이 아니고(and) step["executed"] 가 참이면 (if, !=, and)   # ← 이 주석 바로 아래 줄에 씁니다 (12칸)
                 violations.append(result["incident"])                                      # 알림 번호를 위반 리스트에 추가한다 — 미리 채운 줄
     return violations                                                                      # 위반한 알림 번호 리스트를 리턴한다 — 미리 채운 줄
 
@@ -106,8 +109,7 @@ def find_allowlist_blocks(results, allowlist_ips):                              
     violations = []                                                                        # 위반한 알림 번호를 모을 빈 리스트 — 미리 채운 줄
     for result in results:                                                                 # 결과 기록을 하나씩 꺼낸다 — 미리 채운 줄
         for step in result["steps"]:                                                       # 조치 결과를 하나씩 꺼낸다 — 미리 채운 줄
-            # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-            # 3. step["target"] 이 allowlist_ips 안에 있고(and) step["after"] 가 "차단됨" 이면 (if, in, ==, and)
+            if step["target"] in allowlist_ips and step["after"] == "차단됨":                 # 허용 목록 IP 가 차단되었으면 — 미리 채운 줄
                 violations.append(result["incident"])                                      # 알림 번호를 위반 리스트에 추가한다 — 미리 채운 줄
     return violations                                                                      # 위반한 알림 번호 리스트를 리턴한다 — 미리 채운 줄
 
@@ -117,8 +119,7 @@ def find_vip_locks(results, vip_accounts):                                      
     violations = []                                                                        # 위반한 알림 번호를 모을 빈 리스트 — 미리 채운 줄
     for result in results:                                                                 # 결과 기록을 하나씩 꺼낸다 — 미리 채운 줄
         for step in result["steps"]:                                                       # 조치 결과를 하나씩 꺼낸다 — 미리 채운 줄
-            # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-            # 4. step["target"] 이 vip_accounts 안에 있고(and) step["after"] 가 "잠김" 이면 (if, in, ==, and)
+            if step["target"] in vip_accounts and step["after"] == "잠김":                   # VIP 계정이 잠겼으면 — 미리 채운 줄
                 violations.append(result["incident"])                                      # 알림 번호를 위반 리스트에 추가한다 — 미리 채운 줄
     return violations                                                                      # 위반한 알림 번호 리스트를 리턴한다 — 미리 채운 줄
 
@@ -128,8 +129,7 @@ def find_missing_tickets(results):                                              
     violations = []                                                                        # 위반한 알림 번호를 모을 빈 리스트 — 미리 채운 줄
     for result in results:                                                                 # 결과 기록을 하나씩 꺼낸다 — 미리 채운 줄
         executed_count = count_executed(result)                                            # 실행한 조치 수를 센다 — 미리 채운 줄
-        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-        # 5. executed_count 가 0 보다 크고(and) result["ticket"] 이 "" 이면 (if, >, ==, and)
+        if executed_count > 0 and result["ticket"] == "":                                  # 실행한 조치가 있는데 티켓이 없으면 — 미리 채운 줄
             violations.append(result["incident"])                                          # 알림 번호를 위반 리스트에 추가한다 — 미리 채운 줄
     return violations                                                                      # 위반한 알림 번호 리스트를 리턴한다 — 미리 채운 줄
 
@@ -146,13 +146,12 @@ def run_checks(results, policy):                                                
 
 def judge(violations):                                                                     # 위반한 알림 번호 리스트를 받는 함수
     """위반이 하나도 없으면 「PASS」, 하나라도 있으면 「FAIL」을 리턴한다. 점검 결과를 한눈에 보이게 출력할 때 쓴다."""
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 6. violations 가 빈 리스트 [] 이면 (if, ==)
+    if violations == []:                                                                   # 위반이 없으면 — 미리 채운 줄
         return "PASS"                                                                      # 위반이 없으면 PASS 를 리턴한다 — 미리 채운 줄
     return "FAIL"                                                                          # 위반이 있으면 FAIL 을 리턴한다 — 미리 채운 줄
 ```
 
-**`exercise5-2_run.py`** — 7 · 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+**`exercise5-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 로그 세 개를 차례로 읽어 점검 네 가지를 실행하고, FAIL 이 나온 점검 수를 센 뒤 결과를 `policy_check.json` 에 저장합니다.
 
 ```python
 from incident import load_json, save_json                                                   # Unit 1 파일의 JSON 읽기 · 쓰기 함수를 불러온다
@@ -168,23 +167,32 @@ rows = []                                                                       
 fail_count = 0                                                                              # FAIL 이 나온 점검 수 : 처음에는 0
 print("--- 단계 2: 로그마다 점검 결과")                                                     # 단계 2 시작을 알리는 줄
 for log_path in LOG_FILES:                                                                  # 로그 파일을 하나씩 꺼낸다
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 7. load_json(log_path) 의 결과를 results 에 저장한다
+    results = load_json(log_path)                                                           # 로그 파일을 리스트로 읽는다 — 미리 채운 줄
     checks = run_checks(results, policy)                                                    # 점검 네 가지를 실행한다 — 미리 채운 줄
     print("[" + log_path + "] 알림", len(results), "건")                                    # 로그 이름과 알림 수를 출력한다
     for check_name in checks:                                                               # 점검 이름을 하나씩 꺼낸다
         violations = checks[check_name]                                                     # 그 점검에서 위반한 알림 번호 리스트 — 미리 채운 줄
         verdict = judge(violations)                                                         # 통과 여부를 구한다 — 미리 채운 줄
-        # 8. verdict 가 "FAIL" 이면 (if, ==)
+        if verdict == "FAIL":                                                               # 점검에 실패했으면 — 미리 채운 줄
             fail_count = fail_count + 1                                                     # FAIL 이 나온 점검 수를 1 늘린다 — 미리 채운 줄
         print("  ", check_name, ":", verdict, "· 위반", len(violations), "건", violations)  # 점검 이름 · 결과 · 위반한 알림 번호 리스트를 출력한다
         rows.append({"log": log_path, "check": check_name, "result": verdict, "violations": violations})  # 점검 결과 한 줄을 추가한다 — 미리 채운 줄
 
 print("--- 단계 3: FAIL 이 나온 점검", fail_count, "개 · 전체 점검", len(rows), "개")       # 단계 3 시작을 알리는 줄과 개수
-# ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-# 9. rows 를 CHECK_PATH 파일에 저장한다 (save_json)
+save_json(rows, CHECK_PATH)                                                                 # 점검 결과를 파일에 저장한다
 print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")                                # 단계 4 시작을 알리는 줄과 저장한 수
 ```
+
+**직접 쓰는 곳** — `policy_check.py` 의 `find_gate_bypass` 안 두 줄입니다. 주석 줄은 그대로 두고 각 주석 바로 아래 줄에 씁니다.
+
+| 빈칸 | 쓰는 줄 | 들여쓰기 |
+|---|---|---|
+| ① | 저장된 요청으로 결정을 다시 구해 두 값으로 받기 | 12칸 |
+| ② | 다시 구한 결정이 「자동」이 아니고 실행했으면 (`if`) | 12칸 |
+
+- ① 확인: ① 만 쓰고 실행하면 `IndentationError: unexpected indent` 가 나옵니다. ② 를 아직 안 써서 그 아래 미리 채운 줄이 앞줄보다 들여써져 있기 때문이니 정상입니다. 막히면: 실습 5-1 `run_step` 의 `decision, reasons = decide_gate(request, context["policy"])` 와 같은 모양이고, 받는 이름이 `new_decision, new_reasons`, 넣는 값이 `step["request"], policy` 로 바뀝니다.
+- ② 확인: ② 까지 쓰고 실행하면 `[gate_off_log.json]` 아래 `게이트 우회 실행 : FAIL · 위반 3 건 ['INC-404', 'INC-405', 'INC-406']` 이 나오고, 앞의 두 로그는 PASS 면 성공입니다. 막히면: 「아니고」는 `!=`, 「그리고」는 `and` 입니다. `step["executed"]` 는 이미 참 · 거짓이라 `== True` 를 붙이지 않아도 됩니다.
+- 채우기 전에 실행해도 오류 없이 돌아갑니다. 다만 ① · ② 자리가 비어 있으면 미리 채운 `violations.append(…)` 가 `for` 바로 안쪽에서 조치마다 실행되어, <mark style="background:#ffc4d6">조치가 있는 알림이 세 로그 모두 게이트 우회로 나오고</mark> 단계 3 이 `FAIL 이 나온 점검 4 개` 입니다. 결정을 다시 구해 비교하는 두 줄이 빠지면 정상 로그와 위반 로그를 가르지 못한다는 것을 보여 주는 결과입니다.
 
 **순서**
 
@@ -193,7 +201,7 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
    pwd
    ls
    ```
-2. **[VS Code]** `policy_check.py` 1 ~ 6번, `exercise5-2_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「실습 5-2 정리」를 봅니다.
+2. **[VS Code]** `policy_check.py` 의 ① · ② 를 씁니다. 2.1 의 「재수행」 설명과 아래 「직접 쓰는 곳」을 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python exercise5-2_run.py
@@ -203,21 +211,21 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
    - 단계 2 는 로그마다 제목 줄 1줄과 점검 결과 4줄이라 모두 15줄입니다.
 5. **[VS Code]** 새로 생긴 `policy_check.json` 을 열어 <mark>12개 점검이 들어 있는지</mark> 봅니다.
 6. **[보고서]** `report_u5.md` 의 `## 실습 5-2` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다). 다 채웠으면 「최종 회고 문서 쓰기」 페이지로 갑니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, FAIL 이 나온 로그와 FAIL 이 나온 점검 이름 · 위반한 알림 번호를 적어 주세요.
+   - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, FAIL 이 나온 로그와 FAIL 이 나온 점검 이름 · 위반한 알림 번호를 적어 주세요.
    - (나) [핵심 질문] `gate_off_log.json` 의 `INC-405` 는 `decision` 이 「자동」인데 점검 ①에서 위반으로 나옵니다. 그 `request` 의 `users_on_ip` 와 승인 정책의 점수를 근거로 다시 구한 결정을 적고, 로그의 `decision` 만 읽으면 위반을 놓치는 이유를 적어 주세요.
-   - (다) [핵심 질문] `INC-406`(`gaeun`)은 점검 ①은 FAIL 인데 점검 ③은 PASS 입니다. 그 알림의 `before` · `after` 를 근거로 `gaeun` 이 잠기지 않은 이유를 Unit 2 실습 2-1 `lock_account` 와 연결해 적고, 점검 ③이 게이트와 별도로 필요한 이유를 적어 주세요.
+   - (다) [응용] `INC-406`(`gaeun`)은 점검 ①은 FAIL 인데 점검 ③은 PASS 입니다. 그 알림의 `before` · `after` 를 근거로 `gaeun` 이 잠기지 않은 이유를 Unit 2 실습 2-1 `lock_account` 와 연결해 적고, 점검 ③이 게이트와 별도로 필요한 이유를 적어 주세요.
+
+**확인** — 단계 3 이 `FAIL 이 나온 점검 2 개 · 전체 점검 12 개` 이고, FAIL 두 줄이 모두 `[gate_off_log.json]` 아래에 있으면 성공입니다. 안 나오면 「정답」 레슨의 실습 5-2 출력과 한 줄씩 맞춰 보고, `FAIL 이 나온 점검 4 개` 면 위 「직접 쓰는 곳」의 채우기 전 설명을 다시 봅니다.
 
 ## 실습 5-2 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 두 결과를 함께 받기 | `new_decision, new_reasons = decide_gate(step["request"], policy)` |
-| 다르고 그리고 참이면 | `if new_decision != "자동" and step["executed"]:` |
-| 리스트 안에 있고 그리고 같으면 | `if step["target"] in allowlist_ips and step["after"] == "차단됨":` |
-| 크고 그리고 같으면 | `if executed_count > 0 and result["ticket"] == "":` |
-| 빈 리스트와 같으면 | `if violations == []:` |
-| 함수 결과를 변수에 저장하기 | `results = load_json(log_path)` |
-| 리스트를 파일에 저장하기 | `save_json(rows, CHECK_PATH)` |
+| 결정 다시 구하기 (①) | `new_decision, new_reasons = decide_gate(step["request"], policy)` |
+| 자동 아닌데 실행했으면 (②) | `if new_decision != "자동" and step["executed"]:` |
+| 허용 목록 IP 가 차단됐으면 | `if step["target"] in allowlist_ips and step["after"] == "차단됨":` |
+| 실행했는데 티켓이 없으면 | `if executed_count > 0 and result["ticket"] == "":` |
+| 위반이 없으면 PASS | `if violations == []:` |
 
 ---
 
@@ -235,6 +243,8 @@ Module 5의 마지막 정리입니다(약 10분). 실습 5-2 실행까지 마친
       - 설정 파일은 코드 없이 값만 담은 `config` 폴더의 JSON 파일입니다. 예를 들어 `config/approval_policy.json` 의 승인 기준 점수(`approval_score`)나 `config/playbook_registry.json` 의 트리거 규칙을 바꾸면 코드를 고치지 않고 엔진의 동작이 바뀝니다.
       - 「그대로 가져다 쓸 내 파일 3개」는 1절 표에 적은 파일 가운데에서 고릅니다.
 2. **[VS Code]** 저장한 뒤 `…` 가 남은 칸이 없는지 봅니다. 모르는 칸은 `모름 — 막힌 곳: …` 으로 적습니다.
+
+이 문서는 사실만 적는 정리표이고, 「오늘의 글 쓰기」의 세 문장 글과는 따로 씁니다. 글에서는 이 표를 옮겨 적지 않고, 오늘 고민한 것 하나만 내 말로 씁니다.
 
 `network_zt` 와 `agent_core` 는 이 과정에서 만들지 않은 폴더입니다. 내 컴퓨터에 없다면 이 표를 그대로 따르지 말고, 내가 만든 `access_control` · `anomaly_detection` · `soar_response` 만으로 할 수 있는 주제(예: 둘째 줄의 이상행위 자동 차단 에이전트)를 고르거나, 있는 폴더만으로 해 볼 수 있는 범위로 주제를 좁혀 적습니다.
 
@@ -275,6 +285,8 @@ Module 5의 마지막 정리입니다(약 10분). 실습 5-2 실행까지 마친
 - 그대로 가져다 쓸 내 파일 3개: …
 </code></pre>
 
+**확인** — VS Code 왼쪽 목록의 `soar_response` 아래에 `unit10_final_retrospective.md` 가 보이고, 열어서 `Ctrl + F`(맥북은 `Cmd + F`)로 `…` 를 찾았을 때 하나도 나오지 않으면 성공입니다. 남은 칸이 있으면 위 1번의 절별 안내를 보고 채우거나 `모름 — 막힌 곳: …` 으로 적습니다.
+
 ## 이번 Unit 마무리 · 깃허브에 올리기
 
 하루를 닫는 마무리입니다(15분). 「보고서 쓰기」와 「오늘의 글 쓰기」까지 마친 뒤 합니다. 이번 Unit은 Module 5의 마지막이라, 오늘 올리면 Module 5에서 만든 SOAR 모듈과 엔진 · 점검 · 회고 문서가 모두 저장소에 남습니다.
@@ -284,7 +296,7 @@ Module 5의 마지막 정리입니다(약 10분). 실습 5-2 실행까지 마친
 1. 알림 8건을 승인 게이트를 거쳐 조치하고 티켓을 남기며, 오류가 난 알림은 실패로 격리하는 통합 엔진을 만들었다 (실습 5-1)
 2. 엔진 로그 세 개를 정책 네 가지로 점검해 FAIL 2개가 `gate_off_log.json` 에서 나오는 것을 확인했다 (실습 5-2)
 3. 최종 회고 문서 `unit10_final_retrospective.md` 에 `…` 가 남은 칸이 없다 (실습 5-2)
-4. 보고서 `report_u5.md` 의 실습 5-1 · 5-2 칸에 `답:` 뒤가 비어 있는 질문이 없다
+4. 보고서 `report_u5.md` 의 꼭 채울 다섯 칸(5-1 (가) · (나), 5-2 (가) · (나), 마무리 (가))에 `답:` 뒤가 비어 있지 않다
 
 **강의계획서 평가 기준 확인**
 
@@ -294,7 +306,7 @@ Module 5의 마지막 정리입니다(약 10분). 실습 5-2 실행까지 마친
 | 승인 게이트가 위험도에 따라 정확히 작동한다 | 실습 5-1 단계 2 · 3, 실습 5-2 점검 ① |
 | 모듈이 서로 이어져 하나의 흐름으로 동작한다 | `soar_engine.py` 의 `import` 6줄, 회고 문서 1절 |
 
-- 첫 줄의 연결을 직접 만들어 보려면 응용 5-1(선택)을 합니다. 응용 5-1 단계 3 ~ 5 가 같은 결과를 보여 줍니다.
+- 첫 줄의 연결을 직접 만들어 보려면 응용 5-1(여유가 되면)을 합니다. 응용 5-1 단계 3 ~ 5 가 같은 결과를 보여 줍니다.
 
 **2. 파일 확인** — **[터미널]** `soar_response` 폴더에서 확인합니다.
 
@@ -313,7 +325,7 @@ ls
 | 제공 파일 | `risk_engine_log.json` |
 | 실습 5-2 | `gate_off_log.json` · `policy_check.py` · `exercise5-2_run.py` · `policy_check.json` · `unit10_final_retrospective.md` |
 | 보고서 쓰기 | `report_u5.md` |
-| 응용 5-1(선택) | `unit05_risk_scores.json` · `engine_input.py` · `apply5-1_run.py` · `engine_summary.json` · `risk_tickets.json` |
+| 응용 5-1(여유가 되면) | `unit05_risk_scores.json` · `engine_input.py` · `apply5-1_run.py` · `engine_summary.json` · `risk_tickets.json` |
 
 **3. 깃허브에 올리기**
 
@@ -344,6 +356,8 @@ ls
    - 깃허브에 안 보이는 파일이 있으면 그 파일이 VS Code 왼쪽 목록의 `soar_response` 폴더 안에 있는지 봅니다. 다른 폴더에 만들었다면 `soar_response` 안으로 옮긴 뒤 2번의 `git status` 부터 다시 합니다.
 
 - 시간이 남아 응용 5-1을 했다면 응용 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
+
+**확인** — 깃허브의 `soar_response` 폴더에 2번 표의 파일(응용 줄 빼고)이 모두 보이고 `.env` 가 없으면 성공입니다. 안 보이는 파일이 있으면 `git status` 를 다시 쳐서 그 파일이 빨간 목록에 남아 있는지 보고 4번을 다시 합니다.
 
 **4. 이어지는 곳**
 

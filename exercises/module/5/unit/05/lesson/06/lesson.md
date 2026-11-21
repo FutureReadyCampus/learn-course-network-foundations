@@ -24,42 +24,16 @@ python exercise5-1_run.py
 
 **채운 코드** (한 예)
 
-`soar_engine.py` 의 1 ~ 8번입니다.
+`soar_engine.py` 의 ① · ② 입니다.
 
 ```python
-        # 1. count_users_on_ip(alert["entity"], context["ip_users"]) 의 결과를 users_on_ip 에 저장한다
-        users_on_ip = count_users_on_ip(alert["entity"], context["ip_users"])  # 그 IP 를 쓰는 계정 수를 센다
-        # 2. lock_account(request["target"], state, vip_accounts, request["incident"], ENGINE_REASON) 의 결과를 record 에 저장한다
-        record = lock_account(request["target"], state, vip_accounts, request["incident"], ENGINE_REASON)  # 계정을 잠그고 조치 기록을 받는다
-        # 3. block_ip(request["target"], state, request["incident"], ENGINE_REASON, DEFAULT_TTL) 의 결과를 record 에 저장한다
-        record = block_ip(request["target"], state, request["incident"], ENGINE_REASON, DEFAULT_TTL)  # IP 를 차단하고 조치 기록을 받는다
-    # 4. decide_gate(request, context["policy"]) 의 두 결과를 decision, reasons 에 저장한다
-    decision, reasons = decide_gate(request, context["policy"])                # 승인 게이트의 결정과 이유 리스트를 함께 받는다
-    # 5. decision 이 "자동" 이면 (if, ==)
-    if decision == "자동":                                                     # 게이트가 자동으로 정했으면
-            # 6. action 이 CONTAINMENT_ACTIONS 안에 있으면 (if, in)
-            if action in CONTAINMENT_ACTIONS:                                  # 게이트를 거쳐 실행하는 조치이면
-            # 7. run_soar_pipeline(alert, context) 의 결과를 result 에 저장한다
-            result = run_soar_pipeline(alert, context)                         # 알림 한 건을 처음부터 끝까지 처리한다
-        # 8. 어떤 종류의 오류든 error 에 저장해 받는다 (except, Exception, as)
-        except Exception as error:                                             # 어떤 종류의 오류든 error 에 저장해 받는다
+    # ① decision 이 "자동" 이면 (if, ==)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+    if decision == "자동":                                       # 게이트가 자동으로 정했으면
+        # ② 어떤 종류의 오류든 error 에 저장해 받는다 (except, Exception, as)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+        except Exception as error:                              # 어떤 종류의 오류든 error 에 저장해 받는다
 ```
 
-위 줄만으로는 `if` · `else` · `try` 안에 들어가는 줄이 어느 것인지 알기 어려우니, 미리 채운 줄까지 넣은 네 함수의 완성된 모양을 함께 봅니다.
-
-**전체 모양 — `execute_action`**
-
-```python
-def execute_action(request, context):                 # 조치 요청과 엔진 재료를 받는 함수
-    """계정 잠금이면 lock_account, IP 차단이면 block_ip 로 조치를 실행하고 조치 기록 한 건을 리턴한다. 승인 게이트가 자동으로 정한 조치를 실제로 실행할 때 쓴다."""
-    state = context["state"]                          # 연습용 시스템 상태 — 미리 채운 줄
-    vip_accounts = context["policy"]["vip_accounts"]  # VIP 계정 리스트 — 미리 채운 줄
-    if request["action"] == "계정 잠금":              # 조치가 계정 잠금이면 — 미리 채운 줄
-        record = lock_account(request["target"], state, vip_accounts, request["incident"], ENGINE_REASON)  # 계정을 잠그고 조치 기록을 받는다
-    else:                                             # 아니면 IP 차단이다 — 미리 채운 줄
-        record = block_ip(request["target"], state, request["incident"], ENGINE_REASON, DEFAULT_TTL)  # IP 를 차단하고 조치 기록을 받는다
-    return record                                     # 조치 기록을 리턴한다 — 미리 채운 줄
-```
+위 줄만으로는 `if` · `try` 안에 들어가는 줄이 어느 것인지 알기 어려우니, 미리 채운 줄까지 넣은 두 함수의 완성된 모양을 함께 봅니다.
 
 **전체 모양 — `run_step`**
 
@@ -67,7 +41,7 @@ def execute_action(request, context):                 # 조치 요청과 엔진 
 def run_step(alert, action, context):                            # 알림 · 조치 이름 · 엔진 재료를 받는 함수
     """조치 하나를 승인 게이트에 묻고, 자동으로 정해졌을 때만 실행해서 결정 · 이유 · 실행 여부를 담은 딕셔너리를 리턴한다. 조치마다 한 번씩 쓴다."""
     request = make_request(alert, action, context)               # 승인 게이트에 보낼 조치 요청을 만든다 — 미리 채운 줄
-    decision, reasons = decide_gate(request, context["policy"])  # 승인 게이트의 결정과 이유 리스트를 함께 받는다
+    decision, reasons = decide_gate(request, context["policy"])  # 승인 게이트의 결정과 이유 리스트를 함께 받는다 — 미리 채운 줄
     step = {                                                     # 조치 하나의 결과 : 처음에는 실행하지 않은 것으로 적는다 — 미리 채운 줄
         "action": action,                                        # 조치 이름
         "target": alert["entity"],                               # 조치 대상
@@ -78,41 +52,12 @@ def run_step(alert, action, context):                            # 알림 · 조
         "after": "",                                             # 조치 후 상태
         "request": request,                                      # 승인 게이트가 본 조치 요청(나중에 점검할 때 다시 쓴다)
     }
-    if decision == "자동":                                       # 게이트가 자동으로 정했으면
+    if decision == "자동":                                       # ① 게이트가 자동으로 정했으면
         record = execute_action(request, context)                # 조치를 실행하고 조치 기록을 받는다 — 미리 채운 줄
         step["executed"] = True                                  # 실행했다고 적는다 — 미리 채운 줄
         step["before"] = record["before"]                        # 조치 전 상태를 적는다 — 미리 채운 줄
         step["after"] = record["after"]                          # 조치 후 상태를 적는다 — 미리 채운 줄
     return step                                                  # 조치 하나의 결과를 리턴한다 — 미리 채운 줄
-```
-
-**전체 모양 — `run_soar_pipeline`**
-
-```python
-def run_soar_pipeline(alert, context):                                 # 알림 한 건과 엔진 재료를 받는 함수
-    """알림 한 건을 플레이북 찾기 → 조치마다 승인 게이트 → 티켓 만들기 순서로 처리하고 결과 기록 한 건을 리턴한다. 알림마다 한 번씩 쓴다."""
-    playbooks = match_playbooks(alert, context["registry"])            # Unit 1 함수로 맞는 플레이북을 찾는다 — 미리 채운 줄
-    playbook_id = "없음"                                               # 맞는 플레이북이 없으면 「없음」으로 남긴다 — 미리 채운 줄
-    steps = []                                                         # 조치마다 결과를 모을 빈 리스트 — 미리 채운 줄
-    for playbook in playbooks:                                         # 맞는 플레이북을 하나씩 꺼낸다 — 미리 채운 줄
-        playbook_id = playbook["id"]                                   # 플레이북 번호를 적는다 — 미리 채운 줄
-        for action in playbook["actions"]:                             # 플레이북의 액션을 하나씩 꺼낸다 — 미리 채운 줄
-            if action in CONTAINMENT_ACTIONS:                          # 게이트를 거쳐 실행하는 조치이면
-                step = run_step(alert, action, context)                # 승인 게이트를 거쳐 실행한다 — 미리 채운 줄
-                steps.append(step)                                     # 조치 결과를 추가한다 — 미리 채운 줄
-    outcome = decide_outcome(steps)                                    # 알림 전체의 처리 결과를 정한다 — 미리 채운 줄
-    ticket = open_ticket(alert, steps, playbook_id, outcome, context)  # 티켓을 만든다 — 미리 채운 줄
-    result = {                                                         # 알림 한 건의 결과 기록 — 미리 채운 줄
-        "incident": alert["id"],                                       # 알림 번호
-        "entity": alert["entity"],                                     # 대상
-        "grade": alert["grade"],                                       # 등급
-        "playbook": playbook_id,                                       # 플레이북 번호
-        "outcome": outcome,                                            # 처리 결과
-        "steps": steps,                                                # 조치마다 결과 리스트
-        "ticket": ticket["id"],                                        # 티켓 번호
-        "error": "",                                                   # 오류 문장 : 정상이면 비어 있다
-    }
-    return result                                                      # 결과 기록을 리턴한다 — 미리 채운 줄
 ```
 
 **전체 모양 — `run_all`**
@@ -123,18 +68,11 @@ def run_all(alerts, context):                           # 알림 리스트와 �
     results = []                                        # 알림마다 결과 기록을 모을 빈 리스트 — 미리 채운 줄
     for alert in alerts:                                # 알림을 하나씩 꺼낸다 — 미리 채운 줄
         try:                                            # 오류가 날 수 있는 처리를 시작한다 — 미리 채운 줄
-            result = run_soar_pipeline(alert, context)  # 알림 한 건을 처음부터 끝까지 처리한다
-        except Exception as error:                      # 어떤 종류의 오류든 error 에 저장해 받는다
+            result = run_soar_pipeline(alert, context)  # 알림 한 건을 처음부터 끝까지 처리한다 — 미리 채운 줄
+        except Exception as error:                      # ② 어떤 종류의 오류든 error 에 저장해 받는다
             result = make_failure_result(alert, error)  # 실패 기록을 만든다 — 미리 채운 줄
         results.append(result)                          # 정상 결과든 실패 기록이든 결과 리스트에 추가한다 — 미리 채운 줄
     return results                                      # 결과 기록 리스트를 리턴한다 — 미리 채운 줄
-```
-
-`exercise5-1_run.py` 의 9번입니다.
-
-```python
-    # 9. counts[outcome] 에 counts[outcome] + 1 을 저장한다 (1 늘린다)
-    counts[outcome] = counts[outcome] + 1  # 이 처리 결과의 알림 수를 1 늘린다
 ```
 
 **결과**
@@ -177,36 +115,42 @@ KeyError: 'grade'
 
 - (다) `INC-404` 의 `203.0.113.80` 은 허용 목록에 있어서 `decide_gate` 가 점수를 보지 않고 「차단 금지」로 정합니다. `INC-406` 의 `gaeun` 은 VIP 라서 <mark style="background:#bde3ff">등급 high +2 와 VIP +3 을 더한 합계 5점</mark>이 승인 기준(3점) 이상이라 「승인 필요」입니다.
   - 허용 목록은 점수와 상관없이 실행하지 않는 대상이고, VIP 는 점수로 사람의 승인을 받는 대상이라 결과가 다릅니다.
-  - 조치를 실행한 뒤에는 이미 잠기거나 차단된 계정과 IP 가 업무를 막을 수 있어서, <mark>승인 게이트는 `execute_action` 보다 먼저 판단해야 합니다.</mark> 아래 「자주 틀리는 곳」의 5번처럼 순서나 조건이 거꾸로 되면 허용 목록 IP 가 차단됩니다.
+  - 조치를 실행한 뒤에는 이미 잠기거나 차단된 계정과 IP 가 업무를 막을 수 있어서, <mark>승인 게이트는 `execute_action` 보다 먼저 판단해야 합니다.</mark> 아래 「자주 틀리는 곳」에서 ① 에 `!=` 를 쓴 경우처럼 조건이 거꾸로 되면 허용 목록 IP 가 차단됩니다.
 
 **왜**
 
-- <mark>엔진은 「실행하기 전에 정책으로 막고, 실행한 뒤에는 기록을 남기고, 오류는 알림 한 건에 한정한다」는 순서입니다.</mark> 승인 게이트를 엔진 안에 고정하면 사람이 함수를 직접 호출하면서 게이트를 건너뛰는 실수를 막을 수 있습니다. 오류를 알림 한 건에 한정하면 한 건의 문제가 나머지 알림의 처리를 멈추지 않습니다. 대신 코드의 실수도 실패로 나타나므로(아래 4번), 실패 건수를 매번 확인해야 합니다.
+- <mark>엔진은 「실행하기 전에 정책으로 막고, 실행한 뒤에는 기록을 남기고, 오류는 알림 한 건에 한정한다」는 순서입니다.</mark> 승인 게이트를 엔진 안에 고정하면 사람이 함수를 직접 호출하면서 게이트를 건너뛰는 실수를 막을 수 있습니다. 오류를 알림 한 건에 한정하면 한 건의 문제가 나머지 알림의 처리를 멈추지 않습니다. 대신 코드의 실수도 실패로 나타나므로(아래 「자주 틀리는 곳」의 `desicion` 오타), 실패 건수를 매번 확인해야 합니다.
 
 **자주 틀리는 곳**
 
-아래 결과는 해당 번호의 줄을 비우고 실행한 것입니다(비운 줄의 주석은 남겨 둔 상태입니다).
+아래 결과는 해당 빈칸을 비우거나 틀리게 쓰고 실행한 것입니다(빈칸의 주석은 남겨 둔 상태입니다).
 
-- 1번을 비워 두면 `if` 아래에 실행할 줄이 없어 실행하기 전에 멈춥니다. 2번 · 3번 · 7번을 비워도 같은 오류가 납니다(`if` · `else` · `try` 아래가 빕니다). 파이썬 버전에 따라 뒤에 `after 'if' statement on line …` 같은 설명이 붙습니다.
-
-```
-IndentationError: expected an indented block
-```
-
-- 4번을 비워 두면 프로그램은 멈추지 않지만 <mark style="background:#ffc4d6">**조치를 처리하는 알림이 모두 실패로 나옵니다.**</mark> `except Exception` 이 코드의 실수까지 받아서 알림마다 실패로 적기 때문입니다. 단계 2 에 `INC-401` 의 실패와 단계 3 의 `실패 : 6 건` 이 나오는 것이 이 실수의 결과입니다.
-
-```
-INC-401 dami → 실패 · NameError: name 'decision' is not defined
-실패 : 6 건
-```
-
-- 5번을 비워 두면 그 아래 미리 채운 줄이 앞줄보다 들여써져 있어 실행하기 전에 멈춥니다.
+- ① 을 비워 두면(채우기 전 그대로면) 그 아래 미리 채운 줄이 앞줄보다 들여써져 있어 실행하기 전에 멈춥니다.
 
 ```
 IndentationError: unexpected indent
 ```
 
-- 5번에서 `==` 대신 `!=` 를 쓰면 오류 없이 <mark style="background:#ffc4d6">**자동이 아닌 조치가 실행됩니다.**</mark> 허용 목록 IP(`INC-404`)가 차단되고, 자동이어야 하는 `dami` 는 잠기지 않습니다. 게이트가 「차단 금지」라고 적었어도 실행 줄이 같이 나오는 것이 이 실수의 결과입니다. 아래는 관련 알림만 발췌한 출력입니다.
+- ② 를 비워 두면 `try` 만 있고 `except` 가 없어서 실행하기 전에 멈춥니다. 파이썬 3.9 이하에서는 `SyntaxError: invalid syntax` 로 나옵니다.
+
+```
+SyntaxError: expected 'except' or 'finally' block
+```
+
+- ② 를 `try:` 보다 깊게(12칸) 쓰면 `except` 가 `try` 의 짝이 되지 못해 실행하기 전에 멈춥니다. `try:` 와 같은 8칸에서 시작합니다.
+
+```
+SyntaxError: invalid syntax
+```
+
+- ① 에서 `decision` 을 `desicion` 처럼 잘못 쓰면 프로그램은 멈추지 않지만 <mark style="background:#ffc4d6">**조치를 처리하는 알림이 모두 실패로 나옵니다.**</mark> `except Exception` 이 코드의 실수까지 받아서 알림마다 실패로 적기 때문입니다. 단계 2 의 `INC-401` 실패와 단계 3 의 `실패 : 6 건` 이 이 실수의 결과입니다.
+
+```
+INC-401 dami → 실패 · NameError: name 'desicion' is not defined
+실패 : 6 건
+```
+
+- ① 에서 `==` 대신 `!=` 를 쓰면 오류 없이 <mark style="background:#ffc4d6">**자동이 아닌 조치가 실행됩니다.**</mark> 허용 목록 IP(`INC-404`)가 차단되고, 자동이어야 하는 `dami` 는 잠기지 않습니다. 게이트가 「차단 금지」라고 적었어도 실행 줄이 같이 나오는 것이 이 실수의 결과입니다. 아래는 관련 알림만 발췌한 출력입니다.
 
 ```
 INC-401 dami high → 자동 실행 · PB-001 · 티켓 TCK-1
@@ -217,38 +161,6 @@ INC-404 203.0.113.80 high → 차단 금지 · PB-003 · 티켓 TCK-3
 INC-406 gaeun high → 승인 대기 · PB-001 · 티켓 TCK-5
     계정 잠금 gaeun → 승인 필요 · 등급 high +2, VIP 계정 +3, 합계 5점
     실행: 변경 없음 → 변경 없음
-```
-
-- 6번을 비워 두면 오류 없이 <mark style="background:#ffc4d6">**`티켓 생성` · `담당자 알림` 까지 조치로 취급돼 `dami` · `seoyeon` 이라는 이름이 IP 로 차단됩니다.**</mark> 계정 이름을 IP 차단 함수에 넣은 결과입니다.
-
-```
-INC-401 dami high → 자동 실행 · PB-001 · 티켓 TCK-1
-    계정 잠금 dami → 자동 · 등급 high +2, 합계 2점
-    실행: 잠기지 않음 → 잠김
-    티켓 생성 dami → 자동 · 등급 high +2, 합계 2점
-    실행: 차단되지 않음 → 차단됨
-INC-407 seoyeon mid → 자동 실행 · PB-002 · 티켓 TCK-6
-    담당자 알림 seoyeon → 자동 · 등급 mid +1, 합계 1점
-    실행: 차단되지 않음 → 차단됨
-    티켓 생성 seoyeon → 자동 · 등급 mid +1, 합계 1점
-    실행: 차단되지 않음 → 차단됨
-```
-
-- 8번을 비워 두면 `try` 만 있고 `except` 가 없어서 실행하기 전에 멈춥니다. 파이썬 3.10 이상에서는 `SyntaxError: expected 'except' or 'finally' block` 문구로 나옵니다.
-
-```
-SyntaxError: invalid syntax
-```
-
-- 9번을 비워 두면 오류 없이 <mark style="background:#ffc4d6">**처리 결과별 알림 수가 모두 0건으로 나옵니다.**</mark> 단계 2 의 알림은 정상으로 나오는데 단계 3 만 틀립니다.
-
-```
---- 단계 3: 처리 결과별 알림 수
-자동 실행 : 0 건
-승인 대기 : 0 건
-차단 금지 : 0 건
-조치 없음 : 0 건
-실패 : 0 건
 ```
 
 **관제에서는**
@@ -269,24 +181,16 @@ python exercise5-2_run.py
 
 **채운 코드** (한 예)
 
-`policy_check.py` 의 1 ~ 6번입니다.
+`policy_check.py` 의 ① · ② 입니다.
 
 ```python
-            # 1. decide_gate(step["request"], policy) 의 두 결과를 new_decision, new_reasons 에 저장한다
-            new_decision, new_reasons = decide_gate(step["request"], policy)   # 저장된 조치 요청으로 게이트의 결정을 다시 구한다
-            # 2. new_decision 이 "자동" 이 아니고(and) step["executed"] 가 참이면 (if, !=, and)
-            if new_decision != "자동" and step["executed"]:                    # 다시 구한 결정이 자동이 아닌데 실행했으면
-            # 3. step["target"] 이 allowlist_ips 안에 있고(and) step["after"] 가 "차단됨" 이면 (if, in, ==, and)
-            if step["target"] in allowlist_ips and step["after"] == "차단됨":  # 허용 목록 IP 가 차단되었으면
-            # 4. step["target"] 이 vip_accounts 안에 있고(and) step["after"] 가 "잠김" 이면 (if, in, ==, and)
-            if step["target"] in vip_accounts and step["after"] == "잠김":     # VIP 계정이 잠겼으면
-        # 5. executed_count 가 0 보다 크고(and) result["ticket"] 이 "" 이면 (if, >, ==, and)
-        if executed_count > 0 and result["ticket"] == "":                      # 실행한 조치가 있는데 티켓이 없으면
-    # 6. violations 가 빈 리스트 [] 이면 (if, ==)
-    if violations == []:                                                       # 위반이 없으면
+            # ① decide_gate(step["request"], policy) 의 두 결과를 new_decision, new_reasons 에 저장한다   # ← 이 주석 바로 아래 줄에 씁니다 (12칸)
+            new_decision, new_reasons = decide_gate(step["request"], policy)  # 저장된 조치 요청으로 게이트의 결정을 다시 구한다
+            # ② new_decision 이 "자동" 이 아니고(and) step["executed"] 가 참이면 (if, !=, and)   # ← 이 주석 바로 아래 줄에 씁니다 (12칸)
+            if new_decision != "자동" and step["executed"]:                   # 다시 구한 결정이 자동이 아닌데 실행했으면
 ```
 
-위 줄만으로는 `if` 안에 들어가는 줄이 어느 것인지 알기 어려우니, 미리 채운 줄까지 넣은 두 함수의 완성된 모양을 함께 봅니다. 3 · 4 · 5번도 `if` 아래의 미리 채운 `violations.append(…)` 줄이 `if` 안쪽입니다.
+위 줄만으로는 `if` 안에 들어가는 줄이 어느 것인지 알기 어려우니, 미리 채운 줄까지 넣은 함수의 완성된 모양을 함께 봅니다.
 
 **전체 모양 — `find_gate_bypass`**
 
@@ -296,31 +200,10 @@ def find_gate_bypass(results, policy):                                        # 
     violations = []                                                           # 위반한 알림 번호를 모을 빈 리스트 — 미리 채운 줄
     for result in results:                                                    # 결과 기록을 하나씩 꺼낸다 — 미리 채운 줄
         for step in result["steps"]:                                          # 조치 결과를 하나씩 꺼낸다 — 미리 채운 줄
-            new_decision, new_reasons = decide_gate(step["request"], policy)  # 저장된 조치 요청으로 게이트의 결정을 다시 구한다
-            if new_decision != "자동" and step["executed"]:                   # 다시 구한 결정이 자동이 아닌데 실행했으면
+            new_decision, new_reasons = decide_gate(step["request"], policy)  # ① 저장된 조치 요청으로 게이트의 결정을 다시 구한다
+            if new_decision != "자동" and step["executed"]:                   # ② 다시 구한 결정이 자동이 아닌데 실행했으면
                 violations.append(result["incident"])                         # 알림 번호를 위반 리스트에 추가한다 — 미리 채운 줄
     return violations                                                         # 위반한 알림 번호 리스트를 리턴한다 — 미리 채운 줄
-```
-
-**전체 모양 — `judge`**
-
-```python
-def judge(violations):    # 위반한 알림 번호 리스트를 받는 함수
-    """위반이 하나도 없으면 「PASS」, 하나라도 있으면 「FAIL」을 리턴한다. 점검 결과를 한눈에 보이게 출력할 때 쓴다."""
-    if violations == []:  # 위반이 없으면
-        return "PASS"     # 위반이 없으면 PASS 를 리턴한다 — 미리 채운 줄
-    return "FAIL"         # 위반이 있으면 FAIL 을 리턴한다 — 미리 채운 줄
-```
-
-`exercise5-2_run.py` 의 7 ~ 9번입니다. 8번 아래 미리 채운 `fail_count` 줄이 `if` 안쪽입니다.
-
-```python
-    # 7. load_json(log_path) 의 결과를 results 에 저장한다
-    results = load_json(log_path)  # 로그 파일을 리스트로 읽는다
-        # 8. verdict 가 "FAIL" 이면 (if, ==)
-        if verdict == "FAIL":      # 점검에 실패했으면
-# 9. rows 를 CHECK_PATH 파일에 저장한다 (save_json)
-save_json(rows, CHECK_PATH)        # 점검 결과를 파일에 저장한다
 ```
 
 **결과**
@@ -360,70 +243,49 @@ save_json(rows, CHECK_PATH)        # 점검 결과를 파일에 저장한다
 
 **자주 틀리는 곳**
 
-아래 결과는 해당 번호의 줄을 비우고 실행한 것입니다(비운 줄의 주석은 남겨 둔 상태입니다).
+아래 결과는 해당 빈칸을 비우거나 틀리게 쓰고 실행한 것입니다(빈칸의 주석은 남겨 둔 상태입니다).
 
-- 1번을 비워 두면 `new_decision` 을 만들지 못해 오류가 납니다.
+- ① · ② 를 모두 비워 두면(채우기 전 그대로면) 오류 없이 <mark style="background:#ffc4d6">**조치가 있는 알림이 모두 게이트 우회로 나옵니다.**</mark> 미리 채운 `violations.append(…)` 가 조건 없이 조치마다 실행되기 때문입니다. 정상 로그도 FAIL 이라 단계 3 이 4 개입니다. 아래는 첫 번째 로그와 단계 3 입니다.
 
 ```
-NameError: name 'new_decision' is not defined
+[engine_log.json] 알림 8 건
+   게이트 우회 실행 : FAIL · 위반 5 건 ['INC-401', 'INC-403', 'INC-404', 'INC-405', 'INC-406']
+--- 단계 3: FAIL 이 나온 점검 4 개 · 전체 점검 12 개
 ```
 
-- 2번 · 5번 · 6번 · 8번을 비워 두면 그 아래 미리 채운 줄이 앞줄보다 들여써져 있어 실행하기 전에 멈춥니다.
+- ① 만 쓰고 ② 를 비워 두면 그 아래 미리 채운 줄이 앞줄보다 들여써져 있어 실행하기 전에 멈춥니다.
 
 ```
 IndentationError: unexpected indent
 ```
 
-- 2번에서 `!=` 대신 `==` 를 쓰면 오류 없이 <mark style="background:#ffc4d6">**정상인 로그에서 위반이 나옵니다.**</mark> 자동으로 정해져 실행한 `INC-401` · `INC-403` 이 게이트 우회로 나옵니다. 아래는 첫 번째 로그의 결과입니다.
+- ① 을 비우고 ② 만 쓰면 `new_decision` 을 만들지 못해 오류가 납니다.
+
+```
+NameError: name 'new_decision' is not defined
+```
+
+- ② 에서 `new_decision` 대신 로그에 적힌 `step["decision"]` 을 쓰면 오류 없이 <mark style="background:#ffc4d6">**게이트를 끈 로그에서 위반을 하나도 찾지 못합니다.**</mark> 로그에는 모든 결정이 「자동」으로 적혀 있기 때문입니다. FAIL 은 허용 목록 점검 하나만 남습니다.
+
+```
+[gate_off_log.json] 알림 5 건
+   게이트 우회 실행 : PASS · 위반 0 건 []
+   허용 목록 IP 차단 : FAIL · 위반 1 건 ['INC-404']
+--- 단계 3: FAIL 이 나온 점검 1 개 · 전체 점검 12 개
+```
+
+- ② 에서 `!=` 대신 `==` 를 쓰면 오류 없이 <mark style="background:#ffc4d6">**정상인 로그에서 위반이 나옵니다.**</mark> 자동으로 정해져 실행한 `INC-401` · `INC-403` 이 게이트 우회로 나옵니다. 아래는 첫 번째 로그의 결과입니다.
 
 ```
 [engine_log.json] 알림 8 건
    게이트 우회 실행 : FAIL · 위반 2 건 ['INC-401', 'INC-403']
-   허용 목록 IP 차단 : PASS · 위반 0 건 []
-   VIP 계정 잠금 : PASS · 위반 0 건 []
-   티켓 없는 조치 : PASS · 위반 0 건 []
 ```
 
-- 3번을 비워 두면 오류 없이 <mark style="background:#ffc4d6">**조치 요청이 있는 알림이 모두 위반으로 나옵니다.**</mark> `if` 가 없어서 조건과 상관없이 `append` 가 실행되기 때문입니다. 4번을 비워도 같은 꼴이 점검 ③에 나타납니다.
+- ② 에서 `and step["executed"]` 를 빠뜨리면 오류 없이 <mark style="background:#ffc4d6">**실행하지 않은 조치도 위반으로 나옵니다.**</mark> 정상 로그에서 게이트가 막아 실행하지 않은 `INC-404` · `INC-405` · `INC-406` 이 위반입니다.
 
 ```
 [engine_log.json] 알림 8 건
-   게이트 우회 실행 : PASS · 위반 0 건 []
-   허용 목록 IP 차단 : FAIL · 위반 5 건 ['INC-401', 'INC-403', 'INC-404', 'INC-405', 'INC-406']
-   VIP 계정 잠금 : PASS · 위반 0 건 []
-   티켓 없는 조치 : PASS · 위반 0 건 []
-```
-
-- 3번에서 `and step["after"] == "차단됨"` 을 빠뜨리면 오류 없이 <mark style="background:#ffc4d6">**차단하지 않은 알림도 위반으로 나옵니다.**</mark> `INC-404` 는 허용 목록 IP 라서 승인 게이트가 차단 금지로 막았는데도 위반입니다. 허용 목록에 있는지만 보고 실제로 차단됐는지는 보지 않았기 때문입니다.
-
-```
-[engine_log.json] 알림 8 건
-   게이트 우회 실행 : PASS · 위반 0 건 []
-   허용 목록 IP 차단 : FAIL · 위반 1 건 ['INC-404']
-   VIP 계정 잠금 : PASS · 위반 0 건 []
-   티켓 없는 조치 : PASS · 위반 0 건 []
-```
-
-- 6번에서 `==` 대신 `!=` 를 쓰면 오류 없이 <mark style="background:#ffc4d6">**위반이 없는 점검이 모두 FAIL 로 나옵니다.**</mark> 판정이 거꾸로 되어, 위반이 있는 로그(승인 게이트를 끈 로그)가 PASS 가 됩니다.
-
-```
-[engine_log.json] 알림 8 건
-   게이트 우회 실행 : FAIL · 위반 0 건 []
-   허용 목록 IP 차단 : FAIL · 위반 0 건 []
-   VIP 계정 잠금 : FAIL · 위반 0 건 []
-   티켓 없는 조치 : FAIL · 위반 0 건 []
-```
-
-- 7번을 비워 두면 `results` 가 만들어지지 않아 오류가 납니다.
-
-```
-NameError: name 'results' is not defined
-```
-
-- 9번을 비워 두면 오류 없이 화면에는 저장했다고 나오지만 <mark style="background:#ffc4d6">**`policy_check.json` 파일이 만들어지지 않습니다.**</mark> 실행한 뒤 `ls` 로 파일이 생겼는지 확인합니다.
-
-```
---- 단계 4: policy_check.json 에 12 개 저장
+   게이트 우회 실행 : FAIL · 위반 3 건 ['INC-404', 'INC-405', 'INC-406']
 ```
 
 **관제에서는**
