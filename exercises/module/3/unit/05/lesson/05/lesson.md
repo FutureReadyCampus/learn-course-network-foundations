@@ -49,20 +49,16 @@ source:
 
 **한 장 정리**
 
-| 함수 | 받는 것 | 리턴하는 것 |
-|---|---|---|
-| `read_log` | 로그 파일 경로 | 요청 딕셔너리의 리스트 |
-| `count_by` | 요청 리스트, 센 기준(키 이름) | `{값: 횟수}` 딕셔너리 |
-| `filter_denied` | 요청 리스트 | 거부된 요청의 리스트 |
-| `deny_rate` | 요청 리스트 | 거부율(0 ~ 1). 요청이 0개이면 0.0 |
-| `find_heavy_users` | 사용자별 거부 횟수 딕셔너리, 기준 횟수 | 기준 이상 거부된 사용자 이름의 리스트 |
+| 함수 | 받는 것 | 리턴하는 것 | 직접 쓰는 곳 |
+|---|---|---|---|
+| `read_log` | 로그 파일 경로 | 요청 딕셔너리의 리스트(JSON 한 줄이 딕셔너리 하나) | 1 · 2번 |
+| `count_by` | 요청 리스트, 센 기준(키 이름) | `{값: 횟수}` 딕셔너리(예: 사용자별 · 사유별 횟수) | 3 ~ 5번 |
+| `filter_denied` | 요청 리스트 | 거부된 요청의 리스트 | 6 · 7번 |
+| `deny_rate` | 요청 리스트 | 거부율(0 ~ 1). 요청이 0개이면 0.0 | 8 · 9번 |
+| `find_heavy_users` | 사용자별 거부 횟수 딕셔너리, 기준 횟수 | 기준 이상 거부된 사용자 이름의 리스트 | 10 · 11번 |
 
 - **직접 쓰는 곳은 다섯 함수**(번호 1 ~ 11)입니다. 판단이 필요한 함수마다 2 ~ 3줄만 쓰고, 나머지는 미리 채웠습니다.
-  - `read_log`(1 · 2번): 로그 파일의 JSON 한 줄을 딕셔너리로 바꿔 리스트에 추가합니다.
-  - `count_by`(3 ~ 5번): 키의 값별로 횟수를 셉니다. 예를 들어 사용자별 · 사유별 횟수입니다.
-  - `filter_denied`(6 · 7번): 거부된 요청만 모읍니다.
-  - `deny_rate`(8 · 9번): 거부율을 구합니다. 요청이 하나도 없는 경우를 먼저 처리합니다.
-  - `find_heavy_users`(10 · 11번): 거부 횟수가 기준 이상인 사용자를 찾습니다.
+  - `deny_rate` 는 요청이 하나도 없는 경우(8 · 9번)를 먼저 처리합니다.
 - **미리 채운 것**: 반복 구조, `deny_rate` 의 나눗셈 줄, 마지막 `return` 입니다.
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="요청 로그를 읽어 거부 요청을 세고, 거부율로 경고를 정하는 함수 흐름"></figure>
@@ -257,10 +253,16 @@ def find_heavy_users(denied_counts, limit):                      # 사용자별 
     return heavy                                                 # 기준에 걸린 사용자 이름을 리턴한다
 ```
 
-- 들여쓰기는 미리 채운 줄에 맞춥니다.
-  - `read_log`(1 · 2번): `for line in log_file:` 안쪽이라 앞에 공백 12개입니다.
-  - `count_by`(3 ~ 5번) · `filter_denied`(6번) · `find_heavy_users`(10번): `for` 안쪽이라 공백 8개이고, `if` 안쪽(7번 · 11번)은 4개 더(12개)입니다.
-  - `deny_rate`(8 · 9번): 함수 안이라 공백 4개이고, `if` 안쪽 `return`(9번)은 8개입니다.
+들여쓰기는 미리 채운 줄에 맞춥니다.
+
+| 번호 | 들어가는 곳 | 앞 공백 |
+|---|---|---|
+| 1 · 2번 | `read_log` 의 `for line in log_file:` 안쪽 | 12개 |
+| 3 ~ 5번 · 6번 · 10번 | `count_by` · `filter_denied` · `find_heavy_users` 의 `for` 안쪽 | 8개 |
+| 7번 · 11번 | 그 `for` 안 `if` 의 안쪽 | 12개(4개 더) |
+| 8번 | `deny_rate` 함수 안 | 4개 |
+| 9번 | 8번 `if` 안쪽의 `return` | 8개 |
+
 - 4번의 `counts.get(value, 0)` 은 문법 상자 ③의 `get` 과 같습니다. 처음 나온 값은 0 에서 시작합니다.
 - 8 · 9번은 요청이 하나도 없을 때 0 으로 나누는 오류를 막는 줄입니다. 로그가 비는 경우의 결과는 정답 레슨 「도전 5-1 정답」의 「자주 틀리는 곳」에서 읽습니다.
 - 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다.
@@ -334,13 +336,18 @@ print("거부", user_limit, "번 이상 사용자:", heavy)                  # �
 | 하려는 일 | 코드 · 말 |
 |---|---|
 | 로그 한 줄을 딕셔너리로 | `entry = json.loads(line)` → `entries.append(entry)` (`read_log` 안) |
-| 값별로 세기 | `value = entry[key]` → `old_count = counts.get(value, 0)` → `counts[value] = old_count + 1` |
+| 셀 값 꺼내기 | `value = entry[key]` |
+| 지금 횟수 꺼내기 | `old_count = counts.get(value, 0)` |
+| 1 늘려 넣기 | `counts[value] = old_count + 1` |
 | 거부된 요청만 모으기 | `if not entry["allowed"]:` → `denied.append(entry)` |
 | 거부율 | `if total == 0:` → `return 0.0` 뒤에 `denied / total` |
 | 거부가 많은 사용자 | `if count >= limit:` → `heavy.append(user)` |
 | 경고 여부 | `rate >= limit` 이면 경고 (소수끼리 비교) |
 | 퍼센트로 보여 주기 | `round(rate * 100)` |
-| 보고서 줄 모으기 | `lines.append("…")` → `"\n".join(lines)` (제공 파일 `weekly_report.py`) |
-| 파일로 저장 | `open(file_name, "w", encoding="utf-8")` → `report_file.write(text)` (제공 파일 `weekly_report.py`) |
+| 보고서 줄 모으기 | `lines.append("…")` → `"\n".join(lines)` |
+| 파일 열기 | `open(file_name, "w", encoding="utf-8")` |
+| 파일에 쓰기 | `report_file.write(text)` |
+
+보고서 줄 모으기와 파일 열기 · 쓰기는 제공 파일 `weekly_report.py` 의 코드입니다.
 
 ---

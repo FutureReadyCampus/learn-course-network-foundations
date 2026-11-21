@@ -19,21 +19,37 @@ source:
 
 상황이 생기면 같은 네 단계로 생각합니다.
 
-- **확인**: 로그나 점검 결과로 무슨 일인지 알아봅니다.
-- **원인**: 왜 이런 일이 생겼는지 가립니다. 원인은 보통 셋 중 하나입니다.
-  - 사람의 일: 입사 · 퇴사 · 부서 이동처럼 사람에게 생긴 일 때문에 파일을 고쳐야 합니다.
-  - 데이터 문제: 파일에 있어야 할 것이 없거나 틀려 있습니다.
-  - 규칙 문제: 「무엇을 허용하고 무엇에 경고할지」 정해 둔 기준이 비어 있거나 현실과 맞지 않습니다(너무 느슨하거나 너무 엄격합니다).
-  - 이 수업에서 기준을 적어 둔 곳은 `conditions.json`(권한마다 몇 시에 어디서 접속하면 허용하는지), `alert.json`(거부율이 얼마 이상이면 경고하는지), 점검의 90일 기준(며칠 안 쓴 권한을 후보로 뽑는지), `sla.json`(요청을 몇 시간 안에 처리해야 하는지)입니다.
-- **고치기**: 어느 파일을 열어서 어떻게 고칠지 정합니다. 방법은 셋 중 하나입니다.
+| 단계 | 하는 일 |
+|---|---|
+| **확인** | 로그나 점검 결과로 무슨 일인지 알아봅니다 |
+| **원인** | 왜 이런 일이 생겼는지 가립니다(보통 아래 셋 중 하나) |
+| **고치기** | 어느 파일을 열어서 어떻게 고칠지 정합니다(아래 세 방법 중 하나) |
+| **다시 확인** | 고친 뒤 무엇을 다시 실행하거나 어떤 출력을 보면 고쳐진 것을 알 수 있는지 정합니다 |
+
+**원인 세 가지**
+
+| 원인 | 뜻 |
+|---|---|
+| 사람의 일 | 입사 · 퇴사 · 부서 이동처럼 사람에게 생긴 일 때문에 파일을 고쳐야 함 |
+| 데이터 문제 | 파일에 있어야 할 것이 없거나 틀려 있음 |
+| 규칙 문제 | 정해 둔 기준이 비어 있거나 현실과 맞지 않음(너무 느슨하거나 너무 엄격함) |
+
+규칙은 「무엇을 허용하고 무엇에 경고할지」 정해 둔 기준입니다. 이 수업에서 기준을 적어 둔 곳은 네 군데입니다.
+
+| 기준을 적어 둔 곳 | 정해 둔 것 |
+|---|---|
+| `conditions.json` | 권한마다 몇 시에 어디서 접속하면 허용하는지 |
+| `alert.json` | 거부율이 얼마 이상이면 경고하는지 |
+| 점검의 90일 기준 | 며칠 안 쓴 권한을 후보로 뽑는지 |
+| `sla.json` | 요청을 몇 시간 안에 처리해야 하는지 |
+
+**고치는 방법 세 가지**
 
 | 방법 | 뜻 | Module 3에서 한 예 |
 |---|---|---|
-| 새로 넣는다(추가) | 없던 것을 파일에 적어 넣음 | `users.json` 에 새 직원 정보를 적음. `exceptions.json` 에 만료 시각이 있는 예외를 적음 |
-| 값을 바꾼다(수정) | 있는 정보의 값을 다른 값으로 고침 | `"employed": true` 를 `false` 로 바꿈. `conditions.json` 의 허용 접속 위치에 `"vpn"` 을 넣음 |
-| 지운다(삭제) | 있던 정보를 파일에서 없앰 | 퇴사자 정보를 `users.json` 에서 지움. 만료된 예외를 `exceptions.json` 에서 지움 |
-
-- **다시 확인**: 고친 뒤에 무엇을 다시 실행하거나 어떤 출력을 보면 고쳐진 것을 알 수 있는지 정합니다.
+| 새로 넣는다(추가) | 없던 것을 파일에 적어 넣음 | `users.json` 에 새 직원 정보, `exceptions.json` 에 만료 시각이 있는 예외를 적음 |
+| 값을 바꾼다(수정) | 있는 정보의 값을 다른 값으로 고침 | `"employed": true` 를 `false` 로 바꿈, 허용 접속 위치에 `"vpn"` 을 넣음(`conditions.json`) |
+| 지운다(삭제) | 있던 정보를 파일에서 없앰 | 퇴사자 정보는 `users.json` 에서, 만료된 예외는 `exceptions.json` 에서 지움 |
 
 ## 3.1 상황 8개와 읽을 핵심 코드
 
@@ -44,21 +60,25 @@ source:
 | # | 상황 (이렇게 알게 됐습니다) | 읽을 핵심 코드 |
 |---|---|---|
 | 1 | 새 직원 hana 가 입사했는데, hana 의 요청이 「등록되지 않은 사용자」로 거부된다 | `role_admin.py` 의 `assign_role`, `config/users.json` 의 사용자 정보 |
-| 2 | 보고서에 dami 가 거부 4번으로 나오고 퇴사자 계정 점검이 실패한다. dami 는 퇴사했다 | `rbac.py` 의 `check_permission` 판정 순서, `config/users.json` |
+| 2 | 퇴사한 dami 가 보고서에 거부 4번으로 나오고, 퇴사자 계정 점검이 실패한다 | `rbac.py` 의 `check_permission` 판정 순서, `config/users.json` |
 | 3 | seoyeon 이 월말 정산 대조를 지원하게 되어 `SETTLE:QUERY` 가 잠시 필요한데 「권한 없음」으로 거부된다 | `exception_policy.py` 의 `find_exception`, `policy.py` 의 `evaluate_access` 순서, `config/exceptions.json` |
 | 4 | junho 가 영업 실적 정정을 위해 `SALES:CHANGE` 를 달라고 하는데, 누가 언제까지 처리할지 정해진 방법이 없다 | `req_create.py` · `req_review.py` · `req_grant.py` · `req_sla.py` |
 | 5 | 정기 점검에서 seoyeon 의 `SALES:CHANGE` 는 마지막 사용이 120일 전이고, gaeun 의 `ACCOUNT:CHANGE` 는 사용 이력이 없다 | `review_rules.py` 의 `find_stale`, `review_unused.py` 의 `find_unused`, `config/exclude_list.json` |
 | 6 | 회수 대상에 쓰기 권한이 섞여 있고, 퇴사자의 역할을 비우면 권한 여러 개가 한꺼번에 사라진다 | `revoke_plan.py` · `revoke_approve.py` · `revoke.py`, `revocation_log.json` |
-| 7 | 새벽에 밖에서 접속해도 요청이 허용된다. 한편 gaeun 은 VPN 으로 계정 변경을 하다가 3번 거부됐다 | `config/conditions.json`, `conditional.py` 의 `evaluate_conditional` |
+| 7 | 새벽에 밖에서 접속해도 요청이 허용되는데, gaeun 은 VPN 으로 계정 변경을 하다가 3번 거부됐다 | `config/conditions.json`, `conditional.py` 의 `evaluate_conditional` |
 | 8 | 사람이 로그를 눈으로 세는 데 오래 걸리고, 기준이 사람마다 다르다 | `access_server.py` 의 `check`, `server_log.jsonl`, `checklist.py`, `log_summary.py`, `weekly_report.py` |
 
 - 파일들은 서로를 부릅니다. 상황 2 · 3 · 7 · 8은 요청 한 건이 같은 순서로 함수를 거칩니다. 아래 그림에서 A 에서 B 로 가는 화살표는 「A 가 B 를 부른다」는 뜻이고, 판정은 안쪽 B 부터 하고 바깥 A 가 그 결과에 조건을 더합니다.
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="요청 한 건은 check 에서 evaluate_conditional, evaluate_access 를 거쳐 판정되고 write_log 로 로그에 남습니다"></figure>
 
-- 상황 4가 만든 예외가 상황 3의 `find_exception` 이 읽는 데이터가 됩니다. `req_grant.py` 의 `grant_request` 가 예외 리스트에 새 예외를 추가합니다.
-- 상황 5 → 6은 점검 결과가 회수로 이어집니다. 점검이 찾은 회수 대상을 `plan_revocation` 이 받아 계획을 세우고, `mark_approvals` · `execute_revocation` 이 이어 처리합니다.
-- 상황 1 · 4 는 함수가 함수를 부르는 관계가 아니라 같은 데이터(사용자 딕셔너리, 예외 리스트)를 읽고 쓰는 관계입니다.
+그림 밖의 상황은 이렇게 이어집니다.
+
+| 상황 | 이어지는 방식 |
+|---|---|
+| 4 → 3 | `req_grant.py` 의 `grant_request` 가 추가한 예외를 `find_exception` 이 읽음 |
+| 5 → 6 | 점검이 찾은 회수 대상으로 `plan_revocation` 이 계획을 세우고, `mark_approvals` · `execute_revocation` 이 이어 처리함 |
+| 1 · 4 | 함수가 함수를 부르지 않고, 같은 데이터(사용자 딕셔너리, 예외 리스트)를 읽고 씀 |
 
 아래는 상황마다 관련된 코드입니다. 각 코드 앞의 문장은 **이 코드를 왜 읽는지**를 알려 줍니다. 답을 알려 주는 것은 아니고, 코드에서 어디를 볼지만 짚어 줍니다. 읽고 나서 보고서의 실습 5-2 상황 정리를 쓸 때 참고합니다.
 
@@ -234,8 +254,12 @@ def needs_approval(plan, sensitive):                             # 계획 한 �
 
 `config/conditions.json` 은 권한마다 허용하는 시간대와 접속 위치를 적어 둔 파일입니다. 어떤 권한에 어떤 조건이 걸려 있고, 조건이 없는 권한은 무엇인지 읽습니다.
 
-- `"hours": [9, 18]` 은 9시부터 18시 전까지 허용한다는 뜻입니다.
-- `networks` 의 값은 `office`(사내망) · `vpn`(밖에서 VPN 으로 회사망에 연결한 상태) · `external`(그 밖의 외부) 세 가지입니다.
+| 키 · 값 | 뜻 |
+|---|---|
+| `"hours": [9, 18]` | 9시부터 18시 전까지 허용 |
+| `networks` 의 `office` | 사내망 |
+| `networks` 의 `vpn` | 밖에서 VPN 으로 회사망에 연결한 상태 |
+| `networks` 의 `external` | 그 밖의 외부 |
 
 ```json
 [
@@ -302,11 +326,15 @@ def needs_approval(plan, sensitive):                             # 계획 한 �
 1. `report_u5.md` 의 `## 실습 5-2` 아래 `### 상황 3` ~ `### 상황 8` 칸을 엽니다. 상황 1 · 2 의 본보기는 「보고서 쓰기」 레슨에 있으니 먼저 읽습니다.
 2. 상황 3 ~ 8 중 4개 이상을 골라 `-` 뒤를 채웁니다. Module 3에서 만든 내 파일을 열어 보면서 써도 됩니다.
 
-- 칸마다 무엇을 쓰는지
-  - **원인**: 사람의 일인지, 데이터 문제인지, 규칙 문제인지 고르고 이유를 씁니다.
-  - **고칠 파일**: 어느 파일을 열어서 고치는지 씁니다.
-  - **어떻게 고치나요**: 새로 넣는지, 값을 바꾸는지, 지우는지 고르고, 정확히 무엇을 넣거나 바꾸거나 지우는지 씁니다.
-  - **고친 뒤 확인**: 무엇을 다시 실행하거나 어떤 출력을 보면 고쳐진 것을 알 수 있는지 씁니다.
+칸마다 쓰는 것은 아래와 같습니다.
+
+| 칸 | 쓰는 것 |
+|---|---|
+| **원인** | 사람의 일 · 데이터 문제 · 규칙 문제 중 하나를 고르고 이유 |
+| **고칠 파일** | 어느 파일을 열어서 고치는지 |
+| **어떻게 고치나요** | 새로 넣기 · 값 바꾸기 · 지우기 중 하나를 고르고, 정확히 무엇을 넣거나 바꾸거나 지우는지 |
+| **고친 뒤 확인** | 무엇을 다시 실행하거나 어떤 출력을 보면 고쳐진 것을 알 수 있는지 |
+
 - 상황 하나에서 답이 여러 개일 수 있습니다(예: 상황 7은 규칙을 추가하는 경우와 고치는 경우). 떠오르는 대로 모두 씁니다. 같은 칸에 케이스 A · B 를 쓸 때는 줄을 나눠 「케이스 A: …」 처럼 적습니다.
 
 **순서**
@@ -324,10 +352,15 @@ def needs_approval(plan, sensitive):                             # 계획 한 �
 |---|---|
 | 상황이 생기면 | 확인 → 원인 → 고치기(추가 · 수정 · 삭제) → 다시 확인 |
 | 원인 | 사람의 일 · 데이터 문제 · 규칙 문제 |
-| 고칠 파일 | 데이터는 `users.json` · `exceptions.json` · `exclude_list.json`, 규칙은 `conditions.json` · `alert.json` |
-| 퇴사자 · 일시 지원 | `employed` 수정 · 계정 삭제, 만료 시각이 있는 예외 추가 |
-| 새 권한 · 안 쓰는 권한 | 요청 → 승인 → 부여, 점검 후 회수 또는 회수 제외 |
-| 회수 · 조건 · 매주 확인 | 계획 → 승인 → 실행 → 이력, 시간 · 접속 위치 조건, 점검 + 집계 + 보고서 |
+| 고칠 파일(데이터) | `users.json` · `exceptions.json` · `exclude_list.json` |
+| 고칠 파일(규칙) | `conditions.json` · `alert.json` |
+| 퇴사자 | `employed` 수정 · 계정 삭제 |
+| 일시 지원 | 만료 시각이 있는 예외 추가 |
+| 새 권한 | 요청 → 승인 → 부여 |
+| 안 쓰는 권한 | 점검 후 회수 또는 회수 제외 |
+| 회수 | 계획 → 승인 → 실행 → 이력 |
+| 조건 | 시간 · 접속 위치 조건 |
+| 매주 확인 | 점검 + 집계 + 보고서 |
 
 ---
 
@@ -353,9 +386,15 @@ ls config
 - 이번 Unit에서 만든 파일 `checklist.py` · `exercise5-1_run.py` · `log_summary.py` · `weekly_report.py` · `weekly_run.py` · `week_log.jsonl` · `access_control_weekly_report_2026-11-02.md` · `report_u5.md` 가 보여야 합니다. 도전 5-1을 했다면 `challenge5-1_run.py` 도 있습니다.
 - `config` 안에는 이번 Unit의 `week_state.json` · `alert.json` 이 보여야 합니다. 앞 Unit에서 만든 JSON 파일도 함께 보입니다.
 - Module 3의 파일은 이렇게 둡니다. 파일을 어디에 저장했는지 헷갈리면 이 규칙과 VS Code 왼쪽 목록을 비교합니다.
-  1. `config/` 안에는 JSON 설정 파일만 둡니다. 이름이 `config/…` 로 시작하는 파일입니다.
-  2. 그 밖의 파일(코드 `.py`, 실행 파일 `exerciseN-M_run.py` · `challengeN-M_run.py`, 보고서 `report_uN.md`, 실행하면 생기는 파일)은 모두 `access_control/` 바로 아래에 둡니다.
-  3. 하위 폴더를 따로 만들지 않습니다. `__pycache__/` 는 파이썬이 자동으로 만드는 임시 폴더라 신경 쓰지 않습니다.
+
+| 위치 | 두는 파일 |
+|---|---|
+| `config/` | JSON 설정 파일만(이름이 `config/…` 로 시작하는 파일) |
+| `access_control/` | 그 밖의 파일 모두(폴더 바로 아래) |
+| 하위 폴더 | 따로 만들지 않음 |
+
+- 그 밖의 파일은 코드 `.py`, 실행 파일 `exerciseN-M_run.py` · `challengeN-M_run.py`, 보고서 `report_uN.md`, 실행하면 생기는 파일입니다.
+- `__pycache__/` 는 파이썬이 자동으로 만드는 임시 폴더라 신경 쓰지 않습니다.
 
 ```
 security-agent-toolkit/
