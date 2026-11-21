@@ -247,7 +247,7 @@ print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")            
 1. **[터미널]** 판다스를 설치합니다(맥북은 `python3`). `report.py` 가 판다스를 쓰기 때문입니다. 이미 설치했다면 바로 다음 줄로 갑니다. 그다음 준비할 파일을 확인합니다. <mark>`점검 준비 정상` 이 나와야</mark> 합니다.
    ```bash
    python -m pip install pandas
-   python -c "import report, approval_gate, false_positive; open('incident_report_20261112.md', encoding='utf-8'); print('점검 준비 정상')"
+   python -c "import report, approval_gate, false_positive; open('incident_report_20261112.md', encoding='utf-8'); open('unit10_tickets.json', encoding='utf-8'); open('unit10_actions.json', encoding='utf-8'); print('점검 준비 정상')"
    ```
    - `No module named '…'` 나 `FileNotFoundError` 가 나오면 위 「준비할 파일」에서 그 이름의 파일을 찾아 만듭니다.
 2. **[VS Code]** 파일 세 개 `gate_cases.json` · `unit09_check.py` · `apply4-5_run.py` 를 만듭니다. 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).

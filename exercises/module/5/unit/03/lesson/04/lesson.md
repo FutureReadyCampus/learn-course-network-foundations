@@ -20,7 +20,7 @@ render: markdown
 | `ticket_notice.py` | `send_ticket_notice` | 등급에 맞는 수신자에게 티켓 알림을 보낸다 |
 | `ticket_notice.py` | `send_with_retry` | 실패하면 최대 3번까지 다시 보낸다 |
 
-`ticket_merge.py` 는 실습 3-2의 `ticketing.py` 를 가져와 씁니다. `notifier.py` 는 `agent_core` 폴더에 이미 있으면 복사해 씁니다.
+`ticket_merge.py` 는 실습 3-2의 `ticketing.py` 를 가져와 씁니다. `notifier.py` 는 `agent_core` 폴더에 이미 있으면 복사해 씁니다. `agent_core` 는 이 과정에서 만드는 폴더가 아니라서 없는 사람이 많습니다. 없으면 아래 `notifier.py` 상자를 그대로 씁니다.
 
 1. 파일은 모두 `soar_response` 폴더 안에 만듭니다(VS Code 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File**).
 2. 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
