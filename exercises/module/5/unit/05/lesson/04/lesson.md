@@ -304,8 +304,16 @@ ls
 ```
 
 - `pwd` 결과가 `…/soar_response` 로 끝나야 합니다.
-- `soar_engine.py` · `exercise5-1_run.py` · `engine_alerts.json` · `engine_log.json` · `engine_tickets.json` · `risk_engine_log.json` · `gate_off_log.json` · `policy_check.py` · `exercise5-2_run.py` · `policy_check.json` · `unit10_final_retrospective.md` · `report_u5.md` 가 보여야 합니다.
-- 도전 5-1을 했다면 `unit05_risk_scores.json` · `engine_input.py` · `challenge5-1_run.py` · `engine_summary.json` · `risk_tickets.json` 도 보입니다.
+- `ls` 결과에 아래 파일이 보여야 합니다. 도전 5-1 줄은 도전을 했을 때만 보입니다.
+
+| 만든 곳 | 보여야 할 파일 |
+|---|---|
+| 시작하기 | `engine_alerts.json` |
+| 실습 5-1 | `soar_engine.py` · `exercise5-1_run.py` · `engine_log.json` · `engine_tickets.json` |
+| 제공 파일 | `risk_engine_log.json` |
+| 실습 5-2 | `gate_off_log.json` · `policy_check.py` · `exercise5-2_run.py` · `policy_check.json` · `unit10_final_retrospective.md` |
+| 보고서 쓰기 | `report_u5.md` |
+| 도전 5-1(선택) | `unit05_risk_scores.json` · `engine_input.py` · `challenge5-1_run.py` · `engine_summary.json` · `risk_tickets.json` |
 
 **3. 깃허브에 올리기**
 

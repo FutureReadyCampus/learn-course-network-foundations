@@ -12,10 +12,14 @@ Unit 1 ~ 4에서는 플레이북 찾기(Unit 1) · 계정 잠금과 IP 차단(Un
 
 **오늘의 계획 (3시간)**
 
-1. 시작하기 15분: 이 레슨을 읽고 앞 Unit 파일을 확인한 뒤, 알림 파일 `engine_alerts.json` 을 만듭니다.
-2. 실습 약 110분: 핵심 실습 두 개를 차례로 합니다. 실습 5-2 앞에서 「제공 파일」 레슨의 로그 파일 하나를 복사해 만들고, 실습 5-2 끝에서 최종 회고 문서를 씁니다.
-3. 글쓰기 40분: 「보고서 쓰기」 레슨에서 핵심 실습의 질문에 답하고, 「오늘의 글 쓰기」 레슨에서 글 한 편을 씁니다.
-4. 마무리 15분: 실습 5-2 끝의 「이번 Unit 마무리」에서 파일을 확인하고 깃허브에 올립니다.
+| 순서 | 시간 | 하는 일 |
+|---|---|---|
+| 1. 시작하기 | 15분 | 이 레슨을 읽고 앞 Unit 파일을 확인한 뒤, 알림 파일 `engine_alerts.json` 을 만든다 |
+| 2. 실습 | 약 110분 | 핵심 실습 두 개를 차례로 한다 |
+| 3. 글쓰기 | 40분 | 「보고서 쓰기」 레슨에서 핵심 실습의 질문에 답하고, 「오늘의 글 쓰기」 레슨에서 글 한 편을 쓴다 |
+| 4. 마무리 | 15분 | 실습 5-2 끝의 「이번 Unit 마무리」에서 파일을 확인하고 깃허브에 올린다 |
+
+실습 시간에는 실습 5-2 앞에서 「제공 파일」 레슨의 로그 파일 하나를 복사해 만들고, 실습 5-2 끝에서 최종 회고 문서를 씁니다.
 
 **오늘 만들 것 두 가지**
 
@@ -76,11 +80,28 @@ Unit 1 ~ 4에서는 플레이북 찾기(Unit 1) · 계정 잠금과 IP 차단(Un
 
 **`engine_alerts.json`** — 이번 Unit에서 들어온 알림 8건입니다.
 
-- **무엇인가**:
-  - Unit 1 시작하기 `incident_samples.json` 과 같은 알림 모양입니다. 키는 `id`(알림 번호) · `entity`(대상 계정 또는 IP) · `grade`(등급) · `score`(점수) · `reasons`(탐지된 규칙 이름 리스트) · `status`(상태)입니다.
-  - 알림마다 다른 처리 경로를 지나도록 만든 시험용 데이터입니다. `INC-402` 는 `grade` 키가 없는 알림입니다.
-  - `203.0.113.80` 은 허용 목록(allowlist, 얼라우리스트: 차단 대상에서 제외하기로 미리 정한 IP 의 목록)에 있는 협력사 사무실 IP 이고, `192.0.2.41` 은 `junho` 와 `hana` 가 함께 쓰는 IP 이며, `gaeun` 은 VIP 계정입니다.
+- **무엇인가**: Unit 1 시작하기 `incident_samples.json` 과 같은 알림 모양입니다. 알림마다 다른 처리 경로를 지나도록 만든 시험용 데이터입니다.
 - **어디에 쓰나**: 실습 5-1 엔진이 알림을 하나씩 처리합니다.
+
+알림 한 건의 키입니다.
+
+| 키 | 뜻 |
+|---|---|
+| `id` | 알림 번호 |
+| `entity` | 대상 계정 또는 IP |
+| `grade` | 등급 |
+| `score` | 점수 |
+| `reasons` | 탐지된 규칙 이름 리스트 |
+| `status` | 상태 |
+
+처리 경로를 가르는 알림과 대상입니다. 허용 목록(allowlist, 얼라우리스트)은 차단 대상에서 제외하기로 미리 정한 IP 의 목록입니다.
+
+| 알림 · 대상 | 특징 |
+|---|---|
+| `INC-402` | `grade` 키가 없는 알림 |
+| `203.0.113.80` | 허용 목록에 있는 협력사 사무실 IP |
+| `192.0.2.41` | `junho` 와 `hana` 가 함께 쓰는 IP |
+| `gaeun` | VIP 계정 |
 
 <pre class="copyable"><code>[
   {"id": "INC-401", "entity": "dami", "grade": "high", "score": 60, "reasons": ["퇴사한 계정"], "status": "탐지됨"},
@@ -456,10 +477,16 @@ def decide_gate(request, policy):                                           # �
 ## 오류가 나면
 
 - `pwd` 가 `soar_response` 로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
-- `ModuleNotFoundError: No module named 'approval_gate'` 처럼 `No module named` 이 나오면 <mark style="background:#ffc4d6">그 이름의 파일이 이 폴더에 없다는 뜻</mark>입니다. 「이전 파일이 없을 때」 페이지의 코드 상자로 만듭니다.
-- `FileNotFoundError` 가 나오면 오류 문장에 적힌 파일(`ip_users.json` · `config/playbook_registry.json` · `config/approval_policy.json` · `config/escalation_rules.json`)이 그 위치에 없는 것입니다. `ls` 와 `ls config` 로 확인한 뒤 「이전 파일이 없을 때」 페이지의 코드 상자로 만듭니다.
-- `json.decoder.JSONDecodeError` 가 나오면 붙여 넣은 JSON 파일에서 쉼표나 괄호가 빠졌거나 남은 것입니다. 오류 문장의 `line` 숫자 근처를 확인하고, 모르겠으면 파일 내용을 모두 지운 뒤 문서의 코드 상자를 다시 붙여 넣습니다.
-- `IndentationError` 나 `SyntaxError` 가 앞 Unit 파일 이름과 함께 나오면 그 파일의 빈칸이 덜 채워진 것입니다. 그 Unit의 정답 레슨을 보고 채우거나, 「이전 파일이 없을 때」 페이지의 코드 상자로 덮어씁니다.
+
+| 오류 | 뜻 | 고치는 법 |
+|---|---|---|
+| `ModuleNotFoundError` | `No module named 'approval_gate'` 처럼 적힌 <mark style="background:#ffc4d6">그 이름의 파일이 이 폴더에 없다는 뜻</mark> | 「이전 파일이 없을 때」 페이지의 코드 상자로 만든다 |
+| `FileNotFoundError` | 오류 문장에 적힌 파일이 그 위치에 없다 | `ls` 와 `ls config` 로 확인한 뒤 「이전 파일이 없을 때」 페이지의 코드 상자로 만든다 |
+| `json.decoder.JSONDecodeError` | 붙여 넣은 JSON 파일에서 쉼표나 괄호가 빠졌거나 남았다 | 오류 문장의 `line` 숫자 근처를 보고, 모르겠으면 내용을 모두 지운 뒤 코드 상자를 다시 붙여 넣는다 |
+| `IndentationError` · `SyntaxError` | 앞 Unit 파일 이름과 함께 나오면 그 파일의 빈칸이 덜 채워졌다 | 그 Unit의 정답 레슨으로 채우거나, 「이전 파일이 없을 때」 페이지의 코드 상자로 덮어쓴다 |
+
+`FileNotFoundError` 에 적힐 수 있는 파일은 `ip_users.json` · `config/playbook_registry.json` · `config/approval_policy.json` · `config/escalation_rules.json` 입니다.
+
 - 먼저 오류 전체와 내가 친 명령을 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 그래도 막히면 이 Unit 뒤쪽의 정답 레슨을 봅니다. 그래도 풀리지 않으면 보고서에 「모름 — 막힌 곳: …」 이라고 씁니다.
 
 > 실행할 때마다 같은 입력 파일에서 시작해 같은 결과가 나옵니다.
