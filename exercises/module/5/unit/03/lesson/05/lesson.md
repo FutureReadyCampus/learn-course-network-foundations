@@ -43,14 +43,17 @@ source:
 
 **직접 쓰는 곳은 아홉 군데**이고, 함수는 두 파일에 나뉘어 있습니다.
 
-- `drill.py`
-  - `choose_containment`(1 ~ 3번): 탐지된 규칙에 연결된 조치 이름을 고릅니다.
-  - `handle_incident`(4 · 5번): 경로가 오탐 종료이면 종료하고, 승인 필요(VIP)이면 승인 대기로 둡니다. 나머지는 규칙에 맞는 조치를 합니다(미리 채움). 여러 계정이 함께 쓰는 IP 의 차단도 승인 대기로 둡니다.
-- `shift_report.py`
-  - `is_failure`(6번): 조치 후 상태에 확인 실패가 있는지 구합니다.
-  - `is_unchanged`(7번): 조치 전과 후가 같은지 구합니다.
-  - `summarize`(8번): 기록을 종류별로 셉니다.
-- `challenge3-1_run.py`(9번): 알림마다 처리 결과를 두 값으로 나눠 받습니다(언패킹, unpacking: 함께 리턴된 두 값을 변수 두 개에 하나씩 나눠 담는 일).
+| 파일 | 함수 | 번호 | 하는 일 |
+|---|---|---|---|
+| `drill.py` | `choose_containment` | 1 ~ 3번 | 탐지된 규칙에 연결된 조치 이름을 고른다 |
+| `drill.py` | `handle_incident` | 4 · 5번 | 승인 필요(VIP)이면 승인 대기로 둔다 |
+| `shift_report.py` | `is_failure` | 6번 | 조치 후 상태에 확인 실패가 있는지 구한다 |
+| `shift_report.py` | `is_unchanged` | 7번 | 조치 전과 후가 같은지 구한다 |
+| `shift_report.py` | `summarize` | 8번 | 기록을 종류별로 센다 |
+| `challenge3-1_run.py` | (실행 파일) | 9번 | 알림마다 처리 결과를 두 값으로 나눠 받는다 |
+
+- `handle_incident` 의 나머지 줄은 미리 채워져 있습니다. 경로가 오탐 종료이면 종료하고, 나머지는 규칙에 맞는 조치를 합니다. 여러 계정이 함께 쓰는 IP 의 차단도 승인 대기로 둡니다.
+- 9번처럼 받는 것을 언패킹(unpacking)이라고 합니다. 함께 리턴된 두 값을 변수 두 개에 하나씩 나눠 담는 일입니다.
 
 ## 도전 3-1 · 알림 8건 처리와 확인 목록 만들기
 
@@ -64,8 +67,16 @@ source:
 
 **먼저 확인할 파일** — 이 도전은 앞 Unit 파일을 많이 씁니다. 없는 파일은 그 레슨의 코드 상자로 만들고, 빈칸은 그 Unit 정답 레슨의 채운 코드로 채웁니다.
 
-1. Unit 1: `incident.py` 전체(`INCIDENTS_PATH` 가 있어야 합니다, 실습 1-2) · `enrichment.py`(실습 1-3) · `routing.py`(「제공 파일」 레슨) · `incident_samples.json` · `users_info.json` · `source_ips.json` · `trusted_ips.json`(시작하기 레슨)
-2. Unit 2: `containment_store.py` · `account_actions.py`(실습 2-1) · `session_actions.py` · `containment.py`(실습 2-2) · `ip_actions.py`(「제공 파일」 레슨) · `config/vip_accounts.json` · `config/allowlist_ips.json` · `ip_users.json`(시작하기 레슨)
+| Unit | 파일 | 만드는 레슨 |
+|---|---|---|
+| Unit 1 | `incident.py` 전체(`INCIDENTS_PATH` 가 있어야 함) | 실습 1-2 |
+| Unit 1 | `enrichment.py` | 실습 1-3 |
+| Unit 1 | `routing.py` | 「제공 파일」 레슨 |
+| Unit 1 | `incident_samples.json` · `users_info.json` · `source_ips.json` · `trusted_ips.json` | 시작하기 레슨 |
+| Unit 2 | `containment_store.py` · `account_actions.py` | 실습 2-1 |
+| Unit 2 | `session_actions.py` · `containment.py` | 실습 2-2 |
+| Unit 2 | `ip_actions.py` | 「제공 파일」 레슨 |
+| Unit 2 | `config/vip_accounts.json` · `config/allowlist_ips.json` · `ip_users.json` | 시작하기 레슨 |
 
 **[터미널]** 아래 명령으로 확인합니다(맥북은 `python3`). `앞 Unit 파일 정상` 이 나오면 됩니다. 시작하기 레슨의 두 함수짜리 `incident.py` 를 쓰고 있다면 `cannot import name 'INCIDENTS_PATH'` 가 나오니, Unit 1 실습 1-2의 `incident.py` 전체로 바꿉니다.
 

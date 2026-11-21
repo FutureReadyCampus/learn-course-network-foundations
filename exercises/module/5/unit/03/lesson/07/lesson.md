@@ -33,9 +33,17 @@ source:
 
 | 정할 것 | 오늘 적용한 정책 | 규칙 파일의 키 |
 |---|---|---|
-| 누구에게 | 등급별로 수신자 리스트가 다르다. <mark style="background:#ffdcb0">high 는 `kim.sec` · `lee.soc` · `team.lead`, mid 는 `kim.sec` · `lee.soc`, low 는 `kim.sec`</mark> | `recipients` |
-| 얼마나 자주 | 처음 전송하는 알림은 즉시 전송한다. 같은 티켓은 마지막 전송 후 30분이 지나야 다시 전송한다 | `send_gap_minutes` |
-| 실패하면 | 실패하면 다시 보내 보며, 처음 전송을 포함해 최대 3번 시도한다. 3번 모두 실패하면 「실패」로 처리한다 | `ticket_notice.py` 의 `MAX_TRIES` |
+| 누구에게 | 등급별로 수신자 리스트가 다르다 | `recipients` |
+| 얼마나 자주 | 처음은 즉시, 같은 티켓은 마지막 전송 후 30분이 지나야 다시 | `send_gap_minutes` |
+| 실패하면 | 처음 전송을 포함해 최대 3번 시도한다 | `ticket_notice.py` 의 `MAX_TRIES` |
+
+3번 모두 실패하면 「실패」로 처리합니다. 등급별 수신자는 아래와 같습니다.
+
+| 등급 | 수신자 |
+|---|---|
+| high | <mark style="background:#ffdcb0">`kim.sec` · `lee.soc` · `team.lead`</mark> |
+| mid | <mark style="background:#ffdcb0">`kim.sec` · `lee.soc`</mark> |
+| low | <mark style="background:#ffdcb0">`kim.sec`</mark> |
 
 - 알림이 너무 많아 담당자가 알림을 무시하게 되는 현상을 **알림 피로**(alert fatigue, 얼럿 퍼티그)라고 합니다. 이 문제를 줄이는 방법 가운데 하나가 같은 티켓에 알림을 전송하는 사이에 최소 간격을 두는 것입니다. 예를 들어 `dami` 의 알림 네 건이 TCK-1 에 병합되지만, 30분 간격 때문에 담당자에게는 <mark style="background:#bde3ff">`INC-201` · `INC-209` · `INC-210` 세 번만 전송됩니다</mark>.
 - `notify(message, url)` 는 메시지를 알림 서버 주소(`url`)로 전송합니다. 성공하면 `True` 를 리턴합니다. 실패하면 `[알림 실패]` 와 오류 이름을 출력하고 `False` 를 리턴합니다. `ConnectionError`(연결 오류)는 서버에 연결하지 못했을 때 발생하는 오류 이름입니다.
@@ -46,12 +54,17 @@ source:
 
 **직접 쓰는 곳은 아홉 군데**입니다.
 
-- `ticket_notice.py`
-  - `pick_recipients`(1번): 등급에 맞는 수신자 리스트를 고릅니다.
-  - `should_send`(2 ~ 4번): 지금 알려도 되는지 정합니다. 처음이거나 간격이 지났으면 `True` 입니다.
-  - `send_with_retry`(5 · 6번): 최대 3번 보내 보고, 성공한 시도 번호를 리턴합니다. 모두 실패하면 0 입니다.
-  - `send_ticket_notice`(미리 채움): 위 세 함수로 티켓 알림을 보내고 「전송」 · 「건너뜀」 · 「실패」를 리턴합니다.
-- `challenge3-3_run.py`: 알림마다 티켓 알림을 보내고(7번), 보냈으면 셉니다(8 · 9번).
+| 파일 | 함수 | 번호 | 하는 일 |
+|---|---|---|---|
+| `ticket_notice.py` | `pick_recipients` | 1번 | 등급에 맞는 수신자 리스트를 고른다 |
+| `ticket_notice.py` | `should_send` | 2 ~ 4번 | 처음이거나 간격이 지났으면 `True` 를 리턴한다 |
+| `ticket_notice.py` | `send_with_retry` | 5 · 6번 | 최대 3번 보내 보고, 성공한 시도 번호를 리턴한다 |
+| `ticket_notice.py` | `send_ticket_notice` | 미리 채움 | 위 세 함수로 티켓 알림을 보낸다 |
+| `challenge3-3_run.py` | (실행 파일) | 7번 | 알림마다 티켓 알림을 보낸다 |
+| `challenge3-3_run.py` | (실행 파일) | 8 · 9번 | 보냈으면 센다 |
+
+- `should_send` 는 지금 알려도 되는지 정합니다. `send_with_retry` 는 모두 실패하면 0 을 리턴합니다.
+- `send_ticket_notice` 는 「전송」 · 「건너뜀」 · 「실패」 중 하나를 리턴합니다.
 
 ## 도전 3-3 · 등급별 알림 전파와 재시도 만들기
 
