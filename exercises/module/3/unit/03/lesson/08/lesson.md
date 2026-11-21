@@ -26,29 +26,23 @@ python exercise3-1_run.py
 **채운 코드** (한 예)
 
 ```python
-    access_list = []                                             # 현황을 담을 빈 리스트
-    for user, info in USERS.items():                             # 사용자를 한 명씩 꺼낸다
-        role_list = role_entries(user, info)                     # 그 사용자가 역할로 받은 권한 리스트를 만든다
+        # ① access_list 와 role_list 를 + 로 이은 리스트를 access_list 에 다시 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
         access_list = access_list + role_list                    # 현황 뒤에 이어 붙인다
-    for exception in EXCEPTIONS:                                 # 예외를 하나씩 꺼낸다
-        user = exception["user"]                                 # 예외를 받은 사용자 이름을 꺼낸다
-        user_info = USERS[user]                                  # 그 사용자의 정보 딕셔너리를 꺼낸다
-        exception_id = exception["id"]                           # 예외 번호를 꺼낸다
-        source_text = f"예외 {exception_id}번"                      # 받은 방식 문자열을 만든다
-        entry = {                                                # 현황의 권한 한 건을 만든다
-            "user": user,                                        # 사용자
-            "permission": exception["permission"],               # 권한
-            "source": source_text,                               # 받은 방식
-            "employed": user_info["employed"],                   # 재직 여부
-        }
-        entry["expires"] = exception["expires"]                  # 예외에만 있는 만료 시각 키를 추가한다
+        # ② access_list 에 entry 를 추가한다 (.append)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
         access_list.append(entry)                                # 현황에 추가한다
-    return access_list                                           # 현황을 리턴한다
 ```
 
 **결과**
 
-- (가) 출력은 다음과 같고, 부여돼 있는 권한은 모두 **14건**입니다. 역할로 받은 권한이 9건, 예외로 받은 권한이 5건입니다. 사용자별 개수는 seoyeon · junho · gaeun · dami 가 3건씩, batch-night 가 2건입니다. 사용자 파일에 있는 tester 는 권한이 하나도 없습니다. tester 의 역할 `intern` 이 역할 파일에 없어서 받은 권한이 없기 때문입니다.
+- 채우기 전 출력은 다음과 같습니다(권한을 하나도 더하지 않아 0 건).
+
+```
+--- 단계 1: 현황 - 부여돼 있는 권한 0 건
+--- 단계 2: 점검 - 사용자별 권한 개수
+{}
+```
+
+- (가) 채운 뒤 출력은 다음과 같고, 부여돼 있는 권한은 모두 **14건**입니다. 역할로 받은 권한이 9건, 예외로 받은 권한이 5건입니다. 사용자별 개수는 seoyeon · junho · gaeun · dami 가 3건씩, batch-night 가 2건입니다. 사용자 파일에 있는 tester 는 권한이 하나도 없습니다. tester 의 역할 `intern` 이 역할 파일에 없어서 받은 권한이 없기 때문입니다.
 
 ```
 --- 단계 1: 현황 - 부여돼 있는 권한 14 건
@@ -78,8 +72,8 @@ gaeun SETTLE:QUERY <- 예외 5번 | 재직 True
 
 | 실수 | 결과 | 알아보는 법 |
 |---|---|---|
-| `access_list = access_list + role_list` 에서 앞의 `access_list =` 를 빼먹음 (가장 많음) | 역할로 받은 권한이 모두 사라지고 예외로 받은 5건만 나옴 (오류 없음) | `부여돼 있는 권한 5 건` |
-| 예외 권한에 `entry["expires"]` 를 추가하는 줄을 빼먹음 | 규칙 점검(`find_stale`)이 예외 만료를 판단할 수 없음 | 실습 3-2 단계 1 의 「규칙에 안 걸린 권한」이 7건이 아니라 11건 |
+| ① 에서 앞의 `access_list =` 를 빼먹음 (가장 많음) | 역할로 받은 권한이 모두 사라지고 예외로 받은 5건만 나옴 (오류 없음) | `부여돼 있는 권한 5 건` |
+| ② 를 4칸에 써서 `for` 밖으로 나감 | 예외 다섯 건 가운데 마지막 5번만 추가됨 (오류 없음) | `부여돼 있는 권한 10 건` |
 
 첫째 실수는 이은 리스트가 어디에도 담기지 않아서 생깁니다. 실행하면 다음처럼 됩니다.
 
@@ -94,7 +88,7 @@ gaeun SETTLE:QUERY <- 예외 5번 | 재직 True
 {'seoyeon': 1, 'junho': 1, 'dami': 1, 'batch-night': 1, 'gaeun': 1}
 ```
 
-둘째 실수는 실습 3-1 출력에는 보이지 않고 실습 3-2 에서 나타납니다.
+둘째 실수는 `for` 가 다 돈 뒤에 `append` 를 한 번만 해서 생깁니다. 그때 `entry` 에 남아 있는 것은 마지막 예외(5번) 하나입니다.
 
 **관제에서는** — 현황표는 점검을 시작할 때 가장 먼저 뽑는 표입니다. 점검 때마다 같은 형식으로 뽑아 두면 지난 점검과 비교해 새로 생긴 권한 · 사라진 권한을 찾을 수 있습니다.
 
@@ -111,24 +105,16 @@ python exercise3-2_run.py
 **채운 코드** (한 예)
 
 ```python
-    unused = []                                                  # 후보를 담을 빈 리스트
-    for entry in access_list:                                    # 현황의 권한을 한 건씩 꺼낸다
-        user = entry["user"]                                     # 그 권한의 사용자
-        permission = entry["permission"]                         # 그 권한의 권한 이름
-        key = f"{user}:{permission}"                             # 그 권한의 「사용자:권한」 문자열을 만든다
+        # ① last_used_map 에서 key 로 마지막 사용 시각을 꺼내 used_text 에 담는다 (.get, 이력이 없으면 None)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
         used_text = last_used_map.get(key)                       # 마지막 사용 시각 문자열을 꺼낸다(이력이 없으면 None)
-        if used_text is None:                                    # 사용 이력이 없으면
-            unused_entry = make_unused(entry, None)              # 안 쓴 권한 한 건을 만든다
-            unused.append(unused_entry)                          # 마지막 사용 시각을 None 으로 적은 복사본을 후보에 추가한다
+        # ② 아니고(elif), days_since(used_text, now) 가 limit_days 보다 크면 (>)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
         elif days_since(used_text, now) > limit_days:            # 사용 이력이 있고 기준 일 수보다 오래 안 썼으면
-            unused_entry = make_unused(entry, used_text)         # 안 쓴 권한 한 건을 만든다
-            unused.append(unused_entry)                          # 마지막 사용 시각을 적은 복사본을 후보에 추가한다
-    return unused                                                # 후보 리스트를 리턴한다
 ```
 
 **결과**
 
-- (가) 출력은 다음과 같고, 90일 넘게 안 쓴 후보는 **3건**입니다.
+- 채우기 전에는 단계 1 일곱 줄이 나온 뒤 `NameError: name 'used_text' is not defined` 로 멈춥니다. ① 만 채우면 오류 없이 끝나지만 `후보 2 건` 에 `gaeun ACCOUNT:CHANGE` 가 두 번 나옵니다. ② 가 비어 있는 동안에는 그 아래 두 줄이 위 `if` 안쪽으로 붙기 때문입니다.
+- (가) 채운 뒤 출력은 다음과 같고, 90일 넘게 안 쓴 후보는 **3건**입니다.
 
 | 사용자 | 권한 | 안 쓴 일 수 |
 |---|---|---|
@@ -160,8 +146,9 @@ gaeun ACCOUNT:CHANGE <- 역할 account_admin
 
 | 실수 | 결과 | 알아보는 법 |
 |---|---|---|
-| 비교를 `days_since(used_text, now) > limit_days` 대신 `>=` 로 씀 (가장 흔함) | 90일째 쓴 junho 의 `SETTLE:QUERY` 가 후보에 잘못 들어감 | 후보가 4건 |
-| `elif` 대신 `if` 로 씀 | 이력 없는 gaeun 의 `ACCOUNT:CHANGE` 도 `days_since` 에 들어가 멈춤 | `TypeError: strptime() argument 1 must be str, not None` |
+| ② 의 비교를 `>` 대신 `>=` 로 씀 (가장 흔함) | 90일째 쓴 junho 의 `SETTLE:QUERY` 가 후보에 잘못 들어감 | 후보가 4건 |
+| ② 에서 `elif` 대신 `if` 로 씀 | 이력 없는 gaeun 의 `ACCOUNT:CHANGE` 도 `days_since` 에 들어가 멈춤 | `TypeError: strptime() argument 1 must be str, not None` |
+| ① 에서 `.get(key)` 대신 `last_used_map[key]` 로 씀 | 이력 없는 키를 꺼내려다 멈춤 | `KeyError: 'gaeun:ACCOUNT:CHANGE'` |
 
 첫째 경계 실수를 실행하면 다음처럼 됩니다.
 
@@ -181,7 +168,7 @@ junho SETTLE:QUERY <- 역할 finance
 gaeun ACCOUNT:CHANGE <- 역할 account_admin
 ```
 
-둘째 실수는 이력이 없으면 일 수를 계산할 수 없어서 생깁니다. 이력이 있을 때(`elif`)만 계산해야 합니다.
+둘째 실수는 이력이 없으면 일 수를 계산할 수 없어서 생깁니다. 이력이 있을 때(`elif`)만 계산해야 합니다. 셋째 실수는 `[ ]` 로 꺼내면 없는 키에서 오류가 나기 때문이고, `.get` 은 없는 키에 `None` 을 돌려줍니다.
 
 **관제에서는** — 미사용 후보는 곧바로 회수하지 않고, 권한 소유자와 그 상급자에게 「계속 필요한가」를 확인하는 요청을 보냅니다. 응답이 없으면 한 단계 낮은 권한으로 줄였다가 문제가 없으면 회수합니다. 확인 요청과 응답은 점검 이력으로 남깁니다.
 

@@ -20,6 +20,8 @@ source:
 >
 > 이번에는 뽑기만 하고 회수하지는 않습니다. 어떤 권한을 회수할지는 후보를 본 뒤에 정하겠습니다.」
 > - **왜 중요한가**: 계정을 다른 사람이 가로채면, 그 계정이 가진 권한만큼 가로챈 사람이 할 수 있는 일이 생깁니다. 쓰지도 않는 권한이 많을수록 그 일만 늘어납니다. 사용 이력의 「마지막으로 쓴 시각」을 보면 90일 넘게 안 쓴 권한을 찾아 줄일 수 있습니다.
+> - 이 실습에서 하는 일: 90일 넘게 안 쓴 권한을 찾는 함수 `find_unused` 를 `review_unused.py` 에 만듭니다. 대부분은 미리 채워 두었고, 마지막 사용 시각을 꺼내는 줄과 90일을 넘었는지 보는 조건 줄(①·②)만 직접 씁니다.
+> - 끝나면 쓰는 것: 보고서 (가) 답. (나) · (다)는 여유가 되면 하는 응용입니다
 
 ## 왜 안 쓰는 권한을 찾아야 하는가
 
@@ -101,36 +103,36 @@ print(idle_days)                                                    # 일 수를
 90
 ```
 
-그 일 수를 기준과 비교합니다.
+그 일 수를 기준과 비교합니다. 「기준보다 크다」는 `>` 입니다.
 
 ```python
-idle_days = 90                                                      # 위에서 구한 안 쓴 일 수
-is_within_limit = idle_days <= 90                                   # 90일째는 90 이하이므로 참이다
-print(is_within_limit)                                              # 비교 결과를 출력한다
+print(91 > 90)                                                      # 91일째는 90보다 크므로 참(후보)
+print(90 > 90)                                                      # 90일째는 90보다 크지 않으므로 거짓(후보 아님)
 ```
 
 실행 결과:
 
 ```
 True
+False
 ```
 
 - 시각에서 시각을 빼면 `90 days, 0:00:00` 처럼 일과 시:분:초가 함께 나옵니다. 일 수만 비교할 때는 `.days` 를 씁니다.
-- 이 계산은 아래 `review_unused.py` 의 `days_since` 함수에 미리 채워 두었습니다. 직접 쓰지 않고, 읽고 이해만 합니다.
+- 이 계산은 아래 `review_unused.py` 의 `days_since` 함수에 미리 채워 두었습니다. 직접 쓰지 않고, 읽고 이해만 합니다. ② 에서는 `days_since(used_text, now)` 가 돌려준 일 수를 `limit_days` 와 `>` 로 비교합니다.
 
 ## 실습 3-2 · 90일 넘게 안 쓴 권한 후보 찾기
 
 **이런 상황이 있습니다**
 
 - **지금은**: 규칙에 안 걸린 재직자의 권한 일곱 건은 겉으로는 문제가 없어 보여서, 쓰는 권한인지 안 쓰는 권한인지 알 수 없습니다.
-- **그래서 만드는 것**: `find_unused` 입니다. 현황 · 마지막 사용 시각 딕셔너리 · 지금 시각 · 기준 일 수를 받아, 마지막 사용이 기준 일 수보다 오래됐거나 사용 이력이 없는 권한을 복사해 `last_used` 키를 추가하고 리스트로 리턴합니다.
+- **그래서 만드는 것**: `find_unused` 입니다. 현황 · 마지막 사용 시각 딕셔너리 · 지금 시각 · 기준 일 수를 받아, 마지막 사용이 기준 일 수보다 오래됐거나 사용 이력이 없는 권한을 복사해 `last_used` 키를 추가하고 리스트로 리턴합니다. 키를 만들고 후보를 더하는 줄은 미리 써 두었고, 마지막 사용 시각을 꺼내는 줄과 기준을 넘었는지 보는 줄이 빠져 있습니다.
 - **실행하면**: 단계 1은 규칙에 안 걸린 권한 일곱 건이 며칠째 안 쓰였는지 출력하고, 단계 2는 90일 넘게 안 쓴 후보를 출력합니다. 규칙에 이미 걸린 권한은 실행 파일이 미리 뺍니다.
 - **현업에서는**: 접근 관리 도구도 「마지막 사용일」 기준(예: 90일)으로 안 쓰는 권한을 모아 담당자에게 확인을 요청합니다.
 
 **할 일**
 
 1. 「제공 파일」 레슨의 파일 네 개(`review_rules.py` · `overprivilege.py` · `report_exclude.py` · `config/exclude_list.json`)를 먼저 만듭니다. 이 실습은 그중 `review_rules.py` 를 씁니다.
-2. `config/access_log.json` · `review_unused.py` · `exercise3-2_run.py` 세 파일을 만들고, `find_unused` 본문을 직접 씁니다.
+2. `config/access_log.json` · `review_unused.py` · `exercise3-2_run.py` 세 파일을 만들고, `review_unused.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
 3. 실행해서 <mark>안 쓴 일 수</mark>(단계 1: 현황)와 <mark>90일 넘게 안 쓴 후보</mark>(단계 2: 판정)를 읽습니다.
 
 **준비** — 터미널이 `…/access_control` 위치인지 확인한 뒤 「제공 파일」이 있는지 봅니다.
@@ -196,33 +198,37 @@ def find_unused(access_list, last_used_map, now, limit_days):    # 현황 · 마
     후보마다 "last_used" 키에 마지막 사용 시각(없으면 None)을 적는다.
     안 쓰는 권한을 찾을 때 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. 후보를 담을 빈 리스트 unused 를 만든다
-    # 2. access_list 에서 entry 를 하나씩 꺼낸다
-    # 3.   entry["user"] 를 user 에, entry["permission"] 을 permission 에 담는다 (두 줄)
-    # 4.   f"{user}:{permission}" 를 key 에 담는다
-    # 5.   last_used_map.get(key) 를 used_text 에 담는다 (이력이 없으면 None)
-    # 6.   used_text 가 None 이면 (is None, 사용 이력이 없음)
-    # 7.     make_unused(entry, None) 을 unused_entry 에 담는다
-    # 8.     unused_entry 를 unused 에 추가한다
-    # 9.   아니고(elif), days_since(used_text, now) 가 limit_days 보다 크면 (>)
-    # 10.    make_unused(entry, used_text) 를 unused_entry 에 담는다
-    # 11.    unused_entry 를 unused 에 추가한다
-    # 12. unused 를 리턴한다
+    unused = []                                                  # 후보를 담을 빈 리스트
+    for entry in access_list:                                    # 현황의 권한을 한 건씩 꺼낸다
+        user = entry["user"]                                     # 그 권한의 사용자
+        permission = entry["permission"]                         # 그 권한의 권한 이름
+        key = f"{user}:{permission}"                             # 그 권한의 「사용자:권한」 문자열을 만든다
+        # ① last_used_map 에서 key 로 마지막 사용 시각을 꺼내 used_text 에 담는다 (.get, 이력이 없으면 None)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+
+        if used_text is None:                                    # 사용 이력이 없으면
+            unused_entry = make_unused(entry, None)              # 안 쓴 권한 한 건을 만든다
+            unused.append(unused_entry)                          # 마지막 사용 시각을 None 으로 적은 복사본을 후보에 추가한다
+        # ② 아니고(elif), days_since(used_text, now) 가 limit_days 보다 크면 (>)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+
+            unused_entry = make_unused(entry, used_text)         # 안 쓴 권한 한 건을 만든다
+            unused.append(unused_entry)                          # 마지막 사용 시각을 적은 복사본을 후보에 추가한다
+    return unused                                                # 후보 리스트를 리턴한다
 ```
 
-- `find_unused` 본문의 들여쓰기는 아래와 같습니다. 공백 4개는 Tab 키 한 번입니다. `load_last_used` · `make_unused` · `days_since` 는 미리 채워 두었으니 그대로 둡니다.
+- 주석 줄은 그대로 두고, **각 주석 바로 아래 줄**에 씁니다. ① · ② 는 모두 `for` 안쪽 줄이라 8칸(Tab 키 두 번)에서 시작합니다. ② 는 위의 `if used_text is None:` 과 같은 8칸이고, 그 아래 12칸 두 줄이 ② 의 안쪽입니다. `load_last_used` · `make_unused` · `days_since` 와 나머지 줄은 미리 채워 두었으니 그대로 둡니다.
 
-| 줄의 위치 | 앞 공백 |
-|---|---|
-| 본문 (함수 안) | 4개 |
-| `for` 안쪽 | 8개 (4개 더) |
-| `if` · `elif` 안쪽 | 12개 (또 4개 더) |
-| 마지막 `return` (`for` 밖) | 4개 |
+**직접 쓰는 곳**
 
+| 빈칸 | 쓰는 줄 | 들여쓰기 |
+|---|---|---|
+| ① | 키로 마지막 사용 시각 꺼내기 (`.get`) | 8칸 |
+| ② | 90일을 넘었는지 보는 조건 (`elif`) | 8칸 |
+
+- ① 확인: ① 만 쓰고 실행하면 오류 없이 끝나지만 단계 2 가 `후보 2 건` 이고 `gaeun ACCOUNT:CHANGE` 가 두 번 나옵니다. ② 가 비어 있어서 그 아래 두 줄이 위 `if` 안쪽으로 붙었기 때문이니 정상입니다. 막히면: 3.1 의 `print(last_used_map.get(key))` 에서 `print( )` 를 빼고 앞에 `used_text =` 를 붙입니다.
+- ② 확인: ② 까지 쓰고 실행하면 단계 2 가 `90일 넘게 안 쓴 후보 3 건` 이고 seoyeon · junho · gaeun 이 한 줄씩 나와야 합니다. 4 건이면 `>` 를 `>=` 로 쓴 것입니다. 막히면: 문법 상자의 `91 > 90` 에서 `91` 자리에 `days_since(used_text, now)`, `90` 자리에 `limit_days` 를 넣고, 앞에 `elif`, 끝에 `:` 를 붙입니다.
 - 미리 채운 `make_unused` 의 `entry.copy()` 는 딕셔너리를 복사한 새 딕셔너리를 만듭니다. 복사본에만 `last_used` 키를 더하므로, 현황 리스트의 원래 권한은 그대로 남아 다른 점검에 다시 쓸 수 있습니다.
 - `used_text is None` 은 「값이 `None` 인가」를 묻는 것입니다. `.get(key)` 는 키가 없으면 `None` 을 주므로 `None` 이면 사용 이력이 없다는 뜻입니다. 그 경우에는 일 수를 계산할 수 없으니, `days_since` 는 사용 이력이 있을 때(`elif`)만 부릅니다. `elif` 는 「앞의 `if` 가 아니고, 이 조건이면」이라는 뜻입니다.
-- 채우기 전에 실행하면 `TypeError: object of type 'NoneType' has no len()` 오류가 납니다. `find_unused` 가 아무것도 리턴하지 않기 때문입니다.
+- 채우기 전에 실행하면 단계 1 일곱 줄은 나오고, 그 뒤 `NameError: name 'used_text' is not defined` 오류로 멈춥니다. ① 이 비어 있어 `used_text` 를 만든 적이 없는데 `if used_text is None:` 에서 쓰려 했기 때문입니다.
 
 **`exercise3-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 현황을 만들고, 「제공 파일」의 `find_stale` 에 걸린 권한을 뺀 뒤, 남은 권한이 며칠째 안 쓰였는지 출력하고 `find_unused` 로 후보를 찾습니다.
 
@@ -276,7 +282,7 @@ for entry in unused:                                             # 후보를 한
 2. **[터미널]** 파일을 만든 뒤 `ls config` 를 쳐서 `access_log.json` 이 `users.json` 과 같은 `config` 폴더 안에 있는지 확인합니다.
    - `config` 안에 또 `config` 가 생겼다면 위치가 틀린 것이니 옮깁니다.
    - 붙여 넣은 내용이 맞는지 `python -m json.tool config/access_log.json` 으로 확인합니다(맥북은 `python3 -m json.tool …`). 여러 줄로 정리되어 출력되면 정상이고, 오류가 나면 붙여 넣을 때 글자가 빠진 것입니다. 깨진 채 두면 사용 이력을 못 읽어 모든 권한이 「이력 없음」으로 나옵니다.
-3. **[VS Code]** `review_unused.py` 의 `find_unused` 본문을 직접 씁니다. 3.1 의 표와 그림, 문법 상자를 보고 씁니다.
+3. **[VS Code]** `review_unused.py` 의 `# ←` 두 곳(① · ②)을 채웁니다. 3.1 의 표와 그림, 문법 상자를 보고 씁니다.
 4. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 이어서 실행합니다.
    ```bash
    pwd
@@ -286,10 +292,12 @@ for entry in unused:                                             # 후보를 한
    - 맥북은 `python3 exercise3-2_run.py` 로 칩니다.
 5. 출력은 두 단계입니다. 단계 1은 규칙에 안 걸린 권한 일곱 건의 안 쓴 일 수(일곱 줄), 단계 2는 90일 넘게 안 쓴 후보입니다.
 6. **[보고서]** `report_u3.md` 의 `## 실습 3-2` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 90일 넘게 안 쓴 후보가 몇 건인지와 후보마다 며칠째 안 쓰였는지 적어 주세요.
+   - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 90일 넘게 안 쓴 후보가 몇 건인지와 후보마다 며칠째 안 쓰였는지 적어 주세요.
      - 며칠째인지는 단계 1 출력에서 후보와 같은 사용자 · 권한의 줄을 찾아 적습니다. 사용 이력이 없는 후보는 단계 1 에 「사용 이력 없음」으로 나옵니다.
-   - (나) [핵심 질문] junho 의 `SETTLE:QUERY` 는 마지막 사용이 90일 전이라 후보에서 빠졌고, 같은 junho 의 `SALES:QUERY` 는 91일 전이라 후보에 들어갔습니다. 하루 차이로 나누는 기준은 합리적일까요? 경계 부근에서 담당자가 추가로 확인할 것도 적어 주세요.
-   - (다) [핵심 질문] 사용 이력이 없는 권한을 바로 지우면 위험한 경우가 있습니다. 어떤 경우인지 예를 들고, 지우기 전에 무엇을 확인해야 하는지 적어 주세요.
+   - (나) [응용] junho 의 `SETTLE:QUERY` 는 마지막 사용이 90일 전이라 후보에서 빠졌고, 같은 junho 의 `SALES:QUERY` 는 91일 전이라 후보에 들어갔습니다. 하루 차이로 나누는 기준은 합리적일까요? 경계 부근에서 담당자가 추가로 확인할 것도 적어 주세요.
+   - (다) [응용] 사용 이력이 없는 권한을 바로 지우면 위험한 경우가 있습니다. 어떤 경우인지 예를 들고, 지우기 전에 무엇을 확인해야 하는지 적어 주세요.
+
+**확인** — 실행했을 때 단계 1 이 일곱 줄이고, 단계 2 가 `90일 넘게 안 쓴 후보 3 건` 아래 `seoyeon SALES:CHANGE` · `junho SALES:QUERY` · `gaeun ACCOUNT:CHANGE` 세 줄이면 성공입니다. 안 나오면 「정답」 레슨의 실습 3-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 ## 실습 3-2 정리
 
@@ -297,9 +305,9 @@ for entry in unused:                                             # 후보를 한
 |---|---|
 | 사용자와 권한 꺼내기 | `user = entry["user"]` · `permission = entry["permission"]` |
 | 마지막 사용 시각을 찾는 키 문자열 | `key = f"{user}:{permission}"` |
-| 마지막 사용 시각 찾기 | `used_text = last_used_map.get(key)` (이력이 없으면 `None`) |
+| 마지막 사용 시각 찾기 (①) | `used_text = last_used_map.get(key)` (이력이 없으면 `None`) |
 | 사용 이력이 없는지 | `if used_text is None:` |
-| 사용 이력이 있고 기준을 넘었는지 | `elif days_since(used_text, now) > limit_days:` (`days_since` 는 미리 채움) |
+| 이력이 있고 기준을 넘었는지 (②) | `elif days_since(used_text, now) > limit_days:` |
 | 후보 만들기 | `unused_entry = make_unused(entry, used_text)` (`make_unused` 는 미리 채움) |
 | 후보에 추가하기 | `unused.append(unused_entry)` |
 
@@ -314,7 +322,7 @@ for entry in unused:                                             # 후보를 한
 
 1. 역할로 받은 권한과 예외로 받은 권한을 한 리스트로 모아 현황 14건을 만들었다 (실습 3-1)
 2. 규칙에 안 걸린 권한 일곱 건 가운데 90일 넘게 안 썼거나 사용 이력이 없는 후보 3건을 찾았다 (실습 3-2)
-3. 보고서 `report_u3.md` 의 실습 3-1 · 3-2 칸에 `답:` 뒤가 비어 있는 질문이 없다
+3. 보고서 `report_u3.md` 의 실습 3-1 (가) · 실습 3-2 (가) 칸에 `답:` 뒤가 비어 있지 않다
 
 **2. 파일 확인** — **[터미널]** `access_control` 폴더에서 확인합니다.
 
@@ -363,7 +371,9 @@ ls config
 | 회수할 후보 다시 뽑기 | `review_list.py` · `review_rules.py` · `review_unused.py` (그대로 불러 씀) |
 | 회수 계획 세우기 | `overprivilege.py` 의 리포트 · `report_exclude.py` 와 `config/exclude_list.json` 의 회수 제외 |
 
-리포트와 회수 제외가 어떻게 동작하는지 직접 만들어 보려면 응용 3-2 · 3-3 을 합니다.
+리포트와 회수 제외가 어떻게 동작하는지 직접 만들어 보려면 응용 3-2 · 3-3 을 합니다. 여유가 되면 해 보세요.
+
+**확인** — 깃허브의 내 저장소 `access_control` 폴더에 `review_list.py` 와 `review_unused.py` 가 보이고, `.env` 가 보이지 않으면 성공입니다. 안 보이면 `git status` 를 다시 쳐서 빨간 목록에 남은 파일이 있는지 보고 4번을 한 번 더 합니다.
 
 ---
 
