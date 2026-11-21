@@ -38,16 +38,20 @@ source:
 - 순서를 뒤집는 줄 `list(reversed(found))` 는 `find_incident_records` 에 이미 채워져 있습니다. `reversed(found)` 가 리스트를 뒤에서부터 읽게 하고, `list(…)` 가 그 결과를 다시 리스트로 만듭니다.
 - 미리 채운 `should_undo` 의 `in` 은 두 가지로 쓰입니다. `"확인 실패" in record["after"]` 는 문자열 안에 그 글자가 들어 있는지, `record["action"] in UNDOABLE_ACTIONS` 는 리스트에 그 이름이 있는지 검사합니다.
 
-- **직접 쓰는 곳은 아홉 군데**이고, 함수는 세 파일에 나뉘어 있습니다.
-  - `undo_actions.py`
-    - `undo_account`(1번): 계정 잠금 기록을 계정 해제로 되돌립니다.
-    - `undo_ip`(2번): IP 차단 기록을 IP 해제로 되돌립니다.
-    - `undo_record`(미리 채움): 조치 종류에 맞는 되돌리기를 고릅니다.
-  - `rollback.py`
-    - `find_incident_records`(3 · 4번): 그 인시던트(알림 한 건)의 기록만 모읍니다.
-    - `should_undo`(5 · 6번): 조치 전과 후가 같으면 되돌리지 않습니다. 확인 실패와 되돌릴 수 없는 조치는 미리 채운 줄이 되돌리기 대상에서 뺍니다.
-    - `rollback_incident`(7 · 8번): 되돌릴 수 있는 기록은 되돌리고, 되돌릴 수 없는 조치는 따로 기록합니다(미리 채움).
-  - `exercise3-1_run.py`(9번): 실습 2-2가 저장한 기록을 읽습니다.
+**직접 쓰는 곳은 아홉 군데**이고, 함수는 세 파일에 나뉘어 있습니다.
+
+| 파일 | 함수 | 번호 | 하는 일 |
+|---|---|---|---|
+| `undo_actions.py` | `undo_account` | 1번 | 계정 잠금 기록을 계정 해제로 되돌린다 |
+| `undo_actions.py` | `undo_ip` | 2번 | IP 차단 기록을 IP 해제로 되돌린다 |
+| `undo_actions.py` | `undo_record` | 미리 채움 | 조치 종류에 맞는 되돌리기를 고른다 |
+| `rollback.py` | `find_incident_records` | 3 · 4번 | 그 인시던트(알림 한 건)의 기록만 모은다 |
+| `rollback.py` | `should_undo` | 5 · 6번 | 조치 전과 후가 같으면 되돌리지 않는다 |
+| `rollback.py` | `rollback_incident` | 7 · 8번 | 되돌릴 수 있는 기록은 되돌린다 |
+| `exercise3-1_run.py` | (실행 파일) | 9번 | 실습 2-2가 저장한 기록을 읽는다 |
+
+- `should_undo` 에서 확인 실패와 되돌릴 수 없는 조치는 미리 채운 줄이 되돌리기 대상에서 뺍니다.
+- `rollback_incident` 에서 되돌릴 수 없는 조치를 따로 기록하는 줄은 미리 채워져 있습니다.
 
 ## 실습 3-1 · 기록을 보고 자동이 바꾼 것만 되돌리기
 

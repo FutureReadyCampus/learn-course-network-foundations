@@ -10,13 +10,21 @@ render: markdown
 
 이 레슨의 파일은 **실습 3-2를 마친 뒤**, 실습 3-2 끝의 「이번 Unit 마무리 · 깃허브에 올리기」 2번에서 만듭니다. 오늘 핵심 실습에는 쓰지 않지만, 도전 3-2 · 3-3과 Unit 4 도전 4-1 · 4-2가 이 파일을 가져와 사용(import)합니다. 도전을 하지 않아도 완성본을 받아 두면 다음 Unit을 따라갈 수 있습니다.
 
+만들 파일은 세 개입니다.
+
+| 파일 | 담긴 함수 | 하는 일 |
+|---|---|---|
+| `ticket_merge.py` | `handle_alert` | 같은 사건의 알림을 티켓 한 장으로 병합한다 |
+| `ticket_merge.py` | `change_ticket_status` | 티켓 상태를 바꾼다 |
+| `notifier.py` | `notify` | 메시지를 알림 서버로 보낸다 |
+| `ticket_notice.py` | `send_ticket_notice` | 등급에 맞는 수신자에게 티켓 알림을 보낸다 |
+| `ticket_notice.py` | `send_with_retry` | 실패하면 최대 3번까지 다시 보낸다 |
+
+`ticket_merge.py` 는 실습 3-2의 `ticketing.py` 를 가져와 씁니다. `notifier.py` 는 `agent_core` 폴더에 이미 있으면 복사해 씁니다.
+
 1. 파일은 모두 `soar_response` 폴더 안에 만듭니다(VS Code 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File**).
 2. 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
-3. 만들 파일은 세 개입니다.
-   1. `ticket_merge.py`: 같은 사건의 알림을 티켓 한 장으로 병합하는 함수 `handle_alert` 와 티켓 상태를 바꾸는 함수 `change_ticket_status`. 실습 3-2의 `ticketing.py` 를 가져와 씁니다.
-   2. `notifier.py`: 메시지를 알림 서버로 보내는 함수 `notify`. `agent_core` 폴더에 이미 있으면 복사해 씁니다.
-   3. `ticket_notice.py`: 등급에 맞는 수신자에게 티켓 알림을 보내고, 실패하면 최대 3번까지 다시 보내는 함수 `send_ticket_notice` · `send_with_retry`
-4. `ticket_merge.py` 를 만들었으면 아래 명령으로 확인합니다(맥북은 `python3`). `제공 파일 정상 7` 이 나오면 됩니다(알림 11건이 티켓 7장으로 병합된다는 뜻입니다).
+3. `ticket_merge.py` 를 만들었으면 아래 명령으로 확인합니다(맥북은 `python3`). `제공 파일 정상 7` 이 나오면 됩니다(알림 11건이 티켓 7장으로 병합된다는 뜻입니다).
    ```bash
    python -c "from incident import load_json; from ticket_merge import handle_alert; rules = load_json('config/escalation_rules.json'); tickets = []; [handle_alert(a, tickets, rules) for a in load_json('alerts_thu.json')]; print('제공 파일 정상', len(tickets))"
    ```
@@ -30,7 +38,15 @@ render: markdown
 
 **`ticket_merge.py`** 를 만들고 아래 내용을 붙여 넣습니다. 알림이 올 때마다 `handle_alert` 가 합칠 티켓을 찾아, 있으면 그 티켓에 병합하고 없으면 새 티켓을 만듭니다.
 
-- 병합 조건은 네 가지입니다. 같은 대상(`entity`), 같은 규칙(`rule`), 해결되지 않은 티켓, 티켓의 마지막 갱신(`updated_at`) 뒤 `merge_window_minutes`(60분) 이내에 온 알림입니다.
+병합 조건은 네 가지입니다.
+
+| 조건 | 보는 키 |
+|---|---|
+| 같은 대상 | `entity` |
+| 같은 규칙 | `rule` |
+| 해결되지 않은 티켓 | `status` |
+| 마지막 갱신 뒤 60분 이내에 온 알림 | `updated_at` · `merge_window_minutes` |
+
 - `change_ticket_status` 는 허용된 이동(열림 → 확인 중 → 해결, 또는 열림 → 해결)일 때만 상태를 바꾸고, 바꾼 사람과 시각을 댓글(`comments`)로 남깁니다.
 - 병합 기준과 상태 이동은 도전 3-2 레슨에서 자세히 다룹니다.
 
@@ -133,9 +149,13 @@ def notify(message, url):                                      # 메시지를 �
 
 **`ticket_notice.py`** — 티켓 알림을 보낼지 정하고 보냅니다.
 
-- 수신자는 `config/escalation_rules.json` 의 `recipients` 에서 등급별로 고릅니다(`pick_recipients`).
-- 처음 보내는 티켓은 바로 보내고, 같은 티켓은 마지막으로 보낸 뒤 `send_gap_minutes`(30분)가 지나야 다시 보냅니다(`should_send`).
-- 보내기에 실패하면 최대 `MAX_TRIES`(3)번까지 다시 보내 봅니다(`send_with_retry`). 성공한 시도 번호를, 모두 실패하면 0 을 리턴합니다.
+| 함수 | 하는 일 |
+|---|---|
+| `pick_recipients` | `config/escalation_rules.json` 의 `recipients` 에서 등급별 수신자를 고른다 |
+| `should_send` | 처음 보내는 티켓은 바로, 같은 티켓은 `send_gap_minutes`(30분)가 지나야 다시 보낸다 |
+| `send_with_retry` | 실패하면 최대 `MAX_TRIES`(3)번까지 다시 보내 본다 |
+
+- `send_with_retry` 는 성공한 시도 번호를, 모두 실패하면 0 을 리턴합니다. `should_send` 의 30분은 마지막으로 보낸 뒤부터 잽니다.
 - 보낼지 정하는 방법과 재시도는 도전 3-3 레슨에서 자세히 다룹니다.
 
 ```python
