@@ -19,9 +19,9 @@ render: markdown
    ```bash
    python -c "from rbac import USERS, ROLES; from revoke_input import load_to_revoke; from revoke_plan import plan_revocation; print('제공 파일 정상', len(plan_revocation(load_to_revoke(), USERS, ROLES)))"
    ```
-   - `제공 파일 정상 8` 이 나오면 됩니다.
-
 > 시간이 남아 응용 4-1을 하면, `revoke_plan.py` 를 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 그때는 다 채울 때까지 실습 4-1 · 4-2가 동작하지 않으니, 다 쓴 뒤 `exercise4-2_run.py` 를 다시 실행해 결과가 같은지 확인합니다.
+
+> **확인** — 4번 명령의 결과가 `제공 파일 정상 8` 이면 성공입니다. `ModuleNotFoundError` 가 나오면 오류에 나온 파일 이름이 `access_control` 안에 그 이름 그대로 있는지 보고, 다른 오류면 그 파일의 내용을 지우고 코드 상자에서 다시 붙여 넣습니다.
 
 ## `revoke_input.py` 만들기
 
@@ -96,6 +96,8 @@ def load_to_revoke():                                            # Unit 3 점검
 ```
 
 - 점검 시각은 `2026-10-29 14:00` 으로 고정했습니다. 날짜가 바뀌어도 같은 8건이 나오게 하려는 것입니다.
+
+> **확인** — 터미널에서 `python -c "from revoke_input import load_to_revoke; print(len(load_to_revoke()))"`(맥북은 `python3`)를 쳐서 `8` 이 나오면 성공입니다. 「있을 때」 코드로 숫자가 다르거나 오류가 나면 이 파일의 내용을 「없을 때」 코드로 바꿔 붙여 넣습니다.
 
 ## `revoke_plan.py` 만들기
 
@@ -198,3 +200,5 @@ def plan_revocation(findings, users, roles):                     # 회수 대상
 | 역할에서 권한 빼기 | 1건 | junho 의 `SALES:QUERY`, 영향 1 |
 
 - 방법을 고르는 순서와 영향을 세는 방법은 응용 4-1 레슨에서 자세히 다룹니다.
+
+> **확인** — 첫 페이지 4번 명령을 쳐서 `제공 파일 정상 8` 이 나오면 성공입니다. 안 나오면 `revoke_plan.py` 의 내용을 모두 지우고 위 코드 상자에서 다시 복사해 붙여 넣습니다.

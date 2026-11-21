@@ -20,6 +20,8 @@ source:
 >
 > 다만 퇴사한 사람의 역할을 비우면 그 사람이 역할로 받던 권한이 모두 없어집니다. 이렇게 권한이 2개 이상 사라지는 회수는 조회 권한이어도 승인을 받아 주세요. 8건 가운데 어느 것이 승인 대상인지 가려서, 계획마다 승인 상태를 적어 주세요. 보안 책임자가 승인한 것과 아직 기다리는 것도 구분해 주세요.」
 > - **왜 중요한가**: 중요한 권한을 한 사람이 혼자 정하면 실수나 부정이 생길 수 있습니다. 승인 상태가 적혀 있으면 어느 회수가 승인을 받았고 어느 회수가 아직 기다리는지 바로 알 수 있습니다.
+> - 이 실습에서 하는 일: 대부분은 미리 채워 두었고, 빈칸 두 곳(① · ②)만 한 줄씩 직접 씁니다.
+> - 끝나면 쓰는 것: 보고서 (가) · (나) 답. (다)는 여유가 되면 하는 응용입니다
 
 ## 왜 승인이 필요한가
 
@@ -59,14 +61,14 @@ source:
   - 예: `{"dami:SALES:QUERY": "승인"}` 처럼 키는 「사용자:권한」 문자열입니다. 여기에 없는 계획은 아직 결정하지 않은 것입니다.
   - dami 의 `SALES:QUERY` 계획은 둘(역할 해제, 예외 3번 삭제)이지만 결정 키 `dami:SALES:QUERY` 는 같습니다.
   - 찾은 결정은 승인이 필요한 계획에서만 쓰는데, 이번 데이터에서는 역할 해제 쪽만 승인이 필요합니다. 그래서 예외 3번 삭제 쪽은 결정과 상관없이 「승인 불필요」가 됩니다.
-- **직접 쓰는 곳은 세 함수**입니다. 판단이 필요한 함수마다 1 ~ 6줄만 쓰고, 나머지는 미리 채웠습니다.
+- **직접 쓰는 곳은 빈칸 두 곳**(① · ②)입니다. 두 곳 모두 한 줄이고, 나머지는 미리 채웠습니다.
 
-| 함수 | 직접 쓰는 번호 | 하는 일 |
+| 함수 | 직접 쓰는 곳 | 하는 일 |
 |---|---|---|
-| `plan_key` | 1번 | 계획에서 「사용자:권한」 문자열을 만듦(승인 결정을 찾는 키) |
-| `needs_approval` | 2 ~ 4번 | 민감한 권한이거나 영향이 2건 이상이면 `True` 를 리턴함 |
-| `mark_approvals` | 5 ~ 10번 | 계획마다 승인 상태(`approval`)를 정함 |
-| `load_sensitive` | 미리 채움 | 민감한 권한 파일을 읽음(판단이 없는 읽기라 미리 채움) |
+| `load_sensitive` | 미리 채움 | 민감한 권한 파일을 읽음 |
+| `plan_key` | 미리 채움 | 「사용자:권한」 문자열(결정을 찾는 키)을 만듦 |
+| `needs_approval` | ① 리턴 한 줄 | 민감하거나 영향 2건 이상이면 `True` |
+| `mark_approvals` | ② 결정을 꺼내는 한 줄 | 계획마다 승인 상태(`approval`)를 정함 |
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="mark_approvals 는 계획마다 승인 필요 여부와 결정을 보고 승인 상태 세 가지 중 하나를 적는다"></figure>
 
@@ -82,8 +84,8 @@ source:
 
 **할 일**
 
-1. `config/sensitive.json` · `revoke_approve.py` · `exercise4-1_run.py` 세 파일을 만들고, `plan_key` · `needs_approval` · `mark_approvals` 에서 직접 쓰는 곳 세 군데를 씁니다.
-2. 실행해서 <mark>승인 상태</mark>(단계 1: 승인 상태)와 <mark>승인 상태별 건수</mark>(단계 2: 집계)를 읽습니다.
+1. `config/sensitive.json` · `revoke_approve.py` · `exercise4-1_run.py` 세 파일을 만들고, `revoke_approve.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
+2. 채우기 <mark>전과 후</mark>에 실행해서 승인 상태(단계 1)와 승인 상태별 건수(단계 2)를 비교합니다.
 
 **`config/sensitive.json`** — 그대로 붙여 넣습니다. 민감한 권한 리스트입니다. `access_control` 안의 `config` 폴더에 만듭니다.
 
@@ -109,18 +111,16 @@ def plan_key(plan):                                              # 계획 한 �
     """
     user = plan["user"]                                          # 계획의 사용자
     permission = plan["permission"]                              # 계획의 권한
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. f"{user}:{permission}" 을 리턴한다 (사용자와 권한을 : 로 이어 붙인 문자열)
+    return f"{user}:{permission}"                                # 사용자와 권한을 : 로 이어 붙인다
 
 
 def needs_approval(plan, sensitive):                             # 계획 한 건과 민감한 권한 리스트를 받는 함수
     """민감한 권한이거나 영향이 2개 이상이면 True, 아니면 False 를 리턴한다.
     승인이 필요한 회수를 가려낼 때 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 2. plan["permission"] 이 sensitive 안에 있는지(in)를 is_sensitive 에 담는다
-    # 3. plan["impact"] 가 2 이상인지(>=)를 is_big_impact 에 담는다
-    # 4. is_sensitive 이거나 is_big_impact 이면 True 가 되도록 리턴한다 (or)
+    is_sensitive = plan["permission"] in sensitive               # 권한이 민감한 권한 리스트에 있는지(True 또는 False)
+    is_big_impact = plan["impact"] >= 2                          # 영향이 2건 이상인지(True 또는 False)
+    # ① is_sensitive 이거나 is_big_impact 이면 True 가 되도록 리턴한다 (or)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
 
 
 def mark_approvals(plans, sensitive, decisions):                 # 계획 리스트 · 민감한 권한 리스트 · 승인 결정 딕셔너리를 받는 함수
@@ -131,31 +131,45 @@ def mark_approvals(plans, sensitive, decisions):                 # 계획 리스
     for plan in plans:                                           # 계획을 하나씩 꺼낸다
         item = plan.copy()                                       # 원래 계획은 바꾸지 않고 복사한다
         key = plan_key(plan)                                     # 승인 결정을 찾는 「사용자:권한」 문자열을 만든다
-        decision = decisions.get(key)                            # 보안 책임자의 결정을 꺼낸다(결정이 없으면 None)
+        # ② decisions 에서 key 의 결정을 꺼내 decision 에 담는다 (.get · 없으면 None)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
         needs = needs_approval(plan, sensitive)                  # 승인이 필요한 계획인지 알아본다(True 또는 False)
-        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-        # 5. needs 가 거짓이면 (not)
-        # 6.   item["approval"] 을 "승인 불필요" 로 정한다
-        # 7. 그렇지 않고 decision 이 "승인" 이면 (elif)
-        # 8.   item["approval"] 을 "승인됨" 으로 정한다
-        # 9. 그렇지 않으면 (else)
-        # 10.  item["approval"] 을 "승인 대기" 로 정한다
+        if not needs:                                            # 승인이 필요하지 않으면
+            item["approval"] = "승인 불필요"                     # 바로 회수할 수 있다
+        elif decision == "승인":                                  # 승인이 필요한데 보안 책임자가 승인했으면
+            item["approval"] = "승인됨"                          # 회수할 수 있다
+        else:                                                    # 승인이 필요한데 아직 결정이 없으면
+            item["approval"] = "승인 대기"                       # 결정이 날 때까지 기다린다
         results.append(item)                                     # 승인 상태를 적은 복사본을 결과 리스트에 추가한다
     return results                                               # 결과 리스트를 리턴한다
 
 ```
 
-- 직접 쓰는 곳은 세 함수이고, 모두 함수 안이라 앞에 공백 4개를 기본으로 넣습니다(Tab 키 한 번).
+- 주석 줄은 그대로 두고, **각 주석 바로 아래 줄**에 씁니다. ① 은 함수 바로 안쪽이라 4칸, ② 는 `for` 안쪽이라 8칸에서 시작합니다.
 
-| 함수 | 쓰는 줄 | 앞의 공백 |
+**직접 쓰는 곳**
+
+| 빈칸 | 쓰는 줄 | 들여쓰기 |
 |---|---|---|
-| `plan_key` · `needs_approval` | 1 ~ 4번 모두 | 4개 |
-| `mark_approvals` | `if` · `elif` · `else`(미리 채운 `for` 안쪽) | 8개 |
-| `mark_approvals` | 그 안쪽 `item["approval"] = …` | 12개(4개 더) |
+| ① | 둘 중 하나라도 참이면 `True` 를 리턴 (`return … or …`) | 4칸 |
+| ② | `decisions` 에서 결정을 꺼내 `decision` 에 담기 (`.get`) | 8칸 |
 
-- `mark_approvals` 위의 `key` · `decision` · `needs` 는 미리 채운 줄입니다. 나머지 줄도 미리 채워 두었으니 그대로 둡니다.
-- 5번의 `not needs` 는 「승인이 필요하지 않으면」입니다(`needs` 는 승인이 필요한지의 참 · 거짓). `not` 은 참과 거짓을 뒤집습니다.
-- 채우기 전에 실행하면 `KeyError: 'approval'` 오류가 납니다. 승인 상태(`approval`)를 아직 적지 않았기 때문입니다.
+#### 문법 상자 · 직접 쓰는 곳의 모양 (예시 값 · 읽기만 합니다)
+
+```python
+print(True or False)                      # True  · 둘 중 하나라도 참이면 참
+print(False or False)                     # False · 둘 다 거짓일 때만 거짓
+
+decisions = {"dami:SALES:QUERY": "승인"}  # 예시 값
+print(decisions.get("dami:SALES:QUERY"))  # 승인
+print(decisions.get("junho:SALES:CHANGE")) # None · 키가 없으면 오류 대신 None
+```
+
+- `딕셔너리.get(키)` 는 키가 없을 때 `KeyError` 로 멈추지 않고 `None` 을 돌려줍니다. 결정이 아직 없는 계획이 있어서 `[ ]` 대신 `.get` 을 씁니다.
+
+**채우기 전에 실행하면** 오류 없이 돌아가지만 8건 모두 「승인 불필요」로 나오고, 단계 2가 `{'승인 불필요': 8}` 입니다. ① 이 비어 있으면 `needs_approval` 이 아무것도 리턴하지 않아(`None`, 거짓으로 봄) 모든 계획이 승인 없이 회수될 뻔한 것입니다. 승인 검사가 빠지면 쓰기 권한도 그대로 지워진다는 것을 보여 주는 결과입니다.
+
+- ① 확인: ① 만 쓰고 실행하면 `NameError: name 'decision' is not defined` 가 나옵니다(파이썬 버전에 따라 뒤에 `Did you mean: 'decisions'?` 가 붙습니다). ② 를 아직 안 써서 나는 오류이니 정상입니다. 막히면: 바로 위 두 줄이 만든 `is_sensitive` 와 `is_big_impact` 를 `or` 로 잇고 앞에 `return` 을 붙입니다.
+- ② 확인: ② 까지 쓰고 실행하면 단계 2가 `{'승인 불필요': 5, '승인됨': 2, '승인 대기': 1}` 이면 성공입니다. `KeyError: 'junho:SALES:QUERY'` 가 나오면 `decisions[key]` 로 쓴 것이니 `.get` 으로 바꿉니다. 막히면: 위 문법 상자의 `decisions.get("dami:SALES:QUERY")` 에서 따옴표 문자열 자리에 `key` 를 넣고, 앞에 `decision = ` 을 붙입니다.
 
 **`exercise4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 제공 파일로 회수 계획을 만든 뒤 `mark_approvals` 로 승인 상태를 정하고 두 단계로 출력합니다.
 
@@ -192,23 +206,29 @@ print(counts)                                                    # 승인 상태
    - VS Code: `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력합니다(`config/…` 이름은 이 폴더를 선택한 채 입력하면 `config` 폴더 안에 만들어집니다).
 3. **[터미널]** `ls config` 로 `sensitive.json` 이 `users.json` 과 같은 `config` 폴더에 있는지 보고, `python -m json.tool config/sensitive.json`(맥북은 `python3`)로 내용이 정상인지 확인합니다.
    - 깨진 채 두면 민감한 권한 리스트를 읽지 못해 junho 의 `SALES:CHANGE` 가 「승인 불필요」로 나오고, 승인이 필요한 계획이 3건에서 2건으로 줄어듭니다.
-4. **[VS Code]** `revoke_approve.py` 의 `plan_key` · `needs_approval` · `mark_approvals` 에서 직접 쓰는 곳 세 군데를 씁니다. 1.1 의 표와 그림을 보고 씁니다.
-5. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
+4. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고, **채우기 전에** 한 번 실행해서 8건이 모두 「승인 불필요」로 나오는지 봅니다(맥북은 `python3`).
    ```bash
    pwd
    python exercise4-1_run.py
    ```
-6. 출력은 두 단계입니다. 단계 1은 `계획 8건` 제목 줄과 계획 여덟 줄(줄마다 승인 상태), 단계 2는 승인 상태별 건수 딕셔너리 한 줄입니다.
+5. **[VS Code]** `revoke_approve.py` 의 `# ←` 두 곳(① · ②)을 채웁니다. 1.1 의 표와 그림을 보고 씁니다.
+6. **[터미널]** 다시 실행합니다. 출력은 두 단계입니다. 단계 1은 `계획 8건` 제목 줄과 계획 여덟 줄(줄마다 승인 상태), 단계 2는 승인 상태별 건수 딕셔너리 한 줄입니다.
+   ```bash
+   python exercise4-1_run.py
+   ```
 7. **[보고서]** `report_u4.md` 의 `## 실습 4-1` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 「승인 불필요」 · 「승인됨」 · 「승인 대기」가 각각 몇 건인지, 승인 대기인 계획이 무엇인지 적어 주세요.
+   - (가) [핵심 질문] 채운 뒤 실행한 출력 전체를 붙여 넣고, 「승인 불필요」 · 「승인됨」 · 「승인 대기」가 각각 몇 건인지, 승인 대기인 계획이 무엇인지 적어 주세요.
    - (나) [핵심 질문] 권한을 없애는 일인데 왜 쓰기 권한 같은 민감한 권한은 승인을 받게 할까요? 조회 같은 일반 권한 한 건은 바로 회수해도 되는 이유도 적어 주세요.
-   - (다) [핵심 질문] junho 의 `SALES:CHANGE`(예외 2번) 계획은 승인 대기입니다. 실습 4-2에서 이 계획은 어떻게 처리될지 예상해서 적고, 승인이 오래 나지 않으면 어떤 문제가 생길지도 적어 주세요.
+   - (다) [응용] junho 의 `SALES:CHANGE`(예외 2번) 계획은 승인 대기입니다. 실습 4-2에서 이 계획은 어떻게 처리될지 예상해서 적고, 승인이 오래 나지 않으면 어떤 문제가 생길지도 적어 주세요.
+
+**확인** — 다시 실행했을 때 단계 2가 `{'승인 불필요': 5, '승인됨': 2, '승인 대기': 1}` 이고, 「승인 대기」 줄이 `junho SALES:CHANGE <- 예외 2번` 이면 성공입니다. 안 나오면 「정답」 레슨의 실습 4-1 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 ## 실습 4-1 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
 | 결정을 찾는 키 | `return f"{user}:{permission}"` (`plan_key` 안) |
+| 결정 꺼내기(없으면 `None`) | `decision = decisions.get(key)` (`mark_approvals` 안) |
 | 민감한 권한인지 | `is_sensitive = plan["permission"] in sensitive` (`needs_approval` 안) |
 | 영향이 2건 이상인지 | `is_big_impact = plan["impact"] >= 2` (`needs_approval` 안) |
 | 승인이 필요한지 | `return is_sensitive or is_big_impact` (`needs_approval` 안) |

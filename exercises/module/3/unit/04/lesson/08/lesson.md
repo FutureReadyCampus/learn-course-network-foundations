@@ -25,35 +25,25 @@ pwd
 python exercise4-1_run.py
 ```
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
+**채운 코드** (한 예) — 직접 쓰는 곳은 빈칸 두 곳(① · ②)입니다.
 
-① `plan_key` 안(미리 채운 `permission` 줄 아래)
-
-```python
-    return f"{user}:{permission}"                                # 사용자와 권한을 : 로 이어 붙인다
-```
-
-② `needs_approval` 안
+① `needs_approval` 안(미리 채운 `is_big_impact` 줄 아래)
 
 ```python
-    is_sensitive = plan["permission"] in sensitive               # 권한이 민감한 권한 리스트에 있는지(True 또는 False)
-    is_big_impact = plan["impact"] >= 2                          # 영향이 2건 이상인지(True 또는 False)
+    # ① is_sensitive 이거나 is_big_impact 이면 True 가 되도록 리턴한다 (or)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     return is_sensitive or is_big_impact                         # 둘 중 하나라도 참이면 True 를 리턴한다
 ```
 
-③ `mark_approvals` 안(미리 채운 `needs` 줄 아래)
+② `mark_approvals` 안(미리 채운 `key` 줄 아래)
 
 ```python
-        if not needs:                                            # 승인이 필요하지 않으면
-            item["approval"] = "승인 불필요"                     # 바로 회수할 수 있다
-        elif decision == "승인":                                  # 승인이 필요한데 보안 책임자가 승인했으면
-            item["approval"] = "승인됨"                          # 회수할 수 있다
-        else:                                                    # 승인이 필요한데 아직 결정이 없으면
-            item["approval"] = "승인 대기"                       # 결정이 날 때까지 기다린다
+        # ② decisions 에서 key 의 결정을 꺼내 decision 에 담는다 (.get · 없으면 None)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+        decision = decisions.get(key)                            # 보안 책임자의 결정을 꺼낸다(결정이 없으면 None)
 ```
 
 **결과**
 
+- 채우기 전에 실행하면 오류 없이 8건 모두 「승인 불필요」로 나오고, 마지막 줄이 `{'승인 불필요': 8}` 입니다. ① 만 채우면 `NameError: name 'decision' is not defined` 가 납니다.
 - (가) 승인 상태별 건수는 아래 표와 같고, 출력은 표 아래와 같습니다.
   - 승인이 필요한 계획은 3건(dami 의 역할 해제 두 건과 junho 의 `SALES:CHANGE` 예외 2번)입니다.
 
@@ -94,23 +84,25 @@ gaeun SETTLE:QUERY <- 예외 5번 | 예외 삭제 | 영향 1 건 | 승인 불필
 
 **자주 틀리는 곳**
 
-- 보안 책임자의 결정을 확인하는 `elif decision == "승인":` 줄을 빼먹으면, 승인하기로 한 dami 의 두 건도 「승인 대기」로 나옵니다.
-  - 오류는 나지 않고 상태만 달라집니다.
-  - 실행하면 다음처럼 됩니다(「승인됨」이 하나도 없고 「승인 대기」가 3건이면 이 실수입니다).
+- ① 을 `return is_sensitive and is_big_impact` 로 쓰면 「둘 다」 해당할 때만 승인이 필요해집니다.
+  - 오류는 나지 않고 상태만 달라집니다. 쓰기 권한인 junho 의 `SALES:CHANGE` 와, 영향 2건인 dami 의 `SALES:QUERY` 역할 해제가 승인 없이 회수됩니다.
+  - 실행하면 다음처럼 됩니다(「승인 대기」가 하나도 없고 「승인됨」이 1건이면 이 실수입니다).
 
 ```
 --- 단계 1: 승인 상태 - 계획 8건
 junho SALES:QUERY <- 역할 finance | 역할에서 권한 빼기 | 영향 1 건 | 승인 불필요
-dami SALES:QUERY <- 역할 sales | 역할 해제 | 영향 2 건 | 승인 대기
-dami SALES:CHANGE <- 역할 sales | 역할 해제 | 영향 2 건 | 승인 대기
+dami SALES:QUERY <- 역할 sales | 역할 해제 | 영향 2 건 | 승인 불필요
+dami SALES:CHANGE <- 역할 sales | 역할 해제 | 영향 2 건 | 승인됨
 seoyeon SETTLE:QUERY <- 예외 1번 | 예외 삭제 | 영향 1 건 | 승인 불필요
-junho SALES:CHANGE <- 예외 2번 | 예외 삭제 | 영향 1 건 | 승인 대기
+junho SALES:CHANGE <- 예외 2번 | 예외 삭제 | 영향 1 건 | 승인 불필요
 dami SALES:QUERY <- 예외 3번 | 예외 삭제 | 영향 1 건 | 승인 불필요
 batch-night SALES:QUERY <- 예외 4번 | 예외 삭제 | 영향 1 건 | 승인 불필요
 gaeun SETTLE:QUERY <- 예외 5번 | 예외 삭제 | 영향 1 건 | 승인 불필요
 --- 단계 2: 집계 - 승인 상태별 건수
-{'승인 불필요': 5, '승인 대기': 3}
+{'승인 불필요': 7, '승인됨': 1}
 ```
+
+- ② 를 `decision = decisions[key]` 로 쓰면 결정이 없는 첫 계획에서 `KeyError: 'junho:SALES:QUERY'` 로 멈춥니다. 결정이 없는 계획도 있으므로 `.get(key)` 로 씁니다.
 
 **관제에서는**
 
@@ -128,48 +120,25 @@ pwd
 python exercise4-2_run.py
 ```
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 `remove_exception` 의 한 곳, `apply_plan` 의 세 곳, `execute_revocation` 의 한 곳입니다.
+**채운 코드** (한 예) — 직접 쓰는 곳은 `execute_revocation` 의 빈칸 두 곳(① · ②)입니다.
 
-① `remove_exception` 안(미리 채운 `for` 아래)
-
-```python
-        if exception["id"] == target_id:                               # 번호가 같으면
-            exceptions.remove(exception)                               # 리스트에서 그 예외를 지운다
-            return True                                          # 지웠다고 알리고 함수를 끝낸다
-```
-
-② `apply_plan` 안(미리 채운 `if` 아래)
+① `execute_revocation` 안(미리 채운 `for` 아래)
 
 ```python
-        remove_exception(exceptions, plan["target"])             # 예외 리스트에서 그 번호의 예외를 지운다
-```
-
-③ `apply_plan` 안(미리 채운 `elif` 아래)
-
-```python
-        user_info = users[plan["target"]]                        # 그 사용자의 정보 딕셔너리를 꺼낸다
-        user_info["role"] = ""                                   # 역할을 빈 문자열로 바꾼다(어떤 역할의 권한도 받지 않게 된다)
-```
-
-④ `apply_plan` 안(미리 채운 `else` 아래)
-
-```python
-        role_permissions = roles[plan["target"]]                 # 그 역할의 권한 리스트를 꺼낸다
-        role_permissions.remove(plan["permission"])              # 그 리스트에서 그 권한을 지운다
-```
-
-⑤ `execute_revocation` 안(미리 채운 `for` 아래)
-
-```python
+        # ① plan["approval"] 이 "승인 대기" 이면 (==)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
         if plan["approval"] == "승인 대기":                      # 승인을 기다리는 계획이면
-            result = "대기"                                      # 실행하지 않고 대기로 남긴다
-        else:                                                    # 승인 불필요이거나 승인됨이면
+```
+
+② `execute_revocation` 안(미리 채운 `else` 아래)
+
+```python
+            # ② apply_plan 에 plan, users, roles, exceptions 를 넘겨 호출한다   # ← 이 주석 바로 아래 줄에 씁니다 (12칸)
             apply_plan(plan, users, roles, exceptions)           # 실제로 회수한다
-            result = "실행"                                      # 실행했다고 남긴다
 ```
 
 **결과**
 
+- 채우기 전에 실행하면 `else:` 줄에서 `IndentationError: unindent does not match any outer indentation level` 이 납니다. ① 만 채우면 `실행 7 건, 대기 1 건` 이 나오지만 단계 2의 여덟 줄이 모두 `그대로` 입니다(junho 의 `SALES:QUERY` 도 `허용(역할 권한) -> 허용(역할 권한)`). 이력에 「실행」이라고 적혀도 실제로 지웠는지는 다시 판정해야 안다는 것을 보여 줍니다.
 - (가) 출력은 다음과 같고, **실행 7건 · 대기 1건**입니다.
   - 대기는 아직 승인되지 않은 junho 의 `SALES:CHANGE`(예외 2번)입니다.
   - 판정이 바뀐 것은 **junho 의 `SALES:QUERY` 1건**(허용 → 거부)이고, 저장한 이력은 **8건**입니다.
@@ -225,7 +194,7 @@ gaeun SETTLE:QUERY | 거부(권한 없음) -> 거부(권한 없음) | 그대로
 
 **자주 틀리는 곳**
 
-- `if plan["approval"] == "승인 대기":` 검사를 빼고 모든 계획을 실행하면, 아직 승인되지 않은 junho 의 예외 2번까지 지워집니다.
+- ① 을 `if plan["approval"] == "대기":` 로 쓰면(결과 값 「대기」와 승인 상태 「승인 대기」를 헷갈림) 어느 계획과도 같지 않아 모든 계획이 실행되고, 아직 승인되지 않은 junho 의 예외 2번까지 지워집니다.
   - 오류는 나지 않고 건수만 달라집니다.
   - 실행하면 다음처럼 됩니다(`실행 8 건, 대기 0 건` 이 나오면 이 실수입니다).
 
