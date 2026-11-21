@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
-<title>도전 2-1 보고서: (가) · (나) · (다) 에 채울 칸 체크리스트</title>
-<desc>도전 2-1 보고서의 (가)는 출력 전체와 평균 · 최댓값 · 알림 기준, (나)는 평균을 기준으로 했을 때와 최댓값 + 1 로 정한 이유, (다)는 평소와 다른 하루가 섞였을 때 기준이 어떻게 바뀌는지를 씁니다.</desc>
+<title>응용 2-1 보고서: (가) · (나) · (다) 에 채울 칸 체크리스트</title>
+<desc>응용 2-1 보고서의 (가)는 출력 전체와 평균 · 최댓값 · 알림 기준, (나)는 평균을 기준으로 했을 때와 최댓값 + 1 로 정한 이유, (다)는 평소와 다른 하루가 섞였을 때 기준이 어떻게 바뀌는지를 씁니다.</desc>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">도전 2-1 보고서: 채울 칸 (선택)</text>
+<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">응용 2-1 보고서: 채울 칸 (선택)</text>
 <rect x="20" y="52" width="214" height="250" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <rect x="20" y="52" width="214" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="127" y="79" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">(가) 출력과 값</text>

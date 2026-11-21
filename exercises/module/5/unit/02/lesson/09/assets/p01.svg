@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 336" role="img">
-<title>report_u2.md 를 만들고 틀을 붙여 넣은 뒤 핵심 칸은 모두, 도전 칸은 한 것만 채웁니다</title>
-<desc>soar_response 폴더에 report_u2.md 를 만들고 틀을 복사해 붙여 넣은 뒤 이름을 바꿔 저장합니다. 실습 2-1, 실습 2-2, 마무리는 모두 채우고 도전 2-1 ~ 2-3 은 한 것만 채웁니다.</desc>
+<title>report_u2.md 를 만들고 틀을 붙여 넣은 뒤 핵심 칸은 모두, 응용 칸은 한 것만 채웁니다</title>
+<desc>soar_response 폴더에 report_u2.md 를 만들고 틀을 복사해 붙여 넣은 뒤 이름을 바꿔 저장합니다. 실습 2-1, 실습 2-2, 마무리는 모두 채우고 응용 2-1 ~ 2-3 은 한 것만 채웁니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="24" y="34" font-size="19" fill="#292929" font-weight="700">보고서 파일 만들기: report_u2.md</text>
@@ -15,7 +15,7 @@
 <rect x="24" y="152" width="324" height="110" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="186.0" y="180.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="186.0" dy="0" font-weight="700">핵심 실습 (모두 채움)</tspan><tspan x="186.0" dy="21">## 실습 2-1</tspan><tspan x="186.0" dy="21">## 실습 2-2</tspan><tspan x="186.0" dy="21">## 마무리</tspan></text>
 <rect x="372" y="152" width="324" height="110" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="534.0" y="191.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="534.0" dy="0" font-weight="700">도전 (선택)</tspan><tspan x="534.0" dy="21">## 도전 2-1 · 2-2 · 2-3</tspan><tspan x="534.0" dy="21">내가 한 도전만 채움</tspan></text>
+<text x="534.0" y="191.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="534.0" dy="0" font-weight="700">응용 (선택)</tspan><tspan x="534.0" dy="21">## 응용 2-1 · 2-2 · 2-3</tspan><tspan x="534.0" dy="21">내가 한 응용만 채움</tspan></text>
 <text x="24" y="300" font-size="15" text-anchor="start" fill="#666660">실습 하나를 마칠 때마다 이 레슨의 질문을 읽고 같은 번호의 답: 뒤에 씁니다.</text>
 </g>
 </svg>

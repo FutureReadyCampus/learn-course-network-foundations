@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
-<title>도전 4-3 목표: 남은 알림에 로그인 규칙 알림을 합쳐 다시 세고 한 문장으로 적습니다</title>
+<title>응용 4-3 목표: 남은 알림에 로그인 규칙 알림을 합쳐 다시 세고 한 문장으로 적습니다</title>
 <desc>실습 4-2의 예외 규칙을 적용해 남은 알림에 login_alerts.json 의 A8 을 합칩니다. final_check.py 가 합친 알림의 오탐 수와 놓친 문제를 다시 구하고, 세 숫자를 한 문장으로 만듭니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">

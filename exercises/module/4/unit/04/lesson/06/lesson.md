@@ -1,6 +1,6 @@
 ---
 id: m4-u04-l06
-title: 도전 4-2 · 알림의 오탐과 미탐 세기
+title: 응용 4-2 · 알림의 오탐과 미탐 세기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,11 +9,11 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 도전 4-2 · 알림의 오탐과 미탐 세기
+# 응용 4-2 · 알림의 오탐과 미탐 세기
 
 ## 목표: 오탐과 미탐 개수
 
-> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 4-1 · 4-2와 글쓰기를 먼저 마칩니다. 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
+> **여유가 되면 해 보세요.** 핵심 실습 4-1 · 4-2와 글쓰기를 먼저 마칩니다. 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
 
 > **이번 실습에 들어온 일**
 >
@@ -36,7 +36,7 @@ source:
 
 ## 1.1 알림 7개와 진짜 문제 5개
 
-**먼저 `problems.json` 을 만듭니다.** 사람이 조사해서 확인한 11/2 의 진짜 문제 5개입니다. `anomaly_detection` 폴더에 만들고, 같은 이름의 파일이 이미 있으면 아래 내용으로 덮어씁니다. 도전 4-3에서도 이 파일을 씁니다.
+**먼저 `problems.json` 을 만듭니다.** 사람이 조사해서 확인한 11/2 의 진짜 문제 5개입니다. `anomaly_detection` 폴더에 만들고, 같은 이름의 파일이 이미 있으면 아래 내용으로 덮어씁니다. 응용 4-3에서도 이 파일을 씁니다.
 
 **`problems.json`**
 
@@ -197,7 +197,7 @@ print(blocked_count)                                        # 차단된 기록 �
 
 - 이번 실습에서 새 문법은 없습니다. `.sum()` 은 실습 4-1에서 쓴 것을 `True` 개수 세기에 다시 쓰고, `isin` · `~` · `value_counts()` 도 다시 씁니다.
 
-## 도전 4-2 · 알림의 오탐과 미탐 세기
+## 응용 4-2 · 알림의 오탐과 미탐 세기
 
 **이런 상황이 있습니다**
 
@@ -211,7 +211,7 @@ print(blocked_count)                                        # 차단된 기록 �
 
 **할 일**
 
-1. `evaluation.py` · `challenge4-2_run.py` 두 파일을 만들고, `evaluation.py` 의 세 함수에서 직접 쓰는 곳을 씁니다.
+1. `evaluation.py` · `apply4-2_run.py` 두 파일을 만들고, `evaluation.py` 의 세 함수에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>알림 수</mark>(단계 1), <mark>진짜 문제였던 알림 수</mark>(단계 2), <mark>오탐</mark>(단계 3), <mark>미탐</mark>(단계 4)을 읽습니다.
 
 **`evaluation.py`**
@@ -278,7 +278,7 @@ def count_real_alerts(alerts):                        # 알림 표를 받는 함
 - 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
 - 채우기 전에 실행하면 `NameError: name 'real_alert_count' is not defined` 오류가 납니다. 7번을 아직 안 썼기 때문입니다.
 
-**`challenge4-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `len(표)` 는 표의 행 수입니다.
+**`apply4-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `len(표)` 는 표의 행 수입니다.
 
 ```python
 from evaluation import load_table, pick_real_alerts, find_false_alarms, find_missed, count_real_alerts, ALERTS_PATH, PROBLEMS_PATH  # 방금 만든 함수를 불러온다
@@ -312,21 +312,21 @@ for problem in missed_list:                           # 놓친 문제를 하나�
 
 **순서**
 
-1. **[VS Code]** 파일 `evaluation.py` · `challenge4-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
-2. **[VS Code]** `evaluation.py` 에서 <mark>직접 쓰는 곳 일곱 군데를 씁니다</mark>. 위 판다스 문법 상자와 1.1 의 표를 참고해 씁니다. 막히면 아래 「도전 4-2 정리」를 봅니다.
+1. **[VS Code]** 파일 `evaluation.py` · `apply4-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+2. **[VS Code]** `evaluation.py` 에서 <mark>직접 쓰는 곳 일곱 군데를 씁니다</mark>. 위 판다스 문법 상자와 1.1 의 표를 참고해 씁니다. 막히면 아래 「응용 4-2 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python challenge4-2_run.py
+   python apply4-2_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python challenge4-2_run.py` 파이썬으로 실행 파일 실행
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python apply4-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **네 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1과 단계 2는 각각 1줄, 단계 3은 7줄(오탐 수 1줄 · 안내 1줄 · 규칙별 개수 표 5줄), 단계 4는 3줄(미탐 수 1줄 · 놓친 문제 2줄)입니다. 개수가 같은 규칙의 순서는 달라도 됩니다.
-5. **[보고서]** `report_u4.md` 의 `## 도전 4-2` 아래를 채웁니다.
+5. **[보고서]** `report_u4.md` 의 `## 응용 4-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 알림 수와 오탐 수와 미탐 수를 적어 주세요.
    - (나) [핵심 질문] A2(gaeun)는 조사해 보니 서버 설정 오류여서 오탐으로 셌습니다. 이 알림이 오탐인 이유와, 그래도 한 번은 확인해야 했던 이유를 적어 주세요.
    - (다) [핵심 질문] 미탐인 P5(seoyeon 의 권한 없는 정산 조회 시도)는 왜 알림이 나지 않았을까요? 그 문제를 찾으려면 어떤 규칙이 필요한지도 적어 주세요.
 
-## 도전 4-2 정리
+## 응용 4-2 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|

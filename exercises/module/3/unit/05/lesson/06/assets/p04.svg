@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
-<title>도전 5-1 정답: 요청 40건 중 거부 16건, 거부율 40%로 기준 30% 이상이라 경고</title>
+<title>응용 5-1 정답: 요청 40건 중 거부 16건, 거부율 40%로 기준 30% 이상이라 경고</title>
 <desc>허용 24건, 거부 16건으로 거부율은 40%이고 경고 기준 30% 이상이라 경고다. 거부 사유는 허용되지 않은 접속 위치 5, 업무 시간 밖 4, 퇴사한 계정 4, 역할이 없음 3이다. 4번 이상 거부된 dami 와 gaeun 은 사유가 달라 조치도 다르다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 5-1 정답 · 집계와 경고</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">응용 5-1 정답 · 집계와 경고</text>
 <rect x="20" y="66" width="680" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="360" y="96.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">허용 24 · 거부 16 · 거부율 40%  &gt;=  기준 30%  →  경고</text>
 <text x="20" y="146" font-size="15" fill="#292929" font-weight="700">거부 사유별 (16건)</text>

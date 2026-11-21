@@ -1,34 +1,34 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>제공 파일 두 개는 도전을 건너뛰었을 때 뒤 도전을 위해 만듭니다</title>
-<desc>escalation.py 는 도전 4-1 에서 직접 쓰고 도전 4-2 가 불러 쓰며, report.py 는 도전 4-3 에서 직접 쓰고 도전 4-5 가 불러 씁니다. 앞 도전을 건너뛰었을 때만 이 레슨의 완성본을 만들고, import 로 확인합니다.</desc>
+<title>제공 파일 두 개는 응용을 건너뛰었을 때 뒤 응용을 위해 만듭니다</title>
+<desc>escalation.py 는 응용 4-1 에서 직접 쓰고 응용 4-2 가 불러 쓰며, report.py 는 응용 4-3 에서 직접 쓰고 응용 4-5 가 불러 씁니다. 앞 응용을 건너뛰었을 때만 이 레슨의 완성본을 만들고, import 로 확인합니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">제공 파일 쓰는 법 (도전을 할 때만)</tspan></text>
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">제공 파일 쓰는 법 (응용을 할 때만)</tspan></text>
 <rect x="20" y="58" width="180" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="110.0" y="80.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="110.0" font-weight="bold">도전 4-1</tspan><tspan x="110.0" dy="20">골격으로 직접 씀</tspan></text>
+<text x="110.0" y="80.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="110.0" font-weight="bold">응용 4-1</tspan><tspan x="110.0" dy="20">골격으로 직접 씀</tspan></text>
 <line x1="202" y1="86" x2="246" y2="86" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
 <rect x="250" y="58" width="200" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="350.0" y="91.6" font-size="16" text-anchor="middle" fill="#292929"><tspan x="350.0" font-weight="bold">escalation.py</tspan></text>
 <line x1="452" y1="86" x2="496" y2="86" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
 <rect x="500" y="58" width="200" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="600.0" y="80.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="600.0" font-weight="bold">도전 4-2</tspan><tspan x="600.0" dy="20">이 파일을 불러 씀</tspan></text>
+<text x="600.0" y="80.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="600.0" font-weight="bold">응용 4-2</tspan><tspan x="600.0" dy="20">이 파일을 불러 씀</tspan></text>
 <rect x="250" y="124" width="200" height="30" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="350.0" y="143.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="350.0">도전 4-1 건너뜀 → 완성본</tspan></text>
+<text x="350.0" y="143.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="350.0">응용 4-1 건너뜀 → 완성본</tspan></text>
 <rect x="20" y="168" width="180" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="110.0" y="190.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="110.0" font-weight="bold">도전 4-3</tspan><tspan x="110.0" dy="20">골격으로 직접 씀</tspan></text>
+<text x="110.0" y="190.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="110.0" font-weight="bold">응용 4-3</tspan><tspan x="110.0" dy="20">골격으로 직접 씀</tspan></text>
 <line x1="202" y1="196" x2="246" y2="196" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
 <rect x="250" y="168" width="200" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="350.0" y="201.6" font-size="16" text-anchor="middle" fill="#292929"><tspan x="350.0" font-weight="bold">report.py</tspan></text>
 <line x1="452" y1="196" x2="496" y2="196" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
 <rect x="500" y="168" width="200" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="600.0" y="190.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="600.0" font-weight="bold">도전 4-5</tspan><tspan x="600.0" dy="20">이 파일을 불러 씀</tspan></text>
+<text x="600.0" y="190.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="600.0" font-weight="bold">응용 4-5</tspan><tspan x="600.0" dy="20">이 파일을 불러 씀</tspan></text>
 <rect x="250" y="234" width="200" height="30" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="350.0" y="253.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="350.0">도전 4-3 건너뜀 → 완성본</tspan></text>
+<text x="350.0" y="253.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="350.0">응용 4-3 건너뜀 → 완성본</tspan></text>
 <text x="20" y="300" font-size="15" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">확인 (만든 파일의 줄만, 맥북은 python3)</tspan></text>
 <rect x="20" y="312" width="300" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="170.0" y="336.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="170.0">python -c "import escalation"</tspan><tspan x="170.0" dy="20">→ escalation.py 정상</tspan></text>
 <rect x="340" y="312" width="360" height="28" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="520.0" y="330.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="520.0">'ticket_notice' 없음 → 도전 4-1 파일 준비</tspan></text>
+<text x="520.0" y="330.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="520.0">'ticket_notice' 없음 → 응용 4-1 파일 준비</tspan></text>
 <rect x="340" y="344" width="360" height="28" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
 <text x="520.0" y="362.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="520.0">'requests' · 'pandas' 없음 → pip install</tspan></text>
 </g>

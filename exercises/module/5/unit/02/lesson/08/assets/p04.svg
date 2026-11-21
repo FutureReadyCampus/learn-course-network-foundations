@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>도전 2-1: 권한을 먼저 확인하고, 승인이면 실행하고 거절이면 종료합니다</title>
+<title>응용 2-1: 권한을 먼저 확인하고, 승인이면 실행하고 거절이면 종료합니다</title>
 <desc>apply_decision 은 먼저 is_authorized 로 승인 권한을 확인합니다. 권한이 없으면 INC-005처럼 분류됨에 남고, 승인이면 실행 완료, 거절이면 종료가 됩니다. 세 경우 모두 감사 기록에 남습니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">도전 2-1 정답: 담당자 결정이 처리되는 순서</text>
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">응용 2-1 정답: 담당자 결정이 처리되는 순서</text>
 <rect x="24" y="70" width="150" height="64" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="99.0" y="96.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="99.0" dy="0" font-weight="700">담당자 결정</tspan><tspan x="99.0" dy="21.0">decisions</tspan></text>
 <rect x="214" y="70" width="210" height="64" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>

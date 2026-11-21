@@ -1,6 +1,6 @@
 ---
 id: m3-u02-l07
-title: 도전 2-2 · 처리 기한 넘긴 요청 찾기(SLA)
+title: 응용 2-2 · 처리 기한 넘긴 요청 찾기(SLA)
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,11 +9,11 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 도전 2-2 · 처리 기한 넘긴 요청 찾기(SLA)
+# 응용 2-2 · 처리 기한 넘긴 요청 찾기(SLA)
 
 ## 목표: 기한 초과 점검 함수
 
-> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 2-1 · 2-2와 글쓰기를 먼저 마칩니다. 이 도전을 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
+> **여유가 되면 해 보세요.** 핵심 실습 2-1 · 2-2와 글쓰기를 먼저 마칩니다. 이 응용을 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
 
 > **오늘 들어온 일**
 >
@@ -127,7 +127,7 @@ print(overdue)                                                      # 복사본�
 - 복사본에 적는 이유: 원래 요청서에 `wait_hours` 를 바로 적으면 `REQUESTS` 안의 요청서까지 바뀝니다. 점검 결과는 복사본에만 적고 요청서 기록은 그대로 둡니다.
 
 
-## 도전 2-2 · 처리 기한 초과 요청 찾기
+## 응용 2-2 · 처리 기한 초과 요청 찾기
 
 **이런 상황이 있습니다**
 
@@ -139,7 +139,7 @@ print(overdue)                                                      # 복사본�
 
 **할 일**
 
-1. `req_sla.py` · `config/sla.json` · `challenge2-2_run.py` 세 파일을 만들고, `check_sla_breach` 본문을 직접 씁니다.
+1. `req_sla.py` · `config/sla.json` · `apply2-2_run.py` 세 파일을 만들고, `check_sla_breach` 본문을 직접 씁니다.
 2. 실행해서 <mark>요청서 현황</mark>(단계 1: 현황)과 <mark>기한을 초과한 요청</mark>(단계 2: 판정)을 읽습니다.
 
 **`config/sla.json`** — 그대로 붙여 넣습니다. 처리 기한(시간)을 적은 설정 파일이고, `access_control` 안의 `config` 폴더(`users.json` 이 있는 곳)에 만듭니다.
@@ -188,7 +188,7 @@ def check_sla_breach(requests, now):                             # 요청서 리
 - `SLA_HOURS` 와 `TIME_FORMAT` 은 파일 위쪽에 이미 있습니다. 새로 만들지 않고 그대로 씁니다.
 - 채우기 전에 실행하면 단계 1은 정상으로 나오고, 단계 2에서 `TypeError: 'NoneType' object is not iterable` 오류가 납니다. 함수가 아무것도 리턴하지 않아 `for` 가 돌 리스트가 없기 때문입니다.
 
-**`challenge2-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 요청 여섯 건을 접수하고 4번을 승인한 뒤, 단계 1은 요청서 현황을 출력하고 단계 2는 `check_sla_breach` 로 기한을 초과한 요청서를 출력합니다.
+**`apply2-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 요청 여섯 건을 접수하고 4번을 승인한 뒤, 단계 1은 요청서 현황을 출력하고 단계 2는 `check_sla_breach` 로 기한을 초과한 요청서를 출력합니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
@@ -224,7 +224,7 @@ for request in check_sla_breach(REQUESTS, NOW):                  # 기한을 초
 1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 네 가지를 반복합니다.
    1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
    2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-   3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `req_sla.py` · `config/sla.json` · `challenge2-2_run.py` 입니다.
+   3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `req_sla.py` · `config/sla.json` · `apply2-2_run.py` 입니다.
    4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
 2. **[터미널]** 파일을 만든 뒤 `ls config` 를 쳐서 `sla.json` 이 `users.json` 과 같은 `config` 폴더 안에 있는지 확인합니다.
    - `config` 안에 또 `config` 가 생겼다면 위치가 틀린 것이니 옮깁니다.
@@ -233,17 +233,17 @@ for request in check_sla_breach(REQUESTS, NOW):                  # 기한을 초
 4. **[터미널]** 위치가 `…/access_control` 인지 확인하고 실행합니다.
    ```bash
    pwd
-   python challenge2-2_run.py
+   python apply2-2_run.py
    ```
-   - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `challenge2-2_run.py` 실행할 파일
-   - 맥북은 `python3 challenge2-2_run.py` 로 칩니다.
+   - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `apply2-2_run.py` 실행할 파일
+   - 맥북은 `python3 apply2-2_run.py` 로 칩니다.
 5. 출력은 두 단계입니다. 단계 1은 요청서 현황(여섯 줄)이고, 단계 2는 기한을 초과한 요청서와 지난 시간입니다.
-6. **[보고서]** `report_u2.md` 의 `## 도전 2-2` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
+6. **[보고서]** `report_u2.md` 의 `## 응용 2-2` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
    - (가) 실행한 출력 전체를 붙여 넣고, 접수한 뒤 4시간을 초과한 요청이 몇 번인지, 접수한 뒤 몇 시간이 지났는지 적어 주세요.
    - (나) [핵심 질문] 승인자(`security_manager`)가 4시간을 초과하도록 처리하지 않은 요청을 찾았다면, 관제 담당은 누구에게 어떤 조치를 하면 좋을까요? 알림만 보낼 때와 윗사람에게 넘길 때(에스컬레이션)는 어떤 기준(예: 얼마나 더 지났을 때)으로 나누면 좋을까요?
    - (다) [핵심 질문] 상태(`reviewing` 인지)는 확인하지 않고 접수 시각만 보고 기한을 따진다면, 리스트에 어떤 문제가 생기나요? 그 리스트를 받은 사람은 무엇이 곤란할까요?
 
-## 도전 2-2 정리
+## 응용 2-2 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|

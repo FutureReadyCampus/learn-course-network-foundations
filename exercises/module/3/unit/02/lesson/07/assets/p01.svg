@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
-<title>도전 2-2: 요청서와 지금 시각을 받아 기한을 초과한 요청서를 골라낸다</title>
+<title>응용 2-2: 요청서와 지금 시각을 받아 기한을 초과한 요청서를 골라낸다</title>
 <desc>요청서 여섯 장과 지금 시각 14:00 이 check_sla_breach 에 들어갑니다. 함수는 config/sla.json 의 4시간을 기준으로 검토 중인 요청서만 따져, 기한을 초과한 요청서에 wait_hours 를 적어 돌려줍니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">도전 2-2 · 무엇을 만드나</text>
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">응용 2-2 · 무엇을 만드나</text>
 <rect x="29" y="70" width="190" height="120" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="124" y="113.928" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">입력</text>
 <text x="124" y="135.32" font-size="15" fill="#292929" text-anchor="middle">요청서 여섯 장</text>

@@ -55,7 +55,7 @@ source:
 
 > 실습 5-2는 코드를 실행하지 않고 읽고 글로 씁니다. 상황 표의 `users.json` · `exceptions.json` 은 Module 3에서 쓰던 파일이고, 이번 Unit의 점검(실습 5-1)은 같은 내용을 한 파일에 모은 `config/week_state.json` 을 읽습니다. 상황의 값은 앞 Unit 때를 되짚은 것이라 이번 `week_state.json` 과 다를 수 있습니다(예: 상황 3의 예외 번호).
 >
-> 상황 표의 파일 중 `role_admin.py`(도전 1-2), `req_sla.py`(도전 2-2), `conditional.py` · `access_server.py`(도전 4-2 · 4-3)는 도전에서 만드는 파일이라 내 폴더에 없을 수 있습니다. 내 폴더에 없는 파일은 이 페이지의 코드 조각만 읽고 답하면 됩니다.
+> 상황 표의 파일 중 `role_admin.py`(응용 1-2), `req_sla.py`(응용 2-2), `conditional.py` · `access_server.py`(응용 4-2 · 4-3)는 응용에서 만드는 파일이라 내 폴더에 없을 수 있습니다. 내 폴더에 없는 파일은 이 페이지의 코드 조각만 읽고 답하면 됩니다.
 
 | # | 상황 (이렇게 알게 됐습니다) | 읽을 핵심 코드 |
 |---|---|---|
@@ -374,7 +374,7 @@ def needs_approval(plan, sensitive):                             # 계획 한 �
 2. 제공 파일로 점검 결과와 일주일 치 로그를 합쳐 주간 보고서 파일을 만들었다 (제공 파일)
 3. 상황 8개 중 4개 이상의 원인과 고치는 방법을 내 말로 정리해 Module 3 총정리를 썼다 (실습 5-2)
 4. 보고서 `report_u5.md` 의 실습 5-1 · 5-2 칸에 `답:` 뒤가 비어 있는 질문이 없다
-5. 도전 5-1을 했다면 직접 쓴 `log_summary.py` 로 `weekly_run.py` 를 다시 돌려도 보고서가 같다 (선택)
+5. 응용 5-1을 했다면 직접 쓴 `log_summary.py` 로 `weekly_run.py` 를 다시 돌려도 보고서가 같다 (선택)
 
 **2. 파일 확인** — **[터미널]** `access_control` 폴더에서 확인합니다.
 
@@ -383,7 +383,7 @@ ls
 ls config
 ```
 
-- 이번 Unit에서 만든 파일 `checklist.py` · `exercise5-1_run.py` · `log_summary.py` · `weekly_report.py` · `weekly_run.py` · `week_log.jsonl` · `access_control_weekly_report_2026-11-02.md` · `report_u5.md` 가 보여야 합니다. 도전 5-1을 했다면 `challenge5-1_run.py` 도 있습니다.
+- 이번 Unit에서 만든 파일 `checklist.py` · `exercise5-1_run.py` · `log_summary.py` · `weekly_report.py` · `weekly_run.py` · `week_log.jsonl` · `access_control_weekly_report_2026-11-02.md` · `report_u5.md` 가 보여야 합니다. 응용 5-1을 했다면 `apply5-1_run.py` 도 있습니다.
 - `config` 안에는 이번 Unit의 `week_state.json` · `alert.json` 이 보여야 합니다. 앞 Unit에서 만든 JSON 파일도 함께 보입니다.
 - Module 3의 파일은 이렇게 둡니다. 파일을 어디에 저장했는지 헷갈리면 이 규칙과 VS Code 왼쪽 목록을 비교합니다.
 
@@ -393,7 +393,7 @@ ls config
 | `access_control/` | 그 밖의 파일 모두(폴더 바로 아래) |
 | 하위 폴더 | 따로 만들지 않음 |
 
-- 그 밖의 파일은 코드 `.py`, 실행 파일 `exerciseN-M_run.py` · `challengeN-M_run.py`, 보고서 `report_uN.md`, 실행하면 생기는 파일입니다.
+- 그 밖의 파일은 코드 `.py`, 실행 파일 `exerciseN-M_run.py` · `applyN-M_run.py`, 보고서 `report_uN.md`, 실행하면 생기는 파일입니다.
 - `__pycache__/` 는 파이썬이 자동으로 만드는 임시 폴더라 신경 쓰지 않습니다.
 
 ```

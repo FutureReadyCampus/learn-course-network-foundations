@@ -9,7 +9,7 @@
 <text x="44" y="112" font-size="15">실습 5-1 · 퇴사자 · 만료 예외 · 부서와 역할 점검</text>
 <text x="44" y="138" font-size="15">제공 파일 · 주간 보고서 .md 만들기</text>
 <text x="44" y="164" font-size="15">실습 5-2 · 상황 4개 이상 정리 · 총정리</text>
-<text x="44" y="190" font-size="15" fill="#666660">도전 5-1 · 직접 쓴 함수로 같은 보고서 (선택)</text>
+<text x="44" y="190" font-size="15" fill="#666660">응용 5-1 · 직접 쓴 함수로 같은 보고서 (선택)</text>
 <text x="44" y="226" font-size="16" font-weight="700">2. 파일 확인</text>
 <text x="44" y="254" font-size="15">ls · ls config 로 이번 Unit 파일 보기</text>
 <rect x="476" y="54" width="220" height="100" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>

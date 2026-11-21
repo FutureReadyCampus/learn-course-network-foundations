@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>도전 3-1 정답: 알림 8건 처리 결과와 근무 보고 요약, 확인 목록 4건</title>
+<title>응용 3-1 정답: 알림 8건 처리 결과와 근무 보고 요약, 확인 목록 4건</title>
 <desc>왼쪽은 단계 1 의 알림 8건 처리 결과다. 오른쪽 위는 단계 3 요약으로 변경됨 2, 변경 없음 2, 확인 실패 1 이고, 오른쪽 아래는 단계 4 의 담당자 확인 4건이다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
 <text x="20" y="30" font-size="17" fill="#292929" font-weight="700">단계 1 · 알림 8건</text>

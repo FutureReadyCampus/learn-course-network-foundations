@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img"><title>도전 4-4 정답: 점수 순 결과 6줄과 바로 보완할 조치 2개</title><desc>점수 6인 계정 잠금, 세션 종료, IP 차단이 높음이고 세션 종료에 승인 게이트, 담당자 알림에 감사 기록이 빠졌습니다. &gt;= 대신 &gt; 를 쓰거나 4번을 비우거나 ascending=False 를 빠뜨리면 오류 없이 결과가 달라집니다.</desc><defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="360" y="28" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">도전 4-4 정답 · 단계 2 결과</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img"><title>응용 4-4 정답: 점수 순 결과 6줄과 바로 보완할 조치 2개</title><desc>점수 6인 계정 잠금, 세션 종료, IP 차단이 높음이고 세션 종료에 승인 게이트, 담당자 알림에 감사 기록이 빠졌습니다. &gt;= 대신 &gt; 를 쓰거나 4번을 비우거나 ascending=False 를 빠뜨리면 오류 없이 결과가 달라집니다.</desc><defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="28" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">응용 4-4 정답 · 단계 2 결과</text>
 <text x="20" y="58" font-size="15" fill="#666660" font-weight="700">자동 조치</text>
 <text x="220" y="58" font-size="15" fill="#666660" font-weight="700">점수</text>
 <text x="290" y="58" font-size="15" fill="#666660" font-weight="700">등급</text>

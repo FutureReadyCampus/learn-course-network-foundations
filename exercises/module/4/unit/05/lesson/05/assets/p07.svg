@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 414" role="img">
-<title>도전 5-2에서 쓴 설정과 명령을 하려는 일 여섯 가지로 정리했다</title>
+<title>응용 5-2에서 쓴 설정과 명령을 하려는 일 여섯 가지로 정리했다</title>
 <desc>접속 범위 정하기, 다른 컴포즈 파일 적용, PORTS 읽기, 로그 연결, grep 으로 세고 저장하기, 모두 끄기를 명령과 짝지은 요점 지도다.</desc>
 <defs><marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">도전 5-2 정리</text>
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">응용 5-2 정리</text>
 <text x="117" y="64" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">하려는 일</text>
 <text x="478" y="64" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">명령 · 설정</text>
 <rect x="12" y="78" width="210" height="41.75" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>

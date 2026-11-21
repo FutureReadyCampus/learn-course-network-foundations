@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>도전 4-3에서 쓴 판다스 문법과 리스트 문법 여덟 가지</title>
+<title>응용 4-3에서 쓴 판다스 문법과 리스트 문법 여덟 가지</title>
 <desc>두 열 빼기, value_counts, 조건으로 행 남기기, 그룹별 평균, 두 열 비교 필터링, not in, append, 함수 결과 저장을 하려는 일과 코드로 짝지었습니다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker><marker id="a-p04r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e0442e"/></marker><marker id="a-p04g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1f7a4a"/></marker><marker id="a-p04b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2f6fd0"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">도전 4-3 정리: 하려는 일 → 코드</tspan></text>
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929" font-weight="bold"><tspan x="20">응용 4-3 정리: 하려는 일 → 코드</tspan></text>
 <rect x="20" y="52" width="335" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="32" y="83.0" font-size="15" text-anchor="start" fill="#292929"><tspan x="32" font-weight="bold">두 열을 빼서 새 열 만들기</tspan><tspan x="32" dy="19.6" font-size="14">acked_at - created_at → ack_minutes</tspan></text>
 <rect x="365" y="52" width="335" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>

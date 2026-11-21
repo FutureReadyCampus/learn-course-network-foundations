@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img"><title>도전 5-1 흐름: 기록 점검 → 알림 → 엔진 실행 → 운영 요약</title><desc>split_records 가 find_schema_problem 으로 기록을 점검하고, 문제가 없으면 make_alert 로 알림을 만듭니다. challenge5-1_run.py 는 엔진을 실행하고 summarize 로 운영 요약을 만듭니다. 시험 기록 hana 는 grade 키가 없고 minsu 는 critical 등급이라 거절됩니다.</desc><defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="360" y="28" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">도전 5-1 · 직접 쓰는 아홉 군데</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img"><title>응용 5-1 흐름: 기록 점검 → 알림 → 엔진 실행 → 운영 요약</title><desc>split_records 가 find_schema_problem 으로 기록을 점검하고, 문제가 없으면 make_alert 로 알림을 만듭니다. apply5-1_run.py 는 엔진을 실행하고 summarize 로 운영 요약을 만듭니다. 시험 기록 hana 는 grade 키가 없고 minsu 는 critical 등급이라 거절됩니다.</desc><defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="28" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">응용 5-1 · 직접 쓰는 아홉 군데</text>
 <rect x="20" y="50" width="160" height="92" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="100.0" y="79" font-size="15" fill="#292929" text-anchor="middle">split_records</text>
 <text x="100.0" y="101" font-size="15" fill="#292929" text-anchor="middle">점검 (5번)</text>
@@ -19,7 +19,7 @@
 <line x1="182" y1="96" x2="196" y2="96" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
 <line x1="362" y1="96" x2="376" y2="96" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
 <rect x="20" y="170" width="680" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360.0" y="200" font-size="15" fill="#292929" text-anchor="middle">challenge5-1_run.py : 엔진 실행 (9번)</text>
+<text x="360.0" y="200" font-size="15" fill="#292929" text-anchor="middle">apply5-1_run.py : 엔진 실행 (9번)</text>
 <text x="20" y="258" font-size="16" fill="#292929" font-weight="700">단계 2 · 일부러 틀린 기록</text>
 <rect x="20" y="270" width="330" height="56" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
 <text x="185.0" y="303" font-size="15" fill="#292929" text-anchor="middle">hana · grade 키 없음 → 거절</text>

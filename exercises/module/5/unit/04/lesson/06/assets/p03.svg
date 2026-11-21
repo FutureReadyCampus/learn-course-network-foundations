@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 370" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>도전 4-2: 티켓에서 확인까지 걸린 시간을 모아 평균 확인 시간을 구합니다</title>
+<title>응용 4-2: 티켓에서 확인까지 걸린 시간을 모아 평균 확인 시간을 구합니다</title>
 <desc>티켓 리스트에서 확인한 티켓만 골라 확인 시각에서 만든 시각을 뺀 시간 리스트를 만들고, average 함수로 합계를 개수로 나누어 평균 확인 시간(MTTA)을 구하는 흐름입니다. 아직 확인하지 않은 티켓은 리스트에서 뺍니다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
-<text x="30" y="32" font-size="19" font-weight="700" fill="#292929">도전 4-2: 확인 시간을 모아 평균 내기</text>
+<text x="30" y="32" font-size="19" font-weight="700" fill="#292929">응용 4-2: 확인 시간을 모아 평균 내기</text>
 <g stroke-width="1.5">
 <rect x="30" y="60" width="190" height="86" rx="10" fill="#f1f1ef" stroke="#dededb"/>
 <rect x="250" y="60" width="220" height="86" rx="10" fill="#e6eefb" stroke="#2f6fd0"/>

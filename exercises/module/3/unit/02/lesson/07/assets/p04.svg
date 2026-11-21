@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
-<title>도전 2-2 데이터: 요청서 여섯 장의 접수 시각과 4시간 기준선(10:00)</title>
+<title>응용 2-2 데이터: 요청서 여섯 장의 접수 시각과 4시간 기준선(10:00)</title>
 <desc>지금 14:00 기준으로 요청서마다 접수부터 지금까지 걸린 시간을 막대로 그렸습니다. 10:00 선은 14:00 에서 4시간을 뺀 시각입니다. 4번 junho 는 이미 승인되어 기한을 따지지 않습니다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">

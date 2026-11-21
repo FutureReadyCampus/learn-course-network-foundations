@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
-<title>도전 2-2 의 할 일을 각각 한 줄 코드와 짝지은 요점 지도</title>
+<title>응용 2-2 의 할 일을 각각 한 줄 코드와 짝지은 요점 지도</title>
 <desc>왼쪽은 하려는 일, 오른쪽은 그 일을 하는 코드다. 재시도 함수의 결과와 오류 문장을 저장하고, startswith 로 실패 기록을 골라 목록에 추가한다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 2-2 정리: 하려는 일과 코드</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">응용 2-2 정리: 하려는 일과 코드</text>
 <rect x="20" y="56" width="160" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="100" y="80.35" font-size="15" fill="#292929" text-anchor="middle">함수 결과 담기</text>
 <polyline points="182,76 208,76" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>

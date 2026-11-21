@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
-<title>도전 2-3 실행: 접수 → 처리 → 점검 → 저장 순서로 세 단계가 출력된다</title>
+<title>응용 2-3 실행: 접수 → 처리 → 점검 → 저장 순서로 세 단계가 출력된다</title>
 <desc>INBOX 여섯 건을 접수한 뒤 단계 1에서 승인·반려·부여를 하고, 단계 2에서 상태별 건수와 SLA 초과 요청을 봅니다. 단계 3에서 requests.json 에 저장한 뒤 다시 읽어 확인합니다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">challenge2-3_run.py 의 흐름</text>
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">apply2-3_run.py 의 흐름</text>
 <rect x="20" y="52" width="250" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="145" y="76.128" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">INBOX 여섯 건 접수</text>
 <text x="145" y="96.512" font-size="14" fill="#292929" text-anchor="middle">create_request</text>

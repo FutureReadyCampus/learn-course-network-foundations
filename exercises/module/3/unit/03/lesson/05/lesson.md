@@ -1,6 +1,6 @@
 ---
 id: m3-u03-l05
-title: 도전 3-1 · 규칙으로 필요 없어진 권한 찾기
+title: 응용 3-1 · 규칙으로 필요 없어진 권한 찾기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,11 +9,11 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 도전 3-1 · 규칙으로 필요 없어진 권한 찾기
+# 응용 3-1 · 규칙으로 필요 없어진 권한 찾기
 
 ## 목표: 퇴사·만료 권한 걸러 내기
 
-> 선택입니다. 시간이 남을 때 합니다. 「제공 파일」로 받은 `review_rules.py` 를 이번에는 직접 써 봅니다.
+> 여유가 되면 해 보세요. 「제공 파일」로 받은 `review_rules.py` 를 이번에는 직접 써 봅니다.
 
 > **이번 실습에 들어온 일**
 >
@@ -43,7 +43,7 @@ source:
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="find_stale 은 권한마다 퇴사와 만료 예외를 차례로 묻고, 걸린 권한에 이유를 적어 모은다"></figure>
 
-## 도전 3-1 · 퇴사 계정과 만료 예외 찾기
+## 응용 3-1 · 퇴사 계정과 만료 예외 찾기
 
 **이런 상황이 있습니다**
 
@@ -54,7 +54,7 @@ source:
 
 **할 일**
 
-1. 「제공 파일」로 만든 `review_rules.py` 의 내용을 모두 지우고 아래 골격으로 바꾼 뒤, `find_stale` 본문을 직접 씁니다. `challenge3-1_run.py` 는 새로 만듭니다.
+1. 「제공 파일」로 만든 `review_rules.py` 의 내용을 모두 지우고 아래 골격으로 바꾼 뒤, `find_stale` 본문을 직접 씁니다. `apply3-1_run.py` 는 새로 만듭니다.
 2. 실행해서 <mark>규칙에 걸린 권한</mark>(단계 1: 판정)과 <mark>이유별 건수</mark>(단계 2: 점검)를 읽습니다.
 
 **`review_rules.py`**
@@ -99,7 +99,7 @@ def find_stale(access_list, now):                                # 현황 리스
 - 순서는 「`expires` 가 `None` 이 아니다(6번) → 그러면 시각으로 바꾸고(7번) → 지금과 비교한다(8번)」입니다. `None` 일 때는 `strptime` 이 오류를 내므로, 6번 안쪽에서만 시각으로 바꿉니다.
 - 채우기 전에 실행하면 `TypeError: object of type 'NoneType' has no len()` 오류가 납니다. `find_stale` 이 아무것도 리턴하지 않기 때문입니다.
 
-**`challenge3-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 3-1의 `build_access_list` 로 현황을 만든 뒤 `find_stale` 로 규칙에 걸린 권한을 찾아 출력합니다.
+**`apply3-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 3-1의 `build_access_list` 로 현황을 만든 뒤 `find_stale` 로 규칙에 걸린 권한을 찾아 출력합니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
@@ -126,22 +126,22 @@ print(counts)                                                    # 이유별 건
 
 **순서**
 
-1. **[VS Code]** `review_rules.py` 를 열어 내용을 모두 지우고(`Ctrl + A` 뒤 `Delete`, 맥북은 `Cmd + A`) 위 골격을 붙여 넣고 저장합니다. 이어서 `access_control` 폴더를 선택하고 **새 파일** 아이콘으로 `challenge3-1_run.py` 를 만들어 붙여 넣고 저장합니다.
+1. **[VS Code]** `review_rules.py` 를 열어 내용을 모두 지우고(`Ctrl + A` 뒤 `Delete`, 맥북은 `Cmd + A`) 위 골격을 붙여 넣고 저장합니다. 이어서 `access_control` 폴더를 선택하고 **새 파일** 아이콘으로 `apply3-1_run.py` 를 만들어 붙여 넣고 저장합니다.
 2. **[VS Code]** `review_rules.py` 의 `find_stale` 본문을 직접 씁니다. 2.1 의 표와 그림을 보고 씁니다.
 3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 이어서 실행합니다.
    ```bash
    pwd
-   python challenge3-1_run.py
+   python apply3-1_run.py
    ```
-   - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `challenge3-1_run.py` 실행할 파일
-   - 맥북은 `python3 challenge3-1_run.py` 로 칩니다.
+   - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `apply3-1_run.py` 실행할 파일
+   - 맥북은 `python3 apply3-1_run.py` 로 칩니다.
 4. 출력은 두 단계입니다. 단계 1은 `규칙에 걸린 권한 N 건` 한 줄과 걸린 권한, 단계 2는 이유별 건수 딕셔너리 한 줄입니다.
-5. **[보고서]** `report_u3.md` 의 `## 도전 3-1` 아래를 채웁니다.
+5. **[보고서]** `report_u3.md` 의 `## 응용 3-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 규칙에 걸린 권한이 이유별로 몇 건인지 적어 주세요.
    - (나) [핵심 질문] 퇴사한 계정과 만료된 예외는 파일에 적힌 사실로 걸러 냈습니다. 이 규칙으로는 걸러 낼 수 없지만 필요 없을 수 있는 권한의 예를 하나 들고, 그것을 찾으려면 어떤 정보가 더 필요한지 적어 주세요.
    - (다) [핵심 질문] 규칙에 걸린 7건을 회수한다면(회수는 다음 Unit 4 권한 거두기에서 합니다) 어떤 것부터 회수할까요? 출력의 이유(퇴사한 계정 · 만료된 예외)를 보고 기준을 하나 정해, 그 기준으로 이유를 적어 주세요.
 
-## 도전 3-1 정리
+## 응용 3-1 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|

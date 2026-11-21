@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
 <title>40분 글쓰기: 글감 하나 고르고, 쓰고, 점검해 올리기</title>
-<desc>위는 고르기 5분, 쓰기 25분, 점검 · 올리기 10분의 순서입니다. 아래 왼쪽은 실습 4-1 · 4-2 글감 네 가지, 오른쪽은 도전을 했을 때 고를 수 있는 선택 글감입니다.</desc>
+<desc>위는 고르기 5분, 쓰기 25분, 점검 · 올리기 10분의 순서입니다. 아래 왼쪽은 실습 4-1 · 4-2 글감 네 가지, 오른쪽은 응용을 했을 때 고를 수 있는 선택 글감입니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">오늘 쓸 글 고르기 (40분)</tspan></text>
@@ -21,13 +21,13 @@
 <text x="32" y="296.9" font-size="14" text-anchor="start" fill="#292929"><tspan x="32" font-weight="bold">3. 롤백만 하면 놓치는 것</tspan><tspan x="32" dy="20">영향 확인 · 복구 확인 · 규칙 조정</tspan></text>
 <rect x="20" y="338" width="420" height="52" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="32" y="358.9" font-size="14" text-anchor="start" fill="#292929"><tspan x="32" font-weight="bold">4. 되돌릴 수 없는 조치</tspan><tspan x="32" dy="20">jiwoo 의 세션 종료</tspan></text>
-<text x="470" y="140" font-size="15" text-anchor="start" fill="#292929"><tspan x="470" font-weight="bold">선택 글감 (도전을 했다면)</tspan></text>
+<text x="470" y="140" font-size="15" text-anchor="start" fill="#292929"><tspan x="470" font-weight="bold">선택 글감 (응용을 했다면)</tspan></text>
 <rect x="470" y="152" width="230" height="52" rx="8" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="482" y="172.9" font-size="14" text-anchor="start" fill="#292929"><tspan x="482" font-weight="bold">도전 4-1</tspan><tspan x="482" dy="20">상태가 바뀐 티켓</tspan></text>
+<text x="482" y="172.9" font-size="14" text-anchor="start" fill="#292929"><tspan x="482" font-weight="bold">응용 4-1</tspan><tspan x="482" dy="20">상태가 바뀐 티켓</tspan></text>
 <rect x="470" y="214" width="230" height="52" rx="8" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="482" y="234.9" font-size="14" text-anchor="start" fill="#292929"><tspan x="482" font-weight="bold">도전 4-3</tspan><tspan x="482" dy="20">low 등급이 빠진 이유</tspan></text>
+<text x="482" y="234.9" font-size="14" text-anchor="start" fill="#292929"><tspan x="482" font-weight="bold">응용 4-3</tspan><tspan x="482" dy="20">low 등급이 빠진 이유</tspan></text>
 <rect x="470" y="276" width="230" height="52" rx="8" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="482" y="296.9" font-size="14" text-anchor="start" fill="#292929"><tspan x="482" font-weight="bold">도전 4-4</tspan><tspan x="482" dy="20">세션 종료만 통제 갭</tspan></text>
+<text x="482" y="296.9" font-size="14" text-anchor="start" fill="#292929"><tspan x="482" font-weight="bold">응용 4-4</tspan><tspan x="482" dy="20">세션 종료만 통제 갭</tspan></text>
 <rect x="470" y="338" width="230" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="585.0" y="358.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="585.0">세 문장도 한 편</tspan><tspan x="585.0" dy="20">막힌 이야기도 좋은 글</tspan></text>
 </g>

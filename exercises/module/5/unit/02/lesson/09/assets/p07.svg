@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 329" role="img">
-<title>도전 2-3 보고서: 차단된 IP 와 이유, 공유 IP 의 영향, 자동 해제의 근거</title>
-<desc>도전 2-3 보고서에 채울 칸입니다. (가)는 출력과 차단 여부, (나)는 ip_users.json 을 근거로 공유 IP 를 차단하지 않은 이유, (다)는 만료 시각과 시계를 근거로 자동 해제된 이유를 씁니다.</desc>
+<title>응용 2-3 보고서: 차단된 IP 와 이유, 공유 IP 의 영향, 자동 해제의 근거</title>
+<desc>응용 2-3 보고서에 채울 칸입니다. (가)는 출력과 차단 여부, (나)는 ip_users.json 을 근거로 공유 IP 를 차단하지 않은 이유, (다)는 만료 시각과 시계를 근거로 자동 해제된 이유를 씁니다.</desc>
 <defs><marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">도전 2-3 보고서에 채울 칸</text>
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">응용 2-3 보고서에 채울 칸</text>
 <rect x="24" y="60" width="130" height="85" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="89.0" y="107.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(가)</tspan></text>
 <rect x="166" y="60" width="530" height="85" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>

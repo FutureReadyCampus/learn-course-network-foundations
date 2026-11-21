@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img"><title>Module 4 탐지 결과 5건을 점검해 알림으로 바꾸고 엔진 결과를 요약한다</title><desc>unit05_risk_scores.json 의 5건을 모양 점검한 뒤 INC-501 ~ INC-505 알림으로 바꿔 엔진에 넣습니다. 거절 0건, 자동 실행 2건, 조치 없음 3건, 티켓 5장이고 운영 요약은 engine_summary.json 에 저장됩니다.</desc><defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">도전 5-1 · 무엇을 만드나</text>
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">응용 5-1 · 무엇을 만드나</text>
 <rect x="20" y="55" width="150" height="130" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="95.0" y="93" font-size="16" fill="#666660" text-anchor="middle" font-weight="700">Module 4</text>
 <text x="95.0" y="116" font-size="15" fill="#292929" text-anchor="middle">unit05_risk</text>

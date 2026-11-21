@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img">
-<title>도전 3-1: 현황 14건과 지금 시각을 받아 규칙에 걸린 권한에 이유를 붙인다</title>
+<title>응용 3-1: 현황 14건과 지금 시각을 받아 규칙에 걸린 권한에 이유를 붙인다</title>
 <desc>find_stale 은 현황 리스트 14건과 지금 시각 2026-10-29 10:00 을 받습니다. 퇴사했거나 만료된 권한을 골라 복사본에 reason 을 적어 리스트로 돌려줍니다. 원래 현황은 바꾸지 않습니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">도전 3-1 · 무엇을 만드나</text>
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">응용 3-1 · 무엇을 만드나</text>
 <rect x="20" y="64" width="210" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="125" y="89.128" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">현황 리스트</text>
 <text x="125" y="109.512" font-size="14" fill="#666660" text-anchor="middle">실습 3-1 · 열네 건</text>

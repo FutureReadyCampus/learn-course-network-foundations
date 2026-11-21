@@ -1,6 +1,6 @@
 ---
 id: m3-u03-l07
-title: 도전 3-3 · 회수 제외 권한 가려내기
+title: 응용 3-3 · 회수 제외 권한 가려내기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,11 +9,11 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 도전 3-3 · 회수 제외 권한 가려내기
+# 응용 3-3 · 회수 제외 권한 가려내기
 
 ## 목표: 회수 제외 리스트
 
-> 선택입니다. 시간이 남을 때 합니다. 「제공 파일」로 받은 `report_exclude.py` 를 이번에는 직접 써 봅니다.
+> 여유가 되면 해 보세요. 「제공 파일」로 받은 `report_exclude.py` 를 이번에는 직접 써 봅니다.
 
 > **이번 실습에 들어온 일**
 >
@@ -72,7 +72,7 @@ source:
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="split_by_exclude 는 후보마다 can_exclude 로 물어 excluded 와 to_revoke 로 나눈다"></figure>
 
-## 도전 3-3 · 회수 대상과 회수 제외 나누기
+## 응용 3-3 · 회수 대상과 회수 제외 나누기
 
 **이런 상황이 있습니다**
 
@@ -85,7 +85,7 @@ source:
 
 **할 일**
 
-1. `config/exclude_list.json` 은 「제공 파일」에서 이미 만들었으니 그대로 둡니다. 「제공 파일」로 만든 `report_exclude.py` 의 내용을 모두 지우고 아래 골격으로 바꾼 뒤, `challenge3-3_run.py` 를 새로 만듭니다. 그다음 `exclude_key` · `load_exclude_map` · `can_exclude` · `split_by_exclude` 에서 직접 쓰는 곳 네 군데를 씁니다.
+1. `config/exclude_list.json` 은 「제공 파일」에서 이미 만들었으니 그대로 둡니다. 「제공 파일」로 만든 `report_exclude.py` 의 내용을 모두 지우고 아래 골격으로 바꾼 뒤, `apply3-3_run.py` 를 새로 만듭니다. 그다음 `exclude_key` · `load_exclude_map` · `can_exclude` · `split_by_exclude` 에서 직접 쓰는 곳 네 군데를 씁니다.
 2. 실행해서 <mark>분류 건수</mark>(단계 1: 분류), <mark>회수 제외한 후보</mark>(단계 2: 제외), <mark>회수 대상으로 남은 후보</mark>(단계 3: 확인)를 읽습니다.
 
 **`config/exclude_list.json`** — 「제공 파일」에서 만든 회수 제외 리스트입니다. 다시 만들지 않고, 내 파일이 아래와 같은지만 봅니다. 없으면 「제공 파일」 레슨에서 만듭니다.
@@ -176,7 +176,7 @@ def split_by_exclude(findings, exclude_map):                     # 후보 리스
 
 - 채우기 전에 실행하면 회수 대상도 회수 제외도 `0 건` 으로 나옵니다. `split_by_exclude` 의 7 ~ 12번을 아직 쓰지 않아 후보가 어느 리스트에도 들어가지 않기 때문입니다.
 
-**`challenge3-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `overprivilege.py` 의 `generate_report` 로 리포트를 만든 뒤, 회수 제외 리스트를 읽어 후보를 나누고 세 단계로 출력합니다.
+**`apply3-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `overprivilege.py` 의 `generate_report` 로 리포트를 만든 뒤, 회수 제외 리스트를 읽어 후보를 나누고 세 단계로 출력합니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
@@ -214,22 +214,22 @@ for item in to_revoke:                                           # 회수 대상
 
 **순서**
 
-1. **[VS Code]** `report_exclude.py` 를 열어 내용을 모두 지우고 위 골격을 붙여 넣고 저장합니다. 이어서 `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘으로 `challenge3-3_run.py` 를 만들어 붙여 넣고 저장합니다.
+1. **[VS Code]** `report_exclude.py` 를 열어 내용을 모두 지우고 위 골격을 붙여 넣고 저장합니다. 이어서 `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘으로 `apply3-3_run.py` 를 만들어 붙여 넣고 저장합니다.
 2. **[터미널]** `ls config` 로 `exclude_list.json` 이 `access_log.json` 과 같은 `config` 폴더에 있는지 보고, `python -m json.tool config/exclude_list.json`(맥북은 `python3`)로 내용이 정상인지 확인합니다.
    - 깨진 채 두면 제외 리스트를 읽지 못해 아무것도 제외되지 않습니다.
 3. **[VS Code]** `report_exclude.py` 에서 직접 쓰는 곳 네 군데(`exclude_key` · `load_exclude_map` · `can_exclude` · `split_by_exclude`)를 씁니다. 2.1 의 표와 그림을 보고 씁니다.
 4. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python challenge3-3_run.py
+   python apply3-3_run.py
    ```
 5. 출력은 세 단계입니다. 단계 1은 분류 건수 한 줄, 단계 2는 회수 제외한 후보와 이유, 단계 3은 제외 리스트에 있지만 회수 대상으로 남은 후보입니다.
-6. **[보고서]** `report_u3.md` 의 `## 도전 3-3` 아래를 채웁니다.
+6. **[보고서]** `report_u3.md` 의 `## 응용 3-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 회수 대상과 회수 제외가 각각 몇 건인지, 회수 제외된 후보와 제외한 이유를 적어 주세요.
    - (나) [핵심 질문] 단계 3 출력을 보면 다미의 `SALES:QUERY` 는 제외 리스트에 있는데 회수 대상으로 남았습니다. 왜 제외하지 않게 만들었을까요? 제외했다면 어떤 위험이 있을지도 적어 주세요.
    - (다) [핵심 질문] 제외 리스트에는 제외하는 기간을 적는 키가 없습니다. 한 번 적은 권한을 아무도 다시 확인하지 않으면 어떤 문제가 생길까요? 리스트에 권한을 추가할 때 누가 확인하면 좋을까요?
 
-## 도전 3-3 정리
+## 응용 3-3 정리
 
 | 하려는 일 | 코드 · 말 | 쓰는 곳 |
 |---|---|---|
@@ -243,7 +243,7 @@ for item in to_revoke:                                           # 회수 대상
 | 제외된 후보 담기 | `excluded.append(excluded_entry)` | `split_by_exclude` |
 | 둘로 나눠 리턴 | `return to_revoke, excluded` | `split_by_exclude` |
 
-- 도전을 마쳤으면 실습 3-2 끝의 「이번 Unit 마무리」 3번으로 바뀐 파일을 다시 올립니다.
+- 응용을 마쳤으면 실습 3-2 끝의 「이번 Unit 마무리」 3번으로 바뀐 파일을 다시 올립니다.
 
 ---
 

@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
-<title>도전 4-3 정리: concat 으로 합치고, dropna · isin · ~ 로 놓친 문제를 고릅니다</title>
+<title>응용 4-3 정리: concat 으로 합치고, dropna · isin · ~ 로 놓친 문제를 고릅니다</title>
 <desc>pd.concat 에는 두 표를 대괄호 리스트로 전달합니다. problem 열의 빈 값을 dropna 로 지워 문제 번호만 남기고, problems 의 id 가 그 안에 있는지 isin 으로 구한 뒤 ~ 로 뒤집어 놓친 문제를 고릅니다. 숫자는 str() 로 바꿔 문장에 이어 붙입니다.</desc>
 <defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 4-3 정리</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">응용 4-3 정리</text>
 <rect x="20" y="56" width="680" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="360.0" y="87.0" font-size="14" fill="#292929" text-anchor="middle">pd.concat([alerts, login_alerts])  →  all_alerts</text>
 <rect x="20" y="140" width="190" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>

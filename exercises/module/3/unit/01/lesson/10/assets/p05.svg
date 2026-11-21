@@ -3,7 +3,7 @@
 <desc>두 테스트 파일의 실행 흐름입니다. test_policy.py 는 2~4번을 직접 써서 「테스트 4개 모두 통과」를 확인하고, test_policy_extra.py 는 5 통과 뒤 6번에서 멈춥니다. 코드는 고치지 않고 어느 쪽이 다른지만 판단합니다.</desc>
 <defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
-<text x="24" y="34" font-size="19" font-weight="700">도전 1-5 · 테스트 실행과 판단</text>
+<text x="24" y="34" font-size="19" font-weight="700">응용 1-5 · 테스트 실행과 판단</text>
 <rect x="24" y="56" width="200" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="124" y="83.2" font-size="15" text-anchor="middle" font-weight="700">test_policy.py</text>
 <text x="124" y="102.8" font-size="14" text-anchor="middle">1번 예시 + 2~4번 직접</text>

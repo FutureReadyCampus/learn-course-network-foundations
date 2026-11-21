@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img">
-<title>도전 5-3 정답: 이벤트 57 → 규칙 8 → 기록 5 → 요약 3 → 보고서</title>
+<title>응용 5-3 정답: 이벤트 57 → 규칙 8 → 기록 5 → 요약 3 → 보고서</title>
 <desc>이벤트 57개에서 탐지된 규칙 8건, 점수 기록 5건, 요약 3건(실패 0건)이 나오고 보고서에 저장됩니다. 로그 종류마다 web 28 · server 15 · saas 14 입니다. 429 로 요약이 모두 실패해도 보고서와 확인할 순서는 그대로 나옵니다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 5-3 정답</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">응용 5-3 정답</text>
 <rect x="20" y="50" width="120" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="80" y="76.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">이벤트</text>
 <text x="80" y="96.8" font-size="14" fill="#292929" text-anchor="middle">57개</text>

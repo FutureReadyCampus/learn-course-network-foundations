@@ -32,6 +32,6 @@
 <text x="580.0" y="379.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="580.0" font-size="14">incident_report_20261112.md</tspan></text>
 <line x1="580" y1="322" x2="580" y2="348" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
 <rect x="20" y="356" width="410" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="225.0" y="382.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="225.0" font-size="14">challenge4-3_run.py · 9번: table 만들기, 파일 쓰기</tspan></text>
+<text x="225.0" y="382.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="225.0" font-size="14">apply4-3_run.py · 9번: table 만들기, 파일 쓰기</tspan></text>
 </g>
 </svg>

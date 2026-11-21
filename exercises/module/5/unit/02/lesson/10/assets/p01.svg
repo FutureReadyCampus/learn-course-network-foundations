@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 364" role="img">
 <title>글쓰기 40분은 고르기, 쓰기, 점검으로 나누고 핵심 글감 세 가지 중 하나를 고릅니다</title>
-<desc>고르기 5분, 쓰기 25분, 점검과 올리기 10분입니다. 핵심 글감은 VIP 계정을 두 곳에서 막는 이유, 잠금만으로 부족한 세션 문제, 세 조치 중 피해가 큰 것이고, 도전을 했다면 선택 글감도 있습니다.</desc>
+<desc>고르기 5분, 쓰기 25분, 점검과 올리기 10분입니다. 핵심 글감은 VIP 계정을 두 곳에서 막는 이유, 잠금만으로 부족한 세션 문제, 세 조치 중 피해가 큰 것이고, 응용을 했다면 선택 글감도 있습니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="24" y="34" font-size="19" fill="#292929" font-weight="700">오늘의 글 쓰기 40분</text>
@@ -19,6 +19,6 @@
 <rect x="480" y="150" width="216" height="96" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="588.0" y="182.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="588.0" dy="0" font-weight="700">글감 3</tspan><tspan x="588.0" dy="21">세 조치 중</tspan><tspan x="588.0" dy="21">피해가 큰 것</tspan></text>
 <rect x="24" y="270" width="672" height="64" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="360.0" y="296.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">선택 글감 (도전 2-1 · 2-2 를 했다면)</tspan><tspan x="360.0" dy="21">권한 없는 승인 INC-005 · 재시도 횟수 3번</tspan></text>
+<text x="360.0" y="296.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">선택 글감 (응용 2-1 · 2-2 를 했다면)</tspan><tspan x="360.0" dy="21">권한 없는 승인 INC-005 · 재시도 횟수 3번</tspan></text>
 </g>
 </svg>

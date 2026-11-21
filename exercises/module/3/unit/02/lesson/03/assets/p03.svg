@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <title>요청서는 키 아홉 개 딕셔너리이고, status 는 reviewing 에서 approved·rejected·granted 로 간다</title>
-<desc>왼쪽은 seoyeon 의 요청서 한 장을 키와 값으로 보여 줍니다. 오른쪽은 status 값이 실습 2-1 의 reviewing 에서 실습 2-2 의 approved 또는 rejected, 도전 2-1 의 granted 로 바뀌는 순서입니다.</desc>
+<desc>왼쪽은 seoyeon 의 요청서 한 장을 키와 값으로 보여 줍니다. 오른쪽은 status 값이 실습 2-1 의 reviewing 에서 실습 2-2 의 approved 또는 rejected, 응용 2-1 의 granted 로 바뀌는 순서입니다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">요청서 한 장과 상태(status)</text>
 <rect x="24" y="52" width="340" height="310" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>

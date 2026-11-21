@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img"><title>평가 기준 세 가지를 한 번에 점검해 점검 목록을 만드는 흐름</title><desc>리포트, 승인 게이트 시험 사례 7개, 오탐 처리 결과를 unit09_check.py 가 점검합니다. 실행 한 번으로 unit09_checklist.md 5줄이 생기고 오늘 샘플은 세 기준이 모두 통과입니다.</desc><defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">도전 4-5 · 무엇을 만드나</text>
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">응용 4-5 · 무엇을 만드나</text>
 <rect x="20" y="55" width="230" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="135.0" y="90" font-size="15" fill="#292929" text-anchor="middle">① 리포트 본문</text>
 <rect x="20" y="125" width="230" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>

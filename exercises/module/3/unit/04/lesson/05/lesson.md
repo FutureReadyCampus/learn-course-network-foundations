@@ -1,6 +1,6 @@
 ---
 id: m3-u04-l05
-title: 도전 4-1 · 회수 대상의 회수 계획 세우기
+title: 응용 4-1 · 회수 대상의 회수 계획 세우기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,11 +9,11 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 도전 4-1 · 회수 대상의 회수 계획 세우기
+# 응용 4-1 · 회수 대상의 회수 계획 세우기
 
 ## 목표: 회수 계획
 
-> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 4-1 · 4-2와 글쓰기를 먼저 마칩니다. 이 도전에서는 제공 파일로 받아 쓴 `revoke_plan.py` 를 직접 써 봅니다. 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
+> **여유가 되면 해 보세요.** 핵심 실습 4-1 · 4-2와 글쓰기를 먼저 마칩니다. 이 응용에서는 제공 파일로 받아 쓴 `revoke_plan.py` 를 직접 써 봅니다. 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
 
 > **이번 실습에 들어온 일**
 >
@@ -84,7 +84,7 @@ source:
 - **지울 대상**(`target`): 역할 이름 finance
 - **왜 이 방법인가**: junho 의 `role` 을 비우면 `finance` 의 다른 권한(`SETTLE:QUERY`)까지 모두 사라지므로, 그 권한만 뺍니다.
 
-- **참고**: Unit 1 도전 1-2의 `revoke_access` 는 `employed` 만 `False` 로 바꾸고 `role` 은 그대로 두었습니다. 이번의 역할 해제는 `role` 을 비웁니다.
+- **참고**: Unit 1 응용 1-2의 `revoke_access` 는 `employed` 만 `False` 로 바꾸고 `role` 은 그대로 두었습니다. 이번의 역할 해제는 `role` 을 비웁니다.
 
 **어떤 방법을 고르나**
 
@@ -110,7 +110,7 @@ source:
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="plan_revocation 은 회수 대상마다 회수 방법을 고르고 build_plan 으로 계획을 만든다"></figure>
 
-## 도전 4-1 · 회수 방법과 영향 범위 정하기
+## 응용 4-1 · 회수 방법과 영향 범위 정하기
 
 **이런 상황이 있습니다**
 
@@ -124,7 +124,7 @@ source:
 
 **할 일**
 
-1. 제공 파일로 받아 쓴 `revoke_plan.py` 의 내용을 아래 골격으로 바꾸고, `exception_id` · `count_users_by_role` · `build_plan` · `plan_revocation` 에서 직접 쓰는 곳 다섯 군데를 씁니다. 실행 파일 `challenge4-1_run.py` 도 만듭니다.
+1. 제공 파일로 받아 쓴 `revoke_plan.py` 의 내용을 아래 골격으로 바꾸고, `exception_id` · `count_users_by_role` · `build_plan` · `plan_revocation` 에서 직접 쓰는 곳 다섯 군데를 씁니다. 실행 파일 `apply4-1_run.py` 도 만듭니다.
 2. 실행해서 <mark>회수 방법과 영향</mark>(단계 1: 계획), <mark>방법별 건수</mark>(단계 2: 집계), <mark>역할별 사용자 수와 이름</mark>(단계 3: 확인)를 읽습니다.
 
 **`revoke_plan.py`** — 제공 파일의 내용을 지우고 아래 골격을 붙여 넣습니다.
@@ -235,7 +235,7 @@ def plan_revocation(findings, users, roles):                     # 회수 대상
 - 채우기 전에 실행하면 `NameError: name 'method' is not defined` 오류가 납니다.
   - 회수 방법(`method`)을 아직 정하지 않았는데 `build_plan` 에 전달하려 하기 때문입니다. 위의 `exception_id` · `count_users_by_role` · `build_plan` 은 채우기 전에도 오류가 나지 않습니다.
 
-**`challenge4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 회수 대상 8건을 만들고 `plan_revocation` 으로 계획을 세워 세 단계로 출력합니다.
+**`apply4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 회수 대상 8건을 만들고 `plan_revocation` 으로 계획을 세워 세 단계로 출력합니다.
 
 ```python
 from rbac import USERS, ROLES                                    # 실습 1-2의 사용자 · 역할 딕셔너리를 불러온다
@@ -269,26 +269,26 @@ for role in names_by_role:                                       # 두 역할을
 
 **순서**
 
-1. **[VS Code]** `revoke_plan.py` 를 열어 내용을 모두 지우고 위 골격을 붙여 넣습니다. 실행 파일 `challenge4-1_run.py` 도 만들어 붙여 넣습니다.
+1. **[VS Code]** `revoke_plan.py` 를 열어 내용을 모두 지우고 위 골격을 붙여 넣습니다. 실행 파일 `apply4-1_run.py` 도 만들어 붙여 넣습니다.
    - 새 파일은 `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력해 만듭니다.
    - 다 채울 때까지 실습 4-1 · 4-2의 실행 파일은 오류가 납니다. 막히면 「제공 파일」 레슨의 완성본을 다시 붙여 넣으면 됩니다.
 2. **[VS Code]** `revoke_plan.py` 에서 직접 쓰는 곳 다섯 군데(`exception_id` · `count_users_by_role` · `build_plan` · `plan_revocation`)를 씁니다. 1.1 의 카드와 표, 흐름 그림을 보고 씁니다.
 3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python challenge4-1_run.py
+   python apply4-1_run.py
    ```
 4. 출력은 세 단계입니다. 단계 1은 `회수 대상 8 건의 회수 방법` 줄과 계획 여덟 줄, 단계 2는 방법별 건수 딕셔너리 한 줄, 단계 3은 역할 두 줄(사용자 수와 이름)입니다.
 5. **[터미널]** 실습 4-2의 실행 파일을 다시 실행해, 내가 쓴 `revoke_plan.py` 로도 실습 4-2 정답과 같은 출력이 나오는지 확인합니다.
    ```bash
    python exercise4-2_run.py
    ```
-6. **[보고서]** `report_u4.md` 의 `## 도전 4-1` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
+6. **[보고서]** `report_u4.md` 의 `## 응용 4-1` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
    - (가) 실행한 출력 전체를 붙여 넣고, 회수 방법별 건수와 `finance` · `sales` 역할의 사용자 수를 적어 주세요.
    - (나) [핵심 질문] dami 의 역할 `sales` 권한 `SALES:QUERY` 를 「`sales` 역할에서 `SALES:QUERY` 권한 빼기」로 회수했다면 누가 영향을 받았을까요? 코드가 퇴사한 dami 를 「역할 해제」로 정한 이유도 적어 주세요.
    - (다) [핵심 질문] 회수 대상 8건 가운데 dami 의 권한이 3건입니다. 실제로 지우기 전에 회수 계획을 리스트로 먼저 만들어 보는 이유와, dami 3건을 처리하려고 데이터를 실제로 바꾸는 작업의 종류가 몇 가지인지(`users` 의 dami 정보를 바꾸는 일, 예외 리스트 `EXCEPTIONS` 에서 지우는 일 중 몇 가지가 필요한지) 적어 주세요.
 
-## 도전 4-1 정리
+## 응용 4-1 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|

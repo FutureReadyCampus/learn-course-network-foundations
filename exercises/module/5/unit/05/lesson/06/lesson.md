@@ -430,15 +430,15 @@ NameError: name 'results' is not defined
 
 - 자동화가 정책대로 동작했는지는 사람이 가끔 읽는 것으로 확인하지 않고, 같은 점검을 로그에 정기적으로 실행해서 확인합니다. 점검에서 FAIL 이 나오면 위반한 알림 번호로 원인을 찾고 담당자에게 알립니다. 승인 게이트를 끈 시험 운영 로그처럼 <mark>통제를 일부러 끈 기록이 운영에 섞이지 않았는지</mark>도 같은 방식으로 확인합니다. 오늘의 네 가지 점검은 예시이고, 실제 점검 내용은 고객사 정책마다 다릅니다.
 
-## 도전 5-1 정답
+## 응용 5-1 정답
 
-선택입니다. 시간이 남을 때 합니다.
+여유가 되면 해 보세요.
 
  **터미널에 입력합니다.**
 
 ```bash
 pwd
-python challenge5-1_run.py
+python apply5-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -529,7 +529,7 @@ def summarize(results):                                        # 엔진 결과 �
     return summary                                             # 요약을 리턴한다 — 미리 채운 줄
 ```
 
-`challenge5-1_run.py` 의 9번입니다.
+`apply5-1_run.py` 의 9번입니다.
 
 ```python
 # 9. run_all(alerts, context) 의 결과를 results 에 저장한다

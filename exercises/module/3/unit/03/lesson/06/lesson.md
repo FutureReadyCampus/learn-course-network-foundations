@@ -1,6 +1,6 @@
 ---
 id: m3-u03-l06
-title: 도전 3-2 · 점검 결과 한 장 리포트로 합치기
+title: 응용 3-2 · 점검 결과 한 장 리포트로 합치기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,11 +9,11 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 도전 3-2 · 점검 결과 한 장 리포트로 합치기
+# 응용 3-2 · 점검 결과 한 장 리포트로 합치기
 
 ## 목표: 과다권한 후보 리포트
 
-> 선택입니다. 시간이 남을 때 합니다. 「제공 파일」로 받은 `overprivilege.py` 를 이번에는 직접 써 봅니다.
+> 여유가 되면 해 보세요. 「제공 파일」로 받은 `overprivilege.py` 를 이번에는 직접 써 봅니다.
 
 > **이번 실습에 들어온 일**
 >
@@ -94,7 +94,7 @@ source:
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="generate_report 는 권한마다 이유를 모아 이유가 있는 권한만 후보로 담아 리포트를 만든다"></figure>
 
-## 도전 3-2 · 과다권한 후보 리포트 만들기
+## 응용 3-2 · 과다권한 후보 리포트 만들기
 
 **이런 상황이 있습니다**
 
@@ -109,7 +109,7 @@ source:
 
 **할 일**
 
-1. 「제공 파일」로 만든 `overprivilege.py` 의 내용을 모두 지우고 아래 골격으로 바꾼 뒤, `challenge3-2_run.py` 를 새로 만듭니다. 그다음 `entry_key` · `make_stale_reason` · `make_unused_keys` · `collect_reasons` · `generate_report` 에서 직접 쓰는 곳 다섯 군데를 씁니다.
+1. 「제공 파일」로 만든 `overprivilege.py` 의 내용을 모두 지우고 아래 골격으로 바꾼 뒤, `apply3-2_run.py` 를 새로 만듭니다. 그다음 `entry_key` · `make_stale_reason` · `make_unused_keys` · `collect_reasons` · `generate_report` 에서 직접 쓰는 곳 다섯 군데를 씁니다.
 2. 실행해서 <mark>리포트 요약과 후보</mark>(단계 1: 요약)와 <mark>후보가 아닌 권한</mark>(단계 2: 확인)을 읽습니다.
 
 **`overprivilege.py`**
@@ -203,7 +203,7 @@ def generate_report(access_list, stale, unused, days, generated_at):   # 현황 
 
 - 채우기 전에 실행해도 오류는 나지 않고 후보가 `0 건` 으로 나옵니다. 아직 이유를 모으지 않았기 때문입니다.
 
-**`challenge3-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 3-1 · 3-2 와 `review_rules.py` 의 함수로 현황과 규칙 결과, 안 쓴 결과를 만든 뒤 `generate_report` 로 리포트를 만들어 출력합니다. 실행 파일의 `NOW.strftime(TIME_FORMAT)` 은 `strptime` 과 반대로, 시각을 `"2026-10-29 14:00"` 같은 문자열로 바꿉니다.
+**`apply3-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 3-1 · 3-2 와 `review_rules.py` 의 함수로 현황과 규칙 결과, 안 쓴 결과를 만든 뒤 `generate_report` 로 리포트를 만들어 출력합니다. 실행 파일의 `NOW.strftime(TIME_FORMAT)` 은 `strptime` 과 반대로, 시각을 `"2026-10-29 14:00"` 같은 문자열로 바꿉니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
@@ -242,20 +242,20 @@ print(names)                                                     # 후보가 아
 
 **순서**
 
-1. **[VS Code]** `overprivilege.py` 를 열어 내용을 모두 지우고 위 골격을 붙여 넣고 저장합니다. 이어서 `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘으로 `challenge3-2_run.py` 를 만들어 붙여 넣고 저장합니다.
+1. **[VS Code]** `overprivilege.py` 를 열어 내용을 모두 지우고 위 골격을 붙여 넣고 저장합니다. 이어서 `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘으로 `apply3-2_run.py` 를 만들어 붙여 넣고 저장합니다.
 2. **[VS Code]** `overprivilege.py` 에서 직접 쓰는 곳 다섯 군데(`entry_key` · `make_stale_reason` · `make_unused_keys` · `collect_reasons` · `generate_report`)를 씁니다. 1.1 의 표와 그림을 보고 씁니다.
 3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python challenge3-2_run.py
+   python apply3-2_run.py
    ```
 4. 출력은 두 단계입니다. 단계 1은 요약 한 줄과 후보 한 줄씩, 단계 2는 후보가 아닌 권한 리스트 한 줄입니다.
-5. **[보고서]** `report_u3.md` 의 `## 도전 3-2` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
+5. **[보고서]** `report_u3.md` 의 `## 응용 3-2` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
    - (가) 실행한 출력 전체를 붙여 넣고, 후보가 모두 몇 건인지, 이유가 둘인 후보가 몇 건인지, 후보가 아닌 권한은 무엇인지 적어 주세요.
    - (나) [핵심 질문] 출력에서 이유가 둘인 후보를 하나 고르고, 이유가 둘이라는 것이 담당자가 처리 순서를 정할 때 어떤 도움이 되는지 적어 주세요. 이유를 문자열 하나가 아니라 리스트(`reasons`)로 담으면 어떤 점이 좋은지도 적어 주세요.
    - (다) [핵심 질문] 프로그램이 만든 리포트에는 후보만 담고, 후보가 아닌 권한은 전체 건수(`total`)로만 남겼습니다. 후보가 아닌 권한까지 모두 담는 방법과 비교해 담당자 입장에서 어느 쪽이 나은지 이유와 함께 적어 주세요.
 
-## 도전 3-2 정리
+## 응용 3-2 정리
 
 | 하려는 일 | 코드 · 말 | 쓰는 곳 |
 |---|---|---|

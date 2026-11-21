@@ -1,6 +1,6 @@
 ---
 id: m4-u04-l05
-title: 도전 4-1 · 로그를 한 사용자로 연결하기
+title: 응용 4-1 · 로그를 한 사용자로 연결하기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,11 +9,11 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 도전 4-1 · 로그를 한 사용자로 연결하기
+# 응용 4-1 · 로그를 한 사용자로 연결하기
 
 ## 목표: 한 사용자 기준 사건 연결
 
-> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 4-1 · 4-2와 글쓰기를 먼저 마칩니다. 이 도전에서는 제공 파일로 받아 쓴 `correlation.py` 를 직접 써 봅니다. 아래 골격을 붙여 넣으면 제공 파일이 덮어써져 다 채울 때까지 실습 4-1이 동작하지 않으니, 다 쓴 뒤 `exercise4-1_run.py` 를 다시 실행해 결과가 같은지 확인합니다. 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
+> **여유가 되면 해 보세요.** 핵심 실습 4-1 · 4-2와 글쓰기를 먼저 마칩니다. 이 응용에서는 제공 파일로 받아 쓴 `correlation.py` 를 직접 써 봅니다. 아래 골격을 붙여 넣으면 제공 파일이 덮어써져 다 채울 때까지 실습 4-1이 동작하지 않으니, 다 쓴 뒤 `exercise4-1_run.py` 를 다시 실행해 결과가 같은지 확인합니다. 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
 
 > **이번 실습에 들어온 일**
 >
@@ -233,7 +233,7 @@ print(sorted_df)                              # 정렬한 표를 출력한다
 
 - `find_chains` 에서 연결 조건을 확인하는 `if` 줄은 미리 채웠습니다.
 
-## 도전 4-1 · 로그를 한 사용자로 연결하기
+## 응용 4-1 · 로그를 한 사용자로 연결하기
 
 **이런 상황이 있습니다**
 
@@ -247,7 +247,7 @@ print(sorted_df)                              # 정렬한 표를 출력한다
 
 **할 일**
 
-1. `correlation.py` · `challenge4-1_run.py` 두 파일을 만들고, `correlation.py` 의 세 함수에서 직접 쓰는 곳을 씁니다.
+1. `correlation.py` · `apply4-1_run.py` 두 파일을 만들고, `correlation.py` 의 세 함수에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>사용자를 알 수 있는 웹 이벤트 수</mark>(단계 1), <mark>합친 이벤트 수와 한 사용자의 흐름</mark>(단계 2), <mark>연결된 사건</mark>(단계 3), <mark>연결되지 않은 사용자</mark>(단계 4)를 읽습니다.
 
 **`correlation.py`**
@@ -352,7 +352,7 @@ def find_chains_in_events(events):                     # 이벤트 표를 받는
 - 4번의 완성 모양은 `서로 다른 로그 2종류 · 30분 안` 입니다(숫자는 사용자마다 다릅니다). <mark>공백 하나까지 같아야 출력이 같습니다.</mark>
 - 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다. `if` 안쪽의 4 · 5번이 비어 있기 때문입니다.
 
-**`challenge4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
+**`apply4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
 
 ```python
 from access_detection import load_events, pick_server_failures, EVENTS_PATH  # 실습 3-2 함수를 불러온다
@@ -396,21 +396,21 @@ for item in not_chained:                               # 연결되지 않은 사
 
 **순서**
 
-1. **[VS Code]** 파일 `correlation.py` · `challenge4-1_run.py` 를 `anomaly_detection` 폴더에 만들어 위 코드를 붙여 넣습니다. `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 만듭니다.
-2. **[VS Code]** `correlation.py` 에서 <mark>직접 쓰는 곳 다섯 군데를 씁니다</mark>. 1.1 의 문법 상자를 보고 쓰고, 막히면 아래 「도전 4-1 정리」를 봅니다.
+1. **[VS Code]** 파일 `correlation.py` · `apply4-1_run.py` 를 `anomaly_detection` 폴더에 만들어 위 코드를 붙여 넣습니다. `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 만듭니다.
+2. **[VS Code]** `correlation.py` 에서 <mark>직접 쓰는 곳 다섯 군데를 씁니다</mark>. 1.1 의 문법 상자를 보고 쓰고, 막히면 아래 「응용 4-1 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python challenge4-1_run.py
+   python apply4-1_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python challenge4-1_run.py` 파이썬으로 실행 파일 실행
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python apply4-1_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **네 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 숫자가 제목 줄에 함께 나오므로 그 아래 줄이 없고, 단계 2는 제목 아래 6줄(`gaeun 의 이벤트 …` 안내 줄 1줄과 gaeun 의 이벤트 5줄), 단계 3은 1줄, 단계 4는 제목 아래 1줄입니다.
-5. **[보고서]** `report_u4.md` 의 `## 도전 4-1` 아래를 채웁니다.
+5. **[보고서]** `report_u4.md` 의 `## 응용 4-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 연결된 사건의 사용자와 이유를 적어 주세요.
    - (나) [핵심 질문] 단계 2에 나온 gaeun 의 이벤트 5개는 어느 로그(`source`)에서 왔고, 왜 한 사건으로 연결됐나요? 이 사건만으로 공격이라고 확정할 수 있는지도 적어 주세요.
    - (다) [핵심 질문] seoyeon 은 서로 다른 로그에 나오지만 연결되지 않았습니다. 단계 4 의 두 숫자(로그 종류 수와 처음부터 마지막까지의 분)로 두 조건을 비교해 연결되지 않은 이유를 설명하고, 하나의 사건으로 연결하지 않아서 탐지하지 못할 수 있는 것을 실습 4-1 출력의 seoyeon 이유(규칙)와 연결해 적어 주세요.
 
-## 도전 4-1 정리
+## 응용 4-1 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|

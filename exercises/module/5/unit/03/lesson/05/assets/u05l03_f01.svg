@@ -28,14 +28,14 @@
 </g>
 <rect x="20" y="20" width="80" height="56" rx="8" fill="#f8e8e3" stroke="#e0442e"/><text x="60" y="53" font-weight="700">알림</text>
 <rect x="125" y="20" width="200" height="56" rx="8" fill="#f1f1ef" stroke="#dededb"/><text x="225" y="43" font-weight="700">맥락 붙이기</text><text x="225" y="65" font-size="14" fill="#666660">Unit 1의 실습 1-3</text>
-<rect x="350" y="20" width="200" height="56" rx="8" fill="#f1f1ef" stroke="#dededb"/><text x="450" y="43" font-weight="700">경로 정하기</text><text x="450" y="65" font-size="14" fill="#666660">Unit 1의 도전 1-1</text>
+<rect x="350" y="20" width="200" height="56" rx="8" fill="#f1f1ef" stroke="#dededb"/><text x="450" y="43" font-weight="700">경로 정하기</text><text x="450" y="65" font-size="14" fill="#666660">Unit 1의 응용 1-1</text>
 <g fill="#fbf0dc" stroke="#9a6200"><rect x="45" y="104" width="100" height="40" rx="20"/><rect x="45" y="156" width="100" height="40" rx="20"/><rect x="45" y="208" width="100" height="40" rx="20"/></g>
 <g font-weight="700"><text x="95" y="129">오탐 종료</text><text x="95" y="181">승인 필요</text><text x="95" y="233">기본</text></g>
 <g fill="#ffffff" stroke="#dededb"><rect x="170" y="104" width="160" height="40" rx="8"/><rect x="170" y="156" width="300" height="40" rx="8"/><rect x="170" y="208" width="280" height="40" rx="8"/></g>
 <text x="250" y="129">조치하지 않는다</text><text x="320" y="181">승인 대기로 두고 조치하지 않는다 (VIP)</text><text x="310" y="233">탐지된 규칙에 연결된 조치를 한다</text>
 <g fill="#e6eefb" stroke="#2f6fd0"><rect x="200" y="268" width="110" height="40" rx="8"/><rect x="200" y="350" width="110" height="40" rx="8"/><rect x="200" y="510" width="110" height="40" rx="8"/></g>
 <g font-weight="700"><text x="255" y="293">퇴사한 계정</text><text x="255" y="375">경로 스캔</text><text x="255" y="535">그 밖의 규칙</text></g>
-<g font-size="14" fill="#666660"><text x="410" y="328">(Unit 2의 실습 2-2)</text><text x="255" y="412">(Unit 2의</text><text x="255" y="430">도전 2-3)</text></g>
+<g font-size="14" fill="#666660"><text x="410" y="328">(Unit 2의 실습 2-2)</text><text x="255" y="412">(Unit 2의</text><text x="255" y="430">응용 2-3)</text></g>
 <g fill="#ffffff" stroke="#dededb"><rect x="340" y="346" width="230" height="48" rx="8"/><rect x="340" y="404" width="230" height="40" rx="8"/><rect x="340" y="454" width="230" height="40" rx="8"/></g>
 <g font-size="14"><text x="455" y="366">허용 목록 IP이면</text><text x="455" y="386" fill="#666660">(차단하지 않기로 미리 정해 둔 IP)</text>
 <text x="455" y="429">여러 계정이 함께 쓰는 IP 이면</text><text x="455" y="479">아니면</text></g>

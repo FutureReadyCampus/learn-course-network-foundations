@@ -85,7 +85,7 @@ def find_open_sessions(state):                             # 연습용 시스템
     return gaps                                            # 빈틈이 있는 계정 리스트를 리턴한다
 ```
 
-**`containment.py`** — 잠금과 세션 종료를 한 함수에서 순서대로 수행합니다. Unit 3 도전 3-1 도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 4 ~ 6번입니다.
+**`containment.py`** — 잠금과 세션 종료를 한 함수에서 순서대로 수행합니다. Unit 3 응용 3-1 도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 4 ~ 6번입니다.
 
 ```python
 from account_actions import lock_account                              # 실습 2-1에 만든 계정 잠금 함수를 불러온다
@@ -170,7 +170,7 @@ print("조치 기록:", len(load_json("containment_log.json")), "건")          
 
 ## 이번 Unit 마무리 · 깃허브에 올리기
 
-하루를 닫는 마무리입니다(15분). 핵심 실습 두 개와 글쓰기(「보고서 쓰기」 · 「오늘의 글 쓰기」)를 마친 뒤 합니다. 도전을 하지 않았어도 이대로 마무리합니다.
+하루를 닫는 마무리입니다(15분). 핵심 실습 두 개와 글쓰기(「보고서 쓰기」 · 「오늘의 글 쓰기」)를 마친 뒤 합니다. 응용을 하지 않았어도 이대로 마무리합니다.
 
 **1. 오늘 한 일 확인**
 
@@ -190,7 +190,7 @@ python -c "import json; print(json.load(open('containment_state.json', encoding=
 - `containment_store.py` · `account_actions.py` · `exercise2-1_run.py` · `session_actions.py` · `containment.py` · `exercise2-2_run.py` · `ip_actions.py` · `audit.py` · `approvals.py` · `ip_users.json` · `containment_state.json` · `containment_log.json` · `report_u2.md` 가 보여야 합니다.
 - `config` 안에는 `vip_accounts.json` · `allowlist_ips.json` 이 새로 보여야 합니다.
 - 마지막 줄은 <mark>`['junho', 'dami'] 5`</mark> 여야 합니다. 실습 2-2 가 저장한 상태(잠긴 계정 두 개 · 조치 기록 5건)이고, Unit 3 실습 3-1 이 이 상태에서 시작합니다.
-  - 다른 값이 나오면(예: 도전 2-3 을 실습 2-2 뒤에 실행해 `['junho'] 4` 가 나옴) `python exercise2-2_run.py` 를 한 번 더 실행하고 다시 확인합니다. 도전 실행 파일도 같은 두 파일에 결과를 저장하기 때문입니다.
+  - 다른 값이 나오면(예: 응용 2-3 을 실습 2-2 뒤에 실행해 `['junho'] 4` 가 나옴) `python exercise2-2_run.py` 를 한 번 더 실행하고 다시 확인합니다. 응용 실행 파일도 같은 두 파일에 결과를 저장하기 때문입니다.
 
 **3. 깃허브에 올리기**
 
@@ -220,7 +220,7 @@ python -c "import json; print(json.load(open('containment_state.json', encoding=
    - `git push` 가 거절(`rejected`)되면 깃허브에 내 PC 에 없는 기록이 있다는 뜻입니다. `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다. 이 화면은 git 이 두 기록을 합친 기록에 붙일 메시지를 확인하라고 여는 편집기(vim)라서, 메시지는 고치지 않고 저장하고 닫기만 하면 됩니다.
 5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `soar_response` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
 
-- 시간이 남아 도전을 했다면 도전 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다. 올리기 전에 2번의 마지막 줄이 `['junho', 'dami'] 5` 인지 다시 봅니다.
+- 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다. 올리기 전에 2번의 마지막 줄이 `['junho', 'dami'] 5` 인지 다시 봅니다.
 
 **4. 이어지는 곳**
 

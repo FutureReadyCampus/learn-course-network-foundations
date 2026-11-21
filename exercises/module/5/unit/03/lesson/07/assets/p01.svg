@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>도전 3-3: 알림 11건을 등급별 수신자에게 보내 전송 9건, 건너뜀 2건이 된다</title>
+<title>응용 3-3: 알림 11건을 등급별 수신자에게 보내 전송 9건, 건너뜀 2건이 된다</title>
 <desc>알림 11건이 ticket_notice.py 를 거쳐 담당자에게 전파된다. 수신자 고르기, 30분 간격 확인, 최대 3번 재시도를 거쳐 전송 9건과 건너뜀 2건이 나오고, 3번 모두 실패하면 실패로 표시한다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">도전 3-3 · 무엇을 만드나</text>
+<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">응용 3-3 · 무엇을 만드나</text>
 <rect x="20" y="70" width="190" height="150" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="115.0" y="129.2" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">입력</text>
 <text x="115.0" y="150.2" font-size="15" fill="#292929" text-anchor="middle">alerts_thu.json</text>

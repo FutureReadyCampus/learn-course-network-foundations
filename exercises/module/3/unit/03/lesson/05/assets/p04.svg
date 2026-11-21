@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
-<title>도전 3-1 실행: 현황을 만들고 find_stale 로 거른 뒤 걸린 권한과 이유별 건수를 본다</title>
+<title>응용 3-1 실행: 현황을 만들고 find_stale 로 거른 뒤 걸린 권한과 이유별 건수를 본다</title>
 <desc>build_access_list 로 현황을 만들고 find_stale 에 지금 시각 NOW 와 함께 넘깁니다. 단계 1은 걸린 권한을 출처와 이유로, 단계 2는 이유별 건수를 출력합니다. expires 는 없을 수도 있어 entry.get 으로 꺼냅니다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">challenge3-1_run.py 의 흐름</text>
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">apply3-1_run.py 의 흐름</text>
 <rect x="20" y="52" width="210" height="90" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="125" y="92.128" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">build_access_list()</text>
 <text x="125" y="112.512" font-size="14" fill="#666660" text-anchor="middle">현황 만들기 (실습 3-1)</text>

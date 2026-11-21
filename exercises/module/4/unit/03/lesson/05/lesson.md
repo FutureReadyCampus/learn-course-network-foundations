@@ -1,6 +1,6 @@
 ---
 id: m4-u03-l05
-title: 도전 3-2 · SaaS 이상 사용 세 가지 찾기
+title: 응용 3-2 · SaaS 이상 사용 세 가지 찾기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,11 +9,11 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 도전 3-2 · SaaS 이상 사용 세 가지 찾기
+# 응용 3-2 · SaaS 이상 사용 세 가지 찾기
 
 ## 이번 의뢰: SaaS 이상 사용 찾기
 
-> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 3-1 · 3-2와 글쓰기를 먼저 마칩니다. 이 도전에서 만드는 `saas_detection.py` 는 다음 Unit 「제공 파일」 레슨에 완성본이 있으므로, 하지 않아도 다음 Unit 을 따라가는 데 문제가 없습니다.
+> **여유가 되면 해 보세요.** 핵심 실습 3-1 · 3-2와 글쓰기를 먼저 마칩니다. 이 응용에서 만드는 `saas_detection.py` 는 다음 Unit 「제공 파일」 레슨에 완성본이 있으므로, 하지 않아도 다음 Unit 을 따라가는 데 문제가 없습니다.
 
 > **이번 실습에 들어온 일**
 >
@@ -25,7 +25,7 @@ source:
 
 ## 왜 규칙 세 개를 따로 찾는가
 
-1. 실습 2-3 의 로그인 실패 기준과 실습 3-1 의 급증 기준은 모두 **평소**를 먼저 보고 정했습니다. 이번 도전에서는 사용자마다 평소가 다르므로 **사용자별 평소 IP** 를 딕셔너리로 둡니다.
+1. 실습 2-3 의 로그인 실패 기준과 실습 3-1 의 급증 기준은 모두 **평소**를 먼저 보고 정했습니다. 이번 응용에서는 사용자마다 평소가 다르므로 **사용자별 평소 IP** 를 딕셔너리로 둡니다.
 2. SaaS 이상 사용을 보는 규칙은 세 가지이고, <mark>세 규칙은 각각 따로 찾습니다.</mark>
 
    | 규칙 | 해당하는 때 |
@@ -266,7 +266,7 @@ False
 | `find_off_hours_logins` | 1 · 2번(2곳) | 시가 업무 시간 안인지 구하고 뒤집습니다 | 시각을 시로 꺼내는 두 줄 |
 | `find_new_ip_users` | 3 ~ 5번(3곳) | 평소 기록이 있는지, 평소와 다른 IP 인지 구하고, `if` 안에서 사용자를 리스트에 추가합니다 | `if` 줄 |
 
-## 도전 3-2 · SaaS 이상 사용 세 가지 찾기
+## 응용 3-2 · SaaS 이상 사용 세 가지 찾기
 
 **이런 상황이 있습니다**
 
@@ -280,7 +280,7 @@ False
 
 **할 일**
 
-1. `saas_detection.py` · `challenge3-2_run.py` 두 파일을 만들고, `saas_detection.py` 의 두 함수에서 직접 쓰는 곳을 씁니다.
+1. `saas_detection.py` · `apply3-2_run.py` 두 파일을 만들고, `saas_detection.py` 의 두 함수에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>업무 시간 밖 로그인</mark>(단계 1), <mark>평소와 다른 IP 사용자</mark>(단계 2), <mark>대량 다운로드 사용자</mark>(단계 3)를 읽습니다.
 
 **`saas_detection.py`**
@@ -380,7 +380,7 @@ def find_bulk_download_users(saas):                   # SaaS 이벤트 표를 �
 - 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
 - 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다(파이썬 버전에 따라 뒤에 `after 'if' statement on line …` 이 붙기도 합니다). `if` 안쪽의 5번이 비어 있기 때문입니다.
 
-**`challenge3-2_run.py`** — 그대로 붙여 넣습니다. 직접 쓰는 줄은 없습니다.
+**`apply3-2_run.py`** — 그대로 붙여 넣습니다. 직접 쓰는 줄은 없습니다.
 
 ```python
 from saas_detection import load_events, pick_saas, pick_logins, find_off_hours_logins, find_new_ip_users, find_bulk_download_users, EVENTS_PATH  # 방금 만든 함수를 불러온다
@@ -403,21 +403,21 @@ print("--- 단계 3: 파일을 5번 이상 내려받은 사용자", bulk_users) 
 
 **순서**
 
-1. **[VS Code]** 파일 `saas_detection.py` · `challenge3-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code]** 파일 `saas_detection.py` · `apply3-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `saas_detection.py` 에서 <mark>직접 쓰는 곳 다섯 군데를 씁니다</mark>. 2.1 의 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python challenge3-2_run.py
+   python apply3-2_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python challenge3-2_run.py` 파이썬으로 실행 파일 실행
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python apply3-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **세 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 표 2줄이고, 단계 2와 3은 사용자가 제목 줄에 함께 나오므로 그 아래 줄이 없습니다.
-5. **[보고서]** `report_u3.md` 의 `## 도전 3-2` 아래를 채웁니다.
+5. **[보고서]** `report_u3.md` 의 `## 응용 3-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 규칙마다 해당한 사용자를 적어 주세요.
    - (나) [핵심 질문] jiwoo 는 업무 시간 밖(02:14)과 평소와 다른 IP 두 규칙에 해당하지만 그 로그인은 실패였습니다. 이 기록만으로 계정 도용을 확정할 수 있나요? 그렇게 판단한 이유와, 샘플 로그에서 더 찾아볼 수 있는 것을 한 가지 적어 주세요.
    - (다) [핵심 질문] gaeun 은 평소 IP 기록이 없어 「평소와 다른 IP」 규칙에서 제외됩니다. 제외하지 않으면 어떤 일이 생기고, 제외하면 어떤 위험이 남나요?
 
-## 도전 3-2 정리
+## 응용 3-2 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|

@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 352" role="img">
-<title>도전 2-2 정리: if 규칙 두 개, to_dict 한 줄, 유형별 세기 한 줄</title>
+<title>응용 2-2 정리: if 규칙 두 개, to_dict 한 줄, 유형별 세기 한 줄</title>
 <desc>비정상 로그인과 비인가 접근은 and 로 이은 if 규칙으로 정합니다. 표는 to_dict("records") 로 리스트로 바꾸고, 유형별 개수는 get(type_name, 0) + 1 로 셉니다.</desc>
 <defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">도전 2-2 정리</text>
+<text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">응용 2-2 정리</text>
 <rect x="20" y="56" width="330" height="100" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
 <text x="185.0" y="91" font-size="15" text-anchor="middle" fill="#292929"><tspan x="185.0" dy="0" font-weight="700">비정상 로그인</tspan><tspan x="185.0" dy="20">if result == "실패" and</tspan><tspan x="185.0" dy="20">action == "POST /login":</tspan></text>
 <rect x="370" y="56" width="330" height="100" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>

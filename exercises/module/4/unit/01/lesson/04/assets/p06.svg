@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
-<title>도전 1-1 는 parse_line 으로 읽고 label_entries · count_groups 로 가르고 센다</title>
+<title>응용 1-1 는 parse_line 으로 읽고 label_entries · count_groups 로 가르고 센다</title>
 <desc>access_sample.log 를 parse_line 이 읽고, label_entries 가 classify_line 으로 요청마다 group 을 적고, count_groups 가 분류별로 셉니다. 직접 쓰는 곳은 log_classify.py 의 세 함수입니다.</desc>
 <defs><marker id="a-m4u01l03-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker><marker id="a-m4u01l03-p06-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0442e"/></marker></defs>
 <g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
@@ -23,7 +23,7 @@
 <text x="227.0" y="210.8" font-size="15" fill="#292929" text-anchor="middle">is_suspicious · is_error · classify_line</text>
 <line x1="581" y1="230" x2="581" y2="270" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l03-p06)"/>
 <rect x="24" y="272" width="672" height="80" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="360.0" y="306.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">challenge1-1_run.py 출력</text>
+<text x="360.0" y="306.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">apply1-1_run.py 출력</text>
 <text x="360.0" y="327.8" font-size="15" fill="#292929" text-anchor="middle">단계 1: 분류별 요청 수 · 단계 2: 의심 요청 · 단계 3: 오류 요청</text>
 </g>
 </svg>

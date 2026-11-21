@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img">
-<title>도전 3-1 정리: get 으로 꺼내고, 퇴사·만료 규칙을 거쳐, 복사본에 이유를 적는다</title>
+<title>응용 3-1 정리: get 으로 꺼내고, 퇴사·만료 규칙을 거쳐, 복사본에 이유를 적는다</title>
 <desc>없을 수도 있는 expires 는 entry.get 으로 꺼냅니다. employed 가 False 면 퇴사한 계정, 아니고 expires 가 있으며 지금과 같거나 지났으면 만료된 예외입니다. 걸린 권한은 복사해 reason 을 적습니다.</desc>
 <defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">도전 3-1 정리</text>
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">응용 3-1 정리</text>
 <rect x="20" y="52" width="320" height="100" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="180" y="97.128" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">① 없을 수도 있는 키</text>
 <text x="180" y="117.512" font-size="14" fill="#292929" text-anchor="middle">expires = entry.get("expires")</text>

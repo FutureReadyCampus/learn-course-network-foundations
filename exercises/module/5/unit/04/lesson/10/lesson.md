@@ -121,7 +121,7 @@ REQ-6 INC-316 계정 잠금 minsu → 담당자 승인을 기다림
 ```
 
 - (나) `REQ-1` 은 등급 high 2점뿐이라 <mark style="background:#bde3ff">합계 2점</mark>으로 <mark style="background:#ffdcb0">임계값(3점)</mark>보다 낮아 자동입니다. `REQ-6` 은 등급 2점에 대상 6개 2점을 더해 <mark style="background:#bde3ff">합계 4점</mark>이라 승인 필요입니다.
-  - 대상이 많으면 잘못 실행했을 때 여러 사용자의 계정이 한꺼번에 잠기므로, 영향 범위가 넓은 조치입니다. <mark style="background:#e0d4ff">Unit 1 도전 1-2 의 인사 시스템 오류(퇴사자 알림이 한꺼번에 많이 들어온 일)</mark>처럼 입력이 잘못되면 대상 수가 갑자기 늘 수 있습니다.
+  - 대상이 많으면 잘못 실행했을 때 여러 사용자의 계정이 한꺼번에 잠기므로, 영향 범위가 넓은 조치입니다. <mark style="background:#e0d4ff">Unit 1 응용 1-2 의 인사 시스템 오류(퇴사자 알림이 한꺼번에 많이 들어온 일)</mark>처럼 입력이 잘못되면 대상 수가 갑자기 늘 수 있습니다.
 - (다) 허용 목록 대상은 차단하면 업무가 중단되는 대상이라, <mark>점수와 무관하게 차단하지 않아야 합니다.</mark> 점수부터 판단하면 `REQ-3`(4점)처럼 점수가 높은 요청이 「승인 필요」가 되고, 담당자가 실수로 승인하면 협력사 사무실 IP 가 차단됩니다.
   - 기준을 설정 파일에 따로 두면 코드를 고치지 않고 숫자만 바꿔 정책을 조정할 수 있습니다. 또 설정 파일을 깃(git)으로 관리하면 누가 언제 기준을 바꿨는지 변경 이력(change history)으로 남습니다.
 
@@ -344,15 +344,15 @@ NameError: name 'result' is not defined
 
 - 오탐으로 확인되면 자동 조치를 롤백하고, 사용자에게 알리고, 탐지 규칙이나 허용 목록을 조정(튜닝)하자는 검토 요청을 남깁니다. 규칙 조정은 승인을 받은 뒤에 적용합니다. <mark>롤백한 뒤 실제 상태를 다시 점검하는 복구 확인 단계를 생략하지 않는 것이 중요합니다.</mark> 오늘의 30분 기준은 예시이고, 실제 기준은 팀과 고객사 계약마다 다릅니다.
 
-## 도전 4-1 정답
+## 응용 4-1 정답
 
-> 여기부터는 **도전(선택)** 정답입니다. 선택입니다. 시간이 남을 때 합니다. 핵심 실습 정답은 앞의 실습 4-1 · 4-2 정답에 있습니다.
+> 여기부터는 **응용(여유가 되면)** 정답입니다. 여유가 되면 해 보세요. 핵심 실습 정답은 앞의 실습 4-1 · 4-2 정답에 있습니다.
 
 **터미널에 입력합니다.** 알림 서버 터미널은 켜 둔 채, 처음 쓰던 터미널에서 실행합니다.
 
 ```bash
 pwd
-python challenge4-1_run.py
+python apply4-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -375,7 +375,7 @@ python challenge4-1_run.py
             level = index + 1                   # 이 단계 번호를 담는다 (뒤의 더 높은 단계가 덮어쓴다)
 ```
 
-`challenge4-1_run.py` 의 7 ~ 9번입니다.
+`apply4-1_run.py` 의 7 ~ 9번입니다.
 
 ```python
         # 7. needs_escalation(ticket, now) 가 참이면 (if)
@@ -528,13 +528,13 @@ IndentationError: expected an indented block
 
 ---
 
-## 도전 4-2 정답
+## 응용 4-2 정답
 
  **터미널에 입력합니다.** 알림 서버 터미널은 켜 둔 채, 처음 쓰던 터미널에서 실행합니다.
 
 ```bash
 pwd
-python challenge4-2_run.py
+python apply4-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -559,7 +559,7 @@ python challenge4-2_run.py
             late = late + 1                                          # 기한을 넘긴 티켓 수를 1 늘린다
 ```
 
-`challenge4-2_run.py` 의 8 · 9번입니다.
+`apply4-2_run.py` 의 8 · 9번입니다.
 
 ```python
 # 8. collect_response_times(tickets) 의 결과를 ack_times 에 저장한다
@@ -701,13 +701,13 @@ NameError: name 'mean_ack_minutes' is not defined
 
 - 근무 교대 인계(shift handoff) 보고에는 보통 두 가지를 포함합니다. 하나는 평균 확인 시간 · 평균 해결 시간 · 응답 기한 위반 수이고, 다른 하나는 <mark>다음 근무자에게 인계할 미해결 티켓 목록</mark>(티켓마다 현재 상태와 다음 조치)입니다. 평균은 표본 크기(티켓 수)와 함께 보고합니다. 오늘의 숫자는 근무 3시간 시뮬레이션의 예시입니다.
 
-## 도전 4-3 정답
+## 응용 4-3 정답
 
  **터미널에 입력합니다.**
 
 ```bash
 pwd
-python challenge4-3_run.py
+python apply4-3_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -734,7 +734,7 @@ python challenge4-3_run.py
         lines.append("- " + rule + ": " + str(count) + "장")        # 규칙 한 줄을 추가한다
 ```
 
-`challenge4-3_run.py` 의 9번입니다.
+`apply4-3_run.py` 의 9번입니다.
 
 ```python
 # 9. make_ticket_table(tickets) 의 결과를 table 에 저장한다
@@ -864,13 +864,13 @@ NameError: name 'table' is not defined
 
 ---
 
-## 도전 4-4 정답
+## 응용 4-4 정답
 
  **터미널에 입력합니다.**
 
 ```bash
 pwd
-python challenge4-4_run.py
+python apply4-4_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -895,7 +895,7 @@ python challenge4-4_run.py
         missing = find_missing_controls(level, row["controls"])  # 이 등급에 빠진 통제를 찾는다
 ```
 
-`challenge4-4_run.py` 의 8 · 9번입니다.
+`apply4-4_run.py` 의 8 · 9번입니다.
 
 ```python
 # 8. assess_risks(table) 의 결과를 rows 에 담는다
@@ -1006,13 +1006,13 @@ NameError: name 'sorted_table' is not defined
 
 ---
 
-## 도전 4-5 정답
+## 응용 4-5 정답
 
  **터미널에 입력합니다.**
 
 ```bash
 pwd
-python challenge4-5_run.py
+python apply4-5_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -1075,7 +1075,7 @@ def check_recovery(results, state, true_positive_users):         # 오탐 처리
     return problems                                              # 문제 문장 리스트를 리턴한다 — 미리 채운 줄
 ```
 
-`challenge4-5_run.py` 의 8 · 9번입니다.
+`apply4-5_run.py` 의 8 · 9번입니다.
 
 ```python
 # 8. check_report(report_text, tickets, actions) 의 결과를 report_problems 에 담는다

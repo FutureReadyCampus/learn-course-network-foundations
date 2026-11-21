@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
-<title>도전 4-1 · 4-2 준비: Unit 3 파일, 티켓 파일, 설치, 알림 서버</title>
-<desc>왼쪽은 soar_response 에 있어야 할 Unit 3 파일과 티켓 7장이 든 tickets_unit09.json 입니다. 오른쪽은 flask · requests 설치, 도전 준비 정상 7 확인, 새 터미널에서 alert_server.py 를 켜는 순서입니다. 서버 터미널은 도전을 마칠 때까지 켜 둡니다.</desc>
+<title>응용 4-1 · 4-2 준비: Unit 3 파일, 티켓 파일, 설치, 알림 서버</title>
+<desc>왼쪽은 soar_response 에 있어야 할 Unit 3 파일과 티켓 7장이 든 tickets_unit09.json 입니다. 오른쪽은 flask · requests 설치, 응용 준비 정상 7 확인, 새 터미널에서 alert_server.py 를 켜는 순서입니다. 서버 터미널은 응용을 마칠 때까지 켜 둡니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">필요한 파일 준비하기</tspan></text>
@@ -17,7 +17,7 @@
 <rect x="366" y="52" width="334" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="533.0" y="78.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="533.0" font-weight="bold">1. 설치</tspan><tspan x="533.0" dy="20">pip install flask requests</tspan></text>
 <rect x="366" y="136" width="334" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="533.0" y="162.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="533.0" font-weight="bold">2. 파일 확인</tspan><tspan x="533.0" dy="20">→ 도전 준비 정상 7</tspan></text>
+<text x="533.0" y="162.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="533.0" font-weight="bold">2. 파일 확인</tspan><tspan x="533.0" dy="20">→ 응용 준비 정상 7</tspan></text>
 <line x1="533" y1="118" x2="533" y2="134" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
 <rect x="366" y="220" width="334" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="533.0" y="246.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="533.0" font-weight="bold">3. 새 터미널(+)에서 서버 켜기</tspan><tspan x="533.0" dy="20">cd soar_response · python alert_server.py</tspan></text>
@@ -28,6 +28,6 @@
 <rect x="366" y="344" width="160" height="62" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="446.0" y="369.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="446.0" font-weight="bold">처음 터미널</tspan><tspan x="446.0" dy="20">다른 명령은 여기서</tspan></text>
 <rect x="540" y="344" width="160" height="62" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="620.0" y="369.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="620.0" font-weight="bold">서버 터미널</tspan><tspan x="620.0" dy="20">도전 끝까지 켜 둠</tspan></text>
+<text x="620.0" y="369.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="620.0" font-weight="bold">서버 터미널</tspan><tspan x="620.0" dy="20">응용 끝까지 켜 둠</tspan></text>
 </g>
 </svg>

@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img">
-<title>도전 1-1 정답은 허용 7건, seoyeon 정산 조회 거부 8건, 쓰이지 않은 권한 7줄이다</title>
+<title>응용 1-1 정답은 허용 7건, seoyeon 정산 조회 거부 8건, 쓰이지 않은 권한 7줄이다</title>
 <desc>거부된 8건은 모두 seoyeon 의 SETTLE:QUERY 이고 이유는 권한 없음이다. 쓰이지 않은 7줄 중 한 예로 finance 의 SALES:QUERY 는 줄이고 account_admin 의 ACCOUNT:CHANGE 는 남기며 auditor 는 빼고 고른다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 1-1 정답: 거부 8건과 쓰이지 않은 권한 7줄</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">응용 1-1 정답: 거부 8건과 쓰이지 않은 권한 7줄</text>
 <rect x="20" y="52" width="330" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="185" y="79.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">허용 7</text>
 <text x="185" y="98.9" font-size="14" fill="#292929" text-anchor="middle">batch-night 1 · junho 3 · seoyeon 3</text>

@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img"><title>도전 3-2 정리: 식별 키를 만들고 두 결과의 이유를 모아 후보를 만든다</title><desc>식별 키는 source 까지 이어 붙여 만든다. 규칙 결과는 딕셔너리, 미사용 결과는 리스트에 식별 키로 담고, 이유가 하나라도 있으면 권한을 복사해 reasons 키를 적는다.</desc><defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img"><title>응용 3-2 정리: 식별 키를 만들고 두 결과의 이유를 모아 후보를 만든다</title><desc>식별 키는 source 까지 이어 붙여 만든다. 규칙 결과는 딕셔너리, 미사용 결과는 리스트에 식별 키로 담고, 이유가 하나라도 있으면 권한을 복사해 reasons 키를 적는다.</desc><defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">도전 3-2 정리</text>
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">응용 3-2 정리</text>
 <rect x="20" y="52" width="180" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="110" y="77.25" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">식별 키 만들기</text>
 <rect x="214" y="52" width="486" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>

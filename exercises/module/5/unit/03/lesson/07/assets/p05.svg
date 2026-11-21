@@ -1,20 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>내가 한 도전의 파일을 서버를 끈 뒤 git 으로 올리고 브라우저에서 확인한다</title>
-<desc>도전 3-1은 drill.py · shift_report.py · challenge3-1_run.py · shift_log.json, 도전 3-2는 challenge3-2_run.py 와 바뀐 ticket_merge.py, 도전 3-3은 alert_server.py · challenge3-3_run.py · tickets_unit09.json 과 바뀐 ticket_notice.py 가 보인다. 알림 서버를 Ctrl + C 로 끄고 git add · commit · push 한 뒤 브라우저에서 확인한다. tickets_unit09.json 은 Unit 4 도전 4-1이 읽는다.</desc>
+<title>내가 한 응용의 파일을 서버를 끈 뒤 git 으로 올리고 브라우저에서 확인한다</title>
+<desc>응용 3-1은 drill.py · shift_report.py · apply3-1_run.py · shift_log.json, 응용 3-2는 apply3-2_run.py 와 바뀐 ticket_merge.py, 응용 3-3은 alert_server.py · apply3-3_run.py · tickets_unit09.json 과 바뀐 ticket_notice.py 가 보인다. 알림 서버를 Ctrl + C 로 끄고 git add · commit · push 한 뒤 브라우저에서 확인한다. tickets_unit09.json 은 Unit 4 응용 4-1이 읽는다.</desc>
 <defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
-<text x="20" y="32.0" font-size="18" fill="#292929" font-weight="700">git status 에 보이는 도전 파일</text>
+<text x="20" y="32.0" font-size="18" fill="#292929" font-weight="700">git status 에 보이는 응용 파일</text>
 <text x="460" y="32.0" font-size="18" fill="#292929" font-weight="700">올리는 순서</text>
 <rect x="20" y="50" width="400" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="220.0" y="71.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">도전 3-1</text>
+<text x="220.0" y="71.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">응용 3-1</text>
 <text x="220.0" y="91.2" font-size="15" fill="#666660" text-anchor="middle">drill.py · shift_report.py</text>
-<text x="220.0" y="111.2" font-size="15" fill="#666660" text-anchor="middle">challenge3-1_run.py · shift_log.json</text>
+<text x="220.0" y="111.2" font-size="15" fill="#666660" text-anchor="middle">apply3-1_run.py · shift_log.json</text>
 <rect x="20" y="134" width="400" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="220.0" y="155.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">도전 3-2</text>
-<text x="220.0" y="175.2" font-size="15" fill="#666660" text-anchor="middle">challenge3-2_run.py</text>
+<text x="220.0" y="155.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">응용 3-2</text>
+<text x="220.0" y="175.2" font-size="15" fill="#666660" text-anchor="middle">apply3-2_run.py</text>
 <text x="220.0" y="195.2" font-size="15" fill="#666660" text-anchor="middle">바뀐 파일: ticket_merge.py</text>
 <rect x="20" y="218" width="400" height="92" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="220.0" y="239.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">도전 3-3</text>
-<text x="220.0" y="259.2" font-size="15" fill="#666660" text-anchor="middle">alert_server.py · challenge3-3_run.py</text>
+<text x="220.0" y="239.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">응용 3-3</text>
+<text x="220.0" y="259.2" font-size="15" fill="#666660" text-anchor="middle">alert_server.py · apply3-3_run.py</text>
 <text x="220.0" y="279.2" font-size="15" fill="#666660" text-anchor="middle">tickets_unit09.json</text>
 <text x="220.0" y="299.2" font-size="15" fill="#666660" text-anchor="middle">바뀐 파일: ticket_notice.py</text>
 <rect x="460" y="50" width="240" height="44" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
@@ -24,7 +24,7 @@
 <text x="580.0" y="142.2" font-size="15" fill="#292929" text-anchor="middle">2 · git status</text>
 <line x1="580" y1="159" x2="580" y2="176" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
 <rect x="460" y="180" width="240" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="580.0" y="207.2" font-size="15" fill="#292929" text-anchor="middle">3 · 보고서 도전 칸</text>
+<text x="580.0" y="207.2" font-size="15" fill="#292929" text-anchor="middle">3 · 보고서 응용 칸</text>
 <line x1="580" y1="224" x2="580" y2="241" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
 <rect x="460" y="245" width="240" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="580.0" y="272.2" font-size="15" fill="#292929" text-anchor="middle">4 · git add · commit · push</text>
@@ -33,7 +33,7 @@
 <text x="580.0" y="337.2" font-size="15" fill="#292929" text-anchor="middle">5 · 브라우저 확인</text>
 <line x1="422" y1="180" x2="456" y2="137" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
 <rect x="20" y="372" width="680" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360.0" y="395.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">tickets_unit09.json 은 Unit 4 도전 4-1 이 읽는다</text>
-<text x="360.0" y="415.2" font-size="15" fill="#666660" text-anchor="middle">Unit 4 도전 4-1을 하려면 도전 3-3을 먼저 해 둔다</text>
+<text x="360.0" y="395.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">tickets_unit09.json 은 Unit 4 응용 4-1 이 읽는다</text>
+<text x="360.0" y="415.2" font-size="15" fill="#666660" text-anchor="middle">Unit 4 응용 4-1을 하려면 응용 3-3을 먼저 해 둔다</text>
 <line x1="220" y1="310" x2="220" y2="368" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
 </svg>

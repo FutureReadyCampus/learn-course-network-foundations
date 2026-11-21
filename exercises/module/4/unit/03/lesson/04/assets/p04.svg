@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>도전 3-1 는 두 알림 리스트를 만들어 이어 붙이고 alerts.json 에 저장한다</title>
+<title>응용 3-1 는 두 알림 리스트를 만들어 이어 붙이고 alerts.json 에 저장한다</title>
 <desc>로그인 실패 결과는 make_login_alerts, 트래픽 급증 결과는 make_traffic_alerts 가 알림으로 바꾼다. 두 리스트를 + 로 이어 붙여 save_alerts 가 alerts.json 에 저장한다. 출력은 단계 1부터 4까지다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
-<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">도전 3-1 · alerts.py 가 하는 일</text>
+<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">응용 3-1 · alerts.py 가 하는 일</text>
 <rect x="30" y="60" width="190" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="125" y="87.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">login_detection.py</text>
 <text x="125" y="106.7" font-size="14" fill="#292929" text-anchor="middle">알림 대상 주소</text>

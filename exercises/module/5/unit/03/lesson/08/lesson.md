@@ -11,7 +11,7 @@ render: markdown
 설명하는 답은 한 예이고, <mark>핵심이 같으면 맞습니다.</mark> 줄 수가 달라도 주석이 말한 일을 하면 맞습니다.
 
 1. **핵심 실습**: 실습 3-1 · 3-2 정답입니다. 오늘 모두가 하는 실습이니 먼저 맞춰 봅니다.
-2. **도전(선택)**: 도전 3-1 ~ 3-3 정답입니다. 도전을 한 사람만 봅니다.
+2. **응용(여유가 되면)**: 응용 3-1 ~ 3-3 정답입니다. 응용을 한 사람만 봅니다.
 3. 정답마다 채운 코드, 결과, 왜, 자주 틀리는 곳, 관제에서는 순서로 읽습니다.
 
 ---
@@ -287,9 +287,9 @@ IndentationError: expected an indented block
 
 ---
 
-## 도전 3-1 정답
+## 응용 3-1 정답
 
-> 여기부터는 **도전(선택)** 정답입니다. 선택입니다. 시간이 남을 때 합니다. 핵심 실습 정답은 앞의 실습 3-1 · 3-2 정답에 있습니다.
+> 여기부터는 **응용(여유가 되면)** 정답입니다. 여유가 되면 해 보세요. 핵심 실습 정답은 앞의 실습 3-1 · 3-2 정답에 있습니다.
 
 **채운 코드** (한 예)
 
@@ -319,7 +319,7 @@ IndentationError: expected an indented block
         counts[kind] = counts[kind] + 1         # 그 종류의 건수를 1 늘린다
 ```
 
-`challenge3-1_run.py` 의 9번입니다.
+`apply3-1_run.py` 의 9번입니다.
 
 ```python
     # 9. handle_incident(incident, state, refs) 가 리턴한 두 값을 status 와 records 에 한 번에 받는다
@@ -425,13 +425,13 @@ NameError: name 'status' is not defined
 
 ---
 
-## 도전 3-2 정답
+## 응용 3-2 정답
 
  **터미널에 입력합니다.**
 
 ```bash
 pwd
-python challenge3-2_run.py
+python apply3-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -622,13 +622,13 @@ INC-206 -> TCK-2 병합 · 합쳐진 알림 1 건
 
 ---
 
-## 도전 3-3 정답
+## 응용 3-3 정답
 
  **터미널에 입력합니다.** 알림 서버를 켠 터미널은 그대로 두고, 처음 쓰던 터미널에서 실행합니다.
 
 ```bash
 pwd
-python challenge3-3_run.py
+python apply3-3_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -651,7 +651,7 @@ python challenge3-3_run.py
             return attempt             # 성공한 시도 번호를 리턴한다
 ```
 
-`challenge3-3_run.py` 의 7 ~ 9번입니다.
+`apply3-3_run.py` 의 7 ~ 9번입니다.
 
 ```python
     # 7. send_ticket_notice(ticket, alert["minute"], rules) 의 결과를 result 에 저장한다

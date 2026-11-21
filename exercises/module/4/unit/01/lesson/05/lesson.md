@@ -1,6 +1,6 @@
 ---
 id: m4-u01-l05
-title: 도전 1-2 · JSON·CSV 로그를 이벤트로
+title: 응용 1-2 · JSON·CSV 로그를 이벤트로
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,11 +9,11 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 도전 1-2 · JSON·CSV 로그를 이벤트로
+# 응용 1-2 · JSON·CSV 로그를 이벤트로
 
 ## 목표: JSON·CSV 이벤트 변환
 
-> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 1-1 · 1-2와 글쓰기를 먼저 마칩니다. 이 도전은 실습 1-2와 같은 방법을 나머지 두 로그에 씁니다. 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
+> **여유가 되면 해 보세요.** 핵심 실습 1-1 · 1-2와 글쓰기를 먼저 마칩니다. 이 응용은 실습 1-2와 같은 방법을 나머지 두 로그에 씁니다. 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
 
 > **오늘 들어온 일**
 >
@@ -27,11 +27,11 @@ source:
 
 ## 로그 파일 두 개 준비하기
 
-이 도전과 도전 1-3에서 쓰는 로그 파일 두 개를 먼저 만듭니다. 시작하기에서 만든 `access_sample.log` 와 같은 `anomaly_detection` 폴더에 둡니다.
+이 응용과 응용 1-3에서 쓰는 로그 파일 두 개를 먼저 만듭니다. 시작하기에서 만든 `access_sample.log` 와 같은 `anomaly_detection` 폴더에 둡니다.
 
 1. **[VS Code]** `anomaly_detection` 폴더에 `server_log.jsonl` 과 `saas_events.csv` 파일을 만들어 아래 내용을 그대로 붙여 넣고 저장합니다.
 
-**`server_log.jsonl`** — 판정 서버가 남긴 로그 샘플입니다. Module 3 도전 4-3의 판정 서버(`access_server.py`)가 남기는 로그와 같은 모양이고, 한 줄이 요청 1개인 JSON 입니다(15줄).
+**`server_log.jsonl`** — 판정 서버가 남긴 로그 샘플입니다. Module 3 응용 4-3의 판정 서버(`access_server.py`)가 남기는 로그와 같은 모양이고, 한 줄이 요청 1개인 JSON 입니다(15줄).
 
 ```
 {"time": "2026-11-02T09:40", "user": "seoyeon", "permission": "SALES:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
@@ -175,7 +175,7 @@ print(allowed_result)                                # 바꾼 값을 출력한�
   - `convert_server_time` 은 실습 1-2와 같은 방식으로 바꿉니다(시간대가 없어서 `replace` 는 필요 없습니다).
 - **미리 채운 것**: 파일을 읽어 이벤트 리스트로 만드는 `load_server` · `load_saas` 와 이벤트를 묶는 줄입니다.
 
-## 도전 1-2 · JSON·CSV 로그를 이벤트로
+## 응용 1-2 · JSON·CSV 로그를 이벤트로
 
 **이런 상황이 있습니다**
 
@@ -188,7 +188,7 @@ print(allowed_result)                                # 바꾼 값을 출력한�
 
 **할 일**
 
-1. **`normalize_json_csv.py` · `challenge1-2_run.py`** 두 파일을 만들고, `normalize_json_csv.py` 의 `convert_server_time` · `normalize_server` · `normalize_saas` 에서 직접 쓰는 곳을 씁니다.
+1. **`normalize_json_csv.py` · `apply1-2_run.py`** 두 파일을 만들고, `normalize_json_csv.py` 의 `convert_server_time` · `normalize_server` · `normalize_saas` 에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>판정 서버 이벤트 수와 성공 · 실패별 개수</mark>(단계 1), <mark>SaaS 이벤트 수와 성공 · 실패별 개수</mark>(단계 2), <mark>각 로그의 첫 이벤트</mark>(단계 3)를 읽습니다.
 
 **`normalize_json_csv.py`**
@@ -288,7 +288,7 @@ def load_saas(path):                                             # SaaS CSV 파�
 - 번호 주석이 연달아 붙어 있어도(예: 4 · 5번), <mark>주석 사이마다 줄을 끼워 넣어 각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark>
 - **채우기 전에 실행하면 `UnboundLocalError` 또는 `NameError` 가 납니다.** 둘 다 아직 값을 담지 않은 이름을 썼다는 오류입니다. 예를 들어 1 · 2번을 아직 안 썼으면 `time_out` 을 찾지 못합니다.
 
-**`challenge1-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 두 로그를 공통 이벤트로 바꿔 세 단계로 출력합니다.
+**`apply1-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 두 로그를 공통 이벤트로 바꿔 세 단계로 출력합니다.
 
 ```python
 from normalize_json_csv import load_server, load_saas                       # 방금 만든 파일 읽기 함수를 불러온다
@@ -321,21 +321,21 @@ print(first_saas)                                                           # Sa
 
 **순서**
 
-1. **[VS Code]** 파일 `normalize_json_csv.py` · `challenge1-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code]** 파일 `normalize_json_csv.py` · `apply1-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `normalize_json_csv.py` 에서 직접 쓰는 곳 **여섯 군데**를 씁니다. 「CSV 읽기와 딕셔너리로 값 바꾸기」 쪽의 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python challenge1-2_run.py
+   python apply1-2_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python challenge1-2_run.py` 파이썬으로 실행 파일 실행
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python apply1-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **세 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1은 1줄, 단계 2는 1줄, 단계 3은 2줄입니다.
-5. **[보고서]** `report_u1.md` 의 `## 도전 1-2` 아래를 채웁니다.
+5. **[보고서]** `report_u1.md` 의 `## 응용 1-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 판정 서버와 SaaS 이벤트의 수와 성공 · 실패별 개수를 적어 주세요.
    - (나) [핵심 질문] 판정 서버 로그에는 접속 주소가 없어서 `ip` 를 `None` 으로 두었습니다. `None` 대신 가짜 주소 `0.0.0.0` 을 넣으면 주소별로 셀 때 어떤 문제가 생길까요? 이유도 함께 적어 주세요.
    - (다) [핵심 질문] 정규화하면서 공통 이벤트의 키에 들어가지 않은 정보를 판정 서버 로그에서 찾아 적고, 그 정보를 나중에 어디서 찾을 수 있는지 적어 주세요.
 
-## 도전 1-2 정리
+## 응용 1-2 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|

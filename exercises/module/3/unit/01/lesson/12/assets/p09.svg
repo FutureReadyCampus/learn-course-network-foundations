@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 374" role="img">
-<title>도전 1-4 보고서에 채울 칸: 출력과 경고 원인, 빈 설정이 안전한 이유, 복구 방법</title>
-<desc>도전 1-4 보고서의 (가)~(다) 질문마다 써야 할 내용을 체크리스트로 보여 줍니다. 도전은 선택이라 한 경우에만 채웁니다.</desc>
+<title>응용 1-4 보고서에 채울 칸: 출력과 경고 원인, 빈 설정이 안전한 이유, 복구 방법</title>
+<desc>응용 1-4 보고서의 (가)~(다) 질문마다 써야 할 내용을 체크리스트로 보여 줍니다. 응용은 선택이라 한 경우에만 채웁니다.</desc>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
-<text x="24" y="34" font-size="19" font-weight="700">도전 1-4 보고서 · 채울 칸 (선택)</text>
+<text x="24" y="34" font-size="19" font-weight="700">응용 1-4 보고서 · 채울 칸 (선택)</text>
 <rect x="24" y="52" width="672" height="94" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="40" y="74" font-size="16" font-weight="700">(가) 출력과 경고 두 줄</text>
 <rect x="44" y="86" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>

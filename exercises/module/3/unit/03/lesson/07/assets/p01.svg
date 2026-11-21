@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img"><title>후보 10건을 회수 제외 리스트로 회수 대상과 회수 제외로 나눈다</title><desc>과다권한 리포트의 후보 10건과 config/exclude_list.json 을 split_by_exclude 에 넣는다. 가은 ACCOUNT:CHANGE 와 서연 SALES:CHANGE 처럼 평소에 안 써도 되는 권한은 회수 제외로 간다.</desc><defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">도전 3-3 · 무엇을 만드는가</text>
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">응용 3-3 · 무엇을 만드는가</text>
 <rect x="20" y="64" width="214" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="127" y="93.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">리포트 후보</text>
 <text x="127" y="114.75" font-size="14" fill="#666660" text-anchor="middle">과다권한 리포트 · 10건</text>

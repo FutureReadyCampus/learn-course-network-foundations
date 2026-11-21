@@ -8,7 +8,7 @@ render: markdown
 
 ## 제공 파일 쓰는 법
 
-이 레슨의 파일은 **실습 3-2를 마친 뒤**, 실습 3-2 끝의 「이번 Unit 마무리 · 깃허브에 올리기」 2번에서 만듭니다. 오늘 핵심 실습에는 쓰지 않지만, 도전 3-2 · 3-3과 Unit 4 도전 4-1 · 4-2가 이 파일을 가져와 사용(import)합니다. 도전을 하지 않아도 완성본을 받아 두면 다음 Unit을 따라갈 수 있습니다.
+이 레슨의 파일은 **실습 3-2를 마친 뒤**, 실습 3-2 끝의 「이번 Unit 마무리 · 깃허브에 올리기」 2번에서 만듭니다. 오늘 핵심 실습에는 쓰지 않지만, 응용 3-2 · 3-3과 Unit 4 응용 4-1 · 4-2가 이 파일을 가져와 사용(import)합니다. 응용을 하지 않아도 완성본을 받아 두면 다음 Unit을 따라갈 수 있습니다.
 
 만들 파일은 세 개입니다.
 
@@ -30,9 +30,9 @@ render: markdown
    ```
    - 명령 풀이: 알림 파일의 알림을 하나씩 `handle_alert` 로 처리한 뒤, 만들어진 티켓 수를 출력합니다. 길지만 그대로 복사해 붙여 넣으면 됩니다.
    - `No module named 'ticketing'` 이 나오면 실습 3-2의 `ticketing.py` 가 이 폴더에 없는 것입니다.
-   - `notifier.py` 와 `ticket_notice.py` 는 `requests` 도구가 있어야 불러올 수 있어서 여기서는 확인하지 않습니다. 도전 3-3 순서 1번에서 도구를 설치한 뒤 확인합니다.
+   - `notifier.py` 와 `ticket_notice.py` 는 `requests` 도구가 있어야 불러올 수 있어서 여기서는 확인하지 않습니다. 응용 3-3 순서 1번에서 도구를 설치한 뒤 확인합니다.
 
-> 시간이 남아 도전 3-2 · 3-3을 하면, `ticket_merge.py` · `ticket_notice.py` 를 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 다 쓴 뒤에는 도전의 실행 결과가 정답과 같은지 확인합니다. 결과가 다르면 이 레슨의 완성본을 다시 붙여 넣으면 다음 Unit에 지장이 없습니다.
+> 시간이 남아 응용 3-2 · 3-3을 하면, `ticket_merge.py` · `ticket_notice.py` 를 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 다 쓴 뒤에는 응용의 실행 결과가 정답과 같은지 확인합니다. 결과가 다르면 이 레슨의 완성본을 다시 붙여 넣으면 다음 Unit에 지장이 없습니다.
 
 ## `ticket_merge.py` 만들기
 
@@ -48,7 +48,7 @@ render: markdown
 | 마지막 갱신 뒤 60분 이내에 온 알림 | `updated_at` · `merge_window_minutes` |
 
 - `change_ticket_status` 는 허용된 이동(열림 → 확인 중 → 해결, 또는 열림 → 해결)일 때만 상태를 바꾸고, 바꾼 사람과 시각을 댓글(`comments`)로 남깁니다.
-- 병합 기준과 상태 이동은 도전 3-2 레슨에서 자세히 다룹니다.
+- 병합 기준과 상태 이동은 응용 3-2 레슨에서 자세히 다룹니다.
 
 ```python
 from ticketing import make_ticket, has_failed_action, NEXT_STEPS, MANUAL_STEP  # 실습 3-2에 만든 함수와 문장을 불러온다
@@ -156,7 +156,7 @@ def notify(message, url):                                      # 메시지를 �
 | `send_with_retry` | 실패하면 최대 `MAX_TRIES`(3)번까지 다시 보내 본다 |
 
 - `send_with_retry` 는 성공한 시도 번호를, 모두 실패하면 0 을 리턴합니다. `should_send` 의 30분은 마지막으로 보낸 뒤부터 잽니다.
-- 보낼지 정하는 방법과 재시도는 도전 3-3 레슨에서 자세히 다룹니다.
+- 보낼지 정하는 방법과 재시도는 응용 3-3 레슨에서 자세히 다룹니다.
 
 ```python
 from notifier import notify                                            # notifier.py 의 알림 함수를 불러온다 (성공하면 True, 실패하면 False)

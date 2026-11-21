@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
 <title>report_u4.md 를 만들고 틀을 붙여 넣는 순서와 틀의 두 부분</title>
-<desc>왼쪽은 soar_response 에서 New File 로 report_u4.md 를 만들고 틀을 붙여 넣은 뒤 이름을 바꿔 저장하는 순서입니다. 오른쪽은 틀의 구조로, 실습 4-1 · 4-2 · 마무리는 모두 채우고 도전 4-1~4-5 는 한 도전만 채웁니다.</desc>
+<desc>왼쪽은 soar_response 에서 New File 로 report_u4.md 를 만들고 틀을 붙여 넣은 뒤 이름을 바꿔 저장하는 순서입니다. 오른쪽은 틀의 구조로, 실습 4-1 · 4-2 · 마무리는 모두 채우고 응용 4-1~4-5 는 한 응용만 채웁니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">보고서 파일 만들기</tspan></text>
@@ -20,6 +20,6 @@
 <text x="670" y="140" font-size="14" text-anchor="end" fill="#666660"><tspan x="670">(가) 답: + 출력 상자</tspan><tspan x="670" dy="24">(나) 답:</tspan><tspan x="670" dy="24">(다) 답:</tspan></text>
 <text x="350" y="228" font-size="14" text-anchor="start" fill="#666660"><tspan x="350">마무리는 (가) 하나</tspan></text>
 <rect x="336" y="256" width="348" height="114" rx="8" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="350" y="282" font-size="15" text-anchor="start" fill="#292929"><tspan x="350" font-weight="bold">도전(선택) · 한 도전만 채움</tspan><tspan x="350" dy="26">## 도전 4-1 ~ ## 도전 4-5</tspan><tspan x="350" dy="26">하지 않은 도전의 칸은 비워 둠</tspan></text>
+<text x="350" y="282" font-size="15" text-anchor="start" fill="#292929"><tspan x="350" font-weight="bold">응용(여유가 되면) · 한 응용만 채움</tspan><tspan x="350" dy="26">## 응용 4-1 ~ ## 응용 4-5</tspan><tspan x="350" dy="26">하지 않은 응용의 칸은 비워 둠</tspan></text>
 </g>
 </svg>

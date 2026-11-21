@@ -28,7 +28,7 @@ source:
 | 규칙 문제 | 「무엇을 의심할지」 정해 둔 기준이 비었거나 현실과 맞지 않음 | 너무 느슨하거나 너무 엄격한 기준 |
 | 운영 설정 문제 | 서버를 켜고 접속을 허용하는 설정이 목적과 맞지 않음 | `compose.yaml` |
 
-- `compose.yaml` 은 이 Unit 도전 5-1 · 5-2 에서 웹 서버를 켤 때 쓰는 설정 파일이고, 상황 8 에서 필요한 만큼 설명합니다.
+- `compose.yaml` 은 이 Unit 응용 5-1 · 5-2 에서 웹 서버를 켤 때 쓰는 설정 파일이고, 상황 8 에서 필요한 만큼 설명합니다.
 - 이 과정에서 규칙의 기준을 적어 둔 곳은 다섯 군데입니다.
 
 | 기준 이름 | 정하는 것 |
@@ -52,22 +52,22 @@ source:
 
 ## 3.1 상황 8개와 읽을 핵심 코드
 
-> 이번 실습은 코드를 실행하지 않고 읽고 글로 씁니다. 표의 파일은 Module 4에서 만든 것이고, 상황의 값은 11/2 의 샘플 데이터에서 가져온 것입니다. 도전을 하지 않아서 그 파일이 없으면 이 페이지의 코드 조각만 읽고 답합니다.
+> 이번 실습은 코드를 실행하지 않고 읽고 글로 씁니다. 표의 파일은 Module 4에서 만든 것이고, 상황의 값은 11/2 의 샘플 데이터에서 가져온 것입니다. 응용을 하지 않아서 그 파일이 없으면 이 페이지의 코드 조각만 읽고 답합니다.
 >
-> 표의 P4 · P5 는 Unit 4 도전 4-2 의 `problems.json` 에 적힌 진짜 문제(사람이 조사해서 확인한 문제)의 번호입니다. 「평가」는 알림을 이 진짜 문제 목록과 맞춰 보고 오탐 · 미탐을 센 일을 말합니다.
+> 표의 P4 · P5 는 Unit 4 응용 4-2 의 `problems.json` 에 적힌 진짜 문제(사람이 조사해서 확인한 문제)의 번호입니다. 「평가」는 알림을 이 진짜 문제 목록과 맞춰 보고 오탐 · 미탐을 센 일을 말합니다.
 
 | # | 상황 | 읽을 파일 (만든 곳) | 읽을 함수 · 값 |
 |---|---|---|---|
-| 1 | 설정 파일 주소 요청이 「오류」로 분류됨 | `log_classify.py` (Unit 1 도전 1-1) | `is_suspicious` · `is_error` |
+| 1 | 설정 파일 주소 요청이 「오류」로 분류됨 | `log_classify.py` (Unit 1 응용 1-1) | `is_suspicious` · `is_error` |
 | 2 | 로그 30줄이 이벤트 28개가 됨 | `normalize_web.py` (Unit 1 실습 1-2) | 깨진 줄 검사 |
 | 3 | 사용자를 알 수 있는 실패 요청이 1개뿐 | `correlation.py` (Unit 4 제공 파일) | `make_ip_user_map` · `attach_user_to_web` |
 | 4 | seoyeon 이 연결된 사건에 없음 | `correlation.py` | `find_chains` |
 | 5 | 협력사 사무실 접속에 오탐이 남 **(예시)** | `tuning.py` (Unit 4 실습 4-2) | `apply_exception` |
-| 6 | 로그인 규칙의 알림이 평가에서 빠짐 **(예시)** | `final_check.py` (Unit 4 도전 4-3) | `merge_alerts`, `login_alerts.json` |
+| 6 | 로그인 규칙의 알림이 평가에서 빠짐 **(예시)** | `final_check.py` (Unit 4 응용 4-3) | `merge_alerts`, `login_alerts.json` |
 | 7 | 정산 조회 시도(P5)에 알림이 없음 | `access_detection.py` (Unit 3 실습 3-2) | `pick_suspicious`, `REPEAT_LIMIT` |
-| 8 | 서버가 같은 네트워크에 열려 있고 기록이 사라짐 | `compose.yaml` · `compose.secure.yaml` (이 Unit 도전 5-1 · 5-2) | `ports` · `volumes` |
+| 8 | 서버가 같은 네트워크에 열려 있고 기록이 사라짐 | `compose.yaml` · `compose.secure.yaml` (이 Unit 응용 5-1 · 5-2) | `ports` · `volumes` |
 
-- `correlation.py` 는 Unit 4 의 「제공 파일」이고, 도전 4-1 에서 직접 써 보는 파일입니다.
+- `correlation.py` 는 Unit 4 의 「제공 파일」이고, 응용 4-1 에서 직접 써 보는 파일입니다.
 - 상황마다 「이렇게 알게 됐습니다」는 아래 상황별 설명의 첫 줄에 있습니다.
 
 - 파일들은 서로의 함수를 호출합니다. 상황 3 · 4는 같은 이벤트 표에서 이어지고, 상황 5 · 6 · 7은 평가 결과에서 이어집니다.
@@ -88,7 +88,7 @@ source:
 198.51.100.90 GET /phpmyadmin 404
 ```
 
-`log_classify.py` 의 `is_suspicious` 와 `is_error` 입니다. 도전 1-1 에서는 요청마다 `is_suspicious` 를 먼저 보고 참이면 「의심」, 아니면 `is_error` 가 참일 때 「오류」, 둘 다 아니면 「정상」으로 갈랐습니다. 의심 조건이 상태 코드와 `/admin` 만 보는지 읽습니다. 이 파일은 Unit 1 도전 1-1 에서 만들기 때문에 내 폴더에 없을 수 있습니다. <mark>답에 필요한 부분은 아래 코드 조각에 모두 있으니, 파일이 없어도 이 조각만 읽고 씁니다.</mark>
+`log_classify.py` 의 `is_suspicious` 와 `is_error` 입니다. 응용 1-1 에서는 요청마다 `is_suspicious` 를 먼저 보고 참이면 「의심」, 아니면 `is_error` 가 참일 때 「오류」, 둘 다 아니면 「정상」으로 갈랐습니다. 의심 조건이 상태 코드와 `/admin` 만 보는지 읽습니다. 이 파일은 Unit 1 응용 1-1 에서 만들기 때문에 내 폴더에 없을 수 있습니다. <mark>답에 필요한 부분은 아래 코드 조각에 모두 있으니, 파일이 없어도 이 조각만 읽고 씁니다.</mark>
 
 ```python
 SUSPICIOUS_STATUS = (401, 403)                         # 의심으로 보는 상태 코드(로그인 실패 · 접근 거부)
@@ -145,7 +145,7 @@ def make_ip_user_map(logins):                     # SaaS 로그인 표를 받는
     return ip_user                                # IP → 사용자 딕셔너리를 리턴한다
 ```
 
-Unit 4 도전 4-1 에서 이 함수로 만든 딕셔너리에는 IP 가 다섯 개 있었고, 203.0.113.50 은 그 안에 없었습니다.
+Unit 4 응용 4-1 에서 이 함수로 만든 딕셔너리에는 IP 가 다섯 개 있었고, 203.0.113.50 은 그 안에 없었습니다.
 
 #### 상황 4 · 두 로그에 나오는 seoyeon 이 연결되지 않음
 
@@ -166,7 +166,7 @@ is_close = span <= WINDOW_MINUTES          # 시간 간격이 기준 이내인�
 
 - 가운데 줄 하나를 줄였습니다. `spans` 에는 사용자마다의 분이 들어 있고, 그중 한 사용자의 값을 꺼낸 것이 `span` 입니다.
 
-seoyeon 의 이벤트를 시각순으로 놓은 표입니다. Unit 4 도전 4-1 의 단계 4 로 나온 결과는 `{'user': 'seoyeon', 'source_count': 2, 'span_minutes': 555}` 이고, gaeun 은 `서로 다른 로그 3종류 · 41분 안` 으로 연결됐습니다.
+seoyeon 의 이벤트를 시각순으로 놓은 표입니다. Unit 4 응용 4-1 의 단계 4 로 나온 결과는 `{'user': 'seoyeon', 'source_count': 2, 'span_minutes': 555}` 이고, gaeun 은 `서로 다른 로그 3종류 · 41분 안` 으로 연결됐습니다.
 
 | 시각 | 로그 | 행동 | 결과 |
 |---|---|---|---|
@@ -211,7 +211,7 @@ def apply_exception(alerts):                     # 알림 표를 받는 함수
 
 **이렇게 알게 됐습니다**: 로그인 5번 실패 뒤 성공한 203.0.113.50 의 일(P4)이 평가에서 놓친 문제로 나옵니다. 로그인 규칙은 알림을 이미 냈습니다.
 
-Unit 4 도전 4-2 의 마지막 단계입니다. 알림 7개로 센 결과입니다.
+Unit 4 응용 4-2 의 마지막 단계입니다. 알림 7개로 센 결과입니다.
 
 ```
 --- 단계 4: 미탐 (알림이 나지 않은 진짜 문제) ---
@@ -263,19 +263,19 @@ def pick_suspicious(server_failures):      # 서버 실패 표를 받는 함수
 
 **이렇게 알게 됐습니다**: 컴포즈로 켠 `web2` 에 같은 사무실 네트워크의 다른 PC 에서도 접속할 수 있습니다. 서버를 지우면 서버 안의 접속 기록도 사라집니다.
 
-**이 상황은 선택입니다.** 이 레슨 뒤에 있는 도전 5-1 · 5-2 의 내용이라 도전을 하지 않았다면 건너뛰고 상황 7개만 정리해도 실습 5-2 를 마칠 수 있습니다. 해 보고 싶다면 아래 설명과 코드 조각만 읽고 답해도 됩니다.
+**이 상황은 선택입니다.** 이 레슨 뒤에 있는 응용 5-1 · 5-2 의 내용이라 응용을 하지 않았다면 건너뛰고 상황 7개만 정리해도 실습 5-2 를 마칠 수 있습니다. 해 보고 싶다면 아래 설명과 코드 조각만 읽고 답해도 됩니다.
 
 - 컴포즈(Docker Compose · 도커 컴포즈)는 웹 서버 여러 대의 설정을 `compose.yaml` 파일 하나에 적어 두고 한 번에 켜는 도구입니다.
 - `ports` 의 `"8081:80"` 은 「내 PC 의 8081번 포트로 온 요청을 서버 안의 80번 포트로 보낸다」는 뜻입니다.
 - 아래 줄 맨 끝 PORTS 칸의 `0.0.0.0:8081` 은 「어느 PC 에서 온 요청이든 받는다」는 뜻이고, `127.0.0.1` 은 내 PC 자신을 가리키는 주소입니다.
 
-이 Unit 도전 5-1 에서 쓴 `compose.yaml` 로 켠 `web2` 의 상태입니다. PORTS 에 `0.0.0.0` 이 보입니다.
+이 Unit 응용 5-1 에서 쓴 `compose.yaml` 로 켠 `web2` 의 상태입니다. PORTS 에 `0.0.0.0` 이 보입니다.
 
 ```
 anomaly_detection-web2-1   nginx:1.28   "/docker-entrypoint.…"   web2   Up   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp
 ```
 
-`compose.secure.yaml` 의 `web2` 와 `web3` 입니다. 접속 범위를 정하는 `ports` 와 기록을 내 폴더에 연결하는 `volumes` 를 읽습니다. 도전 5-1 의 `compose.yaml` 에서 `web2` 는 `"8081:80"` 으로 적혀 있었습니다.
+`compose.secure.yaml` 의 `web2` 와 `web3` 입니다. 접속 범위를 정하는 `ports` 와 기록을 내 폴더에 연결하는 `volumes` 를 읽습니다. 응용 5-1 의 `compose.yaml` 에서 `web2` 는 `"8081:80"` 으로 적혀 있었습니다.
 
 ```yaml
   web2:                          # 관리용 서버
@@ -290,7 +290,7 @@ anomaly_detection-web2-1   nginx:1.28   "/docker-entrypoint.…"   web2   Up   0
       - ./logs:/var/log/nginx    # 서버가 로그를 쓰는 폴더를 내 logs 폴더에 연결한다
 ```
 
-도전 5-2 에서 `logs/access.log` 에 남은 한 줄의 모양입니다. 도전 5-2 를 했다면 `cat logs/access.log` 로 내 파일의 줄과 비교해 읽습니다.
+응용 5-2 에서 `logs/access.log` 에 남은 한 줄의 모양입니다. 응용 5-2 를 했다면 `cat logs/access.log` 로 내 파일의 줄과 비교해 읽습니다.
 
 ```
 172.18.0.1 - - [06/Nov/2026:03:37:43 +0000] "GET /.env HTTP/1.1" 404 153 "-" "curl/8.7.1" "-"
@@ -356,7 +356,7 @@ anomaly_detection-web2-1   nginx:1.28   "/docker-entrypoint.…"   web2   Up   0
 1. 점수 파일의 사실만 AI 에게 보내 대상 3명의 요약을 받고, 실패하면 대체 문장을 쓰게 했다 (실습 5-1)
 2. 상황 8개 중 4개 이상의 원인과 고치는 방법을 내 말로 정리해 Module 4 총정리를 썼다 (실습 5-2)
 3. 보고서 `report_u5.md` 의 실습 5-1 · 5-2 칸에 `답:` 뒤가 비어 있는 질문이 없다
-4. 도전 5-1 · 5-2를 했다면 컴포즈 파일 두 개와 `logs` 폴더가 있고, 도전 5-3을 했다면 보고서 파일 `anomaly_detection_report_2026-11-02.json` 이 있다 (선택)
+4. 응용 5-1 · 5-2를 했다면 컴포즈 파일 두 개와 `logs` 폴더가 있고, 응용 5-3을 했다면 보고서 파일 `anomaly_detection_report_2026-11-02.json` 이 있다 (선택)
 
 **2. 파일 확인** — **[터미널]** `anomaly_detection` 폴더에서 확인합니다.
 
@@ -366,13 +366,13 @@ ls
 ```
 
 - `pwd` 결과가 `anomaly_detection` 으로 끝나야 합니다.
-- 이번 Unit에서 만든 파일이 보여야 합니다. 도전 파일은 그 도전을 했을 때만 있습니다.
+- 이번 Unit에서 만든 파일이 보여야 합니다. 응용 파일은 그 응용을 했을 때만 있습니다.
 
 | 언제 | 보여야 할 파일 |
 |---|---|
 | 시작하기 · 실습 | `llm_client.py` · `unit05_risk_scores.json` · `event_summary.py` · `exercise5-1_run.py` · `report_u5.md` |
-| 도전 5-1 · 5-2 | `compose.yaml` · `compose.secure.yaml` · `logs/` |
-| 도전 5-3 | `pipeline.py` · `challenge5-3_run.py` · `anomaly_detection_report_2026-11-02.json` |
+| 응용 5-1 · 5-2 | `compose.yaml` · `compose.secure.yaml` · `logs/` |
+| 응용 5-3 | `pipeline.py` · `apply5-3_run.py` · `anomaly_detection_report_2026-11-02.json` |
 
 - Module 4의 파일은 이렇게 둡니다. 파일을 어디에 저장했는지 헷갈리면 이 규칙과 VS Code 왼쪽 목록을 비교합니다.
 
@@ -380,10 +380,10 @@ ls
 |---|---|
 | `config/` | JSON 설정 파일(`users.json` · `roles.json`)만 |
 | `anomaly_detection/` 바로 아래 | 그 밖의 파일 모두(코드 · 실행 파일 · 데이터 · 보고서 · 컴포즈 파일) |
-| `logs/` | 도전 5-2에서 컴포즈가 남긴 접속 기록 |
+| `logs/` | 응용 5-2에서 컴포즈가 남긴 접속 기록 |
 | `__pycache__/` | 파이썬이 자동으로 만드는 임시 폴더(신경 쓰지 않음) |
 
-- 코드는 `.py`, 실행 파일은 `exerciseN-M_run.py` · `challengeN-M_run.py`, 보고서는 `report_uN.md` 입니다.
+- 코드는 `.py`, 실행 파일은 `exerciseN-M_run.py` · `applyN-M_run.py`, 보고서는 `report_uN.md` 입니다.
 
 ```
 security-agent-toolkit/
@@ -400,8 +400,8 @@ security-agent-toolkit/
     exercise5-1_run.py
     report_u5.md
     (앞 Unit의 파일들)
-    (도전을 했다면) compose.yaml · compose.secure.yaml · logs/
-    (도전을 했다면) pipeline.py · challenge5-3_run.py · anomaly_detection_report_2026-11-02.json
+    (응용을 했다면) compose.yaml · compose.secure.yaml · logs/
+    (응용을 했다면) pipeline.py · apply5-3_run.py · anomaly_detection_report_2026-11-02.json
 ```
 
 ## 마무리 · 깃허브에 올리기
@@ -412,7 +412,7 @@ security-agent-toolkit/
 
 - **지금은**: <mark>팀장이 「Module 4에서 만든 파일과 보고서 파일을 저장소에 남겨 달라」고 합니다</mark>.
 - **그래서 하는 것**: `git status` 로 올라갈 파일을 확인한 뒤(`.env` 같은 비밀 키 파일이 섞이면 안 됩니다) `git add` → `git commit` → `git push` 순서로 올립니다.
-- **끝나면**: 깃허브 저장소의 `anomaly_detection` 폴더에 이번 Unit에서 만든 `event_summary.py` · `exercise5-1_run.py` · `report_u5.md` 가 보입니다. 도전을 했다면 그 파일도 함께 보입니다.
+- **끝나면**: 깃허브 저장소의 `anomaly_detection` 폴더에 이번 Unit에서 만든 `event_summary.py` · `exercise5-1_run.py` · `report_u5.md` 가 보입니다. 응용을 했다면 그 파일도 함께 보입니다.
 
 **순서**
 

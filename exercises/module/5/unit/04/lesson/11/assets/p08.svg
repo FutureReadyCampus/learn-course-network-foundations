@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 370" role="img">
-<title>도전 4-4 보고서 체크리스트: (가) (나) (다) 에 쓸 내용</title>
-<desc>report_u4.md 의 ## 도전 4-4 아래 칸마다 쓸 내용입니다. (가)는 출력 전체를 코드 상자에 붙이고, 빨간 테두리의 [핵심 질문]은 내 출력 값을 근거로 이유까지 씁니다.</desc>
+<title>응용 4-4 보고서 체크리스트: (가) (나) (다) 에 쓸 내용</title>
+<desc>report_u4.md 의 ## 응용 4-4 아래 칸마다 쓸 내용입니다. (가)는 출력 전체를 코드 상자에 붙이고, 빨간 테두리의 [핵심 질문]은 내 출력 값을 근거로 이유까지 씁니다.</desc>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">도전 4-4 · 보고서에 채울 칸</tspan></text>
-<text x="700" y="32" font-size="14" text-anchor="end" fill="#666660"><tspan x="700">도전(선택)</tspan></text>
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">응용 4-4 · 보고서에 채울 칸</tspan></text>
+<text x="700" y="32" font-size="14" text-anchor="end" fill="#666660"><tspan x="700">응용(여유가 되면)</tspan></text>
 <text x="20" y="58" font-size="15" text-anchor="start" fill="#666660"><tspan x="20">자동 조치 리스크 평가 문서 쓰기</tspan></text>
 <rect x="20" y="76" width="680" height="86" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <rect x="34" y="110.0" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>

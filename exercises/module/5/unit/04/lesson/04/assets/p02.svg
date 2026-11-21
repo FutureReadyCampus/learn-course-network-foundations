@@ -31,6 +31,6 @@
 <rect x="380" y="250" width="320" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="540.0" y="274.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="540.0" font-weight="bold">send_with_retry</tspan><tspan x="540.0" dy="21">Unit 3 · ticket_notice.py</tspan></text>
 <rect x="20" y="330" width="680" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="360.0" y="350.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="360.0">도전 4-2 는 needs_escalation · escalate_ticket 을 불러 씁니다</tspan><tspan x="360.0" dy="20">규칙 파일 config/escalation_rules.json 은 도전 4-1 에서 다룹니다</tspan></text>
+<text x="360.0" y="350.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="360.0">응용 4-2 는 needs_escalation · escalate_ticket 을 불러 씁니다</tspan><tspan x="360.0" dy="20">규칙 파일 config/escalation_rules.json 은 응용 4-1 에서 다룹니다</tspan></text>
 </g>
 </svg>

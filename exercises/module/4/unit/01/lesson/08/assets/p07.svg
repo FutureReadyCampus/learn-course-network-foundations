@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 436" role="img">
-<title>도전 1-3 보고서에 채울 칸: 출력과 수, gaeun 이벤트 순서, user 가 빈 28개</title>
+<title>응용 1-3 보고서에 채울 칸: 출력과 수, gaeun 이벤트 순서, user 가 빈 28개</title>
 <desc>(가)는 출력과 소스별 수, 빈 값 수, 저장된 수를 씁니다. (나)는 gaeun 이벤트의 순서, (다)는 user 가 빈 28개의 소스와 이유를 씁니다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">보고서 도전 1-3 칸 체크리스트</text>
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">보고서 응용 1-3 칸 체크리스트</text>
 <rect x="24" y="54" width="170" height="154" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="109" y="125.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">(가)</text>
 <text x="109" y="145.9" font-size="14" text-anchor="middle" fill="#666660">출력 · 수</text>

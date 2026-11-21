@@ -61,7 +61,7 @@ enrichment.py   lookup_account   : 대상이 users_info 안에 있으면 재직 
 
 **할 일**: 두 파일을 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 · 3 을 읽습니다.
 
-**`enrichment.py`** — 알림에 맥락을 추가하는 보강 함수를 정의합니다. 도전 1-1 실행 파일도 `enrich_incident` 를 가져와 사용(import)합니다. 직접 쓰는 곳은 1 ~ 6번입니다.
+**`enrichment.py`** — 알림에 맥락을 추가하는 보강 함수를 정의합니다. 응용 1-1 실행 파일도 `enrich_incident` 를 가져와 사용(import)합니다. 직접 쓰는 곳은 1 ~ 6번입니다.
 
 ```python
 def lookup_account(entity, users_info):                              # 대상 이름과 계정 정보 딕셔너리를 받는 함수
@@ -196,7 +196,7 @@ print("VIP 계정 알림", vip_count, "건")                        # VIP 계정
 
 ## 이번 Unit 마무리 · 깃허브에 올리기
 
-하루를 닫는 마무리입니다(15분). 핵심 실습 세 개와 「제공 파일」을 끝낸 뒤 합니다. 도전은 하지 않아도 됩니다.
+하루를 닫는 마무리입니다(15분). 핵심 실습 세 개와 「제공 파일」을 끝낸 뒤 합니다. 응용은 하지 않아도 됩니다.
 
 **1. 오늘 한 일 확인**
 
@@ -254,16 +254,16 @@ ls config
    - <mark>`git push` 가 거절(`rejected`)되면</mark> 깃허브에 내 PC 에 없는 기록이 있다는 뜻입니다. `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다. 이 화면은 git 이 두 기록을 합친 기록에 붙일 메시지를 확인하라고 여는 편집기(vim)라서, 메시지는 고치지 않고 저장하고 닫기만 하면 됩니다.
 5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `soar_response` 폴더를 열고, 2번에서 확인한 파일이 모두 있는지 봅니다. `__pycache__` 폴더는 없어도 됩니다.
 
-- 시간이 남아 도전을 했다면 도전 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
+- 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
 
 **4. 이어지는 곳**
 
 | 다시 쓰는 곳 | 오늘 만든 것 |
 |---|---|
 | Module 5 끝까지 | `config/playbook_registry.json` · `incident.py` · `incident_samples.json` 을 그대로 불러 쓴다 |
-| Unit 2 도전 2-2 · Unit 3 도전 3-1 | `enrichment.py` 의 `enrich_incident` 와 `users_info.json` · `source_ips.json` · `trusted_ips.json` (알림에 맥락을 붙일 때) |
-| Unit 2 도전 2-2 · Unit 3 도전 3-1 | 「제공 파일」의 `routing.py` |
-| Unit 2 도전 2-2 | 「제공 파일」의 `safe_runner.py` |
+| Unit 2 응용 2-2 · Unit 3 응용 3-1 | `enrichment.py` 의 `enrich_incident` 와 `users_info.json` · `source_ips.json` · `trusted_ips.json` (알림에 맥락을 붙일 때) |
+| Unit 2 응용 2-2 · Unit 3 응용 3-1 | 「제공 파일」의 `routing.py` |
+| Unit 2 응용 2-2 | 「제공 파일」의 `safe_runner.py` |
 
 - Unit 2 는 연습용 시스템에 적기만 하던 `계정 잠금` 을 실행한 뒤 정말 잠겼는지 다시 확인하고, 조치 전 · 후 상태를 기록으로 남깁니다.
 

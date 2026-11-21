@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>도전 3-2: handle_alert 가 합칠 티켓을 찾아 새 티켓을 만들거나 병합하는 흐름</title>
+<title>응용 3-2: handle_alert 가 합칠 티켓을 찾아 새 티켓을 만들거나 병합하는 흐름</title>
 <desc>알림이 오면 find_open_ticket(1~3번)이 합칠 티켓을 찾고 7번에서 existing 에 저장한다. 8번에서 None 이면 새 티켓을 만들고, 아니면 9번에서 merge_alert(4~6번)로 count, incidents, updated_at 을 갱신한다. 단계 3 에서는 TCK-1 상태를 바꿔 본다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
 <rect x="20" y="20" width="140" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>

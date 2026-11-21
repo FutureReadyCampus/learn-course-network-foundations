@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
 <title>Unit 2는 핵심 실습 두 개로 요청서를 접수 · 승인하고, 부여는 제공 파일로 받는다</title>
-<desc>3시간을 시작 15분, 실습 약 110분, 글쓰기 40분, 마무리 15분으로 나눕니다. 실습 2-1에서 접수, 실습 2-2에서 승인 · 반려를 만들고 부여 함수는 제공 파일로 받습니다. 도전 세 개는 시간이 남을 때 합니다.</desc>
+<desc>3시간을 시작 15분, 실습 약 110분, 글쓰기 40분, 마무리 15분으로 나눕니다. 실습 2-1에서 접수, 실습 2-2에서 승인 · 반려를 만들고 부여 함수는 제공 파일로 받습니다. 응용 세 개는 시간이 남을 때 합니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">Unit 2 오늘의 계획 (3시간)</text>
@@ -32,7 +32,7 @@
 <text x="600" y="212" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">제공 파일 · 부여</text>
 <text x="600" y="236" font-size="14" fill="#666660" text-anchor="middle">grant_request</text>
 <rect x="20" y="276" width="680" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="40" y="302" font-size="15" fill="#9a6200" text-anchor="start" font-weight="700">도전 2-1 ~ 2-3 (선택)</text>
+<text x="40" y="302" font-size="15" fill="#9a6200" text-anchor="start" font-weight="700">응용 2-1 ~ 2-3 (선택)</text>
 <text x="40" y="326" font-size="15" fill="#292929" text-anchor="start">grant_request 직접 쓰기 · 처리 기한(SLA) 넘긴 요청 찾기 · 요청 이력 저장</text>
 </g>
 </svg>

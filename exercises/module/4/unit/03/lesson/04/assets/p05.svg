@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
-<title>도전 3-1 정리: 알림 한 건, 한 쌍씩 꺼내기, 문자열 바꾸기, JSON 저장 코드</title>
-<desc>도전 3-1 에서 쓴 코드 네 가지를 하려는 일과 짝지었다. 알림은 키 다섯 개 딕셔너리, 센 결과는 items() 로 한 쌍씩, 시각은 str() 로 문자열, 저장은 with open 과 json.dump 로 한다.</desc>
+<title>응용 3-1 정리: 알림 한 건, 한 쌍씩 꺼내기, 문자열 바꾸기, JSON 저장 코드</title>
+<desc>응용 3-1 에서 쓴 코드 네 가지를 하려는 일과 짝지었다. 알림은 키 다섯 개 딕셔너리, 센 결과는 items() 로 한 쌍씩, 시각은 str() 로 문자열, 저장은 with open 과 json.dump 로 한다.</desc>
 <defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
-<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">도전 3-1 정리</text>
+<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">응용 3-1 정리</text>
 <rect x="30" y="55" width="180" height="66" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="120" y="93.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">알림 한 건</text>
 <rect x="225" y="55" width="465" height="66" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>

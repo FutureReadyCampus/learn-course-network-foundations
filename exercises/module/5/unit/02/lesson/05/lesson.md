@@ -1,6 +1,6 @@
 ---
 id: m5-u02-l05
-title: 도전 2-1 · 담당자 승인·거절 적용과 권한 확인
+title: 응용 2-1 · 담당자 승인·거절 적용과 권한 확인
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,11 +9,11 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 도전 2-1 · 담당자 승인·거절 적용과 권한 확인
+# 응용 2-1 · 담당자 승인·거절 적용과 권한 확인
 
 ## 이번 의뢰: 승인 결과 받기
 
-> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 2-1 · 2-2와 글쓰기를 먼저 마칩니다. 이 도전에서는 제공 파일로 받아 쓴 `audit.py` · `approvals.py` 를 직접 써 봅니다. 실습 2-1 · 2-2 의 파일은 쓰지 않으므로 도전 2-1 만 따로 해도 됩니다. 하지 않아도 Unit 3 을 따라가는 데 문제가 없습니다.
+> **여유가 되면 해 보세요.** 핵심 실습 2-1 · 2-2와 글쓰기를 먼저 마칩니다. 이 응용에서는 제공 파일로 받아 쓴 `audit.py` · `approvals.py` 를 직접 써 봅니다. 실습 2-1 · 2-2 의 파일은 쓰지 않으므로 응용 2-1 만 따로 해도 됩니다. 하지 않아도 Unit 3 을 따라가는 데 문제가 없습니다.
 
 > **오늘 들어온 일**
 >
@@ -55,20 +55,20 @@ approvals.py    is_authorized     : 승인한 사람이 권한 목록에 있는�
                 execute_actions   : 액션을 하나씩 실행한다 (3번)
                 apply_decision    : 권한이 없으면 기록만 남기고 멈춘다 (4 · 5번)
                 finish_decision   : 승인이면 실행하고 끝낸다 (6 · 7번) / 아니면 종료하고 거절 사유를 기록한다 (미리 채움)
-실행 파일       challenge2-1_run.py  : 대기 건마다 결정이 있으면 apply_decision 을 호출한다 (8 · 9번)
+실행 파일       apply2-1_run.py  : 대기 건마다 결정이 있으면 apply_decision 을 호출한다 (8 · 9번)
 ```
 
-## 도전 2-1 · 권한 확인 후 담당자 결정 적용
+## 응용 2-1 · 권한 확인 후 담당자 결정 적용
 
 **이런 상황이 있습니다**
 
 - **지금은**: <mark>승인 대기 3건이 멈춰 있고, 담당자 결정 3건(승인 · 거절 · 권한 없는 승인)이 들어와 있습니다</mark>.
-- **만드는 것**: 기록 한 건 만들기(`audit.py`), 권한 확인 · 실행 · 종료(`approvals.py`), 결정을 적용하는 함수를 부르는 실행 파일(`challenge2-1_run.py`).
+- **만드는 것**: 기록 한 건 만들기(`audit.py`), 권한 확인 · 실행 · 종료(`approvals.py`), 결정을 적용하는 함수를 부르는 실행 파일(`apply2-1_run.py`).
 - **실행하면**: <mark>단계 1: 승인 대기 건, 단계 2: 결정 적용 결과, 단계 3: 처리 뒤 연습용 시스템 상태, 단계 4: 감사 기록이 나옵니다.</mark>
 
 **할 일**: 데이터 파일 두 개를 만들고, 파일 세 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 ~ 4 를 읽습니다.
 
-**`pending.json`** — 승인을 기다리는 건 3건입니다(경로 정하기에서 `승인 필요` 경로로 간 VIP 알림 1건과, 플레이북이 승인을 요구해 멈춘 2건). `INC-002` 같은 번호는 **인시던트**(incident, 보안 알림 가운데 사람이 확인하고 대응해야 하는 사건 한 건)에 붙인 관리 번호입니다. 각 건에는 어떤 플레이북 때문에 멈췄는지, 승인되면 어떤 액션을 실행하는지, 왜 승인이 필요한지가 적혀 있습니다. 도전 2-1 은 이 파일을 읽어서 씁니다. 도전 2-2 하루 흐름은 이 파일을 읽지 않고, 코드가 같은 내용을 직접 만듭니다. `soar_response` 폴더에 만듭니다.
+**`pending.json`** — 승인을 기다리는 건 3건입니다(경로 정하기에서 `승인 필요` 경로로 간 VIP 알림 1건과, 플레이북이 승인을 요구해 멈춘 2건). `INC-002` 같은 번호는 **인시던트**(incident, 보안 알림 가운데 사람이 확인하고 대응해야 하는 사건 한 건)에 붙인 관리 번호입니다. 각 건에는 어떤 플레이북 때문에 멈췄는지, 승인되면 어떤 액션을 실행하는지, 왜 승인이 필요한지가 적혀 있습니다. 응용 2-1 은 이 파일을 읽어서 씁니다. 응용 2-2 하루 흐름은 이 파일을 읽지 않고, 코드가 같은 내용을 직접 만듭니다. `soar_response` 폴더에 만듭니다.
 
 <pre class="copyable"><code>[
   {"id": "INC-002", "entity": "seoyeon", "playbook": "PB-002", "actions": ["담당자 알림", "티켓 생성"], "why": "플레이북 승인 값이 담당자 승인 필요", "status": "분류됨"},
@@ -77,7 +77,7 @@ approvals.py    is_authorized     : 승인한 사람이 권한 목록에 있는�
 ]
 </code></pre>
 
-**`decisions.json`** — 담당자가 메신저에서 누른 승인 · 거절 결과를 파일로 흉내 낸 것입니다. 건마다 적힌 것은 세 가지입니다. 누가 눌렀는지(`approver`), 승인과 거절 중 무엇을 눌렀는지(`result`), 남긴 말(`comment`)입니다. 권한이 있는 담당자는 `kim.sec` · `lee.soc` 이고 `intern01` 은 권한이 없습니다. 도전 2-1 과 도전 2-2 가 읽습니다. `soar_response` 폴더에 만듭니다.
+**`decisions.json`** — 담당자가 메신저에서 누른 승인 · 거절 결과를 파일로 흉내 낸 것입니다. 건마다 적힌 것은 세 가지입니다. 누가 눌렀는지(`approver`), 승인과 거절 중 무엇을 눌렀는지(`result`), 남긴 말(`comment`)입니다. 권한이 있는 담당자는 `kim.sec` · `lee.soc` 이고 `intern01` 은 권한이 없습니다. 응용 2-1 과 응용 2-2 가 읽습니다. `soar_response` 폴더에 만듭니다.
 
 <pre class="copyable"><code>{
   "INC-002": {"approver": "kim.sec", "result": "승인", "comment": "대량 다운로드 사유를 확인해야 함"},
@@ -86,9 +86,9 @@ approvals.py    is_authorized     : 승인한 사람이 권한 목록에 있는�
 }
 </code></pre>
 
-**`audit.py`** 와 **`approvals.py`** 는 「제공 파일」 레슨에서 이미 만들었습니다. <mark>두 파일을 열어 내용을 모두 지우고 아래 골격을 붙여 넣은 뒤</mark> 빈칸을 씁니다. 다 쓸 때까지는 도전 2-2 가 동작하지 않습니다. 끝내 막히면 「제공 파일」 레슨의 완성본을 다시 붙여 넣어 되돌립니다.
+**`audit.py`** 와 **`approvals.py`** 는 「제공 파일」 레슨에서 이미 만들었습니다. <mark>두 파일을 열어 내용을 모두 지우고 아래 골격을 붙여 넣은 뒤</mark> 빈칸을 씁니다. 다 쓸 때까지는 응용 2-2 가 동작하지 않습니다. 끝내 막히면 「제공 파일」 레슨의 완성본을 다시 붙여 넣어 되돌립니다.
 
-**`audit.py`** — 감사 기록 한 건을 만듭니다. `approvals.py` 와 도전 2-2 `flow.py` 가 불러다 씁니다. 직접 쓰는 곳은 1번입니다.
+**`audit.py`** — 감사 기록 한 건을 만듭니다. `approvals.py` 와 응용 2-2 `flow.py` 가 불러다 씁니다. 직접 쓰는 곳은 1번입니다.
 
 ```python
 def log_line(item, action, text):  # 인시던트 · 액션 · 결과 문장을 받는 함수
@@ -100,7 +100,7 @@ def log_line(item, action, text):  # 인시던트 · 액션 · 결과 문장을 
     return entry                   # 기록 한 건을 리턴한다
 ```
 
-**`approvals.py`** — 권한을 확인하고 결정을 적용합니다. 도전 2-2 `flow.py` 도 불러다 씁니다. 직접 쓰는 곳은 2 ~ 7번입니다.
+**`approvals.py`** — 권한을 확인하고 결정을 적용합니다. 응용 2-2 `flow.py` 도 불러다 씁니다. 직접 쓰는 곳은 2 ~ 7번입니다.
 
 ```python
 from incident import change_status, run_action                                           # Unit 1 파일의 함수를 불러온다
@@ -111,7 +111,7 @@ APPROVERS = ["kim.sec", "lee.soc"]                                              
 
 def hold_for_approval(incident, playbook_id, actions, why, action_log):                  # 승인 대기로 멈출 인시던트와 정보를 받는 함수
     """알림의 상태를 분류됨으로 바꾸고 승인 대기 기록을 남긴 뒤, 담당자에게 보여 줄 대기 건 한 건으로 리턴한다.
-    승인이 필요한 알림을 실행하지 않고 담당자에게 넘길 때 쓴다(도전 2-2 하루 흐름에서 호출한다).
+    승인이 필요한 알림을 실행하지 않고 담당자에게 넘길 때 쓴다(응용 2-2 하루 흐름에서 호출한다).
     """
     incident["playbook"] = playbook_id                                                   # 어떤 플레이북 때문인지 적고
     incident["actions"] = actions                                                        # 승인되면 실행할 액션을 적고
@@ -173,7 +173,7 @@ def finish_decision(item, decision, state, action_log):                         
     return "거절 처리"                                                                   # 거절 처리를 리턴한다 — 미리 채운 줄
 ```
 
-**`challenge2-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실행하면 결과를 출력합니다.
+**`apply2-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실행하면 결과를 출력합니다.
 
 ```python
 from incident import load_json                                                              # Unit 1 파일의 함수를 불러온다
@@ -208,23 +208,23 @@ for entry in action_log:                                                        
 
 **순서**
 
-1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `pending.json` · `decisions.json` 을 만들어 위 내용을 붙여 넣고 저장합니다. 이어서 `audit.py` · `approvals.py` 는 열어서 골격으로 바꾸고, `challenge2-1_run.py` 는 새로 만들어(파일 이름 그대로) 코드를 붙여 넣어 저장합니다.
+1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `pending.json` · `decisions.json` 을 만들어 위 내용을 붙여 넣고 저장합니다. 이어서 `audit.py` · `approvals.py` 는 열어서 골격으로 바꾸고, `apply2-1_run.py` 는 새로 만들어(파일 이름 그대로) 코드를 붙여 넣어 저장합니다.
    - **[터미널]** 데이터 파일을 확인합니다(맥북은 `python3`). <mark>`3 3` 이 나와야</mark> 합니다.
      ```bash
      python -c "import json; print(len(json.load(open('pending.json', encoding='utf-8'))), len(json.load(open('decisions.json', encoding='utf-8'))))"
      ```
-2. **[VS Code]** `audit.py` 1번, `approvals.py` 2 ~ 7번, `challenge2-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「도전 2-1 정리」를 봅니다.
+2. **[VS Code]** `audit.py` 1번, `approvals.py` 2 ~ 7번, `apply2-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「응용 2-1 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
-   python challenge2-1_run.py
+   python apply2-1_run.py
    ```
 4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 3줄, 단계 2 도 3줄, 단계 3 은 3줄, 단계 4 는 감사 기록 4줄입니다.
-5. **[보고서]** `report_u2.md` 의 `## 도전 2-1` 아래를 채웁니다.
+5. **[보고서]** `report_u2.md` 의 `## 응용 2-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 처리 뒤 티켓 수 · 담당자 알림 수 · `분류됨` 으로 남은 알림의 번호를 각각 적어 주세요.
    - (나) [핵심 질문] INC-005 는 결정이 `승인` 인데 실행되지 않았습니다. 단계 2 와 단계 4 의 출력을 근거로 그 이유를 적어 주세요. 그리고 권한 확인이 없을 때 생길 위험도 적어 주세요.
    - (다) [핵심 질문] INC-003 이 승인 대기가 된 이유(단계 1), 거절된 뒤의 상태, 감사 기록에 남은 내용을 각각 적어 주세요.
 
-## 도전 2-1 정리
+## 응용 2-1 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|

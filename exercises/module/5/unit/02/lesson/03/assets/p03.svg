@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 352" role="img">
 <title>audit.py 의 log_line 은 incident, playbook, action, result 네 키로 기록 한 건을 만듭니다</title>
-<desc>log_line 은 알림, 액션, 결과 문장을 받아 네 키를 가진 딕셔너리를 리턴합니다. 예는 INC-002 의 티켓 생성 기록이고, approvals.py 와 도전 2-2 의 flow.py 가 이 함수를 부릅니다.</desc>
+<desc>log_line 은 알림, 액션, 결과 문장을 받아 네 키를 가진 딕셔너리를 리턴합니다. 예는 INC-002 의 티켓 생성 기록이고, approvals.py 와 응용 2-2 의 flow.py 가 이 함수를 부릅니다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="24" y="34" font-size="19" fill="#292929" font-weight="700">audit.py: log_line 이 만드는 기록 한 건</text>
@@ -24,6 +24,6 @@
 <text x="432.0" y="222.2" font-size="15" text-anchor="start" fill="#292929"><tspan x="432.0" dy="0">티켓 TCK-1 생성 (승인: kim.sec)</tspan></text>
 <line x1="244" y1="145" x2="288" y2="145" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
 <rect x="24" y="262" width="672" height="60" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360.0" y="286.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">이 함수를 부르는 곳</tspan><tspan x="360.0" dy="21">approvals.py (승인 · 거절 · 권한 없음) · flow.py (도전 2-2)</tspan></text>
+<text x="360.0" y="286.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">이 함수를 부르는 곳</tspan><tspan x="360.0" dy="21">approvals.py (승인 · 거절 · 권한 없음) · flow.py (응용 2-2)</tspan></text>
 </g>
 </svg>

@@ -1,6 +1,6 @@
 ---
 id: m4-u04-l07
-title: 도전 4-3 · 규칙 합쳐 놓친 문제 다시 세기
+title: 응용 4-3 · 규칙 합쳐 놓친 문제 다시 세기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,11 +9,11 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 도전 4-3 · 규칙 합쳐 놓친 문제 다시 세기
+# 응용 4-3 · 규칙 합쳐 놓친 문제 다시 세기
 
 ## 목표: 합친 알림과 평가 한 문장
 
-> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 4-1 · 4-2와 글쓰기를 먼저 마칩니다. 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
+> **여유가 되면 해 보세요.** 핵심 실습 4-1 · 4-2와 글쓰기를 먼저 마칩니다. 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
 
 > **이번 실습에 들어온 일**
 >
@@ -31,7 +31,7 @@ source:
 
 ## 3.1 진짜 문제 5개를 어느 규칙이 찾는가
 
-**먼저 `login_alerts.json` 을 만듭니다.** 로그인 규칙(웹 로그인 반복 실패)이 낸 알림 1개입니다. `anomaly_detection` 폴더에 만들고, 같은 이름의 파일이 이미 있으면 아래 내용으로 덮어씁니다. `problems.json` 이 아직 없으면 도전 4-2 레슨의 「1.1 알림 7개와 진짜 문제 5개」 페이지에서 먼저 만듭니다.
+**먼저 `login_alerts.json` 을 만듭니다.** 로그인 규칙(웹 로그인 반복 실패)이 낸 알림 1개입니다. `anomaly_detection` 폴더에 만들고, 같은 이름의 파일이 이미 있으면 아래 내용으로 덮어씁니다. `problems.json` 이 아직 없으면 응용 4-2 레슨의 「1.1 알림 7개와 진짜 문제 5개」 페이지에서 먼저 만듭니다.
 
 **`login_alerts.json`**
 
@@ -180,9 +180,9 @@ Name: problem, dtype: object
 | `evaluate` | 2 ~ 5번(4곳) | 알림이 가리키는 문제 번호만 남기고(빈 값 지우기), 그 번호가 알림에 있는지 구한 뒤, 놓친 문제를 뒤집어 고릅니다 |
 | `make_summary` | 6번(1곳) | 숫자를 문자열로 바꿔 이어 붙여 한 문장을 만듭니다 |
 
-- 이번 실습에서 새 문법은 `.dropna()` 하나입니다. `pd.concat` 은 도전 4-1에도 나오지만 처음 보는 사람을 위해 다시 설명합니다.
+- 이번 실습에서 새 문법은 `.dropna()` 하나입니다. `pd.concat` 은 응용 4-1에도 나오지만 처음 보는 사람을 위해 다시 설명합니다.
 
-## 도전 4-3 · 규칙 합쳐 놓친 문제 다시 세기
+## 응용 4-3 · 규칙 합쳐 놓친 문제 다시 세기
 
 **이런 상황이 있습니다**
 
@@ -196,7 +196,7 @@ Name: problem, dtype: object
 
 **할 일**
 
-1. `final_check.py` · `challenge4-3_run.py` 두 파일을 만들고, `final_check.py` 의 세 함수에서 직접 쓰는 곳을 씁니다.
+1. `final_check.py` · `apply4-3_run.py` 두 파일을 만들고, `final_check.py` 의 세 함수에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>합친 알림 수</mark>(단계 2), <mark>오탐 수</mark>(단계 3), <mark>아직 놓친 문제</mark>(단계 4), <mark>한 문장 요약</mark>(단계 5)을 읽습니다.
 
 **`final_check.py`**
@@ -270,7 +270,7 @@ def make_summary(alert_count, false_alarm_count, missed_count):  # 세 개수를
 - 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
 - 채우기 전에 실행하면 `NameError: name 'all_alerts' is not defined` 오류가 납니다. 1번을 아직 안 썼기 때문입니다.
 
-**`challenge4-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
+**`apply4-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
 
 ```python
 from final_check import load_table, apply_exception, merge_alerts, evaluate, make_summary, ALERTS_PATH, LOGIN_ALERTS_PATH, PROBLEMS_PATH  # 방금 만든 함수를 불러온다
@@ -309,21 +309,21 @@ print(summary)                                        # 요약 문장을 출력�
 
 **순서**
 
-1. **[VS Code]** 파일 `final_check.py` · `challenge4-3_run.py` 를 만들어 위 코드를 붙여 넣습니다.
-2. **[VS Code]** `final_check.py` 에서 <mark>직접 쓰는 곳 여섯 군데를 씁니다</mark>. 위 판다스 문법 상자와 3.1 의 표를 참고해 씁니다. 막히면 아래 「도전 4-3 정리」를 봅니다.
+1. **[VS Code]** 파일 `final_check.py` · `apply4-3_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+2. **[VS Code]** `final_check.py` 에서 <mark>직접 쓰는 곳 여섯 군데를 씁니다</mark>. 위 판다스 문법 상자와 3.1 의 표를 참고해 씁니다. 막히면 아래 「응용 4-3 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
-   python challenge4-3_run.py
+   python apply4-3_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python challenge4-3_run.py` 파이썬으로 실행 파일 실행
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python apply4-3_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **다섯 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 2줄(빠진 알림 수 · 남은 알림 수), 단계 2와 단계 3은 각각 1줄, 단계 4는 2줄(미탐 수 · 놓친 문제), 단계 5는 1줄입니다.
-5. **[보고서]** `report_u4.md` 의 `## 도전 4-3` 아래를 채웁니다.
+5. **[보고서]** `report_u4.md` 의 `## 응용 4-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 한 문장 요약을 적어 주세요.
    - (나) [핵심 질문] 로그인 규칙의 알림을 합치자 놓친 문제가 몇 개에서 몇 개로 줄었나요? P4 가 잡힌 이유와, 오탐이 늘지 않은 이유를 함께 적어 주세요.
    - (다) [핵심 질문] 아직 놓친 P5(seoyeon 의 권한 없는 정산 조회 시도)를 찾으려면 어떤 규칙이 필요하고, 그 규칙을 더하면 오탐이 늘 수 있는 이유는 무엇인지 적어 주세요.
 
-## 도전 4-3 정리
+## 응용 4-3 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|

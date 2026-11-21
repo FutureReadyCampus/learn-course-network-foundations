@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 404" role="img">
-<title>도전 5-2 의 (가)~(다) 답에 들어갈 칸: ps 출력 두 개, 포트 줄 차이, up -d 출력</title>
+<title>응용 5-2 의 (가)~(다) 답에 들어갈 칸: ps 출력 두 개, 포트 줄 차이, up -d 출력</title>
 <desc>(가)는 1번과 5번의 docker compose ps 출력과 바뀐 서비스, 새 서비스를 씁니다. (나)는 두 포트 줄의 접속 범위 차이와 관리 화면·데이터베이스를 그렇게 두는 이유, (다)는 Running·Recreated·Created 가 다른 이유와 그 쓸모를 씁니다.</desc>
 <defs><marker id="a-l08-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
-<text x="24" y="32" font-size="19" font-weight="700">도전 5-2 · 서버별 접속 범위 정하고 적용하기</text>
+<text x="24" y="32" font-size="19" font-weight="700">응용 5-2 · 서버별 접속 범위 정하고 적용하기</text>
 <text x="24" y="56" font-size="14" fill="#666660">칸 체크리스트 · 답: 뒤에 이것들이 다 있으면 됩니다</text>
 <rect x="24" y="72" width="96" height="120" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="72" y="102" font-size="17" text-anchor="middle" font-weight="700">(가)</text>
@@ -32,6 +32,6 @@
 <text x="172" y="314" font-size="15">web1 Running · web2 Recreated · web3 Created 인 이유</text>
 <rect x="148" y="325" width="14" height="14" rx="3" fill="#ffffff" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="172" y="338" font-size="15">서버를 끊지 않고 바꿀 수 있는 것의 쓸모</text>
-<text x="24" y="386" font-size="14" fill="#666660">선택입니다. 도전을 했을 때만 채웁니다.</text>
+<text x="24" y="386" font-size="14" fill="#666660">선택입니다. 응용을 했을 때만 채웁니다.</text>
 </g>
 </svg>

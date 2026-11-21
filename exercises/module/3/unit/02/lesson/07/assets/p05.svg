@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img">
-<title>도전 2-2 정리: 설정 읽기부터 복사본에 지난 시간 적기까지 여섯 단계</title>
+<title>응용 2-2 정리: 설정 읽기부터 복사본에 지난 시간 적기까지 여섯 단계</title>
 <desc>SLA 시간을 설정 파일에서 읽고, 검토 중인 요청서만 골라 접수 시각을 시각으로 바꿉니다. 걸린 시간을 시간 단위로 구해 SLA_HOURS 보다 크면 복사본에 wait_hours 를 반올림해 적습니다.</desc>
 <defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">도전 2-2 정리</text>
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">응용 2-2 정리</text>
 <rect x="15" y="52" width="210" height="96" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="120" y="85.328" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">① 처리 기한 읽기</text>
 <text x="120" y="105.712" font-size="14" fill="#292929" text-anchor="middle">load_json(</text>
