@@ -57,14 +57,28 @@ source:
 
 탐지 등급은 사건의 심각도로 점수에 더합니다. 계정 잠금과 IP 차단은 Unit 3 실습 3-1 에서 되돌리기(롤백)를 만들었습니다. 되돌릴 수 없는 세션 종료는 이 Unit 의 응용 4-4(선택) 리스크 평가에서 다룹니다.
 
-함수 세 개와 실행 파일 가운데 직접 쓰는 곳은 **아홉 군데**입니다.
+함수 세 개와 실행 파일은 대부분 미리 채워 두었습니다. 직접 쓰는 곳은 `decide_gate` 의 마지막 기준 검사 **두 줄**(① · ②)입니다.
 
 ```
-approval_gate.py   is_allowlisted  : 대상이 허용 목록에 있는지 리턴한다 (1번)
-                   risk_score      : 등급 점수로 시작해 (2번), VIP 이면 (3번) 점수를 더한다 (4번). 함께 쓰는 IP · 대상 수는 미리 채움
-                   decide_gate     : 허용 목록이면 차단 금지 (5번), 점수를 받아 (6번), 기준 이상이면 승인 필요 (7번)
-실행 파일          exercise4-1_run.py : 요청마다 결정을 받아 (8번) 결정별로 센다 (9번)
+approval_gate.py   is_allowlisted  : 대상이 허용 목록에 있는지 리턴한다 (미리 채움)
+                   risk_score      : 등급 · VIP · 함께 쓰는 IP · 대상 수 점수를 더한다 (미리 채움)
+                   decide_gate     : 허용 목록이면 차단 금지, 점수를 받아 (미리 채움), 기준 이상이면 (①) 승인 필요 (②)
+실행 파일          exercise4-1_run.py : 요청마다 결정을 받아 결정별로 센다 (미리 채움)
 ```
+
+#### 문법 상자 · 직접 쓰는 곳의 모양 (예시 값 · 읽기만 합니다)
+
+```python
+score = 4                                  # 예시 값
+if score >= 3:                             # 「이상」은 >= 로 묻는다. 끝에 : 를 붙인다
+    print("기준 이상")                     # if 안쪽 줄은 4칸 더 들여 쓴다
+
+def pick(score):                           # 예시 함수
+    return "높음", ["합계 " + str(score)]  # 두 값을 쉼표로 이어 함께 리턴한다
+```
+
+- `>=` 는 「크거나 같으면」입니다. 기준과 같은 3점도 승인 필요에 들어가야 하므로 `>` 가 아니라 `>=` 를 씁니다.
+- `return 값1, 값2` 는 두 값을 함께 돌려줍니다. 실행 파일은 `decision, reasons = decide_gate(…)` 로 나눠 받습니다.
 
 ## 실습 4-1 · 위험 점수로 조치 요청 분류하기
 
@@ -74,7 +88,11 @@ approval_gate.py   is_allowlisted  : 대상이 허용 목록에 있는지 리턴
 - **만드는 것**: 허용 목록 확인 · 위험 점수 · 결정(`approval_gate.py`), 요청마다 결정하고 세기(`exercise4-1_run.py`).
 - **실행하면**: <mark>단계 1: 불러온 요청 수와 기준 점수, 단계 2: 요청마다 결정과 이유, 단계 3: 결정별 요청 수, 단계 4: 담당자에게 보낼 승인 요청, 단계 5: 저장한 결정 수가 나옵니다.</mark>
 
-**할 일**: 데이터 파일 두 개와 코드 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 ~ 4 를 읽습니다.
+**할 일**
+
+1. 데이터 파일 두 개와 코드 파일 두 개를 만들어 붙여 넣습니다.
+2. 채우기 <mark>전에</mark> 한 번 실행해 봅니다.
+3. `approval_gate.py` 에서 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채우고 다시 실행해 단계 2 ~ 4 를 읽습니다.
 
 **`config/approval_policy.json`** — 승인 게이트의 기준입니다. 점수 값은 위 2.1 표와 같습니다. 코드는 이 파일의 키 이름으로 읽습니다.
 
@@ -105,10 +123,8 @@ approval_gate.py   is_allowlisted  : 대상이 허용 목록에 있는지 리턴
 ]
 </code></pre>
 
-**`approval_gate.py`** — 승인 게이트 함수 모음입니다. Unit 5 와 응용 4-5 도 가져와 사용(import)합니다. 직접 쓰는 곳은 1 ~ 7번입니다.
+**`approval_gate.py`** — 승인 게이트 함수 모음입니다. Unit 5 와 응용 4-5 도 가져와 사용(import)합니다. 직접 쓰는 곳은 `decide_gate` 의 ① · ② 두 줄이고, 나머지는 미리 채운 줄입니다.
 
-- 3번 아래에는 `if` 한 줄을 씁니다. 그 아래 미리 채운 `reasons.append(…)` 줄은 4번과 함께 `if` 안쪽입니다.
-- 5번과 7번도 `if` 한 줄만 씁니다. 그 아래 미리 채운 `return` 줄이 `if` 안쪽입니다.
 - 미리 채운 줄의 `str(score)` 는 숫자를 문자열(글자로 된 값)로 바꿉니다. 숫자는 `+` 로 문자열과 바로 이어 붙일 수 없어서 먼저 바꿉니다.
 
 ```python
@@ -116,8 +132,7 @@ def is_allowlisted(request, policy):                                        # �
     """조치 대상이 허용 목록에 있으면 True, 없으면 False 를 리턴한다.
     협력사 사무실이나 점검 서버처럼 지금 정책에서 차단하지 않기로 등록한 대상을 먼저 가려낼 때 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. request["target"] 이 policy["allowlist_ips"] 안에 있는지(in)의 결과를 리턴한다
+    return request["target"] in policy["allowlist_ips"]                     # 대상이 허용 목록에 있는지의 결과를 리턴한다 — 미리 채운 줄
 
 
 def risk_score(request, policy):                                            # 조치 요청 한 건과 승인 정책을 받는 함수
@@ -125,11 +140,10 @@ def risk_score(request, policy):                                            # �
     자동으로 실행해도 되는 요청인지 숫자로 판단할 때 쓴다.
     """
     grade_table = policy["grade_points"]                                    # 등급마다 정한 점수 표 — 미리 채운 줄
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 2. grade_table[request["grade"]] 를 score 에 저장한다 (등급 점수로 시작한다)
+    score = grade_table[request["grade"]]                                   # 이 요청 등급의 점수로 시작한다 — 미리 채운 줄
     reasons = ["등급 " + request["grade"] + " +" + str(score)]              # 점수를 더한 이유 리스트 — 미리 채운 줄
-    # 3. request["target"] 이 policy["vip_accounts"] 안에 있으면 (if, in)
-        # 4. score 에 score + policy["vip_points"] 를 저장한다 (VIP 점수를 더한다)
+    if request["target"] in policy["vip_accounts"]:                         # 대상이 VIP 계정이면 — 미리 채운 줄
+        score = score + policy["vip_points"]                                # VIP 점수를 더한다 — 미리 채운 줄
         reasons.append("VIP 계정 +" + str(policy["vip_points"]))            # 이유를 추가한다 — 미리 채운 줄
     if request["users_on_ip"] >= policy["shared_ip_limit"]:                 # 여러 계정이 함께 쓰는 IP 이면 — 미리 채운 줄
         score = score + policy["shared_ip_points"]                          # 함께 쓰는 IP 점수를 더한다 — 미리 채운 줄
@@ -144,17 +158,17 @@ def decide_gate(request, policy):                                           # �
     """조치 요청 한 건을 「차단 금지」 · 「승인 필요」 · 「자동」 가운데 하나로 정하고, 결정과 이유 리스트를 함께 리턴한다.
     자동 대응이 조치를 실행하기 직전에, 사람의 승인이 필요한지 정할 때 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 5. is_allowlisted(request, policy) 가 참이면 (if)
+    if is_allowlisted(request, policy):                                     # 허용 목록 대상이면 — 미리 채운 줄
         return "차단 금지", ["허용 목록 대상"]                              # 결정과 이유를 함께 리턴한다 — 미리 채운 줄
-    # 6. risk_score(request, policy) 의 두 결과를 score, reasons 에 저장한다
+    score, reasons = risk_score(request, policy)                            # 위험 점수와 이유 리스트를 함께 받는다 — 미리 채운 줄
     reasons.append("합계 " + str(score) + "점")                             # 합계 점수를 이유에 추가한다 — 미리 채운 줄
-    # 7. score 가 policy["approval_score"] 이상이면 (if, >=)
-        return "승인 필요", reasons                                         # 결정과 이유를 함께 리턴한다 — 미리 채운 줄
+    # ① score 가 policy["approval_score"] 이상이면 (if, >=)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+    # ② "승인 필요" 와 reasons 를 함께 리턴한다   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+
     return "자동", reasons                                                  # 기준보다 낮으면 자동으로 실행한다 — 미리 채운 줄
 ```
 
-**`exercise4-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 단계 3 의 `for decision in counts:` 처럼 딕셔너리를 `for` 로 돌리면 키(여기서는 결정 이름)가 하나씩 나옵니다.
+**`exercise4-1_run.py`** — 직접 쓰는 줄이 없습니다. 그대로 붙여 넣습니다. 단계 3 의 `for decision in counts:` 처럼 딕셔너리를 `for` 로 돌리면 키(여기서는 결정 이름)가 하나씩 나옵니다.
 
 ```python
 from incident import load_json, save_json                           # Unit 1 파일의 JSON 읽기 · 쓰기 함수를 불러온다
@@ -168,9 +182,8 @@ counts = {"자동": 0, "승인 필요": 0, "차단 금지": 0}                # 
 results = []                                                        # 요청마다 결정을 저장할 빈 리스트
 print("--- 단계 2: 요청마다 결정과 이유")                           # 단계 2 시작을 알리는 줄
 for request in requests:                                            # 조치 요청을 하나씩 읽는다
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 8. decide_gate(request, policy) 의 두 결과를 decision, reasons 에 저장한다
-    # 9. counts[decision] 에 counts[decision] + 1 을 저장한다 (1 늘린다)
+    decision, reasons = decide_gate(request, policy)                # 결정과 이유 리스트를 함께 받는다
+    counts[decision] = counts[decision] + 1                         # 이 결정의 요청 수를 1 늘린다
     reason_text = ", ".join(reasons)                                # 이유 리스트를 쉼표로 이어 한 문자열로 만든다
     print(request["id"], request["action"], request["target"], "→", decision, "·", reason_text)  # 요청과 결정을 출력한다
     results.append({"id": request["id"], "incident": request["incident"], "action": request["action"], "target": request["target"], "decision": decision})  # 결정을 추가한다
@@ -188,6 +201,20 @@ save_json(results, "gate_results.json")                             # 결정 리
 print("--- 단계 5: gate_results.json 에", len(results), "건 저장")  # 단계 5 시작을 알리는 줄과 저장한 수
 ```
 
+- 주석 줄은 그대로 두고, **각 주석 바로 아래 줄**에 씁니다. ① 은 `if` 줄이라 4칸, ② 는 그 `if` 안쪽의 `return` 줄이라 8칸에서 시작합니다.
+- 바로 위의 미리 채운 `if is_allowlisted(request, policy):` 와 그 아래 `return "차단 금지", …` 가 ① · ② 와 같은 모양입니다.
+
+**직접 쓰는 곳**
+
+| 빈칸 | 쓰는 줄 | 들여쓰기 |
+|---|---|---|
+| ① | `score` 가 기준 이상이면 (`if`, `>=`) | 4칸 |
+| ② | 「승인 필요」와 `reasons` 를 리턴 (`return`) | 8칸 |
+
+- ① 확인: ① 만 쓰고 실행하면 `IndentationError: expected an indented block after 'if' statement` 가 나옵니다. ② 를 아직 안 써서 나는 오류이니 정상입니다. 막히면: 문법 상자의 `if score >= 3:` 에서 `3` 자리에 `policy["approval_score"]` 를 넣습니다.
+- ② 확인: ② 까지 쓰고 실행하면 `REQ-2 계정 잠금 gaeun → 승인 필요 · 등급 mid +1, VIP 계정 +3, 합계 4점` 이 나오면 성공입니다. 막히면: 맨 아래 미리 채운 `return "자동", reasons` 와 같은 모양이고 `"자동"` 만 `"승인 필요"` 로 바뀝니다.
+- 채우기 전에 실행해도 오류 없이 돌아갑니다. 다만 허용 목록 대상 두 건 말고는 모두 「자동」이라 단계 3 이 `자동 : 6 건` · `승인 필요 : 0 건` 이고, 단계 4 에는 줄이 하나도 없습니다. VIP 계정 잠금(`REQ-2`)과 계정 6개 잠금(`REQ-6`)도 사람의 승인 없이 실행된다는 것을 보여 주는 결과입니다.
+
 **순서**
 
 1. **[터미널]** `config` 폴더가 없으면 만듭니다.
@@ -198,18 +225,24 @@ print("--- 단계 5: gate_results.json 에", len(results), "건 저장")  # 단�
    ```
    - 명령 풀이: `mkdir -p config` 는 `config` 폴더가 없을 때만 만듭니다(이미 있으면 그대로 둡니다).
    - **[VS Code]** 파일 네 개를 만듭니다. `config` 폴더를 오른쪽 클릭 › **New File** 로 `approval_policy.json` 을, `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `gate_requests.json` · `approval_gate.py` · `exercise4-1_run.py` 를 만들고, 각각 코드 상자의 내용을 붙여 넣고 저장합니다.
-2. **[VS Code]** `approval_gate.py` 1 ~ 7번, `exercise4-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「실습 4-1 정리」를 봅니다.
-3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+2. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고, **채우기 전에** 한 번 실행합니다(맥북은 `python3`). 단계 3 이 `승인 필요 : 0 건` 인지 봅니다.
    ```bash
    python exercise4-1_run.py
    ```
-4. 출력은 다섯 단계입니다. 제목 줄은 줄 수에 넣지 않습니다.
+3. **[VS Code]** `approval_gate.py` 의 `# ←` 두 곳(① · ②)을 채웁니다. 2.1 의 판단 순서 표 3번 줄을 보고 씁니다.
+4. **[터미널]** 다시 실행합니다.
+   ```bash
+   python exercise4-1_run.py
+   ```
+5. 출력은 다섯 단계입니다. 제목 줄은 줄 수에 넣지 않습니다.
    - 단계 1 과 단계 5 는 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
    - 단계 2 는 8줄, 단계 3 은 3줄, 단계 4 는 3줄입니다.
-5. **[보고서]** `report_u4.md` 의 `## 실습 4-1` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 결정별 요청 수를 적고, 승인 필요인 요청 번호도 적어 주세요.
-   - (나) [핵심 질문] `REQ-1`(`dami`)과 `REQ-6`(`minsu`)은 둘 다 high 등급의 계정 잠금인데 결정이 다릅니다. 단계 2 의 이유를 근거로 결정이 달라진 이유를 적어 주세요. 그리고 대상 수(영향 범위)를 위험 점수에 반영해야 하는 이유도 적어 주세요.
-   - (다) [핵심 질문] `REQ-3` 은 high 등급이고 함께 쓰는 IP 인데 차단 금지입니다. `decide_gate` 가 허용 목록을 점수보다 먼저 확인하는 이유를 적고, 승인 기준(임계값)을 코드가 아니라 설정 파일로 분리하면 무엇이 좋은지 적어 주세요.
+6. **[보고서]** `report_u4.md` 의 `## 실습 4-1` 아래를 채웁니다.
+   - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 결정별 요청 수를 적고, 승인 필요인 요청 번호도 적어 주세요.
+   - (나) [응용] `REQ-1`(`dami`)과 `REQ-6`(`minsu`)은 둘 다 high 등급의 계정 잠금인데 결정이 다릅니다. 단계 2 의 이유를 근거로 결정이 달라진 이유를 적어 주세요. 그리고 대상 수(영향 범위)를 위험 점수에 반영해야 하는 이유도 적어 주세요.
+   - (다) [응용] `REQ-3` 은 high 등급이고 함께 쓰는 IP 인데 차단 금지입니다. `decide_gate` 가 허용 목록을 점수보다 먼저 확인하는 이유를 적고, 승인 기준(임계값)을 코드가 아니라 설정 파일로 분리하면 무엇이 좋은지 적어 주세요.
+
+**확인** — 다시 실행했을 때 단계 3 이 `자동 : 3 건` · `승인 필요 : 3 건` · `차단 금지 : 2 건` 이고, 단계 4 에 `REQ-2` · `REQ-5` · `REQ-6` 세 줄이 나오면 성공입니다. 안 나오면 「정답」 레슨의 실습 4-1 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 ## 실습 4-1 정리
 

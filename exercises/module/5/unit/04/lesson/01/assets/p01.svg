@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
-<title>오늘 3시간 계획과 핵심 실습 4-1 · 4-2, 선택 응용 4-1~4-5</title>
-<desc>위는 시작하기 15분, 실습 약 110분, 글쓰기 40분, 마무리 15분의 순서입니다. 가운데는 승인 게이트(실습 4-1)와 오탐 되돌리기(실습 4-2)가 하는 일이고, 아래는 선택인 응용 4-1~4-5입니다.</desc>
+<title>오늘 약 2시간 40분 계획과 핵심 실습 4-1 · 4-2, 응용 4-1~4-5</title>
+<desc>위는 시작하기 15분, 실습 약 110분, 글쓰기 20분, 마무리 15분의 순서입니다. 가운데는 승인 게이트(실습 4-1)와 오탐 되돌리기(실습 4-2)가 하는 일이고, 아래는 여유가 되면 하는 응용 4-1~4-5입니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">오늘의 계획 (3시간)</tspan></text>
+<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">오늘의 계획 (약 2시간 40분)</tspan></text>
 <rect x="20" y="52" width="152" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="96.0" y="76.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="96.0" font-weight="bold">시작하기</tspan><tspan x="96.0" dy="21">15분</tspan></text>
 <rect x="196" y="52" width="152" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="272.0" y="76.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="272.0" font-weight="bold">실습</tspan><tspan x="272.0" dy="21">약 110분</tspan></text>
 <rect x="372" y="52" width="152" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="448.0" y="76.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="448.0" font-weight="bold">글쓰기</tspan><tspan x="448.0" dy="21">40분</tspan></text>
+<text x="448.0" y="76.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="448.0" font-weight="bold">글쓰기</tspan><tspan x="448.0" dy="21">20분</tspan></text>
 <rect x="548" y="52" width="152" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="624.0" y="76.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="624.0" font-weight="bold">마무리</tspan><tspan x="624.0" dy="21">15분</tspan></text>
 <line x1="174" y1="82" x2="194" y2="82" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
@@ -45,6 +45,6 @@
 <line x1="510" y1="323" x2="530" y2="323" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
 <text x="690" y="276" font-size="14" text-anchor="end" fill="#666660"><tspan x="690">Unit 3 실습 3-1 의 되돌리기 함수</tspan></text>
 <rect x="20" y="368" width="680" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="360.0" y="393.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0">응용 4-1 ~ 4-5 는 선택: 핵심 실습 두 개와 글쓰기를 마치고 시간이 남으면</tspan></text>
+<text x="360.0" y="393.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0">응용 4-1 ~ 4-5 는 여유가 되면: 핵심 실습 두 개와 글쓰기를 마치고 시간이 남으면</tspan></text>
 </g>
 </svg>

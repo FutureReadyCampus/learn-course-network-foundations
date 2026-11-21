@@ -32,6 +32,8 @@ render: markdown
 | `No module named 'requests'` | 도구가 설치되지 않음 | `python -m pip install flask requests` |
 | `No module named 'pandas'` | 도구가 설치되지 않음 | `python -m pip install pandas` |
 
+> **확인** — 만든 파일마다 `escalation.py 정상` · `report.py 정상` 이 한 줄씩 나오면 성공입니다. 안 나오면 위 표에서 오류 메시지를 찾아 그 「할 일」을 하고 다시 칩니다.
+
 ## `escalation.py` 만들기
 
 **`escalation.py`** — 응답 기한(SLA)이 지났는데 아직 `열림` 상태인 티켓을 상급자에게 올립니다. 같은 단계는 한 번만 올립니다.
@@ -97,6 +99,8 @@ def escalate_ticket(ticket, now, rules):                                        
 
 - 함수 네 개의 뜻과 규칙 파일(`config/escalation_rules.json`)의 키는 응용 4-1 레슨에서 자세히 다룹니다.
 - 응용 4-2 는 이 파일의 `needs_escalation` 과 `escalate_ticket` 을 불러 씁니다.
+
+> **확인** — `python -c "import escalation; print('escalation.py 정상')"` 이 `escalation.py 정상` 을 출력하면 성공입니다. `No module named 'ticket_notice'` 가 나오면 응용 4-1 레슨의 「필요한 파일 준비하기」를 먼저 합니다.
 
 ## `report.py` 만들기
 
@@ -219,3 +223,5 @@ def make_report_lines(tickets, actions, rule_counts, grade_means, late_tickets, 
 
 - 함수마다 하는 일과 판다스 문법은 응용 4-3 레슨에서 자세히 다룹니다.
 - 응용 4-5 는 이 파일의 `find_missing_incidents` 를 불러 씁니다. 응용 4-5 가 읽는 리포트 파일 `incident_report_20261112.md` 는 응용 4-5 레슨에서 만드는 방법을 알려 줍니다.
+
+> **확인** — `python -c "import report; print('report.py 정상')"` 이 `report.py 정상` 을 출력하면 성공입니다. `No module named 'pandas'` 가 나오면 `python -m pip install pandas` 로 설치하고 다시 칩니다.

@@ -7,25 +7,25 @@
 <rect x="20" y="52" width="160" height="40" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="100.0" y="76.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="100.0" font-weight="bold">1. 영향 확인</tspan></text>
 <rect x="190" y="52" width="240" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="310.0" y="76.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="310.0" font-size="14">list_changes · 1 · 2번</tspan></text>
+<text x="310.0" y="76.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="310.0" font-size="14">list_changes · ① · ② 직접 씀</tspan></text>
 <rect x="440" y="52" width="260" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="570.0" y="76.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="570.0" font-size="14">before ≠ after 인 기록만</tspan></text>
 <rect x="20" y="102" width="160" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="100.0" y="126.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="100.0" font-weight="bold">2. 되돌리기</tspan></text>
 <rect x="190" y="102" width="240" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="310.0" y="126.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="310.0" font-size="14">rollback_incident · 7번</tspan></text>
+<text x="310.0" y="126.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="310.0" font-size="14">rollback_incident (미리 채움)</tspan></text>
 <rect x="440" y="102" width="260" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="570.0" y="126.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="570.0" font-size="14">Unit 3 함수로 롤백</tspan></text>
 <rect x="20" y="152" width="160" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="100.0" y="176.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="100.0" font-weight="bold">3. 복구 확인</tspan></text>
 <rect x="190" y="152" width="240" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="310.0" y="176.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="310.0" font-size="14">find_not_recovered · 3 · 4번</tspan></text>
+<text x="310.0" y="176.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="310.0" font-size="14">find_not_recovered (미리 채움)</tspan></text>
 <rect x="440" y="152" width="260" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="570.0" y="176.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="570.0" font-size="14">남은 대상 = [] 이면 끝</tspan></text>
 <rect x="20" y="202" width="160" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="100.0" y="226.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="100.0" font-weight="bold">4. 규칙 조정 제안</tspan></text>
 <rect x="190" y="202" width="240" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="310.0" y="226.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="310.0" font-size="14">make_tuning_note · 5 · 6번</tspan></text>
+<text x="310.0" y="226.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="310.0" font-size="14">make_tuning_note (미리 채움)</tspan></text>
 <rect x="440" y="202" width="260" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="570.0" y="226.5" font-size="15" text-anchor="middle" fill="#292929"><tspan x="570.0" font-size="14">IP → 허용 목록 · 계정 → 규칙 예외</tspan></text>
 <rect x="20" y="266" width="680" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
