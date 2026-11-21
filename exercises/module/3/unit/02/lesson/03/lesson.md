@@ -53,10 +53,17 @@ source:
 
 ## 1.2 접수할 수 없는 요청
 
-- 접수 단계에서는 세 가지만 걸러 냅니다. 사용자 파일에 없는 이름, 이유가 비어 있는 요청, 그리고 희망 만료 시각(`until`)이 접수 시각과 같거나 그보다 앞선(이미 지난) 요청입니다.
-- 퇴사한 사람이나 이미 권한이 있는 사람의 요청은 접수 단계에서 걸러 내지 않습니다. 그것은 부여 단계에서 `req_grant.py` 의 정책 코드가 확인합니다.
+접수 단계에서는 세 가지만 걸러 냅니다.
+
+| 이런 요청 | 접수 단계에서 |
+|---|---|
+| 사용자 파일에 없는 이름 | 걸러 냄 |
+| 이유가 비어 있는 요청 | 걸러 냄 |
+| 희망 만료 시각(`until`)이 접수 시각과 같거나 앞섬(이미 지남) | 걸러 냄 |
+| 퇴사한 사람 · 이미 권한이 있는 사람의 요청 | 걸러 내지 않음. 부여 단계에서 `req_grant.py` 의 정책 코드가 확인 |
+| `until` 이 비었거나 너무 먼 미래인 요청 | 확인하지 않음 |
+
 - 함수가 받는 접수 시각 `received_at` 은 요청서의 `requested_at` 키의 값으로 그대로 들어갑니다.
-- `until` 이 비었는지, 너무 먼 미래인지는 접수 단계에서 확인하지 않습니다.
 
 <figure class="page-figure"><img src="assets/f02.svg" alt="create_request 는 사용자 · 이유 · 만료 시각을 차례로 검사하고, 모두 통과하면 요청서를 추가합니다"></figure>
 
@@ -206,9 +213,12 @@ for request in REQUESTS:                                         # 요청서를 
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 요청서 한 장 | 딕셔너리. 키는 `id` · `user` · `resource` · `action` · `permission` · `until` · `reason` · `requested_at` · `status` |
+| 요청서 한 장 | 딕셔너리 |
+| 키: 누가 · 무엇을 | `id` · `user` · `resource` · `action` · `permission` |
+| 키: 언제 · 왜 · 상태 | `until` · `reason` · `requested_at` · `status` |
 | 다음 요청 번호 | `len(REQUESTS) + 1` |
-| 접수 못 하는 요청 | 사용자 파일에 없음 · 이유가 `""` · `until <= received_at` → `(False, 이유)` |
+| 접수 못 하는 요청 | 사용자 파일에 없음 · 이유가 `""` · `until <= received_at` |
+| 접수 못 할 때 리턴 | `(False, 이유)` |
 | 접수한 요청의 상태 | `"reviewing"` |
 | 리스트에 추가하기 | `REQUESTS.append(request)` |
 

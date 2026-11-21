@@ -46,9 +46,12 @@ source:
    ```bash
    ls
    ```
-   - `security-agent-toolkit` 이 **보이면** → 2번으로
-   - 그 이름은 없지만 앞 사람이 **다른 이름으로 만든 폴더**처럼 보이는 것(예: `toolkit`, `my-security`)이 있으면 → 그 폴더 이름으로 2번을 합니다
-   - **둘 다 없으면** → 4장으로 건너뜁니다(이름 바꿀 폴더가 없음)
+
+   | `ls` 에 보이는 것 | 다음 할 일 |
+   |---|---|
+   | `security-agent-toolkit` | 2번으로 |
+   | 그 이름은 없고, 앞 사람이 **다른 이름으로 만든 폴더**(예: `toolkit`, `my-security`) | 그 폴더 이름으로 2번을 합니다 |
+   | **둘 다 없음** | 4장으로 건너뜁니다(이름 바꿀 폴더가 없음) |
 
 2. **[터미널]** 그 폴더가 **누구 저장소**인지 봅니다.
    ```bash
@@ -249,21 +252,15 @@ source:
 
 ## 막히면
 
-1. `git clone` 에 `fatal: destination path 'security-agent-toolkit' already exists and is not an empty directory.` 가 나오면
-   - 뜻: 같은 이름 폴더가 아직 있습니다.
-   - 할 일: 4장(`_old` 로 이름 바꾸기)을 먼저 합니다.
-2. `mv` 뒤에 `Permission denied` 또는 `Device or resource busy` 가 나오면
-   - 뜻: 그 폴더가 어딘가에 열려 있습니다.
-   - 할 일: VS Code 에서 **File › Close Folder** 를 누르고, 파일 탐색기 창도 닫은 뒤 다시 `mv` 를 칩니다.
-3. `git push` 에 `Permission … denied to 앞사람아이디` 가 나오면
-   - 뜻: 앞 사람 로그인이 아직 남아 있습니다.
-   - 할 일: 3장 1번(자격 증명 제거)을 하고 다시 `git push` 를 칩니다.
-4. 깃허브에서 커밋 옆 이름이 앞 사람이면
-   - 뜻: git 이름 · 이메일이 앞 사람 것입니다.
-   - 할 일: 3장 2번을 합니다. 다음 커밋부터 내 이름으로 찍힙니다.
-5. `git log` 맨 위에 Unit 1 마무리 커밋이 없으면
-   - 뜻: Unit 1 마무리의 push 가 안 됐거나 다른 저장소를 받았습니다.
-   - 할 일: 6장의 `git remote -v` 주소가 내 아이디인지, 브라우저의 내 저장소에 `access_control` 폴더가 있는지 봅니다.
+`git clone` 의 첫 번째 오류 전문은 `fatal: destination path 'security-agent-toolkit' already exists and is not an empty directory.` 입니다.
+
+| 어디서 | 이렇게 되면 | 뜻 | 할 일 |
+|---|---|---|---|
+| `git clone` | `destination path … already exists` | 같은 이름 폴더가 아직 있음 | 4장(`_old` 로 이름 바꾸기)을 먼저 |
+| `mv` | `Permission denied` 또는 `Device or resource busy` | 그 폴더가 어딘가에 열려 있음 | VS Code 의 **File › Close Folder**, 파일 탐색기 창도 닫고 다시 `mv` |
+| `git push` | `Permission … denied to 앞사람아이디` | 앞 사람 로그인이 아직 남아 있음 | 3장 1번(자격 증명 제거) 뒤 다시 `git push` |
+| 깃허브 | 커밋 옆 이름이 앞 사람 | git 이름 · 이메일이 앞 사람 것 | 3장 2번. 다음 커밋부터 내 이름으로 찍힘 |
+| `git log` | 맨 위에 Unit 1 마무리 커밋이 없음 | Unit 1 마무리 push 가 안 됐거나 다른 저장소를 받음 | `git remote -v` 주소(6장)가 내 아이디인지, 저장소에 `access_control` 폴더가 있는지 |
 
 ---
 
