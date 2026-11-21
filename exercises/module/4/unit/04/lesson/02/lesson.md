@@ -25,7 +25,9 @@ render: markdown
    ```bash
    python -c "from saas_detection import find_bulk_download_users; from malicious_detection import find_scan_ips; from correlation import find_chains_in_events; from access_detection import load_events, EVENTS_PATH; print('제공 파일 정상', len(find_chains_in_events(load_events(EVENTS_PATH))))"
    ```
-   - `제공 파일 정상 1` 이 나오면 됩니다. 연결된 사건이 1건(gaeun)이라는 뜻입니다.
+   - 연결된 사건이 1건(gaeun)이면 마지막 숫자가 `1` 입니다.
+
+**확인** — 5번 명령에서 `제공 파일 정상 1` 이 나오면 성공입니다. 안 나오면 오류에 나온 파일 이름(`No module named '…'`)의 페이지로 가서 그 파일을 다시 붙여 넣습니다.
 
 > 시간이 남아 응용 4-1을 하면, `correlation.py` 를 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 그때는 다 채울 때까지 실습 4-1이 동작하지 않으니, 다 쓴 뒤 `exercise4-1_run.py` 를 다시 실행해 결과가 같은지 확인합니다.
 
@@ -123,6 +125,8 @@ def find_bulk_download_users(saas):                   # SaaS 이벤트 표를 �
 
 - `~` 는 `True` 와 `False` 를 뒤집는 기호입니다. `~is_business_hour` 는 「업무 시간 안이 아닌」 행을 `True` 로 만듭니다.
 
+**확인** — VS Code 왼쪽 목록의 `anomaly_detection` 아래에 `saas_detection.py` 가 보이면 성공입니다. 실행 확인은 세 파일을 모두 만든 뒤 첫 페이지 5번 명령으로 합니다.
+
 ## `malicious_detection.py` 만들기
 
 **`malicious_detection.py`** 를 만들고 아래 내용을 붙여 넣습니다. 웹 서버 로그의 실패 이벤트 가운데 스캐너가 자주 요청하는 경로(`/.env` · `/wp-login` · `/phpmyadmin`)를 요청한 IP 를 찾습니다.
@@ -178,6 +182,8 @@ def explain_scan(ip, request_count):                  # IP 와 스캐너 경로 
 
 - 오늘 데이터에서는 `198.51.100.90` 한 곳이 스캐너 경로를 3번 요청해 경로 스캔으로 나옵니다.
 - `explain_scan` 은 오늘 실습에서는 쓰지 않습니다. Unit 3 응용 3-3과 같은 파일을 쓰려고 그대로 두었습니다.
+
+**확인** — VS Code 왼쪽 목록의 `anomaly_detection` 아래에 `malicious_detection.py` 가 보이면 성공입니다. 다른 폴더에 만들어졌으면 `anomaly_detection` 으로 끌어다 옮깁니다.
 
 ## `correlation.py` 만들기
 
@@ -282,6 +288,8 @@ def find_chains_in_events(events):                     # 이벤트 표를 받는
 - 이 파일은 `access_detection` · `saas_detection` · `malicious_detection` 을 불러 쓰므로 세 파일이 먼저 있어야 합니다.
 - 함수마다 무엇을 하는지는 응용 4-1 레슨에서 자세히 다룹니다.
 
+**확인** — 첫 페이지 5번 명령에서 `제공 파일 정상 1` 이 나오면 성공입니다. `No module named 'saas_detection'` 이 나오면 앞 페이지의 파일을 먼저 만듭니다.
+
 ## Unit 3 파일이 없을 때 `access_detection.py`
 
 시작하기 레슨의 확인에서 `Unit 3 파일 정상 57` 이 나왔다면 **이 페이지는 건너뜁니다.** Unit 3 실습 3-2에서 직접 만든 파일을 그대로 씁니다.
@@ -347,6 +355,7 @@ def judge_failure(user, action):                      # 사용자와 행동을 �
 ```
 
 - 이 파일은 `rbac.py` 와 `normalized_events.json` · `config/users.json` · `config/roles.json` 이 있어야 동작합니다. 없으면 Unit 3 시작하기 레슨의 코드 상자로 먼저 만듭니다.
-- 다 만들었으면 시작하기 레슨의 확인 명령을 다시 쳐서 `Unit 3 파일 정상 57` 이 나오는지 봅니다.
+
+**확인** — 시작하기 레슨의 확인 명령을 다시 쳐서 `Unit 3 파일 정상 57` 이 나오면 성공입니다. `No module named 'rbac'` 이 나오면 Unit 3 시작하기 레슨의 코드 상자로 `rbac.py` 를 먼저 만듭니다.
 
 ---

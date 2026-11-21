@@ -20,6 +20,8 @@ source:
 >
 > 탐지된 규칙마다 점수를 정하고 대상(사용자 또는 IP)마다 더해서 high · mid · low 로 나눠 주세요. 담당자가 왜 그 등급인지 알 수 있게, 탐지된 규칙 이름도 같이 파일에 적어 주세요.」
 > - **왜 중요한가**: <mark>점수만 있고 이유가 없으면 담당자가 근거를 확인하기 어려워서, 탐지된 규칙 이름을 이유로 함께 저장합니다.</mark>
+> - **직접 쓰는 것**: 대부분은 미리 채워 두었고, 점수를 매기고 더하는 두 줄(① · ②)만 직접 씁니다.
+> - **끝나면 쓰는 것**: 보고서 (가) · (나) 답. (다)는 여유가 되면 하는 응용입니다.
 
 ## 왜 점수를 더하고 이유를 남기는가
 
@@ -98,21 +100,15 @@ Name: points, dtype: int64
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
 | `collect_findings` | 이벤트 표 · 연결된 사건 | 탐지된 규칙 리스트(미리 채움) |
-| `score_findings` | 탐지된 규칙 리스트 | 대상별 점수(높은 순) |
-| `make_grade` | 점수 | `"high"` · `"mid"` · `"low"` |
+| `score_findings` | 탐지된 규칙 리스트 | 대상별 점수(높은 순) · **직접 쓰는 곳** |
+| `make_grade` | 점수 | `"high"` · `"mid"` · `"low"`(미리 채움) |
 | `collect_reasons` · `save_records` | 탐지된 규칙 · 기록 리스트 | 대상별 규칙 이름 · 저장한 건수(미리 채움) |
-| `make_records` | 대상별 점수 · 이유 | 점수 · 등급 · 이유 기록 리스트 |
+| `make_records` | 대상별 점수 · 이유 | 점수 · 등급 · 이유 기록 리스트(미리 채움) |
 
 - `make_records` 의 `totals.items()` 는 점수 집계 결과(시리즈)에서 「대상, 점수」를 한 쌍씩 꺼냅니다. 딕셔너리의 `.items()` 와 같은 모양입니다.
-- **직접 쓰는 곳은 다섯 군데**(번호 1 ~ 5)이고, 함수 세 개 안에 나뉘어 있습니다.
+- **직접 쓰는 곳은 두 곳**(① · ②)이고, 모두 `score_findings` 안에 있습니다. 위 문법 상자의 `map` 한 줄과 `sum` 한 줄입니다.
 
-| 함수 | 번호 | 직접 쓰는 일 |
-|---|---|---|
-| `score_findings` | 1 · 2번 | 규칙마다 점수를 `map` 으로 채우고 대상마다 `sum` 으로 더합니다 |
-| `make_grade` | 3 · 4번 | 점수가 high 기준 이상이면 `"high"` 를 리턴합니다 |
-| `make_records` | 5번 | 대상 · 점수 · 등급 · 이유를 딕셔너리로 만듭니다 |
-
-- `make_grade` 의 mid 와 low 는 high 와 같은 모양이라 미리 채웠습니다.
+> **확인** — 문법 상자의 두 코드를 이어 실행했을 때 `seoyeon 45` 와 `dami 60` 이 나오면 성공입니다. 안 나오면 두 번째 코드를 첫 번째 코드 바로 아래에 이어 붙였는지 봅니다.
 
 ## 실습 4-1 · 위험 점수와 등급·이유 저장하기
 
@@ -128,10 +124,10 @@ Name: points, dtype: int64
 
 **할 일**
 
-1. `risk_scores.py` · `exercise4-1_run.py` 두 파일을 만들고, `risk_scores.py` 의 세 함수에서 직접 쓰는 곳을 씁니다.
+1. `risk_scores.py` · `exercise4-1_run.py` 두 파일을 만들고, `risk_scores.py` 의 `score_findings` 에서 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다. 나머지 함수는 모두 미리 채워 두었습니다.
 2. 실행해서 <mark>탐지된 규칙 수</mark>(단계 1), <mark>대상별 점수</mark>(단계 2), <mark>저장한 건수</mark>(단계 3), <mark>저장된 기록</mark>(단계 4)를 읽고, 새로 생긴 `unit05_risk_scores.json` 을 VS Code 에서 열어 봅니다.
 
-`collect_findings` 는 읽기만 하는 미리 채운 함수입니다. 세 탐지 파일과 `correlation.py` 의 결과를 (대상, 규칙) 쌍으로 모으는 일이라 직접 쓰는 곳이 없습니다.
+`score_findings` 의 두 곳 말고는 모두 읽기만 하는 미리 채운 줄입니다. 가장 긴 `collect_findings` 는 세 탐지 파일과 `correlation.py` 의 결과를 (대상, 규칙) 쌍으로 모으는 일을 합니다.
 
 **`risk_scores.py`**
 
@@ -201,13 +197,12 @@ def score_findings(findings):                          # 탐지된 규칙 리스
     """대상마다 탐지된 규칙의 점수를 더해 점수가 높은 순으로 정렬한다.
     어느 대상부터 볼지 순서를 정할 때 쓴다.
     """
-    findings_table = pd.DataFrame(findings)            # 딕셔너리 리스트를 표로 만든다 — 미리 채운 줄
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. findings_table 의 "rule" 열을 꺼내 .map(WEIGHTS) 를 붙여 규칙마다 점수를 구해 points 에 담는다
-    findings_table["points"] = points                  # 표에 points 열을 붙인다 — 미리 채운 줄
+    findings_table = pd.DataFrame(findings)            # 딕셔너리 리스트를 표로 만든다
+    # ① findings_table 의 "rule" 열에 .map(WEIGHTS) 를 붙여 규칙마다 점수를 구해 points 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+    findings_table["points"] = points                  # 표에 points 열을 붙인다
     grouped = findings_table.groupby("entity")         # entity 가 같은 행끼리 그룹으로 만든다
-    # 2. grouped 에서 "points" 열을 골라 .sum() 을 붙여 그룹마다 점수 합계를 구해 totals 에 담는다
-    totals = totals.sort_values(ascending=False)       # 점수가 높은 순으로 정렬한다 — 미리 채운 줄
+    # ② grouped 에서 "points" 열을 골라 .sum() 을 붙여 그룹마다 합계를 구해 totals 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+    totals = totals.sort_values(ascending=False)       # 점수가 높은 순으로 정렬한다
     return totals                                      # 대상별 점수를 리턴한다
 
 
@@ -215,11 +210,10 @@ def make_grade(score):                                 # 점수를 받는 함수
     """점수로 high · mid · low 등급을 정한다.
     점수가 높은 대상부터 먼저 보게 할 때 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 3. if 로 시작한다: score 가 HIGH_LIMIT 이상이면
-    # 4.   그 if 안쪽에서 "high" 를 리턴한다
-    if score >= MID_LIMIT:                             # 점수가 mid 기준 이상이면 — 미리 채운 줄 (위 high 와 같은 모양)
-        return "mid"                                   # mid 이다 — 미리 채운 줄
+    if score >= HIGH_LIMIT:                            # 점수가 high 기준 이상이면
+        return "high"                                  # high 이다
+    if score >= MID_LIMIT:                             # 점수가 mid 기준 이상이면
+        return "mid"                                   # mid 이다
     return "low"                                       # 둘 다 아니면 low 이다
 
 
@@ -243,8 +237,7 @@ def make_records(totals, reasons):                     # 대상별 점수와 이
     records = []                                       # 기록을 담을 빈 리스트
     for entity, score in totals.items():               # 대상과 점수를 한 쌍씩 꺼낸다
         grade = make_grade(score)                      # 점수로 등급을 정한다
-        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-        # 5. 키 "entity" 에 entity, "score" 에 int(score), "grade" 에 grade, "reasons" 에 reasons[entity] 를 담은 딕셔너리를 record 에 담는다 (int 는 JSON 저장용)
+        record = {"entity": entity, "score": int(score), "grade": grade, "reasons": reasons[entity]}  # 대상 · 점수 · 등급 · 이유를 딕셔너리로 만든다 (int 는 JSON 저장용)
         records.append(record)                         # 기록을 리스트에 추가한다
     return records                                     # 기록 리스트를 리턴한다
 
@@ -259,15 +252,27 @@ def save_records(records, path):                       # 기록 리스트와 파
     return saved_count                                 # 저장한 건수를 리턴한다
 ```
 
-- 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 · 2번은 함수 안이라 앞에 공백 4개이고, 3 · 4번도 함수 안이라 `if` 는 4개, `return` 은 8개이며, 5번은 `for` 안이라 8개입니다.
-- 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
-- 3 · 4번 `make_grade` 에서는 `return` 을 만나면 함수가 바로 끝납니다. 그래서 high 이면 아래의 mid 검사까지 가지 않습니다.
-- 5번의 `int(score)` 는 <mark>JSON 으로 저장하려고 판다스의 숫자를 파이썬 정수로 바꾸는 것</mark>입니다. 빼면 저장할 때 `TypeError: Object of type int64 is not JSON serializable` 오류가 납니다.
-- `collect_findings` 는 읽기만 하는 미리 채운 함수입니다. `SERVER_RULES.get(reason, reason)` 은 딕셔너리에서 reason 을 찾고, 없으면 reason 을 그대로 쓴다는 뜻입니다.
+- 주석 줄은 그대로 두고, **각 주석 바로 아래 줄**에 씁니다. ① · ② 모두 함수 안이라 앞에 공백 4칸입니다.
+
+**직접 쓰는 곳**
+
+| 빈칸 | 쓰는 줄 | 들여쓰기 |
+|---|---|---|
+| ① | 규칙마다 점수 `points` (`map`) | 4칸 |
+| ② | 대상마다 합계 `totals` (`sum`) | 4칸 |
+
+- 채우기 전 확인: 그대로 실행하면 단계 1 줄(`--- 단계 1: 탐지된 규칙 8 건`) 다음에 `NameError: name 'points' is not defined` 가 나옵니다. ① 을 아직 안 써서 나는 오류이니 정상입니다.
+- ① 확인: ① 만 쓰고 실행하면 `UnboundLocalError: cannot access local variable 'totals' …` 가 나옵니다. ② 를 아직 안 써서 나는 오류이니 정상입니다. 막히면: 문법 상자의 `df["rule"].map(weights)` 에서 `df` 를 `findings_table`, `weights` 를 `WEIGHTS` 로 바꿉니다.
+- ② 확인: ② 까지 쓰고 실행하면 단계 2에 `dami 60` 부터 `198.51.100.90 30` 까지 다섯 줄이 나오면 성공입니다. 막히면: 문법 상자의 `grouped["points"].sum()` 과 같은 모양이고, 끝의 괄호 `()` 까지 씁니다.
+
+**미리 채운 줄 읽기**
+
+- `make_grade` 는 `return` 을 만나면 함수가 바로 끝납니다. 그래서 high 이면 아래의 mid 검사까지 가지 않습니다.
+- `make_records` 의 `int(score)` 는 <mark>JSON 으로 저장하려고 판다스의 숫자를 파이썬 정수로 바꾸는 것</mark>입니다. 빼면 저장할 때 `TypeError: Object of type int64 is not JSON serializable` 오류가 납니다.
+- `collect_findings` 의 `SERVER_RULES.get(reason, reason)` 은 딕셔너리에서 reason 을 찾고, 없으면 reason 을 그대로 쓴다는 뜻입니다.
   - `표.to_dict("records")` 는 표의 행을 하나씩 딕셔너리로 바꿔 리스트로 줍니다. 그래서 `for` 로 한 행(이벤트)씩 꺼내 `event["user"]` 처럼 읽을 수 있습니다.
   - `scan_ips, many_kinds = find_scan_ips(…)` 는 함수가 리턴한 두 값(스캔 IP 리스트, IP 별 요청 횟수)을 나눠 받습니다. 두 번째 값은 이 함수에서 쓰지 않습니다.
   - `add_finding` 의 `if finding not in findings:` 는 같은 (대상, 규칙) 쌍이 이미 리스트에 있으면 다시 넣지 않습니다. 그래서 dami 의 서버 요청 4번이 모두 「퇴사한 계정」으로 판정되어도 점수는 60 한 번만 더해집니다.
-- 채우기 전에 실행하면 `NameError: name 'points' is not defined` 오류가 납니다. 1번을 아직 안 썼기 때문입니다.
 
 **`exercise4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `len(리스트)` 는 리스트의 개수입니다.
 
@@ -299,7 +304,7 @@ for record in records:                                 # 기록을 하나씩 꺼
 **순서**
 
 1. **[VS Code]** 파일 `risk_scores.py` · `exercise4-1_run.py` 를 `anomaly_detection` 폴더에 만들어 위 코드를 붙여 넣습니다.
-2. **[VS Code]** `risk_scores.py` 에서 <mark>직접 쓰는 곳 다섯 군데를 씁니다</mark>. 1.1 의 표와 문법 상자를 보고 씁니다.
+2. **[VS Code]** `risk_scores.py` 의 <mark>`# ←` 두 곳(① · ②)을 채웁니다</mark>. 문법 상자의 `map` 줄과 `sum` 줄을 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
@@ -309,18 +314,21 @@ for record in records:                                 # 기록을 하나씩 꺼
 4. 출력은 **네 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1과 단계 3은 숫자가 제목 줄에 함께 나오고, 단계 2는 제목 아래 7줄(맨 위 `entity`, 대상 5줄, 맨 아래 `Name: points, dtype: int64`), 단계 4는 5줄입니다.
 5. **[VS Code]** 새로 생긴 `unit05_risk_scores.json` 을 열어 <mark>대상 5개가 점수 순으로 들어 있는지</mark> 확인합니다. 이 파일은 Module 4 Unit 5와 Module 5에서 다시 쓰니 지우거나 이름을 바꾸지 않습니다.
 6. **[보고서]** `report_u4.md` 의 `## 실습 4-1` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, high · mid · low 에 각각 어떤 대상이 들어갔는지 적어 주세요.
+   - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, high · mid · low 에 각각 어떤 대상이 들어갔는지 적어 주세요.
    - (나) [핵심 질문] seoyeon 의 점수가 어떤 규칙의 점수를 더해 나왔는지 적고, 점수만 저장하지 않고 이유(`reasons`)를 함께 저장하는 까닭을 적어 주세요.
-   - (다) [핵심 질문] 198.51.100.90 은 경로 스캔 하나에 해당하지만 low 입니다. low 는 점수 기준상 낮은 등급이라는 뜻입니다. low 인 이유를 점수와 기준으로 설명하고, 이 IP 의 기록을 무시해도 되는지 샘플의 값(그 IP 의 요청 3개의 `result`)으로 판단해 적어 주세요.
+   - (다) [응용] 198.51.100.90 은 경로 스캔 하나에 해당하지만 low 입니다. low 는 점수 기준상 낮은 등급이라는 뜻입니다. low 인 이유를 점수와 기준으로 설명하고, 이 IP 의 기록을 무시해도 되는지 샘플의 값(그 IP 의 요청 3개의 `result`)으로 판단해 적어 주세요.
      - 요청 3개는 VS Code 로 `normalized_events.json` 을 열고 `Ctrl + F`(맥북은 `Cmd + F`)로 `198.51.100.90` 을 검색해 찾습니다.
+     - [응용] 질문의 답은 보고서 틀의 `## 실습 응용 질문` 칸에 씁니다.
+
+**확인** — 단계 4가 `high dami 60 ['퇴사한 계정']` 으로 시작하는 다섯 줄이고 맨 아래가 `low 198.51.100.90 30 ['경로 스캔']` 이면 성공입니다. 안 나오면 「정답」 레슨의 실습 4-1 출력과 한 줄씩 맞춰 보고, 오류가 나면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 ## 실습 4-1 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 규칙마다 점수 채우기 | `points = findings_table["rule"].map(WEIGHTS)` |
-| 대상마다 점수 더하기 | `totals = grouped["points"].sum()` |
-| 등급 정하기 | `if score >= HIGH_LIMIT:` → `return "high"` |
-| 기록 만들기 | `record = {"entity": entity, "score": int(score), …}` |
+| ① 규칙마다 점수 채우기 | `points = findings_table["rule"].map(WEIGHTS)` |
+| ② 대상마다 점수 더하기 | `totals = grouped["points"].sum()` |
+| 등급 정하기(미리 채움) | `if score >= HIGH_LIMIT:` → `return "high"` |
+| 기록 만들기(미리 채움) | `record = {"entity": entity, "score": int(score), …}` |
 
 ---
