@@ -48,7 +48,12 @@ source:
 | `expires` | 예외의 만료 시각 (**예외로 받은 권한에만 있음**) | `"2026-10-22 18:00"` |
 
 - 사용자 가운데 `batch-night` 은 사람이 아니라 밤에 자동으로 도는 집계 프로그램이 쓰는 계정입니다(`employed` 는 `True` 로 둡니다).
-- 권한을 받는 방법은 두 가지입니다. **역할**로 받으면 그 역할의 권한 리스트가 모두 들어오고(`config/roles.json`), **예외**로 받으면 기간이 정해진 권한 한 건이 들어옵니다(`config/exceptions.json`).
+- 권한을 받는 방법은 두 가지입니다.
+
+| 받는 방법 | 들어오는 권한 | 적힌 파일 |
+|---|---|---|
+| **역할** | 그 역할의 권한 리스트 모두 | `config/roles.json` |
+| **예외** | 기간이 정해진 권한 한 건 | `config/exceptions.json` |
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="build_access_list 는 역할로 받은 권한과 예외로 받은 권한을 한 리스트로 모은다"></figure>
 
@@ -132,7 +137,14 @@ def build_access_list():                                         # 지금 부여
     # 13. access_list 를 리턴한다
 ```
 
-- 본문은 모두 함수 안이라 앞에 공백 4개를 넣고(Tab 키 한 번), `for` 안쪽은 공백 4개 더(8개) 넣습니다. 마지막 `return` 은 `for` 밖이므로 공백 4개입니다. `role_entries` 는 미리 채워 두었으니 그대로 둡니다.
+- 들여쓰기는 아래와 같습니다. 공백 4개는 Tab 키 한 번입니다. `role_entries` 는 미리 채워 두었으니 그대로 둡니다.
+
+| 줄의 위치 | 앞 공백 |
+|---|---|
+| 본문 (모두 함수 안) | 4개 |
+| `for` 안쪽 | 8개 (4개 더) |
+| 마지막 `return` (`for` 밖) | 4개 |
+
 - 2번의 `USERS.items()` 는 딕셔너리에서 키와 값을 한 쌍씩 꺼내 줍니다. `for user, info in USERS.items():` 라고 쓰면 `user` 에 사용자 이름(키)이, `info` 에 그 사용자의 정보 딕셔너리(값)가 차례로 들어갑니다.
 - 10번의 딕셔너리는 한 줄에 쓰거나, `{ }` 안에서 `,` 뒤에 줄을 바꿔 써도 됩니다.
 - 채우기 전에 실행하면 `TypeError: object of type 'NoneType' has no len()` 오류가 납니다. 함수가 아무것도 리턴하지 않아 `len(access_list)` 를 셀 수 없기 때문입니다.
@@ -182,7 +194,7 @@ print(counts)                                                    # 사용자별 
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 현황의 권한 한 건 | 딕셔너리. 키는 `user` · `permission` · `source` · `employed` (예외 권한은 `expires` 도) |
+| 현황의 권한 한 건 | 딕셔너리. 키는 `user` · `permission` · `source` · `employed` |
 | 사용자와 정보를 같이 꺼내기 | `for user, info in USERS.items():` |
 | 사용자가 역할로 받은 권한 리스트 | `role_list = role_entries(user, info)` (`role_entries` 는 미리 채움) |
 | 리스트 이어 붙이기 | `access_list = access_list + role_list` |

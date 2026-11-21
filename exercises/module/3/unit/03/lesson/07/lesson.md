@@ -48,16 +48,27 @@ source:
 - 제외 리스트와 후보는 「사용자:권한」 문자열(예: `"gaeun:ACCOUNT:CHANGE"`)이 같은지 비교합니다.
   - `overprivilege.py` 의 식별 키와 달리 `source`(역할인지 예외인지)는 붙이지 않습니다.
   - 제외 리스트는 어떻게 받은 권한이든 그 사람의 그 권한을 기준으로 적기 때문입니다.
-- 함수 네 개를 씁니다.
-  - `exclude_key`(1번): 「사용자:권한」 문자열을 만듭니다. `overprivilege.py` 의 식별 키와 달리 `source` 는 넣지 않습니다.
-  - `load_exclude_map`(2번): 파일을 읽어 `{"gaeun:ACCOUNT:CHANGE": "계정에 사고가 …", …}` 모양의 딕셔너리(`exclude_map`)를 만듭니다.
-    - 한 줄만 씁니다.
-  - `can_exclude`(3 ~ 6번): 후보를 회수 제외해도 되는지 `True` · `False` 로 알려 줍니다.
-  - `split_by_exclude`(7 ~ 12번): `can_exclude` 의 결과로 후보를 둘로 나눕니다.
-- `make_excluded` 는 후보를 복사해 `exclude_reason` 키(제외 이유)를 적은 복사본을 리턴합니다(판단이 없는 복사라 미리 채움).
-- `reason`(제외 리스트 파일에 적힌 제외 이유 문자열)과 `reasons`(리포트 후보에 붙은 이유 리스트)는 한 글자 차이이니 헷갈리지 마세요.
-- `to_revoke`(투 리보크)는 회수 대상 리스트, `excluded`(익스클루디드)는 제외된 후보 리스트입니다.
-  - 두 리스트는 `return to_revoke, excluded` 로 한꺼번에 리턴하고, 받는 쪽은 `to_revoke, excluded = …` 로 두 이름에 나눠 받습니다(리턴한 두 값이 차례로 두 이름에 들어갑니다).
+- 함수 네 개를 씁니다. `make_excluded` 는 판단이 없는 복사라 미리 채웠습니다.
+
+| 함수 | 직접 쓰는 줄 | 하는 일 |
+|---|---|---|
+| `exclude_key` | 1번 | 「사용자:권한」 문자열을 만듦 (`source` 는 넣지 않음) |
+| `load_exclude_map` | 2번 한 줄 | 파일을 읽어 딕셔너리 `exclude_map` 을 만듦 |
+| `can_exclude` | 3 ~ 6번 | 후보를 회수 제외해도 되는지 `True` · `False` 로 알려 줌 |
+| `split_by_exclude` | 7 ~ 12번 | `can_exclude` 의 결과로 후보를 둘로 나눔 |
+| `make_excluded` | 미리 채움 | 후보를 복사해 `exclude_reason` 키(제외 이유)를 적은 복사본을 리턴 |
+
+- `exclude_map` 은 `{"gaeun:ACCOUNT:CHANGE": "계정에 사고가 …", …}` 모양입니다.
+- 이름이 비슷한 것을 헷갈리지 마세요. `reason` 과 `reasons` 는 한 글자 차이입니다.
+
+| 이름 | 무엇 |
+|---|---|
+| `reason` | 제외 리스트 파일에 적힌 제외 이유 문자열 |
+| `reasons` | 리포트 후보에 붙은 이유 리스트 |
+| `to_revoke`(투 리보크) | 회수 대상 리스트 |
+| `excluded`(익스클루디드) | 제외된 후보 리스트 |
+
+- 두 리스트는 `return to_revoke, excluded` 로 한꺼번에 리턴하고, 받는 쪽은 `to_revoke, excluded = …` 로 두 이름에 나눠 받습니다(리턴한 두 값이 차례로 두 이름에 들어갑니다).
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="split_by_exclude 는 후보마다 can_exclude 로 물어 excluded 와 to_revoke 로 나눈다"></figure>
 
@@ -155,9 +166,14 @@ def split_by_exclude(findings, exclude_map):                     # 후보 리스
 
 - 4 · 5번의 `key in exclude_map` 같은 `in` 검사는 그 자체가 `True` 나 `False` 값이라, `in_exclude_list = key in exclude_map` 처럼 변수에 담을 수 있습니다.
 - 들여쓰기는 미리 채운 줄에 맞춥니다.
-  - `exclude_key` · `can_exclude` 안: 함수 안이라 앞에 공백 4개입니다.
-  - `load_exclude_map` 안: 미리 채운 `for` 안쪽이라 8개입니다.
-  - `split_by_exclude` 안: 미리 채운 `for` 안쪽이라 `if` · `else` 는 8개이고, 그 안쪽(8 ~ 10번, 12번)은 4개 더(12개)입니다.
+
+| 쓰는 곳 | 앞 공백 | 까닭 |
+|---|---|---|
+| `exclude_key` · `can_exclude` 안 | 4개 | 함수 안 |
+| `load_exclude_map` 안 | 8개 | 미리 채운 `for` 안쪽 |
+| `split_by_exclude` 의 `if` · `else` | 8개 | 미리 채운 `for` 안쪽 |
+| `split_by_exclude` 의 8 ~ 10번, 12번 | 12개 | `if` · `else` 안쪽 (4개 더) |
+
 - 채우기 전에 실행하면 회수 대상도 회수 제외도 `0 건` 으로 나옵니다. `split_by_exclude` 의 7 ~ 12번을 아직 쓰지 않아 후보가 어느 리스트에도 들어가지 않기 때문입니다.
 
 **`challenge3-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `overprivilege.py` 의 `generate_report` 로 리포트를 만든 뒤, 회수 제외 리스트를 읽어 후보를 나누고 세 단계로 출력합니다.
@@ -215,15 +231,17 @@ for item in to_revoke:                                           # 회수 대상
 
 ## 도전 3-3 정리
 
-| 하려는 일 | 코드 · 말 |
-|---|---|
-| 「사용자:권한」 문자열 만들기 | `return f"{user}:{permission}"` (`exclude_key` 안) |
-| 제외 이유 딕셔너리에 담기 | `exclude_map[item_key] = item["reason"]` (`load_exclude_map` 안) |
-| 제외 리스트에 있는지 | `in_exclude_list = key in exclude_map` (`can_exclude` 안) |
-| 이유에 퇴사가 있는지 | `is_resigned = "퇴사한 계정" in finding["reasons"]` (`can_exclude` 안) |
-| 제외해도 되는지 | `return in_exclude_list and not is_resigned` (`can_exclude` 안) |
-| 제외된 후보 만들기 | `reason = exclude_map[key]` → `excluded_entry = make_excluded(finding, reason)` → `excluded.append(excluded_entry)` (`split_by_exclude` 안) |
-| 둘로 나눠 리턴 | `return to_revoke, excluded` |
+| 하려는 일 | 코드 · 말 | 쓰는 곳 |
+|---|---|---|
+| 「사용자:권한」 문자열 만들기 | `return f"{user}:{permission}"` | `exclude_key` |
+| 제외 이유 딕셔너리에 담기 | `exclude_map[item_key] = item["reason"]` | `load_exclude_map` |
+| 제외 리스트에 있는지 | `in_exclude_list = key in exclude_map` | `can_exclude` |
+| 이유에 퇴사가 있는지 | `is_resigned = "퇴사한 계정" in finding["reasons"]` | `can_exclude` |
+| 제외해도 되는지 | `return in_exclude_list and not is_resigned` | `can_exclude` |
+| 제외 이유 꺼내기 | `reason = exclude_map[key]` | `split_by_exclude` |
+| 제외된 후보 만들기 | `excluded_entry = make_excluded(finding, reason)` | `split_by_exclude` |
+| 제외된 후보 담기 | `excluded.append(excluded_entry)` | `split_by_exclude` |
+| 둘로 나눠 리턴 | `return to_revoke, excluded` | `split_by_exclude` |
 
 - 도전을 마쳤으면 실습 3-2 끝의 「이번 Unit 마무리」 3번으로 바뀐 파일을 다시 올립니다.
 
