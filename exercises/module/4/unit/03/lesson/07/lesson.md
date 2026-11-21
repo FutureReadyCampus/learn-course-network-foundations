@@ -388,7 +388,13 @@ python challenge3-2_run.py
 
 **결과**
 
-- (가) 출력은 다음과 같고, 업무 시간 밖 로그인은 <mark>**jiwoo**</mark>, 평소와 다른 IP 는 <mark>**jiwoo · seoyeon**</mark>, 대량 다운로드는 <mark>**seoyeon**</mark> 입니다.
+- (가) 출력은 다음과 같고, 규칙마다 해당한 사용자는 아래 표와 같습니다.
+
+| 규칙 | 해당한 사용자 |
+|---|---|
+| 업무 시간 밖 로그인 | <mark>**jiwoo**</mark> |
+| 평소와 다른 IP | <mark>**jiwoo · seoyeon**</mark> |
+| 대량 다운로드 | <mark>**seoyeon**</mark> |
 
 ```
 --- 단계 1: 업무 시간 밖 로그인 1 건
