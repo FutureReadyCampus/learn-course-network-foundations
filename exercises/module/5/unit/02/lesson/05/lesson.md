@@ -40,10 +40,12 @@ source:
 | INC-003 | `kim.sec` (권한 있음) | 거절 | 실행하지 않고 `종료` 로 옮기고 이유를 기록한다 |
 | INC-005 | `intern01` (권한 없음) | 승인 | <mark>결과가 승인이어도 실행하지 않고</mark> 「권한 없는 사람이 승인하려 했다」는 기록만 남긴다 |
 
-- **`item`**: 승인 대기 알림 한 건입니다. `pending.json` 에 들어 있는 알림 하나입니다.
-- **`decision`**: 담당자의 결정 한 건입니다. 누가 눌렀는지, 승인인지 거절인지, 남긴 한마디가 들어 있습니다.
-- **`APPROVERS`**: 승인 권한이 있는 담당자 이름 리스트입니다.
-- **`action_log`**: 감사 기록 한 건씩을 추가해 모으는 리스트입니다.
+| 이름 | 뜻 |
+|---|---|
+| `item` | 승인 대기 알림 한 건 (`pending.json` 에 들어 있는 알림 하나) |
+| `decision` | 담당자의 결정 한 건 (누가 눌렀는지, 승인인지 거절인지, 남긴 한마디) |
+| `APPROVERS` | 승인 권한이 있는 담당자 이름 리스트 |
+| `action_log` | 감사 기록 한 건씩을 추가해 모으는 리스트 |
 
 함수는 파일 세 곳에 나뉘어 있고, 직접 쓰는 곳은 **아홉 군데**입니다.
 
@@ -230,7 +232,8 @@ for entry in action_log:                                                        
 | 리스트 안에 있는지 확인해 참(`True`) 또는 거짓(`False`)을 리턴한다 | `return approver in APPROVERS` |
 | 함수 결과를 변수에 담기 | `result = run_action(action, item, state)` |
 | 거짓이면 | `if not is_authorized(approver):` |
-| 다른 함수의 결과를 그대로 리턴 | `return reject_unauthorized(item, approver, action_log)` · `return execute_actions(item, state, action_log, approver)` |
+| 다른 함수의 결과를 그대로 리턴 (5번) | `return reject_unauthorized(item, approver, action_log)` |
+| 다른 함수의 결과를 그대로 리턴 (7번) | `return execute_actions(item, state, action_log, approver)` |
 | 값이 같으면 | `if decision["result"] == "승인":` |
 | 키가 있으면 | `if item["id"] in decisions:` |
 
