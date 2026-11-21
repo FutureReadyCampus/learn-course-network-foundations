@@ -55,8 +55,11 @@ source:
 
 **로그마다 비어 있는 키가 있습니다.**
 
-- `web`(웹 서버) 이벤트는 `user` 가 `null` 입니다. 웹 서버는 로그인한 계정을 모르기 때문입니다.
-- `server`(판정 서버) 이벤트는 `ip` 가 `null` 입니다. 원래 로그에 주소가 없기 때문입니다.
+| `source` | `null` 인 키 | 이유 |
+|---|---|---|
+| `web`(웹 서버) | `user` | 웹 서버는 로그인한 계정을 모르기 때문입니다 |
+| `server`(판정 서버) | `ip` | 원래 로그에 주소가 없기 때문입니다 |
+
 - 주소(`ip`)는 사람이 아니라 **접속한 곳**입니다. 한 사무실의 여러 사람이 같은 주소로 보일 수도, 한 사람이 집과 회사에서 다른 주소로 접속할 수도 있습니다. 이 수업의 `203.0.113.50` · `198.51.100.x` · `192.0.2.x` 는 문서에서 예시로 쓰라고 정해 둔 주소 범위라서 실제 장비를 가리키지 않습니다.
 - 원래 로그에 없는 값(**결측값**, missing value)은 <mark>임의로 채우지 않고 `null` 로 둡니다</mark>. 없는 값을 임의로 채우면 분석 결과가 틀려지기 때문입니다.
   - 이 값은 JSON 파일에서는 `null`, 파이썬과 판다스 표에서는 `None` 또는 `NaN`(「숫자가 아님」이라는 뜻의 Not a Number 줄임말 · 난)으로 보이며, 모두 「값이 없다」는 같은 뜻입니다.
@@ -231,18 +234,14 @@ print(failed_shape)                              # (23, 6) — 실패한 이벤�
 
 **한 장 정리**
 
-| 함수 | 받는 것 | 리턴하는 것 |
-|---|---|---|
-| `load_events` | 파일 경로 | 이벤트 표 |
-| `describe_events` | 이벤트 표 | 표 크기 `(행 수, 열 수)` 와 `time` 열의 처음 3개 |
-| `pick_failed` | 이벤트 표 | `result` 가 `실패` 인 행만 담은 표 |
-| `count_values` | 표와 열 이름 | 그 열의 값별 개수 |
+| 함수 | 받는 것 | 리턴하는 것 | 직접 쓰는 곳 |
+|---|---|---|---|
+| `load_events` | 파일 경로 | 이벤트 표 | 1번: 파일을 표로 읽기 |
+| `describe_events` | 이벤트 표 | 표 크기 `(행 수, 열 수)` 와 `time` 열의 처음 3개 | 2번: 시각 열 꺼내기 |
+| `pick_failed` | 이벤트 표 | `result` 가 `실패` 인 행만 담은 표 | 없음(미리 채움, 읽어 보기만) |
+| `count_values` | 표와 열 이름 | 그 열의 값별 개수 | 3 · 4번: 열 하나의 값별 개수 세기 |
 
 - **직접 쓰는 곳은 세 함수**(번호 1 ~ 4)입니다. 아직 배우지 않은 문법(`.shape` · `.head(3)` · 조건으로 걸러 내기)이 나오는 줄은 미리 채웠습니다. `import` 와 실행 파일도 미리 채웠습니다.
-  - `load_events`(1번): 파일을 표로 읽습니다.
-  - `describe_events`(2번): 시각 열을 꺼냅니다. 크기(`.shape`)와 앞 3개(`.head(3)`)는 미리 채웠습니다.
-  - `count_values`(3 · 4번): 열 하나의 값별 개수를 셉니다.
-  - `pick_failed`(미리 채움): 실패인 행만 걸러 냅니다. 읽어 보기만 합니다.
 
 ## 실습 2-1 · 실패 이벤트를 소스별로 세기
 
@@ -366,7 +365,10 @@ print(source_event_counts)                                                      
 | 표 크기 | `shape = events.shape` (`describe_events`) |
 | 열 하나 꺼내기 | `times = events["time"]` |
 | 처음 3개만 보기 | `first_times = times.head(3)` |
-| 실패한 행만 걸러 내기 | `results = events["result"]` → `is_fail = results == "실패"` → `failed = events[is_fail]` (`pick_failed`) |
-| 값별 개수 | `values = table[column]` → `value_event_counts = values.value_counts()` (`count_values`) |
+| 결과 열 꺼내기 | `results = events["result"]` (`pick_failed`) |
+| 행마다 실패인지 비교 | `is_fail = results == "실패"` |
+| 실패한 행만 걸러 내기 | `failed = events[is_fail]` |
+| 이름으로 받은 열 꺼내기 | `values = table[column]` (`count_values`) |
+| 값별 개수 | `value_event_counts = values.value_counts()` |
 
 ---

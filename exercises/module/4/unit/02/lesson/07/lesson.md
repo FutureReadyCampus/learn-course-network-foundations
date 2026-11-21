@@ -80,7 +80,14 @@ Name: count, dtype: int64
 - 읽는 법: 첫 줄 `source` 는 센 열의 이름이고, 아래 줄은 <mark>왼쪽이 값, 오른쪽이 나온 횟수</mark>입니다. 28 + 15 + 14 = 57 이라 이벤트 전체 개수와 같습니다.
 
 - (나) 개수만 보면 web 이 13개로 가장 많지만, <mark>그것만으로 web 이 가장 문제가 큰 소스라고 말할 수는 없습니다</mark>.
-  - 소스마다 전체 이벤트 수가 다릅니다(web 28 · server 15 · saas 14). 전체 중 실패의 비율로 보면 web 13/28 = 약 46%, server 9/15 = 60%, saas 1/14 = 약 7% 입니다.
+  - 소스마다 전체 이벤트 수가 다릅니다. 전체 중 실패의 비율로 보면 이렇습니다.
+
+  | 소스 | 전체 이벤트 | 실패 | 실패 비율 |
+  |---|---|---|---|
+  | web | 28 | 13 | 13/28 = 약 46% |
+  | server | 15 | 9 | 9/15 = 60% |
+  | saas | 14 | 1 | 1/14 = 약 7% |
+
   - <mark>비율로는 server 가 가장 높습니다.</mark> 개수는 전체 규모의 영향을 받으므로, 소스끼리 비교할 때는 전체 대비 비율도 함께 봅니다.
 - (다) 예상은 이렇습니다.
   - 사용자 이름으로 세려 해도 <mark>web 실패 13개는 `user` 가 비어 있어서 들어갈 사용자가 없습니다</mark>. web 실패 13개가 사용자별로 세어지지 않는다는 것을 실습 2-2에서 확인합니다.
@@ -93,8 +100,12 @@ Name: count, dtype: int64
 
 **자주 틀리는 곳**
 
-- **열 이름을 틀리면 `KeyError` 오류가 납니다.** `events["time"]` 을 `events["times"]` 처럼 쓰면 표에 없는 열 이름이라서 `KeyError` 가 납니다.
-  - 실행하면 다음 오류가 납니다(<mark>`KeyError: 'times'`</mark> 처럼 틀린 열 이름이 나오면 이 실수입니다).
+| 실수 | 나오는 것 | 고치는 법 |
+|---|---|---|
+| `events["time"]` 을 `events["times"]` 처럼 씀 | 표에 없는 열 이름이라서 `KeyError` | 열 이름을 파일에 적힌 키와 똑같이 씁니다 |
+| `values.value_counts()` 의 괄호를 뺌 | 오류는 나지 않지만 개수가 아니라 `<bound method …>` | `value_counts` 뒤에 괄호를 붙여 호출합니다 |
+
+- **열 이름을 틀리면 `KeyError` 오류가 납니다.** 실행하면 다음 오류가 납니다(<mark>`KeyError: 'times'`</mark> 처럼 틀린 열 이름이 나오면 이 실수입니다).
 
 ```
 Traceback (most recent call last):
@@ -105,8 +116,8 @@ Traceback (most recent call last):
 KeyError: 'times'
 ```
 
-  - 줄 번호는 사람마다 다릅니다. 열 이름은 파일에 적힌 키와 똑같이 써야 합니다. 판다스 안쪽 파일의 줄은 길어서 생략했습니다.
-- `count_values` 에서 `values.value_counts()` 의 괄호를 빼면 오류는 나지 않지만 개수가 아니라 `<bound method …>` 가 나옵니다. **`value_counts` 는 뒤에 괄호를 붙여 호출하는 메서드입니다.** 메서드(method · 메서드)는 `열.value_counts()` 처럼 표나 열 뒤에 점(`.`)을 찍어 부르는 함수입니다.
+  - 줄 번호는 사람마다 다릅니다. 판다스 안쪽 파일의 줄은 길어서 생략했습니다.
+- `count_values` 의 **`value_counts` 는 뒤에 괄호를 붙여 호출하는 메서드입니다.** 메서드(method · 메서드)는 `열.value_counts()` 처럼 표나 열 뒤에 점(`.`)을 찍어 부르는 함수입니다.
 
 **관제에서는**
 
@@ -181,8 +192,12 @@ dtype: int64
 
 **자주 틀리는 곳**
 
-- **열 이름을 틀리면 `KeyError` 오류가 납니다.** `groupby("user")` 를 `groupby("users")` 처럼 쓰면 표에 없는 열 이름이라서 `KeyError` 가 납니다.
-  - 실행하면 다음 오류가 납니다(<mark>`KeyError: 'users'`</mark> 처럼 틀린 열 이름이 나오면 이 실수입니다).
+| 실수 | 나오는 것 | 고치는 법 |
+|---|---|---|
+| `groupby("user")` 를 `groupby("users")` 처럼 씀 | 표에 없는 열 이름이라서 `KeyError` | 표에 있는 열 이름 `user` 를 씁니다 |
+| `sort_values` 에서 `ascending=False` 를 뺌 | **오류는 나지 않지만** 작은 값부터 나옴(단계 1 첫 줄이 dami 가 아니라 jiwoo) | `ascending=False` 를 넣습니다 |
+
+- **열 이름을 틀리면 `KeyError` 오류가 납니다.** 실행하면 다음 오류가 납니다(<mark>`KeyError: 'users'`</mark> 처럼 틀린 열 이름이 나오면 이 실수입니다).
 
 ```
 Traceback (most recent call last):
@@ -194,7 +209,6 @@ KeyError: 'users'
 ```
 
   - 줄 번호는 사람마다 다릅니다. 판다스 안쪽 파일의 줄은 길어서 생략했습니다.
-- `sort_values` 에서 `ascending=False` 를 빼면 **오류는 나지 않지만 작은 값부터 나옵니다.** 단계 1 의 첫 줄이 dami 가 아니라 jiwoo 가 됩니다.
 
 **관제에서는**
 
@@ -264,6 +278,11 @@ dtype: int64
 
 **자주 틀리는 곳**
 
+| 실수 | 나오는 것 | 고치는 법 |
+|---|---|---|
+| 두 조건을 `&` 대신 `and` 로 이음 | `ValueError` 오류 | 열끼리는 `&` 로 잇습니다 |
+| `GET /login` 까지 셈 | 로그인 정보가 없는 요청까지 함께 셈 | 로그인 정보를 보내는 **`POST /login` 만 셉니다** |
+
 - **두 조건을 이을 때 `&` 대신 `and` 를 쓰면 `ValueError` 오류가 납니다.**
   - 실행하면 다음 오류가 납니다(<mark>`The truth value of a Series is ambiguous`</mark> 가 나오면 이 실수입니다).
 
@@ -277,7 +296,6 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.item(), a.a
 ```
 
   - 줄 번호는 사람마다 다릅니다.
-- `GET /login` 까지 세는 실수가 있습니다. 이 규칙은 로그인 정보를 보내는 **`POST /login` 만 셉니다.**
 
 **관제에서는**
 
@@ -357,7 +375,12 @@ python challenge2-1_run.py
 
 **자주 틀리는 곳**
 
-- 열 이름을 틀리면 `KeyError` 오류가 납니다. **열 이름은 파일 첫 줄의 `failed_logins` 와 정확히 같아야 합니다.**
+| 실수 | 나오는 것 | 고치는 법 |
+|---|---|---|
+| 열 이름을 `failed_login` 처럼 틀림 | `KeyError` 오류 | **열 이름은 파일 첫 줄의 `failed_logins` 와 정확히 같아야 합니다.** |
+| `daily_failed_logins.mean` 처럼 괄호를 뺌 | 값이 아니라 메서드가 담겨서, 실행 파일의 `round(average, 1)` 에서 `TypeError` | `.mean()` · `.max()` 처럼 괄호를 붙여 호출합니다 |
+
+- 열 이름을 틀리면 `KeyError` 오류가 납니다.
   - 실행하면 다음 오류가 납니다(<mark>`KeyError: 'failed_login'`</mark> 처럼 열 이름이 나오면 이 실수입니다).
 
 ```
@@ -375,7 +398,7 @@ KeyError: 'failed_login'
 ```
 
   - 줄 번호는 사람마다 다릅니다.
-- `daily_failed_logins.mean` 처럼 괄호를 빼면 값이 아니라 메서드가 담겨서, 실행 파일의 `round(average, 1)` 에서 `TypeError` 가 납니다. `mean` 과 `max` 는 **뒤에 괄호를 붙여 호출하는 메서드입니다.**
+- `mean` 과 `max` 는 **뒤에 괄호를 붙여 호출하는 메서드입니다.**
 
 **관제에서는**
 
@@ -423,10 +446,20 @@ python challenge2-2_run.py
 --- 단계 2: 전체 이벤트 57 개
 ```
 
-- (나) 「기타 실패」 15개에는 <mark>서로 다른 일이 섞여 있습니다.</mark>
-  - `server`(판정 서버) 실패 9개: gaeun 의 `ACCOUNT:CHANGE` 3번, dami 의 `SALES:QUERY` 3번과 `SALES:CHANGE` 1번, seoyeon 의 `SETTLE:QUERY` 1번과 `SALES:CHANGE` 1번입니다.
-  - `web`(웹 서버) 실패 5개: 198.51.100.90 이 09:20:10 ~ 09:20:12 에 `/.env` · `/wp-login.php` · `/phpmyadmin` 을 차례로 요청한 것 3개와, 페이지 요청 실패 2개(`/board/99` · `/report`)입니다.
-  - `saas`(SaaS) 실패 1개: jiwoo 의 `login` 입니다.
+- (나) 「기타 실패」 15개에는 <mark>서로 다른 일이 섞여 있습니다.</mark> `server`(판정 서버) 실패 9개, `web`(웹 서버) 실패 5개, `saas`(SaaS) 실패 1개입니다.
+
+  | 소스 | 누가 | 무엇을 | 개수 |
+  |---|---|---|---|
+  | `server` | gaeun | `ACCOUNT:CHANGE` | 3 |
+  | `server` | dami | `SALES:QUERY` | 3 |
+  | `server` | dami | `SALES:CHANGE` | 1 |
+  | `server` | seoyeon | `SETTLE:QUERY` | 1 |
+  | `server` | seoyeon | `SALES:CHANGE` | 1 |
+  | `web` | 198.51.100.90 | `/.env` · `/wp-login.php` · `/phpmyadmin` 을 차례로 요청 | 3 |
+  | `web` | 198.51.100.21 · 198.51.100.34 | 페이지 요청 실패(`/board/99` · `/report`) | 2 |
+  | `saas` | jiwoo | `login` | 1 |
+
+  - 198.51.100.90 은 09:20:10 ~ 09:20:12 에 세 경로를 차례로 요청했습니다.
   - <mark>하나로 묶으면 이 일들이 모두 같은 유형으로 보여서, 담당자가 대응을 정할 수 없습니다.</mark> 예를 들어 같은 사용자의 계정 변경이 3번 실패한 것과 `/.env` · `/wp-login.php` · `/phpmyadmin` 을 차례로 요청한 것은 대응이 전혀 다릅니다. 그래서 다음 Unit 3 은 로그 종류마다 먼저 확인할 일을 따로 찾습니다.
 - (다) 「기타 실패」를 맨 위에 두면 결과가 실패인 이벤트 23개가 모두 먼저 조건을 충족해서 **기타 실패 23개**가 되고, 비정상 로그인과 비인가 접근은 **0개**가 됩니다. 정상은 34개 그대로입니다.
   - 담당자는 로그인 실패와 관리자 경로 요청 실패를 구분할 수 없게 되어, 비밀번호 대응과 접근 차단 중 무엇을 할지 정하지 못합니다.
@@ -438,7 +471,12 @@ python challenge2-2_run.py
 
 **자주 틀리는 곳**
 
-- `events.to_dict("records")` 를 빼고 `event_list = events` 로 쓰면, `for event in event_list` 가 이벤트가 아니라 **열 이름**을 하나씩 꺼내서 오류가 납니다.
+| 실수 | 나오는 것 | 고치는 법 |
+|---|---|---|
+| `to_dict("records")` 를 빼고 `event_list = events` 로 씀 | `for` 가 이벤트가 아니라 **열 이름**을 하나씩 꺼내서 `TypeError` | `event_list = events.to_dict("records")` 로 씁니다 |
+| `if` 에 `and` 없이 `result == "실패"` 만 씀 | <mark>모든 실패가 첫 번째 규칙의 조건을 충족해 「비정상 로그인」으로 나옵니다.</mark> | 두 조건을 `and` 로 잇습니다 |
+
+- `to_dict("records")` 를 빼면 실행할 때 오류가 납니다.
   - 실행하면 다음 오류가 납니다(<mark>`string indices must be integers`</mark> 가 나오면 이 실수입니다).
 
 ```
@@ -451,7 +489,6 @@ TypeError: string indices must be integers, not 'str'
 ```
 
   - 줄 번호는 사람마다 다릅니다.
-- `if` 두 조건을 `and` 로 잇지 않고 `result == "실패"` 만 쓰면 <mark>모든 실패가 첫 번째 규칙의 조건을 충족해 「비정상 로그인」으로 나옵니다.</mark>
 
 **관제에서는**
 
