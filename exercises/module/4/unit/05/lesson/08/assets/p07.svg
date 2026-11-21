@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 404" role="img">
-<title>도전 5-3 의 (가)~(다) 답에 들어갈 칸: 출력과 건수, 코드가 정한 점수, 실패 처리</title>
+<title>응용 5-3 의 (가)~(다) 답에 들어갈 칸: 출력과 건수, 코드가 정한 점수, 실패 처리</title>
 <desc>(가)는 출력 전체와 event_count, finding_count, records·summaries 건수를 씁니다. (나)는 점수와 등급을 코드가 정한 이유를 단계 5 와 단계 3 을 근거로, (다)는 실패해도 멈추지 않게 만든 이유와 대체 문장 대상의 처리 방법을 씁니다.</desc>
 <defs><marker id="a-l08-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
-<text x="24" y="32" font-size="19" font-weight="700">도전 5-3 · pipeline.py 로 탐지부터 보고서까지</text>
+<text x="24" y="32" font-size="19" font-weight="700">응용 5-3 · pipeline.py 로 탐지부터 보고서까지</text>
 <text x="24" y="56" font-size="14" fill="#666660">칸 체크리스트 · 답: 뒤에 이것들이 다 있으면 됩니다</text>
 <rect x="24" y="72" width="96" height="96" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="72" y="102" font-size="17" text-anchor="middle" font-weight="700">(가)</text>
@@ -31,6 +31,6 @@
 <text x="172" y="314" font-size="15">AI 호출이 실패해도 멈추지 않게 만든 이유</text>
 <rect x="148" y="325" width="14" height="14" rx="3" fill="#ffffff" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="172" y="338" font-size="15">대체 문장이 들어간 대상을 처리하는 방법</text>
-<text x="24" y="386" font-size="14" fill="#666660">선택입니다. 도전을 했을 때만 채웁니다.</text>
+<text x="24" y="386" font-size="14" fill="#666660">선택입니다. 응용을 했을 때만 채웁니다.</text>
 </g>
 </svg>

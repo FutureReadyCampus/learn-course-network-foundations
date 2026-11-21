@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <title>글쓰기 40분은 고르기 5분, 쓰기 25분, 점검과 올리기 10분이고 핵심 글감 세 개에서 고른다</title>
-<desc>40분을 세 구간으로 나눈 막대와 핵심 실습 글감 세 개, 도전을 했을 때 고를 수 있는 선택 글감을 보여 준다.</desc>
+<desc>40분을 세 구간으로 나눈 막대와 핵심 실습 글감 세 개, 응용을 했을 때 고를 수 있는 선택 글감을 보여 준다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">오늘 쓸 글 고르기 (40분)</text>
 <rect x="20" y="56" width="100" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
@@ -16,6 +16,6 @@
 <rect x="480" y="132" width="220" height="100" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text y="166.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="590.0" dy="0" font-weight="700">글감 3 · 실습 1-3</tspan><tspan x="590.0" dy="21.0">맥락이 초기값인 알림</tspan><tspan x="590.0" dy="21.0">확인 안 된 대상의 위험</tspan></text>
 <rect x="20" y="252" width="680" height="76" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text y="274.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0" font-weight="700">선택 글감 (도전을 했다면)</tspan><tspan x="360.0" dy="21.0">도전 1-1 · 경로를 나눈 기준과 판정 순서</tspan><tspan x="360.0" dy="21.0">도전 1-2 · 중복 실행 방지와 한도가 막지 못하는 것</tspan></text>
+<text y="274.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0" font-weight="700">선택 글감 (응용을 했다면)</tspan><tspan x="360.0" dy="21.0">응용 1-1 · 경로를 나눈 기준과 판정 순서</tspan><tspan x="360.0" dy="21.0">응용 1-2 · 중복 실행 방지와 한도가 막지 못하는 것</tspan></text>
 <text x="20" y="360" font-size="14" fill="#666660" text-anchor="start">세 문장만 써도 되고, 막혀서 끝내지 못한 이야기도 좋은 글이다</text>
 </svg>

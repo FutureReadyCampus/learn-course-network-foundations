@@ -22,5 +22,5 @@
 <path d="M540,236 V256 H180 V260" fill="none" stroke="#666660" stroke-width="2"/>
 <line x1="180" y1="260" x2="180" y2="274" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
 <line x1="340" y1="311" x2="378" y2="311" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>
-<text x="20" y="388" font-size="14" fill="#666660" text-anchor="start">도전을 했다면 도전 파일까지 만든 뒤 3 ~ 5 를 한 번 더 한다</text>
+<text x="20" y="388" font-size="14" fill="#666660" text-anchor="start">응용을 했다면 응용 파일까지 만든 뒤 3 ~ 5 를 한 번 더 한다</text>
 </svg>

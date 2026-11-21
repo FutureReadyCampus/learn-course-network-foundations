@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img"><title>도전 4-4 정리: 직접 쓴 코드 여섯 가지</title><desc>점수 열 만들기, 등급 리턴, 빠진 통제 추가, 정렬, 함수 결과 저장, 개수 세기의 코드 조각을 한 장에 모았습니다. 왼쪽은 하려는 일, 오른쪽은 코드입니다.</desc><defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">도전 4-4 정리</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img"><title>응용 4-4 정리: 직접 쓴 코드 여섯 가지</title><desc>점수 열 만들기, 등급 리턴, 빠진 통제 추가, 정렬, 함수 결과 저장, 개수 세기의 코드 조각을 한 장에 모았습니다. 왼쪽은 하려는 일, 오른쪽은 코드입니다.</desc><defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">응용 4-4 정리</text>
 <rect x="20" y="50" width="250" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="145.0" y="79" font-size="15" fill="#292929" text-anchor="middle">두 열을 곱해 점수 열</text>
 <line x1="272" y1="74" x2="296" y2="74" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>

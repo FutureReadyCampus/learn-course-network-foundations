@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>도전 2-1 보고서 칸: (가) 네 건의 결과, (나) dami 를 막은 확인, (다) 만료 뒤 점검</title>
-<desc>도전 2-1 보고서에서 채울 칸입니다. (가)는 출력과 네 건의 결과, 핵심 질문 (나)는 3번 dami 를 막은 코드 확인, (다)는 만료 뒤 예외와 점검 담당 · 주기입니다.</desc>
+<title>응용 2-1 보고서 칸: (가) 네 건의 결과, (나) dami 를 막은 확인, (다) 만료 뒤 점검</title>
+<desc>응용 2-1 보고서에서 채울 칸입니다. (가)는 출력과 네 건의 결과, 핵심 질문 (나)는 3번 dami 를 막은 코드 확인, (다)는 만료 뒤 예외와 점검 담당 · 주기입니다.</desc>
 <defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
-<text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">도전 2-1 · 정책 확인 후 예외 권한 부여 · 채울 칸</text>
+<text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">응용 2-1 · 정책 확인 후 예외 권한 부여 · 채울 칸</text>
 <rect x="30" y="56" width="670" height="100" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="46" y="82" font-size="16" fill="#292929" text-anchor="start" font-weight="700">(가) 출력 전체와 부여를 시도한 네 건</text>
 <rect x="60" y="97" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>

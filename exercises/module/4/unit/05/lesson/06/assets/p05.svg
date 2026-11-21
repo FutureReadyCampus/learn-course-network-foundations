@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img">
-<title>도전 5-3 정리: 리턴값 전달, 점수 합계, 종류별 개수, 딕셔너리 변환, 보고서</title>
+<title>응용 5-3 정리: 리턴값 전달, 점수 합계, 종류별 개수, 딕셔너리 변환, 보고서</title>
 <desc>앞 결과를 다음 함수에 전달하고, score_findings 로 점수를 더합니다. events["source"].value_counts() 로 로그 종류마다 개수를 세고 to_dict() 로 딕셔너리로 바꿔 report 딕셔너리에 담습니다.</desc>
 <defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 5-3 정리</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">응용 5-3 정리</text>
 <rect x="20" y="52" width="190" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="30" y="78.6" font-size="15" fill="#292929">앞 결과를 다음 함수에</text>
 <rect x="220" y="52" width="480" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>

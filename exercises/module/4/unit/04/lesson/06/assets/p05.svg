@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
-<title>도전 4-2 정리: 뒤집기 ~ 로 오탐을, isin 과 ~ 로 미탐을 고르고 .sum() 으로 셉니다</title>
+<title>응용 4-2 정리: 뒤집기 ~ 로 오탐을, isin 과 ~ 로 미탐을 고르고 .sum() 으로 셉니다</title>
 <desc>오탐은 real 열을 ~ 로 뒤집어 고른 뒤 rule 열을 value_counts 로 셉니다. 미탐은 진짜 알림의 problem 번호를 꺼내 isin 으로 비교하고 ~ 로 뒤집어 고릅니다. 진짜 알림 수는 is_real.sum() 입니다.</desc>
 <defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 4-2 정리</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">응용 4-2 정리</text>
 <text x="20" y="70" font-size="16" fill="#292929" font-weight="700">오탐</text>
 <rect x="20" y="84" width="110" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="75.0" y="113.0" font-size="14" fill="#292929" text-anchor="middle">is_real</text>

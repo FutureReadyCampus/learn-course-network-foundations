@@ -11,7 +11,7 @@ render: markdown
 설명하는 답은 한 예이고, <mark>핵심이 같으면 맞습니다.</mark>
 
 1. **핵심 실습**: 실습 4-1 · 4-2 정답입니다. 오늘 모두가 하는 실습이니 먼저 맞춰 봅니다.
-2. **도전(선택)**: 도전 4-1 ~ 4-3 정답입니다. 도전을 한 사람만 봅니다.
+2. **응용(여유가 되면)**: 응용 4-1 ~ 4-3 정답입니다. 응용을 한 사람만 봅니다.
 3. 정답마다 채운 코드, 결과, 왜, 자주 틀리는 곳, 관제에서는 순서로 읽습니다.
 
 ---
@@ -223,17 +223,17 @@ python exercise4-2_run.py
 
 ---
 
-## 도전 4-1 정답
+## 응용 4-1 정답
 
-> **선택입니다. 시간이 남을 때 합니다.** 여기부터는 도전 정답입니다. 도전을 한 사람만 봅니다. 핵심 실습 정답은 앞의 실습 4-1 · 4-2 정답에 있습니다.
+> **여유가 되면 해 보세요.** 여기부터는 응용 정답입니다. 응용을 한 사람만 봅니다. 핵심 실습 정답은 앞의 실습 4-1 · 4-2 정답에 있습니다.
 
 **터미널에 입력합니다.**
 
 ```bash
 pwd
-python challenge4-1_run.py
+python apply4-1_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python challenge4-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python apply4-1_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
 
@@ -301,7 +301,7 @@ gaeun 의 이벤트 (시각 · 로그 · 행동 · 결과)
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/challenge4-1_run.py", line 18, in <module>
+  File "…/anomaly_detection/apply4-1_run.py", line 18, in <module>
     timeline = build_timeline(server_part, saas_part, web_part)  # 세 로그를 합쳐 사용자 · 시각 순으로 정렬한다
   File "…/anomaly_detection/correlation.py", line 45, in build_timeline
     timeline = pd.concat(server_part, saas_part, web_part)  # 세 표를 위아래로 연결해 표 하나로 만든다
@@ -317,13 +317,13 @@ TypeError: concat() takes 1 positional argument but 3 were given
 
 ---
 
-## 도전 4-2 정답
+## 응용 4-2 정답
 
 **터미널에 입력합니다.**
 
 ```bash
 pwd
-python challenge4-2_run.py
+python apply4-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -406,7 +406,7 @@ Name: count, dtype: int64
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/challenge4-2_run.py", line 14, in <module>
+  File "…/anomaly_detection/apply4-2_run.py", line 14, in <module>
   File "…/anomaly_detection/evaluation.py", line 31, in find_false_alarms
 ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
 ```
@@ -428,13 +428,13 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 
 ---
 
-## 도전 4-3 정답
+## 응용 4-3 정답
 
 **터미널에 입력합니다.**
 
 ```bash
 pwd
-python challenge4-3_run.py
+python apply4-3_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -487,7 +487,7 @@ python challenge4-3_run.py
   - 오탐이 늘지 않은 이유: A8 은 조사해 보니 진짜 문제(`real` 이 `True`)였기 때문에, 오탐은 실습 4-2에서 줄인 2개(A2 · A3) 그대로입니다.
 - (다) P5 를 찾으려면 <mark style="background:#bde3ff">정산처럼 중요한 자원에 권한 없이 접근하면 한 번만 거절돼도 알리는 규칙</mark>이 필요합니다.
   - 그 규칙을 더하면 업무상 실수로 권한 없는 곳을 한 번 건드린 사용자까지 알림이 나서 <mark style="background:#bde3ff">오탐이 늘 수 있습니다.</mark>
-  - 그래서 규칙을 더한 뒤에는 도전 4-2에서 한 것처럼 오탐과 미탐을 다시 세어 봅니다.
+  - 그래서 규칙을 더한 뒤에는 응용 4-2에서 한 것처럼 오탐과 미탐을 다시 세어 봅니다.
 
 **왜**
 
@@ -500,7 +500,7 @@ python challenge4-3_run.py
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/challenge4-3_run.py", line 14, in <module>
+  File "…/anomaly_detection/apply4-3_run.py", line 14, in <module>
   File "…/anomaly_detection/final_check.py", line 37, in merge_alerts
 TypeError: concat() takes 1 positional argument but 2 were given
 ```
@@ -511,7 +511,7 @@ TypeError: concat() takes 1 positional argument but 2 were given
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/challenge4-3_run.py", line 19, in <module>
+  File "…/anomaly_detection/apply4-3_run.py", line 19, in <module>
   File "…/anomaly_detection/final_check.py", line 53, in evaluate
 TypeError: only list-like objects are allowed to be passed to isin(), you passed a `method`
 ```

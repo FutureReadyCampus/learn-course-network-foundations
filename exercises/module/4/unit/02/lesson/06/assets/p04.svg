@@ -25,6 +25,6 @@
 <text x="440" y="146" font-size="14" text-anchor="end" fill="#666660">다음 이벤트</text>
 <polyline points="110,241 110,282" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
 <rect x="20" y="286" width="680" height="104" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360.0" y="323" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">challenge2-2_run.py 출력</tspan><tspan x="360.0" dy="20">단계 1: TYPE_ORDER 순서로 유형별 이벤트 수 4줄</tspan><tspan x="360.0" dy="20">단계 2: sum(values) 로 더한 전체 이벤트 수</tspan></text>
+<text x="360.0" y="323" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">apply2-2_run.py 출력</tspan><tspan x="360.0" dy="20">단계 1: TYPE_ORDER 순서로 유형별 이벤트 수 4줄</tspan><tspan x="360.0" dy="20">단계 2: sum(values) 로 더한 전체 이벤트 수</tspan></text>
 </g>
 </svg>

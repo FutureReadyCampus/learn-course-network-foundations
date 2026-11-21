@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
-<title>도전 4-2 정답: 알림 7개 중 진짜 3개 · 오탐 4개, 진짜 문제 중 미탐 2개</title>
+<title>응용 4-2 정답: 알림 7개 중 진짜 3개 · 오탐 4개, 진짜 문제 중 미탐 2개</title>
 <desc>단계 2는 진짜 문제였던 알림 3개, 단계 3은 오탐 4개이며 SaaS 평소와 다른 IP 가 2개로 가장 많습니다. 단계 4는 P4 와 P5 를 놓쳤다고 알려 줍니다. 표의 열에는 not 이 아니라 ~ 를 씁니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 4-2 정답</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">응용 4-2 정답</text>
 <rect x="20" y="54" width="160" height="80" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="100.0" y="89.3" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">단계 1</text>
 <text x="100.0" y="110.6" font-size="15" fill="#292929" text-anchor="middle">알림 7개</text>

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img"><title>자동 조치 6가지의 위험을 평가해 리스크 평가 문서를 만드는 흐름</title><desc>입력 파일 automation_risks.json 의 자동 조치 6가지를 risk_assessment.py 가 점수·등급·통제 갭으로 평가합니다. 결과는 16줄짜리 risk_assessment.md 이고, 바로 보완할 조치는 2개입니다.</desc><defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">도전 4-4 · 무엇을 만드나</text>
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">응용 4-4 · 무엇을 만드나</text>
 <rect x="20" y="60" width="200" height="150" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="120.0" y="108" font-size="16" fill="#666660" text-anchor="middle" font-weight="700">입력</text>
 <text x="120.0" y="131" font-size="15" fill="#292929" text-anchor="middle">자동 조치 6가지</text>

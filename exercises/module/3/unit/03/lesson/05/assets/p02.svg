@@ -10,7 +10,7 @@
 <text x="185" y="174.128" font-size="16" fill="#1f7a4a" text-anchor="middle" font-weight="700">파일에 적힌 사실로 판단</text>
 <text x="185" y="195.52" font-size="15" fill="#292929" text-anchor="middle">퇴사 · 기간 만료</text>
 <text x="185" y="216.52" font-size="15" fill="#292929" text-anchor="middle">→ 코드가 규칙으로 걸러 낸다</text>
-<text x="185" y="236.512" font-size="14" fill="#666660" text-anchor="middle">도전 3-1</text>
+<text x="185" y="236.512" font-size="14" fill="#666660" text-anchor="middle">응용 3-1</text>
 <rect x="370" y="140" width="330" height="120" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="535" y="174.128" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">사실만으로는 판단 못 함</text>
 <text x="535" y="195.52" font-size="15" fill="#292929" text-anchor="middle">규칙에 안 걸리는 권한</text>

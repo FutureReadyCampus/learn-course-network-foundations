@@ -8,15 +8,15 @@ render: markdown
 
 ## 제공 파일 쓰는 법
 
-이 레슨의 두 파일은 **도전을 할 때만** 씁니다. 핵심 실습 4-1 · 4-2 에는 필요 없으니, 도전을 하지 않으면 이 레슨은 건너뜁니다.
+이 레슨의 두 파일은 **응용을 할 때만** 씁니다. 핵심 실습 4-1 · 4-2 에는 필요 없으니, 응용을 하지 않으면 이 레슨은 건너뜁니다.
 
-| 파일 | 직접 써 보는 도전 | 이 파일을 불러 쓰는 도전 |
+| 파일 | 직접 써 보는 응용 | 이 파일을 불러 쓰는 응용 |
 |---|---|---|
-| `escalation.py` | 도전 4-1 | 도전 4-2 |
-| `report.py` | 도전 4-3 | 도전 4-5 |
+| `escalation.py` | 응용 4-1 | 응용 4-2 |
+| `report.py` | 응용 4-3 | 응용 4-5 |
 
-1. 도전 4-1 · 4-3 을 하면 그 레슨에서 이 파일을 빈칸이 있는 골격으로 만들어 직접 씁니다. 그때는 이 레슨을 건너뜁니다.
-2. 도전 4-1 을 건너뛰고 도전 4-2 를 하려면 `escalation.py` 를, 도전 4-3 을 건너뛰고 도전 4-5 를 하려면 `report.py` 를 이 레슨의 완성본으로 만듭니다.
+1. 응용 4-1 · 4-3 을 하면 그 레슨에서 이 파일을 빈칸이 있는 골격으로 만들어 직접 씁니다. 그때는 이 레슨을 건너뜁니다.
+2. 응용 4-1 을 건너뛰고 응용 4-2 를 하려면 `escalation.py` 를, 응용 4-3 을 건너뛰고 응용 4-5 를 하려면 `report.py` 를 이 레슨의 완성본으로 만듭니다.
 3. 파일은 `soar_response` 폴더 안에 만듭니다(VS Code 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File**). 코드 상자의 **복사** 버튼을 눌러 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
 4. 다 만들었으면 아래 명령으로 확인합니다(맥북은 `python3`). 만든 파일의 줄만 칩니다.
    ```bash
@@ -28,7 +28,7 @@ render: markdown
 
 | 오류 메시지 | 뜻 | 할 일 |
 |---|---|---|
-| `No module named 'ticket_notice'` | `escalation.py` 가 불러 쓰는 Unit 3 파일이 없음 | 도전 4-1 레슨의 「필요한 파일 준비하기」를 먼저 함 |
+| `No module named 'ticket_notice'` | `escalation.py` 가 불러 쓰는 Unit 3 파일이 없음 | 응용 4-1 레슨의 「필요한 파일 준비하기」를 먼저 함 |
 | `No module named 'requests'` | 도구가 설치되지 않음 | `python -m pip install flask requests` |
 | `No module named 'pandas'` | 도구가 설치되지 않음 | `python -m pip install pandas` |
 
@@ -95,12 +95,12 @@ def escalate_ticket(ticket, now, rules):                                        
     return "올림"                                                                          # 「올림」을 리턴한다
 ```
 
-- 함수 네 개의 뜻과 규칙 파일(`config/escalation_rules.json`)의 키는 도전 4-1 레슨에서 자세히 다룹니다.
-- 도전 4-2 는 이 파일의 `needs_escalation` 과 `escalate_ticket` 을 불러 씁니다.
+- 함수 네 개의 뜻과 규칙 파일(`config/escalation_rules.json`)의 키는 응용 4-1 레슨에서 자세히 다룹니다.
+- 응용 4-2 는 이 파일의 `needs_escalation` 과 `escalate_ticket` 을 불러 씁니다.
 
 ## `report.py` 만들기
 
-**`report.py`** — 티켓 파일을 판다스 표로 바꿔 집계하고, 조치 기록과 대조해 초동 대응 리포트의 줄 리스트를 만듭니다. 리포트 파일을 실제로 쓰는 일은 도전 4-3 의 실행 파일이 합니다.
+**`report.py`** — 티켓 파일을 판다스 표로 바꿔 집계하고, 조치 기록과 대조해 초동 대응 리포트의 줄 리스트를 만듭니다. 리포트 파일을 실제로 쓰는 일은 응용 4-3 의 실행 파일이 합니다.
 
 ```python
 import pandas as pd                                                                        # 표를 다루기 위해 판다스를 pd 라는 이름으로 불러온다
@@ -217,5 +217,5 @@ def make_report_lines(tickets, actions, rule_counts, grade_means, late_tickets, 
     return lines                                                                           # 완성한 줄 리스트를 리턴한다
 ```
 
-- 함수마다 하는 일과 판다스 문법은 도전 4-3 레슨에서 자세히 다룹니다.
-- 도전 4-5 는 이 파일의 `find_missing_incidents` 를 불러 씁니다. 도전 4-5 가 읽는 리포트 파일 `incident_report_20261112.md` 는 도전 4-5 레슨에서 만드는 방법을 알려 줍니다.
+- 함수마다 하는 일과 판다스 문법은 응용 4-3 레슨에서 자세히 다룹니다.
+- 응용 4-5 는 이 파일의 `find_missing_incidents` 를 불러 씁니다. 응용 4-5 가 읽는 리포트 파일 `incident_report_20261112.md` 는 응용 4-5 레슨에서 만드는 방법을 알려 줍니다.

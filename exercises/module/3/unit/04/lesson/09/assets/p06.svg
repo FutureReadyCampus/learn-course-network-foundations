@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
-<title>도전 4-2 보고서에는 판정 건수, 거부 이유를 하나만 알릴지, 요청마다 확인하는 이유를 쓴다</title>
-<desc>도전 4-2 보고서의 (가) (나) (다) 세 칸에 채울 내용을 체크리스트로 보여 준다. (나)와 (다)는 핵심 질문이다.</desc>
+<title>응용 4-2 보고서에는 판정 건수, 거부 이유를 하나만 알릴지, 요청마다 확인하는 이유를 쓴다</title>
+<desc>응용 4-2 보고서의 (가) (나) (다) 세 칸에 채울 내용을 체크리스트로 보여 준다. (나)와 (다)는 핵심 질문이다.</desc>
 <defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 4-2 보고서 · 채울 칸</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">응용 4-2 보고서 · 채울 칸</text>
 <rect x="20" y="50" width="96" height="102" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="68.0" y="106.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">(가)</text>
 <rect x="126" y="50" width="574" height="102" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>

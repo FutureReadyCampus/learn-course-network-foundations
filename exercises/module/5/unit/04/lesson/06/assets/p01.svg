@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>도전 4-2: 알림과 담당자 동작으로 3시간을 돌려 MTTA·MTTR·위반·인계를 낸다</title>
-<desc>알림 11건과 담당자 동작 8건을 challenge4-2_run.py 가 0분부터 180분까지 1분씩 재현한다. 결과로 평균 확인 시간 55.0분, 평균 해결 시간 84.0분, 기한 위반 2장, 인계할 미해결 티켓 4장이 나온다.</desc>
+<title>응용 4-2: 알림과 담당자 동작으로 3시간을 돌려 MTTA·MTTR·위반·인계를 낸다</title>
+<desc>알림 11건과 담당자 동작 8건을 apply4-2_run.py 가 0분부터 180분까지 1분씩 재현한다. 결과로 평균 확인 시간 55.0분, 평균 해결 시간 84.0분, 기한 위반 2장, 인계할 미해결 티켓 4장이 나온다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">도전 4-2 · 무엇을 만드나</text>
+<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">응용 4-2 · 무엇을 만드나</text>
 <rect x="20" y="60" width="200" height="80" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="120.0" y="94.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">alerts_thu.json</text>
 <text x="120.0" y="115.8" font-size="15" fill="#292929" text-anchor="middle">알림 11건</text>
@@ -10,7 +10,7 @@
 <text x="120.0" y="194.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">status_events.json</text>
 <text x="120.0" y="215.8" font-size="15" fill="#292929" text-anchor="middle">담당자 동작 8건</text>
 <rect x="260" y="60" width="200" height="180" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360.0" y="123.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">challenge4-2_run.py</text>
+<text x="360.0" y="123.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">apply4-2_run.py</text>
 <text x="360.0" y="144.8" font-size="15" fill="#292929" text-anchor="middle">0분 ~ 180분</text>
 <text x="360.0" y="165.8" font-size="15" fill="#292929" text-anchor="middle">1분씩 진행</text>
 <text x="360.0" y="186.8" font-size="15" fill="#292929" text-anchor="middle">10분마다 점검</text>

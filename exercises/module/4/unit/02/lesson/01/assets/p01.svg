@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
 <title>오늘은 이벤트 57개를 판다스로 세고, 로그인 실패 5번 이상인 주소를 찾는다</title>
-<desc>normalized_events.json 을 판다스 표로 읽어 실습 2-1 에서 실패를 소스별로 세고, 실습 2-2 에서 사용자별·시간대별로 묶어 CSV 로 저장하고, 실습 2-3 에서 알림 기준 5번 이상인 주소를 찾습니다. 도전 2-1 · 2-2 는 선택이고, 3시간은 15 · 110 · 40 · 15분으로 나눕니다.</desc>
+<desc>normalized_events.json 을 판다스 표로 읽어 실습 2-1 에서 실패를 소스별로 세고, 실습 2-2 에서 사용자별·시간대별로 묶어 CSV 로 저장하고, 실습 2-3 에서 알림 기준 5번 이상인 주소를 찾습니다. 응용 2-1 · 2-2 는 선택이고, 3시간은 15 · 110 · 40 · 15분으로 나눕니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="24" y="34" font-size="19" fill="#292929" font-weight="700">오늘의 계획: 판다스로 세고 기준과 비교하기</text>
@@ -24,7 +24,7 @@
 <text x="629" y="110" font-size="14" text-anchor="middle" fill="#292929">로그인 실패</text>
 <text x="629" y="130" font-size="14" text-anchor="middle" fill="#292929">5번 이상 주소</text>
 <rect x="230" y="170" width="466" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="463" y="196" font-size="15" text-anchor="middle" fill="#666660" font-weight="700">도전 2-1 · 2-2 (선택)</text>
+<text x="463" y="196" font-size="15" text-anchor="middle" fill="#666660" font-weight="700">응용 2-1 · 2-2 (선택)</text>
 <text x="463" y="215" font-size="14" text-anchor="middle" fill="#666660">알림 기준 직접 정하기 · 이벤트 유형별로 세기</text>
 <text x="24" y="266" font-size="15" fill="#292929" font-weight="700">3시간 나누기</text>
 <rect x="24" y="280" width="62" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>

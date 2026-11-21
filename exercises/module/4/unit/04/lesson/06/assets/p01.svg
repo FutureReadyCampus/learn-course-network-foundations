@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
-<title>도전 4-2 목표: 알림 파일과 진짜 문제 파일로 오탐 수와 미탐 수를 셉니다</title>
+<title>응용 4-2 목표: 알림 파일과 진짜 문제 파일로 오탐 수와 미탐 수를 셉니다</title>
 <desc>review_alerts.json 의 알림 7개와 problems.json 의 진짜 문제 5개를 evaluation.py 에 넣습니다. 프로그램은 문제가 아닌데 난 알림(오탐)과 알림이 나지 않은 진짜 문제(미탐)의 개수를 알려 줍니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">

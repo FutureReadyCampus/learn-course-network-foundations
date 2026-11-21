@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>도전 3-2 정리: 번호마다 쓰는 코드 모양</title>
+<title>응용 3-2 정리: 번호마다 쓰는 코드 모양</title>
 <desc>1번은 두 조건이 모두 맞는지, 2번은 이하인지 확인한다. 4~6번은 티켓의 숫자, 리스트, 갱신 시각을 바꾸고, 7~9번은 합칠 티켓을 찾아 None 인지 확인한 뒤 병합 함수를 부른다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
-<text x="20" y="30" font-size="18" fill="#292929" font-weight="700">도전 3-2 정리 · 번호별 코드</text>
+<text x="20" y="30" font-size="18" fill="#292929" font-weight="700">응용 3-2 정리 · 번호별 코드</text>
 <rect x="20" y="48" width="680" height="36" fill="#f1f1ef" stroke="#dededb" stroke-width="1"/>
 <text x="30" y="71.04" font-size="14" fill="#292929" font-weight="700">번호</text>
 <text x="110" y="71.04" font-size="14" fill="#292929" font-weight="700">하는 일</text>

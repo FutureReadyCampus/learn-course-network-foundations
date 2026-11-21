@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>도전 3-3 정답: TCK-1 은 30분 간격으로 세 번 전송, 꺼진 주소는 3번 실패해 0</title>
+<title>응용 3-3 정답: TCK-1 은 30분 간격으로 세 번 전송, 꺼진 주소는 3번 실패해 0</title>
 <desc>왼쪽은 TCK-1 에 온 알림 네 건이 마지막 전송 뒤 경과 시간에 따라 전송되거나 건너뛰는 모습이다. 오른쪽은 꺼진 주소로 3번 모두 ConnectionError 가 나서 send_with_retry 가 0 을 리턴하는 단계 3 이다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">도전 3-3 정답 · 간격과 재시도</text>
+<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">응용 3-3 정답 · 간격과 재시도</text>
 <text x="20" y="66" font-size="15" font-weight="bold" fill="#292929">TCK-1 (최소 간격 30분)</text>
 <rect x="20" y="80" width="380" height="42" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="210.0" y="106.2" font-size="15" fill="#292929" text-anchor="middle">INC-201 · 처음 → 전송</text>

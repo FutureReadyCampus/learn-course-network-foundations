@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>도전 4-2: evaluation.py 의 함수들이 단계 1 ~ 4 의 숫자를 만듭니다</title>
-<desc>load_table 로 두 파일을 읽고, count_real_alerts 가 진짜 문제였던 알림 수를, find_false_alarms 가 오탐과 규칙별 개수를, find_missed 가 알림이 나지 않은 진짜 문제를 구합니다. challenge4-2_run.py 가 이 결과를 네 단계로 출력합니다.</desc>
+<title>응용 4-2: evaluation.py 의 함수들이 단계 1 ~ 4 의 숫자를 만듭니다</title>
+<desc>load_table 로 두 파일을 읽고, count_real_alerts 가 진짜 문제였던 알림 수를, find_false_alarms 가 오탐과 규칙별 개수를, find_missed 가 알림이 나지 않은 진짜 문제를 구합니다. apply4-2_run.py 가 이 결과를 네 단계로 출력합니다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 4-2 · 알림의 오탐과 미탐 세기</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">응용 4-2 · 알림의 오탐과 미탐 세기</text>
 <text x="700" y="32" font-size="15" fill="#666660" text-anchor="end">직접 쓰는 곳 7군데</text>
 <rect x="20" y="56" width="220" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="130.0" y="81.2" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">load_table</text>

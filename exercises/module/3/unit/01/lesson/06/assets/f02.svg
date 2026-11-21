@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 590" role="img">
 <title>지난 기록을 새 규칙으로 다시 판정하고, audit 파일은 두 단계로 결과를 낸다</title>
-<desc>조회 15건의 지난 기록을 check_permission 으로 한 건씩 다시 판정해, 막아야 할 것이 막히는지와 정상 업무가 막히지 않는지를 확인한다. challenge1-1_audit.py 의 단계 1은 기록마다 판정해 건수를 세고 쓴 권한을 모으며, 단계 2는 역할마다 쓴 적 없는 권한을 출력한다.</desc>
+<desc>조회 15건의 지난 기록을 check_permission 으로 한 건씩 다시 판정해, 막아야 할 것이 막히는지와 정상 업무가 막히지 않는지를 확인한다. apply1-1_audit.py 의 단계 1은 기록마다 판정해 건수를 세고 쓴 권한을 모으며, 단계 2는 역할마다 쓴 적 없는 권한을 출력한다.</desc>
 <defs><marker id="a-f02-u1l4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="28" font-size="18" fill="#292929" text-anchor="start" font-weight="700">기록 재판정(replay)</text>
@@ -20,7 +20,7 @@
 <text x="595.0" y="114.2" font-size="14" fill="#292929" text-anchor="middle">② 정상 업무가 막히지 않나</text>
 <text x="20" y="178" font-size="18" fill="#292929" text-anchor="start" font-weight="700">두 파일이 하는 일</text>
 <rect x="20" y="192" width="230" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="135.0" y="217.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">challenge1-1_audit.py</text>
+<text x="135.0" y="217.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">apply1-1_audit.py</text>
 <polyline points="50,232 50,530" fill="none" stroke="#666660" stroke-width="1.8"/>
 <polyline points="50,270 98,270" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-f02-u1l4)"/>
 <rect x="100" y="250" width="600" height="216" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>

@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 377" role="img">
-<title>도전 5-2 정답: web2 바뀜 · web3 새로, 127.0.0.1 은 내 PC 만, 바뀐 서버만 다시</title>
+<title>응용 5-2 정답: web2 바뀜 · web3 새로, 127.0.0.1 은 내 PC 만, 바뀐 서버만 다시</title>
 <desc>(가) (나) (다) 정답의 핵심을 카드로 모았다. 아래는 -f 를 빼거나 127.0.0.1: 을 빼는 자주 틀리는 곳이다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">도전 5-2 정답 요점</text>
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">응용 5-2 정답 요점</text>
 <rect x="12" y="52" width="224" height="134.2" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="124" y="91.995" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">(가) 서비스</text>
 <text x="124" y="114.125" font-size="15" text-anchor="middle" fill="#292929">범위가 바뀐 기존 서비스</text>

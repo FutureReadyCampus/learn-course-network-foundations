@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
 <title>assign_role 은 역할을 먼저 검사하고, revoke_access 는 employed 만 바꿉니다</title>
-<desc>도전 1-2 정답의 두 함수 흐름입니다. 없는 역할은 부여하지 않고, 회수는 항목을 지우지 않고 employed 를 False 로 바꿉니다. 그래서 hana 는 사용자에 들어가지 않고, junho 는 「퇴사한 계정」으로 거부됩니다.</desc>
+<desc>응용 1-2 정답의 두 함수 흐름입니다. 없는 역할은 부여하지 않고, 회수는 항목을 지우지 않고 employed 를 False 로 바꿉니다. 그래서 hana 는 사용자에 들어가지 않고, junho 는 「퇴사한 계정」으로 거부됩니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
-<text x="24" y="34" font-size="19" font-weight="700">도전 1-2 정답 · 부여와 회수</text>
+<text x="24" y="34" font-size="19" font-weight="700">응용 1-2 정답 · 부여와 회수</text>
 <rect x="24" y="60" width="150" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="99" y="86.9" font-size="16" text-anchor="middle" font-weight="700">assign_role</text>
 <text x="99" y="107.9" font-size="15" text-anchor="middle">(name, role)</text>

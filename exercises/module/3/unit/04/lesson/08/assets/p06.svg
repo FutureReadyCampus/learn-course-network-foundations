@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
-<title>도전 4-3 정답: 200이 3건, 403이 5건, 400이 1건이고 로그는 8줄이다</title>
+<title>응용 4-3 정답: 200이 3건, 403이 5건, 400이 1건이고 로그는 8줄이다</title>
 <desc>요청 9건 중 1·4·5번은 200, 2·3·6·7·8번은 403, network 를 빠뜨린 9번은 400 이다. 400 요청은 로그에 남지 않아 판정까지 간 응답 8건과 로그 8줄이 같다.</desc>
 <defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 4-3 정답 · 응답과 로그 대조</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">응용 4-3 정답 · 응답과 로그 대조</text>
 <rect x="20" y="56" width="160" height="110" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="100" y="105.5" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">요청 9건</text>
 <text x="100" y="128.7" font-size="15" fill="#292929" text-anchor="middle">send_checks.py</text>

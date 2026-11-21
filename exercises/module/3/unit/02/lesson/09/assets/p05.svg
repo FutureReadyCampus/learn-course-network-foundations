@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
-<title>도전 2-2 정답: 1번 5.5시간, 5번 6.2시간이 기한 초과이고 6번은 정확히 4시간</title>
+<title>응용 2-2 정답: 1번 5.5시간, 5번 6.2시간이 기한 초과이고 6번은 정확히 4시간</title>
 <desc>정답 출력의 단계 2에는 1번(08:30 접수, 5.5시간)과 5번(07:50 접수, 6.2시간)이 나옵니다. 6번은 정확히 4시간이라 초과가 아닙니다. 3600 으로 나누지 않거나 &gt;= 를 쓰면 결과가 틀어집니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">

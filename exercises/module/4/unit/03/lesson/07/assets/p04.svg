@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>도전 3-1 정답: 알림 2건을 저장하고 str(minute) 를 빼면 TypeError 가 난다</title>
+<title>응용 3-1 정답: 알림 2건을 저장하고 str(minute) 를 빼면 TypeError 가 난다</title>
 <desc>정답 출력은 비정상 로그인 1건과 트래픽 급증 1건, 모두 2건이다. 두 알림은 같은 주소와 같은 09:12 라서 한 사건으로 조사한다. target 에 시각 값을 그대로 두면 JSON 저장에서 TypeError 가 난다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
-<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">도전 3-1 정답 · alerts.json 알림 2건</text>
+<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">응용 3-1 정답 · alerts.json 알림 2건</text>
 <rect x="30" y="52" width="320" height="120" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="190" y="87.5" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">비정상 로그인</text>
 <text x="190" y="107.1" font-size="14" fill="#292929" text-anchor="middle">target: 203.0.113.50</text>

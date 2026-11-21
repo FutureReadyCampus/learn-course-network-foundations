@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>도전 4-1: 20·60·110분에 점검해 열림 상태로 기한을 넘긴 티켓만 4번 올린다</title>
+<title>응용 4-1: 20·60·110분에 점검해 열림 상태로 기한을 넘긴 티켓만 4번 올린다</title>
 <desc>20분 점검에서 TCK-1 이 5분 넘겨 team.lead 에게 올라가고, 25분에 확인 중이 된다. 60분에는 올릴 티켓이 없고, 110분에 TCK-3 과 TCK-4 는 soc.head, TCK-6 은 team.lead 에게 올라가 모두 4번이다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">도전 4-1 · 점검 시각마다 일어나는 일</text>
+<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">응용 4-1 · 점검 시각마다 일어나는 일</text>
 <rect x="20" y="60" width="155" height="170" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="97.5" y="118.8" font-size="15" font-weight="bold" fill="#292929" text-anchor="middle">20분 점검</text>
 <text x="97.5" y="139.8" font-size="15" fill="#292929" text-anchor="middle">TCK-1</text>

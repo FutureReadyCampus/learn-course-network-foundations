@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img"><title>규칙 결과와 미사용 결과를 권한마다 이유를 모은 리포트 한 장으로 합친다</title><desc>규칙에 걸린 권한 리스트와 90일 넘게 안 쓴 권한 리스트가 따로 나온다. generate_report 가 두 결과를 합쳐, 후보 권한마다 걸린 이유를 모은 리포트 딕셔너리 하나를 만든다.</desc><defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">도전 3-2 · 무엇을 만드는가</text>
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">응용 3-2 · 무엇을 만드는가</text>
 <rect x="20" y="66" width="190" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="115" y="95.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">stale</text>
 <text x="115" y="116.75" font-size="14" fill="#666660" text-anchor="middle">규칙에 걸린 권한</text>

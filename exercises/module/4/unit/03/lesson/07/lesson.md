@@ -11,7 +11,7 @@ render: markdown
 설명하는 답은 한 예이고, 핵심이 같으면 맞습니다.
 
 1. **핵심 실습**: 실습 3-1 · 3-2 정답입니다. 오늘 모두가 하는 실습이니 먼저 맞춰 봅니다.
-2. **도전(선택)**: 도전 3-1 ~ 3-3 정답입니다. 도전을 한 사람만 봅니다.
+2. **응용(여유가 되면)**: 응용 3-1 ~ 3-3 정답입니다. 응용을 한 사람만 봅니다.
 3. 정답마다 채운 코드, 결과, 왜, 자주 틀리는 곳, 관제에서는 순서로 읽습니다.
 
 ---
@@ -111,7 +111,7 @@ dtype: int64
   - 확정하려면 이 주소가 회사 직원의 주소인지, 성공한 계정이 누구인지 <mark>판정 서버 · SaaS 로그와 시각을 맞춰 봐야 합니다.</mark>
 - (다) 09:20 의 요청 3개는 <mark>급증 기준(6.0번 이상)보다 적어서 탐지되지 않았습니다.</mark>
   - 그 3개는 모두 198.51.100.90 이 09:20:10 ~ 09:20:12 에 보낸 `GET /.env` · `GET /wp-login.php` · `GET /phpmyadmin` 이고 모두 실패했습니다. 서로 다른 경로를 차례로 요청한 모양입니다.
-  - 급증 규칙은 요청의 **수**만 보기 때문에, <mark>수가 적으면 요청의 내용과 상관없이 알리지 못합니다.</mark> 이런 경로 스캔(취약한 경로를 하나씩 찾아보는 시도)은 도전 3-3 에서 다른 규칙으로 찾습니다.
+  - 급증 규칙은 요청의 **수**만 보기 때문에, <mark>수가 적으면 요청의 내용과 상관없이 알리지 못합니다.</mark> 이런 경로 스캔(취약한 경로를 하나씩 찾아보는 시도)은 응용 3-3 에서 다른 규칙으로 찾습니다.
 
 **왜**
 
@@ -236,17 +236,17 @@ TypeError: 'Index' object is not callable
 
 ---
 
-## 도전 3-1 정답
+## 응용 3-1 정답
 
-> **선택입니다. 시간이 남을 때 합니다.** 여기부터는 도전 정답입니다. 핵심 실습 정답은 앞의 실습 3-1 · 3-2 정답에 있습니다.
+> **여유가 되면 해 보세요.** 여기부터는 응용 정답입니다. 핵심 실습 정답은 앞의 실습 3-1 · 3-2 정답에 있습니다.
 
 **터미널에 입력합니다.**
 
 ```bash
 pwd
-python challenge3-1_run.py
+python apply3-1_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python challenge3-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python apply3-1_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 네 함수입니다.
 
@@ -328,7 +328,7 @@ python challenge3-1_run.py
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/challenge3-1_run.py", line 23, in <module>
+  File "…/anomaly_detection/apply3-1_run.py", line 23, in <module>
     saved_count = save_alerts(all_alerts, ALERTS_PATH)  # 모은 알림을 파일에 저장하고 저장한 건수를 받는다
   File "…/anomaly_detection/alerts.py", line 54, in save_alerts
     json.dump(alerts, file, ensure_ascii=False, indent=2)  # 한글은 그대로, 들여쓰기를 해서 파일에 쓴다
@@ -345,13 +345,13 @@ TypeError: Object of type Timestamp is not JSON serializable
 
 ---
 
-## 도전 3-2 정답
+## 응용 3-2 정답
 
 **터미널에 입력합니다.**
 
 ```bash
 pwd
-python challenge3-2_run.py
+python apply3-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -422,7 +422,7 @@ python challenge3-2_run.py
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/challenge3-2_run.py", line 7, in <module>
+  File "…/anomaly_detection/apply3-2_run.py", line 7, in <module>
     off_hours_logins = find_off_hours_logins(logins)             # 업무 시간 밖 로그인만 골라낸다
   File "…/anomaly_detection/saas_detection.py", line 49, in find_off_hours_logins
     is_off_hours = not is_business_hour  # True 와 False 를 뒤집어 업무 시간 밖인 행을 True 로 만든다
@@ -434,17 +434,17 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 
 **관제에서는**
 
-- <mark>규칙 하나마다 알림을 내면 오탐이 쌓여서 담당자가 알림을 무시하게 됩니다.</mark> 해당하는 규칙 수를 점수로 쓰면 먼저 볼 순서를 정할 수 있습니다. Unit 4 도전 4-2 에서는 오탐(문제가 아닌데 울린 알림)과 미탐(문제인데 놓친 것)을 직접 세어 봅니다.
+- <mark>규칙 하나마다 알림을 내면 오탐이 쌓여서 담당자가 알림을 무시하게 됩니다.</mark> 해당하는 규칙 수를 점수로 쓰면 먼저 볼 순서를 정할 수 있습니다. Unit 4 응용 4-2 에서는 오탐(문제가 아닌데 울린 알림)과 미탐(문제인데 놓친 것)을 직접 세어 봅니다.
 
 ---
 
-## 도전 3-3 정답
+## 응용 3-3 정답
 
 **터미널에 입력합니다.**
 
 ```bash
 pwd
-python challenge3-3_run.py
+python apply3-3_run.py
 python advanced_detection.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
@@ -505,7 +505,7 @@ SaaS: 업무 시간 밖 ['jiwoo'] · 평소와 다른 IP ['jiwoo', 'seoyeon'] ·
 
 **왜**
 
-- <mark>해킹 도구가 자주 요청하는 경로를 요청한 IP 만 골라 알리면 오타 실패와 섞이지 않습니다.</mark> 대신 목록에 없는 경로는 놓치므로, Unit 4 도전 4-2 처럼 오탐과 미탐을 세어 규칙을 점검합니다.
+- <mark>해킹 도구가 자주 요청하는 경로를 요청한 IP 만 골라 알리면 오타 실패와 섞이지 않습니다.</mark> 대신 목록에 없는 경로는 놓치므로, Unit 4 응용 4-2 처럼 오탐과 미탐을 세어 규칙을 점검합니다.
 
 **자주 틀리는 곳**
 
@@ -514,7 +514,7 @@ SaaS: 업무 시간 밖 ['jiwoo'] · 평소와 다른 IP ['jiwoo', 'seoyeon'] ·
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/challenge3-3_run.py", line 8, in <module>
+  File "…/anomaly_detection/apply3-3_run.py", line 8, in <module>
     scan_ips, scan_counts = find_scan_ips(web_failures)          # 스캔 IP 와 IP 별 요청 횟수를 찾는다
   File "…/anomaly_detection/malicious_detection.py", line 36, in find_scan_ips
     is_scanner = actions.contains(SCANNER_PATTERN)  # 각 행에 스캐너 경로가 들어 있는지 구해 True 또는 False 를 만든다

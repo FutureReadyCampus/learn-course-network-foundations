@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img"><title>generate_report 는 식별 키로 두 점검의 이유를 모아 이유가 있는 권한만 후보로 담는다</title><desc>make_stale_reason 은 식별 키에서 걸린 이유로 가는 딕셔너리를, make_unused_keys 는 식별 키 리스트를 만든다. 현황의 권한마다 collect_reasons 로 이유를 모으고, 하나라도 있으면 복사해 findings 에 넣는다.</desc><defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">도전 3-2 · 다섯 함수가 이어지는 길</text>
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">응용 3-2 · 다섯 함수가 이어지는 길</text>
 <rect x="20" y="56" width="210" height="64" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="125" y="82.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">make_stale_reason</text>
 <text x="125" y="103.75" font-size="14" fill="#666660" text-anchor="middle">식별 키 → 걸린 이유</text>

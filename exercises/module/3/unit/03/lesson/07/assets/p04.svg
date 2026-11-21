@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img"><title>split_by_exclude 는 can_exclude 가 참이면 회수 제외, 아니면 회수 대상에 넣는다</title><desc>can_exclude 는 제외 리스트에 있고 이유에 퇴사한 계정이 없을 때만 참이다. gaeun 과 seoyeon 의 권한은 회수 제외, 퇴사한 dami 의 SALES:QUERY 는 리스트에 있어도 회수 대상에 남는다.</desc><defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">도전 3-3 · split_by_exclude 가 나누는 방법</text>
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">응용 3-3 · split_by_exclude 가 나누는 방법</text>
 <rect x="180" y="52" width="360" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="360" y="79.25" font-size="15" fill="#292929" text-anchor="middle">to_revoke = [ ] · excluded = [ ]</text>
 <line x1="360" y1="98" x2="360" y2="114" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>

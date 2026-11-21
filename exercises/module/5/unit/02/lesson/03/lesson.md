@@ -8,7 +8,7 @@ render: markdown
 
 ## 제공 파일 쓰는 법
 
-**실습 2-1 을 마친 뒤, 실습 2-2 를 시작하기 전에** 이 레슨의 파일 세 개를 만듭니다. 오늘 핵심 실습에서는 이 파일을 부르지 않지만, 도전 2-2 와 Unit 3 이 불러 씁니다. 그래서 도전을 하지 않아도 오늘 만들어 두고 함께 깃허브에 올립니다.
+**실습 2-1 을 마친 뒤, 실습 2-2 를 시작하기 전에** 이 레슨의 파일 세 개를 만듭니다. 오늘 핵심 실습에서는 이 파일을 부르지 않지만, 응용 2-2 와 Unit 3 이 불러 씁니다. 그래서 응용을 하지 않아도 오늘 만들어 두고 함께 깃허브에 올립니다.
 
 1. 파일은 모두 `soar_response` 폴더 안에 만듭니다(VS Code 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File**).
 2. 파일 이름을 그대로 적고, 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
@@ -16,9 +16,9 @@ render: markdown
 
    | 파일 | 들어 있는 함수 | 불러 쓰는 파일 | 쓰는 곳 |
    |---|---|---|---|
-   | `ip_actions.py` | 허용 목록 IP 와 공유 IP 를 가려 차단하고, 유효 기간(TTL)이 지나면 자동 해제 | 실습 2-1 `containment_store.py` | 도전 2-3, Unit 3 실습 3-1 |
-   | `audit.py` | 감사 기록 한 건을 딕셔너리로 만드는 `log_line` | 없음 | `approvals.py`, 도전 2-2 `flow.py` |
-   | `approvals.py` | 담당자의 승인 · 거절을 권한 확인 뒤 적용 | `audit.py`, Unit 1 실습 1-2 `incident.py` | 도전 2-2 |
+   | `ip_actions.py` | 허용 목록 IP 와 공유 IP 를 가려 차단하고, 유효 기간(TTL)이 지나면 자동 해제 | 실습 2-1 `containment_store.py` | 응용 2-3, Unit 3 실습 3-1 |
+   | `audit.py` | 감사 기록 한 건을 딕셔너리로 만드는 `log_line` | 없음 | `approvals.py`, 응용 2-2 `flow.py` |
+   | `approvals.py` | 담당자의 승인 · 거절을 권한 확인 뒤 적용 | `audit.py`, Unit 1 실습 1-2 `incident.py` | 응용 2-2 |
 
 4. 세 파일을 다 만들었으면 아래 명령으로 확인하고 실습 2-2 로 갑니다(맥북은 `python3`).
    ```bash
@@ -27,7 +27,7 @@ render: markdown
    - `제공 파일 정상 허용 목록 IP 라서 차단하지 않음 False` 가 나오면 됩니다.
    - `ModuleNotFoundError: No module named 'containment_store'` 가 나오면 실습 2-1 의 `containment_store.py` 가 이 폴더에 없는 것입니다. 실습 2-1 을 먼저 합니다.
 
-> 시간이 남아 도전 2-1 이나 도전 2-3 을 하면, `audit.py` · `approvals.py` 나 `ip_actions.py` 를 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 그때는 다 채울 때까지 그 파일을 부르는 프로그램이 동작하지 않으니, 다 쓴 뒤 그 도전의 실행 파일로 결과가 정답과 같은지 확인합니다.
+> 시간이 남아 응용 2-1 이나 응용 2-3 을 하면, `audit.py` · `approvals.py` 나 `ip_actions.py` 를 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 그때는 다 채울 때까지 그 파일을 부르는 프로그램이 동작하지 않으니, 다 쓴 뒤 그 응용의 실행 파일로 결과가 정답과 같은지 확인합니다.
 
 ## `ip_actions.py` 만들기
 
@@ -118,7 +118,7 @@ def expire_blocks(state, incident_id):                                          
 
 숫자는 `+` 로 글자와 바로 이어 붙일 수 없어서 `str(ttl)` 로 바꿉니다.
 
-- 허용 목록과 공유 IP 를 왜 먼저 거르는지, 끝나는 시각을 어떻게 비교하는지는 도전 2-3 레슨에서 자세히 다룹니다.
+- 허용 목록과 공유 IP 를 왜 먼저 거르는지, 끝나는 시각을 어떻게 비교하는지는 응용 2-3 레슨에서 자세히 다룹니다.
 
 ## `audit.py` 만들기
 
@@ -133,7 +133,7 @@ def log_line(item, action, text):  # 인시던트 · 액션 · 결과 문장을 
     return entry                   # 기록 한 건을 리턴한다
 ```
 
-- 모든 대응을 같은 모양으로 남겨 두면 승인 · 거절 · 실패를 한 목록에서 다시 볼 수 있습니다. `approvals.py` 와 도전 2-2 의 `flow.py` 가 이 함수를 씁니다.
+- 모든 대응을 같은 모양으로 남겨 두면 승인 · 거절 · 실패를 한 목록에서 다시 볼 수 있습니다. `approvals.py` 와 응용 2-2 의 `flow.py` 가 이 함수를 씁니다.
 
 ## `approvals.py` 만들기
 
@@ -156,7 +156,7 @@ APPROVERS = ["kim.sec", "lee.soc"]                                              
 
 def hold_for_approval(incident, playbook_id, actions, why, action_log):                  # 승인 대기로 멈출 인시던트와 정보를 받는 함수
     """알림의 상태를 분류됨으로 바꾸고 승인 대기 기록을 남긴 뒤, 담당자에게 보여 줄 대기 건 한 건으로 리턴한다.
-    승인이 필요한 알림을 실행하지 않고 담당자에게 넘길 때 쓴다(도전 2-2 하루 흐름에서 호출한다).
+    승인이 필요한 알림을 실행하지 않고 담당자에게 넘길 때 쓴다(응용 2-2 하루 흐름에서 호출한다).
     """
     incident["playbook"] = playbook_id                                                   # 어떤 플레이북 때문인지 적고
     incident["actions"] = actions                                                        # 승인되면 실행할 액션을 적고
@@ -215,6 +215,6 @@ def finish_decision(item, decision, state, action_log):                         
 ```
 
 - 액션 실행은 Unit 1 실습 1-2 의 `incident.py` 에 있는 `run_action` 이 합니다.
-- 권한 확인을 왜 가장 먼저 하는지는 도전 2-1 레슨에서 자세히 다룹니다.
+- 권한 확인을 왜 가장 먼저 하는지는 응용 2-1 레슨에서 자세히 다룹니다.
 
 ---

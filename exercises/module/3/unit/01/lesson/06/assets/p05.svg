@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 276" role="img">
-<title>도전 1-1 요점은 기록 재판정, 건수 세기, 쓴 권한 모으기, 미사용 찾기다</title>
+<title>응용 1-1 요점은 기록 재판정, 건수 세기, 쓴 권한 모으기, 미사용 찾기다</title>
 <desc>지난 기록을 반복문 안에서 check_permission 으로 다시 판정하고, counts.get 으로 건수를 세며, used 에 쓴 권한을 모은다. 역할의 권한 중 used 에 없는 것이 쓰이지 않은 권한이다.</desc>
 <defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 1-1 요점</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">응용 1-1 요점</text>
 <rect x="20" y="52" width="210" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="125" y="79.2" font-size="15" fill="#292929" text-anchor="middle">지난 기록에 새 규칙</text>
 <rect x="250" y="52" width="450" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>

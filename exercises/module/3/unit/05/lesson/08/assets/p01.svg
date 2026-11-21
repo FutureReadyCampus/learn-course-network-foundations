@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
 <title>40분을 고르기 5분, 쓰기 25분, 점검·올리기 10분으로 나누고 글감 하나를 고른다</title>
-<desc>글쓰기 40분은 고르기 5분, 쓰기 25분, 점검과 올리기 10분입니다. 글감은 실습 5-1 · 5-2의 핵심 글감 세 개, 도전 5-1을 했을 때의 글감 두 개, Module 3 다섯 Unit을 돌아보는 글 중에서 하나를 고릅니다. 세 문장이나 막힌 이야기도 좋은 글입니다.</desc>
+<desc>글쓰기 40분은 고르기 5분, 쓰기 25분, 점검과 올리기 10분입니다. 글감은 실습 5-1 · 5-2의 핵심 글감 세 개, 응용 5-1을 했을 때의 글감 두 개, Module 3 다섯 Unit을 돌아보는 글 중에서 하나를 고릅니다. 세 문장이나 막힌 이야기도 좋은 글입니다.</desc>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
 <text x="24" y="32" font-size="19" font-weight="700">글쓰기 40분 · 오늘의 글감 하나 고르기</text>
 <rect x="24" y="50" width="84" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
@@ -16,8 +16,8 @@
 <text x="40" y="226" font-size="15">2  점검이 알려 주는 것 · 못 하는 것</text>
 <text x="40" y="262" font-size="15">3  데이터 고침과 규칙 고침 비교</text>
 <rect x="340" y="124" width="170" height="172" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="356" y="152" font-size="16" font-weight="700">도전 글감</text>
-<text x="356" y="172" font-size="14" fill="#666660">도전 5-1을 했다면</text>
+<text x="356" y="152" font-size="16" font-weight="700">응용 글감</text>
+<text x="356" y="172" font-size="14" fill="#666660">응용 5-1을 했다면</text>
 <text x="356" y="210" font-size="15">1  dami 와 gaeun</text>
 <text x="356" y="246" font-size="15">2  거부율 0% 읽기</text>
 <rect x="526" y="124" width="170" height="172" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>

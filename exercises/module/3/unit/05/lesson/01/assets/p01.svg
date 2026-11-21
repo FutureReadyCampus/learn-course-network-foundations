@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>Unit 5는 실습 5-1, 제공 파일로 만든 주간 보고서, 실습 5-2 순서로 하고 도전 5-1은 선택이다</title>
-<desc>오늘 3시간은 시작 15분, 실습 약 110분, 글쓰기 40분, 마무리 15분입니다. 실습 시간에는 점검 체크리스트(실습 5-1)를 쓰고, 제공 파일로 주간 보고서를 만든 뒤, Module 3 총정리(실습 5-2)를 합니다. 도전 5-1은 시간이 남을 때 하는 선택입니다.</desc>
+<title>Unit 5는 실습 5-1, 제공 파일로 만든 주간 보고서, 실습 5-2 순서로 하고 응용 5-1은 선택이다</title>
+<desc>오늘 3시간은 시작 15분, 실습 약 110분, 글쓰기 40분, 마무리 15분입니다. 실습 시간에는 점검 체크리스트(실습 5-1)를 쓰고, 제공 파일로 주간 보고서를 만든 뒤, Module 3 총정리(실습 5-2)를 합니다. 응용 5-1은 시간이 남을 때 하는 선택입니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
 <text x="24" y="34" font-size="19" font-weight="700">Unit 5 오늘의 계획 · 3시간</text>
@@ -25,7 +25,7 @@
 <polyline points="225,189 256,189" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
 <polyline points="461,189 492,189" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
 <rect x="260" y="256" width="200" height="66" rx="8" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="360" y="283" font-size="15" text-anchor="middle" font-weight="700">도전 5-1 · 선택</text>
+<text x="360" y="283" font-size="15" text-anchor="middle" font-weight="700">응용 5-1 · 선택</text>
 <text x="360" y="306" font-size="14" text-anchor="middle">log_summary.py 직접 쓰기</text>
 <polyline points="360,252 360,230" fill="none" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#a-p01)"/>
 <text x="480" y="283" font-size="14" fill="#666660">시간이 남을 때만 합니다</text>

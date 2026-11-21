@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 390" role="img">
-<title>도전 1-1 보고서 (가)~(다)에 채울 내용 체크리스트</title>
+<title>응용 1-1 보고서 (가)~(다)에 채울 내용 체크리스트</title>
 <desc>(가)는 건수와 거부 번호, 점수 판단과 RBAC 비교를, (나)는 하루치 기록으로 말할 수 있는 것과 한계를, (다)는 줄일 권한과 남길 권한을 쓴다.</desc>
 <defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">보고서 · 도전 1-1 채울 칸 (선택)</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">보고서 · 응용 1-1 채울 칸 (선택)</text>
 <rect x="20" y="56" width="335" height="154" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="34" y="80" font-size="16" fill="#292929" font-weight="700">(가) 핵심 질문 · 재판정 결과</text>
 <rect x="34" y="96" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>

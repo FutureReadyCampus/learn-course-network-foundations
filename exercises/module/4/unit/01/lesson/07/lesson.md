@@ -11,7 +11,7 @@ render: markdown
 설명하는 답은 한 예이고, <mark>핵심이 같으면 맞습니다.</mark>
 
 1. **핵심 실습**: 실습 1-1 · 1-2 정답입니다. 오늘 모두가 하는 실습이니 먼저 맞춰 봅니다.
-2. **도전(선택)**: 도전 1-1 ~ 1-3 정답입니다. 선택입니다. 시간이 남을 때 합니다. 도전을 한 사람만 봅니다.
+2. **응용(여유가 되면)**: 응용 1-1 ~ 1-3 정답입니다. 여유가 되면 해 보세요. 응용을 한 사람만 봅니다.
 3. 정답마다 채운 코드, 결과, 왜, 자주 틀리는 곳, 관제에서는 순서로 읽습니다.
 
 ---
@@ -100,7 +100,7 @@ python exercise1-1_run.py
 | 실수 | 나타나는 것 | 이유 |
 |---|---|---|
 | `split_request` 에서 <mark>나눌 횟수 `2` 를 빼고 `line.split('"')` 로 씀</mark> | <mark>`too many values to unpack`</mark> 오류 | 큰따옴표 여섯 개로 일곱 조각이 되어 세 이름에 담을 수 없음 |
-| `read_status` 에서 `int(…)` 를 빼먹음 | 실습 1-1 출력은 `'status': '401'` 처럼 <mark>따옴표가 붙은 문자열로 나오고 오류는 나지 않음</mark> | 실습 1-2 `convert_result` · 도전 1-1 `is_error` 에서 `400` 과 비교할 때 비로소 `TypeError` 가 남 |
+| `read_status` 에서 `int(…)` 를 빼먹음 | 실습 1-1 출력은 `'status': '401'` 처럼 <mark>따옴표가 붙은 문자열로 나오고 오류는 나지 않음</mark> | 실습 1-2 `convert_result` · 응용 1-1 `is_error` 에서 `400` 과 비교할 때 비로소 `TypeError` 가 남 |
 
 - `int(…)` 를 빼먹었을 때 나는 오류는 `TypeError: '>=' not supported between instances of 'str' and 'int'` 입니다.
 - 나눌 횟수 `2` 를 빼고 실행하면 다음 오류가 납니다(<mark>`too many values to unpack`</mark> 이면 이 실수입니다).
@@ -223,17 +223,17 @@ ValueError: time data '02/Nov/2026:09:01:05 +0900' does not match format '%Y-%m-
 
 ---
 
-## 도전 1-1 정답
+## 응용 1-1 정답
 
-> 여기부터는 **도전(선택)** 정답입니다. 선택입니다. 시간이 남을 때 합니다. 핵심 실습 정답은 앞의 실습 1-1 · 1-2 정답에 있습니다.
+> 여기부터는 **응용(여유가 되면)** 정답입니다. 여유가 되면 해 보세요. 핵심 실습 정답은 앞의 실습 1-1 · 1-2 정답에 있습니다.
 
  **터미널에 입력합니다.**
 
 ```bash
 pwd
-python challenge1-1_run.py
+python apply1-1_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python challenge1-1_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python apply1-1_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
 
@@ -319,7 +319,7 @@ python challenge1-1_run.py
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/challenge1-1_run.py", line 23, in <module>
+  File "…/anomaly_detection/apply1-1_run.py", line 23, in <module>
     labeled = label_entries(entries)  # 요청마다 분류를 적는다
   File "…/anomaly_detection/log_classify.py", line 38, in label_entries
     item["group"] = classify_line(entry)  # 분류를 복사본에 적는다
@@ -339,15 +339,15 @@ TypeError: '>=' not supported between instances of 'str' and 'int'
 
 ---
 
-## 도전 1-2 정답
+## 응용 1-2 정답
 
  **터미널에 입력합니다.**
 
 ```bash
 pwd
-python challenge1-2_run.py
+python apply1-2_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python challenge1-2_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python apply1-2_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
 
@@ -421,7 +421,7 @@ python challenge1-2_run.py
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/challenge1-2_run.py", line 3, in <module>
+  File "…/anomaly_detection/apply1-2_run.py", line 3, in <module>
     server_events = load_server("server_log.jsonl")  # 판정 서버 로그를 공통 이벤트로 바꾼다
   File "…/anomaly_detection/normalize_json_csv.py", line 78, in load_server
     event = normalize_server(line)  # 공통 이벤트로 바꾼다
@@ -438,15 +438,15 @@ KeyError: True
 
 ---
 
-## 도전 1-3 정답
+## 응용 1-3 정답
 
  **터미널에 입력합니다.**
 
 ```bash
 pwd
-python challenge1-3_run.py
+python apply1-3_run.py
 ```
-- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python challenge1-3_run.py` 파이썬으로 실행 파일 실행
+- 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python apply1-3_run.py` 파이썬으로 실행 파일 실행
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
 
@@ -514,7 +514,7 @@ ip 가 비어 있는 이벤트 15 개
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/challenge1-3_run.py", line 24, in <module>
+  File "…/anomaly_detection/apply1-3_run.py", line 24, in <module>
     source_event_counts = count_by_source(events)  # 소스별 개수를 센다
   File "…/anomaly_detection/normalize.py", line 45, in count_by_source
     for event in events:  # 이벤트를 하나씩 꺼낸다

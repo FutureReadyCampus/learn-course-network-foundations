@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
 <title>load_json 은 오류 종류마다 경고 후 default 를 리턴해 출력 다섯 줄이 나옵니다</title>
-<desc>도전 1-4 정답의 try·except 구조와 실행 결과를 연결했습니다. 정상 파일은 6명을 읽고, 없는 파일과 깨진 파일은 각각 경고를 낸 뒤 사용자 0명이 됩니다.</desc>
+<desc>응용 1-4 정답의 try·except 구조와 실행 결과를 연결했습니다. 정상 파일은 6명을 읽고, 없는 파일과 깨진 파일은 각각 경고를 낸 뒤 사용자 0명이 됩니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
-<text x="24" y="34" font-size="19" font-weight="700">도전 1-4 정답 · load_json 과 출력</text>
+<text x="24" y="34" font-size="19" font-weight="700">응용 1-4 정답 · load_json 과 출력</text>
 <rect x="24" y="52" width="300" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="38" y="77" font-size="14">try:</text>
 <rect x="48" y="98" width="276" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>

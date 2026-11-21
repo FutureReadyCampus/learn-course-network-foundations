@@ -28,6 +28,6 @@
 <text x="40" y="236" font-size="15" fill="#292929" text-anchor="start">1. status 가 approved 인 요청서만 받는다</text>
 <text x="40" y="260" font-size="15" fill="#292929" text-anchor="start">2. check_permission 으로 지금 정책을 다시 확인한다</text>
 <text x="40" y="284" font-size="15" fill="#292929" text-anchor="start">3. 「권한 없음」이면 EXCEPTIONS 에 예외 한 건 추가 → status 를 granted 로</text>
-<text x="360" y="340" font-size="15" fill="#666660" text-anchor="middle">실습 2-2를 마친 뒤 복사해 만듭니다 · 도전 2-1에서 직접 써 볼 수 있습니다</text>
+<text x="360" y="340" font-size="15" fill="#666660" text-anchor="middle">실습 2-2를 마친 뒤 복사해 만듭니다 · 응용 2-1에서 직접 써 볼 수 있습니다</text>
 </g>
 </svg>

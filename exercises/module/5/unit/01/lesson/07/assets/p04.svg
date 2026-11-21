@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 370" role="img">
-<title>도전 1-2 의 여섯 가지 할 일을 각각 한 줄 코드와 짝지은 요점 지도</title>
+<title>응용 1-2 의 여섯 가지 할 일을 각각 한 줄 코드와 짝지은 요점 지도</title>
 <desc>왼쪽은 하려는 일, 오른쪽은 그 일을 하는 코드다. 이미 잠긴 계정과 잠금 한도를 and · len · &gt;= 로 확인하고, startswith 로 건너뛴 기록을 고른다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 1-2 정리: 하려는 일과 코드</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">응용 1-2 정리: 하려는 일과 코드</text>
 <rect x="20" y="56" width="166" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="103" y="80.35" font-size="15" fill="#292929" text-anchor="middle">두 조건 모두 참이면</text>
 <polyline points="188,76 214,76" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>

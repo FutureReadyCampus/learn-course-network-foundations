@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
 <title>실습 5-2 앞에서 risk_engine_log.json 을 복사해 만들고 확인 명령으로 점검한다</title>
-<desc>시작하기와 실습 5-1 다음, 실습 5-2 앞에서 제공 파일 risk_engine_log.json 하나를 만듭니다. 도전 5-1을 하면 같은 내용의 파일이 저절로 만들어집니다. 확인 명령에서 제공 파일 정상 5 가 나오면 실습 5-2로 갑니다.</desc>
+<desc>시작하기와 실습 5-1 다음, 실습 5-2 앞에서 제공 파일 risk_engine_log.json 하나를 만듭니다. 응용 5-1을 하면 같은 내용의 파일이 저절로 만들어집니다. 확인 명령에서 제공 파일 정상 5 가 나오면 실습 5-2로 갑니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, &#x27;Noto Sans KR&#x27;, -apple-system, &#x27;Segoe UI&#x27;, sans-serif">
 <text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">제공 파일 쓰는 법: 실습 5-2 앞에서 만든다</text>
@@ -20,13 +20,13 @@
 <line x1="342" y1="95" x2="378" y2="95" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
 <line x1="522" y1="95" x2="558" y2="95" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
 <rect x="380" y="190" width="140" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="450" y="220" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">도전 5-1 (선택)</text>
+<text x="450" y="220" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">응용 5-1 (선택)</text>
 <text x="450" y="244" font-size="14" fill="#292929" text-anchor="middle">같은 파일을 만든다</text>
 <line x1="450" y1="188" x2="450" y2="134" stroke="#666660" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#a-p01)"/>
 <rect x="20" y="290" width="680" height="70" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="40" y="318" font-size="15" fill="#666660" text-anchor="start" font-weight="700">확인 명령 결과</text>
 <text x="40" y="343" font-size="14" fill="#292929" text-anchor="start">제공 파일 정상 5 ['자동 실행', '조치 없음', '조치 없음', '조치 없음', '자동 실행']</text>
-<text x="20" y="210" font-size="15" fill="#666660" text-anchor="start">도전을 했다면</text>
+<text x="20" y="210" font-size="15" fill="#666660" text-anchor="start">응용을 했다면</text>
 <text x="20" y="232" font-size="15" fill="#666660" text-anchor="start">만들지 않고</text>
 <text x="20" y="254" font-size="15" fill="#666660" text-anchor="start">확인 명령만 친다</text>
 </g>

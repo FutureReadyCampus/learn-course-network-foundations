@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 372" role="img">
-<title>report_u5.md 를 틀에서 만들고 핵심 칸은 모두, 도전 칸은 한 경우만 채운다</title>
-<desc>anomaly_detection 폴더에 report_u5.md 를 새로 만들고 틀을 붙여 넣은 뒤 이름을 바꿔 저장합니다. 실습 5-1, 실습 5-2(상황 1·2·3·4·7·8 중 4개 이상과 질문), 마무리는 모두 채우고, 도전 5-1~5-3 은 했을 때만 채웁니다.</desc>
+<title>report_u5.md 를 틀에서 만들고 핵심 칸은 모두, 응용 칸은 한 경우만 채운다</title>
+<desc>anomaly_detection 폴더에 report_u5.md 를 새로 만들고 틀을 붙여 넣은 뒤 이름을 바꿔 저장합니다. 실습 5-1, 실습 5-2(상황 1·2·3·4·7·8 중 4개 이상과 질문), 마무리는 모두 채우고, 응용 5-1~5-3 은 했을 때만 채웁니다.</desc>
 <defs><marker id="a-l08-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
 <text x="24" y="32" font-size="19" font-weight="700">보고서 파일 만들기 · report_u5.md</text>
@@ -24,11 +24,11 @@
 <text x="64" y="302" font-size="14">### 질문 · (가) (나) (다)</text>
 <text x="44" y="334" font-size="15">## 마무리 · (가)</text>
 <rect x="476" y="136" width="220" height="214" rx="8" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="586" y="166" font-size="16" text-anchor="middle" font-weight="700">도전 · 선택</text>
-<text x="586" y="200" font-size="15" text-anchor="middle">## 도전 5-1</text>
-<text x="586" y="228" font-size="15" text-anchor="middle">## 도전 5-2</text>
-<text x="586" y="256" font-size="15" text-anchor="middle">## 도전 5-3</text>
-<text x="586" y="300" font-size="14" text-anchor="middle" fill="#666660">도전을 했을 때만</text>
+<text x="586" y="166" font-size="16" text-anchor="middle" font-weight="700">응용 · 선택</text>
+<text x="586" y="200" font-size="15" text-anchor="middle">## 응용 5-1</text>
+<text x="586" y="228" font-size="15" text-anchor="middle">## 응용 5-2</text>
+<text x="586" y="256" font-size="15" text-anchor="middle">## 응용 5-3</text>
+<text x="586" y="300" font-size="14" text-anchor="middle" fill="#666660">응용을 했을 때만</text>
 <text x="586" y="322" font-size="14" text-anchor="middle" fill="#666660">채우고, 아니면 비워 둠</text>
 </g>
 </svg>

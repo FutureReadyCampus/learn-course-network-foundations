@@ -294,7 +294,7 @@ Module 5의 마지막 정리입니다(약 10분). 실습 5-2 실행까지 마친
 | 승인 게이트가 위험도에 따라 정확히 작동한다 | 실습 5-1 단계 2 · 3, 실습 5-2 점검 ① |
 | 모듈이 서로 이어져 하나의 흐름으로 동작한다 | `soar_engine.py` 의 `import` 6줄, 회고 문서 1절 |
 
-- 첫 줄의 연결을 직접 만들어 보려면 도전 5-1(선택)을 합니다. 도전 5-1 단계 3 ~ 5 가 같은 결과를 보여 줍니다.
+- 첫 줄의 연결을 직접 만들어 보려면 응용 5-1(선택)을 합니다. 응용 5-1 단계 3 ~ 5 가 같은 결과를 보여 줍니다.
 
 **2. 파일 확인** — **[터미널]** `soar_response` 폴더에서 확인합니다.
 
@@ -304,7 +304,7 @@ ls
 ```
 
 - `pwd` 결과가 `…/soar_response` 로 끝나야 합니다.
-- `ls` 결과에 아래 파일이 보여야 합니다. 도전 5-1 줄은 도전을 했을 때만 보입니다.
+- `ls` 결과에 아래 파일이 보여야 합니다. 응용 5-1 줄은 응용을 했을 때만 보입니다.
 
 | 만든 곳 | 보여야 할 파일 |
 |---|---|
@@ -313,7 +313,7 @@ ls
 | 제공 파일 | `risk_engine_log.json` |
 | 실습 5-2 | `gate_off_log.json` · `policy_check.py` · `exercise5-2_run.py` · `policy_check.json` · `unit10_final_retrospective.md` |
 | 보고서 쓰기 | `report_u5.md` |
-| 도전 5-1(선택) | `unit05_risk_scores.json` · `engine_input.py` · `challenge5-1_run.py` · `engine_summary.json` · `risk_tickets.json` |
+| 응용 5-1(선택) | `unit05_risk_scores.json` · `engine_input.py` · `apply5-1_run.py` · `engine_summary.json` · `risk_tickets.json` |
 
 **3. 깃허브에 올리기**
 
@@ -343,7 +343,7 @@ ls
 5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `soar_response` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
    - 깃허브에 안 보이는 파일이 있으면 그 파일이 VS Code 왼쪽 목록의 `soar_response` 폴더 안에 있는지 봅니다. 다른 폴더에 만들었다면 `soar_response` 안으로 옮긴 뒤 2번의 `git status` 부터 다시 합니다.
 
-- 시간이 남아 도전 5-1을 했다면 도전 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
+- 시간이 남아 응용 5-1을 했다면 응용 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
 
 **4. 이어지는 곳**
 

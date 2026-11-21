@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>도전 1-1 정리: 의심 · 오류 조건과 가르는 순서, SIEM(심)의 네 단계</title>
+<title>응용 1-1 정리: 의심 · 오류 조건과 가르는 순서, SIEM(심)의 네 단계</title>
 <desc>왼쪽은 하려는 일, 오른쪽은 핵심 코드나 말입니다. 의심 조건 두 개를 or 로 묶고, 의심 → 오류 → 정상 순서로 가릅니다.</desc>
 <defs><marker id="a-m4u01l03-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker><marker id="a-m4u01l03-p07-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0442e"/></marker></defs>
 <g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
-<text x="24" y="30" font-size="19" fill="#292929" font-weight="700">도전 1-1 정리</text>
+<text x="24" y="30" font-size="19" fill="#292929" font-weight="700">응용 1-1 정리</text>
 <rect x="24" y="46" width="250" height="50" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="38" y="76.2" font-size="15" fill="#292929">상태 코드가 401 · 403 인지</text>
 <rect x="286" y="46" width="410" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>

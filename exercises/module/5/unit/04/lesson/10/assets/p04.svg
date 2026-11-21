@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>도전 4-1 정답: 넘긴 시간 = 점검 시각 − sla_due, 30분 이상이면 2단계</title>
+<title>응용 4-1 정답: 넘긴 시간 = 점검 시각 − sla_due, 30분 이상이면 2단계</title>
 <desc>티켓마다 점검 시각에서 응답 기한 시각을 뺀 넘긴 시간과 그 결과를 짝지었다. TCK-1 5분과 TCK-6 15분은 1단계, TCK-3 42분과 TCK-4 38분은 2단계이고, 확인 중인 TCK-1 과 기한 전인 TCK-2 는 올리지 않아 모두 4번이다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">도전 4-1 정답 · 넘긴 시간으로 단계 정하기</text>
+<text x="20" y="34" font-size="19" font-weight="bold" fill="#292929">응용 4-1 정답 · 넘긴 시간으로 단계 정하기</text>
 <rect x="20" y="56" width="360" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="200.0" y="81.2" font-size="15" fill="#292929" text-anchor="middle">TCK-1 · 20 − 15 = 5분</text>
 <rect x="420" y="56" width="280" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>

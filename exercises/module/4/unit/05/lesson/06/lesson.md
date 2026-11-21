@@ -1,6 +1,6 @@
 ---
 id: m4-u05-l06
-title: 도전 5-3 · pipeline.py 로 탐지부터 보고서까지
+title: 응용 5-3 · pipeline.py 로 탐지부터 보고서까지
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,11 +9,11 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 도전 5-3 · pipeline.py 로 탐지부터 보고서까지
+# 응용 5-3 · pipeline.py 로 탐지부터 보고서까지
 
 ## 목표: 한 번에 도는 pipeline.py
 
-> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 5-1 · 5-2와 글쓰기를 먼저 마칩니다. 이 도전은 Unit 3 · 4의 파일을 모두 불러 쓰므로, 「2.1 단계 연결 흐름과 앞에서 만든 파일의 자리」 페이지의 표에 있는 파일이 `anomaly_detection` 폴더에 있어야 합니다. 하지 않아도 이번 Unit을 마무리하고 Module 5를 따라가는 데 문제가 없습니다.
+> **여유가 되면 해 보세요.** 핵심 실습 5-1 · 5-2와 글쓰기를 먼저 마칩니다. 이 응용은 Unit 3 · 4의 파일을 모두 불러 쓰므로, 「2.1 단계 연결 흐름과 앞에서 만든 파일의 자리」 페이지의 표에 있는 파일이 `anomaly_detection` 폴더에 있어야 합니다. 하지 않아도 이번 Unit을 마무리하고 Module 5를 따라가는 데 문제가 없습니다.
 
 > **이번 실습에 들어온 일**
 >
@@ -49,8 +49,8 @@ source:
 
 | 넣지 않은 것 | 만든 곳 | 넣지 않은 이유 |
 |---|---|---|
-| 로그인 · 트래픽 규칙 | Unit 2 실습 2-3, Unit 3 실습 3-1 · 도전 3-1 | 알림을 `alerts.json` 에 따로 모으는 방식이라 점수 기록과 모양이 다름 |
-| 평가 · 튜닝 | Unit 4 실습 4-2, 도전 4-2 · 4-3 | 입력이 사람이 조사한 결과가 붙은 파일(`review_alerts.json`)이라 이벤트 표가 아님 |
+| 로그인 · 트래픽 규칙 | Unit 2 실습 2-3, Unit 3 실습 3-1 · 응용 3-1 | 알림을 `alerts.json` 에 따로 모으는 방식이라 점수 기록과 모양이 다름 |
+| 평가 · 튜닝 | Unit 4 실습 4-2, 응용 4-2 · 4-3 | 입력이 사람이 조사한 결과가 붙은 파일(`review_alerts.json`)이라 이벤트 표가 아님 |
 
 - 이번 파이프라인은 점수 기록 쪽만 이어 붙였습니다. 알림이나 평가를 더하려면 입력과 출력의 모양을 맞추는 단계가 필요하고, 현업에서도 이 단계를 따로 만들어 이어 붙입니다.
 - 보고서 파일 `anomaly_detection_report_2026-11-02.json` 에 들어가는 키는 다음과 같습니다. 파일 이름의 날짜 `2026-11-02` 는 샘플 이벤트의 날짜입니다.
@@ -129,7 +129,7 @@ print(fruit_count_dict)                    # 딕셔너리를 출력한다
 | `analyze_events` | 1 ~ 4 | 함수 네 개를 차례로 호출하며 앞 함수의 리턴값을 다음 함수에 전달 |
 | `build_report` | 5 ~ 7 | 로그 종류마다 이벤트 수 세기(`value_counts`) → 딕셔너리로 바꾸기(`to_dict`) → 보고서 딕셔너리로 모으기 |
 
-## 도전 5-3 · pipeline.py 로 탐지부터 보고서까지
+## 응용 5-3 · pipeline.py 로 탐지부터 보고서까지
 
 **이런 상황이 있습니다**
 
@@ -143,7 +143,7 @@ print(fruit_count_dict)                    # 딕셔너리를 출력한다
 
 **할 일**
 
-1. `pipeline.py` · `challenge5-3_run.py` 두 파일을 만들고, `pipeline.py` 의 두 함수에서 직접 쓰는 곳을 씁니다.
+1. `pipeline.py` · `apply5-3_run.py` 두 파일을 만들고, `pipeline.py` 의 두 함수에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>읽은 이벤트 수</mark>(단계 1), <mark>탐지된 규칙과 점수 기록 수</mark>(단계 2), <mark>Gemini API 를 활용한 AI 요약</mark>(단계 3), <mark>보고서 저장</mark>(단계 4), <mark>확인할 순서</mark>(단계 5)를 읽고, 새로 생긴 `anomaly_detection_report_2026-11-02.json` 을 VS Code 에서 열어 봅니다.
 
 `summarize_records` · `count_failed` · `save_report` · `run_pipeline` 은 읽기만 하는 미리 채운 함수입니다. 실습 5-1에서 쓴 방식과 같아서 직접 쓰는 곳이 없습니다.
@@ -248,7 +248,7 @@ def run_pipeline():                                                             
 - 함수에 전달하는 순서는 주석에 적힌 순서입니다. <mark>2번은 `events` 다음에 `chains` 입니다.</mark>
 - 채우기 전에 실행하면 `NameError: name 'totals' is not defined` 오류가 납니다. `totals` 를 만드는 3번을 아직 안 썼기 때문입니다.
 
-**`challenge5-3_run.py`** — 그대로 붙여 넣습니다. 직접 쓰는 줄은 없습니다.
+**`apply5-3_run.py`** — 그대로 붙여 넣습니다. 직접 쓰는 줄은 없습니다.
 
 ```python
 from pipeline import run_pipeline  # 방금 만든 파이프라인 함수를 불러온다
@@ -263,14 +263,14 @@ run_pipeline()                     # 읽기부터 보고서 저장까지 한 번
    python -c "from access_detection import load_events, EVENTS_PATH; from saas_detection import pick_saas; from malicious_detection import pick_web_failures"
    python -c "from correlation import find_chains_in_events; from risk_scores import collect_findings, save_records; from event_summary import summarize_record"
    ```
-1. **[VS Code]** 파일 `pipeline.py` · `challenge5-3_run.py` 를 `anomaly_detection` 폴더에 만들어 위 코드를 붙여 넣습니다. `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 만듭니다.
-2. **[VS Code]** `pipeline.py` 에서 <mark>직접 쓰는 곳 일곱 군데를 씁니다</mark>. 위 판다스 문법 상자와 2.1 의 그림을 참고해 씁니다. 막히면 아래 「도전 5-3 정리」를 봅니다.
+1. **[VS Code]** 파일 `pipeline.py` · `apply5-3_run.py` 를 `anomaly_detection` 폴더에 만들어 위 코드를 붙여 넣습니다. `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 만듭니다.
+2. **[VS Code]** `pipeline.py` 에서 <mark>직접 쓰는 곳 일곱 군데를 씁니다</mark>. 위 판다스 문법 상자와 2.1 의 그림을 참고해 씁니다. 막히면 아래 「응용 5-3 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`). Gemini API 를 3번 호출합니다. 키가 없어도 끝까지 실행됩니다.
    ```bash
    pwd
-   python challenge5-3_run.py
+   python apply5-3_run.py
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python challenge5-3_run.py` 파이썬으로 실행 파일 실행
+   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python apply5-3_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **다섯 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다.
 
    | 단계 | 제목 줄 아래에 나오는 것 | 줄 수 |
@@ -281,12 +281,12 @@ run_pipeline()                     # 읽기부터 보고서 저장까지 한 번
 
    <mark>AI 호출이 실패하면 `[LLM 호출 실패] …` 줄이 단계 3 제목 줄 위에 나오고, 요약은 대체 문장이 됩니다.</mark> 키가 없으면 `[LLM 호출 실패] API 키 없음` 이 세 줄 나오고 단계 3 제목 줄이 `(실패 3 건)` 으로 끝납니다. 이때 출력은 정답 레슨의 「키가 없을 때」와 같습니다.
 5. **[VS Code]** 새로 생긴 `anomaly_detection_report_2026-11-02.json` 을 열어 `event_count` · `records` · `summaries` 를 확인합니다.
-6. **[보고서]** `report_u5.md` 의 `## 도전 5-3` 아래를 채웁니다.
+6. **[보고서]** `report_u5.md` 의 `## 응용 5-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 보고서 파일의 `event_count` · `finding_count` 값과 `records` · `summaries` 의 건수를 적어 주세요.
    - (나) [핵심 질문] 점수와 등급은 코드가 정하고 AI 에게는 요약만 시킨 이유를 적어 주세요. 단계 5 의 확인할 순서와 단계 3 의 요약을 근거로 쓰세요.
    - (다) [핵심 질문] AI 호출이 실패해도 파이프라인이 멈추지 않고 대체 문장을 쓰게 만든 이유를 적어 주세요. 대체 문장이 들어간 대상을 담당자가 어떻게 처리해야 하는지도 적어 주세요.
 
-## 도전 5-3 정리
+## 응용 5-3 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|

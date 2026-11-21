@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
 <title>실습 5-1을 마친 뒤 제공 파일 세 개를 만들어 주간 보고서를 만들고 실습 5-2로 간다</title>
-<desc>weekly_run.py 는 실습 5-1의 checklist.py 와 제공 파일 log_summary.py, weekly_report.py 를 부르고, 시작하기에서 만든 데이터 파일 세 개를 읽어 주간 보고서 파일을 만듭니다. 도전 5-1을 하면 log_summary.py 를 골격으로 바꿔 직접 씁니다.</desc>
+<desc>weekly_run.py 는 실습 5-1의 checklist.py 와 제공 파일 log_summary.py, weekly_report.py 를 부르고, 시작하기에서 만든 데이터 파일 세 개를 읽어 주간 보고서 파일을 만듭니다. 응용 5-1을 하면 log_summary.py 를 골격으로 바꿔 직접 씁니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
 <text x="24" y="34" font-size="19" font-weight="700">제공 파일이 들어가는 자리</text>
@@ -29,6 +29,6 @@
 <text x="588" y="247" font-size="14" text-anchor="middle">주간 보고서 .md 파일</text>
 <text x="24" y="300" font-size="15">순서: 실습 5-1 → 제공 파일 세 개 → python weekly_run.py → 실습 5-2</text>
 <rect x="24" y="318" width="672" height="44" rx="8" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="360" y="345" font-size="14" text-anchor="middle">도전 5-1(선택)을 하면 log_summary.py 를 골격으로 바꿔 직접 쓰고, 다시 실행해 같은지 봅니다</text>
+<text x="360" y="345" font-size="14" text-anchor="middle">응용 5-1(선택)을 하면 log_summary.py 를 골격으로 바꿔 직접 쓰고, 다시 실행해 같은지 봅니다</text>
 </g>
 </svg>

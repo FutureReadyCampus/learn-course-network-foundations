@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img"><title>도전 3-1 정답: 현황 14건 중 퇴사한 계정 3건과 만료된 예외 4건이 걸린다</title><desc>find_stale 은 퇴사 여부를 먼저 보고, 아니면 elif 로 만료 시각을 본다. 퇴사한 계정 3건(dami)과 만료된 예외 4건(1·2·4·5번)으로 모두 7건이 걸린다.</desc><defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img"><title>응용 3-1 정답: 현황 14건 중 퇴사한 계정 3건과 만료된 예외 4건이 걸린다</title><desc>find_stale 은 퇴사 여부를 먼저 보고, 아니면 elif 로 만료 시각을 본다. 퇴사한 계정 3건(dami)과 만료된 예외 4건(1·2·4·5번)으로 모두 7건이 걸린다.</desc><defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">도전 3-1 정답 · 규칙에 걸린 7건</text>
+<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">응용 3-1 정답 · 규칙에 걸린 7건</text>
 <rect x="20" y="120" width="130" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="85" y="149.75" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">현황</text>
 <text x="85" y="170.75" font-size="15" fill="#292929" text-anchor="middle">14건</text>

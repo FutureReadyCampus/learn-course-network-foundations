@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
 <title>Module 3은 다섯 단계이고, 오늘 Unit 1은 3시간 동안 핵심 실습 세 개와 글쓰기를 한다</title>
-<desc>위쪽은 Module 3의 다섯 단계와 Unit 1~5의 대응입니다. 가운데는 오늘 3시간의 계획(시작 15분, 실습 약 110분, 글쓰기 40분, 마무리 15분)이고, 아래쪽은 오늘 만들 것 세 가지와 선택인 도전입니다.</desc>
+<desc>위쪽은 Module 3의 다섯 단계와 Unit 1~5의 대응입니다. 가운데는 오늘 3시간의 계획(시작 15분, 실습 약 110분, 글쓰기 40분, 마무리 15분)이고, 아래쪽은 오늘 만들 것 세 가지와 선택인 응용입니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="30" font-size="19" fill="#292929" font-weight="700">Module 3 접근통제 자동화 · 다섯 단계</text>
@@ -52,6 +52,6 @@
 <text x="592" y="326" font-size="14" fill="#292929" text-anchor="middle">evaluate_access</text>
 <text x="592" y="346" font-size="14" fill="#292929" text-anchor="middle">policy.py</text>
 <rect x="20" y="374" width="680" height="34" rx="6" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="360" y="396" font-size="15" fill="#292929" text-anchor="middle">도전 1-1 ~ 1-5는 선택 · 핵심 실습과 글쓰기를 마치고 시간이 남을 때</text>
+<text x="360" y="396" font-size="15" fill="#292929" text-anchor="middle">응용 1-1 ~ 1-5는 선택 · 핵심 실습과 글쓰기를 마치고 시간이 남을 때</text>
 </g>
 </svg>

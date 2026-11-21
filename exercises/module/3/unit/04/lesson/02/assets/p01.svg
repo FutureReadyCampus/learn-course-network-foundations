@@ -24,6 +24,6 @@
 <text x="340" y="222" font-size="15" fill="#292929">계획은 지울 대상과 영향만 적고,</text>
 <text x="340" y="246" font-size="15" fill="#292929">실제로는 아무것도 지우지 않습니다</text>
 <rect x="20" y="270" width="680" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="360.0" y="298.2" font-size="15" fill="#292929" text-anchor="middle">도전 4-1을 하면 revoke_plan.py 를 골격으로 바꿔 직접 씁니다</text>
+<text x="360.0" y="298.2" font-size="15" fill="#292929" text-anchor="middle">응용 4-1을 하면 revoke_plan.py 를 골격으로 바꿔 직접 씁니다</text>
 </g>
 </svg>

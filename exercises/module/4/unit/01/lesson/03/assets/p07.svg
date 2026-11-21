@@ -35,6 +35,6 @@
 <text x="592" y="256" font-size="15" fill="#292929" text-anchor="middle">판다스로 세고</text>
 <text x="592" y="278" font-size="15" fill="#292929" text-anchor="middle">기준 정하기</text>
 <text x="24" y="342" font-size="15" fill="#666660">.env 가 보이면 .gitignore 맨 아래에 .env 한 줄을 적고 git status 를 다시 칩니다.</text>
-<text x="24" y="366" font-size="15" fill="#666660">도전을 했다면 도전 파일까지 만든 뒤 git status 부터 push 까지 한 번 더 합니다.</text>
+<text x="24" y="366" font-size="15" fill="#666660">응용을 했다면 응용 파일까지 만든 뒤 git status 부터 push 까지 한 번 더 합니다.</text>
 </g>
 </svg>

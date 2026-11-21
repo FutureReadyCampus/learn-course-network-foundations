@@ -11,9 +11,9 @@ render: markdown
 글로 쓰는 답은 한 예이고, <mark>핵심이 같으면 맞습니다.</mark>
 
 1. **핵심 실습**: 실습 5-1 · 5-2 정답입니다. 오늘 모두가 하는 실습이니 먼저 맞춰 봅니다.
-2. **도전(선택)**: 도전 5-1 · 5-2 · 5-3 정답입니다. 도전을 한 사람만 봅니다.
+2. **응용(여유가 되면)**: 응용 5-1 · 5-2 · 5-3 정답입니다. 응용을 한 사람만 봅니다.
 3. 정답마다 결과, 왜, 자주 틀리는 곳, 관제에서는 순서로 읽습니다.
-4. AI 요약이 나오는 실습 5-1 · 도전 5-3은 <mark>Gemini API 키가 있을 때와 없을 때 출력이 다릅니다.</mark> 두 출력을 모두 실었으니 내 경우에 맞는 쪽과 비교합니다. 키가 있을 때의 요약 문장은 한 예이고 실행할 때마다 달라집니다.
+4. AI 요약이 나오는 실습 5-1 · 응용 5-3은 <mark>Gemini API 키가 있을 때와 없을 때 출력이 다릅니다.</mark> 두 출력을 모두 실었으니 내 경우에 맞는 쪽과 비교합니다. 키가 있을 때의 요약 문장은 한 예이고 실행할 때마다 달라집니다.
 
 ---
 
@@ -168,10 +168,10 @@ gaeun :
   - `is_suspicious` 는 요청 하나의 상태 코드가 401 · 403 이거나 경로에 `/admin` 이 있을 때만 「의심」으로 가릅니다.
   - 198.51.100.90 의 세 요청은 상태 코드가 모두 404 이고 경로에 `/admin` 이 없어서 의심 조건에 맞지 않습니다. 400 이상이라는 `is_error` 조건에만 맞아서 「오류」가 됩니다.
   - 한 줄씩은 흔한 404 이지만, 설정 파일 · 관리 화면 주소를 1초 간격으로 연달아 요청한 것은 탐색입니다. 이 규칙은 경로 이름도 같은 주소의 반복도 보지 않습니다.
-- 고칠 파일: `log_classify.py`(Unit 1 도전 1-1 의 파일입니다. 도전을 하지 않아 파일이 없어도, 고칠 곳은 실습 5-2 레슨에 실린 `is_suspicious` 조각으로 정합니다)
+- 고칠 파일: `log_classify.py`(Unit 1 응용 1-1 의 파일입니다. 응용을 하지 않아 파일이 없어도, 고칠 곳은 실습 5-2 레슨에 실린 `is_suspicious` 조각으로 정합니다)
 - 어떻게 고치나요:
   - 케이스 A: <mark style="background:#bde3ff">값을 바꿉니다.</mark> `is_suspicious` 에 「경로에 `/.env` · `/wp-login` · `/phpmyadmin` 중 하나가 들어 있다」는 조건을 하나 더하고 `or` 로 잇습니다.
-  - 케이스 B: 경로 목록만 늘리면 목록에 없는 새 주소는 또 놓칩니다. 그래서 같은 IP 가 없는 주소를 연달아 요청하는 횟수를 세는 규칙을 <mark style="background:#bde3ff">새로 넣습니다.</mark> 이런 규칙은 Unit 3 도전 3-3 의 `find_scan_ips` 로 이미 만들었습니다.
+  - 케이스 B: 경로 목록만 늘리면 목록에 없는 새 주소는 또 놓칩니다. 그래서 같은 IP 가 없는 주소를 연달아 요청하는 횟수를 세는 규칙을 <mark style="background:#bde3ff">새로 넣습니다.</mark> 이런 규칙은 Unit 3 응용 3-3 의 `find_scan_ips` 로 이미 만들었습니다.
 - 고친 뒤 확인: 같은 로그를 다시 분류해서 198.51.100.90 의 세 줄이 「의심」 목록에 나오는지 봅니다. 분류별 개수는 정상 15 · 오류 5 · 의심 8 에서 정상 15 · 오류 2 · 의심 11 로 바뀝니다.
 - 담당자가 가장 먼저 할 일: 198.51.100.90 의 같은 시간대 요청이 더 있었는지, 성공(200)한 요청이 있었는지 접속 기록에서 확인합니다.
 
@@ -224,13 +224,13 @@ gaeun :
 - 어떻게 고치나요: <mark style="background:#bde3ff">새로 넣습니다.</mark>
   - 중요한 권한 목록(예: `SETTLE:QUERY`)을 정하고, 서버 실패 이벤트의 행동이 그 목록에 있으면 횟수와 상관없이 확인 대상에 넣는 함수를 `pick_suspicious` 옆에 더합니다.
   - 이 규칙은 업무상 실수로 한 번 건드린 사용자까지 알려서 오탐이 늘 수 있습니다.
-- 고친 뒤 확인: 같은 이벤트로 다시 실행해 P5 가 알림 대상에 나오는지 보고, Unit 4 도전 4-2 처럼 오탐과 미탐을 다시 세어 오탐이 얼마나 늘었는지 봅니다.
+- 고친 뒤 확인: 같은 이벤트로 다시 실행해 P5 가 알림 대상에 나오는지 보고, Unit 4 응용 4-2 처럼 오탐과 미탐을 다시 세어 오탐이 얼마나 늘었는지 봅니다.
 - 담당자가 가장 먼저 할 일: seoyeon 에게 11:40 의 정산 조회가 업무 요청이었는지 확인합니다.
 
 #### 상황 8 · 서버가 같은 네트워크에 열려 있고, 지우면 접속 기록도 사라짐
 
 - 원인: <mark style="background:#bde3ff">운영 설정 문제</mark>입니다(두 가지).
-  - 접속 범위: 도전 5-1 에서 쓴 `compose.yaml` 의 `ports` 가 `"8081:80"` 처럼 주소 없이 적혀 있으면 같은 네트워크의 다른 PC 도 접속할 수 있습니다. `docker compose ps` 의 PORTS 에 `0.0.0.0:8081->80/tcp` 로 나옵니다.
+  - 접속 범위: 응용 5-1 에서 쓴 `compose.yaml` 의 `ports` 가 `"8081:80"` 처럼 주소 없이 적혀 있으면 같은 네트워크의 다른 PC 도 접속할 수 있습니다. `docker compose ps` 의 PORTS 에 `0.0.0.0:8081->80/tcp` 로 나옵니다.
   - 접속 기록: 서버를 `down` 으로 지우면 서버 안에 쌓인 기록도 함께 사라집니다. 서버 안 기록 폴더를 내 `logs` 폴더에 연결(`volumes`)해 두지 않았기 때문입니다.
 - 고칠 파일: `compose.secure.yaml`
 - 어떻게 고치나요:
@@ -255,9 +255,9 @@ gaeun :
 
 ---
 
-## 도전 5-1 정답
+## 응용 5-1 정답
 
-> **선택입니다. 시간이 남을 때 합니다.** 여기부터는 도전 정답입니다. 도전을 한 사람만 봅니다. 도전 5-1 · 5-2는 Docker Desktop 이 있어야 합니다.
+> **여유가 되면 해 보세요.** 여기부터는 응용 정답입니다. 응용을 한 사람만 봅니다. 응용 5-1 · 5-2는 Docker Desktop 이 있어야 합니다.
 
 **터미널에 입력합니다.**
 
@@ -356,7 +356,7 @@ curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8081
 
 ---
 
-## 도전 5-2 정답
+## 응용 5-2 정답
 
 **터미널에 입력합니다.**
 
@@ -405,7 +405,7 @@ ls logs
 
 **자주 틀리는 곳**
 
-- `up -d` 에 `-f compose.secure.yaml` 을 빼고 `docker compose up -d` 만 치면 <mark>**아무것도 바뀌지 않습니다.**</mark> 도전 5-1의 `compose.yaml` 이 그대로 적용되기 때문입니다.
+- `up -d` 에 `-f compose.secure.yaml` 을 빼고 `docker compose up -d` 만 치면 <mark>**아무것도 바뀌지 않습니다.**</mark> 응용 5-1의 `compose.yaml` 이 그대로 적용되기 때문입니다.
   - 이때 `ps` 의 PORTS 가 다음처럼 둘 다 `0.0.0.0:` 인 것이 이 실수의 모습입니다. `-f compose.secure.yaml` 을 붙여 다시 칩니다.
 
     ```
@@ -414,7 +414,7 @@ ls logs
     web2      0.0.0.0:8081->80/tcp, [::]:8081->80/tcp
     ```
 
-- 8082번 포트를 이미 다른 서버가 쓰고 있으면 `web3` 이 켜지지 않습니다. <mark>도전 5-1 레슨의 「Docker Desktop 켜고 포트 확인하기」에서 `8082` 도 비어 있는지 봅니다.</mark>
+- 8082번 포트를 이미 다른 서버가 쓰고 있으면 `web3` 이 켜지지 않습니다. <mark>응용 5-1 레슨의 「Docker Desktop 켜고 포트 확인하기」에서 `8082` 도 비어 있는지 봅니다.</mark>
   - 이때 오류는 다음과 같습니다(<mark style="background:#ffc4d6">`port is already allocated`</mark> 가 나오면 이 실수입니다).
 
     ```
@@ -429,13 +429,13 @@ ls logs
 
 ---
 
-## 도전 5-3 정답
+## 응용 5-3 정답
 
 **터미널에 입력합니다.**
 
 ```bash
 pwd
-python challenge5-3_run.py
+python apply5-3_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
@@ -562,7 +562,7 @@ low 198.51.100.90 30
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/challenge5-3_run.py", line 3, in <module>
+  File "…/anomaly_detection/apply5-3_run.py", line 3, in <module>
   File "…/anomaly_detection/pipeline.py", line 75, in run_pipeline
   File "…/anomaly_detection/pipeline.py", line 17, in analyze_events
   File "…/anomaly_detection/risk_scores.py", line 31, in collect_findings
@@ -575,7 +575,7 @@ TypeError: list indices must be integers or slices, not str
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/challenge5-3_run.py", line 3, in <module>
+  File "…/anomaly_detection/apply5-3_run.py", line 3, in <module>
   File "…/anomaly_detection/pipeline.py", line 74, in run_pipeline
   File "…/anomaly_detection/pipeline.py", line 16, in analyze_events
 NameError: name 'chains' is not defined
@@ -586,7 +586,7 @@ NameError: name 'chains' is not defined
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/challenge5-3_run.py", line 3, in <module>
+  File "…/anomaly_detection/apply5-3_run.py", line 3, in <module>
   File "…/anomaly_detection/pipeline.py", line 86, in run_pipeline
   File "…/anomaly_detection/pipeline.py", line 65, in save_report
 TypeError: Object of type method is not JSON serializable

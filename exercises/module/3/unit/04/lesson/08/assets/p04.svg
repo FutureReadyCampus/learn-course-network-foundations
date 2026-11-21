@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
-<title>도전 4-1 정답: 예외 삭제 5건, 역할 해제 2건, 역할에서 권한 빼기 1건</title>
+<title>응용 4-1 정답: 예외 삭제 5건, 역할 해제 2건, 역할에서 권한 빼기 1건</title>
 <desc>회수 대상 8건이 세 방법으로 나뉩니다. 역할별 사용자 수는 finance 1명, sales 2명입니다. 퇴사 검사를 예외 검사보다 먼저 쓰면 예외 삭제 4건, 역할 해제 3건이 됩니다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">도전 4-1 정답 — 8건이 세 방법으로 나뉨</text>
+<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">응용 4-1 정답 — 8건이 세 방법으로 나뉨</text>
 <rect x="20" y="100" width="140" height="90" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="90" y="139.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">회수 대상</text>
 <text x="90" y="160.8" font-size="15" fill="#292929" text-anchor="middle">8건</text>

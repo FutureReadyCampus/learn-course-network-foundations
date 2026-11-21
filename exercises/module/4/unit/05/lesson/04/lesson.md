@@ -1,6 +1,6 @@
 ---
 id: m4-u05-l04
-title: 도전 5-1 · 컴포즈로 서버 두 대 한 번에 켜기
+title: 응용 5-1 · 컴포즈로 서버 두 대 한 번에 켜기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,11 +9,11 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 도전 5-1 · 컴포즈로 서버 두 대 한 번에 켜기
+# 응용 5-1 · 컴포즈로 서버 두 대 한 번에 켜기
 
 ## 목표: compose.yaml 로 서버 두 대
 
-> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 5-1 · 5-2와 글쓰기를 먼저 마칩니다. 이 도전은 **Docker Desktop** 이 있는 PC 에서만 할 수 있고, 하지 않아도 이번 Unit을 마무리하고 Module 5를 따라가는 데 문제가 없습니다. 여기서는 파이썬 · 판다스 코드를 쓰지 않고 터미널 명령만 씁니다.
+> **여유가 되면 해 보세요.** 핵심 실습 5-1 · 5-2와 글쓰기를 먼저 마칩니다. 이 응용은 **Docker Desktop** 이 있는 PC 에서만 할 수 있고, 하지 않아도 이번 Unit을 마무리하고 Module 5를 따라가는 데 문제가 없습니다. 여기서는 파이썬 · 판다스 코드를 쓰지 않고 터미널 명령만 씁니다.
 
 > **이번 실습에 들어온 일**
 >
@@ -80,9 +80,9 @@ services:
 
 ## Docker Desktop 켜고 포트 확인하기
 
-> **먼저 Docker Desktop 앱을 켭니다.** 시작 메뉴(맥북은 응용 프로그램)에서 Docker Desktop 을 열고, <mark>화면 구석에 **고래 모양 아이콘**이 보이고 움직임이 멈추면</mark> 준비된 것입니다. Docker Desktop 이 이 PC 에 없으면 도전 5-1 · 5-2는 건너뜁니다.
+> **먼저 Docker Desktop 앱을 켭니다.** 시작 메뉴(맥북은 응용 프로그램)에서 Docker Desktop 을 열고, <mark>화면 구석에 **고래 모양 아이콘**이 보이고 움직임이 멈추면</mark> 준비된 것입니다. Docker Desktop 이 이 PC 에 없으면 응용 5-1 · 5-2는 건너뜁니다.
 
-- 도전 5-1 · 5-2에서 만드는 파일은 모두 `anomaly_detection` 폴더 안에 둡니다. 만드는 파일은 `compose.yaml` · `compose.secure.yaml` 과 `logs` 폴더의 `web_404.log` 입니다.
+- 응용 5-1 · 5-2에서 만드는 파일은 모두 `anomaly_detection` 폴더 안에 둡니다. 만드는 파일은 `compose.yaml` · `compose.secure.yaml` 과 `logs` 폴더의 `web_404.log` 입니다.
 - <mark style="background:#ffc4d6">터미널에서 `pwd` 를 쳐서 결과가 `…/anomaly_detection` 으로 끝나는지 확인한 뒤 시작합니다.</mark> 다른 폴더에서 `docker compose` 를 치면 그 폴더에 있는 다른 `compose.yaml` 이 켜질 수 있습니다.
 - 서버가 쓰는 포트(port, 포트: 컴퓨터로 들어오는 요청을 구분하는 번호)는 `8080` · `8081` · `8082` 로 **고정**합니다. <mark>번호를 바꾸지 않습니다.</mark>
 
@@ -125,11 +125,11 @@ services:
 |---|---|---|
 | `Cannot connect to the Docker daemon` | <mark>Docker Desktop 이 꺼져 있는 것입니다.</mark> | Docker Desktop 을 실행하고 상태가 초록색(Running)이 될 때까지 1분쯤 기다린 뒤 다시 침 |
 | `toomanyrequests` | 이미지를 너무 많이 받음 | <mark>1시간 뒤에 다시 합니다.</mark> |
-| `docker: command not found` | 이 PC 에 도커가 없음 | 도전 5-1 · 5-2는 건너뜀 |
+| `docker: command not found` | 이 PC 에 도커가 없음 | 응용 5-1 · 5-2는 건너뜀 |
 
 - 첫 줄은 도커에 연결할 수 없다는 오류이고, Windows 에서는 `error during connect` 처럼 문구가 다를 수 있습니다. 초록색 상태는 Docker Desktop 화면 아래쪽에 나옵니다.
 
-## 도전 5-1 · 컴포즈로 서버 두 대 한 번에 켜기
+## 응용 5-1 · 컴포즈로 서버 두 대 한 번에 켜기
 
 **이런 상황이 있습니다**
 
@@ -313,13 +313,13 @@ services:
    ```
 
 
-7. **[보고서]** `report_u5.md` 의 `## 도전 5-1` 아래를 채웁니다.
-   - (가) 도전 5-1의 서버 켜기 · 확인 명령(`docker images` 부터 `curl` 까지)과 그 결과를 친 순서대로 붙여 넣고, 서비스 이름 두 개와 각 서비스의 포트를 적어 주세요.
+7. **[보고서]** `report_u5.md` 의 `## 응용 5-1` 아래를 채웁니다.
+   - (가) 응용 5-1의 서버 켜기 · 확인 명령(`docker images` 부터 `curl` 까지)과 그 결과를 친 순서대로 붙여 넣고, 서비스 이름 두 개와 각 서비스의 포트를 적어 주세요.
    - (나) [핵심 질문] 서버 두 대를 `docker run` 으로 켜는 것과 `compose.yaml` 과 `docker compose up -d` 로 켜는 것을 비교해, 컴포즈가 더 나은 점을 두 가지 적어 주세요.
    - (다) [핵심 질문] 보안 사고가 난 뒤 감사팀이 「사고 당시와 같은 구성으로 서버를 다시 켜 보라」고 요청했습니다. 팀원 한 명은 3주 전에 긴 `docker run` 명령을 직접 쳐서 서버를 켰는데 그 명령을 기억하지 못합니다. 다른 팀은 `compose.yaml` 을 깃허브에 올려 두었습니다. 두 팀이 같은 구성을 다시 켤 수 있는지 비교하고, 파일에 `nginx:1.28` 처럼 버전을 적어 두는 것이 이런 재현에 왜 중요한지 적어 주세요.
    - (라) [핵심 질문] 팀원 세 명이 같은 `compose.yaml` 로 서버를 켰는데 한 명의 PC 에서만 `8081` 번 포트를 다른 프로그램이 쓰고 있어서 `web2` 가 켜지지 않았습니다. 이 사람이 파일의 어느 줄을 어떻게 바꾸면 되는지 적고, 바꿔도 서버 안에서는 여전히 `80` 번 포트로 동작하는 이유를 적어 주세요. 이 사람이 `curl` 로 확인할 때 달라지는 점도 적어 주세요.
 
-## 도전 5-1 정리
+## 응용 5-1 정리
 
 | 하려는 일 | 명령 |
 |---|---|

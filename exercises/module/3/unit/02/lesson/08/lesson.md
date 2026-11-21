@@ -1,6 +1,6 @@
 ---
 id: m3-u02-l08
-title: 도전 2-3 · 요청 이력 저장과 상태별 건수
+title: 응용 2-3 · 요청 이력 저장과 상태별 건수
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,16 +9,16 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 도전 2-3 · 요청 이력 저장과 상태별 건수
+# 응용 2-3 · 요청 이력 저장과 상태별 건수
 
 ## 목표: 저장 함수와 건수 세기
 
-> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 2-1 · 2-2와 글쓰기를 먼저 마칩니다. 이 도전은 도전 2-2의 `req_sla.py` · `config/sla.json` 을 불러 쓰므로 도전 2-2를 먼저 합니다. 이 도전을 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
+> **여유가 되면 해 보세요.** 핵심 실습 2-1 · 2-2와 글쓰기를 먼저 마칩니다. 이 응용은 응용 2-2의 `req_sla.py` · `config/sla.json` 을 불러 쓰므로 응용 2-2를 먼저 합니다. 이 응용을 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
 
 > **오늘 들어온 일**
 >
 > A사 관제 담당이 보낸 메시지: 「지금까지 만든 요청서는 프로그램을 끄면 사라집니다. 접수 · 승인 · 반려 · 부여를 한 번 돌리고 나면 요청서 전체를 파일로 남겨 주세요. 그리고 상태별로 몇 건인지 숫자로 보고 싶은데, 손으로 세면 시간이 걸리고 틀리기 쉽습니다.」
-> - 이 실습에서 하는 일: 요청서 리스트를 `requests.json` 으로 저장하는 함수 `save_requests` 와 상태별 건수를 세는 함수 `count_by_status` 를 직접 씁니다. 실습 2-1 · 2-2, 「제공 파일」 `req_grant.py`, 도전 2-2에서 만든 함수를 모두 이어서 한 번 돌려 봅니다.
+> - 이 실습에서 하는 일: 요청서 리스트를 `requests.json` 으로 저장하는 함수 `save_requests` 와 상태별 건수를 세는 함수 `count_by_status` 를 직접 씁니다. 실습 2-1 · 2-2, 「제공 파일」 `req_grant.py`, 응용 2-2에서 만든 함수를 모두 이어서 한 번 돌려 봅니다.
 > - 끝나면 쓰는 것: 보고서 (가)~(다) 답
 
 ## 왜 요청 이력을 파일로 남기는가
@@ -100,7 +100,7 @@ print(text)                                                      # 쓴 파일을
 - `open(…).read()` 는 파일을 열어 내용 전체를 문자열로 읽습니다. 위 코드는 방금 쓴 파일을 확인하려고 한 번 더 읽어 출력한 것입니다.
 - 세는 모양 `old_count = counts.get(키, 0)` → `counts[키] = old_count + 1` 은 Unit 1 실습 1-3의 `exercise1-3_run.py` 에서 본 것과 같습니다. `counts.get(키, 0)` 은 그 키가 있으면 값을, 없으면 0 을 꺼냅니다.
 
-## 도전 2-3 · 요청서 저장하고 상태별 건수 세기
+## 응용 2-3 · 요청서 저장하고 상태별 건수 세기
 
 **이런 상황이 있습니다**
 
@@ -111,7 +111,7 @@ print(text)                                                      # 쓴 파일을
 
 **할 일**
 
-1. `request_flow.py` 와 `challenge2-3_run.py` 두 파일을 만들고, `save_requests` 와 `count_by_status` 본문을 직접 씁니다.
+1. `request_flow.py` 와 `apply2-3_run.py` 두 파일을 만들고, `save_requests` 와 `count_by_status` 본문을 직접 씁니다.
 2. 실행해서 <mark>처리 결과</mark>(단계 1: 처리), <mark>상태별 건수와 SLA 초과</mark>(단계 2: 점검), <mark>저장 결과</mark>(단계 3: 저장)를 읽습니다. `requests.json` 파일도 열어 봅니다.
 
 **`request_flow.py`**
@@ -153,15 +153,15 @@ def count_by_status(requests):                                   # 요청서 리
 | 단계 3 | `저장 함수가 리턴한 건수: None` | `save_requests` 가 파일을 만들지 않음 |
 | 단계 3 (이어서) | `[경고] 설정 파일 없음: requests.json` 뒤에 `IndexError` | `save_requests` 가 파일을 만들지 않음 |
 
-**`challenge2-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 요청 여섯 건을 접수하고 처리한 뒤, 단계 1은 승인 · 반려 · 부여 결과를 출력하고, 단계 2는 상태별 건수와 SLA 초과 요청을 출력합니다. 단계 3은 `requests.json` 으로 저장한 뒤 다시 읽어 확인합니다.
+**`apply2-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 요청 여섯 건을 접수하고 처리한 뒤, 단계 1은 승인 · 반려 · 부여 결과를 출력하고, 단계 2는 상태별 건수와 SLA 초과 요청을 출력합니다. 단계 3은 `requests.json` 으로 저장한 뒤 다시 읽어 확인합니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
 from config_loader import load_json                              # config_loader.py 의 안전한 읽기 함수를 불러온다
 from req_create import REQUESTS, create_request                  # 실습 2-1에서 만든 요청서 함수와 리스트를 불러온다
 from req_review import approve_request, reject_request           # 실습 2-2에서 만든 승인 · 반려 함수를 불러온다
-from req_grant import grant_request                              # 제공 파일(또는 도전 2-1)의 부여 함수를 불러온다
-from req_sla import check_sla_breach                             # 도전 2-2에서 만든 기한 점검 함수를 불러온다
+from req_grant import grant_request                              # 제공 파일(또는 응용 2-1)의 부여 함수를 불러온다
+from req_sla import check_sla_breach                             # 응용 2-2에서 만든 기한 점검 함수를 불러온다
 from request_flow import save_requests, count_by_status          # 방금 만든 저장 · 집계 함수를 불러온다
 
 NOW = datetime.strptime("2026-10-23 14:00", "%Y-%m-%d %H:%M")    # 이번 실습의 지금 시각(고정)
@@ -208,30 +208,30 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
    | 이렇게 나오면 | 할 일 |
    |---|---|
    | `No module named 'req_grant'` | 「제공 파일」 레슨으로 `req_grant.py` 를 만듭니다 |
-   | `No module named 'req_sla'` | 도전 2-2를 먼저 해서 `req_sla.py` 와 `config/sla.json` 을 만듭니다 |
+   | `No module named 'req_sla'` | 응용 2-2를 먼저 해서 `req_sla.py` 와 `config/sla.json` 을 만듭니다 |
 
 1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 네 가지를 반복합니다.
    1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
    2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-   3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `request_flow.py` · `challenge2-3_run.py` 입니다.
+   3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `request_flow.py` · `apply2-3_run.py` 입니다.
    4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
 2. **[VS Code]** `request_flow.py` 의 두 함수 본문을 직접 씁니다. 2.1 의 표와 문법 상자를 보고 씁니다.
 3. **[터미널]** 위치가 `…/access_control` 인지 확인하고 실행합니다.
    ```bash
    pwd
-   python challenge2-3_run.py
+   python apply2-3_run.py
    ```
-   - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `challenge2-3_run.py` 실행할 파일
-   - 맥북은 `python3 challenge2-3_run.py` 로 칩니다.
+   - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `apply2-3_run.py` 실행할 파일
+   - 맥북은 `python3 apply2-3_run.py` 로 칩니다.
 4. 출력은 세 단계입니다. 단계 1은 요청 여섯 건의 처리 결과(여섯 줄), 단계 2는 상태별 건수와 SLA 초과 요청 번호, 단계 3은 저장 함수가 리턴한 건수와 저장 결과입니다.
-   - 도전 2-2에서는 SLA 초과가 1번과 5번이었지만 여기서는 5번만 나옵니다. 이 실행에서는 1번이 승인 · 부여까지 끝나 더 이상 `reviewing` 이 아니기 때문입니다.
+   - 응용 2-2에서는 SLA 초과가 1번과 5번이었지만 여기서는 5번만 나옵니다. 이 실행에서는 1번이 승인 · 부여까지 끝나 더 이상 `reviewing` 이 아니기 때문입니다.
 5. **[VS Code]** 왼쪽 목록에 새로 생긴 `requests.json` 을 열어 요청서가 한글 그대로 저장됐는지 봅니다.
-6. **[보고서]** `report_u2.md` 의 `## 도전 2-3` 아래를 채웁니다.
+6. **[보고서]** `report_u2.md` 의 `## 응용 2-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, `requests.json` 에 저장된 요청서가 몇 건인지와 상태별 건수를 적어 주세요.
    - (나) [핵심 질문] 반려된 요청서(`rejected`)나 승인은 됐지만 부여하지 않은 요청서(`approved`)도 지우지 않고 `requests.json` 에 남기는 이유는 무엇인가요?
    - (다) [핵심 질문] 상태별 건수가 `granted` 1 · `rejected` 1 · `approved` 2 · `reviewing` 2 로 나왔습니다. 이 숫자를 매일 아침 보면 처리 흐름의 어디가 막혀 있는지 어떻게 알 수 있나요?
 
-## 도전 2-3 정리
+## 응용 2-3 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
@@ -245,30 +245,30 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
 
 ---
 
-## 도전 파일도 깃허브에 올리기
+## 응용 파일도 깃허브에 올리기
 
-핵심 실습의 파일은 실습 2-2 끝 「이번 Unit 마무리」에서 이미 올렸습니다. 도전을 했다면 도전 파일도 같은 방법으로 올립니다.
+핵심 실습의 파일은 실습 2-2 끝 「이번 Unit 마무리」에서 이미 올렸습니다. 응용을 했다면 응용 파일도 같은 방법으로 올립니다.
 
 1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고(`cd ..`) `git status` 로 올라갈 파일을 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
-   - 도전 2-1 · 2-2 · 2-3을 모두 했다면 아래 파일이 모두 `access_control/` 아래에 보입니다.
+   - 응용 2-1 · 2-2 · 2-3을 모두 했다면 아래 파일이 모두 `access_control/` 아래에 보입니다.
 
-     | 도전 | 보이는 파일 |
+     | 응용 | 보이는 파일 |
      |---|---|
-     | 도전 2-1 | `challenge2-1_run.py` |
-     | 도전 2-2 | `req_sla.py` · `challenge2-2_run.py` · `config/sla.json` |
-     | 도전 2-3 | `request_flow.py` · `challenge2-3_run.py` · `requests.json` |
+     | 응용 2-1 | `apply2-1_run.py` |
+     | 응용 2-2 | `req_sla.py` · `apply2-2_run.py` · `config/sla.json` |
+     | 응용 2-3 | `request_flow.py` · `apply2-3_run.py` · `requests.json` |
 
-   - 도전 2-1에서 `req_grant.py` 를 직접 다시 썼다면 `modified:` 줄에 보입니다.
-   - `access_control/requests.json` 은 도전 2-3에서 프로그램이 만든 이력 파일입니다. 이것도 올라갑니다.
-2. **[보고서]** `report_u2.md` 의 도전 칸 가운데 내가 한 도전의 칸을 채웁니다.
+   - 응용 2-1에서 `req_grant.py` 를 직접 다시 썼다면 `modified:` 줄에 보입니다.
+   - `access_control/requests.json` 은 응용 2-3에서 프로그램이 만든 이력 파일입니다. 이것도 올라갑니다.
+2. **[보고서]** `report_u2.md` 의 응용 칸 가운데 내가 한 응용의 칸을 채웁니다.
 3. **[터미널]** 올립니다.
    ```bash
    git add .
-   git commit -m "Add access control unit 2 challenges: grant, SLA and history"
+   git commit -m "Add access control unit 2 apply tasks: grant, SLA and history"
    git push
    ```
    - 명령 풀이와 막힐 때 할 일은 「이번 Unit 마무리」의 3번과 같습니다.
-4. **[브라우저]** 깃허브의 `access_control` 폴더에서 도전 파일이 보이는지 확인합니다.
+4. **[브라우저]** 깃허브의 `access_control` 폴더에서 응용 파일이 보이는지 확인합니다.
 
 ---
 

@@ -170,7 +170,7 @@ source:
    | `git log --oneline -3` | 맨 위 줄이 Unit 1 마무리의 커밋 |
    | `ls` | `access_control` 폴더가 보임 |
    - 명령 풀이: `git log --oneline -3` 최근 커밋 3개를 한 줄씩 보여 줌
-   - Unit 1 마무리의 커밋 설명은 `Add access control unit 1 roles, checker, policy and report` 입니다. 그 뒤에 도전 파일을 더 올렸다면 그때 쓴 설명이 맨 위에 보입니다.
+   - Unit 1 마무리의 커밋 설명은 `Add access control unit 1 roles, checker, policy and report` 입니다. 그 뒤에 응용 파일을 더 올렸다면 그때 쓴 설명이 맨 위에 보입니다.
 3. **[브라우저]** 깃허브 내 저장소 화면의 폴더 리스트와 VS Code 왼쪽 목록이 같은지 봅니다.
 
 ---

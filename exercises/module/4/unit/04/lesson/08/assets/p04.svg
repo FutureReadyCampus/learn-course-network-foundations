@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>도전 4-1 정답: 세 함수를 거쳐 gaeun 한 명이 연결된 사건으로 나옵니다</title>
+<title>응용 4-1 정답: 세 함수를 거쳐 gaeun 한 명이 연결된 사건으로 나옵니다</title>
 <desc>attach_user_to_web 이 IP 로 사용자를 채우고, build_timeline 이 세 표를 합쳐 user · time 순으로 정렬하고, find_chains 가 로그 종류 2 이상이면서 60분 이내인 사용자를 고릅니다. gaeun 은 3종류 · 41분이라 연결되고, seoyeon 은 2종류지만 555분이라 연결되지 않습니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 4-1 정답</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">응용 4-1 정답</text>
 <text x="700" y="32" font-size="15" fill="#666660" text-anchor="end">직접 쓰는 곳은 세 함수</text>
 <rect x="20" y="56" width="210" height="110" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="125.0" y="96.4" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">① attach_user_to_web</text>

@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
-<title>도전 2-2: 최대 3번 다시 시도하고, 끝내 실패하면 실패 목록에 남깁니다</title>
+<title>응용 2-2: 최대 3번 다시 시도하고, 끝내 실패하면 실패 목록에 남깁니다</title>
 <desc>run_with_retry 는 같은 액션을 최대 3번 시도합니다. fail_plan 이 2이면 3번째에 성공하고, 99이면 3번 모두 실패합니다. 실패한 기록은 collect_failures 로 모아 담당자 확인 목록에 보여 줍니다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">도전 2-2 정답: 다시 시도와 실패 목록</text>
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">응용 2-2 정답: 다시 시도와 실패 목록</text>
 <rect x="24" y="74" width="92" height="48" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="70.0" y="103.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="70.0" dy="0" font-weight="700">시도 1</tspan></text>
 <line x1="116" y1="98" x2="132" y2="98" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>

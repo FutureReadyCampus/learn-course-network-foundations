@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
 <title>40분을 고르기 5분, 쓰기 25분, 점검·올리기 10분으로 나누고 글감 하나를 고른다</title>
-<desc>위쪽 막대는 글쓰기 40분의 배분을 시간 길이에 맞춰 보여 줍니다. 아래 왼쪽은 핵심 실습 글감 세 개, 오른쪽 점선 상자는 도전을 했을 때만 고르는 선택 글감입니다.</desc>
+<desc>위쪽 막대는 글쓰기 40분의 배분을 시간 길이에 맞춰 보여 줍니다. 아래 왼쪽은 핵심 실습 글감 세 개, 오른쪽 점선 상자는 응용을 했을 때만 고르는 선택 글감입니다.</desc>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
 <text x="24" y="34" font-size="19" font-weight="700">글쓰기 40분</text>
 <rect x="24" y="50" width="84" height="60" rx="6" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
@@ -21,9 +21,9 @@
 <text x="40" y="281" font-size="15">3. dami 의 판정 순서가 바뀌면 열리는 것</text>
 <text x="474" y="150" font-size="17" font-weight="700">선택 글감</text>
 <rect x="474" y="164" width="222" height="130" rx="6" fill="#ffffff" stroke="#666660" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="490" y="194" font-size="15" font-weight="700">도전 1-2를 했다면</text>
+<text x="490" y="194" font-size="15" font-weight="700">응용 1-2를 했다면</text>
 <text x="490" y="216" font-size="14" fill="#666660">이동 · 퇴사 뒤 남은 권한</text>
-<text x="490" y="252" font-size="15" font-weight="700">도전 1-4를 했다면</text>
+<text x="490" y="252" font-size="15" font-weight="700">응용 1-4를 했다면</text>
 <text x="490" y="274" font-size="14" fill="#666660">설정 고장 때 모두 거부</text>
 <text x="24" y="334" font-size="15" fill="#666660">세 문장이어도, 막힌 이야기여도 좋은 글입니다</text>
 </g>

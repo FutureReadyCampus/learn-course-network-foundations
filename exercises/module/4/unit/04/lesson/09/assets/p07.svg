@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 305" role="img">
-<title>도전 4-3 보고서: 알림을 합친 뒤 놓친 문제 수, P4와 P5를 채운다</title>
-<desc>도전 4-3 보고서의 세 칸에 채울 내용을 체크리스트로 보여 준다. 로그인 규칙 알림을 합쳐 잡힌 P4와 아직 놓친 P5를 묻는다.</desc>
+<title>응용 4-3 보고서: 알림을 합친 뒤 놓친 문제 수, P4와 P5를 채운다</title>
+<desc>응용 4-3 보고서의 세 칸에 채울 내용을 체크리스트로 보여 준다. 로그인 규칙 알림을 합쳐 잡힌 P4와 아직 놓친 P5를 묻는다.</desc>
 <defs><marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">도전 4-3 · 채울 칸</text>
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">응용 4-3 · 채울 칸</text>
 <rect x="12" y="54" width="224" height="70.4" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="124" y="94.72" font-size="16" text-anchor="middle" fill="#292929" font-weight="700">(가) 출력과 요약</text>
 <rect x="12" y="134.4" width="224" height="41.75" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>

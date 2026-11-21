@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
-<title>도전 3-3 정답: 후보 10건이 회수 제외 2건과 회수 대상 8건으로 나뉩니다</title>
+<title>응용 3-3 정답: 후보 10건이 회수 제외 2건과 회수 대상 8건으로 나뉩니다</title>
 <desc>can_exclude 는 제외 리스트에 있고 퇴사한 계정이 아닌 후보만 회수 제외로 보냅니다. dami 의 SALES:QUERY 는 리스트에 있어도 퇴사한 계정이라 회수 대상에 남습니다. and not is_resigned 를 빼면 6건과 4건으로 바뀝니다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">도전 3-3 정답 — 후보를 회수 대상과 회수 제외로</text>
+<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">응용 3-3 정답 — 후보를 회수 대상과 회수 제외로</text>
 <rect x="20" y="70" width="140" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="90" y="99.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">후보</text>
 <text x="90" y="120.8" font-size="15" fill="#292929" text-anchor="middle">10건</text>

@@ -1,6 +1,6 @@
 ---
 id: m5-u03-l07
-title: 도전 3-3 · 등급별 알림 전파와 재시도 만들기
+title: 응용 3-3 · 등급별 알림 전파와 재시도 만들기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,11 +9,11 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 도전 3-3 · 등급별 알림 전파와 재시도 만들기
+# 응용 3-3 · 등급별 알림 전파와 재시도 만들기
 
 ## 목표: 알림 전파와 재시도
 
-> **선택입니다. 시간이 남을 때 합니다.** 핵심 실습 3-1 · 3-2와 글쓰기를 먼저 마칩니다. 이 도전에서는 「제공 파일」 레슨에서 완성본으로 받은 `ticket_notice.py` 를 직접 써 봅니다. 알림 서버를 켜야 해서 `flask` · `requests` 도구를 설치합니다(순서 1번). 도전 3-2는 하지 않아도 되고, 그때는 제공 파일의 `ticket_merge.py` 를 씁니다.
+> **여유가 되면 해 보세요.** 핵심 실습 3-1 · 3-2와 글쓰기를 먼저 마칩니다. 이 응용에서는 「제공 파일」 레슨에서 완성본으로 받은 `ticket_notice.py` 를 직접 써 봅니다. 알림 서버를 켜야 해서 `flask` · `requests` 도구를 설치합니다(순서 1번). 응용 3-2는 하지 않아도 되고, 그때는 제공 파일의 `ticket_merge.py` 를 씁니다.
 
 > **오늘 들어온 일**
 >
@@ -60,23 +60,23 @@ source:
 | `ticket_notice.py` | `should_send` | 2 ~ 4번 | 처음이거나 간격이 지났으면 `True` 를 리턴한다 |
 | `ticket_notice.py` | `send_with_retry` | 5 · 6번 | 최대 3번 보내 보고, 성공한 시도 번호를 리턴한다 |
 | `ticket_notice.py` | `send_ticket_notice` | 미리 채움 | 위 세 함수로 티켓 알림을 보낸다 |
-| `challenge3-3_run.py` | (실행 파일) | 7번 | 알림마다 티켓 알림을 보낸다 |
-| `challenge3-3_run.py` | (실행 파일) | 8 · 9번 | 보냈으면 센다 |
+| `apply3-3_run.py` | (실행 파일) | 7번 | 알림마다 티켓 알림을 보낸다 |
+| `apply3-3_run.py` | (실행 파일) | 8 · 9번 | 보냈으면 센다 |
 
 - `should_send` 는 지금 알려도 되는지 정합니다. `send_with_retry` 는 모두 실패하면 0 을 리턴합니다.
 - `send_ticket_notice` 는 「전송」 · 「건너뜀」 · 「실패」 중 하나를 리턴합니다.
 
-## 도전 3-3 · 등급별 알림 전파와 재시도 만들기
+## 응용 3-3 · 등급별 알림 전파와 재시도 만들기
 
 **이런 상황이 있습니다**
 
 - **지금은**: <mark>티켓은 생성되지만 담당자에게 알림을 전파하는 단계가 없습니다. 그래서 담당자가 티켓 목록을 직접 조회하기 전에는 새 티켓이 생성된 것을 알 수 없습니다</mark>.
-- **만드는 것**: 수신자 선택 · 전송 여부 판정 · 최대 3번 재시도 전송(`ticket_notice.py`), 알림마다 담당자에게 알림을 전파하고 집계한 결과(`challenge3-3_run.py`).
+- **만드는 것**: 수신자 선택 · 전송 여부 판정 · 최대 3번 재시도 전송(`ticket_notice.py`), 알림마다 담당자에게 알림을 전파하고 집계한 결과(`apply3-3_run.py`).
 - **실행하면**: <mark>단계 1: 알림 11건의 처리와 담당자 알리기 결과, 단계 2: 전송과 건너뜀 건수 · 티켓별 알린 횟수, 단계 3: 꺼진 주소로 3번 보내 보기, 단계 4: 저장한 티켓이 나옵니다.</mark>
 
 **할 일**: 도구를 설치하고 알림 서버를 켠 뒤, 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 1 ~ 4 와 서버 터미널을 읽습니다.
 
-**`alert_server.py`** — 알림 서버입니다. Flask(플라스크)는 파이썬으로 작은 웹 서버를 만드는 도구이고, `requests` 는 그런 서버에 요청을 보내는 도구입니다. `/alert` 로 알림이 오면 터미널에 `[알림 받음]` 과 내용을 보여 줍니다. 쓰는 줄이 없습니다. 이미 있으면 다시 만들지 않습니다(`agent_core` 폴더에 있으면 `cp ../agent_core/alert_server.py .` 로 복사해도 됩니다). Unit 4 도전 4-1 · 4-2에서도 이 서버를 켭니다.
+**`alert_server.py`** — 알림 서버입니다. Flask(플라스크)는 파이썬으로 작은 웹 서버를 만드는 도구이고, `requests` 는 그런 서버에 요청을 보내는 도구입니다. `/alert` 로 알림이 오면 터미널에 `[알림 받음]` 과 내용을 보여 줍니다. 쓰는 줄이 없습니다. 이미 있으면 다시 만들지 않습니다(`agent_core` 폴더에 있으면 `cp ../agent_core/alert_server.py .` 로 복사해도 됩니다). Unit 4 응용 4-1 · 4-2에서도 이 서버를 켭니다.
 
 ```python
 from flask import Flask, request        # 웹 서버를 만드는 Flask 와 요청 정보를 담은 request 를 불러온다
@@ -94,7 +94,7 @@ def alert():                            # 알림을 받는 함수
 app.run(port=5001)                      # 5001 번 포트에서 기다린다
 ```
 
-**`ticket_notice.py`** — 담당자에게 알림을 전파합니다. 직접 쓰는 곳은 1 ~ 6번입니다. 3번은 2번에서 쓴 `if` 의 안쪽이라 주석보다 한 단계 더 오른쪽에, 6번은 이미 한 단계 들어가 있는 주석과 같은 위치에 씁니다. 「제공 파일」 레슨의 `ticket_merge.py`(도전 3-2를 했다면 직접 쓴 파일)와 `notifier.py` 가 같은 폴더에 있어야 합니다. 제공 파일의 완성본이 있으면 그 파일의 내용을 모두 지우고 아래 골격을 붙여 넣은 뒤 씁니다.
+**`ticket_notice.py`** — 담당자에게 알림을 전파합니다. 직접 쓰는 곳은 1 ~ 6번입니다. 3번은 2번에서 쓴 `if` 의 안쪽이라 주석보다 한 단계 더 오른쪽에, 6번은 이미 한 단계 들어가 있는 주석과 같은 위치에 씁니다. 「제공 파일」 레슨의 `ticket_merge.py`(응용 3-2를 했다면 직접 쓴 파일)와 `notifier.py` 가 같은 폴더에 있어야 합니다. 제공 파일의 완성본이 있으면 그 파일의 내용을 모두 지우고 아래 골격을 붙여 넣은 뒤 씁니다.
 
 ```python
 from notifier import notify                                            # notifier.py 의 알림 함수를 불러온다 (성공하면 True, 실패하면 False)
@@ -154,11 +154,11 @@ def send_ticket_notice(ticket, now, rules):                            # 티켓 
     return "전송"                                                      # 「전송」을 리턴한다
 ```
 
-**`challenge3-3_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 7번 아래에는 `result = …` 를 씁니다. 8번 아래에는 `if … :` 를 씁니다. 9번 아래에는 한 단계 들여쓴 줄을 씁니다.
+**`apply3-3_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 7번 아래에는 `result = …` 를 씁니다. 8번 아래에는 `if … :` 를 씁니다. 9번 아래에는 한 단계 들여쓴 줄을 씁니다.
 
 ```python
 from incident import load_json, save_json                                             # Unit 1 파일의 JSON 읽기 · 저장 함수를 불러온다
-from ticket_merge import handle_alert                                                 # 제공 파일(도전 3-2)의 알림 처리 함수를 불러온다
+from ticket_merge import handle_alert                                                 # 제공 파일(응용 3-2)의 알림 처리 함수를 불러온다
 from ticket_notice import send_ticket_notice, send_with_retry, MAX_TRIES              # 방금 만든 알림 함수를 불러온다
 
 alerts = load_json("alerts_thu.json")                                                 # 오늘의 알림 파일을 읽는다
@@ -208,20 +208,20 @@ print("--- 단계 4: 파일에 저장된 티켓", len(saved), "장")            
    - `pwd` 결과가 `soar_response` 로 끝나지 않으면 `cd soar_response` 를 먼저 입력합니다. 새 터미널이 다른 폴더에서 열릴 수 있습니다.
    - `No module named 'flask'` 가 나오면 새 터미널에서 가상환경이 켜져 있는지 보고, 1번 설치를 이 터미널에서 다시 합니다.
    - `Address already in use` 가 나오면 이미 켜진 서버가 있는 것이니, 그 터미널에서 `Ctrl + C` 로 끄고 다시 켭니다.
-4. **[VS Code]** `ticket_notice.py` 와 `challenge3-3_run.py` 를 이름 그대로 만들고(이미 있는 `ticket_notice.py` 는 내용을 지우고), 위 코드 상자를 복사해 붙여 넣고 저장합니다.
-5. **[VS Code]** `ticket_notice.py` 1 ~ 6번, `challenge3-3_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「도전 3-3 정리」를 봅니다.
+4. **[VS Code]** `ticket_notice.py` 와 `apply3-3_run.py` 를 이름 그대로 만들고(이미 있는 `ticket_notice.py` 는 내용을 지우고), 위 코드 상자를 복사해 붙여 넣고 저장합니다.
+5. **[VS Code]** `ticket_notice.py` 1 ~ 6번, `apply3-3_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「응용 3-3 정리」를 봅니다.
 6. **[터미널]** 처음 쓰던 터미널에서 <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
-   python challenge3-3_run.py
+   python apply3-3_run.py
    ```
 7. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 11줄, 단계 2 는 숫자가 제목 줄에 함께 나오고 그 아래 티켓 7줄, 단계 3 은 `[알림 실패] ConnectionError` 3줄과 결과 1줄(재시도를 확인하는 시험입니다), 단계 4 는 숫자가 제목 줄에 함께 나오고 그 아래 줄이 없습니다. <mark style="background:#bde3ff">알림 서버 터미널에는 `[알림 받음]` 줄이 9개 출력됩니다.</mark>
 8. **[터미널]** 알림 서버 터미널을 `Ctrl + C` 로 끕니다.
-9. **[보고서]** `report_u3.md` 의 `## 도전 3-3` 아래를 채웁니다.
+9. **[보고서]** `report_u3.md` 의 `## 응용 3-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 알림 서버 터미널에 출력된 `[알림 받음]` 줄 수와, 단계 2 의 전송 건수 · 건너뜀 건수를 적어 주세요.
    - (나) [핵심 질문] `INC-205` 와 `INC-206` 은 전송을 생략했고 `INC-209` 와 `INC-210` 은 전송했습니다. 각각 전송을 생략한 사유와 전송한 사유를 적어 주세요. 근거는 각 알림이 수신된 시각과 해당 티켓의 마지막 전송 시각입니다. 그다음 전송 간격을 제한하지 않으면 담당자에게 어떤 일이 생기는지 적어 주세요.
    - (다) [핵심 질문] 단계 3 에서 꺼진 주소로 3번 전송을 시도했고 모두 실패했습니다. `[알림 실패] ConnectionError`(연결 오류: 서버에 연결하지 못했을 때 발생하는 오류 이름)가 3번 출력된 사유를 적어 주세요. 그다음 3번 모두 실패한 알림이 누락되지 않게 하려면, 실제 관제에서 무엇을 추가로 해야 하는지 적어 주세요.
 
-## 도전 3-3 정리
+## 응용 3-3 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
@@ -235,23 +235,23 @@ print("--- 단계 4: 파일에 저장된 티켓", len(saved), "장")            
 
 ---
 
-## 도전 파일 올리기
+## 응용 파일 올리기
 
-도전 3-1 ~ 3-3 가운데 하나라도 했다면 그 파일도 깃허브에 올립니다. 알림 서버는 `Ctrl + C` 로 끈 뒤에 합니다.
+응용 3-1 ~ 3-3 가운데 하나라도 했다면 그 파일도 깃허브에 올립니다. 알림 서버는 `Ctrl + C` 로 끈 뒤에 합니다.
 
-1. **[보고서]** 올리기 전에 `report_u3.md` 의 내가 한 도전 칸을 먼저 채웁니다.
+1. **[보고서]** 올리기 전에 `report_u3.md` 의 내가 한 응용 칸을 먼저 채웁니다.
 2. **[터미널]** 실습 3-2 끝 「이번 Unit 마무리 · 깃허브에 올리기」의 **4. 깃허브에 올리기** 1 ~ 4번을 한 번 더 합니다. 기록 설명은 아래처럼 바꿔 씁니다.
    ```bash
    git add .
-   git commit -m "Add SOAR unit 3 challenges: shift drill, ticket merge and notice"
+   git commit -m "Add SOAR unit 3 apply tasks: shift drill, ticket merge and notice"
    git push
    ```
-3. 그 2번에서 `git status` 를 치면 내가 한 도전의 파일이 보입니다.
-   1. 도전 3-1: `drill.py` · `shift_report.py` · `challenge3-1_run.py` 와 실행이 만든 근무 기록 `shift_log.json`
-   2. 도전 3-2: `challenge3-2_run.py`(직접 쓴 `ticket_merge.py` 는 바뀐 파일로 보입니다)
-   3. 도전 3-3: `alert_server.py` · `challenge3-3_run.py` 와 실행이 저장한 티켓 `tickets_unit09.json`(직접 쓴 `ticket_notice.py` 는 바뀐 파일로 보입니다)
+3. 그 2번에서 `git status` 를 치면 내가 한 응용의 파일이 보입니다.
+   1. 응용 3-1: `drill.py` · `shift_report.py` · `apply3-1_run.py` 와 실행이 만든 근무 기록 `shift_log.json`
+   2. 응용 3-2: `apply3-2_run.py`(직접 쓴 `ticket_merge.py` 는 바뀐 파일로 보입니다)
+   3. 응용 3-3: `alert_server.py` · `apply3-3_run.py` 와 실행이 저장한 티켓 `tickets_unit09.json`(직접 쓴 `ticket_notice.py` 는 바뀐 파일로 보입니다)
 4. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `soar_response` 폴더에 위 파일이 보이는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
 
-다음 Unit 4 도전 4-1은 도전 3-3이 저장한 `tickets_unit09.json` 을 읽습니다. 이 도전을 하지 않았다면 Unit 4 도전 4-1 레슨의 상자로 같은 파일을 만들 수 있습니다.
+다음 Unit 4 응용 4-1은 응용 3-3이 저장한 `tickets_unit09.json` 을 읽습니다. 이 응용을 하지 않았다면 Unit 4 응용 4-1 레슨의 상자로 같은 파일을 만들 수 있습니다.
 
 ---

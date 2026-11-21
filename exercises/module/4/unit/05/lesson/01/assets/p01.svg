@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img">
 <title>3시간 계획과 오늘 만들 것: 실습 5-1 event_summary.py, 실습 5-2 Module 4 총정리</title>
-<desc>시작하기 15분, 실습 약 110분, 글쓰기 40분, 마무리 15분으로 하루를 나눕니다. 핵심은 실습 5-1과 5-2이고 도전 5-1 ~ 5-3은 선택입니다. API 키가 없어도 요약 자리에 대체 문장이 들어가 끝까지 실행되지만, 출력은 키가 있을 때와 다릅니다.</desc>
+<desc>시작하기 15분, 실습 약 110분, 글쓰기 40분, 마무리 15분으로 하루를 나눕니다. 핵심은 실습 5-1과 5-2이고 응용 5-1 ~ 5-3은 선택입니다. API 키가 없어도 요약 자리에 대체 문장이 들어가 끝까지 실행되지만, 출력은 키가 있을 때와 다릅니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">오늘의 계획 (3시간)</text>
@@ -26,7 +26,7 @@
 <text x="416" y="212" font-size="14" fill="#666660" text-anchor="middle">상황 8개의 원인과</text>
 <text x="416" y="230" font-size="14" fill="#666660" text-anchor="middle">고치는 방법을 내 말로</text>
 <rect x="552" y="162" width="148" height="76" rx="8" fill="#ffffff" stroke="#666660" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="626" y="192" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">도전 5-1 ~ 5-3</text>
+<text x="626" y="192" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">응용 5-1 ~ 5-3</text>
 <text x="626" y="216" font-size="14" fill="#666660" text-anchor="middle">선택 · 시간이 남을 때</text>
 <text x="20" y="274" font-size="16" fill="#292929" font-weight="700">API 키가 없어도 끝까지 실행됩니다</text>
 <rect x="20" y="288" width="140" height="104" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
