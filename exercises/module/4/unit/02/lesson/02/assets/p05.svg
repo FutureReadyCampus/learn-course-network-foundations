@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <title>실습 2-1: events_basic.py 네 함수와 실행 파일이 내는 네 단계 출력</title>
-<desc>events_basic.py 의 load_events, describe_events, count_values 에서 직접 쓰고 pick_failed 는 미리 채워져 있습니다. exercise2-1_run.py 가 이 함수들을 불러 단계 1~4를 출력합니다.</desc>
+<desc>events_basic.py 의 load_events(빈칸 ①)와 count_values(빈칸 ②)에서 한 줄씩 직접 쓰고 describe_events · pick_failed 는 미리 채워져 있습니다. exercise2-1_run.py 가 이 함수들을 불러 단계 1~4를 출력합니다.</desc>
 <defs><marker id="a-0302-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">실습 2-1: events_basic.py 와 실행 파일</text>
 <rect x="24" y="72" width="240" height="52" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="144.0" y="93.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">load_events</text>
-<text x="144.0" y="112.7" font-size="14" fill="#666660" text-anchor="middle">1번 직접 · 표로 읽기</text>
+<text x="144.0" y="112.7" font-size="14" fill="#666660" text-anchor="middle">① 직접 · 표로 읽기</text>
 <line x1="267" y1="98" x2="297" y2="196" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p05)"/>
 <rect x="516" y="72" width="180" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="606.0" y="93.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">단계 1</text>
 <text x="606.0" y="112.7" font-size="14" fill="#666660" text-anchor="middle">표 크기 · 시각 3개</text>
 <line x1="483" y1="196" x2="513" y2="98" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p05)"/>
-<rect x="24" y="136" width="240" height="52" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<rect x="24" y="136" width="240" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="144.0" y="157.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">describe_events</text>
-<text x="144.0" y="176.7" font-size="14" fill="#666660" text-anchor="middle">2번 직접 · time 열</text>
+<text x="144.0" y="176.7" font-size="14" fill="#666660" text-anchor="middle">미리 채움 · 크기와 time 열</text>
 <line x1="267" y1="162" x2="297" y2="196" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p05)"/>
 <rect x="516" y="136" width="180" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="606.0" y="157.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">단계 2</text>
@@ -29,7 +29,7 @@
 <line x1="483" y1="196" x2="513" y2="226" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p05)"/>
 <rect x="24" y="264" width="240" height="52" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="144.0" y="285.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">count_values</text>
-<text x="144.0" y="304.7" font-size="14" fill="#666660" text-anchor="middle">3 · 4번 직접 · 값별 개수</text>
+<text x="144.0" y="304.7" font-size="14" fill="#666660" text-anchor="middle">② 직접 · 값별 개수</text>
 <line x1="267" y1="290" x2="297" y2="196" stroke="#666660" stroke-width="2" marker-end="url(#a-0302-p05)"/>
 <rect x="516" y="264" width="180" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="606.0" y="285.1" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">단계 4</text>

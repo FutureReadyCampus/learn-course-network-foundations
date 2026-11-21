@@ -27,24 +27,19 @@ python exercise2-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise2-1_run.py` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
+**채운 코드** (한 예) — 직접 쓰는 곳은 두 곳(① · ②)입니다.
 
 ① `load_events` 안
 
 ```python
+    # ① pd.read_json 으로 path 의 파일을 읽어 events 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     events = pd.read_json(path)  # 파일을 읽어 표로 만든다
 ```
 
-② `describe_events` 안
+② `count_values` 안
 
 ```python
-    times = events["time"]  # time 열 하나를 꺼낸다
-```
-
-③ `count_values` 안
-
-```python
-    values = table[column]                      # column 열 하나를 꺼낸다
+    # ② values 에서 값별 개수를 value_counts() 로 세어 value_event_counts 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     value_event_counts = values.value_counts()  # 값별 개수를 센다
 ```
 
@@ -102,18 +97,18 @@ Name: count, dtype: int64
 
 | 실수 | 나오는 것 | 고치는 법 |
 |---|---|---|
-| `events["time"]` 을 `events["times"]` 처럼 씀 | 표에 없는 열 이름이라서 `KeyError` | 열 이름을 파일에 적힌 키와 똑같이 씁니다 |
-| `values.value_counts()` 의 괄호를 뺌 | 오류는 나지 않지만 개수가 아니라 `<bound method …>` | `value_counts` 뒤에 괄호를 붙여 호출합니다 |
+| ① 에서 `pd.read_json("path")` 처럼 따옴표를 붙임 | `path` 라는 파일을 찾아서 `FileNotFoundError` | 변수 `path` 는 따옴표 없이 씁니다 |
+| ② 에서 `value_counts()` 의 괄호를 뺌 | 오류는 없지만 개수 대신 `<bound method …>` | 뒤에 괄호를 붙여 호출합니다 |
 
-- **열 이름을 틀리면 `KeyError` 오류가 납니다.** 실행하면 다음 오류가 납니다(<mark>`KeyError: 'times'`</mark> 처럼 틀린 열 이름이 나오면 이 실수입니다).
+- **① 에서 `path` 에 따옴표를 붙이면 `FileNotFoundError` 오류가 납니다.** `"path"` 는 변수가 아니라 글자 그대로의 파일 이름이 되기 때문입니다. 실행하면 다음 오류가 납니다(<mark>`No such file or directory: 'path'`</mark> 가 나오면 이 실수입니다).
 
 ```
 Traceback (most recent call last):
-  File "…/anomaly_detection/exercise2-1_run.py", line 4, in <module>
-    shape, first_times = describe_events(events)  # 표 크기와 time 열의 처음 3개를 구한다
-  File "…/anomaly_detection/events_basic.py", line 23, in describe_events
-    times = events["times"]  # time 열 하나를 꺼낸다
-KeyError: 'times'
+  File "…/anomaly_detection/exercise2-1_run.py", line 3, in <module>
+    events = load_events(EVENTS_PATH)  # 이벤트 파일을 표로 읽는다
+  File "…/anomaly_detection/events_basic.py", line 11, in load_events
+    events = pd.read_json("path")  # path 에 따옴표를 붙였다
+FileNotFoundError: [Errno 2] No such file or directory: 'path'
 ```
 
   - 줄 번호는 사람마다 다릅니다. 판다스 안쪽 파일의 줄은 길어서 생략했습니다.
@@ -136,21 +131,15 @@ python exercise2-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise2-2_run.py` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 두 함수입니다.
-
-① `count_by_user` 안
+**채운 코드** (한 예) — 직접 쓰는 곳은 `count_by_user` 의 두 곳(① · ②)입니다.
 
 ```python
-    grouped = failed.groupby("user")                                         # user 가 같은 행끼리 묶는다
-    user_fail_counts = grouped.size()                                        # 그룹마다 행이 몇 개인지 센다
+    # ① failed 를 "user" 열 기준으로 묶어(groupby) grouped 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+    grouped = failed.groupby("user")  # user 가 같은 행끼리 묶는다
+
+    user_fail_counts = grouped.size()       # 그룹마다 행이 몇 개인지 센다
+    # ② user_fail_counts 를 큰 값부터 정렬해(sort_values, ascending=False) sorted_user_fail_counts 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     sorted_user_fail_counts = user_fail_counts.sort_values(ascending=False)  # 큰 값부터 순서대로 정렬한다
-```
-
-② `count_by_hour` 안
-
-```python
-    grouped = failed.groupby("hour")   # hour 가 같은 행끼리 묶는다
-    hour_fail_counts = grouped.size()  # 그룹마다 행이 몇 개인지 센다
 ```
 
 **결과**
@@ -194,8 +183,8 @@ dtype: int64
 
 | 실수 | 나오는 것 | 고치는 법 |
 |---|---|---|
-| `groupby("user")` 를 `groupby("users")` 처럼 씀 | 표에 없는 열 이름이라서 `KeyError` | 표에 있는 열 이름 `user` 를 씁니다 |
-| `sort_values` 에서 `ascending=False` 를 뺌 | **오류는 나지 않지만** 작은 값부터 나옴(단계 1 첫 줄이 dami 가 아니라 jiwoo) | `ascending=False` 를 넣습니다 |
+| ① 에서 `groupby("users")` 처럼 씀 | 표에 없는 열 이름이라서 `KeyError` | 표에 있는 열 이름 `user` 를 씁니다 |
+| ② 에서 `ascending=False` 를 뺌 | **오류는 나지 않지만** 작은 값부터 나옴(단계 1 첫 줄이 dami 가 아니라 jiwoo) | `ascending=False` 를 넣습니다 |
 
 - **열 이름을 틀리면 `KeyError` 오류가 납니다.** 실행하면 다음 오류가 납니다(<mark>`KeyError: 'users'`</mark> 처럼 틀린 열 이름이 나오면 이 실수입니다).
 
@@ -227,24 +216,20 @@ python exercise2-3_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise2-3_run.py` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 두 함수입니다.
+**채운 코드** (한 예) — 직접 쓰는 곳은 두 곳(① · ②)입니다.
 
 ① `pick_login_failures` 안
 
 ```python
-    actions = events["action"]           # action 열만 꺼낸다 — 무엇을 했는지가 57개 나열된 열
-    is_login = actions == "POST /login"  # 행마다 로그인 요청인지 비교해 True 또는 False 를 만든다
-    results = events["result"]           # result 열만 꺼낸다 — 성공 · 실패가 57개 나열된 열
-    is_fail = results == "실패"          # 행마다 실패인지 비교해 True 또는 False 를 만든다
-    both_true = is_login & is_fail       # 행마다 「로그인 요청이면서 실패」일 때만 True 가 된다
-    login_failures = events[both_true]   # True 인 행만 골라 새 표를 만든다
+    # ① is_login 과 is_fail 을 & 로 합쳐 both_true 에 담는다 (둘 다 True 인 행만 True)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+    both_true = is_login & is_fail  # 행마다 「로그인 요청이면서 실패」일 때만 True 가 된다
 ```
 
 ② `pick_alert_ips` 안
 
 ```python
-    is_many = ip_login_fail_counts >= limit    # 주소마다 「횟수가 기준 이상인가?」를 비교해 True 또는 False 를 만든다
-    alert_ips = ip_login_fail_counts[is_many]  # True 인 주소만 남긴다
+    # ② ip_login_fail_counts 가 limit 이상인지 비교한 결과(>=)를 is_many 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+    is_many = ip_login_fail_counts >= limit  # 주소마다 「횟수가 기준 이상인가?」를 비교해 True 또는 False 를 만든다
 ```
 
 **결과**
@@ -280,8 +265,8 @@ dtype: int64
 
 | 실수 | 나오는 것 | 고치는 법 |
 |---|---|---|
-| 두 조건을 `&` 대신 `and` 로 이음 | `ValueError` 오류 | 열끼리는 `&` 로 잇습니다 |
-| `GET /login` 까지 셈 | 로그인 정보가 없는 요청까지 함께 셈 | 로그인 정보를 보내는 **`POST /login` 만 셉니다** |
+| ① 에서 `&` 대신 `and` 로 이음 | `ValueError` 오류 | 열끼리는 `&` 로 잇습니다 |
+| ② 에서 `>=` 대신 `>` 를 씀 | 오류는 없지만 단계 3이 `Series([], dtype: int64)` | 「5번 이상」은 `>=` 로 씁니다 |
 
 - **두 조건을 이을 때 `&` 대신 `and` 를 쓰면 `ValueError` 오류가 납니다.**
   - 실행하면 다음 오류가 납니다(<mark>`The truth value of a Series is ambiguous`</mark> 가 나오면 이 실수입니다).

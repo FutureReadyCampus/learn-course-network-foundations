@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
-<title>report_u2.md 틀: 핵심 실습 칸은 모두 채우고, 응용 칸은 한 것만 채운다</title>
-<desc>anomaly_detection 폴더에 report_u2.md 를 만들고 틀을 붙여 넣습니다. 실습 2-1 ~ 2-3 과 마무리는 모두 채우고, 응용 2-1 · 2-2 는 내가 한 응용만 채웁니다.</desc>
+<title>report_u2.md 틀: 꼭 채울 다섯 칸은 모두 채우고, 응용 칸은 한 것만 채운다</title>
+<desc>anomaly_detection 폴더에 report_u2.md 를 만들고 틀을 붙여 넣습니다. 핵심 질문 다섯 칸(2-1 (가), 2-2 (가), 2-3 (가) · (나), 마무리 (가))은 모두 채우고, 실습 응용 질문과 응용 2-1 · 2-2 는 내가 한 것만 채웁니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="24" y="34" font-size="19" fill="#292929" font-weight="700">보고서 파일 report_u2.md 의 칸</text>
@@ -19,14 +19,14 @@
 <rect x="40" y="308" width="268" height="34" rx="6" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="5 4"/>
 <text x="56" y="330" font-size="15" fill="#292929">## 응용 2-2</text>
 <rect x="364" y="98" width="332" height="150" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="380" y="128" font-size="15" fill="#292929" font-weight="700">핵심: 모두 채웁니다</text>
+<text x="380" y="128" font-size="15" fill="#292929" font-weight="700">핵심: 다섯 칸은 꼭 채웁니다</text>
 <text x="380" y="154" font-size="14" fill="#292929">실습 하나를 마칠 때마다</text>
-<text x="380" y="176" font-size="14" fill="#292929">(가) 출력 붙여 넣기 · 값 적기</text>
-<text x="380" y="198" font-size="14" fill="#292929">(나) (다) 핵심 질문에 이유까지</text>
+<text x="380" y="176" font-size="14" fill="#292929">2-1 ~ 2-3 (가): 출력 붙이고 값 적기</text>
+<text x="380" y="198" font-size="14" fill="#292929">2-3 (나): 이유까지 쓰기</text>
 <text x="380" y="220" font-size="14" fill="#292929">마무리 (가)는 올리기 전에</text>
 <rect x="364" y="264" width="332" height="90" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="380" y="294" font-size="15" fill="#292929" font-weight="700">응용(여유가 되면): 한 것만 채웁니다</text>
-<text x="380" y="320" font-size="14" fill="#292929">하지 않은 응용 칸은 비워 둡니다</text>
+<text x="380" y="320" font-size="14" fill="#292929">[응용] 질문 · 응용 2-1 · 2-2, 안 한 칸은 비움</text>
 <line x1="312" y1="172" x2="360" y2="172" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
 <line x1="312" y1="308" x2="360" y2="308" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
 </g>
