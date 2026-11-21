@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <title>글 틀 세 가지 중 하나를 골라 _posts/ 아래 새 파일로 만들고 빈칸을 채웁니다</title>
-<desc>왼쪽은 글 틀 post-practice(기본), post-short(세 문장), post-stuck(막힌 일)입니다. 하나를 복사해 _posts/날짜-영문제목.md 새 파일로 만들고 빈칸을 채웁니다. 실행 결과 화면은 assets/images/ 에 올려 글에 연결합니다.</desc>
+<desc>왼쪽은 글 틀 post-short(기본, 세 문장), post-stuck(막힌 일), post-practice(응용, 긴 글)입니다. 하나를 복사해 _posts/날짜-영문제목.md 새 파일로 만들고 빈칸을 채웁니다. 실행 결과 화면은 assets/images/ 에 올려 글에 연결합니다.</desc>
 <defs>
 <marker id="a-p09" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
 </defs>
@@ -10,10 +10,10 @@
 <text x="20" y="62" font-size="14" fill="#666660">① 하나 고르기</text>
 <rect x="20" y="74" width="220" height="64" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="36" y="100" font-weight="700">post-practice.md</text>
-<text x="36" y="124" font-size="14" fill="#666660">실습 한 개 · 기본 틀</text>
+<text x="36" y="124" font-size="14" fill="#666660">응용 · 긴 글</text>
 <rect x="20" y="152" width="220" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="36" y="178" font-weight="700">post-short.md</text>
-<text x="36" y="202" font-size="14" fill="#666660">5분 · 세 문장</text>
+<text x="36" y="202" font-size="14" fill="#666660">기본 · 세 문장</text>
 <rect x="20" y="230" width="220" height="64" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="36" y="256" font-weight="700">post-stuck.md</text>
 <text x="36" y="280" font-size="14" fill="#666660">막혔던 일 남기기</text>
@@ -26,7 +26,7 @@
 <text x="292" y="176" font-size="14" fill="#666660">예:</text>
 <text x="292" y="198" font-size="14">_posts/</text>
 <text x="292" y="218" font-size="14">2026-01-15-first-post.md</text>
-<text x="292" y="270" font-size="14" fill="#666660">처음엔 짧은 틀도 좋음</text>
+<text x="292" y="270" font-size="14" fill="#666660">오늘 기본은 post-short</text>
 
 <text x="542" y="62" font-size="14" fill="#666660">③ 채우기</text>
 <rect x="542" y="74" width="160" height="220" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
