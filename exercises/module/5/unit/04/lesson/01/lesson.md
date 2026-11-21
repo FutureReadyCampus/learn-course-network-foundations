@@ -12,10 +12,14 @@ render: markdown
 
 **오늘의 계획 (3시간)**
 
-1. 시작하기 15분: 이 레슨을 읽고 `soar_response` 폴더의 이전 파일을 확인합니다. 없는 파일은 「이전 파일이 없을 때」 코드 상자로 만듭니다.
-2. 실습 약 110분: 핵심 실습 두 개를 차례로 합니다.
-3. 글쓰기 40분: 「보고서 쓰기」 레슨에서 핵심 실습의 질문에 답하고, 「오늘의 글 쓰기」 레슨에서 글 한 편을 씁니다.
-4. 마무리 15분: 실습 4-2 끝의 「이번 Unit 마무리 · 깃허브에 올리기」에서 파일을 확인하고 깃허브에 올립니다.
+| 순서 | 시간 | 하는 일 |
+|---|---|---|
+| 1. 시작하기 | 15분 | 이 레슨을 읽고 `soar_response` 폴더의 이전 파일을 확인합니다 |
+| 2. 실습 | 약 110분 | 핵심 실습 두 개를 차례로 합니다 |
+| 3. 글쓰기 | 40분 | 「보고서 쓰기」 레슨에서 질문에 답하고, 「오늘의 글 쓰기」 레슨에서 글 한 편을 씁니다 |
+| 4. 마무리 | 15분 | 실습 4-2 끝의 「이번 Unit 마무리 · 깃허브에 올리기」에서 파일을 확인하고 올립니다 |
+
+없는 이전 파일은 「이전 파일이 없을 때」 코드 상자로 만듭니다. 「보고서 쓰기」 레슨에서 답하는 것은 핵심 실습의 질문입니다.
 
 **오늘 만들 것 두 가지**
 
@@ -37,16 +41,23 @@ render: markdown
 
 **줄임말 이름 안내** — 도전 4-1 ~ 4-3 의 코드와 파일에는 줄임말로 된 이름이 있습니다. 이미 배포한 파일과 맞추려고 이름은 그대로 쓰고 뜻만 풀어 둡니다.
 
-- `ack` · `acked` 는 acknowledge(확인하다) · acknowledged(확인했다)의 줄임말입니다. 담당자가 티켓을 처음 확인했다는 뜻입니다. `acked_at` 은 처음 확인한 시각(분)입니다.
-- `sla` 는 서비스 수준 협약(SLA, Service Level Agreement)의 줄임말이고, 이 문서에서는 응답 기한을 뜻합니다. `sla_due` 는 응답해야 하는 시각입니다.
+| 이름 | 원래 말 | 이 문서에서의 뜻 |
+|---|---|---|
+| `ack` · `acked` | acknowledge(확인하다) · acknowledged(확인했다) | 담당자가 티켓을 처음 확인했다 |
+| `sla` | 서비스 수준 협약(SLA, Service Level Agreement) | 응답 기한 |
+
+`acked_at` 은 처음 확인한 시각(분)이고, `sla_due` 는 응답해야 하는 시각입니다.
 
 ## 폴더 열고 이전 파일 확인하기
 
 오늘 핵심 실습은 앞 Unit 파일을 `import` 로 불러 씁니다. `soar_response` 폴더에 아래 파일이 있는지 봅니다.
 
-1. **Unit 1 파일**(모든 실습): 실습 1-2 의 `incident.py`(`load_json` · `save_json`)
-2. **Unit 2 파일**(실습 4-2): 실습 2-1 의 `containment_store.py` · `account_actions.py`, Unit 2 「제공 파일」 레슨의 `ip_actions.py`
-3. **Unit 3 파일**(실습 4-2): 실습 3-1 의 `undo_actions.py` · `rollback.py`
+| 어디 파일 | 파일 | 쓰는 곳 |
+|---|---|---|
+| Unit 1 실습 1-2 | `incident.py`(`load_json` · `save_json`) | 모든 실습 |
+| Unit 2 실습 2-1 | `containment_store.py` · `account_actions.py` | 실습 4-2 |
+| Unit 2 「제공 파일」 레슨 | `ip_actions.py` | 실습 4-2 |
+| Unit 3 실습 3-1 | `undo_actions.py` · `rollback.py` | 실습 4-2 |
 
 **순서**
 
@@ -360,7 +371,14 @@ def rollback_incident(incident_id, log, state):                              # �
 ## 오류가 나면
 
 - `pwd` 가 `soar_response` 로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
-- `ModuleNotFoundError: No module named 'incident'` 는 <mark style="background:#ffc4d6">Unit 1 파일 `incident.py` 가 이 폴더에 없다는 뜻</mark>입니다. `No module named 'rollback'` 은 Unit 3 파일, `No module named 'ip_actions'` 는 Unit 2 파일이 없다는 뜻입니다. 모두 앞 페이지 「이전 파일이 없을 때」의 코드 상자로 만듭니다.
+- `ModuleNotFoundError` 는 그 이름의 파일이 이 폴더에 없다는 뜻입니다. 모두 앞 페이지 「이전 파일이 없을 때」의 코드 상자로 만듭니다.
+
+| 오류 메시지 | 뜻 |
+|---|---|
+| `No module named 'incident'` | <mark style="background:#ffc4d6">Unit 1 파일 `incident.py` 가 이 폴더에 없음</mark> |
+| `No module named 'ip_actions'` | Unit 2 파일이 없음 |
+| `No module named 'rollback'` | Unit 3 파일이 없음 |
+
 - 먼저 오류 전체와 내가 친 명령을 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 그래도 막히면 이 Unit 의 정답 레슨을 봅니다. 그래도 풀리지 않으면 보고서에 「모름 — 막힌 곳: …」 이라고 씁니다.
 
 ---

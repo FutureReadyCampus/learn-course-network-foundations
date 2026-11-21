@@ -23,12 +23,25 @@ render: markdown
    python -c "import escalation; print('escalation.py 정상')"
    python -c "import report; print('report.py 정상')"
    ```
-   - `No module named 'ticket_notice'` 가 나오면 `escalation.py` 가 불러 쓰는 Unit 3 파일이 없다는 뜻입니다. 도전 4-1 레슨의 「필요한 파일 준비하기」를 먼저 합니다.
-   - `No module named 'requests'` 나 `No module named 'pandas'` 가 나오면 도구가 설치되지 않은 것입니다. `escalation.py` 는 `python -m pip install flask requests`, `report.py` 는 `python -m pip install pandas` 를 치고(맥북은 `python3 -m pip`) 다시 확인합니다.
+
+확인할 때 오류가 나면 아래 표대로 하고 다시 확인합니다. 맥북은 `python3 -m pip` 로 칩니다.
+
+| 오류 메시지 | 뜻 | 할 일 |
+|---|---|---|
+| `No module named 'ticket_notice'` | `escalation.py` 가 불러 쓰는 Unit 3 파일이 없음 | 도전 4-1 레슨의 「필요한 파일 준비하기」를 먼저 함 |
+| `No module named 'requests'` | 도구가 설치되지 않음 | `python -m pip install flask requests` |
+| `No module named 'pandas'` | 도구가 설치되지 않음 | `python -m pip install pandas` |
 
 ## `escalation.py` 만들기
 
-**`escalation.py`** — 응답 기한(SLA)이 지났는데 아직 `열림` 상태인 티켓을 상급자에게 올립니다. 기한을 넘긴 시간이 0분 이상이면 1단계(`team.lead`), 30분 이상이면 2단계(`soc.head`)로 올리고, 같은 단계는 한 번만 올립니다. 알림은 Unit 3 파일 `ticket_notice.py` 에 있는 `send_with_retry` 로 보냅니다.
+**`escalation.py`** — 응답 기한(SLA)이 지났는데 아직 `열림` 상태인 티켓을 상급자에게 올립니다. 같은 단계는 한 번만 올립니다.
+
+| 기한을 넘긴 시간 | 올림 단계 | 받는 사람 |
+|---|---|---|
+| 0분 이상 | 1단계 | `team.lead` |
+| 30분 이상 | 2단계 | `soc.head` |
+
+알림은 Unit 3 파일 `ticket_notice.py` 에 있는 `send_with_retry` 로 보냅니다.
 
 ```python
 from ticket_notice import send_with_retry, MAX_TRIES                                       # Unit 3 에 있는 재시도 함수를 불러온다

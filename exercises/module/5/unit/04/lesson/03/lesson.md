@@ -32,7 +32,9 @@ source:
 | 1. 영향 확인 | 그 인시던트의 기록 가운데 조치 전(`before`)과 조치 후(`after`)가 다른 기록만 찾는다 | `list_changes` (1 · 2번) |
 | 2. 되돌리기 | 자동 조치가 바꾼 것만 조치 이전 상태로 롤백한다 | <mark style="background:#e0d4ff">Unit 3 함수 `rollback_incident`</mark> (7번) |
 | 3. 복구 확인 | 롤백한 뒤에도 잠겨 있는 계정 · 차단된 IP 가 남았는지 점검한다 | `find_not_recovered` (3 · 4번) |
-| 4. 규칙 조정 제안 | IP 차단이었으면 허용 목록 추가 검토, 계정이었으면 탐지 규칙 예외(exception) 검토를 담당자에게 제안한다 | `make_tuning_note` (5 · 6번) |
+| 4. 규칙 조정 제안 | 같은 오탐을 막을 규칙 조정을 담당자에게 제안한다 | `make_tuning_note` (5 · 6번) |
+
+규칙 조정 제안은 조치 종류에 따라 다릅니다. IP 차단이었으면 허용 목록 추가 검토, 계정이었으면 탐지 규칙 예외(exception) 검토를 제안합니다.
 
 - <mark style="background:#e0d4ff">Module 4 Unit 4 실습 4-2 에서는 예외 규칙으로 탐지 규칙을 고쳐(튜닝) 오탐 알림을 줄였습니다.</mark> 오늘은 오탐 때문에 **이미 실행된 자동 조치**를 원래 상태로 복원(롤백)하는 일입니다.
 - `INC-301` 에는 IP `198.51.100.120` 의 차단 기록도 있지만 `before` 와 `after` 가 모두 <mark style="background:#bde3ff">「변경 없음」</mark>입니다. 바뀐 것이 없으므로 영향 확인 대상에서 제외합니다.
@@ -249,9 +251,15 @@ ls
 ls config
 ```
 
-- `approval_gate.py` · `exercise4-1_run.py` · `gate_requests.json` · `gate_results.json` · `false_positive.py` · `exercise4-2_run.py` · `fp_state.json` · `fp_log.json` · `fp_reports.json` · `fp_results.json` · `fp_state_after.json` · `report_u4.md` 가 보여야 합니다.
-- `config` 안에는 `approval_policy.json` 이 새로 보여야 합니다.
-- `gate_results.json` · `fp_results.json` · `fp_state_after.json` 은 실행할 때 프로그램이 만든 결과 파일입니다. 이것도 올라갑니다.
+아래 파일이 보여야 합니다.
+
+| 어디에 | 종류 | 파일 |
+|---|---|---|
+| `soar_response` | 직접 만든 파일 | `approval_gate.py` · `exercise4-1_run.py` · `gate_requests.json` · `false_positive.py` · `exercise4-2_run.py` · `fp_state.json` · `fp_log.json` · `fp_reports.json` · `report_u4.md` |
+| `soar_response` | 실행할 때 프로그램이 만든 결과 파일 | `gate_results.json` · `fp_results.json` · `fp_state_after.json` |
+| `config` | 새로 만든 파일 | `approval_policy.json` |
+
+결과 파일도 깃허브에 올라갑니다.
 
 **3. 깃허브에 올리기**
 
