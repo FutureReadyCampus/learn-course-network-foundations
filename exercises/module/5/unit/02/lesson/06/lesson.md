@@ -26,12 +26,12 @@ source:
 
 티켓 서비스 같은 외부 서비스는 가끔 잠깐 응답하지 않습니다. 이럴 때 바로 포기하지 않고 몇 번 다시 해 보는 것이 재시도입니다. 다만 지킬 규칙이 네 가지 있습니다.
 
-| 규칙 | 오늘 수업에서 |
-|---|---|
-| 잠깐 생긴 오류만 다시 시도한다 (권한이 없다는 오류는 몇 번을 해도 같은 결과다) | 연결 오류(`ConnectionError`)가 날 때만 다시 시도한다 |
-| 최대 횟수를 정한다 (서비스가 계속 멈춰 있어도 끝없이 반복하지 않는다) | 처음 시도를 포함해 `MAX_TRIES` 3번 |
-| 다시 해도 안전해야 한다 (같은 계정을 두 번 잠그면 안 된다) | Unit 1 제공 파일 `safe_runner.py` 의 `safe_run_action` 이 이미 잠긴 계정은 건너뛴다 |
-| 끝내 실패하면 숨기지 않는다 | 실패를 기록하고 담당자 확인 목록에 올린다 |
+| 규칙 | 이유 | 오늘 수업에서 |
+|---|---|---|
+| 잠깐 생긴 오류만 다시 시도한다 | 권한이 없다는 오류는 몇 번을 해도 같은 결과다 | 연결 오류(`ConnectionError`)가 날 때만 다시 시도한다 |
+| 최대 횟수를 정한다 | 서비스가 계속 멈춰 있어도 끝없이 반복하지 않는다 | 처음 시도를 포함해 `MAX_TRIES` 3번 |
+| 다시 해도 안전해야 한다 | 같은 계정을 두 번 잠그면 안 된다 | `safe_run_action`(Unit 1 제공 파일 `safe_runner.py`)이 이미 잠긴 계정은 건너뛴다 |
+| 끝내 실패하면 숨기지 않는다 | — | 실패를 기록하고 담당자 확인 목록에 올린다 |
 
 - 오늘 수업은 <mark>서비스가 요청을 받기 전에 실패하는 경우만 흉내 냅니다.</mark> 실제로는 서비스가 티켓을 이미 만들었는데 「만들었다」는 응답만 우리 프로그램에 도착하지 않는 일도 있습니다. 프로그램은 실패로 알고 같은 요청을 다시 보내므로 티켓이 두 개 만들어질 수 있습니다. 이를 막으려면 같은 요청인지 알아보는 장치가 따로 필요합니다.
 - **`fail_plan`**: 수업에서 일부러 실패를 일으키려고, 어떤 알림의 어떤 액션이 몇 번 실패할지 미리 적어 둔 딕셔너리입니다. 예: `{"INC-001|티켓 생성": 2}` 는 INC-001 의 티켓 생성이 2번 실패한다는 뜻입니다.
@@ -57,10 +57,24 @@ print("다음 줄도 실행됨")
 - 오류가 나도 `except` 가 같은 종류의 오류를 받으면 프로그램이 멈추지 않고 다음 줄을 계속 실행합니다.
 - `str(error)` 는 오류 내용을 문자열(글자로 된 값)로 바꿉니다.
 
-함수는 파일 네 곳에 나뉘어 있고, 직접 쓰는 곳은 **아홉 군데**입니다. `retry_runner.py` 는 1 ~ 3번, `flow.py` 는 4 · 5번, `failure_report.py` 는 6 · 7번, 실행 파일은 8 · 9번입니다. `try:` 와 `except …:` 줄은 미리 채워져 있고, 그 아래에 들여쓴 줄만 씁니다.
+함수는 파일 네 곳에 나뉘어 있고, 직접 쓰는 곳은 **아홉 군데**입니다.
 
-- `range(1, max_tries + 1)` 은 1 부터 `max_tries` 까지의 번호를 차례로 만듭니다. 끝 숫자는 포함하지 않아서 `+ 1` 을 붙입니다(`max_tries` 가 3 이면 1 · 2 · 3).
-- `문자열.startswith("실패")` 는 문자열이 「실패」로 시작하면 `True`, 아니면 `False` 입니다. Unit 1 도전 1-2 의 문법 상자에서 처음 나왔고, 도전 1-2 를 건너뛰었어도 이 한 줄 뜻만 알면 됩니다.
+| 파일 | 직접 쓰는 곳 |
+|---|---|
+| `retry_runner.py` | 1 ~ 3번 |
+| `flow.py` | 4 · 5번 |
+| `failure_report.py` | 6 · 7번 |
+| 실행 파일 | 8 · 9번 |
+
+`try:` 와 `except …:` 줄은 미리 채워져 있고, 그 아래에 들여쓴 줄만 씁니다. 처음 보는 모양 두 가지입니다.
+
+| 코드 | 뜻 |
+|---|---|
+| `range(1, max_tries + 1)` | 1 부터 `max_tries` 까지의 번호를 차례로 만든다(`max_tries` 가 3 이면 1 · 2 · 3) |
+| `문자열.startswith("실패")` | 문자열이 「실패」로 시작하면 `True`, 아니면 `False` |
+
+- `range` 는 끝 숫자를 포함하지 않아서 `+ 1` 을 붙입니다.
+- `startswith` 는 Unit 1 도전 1-2 의 문법 상자에서 처음 나왔고, 도전 1-2 를 건너뛰었어도 이 한 줄 뜻만 알면 됩니다.
 
 ```
 retry_runner.py     run_with_retry          : 실행해 보고(1번), 성공하면 시도 횟수를 붙여 리턴한다(2번) / 연결 오류면 오류 문장을 기억한다(3번)
@@ -85,10 +99,17 @@ failure_report.py   collect_failures        : 기록에서 「실패」로 시�
 
 **준비** — 이 도전은 앞 파일을 많이 씁니다. `soar_response` 폴더에 아래 파일이 있어야 합니다.
 
-1. Unit 1 파일: `incident.py` · `playbook_runner.py`(실습 1-2), `enrichment.py`(실습 1-3), `routing.py` · `safe_runner.py`(Unit 1 「제공 파일」 레슨), `incident_samples.json` · `users_info.json` · `source_ips.json` · `trusted_ips.json`(Unit 1 시작하기), `config/playbook_registry.json`(실습 1-1)
-2. 이번 Unit 파일: `audit.py` · `approvals.py`(「제공 파일」 레슨 또는 도전 2-1), `decisions.json`(도전 2-1 레슨)
+| 만든 곳 | 파일 |
+|---|---|
+| Unit 1 실습 1-2 | `incident.py` · `playbook_runner.py` |
+| Unit 1 실습 1-3 | `enrichment.py` |
+| Unit 1 「제공 파일」 레슨 | `routing.py` · `safe_runner.py` |
+| Unit 1 시작하기 | `incident_samples.json` · `users_info.json` · `source_ips.json` · `trusted_ips.json` |
+| Unit 1 실습 1-1 | `config/playbook_registry.json` |
+| 이번 Unit 「제공 파일」 레슨 또는 도전 2-1 | `audit.py` · `approvals.py` |
+| 이번 Unit 도전 2-1 레슨 | `decisions.json` |
 
-**[터미널]** 아래 명령으로 확인합니다(맥북은 `python3`). <mark>`준비 완료 ['PB-001', 'PB-002', 'PB-003'] 3`</mark> 이 나오면 됩니다. `ModuleNotFoundError` 나 `FileNotFoundError` 가 나오면 오류 끝에 적힌 이름의 파일을 위 목록의 레슨에서 만듭니다.
+**[터미널]** 아래 명령으로 확인합니다(맥북은 `python3`). <mark>`준비 완료 ['PB-001', 'PB-002', 'PB-003'] 3`</mark> 이 나오면 됩니다. `ModuleNotFoundError` 나 `FileNotFoundError` 가 나오면 오류 끝에 적힌 이름의 파일을 위 표의 레슨에서 만듭니다.
 
 ```bash
 python -c "import json; from safe_runner import safe_run_action; from enrichment import enrich_incident; from routing import decide_route, apply_route; from approvals import apply_decision; print('준비 완료', [p['id'] for p in json.load(open('config/playbook_registry.json', encoding='utf-8'))], len(json.load(open('decisions.json', encoding='utf-8'))))"
