@@ -49,11 +49,11 @@ source:
 
 | 불러 쓰는 것 | 들어 있는 파일 | 쓰는 곳 | 없으면 만드는 곳 |
 |---|---|---|---|
-| 사용자 · 역할 딕셔너리 `USERS` · `ROLES` | `config/users.json` · `config/roles.json` · `rbac.py` | 실습 3-1 | Unit 1 정답 레슨 |
+| 사용자 · 역할 딕셔너리 `USERS` · `ROLES` | `config/users.json` · `config/roles.json` · `rbac.py` | 실습 3-1 | Unit 1 실습 1-1 · 1-2 레슨과 정답 레슨 |
 | 예외 리스트 `EXCEPTIONS` · 시각 형식 `TIME_FORMAT` | `config/exceptions.json` · `exception_policy.py` | 실습 3-1 · 3-2 | Unit 1 「제공 파일」 레슨 |
 | 설정 파일을 안전하게 읽는 `load_json` | `config_loader.py` | 실습 3-2 | Unit 1 「제공 파일」 레슨 |
 
-Unit 1 정답 레슨에서는 두 JSON 파일을 「실습 1-1 정답」으로, `rbac.py` 를 「실습 1-2 정답」으로 만듭니다. 「제공 파일」 레슨의 파일은 복사해 만듭니다.
+Unit 1 레슨에서는 두 JSON 파일을 「실습 1-1」의 코드 상자와 「실습 1-1 정답」으로, `rbac.py` 를 「실습 1-2」 레슨의 코드 상자에 「실습 1-2 정답」의 채운 코드(①·②)를 붙여서 만듭니다. 「제공 파일」 레슨의 파일은 복사해 만듭니다.
 
 이번 Unit 에서 만드는 파일도 뒤에서 이어 씁니다. 실습 3-1 의 `review_list.py` 는 실습 3-2 와 모든 응용에서, 실습 3-2 의 `review_unused.py` 는 응용 3-2 · 3-3 과 다음 Unit 4 가 씁니다.
 
