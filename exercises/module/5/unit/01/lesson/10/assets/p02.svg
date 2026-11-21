@@ -15,7 +15,7 @@
 <rect x="20" y="270" width="460" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text y="294.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="250.0" dy="0" font-weight="700">4. 코드 올리기 (선택)</tspan><tspan x="250.0" dy="21.0">code/m5_u1_playbook_runner.py</tspan></text>
 <rect x="500" y="54" width="200" height="132" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text y="93.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="600.0" dy="0" font-weight="700">글 틀 고르기</tspan><tspan x="600.0" dy="21.0">post-practice</tspan><tspan x="600.0" dy="21.0">post-short (5분)</tspan><tspan x="600.0" dy="21.0">post-stuck (막힘)</tspan></text>
+<text y="93.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="600.0" dy="0" font-weight="700">글 틀 고르기</tspan><tspan x="600.0" dy="21.0">post-short (기본)</tspan><tspan x="600.0" dy="21.0">post-stuck (막힘)</tspan><tspan x="600.0" dy="21.0">post-practice (응용)</tspan></text>
 <rect x="500" y="198" width="200" height="132" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text y="237.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="600.0" dy="0" font-weight="700">1~2분 뒤 확인</tspan><tspan x="600.0" dy="21.0">최신 글에 보임</tspan><tspan x="600.0" dy="21.0">Module 5 의</tspan><tspan x="600.0" dy="21.0">1번 칸이 채워짐</tspan></text>
 <text x="20" y="360" font-size="14" fill="#666660" text-anchor="start">포트폴리오 준비와 글 틀 내용: Module 3 Unit 1 시작하기의 4쪽 · 10쪽</text>

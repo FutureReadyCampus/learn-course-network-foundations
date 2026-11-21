@@ -42,14 +42,31 @@ source:
 - **정보를 찾지 못했을 때**: 「확인되지 않음」을 뜻하는 초기값(`False` 또는 `None`)을 그대로 둡니다. 확인되지 않은 대상을 재직 중인 정상 사용자로 간주하면 안 되기 때문입니다.
 - **주의할 점**: 계정 정보에 없는 대상의 `employed` · `vip` 가 `False` 여도 「퇴사했다」나 「VIP 가 아니다」라는 판정이 아니라, 「계정 정보에 없어 확인할 수 없다」는 뜻입니다.
 
-함수 세 개가 각각 다른 일을 하고, 직접 쓰는 곳은 **아홉 군데**입니다.
+함수 세 개가 각각 다른 일을 하고, 직접 쓰는 곳은 **세 군데**(① · ② · ③)입니다. 나머지 줄은 미리 채워 두었습니다.
 
 ```
-enrichment.py   lookup_account   : 대상이 users_info 안에 있으면 재직 · VIP 를 담는다 (1 ~ 3번)
-                lookup_source_ip : 대상이 source_ips 안에 있으면 접속 IP 와 신뢰 IP 여부를 담는다 (4 ~ 6번)
+enrichment.py   lookup_account   : 대상이 users_info 안에 있으면 (① 직접 씀) 재직 · VIP 를 담는다
+                lookup_source_ip : 대상이 source_ips 안에 있으면 접속 IP 와 신뢰 IP 여부(② 직접 씀)를 담는다
                 enrich_incident  : 두 결과를 합쳐 incident["context"] 에 붙인다 (미리 채움)
-실행 파일       exercise1-3_run.py : 알림마다 맥락을 붙이는 함수를 호출하고 (7번), VIP 이면 (8번) VIP 알림 수를 1 늘린다 (9번)
+실행 파일       exercise1-3_run.py : 알림마다 맥락을 붙이는 함수를 호출하고 (③ 직접 씀), VIP 이면 VIP 알림 수를 1 늘린다 (미리 채움)
 ```
+
+#### 문법 상자 · 직접 쓰는 곳의 모양 (예시 값 · 읽기만 합니다)
+
+```python
+users_info = {"gaeun": {"employed": True, "vip": True}}   # 예시 값
+trusted_ips = ["203.0.113.80"]
+
+print("gaeun" in users_info)              # True  · 딕셔너리에 그 키가 있다
+print("198.51.100.90" in users_info)      # False · 없다
+print("203.0.113.80" in trusted_ips)      # True  · 리스트에 그 값이 있다
+
+is_trusted = "203.0.113.80" in trusted_ips   # in 의 결과(True · False)를 변수에 담을 수 있다
+print(is_trusted)                         # True
+```
+
+- `if 값 in 딕셔너리:` 는 「그 키가 있으면」입니다. 키가 있는지 먼저 확인해야 `딕셔너리[값]` 으로 꺼낼 때 `KeyError` 가 나지 않습니다.
+- 함수를 부를 때는 `함수이름(값1, 값2, …)` 처럼 이름 뒤 괄호 안에 넘길 값을 차례로 씁니다.
 
 ## 실습 1-3 · 알림 5건 보강하고 VIP 알림 수 세기
 
@@ -59,9 +76,9 @@ enrichment.py   lookup_account   : 대상이 users_info 안에 있으면 재직 
 - **만드는 것**: 계정 정보 조회와 접속 IP 정보 조회(`enrichment.py`), 보강 함수 호출과 VIP 계정 알림 수 집계(`exercise1-3_run.py`).
 - **실행하면**: <mark>단계 1: 불러온 개수, 단계 2: 알림마다 붙인 정보, 단계 3: VIP 계정 알림 수가 나옵니다.</mark>
 
-**할 일**: 두 파일을 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 · 3 을 읽습니다.
+**할 일**: 두 파일을 만들어 붙여 넣고, `# ←` 가 있는 <mark>세 곳</mark>(① · ② · ③)을 한 줄씩 채웁니다. 실행해서 단계 2 · 3 을 읽습니다.
 
-**`enrichment.py`** — 알림에 맥락을 추가하는 보강 함수를 정의합니다. 응용 1-1 실행 파일도 `enrich_incident` 를 가져와 사용(import)합니다. 직접 쓰는 곳은 1 ~ 6번입니다.
+**`enrichment.py`** — 알림에 맥락을 추가하는 보강 함수를 정의합니다. 응용 1-1 실행 파일도 `enrich_incident` 를 가져와 사용(import)합니다. 직접 쓰는 곳은 ① · ② 두 곳입니다.
 
 ```python
 def lookup_account(entity, users_info):                              # 대상 이름과 계정 정보 딕셔너리를 받는 함수
@@ -69,10 +86,9 @@ def lookup_account(entity, users_info):                              # 대상 �
     파일에 이름이 없는 대상(IP 등)은 처음 값(False)을 그대로 리턴한다.
     """
     account = {"employed": False, "vip": False}                      # 처음에는 모르는 상태로 시작한다
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. entity 가 users_info 안에 있으면 (if, in)
-    # 2.   account 의 "employed" 에 users_info[entity]["employed"] 를 담는다
-    # 3.   account 의 "vip" 에 users_info[entity]["vip"] 를 담는다
+    # ① entity 가 users_info 안에 있으면 (if, in)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+        account["employed"] = users_info[entity]["employed"]         # 재직 여부를 담는다
+        account["vip"] = users_info[entity]["vip"]                   # VIP 여부를 담는다
     return account                                                   # 계정 정보를 리턴한다
 
 
@@ -81,10 +97,9 @@ def lookup_source_ip(entity, source_ips, trusted_ips):               # 대상 �
     접속 IP 를 모르는 대상은 처음 값(None 과 False)을 그대로 리턴한다.
     """
     ip_info = {"source_ip": None, "ip_trusted": False}               # 처음에는 모르는 상태로 시작한다
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 4. entity 가 source_ips 안에 있으면 (if, in)
-    # 5.   ip_info 의 "source_ip" 에 source_ips[entity] 를 담는다
-    # 6.   ip_info 의 "ip_trusted" 에 source_ips[entity] 가 trusted_ips 안에 있는지(in)의 결과를 담는다
+    if entity in source_ips:                                         # 접속 IP 를 아는 대상이면
+        ip_info["source_ip"] = source_ips[entity]                    # 접속 IP 를 담는다
+        # ② ip_info 의 "ip_trusted" 에 source_ips[entity] 가 trusted_ips 안에 있는지(in)의 결과를 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
     return ip_info                                                   # 접속 IP 정보를 리턴한다
 
 
@@ -101,7 +116,7 @@ def enrich_incident(incident, users_info, source_ips, trusted_ips):  # 인시던
     return incident                                                  # 맥락이 붙은 인시던트를 리턴한다
 ```
 
-**`exercise1-3_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이 실행 파일은 결과를 JSON 파일로 저장하지 않고 화면에만 출력합니다.
+**`exercise1-3_run.py`** — ③ 한 곳만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이 실행 파일은 결과를 JSON 파일로 저장하지 않고 화면에만 출력합니다.
 
 ```python
 from incident import load_json, INCIDENTS_PATH                 # 실습 1-2 의 incident.py 에서 함수를 불러온다
@@ -118,8 +133,7 @@ print("--- 단계 1: 불러온 알림", incident_count, "건 · 계정 정보", 
 
 print("--- 단계 2: 알림마다 붙인 정보(재직 · VIP · 접속 IP)")  # 단계 2 시작을 알리는 줄
 for incident in incidents:                                     # 인시던트를 하나씩 꺼낸다
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 7. enrich_incident(incident, users_info, source_ips, trusted_ips) 를 호출한다 (인시던트에 맥락이 붙는다)
+    # ③ enrich_incident(incident, users_info, source_ips, trusted_ips) 를 호출한다 (인시던트에 맥락이 붙는다)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     context = incident["context"]                              # 붙은 맥락을 꺼낸다
     if context["account_known"]:                               # 계정 정보가 있으면
         if context["employed"]:                                # 재직 중이면
@@ -143,27 +157,31 @@ print("--- 단계 3: VIP 계정 알림 수")                          # 단계 3
 vip_count = 0                                                  # VIP 계정 알림 수 : 처음에는 0 이다
 for incident in incidents:                                     # 인시던트를 하나씩 꺼낸다
     context = incident["context"]                              # 붙은 맥락을 꺼낸다
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 8. context 의 "vip" 가 참이면 (if)
-    # 9.   vip_count 에 vip_count + 1 을 담는다 (1 늘린다)
+    if context["vip"]:                                         # VIP 계정이면
+        vip_count = vip_count + 1                              # VIP 계정 알림 수를 1 늘린다
 print("VIP 계정 알림", vip_count, "건")                        # VIP 계정 알림 수를 출력한다
 ```
 
-들여쓰기는 **미리 채운 줄에 맞춥니다.**
+**직접 쓰는 곳**
 
-| 파일 | 번호 | 들어가는 곳 | 앞 공백 |
-|---|---|---|---|
-| `enrichment.py` | 1 · 4번 | 함수 안 | 4개 |
-| `enrichment.py` | 2 · 3 · 5 · 6번 | `if` 안 | 8개 |
-| `exercise1-3_run.py` | 7 · 8번 | `for` 안 | 4개 |
-| `exercise1-3_run.py` | 9번 | `if` 안 | 8개 |
+| 빈칸 | 파일 · 쓰는 줄 | 들여쓰기 |
+|---|---|---|
+| ① | `enrichment.py` · 대상이 계정 정보에 있으면 (`if`) | 4칸 |
+| ② | `enrichment.py` · 신뢰 IP 인지(`in`)를 담기 | 8칸 |
+| ③ | `exercise1-3_run.py` · 보강 함수 호출 | 4칸 |
+
+- 주석 줄은 그대로 두고, **각 주석 바로 아래 줄**에 씁니다. ① 은 함수 안의 `if` 줄이라 4칸, ② 는 바로 위 `ip_info["source_ip"] = …` 줄과 같은 8칸, ③ 은 `for` 안이라 4칸에서 시작합니다.
+- 채우기 전에 실행하면 `IndentationError: unexpected indent` 가 나옵니다. ① 의 `if` 가 없어서 8칸으로 들여 쓴 `account["employed"] = …` 줄이 갈 곳이 없기 때문이니 정상입니다.
+- ① 확인: ① 을 쓰고 실행하면 `KeyError: 'context'` 가 나옵니다. ③ 을 아직 안 써서 알림에 맥락이 붙지 않았기 때문이니 정상입니다. 막히면: 바로 아래 `lookup_source_ip` 의 `if entity in source_ips:` 와 같은 모양이고 딕셔너리 이름만 `users_info` 입니다.
+- ② 확인: ② 를 써도 ③ 전에는 같은 `KeyError: 'context'` 가 나옵니다. ③ 까지 쓴 뒤 단계 2 의 INC-002 · INC-004 줄 끝이 `신뢰 IP: 예` 이면 ② 가 맞습니다. 막히면: 위 문법 상자의 `is_trusted = "203.0.113.80" in trusted_ips` 에서 왼쪽을 `ip_info["ip_trusted"]` 로, 따옴표 IP 를 `source_ips[entity]` 로 바꿉니다.
+- ③ 확인: ③ 까지 쓰고 실행하면 단계 2 에 다섯 줄, 단계 3 에 `VIP 계정 알림 1 건` 이 나와야 합니다. 막히면: 주석에 적힌 `enrich_incident(…)` 를 괄호까지 그대로 씁니다. 리턴 값은 받지 않아도 됩니다. 함수가 `incident` 에 바로 `context` 를 붙이기 때문입니다.
 
 - `if context["source_ip"]:` 처럼 `if` 뒤에 비교 없이 값만 쓰면, 파이썬은 `None` 을 거짓으로, `"203.0.113.80"` 처럼 글자가 들어 있는 값을 참으로 봅니다. 그래서 접속 IP 를 찾은 알림만 그 IP 를 적고, 못 찾은 알림은 「없음」으로 남습니다.
 
 **순서**
 
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `enrichment.py` · `exercise1-3_run.py` 두 파일을 하나씩 만들고(파일 이름 그대로), 코드를 붙여 넣어 저장합니다.
-2. **[VS Code]** `enrichment.py` 1 ~ 6번, `exercise1-3_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「실습 1-3 정리」를 봅니다.
+2. **[VS Code]** `enrichment.py` 의 ① · ②, `exercise1-3_run.py` 의 ③ 을 채웁니다. 막히면 위 「직접 쓰는 곳」의 확인과 힌트를 봅니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python exercise1-3_run.py
@@ -177,19 +195,22 @@ print("VIP 계정 알림", vip_count, "건")                        # VIP 계정
    | 3 | 1줄 |
 
 5. **[보고서]** `report_u1.md` 의 `## 실습 1-3` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 재직 여부가 「퇴사」인 알림과 VIP 가 「예」인 알림의 번호, 단계 3 의 VIP 계정 알림 수를 적어 주세요.
-   - (나) [핵심 질문] INC-005 는 맥락이 모두 초기값(`False` · `None`)으로 남았습니다. 그 원인을 `lookup_account` 와 `lookup_source_ip` 의 `if` 조건을 근거로 설명해 주세요. 또 INC-005 의 `employed` 가 `True`(재직)로 판정된다면 어떤 문제가 생기는지도 적어 주세요.
-   - (다) [핵심 질문] INC-002 와 INC-004 는 접속 IP 가 같고 둘 다 「신뢰 IP: 예」입니다. 두 알림의 `reasons`(알림을 발생시킨 탐지 규칙 이름 목록)를 비교해 보세요. 접속 IP 가 같은 신뢰 IP 라는 근거만으로 두 알림을 동일하게 처리해도 되는지 적어 주세요.
+   - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 재직 여부가 「퇴사」인 알림과 VIP 가 「예」인 알림의 번호, 단계 3 의 VIP 계정 알림 수를 적어 주세요.
+   - (나) [응용] INC-005 는 맥락이 모두 초기값(`False` · `None`)으로 남았습니다. 그 원인을 `lookup_account` 와 `lookup_source_ip` 의 `if` 조건을 근거로 설명해 주세요. 또 INC-005 의 `employed` 가 `True`(재직)로 판정된다면 어떤 문제가 생기는지도 적어 주세요.
+   - (다) [응용] INC-002 와 INC-004 는 접속 IP 가 같고 둘 다 「신뢰 IP: 예」입니다. 두 알림의 `reasons`(알림을 발생시킨 탐지 규칙 이름 목록)를 비교해 보세요. 접속 IP 가 같은 신뢰 IP 라는 근거만으로 두 알림을 동일하게 처리해도 되는지 적어 주세요.
+   - (가)는 꼭 씁니다. (나) · (다)는 여유가 되면 하는 응용이고, 답은 보고서 틀의 `## 실습 응용 질문` 칸에 씁니다.
+
+**확인** — 단계 2 의 다섯 줄에서 INC-001 이 `재직: 퇴사`, INC-003 이 `VIP: 예`, INC-002 · INC-004 가 `신뢰 IP: 예` 이고, 단계 3 이 `VIP 계정 알림 1 건` 이면 성공입니다. 안 나오면 「정답」 레슨의 실습 1-3 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 ## 실습 1-3 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 딕셔너리에 그 이름(키)이 있는지 | `if entity in users_info:` |
+| 딕셔너리에 그 이름(키)이 있는지 (①) | `if entity in users_info:` |
 | 딕셔너리 안의 딕셔너리 값 꺼내기 (`users_info["gaeun"]["vip"]` 는 `True`) | `users_info[entity]["employed"]` |
 | 딕셔너리에 값 저장하기 | `account["vip"] = users_info[entity]["vip"]` |
-| 리스트에 포함되는지 검사한 결과(`True` · `False`) 저장 | `ip_info["ip_trusted"] = source_ips[entity] in trusted_ips` |
-| 함수 호출하기 | `enrich_incident(incident, users_info, source_ips, trusted_ips)` |
+| 리스트에 포함되는지 검사한 결과 저장 (②) | `ip_info["ip_trusted"] = source_ips[entity] in trusted_ips` |
+| 함수 호출하기 (③) | `enrich_incident(incident, users_info, source_ips, trusted_ips)` |
 | 1 늘려 다시 저장하기 | `vip_count = vip_count + 1` |
 
 ---
@@ -204,7 +225,7 @@ print("VIP 계정 알림", vip_count, "건")                        # VIP 계정
 2. 실행기가 알림 5건을 처리하고, 승인이 필요한 건은 멈추고, 감사 기록을 남겼다 (실습 1-2)
 3. 알림마다 재직 · VIP · 접속 IP 맥락을 붙이고 VIP 계정 알림 수를 셌다 (실습 1-3)
 4. 「제공 파일」의 `routing.py` · `safe_runner.py` 를 만들었다
-5. 보고서 `report_u1.md` 의 실습 1-1 ~ 1-3 칸에 `답:` 뒤가 비어 있는 질문이 없다
+5. 보고서 `report_u1.md` 에서 꼭 채울 다섯 칸(1-1 (가) · (나), 1-2 (가), 1-3 (가), 마무리 (가))의 `답:` 뒤가 비어 있지 않다
 
 **2. 파일 확인** — **[터미널]** `soar_response` 폴더에서 확인합니다.
 
@@ -266,6 +287,8 @@ ls config
 | Unit 2 응용 2-2 | 「제공 파일」의 `safe_runner.py` |
 
 - Unit 2 는 연습용 시스템에 적기만 하던 `계정 잠금` 을 실행한 뒤 정말 잠겼는지 다시 확인하고, 조치 전 · 후 상태를 기록으로 남깁니다.
+
+**확인** — 깃허브의 `soar_response` 폴더에 2번 표의 파일이 모두 보이고 `.env` 가 없으면 성공입니다. 안 보이는 파일이 있으면 `git status` 를 다시 쳐서 그 파일이 빨간 목록에 남아 있는지 보고 3번의 4단계(`git add .` 부터)를 다시 합니다.
 
 ---
 

@@ -30,6 +30,8 @@ render: markdown
 
 > 시간이 남아 응용 1-1이나 응용 1-2를 하면, 이 파일을 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 막히면 이 레슨의 완성본을 다시 붙여 넣으면 됩니다.
 
+**확인** — `soar_response` 폴더에 `incident.py` 가 있으면 다음 쪽으로 넘어갑니다. 없으면 실습 1-2 에서 `incident.py` 를 먼저 만듭니다.
+
 ## `routing.py` 만들기
 
 **`routing.py`** 를 만들고 아래 내용을 붙여 넣습니다. `decide_route` 는 위에서부터 차례로 확인해 정한 경로를 이유와 함께 두 값으로 리턴합니다.
@@ -78,6 +80,8 @@ def apply_route(incident, route, reason, incident_log):                     # �
     entry = {"incident": incident["id"], "route": route, "reason": reason}  # 기록 한 건을 만든다
     incident_log.append(entry)                                              # 기록 리스트에 추가한다
 ```
+
+**확인** — 터미널에서 `python -c "import routing; print('ok')"`(맥북은 `python3`)를 쳐서 `ok` 가 나오면 성공입니다. `SyntaxError` 나 `IndentationError` 가 나오면 복사가 덜 된 것이니 파일 내용을 모두 지우고 코드 상자를 다시 복사해 붙여 넣습니다.
 
 ## `safe_runner.py` 만들기
 
@@ -152,3 +156,5 @@ def process_safe(incidents, registry, state, action_log):                       
         print(incident["id"], incident["entity"], "->", result_text, "(상태: " + incident["status"] + ")")  # 한 줄로 출력한다
     return counts                                                                                         # 결과별 건수를 리턴한다
 ```
+
+**확인** — 터미널에서 첫 쪽 5번의 `python -c "import routing, safe_runner; print('ok')"` 를 쳐서 `ok` 가 나오면 성공입니다. 오류가 나면 오류에 적힌 파일 이름(`routing.py` 또는 `safe_runner.py`)의 내용을 모두 지우고 코드 상자를 다시 복사해 붙여 넣습니다.
