@@ -149,7 +149,15 @@ for incident in incidents:                                     # 인시던트를
 print("VIP 계정 알림", vip_count, "건")                        # VIP 계정 알림 수를 출력한다
 ```
 
-- 들여쓰기는 **미리 채운 줄에 맞춥니다.** `enrichment.py` 의 1 · 4번은 함수 안이라 공백 4개, 2 · 3 · 5 · 6번은 `if` 안이라 공백 8개입니다. `exercise1-3_run.py` 의 7 · 8번은 `for` 안이라 공백 4개, 9번은 `if` 안이라 공백 8개입니다.
+들여쓰기는 **미리 채운 줄에 맞춥니다.**
+
+| 파일 | 번호 | 들어가는 곳 | 앞 공백 |
+|---|---|---|---|
+| `enrichment.py` | 1 · 4번 | 함수 안 | 4개 |
+| `enrichment.py` | 2 · 3 · 5 · 6번 | `if` 안 | 8개 |
+| `exercise1-3_run.py` | 7 · 8번 | `for` 안 | 4개 |
+| `exercise1-3_run.py` | 9번 | `if` 안 | 8개 |
+
 - `if context["source_ip"]:` 처럼 `if` 뒤에 비교 없이 값만 쓰면, 파이썬은 `None` 을 거짓으로, `"203.0.113.80"` 처럼 글자가 들어 있는 값을 참으로 봅니다. 그래서 접속 IP 를 찾은 알림만 그 IP 를 적고, 못 찾은 알림은 「없음」으로 남습니다.
 
 **순서**
@@ -160,7 +168,14 @@ print("VIP 계정 알림", vip_count, "건")                        # VIP 계정
    ```bash
    python exercise1-3_run.py
    ```
-4. 출력은 세 단계입니다. 단계 1 은 숫자가 제목 줄에 함께 나옵니다. 단계 2 는 알림 5건이 한 줄씩 나오고 한 줄에는 번호 · 대상 · 재직 · VIP · 접속 IP · 신뢰 IP 가 순서대로 있습니다. 단계 3 은 1줄입니다.
+4. 출력은 세 단계입니다.
+
+   | 단계 | 나오는 것 |
+   |---|---|
+   | 1 | 숫자가 제목 줄에 함께 나온다 |
+   | 2 | 알림 5건이 한 줄씩. 한 줄에 번호 · 대상 · 재직 · VIP · 접속 IP · 신뢰 IP 순서 |
+   | 3 | 1줄 |
+
 5. **[보고서]** `report_u1.md` 의 `## 실습 1-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 재직 여부가 「퇴사」인 알림과 VIP 가 「예」인 알림의 번호, 단계 3 의 VIP 계정 알림 수를 적어 주세요.
    - (나) [핵심 질문] INC-005 는 맥락이 모두 초기값(`False` · `None`)으로 남았습니다. 그 원인을 `lookup_account` 와 `lookup_source_ip` 의 `if` 조건을 근거로 설명해 주세요. 또 INC-005 의 `employed` 가 `True`(재직)로 판정된다면 어떤 문제가 생기는지도 적어 주세요.
@@ -200,7 +215,16 @@ ls config
 ```
 
 - `pwd` 가 `…/soar_response` 로 끝나야 합니다.
-- `incident_samples.json` · `system_state.json` · `users_info.json` · `source_ips.json` · `trusted_ips.json` · `incident.py` · `playbook_runner.py` · `exercise1-2_run.py` · `action_log.json` · `routing.py` · `safe_runner.py` · `enrichment.py` · `exercise1-3_run.py` · `report_u1.md` 가 보여야 합니다.
+- `ls` 에 아래 파일이 모두 보여야 합니다.
+
+| 만든 곳 | 파일 |
+|---|---|
+| 시작하기 | `incident_samples.json` · `system_state.json` · `users_info.json` · `source_ips.json` · `trusted_ips.json` |
+| 실습 1-2 | `incident.py` · `playbook_runner.py` · `exercise1-2_run.py` · `action_log.json`(실행하면 생김) |
+| 제공 파일 | `routing.py` · `safe_runner.py` |
+| 실습 1-3 | `enrichment.py` · `exercise1-3_run.py` |
+| 보고서 쓰기 | `report_u1.md` |
+
 - `config` 안에는 `playbook_registry.json` 이 보여야 합니다.
 
 **3. 깃허브에 올리기** — Module 5 폴더를 처음 올리는 날이므로 올라가는 파일 목록을 꼭 확인합니다.
@@ -234,10 +258,14 @@ ls config
 
 **4. 이어지는 곳**
 
-1. `config/playbook_registry.json` · `incident.py` · `incident_samples.json` 은 Module 5 끝까지 그대로 불러 씁니다.
-2. `enrichment.py` 의 `enrich_incident` 와 데이터 파일 세 개(`users_info.json` · `source_ips.json` · `trusted_ips.json`)는 Unit 2 도전 2-2 와 Unit 3 도전 3-1 에서 알림에 맥락을 붙일 때 씁니다.
-3. 「제공 파일」의 `routing.py` 는 Unit 2 도전 2-2 와 Unit 3 도전 3-1 에서, `safe_runner.py` 는 Unit 2 도전 2-2 에서 불러 씁니다.
-4. Unit 2 는 연습용 시스템에 적기만 하던 `계정 잠금` 을 실행한 뒤 정말 잠겼는지 다시 확인하고, 조치 전 · 후 상태를 기록으로 남깁니다.
+| 다시 쓰는 곳 | 오늘 만든 것 |
+|---|---|
+| Module 5 끝까지 | `config/playbook_registry.json` · `incident.py` · `incident_samples.json` 을 그대로 불러 쓴다 |
+| Unit 2 도전 2-2 · Unit 3 도전 3-1 | `enrichment.py` 의 `enrich_incident` 와 `users_info.json` · `source_ips.json` · `trusted_ips.json` (알림에 맥락을 붙일 때) |
+| Unit 2 도전 2-2 · Unit 3 도전 3-1 | 「제공 파일」의 `routing.py` |
+| Unit 2 도전 2-2 | 「제공 파일」의 `safe_runner.py` |
+
+- Unit 2 는 연습용 시스템에 적기만 하던 `계정 잠금` 을 실행한 뒤 정말 잠겼는지 다시 확인하고, 조치 전 · 후 상태를 기록으로 남깁니다.
 
 ---
 

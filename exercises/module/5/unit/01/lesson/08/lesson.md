@@ -585,7 +585,13 @@ python challenge1-2_run.py
 
 **결과**
 
-- (가) 출력은 다음과 같습니다. 단계 1 의 잠긴 계정은 <mark style="background:#bde3ff">**`['dami', 'dami']`, 티켓 2건**</mark>, 단계 3 은 <mark style="background:#bde3ff">**`['dami']`, 티켓 1건**</mark>, 단계 4 는 <mark style="background:#bde3ff">**3개(`dami` · `seoyeon` · `gaeun`), 티켓 7건**</mark> 입니다.
+- (가) 단계 1 · 3 · 4 의 잠긴 계정과 티켓 수는 다음과 같습니다. 출력 전체는 그 아래에 있습니다.
+
+| 단계 | 잠긴 계정 | 티켓 |
+|---|---|---|
+| 1 | <mark style="background:#bde3ff">**`['dami', 'dami']`**</mark> | <mark style="background:#bde3ff">**2건**</mark> |
+| 3 | <mark style="background:#bde3ff">**`['dami']`**</mark> | <mark style="background:#bde3ff">**1건**</mark> |
+| 4 | <mark style="background:#bde3ff">**3개(`dami` · `seoyeon` · `gaeun`)**</mark> | <mark style="background:#bde3ff">**7건**</mark> |
 
 ```
 --- 단계 1: 실습 1-2 방식(안전장치 없음)으로 같은 알림 5건을 두 번 처리
