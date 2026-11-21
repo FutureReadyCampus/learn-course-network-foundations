@@ -154,9 +154,11 @@ gaeun :
 
 **용어 풀이**
 
-- 데이터 문제: 로그나 알림 같은 <mark>자료</mark>에 있어야 할 것이 없거나, 빠졌거나, 깨져 있는 경우입니다.
-- 규칙 문제: 「무엇을 의심할지」 정해 둔 <mark>기준</mark>이 없거나 현실과 맞지 않는 경우입니다.
-- 운영 설정 문제: 서버를 켜고 접속을 허용하는 <mark>설정</mark>이 목적과 맞지 않는 경우입니다.
+| 용어 | 뜻 |
+|---|---|
+| 데이터 문제 | 로그나 알림 같은 <mark>자료</mark>에 있어야 할 것이 없거나, 빠졌거나, 깨져 있는 경우 |
+| 규칙 문제 | 「무엇을 의심할지」 정해 둔 <mark>기준</mark>이 없거나 현실과 맞지 않는 경우 |
+| 운영 설정 문제 | 서버를 켜고 접속을 허용하는 <mark>설정</mark>이 목적과 맞지 않는 경우 |
 
 아래 답은 한 예이고, 상황마다 원인이 겹치면 겹치는 대로 쓰면 맞습니다. 4개 이상 썼으면 됩니다.
 
@@ -387,7 +389,14 @@ ls logs
 
 - (나) `"8081:80"` 은 <mark style="background:#bde3ff">같은 네트워크의 다른 PC 에서도 접속할 수 있고</mark>, `"127.0.0.1:8081:80"` 은 <mark style="background:#bde3ff">내 PC 에서만 접속할 수 있습니다.</mark>
   - 이유: 관리 화면이나 데이터베이스는 필요한 사람만 쓰는 서버입니다. 밖에 열어 두면 스캐너가 `/phpmyadmin` 같은 주소를 찾아 들어올 수 있으므로 <mark style="background:#bde3ff">꼭 열어야 하는 서버만 열고 나머지는 `127.0.0.1:` 으로 제한합니다.</mark>
-- (다) `web1` 은 <mark style="background:#bde3ff">설정이 바뀌지 않아서 `Running`</mark>, `web2` 는 <mark style="background:#bde3ff">포트 줄이 바뀌어서 기존 서버를 새 설정으로 다시 만들어 `Recreated`</mark>, `web3` 은 <mark style="background:#bde3ff">새로 추가한 서버라서 `Created`</mark> 였습니다.
+- (다) 서버마다 출력이 다른 이유는 다음과 같습니다.
+
+  | 서버 | 출력 | 이유 |
+  |---|---|---|
+  | `web1` | `Running` | <mark style="background:#bde3ff">설정이 바뀌지 않아서</mark> |
+  | `web2` | `Recreated` | <mark style="background:#bde3ff">포트 줄이 바뀌어서 기존 서버를 새 설정으로 다시 만들어서</mark> |
+  | `web3` | `Created` | <mark style="background:#bde3ff">새로 추가한 서버라서</mark> |
+
   - 도움이 되는 점: 설정을 바꿔도 <mark style="background:#bde3ff">바뀐 서버만 다시 켜지고 나머지는 끊기지 않습니다.</mark> 운영 중인 서비스(`web1`)를 멈추지 않고 보안 설정을 고칠 수 있습니다.
 
 **왜**
@@ -474,7 +483,18 @@ mid jiwoo 35
 low 198.51.100.90 30
 ```
 
-- 보고서 파일 `anomaly_detection_report_2026-11-02.json` 의 앞부분은 다음과 같습니다. `date` 는 `2026-11-02`, `event_count` 는 57, `finding_count` 는 8이고 `records` 는 5건, `summaries` 는 3건입니다. 로그 종류마다 이벤트 수는 웹 서버 28 · 판정 서버 15 · SaaS 14 입니다.
+- 보고서 파일 `anomaly_detection_report_2026-11-02.json` 의 값은 이렇습니다.
+
+| 키 | 값 |
+|---|---|
+| `date` | `2026-11-02` |
+| `event_count` | 57 |
+| `source_event_counts` | 웹 서버 28 · 판정 서버 15 · SaaS 14 |
+| `finding_count` | 8 |
+| `records` | 5건 |
+| `summaries` | 3건 |
+
+- 파일의 앞부분은 다음과 같습니다.
 
 ```
 {

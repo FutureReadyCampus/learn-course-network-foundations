@@ -34,11 +34,14 @@ source:
 
 | `docker run` 에서 | `compose.yaml` 에서 | 뜻 |
 |---|---|---|
-| `--name web-run` | `web1:` · `web2:` (서비스 이름) | 서버를 구분하는 이름. 컴포즈에서는 서비스(service, 서비스: 컴포즈 파일에 적은 서버 한 대의 설정)라고 부릅니다 |
-| `nginx:1.28` | `image: nginx:1.28` | 서버를 켜는 데 쓰는 이미지(image, 이미지: 서버 프로그램과 설정을 묶어 둔 파일) |
+| `--name web-run` | `web1:` · `web2:` (서비스 이름) | 서버를 구분하는 이름 |
+| `nginx:1.28` | `image: nginx:1.28` | 서버를 켜는 데 쓰는 이미지 |
 | `-p 8080:80` | `ports:` 아래 `- "8080:80"` | 내 컴퓨터의 8080번 포트로 온 요청을 서버의 80번 포트로 보냄 |
-| `-d` | `docker compose up -d` 의 `-d` | 백그라운드(background, 백그라운드: 터미널 화면을 차지하지 않고 안에서 계속 실행되는 방식)에서 실행함 |
+| `-d` | `docker compose up -d` 의 `-d` | 백그라운드에서 실행함 |
 
+- 컴포즈에서는 서버 이름을 서비스(service, 서비스: 컴포즈 파일에 적은 서버 한 대의 설정)라고 부릅니다.
+- 이미지(image, 이미지)는 서버 프로그램과 설정을 묶어 둔 파일입니다.
+- 백그라운드(background, 백그라운드)는 터미널 화면을 차지하지 않고 안에서 계속 실행되는 방식입니다.
 - `nginx`(엔진엑스)는 웹 서버 프로그램입니다. 서버를 켜면 컨테이너(container, 컨테이너: 이미지로 실제로 켜진 서버 하나)가 하나 생깁니다.
 - 컴포즈 파일은 YAML(야믈) 형식으로 씁니다. YAML 은 바로 아래 1.2 에서 설명합니다.
 
@@ -118,9 +121,13 @@ services:
 
 **오류가 나면**
 
-- `Cannot connect to the Docker daemon` 처럼 도커에 연결할 수 없다는 오류(Windows 에서는 `error during connect` 처럼 문구가 다를 수 있습니다): <mark>Docker Desktop 이 꺼져 있는 것입니다.</mark> Docker Desktop 을 실행하고, 아래쪽 상태가 초록색(Running)이 될 때까지 1분쯤 기다린 뒤 다시 칩니다.
-- `toomanyrequests` 가 나오면 이미지를 너무 많이 받았다는 뜻입니다. <mark>1시간 뒤에 다시 합니다.</mark>
-- `docker: command not found` 가 나오면 이 PC 에 도커가 없는 것입니다. 도전 5-1 · 5-2는 건너뜁니다.
+| 오류 | 뜻 | 할 일 |
+|---|---|---|
+| `Cannot connect to the Docker daemon` | <mark>Docker Desktop 이 꺼져 있는 것입니다.</mark> | Docker Desktop 을 실행하고 상태가 초록색(Running)이 될 때까지 1분쯤 기다린 뒤 다시 침 |
+| `toomanyrequests` | 이미지를 너무 많이 받음 | <mark>1시간 뒤에 다시 합니다.</mark> |
+| `docker: command not found` | 이 PC 에 도커가 없음 | 도전 5-1 · 5-2는 건너뜀 |
+
+- 첫 줄은 도커에 연결할 수 없다는 오류이고, Windows 에서는 `error during connect` 처럼 문구가 다를 수 있습니다. 초록색 상태는 Docker Desktop 화면 아래쪽에 나옵니다.
 
 ## 도전 5-1 · 컴포즈로 서버 두 대 한 번에 켜기
 
@@ -176,10 +183,14 @@ services:
    ```
 
    - 하는 일: 서버 한 대를 켭니다. 옵션은 이렇습니다.
-     - `-d`: 백그라운드에서 켬 (터미널을 계속 쓸 수 있음)
-     - `--rm`: 서버를 끄면 그 서버(컨테이너)를 자동으로 지움
-     - `-p 8080:80`: 내 컴퓨터의 8080번 포트를 서버의 80번 포트에 연결
-     - `--name web-run`: 서버 이름을 `web-run` 으로 정함
+
+     | 옵션 | 뜻 |
+     |---|---|
+     | `-d` | 백그라운드에서 켬 (터미널을 계속 쓸 수 있음) |
+     | `--rm` | 서버를 끄면 그 서버(컨테이너)를 자동으로 지움 |
+     | `-p 8080:80` | 내 컴퓨터의 8080번 포트를 서버의 80번 포트에 연결 |
+     | `--name web-run` | 서버 이름을 `web-run` 으로 정함 |
+
    - 나오는 것: 서버의 고유 번호(긴 글자)가 한 줄 나옵니다.
 
    ② 켜졌는지 봅니다.
@@ -312,7 +323,8 @@ services:
 
 | 하려는 일 | 명령 |
 |---|---|
-| 서버 한 대 켜기 · 확인 · 끄기 | `docker run -d --rm -p 8080:80 --name web-run nginx:1.28` → `docker ps` → `docker stop web-run` |
+| 서버 한 대 켜기 | `docker run -d --rm -p 8080:80 --name web-run nginx:1.28` |
+| 서버 한 대 확인 · 끄기 | `docker ps` → `docker stop web-run` |
 | 서버 두 대 한 번에 켜기 | `docker compose up -d` |
 | 켜진 서버 상태 보기 | `docker compose ps` |
 | 응답 확인 | `curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8080` |

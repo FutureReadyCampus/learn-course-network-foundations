@@ -12,10 +12,14 @@ Unit 5는 Module 4 **이상탐지**의 마지막 Unit입니다. 지금까지 로
 
 **오늘의 계획 (3시간)**
 
-1. 시작하기 15분: 이 레슨을 읽고 `requests` 를 설치한 뒤 LLM(대형 언어 모델, Large Language Model · 엘엘엠: 글을 읽고 글로 답하는 AI) 호출 파일 `llm_client.py` 와 점수 파일 `unit05_risk_scores.json` 을 만듭니다.
-2. 실습 약 110분: 실습 5-1을 하고, 실습 5-2를 합니다.
-3. 글쓰기 40분: 「보고서 쓰기」 레슨에서 핵심 실습의 질문에 답하고, 「오늘의 글 쓰기」 레슨에서 글 한 편을 씁니다.
-4. 마무리 15분: 실습 5-2 끝의 「이번 Unit 마무리」에서 파일을 확인하고 깃허브에 올린 뒤 Module 5로 넘어갈 준비를 합니다.
+| 순서 | 시간 | 하는 일 |
+|---|---|---|
+| 1. 시작하기 | 15분 | 이 레슨을 읽고 `requests` 설치, `llm_client.py` · `unit05_risk_scores.json` 만들기 |
+| 2. 실습 | 약 110분 | 실습 5-1, 실습 5-2 |
+| 3. 글쓰기 | 40분 | 「보고서 쓰기」에서 핵심 실습의 질문에 답하고, 「오늘의 글 쓰기」에서 글 한 편 |
+| 4. 마무리 | 15분 | 실습 5-2 끝의 「이번 Unit 마무리」에서 파일 확인, 깃허브에 올리기, Module 5 준비 |
+
+- `llm_client.py` 는 LLM(대형 언어 모델, Large Language Model · 엘엘엠: 글을 읽고 글로 답하는 AI) 호출 파일이고, `unit05_risk_scores.json` 은 점수 파일입니다.
 
 **오늘 만들 것 두 가지**
 
@@ -61,7 +65,15 @@ Unit 5는 Module 4 **이상탐지**의 마지막 Unit입니다. 지금까지 로
    - 답을 적는 **보고서**(`report_u5.md`)는 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
 4. **[VS Code]** `llm_client.py` 파일을 만들어 아래 내용을 붙여 넣습니다. <mark>같은 이름의 파일이 이미 있어도 아래 내용으로 덮어씁니다.</mark> 키가 없을 때도 멈추지 않고 빈 문자열을 돌려주도록 만든 파일이라, 출력이 이 Unit의 문서와 같아집니다.
 
-**`llm_client.py`** — Gemini API 를 부르는 함수 세 개입니다. `find_env` 는 지금 폴더부터 위쪽으로 `.env` 를 찾고, `read_api_key` 는 `.env` 에서 키를 읽고(없으면 `None`), `call_llm` 은 질문을 보내 답 문장을 돌려줍니다. 키가 없거나 호출이 실패하면 `[LLM 호출 실패] …` 를 출력하고 빈 문자열 `""` 을 돌려줍니다.
+**`llm_client.py`** — Gemini API 를 부르는 함수 세 개입니다.
+
+| 함수 | 하는 일 | 돌려주는 값 |
+| --- | --- | --- |
+| `find_env` | 지금 폴더부터 위쪽으로 `.env` 를 찾음 | `.env` 경로, 없으면 `None` |
+| `read_api_key` | `.env` 에서 키를 읽음 | 키 값, 없으면 `None` |
+| `call_llm` | 질문을 Gemini API 에 보냄 | 답 문장 |
+
+키가 없거나 호출이 실패하면 `call_llm` 은 `[LLM 호출 실패] …` 를 출력하고 빈 문자열 `""` 을 돌려줍니다.
 
 ```python
 import os                                                            # 폴더 · 파일 위치를 다루는 도구
@@ -123,7 +135,14 @@ def call_llm(question):                                              # 질문 �
 
 5. **[VS Code]** `unit05_risk_scores.json` 파일을 만들어 아래 내용을 그대로 붙여 넣습니다. Unit 4 실습 4-1 이 저장한 점수 파일과 같은 내용입니다. <mark>이미 있으면 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다). 파일 이름의 `05` 는 예전 번호라서 지금 Unit 번호와 맞지 않지만, Module 4 Unit 5와 Module 5가 같은 이름으로 읽으니 이름을 바꾸지 않고 그대로 씁니다.
 
-**`unit05_risk_scores.json`** — 대상별 점수 기록 5건입니다. `entity` 는 점수를 매긴 대상(사용자 또는 IP), `score` 는 점수, `grade` 는 등급, `reasons` 는 탐지된 규칙 이름입니다. 점수가 높은 순서로 저장돼 있습니다.
+**`unit05_risk_scores.json`** — 대상별 점수 기록 5건이고, 점수가 높은 순서로 저장돼 있습니다.
+
+| 키 | 뜻 |
+| --- | --- |
+| `entity` | 점수를 매긴 대상(사용자 또는 IP) |
+| `score` | 점수 |
+| `grade` | 등급 |
+| `reasons` | 탐지된 규칙 이름 |
 
 <pre class="copyable"><code>[
   {
@@ -267,14 +286,28 @@ def call_llm(question):                                              # 질문 �
 
 ## 오류가 나면
 
-- 먼저 `pwd` 가 `anomaly_detection` 으로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
-- `ModuleNotFoundError: No module named 'llm_client'`: <mark>`llm_client.py` 가 `anomaly_detection` 폴더 바로 아래에 없다는 뜻</mark>입니다. 시작하기 4번의 코드 상자로 만듭니다.
-- `ModuleNotFoundError: No module named 'requests'`: 이 터미널의 파이썬에 `requests` 가 없는 것입니다. 시작하기 2번의 `python -m pip install requests` 를 칩니다(맥북은 `python3`). 가상환경을 쓴다면 먼저 가상환경을 켭니다.
-- `FileNotFoundError: … 'unit05_risk_scores.json'`: 점수 파일이 없거나 이름이 다릅니다. 시작하기 5번의 코드 상자로 만듭니다.
-- `[LLM 호출 실패] API 키 없음`: `.env` 를 찾지 못했거나 키 줄이 없습니다. <mark>오류가 아니라, 키 없이 대체 문장으로 진행하는 정상 동작</mark>입니다. 키를 쓰려면 「Gemini API 키와 .env 만들기」를 합니다.
-- `[LLM 호출 실패] 상태 코드 400`(또는 `401` · `403`): 키가 틀렸습니다. 2단계로 키를 확인하고 `.env` 에 다시 붙여 넣습니다.
-- `[LLM 호출 실패] 상태 코드 429`: 1분에 15번을 넘었다는 뜻입니다. <mark>1분 기다린 뒤 다시 실행</mark>합니다.
-- `[LLM 호출 실패] 인터넷 연결 오류`: 인터넷이 끊겼거나 30초 안에 답이 오지 않았습니다. 연결을 확인하고 다시 실행합니다.
+먼저 `pwd` 가 `anomaly_detection` 으로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
+
+파이썬 오류는 이렇게 고칩니다.
+
+| 오류 | 뜻 | 고치는 법 |
+| --- | --- | --- |
+| `No module named 'llm_client'` | <mark>`llm_client.py` 가 `anomaly_detection` 폴더 바로 아래에 없다는 뜻</mark> | 시작하기 4번의 코드 상자로 만듦 |
+| `No module named 'requests'` | 이 터미널의 파이썬에 `requests` 가 없음 | 시작하기 2번의 설치 명령을 침(가상환경을 쓰면 먼저 켬) |
+| `FileNotFoundError` | `unit05_risk_scores.json` 이 없거나 이름이 다름 | 시작하기 5번의 코드 상자로 만듦 |
+
+- 앞의 두 오류는 `ModuleNotFoundError: …` 로 시작합니다. 설치 명령은 `python -m pip install requests` 입니다(맥북은 `python3`).
+
+`[LLM 호출 실패]` 뒤에 나오는 글자로 원인을 봅니다.
+
+| 뒤의 글자 | 뜻 | 고치는 법 |
+| --- | --- | --- |
+| `API 키 없음` | `.env` 를 못 찾았거나 키 줄이 없음 | 키를 쓰려면 「Gemini API 키와 .env 만들기」 |
+| `상태 코드 400` · `401` · `403` | 키가 틀림 | 2단계로 키를 확인하고 `.env` 에 다시 붙여 넣음 |
+| `상태 코드 429` | 1분에 15번을 넘음 | <mark>1분 기다린 뒤 다시 실행</mark> |
+| `인터넷 연결 오류` | 인터넷이 끊겼거나 30초 안에 답이 없음 | 연결을 확인하고 다시 실행 |
+
+- `API 키 없음` 은 <mark>오류가 아니라, 키 없이 대체 문장으로 진행하는 정상 동작</mark>입니다.
 - 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). <mark>막히면 이 Unit의 정답 레슨을 보고</mark>, 풀리지 않으면 보고서 (가)에 「모름 — 막힌 곳: …」 이라고 쓰고 넘어갑니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다. 파일을 지금 위치 기준으로 찾기 때문입니다.
