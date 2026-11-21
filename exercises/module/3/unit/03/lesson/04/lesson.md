@@ -281,7 +281,7 @@ for entry in unused:                                             # 후보를 한
    4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
 2. **[터미널]** 파일을 만든 뒤 `ls config` 를 쳐서 `access_log.json` 이 `users.json` 과 같은 `config` 폴더 안에 있는지 확인합니다.
    - `config` 안에 또 `config` 가 생겼다면 위치가 틀린 것이니 옮깁니다.
-   - 붙여 넣은 내용이 맞는지 `python -m json.tool config/access_log.json` 으로 확인합니다(맥북은 `python3 -m json.tool …`). 여러 줄로 정리되어 출력되면 정상이고, 오류가 나면 붙여 넣을 때 글자가 빠진 것입니다. 깨진 채 두면 사용 이력을 못 읽어 모든 권한이 「이력 없음」으로 나옵니다.
+   - 붙여 넣은 내용이 맞는지 `python -m json.tool config/access_log.json` 으로 확인합니다(맥북은 `python3 -m json.tool …`). 여러 줄로 정리되어 출력되면 정상이고(한글이 `\uXXXX` 로 보여도 정상입니다), 오류가 나면 붙여 넣을 때 글자가 빠진 것입니다. 깨진 채 두면 사용 이력을 못 읽어 모든 권한이 「이력 없음」으로 나옵니다.
 3. **[VS Code]** `review_unused.py` 의 `# ←` 두 곳(① · ②)을 채웁니다. 3.1 의 표와 그림, 문법 상자를 보고 씁니다.
 4. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 이어서 실행합니다.
    ```bash

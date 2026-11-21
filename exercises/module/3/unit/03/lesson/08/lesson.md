@@ -25,10 +25,15 @@ python exercise3-1_run.py
 
 **채운 코드** (한 예)
 
+① 은 역할 권한을 모으는 첫 번째 반복문 안의 `# ①` 주석 바로 아래(8칸)에 씁니다.
+
 ```python
-        # ① access_list 와 role_list 를 + 로 이은 리스트를 access_list 에 다시 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
         access_list = access_list + role_list                    # 현황 뒤에 이어 붙인다
-        # ② access_list 에 entry 를 추가한다 (.append)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+```
+
+② 는 예외 권한을 모으는 두 번째 반복문 안의 `# ②` 주석 바로 아래(8칸)에 씁니다. 두 상자를 한 곳에 이어 붙이지 않습니다.
+
+```python
         access_list.append(entry)                                # 현황에 추가한다
 ```
 
@@ -104,10 +109,15 @@ python exercise3-2_run.py
 
 **채운 코드** (한 예)
 
+① 은 `# ①` 주석 바로 아래(8칸)에 씁니다.
+
 ```python
-        # ① last_used_map 에서 key 로 마지막 사용 시각을 꺼내 used_text 에 담는다 (.get, 이력이 없으면 None)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
         used_text = last_used_map.get(key)                       # 마지막 사용 시각 문자열을 꺼낸다(이력이 없으면 None)
-        # ② 아니고(elif), days_since(used_text, now) 가 limit_days 보다 크면 (>)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+```
+
+② 는 미리 채워진 `if used_text is None:` 블록 바로 뒤, `# ②` 주석 바로 아래(8칸)에 씁니다. ① 과 ② 는 서로 떨어져 있으니 한 상자처럼 이어 붙이지 않습니다.
+
+```python
         elif days_since(used_text, now) > limit_days:            # 사용 이력이 있고 기준 일 수보다 오래 안 썼으면
 ```
 
@@ -251,6 +261,8 @@ Traceback (most recent call last):
     expires = entry["expires"]                           # 만료 시각을 꺼낸다
 KeyError: 'expires'
 ```
+
+줄 번호(`line 8`, `line 11`)는 내 파일의 주석과 빈 줄에 따라 다릅니다. 마지막 줄의 `KeyError: 'expires'` 를 보면 됩니다.
 
 **관제에서는** — 규칙으로 걸리는 권한은 매주 자동으로 리스트를 뽑아 담당자에게 보내고, 처리하지 않은 채 몇 주째 남아 있는 권한은 따로 표시합니다. 같은 계정이 반복해서 걸리면 퇴사 처리 절차(인사 시스템과 권한 시스템의 연동)에 빠진 곳이 있다는 뜻으로 봅니다.
 
