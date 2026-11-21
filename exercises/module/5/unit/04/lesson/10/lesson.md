@@ -24,79 +24,29 @@ python exercise4-1_run.py
 
 **채운 코드** (한 예)
 
-`approval_gate.py` 의 1 ~ 7번입니다.
+`approval_gate.py` 의 `decide_gate` ① · ② 입니다.
 
 ```python
-    # 1. request["target"] 이 policy["allowlist_ips"] 안에 있는지(in)의 결과를 리턴한다
-    return request["target"] in policy["allowlist_ips"]  # 대상이 허용 목록에 있는지의 결과를 리턴한다
-    # 2. grade_table[request["grade"]] 를 score 에 저장한다 (등급 점수로 시작한다)
-    score = grade_table[request["grade"]]                # 이 요청 등급의 점수로 시작한다
-    # 3. request["target"] 이 policy["vip_accounts"] 안에 있으면 (if, in)
-    if request["target"] in policy["vip_accounts"]:      # 대상이 VIP 계정이면
-        # 4. score 에 score + policy["vip_points"] 를 저장한다 (VIP 점수를 더한다)
-        score = score + policy["vip_points"]             # VIP 점수를 더한다
-    # 5. is_allowlisted(request, policy) 가 참이면 (if)
-    if is_allowlisted(request, policy):                  # 허용 목록 대상이면
-    # 6. risk_score(request, policy) 의 두 결과를 score, reasons 에 저장한다
-    score, reasons = risk_score(request, policy)         # 위험 점수와 이유 리스트를 함께 받는다
-    # 7. score 가 policy["approval_score"] 이상이면 (if, >=)
-    if score >= policy["approval_score"]:                # 승인 기준 점수 이상이면
-```
-
-위 줄만으로는 `if` 안에 들어가는 줄이 어느 것인지 알기 어려우니, 미리 채운 줄까지 넣은 두 함수의 완성된 모양을 함께 봅니다.
-
-**전체 모양 — `risk_score`**
-
-```python
-def risk_score(request, policy):                                            # 조치 요청 한 건과 승인 정책을 받는 함수
-    """등급 · VIP · 함께 쓰는 IP · 대상 수로 위험 점수를 더하고, 점수와 이유 리스트를 함께 리턴한다.
-    자동으로 실행해도 되는 요청인지 숫자로 판단할 때 쓴다.
-    """
-    grade_table = policy["grade_points"]                                    # 등급마다 정한 점수 표 — 미리 채운 줄
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    score = grade_table[request["grade"]]                                   # 이 요청 등급의 점수로 시작한다
-    reasons = ["등급 " + request["grade"] + " +" + str(score)]              # 점수를 더한 이유 리스트 — 미리 채운 줄
-    if request["target"] in policy["vip_accounts"]:                         # 대상이 VIP 계정이면
-        score = score + policy["vip_points"]                                # VIP 점수를 더한다
-        reasons.append("VIP 계정 +" + str(policy["vip_points"]))            # 이유를 추가한다 — 미리 채운 줄
-    if request["users_on_ip"] >= policy["shared_ip_limit"]:                 # 여러 계정이 함께 쓰는 IP 이면 — 미리 채운 줄
-        score = score + policy["shared_ip_points"]                          # 함께 쓰는 IP 점수를 더한다 — 미리 채운 줄
-        reasons.append("함께 쓰는 IP +" + str(policy["shared_ip_points"]))  # 이유를 추가한다 — 미리 채운 줄
-    if request["target_count"] > policy["many_targets_limit"]:              # 한 번에 조치할 대상이 많으면 — 미리 채운 줄
-        score = score + policy["many_targets_points"]                       # 대상 수 점수를 더한다 — 미리 채운 줄
-        reasons.append("대상 " + str(request["target_count"]) + "개 +" + str(policy["many_targets_points"]))  # 이유를 추가한다 — 미리 채운 줄
-    return score, reasons                                                   # 점수와 이유 리스트를 함께 리턴한다 — 미리 채운 줄
-```
-
-**전체 모양 — `decide_gate`**
-
-```python
-def decide_gate(request, policy):                 # 조치 요청 한 건과 승인 정책을 받는 함수
-    """조치 요청 한 건을 「차단 금지」 · 「승인 필요」 · 「자동」 가운데 하나로 정하고, 결정과 이유 리스트를 함께 리턴한다.
-    자동 대응이 조치를 실행하기 직전에, 사람의 승인이 필요한지 정할 때 쓴다.
-    """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    if is_allowlisted(request, policy):           # 허용 목록 대상이면
-        return "차단 금지", ["허용 목록 대상"]    # 결정과 이유를 함께 리턴한다 — 미리 채운 줄
-    score, reasons = risk_score(request, policy)  # 위험 점수와 이유 리스트를 함께 받는다
-    reasons.append("합계 " + str(score) + "점")   # 합계 점수를 이유에 추가한다 — 미리 채운 줄
-    if score >= policy["approval_score"]:         # 승인 기준 점수 이상이면
-        return "승인 필요", reasons               # 결정과 이유를 함께 리턴한다 — 미리 채운 줄
-    return "자동", reasons                        # 기준보다 낮으면 자동으로 실행한다 — 미리 채운 줄
-```
-
-`exercise4-1_run.py` 의 8 · 9번입니다.
-
-```python
-    # 8. decide_gate(request, policy) 의 두 결과를 decision, reasons 에 저장한다
-    decision, reasons = decide_gate(request, policy)  # 결정과 이유 리스트를 함께 받는다
-    # 9. counts[decision] 에 counts[decision] + 1 을 저장한다 (1 늘린다)
-    counts[decision] = counts[decision] + 1           # 이 결정의 요청 수를 1 늘린다
+    # ① score 가 policy["approval_score"] 이상이면 (if, >=)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+    if score >= policy["approval_score"]:                                   # 승인 기준 점수 이상이면
+    # ② "승인 필요" 와 reasons 를 함께 리턴한다   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+        return "승인 필요", reasons                                         # 결정과 이유를 함께 리턴한다
 ```
 
 **결과**
 
-- (가) 출력은 다음과 같습니다. 자동 <mark style="background:#bde3ff">**3건**</mark> · 승인 필요 <mark style="background:#bde3ff">**3건**</mark> · 차단 금지 <mark style="background:#bde3ff">**2건**</mark>이고, 승인 필요는 `REQ-2` · `REQ-5` · `REQ-6` 입니다.
+- 채우기 전에 실행하면 단계 2 에서 `REQ-2` · `REQ-5` · `REQ-6` 이 `→ 자동` 으로 나오고, 단계 3 · 4 는 다음과 같습니다. 나머지 줄은 아래 (가)와 같습니다.
+
+```
+--- 단계 3: 결정별 요청 수
+자동 : 6 건
+승인 필요 : 0 건
+차단 금지 : 2 건
+--- 단계 4: 담당자에게 보낼 승인 요청
+--- 단계 5: gate_results.json 에 8 건 저장
+```
+
+- (가) 채운 뒤의 출력은 다음과 같습니다. 자동 <mark style="background:#bde3ff">**3건**</mark> · 승인 필요 <mark style="background:#bde3ff">**3건**</mark> · 차단 금지 <mark style="background:#bde3ff">**2건**</mark>이고, 승인 필요는 `REQ-2` · `REQ-5` · `REQ-6` 입니다.
 
 ```
 --- 단계 1: 불러온 조치 요청 8 건 · 승인 기준 3 점
@@ -131,58 +81,17 @@ REQ-6 INC-316 계정 잠금 minsu → 담당자 승인을 기다림
 
 **자주 틀리는 곳**
 
-아래 결과는 해당 번호의 줄을 지우고 실행한 것입니다.
+| 틀리는 곳 | 얼마나 | 결과 |
+|---|---|---|
+| ① 에서 `>=` 대신 `>` 를 씀 | 많음 | 기준과 같은 3점이 자동. `REQ-5 … → 자동 · …, 합계 3점` |
+| ② 에서 `return` 을 빼고 `"승인 필요", reasons` 만 씀 | 있음 | 오류 없이 채우기 전과 같은 출력(승인 필요 0건) |
+| ① 만 쓰고 ② 를 안 씀 · ② 를 4칸으로 씀 | 있음 | `IndentationError: expected an indented block after 'if' statement` |
+| ① 끝의 `:` 를 빠뜨림 | 있음 | `SyntaxError: expected ':'` |
 
-- 1번을 비워 두면 `is_allowlisted` 가 아무것도 리턴하지 않아 <mark style="background:#ffc4d6">**허용 목록 대상도 점수로 정해집니다.**</mark> 점검 서버 `192.0.2.10` 이 「자동」으로 차단되는 것이 이 실수의 결과입니다.
-
-```
-REQ-3 IP 차단 203.0.113.80 → 승인 필요 · 등급 high +2, 함께 쓰는 IP +2, 합계 4점
-REQ-8 IP 차단 192.0.2.10 → 자동 · 등급 low +0, 합계 0점
-```
-
-- 2번을 비워 두면 `score` 를 만들기 전에 쓰게 되어 오류가 납니다. 파이썬 3.11 부터는 같은 오류가 `cannot access local variable 'score' …` 문구로 나옵니다.
-
-```
-UnboundLocalError: local variable 'score' referenced before assignment
-```
-
-- 3번을 비워 두면 4번 줄이 앞줄보다 안쪽으로 들어가 있어 실행하기 전에 멈춥니다. 5번과 7번을 비워도 같은 오류가 납니다.
-
-```
-IndentationError: unexpected indent
-```
-
-- 4번을 비워 두면 오류 없이 <mark style="background:#ffc4d6">**이유에는 「VIP 계정 +3」이 있는데 점수에는 더해지지 않습니다.**</mark> `REQ-2` 가 합계 1점으로 「자동」이 되는 것이 이 실수의 결과입니다.
-
-```
-REQ-2 계정 잠금 gaeun → 자동 · 등급 mid +1, VIP 계정 +3, 합계 1점
-```
-
-- 6번을 비워 두면 `reasons` 가 만들어지지 않아 오류가 납니다.
-
-```
-NameError: name 'reasons' is not defined
-```
-
-- 7번에서 `>=` 대신 `>` 를 쓰면 오류 없이 <mark style="background:#ffc4d6">**기준과 같은 3점이 「자동」이 됩니다.**</mark> `REQ-5` 가 자동으로 나오는 것이 이 실수의 결과입니다.
+- 첫 줄의 실수는 오류가 나지 않아 찾기 어렵습니다. 아래 줄이 나오면 ① 의 비교 기호를 봅니다.
 
 ```
 REQ-5 IP 차단 198.51.100.77 → 자동 · 등급 mid +1, 함께 쓰는 IP +2, 합계 3점
-```
-
-- 8번을 비워 두면 `decision` 이 만들어지지 않아 9번 줄에서 오류가 납니다.
-
-```
-NameError: name 'decision' is not defined
-```
-
-- 9번을 비워 두면 오류 없이 <mark style="background:#ffc4d6">**결정별 요청 수가 모두 0건으로 나옵니다.**</mark>
-
-```
---- 단계 3: 결정별 요청 수
-자동 : 0 건
-승인 필요 : 0 건
-차단 금지 : 0 건
 ```
 
 **관제에서는**
@@ -204,57 +113,24 @@ python exercise4-2_run.py
 
 **채운 코드** (한 예)
 
-`false_positive.py` 의 1 ~ 7번입니다.
+`false_positive.py` 의 `list_changes` ① · ② 입니다.
 
 ```python
-        # 1. record["before"] 와 record["after"] 가 다르면 (if, !=)
-        if record["before"] != record["after"]:                                  # 조치 전과 조치 후가 다르면
-            # 2. changes 에 record 를 추가한다 (append)
-            changes.append(record)                                               # 실제로 바뀐 기록을 추가한다
-        # 3. record["action"] 이 "계정 잠금" 이고(and) target 이 state["locked_users"] 안에 있으면 (if, ==, in)
-        if record["action"] == "계정 잠금" and target in state["locked_users"]:  # 잠금 기록인데 아직 잠겨 있으면
-        # 4. record["action"] 이 "IP 차단" 이고(and) target 이 state["blocked_ips"] 안에 있으면 (if, ==, in)
-        if record["action"] == "IP 차단" and target in state["blocked_ips"]:     # 차단 기록인데 아직 차단되어 있으면
-        # 5. record["action"] 이 "IP 차단" 이면 (if, ==)
-        if record["action"] == "IP 차단":                                        # IP 차단 기록이면
-            # 6. "허용 목록에 추가 검토: " + record["target"] 을 리턴한다
-            return "허용 목록에 추가 검토: " + record["target"]                  # 허용 목록에 넣자고 제안한다
-    # 7. rollback_incident(incident_id, log, state) 의 결과를 undo_records 에 저장한다 (되돌리기)
-    undo_records = rollback_incident(incident_id, log, state)                    # 자동 조치가 바꾼 것만 거꾸로 되돌린다
-```
-
-3 · 4번은 `if` 만 쓰고 `if` 안에 들어가는 줄은 미리 채운 줄이니, 완성된 모양을 함께 봅니다.
-
-**전체 모양 — `find_not_recovered`**
-
-```python
-def find_not_recovered(changes, state):                                          # 바뀐 기록 리스트와 연습용 시스템 상태를 받는 함수
-    """되돌린 뒤에도 아직 잠겨 있는 계정이나 차단된 IP 를 리스트로 리턴한다. 빈 리스트이면 복구가 끝난 것이다.
-    되돌리기 함수를 실행한 뒤, 실제 상태가 원래대로 돌아왔는지 확인할 때 쓴다.
-    """
-    remaining = []                                                               # 아직 복구되지 않은 대상을 모을 빈 리스트 — 미리 채운 줄
-    for record in changes:                                                       # 바뀐 기록을 하나씩 읽는다 — 미리 채운 줄
-        target = record["target"]                                                # 조치 대상(계정 또는 IP) — 미리 채운 줄
-        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-        if record["action"] == "계정 잠금" and target in state["locked_users"]:  # 잠금 기록인데 아직 잠겨 있으면
-            remaining.append(target)                                             # 아직 잠겨 있는 계정을 추가한다 — 미리 채운 줄
-        if record["action"] == "IP 차단" and target in state["blocked_ips"]:     # 차단 기록인데 아직 차단되어 있으면
-            remaining.append(target)                                             # 아직 차단된 IP 를 추가한다 — 미리 채운 줄
-    return remaining                                                             # 복구되지 않은 대상 리스트를 리턴한다 — 미리 채운 줄
-```
-
-`exercise4-2_run.py` 의 8 · 9번입니다.
-
-```python
-    # 8. handle_false_positive(report, log, state, NOW) 의 결과를 result 에 저장한다
-    result = handle_false_positive(report, log, state, NOW)  # 신고 한 건을 처리하고 결과를 받는다
-    # 9. results 에 result 를 추가한다 (append)
-    results.append(result)                                   # 처리 결과를 추가한다
+        # ① record["before"] 와 record["after"] 가 다르면 (if, !=)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+        if record["before"] != record["after"]:                                      # 조치 전과 조치 후가 다르면
+        # ② changes 에 record 를 추가한다 (append)   # ← 이 주석 바로 아래 줄에 씁니다 (12칸)
+            changes.append(record)                                                   # 실제로 바뀐 기록을 추가한다
 ```
 
 **결과**
 
-- (가) 출력은 다음과 같습니다. 걸린 시간은 `INC-301` 이 <mark style="background:#bde3ff">**25분**</mark>, `INC-202` 가 <mark style="background:#bde3ff">**5분**</mark>이고 둘 다 30분 안입니다. 처리 뒤 잠긴 계정은 <mark style="background:#bde3ff">`junho` · `dami`</mark> 입니다.
+- 채우기 전에 실행하면 `list_changes` 의 `for` 안쪽이 비어 있어 실행하기 전에 멈춥니다.
+
+```
+IndentationError: expected an indented block after 'for' statement on line 11
+```
+
+- (가) 채운 뒤의 출력은 다음과 같습니다. 걸린 시간은 `INC-301` 이 <mark style="background:#bde3ff">**25분**</mark>, `INC-202` 가 <mark style="background:#bde3ff">**5분**</mark>이고 둘 다 30분 안입니다. 처리 뒤 잠긴 계정은 <mark style="background:#bde3ff">`junho` · `dami`</mark> 입니다.
 
 ```
 --- 단계 1: 오탐 신고 2 건 · 조치 기록 7 건 · 지금 45 분
@@ -277,7 +153,7 @@ dami 는 아직 잠김: True
 ```
 
 - (나) 그 기록은 `before` 와 `after` 가 모두 <mark style="background:#bde3ff">「변경 없음」</mark>입니다. 함께 쓰는 IP 라서 담당자 승인을 기다리느라 차단하지 않았으므로, 자동 조치가 바꾼 것이 없어 영향 확인 대상에서 제외됩니다.
-  - 1번의 `if` 가 없으면 이 기록도 영향 확인에 들어가고, 규칙 조정 제안이 「허용 목록에 추가 검토: 198.51.100.120」으로 바뀝니다. 여러 계정이 함께 쓰는 IP(`fp_log.json` 의 사유)를 <mark style="background:#ffc4d6">허용 목록에 넣자는 잘못된 제안</mark>입니다.
+  - ① 의 `if` 가 없으면 이 기록도 영향 확인에 들어가고, 규칙 조정 제안이 「허용 목록에 추가 검토: 198.51.100.120」으로 바뀝니다. 여러 계정이 함께 쓰는 IP(`fp_log.json` 의 사유)를 <mark style="background:#ffc4d6">허용 목록에 넣자는 잘못된 제안</mark>입니다.
 - (다) <mark style="background:#ffc4d6">종료한 세션은 되돌릴 수 없는 조치(비가역)입니다.</mark> 담당자는 `jiwoo` 에게 「계정은 해제했으니 다시 로그인하면 된다」고 안내해야 합니다.
   - `dami` 는 퇴사한 계정이라 정탐(true positive)인 진짜 공격(`INC-201`)이고 오탐 신고가 없었습니다. <mark>오탐 처리는 신고된 인시던트만 롤백해야 하므로</mark>, `dami` 는 그대로 잠겨 있어야 합니다.
 
@@ -288,57 +164,20 @@ dami 는 아직 잠김: True
 
 **자주 틀리는 곳**
 
-아래 결과는 해당 번호의 줄을 지우고 실행한 것입니다.
+| 틀리는 곳 | 얼마나 | 결과 |
+|---|---|---|
+| ① 을 건너뛰고 ② 만 8칸에 씀 | 많음 | 바뀌지 않은 기록까지 영향 확인에 들어가고 제안이 틀림 |
+| ① 에서 `!=` 대신 `==` 를 씀 | 있음 | 바뀌지 않은 기록만 남음. `INC-202` 에서 `IndexError` 로 멈춤 |
+| ① 만 쓰고 ② 를 안 씀 · ② 를 8칸으로 씀 | 있음 | `IndentationError: expected an indented block after 'if' statement` |
 
-- 1번을 비워 두면 2번 줄이 `for` 바로 아래 줄이 되어 오류 없이 <mark style="background:#ffc4d6">**바뀌지 않은 기록까지 영향 확인에 들어갑니다.**</mark> 아래 두 줄(영향 확인 · 규칙 조정 제안)이 이 실수의 결과입니다.
+- 첫 줄의 실수는 오류 없이 `INC-301` 의 두 줄이 아래처럼 바뀝니다. 함께 쓰는 IP 를 허용 목록에 넣자는 <mark style="background:#ffc4d6">**잘못된 제안**</mark>이 나오는 것이 이 실수의 결과입니다.
 
 ```
  - 영향 확인: ['IP 차단 198.51.100.120', '세션 종료 jiwoo', '계정 잠금 jiwoo']
  - 규칙 조정 제안: 허용 목록에 추가 검토: 198.51.100.120
 ```
 
-- 2번을 비워 두면 `if` 아래에 실행할 줄이 없어 실행하기 전에 멈춥니다. 6번을 비워도 같은 오류가 납니다(문구는 파이썬 버전마다 조금 다릅니다).
-
-```
-IndentationError: expected an indented block
-```
-
-- 3번을 비워 두면 미리 채운 `remaining.append(target)` 줄이 앞줄보다 들여써져 있어 실행하기 전에 멈춥니다.
-
-```
-IndentationError: unexpected indent
-```
-
-- 3번에서 `and target in state["locked_users"]` 를 빠뜨리면 오류 없이 <mark style="background:#ffc4d6">**이미 해제된 `jiwoo` 가 「아직 잠기거나 차단된 대상」으로 나옵니다.**</mark> 잠금 기록이 있다는 것만 보고 지금 상태를 보지 않았기 때문입니다.
-
-```
- - 복구 확인: 아직 잠기거나 차단된 대상 ['jiwoo'] · 걸린 시간 25 분 · 기준 30 분 안 True
-```
-
-- 4번을 비워 두면 오류는 나지 않고 출력도 정답과 같습니다. 아래 `remaining.append(target)` 줄이 3번 `if` 안으로 들어가서, <mark style="background:#ffc4d6">**IP 차단이 풀리지 않아도 찾지 못합니다.**</mark> 오늘 샘플은 IP 차단이 모두 풀려서 4번을 비워도 출력이 같으니, 출력이 맞아도 코드를 다시 읽어 확인합니다.
-- 5번을 비워 두면 6번 줄이 `for` 바로 아래 줄이 되어 오류 없이 <mark style="background:#ffc4d6">**계정 오탐에도 「허용 목록에 추가」를 제안합니다.**</mark>
-
-```
- - 규칙 조정 제안: 허용 목록에 추가 검토: jiwoo
-```
-
-- 7번을 비워 두면 `undo_records` 가 만들어지지 않아 오류가 납니다. 되돌리기도 실행되지 않습니다.
-
-```
-NameError: name 'undo_records' is not defined
-```
-
-- 8번을 비워 두면 `result` 가 만들어지지 않아 9번 줄에서 오류가 납니다. 파이썬 버전에 따라 뒤에 `Did you mean: …` 이 더 붙을 수 있습니다.
-
-```
-NameError: name 'result' is not defined
-```
-
-- 9번을 비워 두면 오류 없이 <mark style="background:#ffc4d6">**결과 파일에 0건이 저장됩니다.**</mark> 화면에는 결과가 나오지만 기록이 남지 않습니다.
-
-```
---- 단계 4: fp_results.json 에 0 건 · fp_state_after.json 저장 · 기준 30 분
-```
+- 둘째 줄의 실수는 `INC-301` 의 영향 확인에 `IP 차단 198.51.100.120` 하나만 남고 제안도 `허용 목록에 추가 검토: 198.51.100.120` 으로 틀립니다. `INC-202` 는 바뀌지 않은 기록이 없어 영향 확인이 빈 리스트가 되고, `make_tuning_note` 의 `changes[0]` 에서 `IndexError: list index out of range` 로 멈춥니다.
 
 **관제에서는**
 
