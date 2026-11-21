@@ -35,10 +35,10 @@ source:
 
 뒤 검사는 앞 검사를 통과한 요청에만 할 수 있습니다. 앞에서 걸러 주지 않으면 코드가 멈춥니다.
 
-| 검사 | 앞에서 걸러 주지 않으면 |
-|---|---|
-| [2] 재직 | 사용자 파일에 없는 사용자의 `employed` 를 꺼내려다 `KeyError` 로 멈춤. 예: `USERS["minsu"]["employed"]` → `KeyError: 'minsu'` |
-| [4] 권한 | 역할 파일에 없는 역할의 리스트를 꺼내려다 `KeyError` 로 멈춤. 예: `ROLES["intern"]` → `KeyError: 'intern'` |
+| 검사 | 앞에서 걸러 주지 않으면 | 예 |
+|---|---|---|
+| [2] 재직 | 사용자 파일에 없는 사용자의 `employed` 를 꺼내려다 `KeyError` 로 멈춤 | `USERS["minsu"]["employed"]` → `KeyError: 'minsu'` |
+| [4] 권한 | 역할 파일에 없는 역할의 리스트를 꺼내려다 `KeyError` 로 멈춤 | `ROLES["intern"]` → `KeyError: 'intern'` |
 
 - `KeyError` 는 딕셔너리에 없는 키를 꺼내려 할 때 파이썬이 내는 오류입니다.
 - 하나만 걸려도 결론은 거부라서 남은 검사를 더 볼 필요가 없습니다. 끝까지 다 지난 요청만 허용하는 것이 기본 거부입니다.
@@ -57,14 +57,21 @@ source:
 
 **이 시간에 나오는 말** (먼저 짧게 봅니다)
 
-- `import json` 은 파이썬에 들어 있는 `json` 모듈(미리 만들어 둔 기능 묶음)을 불러와 `json.load` 를 쓸 수 있게 하는 줄입니다.
-- `with open(파일, encoding="utf-8") as 파일변수:` 와 `json.load(파일변수)` 로 JSON 파일을 딕셔너리로 읽습니다. `with` 아래 들여 쓴 줄이 끝나면 파일이 저절로 닫히고, `encoding="utf-8"` 은 한글 같은 글자가 깨지지 않게 읽으라는 뜻입니다.
-- `값 in 딕셔너리` 는 딕셔너리에 그 키가 있는지, `값 not in 딕셔너리` 는 없는지 검사합니다. 예: `role not in ROLES`. `값 not in 리스트` 는 리스트에 없는지 검사합니다.
-- `return` 은 함수가 결과를 돌려주고(리턴) 그 자리에서 끝나는 줄입니다. `return 값1, 값2` 로 두 값을 함께 리턴하고, `is_allowed, reason = 함수(…)` 로 나눠 받습니다.
-- `f"{resource}:{action}"` 처럼 f-문자열로 문자열을 합칩니다. 따옴표 앞에 `f` 를 붙이면 `{ }` 자리에 그 변수의 값이 들어갑니다.
-- `from rbac import check_permission` 처럼 내가 만든 파일의 함수를 불러옵니다. `from 파일이름 import 함수이름` 모양이고, 파일 이름에서 `.py` 는 뺍니다.
-- `if not 값:` 은 값이 거짓(`False`)일 때 실행됩니다.
-- 함수 첫 줄의 `""" … """` 는 **독스트링**(docstring · 닥스트링)이라 부르는 설명 글입니다. 함수가 무엇을 받고 리턴하는지 한 번에 적은 것이고 실행에는 영향이 없습니다.
+| 쓰는 모양 | 뜻 |
+|---|---|
+| `import json` | 파이썬에 들어 있는 `json` 모듈(미리 만들어 둔 기능 묶음)을 불러와 `json.load` 를 쓸 수 있게 함 |
+| `json.load(파일변수)` | `with open(…)` 으로 연 JSON 파일을 딕셔너리로 읽음 |
+| `값 in 딕셔너리` | 딕셔너리에 그 키가 있는지 검사 |
+| `값 not in 딕셔너리` | 그 키가 없는지 검사. 예: `role not in ROLES` |
+| `값 not in 리스트` | 리스트에 그 값이 없는지 검사 |
+| `return` | 함수가 결과를 돌려주고(리턴) 그 자리에서 끝남 |
+| `return 값1, 값2` | 두 값을 함께 리턴. `is_allowed, reason = 함수(…)` 로 나눠 받음 |
+| `f"{resource}:{action}"` | f-문자열. 따옴표 앞에 `f` 를 붙이면 `{ }` 자리에 그 변수의 값이 들어감 |
+| `from 파일이름 import 함수이름` | 내가 만든 파일의 함수를 불러옴. 파일 이름에서 `.py` 는 뺌. 예: `from rbac import check_permission` |
+| `if not 값:` | 값이 거짓(`False`)일 때 실행 |
+| `""" … """` | 함수 첫 줄의 **독스트링**(docstring · 닥스트링). 함수가 무엇을 받고 리턴하는지 적은 설명 글이고 실행에는 영향이 없음 |
+
+- 파일은 `with open(파일, encoding="utf-8") as 파일변수:` 로 엽니다. `with` 아래 들여 쓴 줄이 끝나면 파일이 저절로 닫히고, `encoding="utf-8"` 은 한글 같은 글자가 깨지지 않게 읽으라는 뜻입니다.
 
 `rbac.py` 가 시작할 때 읽어 두는 `ROLES` · `USERS` 는 이런 모양이고, 함수는 `is_allowed, reason` 으로 나눠 리턴합니다.
 

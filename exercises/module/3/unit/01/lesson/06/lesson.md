@@ -62,9 +62,12 @@ LOG = [                                                          # 접근 기록
 
 **이 시간에 나오는 말** (먼저 짧게 봅니다)
 
-- 키별 건수는 `old_count = d.get(키, 0)` 로 지금까지 센 수를 꺼내고(처음이면 0), `d[키] = old_count + 1` 로 1 늘려 다시 적습니다(세는 모양을 두 줄로 나눈 것입니다).
-- `for 키, 값 in d.items():` 로 딕셔너리의 키와 값을 함께 꺼냅니다.
-- `from rbac import check_permission, ROLES, USERS` 처럼 함수뿐 아니라 파일 맨 위의 변수도 같은 방법으로 불러옵니다.
+| 쓰는 모양 | 뜻 |
+|---|---|
+| `old_count = d.get(키, 0)` | 키별 건수 세기 첫 줄. 지금까지 센 수를 꺼냄(처음이면 0) |
+| `d[키] = old_count + 1` | 키별 건수 세기 둘째 줄. 1 늘려 다시 적음 |
+| `for 키, 값 in d.items():` | 딕셔너리의 키와 값을 함께 꺼냄 |
+| `from … import` 로 변수 불러오기 | `from rbac import check_permission, ROLES, USERS` 처럼 함수뿐 아니라 파일 맨 위의 변수도 같은 방법으로 불러옴 |
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="sales 가 가진 권한 중 기록에서 쓰지 않은 SALES:CHANGE 가 줄일 후보다"></figure>
 
@@ -223,9 +226,9 @@ for … in ROLES.items():        # 단계 2: 들여쓰기 없음
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 지난 기록에 새 규칙 적용 | 기록 재판정(replay): `for … in LOG:` 안에서 `check_permission(…)`, 같은 반복문에서 쓴 권한도 모음 |
+| 지난 기록에 새 규칙 적용 | 기록 재판정(replay): `for … in LOG:` 안에서 `check_permission(…)` |
 | 키별 건수 세기 | `old_count = counts.get(키, 0)` → `counts[키] = old_count + 1` |
-| 역할별 사용 모으기 | `used[role].append(f"{resource}:{action}")` |
+| 역할별 사용 모으기 | 같은 반복문에서 `used[role].append(f"{resource}:{action}")` |
 | 쓰이지 않은 권한 | 역할의 권한 중 `used.get(role, [])` 에 없는 것 |
 
 - 도전 1-1 파일을 깃허브에 올리려면 실습 1-3 끝의 「이번 Unit 마무리」 3번 순서를 한 번 더 합니다.

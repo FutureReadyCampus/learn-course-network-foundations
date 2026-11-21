@@ -28,12 +28,10 @@ source:
 
 ## 2.1 테스트 케이스와 assert
 
-- **테스트 케이스**(test case · 테스트 케이스)
-  - 「이 입력이면 이 결과가 나와야 한다」 한 쌍
-  - 기대 결과를 **먼저** 정하고, 실행 결과와 비교한다
-- **경계값**(boundary value · 바운더리 밸류)
-  - 결과가 바뀌는 바로 그 지점의 값. 예: 만료 시각 18:00 의 1분 전(17:59)과 정각(18:00)
-  - 실수가 가장 많이 숨어 있는 곳이라 꼭 테스트한다
+| 말 | 뜻 | 쓰는 법 |
+|---|---|---|
+| **테스트 케이스**(test case · 테스트 케이스) | 「이 입력이면 이 결과가 나와야 한다」 한 쌍 | 기대 결과를 **먼저** 정하고, 실행 결과와 비교한다 |
+| **경계값**(boundary value · 바운더리 밸류) | 결과가 바뀌는 바로 그 지점의 값. 예: 만료 시각 18:00 의 1분 전(17:59)과 정각(18:00) | 실수가 가장 많이 숨어 있는 곳이라 꼭 테스트한다 |
 
 **문법 상자 — `assert` (어서트)**
 
@@ -256,7 +254,15 @@ print("6 통과")                                                  # 6번 assert
    ```
    - 명령 풀이: `python` 파이썬으로 파일을 실행 · `test_policy.py` 실행할 파일
    맥북: `python3 test_policy.py`
-   - `AssertionError` 가 나오면 설명 문자열로 어느 테스트인지 보고, 그 테스트의 입력과 기대 결과가 2.1 의 표와 같은지 다시 봅니다. `ModuleNotFoundError` 가 나오면 `pwd` 가 `…/access_control` 인지 확인하고, `No module named 'config_loader'` 이면 「제공 파일」의 `config_loader.py` 가, `No module named 'policy'` 이면 실습 1-3 파일이 없는 것입니다.
+   - 오류가 나오면 아래 표로 봅니다.
+
+   | 나온 오류 | 볼 곳 |
+   |---|---|
+   | `AssertionError` | 설명 문자열로 어느 테스트인지 보고, 그 테스트의 입력과 기대 결과가 2.1 의 표와 같은지 다시 봄 |
+   | `ModuleNotFoundError` | `pwd` 가 `…/access_control` 인지 확인 |
+   | `No module named 'config_loader'` | 「제공 파일」의 `config_loader.py` 가 없음 |
+   | `No module named 'policy'` | 실습 1-3 파일이 없음 |
+
 4. **[VS Code]** `test_policy_extra.py` 를 만들고 붙여 넣습니다.
    - 만드는 방법은 위 1번과 같습니다(VS Code 새 파일 아이콘). 만들 파일 이름은 `test_policy_extra.py` 입니다. 붙여 넣을 내용은 위 코드 상자입니다.
 5. **[터미널]** 실행합니다. **`5 통과` 가 먼저 출력되고, 그다음 6번 테스트에서 `AssertionError` 가 나는 것이 정상입니다.** 5번 테스트에서 멈췄다면 그 사실을 보고서 (가)에 적습니다.
