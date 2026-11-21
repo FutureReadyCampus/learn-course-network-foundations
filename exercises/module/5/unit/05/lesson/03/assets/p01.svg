@@ -20,7 +20,7 @@
 <line x1="342" y1="95" x2="378" y2="95" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
 <line x1="522" y1="95" x2="558" y2="95" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
 <rect x="380" y="190" width="140" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="450" y="220" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">응용 5-1 (선택)</text>
+<text x="450" y="220" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">응용 5-1 (여유가 되면)</text>
 <text x="450" y="244" font-size="14" fill="#292929" text-anchor="middle">같은 파일을 만든다</text>
 <line x1="450" y1="188" x2="450" y2="134" stroke="#666660" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#a-p01)"/>
 <rect x="20" y="290" width="680" height="70" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>

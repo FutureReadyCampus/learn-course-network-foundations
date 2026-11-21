@@ -1,11 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img">
 <title>실습 5-2 보고서: 출력·FAIL, INC-405 재계산, INC-406, 깃허브 마무리를 채운다</title>
-<desc>(가)에는 출력 전체와 FAIL 이 나온 로그·점검 이름·위반한 알림 번호를 씁니다. (나)는 INC-405 의 users_on_ip 와 점수 합계로 다시 구한 결정을, (다)는 INC-406 의 before·after 와 lock_account 로 gaeun 이 잠기지 않은 이유를 씁니다. 마무리 (가)에는 git status 에서 .env · .venv 가 보였는지 씁니다.</desc>
+<desc>핵심 질문은 (가) · (나) · 마무리 (가)이고 (다)는 응용입니다. (가)에는 출력 전체와 FAIL 이 나온 로그·점검 이름·위반한 알림 번호를 씁니다. (나)는 INC-405 의 users_on_ip 와 점수 합계로 다시 구한 결정을, (다)는 INC-406 의 before·after 와 lock_account 로 gaeun 이 잠기지 않은 이유를 씁니다. 마무리 (가)에는 git status 에서 .env · .venv 가 보였는지 씁니다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="bold">실습 5-2 · 마무리 보고서: 채울 칸</text>
-<rect x="20" y="54" width="100" height="80" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="70.0" y="99.2" font-size="15" fill="#292929" text-anchor="middle">(가)</text>
+<rect x="20" y="54" width="100" height="80" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="70.0" y="88.8" font-size="15" fill="#292929" text-anchor="middle">(가)</text>
+<text x="70.0" y="109.8" font-size="15" fill="#292929" text-anchor="middle">핵심 질문</text>
 <rect x="128" y="54" width="572" height="80" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="140" y="88.8" font-size="15" fill="#292929" text-anchor="start">출력 전체(코드 상자) · FAIL 이 나온 로그</text>
 <text x="140" y="109.8" font-size="15" fill="#292929" text-anchor="start">FAIL 점검 이름 · 위반한 알림 번호</text>
@@ -15,9 +16,9 @@
 <rect x="128" y="146" width="572" height="80" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="140" y="180.8" font-size="15" fill="#292929" text-anchor="start">INC-405 의 users_on_ip 와 점수 합계 · 다시 구한 결정</text>
 <text x="140" y="201.8" font-size="15" fill="#292929" text-anchor="start">decision 만 읽으면 위반을 놓치는 이유</text>
-<rect x="20" y="238" width="100" height="80" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<rect x="20" y="238" width="100" height="80" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5" stroke-dasharray="6 4"/>
 <text x="70.0" y="272.8" font-size="15" fill="#292929" text-anchor="middle">(다)</text>
-<text x="70.0" y="293.8" font-size="15" fill="#292929" text-anchor="middle">핵심 질문</text>
+<text x="70.0" y="293.8" font-size="15" fill="#292929" text-anchor="middle">응용</text>
 <rect x="128" y="238" width="572" height="80" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="140" y="272.8" font-size="15" fill="#292929" text-anchor="start">INC-406 의 before · after · lock_account 와 연결</text>
 <text x="140" y="293.8" font-size="15" fill="#292929" text-anchor="start">점검 ③이 게이트와 별도로 필요한 이유</text>

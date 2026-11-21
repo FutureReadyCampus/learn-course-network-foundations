@@ -24,12 +24,12 @@ source:
 
 | 순서 | 하는 일 | 가져다 쓰는 함수 | 엔진의 함수 |
 |---|---|---|---|
-| 1. 플레이북 찾기 | 알림의 탐지 규칙과 등급이 맞는 플레이북을 찾는다 | Unit 1 `match_playbooks` | `run_soar_pipeline` (6번) |
-| 2. 조치 요청 만들기 | 조치 이름 · 대상 · 등급 · 그 IP 를 쓰는 계정 수를 담은 딕셔너리를 만든다 | Unit 2 `count_users_on_ip` | `make_request` (1번) |
-| 3. 승인 게이트 | 자동 · 승인 필요 · 차단 금지를 정한다 | Unit 4 `decide_gate` | `run_step` (4 · 5번) |
-| 4. 조치 실행 | 자동으로 정해진 조치만 실행한다 | Unit 2 `lock_account` · `block_ip` | `execute_action` (2 · 3번) |
-| 5. 티켓 | 처리 결과를 티켓 한 장으로 남긴다 | Unit 3 `make_ticket` | `open_ticket` (미리 채움) |
-| 6. 오류 격리 | 알림 하나의 오류를 그 알림의 실패 기록으로 한정하고 다음 알림으로 넘어간다 | `try` / `except` | `run_all` (7 · 8번) |
+| 1. 플레이북 찾기 | 알림의 탐지 규칙과 등급이 맞는 플레이북을 찾는다 | Unit 1 `match_playbooks` | `run_soar_pipeline` |
+| 2. 조치 요청 만들기 | 조치 이름 · 대상 · 등급 · 그 IP 를 쓰는 계정 수를 담은 딕셔너리를 만든다 | Unit 2 `count_users_on_ip` | `make_request` |
+| 3. 승인 게이트 | 자동 · 승인 필요 · 차단 금지를 정한다 | Unit 4 `decide_gate` | `run_step` (①) |
+| 4. 조치 실행 | 자동으로 정해진 조치만 실행한다 | Unit 2 `lock_account` · `block_ip` | `execute_action` |
+| 5. 티켓 | 처리 결과를 티켓 한 장으로 남긴다 | Unit 3 `make_ticket` | `open_ticket` |
+| 6. 오류 격리 | 알림 하나의 오류를 그 알림의 실패 기록으로 한정하고 다음 알림으로 넘어간다 | `try` / `except` | `run_all` (②) |
 
 - 알림 한 건의 처리 결과(`outcome`)는 <mark>자동 실행 · 승인 대기 · 차단 금지 · 조치 없음 · 실패</mark> 다섯 가지입니다. 조치 없음은 승인 게이트를 거칠 조치가 없는 알림입니다. `decide_outcome` 은 사람이 먼저 봐야 하는 결과가 앞서도록 승인 대기부터 판단합니다.
 - <mark style="background:#e0d4ff">Unit 1 플레이북의 승인 값(`approval`)은 이 엔진이 읽지 않습니다.</mark> Unit 4 실습 4-1 에서 승인 여부를 플레이북 하나에 값 하나로 정하는 대신 요청마다 위험 점수로 정하도록 바꿨기 때문입니다. 플레이북에서는 `actions` 만 읽습니다.
@@ -72,19 +72,19 @@ for student in students:                                                        
 
 오류를 받은 뒤에는 오류의 종류 이름과 내용을 반드시 기록해서 사람이 볼 수 있게 합니다.
 
-함수 아홉 개와 실행 파일 가운데 직접 쓰는 곳은 **아홉 군데**입니다.
+함수 아홉 개와 실행 파일 가운데 직접 쓰는 곳은 **두 줄**(① · ②)입니다. 나머지는 모두 미리 채워 두었습니다.
 
 ```
-soar_engine.py  load_context          : 설정 파일을 읽어 엔진 재료를 만든다 (미리 채움)
-                make_request          : IP 차단이면 그 IP 를 쓰는 계정 수를 센다 (1번)
-                execute_action        : 계정 잠금 (2번) · IP 차단 (3번) 을 실행한다
-                run_step              : 승인 게이트에 묻고 (4번) 자동이면 (5번) 실행한다
-                decide_outcome        : 조치 결과들로 알림의 처리 결과를 정한다 (미리 채움)
-                open_ticket           : 처리 결과로 티켓 한 장을 만든다 (미리 채움)
-                run_soar_pipeline     : 게이트를 거칠 조치만 (6번) 처리하고 티켓까지 만든다
-                make_failure_result   : 실패한 알림의 결과 기록을 만든다 (미리 채움)
-                run_all               : 알림마다 처리하고 (7번) 오류는 실패로 기록한다 (8번)
-실행 파일       exercise5-1_run.py      : 처리 결과별 알림 수를 센다 (9번)
+soar_engine.py  load_context          : 설정 파일을 읽어 엔진 재료를 만든다
+                make_request          : IP 차단이면 그 IP 를 쓰는 계정 수를 센다
+                execute_action        : 계정 잠금 · IP 차단을 실행한다
+                run_step              : 승인 게이트에 묻고 자동이면 (①) 실행한다
+                decide_outcome        : 조치 결과들로 알림의 처리 결과를 정한다
+                open_ticket           : 처리 결과로 티켓 한 장을 만든다
+                run_soar_pipeline     : 게이트를 거칠 조치만 처리하고 티켓까지 만든다
+                make_failure_result   : 실패한 알림의 결과 기록을 만든다
+                run_all               : 알림마다 처리하고 오류는 실패로 기록한다 (②)
+실행 파일       exercise5-1_run.py      : 처리 결과별 알림 수를 센다 (직접 쓰는 줄 없음)
 ```
 
 ## 실습 5-1 · 알림 처리 통합 엔진 만들기
@@ -95,18 +95,15 @@ soar_engine.py  load_context          : 설정 파일을 읽어 엔진 재료를
 - **만드는 것**: 조치 요청 · 조치 실행 · 승인 게이트 거치기 · 알림 한 건 처리 · 오류 격리(`soar_engine.py`), 처리 결과별 알림 수 세기(`exercise5-1_run.py`).
 - **실행하면**: <mark>단계 1: 불러온 알림 수와 승인 기준, 단계 2: 알림마다 처리 결과와 승인 게이트의 결정, 단계 3: 처리 결과별 알림 수, 단계 4: 저장한 로그와 티켓 파일이 나옵니다.</mark>
 
-**할 일**: 두 파일을 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행한 뒤 단계 2 를 알림마다 읽습니다.
+**할 일**
 
-**`soar_engine.py`** — 엔진 함수 모음입니다. 응용 5-1에서 가져와 사용(import)합니다. 실습 5-2에서는 이 파일을 가져오지 않고 엔진이 남긴 로그 파일을 읽습니다. 직접 쓰는 곳은 1 ~ 8번입니다.
+1. 두 파일을 만들어 붙여 넣습니다.
+2. `soar_engine.py` 의 `# ←` 두 곳(① · ②)을 한 줄씩 채웁니다.
+3. 실행한 뒤 단계 2 를 알림마다 읽습니다.
 
-| 번호 | 쓰는 것 |
-|---|---|
-| 1번 · 2번 · 3번 | 미리 채운 `if` · `else` 줄 아래에 들여쓴 한 줄 |
-| 5번 · 6번 | `if` 한 줄(그 아래 미리 채운 줄이 `if` 안쪽) |
-| 7번 | `try:` 아래에 한 줄 |
-| 8번 | `except` 줄 한 줄(그 아래 미리 채운 줄이 `except` 안쪽) |
+**`soar_engine.py`** — 엔진 함수 모음입니다. 응용 5-1에서 가져와 사용(import)합니다. 실습 5-2에서는 이 파일을 가져오지 않고 엔진이 남긴 로그 파일을 읽습니다.
 
-- 코드가 길지만 처음부터 전부 이해하지 않아도 됩니다. 붙여 넣은 뒤 번호 주석이 있는 함수 다섯 개(`make_request` · `execute_action` · `run_step` · `run_soar_pipeline` · `run_all`)를 위에서부터 채웁니다. 미리 채운 함수(`load_context` · `decide_outcome` · `open_ticket` · `make_failure_result`)는 실행한 뒤 출력과 맞춰 읽으면 됩니다.
+- 코드가 길지만 처음부터 전부 이해하지 않아도 됩니다. 붙여 넣은 뒤 `run_step` 의 ① 과 `run_all` 의 ② 만 채웁니다. 나머지 함수는 실행한 뒤 출력과 맞춰 읽으면 됩니다.
 
 ```python
 from incident import load_json, match_playbooks                                         # Unit 1 파일의 JSON 읽기 · 플레이북 찾기 함수를 불러온다
@@ -138,8 +135,7 @@ def make_request(alert, action, context):                                       
     """알림 한 건과 조치 이름으로 승인 게이트가 읽는 조치 요청 딕셔너리를 만든다. 위험 점수에 쓰는 「그 IP 를 함께 쓰는 계정 수」를 채울 때 쓴다."""
     users_on_ip = 0                                                                     # 그 IP 를 쓰는 계정 수 : 계정 조치이면 0 — 미리 채운 줄
     if action == "IP 차단":                                                             # 조치가 IP 차단이면 — 미리 채운 줄
-        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-        # 1. count_users_on_ip(alert["entity"], context["ip_users"]) 의 결과를 users_on_ip 에 저장한다
+        users_on_ip = count_users_on_ip(alert["entity"], context["ip_users"])           # 그 IP 를 쓰는 계정 수를 센다 — 미리 채운 줄
     request = {                                                                         # 승인 게이트가 읽는 조치 요청 한 건 — 미리 채운 줄
         "id": alert["id"],                                                              # 요청 번호는 알림 번호를 쓴다
         "incident": alert["id"],                                                        # 인시던트 번호
@@ -157,18 +153,16 @@ def execute_action(request, context):                                           
     state = context["state"]                                                            # 연습용 시스템 상태 — 미리 채운 줄
     vip_accounts = context["policy"]["vip_accounts"]                                    # VIP 계정 리스트 — 미리 채운 줄
     if request["action"] == "계정 잠금":                                                # 조치가 계정 잠금이면 — 미리 채운 줄
-        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-        # 2. lock_account(request["target"], state, vip_accounts, request["incident"], ENGINE_REASON) 의 결과를 record 에 저장한다
+        record = lock_account(request["target"], state, vip_accounts, request["incident"], ENGINE_REASON)  # 계정을 잠그고 조치 기록을 받는다 — 미리 채운 줄
     else:                                                                               # 아니면 IP 차단이다 — 미리 채운 줄
-        # 3. block_ip(request["target"], state, request["incident"], ENGINE_REASON, DEFAULT_TTL) 의 결과를 record 에 저장한다
+        record = block_ip(request["target"], state, request["incident"], ENGINE_REASON, DEFAULT_TTL)  # IP 를 차단하고 조치 기록을 받는다 — 미리 채운 줄
     return record                                                                       # 조치 기록을 리턴한다 — 미리 채운 줄
 
 
 def run_step(alert, action, context):                                                   # 알림 · 조치 이름 · 엔진 재료를 받는 함수
     """조치 하나를 승인 게이트에 묻고, 자동으로 정해졌을 때만 실행해서 결정 · 이유 · 실행 여부를 담은 딕셔너리를 리턴한다. 조치마다 한 번씩 쓴다."""
     request = make_request(alert, action, context)                                      # 승인 게이트에 보낼 조치 요청을 만든다 — 미리 채운 줄
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 4. decide_gate(request, context["policy"]) 의 두 결과를 decision, reasons 에 저장한다
+    decision, reasons = decide_gate(request, context["policy"])                         # 승인 게이트의 결정과 이유 리스트를 함께 받는다 — 미리 채운 줄
     step = {                                                                            # 조치 하나의 결과 : 처음에는 실행하지 않은 것으로 적는다 — 미리 채운 줄
         "action": action,                                                               # 조치 이름
         "target": alert["entity"],                                                      # 조치 대상
@@ -179,7 +173,7 @@ def run_step(alert, action, context):                                           
         "after": "",                                                                    # 조치 후 상태
         "request": request,                                                             # 승인 게이트가 본 조치 요청(나중에 점검할 때 다시 쓴다)
     }
-    # 5. decision 이 "자동" 이면 (if, ==)
+    # ① decision 이 "자동" 이면 (if, ==)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
         record = execute_action(request, context)                                       # 조치를 실행하고 조치 기록을 받는다 — 미리 채운 줄
         step["executed"] = True                                                         # 실행했다고 적는다 — 미리 채운 줄
         step["before"] = record["before"]                                               # 조치 전 상태를 적는다 — 미리 채운 줄
@@ -233,8 +227,7 @@ def run_soar_pipeline(alert, context):                                          
     for playbook in playbooks:                                                          # 맞는 플레이북을 하나씩 꺼낸다 — 미리 채운 줄
         playbook_id = playbook["id"]                                                    # 플레이북 번호를 적는다 — 미리 채운 줄
         for action in playbook["actions"]:                                              # 플레이북의 액션을 하나씩 꺼낸다 — 미리 채운 줄
-            # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-            # 6. action 이 CONTAINMENT_ACTIONS 안에 있으면 (if, in)
+            if action in CONTAINMENT_ACTIONS:                                           # 승인 게이트를 거쳐 실행하는 조치이면 — 미리 채운 줄
                 step = run_step(alert, action, context)                                 # 승인 게이트를 거쳐 실행한다 — 미리 채운 줄
                 steps.append(step)                                                      # 조치 결과를 추가한다 — 미리 채운 줄
     outcome = decide_outcome(steps)                                                     # 알림 전체의 처리 결과를 정한다 — 미리 채운 줄
@@ -274,15 +267,14 @@ def run_all(alerts, context):                                                   
     results = []                                                                        # 알림마다 결과 기록을 모을 빈 리스트 — 미리 채운 줄
     for alert in alerts:                                                                # 알림을 하나씩 꺼낸다 — 미리 채운 줄
         try:                                                                            # 오류가 날 수 있는 처리를 시작한다 — 미리 채운 줄
-            # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-            # 7. run_soar_pipeline(alert, context) 의 결과를 result 에 저장한다
-        # 8. 어떤 종류의 오류든 error 에 저장해 받는다 (except, Exception, as)
+            result = run_soar_pipeline(alert, context)                                  # 알림 한 건을 처음부터 끝까지 처리한다 — 미리 채운 줄
+        # ② 어떤 종류의 오류든 error 에 저장해 받는다 (except, Exception, as)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
             result = make_failure_result(alert, error)                                  # 실패 기록을 만든다 — 미리 채운 줄
         results.append(result)                                                          # 정상 결과든 실패 기록이든 결과 리스트에 추가한다 — 미리 채운 줄
     return results                                                                      # 결과 기록 리스트를 리턴한다 — 미리 채운 줄
 ```
 
-**`exercise5-1_run.py`** — 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+**`exercise5-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 엔진으로 알림 8건을 처리하고, 처리 결과별 알림 수를 센 뒤 로그와 티켓 파일을 저장합니다.
 
 - 단계 3 의 `for outcome in counts:` 처럼 딕셔너리를 `for` 로 돌리면 키(처리 결과 이름)가 하나씩 나오고, 그 키의 값은 `counts[outcome]` 으로 꺼냅니다.
 
@@ -302,8 +294,7 @@ counts = {"자동 실행": 0, "승인 대기": 0, "차단 금지": 0, "조치 �
 print("--- 단계 2: 알림마다 처리 결과")                                                  # 단계 2 시작을 알리는 줄
 for result in results:                                                                   # 결과 기록을 하나씩 꺼낸다
     outcome = result["outcome"]                                                          # 이 알림의 처리 결과 — 미리 채운 줄
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 9. counts[outcome] 에 counts[outcome] + 1 을 저장한다 (1 늘린다)
+    counts[outcome] = counts[outcome] + 1                                                # 이 처리 결과의 알림 수를 1 늘린다 — 미리 채운 줄
     if outcome == "실패":                                                                # 처리하지 못한 알림이면
         print(result["incident"], result["entity"], "→", outcome, "·", result["error"])  # 알림과 오류를 출력한다
     else:                                                                                # 처리한 알림이면
@@ -323,10 +314,21 @@ save_json(context["tickets"], TICKET_PATH)                                      
 print("--- 단계 4:", LOG_PATH, "에", len(results), "건 ·", TICKET_PATH, "에 티켓", len(context["tickets"]), "장 저장")  # 단계 4 시작을 알리는 줄과 저장한 수
 ```
 
+**직접 쓰는 곳** — `soar_engine.py` 의 두 줄입니다. 주석 줄은 그대로 두고 각 주석 바로 아래 줄에 씁니다.
+
+| 빈칸 | 함수 | 쓰는 줄 | 들여쓰기 |
+|---|---|---|---|
+| ① | `run_step` | `decision` 이 「자동」이면 (`if`) | 4칸 |
+| ② | `run_all` | 어떤 오류든 `error` 로 받기 (`except`) | 8칸 |
+
+- ① 확인: ① 만 쓰고 실행하면 `SyntaxError: expected 'except' or 'finally' block` 이 나옵니다. ② 를 아직 안 써서 `try:` 짝이 없어 나는 오류이니 정상입니다. 막히면: 「같은가」는 `==` 로 묻습니다. `if decision == ` 뒤에 `"자동"` 과 `:` 를 붙입니다. 그 아래 미리 채운 네 줄이 `if` 안쪽입니다.
+- ② 확인: ② 까지 쓰고 실행하면 단계 2 에 `INC-402 hana → 실패 · KeyError: 'grade'` 가 나오고 그 아래 `INC-403` 부터 계속 나오면 성공입니다. 막히면: 위 문법 상자의 `except Exception as error:` 와 똑같이 쓰고, 바로 위 `try:` 와 같은 8칸에서 시작합니다.
+- 채우기 전에 실행하면 `IndentationError: unexpected indent` 가 나오고 아무것도 처리되지 않습니다. ① 자리 아래의 미리 채운 줄(`record = execute_action(…)`)이 받쳐 줄 `if` 없이 앞줄보다 들여써져 있기 때문입니다.
+
 **순서**
 
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `soar_engine.py` 와 `exercise5-1_run.py` 파일을 만들어 연 뒤, 이 페이지의 코드 상자를 붙여 넣고 저장합니다.
-2. **[VS Code]** `soar_engine.py` 1 ~ 8번, `exercise5-1_run.py` 9번을 씁니다. 막히면 위 문법 상자와 아래 「실습 5-1 정리」를 봅니다.
+2. **[VS Code]** `soar_engine.py` 의 ① · ② 를 씁니다. 1.1 표의 「3. 승인 게이트」와 「6. 오류 격리」 줄, 위 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python exercise5-1_run.py
@@ -336,18 +338,20 @@ print("--- 단계 4:", LOG_PATH, "에", len(results), "건 ·", TICKET_PATH, "�
    - 단계 2 는 알림마다 1줄이고, 조치가 있는 알림은 조치마다 1 ~ 2줄이 더 붙습니다. 단계 3 은 5줄입니다.
 5. **[VS Code]** 새로 생긴 `engine_log.json` 과 `engine_tickets.json` 을 열어 <mark>`INC-402` 의 `error` 와 `TCK-1` 의 `done`</mark> 을 읽습니다.
 6. **[보고서]** `report_u5.md` 의 `## 실습 5-1` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
-   - (가) 실행한 출력 전체를 붙여 넣고, 처리 결과별 알림 수와 승인 대기인 알림 번호를 적어 주세요.
-   - (나) [핵심 질문] `INC-402` 는 실패인데 `INC-403` ~ `INC-408` 은 처리됐습니다. 단계 2 의 `INC-402` 오류 문장과 `run_all` 의 `except` 줄을 근거로 그 이유를 적고, `try` / `except` 가 없으면 `INC-402` 이후의 알림이 어떻게 되는지 적어 주세요.
-   - (다) [핵심 질문] `INC-404` 와 `INC-406` 은 둘 다 high 등급인데 결과가 「차단 금지」와 「승인 대기」로 다릅니다. 단계 2 의 결정 이유를 근거로 그 차이를 적고, 승인 게이트가 `execute_action` 보다 먼저 와야 하는 이유도 적어 주세요.
+   - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 처리 결과별 알림 수와 승인 대기인 알림 번호를 적어 주세요.
+   - (나) [핵심 질문] `INC-402` 는 실패인데 `INC-403` ~ `INC-408` 은 처리됐습니다. 단계 2 의 `INC-402` 오류 문장과 ② 에 쓴 `except` 줄을 근거로 그 이유를 적고, `try` / `except` 가 없으면 `INC-402` 이후의 알림이 어떻게 되는지 적어 주세요.
+   - (다) [응용] `INC-404` 와 `INC-406` 은 둘 다 high 등급인데 결과가 「차단 금지」와 「승인 대기」로 다릅니다. 단계 2 의 결정 이유를 근거로 그 차이를 적고, 승인 게이트가 `execute_action` 보다 먼저 와야 하는 이유도 적어 주세요.
+
+**확인** — 단계 3 이 `자동 실행 : 2 건` · `승인 대기 : 2 건` · `차단 금지 : 1 건` · `조치 없음 : 2 건` · `실패 : 1 건` 이고, 단계 4 에 `티켓 7 장 저장` 이 나오면 성공입니다. 안 나오면 「정답」 레슨의 실습 5-1 출력과 한 줄씩 맞춰 보고, `실패` 가 6 건이면 「자주 틀리는 곳」의 ① 을 봅니다.
 
 ## 실습 5-1 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 함수 결과를 변수에 저장하기 | `users_on_ip = count_users_on_ip(alert["entity"], context["ip_users"])` |
-| 두 결과를 함께 받기 | `decision, reasons = decide_gate(request, context["policy"])` |
-| 같으면 | `if decision == "자동":` |
-| 리스트 안에 있으면 | `if action in CONTAINMENT_ACTIONS:` |
-| 어떤 종류의 오류든 받기 | `except Exception as error:` |
-| 1 늘려 다시 저장하기 | `counts[outcome] = counts[outcome] + 1` |
+| 승인 게이트에 묻기 | `decision, reasons = decide_gate(request, context["policy"])` |
+| 자동일 때만 실행 (①) | `if decision == "자동":` |
+| 게이트를 거칠 조치만 | `if action in CONTAINMENT_ACTIONS:` |
+| 알림 한 건 처리 | `result = run_soar_pipeline(alert, context)` |
+| 어떤 오류든 받기 (②) | `except Exception as error:` |
+| 처리 결과별로 세기 | `counts[outcome] = counts[outcome] + 1` |
 ---
