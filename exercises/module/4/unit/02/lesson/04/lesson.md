@@ -213,16 +213,14 @@ dtype: int64
 
 **한 장 정리**
 
-| 함수 | 받는 것 | 리턴하는 것 |
-|---|---|---|
-| `load_events` | 파일 경로 | 이벤트 표(미리 채움) |
-| `pick_login_failures` | 이벤트 표 | 로그인 요청이면서 실패한 행만 담은 표 |
-| `count_by_ip` | 로그인 실패 표 | 주소별 실패 횟수(미리 채움) |
-| `pick_alert_ips` | 주소별 횟수와 알림 기준 | 기준 이상인 주소와 횟수 |
+| 함수 | 받는 것 | 리턴하는 것 | 직접 쓰는 곳 |
+|---|---|---|---|
+| `load_events` | 파일 경로 | 이벤트 표 | 없음(미리 채움) |
+| `pick_login_failures` | 이벤트 표 | 로그인 요청이면서 실패한 행만 담은 표 | 1 ~ 6번: 로그인 요청인 행과 실패인 행을 `&` 로 이어 걸러 내기 |
+| `count_by_ip` | 로그인 실패 표 | 주소별 실패 횟수 | 없음(미리 채움) |
+| `pick_alert_ips` | 주소별 횟수와 알림 기준 | 기준 이상인 주소와 횟수 | 7 · 8번: 횟수가 기준 이상인 주소만 남기기 |
 
 - **직접 쓰는 곳은 여덟 군데**(번호 1 ~ 8)이고, 함수 두 개 안에 나뉘어 있습니다.
-  - `pick_login_failures`(1 ~ 6번): 로그인 요청인 행과 실패인 행을 `&` 로 이어 걸러 냅니다.
-  - `pick_alert_ips`(7 · 8번): 횟수가 기준 이상인 주소만 남깁니다.
 - 주소별로 그룹화해 세는 `count_by_ip` 는 실습 2-2에서 배운 `groupby().size()` 와 같아서 미리 채웠습니다.
 
 ## 실습 2-3 · 로그인 실패 5번 이상인 주소 찾기
@@ -335,10 +333,14 @@ print(alert_ips)                                               # 알림을 보�
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 로그인 요청인 행 | `actions = events["action"]` → `is_login = actions == "POST /login"` |
-| 실패인 행 | `results = events["result"]` → `is_fail = results == "실패"` |
-| 둘 다인 행 | `both_true = is_login & is_fail` → `login_failures = events[both_true]` |
-| 기준 이상인 주소 | `is_many = ip_login_fail_counts >= limit` → `alert_ips = ip_login_fail_counts[is_many]` |
+| `action` 열 꺼내기 | `actions = events["action"]` |
+| 로그인 요청인 행 | `is_login = actions == "POST /login"` |
+| `result` 열 꺼내기 | `results = events["result"]` |
+| 실패인 행 | `is_fail = results == "실패"` |
+| 둘 다인 행 | `both_true = is_login & is_fail` |
+| 둘 다인 행만 남기기 | `login_failures = events[both_true]` |
+| 기준 이상인지 비교 | `is_many = ip_login_fail_counts >= limit` |
+| 기준 이상인 주소만 남기기 | `alert_ips = ip_login_fail_counts[is_many]` |
 
 ---
 
@@ -361,7 +363,16 @@ ls
 ```
 
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
-- `normalized_events.json` · `events_basic.py` · `events_time.py` · `login_detection.py` · `exercise2-1_run.py` · `exercise2-2_run.py` · `exercise2-3_run.py` · `failed_events.csv` 와 <mark>`report_u2.md` 가 보여야</mark> 합니다.
+- 아래 파일이 <mark>`report_u2.md` 까지 모두 보여야</mark> 합니다.
+
+| 파일 | 만든 곳 |
+|---|---|
+| `normalized_events.json` | 시작하기 |
+| `events_basic.py` · `exercise2-1_run.py` | 실습 2-1 |
+| `events_time.py` · `exercise2-2_run.py` | 실습 2-2 |
+| `failed_events.csv` | 실습 2-2 실행 때 생김 |
+| `login_detection.py` · `exercise2-3_run.py` | 실습 2-3 |
+| `report_u2.md` | 보고서 쓰기 |
 
 **3. 깃허브에 올리기**
 

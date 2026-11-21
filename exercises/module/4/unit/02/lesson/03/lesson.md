@@ -146,11 +146,15 @@ dtype: int64
 
 **알아 둘 것 — 미리 채운 `add_hour` 읽기: 시각에서 「시」만 꺼내 새 열로 붙이기**
 
-`add_hour` 는 세 줄입니다. 실습 2-2 에 미리 채워져 있어서 직접 쓰지 않고 읽기만 합니다.
+`add_hour` 는 세 줄입니다. 실습 2-2 에 미리 채워져 있어서 직접 쓰지 않고 읽기만 합니다. 번호는 아래 코드 주석의 번호입니다.
 
-1. `pd.to_datetime(열)` 은 `"2026-11-02 09:01:05"` 같은 문자열을 날짜·시간 값으로 바꿉니다. <mark>날짜·시간 값이어야 「시」나 「분」 같은 부분만 꺼낼 수 있습니다.</mark>
-2. <mark>`.dt.hour` 는 시각 값에서 「시」만 숫자로 꺼냅니다</mark>(02:14 → 2, 09:01 → 9). `dt` 는 datetime(날짜·시간)의 줄임말입니다.
-3. `표["새 열 이름"] = 값` 은 <mark>표 맨 오른쪽에 새 열을 붙입니다</mark>.
+| 번호 | 문법 | 하는 일 |
+|---|---|---|
+| 1 | `pd.to_datetime(열)` | `"2026-11-02 09:01:05"` 같은 문자열을 날짜·시간 값으로 바꿉니다 |
+| 2 | `.dt.hour` | <mark>시각 값에서 「시」만 숫자로 꺼냅니다</mark>(02:14 → 2, 09:01 → 9) |
+| 3 | `표["새 열 이름"] = 값` | <mark>표 맨 오른쪽에 새 열을 붙입니다</mark> |
+
+<mark>날짜·시간 값이어야 「시」나 「분」 같은 부분만 꺼낼 수 있습니다.</mark> `dt` 는 datetime(날짜·시간)의 줄임말입니다.
 
 ```python
 import pandas as pd                              # 판다스를 pd 라는 짧은 이름으로 불러온다
@@ -188,18 +192,16 @@ failed.to_csv("failed_events.csv", index=False)  # 표를 failed_events.csv 파�
 
 **한 장 정리**
 
-| 함수 | 받는 것 | 리턴하는 것 |
-|---|---|---|
-| `load_events` · `pick_failed` | (실습 2-1과 같아서 미리 채움) | 이벤트 표 · 실패한 행만 담은 표 |
-| `count_by_user` | 실패한 이벤트 표 | 사용자별 실패 횟수(많은 순서) |
-| `add_hour` | 이벤트 표 | `hour` 열이 더해진 표 |
-| `count_by_hour` | 실패한 이벤트 표 | 시간대별 실패 횟수 |
-| `save_failed` | 표와 파일 이름 | 없음(파일로 저장) |
+| 함수 | 받는 것 | 리턴하는 것 | 직접 쓰는 곳 |
+|---|---|---|---|
+| `load_events` · `pick_failed` | (실습 2-1과 같아서 미리 채움) | 이벤트 표 · 실패한 행만 담은 표 | 없음(미리 채움) |
+| `count_by_user` | 실패한 이벤트 표 | 사용자별 실패 횟수(많은 순서) | 1 ~ 3번: 사용자별로 묶어 세고 큰 순서로 정렬 |
+| `add_hour` | 이벤트 표 | `hour` 열이 더해진 표 | 없음(미리 채움, 읽어 보기만) |
+| `count_by_hour` | 실패한 이벤트 표 | 시간대별 실패 횟수 | 4 · 5번: 시간대별로 묶어 세기 |
+| `save_failed` | 표와 파일 이름 | 없음(실패한 이벤트를 CSV 파일로 저장) | 없음(미리 채움, 읽어 보기만) |
 
 - **직접 쓰는 곳은 두 함수**(번호 1 ~ 5)입니다. 나머지는 미리 채웠습니다. `load_events` 와 `pick_failed` 는 실습 2-1과 같고, `add_hour` 와 `save_failed` 는 아직 배우지 않은 문법이라 읽기만 합니다.
-  - `count_by_user`(1 ~ 3번): 사용자별로 묶어 세고 큰 순서로 정렬합니다.
-  - `count_by_hour`(4 · 5번): 시간대별로 묶어 셉니다. 묶기와 세기는 1 · 2번과 같고 열 이름만 다릅니다.
-  - `add_hour` · `save_failed`(미리 채움): 시각을 바꿔 `hour` 열을 더하고, 실패한 이벤트를 CSV 로 저장합니다. 읽어 보기만 합니다.
+- `count_by_hour` 의 묶기와 세기(4 · 5번)는 1 · 2번과 같고 열 이름만 다릅니다.
 
 ## 2.2 묶을 때 비어 있는 값은 빠집니다
 
@@ -339,10 +341,12 @@ print("저장된 행", saved_count, "개")          # 저장된 행 수를 출�
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 같은 값끼리 묶어 개수 세기 | `grouped = failed.groupby("user")` → `user_fail_counts = grouped.size()` |
+| 같은 값끼리 묶기 | `grouped = failed.groupby("user")` |
+| 그룹마다 개수 세기 | `user_fail_counts = grouped.size()` |
 | 큰 값부터 정렬 | `sorted_user_fail_counts = user_fail_counts.sort_values(ascending=False)` |
 | 문자열 시각을 시각 값으로 | `times = pd.to_datetime(events["time"])` |
-| 「시」만 꺼내 새 열로 | `hours = times.dt.hour` → `events["hour"] = hours` |
+| 「시」만 꺼내기 | `hours = times.dt.hour` |
+| 새 열로 붙이기 | `events["hour"] = hours` |
 | CSV 로 저장 | `failed.to_csv(path, index=False)` |
 | 비어 있는 값 | `groupby` 는 비어 있는 값(`null`)의 행을 빼고 센다 |
 
