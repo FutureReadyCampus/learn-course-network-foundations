@@ -28,16 +28,17 @@ python exercise4-1_run.py
 
 **채운 코드** (한 예) — `score_findings` 안의 두 곳입니다.
 
+① 은 `# ①` 주석 바로 아래(4칸)에 씁니다.
+
 ```python
-    # ① findings_table 의 "rule" 열에 .map(WEIGHTS) 를 붙여 규칙마다 점수를 구해 points 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     points = findings_table["rule"].map(WEIGHTS)       # rule 열을 꺼내 바로 규칙마다 점수를 채운다(map)
-    findings_table["points"] = points                  # 표에 points 열을 붙인다
-    grouped = findings_table.groupby("entity")         # entity 가 같은 행끼리 그룹으로 만든다
-    # ② grouped 에서 "points" 열을 골라 .sum() 을 붙여 그룹마다 합계를 구해 totals 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
-    totals = grouped["points"].sum()                   # 그룹에서 points 열을 골라 바로 합계를 구한다(sum)
 ```
 
-- 가운데 두 줄(`findings_table["points"] = …` · `grouped = …`)은 미리 채운 줄입니다. ① · ② 의 줄만 붙입니다.
+② 는 미리 채운 `findings_table["points"] = points` 와 `grouped = …` 두 줄 뒤, `# ②` 주석 바로 아래(4칸)에 씁니다. ① 과 ② 는 떨어져 있으니 한 상자처럼 이어 붙이지 않습니다.
+
+```python
+    totals = grouped["points"].sum()                   # 그룹에서 points 열을 골라 바로 합계를 구한다(sum)
+```
 
 내가 채운 코드는 위의 코드입니다. <mark>줄 수가 달라도 주석이 말한 일을 하면 맞습니다.</mark>
 

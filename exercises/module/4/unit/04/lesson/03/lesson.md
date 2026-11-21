@@ -237,7 +237,7 @@ def make_records(totals, reasons):                     # 대상별 점수와 이
     records = []                                       # 기록을 담을 빈 리스트
     for entity, score in totals.items():               # 대상과 점수를 한 쌍씩 꺼낸다
         grade = make_grade(score)                      # 점수로 등급을 정한다
-        record = {"entity": entity, "score": int(score), "grade": grade, "reasons": reasons[entity]}  # 대상 · 점수 · 등급 · 이유를 딕셔너리로 만든다 (int 는 JSON 저장용)
+        record = {"entity": entity, "score": int(score), "grade": grade, "reasons": reasons[entity]}  # 대상 · 점수 · 등급 · 이유를 딕셔너리로 만든다 (int 는 판다스 숫자를 파이썬 정수로 바꾼다)
         records.append(record)                         # 기록을 리스트에 추가한다
     return records                                     # 기록 리스트를 리턴한다
 
@@ -268,7 +268,7 @@ def save_records(records, path):                       # 기록 리스트와 파
 **미리 채운 줄 읽기**
 
 - `make_grade` 는 `return` 을 만나면 함수가 바로 끝납니다. 그래서 high 이면 아래의 mid 검사까지 가지 않습니다.
-- `make_records` 의 `int(score)` 는 <mark>JSON 으로 저장하려고 판다스의 숫자를 파이썬 정수로 바꾸는 것</mark>입니다. 빼면 저장할 때 `TypeError: Object of type int64 is not JSON serializable` 오류가 납니다.
+- `make_records` 의 `int(score)` 는 <mark>판다스의 숫자를 파이썬 정수로 바꾸는 것</mark>입니다. 이번 데이터에서는 빼도 오류가 나지 않지만, 판다스가 돌려준 숫자(`int64`)를 그대로 JSON 으로 저장하려고 하면 `TypeError: Object of type int64 is not JSON serializable` 가 날 수 있어서 미리 바꿔 둡니다.
 - `collect_findings` 의 `SERVER_RULES.get(reason, reason)` 은 딕셔너리에서 reason 을 찾고, 없으면 reason 을 그대로 쓴다는 뜻입니다.
   - `표.to_dict("records")` 는 표의 행을 하나씩 딕셔너리로 바꿔 리스트로 줍니다. 그래서 `for` 로 한 행(이벤트)씩 꺼내 `event["user"]` 처럼 읽을 수 있습니다.
   - `scan_ips, many_kinds = find_scan_ips(…)` 는 함수가 리턴한 두 값(스캔 IP 리스트, IP 별 요청 횟수)을 나눠 받습니다. 두 번째 값은 이 함수에서 쓰지 않습니다.
