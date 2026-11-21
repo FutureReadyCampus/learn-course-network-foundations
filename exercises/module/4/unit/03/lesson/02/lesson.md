@@ -20,6 +20,8 @@ source:
 >
 > 지난 7일 같은 시간대에는 1분에 평균 2번쯤 요청이 들어왔습니다. 그 3배(6번) 이상이면 급증했다고 보기로 했습니다.」
 > - **왜 중요한가**: <mark>요청이 갑자기 늘면 서버가 느려지거나 멈출 수 있고, 공격의 징후일 수도 있습니다.</mark> 하루 전체 요청 수로는 1분 동안의 급증이 보이지 않으므로, 분마다 세어 평소와 비교합니다.
+> - **이 실습에서 하는 일**: 대부분은 미리 채워 두었고, 직접 쓰는 곳은 두 줄(① · ②)입니다.
+> - **끝나면 쓰는 것**: 보고서 (가) · (나). (다)는 여유가 되면 하는 응용입니다
 
 ## 왜 초를 버리고 분 단위로 세는가
 
@@ -152,16 +154,25 @@ Name: count, dtype: int64
 | `make_traffic_limit` | 파일 경로와 3(배) | 급증 기준(평균 × 3) |
 | `pick_spike_minutes` | 분마다 요청 수와 급증 기준 | 기준 이상인 분과 요청 수 |
 
-**직접 쓰는 곳은 네 함수**(번호 1 ~ 6)입니다.
+**직접 쓰는 곳은 두 줄**(① · ②)입니다. 나머지 줄은 미리 채워 두었고, 주석에 하는 일을 적었습니다.
 
-| 함수 | 번호 | 직접 쓰는 일 | 미리 채운 줄 |
+| 함수 | 빈칸 | 직접 쓰는 일 | 미리 채운 줄 |
 |---|---|---|---|
-| `add_minute_column` | 1번 | 초를 버린 시각을 만듭니다 | 그 시각을 `minute` 열로 붙이는 줄(아직 배우지 않은 문법) |
-| `count_web_per_minute` | 2 · 3번 | 웹 서버 이벤트만 걸러 냅니다 | 분마다 그룹화해 세는 줄 |
-| `make_traffic_limit` | 4번 | 평균에 3을 곱해 급증 기준을 정합니다 | 파일을 표로 읽는 줄(`pd.read_csv`)과 평균을 구하는 줄(`.mean()`) |
-| `pick_spike_minutes` | 5 · 6번 | 기준 이상인 분만 남깁니다(실습 2-3의 `pick_alert_ips` 와 같은 모양) | 없음 |
+| `add_minute_column` | ① | 초를 버린 시각을 만듭니다 | `minute` 열로 붙이는 줄 |
+| `count_web_per_minute` | 없음 | 미리 채움 | 웹 서버만 고르고 분마다 세는 줄 |
+| `make_traffic_limit` | 없음 | 미리 채움 | CSV 읽기 · 평균 · × 3 |
+| `pick_spike_minutes` | ② | 기준 이상인지 비교합니다 | 비교 결과로 분을 고르는 줄 |
 
 - `read_csv` 는 `read_json` 처럼 CSV 파일을 표로 읽고, `.mean()` 은 열에 있는 숫자들의 평균을 구합니다.
+
+**문법 상자 · ② 의 모양 (예시 값 · 읽기만 합니다)**
+
+센 결과에 `>=` 를 쓰면 줄마다 「기준 이상인가?」를 비교해 `True` · `False` 를 만듭니다. 실습 2-3 의 `is_many = ip_login_fail_counts >= limit` 와 같은 모양입니다.
+
+```python
+counts = minutes.value_counts()  # 위 예의 분마다 센 결과 (09:01 → 2, 09:20 → 1)
+print(counts >= 2)               # 09:01 은 True, 09:20 은 False
+```
 
 ## 실습 3-1 · 분마다 세어 요청 급증 분 찾기
 
@@ -177,7 +188,7 @@ Name: count, dtype: int64
 
 **할 일**
 
-1. `traffic_detection.py` · `exercise3-1_run.py` **두 파일**을 만들고, `traffic_detection.py` 의 **네 함수**에서 직접 쓰는 곳을 씁니다.
+1. `traffic_detection.py` · `exercise3-1_run.py` **두 파일**을 만들고, `traffic_detection.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
 2. 실행해서 <mark>시각과 분의 차이</mark>(단계 1), <mark>분당 요청 수</mark>(단계 2), <mark>급증 기준</mark>(단계 3), <mark>요청이 급증한 분</mark>(단계 4)를 읽습니다.
 
 **`traffic_detection.py`**
@@ -203,9 +214,9 @@ def add_minute_column(events):                                   # 이벤트 표
     분당 요청 수를 세기 전에 같은 분으로 그룹화할 기준을 만들 때 쓴다.
     """
     times = pd.to_datetime(events["time"])                       # 문자열 시각을 시각 값으로 바꾼다
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. times 에 .dt.floor("min") 을 붙여 초를 버린 시각을 minutes 에 담는다
-    events["minute"] = minutes                                   # 표에 minute 열을 붙인다 — 미리 채운 줄
+    # ① times 에 .dt.floor("min") 을 붙여 초를 버린 시각을 minutes 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+
+    events["minute"] = minutes                                   # 표에 minute 열을 붙인다
     return events                                                # minute 열이 붙은 표를 리턴한다
 
 
@@ -213,9 +224,8 @@ def count_web_per_minute(events):                                # minute 열이
     """웹 서버 이벤트만 골라 분마다 요청이 몇 개인지 센다.
     분당 요청 수를 평소와 비교하기 전에 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 2. events["source"] == "web" 으로 행마다 True 또는 False 를 구해 is_web 에 담는다 (웹 서버 이벤트이면 True)
-    # 3. events 에서 is_web 이 True 인 행만 골라 web_events 에 담는다 (events[is_web])
+    is_web = events["source"] == "web"                           # 행마다 웹 서버 이벤트인지 비교해 True 또는 False 를 만든다
+    web_events = events[is_web]                                  # True 인 행만 골라 웹 서버 이벤트의 표를 만든다
     minute_request_counts = web_events.groupby("minute").size()  # minute 값이 같은 행끼리 그룹으로 만들고(groupby) 바로 그룹마다 행이 몇 개인지(그 분의 요청 수) 센다(size)
     return minute_request_counts                                 # 분마다 요청 수를 리턴한다
 
@@ -226,8 +236,7 @@ def make_traffic_limit(path, multiple):                          # 파일 경로
     """
     baseline = pd.read_csv(path)                                 # 지난 7일 파일을 표로 읽는다
     average = baseline["requests_per_minute"].mean()             # 분당 요청 수 열을 꺼내(["requests_per_minute"]) 바로 7개의 평균을 구한다(mean)
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 4. average 에 multiple 을 곱해 limit 에 담는다
+    limit = average * multiple                                   # 평소 평균에 multiple(3)을 곱한 값이 급증 기준이다
     return limit                                                 # 급증 기준을 리턴한다
 
 
@@ -235,16 +244,25 @@ def pick_spike_minutes(minute_request_counts, limit):            # 분마다 요
     """요청 수가 급증 기준 이상인 분만 골라 리턴한다.
     알림을 보낼 분을 가릴 때 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 5. minute_request_counts 가 limit 이상인지 비교한 결과(>=)를 is_spike 에 담는다
-    # 6. minute_request_counts 에서 is_spike 가 True 인 것만 골라 spike_minutes 에 담는다 (minute_request_counts[is_spike])
+    # ② minute_request_counts 가 limit 이상인지 비교한 결과(>=)를 is_spike 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+
+    spike_minutes = minute_request_counts[is_spike]              # is_spike 가 True 인 분만 남긴다
     return spike_minutes                                         # 요청이 급증한 분과 요청 수를 리턴한다
 ```
 
-- 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 6번은 모두 함수 안이라 앞에 공백 4개입니다.
-- 미리 채운 두 줄은 동작 두 개를 점으로 이은 한 줄입니다. <mark>왼쪽부터 차례로 읽습니다.</mark> `web_events.groupby("minute").size()` 는 ① minute 이 같은 행끼리 그룹을 만들고 ② 그룹마다 행 수를 세고, `baseline["requests_per_minute"].mean()` 은 ① 분당 요청 수 열을 꺼내 ② 평균을 구합니다.
-- 번호 주석이 연달아 붙어 있어도(예: 5 · 6번), <mark>주석 사이마다 줄을 끼워 넣어 각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark>
-- 채우기 전에 실행하면 `NameError: name 'minutes' is not defined` 오류가 납니다. 1번을 아직 안 써서 `minutes` 가 없기 때문입니다.
+- 주석 줄은 그대로 두고, **각 주석 바로 아래의 빈 줄**에 씁니다. ① · ② 는 모두 함수 안이라 앞에 공백 4개(4칸)입니다.
+- 미리 채운 두 줄은 동작 두 개를 점으로 이은 한 줄입니다. <mark>왼쪽부터 차례로 읽습니다.</mark> `web_events.groupby("minute").size()` 는 minute 이 같은 행끼리 그룹을 만든 뒤 그룹마다 행 수를 세고, `baseline["requests_per_minute"].mean()` 은 분당 요청 수 열을 꺼낸 뒤 평균을 구합니다.
+
+**직접 쓰는 곳**
+
+| 빈칸 | 쓰는 줄 | 들여쓰기 |
+|---|---|---|
+| ① | 초를 버린 시각을 `minutes` 에 담음 | 4칸 |
+| ② | 기준 이상인지 비교해 `is_spike` 에 담음 | 4칸 |
+
+- 채우기 전에 실행하면 단계 1 도 나오기 전에 `NameError: name 'minutes' is not defined` 오류가 납니다. ① 을 아직 안 써서 `minutes` 가 없기 때문이니 정상입니다.
+- ① 확인: ① 만 쓰고 실행하면 단계 1 ~ 3 이 나온 뒤 `NameError: name 'is_spike' is not defined` 가 나와야 합니다. ② 를 아직 안 써서 나는 오류이니 정상입니다. 막히면: 위 문법 상자의 `minutes = times.dt.floor("min")` 을 그대로 씁니다.
+- ② 확인: ② 까지 쓰고 실행하면 단계 4 에 `2026-11-02 09:12:00    9` 한 줄이 나오면 성공입니다. 막히면: 위 ② 문법 상자의 `counts >= 2` 에서 `counts` 자리에 `minute_request_counts`, `2` 자리에 `limit` 을 넣고 앞에 `is_spike =` 를 붙입니다.
 
 **`exercise3-1_run.py`** — **그대로 붙여 넣습니다.** 직접 쓰는 줄은 없습니다. `.head(3)` 는 열의 처음 3개만 꺼냅니다.
 
@@ -276,7 +294,7 @@ print(spike_minutes)                                                            
 **순서**
 
 1. **[VS Code]** 파일 `traffic_detection.py` · `exercise3-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
-2. **[VS Code]** `traffic_detection.py` 에서 직접 쓰는 곳 **여섯 군데**를 씁니다. 위 판다스 문법 상자를 보고 씁니다.
+2. **[VS Code]** `traffic_detection.py` 의 `# ←` 두 곳(① · ②)을 채웁니다. 위 판다스 문법 상자와 ② 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
@@ -295,17 +313,19 @@ print(spike_minutes)                                                            
    - 단계 1의 첫 시각이 9시대가 아니라 `02:14:08` 이어도 맞습니다. 파일의 첫 이벤트(SaaS 로그인)이고, `minute` 열은 모든 이벤트에 붙인 뒤 단계 2에서 웹 서버 이벤트만 고르기 때문입니다.
    - 보고서 (나) · (다)에서 이벤트를 찾을 때는 VS Code 로 `normalized_events.json` 을 열고 `Ctrl + F`(맥북은 `Cmd + F`)로 `09:12` 또는 `09:20` 을 검색하고, `source` 가 `web` 인 줄만 셉니다. 이벤트 하나의 키는 `time · source · user · ip · action · result` 입니다.
 5. **[보고서]** `report_u3.md` 의 `## 실습 3-1` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 급증 기준과 요청이 급증한 분(시각과 요청 수)을 적어 주세요.
+   - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 급증 기준과 요청이 급증한 분(시각과 요청 수)을 적어 주세요.
    - (나) [핵심 질문] `normalized_events.json` 에서 `time` 이 `2026-11-02 09:12` 로 시작하는 웹 서버(`source` 가 `web`) 줄을 찾아, ① 요청을 보낸 IP 주소와 ② 행동(`action`)별 횟수를 적어 주세요. 그리고 ③ 이 급증을 공격이라고 확정할 수 있는지 이유와 함께 적어 주세요.
-   - (다) [핵심 질문] 09:20 에도 웹 서버 요청이 3개 있었지만 급증으로 탐지되지 않았습니다. ① 3개를 급증 기준과 비교해 왜 탐지되지 않았는지 적고, ② `normalized_events.json` 에서 09:20 의 `web` 줄 3개가 어떤 요청(IP 주소 · 행동 · 결과)인지 적고, ③ 요청 수만 보는 급증 규칙이 이 요청들을 놓치는 이유를 적어 주세요.
+   - (다) [응용] 09:20 에도 웹 서버 요청이 3개 있었지만 급증으로 탐지되지 않았습니다. ① 3개를 급증 기준과 비교해 왜 탐지되지 않았는지 적고, ② `normalized_events.json` 에서 09:20 의 `web` 줄 3개가 어떤 요청(IP 주소 · 행동 · 결과)인지 적고, ③ 요청 수만 보는 급증 규칙이 이 요청들을 놓치는 이유를 적어 주세요.
+
+**확인** — 단계 3 제목 줄 끝에 `6.0 번 이상`, 단계 4 에 `2026-11-02 09:12:00    9` 한 줄만 나오면 성공입니다. 안 나오면 「정답」 레슨의 실습 3-1 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 ## 실습 3-1 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
 | 초를 버려 분으로 | `minutes = times.dt.floor("min")` → `events["minute"] = minutes` |
-| 웹 서버 이벤트만 | `is_web = events["source"] == "web"` → `web_events = events[is_web]` |
-| 급증 기준 | `limit = average * multiple` (평균 2.0 × 3 = 6.0) |
+| 웹 서버 이벤트만 (미리 채움) | `is_web = events["source"] == "web"` → `web_events = events[is_web]` |
+| 급증 기준 (미리 채움) | `limit = average * multiple` (평균 2.0 × 3 = 6.0) |
 | 기준 이상인 분 | `is_spike = minute_request_counts >= limit` → `spike_minutes = minute_request_counts[is_spike]` |
 
 ---

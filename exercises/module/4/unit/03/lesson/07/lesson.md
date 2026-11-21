@@ -26,32 +26,16 @@ python exercise3-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise3-1_run.py` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 네 함수입니다.
-
-① `add_minute_column` 안
+**채운 코드** (한 예) — 채운 줄만 보여 줍니다.
 
 ```python
-    minutes = times.dt.floor("min")  # 시각에서 초를 버린다 (09:12:03 → 09:12:00)
+    # ① times 에 .dt.floor("min") 을 붙여 초를 버린 시각을 minutes 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+    minutes = times.dt.floor("min")                              # 시각에서 초를 버린다 (09:12:03 → 09:12:00)
 ```
 
-② `count_web_per_minute` 안
-
 ```python
-    is_web = events["source"] == "web"  # 행마다 웹 서버 이벤트인지 비교해 True 또는 False 를 만든다
-    web_events = events[is_web]         # True 인 행만 골라 웹 서버 이벤트의 표를 만든다
-```
-
-③ `make_traffic_limit` 안
-
-```python
-    limit = average * multiple  # 평소 평균에 3 을 곱한 값이 급증 기준이다
-```
-
-④ `pick_spike_minutes` 안
-
-```python
-    is_spike = minute_request_counts >= limit        # 분마다 「기준 이상인가?」를 비교해 True 또는 False 를 만든다
-    spike_minutes = minute_request_counts[is_spike]  # True 인 분만 남긴다
+    # ② minute_request_counts 가 limit 이상인지 비교한 결과(>=)를 is_spike 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+    is_spike = minute_request_counts >= limit                    # 분마다 「기준 이상인가?」를 비교해 True 또는 False 를 만든다
 ```
 
 **결과**
@@ -126,12 +110,14 @@ dtype: int64
 Traceback (most recent call last):
   File "…/anomaly_detection/exercise3-1_run.py", line 4, in <module>
     events = add_minute_column(events)  # 시각에서 초를 버린 minute 열을 붙인다
-  File "…/anomaly_detection/traffic_detection.py", line 23, in add_minute_column
+  File "…/anomaly_detection/traffic_detection.py", line 22, in add_minute_column
     minutes = times.floor("min")  # .dt 를 빼먹었다
 AttributeError: 'Series' object has no attribute 'floor'
 ```
 
   - 줄 번호는 사람마다 다릅니다.
+- ② 에서 `limit` 대신 `SPIKE_MULTIPLE` 과 비교해 `minute_request_counts >= SPIKE_MULTIPLE` 로 쓰면 오류는 나지 않지만, 기준이 6.0 이 아니라 3 이 되어 **단계 4 에 `09:20:00    3` 줄이 하나 더 나옵니다.** 급증 기준은 평균 × 3 인 `limit` 입니다.
+- ① · ② 를 8칸으로 쓰면 `IndentationError: unexpected indent` 가 납니다. 바로 위 미리 채운 줄과 같은 4칸에서 시작합니다.
 - <mark>요청이 하나도 없던 분은 결과에 나오지 않습니다.</mark> 분당 요청 수 14줄은 요청이 있던 분만 센 것입니다.
 
 **관제에서는**
@@ -150,37 +136,22 @@ python exercise3-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 두 함수입니다.
-
-① `pick_suspicious` 안
+**채운 코드** (한 예) — 채운 줄만 보여 줍니다.
 
 ```python
+    # ① repeated_users 의 .index(사용자 이름들)를 repeated_names 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     repeated_names = repeated_users.index             # 반복된 사용자의 이름들(인덱스)을 꺼낸다
+```
+
+```python
+    # ② users 가 repeated_names 안에 있는지 isin 으로 구해 is_repeated_user 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     is_repeated_user = users.isin(repeated_names)     # 각 행의 사용자가 반복된 사용자 이름 안에 있는지 구해 True 또는 False 를 만든다
-    suspicious = server_failures[is_repeated_user]    # True 인 행만 골라 새 표로 만든다
 ```
 
-② `judge_failure` 안 — 4번과 5번 주석 사이에 미리 채운 `resource = parts[0]` · `permission_action = parts[1]` 두 줄이 있습니다. 세 줄을 한 번에 붙이지 말고, 아래 상자를 하나씩 해당 번호 주석 바로 아래에 붙입니다.
-
-4번 주석 아래(미리 채운 `resource` 줄보다 위)
-
 ```python
-    parts = action.split(":")                         # ":" 로 나눠 두 조각의 리스트로 만든다
-```
-
-5번 주석 아래
-
-```python
+    # ③ check_permission 에 user, resource, permission_action 을 넣고, 결과를 is_allowed 와 reason 에 나눠 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     is_allowed, reason = check_permission(user, resource, permission_action)  # Module 3 판정 결과를 허용 여부와 이유로 나눠 받는다
 ```
-
-6번 주석 아래
-
-```python
-    priority = PRIORITY.get(reason, 4)                # 이유의 우선순위를 꺼낸다(없으면 4)
-```
-
-내가 채운 코드는 위의 코드입니다. <mark>줄 수가 달라도 주석이 말한 일을 하면 맞습니다.</mark>
 
 **결과**
 
@@ -223,12 +194,14 @@ python exercise3-2_run.py
 Traceback (most recent call last):
   File "…/anomaly_detection/exercise3-2_run.py", line 10, in <module>
     suspicious = pick_suspicious(server_failures)                # 먼저 확인할 실패 이벤트만 골라낸다
-  File "…/anomaly_detection/access_detection.py", line 41, in pick_suspicious
+  File "…/anomaly_detection/access_detection.py", line 40, in pick_suspicious
     repeated_names = repeated_users.index()  # 반복된 사용자의 이름들(인덱스)을 꺼낸다
 TypeError: 'Index' object is not callable
 ```
 
   - 줄 번호는 사람마다 다릅니다.
+- ③ 에서 이름 하나로 `reason = check_permission(…)` 이라고 받으면 오류는 나지 않지만 **단계 3 아래에 아무 줄도 나오지 않습니다.** `reason` 에 `(False, '퇴사한 계정')` 처럼 두 값이 한꺼번에 담겨 `PRIORITY` 에서 찾지 못하고 모두 4순위가 되기 때문입니다.
+- ③ 에서 `permission_action` 대신 `action` 을 넣으면 gaeun 의 세 줄이 `2 권한 없음 …` 으로 바뀝니다. `action` 은 `"ACCOUNT:CHANGE"` 전체라 권한 문자열이 `ACCOUNT:ACCOUNT:CHANGE` 가 되기 때문입니다.
 
 **관제에서는**
 

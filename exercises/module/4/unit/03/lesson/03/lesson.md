@@ -20,6 +20,8 @@ source:
 >
 > 같은 사람이 여러 번 거절당한 기록부터 확인하고 싶습니다. Module 3에서 만든 권한 규칙으로 거절 이유도 붙여 주세요. 퇴사한 사람의 계정이면 가장 먼저 알려 주세요. 거절이 전부 문제는 아니니 공격이라고 단정하지는 말아 주세요.」
 > - **왜 중요한가**: <mark>거절 이유를 알아야 퇴사한 계정을 정리할지, 서버 설정을 확인할지 정할 수 있습니다.</mark>
+> - **이 실습에서 하는 일**: 대부분은 미리 채워 두었고, 직접 쓰는 곳은 세 줄(① ~ ③)입니다.
+> - **끝나면 쓰는 것**: 보고서 (가) · (나). (다)는 여유가 되면 하는 응용입니다
 
 ## 왜 거절 이유로 순서를 정하는가
 
@@ -201,12 +203,12 @@ print(names)                # 이름 리스트를 출력한다
 | `pick_suspicious` | 서버 실패 표 | 실패가 반복된 사용자의 이벤트 표 |
 | `judge_failure` | 사용자 · 행동 | 판정 이유와 우선순위 |
 
-**직접 쓰는 곳은 여섯 군데**(번호 1 ~ 6)이고, 함수 두 개 안에 나뉘어 있습니다.
+**직접 쓰는 곳은 세 줄**(① ~ ③)이고, 함수 두 개 안에 나뉘어 있습니다. 나머지 줄은 미리 채워 두었고, 주석에 하는 일을 적었습니다.
 
-| 함수 | 번호 | 직접 쓰는 일 | 미리 채운 줄 |
+| 함수 | 빈칸 | 직접 쓰는 일 | 미리 채운 줄 |
 |---|---|---|---|
-| `pick_suspicious` | 1 ~ 3번 | 반복된 사용자의 이름을 꺼내고, `isin` 으로 그 사용자의 행을 골라 이벤트 표를 만듭니다 | 사용자별 실패 횟수를 세는 줄 |
-| `judge_failure` | 4 ~ 6번 | 행동을 자원과 행위로 나누고, Module 3 `check_permission` 으로 판정하고, 이유에서 우선순위를 꺼냅니다 | 나눈 조각을 자원 · 행위에 담는 두 줄 |
+| `pick_suspicious` | ① · ② | `.index` 로 이름 꺼내기, `isin` | 횟수 세기 · 행 고르기 |
+| `judge_failure` | ③ | `check_permission` 으로 판정 | `split` · 우선순위 꺼내기 |
 
 ## 실습 3-2 · 반복 거절 찾고 이유별 순서 정하기
 
@@ -222,7 +224,7 @@ print(names)                # 이름 리스트를 출력한다
 
 **할 일**
 
-1. `access_detection.py` · `exercise3-2_run.py` 두 파일을 만들고, `access_detection.py` 의 두 함수에서 직접 쓰는 곳을 씁니다.
+1. `access_detection.py` · `exercise3-2_run.py` 두 파일을 만들고, `access_detection.py` 의 `# ←` 가 있는 <mark>세 곳</mark>(① ~ ③)을 한 줄씩 채웁니다.
 2. 실행해서 <mark>서버 실패 수</mark>(단계 1), <mark>먼저 확인할 이벤트 수</mark>(단계 2), <mark>이유별 순서</mark>(단계 3)를 읽습니다.
 
 **`access_detection.py`**
@@ -266,10 +268,11 @@ def pick_suspicious(server_failures):                 # 서버 실패 표를 받
     is_many = user_counts >= REPEAT_LIMIT             # 사용자마다 실패 횟수가 REPEAT_LIMIT 이상인지 비교해 True 또는 False 를 만든다
     repeated_users = user_counts[is_many]             # 반복된 사용자와 횟수만 남긴다
 
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. repeated_users 의 .index 를 repeated_names 에 담는다
-    # 2. users 가 repeated_names 안에 있는지 isin 으로 구해 is_repeated_user 에 담는다
-    # 3. server_failures 에서 is_repeated_user 가 True 인 행만 골라 suspicious 에 담는다
+    # ① repeated_users 의 .index(사용자 이름들)를 repeated_names 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+
+    # ② users 가 repeated_names 안에 있는지 isin 으로 구해 is_repeated_user 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+
+    suspicious = server_failures[is_repeated_user]    # True 인 행만 골라 새 표로 만든다
     return suspicious                                 # 먼저 확인할 실패 이벤트 표를 리턴한다
 
 
@@ -277,28 +280,41 @@ def judge_failure(user, action):                      # 사용자와 행동을 �
     """서버가 거절한 요청을 Module 3 권한 규칙으로 다시 판정해 이유와 우선순위를 리턴한다.
     거절이 규칙대로인지 확인할 때 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 4. action 을 ":" 기준으로 나눠 parts 에 담는다 (예: "SALES:QUERY" → ["SALES", "QUERY"]. 앞 조각이 자원, 뒤 조각이 행위)
+    parts = action.split(":")                         # ":" 로 나눠 두 조각의 리스트로 만든다 ("SALES:QUERY" → ["SALES", "QUERY"])
     resource = parts[0]                               # 첫 번째 조각이 자원이다
     permission_action = parts[1]                      # 두 번째 조각이 행위이다
 
-    # 5. check_permission 에 user, resource, permission_action 을 전달하고, 결과를 is_allowed 와 reason 에 나눠 담는다 (모양: is_allowed, reason = check_permission(...). is_allowed 는 이 문제에서 쓰지 않는다)
-    # 6. PRIORITY 에서 reason 의 순서를 꺼내 priority 에 담는다 (딕셔너리에 없는 이유이면 4 — .get(reason, 4))
+    # ③ check_permission 에 user, resource, permission_action 을 넣고, 결과를 is_allowed 와 reason 에 나눠 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+
+    priority = PRIORITY.get(reason, 4)                # 이유의 우선순위를 꺼낸다(딕셔너리에 없는 이유이면 4)
     return reason, priority                           # 판정 이유와 우선순위를 리턴한다
 ```
 
-- 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 6번은 모두 함수 안이라 앞에 공백 4개입니다.
-- 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
-- 4 ~ 6번의 문법은 앞에서 썼습니다.
-
-| 번호 | 문법 | 앞에서 쓴 곳 | 쓰는 법 |
-|---|---|---|---|
-| 4번 | `split` | Unit 1 실습 1-1 | 나눌 횟수 없이 `action.split(":")` 로 쓰면 `:` 마다 나눈 조각의 리스트가 됩니다 |
-| 5번 | 값 두 개 나눠 받기 | Module 3 실습 1-2 | `check_permission` 은 값 두 개를 함께 돌려주므로, `=` 왼쪽에 이름 두 개를 쉼표로 적어 나눠 받습니다 |
-| 6번 | `.get(키, 기본값)` | Module 3 실습 1-3 의 `counts.get(키, 0)` | 키가 딕셔너리에 없으면 기본값을 돌려줍니다 |
-
+- 주석 줄은 그대로 두고, **각 주석 바로 아래의 빈 줄**에 씁니다. ① ~ ③ 은 모두 함수 안이라 앞에 공백 4개(4칸)입니다.
 - 뒤 조각을 `action` 이 아니라 `permission_action` 에 담는 것은 `action` 이라는 이름이 이미 `"SALES:QUERY"` 전체를 담고 있기 때문입니다.
-- 채우기 전에 실행하면 `NameError: name 'suspicious' is not defined` 오류가 납니다. 1 ~ 3번을 아직 안 썼기 때문입니다.
+- `PRIORITY.get(reason, 4)` 는 키가 딕셔너리에 없으면 기본값 4 를 돌려줍니다(Module 3 실습 1-3 의 `counts.get(키, 0)` 과 같은 모양).
+
+**문법 상자 · ③ 의 모양 (예시 값 · 읽기만 합니다)**
+
+`check_permission` 은 값 두 개를 함께 돌려주므로, `=` 왼쪽에 이름 두 개를 쉼표로 적어 나눠 받습니다(Module 3 실습 1-2).
+
+```python
+is_allowed, reason = check_permission("dami", "SALES", "QUERY")  # 판정 결과와 이유를 나눠 받는다
+print(is_allowed, reason)                                         # False 퇴사한 계정
+```
+
+**직접 쓰는 곳**
+
+| 빈칸 | 쓰는 줄 | 들여쓰기 |
+|---|---|---|
+| ① | 센 결과의 `.index` 를 `repeated_names` 에 담음 | 4칸 |
+| ② | `users.isin(…)` 결과를 `is_repeated_user` 에 담음 | 4칸 |
+| ③ | `check_permission(…)` 결과를 둘로 나눠 받음 | 4칸 |
+
+- 채우기 전에 실행하면 단계 1 줄이 나온 뒤 `NameError: name 'is_repeated_user' is not defined` 오류가 납니다. ② 를 아직 안 써서 `is_repeated_user` 가 없기 때문이니 정상입니다. 뒤에 `Did you mean: …` 이 붙어 나와도 같은 오류입니다.
+- ① 확인: ① 만 쓰고 실행해도 같은 `NameError: name 'is_repeated_user' is not defined` 가 나와야 합니다. 다른 오류(`TypeError` 등)가 나오면 ① 줄을 봅니다. 막히면: 위 `.index` 문법 상자의 `names = list(many.index)` 에서 `list( )` 를 빼고 이름만 바꿉니다.
+- ② 확인: ② 까지 쓰고 실행하면 `--- 단계 2: 먼저 확인할 실패 이벤트 7 개` 가 나온 뒤 `NameError: name 'reason' is not defined` 가 나와야 합니다. ③ 을 아직 안 써서 나는 오류입니다. 7 이 아니라 0 이면 ① 에 `.index` 가 빠졌습니다. 막히면: `isin` 문법 상자의 `df["user"].isin(blocked_users)` 에서 `df["user"]` 자리에 `users`, `blocked_users` 자리에 `repeated_names` 를 넣습니다.
+- ③ 확인: ③ 까지 쓰고 실행하면 단계 3 에 일곱 줄이 나오고 첫 줄이 `1 퇴사한 계정 dami SALES:QUERY 2026-11-02 11:02:00` 이면 성공입니다. 막히면: 위 ③ 문법 상자에서 `"dami", "SALES", "QUERY"` 자리에 `user, resource, permission_action` 을 넣습니다.
 
 **`exercise3-2_run.py`** — 그대로 붙여 넣습니다. 직접 쓰는 줄은 없습니다. 처음 보는 줄은 이렇게 읽습니다.
 
@@ -345,7 +361,7 @@ for priority in [1, 2, 3]:                                   # 우선순위대�
 **순서**
 
 1. **[VS Code]** 파일 `access_detection.py` · `exercise3-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
-2. **[VS Code]** `access_detection.py` 에서 <mark>직접 쓰는 곳 여섯 군데를 씁니다</mark>. 위 판다스 문법 상자와 1.1 의 표를 참고해 씁니다. 막히면 아래 「실습 3-2 정리」를 봅니다.
+2. **[VS Code]** `access_detection.py` 의 `# ←` <mark>세 곳(① ~ ③)을 채웁니다</mark>. 위 판다스 문법 상자와 ③ 문법 상자를 참고해 씁니다. 막히면 아래 「실습 3-2 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
@@ -354,9 +370,11 @@ for priority in [1, 2, 3]:                                   # 우선순위대�
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise3-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **세 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1과 단계 2는 숫자가 제목 줄에 함께 나오므로 그 아래 줄이 없고, 단계 3은 7줄입니다.
 5. **[보고서]** `report_u3.md` 의 `## 실습 3-2` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 서버 실패 수와 먼저 확인할 이벤트 수, 1순위 사용자를 적어 주세요.
+   - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 서버 실패 수와 먼저 확인할 이벤트 수, 1순위 사용자를 적어 주세요.
    - (나) [핵심 질문] ① dami 의 실패 4개는 Module 3 규칙으로 어떤 이유로 판정됐고, 왜 1순위일까요? ② gaeun 의 실패 3개는 규칙으로는 「허용」인데 서버가 거절했습니다. 공격이라고 확정할 수 있는지 적고, 먼저 무엇을 확인해야 하는지 적어 주세요.
-   - (다) [핵심 질문] seoyeon 의 서버 실패 2건(11:40 `SETTLE:QUERY` · 18:20 `SALES:CHANGE`)은 먼저 확인할 이벤트에 들어가지 않았습니다. 들어가지 않은 이유를 이번 실습의 규칙(실패 3번 이상)으로 설명하고, 이 규칙 때문에 놓칠 수 있는 경우를 한 가지 적어 주세요.
+   - (다) [응용] seoyeon 의 서버 실패 2건(11:40 `SETTLE:QUERY` · 18:20 `SALES:CHANGE`)은 먼저 확인할 이벤트에 들어가지 않았습니다. 들어가지 않은 이유를 이번 실습의 규칙(실패 3번 이상)으로 설명하고, 이 규칙 때문에 놓칠 수 있는 경우를 한 가지 적어 주세요.
+
+**확인** — 단계 1 이 `9 개`, 단계 2 가 `7 개` 이고, 단계 3 의 일곱 줄 중 앞의 네 줄이 `1 퇴사한 계정 dami …`, 뒤의 세 줄이 `3 규칙은 허용인데 서버가 거절 gaeun …` 이면 성공입니다. 안 나오면 「정답」 레슨의 실습 3-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 ## 실습 3-2 정리
 
@@ -365,7 +383,7 @@ for priority in [1, 2, 3]:                                   # 우선순위대�
 | 센 결과의 왼쪽 이름(인덱스) | `repeated_names = repeated_users.index` |
 | 리스트 안에 있는지 | `is_repeated_user = users.isin(repeated_names)` |
 | Module 3 규칙으로 판정 | `is_allowed, reason = check_permission(user, resource, permission_action)` |
-| 순서 | `priority = PRIORITY.get(reason, 4)` |
+| 순서 (미리 채움) | `priority = PRIORITY.get(reason, 4)` |
 
 ---
 
@@ -425,6 +443,8 @@ ls config
 5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `anomaly_detection` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다.
 
 - 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 3번의 2 ~ 4를 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
+
+**확인** — 깃허브의 `anomaly_detection` 폴더에 2번에서 본 파일이 모두 보이고 `.env` 가 없으면 성공입니다. 안 보이면 `git status` 를 다시 쳐서 빨간 목록이 남아 있는지 보고, 남아 있으면 3번의 4를 다시 합니다.
 
 **4. 이어지는 곳**
 
