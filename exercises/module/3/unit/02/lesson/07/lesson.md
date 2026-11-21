@@ -176,7 +176,15 @@ def check_sla_breach(requests, now):                             # 요청서 리
 
 - **영어 이름의 뜻**: `breach`(브리치)는 약속이나 기준을 「어기다」라는 뜻이고, `breached` 는 「어긴」입니다. 그래서 `check_sla_breach` 는 「SLA 를 어겼는지(기한을 초과했는지) 확인」, `breached` 는 「기한을 어긴 요청서를 담는 리스트」입니다.
 - 코드는 각 주석 바로 아래 줄에 씁니다. 주석 안에서 들여쓴 모양은 코드의 깊이를 보여 줍니다. 칸 수는 아래와 같습니다.
-- 칸 수: `breached = []` 와 `for` 는 4칸, `for` 아래의 `if request["status"] …` 는 8칸, 그 `if` 안의 두 줄(`requested` · `hours`)과 `if hours > …` 는 12칸, 그 `if` 안의 세 줄(`overdue` · `wait_hours` · `breached.append`)은 16칸, 마지막 `return` 은 4칸입니다.
+
+| 줄 | 칸 수 |
+|---|---|
+| `breached = []` · `for` | 4칸 |
+| `for` 아래의 `if request["status"] …` | 8칸 |
+| 그 `if` 안의 두 줄(`requested` · `hours`)과 `if hours > …` | 12칸 |
+| 그 `if` 안의 세 줄(`overdue` · `wait_hours` · `breached.append`) | 16칸 |
+| 마지막 `return` | 4칸 |
+
 - `SLA_HOURS` 와 `TIME_FORMAT` 은 파일 위쪽에 이미 있습니다. 새로 만들지 않고 그대로 씁니다.
 - 채우기 전에 실행하면 단계 1은 정상으로 나오고, 단계 2에서 `TypeError: 'NoneType' object is not iterable` 오류가 납니다. 함수가 아무것도 리턴하지 않아 `for` 가 돌 리스트가 없기 때문입니다.
 
@@ -244,6 +252,7 @@ for request in check_sla_breach(REQUESTS, NOW):                  # 기한을 초
 | 접수 시각을 시각으로 | `datetime.strptime(request["requested_at"], TIME_FORMAT)` |
 | 걸린 시간(시간 단위) | `(now - requested).total_seconds() / 3600` |
 | 기한을 초과했는지 | `hours > SLA_HOURS` (정확히 같으면 아직 아님) |
-| 복사해서 지난 시간 적기 | `overdue = request.copy()` → `overdue["wait_hours"] = round(hours, 1)` |
+| 요청서 복사하기 | `overdue = request.copy()` |
+| 복사본에 지난 시간 적기 | `overdue["wait_hours"] = round(hours, 1)` |
 
 ---

@@ -209,8 +209,10 @@ for request in REQUESTS:                                         # 요청서를 
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 승인 · 반려는 검토 중일 때만 | `if request["status"] != "reviewing": return False, "검토 중이 아님"` |
-| 본인 요청 막기 | `if request["user"] == approver: return False, "본인 요청은 처리할 수 없음"` |
+| 승인 · 반려는 검토 중일 때만 | `if request["status"] != "reviewing":` |
+| 검토 중이 아니면 리턴 | `return False, "검토 중이 아님"` |
+| 본인 요청 막기 | `if request["user"] == approver:` |
+| 본인 요청이면 리턴 | `return False, "본인 요청은 처리할 수 없음"` |
 | 상태 바꾸기 | `request["status"] = "approved"` (또는 `"rejected"`) |
 | 처리한 사람 남기기 | `request["approver"] = approver` |
 | 키가 없을 수 있을 때 꺼내기 | `request.get("approver")` |
@@ -235,7 +237,16 @@ ls
 ls config
 ```
 
-- 오늘 만든 `req_create.py` · `exercise2-1_run.py` · `req_review.py` · `exercise2-2_run.py` · `req_grant.py` · `report_u2.md` 가 보여야 합니다. `req_grant.py` 가 없으면 다음 레슨 「제공 파일」로 먼저 만듭니다.
+오늘 만든 아래 파일이 보여야 합니다.
+
+| 파일 | 만든 곳 |
+|---|---|
+| `req_create.py` · `exercise2-1_run.py` | 실습 2-1 |
+| `req_review.py` · `exercise2-2_run.py` | 실습 2-2 |
+| `req_grant.py` | 「제공 파일」 레슨 |
+| `report_u2.md` | 「보고서 쓰기」 레슨 |
+
+- `req_grant.py` 가 없으면 다음 레슨 「제공 파일」로 먼저 만듭니다.
 - `config` 안은 Unit 1을 마쳤을 때와 같습니다(`users.json` · `roles.json` · `exceptions.json`). 오늘은 `config` 에 새 파일을 만들지 않았습니다.
 
 **3. 깃허브에 올리기**
@@ -252,8 +263,14 @@ ls config
    git status
    ```
    - 명령 풀이: `git status` 올릴 파일의 상태를 봄
-   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 도 같은 방법으로 합니다.
-   - `access_control/__pycache__/` 가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다.
+
+   | 이것이 보이면 | 할 일 |
+   |---|---|
+   | `.env` | `.gitignore` 맨 아래에 `.env` 한 줄, 저장 후 `git status` 다시 |
+   | `.venv` | `.env` 와 같은 방법으로 `.venv` 한 줄 |
+   | `access_control/__pycache__/` | `.gitignore` 맨 아래에 `__pycache__/` 한 줄, 저장 후 `git status` 다시 |
+
+   - `.gitignore` 는 VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래에 있습니다.
    - 오늘 새로 만든 파일은 `Untracked files:` 아래에 `access_control/req_create.py` 처럼 한 줄씩 보입니다.
 3. **[보고서]** `report_u2.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).

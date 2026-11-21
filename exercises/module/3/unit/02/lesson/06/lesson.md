@@ -215,10 +215,15 @@ show("단계 3: 점검 - 부여 후")                                     # 부�
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 승인된 것만 부여 | `if request["status"] != "approved": return False, "승인되지 않음"` |
-| 정책으로 한 번 더 판정 | `is_allowed, judge_reason = check_permission(user, resource, action)` |
-| 부여하지 않는 경우 | `if is_allowed or judge_reason != "권한 없음": return False, f"부여하지 않음({judge_reason})"` |
-| 예외 권한 부여 | `exception_id = len(EXCEPTIONS) + 1` → `exception = {"id": exception_id, …}` → `EXCEPTIONS.append(exception)` |
+| 승인된 것만 부여 | `if request["status"] != "approved":` |
+| 승인되지 않았으면 리턴 | `return False, "승인되지 않음"` |
+| 정책으로 한 번 더 판정 | `check_permission(user, resource, action)` |
+| 판정 결과 나눠 받기 | `is_allowed, judge_reason = …` |
+| 부여하지 않는 경우 | `if is_allowed or judge_reason != "권한 없음":` |
+| 부여하지 않을 때 리턴 | `return False, f"부여하지 않음({judge_reason})"` |
+| 예외 권한 부여 ① 번호 | `exception_id = len(EXCEPTIONS) + 1` |
+| 예외 권한 부여 ② 만들기 | `exception = {"id": exception_id, …}` |
+| 예외 권한 부여 ③ 추가 | `EXCEPTIONS.append(exception)` |
 | 어느 예외인지 적기 | `request["exception_id"] = exception["id"]` |
 | 부여 끝 표시 | `request["status"] = "granted"` |
 
