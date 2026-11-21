@@ -147,14 +147,12 @@ print(slash_text)               # 이어 붙인 글자를 출력한다
 | `build_prompt` | 기록 하나 | AI 에게 보낼 글 |
 | `summarize_record` | 기록 하나 | 요약 문장(실패하면 `FAIL_TEXT`) |
 
-**직접 쓰는 곳은 일곱 군데**(번호 1 ~ 7)이고, 함수 네 개 안에 나뉘어 있습니다.
+**직접 쓰는 곳은 세 군데**(① · ② · ③)입니다. 3명 고르기, [사실] 한 줄 만들기, Gemini API 호출은 미리 채워 두었습니다.
 
 | 함수 | 번호 | 직접 쓰는 것 |
 |---|---|---|
-| `pick_records_to_summarize` | 1 · 2 | low 가 아니고 아직 3명이 안 찼으면 고른 목록에 추가 |
-| `describe_reasons` | 3 | 사실 문장들을 `join` 으로 이어 붙임 |
-| `build_prompt` | 4 | 점수 파일의 값을 f-문자열로 [사실] 한 줄에 넣음 |
-| `summarize_record` | 5 · 6 · 7 | Gemini API 를 호출하고, 결과가 비면 대체 문장을 씀 |
+| `describe_reasons` | ① | 사실 문장들을 `join` 으로 이어 붙임 |
+| `summarize_record` | ② · ③ | 요약이 비었으면 대체 문장을 씀 |
 
 ## 실습 5-1 · 점수 파일 사실로 AI 요약 받기
 
@@ -170,7 +168,7 @@ print(slash_text)               # 이어 붙인 글자를 출력한다
 
 **할 일**
 
-1. `event_summary.py` · `exercise5-1_run.py` 두 파일을 만들고, `event_summary.py` 의 네 함수에서 직접 쓰는 곳을 씁니다.
+1. `event_summary.py` · `exercise5-1_run.py` 두 파일을 만들고, `event_summary.py` 의 `# ←` 가 있는 <mark>세 곳</mark>(① · ② · ③)을 한 줄씩 채웁니다.
 2. 실행해서 <mark>요약할 대상</mark>(단계 2), <mark>AI 에게 보내는 글</mark>(단계 3), <mark>Gemini API 를 활용한 AI 요약</mark>(단계 4)을 읽습니다. 단계 4 에서 Gemini API 를 3번 호출합니다. <mark>키가 없으면 호출하지 않고 대체 문장으로 끝까지 실행됩니다</mark>(시작하기 「API 키가 없어도 끝까지 할 수 있습니다」).
 
 **`event_summary.py`**
@@ -213,9 +211,8 @@ def pick_records_to_summarize(records):                 # 기록 리스트를 �
     """
     picked = []                                         # 고른 기록을 담을 빈 리스트
     for record in records:                              # 기록을 하나씩 꺼낸다
-        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-        # 1. record["grade"] 가 "low" 가 아니고(!=) 그리고(and) picked 의 개수(len)가 SUMMARY_LIMIT 보다 작으면 (if)
-        # 2.   picked 에 record 를 추가한다
+        if record["grade"] != "low" and len(picked) < SUMMARY_LIMIT:  # low 가 아니고 아직 3명이 안 찼으면
+            picked.append(record)                       # 고른 목록에 추가한다
     return picked                                       # 고른 기록을 리턴한다
 
 
@@ -226,8 +223,8 @@ def describe_reasons(reasons):                          # 탐지된 규칙 이�
     meanings = []                                       # 사실 문장을 담을 빈 리스트
     for rule in reasons:                                # 규칙 이름을 하나씩 꺼낸다
         meanings.append(RULE_MEANING[rule])             # 그 규칙의 사실 문장을 추가한다
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 3. "; " 에 .join(meanings) 를 붙여 사실 문장을 이어 붙인 결과를 meaning_text 에 담는다
+    # ① "; " 에 .join(meanings) 를 붙여, 사실 문장을 이어 붙인 결과를 meaning_text 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+
     return meaning_text                                 # 이어 붙인 문자열을 리턴한다
 
 
@@ -239,9 +236,8 @@ def build_prompt(record):                               # 기록 하나를 받�
     grade = record["grade"]                             # 등급
     score = record["score"]                             # 점수
     meaning_text = describe_reasons(record["reasons"])  # 탐지된 내용을 사실 문장으로 바꾼다
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 4. f-문자열 f"[사실] 대상: {entity} / 등급: {grade} / 점수: {score}점 / 탐지된 내용: {meaning_text}" 의 결과를 facts 에 담는다
-    prompt = PROMPT_RULES + facts                       # 지시문과 사실을 이어 붙인다 — 미리 채운 줄
+    facts = f"[사실] 대상: {entity} / 등급: {grade} / 점수: {score}점 / 탐지된 내용: {meaning_text}"  # 점수 파일의 값을 [사실] 한 줄에 넣는다
+    prompt = PROMPT_RULES + facts                       # 지시문과 사실을 이어 붙인다
     return prompt                                       # AI 에게 보낼 글을 리턴한다
 
 
@@ -250,28 +246,30 @@ def summarize_record(record):                           # 기록 하나를 받�
     AI 호출이 실패해도 나머지 작업이 멈추지 않게 할 때 쓴다.
     """
     prompt = build_prompt(record)                       # AI 에게 보낼 글을 만든다
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 5. call_llm(prompt) 의 결과를 summary 에 담는다
-    # 6. summary 가 빈 문자열("")이면 (if)
-    # 7.   FAIL_TEXT 를 summary 에 담는다
+    summary = call_llm(prompt)                          # AI 에게 보낼 글을 전달해 요약을 받는다(실패하면 빈 문자열 "")
+    # ② summary 가 빈 문자열("")이면   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+    # ③ FAIL_TEXT 를 summary 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+
     return summary                                      # 요약 문장을 리턴한다
 ```
 
-- 들여쓰기는 **미리 채운 줄에 맞춥니다.**
-
-| 번호 | 놓이는 곳 | 앞의 공백 |
-|---|---|---|
-| 1 | `for` 안 | 8개 |
-| 2 | `if` 안 | 12개 |
-| 3 ~ 6 | 함수 안 | 4개 |
-| 7 | 6번의 `if` 안 | 8개 |
-
-- 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
+- 주석 줄은 그대로 두고, **각 주석 바로 아래 줄**에 씁니다. ① · ② 는 함수 안의 줄이라 4칸, ③ 은 ② 의 `if` 안쪽 줄이라 8칸에서 시작합니다.
 - `PROMPT_RULES` 는 괄호 안에 문자열 두 개를 나란히 적었습니다. 이렇게 적으면 파이썬이 두 문자열을 하나로 이어 붙입니다. 한 줄이 너무 길어서 나눠 적은 것입니다.
 - `PROMPT_RULES` 끝의 `\n` 은 줄을 바꾸는 글자입니다. 그래서 지시문 다음 줄에 [사실]이 이어지고, 단계 3 의 출력이 2줄이 됩니다.
-- 3번의 `"; "` 는 세미콜론과 공백 한 칸입니다. <mark>공백까지 같아야 출력이 같습니다.</mark>
-- 4번의 문장은 따옴표 앞에 `f` 를 붙여야 `{entity}` 같은 부분이 값으로 바뀝니다. `f` 를 빼면 `{entity}` 라는 글자가 그대로 나갑니다.
-- 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다. `for` 안쪽의 1 · 2번이 비어 있기 때문입니다.
+- 미리 채운 `facts` 줄은 따옴표 앞에 `f` 가 있어서 `{entity}` 같은 부분이 점수 파일의 값으로 바뀝니다.
+
+**직접 쓰는 곳**
+
+| 빈칸 | 쓰는 줄 | 들여쓰기 |
+|---|---|---|
+| ① | 사실 문장들을 `"; "` 로 이어 `meaning_text` 에 담기 | 4칸 |
+| ② | `summary` 가 빈 문자열이면 (`if`) | 4칸 |
+| ③ | `FAIL_TEXT` 를 `summary` 에 담기 | 8칸 |
+
+- ① 확인: ① 만 쓰고 실행하면 단계 3 의 [사실] 줄 끝이 `탐지된 내용: 평소와 다른 IP 에서 SaaS 에 접속함; SaaS 에서 파일을 한꺼번에 많이 내려받음` 으로 나와야 합니다. 키가 없으면 단계 4 는 `dami :` 뒤가 비어 있는 것처럼 요약 자리가 비어 나옵니다. ② · ③ 을 아직 안 써서 그런 것이니 정상입니다. 막히면: 위 문법 상자의 `", ".join(words)` 에서 구분 글자를 `"; "` 로, 리스트를 `meanings` 로 바꿉니다. `"; "` 는 세미콜론과 공백 한 칸이고, <mark>공백까지 같아야 출력이 같습니다.</mark>
+- ② 확인: ② 만 쓰고 실행하면 `IndentationError: expected an indented block after 'if' statement` 가 나옵니다. ③ 을 아직 안 써서 나는 오류이니 정상입니다. 막히면: 같다는 비교는 `==` 이고, 빈 문자열은 따옴표 두 개 `""` 입니다. 끝에 `:` 를 붙입니다.
+- ③ 확인: ③ 까지 쓰고 실행하면 키가 없을 때 `dami : (요약 실패 — 점수와 이유를 직접 확인)` 이 나오면 성공입니다. 키가 있으면 AI 가 쓴 요약 문장이 나옵니다. 막히면: 미리 채운 `summary = call_llm(prompt)` 와 같은 모양이고, 오른쪽만 `FAIL_TEXT` 입니다.
+- 채우기 전에 실행하면 단계 1 · 2 는 나오고, 단계 3 에서 `NameError: name 'meaning_text' is not defined` 오류가 나며 멈춥니다. `meaning_text` 를 만드는 ① 을 아직 안 썼기 때문입니다.
 
 **`exercise5-1_run.py`** — 그대로 붙여 넣습니다. 직접 쓰는 줄은 없습니다. `len(리스트)` 는 리스트의 개수입니다.
 
@@ -302,7 +300,7 @@ for record in picked:                                                           
 **순서**
 
 1. **[VS Code]** 파일 `event_summary.py` · `exercise5-1_run.py` 를 `anomaly_detection` 폴더에 만들어 위 코드를 붙여 넣습니다. `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 만듭니다.
-2. **[VS Code]** `event_summary.py` 에서 <mark>직접 쓰는 곳 일곱 군데를 씁니다</mark>. 위 문법 상자와 1.1 의 표를 참고해 씁니다. 막히면 아래 「실습 5-1 정리」를 봅니다.
+2. **[VS Code]** `event_summary.py` 의 `# ←` 세 곳(① · ② · ③)을 채웁니다. 위 문법 상자와 「직접 쓰는 곳」의 확인을 보며 씁니다. 막히면 아래 「실습 5-1 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
@@ -323,17 +321,18 @@ for record in picked:                                                           
 5. **[보고서]** `report_u5.md` 의 `## 실습 5-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 요약한 대상 수와 `(요약 실패 …)` 가 나온 대상 수를 적어 주세요.
    - (나) [핵심 질문] 단계 3 의 지시문이 AI 에게 하지 말라고 한 것 두 가지를 찾고, 각각 하면 왜 위험한지 적어 주세요.
-   - (다) [핵심 질문] 단계 4 의 요약 하나를 골라 1.1 의 점수 기록 표(대상 · 점수 · 등급 · 탐지된 규칙)와 비교해, 표에 없는 내용이 들어 있는지 적어 주세요. 있으면 어떤 문장인지와 지시문을 어떻게 고칠지, 없으면 없다고 쓰고 탐지된 규칙이 모두 문장에 들어갔는지 적어 주세요. 키가 없어 대체 문장만 나왔으면 정답 레슨 「실습 5-1 정답」의 「키가 있을 때」 출력에서 요약 하나를 골라 비교합니다.
+   - (다) [응용] 단계 4 의 요약 하나를 골라 1.1 의 점수 기록 표(대상 · 점수 · 등급 · 탐지된 규칙)와 비교해, 표에 없는 내용이 들어 있는지 적어 주세요. 있으면 어떤 문장인지와 지시문을 어떻게 고칠지, 없으면 없다고 쓰고 탐지된 규칙이 모두 문장에 들어갔는지 적어 주세요. 키가 없어 대체 문장만 나왔으면 정답 레슨 「실습 5-1 정답」의 「키가 있을 때」 출력에서 요약 하나를 골라 비교합니다.
+
+**확인** — 단계 2 에 `high dami 60` · `mid seoyeon 45` · `mid gaeun 40` 세 줄이 나오고, 단계 4 에 대상 세 명의 줄이 모두 나오면 성공입니다(키가 없으면 세 줄 모두 대체 문장). 안 나오면 정답 레슨의 실습 5-1 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 ## 실습 5-1 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 조건 두 개가 모두 참 | `if record["grade"] != "low" and len(picked) < SUMMARY_LIMIT:` |
-| 리스트에 추가 | `picked.append(record)` |
-| 문장들을 한 문자열로 | `meaning_text = "; ".join(meanings)` |
-| 변수 값을 문장에 넣기 | `facts = f"… {entity} … {score}점 …"` |
-| AI 호출 | `summary = call_llm(prompt)` |
-| 실패하면 대체 문장 | `if summary == "":` → `summary = FAIL_TEXT` |
+| 문장들을 한 문자열로 (①) | `meaning_text = "; ".join(meanings)` |
+| 실패하면 대체 문장 (② · ③) | `if summary == "":` → `summary = FAIL_TEXT` |
+| 조건 두 개가 모두 참 (미리 채움) | `if record["grade"] != "low" and len(picked) < SUMMARY_LIMIT:` |
+| 변수 값을 문장에 넣기 (미리 채움) | `facts = f"… {entity} … {score}점 …"` |
+| AI 호출 (미리 채움) | `summary = call_llm(prompt)` |
 
 ---

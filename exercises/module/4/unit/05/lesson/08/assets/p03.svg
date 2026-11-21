@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 452" role="img">
 <title>실습 5-1 의 (가)(나)(다) 답에 들어갈 칸: 출력과 대상 수, 금지한 두 가지, 표와 비교</title>
-<desc>(가)는 출력 전체와 요약한 대상 수, 요약 실패 대상 수를 씁니다. API 키가 없으면 [LLM 호출 실패] 줄까지 붙이고 요약 실패 3명으로 적습니다. (나)는 지시문이 금지한 두 가지와 위험한 이유, (다)는 요약 하나를 점수 기록 표와 비교한 결과를 씁니다.</desc>
+<desc>(가)는 출력 전체와 요약한 대상 수, 요약 실패 대상 수를 씁니다. API 키가 없으면 [LLM 호출 실패] 줄까지 붙이고 요약 실패 3명으로 적습니다. (나)는 지시문이 금지한 두 가지와 위험한 이유, (다)는 응용으로, 요약 하나를 점수 기록 표와 비교한 결과를 씁니다.</desc>
 <defs><marker id="a-l08-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
 <text x="24" y="32" font-size="19" font-weight="700">실습 5-1 · 점수 파일 사실로 AI 요약 받기</text>
@@ -23,9 +23,9 @@
 <text x="172" y="230" font-size="15">단계 3 지시문이 하지 말라고 한 것 두 가지</text>
 <rect x="148" y="241" width="14" height="14" rx="3" fill="#ffffff" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="172" y="254" font-size="15">각각 하면 위험한 이유</text>
-<rect x="24" y="288" width="96" height="144" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<rect x="24" y="288" width="96" height="144" rx="8" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
 <text x="72" y="318" font-size="17" text-anchor="middle" font-weight="700">(다)</text>
-<text x="72" y="340" font-size="14" text-anchor="middle" fill="#b3301d">핵심 질문</text>
+<text x="72" y="340" font-size="14" text-anchor="middle" fill="#9a6200">응용</text>
 <rect x="132" y="288" width="564" height="144" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <rect x="148" y="301" width="14" height="14" rx="3" fill="#ffffff" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="172" y="314" font-size="15">고른 요약의 대상</text>

@@ -1,25 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>event_summary.py 의 직접 쓰는 곳 1~7 이 고르기 → 잇기 → 글 만들기 → 호출로 이어진다</title>
-<desc>pick_records_to_summarize(1 · 2번)가 3명을 고르고, describe_reasons(3번)가 사실 문장을 잇고, build_prompt(4번)가 [사실] 한 줄을 만들고, summarize_record(5 · 6 · 7번)가 AI 를 호출합니다. 실행하면 단계 1 ~ 4 가 출력됩니다.</desc>
+<title>event_summary.py 는 고르기 → 잇기 → 글 만들기 → 호출로 이어지고, 직접 쓰는 곳은 ① · ② · ③ 세 곳이다</title>
+<desc>pick_records_to_summarize(미리 채움)가 3명을 고르고, describe_reasons(① 직접 씀)가 사실 문장을 잇고, build_prompt(미리 채움)가 [사실] 한 줄을 만들고, summarize_record 가 AI 를 호출한 뒤 ② · ③(직접 씀)에서 빈 결과를 대체 문장으로 바꿉니다. 실행하면 단계 1 ~ 4 가 출력됩니다.</desc>
 <defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">event_summary.py · 직접 쓰는 곳 1 ~ 7</text>
-<rect x="20" y="60" width="320" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">event_summary.py · 직접 쓰는 곳 ① · ② · ③ (파란 상자)</text>
+<rect x="20" y="60" width="320" height="100" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="180" y="93.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">pick_records_to_summarize</text>
-<text x="180" y="114.6" font-size="15" fill="#292929" text-anchor="middle">1 · 2번: low 가 아니고(and)</text>
+<text x="180" y="114.6" font-size="15" fill="#292929" text-anchor="middle">미리 채움: low 가 아니고(and)</text>
 <text x="180" y="135.6" font-size="15" fill="#292929" text-anchor="middle">3명 미만이면 append</text>
 <rect x="380" y="60" width="320" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="540" y="93.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">describe_reasons</text>
-<text x="540" y="114.6" font-size="15" fill="#292929" text-anchor="middle">3번: "; ".join(meanings)</text>
+<text x="540" y="114.6" font-size="15" fill="#292929" text-anchor="middle">① 직접 씀: "; ".join(meanings)</text>
 <text x="540" y="135.6" font-size="15" fill="#666660" text-anchor="middle">→ meaning_text</text>
-<rect x="20" y="190" width="320" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<rect x="20" y="190" width="320" height="100" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="180" y="223.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">build_prompt</text>
-<text x="180" y="244.6" font-size="15" fill="#292929" text-anchor="middle">4번: f"[사실] 대상: {entity} …"</text>
+<text x="180" y="244.6" font-size="15" fill="#292929" text-anchor="middle">미리 채움: f"[사실] 대상: {entity} …"</text>
 <text x="180" y="265.6" font-size="15" fill="#666660" text-anchor="middle">→ PROMPT_RULES + facts</text>
 <rect x="380" y="190" width="320" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="540" y="223.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">summarize_record</text>
-<text x="540" y="244.6" font-size="15" fill="#292929" text-anchor="middle">5번: call_llm(prompt)</text>
-<text x="540" y="265.6" font-size="15" fill="#292929" text-anchor="middle">6 · 7번: "" 이면 FAIL_TEXT</text>
+<text x="540" y="244.6" font-size="15" fill="#292929" text-anchor="middle">미리 채움: call_llm(prompt)</text>
+<text x="540" y="265.6" font-size="15" fill="#292929" text-anchor="middle">② · ③ 직접 씀: "" 이면 FAIL_TEXT</text>
 <polyline points="340,110 376,110" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
 <polyline points="540,160 540,175 180,175 180,186" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
 <polyline points="340,240 376,240" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p05)"/>
