@@ -14,7 +14,7 @@
 <text x="245.0" y="185.0" font-size="15" fill="#292929" text-anchor="middle">계획을 하나씩 꺼낸다</text>
 <path d="M245 200 L245 224" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0804)"/>
 <rect x="50" y="224" width="390" height="48" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="245.0" y="253.0" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">approval 이 「승인 대기」인가?</text>
+<text x="245.0" y="253.0" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">① approval 이 「승인 대기」인가?</text>
 <path d="M440 248 L500 248" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0804)"/>
 <text x="470" y="241" font-size="14" fill="#666660" text-anchor="middle">그렇다</text>
 <rect x="500" y="222" width="200" height="52" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
@@ -23,8 +23,8 @@
 <path d="M245 272 L245 302" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0804)"/>
 <text x="253" y="292" font-size="14" fill="#666660" text-anchor="start">아니다</text>
 <rect x="50" y="302" width="390" height="56" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="245.0" y="325.5" font-size="15" fill="#292929" text-anchor="middle">apply_plan 으로 실제로 회수한다</text>
-<text x="245.0" y="344.5" font-size="14" fill="#292929" text-anchor="middle">(방법별로 지우는 일은 직접 씀)</text>
+<text x="245.0" y="325.5" font-size="15" fill="#292929" text-anchor="middle">② apply_plan 으로 실제로 회수한다</text>
+<text x="245.0" y="344.5" font-size="14" fill="#292929" text-anchor="middle">(방법별로 지우는 일은 미리 채움)</text>
 <path d="M245 358 L245 382" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0804)"/>
 <rect x="50" y="382" width="390" height="40" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="245.0" y="407.0" font-size="15" fill="#292929" text-anchor="middle">result = "실행"</text>
