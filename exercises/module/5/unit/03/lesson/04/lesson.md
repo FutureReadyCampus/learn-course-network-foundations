@@ -34,6 +34,8 @@ render: markdown
 
 > 시간이 남아 응용 3-2 · 3-3을 하면, `ticket_merge.py` · `ticket_notice.py` 를 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 다 쓴 뒤에는 응용의 실행 결과가 정답과 같은지 확인합니다. 결과가 다르면 이 레슨의 완성본을 다시 붙여 넣으면 다음 Unit에 지장이 없습니다.
 
+> **확인** — 세 파일이 `soar_response` 폴더에 보이고, 3번 확인 명령에서 `제공 파일 정상 7` 이 나오면 성공입니다. 숫자가 7 이 아니거나 오류가 나면 `ticket_merge.py` 를 이 레슨의 상자로 다시 붙여 넣습니다.
+
 ## `ticket_merge.py` 만들기
 
 **`ticket_merge.py`** 를 만들고 아래 내용을 붙여 넣습니다. 알림이 올 때마다 `handle_alert` 가 합칠 티켓을 찾아, 있으면 그 티켓에 병합하고 없으면 새 티켓을 만듭니다.
@@ -118,6 +120,8 @@ def change_ticket_status(ticket, new_status, minute, who):                     #
     ticket["comments"].append(comment)                                         # 댓글 리스트에 추가한다
     return True                                                                # 바꿨다고 True 를 리턴한다
 ```
+
+> **확인** — 저장한 뒤 첫 페이지 3번의 확인 명령을 쳐서 `제공 파일 정상 7` 이 나오면 성공입니다. `No module named 'ticketing'` 이 나오면 실습 3-2의 `ticketing.py` 를 먼저 만듭니다.
 
 ## `ticket_notice.py` 만들기
 
@@ -212,3 +216,5 @@ def send_ticket_notice(ticket, now, rules):                            # 티켓 
     ticket["last_notified"] = now                                      # 마지막으로 보낸 시각을 적는다
     return "전송"                                                      # 「전송」을 리턴한다
 ```
+
+> **확인** — `soar_response` 폴더에 `notifier.py` 와 `ticket_notice.py` 가 보이면 성공입니다. 불러오기 확인은 `requests` 를 설치하는 응용 3-3 순서 1번에서 합니다. 파일이 안 보이면 VS Code 왼쪽 목록에서 다른 폴더에 만들어지지 않았는지 봅니다.

@@ -18,44 +18,47 @@ render: markdown
 
 ## 실습 3-1 정답
 
+**터미널에 입력합니다.**
+
+```bash
+python exercise3-1_run.py
+```
+- 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise3-1_run.py` 실행할 파일
+
 **채운 코드** (한 예)
 
-`undo_actions.py` 의 1 · 2번입니다.
+`rollback.py` 의 `should_undo` 에 쓴 ① · ② 입니다.
 
 ```python
-    # 1. unlock_account(record["target"], state, record["incident"], "되돌리기: " + record["reason"]) 의 결과를 리턴한다
-    return unlock_account(record["target"], state, record["incident"], "되돌리기: " + record["reason"])  # 계정 해제를 실행하고 기록을 리턴한다
-    # 2. unblock_ip(record["target"], state, record["incident"], "되돌리기: " + record["reason"]) 의 결과를 리턴한다
-    return unblock_ip(record["target"], state, record["incident"], "되돌리기: " + record["reason"])  # IP 해제를 실행하고 기록을 리턴한다
-```
-
-`rollback.py` 의 3 ~ 8번입니다.
-
-```python
-        # 3. record 의 "incident" 가 incident_id 와 같으면 (if, ==)
-        if record["incident"] == incident_id:           # 그 인시던트의 기록이면
-        # 4.   found 에 record 를 추가한다 (append)
-            found.append(record)                        # 모아 둔다
-    # 5. record 의 "before" 와 "after" 가 같으면 (if, ==)
+    # ① record 의 "before" 와 "after" 가 같으면 (if, ==)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     if record["before"] == record["after"]:             # 조치 전과 후가 같으면
-    # 6.   False 를 리턴한다 (바뀐 것이 없으니 되돌릴 것도 없다)
+    # ② False 를 리턴한다 (바뀐 것이 없으니 되돌릴 것도 없다)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
         return False                                    # 바뀐 것이 없으니 되돌리지 않는다
-        # 7. should_undo(record) 가 참이면 (if)
-        if should_undo(record):                         # 자동이 바꾼 것이고 되돌릴 수 있으면
-        # 8.   undo_record(record, state) 의 결과를 records 에 추가한다 (append)
-            records.append(undo_record(record, state))  # 되돌리고 해제 기록을 모은다
-```
-
-`exercise3-1_run.py` 의 9번입니다.
-
-```python
-# 9. load_json(LOG_PATH) 의 결과를 log 에 저장한다 (실습 2-2가 저장한 조치 기록을 읽는다)
-log = load_json(LOG_PATH)  # 실습 2-2가 저장한 조치 기록을 읽는다
 ```
 
 **결과**
 
-- (가) 출력은 다음과 같습니다. 단계 5 의 잠긴 계정은 <mark style="background:#bde3ff">**`['junho']`**</mark>, 차단한 IP 는 <mark style="background:#bde3ff">**없음(`[]`)**</mark> 입니다.
+- 채우기 전 출력은 다음과 같습니다(단계 3 에 `junho` 의 `계정 해제` 가 나오고, 단계 5 의 잠긴 계정이 빈 리스트).
+
+```
+--- 단계 1: 실습 2-2가 남긴 파일
+잠긴 계정: ['junho', 'dami']
+조치 기록: 5 건
+차단한 IP: ['198.51.100.90']
+--- 단계 2: INC-001 은 오탐으로 확인됨 — 되돌리기
+INC-001 dami · 되돌리기 불가 · 세션 2개 → 세션 0개 · 되돌릴 수 없는 조치(세션 종료) — 사용자가 다시 로그인해야 함
+INC-001 dami · 계정 해제 · 잠김 → 잠기지 않음 · 되돌리기: 퇴사한 계정의 서버 요청
+--- 단계 3: INC-006 도 오탐으로 확인됨 — 되돌리기
+INC-006 junho · 되돌리기 불가 · 세션 1개 → 세션 0개 · 되돌릴 수 없는 조치(세션 종료) — 사용자가 다시 로그인해야 함
+INC-006 junho · 계정 해제 · 잠김 → 잠기지 않음 · 되돌리기: 이미 잠겨 있어 변경 없음
+--- 단계 4: INC-005 도 오탐으로 확인됨 — 되돌리기
+INC-005 198.51.100.90 · IP 해제 · 차단됨 → 차단되지 않음 · 되돌리기: 경로 스캔 (120분 뒤 자동 해제)
+--- 단계 5: 되돌린 뒤 상태
+잠긴 계정: []
+차단한 IP: []
+```
+
+- (가) 채운 뒤의 출력은 다음과 같습니다. 단계 5 의 잠긴 계정은 <mark style="background:#bde3ff">**`['junho']`**</mark>, 차단한 IP 는 <mark style="background:#bde3ff">**없음(`[]`)**</mark> 입니다.
 
 ```
 --- 단계 1: 실습 2-2가 남긴 파일
@@ -74,8 +77,8 @@ INC-005 198.51.100.90 · IP 해제 · 차단됨 → 차단되지 않음 · 되�
 차단한 IP: []
 ```
 
-- (나) 실습 2-2 기록에서 `junho` 의 계정 잠금은 <mark style="background:#bde3ff">`잠김 → 잠김`</mark> 으로, 조치 전부터 잠겨 있던 것이라 `before` 와 `after` 가 같습니다. `before` 와 `after` 가 같으면 `should_undo` 의 5 · 6번이 `False` 를 리턴하므로 해제 대상에서 빠졌습니다.
-  - 5 · 6번이 없었다면 `junho` 의 잠금도 「계정 잠금」 기록이라 해제됐을 것입니다.
+- (나) 실습 2-2 기록에서 `junho` 의 계정 잠금은 <mark style="background:#bde3ff">`잠김 → 잠김`</mark> 으로, 조치 전부터 잠겨 있던 것이라 `before` 와 `after` 가 같습니다. `before` 와 `after` 가 같으면 `should_undo` 의 ① · ② 가 `False` 를 리턴하므로 해제 대상에서 빠졌습니다.
+  - 채우기 전(① · ② 가 없을 때)에는 단계 3 에 `INC-006 junho · 계정 해제 · 잠김 → 잠기지 않음` 이 더 나오고, 단계 5 가 `잠긴 계정: []` 이었습니다. `junho` 의 잠금도 「계정 잠금」 기록이라 해제된 것입니다.
   - 그러면 자동 대응과 상관없이 원래 잠겨 있던 계정이 풀려 버립니다.
 - (다) `되돌리기 불가` 줄은 세션 종료가 <mark style="background:#bde3ff">`before` 와 `after` 가 다르지만(`세션 2개 → 세션 0개`) `UNDOABLE_ACTIONS` 목록(해제 한 번으로 되돌릴 수 있는 계정 잠금 · IP 차단만 적어 둔 리스트)에 없는 조치라서</mark> 나옵니다. 끊긴 세션은 사용자가 다시 로그인해야 합니다.
   - 이 사실을 기록하지 않고 「모두 원래대로」라고만 보고하면 보고와 실제 상태가 다릅니다.
@@ -85,24 +88,20 @@ INC-005 198.51.100.90 · IP 해제 · 차단됨 → 차단되지 않음 · 되�
 
 **자주 틀리는 곳**
 
-- 1 · 2번을 비워 두면 되돌리기 함수가 아무 값도 리턴하지 않습니다. 그러면 `records` 에 「값이 없다」는 뜻의 `None` 이 들어가고, 출력하다가 오류가 납니다(`TypeError`, 타입 에러: 값의 종류가 맞지 않다는 오류). 파이썬 3.15 에서는 오류가 난 줄 아래에 `~~~^^^` 표시가 더 붙을 수 있습니다.
+- ① 만 쓰고 ② 를 비워 두면 `if` 아래에 실행할 줄이 없어 실행하기 전에 멈춥니다. 파이썬은 바로 아래의 미리 채운 `if "확인 실패" …` 줄을 가리킵니다(줄 번호는 내 파일에 따라 다릅니다).
 
 ```
-TypeError: 'NoneType' object is not subscriptable
+IndentationError: expected an indented block after 'if' statement on line 24
 ```
 
-- 3 · 4번을 비워 두면 오류는 나지 않지만 <mark>**기록을 하나도 찾지 못해 아무것도 되돌려지지 않습니다.**</mark> 단계 2 ~ 4 에 아무 줄도 없고 단계 5 에 `dami` 와 `198.51.100.90` 이 남아 있으면 이 실수 때문입니다.
+- ② 를 `if` 와 같은 4칸에 쓰면 ② 가 `if` 안쪽 줄이 아니게 되어 같은 오류가 납니다. ② 는 8칸에서 시작합니다.
+- ① 에서 `==` 대신 `=` 하나를 쓰면 실행하기 전에 멈춥니다. `=` 는 저장, `==` 는 같은지 검사입니다.
 
 ```
---- 단계 2: INC-001 은 오탐으로 확인됨 — 되돌리기
---- 단계 3: INC-006 도 오탐으로 확인됨 — 되돌리기
---- 단계 4: INC-005 도 오탐으로 확인됨 — 되돌리기
---- 단계 5: 되돌린 뒤 상태
-잠긴 계정: ['junho', 'dami']
-차단한 IP: ['198.51.100.90']
+SyntaxError: cannot assign to subscript here. Maybe you meant '==' instead of '='?
 ```
 
-- 5 · 6번을 비워 두면 <mark>**조치 전부터 잠겨 있던 `junho` 까지 해제됩니다.**</mark> 단계 3 에 `계정 해제` 가 나오고 단계 5 의 잠긴 계정이 빈 리스트가 되면 이 실수 때문입니다.
+- ② 에 `return True` 를 쓰면 오류는 나지 않지만 채우기 전과 같은 결과가 나옵니다. <mark>**조치 전부터 잠겨 있던 `junho` 까지 해제됩니다.**</mark> 단계 3 에 `계정 해제` 가 나오고 단계 5 의 잠긴 계정이 빈 리스트가 되면 ① · ② 를 다시 봅니다.
 
 ```
 --- 단계 3: INC-006 도 오탐으로 확인됨 — 되돌리기
@@ -112,23 +111,6 @@ INC-006 junho · 계정 해제 · 잠김 → 잠기지 않음 · 되돌리기: �
 --- 단계 5: 되돌린 뒤 상태
 잠긴 계정: []
 차단한 IP: []
-```
-
-- 7 · 8번을 비워 두면 <mark>**되돌릴 수 없다는 표시만 나오고 실제 되돌리기는 하지 않습니다.**</mark>
-
-```
---- 단계 2: INC-001 은 오탐으로 확인됨 — 되돌리기
-INC-001 dami · 되돌리기 불가 · 세션 2개 → 세션 0개 · 되돌릴 수 없는 조치(세션 종료) — 사용자가 다시 로그인해야 함
-…
---- 단계 5: 되돌린 뒤 상태
-잠긴 계정: ['junho', 'dami']
-차단한 IP: ['198.51.100.90']
-```
-
-- 9번을 비워 두면 `log` 가 만들어지지 않아 오류가 납니다(`NameError`, 네임 에러: 정의하지 않은 이름을 썼다는 오류).
-
-```
-NameError: name 'log' is not defined
 ```
 
 **관제에서는**: 오탐 복구는 「풀기」보다 「어디까지 풀지 정하기」가 어렵습니다. <mark>조치 전 상태를 기록해 두면 자동이 한 것만 정확히 풀 수 있고, 되돌릴 수 없는 조치는 사람이 이어서 확인할 수 있습니다.</mark>
@@ -147,37 +129,24 @@ python exercise3-2_run.py
 
 **채운 코드** (한 예)
 
-`ticketing.py` 의 1 ~ 6번입니다.
+`ticketing.py` 의 `make_ticket` 에 쓴 ① · ② 입니다.
 
 ```python
-    # 1. "[" + grade + "] " + entity + " — " + rule 을 이어 붙인 문자열을 리턴한다
-    return "[" + grade + "] " + entity + " — " + rule  # 등급 · 대상 · 규칙을 이어 붙인 제목을 리턴한다
-    # 2. next_steps.get(status, DEFAULT_NEXT_STEP) 의 결과를 리턴한다 (키가 없으면 기본 문장)
-    return next_steps.get(status, DEFAULT_NEXT_STEP)   # 상태에 맞는 다음 할 일을 리턴한다 (없으면 기본 문장)
-        # 3. text 안에 "확인 실패" 가 들어 있으면 (if, in)
-        if "확인 실패" in text:                        # 문장 안에 확인 실패가 있으면
-            # 4. True 를 리턴한다
-            return True                                # 확인 실패가 있다고 True 를 리턴한다
-    # 5. sla_table[alert["grade"]] 를 sla_minutes 에 저장한다 (이 알림 등급의 응답 기한)
+    # ① sla_table[alert["grade"]] 를 sla_minutes 에 저장한다 (이 알림 등급의 응답 기한)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     sla_minutes = sla_table[alert["grade"]]            # 이 알림 등급의 응답 기한(분)을 꺼낸다
-    # 6. alert["minute"] + sla_minutes 를 sla_due 에 저장한다 (응답해야 하는 시각)
+    # ② alert["minute"] + sla_minutes 를 sla_due 에 저장한다 (응답해야 하는 시각)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
     sla_due = alert["minute"] + sla_minutes            # 알림이 온 시각 + 응답 기한 = 응답해야 하는 시각
-```
-
-`exercise3-2_run.py` 의 7 ~ 9번입니다.
-
-```python
-    # 7. make_ticket(alert, ticket_no, rules, NEXT_STEPS) 의 결과를 ticket 에 저장한다
-    ticket = make_ticket(alert, ticket_no, rules, NEXT_STEPS)  # 알림으로 티켓을 만든다
-    # 8. tickets 리스트에 ticket 을 추가한다 (append)
-    tickets.append(ticket)                                     # 티켓 리스트에 추가한다
-        # 9. manual_count 에 manual_count + 1 을 저장한다 (1 늘린다)
-        manual_count = manual_count + 1                        # 직접 확인이 필요한 티켓 수를 1 늘린다
 ```
 
 **결과**
 
-- (가) 출력은 다음과 같습니다. 직접 확인이 필요한 티켓은 <mark style="background:#bde3ff">**TCK-7**</mark> 한 장이고, 응답 기한 시각이 가장 이른 티켓은 <mark style="background:#bde3ff">**TCK-1**</mark>(15분)입니다.
+- 채우기 전에는 단계 1 과 단계 2 제목 줄까지 나온 뒤 멈춥니다(아래는 마지막 줄).
+
+```
+NameError: name 'sla_due' is not defined
+```
+
+- (가) 채운 뒤의 출력은 다음과 같습니다. 직접 확인이 필요한 티켓은 <mark style="background:#bde3ff">**TCK-7**</mark> 한 장이고, 응답 기한 시각이 가장 이른 티켓은 <mark style="background:#bde3ff">**TCK-1**</mark>(15분)입니다.
 
 ```
 --- 단계 1: 불러온 알림 11 건 · 응답 기한을 정한 등급 3 개
@@ -207,7 +176,7 @@ TCK-7 [low] 203.0.113.250 — 경로 스캔 → 조치가 확인되지 않았다
 - (나) `INC-207` 의 `done` 문장이 <mark style="background:#bde3ff">`IP 차단: 차단되지 않음 → 차단되지 않음 (확인 실패)`</mark> 입니다. `has_failed_action` 이 이 문장에서 「확인 실패」를 찾아 `True` 를 리턴합니다. 그래서 후속 조치(`next_step`)가 직접 확인을 지시하는 문장으로 교체됩니다.
   - 이 표시가 없으면 `조치됨` 용 문장(「조치 결과가 맞는지 확인하고…」)만 보입니다.
   - 그러면 담당자는 IP 가 차단됐다고 판단할 수 있습니다. 그 결과 <mark style="background:#ffc4d6">차단되지 않은 공격 IP 의 접속이 계속되는 것을 놓칠 수 있습니다</mark>.
-- (다) 응답 기한 시각은 **알림 수신 시각 + 등급별 응답 기한**입니다. TCK-1 은 high 라서 <mark style="background:#bde3ff">0 + 15 = 15분이고, TCK-2 는 low 라서 3 + 240 = 243분</mark>입니다.
+- (다) 응답 기한 시각은 **알림 수신 시각 + 등급별 응답 기한**입니다. ① 이 등급으로 응답 기한(`sla_minutes`)을 꺼내고, ② 가 수신 시각(`alert["minute"]`)에 더합니다. TCK-1 은 high 라서 <mark style="background:#bde3ff">0 + 15 = 15분이고, TCK-2 는 low 라서 3 + 240 = 243분</mark>입니다.
   - 모든 티켓의 응답 기한이 240분이면 긴급한 high 알림도 늦게 확인하게 됩니다. 모든 응답 기한이 15분이면 긴급하지 않은 low 알림까지 15분 안에 확인해야 합니다.
   - 그러면 심각도에 따라 처리 우선순위를 정하기 어렵습니다.
 
@@ -217,68 +186,28 @@ TCK-7 [low] 203.0.113.250 — 경로 스캔 → 조치가 확인되지 않았다
 
 **자주 틀리는 곳**
 
-아래 결과는 해당 번호의 줄을 지우고 실행한 것입니다.
-
-- 1번을 비워 두면 오류 없이 <mark style="background:#ffc4d6">**제목이 `None` 으로 나옵니다.**</mark> 단계 2 의 줄이 이 실수의 결과입니다.
-
-```
---- 단계 2: 알림마다 만든 티켓
-TCK-1 None · 만든 시각 0 분 · 기한 15 분
-TCK-2 None · 만든 시각 3 분 · 기한 243 분
-```
-
-- 2번을 비워 두면 오류 없이 <mark style="background:#ffc4d6">**다음 할 일이 `None` 으로 나옵니다.**</mark> 단계 3 의 `다음 할 일:` 줄이 이 실수의 결과입니다.
-
-```
---- 단계 3: 티켓 본문 예 (TCK-1)
-제목: [high] dami — 퇴사한 계정
-조치 내역:
- - 계정 잠금: 잠기지 않음 → 잠김
- - 세션 종료: 세션 2개 → 세션 0개
-다음 할 일: None
-응답 기한: 15 분 (만든 시각 0 분)
-```
-
-- 3번의 `if` 를 빠뜨리고 4번만 쓰면 <mark style="background:#ffc4d6">**조치 내역이 있는 티켓이 모두 직접 확인 대상이 됩니다.**</mark> 단계 4 가 1건이 아니라 8건으로 나오는 것이 이 실수의 결과입니다.
-
-```
---- 단계 4: 직접 확인이 필요한 티켓 8 건
-```
-
-- 4번을 비워 두면 `if` 아래에 실행할 줄이 없어 실행하기 전에 멈춥니다. `IndentationError`(들여쓰기 오류)로 시작하는 오류입니다(문구는 파이썬 버전마다 조금 다릅니다).
-
-```
-IndentationError: expected an indented block
-```
-
-- 5번을 비워 두면 `sla_minutes` 가 만들어지지 않아 오류가 납니다. <mark style="background:#ffc4d6">**6번에서 쓰기 전에 5번에서 만들어야 합니다.**</mark> 파이썬 버전에 따라 뒤에 `Did you mean: …` 이 더 붙을 수 있습니다.
+- ① 이나 ② 를 비워 두면 티켓을 만드는 줄에서 멈춥니다. ① 만 비우면 ② 에서 `sla_minutes` 를, ② 를 비우면 티켓의 `"sla_due": sla_due` 줄에서 `sla_due` 를 찾지 못합니다. <mark style="background:#ffc4d6">**② 에서 쓰기 전에 ① 에서 만들어야 합니다.**</mark>
 
 ```
 NameError: name 'sla_minutes' is not defined
 ```
 
-- 6번을 비워 두면 `sla_due` 가 만들어지지 않아 티켓을 만드는 줄에서 오류가 납니다. 파이썬 버전에 따라 뒤에 `Did you mean: …` 이 더 붙을 수 있습니다.
+- ① 에서 `sla_table["grade"]` 처럼 따옴표 안에 `grade` 라는 글자를 쓰면, 등급 값(`"high"` 등)이 아니라 `"grade"` 라는 키를 찾아서 오류가 납니다. 대괄호 안에 `alert["grade"]` 를 넣어야 합니다.
 
 ```
-NameError: name 'sla_due' is not defined
+KeyError: 'grade'
 ```
 
-- 7번을 비워 두면 `ticket` 이 만들어지지 않아 오류가 납니다. 파이썬 버전에 따라 뒤에 `Did you mean: …` 이 더 붙을 수 있습니다.
+- ① 에서 `sla_table` 없이 `sla_minutes = alert["grade"]` 로 쓰면 `sla_minutes` 가 숫자가 아니라 `"high"` 같은 글자가 되어, ② 의 더하기에서 오류가 납니다.
 
 ```
-NameError: name 'ticket' is not defined
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
 ```
 
-- 8번을 비워 두면 티켓이 리스트에 모이지 않습니다. 단계 2 의 줄은 나오지만 번호가 모두 `TCK-1` 이고, 단계 3 에서 오류가 납니다.
+- ① 을 8칸에 쓰면 위 줄(4칸)보다 더 들어가 있어서 실행하기 전에 멈춥니다. ① · ② 는 모두 4칸입니다.
 
 ```
-IndexError: list index out of range
-```
-
-- 9번을 비워 두면 `if` 아래에 실행할 줄이 없어 실행하기 전에 멈춥니다. `IndentationError` 로 시작하는 오류입니다.
-
-```
-IndentationError: expected an indented block
+IndentationError: unexpected indent
 ```
 
 **관제에서는**
