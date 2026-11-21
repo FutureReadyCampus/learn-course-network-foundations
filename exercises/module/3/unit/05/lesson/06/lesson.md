@@ -26,29 +26,27 @@ pwd
 python exercise5-1_run.py
 ```
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
+**채운 코드** (한 예) — 직접 쓰는 곳은 세 함수에 한 줄씩(① · ② · ③)입니다. 주석 줄 바로 아래가 채운 줄이고, 그 아래 줄은 미리 채워 둔 줄입니다.
 
 ① `check_employed` 안
 
 ```python
+        # ① info["employed"] 가 거짓이면 (if not …)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
         if not info["employed"]:                                 # 퇴사했으면
-            problems.append(name)                                # 이름을 문제 리스트에 추가한다
 ```
 
 ② `check_expired` 안
 
 ```python
-        expires_at = datetime.strptime(exception["expires"], TIME_FORMAT)   # 만료 시각 문자열을 시각으로 바꾼다
+        # ② expires_at 이 now 보다 이르거나 같으면 (<=)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
         if expires_at <= now:                                    # 만료 시각이 지금과 같거나 지났으면
-            problems.append(exception["id"])                           # 예외 번호를 문제 리스트에 추가한다
 ```
 
 ③ `check_dept` 안
 
 ```python
+        # ③ role_dept 에서 info["role"] 의 부서를 찾아 expected_dept 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
         expected_dept = role_dept[info["role"]]                  # 이 역할이 속해야 하는 부서를 찾는다
-        if expected_dept != info["dept"]:                        # 사용자의 부서와 다르면
-            problems.append(name)                                # 이름을 문제 리스트에 추가한다
 ```
 
 **결과**
@@ -80,8 +78,14 @@ python exercise5-1_run.py
 
 **자주 틀리는 곳**
 
-- `check_expired` 의 부등호 방향을 거꾸로 `>=` 로 쓰면 오류는 나지 않고 아직 만료되지 않은 예외가 모두 실패로 나옵니다.
-  - 실행하면 다음처럼 됩니다(만료 예외 점검이 실패로 나오고 예외 번호가 네 개 모두 보이면 이 실수입니다).
+| 틀리는 곳 | 얼마나 | 결과 |
+|---|---|---|
+| ② 의 부등호를 거꾸로 `>=` 로 씀 | 많음 | 오류 없이 만료 예외 점검이 실패, 번호 `[3, 6, 7, 8]` 로 나옴 |
+| ① 을 비우거나 `not` 을 빼고 씀 | 있음 | 퇴사자 계정 점검에 여섯 명 모두, 또는 dami 만 빼고 다섯 명이 나옴 |
+| ③ 에서 `info["role"]` 대신 `info["dept"]` 를 씀 | 있음 | `KeyError: '영업'` 으로 멈춤 |
+| ① · ② · ③ 을 12칸으로 씀 | 있음 | `IndentationError` |
+
+- 부등호를 거꾸로 쓰면 아직 만료되지 않은 예외가 모두 실패로 나옵니다. 실행하면 다음처럼 됩니다(만료 예외 점검이 실패로 나오고 예외 번호가 네 개 모두 보이면 이 실수입니다).
 
 ```
 --- 단계 1: 점검 대상 - 사용자 6 명 · 예외 4 개
