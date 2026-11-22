@@ -255,14 +255,15 @@ gaeun SETTLE:QUERY <- 예외 5번 | 만료된 예외
 
 ```
 Traceback (most recent call last):
-  File "…/파일이름.py", line 8, in <module>
+  File "…/access_control/apply3-1_run.py", line 8, in <module>
     stale = find_stale(access_list, NOW)                             # 규칙에 걸린 권한을 찾는다
-  File "…/파일이름.py", line 11, in find_stale
+  File "…/access_control/review_rules.py", line 11, in find_stale
     expires = entry["expires"]                           # 만료 시각을 꺼낸다
+              ~~~~~^^^^^^^^^^^
 KeyError: 'expires'
 ```
 
-줄 번호(`line 8`, `line 11`)는 내 파일의 주석과 빈 줄에 따라 다릅니다. 마지막 줄의 `KeyError: 'expires'` 를 보면 됩니다.
+첫 `File` 줄은 실행한 `apply3-1_run.py`, 둘째 `File` 줄은 실수가 있는 `review_rules.py` 입니다. `~~~~~^^^^^^^^^^^` 줄은 Python 3.11 이후에 오류 난 곳을 가리키는 표시라, 버전에 따라 없을 수도 있습니다. 줄 번호(`line 8`, `line 11`)는 내 파일의 주석과 빈 줄에 따라 다릅니다. 마지막 줄의 `KeyError: 'expires'` 를 보면 됩니다.
 
 **관제에서는** — 규칙으로 걸리는 권한은 매주 자동으로 리스트를 뽑아 담당자에게 보내고, 처리하지 않은 채 몇 주째 남아 있는 권한은 따로 표시합니다. 같은 계정이 반복해서 걸리면 퇴사 처리 절차에 빠진 곳이 있다는 뜻으로 봅니다. 예를 들어 직원의 입사 · 퇴사를 적는 인사 시스템에서 퇴사를 표시해도, 그 소식이 권한 시스템에 자동으로 전해지지 않는 경우입니다.
 

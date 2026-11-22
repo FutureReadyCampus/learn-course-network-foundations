@@ -70,7 +70,7 @@ seoyeon:SALES:QUERY
 | `last_used_map` | 사용 이력 딕셔너리 | 「사용자:권한」 문자열 → 마지막으로 쓴 시각 문자열 |
 | `"last_used"` | 후보에 추가하는 키 | 마지막으로 쓴 시각 문자열 (이력이 없으면 `None`) |
 
-- 실행 파일은 `find_unused` 를 부르기 전에, 「제공 파일」 `review_rules.py` 의 `find_stale` 로 규칙(퇴사 · 만료)에 이미 걸린 권한 일곱 건(퇴사한 dami 포함)을 현황에서 뺍니다. 이때 권한 한 건마다 `user:permission:source` 를 이어 붙인 문자열(**식별 키**)을 만들어 서로 비교합니다. 실행 파일에 이미 적혀 있으니 지금은 붙여 넣기만 합니다(식별 키는 응용 3-2 에서 직접 써 볼 수 있습니다).
+- 실행 파일은 `find_unused` 를 부르기 전에, 「제공 파일」 `review_rules.py` 의 `find_stale` 로 규칙(퇴사 · 만료)에 이미 걸린 권한 일곱 건(퇴사한 dami 포함)을 현황에서 뺍니다. (참고 · 읽기만) 이 빼는 코드는 실행 파일에 이미 적혀 있어 붙여 넣기만 하면 됩니다. 거기서 쓰는 「사용자:권한:받은 방식」 문자열(**식별 키**)은 위 「사용자:권한」 키와 다른 것이니 지금은 신경 쓰지 않아도 됩니다.
 
 | 현황의 권한 한 건의 상태 | 판정 |
 |---|---|
@@ -219,6 +219,8 @@ def find_unused(access_list, last_used_map, now, limit_days):    # 현황 · 마
 
 **직접 쓰는 곳**
 
+아래 확인은 한 곳씩 채우며 중간에 실행해 볼 때나, 막혔을 때 참고합니다. 「순서」대로 두 곳을 다 채운 뒤 처음 실행해도 됩니다.
+
 | 빈칸 | 쓰는 줄 | 들여쓰기 |
 |---|---|---|
 | ① | 키로 마지막 사용 시각 꺼내기 (`.get`) | 8칸 |
@@ -274,11 +276,10 @@ for entry in unused:                                             # 후보를 한
 
 **순서**
 
-1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 네 가지를 반복합니다.
-   1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
-   2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-   3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `config/access_log.json` · `review_unused.py` · `exercise3-2_run.py` 입니다. `access_control` 폴더를 선택한 채로 `config/access_log.json` 을 입력하면 `config` 폴더 안에 만들어집니다.
-   4. 열린 파일에 같은 이름의 코드 상자(**`config/access_log.json`** · **`review_unused.py`** · **`exercise3-2_run.py`**) 내용을 복사해 붙여 넣고 저장합니다.
+1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 세 가지를 반복합니다.
+   1. VS Code 왼쪽 목록에서 만들 폴더를 오른쪽 클릭 › **New File** 을 누릅니다. `access_log.json` 은 `access_control` 안의 `config` 폴더, 나머지 둘은 `access_control` 폴더입니다(다른 폴더를 오른쪽 클릭하면 그 폴더에 만들어집니다).
+   2. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `access_log.json` · `review_unused.py` · `exercise3-2_run.py` 입니다.
+   3. 열린 파일에 같은 이름의 코드 상자(**`config/access_log.json`** · **`review_unused.py`** · **`exercise3-2_run.py`**) 내용을 복사해 붙여 넣고 저장합니다.
 
 <!-- checklist -->
 - [ ] `access_control` 폴더에 `review_unused.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
@@ -287,7 +288,7 @@ for entry in unused:                                             # 후보를 한
 
 2. **[터미널]** 파일을 만든 뒤 `ls config` 를 쳐서 `access_log.json` 이 `users.json` 과 같은 `config` 폴더 안에 있는지 확인합니다.
    - `config` 안에 또 `config` 가 생겼다면 위치가 틀린 것이니 옮깁니다.
-   - 붙여 넣은 내용이 맞는지 `python -m json.tool config/access_log.json` 으로 확인합니다(맥북은 `python3 -m json.tool …`). 여러 줄로 정리되어 출력되면 정상이고(한글이 `\uXXXX` 로 보여도 정상입니다), 오류가 나면 붙여 넣을 때 글자가 빠진 것입니다. 깨진 채 두면 사용 이력을 못 읽어 모든 권한이 「이력 없음」으로 나옵니다.
+   - 붙여 넣은 내용이 맞는지 `python -m json.tool config/access_log.json` 으로 확인합니다. 여러 줄로 정리되어 출력되면 정상이고, 오류가 나면 붙여 넣을 때 글자가 빠진 것입니다. 깨진 채 두면 사용 이력을 못 읽어 모든 권한이 「이력 없음」으로 나옵니다.
 
 <!-- checklist -->
 - [ ] `access_control` 안의 `config` 폴더에 `access_log.json` 을 만들어 붙여 넣고, `python -m json.tool config/access_log.json` 으로 정리된 내용이 나왔다
@@ -300,7 +301,6 @@ for entry in unused:                                             # 후보를 한
    python exercise3-2_run.py
    ```
    - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `exercise3-2_run.py` 실행할 파일
-   - 맥북은 `python3 exercise3-2_run.py` 로 칩니다.
 5. 출력은 두 단계입니다. 단계 1은 규칙에 안 걸린 권한 일곱 건의 안 쓴 일 수(일곱 줄), 단계 2는 90일 넘게 안 쓴 후보입니다.
 
 <!-- checklist -->
@@ -310,8 +310,8 @@ for entry in unused:                                             # 후보를 한
 6. **[보고서]** `report_u3.md` 의 `## 실습 3-2` 아래를 채웁니다.
    - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 90일 넘게 안 쓴 후보가 몇 건인지와 후보마다 며칠째 안 쓰였는지 적어 주세요.
      - 며칠째인지는 단계 1 출력에서 후보와 같은 사용자 · 권한의 줄을 찾아 적습니다. 사용 이력이 없는 후보는 단계 1 에 「사용 이력 없음」으로 나옵니다.
-   - (나) [응용] junho 의 `SETTLE:QUERY` 는 마지막 사용이 90일 전이라 후보에서 빠졌고, 같은 junho 의 `SALES:QUERY` 는 91일 전이라 후보에 들어갔습니다. 하루 차이로 나누는 기준은 합리적일까요? 경계 부근(후보가 되고 안 되고가 갈리는 90일 근처)에서 담당자가 추가로 확인할 것도 적어 주세요.
-   - (다) [응용] 사용 이력이 없는 권한을 바로 지우면 위험한 경우가 있습니다. 어떤 경우인지 예를 들고, 지우기 전에 무엇을 확인해야 하는지 적어 주세요.
+   - (나) [응용] (답은 보고서의 `## 실습 응용 질문` 칸에) junho 의 `SETTLE:QUERY` 는 마지막 사용이 90일 전이라 후보에서 빠졌고, 같은 junho 의 `SALES:QUERY` 는 91일 전이라 후보에 들어갔습니다. 하루 차이로 나누는 기준은 합리적일까요? 경계 부근(후보가 되고 안 되고가 갈리는 90일 근처)에서 담당자가 추가로 확인할 것도 적어 주세요.
+   - (다) [응용] (답은 보고서의 `## 실습 응용 질문` 칸에) 사용 이력이 없는 권한을 바로 지우면 위험한 경우가 있습니다. 어떤 경우인지 예를 들고, 지우기 전에 무엇을 확인해야 하는지 적어 주세요.
 
 **확인** — 실행했을 때 단계 1 이 일곱 줄이고, 단계 2 가 `90일 넘게 안 쓴 후보 3 건` 아래 `seoyeon SALES:CHANGE` · `junho SALES:QUERY` · `gaeun ACCOUNT:CHANGE` 세 줄이면 성공입니다. 안 나오면 「정답」 레슨의 실습 3-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
@@ -365,8 +365,8 @@ ls config
    ```
    - 명령 풀이: `git status` 올릴 파일의 상태를 봄
    - `.env` 가 보이면 VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 도 같은 방법으로 합니다.
-   - `access_control/__pycache__/` 는 파이썬이 실행하면서 자동으로 만든 임시 폴더입니다. 올릴 필요가 없으므로 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 더 적고 저장합니다.
-   - `Untracked files:` 는 「아직 깃이 모르는 새 파일」 목록입니다. 이번 Unit 에서 만든 파일이 `access_control/review_list.py` 처럼 한 줄씩 보입니다.
+   - Unit 1 시작하기 7쪽에서 만든 `.gitignore` 에 `.env` · `.venv/` · `__pycache__/`(파이썬이 실행하면서 자동으로 만든 임시 폴더)가 들어 있어 보통은 보이지 않습니다. `access_control/__pycache__/` 가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다.
+   - `Untracked files:` 는 「아직 깃이 모르는 새 파일」 목록입니다. 이번 Unit 에서 만든 파일이 `access_control/review_list.py` 처럼 한 줄씩 보이고, 「오늘의 글 쓰기」에서 만든 글 파일 `_posts/…md` 도 한 줄 보입니다.
 3. **[보고서]** `report_u3.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
    ```bash
@@ -375,7 +375,7 @@ ls config
    git push
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
+   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(검은 편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`, VS Code 탭이나 메모장이 열리면 내용은 그대로 두고 저장한 뒤 닫습니다).
 
 <!-- checklist -->
 - [ ] `network-study-notes` 폴더에서 `git status` 로 `.env` · `.venv` 가 없는 것을 보고 `git add .` · `git commit` · `git push` 로 올렸다
