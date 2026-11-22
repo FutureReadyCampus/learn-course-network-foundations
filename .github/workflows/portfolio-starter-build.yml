@@ -34,7 +34,7 @@ jobs:
           test -f _site/2026/01/01/hello.html
           grep -q "hello.html" _site/index.html
           # progress grid: the sample post is marked sample, so nothing is filled yet
-          grep -q "30개 Unit 중 0개" _site/index.html
+          grep -q "15개 Unit 중 0개" _site/index.html
           # files meant to stay out of the site
           test ! -e _site/README.md
           test ! -e _site/check_publish.py
@@ -46,6 +46,11 @@ jobs:
           set -e
           cp -R portfolio-starter test-site
           printf -- '---\nlayout: post\ntitle: "Unit 3 test post"\ndate: 2026-01-02\nmodule: 4\nunit: 3\n---\n\nbody\n' > test-site/_posts/2026-01-02-unit3.md
+          # a module work folder sits in the same repo: its code is copied as-is
+          mkdir -p test-site/access_control/config
+          printf 'print("hi")\n' > test-site/access_control/rbac.py
+          printf '{"a": 1}\n' > test-site/access_control/config/users.json
+          printf -- '- 답: {%% raw %%} {{ x }}\n' > test-site/access_control/report_u1.md
 
       - name: Build the copy
         uses: actions/jekyll-build-pages@v1
@@ -56,7 +61,12 @@ jobs:
       - name: Check the progress grid fills the right cell
         run: |
           set -e
-          grep -q "30개 Unit 중 1개" _site_test/index.html
+          grep -q "15개 Unit 중 1개" _site_test/index.html
           grep -q 'class="cell done"' _site_test/index.html
           grep -q "unit3.html" _site_test/index.html
+          test -f _site_test/access_control/rbac.py
+          test -f _site_test/access_control/config/users.json
+          # module-folder .md (reports) stay out of the site, so Liquid-like text in them cannot break the build
+          test ! -e _site_test/access_control/report_u1.md
+          test ! -e _site_test/access_control/report_u1.html
           echo "progress grid OK"

@@ -244,8 +244,8 @@ JSON 을 쓸 때 지킬 규칙입니다.
    pwd
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치를 보여 줌
-3. **[VS Code]** `access_control` 폴더 안에 `config/users.json` 파일을 만듭니다.
-   - 왼쪽 목록에서 `access_control` 폴더를 고르고 **새 파일** 아이콘을 눌러 이름을 `config/users.json` 으로 적습니다.
+3. **[VS Code]** `access_control` 폴더 안의 `config` 폴더에 `users.json` 파일을 만듭니다(작업 폴더 기준 경로 `config/users.json`).
+   - 왼쪽 목록에서 `access_control` 폴더 안의 `config` 폴더를 오른쪽 클릭 › **New File** 을 누르고 이름을 `users.json` 으로 적습니다. `config` 폴더는 시작하기에서 만들었습니다.
 4. **[VS Code]** 위 **자료 ②** 의 표를 보고 `config/users.json` 을 씁니다. 표의 한 줄(사용자 한 명)이 파일의 한 줄이 됩니다. 첫 사용자 `seoyeon` 은 이렇게 옮깁니다.
 
    | 표의 칸 | 표에 적힌 값 | 파일에 쓰는 모양 |
@@ -268,8 +268,8 @@ JSON 을 쓸 때 지킬 규칙입니다.
    ```
    - 명령 풀이: `python -m json.tool` 파이썬의 JSON 검사 도구를 실행 · `config/users.json` 검사할 파일
    - `Expecting ',' delimiter: line 4` 처럼 나오면 그 줄 근처의 쉼표 · 따옴표를 봅니다.
-6. **[VS Code]** `access_control` 폴더 안에 `config/roles.json` 파일을 만듭니다.
-   - 같은 방법으로 `config/roles.json` 을 만들고 아래 내용을 붙여 넣습니다.
+6. **[VS Code]** `access_control` 폴더 안의 `config` 폴더에 `roles.json` 파일을 만듭니다(경로 `config/roles.json`).
+   - 같은 방법으로 `config` 폴더를 오른쪽 클릭 › **New File** 로 `roles.json` 을 만들고 아래 내용을 붙여 넣습니다.
    ```json
    {
      "sales": ["SALES:QUERY", "SALES:CHANGE"],
@@ -290,6 +290,13 @@ JSON 을 쓸 때 지킬 규칙입니다.
    - (다) [핵심 질문] `users.json` 의 `tester` 는 역할이 `intern` 인데 `roles.json` 에는 `intern` 이 없습니다. 이 사용자가 요청하면 어떻게 판정되어야 하나요? 그 이유도 적어 주세요.
 
 > **확인** — `python -m json.tool` 로 `users.json` 은 여섯 명, `roles.json` 은 역할 다섯 개가 오류 없이 다시 출력되면 성공입니다. `Expecting …` 오류가 나오면 그 줄 번호 근처의 쉼표 · 따옴표 · `true` 를 고치고 다시 확인합니다.
+
+<!-- checklist -->
+- [ ] `config/users.json` 을 만들고 여섯 명을 직접 써서 저장했다
+- [ ] `config/roles.json` 을 만들고 `finance` · `batch` · `auditor` 세 역할을 직접 써서 저장했다
+- [ ] `python -m json.tool` 로 두 파일을 확인해 오류 없이 다시 출력되었다
+- [ ] `report_u1.md` 의 `## 실습 1-1` 아래 (가) · (다)를 채웠다
+<!-- /checklist -->
 
 ## 실습 1-1 정리
 

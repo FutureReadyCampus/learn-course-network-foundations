@@ -25,18 +25,18 @@ source:
 
 Unit 1부터 Module 3 **접근통제 자동화**를 시작합니다. 이 Module에서는 **「누가 무엇을 해도 되나」를 표로 정하고 코드로 지키는 일**을 합니다. 실습 속 회사는 가상의 회사 **A사**입니다.
 
-**Unit 1은 포트폴리오와 깃을 준비하는 날입니다.** 공부한 것을 글로 남길 포트폴리오와 코드를 올릴 저장소를 먼저 만들고, 파이썬은 빈칸 한두 곳만 채우는 가벼운 실습으로 시작합니다.
+**Unit 1은 포트폴리오와 깃을 준비하는 날입니다.** 코드와 글을 함께 올릴 GitHub 저장소 하나(`network-study-notes`)를 먼저 만들어 포트폴리오 첫 화면까지 열고, 파이썬은 빈칸 한두 곳만 채우는 가벼운 실습으로 시작합니다.
 
 **오늘의 계획 (약 2시간 35분)**
 
 | 순서 | 시간 | 하는 일 |
 |---|---|---|
-| 1. 준비 | 약 60분 | 작업 폴더 · 포트폴리오 · 코드 저장소 만들기 |
+| 1. 준비 | 약 60분 | 저장소 만들고 내려받기 · 포트폴리오 첫 화면 열기 |
 | 2. 핵심 실습 | 약 60분 | 실습 1-1 ~ 1-3 (1-3 앞에서 「제공 파일」) |
 | 3. 글쓰기 | 20분 | 「오늘의 글 쓰기」에서 세 문장 글 한 편 |
 | 4. 마무리 | 15분 | 「이번 Unit 마무리」에서 확인하고 올리기 |
 
-준비는 이 레슨의 3쪽부터 마지막 13쪽까지입니다. 보고서는 실습 시간 안에서, 실습 중간의 안내에 따라 그때그때 씁니다. 글쓰기 20분은 세 문장 글에만 씁니다. 하루 3시간에서 남는 25분쯤은 밀린 곳을 따라잡는 여유 시간입니다.
+준비는 이 레슨의 3쪽부터 마지막 12쪽까지입니다. 보고서는 실습 시간 안에서, 실습 중간의 안내에 따라 그때그때 씁니다. 글쓰기 20분은 세 문장 글에만 씁니다. 하루 3시간에서 남는 25분쯤은 밀린 곳을 따라잡는 여유 시간입니다.
 
 **오늘 만들 것 세 가지**
 
@@ -89,20 +89,29 @@ Unit 1은 첫 단계인 권한 정하기입니다. 사용자와 역할을 파일
 
 > **확인** — 「인증」과 「인가」의 차이를 한 문장으로 말할 수 있으면 성공입니다. 아직 헷갈려도 괜찮습니다. 실습 1-1에서 다시 나옵니다.
 
-## 폴더 열고 작업 폴더 만들기
+## 저장소를 만들고 내려받아 작업 폴더 열기
 
-이 Module의 모든 파일은 **프로젝트 폴더 하나**에 둡니다. 이 페이지에서는 그 폴더를 열고 Module 3의 작업 폴더를 만듭니다. 파일은 실습에서 필요할 때 하나씩 만듭니다.
+이 과정에서 만드는 GitHub 저장소는 **`network-study-notes` 하나**입니다. 실습 코드와 포트폴리오 글을 모두 이 저장소에 둡니다. 이 페이지에서는 저장소를 만들어 내 컴퓨터로 내려받고(`git clone`), 그 폴더를 VS Code 로 연 뒤 Module 3의 작업 폴더를 만듭니다. 파일은 실습에서 필요할 때 하나씩 만듭니다.
 
-1. **[VS Code]** 프로젝트 폴더 `network-study-notes` 을 엽니다.
-   - 이미 이 폴더가 있다면 그 폴더를 엽니다.
-   - 처음이면 바탕화면에 `network-study-notes` 폴더를 만든 뒤, VS Code 메뉴 **File › Open Folder…** 로 그 폴더를 엽니다.
-2. **[VS Code]** 왼쪽 목록에서 `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다. **터미널**(terminal)은 명령을 글자로 입력해 컴퓨터에 일을 시키는 창으로, VS Code 아래쪽에 열립니다.
-3. **[터미널]** 위치를 확인합니다. 결과가 `…/network-study-notes` 으로 끝나야 합니다.
+1. **[브라우저]** GitHub 에서 새 저장소를 만듭니다. 이름은 `network-study-notes`, 공개 범위는 **Public**(Private 이면 포트폴리오 사이트를 남이 못 봅니다), **Add a README file** · `.gitignore` · license 는 모두 고르지 않습니다(빈 저장소). 이미 만들어 두었다면 건너뜁니다.
+2. **[VS Code]** 메뉴 **Terminal › New Terminal** 로 터미널을 엽니다. **터미널**(terminal)은 명령을 글자로 입력해 컴퓨터에 일을 시키는 창으로, VS Code 아래쪽에 열립니다. 깃이 있는지 보고, 깃 설정은 처음 한 번만 합니다(이메일은 깃허브 계정 이메일이나 `…@users.noreply.github.com`).
    ```bash
-   pwd
+   git --version
+   git config --global user.name "내 이름"
+   git config --global user.email "내 이메일"
    ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치를 보여 줌
-4. **[터미널]** Module 3의 작업 폴더 `access_control` 과 그 안의 설정 폴더 `config` 를 만들고, `access_control` 폴더로 들어갑니다. Module 3의 파일은 모두 이 폴더에 둡니다.
+   - `git --version` 에서 명령을 찾을 수 없다고 나오면 git-scm.com 에서 **Git for Windows** 를 기본값으로 설치하고 VS Code 를 다시 켭니다.
+3. **[터미널]** 바탕화면으로 가서 저장소를 내려받습니다. `<내 아이디>` 는 내 GitHub 아이디로 바꿉니다. 바탕화면에 `network-study-notes` 폴더가 생깁니다.
+   ```bash
+   cd ~/Desktop
+   git clone https://github.com/<내 아이디>/network-study-notes.git
+   ```
+   - 명령 풀이: `cd ~/Desktop` 바탕화면으로 이동 · `git clone 주소` GitHub 저장소를 내 컴퓨터로 내려받음
+   - `cd ~/Desktop` 에서 폴더를 찾을 수 없다고 나오면(윈도우에서 바탕화면이 OneDrive 안에 있는 경우 등) 그 줄 없이 `git clone` 만 칩니다. 그러면 지금 위치(보통 내 사용자 폴더)에 생기고, 4번에서 그 폴더를 엽니다.
+   - `You appear to have cloned an empty repository.` 는 빈 저장소라서 나오는 안내이니 괜찮습니다. 로그인 창이 뜨면 **Sign in with your browser** 로 로그인합니다.
+   - `already exists and is not an empty directory` 가 나오면 바탕화면에 같은 이름의 폴더가 이미 있는 것입니다. 그 폴더 이름을 바꿔 두고 다시 칩니다.
+4. **[VS Code]** 메뉴 **File › Open Folder…** 로 바탕화면의 `network-study-notes` 폴더를 엽니다. 앞으로 이 폴더가 저장소 맨 위(루트)입니다.
+5. **[VS Code]** 왼쪽 목록에서 `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다. 이 터미널에서 Module 3의 작업 폴더 `access_control` 과 그 안의 설정 폴더 `config` 를 만들고, `access_control` 폴더로 들어갑니다. Module 3의 파일은 모두 이 폴더에 둡니다.
    ```bash
    mkdir -p access_control/config
    cd access_control
@@ -110,32 +119,38 @@ Unit 1은 첫 단계인 권한 정하기입니다. 사용자와 역할을 파일
    ```
    - 명령 풀이: `mkdir -p` 폴더를 만듦(이미 있어도 오류 없음) · `cd access_control` 그 폴더 안으로 들어감 · `pwd` 지금 위치 확인
    - 마지막 `pwd` 가 `…/network-study-notes/access_control` 로 끝나면 됩니다.
-   - 폴더는 이렇게 됩니다.
+   - 폴더는 이렇게 됩니다. 포트폴리오 파일은 7쪽에서 `network-study-notes` 바로 아래에 만듭니다.
      ```
-     network-study-notes/
+     network-study-notes/   저장소 루트 (포트폴리오 파일도 여기)
        access_control/      Module 3
          config/
      ```
-5. 다음 페이지부터 포트폴리오를 만들고, 마지막 13쪽에서 이 폴더를 깃허브 코드 저장소에 잇습니다. 둘 다 오늘 준비 시간에 합니다.
-6. 각 실습은 **「할 일」을 위에서부터 차례로** 따라 합니다. `[창 이름]` 이 지금 쓸 창입니다. 막히면 이 Unit 뒤쪽의 정답을 봅니다. 답을 적는 **보고서**는 「보고서 쓰기」 레슨 첫 페이지의 틀로 만듭니다. 실습 1-1을 시작하기 전에 만들어 두면 편합니다.
+6. 다음 페이지부터 포트폴리오를 준비하고, 7쪽에서 필수 파일을 만들어 처음 올립니다(push). 오늘 준비 시간에 모두 합니다.
+7. 각 실습은 **「할 일」을 위에서부터 차례로** 따라 합니다. `[창 이름]` 이 지금 쓸 창입니다. 막히면 이 Unit 뒤쪽의 정답을 봅니다. 답을 적는 **보고서**는 「보고서 쓰기」 레슨 첫 페이지의 틀로 만듭니다. 실습 1-1을 시작하기 전에 만들어 두면 편합니다.
 
 > 오늘 명령은 모두 **터미널**에서 칩니다. `python` 이 없다는 오류가 나오면 `python3` 으로 칩니다(맥북은 `python3`). 오늘 나오는 이름 · 자원 · 숫자는 연습용 예시입니다.
 
-> **확인** — 마지막 `pwd` 가 `…/network-study-notes/access_control` 로 끝나고 VS Code 왼쪽 목록에 `access_control/config` 가 보이면 성공입니다. 안 보이면 1번에서 연 폴더가 `network-study-notes` 인지 보고 3번부터 다시 합니다.
+> **확인** — 마지막 `pwd` 가 `…/network-study-notes/access_control` 로 끝나고 VS Code 왼쪽 목록에 `access_control/config` 가 보이면 성공입니다. 안 보이면 4번에서 연 폴더가 바탕화면의 `network-study-notes` 인지 보고 5번부터 다시 합니다.
 
 ---
+
+<!-- checklist -->
+- [ ] GitHub 에 **Public** 빈 저장소 `network-study-notes` 를 만들었다(README 체크 안 함)
+- [ ] `git clone` 으로 내려받은 `network-study-notes` 폴더를 VS Code 로 열었다
+- [ ] `access_control/config` 폴더를 만들고, 터미널 위치가 `…/network-study-notes/access_control` 이다
+<!-- /checklist -->
 
 ## 내 기록 남기기: 소개
 
 이 Module에서는 코드를 직접 쓰는 실습이 많습니다. 쓴 코드와 그때 한 고민(무엇을 골랐고 왜 골랐는지)을 **내 GitHub 계정의 공개 페이지**로 남기면 포트폴리오가 됩니다. 면접이나 지원 때 링크 하나만 보내면 코드와 생각을 함께 보여 줄 수 있고, 글로 풀어 쓰다 보면 어디까지 이해했는지도 스스로 확인됩니다.
 
-설치할 것은 없습니다. **GitHub 웹 화면에서 파일을 만들고 붙여 넣는 것만으로** 시작할 수 있습니다. 이 준비는 이 페이지부터 12쪽까지이고, 오늘 준비 시간에 끝냅니다. Unit마다 마지막 레슨 「오늘의 글 쓰기」에서 이 포트폴리오에 글을 올립니다.
+포트폴리오는 3쪽에서 만든 **그 저장소 `network-study-notes`** 입니다. 실습 코드(`access_control/`)와 글(`_posts/`)이 한 저장소에 함께 있고, 따로 설치할 것은 없습니다. 이 준비는 이 페이지부터 12쪽까지이고, 오늘 준비 시간에 끝냅니다. Unit마다 마지막 레슨 「오늘의 글 쓰기」에서 이 포트폴리오에 글을 올립니다.
 
 ### 무엇을 남기나요
 
 | 남길 것 | 놓는 곳 | 설명 |
 |---|---|---|
-| 코드 | `code/` | 실습에서 작성하고 고친 파이썬 파일 |
+| 코드 | `access_control/`(Module 3), 이후 `anomaly_detection/` · `soar_response/` | 실습에서 작성하고 고친 파이썬 · JSON 파일. 실습 폴더가 그대로 올라감 |
 | 글 | `_posts/` | 고민을 내 말로 정리한 글 한 편 |
 | 실행 결과 화면 | 글 안에 이미지로 | 코드를 돌린 터미널 출력이나 화면 캡처 |
 
@@ -143,8 +158,8 @@ Unit 1은 첫 단계인 권한 정하기입니다. 사용자와 역할을 파일
 
 ### 전체 흐름
 
-1. 내 GitHub 계정에 저장소를 만듭니다. **저장소**(repository · 리포지토리)는 GitHub 에서 파일과 그 파일이 바뀐 기록을 함께 담아 두는 프로젝트 폴더입니다.
-2. 필수 파일을 복사해 붙여 넣습니다.
+1. 내 GitHub 계정에 저장소를 만들고 내려받습니다(3쪽에서 했습니다). **저장소**(repository · 리포지토리)는 GitHub 에서 파일과 그 파일이 바뀐 기록을 함께 담아 두는 프로젝트 폴더입니다.
+2. 필수 파일을 VS Code 에서 만들어 붙여 넣고 올립니다(push).
 3. 이름과 주소를 내 것으로 바꾸고 GitHub Pages를 켭니다.
 4. 글 틀을 복사해 글 한 편을 씁니다.
 5. 공개 전에 올리면 안 되는 것이 없는지 점검합니다.
@@ -160,13 +175,15 @@ Unit 1은 첫 단계인 권한 정하기입니다. 사용자와 역할을 파일
 
 `.env` 는 비밀번호나 키를 적어 두는 설정 파일이고, API 키 · 토큰은 프로그램이 다른 서비스에 접속할 때 쓰는 비밀 문자열입니다. 한 번 올린 비밀 값은 지워도 기록에 남습니다. 올리기 전에 꼭 확인하세요.
 
+저장소가 Public 이므로 **`access_control/` 같은 실습 폴더의 코드도 사이트에 함께 공개됩니다.** `.env` 와 키는 올리지 않습니다. 7쪽에서 만드는 `.gitignore` 에 `.env` · `.venv/` · `__pycache__/` 가 들어 있어 이 셋은 올라가지 않습니다.
+
 > **확인** — 공개하면 안 되는 것 세 가지를 보지 않고 말할 수 있으면 성공입니다. 막히면 위 표의 아래 줄을 다시 읽습니다.
 
 ## Jekyll이 뭔가요?
 
 GitHub Pages는 저장소에 올린 파일을 웹사이트로 보여 주는 무료 서비스입니다. 이때 글(마크다운 `.md` 파일)을 웹 페이지로 바꿔 주는 도구가 **Jekyll**(지킬)입니다. **마크다운**(Markdown · 마크다운)은 `#` 을 붙이면 제목, `-` 를 붙이면 목록이 되는 식으로 간단한 기호만 써서 글의 모양을 정하는 글쓰기 방식입니다. 웹 페이지를 만드는 언어인 HTML은 쓰지 않아도 됩니다. 글만 쓰면 Jekyll이 정해진 틀(레이아웃)에 끼워 넣어 페이지를 만들어 줍니다.
 
-흐름은 이렇습니다. 파일을 올리면(Commit) GitHub가 Jekyll로 사이트를 다시 만들고(빌드), 1~2분 뒤 내 주소가 새 모습으로 바뀝니다. 내 컴퓨터에 설치할 것은 없습니다.
+흐름은 이렇습니다. 파일을 올리면(push) GitHub가 Jekyll로 사이트를 다시 만들고(빌드), 1~2분 뒤 내 주소가 새 모습으로 바뀝니다. 내 컴퓨터에 설치할 것은 없습니다.
 
 ### 폴더와 파일의 뜻
 
@@ -176,7 +193,7 @@ GitHub Pages는 저장소에 올린 파일을 웹사이트로 보여 주는 무�
 | `index.md`, `about.md` | 첫 화면, 소개처럼 한 장짜리 페이지 |
 | `_posts/` | 글. 파일 이름은 `날짜-제목.md` 모양 |
 | `assets/` | 글에 넣는 이미지 |
-| `code/` | 내 파이썬 코드. 그대로 내려받을 수 있는 파일로 남음 |
+| `access_control/` 등 | 실습 폴더. `.py` · `.json` 이 사이트에 파일 그대로 올라감 |
 | 글 맨 위 `---` 사이 | 제목, 날짜 같은 글의 정보(front matter) |
 
 이름이 밑줄(`_`)로 시작하는 폴더(`_posts/`, `_templates/`)는 Jekyll이 특별하게 다룹니다. 그래서 `_templates/`에 둔 글 틀은 사이트에 나오지 않습니다.
@@ -209,19 +226,20 @@ Jekyll을 깊이 배우지는 않습니다. 필요한 것만 하나씩 해 봅�
 
 ## Git이 낯설다면 (선택)
 
-**Git**(깃)은 파일이 바뀐 기록을 저장본으로 차곡차곡 남기는 도구이고, **GitHub**(깃허브)는 그 기록을 인터넷에 올려 두는 곳입니다. 이 과정에서는 GitHub 웹 화면의 **Commit changes** 버튼이 저장본 하나를 만듭니다. 그래서 Git 명령을 몰라도 진행할 수 있습니다.
+**Git**(깃)은 파일이 바뀐 기록을 저장본으로 차곡차곡 남기는 도구이고, **GitHub**(깃허브)는 그 기록을 인터넷에 올려 두는 곳입니다. 이 과정에서는 3쪽의 `git clone` 으로 저장소를 내려받고, 그 뒤에는 `git add` · `git commit` · `git push` 세 명령으로 저장본을 만들어 올립니다. 쓰는 명령은 이 네 가지뿐입니다.
 
-이미 Git이 익숙하면 이 페이지는 건너뛰어도 됩니다. 한 번 익숙해지고 싶으면 이 페이지 맨 아래의 영상(얄팍한 코딩사전, 얄코)을 보세요. 지금 다 이해할 필요는 없고, 저장본(commit)과 올리기(push)라는 말이 들리면 충분합니다.
+이미 Git이 익숙하면 이 페이지는 건너뛰어도 됩니다. 한 번 익숙해지고 싶으면 이 페이지 맨 아래의 영상(얄팍한 코딩사전, 얄코)을 보세요. 지금 다 이해할 필요는 없고, 내려받기(clone) · 저장본(commit) · 올리기(push)라는 말이 들리면 충분합니다.
 
 > **확인** — commit과 push가 각각 무엇인지 한 마디로 말할 수 있으면 성공입니다. 이미 Git이 익숙하면 확인 없이 넘어갑니다.
 
-## 저장소 만들고 필수 파일 붙여 넣기
+## 필수 파일 붙여 넣기
 
-GitHub 웹 화면에서 아래 체크리스트대로 합니다.
+저장소는 3쪽에서 이미 만들어 내려받았습니다. 이 페이지에서는 포트폴리오에 꼭 필요한 파일 다섯 개를 VS Code 에서 만들고 처음으로 올립니다(push).
 
-1. **새 저장소** — 이름은 `network-study-notes`(예), 공개 범위는 **Public**(Private이면 Pages를 남이 못 봅니다), **Add a README file** 은 체크하지 않습니다.
-2. **파일 다섯 개** — 아래 상자마다 **Add file → Create new file**(빈 저장소에서는 **creating a new file**)로 이름을 그대로 적고, 내용을 붙여 넣고 **Commit changes** 합니다. 이름에 `/` 가 들어가면 폴더도 함께 생깁니다.
-3. **`code/README.md`** — 맨 아래 상자로 만들어 두면 `code/` 폴더가 생깁니다.
+1. **[VS Code]** 아래 상자마다 파일을 만들어 내용을 붙여 넣고 저장합니다. 모두 **`network-study-notes` 폴더 바로 아래**(저장소 루트)에 만듭니다. `access_control` 폴더 안이 아닙니다.
+   - 왼쪽 목록 빈 곳(또는 `network-study-notes` 이름 줄)의 새 파일 아이콘으로 만들고, 이름은 상자 제목 그대로 적습니다.
+   - 4번 샘플 글은 먼저 새 폴더 아이콘으로 `_posts` 폴더를 만들고, 그 폴더를 오른쪽 클릭 › **New File** 로 `2026-01-01-hello.md` 를 만듭니다.
+2. **[터미널]** 맨 아래 「올리기」 상자대로 저장소 루트에서 처음으로 올립니다.
 
 **1. `_config.yml`** — 사이트 이름과 주소 설정입니다. 다음 페이지에서 내 것으로 고칩니다.
 
@@ -243,17 +261,34 @@ GitHub 웹 화면에서 아래 체크리스트대로 합니다.
 
 <!-- include: portfolio-starter/.gitignore -->
 
-**6. `code/README.md`** — 내 파이썬 실습 코드를 두는 `code/` 폴더의 안내입니다. 코드는 「오늘의 글 쓰기」에서 이 폴더에 올립니다.
+**올리기** — **[터미널]** `network-study-notes` 폴더에서 칩니다.
 
-<!-- include: portfolio-starter/code/README.md -->
+```bash
+cd ..
+pwd
+git add .
+git commit -m "Add portfolio starter files"
+git branch -M main
+git push -u origin main
+cd access_control
+```
 
-> **확인** — 저장소 첫 화면에 `_config.yml` · `index.md` · `about.md` · `.gitignore` 와 폴더 `_posts` · `code` 가 보이면 성공입니다. 빠진 것이 있으면 그 파일의 이름 칸에 오타나 앞뒤 빈칸이 없는지 보고 다시 만듭니다.
+- 명령 풀이: `cd ..` 저장소 루트로 올라감(`pwd` 가 `…/network-study-notes` 로 끝나야 함) · `git branch -M main` 브랜치 이름을 `main` 으로 맞춤 · `git push -u origin main` 처음 올릴 때 한 번만 이렇게 치고, 다음부터는 `git push` 만 칩니다 · `cd access_control` 작업 폴더로 돌아옴
+- `access_control/config` 는 아직 빈 폴더라 올라가지 않습니다. 실습 파일이 생기면 마무리 때 함께 올라갑니다.
+- `rejected` · `failed to push` 가 나오면 3쪽에서 저장소를 빈 채로(README 없이) 만들었는지 봅니다.
+
+> **확인** — GitHub 의 `network-study-notes` 저장소를 새로 고쳤을 때 `_config.yml` · `index.md` · `about.md` · `.gitignore` 와 폴더 `_posts` 가 보이면 성공입니다. 빠진 것이 있으면 VS Code 에서 그 파일이 `network-study-notes` 바로 아래에 있는지, 이름에 오타나 앞뒤 빈칸이 없는지 보고 다시 올립니다.
+
+<!-- checklist -->
+- [ ] `_config.yml` · `index.md` · `about.md` · `_posts/2026-01-01-hello.md` · `.gitignore` 를 `network-study-notes` 바로 아래에 만들어 붙여 넣고 저장했다
+- [ ] `git add` · `git commit` · `git push -u origin main` 으로 올리고, GitHub 저장소에 다섯 파일이 보인다
+<!-- /checklist -->
 
 ## 이름 바꾸고 Pages 켜기
 
 ### 3단계. 이름과 주소 바꾸기
 
-저장소에서 `_config.yml`을 열고 오른쪽 위 연필 아이콘(**Edit this file**)을 누릅니다. `# ← 내 것으로 바꾸기`가 붙은 줄을 내 것으로 고칩니다. `url` 줄은 비워 둔 그대로 두세요.
+VS Code 에서 `network-study-notes` 바로 아래의 `_config.yml` 을 엽니다. `# ← 내 것으로 바꾸기`가 붙은 줄을 내 것으로 고칩니다. `url` 줄은 비워 둔 그대로 두세요.
 
 | 줄 | 바꿀 내용 |
 |---|---|
@@ -262,17 +297,22 @@ GitHub 웹 화면에서 아래 체크리스트대로 합니다.
 | `author` | 내 이름 |
 | `baseurl` | `/저장소 이름` (슬래시를 앞에 붙입니다) |
 
-`about.md`도 같은 방법으로 열어 빈칸 안내 문구를 내 소개로 바꿉니다.
+`about.md`도 같은 방법으로 열어 빈칸 안내 문구를 내 소개로 바꿉니다. 두 파일을 저장한 뒤 **[터미널]** 저장소 루트에서 올립니다(`cd ..` → `git add .` → `git commit -m "Set site name"` → `git push` → `cd access_control`).
 
 ### 이어서 Pages 켜기
 
-**Settings → Pages** 에서 **Source** 는 **Deploy from a branch**, **Branch** 는 `main` 과 `/ (root)` 를 고르고 **Save** 를 누릅니다. `/ (root)` 는 저장소 맨 위 폴더의 파일로 사이트를 만들라는 뜻입니다. 주소는 아래 모양입니다.
+**[브라우저]** 저장소의 **Settings → Pages** 에서 **Source** 는 **Deploy from a branch**, **Branch** 는 `main` 과 `/ (root)` 를 고르고 **Save** 를 누릅니다. `/ (root)` 는 저장소 맨 위 폴더의 파일로 사이트를 만들라는 뜻입니다. 주소는 아래 모양입니다.
 
 ```
 https://<내 아이디>.github.io/<저장소 이름>/
 ```
 
 > **확인** — 1~2분 뒤 **Settings → Pages** 위쪽에 **Your site is live at …** 와 주소가 나오면 성공입니다. 안 나오면 다음 페이지의 「화면이 안 나오거나 이상할 때」 표를 봅니다.
+
+<!-- checklist -->
+- [ ] `_config.yml` 의 `title` · `description` · `author` · `baseurl` 과 `about.md` 를 내 것으로 고쳐 저장하고 push 했다
+- [ ] **Settings → Pages** 에서 `main` · `/ (root)` 로 Pages 를 켰다
+<!-- /checklist -->
 
 ## 첫 화면 확인하고 막힐 때
 
@@ -295,13 +335,17 @@ https://<내 아이디>.github.io/<저장소 이름>/
 | 글이 목록에 안 나옴 | 파일 이름이 `날짜-제목.md` 모양이 아님, 맨 위 `---`가 빠짐, 날짜가 미래 | 파일 이름과 맨 위 두 줄의 `---`, 날짜를 확인 |
 | Actions에 빨간 ✗ | `_config.yml`의 들여쓰기·따옴표가 틀림 | 로그의 오류 줄이 가리키는 파일과 줄을 열어 고침 |
 
-고친 뒤에는 다시 **Commit changes**를 하면 사이트가 새로 만들어집니다.
+고친 뒤 저장소 루트에서 다시 `git add .` · `git commit` · `git push` 를 하면 사이트가 새로 만들어집니다.
 
 > **확인** — 내 주소를 열었을 때 「나의 진행」 칸과 샘플 글 한 편이 보이면 성공입니다. 안 보이면 위 표에서 내 증상과 같은 줄을 찾아 고칩니다.
 
+<!-- checklist -->
+- [ ] `https://<내 아이디>.github.io/network-study-notes/` 를 열어 「나의 진행」 칸과 샘플 글 한 편을 보았다
+<!-- /checklist -->
+
 ## 글 틀로 글 쓰기
 
-글은 Unit마다 한 편씩 씁니다. 아래 글 틀 중 하나를 복사해 `_posts/` 아래에 `날짜-영문제목.md` 이름(예: `_posts/2026-01-15-first-post.md`)의 새 파일로 만들고, 빈칸을 채웁니다.
+글은 Unit마다 한 편씩 씁니다. VS Code 에서 `network-study-notes` 안의 `_posts` 폴더를 오른쪽 클릭 › **New File** 로 `날짜-영문제목.md` 이름(예: `_posts/2026-01-15-first-post.md`)의 새 파일을 만들고, 아래 글 틀 중 하나를 복사해 붙여 넣은 뒤 빈칸을 채웁니다. 다 쓰면 저장소 루트에서 `git add .` · `git commit` · `git push` 로 올립니다.
 
 | 글 틀 | 언제 쓰나 |
 |---|---|
@@ -323,7 +367,7 @@ https://<내 아이디>.github.io/<저장소 이름>/
 
 <!-- include: portfolio-starter/_templates/post-practice.md -->
 
-실행 결과 화면은 이미지로 저장해 `assets/images/` 폴더에 올리고 글에 연결합니다. 연결하는 방법은 샘플 글에 적혀 있습니다.
+실행 결과 화면은 이미지로 저장해 `network-study-notes` 바로 아래 `assets/images/` 폴더(없으면 만듭니다)에 넣고 글에 연결합니다. 연결하는 방법은 샘플 글에 적혀 있습니다.
 
 > **확인** — 글을 올리고 1~2분 뒤 첫 화면 최신 글에 내 글이 보이고 그 Unit 칸이 채워지면 성공입니다. 안 보이면 앞 페이지 표의 「글이 목록에 안 나옴」 줄을 봅니다.
 
@@ -366,55 +410,26 @@ AI 도우미는 내 생각을 정리하는 데만 씁니다. 대신 써 주는 �
 
 ## 공개 전 점검
 
-공개하면 누구나 볼 수 있으므로 올리기 전에 점검합니다. 앞의 "공개해도 되는 것, 안 되는 것" 표를 눈으로 한 번 훑어보고, 내 컴퓨터에서 저장소를 내려받아 쓰는 사람은 점검 스크립트도 돌립니다.
+공개하면 누구나 볼 수 있으므로 올리기 전에 점검합니다. 이 저장소에는 실습 코드(`access_control/` 등)도 함께 올라가므로, 앞의 "공개해도 되는 것, 안 되는 것" 표를 눈으로 한 번 훑어보고 점검 스크립트도 돌립니다.
 
-1. 아래 `check_publish.py`를 복사해 저장소에 같은 이름의 파일로 만듭니다.
-2. 터미널에서 저장소를 내려받고 점검합니다. `<내 아이디>`는 내 GitHub 아이디로 바꿉니다. 실습 폴더 `network-study-notes` 안이 아닌 곳(예: 바탕화면)에서 칩니다. 그 자리에 저장소 이름의 폴더가 새로 생기기 때문입니다.
+1. **[VS Code]** `network-study-notes` 바로 아래(저장소 루트)에 `check_publish.py` 를 만들고 아래 상자의 내용을 붙여 넣어 저장합니다. 이 파일은 `_config.yml` 의 `exclude` 에 들어 있어 사이트에는 나오지 않습니다.
+2. **[터미널]** 저장소 루트에서 점검하고, 끝나면 작업 폴더로 돌아옵니다. 앞으로 올리기 전에는 매번 이렇게 한 번 돌립니다.
 
-```
-git clone https://github.com/<내 아이디>/network-study-notes.git
-cd network-study-notes
+```bash
+cd ..
 python check_publish.py
+cd access_control
 ```
 
-- 명령 풀이: `git clone 주소` GitHub 저장소를 내 컴퓨터로 내려받음 · `cd network-study-notes` 내려받은 폴더로 들어감 · `python check_publish.py` 점검 스크립트 실행(맥북은 `python3`)
+- 명령 풀이: `cd ..` 저장소 루트(`…/network-study-notes`)로 올라감 · `python check_publish.py` 저장소 안의 모든 파일을 점검(맥북은 `python3`) · `cd access_control` 작업 폴더로 돌아옴
 
 이미 올린 키가 있다면 지우기 전에 해당 서비스에서 키부터 폐기해야 합니다.
 
 <!-- include: portfolio-starter/check_publish.py -->
 
-> **확인** — `check_publish.py` 출력에 `[오류]` · `[주의]` 줄이 하나도 없으면 성공입니다. 나오면 그 줄이 가리키는 파일을 고치고 다시 돌립니다.
+> **확인** — `check_publish.py` 출력 마지막에 `요약: 오류 0건, 주의 0건` 이 나오면 성공입니다. `[오류]` · `[주의]` 줄이 나오면 그 줄이 가리키는 파일을 고치고 다시 돌립니다.
 
-## 코드 저장소 만들고 GitHub에 연결하기
-
-실습 코드를 올릴 `network-study-notes` 폴더를 깃 저장소로 만들고 깃허브에 잇습니다. 포트폴리오 저장소(`network-study-notes`)와는 **다른 저장소**이고, 한 번만 하면 이후 Unit에서는 「깃허브에 올리기」의 명령만 칩니다. 이미 이어 두었다면(`git status` 에 `fatal: not a git repository` 가 안 나오면) 건너뜁니다.
-
-1. **[터미널]** `network-study-notes` 폴더로 갑니다. 지금 `access_control` 안이면 먼저 `cd ..` 로 한 칸 올라갑니다. `pwd` 가 `…/network-study-notes` 으로 끝나야 합니다. 깃 설정은 처음 한 번만 합니다(이메일은 깃허브 계정 이메일이나 `…@users.noreply.github.com`).
-   ```bash
-   pwd
-   git --version
-   git config --global user.name "내 이름"
-   git config --global user.email "내 이메일"
-   ```
-   - `git --version` 에서 명령을 찾을 수 없다고 나오면 git-scm.com 에서 **Git for Windows** 를 기본값으로 설치하고 VS Code 를 다시 켭니다.
-2. **[브라우저]** 깃허브에 새 저장소 `network-study-notes` 을 만듭니다. 공개 범위는 **Private**(실습 코드에 실수로 키가 섞여도 남에게 안 보이게), README · .gitignore · license 는 모두 체크하지 않습니다. 다음 화면의 주소를 복사해 둡니다.
-3. **[VS Code]** `network-study-notes` 폴더 바로 아래에 `.gitignore` 를 만들고 아래 내용을 붙여 넣습니다. 비밀 파일(`.env`), 가상 환경(`.venv/`), 파이썬 임시 폴더(`__pycache__/`)를 올리지 않게 합니다.
-
-<pre class="copyable"><code>.env
-.venv/
-__pycache__/</code></pre>
-
-4. **[터미널]** 깃 저장소로 만들고, 깃허브 저장소와 이어 처음 한 번 올린 뒤, 작업 폴더로 돌아옵니다. 주소는 2번에서 복사한 것으로 바꿉니다.
-   ```bash
-   git init
-   git branch -M main
-   git remote add origin https://github.com/내아이디/network-study-notes.git
-   git add .
-   git commit -m "First commit"
-   git push -u origin main
-   cd access_control
-   ```
-   - 로그인 창이 뜨면 **Sign in with your browser** 로 로그인합니다.
-   - `rejected` · `failed to push` 가 나오면 주소가 맞는지, 깃허브 저장소를 빈 채로(README 없이) 만들었는지 봅니다.
-
-> **확인** — 깃허브의 `network-study-notes` 저장소를 새로 고쳤을 때 `.gitignore` 파일이 보이면 성공입니다. 안 보이면 터미널에서 `git remote -v` 로 주소를 확인하고 `git push -u origin main` 을 다시 칩니다.
+<!-- checklist -->
+- [ ] `check_publish.py` 를 `network-study-notes` 바로 아래에 만들어 붙여 넣고 저장했다
+- [ ] 저장소 루트에서 `python check_publish.py` 를 돌려 `오류 0건, 주의 0건` 을 보았다
+<!-- /checklist -->

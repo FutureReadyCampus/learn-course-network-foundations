@@ -190,7 +190,7 @@ for user, resource, action in REQUESTS:                          # 요청을 하
 
 **순서**
 
-1. **[VS Code]** `rbac.py` 를 만들고 위 코드를 붙여 넣습니다.
+1. **[VS Code]** 작업 폴더 `access_control` 바로 아래에 `rbac.py` 를 만들고 위 코드를 붙여 넣습니다.
    - **VS Code 에서 만들기**
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
      2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
@@ -220,6 +220,13 @@ for user, resource, action in REQUESTS:                          # 요청을 하
    - (다) [응용] 퇴사 처리하면서 `dami` 의 역할을 `users.json` 에서 `"none"` 으로 바꿨다고 가정합니다. 이때 검사 [2](재직)와 [3](역할)의 순서를 바꾸면 `dami` 의 이유가 어떻게 달라지나요? 순서가 왜 중요한지 적어 주세요.
 
 **확인** — 다시 실행했을 때 아홉 줄 중 `False` 가 다섯 줄이고, 이유가 「등록되지 않은 사용자」 · 「퇴사한 계정」 · 「역할이 없음」 · 「권한 없음」(두 줄)으로 나오면 성공입니다. 안 나오면 「정답」 레슨의 실습 1-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+
+<!-- checklist -->
+- [ ] `access_control` 폴더 바로 아래에 `rbac.py` 를 만들어 붙여 넣고 ① · ② 두 줄을 채워 저장했다
+- [ ] `access_control` 폴더 바로 아래에 `exercise1-2_run.py` 를 만들어 붙여 넣고 저장했다
+- [ ] `python exercise1-2_run.py` 를 실행해 `False` 다섯 줄이 나왔다
+- [ ] `report_u1.md` 의 `## 실습 1-2` 아래 (가)를 채웠다
+<!-- /checklist -->
 
 ## 실습 1-2 정리
 
