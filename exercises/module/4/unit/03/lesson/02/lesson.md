@@ -295,6 +295,12 @@ print(spike_minutes)                                                            
 
 1. **[VS Code]** 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `traffic_detection.py` 와 `exercise3-1_run.py` 를 만들고, 위의 같은 이름 코드 상자를 각각 붙여 넣어 저장합니다.
 2. **[VS Code]** `traffic_detection.py` 의 `# ←` 두 곳(① · ②)을 채웁니다. 위 판다스 문법 상자와 ② 문법 상자를 보고 씁니다.
+
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `traffic_detection.py` 를 만들어 붙여 넣고 빈칸 ① · ② 를 채워 저장했다
+- [ ] `anomaly_detection` 폴더에 `exercise3-1_run.py` 를 만들어 붙여 넣고 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
@@ -312,18 +318,17 @@ print(spike_minutes)                                                            
 
    - 단계 1의 첫 시각이 9시대가 아니라 `02:14:08` 이어도 맞습니다. 파일의 첫 이벤트(SaaS 로그인)이고, `minute` 열은 모든 이벤트에 붙인 뒤 단계 2에서 웹 서버 이벤트만 고르기 때문입니다.
    - 보고서 (나) · (다)에서 이벤트를 찾을 때는 VS Code 로 `normalized_events.json` 을 열고 `Ctrl + F`(맥북은 `Cmd + F`)로 `09:12` 또는 `09:20` 을 검색하고, `source` 가 `web` 인 줄만 셉니다. 이벤트 하나의 키는 `time · source · user · ip · action · result` 입니다.
+
+<!-- checklist -->
+- [ ] `python exercise3-1_run.py` 를 실행해 단계 3 에 `6.0 번 이상`, 단계 4 에 `2026-11-02 09:12:00` 한 줄(요청 9)이 나왔다
+<!-- /checklist -->
+
 5. **[보고서]** `report_u3.md` 의 `## 실습 3-1` 아래를 채웁니다.
    - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 급증 기준과 요청이 급증한 분(시각과 요청 수)을 적어 주세요.
    - (나) [핵심 질문] `normalized_events.json` 에서 `time` 이 `2026-11-02 09:12` 로 시작하는 웹 서버(`source` 가 `web`) 줄을 찾아, ① 요청을 보낸 IP 주소와 ② 행동(`action`)별 횟수를 적어 주세요. 그리고 ③ 이 급증을 공격이라고 확정할 수 있는지 이유와 함께 적어 주세요.
    - (다) [응용] 09:20 에도 웹 서버 요청이 3개 있었지만 급증으로 탐지되지 않았습니다. ① 3개를 급증 기준과 비교해 왜 탐지되지 않았는지 적고, ② `normalized_events.json` 에서 09:20 의 `web` 줄 3개가 어떤 요청(IP 주소 · 행동 · 결과)인지 적고, ③ 요청 수만 보는 급증 규칙이 이 요청들을 놓치는 이유를 적어 주세요.
 
 **확인** — 단계 3 제목 줄 끝에 `6.0 번 이상`, 단계 4 에 `2026-11-02 09:12:00    9` 한 줄만 나오면 성공입니다. 안 나오면 「정답」 레슨의 실습 3-1 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
-
-<!-- checklist -->
-- [ ] `anomaly_detection` 폴더에 `traffic_detection.py` 를 만들어 붙여 넣고 빈칸 ① · ② 를 채워 저장했다
-- [ ] `anomaly_detection` 폴더에 `exercise3-1_run.py` 를 만들어 붙여 넣고 저장했다
-- [ ] `python exercise3-1_run.py` 를 실행해 단계 3 에 `6.0 번 이상`, 단계 4 에 `2026-11-02 09:12:00` 한 줄(요청 9)이 나왔다
-<!-- /checklist -->
 
 ## 실습 3-1 정리
 

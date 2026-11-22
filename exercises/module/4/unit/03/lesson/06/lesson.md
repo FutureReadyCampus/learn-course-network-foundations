@@ -262,6 +262,13 @@ print("웹 서버: 스캔으로 본 IP", scan_ips)                   # 웹 탐�
 
 1. **[VS Code]** 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `malicious_detection.py` · `apply3-3_run.py` · `advanced_detection.py` 를 만들고, 위의 같은 이름 코드 상자를 각각 붙여 넣어 저장합니다.
 2. **[VS Code]** `malicious_detection.py` 에서 <mark>직접 쓰는 곳 여섯 군데를 씁니다</mark>. 3.1 의 판다스 문법 상자와 표를 보고 씁니다.
+
+<!-- checklist optional -->
+- [ ] `anomaly_detection` 폴더에 `malicious_detection.py` 를 만들어 붙여 넣고 직접 쓰는 곳 여섯 군데를 채워 저장했다
+- [ ] `anomaly_detection` 폴더에 `apply3-3_run.py` 를 만들어 붙여 넣고 저장했다
+- [ ] `anomaly_detection` 폴더에 `advanced_detection.py` 를 만들어 붙여 넣고 저장했다(응용 3-2 를 안 했으면 건너뜀)
+<!-- /checklist -->
+
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
@@ -278,16 +285,17 @@ print("웹 서버: 스캔으로 본 IP", scan_ips)                   # 웹 탐�
    | `apply3-3_run.py` 단계 3 | 1줄 |
    | `apply3-3_run.py` 단계 4 | 4줄 |
    | `advanced_detection.py` | 3줄 |
+
+<!-- checklist optional -->
+- [ ] `python apply3-3_run.py` 와 `python advanced_detection.py` 를 실행해 출력을 봤다
+<!-- /checklist -->
+
 5. **[보고서]** `report_u3.md` 의 `## 응용 3-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 스캔으로 본 IP 와 이유를 적어 주세요.
    - (나) [핵심 질문] 203.0.113.50 은 실패한 요청이 7번 있지만 스캔에서 제외됐습니다. 제외된 이유와, 제외하지 않으면 담당자에게 어떤 일이 생기는지 적어 주세요.
    - (다) [핵심 질문] 198.51.100.21 의 `GET /board/99` 실패 1건은 이 규칙에서 어떤 조건 때문에 제외되나요? 그리고 해킹 도구가 `SCANNER_PATTERN` 에 없는 경로(예: `/backup.zip`)를 요청하면 이 규칙이 탐지하지 못한다는 점을 설명해 주세요.
 
 <!-- checklist optional -->
-- [ ] `anomaly_detection` 폴더에 `malicious_detection.py` 를 만들어 붙여 넣고 직접 쓰는 곳 여섯 군데를 채워 저장했다
-- [ ] `anomaly_detection` 폴더에 `apply3-3_run.py` 를 만들어 붙여 넣고 저장했다
-- [ ] `anomaly_detection` 폴더에 `advanced_detection.py` 를 만들어 붙여 넣고 저장했다(응용 3-2 를 안 했으면 건너뜀)
-- [ ] `python apply3-3_run.py` 와 `python advanced_detection.py` 를 실행해 출력을 봤다
 - [ ] `report_u3.md` 의 `## 응용 3-3` 을 채우고 저장했다
 <!-- /checklist -->
 
