@@ -34,7 +34,7 @@ render: markdown
 
 ## `routing.py` 만들기
 
-**`routing.py`** 를 만들고 아래 내용을 붙여 넣습니다. `decide_route` 는 위에서부터 차례로 확인해 정한 경로를 이유와 함께 두 값으로 리턴합니다.
+**[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 **`routing.py`** 를 만들고 아래 내용을 붙여 넣어 저장합니다. `decide_route` 는 위에서부터 차례로 확인해 정한 경로를 이유와 함께 두 값으로 리턴합니다.
 
 | 알림이 이러면 | 경로 |
 |---|---|
@@ -83,9 +83,14 @@ def apply_route(incident, route, reason, incident_log):                     # �
 
 **확인** — 터미널에서 `python -c "import routing; print('ok')"`(맥북은 `python3`)를 쳐서 `ok` 가 나오면 성공입니다. `SyntaxError` 나 `IndentationError` 가 나오면 복사가 덜 된 것이니 파일 내용을 모두 지우고 코드 상자를 다시 복사해 붙여 넣습니다.
 
+<!-- checklist -->
+- [ ] `routing.py` 를 `soar_response` 폴더에 만들고 코드 상자 내용을 붙여 넣어 저장했다
+- [ ] `python -c "import routing; print('ok')"` 를 실행해 `ok` 가 나왔다
+<!-- /checklist -->
+
 ## `safe_runner.py` 만들기
 
-**`safe_runner.py`** 를 만들고 아래 내용을 붙여 넣습니다. `find_skip_reason` 이 「이미 잠긴 계정」과 「잠금 한도 3개」를 점검하고, `run_playbook_safe` 는 이미 끝난 알림을 건너뛰고 승인이 필요하면 멈춥니다.
+**[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 **`safe_runner.py`** 를 만들고 아래 내용을 붙여 넣어 저장합니다. `find_skip_reason` 이 「이미 잠긴 계정」과 「잠금 한도 3개」를 점검하고, `run_playbook_safe` 는 이미 끝난 알림을 건너뛰고 승인이 필요하면 멈춥니다.
 
 ```python
 from incident import change_status, match_playbooks, run_action, make_log_entry                           # 실습 1-2 의 incident.py 에서 함수를 불러온다
@@ -158,3 +163,8 @@ def process_safe(incidents, registry, state, action_log):                       
 ```
 
 **확인** — 터미널에서 첫 쪽 5번의 `python -c "import routing, safe_runner; print('ok')"` 를 쳐서 `ok` 가 나오면 성공입니다. 오류가 나면 오류에 적힌 파일 이름(`routing.py` 또는 `safe_runner.py`)의 내용을 모두 지우고 코드 상자를 다시 복사해 붙여 넣습니다.
+
+<!-- checklist -->
+- [ ] `safe_runner.py` 를 `soar_response` 폴더에 만들고 코드 상자 내용을 붙여 넣어 저장했다
+- [ ] `python -c "import routing, safe_runner; print('ok')"` 를 실행해 `ok` 가 나왔다
+<!-- /checklist -->
