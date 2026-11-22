@@ -222,11 +222,20 @@ def split_by_exclude(findings, exclude_map):                     # 후보 리스
 ]
 </code></pre>
 
+<!-- checklist -->
+- [ ] `access_control` 안의 `config` 폴더에 `exclude_list.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 - 저장한 뒤 터미널에서 JSON 규칙에 맞는지 확인합니다. 세 건이 다시 정리되어 나오면 됩니다.
   ```bash
   python -m json.tool config/exclude_list.json
   ```
   - 명령 풀이: `python -m json.tool` 파이썬의 JSON 검사 도구를 실행 · `config/exclude_list.json` 검사할 파일 (맥북은 `python3`)
+
+<!-- checklist -->
+- [ ] `python -m json.tool config/exclude_list.json` 으로 세 건이 정리되어 나왔다
+<!-- /checklist -->
+
 - 모두 만들었으면 터미널에서 확인합니다. `review_rules.py` · `overprivilege.py` · `report_exclude.py` 와 `config` 안의 `exclude_list.json` 이 보이면 실습 3-2로 갑니다.
   ```bash
   ls
@@ -238,7 +247,5 @@ def split_by_exclude(findings, exclude_map):                     # 후보 리스
 > **확인** — 마지막 줄에 `제공 파일 정상` 이 나오면 성공입니다. `ModuleNotFoundError` 가 나면 그 이름의 파일이 `access_control` 바로 아래에 없는 것이고, `SyntaxError` 가 나면 붙여 넣을 때 글자가 빠진 것이니 그 파일을 지우고 다시 복사합니다.
 
 <!-- checklist -->
-- [ ] `access_control` 안의 `config` 폴더에 `exclude_list.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
-- [ ] `python -m json.tool config/exclude_list.json` 으로 세 건이 정리되어 나왔다
 - [ ] `python -c "import review_rules, overprivilege, report_exclude; …"` 줄을 실행해 `제공 파일 정상` 이 나왔다
 <!-- /checklist -->

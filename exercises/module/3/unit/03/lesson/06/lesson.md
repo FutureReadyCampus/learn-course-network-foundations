@@ -244,22 +244,34 @@ print(names)                                                     # 후보가 아
 **순서**
 
 1. **[VS Code]** `overprivilege.py` 를 열어 내용을 모두 지우고 위 **`overprivilege.py`** 코드 상자의 골격을 붙여 넣고 저장합니다. 이어서 `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘으로 `apply3-2_run.py` 를 만들어 붙여 넣고 저장합니다.
+
+<!-- checklist optional -->
+- [ ] `access_control` 폴더에 `apply3-2_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 2. **[VS Code]** `overprivilege.py` 에서 직접 쓰는 곳 다섯 군데(`entry_key` · `make_stale_reason` · `make_unused_keys` · `collect_reasons` · `generate_report`)를 씁니다. 1.1 의 표와 그림을 보고 씁니다.
+
+<!-- checklist optional -->
+- [ ] `overprivilege.py` 의 내용을 골격으로 바꾸고 직접 쓰는 곳 다섯 군데를 쓰고 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
    python apply3-2_run.py
    ```
 4. 출력은 두 단계입니다. 단계 1은 요약 한 줄과 후보 한 줄씩, 단계 2는 후보가 아닌 권한 리스트 한 줄입니다.
+
+<!-- checklist optional -->
+- [ ] `python apply3-2_run.py` 를 실행해 `점검 14 건 중 후보 10 건` 이 나왔다
+<!-- /checklist -->
+
 5. **[보고서]** `report_u3.md` 의 `## 응용 3-2` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
    - (가) 실행한 출력 전체를 붙여 넣고, 후보가 모두 몇 건인지, 이유가 둘인 후보가 몇 건인지, 후보가 아닌 권한은 무엇인지 적어 주세요.
    - (나) [핵심 질문] 출력에서 이유가 둘인 후보를 하나 고르고, 이유가 둘이라는 것이 담당자가 처리 순서를 정할 때 어떤 도움이 되는지 적어 주세요. 이유를 문자열 하나가 아니라 리스트(`reasons`)로 담으면 어떤 점이 좋은지도 적어 주세요.
    - (다) [핵심 질문] 프로그램이 만든 리포트에는 후보만 담고, 후보가 아닌 권한은 전체 건수(`total`)로만 남겼습니다. 후보가 아닌 권한까지 모두 담는 방법과 비교해 담당자 입장에서 어느 쪽이 나은지 이유와 함께 적어 주세요.
 
 <!-- checklist optional -->
-- [ ] `overprivilege.py` 의 내용을 골격으로 바꾸고 직접 쓰는 곳 다섯 군데를 쓰고 저장했다
-- [ ] `access_control` 폴더에 `apply3-2_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
-- [ ] `python apply3-2_run.py` 를 실행해 `점검 14 건 중 후보 10 건` 이 나왔다
 - [ ] `report_u3.md` 의 `## 응용 3-2` 칸을 채웠다
 <!-- /checklist -->
 

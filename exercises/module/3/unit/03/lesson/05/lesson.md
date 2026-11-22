@@ -127,7 +127,17 @@ print(counts)                                                    # 이유별 건
 **순서**
 
 1. **[VS Code]** `review_rules.py` 를 열어 내용을 모두 지우고(`Ctrl + A` 뒤 `Delete`, 맥북은 `Cmd + A`) 위 **`review_rules.py`** 코드 상자의 골격을 붙여 넣고 저장합니다. 이어서 `access_control` 폴더를 선택하고 **새 파일** 아이콘으로 `apply3-1_run.py` 를 만들어 붙여 넣고 저장합니다.
+
+<!-- checklist optional -->
+- [ ] `access_control` 폴더에 `apply3-1_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 2. **[VS Code]** `review_rules.py` 의 `find_stale` 본문을 직접 씁니다. 2.1 의 표와 그림을 보고 씁니다.
+
+<!-- checklist optional -->
+- [ ] `review_rules.py` 의 내용을 골격으로 바꾸고 `find_stale` 본문을 직접 쓰고 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 이어서 실행합니다.
    ```bash
    pwd
@@ -136,15 +146,17 @@ print(counts)                                                    # 이유별 건
    - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `apply3-1_run.py` 실행할 파일
    - 맥북은 `python3 apply3-1_run.py` 로 칩니다.
 4. 출력은 두 단계입니다. 단계 1은 `규칙에 걸린 권한 N 건` 한 줄과 걸린 권한, 단계 2는 이유별 건수 딕셔너리 한 줄입니다.
+
+<!-- checklist optional -->
+- [ ] `python apply3-1_run.py` 를 실행해 `규칙에 걸린 권한 7 건` 이 나왔다
+<!-- /checklist -->
+
 5. **[보고서]** `report_u3.md` 의 `## 응용 3-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 규칙에 걸린 권한이 이유별로 몇 건인지 적어 주세요.
    - (나) [핵심 질문] 퇴사한 계정과 만료된 예외는 파일에 적힌 사실로 걸러 냈습니다. 이 규칙으로는 걸러 낼 수 없지만 필요 없을 수 있는 권한의 예를 하나 들고, 그것을 찾으려면 어떤 정보가 더 필요한지 적어 주세요.
    - (다) [핵심 질문] 규칙에 걸린 7건을 회수한다면(회수는 다음 Unit 4 권한 거두기에서 합니다) 어떤 것부터 회수할까요? 출력의 이유(퇴사한 계정 · 만료된 예외)를 보고 기준을 하나 정해, 그 기준으로 이유를 적어 주세요.
 
 <!-- checklist optional -->
-- [ ] `review_rules.py` 의 내용을 골격으로 바꾸고 `find_stale` 본문을 직접 쓰고 저장했다
-- [ ] `access_control` 폴더에 `apply3-1_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
-- [ ] `python apply3-1_run.py` 를 실행해 `규칙에 걸린 권한 7 건` 이 나왔다
 - [ ] `report_u3.md` 의 `## 응용 3-1` 칸을 채웠다
 <!-- /checklist -->
 
