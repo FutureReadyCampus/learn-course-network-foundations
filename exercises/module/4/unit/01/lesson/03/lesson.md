@@ -196,7 +196,7 @@ UTC+09:00
 
 **할 일**
 
-1. **`normalize_web.py` · `exercise1-2_run.py`** 두 파일을 만들고(실습 1-1의 `log_parse.py` 와 시작하기의 `access_sample.log` 가 같은 폴더에 있어야 합니다), `normalize_web.py` 에서 `# ←` 가 있는 <mark>두 곳</mark>(`convert_time` 의 ① · `convert_result` 의 ②)을 한 줄씩 채웁니다.
+1. **`normalize_web.py` · `exercise1-2_run.py`** 두 파일을 `anomaly_detection` 폴더에 만들고(실습 1-1의 `log_parse.py` 와 시작하기의 `access_sample.log` 가 같은 `anomaly_detection` 폴더에 있어야 합니다), `normalize_web.py` 에서 `# ←` 가 있는 <mark>두 곳</mark>(`convert_time` 의 ① · `convert_result` 의 ②)을 한 줄씩 채웁니다.
 2. 채우기 <mark>전과 후</mark>에 한 번씩 실행해서 <mark>정규화한 이벤트 수와 읽기 실패한 줄</mark>(단계 1), <mark>처음 나오는 실패 이벤트</mark>(단계 2), <mark>성공 · 실패별 개수</mark>(단계 3)를 읽습니다.
 
 **`normalize_web.py`**
@@ -328,7 +328,7 @@ print(result_counts)                                                            
 
 **순서**
 
-1. **[VS Code]** 파일 `normalize_web.py` · `exercise1-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code]** `anomaly_detection` 폴더에 `normalize_web.py` · `exercise1-2_run.py` 두 파일을 만들어, 위의 같은 이름 코드 상자 내용을 각각 붙여 넣고 저장합니다.
 2. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 **채우기 전에** 한 번 실행합니다(맥북은 `python3`). `IndentationError: unexpected indent` 가 나오면 정상입니다.
    ```bash
    pwd
@@ -348,6 +348,13 @@ print(result_counts)                                                            
    - (다) [응용] 이벤트에 원래 로그 줄(`raw`)을 그대로 남겨 두는 이유는 무엇인가요? 정규화하면 사라지는 정보를 한 가지 예로 들어 함께 적어 주세요.
 
 **확인** — 다시 실행했을 때 단계 1 에 `정규화한 이벤트 28 개 · 읽기 실패 2 줄`, 단계 3 에 `{'성공': 15, '실패': 13}` 이 나오면 성공입니다. 안 나오면 「정답」 레슨의 실습 1-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `normalize_web.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `anomaly_detection` 폴더에 `exercise1-2_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `normalize_web.py` 의 빈칸 ① · ② 를 한 줄씩 채우고 저장했다
+- [ ] `python exercise1-2_run.py` 를 실행해 `정규화한 이벤트 28 개 · 읽기 실패 2 줄` 과 `{'성공': 15, '실패': 13}` 이 나왔다
+<!-- /checklist -->
 
 ## 실습 1-2 정리
 
@@ -431,6 +438,13 @@ ls
 
 1. 다음 Unit 2(판다스로 세고 기준 정하기)는 세 로그를 합친 공통 이벤트 57개를 **판다스**로 표처럼 읽어 실패한 이벤트를 골라 세고, 사용자별 · 주소별로 묶습니다.
 2. 이벤트 파일 `normalized_events.json` 은 Unit 2 시작하기에서 샘플로 만들기 때문에, 응용 1-3을 하지 않았어도 됩니다. 판다스 설치도 Unit 2 시작하기에서 합니다.
+
+<!-- checklist -->
+- [ ] `anomaly_detection/report_u1.md` 의 꼭 채울 칸(실습 1-1 (가) · (다), 실습 1-2 (가) · (나), 마무리 (가))을 모두 채우고 저장했다
+- [ ] `anomaly_detection` 폴더에 「2. 파일 확인」 표의 파일이 모두 있는 것을 봤다
+- [ ] `network-study-notes` 폴더에서 `git add .` · `git commit` · `git push` 로 올렸다
+- [ ] 깃허브의 내 저장소 `anomaly_detection` 폴더에 오늘 만든 파일이 보이고 `.env` · `.venv` 가 없는 것을 봤다
+<!-- /checklist -->
 
 ---
 
