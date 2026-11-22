@@ -15,7 +15,7 @@ render: markdown
 3. 만들 파일은 두 개입니다.
    1. `revoke_input.py`: Unit 3 점검 결과인 회수 대상 8건을 리스트로 돌려주는 함수 `load_to_revoke`. 시작하기 레슨의 확인 결과에 따라 두 코드 중 하나를 고릅니다.
    2. `revoke_plan.py`: 회수 대상마다 회수 방법 · 지울 대상 · 영향을 적은 회수 계획을 만드는 함수 `plan_revocation`
-4. 두 파일을 다 만들었으면 아래 명령으로 확인하고 실습 4-1로 갑니다(맥북은 `python3`).
+4. 두 파일을 다 만들었으면 아래 명령으로 확인하고 실습 4-1로 갑니다.
    ```bash
    python -c "from rbac import USERS, ROLES; from revoke_input import load_to_revoke; from revoke_plan import plan_revocation; print('제공 파일 정상', len(plan_revocation(load_to_revoke(), USERS, ROLES)))"
    ```
@@ -97,7 +97,7 @@ def load_to_revoke():                                            # Unit 3 점검
 
 - 점검 시각은 `2026-10-29 14:00` 으로 고정했습니다. 날짜가 바뀌어도 같은 8건이 나오게 하려는 것입니다.
 
-> **확인** — 터미널에서 `python -c "from revoke_input import load_to_revoke; print(len(load_to_revoke()))"`(맥북은 `python3`)를 쳐서 `8` 이 나오면 성공입니다. 「있을 때」 코드로 숫자가 다르거나 오류가 나면 이 파일의 내용을 「없을 때」 코드로 바꿔 붙여 넣습니다.
+> **확인** — 터미널에서 `python -c "from revoke_input import load_to_revoke; print(len(load_to_revoke()))"`를 쳐서 `8` 이 나오면 성공입니다. 「있을 때」 코드로 숫자가 다르거나 오류가 나면 이 파일의 내용을 「없을 때」 코드로 바꿔 붙여 넣습니다.
 
 <!-- checklist -->
 - [ ] `access_control` 폴더에 `revoke_input.py` 를 만들고 고른 코드 상자 하나의 내용을 붙여 넣은 뒤 저장했다
@@ -206,9 +206,9 @@ def plan_revocation(findings, users, roles):                     # 회수 대상
 
 - 방법을 고르는 순서와 영향을 세는 방법은 응용 4-1 레슨에서 자세히 다룹니다.
 
-> **확인** — 첫 페이지 4번 명령을 쳐서 `제공 파일 정상 8` 이 나오면 성공입니다. 안 나오면 `revoke_plan.py` 의 내용을 모두 지우고 위 코드 상자에서 다시 복사해 붙여 넣습니다.
+> **확인** — 이 레슨 첫 쪽 「제공 파일 쓰는 법」의 4번 명령을 쳐서 `제공 파일 정상 8` 이 나오면 성공입니다. 안 나오면 `revoke_plan.py` 의 내용을 모두 지우고 위 코드 상자에서 다시 복사해 붙여 넣습니다.
 
 <!-- checklist -->
 - [ ] `access_control` 폴더에 `revoke_plan.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
-- [ ] 첫 페이지 4번 명령으로 `제공 파일 정상 8` 이 나왔다
+- [ ] 이 레슨 첫 쪽 「제공 파일 쓰는 법」의 4번 명령으로 `제공 파일 정상 8` 이 나왔다
 <!-- /checklist -->
