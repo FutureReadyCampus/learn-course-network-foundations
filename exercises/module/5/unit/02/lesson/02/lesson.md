@@ -83,7 +83,7 @@ account_actions.py    check_policy      : VIP 계정이면 자동 조치를 막�
 
 **할 일**
 
-1. 아래 코드로 파일 세 개를 만들고, `# ←` 가 있는 <mark>세 곳</mark>(① · ② · ③)을 한 줄씩 채웁니다.
+1. 작업 폴더 `network-study-notes/soar_response` 에 아래 코드로 `containment_store.py` · `account_actions.py` · `exercise2-1_run.py` 세 파일을 만들고, `# ←` 가 있는 <mark>세 곳</mark>(① · ② · ③)을 한 줄씩 채웁니다.
 2. 채우기 <mark>전과 후</mark>에 한 번씩 실행해 단계 2 ~ 4 를 비교합니다.
 
 **`containment_store.py`** — 연습용 시스템의 상태와 조치 기록 파일을 관리합니다. 실습 2-2 와 제공 파일 `ip_actions.py`, Unit 3 실습 3-1 도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 ① 입니다. `INITIAL_STATE` 의 `junho` 는 수업 전부터 잠겨 있는 계정입니다.
@@ -265,7 +265,7 @@ print("조치 기록:", len(saved_log), "건")                                  
    python exercise2-1_run.py
    ```
 3. **[VS Code]** `containment_store.py` 의 ①, `account_actions.py` 의 ② · ③ 을 씁니다. 하나 쓸 때마다 다시 실행해 위 「직접 쓰는 곳」의 확인과 맞춰 봅니다.
-4. **[터미널]** 다시 실행합니다. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 1줄, 단계 2 는 3줄, 단계 3 은 1줄, 단계 4 는 2줄입니다. 실행하면 `containment_state.json` 과 `containment_log.json` 이 생깁니다.
+4. **[터미널]** 다시 실행합니다. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 1줄, 단계 2 는 3줄, 단계 3 은 1줄, 단계 4 는 2줄입니다. 실행하면 `soar_response` 폴더에 `containment_state.json` 과 `containment_log.json` 이 생깁니다.
    ```bash
    python exercise2-1_run.py
    ```
@@ -275,6 +275,14 @@ print("조치 기록:", len(saved_log), "건")                                  
    - (다) [핵심 질문] INC-006 의 `junho` 는 `잠김 → 잠김` 으로 기록됐고, 단계 3 에서 해제한 `dami` 는 `잠김 → 잠기지 않음` 입니다. `before` 를 남기면 롤백할 때 어떤 판단이 가능해지는지 적어 주세요. 그리고 잠금 뒤 사후 검증(`verify_locked`)이 없으면 어떤 문제가 생기는지도 적어 주세요.
 
 **확인** — 단계 2 가 `dami` 「잠기지 않음 → 잠김」 · `gaeun` 「변경 없음 → 변경 없음」 · `junho` 「잠김 → 잠김」 세 줄이고, 단계 4 가 `잠긴 계정: ['junho']` · `조치 기록: 4 건` 이면 성공입니다. 안 나오면 「정답」 레슨의 실습 2-1 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+
+<!-- checklist -->
+- [ ] `containment_store.py` 를 만들어 코드 상자를 붙여 넣고 ① 을 채운 뒤 저장했다
+- [ ] `account_actions.py` 를 만들어 코드 상자를 붙여 넣고 ② · ③ 을 채운 뒤 저장했다
+- [ ] `exercise2-1_run.py` 를 만들어 코드 상자를 붙여 넣고 저장했다
+- [ ] `python exercise2-1_run.py` 를 채우기 전과 후에 실행해, 단계 4 에 `잠긴 계정: ['junho']` · `조치 기록: 4 건` 이 나왔다
+- [ ] `report_u2.md` 의 `## 실습 2-1` (가) · (다)에 답을 썼다
+<!-- /checklist -->
 
 ## 실습 2-1 정리
 

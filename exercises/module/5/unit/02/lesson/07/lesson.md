@@ -179,7 +179,7 @@ print("조치 기록:", len(load_json("containment_log.json")), "건")          
 
 **순서**
 
-1. **[VS Code]** `ip_actions.py` 를 열어 내용을 모두 지우고 위 골격을 붙여 넣습니다. 이어서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `apply2-3_run.py` 를 만들어(파일 이름 그대로) 코드를 붙여 넣습니다. 두 파일 모두 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
+1. **[VS Code]** 작업 폴더 `network-study-notes/soar_response` 의 `ip_actions.py` 를 열어 내용을 모두 지우고 위 골격을 붙여 넣습니다. 이어서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `apply2-3_run.py` 를 만들어(파일 이름 그대로) 코드를 붙여 넣습니다. 두 파일 모두 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
 2. **[VS Code]** `ip_actions.py` 1 ~ 6번, `apply2-3_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「응용 2-3 정리」를 봅니다.
 3. **[터미널]** 실행합니다(맥북은 `python3`).
    ```bash
@@ -195,6 +195,13 @@ print("조치 기록:", len(load_json("containment_log.json")), "건")          
    python exercise2-2_run.py
    python -c "import json; print(json.load(open('containment_state.json', encoding='utf-8'))['locked_users'], len(json.load(open('containment_log.json', encoding='utf-8'))))"
    ```
+
+<!-- checklist optional -->
+- [ ] `ip_actions.py` 를 골격으로 바꿔 붙여 넣고 1 ~ 6번을 채운 뒤 저장했다
+- [ ] `apply2-3_run.py` 를 만들어 7 ~ 9번을 채우고, `python apply2-3_run.py` 로 네 단계 출력이 나왔다
+- [ ] `report_u2.md` 의 `## 응용 2-3` 에 답을 썼다
+- [ ] `python exercise2-2_run.py` 를 다시 실행하고 확인 명령으로 `['junho', 'dami'] 5` 가 나왔다
+<!-- /checklist -->
 
 ## 응용 2-3 정리
 
