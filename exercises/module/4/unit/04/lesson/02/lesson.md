@@ -33,7 +33,7 @@ render: markdown
 
 ## `saas_detection.py` 만들기
 
-**`saas_detection.py`** 를 만들고 아래 내용을 붙여 넣습니다. SaaS 이벤트에서 세 가지 이상 사용을 찾습니다.
+`anomaly_detection` 폴더에 **`saas_detection.py`** 를 만들고 아래 내용을 붙여 넣습니다. SaaS 이벤트에서 세 가지 이상 사용을 찾습니다.
 
 | 함수 | 찾는 것 | 오늘 데이터에서 나오는 것 |
 |---|---|---|
@@ -127,9 +127,13 @@ def find_bulk_download_users(saas):                   # SaaS 이벤트 표를 �
 
 **확인** — VS Code 왼쪽 목록의 `anomaly_detection` 아래에 `saas_detection.py` 가 보이면 성공입니다. 실행 확인은 세 파일을 모두 만든 뒤 첫 페이지 5번 명령으로 합니다.
 
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `saas_detection.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 ## `malicious_detection.py` 만들기
 
-**`malicious_detection.py`** 를 만들고 아래 내용을 붙여 넣습니다. 웹 서버 로그의 실패 이벤트 가운데 스캐너가 자주 요청하는 경로(`/.env` · `/wp-login` · `/phpmyadmin`)를 요청한 IP 를 찾습니다.
+`anomaly_detection` 폴더에 **`malicious_detection.py`** 를 만들고 아래 내용을 붙여 넣습니다. 웹 서버 로그의 실패 이벤트 가운데 스캐너가 자주 요청하는 경로(`/.env` · `/wp-login` · `/phpmyadmin`)를 요청한 IP 를 찾습니다.
 
 ```python
 import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
@@ -185,9 +189,13 @@ def explain_scan(ip, request_count):                  # IP 와 스캐너 경로 
 
 **확인** — VS Code 왼쪽 목록의 `anomaly_detection` 아래에 `malicious_detection.py` 가 보이면 성공입니다. 다른 폴더에 만들어졌으면 `anomaly_detection` 으로 끌어다 옮깁니다.
 
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `malicious_detection.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 ## `correlation.py` 만들기
 
-**`correlation.py`** 를 만들고 아래 내용을 붙여 넣습니다. 같은 사용자의 이벤트가 서로 다른 로그에 짧은 시간 안에 나타나면 하나의 사건으로 연결합니다. 이렇게 서로 다른 로그를 같은 기준으로 연결해 분석하는 것을 **상관분석**(correlation, 코렐레이션)이라고 합니다.
+`anomaly_detection` 폴더에 **`correlation.py`** 를 만들고 아래 내용을 붙여 넣습니다. 같은 사용자의 이벤트가 서로 다른 로그에 짧은 시간 안에 나타나면 하나의 사건으로 연결합니다. 이렇게 서로 다른 로그를 같은 기준으로 연결해 분석하는 것을 **상관분석**(correlation, 코렐레이션)이라고 합니다.
 
 1. 웹 로그에는 사용자가 없어서, SaaS 의 성공한 로그인에서 「IP → 사용자」를 찾아 웹 이벤트에 사용자를 채웁니다.
 2. 서버 · SaaS · 웹 이벤트를 표 하나로 합쳐 사용자 · 시각 순으로 정렬합니다.
@@ -290,11 +298,15 @@ def find_chains_in_events(events):                     # 이벤트 표를 받는
 
 **확인** — 첫 페이지 5번 명령에서 `제공 파일 정상 1` 이 나오면 성공입니다. `No module named 'saas_detection'` 이 나오면 앞 페이지의 파일을 먼저 만듭니다.
 
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `correlation.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 ## Unit 3 파일이 없을 때 `access_detection.py`
 
 시작하기 레슨의 확인에서 `Unit 3 파일 정상 57` 이 나왔다면 **이 페이지는 건너뜁니다.** Unit 3 실습 3-2에서 직접 만든 파일을 그대로 씁니다.
 
-`No module named 'access_detection'` 이나 `ImportError` 가 나왔다면 **`access_detection.py`** 를 만들고 아래 내용을 붙여 넣습니다. Unit 3 실습 3-2의 완성본입니다. 판정 서버가 거절한 요청 가운데 3번 이상 반복된 사용자를 고르고, Module 3에서 만든 권한 판정 `check_permission` 으로 다시 판정해 이유를 붙입니다.
+`No module named 'access_detection'` 이나 `ImportError` 가 나왔다면 `anomaly_detection` 폴더에 **`access_detection.py`** 를 만들고 아래 내용을 붙여 넣습니다. Unit 3 실습 3-2의 완성본입니다. 판정 서버가 거절한 요청 가운데 3번 이상 반복된 사용자를 고르고, Module 3에서 만든 권한 판정 `check_permission` 으로 다시 판정해 이유를 붙입니다.
 
 ```python
 import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
@@ -357,5 +369,10 @@ def judge_failure(user, action):                      # 사용자와 행동을 �
 - 이 파일은 `rbac.py` 와 `normalized_events.json` · `config/users.json` · `config/roles.json` 이 있어야 동작합니다. 없으면 Unit 3 시작하기 레슨의 코드 상자로 먼저 만듭니다.
 
 **확인** — 시작하기 레슨의 확인 명령을 다시 쳐서 `Unit 3 파일 정상 57` 이 나오면 성공입니다. `No module named 'rbac'` 이 나오면 Unit 3 시작하기 레슨의 코드 상자로 `rbac.py` 를 먼저 만듭니다.
+
+<!-- checklist -->
+- [ ] `Unit 3 파일 정상 57` 이 이미 나왔거나, `anomaly_detection` 폴더에 `access_detection.py` 를 만들어 붙여 넣고 저장했다
+- [ ] 첫 페이지 5번 명령을 실행해 `제공 파일 정상 1` 이 나왔다
+<!-- /checklist -->
 
 ---

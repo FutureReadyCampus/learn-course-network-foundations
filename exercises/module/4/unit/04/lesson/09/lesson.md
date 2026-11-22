@@ -80,6 +80,10 @@ render: markdown
 
 > **확인** — VS Code 왼쪽 목록의 `anomaly_detection` 아래에 `report_u4.md` 가 보이고, 열었을 때 첫 줄 제목에 내 이름이 들어가 있으면 성공입니다. 다른 폴더에 만들어졌으면 파일을 `anomaly_detection` 으로 끌어다 옮깁니다.
 
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `report_u4.md` 를 만들고 틀을 붙여 넣은 뒤, 제목에 내 이름을 넣어 저장했다
+<!-- /checklist -->
+
 ## 보고서 쓰는 법
 
 > **쓰는 법**
