@@ -301,6 +301,12 @@ for record in picked:                                                           
 
 1. **[VS Code]** `anomaly_detection` 폴더 바로 아래에 `event_summary.py` · `exercise5-1_run.py` 두 파일을 만들어, 각 파일에 위의 같은 이름 코드 상자(**`event_summary.py`** · **`exercise5-1_run.py`**)를 붙여 넣습니다. `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 만듭니다.
 2. **[VS Code]** `event_summary.py` 의 `# ←` 세 곳(① · ② · ③)을 채웁니다. 위 문법 상자와 「직접 쓰는 곳」의 확인을 보며 씁니다. 막히면 아래 「실습 5-1 정리」를 봅니다.
+
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `event_summary.py` 를 만들어 코드 상자 내용을 붙여 넣고 빈칸 ① · ② · ③ 을 채워 저장했다
+- [ ] `anomaly_detection` 폴더에 `exercise5-1_run.py` 를 만들어 코드 상자 내용을 붙여 넣고 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
@@ -318,18 +324,17 @@ for record in picked:                                                           
 
    <mark>단계 4 의 문장은 사람마다, 실행할 때마다 다릅니다.</mark>
    - 키가 없거나 호출이 실패하면 단계 4 의 대상 줄마다 바로 위에 `[LLM 호출 실패] …` 한 줄이 붙어 6줄이 되고, 대상 줄은 `dami : (요약 실패 — 점수와 이유를 직접 확인)` 처럼 나옵니다. 정답 레슨의 「키가 없을 때」 출력과 같으면 맞습니다.
+
+<!-- checklist -->
+- [ ] `python exercise5-1_run.py` 를 실행해 단계 2 에 dami · seoyeon · gaeun 세 줄, 단계 4 에 대상 세 줄이 나왔다
+<!-- /checklist -->
+
 5. **[보고서]** `report_u5.md` 의 `## 실습 5-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 요약한 대상 수와 `(요약 실패 …)` 가 나온 대상 수를 적어 주세요.
    - (나) [핵심 질문] 단계 3 의 지시문이 AI 에게 하지 말라고 한 것 두 가지를 찾고, 각각 하면 왜 위험한지 적어 주세요.
    - (다) [응용] 단계 4 의 요약 하나를 골라 1.1 의 점수 기록 표(대상 · 점수 · 등급 · 탐지된 규칙)와 비교해, 표에 없는 내용이 들어 있는지 적어 주세요. 있으면 어떤 문장인지와 지시문을 어떻게 고칠지, 없으면 없다고 쓰고 탐지된 규칙이 모두 문장에 들어갔는지 적어 주세요. 키가 없어 대체 문장만 나왔으면 정답 레슨 「실습 5-1 정답」의 「키가 있을 때」 출력에서 요약 하나를 골라 비교합니다.
 
 **확인** — 단계 2 에 `high dami 60` · `mid seoyeon 45` · `mid gaeun 40` 세 줄이 나오고, 단계 4 에 대상 세 명의 줄이 모두 나오면 성공입니다(키가 없으면 세 줄 모두 대체 문장). 안 나오면 정답 레슨의 실습 5-1 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
-
-<!-- checklist -->
-- [ ] `anomaly_detection` 폴더에 `event_summary.py` 를 만들어 코드 상자 내용을 붙여 넣고 빈칸 ① · ② · ③ 을 채워 저장했다
-- [ ] `anomaly_detection` 폴더에 `exercise5-1_run.py` 를 만들어 코드 상자 내용을 붙여 넣고 저장했다
-- [ ] `python exercise5-1_run.py` 를 실행해 단계 2 에 dami · seoyeon · gaeun 세 줄, 단계 4 에 대상 세 줄이 나왔다
-<!-- /checklist -->
 
 ## 실습 5-1 정리
 

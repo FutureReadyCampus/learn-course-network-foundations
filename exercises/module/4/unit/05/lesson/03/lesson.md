@@ -453,6 +453,10 @@ network-study-notes/
    - `anomaly_detection/__pycache__/` (파이썬이 실행하면서 자동으로 만드는 임시 폴더)가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 봅니다.
    - `anomaly_detection/llm_client.py` 는 API 키가 들어 있지 않은 코드 파일이라 올라가도 됩니다. 키는 `.env` 에만 있습니다.
 
+<!-- checklist -->
+- [ ] `network-study-notes` 폴더에서 `git status` 를 쳐서 목록에 `.env` · `.venv` 가 없는 것을 확인했다
+<!-- /checklist -->
+
 3. **[보고서]** `report_u5.md` 의 `## 마무리` 아래를 채웁니다.
    - (가) `git status` 를 쳤을 때 `.env` 나 `.venv` 가 보였는지, 보였다면 어떻게 했는지 적어 주세요.
    - <mark>실습 5-1 · 5-2에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.</mark> 올린 뒤에 이어서 적어 다시 올려도 됩니다.
@@ -486,6 +490,10 @@ network-study-notes/
    - 나오는 것: 올라간 내용이 몇 줄 나옵니다.
    - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
 
+<!-- checklist -->
+- [ ] `git add .` → `git commit` → `git push` 를 차례로 쳐서 올렸다
+<!-- /checklist -->
+
 5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `anomaly_detection` 폴더를 열고, VS Code 왼쪽 목록의 `anomaly_detection` 폴더에 있는 파일들이 깃허브에도 보이는지 확인합니다. <mark>`.env` 와 `__pycache__` 폴더는 없어야 합니다</mark>.
    - 빠진 이름이 있으면 VS Code 왼쪽 목록의 `anomaly_detection` 폴더에 내 PC 에도 있는지 봅니다.
      - 없으면 다른 폴더에 만든 것이니 `anomaly_detection` 안으로 옮기고, 2번의 `git status` 부터 다시 합니다.
@@ -493,8 +501,6 @@ network-study-notes/
 **확인** — 깃허브의 `anomaly_detection` 폴더에 `event_summary.py` · `report_u5.md` 가 보이고 `.env` 가 없으면 성공입니다. 파일이 안 보이면 `git push` 의 출력에 `rejected` 나 `error` 가 있었는지 보고, 위 4번 ③ 의 안내대로 다시 올립니다.
 
 <!-- checklist -->
-- [ ] `network-study-notes` 폴더에서 `git status` 를 쳐서 목록에 `.env` · `.venv` 가 없는 것을 확인했다
-- [ ] `git add .` → `git commit` → `git push` 를 차례로 쳐서 올렸다
 - [ ] 깃허브의 `anomaly_detection` 폴더에서 `event_summary.py` · `report_u5.md` 를 보고 `.env` 가 없는 것을 확인했다
 <!-- /checklist -->
 

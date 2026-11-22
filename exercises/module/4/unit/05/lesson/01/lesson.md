@@ -64,6 +64,11 @@ Unit 5는 Module 4 **이상탐지**의 마지막 Unit입니다. 지금까지 로
    - 명령 풀이: `cd 폴더이름` 그 폴더로 이동 · `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기 · `python -m pip install requests` 인터넷으로 요청을 보내는 도구 `requests` 설치 · `python -c "…"` 설치한 `requests` 의 버전 출력
    - 설치가 끝나면 <mark>`Successfully installed …` 또는 `Requirement already satisfied` 가 나옵니다.</mark> 마지막에 `WARNING: You are using pip version …` 이 나와도 무시합니다.
    - <mark>마지막 명령에서 점이 든 숫자(예: `2.34.2`)가 나오면</mark> `requests` 를 쓸 수 있습니다. 숫자는 설치한 때에 따라 다릅니다.
+
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에서 `python -m pip install requests` 로 `requests` 를 설치하고 버전 숫자가 나왔다
+<!-- /checklist -->
+
 3. **파일은 이렇게 만듭니다.** 이 레슨에 나오는 파일은 모두 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
    1. **[VS Code]** 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다.
    2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
@@ -138,6 +143,10 @@ def call_llm(question):                                              # 질문 �
 - `call_llm` 은 `requests.post` 로 Gemini API 주소에 POST 요청을 보냅니다. 머리글(`headers`)에는 API 키를 담고, 본문(`body`)에는 쓸 모델(구글이 만든 여러 AI 가운데 하나의 이름)과 질문 글을 담습니다. `temperature` 를 0 으로 두면 답 문장이 덜 흔들립니다.
 - 답이 오면 상태 코드가 200(성공)인지 먼저 보고, 응답 안에 여러 겹으로 들어 있는 답 문장만 꺼내 돌려줍니다.
 
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `llm_client.py` 를 만들어 코드 상자 내용을 붙여 넣고 저장했다
+<!-- /checklist -->
+
 5. **[VS Code]** `anomaly_detection` 폴더 바로 아래에 `unit05_risk_scores.json` 파일을 만들어 아래 `unit05_risk_scores.json` 상자의 내용을 그대로 붙여 넣습니다. Unit 4 실습 4-1 이 저장한 점수 파일과 같은 내용입니다. <mark>이미 있으면 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다). 파일 이름의 `05` 는 예전 번호라서 지금 Unit 번호와 맞지 않지만, Module 4 Unit 5와 Module 5가 같은 이름으로 읽으니 이름을 바꾸지 않고 그대로 씁니다.
 
 **`unit05_risk_scores.json`** — 대상별 점수 기록 5건이고, 점수가 높은 순서로 저장돼 있습니다.
@@ -196,6 +205,10 @@ def call_llm(question):                                              # 질문 �
 ]
 </code></pre>
 
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `unit05_risk_scores.json` 을 만들어 상자 내용을 붙여 넣고 저장했다
+<!-- /checklist -->
+
 6. **[터미널]** 두 파일이 정상인지 확인합니다(맥북은 `python3`).
    ```bash
    python -c "import json; print(len(json.load(open('unit05_risk_scores.json', encoding='utf-8'))))"
@@ -209,9 +222,6 @@ def call_llm(question):                                              # 질문 �
 > **확인** — 첫 줄에서 `5` 가 나오고, 둘째 줄에서 `True` 나 `False` 가 나오면(오류 글자 없이) 성공입니다. `ModuleNotFoundError` 나 `FileNotFoundError` 가 나오면 이 레슨 마지막 페이지 「오류가 나면」의 표를 봅니다.
 
 <!-- checklist -->
-- [ ] `anomaly_detection` 폴더에서 `python -m pip install requests` 로 `requests` 를 설치하고 버전 숫자가 나왔다
-- [ ] `anomaly_detection` 폴더에 `llm_client.py` 를 만들어 코드 상자 내용을 붙여 넣고 저장했다
-- [ ] `anomaly_detection` 폴더에 `unit05_risk_scores.json` 을 만들어 상자 내용을 붙여 넣고 저장했다
 - [ ] 6번 확인 명령 두 줄을 쳐서 `5` 와 `True` 또는 `False` 가 나왔다
 <!-- /checklist -->
 
@@ -252,6 +262,10 @@ def call_llm(question):                                              # 질문 �
 - 나오는 것: <mark>`"models"` 가 든 긴 목록이 나오면</mark> 키가 맞습니다. `UNAUTHENTICATED` 나 `API key not valid` 같은 오류 글자가 나오면 키를 다시 복사합니다.
 - 같은 명령을 여러 번 반복하지 않습니다. 호출 횟수에 한도가 있습니다.
 
+<!-- checklist optional -->
+- [ ] 구글 AI Studio 에서 키를 만들고 `curl` 로 `"models"` 목록이 나오는 것을 확인했다
+<!-- /checklist -->
+
 **3단계 · `.env` 파일 만들기**
 
 - **[VS Code]** 왼쪽 목록에서 `network-study-notes` 폴더(`anomaly_detection` 의 바깥)를 오른쪽 클릭 › **New File** 을 누르고 `.env` 를, 같은 방법으로 `.gitignore` 를 만듭니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다. 파일 이름 뒤에 `.txt` 같은 것이 붙지 않아야 합니다.
@@ -262,6 +276,10 @@ def call_llm(question):                                              # 질문 �
 </code></pre>
 
 - 탭 이름 옆에 점(●)이 없으면 저장된 것입니다. 이 한 줄 말고 다른 글자는 넣지 않습니다.
+
+<!-- checklist optional -->
+- [ ] `network-study-notes` 바로 아래(`anomaly_detection` 의 바깥)에 `.env` 를 만들어 `GEMINI_API_KEY=키` 한 줄을 적고 저장했다
+<!-- /checklist -->
 
 **4단계 · 깃허브에 키가 올라가지 않게 막기**
 
@@ -276,6 +294,10 @@ def call_llm(question):                                              # 질문 �
   ```
   - 나오는 것: 바뀐 파일 목록에 `.env` 가 있으면 아직 막히지 않은 것입니다. `.gitignore` 의 `.env` 줄이 맞는지 다시 봅니다. 깃허브에 올리기 전에는 항상 이 확인을 합니다.
 
+<!-- checklist optional -->
+- [ ] `network-study-notes` 바로 아래의 `.gitignore` 에 `.env` 줄을 두고, `git status` 에 `.env` 가 보이지 않았다
+<!-- /checklist -->
+
 **5단계 · 이번 Unit에서 쓸 폴더에서 읽히는지 확인하기**
 
 - **[터미널]** `anomaly_detection` 폴더에서 시작하기 6번의 둘째 명령을 다시 칩니다. <mark>`True` 가 나오면</mark> 됩니다. 키 값은 화면에 나오지 않습니다.
@@ -284,6 +306,10 @@ def call_llm(question):                                              # 질문 �
   python -c "from llm_client import read_api_key; print(read_api_key() is not None)"
   ```
   - 명령 풀이: `python -c "코드"` 적은 코드를 바로 실행(맥북은 `python3`)
+
+<!-- checklist optional -->
+- [ ] `anomaly_detection` 폴더에서 5단계 명령을 쳐서 `True` 가 나왔다
+<!-- /checklist -->
 
 **막혔을 때**
 
@@ -299,13 +325,6 @@ def call_llm(question):                                              # 질문 �
 - 키가 노출됐다면 구글 AI Studio 의 키 목록에서 그 키를 삭제하고 새로 만듭니다. 쓰지 않는 예전 키도 같은 곳에서 삭제해 둡니다.
 
 > **확인** — 5단계에서 `True` 가 나오고, `git status` 목록에 `.env` 가 보이지 않으면 성공입니다. `False` 가 나오면 위 「막혔을 때」를 봅니다.
-
-<!-- checklist optional -->
-- [ ] 구글 AI Studio 에서 키를 만들고 `curl` 로 `"models"` 목록이 나오는 것을 확인했다
-- [ ] `network-study-notes` 바로 아래(`anomaly_detection` 의 바깥)에 `.env` 를 만들어 `GEMINI_API_KEY=키` 한 줄을 적고 저장했다
-- [ ] `network-study-notes` 바로 아래의 `.gitignore` 에 `.env` 줄을 두고, `git status` 에 `.env` 가 보이지 않았다
-- [ ] `anomaly_detection` 폴더에서 5단계 명령을 쳐서 `True` 가 나왔다
-<!-- /checklist -->
 
 ## 오류가 나면
 
