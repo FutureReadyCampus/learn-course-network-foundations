@@ -61,6 +61,8 @@ Unit 1 에서 두 JSON 파일은 「실습 1-1」의 코드 상자와 「실습 
 
 ## 터미널 열고 이전 파일 확인하기
 
+이번 Unit 의 작업 폴더는 저장소 폴더 `network-study-notes` 안의 `access_control` 입니다. 아래에 나오는 파일 경로는 모두 이 `access_control` 폴더를 기준으로 씁니다(예: `config/users.json` 은 `access_control` 안의 `config` 폴더에 있는 `users.json`).
+
 1. **[VS Code]** 왼쪽 목록의 `access_control` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** 위치와 이전 파일을 확인합니다. `pwd` 의 결과가 `…/network-study-notes/access_control` 로 끝나야 합니다.
    ```bash
@@ -81,5 +83,9 @@ Unit 1 에서 두 JSON 파일은 「실습 1-1」의 코드 상자와 「실습 
 > 실행은 VS Code 의 ▶ 단추가 아니라 **터미널**에서 합니다(맥북은 `python3`). **이전 Unit 의 파일은 고치지 않습니다.** 이번 Unit 에서 만드는 파일은 모두 새 파일입니다.
 
 > **확인** — 2번의 마지막 줄에 `이전 파일 정상 6 5 5` 가 나오면 성공입니다. 안 나오면 오류 메시지에 나온 파일 이름을 보고, 첫 페이지의 「이번 Unit 에서 불러 쓰는 이전 파일」 표에서 그 파일을 만드는 곳을 찾아 만듭니다.
+
+<!-- checklist -->
+- [ ] `access_control` 폴더에서 터미널을 열고 2번의 `python -c "…"` 줄을 실행해 `이전 파일 정상 6 5 5` 가 나왔다
+<!-- /checklist -->
 
 ---
