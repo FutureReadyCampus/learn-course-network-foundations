@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img"><title>틀을 복사해 report_u3.md 를 만들고, 핵심 칸 세 개는 모두, 응용 칸은 한 것만 채운다</title><desc>access_control 폴더에 report_u3.md 를 새로 만들고 틀을 복사해 붙여 넣은 뒤 제목의 이름을 바꿔 저장한다. 틀의 핵심 부분(실습 3-1 (가), 실습 3-2 (가), 마무리 (가))은 모두 채우고, 응용(여유가 되면) 부분(실습 응용 질문, 응용 3-1~3-3)은 내가 한 것만 채운다.</desc><defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">보고서 파일 만들기</text>
+<rect x="20" y="60" width="210" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="125" y="89" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">틀 코드 상자</text>
+<text x="125" y="112" font-size="14" fill="#666660" text-anchor="middle">복사 버튼으로 복사</text>
+<rect x="20" y="170" width="210" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="125" y="196" font-size="14" fill="#666660" text-anchor="middle">access_control/</text>
+<text x="125" y="220" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">report_u3.md</text>
+<text x="125" y="248" font-size="14" fill="#292929" text-anchor="middle">붙여 넣기 · 이름 바꾸기</text>
+<polyline points="125,130 125,166" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<polyline points="230,218 266,218" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
+<rect x="270" y="52" width="430" height="142" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="290" y="80" font-size="16" fill="#1f7a4a" font-weight="700">핵심 · 세 칸 모두 채움</text>
+<rect x="290" y="96" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="320" y="111" font-size="15" fill="#292929">## 실습 3-1 (가)</text>
+<rect x="290" y="126" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="320" y="141" font-size="15" fill="#292929">## 실습 3-2 (가)</text>
+<rect x="290" y="156" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="320" y="171" font-size="15" fill="#292929">## 마무리 (가)</text>
+<rect x="270" y="212" width="430" height="108" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="290" y="240" font-size="16" fill="#9a6200" font-weight="700">응용(여유가 되면) · 내가 한 것만 채움</text>
+<text x="290" y="268" font-size="15" fill="#292929">## 실습 응용 질문 · ## 응용 3-1 ~ 3-3</text>
+<text x="290" y="298" font-size="14" fill="#666660">하지 않은 칸은 비워 둡니다</text>
+</g>
+</svg>

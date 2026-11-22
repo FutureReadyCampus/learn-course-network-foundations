@@ -1,19 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 316" role="img"><title>실습 3-1 보고서: (가) 출력과 건수, (나) 거부되는 권한을 남기는 이유를 채운다</title><desc>보고서 실습 3-1 칸에서 채울 항목이다. 핵심 질문 (가)는 출력 전체, 전체 건수, 예외 건수, 권한 없는 사용자와 이유이고, 응용 (나)는 판정 함수가 이미 거부하는 권한의 예와 그것을 남겨 두는 이유다.</desc><defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 432" role="img"><title>실습 3-2 보고서: 출력과 후보, 90일·91일 경계, 이력 없는 권한, 마무리 git status 를 채운다</title><desc>실습 3-2 칸의 핵심 질문 (가)에는 출력 전체, 후보 건수, 후보별 안 쓴 일 수를, 응용 (나)에는 90일과 91일 경계, (다)에는 이력 없는 권한을 바로 지울 때의 위험을 쓴다. 마무리 (가)에는 git status 의 Untracked files 줄 수와 .env·.venv 여부를 쓴다. 글쓰기는 다음 레슨 오늘의 글 쓰기에서 한다.</desc><defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">실습 3-1 · 권한 현황 리스트 만들기</text>
-<rect x="20" y="52" width="680" height="36" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="32" y="75.25" font-size="15" fill="#292929" font-weight="700">(가) [핵심 질문] 출력 전체와 건수</text>
-<rect x="40" y="98" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="70" y="113" font-size="15" fill="#292929">① 출력 전체(코드 상자에 붙여 넣기)</text>
-<rect x="40" y="128" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="70" y="143" font-size="15" fill="#292929">② 전체 건수   ③ 예외로 받은 건수</text>
-<rect x="40" y="158" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="70" y="173" font-size="15" fill="#292929">④ 권한이 하나도 없는 사용자와 그 이유</text>
-<rect x="20" y="194" width="680" height="36" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="2"/>
-<text x="32" y="217.25" font-size="15" fill="#292929" font-weight="700">(나) [응용] 이미 거부되는 권한을 남겨 두는 까닭</text>
-<rect x="40" y="240" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="70" y="255" font-size="15" fill="#292929">① 이미 거부되는 권한의 예</text>
-<rect x="40" y="270" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="70" y="285" font-size="15" fill="#292929">② 리스트에 남겨 두는 이유</text>
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">실습 3-2 · 90일 넘게 안 쓴 권한 찾기</text>
+<rect x="20" y="48" width="332" height="166" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="20" y="48" width="332" height="36" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="34" y="71" font-size="15" fill="#292929" font-weight="700">(가) [핵심] 출력과 후보</text>
+<rect x="36" y="98" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="64" y="113" font-size="15" fill="#292929">① 출력 전체 붙여 넣기</text>
+<rect x="36" y="128" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="64" y="143" font-size="15" fill="#292929">② 후보 건수</text>
+<rect x="36" y="158" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="64" y="173" font-size="15" fill="#292929">③ 후보별 안 쓴 일 수</text>
+<text x="64" y="197" font-size="14" fill="#666660">이력이 없으면 「이력 없음」</text>
+<rect x="368" y="48" width="332" height="166" rx="8" fill="#ffffff" stroke="#e0442e" stroke-width="2"/>
+<rect x="368" y="48" width="332" height="36" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="2"/>
+<text x="382" y="71" font-size="15" fill="#292929" font-weight="700">(나) [응용] 90일 · 91일 경계</text>
+<text x="384" y="110" font-size="14" fill="#666660">junho: 90일은 빠짐 · 91일은 후보</text>
+<rect x="384" y="128" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="412" y="143" font-size="15" fill="#292929">① 하루 차이 기준이 합리적인가</text>
+<rect x="384" y="158" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="412" y="173" font-size="15" fill="#292929">② 경계 부근에서 더 확인할 것</text>
+<rect x="20" y="228" width="332" height="112" rx="8" fill="#ffffff" stroke="#e0442e" stroke-width="2"/>
+<rect x="20" y="228" width="332" height="36" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="2"/>
+<text x="34" y="251" font-size="15" fill="#292929" font-weight="700">(다) [응용] 이력 없는 권한 지우기</text>
+<rect x="36" y="278" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="64" y="293" font-size="15" fill="#292929">① 바로 지우면 위험한 경우</text>
+<rect x="36" y="308" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="64" y="323" font-size="15" fill="#292929">② 지우기 전에 확인할 것</text>
+<rect x="368" y="228" width="332" height="112" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
+<rect x="368" y="228" width="332" height="36" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="382" y="251" font-size="15" fill="#292929" font-weight="700">마무리 (가) [핵심] git status</text>
+<rect x="384" y="278" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="412" y="293" font-size="15" fill="#292929">① Untracked files: 줄 수</text>
+<rect x="384" y="308" width="18" height="18" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="412" y="323" font-size="15" fill="#292929">② .env · .venv 가 있었나</text>
+<rect x="20" y="356" width="680" height="62" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="36" y="381" font-size="15" fill="#9a6200" font-weight="700">다음 레슨 「오늘의 글 쓰기」</text>
+<text x="36" y="405" font-size="14" fill="#292929">질문에 답한 뒤, 글 한 편은 다음 레슨에서 씁니다</text>
 </g>
 </svg>

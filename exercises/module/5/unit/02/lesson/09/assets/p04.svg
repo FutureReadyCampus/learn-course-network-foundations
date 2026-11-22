@@ -1,24 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 442" role="img">
-<title>실습 2-2 보고서: 빈틈 계정, dami 의 두 조치, gaeun 을 끊지 않은 이유, 마무리</title>
-<desc>실습 2-2 보고서에 채울 칸입니다. (가)는 출력과 빈틈 계정, 잠긴 계정, (나)는 응용 질문으로 junho 가 발견된 이유와 dami 의 두 조치, (다)는 gaeun 이 조치를 받지 않은 이유이고, 마무리는 git status 결과를 씁니다.</desc>
-<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 348" role="img">
+<title>응용 2-1 보고서: 처리 뒤 상태, INC-005 가 멈춘 이유, INC-003 의 거절 기록</title>
+<desc>응용 2-1 보고서에 채울 칸입니다. (가)는 출력과 티켓 수, 담당자 알림 수, 분류됨으로 남은 번호, (나)는 INC-005 가 실행되지 않은 이유와 위험, (다)는 INC-003 의 대기 이유와 거절 뒤 상태, 감사 기록을 씁니다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" fill="#292929" font-weight="700">실습 2-2 보고서와 마무리에 채울 칸</text>
-<rect x="24" y="56" width="130" height="82" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="89.0" y="91.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(가)</tspan><tspan x="89.0" dy="21">핵심 질문</tspan></text>
+<text x="24" y="34" font-size="19" fill="#292929" font-weight="700">응용 2-1 보고서에 채울 칸 (선택)</text>
+<rect x="24" y="56" width="130" height="82" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="89.0" y="102.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(가)</tspan></text>
 <rect x="166" y="56" width="530" height="82" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="180.0" y="91.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180.0" dy="0">① 출력 전체 (코드 상자에 붙여 넣기)</tspan><tspan x="180.0" dy="21">② 단계 3 에서 빈틈이 남은 계정   ③ 단계 4 의 잠긴 계정</tspan></text>
-<rect x="24" y="150" width="130" height="82" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="89.0" y="185.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(나)</tspan><tspan x="89.0" dy="21">응용</tspan></text>
+<text x="180.0" y="91.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180.0" dy="0">① 출력 전체 (코드 상자에 붙여 넣기)</tspan><tspan x="180.0" dy="21">② 티켓 수   ③ 담당자 알림 수   ④ 분류됨 으로 남은 번호</tspan></text>
+<rect x="24" y="150" width="130" height="82" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="89.0" y="185.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(나)</tspan><tspan x="89.0" dy="21">핵심 질문</tspan></text>
 <rect x="166" y="150" width="530" height="82" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="180.0" y="185.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180.0" dy="0">① junho 가 점검에서 발견된 이유</tspan><tspan x="180.0" dy="21">② dami 가 받은 두 조치   ③ 잠금만 했을 때 남는 접속</tspan></text>
+<text x="180.0" y="185.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180.0" dy="0">① INC-005 가 실행되지 않은 이유 (단계 2 · 4 의 출력)</tspan><tspan x="180.0" dy="21">② 권한 확인이 없을 때 생길 위험</tspan></text>
 <rect x="24" y="244" width="130" height="82" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
 <text x="89.0" y="279.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(다)</tspan><tspan x="89.0" dy="21">핵심 질문</tspan></text>
 <rect x="166" y="244" width="530" height="82" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="180.0" y="279.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180.0" dy="0">① gaeun 이 조치를 받지 않은 이유 (② 의 조건 · 단계 2 의 줄)</tspan><tspan x="180.0" dy="21">② 잠기지 않은 계정의 세션을 끊으면 안 되는 이유</tspan></text>
-<rect x="24" y="338" width="130" height="82" rx="10" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="89.0" y="373.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">마무리</tspan><tspan x="89.0" dy="21">핵심 질문</tspan></text>
-<rect x="166" y="338" width="530" height="82" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="180.0" y="373.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180.0" dy="0">① git status 에 .env · .venv 가 보였는지</tspan><tspan x="180.0" dy="21">② 보였다면 한 조치</tspan></text>
+<text x="180.0" y="279.8" font-size="15" text-anchor="start" fill="#292929"><tspan x="180.0" dy="0">① 단계 1 의 승인 대기 이유   ② 거절된 뒤 상태</tspan><tspan x="180.0" dy="21">③ 감사 기록에 남은 내용</tspan></text>
 </g>
 </svg>

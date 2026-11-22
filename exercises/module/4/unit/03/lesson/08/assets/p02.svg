@@ -1,23 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
-<title>보고서는 질문마다 쓸 내용을 보고 답 뒤에 근거와 함께 쓴다</title>
-<desc>보고서를 쓰는 다섯 가지 방법을 체크리스트로 보인다. 쓸 내용을 보고 답 뒤에 쓰고, 출력은 코드 상자에 붙인다. 왜를 묻는 질문은 근거를 쓰고, 모르면 모름과 막힌 곳을 쓴다.</desc>
-<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img">
+<title>실습 3-1 보고서는 출력, 09:12 의 요청, 09:20 의 요청을 세 칸에 채운다</title>
+<desc>실습 3-1 보고서의 칸 세 개다. 첫 칸은 출력 전체와 급증 기준, 급증한 분을 쓴다. (가)와 (나)는 핵심 질문이고 (다)는 응용이다. (나)는 09:12, (다)는 09:20 의 웹 요청을 살펴본다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
-<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">보고서 쓰는 법 · 다섯 가지</text>
-<rect x="30" y="55" width="660" height="42" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="46" y="65" width="22" height="22" rx="4" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="84" y="81" font-size="15" fill="#292929">문제를 풀 때마다 그 문제 제목 아래 질문에 답한다</text>
-<rect x="30" y="107" width="660" height="42" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="46" y="117" width="22" height="22" rx="4" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="84" y="133" font-size="15" fill="#292929">「쓸 내용:」을 보고 「답:」 뒤에 쓴다</text>
-<rect x="30" y="159" width="660" height="42" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="46" y="169" width="22" height="22" rx="4" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="84" y="185" font-size="15" fill="#292929">출력 · 코드는 「답:」 아래 빈 코드 상자에 붙인다</text>
-<rect x="30" y="211" width="660" height="42" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="46" y="221" width="22" height="22" rx="4" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="84" y="237" font-size="15" fill="#292929">「왜」는 내 화면의 값이나 배운 내용을 근거로 쓴다</text>
-<rect x="30" y="263" width="660" height="42" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<rect x="46" y="273" width="22" height="22" rx="4" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="84" y="289" font-size="15" fill="#292929">모르면 「모름 — 막힌 곳: …」이라고 쓴다</text>
+<text x="30" y="32" font-size="19" fill="#292929" font-weight="700">실습 3-1 보고서 · 채울 칸</text>
+<rect x="30" y="52" width="90" height="66" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="75" y="90.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(가) 핵심</text>
+<rect x="135" y="52" width="555" height="66" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="147" y="80.1" font-size="14" fill="#292929">① 출력 전체 (코드 상자)</text>
+<text x="147" y="99.7" font-size="14" fill="#292929">② 급증 기준 ③ 급증한 분과 요청 수</text>
+<rect x="30" y="130" width="90" height="66" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="75" y="168.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(나) 핵심</text>
+<rect x="135" y="130" width="555" height="66" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="147" y="158.1" font-size="14" fill="#292929">09:12 web 줄: ① IP 주소 ② 행동별 횟수</text>
+<text x="147" y="177.7" font-size="14" fill="#292929">③ 공격이라고 확정할 수 있는지와 이유</text>
+<rect x="30" y="208" width="90" height="66" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="75" y="246.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(다) 응용</text>
+<rect x="135" y="208" width="555" height="66" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="147" y="236.1" font-size="14" fill="#292929">09:20 의 3개: ① 급증 기준과 비교 ② IP · 행동 · 결과</text>
+<text x="147" y="255.7" font-size="14" fill="#292929">③ 요청 수만 보는 규칙이 놓치는 이유</text>
 </g>
 </svg>

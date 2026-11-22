@@ -1,36 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
-<title>응용 4-2 보고서에는 판정 건수, 거부 이유를 하나만 알릴지, 요청마다 확인하는 이유를 쓴다</title>
-<desc>응용 4-2 보고서의 (가) (나) (다) 세 칸에 채울 내용을 체크리스트로 보여 준다. (나)와 (다)는 핵심 질문이다.</desc>
-<defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<title>응용 4-3 보고서에는 상태 코드별 건수, 403과 400의 차이, 덧붙이는 로그를 쓴다</title>
+<desc>응용 4-3 보고서의 (가) (나) (다) 세 칸에 채울 내용을 체크리스트로 보여 준다. (나)와 (다)는 핵심 질문이다.</desc>
+<defs><marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">응용 4-2 보고서 · 채울 칸</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">응용 4-3 보고서 · 채울 칸</text>
 <rect x="20" y="50" width="96" height="102" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="68.0" y="106.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">(가)</text>
 <rect x="126" y="50" width="574" height="102" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="140" y="74" font-size="15" fill="#292929" font-weight="700">실행한 출력</text>
+<text x="140" y="74" font-size="15" fill="#292929" font-weight="700">터미널 2의 출력</text>
 <rect x="142" y="85" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
 <text x="164" y="97" font-size="15" fill="#292929">출력 전체(코드 상자에 붙여 넣기)</text>
 <rect x="142" y="109" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="164" y="121" font-size="15" fill="#292929">허용 · 거부 건수</text>
+<text x="164" y="121" font-size="15" fill="#292929">상태 코드별 건수(200 · 403 · 400)</text>
 <rect x="142" y="133" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="164" y="145" font-size="15" fill="#292929">조건 때문에 거부된 요청의 건수와 번호</text>
+<text x="164" y="145" font-size="15" fill="#292929">서버가 남긴 로그 줄 수</text>
 <rect x="20" y="162" width="96" height="78" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
 <text x="68.0" y="195.1" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">(나)</text>
 <text x="68.0" y="218.1" font-size="16" fill="#292929" text-anchor="middle">핵심 질문</text>
 <rect x="126" y="162" width="574" height="78" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="140" y="186" font-size="15" fill="#292929" font-weight="700">5번 요청: 이유를 하나만? 모두?</text>
+<text x="140" y="186" font-size="15" fill="#292929" font-weight="700">거부는 403, 값이 빠진 요청은 400</text>
 <rect x="142" y="197" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="164" y="209" font-size="15" fill="#292929">정상 사용자 · 계정을 가로챈 사람</text>
+<text x="164" y="209" font-size="15" fill="#292929">요청하는 쪽이 둘을 구별해야 하는 이유</text>
 <rect x="142" y="221" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="164" y="233" font-size="15" fill="#292929">관제 담당자에게 나은 쪽과 이유</text>
+<text x="164" y="233" font-size="15" fill="#292929">구별하지 않을 때 생길 수 있는 일</text>
 <rect x="20" y="250" width="96" height="78" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
 <text x="68.0" y="283.1" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">(다)</text>
 <text x="68.0" y="306.1" font-size="16" fill="#292929" text-anchor="middle">핵심 질문</text>
 <rect x="126" y="250" width="574" height="78" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="140" y="274" font-size="15" fill="#292929" font-weight="700">새벽 2시 외부 접속, 권한은 있음</text>
+<text x="140" y="274" font-size="15" fill="#292929" font-weight="700">로그를 "w" 모드로 새로 쓴다면</text>
 <rect x="142" y="285" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="164" y="297" font-size="15" fill="#292929">거부해야 하는 이유</text>
+<text x="164" y="297" font-size="15" fill="#292929">한 달 뒤 지난주 거부 기록을 찾을 때 생기는 일</text>
 <rect x="142" y="309" width="13" height="13" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
-<text x="164" y="321" font-size="15" fill="#292929">로그인 때 한 번만 확인했다면 생길 일</text>
+<text x="164" y="321" font-size="15" fill="#292929">끝에 덧붙이는 방식이 알맞은 이유</text>
 </g>
 </svg>

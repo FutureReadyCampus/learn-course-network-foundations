@@ -1,24 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 350" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>보고서 실습 2-1 에 채울 칸 (가)(나)(다)</title>
-<desc>(가)에는 출력 전체와 행·열 수, 성공·실패 개수, 소스별 실패 개수를 씁니다. (가)가 꼭 채울 핵심 질문이고, (나)와 (다)는 여유가 되면 하는 응용으로 전체 이벤트 수와 비어 있는 user 를 근거로 이유를 씁니다.</desc>
-<defs><marker id="a-0305-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">보고서 · 실습 2-1 에 채울 칸</text>
-<rect x="24" y="64" width="120" height="76" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="84.0" y="96.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(가)</text>
-<text x="84.0" y="117.8" font-size="15" fill="#666660" text-anchor="middle">핵심 질문</text>
-<rect x="156" y="64" width="540" height="76" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="168" y="96.8" font-size="15" fill="#292929" text-anchor="start" font-weight="700">출력 전체 (코드 상자에 붙여 넣기)</text>
-<text x="168" y="117.8" font-size="15" fill="#666660" text-anchor="start">행 수 · 열 수, 성공 · 실패 개수, 소스별 실패 개수</text>
-<rect x="24" y="156" width="120" height="76" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="84.0" y="188.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(나)</text>
-<text x="84.0" y="209.8" font-size="15" fill="#666660" text-anchor="middle">응용</text>
-<rect x="156" y="156" width="540" height="76" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="168" y="188.8" font-size="15" fill="#292929" text-anchor="start" font-weight="700">web 이 가장 문제가 큰 소스라고 말할 수 있나?</text>
-<text x="168" y="209.8" font-size="15" fill="#666660" text-anchor="start">단계 4 의 소스별 전체 이벤트 수를 근거로 이유</text>
-<rect x="24" y="248" width="120" height="76" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="84.0" y="280.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(다)</text>
-<text x="84.0" y="301.8" font-size="15" fill="#666660" text-anchor="middle">응용</text>
-<rect x="156" y="248" width="540" height="76" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="168" y="280.8" font-size="15" fill="#292929" text-anchor="start" font-weight="700">user 가 빈 web 실패 13개는 어떻게 되나?</text>
-<text x="168" y="301.8" font-size="15" fill="#666660" text-anchor="start">사용자 대신 볼 열과 그 이유</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>보고서 실습 2-2 의 (가)(나)(다)에 채울 칸</title>
+<desc>(가)에는 출력 전체와 가장 많은 사용자·시간대, 저장된 행 수를 씁니다. (가)가 꼭 채울 핵심 질문이고, 응용 (나)(다)는 많이 난 실패의 소스와 사용자별 합이 모자란 이유를 씁니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">보고서 · 실습 2-2 에 채울 칸</text>
+<rect x="24" y="62" width="120" height="70" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="84.0" y="91.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(가)</text>
+<text x="84.0" y="112.8" font-size="15" fill="#666660" text-anchor="middle">핵심 질문</text>
+<rect x="156" y="62" width="540" height="70" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="168" y="91.8" font-size="15" fill="#292929" text-anchor="start" font-weight="700">출력 전체 (코드 상자에 붙여 넣기)</text>
+<text x="168" y="112.8" font-size="15" fill="#666660" text-anchor="start">가장 많은 사용자 · 시간대와 횟수, 저장된 행 수</text>
+<rect x="24" y="146" width="120" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="84.0" y="175.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(나)</text>
+<text x="84.0" y="196.8" font-size="15" fill="#666660" text-anchor="middle">응용</text>
+<rect x="156" y="146" width="540" height="70" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="168" y="175.8" font-size="15" fill="#292929" text-anchor="start" font-weight="700">가장 많은 시간대의 실패는 어느 소스인가?</text>
+<text x="168" y="196.8" font-size="15" fill="#666660" text-anchor="start">숫자가 같다는 근거 · 이어서 확인할 것</text>
+<rect x="24" y="230" width="120" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="84.0" y="259.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(다)</text>
+<text x="84.0" y="280.8" font-size="15" fill="#666660" text-anchor="middle">응용</text>
+<rect x="156" y="230" width="540" height="70" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="168" y="259.8" font-size="15" fill="#292929" text-anchor="start" font-weight="700">사용자별 합이 실패 전체보다 적은 이유</text>
+<text x="168" y="280.8" font-size="15" fill="#666660" text-anchor="start">몇 개 · 왜 · 모르면 생기는 잘못된 판단</text>
 </svg>

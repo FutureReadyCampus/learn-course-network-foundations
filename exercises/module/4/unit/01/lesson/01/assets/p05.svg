@@ -1,52 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 370" role="img">
-<title>오류가 나면 증상별로 위치 · log_parse.py · 들여쓰기를 확인하고 고친다</title>
-<desc>네 줄의 증상 · 확인 · 고치기 순서입니다. No module named log_parse 는 이 폴더에 log_parse.py 가 없다는 뜻이라 실습 1-1에서 만들고, 막히면 정답 레슨의 「실습 1-1 정답」으로 채웁니다.</desc>
-<defs><marker id="a-m4u02l01-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker><marker id="a-m4u02l01-p03-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0442e"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>report_u1.md 틀은 핵심 실습 칸을 모두 채우고, 응용 칸은 한 것만 채운다</title>
+<desc>anomaly_detection 폴더에 New File 로 report_u1.md 를 만들고 틀을 붙여 넣습니다. 핵심 칸은 실습 1-1 (가) · (다), 실습 1-2 (가) · (나), 마무리 (가) 다섯 칸이고 모두 채웁니다. 오른쪽의 실습 응용 질문과 응용 1-1 ~ 1-3 칸은 여유가 되면 내가 한 것만 채웁니다.</desc>
+<defs><marker id="a-m4u01l08-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
-<text x="24" y="32" font-size="15" fill="#666660" font-weight="700">증상</text>
-<text x="250" y="32" font-size="15" fill="#666660" font-weight="700">확인</text>
-<text x="486" y="32" font-size="15" fill="#666660" font-weight="700">고치기</text>
-<rect x="24" y="44" width="200" height="64" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="124.0" y="81.2" font-size="15" fill="#292929" text-anchor="middle">파일을 못 찾음</text>
-<line x1="224" y1="76.0" x2="246" y2="76.0" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u02l01-p03)"/>
-<rect x="250" y="44" width="210" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="355.0" y="70.8" font-size="15" fill="#292929" text-anchor="middle">pwd · ls 로</text>
-<text x="355.0" y="91.8" font-size="15" fill="#292929" text-anchor="middle">위치와 이름 확인</text>
-<line x1="460" y1="76.0" x2="482" y2="76.0" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u02l01-p03)"/>
-<rect x="486" y="44" width="210" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="591.0" y="70.8" font-size="15" fill="#292929" text-anchor="middle">문서와 같은</text>
-<text x="591.0" y="91.8" font-size="15" fill="#292929" text-anchor="middle">이름 · 위치로</text>
-<rect x="24" y="120" width="200" height="64" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="124.0" y="146.8" font-size="15" fill="#292929" text-anchor="middle">No module named</text>
-<text x="124.0" y="167.8" font-size="15" fill="#292929" text-anchor="middle">'log_parse'</text>
-<line x1="224" y1="152.0" x2="246" y2="152.0" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u02l01-p03)"/>
-<rect x="250" y="120" width="210" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="355.0" y="146.8" font-size="15" fill="#292929" text-anchor="middle">이 폴더에</text>
-<text x="355.0" y="167.8" font-size="15" fill="#292929" text-anchor="middle">log_parse.py 가 없음</text>
-<line x1="460" y1="152.0" x2="482" y2="152.0" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u02l01-p03)"/>
-<rect x="486" y="120" width="210" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="591.0" y="146.8" font-size="15" fill="#292929" text-anchor="middle">실습 1-1에서 만들기</text>
-<text x="591.0" y="167.8" font-size="15" fill="#292929" text-anchor="middle">막히면 정답 레슨</text>
-<rect x="24" y="196" width="200" height="64" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="124.0" y="222.8" font-size="15" fill="#292929" text-anchor="middle">IndentationError</text>
-<text x="124.0" y="243.8" font-size="15" fill="#292929" text-anchor="middle">NameError</text>
-<line x1="224" y1="228.0" x2="246" y2="228.0" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u02l01-p03)"/>
-<rect x="250" y="196" width="210" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="355.0" y="222.8" font-size="15" fill="#292929" text-anchor="middle">직접 쓴 줄의</text>
-<text x="355.0" y="243.8" font-size="15" fill="#292929" text-anchor="middle">들여쓰기 · 빠진 줄</text>
-<line x1="460" y1="228.0" x2="482" y2="228.0" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u02l01-p03)"/>
-<rect x="486" y="196" width="210" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="591.0" y="222.8" font-size="15" fill="#292929" text-anchor="middle">들여쓰기 맞추고</text>
-<text x="591.0" y="243.8" font-size="15" fill="#292929" text-anchor="middle">빠진 줄 넣기</text>
-<rect x="24" y="272" width="200" height="64" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="124.0" y="309.2" font-size="15" fill="#292929" text-anchor="middle">그래도 안 풀림</text>
-<line x1="224" y1="304.0" x2="246" y2="304.0" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u02l01-p03)"/>
-<rect x="250" y="272" width="210" height="64" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="355.0" y="298.8" font-size="15" fill="#292929" text-anchor="middle">AI 에게 묻기</text>
-<text x="355.0" y="319.8" font-size="15" fill="#292929" text-anchor="middle">(.env · API 키 지움)</text>
-<line x1="460" y1="304.0" x2="482" y2="304.0" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u02l01-p03)"/>
-<rect x="486" y="272" width="210" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="591.0" y="298.8" font-size="15" fill="#292929" text-anchor="middle">정답 보기 → 답:에</text>
-<text x="591.0" y="319.8" font-size="15" fill="#292929" text-anchor="middle">「모름 — 막힌 곳: …」</text>
+<text x="24" y="32" font-size="19" fill="#292929" font-weight="700">report_u1.md 틀의 칸 순서</text>
+<rect x="24" y="48" width="672" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="40" y="76" font-size="15" fill="#292929">anomaly_detection › New File › report_u1.md › 틀 붙여 넣기 › 이름 바꾸고 저장</text>
+<text x="24" y="124" font-size="17" fill="#1f7a4a" font-weight="700">핵심 실습 · 다섯 칸 모두 채움</text>
+<rect x="24" y="136" width="320" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="40" y="160" font-size="15" fill="#292929" font-weight="700">## 실습 1-1</text>
+<text x="40" y="181" font-size="15" fill="#666660">(가) 출력 상자 · (다)</text>
+<line x1="184" y1="192" x2="184" y2="208" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l08-p01)"/>
+<rect x="24" y="210" width="320" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="40" y="234" font-size="15" fill="#292929" font-weight="700">## 실습 1-2</text>
+<text x="40" y="255" font-size="15" fill="#666660">(가) 출력 상자 · (나)</text>
+<line x1="184" y1="266" x2="184" y2="282" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l08-p01)"/>
+<rect x="24" y="284" width="320" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="40" y="308" font-size="15" fill="#292929" font-weight="700">## 마무리</text>
+<text x="40" y="329" font-size="15" fill="#666660">(가) 하나</text>
+<text x="376" y="124" font-size="17" fill="#9a6200" font-weight="700">응용 (여유가 되면) · 한 것만 채움</text>
+<rect x="376" y="136" width="320" height="56" rx="8" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="392" y="160" font-size="15" fill="#292929" font-weight="700">## 실습 응용 질문</text>
+<text x="392" y="181" font-size="15" fill="#666660">1-1 (나) · 1-2 (다)</text>
+<rect x="376" y="210" width="320" height="56" rx="8" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="392" y="234" font-size="15" fill="#292929" font-weight="700">## 응용 1-1 · ## 응용 1-2</text>
+<text x="392" y="255" font-size="15" fill="#666660">칸마다 (가) 출력 상자 · (나) · (다)</text>
+<rect x="376" y="284" width="320" height="56" rx="8" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="392" y="308" font-size="15" fill="#292929" font-weight="700">## 응용 1-3</text>
+<text x="392" y="329" font-size="15" fill="#666660">(가) 출력 상자 · (나) · (다)</text>
+<text x="24" y="376" font-size="15" fill="#666660">질문 글은 이 레슨의 다음 페이지들에 있고, 파일에는 번호와 답: 칸만 있습니다.</text>
+<text x="24" y="400" font-size="15" fill="#666660">하지 않은 응용 칸은 비워 둡니다. [응용] 질문의 답은 「실습 응용 질문」 칸에 씁니다.</text>
 </g>
 </svg>

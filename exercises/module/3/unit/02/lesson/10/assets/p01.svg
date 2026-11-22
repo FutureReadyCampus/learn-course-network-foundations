@@ -1,36 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 390" role="img">
-<title>보고서 파일은 틀을 복사해 만들고, 핵심 실습 칸은 모두, 응용 칸은 한 것만 채운다</title>
-<desc>access_control 폴더에 report_u2.md 를 새로 만들고 틀을 붙여 넣어 저장합니다. 실습 2-1 · 2-2 · 마무리의 핵심 칸 네 개는 모두 채우고, 실습 응용 질문과 응용 2-1 ~ 2-3 칸은 내가 한 것만 채웁니다.</desc>
-<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">보고서 파일 report_u2.md 만들기</text>
-<rect x="20" y="52" width="200" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="120" y="82" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">1 · New File</text>
-<text x="120" y="106" font-size="14" fill="#666660" text-anchor="middle">access_control 안</text>
-<polyline points="220,87 256,87" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<rect x="260" y="52" width="200" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="360" y="82" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">2 · 틀 복사</text>
-<text x="360" y="106" font-size="14" fill="#666660" text-anchor="middle">붙여 넣고 이름 바꾸기</text>
-<polyline points="460,87 496,87" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<rect x="500" y="52" width="200" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="600" y="82" font-size="16" fill="#2f6fd0" text-anchor="middle" font-weight="700">3 · 저장</text>
-<text x="600" y="106" font-size="14" fill="#666660" text-anchor="middle">Ctrl + S</text>
-<rect x="20" y="146" width="330" height="190" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="185" y="174" font-size="16" fill="#1f7a4a" text-anchor="middle" font-weight="700">핵심 실습 · 모두 채움</text>
-<rect x="50" y="192" width="270" height="36" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="185" y="215" font-size="15" fill="#292929" text-anchor="middle">## 실습 2-1</text>
-<rect x="50" y="238" width="270" height="36" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="185" y="261" font-size="15" fill="#292929" text-anchor="middle">## 실습 2-2</text>
-<rect x="50" y="284" width="270" height="36" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="185" y="307" font-size="15" fill="#292929" text-anchor="middle">## 마무리</text>
-<rect x="370" y="146" width="330" height="190" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="535" y="174" font-size="16" fill="#9a6200" text-anchor="middle" font-weight="700">응용 · 한 것만 채움 (여유가 되면)</text>
-<rect x="400" y="192" width="270" height="36" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="535" y="215" font-size="15" fill="#292929" text-anchor="middle">## 응용 2-1</text>
-<rect x="400" y="238" width="270" height="36" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="535" y="261" font-size="15" fill="#292929" text-anchor="middle">## 응용 2-2</text>
-<rect x="400" y="284" width="270" height="36" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="535" y="307" font-size="15" fill="#292929" text-anchor="middle">## 응용 2-3</text>
-<text x="360" y="366" font-size="15" fill="#666660" text-anchor="middle">질문 글은 다음 페이지들에 있고, 파일에는 번호와 답: 칸만 있습니다</text>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>보고서는 문제마다 쓸 내용을 보고 답: 뒤에 쓰고, 왜 질문은 근거까지 쓴다</title>
+<desc>보고서를 쓸 때 지킬 다섯 가지를 체크리스트로 정리했습니다. 출력과 코드는 빈 코드 상자에, 핵심 질문을 못 풀면 모름과 막힌 곳을 씁니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">보고서 쓰는 방법</text>
+<rect x="24" y="48" width="676" height="266" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="48" y="79" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="74" y="92" font-size="15" fill="#292929" text-anchor="start">문제를 풀 때마다 그 문제 제목 아래 질문에 답합니다</text>
+<rect x="48" y="127" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="74" y="140" font-size="15" fill="#292929" text-anchor="start">질문마다 "쓸 내용:" 을 보고 "답:" 뒤에 씁니다</text>
+<rect x="48" y="175" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="74" y="188" font-size="15" fill="#292929" text-anchor="start">출력 · 코드는 "답:" 아래 빈 코드 상자에 붙여 넣습니다</text>
+<rect x="48" y="223" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="74" y="236" font-size="15" fill="#292929" text-anchor="start">「왜」는 내 화면에서 본 값이나 배운 내용을 근거로 이유까지 씁니다</text>
+<rect x="48" y="271" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="74" y="284" font-size="15" fill="#292929" text-anchor="start">[핵심 질문] 을 못 풀었으면 「모름 — 막힌 곳: …」 이라고 씁니다</text>
 </svg>

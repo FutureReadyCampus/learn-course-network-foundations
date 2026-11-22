@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img">
+<title>report_u4.md 의 핵심 다섯 칸은 꼭 채우고, 응용 칸은 내가 한 것만 채웁니다</title>
+<desc>보고서 틀을 복사해 access_control 폴더에 report_u4.md 로 만듭니다. 실습 4-1 · 4-2 의 (가) (나)와 마무리 (가), 모두 다섯 칸은 꼭 채우고, 실습 응용 질문과 응용 4-1부터 4-3까지의 칸은 한 것만 채웁니다.</desc>
+<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">report_u4.md — 틀을 복사해 만들기</text>
+<rect x="20" y="50" width="680" height="46" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="360.0" y="78.2" font-size="15" fill="#292929" text-anchor="middle">access_control/report_u4.md  ← 틀 복사 · 제목의 이름 바꾸기</text>
+<rect x="20" y="112" width="330" height="190" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="185.0" y="168.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">핵심 · 다섯 칸 꼭 채움</text>
+<text x="185.0" y="190.2" font-size="15" fill="#292929" text-anchor="middle">## 실습 4-1 (가) (나)</text>
+<text x="185.0" y="212.2" font-size="15" fill="#292929" text-anchor="middle">## 실습 4-2 (가) (나)</text>
+<text x="185.0" y="234.2" font-size="15" fill="#292929" text-anchor="middle">## 마무리 (가)</text>
+<text x="185.0" y="256.2" font-size="15" fill="#292929" text-anchor="middle">[핵심 질문] 칸의 답:</text>
+<rect x="370" y="112" width="330" height="190" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="535.0" y="146.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">응용 · 한 것만</text>
+<text x="535.0" y="168.2" font-size="14" fill="#666660" text-anchor="middle">## 실습 응용 질문 (4-1 · 4-2 의 (다))</text>
+<text x="535.0" y="190.2" font-size="14" fill="#666660" text-anchor="middle">## 응용 4-1</text>
+<text x="535.0" y="212.2" font-size="14" fill="#666660" text-anchor="middle">## 응용 4-2</text>
+<text x="535.0" y="234.2" font-size="14" fill="#666660" text-anchor="middle">## 응용 4-3</text>
+<text x="535.0" y="256.2" font-size="14" fill="#666660" text-anchor="middle">안 한 응용은 비워 둠</text>
+</g>
+</svg>

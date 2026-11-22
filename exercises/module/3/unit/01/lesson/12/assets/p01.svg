@@ -1,33 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>report_u1.md 를 만들고 틀을 붙여 넣으면, 핵심 다섯 칸은 모두 채우고 응용 칸은 한 것만 채운다</title>
-<desc>왼쪽은 보고서 파일을 만드는 세 단계(새 파일, 틀 복사해 붙여 넣기, 이름 바꾸고 저장)입니다. 오른쪽은 파일 안의 칸으로, 실습 1-1 (가)(다), 1-2 (가), 1-3 (가), 마무리 (가)는 모두 채우고, 실습 응용 질문과 응용 1-1 ~ 1-5는 내가 한 것만 채웁니다.</desc>
-<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
+<title>질문을 읽고 쓸 내용대로 답을 쓰며, 글 한 편은 다음 레슨 「오늘의 글 쓰기」에서 쓴다</title>
+<desc>위쪽은 질문 하나를 채우는 순서(질문 읽기, 쓸 내용 확인, 답: 뒤에 근거와 함께 쓰기)입니다. 아래쪽은 이유를 묻는 질문과 답을 못 찾은 질문을 적는 법이고, 글쓰기는 다음 레슨에서 합니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
-<text x="24" y="34" font-size="19" font-weight="700">보고서 파일 만들기</text>
-<rect x="24" y="56" width="260" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="40" y="84" font-size="16" font-weight="700">1. 새 파일</text>
-<text x="40" y="108" font-size="15">access_control/report_u1.md</text>
-<polyline points="154,127 154,147" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<rect x="24" y="148" width="260" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="40" y="176" font-size="16" font-weight="700">2. 틀 복사해 붙여 넣기</text>
-<text x="40" y="200" font-size="15">복사 버튼을 누릅니다</text>
-<polyline points="154,219 154,239" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<rect x="24" y="240" width="260" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="40" y="268" font-size="16" font-weight="700">3. 이름 바꾸고 저장</text>
-<text x="40" y="292" font-size="15">제목의 (이름) → 내 이름</text>
-<polyline points="285,183 323,183" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<rect x="324" y="56" width="372" height="330" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="340" y="82" font-size="16" font-weight="700">report_u1.md 안의 칸</text>
-<rect x="340" y="96" width="340" height="150" rx="6" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="356" y="120" font-size="15" font-weight="700">핵심 · 다섯 칸 모두 채웁니다</text>
-<text x="356" y="146" font-size="15">## 실습 1-1   (가) (다)</text>
-<text x="356" y="170" font-size="15">## 실습 1-2   (가)</text>
-<text x="356" y="194" font-size="15">## 실습 1-3   (가)</text>
-<text x="356" y="218" font-size="15">## 마무리     (가)</text>
-<rect x="340" y="262" width="340" height="108" rx="6" fill="#f1f1ef" stroke="#666660" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="356" y="286" font-size="15" font-weight="700">응용 · 선택</text>
-<text x="356" y="312" font-size="15">## 실습 응용 질문 · ## 응용 1-1 ~ 1-5</text>
-<text x="356" y="336" font-size="15">내가 한 응용만 채웁니다</text>
-<text x="356" y="358" font-size="14" fill="#666660">하지 않은 응용의 칸은 비워 둡니다</text>
+<text x="24" y="34" font-size="19" font-weight="700">질문 하나를 채우는 순서</text>
+<rect x="24" y="52" width="200" height="74" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="124" y="82" font-size="16" text-anchor="middle" font-weight="700">질문 읽기</text>
+<text x="124" y="106" font-size="14" text-anchor="middle" fill="#666660">[핵심 질문] 먼저</text>
+<polyline points="225,89 251,89" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="252" y="52" width="200" height="74" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="352" y="82" font-size="16" text-anchor="middle" font-weight="700">쓸 내용 확인</text>
+<text x="352" y="106" font-size="14" text-anchor="middle" fill="#666660">무엇을 쓰면 되는지</text>
+<polyline points="453,89 479,89" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
+<rect x="480" y="52" width="216" height="74" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="588" y="82" font-size="16" text-anchor="middle" font-weight="700">답: 뒤에 쓰기</text>
+<text x="588" y="106" font-size="14" text-anchor="middle">본 값과 이유까지</text>
+<text x="24" y="170" font-size="19" font-weight="700">이럴 때는 이렇게 적습니다</text>
+<rect x="24" y="188" width="330" height="96" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="40" y="218" font-size="16" font-weight="700">「왜 그럴까요?」</text>
+<text x="40" y="244" font-size="14">한 단어로 끝내지 않고</text>
+<text x="40" y="266" font-size="14">내 화면에서 본 값을 근거로 이유까지</text>
+<rect x="366" y="188" width="330" height="96" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="382" y="218" font-size="16" font-weight="700">답을 못 찾았을 때</text>
+<text x="382" y="244" font-size="14">비워 두지 않고</text>
+<text x="382" y="266" font-size="14">「모름 — 막힌 곳: …」 으로 적기</text>
+<rect x="24" y="300" width="672" height="44" rx="8" fill="#ffffff" stroke="#666660" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="360" y="328" font-size="15" text-anchor="middle">글 한 편은 다음 레슨 「오늘의 글 쓰기」에서 씁니다</text>
 </g>
 </svg>

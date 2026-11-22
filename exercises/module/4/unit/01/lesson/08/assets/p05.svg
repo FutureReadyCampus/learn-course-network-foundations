@@ -1,25 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" role="img">
-<title>응용 1-1 (여유가 되면) 보고서에 채울 칸: (가) 출력 · 분류별 수, (나) 놓친 예, (다) SIEM 방식</title>
-<desc>응용 1-1 보고서의 세 질문과 쓸 내용입니다. 응용은 여유가 되면 하는 것이라 한 경우에만 채웁니다. (나)와 (다)는 핵심 질문이고, (다)는 시작하기 레슨의 SIEM(심) 방식 여섯 가지 표를 보고 답합니다.</desc>
-<g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
-<text x="24" y="30" font-size="19" fill="#292929" font-weight="700">응용 1-1 (여유가 되면) · 채울 칸</text>
-<rect x="24" y="50" width="82" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="65" y="91.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(가)</text>
-<rect x="118" y="50" width="578" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="132" y="80.8" font-size="15" fill="#292929" font-weight="700">출력 전체 · 분류별 요청 수</text>
-<text x="132" y="101.8" font-size="15" fill="#666660">쓸 내용: 출력 · 분류별 수 · 같은 주소에서 반복된 의심 요청</text>
-<rect x="24" y="134" width="82" height="72" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="65" y="165.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(나)</text>
-<text x="65" y="186.2" font-size="14" fill="#b32a17" text-anchor="middle">핵심</text>
-<rect x="118" y="134" width="578" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="132" y="164.8" font-size="15" fill="#292929" font-weight="700">상태 코드 · 경로만 보는 규칙이 놓친 예 두 가지</text>
-<text x="132" y="185.8" font-size="15" fill="#666660">쓸 내용: 놓친 예 두 가지 · 각각 왜 놓쳤는지</text>
-<rect x="24" y="218" width="82" height="92" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
-<text x="65" y="259.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">(다)</text>
-<text x="65" y="280.2" font-size="14" fill="#b32a17" text-anchor="middle">핵심</text>
-<rect x="118" y="218" width="578" height="92" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="132" y="248.8" font-size="15" fill="#292929" font-weight="700">보안 담당 1명 · 클라우드 위주 회사의 SIEM(심) 방식</text>
-<text x="132" y="269.8" font-size="15" fill="#666660">표: 시작하기 레슨 「SIEM(심)을 쓰는 방식 여섯 가지」</text>
-<text x="132" y="290.8" font-size="15" fill="#666660">쓸 내용: 고른 방식과 이유 · 고르지 않은 방식 하나</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>응용 1-2 보고서에 채울 칸: 출력과 수, 가짜 주소의 문제, 키에 없는 정보</title>
+<desc>(가)는 두 로그의 출력과 수, (나)는 ip 에 가짜 주소 0.0.0.0 을 넣을 때의 문제, (다)는 공통 이벤트 키에 없는 정보와 찾는 곳을 씁니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">보고서 응용 1-2 칸 체크리스트</text>
+<rect x="24" y="54" width="170" height="118" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="109" y="107.2" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">(가)</text>
+<text x="109" y="127.9" font-size="14" text-anchor="middle" fill="#666660">출력 · 수</text>
+<rect x="210" y="69" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<rect x="240" y="62" width="456" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="252" y="82.1" font-size="14" text-anchor="start" fill="#292929">① 출력 전체 (코드 상자에 붙여 넣기)</text>
+<rect x="210" y="105" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<rect x="240" y="98" width="456" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="252" y="118.1" font-size="14" text-anchor="start" fill="#292929">② 판정 서버 이벤트 수 · 성공 · 실패별 개수</text>
+<rect x="210" y="141" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<rect x="240" y="134" width="456" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="252" y="154.1" font-size="14" text-anchor="start" fill="#292929">③ SaaS 이벤트 수 · 성공 · 실패별 개수</text>
+<rect x="24" y="186" width="170" height="82" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="109" y="211.0" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">(나)</text>
+<text x="109" y="231.8" font-size="14" text-anchor="middle" fill="#666660">가짜 주소 0.0.0.0</text>
+<text x="109" y="252.1" font-size="14" text-anchor="middle" fill="#292929">[핵심 질문]</text>
+<rect x="210" y="201" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<rect x="240" y="194" width="456" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="252" y="214.1" font-size="14" text-anchor="start" fill="#292929">① 가짜 주소를 넣으면 생기는 문제</text>
+<rect x="210" y="237" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<rect x="240" y="230" width="456" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="252" y="250.1" font-size="14" text-anchor="start" fill="#292929">② 그 이유</text>
+<rect x="24" y="282" width="170" height="82" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="109" y="307.1" font-size="15" text-anchor="middle" fill="#292929" font-weight="700">(다)</text>
+<text x="109" y="327.8" font-size="14" text-anchor="middle" fill="#666660">키에 없는 정보</text>
+<text x="109" y="348.1" font-size="14" text-anchor="middle" fill="#292929">[핵심 질문]</text>
+<rect x="210" y="297" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<rect x="240" y="290" width="456" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="252" y="310.1" font-size="14" text-anchor="start" fill="#292929">① 공통 이벤트 키에 들어가지 않은 정보</text>
+<rect x="210" y="333" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<rect x="240" y="326" width="456" height="32" rx="4" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="252" y="346.1" font-size="14" text-anchor="start" fill="#292929">② 그 정보를 나중에 찾을 수 있는 곳</text>
 </g>
 </svg>

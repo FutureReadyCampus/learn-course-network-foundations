@@ -1,14 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>실습 1-3 보고서는 출력과 번호, 마무리 칸을 채우고, INC-005 초기값 원인과 reasons 비교는 응용이다</title>
-<desc>실습 1-3 과 마무리 보고서에서 채울 칸 체크리스트다. (가) 출력 전체와 퇴사 · VIP 알림 번호와 VIP 수, 응용 (나) INC-005 맥락이 초기값인 원인과 재직으로 판정될 때의 문제, 응용 (다) INC-002 와 INC-004 의 reasons 비교, 마무리 (가) .env · .venv 확인이다.</desc>
-<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 1-3 · 마무리 보고서에서 채울 칸</text>
-<rect x="20" y="52" width="680" height="76" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text y="74.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0" font-weight="700">(가) [핵심 질문]</tspan><tspan x="360.0" dy="21.0">① 출력 전체 (코드 상자)  ② 「퇴사」 알림 번호</tspan><tspan x="360.0" dy="21.0">③ VIP 「예」 알림 번호  ④ VIP 계정 알림 수</tspan></text>
-<rect x="20" y="140" width="680" height="76" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text y="162.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0" font-weight="700">(나) [응용]</tspan><tspan x="360.0" dy="21.0">① INC-005 맥락이 초기값인 원인 (어느 if 인지)</tspan><tspan x="360.0" dy="21.0">② 확인 안 된 대상이 「재직」이면 생기는 문제</tspan></text>
-<rect x="20" y="228" width="680" height="76" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text y="250.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0" font-weight="700">(다) [응용]</tspan><tspan x="360.0" dy="21.0">① INC-002 와 INC-004 의 reasons</tspan><tspan x="360.0" dy="21.0">② 같은 신뢰 IP 라고 같게 처리해도 되는지와 이유</tspan></text>
-<rect x="20" y="316" width="680" height="62" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text y="341.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0" font-weight="700">마무리 (가) [핵심 질문]</tspan><tspan x="360.0" dy="21.0">① .env · .venv 가 보였는지  ② 보였다면 한 조치</tspan></text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 318" role="img">
+<title>응용 1-1 보고서는 출력 붙여 넣기와 경로 분기에 관한 [응용·핵심] 질문 두 개를 채운다</title>
+<desc>(가) 출력 전체와 경로별 건수, 종료된 알림 번호를 적는다. (나) 두 알림의 경로가 갈린 이유, (다) VIP 판정을 먼저 두는 이유는 [응용·핵심] 질문이다(응용을 했을 때만 채운다).</desc>
+<defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">보고서 · 응용 1-1 에서 채울 칸</text>
+<rect x="20" y="52" width="72" height="72" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="56" y="92.64" font-size="16" fill="#292929" text-anchor="middle">(가)</text>
+<rect x="102" y="52" width="598" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="114" y="81.475" font-size="15" fill="#292929">① 출력 전체 (코드 상자)</text>
+<text x="114" y="103.225" font-size="15" fill="#292929">② 경로별 건수 ③ 「종료」 상태가 된 알림 번호</text>
+<rect x="20" y="136" width="72" height="72" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="56" y="176.64" font-size="16" fill="#292929" text-anchor="middle">(나)</text>
+<rect x="102" y="136" width="598" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="114" y="165.475" font-size="15" fill="#292929">[응용·핵심] INC-002 와 INC-004 의 reasons</text>
+<text x="114" y="187.225" font-size="15" fill="#292929">둘 다 신뢰 IP 인데 경로가 갈린 이유</text>
+<rect x="20" y="220" width="72" height="72" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="56" y="260.64" font-size="16" fill="#292929" text-anchor="middle">(다)</text>
+<rect x="102" y="220" width="598" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="114" y="249.475" font-size="15" fill="#292929">[응용·핵심] 신뢰 IP · 평소와 다른 IP 하나뿐인 VIP 알림의 경로</text>
+<text x="114" y="271.225" font-size="15" fill="#292929">4번과 6번 조건의 순서를 바꾸면 달라지는 점</text>
+</g>
 </svg>

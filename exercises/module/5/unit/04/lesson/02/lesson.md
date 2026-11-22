@@ -219,7 +219,7 @@ print("--- 단계 5: gate_results.json 에", len(results), "건 저장")  # 단�
 
 **순서**
 
-답을 적는 보고서 `report_u4.md` 가 아직 없으면 [「보고서 쓰기」 레슨 첫 페이지](__SITE__/exercises/module/5/unit/4/lesson/11/page/1)에서 먼저 만듭니다.
+답을 적는 보고서 `report_u4.md` 가 아직 없으면 [「보고서 쓰기」 레슨 첫 페이지](__SITE__/exercises/module/5/unit/4/lesson/1/page/4)에서 먼저 만듭니다.
 
 1. **[터미널]** `config` 폴더가 없으면 만듭니다.
    ```bash
