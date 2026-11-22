@@ -10,7 +10,7 @@ render: markdown
 
 **실습 5-1을 마친 뒤, 실습 5-2를 시작하기 전에** 이 레슨의 파일 세 개를 만들고 주간 보고서를 한 번 만들어 봅니다. 로그를 집계하는(세어서 합계를 내는) 함수는 응용 5-1에서 직접 쓰는 것이라, 오늘은 완성본을 받아 씁니다.
 
-1. 파일은 모두 `access_control` 폴더 바로 아래에 만듭니다. 만드는 방법은 실습 5-1과 같습니다(VS Code 왼쪽 목록에서 `access_control` 폴더를 오른쪽 클릭 › **New File**).
+1. 작업 폴더는 `network-study-notes/access_control` 이고, 파일은 모두 `access_control` 폴더 바로 아래에 만듭니다. 만드는 방법은 실습 5-1과 같습니다(VS Code 왼쪽 목록에서 `access_control` 폴더를 오른쪽 클릭 › **New File**).
 2. 아래 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
 3. 만들 파일은 세 개입니다.
 
@@ -20,16 +20,20 @@ render: markdown
    | `weekly_report.py` | 함수 두 개 | 점검 결과와 로그 집계를 합쳐 보고서 문자열을 만들고 파일로 저장함 |
    | `weekly_run.py` | 실행 파일 | 위 두 파일과 실습 5-1의 `checklist.py` 를 불러 주간 보고서를 만듦 |
 
-4. `weekly_run.py` 는 실습 5-1의 `checklist.py` 를 불러옵니다. `python exercise5-1_run.py` 가 정답 레슨 「실습 5-1 정답」의 출력과 같은 출력을 내는지 먼저 확인합니다. 아직 안 되면 정답 레슨의 「실습 5-1 정답」에 있는 채운 코드를 넣어 `checklist.py` 를 완성합니다.
+4. `weekly_run.py` 는 실습 5-1의 `checklist.py` 를 불러옵니다. `access_control` 폴더의 터미널에서 `python exercise5-1_run.py` 가 정답 레슨 「실습 5-1 정답」의 출력과 같은 출력을 내는지 먼저 확인합니다. 아직 안 되면 정답 레슨의 「실습 5-1 정답」에 있는 채운 코드를 넣어 `checklist.py` 를 완성합니다.
 5. 데이터 파일 `config/week_state.json` · `config/alert.json` · `week_log.jsonl` 은 시작하기 레슨에서 만든 것을 그대로 씁니다.
 
 > 시간이 남아 응용 5-1을 하면, `log_summary.py` 를 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 그때는 다 채울 때까지 `weekly_run.py` 가 동작하지 않으니, 다 쓴 뒤 `weekly_run.py` 를 다시 실행해 보고서가 같은지 확인합니다.
 
 **확인** — `python exercise5-1_run.py` 의 단계 2가 `['dami']` · 통과 · `['junho']` 세 줄로 나오면 준비가 된 것입니다. 안 나오면 실습 5-1의 「직접 쓰는 곳」 확인을 다시 보거나, 정답 레슨 「실습 5-1 정답」의 ① ~ ③ 을 넣습니다.
 
+<!-- checklist -->
+- [ ] `python exercise5-1_run.py` 를 실행해 단계 2가 `['dami']` · 통과 · `['junho']` 세 줄로 나오는 것을 확인했다
+<!-- /checklist -->
+
 ## `log_summary.py` 만들기
 
-**`log_summary.py`** 를 만들고 아래 내용을 붙여 넣습니다. 서버 로그를 읽고 세는 함수 다섯 개가 들어 있습니다.
+`access_control` 폴더를 오른쪽 클릭 › **New File** 로 **`log_summary.py`** 를 만들고 아래 내용을 붙여 넣습니다. 서버 로그를 읽고 세는 함수 다섯 개가 들어 있습니다.
 
 ```python
 import json                                                      # JSON 문자열을 딕셔너리로 바꾸는 모듈을 불러온다
@@ -107,9 +111,13 @@ def find_heavy_users(denied_counts, limit):                      # 사용자별 
 
 **확인** — VS Code 왼쪽 목록의 `access_control` 바로 아래에 `log_summary.py` 가 보이면 성공입니다. `config` 안에 만들어졌으면 `access_control` 로 끌어다 옮깁니다. 실행은 「주간 보고서 만들기」 페이지에서 한 번에 합니다.
 
+<!-- checklist -->
+- [ ] `access_control` 폴더 바로 아래에 `log_summary.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 ## `weekly_report.py` 만들기
 
-**`weekly_report.py`** 를 만들고 아래 내용을 붙여 넣습니다. 점검 결과와 로그 집계를 합쳐 네 절(`## ` 로 시작하는 제목 하나와 그 아래 줄들)의 보고서 문자열을 만들고, 날짜가 들어간 `.md` 파일로 저장합니다.
+`access_control` 폴더를 오른쪽 클릭 › **New File** 로 **`weekly_report.py`** 를 만들고 아래 내용을 붙여 넣습니다. 점검 결과와 로그 집계를 합쳐 네 절(`## ` 로 시작하는 제목 하나와 그 아래 줄들)의 보고서 문자열을 만들고, 날짜가 들어간 `.md` 파일로 저장합니다.
 
 ```python
 from log_summary import count_by, filter_denied, deny_rate, find_heavy_users   # 제공 파일 log_summary.py 의 집계 함수를 불러온다
@@ -181,9 +189,13 @@ def save_report(text, today):                                    # 보고서 문
 
 **확인** — `access_control` 바로 아래에 `log_summary.py` 와 `weekly_report.py` 가 나란히 보이면 성공입니다. 이름이 한 글자라도 다르면 다음 페이지에서 `ModuleNotFoundError` 가 나니, 문서의 이름과 비교해 고칩니다.
 
+<!-- checklist -->
+- [ ] `access_control` 폴더 바로 아래에 `weekly_report.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 ## 주간 보고서 만들기
 
-**`weekly_run.py`** 를 만들고 아래 내용을 붙여 넣습니다. 실습 5-1의 점검 결과와 일주일 치 로그를 모아 보고서를 만들고 저장합니다.
+`access_control` 폴더를 오른쪽 클릭 › **New File** 로 **`weekly_run.py`** 를 만들고 아래 내용을 붙여 넣습니다. 실습 5-1의 점검 결과와 일주일 치 로그를 모아 보고서를 만들고 저장합니다.
 
 ```python
 import json                                                      # 경고 기준 파일을 읽는 데 쓴다
@@ -272,3 +284,9 @@ print(text)                                                      # 보고서 내
 - 이 보고서는 실습 5-2의 상황 8에서 다시 읽습니다. 숫자가 어떻게 나왔는지 직접 세어 보고 싶으면 응용 5-1을 합니다.
 
 **확인** — 단계 3의 1절에 `전체 요청: 40건 (허용 24건 · 거부 16건)`, 4절에 `['dami', 'gaeun']` 이 나오고 `ls` 에 보고서 파일이 보이면 성공입니다. 3절이 다르면 `checklist.py` 를, 1 · 2절이 다르면 `week_log.jsonl` 의 줄 수(40줄)를 먼저 봅니다.
+
+<!-- checklist -->
+- [ ] `access_control` 폴더 바로 아래에 `weekly_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `python weekly_run.py` 를 실행해 단계 3에 보고서 네 절이 나왔다
+- [ ] `access_control` 폴더에 `access_control_weekly_report_2026-11-02.md` 가 생긴 것을 확인했다
+<!-- /checklist -->
