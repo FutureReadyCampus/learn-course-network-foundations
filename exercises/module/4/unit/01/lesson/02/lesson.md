@@ -290,7 +290,7 @@ for entry in entries:                                                  # 읽은 
 
 **순서**
 
-1. **[VS Code]** 파일 `log_parse.py` · `exercise1-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code]** `anomaly_detection` 폴더에 `log_parse.py` · `exercise1-1_run.py` 두 파일을 만들어, 위의 같은 이름 코드 상자 내용을 각각 붙여 넣고 저장합니다.
 2. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지 확인하고</mark> **채우기 전에** 한 번 실행합니다(맥북은 `python3`). `NameError: name 'prefix' is not defined` 가 나오면 정상입니다.
    ```bash
    pwd
@@ -310,6 +310,13 @@ for entry in entries:                                                  # 읽은 
    - (다) [핵심 질문] 404 가 한 번 난 요청과, 같은 주소에서 `/.env` · `/wp-login.php` · `/phpmyadmin` 이 연달아 404 가 난 요청은 같은 일일까요? 샘플 로그에서 두 경우를 찾아 어떻게 다른지, 왜 한 줄만 봐서는 판단하기 어려운지 적어 주세요.
 
 **확인** — 다시 실행했을 때 단계 1 에 `읽기 성공 28 줄 · 읽기 실패 2 줄`, 단계 3 에 `?` 가 들어간 경로 두 줄(`/board?page=2` · `/search?q=network`)이 나오면 성공입니다. 안 나오면 「정답」 레슨의 실습 1-1 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `log_parse.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `anomaly_detection` 폴더에 `exercise1-1_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `log_parse.py` 의 빈칸 ① · ② 를 한 줄씩 채우고 저장했다
+- [ ] `python exercise1-1_run.py` 를 실행해 `읽기 성공 28 줄 · 읽기 실패 2 줄` 이 나왔다
+<!-- /checklist -->
 
 ## 실습 1-1 정리
 

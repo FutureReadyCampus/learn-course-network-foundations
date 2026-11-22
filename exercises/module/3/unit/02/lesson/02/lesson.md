@@ -56,7 +56,7 @@ SLA 는 정해 둔 시간 안에 처리하겠다는 약속입니다. 예를 들�
 ## 터미널 열고 앞에서 만든 파일 확인하기
 
 1. **[VS Code]** 왼쪽 목록의 `access_control` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** 위치와 파일을 확인합니다. 결과가 `…/security-agent-toolkit/access_control` 로 끝나야 합니다.
+2. **[터미널]** 위치와 파일을 확인합니다. 결과가 `…/network-study-notes/access_control` 로 끝나야 합니다.
    ```bash
    pwd
    ls
@@ -87,5 +87,10 @@ SLA 는 정해 둔 시간 안에 처리하겠다는 약속입니다. 예를 들�
 > 실행은 VS Code 의 ▶ 단추가 아니라 **터미널**에서 합니다(맥북은 `python3`). 3번의 파일은 오늘 고치지 않고 불러 쓰기만 합니다. 오늘 만드는 파일은 모두 새 파일입니다.
 
 > **확인** — 2번의 마지막 두 줄에 `이전 파일 정상 5` 와 `(False, '퇴사한 계정')` 이 나오면 성공입니다. `ModuleNotFoundError` 나 `FileNotFoundError` 가 나오면 오류 끝에 적힌 파일 이름을 3번 표에서 찾아 그 「없으면」 칸대로 만든 뒤 다시 칩니다.
+
+<!-- checklist -->
+- [ ] `access_control` 폴더에서 3번 표의 Unit 1 파일을 확인하고, 없던 파일은 「없으면」 칸대로 만들었다
+- [ ] 2번의 `python -c` 명령을 실행해 `이전 파일 정상 5` 와 `(False, '퇴사한 계정')` 이 나왔다
+<!-- /checklist -->
 
 ---

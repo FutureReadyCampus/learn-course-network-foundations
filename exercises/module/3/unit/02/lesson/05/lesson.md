@@ -62,3 +62,8 @@ def grant_request(request):                                      # 요청서를 
 ```
 
 **확인** — `access_control` 폴더에서 4번 명령(`python -c "from req_grant import grant_request; print('제공 파일 정상')"`)을 쳐서 `제공 파일 정상` 이 나오면 성공입니다. `ModuleNotFoundError: No module named 'req_grant'` 가 나오면 파일 이름과 폴더를, `SyntaxError` 나 `IndentationError` 가 나오면 복사가 덜 된 것이니 내용을 지우고 다시 붙여 넣습니다.
+
+<!-- checklist -->
+- [ ] `access_control` 폴더에 `req_grant.py` 를 만들어 코드 상자 내용을 붙여 넣고 저장했다
+- [ ] `python -c "from req_grant import grant_request; print('제공 파일 정상')"` 을 실행해 `제공 파일 정상` 이 나왔다
+<!-- /checklist -->

@@ -225,11 +225,18 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
    - 맥북은 `python3 apply2-3_run.py` 로 칩니다.
 4. 출력은 세 단계입니다. 단계 1은 요청 여섯 건의 처리 결과(여섯 줄), 단계 2는 상태별 건수와 SLA 초과 요청 번호, 단계 3은 저장 함수가 리턴한 건수와 저장 결과입니다.
    - 응용 2-2에서는 SLA 초과가 1번과 5번이었지만 여기서는 5번만 나옵니다. 이 실행에서는 1번이 승인 · 부여까지 끝나 더 이상 `reviewing` 이 아니기 때문입니다.
-5. **[VS Code]** 왼쪽 목록에 새로 생긴 `requests.json` 을 열어 요청서가 한글 그대로 저장됐는지 봅니다.
-6. **[보고서]** `report_u2.md` 의 `## 응용 2-3` 아래를 채웁니다.
+5. **[VS Code]** 왼쪽 목록의 `access_control` 폴더 안에 새로 생긴 `requests.json`(`access_control/requests.json`)을 열어 요청서가 한글 그대로 저장됐는지 봅니다.
+6. **[보고서]** `access_control/report_u2.md` 의 `## 응용 2-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, `requests.json` 에 저장된 요청서가 몇 건인지와 상태별 건수를 적어 주세요.
    - (나) [핵심 질문] 반려된 요청서(`rejected`)나 승인은 됐지만 부여하지 않은 요청서(`approved`)도 지우지 않고 `requests.json` 에 남기는 이유는 무엇인가요?
    - (다) [핵심 질문] 상태별 건수가 `granted` 1 · `rejected` 1 · `approved` 2 · `reviewing` 2 로 나왔습니다. 이 숫자를 매일 아침 보면 처리 흐름의 어디가 막혀 있는지 어떻게 알 수 있나요?
+
+<!-- checklist optional -->
+- [ ] `access_control` 폴더에 `request_flow.py` 와 `apply2-3_run.py` 를 만들어 붙여 넣고 저장했다
+- [ ] `request_flow.py` 의 `save_requests` 와 `count_by_status` 본문을 직접 썼다
+- [ ] `python apply2-3_run.py` 를 실행하고, 새로 생긴 `requests.json` 에 한글이 그대로 저장된 것을 봤다
+- [ ] `report_u2.md` 의 `## 응용 2-3` 칸을 채웠다
+<!-- /checklist -->
 
 ## 응용 2-3 정리
 
@@ -249,7 +256,7 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
 
 핵심 실습의 파일은 실습 2-2 끝 「이번 Unit 마무리」에서 이미 올렸습니다. 응용을 했다면 응용 파일도 같은 방법으로 올립니다.
 
-1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고(`cd ..`) `git status` 로 올라갈 파일을 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
+1. **[터미널]** `network-study-notes` 폴더로 옮기고(`cd ..`) `git status` 로 올라갈 파일을 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
    - 응용 2-1 · 2-2 · 2-3을 모두 했다면 아래 파일이 모두 `access_control/` 아래에 보입니다.
 
      | 응용 | 보이는 파일 |
@@ -269,6 +276,11 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
    ```
    - 명령 풀이와 막힐 때 할 일은 「이번 Unit 마무리」의 3번과 같습니다.
 4. **[브라우저]** 깃허브의 `access_control` 폴더에서 응용 파일이 보이는지 확인합니다.
+
+<!-- checklist optional -->
+- [ ] `network-study-notes` 폴더에서 `git add .` · `git commit` · `git push` 로 응용 파일을 올렸다
+- [ ] 깃허브 내 저장소의 `access_control` 폴더에서 응용 파일을 확인했다
+<!-- /checklist -->
 
 ---
 

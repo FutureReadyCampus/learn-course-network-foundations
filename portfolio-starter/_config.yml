@@ -23,8 +23,12 @@ exclude:
   - README.md
   - check_publish.py
   - _templates
-  - code/README.md
   - .gitignore
   - .env
   - Gemfile
   - Gemfile.lock
+# 실습 폴더의 .md(보고서 등)는 사이트 페이지로 만들지 않습니다. 보고서에 {{ 나 {% 가 섞이면 사이트 빌드가 멈추기 때문입니다.
+# 코드(.py · .json)는 그대로 사이트에 복사되고, 보고서는 GitHub 저장소에서 보입니다. 지우지 않습니다.
+  - access_control/*.md
+  - anomaly_detection/*.md
+  - soar_response/*.md

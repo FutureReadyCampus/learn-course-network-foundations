@@ -60,12 +60,12 @@ render: markdown
 | `config/users.json` · `config/roles.json` | Module 3 Unit 1 실습 1-1 | 실습 3-2 (`rbac.py` 가 읽음) | 다음 페이지에서 새로 만듭니다 |
 | `login_detection.py` | Unit 2 실습 2-3 | 응용 3-1 만 | 아래 설명을 따릅니다 |
 
-- Module 3 의 파일은 `access_control` 폴더에 있고 오늘 작업 폴더는 `anomaly_detection` 입니다. 그래서 `rbac.py` 와 설정 파일 두 개를 다음 페이지의 완성본으로 `anomaly_detection` 폴더에 **새로** 만듭니다. 내용은 Module 3 Unit 1 정답 레슨의 「실습 1-1 정답」 · 「실습 1-2 정답」과 같으니, Module 3 을 다 마쳤든 못 마쳤든 그대로 붙여 넣으면 됩니다.
-- `login_detection.py` 는 응용 3-1 에서만 씁니다. 없으면 Unit 2 실습 2-3 레슨의 `login_detection.py` 코드 상자를 붙여 넣고, Unit 2 정답 레슨의 「실습 2-3 정답」에 있는 채운 코드를 빈칸 자리에 넣어 완성합니다.
+- Module 3 의 파일은 `network-study-notes/access_control` 폴더에 있고 오늘 작업 폴더는 `network-study-notes/anomaly_detection` 입니다. 그래서 `rbac.py` 와 설정 파일 두 개를 `access_control` 에서 가져오지 않고, 다음 페이지의 완성본으로 `anomaly_detection/rbac.py` · `anomaly_detection/config/users.json` · `anomaly_detection/config/roles.json` 에 **새로** 만듭니다. `access_control` 폴더의 파일은 그대로 둡니다. 내용은 Module 3 Unit 1 정답 레슨의 「실습 1-1 정답」 · 「실습 1-2 정답」과 같으니, Module 3 을 다 마쳤든 못 마쳤든 그대로 붙여 넣으면 됩니다.
+- `login_detection.py` 는 응용 3-1 에서만 씁니다. 없으면 `anomaly_detection` 폴더에 `login_detection.py` 를 만들어 Unit 2 실습 2-3 레슨의 `login_detection.py` 코드 상자를 붙여 넣고, Unit 2 정답 레슨의 「실습 2-3 정답」에 있는 채운 코드를 빈칸 자리에 넣어 완성합니다.
 
 **순서**
 
-1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
+1. **[VS Code]** `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치를 확인하고, 판다스가 설치돼 있는지 봅니다(맥북은 `python3`). <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나고, 마지막에 버전 번호(예: `2.3.3`)가 나오면</mark> 됩니다. `No module named 'pandas'` 가 나오면 이 레슨의 「오류가 나면」 둘째 줄을 따릅니다.
    ```bash
    cd anomaly_detection
@@ -83,17 +83,21 @@ render: markdown
 
 **확인** — `pwd` 가 `…/anomaly_detection` 으로 끝나고 판다스 버전 번호가 나오면 성공입니다. 안 나오면 이 레슨의 「오류가 나면」 페이지를 봅니다.
 
+<!-- checklist -->
+- [ ] `network-study-notes` 폴더에서 터미널을 열고 `anomaly_detection` 폴더로 들어가, 판다스 버전 번호가 나오는 것을 봤다
+<!-- /checklist -->
+
 ## 오늘 쓸 파일 만들기
 
 이 페이지의 파일 다섯 개를 모두 만든 뒤 맨 아래 3번으로 확인합니다.
 
-1. **[터미널]** Module 3 설정 파일을 넣을 `config` 폴더를 만듭니다. 이미 `config` 폴더가 있으면 건너뜁니다.
+1. **[터미널]** `anomaly_detection` 폴더에서, Module 3 설정 파일을 넣을 `config` 폴더(`anomaly_detection/config`)를 만듭니다. 이미 `config` 폴더가 있으면 건너뜁니다.
    ```bash
    mkdir config
    ls
    ```
    - 명령 풀이: `mkdir config` 폴더 만들기 · `ls` 폴더 안의 파일 이름 보기
-2. **[VS Code]** `anomaly_detection` 폴더에 `normalized_events.json` · `baseline_traffic.csv` · `rbac.py` 를, 그 안의 `config` 폴더에 `users.json` · `roles.json` 을 만들어 아래 내용을 그대로 붙여 넣습니다.
+2. **[VS Code]** 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `normalized_events.json` · `baseline_traffic.csv` · `rbac.py` 를 만들고, `anomaly_detection` 폴더 안의 `config` 폴더를 오른쪽 클릭 › **New File** 로 `users.json` · `roles.json` 을 만들어 아래 내용을 그대로 붙여 넣습니다. `rbac.py` 는 `access_control` 이 아니라 `anomaly_detection` 바로 아래(`anomaly_detection/rbac.py`)에 둡니다.
 
 **`normalized_events.json`** — Unit 2 시작하기에서 만든 것과 같은 이벤트 샘플 57개입니다. 실습 3-1 · 3-2 와 응용이 모두 읽습니다. <mark>같은 이름의 파일이 이미 있어도 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다). `null` 은 그 값이 로그에 없다는 뜻입니다.
 
@@ -261,6 +265,14 @@ def check_permission(user, resource, action):                    # 사용자 · 
 
 **확인** — 세 명령이 차례로 `57`, `8`, `(False, '퇴사한 계정')` 을 내면 성공입니다. 안 나오면 위 표에서 다르게 나온 줄을 찾아 고친 뒤 세 명령을 다시 칩니다.
 
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `normalized_events.json` 을 만들어 붙여 넣고 저장했다
+- [ ] `anomaly_detection` 폴더에 `baseline_traffic.csv` 를 만들어 붙여 넣고 저장했다
+- [ ] `anomaly_detection` 폴더에 `rbac.py` 를 만들어 붙여 넣고 저장했다
+- [ ] `config` 폴더를 만들고 그 안에 `config/users.json` · `config/roles.json` 을 만들어 붙여 넣고 저장했다
+- [ ] 확인 명령 세 개가 차례로 `57`, `8`, `(False, '퇴사한 계정')` 을 냈다
+<!-- /checklist -->
+
 ## 오류가 나면
 
 먼저 `pwd` 가 `anomaly_detection` 으로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
@@ -271,7 +283,7 @@ def check_permission(user, resource, action):                    # 사용자 · 
 | `FileNotFoundError: … 'config/roles.json'` · `No module named 'rbac'` | 파일 위치가 다릅니다 | <mark>`config` 폴더 안에 두 JSON 파일이 있는지</mark>, `rbac.py` 가 `anomaly_detection` 폴더 바로 아래에 있는지 `ls` 와 `ls config` 로 봅니다 |
 | `No module named 'login_detection'`(응용 3-1) | Unit 2 실습 2-3 의 `login_detection.py` 가 없습니다 | 「폴더 열고 이전 파일 확인하기」 페이지의 표 아래 설명대로 만듭니다 |
 
-- 가상환경을 쓴다면 판다스를 설치하기 전에 `security-agent-toolkit` 폴더에서 가상환경을 켭니다(`source .venv/Scripts/activate`, 맥북은 `Scripts` 를 `bin` 으로).
+- 가상환경을 쓴다면 판다스를 설치하기 전에 `network-study-notes` 폴더에서 가상환경을 켭니다(`source .venv/Scripts/activate`, 맥북은 `Scripts` 를 `bin` 으로).
 - 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). <mark>막히면 이 Unit 뒤쪽의 「정답」을 보고</mark>, 풀리지 않으면 보고서 (가)에 「모름 — 막힌 곳: …」 이라고 쓰고 넘어갑니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다. 파일을 지금 위치 기준으로 찾기 때문입니다. **앞 Unit 과 Module 3 의 파일은 고치지 않습니다.**

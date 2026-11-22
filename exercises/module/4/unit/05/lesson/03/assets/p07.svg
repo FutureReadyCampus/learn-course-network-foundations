@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
 <title>깃허브에 올리기: 위치 이동, git status 확인, 보고서 마무리, add · commit · push, 브라우저 확인</title>
-<desc>security-agent-toolkit 으로 옮긴 뒤 git status 에 .env 나 .venv 가 보이면 .gitignore 를 고칩니다. 보고서 마무리 (가)를 채우고 git add, git commit, git push 로 올린 뒤 브라우저에서 확인합니다.</desc>
+<desc>network-study-notes 으로 옮긴 뒤 git status 에 .env 나 .venv 가 보이면 .gitignore 를 고칩니다. 보고서 마무리 (가)를 채우고 git add, git commit, git push 로 올린 뒤 브라우저에서 확인합니다.</desc>
 <defs><marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">Module 4 작업을 깃허브에 올리는 순서</text>
@@ -23,7 +23,7 @@
 <line x1="280" y1="79" x2="310" y2="79"/><line x1="280" y1="151" x2="310" y2="151"/><line x1="280" y1="223" x2="310" y2="223"/><line x1="280" y1="301" x2="310" y2="301"/><line x1="280" y1="379" x2="310" y2="379"/>
 </g>
 <rect x="310" y="50" width="390" height="58" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="326" y="84" font-size="15" fill="#292929">…/security-agent-toolkit 으로 끝나면 됨</text>
+<text x="326" y="84" font-size="15" fill="#292929">…/network-study-notes 으로 끝나면 됨</text>
 <rect x="310" y="122" width="390" height="58" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
 <text x="326" y="146" font-size="15" fill="#292929" font-weight="700">.env · .venv 가 보이면 올리지 않음</text>
 <text x="326" y="168" font-size="14" fill="#292929">.gitignore 맨 아래에 한 줄 적고 다시 git status</text>

@@ -208,7 +208,7 @@ for entry in action_log:                                                        
 
 **순서**
 
-1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `pending.json` · `decisions.json` 을 만들어 위 내용을 붙여 넣고 저장합니다. 이어서 `audit.py` · `approvals.py` 는 열어서 골격으로 바꾸고, `apply2-1_run.py` 는 새로 만들어(파일 이름 그대로) 코드를 붙여 넣어 저장합니다.
+1. **[VS Code]** 작업 폴더는 `network-study-notes/soar_response` 입니다. `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `pending.json` · `decisions.json` 을 만들어 위 내용을 붙여 넣고 저장합니다. 이어서 `soar_response` 폴더의 `audit.py` · `approvals.py` 는 열어서 골격으로 바꾸고, `apply2-1_run.py` 는 새로 만들어(파일 이름 그대로) 코드를 붙여 넣어 저장합니다.
    - **[터미널]** 데이터 파일을 확인합니다(맥북은 `python3`). <mark>`3 3` 이 나와야</mark> 합니다.
      ```bash
      python -c "import json; print(len(json.load(open('pending.json', encoding='utf-8'))), len(json.load(open('decisions.json', encoding='utf-8'))))"
@@ -223,6 +223,14 @@ for entry in action_log:                                                        
    - (가) 실행한 출력 전체를 붙여 넣고, 처리 뒤 티켓 수 · 담당자 알림 수 · `분류됨` 으로 남은 알림의 번호를 각각 적어 주세요.
    - (나) [핵심 질문] INC-005 는 결정이 `승인` 인데 실행되지 않았습니다. 단계 2 와 단계 4 의 출력을 근거로 그 이유를 적어 주세요. 그리고 권한 확인이 없을 때 생길 위험도 적어 주세요.
    - (다) [핵심 질문] INC-003 이 승인 대기가 된 이유(단계 1), 거절된 뒤의 상태, 감사 기록에 남은 내용을 각각 적어 주세요.
+
+<!-- checklist optional -->
+- [ ] `pending.json` · `decisions.json` 을 만들어 붙여 넣고 확인 명령으로 `3 3` 이 나왔다
+- [ ] `audit.py` 를 골격으로 바꿔 붙여 넣고 1번을 채운 뒤 저장했다
+- [ ] `approvals.py` 를 골격으로 바꿔 붙여 넣고 2 ~ 7번을 채운 뒤 저장했다
+- [ ] `apply2-1_run.py` 를 만들어 8 · 9번을 채우고, `python apply2-1_run.py` 로 네 단계 출력이 나왔다
+- [ ] `report_u2.md` 의 `## 응용 2-1` 에 답을 썼다
+<!-- /checklist -->
 
 ## 응용 2-1 정리
 

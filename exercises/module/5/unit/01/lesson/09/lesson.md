@@ -78,6 +78,11 @@ render: markdown
 
 > **확인** — VS Code 왼쪽 목록의 `soar_response` 아래에 `report_u1.md` 가 보이고, 열었을 때 첫 줄 제목에 내 이름이 들어가 있으면 성공입니다. 다른 폴더에 만들어졌으면 파일을 `soar_response` 로 끌어다 옮깁니다.
 
+<!-- checklist -->
+- [ ] `soar_response/report_u1.md` 를 만들고 틀을 붙여 넣었다
+- [ ] 제목의 `이름` 을 내 이름으로 바꿔 저장했다
+<!-- /checklist -->
+
 ## 보고서 쓰는 법
 
 > **쓰는 법**

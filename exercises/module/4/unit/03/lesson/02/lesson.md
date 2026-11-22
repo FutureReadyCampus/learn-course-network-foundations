@@ -188,7 +188,7 @@ print(counts >= 2)               # 09:01 은 True, 09:20 은 False
 
 **할 일**
 
-1. `traffic_detection.py` · `exercise3-1_run.py` **두 파일**을 만들고, `traffic_detection.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
+1. 작업 폴더 `network-study-notes/anomaly_detection` 에 `traffic_detection.py` · `exercise3-1_run.py` **두 파일**을 만들고, `traffic_detection.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
 2. 실행해서 <mark>시각과 분의 차이</mark>(단계 1), <mark>분당 요청 수</mark>(단계 2), <mark>급증 기준</mark>(단계 3), <mark>요청이 급증한 분</mark>(단계 4)를 읽습니다.
 
 **`traffic_detection.py`**
@@ -293,7 +293,7 @@ print(spike_minutes)                                                            
 
 **순서**
 
-1. **[VS Code]** 파일 `traffic_detection.py` · `exercise3-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code]** 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `traffic_detection.py` 와 `exercise3-1_run.py` 를 만들고, 위의 같은 이름 코드 상자를 각각 붙여 넣어 저장합니다.
 2. **[VS Code]** `traffic_detection.py` 의 `# ←` 두 곳(① · ②)을 채웁니다. 위 판다스 문법 상자와 ② 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -318,6 +318,12 @@ print(spike_minutes)                                                            
    - (다) [응용] 09:20 에도 웹 서버 요청이 3개 있었지만 급증으로 탐지되지 않았습니다. ① 3개를 급증 기준과 비교해 왜 탐지되지 않았는지 적고, ② `normalized_events.json` 에서 09:20 의 `web` 줄 3개가 어떤 요청(IP 주소 · 행동 · 결과)인지 적고, ③ 요청 수만 보는 급증 규칙이 이 요청들을 놓치는 이유를 적어 주세요.
 
 **확인** — 단계 3 제목 줄 끝에 `6.0 번 이상`, 단계 4 에 `2026-11-02 09:12:00    9` 한 줄만 나오면 성공입니다. 안 나오면 「정답」 레슨의 실습 3-1 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `traffic_detection.py` 를 만들어 붙여 넣고 빈칸 ① · ② 를 채워 저장했다
+- [ ] `anomaly_detection` 폴더에 `exercise3-1_run.py` 를 만들어 붙여 넣고 저장했다
+- [ ] `python exercise3-1_run.py` 를 실행해 단계 3 에 `6.0 번 이상`, 단계 4 에 `2026-11-02 09:12:00` 한 줄(요청 9)이 나왔다
+<!-- /checklist -->
 
 ## 실습 3-1 정리
 

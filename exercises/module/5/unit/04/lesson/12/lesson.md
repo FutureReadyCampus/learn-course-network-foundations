@@ -39,7 +39,7 @@ render: markdown
 
 ## 글 틀로 쓰고 올리기
 
-설치할 것은 없습니다. Module 3 Unit 1 시작하기 레슨에서 한 것처럼 **GitHub 웹 화면**에서 파일을 만들고 붙여 넣습니다. 글 틀 세 가지는 [「글 틀로 글 쓰기」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/10)에 있습니다.
+설치할 것은 없습니다. 저장소 `network-study-notes` 를 연 VS Code 에서 글 파일을 만들고, 터미널에서 올립니다. 글 틀 세 가지는 [「글 틀로 글 쓰기」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/10)에 있습니다.
 
 **1. 글 틀 고르기**
 
@@ -51,29 +51,30 @@ render: markdown
 
 **2. 새 글 파일 만들기**
 
-1. 내 포트폴리오 저장소에서 `_posts` 폴더를 열고 **Add file › Create new file** 을 누릅니다.
-2. 파일 이름은 `날짜-영문제목.md` 모양으로 적습니다. 예: `_posts/2026-11-20-m5-u4-approval-gate.md`
-3. 고른 글 틀의 내용을 붙여 넣고, 맨 위 머리말(front matter)을 오늘 Unit 에 맞게 고칩니다.
+1. **[VS Code]** 왼쪽 목록의 `network-study-notes` 안 `_posts` 폴더를 오른쪽 클릭 › **New File** 로 `2026-11-20-m5-u4-approval-gate.md` 처럼 만듭니다(경로 `_posts/2026-11-20-m5-u4-approval-gate.md`). 앞은 오늘 날짜, 뒤는 영문 제목입니다.
+2. 고른 글 틀의 내용을 붙여 넣고, 맨 위 머리말(front matter)을 오늘 Unit 에 맞게 고칩니다.
    ```
    module: 5
    unit: 4
    ```
    - 이 두 줄이 첫 화면 「나의 진행」에서 Module 5 의 **4번** 칸을 채웁니다.
    - `title` 은 내 글의 한 줄 제목으로, `date` 는 오늘 날짜로 바꿉니다.
-4. 빈칸을 채우고 **Commit changes** 를 누릅니다.
+3. 빈칸을 채우고 저장합니다. 올리기는 이 레슨 마지막 페이지 「공개 전 점검」을 마친 뒤 그 페이지에서 합니다.
 
-**3. 코드 올리기**
+**3. 코드 위치 적기**
 
-글에서 소개한 코드는 저장소의 `code/` 폴더에 올립니다. `code` 폴더에서 **Add file › Create new file** 을 누르고, 이름은 Unit 번호가 보이게 적습니다.
+코드는 따로 옮기지 않습니다. 오늘 만든 `soar_response/approval_gate.py`(실습 4-1) · `soar_response/false_positive.py`(실습 4-2) 가 같은 저장소에 이미 올라가 있습니다.
 
-- 예: `code/m5_u4_approval_gate.py`(실습 4-1), `code/m5_u4_false_positive.py`(실습 4-2)
-- 글 안에는 핵심 몇 줄만 코드 상자로 붙이고, 「전체 코드: `code/m5_u4_approval_gate.py`」처럼 위치를 적습니다.
+- 글 안에는 핵심 몇 줄만 코드 상자로 붙이고, 「전체 코드: `soar_response/approval_gate.py`」처럼 위치만 적습니다.
 
 **4. 확인하기**
 
-올리고 1~2분 기다린 뒤 내 사이트 첫 화면을 엽니다.
+> **확인** — VS Code 왼쪽 목록의 `_posts` 폴더 안에 오늘 글 파일이 있고, 맨 위 머리말에 `module: 5` · `unit: 4` 이 있으면 성공입니다. 없으면 오른쪽 클릭한 폴더가 `_posts` 인지 봅니다.
 
-> **확인** — 최신 글에 오늘 글이 보이고 「나의 진행」의 Module 5 · 4번 칸이 채워지면 성공입니다. 안 보이면 저장소의 **Actions** 탭을 먼저 보고, 머리말의 `date` 가 미래 날짜인지 확인합니다.
+<!-- checklist -->
+- [ ] `_posts` 폴더에 오늘 날짜 이름(예: `_posts/2026-11-20-m5-u4-approval-gate.md`)으로 글 파일을 만들고 글 틀을 붙여 넣었다
+- [ ] 머리말을 `module: 5` · `unit: 4` 와 내 `title` · `date` 로 고치고 세 칸을 채워 저장했다
+<!-- /checklist -->
 
 ## 막힐 때 힌트
 
@@ -82,7 +83,7 @@ render: markdown
 1. **글감 1(영향 범위)**: 실습 4-1 출력 단계 2 에서 `REQ-1` 줄(`합계 2점`)과 `REQ-6` 줄(`대상 6개 +2, 합계 4점`)을 나란히 붙입니다. 두 줄의 차이가 `대상 6개 +2` 하나뿐이라는 것부터 쓰고, 계정 6개가 한꺼번에 잘못 잠기면 누가 곤란해지는지 이어서 씁니다.
 2. **글감 2(허용 목록과 설정 파일)**: `decide_gate` 의 첫 두 줄(`if is_allowlisted(request, policy):` 와 그 아래 `return`)을 붙이고, `REQ-3` 이 점수로만 정해졌다면 몇 점이 되어 어떤 결정이 나왔을지 씁니다. 설정 파일 이야기는 `config/approval_policy.json` 의 `"approval_score": 3` 한 줄을 붙이고, 이 숫자를 4로 바꾸면 `REQ-5`(3점)가 어떻게 되는지 적으면 됩니다.
 3. **글감 3(롤백만 하면 놓치는 것)**: 실습 4-2 출력에서 `[INC-301]` 의 다섯 줄을 붙이고, 줄마다 「이 줄이 없으면 무엇을 모르게 되는가」를 한 문장씩 답합니다. 영향 확인 줄에 `198.51.100.120` 이 없는 이유도 함께 쓰면 좋습니다.
-4. **실행 결과 붙이기**: 터미널 출력은 전부 붙이지 않아도 됩니다. 내 말과 연결되는 두세 줄만 코드 상자(```` ``` ````)로 붙이고, 그 아래에 「이 줄에서 무엇을 보았는지」를 한 문장으로 씁니다. 화면 캡처를 쓰려면 이미지를 `assets/images/` 에 올리고 글에 연결합니다.
+4. **실행 결과 붙이기**: 터미널 출력은 전부 붙이지 않아도 됩니다. 내 말과 연결되는 두세 줄만 코드 상자(```` ``` ````)로 붙이고, 그 아래에 「이 줄에서 무엇을 보았는지」를 한 문장으로 씁니다. 화면 캡처를 쓰려면 이미지를 `assets/images/` 폴더에 넣고 글에 연결합니다.
 5. **막힌 이야기를 쓸 때**: `post-stuck.md` 의 「증상」에 내 출력을 그대로 붙입니다. 예를 들어 실습 4-2 에서 `IndentationError: expected an indented block after 'if' statement` 가 나왔다면, 그 오류와 내가 의심한 줄(② 의 `changes.append(record)` 와 그 들여쓰기)을 적고 어떻게 찾았는지 씁니다.
 
 질문 하나에서 시작해도 막히면 AI 도우미를 써도 됩니다. 붙여 넣는 프롬프트 세 가지(코드 설명 정리 · 글 초안 다듬기 · 내 글 점검)는 [Module 3 Unit 1 시작하기 레슨의 「쓰기 질문과 AI 도우미」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/11)에 있습니다. AI 도우미에게 붙여 넣는 코드와 글에는 비밀키 · 토큰 · 개인정보를 넣지 않습니다.
@@ -91,11 +92,20 @@ render: markdown
 
 ## 공개 전 점검
 
-**Commit changes** 를 누르기 전에 한 번 더 봅니다.
+올리기 전에 한 번 더 봅니다.
 
-1. 글과 `code/` 파일에 비밀키 · 토큰 · `.env` 내용이 없다
+1. 글과 `soar_response/` 의 파일에 비밀키 · 토큰 · `.env` 내용이 없다
 2. 이메일 · 전화번호 같은 개인정보가 없다
 3. 실습 데이터가 아닌 실제 사람의 이름(나와 동료의 실명)이 없다
 4. 머리말이 `module: 5`, `unit: 4` 이고, `sample: true` 줄이 없다
 
-> **확인** — 네 줄을 모두 「그렇다」로 답할 수 있으면 성공입니다. 하나라도 걸리면 그 부분을 지우거나 고친 뒤 다시 **Commit changes** 합니다.
+**올리기** — **[터미널]** 네 줄을 모두 「그렇다」으로 답할 수 있으면 저장소 루트에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더로 돌아옵니다: `cd ..` → `python check_publish.py`(맥북은 `python3`) → `git add .` → `git commit -m "Add module 5 unit 4 post"` → `git push` → `cd soar_response`. 터미널이 이미 `network-study-notes` 에 있으면 `cd ..` 는 건너뜁니다. 점검에서 `[오류]` 가 나오면 그 부분을 지우고 다시 돌린 뒤 올립니다.
+
+올리고 1~2분 뒤 내 사이트 첫 화면을 엽니다.
+
+> **확인** — 최신 글에 오늘 글이 보이고 「나의 진행」의 Module 5 · Unit 4 칸이 채워지면 성공입니다. 안 보이면 저장소의 **Actions** 탭을 먼저 보고, [Module 3 Unit 1 시작하기 레슨의 「첫 화면 확인하고 막힐 때」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/9)의 「글이 목록에 안 나옴」 줄을 봅니다.
+
+<!-- checklist -->
+- [ ] 저장소 루트에서 `python check_publish.py` 가 `오류 0건` 인 것을 보고 `git add` · `git commit` · `git push` 로 글을 올렸다
+- [ ] 내 사이트 첫 화면에서 오늘 글과 Module 5 · Unit 4 칸이 채워진 것을 보았다
+<!-- /checklist -->

@@ -132,7 +132,7 @@ False
 **할 일**
 
 1. 「제공 파일」 레슨의 파일 네 개(`review_rules.py` · `overprivilege.py` · `report_exclude.py` · `config/exclude_list.json`)를 먼저 만듭니다. 이 실습은 그중 `review_rules.py` 를 씁니다.
-2. `config/access_log.json` · `review_unused.py` · `exercise3-2_run.py` 세 파일을 만들고, `review_unused.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
+2. 작업 폴더 `network-study-notes/access_control` 에 `config/access_log.json` · `review_unused.py` · `exercise3-2_run.py` 세 파일을 만들고(`access_log.json` 은 `config` 폴더 안, 나머지 둘은 `access_control` 바로 아래), `review_unused.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
 3. 실행해서 <mark>안 쓴 일 수</mark>(단계 1: 현황)와 <mark>90일 넘게 안 쓴 후보</mark>(단계 2: 판정)를 읽습니다.
 
 **준비** — 터미널이 `…/access_control` 위치인지 확인한 뒤 「제공 파일」이 있는지 봅니다.
@@ -278,7 +278,7 @@ for entry in unused:                                             # 후보를 한
    1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
    2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
    3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `config/access_log.json` · `review_unused.py` · `exercise3-2_run.py` 입니다. `access_control` 폴더를 선택한 채로 `config/access_log.json` 을 입력하면 `config` 폴더 안에 만들어집니다.
-   4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
+   4. 열린 파일에 같은 이름의 코드 상자(**`config/access_log.json`** · **`review_unused.py`** · **`exercise3-2_run.py`**) 내용을 복사해 붙여 넣고 저장합니다.
 2. **[터미널]** 파일을 만든 뒤 `ls config` 를 쳐서 `access_log.json` 이 `users.json` 과 같은 `config` 폴더 안에 있는지 확인합니다.
    - `config` 안에 또 `config` 가 생겼다면 위치가 틀린 것이니 옮깁니다.
    - 붙여 넣은 내용이 맞는지 `python -m json.tool config/access_log.json` 으로 확인합니다(맥북은 `python3 -m json.tool …`). 여러 줄로 정리되어 출력되면 정상이고(한글이 `\uXXXX` 로 보여도 정상입니다), 오류가 나면 붙여 넣을 때 글자가 빠진 것입니다. 깨진 채 두면 사용 이력을 못 읽어 모든 권한이 「이력 없음」으로 나옵니다.
@@ -298,6 +298,13 @@ for entry in unused:                                             # 후보를 한
    - (다) [응용] 사용 이력이 없는 권한을 바로 지우면 위험한 경우가 있습니다. 어떤 경우인지 예를 들고, 지우기 전에 무엇을 확인해야 하는지 적어 주세요.
 
 **확인** — 실행했을 때 단계 1 이 일곱 줄이고, 단계 2 가 `90일 넘게 안 쓴 후보 3 건` 아래 `seoyeon SALES:CHANGE` · `junho SALES:QUERY` · `gaeun ACCOUNT:CHANGE` 세 줄이면 성공입니다. 안 나오면 「정답」 레슨의 실습 3-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+
+<!-- checklist -->
+- [ ] `access_control` 안의 `config` 폴더에 `access_log.json` 을 만들어 붙여 넣고, `python -m json.tool config/access_log.json` 으로 정리된 내용이 나왔다
+- [ ] `access_control` 폴더에 `review_unused.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `access_control` 폴더에 `exercise3-2_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `review_unused.py` 의 빈칸 ①·② 를 채우고 `python exercise3-2_run.py` 를 실행해 `90일 넘게 안 쓴 후보 3 건` 이 나왔다
+<!-- /checklist -->
 
 ## 실습 3-2 정리
 
@@ -336,19 +343,19 @@ ls config
 
 **3. 깃허브에 올리기**
 
-1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
+1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/network-study-notes` 으로 끝나야 합니다.
    ```bash
    cd ..
    pwd
    ```
    - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
-   - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
+   - 결과가 다르면 VS Code 왼쪽 목록에서 `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
 2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
    ```bash
    git status
    ```
    - 명령 풀이: `git status` 올릴 파일의 상태를 봄
-   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 도 같은 방법으로 합니다.
+   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 도 같은 방법으로 합니다.
    - `access_control/__pycache__/` 는 파이썬이 실행하면서 자동으로 만든 임시 폴더입니다. 올릴 필요가 없으므로 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 더 적고 저장합니다.
    - `Untracked files:` 는 「아직 깃이 모르는 새 파일」 목록입니다. 이번 Unit 에서 만든 파일이 `access_control/review_list.py` 처럼 한 줄씩 보입니다.
 3. **[보고서]** `report_u3.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
@@ -359,8 +366,8 @@ ls config
    git push
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다. 이 화면은 git 이 두 기록을 합친 기록에 붙일 메시지를 확인하라고 여는 편집기(vim)라서, 메시지는 고치지 않고 저장하고 닫기만 하면 됩니다.
-5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `access_control` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다.
+   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
+5. **[브라우저]** 깃허브의 내 저장소 `network-study-notes` 를 새로 고쳐 `access_control` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다.
 
 - 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 1 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
 
@@ -373,7 +380,12 @@ ls config
 
 리포트와 회수 제외가 어떻게 동작하는지 직접 만들어 보려면 응용 3-2 · 3-3 을 합니다. 여유가 되면 해 보세요.
 
-**확인** — 깃허브의 내 저장소 `access_control` 폴더에 `review_list.py` 와 `review_unused.py` 가 보이고, `.env` 가 보이지 않으면 성공입니다. 안 보이면 `git status` 를 다시 쳐서 빨간 목록에 남은 파일이 있는지 보고 4번을 한 번 더 합니다.
+**확인** — 깃허브의 내 저장소 `network-study-notes` 의 `access_control` 폴더에 `review_list.py` 와 `review_unused.py` 가 보이고, `.env` 가 보이지 않으면 성공입니다. 안 보이면 `git status` 를 다시 쳐서 빨간 목록에 남은 파일이 있는지 보고 4번을 한 번 더 합니다.
+
+<!-- checklist -->
+- [ ] `network-study-notes` 폴더에서 `git status` 로 `.env` · `.venv` 가 없는 것을 보고 `git add .` · `git commit` · `git push` 로 올렸다
+- [ ] 깃허브의 `network-study-notes` 저장소 `access_control` 폴더에서 `review_list.py` 와 `review_unused.py` 를 확인했다
+<!-- /checklist -->
 
 ---
 

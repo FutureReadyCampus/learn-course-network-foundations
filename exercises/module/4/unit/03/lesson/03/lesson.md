@@ -224,7 +224,7 @@ print(names)                # 이름 리스트를 출력한다
 
 **할 일**
 
-1. `access_detection.py` · `exercise3-2_run.py` 두 파일을 만들고, `access_detection.py` 의 `# ←` 가 있는 <mark>세 곳</mark>(① ~ ③)을 한 줄씩 채웁니다.
+1. 작업 폴더 `network-study-notes/anomaly_detection` 에 `access_detection.py` · `exercise3-2_run.py` 두 파일을 만들고, `access_detection.py` 의 `# ←` 가 있는 <mark>세 곳</mark>(① ~ ③)을 한 줄씩 채웁니다.
 2. 실행해서 <mark>서버 실패 수</mark>(단계 1), <mark>먼저 확인할 이벤트 수</mark>(단계 2), <mark>이유별 순서</mark>(단계 3)를 읽습니다.
 
 **`access_detection.py`**
@@ -360,7 +360,7 @@ for priority in [1, 2, 3]:                                   # 우선순위대�
 
 **순서**
 
-1. **[VS Code]** 파일 `access_detection.py` · `exercise3-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code]** 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `access_detection.py` 와 `exercise3-2_run.py` 를 만들고, 위의 같은 이름 코드 상자를 각각 붙여 넣어 저장합니다. `access_detection.py` 의 `from rbac import check_permission` 은 시작하기에서 새로 만든 `anomaly_detection/rbac.py` 를 불러옵니다(`access_control/rbac.py` 가 아닙니다). 그래서 `anomaly_detection` 폴더에 `rbac.py` 와 `config/users.json` · `config/roles.json` 이 있어야 합니다.
 2. **[VS Code]** `access_detection.py` 의 `# ←` <mark>세 곳(① ~ ③)을 채웁니다</mark>. 위 판다스 문법 상자와 ③ 문법 상자를 참고해 씁니다. 막히면 아래 「실습 3-2 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -375,6 +375,12 @@ for priority in [1, 2, 3]:                                   # 우선순위대�
    - (다) [응용] seoyeon 의 서버 실패 2건(11:40 `SETTLE:QUERY` · 18:20 `SALES:CHANGE`)은 먼저 확인할 이벤트에 들어가지 않았습니다. 들어가지 않은 이유를 이번 실습의 규칙(실패 3번 이상)으로 설명하고, 이 규칙 때문에 놓칠 수 있는 경우를 한 가지 적어 주세요.
 
 **확인** — 단계 1 이 `9 개`, 단계 2 가 `7 개` 이고, 단계 3 의 일곱 줄 중 앞의 네 줄이 `1 퇴사한 계정 dami …`, 뒤의 세 줄이 `3 규칙은 허용인데 서버가 거절 gaeun …` 이면 성공입니다. 안 나오면 「정답」 레슨의 실습 3-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `access_detection.py` 를 만들어 붙여 넣고 빈칸 ① ~ ③ 을 채워 저장했다
+- [ ] `anomaly_detection` 폴더에 `exercise3-2_run.py` 를 만들어 붙여 넣고 저장했다
+- [ ] `python exercise3-2_run.py` 를 실행해 단계 1 `9 개`, 단계 2 `7 개`, 단계 3 첫 줄 `1 퇴사한 계정 dami …` 가 나왔다
+<!-- /checklist -->
 
 ## 실습 3-2 정리
 
@@ -397,7 +403,7 @@ for priority in [1, 2, 3]:                                   # 우선순위대�
 2. 판정 서버 거절 9건 중 반복된 7건을 Module 3 의 `check_permission` 으로 다시 판정하고, 이유로 순서를 정했다 (실습 3-2)
 3. 보고서 `report_u3.md` 의 실습 3-1 · 3-2 칸에 `답:` 뒤가 비어 있는 질문이 없다(못 적은 칸은 `모름 — 막힌 곳: …`)
 
-**2. 파일 확인** — **[터미널]** `anomaly_detection` 폴더에서 확인합니다.
+**2. 파일 확인** — **[터미널]** 작업 폴더 `network-study-notes/anomaly_detection` 에서 확인합니다.
 
 ```bash
 pwd
@@ -412,19 +418,19 @@ ls config
 
 **3. 깃허브에 올리기**
 
-1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. <mark>결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.</mark>
+1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. <mark>결과가 `…/network-study-notes` 으로 끝나야 합니다.</mark>
    ```bash
    cd ..
    pwd
    ```
    - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
-   - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
+   - 결과가 다르면 VS Code 왼쪽 목록에서 `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
 2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. <mark>빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.</mark>
    ```bash
    git status
    ```
    - 명령 풀이: `git status` 올릴 파일의 상태를 봄
-   - 아래 표의 이름이 보이면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 그 줄을 적고 저장합니다. `.env` · `.venv` 는 적은 뒤 `git status` 를 다시 칩니다.
+   - 아래 표의 이름이 보이면 VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래의 `.gitignore` 를 열어 맨 아래에 그 줄을 적고 저장합니다. `.env` · `.venv` 는 적은 뒤 `git status` 를 다시 칩니다.
 
    | 보이는 이름 | `.gitignore` 맨 아래에 적을 줄 |
    |---|---|
@@ -439,8 +445,8 @@ ls config
    git push
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - <mark>`git push` 가 거절(`rejected`)되면</mark> 깃허브에 내 PC 에 없는 기록이 있다는 뜻입니다. `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다. 이 화면은 git 이 두 기록을 합친 기록에 붙일 메시지를 확인하라고 여는 편집기(vim)라서, 메시지는 고치지 않고 저장하고 닫기만 하면 됩니다.
-5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `anomaly_detection` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다.
+   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
+5. **[브라우저]** 깃허브의 내 `network-study-notes` 저장소를 새로 고쳐 `anomaly_detection` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다.
 
 - 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 3번의 2 ~ 4를 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
 
@@ -450,6 +456,11 @@ ls config
 
 1. 다음 Unit 4(위험 점수 매기고 오탐 줄이기)에서는 이번 Unit 의 탐지 결과를 **같은 사용자의 기록끼리 이어서 함께 보고**, 위험 점수를 매겨 등급으로 나눕니다.
 2. 오늘 만든 `access_detection.py` 는 다음 Unit 에서 여러 번 불러 씁니다. 파일 이름과 함수 이름을 바꾸지 않습니다.
+
+<!-- checklist -->
+- [ ] 2번의 파일이 `anomaly_detection` 과 `anomaly_detection/config` 에 모두 있는 것을 보고, `network-study-notes` 폴더에서 `git status` 로 `.env` · `.venv` 가 올라가지 않게 했다
+- [ ] `git add .` · `git commit` · `git push` 로 올리고, 깃허브의 `anomaly_detection` 폴더에서 파일을 확인했다
+<!-- /checklist -->
 
 ---
 

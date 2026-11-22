@@ -49,9 +49,11 @@ CSV 파일은 값을 쉼표로 구분해 적은 텍스트 파일이고, 엑셀�
 
 ## 폴더 열고 판다스 준비하기
 
-1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
+이번 Unit 의 작업 폴더는 `network-study-notes/anomaly_detection` 입니다. VS Code 로 저장소 폴더 `network-study-notes` 를 열고, 터미널에서 `anomaly_detection` 폴더로 들어가 작업합니다. 이 Unit 의 파일 이름은 모두 `anomaly_detection` 폴더 기준입니다.
+
+1. **[VS Code]** `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** 가상환경은 **선택**입니다. 가상환경은 프로젝트마다 따로 패키지(판다스 같은 라이브러리)를 설치해 두는 파이썬 실행 환경입니다. <mark>쓰지 않으면 3번으로 바로 갑니다.</mark> 터미널 줄 맨 앞에 `(.venv)` 처럼 가상환경 이름이 이미 보여도 3번으로 갑니다.
-   - 가상환경을 쓰고 싶으면 `security-agent-toolkit` 폴더에서 아래 두 줄을 칩니다(맥북은 `python` 을 `python3` 로, `Scripts` 를 `bin` 으로 바꿉니다). 첫 줄이 `.venv` 폴더를 만들고, 둘째 줄이 가상환경을 켭니다. `.venv` 폴더가 이미 있으면 둘째 줄만 칩니다.
+   - 가상환경을 쓰고 싶으면 `network-study-notes` 폴더에서 아래 두 줄을 칩니다(맥북은 `python` 을 `python3` 로, `Scripts` 를 `bin` 으로 바꿉니다). 첫 줄이 `.venv` 폴더를 만들고, 둘째 줄이 가상환경을 켭니다. `.venv` 폴더가 이미 있으면 둘째 줄만 칩니다.
    ```bash
    python -m venv .venv
    source .venv/Scripts/activate
@@ -146,6 +148,12 @@ CSV 파일은 값을 쉼표로 구분해 적은 텍스트 파일이고, 엑셀�
 7. 문제는 **할 일 → 순서**대로 하고, `[창 이름]` 이 지금 쓸 창입니다. 직접 쓰는 곳은 실습마다 `# ←` 가 붙은 두 곳(① · ②)이고, 각 주석 바로 아래에 한 줄씩 씁니다. 막히면 이 Unit 뒤쪽의 「정답」을 봅니다.
 
 > **확인** — `pwd` 가 `…/anomaly_detection` 으로 끝나고, 판다스 버전 숫자와 이벤트 수 `57` 이 나오면 성공입니다. 안 나오면 다음 페이지 「오류가 나면」의 표에서 내 오류와 같은 줄을 찾습니다.
+
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에서 판다스를 설치하고 버전 숫자가 나온 것을 봤다
+- [ ] `anomaly_detection` 폴더에 `normalized_events.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] 6번의 확인 명령을 실행해 `57` 이 나왔다
+<!-- /checklist -->
 
 ## 오류가 나면
 

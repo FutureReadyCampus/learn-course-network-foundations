@@ -236,7 +236,7 @@ print("진짜 문제였던 알림 수:", real_removed_count)   # 0 이면 진짜
 
 **순서**
 
-1. **[VS Code]** 파일 `tuning.py` · `exercise4-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `tuning.py` 와 `exercise4-2_run.py` 를 만들어 위 코드를 각각 붙여 넣고 저장합니다.
 2. **[VS Code]** `tuning.py` 의 <mark>`# ←` 세 곳(① · ② · ③)을 채웁니다</mark>. 위 판다스 문법 상자와 2.1 의 표를 참고해 씁니다. 막히면 위 「직접 쓰는 곳」의 힌트와 아래 「실습 4-2 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -245,13 +245,19 @@ print("진짜 문제였던 알림 수:", real_removed_count)   # 0 이면 진짜
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise4-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **네 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 2줄(알림 수 · 오탐 수), 단계 2는 4줄(빠진 알림 수 1줄 · 빠진 알림 2줄 · 사용자 1줄), 단계 3은 2줄, 단계 4는 1줄입니다.
-5. **[보고서]** `report_u4.md` 의 `## 실습 4-2` 아래를 채웁니다.
+5. **[보고서]** `report_u4.md` 의 `## 실습 4-2` 아래를 채웁니다. 파일이 아직 없으면 「보고서 쓰기」 레슨 첫 페이지의 틀로 `anomaly_detection` 폴더에 먼저 만듭니다.
    - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 적용 전후의 오탐 수와 빠진 알림을 적어 주세요.
    - (나) [핵심 질문] 예외 규칙을 적용한 뒤 오탐이 몇 개에서 몇 개로 줄었나요? A3(jiwoo 의 업무 시간 밖 로그인)은 같은 IP 인데 왜 줄어들지 않았는지도 적어 주세요.
    - (다) [응용] `SaaS 평소와 다른 IP` 규칙에서 `203.0.113.80` 을 믿는 IP 로 두면, 이 IP 에서 오는 진짜 공격을 그 규칙으로는 놓칠 수 있습니다. 어떤 경우인지 한 가지 적어 주세요.
      - [응용] 질문의 답은 보고서 틀의 `## 실습 응용 질문` 칸에 씁니다.
 
 **확인** — 단계 3이 `알림 수: 5` · `오탐 수: 2` 이고 마지막 줄이 `진짜 문제였던 알림 수: 0` 이면 성공입니다. 안 나오면 「정답」 레슨의 실습 4-2 출력과 한 줄씩 맞춰 보고, `빠진 알림 수: 4` 가 나오면 ② 에 `is_ip_rule &` 가 빠졌는지 봅니다.
+
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `tuning.py` 를 만들어 붙여 넣고, 빈칸 ① · ② · ③ 을 채워 저장했다
+- [ ] `anomaly_detection` 폴더에 `exercise4-2_run.py` 를 만들어 붙여 넣고 저장했다
+- [ ] `python exercise4-2_run.py` 를 실행해 단계 3이 `알림 수: 5` · `오탐 수: 2`, 마지막 줄이 `진짜 문제였던 알림 수: 0` 으로 나왔다
+<!-- /checklist -->
 
 ## 실습 4-2 정리
 
@@ -296,19 +302,19 @@ ls
 
 **3. 깃허브에 올리기**
 
-1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
+1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/network-study-notes` 으로 끝나야 합니다.
    ```bash
    cd ..
    pwd
    ```
    - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
-   - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
+   - 결과가 다르면 VS Code 왼쪽 목록에서 `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
 2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
    ```bash
    git status
    ```
    - 명령 풀이: `git status` 올릴 파일의 상태를 봄
-   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
+   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
    - `anomaly_detection/__pycache__/` 는 파이썬이 실행하면서 자동으로 만든 임시 폴더입니다. 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장합니다.
 3. **[보고서]** `report_u4.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
@@ -318,8 +324,8 @@ ls
    git push
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다. 이 화면은 git 이 두 기록을 합친 기록에 붙일 메시지를 확인하라고 여는 편집기(vim)라서, 메시지는 고치지 않고 저장하고 닫기만 하면 됩니다.
-5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `anomaly_detection` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
+   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
+5. **[브라우저]** 깃허브의 내 저장소 `network-study-notes` 를 새로 고쳐 `anomaly_detection` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
 
 - 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
 
@@ -329,6 +335,13 @@ ls
 
 1. 다음 Unit 5(AI 요약과 총정리)에서는 오늘 저장한 점수 파일의 사실만 골라 AI 에게 요약을 받고, 상황별 원인과 해결법을 정리합니다.
 2. Unit 5 시작하기 레슨에서 `unit05_risk_scores.json` 을 같은 내용으로 다시 만들기 때문에, 오늘 파일이 달라도 다음 Unit은 그대로 따라갈 수 있습니다.
+
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에서 `ls` 로 2번 표의 파일이 모두 있는 것을 확인했다
+- [ ] `network-study-notes` 폴더에서 `git status` 를 보고, `.env` · `.venv` 가 올라가지 않게 했다
+- [ ] `git add .` · `git commit` · `git push` 로 올렸다
+- [ ] 깃허브의 `network-study-notes` 저장소 `anomaly_detection` 폴더에서 2번 표의 파일을 확인했다
+<!-- /checklist -->
 
 ---
 

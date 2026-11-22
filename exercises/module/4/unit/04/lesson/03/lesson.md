@@ -303,7 +303,7 @@ for record in records:                                 # 기록을 하나씩 꺼
 
 **순서**
 
-1. **[VS Code]** 파일 `risk_scores.py` · `exercise4-1_run.py` 를 `anomaly_detection` 폴더에 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `risk_scores.py` 와 `exercise4-1_run.py` 를 만들어 위 코드를 각각 붙여 넣고 저장합니다.
 2. **[VS Code]** `risk_scores.py` 의 <mark>`# ←` 두 곳(① · ②)을 채웁니다</mark>. 문법 상자의 `map` 줄과 `sum` 줄을 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -313,7 +313,7 @@ for record in records:                                 # 기록을 하나씩 꺼
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise4-1_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **네 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1과 단계 3은 숫자가 제목 줄에 함께 나오고, 단계 2는 제목 아래 7줄(맨 위 `entity`, 대상 5줄, 맨 아래 `Name: points, dtype: int64`), 단계 4는 5줄입니다.
 5. **[VS Code]** 새로 생긴 `unit05_risk_scores.json` 을 열어 <mark>대상 5개가 점수 순으로 들어 있는지</mark> 확인합니다. 이 파일은 Module 4 Unit 5와 Module 5에서 다시 쓰니 지우거나 이름을 바꾸지 않습니다.
-6. **[보고서]** `report_u4.md` 의 `## 실습 4-1` 아래를 채웁니다.
+6. **[보고서]** `report_u4.md` 의 `## 실습 4-1` 아래를 채웁니다. 파일이 아직 없으면 「보고서 쓰기」 레슨 첫 페이지의 틀로 `anomaly_detection` 폴더에 먼저 만듭니다.
    - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, high · mid · low 에 각각 어떤 대상이 들어갔는지 적어 주세요.
    - (나) [핵심 질문] seoyeon 의 점수가 어떤 규칙의 점수를 더해 나왔는지 적고, 점수만 저장하지 않고 이유(`reasons`)를 함께 저장하는 까닭을 적어 주세요.
    - (다) [응용] 198.51.100.90 은 경로 스캔 하나에 해당하지만 low 입니다. low 는 점수 기준상 낮은 등급이라는 뜻입니다. low 인 이유를 점수와 기준으로 설명하고, 이 IP 의 기록을 무시해도 되는지 샘플의 값(그 IP 의 요청 3개의 `result`)으로 판단해 적어 주세요.
@@ -321,6 +321,13 @@ for record in records:                                 # 기록을 하나씩 꺼
      - [응용] 질문의 답은 보고서 틀의 `## 실습 응용 질문` 칸에 씁니다.
 
 **확인** — 단계 4가 `high dami 60 ['퇴사한 계정']` 으로 시작하는 다섯 줄이고 맨 아래가 `low 198.51.100.90 30 ['경로 스캔']` 이면 성공입니다. 안 나오면 「정답」 레슨의 실습 4-1 출력과 한 줄씩 맞춰 보고, 오류가 나면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `risk_scores.py` 를 만들어 붙여 넣고, 빈칸 ① · ② 를 채워 저장했다
+- [ ] `anomaly_detection` 폴더에 `exercise4-1_run.py` 를 만들어 붙여 넣고 저장했다
+- [ ] `python exercise4-1_run.py` 를 실행해 단계 4가 `high dami 60 ['퇴사한 계정']` 으로 시작하는 다섯 줄로 나왔다
+- [ ] 새로 생긴 `unit05_risk_scores.json` 을 VS Code 에서 열어 대상 5개를 확인했다
+<!-- /checklist -->
 
 ## 실습 4-1 정리
 

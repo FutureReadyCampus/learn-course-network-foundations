@@ -19,7 +19,7 @@ render: markdown
 | `report_exclude.py` | 함수 `split_by_exclude` | 후보를 「회수 대상」과 「회수 제외」로 나눔 | Unit 4 |
 | `config/exclude_list.json` | 회수 제외 리스트 | 회수하지 않을 권한 세 건을 적어 둠 | Unit 4 |
 
-1. 파일은 모두 `access_control` 폴더 안에 만듭니다. 만드는 방법은 실습 3-1 과 같습니다(VS Code 왼쪽 목록에서 `access_control` 폴더를 고르고 **새 파일** 아이콘).
+1. 파일은 모두 작업 폴더 `network-study-notes/access_control` 안에 만듭니다. 파이썬 파일 세 개는 `access_control` 바로 아래에, `config/exclude_list.json` 은 `access_control` 안의 `config` 폴더에 만듭니다. 만드는 방법은 실습 3-1 과 같습니다(VS Code 왼쪽 목록에서 `access_control` 폴더를 고르고 **새 파일** 아이콘).
 2. 아래 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
 3. 네 파일을 다 만들었으면 터미널에서 `ls` 와 `ls config` 로 파일 이름이 보이는지 확인하고 실습 3-2로 돌아갑니다.
 
@@ -29,7 +29,7 @@ render: markdown
 
 ## `review_rules.py` 만들기
 
-**`review_rules.py`** 를 만들고 아래 내용을 붙여 넣습니다. `find_stale` 은 현황의 권한마다 퇴사한 계정인지, 만료된 예외인지를 차례로 보고, 걸린 권한을 복사해 이유(`reason`)를 적은 리스트를 리턴합니다.
+`access_control` 폴더 바로 아래에 **`review_rules.py`** 를 만들고 아래 내용을 붙여 넣습니다. `find_stale` 은 현황의 권한마다 퇴사한 계정인지, 만료된 예외인지를 차례로 보고, 걸린 권한을 복사해 이유(`reason`)를 적은 리스트를 리턴합니다.
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
@@ -59,9 +59,13 @@ def find_stale(access_list, now):                                # 현황 리스
 
 > **확인** — VS Code 왼쪽 목록에서 `access_control` 바로 아래(`config` 안이 아님)에 `review_rules.py` 가 보이고, 탭 제목 옆에 저장 안 됨 표시(●)가 없으면 성공입니다. `config` 안에 만들어졌으면 `access_control` 로 끌어다 옮깁니다.
 
+<!-- checklist -->
+- [ ] `access_control` 폴더에 `review_rules.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 ## `overprivilege.py` 만들기
 
-**`overprivilege.py`** 를 만들고 아래 내용을 붙여 넣습니다. `generate_report` 는 권한 한 건마다 「사용자:권한:받은 방식」 식별 키를 만듭니다. 식별 키는 권한 한 건을 다른 권한과 구별하는 문자열로, 학생마다 다른 학번과 비슷합니다. 이 키로 두 점검 결과의 이유를 모으고, 이유가 있는 권한만 후보로 담은 리포트 딕셔너리를 리턴합니다. 오늘 실습에서는 쓰지 않고, 다음 Unit 4 가 씁니다.
+`access_control` 폴더 바로 아래에 **`overprivilege.py`** 를 만들고 아래 내용을 붙여 넣습니다. `generate_report` 는 권한 한 건마다 「사용자:권한:받은 방식」 식별 키를 만듭니다. 식별 키는 권한 한 건을 다른 권한과 구별하는 문자열로, 학생마다 다른 학번과 비슷합니다. 이 키로 두 점검 결과의 이유를 모으고, 이유가 있는 권한만 후보로 담은 리포트 딕셔너리를 리턴합니다. 오늘 실습에서는 쓰지 않고, 다음 Unit 4 가 씁니다.
 
 ```python
 def entry_key(entry):                                            # 현황의 권한 한 건의 식별 키를 만드는 함수
@@ -133,9 +137,13 @@ def generate_report(access_list, stale, unused, days, generated_at):   # 현황 
 
 > **확인** — VS Code 왼쪽 목록에서 `access_control` 바로 아래(`config` 안이 아님)에 `overprivilege.py` 가 보이고, 탭 제목 옆에 저장 안 됨 표시(●)가 없으면 성공입니다. `config` 안에 만들어졌으면 `access_control` 로 끌어다 옮깁니다.
 
+<!-- checklist -->
+- [ ] `access_control` 폴더에 `overprivilege.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 ## `report_exclude.py` 만들기
 
-**`report_exclude.py`** 를 만들고 아래 내용을 붙여 넣습니다. 회수 제외 리스트는 오래 안 썼어도 거두지 않고 남겨 둘 권한을 적은 목록입니다. `split_by_exclude` 는 후보가 회수 제외 리스트에 있으면 「회수 제외」로, 아니면 「회수 대상」으로 나눕니다. 퇴사한 계정의 권한은 제외 리스트에 있어도 회수 대상에 둡니다. 오늘 실습에서는 쓰지 않고, 다음 Unit 4 가 씁니다.
+`access_control` 폴더 바로 아래에 **`report_exclude.py`** 를 만들고 아래 내용을 붙여 넣습니다. 회수 제외 리스트는 오래 안 썼어도 거두지 않고 남겨 둘 권한을 적은 목록입니다. `split_by_exclude` 는 후보가 회수 제외 리스트에 있으면 「회수 제외」로, 아니면 「회수 대상」으로 나눕니다. 퇴사한 계정의 권한은 제외 리스트에 있어도 회수 대상에 둡니다. 오늘 실습에서는 쓰지 않고, 다음 Unit 4 가 씁니다.
 
 ```python
 from config_loader import load_json                              # config_loader.py 의 안전한 읽기 함수를 불러온다
@@ -199,6 +207,10 @@ def split_by_exclude(findings, exclude_map):                     # 후보 리스
 
 > **확인** — VS Code 왼쪽 목록에서 `access_control` 바로 아래(`config` 안이 아님)에 `report_exclude.py` 가 보이고, 탭 제목 옆에 저장 안 됨 표시(●)가 없으면 성공입니다. `config` 안에 만들어졌으면 `access_control` 로 끌어다 옮깁니다.
 
+<!-- checklist -->
+- [ ] `access_control` 폴더에 `report_exclude.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 ## `config/exclude_list.json` 만들기
 
 **`config/exclude_list.json`** 을 만들고 아래 내용을 붙여 넣습니다. `access_control` 안의 `config` 폴더에 만듭니다(`access_control` 폴더를 선택한 채로 이름에 `config/exclude_list.json` 을 입력하면 `config` 폴더 안에 만들어집니다). 담당자(이 일을 맡은 사람)가 「평소에 안 써도 회수하면 안 되는 권한」을 적어 둔 회수 제외 리스트이고, 한 줄이 한 건입니다.
@@ -224,3 +236,9 @@ def split_by_exclude(findings, exclude_map):                     # 후보 리스
   - 마지막 줄은 세 파일을 불러와 보는 명령입니다(맥북은 `python3`).
 
 > **확인** — 마지막 줄에 `제공 파일 정상` 이 나오면 성공입니다. `ModuleNotFoundError` 가 나면 그 이름의 파일이 `access_control` 바로 아래에 없는 것이고, `SyntaxError` 가 나면 붙여 넣을 때 글자가 빠진 것이니 그 파일을 지우고 다시 복사합니다.
+
+<!-- checklist -->
+- [ ] `access_control` 안의 `config` 폴더에 `exclude_list.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `python -m json.tool config/exclude_list.json` 으로 세 건이 정리되어 나왔다
+- [ ] `python -c "import review_rules, overprivilege, report_exclude; …"` 줄을 실행해 `제공 파일 정상` 이 나왔다
+<!-- /checklist -->

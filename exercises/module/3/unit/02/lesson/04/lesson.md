@@ -218,12 +218,18 @@ for request in REQUESTS:                                         # 요청서를 
    ```bash
    python exercise2-2_run.py
    ```
-5. **[보고서]** `report_u2.md` 의 `## 실습 2-2` 아래를 채웁니다.
+5. **[보고서]** `access_control/report_u2.md` 의 `## 실습 2-2` 아래를 채웁니다.
    - (가) [핵심 질문] 채운 뒤 실행한 출력 전체를 붙여 넣고, 막힌 세 줄이 각각 왜 막혔는지 적어 주세요.
    - (나) [핵심 질문] 이미 승인한 요청서를 다시 승인하지 못하게 막는 이유는 무엇인가요? 막지 않으면 어떤 일이 생길 수 있나요?
    - (다) [응용] `approve_request` 에서 `request["user"] == approver` 검사를 뺀다면 어떤 위험이 생길까요? 요청자가 친구에게 대신 승인해 달라고 부탁하면 이 검사로는 막을 수 없습니다. 이런 경우를 막으려면 무엇이 더 필요할까요?
 
 **확인** — 다시 실행했을 때 본인 승인 시험이 `False`, 처리 여섯 건은 앞의 네 건이 `True`, 뒤의 두 건이 `False 검토 중이 아님` 이고, 단계 2에서 2번만 `rejected` 로 나오면 성공입니다. 안 나오면 「정답」 레슨의 실습 2-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+
+<!-- checklist -->
+- [ ] `access_control` 폴더에 `req_review.py` 와 `exercise2-2_run.py` 를 만들어 코드 상자 내용을 붙여 넣고 저장했다
+- [ ] 채우기 전에 `python exercise2-2_run.py` 를 실행해 출력을 봤다
+- [ ] `req_review.py` 의 빈칸 ① · ② 를 채우고 다시 실행해 마지막 두 줄이 `False 검토 중이 아님` 으로 나왔다
+<!-- /checklist -->
 
 ## 실습 2-2 정리
 
@@ -271,13 +277,13 @@ ls config
 
 **3. 깃허브에 올리기**
 
-1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
+1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/network-study-notes` 으로 끝나야 합니다.
    ```bash
    cd ..
    pwd
    ```
    - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
-   - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
+   - 결과가 다르면 VS Code 왼쪽 목록에서 `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
 2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
    ```bash
    git status
@@ -291,7 +297,7 @@ ls config
    | `access_control/__pycache__/` | `.gitignore` 맨 아래에 `__pycache__/` 한 줄, 저장 후 `git status` 다시 |
 
    - `.venv` 는 파이썬 가상환경(이 프로젝트용 파이썬 도구를 담은 폴더), `__pycache__` 는 파이썬이 실행할 때 저절로 만드는 임시 폴더라 올리지 않습니다.
-   - `.gitignore` 는 VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래에 있습니다.
+   - `.gitignore` 는 VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래에 있습니다.
    - 오늘 새로 만든 파일은 `Untracked files:` 아래에 `access_control/req_create.py` 처럼 한 줄씩 보입니다.
 3. **[보고서]** `report_u2.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
@@ -301,7 +307,7 @@ ls config
    git push
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다. 이 화면은 git 이 두 기록을 합친 기록에 붙일 메시지를 확인하라고 여는 편집기(vim)라서, 메시지는 고치지 않고 저장하고 닫기만 하면 됩니다.
+   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
 5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `access_control` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다.
 
 - 여유가 되어 응용을 했다면 응용 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
@@ -312,6 +318,11 @@ ls config
 2. 다음 Unit 3(권한 점검하기)에서는 이렇게 준 권한 가운데 오래 쓰이지 않는 것을 찾습니다.
 
 **확인** — 깃허브의 `access_control` 폴더에 2번 표의 파일이 모두 보이고 `.env` 가 없으면 성공입니다. 안 보이는 파일이 있으면 `git status` 를 다시 쳐서 그 파일이 빨간 목록에 남아 있는지 보고 4번을 다시 합니다.
+
+<!-- checklist -->
+- [ ] `network-study-notes` 폴더에서 `git status` 로 `.env` · `.venv` 가 없는 것을 본 뒤 `git add .` · `git commit` · `git push` 로 올렸다
+- [ ] 깃허브 내 저장소의 `access_control` 폴더에서 2번 표의 파일을 모두 확인했다
+<!-- /checklist -->
 
 ---
 

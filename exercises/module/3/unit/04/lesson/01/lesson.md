@@ -67,7 +67,7 @@ Unit 3 점검에서는 이미 부여돼 있는 권한을 살펴 필요 없는 �
 **순서**
 
 1. **[VS Code]** 왼쪽 목록의 `access_control` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** 위치와 Unit 1 파일을 확인합니다. 결과가 `…/security-agent-toolkit/access_control` 로 끝나야 합니다.
+2. **[터미널]** 위치와 Unit 1 파일을 확인합니다. 결과가 `…/network-study-notes/access_control` 로 끝나야 합니다.
    ```bash
    pwd
    ls
@@ -92,5 +92,10 @@ Unit 3 점검에서는 이미 부여돼 있는 권한을 살펴 필요 없는 �
 > 실행은 VS Code 의 ▶ 단추가 아니라 **터미널**에서 합니다(맥북은 `python3`). **앞 Unit 파일은 고치지 않습니다.** 오늘 만드는 파일은 모두 새 파일입니다.
 
 > **확인** — `Unit 1 파일 정상 6 5 5` 가 나오고, Unit 3 확인 결과에 따라 쓸 `revoke_input.py` 코드(있을 때 · 없을 때)를 골랐으면 성공입니다. Unit 1 줄에서 오류가 나면 `pwd` 가 `access_control` 로 끝나는지 먼저 보고, 맞으면 오류에 나온 파일 이름을 Module 3 Unit 1 레슨에서 찾아 다시 만듭니다.
+
+<!-- checklist -->
+- [ ] `access_control` 폴더에서 터미널을 열고 Unit 1 확인 명령으로 `Unit 1 파일 정상 6 5 5` 가 나왔다
+- [ ] Unit 3 확인 명령의 결과를 보고 `revoke_input.py` 에 쓸 코드(있을 때 · 없을 때)를 골랐다
+<!-- /checklist -->
 
 ---

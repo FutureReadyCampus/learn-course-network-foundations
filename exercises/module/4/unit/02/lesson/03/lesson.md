@@ -227,7 +227,7 @@ failed.to_csv("failed_events.csv", index=False)  # 표를 failed_events.csv 파�
 
 **할 일**
 
-1. **`events_time.py` · `exercise2-2_run.py` 두 파일**을 만들고, `events_time.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
+1. `anomaly_detection` 폴더에 **`events_time.py` · `exercise2-2_run.py` 두 파일**을 만들고, `events_time.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
 2. 실행해서 <mark>사용자별 실패 횟수</mark>(단계 1), <mark>시간대별 실패 횟수</mark>(단계 2), <mark>저장한 파일의 행 수</mark>(단계 3)를 읽습니다.
 
 **`events_time.py`**
@@ -335,7 +335,7 @@ print("저장된 행", saved_count, "개")          # 저장된 행 수를 출�
 
 **순서**
 
-1. **[VS Code]** 파일 **`events_time.py` · `exercise2-2_run.py`** 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 **`events_time.py` · `exercise2-2_run.py`** 를 만들고, 위의 같은 이름 코드 상자 내용을 각각 붙여 넣어 저장합니다.
 2. **[VS Code]** `events_time.py` 의 `# ←` 두 곳(① · ②)을 채웁니다. 2.1 의 판다스 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -344,13 +344,20 @@ print("저장된 행", saved_count, "개")          # 저장된 행 수를 출�
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise2-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **세 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1은 6줄, 단계 2는 7줄, 단계 3은 1줄입니다.
-5. **[VS Code]** 새로 생긴 `failed_events.csv` 를 열어 첫 줄이 열 이름(`time,source,user,ip,action,result,hour`)인지 보고, <mark>`hour` 가 9 인 행의 `source` 를 봅니다</mark>.
+5. **[VS Code]** `anomaly_detection` 폴더에 새로 생긴 `failed_events.csv` 를 열어 첫 줄이 열 이름(`time,source,user,ip,action,result,hour`)인지 보고, <mark>`hour` 가 9 인 행의 `source` 를 봅니다</mark>.
 6. **[보고서]** `report_u2.md` 의 `## 실습 2-2` 아래를 채웁니다.
    - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 실패가 가장 많은 사용자와 횟수, 실패가 가장 많이 난 시간대와 횟수, 저장된 행 수를 적어 주세요.
    - (나) [응용] 시간대별 결과에서 실패가 가장 많이 난 시간대의 개수를 보세요. 이 개수는 실습 2-1 단계 3의 어느 소스 개수와 같은가요? 그 실패가 어느 소스에서 났는지 적고(근거는 숫자가 같다는 것까지 쓰면 됩니다), 이어서 확인할 것도 적어 주세요.
    - (다) [응용] 사용자별 실패 횟수를 모두 더하면 실패한 이벤트 전체보다 적습니다. 몇 개가 모자라고 왜 모자란지 적어 주세요. 그리고 이 차이를 모르고 사용자별 숫자만 보면 어떤 잘못된 판단을 할 수 있을지도 적어 주세요.
 
 **확인** — 단계 1이 dami 4 · gaeun 3 · seoyeon 2 · jiwoo 1 순서, 단계 2의 9시가 13, 단계 3이 `저장된 행 23 개` 이고 `failed_events.csv` 가 생겼으면 성공입니다. 안 나오면 「정답」 레슨의 실습 2-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+
+<!-- checklist -->
+- [ ] `events_time.py` 를 만들어 붙여 넣고 빈칸 ① · ② 를 채워 저장했다
+- [ ] `exercise2-2_run.py` 를 만들어 붙여 넣고 저장했다
+- [ ] `python exercise2-2_run.py` 를 실행해 단계 1 ~ 3 이 위 확인과 같게 나왔다
+- [ ] 새로 생긴 `failed_events.csv` 를 VS Code 로 열어 첫 줄의 열 이름을 봤다
+<!-- /checklist -->
 
 ## 실습 2-2 정리
 

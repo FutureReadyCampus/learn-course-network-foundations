@@ -239,6 +239,24 @@
     if (ralSummary) prose.append(ralSummary);
     return prose;
   };
+  // ---- 체크리스트: 직접 따라 할 것을 모두 체크해야 「다음」이 열린다 (관리자만 건너뛰기) ----
+  const adminParam = new URLSearchParams(location.search).get("admin");
+  try {
+    if (adminParam === "on") localStorage.setItem("nc-admin", "1");
+    if (adminParam === "off") localStorage.removeItem("nc-admin");
+  } catch (error) { /* 저장소를 쓸 수 없으면 관리자 표시는 꺼진 채로 둔다 */ }
+  const isAdmin = () => { try { return localStorage.getItem("nc-admin") === "1"; } catch (error) { return false; } };
+  const checklistKey = (item, pageIndex) => `nc-cl:${location.pathname.split("/unit/")[0]}:${item.lesson.id}:${pageIndex}`;
+  const readChecks = (key, count) => {
+    try { const saved = JSON.parse(localStorage.getItem(key) || "[]"); return Array.from({ length: count }, (_, i) => saved[i] === true); }
+    catch (error) { return new Array(count).fill(false); }
+  };
+  const writeChecks = (key, checks) => { try { localStorage.setItem(key, JSON.stringify(checks)); } catch (error) { /* 저장 실패는 무시 */ } };
+  const gateOpen = (item, pageIndex) => {
+    const checklist = ((item.lesson.pages || [])[pageIndex] || {}).checklist;
+    if (!checklist || checklist.optional || isAdmin()) return true;
+    return readChecks(checklistKey(item, pageIndex), checklist.items.length).every(Boolean);
+  };
   const allItems = (course) => {
     const out = [];
     for (const unit of course.units) {
@@ -554,6 +572,31 @@
     if (video) main.append(video);
     if (questions.length) main.append(renderQuiz(questions, page.question_start_index || 0));
     if (recap) main.append(recap);
+    const checklist = page.checklist && page.checklist.items && page.checklist.items.length ? page.checklist : null;
+    const checks = checklist ? readChecks(checklistKey(item, state.pageIndex), checklist.items.length) : [];
+    let refreshGate = () => {};
+    if (checklist) {
+      const section = document.createElement("section");
+      section.className = "page-checklist";
+      const heading = document.createElement("h3");
+      heading.textContent = checklist.optional ? "여유가 되면 해 보세요" : "이 쪽에서 직접 할 것";
+      const listEl = document.createElement("ul");
+      checklist.items.forEach((html, index) => {
+        const li = document.createElement("li");
+        const label = document.createElement("label");
+        const box = document.createElement("input");
+        box.type = "checkbox";
+        box.checked = checks[index];
+        const text = document.createElement("span");
+        text.innerHTML = html;
+        box.addEventListener("change", () => { checks[index] = box.checked; writeChecks(checklistKey(item, state.pageIndex), checks); refreshGate(); });
+        label.append(box, text);
+        li.append(label);
+        listEl.append(li);
+      });
+      section.append(heading, listEl);
+      main.append(section);
+    }
     const previous = list[state.lessonIndex - 1];
     const next = list[state.lessonIndex + 1];
     const navFooter = document.createElement("nav");
@@ -571,13 +614,50 @@
     nextPage = document.createElement("button");
     nextPage.type = "button";
     nextPage.textContent = "다음 페이지 →";
-    nextPage.disabled = state.pageIndex >= pages.length - 1 && !next;
-    nextPage.addEventListener("click", () => {
+    const noNext = state.pageIndex >= pages.length - 1 && !next;
+    nextPage.disabled = noNext;
+    const goNext = () => {
       if (state.pageIndex < pages.length - 1) state.pageIndex++;
       else if (next) { state.lessonIndex++; state.pageIndex = 0; }
       visit(course, state);
-    });
-    navFooter.append(prevPage, nextPage);
+    };
+    nextPage.addEventListener("click", goNext);
+    navFooter.append(prevPage);
+    if (checklist) {
+      const wrap = document.createElement("div");
+      wrap.className = "page-progress";
+      const track = document.createElement("div");
+      track.className = "page-progress-track";
+      track.setAttribute("role", "progressbar");
+      track.setAttribute("aria-valuemin", "0");
+      track.setAttribute("aria-valuemax", String(checks.length));
+      const bar = document.createElement("div");
+      bar.className = "page-progress-bar";
+      track.append(bar);
+      const label = document.createElement("span");
+      label.className = "page-progress-label";
+      wrap.append(track, label);
+      const skip = document.createElement("button");
+      skip.type = "button";
+      skip.className = "admin-skip";
+      skip.textContent = "관리자 건너뛰기";
+      skip.hidden = true;
+      skip.addEventListener("click", goNext);
+      refreshGate = () => {
+        const done = checks.filter(Boolean).length;
+        const complete = done === checks.length;
+        const locked = !checklist.optional && !complete && !isAdmin();
+        bar.style.width = `${Math.round((done / checks.length) * 100)}%`;
+        track.setAttribute("aria-valuenow", String(done));
+        label.textContent = locked ? `${done} / ${checks.length} · 모두 체크하면 다음으로 갈 수 있어요` : `${done} / ${checks.length}`;
+        wrap.classList.toggle("is-complete", complete);
+        nextPage.disabled = noNext || locked;
+        nextPage.title = locked ? "체크리스트를 모두 체크하면 열려요" : "";
+        skip.hidden = !(isAdmin() && !checklist.optional && !complete && !noNext);
+      };
+      navFooter.append(wrap, nextPage, skip);
+      refreshGate();
+    } else navFooter.append(nextPage);
     main.append(navFooter);
     const url = routeFor(unitIndex, unitLessonIndex, state.pageIndex);
     history.replaceState({ ...state }, "", url);
@@ -632,6 +712,7 @@
           visit(course, state);
         } else if (event.key === "ArrowRight" && next) {
           event.preventDefault();
+          if (!gateOpen(item, state.pageIndex)) return;
           if (state.pageIndex < pages.length - 1) state.pageIndex++;
           else { state.lessonIndex++; state.pageIndex = 0; }
           visit(course, state);

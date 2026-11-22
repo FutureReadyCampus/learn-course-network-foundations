@@ -69,7 +69,7 @@ containment.py      contain_account     : 계정을 잠그고, 잠금이 확인�
 
 **할 일**
 
-1. 아래 코드로 파일 세 개를 만들고, `# ←` 가 있는 <mark>세 곳</mark>(① · ② · ③)을 한 줄씩 채웁니다.
+1. 작업 폴더 `network-study-notes/soar_response` 에 아래 코드로 `session_actions.py` · `containment.py` · `exercise2-2_run.py` 세 파일을 만들고, `# ←` 가 있는 <mark>세 곳</mark>(① · ② · ③)을 한 줄씩 채웁니다.
 2. 채우기 <mark>전과 후</mark>에 한 번씩 실행해 단계 2 · 3 을 비교합니다.
 
 **`session_actions.py`** — 세션 종료와 점검입니다. 직접 쓰는 곳은 ① 입니다.
@@ -189,6 +189,13 @@ print("조치 기록:", len(load_json("containment_log.json")), "건")          
 
 **확인** — 단계 2 가 다섯 줄(`dami` 잠금 · 세션 종료, `gaeun` 변경 없음, `junho` 잠김 → 잠김 · 세션 종료)이고, 단계 3 이 `빈틈이 남은 계정: []`, 단계 4 가 `잠긴 계정: ['junho', 'dami']` · `조치 기록: 5 건` 이면 성공입니다. 안 나오면 「정답」 레슨의 실습 2-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
+<!-- checklist -->
+- [ ] `session_actions.py` 를 만들어 코드 상자를 붙여 넣고 ① 을 채운 뒤 저장했다
+- [ ] `containment.py` 를 만들어 코드 상자를 붙여 넣고 ② · ③ 을 채운 뒤 저장했다
+- [ ] `exercise2-2_run.py` 를 만들어 코드 상자를 붙여 넣고 저장했다
+- [ ] `python exercise2-2_run.py` 를 채우기 전과 후에 실행해, 단계 3 에 `빈틈이 남은 계정: []`, 단계 4 에 `조치 기록: 5 건` 이 나왔다
+<!-- /checklist -->
+
 ## 실습 2-2 정리
 
 | 하려는 일 | 코드 · 말 |
@@ -228,19 +235,19 @@ python -c "import json; print(json.load(open('containment_state.json', encoding=
 
 **3. 깃허브에 올리기**
 
-1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
+1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/network-study-notes` 으로 끝나야 합니다.
    ```bash
    cd ..
    pwd
    ```
    - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
-   - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
+   - 결과가 다르면 VS Code 왼쪽 목록에서 `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
 2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 목록에 `.env`(API 키가 들어 있는 파일)나 `.venv`(내 PC 에서만 쓰는 가상환경 폴더)가 보이면 올리지 않고 멈춥니다.
    ```bash
    git status
    ```
    - 명령 풀이: `git status` 올릴 파일의 상태를 봄
-   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore`(깃이 올리지 않을 파일 이름을 적어 두는 파일)를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
+   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래의 `.gitignore`(깃이 올리지 않을 파일 이름을 적어 두는 파일)를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
    - `soar_response/__pycache__/` 는 파이썬이 실행하면서 자동으로 만든 임시 폴더입니다. 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장합니다.
    - `soar_response/containment_state.json` · `soar_response/containment_log.json` 은 실습 2-2 에서 프로그램이 저장한 상태 파일입니다. 이것도 올라갑니다.
 3. **[보고서]** `report_u2.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
@@ -251,12 +258,18 @@ python -c "import json; print(json.load(open('containment_state.json', encoding=
    git push
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - `git push` 가 거절(`rejected`)되면 깃허브에 내 PC 에 없는 기록이 있다는 뜻입니다. `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다. 이 화면은 git 이 두 기록을 합친 기록에 붙일 메시지를 확인하라고 여는 편집기(vim)라서, 메시지는 고치지 않고 저장하고 닫기만 하면 됩니다.
-5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `soar_response` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
+   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
+5. **[브라우저]** 깃허브의 내 저장소 `network-study-notes` 를 새로 고쳐 `soar_response` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
 
 - 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다. 올리기 전에 2번의 마지막 줄이 `['junho', 'dami'] 5` 인지 다시 봅니다.
 
 **확인** — 2번 마지막 줄이 `['junho', 'dami'] 5` 이고, 깃허브의 `soar_response` 폴더에 2번에서 본 파일이 모두 보이면 성공입니다. 안 보이면 3번의 `git status` 부터 다시 합니다.
+
+<!-- checklist optional -->
+- [ ] `soar_response` 폴더에서 파일 확인 명령을 쳐 마지막 줄에 `['junho', 'dami'] 5` 가 나왔다
+- [ ] `network-study-notes` 폴더에서 `git status` 로 `.env` · `.venv` 가 목록에 없는 것을 본 뒤 `git add .` · `git commit` · `git push` 로 올렸다
+- [ ] 깃허브의 `network-study-notes` 저장소 `soar_response` 폴더에 2번에서 본 파일이 모두 보였다
+<!-- /checklist -->
 
 **4. 이어지는 곳**
 

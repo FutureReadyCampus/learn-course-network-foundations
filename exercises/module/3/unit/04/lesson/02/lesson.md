@@ -99,6 +99,11 @@ def load_to_revoke():                                            # Unit 3 점검
 
 > **확인** — 터미널에서 `python -c "from revoke_input import load_to_revoke; print(len(load_to_revoke()))"`(맥북은 `python3`)를 쳐서 `8` 이 나오면 성공입니다. 「있을 때」 코드로 숫자가 다르거나 오류가 나면 이 파일의 내용을 「없을 때」 코드로 바꿔 붙여 넣습니다.
 
+<!-- checklist -->
+- [ ] `access_control` 폴더에 `revoke_input.py` 를 만들고 고른 코드 상자 하나의 내용을 붙여 넣은 뒤 저장했다
+- [ ] 확인 명령으로 `load_to_revoke()` 의 건수가 `8` 로 나왔다
+<!-- /checklist -->
+
 ## `revoke_plan.py` 만들기
 
 **`revoke_plan.py`** 를 만들고 아래 내용을 붙여 넣습니다. 회수 대상을 하나씩 보고 회수 방법을 정해 **회수 계획** 리스트를 돌려줍니다. 계획만 세우고 실제로는 아무것도 지우지 않습니다.
@@ -202,3 +207,8 @@ def plan_revocation(findings, users, roles):                     # 회수 대상
 - 방법을 고르는 순서와 영향을 세는 방법은 응용 4-1 레슨에서 자세히 다룹니다.
 
 > **확인** — 첫 페이지 4번 명령을 쳐서 `제공 파일 정상 8` 이 나오면 성공입니다. 안 나오면 `revoke_plan.py` 의 내용을 모두 지우고 위 코드 상자에서 다시 복사해 붙여 넣습니다.
+
+<!-- checklist -->
+- [ ] `access_control` 폴더에 `revoke_plan.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] 첫 페이지 4번 명령으로 `제공 파일 정상 8` 이 나왔다
+<!-- /checklist -->

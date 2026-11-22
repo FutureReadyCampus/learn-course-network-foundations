@@ -19,7 +19,9 @@ EMAIL = "me" + "@" + "example.com"
 def run(files):
     with tempfile.TemporaryDirectory() as d:
         for name, body in files.items():
-            with open(os.path.join(d, name), "w", encoding="utf-8") as f:
+            path = os.path.join(d, name)
+            os.makedirs(os.path.dirname(path), exist_ok=True)
+            with open(path, "w", encoding="utf-8") as f:
                 f.write(body)
         buf = io.StringIO()
         with contextlib.redirect_stdout(buf):
@@ -57,6 +59,14 @@ class CheckPublishTest(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertIn("[주의]", out)
         self.assertNotIn(EMAIL, out)
+
+    def test_module_folder_is_scanned_and_pycache_skipped(self):
+        # 실습 폴더(access_control/)가 포트폴리오와 같은 저장소에 있으므로 함께 점검된다.
+        code, out = run({"access_control/config/users.json": '{"k": "%s"}\n' % AWS,
+                         "access_control/__pycache__/x.py": 'k = "%s"\n' % AWS})
+        self.assertEqual(code, 1)
+        self.assertIn(os.path.join("access_control", "config", "users.json") + ":1", out)
+        self.assertIn("오류 1건", out)
 
     def test_config_placeholder_warns(self):
         code, out = run({"_config.yml": "author: 내 이름\n"})

@@ -239,7 +239,7 @@ dtype: int64
 
 **할 일**
 
-1. `login_detection.py` · `exercise2-3_run.py` **두 파일**을 만들고, `login_detection.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
+1. `anomaly_detection` 폴더에 `login_detection.py` · `exercise2-3_run.py` **두 파일**을 만들고, `login_detection.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
 2. 실행해서 <mark>로그인 실패 이벤트 수</mark>(단계 1), <mark>주소별 횟수</mark>(단계 2), <mark>알림 대상 주소</mark>(단계 3)를 읽습니다.
 
 **`login_detection.py`**
@@ -327,7 +327,7 @@ print(alert_ips)                                               # 알림을 보�
 
 **순서**
 
-1. **[VS Code]** 파일 `login_detection.py` · `exercise2-3_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `login_detection.py` · `exercise2-3_run.py` 를 만들고, 위의 같은 이름 코드 상자 내용을 각각 붙여 넣어 저장합니다.
 2. **[VS Code]** `login_detection.py` 의 `# ←` 두 곳(① · ②)을 채웁니다. 3.1 의 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -342,6 +342,12 @@ print(alert_ips)                                               # 알림을 보�
    - (다) [응용] 한 주소가 로그인에 4번 실패하고 5번째에 성공했습니다. 이 규칙(실패 5번 이상)으로 이 접속에 알림이 생성될까요? 생성된다 · 생성되지 않는다와 이유를 적고, 생성되지 않는다면 담당자가 확인하지 못하는 정보가 무엇인지 적어 주세요.
 
 **확인** — 단계 1이 `로그인 실패 이벤트 5 개` 이고, 단계 2 · 3 모두 `203.0.113.50    5` 한 줄이면 성공입니다. 안 나오면 「정답」 레슨의 실습 2-3 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+
+<!-- checklist -->
+- [ ] `login_detection.py` 를 만들어 붙여 넣고 빈칸 ① · ② 를 채워 저장했다
+- [ ] `exercise2-3_run.py` 를 만들어 붙여 넣고 저장했다
+- [ ] `python exercise2-3_run.py` 를 실행해 단계 1 ~ 3 이 위 확인과 같게 나왔다
+<!-- /checklist -->
 
 ## 실습 2-3 정리
 
@@ -390,19 +396,19 @@ ls
 
 **3. 깃허브에 올리기**
 
-1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. <mark>결과가 `…/security-agent-toolkit` 으로 끝나야</mark> 합니다.
+1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. <mark>결과가 `…/network-study-notes` 으로 끝나야</mark> 합니다.
    ```bash
    cd ..
    pwd
    ```
    - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
-   - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
+   - 결과가 다르면 VS Code 왼쪽 목록에서 `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
 2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 글씨 줄에 <mark>`.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다</mark>.
    ```bash
    git status
    ```
    - 명령 풀이: `git status` 올릴 파일의 상태를 봄
-   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 도 같은 방법으로 합니다.
+   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 도 같은 방법으로 합니다.
    - `anomaly_detection/__pycache__/` 는 파이썬이 실행하면서 자동으로 만든 임시 폴더입니다. 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장합니다.
 3. **[보고서]** `report_u2.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
@@ -412,7 +418,7 @@ ls
    git push
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다. 이 화면은 git 이 두 기록을 합친 기록에 붙일 메시지를 확인하라고 여는 편집기(vim)라서, 메시지는 고치지 않고 저장하고 닫기만 하면 됩니다.
+   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
 5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `anomaly_detection` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
 
 **확인** — 깃허브의 `anomaly_detection` 폴더에 2번 표의 파일이 모두 보이고 `.env` 가 없으면 성공입니다. 안 보이는 파일이 있으면 `git status` 를 다시 쳐서 그 파일이 빨간 목록에 남아 있는지 보고 4번을 다시 합니다.
@@ -427,3 +433,9 @@ ls
 ---
 
 <!-- learn:answers -->
+
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 2번 표의 파일이 `report_u2.md` 까지 모두 있는 것을 확인했다
+- [ ] `git status` 에 `.env` · `.venv` 가 없는 것을 보고 `git add` · `git commit` · `git push` 를 했다
+- [ ] 깃허브의 내 저장소 `anomaly_detection` 폴더에서 2번 표의 파일을 모두 봤다
+<!-- /checklist -->

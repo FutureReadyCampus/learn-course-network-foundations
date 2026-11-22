@@ -17,7 +17,7 @@
 <text x="20" y="362" font-size="14" fill="#666660">ls · ls config 로 이 파일들이 보이면 됩니다</text>
 <rect x="390" y="50" width="310" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="545.0" y="74.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">1. cd .. 로 위 폴더로</text>
-<text x="545.0" y="96.2" font-size="14" fill="#666660" text-anchor="middle">…/security-agent-toolkit</text>
+<text x="545.0" y="96.2" font-size="14" fill="#666660" text-anchor="middle">…/network-study-notes</text>
 <polyline points="545,112 545,124" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p06)"/>
 <rect x="390" y="126" width="310" height="60" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
 <text x="545.0" y="150.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">2. git status</text>

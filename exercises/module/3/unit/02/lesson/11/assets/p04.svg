@@ -6,7 +6,7 @@
 <text x="20" y="30" font-size="19" fill="#292929" font-weight="700">공개 전 점검 · Unit 2 글</text>
 <rect x="20" y="48" width="680" height="232" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <rect x="44" y="76" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="72" y="89" font-size="15" fill="#292929">비밀키 · 토큰 · .env 내용이 글과 code/ 파일에 없다</text>
+<text x="72" y="89" font-size="15" fill="#292929">비밀키 · 토큰 · .env 내용이 글과 access_control/ 파일에 없다</text>
 <rect x="44" y="128" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
 <text x="72" y="141" font-size="15" fill="#292929">개인 이메일 · 전화번호가 없다</text>
 <rect x="44" y="180" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>

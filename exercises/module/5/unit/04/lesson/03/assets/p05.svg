@@ -14,7 +14,7 @@
 <text x="180.0" y="403.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="180.0">보고서 report_u4.md</tspan></text>
 <text x="366" y="78" font-size="15" text-anchor="start" fill="#292929"><tspan x="366" font-weight="bold">3. 깃허브에 올리기</tspan></text>
 <rect x="366" y="90" width="334" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="533.0" y="111.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="533.0" font-weight="bold">cd ..  →  pwd</tspan><tspan x="533.0" dy="20">…/security-agent-toolkit</tspan></text>
+<text x="533.0" y="111.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="533.0" font-weight="bold">cd ..  →  pwd</tspan><tspan x="533.0" dy="20">…/network-study-notes</tspan></text>
 <rect x="366" y="158" width="334" height="54" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
 <text x="533.0" y="179.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="533.0" font-weight="bold">git status</tspan><tspan x="533.0" dy="20">.env · .venv 보이면 멈춤</tspan></text>
 <line x1="533" y1="145" x2="533" y2="157" stroke="#666660" stroke-width="2" marker-end="url(#a-p05)"/>

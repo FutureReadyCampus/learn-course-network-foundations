@@ -98,7 +98,7 @@ print(alert["minute"] + 240)                       # 243  · 숫자끼리 + 는 
 
 **할 일**
 
-1. 두 파일을 만들어 아래 코드를 붙여 넣습니다.
+1. `soar_response` 폴더에 `ticketing.py` · `exercise3-2_run.py` 두 파일을 만들어 아래 코드를 붙여 넣습니다.
 2. `ticketing.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
 3. 실행해서 단계 2 ~ 4 를 읽습니다.
 
@@ -240,12 +240,18 @@ for ticket in tickets:                                                          
    ```
    - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise3-2_run.py` 실행할 파일
 4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다. 단계 2 는 11줄, 단계 3 은 6줄, 단계 4 는 숫자가 제목 줄에 함께 나오고 그 아래 1줄입니다.
-5. **[보고서]** `report_u3.md` 의 `## 실습 3-2` 아래를 채웁니다.
+5. **[보고서]** `soar_response` 폴더의 `report_u3.md` 에서 `## 실습 3-2` 아래를 채웁니다.
    - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣어 주세요. 그리고 단계 4 에 나온 직접 확인이 필요한 티켓 번호를 적어 주세요. 마지막으로 응답 기한 시각(담당자가 응답해야 하는 시각)이 가장 이른 티켓 번호를 적어 주세요.
    - (나) [응용] `INC-207` 은 상태가 `조치됨` 인데, 티켓의 후속 조치(`next_step`)는 「조치됨」용 문장이 아닙니다. `done` 의 문장을 근거로 그 사유를 적어 주세요. 그다음 이 표시가 없으면 담당자가 무엇을 놓칠 수 있는지 적어 주세요.
    - (다) [핵심 질문] TCK-1 의 응답 기한 시각은 15분이고 TCK-2 는 243분입니다. 두 티켓의 등급과 만든 시각을 근거로, 내가 쓴 ① · ② 가 응답 기한 시각을 어떻게 계산하는지 적어 주세요. 그다음 모든 티켓에 같은 응답 기한을 적용하면 어떤 문제가 생기는지 적어 주세요.
 
 **확인** — 단계 2 에 티켓 11줄이 나오고 TCK-1 의 기한이 `15 분`, TCK-2 의 기한이 `243 분` 이며, 단계 4 가 `직접 확인이 필요한 티켓 1 건` 과 TCK-7 한 줄이면 성공입니다. 안 나오면 「정답」 레슨의 실습 3-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+
+<!-- checklist -->
+- [ ] `ticketing.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `exercise3-2_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `ticketing.py` 의 ① · ② 를 채우고 `python exercise3-2_run.py` 를 실행해 TCK-1 의 기한 `15 분` 이 나왔다
+<!-- /checklist -->
 
 ## 실습 3-2 정리
 
@@ -286,19 +292,19 @@ ls config
 
 **4. 깃허브에 올리기**
 
-1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
+1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/network-study-notes` 으로 끝나야 합니다.
    ```bash
    cd ..
    pwd
    ```
    - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
-   - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
+   - 결과가 다르면 VS Code 왼쪽 목록에서 `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
 2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
    ```bash
    git status
    ```
    - 명령 풀이: `git status` 올릴 파일의 상태를 봄
-   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
+   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
    - `soar_response/__pycache__/` 는 파이썬이 실행하면서 자동으로 만든 임시 폴더입니다. 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장합니다.
 3. **[보고서]** `report_u3.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
@@ -308,8 +314,8 @@ ls config
    git push
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - `git push` 가 거절(`rejected`)되면 깃허브에 내 PC 에 없는 기록이 있다는 뜻입니다. `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다. 이 화면은 git 이 두 기록을 합친 기록에 붙일 메시지를 확인하라고 여는 편집기(vim)라서, 메시지는 고치지 않고 저장하고 닫기만 하면 됩니다.
-5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `soar_response` 폴더를 열고, 3번에서 본 파일이 모두 있는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
+   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
+5. **[브라우저]** 깃허브의 내 저장소 `network-study-notes` 를 새로 고쳐 `soar_response` 폴더를 열고, 3번에서 본 파일이 모두 있는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
 
 - 시간이 남아 응용을 했다면 응용 3-3 끝의 「응용 파일 올리기」를 따라 한 번 더 올립니다. 같은 날 여러 번 올려도 괜찮습니다.
 
@@ -320,6 +326,12 @@ ls config
 3. 오늘은 연습용 시스템에서 실행했습니다. <mark>실제 제품에서는 `account_actions.py` · `ip_actions.py` 안의 상태를 바꾸는 줄이 계정 · 방화벽 시스템에 실제로 명령을 보내는 코드로 바뀝니다.</mark> 기록을 남기고, 되돌릴지 정하고, 티켓을 만드는 코드는 그대로 씁니다.
 
 > **확인** — 깃허브의 내 저장소 `soar_response` 폴더에 3번에서 본 파일이 모두 보이고 `.env` 는 보이지 않으면 성공입니다. 파일이 빠졌으면 4번 2의 `git status` 부터 다시 합니다.
+
+<!-- checklist -->
+- [ ] 「제공 파일」 레슨에서 `ticket_merge.py` · `notifier.py` · `ticket_notice.py` 를 만들고 `제공 파일 정상 7` 을 확인했다
+- [ ] `network-study-notes` 폴더에서 `git status` 로 `.env` · `.venv` 가 없는 것을 보고 `git add` · `git commit` · `git push` 를 했다
+- [ ] 깃허브의 `network-study-notes` 저장소 `soar_response` 폴더에서 3번의 파일을 모두 확인했다
+<!-- /checklist -->
 
 ---
 

@@ -135,7 +135,7 @@ source:
 
 **할 일**
 
-1. `access_server.py` 와 `send_checks.py` 두 파일을 만들고, `parse_time` · `write_log` · `check` 에서 직접 쓰는 곳 다섯 군데를 씁니다. 응용 4-2의 `conditional.py` 와 `config/conditions.json` 이 필요합니다.
+1. 작업 폴더 `network-study-notes/access_control` 안에 `access_server.py` 와 `send_checks.py` 두 파일을 만들고, `parse_time` · `write_log` · `check` 에서 직접 쓰는 곳 다섯 군데를 씁니다. 응용 4-2의 `conditional.py` 와 `config/conditions.json` 이 필요합니다.
 2. 터미널 1에서 서버를 켜고, 터미널 2에서 `send_checks.py` 를 실행해 <mark>응답</mark>(단계 1: 응답), <mark>서버 로그</mark>(단계 2: 로그), <mark>대조 결과</mark>(단계 3: 대조)를 읽습니다.
 
 **`access_server.py`**
@@ -296,8 +296,8 @@ print("판정까지 간 응답", answered, "건 / 로그에 남은 줄", len(ent
 
 **순서**
 
-1. **[VS Code]** 파일 `access_server.py` · `send_checks.py` 를 만들어 위 코드를 붙여 넣습니다. 
-   - VS Code: `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력합니다.
+1. **[VS Code]** 파일 `access_server.py` · `send_checks.py` 를 만들고, 위에서 같은 이름이 붙은 코드 상자의 내용을 붙여 넣어 저장합니다.
+   - 두 파일 모두 `access_control` 폴더를 오른쪽 클릭 › **New File** 로 만듭니다.
 2. **[VS Code]** `access_server.py` 의 `parse_time` · `write_log` · `check` 에서 직접 쓰는 곳 다섯 군데를 씁니다. 2.1 의 표와 그림을 보고 씁니다.
 3. **[터미널 1]** 먼저 서버와 요청에 쓰는 도구(Flask · requests)를 설치합니다(맥북은 `python3`). 이미 설치했다면 바로 다음 줄로 갑니다.
    ```bash
@@ -326,10 +326,19 @@ print("판정까지 간 응답", answered, "건 / 로그에 남은 줄", len(ent
 5. 출력은 세 단계입니다. 단계 1은 `요청 9 건` 제목 줄과 응답 아홉 줄, 단계 2는 `서버가 남긴 8 줄` 제목 줄과 로그 여덟 줄, 단계 3은 대조 두 줄입니다.
 6. **[터미널 1]** 서버를 켠 터미널(오른쪽 터미널 리스트에서 선택)에는 요청마다 `"GET /check?… HTTP/1.1" 200 -` 같은 줄이 찍혔습니다(요청 9건 가운데 200 이 3줄, 403 이 5줄, 400 이 1줄입니다). `HTTP` 는 브라우저나 프로그램이 서버와 주고받을 때 지키는 약속이고, `GET` 은 그 약속에서 「이 주소의 내용을 달라」는 요청 방식입니다. 끝의 숫자가 상태 코드입니다.
    - 확인한 뒤 그 터미널에서 `Ctrl + C` 로 서버를 끕니다(Windows 에서 안 꺼지면 한 번 더 누릅니다).
-7. **[보고서]** `report_u4.md` 의 `## 응용 4-3` 아래를 채웁니다.
+7. **[보고서]** `access_control/report_u4.md` 의 `## 응용 4-3` 아래를 채웁니다.
    - (가) 터미널 2의 출력 전체를 붙여 넣고, 응답의 상태 코드별 건수(200 · 403 · 400)와 서버가 남긴 로그 줄 수를 적어 주세요.
    - (나) [핵심 질문] 거부는 403, 값이 빠진 요청은 400 으로 상태 코드를 다르게 답했습니다. 요청을 보내는 쪽이 이 둘을 구별해야 하는 이유와, 구별하지 않으면 생길 수 있는 일을 적어 주세요.
    - (다) [핵심 질문] 서버 로그를 요청마다 새로 쓰면(`"w"` 모드) 한 달 뒤에 지난주의 거부 기록을 찾으려 할 때 어떻게 되나요? 로그에는 끝에 덧붙이는 방식이 알맞은 이유를 적어 주세요.
+
+<!-- checklist optional -->
+- [ ] `access_server.py` · `send_checks.py` 를 만들어 붙여 넣고, `access_server.py` 의 직접 쓰는 곳 다섯 군데를 채웠다
+- [ ] **터미널 1**에서 `python -m pip install flask requests` 로 두 도구를 설치했다
+- [ ] **터미널 1**에서 `python access_server.py` 로 서버를 켜고 `Running on http://127.0.0.1:5001` 이 나온 것을 봤다
+- [ ] **터미널 2**를 새로 열어 `access_control` 에서 `python send_checks.py` 를 실행해 세 단계 출력이 나왔다
+- [ ] **터미널 1**에서 요청 줄(200 · 403 · 400)을 확인하고 `Ctrl + C` 로 서버를 껐다
+- [ ] `report_u4.md` 의 `## 응용 4-3` 답을 적었다
+<!-- /checklist -->
 
 ## 서버가 안 켜지거나 오류가 나면
 
@@ -375,6 +384,11 @@ print("판정까지 간 응답", answered, "건 / 로그에 남은 줄", len(ent
 3. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `access_control` 폴더에 위 파일이 보이는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
 
 다음 Unit 5(결과 보고하기)는 판정 서버가 남기는 것과 같은 모양의 일주일 치 요청 로그를 읽어 점검 결과를 보고서로 만듭니다. 그 로그는 샘플 파일로 주어지므로 이 응용을 하지 않았어도 괜찮습니다.
+
+<!-- checklist optional -->
+- [ ] 서버를 끈 뒤 `network-study-notes` 폴더에서 응용 파일을 `git add` · `git commit` · `git push` 로 올렸다
+- [ ] 깃허브의 `access_control` 폴더에서 응용 파일과 `server_log.jsonl` 을 확인했다
+<!-- /checklist -->
 
 ---
 

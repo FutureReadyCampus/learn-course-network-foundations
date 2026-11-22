@@ -144,7 +144,7 @@ for path in PATHS:                                               # 경로를 하
    - **VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
      2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `config/users_broken.json` · `apply1-4_broken.py` 입니다. 앞에 폴더가 붙은 이름은 폴더도 함께 만들어집니다.
+     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `config/users_broken.json` · `apply1-4_broken.py` 입니다. `access_control` 을 선택한 채 `config/users_broken.json` 처럼 앞에 폴더를 붙여 적으면 `access_control` 안의 `config` 폴더에 만들어집니다.
      4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
 4. **[터미널]** 위치가 `…/access_control` 인지 확인하고 실행합니다.
    ```bash
@@ -158,6 +158,13 @@ for path in PATHS:                                               # 경로를 하
    - (가) 실행한 출력 전체를 붙여 넣고, 경고 두 줄이 각각 어떤 오류 때문에 나왔는지 적어 주세요.
    - (나) [핵심 질문] 실패했을 때 프로그램을 멈추지 않고 빈 설정을 리턴하는 것이, 오류로 멈추는 것보다 왜 안전한가요? 「멈춘 뒤 현장에서 생기는 일」을 넣어 적어 주세요.
    - (다) [핵심 질문] 설정 파일이 깨져서 모두 거부되면 정산 업무가 멈춥니다. 운영자가 이 상황을 빨리 알고 복구하려면 판정 프로그램에 무엇을 추가하겠습니까? 두 가지 이상 적고, 그중 가장 먼저 할 것을 고른 이유를 적어 주세요.
+
+<!-- checklist optional -->
+- [ ] `config_loader.py` 의 `load_json` 본문을 직접 써서 저장했다
+- [ ] `config/users_broken.json` 과 `apply1-4_broken.py` 를 만들어 붙여 넣고 저장했다
+- [ ] `python apply1-4_broken.py` 를 실행해 결과 세 줄과 경고 두 줄이 나왔다
+- [ ] `report_u1.md` 의 `## 응용 1-4` 아래를 채웠다
+<!-- /checklist -->
 
 ## 응용 1-4 정리
 

@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" role="img">
-<title>공개 전 점검 네 가지를 확인한 뒤 Commit changes 누르기</title>
-<desc>글과 code 파일에 비밀키 · 토큰 · .env 내용, 개인정보, 실제 사람의 이름이 없는지 보고 머리말이 module: 5, unit: 4 이며 sample: true 가 없는지 확인합니다. 네 칸을 모두 확인한 뒤 Commit changes 를 누릅니다.</desc>
+<title>공개 전 점검 네 가지를 확인한 뒤 git push 로 올리기</title>
+<desc>글과 soar_response 파일에 비밀키 · 토큰 · .env 내용, 개인정보, 실제 사람의 이름이 없는지 보고 머리말이 module: 5, unit: 4 이며 sample: true 가 없는지 확인합니다. 네 칸을 모두 확인한 뒤 저장소 루트에서 git add, commit, push 로 올립니다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">공개 전 점검</tspan></text>
 <rect x="20" y="52" width="500" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <rect x="34" y="66" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="64" y="80" font-size="15" text-anchor="start" fill="#292929"><tspan x="64">1. 글과 code/ 파일에 비밀키 · 토큰 · .env 내용이 없다</tspan></text>
+<text x="64" y="80" font-size="15" text-anchor="start" fill="#292929"><tspan x="64">1. 글과 soar_response/ 파일에 비밀키 · 토큰 · .env 내용이 없다</tspan></text>
 <rect x="20" y="110" width="500" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <rect x="34" y="124" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
 <text x="64" y="138" font-size="15" text-anchor="start" fill="#292929"><tspan x="64">2. 이메일 · 전화번호 같은 개인정보가 없다</tspan></text>
@@ -19,6 +19,6 @@
 <path d="M522 75 H560 V244 H522 M560 159 H584" fill="none" stroke="#666660" stroke-width="2"/>
 <line x1="584" y1="159" x2="596" y2="159" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
 <rect x="600" y="129" width="100" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="650.0" y="153.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="650.0" font-weight="bold">Commit</tspan><tspan x="650.0" dy="21">changes</tspan></text>
+<text x="650.0" y="153.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="650.0" font-weight="bold">git</tspan><tspan x="650.0" dy="21">push</tspan></text>
 </g>
 </svg>

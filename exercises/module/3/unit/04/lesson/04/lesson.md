@@ -84,7 +84,7 @@ source:
 
 **할 일**
 
-1. `revoke.py` 와 `exercise4-2_run.py` 두 파일을 만들고, `revoke.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
+1. 작업 폴더 `network-study-notes/access_control` 안에 `revoke.py` 와 `exercise4-2_run.py` 두 파일을 만들고, `revoke.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
 2. 실행해서 <mark>회수 결과</mark>(단계 1: 실행), <mark>회수 전후의 판정</mark>(단계 2: 확인), <mark>저장한 이력</mark>(단계 3: 저장)을 읽고, 새로 생긴 `revocation_log.json` 파일도 열어 봅니다.
 
 **`revoke.py`**
@@ -252,8 +252,8 @@ print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력
 
 **순서**
 
-1. **[VS Code]** 파일 `revoke.py` · `exercise4-2_run.py` 를 만들어 위 코드를 붙여 넣습니다. 
-   - VS Code: `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력합니다.
+1. **[VS Code]** 파일 `revoke.py` · `exercise4-2_run.py` 를 만들고, 위에서 같은 이름이 붙은 코드 상자의 내용을 붙여 넣어 저장합니다.
+   - 두 파일 모두 `access_control` 폴더를 오른쪽 클릭 › **New File** 로 만듭니다.
 2. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고, **채우기 전에** 한 번 실행해서 `IndentationError` 가 나는지 봅니다(맥북은 `python3`).
    ```bash
    pwd
@@ -261,13 +261,20 @@ print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력
    ```
 3. **[VS Code]** `revoke.py` 의 `# ←` 두 곳(① · ②)을 차례로 채웁니다. 하나 쓸 때마다 다시 실행해 위 「직접 쓰는 곳」의 확인과 같은지 봅니다. 2.1 의 그림을 보고 씁니다.
 4. **[터미널]** 다 채운 뒤 다시 실행합니다. 출력은 세 단계입니다. 단계 1은 계획 여덟 줄과 `실행 N 건, 대기 N 건`, 단계 2는 판정 비교 여덟 줄, 단계 3은 저장 한 줄입니다.
-5. **[VS Code]** 왼쪽 목록에 새로 생긴 `revocation_log.json` 을 열어 한글이 그대로 저장됐는지 봅니다.
-6. **[보고서]** `report_u4.md` 의 `## 실습 4-2` 아래를 채웁니다.
+5. **[VS Code]** 왼쪽 목록의 `access_control` 폴더에 새로 생긴 `revocation_log.json` 을 열어 한글이 그대로 저장됐는지 봅니다.
+6. **[보고서]** `access_control/report_u4.md` 의 `## 실습 4-2` 아래를 채웁니다.
    - (가) [핵심 질문] 출력 전체를 붙여 넣고, 이력의 결과가 「실행」인 건수와 「대기」인 건수, 회수 전후 판정이 바뀐 권한, 저장한 이력 건수를 적어 주세요.
    - (나) [핵심 질문] 회수를 실행한 7건 가운데 회수 전후 판정이 바뀐 것은 일부입니다. 바뀌지 않은 권한이 그대로인 이유와, 그래도 회수하고 이력을 남기는 이유를 적어 주세요.
    - (다) [응용] 회수 이력에는 시각 · 사용자 · 권한 · 방법 · 승인 상태 · 결과가 들어 있습니다. 반년 뒤 감사(점검 기록을 검토받는 일)에서 「이 권한이 왜 없어졌나요?」라고 물으면 이 이력만으로 답할 수 있을까요? 이력에 없는 정보가 있다면 무엇인지, 어떤 키를 추가하면 되는지 적어 주세요.
 
 **확인** — 다 채운 뒤 실행했을 때 `실행 7 건, 대기 1 건`, 단계 2의 `바뀜` 이 junho 의 `SALES:QUERY` 한 줄, 마지막 줄이 `저장 8 건, 다시 읽은 건수 8 건, 첫 이력: junho SALES:QUERY 실행` 이면 성공입니다. 안 나오면 「정답」 레슨의 실습 4-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+
+<!-- checklist -->
+- [ ] `revoke.py` · `exercise4-2_run.py` 를 만들어 붙여 넣고, 채우기 전에 실행해 `IndentationError` 를 봤다
+- [ ] `revoke.py` 의 빈칸 ① · ② 를 하나씩 채우고, 쓸 때마다 실행해 「직접 쓰는 곳」의 확인과 맞춰 봤다
+- [ ] 다 채운 뒤 실행해 마지막 줄 `저장 8 건, 다시 읽은 건수 8 건, 첫 이력: junho SALES:QUERY 실행` 이 나왔다
+- [ ] 새로 생긴 `revocation_log.json` 을 열어 한글이 그대로 저장된 것을 봤다
+<!-- /checklist -->
 
 ## 실습 4-2 정리
 
@@ -311,19 +318,19 @@ ls config
 
 **3. 깃허브에 올리기**
 
-1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
+1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/network-study-notes` 으로 끝나야 합니다.
    ```bash
    cd ..
    pwd
    ```
    - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
-   - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
+   - 결과가 다르면 VS Code 왼쪽 목록에서 `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
 2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
    ```bash
    git status
    ```
    - 명령 풀이: `git status` 올릴 파일의 상태를 봄
-   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 도 같은 방법으로 합니다.
+   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 도 같은 방법으로 합니다.
    - `access_control/__pycache__/` 는 파이썬이 실행하면서 자동으로 만든 임시 폴더입니다. 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장합니다.
    - `access_control/revocation_log.json` 은 실습 4-2에서 프로그램이 만든 회수 이력입니다. 이것도 올라갑니다.
 3. **[보고서]** `report_u4.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
@@ -334,7 +341,7 @@ ls config
    git push
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다. 이 화면은 git 이 두 기록을 합친 기록에 붙일 메시지를 확인하라고 여는 편집기(vim)라서, 메시지는 고치지 않고 저장하고 닫기만 하면 됩니다.
+   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
 5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `access_control` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다.
 
 - 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
@@ -345,6 +352,12 @@ ls config
 
 1. 다음 Unit 5(결과 보고하기)에서는 점검 체크리스트로 어긋난 곳을 찾고, 상황별 원인과 해결법을 정리합니다.
 2. 오늘 만든 `revoke_approve.py` · `revoke.py` 와 `revocation_log.json` 은 Unit 5 실습 5-2(상황별 원인과 해결법)에서 다시 봅니다.
+
+<!-- checklist -->
+- [ ] 「2. 파일 확인」에서 오늘 만든 파일과 `config/sensitive.json` 이 모두 보였다
+- [ ] `network-study-notes` 폴더에서 `git status` 로 `.env` · `.venv` 가 없는 것을 확인하고 `git add` · `git commit` · `git push` 로 올렸다
+- [ ] 깃허브의 `access_control` 폴더에서 `revoke_approve.py` · `revoke.py` · `revocation_log.json` · `report_u4.md` 를 확인했다
+<!-- /checklist -->
 
 ---
 

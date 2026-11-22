@@ -63,7 +63,7 @@ engine_input.py   find_schema_problem  : 필수 키가 없으면 (1번) · 모�
 
 **할 일**: 데이터 파일 한 개와 코드 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 3 ~ 5 를 읽습니다.
 
-**`unit05_risk_scores.json`** — Module 4 Unit 4 실습 4-1 파일입니다. Module 4 폴더(`anomaly_detection`)에 이 파일이 있으면 **[터미널]** 에서 `cp ../anomaly_detection/unit05_risk_scores.json .` 으로 복사하고, 없으면 `soar_response` 폴더에 같은 이름의 파일을 만들어 아래 내용을 붙여 넣습니다. 두 방법 모두 내용이 같습니다.
+**`unit05_risk_scores.json`** — Module 4 Unit 4 실습 4-1 파일입니다. Module 4 폴더(`network-study-notes/anomaly_detection`)에 이 파일이 있으면 **[터미널]** 의 `soar_response` 폴더에서 `cp ../anomaly_detection/unit05_risk_scores.json .` 으로 복사하고, 없으면 `soar_response` 폴더에 같은 이름의 파일을 만들어 아래 내용을 붙여 넣습니다. 두 방법 모두 내용이 같습니다.
 
 | 키 | 뜻 |
 |---|---|
@@ -255,6 +255,14 @@ print("--- 단계 6: risk_engine_log.json · engine_summary.json · risk_tickets
    - (다) [핵심 질문] 단계 2 의 `minsu` 기록은 등급이 `critical` 입니다. `find_schema_problem` 이 이 기록을 엔진 앞에서 거절하는 이유를 적고, 거절 없이 엔진에 넣으면 어떤 오류가 나고 그 알림이 어떻게 기록되는지 실습 5-1 `INC-402` 와 연결해 적어 주세요.
 
 **확인** — 단계 3 이 `엔진에 넣을 알림 5 건 · 거절한 기록 0 건` 이고, 단계 5 가 `자동 실행 2 건 · 승인 대기 0 건 · 차단 금지 0 건 · 조치 없음 3 건 · 실패 0 건` 이면 성공입니다. 안 나오면 「정답」 레슨의 응용 5-1 출력과 한 줄씩 맞춰 보고, 오류가 나면 같은 레슨의 「자주 틀리는 곳」을 봅니다.
+
+<!-- checklist optional -->
+- [ ] `soar_response` 폴더에 `unit05_risk_scores.json` 을 복사하거나 만들어 붙여 넣었다
+- [ ] `soar_response` 폴더에 `engine_input.py` 를 만들어 붙여 넣고 1 ~ 8번을 채워 저장했다
+- [ ] `soar_response` 폴더에 `apply5-1_run.py` 를 만들어 붙여 넣고 9번을 채워 저장했다
+- [ ] `python apply5-1_run.py` 를 실행해 단계 5 가 자동 실행 2 건 · 조치 없음 3 건 · 실패 0 건으로 나왔다
+- [ ] `report_u5.md` 의 `## 응용 5-1` (가) ~ (다)를 채우고 저장했다
+<!-- /checklist -->
 
 ## 응용 5-1 정리
 

@@ -12,7 +12,7 @@ render: markdown
 
 **예외**는 「이번 주 금요일까지만 과학실 열쇠를 빌려주기」처럼, 역할에는 없는 권한을 한 사람에게만 기간을 정해 잠깐 주는 것입니다.
 
-1. 파일은 모두 `access_control` 폴더 안에 만듭니다. 만드는 방법은 실습 1-2와 같습니다(VS Code 왼쪽 목록에서 `access_control` 폴더를 고르고 **새 파일** 아이콘).
+1. 파일은 모두 작업 폴더 `access_control` 안에 만듭니다. `exception_policy.py` · `config_loader.py` 는 `access_control` 폴더 바로 아래에(VS Code 왼쪽 목록에서 `access_control` 폴더를 고르고 **새 파일** 아이콘, 실습 1-2와 같은 방법), `exceptions.json` 은 `access_control` 폴더 안의 `config` 폴더에(`config` 폴더를 오른쪽 클릭 › **New File**) 만듭니다.
 2. 아래 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
 3. 만들 파일은 세 개입니다.
 
@@ -34,7 +34,7 @@ render: markdown
 
 ## `config/exceptions.json` 만들기
 
-**`config/exceptions.json`** 을 만들고 아래 내용을 붙여 넣습니다. 한 줄이 예외 한 건이고, 누구에게 · 어떤 권한을 · 언제까지(`expires`) · 왜 주었는지 적혀 있습니다.
+`access_control` 폴더 안의 `config` 폴더를 오른쪽 클릭 › **New File** 로 `exceptions.json` 을 만들고(경로 `config/exceptions.json`) 아래 내용을 붙여 넣습니다. 한 줄이 예외 한 건이고, 누구에게 · 어떤 권한을 · 언제까지(`expires`) · 왜 주었는지 적혀 있습니다.
 
 <pre class="copyable"><code>[
   {"id": 1, "user": "seoyeon", "permission": "SETTLE:QUERY", "expires": "2026-10-22 18:00", "reason": "월말 정산 대조 지원"},
@@ -52,9 +52,14 @@ render: markdown
   ```
   - 명령 풀이: `python -m json.tool` 파이썬의 JSON 검사 도구를 실행 · `config/exceptions.json` 검사할 파일 (맥북은 `python3`). 한글이 `\uXXXX` 로 보여도 정상입니다
 
+<!-- checklist -->
+- [ ] `config/exceptions.json` 을 만들어 붙여 넣고 저장했다
+- [ ] `python -m json.tool config/exceptions.json` 으로 다섯 건이 오류 없이 나왔다
+<!-- /checklist -->
+
 ## `exception_policy.py` 만들기
 
-**`exception_policy.py`** 를 만들고 아래 내용을 붙여 넣습니다. 다른 파일이 `import` 로 이 파일을 불러오면, 맨 위 줄들이 `config/exceptions.json` 을 한 번 읽어 `EXCEPTIONS` 에 담습니다. `find_exception` 은 그 안에서 사람과 권한이 같고 아직 만료 시각이 지나지 않은 예외를 찾습니다.
+`access_control` 폴더 바로 아래에 **`exception_policy.py`** 를 만들고 아래 내용을 붙여 넣습니다. 다른 파일이 `import` 로 이 파일을 불러오면, 맨 위 줄들이 `config/exceptions.json` 을 한 번 읽어 `EXCEPTIONS` 에 담습니다. `find_exception` 은 그 안에서 사람과 권한이 같고 아직 만료 시각이 지나지 않은 예외를 찾습니다.
 
 - `datetime.strptime(문자열, 형식)` 은 `"2026-10-22 18:00"` 같은 글자를 시각 값으로 바꿉니다. 시각 값으로 바꿔야 `now < expires` 처럼 지금 시각과 「더 이른가」를 비교할 수 있습니다.
 
@@ -81,9 +86,13 @@ def find_exception(user, permission, now):                       # 사용자 · 
     return False, None                                           # 못 찾았으면 없다고 리턴한다
 ```
 
+<!-- checklist -->
+- [ ] `access_control` 폴더 바로 아래에 `exception_policy.py` 를 만들어 붙여 넣고 저장했다
+<!-- /checklist -->
+
 ## `config_loader.py` 만들기
 
-**`config_loader.py`** 를 만들고 아래 내용을 붙여 넣습니다. 오늘 실습에서는 불러 쓰지 않지만, 다음 Unit부터 설정 파일을 읽을 때 이 함수를 씁니다. 미리 만들어 둡니다. 코드의 `try:` 는 「아래를 해 보다가 오류가 나면 `except` 아래로 넘어가라」는 뜻입니다.
+`access_control` 폴더 바로 아래에 **`config_loader.py`** 를 만들고 아래 내용을 붙여 넣습니다. 오늘 실습에서는 불러 쓰지 않지만, 다음 Unit부터 설정 파일을 읽을 때 이 함수를 씁니다. 미리 만들어 둡니다. 코드의 `try:` 는 「아래를 해 보다가 오류가 나면 `except` 아래로 넘어가라」는 뜻입니다.
 
 ```python
 import json                                                      # JSON 파일을 읽는 모듈을 불러온다
@@ -109,3 +118,8 @@ def load_json(path, default):                                    # 파일 경로
   ls
   ls config
   ```
+
+<!-- checklist -->
+- [ ] `access_control` 폴더 바로 아래에 `config_loader.py` 를 만들어 붙여 넣고 저장했다
+- [ ] `python -c "import exception_policy, config_loader; print('제공 파일 정상')"` 를 실행해 `제공 파일 정상` 이 나왔다
+<!-- /checklist -->

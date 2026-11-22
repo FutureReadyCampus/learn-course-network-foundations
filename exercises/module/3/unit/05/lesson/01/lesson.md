@@ -46,8 +46,10 @@ Unit 5는 Module 3 **접근통제 자동화**의 마지막 단계인 **결과 �
 
 ## 폴더 열고 데이터 파일 만들기
 
+이번 Unit의 작업 폴더는 `network-study-notes/access_control` 입니다. VS Code 로 저장소 폴더 `network-study-notes` 를 열고, 이 페이지의 파일은 모두 그 안의 `access_control` 폴더(또는 그 안의 `config` 폴더)에 만듭니다.
+
 1. **[VS Code]** 왼쪽 목록의 `access_control` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** 위치를 확인합니다. 결과가 `…/security-agent-toolkit/access_control` 로 끝나야 합니다.
+2. **[터미널]** 위치를 확인합니다. 결과가 `…/network-study-notes/access_control` 로 끝나야 합니다.
    ```bash
    pwd
    ls
@@ -57,12 +59,12 @@ Unit 5는 Module 3 **접근통제 자동화**의 마지막 단계인 **결과 �
    - 맥북은 `python` 을 `python3` 로 바꿔 칩니다. `config` 폴더가 없어서 `ls config` 가 오류를 내도 괜찮습니다(이번 Unit에서 쓸 json 파일은 5번에서 만듭니다).
 3. **파일은 이렇게 만듭니다.** 이 페이지에 나오는 파일은 모두 이 페이지의 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
    1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다.
-   2. 코드 상자의 복사 버튼으로 내용을 복사해 새 파일에 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
-   - 답을 적는 **보고서** `report_u5.md` 는 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
+   2. 코드 상자의 복사 버튼으로 내용을 복사해 방금 만든 그 파일에 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
+   - 답을 적는 **보고서** `report_u5.md`(`access_control` 폴더 바로 아래)는 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
 4. 문제는 **할 일 → 순서**대로 하고, `[창 이름]` 이 지금 쓸 창입니다. 코드는 `# ←` 가 있는 번호 빈칸(① · ② …)만 한 줄씩 채우고, 막히면 빈칸마다 있는 힌트를 본 뒤 이 Unit 뒤쪽의 정답 레슨을 봅니다.
 5. **[VS Code]** 이번 Unit에서 쓸 데이터 파일 세 개를 만들어 아래 내용을 그대로 붙여 넣습니다. `access_control` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 아래 굵은 글씨의 **파일 이름을 그대로** 적습니다. `config/week_state.json` 처럼 `config/` 가 붙은 이름을 적으면 `config` 폴더 안에 만들어집니다(`config` 폴더가 없으면 함께 만들어집니다).
 
-**`config/week_state.json`** — 점검할 데이터입니다. 사용자 여섯 명 · 역할별 부서 · 예외 네 개가 들어 있습니다.
+**`config/week_state.json`** — 점검할 데이터입니다. 사용자 여섯 명 · 역할별 부서 · 예외 네 개가 들어 있습니다. `access_control` 폴더 안의 `config` 폴더에 `week_state.json` 으로 만들어집니다.
 
 <pre class="copyable"><code>{
   "users": {
@@ -89,7 +91,7 @@ Unit 5는 Module 3 **접근통제 자동화**의 마지막 단계인 **결과 �
 }
 </code></pre>
 
-**`config/alert.json`** — 경고 기준입니다. 거부율은 전체 요청 가운데 거부된 요청의 비율입니다. 거부율이 0.3(30%) 이상이면 경고이고, 사용자 한 명이 4번 이상 거부되면 눈여겨봅니다.
+**`config/alert.json`** — 경고 기준입니다. 거부율은 전체 요청 가운데 거부된 요청의 비율입니다. 거부율이 0.3(30%) 이상이면 경고이고, 사용자 한 명이 4번 이상 거부되면 눈여겨봅니다. `access_control` 폴더 안의 `config` 폴더에 `alert.json` 으로 만들어집니다.
 
 <pre class="copyable"><code>{"deny_rate_limit": 0.3, "user_denied_limit": 4}
 </code></pre>
@@ -148,6 +150,13 @@ Unit 5는 Module 3 **접근통제 자동화**의 마지막 단계인 **결과 �
    - `python -c "…"` 는 따옴표 안의 파이썬 코드를 파일로 만들지 않고 바로 실행합니다. 여기서는 `week_log.jsonl` 의 줄 수를 셉니다. 마지막은 `40` 이 나와야 합니다. 다르면 줄이 빠졌거나 빈 줄이 끼어든 것이니 위 내용과 비교해 다시 셉니다.
 
 **확인** — 앞의 두 명령이 내용을 다시 출력하고 마지막 명령이 `40` 을 내면 성공입니다. 안 나오면 다음 페이지 「오류가 나면」의 표에서 오류 이름을 찾습니다.
+
+<!-- checklist -->
+- [ ] `access_control` 폴더 안의 `config` 폴더에 `week_state.json` 을 만들고 내용을 붙여 넣은 뒤 저장했다
+- [ ] `access_control` 폴더 안의 `config` 폴더에 `alert.json` 을 만들고 내용을 붙여 넣은 뒤 저장했다
+- [ ] `access_control` 폴더 바로 아래에 `week_log.jsonl` 을 만들고 40줄을 붙여 넣은 뒤 저장했다
+- [ ] `access_control` 폴더의 터미널에서 확인 명령 세 개를 실행해 마지막에 `40` 이 나왔다
+<!-- /checklist -->
 
 ## 오류가 나면
 

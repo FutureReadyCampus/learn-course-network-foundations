@@ -96,7 +96,7 @@ print(first_list)                                                # 하나 더 �
 
 **할 일**
 
-1. `review_list.py` 와 `exercise3-1_run.py` 두 파일을 만들고, `review_list.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
+1. `access_control` 폴더(작업 폴더 `network-study-notes/access_control`) 바로 아래에 `review_list.py` 와 `exercise3-1_run.py` 두 파일을 만들고, `review_list.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
 2. 채우기 <mark>전과 후</mark>에 실행해서 <mark>부여돼 있는 권한 현황</mark>(단계 1: 현황)과 <mark>사용자별 권한 개수</mark>(단계 2: 점검)를 비교합니다.
 
 **`review_list.py`**
@@ -189,7 +189,7 @@ print(counts)                                                    # 사용자별 
    1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
    2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
    3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `review_list.py` · `exercise3-1_run.py` 입니다.
-   4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
+   4. 열린 파일에 같은 이름의 코드 상자(**`review_list.py`** 상자 · **`exercise3-1_run.py`** 상자) 내용을 복사해 붙여 넣고 저장합니다.
 2. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고, **채우기 전에** 한 번 실행합니다. `부여돼 있는 권한 0 건` 이 나오면 파일은 제대로 만든 것입니다.
    ```bash
    pwd
@@ -208,6 +208,13 @@ print(counts)                                                    # 사용자별 
    - (나) [응용] 현황 리스트에는 판정 함수(`check_permission` · `evaluate_access`)가 이미 거부하는 권한도 들어 있습니다. 어떤 권한이 그런지 예를 하나 들고, 거부되는 권한을 리스트에서 빼지 않고 남겨 두는 것이 점검에 왜 필요한지 적어 주세요.
 
 **확인** — 다시 실행했을 때 `부여돼 있는 권한 14 건` 이 나오고, 마지막 줄이 `{'seoyeon': 3, 'junho': 3, 'gaeun': 3, 'dami': 3, 'batch-night': 2}` 이면 성공입니다. 안 나오면 「정답」 레슨의 실습 3-1 출력과 한 줄씩 맞춰 보고, 건수가 다르면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+
+<!-- checklist -->
+- [ ] `access_control` 폴더에 `review_list.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `access_control` 폴더에 `exercise3-1_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `review_list.py` 의 빈칸 ①·② 를 채우고 저장했다
+- [ ] `python exercise3-1_run.py` 를 실행해 `부여돼 있는 권한 14 건` 과 사용자별 개수 줄이 나왔다
+<!-- /checklist -->
 
 ## 실습 3-1 정리
 

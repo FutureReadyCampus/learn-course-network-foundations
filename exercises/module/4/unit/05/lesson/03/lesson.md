@@ -388,7 +388,7 @@ ls
 - 코드는 `.py`, 실행 파일은 `exerciseN-M_run.py` · `applyN-M_run.py`, 보고서는 `report_uN.md` 입니다.
 
 ```
-security-agent-toolkit/
+network-study-notes/
   .env                       ← 키를 만든 사람만 (깃허브에 올리지 않음)
   .gitignore
   access_control/            Module 3
@@ -420,7 +420,7 @@ security-agent-toolkit/
 
 **순서**
 
-1. **[터미널]** `security-agent-toolkit` 폴더로 옮깁니다. 앞 페이지의 `pwd` 결과가 `anomaly_detection` 으로 끝날 때만 `cd ..` 를 칩니다. 이미 `…/security-agent-toolkit` 으로 끝나면 `cd ..` 는 건너뛰고 `pwd` 만 칩니다.
+1. **[터미널]** `network-study-notes` 폴더로 옮깁니다. 앞 페이지의 `pwd` 결과가 `anomaly_detection` 으로 끝날 때만 `cd ..` 를 칩니다. 이미 `…/network-study-notes` 으로 끝나면 `cd ..` 는 건너뛰고 `pwd` 만 칩니다.
 
    ① 한 단계 위 폴더로 이동합니다.
 
@@ -438,7 +438,7 @@ security-agent-toolkit/
    ```
 
    - 하는 일: 지금 있는 폴더의 위치를 보여 줍니다.
-   - 나오는 것: <mark>`…/security-agent-toolkit` 으로 끝나면</mark> 됩니다. 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
+   - 나오는 것: <mark>`…/network-study-notes` 으로 끝나면</mark> 됩니다. 결과가 다르면 VS Code 왼쪽 목록에서 `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
 
 2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. <mark>빨간 글씨 줄에 `.env` 나 `.venv` 가 보이면 올리지 말고,</mark> 아래 안내대로 `.gitignore` 를 고친 뒤 `git status` 를 다시 봅니다.
 
@@ -448,7 +448,7 @@ security-agent-toolkit/
 
    - 하는 일: 올릴 파일의 상태를 보여 줍니다.
    - 나오는 것: 바뀐 파일의 이름이 나옵니다.
-   - `.env` 가 보이면: VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다.
+   - `.env` 가 보이면: VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다.
      - `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
    - `anomaly_detection/__pycache__/` (파이썬이 실행하면서 자동으로 만드는 임시 폴더)가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 봅니다.
    - `anomaly_detection/llm_client.py` 는 API 키가 들어 있지 않은 코드 파일이라 올라가도 됩니다. 키는 `.env` 에만 있습니다.
@@ -484,14 +484,19 @@ security-agent-toolkit/
 
    - 하는 일: 저장한 기록을 깃허브로 올립니다.
    - 나오는 것: 올라간 내용이 몇 줄 나옵니다.
-   - <mark>`git push` 가 거절(`rejected`)되면 깃허브에 내 PC 에 없는 기록이 있다는 뜻입니다.</mark> `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다.
-   - 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다. 이 화면은 git 이 두 기록을 합친 기록에 붙일 메시지를 확인하라고 여는 편집기(vim)라서, 메시지는 고치지 않고 저장하고 닫기만 하면 됩니다.
+   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
 
 5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `anomaly_detection` 폴더를 열고, VS Code 왼쪽 목록의 `anomaly_detection` 폴더에 있는 파일들이 깃허브에도 보이는지 확인합니다. <mark>`.env` 와 `__pycache__` 폴더는 없어야 합니다</mark>.
    - 빠진 이름이 있으면 VS Code 왼쪽 목록의 `anomaly_detection` 폴더에 내 PC 에도 있는지 봅니다.
      - 없으면 다른 폴더에 만든 것이니 `anomaly_detection` 안으로 옮기고, 2번의 `git status` 부터 다시 합니다.
 
 **확인** — 깃허브의 `anomaly_detection` 폴더에 `event_summary.py` · `report_u5.md` 가 보이고 `.env` 가 없으면 성공입니다. 파일이 안 보이면 `git push` 의 출력에 `rejected` 나 `error` 가 있었는지 보고, 위 4번 ③ 의 안내대로 다시 올립니다.
+
+<!-- checklist -->
+- [ ] `network-study-notes` 폴더에서 `git status` 를 쳐서 목록에 `.env` · `.venv` 가 없는 것을 확인했다
+- [ ] `git add .` → `git commit` → `git push` 를 차례로 쳐서 올렸다
+- [ ] 깃허브의 `anomaly_detection` 폴더에서 `event_summary.py` · `report_u5.md` 를 보고 `.env` 가 없는 것을 확인했다
+<!-- /checklist -->
 
 ## 마무리 정리
 

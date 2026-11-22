@@ -147,7 +147,7 @@ print(first_event)                                           # 열 이름이 키
 
 **할 일**
 
-1. `classify.py` · `apply2-2_run.py` **두 파일**을 만들고, `classify.py` 의 `classify_event` · `count_types` 에서 직접 쓰는 곳을 씁니다.
+1. `anomaly_detection` 폴더에 `classify.py` · `apply2-2_run.py` **두 파일**을 만들고, `classify.py` 의 `classify_event` · `count_types` 에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>유형별 이벤트 수</mark>(단계 1)와 <mark>전체 이벤트 수</mark>(단계 2)를 읽습니다.
 
 **`classify.py`**
@@ -219,7 +219,7 @@ print("--- 단계 2: 전체 이벤트", total, "개")                           
 
 **순서**
 
-1. **[VS Code]** 파일 `classify.py` · `apply2-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `classify.py` · `apply2-2_run.py` 를 만들고, 위의 같은 이름 코드 상자 내용을 각각 붙여 넣어 저장합니다.
 2. **[VS Code]** `classify.py` 에서 직접 쓰는 곳 **다섯 군데**를 씁니다. 1.1 의 규칙 순서와 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -232,6 +232,13 @@ print("--- 단계 2: 전체 이벤트", total, "개")                           
    - (가) 실행한 출력 전체를 붙여 넣고, 유형별 이벤트 수를 적어 주세요.
    - (나) [핵심 질문] 「기타 실패」(결과가 실패이면서 `POST /login` 도 아니고 `/admin` 도 없는 이벤트)는 실패한 유형 중 15개로 가장 많습니다. 샘플 이벤트에서 `source` 가 `server` 인 이벤트 하나와 `web` 인 이벤트 하나를 찾아, 각각 `action` 과 함께 적어 주세요(예: `server` 의 `ACCOUNT:CHANGE`, `web` 의 `GET /.env` 처럼 규칙 1 · 2번에 걸리지 않는 것). 그리고 이 둘이 같은 이름 「기타 실패」로 묶여 있으면 담당자가 무엇을 하기 어려운지 적어 주세요.
    - (다) [핵심 질문] 유형 규칙은 위에서부터 차례로 보고 먼저 조건을 충족하는 것으로 정합니다. 「기타 실패」(결과가 실패이면 충족)를 맨 위로 옮겼다고 합시다. 그러면 「비정상 로그인」 · 「비인가 접근」 · 「기타 실패」 이벤트는 각각 몇 개가 될까요? 그리고 그때 담당자가 구분하지 못하게 되는 것은 무엇인가요?
+
+<!-- checklist optional -->
+- [ ] `classify.py` 를 만들어 붙여 넣고 직접 쓰는 곳 1 ~ 5 를 채워 저장했다
+- [ ] `apply2-2_run.py` 를 만들어 붙여 넣고 저장했다
+- [ ] `python apply2-2_run.py` 를 실행해 단계 1 · 2 가 나왔다
+- [ ] `report_u2.md` 의 `## 응용 2-2` 를 채웠다
+<!-- /checklist -->
 
 ## 응용 2-2 정리
 

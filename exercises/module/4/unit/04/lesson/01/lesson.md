@@ -53,7 +53,7 @@ Unit 3 실습 3-2에서는 판정 서버 로그에서 반복 거절을 찾았습
 
 ## 폴더 열고 이전 파일 확인하기
 
-오늘 코드는 Unit 3 파일을 `import` 로 불러 씁니다. 먼저 `anomaly_detection` 폴더에 아래 파일이 있는지 봅니다.
+오늘 코드는 Unit 3 파일을 `import` 로 불러 씁니다. 오늘의 작업 폴더는 저장소 폴더 `network-study-notes` 안의 `anomaly_detection` 입니다(`network-study-notes/anomaly_detection`). 이 Unit 에서 만드는 파일은 모두 이 폴더 바로 아래에 두고, 파일 이름은 이 폴더 기준으로 적습니다. 먼저 `anomaly_detection` 폴더에 아래 파일이 있는지 봅니다.
 
 | 파일 | 만든 곳 | 없을 때 |
 |---|---|---|
@@ -62,7 +62,7 @@ Unit 3 실습 3-2에서는 판정 서버 로그에서 반복 거절을 찾았습
 
 **순서**
 
-1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
+1. **[VS Code]** `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치와 파일을 확인합니다(맥북은 `python3`). <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나고, `ls` 결과에 위 표의 파일들이 보여야</mark> 합니다.
    ```bash
    cd anomaly_detection
@@ -83,11 +83,15 @@ Unit 3 실습 3-2에서는 판정 서버 로그에서 반복 거절을 찾았습
 
 **확인** — 2번의 마지막 줄에 `Unit 3 파일 정상 57` 이 나오면 성공입니다. 안 나오면 다음 페이지 뒤의 「오류가 나면」 표에서 나온 오류 이름을 찾아 고칩니다.
 
+<!-- checklist -->
+- [ ] 터미널에서 `anomaly_detection` 폴더로 들어가 2번 명령을 실행했고, `Unit 3 파일 정상 57` 이 나왔다(안 나오면 위 표의 「없을 때」대로 빠진 파일을 만들었다)
+<!-- /checklist -->
+
 ## 알림 파일 만들기
 
 실습 4-2는 지난 11/2 하루 동안 탐지 규칙(서버 반복 거절 · SaaS 세 규칙 · 웹 경로 스캔)이 낸 알림 7개로 시작합니다. 사람이 하나씩 조사한 결과가 붙어 있는 파일입니다.
 
-1. **[VS Code]** `anomaly_detection` 폴더에 `review_alerts.json` 파일을 만들어 아래 내용을 붙여 넣습니다. <mark>같은 이름의 파일이 이미 있으면 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다).
+1. **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `review_alerts.json` 파일을 만들어 아래 내용을 붙여 넣고 저장합니다. <mark>같은 이름의 파일이 이미 있으면 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다).
    - `real` 은 조사해 보니 진짜 문제였으면 `true`, 아니면 `false` 입니다(판다스로 읽으면 파이썬의 `True` · `False` 가 됩니다). `problem` 은 그 진짜 문제의 번호, `memo` 는 조사 메모입니다.
    - `null` 은 그 값이 없다는 뜻입니다. 서버 알림에는 IP 가 없고, 웹 알림에는 사용자가 없습니다.
    - 알림 번호(`A1` ~ `A7`)와 문제 번호(`P1` …)는 구분하려고 붙인 이름입니다.
@@ -115,6 +119,11 @@ Unit 3 실습 3-2에서는 판정 서버 로그에서 반복 거절을 찾았습
 
 **확인** — 확인 명령이 `7` 을 출력하면 성공입니다. `ValueError` 가 나오면 붙여 넣은 내용의 첫 줄 `[` 와 마지막 줄 `]` 가 빠지지 않았는지 봅니다.
 
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `review_alerts.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] 2번 확인 명령을 실행해 `7` 이 나왔다
+<!-- /checklist -->
+
 ## 오류가 나면
 
 먼저 `pwd` 가 `anomaly_detection` 으로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
@@ -125,7 +134,7 @@ Unit 3 실습 3-2에서는 판정 서버 로그에서 반복 거절을 찾았습
 | `ImportError` · `No module named 'access_detection'` | <mark>Unit 3 실습 3-2 파일이 없거나 함수 이름이 문서와 다른 것입니다</mark> | 「제공 파일」 레슨 마지막 페이지의 예비 코드로 `access_detection.py` 를 만듭니다 |
 | `FileNotFoundError` · `ValueError` | 파일 위치가 다르거나 JSON 이 깨졌습니다 | <mark>파일이 `anomaly_detection` 폴더 바로 아래에 있는지</mark> `ls` 로 보고, 붙여 넣은 JSON 에 쉼표 · 대괄호가 빠졌는지 봅니다 |
 
-- 판다스를 설치할 때 가상환경을 쓴다면 먼저 `security-agent-toolkit` 폴더에서 가상환경을 켠 뒤(`source .venv/Scripts/activate`, 맥북은 `Scripts` 를 `bin` 으로) 칩니다.
+- 판다스를 설치할 때 가상환경을 쓴다면 먼저 `network-study-notes` 폴더에서 가상환경을 켠 뒤(`source .venv/Scripts/activate`, 맥북은 `Scripts` 를 `bin` 으로) 칩니다.
 - 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). <mark>막히면 이 Unit 뒤쪽의 정답을 보고</mark>, 풀리지 않으면 보고서 (가)에 「모름 — 막힌 곳: …」 이라고 쓰고 넘어갑니다.
 
 **확인** — 고친 뒤 시작하기의 두 확인 명령에서 `Unit 3 파일 정상 57` 과 `7` 이 나오면 성공입니다. 그래도 안 되면 위 표에 없는 오류이니 오류 전체를 AI 에게 묻습니다.

@@ -79,6 +79,12 @@ time,account,event,ip_address,outcome
    - 명령 풀이: `python -c "…"` 따옴표 안의 파이썬 한 줄을 실행해 파일의 줄 수를 출력
    - <mark>순서대로 `15` · `15` 가 나와야</mark> 합니다. 다르면 줄이 빠졌거나 빈 줄이 끼어든 것이니 다시 붙여 넣습니다.
 
+<!-- checklist optional -->
+- [ ] `anomaly_detection` 폴더에 `server_log.jsonl` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `anomaly_detection` 폴더에 `saas_events.csv` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] 줄 수 확인 명령을 실행해 순서대로 `15` · `15` 가 나왔다
+<!-- /checklist -->
+
 ## 왜 두 로그도 같은 키로 맞추는가
 
 1. 실습 1-2에서는 웹 서버 로그 한 종류를 바꿨습니다. 같은 방법을 나머지 두 종류에 적용합니다.
@@ -321,7 +327,7 @@ print(first_saas)                                                           # Sa
 
 **순서**
 
-1. **[VS Code]** 파일 `normalize_json_csv.py` · `apply1-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code]** `anomaly_detection` 폴더에 `normalize_json_csv.py` · `apply1-2_run.py` 두 파일을 만들어, 위의 같은 이름 코드 상자 내용을 각각 붙여 넣고 저장합니다.
 2. **[VS Code]** `normalize_json_csv.py` 에서 직접 쓰는 곳 **여섯 군데**를 씁니다. 「CSV 읽기와 딕셔너리로 값 바꾸기」 쪽의 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -334,6 +340,13 @@ print(first_saas)                                                           # Sa
    - (가) 실행한 출력 전체를 붙여 넣고, 판정 서버와 SaaS 이벤트의 수와 성공 · 실패별 개수를 적어 주세요.
    - (나) [핵심 질문] 판정 서버 로그에는 접속 주소가 없어서 `ip` 를 `None` 으로 두었습니다. `None` 대신 가짜 주소 `0.0.0.0` 을 넣으면 주소별로 셀 때 어떤 문제가 생길까요? 이유도 함께 적어 주세요.
    - (다) [핵심 질문] 정규화하면서 공통 이벤트의 키에 들어가지 않은 정보를 판정 서버 로그에서 찾아 적고, 그 정보를 나중에 어디서 찾을 수 있는지 적어 주세요.
+
+<!-- checklist optional -->
+- [ ] `anomaly_detection` 폴더에 `normalize_json_csv.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `anomaly_detection` 폴더에 `apply1-2_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `normalize_json_csv.py` 의 직접 쓰는 곳 여섯 군데를 채우고 저장했다
+- [ ] `python apply1-2_run.py` 를 실행해 판정 서버 이벤트 15 개, SaaS 이벤트 14 개가 나왔다
+<!-- /checklist -->
 
 ## 응용 1-2 정리
 

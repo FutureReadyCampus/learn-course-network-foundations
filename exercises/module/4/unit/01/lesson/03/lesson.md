@@ -196,7 +196,7 @@ UTC+09:00
 
 **할 일**
 
-1. **`normalize_web.py` · `exercise1-2_run.py`** 두 파일을 만들고(실습 1-1의 `log_parse.py` 와 시작하기의 `access_sample.log` 가 같은 폴더에 있어야 합니다), `normalize_web.py` 에서 `# ←` 가 있는 <mark>두 곳</mark>(`convert_time` 의 ① · `convert_result` 의 ②)을 한 줄씩 채웁니다.
+1. **`normalize_web.py` · `exercise1-2_run.py`** 두 파일을 `anomaly_detection` 폴더에 만들고(실습 1-1의 `log_parse.py` 와 시작하기의 `access_sample.log` 가 같은 `anomaly_detection` 폴더에 있어야 합니다), `normalize_web.py` 에서 `# ←` 가 있는 <mark>두 곳</mark>(`convert_time` 의 ① · `convert_result` 의 ②)을 한 줄씩 채웁니다.
 2. 채우기 <mark>전과 후</mark>에 한 번씩 실행해서 <mark>정규화한 이벤트 수와 읽기 실패한 줄</mark>(단계 1), <mark>처음 나오는 실패 이벤트</mark>(단계 2), <mark>성공 · 실패별 개수</mark>(단계 3)를 읽습니다.
 
 **`normalize_web.py`**
@@ -328,7 +328,7 @@ print(result_counts)                                                            
 
 **순서**
 
-1. **[VS Code]** 파일 `normalize_web.py` · `exercise1-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code]** `anomaly_detection` 폴더에 `normalize_web.py` · `exercise1-2_run.py` 두 파일을 만들어, 위의 같은 이름 코드 상자 내용을 각각 붙여 넣고 저장합니다.
 2. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 **채우기 전에** 한 번 실행합니다(맥북은 `python3`). `IndentationError: unexpected indent` 가 나오면 정상입니다.
    ```bash
    pwd
@@ -348,6 +348,13 @@ print(result_counts)                                                            
    - (다) [응용] 이벤트에 원래 로그 줄(`raw`)을 그대로 남겨 두는 이유는 무엇인가요? 정규화하면 사라지는 정보를 한 가지 예로 들어 함께 적어 주세요.
 
 **확인** — 다시 실행했을 때 단계 1 에 `정규화한 이벤트 28 개 · 읽기 실패 2 줄`, 단계 3 에 `{'성공': 15, '실패': 13}` 이 나오면 성공입니다. 안 나오면 「정답」 레슨의 실습 1-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `normalize_web.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `anomaly_detection` 폴더에 `exercise1-2_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `normalize_web.py` 의 빈칸 ① · ② 를 한 줄씩 채우고 저장했다
+- [ ] `python exercise1-2_run.py` 를 실행해 `정규화한 이벤트 28 개 · 읽기 실패 2 줄` 과 `{'성공': 15, '실패': 13}` 이 나왔다
+<!-- /checklist -->
 
 ## 실습 1-2 정리
 
@@ -391,13 +398,13 @@ ls
 
 **3. 깃허브에 올리기**
 
-1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
+1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/network-study-notes` 으로 끝나야 합니다.
    ```bash
    cd ..
    pwd
    ```
    - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
-   - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
+   - 결과가 다르면 VS Code 왼쪽 목록에서 `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
 2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
    ```bash
    git status
@@ -411,7 +418,7 @@ ls
    | `.env` · `.venv` | 올리면 안 되는 파일 | `.gitignore` 맨 아래에 그 이름 한 줄을 적고 저장한 뒤 `git status` 를 다시 침 |
    | `anomaly_detection/__pycache__/` | 파이썬이 실행하면서 자동으로 만든 임시 폴더 | `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장 |
 
-   - `.gitignore` 는 VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래에 있습니다.
+   - `.gitignore` 는 VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래에 있습니다.
 3. **[보고서]** `report_u1.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
    ```bash
@@ -420,7 +427,7 @@ ls
    git push
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다. 이 화면은 git 이 두 기록을 합친 기록에 붙일 메시지를 확인하라고 여는 편집기(vim)라서, 메시지는 고치지 않고 저장하고 닫기만 하면 됩니다.
+   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
 5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `anomaly_detection` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다.
 
 - 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
@@ -431,6 +438,12 @@ ls
 
 1. 다음 Unit 2(판다스로 세고 기준 정하기)는 세 로그를 합친 공통 이벤트 57개를 **판다스**로 표처럼 읽어 실패한 이벤트를 골라 세고, 사용자별 · 주소별로 묶습니다.
 2. 이벤트 파일 `normalized_events.json` 은 Unit 2 시작하기에서 샘플로 만들기 때문에, 응용 1-3을 하지 않았어도 됩니다. 판다스 설치도 Unit 2 시작하기에서 합니다.
+
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 「2. 파일 확인」 표의 파일이 모두 있는 것을 봤다
+- [ ] `network-study-notes` 폴더에서 `git add .` · `git commit` · `git push` 로 올렸다
+- [ ] 깃허브의 내 저장소 `anomaly_detection` 폴더에 오늘 만든 파일이 보이고 `.env` · `.venv` 가 없는 것을 봤다
+<!-- /checklist -->
 
 ---
 
