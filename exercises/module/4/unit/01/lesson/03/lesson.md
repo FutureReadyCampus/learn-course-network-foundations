@@ -48,7 +48,7 @@ source:
 | **판정 서버 로그** | `server_log.jsonl` | Module 3 응용 4-3의 권한 판정 서버 같은 서버 | 「이 권한을 써도 되나?」라는 물음을 받을 때마다 |
 | **SaaS 로그** | `saas_events.csv` | 회사가 빌려 쓰는 SaaS(예: 파일 보관 서비스) | 로그인하거나 파일을 올리고 내려받을 때마다 |
 
-SaaS 는 인터넷으로 쓰는 소프트웨어입니다.
+SaaS(사스)는 인터넷으로 빌려 쓰는 소프트웨어입니다.
 
 **① 실제 한 줄** — 세 줄이 얼마나 다르게 생겼는지만 봅니다.
 
@@ -287,7 +287,7 @@ def normalize_web(line):                                                     # �
 
 - 채우기 전에 실행하면 `IndentationError: unexpected indent` 가 나옵니다. ② 의 `if` 줄이 비어 있어서, 미리 채운 `return "실패"` 줄만 혼자 한 단계 더 들여 쓴 줄이 되기 때문이니 정상입니다. 이 오류는 파이썬이 파일을 읽는 단계에서 나므로 ① 을 먼저 채워도 그대로 나옵니다.
 - ① 확인: ① 만 쓰고 실행하면 아직 같은 `IndentationError: unexpected indent` 가 나옵니다. ② 를 아직 안 써서 나는 오류이니 정상입니다. 막히면: 「시각 문자열 바꾸기」 문법 상자의 `time_out = parsed.strftime("%Y-%m-%d %H:%M:%S")` 에서 `parsed` 자리에 `local_time`, 형식 자리에 `COMMON_TIME_FORMAT` 을 넣습니다.
-- ② 확인: ② 까지 쓰고 실행하면 단계 1 의 첫 이벤트가 `'time': '2026-11-02 09:01:05'` 로 시작하고, 단계 3 에 `{'성공': 15, '실패': 13}` 이 나오면 성공입니다. 막히면: `if status >= 400:` 처럼 비교 기호 `>=` 와 끝의 `:` 를 넣습니다. ① 을 비운 채 ② 만 쓰면 `NameError: name 'time_out' is not defined` 가 나오니 ① 을 확인합니다.
+- ② 확인: ② 까지 쓰고 실행하면 단계 1 의 첫 이벤트가 `'time': '2026-11-02 09:01:05'` 로 시작하고, 단계 3 에 `{'성공': 15, '실패': 13}` 이 나오면 성공입니다. 막히면: `if status >= 400:` 처럼 비교 기호 `>=` 와 끝의 `:` 를 넣습니다. ① 을 비운 채 ② 만 쓰면 `NameError: name 'time_out' is not defined. Did you mean: 'time_text'?` 가 나옵니다. 끝의 `Did you mean …`(이 이름이 아니냐는 추측)은 따르지 말고 ① 을 채웁니다.
 
 **`exercise1-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 샘플 로그를 한 줄씩 공통 이벤트로 바꿔 세 단계로 출력합니다. `len(리스트)` 는 리스트의 개수입니다.
 
@@ -335,7 +335,7 @@ print(result_counts)                                                            
 - [ ] `anomaly_detection` 폴더에 `exercise1-2_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
 <!-- /checklist -->
 
-2. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 **채우기 전에** 한 번 실행합니다(맥북은 `python3`). `IndentationError: unexpected indent` 가 나오면 정상입니다.
+2. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 **채우기 전에** 한 번 실행합니다. `IndentationError: unexpected indent` 가 나오면 정상입니다.
    ```bash
    pwd
    python exercise1-2_run.py
@@ -352,7 +352,7 @@ print(result_counts)                                                            
 - [ ] `normalize_web.py` 의 빈칸 ① · ② 를 한 줄씩 채우고 저장했다
 <!-- /checklist -->
 
-4. 출력은 **세 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1은 1줄, 단계 2는 1줄, 단계 3은 1줄입니다.
+4. 출력은 **세 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1은 1줄, 단계 2는 1줄, 단계 3은 1줄입니다. 이벤트 수와 읽기 실패 줄 수는 단계 1 **제목 줄**(`--- 단계 1: 정규화한 이벤트 28 개 · 읽기 실패 2 줄`)에 함께 나옵니다.
 
 <!-- checklist -->
 - [ ] `python exercise1-2_run.py` 를 실행해 `정규화한 이벤트 28 개 · 읽기 실패 2 줄` 과 `{'성공': 15, '실패': 13}` 이 나왔다
@@ -378,7 +378,7 @@ print(result_counts)                                                            
 
 ## 이번 Unit 마무리 · 깃허브에 올리기
 
-하루를 닫는 마무리입니다(15분). 핵심 실습 두 개를 끝낸 뒤 합니다. 오늘은 Module 3 마지막 Unit에서 미뤄 둔 `access_control` 폴더도 같은 저장소라서 함께 올라갑니다.
+하루를 닫는 마무리입니다(15분). 핵심 실습 두 개를 끝낸 뒤 하고, 그다음 「오늘의 글 쓰기」 레슨으로 갑니다. Module 3 마지막 Unit의 `access_control` 폴더를 아직 올리지 않았다면 같은 저장소라서 오늘 함께 올라갑니다. 이미 올렸다면 `git status` 에 보이지 않는 것이 정상입니다.
 
 **1. 오늘 한 일 확인**
 
@@ -403,7 +403,7 @@ ls
 | `normalize_web.py` · `exercise1-2_run.py` | 실습 1-2 |
 | `report_u1.md` | 「보고서 쓰기」 레슨 |
 
-- 응용을 했다면 그 응용의 파일(`log_classify.py` · `server_log.jsonl` · `saas_events.csv` · `normalize_json_csv.py` · `normalize.py` · `apply1-1_run.py` ~ `apply1-3_run.py` · `normalized_events.json` 중 만든 것)도 보입니다.
+- 응용을 했다면 그 응용의 파일(`log_classify.py` · `server_log.jsonl` · `saas_events.csv` · `normalize_json_csv.py` · `normalize.py` · `apply1-1_run.py` ~ `apply1-3_run.py` · `normalized_events.json` 중 만든 것)도 보입니다. 응용 1-3의 문법 상자를 직접 돌렸다면 연습 파일 `demo_events.json` 도 보이는데, 지워도 됩니다.
 
 <!-- checklist -->
 - [ ] `anomaly_detection` 폴더에 「2. 파일 확인」 표의 파일이 모두 있는 것을 봤다
@@ -417,7 +417,7 @@ ls
    pwd
    ```
    - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
-   - 결과가 다르면 VS Code 왼쪽 목록에서 `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
+   - 결과가 다르면 VS Code 위 메뉴 **Terminal › New Terminal** 로 터미널을 새로 엽니다. 새 터미널은 `network-study-notes` 에서 열립니다(이름 칸이 **bash** 인지 확인).
 2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
    ```bash
    git status
@@ -427,9 +427,9 @@ ls
    | 보이는 것 | 뜻 | 할 일 |
    |---|---|---|
    | `anomaly_detection/` | 오늘 만든 새 폴더 | 올리면 됨 |
-   | `access_control/` 안의 파일 | Module 3 마지막 Unit의 파일을 아직 올리지 않음 | 함께 올리면 됨 |
+   | `access_control/` 안의 파일 | Module 3 마지막 Unit의 파일을 아직 올리지 않음(이미 올렸다면 안 보이는 것이 정상) | 함께 올리면 됨 |
    | `.env` · `.venv` | 올리면 안 되는 파일 | `.gitignore` 맨 아래에 그 이름 한 줄을 적고 저장한 뒤 `git status` 를 다시 침 |
-   | `anomaly_detection/__pycache__/` | 파이썬이 실행하면서 자동으로 만든 임시 폴더 | `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장 |
+   | `anomaly_detection/__pycache__/` | 파이썬이 실행하면서 자동으로 만든 임시 폴더. 보통은 Module 3에서 만든 `.gitignore` 가 이미 걸러서 안 보임 | 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장 |
 
    - `.gitignore` 는 VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래에 있습니다.
 3. **[보고서]** `report_u1.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다.

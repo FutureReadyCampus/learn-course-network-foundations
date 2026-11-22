@@ -18,7 +18,7 @@ render: markdown
 | 2. 쓰기 | 10분 | `post-short` 글 틀로 세 문장을 씁니다 |
 | 3. 점검 · 올리기 | 5분 | 공개 점검 뒤 올리고 첫 화면을 봅니다 |
 
-글감은 보고서 `report_u1.md` 에 적은 답 가운데 가장 오래 고민한 것을 고르면 쉽습니다.
+글감은 보고서 `report_u1.md` 에 적은 답 가운데 가장 오래 고민한 것을 고르면 쉽습니다. 아래 1번 · 4번은 보고서의 [응용] 질문(실습 1-1 (나) · 실습 1-2 (다))과 같은 물음이라, 보고서에 답이 비어 있어도 지금 생각해서 쓰면 됩니다.
 
 **오늘의 글감 (핵심 실습)**
 
@@ -97,7 +97,7 @@ render: markdown
 3. 실습 샘플이 아닌 실제 회사나 내 컴퓨터의 로그를 붙이지 않았다(샘플 로그의 `203.0.113.50` 같은 주소는 문서용 예시 주소라 그대로 써도 됩니다)
 4. 머리말이 `module: 4`, `unit: 1` 이고, `sample: true` 줄이 없다
 
-**올리기** — **[터미널]** 네 줄을 모두 「그렇다」로 답할 수 있으면 저장소 루트에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더로 돌아옵니다: `cd ..` → `python check_publish.py`(맥북은 `python3`) → `git add .` → `git commit -m "Add module 4 unit 1 post"` → `git push` → `cd anomaly_detection`. `pwd` 가 이미 `…/network-study-notes` 로 끝나면 맨 앞 `cd ..` 는 건너뜁니다. 점검에서 `[오류]` 가 나오면 그 부분을 고치고 다시 돌린 뒤 올립니다.
+**올리기** — **[터미널]** 네 줄을 모두 「그렇다」로 답할 수 있으면 저장소 루트에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더로 돌아옵니다: `cd ..` → `python check_publish.py` → `git add .` → `git commit -m "Add module 4 unit 1 post"` → `git push` → `cd anomaly_detection`. `pwd` 가 이미 `…/network-study-notes` 로 끝나면 맨 앞 `cd ..` 는 건너뜁니다. 점검에서 `[오류]` 가 나오면 그 부분을 고치고 다시 돌린 뒤 올립니다.
 
 <!-- checklist -->
 - [ ] 저장소 루트에서 `python check_publish.py` 가 `오류 0건` 인 것을 보고 `git add` · `git commit` · `git push` 로 글을 올렸다
