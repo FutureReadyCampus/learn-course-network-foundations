@@ -89,6 +89,11 @@ Unit 2 실습 2-1 · 2-2에서는 계정 잠금과 세션 종료(세션, session
 
 > **확인** — 3번에서 `앞 Unit 파일 정상`, 4번에서 `['junho', 'dami'] 5` 가 나오면 성공입니다. 안 나오면 다음 페이지 「이전 파일이 없을 때」를 봅니다.
 
+<!-- checklist -->
+- [ ] `soar_response` 폴더에서 3번 명령을 실행해 `앞 Unit 파일 정상` 이 나왔다
+- [ ] 4번 명령을 실행해 `['junho', 'dami'] 5` 가 나왔다
+<!-- /checklist -->
+
 ## 이전 파일이 없을 때
 
 앞 페이지의 확인에서 오류가 난 파일만 만듭니다. **이미 있는 파일은 건너뜁니다.**
@@ -101,7 +106,7 @@ Unit 2 실습 2-1 · 2-2에서는 계정 잠금과 세션 종료(세션, session
 | `ip_actions.py` | Unit 2 「제공 파일」 레슨(완성본이라 빈칸이 없음) |
 | `incident.py` | Unit 1 실습 1-2 레슨 |
 
-Unit 1 파일이 아예 없으면 아래 상자로 오늘 쓰는 두 함수만 담은 `incident.py` 를 만들어도 핵심 실습 두 개를 할 수 있습니다. 응용 3-1은 Unit 1 파일 전체가 있어야 합니다.
+Unit 1 파일이 아예 없으면 `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `incident.py` 를 만들고, 오늘 쓰는 두 함수만 담은 아래 상자를 붙여 넣어도 핵심 실습 두 개를 할 수 있습니다. 응용 3-1은 Unit 1 파일 전체가 있어야 합니다.
 
 **`incident.py`** — Unit 1 파일에서 오늘 쓰는 두 함수(`load_json` · `save_json`)만 담았습니다. Unit 1 파일 전체가 있으면 그것을 그대로 씁니다.
 
@@ -126,7 +131,7 @@ def save_json(data, path):                                   # 저장할 값과 
         json.dump(data, file, ensure_ascii=False, indent=2)  # 한글은 그대로, 줄을 나눠 저장한다
 ```
 
-**실습 2-2 결과 파일** — Unit 2 파일이 있으면 `python exercise2-2_run.py` 를 한 번 실행하는 것이 가장 쉽습니다. 실습 2-2를 하지 못했다면 아래 두 상자를 `soar_response` 폴더에 같은 이름의 파일로 만듭니다. 실습 2-2 실행 파일이 저장하는 내용과 같습니다.
+**실습 2-2 결과 파일** — Unit 2 파일이 있으면 `python exercise2-2_run.py` 를 한 번 실행하는 것이 가장 쉽습니다. 실습 2-2를 하지 못했다면 `soar_response` 폴더에 `containment_state.json` 과 `containment_log.json` 을 만들고 아래 두 상자를 하나씩 붙여 넣고 저장합니다. 실습 2-2 실행 파일이 저장하는 내용과 같습니다.
 
 **`containment_state.json`** — 실습 2-2가 끝난 뒤의 연습용 시스템 상태입니다. `junho` 는 수업 전부터, `dami` 는 실습 2-2에서 잠겼고, 두 계정의 세션은 모두 종료됐습니다.
 
@@ -150,12 +155,17 @@ def save_json(data, path):                                   # 저장할 값과 
 
 > **확인** — 앞 페이지 3번에서 `앞 Unit 파일 정상`, 4번에서 `['junho', 'dami'] 5` 가 나오면 성공입니다. 그래도 오류가 나면 마지막 페이지 「오류가 나면」의 표에서 같은 오류 줄을 찾습니다.
 
+<!-- checklist -->
+- [ ] 앞 페이지 확인에서 오류가 난 파일만 `soar_response` 폴더에 만들었다(오류가 없었으면 건너뛰고 체크)
+- [ ] 앞 페이지 3 · 4번 확인을 다시 해 두 줄이 모두 그대로 나왔다
+<!-- /checklist -->
+
 ## 알림 데이터와 설정 파일 만들기
 
 실습 3-2가 읽는 데이터 파일 두 개를 만듭니다. 응용 3-2 · 3-3도 같은 파일을 읽습니다.
 
-1. **[VS Code]** `soar_response` 폴더 안에 `alerts_thu.json` 을, `config` 폴더 안에 `escalation_rules.json` 을 만들고 아래 내용을 붙여 넣고 저장합니다.
-   - `config` 폴더가 없으면 터미널에서 `mkdir -p config` 로 만듭니다.
+1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `alerts_thu.json` 을, `soar_response` 폴더 안의 `config` 폴더를 오른쪽 클릭 › **New File** 로 `escalation_rules.json`(`config/escalation_rules.json`)을 만들고, 아래 두 상자를 하나씩 붙여 넣고 저장합니다.
+   - `config` 폴더가 없으면 `soar_response` 폴더의 터미널에서 `mkdir -p config` 로 만듭니다.
 2. **[터미널]** 파일이 정상인지 확인합니다(맥북은 `python3`). <mark>`11 6` 이 나와야</mark> 합니다(알림이 11건, 규칙 파일의 키가 6개라는 뜻입니다).
    ```bash
    python -c "import json; print(len(json.load(open('alerts_thu.json', encoding='utf-8'))), len(json.load(open('config/escalation_rules.json', encoding='utf-8'))))"
@@ -234,6 +244,12 @@ def save_json(data, path):                                   # 저장할 값과 
 ```
 
 > **확인** — 2번 확인 명령에서 `11 6` 이 나오면 성공입니다. `FileNotFoundError` 나 `JSONDecodeError` 가 나오면 마지막 페이지 「오류가 나면」의 표를 봅니다.
+
+<!-- checklist -->
+- [ ] `alerts_thu.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `config/escalation_rules.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] 2번 확인 명령을 실행해 `11 6` 이 나왔다
+<!-- /checklist -->
 
 ## 오류가 나면
 
