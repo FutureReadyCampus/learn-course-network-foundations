@@ -53,6 +53,11 @@ source:
 - **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `problems.json` 을 만들어 위 내용을 붙여 넣고 저장합니다.
 - **[터미널]** `python -c "import pandas as pd; print(len(pd.read_json('problems.json')))"` 로 확인해 `5` 가 나오면 됩니다(맥북은 `python3`).
 
+<!-- checklist optional -->
+- [ ] `anomaly_detection` 폴더에 `problems.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] 확인 명령을 실행해 `5` 가 나왔다
+<!-- /checklist -->
+
 `review_alerts.json` 의 알림 7개입니다. `real` 열이 `True` 이면 조사해 보니 진짜 문제였습니다.
 
 | id | 규칙 | 대상 | real | 조사 메모 |
@@ -198,11 +203,6 @@ print(blocked_count)                                        # 차단된 기록 �
 
 - 이번 실습에서 새 문법은 없습니다. `.sum()` 은 실습 4-1에서 쓴 것을 `True` 개수 세기에 다시 쓰고, `isin` · `~` · `value_counts()` 도 다시 씁니다.
 
-<!-- checklist optional -->
-- [ ] `anomaly_detection` 폴더에 `problems.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
-- [ ] 확인 명령을 실행해 `5` 가 나왔다
-<!-- /checklist -->
-
 ## 응용 4-2 · 알림의 오탐과 미탐 세기
 
 **이런 상황이 있습니다**
@@ -320,6 +320,12 @@ for problem in missed_list:                           # 놓친 문제를 하나�
 
 1. **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `evaluation.py` 와 `apply4-2_run.py` 를 만들어 위 코드를 각각 붙여 넣고 저장합니다.
 2. **[VS Code]** `evaluation.py` 에서 <mark>직접 쓰는 곳 일곱 군데를 씁니다</mark>. 위 판다스 문법 상자와 1.1 의 표를 참고해 씁니다. 막히면 아래 「응용 4-2 정리」를 봅니다.
+
+<!-- checklist optional -->
+- [ ] `anomaly_detection` 폴더에 `evaluation.py` 를 만들어 붙여 넣고, 직접 쓰는 곳 일곱 군데를 채워 저장했다
+- [ ] `anomaly_detection` 폴더에 `apply4-2_run.py` 를 만들어 붙여 넣고 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
@@ -327,15 +333,17 @@ for problem in missed_list:                           # 놓친 문제를 하나�
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python apply4-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **네 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1과 단계 2는 각각 1줄, 단계 3은 7줄(오탐 수 1줄 · 안내 1줄 · 규칙별 개수 표 5줄), 단계 4는 3줄(미탐 수 1줄 · 놓친 문제 2줄)입니다. 개수가 같은 규칙의 순서는 달라도 됩니다.
+
+<!-- checklist optional -->
+- [ ] `python apply4-2_run.py` 를 실행해 단계 4에 `미탐 수: 2` 와 놓친 문제 두 줄(P4 · P5)이 나왔다
+<!-- /checklist -->
+
 5. **[보고서]** `report_u4.md` 의 `## 응용 4-2` 아래를 채웁니다. 파일이 아직 없으면 「보고서 쓰기」 레슨 첫 페이지의 틀로 `anomaly_detection` 폴더에 먼저 만듭니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 알림 수와 오탐 수와 미탐 수를 적어 주세요.
    - (나) [핵심 질문] A2(gaeun)는 조사해 보니 서버 설정 오류여서 오탐으로 셌습니다. 이 알림이 오탐인 이유와, 그래도 한 번은 확인해야 했던 이유를 적어 주세요.
    - (다) [핵심 질문] 미탐인 P5(seoyeon 의 권한 없는 정산 조회 시도)는 왜 알림이 나지 않았을까요? 그 문제를 찾으려면 어떤 규칙이 필요한지도 적어 주세요.
 
 <!-- checklist optional -->
-- [ ] `anomaly_detection` 폴더에 `evaluation.py` 를 만들어 붙여 넣고, 직접 쓰는 곳 일곱 군데를 채워 저장했다
-- [ ] `anomaly_detection` 폴더에 `apply4-2_run.py` 를 만들어 붙여 넣고 저장했다
-- [ ] `python apply4-2_run.py` 를 실행해 단계 4에 `미탐 수: 2` 와 놓친 문제 두 줄(P4 · P5)이 나왔다
 - [ ] `report_u4.md` 의 `## 응용 4-2` 에 답을 적고 저장했다
 <!-- /checklist -->
 
