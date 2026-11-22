@@ -207,29 +207,38 @@ for request in REQUESTS:                                         # 요청서를 
    2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
    3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `req_review.py` · `exercise2-2_run.py` 입니다.
    4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
+
+<!-- checklist -->
+- [ ] `access_control` 폴더에 `req_review.py` 와 `exercise2-2_run.py` 를 만들어 코드 상자 내용을 붙여 넣고 저장했다
+<!-- /checklist -->
+
 2. **[터미널]** `pwd` 를 쳐서 마지막 폴더가 `access_control` 인지 확인한 뒤, **채우기 전에** 한 번 실행해서 다시 처리되면 안 되는 줄을 봅니다.
    ```bash
    python exercise2-2_run.py
    ```
    - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise2-2_run.py` 실행할 파일
    - 맥북은 `python3 exercise2-2_run.py` 로 칩니다.
+
+<!-- checklist -->
+- [ ] 채우기 전에 `python exercise2-2_run.py` 를 실행해 출력을 봤다
+<!-- /checklist -->
+
 3. **[VS Code]** `req_review.py` 의 `# ←` 두 곳(① · ②)을 채웁니다. 2.1 의 표와 그림을 보고 씁니다.
 4. **[터미널]** 다시 실행합니다. 단계 1은 본인 승인 시험 한 줄과 처리 여섯 건의 결과(여섯 줄)이고, 단계 2는 요청서 리스트(네 줄)입니다.
    ```bash
    python exercise2-2_run.py
    ```
+
+<!-- checklist -->
+- [ ] `req_review.py` 의 빈칸 ① · ② 를 채우고 다시 실행해 마지막 두 줄이 `False 검토 중이 아님` 으로 나왔다
+<!-- /checklist -->
+
 5. **[보고서]** `access_control/report_u2.md` 의 `## 실습 2-2` 아래를 채웁니다.
    - (가) [핵심 질문] 채운 뒤 실행한 출력 전체를 붙여 넣고, 막힌 세 줄이 각각 왜 막혔는지 적어 주세요.
    - (나) [핵심 질문] 이미 승인한 요청서를 다시 승인하지 못하게 막는 이유는 무엇인가요? 막지 않으면 어떤 일이 생길 수 있나요?
    - (다) [응용] `approve_request` 에서 `request["user"] == approver` 검사를 뺀다면 어떤 위험이 생길까요? 요청자가 친구에게 대신 승인해 달라고 부탁하면 이 검사로는 막을 수 없습니다. 이런 경우를 막으려면 무엇이 더 필요할까요?
 
 **확인** — 다시 실행했을 때 본인 승인 시험이 `False`, 처리 여섯 건은 앞의 네 건이 `True`, 뒤의 두 건이 `False 검토 중이 아님` 이고, 단계 2에서 2번만 `rejected` 로 나오면 성공입니다. 안 나오면 「정답」 레슨의 실습 2-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
-
-<!-- checklist -->
-- [ ] `access_control` 폴더에 `req_review.py` 와 `exercise2-2_run.py` 를 만들어 코드 상자 내용을 붙여 넣고 저장했다
-- [ ] 채우기 전에 `python exercise2-2_run.py` 를 실행해 출력을 봤다
-- [ ] `req_review.py` 의 빈칸 ① · ② 를 채우고 다시 실행해 마지막 두 줄이 `False 검토 중이 아님` 으로 나왔다
-<!-- /checklist -->
 
 ## 실습 2-2 정리
 
@@ -308,7 +317,16 @@ ls config
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
    - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
+
+<!-- checklist -->
+- [ ] `network-study-notes` 폴더에서 `git status` 로 `.env` · `.venv` 가 없는 것을 본 뒤 `git add .` · `git commit` · `git push` 로 올렸다
+<!-- /checklist -->
+
 5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `access_control` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다.
+
+<!-- checklist -->
+- [ ] 깃허브 내 저장소의 `access_control` 폴더에서 2번 표의 파일을 모두 확인했다
+<!-- /checklist -->
 
 - 여유가 되어 응용을 했다면 응용 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
 
@@ -318,11 +336,6 @@ ls config
 2. 다음 Unit 3(권한 점검하기)에서는 이렇게 준 권한 가운데 오래 쓰이지 않는 것을 찾습니다.
 
 **확인** — 깃허브의 `access_control` 폴더에 2번 표의 파일이 모두 보이고 `.env` 가 없으면 성공입니다. 안 보이는 파일이 있으면 `git status` 를 다시 쳐서 그 파일이 빨간 목록에 남아 있는지 보고 4번을 다시 합니다.
-
-<!-- checklist -->
-- [ ] `network-study-notes` 폴더에서 `git status` 로 `.env` · `.venv` 가 없는 것을 본 뒤 `git add .` · `git commit` · `git push` 로 올렸다
-- [ ] 깃허브 내 저장소의 `access_control` 폴더에서 2번 표의 파일을 모두 확인했다
-<!-- /checklist -->
 
 ---
 

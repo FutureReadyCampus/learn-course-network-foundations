@@ -203,7 +203,17 @@ show("단계 3: 점검 - 부여 후")                                     # 부�
    2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
    3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `req_grant.py` · `apply2-1_run.py` 입니다.
    4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
+
+<!-- checklist optional -->
+- [ ] `access_control` 폴더의 `req_grant.py` 를 골격으로 바꾸고, `apply2-1_run.py` 를 만들어 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 2. **[VS Code]** `req_grant.py` 의 `grant_request` 본문을 직접 씁니다. 3.1 의 표와 그림을 보고 씁니다.
+
+<!-- checklist optional -->
+- [ ] `req_grant.py` 의 `grant_request` 본문을 직접 썼다
+<!-- /checklist -->
+
 3. **[터미널]** `pwd` 를 쳐서 마지막 폴더가 `access_control` 인지 확인한 뒤 실행합니다.
    ```bash
    python apply2-1_run.py
@@ -211,15 +221,17 @@ show("단계 3: 점검 - 부여 후")                                     # 부�
    - 명령 풀이: `python` 파이썬으로 파일을 실행 · `apply2-1_run.py` 실행할 파일
    - 맥북은 `python3 apply2-1_run.py` 로 칩니다.
 4. 출력은 세 단계입니다. 단계 1은 부여 전 판정(네 줄), 단계 2는 부여 시도의 결과(네 줄)와 `부여된 예외 번호:` 한 줄, 단계 3은 부여 후 판정(네 줄)입니다. 부여 전과 후에 달라진 줄이 하나 있습니다.
+
+<!-- checklist optional -->
+- [ ] `python apply2-1_run.py` 를 실행해 세 단계 출력과 `부여된 예외 번호:` 한 줄이 나왔다
+<!-- /checklist -->
+
 5. **[보고서]** `access_control/report_u2.md` 의 `## 응용 2-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 부여를 시도한 네 건이 각각 어떻게 됐는지 적어 주세요.
    - (나) [핵심 질문] 승인자가 승인한 3번 요청(`dami`)을 코드가 부여하지 않았습니다. 코드의 이 확인이 없었다면 어떤 일이 생겼을까요? 승인자가 이 문제를 미리 막기 어려운 이유도 적어 주세요.
    - (다) [핵심 질문] 부여한 예외의 만료 시각에는 요청서의 희망 만료 시각을 그대로 썼습니다. 그 시각이 지나면 이 예외는 어떻게 될까요? 만료된 예외를 정리하는 점검은 누가 얼마나 자주 하면 좋을까요?
 
 <!-- checklist optional -->
-- [ ] `access_control` 폴더의 `req_grant.py` 를 골격으로 바꾸고, `apply2-1_run.py` 를 만들어 붙여 넣은 뒤 저장했다
-- [ ] `req_grant.py` 의 `grant_request` 본문을 직접 썼다
-- [ ] `python apply2-1_run.py` 를 실행해 세 단계 출력과 `부여된 예외 번호:` 한 줄이 나왔다
 - [ ] `report_u2.md` 의 `## 응용 2-1` 칸을 채웠다
 <!-- /checklist -->
 
