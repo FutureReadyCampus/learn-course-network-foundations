@@ -8,7 +8,7 @@ render: markdown
 
 ## 제공 파일 쓰는 법
 
-이 레슨의 파일은 **실습 3-2를 마친 뒤**, 실습 3-2 끝의 「이번 Unit 마무리 · 깃허브에 올리기」 2번에서 만듭니다. 오늘 핵심 실습에는 쓰지 않지만, 응용 3-2 · 3-3과 Unit 4 응용 4-1 · 4-2가 이 파일을 가져와 사용(import)합니다. 응용을 하지 않아도 완성본을 받아 두면 다음 Unit을 따라갈 수 있습니다.
+이 레슨의 파일은 **실습 3-2를 마친 뒤**, 실습 3-2 끝의 「이번 Unit 마무리 · 깃허브에 올리기」 2번에서 만듭니다. 오늘 핵심 실습에는 쓰지 않지만, 응용 3-2 · 3-3과 Unit 4 응용 4-1 · 4-2가 이 파일을 가져와 사용(import)합니다. 응용을 하지 않아도 완성본을 만들어 두면 다음 Unit을 따라갈 수 있습니다.
 
 만들 파일은 세 개입니다.
 
@@ -38,7 +38,7 @@ render: markdown
 
 ## `ticket_merge.py` 만들기
 
-**`ticket_merge.py`** 를 만들고 아래 내용을 붙여 넣습니다. 알림이 올 때마다 `handle_alert` 가 합칠 티켓을 찾아, 있으면 그 티켓에 병합하고 없으면 새 티켓을 만듭니다.
+`soar_response` 폴더를 오른쪽 클릭 › **New File** 로 **`ticket_merge.py`** 를 만들고 아래 내용을 붙여 넣고 저장합니다. 알림이 올 때마다 `handle_alert` 가 합칠 티켓을 찾아, 있으면 그 티켓에 병합하고 없으면 새 티켓을 만듭니다.
 
 병합 조건은 네 가지입니다.
 
@@ -123,18 +123,23 @@ def change_ticket_status(ticket, new_status, minute, who):                     #
 
 > **확인** — 저장한 뒤 첫 페이지 3번의 확인 명령을 쳐서 `제공 파일 정상 7` 이 나오면 성공입니다. `No module named 'ticketing'` 이 나오면 실습 3-2의 `ticketing.py` 를 먼저 만듭니다.
 
+<!-- checklist -->
+- [ ] `ticket_merge.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `soar_response` 폴더에서 첫 페이지 3번 확인 명령을 실행해 `제공 파일 정상 7` 이 나왔다
+<!-- /checklist -->
+
 ## `ticket_notice.py` 만들기
 
 `ticket_notice.py` 는 `notifier.py` 의 `notify` 를 불러 쓰므로 `notifier.py` 를 먼저 만듭니다.
 
-1. **[터미널]** `agent_core` 폴더에 `notifier.py` 가 있으면 이 폴더로 복사합니다.
+1. **[터미널]** `agent_core` 폴더에 `notifier.py` 가 있으면 `soar_response` 폴더로 복사합니다(터미널은 `soar_response` 폴더에 있어야 합니다).
    ```bash
    cp ../agent_core/notifier.py .
    ls
    ```
    - 명령 풀이: `cp 원본 복사본` 파일 복사하기(`.` 은 지금 폴더)
-   - `No such file` 이 나오면 `ls ..` 로 `agent_core` 폴더 이름이 맞는지 봅니다. 그래도 없으면 아래 `notifier.py` 상자를 같은 이름의 파일에 붙여 넣습니다.
-2. **[VS Code]** `ticket_notice.py` 를 만들고 맨 아래 `ticket_notice.py` 상자를 붙여 넣습니다.
+   - `No such file` 이 나오면 `ls ..` 로 `agent_core` 폴더 이름이 맞는지 봅니다. 그래도 없으면 `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `notifier.py` 를 만들고 아래 `notifier.py` 상자를 붙여 넣고 저장합니다.
+2. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `ticket_notice.py` 를 만들고 맨 아래 `ticket_notice.py` 상자를 붙여 넣고 저장합니다.
 
 **`notifier.py`** — 알림 함수 `notify` 입니다. 메시지를 알림 서버로 보내고, 보내면 `True`, 실패하면 `[알림 실패]` 와 오류 이름을 출력하고 `False` 를 리턴합니다.
 
@@ -218,3 +223,8 @@ def send_ticket_notice(ticket, now, rules):                            # 티켓 
 ```
 
 > **확인** — `soar_response` 폴더에 `notifier.py` 와 `ticket_notice.py` 가 보이면 성공입니다. 불러오기 확인은 `requests` 를 설치하는 응용 3-3 순서 1번에서 합니다. 파일이 안 보이면 VS Code 왼쪽 목록에서 다른 폴더에 만들어지지 않았는지 봅니다.
+
+<!-- checklist -->
+- [ ] `notifier.py` 를 `soar_response` 폴더에 만들었다(`agent_core` 에서 복사하거나 코드 상자를 붙여 넣고 저장)
+- [ ] `ticket_notice.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
