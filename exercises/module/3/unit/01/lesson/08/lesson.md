@@ -202,7 +202,17 @@ for exception in EXCEPTIONS:                                           # 예외�
 1. **[VS Code]** 세 파일을 만들고(이미 있으면 열고) 내용을 지운 뒤 각각 붙여 넣습니다.
    - 만드는 방법은 실습 1-2 의 순서 1번과 같습니다(VS Code 새 파일 아이콘). 만들 파일은 차례로 `access_control` 폴더 안의 `config` 폴더에 `exceptions.json`(경로 `config/exceptions.json`, `config` 폴더를 오른쪽 클릭 › **New File**), `access_control` 폴더 바로 아래에 `exception_policy.py` · `apply1-3_run.py` 입니다. 앞의 두 파일은 「제공 파일」에서 이미 만들었으니 열어서 내용을 바꿉니다. 붙여 넣을 내용은 위 코드 상자입니다.
 2. **[VS Code]** `config/exceptions.json` 에 4번 · 5번 예외를 직접 씁니다. 2.1 의 표에서 사용자 · 권한 · 만료 시각 · 이유를 글자 그대로 옮깁니다.
+
+<!-- checklist optional -->
+- [ ] `config/exceptions.json` 에 4번 · 5번 예외를 직접 써서 저장했다
+<!-- /checklist -->
+
 3. **[VS Code]** `exception_policy.py` 의 `find_exception` 본문을 직접 씁니다. 2.2 의 문법 상자를 보고 씁니다.
+
+<!-- checklist optional -->
+- [ ] `exception_policy.py` 의 `find_exception` 본문을 직접 써서 저장했다
+<!-- /checklist -->
+
 4. **[터미널]** 실행합니다.
    ```bash
    python apply1-3_run.py
@@ -210,15 +220,17 @@ for exception in EXCEPTIONS:                                           # 예외�
    - 명령 풀이: `python` 파이썬으로 파일을 실행 · `apply1-3_run.py` 실행할 파일
    맥북: `python3 apply1-3_run.py`
 5. 출력은 두 단계입니다. 단계 1(판정)은 여섯 건의 판정(`(True, 번호)` 또는 `(False, None)`)이고, 단계 2(점검)는 예외 다섯 건마다 `[회수]` 또는 `[유지]` 입니다.
+
+<!-- checklist optional -->
+- [ ] `apply1-3_run.py` 를 만들어 붙여 넣고 실행해 단계 1 여섯 줄과 단계 2 다섯 줄이 나왔다
+<!-- /checklist -->
+
 6. **[보고서]** `report_u1.md` 의 `## 응용 1-3` 아래를 채웁니다.
    - (가) 단계 1 출력 여섯 줄과 단계 2 출력 다섯 줄을 붙여 넣고, 회수할 예외의 번호를 적어 주세요.
    - (나) [핵심 질문] 예외 신청서에 만료 시각이 비어 있어도 접수된다면 어떤 일이 쌓이고, 1년 뒤 감사에서 어떤 지적을 받을까요? 만료를 반드시 적게 하려면 시스템에 어떤 규칙을 넣겠습니까?
    - (다) [핵심 질문] 서비스 계정 `batch-night` 의 예외 4번(영업 실적 조회, 분기 집계 시험)을 다음 분기에도 쓰게 기간을 연장해 달라는 요청이 왔습니다. 연장해 주기 전에 무엇을 확인하고, 연장한다면 어떤 조건을 붙이겠습니까? 연장하지 않는다면 대신 무엇을 제안하겠습니까?
 
 <!-- checklist optional -->
-- [ ] `config/exceptions.json` 에 4번 · 5번 예외를 직접 써서 저장했다
-- [ ] `exception_policy.py` 의 `find_exception` 본문을 직접 써서 저장했다
-- [ ] `apply1-3_run.py` 를 만들어 붙여 넣고 실행해 단계 1 여섯 줄과 단계 2 다섯 줄이 나왔다
 - [ ] `report_u1.md` 의 `## 응용 1-3` 아래를 채웠다
 <!-- /checklist -->
 

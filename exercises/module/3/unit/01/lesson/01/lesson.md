@@ -94,6 +94,11 @@ Unit 1은 첫 단계인 권한 정하기입니다. 사용자와 역할을 파일
 이 과정에서 만드는 GitHub 저장소는 **`network-study-notes` 하나**입니다. 실습 코드와 포트폴리오 글을 모두 이 저장소에 둡니다. 이 페이지에서는 저장소를 만들어 내 컴퓨터로 내려받고(`git clone`), 그 폴더를 VS Code 로 연 뒤 Module 3의 작업 폴더를 만듭니다. 파일은 실습에서 필요할 때 하나씩 만듭니다.
 
 1. **[브라우저]** GitHub 에서 새 저장소를 만듭니다. 이름은 `network-study-notes`, 공개 범위는 **Public**(Private 이면 포트폴리오 사이트를 남이 못 봅니다), **Add a README file** · `.gitignore` · license 는 모두 고르지 않습니다(빈 저장소). 이미 만들어 두었다면 건너뜁니다.
+
+<!-- checklist -->
+- [ ] GitHub 에 **Public** 빈 저장소 `network-study-notes` 를 만들었다(README 체크 안 함)
+<!-- /checklist -->
+
 2. **[VS Code]** 메뉴 **Terminal › New Terminal** 로 터미널을 엽니다. **터미널**(terminal)은 명령을 글자로 입력해 컴퓨터에 일을 시키는 창으로, VS Code 아래쪽에 열립니다. 깃이 있는지 보고, 깃 설정은 처음 한 번만 합니다(이메일은 깃허브 계정 이메일이나 `…@users.noreply.github.com`).
    ```bash
    git --version
@@ -111,6 +116,11 @@ Unit 1은 첫 단계인 권한 정하기입니다. 사용자와 역할을 파일
    - `You appear to have cloned an empty repository.` 는 빈 저장소라서 나오는 안내이니 괜찮습니다. 로그인 창이 뜨면 **Sign in with your browser** 로 로그인합니다.
    - `already exists and is not an empty directory` 가 나오면 바탕화면에 같은 이름의 폴더가 이미 있는 것입니다. 그 폴더 이름을 바꿔 두고 다시 칩니다.
 4. **[VS Code]** 메뉴 **File › Open Folder…** 로 바탕화면의 `network-study-notes` 폴더를 엽니다. 앞으로 이 폴더가 저장소 맨 위(루트)입니다.
+
+<!-- checklist -->
+- [ ] `git clone` 으로 내려받은 `network-study-notes` 폴더를 VS Code 로 열었다
+<!-- /checklist -->
+
 5. **[VS Code]** 왼쪽 목록에서 `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다. 이 터미널에서 Module 3의 작업 폴더 `access_control` 과 그 안의 설정 폴더 `config` 를 만들고, `access_control` 폴더로 들어갑니다. Module 3의 파일은 모두 이 폴더에 둡니다.
    ```bash
    mkdir -p access_control/config
@@ -125,6 +135,11 @@ Unit 1은 첫 단계인 권한 정하기입니다. 사용자와 역할을 파일
        access_control/      Module 3
          config/
      ```
+
+<!-- checklist -->
+- [ ] `access_control/config` 폴더를 만들고, 터미널 위치가 `…/network-study-notes/access_control` 이다
+<!-- /checklist -->
+
 6. 다음 페이지부터 포트폴리오를 준비하고, 7쪽에서 필수 파일을 만들어 처음 올립니다(push). 오늘 준비 시간에 모두 합니다.
 7. 각 실습은 **「할 일」을 위에서부터 차례로** 따라 합니다. `[창 이름]` 이 지금 쓸 창입니다. 막히면 이 Unit 뒤쪽의 정답을 봅니다. 답을 적는 **보고서**는 「보고서 쓰기」 레슨 첫 페이지의 틀로 만듭니다. 실습 1-1을 시작하기 전에 만들어 두면 편합니다.
 
@@ -133,12 +148,6 @@ Unit 1은 첫 단계인 권한 정하기입니다. 사용자와 역할을 파일
 > **확인** — 마지막 `pwd` 가 `…/network-study-notes/access_control` 로 끝나고 VS Code 왼쪽 목록에 `access_control/config` 가 보이면 성공입니다. 안 보이면 4번에서 연 폴더가 바탕화면의 `network-study-notes` 인지 보고 5번부터 다시 합니다.
 
 ---
-
-<!-- checklist -->
-- [ ] GitHub 에 **Public** 빈 저장소 `network-study-notes` 를 만들었다(README 체크 안 함)
-- [ ] `git clone` 으로 내려받은 `network-study-notes` 폴더를 VS Code 로 열었다
-- [ ] `access_control/config` 폴더를 만들고, 터미널 위치가 `…/network-study-notes/access_control` 이다
-<!-- /checklist -->
 
 ## 내 기록 남기기: 소개
 
@@ -261,6 +270,10 @@ Jekyll을 깊이 배우지는 않습니다. 필요한 것만 하나씩 해 봅�
 
 <!-- include: portfolio-starter/.gitignore -->
 
+<!-- checklist -->
+- [ ] `_config.yml` · `index.md` · `about.md` · `_posts/2026-01-01-hello.md` · `.gitignore` 를 `network-study-notes` 바로 아래에 만들어 붙여 넣고 저장했다
+<!-- /checklist -->
+
 **올리기** — **[터미널]** `network-study-notes` 폴더에서 칩니다.
 
 ```bash
@@ -280,7 +293,6 @@ cd access_control
 > **확인** — GitHub 의 `network-study-notes` 저장소를 새로 고쳤을 때 `_config.yml` · `index.md` · `about.md` · `.gitignore` 와 폴더 `_posts` 가 보이면 성공입니다. 빠진 것이 있으면 VS Code 에서 그 파일이 `network-study-notes` 바로 아래에 있는지, 이름에 오타나 앞뒤 빈칸이 없는지 보고 다시 올립니다.
 
 <!-- checklist -->
-- [ ] `_config.yml` · `index.md` · `about.md` · `_posts/2026-01-01-hello.md` · `.gitignore` 를 `network-study-notes` 바로 아래에 만들어 붙여 넣고 저장했다
 - [ ] `git add` · `git commit` · `git push -u origin main` 으로 올리고, GitHub 저장소에 다섯 파일이 보인다
 <!-- /checklist -->
 
@@ -299,6 +311,10 @@ VS Code 에서 `network-study-notes` 바로 아래의 `_config.yml` 을 엽니�
 
 `about.md`도 같은 방법으로 열어 빈칸 안내 문구를 내 소개로 바꿉니다. 두 파일을 저장한 뒤 **[터미널]** 저장소 루트에서 올립니다(`cd ..` → `git add .` → `git commit -m "Set site name"` → `git push` → `cd access_control`).
 
+<!-- checklist -->
+- [ ] `_config.yml` 의 `title` · `description` · `author` · `baseurl` 과 `about.md` 를 내 것으로 고쳐 저장하고 push 했다
+<!-- /checklist -->
+
 ### 이어서 Pages 켜기
 
 **[브라우저]** 저장소의 **Settings → Pages** 에서 **Source** 는 **Deploy from a branch**, **Branch** 는 `main` 과 `/ (root)` 를 고르고 **Save** 를 누릅니다. `/ (root)` 는 저장소 맨 위 폴더의 파일로 사이트를 만들라는 뜻입니다. 주소는 아래 모양입니다.
@@ -310,7 +326,6 @@ https://<내 아이디>.github.io/<저장소 이름>/
 > **확인** — 1~2분 뒤 **Settings → Pages** 위쪽에 **Your site is live at …** 와 주소가 나오면 성공입니다. 안 나오면 다음 페이지의 「화면이 안 나오거나 이상할 때」 표를 봅니다.
 
 <!-- checklist -->
-- [ ] `_config.yml` 의 `title` · `description` · `author` · `baseurl` 과 `about.md` 를 내 것으로 고쳐 저장하고 push 했다
 - [ ] **Settings → Pages** 에서 `main` · `/ (root)` 로 Pages 를 켰다
 <!-- /checklist -->
 
@@ -427,9 +442,12 @@ cd access_control
 
 <!-- include: portfolio-starter/check_publish.py -->
 
+<!-- checklist -->
+- [ ] `check_publish.py` 를 `network-study-notes` 바로 아래에 만들어 붙여 넣고 저장했다
+<!-- /checklist -->
+
 > **확인** — `check_publish.py` 출력 마지막에 `요약: 오류 0건, 주의 0건` 이 나오면 성공입니다. `[오류]` · `[주의]` 줄이 나오면 그 줄이 가리키는 파일을 고치고 다시 돌립니다.
 
 <!-- checklist -->
-- [ ] `check_publish.py` 를 `network-study-notes` 바로 아래에 만들어 붙여 넣고 저장했다
 - [ ] 저장소 루트에서 `python check_publish.py` 를 돌려 `오류 0건, 주의 0건` 을 보았다
 <!-- /checklist -->
