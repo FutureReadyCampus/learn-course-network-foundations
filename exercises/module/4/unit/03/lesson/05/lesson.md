@@ -280,7 +280,7 @@ False
 
 **할 일**
 
-1. `saas_detection.py` · `apply3-2_run.py` 두 파일을 만들고, `saas_detection.py` 의 두 함수에서 직접 쓰는 곳을 씁니다.
+1. 작업 폴더 `network-study-notes/anomaly_detection` 에 `saas_detection.py` · `apply3-2_run.py` 두 파일을 만들고, `saas_detection.py` 의 두 함수에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>업무 시간 밖 로그인</mark>(단계 1), <mark>평소와 다른 IP 사용자</mark>(단계 2), <mark>대량 다운로드 사용자</mark>(단계 3)를 읽습니다.
 
 **`saas_detection.py`**
@@ -403,7 +403,7 @@ print("--- 단계 3: 파일을 5번 이상 내려받은 사용자", bulk_users) 
 
 **순서**
 
-1. **[VS Code]** 파일 `saas_detection.py` · `apply3-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code]** 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `saas_detection.py` 와 `apply3-2_run.py` 를 만들고, 위의 같은 이름 코드 상자를 각각 붙여 넣어 저장합니다.
 2. **[VS Code]** `saas_detection.py` 에서 <mark>직접 쓰는 곳 다섯 군데를 씁니다</mark>. 2.1 의 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -416,6 +416,13 @@ print("--- 단계 3: 파일을 5번 이상 내려받은 사용자", bulk_users) 
    - (가) 실행한 출력 전체를 붙여 넣고, 규칙마다 해당한 사용자를 적어 주세요.
    - (나) [핵심 질문] jiwoo 는 업무 시간 밖(02:14)과 평소와 다른 IP 두 규칙에 해당하지만 그 로그인은 실패였습니다. 이 기록만으로 계정 도용을 확정할 수 있나요? 그렇게 판단한 이유와, 샘플 로그에서 더 찾아볼 수 있는 것을 한 가지 적어 주세요.
    - (다) [핵심 질문] gaeun 은 평소 IP 기록이 없어 「평소와 다른 IP」 규칙에서 제외됩니다. 제외하지 않으면 어떤 일이 생기고, 제외하면 어떤 위험이 남나요?
+
+<!-- checklist optional -->
+- [ ] `anomaly_detection` 폴더에 `saas_detection.py` 를 만들어 붙여 넣고 직접 쓰는 곳 다섯 군데를 채워 저장했다
+- [ ] `anomaly_detection` 폴더에 `apply3-2_run.py` 를 만들어 붙여 넣고 저장했다
+- [ ] `python apply3-2_run.py` 를 실행해 세 단계 출력을 봤다
+- [ ] `report_u3.md` 의 `## 응용 3-2` 를 채우고 저장했다
+<!-- /checklist -->
 
 ## 응용 3-2 정리
 
