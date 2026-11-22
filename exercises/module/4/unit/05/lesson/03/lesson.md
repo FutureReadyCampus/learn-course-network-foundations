@@ -493,6 +493,13 @@ network-study-notes/
 
 **확인** — 깃허브의 `anomaly_detection` 폴더에 `event_summary.py` · `report_u5.md` 가 보이고 `.env` 가 없으면 성공입니다. 파일이 안 보이면 `git push` 의 출력에 `rejected` 나 `error` 가 있었는지 보고, 위 4번 ③ 의 안내대로 다시 올립니다.
 
+<!-- checklist -->
+- [ ] `network-study-notes` 폴더에서 `git status` 를 쳐서 목록에 `.env` · `.venv` 가 없는 것을 확인했다
+- [ ] `report_u5.md` 의 `## 마무리` (가)를 채우고 저장했다
+- [ ] `git add .` → `git commit` → `git push` 를 차례로 쳐서 올렸다
+- [ ] 깃허브의 `anomaly_detection` 폴더에서 `event_summary.py` · `report_u5.md` 를 보고 `.env` 가 없는 것을 확인했다
+<!-- /checklist -->
+
 ## 마무리 정리
 
 | 하려는 일 | 코드 · 말 |
