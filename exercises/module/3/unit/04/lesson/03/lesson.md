@@ -86,7 +86,7 @@ source:
 
 **할 일**
 
-1. `config/sensitive.json` · `revoke_approve.py` · `exercise4-1_run.py` 세 파일을 만들고, `revoke_approve.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
+1. 작업 폴더 `network-study-notes/access_control` 안에 `config/sensitive.json` · `revoke_approve.py` · `exercise4-1_run.py` 세 파일을 만들고, `revoke_approve.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
 2. 채우기 <mark>전과 후</mark>에 실행해서 승인 상태(단계 1)와 승인 상태별 건수(단계 2)를 비교합니다.
 
 **`config/sensitive.json`** — 그대로 붙여 넣습니다. 민감한 권한 리스트입니다. `access_control` 안의 `config` 폴더에 만듭니다.
@@ -205,8 +205,9 @@ print(counts)                                                    # 승인 상태
 **순서**
 
 1. **[터미널]** 「제공 파일」 레슨의 `revoke_input.py` · `revoke_plan.py` 가 있는지 `ls` 로 봅니다. 없으면 그 레슨에서 먼저 만듭니다.
-2. **[VS Code]** 파일 `config/sensitive.json` · `revoke_approve.py` · `exercise4-1_run.py` 를 만들어 위 코드를 붙여 넣습니다. 
-   - VS Code: `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력합니다(`config/…` 이름은 이 폴더를 선택한 채 입력하면 `config` 폴더 안에 만들어집니다).
+2. **[VS Code]** 파일 `config/sensitive.json` · `revoke_approve.py` · `exercise4-1_run.py` 를 만들고, 위에서 같은 이름이 붙은 코드 상자의 내용을 붙여 넣어 저장합니다.
+   - `sensitive.json` 은 `access_control` 폴더 안의 `config` 폴더를 오른쪽 클릭 › **New File** 로 만듭니다.
+   - `revoke_approve.py` · `exercise4-1_run.py` 는 `access_control` 폴더를 오른쪽 클릭 › **New File** 로 만듭니다.
 3. **[터미널]** `ls config` 로 `sensitive.json` 이 `users.json` 과 같은 `config` 폴더에 있는지 보고, `python -m json.tool config/sensitive.json`(맥북은 `python3`)로 내용이 정상인지 확인합니다.
    - 깨진 채 두면 민감한 권한 리스트를 읽지 못해 junho 의 `SALES:CHANGE` 가 「승인 불필요」로 나오고, 승인이 필요한 계획이 3건에서 2건으로 줄어듭니다.
 4. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고, **채우기 전에** 한 번 실행해서 8건이 모두 「승인 불필요」로 나오는지 봅니다(맥북은 `python3`).
@@ -219,12 +220,20 @@ print(counts)                                                    # 승인 상태
    ```bash
    python exercise4-1_run.py
    ```
-7. **[보고서]** `report_u4.md` 의 `## 실습 4-1` 아래를 채웁니다.
+7. **[보고서]** `access_control/report_u4.md` 의 `## 실습 4-1` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
    - (가) [핵심 질문] 채운 뒤 실행한 출력 전체를 붙여 넣고, 「승인 불필요」 · 「승인됨」 · 「승인 대기」가 각각 몇 건인지, 승인 대기인 계획이 무엇인지 적어 주세요.
    - (나) [핵심 질문] 권한을 없애는 일인데 왜 쓰기 권한 같은 민감한 권한은 승인을 받게 할까요? 조회 같은 일반 권한 한 건은 바로 회수해도 되는 이유도 적어 주세요.
    - (다) [응용] junho 의 `SALES:CHANGE`(예외 2번) 계획은 승인 대기입니다. 실습 4-2에서 이 계획은 어떻게 처리될지 예상해서 적고, 승인이 오래 나지 않으면 어떤 문제가 생길지도 적어 주세요.
 
 **확인** — 다시 실행했을 때 단계 2가 `{'승인 불필요': 5, '승인됨': 2, '승인 대기': 1}` 이고, 「승인 대기」 줄이 `junho SALES:CHANGE <- 예외 2번` 이면 성공입니다. 안 나오면 「정답」 레슨의 실습 4-1 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+
+<!-- checklist -->
+- [ ] `config/sensitive.json` 을 만들어 붙여 넣고 `python -m json.tool config/sensitive.json` 으로 정상인지 확인했다
+- [ ] `revoke_approve.py` · `exercise4-1_run.py` 를 만들어 붙여 넣고, 채우기 전에 실행해 8건 모두 「승인 불필요」인 것을 봤다
+- [ ] `revoke_approve.py` 의 빈칸 ① · ② 를 채웠다
+- [ ] `python exercise4-1_run.py` 를 다시 실행해 단계 2가 `{'승인 불필요': 5, '승인됨': 2, '승인 대기': 1}` 로 나왔다
+- [ ] `report_u4.md` 의 `## 실습 4-1` (가) · (나) 답을 적었다
+<!-- /checklist -->
 
 ## 실습 4-1 정리
 
