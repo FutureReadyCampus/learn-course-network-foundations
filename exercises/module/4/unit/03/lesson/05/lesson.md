@@ -405,6 +405,12 @@ print("--- 단계 3: 파일을 5번 이상 내려받은 사용자", bulk_users) 
 
 1. **[VS Code]** 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `saas_detection.py` 와 `apply3-2_run.py` 를 만들고, 위의 같은 이름 코드 상자를 각각 붙여 넣어 저장합니다.
 2. **[VS Code]** `saas_detection.py` 에서 <mark>직접 쓰는 곳 다섯 군데를 씁니다</mark>. 2.1 의 문법 상자를 보고 씁니다.
+
+<!-- checklist optional -->
+- [ ] `anomaly_detection` 폴더에 `saas_detection.py` 를 만들어 붙여 넣고 직접 쓰는 곳 다섯 군데를 채워 저장했다
+- [ ] `anomaly_detection` 폴더에 `apply3-2_run.py` 를 만들어 붙여 넣고 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
@@ -412,15 +418,17 @@ print("--- 단계 3: 파일을 5번 이상 내려받은 사용자", bulk_users) 
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python apply3-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **세 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 표 2줄이고, 단계 2와 3은 사용자가 제목 줄에 함께 나오므로 그 아래 줄이 없습니다.
+
+<!-- checklist optional -->
+- [ ] `python apply3-2_run.py` 를 실행해 세 단계 출력을 봤다
+<!-- /checklist -->
+
 5. **[보고서]** `report_u3.md` 의 `## 응용 3-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 규칙마다 해당한 사용자를 적어 주세요.
    - (나) [핵심 질문] jiwoo 는 업무 시간 밖(02:14)과 평소와 다른 IP 두 규칙에 해당하지만 그 로그인은 실패였습니다. 이 기록만으로 계정 도용을 확정할 수 있나요? 그렇게 판단한 이유와, 샘플 로그에서 더 찾아볼 수 있는 것을 한 가지 적어 주세요.
    - (다) [핵심 질문] gaeun 은 평소 IP 기록이 없어 「평소와 다른 IP」 규칙에서 제외됩니다. 제외하지 않으면 어떤 일이 생기고, 제외하면 어떤 위험이 남나요?
 
 <!-- checklist optional -->
-- [ ] `anomaly_detection` 폴더에 `saas_detection.py` 를 만들어 붙여 넣고 직접 쓰는 곳 다섯 군데를 채워 저장했다
-- [ ] `anomaly_detection` 폴더에 `apply3-2_run.py` 를 만들어 붙여 넣고 저장했다
-- [ ] `python apply3-2_run.py` 를 실행해 세 단계 출력을 봤다
 - [ ] `report_u3.md` 의 `## 응용 3-2` 를 채우고 저장했다
 <!-- /checklist -->
 

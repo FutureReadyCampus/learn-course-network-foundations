@@ -362,6 +362,12 @@ for priority in [1, 2, 3]:                                   # 우선순위대�
 
 1. **[VS Code]** 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `access_detection.py` 와 `exercise3-2_run.py` 를 만들고, 위의 같은 이름 코드 상자를 각각 붙여 넣어 저장합니다. `access_detection.py` 의 `from rbac import check_permission` 은 시작하기에서 새로 만든 `anomaly_detection/rbac.py` 를 불러옵니다(`access_control/rbac.py` 가 아닙니다). 그래서 `anomaly_detection` 폴더에 `rbac.py` 와 `config/users.json` · `config/roles.json` 이 있어야 합니다.
 2. **[VS Code]** `access_detection.py` 의 `# ←` <mark>세 곳(① ~ ③)을 채웁니다</mark>. 위 판다스 문법 상자와 ③ 문법 상자를 참고해 씁니다. 막히면 아래 「실습 3-2 정리」를 봅니다.
+
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `access_detection.py` 를 만들어 붙여 넣고 빈칸 ① ~ ③ 을 채워 저장했다
+- [ ] `anomaly_detection` 폴더에 `exercise3-2_run.py` 를 만들어 붙여 넣고 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
@@ -369,18 +375,17 @@ for priority in [1, 2, 3]:                                   # 우선순위대�
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise3-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **세 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1과 단계 2는 숫자가 제목 줄에 함께 나오므로 그 아래 줄이 없고, 단계 3은 7줄입니다.
+
+<!-- checklist -->
+- [ ] `python exercise3-2_run.py` 를 실행해 단계 1 `9 개`, 단계 2 `7 개`, 단계 3 첫 줄 `1 퇴사한 계정 dami …` 가 나왔다
+<!-- /checklist -->
+
 5. **[보고서]** `report_u3.md` 의 `## 실습 3-2` 아래를 채웁니다.
    - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 서버 실패 수와 먼저 확인할 이벤트 수, 1순위 사용자를 적어 주세요.
    - (나) [핵심 질문] ① dami 의 실패 4개는 Module 3 규칙으로 어떤 이유로 판정됐고, 왜 1순위일까요? ② gaeun 의 실패 3개는 규칙으로는 「허용」인데 서버가 거절했습니다. 공격이라고 확정할 수 있는지 적고, 먼저 무엇을 확인해야 하는지 적어 주세요.
    - (다) [응용] seoyeon 의 서버 실패 2건(11:40 `SETTLE:QUERY` · 18:20 `SALES:CHANGE`)은 먼저 확인할 이벤트에 들어가지 않았습니다. 들어가지 않은 이유를 이번 실습의 규칙(실패 3번 이상)으로 설명하고, 이 규칙 때문에 놓칠 수 있는 경우를 한 가지 적어 주세요.
 
 **확인** — 단계 1 이 `9 개`, 단계 2 가 `7 개` 이고, 단계 3 의 일곱 줄 중 앞의 네 줄이 `1 퇴사한 계정 dami …`, 뒤의 세 줄이 `3 규칙은 허용인데 서버가 거절 gaeun …` 이면 성공입니다. 안 나오면 「정답」 레슨의 실습 3-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
-
-<!-- checklist -->
-- [ ] `anomaly_detection` 폴더에 `access_detection.py` 를 만들어 붙여 넣고 빈칸 ① ~ ③ 을 채워 저장했다
-- [ ] `anomaly_detection` 폴더에 `exercise3-2_run.py` 를 만들어 붙여 넣고 저장했다
-- [ ] `python exercise3-2_run.py` 를 실행해 단계 1 `9 개`, 단계 2 `7 개`, 단계 3 첫 줄 `1 퇴사한 계정 dami …` 가 나왔다
-<!-- /checklist -->
 
 ## 실습 3-2 정리
 
@@ -437,6 +442,11 @@ ls config
    | `.env` | `.env` |
    | `.venv` | `.venv/` |
    | `anomaly_detection/__pycache__/` | `__pycache__/` |
+
+<!-- checklist -->
+- [ ] 2번의 파일이 `anomaly_detection` 과 `anomaly_detection/config` 에 모두 있는 것을 보고, `network-study-notes` 폴더에서 `git status` 로 `.env` · `.venv` 가 올라가지 않게 했다
+<!-- /checklist -->
+
 3. **[보고서]** `report_u3.md` 의 `## 마무리` 아래 (가)를 채웁니다. <mark>올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다.</mark>
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
    ```bash
@@ -448,6 +458,10 @@ ls config
    - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
 5. **[브라우저]** 깃허브의 내 `network-study-notes` 저장소를 새로 고쳐 `anomaly_detection` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다.
 
+<!-- checklist -->
+- [ ] `git add .` · `git commit` · `git push` 로 올리고, 깃허브의 `anomaly_detection` 폴더에서 파일을 확인했다
+<!-- /checklist -->
+
 - 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 3번의 2 ~ 4를 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
 
 **확인** — 깃허브의 `anomaly_detection` 폴더에 2번에서 본 파일이 모두 보이고 `.env` 가 없으면 성공입니다. 안 보이면 `git status` 를 다시 쳐서 빨간 목록이 남아 있는지 보고, 남아 있으면 3번의 4를 다시 합니다.
@@ -456,11 +470,6 @@ ls config
 
 1. 다음 Unit 4(위험 점수 매기고 오탐 줄이기)에서는 이번 Unit 의 탐지 결과를 **같은 사용자의 기록끼리 이어서 함께 보고**, 위험 점수를 매겨 등급으로 나눕니다.
 2. 오늘 만든 `access_detection.py` 는 다음 Unit 에서 여러 번 불러 씁니다. 파일 이름과 함수 이름을 바꾸지 않습니다.
-
-<!-- checklist -->
-- [ ] 2번의 파일이 `anomaly_detection` 과 `anomaly_detection/config` 에 모두 있는 것을 보고, `network-study-notes` 폴더에서 `git status` 로 `.env` · `.venv` 가 올라가지 않게 했다
-- [ ] `git add .` · `git commit` · `git push` 로 올리고, 깃허브의 `anomaly_detection` 폴더에서 파일을 확인했다
-<!-- /checklist -->
 
 ---
 

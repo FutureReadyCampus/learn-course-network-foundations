@@ -279,6 +279,12 @@ for alert in saved_alerts:                                                      
 
 1. **[VS Code]** 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `alerts.py` 와 `apply3-1_run.py` 를 만들고, 위의 같은 이름 코드 상자를 각각 붙여 넣어 저장합니다. 같은 폴더에 `login_detection.py`(Unit 2 실습 2-3)와 `traffic_detection.py`(실습 3-1)가 있어야 합니다.
 2. **[VS Code]** `alerts.py` 에서 직접 쓰는 곳 **여섯 군데**를 씁니다. 위 알림 한 건의 모양 표와 판다스 문법 상자를 보고 씁니다.
+
+<!-- checklist optional -->
+- [ ] `anomaly_detection` 폴더에 `alerts.py` 를 만들어 붙여 넣고 직접 쓰는 곳 여섯 군데를 채워 저장했다
+- [ ] `anomaly_detection` 폴더에 `apply3-1_run.py` 를 만들어 붙여 넣고 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
@@ -287,15 +293,17 @@ for alert in saved_alerts:                                                      
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python apply3-1_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **네 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1 ~ 3은 제목 줄에 숫자가 함께 나오고, 단계 4는 알림 한 건이 한 줄씩 2줄입니다.
 5. **[VS Code]** `anomaly_detection` 폴더에 새로 생긴 `alerts.json` 을 열어 <mark>알림 두 건이 보이는지</mark> 확인합니다.
+
+<!-- checklist optional -->
+- [ ] `python apply3-1_run.py` 를 실행하고, 새로 생긴 `alerts.json` 에서 알림 두 건을 봤다
+<!-- /checklist -->
+
 6. **[보고서]** `report_u3.md` 의 `## 응용 3-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, `alerts.json` 의 내용도 붙여 넣은 뒤 알림이 모두 몇 건인지 적어 주세요.
    - (나) [핵심 질문] ① 203.0.113.50 이 `normalized_events.json` 의 `source` 가 `web` 인 줄에 몇 시에 나오는지 찾아 주세요. ② 그 시각이 급증 알림의 분(09:12)과 같은지 비교해 주세요. ③ 두 알림이 같은 일과 관련이 있는지 적고, 담당자가 두 건을 한 건으로 합쳐 조사할지 따로 조사할지 고른 이유도 적어 주세요.
    - (다) [핵심 질문] 203.0.113.50 알림을 조사해 보니 직원이 비밀번호를 잊어 반복해서 입력한 것이었습니다. ① `status` 를 어떤 값으로 바꿀지(이 Unit 응용 3-1 레슨 2.1 의 처리 상태 순서를 참고), ② `note` 에 무엇을 더 적을지, ③ 알림을 지우지 않고 남겨 두는 편이 좋은 이유를 적어 주세요. 코드는 고치지 않고 글로만 적습니다.
 
 <!-- checklist optional -->
-- [ ] `anomaly_detection` 폴더에 `alerts.py` 를 만들어 붙여 넣고 직접 쓰는 곳 여섯 군데를 채워 저장했다
-- [ ] `anomaly_detection` 폴더에 `apply3-1_run.py` 를 만들어 붙여 넣고 저장했다
-- [ ] `python apply3-1_run.py` 를 실행하고, 새로 생긴 `alerts.json` 에서 알림 두 건을 봤다
 - [ ] `report_u3.md` 의 `## 응용 3-1` 을 채우고 저장했다
 <!-- /checklist -->
 
