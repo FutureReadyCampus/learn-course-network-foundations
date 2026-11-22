@@ -229,7 +229,7 @@ print(text)                                                      # 보고서 내
 - [ ] `access_control` 폴더 바로 아래에 `weekly_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
 <!-- /checklist -->
 
-1. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
+1. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다.
    ```bash
    python weekly_run.py
    ls
@@ -283,7 +283,8 @@ print(text)                                                      # 보고서 내
 | 오류 | 원인 |
 |---|---|
 | `ModuleNotFoundError: No module named 'checklist'` | `checklist.py` 가 같은 폴더에 없음 |
-| `IndentationError` | `checklist.py` 의 빈칸 ① ~ ③ 중 비어 있는 곳이 있음 |
+| `IndentationError` | `checklist.py` 의 빈칸 ② 가 비어 있음 |
+| 오류 없이 3절 퇴사자 계정 점검에 여섯 명이 모두 나옴 | `checklist.py` 의 빈칸 ① 이 비어 있음 |
 | `NameError: name 'expected_dept' is not defined` | `checklist.py` 의 빈칸 ③ 이 비어 있음 |
 
 - 이 보고서는 실습 5-2의 상황 8에서 다시 읽습니다. 숫자가 어떻게 나왔는지 직접 세어 보고 싶으면 응용 5-1을 합니다.

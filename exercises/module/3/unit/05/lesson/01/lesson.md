@@ -42,13 +42,13 @@ Unit 5는 Module 3 **접근통제 자동화**의 마지막 단계인 **결과 �
 - 샘플 로그 `week_log.jsonl` 은 응용 4-3의 판정 서버가 남기는 `server_log.jsonl` 과 **같은 모양**입니다. 응용 4-3을 하지 않았어도 괜찮습니다.
   - 그 로그는 몇 줄뿐이라 일주일 치로 쓰기에 모자라서, 같은 모양으로 40줄을 만든 샘플을 씁니다.
   - 2026-10-26부터 2026-11-01까지 일주일 동안 서버가 받은 요청이라고 생각하고 읽습니다.
-- 깃허브에 올리는 일은 Module 4 첫 Unit의 실습 1-2 마지막에 한 번에 합니다. `access_control` 폴더도 같은 저장소라 그때 함께 올라갑니다.
+- 깃허브에는 「오늘의 글 쓰기」 마지막 쪽 「공개 전 점검」에서 글을 올릴 때 함께 올립니다. `access_control` 폴더도 같은 저장소라 그때 함께 올라갑니다.
 
 ## 폴더 열고 데이터 파일 만들기
 
 이번 Unit의 작업 폴더는 `network-study-notes/access_control` 입니다. VS Code 로 저장소 폴더 `network-study-notes` 를 열고, 이 페이지의 파일은 모두 그 안의 `access_control` 폴더(또는 그 안의 `config` 폴더)에 만듭니다.
 
-1. **[VS Code]** 왼쪽 목록의 `access_control` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
+1. **[VS Code]** 왼쪽 목록의 `access_control` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다. 터미널 오른쪽 위 이름 칸이 **bash** 인지 봅니다. 아니면(예: powershell) `+` 옆의 **∨** 를 눌러 **Git Bash** 를 고르고, 새로 열린 터미널에서 `cd access_control` 을 칩니다(새 터미널은 저장소 맨 위 폴더 `network-study-notes` 에서 열립니다). 이번 Unit의 명령(`pwd` · `ls` · `grep`)은 모두 Git Bash 기준입니다.
 2. **[터미널]** 위치를 확인합니다. 결과가 `…/network-study-notes/access_control` 로 끝나야 합니다.
    ```bash
    pwd
@@ -56,11 +56,11 @@ Unit 5는 Module 3 **접근통제 자동화**의 마지막 단계인 **결과 �
    ls config
    python --version
    ```
-   - 맥북은 `python` 을 `python3` 로 바꿔 칩니다. `config` 폴더가 없어서 `ls config` 가 오류를 내도 괜찮습니다(이번 Unit에서 쓸 json 파일은 5번에서 만듭니다).
+   - `config` 폴더가 없어서 `ls config` 가 오류를 내도 괜찮습니다(이번 Unit에서 쓸 json 파일은 5번에서 만듭니다).
 3. **파일은 이렇게 만듭니다.** 이 페이지에 나오는 파일은 모두 이 페이지의 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
    1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다.
-   2. 코드 상자의 복사 버튼으로 내용을 복사해 방금 만든 그 파일에 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
-   - 답을 적는 **보고서** `report_u5.md`(`access_control` 폴더 바로 아래)는 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
+   2. 코드 상자의 복사 버튼으로 내용을 복사해 방금 만든 그 파일에 붙여 넣고, `Ctrl + S` 로 저장합니다.
+   - 답을 적는 **보고서** `report_u5.md`(`access_control` 폴더 바로 아래)는 실습 5-1 끝에서 바로 쓰므로, 지금 [「보고서 쓰기」 레슨 첫 쪽](__SITE__/exercises/module/3/unit/5/lesson/7/page/1)에서 틀을 복사해 먼저 만들고 이 페이지로 돌아옵니다.
 4. 문제는 **할 일 → 순서**대로 하고, `[창 이름]` 이 지금 쓸 창입니다. 코드는 `# ←` 가 있는 번호 빈칸(① · ② …)만 한 줄씩 채우고, 막히면 빈칸마다 있는 힌트를 본 뒤 이 Unit 뒤쪽의 정답 레슨을 봅니다.
 5. **[VS Code]** 이번 Unit에서 쓸 데이터 파일 세 개를 만들어 아래 내용을 그대로 붙여 넣습니다. `access_control` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 아래 굵은 글씨의 **파일 이름을 그대로** 적습니다. `config/week_state.json` 처럼 `config/` 가 붙은 이름을 적으면 `config` 폴더 안에 만들어집니다(`config` 폴더가 없으면 함께 만들어집니다).
 
@@ -146,7 +146,7 @@ Unit 5는 Module 3 **접근통제 자동화**의 마지막 단계인 **결과 �
 - [ ] `access_control` 폴더 바로 아래에 `week_log.jsonl` 을 만들고 40줄을 붙여 넣은 뒤 저장했다
 <!-- /checklist -->
 
-6. **[터미널]** 세 파일이 정상인지 확인합니다. `pwd` 결과가 `access_control` 로 끝나야 합니다(맥북은 `python3`).
+6. **[터미널]** 세 파일이 정상인지 확인합니다. `pwd` 결과가 `access_control` 로 끝나야 합니다.
    ```bash
    python -m json.tool config/week_state.json
    python -m json.tool config/alert.json
@@ -174,8 +174,8 @@ Unit 5는 Module 3 **접근통제 자동화**의 마지막 단계인 **결과 �
 `week_log.jsonl` 은 JSON 이 여러 줄이라 `python -m json.tool` 이 늘 오류를 내니, 위 내용과 한 줄씩 비교합니다.
 
 - AI 에게 물을 때는 운영체제와 터미널(예: Windows Git Bash), 친 명령 한 줄, 오류 전체를 함께 붙여 넣습니다. `.env` 내용이나 API 키가 보이면 지우고 붙여 넣습니다.
-- AI 가 알려 준 명령은 뜻을 읽고 치고, `rm` · `del` 처럼 지우는 명령은 뜻을 되물은 뒤에 칩니다. 풀리지 않으면 보고서 (가)에 「모름 — 막힌 곳: …」 이라고 쓰고 넘어갑니다.
+- AI 가 알려 준 명령은 뜻을 읽고 치고, `rm` · `del` 처럼 지우는 명령은 뜻을 되물은 뒤에 칩니다. 풀리지 않으면 그 실습의 보고서 칸에 「모름 — 막힌 곳: …」 이라고 쓰고 넘어갑니다.
 
-> 실행은 VS Code 의 ▶ 단추가 아니라 **터미널**에서 합니다(맥북은 `python3`). 앞 Unit에서 만든 파일은 고치지 않습니다. 이번 Unit에서 만드는 파일은 모두 새 파일입니다.
+> 실행은 VS Code 의 ▶ 단추가 아니라 **터미널**에서 합니다. 앞 Unit에서 만든 파일은 고치지 않습니다. 이번 Unit에서 만드는 파일은 모두 새 파일입니다.
 
 ---
