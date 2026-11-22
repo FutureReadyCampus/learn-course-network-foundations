@@ -258,7 +258,7 @@ run_pipeline()                     # 읽기부터 보고서 저장까지 한 번
 
 **순서**
 
-0. **[터미널]** 앞 Unit의 파일이 모두 있는지 먼저 확인합니다(맥북은 `python3`). <mark>두 줄 모두 아무것도 나오지 않으면</mark> 됩니다. `ModuleNotFoundError` 나 `ImportError` 가 나오면 그 이름의 파일이 없거나 덜 만든 것이니 2.1 의 표에 적힌 레슨에서 만든 뒤 다시 칩니다.
+0. **[터미널]** 앞 Unit의 파일이 모두 있는지 먼저 확인합니다. <mark>두 줄 모두 아무것도 나오지 않으면</mark> 됩니다. `ModuleNotFoundError` 나 `ImportError` 가 나오면 그 이름의 파일이 없거나 덜 만든 것이니 2.1 의 표에 적힌 레슨에서 만든 뒤 다시 칩니다. 단, <mark>`No module named 'pandas'` 이면 파일 문제가 아니라 판다스가 없는 것</mark>입니다. 가상환경을 쓰는 사람은 `network-study-notes` 폴더에서 `source .venv/Scripts/activate` 로 켜고, 쓰지 않는 사람은 `python -m pip install pandas` 로 설치한 뒤 다시 칩니다.
    ```bash
    python -c "from access_detection import load_events, EVENTS_PATH; from saas_detection import pick_saas; from malicious_detection import pick_web_failures"
    python -c "from correlation import find_chains_in_events; from risk_scores import collect_findings, save_records; from event_summary import summarize_record"
@@ -276,7 +276,7 @@ run_pipeline()                     # 읽기부터 보고서 저장까지 한 번
 - [ ] `anomaly_detection` 폴더에 `apply5-3_run.py` 를 만들어 코드 상자 내용을 붙여 넣고 저장했다
 <!-- /checklist -->
 
-3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`). Gemini API 를 3번 호출합니다. 키가 없어도 끝까지 실행됩니다.
+3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다. Gemini API 를 3번 호출합니다. 키가 없어도 끝까지 실행됩니다.
    ```bash
    pwd
    python apply5-3_run.py

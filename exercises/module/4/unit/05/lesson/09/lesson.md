@@ -99,7 +99,7 @@ render: markdown
 3. 실습 데이터(dami, seoyeon 등)가 아닌 실제 사람의 이름(나와 동료의 실명)이 없다
 4. 머리말이 `module: 4`, `unit: 5` 이고, `sample: true` 줄이 없다
 
-**올리기** — **[터미널]** 네 줄을 모두 「그렇다」로 답할 수 있으면 저장소 루트에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더로 돌아옵니다: `cd ..` → `python check_publish.py`(맥북은 `python3`) → `git add .` → `git commit -m "Add module 4 unit 5 post"` → `git push` → `cd anomaly_detection`. `pwd` 가 이미 `…/network-study-notes` 로 끝나면 맨 앞 `cd ..` 는 건너뜁니다. 점검에서 `[오류]` 가 나오면 그 부분을 고치고 다시 돌린 뒤 올립니다.
+**올리기** — **[터미널]** 네 줄을 모두 「그렇다」로 답할 수 있으면 저장소 루트에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더로 돌아옵니다: `cd ..` → `python check_publish.py` → `git add .` → `git commit -m "Add module 4 unit 5 post"` → `git push` → `cd anomaly_detection`. `pwd` 가 이미 `…/network-study-notes` 로 끝나면 맨 앞 `cd ..` 는 건너뜁니다. 점검에서 `[오류]` 가 나오면 그 부분을 고치고 다시 돌린 뒤 올립니다.
 
 <!-- checklist -->
 - [ ] 저장소 루트에서 `python check_publish.py` 가 `오류 0건` 인 것을 보고 `git add` · `git commit` · `git push` 로 글을 올렸다

@@ -80,7 +80,7 @@ services:
 
 ## Docker Desktop 켜고 포트 확인하기
 
-> **먼저 Docker Desktop 앱을 켭니다.** 시작 메뉴(맥북은 응용 프로그램)에서 Docker Desktop 을 열고, <mark>화면 구석에 **고래 모양 아이콘**이 보이고 움직임이 멈추면</mark> 준비된 것입니다. Docker Desktop 이 이 PC 에 없으면 응용 5-1 · 5-2는 건너뜁니다.
+> **먼저 Docker Desktop 앱을 켭니다.** 시작 메뉴에서 Docker Desktop 을 열고, <mark>화면 구석에 **고래 모양 아이콘**이 보이고 움직임이 멈추면</mark> 준비된 것입니다. Docker Desktop 이 이 PC 에 없으면 응용 5-1 · 5-2는 건너뜁니다.
 
 - 응용 5-1 · 5-2에서 만드는 파일은 모두 `anomaly_detection` 폴더 안에 둡니다. 만드는 파일은 `compose.yaml` · `compose.secure.yaml` 과 `logs` 폴더의 `web_404.log` 입니다.
 - <mark style="background:#ffc4d6">터미널에서 `pwd` 를 쳐서 결과가 `…/anomaly_detection` 으로 끝나는지 확인한 뒤 시작합니다.</mark> 다른 폴더에서 `docker compose` 를 치면 그 폴더에 있는 다른 `compose.yaml` 이 켜질 수 있습니다.
@@ -327,6 +327,8 @@ services:
 <!-- checklist optional -->
 - [ ] `curl` 로 8080번 · 8081번 모두 `200` 이 나왔다
 <!-- /checklist -->
+
+   - <mark>응용 5-2 를 이어서 하지 않고 여기서 멈추면 `docker compose down` 으로 서버 두 대를 끕니다.</mark> `restart: unless-stopped` 때문에 끄지 않으면 Docker Desktop 을 다시 켤 때마다 서버가 다시 켜지고, 같은 네트워크의 다른 PC 에서도 접속할 수 있는 채로 남습니다(실습 5-2 의 상황 8). 응용 5-2 를 이어서 하면 끄지 않습니다. 5-2 는 지금 켜진 서버에서 시작합니다.
 
 7. **[보고서]** `report_u5.md` 의 `## 응용 5-1` 아래를 채웁니다.
    - (가) 응용 5-1의 서버 켜기 · 확인 명령(`docker images` 부터 `curl` 까지)과 그 결과를 친 순서대로 붙여 넣고, 서비스 이름 두 개와 각 서비스의 포트를 적어 주세요.

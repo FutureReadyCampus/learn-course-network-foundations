@@ -267,7 +267,7 @@ def summarize_record(record):                           # 기록 하나를 받�
 | ③ | `FAIL_TEXT` 를 `summary` 에 담기 | 8칸 |
 
 - ① 확인: ① 만 쓰고 실행하면 단계 3 의 [사실] 줄 끝이 `탐지된 내용: 평소와 다른 IP 에서 SaaS 에 접속함; SaaS 에서 파일을 한꺼번에 많이 내려받음` 으로 나와야 합니다. 키가 없으면 단계 4 는 `dami :` 뒤가 비어 있는 것처럼 요약 자리가 비어 나옵니다. ② · ③ 을 아직 안 써서 그런 것이니 정상입니다. 막히면: 위 문법 상자의 `", ".join(words)` 에서 구분 글자를 `"; "` 로, 리스트를 `meanings` 로 바꿉니다. `"; "` 는 세미콜론과 공백 한 칸이고, <mark>공백까지 같아야 출력이 같습니다.</mark>
-- ② 확인: ② 만 쓰고 실행하면 `IndentationError: expected an indented block after 'if' statement` 가 나옵니다. ③ 을 아직 안 써서 나는 오류이니 정상입니다. 막히면: 같다는 비교는 `==` 이고, 빈 문자열은 따옴표 두 개 `""` 입니다. 끝에 `:` 를 붙입니다.
+- ② 확인: ② 만 쓰고 실행하면 `IndentationError: expected an indented block after 'if' statement on line 76` 처럼 끝에 줄 번호가 붙은 오류가 나옵니다(숫자는 달라도 됩니다). 파일을 불러오는 단계에서 멈추므로 단계 1 도 나오지 않습니다. ③ 을 아직 안 써서 나는 오류이니 정상입니다. 막히면: 같다는 비교는 `==` 이고, 빈 문자열은 따옴표 두 개 `""` 입니다. 끝에 `:` 를 붙입니다.
 - ③ 확인: ③ 까지 쓰고 실행하면 키가 없을 때 `dami : (요약 실패 — 점수와 이유를 직접 확인)` 이 나오면 성공입니다. 키가 있으면 AI 가 쓴 요약 문장이 나옵니다. 막히면: 미리 채운 `summary = call_llm(prompt)` 와 같은 모양이고, 오른쪽만 `FAIL_TEXT` 입니다.
 - 채우기 전에 실행하면 단계 1 · 2 는 나오고, 단계 3 에서 `NameError: name 'meaning_text' is not defined` 오류가 나며 멈춥니다. `meaning_text` 를 만드는 ① 을 아직 안 썼기 때문입니다.
 
@@ -307,7 +307,7 @@ for record in picked:                                                           
 - [ ] `anomaly_detection` 폴더에 `exercise5-1_run.py` 를 만들어 코드 상자 내용을 붙여 넣고 저장했다
 <!-- /checklist -->
 
-3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다.
    ```bash
    pwd
    python exercise5-1_run.py
@@ -329,7 +329,7 @@ for record in picked:                                                           
 - [ ] `python exercise5-1_run.py` 를 실행해 단계 2 에 dami · seoyeon · gaeun 세 줄, 단계 4 에 대상 세 줄이 나왔다
 <!-- /checklist -->
 
-5. **[보고서]** `report_u5.md` 의 `## 실습 5-1` 아래를 채웁니다.
+5. **[보고서]** `report_u5.md` 의 `## 실습 5-1` 아래를 채웁니다. <mark>`report_u5.md` 가 아직 없으면 지금 [「보고서 쓰기」의 「보고서 파일 만들기」](__SITE__/exercises/module/4/unit/5/lesson/8/page/1)에서 만든 뒤 돌아옵니다.</mark>
    - (가) 실행한 출력 전체를 붙여 넣고, 요약한 대상 수와 `(요약 실패 …)` 가 나온 대상 수를 적어 주세요.
    - (나) [핵심 질문] 단계 3 의 지시문이 AI 에게 하지 말라고 한 것 두 가지를 찾고, 각각 하면 왜 위험한지 적어 주세요.
    - (다) [응용] 단계 4 의 요약 하나를 골라 1.1 의 점수 기록 표(대상 · 점수 · 등급 · 탐지된 규칙)와 비교해, 표에 없는 내용이 들어 있는지 적어 주세요. 있으면 어떤 문장인지와 지시문을 어떻게 고칠지, 없으면 없다고 쓰고 탐지된 규칙이 모두 문장에 들어갔는지 적어 주세요. 키가 없어 대체 문장만 나왔으면 정답 레슨 「실습 5-1 정답」의 「키가 있을 때」 출력에서 요약 하나를 골라 비교합니다.
