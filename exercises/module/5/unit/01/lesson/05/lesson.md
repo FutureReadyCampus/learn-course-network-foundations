@@ -188,7 +188,7 @@ print("VIP 계정 알림", vip_count, "건")                        # VIP 계정
 - [ ] `exercise1-3_run.py` 를 만들어 붙여 넣고 ③ 을 채워 저장했다
 <!-- /checklist -->
 
-3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다.
    ```bash
    python exercise1-3_run.py
    ```
@@ -303,7 +303,7 @@ ls config
 - [ ] 깃허브의 `network-study-notes` 저장소에서 `soar_response` 폴더의 파일을 확인했다
 <!-- /checklist -->
 
-- 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
+- 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 이 「3. 깃허브에 올리기」의 1 ~ 4번(`cd ..` 부터 `git push` 까지, 그림의 3 ~ 5)을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
 
 **4. 이어지는 곳**
 
