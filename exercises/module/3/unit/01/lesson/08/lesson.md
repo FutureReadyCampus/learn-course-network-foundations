@@ -128,7 +128,7 @@ False
 ]
 ```
 
-- 저장한 뒤 `python -m json.tool config/exceptions.json`(맥북은 `python3 -m json.tool config/exceptions.json`)을 꼭 실행합니다. 실습 1-3의 `policy.py` 도 이 파일을 읽으므로, 오류가 나면 쉼표를 먼저 고칩니다.
+- 저장한 뒤 `python -m json.tool config/exceptions.json` 을 꼭 실행합니다. 실습 1-3의 `policy.py` 도 이 파일을 읽으므로, 오류가 나면 쉼표를 먼저 고칩니다.
 
 **`exception_policy.py`**
 
@@ -218,7 +218,6 @@ for exception in EXCEPTIONS:                                           # 예외�
    python apply1-3_run.py
    ```
    - 명령 풀이: `python` 파이썬으로 파일을 실행 · `apply1-3_run.py` 실행할 파일
-   맥북: `python3 apply1-3_run.py`
 5. 출력은 두 단계입니다. 단계 1(판정)은 여섯 건의 판정(`(True, 번호)` 또는 `(False, None)`)이고, 단계 2(점검)는 예외 다섯 건마다 `[회수]` 또는 `[유지]` 입니다.
 
 <!-- checklist optional -->

@@ -162,7 +162,6 @@ for path in PATHS:                                               # 경로를 하
    python apply1-4_broken.py
    ```
    - 명령 풀이: `python` 파이썬으로 파일을 실행 · `apply1-4_broken.py` 실행할 파일
-   맥북: `python3 apply1-4_broken.py`
 5. 세 경로의 결과 세 줄과 경고 두 줄, 모두 다섯 줄이 나옵니다. 경고 두 줄이 어느 경로에서 나왔는지 봅니다.
 
 <!-- checklist optional -->

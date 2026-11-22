@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 390" role="img">
-<title>마무리 15분은 오늘 한 일 확인, 파일 확인, git status 확인, add·commit·push 순서로 한다</title>
-<desc>핵심 실습 세 개를 끝낸 뒤 보고서 칸과 파일을 확인하고, git status 에서 .env 나 .venv 가 보이면 멈춥니다. 문제가 없으면 add, commit, push 로 올리고 브라우저에서 확인합니다.</desc>
+<title>마무리 15분은 오늘 한 일 확인, 파일 확인, git status 확인, 공개 전 점검과 add·commit·push 순서로 한다</title>
+<desc>핵심 실습 세 개를 끝낸 뒤 보고서 칸과 파일을 확인하고, git status 와 git status -u 에서 .env 나 .venv 가 보이면 멈춥니다. 문제가 없으면 check_publish.py 로 점검한 뒤 add, commit, push 로 올리고 브라우저에서 확인합니다.</desc>
 <defs><marker id="a-p08" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
 <text x="24" y="34" font-size="19" font-weight="700">이번 Unit 마무리 · 15분</text>
@@ -17,15 +17,15 @@
 <text x="274" y="154" font-size="14" text-anchor="middle">exceptions.json</text>
 <polyline points="353,113 367,113" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p08)"/>
 <rect x="368" y="54" width="156" height="118" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="446" y="84" font-size="16" text-anchor="middle" font-weight="700">3. git status</text>
+<text x="446" y="84" font-size="16" text-anchor="middle" font-weight="700">3. git status -u</text>
 <text x="446" y="110" font-size="14" text-anchor="middle">.env · .venv 가</text>
 <text x="446" y="132" font-size="14" text-anchor="middle">보이면 멈추고</text>
 <text x="446" y="154" font-size="14" text-anchor="middle">.gitignore 에 적기</text>
 <polyline points="525,113 539,113" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p08)"/>
 <rect x="540" y="54" width="156" height="118" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="618" y="84" font-size="16" text-anchor="middle" font-weight="700">4. 올리기</text>
-<text x="618" y="110" font-size="14" text-anchor="middle">git add .</text>
-<text x="618" y="132" font-size="14" text-anchor="middle">git commit -m</text>
+<text x="618" y="110" font-size="14" text-anchor="middle">check_publish.py</text>
+<text x="618" y="132" font-size="14" text-anchor="middle">git add · commit</text>
 <text x="618" y="154" font-size="14" text-anchor="middle">git push</text>
 <text x="24" y="214" font-size="17" font-weight="700">오늘 만든 파일이 이어지는 곳</text>
 <rect x="24" y="230" width="672" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>

@@ -63,6 +63,7 @@ render: markdown
 <!-- /checklist -->
 
 3. 빈칸을 채우고 저장합니다. 코드는 따로 옮기지 않습니다. 오늘 만든 `access_control/policy.py` · `access_control/rbac.py` 가 같은 저장소에 이미 올라가 있으니, 글에는 `전체 코드: access_control/policy.py` 처럼 위치만 적습니다.
+   - (선택) 시작하기 7쪽에서 만든 샘플 글 `_posts/2026-01-01-hello.md` 는 이제 지워도 됩니다. VS Code 왼쪽 목록에서 그 파일을 오른쪽 클릭 › **Delete** 합니다. 지운 것도 아래 올리기의 `git add .` 로 함께 올라가고, 첫 화면 최신 글에서 샘플 글이 사라집니다.
 
 <!-- checklist -->
 - [ ] 머리말을 `module: 3` · `unit: 1` 과 내 `title` · `date` 로 고치고 세 칸을 채워 저장했다
@@ -102,7 +103,7 @@ render: markdown
 3. 실습 속 가상의 사용자 이름(`seoyeon` · `dami` 등) 말고, 실제 다른 사람의 이름이 없습니다.
 4. 실행 결과 화면 캡처에 내 컴퓨터 사용자 이름이나 다른 창의 개인 정보가 보이지 않습니다.
 
-**올리기** — **[터미널]** 네 줄을 모두 「없음」으로 답할 수 있으면 저장소 루트에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더로 돌아옵니다: `cd ..`(터미널이 이미 `network-study-notes`에 있으면 건너뜁니다) → `python check_publish.py`(맥북은 `python3`) → `git add .` → `git commit -m "Add unit 1 post"` → `git push` → `cd access_control`. 점검에서 `[오류]` 가 나오면 그 부분을 지우고 다시 돌린 뒤 올립니다.
+**올리기** — **[터미널]** 네 줄을 모두 「없음」으로 답할 수 있으면 저장소 루트에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더로 돌아옵니다: `cd ..`(터미널이 이미 `network-study-notes`에 있으면 건너뜁니다) → `python check_publish.py` → `git add .` → `git commit -m "Add unit 1 post"` → `git push` → `cd access_control`. 점검에서 `[오류]` 가 나오면 그 부분을 지우고 다시 돌린 뒤 올립니다.
 
 <!-- checklist -->
 - [ ] 저장소 루트에서 `python check_publish.py` 가 `오류 0건` 인 것을 보고 `git add` · `git commit` · `git push` 로 글을 올렸다

@@ -72,6 +72,7 @@ source:
 | `if not 값:` | 값이 거짓(`False`)일 때 실행 |
 | `""" … """` | 함수 첫 줄의 **독스트링**(docstring · 닥스트링). 함수가 무엇을 받고 리턴하는지 적은 설명 글이고 실행에는 영향이 없음 |
 
+- 파이썬의 **모듈**은 `import` 로 불러 쓰는 기능 묶음이나 `.py` 파일입니다(`rbac.py` 도 다른 파일이 `from rbac import …` 로 불러 쓰면 모듈입니다). 이 과정의 단위인 「Module 3」과는 이름만 같고 다른 말입니다.
 - 파일은 `with open(파일, encoding="utf-8") as 파일변수:` 로 엽니다. `with` 아래 들여 쓴 줄이 끝나면 파일이 저절로 닫히고, `encoding="utf-8"` 은 한글 같은 글자가 깨지지 않게 읽으라는 뜻입니다.
 
 `rbac.py` 가 시작할 때 읽어 두는 `ROLES` · `USERS` 는 이런 모양이고, 함수는 `is_allowed, reason` 으로 나눠 리턴합니다.
@@ -108,7 +109,7 @@ print(permission not in ROLES["finance"]) # True  · finance 에는 없음
 
 1. 아래 코드로 `rbac.py` 를 만들고, `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
 2. 요청 아홉 건을 판정하는 `exercise1-2_run.py` 를 만들어 실행합니다.
-3. 채우기 <mark>전과 후</mark>의 판정을 비교합니다.
+3. 채운 <mark>뒤</mark>의 판정을 확인합니다. (응용) 채우기 전과 후의 비교는 보고서 1-2 (나)에서만 씁니다. 지금은 건너뛰어도 됩니다.
 
 **준비** — 아래 `rbac.py` 는 실습 1-1에서 만든 두 파일 `config/users.json` 과 `config/roles.json` 을 **읽습니다.** 그 파일이 없으면 코드가 시작하자마자 멈춥니다. 터미널이 `…/access_control` 위치인지 확인한 뒤(`…/network-study-notes` 에 있다면 `cd access_control` 로 들어갑니다) 두 파일이 있는지 봅니다.
 
@@ -195,7 +196,7 @@ for user, resource, action in REQUESTS:                          # 요청을 하
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
      2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
      3. 이름 칸에 `rbac.py` 라고 입력하고 Enter 를 누릅니다.
-     4. 열린 파일에 코드를 복사해 붙여 넣고 저장합니다.
+     4. 열린 파일에 코드를 복사해 붙여 넣고 저장합니다. ① · ② 는 4번에서 채우니 지금은 붙여 넣기만 합니다.
 2. **[VS Code]** `exercise1-2_run.py` 도 같은 방법으로 만듭니다.
    - **VS Code 에서 만들기**
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
@@ -204,19 +205,18 @@ for user, resource, action in REQUESTS:                          # 요청을 하
      4. 열린 파일에 코드를 복사해 붙여 넣고 저장합니다.
 
 <!-- checklist -->
-- [ ] `access_control` 폴더 바로 아래에 `exercise1-2_run.py` 를 만들어 붙여 넣고 저장했다
+- [ ] `access_control` 폴더 바로 아래에 `rbac.py` 와 `exercise1-2_run.py` 를 차례로 만들어 붙여 넣고 저장했다
 <!-- /checklist -->
 
-3. **[터미널]** `pwd` 가 `…/access_control` 로 끝나는지 확인하고, **채우기 전에** 한 번 실행해서 허용되면 안 되는 요청이 있는지 봅니다(보고서 (나)에서 씁니다).
+3. **[터미널]** `pwd` 가 `…/access_control` 로 끝나는지 확인합니다. **(응용) — 아래 「채우기 전 실행」은 보고서 1-2 (나)에서만 씁니다. 지금은 건너뛰어도 됩니다.** 응용을 한다면 **채우기 전에** 한 번 실행해서 허용되면 안 되는 요청이 있는지 봅니다.
    ```bash
    python exercise1-2_run.py
    ```
    - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise1-2_run.py` 실행할 파일
-   맥북: `python3 exercise1-2_run.py`
 4. **[VS Code]** `rbac.py` 의 `# ←` 두 곳(① · ②)을 채웁니다. 2.1 의 판정 순서 그림의 [4] 를 보고 씁니다. 실행은 VS Code 의 ▶ 단추가 아니라 터미널에서 합니다. 코드가 `config/` 파일을 지금 위치(`…/access_control`) 기준으로 찾기 때문입니다.
 
 <!-- checklist -->
-- [ ] `access_control` 폴더 바로 아래에 `rbac.py` 를 만들어 붙여 넣고 ① · ② 두 줄을 채워 저장했다
+- [ ] `rbac.py` 의 ① · ② 두 줄을 채워 저장했다
 <!-- /checklist -->
 
 5. **[터미널]** 다시 실행합니다. 아홉 줄의 결과와 이유가 2.1 의 그림에서 읽은 것과 같은지 확인합니다.
@@ -226,7 +226,7 @@ for user, resource, action in REQUESTS:                          # 요청을 하
    - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise1-2_run.py` 실행할 파일
 
 <!-- checklist -->
-- [ ] `python exercise1-2_run.py` 를 실행해 `False` 다섯 줄이 나왔다
+- [ ] `python exercise1-2_run.py` 를 실행해 `False` 다섯 줄이 나왔고, 그 이유(「등록되지 않은 사용자」 · 「퇴사한 계정」 · 「역할이 없음」 · 「권한 없음」 두 줄)가 2.1 의 「거부 이유 네 가지」 표의 네 이유와 같다
 <!-- /checklist -->
 
 6. **[보고서]** `report_u1.md` 의 `## 실습 1-2` 아래를 채웁니다.
