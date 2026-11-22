@@ -57,6 +57,11 @@ Unit 1 은 알림을 플레이북으로 처리하고 알림에 맥락을 붙이�
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
    - 마지막 줄에 <mark>`Unit 1 파일 정상`</mark> 이 나오면 됩니다. 오류가 나면 Unit 1 실습 1-2 레슨의 `incident.py` 코드 상자로 파일을 만들고 다시 칩니다.
+
+<!-- checklist -->
+- [ ] `soar_response` 폴더에서 Unit 1 확인 명령을 쳐 `Unit 1 파일 정상` 이 나왔다
+<!-- /checklist -->
+
 3. **파일은 이렇게 만듭니다.** 따로 내려받는 파일은 없고, 모두 코드 상자에서 복사해 만듭니다.
    1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다.
    2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
@@ -80,21 +85,24 @@ Unit 1 은 알림을 플레이북으로 처리하고 알림에 맥락을 붙이�
 <pre class="copyable"><code>{"203.0.113.80": ["seoyeon", "jiwoo"], "192.0.2.41": ["junho", "hana"]}
 </code></pre>
 
+<!-- checklist -->
+- [ ] `config/vip_accounts.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `config/allowlist_ips.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `ip_users.json` 을 `soar_response` 폴더 바로 아래에 만들고 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 5. **[터미널]** 파일이 정상인지 확인합니다(맥북은 `python3`). <mark>`1 2 2` 가 나와야</mark> 합니다(VIP 계정 1개 · 허용 목록 IP 2개 · `ip_users.json` 에 적은 IP 2개를 센 값).
    ```bash
    python -c "import json; print(len(json.load(open('config/vip_accounts.json', encoding='utf-8'))), len(json.load(open('config/allowlist_ips.json', encoding='utf-8'))), len(json.load(open('ip_users.json', encoding='utf-8'))))"
    ```
+
+<!-- checklist -->
+- [ ] 5번 확인 명령을 쳐 `1 2 2` 가 나왔다
+<!-- /checklist -->
+
 6. 문제는 **할 일 → 순서**대로 하고, `[창 이름]` 이 지금 쓸 창입니다. 막히면 이 Unit 뒤쪽의 정답을 봅니다.
 
 **확인** — 2번의 마지막 줄에 `Unit 1 파일 정상`, 5번에 `1 2 2` 가 나오면 성공입니다. 안 나오면 다음 페이지 「오류가 나면」의 표에서 오류 이름을 찾습니다.
-
-<!-- checklist -->
-- [ ] `soar_response` 폴더에서 Unit 1 확인 명령을 쳐 `Unit 1 파일 정상` 이 나왔다
-- [ ] `config/vip_accounts.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
-- [ ] `config/allowlist_ips.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
-- [ ] `ip_users.json` 을 `soar_response` 폴더 바로 아래에 만들고 붙여 넣은 뒤 저장했다
-- [ ] 5번 확인 명령을 쳐 `1 2 2` 가 나왔다
-<!-- /checklist -->
 
 ## 오류가 나면
 

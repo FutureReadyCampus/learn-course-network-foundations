@@ -260,28 +260,37 @@ print("조치 기록:", len(saved_log), "건")                                  
 **순서**
 
 1. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `containment_store.py` · `account_actions.py` · `exercise2-1_run.py` 를 하나씩 그대로 적어 세 개의 파일을 만듭니다. 각 파일에 이 페이지의 코드 상자를 복사해 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
+
+<!-- checklist -->
+- [ ] `exercise2-1_run.py` 를 만들어 코드 상자를 붙여 넣고 저장했다
+<!-- /checklist -->
+
 2. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고, **채우기 전에** 한 번 실행해 단계 2 의 `dami` 줄과 단계 4 의 기록 수를 봅니다(맥북은 `python3`).
    ```bash
    python exercise2-1_run.py
    ```
 3. **[VS Code]** `containment_store.py` 의 ①, `account_actions.py` 의 ② · ③ 을 씁니다. 하나 쓸 때마다 다시 실행해 위 「직접 쓰는 곳」의 확인과 맞춰 봅니다.
+
+<!-- checklist -->
+- [ ] `containment_store.py` 를 만들어 코드 상자를 붙여 넣고 ① 을 채운 뒤 저장했다
+- [ ] `account_actions.py` 를 만들어 코드 상자를 붙여 넣고 ② · ③ 을 채운 뒤 저장했다
+<!-- /checklist -->
+
 4. **[터미널]** 다시 실행합니다. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 1줄, 단계 2 는 3줄, 단계 3 은 1줄, 단계 4 는 2줄입니다. 실행하면 `soar_response` 폴더에 `containment_state.json` 과 `containment_log.json` 이 생깁니다.
    ```bash
    python exercise2-1_run.py
    ```
+
+<!-- checklist -->
+- [ ] `python exercise2-1_run.py` 를 채우기 전과 후에 실행해, 단계 4 에 `잠긴 계정: ['junho']` · `조치 기록: 4 건` 이 나왔다
+<!-- /checklist -->
+
 5. **[보고서]** `report_u2.md` 의 `## 실습 2-1` 아래를 채웁니다.
    - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 단계 4 의 잠긴 계정과 조치 기록 수를 적어 주세요.
    - (나) [응용] INC-003 의 `gaeun` 은 잠기지 않았습니다. 단계 2 의 줄을 근거로 이유를 적어 주세요. 그리고 경로 정하기(Unit 1 제공 파일 `routing.py`)가 VIP 계정을 이미 `승인 필요` 경로로 분기했는데도 조치 함수가 정책을 한 번 더 검사하는 이유도 적어 주세요.
    - (다) [핵심 질문] INC-006 의 `junho` 는 `잠김 → 잠김` 으로 기록됐고, 단계 3 에서 해제한 `dami` 는 `잠김 → 잠기지 않음` 입니다. `before` 를 남기면 롤백할 때 어떤 판단이 가능해지는지 적어 주세요. 그리고 잠금 뒤 사후 검증(`verify_locked`)이 없으면 어떤 문제가 생기는지도 적어 주세요.
 
 **확인** — 단계 2 가 `dami` 「잠기지 않음 → 잠김」 · `gaeun` 「변경 없음 → 변경 없음」 · `junho` 「잠김 → 잠김」 세 줄이고, 단계 4 가 `잠긴 계정: ['junho']` · `조치 기록: 4 건` 이면 성공입니다. 안 나오면 「정답」 레슨의 실습 2-1 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
-
-<!-- checklist -->
-- [ ] `containment_store.py` 를 만들어 코드 상자를 붙여 넣고 ① 을 채운 뒤 저장했다
-- [ ] `account_actions.py` 를 만들어 코드 상자를 붙여 넣고 ② · ③ 을 채운 뒤 저장했다
-- [ ] `exercise2-1_run.py` 를 만들어 코드 상자를 붙여 넣고 저장했다
-- [ ] `python exercise2-1_run.py` 를 채우기 전과 후에 실행해, 단계 4 에 `잠긴 계정: ['junho']` · `조치 기록: 4 건` 이 나왔다
-<!-- /checklist -->
 
 ## 실습 2-1 정리
 
