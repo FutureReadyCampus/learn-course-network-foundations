@@ -99,10 +99,22 @@ render: markdown
 3. 실습 속 가상의 사용자 이름(`dami` · `gaeun` 등) 말고, 실제 다른 사람의 이름이 없습니다.
 4. 머리말이 `module: 5`, `unit: 5` 이고, `sample: true` 줄이 없습니다.
 
-**올리기** — **[터미널]** 네 줄을 모두 「문제 없음」으로 답할 수 있으면 저장소 루트에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더로 돌아옵니다: `cd ..` → `python check_publish.py`(맥북은 `python3`) → `git add .` → `git commit -m "Add module 5 unit 5 post"` → `git push` → `cd soar_response`. 터미널이 이미 `network-study-notes` 에 있으면 `cd ..` 는 건너뜁니다. 점검에서 `[오류]` 가 나오면 그 부분을 지우고 다시 돌린 뒤 올립니다.
+**올리기** — **[터미널]** 네 줄을 모두 「문제 없음」으로 답할 수 있으면 저장소 루트에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더로 돌아옵니다. 아래 명령을 한 줄씩 칩니다. 터미널이 이미 `network-study-notes` 에 있으면 `cd ..` 는 건너뜁니다.
+
+```bash
+cd ..
+python check_publish.py
+git add .
+git commit -m "Add module 5 unit 5 post"
+git push
+cd soar_response
+```
+
+- 명령 풀이: `cd ..` 저장소 루트(`…/network-study-notes`)로 올라감 · `python check_publish.py` 저장소 안의 모든 파일을 점검 · `git add .` · `git commit` · `git push` 글을 담아 기록하고 깃허브로 올림 · `cd soar_response` 작업 폴더로 돌아옴
+- `python check_publish.py` 출력 마지막에 `요약: 오류 0건, 주의 0건` 이 나와야 다음 줄(`git add .`)로 갑니다. `[오류]` · `[주의]` 줄이 나오면 그 줄이 가리키는 파일을 고치고 `python check_publish.py` 를 다시 돌린 뒤 올립니다.
 
 <!-- checklist -->
-- [ ] 저장소 루트에서 `python check_publish.py` 가 `오류 0건` 인 것을 보고 `git add` · `git commit` · `git push` 로 글을 올렸다
+- [ ] 저장소 루트에서 `python check_publish.py` 가 `요약: 오류 0건, 주의 0건` 인 것을 보고 `git add` · `git commit` · `git push` 로 글을 올렸다
 <!-- /checklist -->
 
 올리고 1~2분 뒤 내 사이트 첫 화면을 엽니다.

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img"><title>soar_response 폴더에 이전 파일을 확인하고 engine_alerts.json 을 만든다</title><desc>network-study-notes 안의 soar_response 폴더에서 ls 와 ls config 로 이전 파일을 확인하고, 파일은 New File 로 만들어 붙여 넣는 법을 봅니다. 플레이북 등록 값을 점검한 뒤 알림 8건이 든 engine_alerts.json 을 만들고 개수가 8인지 확인합니다.</desc><defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img"><title>soar_response 폴더에 이전 파일을 확인하고 engine_alerts.json 을 만든다</title><desc>network-study-notes 안의 soar_response 폴더에서 ls 와 ls config 로 이전 파일을 확인하고, 앞 Unit 파일을 한 번에 불러 봅니다. 플레이북 등록 값을 점검한 뒤 New File 로 알림 8건이 든 engine_alerts.json 을 만들고 개수가 8인지 확인합니다.</desc><defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="360" y="30" font-size="19" fill="#292929" text-anchor="middle" font-weight="700">폴더 열고 파일 준비하기</text>
 <rect x="20" y="50" width="400" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="32" y="75" font-size="15" fill="#292929" font-weight="700">network-study-notes/</text>
@@ -20,11 +20,11 @@
 <rect x="450" y="126" width="250" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="462" y="153" font-size="15" fill="#292929">2. cd soar_response · ls</text>
 <rect x="450" y="180" width="250" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="462" y="207" font-size="15" fill="#292929">3. New File 로 만드는 법</text>
+<text x="462" y="207" font-size="15" fill="#292929">3. 앞 Unit 파일 불러 보기</text>
 <rect x="450" y="234" width="250" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="462" y="261" font-size="15" fill="#292929">4. 플레이북 등록 값 점검</text>
 <rect x="450" y="288" width="250" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="462" y="315" font-size="15" fill="#292929">5. engine_alerts.json 붙이기</text>
+<text x="462" y="315" font-size="15" fill="#292929">5·6. engine_alerts.json 만들기</text>
 <rect x="450" y="342" width="250" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="462" y="369" font-size="15" fill="#292929">6. 알림 개수 8 확인</text>
+<text x="462" y="369" font-size="15" fill="#292929">7. 알림 개수 8 확인</text>
 </g></svg>
