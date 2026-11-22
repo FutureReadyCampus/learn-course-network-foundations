@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
 <title>Unit 5 마무리: 한 일과 파일을 확인하고 Module 4 이상탐지로 넘어간다</title>
-<desc>실습 5-1의 점검, 제공 파일로 만든 주간 보고서, 실습 5-2의 총정리를 확인하고 access_control 폴더의 파일을 봅니다. 깃허브 올리기는 Module 4 첫 Unit에서 함께 하고, 다음은 로그를 읽고 세고 기준과 비교하는 Module 4 이상탐지입니다.</desc>
+<desc>실습 5-1의 점검, 제공 파일로 만든 주간 보고서, 실습 5-2의 총정리를 확인하고 access_control 폴더의 파일을 봅니다. 깃허브 올리기는 오늘의 글 쓰기 마지막 쪽에서 글과 함께 하고, 다음은 로그를 읽고 세고 기준과 비교하는 Module 4 이상탐지입니다.</desc>
 <defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
 <text x="24" y="34" font-size="19" font-weight="700">Unit 5 마무리 · 확인하고 Module 4로</text>
@@ -14,7 +14,7 @@
 <text x="44" y="254" font-size="15">ls · ls config 로 이번 Unit 파일 보기</text>
 <rect x="476" y="54" width="220" height="100" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="586" y="84" font-size="16" text-anchor="middle" font-weight="700">3. 깃허브</text>
-<text x="586" y="110" font-size="14" text-anchor="middle">Module 4 첫 Unit에서</text>
+<text x="586" y="110" font-size="14" text-anchor="middle">글 쓰기 마지막 쪽에서</text>
 <text x="586" y="132" font-size="14" text-anchor="middle">함께 올립니다</text>
 <rect x="476" y="184" width="220" height="100" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="586" y="214" font-size="16" text-anchor="middle" font-weight="700">4. Module 4</text>

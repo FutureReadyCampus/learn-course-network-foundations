@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
 <title>실습 5-1 은 데이터 파일을 세 가지로 점검해 걸린 대상을 알려 준다</title>
-<desc>config/week_state.json 의 사용자 6명과 예외 4개를 checklist.py 가 퇴사자 계정, 만료 예외, 부서와 역할 순서로 점검한다. 결과는 통과·실패와 문제 리스트이고, 응용 5-1 주간 보고서에 들어간다. 점검은 찾기만 하고 권한을 지우지 않는다.</desc>
+<desc>config/week_state.json 의 사용자 6명과 예외 4개를 checklist.py 가 퇴사자 계정, 만료 예외, 부서와 역할 순서로 점검한다. 결과는 통과·실패와 문제 리스트이고, 제공 파일로 만드는 주간 보고서에 들어간다. 점검은 찾기만 하고 권한을 지우지 않는다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 5-1 · 점검 체크리스트가 만드는 것</text>
@@ -23,7 +23,7 @@
 <line x1="452" y1="140" x2="496" y2="140" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
 <line x1="600" y1="212" x2="600" y2="246" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
 <rect x="500" y="250" width="200" height="80" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="600" y="284.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">응용 5-1</text>
+<text x="600" y="284.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">제공 파일</text>
 <text x="600" y="307" font-size="15" fill="#292929" text-anchor="middle">주간 보고서에 들어감</text>
 <rect x="20" y="250" width="430" height="80" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="235" y="284.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">점검은 찾기만 합니다</text>

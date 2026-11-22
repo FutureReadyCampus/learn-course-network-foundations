@@ -90,7 +90,7 @@ render: markdown
 3. 실습 데이터의 이름(dami, junho 등) 말고 실제 사람의 이름을 쓰지 않았다
 4. 머리말이 `module: 3`, `unit: 5` 다
 
-**올리기** — **[터미널]** 네 줄을 모두 확인했으면 저장소 루트에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더로 돌아옵니다: `cd ..` → `python check_publish.py`(맥북은 `python3`) → `git add .` → `git commit -m "Add unit 5 post"` → `git push` → `cd access_control`. 점검에서 `[오류]` 가 나오면 그 부분을 지우고 다시 돌린 뒤 올립니다.
+**올리기** — **[터미널]** 네 줄을 모두 확인했으면 저장소 루트에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더로 돌아옵니다: `cd ..` → `python check_publish.py` → `git add .` → `git commit -m "Add unit 5 post"` → `git push` → `cd access_control`. 점검에서 `[오류]` 가 나오면 그 부분을 지우고 다시 돌린 뒤 올립니다.
 
 <!-- checklist -->
 - [ ] 저장소 루트에서 `python check_publish.py` 가 `오류 0건` 인 것을 보고 `git add` · `git commit` · `git push` 로 글을 올렸다
