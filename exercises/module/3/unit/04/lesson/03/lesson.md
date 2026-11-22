@@ -210,29 +210,42 @@ print(counts)                                                    # 승인 상태
    - `revoke_approve.py` · `exercise4-1_run.py` 는 `access_control` 폴더를 오른쪽 클릭 › **New File** 로 만듭니다.
 3. **[터미널]** `ls config` 로 `sensitive.json` 이 `users.json` 과 같은 `config` 폴더에 있는지 보고, `python -m json.tool config/sensitive.json`(맥북은 `python3`)로 내용이 정상인지 확인합니다.
    - 깨진 채 두면 민감한 권한 리스트를 읽지 못해 junho 의 `SALES:CHANGE` 가 「승인 불필요」로 나오고, 승인이 필요한 계획이 3건에서 2건으로 줄어듭니다.
+
+<!-- checklist -->
+- [ ] `config/sensitive.json` 을 만들어 붙여 넣고 `python -m json.tool config/sensitive.json` 으로 정상인지 확인했다
+<!-- /checklist -->
+
 4. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고, **채우기 전에** 한 번 실행해서 8건이 모두 「승인 불필요」로 나오는지 봅니다(맥북은 `python3`).
    ```bash
    pwd
    python exercise4-1_run.py
    ```
+
+<!-- checklist -->
+- [ ] `revoke_approve.py` · `exercise4-1_run.py` 를 만들어 붙여 넣고, 채우기 전에 실행해 8건 모두 「승인 불필요」인 것을 봤다
+<!-- /checklist -->
+
 5. **[VS Code]** `revoke_approve.py` 의 `# ←` 두 곳(① · ②)을 채웁니다. 1.1 의 표와 그림을 보고 씁니다.
+
+<!-- checklist -->
+- [ ] `revoke_approve.py` 의 빈칸 ① · ② 를 채웠다
+<!-- /checklist -->
+
 6. **[터미널]** 다시 실행합니다. 출력은 두 단계입니다. 단계 1은 `계획 8건` 제목 줄과 계획 여덟 줄(줄마다 승인 상태), 단계 2는 승인 상태별 건수 딕셔너리 한 줄입니다.
    ```bash
    python exercise4-1_run.py
    ```
+
+<!-- checklist -->
+- [ ] `python exercise4-1_run.py` 를 다시 실행해 단계 2가 `{'승인 불필요': 5, '승인됨': 2, '승인 대기': 1}` 로 나왔다
+<!-- /checklist -->
+
 7. **[보고서]** `access_control/report_u4.md` 의 `## 실습 4-1` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
    - (가) [핵심 질문] 채운 뒤 실행한 출력 전체를 붙여 넣고, 「승인 불필요」 · 「승인됨」 · 「승인 대기」가 각각 몇 건인지, 승인 대기인 계획이 무엇인지 적어 주세요.
    - (나) [핵심 질문] 권한을 없애는 일인데 왜 쓰기 권한 같은 민감한 권한은 승인을 받게 할까요? 조회 같은 일반 권한 한 건은 바로 회수해도 되는 이유도 적어 주세요.
    - (다) [응용] junho 의 `SALES:CHANGE`(예외 2번) 계획은 승인 대기입니다. 실습 4-2에서 이 계획은 어떻게 처리될지 예상해서 적고, 승인이 오래 나지 않으면 어떤 문제가 생길지도 적어 주세요.
 
 **확인** — 다시 실행했을 때 단계 2가 `{'승인 불필요': 5, '승인됨': 2, '승인 대기': 1}` 이고, 「승인 대기」 줄이 `junho SALES:CHANGE <- 예외 2번` 이면 성공입니다. 안 나오면 「정답」 레슨의 실습 4-1 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
-
-<!-- checklist -->
-- [ ] `config/sensitive.json` 을 만들어 붙여 넣고 `python -m json.tool config/sensitive.json` 으로 정상인지 확인했다
-- [ ] `revoke_approve.py` · `exercise4-1_run.py` 를 만들어 붙여 넣고, 채우기 전에 실행해 8건 모두 「승인 불필요」인 것을 봤다
-- [ ] `revoke_approve.py` 의 빈칸 ① · ② 를 채웠다
-- [ ] `python exercise4-1_run.py` 를 다시 실행해 단계 2가 `{'승인 불필요': 5, '승인됨': 2, '승인 대기': 1}` 로 나왔다
-<!-- /checklist -->
 
 ## 실습 4-1 정리
 
