@@ -49,7 +49,7 @@ render: markdown
 
 **2. 새 글 파일 만들기**
 
-1. 내 포트폴리오 저장소에서 `_posts` 폴더를 열고 **Add file › Create new file** 을 누릅니다.
+1. 깃허브의 내 저장소 `network-study-notes` 에서 `_posts` 폴더를 열고 **Add file › Create new file** 을 누릅니다.
 2. 파일 이름은 `날짜-영문제목.md` 모양으로 적습니다. 예: `_posts/2026-11-20-m4-u4-risk-scores.md`
 3. 고른 글 틀의 내용을 붙여 넣고, 맨 위 머리말(front matter)을 오늘 Unit 에 맞게 고칩니다.
    ```
@@ -72,6 +72,12 @@ render: markdown
 올리고 1~2분 기다린 뒤 내 사이트 첫 화면을 엽니다.
 
 > **확인** — 최신 글에 오늘 글이 보이고 「나의 진행」의 Module 4 · 4번 칸이 채워지면 성공입니다. 보이지 않으면 저장소의 **Actions** 탭을 먼저 보고, 머리말이 `module: 4`, `unit: 4` 인지와 `date` 가 미래 날짜가 아닌지 봅니다.
+
+<!-- checklist -->
+- [ ] `network-study-notes` 저장소의 `_posts` 폴더에 `날짜-영문제목.md` 글 파일을 만들고, 글 틀을 붙여 넣어 머리말을 `module: 4` · `unit: 4` 로 고쳤다
+- [ ] 세 문장을 채우고 **Commit changes** 를 눌렀다
+- [ ] 내 사이트 첫 화면에서 오늘 글과 Module 4 · 4번 칸을 확인했다
+<!-- /checklist -->
 
 ## 막힐 때 힌트
 
@@ -97,3 +103,7 @@ render: markdown
 4. 머리말이 `module: 4`, `unit: 4` 이고, `sample: true` 줄이 없다
 
 > **확인** — 네 줄을 모두 「그렇다」로 답할 수 있으면 성공입니다. 하나라도 걸리면 그 부분을 고치고 다시 **Commit changes** 합니다.
+
+<!-- checklist -->
+- [ ] 올린 글과 `code/` 파일을 위 네 줄로 점검했고, 걸린 곳은 고쳐 다시 **Commit changes** 했다
+<!-- /checklist -->

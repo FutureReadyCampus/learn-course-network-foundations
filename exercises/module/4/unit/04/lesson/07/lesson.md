@@ -41,6 +41,7 @@ source:
 ]
 ```
 
+- **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `login_alerts.json` 을 만들어 위 내용을 붙여 넣고 저장합니다.
 - **[터미널]** `python -c "import pandas as pd; print(len(pd.read_json('login_alerts.json')), len(pd.read_json('problems.json')))"` 로 확인해 `1 5` 가 나오면 됩니다(맥북은 `python3`).
 
 | 문제 | 내용 | 찾는 알림 |
@@ -182,6 +183,11 @@ Name: problem, dtype: object
 
 - 이번 실습에서 새 문법은 `.dropna()` 하나입니다. `pd.concat` 은 응용 4-1에도 나오지만 처음 보는 사람을 위해 다시 설명합니다.
 
+<!-- checklist optional -->
+- [ ] `anomaly_detection` 폴더에 `login_alerts.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] 확인 명령을 실행해 `1 5` 가 나왔다
+<!-- /checklist -->
+
 ## 응용 4-3 · 규칙 합쳐 놓친 문제 다시 세기
 
 **이런 상황이 있습니다**
@@ -309,7 +315,7 @@ print(summary)                                        # 요약 문장을 출력�
 
 **순서**
 
-1. **[VS Code]** 파일 `final_check.py` · `apply4-3_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `final_check.py` 와 `apply4-3_run.py` 를 만들어 위 코드를 각각 붙여 넣고 저장합니다.
 2. **[VS Code]** `final_check.py` 에서 <mark>직접 쓰는 곳 여섯 군데를 씁니다</mark>. 위 판다스 문법 상자와 3.1 의 표를 참고해 씁니다. 막히면 아래 「응용 4-3 정리」를 봅니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -318,10 +324,17 @@ print(summary)                                        # 요약 문장을 출력�
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python apply4-3_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **다섯 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 2줄(빠진 알림 수 · 남은 알림 수), 단계 2와 단계 3은 각각 1줄, 단계 4는 2줄(미탐 수 · 놓친 문제), 단계 5는 1줄입니다.
-5. **[보고서]** `report_u4.md` 의 `## 응용 4-3` 아래를 채웁니다.
+5. **[보고서]** `report_u4.md` 의 `## 응용 4-3` 아래를 채웁니다. 파일이 아직 없으면 「보고서 쓰기」 레슨 첫 페이지의 틀로 `anomaly_detection` 폴더에 먼저 만듭니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 한 문장 요약을 적어 주세요.
    - (나) [핵심 질문] 로그인 규칙의 알림을 합치자 놓친 문제가 몇 개에서 몇 개로 줄었나요? P4 가 잡힌 이유와, 오탐이 늘지 않은 이유를 함께 적어 주세요.
    - (다) [핵심 질문] 아직 놓친 P5(seoyeon 의 권한 없는 정산 조회 시도)를 찾으려면 어떤 규칙이 필요하고, 그 규칙을 더하면 오탐이 늘 수 있는 이유는 무엇인지 적어 주세요.
+
+<!-- checklist optional -->
+- [ ] `anomaly_detection` 폴더에 `final_check.py` 를 만들어 붙여 넣고, 직접 쓰는 곳 여섯 군데를 채워 저장했다
+- [ ] `anomaly_detection` 폴더에 `apply4-3_run.py` 를 만들어 붙여 넣고 저장했다
+- [ ] `python apply4-3_run.py` 를 실행해 단계 5에 `알림 6개 중 오탐 2개 · 놓친 문제 1개` 가 나왔다
+- [ ] `report_u4.md` 의 `## 응용 4-3` 에 답을 적고 저장했다
+<!-- /checklist -->
 
 ## 응용 4-3 정리
 
