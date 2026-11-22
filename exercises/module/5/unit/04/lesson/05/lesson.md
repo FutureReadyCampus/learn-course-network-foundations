@@ -67,11 +67,11 @@ source:
 
 **순서**
 
-1. **[터미널]** 서버와 알림 전송에 쓰는 도구를 설치합니다(맥북은 `python3`). 이미 설치했다면 바로 다음 줄로 갑니다.
+1. **[터미널]** 서버와 알림 전송에 쓰는 도구를 설치합니다. 이미 설치했다면 바로 다음 줄로 갑니다.
    ```bash
    python -m pip install flask requests
    ```
-   - 터미널 맨 앞에 가상환경 이름(예: `(.venv)`)이 보이는 상태에서 칩니다.
+   - 가상환경을 쓴다면 먼저 켭니다(`source ../.venv/Scripts/activate`). 터미널 맨 앞에 `(.venv)` 가 보이면 켜진 것입니다. 가상환경을 쓰지 않으면 건너뜁니다.
 2. **[터미널]** 파일을 확인합니다. <mark style="background:#bde3ff">`응용 준비 정상 7` 이 나와야</mark> 합니다.
    ```bash
    pwd
@@ -88,7 +88,7 @@ source:
    cd soar_response
    python alert_server.py
    ```
-   - 새 터미널은 `network-study-notes` 폴더에서 열리므로 `cd soar_response` 를 먼저 칩니다. 새 터미널 맨 앞에도 가상환경 이름(예: `(.venv)`)이 보여야 합니다.
+   - 새 터미널은 `network-study-notes` 폴더에서 열리므로 `cd soar_response` 를 먼저 칩니다. 가상환경을 쓴다면 `cd soar_response` 전에 새 터미널에서도 `source .venv/Scripts/activate` 로 켭니다(맨 앞에 `(.venv)` 가 보이면 됨).
    - 이 터미널(서버 터미널)은 응용 4-1 · 4-2 를 마칠 때까지 켜 둡니다. 다른 명령은 처음 쓰던 터미널에서 칩니다.
    - `Address already in use` 가 나오면 이미 켜진 서버가 있는 것입니다. 그 서버를 그대로 쓰거나, 서버를 켠 터미널에서 `Ctrl + C` 로 끄고 다시 켭니다.
 
@@ -250,7 +250,7 @@ for ticket in tickets:                                                          
 - [ ] `escalation.py` 1 ~ 6번과 `apply4-1_run.py` 7 ~ 9번을 쓰고 저장했다
 <!-- /checklist -->
 
-4. **[터미널]** 처음 쓰던 터미널에서 <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+4. **[터미널]** 처음 쓰던 터미널에서 <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다.
    ```bash
    python apply4-1_run.py
    ```

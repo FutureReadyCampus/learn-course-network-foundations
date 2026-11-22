@@ -14,7 +14,7 @@ render: markdown
 
 | 순서 | 시간 | 하는 일 |
 |---|---|---|
-| 1. 시작하기 | 15분 | 이 레슨을 읽고 `soar_response` 폴더의 이전 파일을 확인합니다 |
+| 1. 시작하기 | 15분 | 이 레슨을 읽고 `soar_response` 폴더의 이전 파일을 확인합니다(이전 파일이 없어 새로 만들면 +20분) |
 | 2. 핵심 실습 | 약 110분 | 실습 4-1 · 4-2 를 차례로 합니다. 보고서의 꼭 채울 칸도 이때 씁니다 |
 | 3. 글쓰기 | 20분 | 「오늘의 글 쓰기」 레슨에서 세 문장 글 한 편을 씁니다 |
 | 4. 마무리 | 15분 | 실습 4-2 끝의 「이번 Unit 마무리 · 깃허브에 올리기」에서 파일을 확인하고 올립니다 |
@@ -23,7 +23,7 @@ render: markdown
 
 **오늘 만들 것 두 가지**
 
-1. **실습 4-1**: 조치 요청마다 위험 점수(risk score, 리스크 스코어: 조치의 위험을 점수로 나타낸 값)를 더해 「자동 · 승인 필요 · 차단 금지」로 나누는 승인 게이트를 만듭니다. <mark style="background:#ffdcb0">승인 기준은 설정 파일에 따로 둡니다</mark>(`approval_gate.py`).
+1. **실습 4-1**: 조치 요청마다 위험 점수(risk score, 리스크 스코어: 조치의 위험을 점수로 나타낸 값)를 더해 「자동 · 승인 필요 · 차단 금지」로 나누는 승인 게이트를 만듭니다. <mark style="background:#ffdcb0">승인 기준은 설정 파일에 따로 둡니다</mark>(코드 `approval_gate.py`, 설정 `config/approval_policy.json`).
 2. **실습 4-2**: 오탐(false positive, 폴스 포지티브: 위협이 아닌 활동을 위협으로 잘못 판정한 알림) 신고를 받으면 먼저 영향 확인(impact assessment: 조치가 실제로 바꾼 대상을 파악하는 일)을 합니다. 그다음 <mark style="background:#e0d4ff">Unit 3 실습 3-1 의 되돌리기 함수</mark>로 롤백(rollback, 롤백: 조치 이전 상태로 되돌리는 일)하고, 복구 확인(recovery verification: 실제 상태가 되돌아왔는지 다시 점검하는 일)까지 합니다(`false_positive.py`).
 
 **응용 4-1 ~ 4-5는 여유가 되면 해 보세요.** 핵심 실습 두 개와 글쓰기를 마치고 시간이 남을 때, 하고 싶은 것만 골라 합니다. 응용을 하지 않아도 다음 Unit 을 따라갈 수 있습니다.
@@ -49,11 +49,13 @@ render: markdown
 
 `acked_at` 은 처음 확인한 시각(분)이고, `sla_due` 는 응답해야 하는 시각입니다.
 
+응용에 나오는 `tickets_unit09.json` · `unit10_tickets.json` · `unit09_check.py` · `unit09_checklist.md` 의 `unit09` · `unit10` 은 원래 자료의 번호입니다. Unit 4 와 숫자가 달라도 이름을 바꾸지 않고 그대로 씁니다.
+
 > **확인** — 오늘 꼭 할 일이 실습 4-1(`approval_gate.py`) · 실습 4-2(`false_positive.py`) · 세 문장 글 한 편이라고 말할 수 있으면 성공입니다. 헷갈리면 위 「오늘의 계획」 표와 「오늘 만들 것 두 가지」를 다시 봅니다.
 
 ## 폴더 열고 이전 파일 확인하기
 
-오늘 핵심 실습은 앞 Unit 파일을 `import` 로 불러 씁니다. `soar_response` 폴더에 아래 파일이 있는지 봅니다.
+이 Unit 의 작업 폴더는 저장소 `network-study-notes` 안의 `soar_response` 폴더(`network-study-notes/soar_response`)입니다. 이 Unit 의 파일 이름은 모두 `soar_response` 폴더 기준입니다. 오늘 핵심 실습은 앞 Unit 파일을 `import` 로 불러 씁니다. `soar_response` 폴더에 아래 파일이 있는지 봅니다.
 
 | 어디 파일 | 파일 | 쓰는 곳 |
 |---|---|---|
@@ -64,7 +66,7 @@ render: markdown
 
 **순서**
 
-1. **[VS Code]** `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
+1. **[VS Code]** `network-study-notes` 폴더를 연 VS Code 창에서 메뉴 **Terminal › New Terminal** 로 터미널을 엽니다. 새 터미널은 `network-study-notes` 폴더에서 열립니다. 터미널 이름 칸이 **bash** 가 아니면 터미널 오른쪽 위 `+` 옆의 **∨** 에서 **Git Bash** 를 고릅니다.
 2. **[터미널]** `soar_response` 폴더로 들어가 파일을 확인합니다.
    ```bash
    pwd
@@ -73,7 +75,7 @@ render: markdown
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
-3. **[터미널]** 여섯 파일을 불러올 수 있는지 확인합니다(맥북은 `python3`). <mark>`이전 파일 정상` 이 나와야</mark> 합니다.
+3. **[터미널]** 여섯 파일을 불러올 수 있는지 확인합니다. <mark>`이전 파일 정상` 이 나와야</mark> 합니다.
    ```bash
    python -c "import incident, containment_store, account_actions, ip_actions, undo_actions, rollback; print('이전 파일 정상')"
    ```
@@ -85,7 +87,7 @@ render: markdown
 
 4. **파일은 이렇게 만듭니다.** 따로 내려받는 파일은 없고, 모두 코드 상자에서 복사해 만듭니다.
    1. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다. `config/` 로 시작하는 파일은 `soar_response` 폴더 안의 `config` 폴더를 오른쪽 클릭해 만듭니다.
-   2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
+   2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S` 로 저장합니다.
    - 답을 적는 **보고서** `report_u4.md` 는 「보고서 쓰기」 레슨의 틀을 복사해 만듭니다.
 5. 확인이 끝나면 실습 4-1 로 갑니다. 실습 4-1 은 `incident.py` 만 있으면 되고, 나머지 다섯 파일은 실습 4-2 에서 씁니다.
 
