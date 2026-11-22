@@ -49,7 +49,7 @@ render: markdown
 
 **2. 새 글 파일 만들기**
 
-1. 내 포트폴리오 저장소에서 `_posts` 폴더를 열고 **Add file › Create new file** 을 누릅니다.
+1. GitHub 웹 화면의 내 저장소 `network-study-notes` 에서 `_posts` 폴더를 열고 **Add file › Create new file** 을 누릅니다.
 2. 파일 이름은 `날짜-영문제목.md` 모양으로 적습니다. 예: `_posts/2026-11-20-m4-u2-login-failure-rule.md`
 3. 고른 글 틀의 내용을 붙여 넣고, 맨 위 머리말(front matter)을 오늘 Unit 에 맞게 고칩니다.
    ```
@@ -79,6 +79,12 @@ render: markdown
 올리고 1~2분 기다린 뒤 내 사이트 첫 화면을 엽니다.
 
 > **확인** — 최신 글에 오늘 글이 보이고 「나의 진행」의 Module 4 · 2번 칸이 채워지면 성공입니다. 안 보이면 저장소의 **Actions** 탭을 먼저 보고, [Module 3 Unit 1 시작하기 레슨의 「첫 화면 확인하고 막힐 때」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/9)의 「글이 목록에 안 나옴」 줄을 봅니다.
+
+<!-- checklist -->
+- [ ] `_posts` 폴더에 `날짜-영문제목.md` 글 파일을 만들어 글 틀을 붙여 넣고, 머리말을 `module: 4` · `unit: 2` 로 고쳤다
+- [ ] 글 틀의 빈칸을 채우고 **Commit changes** 를 눌렀다
+- [ ] 내 사이트 첫 화면에서 오늘 글과 Module 4 · 2번 칸을 봤다
+<!-- /checklist -->
 
 ## 막힐 때 힌트
 

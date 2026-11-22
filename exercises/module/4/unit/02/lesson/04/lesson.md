@@ -239,7 +239,7 @@ dtype: int64
 
 **할 일**
 
-1. `login_detection.py` · `exercise2-3_run.py` **두 파일**을 만들고, `login_detection.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
+1. `anomaly_detection` 폴더에 `login_detection.py` · `exercise2-3_run.py` **두 파일**을 만들고, `login_detection.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
 2. 실행해서 <mark>로그인 실패 이벤트 수</mark>(단계 1), <mark>주소별 횟수</mark>(단계 2), <mark>알림 대상 주소</mark>(단계 3)를 읽습니다.
 
 **`login_detection.py`**
@@ -327,7 +327,7 @@ print(alert_ips)                                               # 알림을 보�
 
 **순서**
 
-1. **[VS Code]** 파일 `login_detection.py` · `exercise2-3_run.py` 를 만들어 위 코드를 붙여 넣습니다.
+1. **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `login_detection.py` · `exercise2-3_run.py` 를 만들고, 위의 같은 이름 코드 상자 내용을 각각 붙여 넣어 저장합니다.
 2. **[VS Code]** `login_detection.py` 의 `# ←` 두 곳(① · ②)을 채웁니다. 3.1 의 문법 상자를 보고 씁니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -342,6 +342,13 @@ print(alert_ips)                                               # 알림을 보�
    - (다) [응용] 한 주소가 로그인에 4번 실패하고 5번째에 성공했습니다. 이 규칙(실패 5번 이상)으로 이 접속에 알림이 생성될까요? 생성된다 · 생성되지 않는다와 이유를 적고, 생성되지 않는다면 담당자가 확인하지 못하는 정보가 무엇인지 적어 주세요.
 
 **확인** — 단계 1이 `로그인 실패 이벤트 5 개` 이고, 단계 2 · 3 모두 `203.0.113.50    5` 한 줄이면 성공입니다. 안 나오면 「정답」 레슨의 실습 2-3 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+
+<!-- checklist -->
+- [ ] `login_detection.py` 를 만들어 붙여 넣고 빈칸 ① · ② 를 채워 저장했다
+- [ ] `exercise2-3_run.py` 를 만들어 붙여 넣고 저장했다
+- [ ] `python exercise2-3_run.py` 를 실행해 단계 1 ~ 3 이 위 확인과 같게 나왔다
+- [ ] `report_u2.md` 의 `## 실습 2-3` (가) · (나)를 채웠다
+<!-- /checklist -->
 
 ## 실습 2-3 정리
 
@@ -427,3 +434,10 @@ ls
 ---
 
 <!-- learn:answers -->
+
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 2번 표의 파일이 `report_u2.md` 까지 모두 있는 것을 확인했다
+- [ ] `report_u2.md` 의 `## 마무리` (가)를 채웠다
+- [ ] `git status` 에 `.env` · `.venv` 가 없는 것을 보고 `git add` · `git commit` · `git push` 를 했다
+- [ ] 깃허브의 내 저장소 `anomaly_detection` 폴더에서 2번 표의 파일을 모두 봤다
+<!-- /checklist -->
