@@ -263,8 +263,19 @@ run_pipeline()                     # 읽기부터 보고서 저장까지 한 번
    python -c "from access_detection import load_events, EVENTS_PATH; from saas_detection import pick_saas; from malicious_detection import pick_web_failures"
    python -c "from correlation import find_chains_in_events; from risk_scores import collect_findings, save_records; from event_summary import summarize_record"
    ```
+
+<!-- checklist optional -->
+- [ ] 0번 확인 명령 두 줄이 오류 없이 끝났다(없던 앞 Unit 파일은 만들었다)
+<!-- /checklist -->
+
 1. **[VS Code]** `anomaly_detection` 폴더 바로 아래에 `pipeline.py` · `apply5-3_run.py` 두 파일을 만들어, 각 파일에 위의 같은 이름 코드 상자(**`pipeline.py`** · **`apply5-3_run.py`**)를 붙여 넣습니다. `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 만듭니다.
 2. **[VS Code]** `pipeline.py` 에서 <mark>직접 쓰는 곳 일곱 군데를 씁니다</mark>. 위 판다스 문법 상자와 2.1 의 그림을 참고해 씁니다. 막히면 아래 「응용 5-3 정리」를 봅니다.
+
+<!-- checklist optional -->
+- [ ] `anomaly_detection` 폴더에 `pipeline.py` 를 만들어 코드 상자 내용을 붙여 넣고 1 ~ 7번을 채워 저장했다
+- [ ] `anomaly_detection` 폴더에 `apply5-3_run.py` 를 만들어 코드 상자 내용을 붙여 넣고 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`). Gemini API 를 3번 호출합니다. 키가 없어도 끝까지 실행됩니다.
    ```bash
    pwd
@@ -281,16 +292,17 @@ run_pipeline()                     # 읽기부터 보고서 저장까지 한 번
 
    <mark>AI 호출이 실패하면 `[LLM 호출 실패] …` 줄이 단계 3 제목 줄 위에 나오고, 요약은 대체 문장이 됩니다.</mark> 키가 없으면 `[LLM 호출 실패] API 키 없음` 이 세 줄 나오고 단계 3 제목 줄이 `(실패 3 건)` 으로 끝납니다. 이때 출력은 정답 레슨의 「키가 없을 때」와 같습니다.
 5. **[VS Code]** 새로 생긴 `anomaly_detection_report_2026-11-02.json` 을 열어 `event_count` · `records` · `summaries` 를 확인합니다.
+
+<!-- checklist optional -->
+- [ ] `python apply5-3_run.py` 를 실행해 다섯 단계가 나오고 `anomaly_detection_report_2026-11-02.json` 이 생겼다
+<!-- /checklist -->
+
 6. **[보고서]** `report_u5.md` 의 `## 응용 5-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 보고서 파일의 `event_count` · `finding_count` 값과 `records` · `summaries` 의 건수를 적어 주세요.
    - (나) [핵심 질문] 점수와 등급은 코드가 정하고 AI 에게는 요약만 시킨 이유를 적어 주세요. 단계 5 의 확인할 순서와 단계 3 의 요약을 근거로 쓰세요.
    - (다) [핵심 질문] AI 호출이 실패해도 파이프라인이 멈추지 않고 대체 문장을 쓰게 만든 이유를 적어 주세요. 대체 문장이 들어간 대상을 담당자가 어떻게 처리해야 하는지도 적어 주세요.
 
 <!-- checklist optional -->
-- [ ] 0번 확인 명령 두 줄이 오류 없이 끝났다(없던 앞 Unit 파일은 만들었다)
-- [ ] `anomaly_detection` 폴더에 `pipeline.py` 를 만들어 코드 상자 내용을 붙여 넣고 1 ~ 7번을 채워 저장했다
-- [ ] `anomaly_detection` 폴더에 `apply5-3_run.py` 를 만들어 코드 상자 내용을 붙여 넣고 저장했다
-- [ ] `python apply5-3_run.py` 를 실행해 다섯 단계가 나오고 `anomaly_detection_report_2026-11-02.json` 이 생겼다
 - [ ] `report_u5.md` 의 `## 응용 5-3` 을 채웠다
 <!-- /checklist -->
 
