@@ -19,8 +19,8 @@ source:
 >
 > A사 관제 담당이 보낸 메시지:
 > 「점검 결과 후보 10건 가운데 평소에 안 쓰는 것이 정상인 권한이 두 개 있습니다.
-> - 가은의 `ACCOUNT:CHANGE`(계정 설정을 바꾸는 권한): 계정에 사고가 났을 때만 씁니다.
-> - 서연의 `SALES:CHANGE`(영업 자료를 바꾸는 권한): 6월 말과 12월 말, 반년에 한 번 결산 때만 씁니다.
+> - 가은의 `ACCOUNT:CHANGE`(계정 설정을 바꾸는 권한): 계정에 사고가 났을 때(예: 누가 남의 계정에 몰래 들어왔을 때)만 씁니다.
+> - 서연의 `SALES:CHANGE`(영업 자료를 바꾸는 권한): 6월 말과 12월 말, 반년에 한 번 결산(그동안 번 돈과 쓴 돈을 마감해 계산하는 일) 때만 씁니다.
 >
 > 다음에 권한을 회수할 때 이 두 권한까지 없어지면 필요한 날 일을 못 합니다. 회수하지 않을 권한은 파일에 적어 둘 테니, 후보를 「회수 대상」과 「회수 제외」로 나눠 주세요.」
 > - **왜 중요한가**: 후보를 전부 회수하면, 가은은 계정에 사고가 난 날 서연은 결산하는 날 필요한 권한이 없어 일을 못 합니다. 그래서 회수하기 전에 「회수 제외」를 먼저 가려냅니다.
@@ -68,7 +68,7 @@ source:
 | `to_revoke`(투 리보크) | 회수 대상 리스트 |
 | `excluded`(익스클루디드) | 제외된 후보 리스트 |
 
-- 두 리스트는 `return to_revoke, excluded` 로 한꺼번에 리턴하고, 받는 쪽은 `to_revoke, excluded = …` 로 두 이름에 나눠 받습니다(리턴한 두 값이 차례로 두 이름에 들어갑니다).
+- 두 리스트는 `return to_revoke, excluded` 로 한꺼번에 리턴하고, 받는 쪽은 `to_revoke, excluded = …` 로 두 이름에 나눠 받습니다(리턴한 두 값이 차례로 두 이름에 들어갑니다). 예: `a, b = 1, 2` 이면 `a` 는 1, `b` 는 2 입니다.
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="split_by_exclude 는 후보마다 can_exclude 로 물어 excluded 와 to_revoke 로 나눈다"></figure>
 
@@ -164,7 +164,7 @@ def split_by_exclude(findings, exclude_map):                     # 후보 리스
     return to_revoke, excluded                                   # 두 리스트를 함께 리턴한다
 ```
 
-- 4 · 5번의 `key in exclude_map` 같은 `in` 검사는 그 자체가 `True` 나 `False` 값이라, `in_exclude_list = key in exclude_map` 처럼 변수에 담을 수 있습니다.
+- 4 · 5번의 `key in exclude_map` 같은 `in` 검사는 그 자체가 `True` 나 `False` 값이라, `in_exclude_list = key in exclude_map` 처럼 변수에 담을 수 있습니다. 6번의 `in_exclude_list and not is_resigned` 는 「제외 리스트에 있고, 퇴사한 계정은 아니다」일 때만 `True` 입니다.
 - 들여쓰기는 미리 채운 줄에 맞춥니다.
 
 | 쓰는 곳 | 앞 공백 | 까닭 |
