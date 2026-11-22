@@ -214,7 +214,7 @@ for item in to_revoke:                                           # 회수 대상
 
 **순서**
 
-1. **[VS Code]** `report_exclude.py` 를 열어 내용을 모두 지우고 위 골격을 붙여 넣고 저장합니다. 이어서 `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘으로 `apply3-3_run.py` 를 만들어 붙여 넣고 저장합니다.
+1. **[VS Code]** `report_exclude.py` 를 열어 내용을 모두 지우고 위 **`report_exclude.py`** 코드 상자의 골격을 붙여 넣고 저장합니다. 이어서 `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘으로 `apply3-3_run.py` 를 만들어 붙여 넣고 저장합니다.
 2. **[터미널]** `ls config` 로 `exclude_list.json` 이 `access_log.json` 과 같은 `config` 폴더에 있는지 보고, `python -m json.tool config/exclude_list.json`(맥북은 `python3`)로 내용이 정상인지 확인합니다(한글이 `\uXXXX` 로 보여도 정상입니다).
    - 깨진 채 두면 제외 리스트를 읽지 못해 아무것도 제외되지 않습니다.
 3. **[VS Code]** `report_exclude.py` 에서 직접 쓰는 곳 네 군데(`exclude_key` · `load_exclude_map` · `can_exclude` · `split_by_exclude`)를 씁니다. 2.1 의 표와 그림을 보고 씁니다.
@@ -228,6 +228,13 @@ for item in to_revoke:                                           # 회수 대상
    - (가) 실행한 출력 전체를 붙여 넣고, 회수 대상과 회수 제외가 각각 몇 건인지, 회수 제외된 후보와 제외한 이유를 적어 주세요.
    - (나) [핵심 질문] 단계 3 출력을 보면 다미의 `SALES:QUERY` 는 제외 리스트에 있는데 회수 대상으로 남았습니다. 왜 제외하지 않게 만들었을까요? 제외했다면 어떤 위험이 있을지도 적어 주세요.
    - (다) [핵심 질문] 제외 리스트에는 제외하는 기간을 적는 키가 없습니다. 한 번 적은 권한을 아무도 다시 확인하지 않으면 어떤 문제가 생길까요? 리스트에 권한을 추가할 때 누가 확인하면 좋을까요?
+
+<!-- checklist optional -->
+- [ ] `report_exclude.py` 의 내용을 골격으로 바꾸고 직접 쓰는 곳 네 군데를 쓰고 저장했다
+- [ ] `access_control` 폴더에 `apply3-3_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `python apply3-3_run.py` 를 실행해 `회수 대상 8 건, 회수 제외 2 건` 이 나왔다
+- [ ] `report_u3.md` 의 `## 응용 3-3` 칸을 채웠다
+<!-- /checklist -->
 
 ## 응용 3-3 정리
 

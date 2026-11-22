@@ -35,7 +35,7 @@ render: markdown
 
 ## 글 틀로 쓰고 올리기
 
-설치할 것은 없습니다. Module 3 Unit 1 시작하기 레슨에서 만든 내 포트폴리오 저장소를 **GitHub 웹 화면**에서 열고 파일을 만들어 붙여 넣으면 됩니다. 아직 저장소가 없다면 [Unit 1 시작하기 레슨의 「내 기록 남기기: 소개」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/4)부터 따라 합니다.
+설치할 것은 없습니다. Module 3 Unit 1 시작하기 레슨에서 만든 내 저장소 `network-study-notes`(실습 코드와 포트폴리오가 함께 있는 저장소 하나)를 **GitHub 웹 화면**에서 열고 파일을 만들어 붙여 넣으면 됩니다. 아직 저장소가 없다면 [Unit 1 시작하기 레슨의 「내 기록 남기기: 소개」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/4)부터 따라 합니다.
 
 **1. 글 틀 고르기** — 내 저장소의 `_templates/` 폴더에 있는 세 가지 중 하나를 고릅니다. 각 틀의 생김새는 [Unit 1 시작하기 레슨의 「글 틀로 글 쓰기」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/10)에 있습니다.
 
@@ -64,7 +64,14 @@ unit: 3
 
 **5. 올리고 확인하기** — 누르기 전에 이 레슨 마지막 페이지 「공개 전 점검」을 먼저 확인합니다. 그다음 **Commit changes** 를 누르고 1~2분 기다린 뒤 내 사이트 첫 화면을 엽니다.
 
+- 웹 화면에서 올린 글은 내 컴퓨터의 `network-study-notes` 폴더에는 아직 없습니다. 그래서 이 뒤에 「이번 Unit 마무리」에서 `git push` 가 거절(`rejected`)되면, 그 안내대로 `git pull --no-rebase` 로 받아 와 합친 뒤 다시 올립니다.
+
 > **확인** — 최신 글에 오늘 글이 보이고 「나의 진행」의 Module 3 · Unit 3 칸이 채워지면 성공입니다. 안 보이면 [Unit 1 시작하기 레슨의 「첫 화면 확인하고 막힐 때」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/9)의 「글이 목록에 안 나옴」 줄을 봅니다.
+
+<!-- checklist -->
+- [ ] 글 틀 하나를 골라 `_posts/날짜-영문제목.md` 이름으로 세 문장 글을 쓰고, 머리말을 `module: 3` · `unit: 3` 으로 고쳤다
+- [ ] `code/m3_u3_review_unused.py` 파일을 만들어 내 `review_unused.py` 내용을 붙여 넣었다
+<!-- /checklist -->
 
 ## 막힐 때 힌트
 
@@ -90,3 +97,8 @@ AI 도우미에게 붙여 넣는 프롬프트 세 가지(코드 설명 정리 ·
 - 머리말이 `module: 3`, `unit: 3` 입니다.
 
 > **확인** — 네 줄을 모두 「그렇다」로 답할 수 있으면 성공입니다. 하나라도 걸리면 그 부분을 고치고 다시 **Commit changes** 합니다.
+
+<!-- checklist -->
+- [ ] 네 가지를 확인한 뒤 **Commit changes** 로 글 파일과 `code/m3_u3_review_unused.py` 를 올렸다
+- [ ] 내 사이트 첫 화면의 최신 글에서 오늘 글을 확인했다
+<!-- /checklist -->
