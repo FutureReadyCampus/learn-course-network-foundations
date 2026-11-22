@@ -51,7 +51,7 @@ render: markdown
 
 **2. 새 글 파일 만들기**
 
-1. 내 포트폴리오 저장소에서 `_posts` 폴더를 열고 **Add file › Create new file** 을 누릅니다.
+1. 깃허브의 내 `network-study-notes` 저장소(포트폴리오와 코드가 함께 있는 저장소)에서 `_posts` 폴더를 열고 **Add file › Create new file** 을 누릅니다.
 2. 파일 이름은 `날짜-영문제목.md` 모양으로 적습니다. 예: `_posts/2026-11-20-m4-u3-traffic-spike.md`
 3. 고른 글 틀의 내용을 붙여 넣고, 맨 위 머리말(front matter)을 오늘 Unit 에 맞게 고칩니다.
    ```
@@ -64,7 +64,7 @@ render: markdown
 
 **3. 코드 올리기**
 
-글에서 소개한 코드는 저장소의 `code/` 폴더에 올립니다. `code` 폴더에서 **Add file › Create new file** 을 누르고, 이름은 Module 과 Unit 번호가 보이게 적습니다.
+글에서 소개한 코드는 같은 `network-study-notes` 저장소의 `code/` 폴더에 올립니다. `code` 폴더에서 **Add file › Create new file** 을 누르고, 이름은 Module 과 Unit 번호가 보이게 적습니다.
 
 - 예: `code/m4_u3_traffic_detection.py`(실습 3-1), `code/m4_u3_access_detection.py`(실습 3-2)
 - 글 안에는 핵심 몇 줄만 코드 상자로 붙이고, 「전체 코드: `code/m4_u3_traffic_detection.py`」처럼 위치를 적습니다.
@@ -100,3 +100,10 @@ render: markdown
 4. 머리말이 `module: 4`, `unit: 3` 이고, `sample: true` 줄이 없다
 
 > **확인** — 네 줄을 모두 「그렇다」로 답할 수 있으면 성공입니다. 하나라도 걸리면 그 부분을 고치고 다시 **Commit changes** 합니다.
+
+<!-- checklist -->
+- [ ] `_posts` 폴더에 `날짜-영문제목.md` 글 파일을 만들고, 머리말을 `module: 4` · `unit: 3` 으로 고쳐 세 칸을 채웠다
+- [ ] 공개 전 점검 네 줄을 모두 확인한 뒤 **Commit changes** 를 눌렀다
+- [ ] 글에서 소개한 코드를 `code/` 폴더에 `code/m4_u3_…py` 이름으로 올렸다
+- [ ] 내 사이트 첫 화면에서 오늘 글과 「나의 진행」 Module 4 · 3번 칸을 확인했다
+<!-- /checklist -->
