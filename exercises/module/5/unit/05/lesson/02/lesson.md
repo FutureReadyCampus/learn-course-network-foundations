@@ -328,11 +328,26 @@ print("--- 단계 4:", LOG_PATH, "에", len(results), "건 ·", TICKET_PATH, "�
 **순서**
 
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `soar_engine.py` 와 `exercise5-1_run.py` 파일을 만들어 연 뒤, 이 페이지의 코드 상자를 붙여 넣고 저장합니다.
+
+<!-- checklist -->
+- [ ] `soar_response` 폴더에 `soar_engine.py` 와 `exercise5-1_run.py` 를 만들어 붙여 넣고 저장했다
+<!-- /checklist -->
+
 2. **[VS Code]** `soar_engine.py` 의 ① · ② 를 씁니다. 1.1 표의 「3. 승인 게이트」와 「6. 오류 격리」 줄, 위 문법 상자를 보고 씁니다.
+
+<!-- checklist -->
+- [ ] `soar_engine.py` 의 ① · ② 를 채워 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python exercise5-1_run.py
    ```
+
+<!-- checklist -->
+- [ ] `python exercise5-1_run.py` 를 실행해 단계 3 이 자동 실행 2 · 승인 대기 2 · 차단 금지 1 · 조치 없음 2 · 실패 1 건으로 나왔다
+<!-- /checklist -->
+
 4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다.
    - 단계 1 과 단계 4 는 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
    - 단계 2 는 알림마다 1줄이고, 조치가 있는 알림은 조치마다 1 ~ 2줄이 더 붙습니다. 단계 3 은 5줄입니다.
@@ -343,12 +358,6 @@ print("--- 단계 4:", LOG_PATH, "에", len(results), "건 ·", TICKET_PATH, "�
    - (다) [응용] `INC-404` 와 `INC-406` 은 둘 다 high 등급인데 결과가 「차단 금지」와 「승인 대기」로 다릅니다. 단계 2 의 결정 이유를 근거로 그 차이를 적고, 승인 게이트가 `execute_action` 보다 먼저 와야 하는 이유도 적어 주세요.
 
 **확인** — 단계 3 이 `자동 실행 : 2 건` · `승인 대기 : 2 건` · `차단 금지 : 1 건` · `조치 없음 : 2 건` · `실패 : 1 건` 이고, 단계 4 에 `티켓 7 장 저장` 이 나오면 성공입니다. 안 나오면 「정답」 레슨의 실습 5-1 출력과 한 줄씩 맞춰 보고, `실패` 가 6 건이면 「자주 틀리는 곳」의 ① 을 봅니다.
-
-<!-- checklist -->
-- [ ] `soar_response` 폴더에 `soar_engine.py` 를 만들어 붙여 넣고 ① · ② 를 채워 저장했다
-- [ ] `soar_response` 폴더에 `exercise5-1_run.py` 를 만들어 붙여 넣고 저장했다
-- [ ] `python exercise5-1_run.py` 를 실행해 단계 3 이 자동 실행 2 · 승인 대기 2 · 차단 금지 1 · 조치 없음 2 · 실패 1 건으로 나왔다
-<!-- /checklist -->
 
 ## 실습 5-1 정리
 
