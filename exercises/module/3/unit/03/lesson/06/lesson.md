@@ -243,7 +243,7 @@ print(names)                                                     # 후보가 아
 
 **순서**
 
-1. **[VS Code]** `overprivilege.py` 를 열어 내용을 모두 지우고 위 **`overprivilege.py`** 코드 상자의 골격을 붙여 넣고 저장합니다. 이어서 `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘으로 `apply3-2_run.py` 를 만들어 붙여 넣고 저장합니다.
+1. **[VS Code]** `overprivilege.py` 를 열어 내용을 모두 지우고 위 **`overprivilege.py`** 코드 상자의 골격을 붙여 넣고 저장합니다. 이어서 `access_control` 폴더를 오른쪽 클릭 › **New File** 로 `apply3-2_run.py` 를 만들어 붙여 넣고 저장합니다.
 
 <!-- checklist optional -->
 - [ ] `access_control` 폴더에 `apply3-2_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
@@ -255,7 +255,7 @@ print(names)                                                     # 후보가 아
 - [ ] `overprivilege.py` 의 내용을 골격으로 바꾸고 직접 쓰는 곳 다섯 군데를 쓰고 저장했다
 <!-- /checklist -->
 
-3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
+3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다.
    ```bash
    pwd
    python apply3-2_run.py

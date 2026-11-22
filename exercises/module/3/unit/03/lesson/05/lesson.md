@@ -126,7 +126,7 @@ print(counts)                                                    # 이유별 건
 
 **순서**
 
-1. **[VS Code]** `review_rules.py` 를 열어 내용을 모두 지우고(`Ctrl + A` 뒤 `Delete`, 맥북은 `Cmd + A`) 위 **`review_rules.py`** 코드 상자의 골격을 붙여 넣고 저장합니다. 이어서 `access_control` 폴더를 선택하고 **새 파일** 아이콘으로 `apply3-1_run.py` 를 만들어 붙여 넣고 저장합니다.
+1. **[VS Code]** `review_rules.py` 를 열어 내용을 모두 지우고(`Ctrl + A` 뒤 `Delete`) 위 **`review_rules.py`** 코드 상자의 골격을 붙여 넣고 저장합니다. 이어서 `access_control` 폴더를 오른쪽 클릭 › **New File** 로 `apply3-1_run.py` 를 만들어 붙여 넣고 저장합니다.
 
 <!-- checklist optional -->
 - [ ] `access_control` 폴더에 `apply3-1_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
@@ -144,7 +144,6 @@ print(counts)                                                    # 이유별 건
    python apply3-1_run.py
    ```
    - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `apply3-1_run.py` 실행할 파일
-   - 맥북은 `python3 apply3-1_run.py` 로 칩니다.
 4. 출력은 두 단계입니다. 단계 1은 `규칙에 걸린 권한 N 건` 한 줄과 걸린 권한, 단계 2는 이유별 건수 딕셔너리 한 줄입니다.
 
 <!-- checklist optional -->

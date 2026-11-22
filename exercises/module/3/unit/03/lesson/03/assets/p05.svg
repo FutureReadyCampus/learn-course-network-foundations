@@ -30,6 +30,6 @@
 <rect x="480" y="296" width="220" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="590" y="320" font-size="15" fill="#1f7a4a" text-anchor="middle" font-weight="700">세 건이 다시</text>
 <text x="590" y="341" font-size="15" fill="#1f7a4a" text-anchor="middle" font-weight="700">정리되어 나오면 OK</text>
-<text x="20" y="380" font-size="14" fill="#666660">맥북은 python3 · 그다음 ls 와 ls config 로 파일 네 개를 보고 실습 3-2 로 간다</text>
+<text x="20" y="380" font-size="14" fill="#666660">그다음 ls 와 ls config 로 파일 네 개를 보고 실습 3-2 로 간다</text>
 </g>
 </svg>
