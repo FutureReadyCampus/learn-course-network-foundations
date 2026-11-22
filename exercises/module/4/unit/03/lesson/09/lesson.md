@@ -23,9 +23,9 @@ render: markdown
 **오늘의 글감 (핵심 실습)**
 
 1. 급증으로 탐지된 09:12 의 IP 와 행동을 살펴보면, 이것만으로 공격이라고 확정할 수 있을까요? 확정하려면 무엇을 더 봐야 할까요?
-2. 09:20 의 요청 3개는 급증 기준(6.0번)에 못 미쳐 탐지되지 않았습니다. 요청 수만 보는 규칙이 이 요청들을 왜 놓쳤는지 설명해 보세요.
+2. (실습 3-1 의 [응용] 질문 (다)를 했다면) 09:20 의 요청 3개는 급증 기준(6.0번)에 못 미쳐 탐지되지 않았습니다. 요청 수만 보는 규칙이 이 요청들을 왜 놓쳤는지 설명해 보세요.
 3. dami 의 실패 4번(퇴사한 계정)과 gaeun 의 실패 3번(규칙은 허용인데 서버가 거절)은 무엇이 다른가요? 각각 먼저 무엇을 확인하겠습니까?
-4. 「실패 3번 이상」 규칙 때문에 놓칠 수 있는 경우는 무엇인가요? 규칙을 어떻게 보완하겠습니까?
+4. (실습 3-2 의 [응용] 질문 (다)를 했다면) 「실패 3번 이상」 규칙 때문에 놓칠 수 있는 경우는 무엇인가요? 규칙을 어떻게 보완하겠습니까?
 
 **선택 글감 (응용을 했다면)**
 
@@ -51,7 +51,7 @@ render: markdown
 
 **2. 새 글 파일 만들기**
 
-1. **[VS Code]** 왼쪽 목록의 `network-study-notes` 안 `_posts` 폴더를 오른쪽 클릭 › **New File** 로 `2026-11-20-m4-u3-traffic-spike.md` 처럼 만듭니다(경로 `_posts/2026-11-20-m4-u3-traffic-spike.md`). 앞은 오늘 날짜, 뒤는 영문 제목입니다. `anomaly_detection` 안이 아니라 저장소 바로 아래의 `_posts` 폴더입니다.
+1. **[VS Code]** 왼쪽 목록의 `network-study-notes` 안 `_posts` 폴더를 오른쪽 클릭 › **New File** 로 `2026-11-20-m4-u3-traffic-spike.md` 처럼 만듭니다(경로 `_posts/2026-11-20-m4-u3-traffic-spike.md`). 앞은 오늘 날짜, 뒤는 영문 제목입니다. 예의 `2026-11-20` 은 그대로 쓰지 않고 내가 글을 쓰는 실제 오늘 날짜로 바꿉니다. `anomaly_detection` 안이 아니라 저장소 바로 아래의 `_posts` 폴더입니다.
 2. 고른 글 틀의 내용을 붙여 넣고, 맨 위 머리말(front matter)을 오늘 Unit 에 맞게 고칩니다.
    ```
    module: 4
@@ -98,7 +98,24 @@ render: markdown
 3. 실습 데이터가 아닌 실제 사람의 이름(나와 동료의 실명)이 없다
 4. 머리말이 `module: 4`, `unit: 3` 이고, `sample: true` 줄이 없다
 
-**올리기** — **[터미널]** 네 줄을 모두 「그렇다」로 답할 수 있으면 저장소 루트에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더로 돌아옵니다: `cd ..` → `python check_publish.py`(맥북은 `python3`) → `git add .` → `git commit -m "Add module 4 unit 3 post"` → `git push` → `cd anomaly_detection`. `pwd` 가 이미 `…/network-study-notes` 로 끝나면 맨 앞 `cd ..` 는 건너뜁니다. 점검에서 `[오류]` 가 나오면 그 부분을 고치고 다시 돌린 뒤 올립니다.
+**올리기** — **[터미널]** 네 줄을 모두 「그렇다」로 답할 수 있으면 저장소 루트(`network-study-notes`)에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더 `anomaly_detection` 으로 돌아옵니다. `pwd` 가 이미 `…/network-study-notes` 로 끝나면 맨 앞 `cd ..` 는 건너뜁니다.
+
+```bash
+cd ..
+python check_publish.py
+```
+
+- 명령 풀이: `cd ..` 한 단계 위 폴더(`network-study-notes`)로 이동 · `python check_publish.py` 공개 전 점검 스크립트 실행
+- 점검에서 `[오류]` 가 나오면 그 부분을 고치고 다시 돌립니다. `오류 0건` 이 나오면 올립니다.
+
+```bash
+git add .
+git commit -m "Add module 4 unit 3 post"
+git push
+cd anomaly_detection
+```
+
+- 명령 풀이: `git add .` 바뀐 파일을 담음 · `git commit -m "…"` 기록으로 저장 · `git push` 깃허브로 올림 · `cd anomaly_detection` 작업 폴더로 돌아옴
 
 <!-- checklist -->
 - [ ] 저장소 루트에서 `python check_publish.py` 가 `오류 0건` 인 것을 보고 `git add` · `git commit` · `git push` 로 글을 올렸다

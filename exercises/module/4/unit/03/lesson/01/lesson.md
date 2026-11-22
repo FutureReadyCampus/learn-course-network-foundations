@@ -47,7 +47,7 @@ render: markdown
 - 이번 Unit 의 기준 숫자(급증은 평균의 3배, 반복 거절은 `REPEAT_LIMIT` 3번)는 **고정**하고, 값을 바꿔 가며 비교하지 않습니다.
 - 샘플 이벤트의 날짜는 모두 2026-11-02 이고, 이야기 속 「오늘」은 이 날입니다. 57개 중 웹 서버 28개 · 판정 서버 15개(`source` 가 `server`) · SaaS 14개입니다.
 - 코드 줄은 판다스로 쓰는 줄과 파이썬으로 쓰는 줄이 섞여 있습니다. 표를 읽고 고르고 세는 줄이 판다스이고, 판단 · 딕셔너리 · 리스트 · 함수 호출이 파이썬입니다.
-- 보고서에서 `[핵심 질문]` 표시가 붙은 질문은 꼭 채우고, 내 출력이나 샘플 데이터의 값을 근거로 이유까지 씁니다. `[응용]` 표시가 붙은 질문은 여유가 되면 씁니다.
+- 보고서에서 핵심 실습(실습 3-1 · 3-2 · 마무리)의 `[핵심 질문]` 표시가 붙은 질문은 꼭 채우고, 내 출력이나 샘플 데이터의 값을 근거로 이유까지 씁니다. `[응용]` 표시가 붙은 질문과 응용 3-1 ~ 3-3 의 질문(그 안의 `[핵심 질문]` 포함)은 여유가 되면 씁니다.
 
 ## 폴더 열고 이전 파일 확인하기
 
@@ -60,13 +60,13 @@ render: markdown
 | `config/users.json` · `config/roles.json` | Module 3 Unit 1 실습 1-1 | 실습 3-2 (`rbac.py` 가 읽음) | 다음 페이지에서 새로 만듭니다 |
 | `login_detection.py` | Unit 2 실습 2-3 | 응용 3-1 만 | 아래 설명을 따릅니다 |
 
-- Module 3 의 파일은 `network-study-notes/access_control` 폴더에 있고 오늘 작업 폴더는 `network-study-notes/anomaly_detection` 입니다. 그래서 `rbac.py` 와 설정 파일 두 개를 `access_control` 에서 가져오지 않고, 다음 페이지의 완성본으로 `anomaly_detection/rbac.py` · `anomaly_detection/config/users.json` · `anomaly_detection/config/roles.json` 에 **새로** 만듭니다. `access_control` 폴더의 파일은 그대로 둡니다. 내용은 Module 3 Unit 1 정답 레슨의 「실습 1-1 정답」 · 「실습 1-2 정답」과 같으니, Module 3 을 다 마쳤든 못 마쳤든 그대로 붙여 넣으면 됩니다.
+- Module 3 의 파일은 `network-study-notes/access_control` 폴더에 있고 오늘 작업 폴더는 `network-study-notes/anomaly_detection` 입니다. 그래서 `rbac.py` 와 설정 파일 두 개를 `access_control` 에서 가져오지 않고, 다음 페이지의 완성본으로 `anomaly_detection/rbac.py` · `anomaly_detection/config/users.json` · `anomaly_detection/config/roles.json` 에 **새로** 만듭니다. `access_control` 폴더의 파일은 그대로 둡니다. 두 JSON 파일은 Module 3 Unit 1 정답 레슨의 「실습 1-1 정답」과 같고, `rbac.py` 는 Module 3 Unit 1 실습 1-2 의 빈칸을 정답대로 채운 완성본과 같으니, Module 3 을 다 마쳤든 못 마쳤든 그대로 붙여 넣으면 됩니다.
 - `login_detection.py` 는 응용 3-1 에서만 씁니다. 없으면 `anomaly_detection` 폴더에 `login_detection.py` 를 만들어 Unit 2 실습 2-3 레슨의 `login_detection.py` 코드 상자를 붙여 넣고, Unit 2 정답 레슨의 「실습 2-3 정답」에 있는 채운 코드를 빈칸 자리에 넣어 완성합니다.
 
 **순서**
 
-1. **[VS Code]** `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치를 확인하고, 판다스가 설치돼 있는지 봅니다(맥북은 `python3`). <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나고, 마지막에 버전 번호(예: `2.3.3`)가 나오면</mark> 됩니다. `No module named 'pandas'` 가 나오면 이 레슨의 「오류가 나면」 둘째 줄을 따릅니다.
+1. **[VS Code]** `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다. 터미널 오른쪽 위 이름 칸에 **bash** 가 보이는지 확인합니다. `powershell` 이면 `+` 옆의 **∨** 를 눌러 **Git Bash** 를 고릅니다. 새 터미널은 저장소 맨 위 폴더(`…/network-study-notes`)에서 열립니다(Module 3 Unit 1 시작하기에서 한 방법과 같습니다).
+2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치를 확인하고, 판다스가 설치돼 있는지 봅니다. <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나고, 마지막에 버전 번호(예: `2.3.3` 또는 `3.1.1`)가 나오면</mark> 됩니다. 판다스 3(`3.` 으로 시작)이면 일부 출력의 `dtype` 이름이 문서와 조금 다르게 나오고, 그 자리마다 따로 적어 두었습니다. `No module named 'pandas'` 가 나오면 이 레슨의 「오류가 나면」 둘째 줄을 따릅니다.
    ```bash
    cd anomaly_detection
    pwd
@@ -82,7 +82,7 @@ render: markdown
 
 3. **파일은 이렇게 만듭니다.** 따로 내려받는 파일은 없고, 모두 코드 상자에서 복사해 만듭니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
    1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다.
-   2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
+   2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S` 로 저장합니다.
    - 답을 적는 **보고서** `report_u3.md` 는 「보고서 쓰기」 레슨의 틀을 복사해 만듭니다.
 4. 문제는 **할 일 → 순서**대로 하고, `[창 이름]` 이 지금 쓸 창입니다. 코드를 채울 때는 주석이 말하는 일을 하면 몇 줄이든 맞고, 막히면 이 Unit 뒤쪽의 정답을 봅니다.
 
@@ -267,7 +267,7 @@ def check_permission(user, resource, action):                    # 사용자 · 
 - [ ] `config` 폴더를 만들고 그 안에 `config/users.json` · `config/roles.json` 을 만들어 붙여 넣고 저장했다
 <!-- /checklist -->
 
-3. **[터미널]** <mark>파일이 정상인지 확인합니다</mark>(맥북은 `python3`).
+3. **[터미널]** <mark>파일이 정상인지 확인합니다</mark>.
    ```bash
    python -c "import json; print(len(json.load(open('normalized_events.json', encoding='utf-8'))))"
    python -c "print(len(open('baseline_traffic.csv', encoding='utf-8').read().splitlines()))"
@@ -292,15 +292,15 @@ def check_permission(user, resource, action):                    # 사용자 · 
 
 | 오류 | 원인 | 고치는 법 |
 |---|---|---|
-| `No module named 'pandas'` | <mark>판다스가 설치되지 않은 터미널입니다</mark> | `python -m pip install pandas` 를 칩니다(맥북은 `python3`) |
+| `No module named 'pandas'` | <mark>판다스가 설치되지 않은 터미널입니다</mark> | `python -m pip install pandas` 를 칩니다 |
 | `FileNotFoundError: … 'config/roles.json'` · `No module named 'rbac'` | 파일 위치가 다릅니다 | <mark>`config` 폴더 안에 두 JSON 파일이 있는지</mark>, `rbac.py` 가 `anomaly_detection` 폴더 바로 아래에 있는지 `ls` 와 `ls config` 로 봅니다 |
 | `No module named 'login_detection'`(응용 3-1) | Unit 2 실습 2-3 의 `login_detection.py` 가 없습니다 | 「폴더 열고 이전 파일 확인하기」 페이지의 표 아래 설명대로 만듭니다 |
 
-- 가상환경을 쓴다면 판다스를 설치하기 전에 `network-study-notes` 폴더에서 가상환경을 켭니다(`source .venv/Scripts/activate`, 맥북은 `Scripts` 를 `bin` 으로).
-- 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). <mark>막히면 이 Unit 뒤쪽의 「정답」을 보고</mark>, 풀리지 않으면 보고서 (가)에 「모름 — 막힌 곳: …」 이라고 쓰고 넘어갑니다.
+- 가상환경을 쓴다면 판다스를 설치하기 전에 `network-study-notes` 폴더에서 가상환경을 켭니다(`source .venv/Scripts/activate`).
+- 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). <mark>막히면 이 Unit 뒤쪽의 「정답」을 보고</mark>, 풀리지 않으면 오류 전체를 메모해 두었다가, 보고서를 만든 뒤 `## 실습 3-1` 의 (가)에 「모름 — 막힌 곳: …」 이라고 쓰고 넘어갑니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다. 파일을 지금 위치 기준으로 찾기 때문입니다. **앞 Unit 과 Module 3 의 파일은 고치지 않습니다.**
 
-**확인** — 위 표대로 고친 뒤 「오늘 쓸 파일 만들기」 페이지 3번의 세 명령이 `57`, `8`, `(False, '퇴사한 계정')` 을 내면 성공입니다. 그래도 안 되면 오류 전체를 보고서 (가)에 「모름 — 막힌 곳: …」 으로 남기고 실습 3-1 로 넘어갑니다.
+**확인** — 위 표대로 고친 뒤 「오늘 쓸 파일 만들기」 페이지 3번의 세 명령이 `57`, `8`, `(False, '퇴사한 계정')` 을 내면 성공입니다. 그래도 안 되면 오류 전체를 메모해 두었다가 보고서를 만든 뒤 `## 실습 3-1` 의 (가)에 「모름 — 막힌 곳: …」 으로 남기고 실습 3-1 로 넘어갑니다.
 
 ---

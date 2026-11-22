@@ -76,6 +76,7 @@ minute
 dtype: int64
 ```
 
+- 판다스 3 에서는 단계 1 의 두 `Name:` 줄이 `Name: time, dtype: str` 와 `Name: minute, dtype: datetime64[us]` 로 나옵니다. 이름만 다르고 뜻은 같으니 맞게 나온 것입니다.
 - (나) 09:12 에 들어온 요청 9개는 모두 **203.0.113.50** 이 보낸 것입니다. 이 분의 이벤트는 다음과 같습니다.
 
 | 시각 | 주소 | 행동 | 결과 |
@@ -115,7 +116,7 @@ Traceback (most recent call last):
 AttributeError: 'Series' object has no attribute 'floor'
 ```
 
-  - 줄 번호는 사람마다 다릅니다.
+  - 줄 번호는 사람마다 다릅니다. 실제 출력에는 `^^^^` · `~~~~` 표시 줄이나 판다스 안쪽 파일(`…/pandas/…`) 줄이 더 나올 수 있습니다. 맨 마지막 줄이 같으면 같은 오류입니다.
 - ② 에서 `limit` 대신 `SPIKE_MULTIPLE` 과 비교해 `minute_request_counts >= SPIKE_MULTIPLE` 로 쓰면 오류는 나지 않지만, 기준이 6.0 이 아니라 3 이 되어 **단계 4 에 `09:20:00    3` 줄이 하나 더 나옵니다.** 급증 기준은 평균 × 3 인 `limit` 입니다.
 - ① · ② 를 8칸으로 쓰면 `IndentationError: unexpected indent` 가 납니다. 바로 위 미리 채운 줄과 같은 4칸에서 시작합니다.
 - <mark>요청이 하나도 없던 분은 결과에 나오지 않습니다.</mark> 분당 요청 수 14줄은 요청이 있던 분만 센 것입니다.
@@ -199,7 +200,7 @@ Traceback (most recent call last):
 TypeError: 'Index' object is not callable
 ```
 
-  - 줄 번호는 사람마다 다릅니다.
+  - 줄 번호는 사람마다 다릅니다. 실제 출력에는 `^^^^` · `~~~~` 표시 줄이나 판다스 안쪽 파일(`…/pandas/…`) 줄이 더 나올 수 있습니다. 맨 마지막 줄이 같으면 같은 오류입니다.
 - ③ 에서 이름 하나로 `reason = check_permission(…)` 이라고 받으면 오류는 나지 않지만 **단계 3 아래에 아무 줄도 나오지 않습니다.** `reason` 에 `(False, '퇴사한 계정')` 처럼 두 값이 한꺼번에 담겨 `PRIORITY` 에서 찾지 못하고 모두 4순위가 되기 때문입니다.
 - ③ 에서 `permission_action` 대신 `action` 을 넣으면 gaeun 의 세 줄이 `2 권한 없음 …` 으로 바뀝니다. `action` 은 `"ACCOUNT:CHANGE"` 전체라 권한 문자열이 `ACCOUNT:ACCOUNT:CHANGE` 가 되기 때문입니다.
 
@@ -308,7 +309,7 @@ Traceback (most recent call last):
 TypeError: Object of type Timestamp is not JSON serializable
 ```
 
-  - 줄 번호는 사람마다 다릅니다.
+  - 줄 번호는 사람마다 다릅니다. 실제 출력에는 `^^^^` · `~~~~` 표시 줄이나 판다스 안쪽 파일(`…/pandas/…`) 줄이 더 나올 수 있습니다. 맨 마지막 줄이 같으면 같은 오류입니다.
 - `json.dump` 에서 `ensure_ascii=False` 를 빼면 한글이 `\ube44\uc815\uc0c1` 같은 코드(「비정상」을 코드로 쓴 모양)로 저장됩니다. <mark>오류는 나지 않지만 파일을 열어 보면 알림 내용을 알아볼 수 없습니다.</mark>
 - `with` 줄 아래의 6번 코드는 **공백 8개로 씁니다.** 4개로 쓰면 `IndentationError` 오류가 납니다. `with` 줄 끝의 `:` 도 빠뜨리지 않습니다.
 
@@ -402,7 +403,7 @@ Traceback (most recent call last):
 ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
 ```
 
-  - 줄 번호는 사람마다 다릅니다.
+  - 줄 번호는 사람마다 다릅니다. 실제 출력에는 `^^^^` · `~~~~` 표시 줄이나 판다스 안쪽 파일(`…/pandas/…`) 줄이 더 나올 수 있습니다. 맨 마지막 줄이 같으면 같은 오류입니다.
 - `ip != usual_ip` 대신 `ip == usual_ip` 라고 쓰면 오류는 나지 않지만 **평소 IP 로 로그인한 사용자가 나옵니다.** 단계 2에 junho 가 두 번 나오는 것이 이 실수의 모습입니다.
 
 **관제에서는**
@@ -494,7 +495,7 @@ Traceback (most recent call last):
 AttributeError: 'Series' object has no attribute 'contains'
 ```
 
-  - 줄 번호는 사람마다 다릅니다.
+  - 줄 번호는 사람마다 다릅니다. 실제 출력에는 `^^^^` · `~~~~` 표시 줄이나 판다스 안쪽 파일(`…/pandas/…`) 줄이 더 나올 수 있습니다. 맨 마지막 줄이 같으면 같은 오류입니다.
 - 4번에서 `scanner_rows["ip"]` 대신 `web_failures["ip"]` 로 세면 오류는 나지 않지만 **스캐너 경로와 상관없이 모든 IP 가 스캔으로 나옵니다.** 203.0.113.50 이 7번으로 나오는 것이 이 실수의 모습입니다.
 
 **관제에서는**
