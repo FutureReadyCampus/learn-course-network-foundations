@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>security-agent-toolkit 안에 anomaly_detection 폴더를 만들고 샘플 로그 파일을 만든다</title>
+<title>network-study-notes 안에 anomaly_detection 폴더를 만들고 샘플 로그 파일을 만든다</title>
 <desc>왼쪽은 폴더 배치입니다. Module 3 의 access_control 옆에 Module 4 의 anomaly_detection 을 만들고, 그 안에 access_sample.log 를 New File 로 만들어 붙여 넣습니다. 오른쪽은 순서이며 마지막에 줄 수가 30 인지 확인합니다.</desc>
 <defs><marker id="a-m4u01l01-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
 <text x="24" y="34" font-size="19" fill="#292929" font-weight="700">폴더 배치</text>
 <text x="390" y="34" font-size="19" fill="#292929" font-weight="700">순서</text>
 <rect x="24" y="56" width="300" height="42" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="174" y="82.2" font-size="15" fill="#292929" text-anchor="middle">security-agent-toolkit/</text>
+<text x="174" y="82.2" font-size="15" fill="#292929" text-anchor="middle">network-study-notes/</text>
 <line x1="44" y1="98" x2="44" y2="188" stroke="#dededb" stroke-width="2"/>
 <line x1="44" y1="134" x2="64" y2="134" stroke="#dededb" stroke-width="2"/>
 <rect x="64" y="114" width="260" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>

@@ -46,7 +46,7 @@ Unit 1 은 알림을 플레이북으로 처리하고 알림에 맥락을 붙이�
 
 오늘 핵심 실습은 Unit 1 실습 1-2 레슨에서 만든 `incident.py` 의 `load_json` · `save_json` 만 씁니다. 먼저 이 파일이 있는지 봅니다.
 
-1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
+1. **[VS Code]** `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** Module 5 폴더 `soar_response` 로 들어가 Unit 1 파일을 확인합니다(맥북은 `python3`).
    ```bash
    pwd

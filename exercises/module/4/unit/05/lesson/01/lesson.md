@@ -52,8 +52,8 @@ Unit 5는 Module 4 **이상탐지**의 마지막 Unit입니다. 지금까지 로
 
 ## 폴더 열고 LLM 호출 파일 준비하기
 
-1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치를 확인하고, `llm_client.py` 가 쓰는 `requests` 를 설치합니다(맥북은 `python3`). <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나면</mark> 됩니다. Unit 2 에서 가상환경을 켜고 판다스를 설치했다면 먼저 `security-agent-toolkit` 폴더에서 같은 가상환경을 켭니다(`source .venv/Scripts/activate`, 맥북은 `Scripts` 를 `bin` 으로).
+1. **[VS Code]** `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
+2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치를 확인하고, `llm_client.py` 가 쓰는 `requests` 를 설치합니다(맥북은 `python3`). <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나면</mark> 됩니다. Unit 2 에서 가상환경을 켜고 판다스를 설치했다면 먼저 `network-study-notes` 폴더에서 같은 가상환경을 켭니다(`source .venv/Scripts/activate`, 맥북은 `Scripts` 를 `bin` 으로).
    ```bash
    cd anomaly_detection
    pwd
@@ -220,7 +220,7 @@ def call_llm(question):                                              # 질문 �
     ```bash
     ls -a ..
     ```
-  - 명령 풀이: `ls -a` 숨김 파일(이름이 점으로 시작하는 파일)까지 보기 · `..` 한 단계 위 폴더(`security-agent-toolkit`)
+  - 명령 풀이: `ls -a` 숨김 파일(이름이 점으로 시작하는 파일)까지 보기 · `..` 한 단계 위 폴더(`network-study-notes`)
   - 나오는 것: 목록에 `.env` 와 `.gitignore` 가 있는지 봅니다. 없는 것은 아래 3단계에서 만듭니다.
 
 **1단계 · 구글 AI Studio 에서 새 키 만들기**
@@ -247,9 +247,9 @@ def call_llm(question):                                              # 질문 �
 
 **3단계 · `.env` 파일 만들기**
 
-- **[VS Code]** 왼쪽 목록에서 `security-agent-toolkit` 폴더(`anomaly_detection` 의 바깥)를 오른쪽 클릭 › **New File** 을 누르고 `.env` 를, 같은 방법으로 `.gitignore` 를 만듭니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다. 파일 이름 뒤에 `.txt` 같은 것이 붙지 않아야 합니다.
+- **[VS Code]** 왼쪽 목록에서 `network-study-notes` 폴더(`anomaly_detection` 의 바깥)를 오른쪽 클릭 › **New File** 을 누르고 `.env` 를, 같은 방법으로 `.gitignore` 를 만듭니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다. 파일 이름 뒤에 `.txt` 같은 것이 붙지 않아야 합니다.
 - `.env` 를 `anomaly_detection` 바깥에 두어도 되는 이유: `llm_client.py` 의 `find_env` 가 지금 폴더부터 한 단계씩 위쪽 폴더로 올라가며 찾기 때문입니다. 그래서 `anomaly_detection` 에서 실행해도 바깥의 `.env` 가 읽힙니다.
-- **[VS Code]** 왼쪽 파일 목록에서 `security-agent-toolkit` 바로 아래의 `.env` 를 열고 아래 한 줄만 적습니다. <mark>등호 앞뒤에 빈칸을 넣지 않고, 따옴표도 넣지 않습니다.</mark>
+- **[VS Code]** 왼쪽 파일 목록에서 `network-study-notes` 바로 아래의 `.env` 를 열고 아래 한 줄만 적습니다. <mark>등호 앞뒤에 빈칸을 넣지 않고, 따옴표도 넣지 않습니다.</mark>
 
 <pre class="copyable"><code>GEMINI_API_KEY=여기에_복사한_키를_붙여넣습니다
 </code></pre>
@@ -258,7 +258,7 @@ def call_llm(question):                                              # 질문 �
 
 **4단계 · 깃허브에 키가 올라가지 않게 막기**
 
-- **[VS Code]** `security-agent-toolkit` 바로 아래의 `.gitignore` 를 엽니다. 맨 아래에 `.env` 한 줄이 있는지 보고, 없으면 적습니다.
+- **[VS Code]** `network-study-notes` 바로 아래의 `.gitignore` 를 엽니다. 맨 아래에 `.env` 한 줄이 있는지 보고, 없으면 적습니다.
 
 <pre class="copyable"><code>.env
 </code></pre>
@@ -280,7 +280,7 @@ def call_llm(question):                                              # 질문 �
 
 **막혔을 때**
 
-- `.env.txt` 처럼 이름이 다르게 만들어졌다면, `security-agent-toolkit` 폴더에서 `mv .env.txt .env` 를 칩니다(`mv 이전이름 새이름` 은 이름 바꾸기).
+- `.env.txt` 처럼 이름이 다르게 만들어졌다면, `network-study-notes` 폴더에서 `mv .env.txt .env` 를 칩니다(`mv 이전이름 새이름` 은 이름 바꾸기).
 - `False` 가 나오면 `GEMINI_API_KEY=` 글자가 틀렸거나, 등호 뒤가 비어 있거나, 등호 앞에 빈칸이 있는 것입니다. 3단계를 다시 봅니다.
 - 키가 맞는데(2단계는 성공) `상태 코드 429` 가 1분을 기다려도 계속 나오면, 구글이 그 계정의 무료 호출 한도를 0 으로 둔 경우가 구글 포럼에 보고되어 있습니다. 보고서 (가)에 「막힘: 429 가 계속 나옴」이라고 적고 넘어갑니다. 요약 자리에는 대체 문장이 나오고 프로그램은 멈추지 않습니다.
 

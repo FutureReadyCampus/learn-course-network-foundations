@@ -520,6 +520,29 @@ def expand_includes(text: str) -> str:
     return re.sub(r"(?m)^<!--\s*include:\s*(\S+)\s*-->\s*$", box, text)
 
 
+CHECKLIST_RE = re.compile(r"(?ms)^<!--\s*checklist(?P<optional>\s+optional)?\s*-->[ \t]*\n(?P<body>.*?)^<!--\s*/checklist\s*-->[ \t]*\n?")
+
+
+def split_checklist(text: str, md) -> tuple[str, dict | None]:
+    """한 Page 의 `<!-- checklist -->` 블록(`- [ ] 항목` 줄들)을 본문에서 떼어 낸다.
+
+    리더가 Page 아래에 체크리스트와 진행 막대로 보여 주고, 모두 체크해야 「다음」이 열린다.
+    `<!-- checklist optional -->` 이면 진행 막대만 보여 주고 막지 않는다.
+    """
+    match = CHECKLIST_RE.search(text)
+    if not match:
+        return text, None
+    items = []
+    for line in match.group("body").split("\n"):
+        item = re.match(r"^\s*[-*]\s+\[[ xX]\]\s+(.+?)\s*$", line)
+        if item:
+            items.append(md.renderInline(item.group(1)))
+    rest = text[:match.start()] + text[match.end():]
+    if not items:
+        return rest, None
+    return rest, {"optional": bool(match.group("optional")), "items": items}
+
+
 def markdown_pages(path: Path, lesson_meta: dict | None = None) -> list[dict]:
     """Exercise Lessons: each `## ` heading (outside code fences) is a Page rendered from full Markdown."""
     from markdown_it import MarkdownIt
@@ -557,7 +580,10 @@ def markdown_pages(path: Path, lesson_meta: dict | None = None) -> list[dict]:
     videos = (lesson_meta or {}).get("page_videos") or {}  # {page number: {video_id, title, creator, ...}}
     pages = []
     for i, (title, body) in enumerate(sections, 1):
-        page = {"title": title, "paragraphs": [], "html": figure(i) + inline_figures(iconize(md.render(expand_includes("\n".join(body))))), "terms": [], "questions": []}
+        text, checklist = split_checklist("\n".join(body), md)
+        page = {"title": title, "paragraphs": [], "html": figure(i) + inline_figures(iconize(md.render(expand_includes(text)))), "terms": [], "questions": []}
+        if checklist:
+            page["checklist"] = checklist
         if i in videos:
             page.update(validate_page_video({"video": videos[i]}, f"page {i}", path))
         pages.append(page)

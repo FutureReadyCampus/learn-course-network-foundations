@@ -54,7 +54,7 @@ Unit 1 ~ 4에서는 플레이북 찾기(Unit 1) · 계정 잠금과 IP 차단(Un
 
 **순서**
 
-1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
+1. **[VS Code]** `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** Module 5 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 위 표의 파일과 `config` 가 보이고, `ls config` 결과에 `playbook_registry.json` · `approval_policy.json` · `escalation_rules.json` 이 보이면</mark> 됩니다.
    ```bash
    pwd

@@ -65,7 +65,7 @@ render: markdown
 
 **순서**
 
-1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
+1. **[VS Code]** `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치를 확인하고, 판다스가 설치돼 있는지 봅니다(맥북은 `python3`). <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나고, 마지막에 버전 번호(예: `2.3.3`)가 나오면</mark> 됩니다. `No module named 'pandas'` 가 나오면 이 레슨의 「오류가 나면」 둘째 줄을 따릅니다.
    ```bash
    cd anomaly_detection
@@ -271,7 +271,7 @@ def check_permission(user, resource, action):                    # 사용자 · 
 | `FileNotFoundError: … 'config/roles.json'` · `No module named 'rbac'` | 파일 위치가 다릅니다 | <mark>`config` 폴더 안에 두 JSON 파일이 있는지</mark>, `rbac.py` 가 `anomaly_detection` 폴더 바로 아래에 있는지 `ls` 와 `ls config` 로 봅니다 |
 | `No module named 'login_detection'`(응용 3-1) | Unit 2 실습 2-3 의 `login_detection.py` 가 없습니다 | 「폴더 열고 이전 파일 확인하기」 페이지의 표 아래 설명대로 만듭니다 |
 
-- 가상환경을 쓴다면 판다스를 설치하기 전에 `security-agent-toolkit` 폴더에서 가상환경을 켭니다(`source .venv/Scripts/activate`, 맥북은 `Scripts` 를 `bin` 으로).
+- 가상환경을 쓴다면 판다스를 설치하기 전에 `network-study-notes` 폴더에서 가상환경을 켭니다(`source .venv/Scripts/activate`, 맥북은 `Scripts` 를 `bin` 으로).
 - 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). <mark>막히면 이 Unit 뒤쪽의 「정답」을 보고</mark>, 풀리지 않으면 보고서 (가)에 「모름 — 막힌 곳: …」 이라고 쓰고 넘어갑니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다. 파일을 지금 위치 기준으로 찾기 때문입니다. **앞 Unit 과 Module 3 의 파일은 고치지 않습니다.**

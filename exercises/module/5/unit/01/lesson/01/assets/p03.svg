@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <title>soar_response 폴더에 config 폴더와 데이터 파일 다섯 개를 만들고 5 6 4 1 을 확인한다</title>
-<desc>security-agent-toolkit 아래 soar_response 폴더와 config 폴더를 만든다. 데이터 파일 다섯 개는 지금 붙여 넣어 만들고, 플레이북 등록 파일은 실습 1-1에서 만든다. 확인 명령은 5 6 4 1 을 출력해야 한다.</desc>
+<desc>network-study-notes 아래 soar_response 폴더와 config 폴더를 만든다. 데이터 파일 다섯 개는 지금 붙여 넣어 만들고, 플레이북 등록 파일은 실습 1-1에서 만든다. 확인 명령은 5 6 4 1 을 출력해야 한다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">soar_response 폴더에 지금 만들 파일</text>
 <rect x="20" y="52" width="300" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text y="77.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="170.0" dy="0" font-weight="700">security-agent-toolkit/</tspan></text>
+<text y="77.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="170.0" dy="0" font-weight="700">network-study-notes/</tspan></text>
 <rect x="50" y="104" width="270" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text y="129.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="185.0" dy="0" font-weight="700">soar_response/ (새로 만듦)</tspan></text>
 <path d="M34,92 V124 H50" fill="none" stroke="#666660" stroke-width="2"/>

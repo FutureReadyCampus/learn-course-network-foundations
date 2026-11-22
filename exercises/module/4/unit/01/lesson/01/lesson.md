@@ -185,8 +185,8 @@ XDR(엑스디알)은 PC · 서버 같은 여러 곳의 탐지를 이어서 보�
 
 ## 폴더 만들고 샘플 로그 준비하기
 
-1. **[VS Code]** 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** Module 4 폴더 `anomaly_detection` 을 만들고 들어갑니다(맥북은 `python` 을 `python3` 로). <mark>마지막 `pwd` 가 `…/security-agent-toolkit/anomaly_detection` 으로 끝나야</mark> 합니다. 앞으로 Module 4 파일은 모두 이 폴더에 만듭니다.
+1. **[VS Code]** 왼쪽 목록에서 `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
+2. **[터미널]** Module 4 폴더 `anomaly_detection` 을 만들고 들어갑니다(맥북은 `python` 을 `python3` 로). <mark>마지막 `pwd` 가 `…/network-study-notes/anomaly_detection` 으로 끝나야</mark> 합니다. 앞으로 Module 4 파일은 모두 이 폴더에 만듭니다.
    ```bash
    mkdir -p anomaly_detection
    cd anomaly_detection
@@ -197,7 +197,7 @@ XDR(엑스디알)은 PC · 서버 같은 여러 곳의 탐지를 이어서 보�
    - 처음 `pwd` 가 `…/access_control` 처럼 Module 3 폴더 안이면 먼저 `cd ..` 로 한 단계 올라간 뒤 위 명령을 칩니다.
    - 폴더는 이렇게 됩니다.
      ```
-     security-agent-toolkit/
+     network-study-notes/
        access_control/        Module 3
        anomaly_detection/     Module 4
      ```

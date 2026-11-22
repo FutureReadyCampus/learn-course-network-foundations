@@ -388,7 +388,7 @@ ls
 - 코드는 `.py`, 실행 파일은 `exerciseN-M_run.py` · `applyN-M_run.py`, 보고서는 `report_uN.md` 입니다.
 
 ```
-security-agent-toolkit/
+network-study-notes/
   .env                       ← 키를 만든 사람만 (깃허브에 올리지 않음)
   .gitignore
   access_control/            Module 3
@@ -420,7 +420,7 @@ security-agent-toolkit/
 
 **순서**
 
-1. **[터미널]** `security-agent-toolkit` 폴더로 옮깁니다. 앞 페이지의 `pwd` 결과가 `anomaly_detection` 으로 끝날 때만 `cd ..` 를 칩니다. 이미 `…/security-agent-toolkit` 으로 끝나면 `cd ..` 는 건너뛰고 `pwd` 만 칩니다.
+1. **[터미널]** `network-study-notes` 폴더로 옮깁니다. 앞 페이지의 `pwd` 결과가 `anomaly_detection` 으로 끝날 때만 `cd ..` 를 칩니다. 이미 `…/network-study-notes` 으로 끝나면 `cd ..` 는 건너뛰고 `pwd` 만 칩니다.
 
    ① 한 단계 위 폴더로 이동합니다.
 
@@ -438,7 +438,7 @@ security-agent-toolkit/
    ```
 
    - 하는 일: 지금 있는 폴더의 위치를 보여 줍니다.
-   - 나오는 것: <mark>`…/security-agent-toolkit` 으로 끝나면</mark> 됩니다. 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
+   - 나오는 것: <mark>`…/network-study-notes` 으로 끝나면</mark> 됩니다. 결과가 다르면 VS Code 왼쪽 목록에서 `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
 
 2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. <mark>빨간 글씨 줄에 `.env` 나 `.venv` 가 보이면 올리지 말고,</mark> 아래 안내대로 `.gitignore` 를 고친 뒤 `git status` 를 다시 봅니다.
 
@@ -448,7 +448,7 @@ security-agent-toolkit/
 
    - 하는 일: 올릴 파일의 상태를 보여 줍니다.
    - 나오는 것: 바뀐 파일의 이름이 나옵니다.
-   - `.env` 가 보이면: VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다.
+   - `.env` 가 보이면: VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다.
      - `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
    - `anomaly_detection/__pycache__/` (파이썬이 실행하면서 자동으로 만드는 임시 폴더)가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 봅니다.
    - `anomaly_detection/llm_client.py` 는 API 키가 들어 있지 않은 코드 파일이라 올라가도 됩니다. 키는 `.env` 에만 있습니다.

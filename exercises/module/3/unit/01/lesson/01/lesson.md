@@ -93,11 +93,11 @@ Unit 1은 첫 단계인 권한 정하기입니다. 사용자와 역할을 파일
 
 이 Module의 모든 파일은 **프로젝트 폴더 하나**에 둡니다. 이 페이지에서는 그 폴더를 열고 Module 3의 작업 폴더를 만듭니다. 파일은 실습에서 필요할 때 하나씩 만듭니다.
 
-1. **[VS Code]** 프로젝트 폴더 `security-agent-toolkit` 을 엽니다.
+1. **[VS Code]** 프로젝트 폴더 `network-study-notes` 을 엽니다.
    - 이미 이 폴더가 있다면 그 폴더를 엽니다.
-   - 처음이면 바탕화면에 `security-agent-toolkit` 폴더를 만든 뒤, VS Code 메뉴 **File › Open Folder…** 로 그 폴더를 엽니다.
-2. **[VS Code]** 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다. **터미널**(terminal)은 명령을 글자로 입력해 컴퓨터에 일을 시키는 창으로, VS Code 아래쪽에 열립니다.
-3. **[터미널]** 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
+   - 처음이면 바탕화면에 `network-study-notes` 폴더를 만든 뒤, VS Code 메뉴 **File › Open Folder…** 로 그 폴더를 엽니다.
+2. **[VS Code]** 왼쪽 목록에서 `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다. **터미널**(terminal)은 명령을 글자로 입력해 컴퓨터에 일을 시키는 창으로, VS Code 아래쪽에 열립니다.
+3. **[터미널]** 위치를 확인합니다. 결과가 `…/network-study-notes` 으로 끝나야 합니다.
    ```bash
    pwd
    ```
@@ -109,10 +109,10 @@ Unit 1은 첫 단계인 권한 정하기입니다. 사용자와 역할을 파일
    pwd
    ```
    - 명령 풀이: `mkdir -p` 폴더를 만듦(이미 있어도 오류 없음) · `cd access_control` 그 폴더 안으로 들어감 · `pwd` 지금 위치 확인
-   - 마지막 `pwd` 가 `…/security-agent-toolkit/access_control` 로 끝나면 됩니다.
+   - 마지막 `pwd` 가 `…/network-study-notes/access_control` 로 끝나면 됩니다.
    - 폴더는 이렇게 됩니다.
      ```
-     security-agent-toolkit/
+     network-study-notes/
        access_control/      Module 3
          config/
      ```
@@ -121,7 +121,7 @@ Unit 1은 첫 단계인 권한 정하기입니다. 사용자와 역할을 파일
 
 > 오늘 명령은 모두 **터미널**에서 칩니다. `python` 이 없다는 오류가 나오면 `python3` 으로 칩니다(맥북은 `python3`). 오늘 나오는 이름 · 자원 · 숫자는 연습용 예시입니다.
 
-> **확인** — 마지막 `pwd` 가 `…/security-agent-toolkit/access_control` 로 끝나고 VS Code 왼쪽 목록에 `access_control/config` 가 보이면 성공입니다. 안 보이면 1번에서 연 폴더가 `security-agent-toolkit` 인지 보고 3번부터 다시 합니다.
+> **확인** — 마지막 `pwd` 가 `…/network-study-notes/access_control` 로 끝나고 VS Code 왼쪽 목록에 `access_control/config` 가 보이면 성공입니다. 안 보이면 1번에서 연 폴더가 `network-study-notes` 인지 보고 3번부터 다시 합니다.
 
 ---
 
@@ -369,7 +369,7 @@ AI 도우미는 내 생각을 정리하는 데만 씁니다. 대신 써 주는 �
 공개하면 누구나 볼 수 있으므로 올리기 전에 점검합니다. 앞의 "공개해도 되는 것, 안 되는 것" 표를 눈으로 한 번 훑어보고, 내 컴퓨터에서 저장소를 내려받아 쓰는 사람은 점검 스크립트도 돌립니다.
 
 1. 아래 `check_publish.py`를 복사해 저장소에 같은 이름의 파일로 만듭니다.
-2. 터미널에서 저장소를 내려받고 점검합니다. `<내 아이디>`는 내 GitHub 아이디로 바꿉니다. 실습 폴더 `security-agent-toolkit` 안이 아닌 곳(예: 바탕화면)에서 칩니다. 그 자리에 저장소 이름의 폴더가 새로 생기기 때문입니다.
+2. 터미널에서 저장소를 내려받고 점검합니다. `<내 아이디>`는 내 GitHub 아이디로 바꿉니다. 실습 폴더 `network-study-notes` 안이 아닌 곳(예: 바탕화면)에서 칩니다. 그 자리에 저장소 이름의 폴더가 새로 생기기 때문입니다.
 
 ```
 git clone https://github.com/<내 아이디>/network-study-notes.git
@@ -387,9 +387,9 @@ python check_publish.py
 
 ## 코드 저장소 만들고 GitHub에 연결하기
 
-실습 코드를 올릴 `security-agent-toolkit` 폴더를 깃 저장소로 만들고 깃허브에 잇습니다. 포트폴리오 저장소(`network-study-notes`)와는 **다른 저장소**이고, 한 번만 하면 이후 Unit에서는 「깃허브에 올리기」의 명령만 칩니다. 이미 이어 두었다면(`git status` 에 `fatal: not a git repository` 가 안 나오면) 건너뜁니다.
+실습 코드를 올릴 `network-study-notes` 폴더를 깃 저장소로 만들고 깃허브에 잇습니다. 포트폴리오 저장소(`network-study-notes`)와는 **다른 저장소**이고, 한 번만 하면 이후 Unit에서는 「깃허브에 올리기」의 명령만 칩니다. 이미 이어 두었다면(`git status` 에 `fatal: not a git repository` 가 안 나오면) 건너뜁니다.
 
-1. **[터미널]** `security-agent-toolkit` 폴더로 갑니다. 지금 `access_control` 안이면 먼저 `cd ..` 로 한 칸 올라갑니다. `pwd` 가 `…/security-agent-toolkit` 으로 끝나야 합니다. 깃 설정은 처음 한 번만 합니다(이메일은 깃허브 계정 이메일이나 `…@users.noreply.github.com`).
+1. **[터미널]** `network-study-notes` 폴더로 갑니다. 지금 `access_control` 안이면 먼저 `cd ..` 로 한 칸 올라갑니다. `pwd` 가 `…/network-study-notes` 으로 끝나야 합니다. 깃 설정은 처음 한 번만 합니다(이메일은 깃허브 계정 이메일이나 `…@users.noreply.github.com`).
    ```bash
    pwd
    git --version
@@ -397,8 +397,8 @@ python check_publish.py
    git config --global user.email "내 이메일"
    ```
    - `git --version` 에서 명령을 찾을 수 없다고 나오면 git-scm.com 에서 **Git for Windows** 를 기본값으로 설치하고 VS Code 를 다시 켭니다.
-2. **[브라우저]** 깃허브에 새 저장소 `security-agent-toolkit` 을 만듭니다. 공개 범위는 **Private**(실습 코드에 실수로 키가 섞여도 남에게 안 보이게), README · .gitignore · license 는 모두 체크하지 않습니다. 다음 화면의 주소를 복사해 둡니다.
-3. **[VS Code]** `security-agent-toolkit` 폴더 바로 아래에 `.gitignore` 를 만들고 아래 내용을 붙여 넣습니다. 비밀 파일(`.env`), 가상 환경(`.venv/`), 파이썬 임시 폴더(`__pycache__/`)를 올리지 않게 합니다.
+2. **[브라우저]** 깃허브에 새 저장소 `network-study-notes` 을 만듭니다. 공개 범위는 **Private**(실습 코드에 실수로 키가 섞여도 남에게 안 보이게), README · .gitignore · license 는 모두 체크하지 않습니다. 다음 화면의 주소를 복사해 둡니다.
+3. **[VS Code]** `network-study-notes` 폴더 바로 아래에 `.gitignore` 를 만들고 아래 내용을 붙여 넣습니다. 비밀 파일(`.env`), 가상 환경(`.venv/`), 파이썬 임시 폴더(`__pycache__/`)를 올리지 않게 합니다.
 
 <pre class="copyable"><code>.env
 .venv/
@@ -408,7 +408,7 @@ __pycache__/</code></pre>
    ```bash
    git init
    git branch -M main
-   git remote add origin https://github.com/내아이디/security-agent-toolkit.git
+   git remote add origin https://github.com/내아이디/network-study-notes.git
    git add .
    git commit -m "First commit"
    git push -u origin main
@@ -417,4 +417,4 @@ __pycache__/</code></pre>
    - 로그인 창이 뜨면 **Sign in with your browser** 로 로그인합니다.
    - `rejected` · `failed to push` 가 나오면 주소가 맞는지, 깃허브 저장소를 빈 채로(README 없이) 만들었는지 봅니다.
 
-> **확인** — 깃허브의 `security-agent-toolkit` 저장소를 새로 고쳤을 때 `.gitignore` 파일이 보이면 성공입니다. 안 보이면 터미널에서 `git remote -v` 로 주소를 확인하고 `git push -u origin main` 을 다시 칩니다.
+> **확인** — 깃허브의 `network-study-notes` 저장소를 새로 고쳤을 때 `.gitignore` 파일이 보이면 성공입니다. 안 보이면 터미널에서 `git remote -v` 로 주소를 확인하고 `git push -u origin main` 을 다시 칩니다.

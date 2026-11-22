@@ -16,7 +16,7 @@ source:
 **이번에 하는 일:** Unit 2를 시작하기 전에 자리를 바꿨습니다. 자리를 옮기지 않았다면 이 레슨은 건너뛰고 「시작하기」로 갑니다. 지금 앉은 PC 에는 **앞 사람의 폴더와 깃허브 로그인**이 남아 있을 수 있습니다. 그대로 쓰면 내 코드가 **앞 사람 이름 · 앞 사람 계정**으로 올라갑니다. 이번 준비 과제에서는 앞 사람 흔적을 확인해 끊고, Unit 1 마무리에서 깃허브에 올려 둔 **내 폴더를 받아** 내 것이 맞는지 확인합니다.
 
 **끝나면 이렇게 됩니다**
-- `문서(Documents)` 안에 앞 사람 폴더는 `security-agent-toolkit_old`, 내 폴더는 `security-agent-toolkit`
+- `문서(Documents)` 안에 앞 사람 폴더는 `network-study-notes_old`, 내 폴더는 `network-study-notes`
 - 이 PC 에서 push 하면 **내 이름 · 내 계정**으로 올라감
 - 깃허브 내 저장소에 이번에 만든 확인 파일이 보임
 - 앞 사람이 켜 둔 도커 컨테이너(8장에서 설명합니다)가 없어 포트가 비어 있음
@@ -51,21 +51,21 @@ source:
 
    | `ls` 에 보이는 것 | 다음 할 일 |
    |---|---|
-   | `security-agent-toolkit` | 2번으로 |
+   | `network-study-notes` | 2번으로 |
    | 그 이름은 없고, 앞 사람이 **다른 이름으로 만든 폴더**(예: `toolkit`, `my-security`) | 그 폴더 이름으로 2번을 합니다 |
    | **둘 다 없음** | 4장으로 건너뜁니다(이름 바꿀 폴더가 없음) |
 
 2. **[터미널]** 그 폴더가 **누구 저장소**인지 봅니다.
    ```bash
-   cd security-agent-toolkit
+   cd network-study-notes
    git remote -v
    cd ..
    ```
    - 명령 풀이: `git remote -v` 이 폴더가 연결된 깃허브 저장소 주소를 보여 줌 · `cd ..` 한 단계 위(문서 폴더)로 돌아감
    - 이렇게 나옵니다(예시).
      ```
-     origin  https://github.com/앞사람아이디/security-agent-toolkit.git (fetch)
-     origin  https://github.com/앞사람아이디/security-agent-toolkit.git (push)
+     origin  https://github.com/앞사람아이디/network-study-notes.git (fetch)
+     origin  https://github.com/앞사람아이디/network-study-notes.git (push)
      ```
    - `github.com/` 바로 뒤가 **그 저장소 주인의 깃허브 아이디**입니다. 내 아이디가 아니면 앞 사람 폴더입니다.
    - 폴더 이름이 다르면 `cd` 뒤에 그 이름을 씁니다(예: `cd toolkit`).
@@ -113,21 +113,21 @@ source:
 
 ## 4. 앞 사람 폴더 이름 끝에 _old 를 붙입니다
 
-**왜 하나요** — 내 폴더도 이름이 `security-agent-toolkit` 이라 같은 자리에 받을 수 없습니다. 앞 사람 폴더는 **지우지 않고** 이름만 바꿔 둡니다.
+**왜 하나요** — 내 폴더도 이름이 `network-study-notes` 이라 같은 자리에 받을 수 없습니다. 앞 사람 폴더는 **지우지 않고** 이름만 바꿔 둡니다.
 
 2장 1번에서 폴더가 **없었으면** 이 장은 건너뜁니다.
 
 1. **[VS Code]** 그 폴더가 VS Code 에 열려 있으면 먼저 **File › Close Folder** 로 닫습니다. 열려 있으면 이름이 안 바뀔 수 있습니다. 닫은 뒤 1장처럼 터미널을 다시 열고 `cd ~/Documents` 합니다.
 2. **[터미널]** 이름을 바꿉니다.
    ```bash
-   mv security-agent-toolkit security-agent-toolkit_old
+   mv network-study-notes network-study-notes_old
    ls
    ```
    - 명령 풀이: `mv 지금이름 새이름` 폴더 이름을 바꿈
-   - `ls` 에 `security-agent-toolkit_old` 가 보이고 `security-agent-toolkit` 은 없어야 합니다.
+   - `ls` 에 `network-study-notes_old` 가 보이고 `network-study-notes` 은 없어야 합니다.
    - 앞 사람 폴더 이름이 **다르면** 그 이름 끝에 `_old` 를 붙입니다(예: `mv toolkit toolkit_old`). 내 것과 헷갈리지 않게 표시해 두는 것입니다.
 
-> **확인** — `ls` 에 `security-agent-toolkit_old` 가 보이고 `security-agent-toolkit` 이 없으면 성공입니다. `mv` 가 막히면 「막히면」 페이지의 `mv` 줄을 봅니다.
+> **확인** — `ls` 에 `network-study-notes_old` 가 보이고 `network-study-notes` 이 없으면 성공입니다. `mv` 가 막히면 「막히면」 페이지의 `mv` 줄을 봅니다.
 
 ---
 
@@ -136,27 +136,27 @@ source:
 **왜 하나요** — Unit 1 마무리에서 내 파일을 모두 깃허브에 올렸습니다. 이 PC 에는 내 폴더가 없으니 **처음 받는 것**이라 `git pull` 이 아니라 **`git clone`** 을 씁니다. `pull` 은 이미 받은 폴더를 최신으로 맞출 때 씁니다.
 
 1. **[브라우저]** github.com 에 **내 계정**으로 들어가 **내 저장소**를 엽니다.
-   - 저장소 이름이 `security-agent-toolkit` 이 **아닐 수도** 있습니다. 내가 처음 만들 때 다른 이름을 붙였다면 그 이름입니다.
+   - 저장소 이름이 `network-study-notes` 이 **아닐 수도** 있습니다. 내가 처음 만들 때 다른 이름을 붙였다면 그 이름입니다.
    - 이름이 기억나지 않으면: 오른쪽 위 **내 프로필 사진** → **Your repositories** → 리스트에서 하나씩 열어, 안에 `access_control` 폴더가 있는 저장소를 찾습니다. 그것이 내 저장소입니다.
    - 찾은 저장소 이름을 적어 둡니다(예: `my-toolkit`).
 2. **[브라우저]** 초록색 **Code** 단추 → **HTTPS** → 주소 오른쪽 **복사** 아이콘을 누릅니다.
 3. **[터미널]** 문서 폴더에서 받습니다. `git clone ` 뒤에 복사한 주소를 붙여 넣습니다(Git Bash 붙여 넣기 = **Shift + Insert** 또는 마우스 오른쪽 클릭).
    ```bash
-   git clone https://github.com/내아이디/security-agent-toolkit.git
+   git clone https://github.com/내아이디/network-study-notes.git
    ```
    - 명령 풀이: `git clone 주소` 깃허브 저장소를 내 PC 에 폴더째 받음
-   - `Cloning into 'security-agent-toolkit'...` 다음에 `done.` 이 나오면 됩니다.
+   - `Cloning into 'network-study-notes'...` 다음에 `done.` 이 나오면 됩니다.
    - 저장소가 비공개면 여기서 로그인 창이 뜹니다. **내 계정**으로 로그인합니다.
-   - **저장소 이름이 다르면** 주소 끝이 그 이름입니다(예: `…/내아이디/my-toolkit.git`). 이때는 주소 뒤에 한 칸 띄우고 `security-agent-toolkit` 을 붙여 받습니다. 그러면 내 PC 의 폴더 이름이 수업 문서와 같은 `security-agent-toolkit` 이 됩니다.
+   - **저장소 이름이 다르면** 주소 끝이 그 이름입니다(예: `…/내아이디/my-toolkit.git`). 이때는 주소 뒤에 한 칸 띄우고 `network-study-notes` 을 붙여 받습니다. 그러면 내 PC 의 폴더 이름이 수업 문서와 같은 `network-study-notes` 이 됩니다.
      ```bash
-     git clone https://github.com/내아이디/my-toolkit.git security-agent-toolkit
+     git clone https://github.com/내아이디/my-toolkit.git network-study-notes
      ```
      - 명령 풀이: `git clone 주소 폴더이름` 받은 저장소를 내가 정한 폴더 이름으로 만듦. 깃허브의 저장소 이름은 바뀌지 않습니다.
-     - `Cloning into 'security-agent-toolkit'...` 가 나오면 됩니다. 폴더 이름을 붙이지 않으면 `Cloning into 'my-toolkit'...` 처럼 저장소 이름 그대로 폴더가 생깁니다.
+     - `Cloning into 'network-study-notes'...` 가 나오면 됩니다. 폴더 이름을 붙이지 않으면 `Cloning into 'my-toolkit'...` 처럼 저장소 이름 그대로 폴더가 생깁니다.
 
-4. **[VS Code]** **File › Open Folder** → `문서(Documents)` → **`security-agent-toolkit`**(뒤에 `_old` 가 **없는** 것)을 엽니다.
+4. **[VS Code]** **File › Open Folder** → `문서(Documents)` → **`network-study-notes`**(뒤에 `_old` 가 **없는** 것)을 엽니다.
 
-> **확인** — `Cloning into 'security-agent-toolkit'...` 뒤에 `done.` 이 나오고 VS Code 에 `_old` 가 없는 폴더가 열리면 성공입니다. `already exists` 가 나오면 4장을 먼저 합니다.
+> **확인** — `Cloning into 'network-study-notes'...` 뒤에 `done.` 이 나오고 VS Code 에 `_old` 가 없는 폴더가 열리면 성공입니다. `already exists` 가 나오면 4장을 먼저 합니다.
 
 ---
 
@@ -164,7 +164,7 @@ source:
 
 **왜 하나요** — 이름이 같은 폴더가 두 개 있으니, 지금 연 것이 **Unit 1 마무리에서 올린 내 저장소**인지 눈으로 확인합니다.
 
-1. **[터미널]** VS Code 에서 터미널을 새로 엽니다(1장 1~2번). 위치가 `…/security-agent-toolkit` 인지 봅니다.
+1. **[터미널]** VS Code 에서 터미널을 새로 엽니다(1장 1~2번). 위치가 `…/network-study-notes` 인지 봅니다.
    ```bash
    pwd
    ```
@@ -268,7 +268,7 @@ source:
 
 ## 막히면
 
-`git clone` 의 첫 번째 오류 전문은 `fatal: destination path 'security-agent-toolkit' already exists and is not an empty directory.` 입니다.
+`git clone` 의 첫 번째 오류 전문은 `fatal: destination path 'network-study-notes' already exists and is not an empty directory.` 입니다.
 
 | 어디서 | 이렇게 되면 | 뜻 | 할 일 |
 |---|---|---|---|
@@ -282,7 +282,7 @@ source:
 
 ## 다 했으면 확인
 
-- [ ] `문서` 에 `security-agent-toolkit_old`(앞 사람)와 `security-agent-toolkit`(내 것)이 따로 있다 (앞 사람 폴더가 없었으면 내 것만)
+- [ ] `문서` 에 `network-study-notes_old`(앞 사람)와 `network-study-notes`(내 것)이 따로 있다 (앞 사람 폴더가 없었으면 내 것만)
 - [ ] `git config --global user.name` 이 내 이름이다
 - [ ] `git remote -v` 주소에 내 아이디가 있다
 - [ ] `git log --oneline -3` 맨 위가 Unit 1 마무리에서 올린 커밋이다

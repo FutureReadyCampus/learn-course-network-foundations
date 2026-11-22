@@ -56,7 +56,7 @@ SLA 는 정해 둔 시간 안에 처리하겠다는 약속입니다. 예를 들�
 ## 터미널 열고 앞에서 만든 파일 확인하기
 
 1. **[VS Code]** 왼쪽 목록의 `access_control` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** 위치와 파일을 확인합니다. 결과가 `…/security-agent-toolkit/access_control` 로 끝나야 합니다.
+2. **[터미널]** 위치와 파일을 확인합니다. 결과가 `…/network-study-notes/access_control` 로 끝나야 합니다.
    ```bash
    pwd
    ls

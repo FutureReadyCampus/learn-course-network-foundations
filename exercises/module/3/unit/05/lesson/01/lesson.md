@@ -47,7 +47,7 @@ Unit 5는 Module 3 **접근통제 자동화**의 마지막 단계인 **결과 �
 ## 폴더 열고 데이터 파일 만들기
 
 1. **[VS Code]** 왼쪽 목록의 `access_control` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** 위치를 확인합니다. 결과가 `…/security-agent-toolkit/access_control` 로 끝나야 합니다.
+2. **[터미널]** 위치를 확인합니다. 결과가 `…/network-study-notes/access_control` 로 끝나야 합니다.
    ```bash
    pwd
    ls

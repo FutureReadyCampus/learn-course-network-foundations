@@ -412,19 +412,19 @@ ls config
 
 **3. 깃허브에 올리기**
 
-1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. <mark>결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.</mark>
+1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. <mark>결과가 `…/network-study-notes` 으로 끝나야 합니다.</mark>
    ```bash
    cd ..
    pwd
    ```
    - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
-   - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
+   - 결과가 다르면 VS Code 왼쪽 목록에서 `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
 2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. <mark>빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.</mark>
    ```bash
    git status
    ```
    - 명령 풀이: `git status` 올릴 파일의 상태를 봄
-   - 아래 표의 이름이 보이면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 그 줄을 적고 저장합니다. `.env` · `.venv` 는 적은 뒤 `git status` 를 다시 칩니다.
+   - 아래 표의 이름이 보이면 VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래의 `.gitignore` 를 열어 맨 아래에 그 줄을 적고 저장합니다. `.env` · `.venv` 는 적은 뒤 `git status` 를 다시 칩니다.
 
    | 보이는 이름 | `.gitignore` 맨 아래에 적을 줄 |
    |---|---|

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <title>오늘 한 일과 파일을 확인하고, git status 로 살핀 뒤 보고서를 채우고 깃허브에 올린다</title>
-<desc>마무리 순서도다. 오늘 한 일 다섯 가지 확인, soar_response 폴더의 파일 확인, security-agent-toolkit 으로 옮겨 git status 확인, 보고서 마무리 칸 채우기, git add · commit · push, 브라우저에서 확인 순서다. .env 가 보이면 멈춘다.</desc>
+<desc>마무리 순서도다. 오늘 한 일 다섯 가지 확인, soar_response 폴더의 파일 확인, network-study-notes 으로 옮겨 git status 확인, 보고서 마무리 칸 채우기, git add · commit · push, 브라우저에서 확인 순서다. .env 가 보이면 멈춘다.</desc>
 <defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">이번 Unit 마무리 · 깃허브에 올리기</text>
 <rect x="20" y="56" width="320" height="70" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>

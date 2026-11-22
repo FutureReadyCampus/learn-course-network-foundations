@@ -391,13 +391,13 @@ ls
 
 **3. 깃허브에 올리기**
 
-1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
+1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/network-study-notes` 으로 끝나야 합니다.
    ```bash
    cd ..
    pwd
    ```
    - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
-   - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
+   - 결과가 다르면 VS Code 왼쪽 목록에서 `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
 2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
    ```bash
    git status
@@ -411,7 +411,7 @@ ls
    | `.env` · `.venv` | 올리면 안 되는 파일 | `.gitignore` 맨 아래에 그 이름 한 줄을 적고 저장한 뒤 `git status` 를 다시 침 |
    | `anomaly_detection/__pycache__/` | 파이썬이 실행하면서 자동으로 만든 임시 폴더 | `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장 |
 
-   - `.gitignore` 는 VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래에 있습니다.
+   - `.gitignore` 는 VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래에 있습니다.
 3. **[보고서]** `report_u1.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
    ```bash

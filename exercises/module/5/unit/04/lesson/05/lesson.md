@@ -79,7 +79,7 @@ source:
    cd soar_response
    python alert_server.py
    ```
-   - 새 터미널은 `security-agent-toolkit` 폴더에서 열리므로 `cd soar_response` 를 먼저 칩니다. 새 터미널 맨 앞에도 가상환경 이름(예: `(.venv)`)이 보여야 합니다.
+   - 새 터미널은 `network-study-notes` 폴더에서 열리므로 `cd soar_response` 를 먼저 칩니다. 새 터미널 맨 앞에도 가상환경 이름(예: `(.venv)`)이 보여야 합니다.
    - 이 터미널(서버 터미널)은 응용 4-1 · 4-2 를 마칠 때까지 켜 둡니다. 다른 명령은 처음 쓰던 터미널에서 칩니다.
    - `Address already in use` 가 나오면 이미 켜진 서버가 있는 것입니다. 그 서버를 그대로 쓰거나, 서버를 켠 터미널에서 `Ctrl + C` 로 끄고 다시 켭니다.
 

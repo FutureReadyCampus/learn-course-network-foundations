@@ -49,9 +49,9 @@ CSV 파일은 값을 쉼표로 구분해 적은 텍스트 파일이고, 엑셀�
 
 ## 폴더 열고 판다스 준비하기
 
-1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
+1. **[VS Code]** `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** 가상환경은 **선택**입니다. 가상환경은 프로젝트마다 따로 패키지(판다스 같은 라이브러리)를 설치해 두는 파이썬 실행 환경입니다. <mark>쓰지 않으면 3번으로 바로 갑니다.</mark> 터미널 줄 맨 앞에 `(.venv)` 처럼 가상환경 이름이 이미 보여도 3번으로 갑니다.
-   - 가상환경을 쓰고 싶으면 `security-agent-toolkit` 폴더에서 아래 두 줄을 칩니다(맥북은 `python` 을 `python3` 로, `Scripts` 를 `bin` 으로 바꿉니다). 첫 줄이 `.venv` 폴더를 만들고, 둘째 줄이 가상환경을 켭니다. `.venv` 폴더가 이미 있으면 둘째 줄만 칩니다.
+   - 가상환경을 쓰고 싶으면 `network-study-notes` 폴더에서 아래 두 줄을 칩니다(맥북은 `python` 을 `python3` 로, `Scripts` 를 `bin` 으로 바꿉니다). 첫 줄이 `.venv` 폴더를 만들고, 둘째 줄이 가상환경을 켭니다. `.venv` 폴더가 이미 있으면 둘째 줄만 칩니다.
    ```bash
    python -m venv .venv
    source .venv/Scripts/activate

@@ -200,7 +200,7 @@ for … in ROLES.items():        # 단계 2: 들여쓰기 없음
    pwd
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치를 보여 줌
-   - 결과가 `…/access_control` 로 끝나지 않으면 `cd access_control` 로 들어갑니다(`security-agent-toolkit` 에서 시작했다면).
+   - 결과가 `…/access_control` 로 끝나지 않으면 `cd access_control` 로 들어갑니다(`network-study-notes` 에서 시작했다면).
 2. **[VS Code]** `access_log.py` 와 `apply1-1_audit.py` 를 만들고 각각 붙여 넣습니다.
    - **VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).

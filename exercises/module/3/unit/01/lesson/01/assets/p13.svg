@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <title>깃허브에 빈 저장소를 만들고, 내 폴더를 깃 저장소로 만들어 이은 뒤 처음 한 번 올립니다</title>
-<desc>위쪽은 깃허브의 빈 저장소 security-agent-toolkit(비공개)이고, 아래쪽은 내 컴퓨터의 security-agent-toolkit 폴더입니다. 폴더에서 git init, git remote add origin, git add, git commit, git push -u origin main 을 차례로 치면 폴더 내용이 깃허브 저장소로 올라갑니다. 한 번 이어 두면 이후에는 git push 만 칩니다.</desc>
+<desc>위쪽은 깃허브의 빈 저장소 network-study-notes(비공개)이고, 아래쪽은 내 컴퓨터의 network-study-notes 폴더입니다. 폴더에서 git init, git remote add origin, git add, git commit, git push -u origin main 을 차례로 치면 폴더 내용이 깃허브 저장소로 올라갑니다. 한 번 이어 두면 이후에는 git push 만 칩니다.</desc>
 <defs>
 <marker id="a-p13" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
 </defs>
@@ -8,10 +8,10 @@
 <g font-size="15" fill="#292929">
 <rect x="20" y="50" width="680" height="84" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="36" y="78" font-size="16" font-weight="700">① 깃허브 (인터넷)</text>
-<text x="36" y="104">New repository › 이름 security-agent-toolkit · Private · README 체크 안 함</text>
+<text x="36" y="104">New repository › 이름 network-study-notes · Private · README 체크 안 함</text>
 <text x="36" y="124" font-size="14" fill="#666660">만든 뒤 보이는 주소를 복사해 둡니다</text>
 <rect x="20" y="170" width="680" height="214" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="36" y="198" font-size="16" font-weight="700">② 내 컴퓨터의 security-agent-toolkit 폴더 (터미널)</text>
+<text x="36" y="198" font-size="16" font-weight="700">② 내 컴퓨터의 network-study-notes 폴더 (터미널)</text>
 <rect x="36" y="212" width="320" height="32" rx="6" fill="#ffffff" stroke="#dededb"/>
 <text x="48" y="234" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="14">git init</text>
 <rect x="36" y="250" width="320" height="32" rx="6" fill="#ffffff" stroke="#dededb"/>

@@ -67,7 +67,7 @@ Unit 3 점검에서는 이미 부여돼 있는 권한을 살펴 필요 없는 �
 **순서**
 
 1. **[VS Code]** 왼쪽 목록의 `access_control` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** 위치와 Unit 1 파일을 확인합니다. 결과가 `…/security-agent-toolkit/access_control` 로 끝나야 합니다.
+2. **[터미널]** 위치와 Unit 1 파일을 확인합니다. 결과가 `…/network-study-notes/access_control` 로 끝나야 합니다.
    ```bash
    pwd
    ls

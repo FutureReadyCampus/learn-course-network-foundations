@@ -62,7 +62,7 @@ Unit 1 에서 두 JSON 파일은 「실습 1-1」의 코드 상자와 「실습 
 ## 터미널 열고 이전 파일 확인하기
 
 1. **[VS Code]** 왼쪽 목록의 `access_control` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** 위치와 이전 파일을 확인합니다. `pwd` 의 결과가 `…/security-agent-toolkit/access_control` 로 끝나야 합니다.
+2. **[터미널]** 위치와 이전 파일을 확인합니다. `pwd` 의 결과가 `…/network-study-notes/access_control` 로 끝나야 합니다.
    ```bash
    pwd
    ls

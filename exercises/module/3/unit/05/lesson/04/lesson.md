@@ -403,7 +403,7 @@ ls config
 - `__pycache__/` 는 파이썬이 자동으로 만드는 임시 폴더라 신경 쓰지 않습니다.
 
 ```
-security-agent-toolkit/
+network-study-notes/
   access_control/          Module 3
     config/
       week_state.json

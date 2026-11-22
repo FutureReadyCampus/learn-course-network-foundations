@@ -110,7 +110,7 @@ print(permission not in ROLES["finance"]) # True  · finance 에는 없음
 2. 요청 아홉 건을 판정하는 `exercise1-2_run.py` 를 만들어 실행합니다.
 3. 채우기 <mark>전과 후</mark>의 판정을 비교합니다.
 
-**준비** — 아래 `rbac.py` 는 실습 1-1에서 만든 두 파일 `config/users.json` 과 `config/roles.json` 을 **읽습니다.** 그 파일이 없으면 코드가 시작하자마자 멈춥니다. 터미널이 `…/access_control` 위치인지 확인한 뒤(`…/security-agent-toolkit` 에 있다면 `cd access_control` 로 들어갑니다) 두 파일이 있는지 봅니다.
+**준비** — 아래 `rbac.py` 는 실습 1-1에서 만든 두 파일 `config/users.json` 과 `config/roles.json` 을 **읽습니다.** 그 파일이 없으면 코드가 시작하자마자 멈춥니다. 터미널이 `…/access_control` 위치인지 확인한 뒤(`…/network-study-notes` 에 있다면 `cd access_control` 로 들어갑니다) 두 파일이 있는지 봅니다.
 
 ```bash
 ls config

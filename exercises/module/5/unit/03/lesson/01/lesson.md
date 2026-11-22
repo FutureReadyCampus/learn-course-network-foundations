@@ -60,7 +60,7 @@ Unit 2 실습 2-1 · 2-2에서는 계정 잠금과 세션 종료(세션, session
 
 **순서**
 
-1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
+1. **[VS Code]** `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
 2. **[터미널]** Module 5 폴더로 들어가 파일을 확인합니다.
    ```bash
    pwd
