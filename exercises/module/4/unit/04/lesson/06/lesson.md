@@ -13,7 +13,7 @@ source:
 
 ## 목표: 오탐과 미탐 개수
 
-> **여유가 되면 해 보세요.** 핵심 실습 4-1 · 4-2와 글쓰기를 먼저 마칩니다. 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
+> **여유가 되면 해 보세요.** 핵심 실습 4-1 · 4-2와 글쓰기를 먼저 마칩니다. 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다. 이 응용 보고서 칸의 [핵심 질문]은 「응용 안에서 중요한 질문」이라는 뜻이고, 응용 전체가 선택이므로 꼭 채우지 않아도 됩니다.
 
 > **이번 실습에 들어온 일**
 >
@@ -51,7 +51,7 @@ source:
 ```
 
 - **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `problems.json` 을 만들어 위 내용을 붙여 넣고 저장합니다.
-- **[터미널]** `python -c "import pandas as pd; print(len(pd.read_json('problems.json')))"` 로 확인해 `5` 가 나오면 됩니다(맥북은 `python3`).
+- **[터미널]** `python -c "import pandas as pd; print(len(pd.read_json('problems.json')))"` 로 확인해 `5` 가 나오면 됩니다.
 
 <!-- checklist optional -->
 - [ ] `anomaly_detection` 폴더에 `problems.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
@@ -319,14 +319,14 @@ for problem in missed_list:                           # 놓친 문제를 하나�
 **순서**
 
 1. **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `evaluation.py` 와 `apply4-2_run.py` 를 만들어 위 코드를 각각 붙여 넣고 저장합니다.
-2. **[VS Code]** `evaluation.py` 에서 <mark>직접 쓰는 곳 일곱 군데를 씁니다</mark>. 위 판다스 문법 상자와 1.1 의 표를 참고해 씁니다. 막히면 아래 「응용 4-2 정리」를 봅니다.
+2. **[VS Code]** `evaluation.py` 에서 <mark>직접 쓰는 곳 일곱 군데를 씁니다</mark>. 위 판다스 문법 상자와 「알림 7개와 진짜 문제 5개」 쪽의 표를 참고해 씁니다. 막히면 아래 「응용 4-2 정리」를 봅니다.
 
 <!-- checklist optional -->
 - [ ] `anomaly_detection` 폴더에 `evaluation.py` 를 만들어 붙여 넣고, 직접 쓰는 곳 일곱 군데를 채워 저장했다
 - [ ] `anomaly_detection` 폴더에 `apply4-2_run.py` 를 만들어 붙여 넣고 저장했다
 <!-- /checklist -->
 
-3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다.
    ```bash
    pwd
    python apply4-2_run.py

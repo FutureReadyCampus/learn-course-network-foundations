@@ -29,6 +29,8 @@ Unit 3 실습 3-2에서는 판정 서버 로그에서 반복 거절을 찾았습
 | `malicious_detection.py` | 웹 로그에서 스캐너 경로를 요청한 IP(경로 스캔)를 찾는 함수 |
 | `correlation.py` | 서버 · SaaS · 웹 로그를 한 사용자 기준으로 이어 60분 안에 서로 다른 로그가 모인 사건을 찾는 함수 `find_chains_in_events` |
 
+- **스캐너**는 사이트에 흔히 있는 취약한 경로를 자동으로 하나씩 두드려 보는 프로그램입니다. 한 IP 가 이런 경로를 잇달아 요청하는 것을 **경로 스캔**이라고 합니다.
+
 **오늘 만들 것 두 가지**
 
 | 실습 | 하는 일 | 쓰는 파일 | 확인할 것 |
@@ -62,8 +64,9 @@ Unit 3 실습 3-2에서는 판정 서버 로그에서 반복 거절을 찾았습
 
 **순서**
 
-1. **[VS Code]** `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치와 파일을 확인합니다(맥북은 `python3`). <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나고, `ls` 결과에 위 표의 파일들이 보여야</mark> 합니다.
+1. **[VS Code]** `network-study-notes` 폴더를 연 창에서 메뉴 **Terminal › New Terminal** 로 터미널을 엽니다. 새 터미널은 저장소 맨 위 폴더(`…/network-study-notes`)에서 열립니다.
+   - 터미널 오른쪽 위 이름 칸이 **bash** 인지 봅니다. `powershell` 이면 `+` 옆의 **∨** 를 눌러 **Git Bash** 를 고릅니다(Module 3 Unit 1과 같은 방법). 이 과정의 명령은 모두 Git Bash 기준이라, PowerShell 에서는 `source .venv/Scripts/activate` 같은 명령이 동작하지 않습니다.
+2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치와 파일을 확인합니다. <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나고, `ls` 결과에 위 표의 파일들이 보여야</mark> 합니다.
    ```bash
    cd anomaly_detection
    pwd
@@ -80,7 +83,7 @@ Unit 3 실습 3-2에서는 판정 서버 로그에서 반복 거절을 찾았습
 
 3. **파일은 이렇게 만듭니다.** 따로 내려받는 파일은 없고, 모두 코드 상자에서 복사해 만듭니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
    1. **[VS Code]** 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다.
-   2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
+   2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S` 로 저장합니다.
    - 답을 적는 **보고서** `report_u4.md` 는 「보고서 쓰기」 레슨의 틀을 복사해 만듭니다.
 4. 다음 페이지에서 알림 파일을 만들고, 「제공 파일」 레슨으로 가서 파일 세 개를 만든 뒤 실습 4-1로 갑니다.
 
@@ -115,7 +118,7 @@ Unit 3 실습 3-2에서는 판정 서버 로그에서 반복 거절을 찾았습
 - [ ] `anomaly_detection` 폴더에 `review_alerts.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
 <!-- /checklist -->
 
-2. **[터미널]** <mark>파일이 정상인지 확인합니다</mark>(맥북은 `python3`).
+2. **[터미널]** <mark>파일이 정상인지 확인합니다</mark>.
    ```bash
    python -c "import pandas as pd; print(len(pd.read_json('review_alerts.json')))"
    ```
@@ -134,11 +137,11 @@ Unit 3 실습 3-2에서는 판정 서버 로그에서 반복 거절을 찾았습
 
 | 오류 | 원인 | 고치는 법 |
 |---|---|---|
-| `No module named 'pandas'` | <mark>판다스가 설치되지 않은 터미널입니다</mark> | `python -m pip install pandas` 를 칩니다(맥북은 `python3`) |
+| `No module named 'pandas'` | <mark>판다스가 설치되지 않은 터미널입니다</mark> | `python -m pip install pandas` 를 칩니다 |
 | `ImportError` · `No module named 'access_detection'` | <mark>Unit 3 실습 3-2 파일이 없거나 함수 이름이 문서와 다른 것입니다</mark> | 「제공 파일」 레슨 마지막 페이지의 예비 코드로 `access_detection.py` 를 만듭니다 |
 | `FileNotFoundError` · `ValueError` | 파일 위치가 다르거나 JSON 이 깨졌습니다 | <mark>파일이 `anomaly_detection` 폴더 바로 아래에 있는지</mark> `ls` 로 보고, 붙여 넣은 JSON 에 쉼표 · 대괄호가 빠졌는지 봅니다 |
 
-- 판다스를 설치할 때 가상환경을 쓴다면 먼저 `network-study-notes` 폴더에서 가상환경을 켠 뒤(`source .venv/Scripts/activate`, 맥북은 `Scripts` 를 `bin` 으로) 칩니다.
+- 판다스를 설치할 때 가상환경을 쓴다면 먼저 `network-study-notes` 폴더에서 가상환경을 켠 뒤(`source .venv/Scripts/activate`) 칩니다.
 - 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). <mark>막히면 이 Unit 뒤쪽의 정답을 보고</mark>, 풀리지 않으면 보고서 (가)에 「모름 — 막힌 곳: …」 이라고 쓰고 넘어갑니다.
 
 **확인** — 고친 뒤 시작하기의 두 확인 명령에서 `Unit 3 파일 정상 57` 과 `7` 이 나오면 성공입니다. 그래도 안 되면 위 표에 없는 오류이니 오류 전체를 AI 에게 묻습니다.
