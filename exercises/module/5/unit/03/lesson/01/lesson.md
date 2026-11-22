@@ -10,19 +10,20 @@ render: markdown
 
 Unit 2 실습 2-1 · 2-2에서는 계정 잠금과 세션 종료(세션, session: 로그인한 뒤 서버에 이어져 있는 접속 상태)를 실행하고, 조치 전 · 후 상태를 기록으로 남겼습니다. 오늘은 그 기록을 써서 두 가지를 합니다. 오탐으로 확인된 조치는 **안전하게 되돌리고**(롤백, rollback: 조치 이전 상태로 복원하는 일), 알림은 담당자가 바로 읽을 수 있는 **티켓**으로 남깁니다.
 
-**오늘의 계획 (약 2시간 30분)**
+**오늘의 계획 (약 2시간 40분)**
 
 | 순서 | 시간 | 하는 일 |
 |---|---|---|
 | 1. 시작 | 15분 | 앞 Unit 파일 확인, 알림 · 설정 파일 만들기 |
 | 2. 핵심 실습 | 약 100분 | 실습 3-1 · 3-2 (보고서도 이 안에서) |
-| 3. 글쓰기 | 20분 | 「오늘의 글 쓰기」에서 세 문장 글 한 편 |
-| 4. 마무리 | 15분 | 제공 파일 세 개 만들기, 확인하고 올리기 |
+| 3. 마무리 | 25분 | 제공 파일 세 개 만들기, 확인하고 올리기 |
+| 4. 글쓰기 | 20분 | 「오늘의 글 쓰기」에서 세 문장 글 한 편 |
 
 - 시작은 이 레슨을 읽으며 합니다.
 - 보고서는 실습 시간 안에서, 실습 끝의 안내에 따라 그때그때 씁니다. 글쓰기 20분은 세 문장 글에만 씁니다.
-- 마무리는 실습 3-2 끝의 「이번 Unit 마무리 · 깃허브에 올리기」를 따라 합니다.
-- 하루 3시간에서 남는 30분쯤은 밀린 곳을 따라잡는 여유 시간입니다.
+- 마무리는 실습 3-2 끝의 「이번 Unit 마무리 · 깃허브에 올리기」를 따라 합니다. 이때 「제공 파일」 레슨에 다녀옵니다.
+- 깃허브에는 두 번 올립니다. 마무리에서 코드와 보고서를 한 번, 글쓰기 끝에 글을 한 번 올립니다.
+- 하루 3시간에서 남는 20분쯤은 밀린 곳을 따라잡는 여유 시간입니다.
 
 **오늘 만들 것 두 가지**
 
@@ -41,7 +42,7 @@ Unit 2 실습 2-1 · 2-2에서는 계정 잠금과 세션 종료(세션, session
 
 핵심 실습에는 새 문법이 없습니다(미리 채운 줄의 `reversed` · `str()` 은 나오는 페이지에서 풀어 줍니다). 보고서에서 [핵심 질문]이 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 코드를 쓸 때는 들여쓰기를 미리 채운 줄에 맞추고, 각 번호 주석(① · ②) 바로 아래에 한 줄을 씁니다. 주석은 지우지 않습니다.
 
-> **확인** — 오늘 할 네 가지(시작 · 핵심 실습 · 글쓰기 · 마무리)와 직접 쓰는 곳이 실습마다 두 곳이라는 것을 말할 수 있으면 성공입니다. 헷갈리면 위 「오늘의 계획」 표를 한 번 더 봅니다.
+> **확인** — 오늘 할 네 가지(시작 · 핵심 실습 · 마무리 · 글쓰기)와 직접 쓰는 곳이 실습마다 두 곳이라는 것을 말할 수 있으면 성공입니다. 헷갈리면 위 「오늘의 계획」 표를 한 번 더 봅니다.
 
 ## 폴더 열고 이전 파일 확인하기
 
@@ -52,7 +53,7 @@ Unit 2 실습 2-1 · 2-2에서는 계정 잠금과 세션 종료(세션, session
 | `incident.py` | Unit 1 실습 1-2 | `load_json` · `save_json` |
 | `containment_store.py` | Unit 2 실습 2-1 | `load_state` · `make_record` · `LOG_PATH` |
 | `account_actions.py` | Unit 2 실습 2-1 | `unlock_account` |
-| `ip_actions.py` | Unit 2 「제공 파일」 레슨 | `block_ip` · `unblock_ip` |
+| `ip_actions.py` | Unit 2 「제공 파일」 레슨 | `block_ip` · `unblock_ip` · `DEFAULT_TTL` |
 | `containment_state.json` | 실습 2-2 실행 결과 | 잠긴 계정 같은 연습용 시스템 상태 |
 | `containment_log.json` | 실습 2-2 실행 결과 | 조치 기록 5건 |
 
@@ -60,8 +61,8 @@ Unit 2 실습 2-1 · 2-2에서는 계정 잠금과 세션 종료(세션, session
 
 **순서**
 
-1. **[VS Code]** `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** Module 5 폴더로 들어가 파일을 확인합니다.
+1. **[VS Code]** 왼쪽 목록의 `network-study-notes` 안에 있는 `soar_response` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다. 이렇게 열면 터미널이 처음부터 `soar_response` 에 있습니다.
+2. **[터미널]** `soar_response` 폴더에 있는지 보고 파일을 확인합니다.
    ```bash
    pwd
    cd soar_response
@@ -69,7 +70,7 @@ Unit 2 실습 2-1 · 2-2에서는 계정 잠금과 세션 종료(세션, session
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
-3. **[터미널]** 앞 Unit 파일을 불러올 수 있는지 확인합니다(맥북은 `python3`). <mark>`앞 Unit 파일 정상` 이 나와야</mark> 합니다.
+3. **[터미널]** 앞 Unit 파일을 불러올 수 있는지 확인합니다. <mark>`앞 Unit 파일 정상` 이 나와야</mark> 합니다.
    ```bash
    python -c "from incident import load_json, save_json; from containment_store import load_state, make_record, LOG_PATH; from account_actions import unlock_account; from ip_actions import block_ip, unblock_ip, DEFAULT_TTL; print('앞 Unit 파일 정상')"
    ```
@@ -83,7 +84,7 @@ Unit 2 실습 2-1 · 2-2에서는 계정 잠금과 세션 종료(세션, session
    ```bash
    python -c "import json; print(json.load(open('containment_state.json', encoding='utf-8'))['locked_users'], len(json.load(open('containment_log.json', encoding='utf-8'))))"
    ```
-   - `['junho'] 4` 가 나오면 실습 2-1만 실행하고 실습 2-2 실행 파일은 아직 실행하지 않은 것입니다. `python exercise2-2_run.py` 를 한 번 실행한 뒤 다시 확인합니다.
+   - `['junho'] 4` 가 나오면 실습 2-1만 실행하고 실습 2-2 실행 파일은 아직 실행하지 않았거나, Unit 2 응용 2-3 실행 파일(`apply2-3_run.py`)을 마지막에 실행한 것입니다. 두 경우 모두 `python exercise2-2_run.py` 를 한 번 실행한 뒤 다시 확인합니다.
    - `FileNotFoundError` 가 나오면 다음 페이지 「이전 파일이 없을 때」의 두 상자로 파일을 만듭니다.
 
 <!-- checklist -->
@@ -92,10 +93,10 @@ Unit 2 실습 2-1 · 2-2에서는 계정 잠금과 세션 종료(세션, session
 
 5. **파일은 이렇게 만듭니다.** 따로 내려받는 파일은 없고, 모두 코드 상자에서 복사해 만듭니다.
    1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다.
-   2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
+   2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S` 로 저장합니다.
    - 답을 적는 **보고서** `report_u3.md` 는 「보고서 쓰기」 레슨의 틀을 복사해 만듭니다.
 
-> 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다(맥북은 `python3`). **앞 Unit 파일은 고치지 않습니다.** 실습 3-1 실행 파일은 두 결과 파일을 읽기만 하고 다시 저장하지 않아서, 몇 번을 실행해도 같은 결과가 나옵니다.
+> 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다. **앞 Unit 파일은 고치지 않습니다.** 실습 3-1 실행 파일은 두 결과 파일을 읽기만 하고 다시 저장하지 않아서, 몇 번을 실행해도 같은 결과가 나옵니다.
 
 > **확인** — 3번에서 `앞 Unit 파일 정상`, 4번에서 `['junho', 'dami'] 5` 가 나오면 성공입니다. 안 나오면 다음 페이지 「이전 파일이 없을 때」를 봅니다.
 
@@ -174,7 +175,7 @@ def save_json(data, path):                                   # 저장할 값과 
 
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `alerts_thu.json` 을, `soar_response` 폴더 안의 `config` 폴더를 오른쪽 클릭 › **New File** 로 `escalation_rules.json`(`config/escalation_rules.json`)을 만들고, 아래 두 상자를 하나씩 붙여 넣고 저장합니다.
    - `config` 폴더가 없으면 `soar_response` 폴더의 터미널에서 `mkdir -p config` 로 만듭니다.
-2. **[터미널]** 파일이 정상인지 확인합니다(맥북은 `python3`). <mark>`11 6` 이 나와야</mark> 합니다(알림이 11건, 규칙 파일의 키가 6개라는 뜻입니다).
+2. **[터미널]** 아래 두 상자를 파일로 저장한 뒤, 파일이 정상인지 확인합니다. <mark>`11 6` 이 나와야</mark> 합니다(알림이 11건, 규칙 파일의 키가 6개라는 뜻입니다).
    ```bash
    python -c "import json; print(len(json.load(open('alerts_thu.json', encoding='utf-8'))), len(json.load(open('config/escalation_rules.json', encoding='utf-8'))))"
    ```
