@@ -249,18 +249,38 @@ PB-003 은 위 파일의 맨 아래 `]` 앞에 한 건을 더합니다. <mark>PB
 
 1. **[VS Code]** 왼쪽 목록에서 `soar_response` 안의 `config` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `playbook_registry.json` 을 그대로 적고 Enter 를 칩니다. 이미 있으면 그 파일을 엽니다.
 2. **[VS Code]** `config/playbook_registry.json` 에 위 두 건(PB-001, PB-002)을 붙여 넣고, PB-003 한 건을 추가합니다. 쉼표 위치를 확인합니다.
+
+<!-- checklist -->
+- [ ] `config/playbook_registry.json` 을 만들고 PB-001 · PB-002 를 붙여 넣은 뒤 PB-003 을 추가해 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** `soar_response` 폴더에서(`pwd` 가 `…/soar_response` 로 끝나는 곳) 등록 파일 `config/playbook_registry.json` 을 확인합니다(맥북은 `python3`). <mark>`['PB-001', 'PB-002', 'PB-003']` 이 나오면</mark> 됩니다. 오류가 나면 시작하기 레슨의 「오류가 나면」 에 있는 JSON 안내를 따릅니다.
    ```bash
    python -c "import json; print([p['id'] for p in json.load(open('config/playbook_registry.json', encoding='utf-8'))])"
    ```
    - 명령 풀이: JSON 파일을 읽어 플레이북 번호만 모아 출력합니다. 쉼표나 괄호가 틀리면 여기서 오류가 납니다.
+
+<!-- checklist -->
+- [ ] 3번 확인 명령을 실행해 `['PB-001', 'PB-002', 'PB-003']` 이 나왔다
+<!-- /checklist -->
+
 4. **[VS Code]** 왼쪽 목록의 `soar_response` 폴더에서 `system_state.json` 을 열어 위 표대로 INC-001 과 INC-005 를 처리합니다. 저장합니다.
+
+<!-- checklist -->
+- [ ] `system_state.json` 에서 INC-001 · INC-005 를 수동 처리해 저장하고, 고친 곳의 수를 세었다
+<!-- /checklist -->
+
 5. **[터미널]** 수동 처리한 결과를 확인합니다. 아래 명령은 잠긴 계정 · 차단한 IP · 티켓 수를 한 줄로 보여 줍니다.
    ```bash
    python -c "import json; s = json.load(open('system_state.json', encoding='utf-8')); print(s['locked_users'], s['blocked_ips'], len(s['tickets']))"
    ```
    - 명령 풀이: 상태 파일을 읽어 잠긴 계정 리스트, 차단한 IP 리스트, 티켓 개수를 출력합니다.
    - 나오는 것: 내가 정한 액션에 따라 다릅니다. 예를 들어 IP 차단과 티켓 생성을 골랐다면 <mark>`['dami'] ['198.51.100.90'] 2`</mark> 가 나옵니다.
+
+<!-- checklist -->
+- [ ] 5번 확인 명령을 실행해 첫 리스트가 `['dami']`, 티켓 수가 `2` 로 나왔다
+<!-- /checklist -->
+
 6. **[보고서]** `soar_response/report_u1.md` 의 `## 실습 1-1` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
    - (가) [핵심 질문] 내가 쓴 PB-003 의 액션과 승인을 적고, 5번 확인 명령의 출력을 붙여 넣어 주세요.
    - (나) [핵심 질문] 알림 두 건을 수동 처리하면서 `system_state.json` 을 직접 고친 곳이 모두 몇 군데였는지 적고, 알림이 100건이면 어떤 문제가 생길지 적어 주세요.
@@ -268,13 +288,6 @@ PB-003 은 위 파일의 맨 아래 `]` 앞에 한 건을 더합니다. <mark>PB
    - (가) · (나)는 꼭 씁니다. (다)는 여유가 되면 하는 응용이고, 답은 보고서 틀의 `## 실습 응용 질문` 칸에 씁니다.
 
 **확인** — 3번 명령에서 `['PB-001', 'PB-002', 'PB-003']` 이 나오고, 5번 명령에서 첫 리스트가 `['dami']`, 마지막 숫자(티켓 수)가 `2` 이면 성공입니다. 3번에서 `JSONDecodeError` 가 나면 PB-002 의 `}` 뒤 쉼표와 PB-003 뒤에 쉼표가 없는지 보고, 5번 숫자가 다르면 `tickets` 에 `TCK-1` · `TCK-2` 두 건을 넣었는지 봅니다.
-
-<!-- checklist -->
-- [ ] `config/playbook_registry.json` 을 만들고 PB-001 · PB-002 를 붙여 넣은 뒤 PB-003 을 추가해 저장했다
-- [ ] 3번 확인 명령을 실행해 `['PB-001', 'PB-002', 'PB-003']` 이 나왔다
-- [ ] `system_state.json` 에서 INC-001 · INC-005 를 수동 처리해 저장하고, 고친 곳의 수를 세었다
-- [ ] 5번 확인 명령을 실행해 첫 리스트가 `['dami']`, 티켓 수가 `2` 로 나왔다
-<!-- /checklist -->
 
 ## 실습 1-1 정리
 

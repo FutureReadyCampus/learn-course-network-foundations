@@ -182,6 +182,12 @@ print("VIP 계정 알림", vip_count, "건")                        # VIP 계정
 
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `enrichment.py` · `exercise1-3_run.py` 두 파일을 하나씩 만들고(파일 이름 그대로), 위에서 같은 이름의 코드 상자를 붙여 넣어 저장합니다.
 2. **[VS Code]** `enrichment.py` 의 ① · ②, `exercise1-3_run.py` 의 ③ 을 채웁니다. 막히면 위 「직접 쓰는 곳」의 확인과 힌트를 봅니다.
+
+<!-- checklist -->
+- [ ] `enrichment.py` 를 `soar_response` 폴더에 만들어 붙여 넣고 ① · ② 를 채워 저장했다
+- [ ] `exercise1-3_run.py` 를 만들어 붙여 넣고 ③ 을 채워 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python exercise1-3_run.py
@@ -194,6 +200,10 @@ print("VIP 계정 알림", vip_count, "건")                        # VIP 계정
    | 2 | 알림 5건이 한 줄씩. 한 줄에 번호 · 대상 · 재직 · VIP · 접속 IP · 신뢰 IP 순서 |
    | 3 | 1줄 |
 
+<!-- checklist -->
+- [ ] `python exercise1-3_run.py` 를 실행해 단계 3 에 `VIP 계정 알림 1 건` 이 나왔다
+<!-- /checklist -->
+
 5. **[보고서]** `soar_response/report_u1.md` 의 `## 실습 1-3` 아래를 채웁니다.
    - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 재직 여부가 「퇴사」인 알림과 VIP 가 「예」인 알림의 번호, 단계 3 의 VIP 계정 알림 수를 적어 주세요.
    - (나) [응용] INC-005 는 맥락이 모두 초기값(`False` · `None`)으로 남았습니다. 그 원인을 `lookup_account` 와 `lookup_source_ip` 의 `if` 조건을 근거로 설명해 주세요. 또 INC-005 의 `employed` 가 `True`(재직)로 판정된다면 어떤 문제가 생기는지도 적어 주세요.
@@ -201,12 +211,6 @@ print("VIP 계정 알림", vip_count, "건")                        # VIP 계정
    - (가)는 꼭 씁니다. (나) · (다)는 여유가 되면 하는 응용이고, 답은 보고서 틀의 `## 실습 응용 질문` 칸에 씁니다.
 
 **확인** — 단계 2 의 다섯 줄에서 INC-001 이 `재직: 퇴사`, INC-003 이 `VIP: 예`, INC-002 · INC-004 가 `신뢰 IP: 예` 이고, 단계 3 이 `VIP 계정 알림 1 건` 이면 성공입니다. 안 나오면 「정답」 레슨의 실습 1-3 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
-
-<!-- checklist -->
-- [ ] `enrichment.py` 를 `soar_response` 폴더에 만들어 붙여 넣고 ① · ② 를 채워 저장했다
-- [ ] `exercise1-3_run.py` 를 만들어 붙여 넣고 ③ 을 채워 저장했다
-- [ ] `python exercise1-3_run.py` 를 실행해 단계 3 에 `VIP 계정 알림 1 건` 이 나왔다
-<!-- /checklist -->
 
 ## 실습 1-3 정리
 
@@ -254,6 +258,10 @@ ls config
 
 - `config` 안에는 `playbook_registry.json` 이 보여야 합니다.
 
+<!-- checklist -->
+- [ ] `soar_response` 폴더와 `config` 폴더에 2번 표의 파일이 모두 있는 것을 확인했다
+<!-- /checklist -->
+
 **3. 깃허브에 올리기** — Module 5 폴더를 처음 올리는 날이므로 올라가는 파일 목록을 꼭 확인합니다.
 
 1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/network-study-notes` 으로 끝나야 합니다.
@@ -270,6 +278,11 @@ ls config
    - 명령 풀이: `git status` 올릴 파일의 상태를 봄
    - `.env` 가 보이면 VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래의 `.gitignore`(깃에 올리지 않을 파일 이름을 적어 두는 파일)를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
    - `soar_response/__pycache__/` 는 파이썬이 실행하면서 자동으로 만든 임시 폴더입니다. 올릴 필요가 없으므로 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장합니다.
+
+<!-- checklist -->
+- [ ] `git status` 에서 `.env` · `.venv` 가 올라갈 목록에 없는 것을 확인했다(있으면 `.gitignore` 에 적었다)
+<!-- /checklist -->
+
 3. **[보고서]** `soar_response/report_u1.md` 의 `## 마무리` 아래 (가)를 채웁니다. <mark>올리기 전에 채워야</mark> 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
    ```bash
@@ -279,7 +292,16 @@ ls config
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
    - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
+
+<!-- checklist -->
+- [ ] `network-study-notes` 폴더에서 `git add .` · `git commit` · `git push` 로 올렸다
+<!-- /checklist -->
+
 5. **[브라우저]** 깃허브의 내 저장소 `network-study-notes` 를 새로 고쳐 `soar_response` 폴더를 열고, 2번에서 확인한 파일이 모두 있는지 봅니다. `__pycache__` 폴더는 없어도 됩니다.
+
+<!-- checklist -->
+- [ ] 깃허브의 `network-study-notes` 저장소에서 `soar_response` 폴더의 파일을 확인했다
+<!-- /checklist -->
 
 - 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
 
@@ -295,13 +317,6 @@ ls config
 - Unit 2 는 연습용 시스템에 적기만 하던 `계정 잠금` 을 실행한 뒤 정말 잠겼는지 다시 확인하고, 조치 전 · 후 상태를 기록으로 남깁니다.
 
 **확인** — 깃허브의 `soar_response` 폴더에 2번 표의 파일이 모두 보이고 `.env` 가 없으면 성공입니다. 안 보이는 파일이 있으면 `git status` 를 다시 쳐서 그 파일이 빨간 목록에 남아 있는지 보고 3번의 4단계(`git add .` 부터)를 다시 합니다.
-
-<!-- checklist -->
-- [ ] `soar_response` 폴더와 `config` 폴더에 2번 표의 파일이 모두 있는 것을 확인했다
-- [ ] `git status` 에서 `.env` · `.venv` 가 올라갈 목록에 없는 것을 확인했다(있으면 `.gitignore` 에 적었다)
-- [ ] `network-study-notes` 폴더에서 `git add .` · `git commit` · `git push` 로 올렸다
-- [ ] 깃허브의 `network-study-notes` 저장소에서 `soar_response` 폴더의 파일을 확인했다
-<!-- /checklist -->
 
 ---
 

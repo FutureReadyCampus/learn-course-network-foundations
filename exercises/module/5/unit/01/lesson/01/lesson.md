@@ -88,6 +88,11 @@ render: markdown
    pwd
    ```
    - `mkdir -p` 는 폴더를 만들고(이미 있어도 오류 없음), 마지막 `pwd` 가 `…/network-study-notes/soar_response` 로 끝나면 됩니다. `config` 에는 JSON 설정 파일만 둡니다.
+
+<!-- checklist -->
+- [ ] `soar_response/config` 폴더를 만들고 터미널에서 `soar_response` 폴더로 들어갔다
+<!-- /checklist -->
+
 4. **파일은 이렇게 만듭니다.** 따로 내려받는 파일은 없습니다. 「`파일이름` 파일을 만들어 붙여 넣습니다」라고 하면:
    1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 확장자까지 그대로** 적고 Enter 를 칩니다.
    2. 코드 상자의 복사 버튼으로 내용을 복사해 새 파일에 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
@@ -163,6 +168,10 @@ render: markdown
 ]
 </code></pre>
 
+<!-- checklist -->
+- [ ] `soar_response/incident_samples.json` 을 만들고 코드 상자 내용을 붙여 넣어 저장했다
+<!-- /checklist -->
+
 **`system_state.json`** — 연습용 시스템(실제 서버와 계정 대신 파일로 흉내 낸 시스템)의 상태입니다. 잠긴 계정(`locked_users`) · 차단한 IP(`blocked_ips`) · 티켓(`tickets`) · 담당자 알림(`notifications`) 네 가지를 적고, 처음에는 모두 비어 있습니다. 실습 1-1에서는 이 파일을 직접 고치고, 실습 1-2에서는 실행기가 결과를 덮어써 저장합니다.
 
 <pre class="copyable"><code>{
@@ -172,6 +181,10 @@ render: markdown
   "notifications": []
 }
 </code></pre>
+
+<!-- checklist -->
+- [ ] `soar_response/system_state.json` 을 만들고 코드 상자 내용을 붙여 넣어 저장했다
+<!-- /checklist -->
 
 **`users_info.json`** — 계정 이름별 재직 여부(`employed`)와 **VIP 계정**(VIP account, 브이아이피 계정: 잠기면 업무에 미치는 영향이 큰 중요한 계정) 여부(`vip`)입니다. `true` 는 「그렇다」, `false` 는 「아니다」입니다. 실제 조직에서는 인사 시스템과 IAM(Identity and Access Management, 아이덴티티 앤 액세스 매니지먼트: 계정과 접근 권한을 관리하는 체계)이 가진 정보이고, 오늘은 파일로 대신합니다. `dami` 는 퇴사자, `gaeun` 은 VIP 계정입니다. 실습 1-3에서 읽습니다.
 
@@ -202,23 +215,23 @@ render: markdown
 ]
 </code></pre>
 
+<!-- checklist -->
+- [ ] `users_info.json` · `source_ips.json` · `trusted_ips.json` 세 파일을 `soar_response` 폴더에 만들고 붙여 넣어 저장했다
+<!-- /checklist -->
+
 6. **[터미널]** 파일이 정상인지 확인합니다. <mark>`5 6 4 1` 이 나와야</mark> 합니다. 다르면 붙여 넣은 내용이나 파일 위치(`soar_response` 폴더 안인지)를 다시 확인합니다(맥북은 `python3`).
    ```bash
    python -c "import json; print(*[len(json.load(open(f, encoding='utf-8'))) for f in ['incident_samples.json', 'users_info.json', 'source_ips.json', 'trusted_ips.json']])"
    ```
    - 명령 풀이: 네 파일을 차례로 읽어 각각 몇 건인지(알림 5건 · 계정 6명 · 접속 IP 4개 · 신뢰 IP 1개) 한 줄로 출력합니다.
 
+<!-- checklist -->
+- [ ] 6번 확인 명령을 실행해 `5 6 4 1` 이 나왔다
+<!-- /checklist -->
+
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다. 파일을 지금 위치 기준으로 찾기 때문입니다. 각 실습은 **「할 일」을 위에서부터 차례로** 따라 하고, 코드를 채울 때는 코드 안 `#` 설명이 시키는 일을 합니다. 막히면 이 Unit 뒤쪽의 정답을 봅니다.
 
 **확인** — 6번 명령에서 `5 6 4 1` 이 나오고 `pwd` 가 `…/network-study-notes/soar_response` 로 끝나면 성공입니다. 숫자가 다르거나 오류가 나면 다음 쪽 「오류가 나면」 표를 봅니다.
-
-<!-- checklist -->
-- [ ] `soar_response/config` 폴더를 만들고 터미널에서 `soar_response` 폴더로 들어갔다
-- [ ] `soar_response/incident_samples.json` 을 만들고 코드 상자 내용을 붙여 넣어 저장했다
-- [ ] `soar_response/system_state.json` 을 만들고 코드 상자 내용을 붙여 넣어 저장했다
-- [ ] `users_info.json` · `source_ips.json` · `trusted_ips.json` 세 파일을 `soar_response` 폴더에 만들고 붙여 넣어 저장했다
-- [ ] 6번 확인 명령을 실행해 `5 6 4 1` 이 나왔다
-<!-- /checklist -->
 
 ## 오류가 나면
 
