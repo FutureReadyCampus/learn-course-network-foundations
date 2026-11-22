@@ -202,6 +202,11 @@ for user, resource, action in REQUESTS:                          # 요청을 하
      2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
      3. 이름 칸에 `exercise1-2_run.py` 라고 입력하고 Enter 를 누릅니다.
      4. 열린 파일에 코드를 복사해 붙여 넣고 저장합니다.
+
+<!-- checklist -->
+- [ ] `access_control` 폴더 바로 아래에 `exercise1-2_run.py` 를 만들어 붙여 넣고 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** `pwd` 가 `…/access_control` 로 끝나는지 확인하고, **채우기 전에** 한 번 실행해서 허용되면 안 되는 요청이 있는지 봅니다(보고서 (나)에서 씁니다).
    ```bash
    python exercise1-2_run.py
@@ -209,23 +214,27 @@ for user, resource, action in REQUESTS:                          # 요청을 하
    - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise1-2_run.py` 실행할 파일
    맥북: `python3 exercise1-2_run.py`
 4. **[VS Code]** `rbac.py` 의 `# ←` 두 곳(① · ②)을 채웁니다. 2.1 의 판정 순서 그림의 [4] 를 보고 씁니다. 실행은 VS Code 의 ▶ 단추가 아니라 터미널에서 합니다. 코드가 `config/` 파일을 지금 위치(`…/access_control`) 기준으로 찾기 때문입니다.
+
+<!-- checklist -->
+- [ ] `access_control` 폴더 바로 아래에 `rbac.py` 를 만들어 붙여 넣고 ① · ② 두 줄을 채워 저장했다
+<!-- /checklist -->
+
 5. **[터미널]** 다시 실행합니다. 아홉 줄의 결과와 이유가 2.1 의 그림에서 읽은 것과 같은지 확인합니다.
    ```bash
    python exercise1-2_run.py
    ```
    - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise1-2_run.py` 실행할 파일
+
+<!-- checklist -->
+- [ ] `python exercise1-2_run.py` 를 실행해 `False` 다섯 줄이 나왔다
+<!-- /checklist -->
+
 6. **[보고서]** `report_u1.md` 의 `## 실습 1-2` 아래를 채웁니다.
    - (가) [핵심 질문] 채운 뒤 실행한 출력 아홉 줄을 붙여 넣고, 거부된 요청마다 2.1 그림의 몇 번 검사에서 걸렸는지 적어 주세요.
    - (나) [응용] 채우기 전에 실행하면 `minsu` · `dami` · `tester` 만 거부됩니다. 그 출력에서 허용되면 안 되는 요청을 모두 고르고, 각각 왜 허용되면 안 되는지 적어 주세요. 검사 [4] 하나가 빠졌을 뿐인데 왜 이런 일이 생기나요?
    - (다) [응용] 퇴사 처리하면서 `dami` 의 역할을 `users.json` 에서 `"none"` 으로 바꿨다고 가정합니다. 이때 검사 [2](재직)와 [3](역할)의 순서를 바꾸면 `dami` 의 이유가 어떻게 달라지나요? 순서가 왜 중요한지 적어 주세요.
 
 **확인** — 다시 실행했을 때 아홉 줄 중 `False` 가 다섯 줄이고, 이유가 「등록되지 않은 사용자」 · 「퇴사한 계정」 · 「역할이 없음」 · 「권한 없음」(두 줄)으로 나오면 성공입니다. 안 나오면 「정답」 레슨의 실습 1-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
-
-<!-- checklist -->
-- [ ] `access_control` 폴더 바로 아래에 `rbac.py` 를 만들어 붙여 넣고 ① · ② 두 줄을 채워 저장했다
-- [ ] `access_control` 폴더 바로 아래에 `exercise1-2_run.py` 를 만들어 붙여 넣고 저장했다
-- [ ] `python exercise1-2_run.py` 를 실행해 `False` 다섯 줄이 나왔다
-<!-- /checklist -->
 
 ## 실습 1-2 정리
 

@@ -262,6 +262,11 @@ JSON 을 쓸 때 지킬 규칙입니다.
    표의 두 번째 줄 `junho` 부터 여섯 번째 줄 `tester` 까지 **다섯 명**을 같은 방법으로 한 줄씩 **직접** 이어서 씁니다. 사용자 이름과 역할은 표의 글자를 그대로 옮기고, 재직 칸만 보고 `true` 와 `false` 를 고릅니다.
    - 줄 끝마다 쉼표를 쓰고, **마지막 사용자 줄 뒤에는 쉼표 없이** 다음 줄에 `}` 를 씁니다(파일 맨 아래 닫는 표시).
    - 표에서 `퇴사` 인 사람만 `"employed": false` 이고, `재직 중` 이면(서비스 계정 `batch-night` 도 포함) `true` 입니다.
+
+<!-- checklist -->
+- [ ] `config/users.json` 을 만들고 여섯 명을 직접 써서 저장했다
+<!-- /checklist -->
+
 5. **[터미널]** JSON 규칙에 맞는지 확인합니다. 여섯 명이 다시 출력되면 됩니다.
    ```bash
    python -m json.tool config/users.json
@@ -278,24 +283,28 @@ JSON 을 쓸 때 지킬 규칙입니다.
    ```
    - 위 두 역할은 미리 적어 두었습니다. `"account_admin"` 줄 아래에 1.3 의 매트릭스를 보고 `finance` · `batch` · `auditor` 세 역할을 **직접** 씁니다. 권한은 매트릭스의 ○ 칸을 왼쪽부터 순서대로 씁니다.
    - `"account_admin"` 줄 끝에 쉼표를 추가하고, 새로 쓴 마지막 줄 뒤에는 쉼표를 쓰지 않습니다. 마지막 줄 뒤에 쉼표를 쓰면 JSON 오류가 나서 판정 코드가 파일을 아예 읽지 못합니다.
+
+<!-- checklist -->
+- [ ] `config/roles.json` 을 만들고 `finance` · `batch` · `auditor` 세 역할을 직접 써서 저장했다
+<!-- /checklist -->
+
 7. **[터미널]** 확인합니다. 역할 다섯 개가 출력되면 됩니다.
    ```bash
    python -m json.tool config/roles.json
    ```
    - 명령 풀이: `python -m json.tool` 파이썬의 JSON 검사 도구를 실행 · `config/roles.json` 검사할 파일
    - 여기서 **보고서 (다)** 를 먼저 씁니다.
+
+<!-- checklist -->
+- [ ] `python -m json.tool` 로 두 파일을 확인해 오류 없이 다시 출력되었다
+<!-- /checklist -->
+
 8. **[보고서]** `report_u1.md` 의 `## 실습 1-1` 아래 (가) · (다)를 채웁니다. 응용 (나)는 `## 실습 응용 질문` 칸에 씁니다.
    - (가) [핵심 질문] 요청 ① ~ ⑥ 의 판정(허용 · 거부)을 적고, 요청 ② 는 인증과 인가 중 어디에서 막히는지 적어 주세요. 또 영업 계정이 정산 내역을 조회했는데 막지 못한 사건과 어떻게 이어지는지도 적어 주세요.
    - (나) [응용] 매트릭스에서 필요 이상으로 보이는 ○ 를 하나 고르고, 그 이유와 그 ○ 가 남아 있을 때의 위험을 적어 주세요.
    - (다) [핵심 질문] `users.json` 의 `tester` 는 역할이 `intern` 인데 `roles.json` 에는 `intern` 이 없습니다. 이 사용자가 요청하면 어떻게 판정되어야 하나요? 그 이유도 적어 주세요.
 
 > **확인** — `python -m json.tool` 로 `users.json` 은 여섯 명, `roles.json` 은 역할 다섯 개가 오류 없이 다시 출력되면 성공입니다. `Expecting …` 오류가 나오면 그 줄 번호 근처의 쉼표 · 따옴표 · `true` 를 고치고 다시 확인합니다.
-
-<!-- checklist -->
-- [ ] `config/users.json` 을 만들고 여섯 명을 직접 써서 저장했다
-- [ ] `config/roles.json` 을 만들고 `finance` · `batch` · `auditor` 세 역할을 직접 써서 저장했다
-- [ ] `python -m json.tool` 로 두 파일을 확인해 오류 없이 다시 출력되었다
-<!-- /checklist -->
 
 ## 실습 1-1 정리
 
