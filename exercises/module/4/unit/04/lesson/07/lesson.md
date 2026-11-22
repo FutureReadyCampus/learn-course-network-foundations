@@ -13,7 +13,7 @@ source:
 
 ## 목표: 합친 알림과 평가 한 문장
 
-> **여유가 되면 해 보세요.** 핵심 실습 4-1 · 4-2와 글쓰기를 먼저 마칩니다. 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
+> **여유가 되면 해 보세요.** 핵심 실습 4-1 · 4-2와 글쓰기를 먼저 마칩니다. 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다. 이 응용 보고서 칸의 [핵심 질문]은 「응용 안에서 중요한 질문」이라는 뜻이고, 응용 전체가 선택이므로 꼭 채우지 않아도 됩니다.
 
 > **이번 실습에 들어온 일**
 >
@@ -31,7 +31,7 @@ source:
 
 ## 3.1 진짜 문제 5개를 어느 규칙이 찾는가
 
-**먼저 `login_alerts.json` 을 만듭니다.** 로그인 규칙(웹 로그인 반복 실패)이 낸 알림 1개입니다. `anomaly_detection` 폴더에 만들고, 같은 이름의 파일이 이미 있으면 아래 내용으로 덮어씁니다. `problems.json` 이 아직 없으면 응용 4-2 레슨의 「1.1 알림 7개와 진짜 문제 5개」 페이지에서 먼저 만듭니다.
+**먼저 `login_alerts.json` 을 만듭니다.** 로그인 규칙(웹 로그인 반복 실패)이 낸 알림 1개입니다. `anomaly_detection` 폴더에 만들고, 같은 이름의 파일이 이미 있으면 아래 내용으로 덮어씁니다. `problems.json` 이 아직 없으면 응용 4-2 레슨의 「알림 7개와 진짜 문제 5개」 페이지에서 먼저 만듭니다.
 
 **`login_alerts.json`**
 
@@ -42,7 +42,7 @@ source:
 ```
 
 - **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `login_alerts.json` 을 만들어 위 내용을 붙여 넣고 저장합니다.
-- **[터미널]** `python -c "import pandas as pd; print(len(pd.read_json('login_alerts.json')), len(pd.read_json('problems.json')))"` 로 확인해 `1 5` 가 나오면 됩니다(맥북은 `python3`).
+- **[터미널]** `python -c "import pandas as pd; print(len(pd.read_json('login_alerts.json')), len(pd.read_json('problems.json')))"` 로 확인해 `1 5` 가 나오면 됩니다.
 
 <!-- checklist optional -->
 - [ ] `anomaly_detection` 폴더에 `login_alerts.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
@@ -146,9 +146,9 @@ print(df)                                 # 표를 출력한다
 ```
    id problem
 0  A1      P1
-1  A2    None
+1  A2     NaN
 2  A3      P3
-3  A4    None
+3  A4     NaN
 ```
 
 위 코드에 이어서 실행하는 다음 코드입니다.
@@ -163,10 +163,10 @@ print(problem_ids)                    # 남은 문제 번호를 출력한다
 ```
 0    P1
 2    P3
-Name: problem, dtype: object
+Name: problem, dtype: str
 ```
 
-- 읽는 법: 첫 번째 출력에서 `problem` 이 비어 있는 행은 `None` 으로 보입니다. <mark style="background:#bde3ff">두 번째 출력에는 번호가 있는 0번 행(P1)과 2번 행(P3)만</mark> 남았습니다. `Name: problem, dtype: object` 줄은 몰라도 됩니다.
+- 읽는 법: 첫 번째 출력에서 `problem` 이 비어 있는 행은 `NaN` 으로 보입니다(판다스 2 에서는 `None`). <mark style="background:#bde3ff">두 번째 출력에는 번호가 있는 0번 행(P1)과 2번 행(P3)만</mark> 남았습니다. `Name: problem, dtype: str` 줄은 몰라도 됩니다(판다스 2 에서는 `dtype: object`).
 - `.dropna()` 는 괄호까지 써야 합니다. 괄호를 빼면 `isin` 에 넣을 때 오류가 납니다.
 
 **한 장 정리**
@@ -316,14 +316,14 @@ print(summary)                                        # 요약 문장을 출력�
 **순서**
 
 1. **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `final_check.py` 와 `apply4-3_run.py` 를 만들어 위 코드를 각각 붙여 넣고 저장합니다.
-2. **[VS Code]** `final_check.py` 에서 <mark>직접 쓰는 곳 여섯 군데를 씁니다</mark>. 위 판다스 문법 상자와 3.1 의 표를 참고해 씁니다. 막히면 아래 「응용 4-3 정리」를 봅니다.
+2. **[VS Code]** `final_check.py` 에서 <mark>직접 쓰는 곳 여섯 군데를 씁니다</mark>. 위 판다스 문법 상자와 「진짜 문제 5개를 어느 규칙이 찾는가」 쪽의 표를 참고해 씁니다. 막히면 아래 「응용 4-3 정리」를 봅니다.
 
 <!-- checklist optional -->
 - [ ] `anomaly_detection` 폴더에 `final_check.py` 를 만들어 붙여 넣고, 직접 쓰는 곳 여섯 군데를 채워 저장했다
 - [ ] `anomaly_detection` 폴더에 `apply4-3_run.py` 를 만들어 붙여 넣고 저장했다
 <!-- /checklist -->
 
-3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다.
    ```bash
    pwd
    python apply4-3_run.py

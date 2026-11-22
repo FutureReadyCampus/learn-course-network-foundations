@@ -19,9 +19,9 @@ render: markdown
 1. 파일은 모두 `anomaly_detection` 폴더 안에 만듭니다(VS Code 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File**).
 2. 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다. 같은 이름의 파일이 이미 있으면 내용을 모두 지우고 붙여 넣습니다.
 3. 만들 파일은 위 표의 세 개입니다.
-   - 앞의 두 파일에는 Unit 3 응용에서만 설명한 문법(`.between` · `.str.contains` · `.dt.hour` 등)이 나옵니다. 오늘은 붙여 넣어 쓰기만 하므로, 응용을 하지 않았다면 줄 끝 주석으로 무슨 일을 하는지만 읽고 넘어가도 됩니다.
+   - 앞의 두 파일에는 Unit 3 응용에서만 설명한 문법(`.between` · `.str.contains` 등)이 나옵니다(`.dt.hour` 는 Unit 2 실습 2-2에서 배웠습니다). 오늘은 붙여 넣어 쓰기만 하므로, 응용을 하지 않았다면 줄 끝 주석으로 무슨 일을 하는지만 읽고 넘어가도 됩니다.
 4. 시작하기 레슨의 확인에서 `Unit 3 파일 정상 57` 이 나오지 않았다면, 이 레슨 마지막 페이지의 `access_detection.py` 예비 코드도 만듭니다.
-5. 다 만들었으면 아래 명령으로 확인하고 실습 4-1로 갑니다(맥북은 `python3`).
+5. 다 만들었으면 아래 명령으로 확인하고 실습 4-1로 갑니다.
    ```bash
    python -c "from saas_detection import find_bulk_download_users; from malicious_detection import find_scan_ips; from correlation import find_chains_in_events; from access_detection import load_events, EVENTS_PATH; print('제공 파일 정상', len(find_chains_in_events(load_events(EVENTS_PATH))))"
    ```
