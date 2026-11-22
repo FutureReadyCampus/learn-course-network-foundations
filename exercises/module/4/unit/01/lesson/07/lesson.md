@@ -100,7 +100,7 @@ Traceback (most recent call last):
 ValueError: too many values to unpack (expected 3)
 ```
 
-- 줄 번호는 사람마다 다릅니다.
+- 줄 번호는 사람마다 다릅니다. 내 화면에는 코드 줄 아래에 `^^^^` 같은 표시 줄이 더 나오거나 색이 붙을 수 있는데, **마지막 줄**이 같으면 같은 오류입니다.
 
 **관제에서는**
 
@@ -134,7 +134,7 @@ python exercise1-2_run.py
     if status >= 400:  # 400 이상이면 요청이 실패한 것이다
 ```
 
-- 채우기 전에는 `IndentationError: unexpected indent` 가 나오고, ① 만 채워도 같습니다. ② 만 채우고 ① 을 비우면 `NameError: name 'time_out' is not defined` 입니다. 둘 다 채우면 아래 출력이 나옵니다.
+- 채우기 전에는 `IndentationError: unexpected indent` 가 나오고, ① 만 채워도 같습니다. ② 만 채우고 ① 을 비우면 `NameError: name 'time_out' is not defined. Did you mean: 'time_text'?` 입니다. `Did you mean …` 은 따르지 말고 ① 을 채웁니다. 둘 다 채우면 아래 출력이 나옵니다.
 
 **결과**
 
@@ -308,7 +308,7 @@ Traceback (most recent call last):
 TypeError: '>=' not supported between instances of 'str' and 'int'
 ```
 
-- 줄 번호는 사람마다 다릅니다. `TypeError` 가 같으면 이 실수입니다.
+- 줄 번호는 사람마다 다릅니다. 내 화면에는 코드 줄 아래에 `^^^^` 같은 표시 줄이 더 나오거나 색이 붙을 수 있는데, **마지막 줄**이 같으면 같은 오류입니다. `TypeError` 가 같으면 이 실수입니다.
 
 **관제에서는**
 
@@ -408,7 +408,7 @@ Traceback (most recent call last):
 KeyError: True
 ```
 
-- 줄 번호는 사람마다 다릅니다.
+- 줄 번호는 사람마다 다릅니다. 내 화면에는 코드 줄 아래에 `^^^^` 같은 표시 줄이 더 나오거나 색이 붙을 수 있는데, **마지막 줄**이 같으면 같은 오류입니다.
 
 **관제에서는**
 
@@ -499,7 +499,7 @@ Traceback (most recent call last):
 TypeError: 'NoneType' object is not iterable
 ```
 
-- 줄 번호는 사람마다 다릅니다.
+- 줄 번호는 사람마다 다릅니다. 내 화면에는 코드 줄 아래에 `^^^^` 같은 표시 줄이 더 나오거나 색이 붙을 수 있는데, **마지막 줄**이 같으면 같은 오류입니다.
 
 **관제에서는**
 

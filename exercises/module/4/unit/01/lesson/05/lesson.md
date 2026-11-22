@@ -79,7 +79,7 @@ time,account,event,ip_address,outcome
 - [ ] `anomaly_detection` 폴더에 `saas_events.csv` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
 <!-- /checklist -->
 
-2. **[터미널]** 두 파일의 줄 수를 확인합니다(맥북은 `python3`).
+2. **[터미널]** 두 파일의 줄 수를 확인합니다.
    ```bash
    python -c "print(len(open('server_log.jsonl', encoding='utf-8').read().splitlines()))"
    python -c "print(len(open('saas_events.csv', encoding='utf-8').read().splitlines()))"
@@ -299,7 +299,7 @@ def load_saas(path):                                             # SaaS CSV 파�
 - 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 6번은 모두 함수 안이라 앞에 공백 4개입니다.
 - 4번의 `split("@")` 는 실습 1-1의 `split('"', 2)` 처럼 구분 문자로 나눈 리스트를 만듭니다. `seoyeon@a-corp.example` 은 `["seoyeon", "a-corp.example"]` 이 되고, <mark>5번에서 첫 값(`account_parts[0]`)을 씁니다.</mark>
 - 번호 주석이 연달아 붙어 있어도(예: 4 · 5번), <mark>주석 사이마다 줄을 끼워 넣어 각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark>
-- **채우기 전에 실행하면 `UnboundLocalError` 또는 `NameError` 가 납니다.** 둘 다 아직 값을 담지 않은 이름을 썼다는 오류입니다. 예를 들어 1 · 2번을 아직 안 썼으면 `time_out` 을 찾지 못합니다.
+- **채우기 전에 실행하면 `NameError` 가 납니다.** 아직 값을 담지 않은 이름을 썼다는 오류입니다. 예를 들어 1 · 2번을 아직 안 썼으면 `NameError: name 'time_out' is not defined. Did you mean: 'time_text'?` 처럼 `time_out` 을 찾지 못합니다. 끝의 `Did you mean …` 은 따르지 말고 빈칸을 채웁니다.
 
 **`apply1-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 두 로그를 공통 이벤트로 바꿔 세 단계로 출력합니다.
 
@@ -347,7 +347,7 @@ print(first_saas)                                                           # Sa
 - [ ] `normalize_json_csv.py` 의 직접 쓰는 곳 여섯 군데를 채우고 저장했다
 <!-- /checklist -->
 
-3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다.
    ```bash
    pwd
    python apply1-2_run.py
@@ -359,7 +359,7 @@ print(first_saas)                                                           # Sa
 - [ ] `python apply1-2_run.py` 를 실행해 판정 서버 이벤트 15 개, SaaS 이벤트 14 개가 나왔다
 <!-- /checklist -->
 
-5. **[보고서]** `report_u1.md` 의 `## 응용 1-2` 아래를 채웁니다.
+5. **[보고서]** `report_u1.md` 의 `## 응용 1-2` 아래를 채웁니다. 응용 안의 [핵심 질문]은 이 응용을 했을 때 꼭 답할 질문이라는 뜻이고, 응용을 하지 않았다면 비워 둡니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 판정 서버와 SaaS 이벤트의 수와 성공 · 실패별 개수를 적어 주세요.
    - (나) [핵심 질문] 판정 서버 로그에는 접속 주소가 없어서 `ip` 를 `None` 으로 두었습니다. `None` 대신 가짜 주소 `0.0.0.0` 을 넣으면 주소별로 셀 때 어떤 문제가 생길까요? 이유도 함께 적어 주세요.
    - (다) [핵심 질문] 정규화하면서 공통 이벤트의 키에 들어가지 않은 정보를 판정 서버 로그에서 찾아 적고, 그 정보를 나중에 어디서 찾을 수 있는지 적어 주세요.

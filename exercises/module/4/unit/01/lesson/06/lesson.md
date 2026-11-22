@@ -46,9 +46,9 @@ source:
 두 리스트를 `+` 로 이어 붙이는 것은 파이썬에서 배운 대로입니다. 새로 나오는 것은 `sort(key=함수)` 하나입니다.
 
 ```python
-web_events = [{"time": "2026-11-02 11:00:00", "source": "server"}, {"time": "2026-11-02 09:12:03", "source": "web"}]  # 이벤트 두 개
-saas_events = [{"time": "2026-11-02 10:12:55", "source": "saas"}]  # 이벤트 한 개
-merged = web_events + saas_events                                  # 리스트 두 개를 이어 붙인다
+events_a = [{"time": "2026-11-02 11:00:00", "source": "server"}, {"time": "2026-11-02 09:12:03", "source": "web"}]  # 이벤트 두 개
+events_b = [{"time": "2026-11-02 10:12:55", "source": "saas"}]     # 이벤트 한 개
+merged = events_a + events_b                                       # 리스트 두 개를 이어 붙인다
 
 
 def get_time(event):                                               # 이벤트 하나를 받는 함수
@@ -110,6 +110,8 @@ print(text)                                                         # 파일 내
   }
 ]
 ```
+
+- 이 문법 상자를 직접 실행했다면 `anomaly_detection` 폴더에 연습 파일 `demo_events.json` 이 생깁니다. 실습에서는 쓰지 않으니 지워도 됩니다.
 
 
 | 함수 | 하는 일 |
@@ -288,7 +290,7 @@ print("저장된 이벤트", saved_count, "개")                                
 - [ ] `normalize.py` 의 직접 쓰는 곳 다섯 군데를 채우고 저장했다
 <!-- /checklist -->
 
-3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다.
    ```bash
    pwd
    python apply1-3_run.py
@@ -301,7 +303,7 @@ print("저장된 이벤트", saved_count, "개")                                
 - [ ] `python apply1-3_run.py` 를 실행해 `저장된 이벤트 57 개` 가 나오고 `normalized_events.json` 이 생겼다
 <!-- /checklist -->
 
-6. **[보고서]** `report_u1.md` 의 `## 응용 1-3` 아래를 채웁니다.
+6. **[보고서]** `report_u1.md` 의 `## 응용 1-3` 아래를 채웁니다. 응용 안의 [핵심 질문]은 이 응용을 했을 때 꼭 답할 질문이라는 뜻이고, 응용을 하지 않았다면 비워 둡니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 소스별 이벤트 수와 `user` · `ip` 가 비어 있는 이벤트 수, 저장된 이벤트 수를 적어 주세요.
    - (나) [핵심 질문] 단계 3의 gaeun 이벤트를 보고, 서로 다른 소스에서 나온 이벤트가 어떤 순서로 나오는지 적고, 로그를 따로 볼 때와 무엇이 달라지는지 적어 주세요.
    - (다) [핵심 질문] `user` 가 비어 있는 이벤트가 28개입니다. 어느 로그(소스)의 이벤트이고 왜 비어 있는지 적어 주세요. 그리고 사용자 이름별로 개수를 세면 이 28개가 어떻게 될지 예상해 적어 주세요.

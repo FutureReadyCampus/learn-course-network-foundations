@@ -297,7 +297,7 @@ for entry in entries:                                                  # 읽은 
 - [ ] `anomaly_detection` 폴더에 `exercise1-1_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
 <!-- /checklist -->
 
-2. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지 확인하고</mark> **채우기 전에** 한 번 실행합니다(맥북은 `python3`). `NameError: name 'prefix' is not defined` 가 나오면 정상입니다.
+2. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지 확인하고</mark> **채우기 전에** 한 번 실행합니다. `NameError: name 'prefix' is not defined` 가 나오면 정상입니다.
    ```bash
    pwd
    python exercise1-1_run.py
