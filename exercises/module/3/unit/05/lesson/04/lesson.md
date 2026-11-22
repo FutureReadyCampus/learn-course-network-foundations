@@ -420,6 +420,10 @@ network-study-notes/
     (앞 Unit의 파일들)
 ```
 
+<!-- checklist -->
+- [ ] `access_control` 폴더에서 `ls` · `ls config` 로 이번 Unit 파일이 모두 있는 것을 확인했다
+<!-- /checklist -->
+
 **3. 깃허브에 올리기** — 「오늘의 글 쓰기」 마지막 쪽에서 글을 올릴 때 `access_control` 폴더도 같은 저장소라서 함께 올라갑니다. 그 전에 먼저 올리고 싶으면 Unit 1 마무리의 「깃허브에 올리기」와 같은 순서(`git status` 로 `.env` 확인 → `git add .` → `git commit` → `git push`)로 올립니다.
 
 **4. 이어지는 곳**
@@ -429,10 +433,6 @@ network-study-notes/
 3. 이번 Unit에서 해 본 「로그 한 줄을 읽고, 세고, 기준과 비교하는」 방식이 Module 4에서 로그를 분석할 때의 바탕이 됩니다.
 
 **확인** — `ls` 에 위 파일들이 보이고, 「오늘 한 일 확인」의 1 ~ 4번에 모두 「했다」고 답할 수 있으면 Unit 5와 Module 3을 마친 것입니다. 빠진 파일이 있으면 그 파일을 만드는 레슨(실습 5-1 · 제공 파일 · 보고서 쓰기)으로 돌아갑니다.
-
-<!-- checklist -->
-- [ ] `access_control` 폴더에서 `ls` · `ls config` 로 이번 Unit 파일이 모두 있는 것을 확인했다
-<!-- /checklist -->
 
 ---
 
