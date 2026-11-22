@@ -17,7 +17,7 @@ source:
 >
 > - **상황**: <mark style="background:#e0d4ff">Unit 3 실습 3-1 에서 자동 조치를 원래 상태로 복원(롤백, rollback)하는 `rollback_incident` 를 만들었습니다.</mark> 오늘은 **오탐**(false positive, 폴스 포지티브: 정상 활동을 공격으로 잘못 판정한 것) 신고가 2건 들어왔습니다.
 > - `INC-301`: 해외 IP 에서 로그인한 `jiwoo` 계정을 자동으로 잠그고 세션(session, 세션: 로그인한 뒤 서버가 유지하는 접속 상태)을 종료했는데, 영업팀장이 「출장 중이고 출장 등록도 했다」고 알려 왔습니다.
-> - `INC-202`: 경로 스캔(서버의 여러 주소에 차례로 요청을 보내 약점을 찾는 일)으로 자동 차단한 IP `198.51.100.90` 이 회사가 계약한 점검 업체의 스캐너라고 인프라팀이 알려 왔습니다.
+> - `INC-202`: 경로 스캔(서버의 여러 주소에 차례로 요청을 보내 약점을 찾는 일)으로 자동 차단한 IP `198.51.100.90` 이 회사가 계약한 점검 업체의 스캐너(scanner: 약점을 찾으려고 서버에 자동으로 요청을 보내는 점검 도구)라고 인프라팀(서버 · 네트워크를 관리하는 팀)이 알려 왔습니다.
 > - **문제**: 롤백 함수만 실행하면 오탐 대응이 끝나지 않습니다.
 > - <mark style="background:#ffc4d6">영향 확인(impact assessment: 조치가 실제로 바꾼 대상을 파악하는 일)을 먼저 하지 않으면</mark> 누가 영향을 받았는지 알 수 없습니다. 신고와 상관없는 진짜 공격(정탐, true positive: 실제 공격을 정확히 탐지한 것)인 `dami` 잠금(`INC-201`)이 그대로인지도 따로 확인하기 어렵습니다.
 > - 롤백한 뒤 복구 확인(recovery verification: 실제 상태가 복원됐는지 다시 점검하는 일)을 하지 않으면 해제되지 않은 계정이 남아도 알 수 없습니다. 그러면 `jiwoo` 가 계속 로그인하지 못할 수 있습니다.
@@ -86,7 +86,7 @@ print(len(found))                                   # 1
 <pre class="copyable"><code>{"locked_users": ["junho", "dami", "jiwoo"], "blocked_ips": ["198.51.100.90"], "block_expiry": {"198.51.100.90": 120}, "clock": 0, "sessions": {"dami": [], "jiwoo": [], "junho": [], "hana": ["S-601"]}}
 </code></pre>
 
-**`fp_log.json`** — 자동 조치 기록 7건입니다. Unit 2 실습 2-1 의 `containment_log.json` 과 같은 모양입니다.
+**`fp_log.json`** — 자동 조치 기록 7건입니다. Unit 2 실습 2-1 의 `containment_log.json` 과 같은 모양입니다. 마지막 줄(`INC-205`)은 다른 인시던트의 기록이라 오늘 신고와 무관합니다(`find_incident_records` 가 신고된 인시던트의 기록만 골라 냅니다).
 
 <pre class="copyable"><code>[
   {"action": "계정 잠금", "target": "dami", "incident": "INC-201", "before": "잠기지 않음", "after": "잠김", "reason": "퇴사한 계정의 서버 요청"},
@@ -225,13 +225,13 @@ print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.
 | ① | `before` 와 `after` 가 다르면 (`if`, `!=`) | 8칸 |
 | ② | `changes` 에 `record` 를 추가 (`append`) | 12칸 |
 
-- 채우기 전에 실행하면 `IndentationError: expected an indented block after 'for' statement` 가 나옵니다. `for` 안쪽 줄(① · ②)이 아직 비어 있어서 나는 오류이니 정상입니다.
+- 순서에는 없지만, 채우기 전에 실행하면 `IndentationError: expected an indented block after 'for' statement` 가 나옵니다. `for` 안쪽 줄(① · ②)이 아직 비어 있어서 나는 오류이니 정상입니다. 오류의 `^^^^^^` 표시가 `return changes` 줄을 가리켜도, 고칠 곳은 그 위 ① · ② 입니다.
 - ① 확인: ① 만 쓰고 실행하면 `IndentationError: expected an indented block after 'if' statement` 가 나옵니다. ② 를 아직 안 써서 나는 오류이니 정상입니다. 막히면: 문법 상자의 `if record["before"] != record["after"]:` 를 그대로 8칸에 씁니다.
-- ② 확인: ② 까지 쓰고 실행하면 `INC-301` 의 영향 확인이 ` - 영향 확인: ['세션 종료 jiwoo', '계정 잠금 jiwoo']` 로 나오면 성공입니다. `IP 차단 198.51.100.120` 이 섞여 나오면 ② 가 ① 의 안쪽(12칸)에 있는지 봅니다. 막히면: 문법 상자의 `found.append(record)` 에서 `found` 자리에 `changes` 를 씁니다.
+- ② 확인: ② 까지 쓰고 실행하면 `INC-301` 의 영향 확인이 ` - 영향 확인: ['세션 종료 jiwoo', '계정 잠금 jiwoo']` 로 나오면 성공입니다. `IP 차단 198.51.100.120` 이 섞여 나오면 ① 의 `if` 줄을 썼는지, `!=` 인지 봅니다. 막히면: 문법 상자의 `found.append(record)` 에서 `found` 자리에 `changes` 를 씁니다.
 
 **순서**
 
-1. **[VS Code]** 파일 다섯 개 `fp_state.json` · `fp_log.json` · `fp_reports.json` · `false_positive.py` · `exercise4-2_run.py` 를 만듭니다. 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
+1. **[VS Code]** 파일 다섯 개 `fp_state.json` · `fp_log.json` · `fp_reports.json` · `false_positive.py` · `exercise4-2_run.py` 를 만듭니다. 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`).
 
 <!-- checklist -->
 - [ ] `soar_response` 폴더에 `fp_state.json` · `fp_log.json` · `fp_reports.json` 을 만들고 붙여 넣은 뒤 저장했다
@@ -244,7 +244,7 @@ print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.
 - [ ] `false_positive.py` 의 빈칸 ① · ② 를 채우고 저장했다
 <!-- /checklist -->
 
-3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다.
    ```bash
    python exercise4-2_run.py
    ```
@@ -257,7 +257,7 @@ print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.
 - [ ] `python exercise4-2_run.py` 를 실행해 걸린 시간 `25 분` · `5 분` 과 `dami 는 아직 잠김: True` 가 나왔다
 <!-- /checklist -->
 
-5. **[보고서]** `report_u4.md` 의 `## 실습 4-2` 아래를 채웁니다.
+5. **[보고서]** `report_u4.md` 에 씁니다. (가)는 `## 실습 4-2` 아래, (나) · (다)는 `## 실습 응용 질문` 의 `4-2 (나)` · `4-2 (다)` 칸에 씁니다.
    - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 신고마다 걸린 시간과 처리 뒤 잠긴 계정을 적어 주세요.
    - (나) [응용] `INC-301` 의 영향 확인에 `IP 차단 198.51.100.120` 이 없습니다. `fp_log.json` 에서 `198.51.100.120` 의 IP 차단 기록이 가진 `before` · `after` 를 근거로 그 이유를 적고, `false_positive.py` ① 의 `if` 줄이 없으면 규칙 조정 제안이 어떻게 잘못되는지 적어 주세요.
    - (다) [응용] `INC-301` 의 되돌리기에 `되돌리기 불가 jiwoo` 가 있습니다. 무엇을 되돌릴 수 없는지(비가역 조치)와 담당자가 `jiwoo` 에게 따로 안내해야 할 것을 적어 주세요. 그리고 `dami` 가 처리 뒤에도 잠겨 있어야 하는 이유를 따로 적어 주세요.
@@ -318,7 +318,7 @@ ls config
    pwd
    ```
    - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
-   - 결과가 다르면 VS Code 왼쪽 목록에서 `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
+   - 결과가 다르면 VS Code 메뉴 **Terminal › New Terminal** 로 터미널을 새로 엽니다(새 터미널은 `network-study-notes` 에서 열립니다. 이름 칸이 **bash** 가 아니면 오른쪽 위 **∨** 에서 **Git Bash** 를 고릅니다).
 2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. <mark style="background:#ffc4d6">빨간 목록에 `.env`(API 키가 들어 있는 파일)나 `.venv`(가상환경 폴더)가 보이면 올리지 않고 멈춥니다.</mark>
    ```bash
    git status
@@ -331,7 +331,7 @@ ls config
 - [ ] `network-study-notes` 폴더에서 `git status` 를 쳐서 `.env` · `.venv` 가 없는 것을 확인했다
 <!-- /checklist -->
 
-3. **[보고서]** `report_u4.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
+3. **[보고서]** `report_u4.md` 의 `## 마무리` 아래 (가)를 채웁니다. 질문: 「`git status` 를 쳤을 때 `.env` 나 `.venv` 가 보였는지, 보였다면 어떻게 했는지 적어 주세요.」 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
    ```bash
    git add .

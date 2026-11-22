@@ -17,7 +17,7 @@ source:
 
 > **오늘 들어온 일**
 >
-> - **상황**: <mark style="background:#e0d4ff">이 Unit 에서 리포트 · 승인 게이트 · 오탐 복구를 따로 구현하고</mark> 하나씩 실행해 출력을 사람이 읽어 검증했습니다(수동 검증). 강의계획서의 Unit 4 평가 기준은 <mark style="background:#ffdcb0">① 근무 데이터가 리포트에 빠짐없이 들어갔는가 ② 위험에 따라 자동 · 승인이 맞게 나뉘는가 ③ 오탐 복구가 신속하고 완전한가</mark>, 세 가지입니다. 오늘 점검 프로그램은 ①을 「티켓 번호와 티켓 없는 조치의 인시던트 번호가 리포트에 들어 있는가」로 판정합니다.
+> - **상황**: <mark style="background:#e0d4ff">이 Unit 에서 리포트 · 승인 게이트 · 오탐 복구를 따로 구현하고</mark> 하나씩 실행해 출력을 사람이 읽어 검증했습니다(수동 검증). 이 과정에서 정한 Unit 4 평가 기준은 <mark style="background:#ffdcb0">① 근무 데이터가 리포트에 빠짐없이 들어갔는가 ② 위험에 따라 자동 · 승인이 맞게 나뉘는가 ③ 오탐 복구가 신속하고 완전한가</mark>, 세 가지입니다. 오늘 점검 프로그램은 ①을 「티켓 번호와 티켓 없는 조치의 인시던트 번호가 리포트에 들어 있는가」로 판정합니다.
 > - **문제**: 출력을 사람이 읽는 수동 검증만으로는 승인 기준 숫자를 바꾸거나 리포트 틀을 고친 뒤에 <mark style="background:#ffc4d6">무엇이 달라졌는지 놓치기 쉽습니다.</mark> 예를 들어 <mark style="background:#ffdcb0">승인 기준을 3점에서 4점으로 올리면</mark> `REQ-5`(함께 쓰는 IP, 3점)의 결정이 승인 필요에서 「자동」으로 바뀌는데, 출력 8줄을 다시 읽어야 알 수 있습니다. 변경 뒤에는 같은 점검을 다시 실행해 결과를 비교하는 방법이 필요합니다.
 > - **부탁**: 세 기준을 한 번에 검증하는 점검 프로그램을 만들어 주세요. 승인 게이트는 <mark>기대한 결정(기대 결과)을 미리 적어 둔 시험 사례 7개로 검증해 주세요.</mark>
 > - **바뀌는 점**: 실행 한 번으로 점검 목록 `unit09_checklist.md` 5줄이 생성되고, 오늘 샘플에서는 <mark style="background:#bde3ff">세 기준이 모두 「통과」</mark>입니다. 기준을 지키지 못하면 <mark style="background:#ffc4d6">「확인 필요」와 문제 문장</mark>이 나옵니다. 상황과 숫자는 설명을 위한 예시입니다.
@@ -248,7 +248,7 @@ print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")            
 
 **순서**
 
-1. **[터미널]** 판다스를 설치합니다(맥북은 `python3`). `report.py` 가 판다스를 쓰기 때문입니다. 이미 설치했다면 바로 다음 줄로 갑니다. 그다음 준비할 파일을 확인합니다. <mark>`점검 준비 정상` 이 나와야</mark> 합니다.
+1. **[터미널]** 판다스를 설치합니다. `report.py` 가 판다스를 쓰기 때문입니다. 이미 설치했다면 바로 다음 줄로 갑니다. 그다음 준비할 파일을 확인합니다. <mark>`점검 준비 정상` 이 나와야</mark> 합니다.
    ```bash
    python -m pip install pandas
    python -c "import report, approval_gate, false_positive; open('incident_report_20261112.md', encoding='utf-8'); open('unit10_tickets.json', encoding='utf-8'); open('unit10_actions.json', encoding='utf-8'); print('점검 준비 정상')"
@@ -259,7 +259,7 @@ print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")            
 - [ ] 1번 명령에서 `점검 준비 정상` 이 나왔다
 <!-- /checklist -->
 
-2. **[VS Code]** 파일 세 개 `gate_cases.json` · `unit09_check.py` · `apply4-5_run.py` 를 만듭니다. 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
+2. **[VS Code]** 파일 세 개 `gate_cases.json` · `unit09_check.py` · `apply4-5_run.py` 를 만듭니다. 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`).
 
 <!-- checklist optional -->
 - [ ] `soar_response` 폴더에 `gate_cases.json` · `unit09_check.py` · `apply4-5_run.py` 를 만들고 붙여 넣은 뒤 저장했다
@@ -271,7 +271,7 @@ print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")            
 - [ ] `unit09_check.py` 1 ~ 7번과 `apply4-5_run.py` 8 · 9번을 쓰고 저장했다
 <!-- /checklist -->
 
-4. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+4. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다.
    ```bash
    python apply4-5_run.py
    ```

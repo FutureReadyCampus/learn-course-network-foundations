@@ -43,7 +43,7 @@ source:
 | 응답 기한 위반(SLA breach, 에스엘에이 브리치) | 약속한 응답 기한을 지키지 못한 일 |
 | 행(row, 로우) | 표의 가로 줄 |
 
-- 리포트 파일은 **마크다운**(Markdown, 마크다운: `#` 로 제목, `-` 로 목록을 쓰는 글 형식) 파일입니다. VS Code 에서 열고 `Ctrl+Shift+V`(맥북은 `Cmd+Shift+V`)를 누르면 제목과 목록 모양으로 볼 수 있습니다.
+- 리포트 파일은 **마크다운**(Markdown, 마크다운: `#` 로 제목, `-` 로 목록을 쓰는 글 형식) 파일입니다. VS Code 에서 열고 `Ctrl+Shift+V` 를 누르면 제목과 목록 모양으로 볼 수 있습니다.
 - 아직 확인하지 않은 티켓(미확인, unacknowledged)은 `acked_at` 이 `-1` 입니다. 그대로 빼면 확인까지 걸린 분이 <mark style="background:#ffc4d6">음수</mark>가 됩니다(예: `TCK-2` 는 −1 − 3 = −4분). 이 값이 평균에 들어가면 평균 확인 시간이 실제보다 짧게 계산되므로, 평균을 구하기 전에 <mark style="background:#ffdcb0">`acked_at` 이 0 이상인 행만 필터링</mark>합니다.
 - 확인은 했지만 아직 해결하지 않은 티켓(`TCK-4` · `TCK-7`)은 평균에 포함됩니다. 평균 확인 시간은 확인한 시각까지만 측정하는 지표이고, 해결까지 걸린 평균 시간(MTTR, Mean Time To Resolve, 엠티티알)과는 별개이기 때문입니다.
 
@@ -391,18 +391,18 @@ print("--- 단계 5: 리포트 파일", REPORT_PATH, "·", len(lines), "줄 저�
 
 **순서**
 
-1. **[터미널]** 판다스를 설치합니다(맥북은 `python3`). 이미 설치했다면 바로 다음 줄로 갑니다. 두 번째 줄을 쳐서 <mark>`판다스 불러오기 성공` 이 나와야</mark> 합니다.
+1. **[터미널]** 판다스를 설치합니다. 이미 설치했다면 바로 다음 줄로 갑니다. 두 번째 줄을 쳐서 <mark>`판다스 불러오기 성공` 이 나와야</mark> 합니다.
    ```bash
    python -m pip install pandas
    python -c "import pandas; print('판다스 불러오기 성공')"
    ```
-   - 터미널 맨 앞에 가상환경 이름(예: `(.venv)`)이 보이는 상태에서 칩니다.
+   - 가상환경을 쓴다면 먼저 켭니다(`source ../.venv/Scripts/activate`). 터미널 맨 앞에 `(.venv)` 가 보이면 켜진 것입니다. 가상환경을 쓰지 않으면 건너뜁니다.
 
 <!-- checklist optional -->
 - [ ] 판다스를 설치하고 `판다스 불러오기 성공` 이 나왔다
 <!-- /checklist -->
 
-2. **[VS Code]** 파일 네 개 `unit10_tickets.json` · `unit10_actions.json` · `report.py` · `apply4-3_run.py` 를 만듭니다. 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`). 데이터 파일은 아래 명령으로 확인합니다. <mark>`7 10` 이 나와야</mark> 합니다.
+2. **[VS Code]** 파일 네 개 `unit10_tickets.json` · `unit10_actions.json` · `report.py` · `apply4-3_run.py` 를 만듭니다. 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`). 데이터 파일은 아래 명령으로 확인합니다. <mark>`7 10` 이 나와야</mark> 합니다.
    ```bash
    python -c "import json; print(len(json.load(open('unit10_tickets.json', encoding='utf-8'))), len(json.load(open('unit10_actions.json', encoding='utf-8'))))"
    ```
@@ -417,7 +417,7 @@ print("--- 단계 5: 리포트 파일", REPORT_PATH, "·", len(lines), "줄 저�
 - [ ] `soar_response` 폴더에 `report.py` · `apply4-3_run.py` 를 만들고 1 ~ 9번을 쓴 뒤 저장했다
 <!-- /checklist -->
 
-4. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+4. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다.
    ```bash
    python apply4-3_run.py
    ```
@@ -425,7 +425,7 @@ print("--- 단계 5: 리포트 파일", REPORT_PATH, "·", len(lines), "줄 저�
    - 단계 1 과 단계 5 는 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
    - 단계 2 는 5줄, 단계 3 은 2줄입니다.
    - 단계 4 는 숫자가 제목 줄에 함께 나오고 그 아래 3줄입니다.
-6. **[VS Code]** 왼쪽 목록에서 `incident_report_20261112.md` 를 열고 `Ctrl+Shift+V`(맥북은 `Cmd+Shift+V`)로 모양을 봅니다. <mark>1 ~ 6절이 보이면</mark> 됩니다.
+6. **[VS Code]** 왼쪽 목록에서 `incident_report_20261112.md` 를 열고 `Ctrl+Shift+V` 로 모양을 봅니다. <mark>1 ~ 6절이 보이면</mark> 됩니다.
 
 <!-- checklist optional -->
 - [ ] `python apply4-3_run.py` 를 실행하고 `incident_report_20261112.md` 를 미리보기로 열어 1 ~ 6절을 확인했다

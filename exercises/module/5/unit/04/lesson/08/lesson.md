@@ -205,11 +205,11 @@ print("--- 단계 3: 바로 보완할 조치", gap_count, "개 ·", DOC_PATH, le
 
 **순서**
 
-1. **[터미널]** 판다스를 설치합니다(맥북은 `python3`). 이미 설치했다면 바로 다음 줄로 갑니다.
+1. **[터미널]** 판다스를 설치합니다. 이미 설치했다면 바로 다음 줄로 갑니다.
    ```bash
    python -m pip install pandas
    ```
-   - 터미널 맨 앞에 가상환경 이름(예: `(.venv)`)이 보이는 상태에서 칩니다. 응용 4-3 에서 설치했다면 건너뜁니다.
+   - 가상환경을 쓴다면 먼저 켭니다(`source ../.venv/Scripts/activate`). 터미널 맨 앞에 `(.venv)` 가 보이면 켜진 것입니다. 가상환경을 쓰지 않으면 건너뜁니다. 응용 4-3 에서 설치했다면 설치는 건너뜁니다.
 2. **[VS Code]** 파일 세 개를 만듭니다. `soar_response` 폴더 안의 `config` 폴더를 오른쪽 클릭 › **New File** 로 `automation_risks.json` 을, `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `risk_assessment.py` · `apply4-4_run.py` 를 만들고, 각각 코드 상자의 내용을 붙여 넣고 저장합니다.
 
 <!-- checklist optional -->
@@ -222,14 +222,14 @@ print("--- 단계 3: 바로 보완할 조치", gap_count, "개 ·", DOC_PATH, le
 - [ ] `soar_response` 폴더에 `risk_assessment.py` · `apply4-4_run.py` 를 만들고 1 ~ 9번을 쓴 뒤 저장했다
 <!-- /checklist -->
 
-4. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+4. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다.
    ```bash
    python apply4-4_run.py
    ```
 5. 출력은 세 단계입니다. 제목 줄은 줄 수에 넣지 않습니다.
    - 단계 1 과 단계 3 은 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
    - 단계 2 는 조치 6개가 한 줄씩, 모두 6줄입니다.
-6. **[VS Code]** 왼쪽 목록에서 `risk_assessment.md` 를 열고 `Ctrl+Shift+V`(맥북은 `Cmd+Shift+V`)로 마크다운 미리보기에서 표 모양을 확인합니다. <mark style="background:#bde3ff">표 한 개와 「바로 보완할 조치」 절이 보이면</mark> 됩니다.
+6. **[VS Code]** 왼쪽 목록에서 `risk_assessment.md` 를 열고 `Ctrl+Shift+V` 로 마크다운 미리보기에서 표 모양을 확인합니다. <mark style="background:#bde3ff">표 한 개와 「바로 보완할 조치」 절이 보이면</mark> 됩니다.
 
 <!-- checklist optional -->
 - [ ] `python apply4-4_run.py` 를 실행하고 `risk_assessment.md` 를 미리보기로 열어 표와 「바로 보완할 조치」 절을 확인했다
