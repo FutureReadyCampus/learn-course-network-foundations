@@ -58,16 +58,18 @@ source:
 
 | # | 상황 | 읽을 파일 (만든 곳) | 읽을 함수 · 값 |
 |---|---|---|---|
-| 1 | 설정 파일 주소 요청이 「오류」로 분류됨 | `log_classify.py` (Unit 1 응용 1-1) | `is_suspicious` · `is_error` |
+| 1 | 설정 파일 주소 요청이 「오류」로 분류됨 (응용에서 만든 파일) | `log_classify.py` (Unit 1 응용 1-1) | `is_suspicious` · `is_error` |
 | 2 | 로그 30줄이 이벤트 28개가 됨 | `normalize_web.py` (Unit 1 실습 1-2) | 깨진 줄 검사 |
-| 3 | 사용자를 알 수 있는 실패 요청이 1개뿐 | `correlation.py` (Unit 4 제공 파일) | `make_ip_user_map` · `attach_user_to_web` |
-| 4 | seoyeon 이 연결된 사건에 없음 | `correlation.py` | `find_chains` |
+| 3 | 사용자를 알 수 있는 실패 요청이 1개뿐 (응용에서 만든 파일) | `correlation.py` (Unit 4 제공 파일) | `make_ip_user_map` · `attach_user_to_web` |
+| 4 | seoyeon 이 연결된 사건에 없음 (응용에서 만든 파일) | `correlation.py` | `find_chains` |
 | 5 | 협력사 사무실 접속에 오탐이 남 **(예시)** | `tuning.py` (Unit 4 실습 4-2) | `apply_exception` |
-| 6 | 로그인 규칙의 알림이 평가에서 빠짐 **(예시)** | `final_check.py` (Unit 4 응용 4-3) | `merge_alerts`, `login_alerts.json` |
+| 6 | 로그인 규칙의 알림이 평가에서 빠짐 **(예시)** (응용에서 만든 파일) | `final_check.py` (Unit 4 응용 4-3) | `merge_alerts`, `login_alerts.json` |
 | 7 | 정산 조회 시도(P5)에 알림이 없음 | `access_detection.py` (Unit 3 실습 3-2) | `pick_suspicious`, `REPEAT_LIMIT` |
 | 8 | 서버가 같은 네트워크에 열려 있고 기록이 사라짐 | `compose.yaml` · `compose.secure.yaml` (이 Unit 응용 5-1 · 5-2) | `ports` · `volumes` |
 
-- `correlation.py` 는 Unit 4 의 「제공 파일」이고, 응용 4-1 에서 직접 써 보는 파일입니다.
+- `correlation.py` 는 Unit 4 의 「제공 파일」이고, 응용 4-1 에서 직접 써 보는 파일입니다. 상황 3 · 4 의 숫자도 응용 4-1 의 출력입니다.
+- 「(응용에서 만든 파일)」 표시가 붙은 상황은 응용을 하지 않았으면 내 폴더에 파일이 없습니다. 아래 코드 조각만으로 답할 수 있지만, <mark>응용을 하지 않았다면 상황 2 · 7 처럼 핵심 실습에서 만든 파일의 상황부터 고르면 쉽습니다.</mark>
+- 시간이 빠듯하니 <mark>먼저 이 표와 아래 상황마다 「이렇게 알게 됐습니다」 첫 줄만 읽고 3개를 고른 뒤, 고른 3개만 코드까지 읽습니다.</mark>
 - 상황마다 「이렇게 알게 됐습니다」는 아래 상황별 설명의 첫 줄에 있습니다.
 
 - 파일들은 서로의 함수를 호출합니다. 상황 3 · 4는 같은 이벤트 표에서 이어지고, 상황 5 · 6 · 7은 평가 결과에서 이어집니다.
@@ -153,6 +155,9 @@ Unit 4 응용 4-1 에서 이 함수로 만든 딕셔너리에는 IP 가 다섯 �
 
 `find_chains` 의 두 조건입니다. 「처음부터 마지막까지」가 어느 범위인지 읽습니다.
 
+- `grouped` 는 이벤트 표를 사용자별로 묶은 것입니다. 그래서 `latest` · `earliest` · `spans` 에는 사용자마다 값이 하나씩 들어 있습니다.
+- 원래 코드에서 가운데 줄 하나를 줄였습니다. `spans` 에서 한 사용자의 값을 꺼낸 것이 마지막 줄의 `span` 입니다.
+
 ```python
 MIN_SOURCES = 2                            # 서로 다른 로그 종류가 이 개수 이상이어야 연결한다
 WINDOW_MINUTES = 60                        # 한 사용자의 이벤트가 이 분 안에 모여 있어야 연결한다
@@ -163,8 +168,6 @@ earliest = grouped["minute_of_day"].min()  # 그 사용자의 가장 이른 시�
 spans = latest - earliest                  # 처음부터 마지막까지 몇 분인지
 is_close = span <= WINDOW_MINUTES          # 시간 간격이 기준 이내인지
 ```
-
-- 가운데 줄 하나를 줄였습니다. `spans` 에는 사용자마다의 분이 들어 있고, 그중 한 사용자의 값을 꺼낸 것이 `span` 입니다.
 
 seoyeon 의 이벤트를 시각순으로 놓은 표입니다. Unit 4 응용 4-1 의 단계 4 로 나온 결과는 `{'user': 'seoyeon', 'source_count': 2, 'span_minutes': 555}` 이고, gaeun 은 `서로 다른 로그 3종류 · 41분 안` 으로 연결됐습니다.
 
@@ -179,7 +182,7 @@ seoyeon 의 이벤트를 시각순으로 놓은 표입니다. Unit 4 응용 4-1 
 
 #### 상황 5 · 협력사 사무실에서 접속한 정상 접속에 알림이 남 (예시)
 
-**이렇게 알게 됐습니다**: 알림 7개 중 4개가 오탐인데, 그중 2개는 협력사 사무실 IP 203.0.113.80 에서 온 접속입니다.
+**이렇게 알게 됐습니다**: 알림 7개 중 4개가 오탐인데, 그중 3개(A3 · A4 · A5)는 협력사 사무실 IP 203.0.113.80 에서 온 접속입니다. 그 가운데 `SaaS 평소와 다른 IP` 규칙의 2개(A4 · A5)만 예외로 뺄 수 있습니다.
 
 Unit 4 실습 4-2 의 알림 가운데 협력사 사무실 IP 203.0.113.80 에서 온 네 건(A3 ~ A6)입니다. 조사 메모를 읽습니다.
 
@@ -351,13 +354,15 @@ anomaly_detection-web2-1   nginx:1.28   "/docker-entrypoint.…"   web2   Up   0
 
 ## 이번 Unit 마무리
 
+**지금 실습 5-2 를 막 끝냈다면, 먼저 [「오늘의 글 쓰기」](__SITE__/exercises/module/4/unit/5/lesson/9/page/1)를 마친 뒤 이 쪽으로 돌아옵니다.**
+
 하루를 닫는 마무리입니다(15분). 실습 5-1 · 5-2와 「보고서 쓰기」 · 「오늘의 글 쓰기」를 끝낸 뒤 합니다.
 
 **1. 오늘 한 일 확인**
 
 1. 점수 파일의 사실만 AI 에게 보내 대상 3명의 요약을 받고, 실패하면 대체 문장을 쓰게 했다 (실습 5-1)
 2. 상황 8개 중 3개 이상의 원인과 고치는 방법을 내 말로 정리해 Module 4 총정리를 썼다 (실습 5-2)
-3. 보고서 `report_u5.md` 의 꼭 채울 칸(실습 5-1 (가) · (나), 실습 5-2 상황 3개와 (가) · (나))에 `답:` 뒤가 비어 있는 곳이 없다
+3. 보고서 `report_u5.md` 의 꼭 채울 칸(실습 5-1 (가) · (나), 실습 5-2 상황 3개와 (가) · (나), 마무리 (가))에 `답:` 뒤가 비어 있는 곳이 없다. 마무리 (가)는 다음 쪽 「깃허브에 올리기」 3번에서 채운다
 4. 응용 5-1 · 5-2를 했다면 컴포즈 파일 두 개와 `logs` 폴더가 있고, 응용 5-3을 했다면 보고서 파일 `anomaly_detection_report_2026-11-02.json` 이 있다 (선택)
 
 **2. 파일 확인** — **[터미널]** `anomaly_detection` 폴더에서 확인합니다.
@@ -409,6 +414,8 @@ network-study-notes/
 **확인** — `ls` 에 `llm_client.py` · `unit05_risk_scores.json` · `event_summary.py` · `exercise5-1_run.py` · `report_u5.md` 다섯 개가 모두 보이면 성공입니다. 빠진 것이 있으면 VS Code 왼쪽 목록에서 다른 폴더에 만들어졌는지 보고 `anomaly_detection` 으로 끌어다 옮깁니다.
 
 ## 마무리 · 깃허브에 올리기
+
+**「오늘의 글 쓰기」를 아직 안 했다면, [「오늘의 글 쓰기」](__SITE__/exercises/module/4/unit/5/lesson/9/page/1)를 마친 뒤 이 쪽으로 돌아옵니다.**
 
 <mark>Module 4 작업을 저장소에 올리는 마무리입니다.</mark> 보고서와 글쓰기를 마친 뒤에 올려야 빈칸 없이 올라갑니다. 어느 터미널을 써도 되고, `pwd` 로 위치를 먼저 확인한 뒤 결과가 `anomaly_detection` 으로 끝나면 아래 1번의 `cd ..` 를 칩니다.
 
@@ -488,7 +495,7 @@ network-study-notes/
 
    - 하는 일: 저장한 기록을 깃허브로 올립니다.
    - 나오는 것: 올라간 내용이 몇 줄 나옵니다.
-   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
+   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(터미널에 편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`, VS Code 에 새 탭이 열리면 그 탭을 그대로 닫습니다).
 
 <!-- checklist -->
 - [ ] `git add .` → `git commit` → `git push` 를 차례로 쳐서 올렸다

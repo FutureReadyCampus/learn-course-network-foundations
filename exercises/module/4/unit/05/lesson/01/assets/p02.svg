@@ -18,7 +18,7 @@
 <polyline points="524,82 544,82" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
 <rect x="548" y="50" width="152" height="64" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="624" y="76" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">Ctrl + S 저장</text>
-<text x="624" y="99" font-size="14" fill="#666660" text-anchor="middle">맥북은 Cmd + S</text>
+<text x="624" y="99" font-size="14" fill="#666660" text-anchor="middle">탭 옆 ● 가 사라짐</text>
 <text x="20" y="146" font-size="16" fill="#292929" font-weight="700">만들 파일 두 개 (이미 있어도 덮어씀)</text>
 <rect x="20" y="158" width="332" height="74" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="36" y="184" font-size="16" fill="#292929" font-weight="700">4. llm_client.py</text>
