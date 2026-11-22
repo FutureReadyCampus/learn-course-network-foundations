@@ -10,6 +10,8 @@ render: markdown
 
 **실습 1-3을 시작하기 전에** 이 레슨의 파일 세 개를 만듭니다. 실습 1-3의 `policy.py` 가 예외 판정 함수 `find_exception` 을 불러 쓰는데, 그 함수와 예외 파일은 응용 1-3에서 만드는 것이라 오늘은 완성본을 받아 씁니다.
 
+**예외**는 「이번 주 금요일까지만 과학실 열쇠를 빌려주기」처럼, 역할에는 없는 권한을 한 사람에게만 기간을 정해 잠깐 주는 것입니다.
+
 1. 파일은 모두 `access_control` 폴더 안에 만듭니다. 만드는 방법은 실습 1-2와 같습니다(VS Code 왼쪽 목록에서 `access_control` 폴더를 고르고 **새 파일** 아이콘).
 2. 아래 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
 3. 만들 파일은 세 개입니다.
@@ -43,6 +45,7 @@ render: markdown
 ]
 </code></pre>
 
+- `reason` 칸의 「월말 정산 대조」는 한 달 동안 오간 돈의 기록이 서로 맞는지 맞춰 보는 일이고, 「인수인계」는 떠나는 사람이 맡던 일을 다음 사람에게 넘겨주는 일입니다.
 - 저장한 뒤 터미널에서 JSON 규칙에 맞는지 확인합니다. 다섯 건이 다시 정리되어 나오면 성공입니다. `Expecting …` 나 `Unterminated string …` 같은 오류 문구가 나오면 복사가 덜 된 것이니 내용을 지우고 다시 붙여 넣습니다.
   ```bash
   python -m json.tool config/exceptions.json
@@ -51,7 +54,9 @@ render: markdown
 
 ## `exception_policy.py` 만들기
 
-**`exception_policy.py`** 를 만들고 아래 내용을 붙여 넣습니다. 다른 파일이 `import` 로 이 파일을 불러올 때 `config/exceptions.json` 을 한 번 읽어 `EXCEPTIONS` 에 담고, `find_exception` 은 사람과 권한이 같고 지금 시각이 만료 시각보다 앞인 예외를 찾습니다.
+**`exception_policy.py`** 를 만들고 아래 내용을 붙여 넣습니다. 다른 파일이 `import` 로 이 파일을 불러오면, 맨 위 줄들이 `config/exceptions.json` 을 한 번 읽어 `EXCEPTIONS` 에 담습니다. `find_exception` 은 그 안에서 사람과 권한이 같고 아직 만료 시각이 지나지 않은 예외를 찾습니다.
+
+- `datetime.strptime(문자열, 형식)` 은 `"2026-10-22 18:00"` 같은 글자를 시각 값으로 바꿉니다. 시각 값으로 바꿔야 `now < expires` 처럼 지금 시각과 「더 이른가」를 비교할 수 있습니다.
 
 ```python
 import json                                                      # JSON 파일을 읽는 모듈을 불러온다
@@ -78,7 +83,7 @@ def find_exception(user, permission, now):                       # 사용자 · 
 
 ## `config_loader.py` 만들기
 
-**`config_loader.py`** 를 만들고 아래 내용을 붙여 넣습니다. 오늘 실습에서는 불러 쓰지 않지만, 다음 Unit부터 설정 파일을 읽을 때 이 함수를 씁니다. 미리 만들어 둡니다.
+**`config_loader.py`** 를 만들고 아래 내용을 붙여 넣습니다. 오늘 실습에서는 불러 쓰지 않지만, 다음 Unit부터 설정 파일을 읽을 때 이 함수를 씁니다. 미리 만들어 둡니다. 코드의 `try:` 는 「아래를 해 보다가 오류가 나면 `except` 아래로 넘어가라」는 뜻입니다.
 
 ```python
 import json                                                      # JSON 파일을 읽는 모듈을 불러온다
