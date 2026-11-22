@@ -93,4 +93,9 @@ Unit 3 점검에서는 이미 부여돼 있는 권한을 살펴 필요 없는 �
 
 > **확인** — `Unit 1 파일 정상 6 5 5` 가 나오고, Unit 3 확인 결과에 따라 쓸 `revoke_input.py` 코드(있을 때 · 없을 때)를 골랐으면 성공입니다. Unit 1 줄에서 오류가 나면 `pwd` 가 `access_control` 로 끝나는지 먼저 보고, 맞으면 오류에 나온 파일 이름을 Module 3 Unit 1 레슨에서 찾아 다시 만듭니다.
 
+<!-- checklist -->
+- [ ] `access_control` 폴더에서 터미널을 열고 Unit 1 확인 명령으로 `Unit 1 파일 정상 6 5 5` 가 나왔다
+- [ ] Unit 3 확인 명령의 결과를 보고 `revoke_input.py` 에 쓸 코드(있을 때 · 없을 때)를 골랐다
+<!-- /checklist -->
+
 ---
