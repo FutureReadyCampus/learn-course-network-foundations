@@ -84,6 +84,10 @@ source:
 python -c "from incident import load_json, save_json, INCIDENTS_PATH; from enrichment import enrich_incident; from routing import decide_route; from containment import contain_account; from containment_store import new_state; from ip_actions import check_ip_policy, block_ip; print('앞 Unit 파일 정상')"
 ```
 
+<!-- checklist optional -->
+- [ ] `soar_response` 폴더에서 「먼저 확인할 파일」 명령을 실행해 `앞 Unit 파일 정상` 이 나왔다
+<!-- /checklist -->
+
 **`drill.py`** — 알림 한 건을 처리합니다. Unit 1 `enrichment.py` · `routing.py` 와 Unit 2 파일을 불러옵니다(import). 직접 쓰는 곳은 1 ~ 5번입니다. `FIREWALL_DOWN_FOR` 는 방화벽 연결이 끊긴 상황을 흉내 내려고 수업에서만 쓰는 목록입니다.
 
 ```python
@@ -228,24 +232,32 @@ for record in log:                                                              
 
 1. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `drill.py` · `shift_report.py` · `apply3-1_run.py` 를 하나씩 그대로 적어 세 개의 파일을 만듭니다. 각 파일에 이 페이지의 코드 상자를 복사해 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
 2. **[VS Code]** `drill.py` 1 ~ 5번, `shift_report.py` 6 ~ 8번, `apply3-1_run.py` 9번을 씁니다. 막히면 아래 「응용 3-1 정리」를 봅니다.
+
+<!-- checklist optional -->
+- [ ] `drill.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 1 ~ 5번을 썼다
+- [ ] `shift_report.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 6 ~ 8번을 썼다
+<!-- /checklist -->
+
 3. **[터미널]** 실행합니다(맥북은 `python3`).
    ```bash
    python apply3-1_run.py
    ```
+
+<!-- checklist optional -->
+- [ ] `apply3-1_run.py` 를 만들고 9번을 쓴 뒤 `python apply3-1_run.py` 를 실행해 단계 1 ~ 4 가 나왔다
+<!-- /checklist -->
+
 4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 8줄, 단계 2 는 5줄, 단계 3 은 3줄, 단계 4 는 4줄입니다.
 5. **[보고서]** `report_u3.md` 의 `## 응용 3-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣어 주세요. 그리고 단계 3 의 요약과 단계 4 의 건수를 적어 주세요.
    - (나) [핵심 질문] INC-005 는 `조치 실패` 로 나왔고 요약의 `확인 실패` 가 1 입니다. 단계 2 의 줄을 근거로 이유를 적고, 6번(`is_failure`, 확인 실패인지 구하는 함수)이 없다면 이 건이 근무 보고에서 어떻게 보일지 적어 주세요.
    - (다) [핵심 질문] INC-008 과 INC-009 는 모두 차단되지 않았습니다. INC-008 은 승인 대기이고 INC-009 는 조치하지 않음입니다. INC-003 과 INC-010 도 승인 대기입니다. INC-003 · INC-008 · INC-009 · INC-010 네 건이 왜 그렇게 나왔는지 단계 2 와 단계 4 의 줄을 근거로 적어 주세요. 또 이 네 건을 그대로 자동 처리했다면 누가 어떤 영향을 받았을지 적어 주세요.
-6. 만든 파일은 응용 3-3 끝의 「응용 파일 올리기」를 따라 깃허브에 올립니다. 응용 3-3을 하지 않아도 그 페이지의 순서만 따라 하면 됩니다.
 
 <!-- checklist optional -->
-- [ ] `soar_response` 폴더에서 「먼저 확인할 파일」 명령을 실행해 `앞 Unit 파일 정상` 이 나왔다
-- [ ] `drill.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 1 ~ 5번을 썼다
-- [ ] `shift_report.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 6 ~ 8번을 썼다
-- [ ] `apply3-1_run.py` 를 만들고 9번을 쓴 뒤 `python apply3-1_run.py` 를 실행해 단계 1 ~ 4 가 나왔다
 - [ ] `report_u3.md` 의 `## 응용 3-1` 을 채웠다
 <!-- /checklist -->
+
+6. 만든 파일은 응용 3-3 끝의 「응용 파일 올리기」를 따라 깃허브에 올립니다. 응용 3-3을 하지 않아도 그 페이지의 순서만 따라 하면 됩니다.
 
 ## 응용 3-1 정리
 

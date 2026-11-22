@@ -200,6 +200,11 @@ print("--- 단계 4: 파일에 저장된 티켓", len(saved), "장")            
    python -m pip install flask requests
    ```
    - 설치 뒤 `python -c "import ticket_notice; print('불러오기 성공')"` 를 치면 `불러오기 성공` 이 나와야 합니다. 「제공 파일」 레슨의 `ticket_notice.py` 와 `notifier.py` 를 확인하는 명령입니다.
+
+<!-- checklist optional -->
+- [ ] `flask` · `requests` 를 설치하고 `불러오기 성공` 이 나왔다
+<!-- /checklist -->
+
 2. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `alert_server.py` 를 만들고(이미 있으면 건너뜁니다) 위 `alert_server.py` 코드 상자를 붙여 넣고 저장합니다.
 3. **[터미널]** 알림 서버를 켭니다. VS Code 터미널 창 오른쪽 위의 `+` 로 **새 터미널**을 하나 더 엽니다. 그 터미널에서 위치를 확인한 뒤 서버를 켭니다. <mark style="background:#bde3ff">`Running on http://127.0.0.1:5001` 이 보이면</mark> 됩니다. 이 터미널은 그대로 두고 쓰지 않습니다.
    ```bash
@@ -209,24 +214,35 @@ print("--- 단계 4: 파일에 저장된 티켓", len(saved), "장")            
    - `pwd` 결과가 `soar_response` 로 끝나지 않으면 `cd soar_response` 를 먼저 입력합니다. 새 터미널이 다른 폴더에서 열릴 수 있습니다.
    - `No module named 'flask'` 가 나오면 새 터미널에서 가상환경이 켜져 있는지 보고, 1번 설치를 이 터미널에서 다시 합니다.
    - `Address already in use` 가 나오면 이미 켜진 서버가 있는 것이니, 그 터미널에서 `Ctrl + C` 로 끄고 다시 켭니다.
+
+<!-- checklist optional -->
+- [ ] `alert_server.py` 를 만들고 두 번째 터미널(`soar_response` 폴더)에서 켜 `Running on http://127.0.0.1:5001` 을 봤다
+<!-- /checklist -->
+
 4. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `apply3-3_run.py` 를 이름 그대로 만들고, 이미 있는 `ticket_notice.py` 는 열어서 내용을 지웁니다. 두 파일에 위의 같은 이름 코드 상자를 복사해 붙여 넣고 저장합니다.
 5. **[VS Code]** `ticket_notice.py` 1 ~ 6번, `apply3-3_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「응용 3-3 정리」를 봅니다.
+
+<!-- checklist optional -->
+- [ ] `ticket_notice.py` 를 골격으로 바꿔 1 ~ 6번을, `apply3-3_run.py` 를 만들어 7 ~ 9번을 쓰고 저장했다
+<!-- /checklist -->
+
 6. **[터미널]** 처음 쓰던 터미널에서 <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python apply3-3_run.py
    ```
 7. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 11줄, 단계 2 는 숫자가 제목 줄에 함께 나오고 그 아래 티켓 7줄, 단계 3 은 `[알림 실패] ConnectionError` 3줄과 결과 1줄(재시도를 확인하는 시험입니다), 단계 4 는 숫자가 제목 줄에 함께 나오고 그 아래 줄이 없습니다. <mark style="background:#bde3ff">알림 서버 터미널에는 `[알림 받음]` 줄이 9개 출력됩니다.</mark>
 8. **[터미널]** 알림 서버 터미널을 `Ctrl + C` 로 끕니다.
+
+<!-- checklist optional -->
+- [ ] 첫 터미널에서 `python apply3-3_run.py` 를 실행하고, 서버 터미널의 `[알림 받음]` 9줄을 본 뒤 `Ctrl + C` 로 서버를 껐다
+<!-- /checklist -->
+
 9. **[보고서]** `report_u3.md` 의 `## 응용 3-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 알림 서버 터미널에 출력된 `[알림 받음]` 줄 수와, 단계 2 의 전송 건수 · 건너뜀 건수를 적어 주세요.
    - (나) [핵심 질문] `INC-205` 와 `INC-206` 은 전송을 생략했고 `INC-209` 와 `INC-210` 은 전송했습니다. 각각 전송을 생략한 사유와 전송한 사유를 적어 주세요. 근거는 각 알림이 수신된 시각과 해당 티켓의 마지막 전송 시각입니다. 그다음 전송 간격을 제한하지 않으면 담당자에게 어떤 일이 생기는지 적어 주세요.
    - (다) [핵심 질문] 단계 3 에서 꺼진 주소로 3번 전송을 시도했고 모두 실패했습니다. `[알림 실패] ConnectionError`(연결 오류: 서버에 연결하지 못했을 때 발생하는 오류 이름)가 3번 출력된 사유를 적어 주세요. 그다음 3번 모두 실패한 알림이 누락되지 않게 하려면, 실제 관제에서 무엇을 추가로 해야 하는지 적어 주세요.
 
 <!-- checklist optional -->
-- [ ] `flask` · `requests` 를 설치하고 `불러오기 성공` 이 나왔다
-- [ ] `alert_server.py` 를 만들고 두 번째 터미널(`soar_response` 폴더)에서 켜 `Running on http://127.0.0.1:5001` 을 봤다
-- [ ] `ticket_notice.py` 를 골격으로 바꿔 1 ~ 6번을, `apply3-3_run.py` 를 만들어 7 ~ 9번을 쓰고 저장했다
-- [ ] 첫 터미널에서 `python apply3-3_run.py` 를 실행하고, 서버 터미널의 `[알림 받음]` 9줄을 본 뒤 `Ctrl + C` 로 서버를 껐다
 - [ ] `report_u3.md` 의 `## 응용 3-3` 을 채웠다
 <!-- /checklist -->
 
@@ -249,6 +265,11 @@ print("--- 단계 4: 파일에 저장된 티켓", len(saved), "장")            
 응용 3-1 ~ 3-3 가운데 하나라도 했다면 그 파일도 깃허브에 올립니다. 알림 서버는 `Ctrl + C` 로 끈 뒤에 합니다.
 
 1. **[보고서]** 올리기 전에 `report_u3.md` 의 내가 한 응용 칸을 먼저 채웁니다.
+
+<!-- checklist optional -->
+- [ ] `report_u3.md` 의 내가 한 응용 칸을 채우고 저장했다
+<!-- /checklist -->
+
 2. **[터미널]** 실습 3-2 끝 「이번 Unit 마무리 · 깃허브에 올리기」의 **4. 깃허브에 올리기** 1 ~ 4번을 한 번 더 합니다. 기록 설명은 아래처럼 바꿔 씁니다.
    ```bash
    git add .
@@ -259,14 +280,17 @@ print("--- 단계 4: 파일에 저장된 티켓", len(saved), "장")            
    1. 응용 3-1: `drill.py` · `shift_report.py` · `apply3-1_run.py` 와 실행이 만든 근무 기록 `shift_log.json`
    2. 응용 3-2: `apply3-2_run.py`(직접 쓴 `ticket_merge.py` 는 바뀐 파일로 보입니다)
    3. 응용 3-3: `alert_server.py` · `apply3-3_run.py` 와 실행이 저장한 티켓 `tickets_unit09.json`(직접 쓴 `ticket_notice.py` 는 바뀐 파일로 보입니다)
-4. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `soar_response` 폴더에 위 파일이 보이는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
-
-다음 Unit 4 응용 4-1은 응용 3-3이 저장한 `tickets_unit09.json` 을 읽습니다. 이 응용을 하지 않았다면 Unit 4 응용 4-1 레슨의 상자로 같은 파일을 만들 수 있습니다.
 
 <!-- checklist optional -->
-- [ ] `report_u3.md` 의 내가 한 응용 칸을 채우고 저장했다
 - [ ] `network-study-notes` 폴더에서 `git status` 로 응용 파일을 보고 `git add` · `git commit` · `git push` 를 했다
+<!-- /checklist -->
+
+4. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `soar_response` 폴더에 위 파일이 보이는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
+
+<!-- checklist optional -->
 - [ ] 깃허브의 `network-study-notes` 저장소 `soar_response` 폴더에서 응용 파일을 확인했다
 <!-- /checklist -->
+
+다음 Unit 4 응용 4-1은 응용 3-3이 저장한 `tickets_unit09.json` 을 읽습니다. 이 응용을 하지 않았다면 Unit 4 응용 4-1 레슨의 상자로 같은 파일을 만들 수 있습니다.
 
 ---
