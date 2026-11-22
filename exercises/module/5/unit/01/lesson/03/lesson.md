@@ -379,7 +379,6 @@ for entry in action_log:                                                        
 - [ ] `playbook_runner.py` 를 만들어 붙여 넣고 ① · ② 를 채워 저장했다
 - [ ] `exercise1-2_run.py` 를 만들고 코드 상자 내용을 붙여 넣어 저장했다
 - [ ] `python exercise1-2_run.py` 를 실행해 단계 1 ~ 6 이 나오고, 생긴 `action_log.json` 을 열어 봤다
-- [ ] `report_u1.md` 의 `## 실습 1-2` (가)를 채웠다
 <!-- /checklist -->
 
 ## 실습 1-2 정리

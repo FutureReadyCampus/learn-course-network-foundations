@@ -329,7 +329,6 @@ for record in picked:                                                           
 - [ ] `anomaly_detection` 폴더에 `event_summary.py` 를 만들어 코드 상자 내용을 붙여 넣고 빈칸 ① · ② · ③ 을 채워 저장했다
 - [ ] `anomaly_detection` 폴더에 `exercise5-1_run.py` 를 만들어 코드 상자 내용을 붙여 넣고 저장했다
 - [ ] `python exercise5-1_run.py` 를 실행해 단계 2 에 dami · seoyeon · gaeun 세 줄, 단계 4 에 대상 세 줄이 나왔다
-- [ ] `report_u5.md` 의 `## 실습 5-1` (가) · (나)를 채웠다
 <!-- /checklist -->
 
 ## 실습 5-1 정리

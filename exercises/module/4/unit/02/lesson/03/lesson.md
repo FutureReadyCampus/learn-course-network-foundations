@@ -357,7 +357,6 @@ print("저장된 행", saved_count, "개")          # 저장된 행 수를 출�
 - [ ] `exercise2-2_run.py` 를 만들어 붙여 넣고 저장했다
 - [ ] `python exercise2-2_run.py` 를 실행해 단계 1 ~ 3 이 위 확인과 같게 나왔다
 - [ ] 새로 생긴 `failed_events.csv` 를 VS Code 로 열어 첫 줄의 열 이름을 봤다
-- [ ] `report_u2.md` 의 `## 실습 2-2` (가)를 채웠다
 <!-- /checklist -->
 
 ## 실습 2-2 정리

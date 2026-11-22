@@ -257,7 +257,6 @@ print("진짜 문제였던 알림 수:", real_removed_count)   # 0 이면 진짜
 - [ ] `anomaly_detection` 폴더에 `tuning.py` 를 만들어 붙여 넣고, 빈칸 ① · ② · ③ 을 채워 저장했다
 - [ ] `anomaly_detection` 폴더에 `exercise4-2_run.py` 를 만들어 붙여 넣고 저장했다
 - [ ] `python exercise4-2_run.py` 를 실행해 단계 3이 `알림 수: 5` · `오탐 수: 2`, 마지막 줄이 `진짜 문제였던 알림 수: 0` 으로 나왔다
-- [ ] `report_u4.md` 의 `## 실습 4-2` (가) · (나)에 답을 적고 저장했다
 <!-- /checklist -->
 
 ## 실습 4-2 정리
@@ -325,7 +324,7 @@ ls
    git push
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다. 이 화면은 git 이 두 기록을 합친 기록에 붙일 메시지를 확인하라고 여는 편집기(vim)라서, 메시지는 고치지 않고 저장하고 닫기만 하면 됩니다.
+   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
 5. **[브라우저]** 깃허브의 내 저장소 `network-study-notes` 를 새로 고쳐 `anomaly_detection` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
 
 - 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
@@ -340,7 +339,6 @@ ls
 <!-- checklist -->
 - [ ] `anomaly_detection` 폴더에서 `ls` 로 2번 표의 파일이 모두 있는 것을 확인했다
 - [ ] `network-study-notes` 폴더에서 `git status` 를 보고, `.env` · `.venv` 가 올라가지 않게 했다
-- [ ] `report_u4.md` 의 꼭 채울 다섯 칸(마무리 (가) 포함)을 채우고 저장했다
 - [ ] `git add .` · `git commit` · `git push` 로 올렸다
 - [ ] 깃허브의 `network-study-notes` 저장소 `anomaly_detection` 폴더에서 2번 표의 파일을 확인했다
 <!-- /checklist -->

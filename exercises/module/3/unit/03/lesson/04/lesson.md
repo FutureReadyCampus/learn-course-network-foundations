@@ -304,7 +304,6 @@ for entry in unused:                                             # 후보를 한
 - [ ] `access_control` 폴더에 `review_unused.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
 - [ ] `access_control` 폴더에 `exercise3-2_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
 - [ ] `review_unused.py` 의 빈칸 ①·② 를 채우고 `python exercise3-2_run.py` 를 실행해 `90일 넘게 안 쓴 후보 3 건` 이 나왔다
-- [ ] `report_u3.md` 의 `## 실습 3-2` (가) 답을 적었다
 <!-- /checklist -->
 
 ## 실습 3-2 정리
@@ -367,7 +366,7 @@ ls config
    git push
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다. 이 화면은 git 이 두 기록을 합친 기록에 붙일 메시지를 확인하라고 여는 편집기(vim)라서, 메시지는 고치지 않고 저장하고 닫기만 하면 됩니다.
+   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
 5. **[브라우저]** 깃허브의 내 저장소 `network-study-notes` 를 새로 고쳐 `access_control` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다.
 
 - 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 1 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
@@ -384,7 +383,6 @@ ls config
 **확인** — 깃허브의 내 저장소 `network-study-notes` 의 `access_control` 폴더에 `review_list.py` 와 `review_unused.py` 가 보이고, `.env` 가 보이지 않으면 성공입니다. 안 보이면 `git status` 를 다시 쳐서 빨간 목록에 남은 파일이 있는지 보고 4번을 한 번 더 합니다.
 
 <!-- checklist -->
-- [ ] `report_u3.md` 의 `## 마무리` (가) 답을 적었다
 - [ ] `network-study-notes` 폴더에서 `git status` 로 `.env` · `.venv` 가 없는 것을 보고 `git add .` · `git commit` · `git push` 로 올렸다
 - [ ] 깃허브의 `network-study-notes` 저장소 `access_control` 폴더에서 `review_list.py` 와 `review_unused.py` 를 확인했다
 <!-- /checklist -->

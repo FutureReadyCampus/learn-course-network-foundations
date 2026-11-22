@@ -220,7 +220,6 @@ print("예외 사용", used)                                          # 예외 �
 - [ ] `access_control` 폴더 바로 아래에 `policy.py` 를 만들어 붙여 넣고 빈칸 ①·②를 채워 저장했다
 - [ ] `access_control` 폴더 바로 아래에 `exercise1-3_run.py` 를 만들어 붙여 넣고 저장했다
 - [ ] `python exercise1-3_run.py` 를 실행해 마지막 두 줄과 `[만료 뒤 시도]` 세 줄이 확인과 같았다
-- [ ] `report_u1.md` 의 `## 실습 1-3` (가)를 채웠다
 <!-- /checklist -->
 
 ## 실습 1-3 정리
@@ -307,7 +306,6 @@ ls config
 | `config_loader.py` 의 `load_json` | Unit 2부터 설정 파일을 읽을 때 |
 
 <!-- checklist -->
-- [ ] `report_u1.md` 의 `## 마무리` (가)를 채웠다
 - [ ] 저장소 루트에서 `git status` 로 `.env` 가 없는 것을 보고 `git add` · `git commit` · `git push` 로 올렸다
 - [ ] GitHub 저장소의 `access_control` 폴더에서 2번 표의 파일을 모두 보았다
 <!-- /checklist -->

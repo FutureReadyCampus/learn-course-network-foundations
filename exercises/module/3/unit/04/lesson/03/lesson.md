@@ -232,7 +232,6 @@ print(counts)                                                    # 승인 상태
 - [ ] `revoke_approve.py` · `exercise4-1_run.py` 를 만들어 붙여 넣고, 채우기 전에 실행해 8건 모두 「승인 불필요」인 것을 봤다
 - [ ] `revoke_approve.py` 의 빈칸 ① · ② 를 채웠다
 - [ ] `python exercise4-1_run.py` 를 다시 실행해 단계 2가 `{'승인 불필요': 5, '승인됨': 2, '승인 대기': 1}` 로 나왔다
-- [ ] `report_u4.md` 의 `## 실습 4-1` (가) · (나) 답을 적었다
 <!-- /checklist -->
 
 ## 실습 4-1 정리

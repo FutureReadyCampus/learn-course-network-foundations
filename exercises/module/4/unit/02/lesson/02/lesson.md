@@ -374,7 +374,6 @@ print(source_event_counts)                                                      
 - [ ] `events_basic.py` 를 만들어 붙여 넣고 빈칸 ① · ② 를 채워 저장했다
 - [ ] `exercise2-1_run.py` 를 만들어 붙여 넣고 저장했다
 - [ ] `python exercise2-1_run.py` 를 실행해 단계 1 ~ 4 가 위 확인과 같게 나왔다
-- [ ] `report_u2.md` 의 `## 실습 2-1` (가)를 채웠다
 <!-- /checklist -->
 
 ## 실습 2-1 정리

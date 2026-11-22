@@ -206,7 +206,6 @@ print("VIP 계정 알림", vip_count, "건")                        # VIP 계정
 - [ ] `enrichment.py` 를 `soar_response` 폴더에 만들어 붙여 넣고 ① · ② 를 채워 저장했다
 - [ ] `exercise1-3_run.py` 를 만들어 붙여 넣고 ③ 을 채워 저장했다
 - [ ] `python exercise1-3_run.py` 를 실행해 단계 3 에 `VIP 계정 알림 1 건` 이 나왔다
-- [ ] `report_u1.md` 의 `## 실습 1-3` (가)를 채웠다
 <!-- /checklist -->
 
 ## 실습 1-3 정리
@@ -279,7 +278,7 @@ ls config
    git push
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - <mark>`git push` 가 거절(`rejected`)되면</mark> 깃허브에 내 PC 에 없는 기록이 있다는 뜻입니다. `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다. 이 화면은 git 이 두 기록을 합친 기록에 붙일 메시지를 확인하라고 여는 편집기(vim)라서, 메시지는 고치지 않고 저장하고 닫기만 하면 됩니다.
+   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
 5. **[브라우저]** 깃허브의 내 저장소 `network-study-notes` 를 새로 고쳐 `soar_response` 폴더를 열고, 2번에서 확인한 파일이 모두 있는지 봅니다. `__pycache__` 폴더는 없어도 됩니다.
 
 - 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
@@ -300,7 +299,6 @@ ls config
 <!-- checklist -->
 - [ ] `soar_response` 폴더와 `config` 폴더에 2번 표의 파일이 모두 있는 것을 확인했다
 - [ ] `git status` 에서 `.env` · `.venv` 가 올라갈 목록에 없는 것을 확인했다(있으면 `.gitignore` 에 적었다)
-- [ ] `report_u1.md` 의 `## 마무리` (가)를 채우고 저장했다
 - [ ] `network-study-notes` 폴더에서 `git add .` · `git commit` · `git push` 로 올렸다
 - [ ] 깃허브의 `network-study-notes` 저장소에서 `soar_response` 폴더의 파일을 확인했다
 <!-- /checklist -->

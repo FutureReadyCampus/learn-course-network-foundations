@@ -249,7 +249,6 @@ print("--- 단계 5: gate_results.json 에", len(results), "건 저장")  # 단�
 - [ ] `soar_response` 폴더에 `approval_gate.py` · `exercise4-1_run.py` 를 만들고 붙여 넣은 뒤 저장했다
 - [ ] `approval_gate.py` 의 빈칸 ① · ② 를 채우고 저장했다
 - [ ] `python exercise4-1_run.py` 를 다시 실행해 단계 3 이 `자동 : 3 건` · `승인 필요 : 3 건` · `차단 금지 : 2 건` 으로 나왔다
-- [ ] `report_u4.md`(「보고서 쓰기」 레슨의 틀)의 `## 실습 4-1` (가)를 채웠다
 <!-- /checklist -->
 
 ## 실습 4-1 정리

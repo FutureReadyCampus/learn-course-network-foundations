@@ -41,7 +41,7 @@ render: markdown
 
 ## 글 틀로 쓰고 올리기
 
-설치할 것은 없습니다. **GitHub 웹 화면**에서 파일을 만들고 붙여 넣습니다. 저장소 `network-study-notes` 가 아직 없으면 [Module 3 Unit 1 시작하기 레슨의 「내 기록 남기기: 소개」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/4)부터 준비하고, 글 틀 세 가지의 내용은 [Module 3 Unit 1 시작하기 레슨의 「글 틀로 글 쓰기」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/10)에 있습니다.
+설치할 것은 없습니다. 저장소 `network-study-notes` 를 연 VS Code 에서 글 파일을 만들고, 터미널에서 올립니다. 저장소 `network-study-notes` 가 아직 없으면 [Module 3 Unit 1 시작하기 레슨의 「내 기록 남기기: 소개」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/4)부터 준비하고, 글 틀 세 가지의 내용은 [Module 3 Unit 1 시작하기 레슨의 「글 틀로 글 쓰기」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/10)에 있습니다.
 
 **글 틀 고르기**
 
@@ -53,19 +53,16 @@ render: markdown
 
 **올리는 순서**
 
-1. 깃허브 웹 화면의 내 저장소 `network-study-notes` 에서 **Add file → Create new file** 을 누릅니다.
-2. 파일 이름 칸에 `_posts/날짜-영문제목.md` 를 적습니다. 예: `_posts/2026-11-20-m5-u1-playbook-runner.md`
-3. 고른 글 틀의 내용을 붙여 넣고, 맨 위 머리말(front matter)의 `module: 5`, `unit: 1` 을 이렇게 적습니다. 그래야 첫 화면 「나의 진행」에서 Module 5의 1번 칸이 채워집니다. `date:` 는 파일 이름의 날짜와 같게 씁니다. 날짜가 미래면 글이 목록에 나오지 않습니다.
-4. 빈칸을 채우고 오른쪽 위 **Commit changes** 를 누른 뒤, 나오는 창에서 한 번 더 **Commit changes** 를 누릅니다.
-5. 코드를 함께 남기려면 `code/` 폴더에 같은 방법으로 파일을 만들고 내 코드를 붙여 넣습니다. 예: `code/m5_u1_playbook_runner.py`(VS Code 에서 연 `soar_response/playbook_runner.py` 의 내용). `enrichment.py` 도 올린다면 `code/m5_u1_enrichment.py` 로 만듭니다. 글에는 `전체 코드: code/m5_u1_playbook_runner.py` 처럼 위치를 적습니다.
-6. 1~2분 뒤 내 사이트 첫 화면을 열어 최신 글에 새 글이 보이는지, Module 5의 1번 칸이 채워졌는지 확인합니다.
+1. **[VS Code]** 왼쪽 목록의 `network-study-notes` 안 `_posts` 폴더를 오른쪽 클릭 › **New File** 로 `2026-11-20-m5-u1-playbook-runner.md` 처럼 만듭니다(경로 `_posts/2026-11-20-m5-u1-playbook-runner.md`). 앞은 오늘 날짜, 뒤는 영문 제목입니다.
+2. 고른 글 틀의 내용을 붙여 넣고, 맨 위 머리말(front matter)의 `module: 5`, `unit: 1` 을 이렇게 적습니다. 그래야 첫 화면 「나의 진행」에서 Module 5의 1번 칸이 채워집니다. `date:` 는 파일 이름의 날짜와 같게 씁니다. 날짜가 미래면 글이 목록에 나오지 않습니다.
+3. 빈칸을 채우고 저장합니다. 코드는 따로 옮기지 않습니다. 오늘 만든 `soar_response/playbook_runner.py` · `soar_response/enrichment.py` 가 같은 저장소에 이미 올라가 있으니, 글에는 `전체 코드: soar_response/playbook_runner.py` 처럼 위치만 적습니다.
+4. 올리기는 이 레슨 마지막 페이지 「공개 전 점검」을 마친 뒤 그 페이지에서 합니다.
 
-> **확인** — 최신 글에 오늘 글이 보이고 「나의 진행」의 Module 5 · Unit 1 칸이 채워지면 성공입니다. 안 보이면 [Module 3 Unit 1 시작하기 레슨의 「첫 화면 확인하고 막힐 때」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/9)의 「글이 목록에 안 나옴」 줄을 봅니다.
+> **확인** — VS Code 왼쪽 목록의 `_posts` 폴더 안에 오늘 글 파일이 있고, 맨 위 머리말에 `module: 5` · `unit: 1` 이 있으면 성공입니다. 없으면 오른쪽 클릭한 폴더가 `_posts` 인지 봅니다.
 
 <!-- checklist -->
-- [ ] `_posts/날짜-영문제목.md` 파일을 만들고 고른 글 틀을 붙여 넣었다
-- [ ] 머리말에 `module: 5` · `unit: 1` · `date:` 를 적고 세 문장을 채워 **Commit changes** 했다
-- [ ] 내 사이트 첫 화면에서 새 글과 「나의 진행」의 Module 5 · Unit 1 칸을 확인했다
+- [ ] `_posts` 폴더에 오늘 날짜 이름(예: `_posts/2026-11-20-m5-u1-playbook-runner.md`)으로 글 파일을 만들고 글 틀을 붙여 넣었다
+- [ ] 머리말을 `module: 5` · `unit: 1` 과 내 `title` · `date` 로 고치고 세 칸을 채워 저장했다
 <!-- /checklist -->
 
 ## 막힐 때 힌트
@@ -93,9 +90,18 @@ render: markdown
 
 올리기 전에 아래를 한 줄씩 확인합니다. 자세한 점검 방법은 [Module 3 Unit 1 시작하기 레슨의 「공개 전 점검」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/12)에 있습니다.
 
-1. 글과 코드에 `.env` 내용, API 키, 토큰이 없습니다.
+1. 글과 코드(`soar_response/` 의 파일 포함)에 `.env` 내용, API 키, 토큰이 없습니다.
 2. 개인 이메일·전화번호가 없습니다.
 3. 실습 속 가상의 사용자 이름(`dami` · `gaeun` 등)과 연습용 IP(`198.51.100.90` 등) 말고, 실제 다른 사람의 이름이나 실제 회사 IP 가 없습니다.
 4. 실행 결과 화면 캡처에 내 컴퓨터 사용자 이름이나 다른 창의 개인 정보가 보이지 않습니다.
 
-> **확인** — 네 줄을 모두 「없음」으로 답할 수 있으면 성공입니다. 하나라도 걸리면 그 부분을 지우고 다시 **Commit changes** 합니다.
+**올리기** — **[터미널]** 네 줄을 모두 「없음」으로 답할 수 있으면 저장소 루트에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더로 돌아옵니다: `cd ..` → `python check_publish.py`(맥북은 `python3`) → `git add .` → `git commit -m "Add module 5 unit 1 post"` → `git push` → `cd soar_response`. 터미널이 이미 `network-study-notes` 에 있으면 `cd ..` 는 건너뜁니다. 점검에서 `[오류]` 가 나오면 그 부분을 지우고 다시 돌린 뒤 올립니다.
+
+올리고 1~2분 뒤 내 사이트 첫 화면을 엽니다.
+
+> **확인** — 최신 글에 오늘 글이 보이고 「나의 진행」의 Module 5 · Unit 1 칸이 채워지면 성공입니다. 안 보이면 [Module 3 Unit 1 시작하기 레슨의 「첫 화면 확인하고 막힐 때」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/9)의 「글이 목록에 안 나옴」 줄을 봅니다.
+
+<!-- checklist -->
+- [ ] 저장소 루트에서 `python check_publish.py` 가 `오류 0건` 인 것을 보고 `git add` · `git commit` · `git push` 로 글을 올렸다
+- [ ] 내 사이트 첫 화면에서 오늘 글과 Module 5 · Unit 1 칸이 채워진 것을 보았다
+<!-- /checklist -->

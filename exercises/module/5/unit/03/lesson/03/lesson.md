@@ -251,7 +251,6 @@ for ticket in tickets:                                                          
 - [ ] `ticketing.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
 - [ ] `exercise3-2_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
 - [ ] `ticketing.py` 의 ① · ② 를 채우고 `python exercise3-2_run.py` 를 실행해 TCK-1 의 기한 `15 분` 이 나왔다
-- [ ] `report_u3.md` 의 `## 실습 3-2` (가) · (다)를 채웠다
 <!-- /checklist -->
 
 ## 실습 3-2 정리
@@ -315,7 +314,7 @@ ls config
    git push
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - `git push` 가 거절(`rejected`)되면 깃허브에 내 PC 에 없는 기록이 있다는 뜻입니다. `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다. 이 화면은 git 이 두 기록을 합친 기록에 붙일 메시지를 확인하라고 여는 편집기(vim)라서, 메시지는 고치지 않고 저장하고 닫기만 하면 됩니다.
+   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
 5. **[브라우저]** 깃허브의 내 저장소 `network-study-notes` 를 새로 고쳐 `soar_response` 폴더를 열고, 3번에서 본 파일이 모두 있는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
 
 - 시간이 남아 응용을 했다면 응용 3-3 끝의 「응용 파일 올리기」를 따라 한 번 더 올립니다. 같은 날 여러 번 올려도 괜찮습니다.
@@ -330,7 +329,6 @@ ls config
 
 <!-- checklist -->
 - [ ] 「제공 파일」 레슨에서 `ticket_merge.py` · `notifier.py` · `ticket_notice.py` 를 만들고 `제공 파일 정상 7` 을 확인했다
-- [ ] `report_u3.md` 의 `## 마무리` (가)를 채웠다
 - [ ] `network-study-notes` 폴더에서 `git status` 로 `.env` · `.venv` 가 없는 것을 보고 `git add` · `git commit` · `git push` 를 했다
 - [ ] 깃허브의 `network-study-notes` 저장소 `soar_response` 폴더에서 3번의 파일을 모두 확인했다
 <!-- /checklist -->

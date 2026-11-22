@@ -348,7 +348,6 @@ print("--- 단계 4:", LOG_PATH, "에", len(results), "건 ·", TICKET_PATH, "�
 - [ ] `soar_response` 폴더에 `soar_engine.py` 를 만들어 붙여 넣고 ① · ② 를 채워 저장했다
 - [ ] `soar_response` 폴더에 `exercise5-1_run.py` 를 만들어 붙여 넣고 저장했다
 - [ ] `python exercise5-1_run.py` 를 실행해 단계 3 이 자동 실행 2 · 승인 대기 2 · 차단 금지 1 · 조치 없음 2 · 실패 1 건으로 나왔다
-- [ ] `report_u5.md` 의 `## 실습 5-1` (가) · (나) 를 채우고 저장했다
 <!-- /checklist -->
 
 ## 실습 5-1 정리

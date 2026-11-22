@@ -323,7 +323,6 @@ print(spike_minutes)                                                            
 - [ ] `anomaly_detection` 폴더에 `traffic_detection.py` 를 만들어 붙여 넣고 빈칸 ① · ② 를 채워 저장했다
 - [ ] `anomaly_detection` 폴더에 `exercise3-1_run.py` 를 만들어 붙여 넣고 저장했다
 - [ ] `python exercise3-1_run.py` 를 실행해 단계 3 에 `6.0 번 이상`, 단계 4 에 `2026-11-02 09:12:00` 한 줄(요청 9)이 나왔다
-- [ ] `report_u3.md` 의 `## 실습 3-1` (가) · (나)를 채우고 저장했다
 <!-- /checklist -->
 
 ## 실습 3-1 정리

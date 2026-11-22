@@ -214,7 +214,6 @@ print(counts)                                                    # 사용자별 
 - [ ] `access_control` 폴더에 `exercise3-1_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
 - [ ] `review_list.py` 의 빈칸 ①·② 를 채우고 저장했다
 - [ ] `python exercise3-1_run.py` 를 실행해 `부여돼 있는 권한 14 건` 과 사용자별 개수 줄이 나왔다
-- [ ] `report_u3.md` 의 `## 실습 3-1` (가) 답을 적었다
 <!-- /checklist -->
 
 ## 실습 3-1 정리

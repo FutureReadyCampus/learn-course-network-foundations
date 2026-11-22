@@ -97,7 +97,7 @@ render: markdown
 3. 실습 속 가상의 사용자 이름(`seoyeon` · `dami` 등) 말고, 실제 다른 사람의 이름이 없습니다.
 4. 실행 결과 화면 캡처에 내 컴퓨터 사용자 이름이나 다른 창의 개인 정보가 보이지 않습니다.
 
-**올리기** — **[터미널]** 네 줄을 모두 「없음」으로 답할 수 있으면 저장소 루트에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더로 돌아옵니다: `cd ..` → `python check_publish.py`(맥북은 `python3`) → `git add .` → `git commit -m "Add unit 1 post"` → `git push` → `cd access_control`. 점검에서 `[오류]` 가 나오면 그 부분을 지우고 다시 돌린 뒤 올립니다.
+**올리기** — **[터미널]** 네 줄을 모두 「없음」으로 답할 수 있으면 저장소 루트에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더로 돌아옵니다: `cd ..`(터미널이 이미 `network-study-notes`에 있으면 건너뜁니다) → `python check_publish.py`(맥북은 `python3`) → `git add .` → `git commit -m "Add unit 1 post"` → `git push` → `cd access_control`. 점검에서 `[오류]` 가 나오면 그 부분을 지우고 다시 돌린 뒤 올립니다.
 
 올리고 1~2분 뒤 내 사이트 첫 화면을 엽니다.
 

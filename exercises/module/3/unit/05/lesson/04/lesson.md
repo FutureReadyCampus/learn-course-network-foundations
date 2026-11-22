@@ -420,7 +420,7 @@ network-study-notes/
     (앞 Unit의 파일들)
 ```
 
-**3. 깃허브에 올리기** — 오늘은 따로 올리지 않아도 됩니다. Module 4 첫 Unit의 실습 1-2 마지막에 올릴 때 `access_control` 폴더도 같은 저장소라서 함께 올라갑니다. 오늘 올리고 싶으면 Unit 1 마무리의 「깃허브에 올리기」와 같은 순서(`git status` 로 `.env` 확인 → `git add .` → `git commit` → `git push`)로 올립니다.
+**3. 깃허브에 올리기** — 「오늘의 글 쓰기」 마지막 쪽에서 글을 올릴 때 `access_control` 폴더도 같은 저장소라서 함께 올라갑니다. 그 전에 먼저 올리고 싶으면 Unit 1 마무리의 「깃허브에 올리기」와 같은 순서(`git status` 로 `.env` 확인 → `git add .` → `git commit` → `git push`)로 올립니다.
 
 **4. 이어지는 곳**
 
@@ -432,7 +432,6 @@ network-study-notes/
 
 <!-- checklist -->
 - [ ] `access_control` 폴더에서 `ls` · `ls config` 로 이번 Unit 파일이 모두 있는 것을 확인했다
-- [ ] `report_u5.md` 의 꼭 채울 다섯 칸(실습 5-1 (가) · (나), 실습 5-2 상황 2개 · (가))을 채우고 저장했다
 <!-- /checklist -->
 
 ---

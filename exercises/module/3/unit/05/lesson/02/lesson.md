@@ -247,7 +247,6 @@ for result in results:                                           # 점검 결과
 - [ ] `checklist.py` 의 빈칸 ① · ② · ③ 을 채우고 저장했다
 - [ ] `access_control` 폴더 바로 아래에 `exercise5-1_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
 - [ ] `python exercise5-1_run.py` 를 실행해 단계 2에 `['dami']` · 통과 · `['junho']` 세 줄이 나왔다
-- [ ] `report_u5.md` 의 `## 실습 5-1` (가) · (나)에 답을 썼다
 <!-- /checklist -->
 
 ## 실습 5-1 정리

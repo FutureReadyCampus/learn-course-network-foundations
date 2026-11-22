@@ -484,8 +484,7 @@ network-study-notes/
 
    - 하는 일: 저장한 기록을 깃허브로 올립니다.
    - 나오는 것: 올라간 내용이 몇 줄 나옵니다.
-   - <mark>`git push` 가 거절(`rejected`)되면 깃허브에 내 PC 에 없는 기록이 있다는 뜻입니다.</mark> `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다.
-   - 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다. 이 화면은 git 이 두 기록을 합친 기록에 붙일 메시지를 확인하라고 여는 편집기(vim)라서, 메시지는 고치지 않고 저장하고 닫기만 하면 됩니다.
+   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
 
 5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `anomaly_detection` 폴더를 열고, VS Code 왼쪽 목록의 `anomaly_detection` 폴더에 있는 파일들이 깃허브에도 보이는지 확인합니다. <mark>`.env` 와 `__pycache__` 폴더는 없어야 합니다</mark>.
    - 빠진 이름이 있으면 VS Code 왼쪽 목록의 `anomaly_detection` 폴더에 내 PC 에도 있는지 봅니다.
@@ -495,7 +494,6 @@ network-study-notes/
 
 <!-- checklist -->
 - [ ] `network-study-notes` 폴더에서 `git status` 를 쳐서 목록에 `.env` · `.venv` 가 없는 것을 확인했다
-- [ ] `report_u5.md` 의 `## 마무리` (가)를 채우고 저장했다
 - [ ] `git add .` → `git commit` → `git push` 를 차례로 쳐서 올렸다
 - [ ] 깃허브의 `anomaly_detection` 폴더에서 `event_summary.py` · `report_u5.md` 를 보고 `.env` 가 없는 것을 확인했다
 <!-- /checklist -->

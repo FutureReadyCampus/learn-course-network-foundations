@@ -13,7 +13,7 @@
 <text x="186" y="166" font-size="15" font-family="ui-monospace, Menlo, Consolas, monospace">unit: 1</text>
 <polyline points="325,122 355,122" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
 <rect x="356" y="86" width="136" height="72" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="424" y="116" font-size="15" text-anchor="middle" font-weight="700">Commit changes</text>
+<text x="424" y="116" font-size="15" text-anchor="middle" font-weight="700">git push</text>
 <text x="424" y="140" font-size="14" text-anchor="middle">1~2분 기다리기</text>
 <polyline points="493,122 523,122" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
 <rect x="524" y="52" width="172" height="140" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
@@ -27,10 +27,10 @@
 <text x="610" y="160" font-size="14" text-anchor="middle">Unit 1 칸이</text>
 <text x="610" y="180" font-size="14" text-anchor="middle">채워집니다</text>
 <rect x="24" y="222" width="300" height="134" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="40" y="250" font-size="16" font-weight="700">코드는 code/ 폴더에</text>
-<text x="40" y="276" font-size="14" font-family="ui-monospace, Menlo, Consolas, monospace">code/m3_u1_policy.py</text>
-<text x="40" y="298" font-size="14" font-family="ui-monospace, Menlo, Consolas, monospace">code/m3_u1_rbac.py</text>
-<text x="40" y="330" font-size="14">VS Code 내용을 복사해 붙여 넣기</text>
+<text x="40" y="250" font-size="16" font-weight="700">코드는 복사하지 않고 경로만</text>
+<text x="40" y="276" font-size="14" font-family="ui-monospace, Menlo, Consolas, monospace">access_control/policy.py</text>
+<text x="40" y="298" font-size="14" font-family="ui-monospace, Menlo, Consolas, monospace">access_control/rbac.py</text>
+<text x="40" y="330" font-size="14">글에 「전체 코드: 경로」 한 줄</text>
 <rect x="356" y="222" width="340" height="134" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="372" y="250" font-size="16" font-weight="700">글 틀 고르기</text>
 <text x="372" y="278" font-size="14">기본 · 세 문장 글 → post-short</text>

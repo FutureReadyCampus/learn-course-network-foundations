@@ -274,7 +274,6 @@ print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력
 - [ ] `revoke.py` 의 빈칸 ① · ② 를 하나씩 채우고, 쓸 때마다 실행해 「직접 쓰는 곳」의 확인과 맞춰 봤다
 - [ ] 다 채운 뒤 실행해 마지막 줄 `저장 8 건, 다시 읽은 건수 8 건, 첫 이력: junho SALES:QUERY 실행` 이 나왔다
 - [ ] 새로 생긴 `revocation_log.json` 을 열어 한글이 그대로 저장된 것을 봤다
-- [ ] `report_u4.md` 의 `## 실습 4-2` (가) · (나) 답을 적었다
 <!-- /checklist -->
 
 ## 실습 4-2 정리
@@ -342,7 +341,7 @@ ls config
    git push
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다. 그때 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다. 이 화면은 git 이 두 기록을 합친 기록에 붙일 메시지를 확인하라고 여는 편집기(vim)라서, 메시지는 고치지 않고 저장하고 닫기만 하면 됩니다.
+   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
 5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `access_control` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다.
 
 - 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
@@ -356,7 +355,6 @@ ls config
 
 <!-- checklist -->
 - [ ] 「2. 파일 확인」에서 오늘 만든 파일과 `config/sensitive.json` 이 모두 보였다
-- [ ] `report_u4.md` 의 `## 마무리` (가) 답을 적었다
 - [ ] `network-study-notes` 폴더에서 `git status` 로 `.env` · `.venv` 가 없는 것을 확인하고 `git add` · `git commit` · `git push` 로 올렸다
 - [ ] 깃허브의 `access_control` 폴더에서 `revoke_approve.py` · `revoke.py` · `revocation_log.json` · `report_u4.md` 를 확인했다
 <!-- /checklist -->

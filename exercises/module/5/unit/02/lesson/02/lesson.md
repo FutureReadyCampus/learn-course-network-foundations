@@ -281,7 +281,6 @@ print("조치 기록:", len(saved_log), "건")                                  
 - [ ] `account_actions.py` 를 만들어 코드 상자를 붙여 넣고 ② · ③ 을 채운 뒤 저장했다
 - [ ] `exercise2-1_run.py` 를 만들어 코드 상자를 붙여 넣고 저장했다
 - [ ] `python exercise2-1_run.py` 를 채우기 전과 후에 실행해, 단계 4 에 `잠긴 계정: ['junho']` · `조치 기록: 4 건` 이 나왔다
-- [ ] `report_u2.md` 의 `## 실습 2-1` (가) · (다)에 답을 썼다
 <!-- /checklist -->
 
 ## 실습 2-1 정리

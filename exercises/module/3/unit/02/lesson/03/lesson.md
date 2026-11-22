@@ -236,7 +236,6 @@ for request in REQUESTS:                                         # 요청서를 
 - [ ] `access_control` 폴더에 `req_create.py` 와 `exercise2-1_run.py` 를 만들어 코드 상자 내용을 붙여 넣고 저장했다
 - [ ] 채우기 전에 `python exercise2-1_run.py` 를 실행해 출력을 봤다
 - [ ] `req_create.py` 의 빈칸 ① · ② · ③ 을 채우고 다시 실행해 「접수됨」 네 줄과 「접수 안 됨」 세 줄이 나왔다
-- [ ] `report_u2.md` 의 `## 실습 2-1` (가)를 채웠다
 <!-- /checklist -->
 
 ## 실습 2-1 정리

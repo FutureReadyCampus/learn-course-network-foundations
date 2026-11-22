@@ -35,7 +35,7 @@ render: markdown
 
 ## 글 틀로 쓰고 올리기
 
-설치할 것은 없습니다. Module 3 Unit 1 시작하기 레슨에서 만든 내 저장소 `network-study-notes`(실습 코드와 포트폴리오가 함께 있는 저장소 하나)를 **GitHub 웹 화면**에서 열고 파일을 만들어 붙여 넣으면 됩니다. 아직 저장소가 없다면 [Unit 1 시작하기 레슨의 「내 기록 남기기: 소개」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/4)부터 따라 합니다.
+설치할 것은 없습니다. Unit 1 오늘의 글 쓰기에서 한 것처럼, 저장소 `network-study-notes` 를 연 VS Code 에서 글 파일을 만들고 터미널에서 올립니다. 아직 저장소가 없다면 [Unit 1 시작하기 레슨의 「내 기록 남기기: 소개」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/4)부터 따라 합니다.
 
 **1. 글 틀 고르기** — 내 저장소의 `_templates/` 폴더에 있는 세 가지 중 하나를 고릅니다. 각 틀의 생김새는 [Unit 1 시작하기 레슨의 「글 틀로 글 쓰기」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/10)에 있습니다.
 
@@ -45,32 +45,24 @@ render: markdown
 | 막혀서 끝내지 못했다 | `post-stuck.md` |
 | 응용: 여유가 있어 긴 글을 쓴다 | `post-practice.md` |
 
-**2. 새 글 파일 만들기**
+**2. 새 글 파일 만들고 쓰기**
 
-1. 저장소 첫 화면에서 **Add file › Create new file** 을 누릅니다.
-2. 파일 이름 칸에 `_posts/날짜-영문제목.md` 를 적습니다. 예: `_posts/2026-11-21-m3-u3-unused-permissions.md`. 날짜는 오늘 날짜로 씁니다. 날짜가 미래면 글이 목록에 나오지 않습니다.
-3. 고른 글 틀의 내용을 복사해 붙여 넣습니다.
+1. **[VS Code]** 왼쪽 목록의 `network-study-notes` 안 `_posts` 폴더를 오른쪽 클릭 › **New File** 로 `2026-11-21-m3-u3-unused-permissions.md` 처럼 만듭니다(경로 `_posts/2026-11-21-m3-u3-unused-permissions.md`). 앞은 오늘 날짜, 뒤는 영문 제목입니다.
+2. 고른 글 틀을 붙여 넣고 맨 위 머리말을 고칩니다.
+   ```
+   module: 3
+   unit: 3
+   ```
+   1. `module: 3`, `unit: 3` 로 씁니다. 글 틀의 `unit:` 숫자는 예시이니 꼭 `3` 로 바꿉니다. 이 두 줄이 첫 화면 「나의 진행」에서 Module 3 줄의 3번 칸을 채웁니다.
+   2. `title` 과 `date` 를 내 글에 맞게 고칩니다. 날짜가 미래면 글이 목록에 나오지 않습니다. 샘플 글에 있던 `sample: true` 줄은 넣지 않습니다.
+3. 빈칸을 채우고 저장합니다. 코드는 따로 옮기지 않습니다. 오늘 만든 `access_control/review_unused.py` 가 같은 저장소 안에 있으니, 글에는 `전체 코드: access_control/review_unused.py` 처럼 위치만 적습니다.
+4. 올리기는 이 레슨 마지막 페이지 「공개 전 점검」을 마친 뒤 그 페이지에서 합니다.
 
-**3. 맨 위 머리말 고치기** — 글 맨 위 `---` 두 줄 사이에서 아래 두 줄을 이번 Unit 번호로 고칩니다. 이 숫자가 첫 화면의 「나의 진행」 칸에서 Module 3 줄의 3번 칸을 채웁니다.
-
-```
-module: 3
-unit: 3
-```
-
-`title` 과 `date` 도 내 글에 맞게 고칩니다. 샘플 글에 있던 `sample: true` 줄은 넣지 않습니다.
-
-**4. 코드 올리기** — 글에는 핵심 몇 줄만 붙이고, 파일 전체는 `code/` 폴더에 올립니다. 같은 방법으로 **Add file › Create new file** 을 누르고 이름을 `code/m3_u3_review_unused.py` 처럼 적은 뒤, 내 `review_unused.py` 내용을 붙여 넣습니다. 글의 「전체 코드:」 줄에도 이 위치를 적습니다.
-
-**5. 올리고 확인하기** — 누르기 전에 이 레슨 마지막 페이지 「공개 전 점검」을 먼저 확인합니다. 그다음 **Commit changes** 를 누르고 1~2분 기다린 뒤 내 사이트 첫 화면을 엽니다.
-
-- 웹 화면에서 올린 글은 내 컴퓨터의 `network-study-notes` 폴더에는 아직 없습니다. 그래서 이 뒤에 「이번 Unit 마무리」에서 `git push` 가 거절(`rejected`)되면, 그 안내대로 `git pull --no-rebase` 로 받아 와 합친 뒤 다시 올립니다.
-
-> **확인** — 최신 글에 오늘 글이 보이고 「나의 진행」의 Module 3 · Unit 3 칸이 채워지면 성공입니다. 안 보이면 [Unit 1 시작하기 레슨의 「첫 화면 확인하고 막힐 때」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/9)의 「글이 목록에 안 나옴」 줄을 봅니다.
+> **확인** — VS Code 왼쪽 목록의 `_posts` 폴더 안에 오늘 글 파일이 있고, 맨 위 머리말에 `module: 3` · `unit: 3` 가 있으면 성공입니다. 없으면 1번에서 오른쪽 클릭한 폴더가 `_posts` 인지 봅니다.
 
 <!-- checklist -->
-- [ ] 글 틀 하나를 골라 `_posts/날짜-영문제목.md` 이름으로 세 문장 글을 쓰고, 머리말을 `module: 3` · `unit: 3` 으로 고쳤다
-- [ ] `code/m3_u3_review_unused.py` 파일을 만들어 내 `review_unused.py` 내용을 붙여 넣었다
+- [ ] `_posts` 폴더에 오늘 날짜 이름(예: `_posts/2026-11-21-m3-u3-unused-permissions.md`)으로 글 파일을 만들고 글 틀을 붙여 넣었다
+- [ ] 머리말을 `module: 3` · `unit: 3` 와 내 `title` · `date` 로 고치고 세 칸을 채워 저장했다
 <!-- /checklist -->
 
 ## 막힐 때 힌트
@@ -89,16 +81,20 @@ AI 도우미에게 붙여 넣는 프롬프트 세 가지(코드 설명 정리 ·
 
 ## 공개 전 점검
 
-**Commit changes** 를 누르기 전에 아래를 한 번씩 확인합니다.
+올리기 전에 아래를 한 줄씩 확인합니다. 자세한 점검 방법은 [Unit 1 시작하기 레슨의 「공개 전 점검」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/12)에 있습니다.
 
-- 글과 코드에 API 키 · 토큰 · `.env` 내용이 없습니다.
-- 개인 이메일 · 전화번호가 없습니다.
-- 다른 사람의 실제 이름이 없습니다. 실습 파일의 seoyeon · junho 같은 사용자 이름은 연습용이라 그대로 써도 됩니다.
-- 머리말이 `module: 3`, `unit: 3` 입니다.
+1. 글과 코드(`access_control/` 의 파일 포함)에 API 키 · 토큰 · `.env` 내용이 없습니다.
+2. 개인 이메일 · 전화번호가 없습니다.
+3. 다른 사람의 실제 이름이 없습니다. 실습 파일의 seoyeon · junho 같은 사용자 이름은 연습용이라 그대로 써도 됩니다.
+4. 머리말이 `module: 3`, `unit: 3` 입니다.
 
-> **확인** — 네 줄을 모두 「그렇다」로 답할 수 있으면 성공입니다. 하나라도 걸리면 그 부분을 고치고 다시 **Commit changes** 합니다.
+**올리기** — **[터미널]** 네 줄을 모두 확인했으면 저장소 루트에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더로 돌아옵니다: `cd ..` → `python check_publish.py`(맥북은 `python3`) → `git add .` → `git commit -m "Add unit 3 post"` → `git push` → `cd access_control`. 점검에서 `[오류]` 가 나오면 그 부분을 지우고 다시 돌린 뒤 올립니다.
+
+올리고 1~2분 뒤 내 사이트 첫 화면을 엽니다.
+
+> **확인** — 최신 글에 오늘 글이 보이고 「나의 진행」의 Module 3 · Unit 3 칸이 채워지면 성공입니다. 안 보이면 [Unit 1 시작하기 레슨의 「첫 화면 확인하고 막힐 때」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/9)의 「글이 목록에 안 나옴」 줄을 봅니다.
 
 <!-- checklist -->
-- [ ] 네 가지를 확인한 뒤 **Commit changes** 로 글 파일과 `code/m3_u3_review_unused.py` 를 올렸다
-- [ ] 내 사이트 첫 화면의 최신 글에서 오늘 글을 확인했다
+- [ ] 저장소 루트에서 `python check_publish.py` 가 `오류 0건` 인 것을 보고 `git add` · `git commit` · `git push` 로 글을 올렸다
+- [ ] 내 사이트 첫 화면에서 오늘 글과 「나의 진행」의 Module 3 · Unit 3 칸이 채워진 것을 보았다
 <!-- /checklist -->

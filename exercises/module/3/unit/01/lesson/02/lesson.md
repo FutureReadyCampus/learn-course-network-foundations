@@ -295,7 +295,6 @@ JSON 을 쓸 때 지킬 규칙입니다.
 - [ ] `config/users.json` 을 만들고 여섯 명을 직접 써서 저장했다
 - [ ] `config/roles.json` 을 만들고 `finance` · `batch` · `auditor` 세 역할을 직접 써서 저장했다
 - [ ] `python -m json.tool` 로 두 파일을 확인해 오류 없이 다시 출력되었다
-- [ ] `report_u1.md` 의 `## 실습 1-1` 아래 (가) · (다)를 채웠다
 <!-- /checklist -->
 
 ## 실습 1-1 정리

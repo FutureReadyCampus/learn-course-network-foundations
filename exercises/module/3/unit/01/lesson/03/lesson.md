@@ -225,7 +225,6 @@ for user, resource, action in REQUESTS:                          # 요청을 하
 - [ ] `access_control` 폴더 바로 아래에 `rbac.py` 를 만들어 붙여 넣고 ① · ② 두 줄을 채워 저장했다
 - [ ] `access_control` 폴더 바로 아래에 `exercise1-2_run.py` 를 만들어 붙여 넣고 저장했다
 - [ ] `python exercise1-2_run.py` 를 실행해 `False` 다섯 줄이 나왔다
-- [ ] `report_u1.md` 의 `## 실습 1-2` 아래 (가)를 채웠다
 <!-- /checklist -->
 
 ## 실습 1-2 정리

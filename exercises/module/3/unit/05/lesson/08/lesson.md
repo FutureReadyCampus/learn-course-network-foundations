@@ -37,7 +37,7 @@ render: markdown
 
 ## 글 틀로 쓰고 올리기
 
-설치할 것은 없습니다. Module 3 Unit 1에서 만든 내 저장소 `network-study-notes` 를 GitHub 웹 화면에서 열고 그대로 합니다. 글 틀을 복사하는 방법은 [Unit 1 시작하기 레슨의 「글 틀로 글 쓰기」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/10)를 봅니다.
+설치할 것은 없습니다. Unit 1 오늘의 글 쓰기에서 한 것처럼, 저장소 `network-study-notes` 를 연 VS Code 에서 글 파일을 만들고 터미널에서 올립니다. 글 틀을 복사하는 방법은 [Unit 1 시작하기 레슨의 「글 틀로 글 쓰기」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/10)를 봅니다.
 
 **글 틀 고르기**
 
@@ -47,23 +47,20 @@ render: markdown
 | 막혀서 끝내지 못했다 | `_templates/post-stuck.md` |
 | 응용: 여유가 있어 긴 글을 쓴다 | `_templates/post-practice.md` |
 
-**올리는 순서**
+**쓰는 순서**
 
-1. 내 저장소에서 **Add file → Create new file** 을 누르고, 이름 칸에 `_posts/2026-11-02-m3-u5-weekly-check.md` 처럼 적습니다. 앞은 오늘 날짜, 뒤는 영문 제목입니다.
+1. **[VS Code]** 왼쪽 목록의 `network-study-notes` 안 `_posts` 폴더를 오른쪽 클릭 › **New File** 로 `2026-11-02-m3-u5-weekly-check.md` 처럼 만듭니다(경로 `_posts/2026-11-02-m3-u5-weekly-check.md`). 앞은 오늘 날짜, 뒤는 영문 제목입니다.
 2. 고른 글 틀을 붙여 넣고 맨 위 머리말을 고칩니다.
    1. `module: 3`, `unit: 5` 로 씁니다. 글 틀의 `unit:` 숫자는 예시이니 꼭 `5` 로 바꿉니다. 이 두 줄이 첫 화면 「나의 진행」에서 Module 3 줄의 5번 칸을 채웁니다.
-   2. `title` 과 `date` 를 내 글에 맞게 고칩니다. 날짜가 미래면 글이 목록에 나오지 않습니다.
-3. 빈칸을 채우고, 이 레슨 마지막 페이지 「공개 전 점검」의 네 줄을 먼저 확인한 뒤 **Commit changes** 를 누릅니다. 나오는 창에서 한 번 더 **Commit changes** 를 누릅니다.
-4. 코드는 `code/` 폴더에 올립니다. **Add file → Create new file** 에서 이름을 `code/m3_u5_checklist.py` 로 적고, VS Code 에서 연 `access_control/checklist.py` 의 내용을 복사해 붙여 넣습니다. 응용 5-1을 글로 쓴다면 같은 방법으로 `code/m3_u5_log_summary.py` 를 만듭니다. 글에는 `전체 코드: code/m3_u5_checklist.py` 처럼 위치를 적습니다.
-5. 올리고 1~2분 뒤 내 사이트 첫 화면을 엽니다.
+   2. `title` 과 `date` 를 내 글에 맞게 고칩니다. 날짜가 미래면 글이 목록에 나오지 않습니다. 샘플 글에 있던 `sample: true` 줄은 넣지 않습니다.
+3. 빈칸을 채우고 저장합니다. 코드는 따로 옮기지 않습니다. 오늘 만든 `access_control/checklist.py`(응용 5-1을 했다면 `access_control/log_summary.py` 도) 가 같은 저장소 안에 있으니, 글에는 `전체 코드: access_control/checklist.py` 처럼 위치만 적습니다.
+4. 올리기는 이 레슨 마지막 페이지 「공개 전 점검」을 마친 뒤 그 페이지에서 합니다.
 
-> **확인** — 최신 글에 오늘 글이 보이고 「나의 진행」의 Module 3 · Unit 5 칸이 채워지면 성공입니다. 안 보이면 [Unit 1 시작하기 레슨의 「첫 화면 확인하고 막힐 때」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/9)의 「글이 목록에 안 나옴」 줄을 봅니다.
+> **확인** — VS Code 왼쪽 목록의 `_posts` 폴더 안에 오늘 글 파일이 있고, 맨 위 머리말에 `module: 3` · `unit: 5` 가 있으면 성공입니다. 없으면 1번에서 오른쪽 클릭한 폴더가 `_posts` 인지 봅니다.
 
 <!-- checklist -->
-- [ ] 내 저장소에 `_posts/2026-11-02-m3-u5-weekly-check.md` 처럼 날짜와 영문 제목으로 글 파일을 만들고 머리말을 `module: 3`, `unit: 5` 로 고쳤다
-- [ ] 글 틀의 빈칸을 채우고 **Commit changes** 로 올렸다
-- [ ] `code/m3_u5_checklist.py` 를 만들어 `checklist.py` 내용을 붙여 넣고 올렸다
-- [ ] 내 사이트 첫 화면에서 오늘 글과 「나의 진행」의 Module 3 · Unit 5 칸을 확인했다
+- [ ] `_posts` 폴더에 오늘 날짜 이름(예: `_posts/2026-11-02-m3-u5-weekly-check.md`)으로 글 파일을 만들고 글 틀을 붙여 넣었다
+- [ ] 머리말을 `module: 3` · `unit: 5` 와 내 `title` · `date` 로 고치고 세 칸을 채워 저장했다
 <!-- /checklist -->
 
 ## 막힐 때 힌트
@@ -81,13 +78,20 @@ render: markdown
 
 ## 공개 전 점검
 
-아래 네 줄을 확인하며 하나씩 체크합니다.
+올리기 전에 아래를 한 줄씩 확인합니다. 자세한 점검 방법은 [Unit 1 시작하기 레슨의 「공개 전 점검」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/12)에 있습니다.
 
-> **확인** — 네 줄을 모두 체크할 수 있으면 성공입니다. 하나라도 걸리면 그 부분을 지우거나 고치고 다시 **Commit changes** 합니다.
+1. 글과 코드(`access_control/` 의 파일 포함)에 비밀키 · 토큰 · 비밀번호가 없다
+2. 내 이메일 · 전화번호 같은 개인정보가 없다
+3. 실습 데이터의 이름(dami, junho 등) 말고 실제 사람의 이름을 쓰지 않았다
+4. 머리말이 `module: 3`, `unit: 5` 다
+
+**올리기** — **[터미널]** 네 줄을 모두 확인했으면 저장소 루트에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더로 돌아옵니다: `cd ..` → `python check_publish.py`(맥북은 `python3`) → `git add .` → `git commit -m "Add unit 5 post"` → `git push` → `cd access_control`. 점검에서 `[오류]` 가 나오면 그 부분을 지우고 다시 돌린 뒤 올립니다.
+
+올리고 1~2분 뒤 내 사이트 첫 화면을 엽니다.
+
+> **확인** — 최신 글에 오늘 글이 보이고 「나의 진행」의 Module 3 · Unit 5 칸이 채워지면 성공입니다. 안 보이면 [Unit 1 시작하기 레슨의 「첫 화면 확인하고 막힐 때」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/9)의 「글이 목록에 안 나옴」 줄을 봅니다.
 
 <!-- checklist -->
-- [ ] 글과 코드에 비밀키 · 토큰 · 비밀번호가 없다
-- [ ] 내 이메일 · 전화번호 같은 개인정보가 없다
-- [ ] 실습 데이터의 이름(dami, junho 등) 말고 실제 사람의 이름을 쓰지 않았다
-- [ ] 머리말이 `module: 3`, `unit: 5` 다
+- [ ] 저장소 루트에서 `python check_publish.py` 가 `오류 0건` 인 것을 보고 `git add` · `git commit` · `git push` 로 글을 올렸다
+- [ ] 내 사이트 첫 화면에서 오늘 글과 「나의 진행」의 Module 3 · Unit 5 칸이 채워진 것을 보았다
 <!-- /checklist -->

@@ -327,7 +327,6 @@ for record in records:                                 # 기록을 하나씩 꺼
 - [ ] `anomaly_detection` 폴더에 `exercise4-1_run.py` 를 만들어 붙여 넣고 저장했다
 - [ ] `python exercise4-1_run.py` 를 실행해 단계 4가 `high dami 60 ['퇴사한 계정']` 으로 시작하는 다섯 줄로 나왔다
 - [ ] 새로 생긴 `unit05_risk_scores.json` 을 VS Code 에서 열어 대상 5개를 확인했다
-- [ ] `report_u4.md` 의 `## 실습 4-1` (가) · (나)에 답을 적고 저장했다
 <!-- /checklist -->
 
 ## 실습 4-1 정리

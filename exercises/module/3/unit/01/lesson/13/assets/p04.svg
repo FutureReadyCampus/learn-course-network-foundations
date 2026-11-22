@@ -15,6 +15,6 @@
 <rect x="24" y="214" width="672" height="44" rx="6" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <rect x="40" y="226" width="20" height="20" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
 <text x="74" y="242" font-size="15">화면 캡처에 내 컴퓨터 사용자 이름 · 다른 창이 보이지 않는다</text>
-<text x="24" y="296" font-size="15" fill="#e0442e" font-weight="700">하나라도 걸리면 지우고 다시 Commit changes</text>
+<text x="24" y="296" font-size="15" fill="#e0442e" font-weight="700">하나라도 걸리면 지우고 다시 push</text>
 </g>
 </svg>
