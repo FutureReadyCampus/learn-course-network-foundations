@@ -232,7 +232,18 @@ print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.
 **순서**
 
 1. **[VS Code]** 파일 다섯 개 `fp_state.json` · `fp_log.json` · `fp_reports.json` · `false_positive.py` · `exercise4-2_run.py` 를 만듭니다. 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
+
+<!-- checklist -->
+- [ ] `soar_response` 폴더에 `fp_state.json` · `fp_log.json` · `fp_reports.json` 을 만들고 붙여 넣은 뒤 저장했다
+- [ ] `soar_response` 폴더에 `false_positive.py` · `exercise4-2_run.py` 를 만들고 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 2. **[VS Code]** `false_positive.py` 의 `# ←` 두 곳(① · ②)을 채웁니다. 3.1 표의 1번 줄 「조치 전과 조치 후가 다른 기록만 찾는다」를 보고 씁니다.
+
+<!-- checklist -->
+- [ ] `false_positive.py` 의 빈칸 ① · ② 를 채우고 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python exercise4-2_run.py
@@ -241,19 +252,17 @@ print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.
    - 단계 1 은 숫자가 제목 줄에 함께 나오고 그 아래 1줄입니다.
    - 단계 2 는 10줄(신고 한 건에 5줄씩), 단계 3 은 2줄입니다.
    - 단계 4 는 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
+
+<!-- checklist -->
+- [ ] `python exercise4-2_run.py` 를 실행해 걸린 시간 `25 분` · `5 분` 과 `dami 는 아직 잠김: True` 가 나왔다
+<!-- /checklist -->
+
 5. **[보고서]** `report_u4.md` 의 `## 실습 4-2` 아래를 채웁니다.
    - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 신고마다 걸린 시간과 처리 뒤 잠긴 계정을 적어 주세요.
    - (나) [응용] `INC-301` 의 영향 확인에 `IP 차단 198.51.100.120` 이 없습니다. `fp_log.json` 에서 `198.51.100.120` 의 IP 차단 기록이 가진 `before` · `after` 를 근거로 그 이유를 적고, `false_positive.py` ① 의 `if` 줄이 없으면 규칙 조정 제안이 어떻게 잘못되는지 적어 주세요.
    - (다) [응용] `INC-301` 의 되돌리기에 `되돌리기 불가 jiwoo` 가 있습니다. 무엇을 되돌릴 수 없는지(비가역 조치)와 담당자가 `jiwoo` 에게 따로 안내해야 할 것을 적어 주세요. 그리고 `dami` 가 처리 뒤에도 잠겨 있어야 하는 이유를 따로 적어 주세요.
 
 **확인** — 단계 2 에서 두 신고 모두 `아직 잠기거나 차단된 대상 []` 이고 걸린 시간이 `25 분` · `5 분` 이며, 단계 3 이 `잠긴 계정: ['junho', 'dami'] · 차단된 IP: []` 와 `dami 는 아직 잠김: True` 로 나오면 성공입니다. 안 나오면 「정답」 레슨의 실습 4-2 출력과 한 줄씩 맞춰 보고, 영향 확인 줄이 다르면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
-
-<!-- checklist -->
-- [ ] `soar_response` 폴더에 `fp_state.json` · `fp_log.json` · `fp_reports.json` 을 만들고 붙여 넣은 뒤 저장했다
-- [ ] `soar_response` 폴더에 `false_positive.py` · `exercise4-2_run.py` 를 만들고 붙여 넣은 뒤 저장했다
-- [ ] `false_positive.py` 의 빈칸 ① · ② 를 채우고 저장했다
-- [ ] `python exercise4-2_run.py` 를 실행해 걸린 시간 `25 분` · `5 분` 과 `dami 는 아직 잠김: True` 가 나왔다
-<!-- /checklist -->
 
 ## 실습 4-2 정리
 
@@ -297,6 +306,10 @@ ls config
 
 결과 파일도 깃허브에 올라갑니다.
 
+<!-- checklist optional -->
+- [ ] `soar_response` 폴더에서 `ls` · `ls config` 로 표의 파일이 모두 있는 것을 확인했다
+<!-- /checklist -->
+
 **3. 깃허브에 올리기**
 
 1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/network-study-notes` 으로 끝나야 합니다.
@@ -313,6 +326,11 @@ ls config
    - 명령 풀이: `git status` 올릴 파일의 상태를 봄
    - `.env` 가 보이면 VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
    - `soar_response/__pycache__/` 는 파이썬이 실행하면서 자동으로 만든 임시 폴더입니다. 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장합니다.
+
+<!-- checklist optional -->
+- [ ] `network-study-notes` 폴더에서 `git status` 를 쳐서 `.env` · `.venv` 가 없는 것을 확인했다
+<!-- /checklist -->
+
 3. **[보고서]** `report_u4.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
    ```bash
@@ -322,7 +340,16 @@ ls config
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
    - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
+
+<!-- checklist optional -->
+- [ ] `git add .` · `git commit` · `git push` 로 깃허브에 올렸다
+<!-- /checklist -->
+
 5. **[브라우저]** 깃허브의 내 저장소 `network-study-notes` 를 새로 고쳐 `soar_response` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
+
+<!-- checklist optional -->
+- [ ] 깃허브 저장소의 `soar_response` 폴더에서 `approval_gate.py` · `false_positive.py` 를 확인했다
+<!-- /checklist -->
 
 - 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
 
@@ -332,13 +359,6 @@ ls config
 2. 오늘 만든 `approval_gate.py` 와 `config/approval_policy.json` 은 Unit 5 실습 5-1 · 5-2 에서 그대로 가져와 씁니다.
 
 **확인** — 깃허브 저장소의 `soar_response` 폴더에 `approval_gate.py` 와 `false_positive.py` 가 보이고 `git status` 가 `nothing to commit` 으로 끝나면 성공입니다. 안 보이면 위 3번의 `git push` 출력에 `rejected` 나 오류가 있었는지 보고, 있으면 그 줄의 안내대로 다시 올립니다.
-
-<!-- checklist optional -->
-- [ ] `soar_response` 폴더에서 `ls` · `ls config` 로 표의 파일이 모두 있는 것을 확인했다
-- [ ] `network-study-notes` 폴더에서 `git status` 를 쳐서 `.env` · `.venv` 가 없는 것을 확인했다
-- [ ] `git add .` · `git commit` · `git push` 로 깃허브에 올렸다
-- [ ] 깃허브 저장소의 `soar_response` 폴더에서 `approval_gate.py` · `false_positive.py` 를 확인했다
-<!-- /checklist -->
 
 ---
 

@@ -206,21 +206,33 @@ print("--- 단계 4: 파일에 저장된 티켓", len(saved), "장")            
 
 1. **[터미널]** 서버 터미널에 `Running on http://127.0.0.1:5001` 이 떠 있는지 봅니다. 꺼져 있으면 응용 4-1 레슨 「필요한 파일 준비하기」의 3번으로 다시 켭니다. `flask` · `requests` 설치와 Unit 3 파일 확인도 그 페이지에서 합니다.
 2. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `status_events.json` · `shift_metrics.py` · `apply4-2_run.py` 를 이름 그대로 만들고, 위 코드 상자를 복사해 붙여 넣고 저장합니다.
+
+<!-- checklist optional -->
+- [ ] `soar_response` 폴더에 `status_events.json` · `shift_metrics.py` · `apply4-2_run.py` 를 만들고 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 3. **[VS Code]** `shift_metrics.py` 1 ~ 7번, `apply4-2_run.py` 8 · 9번을 씁니다. 막히면 아래 「응용 4-2 정리」를 봅니다.
+
+<!-- checklist optional -->
+- [ ] `shift_metrics.py` 1 ~ 7번과 `apply4-2_run.py` 8 · 9번을 쓰고 저장했다
+<!-- /checklist -->
+
 4. **[터미널]** 처음 쓰던 터미널에서 <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python apply4-2_run.py
    ```
 5. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 22줄(알림 11줄 · 담당자 동작 8줄 · 상급자에게 올림 3줄), 단계 2 는 4줄, 단계 3 은 4줄(해결되지 않은 티켓 4장)입니다. 단계 4 는 제목 줄 하나뿐이고 저장한 티켓 수가 그 줄 안에 있습니다. <mark style="background:#bde3ff">알림 서버 터미널에는 `[알림 받음]` 줄이 12개 새로 찍힙니다.</mark> 같은 서버로 응용 4-1 을 먼저 실행했다면 그 4줄 아래에 이어서 나옵니다.
+
+<!-- checklist optional -->
+- [ ] 서버를 켠 채 `python apply4-2_run.py` 를 실행해 단계 1 ~ 4 가 나왔다
+<!-- /checklist -->
+
 6. **[보고서]** `report_u4.md` 의 `## 응용 4-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣어 주세요. 그리고 그 출력에서 평균 확인 시간(MTTA) · 평균 해결 시간(MTTR) · 응답 기한을 넘긴 티켓 수(응답 기한 위반 수)를 찾아 적어 주세요.
    - (나) [핵심 질문] 확인된 티켓 `TCK-1` · `TCK-3` · `TCK-4` · `TCK-6` · `TCK-7` 의 확인 시간(확인 시각 − 생성 시각)을 각각 계산하고, 그 평균인 평균 확인 시간(MTTA)을 직접 계산해 적어 주세요. 또한 미확인 티켓인 `TCK-2` · `TCK-5` 를 평균에서 제외하는 이유도 설명해 주세요.
    - (다) [핵심 질문] 응답 기한을 위반한 티켓 2장이 어느 티켓인지 적어 주세요. 이때 각 티켓의 `sla_due` 와 확인 시각을 근거로 씁니다. 그리고 단계 1 의 70분 · 80분 · 110분에 출력된 줄(상급자에게 올림 · 확인 중)이 이 두 티켓과 어떤 관계인지 설명해 주세요.
 
 <!-- checklist optional -->
-- [ ] `soar_response` 폴더에 `status_events.json` · `shift_metrics.py` · `apply4-2_run.py` 를 만들고 붙여 넣은 뒤 저장했다
-- [ ] `shift_metrics.py` 1 ~ 7번과 `apply4-2_run.py` 8 · 9번을 쓰고 저장했다
-- [ ] 서버를 켠 채 `python apply4-2_run.py` 를 실행해 단계 1 ~ 4 가 나왔다
 - [ ] `report_u4.md` 의 `## 응용 4-2` 를 채웠다
 <!-- /checklist -->
 

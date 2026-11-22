@@ -61,6 +61,10 @@ source:
 ]
 </code></pre>
 
+<!-- checklist optional -->
+- [ ] 1번 표의 Unit 3 파일과 `tickets_unit09.json` 가운데 없던 파일을 `soar_response` 폴더에 만들고 저장했다
+<!-- /checklist -->
+
 **순서**
 
 1. **[터미널]** 서버와 알림 전송에 쓰는 도구를 설치합니다(맥북은 `python3`). 이미 설치했다면 바로 다음 줄로 갑니다.
@@ -74,6 +78,11 @@ source:
    python -c "import ticketing, ticket_merge, ticket_notice, notifier, alert_server; from incident import load_json; print('응용 준비 정상', len(load_json('tickets_unit09.json')))"
    ```
    - `No module named '…'` 가 나오면 1번 목록에서 그 이름의 파일을 찾아 만듭니다. `No module named 'requests'` 는 1번 설치를 다시 합니다.
+
+<!-- checklist optional -->
+- [ ] `python -m pip install flask requests` 로 설치하고, 2번 명령에서 `응용 준비 정상 7` 이 나왔다
+<!-- /checklist -->
+
 3. **[터미널]** 알림 서버를 켭니다. VS Code 터미널 창 오른쪽 위의 `+` 로 **새 터미널**을 하나 더 열고, `soar_response` 폴더에서 서버를 실행합니다. <mark style="background:#bde3ff">`Running on http://127.0.0.1:5001` 이 보이면</mark> 됩니다.
    ```bash
    cd soar_response
@@ -84,8 +93,6 @@ source:
    - `Address already in use` 가 나오면 이미 켜진 서버가 있는 것입니다. 그 서버를 그대로 쓰거나, 서버를 켠 터미널에서 `Ctrl + C` 로 끄고 다시 켭니다.
 
 <!-- checklist optional -->
-- [ ] 1번 표의 Unit 3 파일과 `tickets_unit09.json` 가운데 없던 파일을 `soar_response` 폴더에 만들고 저장했다
-- [ ] `python -m pip install flask requests` 로 설치하고, 2번 명령에서 `응용 준비 정상 7` 이 나왔다
 - [ ] 새 터미널에서 `python alert_server.py` 를 실행해 `Running on http://127.0.0.1:5001` 이 보였다
 <!-- /checklist -->
 
@@ -232,22 +239,34 @@ for ticket in tickets:                                                          
 
 1. **[터미널]** 「필요한 파일 준비하기」의 서버 터미널에 `Running on http://127.0.0.1:5001` 이 떠 있는지 봅니다. 꺼져 있으면 그 페이지의 3번으로 다시 켭니다.
 2. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `escalation.py` 와 `apply4-1_run.py` 를 이름 그대로 만들고, 위 코드 상자를 복사해 붙여 넣고 저장합니다.
+
+<!-- checklist optional -->
+- [ ] `soar_response` 폴더에 `escalation.py` · `apply4-1_run.py` 를 만들고 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 3. **[VS Code]** `escalation.py` 1 ~ 6번, `apply4-1_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「응용 4-1 정리」를 봅니다.
+
+<!-- checklist optional -->
+- [ ] `escalation.py` 1 ~ 6번과 `apply4-1_run.py` 7 ~ 9번을 쓰고 저장했다
+<!-- /checklist -->
+
 4. **[터미널]** 처음 쓰던 터미널에서 <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python apply4-1_run.py
    ```
 5. 출력은 세 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 제목 줄 하나만 나옵니다(숫자가 제목 줄 안에 함께 나옵니다). 단계 2 는 제목 아래 8줄입니다. 단계 3 은 제목 아래 4줄입니다(올린 횟수는 제목 줄 안에 있습니다). <mark>알림 서버 터미널에는 `[알림 받음]` 줄이 4개 찍힙니다.</mark> 같은 서버로 Unit 3 응용 3-3 을 먼저 실행했다면 그 줄 아래부터 셉니다.
    - `apply4-1_run.py` 는 `tickets_unit09.json` 을 읽기만 하고 다시 저장하지 않아서, 몇 번을 실행해도 같은 결과가 나옵니다(서버 터미널의 줄은 실행할 때마다 4줄씩 늘어납니다).
+
+<!-- checklist optional -->
+- [ ] `python apply4-1_run.py` 를 실행하고, 서버 터미널에 `[알림 받음]` 줄이 4개 새로 찍힌 것을 확인했다
+<!-- /checklist -->
+
 6. **[보고서]** `report_u4.md` 의 `## 응용 4-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣어 주세요. 그리고 알림 서버 터미널에 출력된 `[알림 받음]` 줄 수와 단계 3 의 올린 횟수(에스컬레이션 실행 횟수)를 적어 주세요.
    - (나) [핵심 질문] `TCK-1` 은 20분 점검에서 1단계로 에스컬레이션되었지만, 60분 점검에서는 에스컬레이션되지 않았습니다. 그 이유를 설명해 주세요. 이때 25분에 변경된 상태와 `needs_escalation` 의 조건을 근거로 쓰고, 이 조건이 없을 때 발생하는 문제도 함께 설명해 주세요.
    - (다) [핵심 질문] 110분 점검에서 `TCK-3` 은 2단계로, `TCK-6` 은 1단계로 에스컬레이션되었습니다. 두 티켓의 응답 기한과 초과 시간을 근거로 단계가 달라진 이유를 설명해 주세요. 또한 등급 low 인 `TCK-2` 가 에스컬레이션되지 않은 이유도 설명해 주세요.
 
 <!-- checklist optional -->
-- [ ] `soar_response` 폴더에 `escalation.py` · `apply4-1_run.py` 를 만들고 붙여 넣은 뒤 저장했다
-- [ ] `escalation.py` 1 ~ 6번과 `apply4-1_run.py` 7 ~ 9번을 쓰고 저장했다
-- [ ] `python apply4-1_run.py` 를 실행하고, 서버 터미널에 `[알림 받음]` 줄이 4개 새로 찍힌 것을 확인했다
 - [ ] `report_u4.md` 의 `## 응용 4-1` 을 채웠다
 <!-- /checklist -->
 

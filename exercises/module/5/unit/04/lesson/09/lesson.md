@@ -254,8 +254,23 @@ print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")            
    python -c "import report, approval_gate, false_positive; open('incident_report_20261112.md', encoding='utf-8'); open('unit10_tickets.json', encoding='utf-8'); open('unit10_actions.json', encoding='utf-8'); print('점검 준비 정상')"
    ```
    - `No module named '…'` 나 `FileNotFoundError` 가 나오면 위 「준비할 파일」에서 그 이름의 파일을 찾아 만듭니다.
+
+<!-- checklist optional -->
+- [ ] 1번 명령에서 `점검 준비 정상` 이 나왔다
+<!-- /checklist -->
+
 2. **[VS Code]** 파일 세 개 `gate_cases.json` · `unit09_check.py` · `apply4-5_run.py` 를 만듭니다. 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
+
+<!-- checklist optional -->
+- [ ] `soar_response` 폴더에 `gate_cases.json` · `unit09_check.py` · `apply4-5_run.py` 를 만들고 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 3. **[VS Code]** `unit09_check.py` 1 ~ 7번, `apply4-5_run.py` 8 · 9번을 씁니다. 막히면 아래 「응용 4-5 정리」를 봅니다.
+
+<!-- checklist optional -->
+- [ ] `unit09_check.py` 1 ~ 7번과 `apply4-5_run.py` 8 · 9번을 쓰고 저장했다
+<!-- /checklist -->
+
 4. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python apply4-5_run.py
@@ -263,6 +278,11 @@ print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")            
 5. 출력은 세 단계입니다. 제목 줄은 줄 수에 넣지 않습니다.
    - 단계 1 과 단계 3 은 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
    - 단계 2 는 기준마다 한 줄씩 3줄입니다. 문제가 있으면 문제마다 한 줄이 더 나옵니다.
+
+<!-- checklist optional -->
+- [ ] `python apply4-5_run.py` 를 실행해 단계 2 의 세 기준이 `통과` 로 나왔다
+<!-- /checklist -->
+
 6. **[보고서]** `report_u4.md` 의 `## 응용 4-5` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 세 기준의 결과와 `unit09_checklist.md` 의 줄 수를 적어 주세요.
    - (나) [핵심 질문] `gate_cases.json` 에는 「대상 3개」와 「대상 4개」 사례가 함께 있습니다. 두 사례의 점수와 기대한 결정을 근거로, 경계값 분석에 따라 기준 숫자 바로 앞뒤 값(경계값)의 사례를 함께 넣는 이유를 적어 주세요.
@@ -271,10 +291,6 @@ print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")            
 7. **[터미널]** 응용 파일도 깃허브에 올립니다. 실습 4-2 끝 「이번 Unit 마무리 · 깃허브에 올리기」에서 「3. 깃허브에 올리기」의 1 ~ 4번을 한 번 더 하고, 기록 설명은 `git commit -m "Add unit 4 apply tasks"` 처럼 바꿔 씁니다. 응용 4-1 · 4-2 를 했다면 서버 터미널에서 `Ctrl + C` 로 서버를 끈 뒤에 합니다.
 
 <!-- checklist optional -->
-- [ ] 1번 명령에서 `점검 준비 정상` 이 나왔다
-- [ ] `soar_response` 폴더에 `gate_cases.json` · `unit09_check.py` · `apply4-5_run.py` 를 만들고 붙여 넣은 뒤 저장했다
-- [ ] `unit09_check.py` 1 ~ 7번과 `apply4-5_run.py` 8 · 9번을 쓰고 저장했다
-- [ ] `python apply4-5_run.py` 를 실행해 단계 2 의 세 기준이 `통과` 로 나왔다
 - [ ] `report_u4.md` 의 `## 응용 4-5` 를 채우고 응용 파일을 깃허브에 올렸다
 <!-- /checklist -->
 

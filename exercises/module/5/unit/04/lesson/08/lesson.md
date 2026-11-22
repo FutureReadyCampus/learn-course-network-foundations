@@ -211,7 +211,17 @@ print("--- 단계 3: 바로 보완할 조치", gap_count, "개 ·", DOC_PATH, le
    ```
    - 터미널 맨 앞에 가상환경 이름(예: `(.venv)`)이 보이는 상태에서 칩니다. 응용 4-3 에서 설치했다면 건너뜁니다.
 2. **[VS Code]** 파일 세 개를 만듭니다. `soar_response` 폴더 안의 `config` 폴더를 오른쪽 클릭 › **New File** 로 `automation_risks.json` 을, `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `risk_assessment.py` · `apply4-4_run.py` 를 만들고, 각각 코드 상자의 내용을 붙여 넣고 저장합니다.
+
+<!-- checklist optional -->
+- [ ] `soar_response` 폴더 안의 `config` 폴더에 `automation_risks.json` 을 만들고 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 3. **[VS Code]** `risk_assessment.py` 1 ~ 7번, `apply4-4_run.py` 8 · 9번을 씁니다. 막히면 아래 「응용 4-4 정리」를 봅니다.
+
+<!-- checklist optional -->
+- [ ] `soar_response` 폴더에 `risk_assessment.py` · `apply4-4_run.py` 를 만들고 1 ~ 9번을 쓴 뒤 저장했다
+<!-- /checklist -->
+
 4. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python apply4-4_run.py
@@ -220,15 +230,17 @@ print("--- 단계 3: 바로 보완할 조치", gap_count, "개 ·", DOC_PATH, le
    - 단계 1 과 단계 3 은 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
    - 단계 2 는 조치 6개가 한 줄씩, 모두 6줄입니다.
 6. **[VS Code]** 왼쪽 목록에서 `risk_assessment.md` 를 열고 `Ctrl+Shift+V`(맥북은 `Cmd+Shift+V`)로 마크다운 미리보기에서 표 모양을 확인합니다. <mark style="background:#bde3ff">표 한 개와 「바로 보완할 조치」 절이 보이면</mark> 됩니다.
+
+<!-- checklist optional -->
+- [ ] `python apply4-4_run.py` 를 실행하고 `risk_assessment.md` 를 미리보기로 열어 표와 「바로 보완할 조치」 절을 확인했다
+<!-- /checklist -->
+
 7. **[보고서]** `report_u4.md` 의 `## 응용 4-4` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
    - (가) 실행한 출력 전체를 붙여 넣고, 등급이 높음인 조치와 바로 보완할 조치 2개를 적어 주세요.
    - (나) [핵심 질문] 계정 잠금 · 세션 종료 · IP 차단은 점수가 모두 6(높음)인데, 세션 종료만 통제 갭이 있습니다. `config/automation_risks.json` 의 `controls` 를 근거로 그 이유를 적고, 세션 종료에 예방 통제인 승인 게이트가 특히 필요한 이유를 Unit 3 에 있는 되돌리기(교정 통제)와 연결해 적어 주세요.
    - (다) [핵심 질문] 담당자 알림은 영향도가 1인데 등급이 보통입니다. 점수 계산을 근거로 그 이유를 적고, 탐지 통제인 감사 기록이 없으면 사고가 난 뒤 무엇을 확인할 수 없는지 적어 주세요.
 
 <!-- checklist optional -->
-- [ ] `soar_response` 폴더 안의 `config` 폴더에 `automation_risks.json` 을 만들고 붙여 넣은 뒤 저장했다
-- [ ] `soar_response` 폴더에 `risk_assessment.py` · `apply4-4_run.py` 를 만들고 1 ~ 9번을 쓴 뒤 저장했다
-- [ ] `python apply4-4_run.py` 를 실행하고 `risk_assessment.md` 를 미리보기로 열어 표와 「바로 보완할 조치」 절을 확인했다
 - [ ] `report_u4.md` 의 `## 응용 4-4` 를 채웠다
 <!-- /checklist -->
 
