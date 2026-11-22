@@ -10,7 +10,7 @@ render: markdown
 
 **실습 2-1 을 마친 뒤, 실습 2-2 를 시작하기 전에** 이 레슨의 파일 세 개를 만듭니다. 오늘 핵심 실습에서는 이 파일을 부르지 않지만, 응용 2-2 와 Unit 3 이 불러 씁니다. 그래서 응용을 하지 않아도 오늘 만들어 두고 함께 깃허브에 올립니다.
 
-1. 파일은 모두 `soar_response` 폴더 안에 만듭니다(VS Code 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File**).
+1. 파일은 모두 작업 폴더 `network-study-notes/soar_response` 바로 아래에 만듭니다(VS Code 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File**).
 2. 파일 이름을 그대로 적고, 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
 3. 만들 파일은 세 개입니다.
 
@@ -33,7 +33,7 @@ render: markdown
 
 ## `ip_actions.py` 만들기
 
-**`ip_actions.py`** 를 만들고 아래 내용을 붙여 넣습니다. IP 를 차단하기 전에 정책을 검사하고, 차단에는 끝나는 시각을 적어 두었다가 시간이 지나면 풉니다.
+`soar_response` 폴더에 **`ip_actions.py`** 를 만들고 아래 내용을 붙여 넣습니다. IP 를 차단하기 전에 정책을 검사하고, 차단에는 끝나는 시각을 적어 두었다가 시간이 지나면 풉니다.
 
 | 함수 | 하는 일 | 리턴하는 것 |
 |---|---|---|
@@ -124,9 +124,13 @@ def expire_blocks(state, incident_id):                                          
 
 **확인** — `python -c "from ip_actions import check_ip_policy; print('ip_actions 정상')"` 를 쳐서 `ip_actions 정상` 이 나오면 성공입니다. `ModuleNotFoundError: No module named 'containment_store'` 가 나오면 실습 2-1 의 `containment_store.py` 를 먼저 만듭니다.
 
+<!-- checklist -->
+- [ ] `ip_actions.py` 를 만들어 코드 상자를 붙여 넣고 저장한 뒤, 확인 명령으로 `ip_actions 정상` 이 나왔다
+<!-- /checklist -->
+
 ## `audit.py` 만들기
 
-**`audit.py`** 를 만들고 아래 내용을 붙여 넣습니다. 알림 한 건에 어떤 액션을 해서 결과가 무엇이었는지를 딕셔너리 한 건(`incident` · `playbook` · `action` · `result`)으로 만듭니다.
+`soar_response` 폴더에 **`audit.py`** 를 만들고 아래 내용을 붙여 넣습니다. 알림 한 건에 어떤 액션을 해서 결과가 무엇이었는지를 딕셔너리 한 건(`incident` · `playbook` · `action` · `result`)으로 만듭니다.
 
 ```python
 def log_line(item, action, text):  # 인시던트 · 액션 · 결과 문장을 받는 함수
@@ -141,9 +145,13 @@ def log_line(item, action, text):  # 인시던트 · 액션 · 결과 문장을 
 
 **확인** — `python -c "from audit import log_line; print(log_line({'id': 'INC-001', 'playbook': 'PB-001'}, '계정 잠금', '확인'))"` 를 쳐서 `{'incident': 'INC-001', 'playbook': 'PB-001', 'action': '계정 잠금', 'result': '확인'}` 이 나오면 성공입니다. 안 나오면 코드 상자를 다시 복사해 붙여 넣습니다.
 
+<!-- checklist -->
+- [ ] `audit.py` 를 만들어 코드 상자를 붙여 넣고 저장한 뒤, 확인 명령으로 기록 딕셔너리 한 건이 나왔다
+<!-- /checklist -->
+
 ## `approvals.py` 만들기
 
-**`approvals.py`** 를 만들고 아래 내용을 붙여 넣습니다. 승인이 필요한 알림을 멈춰 두고(`hold_for_approval`), 담당자의 결정이 오면 권한부터 확인한 뒤 적용합니다(`apply_decision`).
+`soar_response` 폴더에 **`approvals.py`** 를 만들고 아래 내용을 붙여 넣습니다. 승인이 필요한 알림을 멈춰 두고(`hold_for_approval`), 담당자의 결정이 오면 권한부터 확인한 뒤 적용합니다(`apply_decision`).
 
 권한은 결정한 사람이 승인 권한이 있는 담당자 목록 `APPROVERS`(`kim.sec` · `lee.soc`)에 있는지로 봅니다.
 
@@ -224,5 +232,10 @@ def finish_decision(item, decision, state, action_log):                         
 - 권한 확인을 왜 가장 먼저 하는지는 응용 2-1 레슨에서 자세히 다룹니다.
 
 **확인** — 세 파일을 다 만든 뒤 이 레슨 첫 페이지 4번의 명령을 쳐서 `제공 파일 정상 허용 목록 IP 라서 차단하지 않음 False` 가 나오면 성공입니다. `ModuleNotFoundError: No module named 'audit'` 가 나오면 `audit.py` 가 `soar_response` 폴더에 있는지 봅니다.
+
+<!-- checklist -->
+- [ ] `approvals.py` 를 만들어 코드 상자를 붙여 넣고 저장했다
+- [ ] 첫 페이지 4번 명령을 쳐 `제공 파일 정상 허용 목록 IP 라서 차단하지 않음 False` 가 나왔다
+<!-- /checklist -->
 
 ---

@@ -60,9 +60,9 @@ Unit 1 은 알림을 플레이북으로 처리하고 알림에 맥락을 붙이�
 3. **파일은 이렇게 만듭니다.** 따로 내려받는 파일은 없고, 모두 코드 상자에서 복사해 만듭니다.
    1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다.
    2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
-   - 답을 적는 **보고서** `report_u2.md` 는 「보고서 쓰기」 레슨의 틀을 복사해 만듭니다.
-4. **[VS Code]** 설정 · 데이터 파일 세 개를 만듭니다.
-   - `config` 폴더를 오른쪽 클릭 › **New File** 으로 `vip_accounts.json` 과 `allowlist_ips.json` 을 하나씩 만듭니다.
+   - 답을 적는 **보고서** `report_u2.md` 는 「보고서 쓰기」 레슨의 틀을 복사해 `soar_response` 폴더 바로 아래에 만듭니다.
+4. **[VS Code]** 설정 · 데이터 파일 세 개를 만듭니다. 경로는 모두 작업 폴더 `network-study-notes/soar_response` 기준입니다.
+   - `soar_response` 폴더 안의 `config` 폴더를 오른쪽 클릭 › **New File** 으로 `vip_accounts.json` 과 `allowlist_ips.json` 을 하나씩 만듭니다(`config/vip_accounts.json` · `config/allowlist_ips.json`).
    - `soar_response` 폴더를 오른쪽 클릭 › **New File** 으로 `ip_users.json` 을 만듭니다.
 
 **`config/vip_accounts.json`** — 자동 조치 대상에서 제외하는 **VIP 계정**(고중요도 계정: 자동 조치로 잠기면 업무 영향이 큰 계정) 리스트입니다. `gaeun` 은 계정 관리자이므로 포함했습니다. 실습 2-1 · 실습 2-2 가 읽습니다.
@@ -87,6 +87,14 @@ Unit 1 은 알림을 플레이북으로 처리하고 알림에 맥락을 붙이�
 6. 문제는 **할 일 → 순서**대로 하고, `[창 이름]` 이 지금 쓸 창입니다. 막히면 이 Unit 뒤쪽의 정답을 봅니다.
 
 **확인** — 2번의 마지막 줄에 `Unit 1 파일 정상`, 5번에 `1 2 2` 가 나오면 성공입니다. 안 나오면 다음 페이지 「오류가 나면」의 표에서 오류 이름을 찾습니다.
+
+<!-- checklist -->
+- [ ] `soar_response` 폴더에서 Unit 1 확인 명령을 쳐 `Unit 1 파일 정상` 이 나왔다
+- [ ] `config/vip_accounts.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `config/allowlist_ips.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `ip_users.json` 을 `soar_response` 폴더 바로 아래에 만들고 붙여 넣은 뒤 저장했다
+- [ ] 5번 확인 명령을 쳐 `1 2 2` 가 나왔다
+<!-- /checklist -->
 
 ## 오류가 나면
 
