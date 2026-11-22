@@ -57,15 +57,20 @@ render: markdown
    ```
    1. `module: 3`, `unit: 4` 로 씁니다. 글 틀의 `unit:` 숫자는 예시이니 꼭 `4` 로 바꿉니다. 이 두 줄이 첫 화면 「나의 진행」에서 Module 3 줄의 4번 칸을 채웁니다.
    2. `title` 과 `date` 를 내 글에 맞게 고칩니다. 날짜가 미래면 글이 목록에 나오지 않습니다. 샘플 글에 있던 `sample: true` 줄은 넣지 않습니다.
-3. 빈칸을 채우고 저장합니다. 코드는 따로 옮기지 않습니다. 오늘 만든 `access_control/revoke_approve.py`(실습 4-1) · `access_control/revoke.py`(실습 4-2) 가 같은 저장소 안에 있으니, 글에는 `전체 코드: access_control/revoke.py` 처럼 위치만 적고, 글 안에는 핵심 몇 줄만 코드 상자로 붙입니다.
-4. 올리기는 이 레슨 마지막 페이지 「공개 전 점검」을 마친 뒤 그 페이지에서 합니다.
-
-> **확인** — VS Code 왼쪽 목록의 `_posts` 폴더 안에 오늘 글 파일이 있고, 맨 위 머리말에 `module: 3` · `unit: 4` 가 있으면 성공입니다. 없으면 1번에서 오른쪽 클릭한 폴더가 `_posts` 인지 봅니다.
 
 <!-- checklist -->
 - [ ] `_posts` 폴더에 오늘 날짜 이름(예: `_posts/2026-11-20-m3-u4-revoke-approval.md`)으로 글 파일을 만들고 글 틀을 붙여 넣었다
+<!-- /checklist -->
+
+3. 빈칸을 채우고 저장합니다. 코드는 따로 옮기지 않습니다. 오늘 만든 `access_control/revoke_approve.py`(실습 4-1) · `access_control/revoke.py`(실습 4-2) 가 같은 저장소 안에 있으니, 글에는 `전체 코드: access_control/revoke.py` 처럼 위치만 적고, 글 안에는 핵심 몇 줄만 코드 상자로 붙입니다.
+
+<!-- checklist -->
 - [ ] 머리말을 `module: 3` · `unit: 4` 와 내 `title` · `date` 로 고치고 세 칸을 채워 저장했다
 <!-- /checklist -->
+
+4. 올리기는 이 레슨 마지막 페이지 「공개 전 점검」을 마친 뒤 그 페이지에서 합니다.
+
+> **확인** — VS Code 왼쪽 목록의 `_posts` 폴더 안에 오늘 글 파일이 있고, 맨 위 머리말에 `module: 3` · `unit: 4` 가 있으면 성공입니다. 없으면 1번에서 오른쪽 클릭한 폴더가 `_posts` 인지 봅니다.
 
 ## 막힐 때 힌트
 
@@ -92,11 +97,15 @@ render: markdown
 
 **올리기** — **[터미널]** 네 줄을 모두 확인했으면 저장소 루트에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더로 돌아옵니다: `cd ..` → `python check_publish.py`(맥북은 `python3`) → `git add .` → `git commit -m "Add unit 4 post"` → `git push` → `cd access_control`. 점검에서 `[오류]` 가 나오면 그 부분을 지우고 다시 돌린 뒤 올립니다.
 
+<!-- checklist -->
+- [ ] 저장소 루트에서 `python check_publish.py` 가 `오류 0건` 인 것을 보고 `git add` · `git commit` · `git push` 로 글을 올렸다
+<!-- /checklist -->
+
 올리고 1~2분 뒤 내 사이트 첫 화면을 엽니다. 안 보이면 저장소의 **Actions** 탭을 먼저 봅니다.
 
 > **확인** — 최신 글에 오늘 글이 보이고 「나의 진행」의 Module 3 · Unit 4 칸이 채워지면 성공입니다. 안 보이면 [Unit 1 시작하기 레슨의 「첫 화면 확인하고 막힐 때」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/9)의 「글이 목록에 안 나옴」 줄을 봅니다.
 
 <!-- checklist -->
-- [ ] 저장소 루트에서 `python check_publish.py` 가 `오류 0건` 인 것을 보고 `git add` · `git commit` · `git push` 로 글을 올렸다
 - [ ] 내 사이트 첫 화면에서 오늘 글과 「나의 진행」의 Module 3 · Unit 4 칸이 채워진 것을 보았다
 <!-- /checklist -->
+
