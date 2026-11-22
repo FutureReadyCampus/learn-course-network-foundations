@@ -50,6 +50,11 @@ render: markdown
 **2. 새 글 파일 만들기**
 
 1. **[VS Code]** 왼쪽 목록의 `network-study-notes` 안 `_posts` 폴더를 오른쪽 클릭 › **New File** 로 `2026-11-20-m5-u3-rollback-ticket.md` 처럼 만듭니다(경로 `_posts/2026-11-20-m5-u3-rollback-ticket.md`). 앞은 오늘 날짜, 뒤는 영문 제목입니다.
+
+<!-- checklist -->
+- [ ] `_posts` 폴더에 오늘 날짜 이름(예: `_posts/2026-11-20-m5-u3-rollback-ticket.md`)으로 글 파일을 만들었다
+<!-- /checklist -->
+
 2. 고른 글 틀의 내용을 붙여 넣고, 맨 위 머리말(front matter)을 오늘 Unit 에 맞게 고칩니다.
    ```
    module: 5
@@ -58,6 +63,10 @@ render: markdown
    - 이 두 줄이 첫 화면 「나의 진행」에서 Module 5 의 **3번** 칸을 채웁니다.
    - `title` 은 내 글의 한 줄 제목으로, `date` 는 오늘 날짜로 바꿉니다.
 3. 빈칸을 채우고 저장합니다. 올리기는 이 레슨 마지막 페이지 「공개 전 점검」을 마친 뒤 그 페이지에서 합니다.
+
+<!-- checklist -->
+- [ ] 글 틀을 붙여 넣고 머리말을 `module: 5` · `unit: 3` 과 내 `title` · `date` 로 고친 뒤 세 칸을 채워 저장했다
+<!-- /checklist -->
 
 **3. 코드 위치 적기**
 
@@ -68,11 +77,6 @@ render: markdown
 **4. 확인하기**
 
 > **확인** — VS Code 왼쪽 목록의 `_posts` 폴더 안에 오늘 글 파일이 있고, 맨 위 머리말에 `module: 5` · `unit: 3` 이 있으면 성공입니다. 없으면 오른쪽 클릭한 폴더가 `_posts` 인지 봅니다.
-
-<!-- checklist -->
-- [ ] `_posts` 폴더에 오늘 날짜 이름(예: `_posts/2026-11-20-m5-u3-rollback-ticket.md`)으로 글 파일을 만들고 글 틀을 붙여 넣었다
-- [ ] 머리말을 `module: 5` · `unit: 3` 과 내 `title` · `date` 로 고치고 세 칸을 채워 저장했다
-<!-- /checklist -->
 
 ## 막힐 때 힌트
 
@@ -99,11 +103,15 @@ render: markdown
 
 **올리기** — **[터미널]** 네 줄을 모두 「그렇다」으로 답할 수 있으면 저장소 루트에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더로 돌아옵니다: `cd ..` → `python check_publish.py`(맥북은 `python3`) → `git add .` → `git commit -m "Add module 5 unit 3 post"` → `git push` → `cd soar_response`. 터미널이 이미 `network-study-notes` 에 있으면 `cd ..` 는 건너뜁니다. 점검에서 `[오류]` 가 나오면 그 부분을 지우고 다시 돌린 뒤 올립니다.
 
+<!-- checklist -->
+- [ ] 저장소 루트에서 `python check_publish.py` 가 `오류 0건` 인 것을 보고 `git add` · `git commit` · `git push` 로 글을 올렸다
+<!-- /checklist -->
+
 올리고 1~2분 뒤 내 사이트 첫 화면을 엽니다.
 
 > **확인** — 최신 글에 오늘 글이 보이고 「나의 진행」의 Module 5 · Unit 3 칸이 채워지면 성공입니다. 안 보이면 저장소의 **Actions** 탭을 먼저 보고, [Module 3 Unit 1 시작하기 레슨의 「첫 화면 확인하고 막힐 때」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/9)의 「글이 목록에 안 나옴」 줄을 봅니다.
 
 <!-- checklist -->
-- [ ] 저장소 루트에서 `python check_publish.py` 가 `오류 0건` 인 것을 보고 `git add` · `git commit` · `git push` 로 글을 올렸다
 - [ ] 내 사이트 첫 화면에서 오늘 글과 Module 5 · Unit 3 칸이 채워진 것을 보았다
 <!-- /checklist -->
+

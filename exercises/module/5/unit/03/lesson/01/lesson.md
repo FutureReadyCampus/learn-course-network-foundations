@@ -74,12 +74,22 @@ Unit 2 실습 2-1 · 2-2에서는 계정 잠금과 세션 종료(세션, session
    python -c "from incident import load_json, save_json; from containment_store import load_state, make_record, LOG_PATH; from account_actions import unlock_account; from ip_actions import block_ip, unblock_ip, DEFAULT_TTL; print('앞 Unit 파일 정상')"
    ```
    - `ModuleNotFoundError` 나 `ImportError` 가 나오면 다음 페이지 「이전 파일이 없을 때」를 봅니다.
+
+<!-- checklist -->
+- [ ] `soar_response` 폴더에서 3번 명령을 실행해 `앞 Unit 파일 정상` 이 나왔다
+<!-- /checklist -->
+
 4. **[터미널]** 실습 2-2 결과 파일이 맞는지 확인합니다. <mark>`['junho', 'dami'] 5` 가 나와야</mark> 합니다.
    ```bash
    python -c "import json; print(json.load(open('containment_state.json', encoding='utf-8'))['locked_users'], len(json.load(open('containment_log.json', encoding='utf-8'))))"
    ```
    - `['junho'] 4` 가 나오면 실습 2-1만 실행하고 실습 2-2 실행 파일은 아직 실행하지 않은 것입니다. `python exercise2-2_run.py` 를 한 번 실행한 뒤 다시 확인합니다.
    - `FileNotFoundError` 가 나오면 다음 페이지 「이전 파일이 없을 때」의 두 상자로 파일을 만듭니다.
+
+<!-- checklist -->
+- [ ] 4번 명령을 실행해 `['junho', 'dami'] 5` 가 나왔다
+<!-- /checklist -->
+
 5. **파일은 이렇게 만듭니다.** 따로 내려받는 파일은 없고, 모두 코드 상자에서 복사해 만듭니다.
    1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다.
    2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
@@ -88,11 +98,6 @@ Unit 2 실습 2-1 · 2-2에서는 계정 잠금과 세션 종료(세션, session
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다(맥북은 `python3`). **앞 Unit 파일은 고치지 않습니다.** 실습 3-1 실행 파일은 두 결과 파일을 읽기만 하고 다시 저장하지 않아서, 몇 번을 실행해도 같은 결과가 나옵니다.
 
 > **확인** — 3번에서 `앞 Unit 파일 정상`, 4번에서 `['junho', 'dami'] 5` 가 나오면 성공입니다. 안 나오면 다음 페이지 「이전 파일이 없을 때」를 봅니다.
-
-<!-- checklist -->
-- [ ] `soar_response` 폴더에서 3번 명령을 실행해 `앞 Unit 파일 정상` 이 나왔다
-- [ ] 4번 명령을 실행해 `['junho', 'dami'] 5` 가 나왔다
-<!-- /checklist -->
 
 ## 이전 파일이 없을 때
 
@@ -151,12 +156,15 @@ def save_json(data, path):                                   # 저장할 값과 
 ]
 ```
 
+<!-- checklist -->
+- [ ] 앞 페이지 확인에서 오류가 난 파일만 `soar_response` 폴더에 만들었다(오류가 없었으면 건너뛰고 체크)
+<!-- /checklist -->
+
 다 만들었으면 앞 페이지의 3 · 4번 확인을 다시 합니다.
 
 > **확인** — 앞 페이지 3번에서 `앞 Unit 파일 정상`, 4번에서 `['junho', 'dami'] 5` 가 나오면 성공입니다. 그래도 오류가 나면 마지막 페이지 「오류가 나면」의 표에서 같은 오류 줄을 찾습니다.
 
 <!-- checklist -->
-- [ ] 앞 페이지 확인에서 오류가 난 파일만 `soar_response` 폴더에 만들었다(오류가 없었으면 건너뛰고 체크)
 - [ ] 앞 페이지 3 · 4번 확인을 다시 해 두 줄이 모두 그대로 나왔다
 <!-- /checklist -->
 
@@ -206,6 +214,10 @@ def save_json(data, path):                                   # 저장할 값과 
 ]
 ```
 
+<!-- checklist -->
+- [ ] `alerts_thu.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 **`config/escalation_rules.json`** — 티켓 생성 · 병합 · 알림 전파에 적용하는 정책 설정(policy configuration, 폴리시 컨피규레이션: 코드를 수정하지 않고 값만 바꿔 동작을 조정하는 설정 파일)입니다.
 
 - **어디에 쓰나**: 코드를 바꾸지 않고 이 파일만 고쳐도 응답 기한과 수신자가 바뀝니다.
@@ -243,11 +255,13 @@ def save_json(data, path):                                   # 저장할 값과 
 }
 ```
 
+<!-- checklist -->
+- [ ] `config/escalation_rules.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 > **확인** — 2번 확인 명령에서 `11 6` 이 나오면 성공입니다. `FileNotFoundError` 나 `JSONDecodeError` 가 나오면 마지막 페이지 「오류가 나면」의 표를 봅니다.
 
 <!-- checklist -->
-- [ ] `alerts_thu.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
-- [ ] `config/escalation_rules.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
 - [ ] 2번 확인 명령을 실행해 `11 6` 이 나왔다
 <!-- /checklist -->
 
