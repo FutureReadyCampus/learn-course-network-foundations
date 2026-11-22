@@ -81,10 +81,13 @@ def apply_route(incident, route, reason, incident_log):                     # �
     incident_log.append(entry)                                              # 기록 리스트에 추가한다
 ```
 
+<!-- checklist -->
+- [ ] `routing.py` 를 `soar_response` 폴더에 만들고 코드 상자 내용을 붙여 넣어 저장했다
+<!-- /checklist -->
+
 **확인** — 터미널에서 `python -c "import routing; print('ok')"`(맥북은 `python3`)를 쳐서 `ok` 가 나오면 성공입니다. `SyntaxError` 나 `IndentationError` 가 나오면 복사가 덜 된 것이니 파일 내용을 모두 지우고 코드 상자를 다시 복사해 붙여 넣습니다.
 
 <!-- checklist -->
-- [ ] `routing.py` 를 `soar_response` 폴더에 만들고 코드 상자 내용을 붙여 넣어 저장했다
 - [ ] `python -c "import routing; print('ok')"` 를 실행해 `ok` 가 나왔다
 <!-- /checklist -->
 
@@ -162,9 +165,12 @@ def process_safe(incidents, registry, state, action_log):                       
     return counts                                                                                         # 결과별 건수를 리턴한다
 ```
 
+<!-- checklist -->
+- [ ] `safe_runner.py` 를 `soar_response` 폴더에 만들고 코드 상자 내용을 붙여 넣어 저장했다
+<!-- /checklist -->
+
 **확인** — 터미널에서 첫 쪽 5번의 `python -c "import routing, safe_runner; print('ok')"` 를 쳐서 `ok` 가 나오면 성공입니다. 오류가 나면 오류에 적힌 파일 이름(`routing.py` 또는 `safe_runner.py`)의 내용을 모두 지우고 코드 상자를 다시 복사해 붙여 넣습니다.
 
 <!-- checklist -->
-- [ ] `safe_runner.py` 를 `soar_response` 폴더에 만들고 코드 상자 내용을 붙여 넣어 저장했다
 - [ ] `python -c "import routing, safe_runner; print('ok')"` 를 실행해 `ok` 가 나왔다
 <!-- /checklist -->
