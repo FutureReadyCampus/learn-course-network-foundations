@@ -227,7 +227,18 @@ for item in labeled:                                                            
 **순서**
 
 1. **[VS Code]** `anomaly_detection` 폴더에 `log_classify.py` · `apply1-1_run.py` 두 파일을 만들어, 위의 같은 이름 코드 상자 내용을 각각 붙여 넣고 저장합니다. 같은 폴더에 있는 실습 1-1의 `log_parse.py` 를 불러오므로 <mark>없으면 실습 1-1 레슨에서 먼저 만듭니다</mark>(채우다 막히면 정답 레슨의 「실습 1-1 정답」을 봅니다).
+
+<!-- checklist optional -->
+- [ ] `anomaly_detection` 폴더에 `log_classify.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `anomaly_detection` 폴더에 `apply1-1_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 2. **[VS Code]** `log_classify.py` 에서 직접 쓰는 곳 세 군데를 씁니다. 「이번 응용에서 만드는 규칙」 쪽의 그림을 보고 씁니다.
+
+<!-- checklist optional -->
+- [ ] `log_classify.py` 의 직접 쓰는 곳 세 군데를 채우고 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지 확인하고</mark> 실행합니다(맥북은 `python3`).
    ```bash
    pwd
@@ -235,17 +246,15 @@ for item in labeled:                                                            
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python apply1-1_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 세 단계입니다. <mark>단계 1은 한 줄, 단계 2는 의심 요청 여덟 줄, 단계 3은 오류 요청 다섯 줄입니다.</mark>
+
+<!-- checklist optional -->
+- [ ] `python apply1-1_run.py` 를 실행해 단계 1 에 `정상 15 · 오류 5 · 의심 8` 이 나왔다
+<!-- /checklist -->
+
 5. **[보고서]** `report_u1.md` 의 `## 응용 1-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 분류별 요청 수와, 의심으로 분류한 요청 중 같은 주소에서 반복된 것을 적어 주세요.
    - (나) [핵심 질문] 상태 코드와 경로만으로 분류를 정하면 놓치는 것이 있습니다. 샘플 로그에서 놓친 예를 두 가지 찾아(정상이나 오류로 분류됐지만 살펴볼 만한 요청) 왜 놓쳤는지 적어 주세요.
    - (다) [핵심 질문] 시작하기 레슨 「현업에서 SIEM(심)을 쓰는 방식 여섯 가지」 표의 방식 중에서, 보안 전담 직원이 1명뿐이고 쓰는 서비스 대부분이 클라우드에 있는 작은 회사라면 어느 방식을 고를지 이유와 함께 적어 주세요. 고르지 않은 방식 하나가 왜 맞지 않는지도 적어 주세요.
-
-<!-- checklist optional -->
-- [ ] `anomaly_detection` 폴더에 `log_classify.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
-- [ ] `anomaly_detection` 폴더에 `apply1-1_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
-- [ ] `log_classify.py` 의 직접 쓰는 곳 세 군데를 채우고 저장했다
-- [ ] `python apply1-1_run.py` 를 실행해 단계 1 에 `정상 15 · 오류 5 · 의심 8` 이 나왔다
-<!-- /checklist -->
 
 ## 응용 1-1 정리
 
