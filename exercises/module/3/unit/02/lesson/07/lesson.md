@@ -231,7 +231,18 @@ for request in check_sla_breach(REQUESTS, NOW):                  # 기한을 초
 2. **[터미널]** 파일을 만든 뒤 `ls config` 를 쳐서 `sla.json` 이 `users.json` 과 같은 `config` 폴더 안에 있는지 확인합니다.
    - `config` 안에 또 `config` 가 생겼다면 위치가 틀린 것이니 옮깁니다.
    - `sla.json` 을 비워 두면 실행할 때 `[경고] 설정 파일 깨짐: config/sla.json` 이 나옵니다. 그래도 기본값 4로 돌아가 실행은 되니, 이 경고가 보이면 붙여 넣은 내용을 확인합니다.
+
+<!-- checklist optional -->
+- [ ] `access_control` 폴더에 `req_sla.py` 와 `apply2-2_run.py` 를 만들어 붙여 넣고 저장했다
+- [ ] `access_control/config` 폴더에 `sla.json` 을 만들어 `{"hours": 4}` 를 붙여 넣고 저장했다
+<!-- /checklist -->
+
 3. **[VS Code]** `req_sla.py` 의 `check_sla_breach` 본문을 직접 씁니다. 1.1 의 그림과 문법 상자를 보고 씁니다.
+
+<!-- checklist optional -->
+- [ ] `req_sla.py` 의 `check_sla_breach` 본문을 직접 썼다
+<!-- /checklist -->
+
 4. **[터미널]** 위치가 `…/access_control` 인지 확인하고 실행합니다.
    ```bash
    pwd
@@ -240,16 +251,17 @@ for request in check_sla_breach(REQUESTS, NOW):                  # 기한을 초
    - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `apply2-2_run.py` 실행할 파일
    - 맥북은 `python3 apply2-2_run.py` 로 칩니다.
 5. 출력은 두 단계입니다. 단계 1은 요청서 현황(여섯 줄)이고, 단계 2는 기한을 초과한 요청서와 지난 시간입니다.
+
+<!-- checklist optional -->
+- [ ] `python apply2-2_run.py` 를 실행해 요청서 현황 여섯 줄과 기한 초과 요청이 나왔다
+<!-- /checklist -->
+
 6. **[보고서]** `access_control/report_u2.md` 의 `## 응용 2-2` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
    - (가) 실행한 출력 전체를 붙여 넣고, 접수한 뒤 4시간을 초과한 요청이 몇 번인지, 접수한 뒤 몇 시간이 지났는지 적어 주세요.
    - (나) [핵심 질문] 승인자(`security_manager`)가 4시간을 초과하도록 처리하지 않은 요청을 찾았다면, 관제 담당은 누구에게 어떤 조치를 하면 좋을까요? 알림만 보낼 때와 윗사람에게 넘길 때(에스컬레이션)는 어떤 기준(예: 얼마나 더 지났을 때)으로 나누면 좋을까요?
    - (다) [핵심 질문] 상태(`reviewing` 인지)는 확인하지 않고 접수 시각만 보고 기한을 따진다면, 리스트에 어떤 문제가 생기나요? 그 리스트를 받은 사람은 무엇이 곤란할까요?
 
 <!-- checklist optional -->
-- [ ] `access_control` 폴더에 `req_sla.py` 와 `apply2-2_run.py` 를 만들어 붙여 넣고 저장했다
-- [ ] `access_control/config` 폴더에 `sla.json` 을 만들어 `{"hours": 4}` 를 붙여 넣고 저장했다
-- [ ] `req_sla.py` 의 `check_sla_breach` 본문을 직접 썼다
-- [ ] `python apply2-2_run.py` 를 실행해 요청서 현황 여섯 줄과 기한 초과 요청이 나왔다
 - [ ] `report_u2.md` 의 `## 응용 2-2` 칸을 채웠다
 <!-- /checklist -->
 
