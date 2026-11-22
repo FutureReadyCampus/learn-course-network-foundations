@@ -201,6 +201,11 @@ XDR(엑스디알)은 PC · 서버 같은 여러 곳의 탐지를 이어서 보�
        access_control/        Module 3
        anomaly_detection/     Module 4
      ```
+
+<!-- checklist -->
+- [ ] `network-study-notes` 안에 `anomaly_detection` 폴더를 만들고, 터미널 위치(`pwd`)가 `…/network-study-notes/anomaly_detection` 으로 끝나는 것을 봤다
+<!-- /checklist -->
+
 3. **파일은 이렇게 만듭니다.** 따로 내려받는 파일은 없고, 모두 코드 상자에서 복사해 만듭니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
    1. **[VS Code]** 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다.
    2. 코드 상자의 복사 버튼으로 내용을 복사해 새 파일에 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
@@ -242,6 +247,10 @@ XDR(엑스디알)은 PC · 서버 같은 여러 곳의 탐지를 이어서 보�
 -
 ```
 
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `access_sample.log` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 5. **[터미널]** 파일이 30줄인지 확인합니다(맥북은 `python3`).
    ```bash
    python -c "print(len(open('access_sample.log', encoding='utf-8').read().splitlines()))"
@@ -249,15 +258,14 @@ XDR(엑스디알)은 PC · 서버 같은 여러 곳의 탐지를 이어서 보�
    - 명령 풀이: `python -c "…"` 따옴표 안의 파이썬 한 줄을 실행해 파일의 줄 수를 출력
    - <mark>`30` 이 나와야</mark> 합니다. 다르면 줄이 빠졌거나 빈 줄이 끼어든 것이니 다시 붙여 넣습니다.
    - 응용 1-2 · 1-3에서 쓰는 로그 파일 두 개(`server_log.jsonl` · `saas_events.csv`)는 응용 1-2 레슨 앞에서 만듭니다. 오늘은 이 파일 하나면 됩니다.
+
+<!-- checklist -->
+- [ ] 줄 수 확인 명령을 실행해 `30` 이 나왔다
+<!-- /checklist -->
+
 6. 각 실습은 **「할 일」을 위에서부터 차례로** 따라 합니다. `[창 이름]` 이 지금 쓸 창입니다. 코드를 채울 때는 `# ←` 가 붙은 번호 주석(① · ②) 바로 아래에 한 줄씩 씁니다. 주석이 시키는 일을 하면 모양이 조금 달라도 맞습니다. 막히면 이 Unit 뒤쪽의 정답 레슨을 봅니다.
 
 > **확인** — 5번 명령에서 `30` 이 나오고, VS Code 왼쪽 목록의 `anomaly_detection` 아래에 `access_sample.log` 가 보이면 성공입니다. 숫자가 다르면 파일 내용을 모두 지우고 위 코드 상자에서 다시 복사해 붙여 넣습니다.
-
-<!-- checklist -->
-- [ ] `network-study-notes` 안에 `anomaly_detection` 폴더를 만들고, 터미널 위치(`pwd`)가 `…/network-study-notes/anomaly_detection` 으로 끝나는 것을 봤다
-- [ ] `anomaly_detection` 폴더에 `access_sample.log` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
-- [ ] 줄 수 확인 명령을 실행해 `30` 이 나왔다
-<!-- /checklist -->
 
 ## 오류가 나면
 
