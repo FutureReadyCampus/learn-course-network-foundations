@@ -13,7 +13,7 @@ render: markdown
 1. **핵심 실습**: 실습 2-1 ~ 2-3 정답입니다. 오늘 모두가 하는 실습이니 먼저 맞춰 봅니다.
 2. **응용(여유가 되면)**: 응용 2-1 · 2-2 정답입니다. 응용을 한 사람만 봅니다.
 3. 정답마다 채운 코드, 결과, 왜, 자주 틀리는 곳, 관제에서는 순서로 읽습니다.
-4. 오류 메시지의 줄 번호와 `^^^^` 표시 줄은 사람마다, 파이썬 버전마다 다를 수 있습니다. 마지막 줄의 오류 이름과 내용을 봅니다.
+4. 오류 메시지의 줄 번호와 `^^^^` 표시 줄은 사람마다, 파이썬 버전마다 다를 수 있습니다. 오류 속 파일 경로는 `…/anomaly_detection/…` 처럼 줄여 적었고, 윈도우에서는 `C:\Users\…\anomaly_detection\…` 처럼 `\` 로 나옵니다. 마지막 줄의 오류 이름과 내용을 봅니다.
 
 ---
 
@@ -305,27 +305,27 @@ python apply2-1_run.py
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 네 함수입니다.
 
-① `load_daily_failures` 안
+1번 · `load_daily_failures` 안
 
 ```python
     daily = pd.read_csv(path)  # CSV 파일을 읽어 표로 만든다 — 한 행이 하루
 ```
 
-② `average_failures` 안
+2 · 3번 · `average_failures` 안
 
 ```python
     daily_failed_logins = daily["failed_logins"]  # failed_logins 열만 꺼낸다 — 하루 실패 횟수 7개가 나열된 열
     average = daily_failed_logins.mean()          # 7개의 평균을 구한다
 ```
 
-③ `maximum_failures` 안
+4 · 5번 · `maximum_failures` 안
 
 ```python
     daily_failed_logins = daily["failed_logins"]  # failed_logins 열만 꺼낸다 — 하루 실패 횟수 7개가 나열된 열
     maximum = daily_failed_logins.max()           # 7개 중 가장 큰 값을 구한다
 ```
 
-④ `make_limit` 안
+6번 · `make_limit` 안
 
 ```python
     limit = maximum + 1  # 평소 최댓값보다 1 큰 숫자를 기준으로 삼는다
@@ -406,7 +406,7 @@ python apply2-2_run.py
 
 **채운 코드** (한 예) — 직접 쓰는 곳은 두 함수입니다.
 
-① `classify_event` 안
+1 ~ 4번 · `classify_event` 안
 
 ```python
     if result == "실패" and action == "POST /login":  # 로그인 요청이 실패했으면
@@ -415,7 +415,7 @@ python apply2-2_run.py
         return "비인가 접근"                          # 비인가 접근으로 분류한다
 ```
 
-② `count_types` 안
+5번 · `count_types` 안
 
 ```python
     event_list = events.to_dict("records")  # 표를 딕셔너리 리스트로 바꾼다 — 이벤트 하나가 딕셔너리 하나

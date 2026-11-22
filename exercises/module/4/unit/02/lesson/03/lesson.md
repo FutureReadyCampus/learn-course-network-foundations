@@ -192,7 +192,7 @@ failed.to_csv("failed_events.csv", index=False)  # 표를 failed_events.csv 파�
 ```
 
 - 실행하면 같은 폴더에 `failed_events.csv` 파일이 생깁니다. VS Code 로 열면 첫 줄은 열 이름이고, 둘째 줄부터 이벤트가 한 줄씩 있습니다.
-- 엑셀로 열었을 때 한글이 깨져 보이면 VS Code 로 열어 확인합니다.
+- 엑셀로 열었을 때 한글이 깨져 보이면 VS Code 로 열어 확인합니다. 한글 윈도우의 엑셀은 이 파일의 글자 형식(UTF-8)을 다른 형식으로 읽기 때문입니다. 엑셀에서도 바로 보려면 `to_csv` 에 `encoding="utf-8-sig"` 를 붙이면 되지만, 오늘은 하지 않습니다.
 
 **한 장 정리**
 
@@ -204,7 +204,7 @@ failed.to_csv("failed_events.csv", index=False)  # 표를 failed_events.csv 파�
 | `count_by_hour` | 실패한 이벤트 표 | 시간대별 실패 횟수 | 없음(미리 채움) |
 | `save_failed` | 표와 파일 이름 | 없음(CSV 파일로 저장) | 없음(미리 채움) |
 
-- **직접 쓰는 곳은 `count_by_user` 의 두 곳**(① · ②)입니다. 나머지는 미리 채웠습니다. `load_events` 와 `pick_failed` 는 실습 2-1과 같고, `add_hour` 와 `save_failed` 는 아직 배우지 않은 문법이라 읽기만 합니다.
+- **직접 쓰는 곳은 `count_by_user` 의 두 곳**(① · ②)입니다. 나머지는 미리 채웠습니다. `load_events` 와 `pick_failed` 는 실습 2-1과 같고, `add_hour` 와 `save_failed` 는 2.1 에서 읽기만 한 문법이라 미리 채웠습니다.
 - 미리 채운 `count_by_hour` 는 `count_by_user` 의 묶기 · 세기와 같고 열 이름(`"hour"`)만 다릅니다. ① 을 쓸 때 본보기로 봅니다.
 
 ## 2.2 묶을 때 비어 있는 값은 빠집니다
@@ -343,7 +343,7 @@ print("저장된 행", saved_count, "개")          # 저장된 행 수를 출�
 - [ ] `exercise2-2_run.py` 를 만들어 붙여 넣고 저장했다
 <!-- /checklist -->
 
-3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다.
    ```bash
    pwd
    python exercise2-2_run.py
@@ -355,13 +355,13 @@ print("저장된 행", saved_count, "개")          # 저장된 행 수를 출�
 - [ ] `python exercise2-2_run.py` 를 실행해 단계 1 ~ 3 이 아래 「확인」과 같게 나왔다
 <!-- /checklist -->
 
-5. **[VS Code]** `anomaly_detection` 폴더에 새로 생긴 `failed_events.csv` 를 열어 첫 줄이 열 이름(`time,source,user,ip,action,result,hour`)인지 보고, <mark>`hour` 가 9 인 행의 `source` 를 봅니다</mark>.
+5. **[VS Code]** `anomaly_detection` 폴더에 새로 생긴 `failed_events.csv` 를 열어 첫 줄이 열 이름(`time,source,user,ip,action,result,hour`)인지 봅니다. (응용) — (나)를 할 사람은 `hour` 가 9 인 행의 `source` 도 봅니다. 지금은 건너뛰어도 됩니다.
 
 <!-- checklist -->
 - [ ] 새로 생긴 `failed_events.csv` 를 VS Code 로 열어 첫 줄의 열 이름을 봤다
 <!-- /checklist -->
 
-6. **[보고서]** `report_u2.md` 의 `## 실습 2-2` 아래를 채웁니다.
+6. **[보고서]** `report_u2.md` 의 `## 실습 2-2` 아래에 (가)를 채웁니다. (나) · (다)[응용]은 여유가 되면 `## 실습 응용 질문` 칸의 `2-2 (나)` · `2-2 (다)` 에 씁니다.
    - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 실패가 가장 많은 사용자와 횟수, 실패가 가장 많이 난 시간대와 횟수, 저장된 행 수를 적어 주세요.
    - (나) [응용] 시간대별 결과에서 실패가 가장 많이 난 시간대의 개수를 보세요. 이 개수는 실습 2-1 단계 3의 어느 소스 개수와 같은가요? 그 실패가 어느 소스에서 났는지 적고(근거는 숫자가 같다는 것까지 쓰면 됩니다), 이어서 확인할 것도 적어 주세요.
    - (다) [응용] 사용자별 실패 횟수를 모두 더하면 실패한 이벤트 전체보다 적습니다. 몇 개가 모자라고 왜 모자란지 적어 주세요. 그리고 이 차이를 모르고 사용자별 숫자만 보면 어떤 잘못된 판단을 할 수 있을지도 적어 주세요.
