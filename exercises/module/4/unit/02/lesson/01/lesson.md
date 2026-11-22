@@ -70,6 +70,10 @@ CSV 파일은 값을 쉼표로 구분해 적은 텍스트 파일이고, 엑셀�
    - 설치가 끝나면 <mark>`Successfully installed …` 또는 `Requirement already satisfied` 가 나옵니다.</mark> 마지막에 `WARNING: You are using pip version …` 이 나와도 무시합니다.
    - <mark>마지막 명령에서 점이 든 숫자(예: `3.1.1`)가 나오면</mark> 판다스를 쓸 수 있습니다. 숫자는 설치한 때에 따라 다릅니다.
    - 판다스 버전에 따라 표 아래의 `dtype` 표시(`object` 또는 `str`), 시각 종류(`datetime64[ns]` 또는 `[us]`), `<StringArray>` 줄, 빈 값이 `None` 이나 `NaN` 으로 보이는 것 같은 **종류 표시만** 조금 다르게 나올 수 있습니다. 숫자와 이름이 레슨의 결과와 같으면 정상입니다.
+
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에서 판다스를 설치하고 버전 숫자가 나온 것을 봤다
+<!-- /checklist -->
 4. **파일은 이렇게 만듭니다.** 따로 내려받는 파일은 없고, 모두 코드 상자에서 복사해 만듭니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
    1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다.
    2. 코드 상자의 복사 버튼으로 내용을 복사해 새 파일에 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
@@ -140,20 +144,23 @@ CSV 파일은 값을 쉼표로 구분해 적은 텍스트 파일이고, 엑셀�
 ]
 ```
 
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `normalized_events.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 6. **[터미널]** 이벤트가 57개인지 확인합니다(맥북은 `python3`).
    ```bash
    python -c "import json; print(len(json.load(open('normalized_events.json', encoding='utf-8'))))"
    ```
    - `python -c "코드"` 는 파일을 만들지 않고 코드를 한 줄로 바로 실행합니다. <mark>`57` 이 나와야</mark> 합니다. 아니면 붙여 넣다가 줄이 빠졌거나 `[` `]` 가 빠진 것입니다. 다시 붙여 넣습니다.
+
+<!-- checklist -->
+- [ ] 6번의 확인 명령을 실행해 `57` 이 나왔다
+<!-- /checklist -->
+
 7. 문제는 **할 일 → 순서**대로 하고, `[창 이름]` 이 지금 쓸 창입니다. 직접 쓰는 곳은 실습마다 `# ←` 가 붙은 두 곳(① · ②)이고, 각 주석 바로 아래에 한 줄씩 씁니다. 막히면 이 Unit 뒤쪽의 「정답」을 봅니다.
 
 > **확인** — `pwd` 가 `…/anomaly_detection` 으로 끝나고, 판다스 버전 숫자와 이벤트 수 `57` 이 나오면 성공입니다. 안 나오면 다음 페이지 「오류가 나면」의 표에서 내 오류와 같은 줄을 찾습니다.
-
-<!-- checklist -->
-- [ ] `anomaly_detection` 폴더에서 판다스를 설치하고 버전 숫자가 나온 것을 봤다
-- [ ] `anomaly_detection` 폴더에 `normalized_events.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
-- [ ] 6번의 확인 명령을 실행해 `57` 이 나왔다
-<!-- /checklist -->
 
 ## 오류가 나면
 
