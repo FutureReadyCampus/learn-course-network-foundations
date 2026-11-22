@@ -344,7 +344,7 @@ for entry in action_log:                                                        
 
 **순서**
 
-1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `incident.py` · `playbook_runner.py` · `exercise1-2_run.py` 세 파일을 하나씩 만들고(파일 이름 그대로), 위 코드를 붙여 넣어 저장합니다. <mark>`config/playbook_registry.json` 에 PB-001 ~ PB-003 이 있어야</mark> 합니다.
+1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `incident.py` · `playbook_runner.py` · `exercise1-2_run.py` 세 파일을 하나씩 만들고(파일 이름 그대로), 위에서 같은 이름의 코드 상자를 붙여 넣어 저장합니다. <mark>`config/playbook_registry.json` 에 PB-001 ~ PB-003 이 있어야</mark> 합니다.
 2. **[VS Code]** `playbook_runner.py` 의 <mark>`# ←` 두 곳(① · ②)을 채웁니다</mark>. 위 2.1 의 그림에서 「예」 쪽을 보고 씁니다. 막히면 위 「직접 쓰는 곳」의 확인과 힌트를 봅니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -363,16 +363,24 @@ for entry in action_log:                                                        
    | 6 | 감사 기록 건수만큼 |
 
    - <mark>승인 대기와 기록 수는 실습 1-1에서 내가 정한 PB-003 의 승인 값에 따라 달라집니다.</mark>
-5. **[VS Code]** 새로 생긴 `action_log.json` 과 `system_state.json` 을 열어 봅니다.
+5. **[VS Code]** `soar_response` 폴더에 새로 생긴 `action_log.json` 과, 덮어써진 `system_state.json` 을 열어 봅니다.
    - `action_log.json`: 감사 기록입니다. 누가 무엇을 언제 했는지 남은 파일이고, 사고가 난 뒤 대응이 적절했는지 다시 확인할 때 읽습니다. 시각(`time`)이 있는지 확인합니다.
    - `system_state.json`: 실행 후 연습용 시스템의 상태입니다. 잠긴 계정과 티켓이 들어 있는지 확인합니다.
-6. **[보고서]** `report_u1.md` 의 `## 실습 1-2` 아래를 채웁니다.
+6. **[보고서]** `soar_response/report_u1.md` 의 `## 실습 1-2` 아래를 채웁니다.
    - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 실행 후 잠긴 계정 · 차단한 IP · 티켓의 개수와 승인 대기 건수를 적어 주세요.
    - (나) [응용] 실습 1-1에서 INC-005 를 수동 처리할 때와 달리, 실행기는 INC-005 를 어떻게 처리했는지 적어 주세요. 근거는 단계 3 · 4 · 5 의 출력으로 쓰고, 그렇게 처리한 이유도 적어 주세요.
    - (다) [응용] 감사 기록(단계 6)에서 INC-002 의 한 줄을 읽고, 그 인시던트에 실제로 무엇이 일어났고 무엇이 일어나지 않았는지 적어 주세요. 이런 기록이 현업에서 필요한 이유도 적어 주세요.
    - (가)는 꼭 씁니다. (나) · (다)는 여유가 되면 하는 응용이고, 답은 보고서 틀의 `## 실습 응용 질문` 칸에 씁니다.
 
 **확인** — 단계 5 가 `승인 대기 2 건`(INC-002 · INC-005)이고 단계 6 이 `감사 기록 4 건` 이면 성공입니다(PB-003 을 `담당자 승인 필요` 로 쓴 경우. `자동` 으로 썼다면 승인 대기 1 건 · 감사 기록 5 건). 안 나오면 「정답」 레슨의 실습 1-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+
+<!-- checklist -->
+- [ ] `incident.py` 를 `soar_response` 폴더에 만들고 코드 상자 내용을 붙여 넣어 저장했다
+- [ ] `playbook_runner.py` 를 만들어 붙여 넣고 ① · ② 를 채워 저장했다
+- [ ] `exercise1-2_run.py` 를 만들고 코드 상자 내용을 붙여 넣어 저장했다
+- [ ] `python exercise1-2_run.py` 를 실행해 단계 1 ~ 6 이 나오고, 생긴 `action_log.json` 을 열어 봤다
+- [ ] `report_u1.md` 의 `## 실습 1-2` (가)를 채웠다
+<!-- /checklist -->
 
 ## 실습 1-2 정리
 

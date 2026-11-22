@@ -92,7 +92,7 @@ render: markdown
    1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 확장자까지 그대로** 적고 Enter 를 칩니다.
    2. 코드 상자의 복사 버튼으로 내용을 복사해 새 파일에 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
    - 답을 적는 **보고서**(`report_u1.md`)는 「보고서 쓰기」 레슨의 틀을 복사해 만듭니다.
-5. **[VS Code]** 오늘 쓸 데이터 파일 다섯 개를 `soar_response` 폴더에 만들고, 아래 각 파일의 코드 상자 내용을 그대로 붙여 넣습니다. 폴더는 이렇게 됩니다. 나머지 파일은 실습 때 만듭니다.
+5. **[VS Code]** 오늘 쓸 데이터 파일 다섯 개를 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 하나씩 만들고(`incident_samples.json` · `system_state.json` · `users_info.json` · `source_ips.json` · `trusted_ips.json`), 아래에서 같은 이름의 코드 상자 내용을 그대로 붙여 넣어 저장합니다. 폴더는 이렇게 됩니다. 나머지 파일은 실습 때 만듭니다.
    ```
    soar_response/
      config/
@@ -211,6 +211,14 @@ render: markdown
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다. 파일을 지금 위치 기준으로 찾기 때문입니다. 각 실습은 **「할 일」을 위에서부터 차례로** 따라 하고, 코드를 채울 때는 코드 안 `#` 설명이 시키는 일을 합니다. 막히면 이 Unit 뒤쪽의 정답을 봅니다.
 
 **확인** — 6번 명령에서 `5 6 4 1` 이 나오고 `pwd` 가 `…/network-study-notes/soar_response` 로 끝나면 성공입니다. 숫자가 다르거나 오류가 나면 다음 쪽 「오류가 나면」 표를 봅니다.
+
+<!-- checklist -->
+- [ ] `soar_response/config` 폴더를 만들고 터미널에서 `soar_response` 폴더로 들어갔다
+- [ ] `soar_response/incident_samples.json` 을 만들고 코드 상자 내용을 붙여 넣어 저장했다
+- [ ] `soar_response/system_state.json` 을 만들고 코드 상자 내용을 붙여 넣어 저장했다
+- [ ] `users_info.json` · `source_ips.json` · `trusted_ips.json` 세 파일을 `soar_response` 폴더에 만들고 붙여 넣어 저장했다
+- [ ] 6번 확인 명령을 실행해 `5 6 4 1` 이 나왔다
+<!-- /checklist -->
 
 ## 오류가 나면
 

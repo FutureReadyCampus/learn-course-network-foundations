@@ -41,7 +41,7 @@ render: markdown
 
 ## 글 틀로 쓰고 올리기
 
-설치할 것은 없습니다. **GitHub 웹 화면**에서 파일을 만들고 붙여 넣습니다. 포트폴리오 저장소가 아직 없으면 [Module 3 Unit 1 시작하기 레슨의 「내 기록 남기기: 소개」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/4)부터 준비하고, 글 틀 세 가지의 내용은 [Module 3 Unit 1 시작하기 레슨의 「글 틀로 글 쓰기」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/10)에 있습니다.
+설치할 것은 없습니다. **GitHub 웹 화면**에서 파일을 만들고 붙여 넣습니다. 저장소 `network-study-notes` 가 아직 없으면 [Module 3 Unit 1 시작하기 레슨의 「내 기록 남기기: 소개」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/4)부터 준비하고, 글 틀 세 가지의 내용은 [Module 3 Unit 1 시작하기 레슨의 「글 틀로 글 쓰기」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/10)에 있습니다.
 
 **글 틀 고르기**
 
@@ -53,14 +53,20 @@ render: markdown
 
 **올리는 순서**
 
-1. 내 포트폴리오 저장소에서 **Add file → Create new file** 을 누릅니다.
+1. 깃허브 웹 화면의 내 저장소 `network-study-notes` 에서 **Add file → Create new file** 을 누릅니다.
 2. 파일 이름 칸에 `_posts/날짜-영문제목.md` 를 적습니다. 예: `_posts/2026-11-20-m5-u1-playbook-runner.md`
 3. 고른 글 틀의 내용을 붙여 넣고, 맨 위 머리말(front matter)의 `module: 5`, `unit: 1` 을 이렇게 적습니다. 그래야 첫 화면 「나의 진행」에서 Module 5의 1번 칸이 채워집니다. `date:` 는 파일 이름의 날짜와 같게 씁니다. 날짜가 미래면 글이 목록에 나오지 않습니다.
 4. 빈칸을 채우고 오른쪽 위 **Commit changes** 를 누른 뒤, 나오는 창에서 한 번 더 **Commit changes** 를 누릅니다.
-5. 코드를 함께 남기려면 `code/` 폴더에 같은 방법으로 파일을 만들고 내 코드를 붙여 넣습니다. 예: `code/m5_u1_playbook_runner.py`(VS Code 에서 연 `playbook_runner.py` 의 내용). `enrichment.py` 도 올린다면 `code/m5_u1_enrichment.py` 로 만듭니다. 글에는 `전체 코드: code/m5_u1_playbook_runner.py` 처럼 위치를 적습니다.
+5. 코드를 함께 남기려면 `code/` 폴더에 같은 방법으로 파일을 만들고 내 코드를 붙여 넣습니다. 예: `code/m5_u1_playbook_runner.py`(VS Code 에서 연 `soar_response/playbook_runner.py` 의 내용). `enrichment.py` 도 올린다면 `code/m5_u1_enrichment.py` 로 만듭니다. 글에는 `전체 코드: code/m5_u1_playbook_runner.py` 처럼 위치를 적습니다.
 6. 1~2분 뒤 내 사이트 첫 화면을 열어 최신 글에 새 글이 보이는지, Module 5의 1번 칸이 채워졌는지 확인합니다.
 
 > **확인** — 최신 글에 오늘 글이 보이고 「나의 진행」의 Module 5 · Unit 1 칸이 채워지면 성공입니다. 안 보이면 [Module 3 Unit 1 시작하기 레슨의 「첫 화면 확인하고 막힐 때」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/9)의 「글이 목록에 안 나옴」 줄을 봅니다.
+
+<!-- checklist -->
+- [ ] `_posts/날짜-영문제목.md` 파일을 만들고 고른 글 틀을 붙여 넣었다
+- [ ] 머리말에 `module: 5` · `unit: 1` · `date:` 를 적고 세 문장을 채워 **Commit changes** 했다
+- [ ] 내 사이트 첫 화면에서 새 글과 「나의 진행」의 Module 5 · Unit 1 칸을 확인했다
+<!-- /checklist -->
 
 ## 막힐 때 힌트
 
