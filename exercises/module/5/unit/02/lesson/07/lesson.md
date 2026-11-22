@@ -13,7 +13,7 @@ source:
 
 ## 목표: 예외 IP와 차단 만료
 
-> **여유가 되면 해 보세요.** 핵심 실습 2-1 · 2-2와 글쓰기를 먼저 마칩니다. 이 응용에서는 제공 파일로 받아 쓴 `ip_actions.py` 를 직접 써 봅니다. 실습 2-1 의 `containment_store.py` 를 쓰고, 실행하면 실습 2-2 가 저장한 상태 파일을 덮어쓰니 끝난 뒤 `exercise2-2_run.py` 를 한 번 더 실행합니다(순서 6번). 하지 않아도 Unit 3 을 따라가는 데 문제가 없습니다.
+> **여유가 되면 해 보세요.** 핵심 실습 2-1 · 2-2와 글쓰기를 먼저 마칩니다. 이 응용에서는 제공 파일로 받아 쓴 `ip_actions.py` 를 직접 써 봅니다. 실습 2-1 의 `containment_store.py` 를 쓰고, 실행하면 실습 2-2 가 저장한 상태 파일을 덮어쓰니 끝난 뒤 `exercise2-2_run.py` 를 한 번 더 실행합니다(순서 6번). 하지 않아도 Unit 3 을 따라가는 데 문제가 없습니다. 다만 <mark>시작했다가 다 채우지 못하고 멈추면 `ip_actions.py` 를 「제공 파일」 레슨의 완성본으로 되돌려 둡니다.</mark> Unit 3 이 이 파일을 불러 쓰기 때문입니다.
 
 > **오늘 들어온 일**
 >
@@ -179,14 +179,15 @@ print("조치 기록:", len(load_json("containment_log.json")), "건")          
 
 **순서**
 
-1. **[VS Code]** 작업 폴더 `network-study-notes/soar_response` 의 `ip_actions.py` 를 열어 내용을 모두 지우고 위 골격을 붙여 넣습니다. 이어서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `apply2-3_run.py` 를 만들어(파일 이름 그대로) 코드를 붙여 넣습니다. 두 파일 모두 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
+1. **[VS Code]** 작업 폴더 `network-study-notes/soar_response` 의 `ip_actions.py` 를 열어 내용을 모두 지우고 위 골격을 붙여 넣습니다. 이어서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `apply2-3_run.py` 를 만들어(파일 이름 그대로) 코드를 붙여 넣습니다. 두 파일 모두 저장합니다(`Ctrl + S`).
 2. **[VS Code]** `ip_actions.py` 1 ~ 6번, `apply2-3_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「응용 2-3 정리」를 봅니다.
+   - 들여쓰기: 1 ~ 4번은 4칸, 5번은 `for` 안쪽이라 8칸, 6번은 5번 `if` 의 안쪽이라 12칸입니다. 7 · 8번은 4칸, 9번은 8번 `if` 의 안쪽이라 8칸입니다.
 
 <!-- checklist optional -->
 - [ ] `ip_actions.py` 를 골격으로 바꿔 붙여 넣고 1 ~ 6번을 채운 뒤 저장했다
 <!-- /checklist -->
 
-3. **[터미널]** 실행합니다(맥북은 `python3`).
+3. **[터미널]** 실행합니다.
    ```bash
    python apply2-3_run.py
    ```
@@ -206,6 +207,7 @@ print("조치 기록:", len(load_json("containment_log.json")), "건")          
 <!-- /checklist -->
 
 6. **[터미널]** 이 실행 파일은 실습 2-2 와 같은 파일(`containment_state.json` · `containment_log.json`)에 결과를 저장합니다. Unit 3 실습 3-1 은 실습 2-2 가 저장한 상태를 읽으니, 보고서를 채운 뒤 실습 2-2 실행 파일을 한 번 더 실행하고 확인합니다. 마지막 줄에 <mark>`['junho', 'dami'] 5`</mark> 가 나오면 됩니다.
+   - 1 ~ 9번을 다 채우지 못했거나 3번의 출력이 「정답」과 다르면, `ip_actions.py` 의 내용을 모두 지우고 「제공 파일」 레슨의 완성본을 다시 붙여 넣은 뒤 「제공 파일」 레슨 첫 페이지 4번 명령으로 `제공 파일 정상 …` 이 나오는지 봅니다. Unit 3 이 이 파일을 불러 씁니다.
    ```bash
    python exercise2-2_run.py
    python -c "import json; print(json.load(open('containment_state.json', encoding='utf-8'))['locked_users'], len(json.load(open('containment_log.json', encoding='utf-8'))))"
