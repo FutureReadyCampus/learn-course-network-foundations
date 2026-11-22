@@ -39,7 +39,7 @@ Unit 1 ~ 4에서는 플레이북 찾기(Unit 1) · 계정 잠금과 IP 차단(Un
 
 ## 폴더 열고 이전 파일 확인하기
 
-오늘 코드는 앞 Unit 파일을 `import` 로 불러 씁니다. 먼저 `soar_response` 폴더에 아래 파일이 있는지 봅니다.
+오늘의 작업 폴더는 `network-study-notes/soar_response` 입니다. VS Code 로 저장소 폴더 `network-study-notes` 를 열고, 터미널에서 `soar_response` 로 들어가 작업합니다. 오늘 코드는 앞 Unit 파일을 `import` 로 불러 씁니다. 먼저 `soar_response` 폴더에 아래 파일이 있는지 봅니다.
 
 | 파일 | 만든 곳 | 가져다 쓰는 것 | 쓰는 실습 |
 |---|---|---|---|
@@ -81,7 +81,7 @@ Unit 1 ~ 4에서는 플레이북 찾기(Unit 1) · 계정 잠금과 IP 차단(Un
    1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더(`soar_response` 또는 그 안의 `config`)를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다.
    2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
    - 답을 적는 보고서 `report_u5.md` 는 「보고서 쓰기」 레슨의 틀을 복사해 만듭니다.
-6. **[VS Code]** `soar_response` 폴더에 `engine_alerts.json` 파일을 만들어 아래 내용을 붙여 넣고 저장합니다.
+6. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `engine_alerts.json` 파일을 만들어 아래 내용을 붙여 넣고 저장합니다.
 
 **`engine_alerts.json`** — 이번 Unit에서 들어온 알림 8건입니다.
 
@@ -128,6 +128,13 @@ Unit 1 ~ 4에서는 플레이북 찾기(Unit 1) · 계정 잠금과 IP 차단(Un
 > 실행은 VS Code 의 ▶ 단추가 아니라 **터미널**에서 합니다. **앞 Unit 파일은 고치지 않습니다.** 오늘 만드는 파일은 모두 새 파일입니다.
 
 > **확인** — 3번에서 `앞 Unit 파일 정상`, 4번에서 위와 같은 플레이북 세 개, 7번에서 `8` 이 나오면 성공입니다. 안 나오면 다음 페이지 「이전 파일이 없을 때」에서 빠진 파일을 만들고, 그래도 안 되면 「오류가 나면」 페이지의 표를 봅니다.
+
+<!-- checklist -->
+- [ ] `soar_response` 폴더에서 3번 명령을 실행해 `앞 Unit 파일 정상` 이 나왔다
+- [ ] 4번 명령으로 `config/playbook_registry.json` 을 점검해 출력이 문서와 같았다(다르면 다음 페이지 코드 상자로 덮어썼다)
+- [ ] `soar_response` 폴더에 `engine_alerts.json` 을 만들어 붙여 넣고 저장했다
+- [ ] 7번 명령으로 `engine_alerts.json` 을 확인해 `8` 이 나왔다
+<!-- /checklist -->
 
 ## 이전 파일이 없을 때 (Unit 1 ~ 4 파일)
 
@@ -482,6 +489,11 @@ def decide_gate(request, policy):                                           # �
 </code></pre>
 
 > **확인** — 만든 뒤 앞 페이지 3번 명령에서 `앞 Unit 파일 정상` 이 나오면 성공입니다. 안 나오면 오류 문장의 따옴표 안 이름을 보고, 그 파일의 코드 상자를 다시 붙여 넣습니다.
+
+<!-- checklist -->
+- [ ] 빠진 앞 Unit 파일만 `soar_response`(또는 `config`) 폴더에 만들어 붙여 넣고 저장했다(모두 있으면 건너뛰었다)
+- [ ] 앞 페이지 3번 명령을 다시 실행해 `앞 Unit 파일 정상` 이 나왔다
+<!-- /checklist -->
 
 ## 오류가 나면
 

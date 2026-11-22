@@ -10,7 +10,7 @@ render: markdown
 
 **실습 5-2를 시작하기 전에** 이 레슨의 파일 하나를 만듭니다. 실습 5-2는 엔진 로그 세 개를 점검하는데, 그 가운데 `risk_engine_log.json` 은 응용 5-1을 실행해야 생기는 로그입니다. 응용을 하지 않아도 실습 5-2를 똑같이 할 수 있도록, 그 실행 결과를 완성본으로 받아 씁니다.
 
-1. 파일은 `soar_response` 폴더 안에 만듭니다(VS Code 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File**).
+1. 파일은 작업 폴더 `network-study-notes/soar_response` 안에 만듭니다(VS Code 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `risk_engine_log.json`).
 2. 다음 페이지 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
 3. 만들 파일은 `risk_engine_log.json` 하나입니다. Module 4 탐지 결과 5건을 실습 5-1 엔진으로 처리한 로그입니다.
 4. 파일을 만들었으면 아래 명령으로 확인하고 실습 5-2로 갑니다(맥북은 `python3`).
@@ -47,3 +47,8 @@ render: markdown
 - 응용 5-1에서는 이 로그를 만드는 코드(`engine_input.py` · `apply5-1_run.py`)를 직접 씁니다.
 
 > **확인** — 앞 페이지 4번의 확인 명령에서 `제공 파일 정상 5 ['자동 실행', '조치 없음', '조치 없음', '조치 없음', '자동 실행']` 이 나오면 성공입니다. `JSONDecodeError` 가 나오면 파일 내용을 모두 지우고 복사 버튼으로 다시 붙여 넣습니다.
+
+<!-- checklist -->
+- [ ] `soar_response` 폴더에 `risk_engine_log.json` 을 만들어 붙여 넣고 저장했다(응용 5-1을 이미 했으면 건너뛰었다)
+- [ ] 앞 페이지 4번 명령으로 `risk_engine_log.json` 을 확인해 `제공 파일 정상 5` 줄이 나왔다
+<!-- /checklist -->
