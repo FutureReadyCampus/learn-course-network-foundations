@@ -329,6 +329,12 @@ print(alert_ips)                                               # 알림을 보�
 
 1. **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `login_detection.py` · `exercise2-3_run.py` 를 만들고, 위의 같은 이름 코드 상자 내용을 각각 붙여 넣어 저장합니다.
 2. **[VS Code]** `login_detection.py` 의 `# ←` 두 곳(① · ②)을 채웁니다. 3.1 의 문법 상자를 보고 씁니다.
+
+<!-- checklist -->
+- [ ] `login_detection.py` 를 만들어 붙여 넣고 빈칸 ① · ② 를 채워 저장했다
+- [ ] `exercise2-3_run.py` 를 만들어 붙여 넣고 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
@@ -336,18 +342,17 @@ print(alert_ips)                                               # 알림을 보�
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise2-3_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **세 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 숫자가 제목 줄에 함께 나오므로 그 아래 줄이 없고, 단계 2와 단계 3은 각각 3줄입니다.
+
+<!-- checklist -->
+- [ ] `python exercise2-3_run.py` 를 실행해 단계 1 ~ 3 이 아래 「확인」과 같게 나왔다
+<!-- /checklist -->
+
 5. **[보고서]** `report_u2.md` 의 `## 실습 2-3` 아래를 채웁니다.
    - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 로그인 실패 이벤트 수와 알림 대상 주소, 그 횟수를 적어 주세요.
    - (나) [핵심 질문] 203.0.113.50 이 알림 대상이 되었습니다. 공격이라고 확정할 수 있는지 적고, 실습 2-3 3.1 의 표에서 시각 간격과 성공 뒤에 요청한 경로를 보고 의심스러운 점을 적어 주세요. 그리고 5번 실패가 공격인지 판단하려면 이 표에 없는 정보 중 무엇이 더 필요한지 한 가지 적어 주세요(예: 어떤 사용자 이름으로 시도했는지).
    - (다) [응용] 한 주소가 로그인에 4번 실패하고 5번째에 성공했습니다. 이 규칙(실패 5번 이상)으로 이 접속에 알림이 생성될까요? 생성된다 · 생성되지 않는다와 이유를 적고, 생성되지 않는다면 담당자가 확인하지 못하는 정보가 무엇인지 적어 주세요.
 
 **확인** — 단계 1이 `로그인 실패 이벤트 5 개` 이고, 단계 2 · 3 모두 `203.0.113.50    5` 한 줄이면 성공입니다. 안 나오면 「정답」 레슨의 실습 2-3 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
-
-<!-- checklist -->
-- [ ] `login_detection.py` 를 만들어 붙여 넣고 빈칸 ① · ② 를 채워 저장했다
-- [ ] `exercise2-3_run.py` 를 만들어 붙여 넣고 저장했다
-- [ ] `python exercise2-3_run.py` 를 실행해 단계 1 ~ 3 이 위 확인과 같게 나왔다
-<!-- /checklist -->
 
 ## 실습 2-3 정리
 
@@ -394,6 +399,10 @@ ls
 | `login_detection.py` · `exercise2-3_run.py` | 실습 2-3 |
 | `report_u2.md` | 보고서 쓰기 |
 
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 2번 표의 파일이 `report_u2.md` 까지 모두 있는 것을 확인했다
+<!-- /checklist -->
+
 **3. 깃허브에 올리기**
 
 1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. <mark>결과가 `…/network-study-notes` 으로 끝나야</mark> 합니다.
@@ -419,9 +428,18 @@ ls
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
    - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
+
+<!-- checklist -->
+- [ ] `git status` 에 `.env` · `.venv` 가 없는 것을 보고 `git add` · `git commit` · `git push` 를 했다
+<!-- /checklist -->
+
 5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `anomaly_detection` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
 
 **확인** — 깃허브의 `anomaly_detection` 폴더에 2번 표의 파일이 모두 보이고 `.env` 가 없으면 성공입니다. 안 보이는 파일이 있으면 `git status` 를 다시 쳐서 그 파일이 빨간 목록에 남아 있는지 보고 4번을 다시 합니다.
+
+<!-- checklist -->
+- [ ] 깃허브의 내 저장소 `anomaly_detection` 폴더에서 2번 표의 파일을 모두 봤다
+<!-- /checklist -->
 
 - 시간이 남아 응용을 했다면 응용 파일(`baseline_logins.csv` · `baseline.py` · `apply2-1_run.py` · `classify.py` · `apply2-2_run.py`)까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
 
@@ -433,9 +451,3 @@ ls
 ---
 
 <!-- learn:answers -->
-
-<!-- checklist -->
-- [ ] `anomaly_detection` 폴더에 2번 표의 파일이 `report_u2.md` 까지 모두 있는 것을 확인했다
-- [ ] `git status` 에 `.env` · `.venv` 가 없는 것을 보고 `git add` · `git commit` · `git push` 를 했다
-- [ ] 깃허브의 내 저장소 `anomaly_detection` 폴더에서 2번 표의 파일을 모두 봤다
-<!-- /checklist -->
