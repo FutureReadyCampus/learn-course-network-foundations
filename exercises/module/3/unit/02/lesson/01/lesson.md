@@ -96,6 +96,10 @@ source:
    - 항목이 없었으면 건너뜁니다.
    - 다음에 push 할 때 로그인 창이 다시 뜨고, 그때 **내 계정**으로 로그인합니다(6장).
 
+<!-- checklist -->
+- [ ] 자격 증명 관리자에서 `git:https://github.com` 항목을 제거했다(없었으면 확인만 했다)
+<!-- /checklist -->
+
 2. **[터미널]** git 이름 · 이메일을 **내 것**으로 적습니다. 따옴표 안만 바꿉니다.
    ```bash
    git config --global user.name "내 이름"
@@ -110,7 +114,6 @@ source:
 > **확인** — `git config --global user.name` 과 `user.email` 이 방금 적은 내 값으로 나오면 성공입니다. 앞 사람 값이 그대로면 따옴표까지 포함해 2번 명령을 다시 칩니다.
 
 <!-- checklist -->
-- [ ] 자격 증명 관리자에서 `git:https://github.com` 항목을 제거했다(없었으면 확인만 했다)
 - [ ] `git config --global` 의 `user.name` · `user.email` 을 내 것으로 적고, 다시 쳐서 내 값이 나왔다
 <!-- /checklist -->
 
@@ -159,12 +162,15 @@ source:
      - 명령 풀이: `git clone 주소 폴더이름` 받은 저장소를 내가 정한 폴더 이름으로 만듦. 깃허브의 저장소 이름은 바뀌지 않습니다.
      - `Cloning into 'network-study-notes'...` 가 나오면 됩니다. 폴더 이름을 붙이지 않으면 `Cloning into 'my-toolkit'...` 처럼 저장소 이름 그대로 폴더가 생깁니다.
 
+<!-- checklist -->
+- [ ] 문서 폴더에서 `git clone` 으로 내 저장소를 받아 `network-study-notes` 폴더가 생겼다
+<!-- /checklist -->
+
 4. **[VS Code]** **File › Open Folder** → `문서(Documents)` → **`network-study-notes`**(뒤에 `_old` 가 **없는** 것)을 엽니다.
 
 > **확인** — `Cloning into 'network-study-notes'...` 뒤에 `done.` 이 나오고 VS Code 에 `_old` 가 없는 폴더가 열리면 성공입니다. `already exists` 가 나오면 4장을 먼저 합니다.
 
 <!-- checklist -->
-- [ ] 문서 폴더에서 `git clone` 으로 내 저장소를 받아 `network-study-notes` 폴더가 생겼다
 - [ ] VS Code 의 **File › Open Folder** 로 `_old` 가 없는 `network-study-notes` 폴더를 열었다
 <!-- /checklist -->
 
@@ -209,6 +215,11 @@ source:
    ```
    - 명령 풀이: `mkdir -p docs` docs 폴더가 없으면 만들고, 있으면 그냥 넘어감
    - **[VS Code]** 왼쪽 목록에서 `network-study-notes` 바로 아래의 `docs` 폴더를 오른쪽 클릭 › **New File** 로 `2026-10-23_seat.md` 를 만들고(`docs/2026-10-23_seat.md`), `새 자리 준비 완료` 한 줄을 쓴 뒤 저장합니다.
+
+<!-- checklist -->
+- [ ] `docs/2026-10-23_seat.md` 파일을 만들고 `새 자리 준비 완료` 한 줄을 쓴 뒤 저장했다
+<!-- /checklist -->
+
 2. **[터미널]** 올립니다.
    ```bash
    git status
@@ -218,13 +229,16 @@ source:
    ```
    - `git status` 의 빨간 목록에 `.env` 가 보이면 멈추고 `.gitignore` 에 `.env` 한 줄이 있는지 확인합니다. `.env` 는 비밀번호 같은 비밀 값을 적어 둔 파일이라 깃허브에 올리면 안 되고, `.gitignore` 는 「이 파일은 올리지 마」라고 적어 두는 목록입니다.
    - `git push` 때 **로그인 창**이 뜨면 **Sign in with your browser** → 브라우저에서 **내 계정**으로 로그인 → **Authorize** 를 누릅니다.
+
+<!-- checklist -->
+- [ ] `git add .` · `git commit` · `git push` 로 올리고, 로그인 창이 뜨면 내 계정으로 로그인했다
+<!-- /checklist -->
+
 3. **[브라우저]** 내 저장소에서 `docs/2026-10-23_seat.md` 가 보이는지, 그 파일의 커밋 옆 이름이 **내 아이디**인지 확인합니다.
 
 > **확인** — 깃허브 내 저장소에 `docs/2026-10-23_seat.md` 가 보이고 커밋 옆 이름이 내 아이디이면 성공입니다. `Permission … denied` 가 나오면 3장 1번(자격 증명 제거) 뒤 다시 `git push` 합니다.
 
 <!-- checklist -->
-- [ ] `docs/2026-10-23_seat.md` 파일을 만들고 `새 자리 준비 완료` 한 줄을 쓴 뒤 저장했다
-- [ ] `git add .` · `git commit` · `git push` 로 올리고, 로그인 창이 뜨면 내 계정으로 로그인했다
 - [ ] 깃허브 내 저장소에서 `docs/2026-10-23_seat.md` 와 커밋 옆 내 아이디를 확인했다
 <!-- /checklist -->
 

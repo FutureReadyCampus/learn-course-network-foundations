@@ -76,12 +76,22 @@ Unit 3 점검에서는 이미 부여돼 있는 권한을 살펴 필요 없는 �
    ```
    - 맥북은 `python` 을 `python3` 로 바꿔 칩니다. 마지막 줄에 `Unit 1 파일 정상 6 5 5`(사용자 6명 · 역할 5개 · 예외 5건)가 나와야 합니다.
    - 아니면 Module 3 Unit 1 레슨(실습 1-1 ~ 1-3, 제공 파일, 정답)의 코드 상자로 빠진 파일을 만들고 다시 칩니다.
+
+<!-- checklist -->
+- [ ] `access_control` 폴더에서 터미널을 열고 Unit 1 확인 명령으로 `Unit 1 파일 정상 6 5 5` 가 나왔다
+<!-- /checklist -->
+
 3. **[터미널]** Unit 3 파일을 확인합니다.
    ```bash
    python -c "from review_list import build_access_list; from review_rules import find_stale; from review_unused import load_last_used; from overprivilege import generate_report; from report_exclude import load_exclude_map; print('Unit 3 파일 정상', len(build_access_list()), len(load_last_used()), len(load_exclude_map('config/exclude_list.json')))"
    ```
    - 마지막 줄에 `Unit 3 파일 정상 14 7 3`(현황 14건 · 사용 이력 7건 · 회수 제외 3건)이 나오면 「제공 파일」 레슨의 `revoke_input.py` 에서 **Unit 3 파일이 있을 때** 코드를 씁니다.
    - 오류가 나거나 숫자가 다르면 **Unit 3 파일이 없을 때** 코드를 씁니다. 회수 대상 8건이 코드 안에 그대로 들어 있어서 Unit 3 파일 없이도 오늘 실습이 똑같이 돌아갑니다.
+
+<!-- checklist -->
+- [ ] Unit 3 확인 명령의 결과를 보고 `revoke_input.py` 에 쓸 코드(있을 때 · 없을 때)를 골랐다
+<!-- /checklist -->
+
 4. **[VS Code]** 「제공 파일」 레슨으로 가서 `revoke_input.py` 와 `revoke_plan.py` 를 만들고 실습 4-1로 돌아옵니다.
 5. **파일은 이렇게 만듭니다.** 따로 내려받는 파일은 없고, 모두 코드 상자에서 복사해 만듭니다.
    1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다.
@@ -92,10 +102,5 @@ Unit 3 점검에서는 이미 부여돼 있는 권한을 살펴 필요 없는 �
 > 실행은 VS Code 의 ▶ 단추가 아니라 **터미널**에서 합니다(맥북은 `python3`). **앞 Unit 파일은 고치지 않습니다.** 오늘 만드는 파일은 모두 새 파일입니다.
 
 > **확인** — `Unit 1 파일 정상 6 5 5` 가 나오고, Unit 3 확인 결과에 따라 쓸 `revoke_input.py` 코드(있을 때 · 없을 때)를 골랐으면 성공입니다. Unit 1 줄에서 오류가 나면 `pwd` 가 `access_control` 로 끝나는지 먼저 보고, 맞으면 오류에 나온 파일 이름을 Module 3 Unit 1 레슨에서 찾아 다시 만듭니다.
-
-<!-- checklist -->
-- [ ] `access_control` 폴더에서 터미널을 열고 Unit 1 확인 명령으로 `Unit 1 파일 정상 6 5 5` 가 나왔다
-- [ ] Unit 3 확인 명령의 결과를 보고 `revoke_input.py` 에 쓸 코드(있을 때 · 없을 때)를 골랐다
-<!-- /checklist -->
 
 ---

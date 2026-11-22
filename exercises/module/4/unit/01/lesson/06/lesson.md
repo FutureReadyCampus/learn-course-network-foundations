@@ -276,7 +276,18 @@ print("저장된 이벤트", saved_count, "개")                                
 **순서**
 
 1. **[VS Code]** `anomaly_detection` 폴더에 `normalize.py` · `apply1-3_run.py` 두 파일을 만들어, 위의 같은 이름 코드 상자 내용을 각각 붙여 넣고 저장합니다. 같은 폴더에 `normalize_web.py` · `normalize_json_csv.py` · `access_sample.log` · `server_log.jsonl` · `saas_events.csv` 가 있어야 합니다.
+
+<!-- checklist optional -->
+- [ ] `anomaly_detection` 폴더에 `normalize.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `anomaly_detection` 폴더에 `apply1-3_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 2. **[VS Code]** `normalize.py` 에서 직접 쓰는 곳 **다섯 군데**를 씁니다. 「이어 붙이기 · 정렬하기 · 저장하기」 쪽의 문법 상자를 보고 씁니다.
+
+<!-- checklist optional -->
+- [ ] `normalize.py` 의 직접 쓰는 곳 다섯 군데를 채우고 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
@@ -285,17 +296,15 @@ print("저장된 이벤트", saved_count, "개")                                
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python apply1-3_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **네 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1은 1줄, 단계 2는 2줄, 단계 3은 5줄, 단계 4는 1줄입니다.
 5. **[VS Code]** `anomaly_detection` 폴더에 새로 생긴 `normalized_events.json` 을 열어 <mark>이벤트 하나가 7개 키(`time` · `source` · `user` · `ip` · `action` · `result` · `raw`)로 되어 있는지</mark> 봅니다.
+
+<!-- checklist optional -->
+- [ ] `python apply1-3_run.py` 를 실행해 `저장된 이벤트 57 개` 가 나오고 `normalized_events.json` 이 생겼다
+<!-- /checklist -->
+
 6. **[보고서]** `report_u1.md` 의 `## 응용 1-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 소스별 이벤트 수와 `user` · `ip` 가 비어 있는 이벤트 수, 저장된 이벤트 수를 적어 주세요.
    - (나) [핵심 질문] 단계 3의 gaeun 이벤트를 보고, 서로 다른 소스에서 나온 이벤트가 어떤 순서로 나오는지 적고, 로그를 따로 볼 때와 무엇이 달라지는지 적어 주세요.
    - (다) [핵심 질문] `user` 가 비어 있는 이벤트가 28개입니다. 어느 로그(소스)의 이벤트이고 왜 비어 있는지 적어 주세요. 그리고 사용자 이름별로 개수를 세면 이 28개가 어떻게 될지 예상해 적어 주세요.
-
-<!-- checklist optional -->
-- [ ] `anomaly_detection` 폴더에 `normalize.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
-- [ ] `anomaly_detection` 폴더에 `apply1-3_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
-- [ ] `normalize.py` 의 직접 쓰는 곳 다섯 군데를 채우고 저장했다
-- [ ] `python apply1-3_run.py` 를 실행해 `저장된 이벤트 57 개` 가 나오고 `normalized_events.json` 이 생겼다
-<!-- /checklist -->
 
 ## 응용 1-3 정리
 

@@ -231,10 +231,13 @@ def finish_decision(item, decision, state, action_log):                         
 - 액션 실행은 Unit 1 실습 1-2 의 `incident.py` 에 있는 `run_action` 이 합니다.
 - 권한 확인을 왜 가장 먼저 하는지는 응용 2-1 레슨에서 자세히 다룹니다.
 
+<!-- checklist -->
+- [ ] `approvals.py` 를 만들어 코드 상자를 붙여 넣고 저장했다
+<!-- /checklist -->
+
 **확인** — 세 파일을 다 만든 뒤 이 레슨 첫 페이지 4번의 명령을 쳐서 `제공 파일 정상 허용 목록 IP 라서 차단하지 않음 False` 가 나오면 성공입니다. `ModuleNotFoundError: No module named 'audit'` 가 나오면 `audit.py` 가 `soar_response` 폴더에 있는지 봅니다.
 
 <!-- checklist -->
-- [ ] `approvals.py` 를 만들어 코드 상자를 붙여 넣고 저장했다
 - [ ] 첫 페이지 4번 명령을 쳐 `제공 파일 정상 허용 목록 IP 라서 차단하지 않음 False` 가 나왔다
 <!-- /checklist -->
 

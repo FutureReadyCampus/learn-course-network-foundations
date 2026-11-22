@@ -216,6 +216,10 @@ services:
    - 하는 일: `web-run` 서버를 끕니다.
    - 나오는 것: `web-run` 이 한 줄 나옵니다. <mark>이어서 `docker ps` 를 쳤을 때 `web-run` 이 없으면</mark> 정상입니다. `--rm` 때문에 끄면 서버가 지워집니다.
 
+<!-- checklist optional -->
+- [ ] `docker run` 으로 `web-run` 서버를 켜고 `docker ps` 로 확인한 뒤 `docker stop web-run` 으로 껐다
+<!-- /checklist -->
+
 3. **[VS Code]** 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `compose.yaml` 을 그대로 적고 Enter 를 칩니다. 내용은 다음 4번에서 붙여 넣으니 지금은 비워 둡니다.
 
    이어서 **[터미널]** 에서 파일이 생겼는지 봅니다.
@@ -244,6 +248,10 @@ services:
 
    - `restart: unless-stopped` 는 서버가 저절로 꺼지면 다시 켜라는 설정입니다. 내가 직접 끈 서버는 다시 켜지 않습니다.
    - <mark style="background:#ffc4d6">`web1` 은 8080번, `web2` 는 8081번입니다. 두 서버가 같은 번호를 쓰면 한쪽이 켜지지 않습니다.</mark>
+
+<!-- checklist optional -->
+- [ ] `anomaly_detection` 폴더에 `compose.yaml` 을 만들어 상자 내용을 붙여 넣고 저장했다
+<!-- /checklist -->
 
 5. **[터미널]** 서버 두 대를 한 번에 켜고 상태를 봅니다. <mark>컴포즈 파일이 있는 폴더(`anomaly_detection`)에서 칩니다.</mark>
 
@@ -284,6 +292,10 @@ services:
    anomaly_detection-web2-1   nginx:1.28   "/docker-entrypoint.…"   web2      Less than a second ago   Up Less than a second   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp
    ```
 
+<!-- checklist optional -->
+- [ ] `anomaly_detection` 폴더에서 `docker compose up -d` 로 켜고, `docker compose ps` 에 `web1` · `web2` 가 `Up` 으로 나왔다
+<!-- /checklist -->
+
 6. **[터미널]** 두 서버가 모두 응답하는지 확인합니다. 명령 끝의 `-s -o /dev/null -w "%{http_code}\n"` 는 HTML 을 화면에 안 보이고 결과 번호만 보여 주는 설정이라 외우지 않아도 됩니다. 결과 번호 `200` 은 요청이 성공했다는 뜻입니다. 주소의 `localhost`(로컬호스트)는 지금 쓰고 있는 내 컴퓨터를 가리키는 이름입니다.
 
    ① 8080번 서버(`web1`)를 확인합니다.
@@ -312,6 +324,9 @@ services:
    200
    ```
 
+<!-- checklist optional -->
+- [ ] `curl` 로 8080번 · 8081번 모두 `200` 이 나왔다
+<!-- /checklist -->
 
 7. **[보고서]** `report_u5.md` 의 `## 응용 5-1` 아래를 채웁니다.
    - (가) 응용 5-1의 서버 켜기 · 확인 명령(`docker images` 부터 `curl` 까지)과 그 결과를 친 순서대로 붙여 넣고, 서비스 이름 두 개와 각 서비스의 포트를 적어 주세요.
@@ -320,10 +335,6 @@ services:
    - (라) [핵심 질문] 팀원 세 명이 같은 `compose.yaml` 로 서버를 켰는데 한 명의 PC 에서만 `8081` 번 포트를 다른 프로그램이 쓰고 있어서 `web2` 가 켜지지 않았습니다. 이 사람이 파일의 어느 줄을 어떻게 바꾸면 되는지 적고, 바꿔도 서버 안에서는 여전히 `80` 번 포트로 동작하는 이유를 적어 주세요. 이 사람이 `curl` 로 확인할 때 달라지는 점도 적어 주세요.
 
 <!-- checklist optional -->
-- [ ] `docker run` 으로 `web-run` 서버를 켜고 `docker ps` 로 확인한 뒤 `docker stop web-run` 으로 껐다
-- [ ] `anomaly_detection` 폴더에 `compose.yaml` 을 만들어 상자 내용을 붙여 넣고 저장했다
-- [ ] `anomaly_detection` 폴더에서 `docker compose up -d` 로 켜고, `docker compose ps` 에 `web1` · `web2` 가 `Up` 으로 나왔다
-- [ ] `curl` 로 8080번 · 8081번 모두 `200` 이 나왔다
 - [ ] `report_u5.md` 의 `## 응용 5-1` 을 채웠다
 <!-- /checklist -->
 

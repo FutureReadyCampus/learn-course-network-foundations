@@ -121,10 +121,13 @@ def change_ticket_status(ticket, new_status, minute, who):                     #
     return True                                                                # 바꿨다고 True 를 리턴한다
 ```
 
+<!-- checklist -->
+- [ ] `ticket_merge.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 > **확인** — 저장한 뒤 첫 페이지 3번의 확인 명령을 쳐서 `제공 파일 정상 7` 이 나오면 성공입니다. `No module named 'ticketing'` 이 나오면 실습 3-2의 `ticketing.py` 를 먼저 만듭니다.
 
 <!-- checklist -->
-- [ ] `ticket_merge.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
 - [ ] `soar_response` 폴더에서 첫 페이지 3번 확인 명령을 실행해 `제공 파일 정상 7` 이 나왔다
 <!-- /checklist -->
 
@@ -155,6 +158,10 @@ def notify(message, url):                                      # 메시지를 �
         print("[알림 실패]", type(e).__name__)                 # 에러 이름을 알린다 — 숨기지 않는다
         return False                                           # 못 보냈다 — 부른 쪽은 계속 간다
 ```
+
+<!-- checklist -->
+- [ ] `notifier.py` 를 `soar_response` 폴더에 만들었다(`agent_core` 에서 복사하거나 코드 상자를 붙여 넣고 저장)
+<!-- /checklist -->
 
 **`ticket_notice.py`** — 티켓 알림을 보낼지 정하고 보냅니다.
 
@@ -222,9 +229,9 @@ def send_ticket_notice(ticket, now, rules):                            # 티켓 
     return "전송"                                                      # 「전송」을 리턴한다
 ```
 
-> **확인** — `soar_response` 폴더에 `notifier.py` 와 `ticket_notice.py` 가 보이면 성공입니다. 불러오기 확인은 `requests` 를 설치하는 응용 3-3 순서 1번에서 합니다. 파일이 안 보이면 VS Code 왼쪽 목록에서 다른 폴더에 만들어지지 않았는지 봅니다.
-
 <!-- checklist -->
-- [ ] `notifier.py` 를 `soar_response` 폴더에 만들었다(`agent_core` 에서 복사하거나 코드 상자를 붙여 넣고 저장)
 - [ ] `ticket_notice.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
 <!-- /checklist -->
+
+> **확인** — `soar_response` 폴더에 `notifier.py` 와 `ticket_notice.py` 가 보이면 성공입니다. 불러오기 확인은 `requests` 를 설치하는 응용 3-3 순서 1번에서 합니다. 파일이 안 보이면 VS Code 왼쪽 목록에서 다른 폴더에 만들어지지 않았는지 봅니다.
+

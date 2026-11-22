@@ -245,6 +245,13 @@
     if (adminParam === "on") localStorage.setItem("nc-admin", "1");
     if (adminParam === "off") localStorage.removeItem("nc-admin");
   } catch (error) { /* 저장소를 쓸 수 없으면 관리자 표시는 꺼진 채로 둔다 */ }
+  // 제한(체크리스트를 다 해야 다음으로)은 learn 에서 `?gate=on` 으로 연 화면에서만 건다. stage 미리보기는 이전·다음이 그대로 된다.
+  const gateParam = new URLSearchParams(location.search).get("gate");
+  try {
+    if (gateParam === "on") localStorage.setItem("nc-gate", "1");
+    if (gateParam === "off") localStorage.removeItem("nc-gate");
+  } catch (error) { /* 저장소를 쓸 수 없으면 제한은 꺼진 채로 둔다 */ }
+  const gateOn = () => { try { return localStorage.getItem("nc-gate") === "1"; } catch (error) { return false; } };
   const isAdmin = () => { try { return localStorage.getItem("nc-admin") === "1"; } catch (error) { return false; } };
   const checklistKey = (item, pageIndex) => `nc-cl:${location.pathname.split("/unit/")[0]}:${item.lesson.id}:${pageIndex}`;
   const readChecks = (key, count) => {
@@ -254,8 +261,26 @@
   const writeChecks = (key, checks) => { try { localStorage.setItem(key, JSON.stringify(checks)); } catch (error) { /* 저장 실패는 무시 */ } };
   const gateOpen = (item, pageIndex) => {
     const checklist = ((item.lesson.pages || [])[pageIndex] || {}).checklist;
-    if (!checklist || checklist.optional || isAdmin()) return true;
+    if (!gateOn() || !checklist || checklist.optional || isAdmin()) return true;
     return readChecks(checklistKey(item, pageIndex), checklist.items.length).every(Boolean);
+  };
+  const pageDone = (item, pageIndex) => {
+    const checklist = ((item.lesson.pages || [])[pageIndex] || {}).checklist;
+    return Boolean(checklist) && readChecks(checklistKey(item, pageIndex), checklist.items.length).every(Boolean);
+  };
+  // 사이드바 완료 표시: 체크리스트가 있는 쪽은 모두 체크하면 ✓, Lesson 은 막는 쪽을 모두 마치면 ✓
+  const refreshSidebarMarks = (course) => {
+    const list = allItems(course);
+    document.querySelectorAll(".page-link").forEach((a) => {
+      const entry = list[Number(a.dataset.lesson)];
+      a.classList.toggle("is-done", Boolean(entry) && pageDone(entry, Number(a.dataset.page)));
+    });
+    document.querySelectorAll(".lesson-link").forEach((a) => {
+      const entry = list[Number(a.dataset.lesson)];
+      const pages = (entry && entry.lesson.pages) || [];
+      const required = pages.map((p, i) => (p.checklist && !p.checklist.optional ? i : -1)).filter((i) => i >= 0);
+      a.classList.toggle("is-done", required.length > 0 && required.every((i) => pageDone(entry, i)));
+    });
   };
   const allItems = (course) => {
     const out = [];
@@ -576,26 +601,38 @@
     const checks = checklist ? readChecks(checklistKey(item, state.pageIndex), checklist.items.length) : [];
     let refreshGate = () => {};
     if (checklist) {
-      const section = document.createElement("section");
-      section.className = "page-checklist";
-      const heading = document.createElement("h3");
-      heading.textContent = checklist.optional ? "여유가 되면 해 보세요" : "이 쪽에서 직접 할 것";
-      const listEl = document.createElement("ul");
-      checklist.items.forEach((html, index) => {
-        const li = document.createElement("li");
-        const label = document.createElement("label");
-        const box = document.createElement("input");
-        box.type = "checkbox";
-        box.checked = checks[index];
-        const text = document.createElement("span");
-        text.innerHTML = html;
-        box.addEventListener("change", () => { checks[index] = box.checked; writeChecks(checklistKey(item, state.pageIndex), checks); refreshGate(); });
-        label.append(box, text);
-        li.append(label);
-        listEl.append(li);
-      });
-      section.append(heading, listEl);
-      main.append(section);
+      const onChange = (index, box) => {
+        checks[index] = box.checked;
+        writeChecks(checklistKey(item, state.pageIndex), checks);
+        refreshGate();
+        refreshSidebarMarks(course);
+      };
+      const build = (start, count, optional) => {
+        const section = document.createElement("section");
+        section.className = "page-checklist";
+        const heading = document.createElement("h3");
+        heading.textContent = optional ? "여유가 되면 해 보세요" : "직접 해 보기";
+        const listEl = document.createElement("ul");
+        for (let index = start; index < start + count; index++) {
+          const li = document.createElement("li");
+          const label = document.createElement("label");
+          const box = document.createElement("input");
+          box.type = "checkbox";
+          box.checked = checks[index];
+          const text = document.createElement("span");
+          text.innerHTML = checklist.items[index];
+          box.addEventListener("change", () => onChange(index, box));
+          label.append(box, text);
+          li.append(label);
+          listEl.append(li);
+        }
+        section.append(heading, listEl);
+        return section;
+      };
+      const holders = main.querySelectorAll(".inline-check");
+      if (holders.length) {
+        holders.forEach((holder) => holder.replaceWith(build(Number(holder.dataset.start), Number(holder.dataset.count), holder.dataset.optional === "1")));
+      } else main.append(build(0, checklist.items.length, checklist.optional));
     }
     const previous = list[state.lessonIndex - 1];
     const next = list[state.lessonIndex + 1];
@@ -646,14 +683,14 @@
       refreshGate = () => {
         const done = checks.filter(Boolean).length;
         const complete = done === checks.length;
-        const locked = !checklist.optional && !complete && !isAdmin();
+        const locked = gateOn() && !checklist.optional && !complete && !isAdmin();
         bar.style.width = `${Math.round((done / checks.length) * 100)}%`;
         track.setAttribute("aria-valuenow", String(done));
         label.textContent = locked ? `${done} / ${checks.length} · 모두 체크하면 다음으로 갈 수 있어요` : `${done} / ${checks.length}`;
         wrap.classList.toggle("is-complete", complete);
         nextPage.disabled = noNext || locked;
         nextPage.title = locked ? "체크리스트를 모두 체크하면 열려요" : "";
-        skip.hidden = !(isAdmin() && !checklist.optional && !complete && !noNext);
+        skip.hidden = !(gateOn() && isAdmin() && !checklist.optional && !complete && !noNext);
       };
       navFooter.append(wrap, nextPage, skip);
       refreshGate();
@@ -661,6 +698,7 @@
     main.append(navFooter);
     const url = routeFor(unitIndex, unitLessonIndex, state.pageIndex);
     history.replaceState({ ...state }, "", url);
+    refreshSidebarMarks(course);
     document.querySelectorAll(".lesson-link, .page-link").forEach((anchor) => anchor.addEventListener("click", (event) => {
       event.preventDefault();
       const targetLesson = Number(anchor.dataset.lesson);

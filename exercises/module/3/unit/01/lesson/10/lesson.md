@@ -248,6 +248,11 @@ print("6 통과")                                                  # 6번 assert
      3. 이름 칸에 `test_policy.py` 라고 입력하고 Enter 를 누릅니다.
      4. 열린 파일에 내용을 복사해 붙여 넣고 저장합니다.
 2. **[VS Code]** 2 ~ 4번 테스트를 직접 씁니다. 1번과 같은 모양으로 씁니다.
+
+<!-- checklist optional -->
+- [ ] `access_control` 폴더 바로 아래에 `test_policy.py` 를 만들고 2 ~ 4번 테스트를 직접 써서 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** 위치가 `…/access_control` 인지 확인하고 실행합니다. 마지막 줄에 `테스트 4개 모두 통과` 가 나오면 됩니다.
    ```bash
    python test_policy.py
@@ -263,6 +268,10 @@ print("6 통과")                                                  # 6번 assert
    | `No module named 'config_loader'` | 「제공 파일」의 `config_loader.py` 가 없음 |
    | `No module named 'policy'` | 실습 1-3 파일이 없음 |
 
+<!-- checklist optional -->
+- [ ] `python test_policy.py` 를 실행해 `테스트 4개 모두 통과` 가 나왔다
+<!-- /checklist -->
+
 4. **[VS Code]** `test_policy_extra.py` 를 만들고 붙여 넣습니다.
    - 만드는 방법은 위 1번과 같습니다(VS Code 새 파일 아이콘). 만들 파일 이름은 `test_policy_extra.py` 입니다. 붙여 넣을 내용은 위 코드 상자입니다.
 5. **[터미널]** 실행합니다. **`5 통과` 가 먼저 출력되고, 그다음 6번 테스트에서 `AssertionError` 가 나는 것이 정상입니다.** 5번 테스트에서 멈췄다면 그 사실을 보고서 (가)에 적습니다.
@@ -272,15 +281,17 @@ print("6 통과")                                                  # 6번 assert
    - 명령 풀이: `python` 파이썬으로 파일을 실행 · `test_policy_extra.py` 실행할 파일
    맥북: `python3 test_policy_extra.py`
    - 오류 메시지에서 `line` 뒤의 숫자(몇 번째 줄인지)와 맨 마지막 줄 `AssertionError: …` 의 설명을 읽습니다(2.2).
+
+<!-- checklist optional -->
+- [ ] `test_policy_extra.py` 를 만들어 실행하고 6번 테스트의 `AssertionError` 를 읽었다
+<!-- /checklist -->
+
 6. **[보고서]** `report_u1.md` 의 `## 응용 1-5` 아래를 채웁니다.
    - (가) `test_policy_extra.py` 를 실행한 출력 전체를 붙여 넣고, 실패한 줄 번호와 `AssertionError:` 뒤에 나온 글자를 적어 주세요.
    - (나) [핵심 질문] 그 실패는 코드가 틀렸다는 뜻인가요, 제안이 우리가 정한 만료 규칙과 다르다는 뜻인가요? 근거를 적어 주세요.
    - (다) [핵심 질문] 정책 코드를 바꿀 때마다 `test_policy.py` 의 1 ~ 4번 테스트를 돌리지 않으면 어떤 사고가 날 수 있나요? 네 개 중 하나를 골라, 그 테스트가 막아 주는 사고를 구체적인 장면으로 적어 주세요.
 
 <!-- checklist optional -->
-- [ ] `access_control` 폴더 바로 아래에 `test_policy.py` 를 만들고 2 ~ 4번 테스트를 직접 써서 저장했다
-- [ ] `python test_policy.py` 를 실행해 `테스트 4개 모두 통과` 가 나왔다
-- [ ] `test_policy_extra.py` 를 만들어 실행하고 6번 테스트의 `AssertionError` 를 읽었다
 - [ ] `report_u1.md` 의 `## 응용 1-5` 아래를 채웠다
 <!-- /checklist -->
 

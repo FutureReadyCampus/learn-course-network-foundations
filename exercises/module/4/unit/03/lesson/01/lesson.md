@@ -75,6 +75,11 @@ render: markdown
    ```
    - 명령 풀이: `cd` 폴더 안으로 들어감 · `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
    - `ls` 결과에 `login_detection.py` 와 `normalized_events.json` 이 보이면 Unit 2 파일이 있는 것입니다.
+
+<!-- checklist -->
+- [ ] `network-study-notes` 폴더에서 터미널을 열고 `anomaly_detection` 폴더로 들어가, 판다스 버전 번호가 나오는 것을 봤다
+<!-- /checklist -->
+
 3. **파일은 이렇게 만듭니다.** 따로 내려받는 파일은 없고, 모두 코드 상자에서 복사해 만듭니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
    1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다.
    2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
@@ -82,10 +87,6 @@ render: markdown
 4. 문제는 **할 일 → 순서**대로 하고, `[창 이름]` 이 지금 쓸 창입니다. 코드를 채울 때는 주석이 말하는 일을 하면 몇 줄이든 맞고, 막히면 이 Unit 뒤쪽의 정답을 봅니다.
 
 **확인** — `pwd` 가 `…/anomaly_detection` 으로 끝나고 판다스 버전 번호가 나오면 성공입니다. 안 나오면 이 레슨의 「오류가 나면」 페이지를 봅니다.
-
-<!-- checklist -->
-- [ ] `network-study-notes` 폴더에서 터미널을 열고 `anomaly_detection` 폴더로 들어가, 판다스 버전 번호가 나오는 것을 봤다
-<!-- /checklist -->
 
 ## 오늘 쓸 파일 만들기
 
@@ -163,6 +164,10 @@ render: markdown
 ]
 ```
 
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `normalized_events.json` 을 만들어 붙여 넣고 저장했다
+<!-- /checklist -->
+
 **`baseline_traffic.csv`** — 실습 3-1 에서 씁니다. 지난 7일 동안 오전 9시대에 웹 서버로 들어온 요청이 **1분에 평균 몇 번**이었는지 적은 연습용 숫자입니다. 첫 줄은 헤더(열 이름이 적힌 줄)이고, 둘째 줄부터 한 줄이 하루입니다. 샘플의 웹 서버 이벤트도 모두 9시대입니다.
 
 ```
@@ -175,6 +180,10 @@ date,requests_per_minute
 2026-10-31,2
 2026-11-01,2
 ```
+
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `baseline_traffic.csv` 를 만들어 붙여 넣고 저장했다
+<!-- /checklist -->
 
 **`rbac.py`** — 실습 3-2 에서 씁니다. Module 3 Unit 1 실습 1-2 에서 만든 권한 판정 파일의 완성본입니다. `check_permission(사용자, 자원, 행위)` 가 `(허용 여부, 이유)` 를 리턴합니다.
 
@@ -225,6 +234,10 @@ def check_permission(user, resource, action):                    # 사용자 · 
 - 예를 들어 dami 는 `users.json` 에서 `employed` 가 `false` 라서 둘째 검사에서 「퇴사한 계정」이 됩니다.
 - 이 파일은 불러오는(`import`) 순간 `config/roles.json` · `config/users.json` 을 지금 터미널 위치 기준으로 읽습니다. 그래서 `config` 폴더가 `anomaly_detection` 안에 있어야 하고, 실행도 그 폴더에서 합니다.
 
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `rbac.py` 를 만들어 붙여 넣고 저장했다
+<!-- /checklist -->
+
 **`config/users.json`** — Module 3 Unit 1 실습 1-1 의 사용자 파일입니다. 사용자마다 역할과 재직 여부(`employed`)가 있습니다.
 
 ```
@@ -250,6 +263,10 @@ def check_permission(user, resource, action):                    # 사용자 · 
 }
 ```
 
+<!-- checklist -->
+- [ ] `config` 폴더를 만들고 그 안에 `config/users.json` · `config/roles.json` 을 만들어 붙여 넣고 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** <mark>파일이 정상인지 확인합니다</mark>(맥북은 `python3`).
    ```bash
    python -c "import json; print(len(json.load(open('normalized_events.json', encoding='utf-8'))))"
@@ -266,10 +283,6 @@ def check_permission(user, resource, action):                    # 사용자 · 
 **확인** — 세 명령이 차례로 `57`, `8`, `(False, '퇴사한 계정')` 을 내면 성공입니다. 안 나오면 위 표에서 다르게 나온 줄을 찾아 고친 뒤 세 명령을 다시 칩니다.
 
 <!-- checklist -->
-- [ ] `anomaly_detection` 폴더에 `normalized_events.json` 을 만들어 붙여 넣고 저장했다
-- [ ] `anomaly_detection` 폴더에 `baseline_traffic.csv` 를 만들어 붙여 넣고 저장했다
-- [ ] `anomaly_detection` 폴더에 `rbac.py` 를 만들어 붙여 넣고 저장했다
-- [ ] `config` 폴더를 만들고 그 안에 `config/users.json` · `config/roles.json` 을 만들어 붙여 넣고 저장했다
 - [ ] 확인 명령 세 개가 차례로 `57`, `8`, `(False, '퇴사한 계정')` 을 냈다
 <!-- /checklist -->
 

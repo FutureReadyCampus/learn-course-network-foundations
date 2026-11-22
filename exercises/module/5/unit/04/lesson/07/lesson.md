@@ -397,11 +397,26 @@ print("--- 단계 5: 리포트 파일", REPORT_PATH, "·", len(lines), "줄 저�
    python -c "import pandas; print('판다스 불러오기 성공')"
    ```
    - 터미널 맨 앞에 가상환경 이름(예: `(.venv)`)이 보이는 상태에서 칩니다.
+
+<!-- checklist optional -->
+- [ ] 판다스를 설치하고 `판다스 불러오기 성공` 이 나왔다
+<!-- /checklist -->
+
 2. **[VS Code]** 파일 네 개 `unit10_tickets.json` · `unit10_actions.json` · `report.py` · `apply4-3_run.py` 를 만듭니다. 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`). 데이터 파일은 아래 명령으로 확인합니다. <mark>`7 10` 이 나와야</mark> 합니다.
    ```bash
    python -c "import json; print(len(json.load(open('unit10_tickets.json', encoding='utf-8'))), len(json.load(open('unit10_actions.json', encoding='utf-8'))))"
    ```
+
+<!-- checklist optional -->
+- [ ] `soar_response` 폴더에 `unit10_tickets.json` · `unit10_actions.json` 을 만들고 붙여 넣은 뒤 저장했다(확인 명령에서 `7 10`)
+<!-- /checklist -->
+
 3. **[VS Code]** `report.py` 1 ~ 8번, `apply4-3_run.py` 9번을 씁니다. 막히면 위 문법 상자와 아래 「응용 4-3 정리」를 봅니다.
+
+<!-- checklist optional -->
+- [ ] `soar_response` 폴더에 `report.py` · `apply4-3_run.py` 를 만들고 1 ~ 9번을 쓴 뒤 저장했다
+<!-- /checklist -->
+
 4. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python apply4-3_run.py
@@ -411,16 +426,17 @@ print("--- 단계 5: 리포트 파일", REPORT_PATH, "·", len(lines), "줄 저�
    - 단계 2 는 5줄, 단계 3 은 2줄입니다.
    - 단계 4 는 숫자가 제목 줄에 함께 나오고 그 아래 3줄입니다.
 6. **[VS Code]** 왼쪽 목록에서 `incident_report_20261112.md` 를 열고 `Ctrl+Shift+V`(맥북은 `Cmd+Shift+V`)로 모양을 봅니다. <mark>1 ~ 6절이 보이면</mark> 됩니다.
+
+<!-- checklist optional -->
+- [ ] `python apply4-3_run.py` 를 실행하고 `incident_report_20261112.md` 를 미리보기로 열어 1 ~ 6절을 확인했다
+<!-- /checklist -->
+
 7. **[보고서]** `report_u4.md` 의 `## 응용 4-3` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
    - (가) 실행한 출력 전체를 붙여 넣고, 티켓이 가장 많은 규칙 두 개와 리포트 파일의 줄 수를 적어 주세요.
    - (나) [핵심 질문] 단계 3 에 low 등급이 없습니다. `unit10_tickets.json` 의 low 티켓 두 장(`TCK-2` · `TCK-5`)의 `acked_at` 을 근거로 그 이유를 적어 주세요. 또 `report.py` 3번(확인한 티켓만 필터링하는 줄)이 없으면 low 의 평균 확인 시간(MTTA)이 얼마로 나오는지도 적어 주세요.
    - (다) [핵심 질문] 리포트 5절에 `INC-212` 가 나왔습니다. `find_missing_incidents` 의 `covered` 리스트를 근거로 그 이유를 적고, 이 절이 없으면 고객사에 보내는 리포트에서 어떤 사건이 추적 누락되는지 적어 주세요.
 
 <!-- checklist optional -->
-- [ ] 판다스를 설치하고 `판다스 불러오기 성공` 이 나왔다
-- [ ] `soar_response` 폴더에 `unit10_tickets.json` · `unit10_actions.json` 을 만들고 붙여 넣은 뒤 저장했다(확인 명령에서 `7 10`)
-- [ ] `soar_response` 폴더에 `report.py` · `apply4-3_run.py` 를 만들고 1 ~ 9번을 쓴 뒤 저장했다
-- [ ] `python apply4-3_run.py` 를 실행하고 `incident_report_20261112.md` 를 미리보기로 열어 1 ~ 6절을 확인했다
 - [ ] `report_u4.md` 의 `## 응용 4-3` 을 채웠다
 <!-- /checklist -->
 

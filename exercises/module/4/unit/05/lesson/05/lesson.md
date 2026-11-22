@@ -159,6 +159,10 @@ source:
 
    - <mark style="background:#ffc4d6">`web1` · `web2` · `web3` 의 포트 번호(8080 · 8081 · 8082)를 바꾸지 않습니다.</mark>
 
+<!-- checklist optional -->
+- [ ] `anomaly_detection` 폴더 안에 `logs` 폴더와 `compose.secure.yaml` 을 만들고 상자 내용을 붙여 넣어 저장했다
+<!-- /checklist -->
+
 4. **[터미널]** `compose.secure.yaml` 로 적용합니다. <mark>응용 5-1의 서버를 끄지 않고 바로 칩니다.</mark> 이 출력을 서버마다 읽는 것이 이번 실습 문제의 핵심입니다.
 
    ① `compose.secure.yaml` 로 적용합니다.
@@ -181,6 +185,10 @@ source:
     Container anomaly_detection-web2-1 Started
     Container anomaly_detection-web3-1 Started
    ```
+
+<!-- checklist optional -->
+- [ ] `docker compose -f compose.secure.yaml up -d` 로 적용해 `web1` `Running` · `web2` `Recreated` · `web3` `Created` 를 확인했다
+<!-- /checklist -->
 
 5. **[터미널]** 접속 범위가 바뀐 것을 확인합니다. 이 출력도 보고서 (가)에 붙여 넣습니다.
 
@@ -308,6 +316,10 @@ source:
    - 하는 일: ④ 와 같은 `grep` 인데 끝에 `> logs/web_404.log` 를 붙였습니다. `>` 는 화면에 나올 내용을 파일에 저장합니다.
    - 나오는 것: 화면에는 아무것도 나오지 않습니다. 내용이 파일로 들어갔기 때문입니다.
 
+<!-- checklist optional -->
+- [ ] `grep` 으로 `404` 요청 2개를 세고 `logs/web_404.log` 로 저장했다
+<!-- /checklist -->
+
 8. **[터미널]** 확인이 끝났으므로 세 서버를 모두 종료합니다. 서버를 지워도 `logs` 폴더의 기록이 남는지 봅니다.
 
    ① 서버를 모두 끄고 지웁니다.
@@ -351,16 +363,16 @@ source:
    web_404.log
    ```
 
+<!-- checklist optional -->
+- [ ] `down` 으로 서버를 지운 뒤 `ls logs` 에 `access.log` · `web_404.log` 가 남은 것을 확인했다
+<!-- /checklist -->
+
 9. **[보고서]** `report_u5.md` 의 `## 응용 5-2` 아래를 채웁니다.
    - (가) 1번과 5번의 `docker compose ps` 출력을 붙여 넣고, 접속 범위가 바뀐 기존 서비스와 새로 추가된 서비스를 따로 적어 주세요.
    - (나) [핵심 질문] `"8081:80"` 과 `"127.0.0.1:8081:80"` 은 누가 접속할 수 있는지가 어떻게 다른가요? 관리 화면이나 데이터베이스 서버를 이렇게 설정하는 이유도 적어 주세요.
    - (다) [핵심 질문] `up -d` 의 출력에서 `web1` 은 `Running`, `web2` 는 `Recreated`, `web3` 은 `Created` 였습니다. 서버마다 출력이 다른 이유와, 운영 중인 서비스의 설정을 바꿀 때 이것이 왜 도움이 되는지 적어 주세요.
 
 <!-- checklist optional -->
-- [ ] `anomaly_detection` 폴더 안에 `logs` 폴더와 `compose.secure.yaml` 을 만들고 상자 내용을 붙여 넣어 저장했다
-- [ ] `docker compose -f compose.secure.yaml up -d` 로 적용해 `web1` `Running` · `web2` `Recreated` · `web3` `Created` 를 확인했다
-- [ ] `grep` 으로 `404` 요청 2개를 세고 `logs/web_404.log` 로 저장했다
-- [ ] `down` 으로 서버를 지운 뒤 `ls logs` 에 `access.log` · `web_404.log` 가 남은 것을 확인했다
 - [ ] `report_u5.md` 의 `## 응용 5-2` 를 채웠다
 <!-- /checklist -->
 

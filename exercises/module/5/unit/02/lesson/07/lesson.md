@@ -181,15 +181,30 @@ print("조치 기록:", len(load_json("containment_log.json")), "건")          
 
 1. **[VS Code]** 작업 폴더 `network-study-notes/soar_response` 의 `ip_actions.py` 를 열어 내용을 모두 지우고 위 골격을 붙여 넣습니다. 이어서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `apply2-3_run.py` 를 만들어(파일 이름 그대로) 코드를 붙여 넣습니다. 두 파일 모두 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
 2. **[VS Code]** `ip_actions.py` 1 ~ 6번, `apply2-3_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「응용 2-3 정리」를 봅니다.
+
+<!-- checklist optional -->
+- [ ] `ip_actions.py` 를 골격으로 바꿔 붙여 넣고 1 ~ 6번을 채운 뒤 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** 실행합니다(맥북은 `python3`).
    ```bash
    python apply2-3_run.py
    ```
 4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 3줄, 단계 2 는 2줄, 단계 3 은 2줄, 단계 4 는 2줄입니다.
+
+<!-- checklist optional -->
+- [ ] `apply2-3_run.py` 를 만들어 7 ~ 9번을 채우고, `python apply2-3_run.py` 로 네 단계 출력이 나왔다
+<!-- /checklist -->
+
 5. **[보고서]** `report_u2.md` 의 `## 응용 2-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣어 주세요. 그리고 단계 1 에서 실제로 차단된 IP 와, 차단하지 않은 IP 와 그 이유를 적어 주세요.
    - (나) [핵심 질문] INC-008 의 `192.0.2.41` 은 차단되지 않았습니다. `ip_users.json` 의 값을 근거로 차단하지 않은 이유를 적고, 그대로 차단했다면 영향을 받았을 사용자와 그 영향을 적어 주세요.
    - (다) [핵심 질문] 단계 2 의 만료 시각(120)과 단계 3 의 시계(120)를 근거로 `198.51.100.90` 이 자동 해제된 이유를 적어 주세요. 그리고 유효 기간이 있는 임시 차단이 영구 차단보다 나은 점도 적어 주세요.
+
+<!-- checklist optional -->
+- [ ] `report_u2.md` 의 `## 응용 2-3` 에 답을 썼다
+<!-- /checklist -->
+
 6. **[터미널]** 이 실행 파일은 실습 2-2 와 같은 파일(`containment_state.json` · `containment_log.json`)에 결과를 저장합니다. Unit 3 실습 3-1 은 실습 2-2 가 저장한 상태를 읽으니, 보고서를 채운 뒤 실습 2-2 실행 파일을 한 번 더 실행하고 확인합니다. 마지막 줄에 <mark>`['junho', 'dami'] 5`</mark> 가 나오면 됩니다.
    ```bash
    python exercise2-2_run.py
@@ -197,9 +212,6 @@ print("조치 기록:", len(load_json("containment_log.json")), "건")          
    ```
 
 <!-- checklist optional -->
-- [ ] `ip_actions.py` 를 골격으로 바꿔 붙여 넣고 1 ~ 6번을 채운 뒤 저장했다
-- [ ] `apply2-3_run.py` 를 만들어 7 ~ 9번을 채우고, `python apply2-3_run.py` 로 네 단계 출력이 나왔다
-- [ ] `report_u2.md` 의 `## 응용 2-3` 에 답을 썼다
 - [ ] `python exercise2-2_run.py` 를 다시 실행하고 확인 명령으로 `['junho', 'dami'] 5` 가 나왔다
 <!-- /checklist -->
 

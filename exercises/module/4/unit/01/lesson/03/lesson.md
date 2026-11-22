@@ -329,6 +329,12 @@ print(result_counts)                                                            
 **순서**
 
 1. **[VS Code]** `anomaly_detection` 폴더에 `normalize_web.py` · `exercise1-2_run.py` 두 파일을 만들어, 위의 같은 이름 코드 상자 내용을 각각 붙여 넣고 저장합니다.
+
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 `normalize_web.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `anomaly_detection` 폴더에 `exercise1-2_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 2. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 **채우기 전에** 한 번 실행합니다(맥북은 `python3`). `IndentationError: unexpected indent` 가 나오면 정상입니다.
    ```bash
    pwd
@@ -341,20 +347,23 @@ print(result_counts)                                                            
    python exercise1-2_run.py
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise1-2_run.py` 파이썬으로 실행 파일 실행
+
+<!-- checklist -->
+- [ ] `normalize_web.py` 의 빈칸 ① · ② 를 한 줄씩 채우고 저장했다
+<!-- /checklist -->
+
 4. 출력은 **세 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1은 1줄, 단계 2는 1줄, 단계 3은 1줄입니다.
+
+<!-- checklist -->
+- [ ] `python exercise1-2_run.py` 를 실행해 `정규화한 이벤트 28 개 · 읽기 실패 2 줄` 과 `{'성공': 15, '실패': 13}` 이 나왔다
+<!-- /checklist -->
+
 5. **[보고서]** `report_u1.md` 의 `## 실습 1-2` 아래를 채웁니다.
    - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 정규화한 이벤트 수와 읽기 실패한 줄 수, 성공과 실패 개수를 적어 주세요.
    - (나) [핵심 질문] 시각을 `02/Nov/2026:09:00:00 +0900` 모양 그대로 문자열로 정렬하면 12월 1일 요청(`01/Dec/2026:…`)과 11월 2일 요청(`02/Nov/2026:…`) 중 어느 쪽이 앞에 놓일지 예상하고, 공통 모양(`2026-11-02 09:00:00`)으로 바꾸면 무엇이 달라지는지 이유와 함께 적어 주세요.
    - (다) [응용] 이벤트에 원래 로그 줄(`raw`)을 그대로 남겨 두는 이유는 무엇인가요? 정규화하면 사라지는 정보를 한 가지 예로 들어 함께 적어 주세요.
 
 **확인** — 다시 실행했을 때 단계 1 에 `정규화한 이벤트 28 개 · 읽기 실패 2 줄`, 단계 3 에 `{'성공': 15, '실패': 13}` 이 나오면 성공입니다. 안 나오면 「정답」 레슨의 실습 1-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
-
-<!-- checklist -->
-- [ ] `anomaly_detection` 폴더에 `normalize_web.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
-- [ ] `anomaly_detection` 폴더에 `exercise1-2_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
-- [ ] `normalize_web.py` 의 빈칸 ① · ② 를 한 줄씩 채우고 저장했다
-- [ ] `python exercise1-2_run.py` 를 실행해 `정규화한 이벤트 28 개 · 읽기 실패 2 줄` 과 `{'성공': 15, '실패': 13}` 이 나왔다
-<!-- /checklist -->
 
 ## 실습 1-2 정리
 
@@ -396,6 +405,10 @@ ls
 
 - 응용을 했다면 그 응용의 파일(`log_classify.py` · `server_log.jsonl` · `saas_events.csv` · `normalize_json_csv.py` · `normalize.py` · `apply1-1_run.py` ~ `apply1-3_run.py` · `normalized_events.json` 중 만든 것)도 보입니다.
 
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에 「2. 파일 확인」 표의 파일이 모두 있는 것을 봤다
+<!-- /checklist -->
+
 **3. 깃허브에 올리기**
 
 1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/network-study-notes` 으로 끝나야 합니다.
@@ -428,7 +441,16 @@ ls
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
    - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
+
+<!-- checklist -->
+- [ ] `network-study-notes` 폴더에서 `git add .` · `git commit` · `git push` 로 올렸다
+<!-- /checklist -->
+
 5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `anomaly_detection` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다.
+
+<!-- checklist -->
+- [ ] 깃허브의 내 저장소 `anomaly_detection` 폴더에 오늘 만든 파일이 보이고 `.env` · `.venv` 가 없는 것을 봤다
+<!-- /checklist -->
 
 - 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
 
@@ -438,12 +460,6 @@ ls
 
 1. 다음 Unit 2(판다스로 세고 기준 정하기)는 세 로그를 합친 공통 이벤트 57개를 **판다스**로 표처럼 읽어 실패한 이벤트를 골라 세고, 사용자별 · 주소별로 묶습니다.
 2. 이벤트 파일 `normalized_events.json` 은 Unit 2 시작하기에서 샘플로 만들기 때문에, 응용 1-3을 하지 않았어도 됩니다. 판다스 설치도 Unit 2 시작하기에서 합니다.
-
-<!-- checklist -->
-- [ ] `anomaly_detection` 폴더에 「2. 파일 확인」 표의 파일이 모두 있는 것을 봤다
-- [ ] `network-study-notes` 폴더에서 `git add .` · `git commit` · `git push` 로 올렸다
-- [ ] 깃허브의 내 저장소 `anomaly_detection` 폴더에 오늘 만든 파일이 보이고 `.env` · `.venv` 가 없는 것을 봤다
-<!-- /checklist -->
 
 ---
 

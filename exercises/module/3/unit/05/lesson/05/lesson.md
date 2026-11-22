@@ -309,18 +309,38 @@ print("거부", user_limit, "번 이상 사용자:", heavy)                  # �
 **순서**
 
 1. **[VS Code]** `access_control` 폴더의 `log_summary.py` 를 열어 내용을 모두 지우고(`Ctrl + A` 뒤 `Delete`, 맥북은 `Cmd + A`) 위 `log_summary.py` 골격을 붙여 넣고 저장합니다. 이어서 `access_control` 폴더를 오른쪽 클릭 › **New File** 로 `apply5-1_run.py` 를 만들어 `apply5-1_run.py` 코드 상자의 내용을 붙여 넣고 저장합니다.
+
+<!-- checklist optional -->
+- [ ] `access_control` 폴더 바로 아래에 `apply5-1_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 2. **[VS Code]** `log_summary.py` 에서 직접 쓰는 곳 다섯 군데를 씁니다. 2.1 의 표와 그림, 문법 상자를 보고 씁니다.
+
+<!-- checklist optional -->
+- [ ] `log_summary.py` 의 내용을 골격으로 바꾸고 1 ~ 11번을 채워 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
    python apply5-1_run.py
    ```
 4. 출력은 세 단계입니다. 단계 1은 한 줄, 단계 2는 거부 사유 네 줄, 단계 3은 두 줄입니다.
+
+<!-- checklist optional -->
+- [ ] `python apply5-1_run.py` 를 실행해 세 단계 출력이 나왔다
+<!-- /checklist -->
+
 5. **[터미널]** 제공 파일 `weekly_run.py` 를 다시 실행합니다. 이번에는 내가 쓴 `log_summary.py` 의 함수로 보고서가 만들어집니다.
    ```bash
    python weekly_run.py
    ```
    - 단계 3의 보고서가 「제공 파일」 레슨의 실행 결과와 같으면 됩니다. 같은 이름의 보고서 파일은 `"w"` 로 열어 새로 쓰므로 덮어써집니다.
+
+<!-- checklist optional -->
+- [ ] `python weekly_run.py` 를 다시 실행해 보고서가 「제공 파일」 레슨의 실행 결과와 같았다
+<!-- /checklist -->
+
 6. **[터미널]** 보고서 4절에 나온 거부가 많은 사용자의 요청을 로그에서 직접 찾아 봅니다.
    ```bash
    grep gaeun week_log.jsonl
@@ -333,10 +353,6 @@ print("거부", user_limit, "번 이상 사용자:", heavy)                  # �
    - (다) [핵심 질문] 서버가 멈춰서 로그가 빈 주에는 `deny_rate` 가 0.0 을 리턴해 보고서에 「거부율 0%」가 나옵니다. 이 보고서만 보고 「이번 주는 안전했다」고 판단해도 되는지 적어 주세요. 그리고 보고서에서 함께 확인해야 하는 정보와 그 이유도 적어 주세요.
 
 <!-- checklist optional -->
-- [ ] `log_summary.py` 의 내용을 골격으로 바꾸고 1 ~ 11번을 채워 저장했다
-- [ ] `access_control` 폴더 바로 아래에 `apply5-1_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
-- [ ] `python apply5-1_run.py` 를 실행해 세 단계 출력이 나왔다
-- [ ] `python weekly_run.py` 를 다시 실행해 보고서가 「제공 파일」 레슨의 실행 결과와 같았다
 - [ ] `report_u5.md` 의 `## 응용 5-1` (가) ~ (다)에 답을 썼다
 <!-- /checklist -->
 

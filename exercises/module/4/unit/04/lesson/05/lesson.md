@@ -398,6 +398,12 @@ for item in not_chained:                               # 연결되지 않은 사
 
 1. **[VS Code]** 파일 `correlation.py` · `apply4-1_run.py` 를 `anomaly_detection` 폴더에 만들어 위 코드를 붙여 넣습니다. `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 만듭니다. `correlation.py` 는 「제공 파일」 레슨에서 이미 만든 파일이니, 새로 만들지 않고 그 파일을 열어 내용을 모두 지운 뒤 위 골격을 붙여 넣습니다.
 2. **[VS Code]** `correlation.py` 에서 <mark>직접 쓰는 곳 다섯 군데를 씁니다</mark>. 1.1 의 문법 상자를 보고 쓰고, 막히면 아래 「응용 4-1 정리」를 봅니다.
+
+<!-- checklist optional -->
+- [ ] `anomaly_detection` 폴더의 `correlation.py` 를 골격으로 바꿔 붙여 넣고, 직접 쓰는 곳 다섯 군데를 채워 저장했다
+- [ ] `anomaly_detection` 폴더에 `apply4-1_run.py` 를 만들어 붙여 넣고 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
@@ -405,16 +411,18 @@ for item in not_chained:                               # 연결되지 않은 사
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python apply4-1_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **네 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 숫자가 제목 줄에 함께 나오므로 그 아래 줄이 없고, 단계 2는 제목 아래 6줄(`gaeun 의 이벤트 …` 안내 줄 1줄과 gaeun 의 이벤트 5줄), 단계 3은 1줄, 단계 4는 제목 아래 1줄입니다.
+
+<!-- checklist optional -->
+- [ ] `python apply4-1_run.py` 를 실행해 단계 3에 `{'user': 'gaeun', 'reason': '서로 다른 로그 3종류 · 41분 안'}` 한 줄이 나왔다
+- [ ] `python exercise4-1_run.py` 를 다시 실행해 실습 4-1과 같은 결과가 나왔다
+<!-- /checklist -->
+
 5. **[보고서]** `report_u4.md` 의 `## 응용 4-1` 아래를 채웁니다. 파일이 아직 없으면 「보고서 쓰기」 레슨 첫 페이지의 틀로 `anomaly_detection` 폴더에 먼저 만듭니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 연결된 사건의 사용자와 이유를 적어 주세요.
    - (나) [핵심 질문] 단계 2에 나온 gaeun 의 이벤트 5개는 어느 로그(`source`)에서 왔고, 왜 한 사건으로 연결됐나요? 이 사건만으로 공격이라고 확정할 수 있는지도 적어 주세요.
    - (다) [핵심 질문] seoyeon 은 서로 다른 로그에 나오지만 연결되지 않았습니다. 단계 4 의 두 숫자(로그 종류 수와 처음부터 마지막까지의 분)로 두 조건을 비교해 연결되지 않은 이유를 설명하고, 하나의 사건으로 연결하지 않아서 탐지하지 못할 수 있는 것을 실습 4-1 출력의 seoyeon 이유(규칙)와 연결해 적어 주세요.
 
 <!-- checklist optional -->
-- [ ] `anomaly_detection` 폴더의 `correlation.py` 를 골격으로 바꿔 붙여 넣고, 직접 쓰는 곳 다섯 군데를 채워 저장했다
-- [ ] `anomaly_detection` 폴더에 `apply4-1_run.py` 를 만들어 붙여 넣고 저장했다
-- [ ] `python apply4-1_run.py` 를 실행해 단계 3에 `{'user': 'gaeun', 'reason': '서로 다른 로그 3종류 · 41분 안'}` 한 줄이 나왔다
-- [ ] `python exercise4-1_run.py` 를 다시 실행해 실습 4-1과 같은 결과가 나왔다
 - [ ] `report_u4.md` 의 `## 응용 4-1` 에 답을 적고 저장했다
 <!-- /checklist -->
 

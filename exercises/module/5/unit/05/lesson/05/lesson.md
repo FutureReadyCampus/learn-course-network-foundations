@@ -239,11 +239,27 @@ print("--- 단계 6: risk_engine_log.json · engine_summary.json · risk_tickets
 **순서**
 
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `unit05_risk_scores.json` · `engine_input.py` · `apply5-1_run.py` 파일을 만들어 이 페이지의 코드 상자를 붙여 넣고 저장합니다. Module 4 파일을 복사해 왔으면 `unit05_risk_scores.json` 은 만들지 않습니다.
+
+<!-- checklist optional -->
+- [ ] `soar_response` 폴더에 `unit05_risk_scores.json` 을 복사하거나 만들어 붙여 넣었다
+- [ ] `soar_response` 폴더에 `engine_input.py` 와 `apply5-1_run.py` 를 만들어 붙여 넣었다
+<!-- /checklist -->
+
 2. **[VS Code]** `engine_input.py` 1 ~ 8번, `apply5-1_run.py` 9번을 씁니다. 막히면 아래 「응용 5-1 정리」를 봅니다.
+
+<!-- checklist optional -->
+- [ ] `engine_input.py` 의 1 ~ 8번과 `apply5-1_run.py` 의 9번을 채워 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python apply5-1_run.py
    ```
+
+<!-- checklist optional -->
+- [ ] `python apply5-1_run.py` 를 실행해 단계 5 가 자동 실행 2 건 · 조치 없음 3 건 · 실패 0 건으로 나왔다
+<!-- /checklist -->
+
 4. 출력은 여섯 단계입니다. 제목 줄은 줄 수에 넣지 않습니다.
    - 단계 1 과 단계 6 은 숫자나 파일 이름이 제목 줄에 함께 나와 그 아래 줄이 없습니다.
    - 단계 2 는 2줄, 단계 3 은 제목 줄에 건수가 나오고 그 아래 5줄입니다. 단계 4 는 5줄입니다.
@@ -254,15 +270,11 @@ print("--- 단계 6: risk_engine_log.json · engine_summary.json · risk_tickets
    - (나) [핵심 질문] `seoyeon` · `gaeun` · `jiwoo` 는 모두 「조치 없음」인데 티켓은 만들어졌습니다. 단계 4 에서 알림 뒤에 나오는 플레이북 번호를 근거로 세 알림에 조치가 없는 이유를 적고, 티켓이 없다면 이 세 알림이 어떻게 되는지 적어 주세요.
    - (다) [핵심 질문] 단계 2 의 `minsu` 기록은 등급이 `critical` 입니다. `find_schema_problem` 이 이 기록을 엔진 앞에서 거절하는 이유를 적고, 거절 없이 엔진에 넣으면 어떤 오류가 나고 그 알림이 어떻게 기록되는지 실습 5-1 `INC-402` 와 연결해 적어 주세요.
 
-**확인** — 단계 3 이 `엔진에 넣을 알림 5 건 · 거절한 기록 0 건` 이고, 단계 5 가 `자동 실행 2 건 · 승인 대기 0 건 · 차단 금지 0 건 · 조치 없음 3 건 · 실패 0 건` 이면 성공입니다. 안 나오면 「정답」 레슨의 응용 5-1 출력과 한 줄씩 맞춰 보고, 오류가 나면 같은 레슨의 「자주 틀리는 곳」을 봅니다.
-
 <!-- checklist optional -->
-- [ ] `soar_response` 폴더에 `unit05_risk_scores.json` 을 복사하거나 만들어 붙여 넣었다
-- [ ] `soar_response` 폴더에 `engine_input.py` 를 만들어 붙여 넣고 1 ~ 8번을 채워 저장했다
-- [ ] `soar_response` 폴더에 `apply5-1_run.py` 를 만들어 붙여 넣고 9번을 채워 저장했다
-- [ ] `python apply5-1_run.py` 를 실행해 단계 5 가 자동 실행 2 건 · 조치 없음 3 건 · 실패 0 건으로 나왔다
 - [ ] `report_u5.md` 의 `## 응용 5-1` (가) ~ (다)를 채우고 저장했다
 <!-- /checklist -->
+
+**확인** — 단계 3 이 `엔진에 넣을 알림 5 건 · 거절한 기록 0 건` 이고, 단계 5 가 `자동 실행 2 건 · 승인 대기 0 건 · 차단 금지 0 건 · 조치 없음 3 건 · 실패 0 건` 이면 성공입니다. 안 나오면 「정답」 레슨의 응용 5-1 출력과 한 줄씩 맞춰 보고, 오류가 나면 같은 레슨의 「자주 틀리는 곳」을 봅니다.
 
 ## 응용 5-1 정리
 

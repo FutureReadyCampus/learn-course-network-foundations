@@ -78,6 +78,11 @@ render: markdown
    python -c "import incident, containment_store, account_actions, ip_actions, undo_actions, rollback; print('이전 파일 정상')"
    ```
    - `No module named '…'` 가 나오면 그 이름의 파일이 없다는 뜻입니다. 다음 페이지 「이전 파일이 없을 때」의 코드 상자로 그 파일만 만들고 다시 칩니다.
+
+<!-- checklist -->
+- [ ] `soar_response` 폴더에서 3번 명령(`python -c "import incident, …"`)을 쳐서 `이전 파일 정상` 이 나왔는지, 아니면 없는 파일 이름이 무엇인지 확인했다
+<!-- /checklist -->
+
 4. **파일은 이렇게 만듭니다.** 따로 내려받는 파일은 없고, 모두 코드 상자에서 복사해 만듭니다.
    1. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다. `config/` 로 시작하는 파일은 `soar_response` 폴더 안의 `config` 폴더를 오른쪽 클릭해 만듭니다.
    2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
@@ -87,10 +92,6 @@ render: markdown
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark style="background:#ffc4d6">**터미널**에서</mark> 합니다. **앞 Unit 파일은 고치지 않습니다.** 실행할 때마다 같은 입력 파일에서 시작하므로 같은 결과가 나옵니다.
 
 > **확인** — 3번 명령이 `이전 파일 정상` 한 줄을 출력하면 성공입니다. `No module named '…'` 가 나오면 다음 페이지에서 그 이름의 파일만 만들고 3번 명령을 다시 칩니다.
-
-<!-- checklist -->
-- [ ] `soar_response` 폴더에서 3번 명령(`python -c "import incident, …"`)을 쳐서 `이전 파일 정상` 이 나왔는지, 아니면 없는 파일 이름이 무엇인지 확인했다
-<!-- /checklist -->
 
 ## 이전 파일이 없을 때 (Unit 1 · Unit 2 · Unit 3 파일)
 

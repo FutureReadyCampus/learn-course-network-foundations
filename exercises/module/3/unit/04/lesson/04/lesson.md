@@ -259,22 +259,35 @@ print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력
    pwd
    python exercise4-2_run.py
    ```
+
+<!-- checklist -->
+- [ ] `revoke.py` · `exercise4-2_run.py` 를 만들어 붙여 넣고, 채우기 전에 실행해 `IndentationError` 를 봤다
+<!-- /checklist -->
+
 3. **[VS Code]** `revoke.py` 의 `# ←` 두 곳(① · ②)을 차례로 채웁니다. 하나 쓸 때마다 다시 실행해 위 「직접 쓰는 곳」의 확인과 같은지 봅니다. 2.1 의 그림을 보고 씁니다.
+
+<!-- checklist -->
+- [ ] `revoke.py` 의 빈칸 ① · ② 를 하나씩 채우고, 쓸 때마다 실행해 「직접 쓰는 곳」의 확인과 맞춰 봤다
+<!-- /checklist -->
+
 4. **[터미널]** 다 채운 뒤 다시 실행합니다. 출력은 세 단계입니다. 단계 1은 계획 여덟 줄과 `실행 N 건, 대기 N 건`, 단계 2는 판정 비교 여덟 줄, 단계 3은 저장 한 줄입니다.
+
+<!-- checklist -->
+- [ ] 다 채운 뒤 실행해 마지막 줄 `저장 8 건, 다시 읽은 건수 8 건, 첫 이력: junho SALES:QUERY 실행` 이 나왔다
+<!-- /checklist -->
+
 5. **[VS Code]** 왼쪽 목록의 `access_control` 폴더에 새로 생긴 `revocation_log.json` 을 열어 한글이 그대로 저장됐는지 봅니다.
+
+<!-- checklist -->
+- [ ] 새로 생긴 `revocation_log.json` 을 열어 한글이 그대로 저장된 것을 봤다
+<!-- /checklist -->
+
 6. **[보고서]** `access_control/report_u4.md` 의 `## 실습 4-2` 아래를 채웁니다.
    - (가) [핵심 질문] 출력 전체를 붙여 넣고, 이력의 결과가 「실행」인 건수와 「대기」인 건수, 회수 전후 판정이 바뀐 권한, 저장한 이력 건수를 적어 주세요.
    - (나) [핵심 질문] 회수를 실행한 7건 가운데 회수 전후 판정이 바뀐 것은 일부입니다. 바뀌지 않은 권한이 그대로인 이유와, 그래도 회수하고 이력을 남기는 이유를 적어 주세요.
    - (다) [응용] 회수 이력에는 시각 · 사용자 · 권한 · 방법 · 승인 상태 · 결과가 들어 있습니다. 반년 뒤 감사(점검 기록을 검토받는 일)에서 「이 권한이 왜 없어졌나요?」라고 물으면 이 이력만으로 답할 수 있을까요? 이력에 없는 정보가 있다면 무엇인지, 어떤 키를 추가하면 되는지 적어 주세요.
 
 **확인** — 다 채운 뒤 실행했을 때 `실행 7 건, 대기 1 건`, 단계 2의 `바뀜` 이 junho 의 `SALES:QUERY` 한 줄, 마지막 줄이 `저장 8 건, 다시 읽은 건수 8 건, 첫 이력: junho SALES:QUERY 실행` 이면 성공입니다. 안 나오면 「정답」 레슨의 실습 4-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
-
-<!-- checklist -->
-- [ ] `revoke.py` · `exercise4-2_run.py` 를 만들어 붙여 넣고, 채우기 전에 실행해 `IndentationError` 를 봤다
-- [ ] `revoke.py` 의 빈칸 ① · ② 를 하나씩 채우고, 쓸 때마다 실행해 「직접 쓰는 곳」의 확인과 맞춰 봤다
-- [ ] 다 채운 뒤 실행해 마지막 줄 `저장 8 건, 다시 읽은 건수 8 건, 첫 이력: junho SALES:QUERY 실행` 이 나왔다
-- [ ] 새로 생긴 `revocation_log.json` 을 열어 한글이 그대로 저장된 것을 봤다
-<!-- /checklist -->
 
 ## 실습 4-2 정리
 
@@ -316,6 +329,10 @@ ls config
 - `revoke_input.py` · `revoke_plan.py` · `revoke_approve.py` · `revoke.py` · `exercise4-1_run.py` · `exercise4-2_run.py` · `revocation_log.json` · `report_u4.md` 가 보여야 합니다.
 - `config` 안에는 `sensitive.json` 이 새로 보여야 합니다.
 
+<!-- checklist -->
+- [ ] 「2. 파일 확인」에서 오늘 만든 파일과 `config/sensitive.json` 이 모두 보였다
+<!-- /checklist -->
+
 **3. 깃허브에 올리기**
 
 1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/network-study-notes` 으로 끝나야 합니다.
@@ -342,22 +359,25 @@ ls config
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
    - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
+
+<!-- checklist -->
+- [ ] `network-study-notes` 폴더에서 `git status` 로 `.env` · `.venv` 가 없는 것을 확인하고 `git add` · `git commit` · `git push` 로 올렸다
+<!-- /checklist -->
+
 5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `access_control` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다.
 
 - 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
 
 > **확인** — 깃허브의 `access_control` 폴더에 `revoke_approve.py` · `revoke.py` · `revocation_log.json` · `report_u4.md` 가 보이면 성공입니다. 안 보이면 `git status` 를 다시 쳐서 빨간 목록이 남았는지 보고, 남았으면 4번을 다시 합니다.
 
+<!-- checklist -->
+- [ ] 깃허브의 `access_control` 폴더에서 `revoke_approve.py` · `revoke.py` · `revocation_log.json` · `report_u4.md` 를 확인했다
+<!-- /checklist -->
+
 **4. 이어지는 곳**
 
 1. 다음 Unit 5(결과 보고하기)에서는 점검 체크리스트로 어긋난 곳을 찾고, 상황별 원인과 해결법을 정리합니다.
 2. 오늘 만든 `revoke_approve.py` · `revoke.py` 와 `revocation_log.json` 은 Unit 5 실습 5-2(상황별 원인과 해결법)에서 다시 봅니다.
-
-<!-- checklist -->
-- [ ] 「2. 파일 확인」에서 오늘 만든 파일과 `config/sensitive.json` 이 모두 보였다
-- [ ] `network-study-notes` 폴더에서 `git status` 로 `.env` · `.venv` 가 없는 것을 확인하고 `git add` · `git commit` · `git push` 로 올렸다
-- [ ] 깃허브의 `access_control` 폴더에서 `revoke_approve.py` · `revoke.py` · `revocation_log.json` · `report_u4.md` 를 확인했다
-<!-- /checklist -->
 
 ---
 

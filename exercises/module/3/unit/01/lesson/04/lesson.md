@@ -46,6 +46,11 @@ render: markdown
 </code></pre>
 
 - `reason` 칸의 「월말 정산 대조」는 한 달 동안 오간 돈의 기록이 서로 맞는지 맞춰 보는 일이고, 「인수인계」는 떠나는 사람이 맡던 일을 다음 사람에게 넘겨주는 일입니다.
+
+<!-- checklist -->
+- [ ] `config/exceptions.json` 을 만들어 붙여 넣고 저장했다
+<!-- /checklist -->
+
 - 저장한 뒤 터미널에서 JSON 규칙에 맞는지 확인합니다. 다섯 건이 다시 정리되어 나오면 성공입니다. `Expecting …` 나 `Unterminated string …` 같은 오류 문구가 나오면 복사가 덜 된 것이니 내용을 지우고 다시 붙여 넣습니다.
   ```bash
   python -m json.tool config/exceptions.json
@@ -53,7 +58,6 @@ render: markdown
   - 명령 풀이: `python -m json.tool` 파이썬의 JSON 검사 도구를 실행 · `config/exceptions.json` 검사할 파일 (맥북은 `python3`). 한글이 `\uXXXX` 로 보여도 정상입니다
 
 <!-- checklist -->
-- [ ] `config/exceptions.json` 을 만들어 붙여 넣고 저장했다
 - [ ] `python -m json.tool config/exceptions.json` 으로 다섯 건이 오류 없이 나왔다
 <!-- /checklist -->
 
@@ -113,6 +117,10 @@ def load_json(path, default):                                    # 파일 경로
         return default                                           # 기본값을 리턴한다
 ```
 
+<!-- checklist -->
+- [ ] `access_control` 폴더 바로 아래에 `config_loader.py` 를 만들어 붙여 넣고 저장했다
+<!-- /checklist -->
+
 - 모두 만들었으면 터미널에서 확인합니다. `exception_policy.py` · `config_loader.py` 와 `config` 안의 `exceptions.json` 이 보이면 성공이고 실습 1-3으로 갑니다. 안 보이면 다른 폴더에 만든 것이니 VS Code 왼쪽 목록에서 그 파일을 `access_control` 폴더로 끌어 옮깁니다.
   ```bash
   ls
@@ -120,6 +128,5 @@ def load_json(path, default):                                    # 파일 경로
   ```
 
 <!-- checklist -->
-- [ ] `access_control` 폴더 바로 아래에 `config_loader.py` 를 만들어 붙여 넣고 저장했다
 - [ ] `python -c "import exception_policy, config_loader; print('제공 파일 정상')"` 를 실행해 `제공 파일 정상` 이 나왔다
 <!-- /checklist -->
