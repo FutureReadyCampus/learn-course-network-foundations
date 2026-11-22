@@ -70,7 +70,9 @@ source:
 | 7 | 새벽에 밖에서 접속해도 요청이 허용되는데, gaeun 은 VPN 으로 계정 변경을 하다가 3번 거부됐다 | `config/conditions.json`, `conditional.py` 의 `evaluate_conditional` |
 | 8 | 사람이 로그를 눈으로 세는 데 오래 걸리고, 기준이 사람마다 다르다 | `access_server.py` 의 `check`, `server_log.jsonl`, `checklist.py`, `log_summary.py`, `weekly_report.py` |
 
-- 파일들은 서로를 부릅니다. 상황 2 · 3 · 7 · 8은 요청 한 건이 같은 순서로 함수를 거칩니다. 아래 그림에서 A 에서 B 로 가는 화살표는 「A 가 B 를 부른다」는 뜻이고, 판정은 안쪽 B 부터 하고 바깥 A 가 그 결과에 조건을 더합니다.
+- 파일들은 서로를 부릅니다. 상황 2 · 3 · 7 · 8은 요청 한 건이 같은 순서로 함수를 거칩니다.
+- 아래 그림에서 A 에서 B 로 가는 화살표는 「A 가 B 를 부른다」는 뜻입니다. 불린 B 가 먼저 판정을 내고, A 는 그 결과에 조건을 더 얹습니다. 예를 들어 `evaluate_conditional` 은 `evaluate_access` 가 허용이라고 한 요청만 시간 · 접속 위치를 더 봅니다.
+- 함수가 함수를 부르는 흐름이 헷갈리면 AI 에게 「파이썬에서 함수 안에서 다른 함수를 부르면 어떤 순서로 실행되는지 중학생에게 설명하듯 알려 줘」라고 물어보세요.
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="요청 한 건은 check 에서 evaluate_conditional, evaluate_access 를 거쳐 판정되고 write_log 로 로그에 남습니다"></figure>
 
@@ -126,7 +128,7 @@ def check_permission(user, resource, action):                    # 사용자 · 
 
 #### 상황 3 · 다른 팀 업무를 잠시 지원함
 
-역할에 없는 권한을 잠시만 허용하는 일과 관련된 코드입니다.
+역할에 없는 권한을 잠시만 허용하는 일과 관련된 코드입니다. 월말 정산 대조는 한 달 동안 들어오고 나간 돈이 장부와 맞는지 맞춰 보는 재무 일이라, 영업 역할인 seoyeon 에게는 원래 정산 조회 권한이 없습니다.
 
 `config/exceptions.json` 은 예외를 적어 두는 파일입니다. 예외 한 개가 어떤 값으로 이루어져 있는지 읽습니다.
 
@@ -170,7 +172,7 @@ def find_exception(user, permission, now):                       # 사용자 · 
 
 #### 상황 4 · 새 권한이 필요함
 
-권한을 요청하고, 승인하고, 부여하는 절차와 관련된 코드입니다.
+권한을 요청하고, 승인하고, 부여하는 절차와 관련된 코드입니다. 영업 실적 정정은 잘못 적힌 판매 기록을 고치는 일이라, 기록을 바꾸는 권한(`SALES:CHANGE`)이 필요합니다.
 
 `req_review.py` 의 `approve_request` 는 요청서를 승인하는 함수입니다. 승인하지 않는 경우가 무엇인지, 승인하면 무엇이 바뀌는지 읽습니다.
 
@@ -188,7 +190,7 @@ def approve_request(request, approver):                          # 요청서와 
     return True, "승인"                                          # 승인했다고 알린다
 ```
 
-- 요청서의 상태(`status`)는 `reviewing` → `approved` → `granted` 순서로 바뀌고, 거절하면 `rejected` 입니다. 처리 기한은 `config/sla.json` 의 `hours`(4시간)이고 `req_sla.py` 의 `check_sla_breach` 가 기한을 넘긴 요청서를 찾습니다.
+- 요청서의 상태(`status`)는 `reviewing`(검토 중) → `approved`(승인됨) → `granted`(부여됨) 순서로 바뀌고, 거절하면 `rejected`(거절됨)입니다. 처리 기한(요청을 받으면 몇 시간 안에 처리하겠다고 정한 약속)은 `config/sla.json` 의 `hours`(4시간)이고 `req_sla.py` 의 `check_sla_breach` 가 기한을 넘긴 요청서를 찾습니다.
 - 이 세 함수(`approve_request`, `grant_request`, `check_sla_breach`)는 서로 부르지 않습니다. 요청서 딕셔너리를 순서대로 넘겨 받으며 `status` 만 바꿉니다.
 
 #### 상황 5 · 안 쓰는 권한이 쌓임
@@ -215,7 +217,7 @@ def approve_request(request, approver):                          # 요청서와 
 
 #### 상황 6 · 민감한 권한을 회수해야 함
 
-(Unit 4 회수 실습의 샘플 데이터 기준이고, 이번 Unit의 주간 로그와는 별개입니다.) 권한을 안전하게 없애는 절차와 관련된 코드입니다.
+(Unit 4 회수 실습의 샘플 데이터 기준이고, 이번 Unit의 주간 로그와는 별개입니다.) 권한을 안전하게 없애는 절차와 관련된 코드입니다. 민감한 권한은 잘못 쓰이거나 잘못 없애면 피해가 큰 권한으로, 데이터를 바꾸는 쓰기 권한(`CHANGE`)이 대표적입니다.
 
 `revoke_approve.py` 의 `needs_approval` 은 회수 계획 중 승인이 필요한 것을 가르는 함수입니다. 어떤 조건이 승인 대상이 되는지 읽습니다.
 
@@ -321,7 +323,7 @@ def needs_approval(plan, sensitive):                             # 계획 한 �
   - 상황 1 · 2 는 본보기가 있습니다. 먼저 읽고, 상황 3 ~ 8 중에서 내가 약하다고 느끼는 것부터 **2개**를 씁니다. 여유가 되면 더 써도 됩니다.
   - 분량은 정하지 않습니다. 짧게 써도 되고, 더 공부하고 싶으면 깊게 써도 됩니다.
 - **끝나면**: 보고서의 실습 5-2 상황 정리가 Module 3 총정리가 됩니다.
-- **현업에서는**: 인수인계 문서는 「이런 일이 생기면 여기를 이렇게 고친다」를 상황별로 적어 둡니다.
+- **현업에서는**: 인수인계 문서(맡던 일을 다른 사람에게 넘길 때 남기는 안내서)는 「이런 일이 생기면 여기를 이렇게 고친다」를 상황별로 적어 둡니다.
 
 **할 일**
 
