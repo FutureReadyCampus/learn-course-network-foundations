@@ -5,13 +5,13 @@
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">1.1 실행 → 사후 검증 → 감사 기록</text>
 <rect x="24" y="66" width="208" height="70" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="128.0" y="95.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="128.0" dy="0" font-weight="700">① 실행</tspan><tspan x="128.0" dy="21.0">dami 를 잠근다</tspan></text>
+<text x="128.0" y="95.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="128.0" dy="0" font-weight="700">실행</tspan><tspan x="128.0" dy="21.0">dami 를 잠근다</tspan></text>
 <line x1="232" y1="101" x2="254" y2="101" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
 <rect x="256" y="66" width="208" height="70" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360.0" y="95.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">② 사후 검증</tspan><tspan x="360.0" dy="21.0">잠긴 리스트에 있나?</tspan></text>
+<text x="360.0" y="95.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">사후 검증</tspan><tspan x="360.0" dy="21.0">잠긴 리스트에 있나?</tspan></text>
 <line x1="464" y1="101" x2="486" y2="101" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
 <rect x="488" y="66" width="208" height="70" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="592.0" y="95.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="592.0" dy="0" font-weight="700">③ 감사 기록</tspan><tspan x="592.0" dy="21.0">여섯 키 한 건</tspan></text>
+<text x="592.0" y="95.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="592.0" dy="0" font-weight="700">감사 기록</tspan><tspan x="592.0" dy="21.0">여섯 키 한 건</tspan></text>
 <rect x="24" y="160" width="130" height="34" fill="#f1f1ef" stroke="#dededb"/>
 <text x="36" y="182.2" font-size="15" fill="#292929" font-weight="700">키</text>
 <rect x="154" y="160" width="290" height="34" fill="#f1f1ef" stroke="#dededb"/>

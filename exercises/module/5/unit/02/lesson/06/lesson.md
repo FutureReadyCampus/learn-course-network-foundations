@@ -30,7 +30,7 @@ source:
 |---|---|---|
 | 잠깐 생긴 오류만 다시 시도한다 | 권한이 없다는 오류는 몇 번을 해도 같은 결과다 | 연결 오류(`ConnectionError`)가 날 때만 다시 시도한다 |
 | 최대 횟수를 정한다 | 서비스가 계속 멈춰 있어도 끝없이 반복하지 않는다 | 처음 시도를 포함해 `MAX_TRIES` 3번 |
-| 다시 해도 안전해야 한다 | 같은 계정을 두 번 잠그면 안 된다 | `safe_run_action`(Unit 1 제공 파일 `safe_runner.py`)이 이미 잠긴 계정은 건너뛴다 |
+| 다시 해도 안전해야 한다 | 같은 계정을 두 번 잠그면 안 된다 | `safe_run_action`(Unit 1 제공 파일 `safe_runner.py`, 응용 1-2 에서 다룸)이 이미 잠긴 계정은 건너뛴다 |
 | 끝내 실패하면 숨기지 않는다 | — | 실패를 기록하고 담당자 확인 목록에 올린다 |
 
 - 오늘 수업은 <mark>서비스가 요청을 받기 전에 실패하는 경우만 흉내 냅니다.</mark> 실제로는 서비스가 티켓을 이미 만들었는데 「만들었다」는 응답만 우리 프로그램에 도착하지 않는 일도 있습니다. 프로그램은 실패로 알고 같은 요청을 다시 보내므로 티켓이 두 개 만들어질 수 있습니다. 이를 막으려면 같은 요청인지 알아보는 장치가 따로 필요합니다.
@@ -109,7 +109,7 @@ failure_report.py   collect_failures        : 기록에서 「실패」로 시�
 | 이번 Unit 「제공 파일」 레슨 또는 응용 2-1 | `audit.py` · `approvals.py` |
 | 이번 Unit 응용 2-1 레슨 | `decisions.json` |
 
-**[터미널]** 아래 명령으로 확인합니다(맥북은 `python3`). <mark>`준비 완료 ['PB-001', 'PB-002', 'PB-003'] 3`</mark> 이 나오면 됩니다. `ModuleNotFoundError` 나 `FileNotFoundError` 가 나오면 오류 끝에 적힌 이름의 파일을 위 표의 레슨에서 만듭니다.
+**[터미널]** 아래 명령으로 확인합니다. <mark>`준비 완료 ['PB-001', 'PB-002', 'PB-003'] 3`</mark> 이 나오면 됩니다. `ModuleNotFoundError` 나 `FileNotFoundError` 가 나오면 오류 끝에 적힌 이름의 파일을 위 표의 레슨에서 만듭니다.
 
 ```bash
 python -c "import json; from safe_runner import safe_run_action; from enrichment import enrich_incident; from routing import decide_route, apply_route; from approvals import apply_decision; print('준비 완료', [p['id'] for p in json.load(open('config/playbook_registry.json', encoding='utf-8'))], len(json.load(open('decisions.json', encoding='utf-8'))))"
@@ -300,6 +300,7 @@ for item in pending:                                                            
 
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `retry_runner.py` · `flow.py` · `failure_report.py` · `apply2-2_run.py` 네 파일을 하나씩 만들고(파일 이름 그대로), 코드를 붙여 넣어 저장합니다. <mark>`audit.py` · `approvals.py` 가 완성돼 있어야(`flow.py` 가 이 두 파일을 불러오기 때문)</mark> 합니다.
 2. **[VS Code]** `retry_runner.py` 1 ~ 3번, `flow.py` 4 · 5번, `failure_report.py` 6 · 7번, `apply2-2_run.py` 8 · 9번을 씁니다. 막히면 아래 「응용 2-2 정리」를 봅니다.
+   - 들여쓰기: 1 · 2 · 3번은 `try:` · `except …:` 안쪽이라 12칸, 4 · 6번은 8칸, 5 · 7번은 바로 위 `if` 의 안쪽이라 12칸, 8번은 맨 앞(0칸), 9번은 `for` 안쪽이라 4칸에서 시작합니다.
 
 <!-- checklist optional -->
 - [ ] `retry_runner.py` 를 만들어 붙여 넣고 1 ~ 3번을 채운 뒤 저장했다
@@ -307,7 +308,7 @@ for item in pending:                                                            
 - [ ] `failure_report.py` 를 만들어 붙여 넣고 6 · 7번을 채운 뒤 저장했다
 <!-- /checklist -->
 
-3. **[터미널]** 실행합니다(맥북은 `python3`).
+3. **[터미널]** 실행합니다.
    ```bash
    python apply2-2_run.py
    ```
@@ -320,7 +321,7 @@ for item in pending:                                                            
 5. **[보고서]** `report_u2.md` 의 `## 응용 2-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 단계 3 에서 `일부 실패` · `승인 대기` · `오탐 종료`(오탐: 위험하지 않은데 위험하다고 잘못 알린 경우) 인 알림의 번호를 각각 적어 주세요.
    - (나) [핵심 질문] 단계 1 과 2 는 같은 `run_with_retry` 인데 결과가 다릅니다. 두 단계의 `fail_plan` 값을 근거로 이유를 적어 주세요. 그리고 최대 횟수가 없으면 서비스가 계속 멈춰 있을 때 어떤 문제가 생기는지도 적어 주세요.
-   - (다) [핵심 질문] 단계 3 에서 INC-001 은 계정은 잠겼는데 상태가 `조치됨` 이 아닙니다. 그 이유를 적어 주세요. 또 단계 6 의 출력이 담당자에게 무엇을 알려 주는지 적어 주세요. 마지막으로, 같은 `state` 로 다시 처리해도 `dami` 가 두 번 잠기지 않는 이유를 Unit 1 응용 1-2 의 안전장치(`safe_runner.py`)와 연결해 적어 주세요.
+   - (다) [핵심 질문] 단계 3 에서 INC-001 은 계정은 잠겼는데 상태가 `조치됨` 이 아닙니다. 그 이유를 적어 주세요. 또 단계 6 의 출력이 담당자에게 무엇을 알려 주는지 적어 주세요. 마지막으로, 같은 `state` 로 다시 처리해도 `dami` 가 두 번 잠기지 않는 이유를 Unit 1 제공 파일 `safe_runner.py`(응용 1-2 에서 다룸)의 안전장치와 연결해 적어 주세요.
 
 <!-- checklist optional -->
 - [ ] `report_u2.md` 의 `## 응용 2-2` 에 답을 썼다

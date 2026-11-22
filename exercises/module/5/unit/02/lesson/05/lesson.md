@@ -209,7 +209,7 @@ for entry in action_log:                                                        
 **순서**
 
 1. **[VS Code]** 작업 폴더는 `network-study-notes/soar_response` 입니다. `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `pending.json` · `decisions.json` 을 만들어 위 내용을 붙여 넣고 저장합니다. 이어서 `soar_response` 폴더의 `audit.py` · `approvals.py` 는 열어서 골격으로 바꾸고, `apply2-1_run.py` 는 새로 만들어(파일 이름 그대로) 코드를 붙여 넣어 저장합니다.
-   - **[터미널]** 데이터 파일을 확인합니다(맥북은 `python3`). <mark>`3 3` 이 나와야</mark> 합니다.
+   - **[터미널]** 데이터 파일을 확인합니다. <mark>`3 3` 이 나와야</mark> 합니다.
      ```bash
      python -c "import json; print(len(json.load(open('pending.json', encoding='utf-8'))), len(json.load(open('decisions.json', encoding='utf-8'))))"
      ```
@@ -219,13 +219,14 @@ for entry in action_log:                                                        
 <!-- /checklist -->
 
 2. **[VS Code]** `audit.py` 1번, `approvals.py` 2 ~ 7번, `apply2-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「응용 2-1 정리」를 봅니다.
+   - 들여쓰기: 1 · 2 · 4 · 6 · 8번은 4칸, 3 · 5 · 7 · 9번은 바로 위 줄(`for` · `if`)의 안쪽이라 8칸에서 시작합니다.
 
 <!-- checklist optional -->
 - [ ] `audit.py` 를 골격으로 바꿔 붙여 넣고 1번을 채운 뒤 저장했다
 - [ ] `approvals.py` 를 골격으로 바꿔 붙여 넣고 2 ~ 7번을 채운 뒤 저장했다
 <!-- /checklist -->
 
-3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다.
    ```bash
    python apply2-1_run.py
    ```
