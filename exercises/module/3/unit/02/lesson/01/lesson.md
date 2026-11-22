@@ -13,7 +13,7 @@ source:
 
 ## 목표: 앞 사람 흔적 정리하기
 
-**이번에 하는 일:** Unit 2를 시작하기 전에 자리를 바꿨습니다. 자리를 옮기지 않았다면 이 레슨은 건너뛰고 「시작하기」로 갑니다. 지금 앉은 PC 에는 **앞 사람의 폴더와 깃허브 로그인**이 남아 있을 수 있습니다. 그대로 쓰면 내 코드가 **앞 사람 이름 · 앞 사람 계정**으로 올라갑니다. 이번 준비 과제에서는 앞 사람 흔적을 확인해 끊고, Unit 1 마무리에서 깃허브에 올려 둔 **내 폴더를 받아** 내 것이 맞는지 확인합니다.
+**이번에 하는 일:** Unit 2를 시작하기 전에 자리를 바꿨습니다. 자리를 옮기지 않았다면 이 레슨은 건너뛰고 「시작하기」로 갑니다. 지금 앉은 PC 에는 **앞 사람의 폴더와 깃허브 로그인**이 남아 있을 수 있습니다. 그대로 쓰면 내 코드가 **앞 사람 이름 · 앞 사람 계정**으로 올라갑니다. 이번 준비 과제에서는 앞 사람 흔적을 확인해 끊고, Unit 1 마무리에서 깃허브에 올려 둔 **내 저장소 `network-study-notes` 를 받아** 내 것이 맞는지 확인합니다. 실습 코드(`access_control`)와 포트폴리오 파일이 모두 이 저장소 하나에 들어 있어서, 받는 것도 이 저장소 하나입니다.
 
 **끝나면 이렇게 됩니다**
 - `문서(Documents)` 안에 앞 사람 폴더는 `network-study-notes_old`, 내 폴더는 `network-study-notes`
@@ -109,6 +109,11 @@ source:
 
 > **확인** — `git config --global user.name` 과 `user.email` 이 방금 적은 내 값으로 나오면 성공입니다. 앞 사람 값이 그대로면 따옴표까지 포함해 2번 명령을 다시 칩니다.
 
+<!-- checklist -->
+- [ ] 자격 증명 관리자에서 `git:https://github.com` 항목을 제거했다(없었으면 확인만 했다)
+- [ ] `git config --global` 의 `user.name` · `user.email` 을 내 것으로 적고, 다시 쳐서 내 값이 나왔다
+<!-- /checklist -->
+
 ---
 
 ## 4. 앞 사람 폴더 이름 끝에 _old 를 붙입니다
@@ -135,9 +140,9 @@ source:
 
 **왜 하나요** — Unit 1 마무리에서 내 파일을 모두 깃허브에 올렸습니다. 이 PC 에는 내 폴더가 없으니 **처음 받는 것**이라 `git pull` 이 아니라 **`git clone`** 을 씁니다. `pull` 은 이미 받은 폴더를 최신으로 맞출 때 씁니다.
 
-1. **[브라우저]** github.com 에 **내 계정**으로 들어가 **내 저장소**를 엽니다.
+1. **[브라우저]** github.com 에 **내 계정**으로 들어가 **내 저장소** `network-study-notes` 를 엽니다. Unit 1 시작하기에서 만든 저장소 하나이고, 실습 코드와 포트폴리오가 함께 들어 있습니다. 받을 저장소는 이것 하나뿐입니다.
    - 저장소 이름이 `network-study-notes` 이 **아닐 수도** 있습니다. 내가 처음 만들 때 다른 이름을 붙였다면 그 이름입니다.
-   - 이름이 기억나지 않으면: 오른쪽 위 **내 프로필 사진** → **Your repositories** → 리스트에서 하나씩 열어, 안에 `access_control` 폴더가 있는 저장소를 찾습니다. 그것이 내 저장소입니다.
+   - 이름이 기억나지 않으면: 오른쪽 위 **내 프로필 사진** → **Your repositories** → 리스트에서 하나씩 열어, 안에 `access_control` 폴더와 포트폴리오 파일(`_config.yml` 등)이 함께 있는 저장소를 찾습니다. 그것이 내 저장소입니다.
    - 찾은 저장소 이름을 적어 둡니다(예: `my-toolkit`).
 2. **[브라우저]** 초록색 **Code** 단추 → **HTTPS** → 주소 오른쪽 **복사** 아이콘을 누릅니다.
 3. **[터미널]** 문서 폴더에서 받습니다. `git clone ` 뒤에 복사한 주소를 붙여 넣습니다(Git Bash 붙여 넣기 = **Shift + Insert** 또는 마우스 오른쪽 클릭).
@@ -157,6 +162,11 @@ source:
 4. **[VS Code]** **File › Open Folder** → `문서(Documents)` → **`network-study-notes`**(뒤에 `_old` 가 **없는** 것)을 엽니다.
 
 > **확인** — `Cloning into 'network-study-notes'...` 뒤에 `done.` 이 나오고 VS Code 에 `_old` 가 없는 폴더가 열리면 성공입니다. `already exists` 가 나오면 4장을 먼저 합니다.
+
+<!-- checklist -->
+- [ ] 문서 폴더에서 `git clone` 으로 내 저장소를 받아 `network-study-notes` 폴더가 생겼다
+- [ ] VS Code 의 **File › Open Folder** 로 `_old` 가 없는 `network-study-notes` 폴더를 열었다
+<!-- /checklist -->
 
 ---
 
@@ -178,7 +188,7 @@ source:
    |---|---|
    | `git remote -v` | 주소의 `github.com/` 뒤가 **내 아이디** |
    | `git log --oneline -3` | 맨 위 줄이 Unit 1 마무리의 커밋 |
-   | `ls` | `access_control` 폴더가 보임 |
+   | `ls` | `access_control` 폴더와 포트폴리오 파일(`_config.yml` 등)이 함께 보임 |
    - 명령 풀이: `git log --oneline -3` 최근 커밋 3개를 한 줄씩 보여 줌
    - Unit 1 마무리의 커밋 설명은 `Add access control unit 1 roles, checker, policy and report` 입니다. 그 뒤에 응용 파일을 더 올렸다면 그때 쓴 설명이 맨 위에 보입니다.
 3. **[브라우저]** 깃허브 내 저장소 화면의 폴더 리스트와 VS Code 왼쪽 목록이 같은지 봅니다.
@@ -191,12 +201,14 @@ source:
 
 **왜 하나요** — 3장에서 로그인을 지웠으니, 처음 push 할 때 **내 계정**으로 로그인해야 합니다. 작은 파일 하나를 올려 확인합니다.
 
+작업 폴더는 `network-study-notes` 입니다(6장 1번의 `pwd` 가 `…/network-study-notes` 인 터미널).
+
 1. **[터미널]** 확인용 폴더를 만듭니다.
    ```bash
    mkdir -p docs
    ```
    - 명령 풀이: `mkdir -p docs` docs 폴더가 없으면 만들고, 있으면 그냥 넘어감
-   - **[VS Code]** `docs` 폴더에 새 파일 `2026-10-23_seat.md` 를 만들고 `새 자리 준비 완료` 한 줄을 쓴 뒤 저장합니다.
+   - **[VS Code]** 왼쪽 목록에서 `network-study-notes` 바로 아래의 `docs` 폴더를 오른쪽 클릭 › **New File** 로 `2026-10-23_seat.md` 를 만들고(`docs/2026-10-23_seat.md`), `새 자리 준비 완료` 한 줄을 쓴 뒤 저장합니다.
 2. **[터미널]** 올립니다.
    ```bash
    git status
@@ -209,6 +221,12 @@ source:
 3. **[브라우저]** 내 저장소에서 `docs/2026-10-23_seat.md` 가 보이는지, 그 파일의 커밋 옆 이름이 **내 아이디**인지 확인합니다.
 
 > **확인** — 깃허브 내 저장소에 `docs/2026-10-23_seat.md` 가 보이고 커밋 옆 이름이 내 아이디이면 성공입니다. `Permission … denied` 가 나오면 3장 1번(자격 증명 제거) 뒤 다시 `git push` 합니다.
+
+<!-- checklist -->
+- [ ] `docs/2026-10-23_seat.md` 파일을 만들고 `새 자리 준비 완료` 한 줄을 쓴 뒤 저장했다
+- [ ] `git add .` · `git commit` · `git push` 로 올리고, 로그인 창이 뜨면 내 계정으로 로그인했다
+- [ ] 깃허브 내 저장소에서 `docs/2026-10-23_seat.md` 와 커밋 옆 내 아이디를 확인했다
+<!-- /checklist -->
 
 ---
 
@@ -263,6 +281,10 @@ source:
 - 화면에 `error during connect` 나 `Cannot connect to the Docker daemon` 이 나오면 Docker Desktop 이 아직 안 켜진 것입니다. 1번처럼 켜고 초록색이 될 때까지 기다린 뒤 다시 칩니다.
 
 > **확인** — 마지막 `docker ps -a` 에 제목 줄 한 줄만 나오면 성공입니다(Docker Desktop 이 없으면 건너뜀). `Cannot connect to the Docker daemon` 이 나오면 Docker Desktop 이 초록색이 될 때까지 기다린 뒤 다시 칩니다.
+
+<!-- checklist -->
+- [ ] 남은 컨테이너를 `docker rm -f` 로 지우고 `docker ps -a` 에 제목 줄만 나왔다(Docker Desktop 이 없으면 건너뛰었다)
+<!-- /checklist -->
 
 ---
 

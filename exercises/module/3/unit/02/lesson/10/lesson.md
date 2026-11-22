@@ -78,6 +78,10 @@ render: markdown
 
 > **확인** — VS Code 왼쪽 목록의 `access_control` 아래에 `report_u2.md` 가 보이고, 열었을 때 첫 줄 제목에 내 이름이 들어가 있으면 성공입니다. 다른 폴더에 만들어졌으면 파일을 `access_control` 로 끌어다 옮깁니다.
 
+<!-- checklist -->
+- [ ] `access_control` 폴더에 `report_u2.md` 를 만들어 틀을 붙여 넣고, 제목의 `이름` 을 내 이름으로 바꿔 저장했다
+<!-- /checklist -->
+
 ## 보고서 쓰는 법
 
 > **쓰는 법**
