@@ -107,7 +107,7 @@ INC-408 jiwoo mid → 조치 없음 · 없음 · 티켓 TCK-7
 ```
 
 - (나) `INC-402` 는 `grade` 키가 없어서 `match_playbooks` 가 `incident["grade"]` 를 읽을 때 <mark style="background:#bde3ff">`KeyError: 'grade'`</mark> 가 납니다. `run_all` 의 `except Exception as error` 가 그 오류를 받고 `make_failure_result` 가 오류 이름과 내용을 기록하므로, 엔진은 `INC-403` 부터 계속 처리합니다.
-  - `try` / `except` 가 없으면 오류가 `run_all` 밖으로 나와 프로그램이 멈춥니다. <mark style="background:#ffc4d6">단계 2 이후가 출력되지 않고, 로그와 티켓 파일도 저장되지 않으며, `INC-403` ~ `INC-408` 6건이 처리되지 않습니다.</mark> `INC-401` 은 이미 `dami` 를 잠갔는데 그 기록이 남지 않습니다. 아래는 `run_all` 에서 `try` / `except` 를 뺀 채 실행한 결과입니다.
+  - `try` / `except` 가 없으면 오류가 `run_all` 밖으로 나와 프로그램이 멈춥니다. <mark style="background:#ffc4d6">단계 2 이후가 출력되지 않고, 로그와 티켓 파일도 저장되지 않으며, `INC-403` ~ `INC-408` 6건이 처리되지 않습니다.</mark> `INC-401` 은 이미 `dami` 를 잠갔는데 그 기록이 남지 않습니다. 아래는 `run_all` 에서 `try` / `except` 를 뺀 채 실행한 결과의 마지막 줄입니다. 실제 화면에는 그 위에 `Traceback` 으로 시작하는 여러 줄이 먼저 나옵니다.
 
 ```
 KeyError: 'grade'
@@ -309,13 +309,13 @@ python apply5-1_run.py
 `engine_input.py` 의 1 ~ 8번입니다.
 
 ```python
-        # 1. key 가 record 안에 없으면 (if, not in)
+        # 1. key 가 record 안에 없으면 (if, not in)   (8칸)
         if key not in record:                                  # 필수 키가 기록에 없으면
-    # 2. record["grade"] 가 GRADES 안에 없으면 (if, not in)
+    # 2. record["grade"] 가 GRADES 안에 없으면 (if, not in)   (4칸)
     if record["grade"] not in GRADES:                          # 등급 이름을 엔진이 모르면
-    # 3. "INC-" 뒤에 str(number) 를 이어 붙여 alert_id 에 저장한다
+    # 3. "INC-" 뒤에 str(number) 를 이어 붙여 alert_id 에 저장한다   (4칸)
     alert_id = "INC-" + str(number)                            # 번호 앞에 INC- 를 붙인다
-    # 4. 키 "id"(alert_id) · "entity" · "grade" · "score" · "reasons"(record 의 같은 이름 키의 값), "status"("탐지됨") 를 가진 딕셔너리를 alert 에 저장한다
+    # 4. 키 "id"(alert_id) · "entity" · "grade" · "score" · "reasons"(record 의 같은 이름 키의 값), "status"("탐지됨") 를 가진 딕셔너리를 alert 에 저장한다   (4칸)
     alert = {                                                  # 엔진이 읽는 알림 딕셔너리
         "id": alert_id,                                        # 알림 번호
         "entity": record["entity"],                            # 대상
@@ -324,13 +324,13 @@ python apply5-1_run.py
         "reasons": record["reasons"],                          # 탐지된 규칙 이름 리스트
         "status": "탐지됨",                                    # 처음 상태
     }
-        # 5. find_schema_problem(record) 의 결과를 problem 에 저장한다
+        # 5. find_schema_problem(record) 의 결과를 problem 에 저장한다   (8칸)
         problem = find_schema_problem(record)                  # 모양 점검 결과를 받는다
-        # 6. problem 이 "" 이면 (if, ==)
+        # 6. problem 이 "" 이면 (if, ==)   (8칸)
         if problem == "":                                      # 문제가 없으면
-        # 7. outcome_counts[outcome] 에 outcome_counts[outcome] + 1 을 저장한다 (1 늘린다)
+        # 7. outcome_counts[outcome] 에 outcome_counts[outcome] + 1 을 저장한다 (1 늘린다)   (8칸)
         outcome_counts[outcome] = outcome_counts[outcome] + 1  # 이 처리 결과의 알림 수를 1 늘린다
-            # 8. step["executed"] 가 참이면 (if)
+            # 8. step["executed"] 가 참이면 (if)   (12칸)
             if step["executed"]:                               # 실행한 조치이면
 ```
 
@@ -340,7 +340,7 @@ python apply5-1_run.py
 
 ```python
 def find_schema_problem(record):                      # Module 4 결과 기록 한 건을 받는 함수
-    """엔진이 읽을 수 없는 기록이면 그 이유 문장을, 문제가 없으면 빈 문자열("")를 리턴한다. Module 4 파일의 모양이 바뀌었을 때 엔진이 오류를 내기 전에 걸러 낼 때 쓴다."""
+    """엔진이 읽을 수 없는 기록이면 그 이유 문장을, 문제가 없으면 빈 문자열("")을 리턴한다. Module 4 파일의 모양이 바뀌었을 때 엔진이 오류를 내기 전에 걸러 낼 때 쓴다."""
     for key in REQUIRED_KEYS:                         # 필수 키를 하나씩 꺼낸다 — 미리 채운 줄
         if key not in record:                         # 필수 키가 기록에 없으면
             return "필수 키 없음: " + key             # 어떤 키가 없는지 이유로 리턴한다 — 미리 채운 줄
@@ -348,7 +348,7 @@ def find_schema_problem(record):                      # Module 4 결과 기록 �
         return "알 수 없는 등급: " + record["grade"]  # 등급 이름을 이유로 리턴한다 — 미리 채운 줄
     if record["reasons"] == []:                       # 탐지된 규칙 리스트가 비어 있으면 — 미리 채운 줄
         return "탐지된 규칙이 없음"                   # 이유를 리턴한다 — 미리 채운 줄
-    return ""                                         # 문제가 없으면 빈 문자열를 리턴한다 — 미리 채운 줄
+    return ""                                         # 문제가 없으면 빈 문자열을 리턴한다 — 미리 채운 줄
 ```
 
 **전체 모양 — `split_records`**
@@ -394,7 +394,7 @@ def summarize(results):                                        # 엔진 결과 �
 `apply5-1_run.py` 의 9번입니다.
 
 ```python
-# 9. run_all(alerts, context) 의 결과를 results 에 저장한다
+# 9. run_all(alerts, context) 의 결과를 results 에 저장한다   (0칸)
 results = run_all(alerts, context)  # 알림을 하나씩 엔진으로 처리한다
 ```
 
@@ -430,7 +430,7 @@ INC-505 IP 차단 198.51.100.90: 차단되지 않음 → 차단됨
 - (나) `seoyeon`(`INC-502`)은 플레이북 `PB-002`(대량 다운로드)가 맞지만, 그 플레이북의 액션이 `담당자 알림` · `티켓 생성` 뿐이라 승인 게이트를 거칠 조치(계정 잠금 · IP 차단)가 없습니다. `gaeun`(`INC-503`)과 `jiwoo`(`INC-504`)는 단계 4 의 플레이북 번호가 <mark style="background:#bde3ff">「없음」</mark>입니다. Unit 1 플레이북 3개의 트리거 규칙은 퇴사한 계정 · 대량 다운로드 · 경로 스캔이고, 두 대상의 이유(`규칙은 허용인데 서버가 거절` · `여러 로그 연결` / `업무 시간 밖 로그인` · `평소와 다른 IP`)는 그 규칙에 없기 때문입니다.
   - 티켓이 없으면 세 알림은 엔진이 한 일도 남은 기록도 없어서 담당자가 알 방법이 없습니다. <mark style="background:#ffc4d6">티켓이 조치 없는 알림을 사람에게 넘기는 유일한 경로입니다.</mark> 세 알림의 티켓(`TCK-2` ~ `TCK-4`)에는 다음 할 일로 「자동 조치가 없는 알림이니 직접 보고 조치가 필요한지 정한다」가 적힙니다.
 - (다) `minsu` 기록은 등급이 `critical` 이라 엔진이 아는 등급(`GRADES`: high · mid · low)에 없어서 <mark style="background:#bde3ff">`알 수 없는 등급: critical`</mark> 로 거절됩니다. 거절하면 거절 리스트에 이유가 남아 Module 4 쪽을 고칠 수 있습니다.
-  - 거절 없이 엔진에 넣으면 `match_playbooks` 가 `GRADE_ORDER["critical"]` 을 찾다가 오류를 내고, 실습 5-1 `INC-402` 처럼 그 알림만 실패로 기록됩니다. 조치도 티켓도 없고 원인은 오류 문장에만 남습니다. 아래는 그렇게 실행한 결과입니다.
+  - 거절 없이 엔진에 넣으면 `match_playbooks` 가 `GRADE_ORDER["critical"]` 을 찾다가 오류를 내고, 실습 5-1 `INC-402` 처럼 그 알림만 실패로 기록됩니다. 조치도 티켓도 없고 원인은 오류 문장에만 남습니다. 아래는 그렇게 실행했을 때 그 알림의 결과 줄에서 끝부분(처리 결과와 오류 문장)만 옮긴 것입니다.
 
 ```
 실패 · KeyError: 'critical'

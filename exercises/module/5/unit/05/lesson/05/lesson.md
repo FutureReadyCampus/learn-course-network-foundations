@@ -124,7 +124,7 @@ engine_input.py   find_schema_problem  : 필수 키가 없으면 (1번) · 모�
 | 번호 | 쓰는 것 |
 |---|---|
 | 1번 · 2번 · 6번 · 8번 | `if` 한 줄(그 아래 미리 채운 줄이 `if` 안쪽) |
-| 7번 | 한 줄 |
+| 3번 · 5번 · 7번 | 한 줄 |
 | 4번 | 딕셔너리라서 줄을 나눠 씀 |
 
 ```python
@@ -134,23 +134,23 @@ FIRST_NUMBER = 501                                                   # 엔진이
 
 
 def find_schema_problem(record):                                     # Module 4 결과 기록 한 건을 받는 함수
-    """엔진이 읽을 수 없는 기록이면 그 이유 문장을, 문제가 없으면 빈 문자열("")를 리턴한다. Module 4 파일의 모양이 바뀌었을 때 엔진이 오류를 내기 전에 걸러 낼 때 쓴다."""
+    """엔진이 읽을 수 없는 기록이면 그 이유 문장을, 문제가 없으면 빈 문자열("")을 리턴한다. Module 4 파일의 모양이 바뀌었을 때 엔진이 오류를 내기 전에 걸러 낼 때 쓴다."""
     for key in REQUIRED_KEYS:                                        # 필수 키를 하나씩 꺼낸다 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-        # 1. key 가 record 안에 없으면 (if, not in)
+        # 1. key 가 record 안에 없으면 (if, not in)   (8칸)
             return "필수 키 없음: " + key                            # 어떤 키가 없는지 이유로 리턴한다 — 미리 채운 줄
-    # 2. record["grade"] 가 GRADES 안에 없으면 (if, not in)
+    # 2. record["grade"] 가 GRADES 안에 없으면 (if, not in)   (4칸)
         return "알 수 없는 등급: " + record["grade"]                 # 등급 이름을 이유로 리턴한다 — 미리 채운 줄
     if record["reasons"] == []:                                      # 탐지된 규칙 리스트가 비어 있으면 — 미리 채운 줄
         return "탐지된 규칙이 없음"                                  # 이유를 리턴한다 — 미리 채운 줄
-    return ""                                                        # 문제가 없으면 빈 문자열를 리턴한다 — 미리 채운 줄
+    return ""                                                        # 문제가 없으면 빈 문자열을 리턴한다 — 미리 채운 줄
 
 
 def make_alert(record, number):                                      # Module 4 결과 기록 한 건과 알림 번호 숫자를 받는 함수
     """Module 4 결과 기록(대상 · 점수 · 등급 · 이유)에 알림 번호와 상태를 붙여 Unit 1 인시던트 모양의 딕셔너리로 리턴한다. Module 4 파일의 기록을 엔진의 입력으로 바꿀 때 쓴다."""
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 3. "INC-" 뒤에 str(number) 를 이어 붙여 alert_id 에 저장한다
-    # 4. 키 "id"(alert_id) · "entity" · "grade" · "score" · "reasons"(record 의 같은 이름 키의 값), "status"("탐지됨") 를 가진 딕셔너리를 alert 에 저장한다
+    # 3. "INC-" 뒤에 str(number) 를 이어 붙여 alert_id 에 저장한다   (4칸)
+    # 4. 키 "id"(alert_id) · "entity" · "grade" · "score" · "reasons"(record 의 같은 이름 키의 값), "status"("탐지됨") 를 가진 딕셔너리를 alert 에 저장한다   (4칸)
     return alert                                                     # 엔진이 읽을 알림을 리턴한다 — 미리 채운 줄
 
 
@@ -161,8 +161,8 @@ def split_records(records):                                          # Module 4 
     number = FIRST_NUMBER                                            # 다음에 붙일 알림 번호 — 미리 채운 줄
     for record in records:                                           # 기록을 하나씩 꺼낸다 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-        # 5. find_schema_problem(record) 의 결과를 problem 에 저장한다
-        # 6. problem 이 "" 이면 (if, ==)
+        # 5. find_schema_problem(record) 의 결과를 problem 에 저장한다   (8칸)
+        # 6. problem 이 "" 이면 (if, ==)   (8칸)
             alert = make_alert(record, number)                       # 알림 모양으로 바꾼다 — 미리 채운 줄
             alerts.append(alert)                                     # 알림 리스트에 추가한다 — 미리 채운 줄
             number = number + 1                                      # 다음 번호로 넘어간다 — 미리 채운 줄
@@ -179,11 +179,11 @@ def summarize(results):                                              # 엔진 �
     for result in results:                                           # 결과 기록을 하나씩 꺼낸다 — 미리 채운 줄
         outcome = result["outcome"]                                  # 이 알림의 처리 결과 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-        # 7. outcome_counts[outcome] 에 outcome_counts[outcome] + 1 을 저장한다 (1 늘린다)
+        # 7. outcome_counts[outcome] 에 outcome_counts[outcome] + 1 을 저장한다 (1 늘린다)   (8칸)
         if result["ticket"] != "":                                   # 티켓이 있으면 — 미리 채운 줄
             ticket_count = ticket_count + 1                          # 티켓 수를 1 늘린다 — 미리 채운 줄
         for step in result["steps"]:                                 # 조치 결과를 하나씩 꺼낸다 — 미리 채운 줄
-            # 8. step["executed"] 가 참이면 (if)
+            # 8. step["executed"] 가 참이면 (if)   (12칸)
                 action_text = result["incident"] + " " + step["action"] + " " + step["target"] + ": " + step["before"] + " → " + step["after"]  # 알림 · 조치 · 대상 · 전 · 후 상태를 한 문장으로 만든다 — 미리 채운 줄
                 executed_actions.append(action_text)                 # 문장을 추가한다 — 미리 채운 줄
     summary = {"outcome_counts": outcome_counts, "ticket_count": ticket_count, "executed_actions": executed_actions}  # 요약 딕셔너리 — 미리 채운 줄
@@ -217,7 +217,7 @@ for alert in alerts:                                                            
 
 context = load_context()                                                                     # 엔진이 쓰는 재료를 읽는다
 # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-# 9. run_all(alerts, context) 의 결과를 results 에 저장한다
+# 9. run_all(alerts, context) 의 결과를 results 에 저장한다   (0칸)
 print("--- 단계 4: 엔진 처리 결과")                                                          # 단계 4 시작을 알리는 줄
 for result in results:                                                                       # 결과 기록을 하나씩 꺼낸다
     print(result["incident"], result["entity"], "→", result["outcome"], "·", result["playbook"], "· 티켓", result["ticket"])  # 알림 · 대상 · 처리 결과 · 플레이북 · 티켓을 출력한다
@@ -251,7 +251,7 @@ print("--- 단계 6: risk_engine_log.json · engine_summary.json · risk_tickets
 - [ ] `engine_input.py` 의 1 ~ 8번과 `apply5-1_run.py` 의 9번을 채워 저장했다
 <!-- /checklist -->
 
-3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다.
    ```bash
    python apply5-1_run.py
    ```
@@ -267,8 +267,8 @@ print("--- 단계 6: risk_engine_log.json · engine_summary.json · risk_tickets
 5. 단계 6 에서 `risk_engine_log.json` 이 다시 저장됩니다. 「제공 파일」 레슨에서 만든 파일이 있었다면 같은 내용으로 덮어쓰므로 실습 5-2 결과는 그대로입니다.
 6. **[보고서]** `report_u5.md` 의 `## 응용 5-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 단계 5 의 처리 결과별 알림 수와 실제로 실행한 조치 두 개를 적어 주세요.
-   - (나) [핵심 질문] `seoyeon` · `gaeun` · `jiwoo` 는 모두 「조치 없음」인데 티켓은 만들어졌습니다. 단계 4 에서 알림 뒤에 나오는 플레이북 번호를 근거로 세 알림에 조치가 없는 이유를 적고, 티켓이 없다면 이 세 알림이 어떻게 되는지 적어 주세요.
-   - (다) [핵심 질문] 단계 2 의 `minsu` 기록은 등급이 `critical` 입니다. `find_schema_problem` 이 이 기록을 엔진 앞에서 거절하는 이유를 적고, 거절 없이 엔진에 넣으면 어떤 오류가 나고 그 알림이 어떻게 기록되는지 실습 5-1 `INC-402` 와 연결해 적어 주세요.
+   - (나) `seoyeon` · `gaeun` · `jiwoo` 는 모두 「조치 없음」인데 티켓은 만들어졌습니다. 단계 4 에서 알림 뒤에 나오는 플레이북 번호를 근거로 세 알림에 조치가 없는 이유를 적고, 티켓이 없다면 이 세 알림이 어떻게 되는지 적어 주세요.
+   - (다) 단계 2 의 `minsu` 기록은 등급이 `critical` 입니다. `find_schema_problem` 이 이 기록을 엔진 앞에서 거절하는 이유를 적고, 거절 없이 엔진에 넣으면 어떤 오류가 나고 그 알림이 어떻게 기록되는지 실습 5-1 `INC-402` 와 연결해 적어 주세요.
 
 <!-- checklist optional -->
 - [ ] `report_u5.md` 의 `## 응용 5-1` (가) ~ (다)를 채우고 저장했다
