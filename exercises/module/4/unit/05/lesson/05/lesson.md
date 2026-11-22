@@ -93,7 +93,7 @@ source:
 
 **할 일**
 
-1. 응용 5-1 서버의 접속 범위(PORTS)를 확인하고, 새 파일을 만들어 붙여 넣고 읽습니다.
+1. 응용 5-1 서버의 접속 범위(PORTS)를 확인하고, `anomaly_detection` 폴더에 `compose.secure.yaml` 파일을 만들어 붙여 넣고 읽습니다.
 2. `compose.secure.yaml` 로 적용하고, `web1` · `web2` · `web3` 의 출력과 PORTS 가 서로 다른 것을 읽습니다.
 3. `web3` 의 로그 파일을 읽고 `404` 요청을 세어 저장합니다.
 
@@ -116,15 +116,15 @@ source:
    anomaly_detection-web2-1   nginx:1.28   "/docker-entrypoint.…"   web2      Less than a second ago   Up Less than a second   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp
    ```
 
-2. 새 파일을 만들 준비를 합니다. ①은 **[터미널]**, ②는 **[VS Code]** 에서 합니다.
+2. `anomaly_detection` 폴더 안에 `logs` 폴더와 `compose.secure.yaml` 파일을 만듭니다. ①은 **[터미널]**, ②는 **[VS Code]** 에서 합니다.
 
-   ① **[터미널]** 로그를 남길 폴더를 만듭니다.
+   ① **[터미널]** `anomaly_detection` 폴더에서 로그를 남길 `logs` 폴더를 만듭니다.
 
    ```bash
    mkdir logs
    ```
 
-   - 하는 일: `logs` 폴더를 만듭니다.
+   - 하는 일: 지금 폴더(`anomaly_detection`) 안에 `logs` 폴더를 만듭니다.
    - 나오는 것: 아무것도 나오지 않습니다.
 
    ② **[VS Code]** 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `compose.secure.yaml` 을 그대로 적고 Enter 를 칩니다. 내용은 다음 3번에서 붙여 넣으니 지금은 비워 둡니다. 응용 5-1의 `compose.yaml` 은 그대로 둡니다.
@@ -159,9 +159,9 @@ source:
 
    - <mark style="background:#ffc4d6">`web1` · `web2` · `web3` 의 포트 번호(8080 · 8081 · 8082)를 바꾸지 않습니다.</mark>
 
-4. **[터미널]** 새 파일로 적용합니다. <mark>응용 5-1의 서버를 끄지 않고 바로 칩니다.</mark> 이 출력을 서버마다 읽는 것이 이번 실습 문제의 핵심입니다.
+4. **[터미널]** `compose.secure.yaml` 로 적용합니다. <mark>응용 5-1의 서버를 끄지 않고 바로 칩니다.</mark> 이 출력을 서버마다 읽는 것이 이번 실습 문제의 핵심입니다.
 
-   ① 새 파일로 적용합니다.
+   ① `compose.secure.yaml` 로 적용합니다.
 
    ```bash
    docker compose -f compose.secure.yaml up -d
@@ -190,7 +190,7 @@ source:
    docker compose -f compose.secure.yaml ps
    ```
 
-   - 하는 일: 새 파일의 서버 상태를 보여 줍니다. 앞에서 친 1번의 출력과 PORTS 를 비교합니다.
+   - 하는 일: `compose.secure.yaml` 의 서버 상태를 보여 줍니다. 앞에서 친 1번의 출력과 PORTS 를 비교합니다.
    - 나오는 것: <mark>`web1` 은 `0.0.0.0:8080` 그대로이고, `web2` · `web3` 은 `127.0.0.1:` 으로 시작하면</mark> 됩니다.
 
    ```
@@ -316,7 +316,7 @@ source:
    docker compose -f compose.secure.yaml down
    ```
 
-   - 하는 일: 새 파일의 서버를 모두 끄고 지웁니다.
+   - 하는 일: `compose.secure.yaml` 의 서버를 모두 끄고 지웁니다.
    - 나오는 것: `Stopped`, `Removed` 줄이 차례로 나옵니다.
 
    ```
@@ -355,6 +355,14 @@ source:
    - (가) 1번과 5번의 `docker compose ps` 출력을 붙여 넣고, 접속 범위가 바뀐 기존 서비스와 새로 추가된 서비스를 따로 적어 주세요.
    - (나) [핵심 질문] `"8081:80"` 과 `"127.0.0.1:8081:80"` 은 누가 접속할 수 있는지가 어떻게 다른가요? 관리 화면이나 데이터베이스 서버를 이렇게 설정하는 이유도 적어 주세요.
    - (다) [핵심 질문] `up -d` 의 출력에서 `web1` 은 `Running`, `web2` 는 `Recreated`, `web3` 은 `Created` 였습니다. 서버마다 출력이 다른 이유와, 운영 중인 서비스의 설정을 바꿀 때 이것이 왜 도움이 되는지 적어 주세요.
+
+<!-- checklist optional -->
+- [ ] `anomaly_detection` 폴더 안에 `logs` 폴더와 `compose.secure.yaml` 을 만들고 상자 내용을 붙여 넣어 저장했다
+- [ ] `docker compose -f compose.secure.yaml up -d` 로 적용해 `web1` `Running` · `web2` `Recreated` · `web3` `Created` 를 확인했다
+- [ ] `grep` 으로 `404` 요청 2개를 세고 `logs/web_404.log` 로 저장했다
+- [ ] `down` 으로 서버를 지운 뒤 `ls logs` 에 `access.log` · `web_404.log` 가 남은 것을 확인했다
+- [ ] `report_u5.md` 의 `## 응용 5-2` 를 채웠다
+<!-- /checklist -->
 
 ## 응용 5-2 정리
 

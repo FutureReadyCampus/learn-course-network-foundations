@@ -42,7 +42,7 @@ Unit 5는 Module 4 **이상탐지**의 마지막 Unit입니다. 지금까지 로
 
 **API 키가 없어도 끝까지 할 수 있습니다**
 
-- 진짜 AI 요약을 받으려면 **Gemini API 키**가 `.env` 파일에 있어야 합니다. API 키는 구글에 「내가 누구인지」 알리는 비밀 글자라서 비밀번호처럼 다룹니다. `.env` 는 이런 비밀 값을 적어 두는 파일이고, 깃허브에 올리지 않습니다. 키를 만드는 방법은 이 레슨의 「Gemini API 키와 .env 만들기」에 있습니다.
+- 진짜 AI 요약을 받으려면 **Gemini API 키**가 저장소 폴더 `network-study-notes` 바로 아래(`anomaly_detection` 의 바깥)의 `.env` 파일에 있어야 합니다. API 키는 구글에 「내가 누구인지」 알리는 비밀 글자라서 비밀번호처럼 다룹니다. `.env` 는 이런 비밀 값을 적어 두는 파일이고, 깃허브에 올리지 않습니다. 키를 만드는 방법은 이 레슨의 「Gemini API 키와 .env 만들기」에 있습니다.
 - <mark>키가 없으면 `call_llm` 이 `[LLM 호출 실패] API 키 없음` 을 출력하고 빈 문자열을 돌려주고, 요약 자리에는 대체 문장 `(요약 실패 — 점수와 이유를 직접 확인)` 이 들어갑니다.</mark> 프로그램은 멈추지 않고 끝까지 실행됩니다.
 - [주의] <mark style="background:#ffc4d6">**키가 없을 때는 출력과 보고서 답이 정답 레슨의 「키가 있을 때」 예와 다릅니다.**</mark> 실습 5-1 의 출력은 단계 1 ~ 4 로 나뉘는데, 단계 1 ~ 3과 점수 · 등급 · 대상은 같고, 단계 4 의 요약만 대체 문장으로 바뀝니다. 이때는 정답 레슨의 「키가 없을 때」 출력과 맞춰 보고, AI 요약 문장을 읽어야 하는 보고서 질문은 정답 레슨에 실린 요약 예시로 답합니다.
 - AI 가 쓰는 요약 문장은 실행할 때마다 조금씩 달라집니다. 키가 있는 사람도 문장은 정답 레슨과 달라도 정상이고, 점수 · 등급 · 건수는 같아야 합니다.
@@ -68,7 +68,7 @@ Unit 5는 Module 4 **이상탐지**의 마지막 Unit입니다. 지금까지 로
    1. **[VS Code]** 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다.
    2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
    - 답을 적는 **보고서**(`report_u5.md`)는 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
-4. **[VS Code]** `llm_client.py` 파일을 만들어 아래 내용을 붙여 넣습니다. <mark>같은 이름의 파일이 이미 있어도 아래 내용으로 덮어씁니다.</mark> 키가 없을 때도 멈추지 않고 빈 문자열을 돌려주도록 만든 파일이라, 출력이 이 Unit의 문서와 같아집니다.
+4. **[VS Code]** `anomaly_detection` 폴더 바로 아래에 `llm_client.py` 파일을 만들어 아래 `llm_client.py` 코드 상자의 내용을 붙여 넣습니다. <mark>같은 이름의 파일이 이미 있어도 아래 내용으로 덮어씁니다.</mark> 키가 없을 때도 멈추지 않고 빈 문자열을 돌려주도록 만든 파일이라, 출력이 이 Unit의 문서와 같아집니다.
 
 **`llm_client.py`** — Gemini API 를 부르는 함수 세 개입니다.
 
@@ -138,7 +138,7 @@ def call_llm(question):                                              # 질문 �
 - `call_llm` 은 `requests.post` 로 Gemini API 주소에 POST 요청을 보냅니다. 머리글(`headers`)에는 API 키를 담고, 본문(`body`)에는 쓸 모델(구글이 만든 여러 AI 가운데 하나의 이름)과 질문 글을 담습니다. `temperature` 를 0 으로 두면 답 문장이 덜 흔들립니다.
 - 답이 오면 상태 코드가 200(성공)인지 먼저 보고, 응답 안에 여러 겹으로 들어 있는 답 문장만 꺼내 돌려줍니다.
 
-5. **[VS Code]** `unit05_risk_scores.json` 파일을 만들어 아래 내용을 그대로 붙여 넣습니다. Unit 4 실습 4-1 이 저장한 점수 파일과 같은 내용입니다. <mark>이미 있으면 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다). 파일 이름의 `05` 는 예전 번호라서 지금 Unit 번호와 맞지 않지만, Module 4 Unit 5와 Module 5가 같은 이름으로 읽으니 이름을 바꾸지 않고 그대로 씁니다.
+5. **[VS Code]** `anomaly_detection` 폴더 바로 아래에 `unit05_risk_scores.json` 파일을 만들어 아래 `unit05_risk_scores.json` 상자의 내용을 그대로 붙여 넣습니다. Unit 4 실습 4-1 이 저장한 점수 파일과 같은 내용입니다. <mark>이미 있으면 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다). 파일 이름의 `05` 는 예전 번호라서 지금 Unit 번호와 맞지 않지만, Module 4 Unit 5와 Module 5가 같은 이름으로 읽으니 이름을 바꾸지 않고 그대로 씁니다.
 
 **`unit05_risk_scores.json`** — 대상별 점수 기록 5건이고, 점수가 높은 순서로 저장돼 있습니다.
 
@@ -207,6 +207,13 @@ def call_llm(question):                                              # 질문 �
      - `False`: 키가 없습니다. <mark>그대로 실습 5-1로 가도 됩니다.</mark> 요약 자리에 대체 문장이 나옵니다. 키를 만들고 싶으면 다음 페이지 「Gemini API 키와 .env 만들기」를 먼저 합니다.
 
 > **확인** — 첫 줄에서 `5` 가 나오고, 둘째 줄에서 `True` 나 `False` 가 나오면(오류 글자 없이) 성공입니다. `ModuleNotFoundError` 나 `FileNotFoundError` 가 나오면 이 레슨 마지막 페이지 「오류가 나면」의 표를 봅니다.
+
+<!-- checklist -->
+- [ ] `anomaly_detection` 폴더에서 `python -m pip install requests` 로 `requests` 를 설치하고 버전 숫자가 나왔다
+- [ ] `anomaly_detection` 폴더에 `llm_client.py` 를 만들어 코드 상자 내용을 붙여 넣고 저장했다
+- [ ] `anomaly_detection` 폴더에 `unit05_risk_scores.json` 을 만들어 상자 내용을 붙여 넣고 저장했다
+- [ ] 6번 확인 명령 두 줄을 쳐서 `5` 와 `True` 또는 `False` 가 나왔다
+<!-- /checklist -->
 
 ## Gemini API 키와 .env 만들기 (키를 쓸 사람만)
 
@@ -292,6 +299,13 @@ def call_llm(question):                                              # 질문 �
 - 키가 노출됐다면 구글 AI Studio 의 키 목록에서 그 키를 삭제하고 새로 만듭니다. 쓰지 않는 예전 키도 같은 곳에서 삭제해 둡니다.
 
 > **확인** — 5단계에서 `True` 가 나오고, `git status` 목록에 `.env` 가 보이지 않으면 성공입니다. `False` 가 나오면 위 「막혔을 때」를 봅니다.
+
+<!-- checklist optional -->
+- [ ] 구글 AI Studio 에서 키를 만들고 `curl` 로 `"models"` 목록이 나오는 것을 확인했다
+- [ ] `network-study-notes` 바로 아래(`anomaly_detection` 의 바깥)에 `.env` 를 만들어 `GEMINI_API_KEY=키` 한 줄을 적고 저장했다
+- [ ] `network-study-notes` 바로 아래의 `.gitignore` 에 `.env` 줄을 두고, `git status` 에 `.env` 가 보이지 않았다
+- [ ] `anomaly_detection` 폴더에서 5단계 명령을 쳐서 `True` 가 나왔다
+<!-- /checklist -->
 
 ## 오류가 나면
 
