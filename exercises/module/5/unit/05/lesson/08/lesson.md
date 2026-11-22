@@ -48,7 +48,7 @@ render: markdown
 
 **올리는 순서**
 
-1. 내 저장소에서 **Add file → Create new file** 을 누르고, 이름 칸에 `_posts/2026-11-20-m5-u5-soar-engine.md` 처럼 적습니다. 앞은 오늘 날짜, 뒤는 영문 제목입니다.
+1. 깃허브의 내 저장소 `network-study-notes` 에서 **Add file → Create new file** 을 누르고, 이름 칸에 `_posts/2026-11-20-m5-u5-soar-engine.md` 처럼 적습니다. 앞은 오늘 날짜, 뒤는 영문 제목입니다.
 2. 고른 글 틀을 붙여 넣고 맨 위 머리말을 고칩니다.
    1. `module: 5`, `unit: 5` 로 씁니다. 이 두 줄이 첫 화면 「나의 진행」에서 Module 5 줄의 5번 칸을 채웁니다.
    2. `title` 과 `date` 를 내 글에 맞게 고칩니다. 날짜가 미래면 글이 목록에 나오지 않습니다.
@@ -57,6 +57,13 @@ render: markdown
 5. 올리고 1~2분 뒤 내 사이트 첫 화면을 엽니다.
 
 > **확인** — 최신 글에 오늘 글이 보이고 「나의 진행」의 Module 5 · Unit 5 칸이 채워지면 성공입니다. 안 보이면 [Module 3 Unit 1 시작하기 레슨의 「첫 화면 확인하고 막힐 때」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/9)의 「글이 목록에 안 나옴」 줄을 봅니다.
+
+<!-- checklist -->
+- [ ] `network-study-notes` 저장소에 `_posts/` 글 파일을 만들어 글 틀을 붙여 넣고 `module: 5` · `unit: 5` · `title` · `date` 를 고쳤다
+- [ ] 세 문장을 채우고 **Commit changes** 를 눌렀다
+- [ ] 글에서 소개한 코드를 `code/m5_u5_soar_engine.py` 나 `code/m5_u5_policy_check.py` 로 올리고 글에 위치를 적었다
+- [ ] 내 사이트 첫 화면에서 오늘 글과 Module 5 · Unit 5 칸을 확인했다
+<!-- /checklist -->
 
 ## 막힐 때 힌트
 
@@ -91,3 +98,7 @@ render: markdown
 4. 머리말이 `module: 5`, `unit: 5` 이고, `sample: true` 줄이 없습니다.
 
 > **확인** — 네 줄을 모두 「문제 없음」으로 답할 수 있으면 성공입니다. 하나라도 걸리면 그 부분을 지우고 다시 **Commit changes** 합니다.
+
+<!-- checklist -->
+- [ ] 공개 전 점검 네 줄을 모두 확인하고, 걸린 곳은 고쳐 다시 **Commit changes** 했다
+<!-- /checklist -->
