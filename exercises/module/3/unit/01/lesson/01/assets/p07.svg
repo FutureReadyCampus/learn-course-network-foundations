@@ -4,7 +4,7 @@
 <defs>
 <marker id="a-p07f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
 </defs>
-<text x="20" y="30" font-size="19" font-weight="700" fill="#292929">필수 파일 5개를 루트에 만들고 처음 올리기</text>
+<text x="20" y="30" font-size="19" font-weight="700" fill="#292929">필수 파일 5개를 만들고 처음 올리기</text>
 
 <g font-size="15" fill="#292929">
 <rect x="20" y="52" width="320" height="76" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>

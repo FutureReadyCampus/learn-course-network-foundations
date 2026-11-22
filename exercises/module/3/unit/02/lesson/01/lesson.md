@@ -16,7 +16,7 @@ source:
 **이번에 하는 일:** Unit 2를 시작하기 전에 자리를 바꿨습니다. 자리를 옮기지 않았다면 이 레슨은 건너뛰고 「시작하기」로 갑니다. 지금 앉은 PC 에는 **앞 사람의 폴더와 깃허브 로그인**이 남아 있을 수 있습니다. 그대로 쓰면 내 코드가 **앞 사람 이름 · 앞 사람 계정**으로 올라갑니다. 이번 준비 과제에서는 앞 사람 흔적을 확인해 끊고, Unit 1 마무리에서 깃허브에 올려 둔 **내 저장소 `network-study-notes` 를 받아** 내 것이 맞는지 확인합니다. 실습 코드(`access_control`)와 포트폴리오 파일이 모두 이 저장소 하나에 들어 있어서, 받는 것도 이 저장소 하나입니다.
 
 **끝나면 이렇게 됩니다**
-- `문서(Documents)` 안에 앞 사람 폴더는 `network-study-notes_old`, 내 폴더는 `network-study-notes`
+- `바탕화면(Desktop)` 에 앞 사람 폴더는 `network-study-notes_old`, 내 폴더는 `network-study-notes`
 - 이 PC 에서 push 하면 **내 이름 · 내 계정**으로 올라감
 - 깃허브 내 저장소에 이번에 만든 확인 파일이 보임
 - 앞 사람이 켜 둔 도커 컨테이너(8장에서 설명합니다)가 없어 포트가 비어 있음
@@ -27,16 +27,16 @@ source:
 
 1. **[VS Code]** 위 메뉴 **Terminal › New Terminal** 을 누릅니다.
 2. **[터미널]** 오른쪽 위 리스트에 **bash** 가 보이는지 확인합니다. 아니면 `+` 옆 화살표에서 **Git Bash** 를 고릅니다.
-3. **[터미널]** 문서 폴더로 갑니다.
+3. **[터미널]** 바탕화면으로 갑니다. Unit 1 시작하기 3쪽에서 저장소를 내려받은 곳과 같은 자리입니다.
    ```bash
-   cd ~/Documents
+   cd ~/Desktop
    pwd
    ```
-   - 명령 풀이: `cd ~/Documents` 내 문서 폴더로 이동 · `pwd` 지금 위치를 보여 줌
-   - `…/Documents` 로 끝나면 됩니다.
-   - 이 레슨은 문서 폴더를 기준으로 씁니다. 앞 사람 폴더가 바탕화면에 있으면 `cd ~/Desktop` 으로 가서 같은 순서로 합니다.
+   - 명령 풀이: `cd ~/Desktop` 바탕화면으로 이동 · `pwd` 지금 위치를 보여 줌
+   - `…/Desktop` 으로 끝나면 됩니다.
+   - 이 레슨은 Unit 1과 같이 바탕화면을 기준으로 씁니다. `cd ~/Desktop` 에서 폴더를 찾을 수 없다고 나오면(바탕화면이 OneDrive 안에 있는 경우 등) Unit 1 때처럼 그 줄 없이 내 사용자 폴더(`cd ~`)에서 같은 순서로 합니다.
 
-> **확인** — `pwd` 결과가 `…/Documents` 로 끝나면 성공입니다. 다르면 `cd ~/Documents` 를 다시 칩니다. 터미널 이름이 bash 가 아니면 2번처럼 **Git Bash** 를 고릅니다.
+> **확인** — `pwd` 결과가 `…/Desktop` 으로 끝나면 성공입니다. 다르면 `cd ~/Desktop` 을 다시 칩니다. 터미널 이름이 bash 가 아니면 2번처럼 **Git Bash** 를 고릅니다.
 
 ---
 
@@ -44,7 +44,7 @@ source:
 
 **왜 하나요** — 무엇이 남아 있는지 알아야 무엇을 끊을지 정할 수 있습니다.
 
-1. **[터미널]** 문서 폴더에 무엇이 있는지 봅니다.
+1. **[터미널]** 바탕화면에 무엇이 있는지 봅니다.
    ```bash
    ls
    ```
@@ -61,7 +61,7 @@ source:
    git remote -v
    cd ..
    ```
-   - 명령 풀이: `git remote -v` 이 폴더가 연결된 깃허브 저장소 주소를 보여 줌 · `cd ..` 한 단계 위(문서 폴더)로 돌아감
+   - 명령 풀이: `git remote -v` 이 폴더가 연결된 깃허브 저장소 주소를 보여 줌 · `cd ..` 한 단계 위(바탕화면)로 돌아감
    - 이렇게 나옵니다(예시).
      ```
      origin  https://github.com/앞사람아이디/network-study-notes.git (fetch)
@@ -125,7 +125,7 @@ source:
 
 2장 1번에서 폴더가 **없었으면** 이 장은 건너뜁니다.
 
-1. **[VS Code]** 그 폴더가 VS Code 에 열려 있으면 먼저 **File › Close Folder** 로 닫습니다. 열려 있으면 이름이 안 바뀔 수 있습니다. 닫은 뒤 1장처럼 터미널을 다시 열고 `cd ~/Documents` 합니다.
+1. **[VS Code]** 그 폴더가 VS Code 에 열려 있으면 먼저 **File › Close Folder** 로 닫습니다. 열려 있으면 이름이 안 바뀔 수 있습니다. 닫은 뒤 1장처럼 터미널을 다시 열고 `cd ~/Desktop` 합니다.
 2. **[터미널]** 이름을 바꿉니다.
    ```bash
    mv network-study-notes network-study-notes_old
@@ -148,7 +148,7 @@ source:
    - 이름이 기억나지 않으면: 오른쪽 위 **내 프로필 사진** → **Your repositories** → 리스트에서 하나씩 열어, 안에 `access_control` 폴더와 포트폴리오 파일(`_config.yml` 등)이 함께 있는 저장소를 찾습니다. 그것이 내 저장소입니다.
    - 찾은 저장소 이름을 적어 둡니다(예: `my-toolkit`).
 2. **[브라우저]** 초록색 **Code** 단추 → **HTTPS** → 주소 오른쪽 **복사** 아이콘을 누릅니다.
-3. **[터미널]** 문서 폴더에서 받습니다. `git clone ` 뒤에 복사한 주소를 붙여 넣습니다(Git Bash 붙여 넣기 = **Shift + Insert** 또는 마우스 오른쪽 클릭).
+3. **[터미널]** 바탕화면에서 받습니다. `git clone ` 뒤에 복사한 주소를 붙여 넣습니다(Git Bash 붙여 넣기 = **Shift + Insert** 또는 마우스 오른쪽 클릭).
    ```bash
    git clone https://github.com/내아이디/network-study-notes.git
    ```
@@ -163,10 +163,10 @@ source:
      - `Cloning into 'network-study-notes'...` 가 나오면 됩니다. 폴더 이름을 붙이지 않으면 `Cloning into 'my-toolkit'...` 처럼 저장소 이름 그대로 폴더가 생깁니다.
 
 <!-- checklist -->
-- [ ] 문서 폴더에서 `git clone` 으로 내 저장소를 받아 `network-study-notes` 폴더가 생겼다
+- [ ] 바탕화면에서 `git clone` 으로 내 저장소를 받아 `network-study-notes` 폴더가 생겼다
 <!-- /checklist -->
 
-4. **[VS Code]** **File › Open Folder** → `문서(Documents)` → **`network-study-notes`**(뒤에 `_old` 가 **없는** 것)을 엽니다.
+4. **[VS Code]** **File › Open Folder** → `바탕화면(Desktop)` → **`network-study-notes`**(뒤에 `_old` 가 **없는** 것)을 엽니다.
 
 > **확인** — `Cloning into 'network-study-notes'...` 뒤에 `done.` 이 나오고 VS Code 에 `_old` 가 없는 폴더가 열리면 성공입니다. `already exists` 가 나오면 4장을 먼저 합니다.
 
@@ -318,7 +318,7 @@ source:
 
 ## 다 했으면 확인
 
-- [ ] `문서` 에 `network-study-notes_old`(앞 사람)와 `network-study-notes`(내 것)이 따로 있다 (앞 사람 폴더가 없었으면 내 것만)
+- [ ] 바탕화면에 `network-study-notes_old`(앞 사람)와 `network-study-notes`(내 것)이 따로 있다 (앞 사람 폴더가 없었으면 내 것만)
 - [ ] `git config --global user.name` 이 내 이름이다
 - [ ] `git remote -v` 주소에 내 아이디가 있다
 - [ ] `git log --oneline -3` 맨 위가 Unit 1 마무리에서 올린 커밋이다

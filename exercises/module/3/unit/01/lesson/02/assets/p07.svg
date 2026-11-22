@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img">
 <title>실습 1-1은 요청 판정, users.json, roles.json, 약점 따지기 순서로 한다</title>
-<desc>요청 여섯 건을 매트릭스로 판정한 뒤 users.json 여섯 명과 roles.json 세 역할을 직접 쓰고 json.tool 로 확인한다. 각 단계 뒤에 보고서 (가)·(나)와 (다)를 쓴다.</desc>
+<desc>요청 여섯 건을 매트릭스로 판정한 뒤 users.json 여섯 명과 roles.json 세 역할을 직접 쓰고 json.tool 로 확인한다. 판정 뒤에 보고서 (가), 약점 따지기 뒤에 (다)를 쓰고, 필요 이상 ○ 찾기와 (나)는 응용이다.</desc>
 <defs><marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 1-1 순서와 보고서 답</text>
@@ -8,11 +8,11 @@
 <text x="100" y="93.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">① 판정</text>
 <text x="100" y="115.2" font-size="15" fill="#292929" text-anchor="middle">요청 여섯 건을</text>
 <text x="100" y="137.2" font-size="15" fill="#292929" text-anchor="middle">매트릭스로</text>
-<text x="100" y="159.2" font-size="15" fill="#292929" text-anchor="middle">필요 이상 ○ 찾기</text>
+<text x="100" y="159.2" font-size="15" fill="#292929" text-anchor="middle">○ 찾기는 응용</text>
 <polyline points="100,187 100,213" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p07)"/>
 <rect x="20" y="214" width="160" height="62" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="100" y="240.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">보고서</text>
-<text x="100" y="259.9" font-size="14" fill="#292929" text-anchor="middle">(가) · (나)</text>
+<text x="100" y="259.9" font-size="14" fill="#292929" text-anchor="middle">(가) · 응용 (나)</text>
 <polyline points="181,121 192,121" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p07)"/>
 <rect x="193" y="56" width="160" height="130" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="273" y="93.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">② users.json</text>

@@ -258,7 +258,6 @@ print("6 통과")                                                  # 6번 assert
    python test_policy.py
    ```
    - 명령 풀이: `python` 파이썬으로 파일을 실행 · `test_policy.py` 실행할 파일
-   맥북: `python3 test_policy.py`
    - 오류가 나오면 아래 표로 봅니다.
 
    | 나온 오류 | 볼 곳 |
@@ -279,7 +278,6 @@ print("6 통과")                                                  # 6번 assert
    python test_policy_extra.py
    ```
    - 명령 풀이: `python` 파이썬으로 파일을 실행 · `test_policy_extra.py` 실행할 파일
-   맥북: `python3 test_policy_extra.py`
    - 오류 메시지에서 `line` 뒤의 숫자(몇 번째 줄인지)와 맨 마지막 줄 `AssertionError: …` 의 설명을 읽습니다(2.2).
 
 <!-- checklist optional -->
