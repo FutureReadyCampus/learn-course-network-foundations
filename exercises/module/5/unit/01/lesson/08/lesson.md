@@ -115,10 +115,10 @@ python -c "import json; s = json.load(open('system_state.json', encoding='utf-8'
 **자주 틀리는 곳**
 
 - 등록 파일의 마지막 플레이북 뒤에 쉼표를 남기면 확인 명령에서 `JSONDecodeError` 가 납니다. <mark>**마지막 플레이북 뒤에는 쉼표를 붙이지 않습니다.**</mark>
-  - 실행하면 다음 오류가 납니다(<mark style="background:#ffc4d6">`Expecting value`</mark> 로 시작하면 이 실수이고, 줄 번호는 사람마다 다릅니다). 파이썬 3.13 이상에서는 같은 실수에 `Illegal trailing comma before end of array` 라는 문구가 나옵니다.
+  - 실행하면 다음 오류가 납니다(<mark style="background:#ffc4d6">`Illegal trailing comma before end of array`</mark> 가 나오면 이 실수이고, 줄 번호는 사람마다 다릅니다). 파이썬 3.12 이하에서는 같은 실수에 `Expecting value` 로 시작하는 문구가 나옵니다.
 
 ```
-json.decoder.JSONDecodeError: Expecting value: line 38 column 1 (char 875)
+json.decoder.JSONDecodeError: Illegal trailing comma before end of array: line 37 column 4 (char 873)
 ```
 
 - PB-002 의 `}` 뒤에 쉼표를 빼고 PB-003 을 붙이면 같은 명령에서 다른 오류가 납니다. <mark>**플레이북과 플레이북 사이에는 쉼표가 있어야 합니다.**</mark> 줄 번호는 사람마다 다릅니다.
@@ -261,7 +261,7 @@ INC-005 PB-003 티켓 생성 : 티켓 TCK-2 생성
 
 **자주 틀리는 곳**
 
-- ② 를 빠뜨리면(① 만 쓰면) 오류는 나지 않지만 <mark>**승인이 필요한 플레이북도 바로 실행됩니다.**</mark> 승인 대기 기록은 남기고도 멈추지 않고 `for` 로 내려가기 때문입니다. 단계 3 에 `INC-002 … -> PB-002 실행 완료 (상태: 조치됨)` 가 나오고, 단계 4 에 차단한 IP 가 들어 있고, 단계 5 의 승인 대기가 0건으로 나오는 것이 이 실수의 결과입니다.
+- ② 를 빠뜨리면(① 만 쓰면) 오류는 나지 않지만 <mark>**승인이 필요한 플레이북도 바로 실행됩니다.**</mark> 승인 대기 기록은 남기고도 멈추지 않고 `for` 로 내려가기 때문입니다. 단계 3 에 `INC-002 … -> PB-002 실행 완료 (상태: 조치됨)` 가 나오고, 단계 4 에 차단한 IP 가 들어 있고, 단계 5 의 승인 대기가 0건으로 나오는 것이 이 실수의 결과입니다. 아래 출력은 PB-003 이 `IP 차단` · `티켓 생성` · `담당자 승인 필요` 인 경우입니다.
 
 ```
 --- 단계 4: 실행 후 연습용 시스템 상태

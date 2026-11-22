@@ -22,7 +22,7 @@ render: markdown
 
    - 맥락은 실습 1-3에서 알림에 붙이는 재직 · VIP · 접속 IP 정보입니다.
 4. 두 파일 모두 실습 1-2의 `incident.py` 를 불러 씁니다. `incident.py` 가 같은 폴더에 있어야 합니다.
-5. 다 만들었으면 터미널에서 두 파일을 불러와 봅니다. <mark>`ok` 가 나오면</mark> 됩니다(맥북은 `python3`).
+5. 이 명령은 <mark>다음 두 쪽(「`routing.py` 만들기」 · 「`safe_runner.py` 만들기」)에서 두 파일을 다 만든 뒤에</mark> 칩니다. 지금 치면 `ModuleNotFoundError: No module named 'routing'` 이 나옵니다. 다 만들었으면 터미널에서 두 파일을 불러와 봅니다. <mark>`ok` 가 나오면</mark> 됩니다.
    ```bash
    python -c "import routing, safe_runner; print('ok')"
    ```
@@ -85,7 +85,7 @@ def apply_route(incident, route, reason, incident_log):                     # �
 - [ ] `routing.py` 를 `soar_response` 폴더에 만들고 코드 상자 내용을 붙여 넣어 저장했다
 <!-- /checklist -->
 
-**확인** — 터미널에서 `python -c "import routing; print('ok')"`(맥북은 `python3`)를 쳐서 `ok` 가 나오면 성공입니다. `SyntaxError` 나 `IndentationError` 가 나오면 복사가 덜 된 것이니 파일 내용을 모두 지우고 코드 상자를 다시 복사해 붙여 넣습니다.
+**확인** — 터미널에서 `python -c "import routing; print('ok')"` 를 쳐서 `ok` 가 나오면 성공입니다. `SyntaxError` 나 `IndentationError` 가 나오면 복사가 덜 된 것이니 파일 내용을 모두 지우고 코드 상자를 다시 복사해 붙여 넣습니다.
 
 <!-- checklist -->
 - [ ] `python -c "import routing; print('ok')"` 를 실행해 `ok` 가 나왔다
