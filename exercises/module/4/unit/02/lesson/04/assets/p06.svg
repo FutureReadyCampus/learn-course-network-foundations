@@ -42,5 +42,5 @@
 <text x="594.5" y="317.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">보고서 채우기</text>
 <text x="594.5" y="338.8" font-size="15" fill="#666660" text-anchor="middle">올리기 전에</text>
 <line x1="491" y1="323" x2="463" y2="323" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
-<text x="24" y="392" font-size="14" fill="#666660" text-anchor="start">push 가 rejected 면: git pull 로 받아 온 뒤 git push 다시</text>
+<text x="24" y="392" font-size="14" fill="#666660" text-anchor="start">push 가 rejected 면: git pull --no-rebase 로 받아 온 뒤 git push 다시</text>
 </svg>
