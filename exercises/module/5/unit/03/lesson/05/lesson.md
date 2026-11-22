@@ -78,7 +78,7 @@ source:
 | Unit 2 | `ip_actions.py` | 「제공 파일」 레슨 |
 | Unit 2 | `config/vip_accounts.json` · `config/allowlist_ips.json` · `ip_users.json` | 시작하기 레슨 |
 
-**[터미널]** 아래 명령으로 확인합니다(맥북은 `python3`). `앞 Unit 파일 정상` 이 나오면 됩니다. 시작하기 레슨의 두 함수짜리 `incident.py` 를 쓰고 있다면 `cannot import name 'INCIDENTS_PATH'` 가 나오니, Unit 1 실습 1-2의 `incident.py` 전체로 바꿉니다.
+**[터미널]** 아래 명령으로 확인합니다. `앞 Unit 파일 정상` 이 나오면 됩니다. 시작하기 레슨의 두 함수짜리 `incident.py` 를 쓰고 있다면 `cannot import name 'INCIDENTS_PATH'` 가 나오니, Unit 1 실습 1-2의 `incident.py` 전체로 바꿉니다.
 
 ```bash
 python -c "from incident import load_json, save_json, INCIDENTS_PATH; from enrichment import enrich_incident; from routing import decide_route; from containment import contain_account; from containment_store import new_state; from ip_actions import check_ip_policy, block_ip; print('앞 Unit 파일 정상')"
@@ -230,7 +230,7 @@ for record in log:                                                              
 
 **순서**
 
-1. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `drill.py` · `shift_report.py` · `apply3-1_run.py` 를 하나씩 그대로 적어 세 개의 파일을 만듭니다. 각 파일에 이 페이지의 코드 상자를 복사해 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
+1. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `drill.py` · `shift_report.py` · `apply3-1_run.py` 를 하나씩 그대로 적어 세 개의 파일을 만듭니다. 각 파일에 이 페이지의 코드 상자를 복사해 붙여 넣고 저장합니다(`Ctrl + S`).
 2. **[VS Code]** `drill.py` 1 ~ 5번, `shift_report.py` 6 ~ 8번, `apply3-1_run.py` 9번을 씁니다. 막히면 아래 「응용 3-1 정리」를 봅니다.
 
 <!-- checklist optional -->
@@ -238,7 +238,7 @@ for record in log:                                                              
 - [ ] `shift_report.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 6 ~ 8번을 썼다
 <!-- /checklist -->
 
-3. **[터미널]** 실행합니다(맥북은 `python3`).
+3. **[터미널]** 실행합니다.
    ```bash
    python apply3-1_run.py
    ```

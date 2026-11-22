@@ -76,7 +76,7 @@ source:
 
 **할 일**: 도구를 설치하고 알림 서버를 켠 뒤, 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 1 ~ 4 와 서버 터미널을 읽습니다.
 
-**`alert_server.py`** — 알림 서버입니다. Flask(플라스크)는 파이썬으로 작은 웹 서버를 만드는 도구이고, `requests` 는 그런 서버에 요청을 보내는 도구입니다. `/alert` 로 알림이 오면 터미널에 `[알림 받음]` 과 내용을 보여 줍니다. 쓰는 줄이 없습니다. 이미 있으면 다시 만들지 않습니다(`agent_core` 폴더에 있으면 `cp ../agent_core/alert_server.py .` 로 복사해도 됩니다. `agent_core` 는 이 과정에서 만드는 폴더가 아니라서 없으면 아래 `alert_server.py` 상자를 그대로 씁니다). Unit 4 응용 4-1 · 4-2에서도 이 서버를 켭니다.
+**`alert_server.py`** — 알림 서버입니다. Flask(플라스크)는 파이썬으로 작은 웹 서버를 만드는 도구이고, `requests` 는 그런 서버에 요청을 보내는 도구입니다. `/alert` 로 알림이 오면 터미널에 `[알림 받음]` 과 내용을 보여 줍니다. 쓰는 줄이 없습니다. `soar_response` 폴더에 이미 있으면 다시 만들지 않고, 없으면 아래 `alert_server.py` 상자를 그대로 씁니다. Unit 4 응용 4-1 · 4-2에서도 이 서버를 켭니다.
 
 ```python
 from flask import Flask, request        # 웹 서버를 만드는 Flask 와 요청 정보를 담은 request 를 불러온다
@@ -155,7 +155,7 @@ def send_ticket_notice(ticket, now, rules):                            # 티켓 
     return "전송"                                                      # 「전송」을 리턴한다
 ```
 
-**`apply3-3_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 7번 아래에는 `result = …` 를 씁니다. 8번 아래에는 `if … :` 를 씁니다. 9번 아래에는 한 단계 들여쓴 줄을 씁니다.
+**`apply3-3_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 7번 아래에는 `result = …` 를 씁니다. 8번 아래에는 `if … :` 를 씁니다. 9번 아래에는 한 단계 들여쓴 줄을 씁니다. 맨 아래에서 저장하는 파일 이름 `tickets_unit09.json` 의 `unit09` 는 오타가 아닙니다. Unit 4가 이 이름 그대로 읽으니 바꾸지 않습니다.
 
 ```python
 from incident import load_json, save_json                                             # Unit 1 파일의 JSON 읽기 · 저장 함수를 불러온다
@@ -195,7 +195,8 @@ print("--- 단계 4: 파일에 저장된 티켓", len(saved), "장")            
 
 **순서**
 
-1. **[터미널]** 먼저 알림 서버와 알림 보내기에 쓰는 도구를 설치합니다(맥북은 `python3`). 이미 설치했다면 바로 다음 번호로 갑니다.
+1. **[터미널]** 먼저 알림 서버와 알림 보내기에 쓰는 도구를 설치합니다. 이미 설치했다면 바로 다음 번호로 갑니다.
+   - Module 4에서 가상환경(`.venv`)을 만들어 썼다면, 설치 전에 이 터미널에서 `source ../.venv/Scripts/activate` 로 켭니다. `.venv` 는 `soar_response` 의 한 단계 위인 `network-study-notes` 에 있습니다. 켜지면 줄 앞에 `(.venv)` 가 붙습니다. 가상환경을 쓰지 않았다면 건너뜁니다.
    ```bash
    python -m pip install flask requests
    ```
@@ -212,7 +213,9 @@ print("--- 단계 4: 파일에 저장된 티켓", len(saved), "장")            
    python alert_server.py
    ```
    - `pwd` 결과가 `soar_response` 로 끝나지 않으면 `cd soar_response` 를 먼저 입력합니다. 새 터미널이 다른 폴더에서 열릴 수 있습니다.
-   - `No module named 'flask'` 가 나오면 새 터미널에서 가상환경이 켜져 있는지 보고, 1번 설치를 이 터미널에서 다시 합니다.
+   - 1번에서 가상환경을 켰다면 새 터미널에도 따로 켜야 합니다. `soar_response` 에서 `source ../.venv/Scripts/activate` 를 친 뒤 서버를 켭니다.
+   - `No module named 'flask'` 가 나오면 이 터미널에서 가상환경이 켜져 있는지(줄 앞의 `(.venv)`) 보고, 1번 설치를 이 터미널에서 다시 합니다.
+   - 서버를 켜면 빨간 `WARNING: This is a development server. …` 줄이 함께 나옵니다. 연습용 서버라는 안내이니 정상입니다.
    - `Address already in use` 가 나오면 이미 켜진 서버가 있는 것이니, 그 터미널에서 `Ctrl + C` 로 끄고 다시 켭니다.
 
 <!-- checklist optional -->
@@ -226,11 +229,11 @@ print("--- 단계 4: 파일에 저장된 티켓", len(saved), "장")            
 - [ ] `ticket_notice.py` 를 골격으로 바꿔 1 ~ 6번을, `apply3-3_run.py` 를 만들어 7 ~ 9번을 쓰고 저장했다
 <!-- /checklist -->
 
-6. **[터미널]** 처음 쓰던 터미널에서 <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+6. **[터미널]** 처음 쓰던 터미널에서 <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다.
    ```bash
    python apply3-3_run.py
    ```
-7. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 11줄, 단계 2 는 숫자가 제목 줄에 함께 나오고 그 아래 티켓 7줄, 단계 3 은 `[알림 실패] ConnectionError` 3줄과 결과 1줄(재시도를 확인하는 시험입니다), 단계 4 는 숫자가 제목 줄에 함께 나오고 그 아래 줄이 없습니다. <mark style="background:#bde3ff">알림 서버 터미널에는 `[알림 받음]` 줄이 9개 출력됩니다.</mark>
+7. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 11줄, 단계 2 는 숫자가 제목 줄에 함께 나오고 그 아래 티켓 7줄, 단계 3 은 `[알림 실패] ConnectionError` 3줄과 결과 1줄(재시도를 확인하는 시험입니다), 단계 4 는 숫자가 제목 줄에 함께 나오고 그 아래 줄이 없습니다. <mark style="background:#bde3ff">알림 서버 터미널에는 `[알림 받음]` 줄이 9개 출력됩니다.</mark> 그 사이사이에 나오는 `"POST /alert HTTP/1.1" 200 -` 줄 9개는 서버가 요청을 받았다는 기록이니 정상입니다.
 8. **[터미널]** 알림 서버 터미널을 `Ctrl + C` 로 끕니다.
 
 <!-- checklist optional -->

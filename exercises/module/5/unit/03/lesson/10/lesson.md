@@ -43,9 +43,11 @@ render: markdown
 
 | 오늘 상황 | 고를 글 틀 |
 |---|---|
-| 기본(세 문장 글) | `_templates/post-short.md` |
-| 막혀서 끝내지 못했다 | `_templates/post-stuck.md` |
-| 응용: 여유가 있어 긴 글을 쓴다 | `_templates/post-practice.md` |
+| 기본(세 문장 글) | `post-short` |
+| 막혀서 끝내지 못했다 | `post-stuck` |
+| 응용: 여유가 있어 긴 글을 쓴다 | `post-practice` |
+
+글 틀은 저장소에 파일로 없어도 됩니다. 위에 링크한 「글 틀로 글 쓰기」 페이지에서 고른 글 틀의 상자를 복사해 씁니다.
 
 **2. 새 글 파일 만들기**
 
@@ -55,7 +57,7 @@ render: markdown
 - [ ] `_posts` 폴더에 오늘 날짜 이름(예: `_posts/2026-11-20-m5-u3-rollback-ticket.md`)으로 글 파일을 만들었다
 <!-- /checklist -->
 
-2. 고른 글 틀의 내용을 붙여 넣고, 맨 위 머리말(front matter)을 오늘 Unit 에 맞게 고칩니다.
+2. 링크한 페이지에서 고른 글 틀(예: `post-short`) 상자를 복사해 붙여 넣고, 맨 위 머리말(front matter)을 오늘 Unit 에 맞게 고칩니다.
    ```
    module: 5
    unit: 3
@@ -101,7 +103,7 @@ render: markdown
 3. 실습 데이터가 아닌 실제 사람의 이름(나와 동료의 실명)이 없다
 4. 머리말이 `module: 5`, `unit: 3` 이고, `sample: true` 줄이 없다
 
-**올리기** — **[터미널]** 네 줄을 모두 「그렇다」으로 답할 수 있으면 저장소 루트에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더로 돌아옵니다: `cd ..` → `python check_publish.py`(맥북은 `python3`) → `git add .` → `git commit -m "Add module 5 unit 3 post"` → `git push` → `cd soar_response`. 터미널이 이미 `network-study-notes` 에 있으면 `cd ..` 는 건너뜁니다. 점검에서 `[오류]` 가 나오면 그 부분을 지우고 다시 돌린 뒤 올립니다.
+**올리기** — **[터미널]** 네 줄을 모두 「그렇다」으로 답할 수 있으면 저장소 루트에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더로 돌아옵니다: `cd ..` → `python check_publish.py` → `git add .` → `git commit -m "Add module 5 unit 3 post"` → `git push` → `cd soar_response`. 터미널이 이미 `network-study-notes` 에 있으면 `cd ..` 는 건너뜁니다. 점검에서 `[오류]` 가 나오면 그 부분을 지우고 다시 돌린 뒤 올립니다.
 
 <!-- checklist -->
 - [ ] 저장소 루트에서 `python check_publish.py` 가 `오류 0건` 인 것을 보고 `git add` · `git commit` · `git push` 로 글을 올렸다
