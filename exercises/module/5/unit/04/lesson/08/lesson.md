@@ -71,7 +71,7 @@ risk_assessment.py   make_risk_table        : 표로 바꾸고 위험 점수 열
 - **만드는 것**: 위험 점수 산출 · 등급 분류 · 통제 갭 분석 · 위험도순 정렬(`risk_assessment.py`), 평가 결과 출력과 리스크 평가 문서 저장(`apply4-4_run.py`).
 - **실행하면**: <mark style="background:#bde3ff">단계 1: 불러온 자동 조치 수, 단계 2: 점수가 큰 조치부터 등급과 빠진 통제, 단계 3: 바로 보완할 조치 수와 저장한 문서가 나옵니다.</mark>
 
-**할 일**: 데이터 파일 하나와 코드 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행한 뒤 문서 파일을 열어 읽습니다.
+**할 일**: 데이터 파일 하나(`config/automation_risks.json`)와 코드 파일 두 개(`risk_assessment.py` · `apply4-4_run.py`)를 `soar_response` 폴더에 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행한 뒤 문서 파일 `risk_assessment.md` 를 열어 읽습니다.
 
 **`config/automation_risks.json`** — 자동 조치 6가지의 영향도 · 발생 가능성 · 지금 있는 통제(existing control, 이그지스팅 컨트롤: 이미 적용된 통제)를 적은 입력 데이터입니다.
 
@@ -210,7 +210,7 @@ print("--- 단계 3: 바로 보완할 조치", gap_count, "개 ·", DOC_PATH, le
    python -m pip install pandas
    ```
    - 터미널 맨 앞에 가상환경 이름(예: `(.venv)`)이 보이는 상태에서 칩니다. 응용 4-3 에서 설치했다면 건너뜁니다.
-2. **[VS Code]** 파일 세 개를 만듭니다. `config` 폴더를 오른쪽 클릭 › **New File** 로 `automation_risks.json` 을, `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `risk_assessment.py` · `apply4-4_run.py` 를 만들고, 각각 코드 상자의 내용을 붙여 넣고 저장합니다.
+2. **[VS Code]** 파일 세 개를 만듭니다. `soar_response` 폴더 안의 `config` 폴더를 오른쪽 클릭 › **New File** 로 `automation_risks.json` 을, `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `risk_assessment.py` · `apply4-4_run.py` 를 만들고, 각각 코드 상자의 내용을 붙여 넣고 저장합니다.
 3. **[VS Code]** `risk_assessment.py` 1 ~ 7번, `apply4-4_run.py` 8 · 9번을 씁니다. 막히면 아래 「응용 4-4 정리」를 봅니다.
 4. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
@@ -224,6 +224,13 @@ print("--- 단계 3: 바로 보완할 조치", gap_count, "개 ·", DOC_PATH, le
    - (가) 실행한 출력 전체를 붙여 넣고, 등급이 높음인 조치와 바로 보완할 조치 2개를 적어 주세요.
    - (나) [핵심 질문] 계정 잠금 · 세션 종료 · IP 차단은 점수가 모두 6(높음)인데, 세션 종료만 통제 갭이 있습니다. `config/automation_risks.json` 의 `controls` 를 근거로 그 이유를 적고, 세션 종료에 예방 통제인 승인 게이트가 특히 필요한 이유를 Unit 3 에 있는 되돌리기(교정 통제)와 연결해 적어 주세요.
    - (다) [핵심 질문] 담당자 알림은 영향도가 1인데 등급이 보통입니다. 점수 계산을 근거로 그 이유를 적고, 탐지 통제인 감사 기록이 없으면 사고가 난 뒤 무엇을 확인할 수 없는지 적어 주세요.
+
+<!-- checklist optional -->
+- [ ] `soar_response` 폴더 안의 `config` 폴더에 `automation_risks.json` 을 만들고 붙여 넣은 뒤 저장했다
+- [ ] `soar_response` 폴더에 `risk_assessment.py` · `apply4-4_run.py` 를 만들고 1 ~ 9번을 쓴 뒤 저장했다
+- [ ] `python apply4-4_run.py` 를 실행하고 `risk_assessment.md` 를 미리보기로 열어 표와 「바로 보완할 조치」 절을 확인했다
+- [ ] `report_u4.md` 의 `## 응용 4-4` 를 채웠다
+<!-- /checklist -->
 
 ## 응용 4-4 정리
 

@@ -102,6 +102,11 @@ def escalate_ticket(ticket, now, rules):                                        
 
 > **확인** — `python -c "import escalation; print('escalation.py 정상')"` 이 `escalation.py 정상` 을 출력하면 성공입니다. `No module named 'ticket_notice'` 가 나오면 응용 4-1 레슨의 「필요한 파일 준비하기」를 먼저 합니다.
 
+<!-- checklist optional -->
+- [ ] `soar_response` 폴더에 `escalation.py` 를 만들고 붙여 넣은 뒤 저장했다
+- [ ] `python -c "import escalation; print('escalation.py 정상')"` 을 쳐서 `escalation.py 정상` 이 나왔다
+<!-- /checklist -->
+
 ## `report.py` 만들기
 
 **`report.py`** — 티켓 파일을 판다스 표로 바꿔 집계하고, 조치 기록과 대조해 초동 대응 리포트의 줄 리스트를 만듭니다. 리포트 파일을 실제로 쓰는 일은 응용 4-3 의 실행 파일이 합니다.
@@ -225,3 +230,8 @@ def make_report_lines(tickets, actions, rule_counts, grade_means, late_tickets, 
 - 응용 4-5 는 이 파일의 `find_missing_incidents` 를 불러 씁니다. 응용 4-5 가 읽는 리포트 파일 `incident_report_20261112.md` 는 응용 4-5 레슨에서 만드는 방법을 알려 줍니다.
 
 > **확인** — `python -c "import report; print('report.py 정상')"` 이 `report.py 정상` 을 출력하면 성공입니다. `No module named 'pandas'` 가 나오면 `python -m pip install pandas` 로 설치하고 다시 칩니다.
+
+<!-- checklist optional -->
+- [ ] `soar_response` 폴더에 `report.py` 를 만들고 붙여 넣은 뒤 저장했다
+- [ ] `python -c "import report; print('report.py 정상')"` 을 쳐서 `report.py 정상` 이 나왔다
+<!-- /checklist -->
