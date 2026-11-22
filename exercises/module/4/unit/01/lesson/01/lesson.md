@@ -186,7 +186,7 @@ XDR(엑스디알)은 PC · 서버 같은 여러 곳의 탐지를 이어서 보�
 ## 폴더 만들고 샘플 로그 준비하기
 
 1. **[VS Code]** 왼쪽 목록에서 `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** Module 4 폴더 `anomaly_detection` 을 만들고 들어갑니다(맥북은 `python` 을 `python3` 로). <mark>마지막 `pwd` 가 `…/network-study-notes/anomaly_detection` 으로 끝나야</mark> 합니다. 앞으로 Module 4 파일은 모두 이 폴더에 만듭니다.
+2. **[터미널]** `network-study-notes` 안에 Module 4 작업 폴더 `anomaly_detection` 을 만들고 들어갑니다(맥북은 `python` 을 `python3` 로). <mark>마지막 `pwd` 가 `…/network-study-notes/anomaly_detection` 으로 끝나야</mark> 합니다. 앞으로 Module 4 파일은 모두 이 폴더에 만듭니다.
    ```bash
    mkdir -p anomaly_detection
    cd anomaly_detection
@@ -252,6 +252,12 @@ XDR(엑스디알)은 PC · 서버 같은 여러 곳의 탐지를 이어서 보�
 6. 각 실습은 **「할 일」을 위에서부터 차례로** 따라 합니다. `[창 이름]` 이 지금 쓸 창입니다. 코드를 채울 때는 `# ←` 가 붙은 번호 주석(① · ②) 바로 아래에 한 줄씩 씁니다. 주석이 시키는 일을 하면 모양이 조금 달라도 맞습니다. 막히면 이 Unit 뒤쪽의 정답 레슨을 봅니다.
 
 > **확인** — 5번 명령에서 `30` 이 나오고, VS Code 왼쪽 목록의 `anomaly_detection` 아래에 `access_sample.log` 가 보이면 성공입니다. 숫자가 다르면 파일 내용을 모두 지우고 위 코드 상자에서 다시 복사해 붙여 넣습니다.
+
+<!-- checklist -->
+- [ ] `network-study-notes` 안에 `anomaly_detection` 폴더를 만들고, 터미널 위치(`pwd`)가 `…/network-study-notes/anomaly_detection` 으로 끝나는 것을 봤다
+- [ ] `anomaly_detection` 폴더에 `access_sample.log` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] 줄 수 확인 명령을 실행해 `30` 이 나왔다
+<!-- /checklist -->
 
 ## 오류가 나면
 
