@@ -27,7 +27,7 @@ source:
 
 1. 판정 함수를 `import` 해서 쓰면 그 파일을 가진 프로그램만 쓸 수 있습니다. **서버**로 만들면 주소만 알면 어떤 프로그램이든 같은 규칙으로 물을 수 있습니다.
    - 브라우저에 GitHub Pages 주소를 치면 그 사이트가 화면을 돌려주는 것과 같습니다. 여기서는 프로그램이 주소로 「허용인가요?」를 묻고, 서버가 답을 돌려줍니다.
-   - 서버와 주소 요청이 낯설면 AI 에게 「웹 서버와 HTTP 요청을 중학생에게 설명하듯 알려 줘」라고 물어보세요.
+   - 서버와 주소 요청이 낯설면 AI 에게 「웹 서버와 HTTP 요청을 중학생에게 설명하듯 알려 줘」라고 물어보세요. 여기서 **HTTP** 는 브라우저나 프로그램이 서버와 주고받을 때 지키는 약속입니다.
 2. 서버는 켜 두고 요청을 기다리는 프로그램입니다.
    - 서버를 켠 터미널(터미널 1)은 계속 실행 중이라 다른 일을 못 하므로, 요청은 다른 터미널(터미널 2)에서 보냅니다.
    - VS Code 터미널 창 오른쪽의 터미널 리스트에서 이름을 누르면 그 터미널 화면으로 바뀝니다.
@@ -304,17 +304,19 @@ print("판정까지 간 응답", answered, "건 / 로그에 남은 줄", len(ent
 - [ ] `access_server.py` · `send_checks.py` 를 만들어 붙여 넣고, `access_server.py` 의 직접 쓰는 곳 다섯 군데를 채웠다
 <!-- /checklist -->
 
-3. **[터미널 1]** 먼저 서버와 요청에 쓰는 도구(Flask · requests)를 설치합니다(맥북은 `python3`). 이미 설치했다면 바로 다음 줄로 갑니다.
+3. **[터미널 1]** 먼저 서버와 요청에 쓰는 도구(Flask · requests)를 설치합니다. 이미 설치했다면 바로 다음 줄로 갑니다.
    ```bash
    python -m pip install flask requests
    ```
-   - 명령 풀이: `python -m pip` 파이썬의 설치 도구 pip(핍)을 실행 · `install flask requests` 두 도구를 설치. 마지막에 `Successfully installed …` 가 나오면 됩니다(이미 설치돼 있으면 `Requirement already satisfied` 가 나옵니다).
+   - 명령 풀이: `python -m pip` 파이썬의 설치 도구 pip(핍)을 실행 · `install flask requests` 두 도구를 설치. 마지막에 `Successfully installed …` 가 나오면 됩니다(이미 설치돼 있으면 `Requirement already satisfied` 가 나옵니다). 중간에 노란 `WARNING: The script … is not on PATH` 줄이 보여도 끝에 `Successfully installed` 가 있으면 설치된 것이니 무시합니다.
 
    그다음 서버를 켭니다.
    ```bash
    pwd
    python access_server.py
    ```
+   - `pwd` 가 `access_control` 로 끝나지 않으면 `cd access_control` 을 먼저 칩니다.
+   - `Running on …` 바로 앞의 빨간 `WARNING: This is a development server. …` 줄은 연습용 서버라는 안내이니 무시합니다.
    - `Running on http://127.0.0.1:5001` 이 나온 뒤 명령을 치는 줄이 다시 나오지 않고 멈춘 듯 보이면 정상입니다. 서버가 요청을 기다리는 중입니다. 이 터미널은 켠 채로 두고 다른 명령을 치지 않습니다.
    - `Address already in use` 가 나오면 이미 켜진 서버가 있는 것이니, 그 터미널에서 `Ctrl + C` 로 끄고 다시 켭니다.
    - 코드나 `config/conditions.json` 을 고쳤으면 `Ctrl + C` 로 끄고 다시 켭니다(서버는 켤 때 한 번만 읽습니다).
@@ -331,7 +333,7 @@ print("판정까지 간 응답", answered, "건 / 로그에 남은 줄", len(ent
    pwd
    python send_checks.py
    ```
-   - 새 터미널이 이미 `access_control` 에서 열렸다면 `cd access_control` 은 건너뜁니다(맥북은 `python3`, 결과 줄 앞의 `NotOpenSSLWarning` 은 무시합니다).
+   - 새 터미널이 이미 `access_control` 에서 열렸다면 `cd access_control` 은 건너뜁니다.
    - `Connection refused` 가 나오면 터미널 1에서 서버가 켜져 있는지 확인합니다.
    - `No module named 'requests'` 가 나오면 3번의 설치 명령을 다시 칩니다.
 
@@ -366,7 +368,7 @@ print("판정까지 간 응답", answered, "건 / 로그에 남은 줄", len(ent
 | `No module named 'requests'` | 도구가 설치되지 않음 | 위와 같음 |
 | `Address already in use` | 이미 켜진 서버가 5001번 포트를 쓰고 있음 | 서버를 켠 터미널에서 `Ctrl + C` 로 끔 |
 
-- 맥북은 `python3 -m pip` 로 칩니다. 새로 연 터미널이면 가상환경이 켜져 있는지 봅니다.
+- 새로 연 터미널이면 가상환경이 켜져 있는지 봅니다.
 - AI 에게 물을 때는 운영체제와 터미널(예: Windows Git Bash), 친 명령 한 줄, 오류 전체를 함께 붙여 넣습니다. `.env` 내용이나 API 키가 보이면 지우고 붙여 넣습니다.
 - AI 가 알려 준 명령은 뜻을 읽고 치고, `rm` · `del` · `kill` 처럼 지우거나 끄는 명령은 뜻을 되물은 뒤에 칩니다. 풀리지 않으면 보고서 (가)에 「모름 — 막힌 곳: …」 이라고 쓰고 넘어갑니다.
 

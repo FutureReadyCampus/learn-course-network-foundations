@@ -31,7 +31,7 @@
 <tspan x="282" y="212">점수 파일이 없거나</tspan><tspan x="282" y="231">이름이 다름</tspan>
 <tspan x="282" y="269" font-weight="700">오류 아님 · 정상 동작</tspan>
 <tspan x="282" y="318">키가 틀림</tspan>
-<tspan x="282" y="366">1분에 15번을 넘음</tspan>
+<tspan x="282" y="366">1분 호출 한도를 넘음</tspan>
 <tspan x="282" y="404">연결이 끊겼거나</tspan><tspan x="282" y="423">30초 안에 답이 없음</tspan>
 </text>
 <text font-size="14" fill="#292929">

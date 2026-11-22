@@ -254,7 +254,7 @@ print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력
 
 1. **[VS Code]** 파일 `revoke.py` · `exercise4-2_run.py` 를 만들고, 위에서 같은 이름이 붙은 코드 상자의 내용을 붙여 넣어 저장합니다.
    - 두 파일 모두 `access_control` 폴더를 오른쪽 클릭 › **New File** 로 만듭니다.
-2. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고, **채우기 전에** 한 번 실행해서 `IndentationError` 가 나는지 봅니다(맥북은 `python3`).
+2. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고, **채우기 전에** 한 번 실행해서 `IndentationError` 가 나는지 봅니다.
    ```bash
    pwd
    python exercise4-2_run.py
@@ -270,7 +270,11 @@ print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력
 - [ ] `revoke.py` 의 빈칸 ① · ② 를 하나씩 채우고, 쓸 때마다 실행해 「직접 쓰는 곳」의 확인과 맞춰 봤다
 <!-- /checklist -->
 
-4. **[터미널]** 다 채운 뒤 다시 실행합니다. 출력은 세 단계입니다. 단계 1은 계획 여덟 줄과 `실행 N 건, 대기 N 건`, 단계 2는 판정 비교 여덟 줄, 단계 3은 저장 한 줄입니다.
+4. **[터미널]** 다 채운 뒤 다시 실행합니다.
+   ```bash
+   python exercise4-2_run.py
+   ```
+   - 출력은 세 단계입니다. 단계 1은 계획 여덟 줄과 `실행 N 건, 대기 N 건`, 단계 2는 판정 비교 여덟 줄, 단계 3은 저장 한 줄입니다.
 
 <!-- checklist -->
 - [ ] 다 채운 뒤 실행해 마지막 줄 `저장 8 건, 다시 읽은 건수 8 건, 첫 이력: junho SALES:QUERY 실행` 이 나왔다
@@ -310,7 +314,7 @@ print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력
 
 ## 이번 Unit 마무리 · 깃허브에 올리기
 
-하루를 닫는 마무리입니다(15분). 핵심 실습 두 개를 끝낸 뒤 합니다.
+하루를 닫는 마무리입니다(15분). 핵심 실습 두 개와 「오늘의 글 쓰기」를 마친 뒤 합니다.
 
 **1. 오늘 한 일 확인**
 
@@ -335,7 +339,7 @@ ls config
 
 **3. 깃허브에 올리기**
 
-1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/network-study-notes` 으로 끝나야 합니다.
+1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/network-study-notes` 으로 끝나야 합니다. 이미 `pwd` 가 `…/network-study-notes` 로 끝나면 `cd ..` 는 건너뜁니다.
    ```bash
    cd ..
    pwd
@@ -367,6 +371,7 @@ ls config
 5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `access_control` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다.
 
 - 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
+- 올린 뒤 응용을 하러 가면 먼저 `cd access_control` 로 작업 폴더에 돌아옵니다.
 
 > **확인** — 깃허브의 `access_control` 폴더에 `revoke_approve.py` · `revoke.py` · `revocation_log.json` · `report_u4.md` 가 보이면 성공입니다. 안 보이면 `git status` 를 다시 쳐서 빨간 목록이 남았는지 보고, 남았으면 4번을 다시 합니다.
 

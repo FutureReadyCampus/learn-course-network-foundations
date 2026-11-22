@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img"><title>글 틀을 골라 _posts 에 Unit 3 글을 만들면 첫 화면 Module 3의 3번 칸이 채워진다</title><desc>오늘의 상황에 맞게 post-practice, post-short, post-stuck 중 하나를 고른다. 글은 _posts/2026-11-21-m3-u3-unused-permissions.md 로, VS Code 에서 만들고, 코드는 access_control/review_unused.py 로 경로만 적는다. 머리말이 module: 3, unit: 3 이면 점검 뒤 git push 하고 1~2분 뒤 나의 진행에서 Module 3 줄의 3번 칸이 채워진다.</desc><defs><marker id="a-p02-u3w" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img"><title>글 틀을 골라 _posts 에 Unit 3 글을 만들면 첫 화면 Module 3의 3번 칸이 채워진다</title><desc>오늘의 상황에 맞게 post-practice, post-short, post-stuck 중 하나를 고른다. 글은 _posts/2026-11-21-m3-u3-unused-permissions.md 로, VS Code 에서 만들고, 코드는 access_control/review_unused.py 로 경로만 적는다. 머리말이 module: 3, unit: 3 이면 점검 뒤 마무리에서 git push 하고 1~2분 뒤 나의 진행에서 Module 3 줄의 3번 칸이 채워진다.</desc><defs><marker id="a-p02-u3w" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="30" font-size="19" fill="#292929" font-weight="700">글 틀 고르기 → 글 쓰고 push → 첫 화면 확인</text>
 <rect x="20" y="52" width="200" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
@@ -23,7 +23,7 @@
 <text x="286" y="218" font-size="15" fill="#1f7a4a" font-weight="700">코드 · 경로만 적기</text>
 <text x="286" y="242" font-size="15" fill="#292929">access_control/review_unused.py</text>
 <line x1="485" y1="262" x2="485" y2="290" stroke="#666660" stroke-width="1.5" marker-end="url(#a-p02-u3w)"/>
-<text x="497" y="282" font-size="14" fill="#666660">git push, 1~2분 기다리기</text>
+<text x="497" y="282" font-size="14" fill="#666660">마무리에서 push, 1~2분 뒤</text>
 <rect x="20" y="298" width="680" height="104" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="36" y="324" font-size="15" fill="#292929" font-weight="700">내 사이트 첫 화면 · 나의 진행</text>
 <text x="36" y="364" font-size="15" fill="#292929">Module 3</text>

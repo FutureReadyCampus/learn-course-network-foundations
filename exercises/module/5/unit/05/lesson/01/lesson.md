@@ -19,7 +19,7 @@ Unit 1 ~ 4에서는 플레이북 찾기(Unit 1) · 계정 잠금과 IP 차단(Un
 | 3. 글쓰기 | 20분 | 「오늘의 글 쓰기」에서 세 문장 글 한 편 |
 | 4. 마무리 | 15분 | 「이번 Unit 마무리」에서 확인하고 올리기 |
 
-보고서는 실습 시간 안에서, 실습 중간의 안내에 따라 그때그때 씁니다. 최종 회고 문서(약 10분)도 실습 시간 안에 씁니다. 글쓰기 20분은 세 문장 글에만 씁니다. 하루 3시간에서 남는 20분쯤은 밀린 곳을 따라잡는 여유 시간입니다.
+보고서는 실습 시간 안에서, 실습 중간의 안내에 따라 그때그때 씁니다. 최종 회고 문서(약 10 ~ 15분)도 실습 시간 안에 씁니다. 글쓰기 20분은 세 문장 글에만 씁니다. 하루 3시간에서 남는 20분쯤은 밀린 곳을 따라잡는 여유 시간입니다. 앞 Unit 파일이 없어 「이전 파일이 없을 때」 페이지에서 새로 만들면 20 ~ 30분이 더 걸리니, 그날은 응용을 건너뛰어도 됩니다.
 
 **오늘 만들 것 두 가지**
 
@@ -29,7 +29,7 @@ Unit 1 ~ 4에서는 플레이북 찾기(Unit 1) · 계정 잠금과 IP 차단(Un
 | **실습 5-2** | `policy_check.py` 의 빈칸 두 곳(① · ②) | 엔진 로그로 <mark>정책 준수 점검</mark>을 하고, 최종 회고 문서를 씀 |
 
 - 실습 5-1의 `soar_engine.py` 는 160줄이 넘게 길지만, 대부분 미리 채워 두었습니다. 붙여 넣고 두 줄만 씁니다.
-- 정책 준수 점검(policy compliance check)은 승인 게이트와 허용 목록 같은 통제가 실제로 지켜졌는지 확인하는 일입니다. 실습 5-2 끝에서 Module 5 전체를 돌아보는 회고 문서 `unit10_final_retrospective.md` 를 쓴 뒤 깃허브에 올립니다.
+- 정책 준수 점검(policy compliance check)은 승인 게이트와 허용 목록 같은 통제가 실제로 지켜졌는지 확인하는 일입니다. 실습 5-2 끝에서 Module 5 전체를 돌아보는 회고 문서 `unit10_final_retrospective.md` 를 쓴 뒤 깃허브에 올립니다. 파일 이름의 `unit10` 은 이 과정의 이전 판에서 쓰던 번호라 그대로 씁니다(Unit 5 의 파일이 맞습니다).
 
 **오늘 받아 쓰는 것** — 「제공 파일」 레슨의 `risk_engine_log.json` 입니다. Module 4 탐지 결과 5건을 엔진으로 처리한 로그이고, 실습 5-2가 점검하는 로그 세 개 가운데 하나입니다.
 
@@ -39,7 +39,7 @@ Unit 1 ~ 4에서는 플레이북 찾기(Unit 1) · 계정 잠금과 IP 차단(Un
 
 ## 폴더 열고 이전 파일 확인하기
 
-오늘의 작업 폴더는 `network-study-notes/soar_response` 입니다. VS Code 로 저장소 폴더 `network-study-notes` 를 열고, 터미널에서 `soar_response` 로 들어가 작업합니다. 오늘 코드는 앞 Unit 파일을 `import` 로 불러 씁니다. 먼저 `soar_response` 폴더에 아래 파일이 있는지 봅니다.
+오늘의 작업 폴더는 저장소 `network-study-notes` 안의 Module 5 폴더 `soar_response` 입니다. VS Code 로 저장소 폴더 `network-study-notes` 를 열고, 터미널에서 `soar_response` 로 들어가 작업합니다. 오늘 코드는 앞 Unit 파일을 `import` 로 불러 씁니다. 먼저 `soar_response` 폴더에 아래 파일이 있는지 봅니다.
 
 | 파일 | 만든 곳 | 가져다 쓰는 것 | 쓰는 실습 |
 |---|---|---|---|
@@ -55,6 +55,7 @@ Unit 1 ~ 4에서는 플레이북 찾기(Unit 1) · 계정 잠금과 IP 차단(Un
 **순서**
 
 1. **[VS Code]** `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
+   - 터미널 이름 칸에 **bash** 가 보이는지 확인합니다. **powershell** 이 보이면 터미널 오른쪽 위 `+` 옆의 **∨** 를 눌러 **Git Bash** 를 고릅니다(Module 3 Unit 1 시작하기와 같은 방법). 이 과정의 명령은 모두 Git Bash 기준입니다.
 2. **[터미널]** Module 5 폴더로 들어가 파일을 확인합니다. <mark>`ls` 결과에 위 표의 파일과 `config` 가 보이고, `ls config` 결과에 `playbook_registry.json` · `approval_policy.json` · `escalation_rules.json` 이 보이면</mark> 됩니다.
    ```bash
    pwd
@@ -64,7 +65,8 @@ Unit 1 ~ 4에서는 플레이북 찾기(Unit 1) · 계정 잠금과 IP 차단(Un
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
-3. **[터미널]** 앞 Unit 파일을 한 번에 불러 봅니다(맥북은 `python3`). <mark>`앞 Unit 파일 정상` 이 나오면</mark> 됩니다.
+   - `cd soar_response` 에서 `No such file or directory` 가 나오면 Module 5 폴더가 아직 없는 것입니다. `mkdir -p soar_response/config` 를 친 뒤 `cd soar_response` 를 다시 치고, 다음 페이지 「이전 파일이 없을 때」에서 앞 Unit 파일을 모두 만듭니다.
+3. **[터미널]** 앞 Unit 파일을 한 번에 불러 봅니다. <mark>`앞 Unit 파일 정상` 이 나오면</mark> 됩니다.
    ```bash
    python -c "from incident import load_json, match_playbooks; from containment_store import new_state; from account_actions import lock_account; from ip_actions import block_ip, count_users_on_ip; from ticketing import make_ticket, NEXT_STEPS; from approval_gate import decide_gate; print('앞 Unit 파일 정상')"
    ```
@@ -89,8 +91,8 @@ Unit 1 ~ 4에서는 플레이북 찾기(Unit 1) · 계정 잠금과 IP 차단(Un
 
 5. **파일은 이렇게 만듭니다.** 따로 내려받는 파일은 없고, 모두 코드 상자에서 복사해 만듭니다.
    1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더(`soar_response` 또는 그 안의 `config`)를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다.
-   2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
-   - 답을 적는 보고서 `report_u5.md` 는 「보고서 쓰기」 레슨의 틀을 복사해 만듭니다.
+   2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S` 로 저장합니다.
+   - **보고서도 지금 만듭니다.** [「보고서 쓰기」 레슨의 「보고서 파일 만들기」 페이지](__SITE__/exercises/module/5/unit/5/lesson/7/page/1)로 가서 `soar_response` 폴더에 `report_u5.md` 를 만들고 이 페이지로 돌아옵니다. 실습 5-1부터 이 파일에 답을 적습니다.
 6. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `engine_alerts.json` 파일을 만들어 아래 내용을 붙여 넣고 저장합니다.
 
 **`engine_alerts.json`** — 이번 Unit에서 들어온 알림 8건입니다.
@@ -134,7 +136,7 @@ Unit 1 ~ 4에서는 플레이북 찾기(Unit 1) · 계정 잠금과 IP 차단(Un
 - [ ] `soar_response` 폴더에 `engine_alerts.json` 을 만들어 붙여 넣고 저장했다
 <!-- /checklist -->
 
-7. **[터미널]** 파일이 정상인지 확인합니다(맥북은 `python3`). <mark>`8` 이 나와야</mark> 합니다.
+7. **[터미널]** 파일이 정상인지 확인합니다. <mark>`8` 이 나와야</mark> 합니다.
    ```bash
    python -c "import json; print(len(json.load(open('engine_alerts.json', encoding='utf-8'))))"
    ```
@@ -149,7 +151,7 @@ Unit 1 ~ 4에서는 플레이북 찾기(Unit 1) · 계정 잠금과 IP 차단(Un
 
 ## 이전 파일이 없을 때 (Unit 1 ~ 4 파일)
 
-앞 Unit을 빠졌거나 파일을 지운 경우에만 만듭니다. **이미 있는 파일은 건너뜁니다.** 먼저 **[터미널]** 에서 `config` 폴더가 없으면 만듭니다(이미 있어도 오류가 나지 않습니다).
+앞 Unit을 빠졌거나 파일을 지운 경우에만 만듭니다. **이미 있는 파일은 건너뜁니다.** 먼저 **[터미널]** 의 `soar_response` 폴더에서 `config` 폴더가 없으면 만듭니다(이미 있어도 오류가 나지 않습니다). `soar_response` 폴더가 아예 없으면 앞 페이지 2번의 안내대로 `network-study-notes` 에서 `mkdir -p soar_response/config` 를 치고 `cd soar_response` 로 들어온 뒤 시작합니다.
 
 ```bash
 mkdir -p config

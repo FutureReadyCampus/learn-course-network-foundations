@@ -82,11 +82,13 @@ print(users)                 # 사용자 이름을 출력한다
 실행 결과:
 
 ```
-['dami' 'gaeun' 'seoyeon']
+<StringArray>
+['dami', 'gaeun', 'seoyeon']
+Length: 3, dtype: str
 ```
 
 - 읽는 법: 표에는 사용자가 다섯 번 나오지만, <mark style="background:#bde3ff">두 번째 출력에는 `dami` · `gaeun` · `seoyeon` 이 한 번씩만</mark> 나옵니다. 처음 나온 순서대로 나옵니다.
-- 출력의 `[` `]` 안에 따옴표로 묶인 이름이 공백으로 이어지는 모양은 정상입니다. 판다스 3 이상에서는 `<StringArray>` 줄과 `Length: 3, dtype: str` 줄이 위아래에 붙어 세 줄로 나오는데, 내용은 같습니다.
+- 위아래의 `<StringArray>` 줄과 `Length: 3, dtype: str` 줄은 결과의 종류와 개수를 알려 주는 표시이고 읽지 않아도 됩니다. 판다스 2 에서는 이 두 줄 없이 `['dami' 'gaeun' 'seoyeon']` 처럼 쉼표 없는 한 줄로 나오는데, 내용은 같습니다.
 - 실습의 실행 파일은 이 결과를 `list(…)` 로 리스트로 바꿔 출력하므로, `['jiwoo', 'seoyeon']` 처럼 쉼표가 있는 모양으로 나옵니다.
 
 **미리 채운 줄의 `~`**
@@ -106,7 +108,9 @@ print(users)                 # 사용자 이름을 출력한다
 
 - 이번 실습에서 새 문법은 `.unique()` 하나입니다. `isin` 은 Unit 3 실습 3-2, `&` 는 Unit 2 실습 2-3에서 쓴 것을 다시 씁니다.
 
-> **확인** — 문법 상자의 두 코드를 이어 실행했을 때 `['dami' 'gaeun' 'seoyeon']` 처럼 세 이름이 한 번씩 나오면 성공입니다. 판다스 3 이상이면 `<StringArray>` 줄이 함께 나와도 맞습니다.
+> **확인** — 문법 상자의 두 코드를 이어 실행했을 때 `['dami', 'gaeun', 'seoyeon']` 처럼 세 이름이 한 번씩 나오면 성공입니다. 판다스 2 에서는 쉼표 없이 `['dami' 'gaeun' 'seoyeon']` 한 줄로 나와도 맞습니다.
+>
+> 실행하는 법: 실습 4-1에서 만든 연습 파일 `try_box.py` 의 내용을 모두 지우고(없으면 `anomaly_detection` 폴더에 새로 만들고) 두 코드를 차례로 붙여 넣어 저장한 뒤, 터미널에서 `python try_box.py` 를 칩니다.
 
 ## 실습 4-2 · 예외 규칙으로 오탐 줄이기
 
@@ -196,9 +200,9 @@ def find_removed_users(removed_alerts):               # 빼낸 알림 표를 받
 | ② | 두 조건을 합친 `is_removed` (`&`) | 4칸 |
 | ③ | 빠진 사용자 `removed_users` (`.unique()`) | 4칸 |
 
-- 채우기 전 확인: 그대로 실행하면 단계 1 세 줄 다음에 `NameError: name 'is_removed' is not defined` 가 나옵니다. ② 를 아직 안 써서 나는 오류이니 정상입니다.
-- ① 확인: ① 만 쓰고 실행해도 같은 `NameError` 가 나옵니다. 오류 줄이 ① 이 아니라 `removed_alerts = alerts[is_removed]` 이면 ① 은 맞게 쓴 것입니다. 막히면: Unit 3 실습 3-2의 `isin` 처럼 `alerts["ip"].isin(…)` 괄호 안에 `TRUSTED_IPS` 를 넣습니다.
-- ② 확인: ② 까지 쓰고 실행하면 단계 2에 `빠진 알림 수: 2` 와 A4 · A5 두 줄이 나온 뒤 `NameError: name 'removed_users' is not defined` 가 나옵니다. ③ 을 아직 안 써서 나는 오류입니다. 막히면: 두 변수 이름 사이에 `&` 를 놓고 `is_removed =` 에 담습니다.
+- 채우기 전 확인: 그대로 실행하면 단계 1(알림 수 · 오탐 수) 다음에 `NameError: name 'is_removed' is not defined` 가 나옵니다. ② 를 아직 안 써서 나는 오류이니 정상입니다.
+- ① 확인: ① 만 쓰고 실행해도 같은 `NameError: name 'is_removed' is not defined` 가 나옵니다. 이때는 ① 줄에 문법 오류가 없다는 것까지만 알 수 있고, ① 이 맞는지는 ② 까지 쓴 뒤 `빠진 알림 수: 2` 가 나오는지로 확인합니다. ① 을 `alerts["ip"] == TRUSTED_IPS` 처럼 잘못 쓰면 ① 줄에서 `ValueError` 가 납니다. 막히면: Unit 3 실습 3-2의 `isin` 처럼 `alerts["ip"].isin(…)` 괄호 안에 `TRUSTED_IPS` 를 넣습니다.
+- ② 확인: ② 까지 쓰고 실행하면 단계 2에 `빠진 알림 수: 2` 와 A4 · A5 두 줄이 나온 뒤 `NameError: name 'removed_users' is not defined` 가 나옵니다. ③ 을 아직 안 써서 나는 오류입니다. 오류 끝에 `. Did you mean: 'removed_alerts'?` 처럼 꼬리가 더 붙어도 같은 오류입니다. 막히면: 두 변수 이름 사이에 `&` 를 놓고 `is_removed =` 에 담습니다.
 - ③ 확인: ③ 까지 쓰고 실행하면 `빠진 알림의 사용자: ['jiwoo', 'seoyeon']` 과 마지막 줄 `진짜 문제였던 알림 수: 0` 이 나오면 성공입니다. 막히면: 문법 상자의 `df["user"].unique()` 에서 `df` 를 `removed_alerts` 로 바꿉니다.
 
 **`exercise4-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
@@ -237,14 +241,14 @@ print("진짜 문제였던 알림 수:", real_removed_count)   # 0 이면 진짜
 **순서**
 
 1. **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `tuning.py` 와 `exercise4-2_run.py` 를 만들어 위 코드를 각각 붙여 넣고 저장합니다.
-2. **[VS Code]** `tuning.py` 의 <mark>`# ←` 세 곳(① · ② · ③)을 채웁니다</mark>. 위 판다스 문법 상자와 2.1 의 표를 참고해 씁니다. 막히면 위 「직접 쓰는 곳」의 힌트와 아래 「실습 4-2 정리」를 봅니다.
+2. **[VS Code]** `tuning.py` 의 <mark>`# ←` 세 곳(① · ② · ③)을 채웁니다</mark>. 위 판다스 문법 상자와 「같은 IP 에서 온 알림 네 개」 쪽의 표를 참고해 씁니다. 막히면 위 「직접 쓰는 곳」의 힌트와 아래 「실습 4-2 정리」를 봅니다.
 
 <!-- checklist -->
 - [ ] `anomaly_detection` 폴더에 `tuning.py` 를 만들어 붙여 넣고, 빈칸 ① · ② · ③ 을 채워 저장했다
 - [ ] `anomaly_detection` 폴더에 `exercise4-2_run.py` 를 만들어 붙여 넣고 저장했다
 <!-- /checklist -->
 
-3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다.
    ```bash
    pwd
    python exercise4-2_run.py
@@ -282,9 +286,9 @@ print("진짜 문제였던 알림 수:", real_removed_count)   # 0 이면 진짜
 
 **1. 오늘 한 일 확인**
 
-1. 탐지된 규칙 8건에 점수를 더해 대상 5개를 high · mid · low 로 나누고, 점수 · 등급 · 이유를 `unit05_risk_scores.json` 에 저장했다 (실습 4-1)
+1. 탐지된 규칙 8건((대상, 규칙) 쌍)에 점수를 더해 대상 5개를 high · mid · low 로 나누고, 점수 · 등급 · 이유를 `unit05_risk_scores.json` 에 저장했다 (실습 4-1)
 2. 믿는 IP 예외 규칙으로 오탐을 4개에서 2개로 줄이고, 빠진 알림 중 진짜 문제가 0개임을 확인했다 (실습 4-2)
-3. 보고서 `report_u4.md` 의 꼭 채울 다섯 칸(실습 4-1 (가) · (나), 실습 4-2 (가) · (나), 마무리 (가))에 `답:` 뒤가 비어 있지 않다
+3. 보고서 `report_u4.md` 의 실습 칸 네 개(실습 4-1 (가) · (나), 실습 4-2 (가) · (나))에 `답:` 뒤가 비어 있지 않다. 다섯 번째 꼭 채울 칸인 마무리 (가)는 아래 「3. 깃허브에 올리기」의 3번에서 채웁니다
 
 **2. 파일 확인** — **[터미널]** `anomaly_detection` 폴더에서 확인합니다.
 
@@ -306,7 +310,7 @@ ls
 - `unit05_risk_scores.json` 은 실습 4-1에서 프로그램이 만든 점수 파일입니다. 이것도 올라갑니다.
 
 <!-- checklist -->
-- [ ] `anomaly_detection` 폴더에서 `ls` 로 2번 표의 파일이 모두 있는 것을 확인했다
+- [ ] `anomaly_detection` 폴더에서 `ls` 로 「2. 파일 확인」 표의 파일이 모두 있는 것을 확인했다
 <!-- /checklist -->
 
 **3. 깃허브에 올리기**
@@ -317,7 +321,7 @@ ls
    pwd
    ```
    - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
-   - 결과가 다르면 VS Code 왼쪽 목록에서 `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
+   - 결과가 다르면 VS Code 메뉴 **Terminal › New Terminal** 로 터미널을 새로 엽니다(이름 칸이 **bash** 인지 봅니다). 새 터미널은 `…/network-study-notes` 에서 열립니다.
 2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
    ```bash
    git status
@@ -344,15 +348,15 @@ ls
 - [ ] `git add .` · `git commit` · `git push` 로 올렸다
 <!-- /checklist -->
 
-5. **[브라우저]** 깃허브의 내 저장소 `network-study-notes` 를 새로 고쳐 `anomaly_detection` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
+5. **[브라우저]** 깃허브의 내 저장소 `network-study-notes` 를 새로 고쳐 `anomaly_detection` 폴더를 열고, 「2. 파일 확인」 표의 파일이 모두 있는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
 
 <!-- checklist -->
-- [ ] 깃허브의 `network-study-notes` 저장소 `anomaly_detection` 폴더에서 2번 표의 파일을 확인했다
+- [ ] 깃허브의 `network-study-notes` 저장소 `anomaly_detection` 폴더에서 「2. 파일 확인」 표의 파일을 확인했다
 <!-- /checklist -->
 
-- 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
+- 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 「2. 파일 확인」부터 「3. 깃허브에 올리기」의 4번(`git add .` · `git commit` · `git push`)까지를 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
 
-**확인** — 깃허브의 `anomaly_detection` 폴더에 2번 표의 파일이 모두 보이고 `.env` 가 없으면 성공입니다. 안 보이는 파일이 있으면 `git status` 를 다시 쳐서 그 파일이 빨간 목록에 남아 있는지 보고 4번을 다시 합니다.
+**확인** — 깃허브의 `anomaly_detection` 폴더에 「2. 파일 확인」 표의 파일이 모두 보이고 `.env` 가 없으면 성공입니다. 안 보이는 파일이 있으면 `git status` 를 다시 쳐서 그 파일이 빨간 목록에 남아 있는지 보고 「3. 깃허브에 올리기」의 4번을 다시 합니다.
 
 **4. 이어지는 곳**
 

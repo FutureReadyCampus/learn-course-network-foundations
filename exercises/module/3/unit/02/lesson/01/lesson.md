@@ -193,10 +193,10 @@ source:
    | 명령 | 이렇게 나오면 됩니다 |
    |---|---|
    | `git remote -v` | 주소의 `github.com/` 뒤가 **내 아이디** |
-   | `git log --oneline -3` | 맨 위 줄이 Unit 1 마무리의 커밋 |
+   | `git log --oneline -3` | 세 줄 안에 Unit 1 마무리의 커밋이 있음 |
    | `ls` | `access_control` 폴더와 포트폴리오 파일(`_config.yml` 등)이 함께 보임 |
    - 명령 풀이: `git log --oneline -3` 최근 커밋 3개를 한 줄씩 보여 줌
-   - Unit 1 마무리의 커밋 설명은 `Add access control unit 1 roles, checker, policy and report` 입니다. 그 뒤에 응용 파일을 더 올렸다면 그때 쓴 설명이 맨 위에 보입니다.
+   - Unit 1 마무리의 커밋 설명은 `Add access control unit 1 roles, checker, policy and report` 입니다. 그 뒤에 글(`Add unit 1 post`)이나 응용 파일을 더 올렸다면 그때 쓴 설명이 맨 위에 보이고, 마무리 커밋은 그 아래에 있습니다.
 3. **[브라우저]** 깃허브 내 저장소 화면의 폴더 리스트와 VS Code 왼쪽 목록이 같은지 봅니다.
 
 > **확인** — 표의 세 명령이 모두 「이렇게 나오면 됩니다」와 같으면 성공입니다. 주소가 내 아이디가 아니면 5장으로 돌아가 내 저장소 주소로 다시 받습니다.
@@ -215,6 +215,7 @@ source:
    ```
    - 명령 풀이: `mkdir -p docs` docs 폴더가 없으면 만들고, 있으면 그냥 넘어감
    - **[VS Code]** 왼쪽 목록에서 `network-study-notes` 바로 아래의 `docs` 폴더를 오른쪽 클릭 › **New File** 로 `2026-10-23_seat.md` 를 만들고(`docs/2026-10-23_seat.md`), `새 자리 준비 완료` 한 줄을 쓴 뒤 저장합니다.
+   - 이 파일은 push 확인용이라 이름의 날짜는 오늘 날짜로 바꾸지 않고 그대로 씁니다(글 파일이 아니라서 「오늘의 글 쓰기」의 날짜 규칙과 상관없습니다). 내 사이트에 이 한 줄짜리 쪽이 보일 수 있지만, 이름 · 연락처 같은 개인 정보가 없으니 괜찮습니다.
 
 <!-- checklist -->
 - [ ] `docs/2026-10-23_seat.md` 파일을 만들고 `새 자리 준비 완료` 한 줄을 쓴 뒤 저장했다
@@ -312,7 +313,7 @@ source:
 | `mv` | `Permission denied` 또는 `Device or resource busy` | 그 폴더가 어딘가에 열려 있음 | VS Code 의 **File › Close Folder**, 파일 탐색기 창도 닫고 다시 `mv` |
 | `git push` | `Permission … denied to 앞사람아이디` | 앞 사람 로그인이 아직 남아 있음 | 3장 1번(자격 증명 제거) 뒤 다시 `git push` |
 | 깃허브 | 커밋 옆 이름이 앞 사람 | git 이름 · 이메일이 앞 사람 것 | 3장 2번. 다음 커밋부터 내 이름으로 찍힘 |
-| `git log` | 맨 위에 Unit 1 마무리 커밋이 없음 | Unit 1 마무리 push 가 안 됐거나 다른 저장소를 받음 | `git remote -v` 주소(6장)가 내 아이디인지, 저장소에 `access_control` 폴더가 있는지 |
+| `git log` | 세 줄 안에 Unit 1 마무리 커밋이 없음 | Unit 1 마무리 push 가 안 됐거나 다른 저장소를 받음 | `git remote -v` 주소(6장)가 내 아이디인지, 저장소에 `access_control` 폴더가 있는지 |
 
 ---
 
@@ -321,6 +322,6 @@ source:
 - [ ] 바탕화면에 `network-study-notes_old`(앞 사람)와 `network-study-notes`(내 것)이 따로 있다 (앞 사람 폴더가 없었으면 내 것만)
 - [ ] `git config --global user.name` 이 내 이름이다
 - [ ] `git remote -v` 주소에 내 아이디가 있다
-- [ ] `git log --oneline -3` 맨 위가 Unit 1 마무리에서 올린 커밋이다
+- [ ] `git log --oneline -3` 세 줄 안에 Unit 1 마무리에서 올린 커밋이 있다 (맨 위는 `Add unit 1 post` 일 수 있음)
 - [ ] 깃허브 내 저장소에 `docs/2026-10-23_seat.md` 가 내 아이디로 올라가 있다
 - [ ] `docker ps -a` 에 제목 줄만 나온다 (Docker Desktop 이 없으면 건너뜀)

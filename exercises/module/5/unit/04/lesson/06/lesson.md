@@ -217,7 +217,7 @@ print("--- 단계 4: 파일에 저장된 티켓", len(saved), "장")            
 - [ ] `shift_metrics.py` 1 ~ 7번과 `apply4-2_run.py` 8 · 9번을 쓰고 저장했다
 <!-- /checklist -->
 
-4. **[터미널]** 처음 쓰던 터미널에서 <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+4. **[터미널]** 처음 쓰던 터미널에서 <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다.
    ```bash
    python apply4-2_run.py
    ```

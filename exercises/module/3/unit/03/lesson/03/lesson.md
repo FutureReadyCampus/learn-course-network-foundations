@@ -8,7 +8,7 @@ render: markdown
 
 ## 제공 파일 쓰는 법
 
-**실습 3-2를 시작하기 전에** 이 레슨의 파일 네 개를 만듭니다. 실습 3-2 의 실행 파일이 퇴사 · 만료 규칙 함수 `find_stale` 을 불러 쓰는데, 그 함수는 응용 3-1 에서 만드는 것이라 오늘은 완성본을 받아 씁니다. 나머지 세 파일은 다음 Unit 4 가 쓰는 파일이라 오늘 함께 만들어 둡니다.
+**실습 3-2를 시작하기 전에** 이 레슨의 파일 네 개를 만듭니다. 실습 3-2 의 실행 파일이 퇴사 · 만료 규칙 함수 `find_stale` 을 불러 쓰는데(stale(스테일)은 「오래돼서 쓸모없어진」이라는 뜻이고, `find_stale` 은 퇴사 · 만료로 필요 없어진 권한을 찾는 함수입니다), 그 함수는 응용 3-1 에서 만드는 것이라 오늘은 완성본을 받아 씁니다. 나머지 세 파일은 다음 Unit 4 가 쓰는 파일이라 오늘 함께 만들어 둡니다.
 
 만들 파일은 네 개입니다.
 
@@ -19,7 +19,7 @@ render: markdown
 | `report_exclude.py` | 함수 `split_by_exclude` | 후보를 「회수 대상」과 「회수 제외」로 나눔 | Unit 4 |
 | `config/exclude_list.json` | 회수 제외 리스트 | 회수하지 않을 권한 세 건을 적어 둠 | Unit 4 |
 
-1. 파일은 모두 작업 폴더 `network-study-notes/access_control` 안에 만듭니다. 파이썬 파일 세 개는 `access_control` 바로 아래에, `config/exclude_list.json` 은 `access_control` 안의 `config` 폴더에 만듭니다. 만드는 방법은 실습 3-1 과 같습니다(VS Code 왼쪽 목록에서 `access_control` 폴더를 고르고 **새 파일** 아이콘).
+1. 파일은 모두 작업 폴더 `network-study-notes/access_control` 안에 만듭니다. 파이썬 파일 세 개는 `access_control` 바로 아래에, `config/exclude_list.json` 은 `access_control` 안의 `config` 폴더에 만듭니다. 만드는 방법은 실습 3-1 과 같습니다(VS Code 왼쪽 목록에서 `access_control` 폴더를 오른쪽 클릭 › **New File**. `config` 안에 만들 파일은 `config` 폴더를 오른쪽 클릭).
 2. 아래 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
 3. 네 파일을 다 만들었으면 터미널에서 `ls` 와 `ls config` 로 파일 이름이 보이는지 확인하고 실습 3-2로 돌아갑니다.
 
@@ -213,7 +213,7 @@ def split_by_exclude(findings, exclude_map):                     # 후보 리스
 
 ## `config/exclude_list.json` 만들기
 
-**`config/exclude_list.json`** 을 만들고 아래 내용을 붙여 넣습니다. `access_control` 안의 `config` 폴더에 만듭니다(`access_control` 폴더를 선택한 채로 이름에 `config/exclude_list.json` 을 입력하면 `config` 폴더 안에 만들어집니다). 담당자(이 일을 맡은 사람)가 「평소에 안 써도 회수하면 안 되는 권한」을 적어 둔 회수 제외 리스트이고, 한 줄이 한 건입니다.
+**`config/exclude_list.json`** 을 만들고 아래 내용을 붙여 넣습니다. `access_control` 안의 `config` 폴더를 오른쪽 클릭 › **New File** 을 누르고 이름에 `exclude_list.json` 을 입력합니다. 담당자(이 일을 맡은 사람)가 「평소에 안 써도 회수하면 안 되는 권한」을 적어 둔 회수 제외 리스트이고, 한 줄이 한 건입니다. 둘째 줄의 **결산**은 그동안 번 돈과 쓴 돈을 마감해 계산하는 일입니다.
 
 <pre class="copyable"><code>[
   {"user": "gaeun", "permission": "ACCOUNT:CHANGE", "reason": "계정에 사고가 났을 때만 쓰는 권한이라 평소에는 쓰지 않음"},
@@ -226,11 +226,11 @@ def split_by_exclude(findings, exclude_map):                     # 후보 리스
 - [ ] `access_control` 안의 `config` 폴더에 `exclude_list.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
 <!-- /checklist -->
 
-- 저장한 뒤 터미널에서 JSON 규칙에 맞는지 확인합니다. 세 건이 다시 정리되어 나오면 됩니다.
+- 저장한 뒤 터미널에서 JSON 규칙에 맞는지 확인합니다. 세 건이 다시 정리되어 나오면 됩니다(`reason` 의 한글이 `\uacc4\uc815…` 처럼 `\uXXXX` 로 보여도 정상입니다).
   ```bash
   python -m json.tool config/exclude_list.json
   ```
-  - 명령 풀이: `python -m json.tool` 파이썬의 JSON 검사 도구를 실행 · `config/exclude_list.json` 검사할 파일 (맥북은 `python3`)
+  - 명령 풀이: `python -m json.tool` 파이썬의 JSON 검사 도구를 실행 · `config/exclude_list.json` 검사할 파일
 
 <!-- checklist -->
 - [ ] `python -m json.tool config/exclude_list.json` 으로 세 건이 정리되어 나왔다
@@ -242,7 +242,7 @@ def split_by_exclude(findings, exclude_map):                     # 후보 리스
   ls config
   python -c "import review_rules, overprivilege, report_exclude; print('제공 파일 정상')"
   ```
-  - 마지막 줄은 세 파일을 불러와 보는 명령입니다(맥북은 `python3`).
+  - 마지막 줄은 세 파일을 불러와 보는 명령입니다.
 
 > **확인** — 마지막 줄에 `제공 파일 정상` 이 나오면 성공입니다. `ModuleNotFoundError` 가 나면 그 이름의 파일이 `access_control` 바로 아래에 없는 것이고, `SyntaxError` 가 나면 붙여 넣을 때 글자가 빠진 것이니 그 파일을 지우고 다시 복사합니다.
 

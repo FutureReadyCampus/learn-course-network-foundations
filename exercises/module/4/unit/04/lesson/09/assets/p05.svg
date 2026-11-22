@@ -22,7 +22,7 @@
 <text x="120" y="240" font-size="15" fill="#292929">단계 4 의 두 숫자로 두 조건 비교</text>
 <rect x="20" y="264" width="680" height="44" rx="8" fill="#fbf0dc" stroke="#dededb" stroke-width="1.5"/>
 <rect x="36" y="276" width="20" height="20" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="120" y="292" font-size="15" fill="#292929">연결하지 않아 놓칠 수 있는 것 (응용 3-2)</text>
+<text x="120" y="292" font-size="15" fill="#292929">연결하지 않아 놓칠 수 있는 것 (실습 4-1 seoyeon 이유)</text>
 <text x="20" y="328" font-size="15" fill="#666660">호박색 칸은 [핵심 질문] 입니다. 값을 근거로 이유까지 씁니다.</text>
 </g>
 </svg>

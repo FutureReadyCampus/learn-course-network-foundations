@@ -48,7 +48,7 @@ source:
 | 198.51.100.90 | `GET /.env` · `GET /wp-login.php` · `GET /phpmyadmin` | **예** | **스캔** |
 | 203.0.113.50 | `POST /login` 5번 · `GET /admin` · `GET /admin/users` | 아니오 | 제외 |
 
-- `SCANNER_PATTERN` 은 `"/.env|/wp-login|/phpmyadmin"` 입니다. 따옴표 안의 `|` 는 「또는」이라는 뜻이라, <mark>셋 중 하나가 들어 있으면</mark> 해당합니다. 조건끼리 합치는 기호가 아니라, 문자열 안에 쓴 글자일 뿐입니다.
+- `SCANNER_PATTERN` 은 `"/.env|/wp-login|/phpmyadmin"` 입니다. 따옴표 안의 `|` 는 「또는」이라는 뜻이라, <mark>셋 중 하나가 들어 있으면</mark> 해당합니다. 열끼리 조건을 합치는 `&` 같은 기호가 아니라, 문자열 안에 적어 두면 `str.contains` 가 「또는」으로 읽는 표시입니다.
 - 203.0.113.50 은 실패가 7번이지만 로그인과 관리자 화면 실패라서 스캐너 경로가 없습니다. 이 IP 는 로그인 실패 규칙에서 따로 다룹니다.
 
 **판다스 문법 상자 — 문자열이 들어 있는지 `str.contains`**
@@ -269,7 +269,7 @@ print("웹 서버: 스캔으로 본 IP", scan_ips)                   # 웹 탐�
 - [ ] `anomaly_detection` 폴더에 `advanced_detection.py` 를 만들어 붙여 넣고 저장했다(응용 3-2 를 안 했으면 건너뜀)
 <!-- /checklist -->
 
-3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다.
    ```bash
    pwd
    python apply3-3_run.py

@@ -27,7 +27,7 @@
 <text y="399.9" font-size="14" fill="#292929" text-anchor="middle"><tspan x="250.0" dy="0">trusted_ips.json · 신뢰 IP</tspan></text>
 <path d="M70,144 V395 H90" fill="none" stroke="#666660" stroke-width="2"/>
 <rect x="440" y="104" width="260" height="150" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text y="142.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="570.0" dy="0" font-weight="700">확인 명령</tspan><tspan x="570.0" dy="21.0">네 파일의 건수를 출력</tspan><tspan x="570.0" dy="21.0">알림 · 계정 · IP · 신뢰 IP</tspan><tspan x="570.0" dy="21.0">→ 5 6 4 1 이면 성공</tspan><tspan x="570.0" dy="21.0">맥북은 python3</tspan></text>
+<text y="142.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="570.0" dy="0" font-weight="700">확인 명령</tspan><tspan x="570.0" dy="21.0">네 파일의 건수를 출력</tspan><tspan x="570.0" dy="21.0">알림 · 계정 · IP · 신뢰 IP</tspan><tspan x="570.0" dy="21.0">→ 5 6 4 1 이면 성공</tspan><tspan x="570.0" dy="21.0">soar_response 폴더에서 친다</tspan></text>
 <rect x="440" y="270" width="260" height="80" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text y="294.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="570.0" dy="0" font-weight="700">파일 만드는 법</tspan><tspan x="570.0" dy="21.0">New File · 이름 그대로</tspan><tspan x="570.0" dy="21.0">복사 버튼으로 붙여 넣기</tspan></text>
 </svg>

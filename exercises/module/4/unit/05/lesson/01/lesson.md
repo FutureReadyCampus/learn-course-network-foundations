@@ -21,6 +21,7 @@ Unit 5는 Module 4 **이상탐지**의 마지막 Unit입니다. 지금까지 로
 
 - 시작에서 만드는 두 파일은 `llm_client.py` · `unit05_risk_scores.json` 입니다. 핵심 실습 110분은 실습 5-1 약 40분, 실습 5-2 약 70분이 기준입니다.
 - 보고서는 실습 시간 안에서, 실습 끝의 안내에 따라 그때그때 씁니다. 하루 3시간에서 남는 20분쯤은 밀린 곳을 따라잡는 여유 시간입니다.
+- 「Gemini API 키와 .env 만들기」(선택)는 계획표에 넣지 않았습니다. 키를 만들면 20분쯤 더 걸리니 이 여유 시간에서 씁니다.
 
 - `llm_client.py` 는 LLM(대형 언어 모델, Large Language Model · 엘엘엠: 글을 읽고 글로 답하는 AI) 호출 파일이고, `unit05_risk_scores.json` 은 점수 파일입니다.
 
@@ -46,15 +47,17 @@ Unit 5는 Module 4 **이상탐지**의 마지막 Unit입니다. 지금까지 로
 - <mark>키가 없으면 `call_llm` 이 `[LLM 호출 실패] API 키 없음` 을 출력하고 빈 문자열을 돌려주고, 요약 자리에는 대체 문장 `(요약 실패 — 점수와 이유를 직접 확인)` 이 들어갑니다.</mark> 프로그램은 멈추지 않고 끝까지 실행됩니다.
 - [주의] <mark style="background:#ffc4d6">**키가 없을 때는 출력과 보고서 답이 정답 레슨의 「키가 있을 때」 예와 다릅니다.**</mark> 실습 5-1 의 출력은 단계 1 ~ 4 로 나뉘는데, 단계 1 ~ 3과 점수 · 등급 · 대상은 같고, 단계 4 의 요약만 대체 문장으로 바뀝니다. 이때는 정답 레슨의 「키가 없을 때」 출력과 맞춰 보고, AI 요약 문장을 읽어야 하는 보고서 질문은 정답 레슨에 실린 요약 예시로 답합니다.
 - AI 가 쓰는 요약 문장은 실행할 때마다 조금씩 달라집니다. 키가 있는 사람도 문장은 정답 레슨과 달라도 정상이고, 점수 · 등급 · 건수는 같아야 합니다.
-- **무료 Gemini 키는 1분에 15번까지만 호출할 수 있습니다.** 실습 5-1은 한 번 실행에 3번 호출합니다. `[LLM 호출 실패] 상태 코드 429` 가 나오면 <mark>1분 기다린 뒤 다시 실행</mark>합니다.
+- **무료 Gemini 키는 1분에 부를 수 있는 횟수에 한도가 있습니다**(이 문서를 쓸 때는 15번이었고, 숫자는 구글이 바꿀 수 있습니다). 실습 5-1은 한 번 실행에 3번 호출합니다. `[LLM 호출 실패] 상태 코드 429` 가 나오면 <mark>1분 기다린 뒤 다시 실행</mark>합니다.
 
 > **확인** — 오늘 할 네 가지(시작 · 핵심 실습 · 글쓰기 · 마무리)를 순서대로 말할 수 있고, 키가 없어도 실습 5-1을 끝까지 할 수 있다는 것을 알면 성공입니다. 헷갈리면 위 「오늘의 계획」 표를 한 번 더 봅니다.
 
 ## 폴더 열고 LLM 호출 파일 준비하기
 
 1. **[VS Code]** `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치를 확인하고, `llm_client.py` 가 쓰는 `requests` 를 설치합니다(맥북은 `python3`). <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나면</mark> 됩니다. Unit 2 에서 가상환경을 켜고 판다스를 설치했다면 먼저 `network-study-notes` 폴더에서 같은 가상환경을 켭니다(`source .venv/Scripts/activate`, 맥북은 `Scripts` 를 `bin` 으로).
+   - 터미널 이름 칸에 **bash** 가 보이는지 봅니다. `powershell` 이 보이면 터미널 오른쪽 위 `+` 옆의 **∨** › **Git Bash** 로 새 터미널을 엽니다. 이 레슨의 명령은 모두 Git Bash 기준입니다.
+2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치를 확인하고, `llm_client.py` 가 쓰는 `requests` 를 설치합니다. <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나면</mark> 됩니다. Unit 2 에서 가상환경을 켜고 판다스를 설치했다면 <mark>첫 줄로 `network-study-notes` 폴더에서 같은 가상환경을 먼저 켭니다.</mark> 가상환경을 쓰지 않는 사람은 첫 줄을 건너뜁니다. 켜지 않고 설치하면 `requests` 와 판다스가 서로 다른 파이썬에 깔립니다.
    ```bash
+   source .venv/Scripts/activate   # 가상환경을 쓰는 사람만 (network-study-notes 에서)
    cd anomaly_detection
    pwd
    ls
@@ -71,8 +74,8 @@ Unit 5는 Module 4 **이상탐지**의 마지막 Unit입니다. 지금까지 로
 
 3. **파일은 이렇게 만듭니다.** 이 레슨에 나오는 파일은 모두 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
    1. **[VS Code]** 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다.
-   2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
-   - 답을 적는 **보고서**(`report_u5.md`)는 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
+   2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S` 로 저장합니다.
+   - 답을 적는 **보고서**(`report_u5.md`)는 이 Unit의 「보고서 쓰기」 레슨 첫 쪽에서 틀을 복사해 만듭니다. <mark>실습 5-1 을 시작하기 전에 지금 [「보고서 쓰기」의 「보고서 파일 만들기」](__SITE__/exercises/module/4/unit/5/lesson/8/page/1)에서 만들어 둡니다.</mark>
 4. **[VS Code]** `anomaly_detection` 폴더 바로 아래에 `llm_client.py` 파일을 만들어 아래 `llm_client.py` 코드 상자의 내용을 붙여 넣습니다. <mark>같은 이름의 파일이 이미 있어도 아래 내용으로 덮어씁니다.</mark> 키가 없을 때도 멈추지 않고 빈 문자열을 돌려주도록 만든 파일이라, 출력이 이 Unit의 문서와 같아집니다.
 
 **`llm_client.py`** — Gemini API 를 부르는 함수 세 개입니다.
@@ -147,7 +150,7 @@ def call_llm(question):                                              # 질문 �
 - [ ] `anomaly_detection` 폴더에 `llm_client.py` 를 만들어 코드 상자 내용을 붙여 넣고 저장했다
 <!-- /checklist -->
 
-5. **[VS Code]** `anomaly_detection` 폴더 바로 아래에 `unit05_risk_scores.json` 파일을 만들어 아래 `unit05_risk_scores.json` 상자의 내용을 그대로 붙여 넣습니다. Unit 4 실습 4-1 이 저장한 점수 파일과 같은 내용입니다. <mark>이미 있으면 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다). 파일 이름의 `05` 는 예전 번호라서 지금 Unit 번호와 맞지 않지만, Module 4 Unit 5와 Module 5가 같은 이름으로 읽으니 이름을 바꾸지 않고 그대로 씁니다.
+5. **[VS Code]** `anomaly_detection` 폴더 바로 아래에 `unit05_risk_scores.json` 파일을 만들어 아래 `unit05_risk_scores.json` 상자의 내용을 그대로 붙여 넣습니다. Unit 4 실습 4-1 이 저장한 점수 파일과 같은 내용입니다. <mark>이미 있으면 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다). Module 4 Unit 5와 Module 5가 이 이름으로 읽으니 이름을 바꾸지 않고 그대로 씁니다.
 
 **`unit05_risk_scores.json`** — 대상별 점수 기록 5건이고, 점수가 높은 순서로 저장돼 있습니다.
 
@@ -209,7 +212,7 @@ def call_llm(question):                                              # 질문 �
 - [ ] `anomaly_detection` 폴더에 `unit05_risk_scores.json` 을 만들어 상자 내용을 붙여 넣고 저장했다
 <!-- /checklist -->
 
-6. **[터미널]** 두 파일이 정상인지 확인합니다(맥북은 `python3`).
+6. **[터미널]** 두 파일이 정상인지 확인합니다.
    ```bash
    python -c "import json; print(len(json.load(open('unit05_risk_scores.json', encoding='utf-8'))))"
    python -c "from llm_client import read_api_key; print(read_api_key() is not None)"
@@ -261,6 +264,7 @@ def call_llm(question):                                              # 질문 �
   - 명령 풀이: `curl 주소` 주소로 요청을 보내 답을 받아 오기 · `-H "이름: 값"` 요청에 붙이는 머리글(여기서는 키)
 - 나오는 것: <mark>`"models"` 가 든 긴 목록이 나오면</mark> 키가 맞습니다. `UNAUTHENTICATED` 나 `API key not valid` 같은 오류 글자가 나오면 키를 다시 복사합니다.
 - 같은 명령을 여러 번 반복하지 않습니다. 호출 횟수에 한도가 있습니다.
+- 이렇게 직접 친 명령은 키까지 Git Bash 의 명령 기록에 남습니다. 공용 PC 라면 확인한 뒤 `history -c` 를 쳐서 기록을 지웁니다.
 
 <!-- checklist optional -->
 - [ ] 구글 AI Studio 에서 키를 만들고 `curl` 로 `"models"` 목록이 나오는 것을 확인했다
@@ -305,7 +309,7 @@ def call_llm(question):                                              # 질문 �
   pwd
   python -c "from llm_client import read_api_key; print(read_api_key() is not None)"
   ```
-  - 명령 풀이: `python -c "코드"` 적은 코드를 바로 실행(맥북은 `python3`)
+  - 명령 풀이: `python -c "코드"` 적은 코드를 바로 실행
 
 <!-- checklist optional -->
 - [ ] `anomaly_detection` 폴더에서 5단계 명령을 쳐서 `True` 가 나왔다
@@ -338,7 +342,7 @@ def call_llm(question):                                              # 질문 �
 | `No module named 'requests'` | 이 터미널의 파이썬에 `requests` 가 없음 | 시작하기 2번의 설치 명령을 침(가상환경을 쓰면 먼저 켬) |
 | `FileNotFoundError` | `unit05_risk_scores.json` 이 없거나 이름이 다름 | 시작하기 5번의 코드 상자로 만듦 |
 
-- 앞의 두 오류는 `ModuleNotFoundError: …` 로 시작합니다. 설치 명령은 `python -m pip install requests` 입니다(맥북은 `python3`).
+- 앞의 두 오류는 `ModuleNotFoundError: …` 로 시작합니다. 설치 명령은 `python -m pip install requests` 입니다.
 
 `[LLM 호출 실패]` 뒤에 나오는 글자로 원인을 봅니다.
 
@@ -346,7 +350,8 @@ def call_llm(question):                                              # 질문 �
 | --- | --- | --- |
 | `API 키 없음` | `.env` 를 못 찾았거나 키 줄이 없음 | 키를 쓰려면 「Gemini API 키와 .env 만들기」 |
 | `상태 코드 400` · `401` · `403` | 키가 틀림 | 2단계로 키를 확인하고 `.env` 에 다시 붙여 넣음 |
-| `상태 코드 429` | 1분에 15번을 넘음 | <mark>1분 기다린 뒤 다시 실행</mark> |
+| `상태 코드 404` | 모델 이름(`MODEL`)을 구글이 바꾸거나 없앰 | 정답 레슨과 과정 공지에서 새 모델 이름을 확인 |
+| `상태 코드 429` | 1분 호출 한도를 넘음 | <mark>1분 기다린 뒤 다시 실행</mark> |
 | `인터넷 연결 오류` | 인터넷이 끊겼거나 30초 안에 답이 없음 | 연결을 확인하고 다시 실행 |
 
 - `API 키 없음` 은 <mark>오류가 아니라, 키 없이 대체 문장으로 진행하는 정상 동작</mark>입니다.

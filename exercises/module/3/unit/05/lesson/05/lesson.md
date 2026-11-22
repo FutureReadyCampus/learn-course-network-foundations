@@ -308,19 +308,19 @@ print("거부", user_limit, "번 이상 사용자:", heavy)                  # �
 
 **순서**
 
-1. **[VS Code]** `access_control` 폴더의 `log_summary.py` 를 열어 내용을 모두 지우고(`Ctrl + A` 뒤 `Delete`, 맥북은 `Cmd + A`) 위 `log_summary.py` 골격을 붙여 넣고 저장합니다. 이어서 `access_control` 폴더를 오른쪽 클릭 › **New File** 로 `apply5-1_run.py` 를 만들어 `apply5-1_run.py` 코드 상자의 내용을 붙여 넣고 저장합니다.
+1. **[VS Code]** `access_control` 폴더의 `log_summary.py` 를 열어 내용을 모두 지우고(`Ctrl + A` 뒤 `Delete`) 위 `log_summary.py` 골격을 붙여 넣고 저장합니다. 이어서 `access_control` 폴더를 오른쪽 클릭 › **New File** 로 `apply5-1_run.py` 를 만들어 `apply5-1_run.py` 코드 상자의 내용을 붙여 넣고 저장합니다.
 
 <!-- checklist optional -->
-- [ ] `access_control` 폴더 바로 아래에 `apply5-1_run.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
+- [ ] `log_summary.py` 를 골격으로 바꿔 저장하고, `access_control` 폴더 바로 아래에 `apply5-1_run.py` 를 만들어 코드 상자 내용을 붙여 넣은 뒤 저장했다
 <!-- /checklist -->
 
 2. **[VS Code]** `log_summary.py` 에서 직접 쓰는 곳 다섯 군데를 씁니다. 2.1 의 표와 그림, 문법 상자를 보고 씁니다.
 
 <!-- checklist optional -->
-- [ ] `log_summary.py` 의 내용을 골격으로 바꾸고 1 ~ 11번을 채워 저장했다
+- [ ] `log_summary.py` 골격의 1 ~ 11번을 채워 저장했다
 <!-- /checklist -->
 
-3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
+3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다.
    ```bash
    pwd
    python apply5-1_run.py

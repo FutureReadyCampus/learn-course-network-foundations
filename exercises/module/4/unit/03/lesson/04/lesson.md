@@ -285,7 +285,7 @@ for alert in saved_alerts:                                                      
 - [ ] `anomaly_detection` 폴더에 `apply3-1_run.py` 를 만들어 붙여 넣고 저장했다
 <!-- /checklist -->
 
-3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다.
    ```bash
    pwd
    python apply3-1_run.py

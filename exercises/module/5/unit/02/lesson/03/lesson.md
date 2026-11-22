@@ -8,7 +8,7 @@ render: markdown
 
 ## 제공 파일 쓰는 법
 
-**실습 2-1 을 마친 뒤, 실습 2-2 를 시작하기 전에** 이 레슨의 파일 세 개를 만듭니다. 오늘 핵심 실습에서는 이 파일을 부르지 않지만, 응용 2-2 와 Unit 3 이 불러 씁니다. 그래서 응용을 하지 않아도 오늘 만들어 두고 함께 깃허브에 올립니다.
+**실습 2-1 을 마친 뒤, 실습 2-2 를 시작하기 전에** 이 레슨의 파일 세 개를 만듭니다. 오늘 핵심 실습에서는 이 파일을 부르지 않지만, `audit.py` · `approvals.py` 는 응용 2-2 가, `ip_actions.py` 는 Unit 3 이 불러 씁니다. 그래서 응용을 하지 않아도 오늘 만들어 두고 함께 깃허브에 올립니다.
 
 1. 파일은 모두 작업 폴더 `network-study-notes/soar_response` 바로 아래에 만듭니다(VS Code 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File**).
 2. 파일 이름을 그대로 적고, 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
@@ -20,7 +20,7 @@ render: markdown
    | `audit.py` | 감사 기록 한 건을 딕셔너리로 만드는 `log_line` | 없음 | `approvals.py`, 응용 2-2 `flow.py` |
    | `approvals.py` | 담당자의 승인 · 거절을 권한 확인 뒤 적용 | `audit.py`, Unit 1 실습 1-2 `incident.py` | 응용 2-2 |
 
-4. 세 파일을 다 만들었으면 아래 명령으로 확인하고 실습 2-2 로 갑니다(맥북은 `python3`).
+4. 세 파일을 다 만들었으면 아래 명령으로 확인하고 실습 2-2 로 갑니다.
    ```bash
    python -c "from ip_actions import check_ip_policy; from approvals import is_authorized; from audit import log_line; print('제공 파일 정상', check_ip_policy('192.0.2.10', ['192.0.2.10'], {}), is_authorized('intern01'))"
    ```
@@ -110,15 +110,14 @@ def expire_blocks(state, incident_id):                                          
 
 - 기록 한 건은 실습 2-1 의 `make_record` 가 만듭니다. 그래서 IP 조치도 계정 잠금과 같은 여섯 키(`action` · `target` · `incident` · `before` · `after` · `reason`)로 남습니다.
 
-처음 보는 모양 세 가지입니다.
+처음 보는 모양 두 가지입니다.
 
 | 코드 | 뜻 |
 |---|---|
-| `str(ttl)` | 숫자를 글자로 바꾼다 |
 | `state["block_expiry"].pop(ip)` | 딕셔너리에서 그 키와 값을 지운다 |
 | `list(state["blocked_ips"])` | 리스트의 복사본을 만든다 |
 
-숫자는 `+` 로 글자와 바로 이어 붙일 수 없어서 `str(ttl)` 로 바꿉니다.
+`str(ttl)` 은 Unit 1 실습 1-2 에서 본 `str(숫자)` 로, 숫자를 글자로 바꿉니다. 숫자는 `+` 로 글자와 바로 이어 붙일 수 없어서 `str(ttl)` 로 바꿉니다.
 
 - 허용 목록과 공유 IP 를 왜 먼저 거르는지, 끝나는 시각을 어떻게 비교하는지는 응용 2-3 레슨에서 자세히 다룹니다.
 

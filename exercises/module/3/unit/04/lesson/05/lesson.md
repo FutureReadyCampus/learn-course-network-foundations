@@ -84,7 +84,7 @@ source:
 - **지울 대상**(`target`): 역할 이름 finance
 - **왜 이 방법인가**: junho 의 `role` 을 비우면 `finance` 의 다른 권한(`SETTLE:QUERY`)까지 모두 사라지므로, 그 권한만 뺍니다.
 
-- **참고**: Unit 1 응용 1-2의 `revoke_access` 는 `employed` 만 `False` 로 바꾸고 `role` 은 그대로 두었습니다. 이번의 역할 해제는 `role` 을 비웁니다.
+- **참고**(응용 1-2를 안 했으면 건너뜁니다): Unit 1 응용 1-2의 `revoke_access` 는 `employed` 만 `False` 로 바꾸고 `role` 은 그대로 두었습니다. 이번의 역할 해제는 `role` 을 비웁니다.
 
 **어떤 방법을 고르나**
 
@@ -218,8 +218,8 @@ def plan_revocation(findings, users, roles):                     # 회수 대상
 
 | 함수 | 쓰는 줄 | 앞의 공백 |
 |---|---|---|
-| `exception_id` · `count_users_by_role` | `for` 밖(함수 안) | 4개 |
-| `exception_id` · `count_users_by_role` | `for` 안쪽 | 8개 |
+| `exception_id` | 1 · 2번(함수 안) | 4개 |
+| `count_users_by_role` | 3 · 4번(`for` 안쪽) | 8개 |
 | `build_plan` | `if method == "역할 해제":` 안쪽(5 · 6번) | 8개 |
 | `build_plan` | 7번(`if` 밖) | 4개 |
 | `plan_revocation` | `if` · `elif` · `else`(미리 채운 `for` 안쪽) | 8개 |
@@ -284,7 +284,7 @@ for role in names_by_role:                                       # 두 역할을
 - [ ] `revoke_plan.py` 의 직접 쓰는 곳 다섯 군데를 채웠다
 <!-- /checklist -->
 
-3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
+3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다. 다르면 `cd access_control` 을 먼저 칩니다.
    ```bash
    pwd
    python apply4-1_run.py

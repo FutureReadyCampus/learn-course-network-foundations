@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img"><title>글쓰기 20분은 고르기 5분, 세 문장 쓰기 10분, 점검·올리기 5분이고 글감은 Unit 3 실습에서 고른다</title><desc>막대는 20분을 고르기 5분, post-short 글 틀로 세 문장 쓰기 10분, 점검과 올리기 5분으로 나눈다. 핵심 글감은 실습 3-1의 거부되는 권한을 남긴 이유, 실습 3-2의 90일과 91일 경계, 이력 없는 권한 지우기 세 가지다. 응용 3-2를 했다면 이유가 둘인 후보와 리포트에 담을 범위를 선택 글감으로 쓸 수 있다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img"><title>글쓰기 20분은 고르기 5분, 세 문장 쓰기 10분, 점검·올리기 5분이고 글감은 Unit 3 실습에서 고른다</title><desc>막대는 20분을 고르기 5분, post-short 글 틀로 세 문장 쓰기 10분, 공개 전 점검 5분으로 나눈다(올리기는 마무리에서). 핵심 글감은 실습 3-1의 거부되는 권한을 남긴 이유, 실습 3-2의 90일과 91일 경계, 이력 없는 권한 지우기 세 가지다. 응용 3-2를 했다면 이유가 둘인 후보와 리포트에 담을 범위를 선택 글감으로 쓸 수 있다.</desc>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="30" font-size="19" fill="#292929" font-weight="700">글쓰기 20분 나누기</text>
 <rect x="20" y="48" width="170" height="52" rx="6" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
@@ -8,7 +8,7 @@
 <text x="360" y="71" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">쓰기 · post-short 로 세 문장</text>
 <text x="360" y="91" font-size="14" fill="#e0442e" text-anchor="middle">10분</text>
 <rect x="530" y="48" width="170" height="52" rx="6" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="615" y="71" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">점검 · 올리기</text>
+<text x="615" y="71" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">공개 전 점검</text>
 <text x="615" y="91" font-size="14" fill="#1f7a4a" text-anchor="middle">5분</text>
 <text x="20" y="142" font-size="17" fill="#292929" font-weight="700">핵심 글감 · 하나만 고르면 됩니다</text>
 <rect x="20" y="156" width="216" height="104" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>

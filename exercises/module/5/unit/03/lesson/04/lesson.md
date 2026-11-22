@@ -24,7 +24,7 @@ render: markdown
 
 1. 파일은 모두 `soar_response` 폴더 안에 만듭니다(VS Code 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File**).
 2. 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
-3. `ticket_merge.py` 를 만들었으면 아래 명령으로 확인합니다(맥북은 `python3`). `제공 파일 정상 7` 이 나오면 됩니다(알림 11건이 티켓 7장으로 병합된다는 뜻입니다).
+3. `ticket_merge.py` 를 만들었으면 아래 명령으로 확인합니다. `제공 파일 정상 7` 이 나오면 됩니다(알림 11건이 티켓 7장으로 병합된다는 뜻입니다).
    ```bash
    python -c "from incident import load_json; from ticket_merge import handle_alert; rules = load_json('config/escalation_rules.json'); tickets = []; [handle_alert(a, tickets, rules) for a in load_json('alerts_thu.json')]; print('제공 파일 정상', len(tickets))"
    ```
@@ -135,13 +135,7 @@ def change_ticket_status(ticket, new_status, minute, who):                     #
 
 `ticket_notice.py` 는 `notifier.py` 의 `notify` 를 불러 쓰므로 `notifier.py` 를 먼저 만듭니다.
 
-1. **[터미널]** `agent_core` 폴더에 `notifier.py` 가 있으면 `soar_response` 폴더로 복사합니다(터미널은 `soar_response` 폴더에 있어야 합니다).
-   ```bash
-   cp ../agent_core/notifier.py .
-   ls
-   ```
-   - 명령 풀이: `cp 원본 복사본` 파일 복사하기(`.` 은 지금 폴더)
-   - `No such file` 이 나오면 `ls ..` 로 `agent_core` 폴더 이름이 맞는지 봅니다. 그래도 없으면 `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `notifier.py` 를 만들고 아래 `notifier.py` 상자를 붙여 넣고 저장합니다.
+1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `notifier.py` 를 만들고 아래 `notifier.py` 상자를 붙여 넣고 저장합니다. 이미 `soar_response` 에 `notifier.py` 가 있으면 건너뜁니다.
 2. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `ticket_notice.py` 를 만들고 맨 아래 `ticket_notice.py` 상자를 붙여 넣고 저장합니다.
 
 **`notifier.py`** — 알림 함수 `notify` 입니다. 메시지를 알림 서버로 보내고, 보내면 `True`, 실패하면 `[알림 실패]` 와 오류 이름을 출력하고 `False` 를 리턴합니다.

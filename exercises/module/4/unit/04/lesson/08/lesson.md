@@ -381,7 +381,7 @@ Name: count, dtype: int64
 Traceback (most recent call last):
   File "…/anomaly_detection/apply4-2_run.py", line 14, in <module>
   File "…/anomaly_detection/evaluation.py", line 31, in find_false_alarms
-ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.item(), a.any() or a.all().
 ```
 
   - 줄 번호는 사람마다 다릅니다.

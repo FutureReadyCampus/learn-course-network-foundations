@@ -21,7 +21,7 @@
 <text x="400" y="140" font-size="15" fill="#292929" text-anchor="start">import grant_request; …"</text>
 <rect x="400" y="164" width="280" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="540" y="190" font-size="15" fill="#1f7a4a" text-anchor="middle" font-weight="700">제공 파일 정상</text>
-<text x="400" y="236" font-size="14" fill="#666660" text-anchor="start">맥북은 python3</text>
+
 <text x="360" y="290" font-size="15" fill="#666660" text-anchor="middle">고칠 곳은 없습니다 · 복사 버튼으로 그대로 붙여 넣고 저장합니다</text>
 </g>
 </svg>

@@ -250,7 +250,7 @@ for rule in RULES:                                               # 조건을 하
 - [ ] `conditional.py` · `apply4-2_run.py` 를 만들어 붙여 넣었다
 <!-- /checklist -->
 
-2. **[터미널]** `ls config` 로 `conditions.json` 이 `users.json` 과 같은 `config` 폴더에 있는지 보고, `python -m json.tool config/conditions.json`(맥북은 `python3`)로 내용이 정상인지 확인합니다.
+2. **[터미널]** `ls config` 로 `conditions.json` 이 `users.json` 과 같은 `config` 폴더에 있는지 보고, `python -m json.tool config/conditions.json` 으로 내용이 정상인지 확인합니다.
    - 깨진 채 두면 `[경고] 설정 파일 깨짐: config/conditions.json` 이 찍히고, 조건을 읽지 못해 조건 없이 허용됩니다.
 
 <!-- checklist optional -->
@@ -263,7 +263,7 @@ for rule in RULES:                                               # 조건을 하
 - [ ] `conditional.py` 의 직접 쓰는 곳 세 군데를 채웠다
 <!-- /checklist -->
 
-4. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
+4. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다. 다르면 `cd access_control` 을 먼저 칩니다.
    ```bash
    pwd
    python apply4-2_run.py

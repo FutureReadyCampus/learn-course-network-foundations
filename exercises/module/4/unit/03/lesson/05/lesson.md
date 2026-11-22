@@ -98,6 +98,8 @@ print(times)                        # 시각 값을 출력한다
 Name: time, dtype: datetime64[ns]
 ```
 
+- 판다스 3 에서는 마지막 줄이 `dtype: datetime64[us]` 로 나옵니다. 같은 시각 값이니 맞게 나온 것입니다.
+
 위 코드에 이어서 실행하는 다음 코드입니다.
 
 ```python
@@ -411,7 +413,7 @@ print("--- 단계 3: 파일을 5번 이상 내려받은 사용자", bulk_users) 
 - [ ] `anomaly_detection` 폴더에 `apply3-2_run.py` 를 만들어 붙여 넣고 저장했다
 <!-- /checklist -->
 
-3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
+3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지</mark> 확인하고 실행합니다.
    ```bash
    pwd
    python apply3-2_run.py

@@ -13,7 +13,7 @@ render: markdown
 1. 파일은 작업 폴더 `network-study-notes/soar_response` 안에 만듭니다(VS Code 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `risk_engine_log.json`).
 2. 다음 페이지 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
 3. 만들 파일은 `risk_engine_log.json` 하나입니다. Module 4 탐지 결과 5건을 실습 5-1 엔진으로 처리한 로그입니다.
-4. 파일을 만들었으면 아래 명령으로 확인하고 실습 5-2로 갑니다(맥북은 `python3`).
+4. 파일을 만들었으면 아래 명령으로 확인하고 실습 5-2로 갑니다.
    ```bash
    python -c "import json; log = json.load(open('risk_engine_log.json', encoding='utf-8')); print('제공 파일 정상', len(log), [r['outcome'] for r in log])"
    ```
