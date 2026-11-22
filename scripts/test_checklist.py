@@ -45,6 +45,7 @@ class ChecklistTest(unittest.TestCase):
         self.assertIn("<code>users.json</code>", first["checklist"]["items"][0])
         self.assertIn("<strong>실행</strong>", first["checklist"]["items"][1])
         self.assertNotIn("checklist", first["html"])
+        self.assertIn('data-start="0" data-count="2"', first["html"])  # 자리표시는 블록 위치에 남는다
         self.assertNotIn("users.json", first["html"])  # 본문 HTML 에는 중복해서 나오지 않는다
         self.assertTrue(second["checklist"]["optional"])
         self.assertNotIn("checklist", third)

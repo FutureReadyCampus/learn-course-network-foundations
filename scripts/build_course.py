@@ -524,23 +524,32 @@ CHECKLIST_RE = re.compile(r"(?ms)^<!--\s*checklist(?P<optional>\s+optional)?\s*-
 
 
 def split_checklist(text: str, md) -> tuple[str, dict | None]:
-    """한 Page 의 `<!-- checklist -->` 블록(`- [ ] 항목` 줄들)을 본문에서 떼어 낸다.
+    """`<!-- checklist -->` 블록(`- [ ] 항목` 줄들)을 본문에서 찾아 그 자리에 자리표시(`div.inline-check`)를 남긴다.
 
-    리더가 Page 아래에 체크리스트와 진행 막대로 보여 주고, 모두 체크해야 「다음」이 열린다.
-    `<!-- checklist optional -->` 이면 진행 막대만 보여 주고 막지 않는다.
+    한 Page 에 블록이 여러 개여도 된다(단계마다 그 단계 바로 아래에 둔다). 항목은 Page 전체에서 이어서 번호를 매기고,
+    리더가 자리표시마다 그 블록의 항목을 그려 준다. 모든 블록이 `optional` 이면 Page 전체가 선택이다.
     """
-    match = CHECKLIST_RE.search(text)
-    if not match:
-        return text, None
-    items = []
-    for line in match.group("body").split("\n"):
-        item = re.match(r"^\s*[-*]\s+\[[ xX]\]\s+(.+?)\s*$", line)
-        if item:
-            items.append(md.renderInline(item.group(1)))
-    rest = text[:match.start()] + text[match.end():]
+    items: list[str] = []
+    flags: list[bool] = []
+
+    def hold(match):
+        found = []
+        for line in match.group("body").split("\n"):
+            item = re.match(r"^\s*[-*]\s+\[[ xX]\]\s+(.+?)\s*$", line)
+            if item:
+                found.append(md.renderInline(item.group(1)))
+        if not found:
+            return ""
+        optional = bool(match.group("optional"))
+        marker = f'\n<div class="inline-check" data-start="{len(items)}" data-count="{len(found)}" data-optional="{int(optional)}"></div>\n\n'
+        items.extend(found)
+        flags.append(optional)
+        return marker
+
+    rest = CHECKLIST_RE.sub(hold, text)
     if not items:
         return rest, None
-    return rest, {"optional": bool(match.group("optional")), "items": items}
+    return rest, {"optional": all(flags), "items": items}
 
 
 def markdown_pages(path: Path, lesson_meta: dict | None = None) -> list[dict]:
