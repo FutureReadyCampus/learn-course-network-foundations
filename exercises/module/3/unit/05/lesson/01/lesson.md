@@ -140,6 +140,12 @@ Unit 5는 Module 3 **접근통제 자동화**의 마지막 단계인 **결과 �
 {"time": "2026-11-01T10:10", "user": "gaeun", "permission": "ACCOUNT:CHANGE", "network": "vpn", "allowed": false, "reason": "허용되지 않은 접속 위치"}
 </code></pre>
 
+<!-- checklist -->
+- [ ] `access_control` 폴더 안의 `config` 폴더에 `week_state.json` 을 만들고 내용을 붙여 넣은 뒤 저장했다
+- [ ] `access_control` 폴더 안의 `config` 폴더에 `alert.json` 을 만들고 내용을 붙여 넣은 뒤 저장했다
+- [ ] `access_control` 폴더 바로 아래에 `week_log.jsonl` 을 만들고 40줄을 붙여 넣은 뒤 저장했다
+<!-- /checklist -->
+
 6. **[터미널]** 세 파일이 정상인지 확인합니다. `pwd` 결과가 `access_control` 로 끝나야 합니다(맥북은 `python3`).
    ```bash
    python -m json.tool config/week_state.json
@@ -152,9 +158,6 @@ Unit 5는 Module 3 **접근통제 자동화**의 마지막 단계인 **결과 �
 **확인** — 앞의 두 명령이 내용을 다시 출력하고 마지막 명령이 `40` 을 내면 성공입니다. 안 나오면 다음 페이지 「오류가 나면」의 표에서 오류 이름을 찾습니다.
 
 <!-- checklist -->
-- [ ] `access_control` 폴더 안의 `config` 폴더에 `week_state.json` 을 만들고 내용을 붙여 넣은 뒤 저장했다
-- [ ] `access_control` 폴더 안의 `config` 폴더에 `alert.json` 을 만들고 내용을 붙여 넣은 뒤 저장했다
-- [ ] `access_control` 폴더 바로 아래에 `week_log.jsonl` 을 만들고 40줄을 붙여 넣은 뒤 저장했다
 - [ ] `access_control` 폴더의 터미널에서 확인 명령 세 개를 실행해 마지막에 `40` 이 나왔다
 <!-- /checklist -->
 
