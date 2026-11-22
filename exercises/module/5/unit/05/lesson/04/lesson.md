@@ -201,11 +201,27 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
    pwd
    ls
    ```
+
+<!-- checklist -->
+- [ ] `soar_response` 폴더에 `gate_off_log.json` 을 만들어 붙여 넣고 저장했다(`engine_log.json` · `risk_engine_log.json` 이 있는 것도 확인했다)
+- [ ] `soar_response` 폴더에 `policy_check.py` 와 `exercise5-2_run.py` 를 만들어 붙여 넣고 저장했다
+<!-- /checklist -->
+
 2. **[VS Code]** `policy_check.py` 의 ① · ② 를 씁니다. 2.1 의 「재수행」 설명과 아래 「직접 쓰는 곳」을 보고 씁니다.
+
+<!-- checklist -->
+- [ ] `policy_check.py` 의 ① · ② 를 채워 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python exercise5-2_run.py
    ```
+
+<!-- checklist -->
+- [ ] `python exercise5-2_run.py` 를 실행해 단계 3 이 `FAIL 이 나온 점검 2 개 · 전체 점검 12 개` 로 나왔다
+<!-- /checklist -->
+
 4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다.
    - 단계 1 · 단계 3 · 단계 4 는 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다.
    - 단계 2 는 로그마다 제목 줄 1줄과 점검 결과 4줄이라 모두 15줄입니다.
@@ -216,13 +232,6 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
    - (다) [응용] `INC-406`(`gaeun`)은 점검 ①은 FAIL 인데 점검 ③은 PASS 입니다. 그 알림의 `before` · `after` 를 근거로 `gaeun` 이 잠기지 않은 이유를 Unit 2 실습 2-1 `lock_account` 와 연결해 적고, 점검 ③이 게이트와 별도로 필요한 이유를 적어 주세요.
 
 **확인** — 단계 3 이 `FAIL 이 나온 점검 2 개 · 전체 점검 12 개` 이고, FAIL 두 줄이 모두 `[gate_off_log.json]` 아래에 있으면 성공입니다. 안 나오면 「정답」 레슨의 실습 5-2 출력과 한 줄씩 맞춰 보고, `FAIL 이 나온 점검 4 개` 면 위 「직접 쓰는 곳」의 채우기 전 설명을 다시 봅니다.
-
-<!-- checklist -->
-- [ ] `soar_response` 폴더에 `gate_off_log.json` 을 만들어 붙여 넣고 저장했다(`engine_log.json` · `risk_engine_log.json` 이 있는 것도 확인했다)
-- [ ] `soar_response` 폴더에 `policy_check.py` 를 만들어 붙여 넣고 ① · ② 를 채워 저장했다
-- [ ] `soar_response` 폴더에 `exercise5-2_run.py` 를 만들어 붙여 넣고 저장했다
-- [ ] `python exercise5-2_run.py` 를 실행해 단계 3 이 `FAIL 이 나온 점검 2 개 · 전체 점검 12 개` 로 나왔다
-<!-- /checklist -->
 
 ## 실습 5-2 정리
 
@@ -339,6 +348,10 @@ ls
 | 보고서 쓰기 | `report_u5.md` |
 | 응용 5-1(여유가 되면) | `unit05_risk_scores.json` · `engine_input.py` · `apply5-1_run.py` · `engine_summary.json` · `risk_tickets.json` |
 
+<!-- checklist -->
+- [ ] `soar_response` 폴더에서 2번 표의 파일이 모두 있는 것을 확인했다
+<!-- /checklist -->
+
 **3. 깃허브에 올리기**
 
 1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/network-study-notes` 으로 끝나야 합니다.
@@ -355,6 +368,11 @@ ls
    - 명령 풀이: `git status` 올릴 파일의 상태를 봄
    - `.env` 가 보이면 VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
    - `soar_response/__pycache__/` 는 파이썬이 실행하면서 자동으로 만든 임시 폴더입니다. 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장합니다.
+
+<!-- checklist -->
+- [ ] `network-study-notes` 폴더에서 `git status` 를 실행해 `.env` · `.venv` 가 목록에 없는 것을 확인했다
+<!-- /checklist -->
+
 3. **[보고서]** `report_u5.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`). 세 명령을 하나씩 칩니다.
    ```bash
@@ -364,19 +382,21 @@ ls
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
    - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
+
+<!-- checklist -->
+- [ ] `git add .` · `git commit` · `git push` 를 차례로 실행해 깃허브에 올렸다
+<!-- /checklist -->
+
 5. **[브라우저]** 깃허브의 내 저장소 `network-study-notes` 를 새로 고쳐 `soar_response` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
    - 깃허브에 안 보이는 파일이 있으면 그 파일이 VS Code 왼쪽 목록의 `soar_response` 폴더 안에 있는지 봅니다. 다른 폴더에 만들었다면 `soar_response` 안으로 옮긴 뒤 2번의 `git status` 부터 다시 합니다.
+
+<!-- checklist -->
+- [ ] 깃허브의 `network-study-notes` 저장소 `soar_response` 폴더에서 오늘 만든 파일이 모두 보였다
+<!-- /checklist -->
 
 - 시간이 남아 응용 5-1을 했다면 응용 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
 
 **확인** — 깃허브의 `soar_response` 폴더에 2번 표의 파일(응용 줄 빼고)이 모두 보이고 `.env` 가 없으면 성공입니다. 안 보이는 파일이 있으면 `git status` 를 다시 쳐서 그 파일이 빨간 목록에 남아 있는지 보고 4번을 다시 합니다.
-
-<!-- checklist -->
-- [ ] `soar_response` 폴더에서 2번 표의 파일이 모두 있는 것을 확인했다
-- [ ] `network-study-notes` 폴더에서 `git status` 를 실행해 `.env` · `.venv` 가 목록에 없는 것을 확인했다
-- [ ] `git add .` · `git commit` · `git push` 를 차례로 실행해 깃허브에 올렸다
-- [ ] 깃허브의 `network-study-notes` 저장소 `soar_response` 폴더에서 오늘 만든 파일이 모두 보였다
-<!-- /checklist -->
 
 **4. 이어지는 곳**
 
