@@ -89,7 +89,7 @@ gaeun ACCOUNT QUERY -> 접수 안 됨: 만료 시각이 이미 지났음
 | ③ 을 빼먹음 · `return` 줄 아래에 씀 | 가장 많음 | 요청 번호가 모두 `1`, 단계 2가 비어 나옴 |
 | ② 에서 `return` 을 빼고 `False, "만료 시각이 이미 지났음"` 만 씀 | 많음 | 검사가 아무 일도 안 함. `gaeun ACCOUNT QUERY` 가 접수됨 |
 | ① 을 `if until > received_at:` 로 뒤집어 씀 | 있음 | 반대로 동작. 정상 네 건은 거절, 지난 `gaeun` 요청만 접수 |
-| ① 만 쓰고 ② 를 안 씀 · ② 를 4칸으로 씀 | 있음 | `IndentationError: expected an indented block after 'if' statement` |
+| ① 만 쓰고 ② 를 안 씀 · ② 를 4칸으로 씀 | 있음 | `IndentationError: expected an indented block after 'if' statement on line …` |
 
 ③ 을 빼먹고(① · ② 는 채움) 실행하면 다음처럼 됩니다(번호가 `1` 만 나오는 것이 신호입니다).
 
@@ -181,7 +181,7 @@ python exercise2-2_run.py
 |---|---|---|
 | ② 에서 `return` 을 빼고 `False, "검토 중이 아님"` 만 씀 | 많음 | 검사가 아무 일도 안 함. 채우기 전과 같은 출력 |
 | ① 을 `if request["status"] == "reviewing":` 로 뒤집어 씀 | 있음 | 반대로 동작. 검토 중인 것은 막히고 반려된 2번만 승인됨 |
-| ① 만 쓰고 ② 를 안 씀 · ② 를 4칸으로 씀 | 있음 | `IndentationError: expected an indented block after 'if' statement` |
+| ① 만 쓰고 ② 를 안 씀 · ② 를 4칸으로 씀 | 있음 | `IndentationError: expected an indented block after 'if' statement on line …` |
 
 ① 을 `==` 로 뒤집어 쓰고 실행하면 다음처럼 됩니다(맨 위 본인 승인 시험까지 「검토 중이 아님」으로 나오고, 반려한 2번이 `approved` 가 되는 것이 신호입니다).
 

@@ -47,6 +47,8 @@ render: markdown
 | 막혀서 끝내지 못했다 | `_templates/post-stuck.md` |
 | 응용: 여유가 있어 긴 글을 쓴다 | `_templates/post-practice.md` |
 
+- 내 저장소에는 `_templates` 폴더가 없을 수 있습니다(Unit 1에서 만들지 않았음). 글 틀은 위 「글 틀로 글 쓰기」 페이지(Unit 1 시작하기 10쪽)의 상자에서 복사합니다.
+
 **올리는 순서**
 
 1. **[VS Code]** 왼쪽 목록의 `network-study-notes` 안 `_posts` 폴더를 오른쪽 클릭 › **New File** 로 `2026-11-20-m3-u2-request-approval.md` 처럼 만듭니다(경로 `_posts/2026-11-20-m3-u2-request-approval.md`). 앞은 오늘 날짜, 뒤는 영문 제목입니다.
@@ -75,7 +77,7 @@ render: markdown
 | 고른 글감 | 붙일 줄 | 이어 쓸 것 |
 |---|---|---|
 | 글감 1 | `req_create.py` 의 `if until <= received_at:` | 거르는 것(지난 시각)과 못 거르는 것(먼 미래)을 나눔 |
-| 글감 2 | `req_review.py` 의 `if request["status"] != "reviewing":` | 채우기 전 `2 승인 -> True 승인` 과 채운 뒤를 비교 |
+| 글감 2 | `req_review.py` 의 `if request["status"] != "reviewing":` | 채운 뒤 `1 승인 -> False 검토 중이 아님` 을 붙이고, 채우기 전에는 `1 승인 -> True 승인` 이었던 것과 비교 |
 | 글감 3 | `if request["user"] == approver:` | 막는 것(본인 승인)과 못 막는 것(대신 승인)을 나눔 |
 
 1. 실행 결과는 출력 전체를 붙이지 않아도 됩니다. 글에서 말하는 줄 한두 개만 글 안의 코드 상자(```` ``` ```` 로 감싼 칸)에 붙이고, 그 줄에서 무엇을 봐야 하는지 한 문장을 덧붙입니다.
@@ -94,7 +96,7 @@ render: markdown
 3. 실습 데이터의 이름(`seoyeon`, `gaeun` 등)이 아닌 실제 사람 이름이 없습니다.
 4. 머리말이 `module: 3`, `unit: 2` 입니다.
 
-**올리기** — **[터미널]** 네 줄을 모두 확인했으면 저장소 루트에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더로 돌아옵니다: `cd ..` → `python check_publish.py`(맥북은 `python3`) → `git add .` → `git commit -m "Add unit 2 post"` → `git push` → `cd access_control`. 점검에서 `[오류]` 가 나오면 그 부분을 지우고 다시 돌린 뒤 올립니다.
+**올리기** — **[터미널]** 네 줄을 모두 확인했으면 저장소 루트에서 점검 스크립트를 돌리고 올린 뒤 작업 폴더로 돌아옵니다. 먼저 `pwd` 로 위치를 봅니다. `…/access_control` 이면 `cd ..` 로 올라가고, 이미 `…/network-study-notes` 이면(마무리에서 `cd ..` 를 한 경우) `cd ..` 는 건너뜁니다. 한 번 더 치면 바탕화면으로 나가 점검과 git 명령이 실패합니다. 그다음 `python check_publish.py` → `git add .` → `git commit -m "Add unit 2 post"` → `git push` → `cd access_control`. 점검에서 `[오류]` 가 나오면 그 부분을 지우고 다시 돌린 뒤 올립니다.
 
 <!-- checklist -->
 - [ ] 저장소 루트에서 `python check_publish.py` 가 `오류 0건` 인 것을 보고 `git add` · `git commit` · `git push` 로 글을 올렸다

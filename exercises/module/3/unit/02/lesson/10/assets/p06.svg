@@ -12,12 +12,12 @@
 <rect x="20" y="142" width="110" height="74" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="75" y="183" font-size="15" fill="#292929" text-anchor="middle">(나)</text>
 <rect x="140" y="142" width="560" height="74" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="152" y="173" font-size="15" fill="#292929" text-anchor="start">[핵심 질문] ① 누구에게 어떤 조치를 할지</text>
+<text x="152" y="173" font-size="15" fill="#292929" text-anchor="start">① 누구에게 어떤 조치를 할지</text>
 <text x="152" y="194" font-size="15" fill="#292929" text-anchor="start">② 알림만 보낼지 윗사람에게 넘길지 나누는 기준</text>
 <rect x="20" y="232" width="110" height="74" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="75" y="273" font-size="15" fill="#292929" text-anchor="middle">(다)</text>
 <rect x="140" y="232" width="560" height="74" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="152" y="263" font-size="15" fill="#292929" text-anchor="start">[핵심 질문] 상태를 보지 않고 접수 시각만 보면</text>
+<text x="152" y="263" font-size="15" fill="#292929" text-anchor="start">상태를 보지 않고 접수 시각만 보면</text>
 <text x="152" y="284" font-size="15" fill="#292929" text-anchor="start">① 리스트에 생기는 문제  ② 받은 사람이 곤란한 점</text>
 <text x="20" y="336" font-size="15" fill="#666660" text-anchor="start">응용 2-2의 글감은 다음 레슨 「오늘의 글 쓰기」에 있습니다</text>
 </g>

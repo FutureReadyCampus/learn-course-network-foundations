@@ -34,6 +34,6 @@
 <text x="406" y="236" font-size="15" fill="#292929" text-anchor="start">이전 파일 정상 5</text>
 <text x="406" y="260" font-size="15" fill="#292929" text-anchor="start">(False, '퇴사한 계정')</text>
 <text x="406" y="288" font-size="14" fill="#666660" text-anchor="start">다르면 왼쪽 출처에서 다시 만들기</text>
-<text x="360" y="330" font-size="14" fill="#666660" text-anchor="middle">오른쪽 글자는 Unit 1에서 그 파일이 나오는 곳입니다 · 맥북은 python3</text>
+<text x="360" y="330" font-size="14" fill="#666660" text-anchor="middle">오른쪽 글자는 Unit 1에서 그 파일이 나오는 곳입니다</text>
 </g>
 </svg>

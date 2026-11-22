@@ -96,9 +96,11 @@ None
 Traceback (most recent call last):
   File "…/파일이름.py", line 3, in <module>
     print(request["approver"])                                         # 없는 키를 [ ] 로 꺼내면 KeyError 오류가 나고 프로그램이 멈춘다
+          ~~~~~~~^^^^^^^^^^^^
 KeyError: 'approver'
 ```
 
+- 파일 경로와 `~~~^^^` 표시 줄은 내 PC 와 파이썬 버전에 따라 조금 다르게 나올 수 있습니다. 마지막 줄 `KeyError: 'approver'` 가 같으면 됩니다.
 - `[ ]` 는 키가 없으면 오류(`KeyError`)가 나고 프로그램이 멈춥니다. `.get( )` 은 키가 없어도 멈추지 않고 `None`(값이 없다는 뜻의 값)을 꺼냅니다.
 - 이 실습의 단계 2에서는 네 장 모두 처리되어 `approver` 키가 있으므로 `None` 이 나오지 않습니다. 그래도 아직 처리하지 않은 요청서가 섞여 있을 때 멈추지 않도록 `.get` 을 씁니다.
 
@@ -196,28 +198,26 @@ for request in REQUESTS:                                         # 요청서를 
 | ① | 상태가 `"reviewing"` 이 아니면 (`if`) | 4칸 |
 | ② | 「검토 중이 아님」으로 처리 안 함 (`return`) | 8칸 |
 
-- ① 확인: ① 만 쓰고 실행하면 `IndentationError: expected an indented block after 'if' statement` 가 나옵니다. ② 를 아직 안 써서 나는 오류이니 정상입니다. 막히면: 아래 `reject_request` 의 첫 `if` 줄과 똑같이 씁니다.
+- ① 확인: ① 만 쓰고 실행하면 `IndentationError: expected an indented block after 'if' statement` 로 시작하는 오류가 나옵니다(뒤에 `on line 번호` 가 붙습니다). ② 를 아직 안 써서 나는 오류이니 정상입니다. 막히면: 아래 `reject_request` 의 첫 `if` 줄과 똑같이 씁니다.
 - ② 확인: ② 까지 쓰고 실행하면 처리 여섯 건의 마지막 두 줄이 `1 승인 -> False 검토 중이 아님` 과 `2 승인 -> False 검토 중이 아님` 으로 나오면 성공입니다. 막히면: `reject_request` 의 첫 `return` 줄과 똑같고, 줄 맨 앞에 `return` 이 있는지 봅니다.
 - 채우기 전에 실행해도 오류 없이 돌아갑니다. 본인 승인은 막히지만, 이미 승인한 1번을 다시 승인해도 `True 승인`, 이미 반려한 2번을 승인해도 `True 승인` 으로 나오고, 단계 2에서 2번이 `approved` 로 바뀝니다. 상태 검사 하나가 빠지면 처리한 결정이 뒤집힌다는 것을 보여 주는 결과입니다.
 
 **순서**
 
-1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 네 가지를 반복합니다.
-   1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
-   2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-   3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `req_review.py` · `exercise2-2_run.py` 입니다.
-   4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
+1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 세 가지를 반복합니다(시작하기 4번과 같은 방법입니다).
+   1. VS Code 왼쪽 목록에서 `access_control` 폴더를 오른쪽 클릭 › **New File** 을 누릅니다(다른 폴더를 누르면 그 폴더에 만들어집니다).
+   2. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `req_review.py` · `exercise2-2_run.py` 입니다.
+   3. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
 
 <!-- checklist -->
 - [ ] `access_control` 폴더에 `req_review.py` 와 `exercise2-2_run.py` 를 만들어 코드 상자 내용을 붙여 넣고 저장했다
 <!-- /checklist -->
 
-2. **[터미널]** `pwd` 를 쳐서 마지막 폴더가 `access_control` 인지 확인한 뒤, **채우기 전에** 한 번 실행해서 다시 처리되면 안 되는 줄을 봅니다.
+2. **[터미널]** `pwd` 를 쳐서 마지막 폴더가 `access_control` 인지 확인합니다. `…/network-study-notes` 로 끝나면 `cd access_control` 로 들어갑니다. 그다음 **채우기 전에** 한 번 실행해서 다시 처리되면 안 되는 줄을 봅니다.
    ```bash
    python exercise2-2_run.py
    ```
    - 명령 풀이: `python` 파이썬으로 파일을 실행 · `exercise2-2_run.py` 실행할 파일
-   - 맥북은 `python3 exercise2-2_run.py` 로 칩니다.
 
 <!-- checklist -->
 - [ ] 채우기 전에 `python exercise2-2_run.py` 를 실행해 출력을 봤다
@@ -233,7 +233,7 @@ for request in REQUESTS:                                         # 요청서를 
 - [ ] `req_review.py` 의 빈칸 ① · ② 를 채우고 다시 실행해 마지막 두 줄이 `False 검토 중이 아님` 으로 나왔다
 <!-- /checklist -->
 
-5. **[보고서]** `access_control/report_u2.md` 의 `## 실습 2-2` 아래를 채웁니다.
+5. **[보고서]** `access_control/report_u2.md` 에 씁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다). (가) · (나)는 `## 실습 2-2` 아래에, (다)는 `## 실습 응용 질문` 의 `2-2 (다)` 칸에 씁니다.
    - (가) [핵심 질문] 채운 뒤 실행한 출력 전체를 붙여 넣고, 막힌 세 줄이 각각 왜 막혔는지 적어 주세요.
    - (나) [핵심 질문] 이미 승인한 요청서를 다시 승인하지 못하게 막는 이유는 무엇인가요? 막지 않으면 어떤 일이 생길 수 있나요?
    - (다) [응용] `approve_request` 에서 `request["user"] == approver` 검사를 뺀다면 어떤 위험이 생길까요? 요청자가 친구에게 대신 승인해 달라고 부탁하면 이 검사로는 막을 수 없습니다. 이런 경우를 막으려면 무엇이 더 필요할까요?
@@ -256,16 +256,16 @@ for request in REQUESTS:                                         # 요청서를 
 
 ## 이번 Unit 마무리 · 깃허브에 올리기
 
-하루를 닫는 마무리입니다(15분). 핵심 실습 두 개와 「제공 파일」 `req_grant.py` 를 끝내고, 보고서의 [핵심 질문] 칸을 쓴 뒤에 합니다.
+하루를 닫는 마무리입니다(15분). 레슨 순서로는 여기가 먼저 나오지만, **다음 레슨 「제공 파일」로 `req_grant.py` 를 만들고, 「보고서 쓰기」 레슨으로 `report_u2.md` 를 만들어 핵심 칸(2-1 (가), 2-2 (가) · (나))을 채운 뒤** 이 마무리로 돌아와서 합니다. 응용은 하지 않아도 됩니다.
 
 **1. 오늘 한 일 확인**
 
 1. 요청을 요청서(딕셔너리)로 접수하고, 접수할 수 없는 요청 세 건을 이유와 함께 걸러 냈다 (실습 2-1)
 2. 승인 · 반려가 검토 중인 요청서에만 되고, 본인 요청과 두 번째 처리는 막힌다 (실습 2-2)
 3. 승인된 요청서에 예외 권한을 주는 `req_grant.py` 를 「제공 파일」에서 복사해 두었다
-4. 보고서 `report_u2.md` 의 꼭 채울 칸(2-1 (가), 2-2 (가) · (나))에 `답:` 뒤가 비어 있지 않다
+4. 보고서 `report_u2.md` 의 꼭 채울 네 칸 가운데 2-1 (가), 2-2 (가) · (나)에 `답:` 뒤가 비어 있지 않다(남은 마무리 (가)는 아래 3번에서 채웁니다)
 
-**2. 파일 확인** — **[터미널]** `access_control` 폴더에서 확인합니다.
+**2. 파일 확인** — **[터미널]** `access_control` 폴더에서 확인합니다(`pwd` 가 `…/access_control` 로 끝나지 않으면 `cd access_control` 부터 칩니다).
 
 ```bash
 ls
@@ -282,7 +282,7 @@ ls config
 | `report_u2.md` | 「보고서 쓰기」 레슨 |
 
 - `req_grant.py` 가 없으면 다음 레슨 「제공 파일」로 먼저 만듭니다.
-- `config` 안은 Unit 1을 마쳤을 때와 같습니다(`users.json` · `roles.json` · `exceptions.json`). 오늘은 `config` 에 새 파일을 만들지 않았습니다.
+- `config` 안은 Unit 1을 마쳤을 때와 같습니다(`users.json` · `roles.json` · `exceptions.json`). Unit 1 응용 1-4를 했다면 `users_broken.json` 도 보입니다. 오늘 핵심 실습에서는 `config` 에 새 파일을 만들지 않았습니다.
 
 **3. 깃허브에 올리기**
 
@@ -309,7 +309,7 @@ ls config
    - `.gitignore` 는 VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래에 있습니다.
    - 오늘 새로 만든 파일은 `Untracked files:` 아래에 `access_control/req_create.py` 처럼 한 줄씩 보입니다.
 3. **[보고서]** `report_u2.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
-4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
+4. **[터미널]** 먼저 Unit 1 마무리처럼 공개 전 점검 스크립트 `python check_publish.py` 를 돌려 마지막 줄이 `요약: 오류 0건, 주의 0건` 인지 봅니다. `access_control` 코드도 공개 사이트에 함께 올라가기 때문입니다. `[오류]` · `[주의]` 줄이 나오면 그 줄이 가리키는 파일을 고치고 다시 돌립니다. 그다음 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
    ```bash
    git add .
    git commit -m "Add access control unit 2 request, review, grant and report"
@@ -319,7 +319,7 @@ ls config
    - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
 
 <!-- checklist -->
-- [ ] `network-study-notes` 폴더에서 `git status` 로 `.env` · `.venv` 가 없는 것을 본 뒤 `git add .` · `git commit` · `git push` 로 올렸다
+- [ ] `network-study-notes` 폴더에서 `git status` 로 `.env` · `.venv` 가 없는 것을, `python check_publish.py` 로 `오류 0건` 을 본 뒤 `git add .` · `git commit` · `git push` 로 올렸다
 <!-- /checklist -->
 
 5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `access_control` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다.

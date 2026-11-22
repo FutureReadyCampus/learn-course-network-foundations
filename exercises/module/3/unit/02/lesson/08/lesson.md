@@ -200,7 +200,7 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
 
 **순서**
 
-0. **[터미널]** 불러 쓸 파일이 있는지 먼저 확인합니다. 마지막 줄에 `앞 파일 정상` 이 나와야 합니다(맥북은 `python3 -c "…"`).
+0. **[터미널]** 불러 쓸 파일이 있는지 먼저 확인합니다. `pwd` 가 `…/access_control` 로 끝나는지 보고(`…/network-study-notes` 면 `cd access_control`), 아래를 칩니다. 마지막 줄에 `앞 파일 정상` 이 나와야 합니다.
    ```bash
    python -c "from req_grant import grant_request; from req_sla import check_sla_breach; print('앞 파일 정상')"
    ```
@@ -210,11 +210,10 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
    | `No module named 'req_grant'` | 「제공 파일」 레슨으로 `req_grant.py` 를 만듭니다 |
    | `No module named 'req_sla'` | 응용 2-2를 먼저 해서 `req_sla.py` 와 `config/sla.json` 을 만듭니다 |
 
-1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 네 가지를 반복합니다.
-   1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
-   2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-   3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `request_flow.py` · `apply2-3_run.py` 입니다.
-   4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
+1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 세 가지를 반복합니다(시작하기 4번과 같은 방법입니다).
+   1. VS Code 왼쪽 목록에서 `access_control` 폴더를 오른쪽 클릭 › **New File** 을 누릅니다(다른 폴더를 누르면 그 폴더에 만들어집니다).
+   2. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `request_flow.py` · `apply2-3_run.py` 입니다.
+   3. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
 
 <!-- checklist optional -->
 - [ ] `access_control` 폴더에 `request_flow.py` 와 `apply2-3_run.py` 를 만들어 붙여 넣고 저장했다
@@ -226,13 +225,12 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
 - [ ] `request_flow.py` 의 `save_requests` 와 `count_by_status` 본문을 직접 썼다
 <!-- /checklist -->
 
-3. **[터미널]** 위치가 `…/access_control` 인지 확인하고 실행합니다.
+3. **[터미널]** 위치가 `…/access_control` 인지 확인하고 실행합니다. `pwd` 가 `…/network-study-notes` 로 끝나면 `cd access_control` 을 먼저 칩니다.
    ```bash
    pwd
    python apply2-3_run.py
    ```
    - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `apply2-3_run.py` 실행할 파일
-   - 맥북은 `python3 apply2-3_run.py` 로 칩니다.
 4. 출력은 세 단계입니다. 단계 1은 요청 여섯 건의 처리 결과(여섯 줄), 단계 2는 상태별 건수와 SLA 초과 요청 번호, 단계 3은 저장 함수가 리턴한 건수와 저장 결과입니다.
    - 응용 2-2에서는 SLA 초과가 1번과 5번이었지만 여기서는 5번만 나옵니다. 이 실행에서는 1번이 승인 · 부여까지 끝나 더 이상 `reviewing` 이 아니기 때문입니다.
 5. **[VS Code]** 왼쪽 목록의 `access_control` 폴더 안에 새로 생긴 `requests.json`(`access_control/requests.json`)을 열어 요청서가 한글 그대로 저장됐는지 봅니다.
@@ -243,8 +241,8 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
 
 6. **[보고서]** `access_control/report_u2.md` 의 `## 응용 2-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, `requests.json` 에 저장된 요청서가 몇 건인지와 상태별 건수를 적어 주세요.
-   - (나) [핵심 질문] 반려된 요청서(`rejected`)나 승인은 됐지만 부여하지 않은 요청서(`approved`)도 지우지 않고 `requests.json` 에 남기는 이유는 무엇인가요?
-   - (다) [핵심 질문] 상태별 건수가 `granted` 1 · `rejected` 1 · `approved` 2 · `reviewing` 2 로 나왔습니다. 이 숫자를 매일 아침 보면 처리 흐름의 어디가 막혀 있는지 어떻게 알 수 있나요?
+   - (나) 반려된 요청서(`rejected`)나 승인은 됐지만 부여하지 않은 요청서(`approved`)도 지우지 않고 `requests.json` 에 남기는 이유는 무엇인가요?
+   - (다) 상태별 건수가 `granted` 1 · `rejected` 1 · `approved` 2 · `reviewing` 2 로 나왔습니다. 이 숫자를 매일 아침 보면 처리 흐름의 어디가 막혀 있는지 어떻게 알 수 있나요?
 
 <!-- checklist optional -->
 - [ ] `report_u2.md` 의 `## 응용 2-3` 칸을 채웠다
