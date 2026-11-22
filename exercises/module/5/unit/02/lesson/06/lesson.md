@@ -115,6 +115,10 @@ failure_report.py   collect_failures        : 기록에서 「실패」로 시�
 python -c "import json; from safe_runner import safe_run_action; from enrichment import enrich_incident; from routing import decide_route, apply_route; from approvals import apply_decision; print('준비 완료', [p['id'] for p in json.load(open('config/playbook_registry.json', encoding='utf-8'))], len(json.load(open('decisions.json', encoding='utf-8'))))"
 ```
 
+<!-- checklist optional -->
+- [ ] 준비 명령을 쳐 `준비 완료 ['PB-001', 'PB-002', 'PB-003'] 3` 이 나왔다
+<!-- /checklist -->
+
 **`retry_runner.py`** — 실패를 흉내 내고 다시 시도합니다. 직접 쓰는 곳은 1 ~ 3번입니다.
 
 ```python
@@ -296,22 +300,29 @@ for item in pending:                                                            
 
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `retry_runner.py` · `flow.py` · `failure_report.py` · `apply2-2_run.py` 네 파일을 하나씩 만들고(파일 이름 그대로), 코드를 붙여 넣어 저장합니다. <mark>`audit.py` · `approvals.py` 가 완성돼 있어야(`flow.py` 가 이 두 파일을 불러오기 때문)</mark> 합니다.
 2. **[VS Code]** `retry_runner.py` 1 ~ 3번, `flow.py` 4 · 5번, `failure_report.py` 6 · 7번, `apply2-2_run.py` 8 · 9번을 씁니다. 막히면 아래 「응용 2-2 정리」를 봅니다.
+
+<!-- checklist optional -->
+- [ ] `retry_runner.py` 를 만들어 붙여 넣고 1 ~ 3번을 채운 뒤 저장했다
+- [ ] `flow.py` 를 만들어 붙여 넣고 4 · 5번을 채운 뒤 저장했다
+- [ ] `failure_report.py` 를 만들어 붙여 넣고 6 · 7번을 채운 뒤 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** 실행합니다(맥북은 `python3`).
    ```bash
    python apply2-2_run.py
    ```
 4. 출력은 여섯 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 2줄, 단계 2 도 2줄, 단계 3 은 5줄, 단계 4 는 3줄, 단계 5 는 3줄, 단계 6 은 2줄입니다. 정답의 출력은 Unit 1 실습 1-1 에서 PB-003 의 승인 값을 `담당자 승인 필요` 로 쓴 경우입니다. `자동` 으로 썼다면 INC-005 가 승인 대기 대신 바로 실행되어 단계 3 ~ 6 이 조금 다릅니다.
+
+<!-- checklist optional -->
+- [ ] `apply2-2_run.py` 를 만들어 8 · 9번을 채우고, `python apply2-2_run.py` 로 여섯 단계 출력이 나왔다
+<!-- /checklist -->
+
 5. **[보고서]** `report_u2.md` 의 `## 응용 2-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 단계 3 에서 `일부 실패` · `승인 대기` · `오탐 종료`(오탐: 위험하지 않은데 위험하다고 잘못 알린 경우) 인 알림의 번호를 각각 적어 주세요.
    - (나) [핵심 질문] 단계 1 과 2 는 같은 `run_with_retry` 인데 결과가 다릅니다. 두 단계의 `fail_plan` 값을 근거로 이유를 적어 주세요. 그리고 최대 횟수가 없으면 서비스가 계속 멈춰 있을 때 어떤 문제가 생기는지도 적어 주세요.
    - (다) [핵심 질문] 단계 3 에서 INC-001 은 계정은 잠겼는데 상태가 `조치됨` 이 아닙니다. 그 이유를 적어 주세요. 또 단계 6 의 출력이 담당자에게 무엇을 알려 주는지 적어 주세요. 마지막으로, 같은 `state` 로 다시 처리해도 `dami` 가 두 번 잠기지 않는 이유를 Unit 1 응용 1-2 의 안전장치(`safe_runner.py`)와 연결해 적어 주세요.
 
 <!-- checklist optional -->
-- [ ] 준비 명령을 쳐 `준비 완료 ['PB-001', 'PB-002', 'PB-003'] 3` 이 나왔다
-- [ ] `retry_runner.py` 를 만들어 붙여 넣고 1 ~ 3번을 채운 뒤 저장했다
-- [ ] `flow.py` 를 만들어 붙여 넣고 4 · 5번을 채운 뒤 저장했다
-- [ ] `failure_report.py` 를 만들어 붙여 넣고 6 · 7번을 채운 뒤 저장했다
-- [ ] `apply2-2_run.py` 를 만들어 8 · 9번을 채우고, `python apply2-2_run.py` 로 여섯 단계 출력이 나왔다
 - [ ] `report_u2.md` 의 `## 응용 2-2` 에 답을 썼다
 <!-- /checklist -->
 

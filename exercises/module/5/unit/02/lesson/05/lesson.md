@@ -213,22 +213,34 @@ for entry in action_log:                                                        
      ```bash
      python -c "import json; print(len(json.load(open('pending.json', encoding='utf-8'))), len(json.load(open('decisions.json', encoding='utf-8'))))"
      ```
+
+<!-- checklist optional -->
+- [ ] `pending.json` · `decisions.json` 을 만들어 붙여 넣고 확인 명령으로 `3 3` 이 나왔다
+<!-- /checklist -->
+
 2. **[VS Code]** `audit.py` 1번, `approvals.py` 2 ~ 7번, `apply2-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「응용 2-1 정리」를 봅니다.
+
+<!-- checklist optional -->
+- [ ] `audit.py` 를 골격으로 바꿔 붙여 넣고 1번을 채운 뒤 저장했다
+- [ ] `approvals.py` 를 골격으로 바꿔 붙여 넣고 2 ~ 7번을 채운 뒤 저장했다
+<!-- /checklist -->
+
 3. **[터미널]** <mark>`pwd` 가 `soar_response` 로 끝나는지</mark> 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    python apply2-1_run.py
    ```
 4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 3줄, 단계 2 도 3줄, 단계 3 은 3줄, 단계 4 는 감사 기록 4줄입니다.
+
+<!-- checklist optional -->
+- [ ] `apply2-1_run.py` 를 만들어 8 · 9번을 채우고, `python apply2-1_run.py` 로 네 단계 출력이 나왔다
+<!-- /checklist -->
+
 5. **[보고서]** `report_u2.md` 의 `## 응용 2-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 처리 뒤 티켓 수 · 담당자 알림 수 · `분류됨` 으로 남은 알림의 번호를 각각 적어 주세요.
    - (나) [핵심 질문] INC-005 는 결정이 `승인` 인데 실행되지 않았습니다. 단계 2 와 단계 4 의 출력을 근거로 그 이유를 적어 주세요. 그리고 권한 확인이 없을 때 생길 위험도 적어 주세요.
    - (다) [핵심 질문] INC-003 이 승인 대기가 된 이유(단계 1), 거절된 뒤의 상태, 감사 기록에 남은 내용을 각각 적어 주세요.
 
 <!-- checklist optional -->
-- [ ] `pending.json` · `decisions.json` 을 만들어 붙여 넣고 확인 명령으로 `3 3` 이 나왔다
-- [ ] `audit.py` 를 골격으로 바꿔 붙여 넣고 1번을 채운 뒤 저장했다
-- [ ] `approvals.py` 를 골격으로 바꿔 붙여 넣고 2 ~ 7번을 채운 뒤 저장했다
-- [ ] `apply2-1_run.py` 를 만들어 8 · 9번을 채우고, `python apply2-1_run.py` 로 네 단계 출력이 나왔다
 - [ ] `report_u2.md` 의 `## 응용 2-1` 에 답을 썼다
 <!-- /checklist -->
 

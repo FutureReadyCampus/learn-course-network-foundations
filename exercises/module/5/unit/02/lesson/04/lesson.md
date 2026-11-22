@@ -173,28 +173,37 @@ print("조치 기록:", len(load_json("containment_log.json")), "건")          
 **순서**
 
 1. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `session_actions.py` · `containment.py` · `exercise2-2_run.py` 를 하나씩 그대로 적어 세 개의 파일을 만듭니다. 각 파일에 이 페이지의 코드 상자를 복사해 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
+
+<!-- checklist -->
+- [ ] `exercise2-2_run.py` 를 만들어 코드 상자를 붙여 넣고 저장했다
+<!-- /checklist -->
+
 2. **[터미널]** **채우기 전에** 한 번 실행해 단계 2 · 3 을 봅니다(맥북은 `python3`).
    ```bash
    python exercise2-2_run.py
    ```
 3. **[VS Code]** `session_actions.py` 의 ①, `containment.py` 의 ② · ③ 을 씁니다. 위 「직접 쓰는 곳」의 확인과 맞춰 봅니다.
+
+<!-- checklist -->
+- [ ] `session_actions.py` 를 만들어 코드 상자를 붙여 넣고 ① 을 채운 뒤 저장했다
+- [ ] `containment.py` 를 만들어 코드 상자를 붙여 넣고 ② · ③ 을 채운 뒤 저장했다
+<!-- /checklist -->
+
 4. **[터미널]** 다시 실행합니다. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 1줄, 단계 2 는 5줄, 단계 3 은 2줄, 단계 4 는 2줄입니다. 실행하면 `containment_state.json` 과 `containment_log.json` 이 이번 실행의 결과로 바뀝니다. <mark>Unit 3 실습 3-1 이 이 두 파일을 읽으니 지우지 않습니다.</mark>
    ```bash
    python exercise2-2_run.py
    ```
+
+<!-- checklist -->
+- [ ] `python exercise2-2_run.py` 를 채우기 전과 후에 실행해, 단계 3 에 `빈틈이 남은 계정: []`, 단계 4 에 `조치 기록: 5 건` 이 나왔다
+<!-- /checklist -->
+
 5. **[보고서]** `report_u2.md` 의 `## 실습 2-2` 아래를 채웁니다.
    - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 단계 3 에서 빈틈이 남은 계정과 단계 4 의 잠긴 계정을 적어 주세요.
    - (나) [응용] 단계 1 에서 `junho` 가 점검에서 발견된 이유를 적어 주세요. 그리고 `dami` 가 단계 2 에서 받은 두 가지 조치와, 잠금만 했다면 유효하게 남았을 접속(세션)을 적어 주세요.
    - (다) [핵심 질문] `gaeun` 은 잠금도 세션 종료도 받지 않았습니다. `containment.py` ② 의 `if` 조건과 단계 2 의 출력 줄을 근거로 그 이유를 적어 주세요. 그리고 잠금이 적용되지 않은 계정의 세션을 종료하면 안 되는 이유도 적어 주세요.
 
 **확인** — 단계 2 가 다섯 줄(`dami` 잠금 · 세션 종료, `gaeun` 변경 없음, `junho` 잠김 → 잠김 · 세션 종료)이고, 단계 3 이 `빈틈이 남은 계정: []`, 단계 4 가 `잠긴 계정: ['junho', 'dami']` · `조치 기록: 5 건` 이면 성공입니다. 안 나오면 「정답」 레슨의 실습 2-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
-
-<!-- checklist -->
-- [ ] `session_actions.py` 를 만들어 코드 상자를 붙여 넣고 ① 을 채운 뒤 저장했다
-- [ ] `containment.py` 를 만들어 코드 상자를 붙여 넣고 ② · ③ 을 채운 뒤 저장했다
-- [ ] `exercise2-2_run.py` 를 만들어 코드 상자를 붙여 넣고 저장했다
-- [ ] `python exercise2-2_run.py` 를 채우기 전과 후에 실행해, 단계 3 에 `빈틈이 남은 계정: []`, 단계 4 에 `조치 기록: 5 건` 이 나왔다
-<!-- /checklist -->
 
 ## 실습 2-2 정리
 
@@ -233,6 +242,10 @@ python -c "import json; print(json.load(open('containment_state.json', encoding=
 - 마지막 줄은 <mark>`['junho', 'dami'] 5`</mark> 여야 합니다. 실습 2-2 가 저장한 상태(잠긴 계정 두 개 · 조치 기록 5건)이고, Unit 3 실습 3-1 이 이 상태에서 시작합니다.
   - 다른 값이 나오면(예: 응용 2-3 을 실습 2-2 뒤에 실행해 `['junho'] 4` 가 나옴) `python exercise2-2_run.py` 를 한 번 더 실행하고 다시 확인합니다. 응용 실행 파일도 같은 두 파일에 결과를 저장하기 때문입니다.
 
+<!-- checklist optional -->
+- [ ] `soar_response` 폴더에서 파일 확인 명령을 쳐 마지막 줄에 `['junho', 'dami'] 5` 가 나왔다
+<!-- /checklist -->
+
 **3. 깃허브에 올리기**
 
 1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/network-study-notes` 으로 끝나야 합니다.
@@ -259,17 +272,20 @@ python -c "import json; print(json.load(open('containment_state.json', encoding=
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
    - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
+
+<!-- checklist optional -->
+- [ ] `network-study-notes` 폴더에서 `git status` 로 `.env` · `.venv` 가 목록에 없는 것을 본 뒤 `git add .` · `git commit` · `git push` 로 올렸다
+<!-- /checklist -->
+
 5. **[브라우저]** 깃허브의 내 저장소 `network-study-notes` 를 새로 고쳐 `soar_response` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
+
+<!-- checklist optional -->
+- [ ] 깃허브의 `network-study-notes` 저장소 `soar_response` 폴더에 2번에서 본 파일이 모두 보였다
+<!-- /checklist -->
 
 - 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 2 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다. 올리기 전에 2번의 마지막 줄이 `['junho', 'dami'] 5` 인지 다시 봅니다.
 
 **확인** — 2번 마지막 줄이 `['junho', 'dami'] 5` 이고, 깃허브의 `soar_response` 폴더에 2번에서 본 파일이 모두 보이면 성공입니다. 안 보이면 3번의 `git status` 부터 다시 합니다.
-
-<!-- checklist optional -->
-- [ ] `soar_response` 폴더에서 파일 확인 명령을 쳐 마지막 줄에 `['junho', 'dami'] 5` 가 나왔다
-- [ ] `network-study-notes` 폴더에서 `git status` 로 `.env` · `.venv` 가 목록에 없는 것을 본 뒤 `git add .` · `git commit` · `git push` 로 올렸다
-- [ ] 깃허브의 `network-study-notes` 저장소 `soar_response` 폴더에 2번에서 본 파일이 모두 보였다
-<!-- /checklist -->
 
 **4. 이어지는 곳**
 
