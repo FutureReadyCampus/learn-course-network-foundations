@@ -19,7 +19,7 @@ source:
 >
 > A사 보안 담당이 보낸 메시지: 「승인한 요청서를 제가 직접 예외 파일에 옮겨 적으면 실수가 납니다. 예외 번호를 겹치게 적거나, 만료 시각을 잘못 옮기거나, 하나를 빠뜨립니다. 승인된 요청서를 코드가 정책으로 한 번 더 확인하고, 통과한 것만 예외 권한을 부여하게 해 주세요. 어느 예외를 부여했는지도 요청서에 남겨 주세요.」
 > - 이 실습에서 하는 일: 승인된 요청서를 `rbac.py` 의 `check_permission` 으로 한 번 더 확인하고, 통과하면 예외를 만들어 `EXCEPTIONS` 에 추가하는 함수 `grant_request` 를 직접 씁니다. 부여 전과 후에 `policy.py` 의 `evaluate_access` 로 판정해 비교합니다. 「제공 파일」로 받은 `req_grant.py` 를 내가 직접 쓰는 응용입니다.
-> - 끝나면 쓰는 것: 보고서 (가)~(다) 답
+> - 끝나면 쓰는 것: 문제 해결 기록 (가)~(다) 답
 
 ## 왜 승인 뒤에 정책으로 다시 확인하는가
 
@@ -116,7 +116,8 @@ print(exceptions)                                                  # 세 건이 
 
 ```python
 from rbac import check_permission                                # rbac.py 의 역할 판정 함수를 불러온다
-from exception_policy import EXCEPTIONS                          # exception_policy.py 의 예외 리스트를 불러온다
+# exception_policy.py 의 예외 리스트를 불러온다
+from exception_policy import EXCEPTIONS
 
 
 def grant_request(request):                                      # 요청서를 받는 함수
@@ -156,7 +157,8 @@ from policy import evaluate_access                               # policy.py 의
 
 NOW = datetime.strptime("2026-10-23 10:00", "%Y-%m-%d %H:%M")    # 오늘 실습의 지금 시각(고정)
 
-INBOX = [                                                        # 접수에 성공하는 요청 네 건. (요청자, 자원, 행위, 희망 만료 시각, 이유, 접수 시각)
+# 접수에 성공하는 요청 네 건. (요청자, 자원, 행위, 희망 만료 시각, 이유, 접수 시각)
+INBOX = [
     ("seoyeon", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 대조 지원", "2026-10-23 08:30"),
     ("gaeun", "SALES", "QUERY", "2026-10-28 18:00", "감사 자료 대응", "2026-10-23 08:40"),
     ("dami", "SALES", "QUERY", "2026-10-27 18:00", "인수인계 자료 확인", "2026-10-23 08:50"),
@@ -179,7 +181,8 @@ def show(title):                                                 # 제목을 받
         resource = request["resource"]                           # 자원
         action = request["action"]                               # 행위
         is_allowed, reason = evaluate_access(user, resource, action, NOW)   # 23일 10:00 의 최종 판정을 받는다
-        print(request["id"], request["user"], request["permission"], "->", is_allowed, reason)   # 요청 번호 · 요청자 · 권한 -> 판정 을 출력한다
+        # 요청 번호 · 요청자 · 권한 -> 판정 을 출력한다
+        print(request["id"], request["user"], request["permission"], "->", is_allowed, reason)
 
 
 show("단계 1: 판정 - 부여 전")                                     # 부여하기 전의 판정을 본다
@@ -187,7 +190,8 @@ show("단계 1: 판정 - 부여 전")                                     # 부�
 print("--- 단계 2: 부여 - 요청서마다 부여를 시도한다")                # 단계 2 시작을 알리는 줄
 for request in REQUESTS:                                         # 요청서를 하나씩 꺼낸다
     is_allowed, result = grant_request(request)                          # 부여를 시도한다
-    print(request["id"], request["user"], request["status"], "->", is_allowed, result)   # 요청 번호 · 요청자 · 상태 -> 결과 를 출력한다
+    # 요청 번호 · 요청자 · 상태 -> 결과 를 출력한다
+    print(request["id"], request["user"], request["status"], "->", is_allowed, result)
 
 for request in REQUESTS:                                         # 요청서를 하나씩 꺼낸다
     if "exception_id" in request:                                # exception_id 키가 있는 요청서(부여된 것)만
@@ -224,7 +228,7 @@ show("단계 3: 점검 - 부여 후")                                     # 부�
 - [ ] `python apply2-1_run.py` 를 실행해 세 단계 출력과 `부여된 예외 번호:` 한 줄이 나왔다
 <!-- /checklist -->
 
-5. **[보고서]** `access_control/report_u2.md` 의 `## 응용 2-1` 아래를 채웁니다.
+5. **[문제 해결 기록]** `access_control/report_u2.md` 의 `## 응용 2-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 부여를 시도한 네 건이 각각 어떻게 됐는지 적어 주세요.
    - (나) 승인자가 승인한 3번 요청(`dami`)을 코드가 부여하지 않았습니다. 코드의 이 확인이 없었다면 어떤 일이 생겼을까요? 승인자가 이 문제를 미리 막기 어려운 이유도 적어 주세요.
    - (다) 부여한 예외의 만료 시각에는 요청서의 희망 만료 시각을 그대로 썼습니다. 그 시각이 지나면 이 예외는 어떻게 될까요? 만료된 예외를 정리하는 점검은 누가 얼마나 자주 하면 좋을까요?

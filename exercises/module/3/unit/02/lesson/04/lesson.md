@@ -17,7 +17,7 @@ source:
 >
 > A사 보안 담당이 보낸 메시지: 「접수된 요청서를 제가 하나씩 보고 승인하거나 반려합니다. 그런데 같은 요청서를 실수로 두 번 승인하거나, 이미 반려한 요청서를 나중에 승인하는 일이 생기면 안 됩니다. 검토 중인 요청서만 처리되게 하고, 누가 처리했는지도 요청서에 남겨 주세요. 요청한 본인이 자기 요청을 처리하는 일도 막아 주세요.」
 > - 이 실습에서 하는 일: 승인 함수 `approve_request` 와 반려 함수 `reject_request` 를 `req_review.py` 에 만듭니다. 대부분은 미리 채워 두었고, 승인 함수의 상태 검사 두 줄만 직접 씁니다. 본인 요청과 두 번째 처리를 시도해 막히는 것을 확인합니다.
-> - 끝나면 쓰는 것: 보고서 (가) · (나) 답. (다)는 여유가 되면 하는 응용입니다
+> - 끝나면 쓰는 것: 문제 해결 기록 (가) · (나) 답. (다)는 여유가 되면 하는 응용입니다
 
 ## 왜 처리 순서와 처리자를 남기는가
 
@@ -85,8 +85,10 @@ reviewing
 
 ```python
 request = {"id": 1, "status": "reviewing"}                          # 요청서 한 장. approver 키는 아직 없다
-print(request.get("approver"))                                     # 없는 키를 .get 으로 꺼내면 오류 없이 None(값 없음)이 나온다
-print(request["approver"])                                         # 없는 키를 [ ] 로 꺼내면 KeyError 오류가 나고 프로그램이 멈춘다
+# 없는 키를 .get 으로 꺼내면 오류 없이 None(값 없음)이 나온다
+print(request.get("approver"))
+# 없는 키를 [ ] 로 꺼내면 KeyError 오류가 나고 프로그램이 멈춘다
+print(request["approver"])
 ```
 
 실행 결과:
@@ -157,7 +159,8 @@ def reject_request(request, approver):                           # 요청서와 
 from req_create import REQUESTS, create_request                  # 실습 2-1에서 만든 요청서 함수와 리스트를 불러온다
 from req_review import approve_request, reject_request           # 방금 만든 승인 · 반려 함수를 불러온다
 
-INBOX = [                                                        # 접수에 성공하는 요청 네 건. (요청자, 자원, 행위, 희망 만료 시각, 이유, 접수 시각)
+# 접수에 성공하는 요청 네 건. (요청자, 자원, 행위, 희망 만료 시각, 이유, 접수 시각)
+INBOX = [
     ("seoyeon", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 대조 지원", "2026-10-23 08:30"),
     ("gaeun", "SALES", "QUERY", "2026-10-28 18:00", "감사 자료 대응", "2026-10-23 08:40"),
     ("dami", "SALES", "QUERY", "2026-10-27 18:00", "인수인계 자료 확인", "2026-10-23 08:50"),
@@ -166,7 +169,8 @@ INBOX = [                                                        # 접수에 성
 for user, resource, action, until, reason, received_at in INBOX:         # 요청을 하나씩 꺼내
     create_request(user, resource, action, until, reason, received_at)   # 접수한다(결과는 쓰지 않는다)
 
-DECISIONS = [                                                    # 보안 담당(security_manager)이 내리는 처리 여섯 건. (요청 번호, 처리)
+# 보안 담당(security_manager)이 내리는 처리 여섯 건. (요청 번호, 처리)
+DECISIONS = [
     (1, "승인"),                                                 # seoyeon 의 정산 조회
     (2, "반려"),                                                 # gaeun 의 영업 실적 조회
     (3, "승인"),                                                 # dami 의 영업 실적 조회
@@ -176,19 +180,24 @@ DECISIONS = [                                                    # 보안 담당
 ]
 
 print("--- 단계 1: 처리 - 본인 요청 시험 한 건, 승인 · 반려 여섯 건을 처리한다")   # 단계 1 시작을 알리는 줄
-is_success, result = approve_request(REQUESTS[0], "seoyeon")             # 요청자 seoyeon 이 자기 요청 1번을 스스로 승인해 본다
-print(1, "본인 승인 ->", is_success, result)                              # 요청 번호 · 처리 -> 성공 여부 · 이유 를 출력한다
+# 요청자 seoyeon 이 자기 요청 1번을 스스로 승인해 본다
+is_success, result = approve_request(REQUESTS[0], "seoyeon")
+# 요청 번호 · 처리 -> 성공 여부 · 이유 를 출력한다
+print(1, "본인 승인 ->", is_success, result)
 for number, decision in DECISIONS:                               # 처리를 하나씩 꺼낸다
-    request = REQUESTS[number - 1]                               # 요청 번호로 요청서를 찾는다(번호는 1부터, 리스트 자리는 0부터)
+    # 요청 번호로 요청서를 찾는다(번호는 1부터, 리스트 자리는 0부터)
+    request = REQUESTS[number - 1]
     if decision == "승인":                                       # 승인이면
         is_success, result = approve_request(request, "security_manager")  # 승인 함수를 호출한다
     else:                                                        # 반려면
         is_success, result = reject_request(request, "security_manager")  # 반려 함수를 호출한다
-    print(number, decision, "->", is_success, result)                    # 요청 번호 · 처리 -> 성공 여부 · 이유 를 출력한다
+    # 요청 번호 · 처리 -> 성공 여부 · 이유 를 출력한다
+    print(number, decision, "->", is_success, result)
 
 print("--- 단계 2: 점검 - 요청서 리스트")                            # 단계 2 시작을 알리는 줄
 for request in REQUESTS:                                         # 요청서를 하나씩 꺼낸다
-    print(request["id"], request["user"], request["status"], request.get("approver"))   # 번호 · 요청자 · 상태 · 처리한 사람을 출력한다
+    # 번호 · 요청자 · 상태 · 처리한 사람을 출력한다
+    print(request["id"], request["user"], request["status"], request.get("approver"))
 ```
 
 **직접 쓰는 곳**
@@ -233,7 +242,7 @@ for request in REQUESTS:                                         # 요청서를 
 - [ ] `req_review.py` 의 빈칸 ① · ② 를 채우고 다시 실행해 마지막 두 줄이 `False 검토 중이 아님` 으로 나왔다
 <!-- /checklist -->
 
-5. **[보고서]** `access_control/report_u2.md` 에 씁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다). (가) · (나)는 `## 실습 2-2` 아래에, (다)는 `## 실습 응용 질문` 의 `2-2 (다)` 칸에 씁니다.
+5. **[문제 해결 기록]** `access_control/report_u2.md` 에 씁니다(문제 해결 기록 파일은 「문제 해결 기록 쓰기」 레슨에서 만듭니다). (가) · (나)는 `## 실습 2-2` 아래에, (다)는 `## 실습 응용 질문` 의 `2-2 (다)` 칸에 씁니다.
    - (가) [핵심 질문] 채운 뒤 실행한 출력 전체를 붙여 넣고, 막힌 세 줄이 각각 왜 막혔는지 적어 주세요.
    - (나) [핵심 질문] 이미 승인한 요청서를 다시 승인하지 못하게 막는 이유는 무엇인가요? 막지 않으면 어떤 일이 생길 수 있나요?
    - (다) [응용] `approve_request` 에서 `request["user"] == approver` 검사를 뺀다면 어떤 위험이 생길까요? 요청자가 친구에게 대신 승인해 달라고 부탁하면 이 검사로는 막을 수 없습니다. 이런 경우를 막으려면 무엇이 더 필요할까요?

@@ -19,7 +19,7 @@ source:
 >
 > A사 관제 담당(요청이 정해진 시간 안에 처리되는지 지켜보는 사람)이 보낸 메시지: 「요청서를 접수해 놓고 승인자가 처리를 미루는 일이 있습니다. 그러면 권한이 필요한 직원은 일을 못 하고 메신저로 계속 재촉합니다. 리스트를 눈으로 훑어서는 오래된 요청을 놓치기 쉽습니다. 접수한 지 4시간이 지났는데도 아직 검토 중인 요청서를 찾아서 알려 주세요.」
 > - 이 실습에서 하는 일: 접수한 지 정해진 시간(SLA, 오늘은 4시간)이 지났는데도 아직 검토 중인 요청서를 찾는 함수 `check_sla_breach` 를 직접 씁니다. 요청서 여섯 장 가운데 어느 것이 몇 시간 지났는지 읽습니다.
-> - 끝나면 쓰는 것: 보고서 (가)~(다) 답
+> - 끝나면 쓰는 것: 문제 해결 기록 (가)~(다) 답
 
 ## 왜 처리 기한을 점검하는가
 
@@ -71,7 +71,8 @@ requested = datetime.strptime("2026-10-23 09:15", "%Y-%m-%d %H:%M")   # 접수 �
 now = datetime.strptime("2026-10-23 14:00", "%Y-%m-%d %H:%M")         # 지금 시각
 gap = now - requested                                               # 시각에서 시각을 빼면 「걸린 시간」이 나온다
 seconds = gap.total_seconds()                                    # 시간 차이를 초 단위 숫자로 바꾼다
-print(seconds)                                                   # 걸린 시간을 전부 초로 센 숫자다(4시간 45분 = 17100초)
+# 걸린 시간을 전부 초로 센 숫자다(4시간 45분 = 17100초)
+print(seconds)
 ```
 
 실행 결과:
@@ -111,8 +112,10 @@ print(hours)                                                     # 1시간은 36
 ```python
 request = {"id": 1, "status": "reviewing"}                          # 요청서 한 장
 
-overdue = request.copy()                                            # .copy() 는 딕셔너리를 복사한 새 딕셔너리를 만든다
-overdue["wait_hours"] = round(4.26, 1)                              # 복사본에만 키를 추가한다. round(숫자, 1) 은 소수 첫째 자리까지 반올림한다
+# .copy() 는 딕셔너리를 복사한 새 딕셔너리를 만든다
+overdue = request.copy()
+# 복사본에만 키를 추가한다. round(숫자, 1) 은 소수 첫째 자리까지 반올림한다
+overdue["wait_hours"] = round(4.26, 1)
 
 print(request)                                                      # 원래 요청서는 그대로다
 print(overdue)                                                      # 복사본에만 wait_hours 키가 생겼다
@@ -153,8 +156,10 @@ print(overdue)                                                      # 복사본�
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
-from config_loader import load_json                              # config_loader.py 의 안전한 읽기 함수를 불러온다
-from exception_policy import TIME_FORMAT                         # 시각 문자열의 형식("%Y-%m-%d %H:%M")을 불러온다
+# config_loader.py 의 안전한 읽기 함수를 불러온다
+from config_loader import load_json
+# 시각 문자열의 형식("%Y-%m-%d %H:%M")을 불러온다
+from exception_policy import TIME_FORMAT
 
 SLA_HOURS = load_json("config/sla.json", {"hours": 4})["hours"]  # 처리 기한(시간). 파일이 없거나 깨졌으면 기본값 4
 
@@ -200,13 +205,19 @@ from req_sla import SLA_HOURS, check_sla_breach                  # 방금 만든
 
 NOW = datetime.strptime("2026-10-23 14:00", "%Y-%m-%d %H:%M")    # 이번 실습의 지금 시각(고정)
 
-INBOX = [                                                        # 오늘 들어온 요청 여섯 건. (요청자, 자원, 행위, 희망 만료 시각, 이유, 접수 시각)
-    ("seoyeon", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 대조 지원", "2026-10-23 08:30"),    # 08:30 에 접수한 요청
-    ("gaeun", "SALES", "QUERY", "2026-10-28 18:00", "감사 자료 대응", "2026-10-23 10:30"),       # 10:30 에 접수한 요청
+# 오늘 들어온 요청 여섯 건. (요청자, 자원, 행위, 희망 만료 시각, 이유, 접수 시각)
+INBOX = [
+    # 08:30 에 접수한 요청
+    ("seoyeon", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 대조 지원", "2026-10-23 08:30"),
+    # 10:30 에 접수한 요청
+    ("gaeun", "SALES", "QUERY", "2026-10-28 18:00", "감사 자료 대응", "2026-10-23 10:30"),
     ("dami", "SALES", "QUERY", "2026-10-27 18:00", "인수인계 자료 확인", "2026-10-23 12:00"),    # 낮에 접수한 요청
-    ("junho", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 확인", "2026-10-23 09:00"),           # 나중에 승인해서 처리가 끝나게 될 요청
-    ("seoyeon", "ACCOUNT", "QUERY", "2026-10-27 18:00", "계정 권한 점검", "2026-10-23 07:50"),   # 07:50 에 접수한 요청
-    ("tester", "SALES", "QUERY", "2026-10-27 18:00", "시험 계정 확인", "2026-10-23 10:00"),      # 10:00 정각에 접수한 요청
+    # 나중에 승인해서 처리가 끝나게 될 요청
+    ("junho", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 확인", "2026-10-23 09:00"),
+    # 07:50 에 접수한 요청
+    ("seoyeon", "ACCOUNT", "QUERY", "2026-10-27 18:00", "계정 권한 점검", "2026-10-23 07:50"),
+    # 10:00 정각에 접수한 요청
+    ("tester", "SALES", "QUERY", "2026-10-27 18:00", "시험 계정 확인", "2026-10-23 10:00"),
 ]
 for user, resource, action, until, reason, received_at in INBOX:         # 요청을 하나씩 꺼내
     create_request(user, resource, action, until, reason, received_at)   # 접수한다
@@ -214,11 +225,21 @@ approve_request(REQUESTS[3], "security_manager")                 # 4번(junho)�
 
 print("--- 단계 1: 현황 - SLA 시간", SLA_HOURS, "시간, 지금 14:00")   # 단계 1 시작을 알리는 줄
 for request in REQUESTS:                                         # 요청서를 하나씩 꺼낸다
-    print(request["id"], request["user"], request["status"], request["requested_at"])   # 번호 · 요청자 · 상태 · 접수 시각을 출력한다
+    # 번호 · 요청자 · 상태 · 접수 시각을 출력한다
+    print(request["id"], request["user"], request["status"], request["requested_at"])
 
 print("--- 단계 2: 판정 - SLA 를 초과한 요청")                       # 단계 2 시작을 알리는 줄
 for request in check_sla_breach(REQUESTS, NOW):                  # 기한을 초과한 요청서를 하나씩 꺼낸다
-    print(request["id"], request["user"], "접수", request["requested_at"], "->", request["wait_hours"], "시간 지남")   # 번호 · 요청자 · 접수 시각 · 지난 시간을 출력한다
+    # 번호 · 요청자 · 접수 시각 · 지난 시간을 출력한다
+    print(
+        request["id"],
+        request["user"],
+        "접수",
+        request["requested_at"],
+        "->",
+        request["wait_hours"],
+        "시간 지남"
+    )
 ```
 
 **순서**
@@ -254,7 +275,7 @@ for request in check_sla_breach(REQUESTS, NOW):                  # 기한을 초
 - [ ] `python apply2-2_run.py` 를 실행해 요청서 현황 여섯 줄과 기한 초과 요청이 나왔다
 <!-- /checklist -->
 
-6. **[보고서]** `access_control/report_u2.md` 의 `## 응용 2-2` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
+6. **[문제 해결 기록]** `access_control/report_u2.md` 의 `## 응용 2-2` 아래를 채웁니다(문제 해결 기록 파일은 「문제 해결 기록 쓰기」 레슨에서 만듭니다).
    - (가) 실행한 출력 전체를 붙여 넣고, 접수한 뒤 4시간을 초과한 요청이 몇 번인지, 접수한 뒤 몇 시간이 지났는지 적어 주세요.
    - (나) 승인자(`security_manager`)가 4시간을 초과하도록 처리하지 않은 요청을 찾았다면, 관제 담당은 누구에게 어떤 조치를 하면 좋을까요? 알림만 보낼 때와 윗사람에게 넘길 때(에스컬레이션)는 어떤 기준(예: 얼마나 더 지났을 때)으로 나누면 좋을까요?
    - (다) 상태(`reviewing` 인지)는 확인하지 않고 접수 시각만 보고 기한을 따진다면, 리스트에 어떤 문제가 생기나요? 그 리스트를 받은 사람은 무엇이 곤란할까요?
