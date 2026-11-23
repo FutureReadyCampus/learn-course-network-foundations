@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 429" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<title>승인·반려 함수는 검토 중인지, 본인 요청인지 확인한 뒤에만 상태를 바꾼다</title>
+<desc>요청서가 reviewing 이 아니면 (False, "검토 중이 아님"), 요청한 사람이 approver 와 같으면 (False, "본인 요청은 처리할 수 없음")을 리턴하고 상태를 바꾸지 않습니다. 두 검사를 통과해야 status 를 approved 또는 rejected 로 바꾸고 approver 를 적은 뒤 (True, "승인") 또는 (True, "반려")를 리턴합니다.</desc>
+<defs><marker id="a-f01-0403" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
+<text x="24" y="30" font-size="18" fill="#292929" font-weight="700">승인 · 반려 함수가 처리하는 순서</text>
+<rect x="24" y="50" width="350" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="199" y="73" font-size="14" fill="#292929" text-anchor="middle">approve_request(request, approver)</text>
+<text x="199" y="92" font-size="14" fill="#292929" text-anchor="middle">reject_request(request, approver)</text>
+<line x1="199" y1="106" x2="199" y2="130" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0403)"/>
+<rect x="24" y="132" width="350" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="199" y="155" font-size="14" fill="#292929" text-anchor="middle">request["status"] 가</text>
+<text x="199" y="174" font-size="14" fill="#292929" text-anchor="middle">"reviewing" 인가?</text>
+<rect x="470" y="132" width="230" height="56" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="585" y="155" font-size="14" fill="#292929" text-anchor="middle">(False, "검토 중이 아님")</text>
+<text x="585" y="174" font-size="14" fill="#666660" text-anchor="middle">상태를 바꾸지 않는다</text>
+<path d="M374 160H468" stroke="#666660" stroke-width="1.6" fill="none" marker-end="url(#a-f01-0403)"/>
+<text x="422" y="153" font-size="14" fill="#292929" text-anchor="middle">아님</text>
+<line x1="199" y1="188" x2="199" y2="212" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0403)"/>
+<text x="209" y="206" font-size="14" fill="#666660">맞음</text>
+<rect x="24" y="214" width="350" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="199" y="237" font-size="14" fill="#292929" text-anchor="middle">요청한 사람(request["user"])이</text>
+<text x="199" y="256" font-size="14" fill="#292929" text-anchor="middle">approver 와 같은가?</text>
+<rect x="470" y="204.5" width="230" height="75" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="585" y="227.5" font-size="14" fill="#292929" text-anchor="middle">(False, "본인 요청은</text>
+<text x="585" y="246.5" font-size="14" fill="#292929" text-anchor="middle">처리할 수 없음")</text>
+<text x="585" y="265.5" font-size="14" fill="#666660" text-anchor="middle">상태를 바꾸지 않는다</text>
+<path d="M374 242H468" stroke="#666660" stroke-width="1.6" fill="none" marker-end="url(#a-f01-0403)"/>
+<text x="422" y="235" font-size="14" fill="#292929" text-anchor="middle">같음</text>
+<line x1="199" y1="270" x2="199" y2="294" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0403)"/>
+<text x="209" y="288" font-size="14" fill="#666660">다름</text>
+<rect x="24" y="296" width="350" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="199" y="319" font-size="14" fill="#292929" text-anchor="middle">status 를 "approved" (또는 "rejected") 로</text>
+<text x="199" y="338" font-size="14" fill="#292929" text-anchor="middle">바꾸고 approver 를 적는다</text>
+<line x1="199" y1="352" x2="199" y2="376" stroke="#666660" stroke-width="1.6" marker-end="url(#a-f01-0403)"/>
+<rect x="24" y="378" width="350" height="37" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="199" y="401" font-size="14" fill="#292929" text-anchor="middle">(True, "승인")  또는  (True, "반려")</text>
+</svg>

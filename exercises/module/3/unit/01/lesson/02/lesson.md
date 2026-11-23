@@ -308,6 +308,8 @@ JSON 을 쓸 때 지킬 규칙입니다.
 
 > **확인** — `python -m json.tool` 로 `users.json` 은 여섯 명, `roles.json` 은 역할 다섯 개가 오류 없이 다시 출력되면 성공입니다. `Expecting …` · `Illegal trailing comma …` 같은 오류가 나오면 그 줄 번호 근처의 쉼표 · 따옴표 · `true` 를 고치고 다시 확인합니다.
 
+<!-- answer: 11|실습 1-1 정답 -->
+
 ## 실습 1-1 정리
 
 | 하려는 일 | 말 · 명령 |

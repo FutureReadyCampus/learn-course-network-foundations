@@ -263,6 +263,8 @@ for request in check_sla_breach(REQUESTS, NOW):                  # 기한을 초
 - [ ] `report_u2.md` 의 `## 응용 2-2` 칸을 채웠다
 <!-- /checklist -->
 
+<!-- answer: 09|응용 2-2 정답 -->
+
 ## 응용 2-2 정리
 
 | 하려는 일 | 코드 · 말 |

@@ -590,6 +590,17 @@ def markdown_pages(path: Path, lesson_meta: dict | None = None) -> list[dict]:
     pages = []
     for i, (title, body) in enumerate(sections, 1):
         text, checklist = split_checklist("\n".join(body), md)
+
+        def answer(match):
+            source = path.parent.parent / match.group(1) / "lesson.md"
+            if source == path or not source.is_file():
+                raise ValueError(f"Answer lesson not found: {source}")
+            matches = [page for page in markdown_pages(source) if page["title"] == match.group(2)]
+            if len(matches) != 1:
+                raise ValueError(f"Answer page not found or duplicated: {match.group(2)} in {source}")
+            return f'<details class="exercise-answer"><summary>정답과 해설 보기</summary>{matches[0]["html"]}</details>'
+
+        text = re.sub(r"(?m)^<!-- answer: (\d{2})\|(.*?) -->$", answer, text)
         page = {"title": title, "paragraphs": [], "html": figure(i) + inline_figures(iconize(md.render(expand_includes(text)))), "terms": [], "questions": []}
         if checklist:
             page["checklist"] = checklist
