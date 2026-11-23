@@ -162,7 +162,8 @@ def find_exception(user, permission, now):                       # 사용자 · 
 ```python
 import json                                                      # 사용자 파일을 읽는 데 쓴다
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
-from exception_policy import find_exception, EXCEPTIONS, TIME_FORMAT   # 판정 함수 · 예외 리스트 · 시각 형식을 불러온다
+# 판정 함수 · 예외 리스트 · 시각 형식을 불러온다
+from exception_policy import find_exception, EXCEPTIONS, TIME_FORMAT
 
 NOW = datetime.strptime("2026-10-22 14:00", TIME_FORMAT)         # 오늘 실습의 지금 시각(고정)
 
@@ -177,7 +178,8 @@ CHECKS = [                                                       # 단계 1 에�
 
 print("--- 단계 1: 판정 - 지금 유효한 예외가 있나")                 # 단계 1 시작을 알리는 줄
 for user, permission in CHECKS:                                  # 하나씩 꺼낸다
-    print(user, permission, "->", find_exception(user, permission, NOW))   # 사용자 권한 -> (결과, 번호) 를 출력한다
+    # 사용자 권한 -> (결과, 번호) 를 출력한다
+    print(user, permission, "->", find_exception(user, permission, NOW))
 
 with open("config/users.json", encoding="utf-8") as users_file:           # 실습 1-1에서 만든 사용자 파일을 연다
     USERS = json.load(users_file)                                         # 사용자 → 정보 딕셔너리로 읽는다
@@ -187,11 +189,33 @@ for exception in EXCEPTIONS:                                           # 예외�
     user_info = USERS[exception["user"]]                               # 그 예외를 받은 사용자의 정보 딕셔너리를 꺼낸다
     expires = datetime.strptime(exception["expires"], TIME_FORMAT)     # 만료 시각을 시각으로 바꾼다
     if NOW >= expires:                                           # 이미 만료됐으면
-        print("[회수] 만료됨", exception["id"], exception["user"], exception["permission"], exception["expires"])   # 만료된 예외를 출력한다
-    elif not user_info["employed"]:                              # 만료 전인데 재직 중이 아니면(`not` 은 참 · 거짓을 뒤집음)
-        print("[회수] 퇴사자", exception["id"], exception["user"], exception["permission"], exception["expires"])   # 퇴사자의 예외를 출력한다
+        # 만료된 예외를 출력한다
+        print(
+            "[회수] 만료됨",
+            exception["id"],
+            exception["user"],
+            exception["permission"],
+            exception["expires"]
+        )
+    # 만료 전인데 재직 중이 아니면(`not` 은 참 · 거짓을 뒤집음)
+    elif not user_info["employed"]:
+        # 퇴사자의 예외를 출력한다
+        print(
+            "[회수] 퇴사자",
+            exception["id"],
+            exception["user"],
+            exception["permission"],
+            exception["expires"]
+        )
     else:                                                        # 둘 다 아니면
-        print("[유지]", exception["id"], exception["user"], exception["permission"], exception["expires"])   # 유지할 예외를 출력한다
+        # 유지할 예외를 출력한다
+        print(
+            "[유지]",
+            exception["id"],
+            exception["user"],
+            exception["permission"],
+            exception["expires"]
+        )
 ```
 
 - 예외를 세 건만 넣고 실행하면 4번 · 5번 예외가 없어서 `batch-night` · `gaeun` 이 `(False, None)` 으로 나오고 단계 2 도 세 줄만 나옵니다. 다섯 건을 모두 쓴 뒤의 결과를 읽습니다.

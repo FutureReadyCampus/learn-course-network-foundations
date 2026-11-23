@@ -79,7 +79,8 @@ source:
 
 ```python
 print(ROLES["sales"])                 # ['SALES:QUERY', 'SALES:CHANGE']
-print(USERS["seoyeon"])               # {'role': 'sales', 'employed': True}   ← JSON 의 소문자 true 가 파이썬의 True 가 됨
+# {'role': 'sales', 'employed': True}   ← JSON 의 소문자 true 가 파이썬의 True 가 됨
+print(USERS["seoyeon"])
 print(USERS["seoyeon"]["employed"])   # True
 
 is_allowed, reason = check_permission("minsu", "SALES", "QUERY")  # 판정 결과와 이유를 나눠 받는다
@@ -132,7 +133,8 @@ with open("config/users.json", encoding="utf-8") as users_file:           # 사�
 
 
 def check_permission(user, resource, action):                    # 사용자 · 자원 · 행위를 받는 함수
-    """요청을 허용할지 (허용 여부, 이유)로 리턴한다. 요청이 들어올 때 가장 먼저 쓰는 판정이고, 허용 리스트에 없으면 모두 거부한다."""   # 함수 첫 줄의 """ … """ 는 함수 설명 글이고 실행에는 영향이 없다
+    # 함수 첫 줄의 """ … """ 는 함수 설명 글이고 실행에는 영향이 없다
+    """요청을 허용할지 (허용 여부, 이유)로 리턴한다. 요청이 들어올 때 가장 먼저 쓰는 판정이고, 허용 리스트에 없으면 모두 거부한다."""
     # [1] 사용자 파일에 있나
     if user not in USERS:                                        # 사용자 파일에 없는 계정이면
         return False, "등록되지 않은 사용자"                       # 바로 거부하고 함수를 끝낸다
@@ -170,7 +172,8 @@ REQUESTS = [                                                     # 판정할 요
 
 for user, resource, action in REQUESTS:                          # 요청을 하나씩 꺼낸다
     is_allowed, reason = check_permission(user, resource, action)        # 판정 결과와 이유를 나눠 받는다
-    print(user, resource, action, "->", is_allowed, reason)              # 사용자 · 자원 · 행위 -> 결과 이유 를 출력한다
+    # 사용자 · 자원 · 행위 -> 결과 이유 를 출력한다
+    print(user, resource, action, "->", is_allowed, reason)
 ```
 
 - `REQUESTS` 의 괄호 `( )` 하나가 요청 한 건입니다. `for user, resource, action in REQUESTS:` 는 요청을 한 건씩 꺼내 세 값을 차례로 `user` · `resource` · `action` 에 나눠 담습니다.

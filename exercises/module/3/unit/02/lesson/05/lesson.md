@@ -20,7 +20,11 @@ render: markdown
    - 그다음 요청서의 상태를 `granted` 로 바꿉니다.
 4. 파일을 만들었으면 터미널에서 불러지는지 확인합니다. `제공 파일 정상` 이 나오면 됩니다. 먼저 `pwd` 가 `…/access_control` 로 끝나는지 보고, `…/network-study-notes` 로 끝나면(마무리에서 `cd ..` 를 한 경우) `cd access_control` 로 들어갑니다.
    ```bash
-   python -c "from req_grant import grant_request; print('제공 파일 정상')"
+   # 이 명령은 전체를 복사해 Git Bash에 붙여 넣어 실행하세요.
+   python -c "
+   from req_grant import grant_request
+   print('제공 파일 정상')
+   "
    ```
 5. 오늘 핵심 실습에서는 이 파일을 실행하지 않습니다. 응용 2-3이 이 파일을 불러 쓰고, 「이번 Unit 마무리」에서 다른 파일과 함께 깃허브에 올립니다.
 
@@ -34,7 +38,8 @@ render: markdown
 
 ```python
 from rbac import check_permission                                # rbac.py 의 역할 판정 함수를 불러온다
-from exception_policy import EXCEPTIONS                          # exception_policy.py 의 예외 리스트를 불러온다
+# exception_policy.py 의 예외 리스트를 불러온다
+from exception_policy import EXCEPTIONS
 
 
 def grant_request(request):                                      # 요청서를 받는 함수
@@ -47,7 +52,8 @@ def grant_request(request):                                      # 요청서를 
     resource = request["resource"]                               # 자원
     action = request["action"]                                   # 행위
     is_allowed, judge_reason = check_permission(user, resource, action)  # 요청자를 지금 정책으로 판정한다
-    if is_allowed or judge_reason != "권한 없음":                                # 이미 허용이거나, 사람 자체가 거부 대상이면
+    # 이미 허용이거나, 사람 자체가 거부 대상이면
+    if is_allowed or judge_reason != "권한 없음":
         return False, f"부여하지 않음({judge_reason})"                    # 부여하지 않고 판정 이유를 알린다
     exception_id = len(EXCEPTIONS) + 1                           # 다음 예외 번호(지금 개수 + 1)
     exception = {                                                # 요청서 내용으로 예외 한 건을 만든다

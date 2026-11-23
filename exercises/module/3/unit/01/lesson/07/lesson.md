@@ -102,7 +102,8 @@ print(users)                                                     # 함수 밖의
 **`role_admin.py`**
 
 ```python
-from rbac import ROLES                                           # 실습 1-2의 rbac.py 가 읽어 둔 역할 딕셔너리를 불러온다
+# 실습 1-2의 rbac.py 가 읽어 둔 역할 딕셔너리를 불러온다
+from rbac import ROLES
 
 
 def assign_role(users, name, role):                              # 사용자 딕셔너리 · 이름 · 역할을 받는 함수
@@ -142,7 +143,8 @@ def revoke_access(users, name):                                  # 사용자 딕
 from rbac import USERS, check_permission                         # 실습 1-2의 사용자 딕셔너리와 판정 함수를 불러온다
 from role_admin import assign_role, revoke_access                # 방금 만든 부여 · 회수 함수를 불러온다
 
-CHECKS = [                                                       # 인사 변경 전후에 같은 요청을 판정해 볼 리스트. (사용자, 자원, 행위)
+# 인사 변경 전후에 같은 요청을 판정해 볼 리스트. (사용자, 자원, 행위)
+CHECKS = [
     ("minsu", "SALES", "QUERY"),                                 # 오늘 입사하는 신입
     ("seoyeon", "SALES", "CHANGE"),                              # 재무로 옮기는 사람의 영업 실적 변경
     ("seoyeon", "SETTLE", "QUERY"),                              # 재무로 옮기는 사람의 정산 조회
@@ -157,7 +159,8 @@ def run_checks(title):                                           # 제목을 받
     print("---", title)                                          # 제목 줄을 출력한다
     for user, resource, action in CHECKS:                        # 요청을 하나씩 꺼낸다
         is_allowed, reason = check_permission(user, resource, action)    # 실습 1-2의 판정 함수로 판정한다
-        print(user, resource, action, "->", is_allowed, reason)          # 사용자 · 자원 · 행위 -> 결과 이유 를 출력한다
+        # 사용자 · 자원 · 행위 -> 결과 이유 를 출력한다
+        print(user, resource, action, "->", is_allowed, reason)
 
 
 run_checks("인사 변경 전")                                        # 변경 전 판정을 출력한다

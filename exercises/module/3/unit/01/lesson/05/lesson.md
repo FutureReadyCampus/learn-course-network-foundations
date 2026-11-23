@@ -181,8 +181,19 @@ for time, user, resource, action in TODAY_LOG:                   # 기록을 하
         if reason == "권한 없음":                                 # 거부 이유가 「권한 없음」일 때만
             permission = resource + ":" + action                 # "자원:행위" 모양 권한 문자열을 만든다
             for exception in EXCEPTIONS:                               # 예외 리스트를 하나씩 꺼낸다
-                if exception["user"] == user and exception["permission"] == permission:   # 같은 사람 · 같은 권한의 예외가 있으면
-                    print("[만료 뒤 시도]", time, user, resource, action, "- 만료된 예외", exception["id"], exception["expires"])   # 만료 뒤 시도로 알린다
+                # 같은 사람 · 같은 권한의 예외가 있으면
+                if exception["user"] == user and exception["permission"] == permission:
+                    # 만료 뒤 시도로 알린다
+                    print(
+                        "[만료 뒤 시도]",
+                        time,
+                        user,
+                        resource,
+                        action,
+                        "- 만료된 예외",
+                        exception["id"],
+                        exception["expires"]
+                    )
 
 print(counts)                                                    # 방식별 건수를 출력한다
 print("예외 사용", used)                                          # 예외 번호별 사용 건수를 출력한다

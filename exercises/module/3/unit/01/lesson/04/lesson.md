@@ -121,7 +121,11 @@ def load_json(path, default):                                    # 파일 경로
   ```bash
   ls
   ls config
-  python -c "import exception_policy, config_loader; print('제공 파일 정상')"
+  # 이 명령은 전체를 복사해 Git Bash에 붙여 넣어 실행하세요.
+  python -c "
+  import exception_policy, config_loader
+  print('제공 파일 정상')
+  "
   ```
   - 명령 풀이: `ls` · `ls config` 폴더 안의 파일 이름을 보여 줌 · `python -c "…"` 따옴표 안의 파이썬을 바로 실행해 두 파일을 불러 와 봄
 
