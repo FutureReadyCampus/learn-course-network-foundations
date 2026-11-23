@@ -71,7 +71,8 @@ requested = datetime.strptime("2026-10-23 09:15", "%Y-%m-%d %H:%M")   # 접수 �
 now = datetime.strptime("2026-10-23 14:00", "%Y-%m-%d %H:%M")         # 지금 시각
 gap = now - requested                                               # 시각에서 시각을 빼면 「걸린 시간」이 나온다
 seconds = gap.total_seconds()                                    # 시간 차이를 초 단위 숫자로 바꾼다
-print(seconds)                                                   # 걸린 시간을 전부 초로 센 숫자다(4시간 45분 = 17100초)
+# 걸린 시간을 전부 초로 센 숫자다(4시간 45분 = 17100초)
+print(seconds)
 ```
 
 실행 결과:
@@ -111,8 +112,10 @@ print(hours)                                                     # 1시간은 36
 ```python
 request = {"id": 1, "status": "reviewing"}                          # 요청서 한 장
 
-overdue = request.copy()                                            # .copy() 는 딕셔너리를 복사한 새 딕셔너리를 만든다
-overdue["wait_hours"] = round(4.26, 1)                              # 복사본에만 키를 추가한다. round(숫자, 1) 은 소수 첫째 자리까지 반올림한다
+# .copy() 는 딕셔너리를 복사한 새 딕셔너리를 만든다
+overdue = request.copy()
+# 복사본에만 키를 추가한다. round(숫자, 1) 은 소수 첫째 자리까지 반올림한다
+overdue["wait_hours"] = round(4.26, 1)
 
 print(request)                                                      # 원래 요청서는 그대로다
 print(overdue)                                                      # 복사본에만 wait_hours 키가 생겼다
@@ -153,8 +156,10 @@ print(overdue)                                                      # 복사본�
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
-from config_loader import load_json                              # config_loader.py 의 안전한 읽기 함수를 불러온다
-from exception_policy import TIME_FORMAT                         # 시각 문자열의 형식("%Y-%m-%d %H:%M")을 불러온다
+# config_loader.py 의 안전한 읽기 함수를 불러온다
+from config_loader import load_json
+# 시각 문자열의 형식("%Y-%m-%d %H:%M")을 불러온다
+from exception_policy import TIME_FORMAT
 
 SLA_HOURS = load_json("config/sla.json", {"hours": 4})["hours"]  # 처리 기한(시간). 파일이 없거나 깨졌으면 기본값 4
 
@@ -200,13 +205,19 @@ from req_sla import SLA_HOURS, check_sla_breach                  # 방금 만든
 
 NOW = datetime.strptime("2026-10-23 14:00", "%Y-%m-%d %H:%M")    # 이번 실습의 지금 시각(고정)
 
-INBOX = [                                                        # 오늘 들어온 요청 여섯 건. (요청자, 자원, 행위, 희망 만료 시각, 이유, 접수 시각)
-    ("seoyeon", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 대조 지원", "2026-10-23 08:30"),    # 08:30 에 접수한 요청
-    ("gaeun", "SALES", "QUERY", "2026-10-28 18:00", "감사 자료 대응", "2026-10-23 10:30"),       # 10:30 에 접수한 요청
+# 오늘 들어온 요청 여섯 건. (요청자, 자원, 행위, 희망 만료 시각, 이유, 접수 시각)
+INBOX = [
+    # 08:30 에 접수한 요청
+    ("seoyeon", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 대조 지원", "2026-10-23 08:30"),
+    # 10:30 에 접수한 요청
+    ("gaeun", "SALES", "QUERY", "2026-10-28 18:00", "감사 자료 대응", "2026-10-23 10:30"),
     ("dami", "SALES", "QUERY", "2026-10-27 18:00", "인수인계 자료 확인", "2026-10-23 12:00"),    # 낮에 접수한 요청
-    ("junho", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 확인", "2026-10-23 09:00"),           # 나중에 승인해서 처리가 끝나게 될 요청
-    ("seoyeon", "ACCOUNT", "QUERY", "2026-10-27 18:00", "계정 권한 점검", "2026-10-23 07:50"),   # 07:50 에 접수한 요청
-    ("tester", "SALES", "QUERY", "2026-10-27 18:00", "시험 계정 확인", "2026-10-23 10:00"),      # 10:00 정각에 접수한 요청
+    # 나중에 승인해서 처리가 끝나게 될 요청
+    ("junho", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 확인", "2026-10-23 09:00"),
+    # 07:50 에 접수한 요청
+    ("seoyeon", "ACCOUNT", "QUERY", "2026-10-27 18:00", "계정 권한 점검", "2026-10-23 07:50"),
+    # 10:00 정각에 접수한 요청
+    ("tester", "SALES", "QUERY", "2026-10-27 18:00", "시험 계정 확인", "2026-10-23 10:00"),
 ]
 for user, resource, action, until, reason, received_at in INBOX:         # 요청을 하나씩 꺼내
     create_request(user, resource, action, until, reason, received_at)   # 접수한다
@@ -214,11 +225,13 @@ approve_request(REQUESTS[3], "security_manager")                 # 4번(junho)�
 
 print("--- 단계 1: 현황 - SLA 시간", SLA_HOURS, "시간, 지금 14:00")   # 단계 1 시작을 알리는 줄
 for request in REQUESTS:                                         # 요청서를 하나씩 꺼낸다
-    print(request["id"], request["user"], request["status"], request["requested_at"])   # 번호 · 요청자 · 상태 · 접수 시각을 출력한다
+    # 번호 · 요청자 · 상태 · 접수 시각을 출력한다
+    print(request["id"], request["user"], request["status"], request["requested_at"])
 
 print("--- 단계 2: 판정 - SLA 를 초과한 요청")                       # 단계 2 시작을 알리는 줄
 for request in check_sla_breach(REQUESTS, NOW):                  # 기한을 초과한 요청서를 하나씩 꺼낸다
-    print(request["id"], request["user"], "접수", request["requested_at"], "->", request["wait_hours"], "시간 지남")   # 번호 · 요청자 · 접수 시각 · 지난 시간을 출력한다
+    # 번호 · 요청자 · 접수 시각 · 지난 시간을 출력한다
+    print(request["id"], request["user"], "접수", request["requested_at"], "->", request["wait_hours"], "시간 지남")
 ```
 
 **순서**

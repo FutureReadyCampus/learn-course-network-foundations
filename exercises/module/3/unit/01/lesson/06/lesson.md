@@ -41,7 +41,8 @@ source:
 | 자원 · 행위 | `"SETTLE"` · `"QUERY"` | `check_permission` 에 그대로 전달하는 값 |
 
 ```python
-LOG = [                                                          # 접근 기록 중 조회 15줄. (번호, 시각, 사용자, 자원, 행위)
+# 접근 기록 중 조회 15줄. (번호, 시각, 사용자, 자원, 행위)
+LOG = [
     (1,  "02:00", "batch-night", "SETTLE", "QUERY"),             # 서비스 계정의 정산 집계
     (3,  "02:14", "seoyeon",     "SETTLE", "QUERY"),             # 새벽 · 등록 안 된 기기 NB-7741
     (4,  "02:15", "seoyeon",     "SETTLE", "QUERY"),             # 새벽 · NB-7741
@@ -115,7 +116,8 @@ used[role].append(f"{resource}:{action}")     # 쓴 권한을 추가함
 
 ```python
 ROLES = {"hr": ["STAFF:QUERY", "PAY:QUERY"], "guest": ["NEWS:QUERY"]}   # 예시
-used  = {"hr": ["STAFF:QUERY"]}                                   # 예시: 실제로 쓴 기록(hr 은 STAFF:QUERY 만 썼다)
+# 예시: 실제로 쓴 기록(hr 은 STAFF:QUERY 만 썼다)
+used  = {"hr": ["STAFF:QUERY"]}
 
 for role, role_permissions in ROLES.items():                      # 역할 이름과 그 역할의 권한 리스트를 하나씩 꺼낸다
     print(role, role_permissions, used.get(role, []))             # 역할 · 권한 · 쓴 기록을 출력한다

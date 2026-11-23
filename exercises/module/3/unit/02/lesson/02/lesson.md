@@ -62,7 +62,14 @@ SLA 는 정해 둔 시간 안에 처리하겠다는 약속입니다. 예를 들�
    pwd
    ls
    ls config
-   python -c "from datetime import datetime; from policy import evaluate_access; from exception_policy import EXCEPTIONS; print('이전 파일 정상', len(EXCEPTIONS)); print(evaluate_access('dami', 'SALES', 'QUERY', datetime(2026, 10, 23, 10, 0)))"
+   # 이 명령은 전체를 복사해 Git Bash에 붙여 넣어 실행하세요.
+   python -c "
+   from datetime import datetime
+   from policy import evaluate_access
+   from exception_policy import EXCEPTIONS
+   print('이전 파일 정상', len(EXCEPTIONS))
+   print(evaluate_access('dami', 'SALES', 'QUERY', datetime(2026, 10, 23, 10, 0)))
+   "
    ```
    - 명령 풀이: `python -c "…"` 따옴표 안의 파이썬 코드를 파일로 만들지 않고 바로 실행함. 여기서는 Unit 1 파일을 불러와 예외 수를 세고, `dami` 의 영업 실적 조회를 판정해 봅니다.
    - 마지막 두 줄에 `이전 파일 정상 5` 와 `(False, '퇴사한 계정')` 이 나와야 합니다. `dami` 는 Unit 1 사용자 파일에서 퇴사(회사를 그만둠)로 적힌 계정이라 거부가 맞습니다.

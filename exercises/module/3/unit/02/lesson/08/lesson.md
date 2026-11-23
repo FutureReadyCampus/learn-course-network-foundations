@@ -79,7 +79,8 @@ import json                                                         # JSON 을 �
 
 data = [{"id": 1, "reason": "정산 확인"}]                             # 저장할 리스트
 with open("demo.json", "w", encoding="utf-8") as demo_file:                 # 파일을 쓰기 모드("w")로 연다
-    json.dump(data, demo_file, indent=2)                                    # ensure_ascii=False 를 빼고 쓴다
+    # ensure_ascii=False 를 빼고 쓴다
+    json.dump(data, demo_file, indent=2)
 file = open("demo.json", encoding="utf-8")                       # 파일을 연다
 text = file.read()                                               # 내용을 문자열로 읽는다
 print(text)                                                      # 쓴 파일을 다시 열어 내용을 출력한다
@@ -157,7 +158,8 @@ def count_by_status(requests):                                   # 요청서 리
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
-from config_loader import load_json                              # config_loader.py 의 안전한 읽기 함수를 불러온다
+# config_loader.py 의 안전한 읽기 함수를 불러온다
+from config_loader import load_json
 from req_create import REQUESTS, create_request                  # 실습 2-1에서 만든 요청서 함수와 리스트를 불러온다
 from req_review import approve_request, reject_request           # 실습 2-2에서 만든 승인 · 반려 함수를 불러온다
 from req_grant import grant_request                              # 제공 파일(또는 응용 2-1)의 부여 함수를 불러온다
@@ -166,7 +168,8 @@ from request_flow import save_requests, count_by_status          # 방금 만든
 
 NOW = datetime.strptime("2026-10-23 14:00", "%Y-%m-%d %H:%M")    # 이번 실습의 지금 시각(고정)
 
-INBOX = [                                                        # 오늘 들어온 요청 여섯 건. (요청자, 자원, 행위, 희망 만료 시각, 이유, 접수 시각)
+# 오늘 들어온 요청 여섯 건. (요청자, 자원, 행위, 희망 만료 시각, 이유, 접수 시각)
+INBOX = [
     ("seoyeon", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 대조 지원", "2026-10-23 08:30"),
     ("gaeun", "SALES", "QUERY", "2026-10-28 18:00", "감사 자료 대응", "2026-10-23 10:30"),
     ("dami", "SALES", "QUERY", "2026-10-27 18:00", "인수인계 자료 확인", "2026-10-23 12:00"),
@@ -184,7 +187,8 @@ approve_request(REQUESTS[2], "security_manager")                 # 3번 승인
 approve_request(REQUESTS[3], "security_manager")                 # 4번 승인
 for request in REQUESTS:                                         # 요청서를 하나씩 꺼내
     is_success, result = grant_request(request)                          # 부여를 시도한다(승인된 것만 의미가 있다)
-    print(request["id"], request["user"], request["status"], "->", result)   # 번호 · 요청자 · 상태 -> 결과 를 출력한다
+    # 번호 · 요청자 · 상태 -> 결과 를 출력한다
+    print(request["id"], request["user"], request["status"], "->", result)
 
 print("--- 단계 2: 점검 - 상태별 건수와 SLA")                      # 단계 2 시작을 알리는 줄
 print(count_by_status(REQUESTS))                                 # 상태별 건수를 출력한다
@@ -202,7 +206,12 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
 
 0. **[터미널]** 불러 쓸 파일이 있는지 먼저 확인합니다. `pwd` 가 `…/access_control` 로 끝나는지 보고(`…/network-study-notes` 면 `cd access_control`), 아래를 칩니다. 마지막 줄에 `앞 파일 정상` 이 나와야 합니다.
    ```bash
-   python -c "from req_grant import grant_request; from req_sla import check_sla_breach; print('앞 파일 정상')"
+   # 이 명령은 전체를 복사해 Git Bash에 붙여 넣어 실행하세요.
+   python -c "
+   from req_grant import grant_request
+   from req_sla import check_sla_breach
+   print('앞 파일 정상')
+   "
    ```
 
    | 이렇게 나오면 | 할 일 |

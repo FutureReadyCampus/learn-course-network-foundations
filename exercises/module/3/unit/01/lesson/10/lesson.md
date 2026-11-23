@@ -229,12 +229,14 @@ def at(text):                                                    # 문자열을 
 
 
 when = at("2026-10-22 14:00")                                    # 요청 시각을 만든다
-is_allowed, reason = evaluate_access("dami", "SALES", "QUERY", when)     # 5. 팀원 제안: 퇴사자는 예외가 있어도 거부되어야 한다
+# 5. 팀원 제안: 퇴사자는 예외가 있어도 거부되어야 한다
+is_allowed, reason = evaluate_access("dami", "SALES", "QUERY", when)
 assert is_allowed == False and reason == "퇴사한 계정", "5. 퇴사자는 예외가 있어도 거부"  # 퇴사자는 이유가 「퇴사한 계정」이어야 통과한다
 print("5 통과")                                                  # 5번 assert 를 지났다고 알린다
 
 when = at("2026-10-22 18:00")                                    # 요청 시각을 만든다
-is_allowed, reason = evaluate_access("seoyeon", "SETTLE", "QUERY", when)  # 6. 팀원 제안: 만료 정각에도 허용되어야 한다
+# 6. 팀원 제안: 만료 정각에도 허용되어야 한다
+is_allowed, reason = evaluate_access("seoyeon", "SETTLE", "QUERY", when)
 assert is_allowed == True, "6. 만료 정각에도 허용되어야 한다(팀원 제안)"           # 만료 정각에도 허용인지 확인한다
 print("6 통과")                                                  # 6번 assert 를 지났다고 알린다
 ```

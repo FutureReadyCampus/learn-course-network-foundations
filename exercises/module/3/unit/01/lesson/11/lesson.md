@@ -532,7 +532,8 @@ is_allowed, reason = evaluate_access("seoyeon", "SETTLE", "QUERY", when)  # 3. �
 assert is_allowed == False, "3-2. 만료 정각 거부"                       # 만료 정각에는 거부되는지 확인한다
 
 users = load_json("config/no_such.json", {})                     # 4. 없는 파일을 읽는다
-assert "seoyeon" not in users, "4. 설정 고장이면 사용자 없음"                # 설정이 고장 나면 사용자 딕셔너리에 seoyeon 이 없어야 한다
+# 설정이 고장 나면 사용자 딕셔너리에 seoyeon 이 없어야 한다
+assert "seoyeon" not in users, "4. 설정 고장이면 사용자 없음"
 ```
 
 **결과**

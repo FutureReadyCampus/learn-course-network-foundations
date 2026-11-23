@@ -116,7 +116,8 @@ print(exceptions)                                                  # 세 건이 
 
 ```python
 from rbac import check_permission                                # rbac.py 의 역할 판정 함수를 불러온다
-from exception_policy import EXCEPTIONS                          # exception_policy.py 의 예외 리스트를 불러온다
+# exception_policy.py 의 예외 리스트를 불러온다
+from exception_policy import EXCEPTIONS
 
 
 def grant_request(request):                                      # 요청서를 받는 함수
@@ -156,7 +157,8 @@ from policy import evaluate_access                               # policy.py 의
 
 NOW = datetime.strptime("2026-10-23 10:00", "%Y-%m-%d %H:%M")    # 오늘 실습의 지금 시각(고정)
 
-INBOX = [                                                        # 접수에 성공하는 요청 네 건. (요청자, 자원, 행위, 희망 만료 시각, 이유, 접수 시각)
+# 접수에 성공하는 요청 네 건. (요청자, 자원, 행위, 희망 만료 시각, 이유, 접수 시각)
+INBOX = [
     ("seoyeon", "SETTLE", "QUERY", "2026-10-27 18:00", "정산 대조 지원", "2026-10-23 08:30"),
     ("gaeun", "SALES", "QUERY", "2026-10-28 18:00", "감사 자료 대응", "2026-10-23 08:40"),
     ("dami", "SALES", "QUERY", "2026-10-27 18:00", "인수인계 자료 확인", "2026-10-23 08:50"),
@@ -179,7 +181,8 @@ def show(title):                                                 # 제목을 받
         resource = request["resource"]                           # 자원
         action = request["action"]                               # 행위
         is_allowed, reason = evaluate_access(user, resource, action, NOW)   # 23일 10:00 의 최종 판정을 받는다
-        print(request["id"], request["user"], request["permission"], "->", is_allowed, reason)   # 요청 번호 · 요청자 · 권한 -> 판정 을 출력한다
+        # 요청 번호 · 요청자 · 권한 -> 판정 을 출력한다
+        print(request["id"], request["user"], request["permission"], "->", is_allowed, reason)
 
 
 show("단계 1: 판정 - 부여 전")                                     # 부여하기 전의 판정을 본다
@@ -187,7 +190,8 @@ show("단계 1: 판정 - 부여 전")                                     # 부�
 print("--- 단계 2: 부여 - 요청서마다 부여를 시도한다")                # 단계 2 시작을 알리는 줄
 for request in REQUESTS:                                         # 요청서를 하나씩 꺼낸다
     is_allowed, result = grant_request(request)                          # 부여를 시도한다
-    print(request["id"], request["user"], request["status"], "->", is_allowed, result)   # 요청 번호 · 요청자 · 상태 -> 결과 를 출력한다
+    # 요청 번호 · 요청자 · 상태 -> 결과 를 출력한다
+    print(request["id"], request["user"], request["status"], "->", is_allowed, result)
 
 for request in REQUESTS:                                         # 요청서를 하나씩 꺼낸다
     if "exception_id" in request:                                # exception_id 키가 있는 요청서(부여된 것)만
