@@ -28,7 +28,8 @@ python exercise2-1_run.py
 
 ```python
     # ① until 이 received_at 과 같거나 앞서면   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
-    if until <= received_at:                                             # 희망 만료 시각이 접수 시각보다 늦지 않으면(같은 형식의 문자열은 앞에서부터 비교해도 시각 순서와 같다)
+    # 희망 만료 시각이 접수 시각보다 늦지 않으면(같은 형식의 문자열은 앞에서부터 비교해도 시각 순서와 같다)
+    if until <= received_at:
     # ② "만료 시각이 이미 지났음" 을 이유로 접수하지 않는다   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
         return False, "만료 시각이 이미 지났음"                     # 접수하지 않고 이유를 알린다
 ```
@@ -224,7 +225,8 @@ python apply2-1_run.py
     resource = request["resource"]                               # 자원
     action = request["action"]                                   # 행위
     is_allowed, judge_reason = check_permission(user, resource, action)  # 요청자를 지금 정책으로 판정한다
-    if is_allowed or judge_reason != "권한 없음":                                # 이미 허용이거나, 사람 자체가 거부 대상이면
+    # 이미 허용이거나, 사람 자체가 거부 대상이면
+    if is_allowed or judge_reason != "권한 없음":
         return False, f"부여하지 않음({judge_reason})"                    # 부여하지 않고 판정 이유를 알린다
     exception_id = len(EXCEPTIONS) + 1                           # 다음 예외 번호(지금 개수 + 1)
     exception = {                                                # 요청서 내용으로 예외 한 건을 만든다
@@ -323,8 +325,10 @@ python apply2-2_run.py
 ```python
     breached = []                                                # 기한을 초과한 요청서를 담을 빈 리스트
     for request in requests:                                     # 요청서를 하나씩 꺼낸다
-        if request["status"] == "reviewing":                     # 검토 중인 것만 본다(처리가 끝난 것은 기한을 따지지 않는다)
-            requested = datetime.strptime(request["requested_at"], TIME_FORMAT)   # 접수 시각 문자열을 시각으로 바꾼다
+        # 검토 중인 것만 본다(처리가 끝난 것은 기한을 따지지 않는다)
+        if request["status"] == "reviewing":
+            # 접수 시각 문자열을 시각으로 바꾼다
+            requested = datetime.strptime(request["requested_at"], TIME_FORMAT)
             hours = (now - requested).total_seconds() / 3600     # 지금까지 걸린 시간을 시간(hour) 단위 숫자로 구한다
             if hours > SLA_HOURS:                                # 걸린 시간이 SLA 시간보다 크면
                 overdue = request.copy()                         # 요청서를 복사한다(원래 요청서는 바꾸지 않는다)
