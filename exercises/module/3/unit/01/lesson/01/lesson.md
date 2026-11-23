@@ -200,7 +200,7 @@ GitHub Pages는 저장소에 올린 파일을 웹사이트로 보여 주는 무�
 
 ### Jekyll 설치: GitHub에서 사용하기와 내 컴퓨터에서 사용하기
 
-이 실습은 GitHub Pages의 Jekyll을 사용하므로 **내 컴퓨터에 Jekyll을 설치하지 않아도 됩니다.** 다음 페이지에서 사이트 파일을 만들고 GitHub Pages를 켜는 것이 이 실습의 설정 방법입니다. 이미 설치된 도구를 GitHub가 실행하는 것이므로 `jekyll new`로 별도 사이트를 만들 필요도 없습니다.
+이 실습은 GitHub Pages의 Jekyll을 사용하므로 **내 컴퓨터에 Jekyll을 설치하지 않아도 됩니다.** 이어지는 「필수 파일 붙여 넣기」에서 사이트 파일을 만들고 「이름 바꾸고 Pages 켜기」에서 GitHub Pages를 켭니다. 이미 설치된 도구를 GitHub가 실행하는 것이므로 `jekyll new`로 별도 사이트를 만들 필요도 없습니다.
 
 내 컴퓨터에서 Jekyll을 직접 실행해 보고 싶다면 다음은 선택입니다. Windows에서는 Jekyll이 공식 지원되지 않아 환경에 따라 추가 설정이 필요할 수 있습니다.
 
@@ -342,7 +342,7 @@ VS Code 에서 `network-study-notes` 바로 아래의 `_config.yml` 을 엽니�
 
 ### 이어서 Pages 켜기
 
-**[브라우저]** 저장소의 아래는 GitHub 공식 문서의 Pages 설정 화면입니다. 주황색 테두리의 브랜치 선택 메뉴에서 `main`을 고릅니다. 그림의 `None`은 선택 전 상태이며 화면은 업데이트에 따라 달라질 수 있습니다.
+**[브라우저]** 아래는 GitHub 공식 문서의 Pages 설정 화면입니다. 주황색 테두리의 브랜치 선택 메뉴에서 `main`을 고릅니다. 그림의 `None`은 선택 전 상태이며 화면은 업데이트에 따라 달라질 수 있습니다.
 
 <img src="assets/github-pages-branch.png" alt="GitHub Pages 설정 화면에서 브랜치 선택 메뉴가 강조된 예시">
 
