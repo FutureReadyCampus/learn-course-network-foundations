@@ -257,6 +257,8 @@ for exception in EXCEPTIONS:                                           # 예외�
 - [ ] `report_u1.md` 의 `## 응용 1-3` 아래를 채웠다
 <!-- /checklist -->
 
+<!-- answer: 11|응용 1-3 정답 -->
+
 ## 응용 1-3 정리
 
 | 하려는 일 | 코드 · 말 |

@@ -8,7 +8,13 @@
     .replace(/\*([^*]+)\*/g, "<em>$1</em>")
     .replace(/\[([^\]]+)\]\((https?:[^\s)]+)\)/g, '<a href="$2" rel="noreferrer">$1</a>');
   const seg = base.includes("/exercises/") ? "" : "/m2-network"; // Foundations keeps its published /m2-network URLs
-  const routeFor = (unitIndex, lessonIndex, pageIndex) => `${base}${seg}/unit/${unitIndex + 1}/lesson/${lessonIndex + 1}/page/${pageIndex + 1}`;
+  let routeCourse;
+  const routeFor = (unitIndex, lessonIndex, pageIndex) => {
+    const unit = routeCourse.units[unitIndex];
+    const lesson = routeCourse.lessons.filter((item) => item.unit === unit.id)[lessonIndex];
+    const number = !seg ? Number(lesson.id.match(/-l(\d+)$/)?.[1]) : lessonIndex + 1;
+    return `${base}${seg}/unit/${unitIndex + 1}/lesson/${number}/page/${pageIndex + 1}`;
+  };
   const parseRoute = (course) => {
     const path = location.pathname.slice(base.length) || "/";
     const found = path.slice(seg.length).match(/^\/unit\/(\d+)\/lesson\/(\d+)\/page\/(\d+)/);
@@ -16,7 +22,7 @@
     const unitIndex = Number(found[1]) - 1;
     const unit = course.units[unitIndex];
     const unitLessons = course.lessons.filter((lesson) => lesson.unit === unit?.id);
-    const lesson = unitLessons[Number(found[2]) - 1];
+    const lesson = !seg ? unitLessons.find((item) => Number(item.id.match(/-l(\d+)$/)?.[1]) === Number(found[2])) : unitLessons[Number(found[2]) - 1];
     const lessonIndex = course.lessons.indexOf(lesson);
     return { unitIndex, lessonIndex: Math.max(0, lessonIndex), pageIndex: Number(found[3]) - 1 };
   };
@@ -253,7 +259,13 @@
   } catch (error) { /* 저장소를 쓸 수 없으면 제한은 꺼진 채로 둔다 */ }
   const gateOn = () => { try { return localStorage.getItem("nc-gate") === "1"; } catch (error) { return false; } };
   const isAdmin = () => { try { return localStorage.getItem("nc-admin") === "1"; } catch (error) { return false; } };
-  const checklistKey = (item, pageIndex) => `nc-cl:${location.pathname.split("/unit/")[0]}:${item.lesson.id}:${pageIndex}`;
+  const checklistKey = (item, pageIndex) => {
+    // Keep previously saved checks when these pages are shown in their new Lessons.
+    const moved = {"m3-u01-l14": ["m3-u01-l05", 7], "m3-u02-l12": ["m3-u02-l04", 6],
+      "m3-u01-l15": ["m3-u01-l12", 0], "m3-u02-l13": ["m3-u02-l10", 0]};
+    const [id, offset] = moved[item.lesson.id] || [item.lesson.id, 0];
+    return `nc-cl:${location.pathname.split("/unit/")[0]}:${id}:${pageIndex + offset}`;
+  };
   const readChecks = (key, count) => {
     try { const saved = JSON.parse(localStorage.getItem(key) || "[]"); return Array.from({ length: count }, (_, i) => saved[i] === true); }
     catch (error) { return new Array(count).fill(false); }
@@ -721,6 +733,7 @@
   fetch(window.NETWORK_COURSE_URL || `${base}/data/course.json`)
     .then((response) => { if (!response.ok) throw new Error("course data unavailable"); return response.json(); })
     .then((course) => {
+      routeCourse = course;
       let state = parseRoute(course);
       document.getElementById("sidebar-toggle").addEventListener("click", () => {
         const workspace = document.querySelector(".course-workspace");
