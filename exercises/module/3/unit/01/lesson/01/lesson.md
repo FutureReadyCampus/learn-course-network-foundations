@@ -196,7 +196,24 @@ Unit 1은 첫 단계인 권한 정하기입니다. 사용자와 역할을 파일
 
 GitHub Pages는 저장소에 올린 파일을 웹사이트로 보여 주는 무료 서비스입니다. 이때 글(마크다운 `.md` 파일)을 웹 페이지로 바꿔 주는 도구가 **Jekyll**(지킬)입니다. **마크다운**(Markdown · 마크다운)은 `#` 을 붙이면 제목, `-` 를 붙이면 목록이 되는 식으로 간단한 기호만 써서 글의 모양을 정하는 글쓰기 방식입니다. 웹 페이지를 만드는 언어인 HTML은 쓰지 않아도 됩니다. 글만 쓰면 Jekyll이 정해진 틀(레이아웃)에 끼워 넣어 페이지를 만들어 줍니다.
 
-흐름은 이렇습니다. 파일을 올리면(push) GitHub가 Jekyll로 사이트를 다시 만들고(빌드), 1~2분 뒤 내 주소가 새 모습으로 바뀝니다. 내 컴퓨터에 설치할 것은 없습니다.
+흐름은 이렇습니다. 글과 설정 파일을 GitHub에 올리면(push), GitHub Pages가 Jekyll을 실행해 사이트를 만들고(빌드), 내 사이트 주소에 결과를 보여 줍니다. 이 과정은 몇 분 걸릴 수 있습니다.
+
+### Jekyll 설치: GitHub에서 사용하기와 내 컴퓨터에서 사용하기
+
+이 실습은 GitHub Pages의 Jekyll을 사용하므로 **내 컴퓨터에 Jekyll을 설치하지 않아도 됩니다.** 다음 페이지에서 사이트 파일을 만들고 GitHub Pages를 켜는 것이 이 실습의 설정 방법입니다. 이미 설치된 도구를 GitHub가 실행하는 것이므로 `jekyll new`로 별도 사이트를 만들 필요도 없습니다.
+
+내 컴퓨터에서 Jekyll을 직접 실행해 보고 싶다면 다음은 선택입니다. Windows에서는 Jekyll이 공식 지원되지 않아 환경에 따라 추가 설정이 필요할 수 있습니다.
+
+1. [RubyInstaller 다운로드](https://rubyinstaller.org/downloads/)에서 **Ruby+Devkit**을 내려받아 기본 설정으로 설치합니다.
+2. 설치 마지막에 `ridk install`을 실행하고 `MSYS2 and MINGW development toolchain`을 설치합니다.
+3. 새 Windows 명령 프롬프트를 열어 아래를 한 줄씩 실행합니다.
+
+```text
+gem install jekyll bundler
+jekyll -v
+```
+
+마지막 명령에 버전이 나오면 내 컴퓨터에 설치된 것입니다. 설치 과정이 달라지거나 오류가 나면 [Jekyll의 Windows 설치 안내](https://jekyllrb.com/docs/windows/)를 확인합니다. 이 설치는 GitHub Pages 게시의 필수 조건이 아닙니다. 로컬에서 만든 결과와 GitHub Pages의 빌드 결과는 버전 차이로 다를 수 있습니다.
 
 ### 폴더와 파일의 뜻
 
@@ -325,7 +342,13 @@ VS Code 에서 `network-study-notes` 바로 아래의 `_config.yml` 을 엽니�
 
 ### 이어서 Pages 켜기
 
-**[브라우저]** 저장소의 **Settings → Pages** 에서 **Source** 는 **Deploy from a branch**, **Branch** 는 `main` 과 `/ (root)` 를 고르고 **Save** 를 누릅니다. `/ (root)` 는 저장소 맨 위 폴더의 파일로 사이트를 만들라는 뜻입니다. 주소는 아래 모양입니다.
+**[브라우저]** 저장소의 아래는 GitHub 공식 문서의 Pages 설정 화면입니다. 주황색 테두리의 브랜치 선택 메뉴에서 `main`을 고릅니다. 그림의 `None`은 선택 전 상태이며 화면은 업데이트에 따라 달라질 수 있습니다.
+
+<img src="assets/github-pages-branch.png" alt="GitHub Pages 설정 화면에서 브랜치 선택 메뉴가 강조된 예시">
+
+출처: [GitHub Docs · 게시 원본 설정](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+
+**Settings → Pages** 에서 **Source** 는 **Deploy from a branch**, **Branch** 는 `main` 과 `/ (root)` 를 고르고 **Save** 를 누릅니다. `/ (root)` 는 저장소 맨 위 폴더의 파일로 사이트를 만들라는 뜻입니다. 주소는 아래 모양입니다.
 
 ```
 https://<내 아이디>.github.io/<저장소 이름>/
