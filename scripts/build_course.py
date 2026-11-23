@@ -591,16 +591,26 @@ def markdown_pages(path: Path, lesson_meta: dict | None = None) -> list[dict]:
     for i, (title, body) in enumerate(sections, 1):
         text, checklist = split_checklist("\n".join(body), md)
 
-        def answer(match):
-            source = path.parent.parent / match.group(1) / "lesson.md"
+        def included_page(match):
+            nonlocal checklist
+            kind, lesson_number, page_title = match.groups()
+            source = path.parent.parent / lesson_number / "lesson.md"
             if source == path or not source.is_file():
                 raise ValueError(f"Answer lesson not found: {source}")
-            matches = [page for page in markdown_pages(source) if page["title"] == match.group(2)]
+            matches = [page for page in markdown_pages(source) if page["title"] == page_title]
             if len(matches) != 1:
-                raise ValueError(f"Answer page not found or duplicated: {match.group(2)} in {source}")
-            return f'<details class="exercise-answer"><summary>정답과 해설 보기</summary>{matches[0]["html"]}</details>'
+                raise ValueError(f"Included page not found or duplicated: {page_title} in {source}")
+            html = matches[0]["html"]
+            included_checklist = matches[0].get("checklist")
+            if included_checklist:
+                if checklist or kind == "answer":
+                    raise ValueError(f"Included checklist cannot be combined: {source}")
+                checklist = included_checklist
+            if kind == "answer":
+                return f'<details class="exercise-answer"><summary>정답과 해설 보기</summary>{html}</details>'
+            return html
 
-        text = re.sub(r"(?m)^<!-- answer: (\d{2})\|(.*?) -->$", answer, text)
+        text = re.sub(r"(?m)^<!-- (answer|page): (\d{2})\|(.*?) -->$", included_page, text)
         page = {"title": title, "paragraphs": [], "html": figure(i) + inline_figures(iconize(md.render(expand_includes(text)))), "terms": [], "questions": []}
         if checklist:
             page["checklist"] = checklist
