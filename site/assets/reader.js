@@ -259,7 +259,13 @@
   } catch (error) { /* 저장소를 쓸 수 없으면 제한은 꺼진 채로 둔다 */ }
   const gateOn = () => { try { return localStorage.getItem("nc-gate") === "1"; } catch (error) { return false; } };
   const isAdmin = () => { try { return localStorage.getItem("nc-admin") === "1"; } catch (error) { return false; } };
-  const checklistKey = (item, pageIndex) => `nc-cl:${location.pathname.split("/unit/")[0]}:${item.lesson.id}:${pageIndex}`;
+  const checklistKey = (item, pageIndex) => {
+    // Keep previously saved checks when these pages are shown in their new Lessons.
+    const moved = {"m3-u01-l14": ["m3-u01-l05", 7], "m3-u02-l12": ["m3-u02-l04", 6],
+      "m3-u01-l15": ["m3-u01-l12", 0], "m3-u02-l13": ["m3-u02-l10", 0]};
+    const [id, offset] = moved[item.lesson.id] || [item.lesson.id, 0];
+    return `nc-cl:${location.pathname.split("/unit/")[0]}:${id}:${pageIndex + offset}`;
+  };
   const readChecks = (key, count) => {
     try { const saved = JSON.parse(localStorage.getItem(key) || "[]"); return Array.from({ length: count }, (_, i) => saved[i] === true); }
     catch (error) { return new Array(count).fill(false); }
