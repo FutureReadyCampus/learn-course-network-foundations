@@ -190,14 +190,32 @@ for exception in EXCEPTIONS:                                           # 예외�
     expires = datetime.strptime(exception["expires"], TIME_FORMAT)     # 만료 시각을 시각으로 바꾼다
     if NOW >= expires:                                           # 이미 만료됐으면
         # 만료된 예외를 출력한다
-        print("[회수] 만료됨", exception["id"], exception["user"], exception["permission"], exception["expires"])
+        print(
+            "[회수] 만료됨",
+            exception["id"],
+            exception["user"],
+            exception["permission"],
+            exception["expires"]
+        )
     # 만료 전인데 재직 중이 아니면(`not` 은 참 · 거짓을 뒤집음)
     elif not user_info["employed"]:
         # 퇴사자의 예외를 출력한다
-        print("[회수] 퇴사자", exception["id"], exception["user"], exception["permission"], exception["expires"])
+        print(
+            "[회수] 퇴사자",
+            exception["id"],
+            exception["user"],
+            exception["permission"],
+            exception["expires"]
+        )
     else:                                                        # 둘 다 아니면
         # 유지할 예외를 출력한다
-        print("[유지]", exception["id"], exception["user"], exception["permission"], exception["expires"])
+        print(
+            "[유지]",
+            exception["id"],
+            exception["user"],
+            exception["permission"],
+            exception["expires"]
+        )
 ```
 
 - 예외를 세 건만 넣고 실행하면 4번 · 5번 예외가 없어서 `batch-night` · `gaeun` 이 `(False, None)` 으로 나오고 단계 2 도 세 줄만 나옵니다. 다섯 건을 모두 쓴 뒤의 결과를 읽습니다.

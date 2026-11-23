@@ -231,7 +231,15 @@ for request in REQUESTS:                                         # 요청서를 
 print("--- 단계 2: 판정 - SLA 를 초과한 요청")                       # 단계 2 시작을 알리는 줄
 for request in check_sla_breach(REQUESTS, NOW):                  # 기한을 초과한 요청서를 하나씩 꺼낸다
     # 번호 · 요청자 · 접수 시각 · 지난 시간을 출력한다
-    print(request["id"], request["user"], "접수", request["requested_at"], "->", request["wait_hours"], "시간 지남")
+    print(
+        request["id"],
+        request["user"],
+        "접수",
+        request["requested_at"],
+        "->",
+        request["wait_hours"],
+        "시간 지남"
+    )
 ```
 
 **순서**

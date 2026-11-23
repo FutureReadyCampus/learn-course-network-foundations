@@ -184,7 +184,16 @@ for time, user, resource, action in TODAY_LOG:                   # 기록을 하
                 # 같은 사람 · 같은 권한의 예외가 있으면
                 if exception["user"] == user and exception["permission"] == permission:
                     # 만료 뒤 시도로 알린다
-                    print("[만료 뒤 시도]", time, user, resource, action, "- 만료된 예외", exception["id"], exception["expires"])
+                    print(
+                        "[만료 뒤 시도]",
+                        time,
+                        user,
+                        resource,
+                        action,
+                        "- 만료된 예외",
+                        exception["id"],
+                        exception["expires"]
+                    )
 
 print(counts)                                                    # 방식별 건수를 출력한다
 print("예외 사용", used)                                          # 예외 번호별 사용 건수를 출력한다
