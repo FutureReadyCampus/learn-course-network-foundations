@@ -163,9 +163,41 @@ from containment_store import new_state                                         
 from drill import handle_incident                                                         # 방금 만든 사건 처리 함수를 불러온다
 from shift_report import summarize, is_failure                                            # 방금 만든 근무 보고 함수를 불러온다
 
-extra_incidents = [{"id": "INC-008", "entity": "192.0.2.41", "grade": "low", "score": 30, "reasons": ["경로 스캔"], "status": "탐지됨"}, {"id": "INC-009", "entity": "192.0.2.10", "grade": "low", "score": 30, "reasons": ["경로 스캔"], "status": "탐지됨"}, {"id": "INC-010", "entity": "gaeun", "grade": "high", "score": 60, "reasons": ["퇴사한 계정"], "status": "탐지됨"}]  # 오늘 추가로 들어온 알림 3건 : 인사 오류로 퇴사자로 잘못 표시된 VIP, 함께 쓰는 IP, 점검 서버
+extra_incidents = [  # 오늘 추가 알림: 함께 쓰는 IP, 점검 서버, 인사 입력이 잘못된 VIP
+    {
+        "id": "INC-008",
+        "entity": "192.0.2.41",
+        "grade": "low",
+        "score": 30,
+        "reasons": ["경로 스캔"],
+        "status": "탐지됨",
+    },
+    {
+        "id": "INC-009",
+        "entity": "192.0.2.10",
+        "grade": "low",
+        "score": 30,
+        "reasons": ["경로 스캔"],
+        "status": "탐지됨",
+    },
+    {
+        "id": "INC-010",
+        "entity": "gaeun",
+        "grade": "high",
+        "score": 60,
+        "reasons": ["퇴사한 계정"],
+        "status": "탐지됨",
+    },
+]
 incidents = load_json(INCIDENTS_PATH) + extra_incidents                                   # Unit 1에 만든 알림 5건에 오늘 알림 3건을 이어 붙인다
-refs = {"users_info": load_json("users_info.json"), "source_ips": load_json("source_ips.json"), "trusted_ips": load_json("trusted_ips.json"), "vip_accounts": load_json("config/vip_accounts.json"), "allowlist_ips": load_json("config/allowlist_ips.json"), "ip_users": load_json("ip_users.json")}  # 판단에 쓰는 참고 데이터를 한 딕셔너리로 모은다
+refs = {
+    "users_info": load_json("users_info.json"),
+    "source_ips": load_json("source_ips.json"),
+    "trusted_ips": load_json("trusted_ips.json"),
+    "vip_accounts": load_json("config/vip_accounts.json"),
+    "allowlist_ips": load_json("config/allowlist_ips.json"),
+    "ip_users": load_json("ip_users.json"),
+}  # 판단에 쓰는 참고 데이터를 한 딕셔너리로 모은다
 state = new_state()                                                                       # 처음 상태에서 시작한다
 log = []                                                                                  # 이번 실행의 조치 기록을 모을 빈 리스트
 statuses = {}                                                                             # 인시던트별 처리 결과를 모을 딕셔너리
@@ -209,7 +241,7 @@ for record in log:                                                              
    python exercise5-2_run.py
    ```
 4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 8줄, 단계 2 는 5줄, 단계 3 은 3줄, 단계 4 는 4줄입니다.
-5. **[보고서]** `report_u5.md` 의 `## 실습 5-2` 아래를 채웁니다.
+5. **[실습 결과 기록]** `report_u5.md` 의 `## 실습 5-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣어 주세요. 그리고 단계 3 의 요약과 단계 4 의 건수를 적어 주세요.
    - (나) [핵심 질문] INC-005 는 `조치 실패` 로 나왔고 요약의 `확인 실패` 가 1 입니다. 단계 2 의 줄을 근거로 이유를 적고, 6번(`is_failure`, 확인 실패인지 구하는 함수)이 없다면 이 건이 근무 보고에서 어떻게 보일지 적어 주세요.
    - (다) [핵심 질문] INC-008 과 INC-009 는 모두 차단되지 않았습니다. INC-008 은 승인 대기이고 INC-009 는 조치하지 않음입니다. INC-003 과 INC-010 도 승인 대기입니다. INC-003 · INC-008 · INC-009 · INC-010 네 건이 왜 그렇게 나왔는지 단계 2 와 단계 4 의 줄을 근거로 적어 주세요. 또 이 네 건을 그대로 자동 처리했다면 누가 어떤 영향을 받았을지 적어 주세요.
@@ -226,9 +258,12 @@ for record in log:                                                              
 | 1 늘려 다시 저장 | `counts[kind] = counts[kind] + 1` |
 | 리턴된 값 두 개를 한 번에 받기(언패킹, unpacking: 값 두 개를 변수 두 개에 하나씩 저장) | `status, records = handle_incident(incident, state, refs)` |
 
+<!-- answer: 04|실습 5-2 정답 -->
+
+
 ---
 
-## 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기
+## 코드와 실습 결과 기록을 GitHub에 올리기
 
 <mark>문제가 아니라 오늘 한 일을 저장소에 올리는 마무리입니다.</mark> 실습 5-2 마지막 약 10분에 합니다. 어느 터미널을 써도 됩니다. 먼저 `pwd` 로 위치를 확인하고, 결과가 `soar_response` 로 끝날 때만 아래 1번의 `cd ..` 를 칩니다.
 
@@ -240,7 +275,7 @@ for record in log:                                                              
 
 **순서**
 
-0. **[터미널]** 오늘 만든 파일이 있는지 `soar_response` 폴더에서 확인합니다. 두 명령을 하나씩 칩니다. Unit 4 와 Unit 5 의 모든 질문의 `답:` 뒤와 코드 상자에 빈 곳이 없는지도 확인합니다(마무리 (가)는 3번에서 채웁니다).
+0. **[터미널]** 오늘 만든 파일이 있는지 `soar_response` 폴더에서 확인합니다. 두 명령을 하나씩 칩니다. Unit 4 와 Unit 5 의 질문과 코드 상자에 남은 빈 곳이 없는지도 확인합니다.
 
    ① 지금 위치를 확인합니다.
 
@@ -295,9 +330,7 @@ for record in log:                                                              
      - `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
    - `soar_response/__pycache__/` (파이썬이 실행하면서 자동으로 만드는 임시 폴더)가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 봅니다.
 
-3. **[보고서]** `report_u5.md` 의 `## 마무리` 아래를 채웁니다. <mark>올리기 전에 채워야</mark> 깃허브에 빈칸 없이 올라갑니다.
-   - (가) `git status` 를 쳤을 때 `.env` 나 `.venv` 가 보였는지, 보였다면 어떻게 했는지 적어 주세요.
-   - <mark>`report_u4.md` 와 `report_u5.md` 에서 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.</mark> 올린 뒤에 이어서 적어 다시 올려도 됩니다.
+3. **[실습 결과 기록]** `report_u5.md` 의 `## GitHub 업로드 점검` 아래에 `.env` 나 `.venv` 를 제외했는지와 확인 방법을 적습니다. `report_u4.md` 와 `report_u5.md` 의 미완료 칸은 `모름 — 막힌 곳: …` 으로 남겨도 됩니다.
 4. **[터미널]** 바뀐 파일을 모두 올릴 목록에 추가하고(`add`), 기록하고(`commit`), 올립니다(`push`). 세 명령을 순서대로 하나씩 칩니다.
 
    ① 바뀐 파일을 모두 올릴 목록에 추가합니다.
@@ -335,33 +368,45 @@ for record in log:                                                              
    - 깃허브에 빠진 이름이 있으면, 그 파일이 내 PC 의 `soar_response` 폴더(VS Code 왼쪽 목록)에는 있는지 봅니다.
      - 없으면 다른 폴더에 만든 것이니 `soar_response` 안으로 옮기고, `pwd` 로 위치를 확인한 뒤 2번의 `git status` 부터 다시 합니다.
 
-## 마무리 정리
+## 문제 해결 과정을 블로그에 기록하기
 
-| 하려는 일 | 코드 · 말 |
-|---|---|
-| 올릴 파일 확인 | `git status` (`.env` · `.venv` 가 보이면 멈춤) |
-| 올리기 | `git add .` → `git commit -m "…"` → `git push` |
-| 올린 뒤 | 브라우저에서 `soar_response` 폴더와 파일이 있는지 확인 |
+두 실습에서 실제로 판단한 문제 하나를 골라 GitHub 블로그에 기록합니다. 기술 결과인 `report_u5.md` 와 달리, 이 글에는 무엇이 문제였고 어떤 근거로 방법을 골랐는지, 직접 확인한 결과와 다음에 확인할 일을 남깁니다. 블로그 준비가 되어 있지 않다면 [M3 Unit 1 시작하기](__SITE__/exercises/module/3/unit/1/lesson/1/page/4)에서 GitHub Pages와 Jekyll 설정을 마친 뒤 돌아옵니다.
 
+예를 들어 `before` 와 `after` 를 비교해 자동 대응이 바꾼 상태만 되돌린 이유, 되돌릴 수 없는 세션 종료를 기록으로 남긴 이유, 방화벽 확인 실패를 근무 요약에서 구분한 이유 중 하나를 고릅니다. 아래 항목을 내 실제 실습 결과로 채웁니다. 확인하지 않은 사실은 확인한 것처럼 쓰지 않습니다.
+
+1. **문제 상황**: 어떤 상태나 출력이 문제였나요?
+2. **시도와 선택**: 어떤 조건이나 처리 방법을 골랐고, 그 이유는 무엇인가요?
+3. **확인한 결과**: 어떤 입력을 실행했고 어떤 결과를 직접 봤나요?
+4. **배운 점과 다음 행동**: 무엇을 배웠고, 다음에 무엇을 확인해야 하나요?
+5. **AI 도움**: 사용했다면 무엇을 물었고 어떤 답을 직접 검증했나요? 사용하지 않았다면 생략합니다.
+
+저장소 `network-study-notes` 의 `_posts` 폴더에 오늘 날짜를 넣은 글을 만듭니다. 날짜와 Module·Unit 정보를 고치고, 제목과 본문을 내 경험으로 작성합니다.
+
+<pre class="copyable"><code>---
+layout: post
+title: "자동 대응을 되돌릴 때 상태 기록을 비교한 이유"
+date: YYYY-MM-DD
+module: 5
+unit: 5
 ---
 
-## 이번 Unit 마무리
+# 문제 상황
 
-| 확인 | 문제 |
-|---|---|
-| 기록을 보고 자동이 바꾼 것만 되돌리고, 되돌릴 수 없는 조치는 따로 표시했다 | 실습 5-1 |
-| 알림 8건을 판단 → 조치로 처리하고, 기록을 요약해 확인 목록을 만들었다 | 실습 5-2 |
-| 오늘 만든 파일과 보고서를 깃허브에 올렸다 | 마무리 |
+# 시도와 선택
 
-**강의계획서 평가 기준 확인**
+# 확인한 결과
 
-| 기준 | 확인할 곳 |
-|---|---|
-| 계정 잠금 · IP 차단 · 세션 종료가 모두 동작한다 | Unit 4의 실습 4-1 · 4-2 · 4-3 출력, 실습 5-2 단계 2 |
-| VIP 계정 예외 처리가 된다(VIP 계정은 자동으로 잠그지 않고 승인 대기로 둔다) | Unit 4의 실습 4-1 단계 2, 실습 5-2의 INC-003 · INC-010 |
-| 모든 조치와 해제가 기록으로 남는다 | Unit 4의 실습 4-1 단계 3, 실습 5-1 단계 2 ~ 4 |
+# 배운 점과 다음 행동
 
-오늘은 연습용 시스템에서 실행했습니다. <mark>실제 제품에서는 `account_actions.py` · `ip_actions.py` · `session_actions.py` 안의 상태를 바꾸는 줄이, 계정 · 방화벽 · 인증 시스템에 실제로 명령을 보내는 코드로 바뀝니다.</mark> 기록 · 되돌릴지 정하기 · 요약하는 코드는 그대로 쓰고, 확인하는 줄은 실제 시스템의 상태를 조회하도록 바꿉니다.
+# AI 도움 (사용했다면)
+</code></pre>
+
+실습 결과 기록의 숫자나 출력은 필요한 부분만 인용합니다. 실습 파일과 글에 비밀번호, 토큰, 개인 이메일·전화번호, 실제 다른 사람의 이름이 없는지 확인합니다. 작성한 글과 코드는 M3 Unit 1의 [문제 해결 과정을 블로그에 기록하기](__SITE__/exercises/module/3/unit/1/lesson/15/page/1)에서 안내한 공개 전 확인과 GitHub 업로드 순서에 따라 올리고, GitHub Pages에서 새 글이 보이는지 확인합니다.
+
+<!-- checklist -->
+- [ ] 실제 실습의 문제·선택 이유·확인 결과·배운 점을 블로그 글에 기록했다
+- [ ] 공개 전 민감 정보를 확인하고 GitHub Pages에서 글을 확인했다
+<!-- /checklist -->
 
 ---
 

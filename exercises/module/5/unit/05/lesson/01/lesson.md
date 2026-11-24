@@ -18,12 +18,13 @@ Unit 4에서 계정 잠금 · IP 차단 · 세션 종료(세션, session: 로그
 - **실습 5-1**: 오탐으로 확인된 알림은 조치 기록을 보고 되돌립니다. <mark>자동이 바꾼 것만</mark> 되돌리고, 되돌릴 수 없는 조치는 따로 표시합니다(`undo_actions.py` · `rollback.py`).
 - **실습 5-2**: 알림 8건을 맥락 붙이기(알림에 사용자 · IP 정보를 붙임) → 경로 정하기(어떻게 처리할지 정함) → 조치 순서로 처리합니다. 그다음 기록을 종류별로 요약해 <mark>사람이 확인할 건 목록</mark>을 만듭니다(`drill.py` · `shift_report.py`). 방화벽(firewall, 파이어월: 허용하지 않은 IP 의 접속을 막는 장치) 연결이 끊긴 상황도 한 건 들어 있습니다.
 
-깃허브에 올리는 일은 실습 5-2 마지막에 합니다. 새 문법은 없습니다. 보고서에서 [핵심 질문]이 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 코드를 쓸 때는 들여쓰기를 미리 채운 줄에 맞추고, 각 번호 주석 바로 아래에 한 줄을 씁니다. 주석은 지우지 않습니다.
+깃허브에 올리는 일은 실습 5-2 마지막에 합니다. 새 문법은 없습니다. 실습 결과 기록에서 [핵심 질문]이 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 코드를 쓸 때는 들여쓰기를 미리 채운 줄에 맞추고, 각 번호 주석 바로 아래에 한 줄을 씁니다. 주석은 지우지 않습니다.
 
- **이전 파일**:
+ **실습에 필요한 이전 Unit 코드와 상태**:
 - 실습 5-1은 Unit 1의 `incident.py` 와 Unit 4 파일(`containment_store.py` · `account_actions.py` · `ip_actions.py`)을 씁니다. 실습 4-3이 저장한 `containment_state.json` · `containment_log.json` 도 씁니다.
 - 실습 5-2는 Unit 4 파일 전부와 Unit 4 데이터 파일(`config/vip_accounts.json` · `config/allowlist_ips.json` · `ip_users.json`)을 씁니다. Unit 1의 `incident.py` · `incident_samples.json`, Unit 2의 `enrichment.py` · `routing.py`, Unit 2 데이터(`users_info.json` · `source_ips.json` · `trusted_ips.json`)도 씁니다.
-- 없는 파일은 각 Unit의 코드 상자에서 복사해 만듭니다. Unit 1 파일은 Unit 1 시작하기 · 실습 1-1 · 실습 1-2, Unit 2 파일은 Unit 2 시작하기 · 실습 2-1 · 실습 2-2, Unit 4 파일은 Unit 4 시작하기 · 실습 4-1 ~ 4-3 레슨에 있습니다. `containment_state.json` · `containment_log.json` 은 Unit 4의 실습 4-3 실행 파일을 한 번 실행하면 생깁니다.
+- Unit 1의 `incident.py` 는 [M5 Unit 1 시작하기](__SITE__/exercises/module/5/unit/1/lesson/1/page/1)와 [실습 1-2](__SITE__/exercises/module/5/unit/1/lesson/3/page/1)의 코드에서, Unit 2의 `enrichment.py` · `routing.py` 는 [M5 Unit 2 시작하기](__SITE__/exercises/module/5/unit/2/lesson/1/page/1), [실습 2-1](__SITE__/exercises/module/5/unit/2/lesson/2/page/1)과 [실습 2-2](__SITE__/exercises/module/5/unit/2/lesson/3/page/1)에서 만듭니다.
+- Unit 4 코드는 [M5 Unit 4 시작하기](__SITE__/exercises/module/5/unit/4/lesson/1/page/1)와 실습 4-1 · 4-2 · 4-3 레슨의 코드 상자에서 가져옵니다. 이 Unit의 필수 경로는 해당 핵심 실습에서 만든 파일과 데이터만 사용합니다. `containment_state.json` · `containment_log.json` 은 Unit 4의 실습 4-3 실행 파일을 한 번 실행하면 생깁니다.
 
 ## 이전 조치 기록 확인하기
 
@@ -37,17 +38,24 @@ Unit 4에서 계정 잠금 · IP 차단 · 세션 종료(세션, session: 로그
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
    - Unit 4의 실습 4-3 실행 파일: `python exercise4-3_run.py` (맥북은 `python3`)
-3. 이 Unit에서 만드는 파일은 모두 각 실습 레슨의 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 답을 적는 보고서 `report_u5.md` 는 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
+3. 답을 적을 `report_u5.md` 를 [실습 결과 기록 준비](__SITE__/exercises/module/5/unit/5/lesson/5/page/1)에서 만들고, 출력과 판단 근거를 실습별로 기록합니다.
 4. **[터미널]** 실습 4-3이 남긴 파일이 정상인지 확인합니다(맥북은 `python3`). <mark>`['junho', 'dami'] 5` 가 나와야</mark> 합니다. `['junho'] 4` 가 나오면 Unit 4의 실습 4-3 실행 파일(`exercise4-3_run.py`)을 아직 한 번도 실행하지 않은 것입니다.
    ```bash
-   python -c "import json; print(json.load(open('containment_state.json', encoding='utf-8'))['locked_users'], len(json.load(open('containment_log.json', encoding='utf-8'))))"
+   python - <<'PY'
+   import json
+   from pathlib import Path
+
+   state = json.loads(Path("containment_state.json").read_text(encoding="utf-8"))
+   log = json.loads(Path("containment_log.json").read_text(encoding="utf-8"))
+   print(state["locked_users"], len(log))
+   PY
    ```
 
 ## 오류가 나면
 
 - `pwd` 가 `soar_response` 로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
 - `ModuleNotFoundError` 는 <mark>앞 파일(`account_actions.py` · `ip_actions.py` · `enrichment.py` 등)이 이 폴더에 없다는 뜻</mark>입니다. 앞 Unit 레슨의 코드 상자로 다시 만듭니다. `FileNotFoundError` 는 `config/vip_accounts.json` 같은 데이터 파일이 없다는 뜻이고, Unit 4 레슨의 코드 상자로 다시 만듭니다.
-- 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 막히면 맨 아래 「정답」을 보고, 풀리지 않으면 보고서에 「모름 — 막힌 곳: …」 이라고 씁니다.
+- 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 막히면 각 실습 바로 아래의 정답 펼침을 보고, 풀리지 않으면 실습 결과 기록에 「모름 — 막힌 곳: …」 이라고 씁니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다. 실습 5-1 실행 파일은 실습 4-3이 저장한 파일을 읽기만 하고 다시 저장하지 않아서, 몇 번을 실행해도 같은 결과가 나옵니다.
 
