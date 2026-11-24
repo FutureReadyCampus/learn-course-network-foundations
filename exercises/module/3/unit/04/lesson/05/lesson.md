@@ -1,6 +1,6 @@
 ---
 id: m3-u04-l05
-title: 도전 4-1 · 회수 대상의 회수 계획 세우기
+title: 응용 4-1 · 회수 대상의 회수 계획 세우기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,14 +9,14 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 도전 4-1 · 회수 대상의 회수 계획 세우기
+# 응용 4-1 · 회수 대상의 회수 계획 세우기
 
 ## 목표: 회수 계획
 
 > **이번 실습에 들어온 일**
 >
 > A사 관제 담당이 보낸 메시지:
-> 「Unit 3의 점검 결과에서 회수할 권한이 8건 나왔습니다. 그런데 바로 지워도 되는지 걱정됩니다. 예외로 받은 권한은 그 예외만 지우면 되지만, 역할로 받은 권한은 같은 역할을 가진 다른 사람에게도 영향이 갈 수 있기 때문입니다.
+> 「M3 Unit 3 시나리오의 점검 결과에서 회수할 권한이 8건 나왔습니다. 그런데 바로 지워도 되는지 걱정됩니다. 예외로 받은 권한은 그 예외만 지우면 되지만, 역할로 받은 권한은 같은 역할을 가진 다른 사람에게도 영향이 갈 수 있기 때문입니다.
 >
 > 지우기 전에 8건을 어떤 방법으로 회수할지, 그 회수로 몇 건의 권한이 사라지는지를 먼저 리스트로 보여 주세요.」
 > - **왜 중요한가**: 권한을 잘못 지우면 일하던 사람이 갑자기 접근하지 못합니다. 지우기 전에 방법과 영향을 먼저 확인하면 실수를 줄일 수 있습니다.
@@ -25,7 +25,7 @@ source:
 
 | Unit | 한 일 | 이번 Unit으로 이어지는 것 |
 |---|---|---|
-| Unit 3 · Unit 3 | 현황 리스트 → 규칙(퇴사 · 만료)과 사용 이력(권한을 마지막으로 쓴 시각의 기록. 90일)으로 후보 찾기 → 후보 10건에서 회수 제외 2건을 뺌 | 회수 대상 8건(`load_to_revoke` 가 리턴하는 리스트, 코드에서는 `findings`). 회수 제외 리스트의 3건 중 dami 의 권한은 「퇴사한 계정」이라 제외하지 않아, 실제 제외는 gaeun 의 `ACCOUNT:CHANGE` · seoyeon 의 `SALES:CHANGE` 2건입니다. |
+| M3 Unit 3 시나리오 | 접근 점검에서 회수 대상 후보 10건을 확인 | 실습 입력은 회수 대상 8건으로 고정되어 있습니다. 같은 사용자 · 권한의 예외 1건과 퇴사 계정 권한 1건은 남겨 회수 대상으로 처리합니다. |
 | Unit 1 | 역할 부여 · 퇴사 처리(`revoke_access`), 예외 만료, 최종 판정 `evaluate_access` | 실습 4-2의 회수 확인에 다시 씀 |
 
 ## 왜 회수 계획이 필요한가
@@ -98,7 +98,7 @@ source:
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="plan_revocation 은 회수 대상마다 회수 방법을 고르고 build_plan 으로 계획을 만든다"></figure>
 
-## 도전 4-1 · 회수 방법과 영향 범위 정하기
+## 응용 4-1 · 회수 방법과 영향 범위 정하기
 
 **이런 상황이 있습니다**
 
@@ -112,63 +112,12 @@ source:
 
 **할 일**
 
-1. `revoke_input.py` · `revoke_plan.py` · `challenge4-1_run.py` 세 파일을 만들고, `exception_id` · `count_users_by_role` · `build_plan` · `plan_revocation` 에서 직접 쓰는 곳 다섯 군데를 씁니다.
+1. `challenge_plan.py` · `challenge4-1_run.py` 두 파일을 만들고, `exception_id` · `count_users_by_role` · `build_plan` · `plan_revocation` 에서 직접 쓰는 곳 다섯 군데를 씁니다.
 2. 실행해서 <mark>회수 방법과 영향</mark>(단계 1: 계획), <mark>방법별 건수</mark>(단계 2: 집계), <mark>역할별 사용자 수와 이름</mark>(단계 3: 확인)를 읽습니다.
 
-**`revoke_input.py`** — 그대로 붙여 넣습니다. Unit 3의 점검 결과(회수 대상 8건)를 다시 만드는 도우미입니다. 학생이 쓰는 줄은 없습니다. Unit 3 · Unit 3의 파일이 없다면 이 코드 대신 바로 아래 「Unit 3 · 7 파일이 없을 때용」 코드를 붙여 넣습니다.
+**입력 준비** — 앞의 준비 Lesson에서 만든 `revoke_input.py`가 시나리오의 회수 대상 8건을 제공합니다. 이 optional 문제는 Unit 3 응용 파일을 다시 계산하지 않습니다.
 
-```python
-from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
-from review_list import build_access_list                        # 실습 3-1에서 만든 현황 함수를 불러온다
-from review_rules import find_stale                              # 도전 3-1에서 만든 규칙 점검 함수를 불러온다
-from review_unused import load_last_used, find_unused            # 실습 3-2에서 만든 안 쓴 권한 점검 함수를 불러온다
-from overprivilege import generate_report                        # 도전 3-2에서 만든 리포트 함수를 불러온다
-from report_exclude import load_exclude_map, split_by_exclude    # 도전 3-3에서 만든 회수 제외 함수를 불러온다
-
-REVIEW_TIME = datetime.strptime("2026-10-29 14:00", "%Y-%m-%d %H:%M")   # Unit 3에서 점검한 시각(고정). 같은 결과를 얻으려고 그 시각을 쓴다
-TIME_FORMAT = "%Y-%m-%d %H:%M"                                   # 시각 문자열의 형식
-
-
-def load_to_revoke():                                            # Unit 3의 점검 결과를 다시 만드는 함수
-    """Unit 3의 점검에서 나온 「회수 대상」 리스트(8개)를 리턴한다.
-    회수 계획을 세우기 전에 회수할 권한을 준비할 때 쓴다.
-    """
-    access_list = build_access_list()                            # 현황을 만든다
-    stale = find_stale(access_list, REVIEW_TIME)                 # 규칙에 걸린 권한을 찾는다
-    last_used_map = load_last_used()                             # 마지막 사용 시각 딕셔너리를 읽는다
-    unused = find_unused(access_list, last_used_map, REVIEW_TIME, 90)  # 90일 넘게 안 쓴 권한을 찾는다
-    generated_at = REVIEW_TIME.strftime(TIME_FORMAT)             # 리포트를 만든 시각을 문자열로 바꾼다
-    report = generate_report(access_list, stale, unused, 90, generated_at)  # 후보 리포트를 만든다
-    exclude_map = load_exclude_map("config/exclude_list.json")   # 회수 제외 리스트를 읽는다
-    to_revoke, excluded = split_by_exclude(report["findings"], exclude_map)   # 후보를 회수 대상과 회수 제외로 나눈다
-    return to_revoke                                             # 회수 대상 리스트만 리턴한다
-```
-
-**`revoke_input.py` — Unit 3 · 7 파일이 없을 때용** (파일이 있다면 위 코드를 씁니다)
-
-```python
-# Unit 3 · 7의 파일이 없을 때 쓰는 코드입니다. Unit 3의 점검 결과인 「회수 대상」 8건을 그대로 담았습니다.
-# Unit 3 · 7의 파일(review_list.py 등)이 없어도 이번 Unit을 따라올 수 있습니다. 그대로 붙여 넣고 고치지 않습니다.
-
-
-def load_to_revoke():                                            # Unit 3의 점검 결과(회수 대상)를 리턴하는 함수
-    """Unit 3의 점검에서 나온 「회수 대상」 리스트(8개)를 리턴한다.
-    회수 계획을 세우기 전에 회수할 권한을 준비할 때 쓴다.
-    """
-    to_revoke = [                                                # 회수 대상 8건(역할로 받은 3건 + 예외로 받은 5건)
-        {"user": "junho", "permission": "SALES:QUERY", "source": "역할 finance", "employed": True, "reasons": ["90일 넘게 안 씀(이력 없음 포함)"]},
-        {"user": "dami", "permission": "SALES:QUERY", "source": "역할 sales", "employed": False, "reasons": ["퇴사한 계정"]},
-        {"user": "dami", "permission": "SALES:CHANGE", "source": "역할 sales", "employed": False, "reasons": ["퇴사한 계정", "90일 넘게 안 씀(이력 없음 포함)"]},
-        {"user": "seoyeon", "permission": "SETTLE:QUERY", "source": "예외 1번", "employed": True, "expires": "2026-10-22 18:00", "reasons": ["만료된 예외", "90일 넘게 안 씀(이력 없음 포함)"]},
-        {"user": "junho", "permission": "SALES:CHANGE", "source": "예외 2번", "employed": True, "expires": "2026-10-20 18:00", "reasons": ["만료된 예외", "90일 넘게 안 씀(이력 없음 포함)"]},
-        {"user": "dami", "permission": "SALES:QUERY", "source": "예외 3번", "employed": False, "expires": "2026-10-31 18:00", "reasons": ["퇴사한 계정"]},
-        {"user": "batch-night", "permission": "SALES:QUERY", "source": "예외 4번", "employed": True, "expires": "2026-10-23 09:00", "reasons": ["만료된 예외", "90일 넘게 안 씀(이력 없음 포함)"]},
-        {"user": "gaeun", "permission": "SETTLE:QUERY", "source": "예외 5번", "employed": True, "expires": "2026-10-22 12:00", "reasons": ["만료된 예외", "90일 넘게 안 씀(이력 없음 포함)"]},
-    ]
-    return to_revoke                                             # 회수 대상 리스트를 리턴한다
-```
-
-**`revoke_plan.py`**
+**`challenge_plan.py`**
 
 ```python
 def exception_id(source):                                        # "예외 3번" 모양 문자열을 받는 함수
@@ -256,7 +205,7 @@ def plan_revocation(findings, users, roles):                     # 회수 대상
 - **미리 채운 함수**
   - `make_plan`: 회수 대상을 복사해 세 키를 추가한 계획을 만듭니다(판단이 없는 복사라 미리 채움).
   - `count_users_by_role` 의 `for info in users.values():` 에서 `.values()` 는 딕셔너리의 값만 하나씩 꺼냅니다.
-- **`load_to_revoke`**(`revoke_input.py` 에 들어 있고 그대로 붙여 넣습니다): Unit 3의 점검을 같은 방법으로 다시 해서 회수 대상 8건을 만듭니다.
+- **`load_to_revoke`**(`revoke_input.py`에 들어 있습니다): 핵심 실습에서 사용할 고정 시나리오 입력 8건을 돌려줍니다.
   - 같은 결과를 얻으려고 점검 시각은 `2026-10-29 14:00` 으로 고정했습니다.
 - 이번 실습의 데이터에서 영향이 2건 이상인 계획은 dami 의 역할 해제 두 건(영향 2)이고, 실습 4-1에서 승인 대상이 됩니다.
 - 10번의 `elif not info["employed"]` 는 「재직 여부(`employed`)가 `False` 이면」입니다.
@@ -265,12 +214,12 @@ def plan_revocation(findings, users, roles):                     # 회수 대상
 - 채우기 전에 실행하면 `NameError: name 'method' is not defined` 오류가 납니다.
   - 회수 방법(`method`)을 아직 정하지 않았는데 `build_plan` 에 전달하려 하기 때문입니다. 위의 `exception_id` · `count_users_by_role` · `build_plan` 은 채우기 전에도 오류가 나지 않습니다.
 
-**`challenge4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. Unit 3의 점검 결과를 만들고 `plan_revocation` 으로 계획을 세워 세 단계로 출력합니다.
+**`challenge4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 준비된 M3 Unit 3 시나리오 입력으로 `plan_revocation`을 호출해 세 단계로 출력합니다.
 
 ```python
 from rbac import USERS, ROLES                                    # Unit 1에서 만든 사용자 · 역할 딕셔너리를 불러온다
-from revoke_input import load_to_revoke                          # Unit 3의 점검 결과(회수 대상)를 만드는 함수를 불러온다
-from revoke_plan import plan_revocation                          # 방금 만든 회수 계획 함수를 불러온다
+from revoke_input import load_to_revoke                          # M3 Unit 3 시나리오의 점검 결과(회수 대상)를 만드는 함수를 불러온다
+from challenge_plan import plan_revocation                          # 방금 만든 회수 계획 함수를 불러온다
 
 to_revoke = load_to_revoke()                                     # Unit 3에서 점검한 회수 대상을 만든다
 plans = plan_revocation(to_revoke, USERS, ROLES)                 # 회수 계획을 세운다(실제로는 지우지 않는다)
@@ -299,22 +248,21 @@ for role in names_by_role:                                       # 두 역할을
 
 **순서**
 
-1. **[VS Code]** 파일 `revoke_input.py` · `revoke_plan.py` · `challenge4-1_run.py` 를 만들어 위 코드를 붙여 넣습니다. 
+1. **[VS Code]** `challenge_plan.py`와 `challenge4-1_run.py`를 만듭니다. `revoke_input.py`는 준비 Lesson에서 만든 고정 시나리오 입력을 사용합니다.
    - VS Code: `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력합니다.
-   - Unit 3 · Unit 3의 파일이 없다면 `revoke_input.py` 에 「Unit 3 · 7 파일이 없을 때용」 코드를 붙여 넣습니다.
-2. **[VS Code]** `revoke_plan.py` 에서 직접 쓰는 곳 다섯 군데(`exception_id` · `count_users_by_role` · `build_plan` · `plan_revocation`)를 씁니다. 1.1 의 카드와 표, 흐름 그림을 보고 씁니다.
+2. **[VS Code]** `challenge_plan.py`에서 직접 쓰는 곳 다섯 군데(`exception_id` · `count_users_by_role` · `build_plan` · `plan_revocation`)를 씁니다. 1.1 의 카드와 표, 흐름 그림을 보고 씁니다.
 3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
    python challenge4-1_run.py
    ```
 4. 출력은 세 단계입니다. 단계 1은 `회수 대상 8 건의 회수 방법` 줄과 계획 여덟 줄, 단계 2는 방법별 건수 딕셔너리 한 줄, 단계 3은 역할 두 줄(사용자 수와 이름)입니다.
-5. **[보고서]** `report_u4.md` 의 `## 도전 4-1` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
-   - (가) 실행한 출력 전체를 붙여 넣고, 회수 방법별 건수와 `finance` · `sales` 역할의 사용자 수를 적어 주세요.
-   - (나) [핵심 질문] dami 의 역할 `sales` 권한 `SALES:QUERY` 를 「`sales` 역할에서 `SALES:QUERY` 권한 빼기」로 회수했다면 누가 영향을 받았을까요? 코드가 퇴사한 dami 를 「역할 해제」로 정한 이유도 적어 주세요.
-   - (다) [핵심 질문] 회수 대상 8건 가운데 dami 의 권한이 3건입니다. 실제로 지우기 전에 회수 계획을 리스트로 먼저 만들어 보는 이유와, dami 3건을 처리하려고 데이터를 실제로 바꾸는 작업의 종류가 몇 가지인지(`users` 의 dami 정보를 바꾸는 일, 예외 리스트 `EXCEPTIONS` 에서 지우는 일 중 몇 가지가 필요한지) 적어 주세요.
+5. **실행 뒤 확인**
+회수 방법별 건수와 역할별 사용자 수를 살펴봅니다. dami의 역할 해제 계획과 역할에서 권한을 빼는 계획이 어떤 영향을 주는지 비교합니다.
 
-## 도전 4-1 정리
+<!-- answer: 08|도전 4-1 정답 -->
+
+## 응용 4-1 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|

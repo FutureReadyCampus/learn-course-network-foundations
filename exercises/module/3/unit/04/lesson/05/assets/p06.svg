@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
-<title>도전 4-1 정리: 방법 정하기, 예외 번호, 역할별 사용자 수, 영향 계산의 코드 조각</title>
+<title>응용 4-1 정리: 방법 정하기, 예외 번호, 역할별 사용자 수, 영향 계산의 코드 조각</title>
 <desc>왼쪽은 plan_revocation 이 방법을 정하는 조건과 세 값, 계획 한 건을 만드는 build_plan 입니다. 오른쪽은 exception_id, count_users_by_role, 영향 계산에서 직접 쓰는 줄입니다.</desc>
 <defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">도전 4-1 정리 — 코드 조각 지도</text>
+<text x="20" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">응용 4-1 정리 — 코드 조각 지도</text>
 <rect x="20" y="60" width="330" height="90" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="32" y="89.2" font-size="15" fill="#292929" text-anchor="start" font-weight="700">방법 정하기</text>
 <text x="32" y="110.2" font-size="15" fill="#292929" text-anchor="start">if "예외" in finding["source"]:</text>

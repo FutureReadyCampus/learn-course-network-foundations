@@ -23,7 +23,7 @@ source:
 
 ## 왜 승인이 필요한가
 
-1. 도전 4-1의 계획은 8건 모두 같은 방식으로 다룹니다. 하지만 권한마다 중요도가 다릅니다. 데이터를 바꾸는 권한(`CHANGE`)은 잘못 없애면 그 권한으로 일하던 사람의 업무가 멈추고 실제 서비스에서는 되돌리기도 어렵습니다.
+1. 준비 Lesson의 계획은 8건 모두 같은 방식으로 다룹니다. 하지만 권한마다 중요도가 다릅니다. 데이터를 바꾸는 권한(`CHANGE`)은 잘못 없애면 그 권한으로 일하던 사람의 업무가 멈추고 실제 서비스에서는 되돌리기도 어렵습니다.
 2. 그래서 승인이 필요한 경우를 둘로 정합니다. ① **민감한 권한**(sensitive · 센서티브, 잘못 없애면 피해가 큰 권한)인 경우입니다. ② 한 번의 회수로 권한이 2개 이상 사라지는 경우(영향 2건 이상)입니다. 예를 들어 퇴사한 dami 의 역할을 비우면 dami 가 그 역할로 받던 권한 2개가 모두 없어집니다. 이런 경우에는 보안 책임자의 승인을 받고, 그 밖의 일반 권한 한 건은 바로 회수합니다.
 3. 이 실습에서는 계획마다 승인이 필요한지, 필요하다면 승인됐는지를 **승인 상태**로 적습니다. 실제로 지우는 일은 실습 4-2에서 합니다.
 
@@ -64,7 +64,7 @@ source:
 
 **이런 상황이 있습니다**
 
-- **지금은**: 도전 4-1의 계획 8건이 모두 같은 리스트에 섞여 있습니다. 쓰기 권한처럼 승인이 필요한 것과 바로 회수해도 되는 것을 담당자가 눈으로 가려야 합니다.
+- **지금은**: 준비 Lesson의 계획 8건이 모두 같은 리스트에 섞여 있습니다. 쓰기 권한처럼 승인이 필요한 것과 바로 회수해도 되는 것을 담당자가 눈으로 가려야 합니다.
 - **그래서 만드는 것**: `mark_approvals` 입니다.
   - 승인이 필요 없는 계획은 「승인 불필요」, 승인이 필요하고 보안 책임자가 승인하기로 한 계획은 「승인됨」, 승인이 필요한데 아직 결정이 없는 계획은 「승인 대기」로 `approval` 키에 적습니다.
 - **실행하면**: 단계 1은 계획 8건의 승인 상태를 출력하고, 단계 2는 승인 상태별 건수를 출력합니다.
@@ -143,24 +143,27 @@ def mark_approvals(plans, sensitive, decisions):                 # 계획 리스
 - 5번의 `not needs` 는 「승인이 필요하지 않으면」입니다(`needs` 는 승인이 필요한지의 참 · 거짓). `not` 은 참과 거짓을 뒤집습니다.
 - 채우기 전에 실행하면 `KeyError: 'approval'` 오류가 납니다. 승인 상태(`approval`)를 아직 적지 않았기 때문입니다.
 
-**`exercise4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 도전 4-1의 계획을 만든 뒤 `mark_approvals` 로 승인 상태를 정하고 두 단계로 출력합니다.
+**`exercise4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 준비 Lesson의 계획을 만든 뒤 `mark_approvals` 로 승인 상태를 정하고 두 단계로 출력합니다.
 
 ```python
 from rbac import USERS, ROLES                                    # Unit 1에서 만든 사용자 · 역할 딕셔너리를 불러온다
 from revoke_input import load_to_revoke                          # Unit 3의 점검 결과(회수 대상)를 만드는 함수를 불러온다
-from revoke_plan import plan_revocation                          # 도전 4-1에서 만든 회수 계획 함수를 불러온다
+from revoke_plan import plan_revocation                          # 준비 Lesson에서 만든 회수 계획 함수를 불러온다
 from revoke_approve import load_sensitive, mark_approvals        # 방금 만든 승인 함수를 불러온다
 
 DECISIONS = {"dami:SALES:QUERY": "승인", "dami:SALES:CHANGE": "승인"}  # 보안 책임자의 결정. 여기 없는 계획은 아직 결정하지 않은 것이다
 
 to_revoke = load_to_revoke()                                     # Unit 3에서 점검한 회수 대상을 만든다
-plans = plan_revocation(to_revoke, USERS, ROLES)                 # 도전 4-1과 같은 방법으로 회수 계획을 세운다
+plans = plan_revocation(to_revoke, USERS, ROLES)                 # 준비 Lesson에서 익힌 방법으로 회수 계획을 세운다
 sensitive = load_sensitive("config/sensitive.json")              # 민감한 권한 리스트를 읽는다
 results = mark_approvals(plans, sensitive, DECISIONS)            # 계획마다 승인 상태를 적는다
 
 print("--- 단계 1: 승인 상태 - 계획 8건")                        # 단계 1 시작을 알리는 줄
 for item in results:                                             # 결과를 하나씩 꺼낸다
-    print(item["user"], item["permission"], "<-", item["source"], "|", item["method"], "| 영향", item["impact"], "건 |", item["approval"])  # 사용자 · 권한 <- 출처 | 방법 | 영향 | 승인 상태를 출력한다
+    print(                                                         # 계획 한 건의 승인 상태를 출력한다
+        item["user"], item["permission"], "<-", item["source"],
+        "|", item["method"], "| 영향", item["impact"], "건 |", item["approval"]
+    )
 
 print("--- 단계 2: 집계 - 승인 상태별 건수")                     # 단계 2 시작을 알리는 줄
 counts = {}                                                      # 승인 상태 → 건수를 담을 빈 딕셔너리
@@ -184,10 +187,10 @@ print(counts)                                                    # 승인 상태
    python exercise4-1_run.py
    ```
 5. 출력은 두 단계입니다. 단계 1은 `계획 8건` 제목 줄과 계획 여덟 줄(줄마다 승인 상태), 단계 2는 승인 상태별 건수 딕셔너리 한 줄입니다.
-6. **[보고서]** `report_u4.md` 의 `## 실습 4-1` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 「승인 불필요」 · 「승인됨」 · 「승인 대기」가 각각 몇 건인지, 승인 대기인 계획이 무엇인지 적어 주세요.
-   - (나) [핵심 질문] 권한을 없애는 일인데 왜 쓰기 권한 같은 민감한 권한은 승인을 받게 할까요? 조회 같은 일반 권한 한 건은 바로 회수해도 되는 이유도 적어 주세요.
-   - (다) [핵심 질문] junho 의 `SALES:CHANGE`(예외 2번) 계획은 승인 대기입니다. 실습 4-2에서 이 계획은 어떻게 처리될지 예상해서 적고, 승인이 오래 나지 않으면 어떤 문제가 생길지도 적어 주세요.
+6. **핵심 작업 기록**: 실습 4-2까지 마친 뒤 「문제 해결 과정을 블로그에 기록하기」에서 이 결과와 판단 근거를 정리합니다.
+
+
+<!-- answer: 08|실습 4-1 정답 -->
 
 ## 실습 4-1 정리
 
