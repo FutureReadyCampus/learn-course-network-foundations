@@ -20,7 +20,7 @@ Unit 2에서는 웹 서버 · 판정 서버 · SaaS 로그 3종류를 같은 형
 
 이번 Unit은 실습 3-1과 실습 3-2로 이루어져 있고, 깃허브에 올리는 일은 실습 3-2 마지막에 합니다. 실습마다 문제는 하나입니다.
 
-- 이번 Unit에서 쓰는 도구는 **파이썬 · VS Code · 터미널 · git** 이고, 판다스를 처음 씁니다. 도커는 Unit 9에서 씁니다.
+- 이번 Unit에서 쓰는 도구는 **파이썬 · VS Code · 터미널 · git** 이고, 판다스를 처음 씁니다.
 - 새로 나오는 판다스 문법은 아래 「판다스 문법 상자」에서 코드와 실행 결과, 표가 바뀌는 모양과 함께 설명합니다.
 - 이벤트 데이터는 문서에 붙여 넣는 **샘플 파일**(`normalized_events.json`) 하나만 씁니다. 57개이고, Unit 2에서 정규화한 결과와 같은 키로 되어 있습니다.
   - 이번 Unit에서 불러 쓰는 이전 파일은 없습니다. Unit 2의 파일이 없어도 풀 수 있습니다.
@@ -37,15 +37,19 @@ Unit 2에서는 웹 서버 · 판정 서버 · SaaS 로그 3종류를 같은 형
    cd anomaly_detection
    pwd
    python -m pip install pandas
-   python -c "import pandas; print(pandas.__version__)"
+   python - <<'PY'
+   import pandas
+
+   print(pandas.__version__)
+   PY
    ```
    - <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나야</mark> 합니다.
    - 설치가 끝나면 <mark>`Successfully installed …` 또는 `Requirement already satisfied` 가 나옵니다.</mark> 마지막에 `WARNING: You are using pip version …` 이 나와도 무시합니다.
    - <mark>마지막 명령에서 점이 든 숫자(예: `2.3.3`)가 나오면</mark> 판다스를 쓸 수 있습니다.
-4. **파일은 이렇게 만듭니다.** 이 페이지에 나오는 파일은 모두 이 페이지의 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
+4. **파일은 이렇게 만듭니다.** 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
    1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다.
    2. 코드 상자의 복사 버튼으로 내용을 복사해 새 파일에 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
-5. 답을 적는 **보고서**(`report_u3.md`)도 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
+5. 앞의 「실습 결과 기록 준비」에서 만든 기술 기록 파일(`report_u3.md`)을 엽니다.
 6. **[VS Code]** `anomaly_detection` 폴더에 `normalized_events.json` 파일을 만들어 아래 내용을 그대로 붙여 넣습니다.
 
 **`normalized_events.json`** — 정규화된 이벤트 샘플입니다. 한 줄이 이벤트 1개이고, 시간순으로 정렬되어 있습니다. `raw`(원래 로그 한 줄 전체)는 길어서 이 파일에서 뺐습니다. `null` 은 그 값이 로그에 없다는 뜻입니다.
@@ -114,7 +118,13 @@ Unit 2에서는 웹 서버 · 판정 서버 · SaaS 로그 3종류를 같은 형
 
 7. **[터미널]** 이벤트가 57개인지 확인합니다(맥북은 `python3`).
    ```bash
-   python -c "import json; print(len(json.load(open('normalized_events.json', encoding='utf-8'))))"
+   python - <<'PY'
+   import json
+   from pathlib import Path
+
+   events = json.loads(Path('normalized_events.json').read_text(encoding='utf-8'))
+   print(len(events))
+   PY
    ```
    - <mark>`57` 이 나와야</mark> 합니다. 아니면 붙여 넣다가 줄이 빠졌거나 `[` `]` 가 빠진 것입니다. 다시 붙여 넣습니다.
 
@@ -123,7 +133,7 @@ Unit 2에서는 웹 서버 · 판정 서버 · SaaS 로그 3종류를 같은 형
 - 먼저 `pwd` 가 `anomaly_detection` 으로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
 - `No module named 'pandas'`: 판다스가 설치되지 않았거나 가상환경이 꺼진 터미널입니다. 위 2 · 3번을 같은 터미널에서 다시 합니다.
 - `FileNotFoundError` · `ValueError`: 위치나 파일 이름이 틀렸거나, 붙여 넣은 JSON 의 `[` `]` · 쉼표가 틀렸습니다.
-- 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 막히면 맨 아래 「정답」을 보고, 풀리지 않으면 보고서 (가)에 「모름 — 막힌 곳: …」 이라고 쓰고 넘어갑니다.
+- 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 막히면 각 실습 페이지의 정답 접기를 보고, 풀리지 않으면 `report_u3.md`에 「모름 — 막힌 곳: …」이라고 기록하고 넘어갑니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다(맥북은 `python3`).
 
