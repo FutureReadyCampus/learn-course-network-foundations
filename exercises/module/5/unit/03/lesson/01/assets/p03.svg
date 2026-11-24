@@ -34,7 +34,7 @@
 <text x="365" y="302.21" font-size="14" fill="#292929" text-anchor="middle">(.env · API 키는 지움)</text>
 <rect x="510" y="252" width="190" height="72" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="605" y="281.91" font-size="14" fill="#292929" text-anchor="middle">AI 에게 묻기</text>
-<text x="605" y="302.21" font-size="14" fill="#292929" text-anchor="middle">정답 보기 · 「모름」</text>
+<text x="605" y="302.21" font-size="14" fill="#292929" text-anchor="middle">정답과 해설 보기 · 기록</text>
 <polyline points="222,288 248,288" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
 <polyline points="482,288 508,288" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
 <text x="20" y="346" font-size="14" fill="#666660">실행은 VS Code 의 ▶ 단추가 아니라 터미널에서 합니다.</text>

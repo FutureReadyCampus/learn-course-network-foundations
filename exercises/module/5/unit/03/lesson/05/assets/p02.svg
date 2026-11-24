@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 350" role="img">
-<title>실습 3-1 보고서: 출력과 숫자, INC-005·INC-003 의 이유를 채웁니다</title>
-<desc>실습 3-1 보고서에 채울 칸입니다. (가)는 출력과 숫자, (나)는 INC-005 가 실행되지 않은 이유와 위험, (다)는 INC-003 의 승인 대기 이유와 거절 뒤 상태, 감사 기록을 씁니다.</desc>
+<title>실습 3-1 기록: 출력과 숫자, INC-005·INC-003 의 이유를 채웁니다</title>
+<desc>실습 3-1 실행 결과와 근거입니다. (가)는 출력과 숫자, (나)는 INC-005 가 실행되지 않은 이유와 위험, (다)는 INC-003 의 승인 대기 이유와 거절 뒤 상태, 감사 기록을 씁니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 3-1 보고서에 채울 칸</text>
+<text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">실습 3-1 실행 결과와 근거</text>
 <rect x="24" y="60" width="130" height="85" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="89.0" y="107.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="89.0" dy="0" font-weight="700">(가)</tspan></text>
 <rect x="166" y="60" width="530" height="85" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
