@@ -1,16 +1,14 @@
 ---
 id: m3-u02-l05
-title: 제공 파일
+title: 권한 부여 준비
 render: markdown
 ---
 
-# 제공 파일
+# 권한 부여 준비
 
-## 제공 파일 쓰는 법
+## 승인된 요청에 권한을 부여할 준비
 
-**「제공 파일」이란?** 미리 다운로드할 파일이 따로 있는 것이 아닙니다. 다음 쪽의 완성된 파이썬 코드를 복사해 내 컴퓨터에 `req_grant.py` 로 직접 저장합니다. 이것은 테스트 코드가 아니라, 승인된 요청을 처리하는 보조 함수입니다. 핵심 실습을 마친 뒤 준비해 두며 응용 2-3에서 불러 씁니다.
-
-**실습 2-2를 마친 뒤** 이 레슨의 파일 하나를 만듭니다. 요청서 흐름은 접수 → 승인 · 반려 → **부여**(실제로 권한을 주는 것) 순서입니다. 마지막 부여 함수 `grant_request` 는 응용 2-1에서 만드는 것이라, 오늘은 완성본을 받아 씁니다.
+실습 2-1과 2-2에서 요청을 접수하고 승인하거나 반려했습니다. 이제 승인된 요청에 실제로 권한을 부여하는 함수를 준비합니다. 아래 코드는 앞에서 만든 역할 판정과 예외 목록을 사용해, 권한을 부여해도 되는지 확인하고 요청 상태를 바꿉니다.
 
 1. 파일은 `access_control` 폴더 안에 만듭니다. 만드는 방법은 실습 2-1과 같습니다(VS Code 왼쪽 목록에서 `access_control` 폴더를 오른쪽 클릭 › **New File**).
 2. 아래 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
@@ -18,17 +16,15 @@ render: markdown
    - 승인된(`approved`) 요청서를 받아 `rbac.py` 의 `check_permission` 으로 지금 정책을 한 번 더 확인합니다.
    - 결과가 「권한 없음」(사람은 정상인데 그 권한만 없음)일 때만 `exception_policy.py` 의 `EXCEPTIONS` 에 예외 한 건을 추가합니다.
    - 그다음 요청서의 상태를 `granted` 로 바꿉니다.
-4. 파일을 만들었으면 터미널에서 불러지는지 확인합니다. `제공 파일 정상` 이 나오면 됩니다. 먼저 `pwd` 가 `…/access_control` 로 끝나는지 보고, `…/network-study-notes` 로 끝나면(마무리에서 `cd ..` 를 한 경우) `cd access_control` 로 들어갑니다.
+4. 파일을 만들었으면 터미널에서 불러지는지 확인합니다. `준비 완료`가 나오면 됩니다. 먼저 `pwd` 가 `…/access_control` 로 끝나는지 보고, `…/network-study-notes` 로 끝나면(마무리에서 `cd ..` 를 한 경우) `cd access_control` 로 들어갑니다.
    ```bash
    # 이 명령은 전체를 복사해 Git Bash에 붙여 넣어 실행하세요.
    python -c "
    from req_grant import grant_request
-   print('제공 파일 정상')
+   print('준비 완료')
    "
    ```
-5. 오늘 핵심 실습에서는 이 파일을 실행하지 않습니다. 응용 2-3이 이 파일을 불러 쓰고, 「이번 Unit 마무리」에서 다른 파일과 함께 깃허브에 올립니다.
-
-> 여유가 되어 응용 2-1을 하면, 이 파일을 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 다 쓴 뒤 `apply2-1_run.py` 의 출력이 응용 2-1 정답과 같으면 이 완성본과 같게 동작하는 것입니다.
+5. 준비가 끝났으면 다음 단계로 갑니다. 이 함수를 만들 때 앞의 핵심 실습에서 만든 파일을 그대로 사용합니다.
 
 > **확인** — 만들 파일이 `req_grant.py` 하나이고, 4번 명령으로 확인한다는 것을 알면 성공입니다. 다음 페이지에서 파일을 만듭니다.
 
@@ -69,9 +65,9 @@ def grant_request(request):                                      # 요청서를 
     return True, "부여"                                          # 부여했다고 알린다
 ```
 
-**확인** — `access_control` 폴더에서 4번 명령(`python -c "from req_grant import grant_request; print('제공 파일 정상')"`)을 쳐서 `제공 파일 정상` 이 나오면 성공입니다. `ModuleNotFoundError: No module named 'req_grant'` 가 나오면 파일 이름과 폴더를, `SyntaxError` 나 `IndentationError` 가 나오면 복사가 덜 된 것이니 내용을 지우고 다시 붙여 넣습니다.
+**확인** — `access_control` 폴더에서 4번 명령(`python -c "from req_grant import grant_request; print('준비 완료')"`)을 쳐서 `준비 완료`가 나오면 성공입니다. `ModuleNotFoundError: No module named 'req_grant'` 가 나오면 파일 이름과 폴더를, `SyntaxError` 나 `IndentationError` 가 나오면 복사가 덜 된 것이니 내용을 지우고 다시 붙여 넣습니다.
 
 <!-- checklist -->
 - [ ] `access_control` 폴더에 `req_grant.py` 를 만들어 코드 상자 내용을 붙여 넣고 저장했다
-- [ ] `python -c "from req_grant import grant_request; print('제공 파일 정상')"` 을 실행해 `제공 파일 정상` 이 나왔다
+- [ ] `python -c "from req_grant import grant_request; print('준비 완료')"` 을 실행해 `준비 완료`가 나왔다
 <!-- /checklist -->

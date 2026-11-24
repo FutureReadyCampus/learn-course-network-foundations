@@ -30,11 +30,11 @@ ls config
 | 파일 | 만든 곳 |
 |---|---|
 | `rbac.py` · `exercise1-2_run.py` | 실습 1-2 |
-| `exception_policy.py` · `config_loader.py` | 「제공 파일」 |
+| `exception_policy.py` · `config_loader.py` | 「예외 판정 준비」 |
 | `policy.py` · `exercise1-3_run.py` | 실습 1-3 |
 | `report_u1.md` | 「문제 해결 기록 쓰기」 |
 | `config/users.json` · `config/roles.json` | 실습 1-1 |
-| `config/exceptions.json` | 「제공 파일」 |
+| `config/exceptions.json` | 「예외 판정 준비」 |
 
 **3. 깃허브에 올리기**
 
