@@ -8,15 +8,11 @@ lessons:
 - path: lesson/04/lesson.md
 - path: lesson/05/lesson.md
 - path: lesson/15/lesson.md
-- path: lesson/14/lesson.md
 - path: lesson/06/lesson.md
 - path: lesson/07/lesson.md
 - path: lesson/08/lesson.md
 - path: lesson/09/lesson.md
 - path: lesson/10/lesson.md
-- path: lesson/12/lesson.md
-- path: lesson/13/lesson.md
-- path: lesson/11/lesson.md
 ---
 
 # 역할로 권한 정하기

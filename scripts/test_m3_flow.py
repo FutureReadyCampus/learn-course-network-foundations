@@ -31,7 +31,9 @@ class M3FlowTest(unittest.TestCase):
                 self.assertIn("_posts", rendered)
                 self.assertIn("## 문제 상황", rendered)
                 self.assertIn("## 확인한 결과", rendered)
-                self.assertIn("다음 「이번 Unit 마무리」", rendered)
+                self.assertIn("python check_publish.py", rendered)
+                self.assertIn("git push", rendered)
+                self.assertNotIn("이번 Unit 마무리", rendered)
                 self.assertTrue(any(page.get("checklist") for page in pages))
 
 

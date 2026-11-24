@@ -79,8 +79,21 @@ unit: 2
 
 글과 `access_control` 코드에 비밀번호, 토큰, 개인 이메일·전화번호, 실제 다른 사람의 이름이 없는지 확인합니다. 화면 캡처가 있다면 내 컴퓨터 사용자 이름 등 개인 정보도 확인합니다. 자세한 내용은 [공개 전 점검](__SITE__/exercises/module/3/unit/1/lesson/1/page/12)을 참고하세요.
 
-**아직 올리지 않습니다.** 바로 다음 「이번 Unit 마무리」에서 `python check_publish.py` 로 확인하고 실습 코드와 이 글을 한 번에 GitHub에 올립니다. 올린 뒤 GitHub Pages 사이트의 최신 글에 내 글이 보이는지 확인합니다. 보이지 않으면 [첫 화면 확인하고 막힐 때](__SITE__/exercises/module/3/unit/1/lesson/1/page/9)를 확인합니다.
+이제 글과 실습 코드를 함께 올립니다. VS Code에서 `network-study-notes` 폴더를 열고 **Terminal › New Terminal**로 Git Bash를 엽니다. `pwd` 결과가 `…/network-study-notes`로 끝나는지 확인합니다. 다르면 저장소 폴더를 오른쪽 클릭하고 **Open in Integrated Terminal**을 선택합니다.
+
+1. `git status -u`로 올릴 파일을 살펴봅니다. `.env`나 `.venv`가 보이면 올리지 말고 `.gitignore` 설정을 확인합니다.
+2. `python check_publish.py`를 실행합니다. 오류나 주의가 나오면 내용을 고치고 다시 실행합니다.
+3. 확인을 마쳤으면 아래 명령을 차례로 실행합니다.
+
+```bash
+git add .
+git commit -m "Add module 3 unit 2 practice and post"
+git push
+```
+
+4. GitHub 저장소에 실습 코드가 있는지, GitHub Pages 사이트에 새 글이 보이는지 확인합니다. 글이 보이지 않으면 [첫 화면 확인하고 막힐 때](__SITE__/exercises/module/3/unit/1/lesson/1/page/9)를 확인합니다. `git push`가 거절되면 변경 사항을 먼저 확인하고 원격 저장소의 변경을 받아온 뒤 다시 시도합니다.
 
 <!-- checklist -->
-- [ ] 글과 코드에서 공개하면 안 되는 정보가 없는지 확인했다
+- [ ] 글과 코드에 공개하면 안 되는 정보가 없는지 확인하고 공개 전 점검을 실행한 뒤 GitHub에 올렸다
+- [ ] GitHub 저장소의 실습 코드와 GitHub Pages의 새 글을 확인했다
 <!-- /checklist -->
