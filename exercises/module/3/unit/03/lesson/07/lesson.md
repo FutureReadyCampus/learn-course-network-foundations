@@ -13,7 +13,7 @@ source:
 
 ## 목표: 회수 제외 리스트
 
-> 여유가 되면 해 보세요. 「제공 파일」로 받은 `report_exclude.py` 를 이번에는 직접 써 봅니다.
+> 여유가 되면 해 보세요. 이번 응용에서 새로 만드는 `report_exclude.py` 를 이번에는 직접 써 봅니다.
 
 > **이번 실습에 들어온 일**
 >
@@ -85,10 +85,10 @@ source:
 
 **할 일**
 
-1. `config/exclude_list.json` 은 「제공 파일」에서 이미 만들었으니 그대로 둡니다. 「제공 파일」로 만든 `report_exclude.py` 의 내용을 모두 지우고 아래 골격으로 바꾼 뒤, `apply3-3_run.py` 를 새로 만듭니다. 그다음 `exclude_key` · `load_exclude_map` · `can_exclude` · `split_by_exclude` 에서 직접 쓰는 곳 네 군데를 씁니다.
+1. `config/exclude_list.json`을 아래 JSON 코드 상자로 만들고 저장합니다. `report_exclude.py`는 이 응용에서 새 파일로 만들고 아래 골격을 붙인 뒤, `apply3-3_run.py`도 새로 만듭니다. 그다음 `exclude_key` · `load_exclude_map` · `can_exclude` · `split_by_exclude` 에서 직접 쓰는 곳 네 군데를 씁니다.
 2. 실행해서 <mark>분류 건수</mark>(단계 1: 분류), <mark>회수 제외한 후보</mark>(단계 2: 제외), <mark>회수 대상으로 남은 후보</mark>(단계 3: 확인)를 읽습니다.
 
-**`config/exclude_list.json`** — 「제공 파일」에서 만든 회수 제외 리스트입니다. 다시 만들지 않고, 내 파일이 아래와 같은지만 봅니다. 없으면 「제공 파일」 레슨에서 만듭니다.
+**`config/exclude_list.json`** — 담당자가 회수하지 않을 권한과 이유를 기록하는 이 응용의 입력 데이터입니다. `access_control/config` 폴더에 아래 내용을 저장합니다.
 
 ```json
 [
@@ -239,14 +239,16 @@ for item in to_revoke:                                           # 회수 대상
 - [ ] `python apply3-3_run.py` 를 실행해 `회수 대상 8 건, 회수 제외 2 건` 이 나왔다
 <!-- /checklist -->
 
-6. **[보고서]** `report_u3.md` 의 `## 응용 3-3` 아래를 채웁니다.
+6. 선택 응용의 출력은 문제 해결 블로그 글에 추가할 수 있습니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 회수 대상과 회수 제외가 각각 몇 건인지, 회수 제외된 후보와 제외한 이유를 적어 주세요.
    - (나) [핵심 질문] 단계 3 출력을 보면 다미의 `SALES:QUERY` 는 제외 리스트에 있는데 회수 대상으로 남았습니다. 왜 제외하지 않게 만들었을까요? 제외했다면 어떤 위험이 있을지도 적어 주세요.
    - (다) [핵심 질문] 제외 리스트에는 제외하는 기간을 적는 키가 없습니다. 한 번 적은 권한을 아무도 다시 확인하지 않으면 어떤 문제가 생길까요? 리스트에 권한을 추가할 때 누가 확인하면 좋을까요?
 
 <!-- checklist optional -->
-- [ ] `report_u3.md` 의 `## 응용 3-3` 칸을 채웠다
+- [ ] 응용 3-3 결과와 판단 근거를 문제 해결 기록에 추가했다
 <!-- /checklist -->
+
+<!-- answer: 08|응용 3-3 정답 -->
 
 ## 응용 3-3 정리
 
@@ -262,7 +264,7 @@ for item in to_revoke:                                           # 회수 대상
 | 제외된 후보 담기 | `excluded.append(excluded_entry)` | `split_by_exclude` |
 | 둘로 나눠 리턴 | `return to_revoke, excluded` | `split_by_exclude` |
 
-- 응용을 마쳤으면 실습 3-2 끝의 「이번 Unit 마무리」 3번으로 바뀐 파일을 다시 올립니다.
+- 응용 파일을 GitHub에 추가하려면 [문제 해결 과정을 블로그에 기록하기](__SITE__/exercises/module/3/unit/3/lesson/9/page/4)의 코드 업로드 순서를 다시 진행합니다.
 
 ---
 

@@ -21,7 +21,7 @@ source:
 > 이번에는 뽑기만 하고 회수하지는 않습니다. 어떤 권한을 회수할지는 후보를 본 뒤에 정하겠습니다.」
 > - **왜 중요한가**: 계정을 다른 사람이 가로채면, 그 계정이 가진 권한만큼 가로챈 사람이 할 수 있는 일이 생깁니다. 쓰지도 않는 권한이 많을수록 그 일만 늘어납니다. 사용 이력의 「마지막으로 쓴 시각」을 보면 90일 넘게 안 쓴 권한을 찾아 줄일 수 있습니다.
 > - 이 실습에서 하는 일: 90일 넘게 안 쓴 권한을 찾는 함수 `find_unused` 를 `review_unused.py` 에 만듭니다. 대부분은 미리 채워 두었고, 마지막 사용 시각을 꺼내는 줄과 90일을 넘었는지 보는 조건 줄(①·②)만 직접 씁니다.
-> - 끝나면 쓰는 것: 보고서 (가) 답. (나) · (다)는 여유가 되면 하는 응용입니다
+> - 끝나면 확인할 것: 90일 기준으로 찾은 후보와 날짜 경계. 판단 이유는 두 핵심 실습 뒤 블로그에 기록합니다.
 
 ## 왜 안 쓰는 권한을 찾아야 하는가
 
@@ -70,7 +70,7 @@ seoyeon:SALES:QUERY
 | `last_used_map` | 사용 이력 딕셔너리 | 「사용자:권한」 문자열 → 마지막으로 쓴 시각 문자열 |
 | `"last_used"` | 후보에 추가하는 키 | 마지막으로 쓴 시각 문자열 (이력이 없으면 `None`) |
 
-- 실행 파일은 `find_unused` 를 부르기 전에, 「제공 파일」 `review_rules.py` 의 `find_stale` 로 규칙(퇴사 · 만료)에 이미 걸린 권한 일곱 건(퇴사한 dami 포함)을 현황에서 뺍니다. (참고 · 읽기만) 이 빼는 코드는 실행 파일에 이미 적혀 있어 붙여 넣기만 하면 됩니다. 거기서 쓰는 「사용자:권한:받은 방식」 문자열(**식별 키**)은 위 「사용자:권한」 키와 다른 것이니 지금은 신경 쓰지 않아도 됩니다.
+- 실행 파일은 `find_unused` 를 부르기 전에, 핵심 준비 레슨 `review_rules.py` 의 `find_stale` 로 규칙(퇴사 · 만료)에 이미 걸린 권한 일곱 건(퇴사한 dami 포함)을 현황에서 뺍니다. (참고 · 읽기만) 이 빼는 코드는 실행 파일에 이미 적혀 있어 붙여 넣기만 하면 됩니다. 거기서 쓰는 「사용자:권한:받은 방식」 문자열(**식별 키**)은 위 「사용자:권한」 키와 다른 것이니 지금은 신경 쓰지 않아도 됩니다.
 
 | 현황의 권한 한 건의 상태 | 판정 |
 |---|---|
@@ -131,17 +131,17 @@ False
 
 **할 일**
 
-1. 「제공 파일」 레슨의 파일 네 개(`review_rules.py` · `overprivilege.py` · `report_exclude.py` · `config/exclude_list.json`)를 먼저 만듭니다. 이 실습은 그중 `review_rules.py` 를 씁니다.
+1. [핵심 실습 점검 함수 준비](__SITE__/exercises/module/3/unit/3/lesson/3/page/1)에서 `review_rules.py`를 만듭니다. 이 핵심 실습은 이 파일의 `find_stale` 함수만 사용합니다. 선택 응용에서 필요한 파일과 데이터는 각각의 응용 레슨에 있습니다.
 2. 작업 폴더 `network-study-notes/access_control` 에 `config/access_log.json` · `review_unused.py` · `exercise3-2_run.py` 세 파일을 만들고(`access_log.json` 은 `config` 폴더 안, 나머지 둘은 `access_control` 바로 아래), `review_unused.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
 3. 실행해서 <mark>안 쓴 일 수</mark>(단계 1: 현황)와 <mark>90일 넘게 안 쓴 후보</mark>(단계 2: 판정)를 읽습니다.
 
-**준비** — 터미널이 `…/access_control` 위치인지 확인한 뒤 「제공 파일」이 있는지 봅니다.
+**준비** — 터미널이 `…/access_control` 위치인지 확인한 뒤 핵심 실습 준비가 되었는지 봅니다.
 
 ```bash
 ls
 ```
 
-- `review_rules.py` 가 보이지 않으면 「제공 파일」 레슨에서 먼저 만듭니다. 없는 채로 실행하면 `ModuleNotFoundError: No module named 'review_rules'` 오류가 납니다.
+- `review_rules.py` 가 보이지 않으면 핵심 준비 레슨에서 먼저 만듭니다. 없는 채로 실행하면 `ModuleNotFoundError: No module named 'review_rules'` 오류가 납니다.
 
 **`config/access_log.json`** — 그대로 붙여 넣습니다. 사용 이력입니다. `access_control` 안의 `config` 폴더에 만듭니다.
 
@@ -232,12 +232,12 @@ def find_unused(access_list, last_used_map, now, limit_days):    # 현황 · 마
 - `used_text is None` 은 「값이 `None` 인가」를 묻는 것입니다. `.get(key)` 는 키가 없으면 `None` 을 주므로 `None` 이면 사용 이력이 없다는 뜻입니다. 그 경우에는 일 수를 계산할 수 없으니, `days_since` 는 사용 이력이 있을 때(`elif`)만 부릅니다. `elif` 는 「앞의 `if` 가 아니고, 이 조건이면」이라는 뜻입니다.
 - 채우기 전에 실행하면 단계 1 일곱 줄은 나오고, 그 뒤 `NameError: name 'used_text' is not defined` 오류로 멈춥니다. ① 이 비어 있어 `used_text` 를 만든 적이 없는데 `if used_text is None:` 에서 쓰려 했기 때문입니다.
 
-**`exercise3-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 현황을 만들고, 「제공 파일」의 `find_stale` 에 걸린 권한을 뺀 뒤, 남은 권한이 며칠째 안 쓰였는지 출력하고 `find_unused` 로 후보를 찾습니다.
+**`exercise3-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 현황을 만들고, `review_rules.py`의 `find_stale` 에 걸린 권한을 뺀 뒤, 남은 권한이 며칠째 안 쓰였는지 출력하고 `find_unused` 로 후보를 찾습니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
 from review_list import build_access_list                        # 실습 3-1에서 만든 현황 함수를 불러온다
-from review_rules import find_stale                              # 제공 파일의 규칙 점검 함수를 불러온다
+from review_rules import find_stale                              # 핵심 준비의 규칙 점검 함수를 불러온다
 from review_unused import load_last_used, find_unused            # 방금 만든 미사용 점검 함수를 불러온다
 
 NOW = datetime.strptime("2026-10-29 10:00", "%Y-%m-%d %H:%M")    # 이번 실습의 지금 시각(고정)
@@ -307,13 +307,15 @@ for entry in unused:                                             # 후보를 한
 - [ ] `review_unused.py` 의 빈칸 ①·② 를 채우고 `python exercise3-2_run.py` 를 실행해 `90일 넘게 안 쓴 후보 3 건` 이 나왔다
 <!-- /checklist -->
 
-6. **[보고서]** `report_u3.md` 의 `## 실습 3-2` 아래를 채웁니다.
+6. 실행 결과에서 후보 수와 기준일을 확인합니다. 핵심 질문은 이 출력에서 확인할 근거를 안내합니다. 두 핵심 실습을 마친 뒤 블로그 기록에서 기준 적용과 추가로 확인할 경계를 설명합니다.
    - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 90일 넘게 안 쓴 후보가 몇 건인지와 후보마다 며칠째 안 쓰였는지 적어 주세요.
      - 며칠째인지는 단계 1 출력에서 후보와 같은 사용자 · 권한의 줄을 찾아 적습니다. 사용 이력이 없는 후보는 단계 1 에 「사용 이력 없음」으로 나옵니다.
-   - (나) [응용] (답은 보고서의 `## 실습 응용 질문` 칸에) junho 의 `SETTLE:QUERY` 는 마지막 사용이 90일 전이라 후보에서 빠졌고, 같은 junho 의 `SALES:QUERY` 는 91일 전이라 후보에 들어갔습니다. 하루 차이로 나누는 기준은 합리적일까요? 경계 부근(후보가 되고 안 되고가 갈리는 90일 근처)에서 담당자가 추가로 확인할 것도 적어 주세요.
-   - (다) [응용] (답은 보고서의 `## 실습 응용 질문` 칸에) 사용 이력이 없는 권한을 바로 지우면 위험한 경우가 있습니다. 어떤 경우인지 예를 들고, 지우기 전에 무엇을 확인해야 하는지 적어 주세요.
+   - (나) [응용] junho 의 `SETTLE:QUERY` 는 마지막 사용이 90일 전이라 후보에서 빠졌고, 같은 junho 의 `SALES:QUERY` 는 91일 전이라 후보에 들어갔습니다. 하루 차이로 나누는 기준은 합리적일까요? 경계 부근(후보가 되고 안 되고가 갈리는 90일 근처)에서 담당자가 추가로 확인할 것도 적어 주세요.
+   - (다) [응용] 사용 이력이 없는 권한을 바로 지우면 위험한 경우가 있습니다. 어떤 경우인지 예를 들고, 지우기 전에 무엇을 확인해야 하는지 적어 주세요.
 
-**확인** — 실행했을 때 단계 1 이 일곱 줄이고, 단계 2 가 `90일 넘게 안 쓴 후보 3 건` 아래 `seoyeon SALES:CHANGE` · `junho SALES:QUERY` · `gaeun ACCOUNT:CHANGE` 세 줄이면 성공입니다. 안 나오면 「정답」 레슨의 실습 3-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+**확인** — 실행했을 때 단계 1 이 일곱 줄이고, 단계 2 가 `90일 넘게 안 쓴 후보 3 건` 아래 `seoyeon SALES:CHANGE` · `junho SALES:QUERY` · `gaeun ACCOUNT:CHANGE` 세 줄이면 성공입니다. 안 나오면 아래의 실습 3-2 정답 펼침 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+
+<!-- answer: 08|실습 3-2 정답 -->
 
 ## 실습 3-2 정리
 
@@ -328,77 +330,6 @@ for entry in unused:                                             # 후보를 한
 | 후보에 추가하기 | `unused.append(unused_entry)` |
 
 ---
-
-
-## 이번 Unit 마무리 · 깃허브에 올리기
-
-하루를 닫는 마무리입니다(15분). 핵심 실습 두 개와 글쓰기를 끝낸 뒤 합니다.
-
-**1. 오늘 한 일 확인**
-
-1. 역할로 받은 권한과 예외로 받은 권한을 한 리스트로 모아 현황 14건을 만들었다 (실습 3-1)
-2. 규칙에 안 걸린 권한 일곱 건 가운데 90일 넘게 안 썼거나 사용 이력이 없는 후보 3건을 찾았다 (실습 3-2)
-3. 보고서 `report_u3.md` 의 실습 3-1 (가) · 실습 3-2 (가) 칸에 `답:` 뒤가 비어 있지 않다
-
-**2. 파일 확인** — **[터미널]** `access_control` 폴더에서 확인합니다.
-
-```bash
-ls
-ls config
-```
-
-- `review_list.py` · `exercise3-1_run.py` · `review_rules.py` · `overprivilege.py` · `report_exclude.py` · `review_unused.py` · `exercise3-2_run.py` · `report_u3.md` 가 보여야 합니다.
-- `config` 안에는 `access_log.json` · `exclude_list.json` 이 새로 보여야 합니다.
-
-**3. 깃허브에 올리기**
-
-1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/network-study-notes` 으로 끝나야 합니다.
-   ```bash
-   cd ..
-   pwd
-   ```
-   - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
-   - 결과가 다르면 VS Code 왼쪽 목록에서 `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
-2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
-   ```bash
-   git status
-   ```
-   - 명령 풀이: `git status` 올릴 파일의 상태를 봄
-   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 도 같은 방법으로 합니다.
-   - Unit 1 시작하기 7쪽에서 만든 `.gitignore` 에 `.env` · `.venv/` · `__pycache__/`(파이썬이 실행하면서 자동으로 만든 임시 폴더)가 들어 있어 보통은 보이지 않습니다. `access_control/__pycache__/` 가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다.
-   - `Untracked files:` 는 「아직 깃이 모르는 새 파일」 목록입니다. 이번 Unit 에서 만든 파일이 `access_control/review_list.py` 처럼 한 줄씩 보이고, 「오늘의 글 쓰기」에서 만든 글 파일 `_posts/…md` 도 한 줄 보입니다.
-3. **[보고서]** `report_u3.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
-4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
-   ```bash
-   git add .
-   git commit -m "Add access control unit 3 access review and unused permissions"
-   git push
-   ```
-   - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(검은 편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`, VS Code 탭이나 메모장이 열리면 내용은 그대로 두고 저장한 뒤 닫습니다).
-
-<!-- checklist -->
-- [ ] `network-study-notes` 폴더에서 `git status` 로 `.env` · `.venv` 가 없는 것을 보고 `git add .` · `git commit` · `git push` 로 올렸다
-<!-- /checklist -->
-
-5. **[브라우저]** 깃허브의 내 저장소 `network-study-notes` 를 새로 고쳐 `access_control` 폴더를 열고, 2번에서 본 파일이 모두 있는지 확인합니다.
-
-<!-- checklist -->
-- [ ] 깃허브의 `network-study-notes` 저장소 `access_control` 폴더에서 `review_list.py` 와 `review_unused.py` 를 확인했다
-<!-- /checklist -->
-
-- 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 1 ~ 4번을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
-
-**4. 이어지는 곳**
-
-| Unit 4 에서 할 일 | 쓰는 파일 |
-|---|---|
-| 회수할 후보 다시 뽑기 | `review_list.py` · `review_rules.py` · `review_unused.py` (그대로 불러 씀) |
-| 회수 계획 세우기 | `overprivilege.py` 의 리포트 · `report_exclude.py` 와 `config/exclude_list.json` 의 회수 제외 |
-
-리포트와 회수 제외가 어떻게 동작하는지 직접 만들어 보려면 응용 3-2 · 3-3 을 합니다. 여유가 되면 해 보세요.
-
-**확인** — 깃허브의 내 저장소 `network-study-notes` 의 `access_control` 폴더에 `review_list.py` 와 `review_unused.py` 가 보이고, `.env` 가 보이지 않으면 성공입니다. 안 보이면 `git status` 를 다시 쳐서 빨간 목록에 남은 파일이 있는지 보고 4번을 한 번 더 합니다.
 
 ---
 
