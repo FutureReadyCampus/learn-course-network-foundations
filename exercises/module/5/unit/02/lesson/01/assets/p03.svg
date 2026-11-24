@@ -27,7 +27,7 @@
 <rect x="250" y="252" width="220" height="74" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text y="284.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0">오류 전체와 친 명령을</tspan><tspan x="360.0" dy="19.6">AI 에게 묻기 (.env · 키 지움)</tspan></text>
 <rect x="480" y="252" width="220" height="74" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text y="284.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="590.0" dy="0.0">정답 보기 또는</tspan><tspan x="590.0" dy="19.6">보고서에 「모름 — 막힌 곳」</tspan></text>
+<text y="284.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="590.0" dy="0.0">정답과 해설 보기</tspan><tspan x="590.0" dy="19.6">실습 결과 기록에 「모름 — 막힌 곳」</tspan></text>
 <line x1="241" y1="289" x2="248" y2="289" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
 <line x1="471" y1="289" x2="478" y2="289" stroke="#666660" stroke-width="2" marker-end="url(#a-p03)"/>
 <rect x="20" y="338" width="680" height="34" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
