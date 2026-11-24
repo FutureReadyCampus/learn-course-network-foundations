@@ -25,9 +25,9 @@ source:
 - 오늘 쓰는 도구는 **파이썬 · VS Code · 터미널 · git** 입니다. 판다스와 Gemini API 는 쓰지 않으므로 호출 한도(1분에 15번)는 신경 쓰지 않아도 됩니다.
 - 오늘 새로 배우는 문법은 없습니다. 지금까지 쓴 문법(딕셔너리 · 리스트 · `in` · `not in` · `if` · `for` · `append` · `json`)을 다시 씁니다.
 - 새로 나오는 용어가 많은 날입니다. <mark>처음 나올 때 한 번씩 풀어 쓰고, 문제를 풀 때는 1.2 와 2.1 의 표를 보면서 풉니다.</mark>
-- 보고서에서 [핵심 질문]이 붙은 질문은 이 실습에서 꼭 알아야 할 핵심 질문이고, <mark>내 출력이나 샘플 데이터의 값을 근거로 이유까지 서술합니다</mark>.
+- 실습 결과 기록에서 [핵심 질문]이 붙은 질문은 이 실습에서 꼭 알아야 할 핵심 질문이고, <mark>내 출력이나 샘플 데이터의 값을 근거로 이유까지 서술합니다</mark>.
 
- **오늘 불러 쓰는 이전 파일**: 없습니다. 오늘 쓰는 데이터(`incident_samples.json`)는 Module 4의 점수 파일과 같은 내용입니다. 이 내용을 아래에 예시 데이터로 적어 두었으니 붙여 넣어 만듭니다. 그래서 Module 4 파일이 없어도 그대로 따라 할 수 있습니다. 실습 1-2는 실습 1-1에서 만드는 `config/playbook_registry.json` 을 읽습니다(없으면 실습 1-1 의 「정답」 레슨 완성본으로 만듭니다).
+이번 Unit은 아래에 포함된 알림 샘플과 빈 상태 파일에서 시작합니다. 실습 1-2에서 읽는 `config/playbook_registry.json` 은 실습 1-1에서 직접 만듭니다. 그 파일이 없으면 실습 1-1 뒤의 「정답과 해설 보기」에서 완성된 예시를 확인합니다.
 
 ## 폴더 열고 파일 준비하기
 
@@ -47,10 +47,10 @@ source:
    ```
    - 명령 풀이: `mkdir 폴더이름` 새 폴더 만들기 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 이름 보기
    - <mark>`config` 폴더가 보이면</mark> 됩니다. `config` 에는 JSON 설정 파일만 둡니다.
-4. **파일은 이렇게 만듭니다.** 이 페이지에 나오는 파일은 모두 이 페이지의 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 「`파일이름` 파일을 만들어 붙여 넣습니다」라고 하면:
+4. **파일을 만드는 방법:** 「`파일이름`을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
    1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 확장자까지 그대로** 적고 Enter 를 칩니다.
    2. 코드 상자의 복사 버튼으로 내용을 복사해 새 파일에 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
-   - 답을 적는 **보고서**(`report_u1.md`)도 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
+   - 실행 출력과 판단 근거를 기록할 `report_u1.md` 도 이 Unit의 「실습 결과 기록 준비」에서 틀을 복사해 만듭니다.
 5. **[VS Code]** 오늘 쓸 파일 두 개 `incident_samples.json` · `system_state.json` 을 `soar_response` 폴더에 만들고, 아래 각 파일의 코드 상자 내용을 그대로 붙여 넣습니다. 폴더는 이렇게 됩니다. 나머지 파일은 실습 때 만듭니다.
    ```
    soar_response/
@@ -61,7 +61,7 @@ source:
      incident.py                실습 1-2에서 만듦
      playbook_runner.py         실습 1-2에서 만듦
      exercise1-2_run.py         실습 1-2에서 만듦
-     report_u1.md               「보고서 쓰기」에서 만듦
+     report_u1.md               「실습 결과 기록 준비」에서 만듦
    ```
 
 **`incident_samples.json`** — 오늘 처리할 알림 5건의 목록입니다.
@@ -150,9 +150,15 @@ source:
 }
 ```
 
-6. **[터미널]** 파일이 정상인지 확인합니다. <mark>`5` 가 나와야</mark> 합니다. 다르면 붙여 넣은 내용이나 파일 위치(`soar_response` 폴더 안인지)를 다시 확인합니다(맥북은 `python3`).
+6. **[터미널]** 파일이 정상인지 확인합니다. <mark>`알림 수: 5` 가 나와야</mark> 합니다. 다르면 붙여 넣은 내용이나 파일 위치(`soar_response` 폴더 안인지)를 다시 확인합니다(맥북은 `python3`).
    ```bash
-   python -c "import json; print(len(json.load(open('incident_samples.json', encoding='utf-8'))))"
+   python - <<'PY'
+   import json
+   from pathlib import Path
+
+   incidents = json.loads(Path("incident_samples.json").read_text(encoding="utf-8"))
+   print("알림 수:", len(incidents))
+   PY
    ```
 
 ## 오류가 나면
@@ -160,7 +166,7 @@ source:
 - 먼저 `pwd` 가 `soar_response` 로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
 - `FileNotFoundError` 가 나오면 <mark>파일이 `soar_response` 폴더 바로 아래(또는 `config` 폴더 안)에 있는지</mark> `ls` 로 봅니다. `config/playbook_registry.json` 은 `config` 폴더 안에 있어야 합니다.
 - `json.decoder.JSONDecodeError` 가 나오면 <mark>JSON 파일의 쉼표나 대괄호 · 중괄호가 빠졌거나 남은 것</mark>입니다. 오류에 적힌 줄 번호의 앞뒤 줄을 봅니다.
-- 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). <mark>막히면 맨 아래 「정답」을 보고</mark>, 풀리지 않으면 보고서 (가)에 「모름 — 막힌 곳: …」 이라고 쓰고 넘어갑니다.
+- 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). <mark>막히면 각 실습 뒤의 「정답과 해설 보기」를 참고하고</mark>, 풀리지 않으면 실습 결과 기록의 (가)에 「모름 — 막힌 곳: …」 이라고 쓰고 넘어갑니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다. 파일을 지금 위치 기준으로 찾기 때문입니다.
 

@@ -248,7 +248,7 @@ PB-003 은 위 파일의 맨 아래 `]` 앞에 한 건을 더합니다. <mark>PB
 | INC-005 (198.51.100.90) | PB-003 (내가 쓴 것) | 내가 정한 액션대로 고친다. 티켓 번호는 `TCK-2` 로 한다 |
 
 - 리스트에 넣을 때는 `["dami"]` 처럼 대괄호 안에 쓰고, 두 개 이상이면 쉼표로 나눕니다.
-- 고친 곳이 모두 몇 군데인지 <mark>세어 둡니다.</mark> 보고서 (나)에서 씁니다.
+- 고친 곳이 모두 몇 군데인지 <mark>세어 둡니다.</mark> 실습 결과 기록의 (나)에서 씁니다.
 
 **순서**
 
@@ -256,20 +256,34 @@ PB-003 은 위 파일의 맨 아래 `]` 앞에 한 건을 더합니다. <mark>PB
 2. **[VS Code]** `config/playbook_registry.json` 에 위 두 건(PB-001, PB-002)을 붙여 넣고, PB-003 한 건을 추가합니다. 쉼표 위치를 확인합니다.
 3. **[터미널]** 등록 파일을 확인합니다(맥북은 `python3`). <mark>`['PB-001', 'PB-002', 'PB-003']` 이 나오면</mark> 됩니다. 오류가 나면 위 「오류가 나면」 의 JSON 안내를 따릅니다.
    ```bash
-   python -c "import json; print([p['id'] for p in json.load(open('config/playbook_registry.json', encoding='utf-8'))])"
+   python - <<'PY'
+   import json
+   from pathlib import Path
+
+   playbooks = json.loads(Path("config/playbook_registry.json").read_text(encoding="utf-8"))
+   print([playbook["id"] for playbook in playbooks])
+   PY
    ```
    - 명령 풀이: JSON 파일을 읽어 플레이북 번호만 모아 출력합니다. 쉼표나 괄호가 틀리면 여기서 오류가 납니다.
 4. **[VS Code]** `system_state.json` 을 열어 위 표대로 INC-001 과 INC-005 를 처리합니다. 저장합니다.
 5. **[터미널]** 수동 처리한 결과를 확인합니다. 아래 명령은 잠긴 계정 · 차단한 IP · 티켓 수를 한 줄로 보여 줍니다.
    ```bash
-   python -c "import json; s = json.load(open('system_state.json', encoding='utf-8')); print(s['locked_users'], s['blocked_ips'], len(s['tickets']))"
+   python - <<'PY'
+   import json
+   from pathlib import Path
+
+   state = json.loads(Path("system_state.json").read_text(encoding="utf-8"))
+   print(state["locked_users"], state["blocked_ips"], len(state["tickets"]))
+   PY
    ```
    - 명령 풀이: 상태 파일을 읽어 잠긴 계정 리스트, 차단한 IP 리스트, 티켓 개수를 출력합니다.
    - 나오는 것: 내가 정한 액션에 따라 다릅니다. 예를 들어 IP 차단과 티켓 생성을 골랐다면 <mark>`['dami'] ['198.51.100.90'] 2`</mark> 가 나옵니다.
-6. **[보고서]** `report_u1.md` 의 `## 실습 1-1` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
+6. **[실습 결과 기록]** `report_u1.md` 의 `## 실습 1-1` 아래를 채웁니다(틀은 「실습 결과 기록 준비」에서 만듭니다).
    - (가) 내가 쓴 PB-003 의 액션과 승인을 적고, 5번 확인 명령의 출력을 붙여 넣어 주세요.
    - (나) [핵심 질문] 알림 두 건을 수동 처리하면서 `system_state.json` 을 직접 고친 곳이 모두 몇 군데였는지 적고, 알림이 100건이면 어떤 문제가 생길지 적어 주세요.
    - (다) [핵심 질문] PB-003 의 승인 값을 그렇게 정한 이유를 적어 주세요. 대상이 사용자 계정이 아니라 IP 라는 점과 잘못 차단했을 때의 영향을 근거로 쓰세요.
+
+<!-- answer: 04|실습 1-1 정답 -->
 
 ## 실습 1-1 정리
 

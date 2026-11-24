@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>실습 1-1 보고서는 PB-003·확인 출력, 고친 곳 수, 승인 값 이유 세 칸을 채운다</title>
-<desc>실습 1-1 보고서에서 채울 칸 체크리스트다. (가) PB-003의 액션과 승인, 확인 출력, (나) 고친 곳 개수와 100건일 때의 문제, (다) 승인 값과 IP가 대상이라는 근거, 잘못 차단했을 때의 영향이다.</desc>
+<title>실습 1-1 실습 결과 기록은 PB-003·확인 출력, 고친 곳 수, 승인 값 이유 세 칸을 채운다</title>
+<desc>실습 1-1 실습 결과 기록에서 채울 칸 체크리스트다. (가) PB-003의 액션과 승인, 확인 출력, (나) 고친 곳 개수와 100건일 때의 문제, (다) 승인 값과 IP가 대상이라는 근거, 잘못 차단했을 때의 영향이다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 1-1 보고서에서 채울 칸</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 1-1 실습 결과 기록에서 채울 칸</text>
 <rect x="20" y="52" width="680" height="82" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text y="77.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0" font-weight="700">(가)</tspan><tspan x="360.0" dy="21.0">① PB-003 의 액션  ② PB-003 의 승인</tspan><tspan x="360.0" dy="21.0">③ 5번 확인 명령의 출력 (코드 상자)</tspan></text>
 <rect x="20" y="146" width="680" height="82" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
