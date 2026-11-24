@@ -19,9 +19,9 @@ Unit 3까지는 판단 단계(맥락 보강 · 처리 경로 분기 · 안전장
 - **실습 4-2**: IP 를 차단(block)하되 <mark>허용 목록(allowlist: 차단 대상에서 제외하기로 미리 정한 IP 의 목록)에 있는 IP 와 여러 계정이 공유하는 IP 는 자동 차단에서 제외하고</mark>, 차단에는 유효 기간(TTL, Time To Live, 티티엘)을 두어 기간이 지나면 자동 해제합니다(`ip_actions.py`).
 - **실습 4-3**: 계정을 잠가도 <mark>이미 발급된 세션(session, 세션: 로그인한 뒤 서버가 유지하는 접속 상태)이 활성 상태(active, 액티브: 아직 유효한 상태)로 남는 문제</mark>를 세션 종료(session termination)로 해소하고, 잠긴 계정에 활성 세션이 잔존하는지 점검합니다(`session_actions.py` · `containment.py`).
 
-깃허브에 올리는 일은 Unit 5의 실습 5-2 마지막에 합니다. 새 문법은 실습 4-1의 `리스트.remove()` 하나입니다. 보고서에서 [핵심 질문]이 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 코드를 쓸 때는 들여쓰기를 미리 채운 줄에 맞추고, 각 번호 주석 바로 아래에 한 줄을 씁니다. 주석은 지우지 않습니다.
+깃허브에 올리는 일은 Unit 5의 실습 5-2 마지막에 합니다. 새 문법은 실습 4-1의 `리스트.remove()` 하나입니다. 실습 결과 기록에서 [핵심 질문]이 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 코드를 쓸 때는 들여쓰기를 미리 채운 줄에 맞추고, 각 번호 주석 바로 아래에 한 줄을 씁니다. 주석은 지우지 않습니다.
 
- **이전 파일**: Unit 1에서 만든 `incident.py` 의 `load_json` · `save_json` 만 씁니다. 없으면 Unit 1 실습 1-2 레슨의 `incident.py` 코드 상자에서 복사해 만듭니다.
+M5 Unit 4에서는 M5 Unit 1의 `incident.py`에 있는 `load_json` · `save_json` 함수를 씁니다. 파일이 없으면 [M5 Unit 1의 실행기와 핵심 함수](__SITE__/exercises/module/5/unit/1/lesson/3/page/3)에서 `incident.py`를 다시 확인하세요.
 
 ## 설정 파일 세 개 만들기
 
@@ -34,7 +34,7 @@ Unit 3까지는 판단 단계(맥락 보강 · 처리 경로 분기 · 안전장
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
-3. **[VS Code]** 설정 · 데이터 파일 세 개를 만듭니다. 이 페이지에 나오는 파일은 모두 아래 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 답을 적는 보고서 `report_u4.md` 는 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
+3. **파일을 만드는 방법:** 파일 이름을 안내하면 **[VS Code]** 왼쪽 목록에서 해당 폴더를 오른쪽 클릭 › **New File** 을 누르고 이름을 확장자까지 그대로 적습니다. 아래 코드 상자를 붙여 넣고 저장합니다. `report_u4.md`는 [실습 결과 기록 준비](__SITE__/exercises/module/5/unit/4/lesson/6/page/1)에서 틀을 복사합니다.
    - `config` 폴더를 오른쪽 클릭 › **New File** 으로 `vip_accounts.json` 과 `allowlist_ips.json` 을 하나씩 만듭니다.
    - `soar_response` 폴더를 오른쪽 클릭 › **New File** 으로 `ip_users.json` 을 만듭니다.
    - 각 파일에 아래 코드 상자의 내용을 복사해 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
@@ -59,14 +59,22 @@ Unit 3까지는 판단 단계(맥락 보강 · 처리 경로 분기 · 안전장
 
 4. **[터미널]** 파일이 정상인지 확인합니다(맥북은 `python3`). <mark>`1 2 2` 가 나와야</mark> 합니다(VIP 계정 1개 · 허용 목록 IP 2개 · `ip_users.json` 에 적은 IP 2개를 센 값).
    ```bash
-   python -c "import json; print(len(json.load(open('config/vip_accounts.json', encoding='utf-8'))), len(json.load(open('config/allowlist_ips.json', encoding='utf-8'))), len(json.load(open('ip_users.json', encoding='utf-8'))))"
+   python - <<'PY'
+   import json
+   from pathlib import Path
+
+   vip_accounts = json.loads(Path("config/vip_accounts.json").read_text(encoding="utf-8"))
+   allowlist_ips = json.loads(Path("config/allowlist_ips.json").read_text(encoding="utf-8"))
+   ip_users = json.loads(Path("ip_users.json").read_text(encoding="utf-8"))
+   print(len(vip_accounts), len(allowlist_ips), len(ip_users))
+   PY
    ```
 
 ## 오류가 나면
 
 - `pwd` 가 `soar_response` 로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
 - `ModuleNotFoundError: No module named 'incident'` 는 <mark>Unit 1에서 만든 `incident.py` 가 이 폴더에 없다는 뜻</mark>입니다. Unit 1 실습 1-2 레슨의 코드 상자로 다시 만듭니다.
-- 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 막히면 맨 아래 「정답」을 보고, 풀리지 않으면 보고서에 「모름 — 막힌 곳: …」 이라고 씁니다.
+- 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 막히면 각 실습 뒤의 「정답과 해설 보기」를 참고하고, 풀리지 않으면 실습 결과 기록에 「모름 — 막힌 곳: …」이라고 씁니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다. 실행할 때마다 처음 상태에서 시작해 같은 결과가 나옵니다.
 
