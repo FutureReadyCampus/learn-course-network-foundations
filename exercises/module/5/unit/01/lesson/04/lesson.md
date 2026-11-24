@@ -24,8 +24,20 @@ source:
 ```bash
 pwd
 ls config
-python -c "import json; print([p['id'] for p in json.load(open('config/playbook_registry.json', encoding='utf-8'))])"
-python -c "import json; s = json.load(open('system_state.json', encoding='utf-8')); print(s['locked_users'], s['blocked_ips'], len(s['tickets']))"
+python - <<'PY'
+   import json
+   from pathlib import Path
+
+   playbooks = json.loads(Path("config/playbook_registry.json").read_text(encoding="utf-8"))
+   print([playbook["id"] for playbook in playbooks])
+   PY
+python - <<'PY'
+   import json
+   from pathlib import Path
+
+   state = json.loads(Path("system_state.json").read_text(encoding="utf-8"))
+   print(state["locked_users"], state["blocked_ips"], len(state["tickets"]))
+   PY
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls 폴더이름` 폴더 안의 파일 이름 보기
 

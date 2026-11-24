@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>보고서는 질문의 쓸 내용을 보고 답: 뒤에 쓰고, 왜 질문은 근거와 이유까지 쓴다</title>
-<desc>보고서 작성 체크리스트다. 쓸 내용 확인, 답 쓰기, 출력은 코드 상자에 붙여 넣기, 왜 질문에는 근거와 이유, 모르면 모름과 막힌 곳 쓰기의 다섯 가지다.</desc>
+<title>실습 결과 기록은 질문의 쓸 내용을 보고 답: 뒤에 쓰고, 왜 질문은 근거와 이유까지 쓴다</title>
+<desc>실습 결과 기록 체크리스트다. 쓸 내용 확인, 답 쓰기, 출력은 코드 상자에 붙여 넣기, 왜 질문에는 근거와 이유, 모르면 모름과 막힌 곳 쓰기의 다섯 가지다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">보고서 작성 방법 체크리스트</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 결과 기록 방법 체크리스트</text>
 <rect x="20" y="52" width="48" height="48" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text y="81.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="44.0" dy="0.0" font-weight="700">1</tspan></text>
 <rect x="80" y="52" width="620" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>

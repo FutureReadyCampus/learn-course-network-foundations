@@ -112,15 +112,15 @@ source:
 - **어디에 쓰나**: `playbook_runner.py` 와 실행 파일이 이 파일의 함수를 불러다 씁니다. 오늘은 읽기만 하고 고치지 않습니다.
 
 ```python
-import json                                                                       # JSON 파일을 읽고 쓰기 위해 json 을 불러온다
-from datetime import datetime                                                     # 감사 기록에 시각을 적기 위해 datetime 을 불러온다
+import json  # JSON 파일을 읽고 쓰기 위해 json 을 불러온다
+from datetime import datetime  # 감사 기록에 시각을 적기 위해 datetime 을 불러온다
 
-INCIDENTS_PATH = "incident_samples.json"                                          # 읽을 인시던트 파일 이름
-REGISTRY_PATH = "config/playbook_registry.json"                                   # 읽을 플레이북 등록 파일 이름
-STATE_PATH = "system_state.json"                                                  # 실행 결과 상태를 저장할 파일 이름
-LOG_PATH = "action_log.json"                                                      # 감사 기록을 저장할 파일 이름
-GRADE_ORDER = {"low": 1, "mid": 2, "high": 3}                                     # 등급을 크기를 비교할 수 있는 숫자로 바꾸는 딕셔너리
-TRANSITIONS = {                                                                   # 상태마다 다음에 갈 수 있는 상태의 리스트
+INCIDENTS_PATH = "incident_samples.json"  # 읽을 인시던트 파일 이름
+REGISTRY_PATH = "config/playbook_registry.json"  # 읽을 플레이북 등록 파일 이름
+STATE_PATH = "system_state.json"  # 실행 결과 상태를 저장할 파일 이름
+LOG_PATH = "action_log.json"  # 감사 기록을 저장할 파일 이름
+GRADE_ORDER = {"low": 1, "mid": 2, "high": 3}  # 등급을 크기를 비교할 수 있는 숫자로 바꾸는 딕셔너리
+TRANSITIONS = {  # 상태마다 다음에 갈 수 있는 상태의 리스트
     "탐지됨": ["분류됨"],
     "분류됨": ["조치됨", "종료"],
     "조치됨": ["보고됨"],
@@ -129,90 +129,90 @@ TRANSITIONS = {                                                                 
 }
 
 
-def load_json(path):                                                              # 파일 경로를 받는 함수
+def load_json(path):  # 파일 경로를 받는 함수
     """JSON 파일을 읽어 리스트나 딕셔너리로 리턴한다.
     인시던트와 플레이북 등록 파일을 읽을 때 쓴다.
     """
-    with open(path, encoding="utf-8") as file:                                    # 파일을 읽기 모드로 연다
-        data = json.load(file)                                                    # JSON 글자를 파이썬 값으로 바꾼다
-    return data                                                                   # 읽은 값을 리턴한다
+    with open(path, encoding="utf-8") as file:  # 파일을 읽기 모드로 연다
+        data = json.load(file)  # JSON 글자를 파이썬 값으로 바꾼다
+    return data  # 읽은 값을 리턴한다
 
 
-def save_json(data, path):                                                        # 저장할 값과 파일 경로를 받는 함수
+def save_json(data, path):  # 저장할 값과 파일 경로를 받는 함수
     """값을 JSON 파일로 저장한다.
     실행 결과 상태와 감사 기록을 남길 때 쓴다.
     """
-    with open(path, "w", encoding="utf-8") as file:                               # 파일을 쓰기 모드로 연다
-        json.dump(data, file, ensure_ascii=False, indent=2)                       # 한글은 그대로, 줄을 나눠 저장한다
+    with open(path, "w", encoding="utf-8") as file:  # 파일을 쓰기 모드로 연다
+        json.dump(data, file, ensure_ascii=False, indent=2)  # 한글은 그대로, 줄을 나눠 저장한다
 
 
-def change_status(incident, new_status):                                          # 인시던트와 바꿀 상태를 받는 함수
+def change_status(incident, new_status):  # 인시던트와 바꿀 상태를 받는 함수
     """허용된 이동이면 상태를 바꾸고 True, 아니면 바꾸지 않고 False 를 리턴한다.
     분류하지 않은 인시던트에 바로 조치하는 실수를 막을 때 쓴다.
     """
-    current_status = incident["status"]                                           # 지금 상태
-    allowed_statuses = TRANSITIONS[current_status]                                # 지금 상태에서 갈 수 있는 상태 리스트
-    if new_status not in allowed_statuses:                                        # 갈 수 있는 상태 리스트에 없는 이동이면
-        return False                                                              # 바꾸지 않고 False 를 리턴한다
-    incident["status"] = new_status                                               # 허용된 이동이므로 상태를 바꾼다
-    return True                                                                   # 상태를 바꿨으니 True 를 리턴한다
+    current_status = incident["status"]  # 지금 상태
+    allowed_statuses = TRANSITIONS[current_status]  # 지금 상태에서 갈 수 있는 상태 리스트
+    if new_status not in allowed_statuses:  # 갈 수 있는 상태 리스트에 없는 이동이면
+        return False  # 바꾸지 않고 False 를 리턴한다
+    incident["status"] = new_status  # 허용된 이동이므로 상태를 바꾼다
+    return True  # 상태를 바꿨으니 True 를 리턴한다
 
 
-def is_grade_enough(incident_grade, min_grade):                                   # 인시던트 등급과 플레이북의 최소 등급을 받는 함수
+def is_grade_enough(incident_grade, min_grade):  # 인시던트 등급과 플레이북의 최소 등급을 받는 함수
     """인시던트 등급이 최소 등급 이상이면 True, 아니면 False 를 리턴한다.
     등급이 낮은 인시던트에 무거운 대응이 실행되지 않게 할 때 쓴다.
     """
-    return GRADE_ORDER[incident_grade] >= GRADE_ORDER[min_grade]                  # 등급을 숫자로 바꿔 비교한 결과를 리턴한다
+    return GRADE_ORDER[incident_grade] >= GRADE_ORDER[min_grade]  # 등급을 숫자로 바꿔 비교한 결과를 리턴한다
 
 
-def match_playbooks(incident, registry):                                          # 인시던트와 플레이북 리스트를 받는 함수
+def match_playbooks(incident, registry):  # 인시던트와 플레이북 리스트를 받는 함수
     """트리거 규칙과 조건 등급이 모두 맞는 플레이북을 리스트로 리턴한다.
     알림이 올 때 어떤 대응 절차를 쓸지 찾을 때 쓴다.
     """
-    matched = []                                                                  # 맞는 플레이북을 담을 빈 리스트
-    for playbook in registry:                                                     # 플레이북을 하나씩 꺼낸다
-        has_rule = playbook["trigger_rule"] in incident["reasons"]                # 트리거 규칙이 탐지된 규칙 리스트 안에 있는지 구한다
-        grade_ok = is_grade_enough(incident["grade"], playbook["min_grade"])      # 인시던트 등급이 최소 등급 이상인지 구한다
-        if has_rule and grade_ok:                                                 # 트리거와 조건이 모두 맞으면
-            matched.append(playbook)                                              # 맞는 플레이북을 리스트에 추가한다
-    return matched                                                                # 맞는 플레이북 리스트를 리턴한다
+    matched = []  # 맞는 플레이북을 담을 빈 리스트
+    for playbook in registry:  # 플레이북을 하나씩 꺼낸다
+        has_rule = playbook["trigger_rule"] in incident["reasons"]  # 트리거 규칙이 탐지된 규칙 리스트 안에 있는지 구한다
+        grade_ok = is_grade_enough(incident["grade"], playbook["min_grade"])  # 인시던트 등급이 최소 등급 이상인지 구한다
+        if has_rule and grade_ok:  # 트리거와 조건이 모두 맞으면
+            matched.append(playbook)  # 맞는 플레이북을 리스트에 추가한다
+    return matched  # 맞는 플레이북 리스트를 리턴한다
 
 
-def run_action(action, incident, state):                                          # 액션 · 인시던트 · 시스템 상태를 받는 함수
+def run_action(action, incident, state):  # 액션 · 인시던트 · 시스템 상태를 받는 함수
     """액션 하나를 연습용 시스템(state)에서 실행하고 결과 문장을 리턴한다.
     대상 종류와 맞지 않는 액션은 실행하지 않고 건너뛴 이유를 리턴한다.
     """
-    entity = incident["entity"]                                                   # 대응할 대상(사용자 이름 또는 IP)
-    is_ip = "." in entity                                                         # 점이 있으면 IP 로 본다
-    if action == "계정 잠금":                                                     # 계정 잠금이면
-        if is_ip:                                                                 # 대상이 IP 이면
-            return "건너뜀: 대상이 IP 라서 계정 잠금을 할 수 없습니다"            # 실행하지 않고 이유를 리턴한다
-        state["locked_users"].append(entity)                                      # 잠긴 계정 리스트에 추가한다
-        return "계정 " + entity + " 잠금 완료"                                    # 결과 문장을 리턴한다
-    if action == "IP 차단":                                                       # IP 차단이면
-        if not is_ip:                                                             # 대상이 사용자 계정이면
-            return "건너뜀: 대상이 사용자라서 IP 차단을 할 수 없습니다"           # 실행하지 않고 이유를 리턴한다
-        state["blocked_ips"].append(entity)                                       # 차단한 IP 리스트에 추가한다
-        return "IP " + entity + " 차단 완료"                                      # 결과 문장을 리턴한다
-    if action == "티켓 생성":                                                     # 티켓 생성이면
-        ticket_id = "TCK-" + str(len(state["tickets"]) + 1)                       # 지금까지 만든 티켓 수에 1 을 더해 번호를 만든다
+    entity = incident["entity"]  # 대응할 대상(사용자 이름 또는 IP)
+    is_ip = "." in entity  # 점이 있으면 IP 로 본다
+    if action == "계정 잠금":  # 계정 잠금이면
+        if is_ip:  # 대상이 IP 이면
+            return "건너뜀: 대상이 IP 라서 계정 잠금을 할 수 없습니다"  # 실행하지 않고 이유를 리턴한다
+        state["locked_users"].append(entity)  # 잠긴 계정 리스트에 추가한다
+        return "계정 " + entity + " 잠금 완료"  # 결과 문장을 리턴한다
+    if action == "IP 차단":  # IP 차단이면
+        if not is_ip:  # 대상이 사용자 계정이면
+            return "건너뜀: 대상이 사용자라서 IP 차단을 할 수 없습니다"  # 실행하지 않고 이유를 리턴한다
+        state["blocked_ips"].append(entity)  # 차단한 IP 리스트에 추가한다
+        return "IP " + entity + " 차단 완료"  # 결과 문장을 리턴한다
+    if action == "티켓 생성":  # 티켓 생성이면
+        ticket_id = "TCK-" + str(len(state["tickets"]) + 1)  # 지금까지 만든 티켓 수에 1 을 더해 번호를 만든다
         ticket = {"id": ticket_id, "incident": incident["id"], "target": entity}  # 티켓 한 건을 딕셔너리로 만든다
-        state["tickets"].append(ticket)                                           # 티켓 리스트에 추가한다
-        return "티켓 " + ticket_id + " 생성"                                      # 결과 문장을 리턴한다
-    if action == "담당자 알림":                                                   # 담당자 알림이면
-        message = "인시던트 " + incident["id"] + " 확인 요청"                     # 알림 문장을 만든다
-        state["notifications"].append(message)                                    # 알림 리스트에 추가한다
-        return "담당자 알림 전송"                                                 # 결과 문장을 리턴한다
-    return "알 수 없는 액션: " + action                                           # 어느 액션도 아니면 이유를 리턴한다
+        state["tickets"].append(ticket)  # 티켓 리스트에 추가한다
+        return "티켓 " + ticket_id + " 생성"  # 결과 문장을 리턴한다
+    if action == "담당자 알림":  # 담당자 알림이면
+        message = "인시던트 " + incident["id"] + " 확인 요청"  # 알림 문장을 만든다
+        state["notifications"].append(message)  # 알림 리스트에 추가한다
+        return "담당자 알림 전송"  # 결과 문장을 리턴한다
+    return "알 수 없는 액션: " + action  # 어느 액션도 아니면 이유를 리턴한다
 
 
-def make_log_entry(incident, playbook, action, result):                           # 인시던트 · 플레이북 · 액션 · 결과를 받는 함수
+def make_log_entry(incident, playbook, action, result):  # 인시던트 · 플레이북 · 액션 · 결과를 받는 함수
     """감사 기록 한 건을 딕셔너리로 만든다.
     어떤 인시던트에 어떤 플레이북이 무엇을 했는지 나중에 증명할 때 쓴다.
     """
-    now_text = datetime.now().strftime("%H:%M:%S")                                # 지금 시각을 시:분:초 글자로 만든다
+    now_text = datetime.now().strftime("%H:%M:%S")  # 지금 시각을 시:분:초 글자로 만든다
     entry = {"time": now_text, "incident": incident["id"], "playbook": playbook["id"], "action": action, "result": result}  # 기록 한 건
-    return entry                                                                  # 기록을 리턴한다
+    return entry  # 기록을 리턴한다
 ```
 
 **`playbook_runner.py`**
@@ -224,41 +224,41 @@ def make_log_entry(incident, playbook, action, result):                         
 from incident import change_status, match_playbooks, run_action, make_log_entry  # 제공받은 함수를 불러온다
 
 
-def run_playbook(incident, playbook, state, action_log):                         # 인시던트 · 플레이북 · 시스템 상태 · 감사 기록 리스트를 받는 함수
+def run_playbook(incident, playbook, state, action_log):  # 인시던트 · 플레이북 · 시스템 상태 · 감사 기록 리스트를 받는 함수
     """플레이북의 액션을 차례로 실행하고 감사 기록을 남긴다. 승인이 필요하면 실행하지 않고 승인 대기로 기록한다.
     실행했으면 True, 승인 대기로 멈췄으면 False 를 리턴한다.
     """
-    change_status(incident, "분류됨")                                            # 대응을 시작하기 전에 분류됨 상태로 옮긴다 — 미리 채운 줄
+    change_status(incident, "분류됨")  # 대응을 시작하기 전에 분류됨 상태로 옮긴다 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. playbook 의 "approval" 값이 "자동" 이 아니면 (if, !=)
     # 2.   make_log_entry(incident, playbook, "전체", "승인 대기") 의 결과를 action_log 에 추가한다 (append)
     # 3.   False 를 리턴한다 (실행하지 않았다)
-    for action in playbook["actions"]:                                           # 액션을 하나씩 꺼낸다
+    for action in playbook["actions"]:  # 액션을 하나씩 꺼낸다
         # 4. run_action(action, incident, state) 의 결과를 result 에 담는다
         # 5. make_log_entry(incident, playbook, action, result) 의 결과를 action_log 에 추가한다 (append)
     # 6. change_status(incident, "조치됨") 를 호출한다 (실행이 끝났으니 조치됨으로 옮긴다)
-    return True                                                                  # 모두 실행했으니 True 를 리턴한다
+    return True  # 모두 실행했으니 True 를 리턴한다
 
 
-def process_incidents(incidents, registry, state, action_log):                   # 인시던트 리스트 · 플레이북 리스트 · 시스템 상태 · 감사 기록을 받는 함수
+def process_incidents(incidents, registry, state, action_log):  # 인시던트 리스트 · 플레이북 리스트 · 시스템 상태 · 감사 기록을 받는 함수
     """인시던트마다 맞는 플레이북을 찾아 실행하고 결과를 한 줄씩 출력한다.
     승인 대기로 멈춘 건의 리스트를 리턴한다.
     """
-    pending = []                                                                 # 승인 대기로 멈춘 건을 담을 빈 리스트
-    for incident in incidents:                                                   # 인시던트를 하나씩 꺼낸다
-        playbooks = match_playbooks(incident, registry)                          # 맞는 플레이북을 찾는다
-        result_text = "맞는 플레이북 없음"                                       # 처음에는 없다고 적어 둔다
-        for playbook in playbooks:                                               # 맞는 플레이북을 하나씩 꺼낸다
-            done = run_playbook(incident, playbook, state, action_log)           # 플레이북을 실행한다
-            if done:                                                             # 실행했으면
-                result_text = playbook["id"] + " 실행 완료"                      # 실행 완료라고 적는다
-            else:                                                                # 승인 대기로 멈췄으면
-                result_text = playbook["id"] + " 승인 대기"                      # 승인 대기라고 적는다
+    pending = []  # 승인 대기로 멈춘 건을 담을 빈 리스트
+    for incident in incidents:  # 인시던트를 하나씩 꺼낸다
+        playbooks = match_playbooks(incident, registry)  # 맞는 플레이북을 찾는다
+        result_text = "맞는 플레이북 없음"  # 처음에는 없다고 적어 둔다
+        for playbook in playbooks:  # 맞는 플레이북을 하나씩 꺼낸다
+            done = run_playbook(incident, playbook, state, action_log)  # 플레이북을 실행한다
+            if done:  # 실행했으면
+                result_text = playbook["id"] + " 실행 완료"  # 실행 완료라고 적는다
+            else:  # 승인 대기로 멈췄으면
+                result_text = playbook["id"] + " 승인 대기"  # 승인 대기라고 적는다
                 waiting = {"incident": incident["id"], "entity": incident["entity"], "playbook": playbook["id"], "approval": playbook["approval"]}  # 대기 건 한 건
-                pending.append(waiting)                                          # 승인 대기 리스트에 추가한다
-        status_text = "(상태: " + incident["status"] + ")"                       # 지금 상태를 괄호 글자로 만든다
+                pending.append(waiting)  # 승인 대기 리스트에 추가한다
+        status_text = "(상태: " + incident["status"] + ")"  # 지금 상태를 괄호 글자로 만든다
         print(incident["id"], incident["entity"], incident["grade"], "->", result_text, status_text)  # 번호 · 대상 · 등급 · 결과 · 상태를 출력한다
-    return pending                                                               # 승인 대기 리스트를 리턴한다
+    return pending  # 승인 대기 리스트를 리턴한다
 ```
 
 - 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 · 6번은 함수 안이라 앞에 공백 4개입니다. 2 · 3번은 `if` 안이라 공백 8개입니다. 4 · 5번은 `for` 안이라 공백 8개입니다.
@@ -273,39 +273,39 @@ def process_incidents(incidents, registry, state, action_log):                  
 
 ```python
 from incident import load_json, save_json, INCIDENTS_PATH, REGISTRY_PATH, STATE_PATH, LOG_PATH  # 제공받은 함수를 불러온다
-from playbook_runner import process_incidents                                           # 방금 만든 함수를 불러온다
+from playbook_runner import process_incidents  # 방금 만든 함수를 불러온다
 
-incidents = load_json(INCIDENTS_PATH)                                                   # 인시던트 파일을 리스트로 읽는다
-registry = load_json(REGISTRY_PATH)                                                     # 플레이북 등록 파일을 리스트로 읽는다
-incident_count = len(incidents)                                                         # 인시던트가 몇 건인지 센다
-playbook_count = len(registry)                                                          # 등록된 플레이북이 몇 개인지 센다
+incidents = load_json(INCIDENTS_PATH)  # 인시던트 파일을 리스트로 읽는다
+registry = load_json(REGISTRY_PATH)  # 플레이북 등록 파일을 리스트로 읽는다
+incident_count = len(incidents)  # 인시던트가 몇 건인지 센다
+playbook_count = len(registry)  # 등록된 플레이북이 몇 개인지 센다
 print("--- 단계 1: 불러온 인시던트", incident_count, "건 · 등록된 플레이북", playbook_count, "개")  # 단계 1 시작을 알리는 줄
 
-state = {"locked_users": [], "blocked_ips": [], "tickets": [], "notifications": []}     # 연습용 시스템의 처음 상태 : 아무것도 없다
-action_log = []                                                                         # 감사 기록을 담을 빈 리스트
-print("--- 단계 2: 실행 전 연습용 시스템 상태")                                         # 단계 2 시작을 알리는 줄
-print("잠긴 계정:", state["locked_users"])                                              # 잠긴 계정을 출력한다
-print("차단한 IP:", state["blocked_ips"])                                               # 차단한 IP 를 출력한다
+state = {"locked_users": [], "blocked_ips": [], "tickets": [], "notifications": []}  # 연습용 시스템의 처음 상태 : 아무것도 없다
+action_log = []  # 감사 기록을 담을 빈 리스트
+print("--- 단계 2: 실행 전 연습용 시스템 상태")  # 단계 2 시작을 알리는 줄
+print("잠긴 계정:", state["locked_users"])  # 잠긴 계정을 출력한다
+print("차단한 IP:", state["blocked_ips"])  # 차단한 IP 를 출력한다
 print("티켓:", len(state["tickets"]), "건 · 담당자 알림:", len(state["notifications"]), "건")  # 티켓과 알림 수를 출력한다
 
-print("--- 단계 3: 인시던트마다 플레이북 실행")                                         # 단계 3 시작을 알리는 줄
-pending = process_incidents(incidents, registry, state, action_log)                     # 플레이북을 실행한다
+print("--- 단계 3: 인시던트마다 플레이북 실행")  # 단계 3 시작을 알리는 줄
+pending = process_incidents(incidents, registry, state, action_log)  # 플레이북을 실행한다
 
-print("--- 단계 4: 실행 후 연습용 시스템 상태")                                         # 단계 4 시작을 알리는 줄
-print("잠긴 계정:", state["locked_users"])                                              # 잠긴 계정을 출력한다
-print("차단한 IP:", state["blocked_ips"])                                               # 차단한 IP 를 출력한다
+print("--- 단계 4: 실행 후 연습용 시스템 상태")  # 단계 4 시작을 알리는 줄
+print("잠긴 계정:", state["locked_users"])  # 잠긴 계정을 출력한다
+print("차단한 IP:", state["blocked_ips"])  # 차단한 IP 를 출력한다
 print("티켓:", len(state["tickets"]), "건 · 담당자 알림:", len(state["notifications"]), "건")  # 티켓과 알림 수를 출력한다
 
-pending_count = len(pending)                                                            # 승인 대기가 몇 건인지 센다
-print("--- 단계 5: 승인 대기", pending_count, "건")                                     # 단계 5 시작을 알리는 줄과 건수
-for waiting in pending:                                                                 # 승인 대기 건을 하나씩 꺼낸다
+pending_count = len(pending)  # 승인 대기가 몇 건인지 센다
+print("--- 단계 5: 승인 대기", pending_count, "건")  # 단계 5 시작을 알리는 줄과 건수
+for waiting in pending:  # 승인 대기 건을 하나씩 꺼낸다
     print(waiting["incident"], waiting["entity"], waiting["playbook"], "·", waiting["approval"])  # 번호 · 대상 · 플레이북 · 승인 값을 출력한다
 
-save_json(state, STATE_PATH)                                                            # 연습용 시스템 상태를 파일에 저장한다
-save_json(action_log, LOG_PATH)                                                         # 감사 기록을 파일에 저장한다
-log_count = len(action_log)                                                             # 감사 기록이 몇 건인지 센다
-print("--- 단계 6: 감사 기록", log_count, "건을", LOG_PATH, "에 저장")                  # 단계 6 시작을 알리는 줄과 건수
-for entry in action_log:                                                                # 감사 기록을 하나씩 꺼낸다
+save_json(state, STATE_PATH)  # 연습용 시스템 상태를 파일에 저장한다
+save_json(action_log, LOG_PATH)  # 감사 기록을 파일에 저장한다
+log_count = len(action_log)  # 감사 기록이 몇 건인지 센다
+print("--- 단계 6: 감사 기록", log_count, "건을", LOG_PATH, "에 저장")  # 단계 6 시작을 알리는 줄과 건수
+for entry in action_log:  # 감사 기록을 하나씩 꺼낸다
     print(entry["incident"], entry["playbook"], entry["action"], ":", entry["result"])  # 번호 · 플레이북 · 액션 · 결과를 출력한다
 ```
 
@@ -323,10 +323,12 @@ for entry in action_log:                                                        
 5. **[VS Code]** 새로 생긴 `action_log.json` 과 `system_state.json` 을 열어 봅니다.
    - `action_log.json`: 감사 기록입니다. 누가 무엇을 언제 했는지 남은 파일이고, 사고가 난 뒤 대응이 적절했는지 다시 확인할 때 읽습니다. 시각(`time`)이 있는지 확인합니다.
    - `system_state.json`: 실행 후 연습용 시스템의 상태입니다. 잠긴 계정과 티켓이 들어 있는지 확인합니다.
-6. **[보고서]** `report_u1.md` 의 `## 실습 1-2` 아래를 채웁니다.
+6. **[실습 결과 기록]** `report_u1.md` 의 `## 실습 1-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 실행 후 잠긴 계정 · 차단한 IP · 티켓의 개수와 승인 대기 건수를 적어 주세요.
    - (나) [핵심 질문] 실습 1-1에서 INC-005 를 수동 처리할 때와 달리, 실행기는 INC-005 를 어떻게 처리했는지 적어 주세요. 근거는 단계 3 · 4 · 5 의 출력으로 쓰고, 그렇게 처리한 이유도 적어 주세요.
    - (다) [핵심 질문] 감사 기록(단계 6)에서 INC-002 의 한 줄을 읽고, 그 인시던트에 실제로 무엇이 일어났고 무엇이 일어나지 않았는지 적어 주세요. 이런 기록이 현업에서 필요한 이유도 적어 주세요.
+
+<!-- answer: 04|실습 1-2 정답 -->
 
 ## 실습 1-2 정리
 
@@ -405,9 +407,9 @@ for entry in action_log:                                                        
      - `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
    - `soar_response/__pycache__/` (파이썬이 실행하면서 자동으로 만드는 임시 폴더)가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 봅니다.
 
-3. **[보고서]** `report_u1.md` 의 `## 마무리` 아래를 채웁니다. <mark>올리기 전에 채워야</mark> 깃허브에 빈칸 없이 올라갑니다.
+3. **[실습 결과 기록]** `report_u1.md` 의 `## 저장소 점검` 아래를 채웁니다. <mark>올리기 전에 채워야</mark> 깃허브에 빈칸 없이 올라갑니다.
    - (가) `git status` 를 쳤을 때 `.env` 나 `.venv` 가 보였는지, 보였다면 어떻게 했는지 적어 주세요.
-   - <mark>앞의 실습 1-1, 1-2에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.</mark> 올린 뒤에 이어서 적어 다시 올려도 됩니다.
+   - <mark>앞의 실습 1-1, 1-2에서 못 적은 기록 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.</mark> 올린 뒤에 이어서 적어 다시 올려도 됩니다.
 4. **[터미널]** 바뀐 파일을 올릴 목록에 추가하고(`add`), 기록으로 저장하고(`commit`), 깃허브로 올립니다(`push`). 세 명령을 순서대로 하나씩 칩니다.
 
    ① 바뀐 파일을 모두 추가합니다.
@@ -445,25 +447,24 @@ for entry in action_log:                                                        
    - 빠진 이름이 있으면 VS Code 왼쪽 목록의 `soar_response` 폴더에 내 PC 에도 있는지 봅니다.
      - 없으면 다른 폴더에 만든 것이니 `soar_response` 안으로 옮기고, `pwd` 로 위치를 확인한 뒤 2번의 `git status` 부터 다시 합니다.
 
-## 마무리 정리
+<!-- answer: 04|정답 마무리 -->
 
-| 하려는 일 | 코드 · 말 |
-|---|---|
-| 올릴 파일 확인 | `git status` (`.env` · `.venv` 가 보이면 멈춤) |
-| 올리기 | `git add .` → `git commit -m "…"` → `git push` |
-| 올린 뒤 | 브라우저에서 `soar_response` 폴더와 파일이 있는지 확인 |
+## 문제 해결 기록 남기기
 
----
+`report_u1.md`는 실행 결과와 대응 상태를 확인한 **기술 기록**입니다. 답을 그대로 옮기기보다, 수동 대응에서 플레이북과 실행기로 옮기며 무엇이 달라졌는지 GitHub 블로그에 남깁니다. 처음 보는 동료가 절차의 목적과 승인 경계를 이해할 수 있게 근거를 씁니다.
 
-## 이번 Unit 마무리
+블로그와 GitHub Pages를 처음 설정한다면 [M3 Unit 1의 Jekyll 및 GitHub Pages 설정](__SITE__/exercises/module/3/unit/1/lesson/1/page/4)을 먼저 진행하세요. 이미 설정했다면 `network-study-notes` 저장소의 `_posts` 폴더에 `YYYY-MM-DD-m5-u1-playbook-response.md` 형식의 글을 만듭니다. 이번 Unit의 `soar_response` 코드를 올린 저장소와 블로그 저장소는 따로 커밋하고 게시합니다.
 
-| 확인 | 문제 |
-|---|---|
-| 플레이북을 쓰고, 알림 두 건을 수동 처리해 보며 번거로움을 겪었다 | 실습 1-1 |
-| 플레이북 실행기로 알림 5건을 처리하고, 승인이 필요한 건은 멈추고, 감사 기록을 읽었다 | 실습 1-2 |
-| Module 5 첫날 파일과 보고서를 깃허브에 올렸다 | 마무리 |
+기록에는 다음 내용을 담습니다.
 
-오늘은 연습용 시스템에서 실행했습니다. <mark>Unit 2부터 연습용 시스템 대신 실제로 동작하는 대응(계정 잠금 · 접근 차단 등)을 연결하고, 승인과 기록 기능을 더 추가합니다.</mark> 오늘 정한 승인 값과 감사 기록의 모양은 그때도 그대로 쓰입니다.
+- **상황과 범위:** 다섯 인시던트 가운데 사람이 확인하거나 승인을 해야 하는 대상
+- **플레이북 기준:** 트리거 · 조건 · 액션 · 승인 기준을 정한 근거, 특히 잘못된 IP 차단의 영향
+- **수동 처리와 자동 처리의 차이:** `system_state.json`을 직접 고친 항목 수와 실행기가 처리한 항목, 승인이 필요한 경우 멈춘 이유
+- **감사 근거와 한계:** `audit_log.jsonl`에서 확인한 실행 사실, 기록만으로 확정할 수 없는 점, 다음에 확인할 정보
+
+관찰한 출력과 실제 서비스에서 기대하는 동작을 구분합니다. 이 연습용 시스템은 실제 계정을 잠그거나 IP를 차단하지 않습니다. AI와 논의했다면 제안 전체를 복사하지 말고, 검토한 의견 중 어떤 기준을 실제 플레이북에 반영했는지 요약해도 좋습니다. 글을 저장하고 블로그 저장소에 커밋한 뒤 `git push` 합니다. GitHub Pages에 게시된 글과 링크를 확인하세요.
+
+다음 Unit에서는 승인 경로와 기록 구조를 확장해 봅니다.
 
 ---
 

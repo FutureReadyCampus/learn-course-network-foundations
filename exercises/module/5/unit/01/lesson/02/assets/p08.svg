@@ -17,5 +17,5 @@
 <rect x="370" y="208" width="330" height="108" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text y="246.2" font-size="15" fill="#292929" text-anchor="middle"><tspan x="535.0" dy="0.0" font-weight="700">INC-005 (198.51.100.90) · PB-003</tspan><tspan x="535.0" dy="21.0">내가 정한 액션대로 고치기</tspan><tspan x="535.0" dy="21.0">티켓 번호는 TCK-2</tspan></text>
 <rect x="20" y="332" width="680" height="70" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text y="362.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0">확인 출력 예 (IP 차단 · 티켓 생성을 고른 경우): ['dami'] ['198.51.100.90'] 2</tspan><tspan x="360.0" dy="19.6">고친 곳이 모두 몇 군데인지 세어 두기 → 보고서 (나)</tspan></text>
+<text y="362.1" font-size="14" fill="#292929" text-anchor="middle"><tspan x="360.0" dy="0.0">확인 출력 예 (IP 차단 · 티켓 생성을 고른 경우): ['dami'] ['198.51.100.90'] 2</tspan><tspan x="360.0" dy="19.6">고친 곳이 모두 몇 군데인지 세어 두기 → 실습 결과 기록의 (나)</tspan></text>
 </svg>
