@@ -44,7 +44,6 @@ except ConnectionError as error:
     print("실패:", error)
 print("다음 줄도 실행됨")
 ```
-
 | 코드 | 뜻 |
 |---|---|
 | `try:` | 오류가 날 수 있는 부분을 시작한다 |
@@ -81,98 +80,118 @@ failure_report.py   collect_failures        : 기록에서 「실패」로 시�
 **`retry_runner.py`** — 실패를 흉내 내고 다시 시도합니다. 직접 쓰는 곳은 1 ~ 3번입니다.
 
 ```python
-from safe_runner import safe_run_action                                            # Unit 2의 실습 2-3에서 만든 안전한 액션 실행 함수를 불러온다
+from safe_runner import safe_run_action  # Unit 2의 실습 2-3에서 만든 안전한 액션 실행 함수를 불러온다
 
-MAX_TRIES = 3                                                                      # 한 액션을 시도하는 최대 횟수
+MAX_TRIES = 3  # 한 액션을 시도하는 최대 횟수
 
 
-def flaky_run_action(action, incident, state, fail_plan):                          # 액션 · 인시던트 · 연습용 시스템 · 실패 계획을 받는 함수
+def flaky_run_action(action, incident, state, fail_plan):  # 액션 · 인시던트 · 연습용 시스템 · 실패 계획을 받는 함수
     """실패 계획에 이 액션이 앞으로 실패할 횟수가 남아 있으면 연결 오류를 일으키고, 없으면 Unit 2의 safe_run_action 으로 실행한다.
     외부 서비스가 잠깐 응답하지 않는 상황을 흉내 낼 때 쓴다.
     """
-    key = incident["id"] + "|" + action                                            # 실패 계획에서 찾을 이름 (인시던트 번호 | 액션)
-    remaining = fail_plan.get(key, 0)                                              # 이 액션이 앞으로 실패해야 하는 횟수 (없으면 0)
-    if remaining > 0:                                                              # 아직 실패해야 하면
-        fail_plan[key] = remaining - 1                                             # 남은 실패 횟수를 1 줄이고
+    key = incident["id"] + "|" + action  # 실패 계획에서 찾을 이름 (인시던트 번호 | 액션)
+    remaining = fail_plan.get(key, 0)  # 이 액션이 앞으로 실패해야 하는 횟수 (없으면 0)
+    if remaining > 0:  # 아직 실패해야 하면
+        fail_plan[key] = remaining - 1  # 남은 실패 횟수를 1 줄이고
         raise ConnectionError("연결 실패: " + action + " 서비스가 응답하지 않음")  # 연결 오류를 일으킨다
-    return safe_run_action(action, incident, state)                                # 실패 계획에 없으면 정상으로 실행한다
+    return safe_run_action(action, incident, state)  # 실패 계획에 없으면 정상으로 실행한다
 
 
-def run_with_retry(action, incident, state, fail_plan, max_tries):                 # 액션 · 인시던트 · 연습용 시스템 · 실패 계획 · 최대 시도 횟수를 받는 함수
+def run_with_retry(action, incident, state, fail_plan, max_tries):  # 액션 · 인시던트 · 연습용 시스템 · 실패 계획 · 최대 시도 횟수를 받는 함수
     """액션을 실행해 보고, 연결 오류가 나면 최대 횟수까지 다시 시도한다. 성공하면 결과를, 모두 실패하면 실패 문장을 리턴한다.
     외부 서비스가 잠깐 멈춰도 자동 대응이 끝까지 가게 할 때 쓴다.
     """
-    last_error = ""                                                                # 마지막 오류 문장 : 처음에는 비어 있다
-    for attempt in range(1, max_tries + 1):                                        # 1 번부터 최대 횟수까지 시도 번호를 하나씩 꺼낸다
-        try:                                                                       # 오류가 날 수 있는 부분을 시작한다 — 미리 채운 줄
+    last_error = ""  # 마지막 오류 문장 : 처음에는 비어 있다
+    for attempt in range(1, max_tries + 1):  # 1 번부터 최대 횟수까지 시도 번호를 하나씩 꺼낸다
+        try:  # 오류가 날 수 있는 부분을 시작한다 — 미리 채운 줄
             # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
             # 1. flaky_run_action(action, incident, state, fail_plan) 의 결과를 result 에 담는다
             # 2. result + " (시도 " + str(attempt) + "회)" 를 리턴한다 (성공하면 여기서 끝난다)
-        except ConnectionError as error:                                           # 연결 오류가 나면 — 미리 채운 줄
+        except ConnectionError as error:  # 연결 오류가 나면 — 미리 채운 줄
             # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
             # 3. str(error) 를 last_error 에 담는다 (오류 문장을 기억해 두고 다음 시도로 간다)
-    return "실패: " + last_error + " (" + str(max_tries) + "회 모두 실패)"         # 모든 시도가 실패했으면 실패 문장을 리턴한다 — 미리 채운 줄
+    return "실패: " + last_error + " (" + str(max_tries) + "회 모두 실패)"  # 모든 시도가 실패했으면 실패 문장을 리턴한다 — 미리 채운 줄
 ```
-
 **`flow.py`** — 하루 흐름 파일입니다. 줄 끝의 `[Unit 2 실습 2-1]` 같은 표시로 어느 실습에서 만든 함수인지 알 수 있습니다. 직접 쓰는 곳은 4 · 5번입니다.
 
 ```python
-from incident import change_status, match_playbooks                             # Unit 1 파일의 함수를 불러온다
-from enrichment import enrich_incident                                          # Unit 2의 실습 2-1 : 맥락 붙이기
-from routing import decide_route, apply_route                                   # Unit 2의 실습 2-2 : 경로 정하기
-from approvals import hold_for_approval                                         # 실습 3-1 : 승인 대기로 멈추기
-from audit import log_line                                                      # 실습 3-1 : 감사 기록 한 건 만들기
-from retry_runner import run_with_retry, MAX_TRIES                              # 실습 3-2 : 재시도하며 실행하기
+from incident import change_status, match_playbooks  # Unit 1 파일의 함수를 불러온다
+from enrichment import enrich_incident  # Unit 2의 실습 2-1 : 맥락 붙이기
+from routing import decide_route, apply_route  # Unit 2의 실습 2-2 : 경로 정하기
+from approvals import hold_for_approval  # 실습 3-1 : 승인 대기로 멈추기
+from audit import log_line  # 실습 3-1 : 감사 기록 한 건 만들기
+from retry_runner import run_with_retry, MAX_TRIES  # 실습 3-2 : 재시도하며 실행하기
 
-VIP_REVIEW_ACTIONS = ["담당자 알림", "티켓 생성"]                               # VIP 계정 알림을 담당자가 승인하면 실행할 액션
+VIP_REVIEW_ACTIONS = ["담당자 알림", "티켓 생성"]  # VIP 계정 알림을 담당자가 승인하면 실행할 액션
 
 
 def run_playbook_with_retry(incident, playbook, state, action_log, fail_plan):  # 인시던트 · 플레이북 · 연습용 시스템 · 기록 · 실패 계획을 받는 함수
     """자동으로 해도 되는 플레이북의 액션을 하나씩, 실패하면 다시 시도하며 실행하고 기록한다.
     모두 성공하면 조치됨으로 바꾸고 「실행 완료」를, 하나라도 끝내 실패하면 상태를 그대로 두고 「일부 실패」를 리턴한다.
     """
-    incident["playbook"] = playbook["id"]                                       # 기록에 남길 플레이북 번호를 적고
-    change_status(incident, "분류됨")                                           # 대응을 시작하기 전에 분류됨으로 옮긴다
-    failed = False                                                              # 실패한 액션이 있는지 : 처음에는 없다
-    for action in playbook["actions"]:                                          # 액션을 하나씩 꺼낸다
+    incident["playbook"] = playbook["id"]  # 기록에 남길 플레이북 번호를 적고
+    change_status(incident, "분류됨")  # 대응을 시작하기 전에 분류됨으로 옮긴다
+    failed = False  # 실패한 액션이 있는지 : 처음에는 없다
+    for action in playbook["actions"]:  # 액션을 하나씩 꺼낸다
         result = run_with_retry(action, incident, state, fail_plan, MAX_TRIES)  # 재시도하며 실행한다
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 4. result 가 "실패" 로 시작하면 (if, startswith)
         # 5.   failed 에 True 를 담는다 (실패한 액션이 있다고 적는다)
-        action_log.append(log_line(incident, action, result))                   # 결과를 기록에 추가한다 — 미리 채운 줄
-    if failed:                                                                  # 실패한 액션이 있으면
-        return "일부 실패"                                                      # 조치됨으로 옮기지 않고 일부 실패를 리턴한다
-    change_status(incident, "조치됨")                                           # 모두 성공했으니 조치됨으로 옮긴다
-    return "실행 완료"                                                          # 실행 완료를 리턴한다
+        action_log.append(log_line(incident, action, result))  # 결과를 기록에 추가한다 — 미리 채운 줄
+    if failed:  # 실패한 액션이 있으면
+        return "일부 실패"  # 조치됨으로 옮기지 않고 일부 실패를 리턴한다
+    change_status(incident, "조치됨")  # 모두 성공했으니 조치됨으로 옮긴다
+    return "실행 완료"  # 실행 완료를 리턴한다
 
 
 def run_day_flow(incidents, registry, users_info, source_ips, trusted_ips, state, action_log, fail_plan):  # 하루 흐름 전체를 받는 함수
     """알림마다 맥락 붙이기 → 경로 정하기 → 경로에 따라 처리하기(오탐 종료 · 승인 대기 · 재시도하며 실행)를 차례로 한다.
     알림마다 결과를 한 줄씩 출력하고, 승인 대기 건의 리스트를 리턴한다.
     """
-    pending = []                                                                # 승인 대기 건을 담을 빈 리스트
-    route_log = []                                                              # 경로 기록을 담을 빈 리스트
-    for incident in incidents:                                                  # 인시던트를 하나씩 꺼낸다
-        enrich_incident(incident, users_info, source_ips, trusted_ips)          # [Unit 2의 실습 2-1] 맥락을 붙인다
-        route, reason = decide_route(incident)                                  # [Unit 2의 실습 2-2] 처리 경로와 이유를 정한다
-        apply_route(incident, route, reason, route_log)                         # [Unit 2의 실습 2-2] 경로를 적용한다 (오탐 종료이면 여기서 닫힌다)
-        result_text = "맞는 플레이북 없음"                                      # 처음에는 없다고 적어 둔다
-        if route == "오탐 종료":                                                # 오탐으로 닫았으면
-            result_text = "오탐 종료"                                           # 오탐 종료라고 적는다
-        elif route == "승인 필요":                                              # VIP 계정이라 담당자 승인이 필요하면
-            pending.append(hold_for_approval(incident, "VIP 확인", VIP_REVIEW_ACTIONS, "VIP 계정이라 경로가 승인 필요", action_log))  # [실습 3-1] 승인 대기로 멈춘다
-            result_text = "승인 대기"                                           # 승인 대기라고 적는다
-        else:                                                                   # 기본 경로이면
-            for playbook in match_playbooks(incident, registry):                # 맞는 플레이북을 하나씩 꺼낸다
-                if playbook["approval"] != "자동":                              # 플레이북이 승인을 요구하면
-                    pending.append(hold_for_approval(incident, playbook["id"], playbook["actions"], "플레이북 승인 값이 " + playbook["approval"], action_log))  # [실습 3-1] 승인 대기로 멈춘다
-                    result_text = "승인 대기"                                   # 승인 대기라고 적는다
-                else:                                                           # 자동이면
-                    result_text = run_playbook_with_retry(incident, playbook, state, action_log, fail_plan)  # [실습 3-2] 재시도하며 실행한다
+    pending = []  # 승인 대기 건을 담을 빈 리스트
+    route_log = []  # 경로 기록을 담을 빈 리스트
+    for incident in incidents:  # 인시던트를 하나씩 꺼낸다
+        enrich_incident(incident, users_info, source_ips, trusted_ips)  # [Unit 2의 실습 2-1] 맥락을 붙인다
+        route, reason = decide_route(incident)  # [Unit 2의 실습 2-2] 처리 경로와 이유를 정한다
+        apply_route(incident, route, reason, route_log)  # [Unit 2의 실습 2-2] 경로를 적용한다 (오탐 종료이면 여기서 닫힌다)
+        result_text = "맞는 플레이북 없음"  # 처음에는 없다고 적어 둔다
+        if route == "오탐 종료":  # 오탐으로 닫았으면
+            result_text = "오탐 종료"  # 오탐 종료라고 적는다
+        elif route == "승인 필요":  # VIP 계정이라 담당자 승인이 필요하면
+            pending.append(
+                hold_for_approval(
+                    incident,
+                    "VIP 확인",
+                    VIP_REVIEW_ACTIONS,
+                    "VIP 계정이라 경로가 승인 필요",
+                    action_log,
+                )
+            )  # [실습 3-1] 승인 대기로 멈춘다
+            result_text = "승인 대기"  # 승인 대기라고 적는다
+        else:  # 기본 경로이면
+            for playbook in match_playbooks(incident, registry):  # 맞는 플레이북을 하나씩 꺼낸다
+                if playbook["approval"] != "자동":  # 플레이북이 승인을 요구하면
+                    pending.append(
+                        hold_for_approval(
+                            incident,
+                            playbook["id"],
+                            playbook["actions"],
+                            "플레이북 승인 값이 " + playbook["approval"],
+                            action_log,
+                        )
+                    )  # [실습 3-1] 승인 대기로 멈춘다
+                    result_text = "승인 대기"  # 승인 대기라고 적는다
+                else:  # 자동이면
+                    result_text = run_playbook_with_retry(
+                        incident,
+                        playbook,
+                        state,
+                        action_log,
+                        fail_plan,
+                    )  # [실습 3-2] 재시도하며 실행한다
         print(incident["id"], incident["entity"], "->", result_text, "(상태: " + incident["status"] + ")")  # 한 줄로 출력한다
-    return pending                                                              # 승인 대기 리스트를 리턴한다
+    return pending  # 승인 대기 리스트를 리턴한다
 ```
-
 **`failure_report.py`** — 실패한 기록만 모읍니다. 직접 쓰는 곳은 6 · 7번입니다.
 
 ```python
@@ -180,81 +199,79 @@ def collect_failures(action_log):  # 감사 기록 리스트를 받는 함수
     """감사 기록에서 결과가 「실패」로 시작하는 기록만 골라 리스트로 리턴한다.
     담당자가 아침에 가장 먼저 볼 「확인이 필요한 건」 목록을 만들 때 쓴다.
     """
-    failures = []                  # 실패한 기록을 담을 빈 리스트
-    for entry in action_log:       # 기록을 하나씩 꺼낸다
+    failures = []  # 실패한 기록을 담을 빈 리스트
+    for entry in action_log:  # 기록을 하나씩 꺼낸다
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 6. entry["result"] 가 "실패" 로 시작하면 (if, startswith)
         # 7.   failures 에 entry 를 추가한다 (append)
-    return failures                # 실패한 기록 리스트를 리턴한다
+    return failures  # 실패한 기록 리스트를 리턴한다
 ```
-
 **`exercise3-2_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
-from incident import load_json, INCIDENTS_PATH                                              # Unit 1 파일의 함수를 불러온다
-from approvals import apply_decision                                                        # 실습 3-1에 만든 결정 적용 함수를 불러온다
-from retry_runner import run_with_retry, MAX_TRIES                                          # 방금 만든 재시도 함수를 불러온다
-from flow import run_day_flow                                                               # 하루 흐름 함수를 불러온다
-from failure_report import collect_failures                                                 # 실패한 기록을 모으는 함수를 불러온다
+from incident import load_json, INCIDENTS_PATH  # Unit 1 파일의 함수를 불러온다
+from approvals import apply_decision  # 실습 3-1에 만든 결정 적용 함수를 불러온다
+from retry_runner import run_with_retry, MAX_TRIES  # 방금 만든 재시도 함수를 불러온다
+from flow import run_day_flow  # 하루 흐름 함수를 불러온다
+from failure_report import collect_failures  # 실패한 기록을 모으는 함수를 불러온다
 
 
-def new_state():                                                                            # 인자가 없는 함수
+def new_state():  # 인자가 없는 함수
     """잠긴 계정 · 차단한 IP · 티켓이 모두 비어 있는 연습용 시스템 상태를 새로 만들어 리턴한다.
     실험마다 깨끗한 상태에서 시작하고 싶을 때 쓴다.
     """
-    state = {"locked_users": [], "blocked_ips": [], "tickets": [], "notifications": []}     # 비어 있는 상태 딕셔너리
-    return state                                                                            # 상태를 리턴한다
+    state = {"locked_users": [], "blocked_ips": [], "tickets": [], "notifications": []}  # 비어 있는 상태 딕셔너리
+    return state  # 상태를 리턴한다
 
 
-incidents = load_json(INCIDENTS_PATH)                                                       # 인시던트 파일을 리스트로 읽는다
-users_info = load_json("users_info.json")                                                   # 계정 정보 파일을 읽는다
-source_ips = load_json("source_ips.json")                                                   # 접속 IP 파일을 읽는다
-trusted_ips = load_json("trusted_ips.json")                                                 # 신뢰 IP 파일을 읽는다
-registry = load_json("config/playbook_registry.json")                                       # 플레이북 세 건을 읽는다
-decisions = load_json("decisions.json")                                                     # 담당자 결정을 읽는다
+incidents = load_json(INCIDENTS_PATH)  # 인시던트 파일을 리스트로 읽는다
+users_info = load_json("users_info.json")  # 계정 정보 파일을 읽는다
+source_ips = load_json("source_ips.json")  # 접속 IP 파일을 읽는다
+trusted_ips = load_json("trusted_ips.json")  # 신뢰 IP 파일을 읽는다
+registry = load_json("config/playbook_registry.json")  # 플레이북 세 건을 읽는다
+decisions = load_json("decisions.json")  # 담당자 결정을 읽는다
 
-print("--- 단계 1: 일시 장애 — 티켓 서비스가 2번 실패한 뒤 복구")                           # 단계 1 시작을 알리는 줄
-state = new_state()                                                                         # 깨끗한 상태로 시작한다
-fail_plan = {"INC-001|티켓 생성": 2}                                                        # INC-001 의 티켓 생성이 2번 실패하게 한다
-result = run_with_retry("티켓 생성", incidents[0], state, fail_plan, MAX_TRIES)             # 재시도하며 실행한다
-print(result)                                                                               # 결과 문장을 출력한다
-print("만든 티켓:", len(state["tickets"]), "건")                                            # 만든 티켓 수를 출력한다
+print("--- 단계 1: 일시 장애 — 티켓 서비스가 2번 실패한 뒤 복구")  # 단계 1 시작을 알리는 줄
+state = new_state()  # 깨끗한 상태로 시작한다
+fail_plan = {"INC-001|티켓 생성": 2}  # INC-001 의 티켓 생성이 2번 실패하게 한다
+result = run_with_retry("티켓 생성", incidents[0], state, fail_plan, MAX_TRIES)  # 재시도하며 실행한다
+print(result)  # 결과 문장을 출력한다
+print("만든 티켓:", len(state["tickets"]), "건")  # 만든 티켓 수를 출력한다
 
-print("--- 단계 2: 서비스 중단 — 티켓 서비스가 계속 실패")                                  # 단계 2 시작을 알리는 줄
-state = new_state()                                                                         # 깨끗한 상태로 시작한다
-fail_plan = {"INC-001|티켓 생성": 99}                                                       # INC-001 의 티켓 생성이 계속 실패하게 한다
-result = run_with_retry("티켓 생성", incidents[0], state, fail_plan, MAX_TRIES)             # 재시도하며 실행한다
-print(result)                                                                               # 결과 문장을 출력한다
-print("만든 티켓:", len(state["tickets"]), "건")                                            # 만든 티켓 수를 출력한다
+print("--- 단계 2: 서비스 중단 — 티켓 서비스가 계속 실패")  # 단계 2 시작을 알리는 줄
+state = new_state()  # 깨끗한 상태로 시작한다
+fail_plan = {"INC-001|티켓 생성": 99}  # INC-001 의 티켓 생성이 계속 실패하게 한다
+result = run_with_retry("티켓 생성", incidents[0], state, fail_plan, MAX_TRIES)  # 재시도하며 실행한다
+print(result)  # 결과 문장을 출력한다
+print("만든 티켓:", len(state["tickets"]), "건")  # 만든 티켓 수를 출력한다
 
-print("--- 단계 3: 하루 흐름 — 티켓 서비스가 계속 실패하는 상황")                           # 단계 3 시작을 알리는 줄
-state = new_state()                                                                         # 깨끗한 상태로 시작한다
-action_log = []                                                                             # 감사 기록을 담을 빈 리스트
-fail_plan = {"INC-001|티켓 생성": 99}                                                       # INC-001 의 티켓 생성이 계속 실패하게 한다
+print("--- 단계 3: 하루 흐름 — 티켓 서비스가 계속 실패하는 상황")  # 단계 3 시작을 알리는 줄
+state = new_state()  # 깨끗한 상태로 시작한다
+action_log = []  # 감사 기록을 담을 빈 리스트
+fail_plan = {"INC-001|티켓 생성": 99}  # INC-001 의 티켓 생성이 계속 실패하게 한다
 pending = run_day_flow(incidents, registry, users_info, source_ips, trusted_ips, state, action_log, fail_plan)  # 하루 흐름을 실행한다
 
-print("--- 단계 4: 담당자 결정 처리")                                                       # 단계 4 시작을 알리는 줄
-for item in pending:                                                                        # 승인 대기 건을 하나씩 꺼낸다
-    result_text = apply_decision(item, decisions[item["id"]], state, action_log)            # 담당자 결정을 적용한다
+print("--- 단계 4: 담당자 결정 처리")  # 단계 4 시작을 알리는 줄
+for item in pending:  # 승인 대기 건을 하나씩 꺼낸다
+    result_text = apply_decision(item, decisions[item["id"]], state, action_log)  # 담당자 결정을 적용한다
     print(item["id"], item["entity"], "->", result_text, "(상태: " + item["status"] + ")")  # 한 줄로 출력한다
 
-print("--- 단계 5: 하루가 끝난 뒤 연습용 시스템 상태")                                      # 단계 5 시작을 알리는 줄
-print("잠긴 계정:", state["locked_users"])                                                  # 잠긴 계정을 출력한다
-print("차단한 IP:", state["blocked_ips"])                                                   # 차단한 IP 를 출력한다
+print("--- 단계 5: 하루가 끝난 뒤 연습용 시스템 상태")  # 단계 5 시작을 알리는 줄
+print("잠긴 계정:", state["locked_users"])  # 잠긴 계정을 출력한다
+print("차단한 IP:", state["blocked_ips"])  # 차단한 IP 를 출력한다
 print("티켓:", len(state["tickets"]), "건 · 담당자 알림:", len(state["notifications"]), "건")  # 티켓과 알림 수를 출력한다
 
-print("--- 단계 6: 담당자 확인이 필요한 건")                                                # 단계 6 시작을 알리는 줄
+print("--- 단계 6: 담당자 확인이 필요한 건")  # 단계 6 시작을 알리는 줄
 # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
 # 8. collect_failures(action_log) 의 결과를 failures 에 담는다
-for entry in failures:                                                                      # 실패한 기록을 하나씩 꺼낸다
-    incident_id = entry["incident"]                                                         # 실패한 인시던트 번호
+for entry in failures:  # 실패한 기록을 하나씩 꺼낸다
+    incident_id = entry["incident"]  # 실패한 인시던트 번호
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 9. incident_id · entry["action"] · ":" · entry["result"] 를 출력한다 (print)
-for item in pending:                                                                        # 승인 대기 건을 하나씩 꺼낸다
-    if item["status"] == "분류됨":                                                          # 아직 처리되지 않았으면
-        print(item["id"], "승인 대기 :", item["why"])                                       # 승인 대기 건과 이유를 출력한다
+for item in pending:  # 승인 대기 건을 하나씩 꺼낸다
+    if item["status"] == "분류됨":  # 아직 처리되지 않았으면
+        print(item["id"], "승인 대기 :", item["why"])  # 승인 대기 건과 이유를 출력한다
 ```
-
 **순서**
 
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `retry_runner.py` · `flow.py` · `failure_report.py` · `exercise3-2_run.py` 네 파일을 하나씩 만들고(파일 이름 그대로), 코드를 붙여 넣어 저장합니다. <mark>실습 3-1의 `audit.py` · `approvals.py` 가 완성돼 있어야(`flow.py` 가 이 두 파일을 불러오기 때문)</mark> 합니다.
@@ -264,7 +281,7 @@ for item in pending:                                                            
    python exercise3-2_run.py
    ```
 4. 출력은 여섯 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 2줄, 단계 2 도 2줄, 단계 3 은 5줄, 단계 4 는 3줄, 단계 5 는 3줄, 단계 6 은 2줄입니다.
-5. **[보고서]** `report_u3.md` 의 `## 실습 3-2` 아래를 채웁니다.
+5. **[실습 결과 기록]** `report_u3.md` 의 `## 실습 3-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 단계 3 에서 `일부 실패` · `승인 대기` · `오탐 종료`(오탐: 위험하지 않은데 위험하다고 잘못 알린 경우) 인 알림의 번호를 각각 적어 주세요.
    - (나) [핵심 질문] 단계 1 과 2 는 같은 `run_with_retry` 인데 결과가 다릅니다. 두 단계의 `fail_plan` 값을 근거로 이유를 적어 주세요. 그리고 최대 횟수가 없으면 서비스가 계속 멈춰 있을 때 어떤 문제가 생기는지도 적어 주세요.
    - (다) [핵심 질문] 단계 3 에서 INC-001 은 계정은 잠겼는데 상태가 `조치됨` 이 아닙니다. 그 이유를 적어 주세요. 또 단계 6 의 출력이 담당자에게 무엇을 알려 주는지 적어 주세요. 마지막으로, 같은 `state` 로 다시 처리해도 `dami` 가 두 번 잠기지 않는 이유를 Unit 2의 실습 2-3에서 만든 장치와 연결해 적어 주세요.
@@ -279,11 +296,13 @@ for item in pending:                                                            
 | 글자가 어떤 말로 시작하면 | `if result.startswith("실패"):` |
 | 리스트에 추가 | `failures.append(entry)` |
 
+<!-- answer: 04|실습 3-2 정답 -->
+
 ---
 
-## 마무리 · 이번 Unit에서 만든 것을 깃허브에 올리기
+## 코드와 실습 결과 기록을 GitHub에 올리기
 
-<mark>문제가 아니라 오늘 한 일을 저장소(repository, 리포지터리: 깃허브에 코드를 모아 두는 곳)에 올리는 마무리입니다.</mark> 실습 3-2 마지막 약 10분에 합니다. 어느 터미널을 써도 되고, 먼저 `pwd` 로 위치를 확인합니다. 결과가 `soar_response` 로 끝날 때만 아래 1번의 `cd ..` 를 칩니다.
+<mark>문제가 아니라 오늘 한 일을 저장소(repository, 리포지터리: 깃허브에 코드를 모아 두는 곳)에 올리는 마무리입니다.</mark> 실습 3-2를 마친 뒤 진행합니다. 어느 터미널을 써도 되고, 먼저 `pwd` 로 위치를 확인합니다. 결과가 `soar_response` 로 끝날 때만 아래 1번의 `cd ..` 를 칩니다.
 
 **이런 상황이 있습니다**
 
@@ -293,7 +312,7 @@ for item in pending:                                                            
 
 **순서**
 
-0. **[터미널]** 오늘 만든 파일이 있는지 `soar_response` 폴더에서 확인합니다. 두 명령을 하나씩 칩니다. Unit 2 와 Unit 3 의 모든 질문에서 `답:` 뒤와 코드 상자가 모두 채워져 있는지도 봅니다. 단, 마무리 (가)는 3번에서 채우니 지금은 비어 있어도 됩니다.
+0. **[터미널]** 오늘 만든 파일이 있는지 `soar_response` 폴더에서 확인합니다. 두 명령을 하나씩 칩니다. Unit 2 와 Unit 3 의 모든 질문에서 `답:` 뒤와 코드 상자가 모두 채워져 있는지도 봅니다. 단, 저장소 업로드 확인은 3번에서 채우니 지금은 비어 있어도 됩니다.
 
    ① 지금 위치를 확인합니다.
 
@@ -348,7 +367,7 @@ for item in pending:                                                            
      - `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
    - `soar_response/__pycache__/` (파이썬이 실행하면서 자동으로 만드는 임시 폴더)가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 봅니다.
 
-3. **[보고서]** `report_u3.md` 의 `## 마무리` 아래를 채웁니다. <mark>올리기 전에 채워야</mark> 깃허브에 빈칸 없이 올라갑니다.
+3. **[실습 결과 기록]** `report_u3.md`의 `## 저장소 업로드 확인` 아래를 채웁니다. <mark>올리기 전에 채워야</mark> 깃허브에 빈칸 없이 올라갑니다.
    - (가) `git status` 를 쳤을 때 `.env` 나 `.venv` 가 보였는지, 보였다면 어떻게 했는지 적어 주세요.
    - <mark>`report_u2.md` 와 `report_u3.md` 에서 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.</mark> 올린 뒤에 이어서 적어 다시 올려도 됩니다.
 4. **[터미널]** 바뀐 파일을 올릴 목록에 추가하고(`add`), 설명을 붙여 저장하고(`commit`), 깃허브로 올립니다(`push`). 세 명령을 순서대로 하나씩 칩니다.
@@ -388,26 +407,20 @@ for item in pending:                                                            
    - 빠진 이름이 있으면 VS Code 왼쪽 목록의 `soar_response` 폴더에 내 PC 에도 있는지 봅니다.
      - 없으면 다른 폴더에 만든 것이니 `soar_response` 안으로 옮기고, `pwd` 로 위치를 확인한 뒤 2번의 `git status` 부터 다시 합니다.
 
-## 마무리 정리
+## 문제 해결 기록 남기기
 
-| 하려는 일 | 코드 · 말 |
-|---|---|
-| 올릴 파일 확인 | `git status` (`.env` · `.venv` 가 보이면 멈춤) |
-| 올리기 | `git add .` → `git commit -m "…"` → `git push` |
-| 올린 뒤 | 브라우저에서 `soar_response` 폴더와 파일이 있는지 확인 |
+이번 Unit에서는 승인 권한을 확인해 담당자 결정을 적용하고, 연결 오류가 난 액션은 최대 세 번 재시도한 뒤 실패 목록으로 넘겼습니다. 코드와 함께 남길 글에는 어떤 근거로 승인·거절을 적용했는지, 재시도가 끝난 뒤 무엇을 사람에게 넘겼는지 기록합니다. 블로그와 GitHub Pages를 처음 설정한다면 [M3 Unit 1의 Jekyll 및 GitHub Pages 설정](__SITE__/exercises/module/3/unit/1/lesson/1/page/4)을 먼저 진행하세요. 이미 설정했다면 `network-study-notes` 저장소의 `_posts` 폴더에 `YYYY-MM-DD-m5-u3-approval-retry.md` 형식의 글을 만듭니다.
 
----
+글에는 다음 내용을 담습니다.
 
-## 이번 Unit 마무리
+- **권한 판단의 근거:** `kim.sec`의 승인과 `intern01`의 승인 시도가 어떤 결과를 냈는지, `APPROVERS` 확인이 왜 필요했는지
+- **재시도와 실패 처리:** 두 `fail_plan`이 각각 어떤 결과를 냈는지, 최대 횟수 뒤에 실패를 어떻게 담당자에게 전달했는지
+- **안전장치와 남은 위험:** 재시도와 Unit 2의 중복 실행 방지가 막은 문제, 여전히 사람이 확인해야 하는 상태
+- **다음 확인:** 실패 원인이 실제 서비스 장애인지 일시적인 연결 문제인지 판단하는 데 필요한 정보
 
-| 확인 | 문제 |
-|---|---|
-| 담당자 결정을 적용하고 권한 없는 승인은 막았다 | 실습 3-1 |
-| 연결 오류가 나면 최대 3번 시도하고, 하루 흐름 전체를 한 번에 읽었다 | 실습 3-2 |
-| 오늘 만든 파일과 보고서를 깃허브에 올렸다 | 마무리 |
+실행 출력으로 확인한 사실과 가능한 설명을 구분하고, 코드가 막은 일과 막지 못한 일을 함께 적습니다. 글을 저장하고 `network-study-notes` 저장소에 커밋한 뒤 `git push` 합니다. GitHub Pages에 게시된 글과 링크를 확인하세요.
 
-오늘은 연습용 시스템에서 실행했습니다. <mark>Unit 4에서는 계정 잠금 · IP 차단을 연습용 시스템에서 실제로 하고, 확인하고, 되돌리는 것까지 만듭니다.</mark> 오늘 만든 맥락 붙이기와 경로 정하기는 Unit 5에서 다시 씁니다.
-
+M5 Unit 4에서는 연습용 시스템에서 계정 잠금과 IP 차단을 실행하고, 결과를 확인한 뒤 되돌리는 흐름을 다룹니다.
 ---
 
 
