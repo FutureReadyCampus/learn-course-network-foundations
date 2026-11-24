@@ -18,7 +18,7 @@ source:
 > **오늘 들어온 일**
 >
 > A사 관제 담당이 보낸 메시지: 「지금까지 만든 요청서는 프로그램을 끄면 사라집니다. 접수 · 승인 · 반려 · 부여를 한 번 돌리고 나면 요청서 전체를 파일로 남겨 주세요. 그리고 상태별로 몇 건인지 숫자로 보고 싶은데, 손으로 세면 시간이 걸리고 틀리기 쉽습니다.」
-> - 이 실습에서 하는 일: 요청서 리스트를 `requests.json` 으로 저장하는 함수 `save_requests` 와 상태별 건수를 세는 함수 `count_by_status` 를 직접 씁니다. 실습 2-1 · 2-2, 「제공 파일」 `req_grant.py`, 응용 2-2에서 만든 함수를 모두 이어서 한 번 돌려 봅니다.
+> - 이 실습에서 하는 일: 요청서 리스트를 `requests.json` 으로 저장하는 함수 `save_requests` 와 상태별 건수를 세는 함수 `count_by_status` 를 직접 씁니다. 실습 2-1 · 2-2, 「권한 부여 준비」 `req_grant.py`, 응용 2-2에서 만든 함수를 모두 이어서 한 번 돌려 봅니다.
 > - 끝나면: 어떤 문제가 있었고 어떻게 확인했는지 생각해 봅니다.
 
 ## 왜 요청 이력을 파일로 남기는가
@@ -162,7 +162,7 @@ from datetime import datetime                                    # 지금 시각
 from config_loader import load_json
 from req_create import REQUESTS, create_request                  # 실습 2-1에서 만든 요청서 함수와 리스트를 불러온다
 from req_review import approve_request, reject_request           # 실습 2-2에서 만든 승인 · 반려 함수를 불러온다
-from req_grant import grant_request                              # 제공 파일(또는 응용 2-1)의 부여 함수를 불러온다
+from req_grant import grant_request                              # 권한 부여 준비(또는 응용 2-1)의 부여 함수를 불러온다
 from req_sla import check_sla_breach                             # 응용 2-2에서 만든 기한 점검 함수를 불러온다
 from request_flow import save_requests, count_by_status          # 방금 만든 저장 · 집계 함수를 불러온다
 
@@ -216,7 +216,7 @@ print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[
 
    | 이렇게 나오면 | 할 일 |
    |---|---|
-   | `No module named 'req_grant'` | 「제공 파일」 레슨으로 `req_grant.py` 를 만듭니다 |
+   | `No module named 'req_grant'` | 「권한 부여 준비」 레슨으로 `req_grant.py` 를 만듭니다 |
    | `No module named 'req_sla'` | 응용 2-2를 먼저 해서 `req_sla.py` 와 `config/sla.json` 을 만듭니다 |
 
 1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 세 가지를 반복합니다(시작하기 4번과 같은 방법입니다).

@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
-<title>접수와 승인 · 반려는 실습에서 쓰고, 부여 req_grant.py 는 제공 파일로 받는다</title>
-<desc>요청서는 req_create.py 에서 접수되고 req_review.py 에서 승인 · 반려된 뒤, 제공 파일 req_grant.py 가 정책을 다시 확인해 예외를 부여합니다. 부여된 예외는 policy.py 의 evaluate_access 가 판정에 씁니다.</desc>
+<title>접수와 승인 · 반려는 실습에서 쓰고, 부여 req_grant.py 는 권한 부여 준비로 받는다</title>
+<desc>요청서는 req_create.py 에서 접수되고 req_review.py 에서 승인 · 반려된 뒤, 권한 부여 준비 req_grant.py 가 정책을 다시 확인해 예외를 부여합니다. 부여된 예외는 policy.py 의 evaluate_access 가 판정에 씁니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">요청서 흐름에서 제공 파일이 맡는 곳</text>
+<text x="20" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">요청서 흐름에서 권한 부여 준비가 맡는 곳</text>
 <rect x="20" y="56" width="140" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="90" y="86" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">접수</text>
 <text x="90" y="110" font-size="14" fill="#292929" text-anchor="middle">req_create.py</text>
@@ -15,7 +15,7 @@
 <rect x="380" y="56" width="140" height="96" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="450" y="86" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">부여</text>
 <text x="450" y="110" font-size="14" fill="#292929" text-anchor="middle">req_grant.py</text>
-<text x="450" y="134" font-size="14" fill="#666660" text-anchor="middle">제공 파일</text>
+<text x="450" y="134" font-size="14" fill="#666660" text-anchor="middle">권한 부여 준비</text>
 <rect x="560" y="56" width="140" height="96" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="630" y="86" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">판정</text>
 <text x="630" y="110" font-size="14" fill="#292929" text-anchor="middle">policy.py</text>
@@ -28,6 +28,6 @@
 <text x="40" y="236" font-size="15" fill="#292929" text-anchor="start">1. status 가 approved 인 요청서만 받는다</text>
 <text x="40" y="260" font-size="15" fill="#292929" text-anchor="start">2. check_permission 으로 지금 정책을 다시 확인한다</text>
 <text x="40" y="284" font-size="15" fill="#292929" text-anchor="start">3. 「권한 없음」이면 EXCEPTIONS 에 예외 한 건 추가 → status 를 granted 로</text>
-<text x="360" y="340" font-size="15" fill="#666660" text-anchor="middle">실습 2-2를 마친 뒤 복사해 만듭니다 · 응용 2-1에서 직접 써 볼 수 있습니다</text>
+<text x="360" y="340" font-size="15" fill="#666660" text-anchor="middle">실습 2-2를 마친 뒤 복사해 만듭니다</text>
 </g>
 </svg>

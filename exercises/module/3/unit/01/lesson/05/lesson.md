@@ -15,7 +15,7 @@ source:
 
 > **오늘 들어온 일**
 > A사 보안 담당이 보낸 메시지: 「지금은 "역할로 허용되나?"와 "예외로 허용되나?"를 따로 확인해서, 정산 포털이 어느 결과를 믿어야 할지 모르겠습니다. 요청 하나를 넣으면 "허용인지 거부인지"와 "왜 그런지"가 한 번에 나오게 해 주세요. 이미 퇴사한 사람은 예외가 남아 있어도 열리면 안 됩니다.」
-> - 이 실습에서 하는 일: 실습 1-2에서 만든 `check_permission` 과 「제공 파일」의 `find_exception` 을 불러 최종 판정 함수 `evaluate_access` 를 `policy.py` 에 만들고, 오늘 요청 아홉 건을 판정한 결과를 읽습니다. 대부분은 미리 채워 두었고, 퇴사자가 예외로 열리지 않게 막는 두 줄만 직접 씁니다.
+> - 이 실습에서 하는 일: 실습 1-2에서 만든 `check_permission` 과 「예외 판정 준비」의 `find_exception` 을 불러 최종 판정 함수 `evaluate_access` 를 `policy.py` 에 만들고, 오늘 요청 아홉 건을 판정한 결과를 읽습니다. 대부분은 미리 채워 두었고, 퇴사자가 예외로 열리지 않게 막는 두 줄만 직접 씁니다.
 > - 끝나면: 어떤 문제가 있었고 어떻게 확인했는지 생각해 봅니다.
 
 ## 왜 판정을 한 함수에 모으는가
@@ -33,7 +33,7 @@ source:
 | 함수 | 들어 있는 파일 | 넣는 값 | 리턴 |
 |---|---|---|---|
 | `check_permission` | `rbac.py`(실습 1-2에서 만든 그대로, 고치지 않음) | 사용자 · 자원 · 행위 | `(True 또는 False, 이유)` |
-| `find_exception` | `exception_policy.py`(「제공 파일」 레슨에서 복사해 만듦) | 사람 · 권한 · 지금 시각 | 유효한 예외가 있으면 `(True, 예외 번호)`, 없으면 `(False, None)` |
+| `find_exception` | `exception_policy.py`(「예외 판정 준비」 레슨에서 복사해 만듦) | 사람 · 권한 · 지금 시각 | 유효한 예외가 있으면 `(True, 예외 번호)`, 없으면 `(False, None)` |
 
 - `check_permission` 의 이유는 「권한 없음」 · 「퇴사한 계정」 · 「등록되지 않은 사용자」 · 「역할이 없음」 중 하나입니다.
 - `policy.py` 는 실습 1-1에서 만든 역할 파일(`roles.json`)과 사용자 파일(`users.json`)을 `rbac.py` 를 거쳐 그대로 씁니다.
@@ -96,24 +96,24 @@ source:
 
 **할 일**
 
-1. 「제공 파일」 레슨의 세 파일(`config/exceptions.json` · `exception_policy.py` · `config_loader.py`)이 있는지 확인합니다.
+1. 「예외 판정 준비」 레슨의 세 파일(`config/exceptions.json` · `exception_policy.py` · `config_loader.py`)이 있는지 확인합니다.
 2. `policy.py` 를 만들고 `evaluate_access` 의 `# ←` 두 곳(① · ②)을 한 줄씩 채웁니다.
 3. `exercise1-3_run.py` 를 실행해서 <mark>아홉 건의 결과</mark>, <mark>만료 뒤 시도</mark>, <mark>예외 번호별 사용 건수</mark>를 읽습니다.
 
-**준비** — `policy.py` 는 「제공 파일」의 `exception_policy.py` 를 불러오고, 그 파일은 `config/exceptions.json` 을 읽습니다. 터미널이 `…/access_control` 위치인지 확인한 뒤 파일이 있는지 봅니다.
+**준비** — `policy.py` 는 「예외 판정 준비」의 `exception_policy.py` 를 불러오고, 그 파일은 `config/exceptions.json` 을 읽습니다. 터미널이 `…/access_control` 위치인지 확인한 뒤 파일이 있는지 봅니다.
 
 ```bash
 ls
 ls config
 ```
 
-- `exception_policy.py` 와 `config/exceptions.json` 이 보이지 않으면 「제공 파일」 레슨에서 먼저 만듭니다. 없는 채로 실행하면 `ModuleNotFoundError: No module named 'exception_policy'` 나 `FileNotFoundError: … 'config/exceptions.json'` 오류가 납니다.
+- `exception_policy.py` 와 `config/exceptions.json` 이 보이지 않으면 「예외 판정 준비」 레슨에서 먼저 만듭니다. 없는 채로 실행하면 `ModuleNotFoundError: No module named 'exception_policy'` 나 `FileNotFoundError: … 'config/exceptions.json'` 오류가 납니다.
 
 **`policy.py`**
 
 ```python
 from rbac import check_permission                                # 실습 1-2에서 만든 역할 판정 함수를 불러온다
-from exception_policy import find_exception                      # 제공 파일의 예외 판정 함수를 불러온다
+from exception_policy import find_exception                      # 예외 판정 준비의 예외 판정 함수를 불러온다
 
 
 def evaluate_access(user, resource, action, now):                # 사용자 · 자원 · 행위 · 지금 시각을 받는 함수
@@ -143,7 +143,7 @@ def evaluate_access(user, resource, action, now):                # 사용자 · 
 ```python
 from datetime import datetime                                    # 요청 시각을 만드는 데 쓴다
 from policy import evaluate_access                               # 방금 만든 최종 판정 함수를 불러온다
-from exception_policy import EXCEPTIONS                          # 제공 파일의 예외 리스트를 불러온다
+from exception_policy import EXCEPTIONS                          # 예외 판정 준비의 예외 리스트를 불러온다
 
 TODAY_LOG = [                                                    # 오늘 정산 포털 요청 기록. (시각, 사용자, 자원, 행위)
     ("09:10", "seoyeon", "SETTLE", "QUERY"),                     # 예외 1번 기간 안

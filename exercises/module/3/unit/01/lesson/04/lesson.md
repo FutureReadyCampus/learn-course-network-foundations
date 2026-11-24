@@ -1,16 +1,14 @@
 ---
 id: m3-u01-l04
-title: 제공 파일
+title: 예외 판정 준비
 render: markdown
 ---
 
-# 제공 파일
+# 예외 판정 준비
 
-## 제공 파일 쓰는 법
+## 예외 판정에 필요한 준비
 
-**「제공 파일」이란?** 미리 다운로드할 파일이 따로 있는 것이 아닙니다. 아래 쪽의 완성된 코드와 데이터를 복사해 내 컴퓨터에 직접 파일로 저장하는 레슨입니다. 실습에 필요한 재료를 먼저 준비해 핵심 판정 코드에 집중하기 위한 것입니다. 테스트 코드는 아니며, 뒤의 실습에서 이 파일들을 불러 사용합니다.
-
-**실습 1-3을 시작하기 전에** 이 레슨의 파일 세 개를 만듭니다. 실습 1-3의 `policy.py` 가 예외 판정 함수 `find_exception` 을 불러 쓰는데, 그 함수와 예외 파일은 응용 1-3에서 만드는 것이라 오늘은 완성본을 받아 씁니다.
+실습 1-3에서는 기본 역할에 없는 권한이라도, 기간을 정해 허용한 예외가 있는지 확인합니다. 이 레슨에서는 예외 목록과 예외를 찾는 함수를 준비합니다. 다음 Unit에서 사용할 설정 읽기 함수도 함께 만듭니다. 아래 내용을 복사해 저장하면 실습 1-3을 이어서 진행할 수 있습니다.
 
 **예외**는 「이번 주 금요일까지만 과학실 열쇠를 빌려주기」처럼, 역할에는 없는 권한을 한 사람에게만 기간을 정해 잠깐 주는 것입니다.
 
@@ -22,11 +20,10 @@ render: markdown
    |---|---|---|
    | `config/exceptions.json` | 사용자 한 명에게 기간을 정해 따로 허용한 권한(예외) 다섯 건 | 실습 1-3 |
    | `exception_policy.py` | 지금 시각에 유효한 예외가 있는지 찾는 함수 `find_exception` | 실습 1-3 |
-   | `config_loader.py` | 설정 파일이 없거나 깨져도 멈추지 않고 빈 설정을 돌려주는 함수 `load_json` | 핵심 실습에서는 쓰지 않고(응용 1-5와 다음 Unit부터 씁니다) |
+   | `config_loader.py` | 설정 파일이 없거나 깨져도 멈추지 않고 빈 설정을 돌려주는 함수 `load_json` | 다음 Unit에서 설정을 읽을 때 |
 
 4. 세 파일을 다 만든 뒤 마지막 쪽(「`config_loader.py` 만들기」) 끝에서 터미널로 한꺼번에 확인하고 실습 1-3으로 돌아갑니다.
 
-> 시간이 남아 응용 1-3이나 응용 1-4를 하면, 이 파일들을 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 응용 1-3(`exception_policy.py`)은 다 채울 때까지 실습 1-3이 동작하지 않고, 응용 1-4(`config_loader.py`)는 다 채울 때까지 응용 1-5의 `test_policy.py` 4번이 멈춥니다. 다 쓴 뒤 `exercise1-3_run.py` (응용 1-4는 `test_policy.py`)를 다시 실행해 결과가 같은지 확인합니다.
 
 ## `config/exceptions.json` 만들기
 
@@ -117,18 +114,18 @@ def load_json(path, default):                                    # 파일 경로
 - [ ] `access_control` 폴더 바로 아래에 `config_loader.py` 를 만들어 붙여 넣고 저장했다
 <!-- /checklist -->
 
-- 세 파일을 모두 만들었으면 터미널(`…/access_control` 위치)에서 확인합니다. `ls` 에 `exception_policy.py` · `config_loader.py` 가, `ls config` 에 `exceptions.json` 이 보이고, 마지막 줄에 `제공 파일 정상` 이 나오면 성공이고 실습 1-3으로 갑니다. 파일이 안 보이면 다른 폴더에 만든 것이니 VS Code 왼쪽 목록에서 그 파일을 `access_control` 폴더로 끌어 옮깁니다.
+- 세 파일을 모두 만들었으면 터미널(`…/access_control` 위치)에서 확인합니다. `ls` 에 `exception_policy.py` · `config_loader.py` 가, `ls config` 에 `exceptions.json` 이 보이고, 마지막 줄에 `준비 완료`가 나오면 성공이고 실습 1-3으로 갑니다. 파일이 안 보이면 다른 폴더에 만든 것이니 VS Code 왼쪽 목록에서 그 파일을 `access_control` 폴더로 끌어 옮깁니다.
   ```bash
   ls
   ls config
   # 이 명령은 전체를 복사해 Git Bash에 붙여 넣어 실행하세요.
   python -c "
   import exception_policy, config_loader
-  print('제공 파일 정상')
+  print('준비 완료')
   "
   ```
   - 명령 풀이: `ls` · `ls config` 폴더 안의 파일 이름을 보여 줌 · `python -c "…"` 따옴표 안의 파이썬을 바로 실행해 두 파일을 불러 와 봄
 
 <!-- checklist -->
-- [ ] `python -c "import exception_policy, config_loader; print('제공 파일 정상')"` 를 실행해 `제공 파일 정상` 이 나왔다
+- [ ] `python -c "import exception_policy, config_loader; print('준비 완료')"` 를 실행해 `준비 완료`가 나왔다
 <!-- /checklist -->

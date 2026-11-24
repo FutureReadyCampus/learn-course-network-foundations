@@ -184,7 +184,7 @@ AssertionError: 6. 만료 정각에도 허용되어야 한다(팀원 제안)    
 ```python
 from datetime import datetime                                    # 시각을 만드는 데 쓴다
 from policy import evaluate_access                               # 실습 1-3에서 만든 최종 판정 함수
-from config_loader import load_json                              # 제공 파일(또는 응용 1-4)의 안전한 읽기 함수
+from config_loader import load_json                              # 예외 판정 준비(또는 응용 1-4)의 안전한 읽기 함수
 
 
 def at(text):                                                    # "2026-10-22 14:00" 같은 문자열을 받아
@@ -266,7 +266,7 @@ print("6 통과")                                                  # 6번 assert
    |---|---|
    | `AssertionError` | 설명 문자열로 어느 테스트인지 보고, 그 테스트의 입력과 기대 결과가 2.1 의 표와 같은지 다시 봄 |
    | `ModuleNotFoundError` | `pwd` 가 `…/access_control` 인지 확인 |
-   | `No module named 'config_loader'` | 「제공 파일」의 `config_loader.py` 가 없음 |
+   | `No module named 'config_loader'` | 「예외 판정 준비」의 `config_loader.py` 가 없음 |
    | `No module named 'policy'` | 실습 1-3 파일이 없음 |
 
 <!-- checklist optional -->
