@@ -53,7 +53,11 @@ jobs:
         run: |
           for attempt in {1..12}; do
             count=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" --jq '[.artifacts[] | select(.name == "github-pages" and .expired == false)] | length')
-            if [ "$count" = 1 ]; then exit 0; fi
+            if [ "$count" = 1 ]; then
+              # The Pages deployment service can lag behind the Actions API.
+              sleep 15
+              exit 0
+            fi
             sleep 5
           done
           echo "Expected one Pages artifact, found $count" >&2
