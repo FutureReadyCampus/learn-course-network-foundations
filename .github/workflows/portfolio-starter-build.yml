@@ -34,7 +34,7 @@ jobs:
           test -f _site/2026/01/01/hello.html
           grep -q "hello.html" _site/index.html
           # progress grid: the sample post is marked sample, so nothing is filled yet
-          grep -q "30개 Unit 중 0개" _site/index.html
+          grep -q "15개 Unit 중 0개" _site/index.html
           # files meant to stay out of the site
           test ! -e _site/README.md
           test ! -e _site/check_publish.py
@@ -56,7 +56,7 @@ jobs:
       - name: Check the progress grid fills the right cell
         run: |
           set -e
-          grep -q "30개 Unit 중 1개" _site_test/index.html
+          grep -q "15개 Unit 중 1개" _site_test/index.html
           grep -q 'class="cell done"' _site_test/index.html
           grep -q "unit3.html" _site_test/index.html
           echo "progress grid OK"
