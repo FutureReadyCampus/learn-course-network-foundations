@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 350" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <title>말로 받은 요청은 기록이 없고, 요청서로 받으면 접수에서 거른 뒤 승인·부여로 이어진다</title>
-<desc>왼쪽은 메신저나 말로 받은 요청의 문제, 오른쪽은 요청서로 받을 때의 장점입니다. 아래는 이번 Unit 의 흐름으로, 실습 2-1 접수, 실습 2-2 승인 · 반려, 제공 파일 req_grant.py 의 예외 부여를 거쳐 evaluate_access 가 허용으로 판정합니다.</desc>
+<desc>왼쪽은 메신저나 말로 받은 요청의 문제, 오른쪽은 요청서로 받을 때의 장점입니다. 아래는 이번 Unit 의 흐름으로, 실습 2-1 접수, 실습 2-2 승인 · 반려, 권한 부여 준비 req_grant.py 의 예외 부여를 거쳐 evaluate_access 가 허용으로 판정합니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">왜 요청을 요청서로 받는가</text>
 <rect x="30" y="56" width="300" height="140" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>

@@ -33,7 +33,7 @@ source:
 | `approved` · `rejected` | (없음) | 그대로 | `(False, "검토 중이 아님")` |
 
 - 이 규칙을 코드로 쓰는 방법은 간단합니다. **바꾸기 전에 지금 상태를 먼저 확인**하고, 맞지 않으면 아무것도 바꾸지 않고 `False` 와 이유를 리턴합니다.
-- `approved` 가 된 요청서를 `granted` 로 바꾸는 일은 제공 파일 `req_grant.py` 가 합니다(응용 2-1에서 직접 써 볼 수 있습니다).
+- `approved` 가 된 요청서를 `granted` 로 바꾸는 일은 권한 부여 준비 `req_grant.py` 가 합니다(응용 2-1에서 직접 써 볼 수 있습니다).
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="승인·반려 함수는 검토 중인지, 본인 요청인지 확인한 뒤에만 상태를 바꾼다"></figure>
 
