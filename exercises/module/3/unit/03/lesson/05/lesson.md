@@ -1,6 +1,6 @@
 ---
 id: m3-u03-l05
-title: 도전 3-1 · 규칙으로 필요 없어진 권한 찾기
+title: 응용 3-1 · 규칙으로 필요 없어진 권한 찾기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,7 +9,7 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 도전 3-1 · 규칙으로 필요 없어진 권한 찾기
+# 응용 3-1 · 규칙으로 필요 없어진 권한 찾기
 
 ## 목표: 퇴사·만료 권한 걸러 내기
 
@@ -41,7 +41,7 @@ source:
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="find_stale 은 권한마다 퇴사와 만료 예외를 차례로 묻고, 걸린 권한에 이유를 적어 모은다"></figure>
 
-## 도전 3-1 · 퇴사 계정과 만료 예외 찾기
+## 응용 3-1 · 퇴사 계정과 만료 예외 찾기
 
 **이런 상황이 있습니다**
 
@@ -52,36 +52,10 @@ source:
 
 **할 일**
 
-1. `review_rules.py` 와 `challenge3-1_run.py` 두 파일을 만들고, `find_stale` 본문을 직접 씁니다.
+1. 준비 Lesson에서 만든 `review_rules.py`를 사용해 `challenge3-1_run.py`를 만듭니다.
 2. 실행해서 <mark>규칙에 걸린 권한</mark>(단계 1: 판정)과 <mark>이유별 건수</mark>(단계 2: 점검)를 읽습니다.
 
-**`review_rules.py`**
-
-```python
-from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
-from exception_policy import TIME_FORMAT                         # 시각 문자열의 형식("%Y-%m-%d %H:%M")을 불러온다
-
-
-def find_stale(access_list, now):                                # 현황 리스트와 지금 시각(datetime)을 받는 함수
-    """규칙에 걸려 필요 없어진 권한을 리턴하고 걸린 이유를 "reason" 키에 적는다.
-    퇴사 · 만료로 남은 권한을 정리할 때 쓴다.
-    """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. 걸린 권한을 담을 빈 리스트 stale 을 만든다
-    # 2. access_list 에서 entry 를 하나씩 꺼낸다
-    # 3.   entry.get("expires") 를 expires 에 담는다 (역할로 받은 권한에는 이 키가 없어 None 이 된다)
-    # 4.   빈 문자열 ""를 reason 에 담는다
-    # 5.   entry["employed"] 가 False 이면(재직이 아니면) reason 을 "퇴사한 계정" 으로 정한다
-    # 6.   아니고(elif), expires 가 None 이 아니면 (is not None)
-    # 7.     datetime.strptime(expires, TIME_FORMAT) 을 expires_at 에 담는다
-    # 8.     expires_at 이 now 와 같거나 now 보다 이전이면 (<= now)
-    # 9.       reason 을 "만료된 예외" 로 정한다
-    # 10.  reason 이 빈 문자열이 아니면
-    # 11.    entry.copy() 를 stale_entry 에 담는다
-    # 12.    stale_entry["reason"] 을 reason 으로 정한다
-    # 13.    stale 에 stale_entry 를 추가한다
-    # 14. stale 을 리턴한다
-```
+`review_rules.py`는 핵심 실습 준비 Lesson에서 이미 만들었습니다. 이 응용에서는 해당 함수를 불러와 규칙에 걸린 권한과 이유를 확인합니다.
 
 - `find_stale` 의 본문은 함수 안이라 앞에 공백 4개를 넣고(Tab 키 한 번), `for` 안쪽은 공백 4개 더(8개), `if` · `elif` 안쪽은 또 4개 더(12개), `elif` 안의 `if` 안쪽은 또 4개 더(16개) 넣습니다. 마지막 `return` 은 `for` 밖이므로 공백 4개입니다.
 - `expires` 가 `None` 인지는 `== None` 이 아니라 `is None`(아니면 `is not None`)으로 묻습니다. `expires is not None` 은 「`expires` 가 `None` 이 아니다」, 곧 만료 시각이 적혀 있다(예외로 받은 권한)는 뜻입니다.
@@ -119,9 +93,8 @@ print(counts)                                                    # 이유별 건
    - **VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
      2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
-     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `review_rules.py` · `challenge3-1_run.py` 입니다.
+     3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `challenge3-1_run.py` 입니다.
      4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
-2. **[VS Code]** `review_rules.py` 의 `find_stale` 본문을 직접 씁니다. 2.1 의 표와 그림을 보고 씁니다.
 3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 이어서 실행합니다.
    ```bash
    pwd
@@ -130,12 +103,11 @@ print(counts)                                                    # 이유별 건
    - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `challenge3-1_run.py` 실행할 파일
    - 맥북은 `python3 challenge3-1_run.py` 로 칩니다.
 4. 출력은 두 단계입니다. 단계 1은 `규칙에 걸린 권한 N 건` 한 줄과 걸린 권한, 단계 2는 이유별 건수 딕셔너리 한 줄입니다.
-5. **[보고서]** `report_u3.md` 의 `## 도전 3-1` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 규칙에 걸린 권한이 이유별로 몇 건인지 적어 주세요.
-   - (나) [핵심 질문] 퇴사한 계정과 만료된 예외는 파일에 적힌 사실로 걸러 냈습니다. 이 규칙으로는 걸러 낼 수 없지만 필요 없을 수 있는 권한의 예를 하나 들고, 그것을 찾으려면 어떤 정보가 더 필요한지 적어 주세요.
-   - (다) [핵심 질문] 규칙에 걸린 7건을 Unit 4에서 회수한다면 어떤 것부터 회수할까요? 출력의 이유(퇴사한 계정 · 만료된 예외)를 보고 기준을 하나 정해, 그 기준으로 이유를 적어 주세요.
+5. 출력에서 이유별 건수를 확인하고, 필요한 경우 핵심 블로그 글에 후속 메모로 덧붙입니다.
 
-## 도전 3-1 정리
+<!-- answer: 08|도전 3-1 정답 -->
+
+## 응용 3-1 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
