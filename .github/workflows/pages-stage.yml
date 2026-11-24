@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
+  actions: read
   contents: read
   pages: write
   id-token: write
@@ -45,6 +46,18 @@ jobs:
         uses: actions/upload-pages-artifact@v5
         with:
           path: site/dist
+
+      - name: Wait for Pages artifact to become visible
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for attempt in {1..12}; do
+            count=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" --jq '[.artifacts[] | select(.name == "github-pages" and .expired == false)] | length')
+            if [ "$count" = 1 ]; then exit 0; fi
+            sleep 5
+          done
+          echo "Expected one Pages artifact, found $count" >&2
+          exit 1
 
       - name: Deploy to GitHub Pages
         id: deployment
