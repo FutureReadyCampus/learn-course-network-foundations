@@ -61,13 +61,13 @@ source:
 `==` 는 문자열 전체가 같아야 `True` 이지만, <mark>`in` 은 일부만 들어 있어도 `True` 입니다.</mark> 그래서 `GET /admin` 도 `GET /admin/users` 도 `"/admin" in action` 으로 한 번에 찾습니다.
 
 ```python
-action = "GET /admin/users"                 # 이벤트의 action 값 예
-has_admin = "/admin" in action              # action 안에 /admin 이 있는지 True 또는 False 로 구한다
-print(has_admin)                            # True
+action = "GET /admin/users"  # 이벤트의 action 값 예
+has_admin = "/admin" in action  # action 안에 /admin 이 있는지 True 또는 False 로 구한다
+print(has_admin)  # True
 
-other_action = "GET /login"                 # /admin 이 없는 action 값 예
+other_action = "GET /login"  # /admin 이 없는 action 값 예
 has_admin_other = "/admin" in other_action  # other_action 안에 /admin 이 있는지 구한다
-print(has_admin_other)                      # False
+print(has_admin_other)  # False
 ```
 
 실행 결과:
@@ -93,18 +93,18 @@ False
 | `action` 열이 login | `"action": "login"` |
 
 ```python
-import pandas as pd                                          # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-data = {                                                     # 연습용 작은 데이터 — 행 하나가 이벤트 하나
+data = {  # 연습용 작은 데이터 — 행 하나가 이벤트 하나
     "time": ["2026-11-02 02:14:08", "2026-11-02 09:05:30"],  # time 열에 들어갈 값들
-    "user": ["jiwoo", "seoyeon"],                            # user 열에 들어갈 값들
-    "action": ["login", "login"],                            # action 열에 들어갈 값들
+    "user": ["jiwoo", "seoyeon"],  # user 열에 들어갈 값들
+    "action": ["login", "login"],  # action 열에 들어갈 값들
 }
-events = pd.DataFrame(data)                                  # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
-print(events)                                                # 표를 출력한다
-event_list = events.to_dict("records")                       # 표를 「한 행이 딕셔너리 하나」인 리스트로 바꾼다
-first_event = event_list[0]                                  # 첫 번째 딕셔너리(표의 0번 행)를 꺼낸다
-print(first_event)                                           # 열 이름이 키, 그 행의 값이 값이 된 딕셔너리
+events = pd.DataFrame(data)  # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
+print(events)  # 표를 출력한다
+event_list = events.to_dict("records")  # 표를 「한 행이 딕셔너리 하나」인 리스트로 바꾼다
+first_event = event_list[0]  # 첫 번째 딕셔너리(표의 0번 행)를 꺼낸다
+print(first_event)  # 열 이름이 키, 그 행의 값이 값이 된 딕셔너리
 ```
 
 실행 결과:
@@ -152,21 +152,21 @@ print(first_event)                                           # 열 이름이 키
 **`classify.py`**
 
 ```python
-import pandas as pd                                                             # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-EVENTS_PATH = "normalized_events.json"                                          # 읽을 정규화 이벤트 파일 이름
-TYPE_ORDER = ["비정상 로그인", "비인가 접근", "기타 실패", "정상"]              # 결과를 보여 줄 유형 순서
+EVENTS_PATH = "normalized_events.json"  # 읽을 정규화 이벤트 파일 이름
+TYPE_ORDER = ["비정상 로그인", "비인가 접근", "기타 실패", "정상"]  # 결과를 보여 줄 유형 순서
 
 
-def load_events(path):                                                          # 파일 경로를 받는 함수
+def load_events(path):  # 파일 경로를 받는 함수
     """이벤트 파일을 표로 읽는다.
     분석을 시작할 때 맨 먼저 쓴다.
     """
-    events = pd.read_json(path)                                                 # 파일 속 이벤트를 표 한 개로 읽는다
-    return events                                                               # 이벤트 표를 리턴한다
+    events = pd.read_json(path)  # 파일 속 이벤트를 표 한 개로 읽는다
+    return events  # 이벤트 표를 리턴한다
 
 
-def classify_event(action, result):                                             # 행동과 결과를 받는 함수
+def classify_event(action, result):  # 행동과 결과를 받는 함수
     """이벤트 하나의 유형 이름을 정한다.
     알림이 온 이벤트가 어떤 유형의 일인지 담당자가 바로 알 수 있게 할 때 쓴다.
     """
@@ -175,24 +175,24 @@ def classify_event(action, result):                                             
     # 2.   그 if 안쪽에서 "비정상 로그인" 을 리턴한다
     # 3. if 로 시작한다: result 가 "실패" 이고(and) "/admin" in action 이 True 이면
     # 4.   그 if 안쪽에서 "비인가 접근" 을 리턴한다
-    if result == "실패":                                                        # 위 두 유형이 아닌 실패이면
-        return "기타 실패"                                                      # 기타 실패로 분류한다
-    return "정상"                                                               # 실패가 아니면 정상이다
+    if result == "실패":  # 위 두 유형이 아닌 실패이면
+        return "기타 실패"  # 기타 실패로 분류한다
+    return "정상"  # 실패가 아니면 정상이다
 
 
-def count_types(events):                                                        # 이벤트 표를 받는 함수
+def count_types(events):  # 이벤트 표를 받는 함수
     """유형별 이벤트 수를 {유형: 개수} 딕셔너리로 센다.
     어떤 유형의 일이 얼마나 있는지 한눈에 볼 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 5. events.to_dict("records") 로 표를 딕셔너리 리스트로 바꿔 event_list 에 담는다
-    type_event_counts = {}                                                      # 유형별 횟수를 담을 딕셔너리
-    for event in event_list:                                                    # 이벤트를 하나씩 꺼낸다
-        action = event["action"]                                                # 그 이벤트의 행동
-        result = event["result"]                                                # 그 이벤트의 결과
-        type_name = classify_event(action, result)                              # 유형 이름을 정한다
+    type_event_counts = {}  # 유형별 횟수를 담을 딕셔너리
+    for event in event_list:  # 이벤트를 하나씩 꺼낸다
+        action = event["action"]  # 그 이벤트의 행동
+        result = event["result"]  # 그 이벤트의 결과
+        type_name = classify_event(action, result)  # 유형 이름을 정한다
         type_event_counts[type_name] = type_event_counts.get(type_name, 0) + 1  # type_event_counts 에 이 유형이 있으면 그 값을, 없으면 0 을 꺼내 1 을 더하고 다시 저장한다
-    return type_event_counts                                                    # 유형별 횟수를 리턴한다
+    return type_event_counts  # 유형별 횟수를 리턴한다
 ```
 
 - 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 · 3번은 함수 안이라 앞에 공백 4개이고, 2 · 4번의 `return` 은 `if` 안쪽이라 8개이며, 5번은 공백 4개입니다.
@@ -204,16 +204,16 @@ def count_types(events):                                                        
 ```python
 from classify import load_events, count_types, EVENTS_PATH, TYPE_ORDER  # 방금 만든 함수를 불러온다
 
-events = load_events(EVENTS_PATH)                                       # 이벤트 파일을 표로 읽는다
-type_event_counts = count_types(events)                                 # 유형별로 센다
-print("--- 단계 1: 유형별 이벤트 수")                                   # 단계 1 시작을 알리는 줄
-for type_name in TYPE_ORDER:                                            # 정해 둔 유형 순서대로 꺼낸다
-    count = type_event_counts.get(type_name, 0)                         # 그 유형의 개수(없으면 0)
-    print(type_name, count)                                             # 유형과 개수를 출력한다
+events = load_events(EVENTS_PATH)  # 이벤트 파일을 표로 읽는다
+type_event_counts = count_types(events)  # 유형별로 센다
+print("--- 단계 1: 유형별 이벤트 수")  # 단계 1 시작을 알리는 줄
+for type_name in TYPE_ORDER:  # 정해 둔 유형 순서대로 꺼낸다
+    count = type_event_counts.get(type_name, 0)  # 그 유형의 개수(없으면 0)
+    print(type_name, count)  # 유형과 개수를 출력한다
 
-values = type_event_counts.values()                                     # 유형별 개수만 꺼낸다
-total = sum(values)                                                     # 모든 유형의 개수를 더한다
-print("--- 단계 2: 전체 이벤트", total, "개")                           # 단계 2 시작을 알리는 줄과 전체 개수
+values = type_event_counts.values()  # 유형별 개수만 꺼낸다
+total = sum(values)  # 모든 유형의 개수를 더한다
+print("--- 단계 2: 전체 이벤트", total, "개")  # 단계 2 시작을 알리는 줄과 전체 개수
 ```
 
 **순서**
@@ -227,10 +227,12 @@ print("--- 단계 2: 전체 이벤트", total, "개")                           
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise4-3_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **두 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 4줄이고, 단계 2는 숫자가 제목 줄에 함께 나오므로 그 아래 줄이 없습니다.
-5. **[보고서]** `report_u4.md` 의 `## 실습 4-3` 아래를 채웁니다.
+5. **[실습 결과 기록]** `report_u4.md` 의 `## 실습 4-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 유형별 이벤트 수를 적어 주세요.
    - (나) [핵심 질문] 「기타 실패」(결과가 실패이면서 `POST /login` 도 아니고 `/admin` 도 없는 이벤트)는 실패한 유형 중 15개로 가장 많습니다. 샘플 이벤트에서 `source` 가 `server` 인 이벤트 하나와 `web` 인 이벤트 하나를 찾아, 각각 `action` 과 함께 적어 주세요(예: `server` 의 `ACCOUNT:CHANGE`, `web` 의 `GET /.env` 처럼 규칙 1 · 2번에 걸리지 않는 것). 그리고 이 둘이 같은 이름 「기타 실패」로 묶여 있으면 담당자가 무엇을 하기 어려운지 적어 주세요.
    - (다) [핵심 질문] 유형 규칙은 위에서부터 차례로 보고 먼저 조건을 충족하는 것으로 정합니다. 「기타 실패」(결과가 실패이면 충족)를 맨 위로 옮겼다고 합시다. 그러면 「비정상 로그인」 · 「비인가 접근」 · 「기타 실패」 이벤트는 각각 몇 개가 될까요? 그리고 그때 담당자가 구분하지 못하게 되는 것은 무엇인가요?
+
+<!-- answer: 05|실습 4-3 정답 -->
 
 ## 실습 4-3 정리
 
@@ -256,17 +258,26 @@ print("--- 단계 2: 전체 이벤트", total, "개")                           
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
    - `baseline.py` · `login_detection.py` · `classify.py` · `exercise4-1_run.py` · `exercise4-2_run.py` · `exercise4-3_run.py` · `normalized_events.json` · `baseline_logins.csv` 와 <mark>`report_u4.md` 가 보여야</mark> 합니다.
-2. **[보고서]** `report_u4.md` 의 실습 4-1 ~ 실습 4-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. 못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.
+2. **[실습 결과 기록]** `report_u4.md` 의 실습 4-1 ~ 실습 4-3 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. 못 적은 칸은 `모름 — 막힌 곳: …` 으로 적습니다.
 
 ---
 
-## 이번 Unit 마무리
+<!-- answer: 05|정답 마무리 -->
 
-| 확인 | 문제 |
-|---|---|
-| 지난 7일 숫자로 평소 기준을 구하고 알림 기준(5번)을 정했다 | 실습 4-1 |
-| 같은 주소의 로그인 실패가 알림 기준(5번) 이상인 곳을 찾았다 | 실습 4-2 |
-| 이벤트의 유형을 정하고 유형별로 셌다 | 실습 4-3 |
+## 문제 해결 기록 남기기
+
+이번 Unit의 `report_u4.md`는 실행 출력과 질문에 대한 근거를 모은 **기술 기록**입니다. 여기에 적은 답을 그대로 옮기는 대신, 문제를 어떻게 파악하고 어떤 기준을 선택했는지 GitHub 블로그에 남깁니다. 처음 보는 동료가 판단의 근거와 한계를 따라갈 수 있도록 씁니다.
+
+블로그와 GitHub Pages를 처음 설정한다면 [M3 Unit 1의 Jekyll 및 GitHub Pages 설정](__SITE__/exercises/module/3/unit/1/lesson/1/page/4)을 먼저 진행하세요. 이미 설정했다면 `network-study-notes` 저장소의 `_posts` 폴더에 `YYYY-MM-DD-m4-u4-login-baseline.md` 형식의 글을 만듭니다.
+
+기록에는 다음 내용을 담습니다.
+
+- **문제와 범위:** 무엇을 찾으려 했는지, 이 샘플이 무엇을 보여 주는지
+- **관찰한 근거:** 7일의 평균과 최댓값, 알림 기준을 선택한 이유, 5회 실패 주소의 이벤트 흐름
+- **분류 기준과 한계:** 이벤트 유형을 어떤 순서로 정했는지, 하나의 유형에 서로 다른 사건이 섞일 때 생기는 문제
+- **다음 확인:** 공격이라고 단정할 수 없는 이유와 판단에 더 필요한 로그 정보
+
+샘플 데이터에서 확인한 사실과 실제 조직에서 추가로 확인할 가설을 구분합니다. 이 자료만으로 공격 여부를 확정하지 않습니다. 글을 저장하고 커밋한 뒤 `git push` 합니다. GitHub Pages 게시 결과와 링크를 확인하세요.
 
 Unit 5에서는 분 단위로 요청 수를 세어 **요청이 갑자기 늘어난 때**(트래픽 급증)를 찾고, Unit 4의 알림을 한 파일로 모읍니다.
 

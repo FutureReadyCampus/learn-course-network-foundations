@@ -24,7 +24,7 @@ Unit 3에서는 로그를 표로 읽고 세는 법을 배웠습니다. 이번 Un
 - 이번 Unit에서 쓰는 도구는 **파이썬 · 판다스 · VS Code · 터미널**입니다. 판다스는 Unit 3에서 설치했고, 안 했다면 아래 「오류가 나면」을 봅니다.
 - **이상(anomaly, 애너멀리)** 은 <mark>평소 범위를 벗어난 일입니다.</mark> 예를 들어 지난 7일 동안 하루 최대 4번이던 로그인 실패가 한 주소에서 5번이 되는 것입니다. 이상은 **먼저 살펴볼 일**이라는 뜻입니다.
 - 「5번 이상」의 이상(以上)은 「5번이거나 5번보다 많음」이라는 다른 뜻입니다.
-- 보고서에서 [핵심 질문] 표시가 붙은 질문은 이 실습에서 꼭 알아야 할 핵심 질문이고, 내 출력이나 샘플 데이터의 값을 근거로 이유까지 서술합니다.
+- 실습 결과 기록에서 [핵심 질문] 표시가 붙은 질문은 이 실습에서 꼭 알아야 할 핵심 질문이고, 내 출력이나 샘플 데이터의 값을 근거로 이유까지 서술합니다.
 - 알림 기준(임계값)은 **평소 기준에서 정한 숫자로 고정**하고, <mark>값을 바꿔 가며 비교하지 않습니다.</mark>
 - **이번 Unit에서 불러 쓰는 이전 파일**은 없습니다. Unit 3의 파일이 없어도 풀 수 있습니다.
 
@@ -35,12 +35,15 @@ Unit 3에서는 로그를 표로 읽고 세는 법을 배웠습니다. 이번 Un
    ```bash
    cd anomaly_detection
    pwd
-   python -c "import pandas; print(pandas.__version__)"
+   python - <<'PY'
+   import pandas
+   print(pandas.__version__)
+   PY
    ```
-3. **파일은 이렇게 만듭니다.** 이 페이지에 나오는 파일은 모두 이 페이지의 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
+3. **파일을 만드는 방법:** 「`파일이름`을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
    1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다.
    2. 코드 상자의 복사 버튼으로 내용을 복사해 새 파일에 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
-4. 답을 적는 **보고서**(`report_u4.md`)도 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
+4. 실습 결과를 기록할 `report_u4.md` 도 이 Unit의 「실습 결과 기록 준비」에서 틀을 복사해 만듭니다.
 5. **[VS Code]** `anomaly_detection` 폴더에 `normalized_events.json` 과 `baseline_logins.csv` 파일을 만들어 아래 내용을 그대로 붙여 넣습니다. 두 파일을 모두 붙인 뒤 아래 6번으로 이어 갑니다.
 
 **`normalized_events.json`** — Unit 3에서 쓴 이벤트 샘플 57개입니다. Unit 3에서 만든 파일이 이미 있어도, 열이 6개가 아니거나 아래 6번에서 `57` 이 나오지 않으면 **아래 내용으로 덮어씁니다.** 이벤트 날짜는 모두 2026-11-02 입니다. `null` 은 그 값이 로그에 없다는 뜻입니다.
@@ -122,17 +125,24 @@ date,failed_logins
 
 6. **[터미널]** 두 파일이 정상인지 확인합니다(맥북은 `python3`).
    ```bash
-   python -c "import json; print(len(json.load(open('normalized_events.json', encoding='utf-8'))))"
-   python -c "print(len(open('baseline_logins.csv', encoding='utf-8').read().splitlines()))"
+   python - <<'PY'
+   import json
+   from pathlib import Path
+
+   events = json.loads(Path("normalized_events.json").read_text(encoding="utf-8"))
+   login_lines = Path("baseline_logins.csv").read_text(encoding="utf-8").splitlines()
+   print("이벤트 수:", len(events))
+   print("로그인 CSV 줄 수(헤더 포함):", len(login_lines))
+   PY
    ```
-   - `python -c "코드"` 는 파일을 만들지 않고 코드를 한 줄로 바로 실행합니다. <mark>순서대로 `57`(이벤트 개수)과 `8`(헤더 줄 포함)이 나와야</mark> 합니다. 다르면 줄이 누락됐거나 빈 줄이 들어간 것이니 다시 붙여 넣습니다.
+   <mark>순서대로 `이벤트 수: 57` 과 `로그인 CSV 줄 수(헤더 포함): 8` 이 나와야</mark> 합니다. 다르면 줄이 누락됐거나 빈 줄이 들어간 것이니 다시 붙여 넣습니다.
 
 ## 오류가 나면
 
 - 먼저 `pwd` 가 `anomaly_detection` 으로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다. `cd anomaly_detection` 이 안 되면 `ls` 로 폴더 이름을 확인하고, 없으면 `mkdir anomaly_detection` 으로 만든 뒤 들어갑니다.
 - `No module named 'pandas'`: 가상환경이 활성화되지 않은 터미널입니다. `security-agent-toolkit` 폴더에서 가상환경을 활성화한 뒤(`source .venv/Scripts/activate`, 맥북은 `Scripts` 를 `bin` 으로, 폴더 이름이 다르면 그 이름으로) `python -m pip install pandas` 를 칩니다.
 - `FileNotFoundError` · `ValueError`: 위치나 파일 이름이 틀렸거나 붙여 넣은 내용이 틀렸습니다.
-- 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 막히면 맨 아래 「정답」을 보고, 풀리지 않으면 보고서 (가)에 「모름 — 막힌 곳: …」 이라고 쓰고 넘어갑니다.
+- 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 막히면 각 실습 뒤의 「정답과 해설 보기」를 열어 참고하고, 풀리지 않으면 실습 결과 기록의 (가)에 「모름 — 막힌 곳: …」 이라고 쓰고 넘어갑니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다. 파일을 지금 위치 기준으로 찾기 때문입니다.
 

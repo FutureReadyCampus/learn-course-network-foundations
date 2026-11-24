@@ -67,11 +67,11 @@ CSV 파일 안은 이렇게 생겼고(왼쪽), 읽으면 표가 됩니다(오른
 | `2026-10-27,3` | 1번 행: `date` 가 2026-10-27, `failed_logins` 가 3 |
 
 ```python
-import pandas as pd                         # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 daily = pd.read_csv("baseline_logins.csv")  # CSV 파일을 읽어 표로 만든다 — 한 행이 하루
 
-shape = daily.shape                         # 표의 크기를 (행 수, 열 수) 로 구한다
-print(shape)                                # (7, 2) — 하루 7개(행), 열 2개
+shape = daily.shape  # 표의 크기를 (행 수, 열 수) 로 구한다
+print(shape)  # (7, 2) — 하루 7개(행), 열 2개
 ```
 
 실행 결과:
@@ -123,13 +123,13 @@ print(daily)  # 표 전체를 출력한다 — 왼쪽 숫자는 판다스가 붙
 합은 2 + 3 + 1 + 4 + 2 + 3 + 2 = 17 이고, 17 ÷ 7 = 2.428… 입니다. 이 값을 아래에서 `round` 로 소수 첫째 자리인 2.4 까지만 남깁니다.
 
 ```python
-import pandas as pd                           # 판다스를 pd 라는 짧은 이름으로 불러온다
-daily = pd.read_csv("baseline_logins.csv")    # CSV 파일을 읽어 표로 만든다 — 한 행이 하루
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
+daily = pd.read_csv("baseline_logins.csv")  # CSV 파일을 읽어 표로 만든다 — 한 행이 하루
 
 daily_failed_logins = daily["failed_logins"]  # failed_logins 열만 꺼낸다 — 하루 실패 횟수 7개가 나열된 열
-average = daily_failed_logins.mean()          # 7개의 평균을 구한다
-rounded_average = round(average, 1)           # 소수 첫째 자리까지 반올림한다 (2.428571… → 2.4)
-print(rounded_average)                        # 2.4 — 하루 평균 약 2.4번
+average = daily_failed_logins.mean()  # 7개의 평균을 구한다
+rounded_average = round(average, 1)  # 소수 첫째 자리까지 반올림한다 (2.428571… → 2.4)
+print(rounded_average)  # 2.4 — 하루 평균 약 2.4번
 ```
 
 실행 결과:
@@ -150,12 +150,12 @@ print(rounded_average)                        # 2.4 — 하루 평균 약 2.4번
 - `max`(맥스)는 maximum(맥시멈, 최댓값)의 줄임말입니다.
 
 ```python
-import pandas as pd                           # 판다스를 pd 라는 짧은 이름으로 불러온다
-daily = pd.read_csv("baseline_logins.csv")    # CSV 파일을 읽어 표로 만든다 — 한 행이 하루
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
+daily = pd.read_csv("baseline_logins.csv")  # CSV 파일을 읽어 표로 만든다 — 한 행이 하루
 
 daily_failed_logins = daily["failed_logins"]  # failed_logins 열만 꺼낸다 — 하루 실패 횟수 7개가 나열된 열
-maximum = daily_failed_logins.max()           # 7개 중 가장 큰 값을 구한다
-print(maximum)                                # 4 — 가장 많았던 날이 4번
+maximum = daily_failed_logins.max()  # 7개 중 가장 큰 값을 구한다
+print(maximum)  # 4 — 가장 많았던 날이 4번
 ```
 
 실행 결과:
@@ -201,47 +201,47 @@ print(maximum)                                # 4 — 가장 많았던 날이 4�
 **`baseline.py`**
 
 ```python
-import pandas as pd                 # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
 LOGIN_PATH = "baseline_logins.csv"  # 지난 7일의 하루 로그인 실패 횟수 파일 이름
 
 
-def load_daily_failures(path):      # 파일 경로를 받는 함수
+def load_daily_failures(path):  # 파일 경로를 받는 함수
     """지난 7일의 하루 로그인 실패 횟수 파일을 표로 읽는다.
     평소 기준을 만들기 전에 맨 먼저 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. pd.read_csv 로 path 의 파일을 읽어 daily 에 담는다 (path 는 따옴표 없이 그대로 쓴다)
-    return daily                    # 하루가 한 행인 표를 리턴한다
+    return daily  # 하루가 한 행인 표를 리턴한다
 
 
-def average_failures(daily):        # 표를 받는 함수
+def average_failures(daily):  # 표를 받는 함수
     """지난 7일 표 숫자 7개의 평균을 구한다.
     「평소 하루에 몇 번쯤 실패하는가」를 알고 싶을 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 2. daily 의 "failed_logins" 열을 꺼내 daily_failed_logins 에 담는다
     # 3. daily_failed_logins 의 평균을 .mean() 으로 구해 average 에 담는다
-    return average                  # 평균을 리턴한다
+    return average  # 평균을 리턴한다
 
 
-def maximum_failures(daily):        # 표를 받는 함수
+def maximum_failures(daily):  # 표를 받는 함수
     """하루 최대 로그인 실패 횟수를 구한다.
     「평소 가장 많았던 날」이 얼마나 많았는지 알고 싶을 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. daily 의 "failed_logins" 열을 꺼내 daily_failed_logins 에 담는다
     # 5. daily_failed_logins 의 최댓값을 .max() 로 구해 maximum 에 담는다
-    return maximum                  # 최댓값을 리턴한다
+    return maximum  # 최댓값을 리턴한다
 
 
-def make_limit(maximum):            # 평소 최댓값을 받는 함수
+def make_limit(maximum):  # 평소 최댓값을 받는 함수
     """평소 최댓값보다 1 큰 숫자를 알림 기준(임계값)으로 정한다.
     이 숫자 이상이면 평소보다 많다고 보고 알릴 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 6. maximum 에 1 을 더해 limit 에 담는다
-    return limit                    # 알림 기준을 리턴한다
+    return limit  # 알림 기준을 리턴한다
 ```
 
 - 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 6번은 모두 함수 안이라 앞에 공백 4개입니다.
@@ -251,21 +251,23 @@ def make_limit(maximum):            # 평소 최댓값을 받는 함수
 **`exercise4-1_run.py`** — <mark>그대로 붙여 넣습니다.</mark> 직접 쓰는 줄은 없습니다. 네 단계로 출력합니다.
 
 ```python
-from baseline import load_daily_failures, average_failures, maximum_failures, make_limit, LOGIN_PATH  # 방금 만든 함수를 불러온다
+from baseline import (
+    load_daily_failures, average_failures, maximum_failures, make_limit, LOGIN_PATH
+)  # 방금 만든 함수를 불러온다
 
-daily = load_daily_failures(LOGIN_PATH)                                                               # 지난 7일 파일을 표로 읽는다
-print("--- 단계 1: 지난 7일 하루 로그인 실패 횟수")                                                   # 단계 1 시작을 알리는 줄
-print(daily)                                                                                          # 표를 출력한다
+daily = load_daily_failures(LOGIN_PATH)  # 지난 7일 파일을 표로 읽는다
+print("--- 단계 1: 지난 7일 하루 로그인 실패 횟수")  # 단계 1 시작을 알리는 줄
+print(daily)  # 표를 출력한다
 
-average = average_failures(daily)                                                                     # 하루 평균을 구한다
-rounded_average = round(average, 1)                                                                   # 소수 첫째 자리까지 반올림한다
-print("--- 단계 2: 하루 평균", rounded_average, "번")                                                 # 단계 2 시작을 알리는 줄과 평균
+average = average_failures(daily)  # 하루 평균을 구한다
+rounded_average = round(average, 1)  # 소수 첫째 자리까지 반올림한다
+print("--- 단계 2: 하루 평균", rounded_average, "번")  # 단계 2 시작을 알리는 줄과 평균
 
-maximum = maximum_failures(daily)                                                                     # 하루 최대를 구한다
-print("--- 단계 3: 하루 최대", maximum, "번")                                                         # 단계 3 시작을 알리는 줄과 최댓값
+maximum = maximum_failures(daily)  # 하루 최대를 구한다
+print("--- 단계 3: 하루 최대", maximum, "번")  # 단계 3 시작을 알리는 줄과 최댓값
 
-limit = make_limit(maximum)                                                                           # 알림 기준을 정한다
-print("--- 단계 4: 알림 기준(임계값)", limit, "번 이상")                                              # 단계 4 시작을 알리는 줄과 알림 기준
+limit = make_limit(maximum)  # 알림 기준을 정한다
+print("--- 단계 4: 알림 기준(임계값)", limit, "번 이상")  # 단계 4 시작을 알리는 줄과 알림 기준
 ```
 
 **순서**
@@ -279,10 +281,12 @@ print("--- 단계 4: 알림 기준(임계값)", limit, "번 이상")            
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise4-1_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **네 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 표 8줄이고, 단계 2 · 3 · 4는 숫자가 제목 줄에 함께 나오므로 그 아래 줄이 없습니다.
-5. **[보고서]** `report_u4.md` 의 `## 실습 4-1` 아래를 채웁니다.
+5. **[실습 결과 기록]** `report_u4.md` 의 `## 실습 4-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 하루 평균과 최댓값, 알림 기준을 적어 주세요.
    - (나) [핵심 질문] ① 지난 7일 중 평균(2.4번) 이상인 날은 며칠인가요? ② 평균(2.4번)을 알림 기준으로 했다면 지난 7일 중 알림이 발생했을 날은 며칠이고, 그 날들은 평소와 다른 날이었나요? ③ 그래서 알림 기준을 평균이 아니라 최댓값보다 1 큰 숫자(5번)로 정한 이유를 적어 주세요.
    - (다) [핵심 질문] 지난 7일 중 하루가 평소와 달랐다고 가정합니다(예: 어느 하루에 실패가 12번). 그러면 최댓값과 알림 기준(최댓값 + 1)이 어떻게 바뀌는지 적고, 바뀐 알림 기준을 쓰면 어떤 문제가 생기는지 적어 주세요.
+
+<!-- answer: 05|실습 4-1 정답 -->
 
 ## 실습 4-1 정리
 
