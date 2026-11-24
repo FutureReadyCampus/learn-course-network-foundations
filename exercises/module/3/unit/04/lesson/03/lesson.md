@@ -154,7 +154,7 @@ from exception_policy import EXCEPTIONS, TIME_FORMAT             # Unit 1에서 
 from policy import evaluate_access                               # Unit 1에서 만든 최종 판정 함수를 불러온다
 from config_loader import load_json                              # Unit 1에서 만든 안전한 읽기 함수를 불러온다
 from revoke_input import load_to_revoke                          # Unit 3의 점검 결과(회수 대상)를 만드는 함수를 불러온다
-from revoke_plan import plan_revocation                          # 도전 4-1에서 만든 회수 계획 함수를 불러온다
+from revoke_plan import plan_revocation                          # 준비 Lesson에서 만든 회수 계획 함수를 불러온다
 from revoke_approve import load_sensitive, mark_approvals        # 실습 4-1에서 만든 승인 함수를 불러온다
 from revoke import execute_revocation, save_log                  # 방금 만든 회수 실행 함수와 이력 저장 함수를 불러온다
 
@@ -227,10 +227,10 @@ print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력
    ```
 4. 출력은 세 단계입니다. 단계 1은 계획 여덟 줄과 `실행 N 건, 대기 N 건`, 단계 2는 판정 비교 여덟 줄, 단계 3은 저장 한 줄입니다.
 5. **[VS Code]** 왼쪽 목록에 새로 생긴 `revocation_log.json` 을 열어 한글이 그대로 저장됐는지 봅니다.
-6. **[보고서]** `report_u4.md` 의 `## 실습 4-2` 아래를 채웁니다.
-   - (가) 출력 전체를 붙여 넣고, 이력의 결과가 「실행」인 건수와 「대기」인 건수, 회수 전후 판정이 바뀐 권한, 저장한 이력 건수를 적어 주세요.
-   - (나) [핵심 질문] 회수를 실행한 7건 가운데 회수 전후 판정이 바뀐 것은 일부입니다. 바뀌지 않은 권한이 그대로인 이유와, 그래도 회수하고 이력을 남기는 이유를 적어 주세요.
-   - (다) [핵심 질문] 회수 이력에는 시각 · 사용자 · 권한 · 방법 · 승인 상태 · 결과가 들어 있습니다. 반년 뒤 감사(점검 기록을 검토받는 일)에서 「이 권한이 왜 없어졌나요?」라고 물으면 이 이력만으로 답할 수 있을까요? 이력에 없는 정보가 있다면 무엇인지, 어떤 키를 추가하면 되는지 적어 주세요.
+6. **핵심 작업 기록**: 실습 4-1과 4-2의 결과를 「문제 해결 과정을 블로그에 기록하기」에서 함께 정리합니다.
+
+
+<!-- answer: 08|실습 4-2 정답 -->
 
 ## 실습 4-2 정리
 
@@ -243,22 +243,6 @@ print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력
 | 역할 해제 | `user_info = users[plan["target"]]` → `user_info["role"] = ""` |
 | 역할에서 권한 빼기 | `role_permissions = roles[plan["target"]]` → `role_permissions.remove(plan["permission"])` |
 | 이력 한 건 | `{"time": now, "user": …, "result": result}` 딕셔너리를 `log.append(…)` |
-
----
-
-## Unit 4 마무리 — 보고서 도전 4-1 · 실습 4-1 · 실습 4-2 칸 확인
-
-Unit 4 의 도전 4-1 · 실습 4-1 · 실습 4-2 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. `access_control` 폴더에 이번 Unit에서 만든 파일이 있는지 확인합니다.
-
-```bash
-ls
-ls config
-```
-
-- `revoke_input.py` · `revoke_plan.py` · `revoke_approve.py` · `revoke.py` · `challenge4-1_run.py` · `exercise4-1_run.py` · `exercise4-2_run.py` · `revocation_log.json` 이 보여야 합니다.
-  - `config` 안에는 `sensitive.json` 이 새로 보여야 합니다.
-
-Unit 4에서는 회수한 뒤에도 조건을 따져 접근을 판단하는 **조건기반 정책**과 판정 함수를 서버로 여는 실습을 합니다. 올리기(git)는 Unit 4의 도전 4-3 마지막에 한 번에 합니다.
 
 ---
 

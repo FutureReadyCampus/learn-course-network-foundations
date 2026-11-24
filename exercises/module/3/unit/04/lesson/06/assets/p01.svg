@@ -3,7 +3,7 @@
 <desc>요청에는 사용자, 권한, 접속 위치, 시각이 들어 있다. evaluate_conditional 은 기본 판정 뒤에 conditions.json 의 업무 시간과 접속 위치 조건을 확인해 허용 또는 거부와 그 이유를 돌려준다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 4-2에서 만드는 것: 조건기반 판정</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">응용 4-2에서 만드는 것: 조건기반 판정</text>
 <rect x="20" y="60" width="190" height="130" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="115" y="97.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">요청</text>
 <text x="115" y="121" font-size="15" fill="#292929" text-anchor="middle">사용자 · 자원 · 행위</text>
