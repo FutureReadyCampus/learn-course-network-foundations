@@ -37,18 +37,18 @@ source:
 **<mark>`csv.DictReader`</mark> 는 CSV 파일의 첫 줄을 열 이름으로 삼아, 둘째 줄부터 한 줄씩 「열 이름: 값」 딕셔너리로 읽어 줍니다**
 
 ```python
-import csv                                                                # CSV 파일을 읽는 csv 모듈을 불러온다
+import csv  # CSV 파일을 읽는 csv 모듈을 불러온다
 
-rows = []                                                                 # 행을 모을 리스트
+rows = []  # 행을 모을 리스트
 with open("saas_events.csv", encoding="utf-8", newline="") as saas_file:  # CSV 파일을 연다
-    reader = csv.DictReader(saas_file)                                    # 첫 줄을 열 이름으로 삼아 행마다 딕셔너리로 읽는다
-    for row in reader:                                                    # 행을 하나씩 꺼낸다
-        rows.append(row)                                                  # 리스트에 추가한다
-first_row = rows[0]                                                       # 첫 행을 꺼낸다
-print(first_row)                                                          # 첫 행(딕셔너리)을 출력한다
+    reader = csv.DictReader(saas_file)  # 첫 줄을 열 이름으로 삼아 행마다 딕셔너리로 읽는다
+    for row in reader:  # 행을 하나씩 꺼낸다
+        rows.append(row)  # 리스트에 추가한다
+first_row = rows[0]  # 첫 행을 꺼낸다
+print(first_row)  # 첫 행(딕셔너리)을 출력한다
 
-row_count = len(rows)                                                     # 행이 몇 개인지 센다
-print(row_count)                                                          # 행 수를 출력한다
+row_count = len(rows)  # 행이 몇 개인지 센다
+print(row_count)  # 행 수를 출력한다
 ```
 
 실행 결과:
@@ -76,14 +76,14 @@ CSV 한 줄이 딕셔너리 하나로 바뀌는 모양입니다.
 
 ```python
 RESULT_MAP = {"success": "성공", "failure": "실패"}  # SaaS 의 outcome 을 바꾸는 딕셔너리
-outcome = "failure"                                  # 바꿀 값
-result = RESULT_MAP[outcome]                         # 딕셔너리에서 "failure" 에 짝지은 값을 꺼낸다
-print(result)                                        # 바꾼 값을 출력한다
+outcome = "failure"  # 바꿀 값
+result = RESULT_MAP[outcome]  # 딕셔너리에서 "failure" 에 짝지은 값을 꺼낸다
+print(result)  # 바꾼 값을 출력한다
 
-ALLOWED_MAP = {True: "성공", False: "실패"}          # 판정 서버의 allowed 를 바꾸는 딕셔너리
-allowed = True                                       # 바꿀 값
-allowed_result = ALLOWED_MAP[allowed]                # 딕셔너리에서 True 에 짝지은 값을 꺼낸다
-print(allowed_result)                                # 바꾼 값을 출력한다
+ALLOWED_MAP = {True: "성공", False: "실패"}  # 판정 서버의 allowed 를 바꾸는 딕셔너리
+allowed = True  # 바꿀 값
+allowed_result = ALLOWED_MAP[allowed]  # 딕셔너리에서 True 에 짝지은 값을 꺼낸다
+print(allowed_result)  # 바꾼 값을 출력한다
 ```
 
 실행 결과:
@@ -131,17 +131,17 @@ print(allowed_result)                                # 바꾼 값을 출력한�
 **`normalize_json_csv.py`**
 
 ```python
-import csv                                                       # CSV 파일을 읽는 csv 모듈을 불러온다
-import json                                                      # JSON 을 다루는 json 모듈을 불러온다
-from datetime import datetime                                    # 날짜와 시각을 다루는 datetime 클래스를 불러온다
+import csv  # CSV 파일을 읽는 csv 모듈을 불러온다
+import json  # JSON 을 다루는 json 모듈을 불러온다
+from datetime import datetime  # 날짜와 시각을 다루는 datetime 클래스를 불러온다
 
-SERVER_TIME_FORMAT = "%Y-%m-%dT%H:%M"                            # 판정 서버 시각의 모양(예: 2026-11-02T09:40)
-COMMON_TIME_FORMAT = "%Y-%m-%d %H:%M:%S"                         # 공통 시각의 모양(예: 2026-11-02 09:40:00)
-ALLOWED_MAP = {True: "성공", False: "실패"}                      # 판정 서버의 allowed 값을 공통 결과로 바꾸는 딕셔너리
-RESULT_MAP = {"success": "성공", "failure": "실패"}              # SaaS 의 outcome 값을 공통 결과로 바꾸는 딕셔너리
+SERVER_TIME_FORMAT = "%Y-%m-%dT%H:%M"  # 판정 서버 시각의 모양(예: 2026-11-02T09:40)
+COMMON_TIME_FORMAT = "%Y-%m-%d %H:%M:%S"  # 공통 시각의 모양(예: 2026-11-02 09:40:00)
+ALLOWED_MAP = {True: "성공", False: "실패"}  # 판정 서버의 allowed 값을 공통 결과로 바꾸는 딕셔너리
+RESULT_MAP = {"success": "성공", "failure": "실패"}  # SaaS 의 outcome 값을 공통 결과로 바꾸는 딕셔너리
 
 
-def convert_server_time(time_text):                              # 판정 서버 시각 문자열을 받는 함수
+def convert_server_time(time_text):  # 판정 서버 시각 문자열을 받는 함수
     """판정 서버 시각을 공통 모양의 문자열로 바꾼다.
     예: 2026-11-02T09:40 → 2026-11-02 09:40:00.
     판정 서버 로그를 공통 이벤트로 만들 때 쓴다.
@@ -149,75 +149,75 @@ def convert_server_time(time_text):                              # 판정 서버
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. datetime.strptime(time_text, SERVER_TIME_FORMAT) 의 결과를 parsed 에 담는다
     # 2. parsed.strftime(COMMON_TIME_FORMAT) 의 결과를 time_out 에 담는다
-    return time_out                                              # 공통 모양의 시각 문자열을 리턴한다
+    return time_out  # 공통 모양의 시각 문자열을 리턴한다
 
 
-def normalize_server(line):                                      # 판정 서버 로그 한 줄(JSON 문자열)을 받는 함수
+def normalize_server(line):  # 판정 서버 로그 한 줄(JSON 문자열)을 받는 함수
     """판정 서버 로그 한 줄을 공통 이벤트 딕셔너리로 바꾼다.
     판정 서버 로그를 다른 로그와 같은 모양으로 맞출 때 쓴다.
     """
-    item = json.loads(line)                                      # JSON 문자열을 딕셔너리로 바꾼다
-    time_out = convert_server_time(item["time"])                 # 공통 모양의 시각으로 바꾼다
-    allowed = item["allowed"]                                    # 허용이었는지(True 또는 False)
+    item = json.loads(line)  # JSON 문자열을 딕셔너리로 바꾼다
+    time_out = convert_server_time(item["time"])  # 공통 모양의 시각으로 바꾼다
+    allowed = item["allowed"]  # 허용이었는지(True 또는 False)
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 3. ALLOWED_MAP 에서 allowed 에 해당하는 값을 꺼내 result 에 담는다 (ALLOWED_MAP[allowed])
-    raw_text = line.strip()                                      # 원래 줄(양끝 공백과 줄바꿈 뺀 것)을 보관한다
-    event = {                                                    # 공통 이벤트의 키로 묶는다
-        "time": time_out,                                        # 일어난 시각
-        "source": "server",                                      # 어느 로그에서 왔는지
-        "user": item["user"],                                    # 요청한 사용자
-        "ip": None,                                              # 판정 서버 로그에는 접속 주소가 없다
-        "action": item["permission"],                            # 요청한 권한
-        "result": result,                                        # 성공인지 실패인지
-        "raw": raw_text,                                         # 원래 로그 줄
+    raw_text = line.strip()  # 원래 줄(양끝 공백과 줄바꿈 뺀 것)을 보관한다
+    event = {  # 공통 이벤트의 키로 묶는다
+        "time": time_out,  # 일어난 시각
+        "source": "server",  # 어느 로그에서 왔는지
+        "user": item["user"],  # 요청한 사용자
+        "ip": None,  # 판정 서버 로그에는 접속 주소가 없다
+        "action": item["permission"],  # 요청한 권한
+        "result": result,  # 성공인지 실패인지
+        "raw": raw_text,  # 원래 로그 줄
     }
-    return event                                                 # 공통 이벤트를 리턴한다
+    return event  # 공통 이벤트를 리턴한다
 
 
-def normalize_saas(row):                                         # SaaS CSV 한 행(딕셔너리)을 받는 함수
+def normalize_saas(row):  # SaaS CSV 한 행(딕셔너리)을 받는 함수
     """SaaS 로그 한 행을 공통 이벤트 딕셔너리로 바꾼다.
     SaaS 로그를 다른 로그와 같은 모양으로 맞출 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. row["account"] 를 "@" 기준으로 나눠 account_parts 에 담는다 (account 예: seoyeon@a-corp.example)
     # 5. account_parts 의 첫 값을 user 에 담는다
-    outcome = row["outcome"]                                     # success 또는 failure
+    outcome = row["outcome"]  # success 또는 failure
     # 6. RESULT_MAP 에서 outcome 에 해당하는 값을 꺼내 result 에 담는다
-    event = {                                                    # 공통 이벤트의 키로 묶는다
-        "time": row["time"],                                     # SaaS 시각은 이미 공통 모양이라 그대로 쓴다
-        "source": "saas",                                        # 어느 로그에서 왔는지
-        "user": user,                                            # 메일 주소에서 꺼낸 사용자 이름
-        "ip": row["ip_address"],                                 # 접속 주소
-        "action": row["event"],                                  # 무엇을 했는지
-        "result": result,                                        # 성공인지 실패인지
-        "raw": row,                                              # 원래 CSV 행(딕셔너리)을 보관한다
+    event = {  # 공통 이벤트의 키로 묶는다
+        "time": row["time"],  # SaaS 시각은 이미 공통 모양이라 그대로 쓴다
+        "source": "saas",  # 어느 로그에서 왔는지
+        "user": user,  # 메일 주소에서 꺼낸 사용자 이름
+        "ip": row["ip_address"],  # 접속 주소
+        "action": row["event"],  # 무엇을 했는지
+        "result": result,  # 성공인지 실패인지
+        "raw": row,  # 원래 CSV 행(딕셔너리)을 보관한다
     }
-    return event                                                 # 공통 이벤트를 리턴한다
+    return event  # 공통 이벤트를 리턴한다
 
 
-def load_server(path):                                           # 판정 서버 로그 파일 경로를 받는 함수
+def load_server(path):  # 판정 서버 로그 파일 경로를 받는 함수
     """판정 서버 로그 파일의 모든 줄을 공통 이벤트 리스트로 바꾼다.
     판정 서버 로그를 정규화 결과에 합칠 준비를 할 때 쓴다.
     """
-    events = []                                                  # 결과를 담을 리스트
-    with open(path, encoding="utf-8") as server_file:            # 파일을 연다
-        for line in server_file:                                 # 한 줄씩 꺼낸다
-            event = normalize_server(line)                       # 공통 이벤트로 바꾼다
-            events.append(event)                                 # 리스트에 추가한다
-    return events                                                # 이벤트 리스트를 리턴한다
+    events = []  # 결과를 담을 리스트
+    with open(path, encoding="utf-8") as server_file:  # 파일을 연다
+        for line in server_file:  # 한 줄씩 꺼낸다
+            event = normalize_server(line)  # 공통 이벤트로 바꾼다
+            events.append(event)  # 리스트에 추가한다
+    return events  # 이벤트 리스트를 리턴한다
 
 
-def load_saas(path):                                             # SaaS CSV 파일 경로를 받는 함수
+def load_saas(path):  # SaaS CSV 파일 경로를 받는 함수
     """SaaS CSV 파일의 모든 행을 공통 이벤트 리스트로 바꾼다.
     SaaS 로그를 정규화 결과에 합칠 준비를 할 때 쓴다.
     """
-    events = []                                                  # 결과를 담을 리스트
+    events = []  # 결과를 담을 리스트
     with open(path, encoding="utf-8", newline="") as saas_file:  # 파일을 연다(CSV 는 newline="" 을 붙인다)
-        reader = csv.DictReader(saas_file)                       # 첫 줄을 열 이름으로 삼아 행마다 딕셔너리로 읽는다
-        for row in reader:                                       # 행을 하나씩 꺼낸다
-            event = normalize_saas(row)                          # 공통 이벤트로 바꾼다
-            events.append(event)                                 # 리스트에 추가한다
-    return events                                                # 이벤트 리스트를 리턴한다
+        reader = csv.DictReader(saas_file)  # 첫 줄을 열 이름으로 삼아 행마다 딕셔너리로 읽는다
+        for row in reader:  # 행을 하나씩 꺼낸다
+            event = normalize_saas(row)  # 공통 이벤트로 바꾼다
+            events.append(event)  # 리스트에 추가한다
+    return events  # 이벤트 리스트를 리턴한다
 ```
 
 - 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 6번은 모두 함수 안이라 앞에 공백 4개입니다.
@@ -228,32 +228,32 @@ def load_saas(path):                                             # SaaS CSV 파�
 **`exercise2-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 두 로그를 공통 이벤트로 바꿔 세 단계로 출력합니다.
 
 ```python
-from normalize_json_csv import load_server, load_saas                       # 방금 만든 파일 읽기 함수를 불러온다
+from normalize_json_csv import load_server, load_saas  # 방금 만든 파일 읽기 함수를 불러온다
 
-server_events = load_server("server_log.jsonl")                             # 판정 서버 로그를 공통 이벤트로 바꾼다
-saas_events = load_saas("saas_events.csv")                                  # SaaS 로그를 공통 이벤트로 바꾼다
+server_events = load_server("server_log.jsonl")  # 판정 서버 로그를 공통 이벤트로 바꾼다
+saas_events = load_saas("saas_events.csv")  # SaaS 로그를 공통 이벤트로 바꾼다
 
-server_count = len(server_events)                                           # 판정 서버 이벤트 수를 센다
-server_result_counts = {}                                                   # 결과별 횟수를 담을 딕셔너리
-for event in server_events:                                                 # 이벤트를 하나씩 꺼낸다
-    result = event["result"]                                                # 그 이벤트의 결과
+server_count = len(server_events)  # 판정 서버 이벤트 수를 센다
+server_result_counts = {}  # 결과별 횟수를 담을 딕셔너리
+for event in server_events:  # 이벤트를 하나씩 꺼낸다
+    result = event["result"]  # 그 이벤트의 결과
     server_result_counts[result] = server_result_counts.get(result, 0) + 1  # 그 결과의 횟수를 1 늘린다
-print("--- 단계 1: 판정 서버 이벤트", server_count, "개")                   # 단계 1 시작을 알리는 줄
-print(server_result_counts)                                                 # 성공 · 실패별 개수를 출력한다
+print("--- 단계 1: 판정 서버 이벤트", server_count, "개")  # 단계 1 시작을 알리는 줄
+print(server_result_counts)  # 성공 · 실패별 개수를 출력한다
 
-saas_count = len(saas_events)                                               # SaaS 이벤트 수를 센다
-saas_result_counts = {}                                                     # 결과별 횟수를 담을 딕셔너리
-for event in saas_events:                                                   # 이벤트를 하나씩 꺼낸다
-    result = event["result"]                                                # 그 이벤트의 결과
-    saas_result_counts[result] = saas_result_counts.get(result, 0) + 1      # 그 결과의 횟수를 1 늘린다
-print("--- 단계 2: SaaS 이벤트", saas_count, "개")                          # 단계 2 시작을 알리는 줄
-print(saas_result_counts)                                                   # 성공 · 실패별 개수를 출력한다
+saas_count = len(saas_events)  # SaaS 이벤트 수를 센다
+saas_result_counts = {}  # 결과별 횟수를 담을 딕셔너리
+for event in saas_events:  # 이벤트를 하나씩 꺼낸다
+    result = event["result"]  # 그 이벤트의 결과
+    saas_result_counts[result] = saas_result_counts.get(result, 0) + 1  # 그 결과의 횟수를 1 늘린다
+print("--- 단계 2: SaaS 이벤트", saas_count, "개")  # 단계 2 시작을 알리는 줄
+print(saas_result_counts)  # 성공 · 실패별 개수를 출력한다
 
-first_server = server_events[0]                                             # 판정 서버 첫 이벤트를 꺼낸다
-first_saas = saas_events[0]                                                 # SaaS 첫 이벤트를 꺼낸다
-print("--- 단계 3: 각 로그의 첫 이벤트")                                    # 단계 3 시작을 알리는 줄
-print(first_server)                                                         # 판정 서버 첫 이벤트를 출력한다
-print(first_saas)                                                           # SaaS 첫 이벤트를 출력한다
+first_server = server_events[0]  # 판정 서버 첫 이벤트를 꺼낸다
+first_saas = saas_events[0]  # SaaS 첫 이벤트를 꺼낸다
+print("--- 단계 3: 각 로그의 첫 이벤트")  # 단계 3 시작을 알리는 줄
+print(first_server)  # 판정 서버 첫 이벤트를 출력한다
+print(first_saas)  # SaaS 첫 이벤트를 출력한다
 ```
 
 **순서**
@@ -267,10 +267,12 @@ print(first_saas)                                                           # Sa
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise2-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **세 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1은 1줄, 단계 2는 1줄, 단계 3은 2줄입니다.
-5. **[보고서]** `report_u2.md` 의 `## 실습 2-2` 아래를 채웁니다.
+5. **[실습 기록]** `report_u2.md` 의 `## 실습 2-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 판정 서버와 SaaS 이벤트의 수와 성공 · 실패별 개수를 적어 주세요.
    - (나) [핵심 질문] 판정 서버 로그에는 접속 주소가 없어서 `ip` 를 `None` 으로 두었습니다. `None` 대신 가짜 주소 `0.0.0.0` 을 넣으면 주소별로 셀 때 어떤 문제가 생길까요? 이유도 함께 적어 주세요.
    - (다) [핵심 질문] 정규화하면서 공통 이벤트의 키에 들어가지 않은 정보를 판정 서버 로그에서 찾아 적고, 그 정보를 나중에 어디서 찾을 수 있는지 적어 주세요.
+
+<!-- answer: 05|실습 2-2 정답 -->
 
 ## 실습 2-2 정리
 

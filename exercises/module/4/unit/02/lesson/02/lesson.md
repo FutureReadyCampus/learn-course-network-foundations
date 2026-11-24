@@ -100,14 +100,14 @@ source:
 로그마다 시각 모양이 달라서, <mark>먼저 시각 값으로 바꾼 뒤 공통 모양의 문자열로 다시 만듭니다.</mark> 문자열을 시각 값으로 바꾸는 `strptime` 은 Module 3에서 쓴 방법 그대로라서 여기서는 설명하지 않습니다.
 
 ```python
-from datetime import datetime                                  # 날짜와 시각을 다루는 datetime 클래스를 불러온다
+from datetime import datetime  # 날짜와 시각을 다루는 datetime 클래스를 불러온다
 
-time_text = "02/Nov/2026:09:12:03 +0900"                       # nginx 시각 문자열
+time_text = "02/Nov/2026:09:12:03 +0900"  # nginx 시각 문자열
 parsed = datetime.strptime(time_text, "%d/%b/%Y:%H:%M:%S %z")  # 문자열을 시각 값으로 바꾼다(모양을 형식으로 알려 준다)
-print(parsed)                                                  # 시각 값을 출력한다
+print(parsed)  # 시각 값을 출력한다
 
-time_out = parsed.strftime("%Y-%m-%d %H:%M:%S")                # 시각 값을 공통 모양의 문자열로 바꾼다
-print(time_out)                                                # 문자열을 출력한다
+time_out = parsed.strftime("%Y-%m-%d %H:%M:%S")  # 시각 값을 공통 모양의 문자열로 바꾼다
+print(time_out)  # 문자열을 출력한다
 ```
 
 실행 결과:
@@ -142,14 +142,14 @@ nginx 시각 문자열을 부분마다 형식 코드와 하나씩 맞춰 봅니�
 **시각 값에 붙은 시간대(`+0900`)는 <mark>`.replace(tzinfo=None)`</mark> 으로 지울 수 있고, 지우면 한국 시각만 남은 시각 값이 됩니다**
 
 ```python
-from datetime import datetime                                  # 날짜와 시각을 다루는 datetime 클래스를 불러온다
+from datetime import datetime  # 날짜와 시각을 다루는 datetime 클래스를 불러온다
 
-time_text = "02/Nov/2026:09:12:03 +0900"                       # nginx 시각 문자열
+time_text = "02/Nov/2026:09:12:03 +0900"  # nginx 시각 문자열
 parsed = datetime.strptime(time_text, "%d/%b/%Y:%H:%M:%S %z")  # 문자열을 시각 값으로 바꾼다
-print(parsed.tzinfo)                                           # 시간대 정보를 출력한다
+print(parsed.tzinfo)  # 시간대 정보를 출력한다
 
-local_time = parsed.replace(tzinfo=None)                       # 시간대 정보를 지우고 한국 시각만 남긴다
-print(local_time)                                              # 시간대 없는 시각을 출력한다
+local_time = parsed.replace(tzinfo=None)  # 시간대 정보를 지우고 한국 시각만 남긴다
+print(local_time)  # 시간대 없는 시각을 출력한다
 ```
 
 실행 결과:
@@ -196,24 +196,24 @@ UTC+09:00
 **`normalize_web.py`**
 
 ```python
-from datetime import datetime                                                # 날짜와 시각을 다루는 datetime 클래스를 불러온다
+from datetime import datetime  # 날짜와 시각을 다루는 datetime 클래스를 불러온다
 from log_parse import split_request, read_request, read_status, read_client  # Unit 1에서 만든 로그 읽기 함수를 불러온다
 
-NGINX_TIME_FORMAT = "%d/%b/%Y:%H:%M:%S %z"                                   # nginx 시각의 모양(예: 02/Nov/2026:09:12:03 +0900)
-COMMON_TIME_FORMAT = "%Y-%m-%d %H:%M:%S"                                     # 공통 시각의 모양(예: 2026-11-02 09:12:03)
+NGINX_TIME_FORMAT = "%d/%b/%Y:%H:%M:%S %z"  # nginx 시각의 모양(예: 02/Nov/2026:09:12:03 +0900)
+COMMON_TIME_FORMAT = "%Y-%m-%d %H:%M:%S"  # 공통 시각의 모양(예: 2026-11-02 09:12:03)
 
 
-def read_time_text(prefix):                                                  # 요청 앞 조각을 받는 함수
+def read_time_text(prefix):  # 요청 앞 조각을 받는 함수
     """요청 앞 조각에서 대괄호 안의 시각 문자열을 꺼낸다.
     웹 서버 로그의 시각을 공통 모양으로 바꾸기 전에 쓴다.
     """
-    parts = prefix.split()                                                   # 공백 기준으로 나눈다
-    bracket_text = parts[3] + " " + parts[4]                                 # '[02/Nov/2026:09:12:03' 과 '+0900]' 를 이어 붙인다
-    time_text = bracket_text.strip("[]")                                     # 양쪽 끝의 대괄호를 지운다
-    return time_text                                                         # 대괄호 없는 시각 문자열을 리턴한다
+    parts = prefix.split()  # 공백 기준으로 나눈다
+    bracket_text = parts[3] + " " + parts[4]  # '[02/Nov/2026:09:12:03' 과 '+0900]' 를 이어 붙인다
+    time_text = bracket_text.strip("[]")  # 양쪽 끝의 대괄호를 지운다
+    return time_text  # 대괄호 없는 시각 문자열을 리턴한다
 
 
-def convert_time(time_text):                                                 # nginx 시각 문자열을 받는 함수
+def convert_time(time_text):  # nginx 시각 문자열을 받는 함수
     """nginx 시각을 공통 모양의 문자열로 바꾼다.
     예: 02/Nov/2026:09:12:03 +0900 → 2026-11-02 09:12:03.
     웹 서버 로그를 공통 이벤트로 만들 때 쓴다.
@@ -222,10 +222,10 @@ def convert_time(time_text):                                                 # n
     # 1. datetime.strptime(time_text, NGINX_TIME_FORMAT) 의 결과를 parsed 에 담는다
     # 2. parsed.replace(tzinfo=None) 의 결과를 local_time 에 담는다 (+0900 정보를 떼고 한국 시각만 남긴다)
     # 3. local_time.strftime(COMMON_TIME_FORMAT) 의 결과를 time_out 에 담는다
-    return time_out                                                          # 공통 모양의 시각 문자열을 리턴한다
+    return time_out  # 공통 모양의 시각 문자열을 리턴한다
 
 
-def convert_result(status):                                                  # 상태 코드(정수)를 받는 함수
+def convert_result(status):  # 상태 코드(정수)를 받는 함수
     """상태 코드가 400 이상이면 「실패」, 아니면 「성공」을 리턴한다.
     웹 서버 로그의 결과를 공통 이벤트의 result 로 바꿀 때 쓴다.
     """
@@ -235,31 +235,31 @@ def convert_result(status):                                                  # �
     # 6. 그 밖에는 "성공" 을 리턴한다
 
 
-def normalize_web(line):                                                     # 로그 한 줄을 받는 함수
+def normalize_web(line):  # 로그 한 줄을 받는 함수
     """웹 서버 로그 한 줄을 공통 이벤트 딕셔너리로 바꾸고, 깨진 줄이면 None 을 리턴한다.
     웹 서버 로그를 다른 로그와 같은 모양으로 맞출 때 쓴다.
     """
-    if line.count('"') < 2:                                                  # 큰따옴표가 두 개보다 적은 깨진 줄이면
-        return None                                                          # 읽지 않고 None 을 리턴한다
-    prefix, request_text, suffix = split_request(line)                       # 세 조각으로 나눈다
-    method, path = read_request(request_text)                                # 요청 조각에서 방법과 경로를 꺼낸다
-    status = read_status(suffix)                                             # 뒤 조각에서 상태 코드를 꺼낸다
-    client_ip = read_client(prefix)                                          # 앞 조각에서 접속자 주소를 꺼낸다
-    time_text = read_time_text(prefix)                                       # 앞 조각에서 시각 문자열을 꺼낸다
-    time_out = convert_time(time_text)                                       # 공통 모양의 시각으로 바꾼다
-    result = convert_result(status)                                          # 상태 코드를 성공 · 실패로 바꾼다
-    action = method + " " + path                                             # 방법과 경로를 하나의 행동으로 합친다
-    raw_text = line.strip()                                                  # 원래 줄(양끝 공백과 줄바꿈 뺀 것)을 보관한다
-    event = {                                                                # 공통 이벤트의 키로 묶는다
-        "time": time_out,                                                    # 일어난 시각
-        "source": "web",                                                     # 어느 로그에서 왔는지
-        "user": None,                                                        # 웹 서버 로그에는 사용자가 없다
-        "ip": client_ip,                                                     # 접속자 주소
-        "action": action,                                                    # 무엇을 했는지
-        "result": result,                                                    # 성공인지 실패인지
-        "raw": raw_text,                                                     # 원래 로그 줄
+    if line.count('"') < 2:  # 큰따옴표가 두 개보다 적은 깨진 줄이면
+        return None  # 읽지 않고 None 을 리턴한다
+    prefix, request_text, suffix = split_request(line)  # 세 조각으로 나눈다
+    method, path = read_request(request_text)  # 요청 조각에서 방법과 경로를 꺼낸다
+    status = read_status(suffix)  # 뒤 조각에서 상태 코드를 꺼낸다
+    client_ip = read_client(prefix)  # 앞 조각에서 접속자 주소를 꺼낸다
+    time_text = read_time_text(prefix)  # 앞 조각에서 시각 문자열을 꺼낸다
+    time_out = convert_time(time_text)  # 공통 모양의 시각으로 바꾼다
+    result = convert_result(status)  # 상태 코드를 성공 · 실패로 바꾼다
+    action = method + " " + path  # 방법과 경로를 하나의 행동으로 합친다
+    raw_text = line.strip()  # 원래 줄(양끝 공백과 줄바꿈 뺀 것)을 보관한다
+    event = {  # 공통 이벤트의 키로 묶는다
+        "time": time_out,  # 일어난 시각
+        "source": "web",  # 어느 로그에서 왔는지
+        "user": None,  # 웹 서버 로그에는 사용자가 없다
+        "ip": client_ip,  # 접속자 주소
+        "action": action,  # 무엇을 했는지
+        "result": result,  # 성공인지 실패인지
+        "raw": raw_text,  # 원래 로그 줄
     }
-    return event                                                             # 공통 이벤트를 리턴한다
+    return event  # 공통 이벤트를 리턴한다
 ```
 
 - 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 6번은 함수 안이라 앞에 공백 4개이고, 그중 5번의 `return` 만 `if` 안쪽이라 공백 8개입니다.
@@ -270,36 +270,36 @@ def normalize_web(line):                                                     # �
 **`exercise2-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 샘플 로그를 한 줄씩 공통 이벤트로 바꿔 세 단계로 출력합니다. `len(리스트)` 는 리스트의 개수입니다.
 
 ```python
-from normalize_web import normalize_web                                                # 방금 만든 웹 서버 로그 정규화 함수를 불러온다
+from normalize_web import normalize_web  # 방금 만든 웹 서버 로그 정규화 함수를 불러온다
 
-events = []                                                                            # 정규화한 이벤트를 모을 리스트
-fail_count = 0                                                                         # 읽기 실패한 줄 수를 0 으로 시작한다
-with open("access_sample.log", encoding="utf-8") as log_file:                          # 샘플 로그 파일을 연다
-    for line in log_file:                                                              # 파일에서 한 줄씩 꺼낸다
-        event = normalize_web(line)                                                    # 한 줄을 공통 이벤트로 바꾼다
-        if event is None:                                                              # 깨진 줄이라 읽지 못했으면
-            fail_count = fail_count + 1                                                # 읽기 실패한 줄 수를 1 늘린다
-        else:                                                                          # 바꿨으면
-            events.append(event)                                                       # 이벤트 리스트에 추가한다
+events = []  # 정규화한 이벤트를 모을 리스트
+fail_count = 0  # 읽기 실패한 줄 수를 0 으로 시작한다
+with open("access_sample.log", encoding="utf-8") as log_file:  # 샘플 로그 파일을 연다
+    for line in log_file:  # 파일에서 한 줄씩 꺼낸다
+        event = normalize_web(line)  # 한 줄을 공통 이벤트로 바꾼다
+        if event is None:  # 깨진 줄이라 읽지 못했으면
+            fail_count = fail_count + 1  # 읽기 실패한 줄 수를 1 늘린다
+        else:  # 바꿨으면
+            events.append(event)  # 이벤트 리스트에 추가한다
 
-event_count = len(events)                                                              # 정규화한 이벤트 수를 센다
+event_count = len(events)  # 정규화한 이벤트 수를 센다
 print("--- 단계 1: 정규화한 이벤트", event_count, "개 · 읽기 실패", fail_count, "줄")  # 단계 1 시작을 알리는 줄
-first_event = events[0]                                                                # 첫 이벤트를 꺼낸다
-print(first_event)                                                                     # 첫 이벤트를 출력한다
+first_event = events[0]  # 첫 이벤트를 꺼낸다
+print(first_event)  # 첫 이벤트를 출력한다
 
-first_failed = None                                                                    # 처음 나오는 실패 이벤트를 담을 변수(아직 없음)
-for event in events:                                                                   # 이벤트를 하나씩 꺼낸다
-    if event["result"] == "실패" and first_failed is None:                             # 실패 이벤트이고 아직 담은 것이 없으면
-        first_failed = event                                                           # 이 이벤트를 담는다
-print("--- 단계 2: 처음 나오는 실패 이벤트")                                           # 단계 2 시작을 알리는 줄
-print(first_failed)                                                                    # 처음 나오는 실패 이벤트를 출력한다
+first_failed = None  # 처음 나오는 실패 이벤트를 담을 변수(아직 없음)
+for event in events:  # 이벤트를 하나씩 꺼낸다
+    if event["result"] == "실패" and first_failed is None:  # 실패 이벤트이고 아직 담은 것이 없으면
+        first_failed = event  # 이 이벤트를 담는다
+print("--- 단계 2: 처음 나오는 실패 이벤트")  # 단계 2 시작을 알리는 줄
+print(first_failed)  # 처음 나오는 실패 이벤트를 출력한다
 
-result_counts = {}                                                                     # 결과별 횟수를 담을 딕셔너리
-for event in events:                                                                   # 이벤트를 하나씩 꺼낸다
-    result = event["result"]                                                           # 그 이벤트의 결과
-    result_counts[result] = result_counts.get(result, 0) + 1                           # 그 결과의 횟수를 1 늘린다
-print("--- 단계 3: 성공 · 실패별 이벤트 수")                                           # 단계 3 시작을 알리는 줄
-print(result_counts)                                                                   # 성공 · 실패별 개수를 출력한다
+result_counts = {}  # 결과별 횟수를 담을 딕셔너리
+for event in events:  # 이벤트를 하나씩 꺼낸다
+    result = event["result"]  # 그 이벤트의 결과
+    result_counts[result] = result_counts.get(result, 0) + 1  # 그 결과의 횟수를 1 늘린다
+print("--- 단계 3: 성공 · 실패별 이벤트 수")  # 단계 3 시작을 알리는 줄
+print(result_counts)  # 성공 · 실패별 개수를 출력한다
 ```
 
 **순서**
@@ -313,10 +313,12 @@ print(result_counts)                                                            
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise2-1_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **세 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1은 1줄, 단계 2는 1줄, 단계 3은 1줄입니다.
-5. **[보고서]** `report_u2.md` 의 `## 실습 2-1` 아래를 채웁니다.
+5. **[실습 기록]** `report_u2.md` 의 `## 실습 2-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 정규화한 이벤트 수와 읽기 실패한 줄 수, 성공과 실패 개수를 적어 주세요.
    - (나) [핵심 질문] 시각을 `02/Nov/2026:09:00:00 +0900` 모양 그대로 문자열로 정렬하면 12월 1일 요청(`01/Dec/2026:…`)과 11월 2일 요청(`02/Nov/2026:…`) 중 어느 쪽이 앞에 놓일지 예상하고, 공통 모양(`2026-11-02 09:00:00`)으로 바꾸면 무엇이 달라지는지 이유와 함께 적어 주세요.
    - (다) [핵심 질문] 이벤트에 원래 로그 줄(`raw`)을 그대로 남겨 두는 이유는 무엇인가요? 정규화하면 사라지는 정보를 한 가지 예로 들어 함께 적어 주세요.
+
+<!-- answer: 05|실습 2-1 정답 -->
 
 ## 실습 2-1 정리
 
