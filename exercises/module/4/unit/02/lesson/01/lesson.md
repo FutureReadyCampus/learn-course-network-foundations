@@ -27,22 +27,22 @@ Unit 1에서는 웹 서버 접속 로그 한 줄을 읽고 이상 징후를 구�
 
 | 파일 | 어디서 | 이번 Unit에서 쓰는 곳 | 없으면 |
 |---|---|---|---|
-| `log_parse.py` | Unit 1의 실습 1-1에서 만든 파일 | 실습 2-1 `normalize_web.py` 가 안의 함수 네 개를 불러 씁니다 | 문서 맨 아래 「앞 Unit 파일 완성본」으로 만듭니다 |
-| `access_sample.log` | Unit 1 시작하기에서 만든 샘플 웹 서버 로그(30줄) | 실습 2-1과 실습 2-3에서 읽습니다 | 같은 곳의 완성본으로 만듭니다 |
+| `log_parse.py` | M4 Unit 1 실습 1-1에서 만든 파일 | 실습 2-1 `normalize_web.py` 가 안의 함수 네 개를 불러 씁니다 | [M4 Unit 1 실습 1-1의 정답 접기](__SITE__/exercises/module/4/unit/1/lesson/2/page/8)에서 확인합니다 |
+| `access_sample.log` | M4 Unit 1 시작하기에서 만든 샘플 웹 서버 로그(30줄) | 실습 2-1과 실습 2-3에서 읽습니다 | [M4 Unit 1 시작하기의 로그 샘플](__SITE__/exercises/module/4/unit/1/lesson/1/page/2)을 복사합니다 |
 
 ## 폴더 열고 로그 파일 준비하기
 
 1. **[VS Code]** `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
-2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치와 Unit 1의 파일을 확인합니다(맥북은 `python3`). <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나고, `ls` 결과에 `log_parse.py` 와 `access_sample.log` 가 보여야</mark> 합니다. 없으면 맨 아래 「앞 Unit 파일 완성본」으로 먼저 만듭니다. `cd` 가 「No such file or directory」 오류를 내면 `mkdir anomaly_detection` 으로 폴더부터 만들고 들어갑니다.
+2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치와 Unit 1의 파일을 확인합니다(맥북은 `python3`). <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나고, `ls` 결과에 `log_parse.py` 와 `access_sample.log` 가 보여야</mark> 합니다. 파일이 없으면 위 표의 M4 Unit 1 안내를 따라 준비합니다. `cd` 가 「No such file or directory」 오류를 내면 `mkdir anomaly_detection` 으로 폴더부터 만들고 들어갑니다.
    ```bash
    cd anomaly_detection
    pwd
    ls
    ```
-3. **파일은 이렇게 만듭니다.** 이 페이지에 나오는 파일은 모두 이 페이지의 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
+3. **파일은 이렇게 만듭니다.** 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
    1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다.
    2. 코드 상자의 복사 버튼으로 내용을 복사해 새 파일에 붙여 넣고, `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
-4. 답을 적는 **보고서**(`report_u2.md`)도 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
+4. 앞의 「실습 결과 기록 준비」에서 만든 기술 기록 파일(`report_u2.md`)을 엽니다.
 5. **[VS Code]** `anomaly_detection` 폴더에 `server_log.jsonl` 과 `saas_events.csv` 파일을 만들어 아래 내용을 그대로 붙여 넣습니다.
 
 **`server_log.jsonl`** — 판정 서버가 남긴 로그 샘플입니다. Module 3에서 만든 서버의 로그와 같은 모양이고, 한 줄이 요청 1개인 JSON 입니다(15줄).
@@ -85,20 +85,24 @@ time,account,event,ip_address,outcome
 2026-11-02 17:42:20,seoyeon@a-corp.example,file.download,203.0.113.80,success
 ```
 
-6. **[터미널]** 세 파일의 줄 수를 확인합니다.
+6. **[터미널]** 세 로그 파일의 줄 수를 확인합니다. 아래 코드를 붙여 넣고 실행합니다.
    ```bash
-   python -c "print(len(open('access_sample.log', encoding='utf-8').read().splitlines()))"
-   python -c "print(len(open('server_log.jsonl', encoding='utf-8').read().splitlines()))"
-   python -c "print(len(open('saas_events.csv', encoding='utf-8').read().splitlines()))"
+   python3 - <<'PY'
+   from pathlib import Path
+
+   for name in ("access_sample.log", "server_log.jsonl", "saas_events.csv"):
+       line_count = len(Path(name).read_text(encoding="utf-8").splitlines())
+       print(f"{name}: {line_count}줄")
+   PY
    ```
-   - <mark>순서대로 `30` · `15` · `15` 가 나와야</mark> 합니다. 다르면 줄이 빠졌거나 빈 줄이 끼어든 것이니 다시 붙여 넣습니다.
+   - `access_sample.log: 30줄` · `server_log.jsonl: 15줄` · `saas_events.csv: 15줄` 이 나와야 합니다. 다르면 줄이 빠졌거나 빈 줄이 끼어든 것이니 다시 붙여 넣습니다.
 
 ## 오류가 나면
 
 - 먼저 `pwd` 가 `anomaly_detection` 으로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
-- `No module named 'log_parse'`: Unit 1의 `log_parse.py` 가 이 폴더에 없는 것입니다. 맨 아래 「앞 Unit 파일 완성본」으로 만듭니다.
+- `No module named 'log_parse'`: M4 Unit 1의 `log_parse.py` 가 이 폴더에 없는 것입니다. 위 표의 M4 Unit 1 안내를 따라 준비합니다.
 - `IndentationError` · `NameError`: 직접 쓴 줄의 들여쓰기가 틀렸거나 빠뜨린 줄이 있습니다.
-- 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 막히면 맨 아래 「정답」을 보고, 풀리지 않으면 그 질문의 `답:` 에 「모름 — 막힌 곳: …」 이라고 쓰고 넘어갑니다.
+- 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 막히면 각 실습 아래의 정답 접기를 보고, 풀리지 않으면 그 질문의 `답:` 에 「모름 — 막힌 곳: …」 이라고 쓰고 넘어갑니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 **터미널**에서 합니다(맥북은 `python3`).
 
