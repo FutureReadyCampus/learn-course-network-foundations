@@ -1,44 +1,44 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>GitHub 웹에서 파일을 하나씩 만들어 필수 파일 다섯 개를 저장소에 놓습니다</title>
-<desc>왼쪽은 파일 하나를 만드는 순서입니다. Create new file을 누르고, 이름 칸에 파일 이름을 적고(_posts/처럼 / 가 있으면 폴더도 생김), 복사해 붙여 넣고, Commit changes를 누릅니다. 오른쪽은 그렇게 만든 _config.yml, index.md, about.md, _posts/2026-01-01-hello.md, .gitignore가 저장소에 놓인 모습입니다.</desc>
+<title>VS Code 에서 저장소 루트에 필수 파일 다섯 개를 만들고 처음으로 push 합니다</title>
+<desc>왼쪽은 순서입니다. ① VS Code 왼쪽 목록에서 network-study-notes 바로 아래(저장소 루트)에 새 파일을 만들고(_posts 는 폴더를 먼저 만듦), ② 상자의 내용을 복사해 붙여 넣고 저장한 뒤, ③ 터미널에서 cd .. 로 루트로 올라가 git add, git commit 을 하고, ④ git push -u origin main 으로 처음 올립니다. 오른쪽은 그렇게 만든 _config.yml, index.md, about.md, _posts/2026-01-01-hello.md, .gitignore 가 access_control 폴더와 같은 루트에 놓인 모습입니다.</desc>
 <defs>
-<marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
+<marker id="a-p07f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
 </defs>
-<text x="20" y="30" font-size="19" font-weight="700" fill="#292929">파일 하나 만드는 순서와 만들 파일 5개</text>
+<text x="20" y="30" font-size="19" font-weight="700" fill="#292929">필수 파일 5개를 만들고 처음 올리기</text>
 
 <g font-size="15" fill="#292929">
 <rect x="20" y="52" width="320" height="76" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="36" y="78" font-size="16" font-weight="700">① Create new file</text>
-<text x="36" y="102">빈 저장소: creating a new file</text>
-<text x="36" y="120" font-size="14" fill="#666660">파일이 있으면 Add file 메뉴에서</text>
+<text x="36" y="78" font-size="16" font-weight="700">① VS Code 에서 새 파일</text>
+<text x="36" y="102">network-study-notes 바로 아래</text>
+<text x="36" y="120" font-size="14" fill="#666660">_posts 는 폴더 먼저 만들기</text>
 
 <rect x="20" y="144" width="320" height="76" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="36" y="170" font-size="16" font-weight="700">② 이름 칸에 파일 이름</text>
-<text x="36" y="194">_posts/2026-01-01-hello.md</text>
-<text x="36" y="212" font-size="14" fill="#666660">/ 가 들어가면 폴더도 함께 생김</text>
+<text x="36" y="170" font-size="16" font-weight="700">② 복사해 붙여 넣고 저장</text>
+<text x="36" y="194">상자의 복사 버튼 → 편집 창</text>
 
 <rect x="20" y="236" width="320" height="76" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="36" y="262" font-size="16" font-weight="700">③ 복사해 붙여 넣기</text>
-<text x="36" y="286">상자의 복사 버튼 → 편집 칸</text>
+<text x="36" y="262" font-size="16" font-weight="700">③ 루트에서 담고 기록</text>
+<text x="36" y="286" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="14">cd .. · git add . · git commit</text>
 
 <rect x="20" y="328" width="320" height="76" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="36" y="354" font-size="16" font-weight="700">④ Commit changes</text>
-<text x="36" y="378">두 번 눌러 저장</text>
+<text x="36" y="354" font-size="16" font-weight="700">④ 처음 올리기</text>
+<text x="36" y="378" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="14">git push -u origin main</text>
 
 <rect x="380" y="52" width="320" height="352" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="398" y="82" font-size="16" font-weight="700">network-study-notes/</text>
-<text x="420" y="122">_config.yml</text><text x="590" y="122" font-size="14" fill="#666660">사이트 설정</text>
-<text x="420" y="160">index.md</text><text x="590" y="160" font-size="14" fill="#666660">첫 화면</text>
-<text x="420" y="198">about.md</text><text x="590" y="198" font-size="14" fill="#666660">소개</text>
-<text x="420" y="236">_posts/</text>
-<text x="440" y="270">2026-01-01-hello.md</text><text x="618" y="270" font-size="14" fill="#666660">샘플 글</text>
-<text x="420" y="308">.gitignore</text><text x="590" y="308" font-size="14" fill="#666660">비밀키 막기</text>
-<line x1="398" y1="334" x2="682" y2="334" stroke="#dededb" stroke-width="1.5"/>
-<text x="420" y="362" fill="#666660">code/</text><text x="490" y="362" font-size="14" fill="#666660">내 .py 파일은 여기에</text>
-<text x="420" y="386" font-size="14" fill="#666660">(code/README.md 만들면 생김)</text>
+<text x="420" y="118">_config.yml</text><text x="590" y="118" font-size="14" fill="#666660">사이트 설정</text>
+<text x="420" y="152">index.md</text><text x="590" y="152" font-size="14" fill="#666660">첫 화면</text>
+<text x="420" y="186">about.md</text><text x="590" y="186" font-size="14" fill="#666660">소개</text>
+<text x="420" y="220">_posts/</text>
+<text x="440" y="250">2026-01-01-hello.md</text><text x="618" y="250" font-size="14" fill="#666660">샘플 글</text>
+<text x="420" y="284">.gitignore</text><text x="590" y="284" font-size="14" fill="#666660">비밀키 막기</text>
+<line x1="398" y1="306" x2="682" y2="306" stroke="#dededb" stroke-width="1.5"/>
+<text x="420" y="334" fill="#2f6fd0" font-weight="700">access_control/</text><text x="560" y="334" font-size="14" fill="#666660">3쪽에서 만듦</text>
+<text x="420" y="360" font-size="14" fill="#666660">실습 코드도 같은 저장소에</text>
+<text x="420" y="382" font-size="14" fill="#666660">함께 올라갑니다</text>
 </g>
 
-<g stroke="#666660" stroke-width="2" fill="none" marker-end="url(#a-p06)">
+<g stroke="#666660" stroke-width="2" fill="none" marker-end="url(#a-p07f)">
 <path d="M180 129V142"/>
 <path d="M180 221V234"/>
 <path d="M180 313V326"/>

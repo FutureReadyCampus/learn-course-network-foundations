@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>고른 글감에 맞는 파일의 줄을 붙이고, 그 줄에 대해 한 문장을 잇는다</title>
+<desc>글감 세 개마다 붙일 파일과 줄, 이어 쓸 한 문장을 나란히 보여 줍니다. 아래는 막히면 보고서 답에서 시작하는 방법과 AI 도우미 프롬프트의 위치이고, 비밀키·개인정보는 넣지 않습니다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+<text x="24" y="34" font-size="19" font-weight="700">글감 → 붙일 줄 → 이어 쓸 한 문장</text>
+<rect x="24" y="52" width="170" height="60" rx="6" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="40" y="87" font-size="15" font-weight="700">1. 필요 이상인 ○</text>
+<polyline points="195,82 221,82" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<rect x="222" y="52" width="290" height="60" rx="6" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="238" y="77" font-size="14" font-family="ui-monospace, Menlo, Consolas, monospace">config/roles.json</text>
+<text x="238" y="99" font-size="14">그 권한이 들어 있는 줄</text>
+<polyline points="513,82 539,82" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<rect x="540" y="52" width="156" height="60" rx="6" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="618" y="87" font-size="14" text-anchor="middle">없어도 일이 되나</text>
+<rect x="24" y="124" width="170" height="60" rx="6" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="40" y="159" font-size="15" font-weight="700">2. intern</text>
+<polyline points="195,154 221,154" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<rect x="222" y="124" width="290" height="60" rx="6" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="238" y="149" font-size="14" font-family="ui-monospace, Menlo, Consolas, monospace">rbac.py</text>
+<text x="238" y="171" font-size="14" font-family="ui-monospace, Menlo, Consolas, monospace">role not in ROLES</text>
+<polyline points="513,154 539,154" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<rect x="540" y="124" width="156" height="60" rx="6" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="618" y="149" font-size="14" text-anchor="middle">KeyError 와</text>
+<text x="618" y="171" font-size="14" text-anchor="middle">거부를 비교</text>
+<rect x="24" y="196" width="170" height="60" rx="6" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="40" y="231" font-size="15" font-weight="700">3. 판정 순서</text>
+<polyline points="195,226 221,226" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<rect x="222" y="196" width="290" height="60" rx="6" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="238" y="221" font-size="14" font-family="ui-monospace, Menlo, Consolas, monospace">policy.py</text>
+<text x="238" y="243" font-size="14">「권한 없음」일 때만 예외 보기</text>
+<polyline points="513,226 539,226" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
+<rect x="540" y="196" width="156" height="60" rx="6" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="618" y="221" font-size="14" text-anchor="middle">dami 출력 줄과</text>
+<text x="618" y="243" font-size="14" text-anchor="middle">함께 쓰기</text>
+<rect x="24" y="280" width="330" height="100" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="40" y="308" font-size="15" font-weight="700">그래도 막히면</text>
+<text x="40" y="334" font-size="14">report_u1.md 에 쓴 내 답을</text>
+<text x="40" y="356" font-size="14">「고민한 선택과 이유」 칸으로 옮기기</text>
+<rect x="374" y="280" width="322" height="100" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="390" y="308" font-size="15" font-weight="700">AI 도우미 프롬프트 세 가지</text>
+<text x="390" y="334" font-size="14">시작하기 「쓰기 질문과 AI 도우미」</text>
+<text x="390" y="358" font-size="14" fill="#e0442e" font-weight="700">비밀키 · 개인정보는 넣지 않기</text>
+</g>
+</svg>

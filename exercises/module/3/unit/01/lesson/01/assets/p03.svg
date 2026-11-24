@@ -1,30 +1,51 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img">
-<title>프로젝트 폴더 안에 Module 3 작업 폴더 access_control 과 설정 폴더 config 를 만든다</title>
-<desc>security-agent-toolkit 폴더 아래에 Module 3의 작업 폴더 access_control 과 그 안의 설정 폴더 config 를 만든다. 터미널에서 mkdir -p 로 만들고 cd 로 들어간 뒤 pwd 로 위치를 확인한다.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>GitHub 에 저장소 network-study-notes 하나를 만들고 git clone 으로 내려받아 VS Code 로 연 뒤, 그 안에 Module 3 작업 폴더를 만든다</title>
+<desc>왼쪽은 순서입니다. ① GitHub 에서 Public 빈 저장소 network-study-notes 를 만들고(README 체크 안 함), ② 터미널에서 git clone 으로 바탕화면에 내려받고, ③ VS Code 의 Open Folder 로 그 폴더를 열고, ④ mkdir -p access_control/config 와 cd access_control 로 작업 폴더를 만들어 들어간 뒤 pwd 가 …/access_control 로 끝나는지 확인합니다. 오른쪽은 결과 폴더입니다. 저장소 루트 network-study-notes 아래에 Module 3 작업 폴더 access_control 과 설정 폴더 config 가 있고, 포트폴리오 파일도 7쪽에서 같은 루트에 만듭니다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">Module 3 작업 폴더 배치</text>
-<rect x="20" y="56" width="250" height="40" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="145" y="81" font-size="15" fill="#292929" text-anchor="middle">security-agent-toolkit/</text>
-<rect x="60" y="116" width="210" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="165" y="141" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">access_control/</text>
-<rect x="100" y="176" width="170" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="185" y="201" font-size="15" fill="#292929" text-anchor="middle">config/</text>
-<g stroke="#666660" stroke-width="1.5">
-<line x1="38" y1="96" x2="38" y2="136"/><line x1="38" y1="136" x2="60" y2="136"/>
-<line x1="78" y1="156" x2="78" y2="196"/><line x1="78" y1="196" x2="100" y2="196"/>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+<text x="20" y="32" font-size="19" font-weight="700">저장소 하나 만들고 내려받아 열기</text>
+
+<rect x="20" y="52" width="360" height="66" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="36" y="78" font-size="16" font-weight="700">① GitHub 에서 새 저장소</text>
+<text x="36" y="102" font-size="14" fill="#666660">network-study-notes · Public · README 없이</text>
+
+<rect x="20" y="134" width="360" height="66" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="36" y="160" font-size="16" font-weight="700">② 터미널에서 내려받기</text>
+<text x="36" y="184" font-size="14" font-family="ui-monospace, Menlo, Consolas, monospace">git clone …/network-study-notes.git</text>
+
+<rect x="20" y="216" width="360" height="66" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="36" y="242" font-size="16" font-weight="700">③ VS Code 로 폴더 열기</text>
+<text x="36" y="266" font-size="14" fill="#666660">File › Open Folder… › network-study-notes</text>
+
+<rect x="20" y="298" width="360" height="86" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="36" y="324" font-size="16" font-weight="700">④ 작업 폴더 만들고 들어가기</text>
+<text x="36" y="348" font-size="14" font-family="ui-monospace, Menlo, Consolas, monospace">mkdir -p access_control/config</text>
+<text x="36" y="370" font-size="14" font-family="ui-monospace, Menlo, Consolas, monospace">cd access_control · pwd</text>
+
+<g stroke="#666660" stroke-width="2" fill="none" marker-end="url(#a-p03)">
+<path d="M200 119V131"/>
+<path d="M200 201V213"/>
+<path d="M200 283V295"/>
+<path d="M382 340H410"/>
 </g>
-<text x="288" y="141" font-size="14" fill="#666660">← Module 3의 작업 폴더</text>
-<text x="288" y="201" font-size="14" fill="#666660">← 설정 파일을 둘 폴더</text>
-<text x="20" y="250" font-size="14" fill="#666660">파일은 실습에서 필요할 때 하나씩 만듭니다.</text>
-<rect x="440" y="56" width="260" height="128" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="570" y="90" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">① 폴더 만들기</text>
-<text x="570" y="114" font-size="15" fill="#292929" text-anchor="middle">mkdir -p</text>
-<text x="570" y="136" font-size="15" fill="#292929" text-anchor="middle">access_control/config</text>
-<text x="570" y="158" font-size="15" fill="#292929" text-anchor="middle">cd access_control</text>
-<rect x="440" y="200" width="260" height="86" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="570" y="228" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">② 위치 확인</text>
-<text x="570" y="250" font-size="15" fill="#292929" text-anchor="middle">pwd</text>
-<text x="570" y="272" font-size="15" fill="#292929" text-anchor="middle">…/access_control 로 끝남</text>
+
+<rect x="416" y="52" width="284" height="332" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="432" y="80" font-size="16" font-weight="700">결과: 저장소 하나</text>
+<rect x="432" y="96" width="252" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="448" y="121" font-size="15" font-weight="700">network-study-notes/</text>
+<rect x="460" y="152" width="224" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="476" y="177" font-size="15" font-weight="700">access_control/</text>
+<rect x="488" y="208" width="196" height="40" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="504" y="233" font-size="15">config/</text>
+<g stroke="#666660" stroke-width="1.5">
+<line x1="446" y1="136" x2="446" y2="172"/><line x1="446" y1="172" x2="460" y2="172"/>
+<line x1="474" y1="192" x2="474" y2="228"/><line x1="474" y1="228" x2="488" y2="228"/>
+<line x1="446" y1="172" x2="446" y2="290"/><line x1="446" y1="290" x2="460" y2="290"/>
+</g>
+<text x="590" y="177" font-size="13" fill="#666660">Module 3</text>
+<rect x="460" y="270" width="224" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-dasharray="4 3" stroke-width="1.5"/>
+<text x="476" y="295" font-size="14" fill="#666660">포트폴리오 파일 (7쪽)</text>
+<text x="432" y="340" font-size="14" fill="#666660">pwd 가 …/access_control 로 끝나면</text>
+<text x="432" y="362" font-size="14" fill="#666660">준비 끝. 파일은 실습에서 만듭니다.</text>
 </g>
 </svg>

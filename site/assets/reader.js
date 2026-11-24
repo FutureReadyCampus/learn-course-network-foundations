@@ -8,7 +8,13 @@
     .replace(/\*([^*]+)\*/g, "<em>$1</em>")
     .replace(/\[([^\]]+)\]\((https?:[^\s)]+)\)/g, '<a href="$2" rel="noreferrer">$1</a>');
   const seg = base.includes("/exercises/") ? "" : "/m2-network"; // Foundations keeps its published /m2-network URLs
-  const routeFor = (unitIndex, lessonIndex, pageIndex) => `${base}${seg}/unit/${unitIndex + 1}/lesson/${lessonIndex + 1}/page/${pageIndex + 1}`;
+  let routeCourse;
+  const routeFor = (unitIndex, lessonIndex, pageIndex) => {
+    const unit = routeCourse.units[unitIndex];
+    const lesson = routeCourse.lessons.filter((item) => item.unit === unit.id)[lessonIndex];
+    const number = !seg ? Number(lesson.id.match(/-l(\d+)$/)?.[1]) : lessonIndex + 1;
+    return `${base}${seg}/unit/${unitIndex + 1}/lesson/${number}/page/${pageIndex + 1}`;
+  };
   const parseRoute = (course) => {
     const path = location.pathname.slice(base.length) || "/";
     const found = path.slice(seg.length).match(/^\/unit\/(\d+)\/lesson\/(\d+)\/page\/(\d+)/);
@@ -16,7 +22,7 @@
     const unitIndex = Number(found[1]) - 1;
     const unit = course.units[unitIndex];
     const unitLessons = course.lessons.filter((lesson) => lesson.unit === unit?.id);
-    const lesson = unitLessons[Number(found[2]) - 1];
+    const lesson = !seg ? unitLessons.find((item) => Number(item.id.match(/-l(\d+)$/)?.[1]) === Number(found[2])) : unitLessons[Number(found[2]) - 1];
     const lessonIndex = course.lessons.indexOf(lesson);
     return { unitIndex, lessonIndex: Math.max(0, lessonIndex), pageIndex: Number(found[3]) - 1 };
   };
@@ -27,7 +33,7 @@
   const lockCode = (root) => {
     // Python code is copyable (most boxes are scaffolds with blanks the learner still fills in); other boxes stay locked.
     const [open, boxes] = [[], []];
-    root.querySelectorAll("pre").forEach((box) => (box.classList.contains("copyable") || box.querySelector("code.language-python") ? open : boxes).push(box));
+    root.querySelectorAll("pre").forEach((box) => (box.classList.contains("copyable") || box.querySelector("code.language-python") || box.querySelector("code.language-bash")?.textContent.includes("# 이 명령은 전체를 복사해 Git Bash에 붙여 넣어 실행하세요.") ? open : boxes).push(box));
     boxes.forEach((box) => box.classList.add("no-copy"));
     const addNote = (box, text) => { const note = document.createElement("p"); note.className = "no-copy-note"; note.textContent = text; box.before(note); };
     if (boxes.length) addNote(boxes[0], "코드 상자는 복사할 수 없습니다. 눈으로 읽으면서 직접 입력해 보세요.");
@@ -47,7 +53,7 @@
     });
     if (open.length) addNote(open[0], open.every((box) => box.classList.contains("copyable"))
       ? "복사 버튼을 눌러 내용을 복사하고, 내 저장소에 같은 이름의 파일로 붙여 넣으세요."
-      : "Python 코드는 복사해서 쓸 수 있습니다. 「직접 씁니다」 아래 빈칸은 직접 채워 보세요.");
+      : "복사 버튼이 있는 상자는 복사해서 쓸 수 있습니다. 「직접 씁니다」 아래 빈칸은 직접 채워 보세요.");
   };
   if (window.NETWORK_NO_COPY && !window.__noCopyBound) {
     window.__noCopyBound = true;
@@ -239,6 +245,54 @@
     if (ralSummary) prose.append(ralSummary);
     return prose;
   };
+  // ---- 체크리스트: 직접 따라 할 것을 모두 체크해야 「다음」이 열린다 (관리자만 건너뛰기) ----
+  const adminParam = new URLSearchParams(location.search).get("admin");
+  try {
+    if (adminParam === "on") localStorage.setItem("nc-admin", "1");
+    if (adminParam === "off") localStorage.removeItem("nc-admin");
+  } catch (error) { /* 저장소를 쓸 수 없으면 관리자 표시는 꺼진 채로 둔다 */ }
+  // 제한(체크리스트를 다 해야 다음으로)은 learn 에서 `?gate=on` 으로 연 화면에서만 건다. stage 미리보기는 이전·다음이 그대로 된다.
+  const gateParam = new URLSearchParams(location.search).get("gate");
+  try {
+    if (gateParam === "on") localStorage.setItem("nc-gate", "1");
+    if (gateParam === "off") localStorage.removeItem("nc-gate");
+  } catch (error) { /* 저장소를 쓸 수 없으면 제한은 꺼진 채로 둔다 */ }
+  const gateOn = () => { try { return localStorage.getItem("nc-gate") === "1"; } catch (error) { return false; } };
+  const isAdmin = () => { try { return localStorage.getItem("nc-admin") === "1"; } catch (error) { return false; } };
+  const checklistKey = (item, pageIndex) => {
+    // Keep previously saved checks when these pages are shown in their new Lessons.
+    const moved = {"m3-u01-l14": ["m3-u01-l05", 7], "m3-u02-l12": ["m3-u02-l04", 6]};
+    const [id, offset] = moved[item.lesson.id] || [item.lesson.id, 0];
+    return `nc-cl:${location.pathname.split("/unit/")[0]}:${id}:${pageIndex + offset}`;
+  };
+  const readChecks = (key, count) => {
+    try { const saved = JSON.parse(localStorage.getItem(key) || "[]"); return Array.from({ length: count }, (_, i) => saved[i] === true); }
+    catch (error) { return new Array(count).fill(false); }
+  };
+  const writeChecks = (key, checks) => { try { localStorage.setItem(key, JSON.stringify(checks)); } catch (error) { /* 저장 실패는 무시 */ } };
+  const gateOpen = (item, pageIndex) => {
+    const checklist = ((item.lesson.pages || [])[pageIndex] || {}).checklist;
+    if (!gateOn() || !checklist || checklist.optional || isAdmin()) return true;
+    return readChecks(checklistKey(item, pageIndex), checklist.items.length).every(Boolean);
+  };
+  const pageDone = (item, pageIndex) => {
+    const checklist = ((item.lesson.pages || [])[pageIndex] || {}).checklist;
+    return Boolean(checklist) && readChecks(checklistKey(item, pageIndex), checklist.items.length).every(Boolean);
+  };
+  // 사이드바 완료 표시: 체크리스트가 있는 쪽은 모두 체크하면 ✓, Lesson 은 막는 쪽을 모두 마치면 ✓
+  const refreshSidebarMarks = (course) => {
+    const list = allItems(course);
+    document.querySelectorAll(".page-link").forEach((a) => {
+      const entry = list[Number(a.dataset.lesson)];
+      a.classList.toggle("is-done", Boolean(entry) && pageDone(entry, Number(a.dataset.page)));
+    });
+    document.querySelectorAll(".lesson-link").forEach((a) => {
+      const entry = list[Number(a.dataset.lesson)];
+      const pages = (entry && entry.lesson.pages) || [];
+      const required = pages.map((p, i) => (p.checklist && !p.checklist.optional ? i : -1)).filter((i) => i >= 0);
+      a.classList.toggle("is-done", required.length > 0 && required.every((i) => pageDone(entry, i)));
+    });
+  };
   const allItems = (course) => {
     const out = [];
     for (const unit of course.units) {
@@ -333,7 +387,7 @@
     section.append(iframe);
     const note = document.createElement("p");
     note.className = "page-video-note";
-    note.textContent = "[참고용] 가볍게 시청해 보세요.";
+    note.textContent = video.required ? "[필수] 꼭 시청해 주세요." : "[참고용] 가볍게 시청해 보세요.";
     section.append(note);
     const details = [video.title, video.creator].filter(Boolean);
     if (Number.isSafeInteger(video.duration_seconds) && video.duration_seconds > 0) {
@@ -554,6 +608,43 @@
     if (video) main.append(video);
     if (questions.length) main.append(renderQuiz(questions, page.question_start_index || 0));
     if (recap) main.append(recap);
+    const checklist = page.checklist && page.checklist.items && page.checklist.items.length ? page.checklist : null;
+    const checks = checklist ? readChecks(checklistKey(item, state.pageIndex), checklist.items.length) : [];
+    let refreshGate = () => {};
+    if (checklist) {
+      const onChange = (index, box) => {
+        checks[index] = box.checked;
+        writeChecks(checklistKey(item, state.pageIndex), checks);
+        refreshGate();
+        refreshSidebarMarks(course);
+      };
+      const build = (start, count, optional) => {
+        const section = document.createElement("section");
+        section.className = "page-checklist";
+        const heading = document.createElement("h3");
+        heading.textContent = optional ? "여유가 되면 해 보세요" : "직접 해 보기";
+        const listEl = document.createElement("ul");
+        for (let index = start; index < start + count; index++) {
+          const li = document.createElement("li");
+          const label = document.createElement("label");
+          const box = document.createElement("input");
+          box.type = "checkbox";
+          box.checked = checks[index];
+          const text = document.createElement("span");
+          text.innerHTML = checklist.items[index];
+          box.addEventListener("change", () => onChange(index, box));
+          label.append(box, text);
+          li.append(label);
+          listEl.append(li);
+        }
+        section.append(heading, listEl);
+        return section;
+      };
+      const holders = main.querySelectorAll(".inline-check");
+      if (holders.length) {
+        holders.forEach((holder) => holder.replaceWith(build(Number(holder.dataset.start), Number(holder.dataset.count), holder.dataset.optional === "1")));
+      } else main.append(build(0, checklist.items.length, checklist.optional));
+    }
     const previous = list[state.lessonIndex - 1];
     const next = list[state.lessonIndex + 1];
     const navFooter = document.createElement("nav");
@@ -571,16 +662,54 @@
     nextPage = document.createElement("button");
     nextPage.type = "button";
     nextPage.textContent = "다음 페이지 →";
-    nextPage.disabled = state.pageIndex >= pages.length - 1 && !next;
-    nextPage.addEventListener("click", () => {
+    const noNext = state.pageIndex >= pages.length - 1 && !next;
+    nextPage.disabled = noNext;
+    const goNext = () => {
       if (state.pageIndex < pages.length - 1) state.pageIndex++;
       else if (next) { state.lessonIndex++; state.pageIndex = 0; }
       visit(course, state);
-    });
-    navFooter.append(prevPage, nextPage);
+    };
+    nextPage.addEventListener("click", goNext);
+    navFooter.append(prevPage);
+    if (checklist) {
+      const wrap = document.createElement("div");
+      wrap.className = "page-progress";
+      const track = document.createElement("div");
+      track.className = "page-progress-track";
+      track.setAttribute("role", "progressbar");
+      track.setAttribute("aria-valuemin", "0");
+      track.setAttribute("aria-valuemax", String(checks.length));
+      const bar = document.createElement("div");
+      bar.className = "page-progress-bar";
+      track.append(bar);
+      const label = document.createElement("span");
+      label.className = "page-progress-label";
+      wrap.append(track, label);
+      const skip = document.createElement("button");
+      skip.type = "button";
+      skip.className = "admin-skip";
+      skip.textContent = "관리자 건너뛰기";
+      skip.hidden = true;
+      skip.addEventListener("click", goNext);
+      refreshGate = () => {
+        const done = checks.filter(Boolean).length;
+        const complete = done === checks.length;
+        const locked = gateOn() && !checklist.optional && !complete && !isAdmin();
+        bar.style.width = `${Math.round((done / checks.length) * 100)}%`;
+        track.setAttribute("aria-valuenow", String(done));
+        label.textContent = locked ? `${done} / ${checks.length} · 모두 체크하면 다음으로 갈 수 있어요` : `${done} / ${checks.length}`;
+        wrap.classList.toggle("is-complete", complete);
+        nextPage.disabled = noNext || locked;
+        nextPage.title = locked ? "체크리스트를 모두 체크하면 열려요" : "";
+        skip.hidden = !(gateOn() && isAdmin() && !checklist.optional && !complete && !noNext);
+      };
+      navFooter.append(wrap, nextPage, skip);
+      refreshGate();
+    } else navFooter.append(nextPage);
     main.append(navFooter);
     const url = routeFor(unitIndex, unitLessonIndex, state.pageIndex);
     history.replaceState({ ...state }, "", url);
+    refreshSidebarMarks(course);
     document.querySelectorAll(".lesson-link, .page-link").forEach((anchor) => anchor.addEventListener("click", (event) => {
       event.preventDefault();
       const targetLesson = Number(anchor.dataset.lesson);
@@ -603,6 +732,7 @@
   fetch(window.NETWORK_COURSE_URL || `${base}/data/course.json`)
     .then((response) => { if (!response.ok) throw new Error("course data unavailable"); return response.json(); })
     .then((course) => {
+      routeCourse = course;
       let state = parseRoute(course);
       document.getElementById("sidebar-toggle").addEventListener("click", () => {
         const workspace = document.querySelector(".course-workspace");
@@ -632,6 +762,7 @@
           visit(course, state);
         } else if (event.key === "ArrowRight" && next) {
           event.preventDefault();
+          if (!gateOpen(item, state.pageIndex)) return;
           if (state.pageIndex < pages.length - 1) state.pageIndex++;
           else { state.lessonIndex++; state.pageIndex = 0; }
           visit(course, state);

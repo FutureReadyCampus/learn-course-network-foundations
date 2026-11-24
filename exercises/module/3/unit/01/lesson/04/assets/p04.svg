@@ -1,1 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img"><title>판정 결과를 역할로 허용, 예외로 허용, 거부 세 갈래로 세는 방법</title><desc>이유가 역할 권한이면 역할로 허용, 그 밖의 허용은 예외로 허용으로 세고 예외 번호별 건수도 셉니다. 권한 없음으로 거부됐는데 같은 사람과 권한의 예외가 있으면 만료 뒤 시도로 봅니다.</desc><defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs><g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif"><text x="360" y="32" font-size="18" text-anchor="middle" fill="#292929" font-weight="700">3.2 허용 방식별로 세기</text><rect x="235" y="48" width="250" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/><text font-size="15" text-anchor="middle" fill="#292929"><tspan x="360" y="75.25">evaluate_access 결과</tspan></text><line x1="300" y1="94" x2="125" y2="138" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p04)"/><line x1="360" y1="94" x2="360" y2="138" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p04)"/><line x1="420" y1="94" x2="595" y2="138" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p04)"/><rect x="15" y="142" width="220" height="135" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/><text font-size="14" text-anchor="middle" fill="#292929"><tspan x="125" y="194.8" font-weight="700">① 역할로 허용</tspan><tspan x="125" dy="19.6">이유 = &quot;역할 권한&quot;</tspan><tspan x="125" dy="19.6">counts 에 +1</tspan></text><rect x="250" y="142" width="220" height="135" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/><text font-size="14" text-anchor="middle" fill="#292929"><tspan x="360" y="185" font-weight="700">② 예외로 허용</tspan><tspan x="360" dy="19.6">그 밖의 허용</tspan><tspan x="360" dy="19.6">이유 = &quot;예외 N번&quot;</tspan><tspan x="360" dy="19.6">used[&quot;예외 N번&quot;] 도 +1</tspan></text><rect x="485" y="142" width="220" height="135" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/><text font-size="14" text-anchor="middle" fill="#292929"><tspan x="595" y="185" font-weight="700">③ 거부</tspan><tspan x="595" dy="19.6">counts 에 +1</tspan><tspan x="595" dy="19.6">권한 없음 + 같은 예외 있음</tspan><tspan x="595" dy="19.6">→ [만료 뒤 시도]</tspan></text><rect x="15" y="295" width="690" height="66" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/><text font-size="14" text-anchor="middle" fill="#292929"><tspan x="360" y="323.1" font-weight="700">세는 모양 (두 줄)</tspan><tspan x="360" dy="19.6">old_count = counts.get(키, 0) → counts[키] = old_count + 1</tspan></text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
+<title>load_json 은 파일을 읽어 돌려주고, 파일이 없거나 깨지면 경고를 출력한 뒤 기본값을 돌려준다</title>
+<desc>try 안에서 파일을 열어 JSON 으로 읽으면 그 내용을 리턴합니다. FileNotFoundError 면 설정 파일 없음, JSONDecodeError 면 설정 파일 깨짐 경고를 출력하고 default 를 리턴해 프로그램이 멈추지 않습니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+<text x="24" y="34" font-size="19" font-weight="700">config_loader.py · load_json(path, default)</text>
+<rect x="250" y="54" width="220" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="78" font-size="15" text-anchor="middle" font-weight="700">try: 파일 열고</text>
+<text x="360" y="99" font-size="15" text-anchor="middle">json.load 로 읽기</text>
+<polyline points="300,111 130,163" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<polyline points="360,111 360,163" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<polyline points="420,111 590,163" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
+<rect x="24" y="164" width="212" height="96" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="130" y="192" font-size="15" text-anchor="middle" font-weight="700">읽기 성공</text>
+<text x="130" y="218" font-size="14" text-anchor="middle">읽은 내용을</text>
+<text x="130" y="240" font-size="14" text-anchor="middle">그대로 리턴</text>
+<rect x="254" y="164" width="212" height="96" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="192" font-size="15" text-anchor="middle" font-weight="700">FileNotFoundError</text>
+<text x="360" y="218" font-size="14" text-anchor="middle">설정 파일 없음 경고</text>
+<text x="360" y="240" font-size="14" text-anchor="middle">default 리턴</text>
+<rect x="484" y="164" width="212" height="96" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="590" y="192" font-size="15" text-anchor="middle" font-weight="700">JSONDecodeError</text>
+<text x="590" y="218" font-size="14" text-anchor="middle">설정 파일 깨짐 경고</text>
+<text x="590" y="240" font-size="14" text-anchor="middle">default 리턴</text>
+<rect x="24" y="280" width="672" height="44" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="360" y="308" font-size="15" text-anchor="middle">사용자 파일의 default 를 {} 로 주면 아무도 없으니 모든 요청이 거부된다</text>
+</g>
+</svg>

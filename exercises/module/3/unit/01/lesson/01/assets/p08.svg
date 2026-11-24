@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <title>_config.yml의 다섯 줄을 내 것으로 고친 뒤 Settings의 Pages에서 사이트를 켭니다</title>
-<desc>왼쪽은 _config.yml에서 바꿀 줄 title, description, author, baseurl과 바꿀 내용이고 url은 비워 둔 그대로 둡니다. 오른쪽은 Settings → Pages → Deploy from a branch → main과 / (root) → Save → 1~2분 뒤 주소 열기 순서입니다. 주소는 https://&lt;내 아이디&gt;.github.io/&lt;저장소 이름&gt;/ 모양입니다.</desc>
+<desc>왼쪽은 VS Code 에서 연 _config.yml에서 바꿀 줄 title, description, author, baseurl과 바꿀 내용이고 url은 비워 둔 그대로 두고, 고친 뒤 push 합니다. 오른쪽은 Settings → Pages → Deploy from a branch → main과 / (root) → Save → 1~2분 뒤 주소 열기 순서입니다. 주소는 https://&lt;내 아이디&gt;.github.io/&lt;저장소 이름&gt;/ 모양입니다.</desc>
 <defs>
 <marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
 </defs>
@@ -9,7 +9,7 @@
 <g font-size="15" fill="#292929">
 <rect x="20" y="52" width="340" height="236" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <rect x="20" y="52" width="340" height="40" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="36" y="78" font-size="16" font-weight="700">_config.yml 에서 바꿀 줄</text>
+<text x="36" y="78" font-size="16" font-weight="700">_config.yml 고쳐 push</text>
 <text x="36" y="124" font-weight="700">title</text><text x="150" y="124">사이트 이름</text>
 <text x="36" y="160" font-weight="700">description</text><text x="150" y="160">한 줄 소개</text>
 <text x="36" y="196" font-weight="700">author</text><text x="150" y="196">내 이름</text>

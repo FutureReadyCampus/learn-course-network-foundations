@@ -28,6 +28,6 @@
 <polyline points="481,150 529,111" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
 <polyline points="481,194 529,221" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
 <text x="615" y="284" font-size="14" fill="#666660" text-anchor="middle">이유가 감사 기록이 된다</text>
-<text x="20" y="320" font-size="15" fill="#666660">끝나면: 보고서 (가) ~ (다)</text>
+<text x="20" y="320" font-size="15" fill="#666660">끝나면: 질문 생각하기</text>
 </g>
 </svg>

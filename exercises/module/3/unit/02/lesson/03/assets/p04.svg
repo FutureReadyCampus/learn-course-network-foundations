@@ -38,5 +38,5 @@
 <text x="210" y="397.1" font-size="15" fill="#292929" text-anchor="middle">(True, 요청서) · "reviewing"</text>
 <rect x="460" y="352" width="240" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="580" y="376.4" font-size="15" fill="#292929" text-anchor="middle">퇴사 · 이미 가진 권한은</text>
-<text x="580" y="396.4" font-size="15" fill="#292929" text-anchor="middle">도전 2-1에서 확인</text>
+<text x="580" y="396.4" font-size="15" fill="#292929" text-anchor="middle">부여 단계에서 확인</text>
 </svg>
