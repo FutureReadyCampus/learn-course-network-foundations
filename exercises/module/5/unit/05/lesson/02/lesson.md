@@ -158,7 +158,12 @@ print("조치 기록:", len(log), "건")                                        
 log.append(block_ip("198.51.100.90", state, "INC-005", "경로 스캔", DEFAULT_TTL))  # INC-005 의 IP 차단을 이 실행에서 추가한다
 print("차단한 IP:", state["blocked_ips"])                                          # 차단한 IP 를 출력한다
 
-for incident_id, title in [("INC-001", "단계 2: INC-001 은 오탐으로 확인됨 — 되돌리기"), ("INC-006", "단계 3: INC-006 도 오탐으로 확인됨 — 되돌리기"), ("INC-005", "단계 4: INC-005 도 오탐으로 확인됨 — 되돌리기")]:  # 되돌릴 인시던트 3건 : (번호, 제목)
+incidents_to_rollback = [
+    ("INC-001", "단계 2: INC-001 은 오탐으로 확인됨 — 되돌리기"),
+    ("INC-006", "단계 3: INC-006 도 오탐으로 확인됨 — 되돌리기"),
+    ("INC-005", "단계 4: INC-005 도 오탐으로 확인됨 — 되돌리기"),
+]  # 되돌릴 인시던트 3건 : (번호, 제목)
+for incident_id, title in incidents_to_rollback:
     print("---", title)                                                            # 단계 제목을 출력한다
     for record in rollback_incident(incident_id, log, state):                      # 되돌리기 기록을 하나씩 꺼낸다
         print(record["incident"], record["target"], "·", record["action"], "·", record["before"], "→", record["after"], "·", record["reason"])  # 기록 한 건을 출력한다
@@ -177,7 +182,7 @@ print("차단한 IP:", state["blocked_ips"])                                    
    python exercise5-1_run.py
    ```
 4. 출력은 다섯 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 3줄, 단계 2 는 2줄, 단계 3 은 1줄, 단계 4 는 1줄, 단계 5 는 2줄입니다.
-5. **[보고서]** `report_u5.md` 의 `## 실습 5-1` 아래를 채웁니다.
+5. **[실습 결과 기록]** `report_u5.md` 의 `## 실습 5-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣어 주세요. 그리고 단계 5 의 잠긴 계정과 차단한 IP 를 적어 주세요.
    - (나) [핵심 질문] INC-006 의 `junho` 는 단계 3 에서 계정이 해제되지 않았고 단계 5 에도 잠겨 있습니다. 실습 4-3 기록의 `before` 와 `after` 를 근거로 이유를 적고, `should_undo` 의 5 · 6번이 없었다면 어떤 일이 생겼을지 적어 주세요.
    - (다) [핵심 질문] 단계 2 의 `되돌리기 불가` 줄이 나온 이유를 적어 주세요. 또 세션 종료를 기록에 남기지 않고 「모두 원래대로」라고만 보고하면 어떤 문제가 생길지 적어 주세요.
@@ -193,5 +198,8 @@ print("차단한 IP:", state["blocked_ips"])                                    
 | 거짓으로 리턴 | `return False` |
 | 함수 결과가 참이면 | `if should_undo(record):` |
 | 파일에서 읽어 변수에 저장 | `log = load_json(LOG_PATH)` |
+
+<!-- answer: 04|실습 5-1 정답 -->
+
 
 ---
