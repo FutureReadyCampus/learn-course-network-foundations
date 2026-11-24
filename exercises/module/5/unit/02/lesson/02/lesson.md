@@ -65,89 +65,89 @@ enrichment.py   lookup_account   : 대상이 users_info 안에 있으면 재직 
 **`enrichment.py`** — 알림에 맥락을 추가하는 보강 함수를 정의합니다. 실습 2-2 실행 파일도 `enrich_incident` 를 가져와 사용(import)합니다. 직접 쓰는 곳은 1 ~ 6번입니다.
 
 ```python
-def lookup_account(entity, users_info):                              # 대상 이름과 계정 정보 딕셔너리를 받는 함수
+def lookup_account(entity, users_info):  # 대상 이름과 계정 정보 딕셔너리를 받는 함수
     """계정 정보 파일에서 이 대상이 재직 중인지, VIP 계정인지 찾아 딕셔너리로 리턴한다.
     파일에 이름이 없는 대상(IP 등)은 처음 값(False)을 그대로 리턴한다.
     """
-    account = {"employed": False, "vip": False}                      # 처음에는 모르는 상태로 시작한다
+    account = {"employed": False, "vip": False}  # 처음에는 모르는 상태로 시작한다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. entity 가 users_info 안에 있으면 (if, in)
     # 2.   account 의 "employed" 에 users_info[entity]["employed"] 를 담는다
     # 3.   account 의 "vip" 에 users_info[entity]["vip"] 를 담는다
-    return account                                                   # 계정 정보를 리턴한다
+    return account  # 계정 정보를 리턴한다
 
 
-def lookup_source_ip(entity, source_ips, trusted_ips):               # 대상 이름 · 접속 IP 딕셔너리 · 신뢰 IP 리스트를 받는 함수
+def lookup_source_ip(entity, source_ips, trusted_ips):  # 대상 이름 · 접속 IP 딕셔너리 · 신뢰 IP 리스트를 받는 함수
     """이 대상이 접속한 IP 와, 그 IP 가 신뢰 IP 목록에 있는지 찾아 딕셔너리로 리턴한다.
     접속 IP 를 모르는 대상은 처음 값(None 과 False)을 그대로 리턴한다.
     """
-    ip_info = {"source_ip": None, "ip_trusted": False}               # 처음에는 모르는 상태로 시작한다
+    ip_info = {"source_ip": None, "ip_trusted": False}  # 처음에는 모르는 상태로 시작한다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. entity 가 source_ips 안에 있으면 (if, in)
     # 5.   ip_info 의 "source_ip" 에 source_ips[entity] 를 담는다
     # 6.   ip_info 의 "ip_trusted" 에 source_ips[entity] 가 trusted_ips 안에 있는지(in)의 결과를 담는다
-    return ip_info                                                   # 접속 IP 정보를 리턴한다
+    return ip_info  # 접속 IP 정보를 리턴한다
 
 
 def enrich_incident(incident, users_info, source_ips, trusted_ips):  # 인시던트 · 계정 정보 · 접속 IP 딕셔너리 · 신뢰 IP 리스트를 받는 함수
     """위 두 함수가 찾은 정보를 모아 알림에 context 라는 이름으로 붙이고, 붙인 알림을 리턴한다.
     붙이고 나면 알림만 봐도 퇴사 · VIP · 접속 IP 를 알 수 있어서, 조치하기 전에 확인할 때 쓴다.
     """
-    entity = incident["entity"]                                      # 대응할 대상(사용자 이름 또는 IP)
-    account = lookup_account(entity, users_info)                     # 계정 정보를 찾는다
-    ip_info = lookup_source_ip(entity, source_ips, trusted_ips)      # 접속 IP 정보를 찾는다
-    account_known = entity in users_info                             # 계정 정보에 있는 대상인지 구한다
+    entity = incident["entity"]  # 대응할 대상(사용자 이름 또는 IP)
+    account = lookup_account(entity, users_info)  # 계정 정보를 찾는다
+    ip_info = lookup_source_ip(entity, source_ips, trusted_ips)  # 접속 IP 정보를 찾는다
+    account_known = entity in users_info  # 계정 정보에 있는 대상인지 구한다
     context = {"account_known": account_known, "employed": account["employed"], "vip": account["vip"], "source_ip": ip_info["source_ip"], "ip_trusted": ip_info["ip_trusted"]}  # 다섯 가지 맥락을 합친다
-    incident["context"] = context                                    # 인시던트에 맥락을 붙인다
-    return incident                                                  # 맥락이 붙은 인시던트를 리턴한다
+    incident["context"] = context  # 인시던트에 맥락을 붙인다
+    return incident  # 맥락이 붙은 인시던트를 리턴한다
 ```
 
 **`exercise2-1_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 파일을 저장하지는 않습니다.
 
 ```python
-from incident import load_json, INCIDENTS_PATH                 # Unit 1 파일의 함수를 불러온다
-from enrichment import enrich_incident                         # 방금 만든 함수를 불러온다
+from incident import load_json, INCIDENTS_PATH  # Unit 1 파일의 함수를 불러온다
+from enrichment import enrich_incident  # 방금 만든 함수를 불러온다
 
-incidents = load_json(INCIDENTS_PATH)                          # 인시던트 파일을 리스트로 읽는다
-users_info = load_json("users_info.json")                      # 계정 정보 파일을 딕셔너리로 읽는다
-source_ips = load_json("source_ips.json")                      # 알림이 난 접속의 IP 파일을 딕셔너리로 읽는다
-trusted_ips = load_json("trusted_ips.json")                    # 신뢰 IP 파일을 리스트로 읽는다
-incident_count = len(incidents)                                # 인시던트가 몇 건인지 센다
-user_count = len(users_info)                                   # 계정 정보가 몇 명인지 센다
-trusted_count = len(trusted_ips)                               # 신뢰 IP 가 몇 개인지 센다
+incidents = load_json(INCIDENTS_PATH)  # 인시던트 파일을 리스트로 읽는다
+users_info = load_json("users_info.json")  # 계정 정보 파일을 딕셔너리로 읽는다
+source_ips = load_json("source_ips.json")  # 알림이 난 접속의 IP 파일을 딕셔너리로 읽는다
+trusted_ips = load_json("trusted_ips.json")  # 신뢰 IP 파일을 리스트로 읽는다
+incident_count = len(incidents)  # 인시던트가 몇 건인지 센다
+user_count = len(users_info)  # 계정 정보가 몇 명인지 센다
+trusted_count = len(trusted_ips)  # 신뢰 IP 가 몇 개인지 센다
 print("--- 단계 1: 불러온 알림", incident_count, "건 · 계정 정보", user_count, "명 · 신뢰 IP", trusted_count, "개")  # 단계 1 시작을 알리는 줄
 
 print("--- 단계 2: 알림마다 붙인 정보(재직 · VIP · 접속 IP)")  # 단계 2 시작을 알리는 줄
-for incident in incidents:                                     # 인시던트를 하나씩 꺼낸다
+for incident in incidents:  # 인시던트를 하나씩 꺼낸다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 7. enrich_incident(incident, users_info, source_ips, trusted_ips) 를 호출한다 (인시던트에 맥락이 붙는다)
-    context = incident["context"]                              # 붙은 맥락을 꺼낸다
-    if context["account_known"]:                               # 계정 정보가 있으면
-        if context["employed"]:                                # 재직 중이면
-            employed_text = "재직"                             # 재직이라고 적는다
-        else:                                                  # 아니면
-            employed_text = "퇴사"                             # 퇴사라고 적는다
-    else:                                                      # 계정 정보가 없으면
-        employed_text = "계정 아님"                            # 계정이 아니라고 적는다
-    vip_text = "아니오"                                        # 처음에는 아니오로 적는다
-    if context["vip"]:                                         # VIP 이면
-        vip_text = "예"                                        # 예라고 적는다
-    ip_text = "없음"                                           # 처음에는 없음으로 적는다
-    if context["source_ip"]:                                   # 접속 IP 가 있으면
-        ip_text = context["source_ip"]                         # 그 IP 를 적는다
-    trusted_text = "아니오"                                    # 처음에는 아니오로 적는다
-    if context["ip_trusted"]:                                  # 신뢰 IP 이면
-        trusted_text = "예"                                    # 예라고 적는다
+    context = incident["context"]  # 붙은 맥락을 꺼낸다
+    if context["account_known"]:  # 계정 정보가 있으면
+        if context["employed"]:  # 재직 중이면
+            employed_text = "재직"  # 재직이라고 적는다
+        else:  # 아니면
+            employed_text = "퇴사"  # 퇴사라고 적는다
+    else:  # 계정 정보가 없으면
+        employed_text = "계정 아님"  # 계정이 아니라고 적는다
+    vip_text = "아니오"  # 처음에는 아니오로 적는다
+    if context["vip"]:  # VIP 이면
+        vip_text = "예"  # 예라고 적는다
+    ip_text = "없음"  # 처음에는 없음으로 적는다
+    if context["source_ip"]:  # 접속 IP 가 있으면
+        ip_text = context["source_ip"]  # 그 IP 를 적는다
+    trusted_text = "아니오"  # 처음에는 아니오로 적는다
+    if context["ip_trusted"]:  # 신뢰 IP 이면
+        trusted_text = "예"  # 예라고 적는다
     print(incident["id"], incident["entity"], "· 재직:", employed_text, "· VIP:", vip_text, "· 접속 IP:", ip_text, "· 신뢰 IP:", trusted_text)  # 한 줄로 출력한다
 
-print("--- 단계 3: VIP 계정 알림 수")                          # 단계 3 시작을 알리는 줄
-vip_count = 0                                                  # VIP 계정 알림 수 : 처음에는 0 이다
-for incident in incidents:                                     # 인시던트를 하나씩 꺼낸다
-    context = incident["context"]                              # 붙은 맥락을 꺼낸다
+print("--- 단계 3: VIP 계정 알림 수")  # 단계 3 시작을 알리는 줄
+vip_count = 0  # VIP 계정 알림 수 : 처음에는 0 이다
+for incident in incidents:  # 인시던트를 하나씩 꺼낸다
+    context = incident["context"]  # 붙은 맥락을 꺼낸다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 8. context 의 "vip" 가 참이면 (if)
     # 9.   vip_count 에 vip_count + 1 을 담는다 (1 늘린다)
-print("VIP 계정 알림", vip_count, "건")                        # VIP 계정 알림 수를 출력한다
+print("VIP 계정 알림", vip_count, "건")  # VIP 계정 알림 수를 출력한다
 ```
 
 **순서**
@@ -159,10 +159,12 @@ print("VIP 계정 알림", vip_count, "건")                        # VIP 계정
    python exercise2-1_run.py
    ```
 4. 출력은 세 단계입니다. 단계 1 은 숫자가 제목 줄에 함께 나옵니다. 단계 2 는 알림 5건이 한 줄씩 나오고 한 줄에는 번호 · 대상 · 재직 · VIP · 접속 IP · 신뢰 IP 가 순서대로 있습니다. 단계 3 은 1줄입니다.
-5. **[보고서]** `report_u2.md` 의 `## 실습 2-1` 아래를 채웁니다.
+5. **[실습 결과 기록]** `report_u2.md` 의 `## 실습 2-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 재직 여부가 「퇴사」인 알림과 VIP 가 「예」인 알림의 번호, 단계 3 의 VIP 계정 알림 수를 적어 주세요.
    - (나) [핵심 질문] INC-005 는 맥락이 모두 초기값(`False` · `None`)으로 남았습니다. 그 원인을 `lookup_account` 와 `lookup_source_ip` 의 `if` 조건을 근거로 설명해 주세요. 또 INC-005 의 `employed` 가 `True`(재직)로 판정된다면 어떤 문제가 생기는지도 적어 주세요.
    - (다) [핵심 질문] INC-002 와 INC-004 는 접속 IP 가 같고 둘 다 「신뢰 IP: 예」입니다. 두 알림의 `reasons`(알림을 발생시킨 탐지 규칙 이름 목록)를 비교해 보세요. 접속 IP 가 같은 신뢰 IP 라는 근거만으로 두 알림을 동일하게 처리해도 되는지 적어 주세요.
+
+<!-- answer: 05|실습 2-1 정답 -->
 
 ## 실습 2-1 정리
 

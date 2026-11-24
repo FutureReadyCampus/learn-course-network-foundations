@@ -86,13 +86,13 @@ safe_runner.py   find_skip_reason : 이미 잠긴 계정이면 (1 · 2번), 잠�
 **`safe_runner.py`** — 안전장치를 건 실행기입니다. Unit 3의 실습 3-2에서 실패 처리를 더합니다. 직접 쓰는 곳은 1 ~ 7번입니다.
 
 ```python
-from incident import change_status, match_playbooks, run_action, make_log_entry     # Unit 1 파일의 함수를 불러온다
+from incident import change_status, match_playbooks, run_action, make_log_entry  # Unit 1 파일의 함수를 불러온다
 
-DONE_STATUSES = ["조치됨", "보고됨", "종료"]                                        # 이미 대응이 끝난 상태들
-MAX_LOCKS_PER_RUN = 3                                                               # 한 번 실행에서 잠글 수 있는 계정의 최대 수
+DONE_STATUSES = ["조치됨", "보고됨", "종료"]  # 이미 대응이 끝난 상태들
+MAX_LOCKS_PER_RUN = 3  # 한 번 실행에서 잠글 수 있는 계정의 최대 수
 
 
-def find_skip_reason(action, entity, state):                                        # 액션 · 대상 · 연습용 시스템을 받는 함수
+def find_skip_reason(action, entity, state):  # 액션 · 대상 · 연습용 시스템을 받는 함수
     """이 액션을 건너뛰어야 하면 그 이유 문장을, 건너뛸 필요가 없으면 빈 글자("")를 리턴한다.
     계정을 잠그기 전에 이미 잠긴 계정인지, 한 번에 잠글 수 있는 수를 넘었는지 확인할 때 쓴다.
     """
@@ -101,132 +101,132 @@ def find_skip_reason(action, entity, state):                                    
     # 2.   "건너뜀: 이미 잠겨 있음" 을 리턴한다
     # 3. action 이 "계정 잠금" 이고(and) state["locked_users"] 의 개수(len)가 MAX_LOCKS_PER_RUN 이상이면 (if, >=)
     # 4.   "건너뜀: 한 번에 잠글 수 있는 계정 수를 넘음 (담당자 확인 필요)" 를 리턴한다
-    return ""                                                                       # 건너뛸 이유가 없으면 빈 글자를 리턴한다 — 미리 채운 줄
+    return ""  # 건너뛸 이유가 없으면 빈 글자를 리턴한다 — 미리 채운 줄
 
 
-def safe_run_action(action, incident, state):                                       # 액션 · 인시던트 · 연습용 시스템을 받는 함수
+def safe_run_action(action, incident, state):  # 액션 · 인시던트 · 연습용 시스템을 받는 함수
     """액션을 실행하기 전에 건너뛸 이유가 있는지 먼저 확인한다. 이유가 있으면 실행하지 않고 그 이유를, 없으면 Unit 1의 run_action 으로 실행한 결과를 리턴한다.
     같은 일을 두 번 하거나 너무 많이 하는 것을 막고 싶을 때 쓴다.
     """
-    entity = incident["entity"]                                                     # 대응할 대상
-    skip_reason = find_skip_reason(action, entity, state)                           # 건너뛸 이유를 구한다 — 미리 채운 줄
+    entity = incident["entity"]  # 대응할 대상
+    skip_reason = find_skip_reason(action, entity, state)  # 건너뛸 이유를 구한다 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 5. skip_reason 이 빈 글자("")가 아니면 (if, !=)
     # 6.   skip_reason 을 리턴한다
     # 7. run_action(action, incident, state) 의 결과를 리턴한다 (건너뛸 이유가 없으면 원래대로 실행한다)
 
 
-def run_playbook_safe(incident, playbook, state, action_log):                       # 인시던트 · 플레이북 · 연습용 시스템 · 기록 리스트를 받는 함수
+def run_playbook_safe(incident, playbook, state, action_log):  # 인시던트 · 플레이북 · 연습용 시스템 · 기록 리스트를 받는 함수
     """알림 한 건을 안전하게 처리한다. 이미 끝난 알림이면 건너뛰고, 승인이 필요하면 멈추고, 아니면 액션을 실행한다.
     처리 결과를 「실행 완료」 · 「승인 대기」 · 「이미 처리됨」 · 「일부 건너뜀」 중 하나로 리턴한다.
     """
-    if incident["status"] in DONE_STATUSES:                                         # 이미 대응이 끝난 인시던트이면
+    if incident["status"] in DONE_STATUSES:  # 이미 대응이 끝난 인시던트이면
         entry = make_log_entry(incident, playbook, "전체", "이미 처리됨 — 건너뜀")  # 건너뛴 기록을 만들고
-        action_log.append(entry)                                                    # 기록 리스트에 추가한다
-        return "이미 처리됨"                                                        # 이미 처리됨을 리턴한다
-    change_status(incident, "분류됨")                                               # 대응을 시작하기 전에 분류됨 상태로 옮긴다
-    if playbook["approval"] != "자동":                                              # 승인이 필요하면
-        entry = make_log_entry(incident, playbook, "전체", "승인 대기")             # 승인 대기 기록을 만들고
-        action_log.append(entry)                                                    # 기록 리스트에 추가한다
-        return "승인 대기"                                                          # 승인 대기를 리턴한다
-    skipped = False                                                                 # 건너뛴 액션이 있는지 : 처음에는 없다
-    for action in playbook["actions"]:                                              # 액션을 하나씩 꺼낸다
-        result = safe_run_action(action, incident, state)                           # 안전한 방식으로 실행한다
-        if result.startswith("건너뜀"):                                             # 결과 문장이 「건너뜀」으로 시작하면
-            skipped = True                                                          # 건너뛴 액션이 있다고 적는다
-        entry = make_log_entry(incident, playbook, action, result)                  # 기록을 만들고
-        action_log.append(entry)                                                    # 기록 리스트에 추가한다
-    if skipped:                                                                     # 건너뛴 액션이 있으면
-        return "일부 건너뜀"                                                        # 조치됨으로 옮기지 않고 일부 건너뜀을 리턴한다
-    change_status(incident, "조치됨")                                               # 모두 실행했으니 조치됨으로 옮긴다
-    return "실행 완료"                                                              # 실행 완료를 리턴한다
+        action_log.append(entry)  # 기록 리스트에 추가한다
+        return "이미 처리됨"  # 이미 처리됨을 리턴한다
+    change_status(incident, "분류됨")  # 대응을 시작하기 전에 분류됨 상태로 옮긴다
+    if playbook["approval"] != "자동":  # 승인이 필요하면
+        entry = make_log_entry(incident, playbook, "전체", "승인 대기")  # 승인 대기 기록을 만들고
+        action_log.append(entry)  # 기록 리스트에 추가한다
+        return "승인 대기"  # 승인 대기를 리턴한다
+    skipped = False  # 건너뛴 액션이 있는지 : 처음에는 없다
+    for action in playbook["actions"]:  # 액션을 하나씩 꺼낸다
+        result = safe_run_action(action, incident, state)  # 안전한 방식으로 실행한다
+        if result.startswith("건너뜀"):  # 결과 문장이 「건너뜀」으로 시작하면
+            skipped = True  # 건너뛴 액션이 있다고 적는다
+        entry = make_log_entry(incident, playbook, action, result)  # 기록을 만들고
+        action_log.append(entry)  # 기록 리스트에 추가한다
+    if skipped:  # 건너뛴 액션이 있으면
+        return "일부 건너뜀"  # 조치됨으로 옮기지 않고 일부 건너뜀을 리턴한다
+    change_status(incident, "조치됨")  # 모두 실행했으니 조치됨으로 옮긴다
+    return "실행 완료"  # 실행 완료를 리턴한다
 
 
-def process_safe(incidents, registry, state, action_log):                           # 인시던트 리스트 · 플레이북 리스트 · 연습용 시스템 · 기록 리스트를 받는 함수
+def process_safe(incidents, registry, state, action_log):  # 인시던트 리스트 · 플레이북 리스트 · 연습용 시스템 · 기록 리스트를 받는 함수
     """알림을 하나씩 맞는 플레이북으로 안전하게 처리하고, 결과를 한 줄씩 출력한다.
     결과마다 몇 건인지 센 딕셔너리를 리턴한다.
     """
-    counts = {}                                                                     # 실행 결과마다 몇 건인지 셀 딕셔너리
-    for incident in incidents:                                                      # 인시던트를 하나씩 꺼낸다
-        playbooks = match_playbooks(incident, registry)                             # 맞는 플레이북을 찾는다
-        result_text = "맞는 플레이북 없음"                                          # 처음에는 없다고 적어 둔다
-        for playbook in playbooks:                                                  # 맞는 플레이북을 하나씩 꺼낸다
+    counts = {}  # 실행 결과마다 몇 건인지 셀 딕셔너리
+    for incident in incidents:  # 인시던트를 하나씩 꺼낸다
+        playbooks = match_playbooks(incident, registry)  # 맞는 플레이북을 찾는다
+        result_text = "맞는 플레이북 없음"  # 처음에는 없다고 적어 둔다
+        for playbook in playbooks:  # 맞는 플레이북을 하나씩 꺼낸다
             result_text = run_playbook_safe(incident, playbook, state, action_log)  # 안전하게 실행한다
-        counts[result_text] = counts.get(result_text, 0) + 1                        # 그 결과의 건수를 1 늘린다
+        counts[result_text] = counts.get(result_text, 0) + 1  # 그 결과의 건수를 1 늘린다
         print(incident["id"], incident["entity"], "->", result_text, "(상태: " + incident["status"] + ")")  # 한 줄로 출력한다
-    return counts                                                                   # 결과별 건수를 리턴한다
+    return counts  # 결과별 건수를 리턴한다
 ```
 
 **`exercise2-3_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. Unit 1의 `playbook_runner.py` 의 완성된 `run_playbook` 이 필요합니다.
 
 ```python
-from incident import load_json, match_playbooks, INCIDENTS_PATH, REGISTRY_PATH           # Unit 1 파일의 함수를 불러온다
-from playbook_runner import run_playbook                                                 # Unit 1에서 만든 실행기를 불러온다
-from safe_runner import process_safe, MAX_LOCKS_PER_RUN                                  # 방금 만든 안전한 실행기를 불러온다
+from incident import load_json, match_playbooks, INCIDENTS_PATH, REGISTRY_PATH  # Unit 1 파일의 함수를 불러온다
+from playbook_runner import run_playbook  # Unit 1에서 만든 실행기를 불러온다
+from safe_runner import process_safe, MAX_LOCKS_PER_RUN  # 방금 만든 안전한 실행기를 불러온다
 
-BULK_PATH = "bulk_incidents.json"                                                        # 인사 시스템 오류로 퇴사자 알림이 몰린 상황의 알림 파일 이름
+BULK_PATH = "bulk_incidents.json"  # 인사 시스템 오류로 퇴사자 알림이 몰린 상황의 알림 파일 이름
 
 
-def new_state():                                                                         # 인자가 없는 함수
+def new_state():  # 인자가 없는 함수
     """잠긴 계정 · 차단한 IP · 티켓이 모두 비어 있는 연습용 시스템 상태를 새로 만들어 리턴한다.
     실험마다 깨끗한 상태에서 시작하고 싶을 때 쓴다.
     """
     state = {"locked_users": [], "blocked_ips": [], "tickets": [], "notifications": []}  # 비어 있는 상태 딕셔너리
-    return state                                                                         # 상태를 리턴한다
+    return state  # 상태를 리턴한다
 
 
-def run_monday_way(incidents, registry, state, action_log):                              # Unit 1 방식으로 처리하는 함수
+def run_monday_way(incidents, registry, state, action_log):  # Unit 1 방식으로 처리하는 함수
     """Unit 1에서 만든 run_playbook 으로 알림을 모두 처리한다. 오늘 만든 안전장치는 쓰지 않는다.
     안전장치가 없으면 어떤 일이 생기는지 보고 싶을 때 쓴다.
     """
-    for incident in incidents:                                                           # 인시던트를 하나씩 꺼낸다
-        playbooks = match_playbooks(incident, registry)                                  # 맞는 플레이북을 찾는다
-        for playbook in playbooks:                                                       # 맞는 플레이북을 하나씩 꺼낸다
-            run_playbook(incident, playbook, state, action_log)                          # Unit 1 방식으로 실행한다
+    for incident in incidents:  # 인시던트를 하나씩 꺼낸다
+        playbooks = match_playbooks(incident, registry)  # 맞는 플레이북을 찾는다
+        for playbook in playbooks:  # 맞는 플레이북을 하나씩 꺼낸다
+            run_playbook(incident, playbook, state, action_log)  # Unit 1 방식으로 실행한다
 
 
-registry = load_json(REGISTRY_PATH)                                                      # 플레이북 등록 파일을 읽는다
+registry = load_json(REGISTRY_PATH)  # 플레이북 등록 파일을 읽는다
 
-print("--- 단계 1: Unit 1 방식(안전장치 없음)으로 같은 알림 5건을 두 번 처리")             # 단계 1 시작을 알리는 줄
-incidents = load_json(INCIDENTS_PATH)                                                    # 알림 5건을 읽는다
-state = new_state()                                                                      # 깨끗한 상태로 시작한다
-action_log = []                                                                          # 기록 리스트를 만든다
-run_monday_way(incidents, registry, state, action_log)                                   # 첫 번째 처리
-run_monday_way(incidents, registry, state, action_log)                                   # 같은 알림을 한 번 더 처리한다
-print("잠긴 계정:", state["locked_users"])                                               # 잠긴 계정을 출력한다
-print("티켓:", len(state["tickets"]), "건")                                              # 티켓 수를 출력한다
+print("--- 단계 1: Unit 1 방식(안전장치 없음)으로 같은 알림 5건을 두 번 처리")  # 단계 1 시작을 알리는 줄
+incidents = load_json(INCIDENTS_PATH)  # 알림 5건을 읽는다
+state = new_state()  # 깨끗한 상태로 시작한다
+action_log = []  # 기록 리스트를 만든다
+run_monday_way(incidents, registry, state, action_log)  # 첫 번째 처리
+run_monday_way(incidents, registry, state, action_log)  # 같은 알림을 한 번 더 처리한다
+print("잠긴 계정:", state["locked_users"])  # 잠긴 계정을 출력한다
+print("티켓:", len(state["tickets"]), "건")  # 티켓 수를 출력한다
 
-print("--- 단계 2: Unit 1 방식(안전장치 없음)으로 인사 오류 알림 7건 처리")                # 단계 2 시작을 알리는 줄
-bulk_incidents = load_json(BULK_PATH)                                                    # 인사 오류 알림 7건을 읽는다
-state = new_state()                                                                      # 깨끗한 상태로 시작한다
-action_log = []                                                                          # 기록 리스트를 만든다
-run_monday_way(bulk_incidents, registry, state, action_log)                              # Unit 1 방식으로 처리한다
-locked_count = len(state["locked_users"])                                                # 잠긴 계정이 몇 개인지 센다
-print("잠긴 계정", locked_count, "개:", state["locked_users"])                           # 잠긴 계정 수와 이름을 출력한다
+print("--- 단계 2: Unit 1 방식(안전장치 없음)으로 인사 오류 알림 7건 처리")  # 단계 2 시작을 알리는 줄
+bulk_incidents = load_json(BULK_PATH)  # 인사 오류 알림 7건을 읽는다
+state = new_state()  # 깨끗한 상태로 시작한다
+action_log = []  # 기록 리스트를 만든다
+run_monday_way(bulk_incidents, registry, state, action_log)  # Unit 1 방식으로 처리한다
+locked_count = len(state["locked_users"])  # 잠긴 계정이 몇 개인지 센다
+print("잠긴 계정", locked_count, "개:", state["locked_users"])  # 잠긴 계정 수와 이름을 출력한다
 
-print("--- 단계 3: 안전한 방식으로 같은 알림 5건을 두 번 처리")                          # 단계 3 시작을 알리는 줄
-incidents = load_json(INCIDENTS_PATH)                                                    # 알림 5건을 다시 읽는다
-state = new_state()                                                                      # 깨끗한 상태로 시작한다
-action_log = []                                                                          # 기록 리스트를 만든다
-print("첫 번째 처리")                                                                    # 첫 번째 처리임을 알리는 줄
-process_safe(incidents, registry, state, action_log)                                     # 안전한 방식으로 처리한다
-print("두 번째 처리")                                                                    # 두 번째 처리임을 알리는 줄
-process_safe(incidents, registry, state, action_log)                                     # 같은 알림을 한 번 더 처리한다
-print("잠긴 계정:", state["locked_users"])                                               # 잠긴 계정을 출력한다
-print("티켓:", len(state["tickets"]), "건")                                              # 티켓 수를 출력한다
+print("--- 단계 3: 안전한 방식으로 같은 알림 5건을 두 번 처리")  # 단계 3 시작을 알리는 줄
+incidents = load_json(INCIDENTS_PATH)  # 알림 5건을 다시 읽는다
+state = new_state()  # 깨끗한 상태로 시작한다
+action_log = []  # 기록 리스트를 만든다
+print("첫 번째 처리")  # 첫 번째 처리임을 알리는 줄
+process_safe(incidents, registry, state, action_log)  # 안전한 방식으로 처리한다
+print("두 번째 처리")  # 두 번째 처리임을 알리는 줄
+process_safe(incidents, registry, state, action_log)  # 같은 알림을 한 번 더 처리한다
+print("잠긴 계정:", state["locked_users"])  # 잠긴 계정을 출력한다
+print("티켓:", len(state["tickets"]), "건")  # 티켓 수를 출력한다
 
 print("--- 단계 4: 안전한 방식으로 인사 오류 알림 7건 처리 (한 번에 최대", MAX_LOCKS_PER_RUN, "개)")  # 단계 4 시작을 알리는 줄
-bulk_incidents = load_json(BULK_PATH)                                                    # 인사 오류 알림 7건을 다시 읽는다
-state = new_state()                                                                      # 깨끗한 상태로 시작한다
-action_log = []                                                                          # 기록 리스트를 만든다
-counts = process_safe(bulk_incidents, registry, state, action_log)                       # 안전한 방식으로 처리한다
-locked_count = len(state["locked_users"])                                                # 잠긴 계정이 몇 개인지 센다
-print("잠긴 계정", locked_count, "개:", state["locked_users"])                           # 잠긴 계정 수와 이름을 출력한다
-print("결과별 건수:", counts)                                                            # 결과별 건수를 출력한다
-print("티켓:", len(state["tickets"]), "건")                                              # 만든 티켓 수를 출력한다
-print("건너뛴 액션과 이유:")                                                             # 건너뛴 액션을 모아 보여 주는 제목 줄
-for entry in action_log:                                                                 # 기록을 하나씩 꺼낸다
-    result_text = entry["result"]                                                        # 기록의 결과 문장
+bulk_incidents = load_json(BULK_PATH)  # 인사 오류 알림 7건을 다시 읽는다
+state = new_state()  # 깨끗한 상태로 시작한다
+action_log = []  # 기록 리스트를 만든다
+counts = process_safe(bulk_incidents, registry, state, action_log)  # 안전한 방식으로 처리한다
+locked_count = len(state["locked_users"])  # 잠긴 계정이 몇 개인지 센다
+print("잠긴 계정", locked_count, "개:", state["locked_users"])  # 잠긴 계정 수와 이름을 출력한다
+print("결과별 건수:", counts)  # 결과별 건수를 출력한다
+print("티켓:", len(state["tickets"]), "건")  # 만든 티켓 수를 출력한다
+print("건너뛴 액션과 이유:")  # 건너뛴 액션을 모아 보여 주는 제목 줄
+for entry in action_log:  # 기록을 하나씩 꺼낸다
+    result_text = entry["result"]  # 기록의 결과 문장
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 8. result_text 가 "건너뜀" 으로 시작하면 (if, startswith)
     # 9.   entry["incident"] · entry["action"] · "->" · result_text 를 출력한다 (print)
@@ -241,10 +241,12 @@ for entry in action_log:                                                        
    python exercise2-3_run.py
    ```
 4. 출력은 네 단계와 건너뛴 이유입니다. 단계 1 은 2줄, 단계 2 는 1줄, 단계 3 은 14줄(「첫 번째 처리」 · 「두 번째 처리」 제목 2줄과 결과 10줄, 마지막의 잠긴 계정 · 티켓 2줄), 단계 4 는 알림 7건의 결과 7줄과 요약 3줄(잠긴 계정 · 결과별 건수 · 티켓)입니다. 마지막 `건너뛴 액션과 이유:` 아래는 건너뛴 액션만큼 줄이 나옵니다.
-5. **[보고서]** `report_u2.md` 의 `## 실습 2-3` 아래를 채웁니다.
+5. **[실습 결과 기록]** `report_u2.md` 의 `## 실습 2-3` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 단계 1 · 3 · 4 의 잠긴 계정과 티켓 수를 적어 주세요.
    - (나) [핵심 질문] 단계 1(Unit 1 방식)에서는 `dami` 가 두 번 잠기고 티켓이 2건 생성되었는데, 단계 3(안전한 방식)에서는 1건입니다. 단계 3 의 「두 번째 처리」 줄을 근거로 어떤 안전장치가 두 번째 실행을 차단했는지 적어 주세요.
    - (다) [핵심 질문] 단계 4 에서 잠긴 계정 3개 가운데 `users_info.json` 의 `employed` 값으로 볼 때 잘못 잠긴 계정이 있는지 적고, 한도가 없을 때와 비교해 잘못 잠긴 계정이 몇 개 감소했는지 적어 주세요. 한도로 방지하지 못하는 문제가 무엇인지도 적어 주세요. 마지막으로, 실습 2-1의 맥락(보강)과 실습 2-2의 경로 분기 중 무엇을 적용하면 잘못 잠긴 계정을 줄일 수 있는지 적어 주세요.
+
+<!-- answer: 05|실습 2-3 정답 -->
 
 ## 실습 2-3 정리
 
@@ -259,17 +261,22 @@ for entry in action_log:                                                        
 
 ---
 
-## 이번 Unit 마무리
+## 문제 해결 기록 남기기
 
-| 확인 | 문제 |
-|---|---|
-| 알림 보강으로 재직 · VIP · 접속 IP 맥락을 추가했다 | 실습 2-1 |
-| 맥락에 따라 승인 필요 · 오탐 종료 · 기본 경로로 분기하고 판정 사유를 기록했다 | 실습 2-2 |
-| 중복 실행을 방지하고 1회 실행당 잠글 수 있는 계정 수를 제한했다 | 실습 2-3 |
+`report_u2.md`는 실행 결과와 질문에 대한 근거를 모은 **기술 기록**입니다. 여기에 적은 답을 그대로 옮기기보다, 자동 대응 앞에 맥락 보강과 경로 분기를 둔 이유, 실행 횟수 제한이 막아 준 문제와 막지 못한 문제를 동료가 따라갈 수 있게 기록합니다.
 
-이번 Unit에서 구현한 보강 · 경로 분기 · 안전장치는 하나의 흐름으로 이어집니다. <mark>Unit 3에서는 두 가지를 구현합니다. 첫째, 실습 2-2에서 `승인 필요` 경로로 분기된 알림을 담당자가 승인하거나 거절하는 승인 처리입니다. 둘째, 실습 2-3의 실행기에서 액션이 실패했을 때의 실패 처리입니다. 그리고 보강 · 경로 분기 · 안전장치 적용 실행을 하나의 흐름으로 연결해 한 번에 실행합니다.</mark> 실습 2-3 마지막에 확인한 「한도 안에서도 잘못 잠긴 계정」 문제는, Unit 3의 하루 흐름에서 VIP 경로와 신뢰 IP 판단을 함께 적용하면 일부 줄어듭니다.
+블로그와 GitHub Pages를 처음 설정한다면 [M3 Unit 1의 Jekyll 및 GitHub Pages 설정](__SITE__/exercises/module/3/unit/1/lesson/1/page/4)을 먼저 진행하세요. 이미 설정했다면 `network-study-notes` 저장소의 `_posts` 폴더에 `YYYY-MM-DD-m5-u2-context-safety.md` 형식의 글을 만듭니다.
 
----
+기록에는 다음 내용을 담습니다.
+
+- **관찰한 맥락:** 알림의 대상, 재직 여부, VIP 여부, 접속 IP, 신뢰 IP 여부가 어떻게 추가됐는지
+- **경로 선택의 근거:** VIP 승인 경로와 신뢰 IP 오탐 종료 경로가 어떤 규칙 이름을 근거로 갈렸는지
+- **안전장치의 범위:** 중복 처리와 계정 잠금 수 제한이 막은 피해, 한도 안에서도 남은 잘못된 조치
+- **다음 확인:** 확인되지 않은 대상의 기본값과, 오탐 여부를 판단하려면 더 필요한 정보를 구분
+
+관찰한 사실과 가능한 설명을 구분합니다. 알림의 맥락만으로 위험을 확정하지 말고, 어떤 추가 정보가 필요한지도 씁니다. 글을 저장하고 `network-study-notes` 저장소에 커밋한 뒤 `git push` 합니다. GitHub Pages에 게시된 글과 링크를 확인하세요.
+
+Unit 3에서는 승인 대기된 인시던트를 담당자가 승인하거나 거절하는 흐름과 실패 기록을 구현합니다.
 
 ---
 

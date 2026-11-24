@@ -82,12 +82,12 @@ routing.py   is_only_ip_related : 규칙을 하나씩 꺼내 IP 관련이 아닌
 **`routing.py`** — 맥락을 보고 처리 경로를 정합니다. 이 파일이 정한 경로(`승인 필요` · `오탐 종료` · `기본`)를 Unit 3의 실습 3-1 이후에도 씁니다. 직접 쓰는 곳은 1 ~ 7번입니다.
 
 ```python
-from incident import change_status                                          # Unit 1 파일의 상태 바꾸기 함수를 불러온다
+from incident import change_status  # Unit 1 파일의 상태 바꾸기 함수를 불러온다
 
-IP_RELATED_RULES = ["평소와 다른 IP", "업무 시간 밖 로그인"]                # 접속 IP 만 보고 낸 알림의 규칙 이름
+IP_RELATED_RULES = ["평소와 다른 IP", "업무 시간 밖 로그인"]  # 접속 IP 만 보고 낸 알림의 규칙 이름
 
 
-def is_only_ip_related(incident):                                           # 인시던트 하나를 받는 함수
+def is_only_ip_related(incident):  # 인시던트 하나를 받는 함수
     """알림이 난 이유(규칙)가 모두 IP 와 관련된 것이면 True, 하나라도 다른 이유가 있으면 False 를 리턴한다.
     IP 때문에만 난 알림인지, 다른 증거도 있는 알림인지 구별할 때 쓴다.
     """
@@ -95,59 +95,59 @@ def is_only_ip_related(incident):                                           # �
     # 1. incident["reasons"] 의 규칙을 하나씩 꺼낸다 (for, rule)
     # 2.   rule 이 IP_RELATED_RULES 안에 없으면 (if, not in)
     # 3.     False 를 리턴한다 (IP 와 관계없는 다른 증거가 있다)
-    return True                                                             # 모두 IP 관련이면 True 를 리턴한다 — 미리 채운 줄
+    return True  # 모두 IP 관련이면 True 를 리턴한다 — 미리 채운 줄
 
 
-def decide_route(incident):                                                 # 맥락이 붙은 인시던트를 받는 함수
+def decide_route(incident):  # 맥락이 붙은 인시던트를 받는 함수
     """붙어 있는 맥락을 보고 이 알림을 어느 경로(승인 필요 · 오탐 종료 · 기본)로 보낼지 정해, 이유 문장과 함께 리턴한다.
     같은 플레이북이어도 누구의 알림이냐에 따라 처리를 다르게 하고 싶을 때 쓴다.
     """
-    context = incident["context"]                                           # 붙어 있는 맥락
+    context = incident["context"]  # 붙어 있는 맥락
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. context 의 "vip" 가 참이면 (if)
     # 5.   "승인 필요" 와 "VIP 계정이라 담당자 승인이 필요함" 을 쉼표로 이어 함께 리턴한다
     # 6. context 의 "ip_trusted" 가 참이고(and) is_only_ip_related(incident) 가 참이면 (if)
     # 7.   "오탐 종료" 와 "신뢰 IP 에서 온 IP 관련 규칙뿐이라 정상 접속으로 봄" 을 쉼표로 이어 함께 리턴한다
-    return "기본", "플레이북 기본 절차대로 처리함"                          # 어느 경우도 아니면 기본 경로로 보낸다
+    return "기본", "플레이북 기본 절차대로 처리함"  # 어느 경우도 아니면 기본 경로로 보낸다
 
 
-def apply_route(incident, route, reason, incident_log):                     # 인시던트 · 경로 · 이유 · 기록 리스트를 받는 함수
+def apply_route(incident, route, reason, incident_log):  # 인시던트 · 경로 · 이유 · 기록 리스트를 받는 함수
     """정한 경로를 알림에 적용한다. 오탐 종료이면 상태를 분류됨을 거쳐 종료로 바꾸고, 경로와 이유를 기록에 남긴다.
     나중에 「왜 이 알림을 이렇게 처리했나」에 답할 수 있게 하려고 쓴다.
     """
-    if route == "오탐 종료":                                                # 오탐 종료이면
-        change_status(incident, "분류됨")                                   # 먼저 분류됨으로 옮기고
-        change_status(incident, "종료")                                     # 종료로 옮긴다
+    if route == "오탐 종료":  # 오탐 종료이면
+        change_status(incident, "분류됨")  # 먼저 분류됨으로 옮기고
+        change_status(incident, "종료")  # 종료로 옮긴다
     entry = {"incident": incident["id"], "route": route, "reason": reason}  # 기록 한 건을 만든다
-    incident_log.append(entry)                                              # 기록 리스트에 추가한다
+    incident_log.append(entry)  # 기록 리스트에 추가한다
 ```
 
 **`exercise2-2_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실습 2-1의 `enrichment.py` 가 같은 폴더에 있어야 합니다.
 
 ```python
-from incident import load_json, INCIDENTS_PATH                      # Unit 1 파일의 함수를 불러온다
-from enrichment import enrich_incident                              # 실습 2-1에서 만든 함수를 불러온다
-from routing import decide_route, apply_route                       # 방금 만든 함수를 불러온다
+from incident import load_json, INCIDENTS_PATH  # Unit 1 파일의 함수를 불러온다
+from enrichment import enrich_incident  # 실습 2-1에서 만든 함수를 불러온다
+from routing import decide_route, apply_route  # 방금 만든 함수를 불러온다
 
-incidents = load_json(INCIDENTS_PATH)                               # 인시던트 파일을 리스트로 읽는다
-users_info = load_json("users_info.json")                           # 계정 정보 파일을 읽는다
-source_ips = load_json("source_ips.json")                           # 알림이 난 접속의 IP 파일을 읽는다
-trusted_ips = load_json("trusted_ips.json")                         # 신뢰 IP 파일을 읽는다
-incident_log = []                                                   # 경로 기록을 담을 빈 리스트
-route_counts = {"기본": 0, "승인 필요": 0, "오탐 종료": 0}          # 경로마다 몇 건인지 셀 딕셔너리
+incidents = load_json(INCIDENTS_PATH)  # 인시던트 파일을 리스트로 읽는다
+users_info = load_json("users_info.json")  # 계정 정보 파일을 읽는다
+source_ips = load_json("source_ips.json")  # 알림이 난 접속의 IP 파일을 읽는다
+trusted_ips = load_json("trusted_ips.json")  # 신뢰 IP 파일을 읽는다
+incident_log = []  # 경로 기록을 담을 빈 리스트
+route_counts = {"기본": 0, "승인 필요": 0, "오탐 종료": 0}  # 경로마다 몇 건인지 셀 딕셔너리
 
-print("--- 단계 1: 알림마다 정한 처리 경로 · 이유 · 상태")          # 단계 1 시작을 알리는 줄
-for incident in incidents:                                          # 인시던트를 하나씩 꺼낸다
+print("--- 단계 1: 알림마다 정한 처리 경로 · 이유 · 상태")  # 단계 1 시작을 알리는 줄
+for incident in incidents:  # 인시던트를 하나씩 꺼낸다
     enrich_incident(incident, users_info, source_ips, trusted_ips)  # 맥락을 붙인다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 8. decide_route(incident) 가 리턴한 두 값을 route 와 reason 에 한 번에 받는다
-    apply_route(incident, route, reason, incident_log)              # 경로를 적용하고 기록한다
+    apply_route(incident, route, reason, incident_log)  # 경로를 적용하고 기록한다
     # 9. route_counts[route] 에 route_counts[route] + 1 을 담는다 (그 경로의 건수를 1 늘린다)
     print(incident["id"], incident["entity"], incident["grade"], "->", route, "·", reason, "(상태: " + incident["status"] + ")")  # 한 줄로 출력한다
 
-print("--- 단계 2: 경로별 건수")                                    # 단계 2 시작을 알리는 줄
-for route in route_counts:                                          # 경로를 하나씩 꺼낸다
-    print(route, route_counts[route], "건")                         # 경로와 건수를 출력한다
+print("--- 단계 2: 경로별 건수")  # 단계 2 시작을 알리는 줄
+for route in route_counts:  # 경로를 하나씩 꺼낸다
+    print(route, route_counts[route], "건")  # 경로와 건수를 출력한다
 ```
 
 **순서**
@@ -159,10 +159,12 @@ for route in route_counts:                                          # 경로를 
    python exercise2-2_run.py
    ```
 4. 출력은 두 단계입니다. 단계 1 은 알림 5건이 한 줄씩 나오고 한 줄에는 번호 · 대상 · 등급이 나오고, `->` 뒤에 경로 · 이유가 나오며, 괄호 안에 상태가 나옵니다. 단계 2 는 경로마다 한 줄씩 3줄입니다.
-5. **[보고서]** `report_u2.md` 의 `## 실습 2-2` 아래를 채웁니다.
+5. **[실습 결과 기록]** `report_u2.md` 의 `## 실습 2-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 경로별 건수와 `종료` 상태가 된 알림의 번호를 적어 주세요.
    - (나) [핵심 질문] INC-002 와 INC-004 는 둘 다 신뢰 IP 에서 접속했는데 INC-002 는 `기본`, INC-004 는 `오탐 종료` 입니다. 두 알림의 `reasons` 를 근거로 경로가 달라진 이유를 적어 주세요.
    - (다) [핵심 질문] 6번 조건보다 4번 VIP 판정을 먼저 두었습니다. VIP 계정이 신뢰 IP 에서 접속했고 `평소와 다른 IP` 규칙 하나만 탐지되었다고 가정해 보세요. 이 알림이 어느 경로로 분기되는지 적어 주세요. 그리고 4번과 6번 조건의 순서를 바꾸면 무엇이 달라지는지 적어 주세요.
+
+<!-- answer: 05|실습 2-2 정답 -->
 
 ## 실습 2-2 정리
 

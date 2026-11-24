@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
-<title>보고서는 질문마다 쓸 내용을 보고 답을 쓰고, 왜는 근거까지 적는다</title>
+<title>실습 결과 기록은 질문마다 쓸 내용을 보고 답을 쓰고, 왜는 근거까지 적는다</title>
 <desc>다섯 단계 체크리스트다. 문제마다 그 제목 아래 질문에 답하고, 출력은 코드 상자에 붙여 넣고, 이유는 내 출력 값을 근거로 쓴다. 모르면 모름과 막힌 곳을 적는다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">보고서 작성 방법</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 결과 기록 방법</text>
 <rect x="20" y="56" width="50" height="50" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="45" y="86.22" font-size="18" fill="#292929" text-anchor="middle">1</text>
 <rect x="84" y="56" width="616" height="50" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>

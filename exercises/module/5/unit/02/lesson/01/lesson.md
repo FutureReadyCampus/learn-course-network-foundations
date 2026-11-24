@@ -15,9 +15,9 @@ source:
 
 이번 Unit은 SOAR 자동 대응의 판단 단계를 구현합니다. 실습 2-1은 알림 보강(enrichment, 인리치먼트: 판단에 필요한 정보를 알림에 추가하는 일)을 다룹니다. 실습 2-2는 맥락에 따른 조건 분기(branching, 브랜칭: 조건에 따라 처리 경로를 나누는 일)를 다룹니다. 실습 2-3은 안전장치(guardrail, 가드레일: 자동 대응이 잘못 실행되어도 피해가 커지지 않도록 미리 두는 점검과 제한)를 다룹니다.
 
-깃허브 업로드는 Unit 3의 실습 3-2 마지막에 합니다. 새 문법은 실습 2-2의 **튜플 리턴과 언패킹**(두 값을 한 번에 리턴하고 한 번에 받는 문법)과 실습 2-3의 **`startswith`**(문자열이 지정한 문자열로 시작하는지 확인하는 메서드) 둘입니다. 보고서에서 [핵심 질문]이 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기는 미리 채운 줄에 맞춥니다. 각 번호 주석 바로 아래에 한 줄을 씁니다. 주석은 지우지 않습니다.
+깃허브 업로드는 Unit 3의 실습 3-2 마지막에 합니다. 새 문법은 실습 2-2의 **튜플 리턴과 언패킹**(두 값을 한 번에 리턴하고 한 번에 받는 문법)과 실습 2-3의 **`startswith`**(문자열이 지정한 문자열로 시작하는지 확인하는 메서드) 둘입니다. 실습 결과 기록에서 [핵심 질문]이 붙은 질문은 <mark>내 출력 값을 근거로 이유까지</mark> 씁니다. 들여쓰기는 미리 채운 줄에 맞춥니다. 각 번호 주석 바로 아래에 한 줄을 씁니다. 주석은 지우지 않습니다.
 
- **이전 파일**: Unit 1에서 만든 `incident.py` · `playbook_runner.py` · `incident_samples.json` · `config/playbook_registry.json` 을 씁니다. 없는 파일은 Unit 1의 코드 상자로 만듭니다(`incident_samples.json` 은 Unit 1 「시작하기」, `config/playbook_registry.json` 은 실습 1-1, `incident.py` · `playbook_runner.py` 는 실습 1-2 레슨).
+이 Unit은 M5 Unit 1의 `incident.py` · `playbook_runner.py` · `incident_samples.json` · `config/playbook_registry.json`을 이어서 씁니다. 빠진 파일이 있다면 필요한 코드를 다시 확인한 뒤 돌아오세요: [M5 Unit 1 샘플 파일](__SITE__/exercises/module/5/unit/1/lesson/1/page/2), [실습 1-1 플레이북 등록 파일](__SITE__/exercises/module/5/unit/1/lesson/2/page/8), [실습 1-2 실행기 파일](__SITE__/exercises/module/5/unit/1/lesson/3/page/3).
 
 ## Unit 1 파일 확인하고 데이터 파일 만들기
 
@@ -30,7 +30,7 @@ source:
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `cd 폴더이름` 그 폴더로 이동 · `ls` 폴더 안의 파일 이름 보기
    - `pwd` 가 이미 `…/soar_response` 로 끝나면 `cd soar_response` 는 건너뜁니다.
-3. **파일은 이렇게 만듭니다.** 이 페이지에 나오는 파일은 모두 코드 상자에서 복사해 만들고, 따로 내려받는 파일은 없습니다. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, **파일 이름을 확장자까지 그대로** 적고 Enter 를 친 뒤, 내용을 붙여 넣고 `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다. 답을 적는 보고서(`report_u2.md`)는 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
+3. **파일을 만드는 방법:** 「`파일이름`을 만들어 아래 내용을 붙여 넣습니다」라고 하면 **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름을 확장자까지 그대로 적어 Enter 를 칩니다. 코드 상자를 붙여 넣고 `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다. 실행 결과와 판단 근거를 기록할 `report_u2.md` 는 「실습 결과 기록 준비」에서 틀을 복사해 만듭니다.
 4. **[VS Code]** 데이터 파일 세 개 `users_info.json` · `source_ips.json` · `trusted_ips.json` 을 `soar_response` 폴더에 만들고, 아래 각 파일의 코드 상자 내용을 붙여 넣습니다.
 
 **`users_info.json`** — 계정 이름별 재직 여부(`employed`)와 VIP 계정(VIP account, 브이아이피 계정: 잠기면 업무에 미치는 영향이 큰 중요도가 높은 계정) 여부(`vip`)를 기록한 파일입니다. `true` 는 「그렇다」, `false` 는 「아니다」입니다. 실제 조직에서는 인사 시스템과 IAM(Identity and Access Management, 아이덴티티 앤 액세스 매니지먼트: 계정과 접근 권한을 관리하는 체계)이 보유한 정보이고, 오늘은 파일로 대신합니다. `dami` 는 퇴사자(`employed` 가 `false`), `gaeun` 은 VIP 계정(`vip` 가 `true`)입니다. 실습 2-1 ~ 실습 2-3에서 읽어 사용합니다.
@@ -67,11 +67,28 @@ source:
 
 5. **[터미널]** 두 가지를 확인합니다. 먼저 데이터 파일입니다. <mark>`6 4 1` 이 나와야</mark> 합니다.
    ```bash
-   python -c "import json; print(len(json.load(open('users_info.json', encoding='utf-8'))), len(json.load(open('source_ips.json', encoding='utf-8'))), len(json.load(open('trusted_ips.json', encoding='utf-8'))))"
+   python - <<'PY'
+   import json
+   from pathlib import Path
+
+   users_info = json.loads(Path("users_info.json").read_text(encoding="utf-8"))
+   source_ips = json.loads(Path("source_ips.json").read_text(encoding="utf-8"))
+   trusted_ips = json.loads(Path("trusted_ips.json").read_text(encoding="utf-8"))
+   print(len(users_info), len(source_ips), len(trusted_ips))
+   PY
    ```
 6. **[터미널]** Unit 1에서 만든 플레이북(playbook, 플레이북: 알림 유형별 대응 절차를 사전에 정의한 문서)의 등록 값을 점검합니다. 오늘 출력이 문서와 일치하려면 이 값이 <mark>아래 출력과 같아야</mark> 합니다. 다르면 `config/playbook_registry.json` 을 열어 해당 값을 같게 고칩니다(Unit 1에서 만든 내 파일은 깃허브에 올라가 있습니다).
    ```bash
-   python -c "import json; print([(p['id'], p['trigger_rule'], p['min_grade'], p['approval']) for p in json.load(open('config/playbook_registry.json', encoding='utf-8'))])"
+   python - <<'PY'
+   import json
+   from pathlib import Path
+
+   playbooks = json.loads(Path("config/playbook_registry.json").read_text(encoding="utf-8"))
+   print([
+       (playbook["id"], playbook["trigger_rule"], playbook["min_grade"], playbook["approval"])
+       for playbook in playbooks
+   ])
+   PY
    ```
    ```
    [('PB-001', '퇴사한 계정', 'high', '자동'), ('PB-002', '대량 다운로드', 'mid', '담당자 승인 필요'), ('PB-003', '경로 스캔', 'low', '담당자 승인 필요')]
@@ -81,7 +98,7 @@ source:
 
 - `pwd` 가 `soar_response` 로 끝나는지, `ls` 로 <mark>파일 이름이 문서와 같은지</mark> 봅니다.
 - `ModuleNotFoundError: No module named 'incident'` 는 <mark>Unit 1에서 만든 `incident.py` 가 이 폴더에 없다는 뜻</mark>입니다. Unit 1 실습 1-2 레슨의 `incident.py` 코드 상자로 만듭니다.
-- 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 막히면 맨 아래 「정답」을 보고, 풀리지 않으면 보고서에 「모름 — 막힌 곳: …」 이라고 씁니다.
+- 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 막히면 각 실습 뒤의 「정답과 해설 보기」를 참고하고, 풀리지 않으면 실습 결과 기록에 「모름 — 막힌 곳: …」 이라고 씁니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다.
 
