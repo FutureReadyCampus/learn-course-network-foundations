@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img">
 <title>파일 확인 후 git status 로 비밀 키를 걸러 내고 add, commit, push 로 올린다</title>
-<desc>anomaly_detection 에서 파일을 확인하고 cd .. 로 security-agent-toolkit 으로 옮긴다. git status 에 .env 나 .venv 가 보이면 .gitignore 에 적고 다시 본다. 보고서를 채운 뒤 add, commit, push 하고 브라우저에서 확인한다.</desc>
+<desc>anomaly_detection 에서 파일을 확인하고 cd .. 로 security-agent-toolkit 으로 옮긴다. git status 에 .env 나 .venv 가 보이면 .gitignore 에 적고 다시 본다. 실습 결과 기록을 채운 뒤 add, commit, push 하고 브라우저에서 확인한다.</desc>
 <defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
 <text x="30" y="32" font-size="19" fill="#292929" font-weight="700">마무리 · 깃허브에 올리는 순서</text>
@@ -26,7 +26,7 @@
 <text x="466" y="197" font-size="14" fill="#666660" text-anchor="middle">예</text>
 <path d="M335,170 L335,148 L540,148 L540,127" fill="none" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
 <rect x="490" y="290" width="200" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="590" y="319.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">3. 보고서</text>
+<text x="590" y="319.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">3. 실습 결과 기록</text>
 <text x="590" y="340.8" font-size="15" fill="#292929" text-anchor="middle">(가) 채우기</text>
 <line x1="590" y1="240" x2="590" y2="288" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
 <text x="625" y="268" font-size="14" fill="#666660" text-anchor="middle">아니오</text>
