@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img">
 <title>응용 파일도 핵심 실습 마무리와 같은 순서로 깃허브에 올린다</title>
-<desc>network-study-notes 폴더로 옮겨 git status 로 올릴 파일을 먼저 봅니다. .env 나 .venv 가 보이면 멈추고 .gitignore 에 적습니다. 내가 한 응용의 보고서 칸을 채운 뒤 add, commit, push 하고 브라우저에서 응용 파일을 확인합니다.</desc>
+<desc>network-study-notes 폴더로 옮겨 git status 로 올릴 파일을 먼저 봅니다. .env 나 .venv 가 보이면 멈추고 .gitignore 에 적습니다. 내가 한 응용의 고민을 정리한 뒤 add, commit, push 하고 브라우저에서 응용 파일을 확인합니다.</desc>
 <defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="30" font-size="19" fill="#292929" font-weight="700">응용 파일도 깃허브에 올리기</text>
@@ -12,7 +12,7 @@
 <text x="210" y="169.82" font-size="15" fill="#292929" text-anchor="middle">.env · .venv 가 보이나?</text>
 <polyline points="210,108 210,123" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p06)"/>
 <rect x="20" y="200" width="380" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="210" y="232.928" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">3 · 보고서 응용 칸 채우기</text>
+<text x="210" y="232.928" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">3 · 고민 정리하기</text>
 <polyline points="210,182 210,197" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p06)"/>
 <rect x="20" y="274" width="380" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="210" y="306.928" font-size="16" fill="#1f7a4a" text-anchor="middle" font-weight="700">4 · git add . → commit → push</text>

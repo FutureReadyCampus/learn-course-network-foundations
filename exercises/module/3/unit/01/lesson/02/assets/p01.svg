@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
 <title>인사팀 리스트와 매트릭스를 users.json 과 roles.json 두 파일로 옮긴다</title>
-<desc>위 자료의 계정 리스트와 권한 매트릭스를 보고 VS Code 에서 New File 로 두 JSON 파일을 만들어 직접 쓰고 json.tool 로 확인한다. 끝나면 보고서 (가)~(다)를 쓴다.</desc>
+<desc>위 자료의 계정 리스트와 권한 매트릭스를 보고 VS Code 에서 New File 로 두 JSON 파일을 만들어 직접 쓰고 json.tool 로 확인한다. 끝나면 질문 생각하기를 쓴다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">실습 1-1 · 표를 파일 두 개로 옮긴다</text>
@@ -27,6 +27,6 @@
 <polyline points="451,162 499,196" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
 <polyline points="360,197 360,263" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
 <rect x="20" y="264" width="680" height="56" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360" y="297.2" font-size="15" fill="#292929" text-anchor="middle">보고서 (가) 요청 판정 · (나) 필요 이상 ○ · (다) 역할 없는 사용자</text>
+<text x="360" y="297.2" font-size="15" fill="#292929" text-anchor="middle">생각해 보기 (가) 요청 판정 · (나) 필요 이상 ○ · (다) 역할 없는 사용자</text>
 </g>
 </svg>

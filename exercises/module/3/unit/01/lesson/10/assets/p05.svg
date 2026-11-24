@@ -35,7 +35,7 @@
 <path d="M354,306 L354,332" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p05)"/>
 <path d="M590,306 L590,332" fill="none" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p05)"/>
 <rect x="24" y="262" width="200" height="124" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="124" y="299.6" font-size="15" text-anchor="middle" font-weight="700">보고서</text>
+<text x="124" y="299.6" font-size="15" text-anchor="middle" font-weight="700">생각해 보기</text>
 <text x="124" y="319.2" font-size="14" text-anchor="middle">(가) 출력 · 줄 번호</text>
 <text x="124" y="338.8" font-size="14" text-anchor="middle">(나) 어느 쪽인가</text>
 <text x="124" y="358.4" font-size="14" text-anchor="middle">(다) 사고 장면</text>

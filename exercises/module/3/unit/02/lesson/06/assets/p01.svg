@@ -25,5 +25,5 @@
 <text x="595" y="190.1" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">부여하지 않음</text>
 <text x="595" y="211.1" font-size="15" fill="#292929" text-anchor="middle">(False, 이유)</text>
 <rect x="30" y="258" width="670" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="365" y="284.6" font-size="15" fill="#292929" text-anchor="middle">부여 전 · 후를 evaluate_access 로 비교하고 보고서 (가) · (나) · (다) 답을 씁니다</text>
+<text x="365" y="284.6" font-size="15" fill="#292929" text-anchor="middle">부여 전 · 후를 evaluate_access 로 비교하고 질문을 살펴봅니다</text>
 </svg>
