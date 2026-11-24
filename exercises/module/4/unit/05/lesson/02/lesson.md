@@ -68,15 +68,15 @@ source:
 위 표의 첫 두 줄은 시각이 달랐지만 `minutes` 에서는 같은 값이 됩니다. 같은 값이 몇 번 나오는지(`value_counts`) 세어 차이를 봅니다.
 
 ```python
-import pandas as pd                                                                 # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-data = {                                                                            # 연습용 작은 데이터 — 같은 분에 이벤트가 두 개
+data = {  # 연습용 작은 데이터 — 같은 분에 이벤트가 두 개
     "time": ["2026-11-02 09:01:05", "2026-11-02 09:01:06", "2026-11-02 09:20:10"],  # time 열에 들어갈 값들
 }
-logs = pd.DataFrame(data)                                                           # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
-times = pd.to_datetime(logs["time"])                                                # 문자열 시각을 시각 값으로 바꾼다
-time_event_counts = times.value_counts()                                            # 같은 시각이 몇 번씩 나오는지 센다
-print(time_event_counts)                                                            # 초까지 같은 시각은 한 번뿐이다
+logs = pd.DataFrame(data)  # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
+times = pd.to_datetime(logs["time"])  # 문자열 시각을 시각 값으로 바꾼다
+time_event_counts = times.value_counts()  # 같은 시각이 몇 번씩 나오는지 센다
+print(time_event_counts)  # 초까지 같은 시각은 한 번뿐이다
 ```
 
 실행 결과:
@@ -92,9 +92,9 @@ Name: count, dtype: int64
 위 코드에 이어서 실행하는 다음 코드입니다.
 
 ```python
-minutes = times.dt.floor("min")               # 시각에서 초를 버린다 (09:01:05 → 09:01:00)
+minutes = times.dt.floor("min")  # 시각에서 초를 버린다 (09:01:05 → 09:01:00)
 minute_event_counts = minutes.value_counts()  # 같은 분이 몇 번씩 나오는지 센다
-print(minute_event_counts)                    # 09:01 분이 두 번 나온다
+print(minute_event_counts)  # 09:01 분이 두 번 나온다
 ```
 
 실행 결과:
@@ -115,11 +115,11 @@ Name: count, dtype: int64
 `value_counts()` 나 `groupby().size()` 로 센 결과의 맨 아래에는 `dtype: int64` 가 함께 나옵니다. `dtype` 은 data type(데이터 타입)의 줄임말로 값의 종류를 뜻하고, `int64` 는 정수(소수점 없는 숫자)입니다. <mark>숫자 계산이 되는 정상 상태이므로 지금은 `int64` 가 보이면 됩니다.</mark> 자세한 쓰임은 다음에 차차 배웁니다.
 
 ```python
-import pandas as pd                                    # 판다스를 pd 라는 짧은 이름으로 불러온다
-events = pd.read_json("normalized_events.json")        # 파일 속 이벤트 57개를 표 한 개(events)로 읽는다 — 행 하나가 이벤트 하나
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
+events = pd.read_json("normalized_events.json")  # 파일 속 이벤트 57개를 표 한 개(events)로 읽는다 — 행 하나가 이벤트 하나
 
 source_event_counts = events["source"].value_counts()  # source 열을 꺼내 바로 값별 개수를 센다
-print(source_event_counts)                             # 맨 아래에 dtype: int64 가 함께 나온다
+print(source_event_counts)  # 맨 아래에 dtype: int64 가 함께 나온다
 ```
 
 실행 결과:
@@ -178,33 +178,33 @@ Name: count, dtype: int64
 **`traffic_detection.py`**
 
 ```python
-import pandas as pd                                              # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-EVENTS_PATH = "normalized_events.json"                           # 읽을 정규화 이벤트 파일 이름
-TRAFFIC_PATH = "baseline_traffic.csv"                            # 지난 7일 같은 시간대의 분당 요청 수 파일 이름
-SPIKE_MULTIPLE = 3                                               # 평소 평균의 3배 이상이면 급증으로 본다
+EVENTS_PATH = "normalized_events.json"  # 읽을 정규화 이벤트 파일 이름
+TRAFFIC_PATH = "baseline_traffic.csv"  # 지난 7일 같은 시간대의 분당 요청 수 파일 이름
+SPIKE_MULTIPLE = 3  # 평소 평균의 3배 이상이면 급증으로 본다
 
 
-def load_events(path):                                           # 파일 경로를 받는 함수
+def load_events(path):  # 파일 경로를 받는 함수
     """이벤트 파일을 표로 읽는다.
     분석을 시작할 때 맨 먼저 쓴다.
     """
-    events = pd.read_json(path)                                  # 파일 속 이벤트를 표 한 개로 읽는다
-    return events                                                # 이벤트 표를 리턴한다
+    events = pd.read_json(path)  # 파일 속 이벤트를 표 한 개로 읽는다
+    return events  # 이벤트 표를 리턴한다
 
 
-def add_minute_column(events):                                   # 이벤트 표를 받는 함수
+def add_minute_column(events):  # 이벤트 표를 받는 함수
     """이벤트마다 시각에서 초를 버린 minute 열을 붙인다.
     분당 요청 수를 세기 전에 같은 분으로 그룹화할 기준을 만들 때 쓴다.
     """
-    times = pd.to_datetime(events["time"])                       # 문자열 시각을 시각 값으로 바꾼다
+    times = pd.to_datetime(events["time"])  # 문자열 시각을 시각 값으로 바꾼다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. times 에 .dt.floor("min") 을 붙여 초를 버린 시각을 minutes 에 담는다
-    events["minute"] = minutes                                   # 표에 minute 열을 붙인다 — 미리 채운 줄
-    return events                                                # minute 열이 붙은 표를 리턴한다
+    events["minute"] = minutes  # 표에 minute 열을 붙인다 — 미리 채운 줄
+    return events  # minute 열이 붙은 표를 리턴한다
 
 
-def count_web_per_minute(events):                                # minute 열이 있는 이벤트 표를 받는 함수
+def count_web_per_minute(events):  # minute 열이 있는 이벤트 표를 받는 함수
     """웹 서버 이벤트만 골라 분마다 요청이 몇 개인지 센다.
     분당 요청 수를 평소와 비교하기 전에 쓴다.
     """
@@ -212,28 +212,28 @@ def count_web_per_minute(events):                                # minute 열이
     # 2. events["source"] == "web" 으로 행마다 True 또는 False 를 구해 is_web 에 담는다 (웹 서버 이벤트이면 True)
     # 3. events 에서 is_web 이 True 인 행만 골라 web_events 에 담는다 (events[is_web])
     minute_request_counts = web_events.groupby("minute").size()  # minute 값이 같은 행끼리 그룹으로 만들고(groupby) 바로 그룹마다 행이 몇 개인지(그 분의 요청 수) 센다(size)
-    return minute_request_counts                                 # 분마다 요청 수를 리턴한다
+    return minute_request_counts  # 분마다 요청 수를 리턴한다
 
 
-def make_traffic_limit(path, multiple):                          # 파일 경로와 몇 배인지를 받는 함수
+def make_traffic_limit(path, multiple):  # 파일 경로와 몇 배인지를 받는 함수
     """지난 7일 분당 요청 평균의 multiple 배를 급증 기준으로 정한다.
     평소보다 요청이 크게 늘어난 분을 가려낼 급증 기준을 정할 때 쓴다.
     """
-    baseline = pd.read_csv(path)                                 # 지난 7일 파일을 표로 읽는다
-    average = baseline["requests_per_minute"].mean()             # 분당 요청 수 열을 꺼내(["requests_per_minute"]) 바로 7개의 평균을 구한다(mean)
+    baseline = pd.read_csv(path)  # 지난 7일 파일을 표로 읽는다
+    average = baseline["requests_per_minute"].mean()  # 분당 요청 수 열을 꺼내(["requests_per_minute"]) 바로 7개의 평균을 구한다(mean)
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. average 에 multiple 을 곱해 limit 에 담는다
-    return limit                                                 # 급증 기준을 리턴한다
+    return limit  # 급증 기준을 리턴한다
 
 
-def pick_spike_minutes(minute_request_counts, limit):            # 분마다 요청 수와 급증 기준을 받는 함수
+def pick_spike_minutes(minute_request_counts, limit):  # 분마다 요청 수와 급증 기준을 받는 함수
     """요청 수가 급증 기준 이상인 분만 골라 리턴한다.
     알림을 보낼 분을 가릴 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 5. minute_request_counts 가 limit 이상인지 비교한 결과(>=)를 is_spike 에 담는다
     # 6. minute_request_counts 에서 is_spike 가 True 인 것만 골라 spike_minutes 에 담는다 (minute_request_counts[is_spike])
-    return spike_minutes                                         # 요청이 급증한 분과 요청 수를 리턴한다
+    return spike_minutes  # 요청이 급증한 분과 요청 수를 리턴한다
 ```
 
 - 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 6번은 모두 함수 안이라 앞에 공백 4개입니다.
@@ -246,26 +246,26 @@ def pick_spike_minutes(minute_request_counts, limit):            # 분마다 요
 ```python
 from traffic_detection import load_events, add_minute_column, count_web_per_minute, make_traffic_limit, pick_spike_minutes, EVENTS_PATH, TRAFFIC_PATH, SPIKE_MULTIPLE  # 방금 만든 함수를 불러온다
 
-events = load_events(EVENTS_PATH)                                                    # 이벤트 파일을 표로 읽는다
-events = add_minute_column(events)                                                   # 시각에서 초를 버린 minute 열을 붙인다
-times = events["time"]                                                               # time 열만 꺼낸다
-minutes = events["minute"]                                                           # minute 열만 꺼낸다
-first_times = times.head(3)                                                          # 시각의 처음 3개만 꺼낸다
-first_minutes = minutes.head(3)                                                      # 분의 처음 3개만 꺼낸다
-print("--- 단계 1: time 열과 minute 열의 처음 3개 비교")                             # 단계 1 시작을 알리는 줄
-print(first_times)                                                                   # 처음 3개의 시각을 출력한다
-print(first_minutes)                                                                 # 처음 3개의 분을 출력한다
+events = load_events(EVENTS_PATH)  # 이벤트 파일을 표로 읽는다
+events = add_minute_column(events)  # 시각에서 초를 버린 minute 열을 붙인다
+times = events["time"]  # time 열만 꺼낸다
+minutes = events["minute"]  # minute 열만 꺼낸다
+first_times = times.head(3)  # 시각의 처음 3개만 꺼낸다
+first_minutes = minutes.head(3)  # 분의 처음 3개만 꺼낸다
+print("--- 단계 1: time 열과 minute 열의 처음 3개 비교")  # 단계 1 시작을 알리는 줄
+print(first_times)  # 처음 3개의 시각을 출력한다
+print(first_minutes)  # 처음 3개의 분을 출력한다
 
-minute_request_counts = count_web_per_minute(events)                                 # 웹 서버 요청을 분마다 센다
-print("--- 단계 2: 웹 서버의 분당 요청 수")                                          # 단계 2 시작을 알리는 줄
-print(minute_request_counts)                                                         # 분마다 요청 수를 출력한다
+minute_request_counts = count_web_per_minute(events)  # 웹 서버 요청을 분마다 센다
+print("--- 단계 2: 웹 서버의 분당 요청 수")  # 단계 2 시작을 알리는 줄
+print(minute_request_counts)  # 분마다 요청 수를 출력한다
 
-limit = make_traffic_limit(TRAFFIC_PATH, SPIKE_MULTIPLE)                             # 지난 7일 평균으로 급증 기준을 정한다
+limit = make_traffic_limit(TRAFFIC_PATH, SPIKE_MULTIPLE)  # 지난 7일 평균으로 급증 기준을 정한다
 print("--- 단계 3: 급증 기준(평소 평균의", SPIKE_MULTIPLE, "배)", limit, "번 이상")  # 단계 3 시작을 알리는 줄과 급증 기준
 
-spike_minutes = pick_spike_minutes(minute_request_counts, limit)                     # 기준 이상인 분만 고른다
-print("--- 단계 4: 요청이 급증한 분")                                                # 단계 4 시작을 알리는 줄
-print(spike_minutes)                                                                 # 요청이 급증한 분과 요청 수를 출력한다
+spike_minutes = pick_spike_minutes(minute_request_counts, limit)  # 기준 이상인 분만 고른다
+print("--- 단계 4: 요청이 급증한 분")  # 단계 4 시작을 알리는 줄
+print(spike_minutes)  # 요청이 급증한 분과 요청 수를 출력한다
 ```
 
 **순서**
@@ -278,11 +278,13 @@ print(spike_minutes)                                                            
    python exercise5-1_run.py
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise5-1_run.py` 파이썬으로 실행 파일 실행
-4. 출력은 **네 단계**입니다. `--- 단계` 제목 줄은 세지 않습니다. 단계 1은 시각 4줄과 분 4줄(각각 마지막은 `Name:` 줄), 단계 2는 16줄(`minute` 줄 · 분마다 14줄 · `dtype:` 줄), 단계 3은 제목 줄에 숫자가 함께 나오고, 단계 4는 3줄(`minute` 줄 · 급증한 분 한 줄 · `dtype:` 줄)입니다. 보고서 (나) · (다)에서 이벤트를 찾을 때는 VS Code 로 `normalized_events.json` 을 열고 `Ctrl + F`(맥북은 `Cmd + F`)로 `09:12` 또는 `09:20` 을 검색하고, `source` 가 `web` 인 줄만 셉니다. 이벤트 하나의 키는 `time · source · user · ip · action · result` 입니다.
-5. **[보고서]** `report_u5.md` 의 `## 실습 5-1` 아래를 채웁니다.
+4. 출력은 **네 단계**입니다. `--- 단계` 제목 줄은 세지 않습니다. 단계 1은 시각 4줄과 분 4줄(각각 마지막은 `Name:` 줄), 단계 2는 16줄(`minute` 줄 · 분마다 14줄 · `dtype:` 줄), 단계 3은 제목 줄에 숫자가 함께 나오고, 단계 4는 3줄(`minute` 줄 · 급증한 분 한 줄 · `dtype:` 줄)입니다. 실습 결과 기록의 (나) · (다)에서 이벤트를 찾을 때는 VS Code 로 `normalized_events.json` 을 열고 `Ctrl + F`(맥북은 `Cmd + F`)로 `09:12` 또는 `09:20` 을 검색하고, `source` 가 `web` 인 줄만 셉니다. 이벤트 하나의 키는 `time · source · user · ip · action · result` 입니다.
+5. **[실습 결과 기록]** `report_u5.md` 의 `## 실습 5-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 급증 기준과 요청이 급증한 분(시각과 요청 수)을 적어 주세요.
    - (나) [핵심 질문] `normalized_events.json` 에서 `time` 이 `2026-11-02 09:12` 로 시작하는 웹 서버(`source` 가 `web`) 줄을 찾아, ① 요청을 보낸 IP 주소와 ② 행동(`action`)별 횟수를 적어 주세요. 그리고 ③ 이 급증을 공격이라고 확정할 수 있는지 이유와 함께 적어 주세요.
    - (다) [핵심 질문] 09:20 에도 웹 서버 요청이 3개 있었지만 급증으로 탐지되지 않았습니다. ① 3개를 급증 기준과 비교해 왜 탐지되지 않았는지 적고, ② `normalized_events.json` 에서 09:20 의 `web` 줄 3개가 어떤 요청(IP 주소 · 행동 · 결과)인지 적고, ③ 요청 수만 보는 급증 규칙이 이 요청들을 놓치는 이유를 적어 주세요.
+
+<!-- answer: 04|실습 5-1 정답 -->
 
 ## 실습 5-1 정리
 

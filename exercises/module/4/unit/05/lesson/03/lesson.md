@@ -63,17 +63,17 @@ source:
 | saas 1 | `source` 는 `"saas"`, `count` 는 1 |
 
 ```python
-import pandas as pd                                               # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-data = {                                                          # 연습용 작은 데이터
+data = {  # 연습용 작은 데이터
     "source": ["web", "server", "web", "saas", "web", "server"],  # source 열에 들어갈 값들
 }
-logs = pd.DataFrame(data)                                         # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
-print(logs)                                                       # 표를 출력한다
-source_event_counts = logs["source"].value_counts()               # source 열을 꺼내(["source"]) 바로 값별 개수를 센다(value_counts) — 인덱스(web · server · saas)와 개수
+logs = pd.DataFrame(data)  # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
+print(logs)  # 표를 출력한다
+source_event_counts = logs["source"].value_counts()  # source 값별 이벤트 수 — 인덱스(web · server · saas)와 개수
 
-for source, count in source_event_counts.items():                 # 인덱스와 개수를 한 쌍씩 꺼낸다
-    print(source, count)                                          # 인덱스와 개수를 출력한다
+for source, count in source_event_counts.items():  # 인덱스와 개수를 한 쌍씩 꺼낸다
+    print(source, count)  # 인덱스와 개수를 출력한다
 ```
 
 실행 결과:
@@ -106,19 +106,19 @@ saas 1
 | `text` (`str(first_minute)`) | `"2026-11-02 09:01:00"` | 문자열 | 쓸 수 있음 |
 
 ```python
-import pandas as pd                                          # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-data = {                                                     # 연습용 작은 데이터
+data = {  # 연습용 작은 데이터
     "time": ["2026-11-02 09:01:05", "2026-11-02 09:20:10"],  # time 열에 들어갈 값들
 }
-logs = pd.DataFrame(data)                                    # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
-times = pd.to_datetime(logs["time"])                         # 문자열 시각을 시각 값으로 바꾼다
-minutes = times.dt.floor("min")                              # 시각에서 초를 버린다
-first_minute = minutes[0]                                    # 0번 행의 분을 꺼낸다 — 판다스 시각 값이다
+logs = pd.DataFrame(data)  # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
+times = pd.to_datetime(logs["time"])  # 문자열 시각을 시각 값으로 바꾼다
+minutes = times.dt.floor("min")  # 시각에서 초를 버린다
+first_minute = minutes[0]  # 0번 행의 분을 꺼낸다 — 판다스 시각 값이다
 
-text = str(first_minute)                                     # 시각 값을 문자열로 바꾼다
-message = text + " 에 이벤트가 있었음"                       # 문자열이라 글을 이어 붙일 수 있다
-print(message)                                               # 이어 붙인 글을 출력한다
+text = str(first_minute)  # 시각 값을 문자열로 바꾼다
+message = text + " 에 이벤트가 있었음"  # 문자열이라 글을 이어 붙일 수 있다
+print(message)  # 이어 붙인 글을 출력한다
 ```
 
 실행 결과:
@@ -166,56 +166,58 @@ print(message)                                               # 이어 붙인 글
 **`alerts.py`**
 
 ```python
-import json                                                                             # 알림을 JSON 파일로 쓰기 위해 json 을 불러온다
+import json  # 알림을 JSON 파일로 쓰기 위해 json 을 불러온다
 
-ALERTS_PATH = "alerts.json"                                                             # 알림을 모아 저장할 파일 이름
+ALERTS_PATH = "alerts.json"  # 알림을 모아 저장할 파일 이름
 
 
-def make_alert(alert_type, target, count, note):                                        # 종류 · 대상 · 횟수 · 메모를 받는 함수
+def make_alert(alert_type, target, count, note):  # 종류 · 대상 · 횟수 · 메모를 받는 함수
     """알림 한 건을 딕셔너리로 만든다.
     알림마다 같은 모양으로 담아 한 파일에 모을 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. 딕셔너리를 alert 에 담는다: 키 "type" 에는 alert_type, "target" 에는 target, "count" 에는 count, "note" 에는 note, "status" 에는 "확인 필요" 를 넣는다 (여러 줄로 나눠 써도 된다)
-    return alert                                                                        # 알림 한 건을 리턴한다
+    # 1. 알림 딕셔너리에 아래 다섯 키와 값을 넣어 alert 에 담는다
+    #    type: alert_type · target: target · count: count
+    #    note: note · status: "확인 필요"
+    return alert  # 알림 한 건을 리턴한다
 
 
-def make_login_alerts(alert_ips):                                                       # 알림 대상 주소와 횟수를 받는 함수
+def make_login_alerts(alert_ips):  # 알림 대상 주소와 횟수를 받는 함수
     """로그인 실패 알림 대상 주소마다 「비정상 로그인」 알림을 하나씩 만든다.
     실습 4-2에서 추출한 주소를 알림 형식으로 바꿀 때 쓴다.
     """
-    alerts = []                                                                         # 알림을 담을 빈 리스트
-    for ip_address, count in alert_ips.items():                                         # 주소와 횟수를 한 쌍씩 꺼낸다
-        note = "로그인 실패가 기준 이상 — 공격 확정이 아니라 먼저 살펴볼 곳"            # 담당자에게 보일 메모
+    alerts = []  # 알림을 담을 빈 리스트
+    for ip_address, count in alert_ips.items():  # 주소와 횟수를 한 쌍씩 꺼낸다
+        note = "로그인 실패가 기준 이상 — 공격 확정이 아니라 먼저 살펴볼 곳"  # 담당자에게 보일 메모
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 2. make_alert 에 "비정상 로그인" · ip_address · count · note 를 전달해 alert 에 담는다
-        alerts.append(alert)                                                            # 알림을 리스트에 추가한다
-    return alerts                                                                       # 로그인 실패 알림 리스트를 리턴한다
+        alerts.append(alert)  # 알림을 리스트에 추가한다
+    return alerts  # 로그인 실패 알림 리스트를 리턴한다
 
 
-def make_traffic_alerts(spike_minutes):                                                 # 요청이 급증한 분과 요청 수를 받는 함수
+def make_traffic_alerts(spike_minutes):  # 요청이 급증한 분과 요청 수를 받는 함수
     """요청이 급증한 분마다 「트래픽 급증」 알림을 하나씩 만든다.
     실습 5-1에서 추출한 분을 알림 형식으로 바꿀 때 쓴다.
     """
-    alerts = []                                                                         # 알림을 담을 빈 리스트
-    for minute, count in spike_minutes.items():                                         # 분과 요청 수를 한 쌍씩 꺼낸다
+    alerts = []  # 알림을 담을 빈 리스트
+    for minute, count in spike_minutes.items():  # 분과 요청 수를 한 쌍씩 꺼낸다
         note = "요청이 평소의 3배 이상으로 늘어남 — 공격 확정이 아니라 먼저 살펴볼 곳"  # 담당자에게 보일 메모
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 3. str(minute) 로 시각 값을 문자열로 바꿔 target 에 담는다
         # 4. make_alert 에 "트래픽 급증" · target · count · note 를 전달해 alert 에 담는다
-        alerts.append(alert)                                                            # 알림을 리스트에 추가한다
-    return alerts                                                                       # 트래픽 급증 알림 리스트를 리턴한다
+        alerts.append(alert)  # 알림을 리스트에 추가한다
+    return alerts  # 트래픽 급증 알림 리스트를 리턴한다
 
 
-def save_alerts(alerts, path):                                                          # 알림 리스트와 파일 경로를 받는 함수
+def save_alerts(alerts, path):  # 알림 리스트와 파일 경로를 받는 함수
     """알림 리스트를 JSON 파일로 저장하고 저장한 건수를 리턴한다.
     담당자와 다른 프로그램이 같은 파일로 알림을 처리하게 할 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 5. path 파일을 쓰기 모드("w")로 열고 file 변수로 쓴다 (with open(path, "w", encoding="utf-8") as file:)
     # 6. json.dump 에 alerts, file 을 이 순서로 전달하고, 뒤에 ensure_ascii=False, indent=2 를 붙여 쓴다 (한글은 그대로, 줄을 나눠 저장)
-    saved_count = len(alerts)                                                           # 저장한 알림이 몇 건인지 센다
-    return saved_count                                                                  # 저장한 건수를 리턴한다
+    saved_count = len(alerts)  # 저장한 알림이 몇 건인지 센다
+    return saved_count  # 저장한 건수를 리턴한다
 ```
 
 - 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1번은 함수 안이라 앞에 공백 4개이고, 2 ~ 4번은 `for` 안이라 8개이며, 5번은 함수 안이라 4개, 6번은 `with` 안이라 8개입니다.
@@ -225,36 +227,42 @@ def save_alerts(alerts, path):                                                  
 **`exercise5-2_run.py`** — **그대로 붙여 넣습니다.** 직접 쓰는 줄은 없습니다. Unit 4의 `login_detection.py` 와 실습 5-1의 `traffic_detection.py` 에 있는 함수를 불러와 알림을 만듭니다. `load_events` 는 두 파일에 같은 이름으로 있어서, <mark>여기서는 `login_detection.py` 의 것 하나만 불러옵니다.</mark>
 
 ```python
-import json                                                                          # 저장한 파일을 다시 읽기 위해 json 을 불러온다
-from login_detection import load_events, pick_login_failures, count_by_ip, pick_alert_ips, EVENTS_PATH, LOGIN_LIMIT  # 실습 4-2에서 만든 함수를 불러온다
-from traffic_detection import add_minute_column, count_web_per_minute, make_traffic_limit, pick_spike_minutes, TRAFFIC_PATH, SPIKE_MULTIPLE  # 실습 5-1에서 만든 함수를 불러온다
+import json  # 저장한 파일을 다시 읽기 위해 json 을 불러온다
+from login_detection import (
+    load_events, pick_login_failures, count_by_ip, pick_alert_ips,
+    EVENTS_PATH, LOGIN_LIMIT
+)  # 실습 4-2에서 만든 함수를 불러온다
+from traffic_detection import (
+    add_minute_column, count_web_per_minute, make_traffic_limit,
+    pick_spike_minutes, TRAFFIC_PATH, SPIKE_MULTIPLE
+)  # 실습 5-1에서 만든 함수를 불러온다
 from alerts import make_login_alerts, make_traffic_alerts, save_alerts, ALERTS_PATH  # 방금 만든 함수를 불러온다
 
-events = load_events(EVENTS_PATH)                                                    # 이벤트 파일을 표로 읽는다
-login_failures = pick_login_failures(events)                                         # 로그인 실패 이벤트만 골라낸다
-ip_login_fail_counts = count_by_ip(login_failures)                                   # 주소별로 실패 횟수를 센다
-alert_ips = pick_alert_ips(ip_login_fail_counts, LOGIN_LIMIT)                        # 알림 기준 이상인 주소만 고른다
-login_alerts = make_login_alerts(alert_ips)                                          # 주소마다 알림 한 건을 만든다
-login_alert_count = len(login_alerts)                                                # 로그인 실패 알림이 몇 건인지 센다
-print("--- 단계 1: 로그인 실패 알림", login_alert_count, "건")                       # 단계 1 시작을 알리는 줄과 건수
+events = load_events(EVENTS_PATH)  # 이벤트 파일을 표로 읽는다
+login_failures = pick_login_failures(events)  # 로그인 실패 이벤트만 골라낸다
+ip_login_fail_counts = count_by_ip(login_failures)  # 주소별로 실패 횟수를 센다
+alert_ips = pick_alert_ips(ip_login_fail_counts, LOGIN_LIMIT)  # 알림 기준 이상인 주소만 고른다
+login_alerts = make_login_alerts(alert_ips)  # 주소마다 알림 한 건을 만든다
+login_alert_count = len(login_alerts)  # 로그인 실패 알림이 몇 건인지 센다
+print("--- 단계 1: 로그인 실패 알림", login_alert_count, "건")  # 단계 1 시작을 알리는 줄과 건수
 
-events = add_minute_column(events)                                                   # 시각에서 초를 버린 minute 열을 붙인다
-minute_request_counts = count_web_per_minute(events)                                 # 웹 서버 요청을 분마다 센다
-limit = make_traffic_limit(TRAFFIC_PATH, SPIKE_MULTIPLE)                             # 급증 기준을 정한다
-spike_minutes = pick_spike_minutes(minute_request_counts, limit)                     # 요청이 급증한 분만 고른다
-traffic_alerts = make_traffic_alerts(spike_minutes)                                  # 분마다 알림 한 건을 만든다
-traffic_alert_count = len(traffic_alerts)                                            # 트래픽 급증 알림이 몇 건인지 센다
-print("--- 단계 2: 트래픽 급증 알림", traffic_alert_count, "건")                     # 단계 2 시작을 알리는 줄과 건수
+events = add_minute_column(events)  # 시각에서 초를 버린 minute 열을 붙인다
+minute_request_counts = count_web_per_minute(events)  # 웹 서버 요청을 분마다 센다
+limit = make_traffic_limit(TRAFFIC_PATH, SPIKE_MULTIPLE)  # 급증 기준을 정한다
+spike_minutes = pick_spike_minutes(minute_request_counts, limit)  # 요청이 급증한 분만 고른다
+traffic_alerts = make_traffic_alerts(spike_minutes)  # 분마다 알림 한 건을 만든다
+traffic_alert_count = len(traffic_alerts)  # 트래픽 급증 알림이 몇 건인지 센다
+print("--- 단계 2: 트래픽 급증 알림", traffic_alert_count, "건")  # 단계 2 시작을 알리는 줄과 건수
 
-all_alerts = login_alerts + traffic_alerts                                           # 두 리스트를 이어 붙여 알림 하나의 리스트로 모은다
-saved_count = save_alerts(all_alerts, ALERTS_PATH)                                   # 모은 알림을 파일에 저장하고 저장한 건수를 받는다
-print("--- 단계 3:", ALERTS_PATH, "에 알림", saved_count, "건 저장")                 # 단계 3 시작을 알리는 줄과 건수
+all_alerts = login_alerts + traffic_alerts  # 두 리스트를 이어 붙여 알림 하나의 리스트로 모은다
+saved_count = save_alerts(all_alerts, ALERTS_PATH)  # 모은 알림을 파일에 저장하고 저장한 건수를 받는다
+print("--- 단계 3:", ALERTS_PATH, "에 알림", saved_count, "건 저장")  # 단계 3 시작을 알리는 줄과 건수
 
-with open(ALERTS_PATH, encoding="utf-8") as file:                                    # 저장한 파일을 읽기 모드로 연다
-    saved_alerts = json.load(file)                                                   # JSON 을 파이썬 리스트로 읽는다
-print("--- 단계 4: 저장된 알림")                                                     # 단계 4 시작을 알리는 줄
-for alert in saved_alerts:                                                           # 알림을 하나씩 꺼낸다
-    print(alert)                                                                     # 알림 한 건을 출력한다
+with open(ALERTS_PATH, encoding="utf-8") as file:  # 저장한 파일을 읽기 모드로 연다
+    saved_alerts = json.load(file)  # JSON 을 파이썬 리스트로 읽는다
+print("--- 단계 4: 저장된 알림")  # 단계 4 시작을 알리는 줄
+for alert in saved_alerts:  # 알림을 하나씩 꺼낸다
+    print(alert)  # 알림 한 건을 출력한다
 ```
 
 **순서**
@@ -269,10 +277,12 @@ for alert in saved_alerts:                                                      
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise5-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **네 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1 ~ 3은 제목 줄에 숫자가 함께 나오고, 단계 4는 알림 한 건이 한 줄씩 2줄입니다.
 5. **[VS Code]** 새로 생긴 `alerts.json` 을 열어 <mark>알림 두 건이 보이는지</mark> 확인합니다.
-6. **[보고서]** `report_u5.md` 의 `## 실습 5-2` 아래를 채웁니다.
+6. **[실습 결과 기록]** `report_u5.md` 의 `## 실습 5-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, `alerts.json` 의 내용도 붙여 넣은 뒤 알림이 모두 몇 건인지 적어 주세요.
    - (나) [핵심 질문] ① 203.0.113.50 이 `normalized_events.json` 의 `source` 가 `web` 인 줄에 몇 시에 나오는지 찾아 주세요. ② 그 시각이 급증 알림의 분(09:12)과 같은지 비교해 주세요. ③ 두 알림이 같은 일과 관련이 있는지 적고, 담당자가 두 건을 한 건으로 합쳐 조사할지 따로 조사할지 고른 이유도 적어 주세요.
    - (다) [핵심 질문] 203.0.113.50 알림을 조사해 보니 직원이 비밀번호를 잊어 반복해서 입력한 것이었습니다. ① `status` 를 어떤 값으로 바꿀지(이 Unit 실습 5-2 레슨 2.1 의 처리 상태 순서를 참고), ② `note` 에 무엇을 더 적을지, ③ 알림을 지우지 않고 남겨 두는 편이 좋은 이유를 적어 주세요. 코드는 고치지 않고 글로만 적습니다.
+
+<!-- answer: 04|실습 5-2 정답 -->
 
 ## 실습 5-2 정리
 
@@ -321,9 +331,9 @@ for alert in saved_alerts:                                                      
    - `.env` 가 보이면: VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다.
      - `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
    - `anomaly_detection/__pycache__/` (파이썬이 실행하면서 자동으로 만드는 임시 폴더)가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다.
-3. **[보고서]** `report_u5.md` 의 `## 마무리` 아래를 채웁니다. <mark>올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다.</mark>
+3. **[실습 결과 기록]** `report_u5.md` 의 `## 저장소 점검` 아래를 채웁니다. <mark>올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다.</mark>
    - (가) `git status` 를 쳤을 때 `.env` 나 `.venv` 가 보였는지, 보였다면 어떻게 했는지 적어 주세요.
-   - 앞 실습에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다. 올린 뒤에 이어서 적어 다시 올려도 됩니다.
+   - 앞 실습에서 못 적은 기록 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다. 올린 뒤에 이어서 적어 다시 올려도 됩니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
    ```bash
    git add .
@@ -337,25 +347,24 @@ for alert in saved_alerts:                                                      
    - 빠진 이름이 있으면 VS Code 왼쪽 목록의 `anomaly_detection` 폴더에 내 PC 에도 있는지 봅니다.
      - 없으면 다른 폴더에 만든 것이니 `anomaly_detection` 안으로 옮기고, `pwd` 로 위치를 확인한 뒤 2번의 `git status` 부터 다시 합니다.
 
-## 마무리 정리
+<!-- answer: 04|정답 마무리 -->
 
-| 하려는 일 | 코드 · 말 |
-|---|---|
-| 올릴 파일 확인 | `git status` (`.env` · `.venv` 가 보이면 멈춤) |
-| 올리기 | `git add .` → `git commit -m "…"` → `git push` |
-| 올린 뒤 | 브라우저에서 `anomaly_detection` 폴더와 파일이 있는지 확인 |
+## 문제 해결 기록 남기기
 
----
+`report_u5.md`는 실행 출력과 질문에 대한 근거를 모은 **기술 기록**입니다. 여기에 적은 답을 그대로 옮기지 말고, 요청 급증을 어떻게 찾고 알림을 어떤 근거로 묶었는지 동료가 따라갈 수 있게 GitHub 블로그에 기록합니다.
 
-## 이번 Unit 마무리
+블로그와 GitHub Pages를 처음 설정한다면 [M3 Unit 1의 Jekyll 및 GitHub Pages 설정](__SITE__/exercises/module/3/unit/1/lesson/1/page/4)을 먼저 진행하세요. 이미 설정했다면 `network-study-notes` 저장소의 `_posts` 폴더에 `YYYY-MM-DD-m4-u5-traffic-alerts.md` 형식의 글을 만듭니다. Unit 5의 코드 파일을 올린 `anomaly_detection` 저장소와 블로그 저장소는 각각 따로 커밋하고 게시합니다.
 
-| 확인 | 문제 |
-|---|---|
-| 웹 서버 요청을 분마다 세고 평소 평균의 3배 이상으로 늘어난 분을 찾았다 | 실습 5-1 |
-| 로그인 실패 알림과 트래픽 급증 알림을 같은 모양으로 만들어 `alerts.json` 에 모았다 | 실습 5-2 |
-| 이번 Unit에서 만든 파일과 보고서를 깃허브에 올렸다 | 마무리 |
+기록에는 다음 내용을 담습니다.
 
-다음은 Unit 6입니다. 이번 Unit에서 만든 알림 형식에 SaaS 이상 사용과 악성 행위 징후 같은 유형을 더해 갑니다.
+- **문제와 기준:** 분당 요청 수를 어떤 기준과 비교했는지, 09:12가 급증으로 잡힌 이유
+- **알림을 연결한 근거:** 09:12의 웹 요청과 `203.0.113.50` 로그인 실패 알림이 시간과 주소에서 어떻게 겹치는지
+- **놓친 신호와 한계:** 09:20에 요청이 있었지만 급증 기준에 못 미친 사실과, 요청 수만 세는 규칙이 내용을 구분하지 못하는 이유
+- **판단과 다음 확인:** 관찰한 사실과 공격 가능성에 대한 가설을 구분하고, 확정하려면 어떤 사용자·요청·인증 정보가 더 필요한지
+
+샘플 데이터만으로 공격 여부를 확정하지 않습니다. 글을 저장하고 블로그 저장소에 커밋한 뒤 `git push` 합니다. GitHub Pages에 게시된 글과 링크를 확인하세요.
+
+다음 Unit에서는 이번 Unit의 알림 형식에 SaaS 이상 사용과 악성 행위 징후 같은 유형을 더합니다.
 
 ---
 

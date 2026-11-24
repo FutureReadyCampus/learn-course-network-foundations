@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
 <title>anomaly_detection 폴더에 baseline_traffic.csv 를 만들고 8줄인지 확인한다</title>
-<desc>security-agent-toolkit 안의 anomaly_detection 폴더에 Unit 4 파일 두 개가 있어야 합니다. baseline_traffic.csv 를 New File 로 만들어 붙여 넣고 줄 수가 헤더 포함 8인지 확인합니다. 보고서 report_u5.md 는 「보고서 쓰기」 레슨에서 만듭니다.</desc>
+<desc>security-agent-toolkit 안의 anomaly_detection 폴더에 Unit 4 파일 두 개가 있어야 합니다. baseline_traffic.csv 를 New File 로 만들어 붙여 넣고 줄 수가 헤더 포함 8인지 확인합니다. 실습 결과 기록 report_u5.md 는 「실습 결과 기록 준비」 레슨에서 만듭니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">폴더 준비: baseline_traffic.csv 를 만든다</text>
@@ -12,7 +12,7 @@
 <text x="84" y="176" font-size="15" text-anchor="start" fill="#292929">normalized_events.json</text>
 <text x="424" y="176" font-size="14" text-anchor="end" fill="#666660">Unit 4</text>
 <text x="84" y="206" font-size="15" text-anchor="start" fill="#292929">report_u5.md</text>
-<text x="424" y="206" font-size="14" text-anchor="end" fill="#666660">「보고서 쓰기」에서</text>
+<text x="424" y="206" font-size="14" text-anchor="end" fill="#666660">「실습 결과 기록 준비」에서</text>
 <text x="84" y="236" font-size="15" text-anchor="start" fill="#292929" font-weight="700">baseline_traffic.csv</text>
 <text x="424" y="236" font-size="14" text-anchor="end" fill="#9a6200">새로 만듦</text>
 <rect x="84" y="270" width="340" height="100" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
