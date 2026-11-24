@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
-<title>보고서는 쓸 내용을 보고 답: 뒤에, 출력은 코드 상자에, 모르면 모름이라고 쓴다</title>
-<desc>보고서를 쓰는 다섯 가지 규칙을 체크리스트로 놓았습니다. 왜를 묻는 질문은 화면의 값이나 배운 내용을 근거로 쓰고, 답을 못 찾으면 모름과 막힌 곳을 씁니다.</desc>
+<title>실습 결과와 질문 답을 report_u1.md 에 근거와 함께 기록한다</title>
+<desc>실습 결과를 기록하는 다섯 가지 규칙을 체크리스트로 놓았습니다. 왜를 묻는 질문은 화면의 값이나 배운 내용을 근거로 쓰고, 답을 못 찾으면 모름과 막힌 곳을 씁니다.</desc>
 <defs><marker id="a-m4u01l05-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker><marker id="a-m4u01l05-p01-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0442e"/></marker></defs>
 <g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
-<text x="24" y="30" font-size="19" fill="#292929" font-weight="700">보고서 쓰는 법</text>
+<text x="24" y="30" font-size="19" fill="#292929" font-weight="700">실습 결과 기록 방법</text>
 <rect x="24" y="48" width="672" height="52" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <rect x="40" y="64" width="20" height="20" rx="4" fill="#ffffff" stroke="#1f7a4a" stroke-width="2"/><polyline points="44,74 49,79 56,69" fill="none" stroke="#1f7a4a" stroke-width="2.5"/>
 <text x="74" y="80" font-size="15" fill="#292929">문제를 풀 때마다 그 문제 제목 아래 질문에 답하기</text>

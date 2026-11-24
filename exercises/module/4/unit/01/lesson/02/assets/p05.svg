@@ -35,7 +35,7 @@
 <rect x="24" y="300" width="120" height="54" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="84.0" y="332.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">Unit 8 ~ 9</text>
 <rect x="156" y="300" width="290" height="54" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="301.0" y="332.2" font-size="15" fill="#292929" text-anchor="middle">도커로 오탐 · 미탐 세기</text>
+<text x="301.0" y="332.2" font-size="15" fill="#292929" text-anchor="middle">테스트 로그로 오탐 · 미탐 세기</text>
 <rect x="458" y="300" width="238" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="577.0" y="332.2" font-size="15" fill="#292929" text-anchor="middle">evaluation.py</text>
 <rect x="24" y="362" width="120" height="54" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
