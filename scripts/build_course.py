@@ -245,7 +245,7 @@ def validate_page_video(metadata: dict, page_id: str, path: Path) -> dict:
     ):
         raise ValueError(f"Page video duration_seconds must be positive in {path}: {page_id}")
     return {"video": {
-        key: video[key] for key in ("video_id", "title", "creator", "duration_seconds") if key in video
+        key: video[key] for key in ("video_id", "title", "creator", "duration_seconds", "required") if key in video
     }}
 
 
@@ -520,6 +520,38 @@ def expand_includes(text: str) -> str:
     return re.sub(r"(?m)^<!--\s*include:\s*(\S+)\s*-->\s*$", box, text)
 
 
+CHECKLIST_RE = re.compile(r"(?ms)^<!--\s*checklist(?P<optional>\s+optional)?\s*-->[ \t]*\n(?P<body>.*?)^<!--\s*/checklist\s*-->[ \t]*\n?")
+
+
+def split_checklist(text: str, md) -> tuple[str, dict | None]:
+    """`<!-- checklist -->` 블록(`- [ ] 항목` 줄들)을 본문에서 찾아 그 자리에 자리표시(`div.inline-check`)를 남긴다.
+
+    한 Page 에 블록이 여러 개여도 된다(단계마다 그 단계 바로 아래에 둔다). 항목은 Page 전체에서 이어서 번호를 매기고,
+    리더가 자리표시마다 그 블록의 항목을 그려 준다. 모든 블록이 `optional` 이면 Page 전체가 선택이다.
+    """
+    items: list[str] = []
+    flags: list[bool] = []
+
+    def hold(match):
+        found = []
+        for line in match.group("body").split("\n"):
+            item = re.match(r"^\s*[-*]\s+\[[ xX]\]\s+(.+?)\s*$", line)
+            if item:
+                found.append(md.renderInline(item.group(1)))
+        if not found:
+            return ""
+        optional = bool(match.group("optional"))
+        marker = f'\n<div class="inline-check" data-start="{len(items)}" data-count="{len(found)}" data-optional="{int(optional)}"></div>\n\n'
+        items.extend(found)
+        flags.append(optional)
+        return marker
+
+    rest = CHECKLIST_RE.sub(hold, text)
+    if not items:
+        return rest, None
+    return rest, {"optional": all(flags), "items": items}
+
+
 def markdown_pages(path: Path, lesson_meta: dict | None = None) -> list[dict]:
     """Exercise Lessons: each `## ` heading (outside code fences) is a Page rendered from full Markdown."""
     from markdown_it import MarkdownIt
@@ -557,7 +589,31 @@ def markdown_pages(path: Path, lesson_meta: dict | None = None) -> list[dict]:
     videos = (lesson_meta or {}).get("page_videos") or {}  # {page number: {video_id, title, creator, ...}}
     pages = []
     for i, (title, body) in enumerate(sections, 1):
-        page = {"title": title, "paragraphs": [], "html": figure(i) + inline_figures(iconize(md.render(expand_includes("\n".join(body))))), "terms": [], "questions": []}
+        text, checklist = split_checklist("\n".join(body), md)
+
+        def included_page(match):
+            nonlocal checklist
+            kind, lesson_number, page_title = match.groups()
+            source = path.parent.parent / lesson_number / "lesson.md"
+            if source == path or not source.is_file():
+                raise ValueError(f"Answer lesson not found: {source}")
+            matches = [page for page in markdown_pages(source) if page["title"] == page_title]
+            if len(matches) != 1:
+                raise ValueError(f"Included page not found or duplicated: {page_title} in {source}")
+            html = matches[0]["html"]
+            included_checklist = matches[0].get("checklist")
+            if included_checklist:
+                if checklist or kind == "answer":
+                    raise ValueError(f"Included checklist cannot be combined: {source}")
+                checklist = included_checklist
+            if kind == "answer":
+                return f'<details class="exercise-answer"><summary>정답과 해설 보기</summary>{html}</details>'
+            return html
+
+        text = re.sub(r"(?m)^<!-- (answer|page): (\d{2})\|(.*?) -->$", included_page, text)
+        page = {"title": title, "paragraphs": [], "html": figure(i) + inline_figures(iconize(md.render(expand_includes(text)))), "terms": [], "questions": []}
+        if checklist:
+            page["checklist"] = checklist
         if i in videos:
             page.update(validate_page_video({"video": videos[i]}, f"page {i}", path))
         pages.append(page)

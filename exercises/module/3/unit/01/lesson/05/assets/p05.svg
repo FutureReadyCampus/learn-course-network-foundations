@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
+<title>본보기로 실습 1-2 의 파일들이 어떤 함수를 호출하고 어떤 설정 파일을 읽는지 그린 흐름도</title>
+<desc>exercise1-2_run.py 는 요청 아홉 건마다 rbac.py 의 check_permission 을 호출합니다. rbac.py 는 불러올 때 한 번 users.json 과 roles.json 을 읽으므로, 설정 파일이 깨지면 그 파일을 불러오는 화살표에서 멈춥니다.</desc>
+<defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+<text x="360" y="32" font-size="18" text-anchor="middle" font-weight="700">3.3 본보기 · 실습 1-2 파일 사이의 흐름</text>
+<rect x="230" y="50" width="260" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="78" font-size="15" text-anchor="middle" font-weight="700">exercise1-2_run.py</text>
+<line x1="360" y1="94" x2="360" y2="148" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p05)"/>
+<text x="372" y="126" font-size="14">check_permission() 호출 · 요청 아홉 건마다</text>
+<rect x="230" y="152" width="260" height="44" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="180" font-size="15" text-anchor="middle" font-weight="700">rbac.py</text>
+<line x1="360" y1="196" x2="360" y2="250" stroke="#666660" stroke-width="1.6" marker-end="url(#a-p05)"/>
+<text x="372" y="228" font-size="14" fill="#666660">읽음 (rbac.py 를 불러올 때 한 번)</text>
+<rect x="230" y="254" width="260" height="62" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="360" y="280" font-size="14" text-anchor="middle">config/users.json</text>
+<text x="360" y="300" font-size="14" text-anchor="middle">config/roles.json</text>
+<text x="360" y="352" font-size="14" text-anchor="middle" fill="#666660">상자 = 파일 · 화살표 옆 = 호출하는 함수 · 읽음 = 설정 파일</text>
+<text x="360" y="380" font-size="15" text-anchor="middle">설정 파일이 깨지면 그 파일을 불러오는 화살표에서 멈춥니다</text>
+</g>
+</svg>

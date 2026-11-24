@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 374" role="img">
+<title>응용 1-2 보고서에 채울 칸: 출력과 hana, 이동한 사람의 권한, 늦은 퇴사 통보</title>
+<desc>응용 1-2 보고서의 (가)~(다) 질문마다 써야 할 내용을 체크리스트로 보여 줍니다. 응용은 선택이라 한 경우에만 채웁니다.</desc>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+<text x="24" y="34" font-size="19" font-weight="700">응용 1-2 보고서 · 채울 칸 (선택)</text>
+<rect x="24" y="52" width="672" height="94" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="40" y="74" font-size="16" font-weight="700">(가) 출력과 hana</text>
+<rect x="44" y="86" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="68" y="98" font-size="15">출력 전체를 코드 상자에 붙여 넣기</text>
+<rect x="44" y="112" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="68" y="124" font-size="15">hana 가 사용자에 들어갔나 줄의 값</text>
+<rect x="24" y="158" width="672" height="94" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="40" y="180" font-size="16" font-weight="700">(나) [핵심 질문] 영업에서 재무로 옮긴 seoyeon</text>
+<rect x="44" y="192" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="68" y="204" font-size="15">SALES CHANGE 와 SETTLE QUERY 의 변경 전 → 후 결과</text>
+<rect x="44" y="218" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="68" y="230" font-size="15">이전 역할의 권한이 남아 있을 때 생기는 문제</text>
+<rect x="24" y="264" width="672" height="94" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="40" y="286" font-size="16" font-weight="700">(다) [핵심 질문] 사흘 늦은 퇴사 통보</text>
+<rect x="44" y="298" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="68" y="310" font-size="15">그 사흘 동안 junho 계정으로 생길 수 있는 일</text>
+<rect x="44" y="324" width="14" height="14" rx="2" fill="#ffffff" stroke="#666660" stroke-width="1.4"/>
+<text x="68" y="336" font-size="15">간격을 줄이는 방법 두 가지 이상</text>
+</g>
+</svg>

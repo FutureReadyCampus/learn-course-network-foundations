@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <title>두 파일을 만들고 exercise2-1_run.py 를 실행해 접수 결과와 요청서 리스트를 읽는다</title>
-<desc>access_control 폴더에 req_create.py 와 exercise2-1_run.py 를 만듭니다. 실행하면 단계 1에서 일곱 건의 접수 결과를, 단계 2에서 접수된 요청서 네 줄을 출력합니다.</desc>
+<desc>access_control 폴더에 req_create.py 와 exercise2-1_run.py 를 만들고, req_create.py 의 빈칸 세 곳을 채웁니다. 실행하면 단계 1에서 일곱 건의 접수 결과를, 단계 2에서 접수된 요청서 네 줄을 출력합니다.</desc>
 <defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <text x="24" y="30" font-size="19" fill="#292929" text-anchor="start" font-weight="700">실습 2-1 · 파일 두 개와 실행 결과</text>
 <rect x="30" y="56" width="260" height="228" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
@@ -8,7 +8,7 @@
 <rect x="46" y="96" width="228" height="80" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="160" y="119.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">req_create.py</text>
 <text x="160" y="140.6" font-size="15" fill="#292929" text-anchor="middle">create_request</text>
-<text x="160" y="161.6" font-size="15" fill="#292929" text-anchor="middle">본문을 직접 쓰기</text>
+<text x="160" y="161.6" font-size="15" fill="#292929" text-anchor="middle">빈칸 세 곳(① ② ③) 채우기</text>
 <rect x="46" y="190" width="228" height="80" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="160" y="213.6" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">exercise2-1_run.py</text>
 <text x="160" y="234.6" font-size="15" fill="#292929" text-anchor="middle">요청 일곱 건 · 실행 파일</text>
@@ -30,5 +30,5 @@
 <text x="610" y="245.1" font-size="15" fill="#292929" text-anchor="middle">번호 · 요청자 ·</text>
 <text x="610" y="266.1" font-size="15" fill="#292929" text-anchor="middle">권한 · 상태</text>
 <rect x="30" y="300" width="670" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="365" y="326.6" font-size="15" fill="#292929" text-anchor="middle">보고서 실습 2-1 (가) 출력과 걸린 if 조건 · (나) until 을 믿어도 되는가</text>
+<text x="365" y="326.6" font-size="15" fill="#292929" text-anchor="middle">질문 채운 뒤 출력과 걸린 if 조건</text>
 </svg>

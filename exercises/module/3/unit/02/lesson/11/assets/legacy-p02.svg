@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
+<title>글 틀을 _posts/ 에 붙여 넣고 unit: 2 로 올리면 첫 화면 Module 3의 2번 칸이 채워진다</title>
+<desc>왼쪽에서 글 틀을 고릅니다. 기본은 세 문장 글 post-short 이고, 긴 글 post-practice 는 응용입니다. 가운데처럼 VS Code 에서 _posts/ 에 새 글을 만들고, 코드는 access_control/ 경로만 적습니다. 점검 뒤 git push 하고 1~2분 뒤 첫 화면의 나의 진행에서 Module 3의 2번 칸이 채워집니다.</desc>
+<defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">글 틀 고르기 → VS Code 에서 쓰고 push → 칸 확인</text>
+<text x="20" y="64" font-size="15" fill="#666660" font-weight="700">1. 글 틀 고르기</text>
+<rect x="20" y="76" width="200" height="56" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="32" y="99" font-size="14" fill="#292929" font-weight="700">post-short.md</text>
+<text x="32" y="120" font-size="14" fill="#292929">기본 · 세 문장</text>
+<rect x="20" y="142" width="200" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="165" font-size="14" fill="#292929" font-weight="700">post-stuck.md</text>
+<text x="32" y="186" font-size="14" fill="#292929">막혔던 일</text>
+<rect x="20" y="208" width="200" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="32" y="231" font-size="14" fill="#292929" font-weight="700">post-practice.md</text>
+<text x="32" y="252" font-size="14" fill="#292929">응용 · 긴 글</text>
+<path d="M224 170 L254 170" stroke="#666660" stroke-width="1.5" fill="none" marker-end="url(#a-p02)"/>
+<text x="260" y="64" font-size="15" fill="#666660" font-weight="700">2. VS Code › _posts › New File</text>
+<rect x="260" y="76" width="440" height="128" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="274" y="100" font-size="14" fill="#2f6fd0" font-weight="700">_posts/2026-11-20-m3-u2-request-approval.md</text>
+<rect x="274" y="112" width="200" height="80" rx="4" fill="#f1f1ef"/>
+<text x="286" y="134" font-size="14" fill="#292929">---</text>
+<text x="286" y="154" font-size="14" fill="#292929">module: 3</text>
+<text x="286" y="174" font-size="14" fill="#e0442e" font-weight="700">unit: 2</text>
+<text x="490" y="140" font-size="14" fill="#666660">머리말 두 줄이</text>
+<text x="490" y="160" font-size="14" fill="#666660">칸 위치를 정합니다</text>
+<rect x="260" y="216" width="440" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="274" y="245" font-size="14" fill="#292929"><tspan font-weight="700">access_control/req_review.py</tspan>  경로만 적기</text>
+<path d="M480 268 L480 304" stroke="#666660" stroke-width="1.5" fill="none" marker-end="url(#a-p02)"/>
+<text x="492" y="292" font-size="14" fill="#666660">git push, 1~2분 기다리기</text>
+<text x="20" y="330" font-size="15" fill="#666660" font-weight="700">3. 첫 화면 「나의 진행」 · Module 3</text>
+<rect x="20" y="344" width="58" height="44" rx="6" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="49" y="371" font-size="14" fill="#666660" text-anchor="middle">1</text>
+<rect x="88" y="344" width="58" height="44" rx="6" fill="#e0442e" stroke="#e0442e" stroke-width="1.5"/>
+<text x="117" y="371" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="700">2</text>
+<rect x="156" y="344" width="58" height="44" rx="6" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="185" y="371" font-size="14" fill="#666660" text-anchor="middle">3</text>
+<rect x="224" y="344" width="58" height="44" rx="6" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="253" y="371" font-size="14" fill="#666660" text-anchor="middle">4</text>
+<text x="300" y="371" font-size="14" fill="#666660">… 10</text>
+<text x="380" y="364" font-size="15" fill="#292929">unit: 2 글이 올라가면</text>
+<text x="380" y="385" font-size="15" fill="#292929">2번 칸이 회색에서 빨강으로 바뀝니다</text>
+</g>
+</svg>

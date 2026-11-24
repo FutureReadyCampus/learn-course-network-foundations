@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
-<title>Module 3은 다섯 단계이고, 오늘 Unit 1은 3시간 동안 핵심 실습 세 개와 글쓰기를 한다</title>
-<desc>위쪽은 Module 3의 다섯 단계와 Unit 1~5의 대응입니다. 가운데는 오늘 3시간의 계획(시작 15분, 실습 약 110분, 글쓰기 40분, 마무리 15분)이고, 아래쪽은 오늘 만들 것 세 가지와 선택인 도전입니다.</desc>
+<title>Module 3은 다섯 단계이고, 오늘 Unit 1은 포트폴리오와 깃을 준비한 뒤 가벼운 실습 세 개와 세 문장 글을 쓴다</title>
+<desc>위쪽은 Module 3의 다섯 단계와 Unit 1~5의 대응입니다. 가운데는 오늘의 계획(준비 약 60분, 핵심 실습 약 60분, 글쓰기 20분, 마무리 15분, 여유 약 25분)이고, 아래쪽은 오늘 만들 것 세 가지와 선택인 응용입니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="30" font-size="19" fill="#292929" font-weight="700">Module 3 접근통제 자동화 · 다섯 단계</text>
@@ -23,19 +23,22 @@
 <rect x="572" y="46" width="124" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="634" y="73" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">결과 보고하기</text>
 <text x="634" y="96" font-size="14" fill="#666660" text-anchor="middle">Unit 5</text>
-<text x="20" y="150" font-size="17" fill="#292929" font-weight="700">오늘의 3시간</text>
-<rect x="20" y="164" width="76" height="58" rx="6" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="58" y="188" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">시작</text>
-<text x="58" y="209" font-size="14" fill="#666660" text-anchor="middle">15분</text>
-<rect x="100" y="164" width="380" height="58" rx="6" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="290" y="188" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">핵심 실습 세 개</text>
-<text x="290" y="209" font-size="14" fill="#292929" text-anchor="middle">약 110분</text>
-<rect x="484" y="164" width="136" height="58" rx="6" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="552" y="188" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">글쓰기</text>
-<text x="552" y="209" font-size="14" fill="#292929" text-anchor="middle">40분</text>
-<rect x="624" y="164" width="76" height="58" rx="6" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="662" y="188" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">마무리</text>
-<text x="662" y="209" font-size="14" fill="#666660" text-anchor="middle">15분</text>
+<text x="20" y="150" font-size="17" fill="#292929" font-weight="700">오늘은 준비의 날 · 약 2시간 35분</text>
+<rect x="20" y="164" width="224" height="58" rx="6" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
+<text x="132" y="188" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">준비</text>
+<text x="132" y="209" font-size="14" fill="#292929" text-anchor="middle">포트폴리오 · 저장소 · 약 60분</text>
+<rect x="248" y="164" width="224" height="58" rx="6" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
+<text x="360" y="188" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">핵심 실습 세 개</text>
+<text x="360" y="209" font-size="14" fill="#292929" text-anchor="middle">빈칸 두 곳씩 · 약 60분</text>
+<rect x="476" y="164" width="76" height="58" rx="6" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
+<text x="514" y="188" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">글쓰기</text>
+<text x="514" y="209" font-size="14" fill="#292929" text-anchor="middle">20분</text>
+<rect x="556" y="164" width="60" height="58" rx="6" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
+<text x="586" y="188" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">마무리</text>
+<text x="586" y="209" font-size="14" fill="#666660" text-anchor="middle">15분</text>
+<rect x="620" y="164" width="80" height="58" rx="6" fill="#ffffff" stroke="#666660" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="660" y="188" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">여유</text>
+<text x="660" y="209" font-size="14" fill="#666660" text-anchor="middle">약 25분</text>
 <text x="20" y="262" font-size="17" fill="#292929" font-weight="700">오늘 만들 것 세 가지</text>
 <rect x="20" y="276" width="210" height="84" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="125" y="304" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">실습 1-1</text>
@@ -52,6 +55,6 @@
 <text x="592" y="326" font-size="14" fill="#292929" text-anchor="middle">evaluate_access</text>
 <text x="592" y="346" font-size="14" fill="#292929" text-anchor="middle">policy.py</text>
 <rect x="20" y="374" width="680" height="34" rx="6" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="360" y="396" font-size="15" fill="#292929" text-anchor="middle">도전 1-1 ~ 1-5는 선택 · 핵심 실습과 글쓰기를 마치고 시간이 남을 때</text>
+<text x="360" y="396" font-size="15" fill="#292929" text-anchor="middle">응용 1-1 ~ 1-5는 여유가 되면 · 핵심 실습과 글쓰기를 마친 뒤</text>
 </g>
 </svg>

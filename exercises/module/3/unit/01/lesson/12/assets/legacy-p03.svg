@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img">
+<title>실습 1-1 보고서는 (가) 판정, (나) 필요 이상 ○, (다) tester 판정을 채운다</title>
+<desc>(가)는 요청 여섯 개의 판정과 막히는 곳, 사건과의 연결을 쓴다. 응용 (나)는 고른 ○ 와 이유, 위험을, (다)는 tester 의 판정과 기본 거부 이유를 쓴다.</desc>
+<defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">보고서 · 실습 1-1 채울 칸</text>
+<rect x="20" y="56" width="680" height="126" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="34" y="80" font-size="16" fill="#292929" font-weight="700">(가) 핵심 질문 · 요청 판정</text>
+<rect x="34" y="96" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="60" y="109.5" font-size="15" fill="#292929">① 요청 ① ~ ⑥ 여섯 개의 허용 · 거부</text>
+<rect x="34" y="124" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="60" y="137.5" font-size="15" fill="#292929">② 요청 ② 가 막히는 곳(인증 · 인가)과 매트릭스 칸</text>
+<rect x="34" y="152" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="60" y="165.5" font-size="15" fill="#292929">③ 정산 내역을 조회했는데 막지 못한 사건과 이어지는 점</text>
+<rect x="20" y="194" width="680" height="126" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="34" y="218" font-size="16" fill="#292929" font-weight="700">(나) 응용 · 필요 이상 ○</text>
+<rect x="34" y="234" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="60" y="247.5" font-size="15" fill="#292929">① 고른 ○ (역할 · 권한)</text>
+<rect x="34" y="262" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="60" y="275.5" font-size="15" fill="#292929">② 필요 이상이라고 본 이유</text>
+<rect x="34" y="290" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="60" y="303.5" font-size="15" fill="#292929">③ 남아 있을 때의 위험</text>
+<rect x="20" y="332" width="680" height="98" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<text x="34" y="356" font-size="16" fill="#292929" font-weight="700">(다) 핵심 질문 · 역할 없는 사용자</text>
+<rect x="34" y="372" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="60" y="385.5" font-size="15" fill="#292929">① tester 의 판정 (허용 · 거부)</text>
+<rect x="34" y="400" width="16" height="16" rx="3" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
+<text x="60" y="413.5" font-size="15" fill="#292929">② 그 이유 (기본 거부)</text>
+</g>
+</svg>

@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
-<title>도전 2-3 정리: 저장은 with open 과 json.dump, 건수는 counts.get 으로 센다</title>
+<title>응용 2-3 정리: 저장은 with open 과 json.dump, 건수는 counts.get 으로 센다</title>
 <desc>save_requests 는 쓰기 모드로 파일을 열어 json.dump 로 쓰고 저장한 건수를 돌려줍니다. count_by_status 는 counts.get(상태, 0) 에 1을 더해 셉니다. 저장했는지는 load_json 으로 다시 읽어 확인합니다.</desc>
 <defs><marker id="a-p05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">도전 2-3 정리</text>
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">응용 2-3 정리</text>
 <text x="20" y="64" font-size="16" fill="#9a6200" font-weight="700">save_requests</text>
 <text x="380" y="64" font-size="16" fill="#9a6200" font-weight="700">count_by_status</text>
 <rect x="20" y="76" width="330" height="48" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>

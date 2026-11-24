@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <title>공개 전에 눈으로 훑고 check_publish.py로 오류·주의가 없을 때까지 고칩니다</title>
-<desc>왼쪽은 눈으로 확인할 것 네 가지(.env 파일, API 키·토큰, 이메일·전화번호, 다른 사람 이름)입니다. 오른쪽은 git clone, cd, python check_publish.py로 점검하고 [오류]나 [주의] 줄이 있으면 고친 뒤 다시 돌리는 순서입니다. 이미 올린 키는 지우기 전에 서비스에서 먼저 폐기합니다.</desc>
+<desc>왼쪽은 눈으로 확인할 것 네 가지(.env 파일, API 키·토큰, 이메일·전화번호, 다른 사람 이름)입니다. 오른쪽은 저장소 루트(cd ..)에서 python check_publish.py로 점검하고 [오류]나 [주의] 줄이 있으면 고친 뒤 다시 돌리는 순서입니다. 이미 올린 키는 지우기 전에 서비스에서 먼저 폐기합니다.</desc>
 <defs>
 <marker id="a-p11" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
 </defs>
@@ -22,8 +22,8 @@
 
 <rect x="330" y="52" width="370" height="110" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="346" y="82" font-size="16" font-weight="700">② 스크립트로 확인</text>
-<text x="346" y="108" font-size="14">git clone …/network-study-notes.git</text>
-<text x="346" y="128" font-size="14">cd network-study-notes</text>
+<text x="346" y="108" font-size="14">cd ..</text>
+<text x="346" y="128" font-size="14" fill="#666660">저장소 루트 network-study-notes 에서</text>
 <text x="346" y="148" font-size="14" font-weight="700">python check_publish.py</text>
 
 <rect x="330" y="186" width="370" height="44" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>

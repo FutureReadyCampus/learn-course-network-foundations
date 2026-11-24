@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img">
 <title>사람이 눈으로 하던 확인을 assert 테스트로 적어 한 번에 확인합니다</title>
-<desc>policy.py 를 고칠 때마다 사람이 요청을 하나씩 넣어 보면 빠뜨림이 생깁니다. 도전 1-5에서는 꼭 지킬 규칙 네 가지를 assert 테스트로 적어 한 번 실행으로 확인하고, 팀원 제안을 시험한 뒤 깃허브에 올립니다.</desc>
+<desc>policy.py 를 고칠 때마다 사람이 요청을 하나씩 넣어 보면 빠뜨림이 생깁니다. 응용 1-5에서는 꼭 지킬 규칙 네 가지를 assert 테스트로 적어 한 번 실행으로 확인하고, 팀원 제안을 시험한 뒤 깃허브에 올립니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
-<text x="24" y="34" font-size="19" font-weight="700">도전 1-5 목표 · 규칙을 테스트로</text>
+<text x="24" y="34" font-size="19" font-weight="700">응용 1-5 목표 · 규칙을 테스트로</text>
 <text x="24" y="66" font-size="16" font-weight="700">지금</text>
 <text x="24" y="196" font-size="16" font-weight="700">바라는 것</text>
 <rect x="24" y="80" width="200" height="76" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>

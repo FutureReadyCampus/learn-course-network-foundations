@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img">
+<title>올리기 전 네 가지 점검: 비밀키, 개인 연락처, 실제 사람 이름, unit: 2 머리말</title>
+<desc>Unit 2 글을 공개하기 전에 확인할 네 가지를 체크리스트로 정리했습니다. 실습 데이터의 이름은 괜찮지만 실제 사람 이름과 연락처, 비밀키는 지우고, 머리말이 module: 3, unit: 2 인지 봅니다.</desc>
+<defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
+<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">공개 전 점검 · Unit 2 글</text>
+<rect x="20" y="48" width="680" height="232" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
+<rect x="44" y="76" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="72" y="89" font-size="15" fill="#292929">비밀키 · 토큰 · .env 내용이 글과 access_control/ 파일에 없다</text>
+<rect x="44" y="128" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="72" y="141" font-size="15" fill="#292929">개인 이메일 · 전화번호가 없다</text>
+<rect x="44" y="180" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="72" y="193" font-size="15" fill="#292929">실제 사람 이름이 없다 (seoyeon, gaeun 같은 실습 데이터 이름은 괜찮음)</text>
+<rect x="44" y="232" width="16" height="16" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
+<text x="72" y="245" font-size="15" fill="#292929">머리말이 <tspan font-weight="700" fill="#e0442e">module: 3, unit: 2</tspan> 이다</text>
+</g>
+</svg>
