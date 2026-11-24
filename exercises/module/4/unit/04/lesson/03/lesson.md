@@ -50,11 +50,11 @@ source:
 실습 4-1에서 쓴 두 줄(`daily_failed_logins = daily["failed_logins"]` → `average = daily_failed_logins.mean()`)은 실무에서 아래 한 줄로 자주 씁니다. 같은 일입니다. **직접 쓰지 않고 읽기만 합니다.** 자세한 쓰임은 다음에 차차 배웁니다.
 
 ```python
-import pandas as pd                         # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 daily = pd.read_csv("baseline_logins.csv")  # CSV 파일을 읽어 표로 만든다 — 한 행이 하루
 
-average = daily["failed_logins"].mean()     # 열 꺼내기와 평균을 한 줄로 쓴 모양 — 위 두 줄과 같은 결과
-print(average)                              # 2.4285714285714284 — 소수점 아래가 길게 나오는 것은 round 를 쓰지 않았기 때문이다
+average = daily["failed_logins"].mean()  # 열 꺼내기와 평균을 한 줄로 쓴 모양 — 위 두 줄과 같은 결과
+print(average)  # 2.4285714285714284 — 소수점 아래가 길게 나오는 것은 round 를 쓰지 않았기 때문이다
 ```
 
 실행 결과:
@@ -68,9 +68,9 @@ print(average)                              # 2.4285714285714284 — 소수점 �
 **`=` 는 오른쪽 값을 왼쪽 이름에 담고, `==` 는 두 값이 같은지 비교합니다. 한 줄에 같이 쓰면 비교(`==`)를 먼저 하고 그 결과를 `=` 로 담습니다**
 
 ```python
-age = 20              # age 에 20을 담는다 (=)
+age = 20  # age 에 20을 담는다 (=)
 is_adult = age == 20  # age 가 20과 같은지 비교하고(==), 그 결과를 is_adult 에 담는다(=)
-print(is_adult)       # True
+print(is_adult)  # True
 ```
 
 실행 결과:
@@ -89,15 +89,15 @@ True
 `results == "실패"` 는 `result` 열의 값을 하나씩 `"실패"` 와 비교합니다. 같으면 `True`, 다르면 `False` 입니다. 결과는 `True` · `False` 로 된 열(시리즈)입니다. <mark>이 열을 `표[…]` 안에 넣으면 `True` 인 행만 남습니다.</mark>
 
 ```python
-import pandas as pd                                                 # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-data = {                                                            # 연습용 작은 데이터(열 이름: 값들)
-    "user": ["gaeun", "dami", "seoyeon", "junho", "dami"],          # user 열에 들어갈 값들
+data = {  # 연습용 작은 데이터(열 이름: 값들)
+    "user": ["gaeun", "dami", "seoyeon", "junho", "dami"],  # user 열에 들어갈 값들
     "action": ["login", "login", "download", "login", "download"],  # action 열에 들어갈 값들
-    "result": ["성공", "실패", "실패", "실패", "성공"],             # result 열에 들어갈 값들
+    "result": ["성공", "실패", "실패", "실패", "성공"],  # result 열에 들어갈 값들
 }
-logs = pd.DataFrame(data)                                           # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
-print(logs)                                                         # 표를 출력한다
+logs = pd.DataFrame(data)  # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
+print(logs)  # 표를 출력한다
 ```
 
 실행 결과:
@@ -114,9 +114,9 @@ print(logs)                                                         # 표를 출
 위 코드에 이어서 실행하는 다음 코드입니다.
 
 ```python
-results = logs["result"]     # result 열만 꺼낸다
+results = logs["result"]  # result 열만 꺼낸다
 is_fail = results == "실패"  # 값이 "실패" 와 같은지 하나씩 비교해 True 또는 False 로 만든다
-print(is_fail)               # True · False 를 출력한다
+print(is_fail)  # True · False 를 출력한다
 ```
 
 실행 결과:
@@ -134,7 +134,7 @@ Name: result, dtype: bool
 
 ```python
 failed = logs[is_fail]  # True 인 행만 남겨 새 표(failed)를 만든다
-print(failed)           # 새 표를 출력한다
+print(failed)  # 새 표를 출력한다
 ```
 
 실행 결과:
@@ -155,15 +155,15 @@ print(failed)           # 새 표를 출력한다
 위에서는 조건 하나(`results == "실패"`)로 걸렀습니다. 「로그인 요청이면서 실패」처럼 조건이 둘이면 각각 `True` · `False` 열로 만든 뒤 `&` 로 합칩니다(둘 다 `True` 인 행만 `True`). **`and` 가 아니라 `&` 를 씁니다.**
 
 ```python
-import pandas as pd                                                 # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-data = {                                                            # 연습용 작은 데이터(열 이름: 값들)
-    "user": ["gaeun", "dami", "seoyeon", "junho", "dami"],          # user 열에 들어갈 값들
+data = {  # 연습용 작은 데이터(열 이름: 값들)
+    "user": ["gaeun", "dami", "seoyeon", "junho", "dami"],  # user 열에 들어갈 값들
     "action": ["login", "login", "download", "login", "download"],  # action 열에 들어갈 값들
-    "result": ["성공", "실패", "실패", "실패", "성공"],             # result 열에 들어갈 값들
+    "result": ["성공", "실패", "실패", "실패", "성공"],  # result 열에 들어갈 값들
 }
-logs = pd.DataFrame(data)                                           # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
-print(logs)                                                         # 표를 출력한다
+logs = pd.DataFrame(data)  # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
+print(logs)  # 표를 출력한다
 ```
 
 실행 결과:
@@ -180,13 +180,13 @@ print(logs)                                                         # 표를 출
 위 코드에 이어서 실행하는 다음 코드입니다.
 
 ```python
-actions = logs["action"]        # action 열만 꺼낸다
-is_login = actions == "login"   # 값이 "login" 과 같은지 하나씩 비교해 True 또는 False 로 만든다
-results = logs["result"]        # result 열만 꺼낸다
-is_fail = results == "실패"     # 값이 "실패" 와 같은지 하나씩 비교해 True 또는 False 로 만든다
+actions = logs["action"]  # action 열만 꺼낸다
+is_login = actions == "login"  # 값이 "login" 과 같은지 하나씩 비교해 True 또는 False 로 만든다
+results = logs["result"]  # result 열만 꺼낸다
+is_fail = results == "실패"  # 값이 "실패" 와 같은지 하나씩 비교해 True 또는 False 로 만든다
 
 both_true = is_login & is_fail  # 두 조건이 모두 True 인 행만 True 로 만든다
-print(both_true)                # True · False 를 출력한다
+print(both_true)  # True · False 를 출력한다
 ```
 
 실행 결과:
@@ -204,7 +204,7 @@ dtype: bool
 
 ```python
 login_failures = logs[both_true]  # True 인 행만 남겨 새 표를 만든다
-print(login_failures)             # 새 표를 출력한다
+print(login_failures)  # 새 표를 출력한다
 ```
 
 실행 결과:
@@ -236,14 +236,14 @@ print(login_failures)             # 새 표를 출력한다
 위에서 배운 `==` 처럼 `>=` 도 값을 하나씩 비교해 `True` · `False` 를 만듭니다. 아래 `ip_fail_counts` 는 주소별 실패 횟수입니다(왼쪽 인덱스가 주소, 오른쪽이 횟수). `ip_fail_counts >= 3` 은 주소마다 「3번 이상인가」를 `True` · `False` 로 만듭니다.
 
 ```python
-import pandas as pd                                                                                           # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-data = {                                                                                                      # 실패한 이벤트만 적은 연습용 작은 데이터
+data = {  # 실패한 이벤트만 적은 연습용 작은 데이터
     "ip": ["198.51.100.90", "203.0.113.50", "198.51.100.90", "203.0.113.50", "198.51.100.90", "192.0.2.15"],  # ip 열에 들어갈 값들
-    "result": ["실패", "실패", "실패", "실패", "실패", "실패"],                                               # result 열에 들어갈 값들
+    "result": ["실패", "실패", "실패", "실패", "실패", "실패"],  # result 열에 들어갈 값들
 }
-failed = pd.DataFrame(data)                                                                                   # 데이터로 표를 만든다
-print(failed)                                                                                                 # 표를 출력한다
+failed = pd.DataFrame(data)  # 데이터로 표를 만든다
+print(failed)  # 표를 출력한다
 ```
 
 실행 결과:
@@ -262,7 +262,7 @@ print(failed)                                                                   
 
 ```python
 ip_fail_counts = failed.groupby("ip").size()  # ip 가 같은 행끼리 그룹으로 만들고(groupby) 바로 그룹마다 행이 몇 개인지 센다(size) — 주소별 실패 횟수
-print(ip_fail_counts)                         # 주소와 실패 횟수가 줄마다 나온다
+print(ip_fail_counts)  # 주소와 실패 횟수가 줄마다 나온다
 ```
 
 실행 결과:
@@ -278,9 +278,9 @@ dtype: int64
 위 코드에 이어서 실행하는 다음 코드입니다.
 
 ```python
-is_many = ip_fail_counts >= 3   # 주소마다 「3번 이상인가?」를 비교해 True 또는 False 로 만든다
+is_many = ip_fail_counts >= 3  # 주소마다 「3번 이상인가?」를 비교해 True 또는 False 로 만든다
 many = ip_fail_counts[is_many]  # True 인 주소만 남긴다
-print(many)                     # 3번 이상인 주소와 횟수
+print(many)  # 3번 이상인 주소와 횟수
 ```
 
 실행 결과:
@@ -329,21 +329,21 @@ dtype: int64
 **`login_detection.py`**
 
 ```python
-import pandas as pd                                             # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-EVENTS_PATH = "normalized_events.json"                          # 읽을 정규화 이벤트 파일 이름
-LOGIN_LIMIT = 5                                                 # 알림 기준: 평소 하루 최대가 4번이라 5번 이상이면 알린다
+EVENTS_PATH = "normalized_events.json"  # 읽을 정규화 이벤트 파일 이름
+LOGIN_LIMIT = 5  # 알림 기준: 평소 하루 최대가 4번이라 5번 이상이면 알린다
 
 
-def load_events(path):                                          # 파일 경로를 받는 함수
+def load_events(path):  # 파일 경로를 받는 함수
     """이벤트 파일을 표로 읽는다.
     분석을 시작할 때 맨 먼저 쓴다.
     """
-    events = pd.read_json(path)                                 # 파일 속 이벤트를 표 한 개로 읽는다
-    return events                                               # 이벤트 표를 리턴한다
+    events = pd.read_json(path)  # 파일 속 이벤트를 표 한 개로 읽는다
+    return events  # 이벤트 표를 리턴한다
 
 
-def pick_login_failures(events):                                # 이벤트 표를 받는 함수
+def pick_login_failures(events):  # 이벤트 표를 받는 함수
     """로그인 요청이 실패한 이벤트만 골라 새 표로 만든다.
     로그인 실패가 많은 주소를 조사하기 전에 쓴다.
     """
@@ -354,25 +354,25 @@ def pick_login_failures(events):                                # 이벤트 표�
     # 4. results 가 "실패" 와 같은지 비교한 결과(==)를 is_fail 에 담는다
     # 5. is_login & is_fail 로 두 조건을 합쳐 both_true 에 담는다 (둘 다 True 인 행만 True)
     # 6. events 에서 both_true 가 True 인 행만 골라 login_failures 에 담는다 (events[both_true])
-    return login_failures                                       # 로그인 실패 이벤트만 담은 표를 리턴한다
+    return login_failures  # 로그인 실패 이벤트만 담은 표를 리턴한다
 
 
-def count_by_ip(login_failures):                                # 로그인 실패 표를 받는 함수
+def count_by_ip(login_failures):  # 로그인 실패 표를 받는 함수
     """로그인 실패를 IP 주소별로 센다.
     같은 주소가 반복해서 실패했는지 볼 때 쓴다.
     """
     ip_login_fail_counts = login_failures.groupby("ip").size()  # ip 가 같은 행끼리 그룹으로 만들고(groupby) 바로 그룹마다 행이 몇 개인지 센다(size)
-    return ip_login_fail_counts                                 # 주소별 실패 횟수를 리턴한다
+    return ip_login_fail_counts  # 주소별 실패 횟수를 리턴한다
 
 
-def pick_alert_ips(ip_login_fail_counts, limit):                # 주소별 횟수와 알림 기준을 받는 함수
+def pick_alert_ips(ip_login_fail_counts, limit):  # 주소별 횟수와 알림 기준을 받는 함수
     """실패 횟수가 알림 기준 이상인 주소만 골라 리턴한다.
     알림을 보낼 주소를 가릴 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 7. ip_login_fail_counts 가 limit 이상인지 비교한 결과(>=)를 is_many 에 담는다
     # 8. ip_login_fail_counts 에서 is_many 가 True 인 것만 골라 alert_ips 에 담는다 (ip_login_fail_counts[is_many])
-    return alert_ips                                            # 알림 기준 이상인 주소와 횟수를 리턴한다
+    return alert_ips  # 알림 기준 이상인 주소와 횟수를 리턴한다
 ```
 
 - 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 8번은 모두 함수 안이라 앞에 공백 4개입니다.
@@ -385,18 +385,18 @@ def pick_alert_ips(ip_login_fail_counts, limit):                # 주소별 횟�
 ```python
 from login_detection import load_events, pick_login_failures, count_by_ip, pick_alert_ips, EVENTS_PATH, LOGIN_LIMIT  # 방금 만든 함수를 불러온다
 
-events = load_events(EVENTS_PATH)                              # 이벤트 파일을 표로 읽는다
-login_failures = pick_login_failures(events)                   # 로그인 실패 이벤트만 골라낸다
-failure_count = len(login_failures)                            # 로그인 실패가 모두 몇 개인지 센다
-print("--- 단계 1: 로그인 실패 이벤트", failure_count, "개")   # 단계 1 시작을 알리는 줄과 개수
+events = load_events(EVENTS_PATH)  # 이벤트 파일을 표로 읽는다
+login_failures = pick_login_failures(events)  # 로그인 실패 이벤트만 골라낸다
+failure_count = len(login_failures)  # 로그인 실패가 모두 몇 개인지 센다
+print("--- 단계 1: 로그인 실패 이벤트", failure_count, "개")  # 단계 1 시작을 알리는 줄과 개수
 
-ip_login_fail_counts = count_by_ip(login_failures)             # 주소별로 실패 횟수를 센다
-print("--- 단계 2: 주소별 로그인 실패 횟수")                   # 단계 2 시작을 알리는 줄
-print(ip_login_fail_counts)                                    # 주소별 횟수를 출력한다
+ip_login_fail_counts = count_by_ip(login_failures)  # 주소별로 실패 횟수를 센다
+print("--- 단계 2: 주소별 로그인 실패 횟수")  # 단계 2 시작을 알리는 줄
+print(ip_login_fail_counts)  # 주소별 횟수를 출력한다
 
 alert_ips = pick_alert_ips(ip_login_fail_counts, LOGIN_LIMIT)  # 알림 기준 이상인 주소만 고른다
 print("--- 단계 3: 알림 기준", LOGIN_LIMIT, "번 이상인 주소")  # 단계 3 시작을 알리는 줄과 알림 기준
-print(alert_ips)                                               # 알림을 보낼 주소를 출력한다
+print(alert_ips)  # 알림을 보낼 주소를 출력한다
 ```
 
 **순서**
@@ -410,10 +410,12 @@ print(alert_ips)                                               # 알림을 보�
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise4-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **세 단계**입니다. 제목 줄(`--- 단계 …`)은 줄 수에 넣지 않습니다. 단계 1은 숫자가 제목 줄에 함께 나오므로 그 아래 줄이 없고, 단계 2와 단계 3은 각각 3줄입니다.
-5. **[보고서]** `report_u4.md` 의 `## 실습 4-2` 아래를 채웁니다.
+5. **[실습 결과 기록]** `report_u4.md` 의 `## 실습 4-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 로그인 실패 이벤트 수와 알림 대상 주소, 그 횟수를 적어 주세요.
    - (나) [핵심 질문] 203.0.113.50 이 알림 대상이 되었습니다. 공격이라고 확정할 수 있는지 적고, 2.1 의 표에서 시각 간격과 성공 뒤에 요청한 경로를 보고 의심스러운 점을 적어 주세요. 그리고 5번 실패가 공격인지 판단하려면 이 표에 없는 정보 중 무엇이 더 필요한지 한 가지 적어 주세요(예: 어떤 사용자 이름으로 시도했는지).
    - (다) [핵심 질문] 한 주소가 로그인에 4번 실패하고 5번째에 성공했습니다. 이 규칙(실패 5번 이상)으로 이 접속에 알림이 생성될까요? 생성된다 · 생성되지 않는다와 이유를 적고, 생성되지 않는다면 담당자가 확인하지 못하는 정보가 무엇인지 적어 주세요.
+
+<!-- answer: 05|실습 4-2 정답 -->
 
 ## 실습 4-2 정리
 

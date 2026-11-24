@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <title>anomaly_detection 폴더에 샘플 파일 두 개를 New File 로 만들고 57과 8 확인</title>
-<desc>security-agent-toolkit 아래 anomaly_detection 폴더에 normalized_events.json 과 baseline_logins.csv 를 New File 로 만들어 붙여 넣습니다. 보고서 report_u4.md 는 「보고서 쓰기」 레슨에서 만듭니다. 확인 명령에서 57과 8이 나오면 됩니다.</desc>
+<desc>security-agent-toolkit 아래 anomaly_detection 폴더에 normalized_events.json 과 baseline_logins.csv 를 New File 로 만들어 붙여 넣습니다. 실습 결과 기록 report_u4.md 는 「실습 결과 기록 준비」 레슨에서 만듭니다. 확인 명령에서 57과 8이 나오면 됩니다.</desc>
 <defs><marker id="a-0401-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">폴더 준비: anomaly_detection 안에 둘 파일</text>
 <rect x="24" y="66" width="300" height="44" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
@@ -17,7 +17,7 @@
 <text x="116" y="267.2" font-size="15" fill="#292929" text-anchor="start">baseline_logins.csv</text>
 <line x1="84" y1="312" x2="104" y2="312" stroke="#666660" stroke-width="2"/>
 <rect x="104" y="292" width="280" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="116" y="317.2" font-size="15" fill="#292929" text-anchor="start">report_u4.md (보고서 쓰기)</text>
+<text x="116" y="317.2" font-size="15" fill="#292929" text-anchor="start">report_u4.md (실습 결과 기록 준비)</text>
 <line x1="84" y1="174" x2="84" y2="312" stroke="#666660" stroke-width="2"/>
 <text x="104" y="362" font-size="14" fill="#666660" text-anchor="start">파란 칸: New File 로 만들고 복사해 붙여 넣기</text>
 <rect x="424" y="66" width="272" height="70" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
