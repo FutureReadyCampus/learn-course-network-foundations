@@ -25,35 +25,39 @@ source:
 
 ```python
     # 1. 키 "action"(action), "target"(target), "incident"(incident_id), "before"(before), "after"(after), "reason"(reason) 를 가진 딕셔너리를 record 에 저장한다
-    record = {"action": action, "target": target, "incident": incident_id, "before": before, "after": after, "reason": reason}  # 조치 한 건의 기록을 딕셔너리로 만든다
+    record = {
+        "action": action,
+        "target": target,
+        "incident": incident_id,
+        "before": before,
+        "after": after,
+        "reason": reason,
+    }  # 조치 한 건의 기록을 딕셔너리로 만든다
     # 2. log 에 record 를 추가한다 (append)
     log.append(record)  # 기록 한 건을 리스트에 추가한다
 ```
-
 `account_actions.py` 의 3 ~ 7번입니다.
 
 ```python
     # 3. user 가 vip_accounts 안에 있으면 (if, in)
-    if user in vip_accounts:                         # VIP 계정이면
+    if user in vip_accounts:  # VIP 계정이면
     # 4.   "VIP 계정이라 자동 조치 대상이 아님" 을 리턴한다
         return "VIP 계정이라 자동 조치 대상이 아님"  # 막는 이유를 리턴한다
     # 5. user 가 state["locked_users"] 안에 있는지(in)의 결과를 리턴한다
-    return user in state["locked_users"]             # 잠긴 계정 리스트 안에 있는지 확인한 결과를 리턴한다
+    return user in state["locked_users"]  # 잠긴 계정 리스트 안에 있는지 확인한 결과를 리턴한다
     # 6. state["locked_users"] 에 user 를 추가한다 (append)
-    state["locked_users"].append(user)               # 잠긴 계정 리스트에 추가한다
+    state["locked_users"].append(user)  # 잠긴 계정 리스트에 추가한다
     # 7. state["locked_users"] 에서 user 를 제거한다 (remove)
-    state["locked_users"].remove(user)               # 잠긴 계정 리스트에서 제거한다
+    state["locked_users"].remove(user)  # 잠긴 계정 리스트에서 제거한다
 ```
-
 `exercise4-1_run.py` 의 8 · 9번입니다.
 
 ```python
     # 8. lock_account(user, state, vip_accounts, incident_id, reason) 의 결과를 record 에 저장한다
     record = lock_account(user, state, vip_accounts, incident_id, reason)  # 계정을 잠그고 기록을 받는다
     # 9. append_log(record) 를 호출한다 (조치 기록을 파일에 남긴다)
-    append_log(record)                                                     # 조치 기록을 파일에 남긴다
+    append_log(record)  # 조치 기록을 파일에 남긴다
 ```
-
 **결과**
 
 - (가) 출력은 다음과 같습니다. 단계 4 의 잠긴 계정은 <mark style="background:#bde3ff">**`['junho']`**</mark>, 조치 기록은 <mark style="background:#bde3ff">**4건**</mark>입니다.
@@ -148,30 +152,28 @@ NameError: name 'record' is not defined
 
 ```python
     # 1. ip 가 allowlist_ips 안에 있는지(in)의 결과를 리턴한다
-    return ip in allowlist_ips                                                                # 허용 목록 안에 있는지 확인한 결과를 리턴한다
+    return ip in allowlist_ips  # 허용 목록 안에 있는지 확인한 결과를 리턴한다
     # 2. ip_users.get(ip, []) 의 개수(len)를 리턴한다 (목록에 없으면 빈 리스트로 본다)
-    return len(ip_users.get(ip, []))                                                          # 그 IP 를 쓰는 계정 수를 리턴한다 (목록에 없으면 0)
+    return len(ip_users.get(ip, []))  # 그 IP 를 쓰는 계정 수를 리턴한다 (목록에 없으면 0)
     # 3. state["blocked_ips"] 에 ip 를 추가한다 (append)
-    state["blocked_ips"].append(ip)                                                           # 차단한 IP 리스트에 추가한다
+    state["blocked_ips"].append(ip)  # 차단한 IP 리스트에 추가한다
     # 4. state["block_expiry"][ip] 에 state["clock"] + ttl 을 저장한다 (끝나는 시각)
-    state["block_expiry"][ip] = state["clock"] + ttl                                          # 차단이 끝나는 시각을 적는다
+    state["block_expiry"][ip] = state["clock"] + ttl  # 차단이 끝나는 시각을 적는다
         # 5. end_time 이 state["clock"] 이하이면 (if, <=)
-        if end_time <= state["clock"]:                                                        # 끝나는 시각이 지났으면
+        if end_time <= state["clock"]:  # 끝나는 시각이 지났으면
         # 6.   unblock_ip(ip, state, incident_id, "차단 시간이 끝나 자동 해제") 의 결과를 records 에 추가한다 (append)
             records.append(unblock_ip(ip, state, incident_id, "차단 시간이 끝나 자동 해제"))  # 차단을 풀고 해제 기록을 모은다
 ```
-
 `exercise4-2_run.py` 의 7 ~ 9번입니다.
 
 ```python
     # 7. check_ip_policy(ip, allowlist_ips, ip_users) 의 결과를 refusal 에 저장한다
-    refusal = check_ip_policy(ip, allowlist_ips, ip_users)              # 자동 차단을 막을 이유를 구한다
+    refusal = check_ip_policy(ip, allowlist_ips, ip_users)  # 자동 차단을 막을 이유를 구한다
     # 8. refusal 이 빈 글자("")이면 (if, ==)
-    if refusal == "":                                                   # 막을 이유가 없으면
+    if refusal == "":  # 막을 이유가 없으면
     # 9.   block_ip(ip, state, incident_id, reason, DEFAULT_TTL) 의 결과를 record 에 저장한다 (실제로 차단한 기록으로 바꾼다)
         record = block_ip(ip, state, incident_id, reason, DEFAULT_TTL)  # 실제로 차단하고 기록을 받는다
 ```
-
 **결과**
 
 - (가) 출력은 다음과 같습니다. 실제로 차단된 IP 는 <mark style="background:#bde3ff">**`198.51.100.90`**</mark>, 차단하지 않은 IP 는 `192.0.2.10`(허용 목록 IP)과 `192.0.2.41`(공유 IP)입니다.
@@ -266,33 +268,30 @@ INC-008 192.0.2.41 · 변경 없음 → 변경 없음 · 여러 계정이 함께
     # 1. state["sessions"][user] 에 빈 리스트를 저장한다 (세션을 모두 종료한다)
     state["sessions"][user] = []  # 그 계정의 세션 리스트를 비운다
         # 2. open_count 가 0 보다 크면 (if, >)
-        if open_count > 0:        # 열린 세션이 남아 있으면
+        if open_count > 0:  # 열린 세션이 남아 있으면
         # 3.   gaps 에 user 를 추가한다 (append)
-            gaps.append(user)     # 빈틈이 있는 계정으로 모은다
+            gaps.append(user)  # 빈틈이 있는 계정으로 모은다
 ```
-
 `containment.py` 의 4 ~ 6번입니다.
 
 ```python
     # 4. lock_account(user, state, vip_accounts, incident_id, reason) 의 결과를 lock_record 에 저장한다
     lock_record = lock_account(user, state, vip_accounts, incident_id, reason)  # 계정을 먼저 잠그고 기록을 받는다
     # 5. lock_record 의 "after" 가 "잠김" 이면 (if, ==)
-    if lock_record["after"] == "잠김":                                          # 잠금이 확인됐으면
+    if lock_record["after"] == "잠김":  # 잠금이 확인됐으면
     # 6.   terminate_sessions(user, state, incident_id, reason) 의 결과를 records 에 추가한다 (append)
-        records.append(terminate_sessions(user, state, incident_id, reason))    # 이어서 세션을 종료하고 기록을 모은다
+        records.append(terminate_sessions(user, state, incident_id, reason))  # 이어서 세션을 종료하고 기록을 모은다
 ```
-
 `exercise4-3_run.py` 의 7 ~ 9번입니다.
 
 ```python
     # 7. contain_account(user, state, vip_accounts, incident_id, reason) 의 결과를 records 에 저장한다
     records = contain_account(user, state, vip_accounts, incident_id, reason)  # 잠금 → 세션 종료를 하고 기록 리스트를 받는다
 # 8. find_open_sessions(state) 의 결과를 gaps_after 에 저장한다
-gaps_after = find_open_sessions(state)                                         # 조치 뒤 다시 점검한다
+gaps_after = find_open_sessions(state)  # 조치 뒤 다시 점검한다
 # 9. save_state(state) 를 호출한다 (상태를 파일에 저장한다)
-save_state(state)                                                              # 상태를 파일에 저장한다
+save_state(state)  # 상태를 파일에 저장한다
 ```
-
 **결과**
 
 - (가) 출력은 다음과 같습니다. 단계 3 에서 빈틈이 남은 계정은 <mark style="background:#bde3ff">**없음(`[]`)**</mark>, 단계 4 의 잠긴 계정은 <mark style="background:#bde3ff">**`['junho', 'dami']`**</mark> 입니다.

@@ -25,7 +25,7 @@
 <rect x="272" y="244" width="200" height="76" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="372.0" y="276.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="372.0" dy="0">친 명령 + 오류 전체</tspan><tspan x="372.0" dy="21.0">(.env·API 키 지움)</tspan></text>
 <rect x="506" y="244" width="190" height="76" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="601.0" y="276.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="601.0" dy="0">AI 에게 묻기 → 정답</tspan><tspan x="601.0" dy="21.0">→ 「모름 — 막힌 곳」</tspan></text>
+<text x="601.0" y="276.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="601.0" dy="0">AI 에게 묻기</tspan><tspan x="601.0" dy="21.0">정답과 해설 보기 · 모름</tspan></text>
 <line x1="238" y1="282.0" x2="270" y2="282.0" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
 <line x1="472" y1="282.0" x2="504" y2="282.0" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p03)"/>
 </g>
