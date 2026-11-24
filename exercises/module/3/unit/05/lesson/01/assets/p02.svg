@@ -13,7 +13,7 @@
 <text x="96" y="218" font-size="14" fill="#666660">경고 기준</text>
 <text x="56" y="252" font-size="15" fill="#2f6fd0">week_log.jsonl</text>
 <text x="76" y="276" font-size="14" fill="#666660">일주일 치 샘플 로그 40줄</text>
-<text x="56" y="310" font-size="15" fill="#292929">report_u5.md (보고서 쓰기에서)</text>
+<text x="56" y="310" font-size="15" fill="#292929">report_u5.md (실습 기록 Lesson에서)</text>
 <text x="36" y="362" font-size="14" fill="#666660">config 폴더가 없으면 mkdir config</text>
 <rect x="380" y="52" width="320" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="540" y="83.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">week_state.json · alert.json</text>

@@ -1,6 +1,6 @@
 ---
 id: m3-u05-l05
-title: 도전 5-1 · 로그 집계와 주간 보고서 만들기
+title: 응용 5-1 · 로그 집계와 주간 보고서 만들기
 render: markdown
 source:
   repository: FutureReadyCampus/learn-missions
@@ -9,7 +9,7 @@ source:
   commit: 61cf07917bdf13aa2571a551160363c425443504
 ---
 
-# 도전 5-1 · 로그 집계와 주간 보고서 만들기
+# 응용 5-1 · 로그 집계와 주간 보고서 만들기
 
 ## 목표: 로그 집계와 주간 보고서
 
@@ -166,7 +166,7 @@ print(text)                                                      # 이어 붙인
 - `"\n"` 은 줄바꿈 문자 하나이고, 출력하면 다음 줄로 넘어갑니다.
 - `weekly_report.py` 는 마지막에 `"\n".join(lines) + "\n"` 을 리턴합니다. 뒤의 `+ "\n"` 은 파일 맨 끝도 줄바꿈으로 끝나게 하려고 붙입니다.
 
-## 도전 5-1 · 거부율과 경고 여부 구하기
+## 응용 5-1 · 거부율과 경고 여부 구하기
 
 **이런 상황이 있습니다**
 
@@ -182,7 +182,7 @@ print(text)                                                      # 이어 붙인
 
 1. `log_summary.py` · `challenge5-1_run.py` 두 파일을 만들고, `log_summary.py` 의 `read_log` · `count_by` · `filter_denied` · `deny_rate` · `find_heavy_users` 에서 직접 쓰는 곳 다섯 군데를 씁니다.
 2. 실행해서 <mark>허용 · 거부 · 거부율</mark>(단계 1: 집계), <mark>거부 사유별 횟수</mark>(단계 2), <mark>경고 여부</mark>(단계 3: 경고 기준)를 읽습니다.
-3. `weekly_report.py` · `challenge5-1-2_run.py` 를 붙여 넣어 실행하고, 실습 5-1 점검 결과와 합친 <mark>주간 보고서</mark>(단계 3: 저장한 보고서 내용)를 읽습니다. 이 두 파일은 직접 쓰는 곳이 없습니다. 도전 5-1 는 문제가 하나뿐이고, `challenge5-1-2_run.py` 는 그 문제의 두 번째 실행 파일입니다. 보고서 (가)의 「단계 3」은 `challenge5-1_run.py` 에서는 경고 여부, `challenge5-1-2_run.py` 에서는 저장한 보고서 내용입니다.
+3. `weekly_report.py` · `challenge5-1-2_run.py` 를 붙여 넣어 실행하고, 실습 5-1 점검 결과와 합친 <mark>주간 보고서</mark>(단계 3: 저장한 보고서 내용)를 읽습니다. 이 두 파일은 직접 쓰는 곳이 없습니다. 응용 5-1은 문제가 하나뿐이고, `challenge5-1-2_run.py` 는 그 문제의 두 번째 실행 파일입니다. 보고서 (가)의 「단계 3」은 `challenge5-1_run.py` 에서는 경고 여부, `challenge5-1-2_run.py` 에서는 저장한 보고서 내용입니다.
 
 **`log_summary.py`**
 
@@ -302,7 +302,7 @@ print("거부", user_limit, "번 이상 사용자:", heavy)                  # �
 **`weekly_report.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 점검 결과와 로그 집계를 합쳐 네 절의 보고서 문자열을 만들고, 날짜가 들어간 `.md` 파일로 저장합니다.
 
 ```python
-from log_summary import count_by, filter_denied, deny_rate, find_heavy_users   # 도전 5-1에서 만든 집계 함수를 불러온다
+from log_summary import count_by, filter_denied, deny_rate, find_heavy_users   # 응용 5-1에서 만든 집계 함수를 불러온다
 
 
 def build_report(results, entries, alert, today):                # 점검 결과 · 요청 리스트 · 경고 기준 · 날짜 문자열을 받는 함수
@@ -368,13 +368,13 @@ def save_report(text, today):                                    # 보고서 문
   - 보고서 줄은 `lines.append(…)` 로 하나씩 모으고, 마지막에 `"\n".join(lines)` 로 한 문자열로 만듭니다(문법 상자 ④).
   - `save_report` 는 `"w"` 로 열어 새로 씁니다. 로그처럼 계속 덧붙이는 파일은 `"a"` 이고, 매주 새로 만드는 보고서는 `"w"` 입니다. 파일 이름에는 `f"…{today}.md"` 로 날짜를 넣습니다.
 
-**`challenge5-1-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 5-1의 점검 함수와 도전 5-1의 로그 읽기 함수로 데이터를 모아 보고서를 만들고 저장합니다.
+**`challenge5-1-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 5-1의 점검 함수와 응용 5-1의 로그 읽기 함수로 데이터를 모아 보고서를 만들고 저장합니다.
 
 ```python
 import json                                                      # 경고 기준 파일을 읽는 데 쓴다
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
 from checklist import TIME_FORMAT, load_state, run_checklist     # 실습 5-1에서 만든 점검 함수를 불러온다
-from log_summary import read_log                                 # 도전 5-1에서 만든 로그 읽기 함수를 불러온다
+from log_summary import read_log                                 # 응용 5-1에서 만든 로그 읽기 함수를 불러온다
 from weekly_report import build_report, save_report             # 붙여 넣은 보고서 함수를 불러온다
 
 TODAY = "2026-11-02"                                             # 보고서 날짜
@@ -407,7 +407,7 @@ print(text)                                                      # 보고서 내
    python challenge5-1_run.py
    ```
 4. 출력은 세 단계입니다. 단계 1은 한 줄, 단계 2는 거부 사유 네 줄, 단계 3은 두 줄입니다.
-5. **[VS Code]** 파일 `weekly_report.py` · `challenge5-1-2_run.py` 를 만들어 위 코드를 붙여 넣고 실행합니다. 실습 5-1의 `checklist.py` 를 불러오므로 파일이 없으면 「정답」 레슨 맨 아래 「앞 실습 파일 완성본」으로 먼저 만듭니다.
+5. **[VS Code]** 파일 `weekly_report.py` · `challenge5-1-2_run.py` 를 만들어 위 코드를 붙여 넣고 실행합니다. `checklist.py` 가 없다면 [실습 5-1의 코드와 정답 토글](__SITE__/exercises/module/3/unit/5/lesson/2/page/5)에서 작성합니다.
    ```bash
    python challenge5-1-2_run.py
    ls
@@ -419,12 +419,14 @@ print(text)                                                      # 보고서 내
    grep dami week_log.jsonl
    ```
    - 명령 풀이: `grep 단어 파일` 파일에서 그 단어가 들어간 줄만 보여 줌
-7. **[보고서]** `report_u5.md` 의 `## 도전 5-1` 아래를 채웁니다.
+7. **실습 기록**: 결과와 질문 답을 `report_u5.md`의 응용 5-1 칸에 적습니다.
    - (가) `challenge5-1_run.py` 의 출력과 `challenge5-1-2_run.py` 의 보고서 내용을 붙여 넣고, 허용 · 거부 · 거부율, 경고 여부, 거부 사유 중 가장 많은 것을 적어 주세요.
    - (나) [핵심 질문] 보고서 4절에 거부가 4번 이상인 사용자로 gaeun 과 dami 가 나왔습니다. 6번에서 찾은 두 사람의 요청을 비교해 주세요. 그리고 두 사람에게 같은 조치를 하면 안 되는 이유와, 각각 무엇부터 확인해야 하는지 적어 주세요.
    - (다) [핵심 질문] 서버가 멈춰서 로그가 빈 주에는 `deny_rate` 가 0.0 을 리턴해 보고서에 「거부율 0%」가 나옵니다. 이 보고서만 보고 「이번 주는 안전했다」고 판단해도 되는지 적어 주세요. 그리고 보고서에서 함께 확인해야 하는 정보와 그 이유도 적어 주세요.
 
-## 도전 5-1 정리
+<!-- answer: 06|도전 5-1 정답 -->
+
+## 응용 5-1 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
