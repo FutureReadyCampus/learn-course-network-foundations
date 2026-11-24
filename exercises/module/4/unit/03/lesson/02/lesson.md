@@ -91,10 +91,10 @@ source:
 표는 가로 한 줄(행)과 세로 한 줄(열)로 이루어집니다. 이 수업의 이벤트 표에서는 **행 하나가 이벤트 1개**이고, **열 하나가 같은 키**(`time` · `source` …)입니다. 지금까지는 `for` 로 이벤트를 하나씩 꺼내 확인했습니다. 파일을 표로 읽으면 걸러 내기와 세기를 코드 한 줄로 할 수 있습니다(아래에서 차례로 배웁니다).
 
 ```python
-import pandas as pd                              # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 events = pd.read_json("normalized_events.json")  # 파일 속 이벤트 57개를 표 한 개(events)로 읽는다 — 행 하나가 이벤트 하나
-row_count = len(events)                          # 표의 행이 몇 개인지 센다 — 리스트의 길이를 세던 len 과 같다
-print(row_count)                                 # 57 이 나온다 — 이벤트 57개
+row_count = len(events)  # 표의 행이 몇 개인지 센다 — 리스트의 길이를 세던 len 과 같다
+print(row_count)  # 57 이 나온다 — 이벤트 57개
 ```
 
 실행 결과:
@@ -112,11 +112,11 @@ print(row_count)                                 # 57 이 나온다 — 이벤�
 `.shape` 는 표가 몇 행 몇 열인지 알려 줍니다. 실습 3-1 의 `describe_events` 에 미리 채워져 있어서 직접 쓰지 않고 읽기만 합니다. 자세한 쓰임은 다음에 차차 배웁니다.
 
 ```python
-import pandas as pd                              # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 events = pd.read_json("normalized_events.json")  # 이벤트 파일을 표로 읽는다
 
-shape = events.shape                             # 표의 크기를 (행 수, 열 수) 로 구한다
-print(shape)                                     # (57, 6) 이 나온다 — 이벤트 57개(행), 열 6개
+shape = events.shape  # 표의 크기를 (행 수, 열 수) 로 구한다
+print(shape)  # (57, 6) 이 나온다 — 이벤트 57개(행), 열 6개
 ```
 
 실행 결과:
@@ -143,12 +143,12 @@ print(shape)                                     # (57, 6) 이 나온다 — 이
 | 56 | server |
 
 ```python
-import pandas as pd                              # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 events = pd.read_json("normalized_events.json")  # 이벤트 파일을 표로 읽는다
 
-sources = events["source"]                       # source 열 하나를 꺼낸다 — web · server · saas 값이 57개 들어 있다
-source_count = len(sources)                      # 꺼낸 열에 값이 몇 개 있는지 센다
-print(source_count)                              # 57 이 나온다 — 행마다 값이 하나씩이라 행 수와 같다
+sources = events["source"]  # source 열 하나를 꺼낸다 — web · server · saas 값이 57개 들어 있다
+source_count = len(sources)  # 꺼낸 열에 값이 몇 개 있는지 센다
+print(source_count)  # 57 이 나온다 — 행마다 값이 하나씩이라 행 수와 같다
 ```
 
 실행 결과:
@@ -166,13 +166,13 @@ print(source_count)                              # 57 이 나온다 — 행마�
 `열.head(3)` 은 열의 앞에서 3개만 남깁니다. 실습 3-1 의 `describe_events` 에 미리 채워져 있어서 직접 쓰지 않고 읽기만 합니다. 자세한 쓰임은 다음에 차차 배웁니다.
 
 ```python
-import pandas as pd                              # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 events = pd.read_json("normalized_events.json")  # 이벤트 파일을 표로 읽는다
 
-times = events["time"]                           # 표에서 time 열만 꺼낸다 — 이벤트 57개의 시각이 한 줄로 나열된 열
-first_times = times.head(3)                      # 그 열의 처음 3개(0 ~ 2번 행)만 남긴다
-for time_text in first_times:                    # 처음 3개를 하나씩 꺼낸다
-    print(time_text)                             # 시각 하나를 한 줄에 출력한다(모두 3줄)
+times = events["time"]  # 표에서 time 열만 꺼낸다 — 이벤트 57개의 시각이 한 줄로 나열된 열
+first_times = times.head(3)  # 그 열의 처음 3개(0 ~ 2번 행)만 남긴다
+for time_text in first_times:  # 처음 3개를 하나씩 꺼낸다
+    print(time_text)  # 시각 하나를 한 줄에 출력한다(모두 3줄)
 ```
 
 실행 결과:
@@ -198,12 +198,12 @@ for time_text in first_times:                    # 처음 3개를 하나씩 꺼�
 | saas | 14 |
 
 ```python
-import pandas as pd                              # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 events = pd.read_json("normalized_events.json")  # 이벤트 파일을 표로 읽는다
 
-sources = events["source"]                       # source 열 하나를 꺼낸다 — web · server · saas 값이 57개 들어 있다
-source_event_counts = sources.value_counts()     # 같은 값이 몇 번 나왔는지 센다 — 많은 값부터 정렬되어 나온다
-print(source_event_counts)                       # 값(web · server · saas)과 그 개수가 줄마다 나온다
+sources = events["source"]  # source 열 하나를 꺼낸다 — web · server · saas 값이 57개 들어 있다
+source_event_counts = sources.value_counts()  # 같은 값이 몇 번 나왔는지 센다 — 많은 값부터 정렬되어 나온다
+print(source_event_counts)  # 값(web · server · saas)과 그 개수가 줄마다 나온다
 ```
 
 실행 결과:
@@ -225,11 +225,11 @@ Name: count, dtype: int64
 앞의 두 줄(`sources = events["source"]` → `source_event_counts = sources.value_counts()`)은 실무에서 아래 한 줄로 자주 씁니다. 같은 일입니다. 직접 쓰지 않고 읽기만 합니다. 자세한 쓰임은 다음에 차차 배웁니다.
 
 ```python
-import pandas as pd                                    # 판다스를 pd 라는 짧은 이름으로 불러온다
-events = pd.read_json("normalized_events.json")        # 이벤트 파일을 표로 읽는다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
+events = pd.read_json("normalized_events.json")  # 이벤트 파일을 표로 읽는다
 
 source_event_counts = events["source"].value_counts()  # 열 꺼내기와 값별 세기를 한 줄로 쓴 모양 — 위 두 줄과 같은 결과
-print(source_event_counts)                             # 값(web · server · saas)과 그 개수가 줄마다 나온다
+print(source_event_counts)  # 값(web · server · saas)과 그 개수가 줄마다 나온다
 ```
 
 실행 결과:
@@ -247,14 +247,14 @@ Name: count, dtype: int64
 `표[조건]` 은 <mark>조건이 `True` 인 행만 남긴 새 표를 만듭니다</mark>. 이 일을 **필터링**(filtering)이라고 합니다. 여기서 조건은 행마다 `True` 또는 `False` 가 하나씩 있는 열입니다(아래 코드의 `is_fail`). 실습 3-1 의 `pick_failed` 에 미리 채워져 있어서 직접 쓰지 않고 읽기만 합니다. 자세한 쓰임은 다음에 차차 배웁니다.
 
 ```python
-import pandas as pd                              # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 events = pd.read_json("normalized_events.json")  # 이벤트 파일을 표로 읽는다
 
-results = events["result"]                       # result 열만 꺼낸다 — 성공 · 실패가 57개 나열된 열
-is_fail = results == "실패"                      # result 열의 각 값이 "실패"와 같은지 비교해 행마다 True 또는 False 를 하나씩 만든다(57개)
-failed = events[is_fail]                         # True 인 행만 남겨 새 표(failed)를 만든다
-failed_shape = failed.shape                      # 새 표의 크기를 꺼낸다
-print(failed_shape)                              # (23, 6) — 실패한 이벤트 23개, 열은 그대로 6개
+results = events["result"]  # result 열만 꺼낸다 — 성공 · 실패가 57개 나열된 열
+is_fail = results == "실패"  # result 열의 각 값이 "실패"와 같은지 비교해 행마다 True 또는 False 를 하나씩 만든다(57개)
+failed = events[is_fail]  # True 인 행만 남겨 새 표(failed)를 만든다
+failed_shape = failed.shape  # 새 표의 크기를 꺼낸다
+print(failed_shape)  # (23, 6) — 실패한 이벤트 23개, 열은 그대로 6개
 ```
 
 실행 결과:
@@ -300,49 +300,49 @@ print(failed_shape)                              # (23, 6) — 실패한 이벤�
 **`events_basic.py`**
 
 ```python
-import pandas as pd                     # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
 EVENTS_PATH = "normalized_events.json"  # 읽을 정규화 이벤트 파일 이름
 
 
-def load_events(path):                  # 파일 경로를 받는 함수
+def load_events(path):  # 파일 경로를 받는 함수
     """이벤트 파일을 표로 읽는다.
     분석을 시작할 때 맨 먼저 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. pd.read_json 으로 path 의 파일을 읽어 events 에 담는다
-    return events                       # 표를 리턴한다
+    return events  # 표를 리턴한다
 
 
-def describe_events(events):            # 표를 받는 함수
+def describe_events(events):  # 표를 받는 함수
     """표의 크기와 앞 시각 3개를 구한다.
     새 파일을 받았을 때 내용이 제대로 들어 있는지 확인하는 데 쓴다.
     """
-    shape = events.shape                # 표의 크기 (행 수, 열 수) — 미리 채운 줄
+    shape = events.shape  # 표의 크기 (행 수, 열 수) — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 2. events 의 "time" 열을 꺼내 times 에 담는다 (events["time"])
-    first_times = times.head(3)         # 그 열의 앞 3개만 남긴다 — 미리 채운 줄
-    return shape, first_times           # 크기와 처음 3개를 리턴한다
+    first_times = times.head(3)  # 그 열의 앞 3개만 남긴다 — 미리 채운 줄
+    return shape, first_times  # 크기와 처음 3개를 리턴한다
 
 
-def pick_failed(events):                # 표를 받는 함수
+def pick_failed(events):  # 표를 받는 함수
     """실패한 이벤트만 골라 새 표로 만든다.
     무엇이 잘못됐는지 조사할 때 성공한 이벤트는 빼고 보는 데 쓴다.
     """
-    results = events["result"]          # result 열 하나를 꺼낸다
-    is_fail = results == "실패"         # 행마다 실패면 True, 아니면 False
-    failed = events[is_fail]            # True 인 행만 남긴다
-    return failed                       # 실패한 행만 담은 표를 리턴한다
+    results = events["result"]  # result 열 하나를 꺼낸다
+    is_fail = results == "실패"  # 행마다 실패면 True, 아니면 False
+    failed = events[is_fail]  # True 인 행만 남긴다
+    return failed  # 실패한 행만 담은 표를 리턴한다
 
 
-def count_values(table, column):        # 표와 열 이름을 받는 함수
+def count_values(table, column):  # 표와 열 이름을 받는 함수
     """한 열의 값별 개수를 센다.
     소스별 · 결과별 · 사용자별로 몇 개인지 알고 싶을 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 3. table 의 column 열을 꺼내 values 에 담는다
     # 4. values 에서 값별 개수를 value_counts() 로 세어 value_event_counts 에 담는다
-    return value_event_counts           # 값별 개수를 리턴한다
+    return value_event_counts  # 값별 개수를 리턴한다
 ```
 
 - 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 4번은 모두 함수 안이라 앞에 공백 4개입니다.
@@ -355,26 +355,26 @@ def count_values(table, column):        # 표와 열 이름을 받는 함수
 ```python
 from events_basic import load_events, describe_events, pick_failed, count_values, EVENTS_PATH  # 방금 만든 함수를 불러온다
 
-events = load_events(EVENTS_PATH)                                                              # 이벤트 파일을 표로 읽는다
-shape, first_times = describe_events(events)                                                   # 표 크기와 time 열의 처음 3개를 구한다
-print("--- 단계 1: 표 크기(행 수, 열 수)와 처음 3개 시각")                                     # 단계 1 시작을 알리는 줄
-print(shape)                                                                                   # (행 수, 열 수)를 출력한다
-for time_text in first_times:                                                                  # 처음 3개 시각을 하나씩 꺼낸다
-    print(time_text)                                                                           # 시각 하나를 한 줄에 출력한다(모두 3줄)
+events = load_events(EVENTS_PATH)  # 이벤트 파일을 표로 읽는다
+shape, first_times = describe_events(events)  # 표 크기와 time 열의 처음 3개를 구한다
+print("--- 단계 1: 표 크기(행 수, 열 수)와 처음 3개 시각")  # 단계 1 시작을 알리는 줄
+print(shape)  # (행 수, 열 수)를 출력한다
+for time_text in first_times:  # 처음 3개 시각을 하나씩 꺼낸다
+    print(time_text)  # 시각 하나를 한 줄에 출력한다(모두 3줄)
 
-result_event_counts = count_values(events, "result")                                           # result 열의 값별 개수를 센다
-print("--- 단계 2: 성공 · 실패별 개수")                                                        # 단계 2 시작을 알리는 줄
-print(result_event_counts)                                                                     # 성공 · 실패 개수를 출력한다
+result_event_counts = count_values(events, "result")  # result 열의 값별 개수를 센다
+print("--- 단계 2: 성공 · 실패별 개수")  # 단계 2 시작을 알리는 줄
+print(result_event_counts)  # 성공 · 실패 개수를 출력한다
 
-failed = pick_failed(events)                                                                   # 실패한 이벤트만 골라낸다
-failed_count = len(failed)                                                                     # 실패한 이벤트가 몇 개인지 센다
-source_fail_counts = count_values(failed, "source")                                            # 실패한 이벤트의 소스별 개수를 센다
-print("--- 단계 3: 실패한 이벤트", failed_count, "개의 소스별 개수")                           # 단계 3 시작을 알리는 줄
-print(source_fail_counts)                                                                      # 소스별 개수를 출력한다
+failed = pick_failed(events)  # 실패한 이벤트만 골라낸다
+failed_count = len(failed)  # 실패한 이벤트가 몇 개인지 센다
+source_fail_counts = count_values(failed, "source")  # 실패한 이벤트의 소스별 개수를 센다
+print("--- 단계 3: 실패한 이벤트", failed_count, "개의 소스별 개수")  # 단계 3 시작을 알리는 줄
+print(source_fail_counts)  # 소스별 개수를 출력한다
 
-source_event_counts = count_values(events, "source")                                           # 전체 이벤트의 소스별 개수를 센다
-print("--- 단계 4: 전체 이벤트의 소스별 개수")                                                 # 단계 4 시작을 알리는 줄
-print(source_event_counts)                                                                     # 소스별 전체 개수를 출력한다
+source_event_counts = count_values(events, "source")  # 전체 이벤트의 소스별 개수를 센다
+print("--- 단계 4: 전체 이벤트의 소스별 개수")  # 단계 4 시작을 알리는 줄
+print(source_event_counts)  # 소스별 전체 개수를 출력한다
 ```
 
 **순서**
@@ -388,10 +388,12 @@ print(source_event_counts)                                                      
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise3-1_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **네 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1은 4줄, 단계 2는 4줄, 단계 3은 5줄, 단계 4는 5줄입니다.
-5. **[보고서]** `report_u3.md` 의 `## 실습 3-1` 아래를 채웁니다.
+5. **[실습 기록]** `report_u3.md` 의 `## 실습 3-1` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 표의 행 수와 열 수, 성공과 실패 개수, 실패한 이벤트의 소스별 개수를 적어 주세요.
    - (나) [핵심 질문] 실패 개수만 보면 web 이 가장 많습니다. 그렇다면 web 이 가장 문제가 큰 소스라고 말할 수 있을까요? 단계 4의 전체 이벤트 수와 함께 보고 이유를 적어 주세요.
    - (다) [핵심 질문] web 이벤트에는 `user` 가 비어 있습니다. 사용자 이름으로 실패를 세려 할 때 web 의 실패 13개는 어떻게 될지 예상하고, 사용자 대신 어떤 열을 보면 같은 대상이 반복했는지 알 수 있을지 이유와 함께 적어 주세요.
+
+<!-- answer: 04|실습 3-1 정답 -->
 
 ## 실습 3-1 정리
 

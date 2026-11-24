@@ -39,16 +39,16 @@ source:
 「소스별로 실패가 몇 개인가」를 알려면 먼저 `source` 값이 같은 행끼리 그룹(group)으로 묶어야 합니다. <mark>`groupby` 는 이 묶기만 하고, 개수는 세지 않습니다.</mark>
 
 ```python
-import pandas as pd                                                                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-data = {                                                                                              # 실패한 이벤트만 적은 연습용 작은 데이터
-    "source": ["web", "server", "web", "saas", "web", "server"],                                      # source 열에 들어갈 값들
+data = {  # 실패한 이벤트만 적은 연습용 작은 데이터
+    "source": ["web", "server", "web", "saas", "web", "server"],  # source 열에 들어갈 값들
     "action": ["GET /board", "POST /login", "GET /report", "login", "GET /admin", "ACCOUNT:CHANGE"],  # action 열에 들어갈 값들
 }
-failed = pd.DataFrame(data)                                                                           # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
-print(failed)                                                                                         # 표를 출력한다
-grouped = failed.groupby("source")                                                                    # source 값이 같은 줄끼리 묶는다 — 아직 개수가 아니라 그룹만 만든 상태
-print(grouped)                                                                                        # 묶은 결과를 출력한다 — 개수가 아니라 `DataFrameGroupBy` 라는 이름이 나온다
+failed = pd.DataFrame(data)  # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
+print(failed)  # 표를 출력한다
+grouped = failed.groupby("source")  # source 값이 같은 줄끼리 묶는다 — 아직 개수가 아니라 그룹만 만든 상태
+print(grouped)  # 묶은 결과를 출력한다 — 개수가 아니라 `DataFrameGroupBy` 라는 이름이 나온다
 ```
 
 실행 결과:
@@ -68,7 +68,7 @@ print(grouped)                                                                  
 
 ```python
 group_count = len(grouped)  # 그룹이 몇 개인지 센다
-print(group_count)          # 3 이 나온다 — saas · server · web 세 그룹
+print(group_count)  # 3 이 나온다 — saas · server · web 세 그룹
 ```
 
 실행 결과:
@@ -85,17 +85,17 @@ print(group_count)          # 3 이 나온다 — saas · server · web 세 그�
 **<mark>`.size()`</mark> 는 그룹마다 행이 몇 개인지 셉니다**
 
 ```python
-import pandas as pd                                                                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-data = {                                                                                              # 실패한 이벤트만 적은 연습용 작은 데이터
-    "source": ["web", "server", "web", "saas", "web", "server"],                                      # source 열에 들어갈 값들
+data = {  # 실패한 이벤트만 적은 연습용 작은 데이터
+    "source": ["web", "server", "web", "saas", "web", "server"],  # source 열에 들어갈 값들
     "action": ["GET /board", "POST /login", "GET /report", "login", "GET /admin", "ACCOUNT:CHANGE"],  # action 열에 들어갈 값들
 }
-failed = pd.DataFrame(data)                                                                           # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
-grouped = failed.groupby("source")                                                                    # source 값이 같은 줄끼리 묶는다
+failed = pd.DataFrame(data)  # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
+grouped = failed.groupby("source")  # source 값이 같은 줄끼리 묶는다
 
-source_fail_counts = grouped.size()                                                                   # 그룹마다 행이 몇 개인지 센다 — 그룹 이름이 왼쪽에 나온다
-print(source_fail_counts)                                                                             # saas 1 · server 2 · web 3 (그룹 이름 순서)
+source_fail_counts = grouped.size()  # 그룹마다 행이 몇 개인지 센다 — 그룹 이름이 왼쪽에 나온다
+print(source_fail_counts)  # saas 1 · server 2 · web 3 (그룹 이름 순서)
 ```
 
 실행 결과:
@@ -116,15 +116,15 @@ dtype: int64
 `failed.groupby("source").size()` 처럼 묶기와 세기를 한 줄로 이어 쓰기도 합니다. <mark>실습 3-2 에서는 줄마다 하나씩 나눠 쓰고</mark>, 이 모양은 읽기만 합니다.
 
 ```python
-import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
-events = pd.read_json("normalized_events.json")       # 이벤트 파일을 표로 읽는다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
+events = pd.read_json("normalized_events.json")  # 이벤트 파일을 표로 읽는다
 
-results = events["result"]                            # result 열만 꺼낸다
-is_fail = results == "실패"                           # 행마다 실패면 True, 아니면 False 를 만든다
-failed = events[is_fail]                              # True 인 행만 남겨 새 표(failed)를 만든다 — 실패한 이벤트만 담긴다
+results = events["result"]  # result 열만 꺼낸다
+is_fail = results == "실패"  # 행마다 실패면 True, 아니면 False 를 만든다
+failed = events[is_fail]  # True 인 행만 남겨 새 표(failed)를 만든다 — 실패한 이벤트만 담긴다
 
 source_fail_counts = failed.groupby("source").size()  # 묶고(groupby) 바로 이어서 그룹마다 행 수를 센다(size) — 앞의 두 줄과 같은 일이다
-print(source_fail_counts)                             # saas 1 · server 9 · web 13 (그룹 이름 순서)
+print(source_fail_counts)  # saas 1 · server 9 · web 13 (그룹 이름 순서)
 ```
 
 실행 결과:
@@ -144,16 +144,16 @@ dtype: int64
 **<mark>`.sort_values(ascending=False)`</mark> 는 값이 큰 것부터 다시 정렬합니다**
 
 ```python
-import pandas as pd                                                                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-data = {                                                                                              # 실패한 이벤트만 적은 연습용 작은 데이터
-    "source": ["web", "server", "web", "saas", "web", "server"],                                      # source 열에 들어갈 값들
+data = {  # 실패한 이벤트만 적은 연습용 작은 데이터
+    "source": ["web", "server", "web", "saas", "web", "server"],  # source 열에 들어갈 값들
     "action": ["GET /board", "POST /login", "GET /report", "login", "GET /admin", "ACCOUNT:CHANGE"],  # action 열에 들어갈 값들
 }
-failed = pd.DataFrame(data)                                                                           # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
-grouped = failed.groupby("source")                                                                    # source 값이 같은 줄끼리 묶는다
-source_fail_counts = grouped.size()                                                                   # 그룹마다 행이 몇 개인지 센다 — saas 1 · server 2 · web 3
-print(source_fail_counts)                                                                             # 정렬하기 전의 개수를 출력한다
+failed = pd.DataFrame(data)  # 데이터로 표를 만든다 — 실제 파일은 read_json 이 표로 읽어 준다
+grouped = failed.groupby("source")  # source 값이 같은 줄끼리 묶는다
+source_fail_counts = grouped.size()  # 그룹마다 행이 몇 개인지 센다 — saas 1 · server 2 · web 3
+print(source_fail_counts)  # 정렬하기 전의 개수를 출력한다
 ```
 
 실행 결과:
@@ -169,8 +169,9 @@ dtype: int64
 위 코드에 이어서 실행하는 다음 코드입니다.
 
 ```python
-sorted_source_fail_counts = source_fail_counts.sort_values(ascending=False)  # 개수가 큰 그룹부터 다시 정렬한다(ascending=False 는 큰 값부터 정렬)
-print(sorted_source_fail_counts)                                             # web 3 · server 2 · saas 1
+sorted_source_fail_counts = source_fail_counts.sort_values(ascending=False)
+# ascending=False 는 개수가 큰 그룹부터 정렬한다
+print(sorted_source_fail_counts)  # web 3 · server 2 · saas 1
 ```
 
 실행 결과:
@@ -191,15 +192,16 @@ dtype: int64
 묶기, 세기, 정렬은 실무에서 아래처럼 점으로 이어 한 줄에 쓰기도 합니다. 왼쪽부터 차례로 하나씩 일어난다고 읽으면 됩니다. 직접 쓰지 않고 읽기만 합니다. 자세한 쓰임은 다음에 차차 배웁니다.
 
 ```python
-import pandas as pd                                                                       # 판다스를 pd 라는 짧은 이름으로 불러온다
-events = pd.read_json("normalized_events.json")                                           # 이벤트 파일을 표로 읽는다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
+events = pd.read_json("normalized_events.json")  # 이벤트 파일을 표로 읽는다
 
-results = events["result"]                                                                # result 열만 꺼낸다
-is_fail = results == "실패"                                                               # 행마다 실패면 True, 아니면 False 를 만든다
-failed = events[is_fail]                                                                  # True 인 행만 남겨 새 표(failed)를 만든다
+results = events["result"]  # result 열만 꺼낸다
+is_fail = results == "실패"  # 행마다 실패면 True, 아니면 False 를 만든다
+failed = events[is_fail]  # True 인 행만 남겨 새 표(failed)를 만든다
 
-sorted_source_fail_counts = failed.groupby("source").size().sort_values(ascending=False)  # 묶기 → 세기 → 큰 값부터 정렬을 한 줄로 이은 모양
-print(sorted_source_fail_counts)                                                          # web 13 · server 9 · saas 1
+# 묶기 → 세기 → 큰 값부터 정렬을 한 줄로 이은 모양
+sorted_source_fail_counts = failed.groupby("source").size().sort_values(ascending=False)
+print(sorted_source_fail_counts)  # web 13 · server 9 · saas 1
 ```
 
 실행 결과:
@@ -217,13 +219,13 @@ dtype: int64
 `pd.to_datetime` 은 `"2026-11-02 09:01:05"` 같은 문자열을 날짜·시간 값으로 바꿉니다. <mark>날짜·시간 값이어야 「시」나 「분」 같은 부분만 꺼낼 수 있습니다.</mark> 실습 3-2 의 `add_hour` 에 미리 채워져 있어서 직접 쓰지 않고 읽기만 합니다. 자세한 쓰임은 다음에 차차 배웁니다.
 
 ```python
-import pandas as pd                              # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 events = pd.read_json("normalized_events.json")  # 이벤트 파일을 표로 읽는다
 
-time_texts = events["time"]                      # time 열만 꺼낸다 — 문자열 시각 57개
-times = pd.to_datetime(time_texts)               # 문자열 시각 57개를 시각 값으로 바꾼다
-first_times = times.head(3)                      # 처음 3개만 남긴다
-print(first_times)                               # 시각 3개와 열 이름, 종류(datetime64)가 나온다
+time_texts = events["time"]  # time 열만 꺼낸다 — 문자열 시각 57개
+times = pd.to_datetime(time_texts)  # 문자열 시각 57개를 시각 값으로 바꾼다
+first_times = times.head(3)  # 처음 3개만 남긴다
+print(first_times)  # 시각 3개와 열 이름, 종류(datetime64)가 나온다
 ```
 
 실행 결과:
@@ -242,16 +244,16 @@ Name: time, dtype: datetime64[ns]
 <mark>`.dt.hour` 는 시각 값에서 「시」만 숫자로 꺼냅니다.</mark> 실습 3-2 의 `add_hour` 에 미리 채워져 있어서 직접 쓰지 않고 읽기만 합니다. 자세한 쓰임은 다음에 차차 배웁니다.
 
 ```python
-import pandas as pd                              # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 events = pd.read_json("normalized_events.json")  # 이벤트 파일을 표로 읽는다
 
-time_texts = events["time"]                      # time 열만 꺼낸다
-times = pd.to_datetime(time_texts)               # 문자열 시각을 시각 값으로 바꾼다
+time_texts = events["time"]  # time 열만 꺼낸다
+times = pd.to_datetime(time_texts)  # 문자열 시각을 시각 값으로 바꾼다
 
-hours = times.dt.hour                            # 시각 값에서 「시」만 숫자로 꺼낸다(02:14 → 2, 09:01 → 9)
-first_hours = hours.head(3)                      # 처음 3개만 남긴다
-for hour in first_hours:                         # 처음 3개를 하나씩 꺼낸다
-    print(hour)                                  # 2, 9, 9 가 한 줄씩 나온다
+hours = times.dt.hour  # 시각 값에서 「시」만 숫자로 꺼낸다(02:14 → 2, 09:01 → 9)
+first_hours = hours.head(3)  # 처음 3개만 남긴다
+for hour in first_hours:  # 처음 3개를 하나씩 꺼낸다
+    print(hour)  # 2, 9, 9 가 한 줄씩 나온다
 ```
 
 실행 결과:
@@ -269,16 +271,16 @@ for hour in first_hours:                         # 처음 3개를 하나씩 꺼�
 `표["새 열 이름"] = 값` 은 <mark>표 맨 오른쪽에 새 열을 붙입니다</mark>. 실습 3-2 의 `add_hour` 에 미리 채워져 있어서 직접 쓰지 않고 읽기만 합니다. 자세한 쓰임은 다음에 차차 배웁니다.
 
 ```python
-import pandas as pd                              # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 events = pd.read_json("normalized_events.json")  # 이벤트 파일을 표로 읽는다
 
-time_texts = events["time"]                      # time 열만 꺼낸다
-times = pd.to_datetime(time_texts)               # 문자열 시각을 시각 값으로 바꾼다
-hours = times.dt.hour                            # 시각 값에서 「시」만 숫자로 꺼낸다
+time_texts = events["time"]  # time 열만 꺼낸다
+times = pd.to_datetime(time_texts)  # 문자열 시각을 시각 값으로 바꾼다
+hours = times.dt.hour  # 시각 값에서 「시」만 숫자로 꺼낸다
 
-events["hour"] = hours                           # 표 맨 오른쪽에 hour 라는 새 열을 붙인다
-shape = events.shape                             # 붙인 뒤 표의 크기를 꺼낸다
-print(shape)                                     # (57, 7) — 열이 6개에서 7개가 되었다
+events["hour"] = hours  # 표 맨 오른쪽에 hour 라는 새 열을 붙인다
+shape = events.shape  # 붙인 뒤 표의 크기를 꺼낸다
+print(shape)  # (57, 7) — 열이 6개에서 7개가 되었다
 ```
 
 실행 결과:
@@ -341,31 +343,31 @@ failed.to_csv("failed_events.csv", index=False)  # 표를 failed_events.csv 파�
 **`events_time.py`**
 
 ```python
-import pandas as pd                         # 판다스를 pd 라는 짧은 이름으로 불러온다
+import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
-EVENTS_PATH = "normalized_events.json"      # 읽을 정규화 이벤트 파일 이름
-FAILED_PATH = "failed_events.csv"           # 실패한 이벤트를 저장할 파일 이름
+EVENTS_PATH = "normalized_events.json"  # 읽을 정규화 이벤트 파일 이름
+FAILED_PATH = "failed_events.csv"  # 실패한 이벤트를 저장할 파일 이름
 
 
-def load_events(path):                      # 파일 경로를 받는 함수
+def load_events(path):  # 파일 경로를 받는 함수
     """이벤트 파일을 표로 읽는다.
     분석을 시작할 때 맨 먼저 쓴다.
     """
-    events = pd.read_json(path)             # 파일을 읽어 표로 만든다
-    return events                           # 표를 리턴한다
+    events = pd.read_json(path)  # 파일을 읽어 표로 만든다
+    return events  # 표를 리턴한다
 
 
-def pick_failed(events):                    # 표를 받는 함수
+def pick_failed(events):  # 표를 받는 함수
     """실패한 이벤트만 골라 새 표로 만든다.
     무엇이 잘못됐는지 조사할 때 성공한 이벤트는 빼고 보는 데 쓴다.
     """
-    results = events["result"]              # result 열 하나를 꺼낸다
-    is_fail = results == "실패"             # 행마다 실패면 True, 아니면 False
-    failed = events[is_fail]                # True 인 행만 남긴다
-    return failed                           # 실패한 행만 담은 표를 리턴한다
+    results = events["result"]  # result 열 하나를 꺼낸다
+    is_fail = results == "실패"  # 행마다 실패면 True, 아니면 False
+    failed = events[is_fail]  # True 인 행만 남긴다
+    return failed  # 실패한 행만 담은 표를 리턴한다
 
 
-def count_by_user(failed):                  # 실패한 이벤트 표를 받는 함수
+def count_by_user(failed):  # 실패한 이벤트 표를 받는 함수
     """실패 횟수를 사용자별로 세어 많은 순서로 리턴한다.
     누구에게 실패가 많이 났는지 볼 때 쓴다.
     """
@@ -373,34 +375,34 @@ def count_by_user(failed):                  # 실패한 이벤트 표를 받는 
     # 1. failed 를 "user" 열 기준으로 묶어(groupby) grouped 에 담는다
     # 2. grouped.size() 의 결과를 user_fail_counts 에 담는다
     # 3. user_fail_counts 를 큰 값부터 정렬해(sort_values, ascending=False) sorted_user_fail_counts 에 담는다
-    return sorted_user_fail_counts          # 많은 순서로 정렬한 개수를 리턴한다
+    return sorted_user_fail_counts  # 많은 순서로 정렬한 개수를 리턴한다
 
 
-def add_hour(events):                       # 표를 받는 함수
+def add_hour(events):  # 표를 받는 함수
     """time 열을 시각으로 바꾸고 「시」만 담은 hour 열을 더한다.
     시간대별로 세기 전에 쓴다.
     """
     times = pd.to_datetime(events["time"])  # 문자열 시각을 시각 값으로 바꾼다
-    hours = times.dt.hour                   # 시각에서 「시」(0~23)만 꺼낸다
-    events["hour"] = hours                  # hour 라는 새 열로 표에 더한다
-    return events                           # hour 열이 더해진 표를 리턴한다
+    hours = times.dt.hour  # 시각에서 「시」(0~23)만 꺼낸다
+    events["hour"] = hours  # hour 라는 새 열로 표에 더한다
+    return events  # hour 열이 더해진 표를 리턴한다
 
 
-def count_by_hour(failed):                  # 실패한 이벤트 표를 받는 함수
+def count_by_hour(failed):  # 실패한 이벤트 표를 받는 함수
     """실패 횟수를 시간대별로 센다.
     실패가 몇 시에 많이 났는지 볼 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. failed 를 "hour" 열 기준으로 묶어 grouped 에 담는다
     # 5. grouped.size() 의 결과를 hour_fail_counts 에 담는다
-    return hour_fail_counts                 # 시간대별 개수를 리턴한다
+    return hour_fail_counts  # 시간대별 개수를 리턴한다
 
 
-def save_failed(failed, path):              # 표와 저장할 파일 이름을 받는 함수
+def save_failed(failed, path):  # 표와 저장할 파일 이름을 받는 함수
     """실패한 이벤트 표를 CSV 파일로 저장한다.
     담당자가 엑셀로 근거를 확인하게 할 때 쓴다.
     """
-    failed.to_csv(path, index=False)        # 표를 CSV 파일로 저장한다 — 미리 채운 줄
+    failed.to_csv(path, index=False)  # 표를 CSV 파일로 저장한다 — 미리 채운 줄
 ```
 
 - 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 ~ 5번은 모두 함수 안이라 앞에 공백 4개입니다.
@@ -410,26 +412,29 @@ def save_failed(failed, path):              # 표와 저장할 파일 이름을 
 **`exercise3-2_run.py`** — <mark>그대로 붙여 넣습니다.</mark> 직접 쓰는 줄은 없습니다. 이벤트를 읽어 실패만 골라 묶고 저장한 뒤 **세 단계**로 출력합니다. 단계 3에서 `pd.read_csv(파일)` 은 저장한 CSV 를 다시 표로 읽고, `len(표)` 는 그 표의 행 수입니다. 저장이 잘 됐는지 행 수로 확인하는 줄이라 읽기만 합니다.
 
 ```python
-import pandas as pd                            # 저장한 파일을 다시 읽을 수 있게 판다스를 불러온다
-from events_time import load_events, add_hour, pick_failed, count_by_user, count_by_hour, save_failed, EVENTS_PATH, FAILED_PATH  # 방금 만든 함수를 불러온다
+import pandas as pd  # 저장한 파일을 다시 읽을 수 있게 판다스를 불러온다
+from events_time import (
+    load_events, add_hour, pick_failed, count_by_user, count_by_hour,
+    save_failed, EVENTS_PATH, FAILED_PATH,
+)  # 방금 만든 함수를 불러온다
 
-events = load_events(EVENTS_PATH)              # 이벤트 파일을 표로 읽는다
-events = add_hour(events)                      # 시각을 바꾸고 hour 열을 더한다
-failed = pick_failed(events)                   # 실패한 이벤트만 골라낸다
+events = load_events(EVENTS_PATH)  # 이벤트 파일을 표로 읽는다
+events = add_hour(events)  # 시각을 바꾸고 hour 열을 더한다
+failed = pick_failed(events)  # 실패한 이벤트만 골라낸다
 
-by_user = count_by_user(failed)                # 실패 횟수를 사용자별로 센다
-print("--- 단계 1: 사용자별 실패 횟수")        # 단계 1 시작을 알리는 줄
-print(by_user)                                 # 많은 순서로 출력한다
+by_user = count_by_user(failed)  # 실패 횟수를 사용자별로 센다
+print("--- 단계 1: 사용자별 실패 횟수")  # 단계 1 시작을 알리는 줄
+print(by_user)  # 많은 순서로 출력한다
 
-by_hour = count_by_hour(failed)                # 실패 횟수를 시간대별로 센다
-print("--- 단계 2: 시간대별 실패 횟수")        # 단계 2 시작을 알리는 줄
-print(by_hour)                                 # 시간대 순서로 출력한다
+by_hour = count_by_hour(failed)  # 실패 횟수를 시간대별로 센다
+print("--- 단계 2: 시간대별 실패 횟수")  # 단계 2 시작을 알리는 줄
+print(by_hour)  # 시간대 순서로 출력한다
 
-save_failed(failed, FAILED_PATH)               # 실패한 이벤트를 CSV 로 저장한다
-saved = pd.read_csv(FAILED_PATH)               # 저장한 파일을 다시 읽어 확인한다
-saved_count = len(saved)                       # 저장된 행이 몇 개인지 센다
+save_failed(failed, FAILED_PATH)  # 실패한 이벤트를 CSV 로 저장한다
+saved = pd.read_csv(FAILED_PATH)  # 저장한 파일을 다시 읽어 확인한다
+saved_count = len(saved)  # 저장된 행이 몇 개인지 센다
 print("--- 단계 3: 저장한 파일", FAILED_PATH)  # 단계 3 시작을 알리는 줄
-print("저장된 행", saved_count, "개")          # 저장된 행 수를 출력한다
+print("저장된 행", saved_count, "개")  # 저장된 행 수를 출력한다
 ```
 
 **순서**
@@ -444,10 +449,12 @@ print("저장된 행", saved_count, "개")          # 저장된 행 수를 출�
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise3-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 **세 단계**입니다. `--- 단계` 제목 줄은 세지 않고, 단계 1은 6줄, 단계 2는 7줄, 단계 3은 1줄입니다.
 5. **[VS Code]** 새로 생긴 `failed_events.csv` 를 열어 첫 줄이 열 이름(`time,source,user,ip,action,result,hour`)인지 보고, <mark>`hour` 가 9 인 행의 `source` 를 봅니다</mark>.
-6. **[보고서]** `report_u3.md` 의 `## 실습 3-2` 아래를 채웁니다.
+6. **[실습 기록]** `report_u3.md` 의 `## 실습 3-2` 아래를 채웁니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 실패가 가장 많은 사용자와 횟수, 실패가 가장 많이 난 시간대와 횟수, 저장된 행 수를 적어 주세요.
    - (나) [핵심 질문] 시간대별 결과에서 실패가 가장 많이 난 시간대의 개수를 보세요. 이 개수는 실습 3-1 단계 3의 어느 소스 개수와 같은가요? 그 실패가 어느 소스에서 났는지 적고(근거는 숫자가 같다는 것까지 쓰면 됩니다), 이어서 확인할 것도 적어 주세요.
    - (다) [핵심 질문] 사용자별 실패 횟수를 모두 더하면 실패한 이벤트 전체보다 적습니다. 몇 개가 모자라고 왜 모자란지 적어 주세요. 그리고 이 차이를 모르고 사용자별 숫자만 보면 어떤 잘못된 판단을 할 수 있을지도 적어 주세요.
+
+<!-- answer: 04|실습 3-2 정답 -->
 
 ## 실습 3-2 정리
 
@@ -495,9 +502,9 @@ print("저장된 행", saved_count, "개")          # 저장된 행 수를 출�
    - `.env` 가 보이면: VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다.
      - `.venv` 도 같은 방법으로 합니다.
    - `anomaly_detection/__pycache__/` (파이썬이 실행하면서 자동으로 만드는 임시 폴더)가 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다.
-3. **[보고서]** `report_u3.md` 의 `## 마무리` 아래를 채웁니다. <mark>올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다</mark>.
+3. **[실습 기록]** `report_u3.md` 의 `## 저장소 반영 확인` 아래를 채웁니다. <mark>올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다</mark>.
    - (가) `git status` 를 쳤을 때 `.env` 나 `.venv` 가 보였는지, 보였다면 어떻게 했는지 적어 주세요.
-   - 앞 실습에서 못 적은 보고서 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다. 올린 뒤에 이어서 적어 다시 올려도 됩니다.
+   - 앞 실습에서 못 적은 기록 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다. 올린 뒤에 이어서 적어 다시 올려도 됩니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
    ```bash
    git add .
@@ -511,25 +518,59 @@ print("저장된 행", saved_count, "개")          # 저장된 행 수를 출�
    - 빠진 이름이 있으면 VS Code 왼쪽 목록의 `anomaly_detection` 폴더에 내 PC 에도 있는지 봅니다.
      - 없으면 다른 폴더에 만든 것이니 `anomaly_detection` 안으로 옮기고, `pwd` 로 위치를 확인한 뒤 2번의 `git status` 부터 다시 합니다.
 
-## 마무리 정리
+<!-- answer: 04|정답 마무리 -->
 
-| 하려는 일 | 코드 · 말 |
-|---|---|
-| 올릴 파일 확인 | `git status` (`.env` · `.venv` 가 보이면 멈춤) |
-| 올리기 | `git add .` → `git commit -m "…"` → `git push` |
-| 올린 뒤 | 브라우저에서 `anomaly_detection` 폴더와 파일이 있는지 확인 |
+## 문제 해결 과정을 블로그에 기록하기
 
+두 실습을 마친 뒤, 실패 이벤트를 어떤 기준으로 집계했고 결과를 어떻게 확인했는지 GitHub 블로그에 기록합니다. `report_u3.md`는 실행 출력과 질문 답을 남기는 기술 실습 기록입니다. 블로그 글에는 문제를 해석하고 근거를 확인한 과정, 선택한 집계 기준과 그 한계를 다른 개발자가 따라갈 수 있도록 정리합니다.
+
+M3 Unit 1에서 만든 `network-study-notes` 저장소의 `_posts` 폴더에 글을 작성합니다. GitHub Pages와 Jekyll을 아직 설정하지 않았다면 [M3 Unit 1의 Jekyll·GitHub Pages 설정 안내](__SITE__/exercises/module/3/unit/1/lesson/1/page/4)를 먼저 따라 합니다.
+
+이번 Unit의 샘플 데이터에서 직접 확인한 사실만 씁니다. 실패 개수만으로 어느 로그가 더 위험하다고 판단할 수 없는 이유, `user`가 비어 있는 웹 이벤트가 사용자별 집계에서 빠지는 점, 시간대 집계에서 확인한 단서를 고를 수 있습니다. 관찰한 사실과 추측을 나누고, 추가로 확인해야 할 자료도 적습니다. AI를 사용했다면 질문과 답 중 직접 실행하거나 자료와 대조한 내용을 요약합니다.
+
+아래 틀을 복사해 `_posts/YYYY-MM-DD-m4-u3-failure-analysis.md`로 저장하고 날짜와 제목을 실제 경험에 맞게 바꿉니다.
+
+<pre class="copyable"><code>---
+layout: post
+title: "실패 이벤트를 집계할 때 확인한 기준과 한계"
+date: YYYY-MM-DD
+module: 4
+unit: 3
 ---
 
-## 이번 Unit 마무리
+&#35;# 문제 상황
+어떤 이벤트를 세고 무엇을 확인하려 했나요?
 
-| 확인 | 문제 |
-|---|---|
-| 이벤트 파일을 표로 읽고, 실패한 이벤트를 골라 소스별로 셌다 | 실습 3-1 |
-| 실패를 사용자별 · 시간대별로 묶어 세고 CSV 로 저장했다 | 실습 3-2 |
-| 이번 Unit에서 만든 파일과 보고서를 깃허브에 올렸다 | 마무리 |
+&#35;# 확인한 근거
+어떤 표나 실행 결과를 직접 봤나요?
 
-다음은 Unit 4입니다. 이번 Unit에서 센 숫자를 **평소 기준(baseline)** 과 비교해서, 평소보다 많은 로그인 실패와 요청 급증을 찾는 탐지 규칙을 만듭니다.
+&#35;# 가능한 원인
+실패가 몰린 이유로 무엇을 생각했나요? 사실과 추측을 구분합니다.
+
+&#35;# 집계 기준과 이유
+어떤 열로 묶어 세었고, 그 기준을 선택한 이유는 무엇인가요?
+
+&#35;# 다시 확인한 결과
+CSV와 집계 결과에서 직접 확인한 내용은 무엇인가요?
+
+&#35;# 남은 질문
+추가로 확인하려면 어떤 자료가 더 필요할까요?
+
+&#35;# AI 도움 (사용했다면)
+어떤 질문을 했고 답변 중 무엇을 직접 확인했나요?
+</code></pre>
+
+`network-study-notes` 저장소에서 글을 커밋해 올리고, GitHub Pages에서 새 글을 확인합니다.
+
+```bash
+cd ~/network-study-notes
+git status --short
+git add _posts
+git commit -m "Record M4 Unit 3 problem solving"
+git push
+```
+
+다음 Unit에서는 이번 Unit의 집계 결과를 **평소 기준(baseline)** 과 비교해, 평소보다 많은 로그인 실패와 요청 급증을 찾는 탐지 규칙을 만듭니다.
 
 ---
 
