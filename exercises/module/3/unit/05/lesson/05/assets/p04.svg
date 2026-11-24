@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>도전 5-1 는 집계 실행, 보고서 실행, grep 확인의 세 줄 순서로 진행한다</title>
+<title>응용 5-1 는 집계 실행, 보고서 실행, grep 확인의 세 줄 순서로 진행한다</title>
 <desc>challenge5-1_run.py 는 log_summary.py 의 직접 쓰는 곳 1~11을 써서 세 단계로 집계를 출력한다. challenge5-1-2_run.py 는 run_checklist 와 read_log 결과를 weekly_report.py 로 합쳐 .md 파일로 저장한다. 끝으로 grep 으로 gaeun 과 dami 의 요청을 로그에서 찾는다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">도전 5-1 · 실행 두 번과 로그 확인</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">응용 5-1 · 실행 두 번과 로그 확인</text>
 <rect x="20" y="66" width="170" height="84" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="105" y="92" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">challenge5-1</text>
 <text x="105" y="115.2" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">_run.py</text>
@@ -43,7 +43,7 @@
 <line x1="438" y1="328" x2="460" y2="328" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p04)"/>
 <rect x="462" y="286" width="238" height="84" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="581" y="322.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">report_u5.md</text>
-<text x="581" y="345" font-size="15" fill="#292929" text-anchor="middle">도전 5-1 (가)(나)(다)</text>
+<text x="581" y="345" font-size="15" fill="#292929" text-anchor="middle">응용 5-1 (가)(나)(다)</text>
 <text x="20" y="392" font-size="14" fill="#666660">순서: 위 줄부터 아래 줄로. 두 번째 줄은 실습 5-1 의 checklist.py 가 있어야 합니다.</text>
 </g>
 </svg>

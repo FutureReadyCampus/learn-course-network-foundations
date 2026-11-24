@@ -1,26 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
-<title>Unit 3~9에서 한 일 위에 Unit 5 은 같은 기준의 매주 점검을 더한다</title>
-<desc>Unit 3·7은 현황 리스트와 회수 후보, Unit 4은 계획·승인·실행 회수, Unit 4는 조건 판정과 서버 로그를 만들었다. Unit 5은 이것을 매주 같은 기준으로 다시 점검하고 일주일 치 샘플 로그 40줄을 집계한다.</desc>
+<title>M3 Unit 3과 Unit 4의 권한 관리에 M3 M3 Unit 5의 주간 점검을 더한다</title>
+<desc>M3 Unit 3에서는 현황 리스트와 회수 후보를 만들고, M3 Unit 4에서는 계획·승인·실행 회수와 조건 판정 서버를 만들었다. M3 Unit 5에서는 같은 기준으로 매주 다시 점검하고 샘플 로그 40줄을 집계한다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">Unit 3부터 Unit 4까지, 그리고 이번 Unit</text>
+<text x="20" y="32" font-size="19" fill="#292929" font-weight="700">M3 Unit 3부터 M3 Unit 4까지, 그리고 M3 Unit 5</text>
 <rect x="20" y="70" width="150" height="160" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="95" y="123.1" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 3 · 7</text>
+<text x="95" y="123.1" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">M3 Unit 3</text>
 <text x="95" y="145.2" font-size="15" fill="#292929" text-anchor="middle">현황 리스트</text>
 <text x="95" y="167" font-size="15" fill="#292929" text-anchor="middle">규칙 · 사용 이력</text>
 <text x="95" y="188.8" font-size="15" fill="#292929" text-anchor="middle">회수 후보 찾기</text>
 <rect x="196" y="70" width="150" height="160" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="271" y="123.1" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 4</text>
+<text x="271" y="123.1" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">M3 Unit 4</text>
 <text x="271" y="145.2" font-size="15" fill="#292929" text-anchor="middle">계획 → 승인</text>
 <text x="271" y="167" font-size="15" fill="#292929" text-anchor="middle">→ 실행</text>
 <text x="271" y="188.8" font-size="15" fill="#292929" text-anchor="middle">이력 남기기</text>
 <rect x="372" y="70" width="150" height="160" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="447" y="123.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 4</text>
+<text x="447" y="123.9" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">M3 Unit 4</text>
 <text x="447" y="146" font-size="15" fill="#292929" text-anchor="middle">시간 · 위치 조건</text>
 <text x="447" y="167.7" font-size="15" fill="#292929" text-anchor="middle">판정 서버</text>
 <text x="447" y="188.4" font-size="14" fill="#292929" text-anchor="middle">server_log.jsonl</text>
 <rect x="548" y="70" width="150" height="160" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="623" y="123.1" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 5</text>
+<text x="623" y="123.1" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">M3 Unit 5</text>
 <text x="623" y="145.2" font-size="15" fill="#292929" text-anchor="middle">같은 기준으로</text>
 <text x="623" y="167" font-size="15" fill="#292929" text-anchor="middle">매주 점검</text>
 <text x="623" y="188.8" font-size="15" fill="#292929" text-anchor="middle">샘플 로그 40줄</text>
