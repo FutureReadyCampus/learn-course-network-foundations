@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>글 틀 세 가지 중 하나를 골라 _posts/ 아래 새 파일로 만들고 빈칸을 채웁니다</title>
-<desc>왼쪽은 글 틀 post-short(기본, 세 문장), post-stuck(막힌 일), post-practice(응용, 긴 글)입니다. 하나를 복사해 _posts/날짜-영문제목.md 새 파일로 만들고 빈칸을 채웁니다. 실행 결과 화면은 assets/images/ 에 올려 글에 연결합니다.</desc>
+<title>글 틀과 블로그 파일 구조를 미리 살펴봅니다</title>
+<desc>왼쪽은 글 틀 post-short(기본, 세 문장), post-stuck(막힌 일), post-practice(응용, 긴 글)입니다. 이 페이지에서는 파일 구조만 살펴봅니다. 실습을 마친 뒤 문제 해결 기록 레슨에서 글을 작성합니다.</desc>
 <defs>
 <marker id="a-p09" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
 </defs>
-<text x="20" y="30" font-size="19" font-weight="700" fill="#292929">글 틀로 글 한 편 쓰기</text>
+<text x="20" y="30" font-size="19" font-weight="700" fill="#292929">글 틀과 블로그 파일 구조 살펴보기</text>
 
 <g font-size="15" fill="#292929">
-<text x="20" y="62" font-size="14" fill="#666660">① 하나 고르기</text>
+<text x="20" y="62" font-size="14" fill="#666660">① 글 틀 예시</text>
 <rect x="20" y="74" width="220" height="64" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="36" y="100" font-weight="700">post-practice.md</text>
 <text x="36" y="124" font-size="14" fill="#666660">응용 · 긴 글</text>
@@ -18,7 +18,7 @@
 <text x="36" y="256" font-weight="700">post-stuck.md</text>
 <text x="36" y="280" font-size="14" fill="#666660">막혔던 일 남기기</text>
 
-<text x="276" y="62" font-size="14" fill="#666660">② 복사해 새 파일</text>
+<text x="276" y="62" font-size="14" fill="#666660">② 글 파일 예시</text>
 <rect x="276" y="74" width="230" height="220" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="292" y="104" font-weight="700">_posts/</text>
 <text x="292" y="128" font-weight="700">날짜-영문제목.md</text>
@@ -26,11 +26,11 @@
 <text x="292" y="176" font-size="14" fill="#666660">예:</text>
 <text x="292" y="198" font-size="14">_posts/</text>
 <text x="292" y="218" font-size="14">2026-01-15-first-post.md</text>
-<text x="292" y="270" font-size="14" fill="#666660">오늘 기본은 post-short</text>
+<text x="292" y="270" font-size="14" fill="#666660">글은 실습 후에 씁니다</text>
 
-<text x="542" y="62" font-size="14" fill="#666660">③ 채우기</text>
+<text x="542" y="62" font-size="14" fill="#666660">③ 내용 예시</text>
 <rect x="542" y="74" width="160" height="220" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="558" y="104" font-weight="700">빈칸 채우기</text>
+<text x="558" y="104" font-weight="700">내 경험 적기</text>
 <text x="558" y="138">주석 안내를</text>
 <text x="558" y="160">읽고 내 말로</text>
 <text x="558" y="196" font-size="14" fill="#666660">무엇을 했나</text>

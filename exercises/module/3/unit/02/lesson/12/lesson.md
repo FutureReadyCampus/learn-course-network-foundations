@@ -15,7 +15,7 @@ render: markdown
 1. 요청을 요청서(딕셔너리)로 접수하고, 접수할 수 없는 요청 세 건을 이유와 함께 걸러 냈다 (실습 2-1)
 2. 승인 · 반려가 검토 중인 요청서에만 되고, 본인 요청과 두 번째 처리는 막힌다 (실습 2-2)
 3. 승인된 요청서에 예외 권한을 주는 `req_grant.py` 를 「권한 부여 준비」에서 복사해 두었다
-4. 문제 해결 기록 `report_u2.md` 의 꼭 채울 네 칸 가운데 2-1 (가), 2-2 (가) · (나)에 `답:` 뒤가 비어 있지 않다(남은 마무리 (가)는 아래 3번에서 채웁니다)
+4. `_posts`에 오늘의 문제 해결 과정을 쓴 글을 저장했다
 
 **2. 파일 확인** — **[터미널]** `access_control` 폴더에서 확인합니다(`pwd` 가 `…/access_control` 로 끝나지 않으면 `cd access_control` 부터 칩니다).
 
@@ -31,7 +31,6 @@ ls config
 | `req_create.py` · `exercise2-1_run.py` | 실습 2-1 |
 | `req_review.py` · `exercise2-2_run.py` | 실습 2-2 |
 | `req_grant.py` | 「권한 부여 준비」 레슨 |
-| `report_u2.md` | 「문제 해결 기록 쓰기」 레슨 |
 
 - `req_grant.py` 가 없으면 「권한 부여 준비」 레슨에서 먼저 만듭니다.
 - `config` 안은 Unit 1을 마쳤을 때와 같습니다(`users.json` · `roles.json` · `exceptions.json`). Unit 1 응용 1-4를 했다면 `users_broken.json` 도 보입니다. 오늘 핵심 실습에서는 `config` 에 새 파일을 만들지 않았습니다.
@@ -60,11 +59,11 @@ ls config
    - `.venv` 는 파이썬 가상환경(이 프로젝트용 파이썬 도구를 담은 폴더), `__pycache__` 는 파이썬이 실행할 때 저절로 만드는 임시 폴더라 올리지 않습니다.
    - `.gitignore` 는 VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래에 있습니다.
    - 오늘 새로 만든 파일은 `Untracked files:` 아래에 `access_control/req_create.py` 처럼 한 줄씩 보입니다.
-3. **[문제 해결 기록]** `report_u2.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
+3. **[VS Code]** `_posts`에 저장한 글의 제목·날짜와 공개하면 안 되는 정보가 없는지 확인합니다.
 4. **[터미널]** 먼저 Unit 1 마무리처럼 공개 전 점검 스크립트 `python check_publish.py` 를 돌려 마지막 줄이 `요약: 오류 0건, 주의 0건` 인지 봅니다. `access_control` 코드도 공개 사이트에 함께 올라가기 때문입니다. `[오류]` · `[주의]` 줄이 나오면 그 줄이 가리키는 파일을 고치고 다시 돌립니다. 그다음 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
    ```bash
    git add .
-   git commit -m "Add access control unit 2 request, review, grant and report"
+   git commit -m "Add access control unit 2 request, review, grant and post"
    git push
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림

@@ -27,6 +27,6 @@
 <polyline points="471,130 519,96" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
 <polyline points="471,182 519,206" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
 <rect x="20" y="286" width="680" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="360" y="318.2" font-size="15" fill="#292929" text-anchor="middle">마지막: git status 로 확인하고 깃허브에 올린다 · 보고서 (가) ~ (다)</text>
+<text x="360" y="318.2" font-size="15" fill="#292929" text-anchor="middle">마지막: git status 로 확인하고 깃허브에 올린다 · 질문 생각하기</text>
 </g>
 </svg>

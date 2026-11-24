@@ -6,7 +6,7 @@
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">정답은 한 예, 핵심이 같으면 맞다</text>
 <rect x="20" y="60" width="180" height="76" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="110" y="92.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">내 답</text>
-<text x="110" y="114.2" font-size="15" fill="#292929" text-anchor="middle">보고서에 쓴 것</text>
+<text x="110" y="114.2" font-size="15" fill="#292929" text-anchor="middle">내가 생각한 것</text>
 <rect x="260" y="60" width="200" height="76" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="360" y="92.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">핵심이 같은가?</text>
 <text x="360" y="114.2" font-size="15" fill="#292929" text-anchor="middle">정답의 한 예와 비교</text>

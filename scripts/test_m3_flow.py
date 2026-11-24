@@ -1,3 +1,4 @@
+import html
 import unittest
 from pathlib import Path
 
@@ -19,14 +20,20 @@ class M3FlowTest(unittest.TestCase):
                     self.assertIn("<summary>정답과 해설 보기</summary>", answers[0])
                     self.assertIn("<code", answers[0])
 
-    def test_core_records_preserve_checklist_and_hide_optional_pages(self):
-        for unit, original, core in (("01", "12", "15"), ("02", "10", "13")):
+    def test_blog_record_pages_are_single_flow(self):
+        for unit, core in (("01", "15"), ("02", "13")):
             with self.subTest(unit=unit):
-                source = markdown_pages(ROOT / unit / "lesson" / original / "lesson.md")
-                copy = markdown_pages(ROOT / unit / "lesson" / core / "lesson.md")
-                self.assertEqual(copy[0].get("checklist"), source[0].get("checklist"))
-                self.assertTrue(all(not p["title"].startswith("응용") for p in copy))
-                self.assertTrue(any(p["title"].startswith("응용") for p in source))
+                pages = markdown_pages(ROOT / unit / "lesson" / core / "lesson.md")
+                self.assertEqual(len(pages), 5)
+                rendered = html.unescape("\n".join(page["html"] for page in pages))
+                self.assertNotIn("응용", rendered)
+                self.assertNotIn("report_u", rendered)
+                self.assertIn("_posts", rendered)
+                self.assertIn("## 문제 상황", rendered)
+                self.assertIn("## 확인한 결과", rendered)
+                self.assertIn("다음 「이번 Unit 마무리」", rendered)
+                self.assertTrue(any(page.get("checklist") for page in pages))
+
 
 
 if __name__ == "__main__":

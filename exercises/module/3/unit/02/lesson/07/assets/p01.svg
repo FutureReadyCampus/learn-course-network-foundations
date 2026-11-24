@@ -23,7 +23,7 @@
 <text x="360" y="282.112" font-size="14" fill="#292929" text-anchor="middle">{"hours": 4}</text>
 <polyline points="360,234 360,194" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
 <rect x="501" y="236" width="190" height="64" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="596" y="262.82" font-size="15" fill="#292929" text-anchor="middle">보고서 (가)~(다)</text>
+<text x="596" y="262.82" font-size="15" fill="#292929" text-anchor="middle">질문 생각하기</text>
 <text x="596" y="282.812" font-size="14" fill="#666660" text-anchor="middle">출력을 읽고 답하기</text>
 <polyline points="596,190 596,232" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
 <text x="30" y="262" font-size="14" fill="#666660">SLA 시간은 코드에 쓰지 않고</text>

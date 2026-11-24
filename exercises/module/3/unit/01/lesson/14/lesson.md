@@ -16,7 +16,7 @@ render: markdown
 2. `config/users.json` 과 `config/roles.json` 을 직접 쓰고 JSON 규칙을 확인했다 (실습 1-1)
 3. `check_permission` 이 모든 실패 경로를 서로 다른 이유로 거부한다 (실습 1-2)
 4. `evaluate_access` 가 역할 권한을 먼저 보고, 「권한 없음」일 때만 예외를 본다 (실습 1-3)
-5. 문제 해결 기록 `report_u1.md` 의 실습 1-1 ~ 1-3 칸에 `답:` 뒤가 비어 있는 질문이 없다
+5. `_posts`에 오늘의 문제 해결 과정을 쓴 글을 저장했다
 
 **2. 파일 확인** — **[터미널]** `access_control` 폴더에서 확인합니다.
 
@@ -32,7 +32,6 @@ ls config
 | `rbac.py` · `exercise1-2_run.py` | 실습 1-2 |
 | `exception_policy.py` · `config_loader.py` | 「예외 판정 준비」 |
 | `policy.py` · `exercise1-3_run.py` | 실습 1-3 |
-| `report_u1.md` | 「문제 해결 기록 쓰기」 |
 | `config/users.json` · `config/roles.json` | 실습 1-1 |
 | `config/exceptions.json` | 「예외 판정 준비」 |
 
@@ -56,7 +55,7 @@ ls config
    - 오늘 처음 올리는 `access_control` 폴더는 `git status` 에서 안의 파일이 하나씩 나오지 않고 **`access_control/` 한 줄로 접혀** 나옵니다. 그 밖에는 시작하기 12쪽에서 만든 `check_publish.py` 처럼 아직 올리지 않은 새 파일이 한 줄씩 나옵니다. 예를 들면 빨간 목록이 `access_control/` · `check_publish.py` 두 줄입니다.
    - 그래서 `access_control` 안에 `.env` 가 없는지는 `git status` 만으로는 안 보입니다. `git status -u` 로 풀어 본 목록(`access_control/rbac.py` · `access_control/config/users.json` …)에 `.env` · `.venv` 가 없으면 됩니다. `.gitignore` 에 적힌 파일은 `-u` 로 풀어도 나오지 않습니다.
    - 시작하기 7쪽에서 만든 `.gitignore` 에 `.env` · `.venv/` · `__pycache__/`(파이썬이 실행하면서 자동으로 만든 임시 폴더)가 들어 있어 보통은 보이지 않습니다. 보이면 VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래에 `.gitignore` 가 있는지 보고, 그 파일 맨 아래에 보인 이름(예: `.env`)을 한 줄 적고 저장한 뒤 `git status` 를 다시 칩니다.
-3. **[문제 해결 기록]** `report_u1.md` 의 `## 마무리` 아래 (가)를 채웁니다. 2번의 `git status` 빨간 목록 줄과, `git status -u` 에서 `.env` · `.venv` 가 있었는지를 적습니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
+3. **[VS Code]** `_posts`에 저장한 글의 제목·날짜와 공개하면 안 되는 정보가 없는지 확인합니다.
 4. **[터미널]** 저장소 루트에서 공개 전 점검 스크립트를 돌립니다. 시작하기 12쪽에서 만든 `check_publish.py` 이고, 올리기 전에는 매번 이렇게 한 번 돌립니다.
    ```bash
    python check_publish.py
@@ -66,7 +65,7 @@ ls config
 5. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
    ```bash
    git add .
-   git commit -m "Add access control unit 1 roles, checker, policy and report"
+   git commit -m "Add access control unit 1 roles, checker, policy and post"
    git push
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림

@@ -30,5 +30,5 @@
 <text x="610" y="245.1" font-size="15" fill="#292929" text-anchor="middle">번호 · 요청자 ·</text>
 <text x="610" y="266.1" font-size="15" fill="#292929" text-anchor="middle">권한 · 상태</text>
 <rect x="30" y="300" width="670" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="365" y="326.6" font-size="15" fill="#292929" text-anchor="middle">보고서 실습 2-1 (가) 채운 뒤 출력과 걸린 if 조건</text>
+<text x="365" y="326.6" font-size="15" fill="#292929" text-anchor="middle">질문 채운 뒤 출력과 걸린 if 조건</text>
 </svg>
