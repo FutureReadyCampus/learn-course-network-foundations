@@ -63,7 +63,7 @@ seoyeon:SALES:QUERY
 
 - 이름이 비슷한 두 가지를 구별합니다. `last_used_map` 은 사용 이력 딕셔너리(「사용자:권한」 문자열 → 마지막으로 쓴 시각 문자열)이고, `"last_used"` 는 후보에 추가하는 키(값은 마지막으로 쓴 시각 문자열, 이력이 없으면 `None`)입니다.
 
-- 실행 파일은 `find_unused` 를 부르기 전에 도전 3-1 규칙에 이미 걸린 권한(퇴사한 dami 포함)을 현황에서 뺍니다. 이때 권한 한 건마다 `user:permission:source` 를 이어 붙인 문자열(**식별 키**)을 만들어 서로 비교합니다. 이 방법은 Unit 3의 도전 3-2에서 자세히 설명하므로 지금은 붙여 넣기만 합니다.
+- 실행 파일은 `find_unused` 를 부르기 전에 준비 Lesson의 규칙 함수에 이미 걸린 권한(퇴사한 dami 포함)을 현황에서 뺍니다. 이때 권한 한 건마다 `user:permission:source` 를 이어 붙인 문자열(**식별 키**)을 만들어 서로 비교합니다. 식별 키는 같은 사용자에게 같은 권한이 역할과 예외로 각각 부여된 경우를 구분할 때 씁니다.
 
 | 현황의 권한 한 건의 상태 | 판정 |
 |---|---|
@@ -200,15 +200,15 @@ def find_unused(access_list, last_used_map, now, limit_days):    # 현황 · 마
 ```
 
 - `find_unused` 의 본문은 함수 안이라 앞에 공백 4개를 넣고(Tab 키 한 번), `for` 안쪽은 공백 4개 더(8개), `if` · `elif` 안쪽은 또 4개 더(12개) 넣습니다. 마지막 `return` 은 `for` 밖이므로 공백 4개입니다. `load_last_used` · `make_unused` · `days_since` 는 미리 채워 두었으니 그대로 둡니다.
-- `used_text is None` 은 「값이 `None` 인가」를 묻는 것입니다. `.get(key)` 는 키가 없으면 `None` 을 주므로 `None` 이면 사용 이력이 없다는 뜻입니다. 그 경우에는 일 수를 계산할 수 없으니, `days_since` 는 사용 이력이 있을 때(`elif`)만 부릅니다. `elif` 는 도전 3-1의 `find_stale` 에서 쓴 것과 같습니다.
+- `used_text is None` 은 「값이 `None` 인가」를 묻는 것입니다. `.get(key)` 는 키가 없으면 `None` 을 주므로 `None` 이면 사용 이력이 없다는 뜻입니다. 그 경우에는 일 수를 계산할 수 없으니, `days_since` 는 사용 이력이 있을 때(`elif`)만 부릅니다. `elif` 는 준비 Lesson의 `find_stale` 에서 쓴 것과 같습니다.
 - 채우기 전에 실행하면 `TypeError: object of type 'NoneType' has no len()` 오류가 납니다. `find_unused` 가 아무것도 리턴하지 않기 때문입니다.
 
-**`exercise3-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 현황을 만들고, 도전 3-1의 `find_stale` 에 걸린 권한을 뺀 뒤, 남은 권한이 며칠째 안 쓰였는지 출력하고 `find_unused` 로 후보를 찾습니다.
+**`exercise3-2_run.py`** — 그대로 붙여 넣습니다. 현황을 만들고, `review_rules.py`의 `find_stale`에 걸린 권한을 뺀 뒤, 남은 권한이 며칠째 안 쓰였는지 출력하고 `find_unused`로 후보를 찾습니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
 from review_list import build_access_list                        # 실습 3-1에서 만든 현황 함수를 불러온다
-from review_rules import find_stale                              # 도전 3-1에서 만든 규칙 점검 함수를 불러온다
+from review_rules import find_stale                              # 핵심 준비 Lesson에서 만든 규칙 점검 함수를 불러온다
 from review_unused import load_last_used, find_unused            # 방금 만든 미사용 점검 함수를 불러온다
 
 NOW = datetime.strptime("2026-10-29 10:00", "%Y-%m-%d %H:%M")    # 이번 실습의 지금 시각(고정)
@@ -265,11 +265,13 @@ for entry in unused:                                             # 후보를 한
    - 명령 풀이: `pwd` 지금 위치 확인 · `python` 파이썬으로 파일을 실행 · `exercise3-2_run.py` 실행할 파일
    - 맥북은 `python3 exercise3-2_run.py` 로 칩니다.
 5. 출력은 두 단계입니다. 단계 1은 규칙에 안 걸린 권한 일곱 건의 안 쓴 일 수(일곱 줄), 단계 2는 90일 넘게 안 쓴 후보입니다.
-6. **[보고서]** `report_u3.md` 의 `## 실습 3-2` 아래를 채웁니다.
+6. 실행 결과에서 후보 수와 기준일을 확인합니다. 핵심 실습을 마친 뒤 블로그 기록 Lesson에서 선택한 기준과 이유를 정리합니다.
    - (가) 실행한 출력 전체를 붙여 넣고, 90일 넘게 안 쓴 후보가 몇 건인지와 후보마다 며칠째 안 쓰였는지 적어 주세요.
      - 며칠째인지는 단계 1 출력에서 후보와 같은 사용자 · 권한의 줄을 찾아 적습니다. 사용 이력이 없는 후보는 단계 1 에 「사용 이력 없음」으로 나옵니다.
    - (나) [핵심 질문] junho 의 `SETTLE:QUERY` 는 마지막 사용이 90일 전이라 후보에서 빠졌고, 같은 junho 의 `SALES:QUERY` 는 91일 전이라 후보에 들어갔습니다. 하루 차이로 나누는 기준은 합리적일까요? 경계 부근에서 담당자가 추가로 확인할 것도 적어 주세요.
    - (다) [핵심 질문] 사용 이력이 없는 권한을 바로 지우면 위험한 경우가 있습니다. 어떤 경우인지 예를 들고, 지우기 전에 무엇을 확인해야 하는지 적어 주세요.
+
+<!-- answer: 08|실습 3-2 정답 -->
 
 ## 실습 3-2 정리
 
@@ -283,20 +285,3 @@ for entry in unused:                                             # 후보를 한
 | 후보에 추가하기 | `unused.append(unused_entry)` |
 
 ---
-
-## Unit 3 마무리 — 보고서 실습 3-1 · 도전 3-1 · 실습 3-2 칸 확인
-
-Unit 3 의 실습 3-1 · 도전 3-1 · 실습 3-2 칸에서 `답:` 뒤가 비어 있는 질문이 없는지 봅니다. `access_control` 폴더에 이번 Unit에서 만든 파일이 있는지 확인합니다.
-
-```bash
-ls
-ls config
-```
-
-- `review_list.py` · `review_rules.py` · `review_unused.py` · `exercise3-1_run.py` · `challenge3-1_run.py` · `exercise3-2_run.py` 가 보여야 합니다. `config` 안에는 `access_log.json` 이 새로 보여야 합니다.
-
-Unit 3에서는 이번 Unit에서 찾은 결과를 합쳐 **과다권한 종합 리포트**를 만들고 회수하지 않을 권한을 가려냅니다. 올리기(git)는 Unit 3의 도전 3-3 마지막에 한 번에 합니다.
-
----
-
-<!-- learn:answers -->
