@@ -21,11 +21,11 @@ source:
 > 다만 퇴사한 사람의 역할을 비우면 그 사람이 역할로 받던 권한이 모두 없어집니다. 이렇게 권한이 2개 이상 사라지는 회수는 조회 권한이어도 승인을 받아 주세요. 8건 가운데 어느 것이 승인 대상인지 가려서, 계획마다 승인 상태를 적어 주세요. 보안 책임자가 승인한 것과 아직 기다리는 것도 구분해 주세요.」
 > - **왜 중요한가**: 중요한 권한을 한 사람이 혼자 정하면 실수하거나 일부러 나쁘게 쓸 수 있습니다. 승인 상태가 적혀 있으면 어느 회수가 승인을 받았고 어느 회수가 아직 기다리는지 바로 알 수 있습니다.
 > - 이 실습에서 하는 일: 대부분은 미리 채워 두었고, 빈칸 두 곳(① · ②)만 한 줄씩 직접 씁니다.
-> - 끝나면 쓰는 것: 보고서 (가) · (나) 답. (다)는 여유가 되면 하는 응용입니다
+> - 실습 4-2까지 마친 뒤 블로그 기록에서 승인 기준과 판단 근거를 정리합니다.
 
 ## 왜 승인이 필요한가
 
-1. 제공 파일 `revoke_plan.py` 의 `plan_revocation` 이 만든 회수 계획은 8건 모두 같은 방식으로 다룹니다. 하지만 권한마다 중요도가 다릅니다. 데이터를 바꾸는 권한(`CHANGE`)은 잘못 없애면 그 권한으로 일하던 사람의 업무가 멈추고 실제 서비스에서는 되돌리기도 어렵습니다.
+1. 핵심 준비 레슨에서 만든 `revoke_plan.py` 의 `plan_revocation` 이 만든 회수 계획은 8건 모두 같은 방식으로 다룹니다. 하지만 권한마다 중요도가 다릅니다. 데이터를 바꾸는 권한(`CHANGE`)은 잘못 없애면 그 권한으로 일하던 사람의 업무가 멈추고 실제 서비스에서는 되돌리기도 어렵습니다.
 2. 그래서 승인이 필요한 경우를 둘로 정합니다. ① **민감한 권한**(sensitive · 센서티브, 잘못 없애면 피해가 큰 권한)인 경우입니다. ② 한 번의 회수로 권한이 2개 이상 사라지는 경우(영향 2건 이상)입니다. 예를 들어 퇴사한 dami 의 역할을 비우면 dami 가 그 역할로 받던 권한 2개가 모두 없어집니다.
    - 이런 경우에는 보안 책임자의 승인을 받고, 그 밖의 일반 권한 한 건은 바로 회수합니다. **보안 책임자**는 회사의 보안 규칙을 맡아 최종 결정을 내리는 사람입니다.
    - 학교에서 작은 일은 반장이 바로 처리해도, 반 전체에 영향이 큰 일은 담임 선생님께 허락을 받는 것과 비슷합니다.
@@ -33,7 +33,7 @@ source:
 
 ## 1.1 승인이 필요한 경우와 승인 상태
 
-- 출발점은 회수 계획 8건입니다. 계획 한 건은 회수 대상(`user` · `permission` · `source`)에 `method`(회수 방법) · `target`(지울 대상) · `impact`(영향: 이 회수로 사라지는 권한 수) 키를 더한 딕셔너리입니다. 자세한 모양은 「제공 파일」 레슨의 `revoke_plan.py` 설명에 있습니다.
+- 출발점은 회수 계획 8건입니다. 계획 한 건은 회수 대상(`user` · `permission` · `source`)에 `method`(회수 방법) · `target`(지울 대상) · `impact`(영향: 이 회수로 사라지는 권한 수) 키를 더한 딕셔너리입니다. 자세한 모양은 핵심 준비 레슨의 `revoke_plan.py` 설명에 있습니다.
 - 승인이 필요한 계획은 아래 둘 중 하나입니다. 겹치는 것을 한 번만 세면 승인이 필요한 계획은 모두 3건입니다.
 
 | 승인이 필요한 경우 | 이번 데이터의 계획 |
@@ -97,7 +97,7 @@ source:
 **`revoke_approve.py`**
 
 ```python
-from config_loader import load_json                              # Unit 1 제공 파일의 안전한 읽기 함수를 불러온다
+from config_loader import load_json                              # Unit 1 핵심 준비의 안전한 읽기 함수를 불러온다
 
 
 def load_sensitive(path):                                        # 민감한 권한 파일 경로를 받는 함수
@@ -174,12 +174,12 @@ print(decisions.get("junho:SALES:CHANGE")) # None · 키가 없으면 오류 대
 - ① 확인: ① 만 쓰고 실행하면 `NameError: name 'decision' is not defined` 가 나옵니다(파이썬 버전에 따라 뒤에 `Did you mean: 'decisions'?` 가 붙습니다). ② 를 아직 안 써서 나는 오류이니 정상입니다. 막히면: 바로 위 두 줄이 만든 `is_sensitive` 와 `is_big_impact` 를 `or` 로 잇고 앞에 `return` 을 붙입니다.
 - ② 확인: ② 까지 쓰고 실행하면 단계 2가 `{'승인 불필요': 5, '승인됨': 2, '승인 대기': 1}` 이면 성공입니다. `KeyError: 'junho:SALES:QUERY'` 가 나오면 `decisions[key]` 로 쓴 것이니 `.get` 으로 바꿉니다. 막히면: 위 문법 상자의 `decisions.get("dami:SALES:QUERY")` 에서 따옴표 문자열 자리에 `key` 를 넣고, 앞에 `decision = ` 을 붙입니다.
 
-**`exercise4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 제공 파일로 회수 계획을 만든 뒤 `mark_approvals` 로 승인 상태를 정하고 두 단계로 출력합니다.
+**`exercise4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 핵심 준비 레슨에서 만든 회수 계획을 불러온 뒤 `mark_approvals` 로 승인 상태를 정하고 두 단계로 출력합니다.
 
 ```python
 from rbac import USERS, ROLES                                    # 실습 1-2의 사용자 · 역할 딕셔너리를 불러온다
-from revoke_input import load_to_revoke                          # 제공 파일의 회수 대상 함수를 불러온다
-from revoke_plan import plan_revocation                          # 제공 파일의 회수 계획 함수를 불러온다
+from revoke_input import load_to_revoke                          # 핵심 준비의 고정 회수 대상 함수를 불러온다
+from revoke_plan import plan_revocation                          # 핵심 준비의 회수 계획 함수를 불러온다
 from revoke_approve import load_sensitive, mark_approvals        # 방금 만든 승인 함수를 불러온다
 
 DECISIONS = {"dami:SALES:QUERY": "승인", "dami:SALES:CHANGE": "승인"}  # 보안 책임자의 결정. 여기 없는 계획은 아직 결정하지 않은 것이다
@@ -191,7 +191,10 @@ results = mark_approvals(plans, sensitive, DECISIONS)            # 계획마다 
 
 print("--- 단계 1: 승인 상태 - 계획 8건")                        # 단계 1 시작을 알리는 줄
 for item in results:                                             # 결과를 하나씩 꺼낸다
-    print(item["user"], item["permission"], "<-", item["source"], "|", item["method"], "| 영향", item["impact"], "건 |", item["approval"])  # 사용자 · 권한 <- 출처 | 방법 | 영향 | 승인 상태를 출력한다
+    print(                                                         # 계획 한 건의 승인 상태를 출력한다
+        item["user"], item["permission"], "<-", item["source"],
+        "|", item["method"], "| 영향", item["impact"], "건 |", item["approval"]
+    )
 
 print("--- 단계 2: 집계 - 승인 상태별 건수")                     # 단계 2 시작을 알리는 줄
 counts = {}                                                      # 승인 상태 → 건수를 담을 빈 딕셔너리
@@ -204,7 +207,7 @@ print(counts)                                                    # 승인 상태
 
 **순서**
 
-1. **[터미널]** 「제공 파일」 레슨의 `revoke_input.py` · `revoke_plan.py` 가 있는지 `ls` 로 봅니다. 없으면 그 레슨에서 먼저 만듭니다.
+1. **[터미널]** 핵심 준비 레슨에서 만든 `revoke_input.py` · `revoke_plan.py` 가 `access_control` 안에 있는지 `ls` 로 확인합니다.
 2. **[VS Code]** 파일 `config/sensitive.json` · `revoke_approve.py` · `exercise4-1_run.py` 를 만들고, 위에서 같은 이름이 붙은 코드 상자의 내용을 붙여 넣어 저장합니다.
    - `sensitive.json` 은 `access_control` 폴더 안의 `config` 폴더를 오른쪽 클릭 › **New File** 로 만듭니다.
    - `revoke_approve.py` · `exercise4-1_run.py` 는 `access_control` 폴더를 오른쪽 클릭 › **New File** 로 만듭니다.
@@ -240,12 +243,11 @@ print(counts)                                                    # 승인 상태
 - [ ] `python exercise4-1_run.py` 를 다시 실행해 단계 2가 `{'승인 불필요': 5, '승인됨': 2, '승인 대기': 1}` 로 나왔다
 <!-- /checklist -->
 
-7. **[보고서]** `access_control/report_u4.md` 의 `## 실습 4-1` 아래를 채웁니다(보고서 파일은 시작하기 레슨 5번에서 「보고서 쓰기」 레슨 첫 쪽의 틀로 만들었습니다).
-   - (가) [핵심 질문] 채운 뒤 실행한 출력 전체를 붙여 넣고, 「승인 불필요」 · 「승인됨」 · 「승인 대기」가 각각 몇 건인지, 승인 대기인 계획이 무엇인지 적어 주세요.
-   - (나) [핵심 질문] 권한을 없애는 일인데 왜 쓰기 권한 같은 민감한 권한은 승인을 받게 할까요? 조회 같은 일반 권한 한 건은 바로 회수해도 되는 이유도 적어 주세요.
-   - (다) [응용] junho 의 `SALES:CHANGE`(예외 2번) 계획은 승인 대기입니다. 실습 4-2에서 이 계획은 어떻게 처리될지 예상해서 적고, 승인이 오래 나지 않으면 어떤 문제가 생길지도 적어 주세요.
+7. 실습 4-2까지 마친 뒤 [문제 해결 과정을 블로그에 기록하기](__SITE__/exercises/module/3/unit/4/lesson/10/page/1)에서 승인 기준과 판단 근거를 함께 정리합니다.
 
-**확인** — 다시 실행했을 때 단계 2가 `{'승인 불필요': 5, '승인됨': 2, '승인 대기': 1}` 이고, 「승인 대기」 줄이 `junho SALES:CHANGE <- 예외 2번` 이면 성공입니다. 안 나오면 「정답」 레슨의 실습 4-1 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+**확인** — 다시 실행했을 때 단계 2가 `{'승인 불필요': 5, '승인됨': 2, '승인 대기': 1}` 이고, 「승인 대기」 줄이 `junho SALES:CHANGE <- 예외 2번` 이면 성공입니다. 안 나오면 아래의 실습 4-1 정답 펼침과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+
+<!-- answer: 08|실습 4-1 정답 -->
 
 ## 실습 4-1 정리
 

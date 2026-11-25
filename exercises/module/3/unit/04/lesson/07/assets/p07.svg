@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img">
 <title>응용 파일 올리기: 서버를 끄고 git status 를 본 뒤 add, commit, push 를 한 번 더 합니다</title>
-<desc>응용 4-2 · 4-3을 했다면 conditional.py, apply4-2_run.py, access_server.py, send_checks.py, config/conditions.json, server_log.jsonl 을 실습 4-2 끝의 올리기 순서로 한 번 더 올립니다.</desc>
+<desc>응용 4-2 · 4-3을 했다면 conditional.py, apply4-2_run.py, access_server.py, send_checks.py, config/conditions.json, server_log.jsonl 을 블로그 기록 레슨의 공개 전 점검과 올리기 순서로 추가 파일을 올립니다.</desc>
 <defs><marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">응용 파일 올리기 — 실습 4-2 마무리 순서를 한 번 더</text>
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">응용 파일 올리기 — 블로그 공개 전 점검을 다시 진행</text>
 <rect x="20" y="54" width="150" height="70" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="95.0" y="83.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">서버 끄기</text>
 <text x="95.0" y="105.2" font-size="14" fill="#666660" text-anchor="middle">Ctrl + C</text>
