@@ -102,7 +102,7 @@ print(alert["minute"] + 240)                       # 243  · 숫자끼리 + 는 
 2. `ticketing.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
 3. 실행해서 단계 2 ~ 4 를 읽습니다.
 
-**`ticketing.py`** — 알림으로 티켓을 생성합니다. 이 파일은 나중에 「제공 파일」 레슨의 `ticket_merge.py` 와 Unit 5 실습 5-1이 가져다 씁니다(import). 직접 쓰는 곳은 `make_ticket` 의 ① · ② 입니다.
+**`ticketing.py`** — 알림으로 티켓을 생성합니다. 이 파일은 나중에 「선택 과제용 티켓 병합·알림 함수 준비」 레슨의 `ticket_merge.py` 와 Unit 5 실습 5-1이 가져다 씁니다(import). 직접 쓰는 곳은 `make_ticket` 의 ① · ② 입니다.
 
 ```python
 DEFAULT_NEXT_STEP = "담당자가 알림 내용을 읽고 필요한 일을 정한다"                      # 알림 상태를 모를 때 쓰는 다음 할 일
@@ -251,13 +251,11 @@ for ticket in tickets:                                                          
 <!-- /checklist -->
 
 4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다. 단계 2 는 11줄, 단계 3 은 6줄, 단계 4 는 숫자가 제목 줄에 함께 나오고 그 아래 1줄입니다.
-5. **[보고서]** `soar_response` 폴더의 `report_u3.md` 에서 `## 실습 3-2` 아래를 채웁니다.
-   - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣어 주세요. 그리고 단계 4 에 나온 직접 확인이 필요한 티켓 번호를 적어 주세요. 마지막으로 응답 기한 시각(담당자가 응답해야 하는 시각)이 가장 이른 티켓 번호를 적어 주세요.
-   - (나) [응용] `INC-207` 은 상태가 `조치됨` 인데, 티켓의 후속 조치(`next_step`)는 「조치됨」용 문장이 아닙니다. `done` 의 문장을 근거로 그 사유를 적어 주세요. 그다음 이 표시가 없으면 담당자가 무엇을 놓칠 수 있는지 적어 주세요.
-     - (나)의 답은 `## 실습 3-2` 가 아니라 `## 실습 응용 질문` 칸의 `3-2 (나) 답:` 에 씁니다.
-   - (다) [핵심 질문] TCK-1 의 응답 기한 시각은 15분이고 TCK-2 는 243분입니다. 두 티켓의 등급과 만든 시각을 근거로, 내가 쓴 ① · ② 가 응답 기한 시각을 어떻게 계산하는지 적어 주세요. 그다음 모든 티켓에 같은 응답 기한을 적용하면 어떤 문제가 생기는지 적어 주세요.
+5. **[실습 결과 기록]** `report_u3.md` 의 「실습 3-2 · 티켓 생성과 응답 기한」 아래에 실행 출력, 직접 확인이 필요한 티켓 번호, 가장 빠른 응답 기한을 기록합니다.
 
-**확인** — 단계 2 에 티켓 11줄이 나오고 TCK-1 의 기한이 `15 분`, TCK-2 의 기한이 `243 분` 이며, 단계 4 가 `직접 확인이 필요한 티켓 1 건` 과 TCK-7 한 줄이면 성공입니다. 안 나오면 「정답」 레슨의 실습 3-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+<!-- answer: 08|실습 3-2 정답 -->
+
+**확인** — 단계 2 에 티켓 11줄이 나오고 TCK-1 의 기한이 `15 분`, TCK-2 의 기한이 `243 분` 이며, 단계 4 가 `직접 확인이 필요한 티켓 1 건` 과 TCK-7 한 줄이면 성공입니다. 출력이 다르면 이 실습 바로 아래의 정답 펼침과 비교합니다.
 
 ## 실습 3-2 정리
 
@@ -273,79 +271,30 @@ for ticket in tickets:                                                          
 
 ---
 
-## 이번 Unit 마무리 · 깃허브에 올리기
+## 핵심 코드와 결과를 저장소에 반영하기
 
-하루를 닫는 마무리입니다(25분). 핵심 실습 두 개를 끝낸 뒤 합니다.
+핵심 실습에서 만든 코드, 입력 데이터, 실행 결과 기록을 저장소에 남깁니다. 선택 과제용 함수는 이 단계에서 만들지 않습니다.
 
-**1. 오늘 한 일 확인**
-
-1. 조치 기록을 거꾸로 읽어 자동이 바꾼 것만 되돌리고, 되돌릴 수 없는 세션 종료는 따로 표시했다 (실습 3-1)
-2. 알림 11건으로 티켓을 만들고 응답 기한(SLA)을 계산했으며, 조치 확인에 실패한 건을 직접 확인 대상으로 표시했다 (실습 3-2)
-3. 보고서 `report_u3.md` 의 [핵심 질문] 칸(실습 3-1 (가) · (나), 실습 3-2 (가) · (다))에 `답:` 뒤가 비어 있는 곳이 없다
-
-**2. 제공 파일 만들기** — 「제공 파일」 레슨으로 가서 `ticket_merge.py` · `notifier.py` · `ticket_notice.py` 를 만들고 확인 명령까지 친 뒤 이 페이지로 돌아옵니다. 오늘 핵심 실습에는 쓰지 않지만, 응용 3-2 · 3-3과 Unit 4 응용에서 씁니다.
-
-<!-- checklist -->
-- [ ] 「제공 파일」 레슨에서 `ticket_merge.py` · `notifier.py` · `ticket_notice.py` 를 만들고 `제공 파일 정상 7` 을 확인했다
-<!-- /checklist -->
-
-**3. 파일 확인** — **[터미널]** `soar_response` 폴더에서 확인합니다.
-
-```bash
-pwd
-ls
-ls config
-```
-
-- `undo_actions.py` · `rollback.py` · `exercise3-1_run.py` · `ticketing.py` · `exercise3-2_run.py` · `ticket_merge.py` · `notifier.py` · `ticket_notice.py` · `alerts_thu.json` · `report_u3.md` 가 보여야 합니다.
-- `config` 안에는 `escalation_rules.json` 이 새로 보여야 합니다.
-
-**4. 깃허브에 올리기**
-
-1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/network-study-notes` 으로 끝나야 합니다.
+1. **[터미널]** `soar_response` 폴더에서 핵심 파일과 입력 데이터를 확인합니다.
+   ```bash
+   pwd
+   ls
+   ls config
+   ```
+   `undo_actions.py` · `rollback.py` · `exercise3-1_run.py` · `ticketing.py` · `exercise3-2_run.py` · `alerts_thu.json` · `report_u3.md` 와 `config/escalation_rules.json` 이 있어야 합니다.
+2. 저장소 루트 `network-study-notes` 로 이동하고, 올릴 변경 목록을 확인합니다.
    ```bash
    cd ..
-   pwd
-   ```
-   - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
-   - 결과가 다르면 VS Code 위쪽 메뉴 **Terminal › New Terminal** 로 터미널을 새로 엽니다. 새 터미널은 작업 폴더 `network-study-notes` 에서 열리므로 `cd` 는 필요 없습니다. 다시 `pwd` 로 확인합니다.
-2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 목록에 `.env` 나 `.venv` 가 보이면 올리지 않고 멈춥니다.
-   ```bash
    git status
    ```
-   - 명령 풀이: `git status` 올릴 파일의 상태를 봄
-   - `.env` 가 보이면 VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
-   - `soar_response/__pycache__/` 는 파이썬이 실행하면서 자동으로 만든 임시 폴더입니다. 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장합니다.
-3. **[보고서]** `report_u3.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
-4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
+   `.env` 나 실제 비밀값이 보이면 올리지 말고 `.gitignore` 를 먼저 확인합니다.
+3. 기술 기록의 실행 출력과 최종 상태를 확인한 뒤, 저장소에 반영합니다.
    ```bash
-   git add .
-   git commit -m "Add SOAR unit 3 rollback and ticketing"
+   git add soar_response
+   git commit -m "Add SOAR unit 3 core rollback and ticketing"
    git push
    ```
-   - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - `git push` 가 거절(`rejected`)되면 `git pull --no-rebase` 로 받아 와 합친 뒤 `git push` 를 다시 합니다(편집기 화면이 뜨면 `Esc` → `:wq` → `Enter`).
 
 <!-- checklist -->
-- [ ] `network-study-notes` 폴더에서 `git status` 로 `.env` · `.venv` 가 없는 것을 보고 `git add` · `git commit` · `git push` 를 했다
+- [ ] 핵심 코드와 입력 데이터, 실행 결과 기록을 저장소에 올렸다
 <!-- /checklist -->
-
-5. **[브라우저]** 깃허브의 내 저장소 `network-study-notes` 를 새로 고쳐 `soar_response` 폴더를 열고, 3번에서 본 파일이 모두 있는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
-
-<!-- checklist -->
-- [ ] 깃허브의 `network-study-notes` 저장소 `soar_response` 폴더에서 3번의 파일을 모두 확인했다
-<!-- /checklist -->
-
-- 시간이 남아 응용을 했다면 응용 3-3 끝의 「응용 파일 올리기」를 따라 한 번 더 올립니다. 같은 날 여러 번 올려도 괜찮습니다.
-
-**5. 이어지는 곳**
-
-1. 다음 Unit 4(승인 게이트와 오탐 되돌리기)의 실습 4-2는 오늘 만든 `rollback.py` 의 `rollback_incident` 로 오탐 신고를 처리합니다.
-2. 오늘 만든 `ticketing.py` 의 `make_ticket` 은 Unit 5 실습 5-1 통합 엔진에서 티켓을 만들 때 다시 씁니다.
-3. 오늘은 연습용 시스템에서 실행했습니다. <mark>실제 제품에서는 `account_actions.py` · `ip_actions.py` 안의 상태를 바꾸는 줄이 계정 · 방화벽 시스템에 실제로 명령을 보내는 코드로 바뀝니다.</mark> 기록을 남기고, 되돌릴지 정하고, 티켓을 만드는 코드는 그대로 씁니다.
-
-> **확인** — 깃허브의 내 저장소 `soar_response` 폴더에 3번에서 본 파일이 모두 보이고 `.env` 는 보이지 않으면 성공입니다. 파일이 빠졌으면 4번 2의 `git status` 부터 다시 합니다.
-
----
-
-<!-- learn:answers -->

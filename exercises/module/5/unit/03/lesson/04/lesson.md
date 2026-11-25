@@ -1,14 +1,14 @@
 ---
 id: m5-u03-l04
-title: 제공 파일
+title: 선택 과제용 티켓 병합·알림 함수 준비
 render: markdown
 ---
 
-# 제공 파일
+# 선택 과제용 티켓 병합·알림 함수 준비
 
-## 제공 파일 쓰는 법
+## 이 함수들이 쓰이는 곳
 
-이 레슨의 파일은 **실습 3-2를 마친 뒤**, 실습 3-2 끝의 「이번 Unit 마무리 · 깃허브에 올리기」 2번에서 만듭니다. 오늘 핵심 실습에는 쓰지 않지만, 응용 3-2 · 3-3과 Unit 4 응용 4-1 · 4-2가 이 파일을 가져와 사용(import)합니다. 응용을 하지 않아도 완성본을 만들어 두면 다음 Unit을 따라갈 수 있습니다.
+이 선택 과제용 함수들은 핵심 실습과 포트폴리오 기록을 마친 뒤 만듭니다. 응용 3-2 · 3-3에서 쓰며, M5 Unit 4의 선택 과제에서도 가져와 사용합니다. 핵심 실습 3-1 · 3-2는 이 파일에 의존하지 않습니다.
 
 만들 파일은 세 개입니다.
 
@@ -24,17 +24,27 @@ render: markdown
 
 1. 파일은 모두 `soar_response` 폴더 안에 만듭니다(VS Code 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File**).
 2. 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
-3. `ticket_merge.py` 를 만들었으면 아래 명령으로 확인합니다. `제공 파일 정상 7` 이 나오면 됩니다(알림 11건이 티켓 7장으로 병합된다는 뜻입니다).
+3. `ticket_merge.py` 를 만들었으면 아래 명령으로 확인합니다. `티켓 병합 확인 7` 이 나오면 알림 11건이 티켓 7장으로 병합된 것입니다.
    ```bash
-   python -c "from incident import load_json; from ticket_merge import handle_alert; rules = load_json('config/escalation_rules.json'); tickets = []; [handle_alert(a, tickets, rules) for a in load_json('alerts_thu.json')]; print('제공 파일 정상', len(tickets))"
+   python - <<'PY'
+   from incident import load_json
+   from ticket_merge import handle_alert
+
+   rules = load_json('config/escalation_rules.json')
+   alerts = load_json('alerts_thu.json')
+   tickets = []
+   for alert in alerts:
+       handle_alert(alert, tickets, rules)
+   print('티켓 병합 확인', len(tickets))
+   PY
    ```
-   - 명령 풀이: 알림 파일의 알림을 하나씩 `handle_alert` 로 처리한 뒤, 만들어진 티켓 수를 출력합니다. 길지만 그대로 복사해 붙여 넣으면 됩니다.
+   - 알림을 하나씩 `handle_alert` 로 처리한 뒤 만들어진 티켓 수를 출력합니다.
    - `No module named 'ticketing'` 이 나오면 실습 3-2의 `ticketing.py` 가 이 폴더에 없는 것입니다.
    - `notifier.py` 와 `ticket_notice.py` 는 `requests` 도구가 있어야 불러올 수 있어서 여기서는 확인하지 않습니다. 응용 3-3 순서 1번에서 도구를 설치한 뒤 확인합니다.
 
 > 시간이 남아 응용 3-2 · 3-3을 하면, `ticket_merge.py` · `ticket_notice.py` 를 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 다 쓴 뒤에는 응용의 실행 결과가 정답과 같은지 확인합니다. 결과가 다르면 이 레슨의 완성본을 다시 붙여 넣으면 다음 Unit에 지장이 없습니다.
 
-> **확인** — 세 파일이 `soar_response` 폴더에 보이고, 3번 확인 명령에서 `제공 파일 정상 7` 이 나오면 성공입니다. 숫자가 7 이 아니거나 오류가 나면 `ticket_merge.py` 를 이 레슨의 상자로 다시 붙여 넣습니다.
+> **확인** — 세 파일이 `soar_response` 폴더에 보이고, 3번 확인 명령에서 `티켓 병합 확인 7` 이 나오면 준비가 끝났습니다. 숫자가 다르거나 오류가 나면 `ticket_merge.py` 를 다시 확인합니다.
 
 ## `ticket_merge.py` 만들기
 
@@ -125,10 +135,10 @@ def change_ticket_status(ticket, new_status, minute, who):                     #
 - [ ] `ticket_merge.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
 <!-- /checklist -->
 
-> **확인** — 저장한 뒤 첫 페이지 3번의 확인 명령을 쳐서 `제공 파일 정상 7` 이 나오면 성공입니다. `No module named 'ticketing'` 이 나오면 실습 3-2의 `ticketing.py` 를 먼저 만듭니다.
+> **확인** — 저장한 뒤 첫 페이지 3번 확인 명령에서 `티켓 병합 확인 7` 이 나오면 성공입니다. `No module named 'ticketing'` 이 나오면 실습 3-2의 `ticketing.py` 를 먼저 만듭니다.
 
 <!-- checklist -->
-- [ ] `soar_response` 폴더에서 첫 페이지 3번 확인 명령을 실행해 `제공 파일 정상 7` 이 나왔다
+- [ ] `soar_response` 폴더에서 첫 페이지 3번 확인 명령을 실행해 `티켓 병합 확인 7` 이 나왔다
 <!-- /checklist -->
 
 ## `ticket_notice.py` 만들기
