@@ -32,14 +32,14 @@ source:
 
 | 탐지된 규칙 | 점수 | 찾는 파일 |
 |---|---|---|
-| 퇴사한 계정 | 60 | `access_detection.py`(Unit 3 실습 3-2) |
+| 퇴사한 계정 | 60 | `access_detection.py`(Module 3 Unit 3 실습 3-2) |
 | 권한 없음 | 20 | `access_detection.py` |
 | 규칙은 허용인데 서버가 거절 | 10 | `access_detection.py` |
-| 업무 시간 밖 로그인 | 15 | `saas_detection.py`(제공 파일) |
-| 평소와 다른 IP | 20 | `saas_detection.py` |
-| 대량 다운로드 | 25 | `saas_detection.py` |
-| 경로 스캔 | 30 | `malicious_detection.py`(제공 파일) |
-| 여러 로그 연결 | 30 | `correlation.py`(제공 파일) |
+| 업무 시간 밖 로그인 | 15 | `risk_inputs.json`(고정 시나리오 입력) |
+| 평소와 다른 IP | 20 | `risk_inputs.json`(고정 시나리오 입력) |
+| 대량 다운로드 | 25 | `risk_inputs.json`(고정 시나리오 입력) |
+| 경로 스캔 | 30 | `risk_inputs.json`(고정 시나리오 입력) |
+| 여러 로그 연결 | 30 | `risk_inputs.json`(고정 시나리오 입력) |
 
 - 등급 기준은 점수가 **60 이상이면 high, 35 이상 60 미만이면 mid, 35 미만이면 low** 입니다. 「이상」은 `>=` 이고, <mark>높은 기준(high)부터 먼저 검사합니다.</mark> 등급은 위험이 없다는 판정이 아니라 **확인할 순서를 정하는 기준**입니다.
 - 표의 「규칙」은 **탐지 규칙의 이름**입니다. 서버 거절 세 줄은 서버가 거절한 요청을 `check_permission` 으로 다시 판정한 이유 단어(`퇴사한 계정` · `권한 없음` · `허용`)를 이름으로 씁니다. 다만 `허용` 만으로는 뜻이 헷갈려서 「규칙은 허용인데 서버가 거절」이라는 이름으로 바꿔 씁니다.
@@ -129,16 +129,16 @@ Name: points, dtype: int64
 1. `risk_scores.py` · `exercise4-1_run.py` 두 파일을 만들고, `risk_scores.py` 의 `score_findings` 에서 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다. 나머지 함수는 모두 미리 채워 두었습니다.
 2. 실행해서 <mark>탐지된 규칙 수</mark>(단계 1), <mark>대상별 점수</mark>(단계 2), <mark>저장한 건수</mark>(단계 3), <mark>저장된 기록</mark>(단계 4)를 읽고, 새로 생긴 `unit05_risk_scores.json` 을 VS Code 에서 열어 봅니다.
 
-`score_findings` 의 두 곳 말고는 모두 읽기만 하는 미리 채운 줄입니다. 가장 긴 `collect_findings` 는 세 탐지 파일과 `correlation.py` 의 결과를 (대상, 규칙) 쌍으로 모으는 일을 합니다.
+`score_findings` 의 두 곳 말고는 모두 읽기만 하는 미리 채운 줄입니다. 가장 긴 `collect_findings` 는 Module 3 Unit 3 핵심 서버 탐지와 `risk_inputs.json` 의 고정 시나리오 입력을 (대상, 규칙) 쌍으로 모읍니다.
 
 **`risk_scores.py`**
 
 ```python
 import json                                        # 점수를 JSON 파일로 쓰기 위해 json 을 불러온다
 import pandas as pd                                    # 판다스를 pd 라는 짧은 이름으로 불러온다
-from access_detection import load_events, pick_server_failures, pick_suspicious, judge_failure, EVENTS_PATH  # 실습 3-2 함수를 불러온다
-from saas_detection import pick_saas, pick_logins, find_off_hours_logins, find_new_ip_users, find_bulk_download_users  # 제공 파일의 SaaS 탐지 함수를 불러온다
-from malicious_detection import pick_web_failures, find_scan_ips  # 제공 파일의 경로 스캔 함수를 불러온다
+from access_detection import pick_server_failures, pick_suspicious, judge_failure  # Module 3 Unit 3 핵심 탐지 함수를 불러온다
+
+RISK_INPUTS_PATH = "risk_inputs.json"  # 고정 시나리오 입력 파일
 
 RISK_PATH = "unit05_risk_scores.json"                   # 점수를 저장할 파일 이름
 HIGH_LIMIT = 60                                        # 점수가 이 값 이상이면 high
@@ -158,41 +158,20 @@ def add_finding(findings, entity, rule):               # 리스트 · 대상 · 
         findings.append(finding)                       # 리스트에 추가한다
 
 
-def collect_findings(events, chains):                  # 이벤트 표와 연결된 사건을 받는 함수
-    """세 로그의 탐지 결과와 로그 연결 결과를 (대상, 탐지된 규칙) 리스트로 모은다.
-    점수를 매기기 전에 한 번에 쓴다.
-    """
-    findings = []                                      # 탐지된 규칙을 담을 빈 리스트
+def collect_findings(events, risk_inputs_path=RISK_INPUTS_PATH):
+    """핵심 서버 탐지와 고정 시나리오 입력을 (대상, 규칙) 목록으로 모은다."""
+    findings = []
+    server_failures = pick_server_failures(events)
+    suspicious = pick_suspicious(server_failures)
+    for event in suspicious.to_dict("records"):
+        reason, priority = judge_failure(event["user"], event["action"])
+        add_finding(findings, event["user"], SERVER_RULES.get(reason, reason))
 
-    server_failures = pick_server_failures(events)     # 판정 서버 실패 이벤트를 고른다
-    suspicious = pick_suspicious(server_failures)      # 먼저 확인할 서버 이벤트를 고른다
-    suspicious_list = suspicious.to_dict("records")    # 표를 이벤트 딕셔너리 리스트로 바꾼다
-    for event in suspicious_list:                      # 이벤트를 하나씩 꺼낸다
-        reason, priority = judge_failure(event["user"], event["action"])  # Module 3 규칙으로 다시 판정한다
-        rule = SERVER_RULES.get(reason, reason)        # 판정 이유를 규칙 이름으로 바꾼다
-        add_finding(findings, event["user"], rule)     # 사용자와 규칙을 추가한다
-
-    saas = pick_saas(events)                           # SaaS 이벤트를 고른다
-    logins = pick_logins(saas)                         # 로그인 이벤트를 고른다
-    off_hours_logins = find_off_hours_logins(logins)   # 업무 시간 밖 로그인을 찾는다
-    off_hours_users = list(off_hours_logins["user"])   # 그 로그인의 사용자 이름만 리스트로 만든다
-    new_ip_users = find_new_ip_users(logins)           # 평소와 다른 IP 로 로그인한 사용자를 찾는다
-    bulk_users = find_bulk_download_users(saas)        # 대량 다운로드 사용자를 찾는다
-    for user in off_hours_users:                       # 업무 시간 밖 로그인 사용자를 하나씩 꺼낸다
-        add_finding(findings, user, "업무 시간 밖 로그인")  # 사용자와 규칙을 추가한다
-    for user in new_ip_users:                          # 평소와 다른 IP 사용자를 하나씩 꺼낸다
-        add_finding(findings, user, "평소와 다른 IP")  # 사용자와 규칙을 추가한다
-    for user in bulk_users:                            # 대량 다운로드 사용자를 하나씩 꺼낸다
-        add_finding(findings, user, "대량 다운로드")   # 사용자와 규칙을 추가한다
-
-    web_failures = pick_web_failures(events)           # 웹 실패 이벤트를 고른다
-    scan_ips, many_kinds = find_scan_ips(web_failures)  # 경로 스캔 IP 를 찾는다
-    for ip in scan_ips:                                # 스캔 IP 를 하나씩 꺼낸다
-        add_finding(findings, ip, "경로 스캔")         # IP 와 규칙을 추가한다
-
-    for chain in chains:                               # 연결된 사건을 하나씩 꺼낸다
-        add_finding(findings, chain["user"], "여러 로그 연결")  # 사용자와 규칙을 추가한다
-    return findings                                    # 탐지된 규칙 리스트를 리턴한다
+    with open(risk_inputs_path, encoding="utf-8") as file:
+        risk_inputs = json.load(file)
+    for item in risk_inputs:
+        add_finding(findings, item["entity"], item["rule"])
+    return findings
 
 
 def score_findings(findings):                          # 탐지된 규칙 리스트를 받는 함수
@@ -280,12 +259,10 @@ def save_records(records, path):                       # 기록 리스트와 파
 
 ```python
 from access_detection import load_events, EVENTS_PATH  # 실습 3-2 함수를 불러온다
-from correlation import find_chains_in_events          # 제공 파일의 로그 연결 함수를 불러온다
 from risk_scores import collect_findings, score_findings, collect_reasons, make_records, save_records, RISK_PATH  # 방금 만든 함수를 불러온다
 
 events = load_events(EVENTS_PATH)                      # 이벤트 파일을 표로 읽는다
-chains = find_chains_in_events(events)                 # 세 로그를 이어 연결된 사건을 찾는다
-findings = collect_findings(events, chains)            # 탐지 결과와 연결 결과에서 탐지된 규칙을 모은다
+findings = collect_findings(events)                    # 핵심 서버 탐지와 고정 시나리오 입력을 모은다
 finding_count = len(findings)                          # 탐지된 규칙이 모두 몇 건인지 센다
 print("--- 단계 1: 탐지된 규칙", finding_count, "건")    # 단계 1 시작을 알리는 줄과 건수
 
@@ -331,14 +308,13 @@ for record in records:                                 # 기록을 하나씩 꺼
 - [ ] 새로 생긴 `unit05_risk_scores.json` 을 VS Code 에서 열어 대상 5개를 확인했다
 <!-- /checklist -->
 
-6. **[보고서]** `report_u4.md` 의 `## 실습 4-1` 아래를 채웁니다. 파일이 아직 없으면 「보고서 쓰기」 레슨 첫 페이지의 틀로 `anomaly_detection` 폴더에 먼저 만듭니다.
+6. **[기술 기록]** `report_u4.md` 의 `## 실습 4-1` 아래를 채웁니다. 파일이 아직 없으면 「실습 결과 기록 준비」 레슨의 틀로 `anomaly_detection` 폴더에 먼저 만듭니다.
    - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, high · mid · low 에 각각 어떤 대상이 들어갔는지 적어 주세요.
    - (나) [핵심 질문] seoyeon 의 점수가 어떤 규칙의 점수를 더해 나왔는지 적고, 점수만 저장하지 않고 이유(`reasons`)를 함께 저장하는 까닭을 적어 주세요.
    - (다) [응용] 198.51.100.90 은 경로 스캔 하나에 해당하지만 low 입니다. low 는 점수 기준상 낮은 등급이라는 뜻입니다. low 인 이유를 점수와 기준으로 설명하고, 이 IP 의 기록을 무시해도 되는지 샘플의 값(그 IP 의 요청 3개의 `result`)으로 판단해 적어 주세요.
      - 요청 3개는 VS Code 로 `normalized_events.json` 을 열고 `Ctrl + F` 로 `198.51.100.90` 을 검색해 찾습니다.
-     - [응용] 질문의 답은 보고서 틀의 `## 실습 응용 질문` 칸에 씁니다.
 
-**확인** — 단계 4가 `high dami 60 ['퇴사한 계정']` 으로 시작하는 다섯 줄이고 맨 아래가 `low 198.51.100.90 30 ['경로 스캔']` 이면 성공입니다. 안 나오면 「정답」 레슨의 실습 4-1 출력과 한 줄씩 맞춰 보고, 오류가 나면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+**확인** — 단계 4가 `high dami 60 ['퇴사한 계정']` 으로 시작하는 다섯 줄이고 맨 아래가 `low 198.51.100.90 30 ['경로 스캔']` 이면 성공입니다. 안 나오면 아래 실습 4-1 정답 펼침의 출력과 한 줄씩 맞춰 보고, 오류가 나면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 ## 실습 4-1 정리
 
@@ -350,3 +326,4 @@ for record in records:                                 # 기록을 하나씩 꺼
 | 기록 만들기(미리 채움) | `record = {"entity": entity, "score": int(score), …}` |
 
 ---
+<!-- answer: 08|실습 4-1 정답 -->

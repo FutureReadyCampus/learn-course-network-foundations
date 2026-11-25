@@ -436,3 +436,4 @@ for item in not_chained:                               # 연결되지 않은 사
 | 이유 문장 만들기 | `reason = "서로 다른 로그 " + str(source_count) + "종류 · " + str(span) + "분 안"` |
 
 ---
+<!-- answer: 08|응용 4-1 정답 -->

@@ -8,28 +8,20 @@ render: markdown
 
 ## 목표와 오늘의 계획
 
-Unit 3 실습 3-2에서는 판정 서버 로그에서 반복 거절을 찾았습니다. SaaS · 웹 로그를 살피는 탐지 규칙은 Unit 3 응용 3-2 · 3-3에서 다뤘고, 응용을 하지 않았어도 오늘 「제공 파일」 레슨에서 완성본을 받아 씁니다. 그런데 결과가 모두 「탐지됨」이라고만 나오면 어느 대상부터 볼지 정할 수 없고, 알림이 맞았는지도 알 수 없습니다. 오늘은 탐지된 규칙마다 **점수**를 매겨 확인할 순서를 정하고, 틀린 알림(**오탐**)을 **예외 규칙**으로 줄입니다.
+Module 3 Unit 3 실습 3-2에서 만든 서버 탐지 결과에, 이번 Unit의 고정 시나리오 입력을 더해 점수를 매깁니다. 선택 응용에서 만든 코드는 필요하지 않습니다. 결과가 모두 「탐지됨」이라고만 나오면 어느 대상부터 볼지 정할 수 없고, 알림이 맞았는지도 알 수 없습니다. 오늘은 탐지된 규칙마다 **점수**를 매겨 확인할 순서를 정하고, 틀린 알림(**오탐**)을 **예외 규칙**으로 줄입니다.
 
 **오늘의 계획 (약 2시간 40분)**
 
 | 순서 | 시간 | 하는 일 |
 |---|---|---|
-| 1. 시작 | 15분 | Unit 3 파일 확인 · `review_alerts.json` · 제공 파일 세 개 |
+| 1. 시작 | 15분 | Unit 3 핵심 파일 확인 · `risk_inputs.json` · `review_alerts.json` |
 | 2. 핵심 실습 | 약 110분 | 실습 4-1 · 4-2 (보고서 핵심 질문 포함) |
 | 3. 글쓰기 | 20분 | 「오늘의 글 쓰기」에서 세 문장 글 한 편 |
-| 4. 마무리 | 15분 | 「이번 Unit 마무리」에서 확인하고 올리기 |
+| 4. 결과 기록 | 15분 | 결과물 확인과 저장소 기록 |
 
-- 하루 3시간 가운데 남는 20분은 밀린 사람을 위한 여유입니다. 핵심 실습에서 직접 쓰는 줄은 실습 4-1 두 줄, 실습 4-2 세 줄이고 나머지는 미리 채워 두었습니다. 제공 파일과 실습 코드는 길어서 붙여 넣는 데도 시간이 드니, 붙여 넣기는 복사 버튼으로 합니다.
+- 하루 3시간 가운데 남는 20분은 밀린 사람을 위한 여유입니다. 핵심 실습에서 직접 쓰는 줄은 실습 4-1 두 줄, 실습 4-2 세 줄이고 나머지는 미리 채워 두었습니다. 코드와 입력을 붙여 넣을 때는 코드 상자의 복사 버튼을 사용합니다.
 
-**오늘 먼저 받아 쓰는 것** — 「제공 파일」 레슨의 완성 코드 세 개입니다.
-
-| 파일 | 하는 일 |
-|---|---|
-| `saas_detection.py` | SaaS 로그에서 업무 시간 밖 로그인 · 평소와 다른 IP · 대량 다운로드를 찾는 함수 |
-| `malicious_detection.py` | 웹 로그에서 스캐너 경로를 요청한 IP(경로 스캔)를 찾는 함수 |
-| `correlation.py` | 서버 · SaaS · 웹 로그를 한 사용자 기준으로 이어 60분 안에 서로 다른 로그가 모인 사건을 찾는 함수 `find_chains_in_events` |
-
-- **스캐너**는 사이트에 흔히 있는 취약한 경로를 자동으로 하나씩 두드려 보는 프로그램입니다. 한 IP 가 이런 경로를 잇달아 요청하는 것을 **경로 스캔**이라고 합니다.
+**실습 4-1의 핵심 입력** — Module 3 Unit 3의 서버 탐지 결과와 이 Unit의 `risk_inputs.json` 에 기록한 여섯 개 고정 시나리오 신호를 함께 점수화합니다. 각 신호에는 출처 맥락을 남기며, 이는 학습자가 선택 응용으로 생성한 결과가 아닙니다.
 
 **오늘 만들 것 두 가지**
 
@@ -38,7 +30,7 @@ Unit 3 실습 3-2에서는 판정 서버 로그에서 반복 거절을 찾았습
 | **실습 4-1** | 탐지된 규칙마다 점수를 더해 대상(사용자 또는 IP)을 high · mid · low(높음 · 중간 · 낮음)로 나눔 | `risk_scores.py` 의 빈칸 두 곳(① · ②) | 점수 · 등급 · 이유를 `unit05_risk_scores.json` 에 저장 |
 | **실습 4-2** | 알림 7개 가운데 협력사 사무실 IP 에서 온 오탐을 예외 규칙 하나로 뺌 | `tuning.py` 의 빈칸 세 곳(① · ② · ③) | 진짜 문제는 지워지지 않았는지 확인 |
 
-**응용 4-1 ~ 4-3은 선택입니다.** 핵심 실습 두 개와 글쓰기를 마치고 시간이 남을 때 합니다. 응용 4-1에서는 제공 파일 `correlation.py` 를 직접 써 보고, 응용 4-2 · 4-3에서는 알림의 오탐과 미탐(놓친 진짜 문제)을 세고 규칙을 합쳐 다시 셉니다. 응용을 하지 않아도 다음 Unit을 따라갈 수 있습니다.
+**응용 4-1 ~ 4-3은 선택입니다.** 기술 결과 기록과 GitHub 블로그 글쓰기를 마치고 시간이 남을 때 합니다. 응용 4-1에서는 로그를 연결하는 `correlation.py` 를 직접 만들고, 응용 4-2 · 4-3에서는 알림의 오탐과 미탐(놓친 진짜 문제)을 세고 규칙을 합쳐 다시 셉니다. 응용을 하지 않아도 다음 Unit을 따라갈 수 있습니다.
 
 - 점수 파일 이름 `unit05_risk_scores.json` 의 `05` 는 예전 번호라서 지금 Unit 번호와 맞지 않습니다. 그래도 이 Unit의 실습 4-1이 저장하는 이 파일을 Module 4 Unit 5와 Module 5가 같은 이름으로 읽으니, <mark>이름을 바꾸지 않고 그대로 씁니다</mark>.
 - 샘플 이벤트의 날짜는 2026-11-02 입니다. 57개 중 웹 서버 28 · 판정 서버 15 · SaaS 14입니다.
@@ -60,7 +52,7 @@ Unit 3 실습 3-2에서는 판정 서버 로그에서 반복 거절을 찾았습
 | 파일 | 만든 곳 | 없을 때 |
 |---|---|---|
 | `normalized_events.json` · `rbac.py` · `config/users.json` · `config/roles.json` | Unit 3 시작하기 레슨 | Unit 3 시작하기 레슨의 코드 상자로 다시 만듭니다 |
-| `access_detection.py` | Unit 3 실습 3-2 | 이 Unit 「제공 파일」 레슨 마지막 페이지의 예비 코드로 만듭니다 |
+| `access_detection.py` | Unit 3 실습 3-2 | 이 Unit의 「위험 점수 실습 입력 준비」 레슨 마지막 절에 있는 예비 코드로 만듭니다 |
 
 **순서**
 
@@ -71,11 +63,15 @@ Unit 3 실습 3-2에서는 판정 서버 로그에서 반복 거절을 찾았습
    cd anomaly_detection
    pwd
    ls
-   python -c "from access_detection import load_events, pick_server_failures, pick_suspicious, judge_failure, EVENTS_PATH; print('Unit 3 파일 정상', len(load_events(EVENTS_PATH)))"
+   python - <<'PY'
+   from access_detection import EVENTS_PATH, load_events
+
+   events = load_events(EVENTS_PATH)
+   print("Unit 3 파일 정상", len(events))
+   PY
    ```
-   - `python -c "코드"` 는 파일을 만들지 않고 코드를 한 줄로 바로 실행합니다.
    - 마지막 줄에 `Unit 3 파일 정상 57` 이 나오면 됩니다.
-   - `No module named 'access_detection'` 이나 `ImportError` 가 나오면 「제공 파일」 레슨에서 `access_detection.py` 예비 코드까지 만듭니다. `FileNotFoundError` 나 `No module named 'rbac'` 이 나오면 Unit 3 시작하기 레슨의 코드 상자로 빠진 파일을 만듭니다.
+   - `No module named 'access_detection'` 이나 `ImportError` 가 나오면 「위험 점수 실습 입력 준비」 레슨 마지막 절의 `access_detection.py` 예비 코드를 만듭니다. `FileNotFoundError` 나 `No module named 'rbac'` 이 나오면 Unit 3 시작하기 레슨의 코드 상자로 빠진 파일을 만듭니다.
 
 <!-- checklist -->
 - [ ] 터미널에서 `anomaly_detection` 폴더로 들어가 2번 명령을 실행했고, `Unit 3 파일 정상 57` 이 나왔다(안 나오면 위 표의 「없을 때」대로 빠진 파일을 만들었다)
@@ -84,8 +80,8 @@ Unit 3 실습 3-2에서는 판정 서버 로그에서 반복 거절을 찾았습
 3. **파일은 이렇게 만듭니다.** 따로 내려받는 파일은 없고, 모두 코드 상자에서 복사해 만듭니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
    1. **[VS Code]** 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다.
    2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S` 로 저장합니다.
-   - 답을 적는 **보고서** `report_u4.md` 는 「보고서 쓰기」 레슨의 틀을 복사해 만듭니다.
-4. 다음 페이지에서 알림 파일을 만들고, 「제공 파일」 레슨으로 가서 파일 세 개를 만든 뒤 실습 4-1로 갑니다.
+   - 점수·등급·오탐 비교 결과를 남기는 기술 기록 `report_u4.md` 는 「실습 결과 기록 준비」 레슨의 틀로 만듭니다.
+4. 다음 페이지에서 `review_alerts.json` 을 만들고, 「위험 점수 실습 입력 준비」 레슨에서 `risk_inputs.json` 을 준비한 뒤 기술 결과 기록 틀을 만들고 실습 4-1로 갑니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 **터미널**에서 합니다. 파일을 지금 위치 기준으로 찾기 때문입니다. **Unit 3 파일은 고치지 않습니다.**
 
@@ -120,7 +116,12 @@ Unit 3 실습 3-2에서는 판정 서버 로그에서 반복 거절을 찾았습
 
 2. **[터미널]** <mark>파일이 정상인지 확인합니다</mark>.
    ```bash
-   python -c "import pandas as pd; print(len(pd.read_json('review_alerts.json')))"
+   python - <<'PY'
+   import pandas as pd
+
+   alerts = pd.read_json("review_alerts.json")
+   print(len(alerts))
+   PY
    ```
    - <mark>`7` 이 나와야</mark> 합니다. 다르면 파일 내용이나 위치(`anomaly_detection` 폴더 안인지)를 다시 확인합니다.
    - 응용 4-2 · 4-3에서 쓰는 `problems.json` · `login_alerts.json` 은 그 응용 레슨에서 만듭니다.
@@ -138,11 +139,11 @@ Unit 3 실습 3-2에서는 판정 서버 로그에서 반복 거절을 찾았습
 | 오류 | 원인 | 고치는 법 |
 |---|---|---|
 | `No module named 'pandas'` | <mark>판다스가 설치되지 않은 터미널입니다</mark> | `python -m pip install pandas` 를 칩니다 |
-| `ImportError` · `No module named 'access_detection'` | <mark>Unit 3 실습 3-2 파일이 없거나 함수 이름이 문서와 다른 것입니다</mark> | 「제공 파일」 레슨 마지막 페이지의 예비 코드로 `access_detection.py` 를 만듭니다 |
+| `ImportError` · `No module named 'access_detection'` | <mark>Unit 3 실습 3-2 파일이 없거나 함수 이름이 문서와 다른 것입니다</mark> | 「위험 점수 실습 입력 준비」 레슨 마지막 절의 예비 코드로 `access_detection.py` 를 만듭니다 |
 | `FileNotFoundError` · `ValueError` | 파일 위치가 다르거나 JSON 이 깨졌습니다 | <mark>파일이 `anomaly_detection` 폴더 바로 아래에 있는지</mark> `ls` 로 보고, 붙여 넣은 JSON 에 쉼표 · 대괄호가 빠졌는지 봅니다 |
 
 - 판다스를 설치할 때 가상환경을 쓴다면 먼저 `network-study-notes` 폴더에서 가상환경을 켠 뒤(`source .venv/Scripts/activate`) 칩니다.
-- 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). <mark>막히면 이 Unit 뒤쪽의 정답을 보고</mark>, 풀리지 않으면 보고서 (가)에 「모름 — 막힌 곳: …」 이라고 쓰고 넘어갑니다.
+- 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). <mark>막히면 실습 아래의 정답 펼침을 보고</mark>, 풀리지 않으면 보고서 (가)에 「모름 — 막힌 곳: …」 이라고 쓰고 넘어갑니다.
 
 **확인** — 고친 뒤 시작하기의 두 확인 명령에서 `Unit 3 파일 정상 57` 과 `7` 이 나오면 성공입니다. 그래도 안 되면 위 표에 없는 오류이니 오류 전체를 AI 에게 묻습니다.
 

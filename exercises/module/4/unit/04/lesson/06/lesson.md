@@ -359,3 +359,4 @@ for problem in missed_list:                           # 놓친 문제를 하나�
 | `True` 개수 세기 | `real_alert_count = is_real.sum()` |
 
 ---
+<!-- answer: 08|응용 4-2 정답 -->
