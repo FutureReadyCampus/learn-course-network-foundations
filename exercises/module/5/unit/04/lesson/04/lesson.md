@@ -1,12 +1,12 @@
 ---
 id: m5-u04-l04
-title: 제공 파일
+title: 선택 과제용 에스컬레이션·리포트 함수 준비
 render: markdown
 ---
 
-# 제공 파일
+# 선택 과제용 에스컬레이션·리포트 함수 준비
 
-## 제공 파일 쓰는 법
+## 이 함수들이 쓰이는 곳
 
 이 레슨의 두 파일은 **응용을 할 때만** 씁니다. 핵심 실습 4-1 · 4-2 에는 필요 없으니, 응용을 하지 않으면 이 레슨은 건너뜁니다.
 
@@ -20,8 +20,14 @@ render: markdown
 3. 파일은 `soar_response` 폴더 안에 만듭니다(VS Code 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File**). 코드 상자의 **복사** 버튼을 눌러 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
 4. 다 만들었으면 아래 명령으로 확인합니다. 만든 파일의 줄만 칩니다.
    ```bash
-   python -c "import escalation; print('escalation.py 정상')"
-   python -c "import report; print('report.py 정상')"
+   python - <<'PY'
+import escalation
+print('escalation.py 정상')
+PY
+   python - <<'PY'
+import report
+print('report.py 정상')
+PY
    ```
 
 확인할 때 오류가 나면 아래 표대로 하고 다시 확인합니다.
@@ -100,11 +106,11 @@ def escalate_ticket(ticket, now, rules):                                        
 - 함수 네 개의 뜻과 규칙 파일(`config/escalation_rules.json`)의 키는 응용 4-1 레슨에서 자세히 다룹니다.
 - 응용 4-2 는 이 파일의 `needs_escalation` 과 `escalate_ticket` 을 불러 씁니다.
 
-> **확인** — `python -c "import escalation; print('escalation.py 정상')"` 이 `escalation.py 정상` 을 출력하면 성공입니다. `No module named 'ticket_notice'` 가 나오면 응용 4-1 레슨의 「필요한 파일 준비하기」를 먼저 합니다.
+> **확인** — 첫 번째 확인 블록이 `escalation.py 정상` 을 출력하면 성공입니다. `No module named 'ticket_notice'` 가 나오면 응용 4-1 레슨의 「필요한 파일 준비하기」를 먼저 합니다.
 
 <!-- checklist optional -->
 - [ ] `soar_response` 폴더에 `escalation.py` 를 만들고 붙여 넣은 뒤 저장했다
-- [ ] `python -c "import escalation; print('escalation.py 정상')"` 을 쳐서 `escalation.py 정상` 이 나왔다
+- [ ] 첫 번째 import 확인 블록을 실행해 `escalation.py 정상` 이 나왔다
 <!-- /checklist -->
 
 ## `report.py` 만들기
@@ -229,9 +235,9 @@ def make_report_lines(tickets, actions, rule_counts, grade_means, late_tickets, 
 - 함수마다 하는 일과 판다스 문법은 응용 4-3 레슨에서 자세히 다룹니다.
 - 응용 4-5 는 이 파일의 `find_missing_incidents` 를 불러 씁니다. 응용 4-5 가 읽는 리포트 파일 `incident_report_20261112.md` 는 응용 4-5 레슨에서 만드는 방법을 알려 줍니다.
 
-> **확인** — `python -c "import report; print('report.py 정상')"` 이 `report.py 정상` 을 출력하면 성공입니다. `No module named 'pandas'` 가 나오면 `python -m pip install pandas` 로 설치하고 다시 칩니다.
+> **확인** — 두 번째 확인 블록이 `report.py 정상` 을 출력하면 성공입니다. `No module named 'pandas'` 가 나오면 `python -m pip install pandas` 로 설치하고 다시 칩니다.
 
 <!-- checklist optional -->
 - [ ] `soar_response` 폴더에 `report.py` 를 만들고 붙여 넣은 뒤 저장했다
-- [ ] `python -c "import report; print('report.py 정상')"` 을 쳐서 `report.py 정상` 이 나왔다
+- [ ] 두 번째 import 확인 블록을 실행해 `report.py 정상` 이 나왔다
 <!-- /checklist -->

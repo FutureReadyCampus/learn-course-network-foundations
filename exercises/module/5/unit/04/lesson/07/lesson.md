@@ -223,7 +223,7 @@ report.py   make_ticket_table       : 티켓 리스트를 표로 바꾸고 확�
 ]
 </code></pre>
 
-**`report.py`** — 리포트를 만드는 함수 모음입니다. 응용 4-5 도 가져와 사용(import)합니다. 「제공 파일」 레슨에서 완성본을 만들어 두었다면 그 파일을 아래 골격으로 바꿔 직접 써 봅니다. 직접 쓰는 곳은 1 ~ 8번입니다.
+**`report.py`** — 리포트를 만드는 함수 모음입니다. 응용 4-5 도 가져와 사용(import)합니다. 「선택 과제용 에스컬레이션·리포트 함수 준비」 레슨에서 완성본을 만들어 두었다면 그 파일을 아래 골격으로 바꿔 직접 써 봅니다. 직접 쓰는 곳은 1 ~ 8번입니다.
 
 - 미리 채운 `.to_dict()` 는 판다스 집계 결과를 `{"퇴사한 계정": 2, …}` 같은 딕셔너리로 바꿉니다. `.to_dict("records")` 는 표의 행마다 딕셔너리 하나로 바꾼 리스트를 돌려줍니다. 그래서 그 뒤에는 앞에서 쓰던 딕셔너리 · 리스트 문법으로 읽을 수 있습니다.
 - 8번이 들어가는 `for rule in rule_counts:` 는 딕셔너리를 `for` 로 돌리므로 키(규칙 이름)가 하나씩 나오고, `rule_counts[rule]` 로 그 규칙의 수를 읽습니다.
@@ -394,7 +394,10 @@ print("--- 단계 5: 리포트 파일", REPORT_PATH, "·", len(lines), "줄 저�
 1. **[터미널]** 판다스를 설치합니다. 이미 설치했다면 바로 다음 줄로 갑니다. 두 번째 줄을 쳐서 <mark>`판다스 불러오기 성공` 이 나와야</mark> 합니다.
    ```bash
    python -m pip install pandas
-   python -c "import pandas; print('판다스 불러오기 성공')"
+   python - <<'PY'
+   import pandas
+   print('판다스 불러오기 성공')
+   PY
    ```
    - 가상환경을 쓴다면 먼저 켭니다(`source ../.venv/Scripts/activate`). 터미널 맨 앞에 `(.venv)` 가 보이면 켜진 것입니다. 가상환경을 쓰지 않으면 건너뜁니다.
 
@@ -404,7 +407,15 @@ print("--- 단계 5: 리포트 파일", REPORT_PATH, "·", len(lines), "줄 저�
 
 2. **[VS Code]** 파일 네 개 `unit10_tickets.json` · `unit10_actions.json` · `report.py` · `apply4-3_run.py` 를 만듭니다. 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`). 데이터 파일은 아래 명령으로 확인합니다. <mark>`7 10` 이 나와야</mark> 합니다.
    ```bash
-   python -c "import json; print(len(json.load(open('unit10_tickets.json', encoding='utf-8'))), len(json.load(open('unit10_actions.json', encoding='utf-8'))))"
+   python - <<'PY'
+   import json
+
+   with open('unit10_tickets.json', encoding='utf-8') as file:
+       tickets = json.load(file)
+   with open('unit10_actions.json', encoding='utf-8') as file:
+       actions = json.load(file)
+   print(len(tickets), len(actions))
+   PY
    ```
 
 <!-- checklist optional -->
@@ -431,14 +442,7 @@ print("--- 단계 5: 리포트 파일", REPORT_PATH, "·", len(lines), "줄 저�
 - [ ] `python apply4-3_run.py` 를 실행하고 `incident_report_20261112.md` 를 미리보기로 열어 1 ~ 6절을 확인했다
 <!-- /checklist -->
 
-7. **[보고서]** `report_u4.md` 의 `## 응용 4-3` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
-   - (가) 실행한 출력 전체를 붙여 넣고, 티켓이 가장 많은 규칙 두 개와 리포트 파일의 줄 수를 적어 주세요.
-   - (나) [핵심 질문] 단계 3 에 low 등급이 없습니다. `unit10_tickets.json` 의 low 티켓 두 장(`TCK-2` · `TCK-5`)의 `acked_at` 을 근거로 그 이유를 적어 주세요. 또 `report.py` 3번(확인한 티켓만 필터링하는 줄)이 없으면 low 의 평균 확인 시간(MTTA)이 얼마로 나오는지도 적어 주세요.
-   - (다) [핵심 질문] 리포트 5절에 `INC-212` 가 나왔습니다. `find_missing_incidents` 의 `covered` 리스트를 근거로 그 이유를 적고, 이 절이 없으면 고객사에 보내는 리포트에서 어떤 사건이 추적 누락되는지 적어 주세요.
-
-<!-- checklist optional -->
-- [ ] `report_u4.md` 의 `## 응용 4-3` 을 채웠다
-<!-- /checklist -->
+<!-- answer: 10|응용 4-3 정답 -->
 
 ## 응용 4-3 정리
 
