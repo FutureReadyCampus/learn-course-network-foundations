@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
 <title>오류가 나면 증상을 보고 위치와 파일 이름을 확인한 뒤 고친다</title>
-<desc>No module named pandas 는 가상환경과 설치를 다시 하고, FileNotFoundError 와 ValueError 는 위치, 파일 이름, JSON 괄호와 쉼표를 확인합니다. 그래도 안 되면 AI 에게 묻고 정답을 보거나 모름이라고 씁니다.</desc>
+<desc>No module named pandas 는 가상환경과 설치를 다시 하고, FileNotFoundError 와 ValueError 는 위치, 파일 이름, JSON 괄호와 쉼표를 확인합니다. 그래도 안 되면 AI 에게 묻고 실습 아래의 정답 접기를 보거나 실습 결과 기록에 막힌 점을 씁니다.</desc>
 <defs><marker id="a-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="24" y="34" font-size="19" text-anchor="start" fill="#292929" font-weight="700">오류가 나면: 증상 → 확인 → 고치기</text>
