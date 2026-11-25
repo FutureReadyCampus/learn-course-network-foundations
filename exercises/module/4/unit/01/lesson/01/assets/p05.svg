@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 370" role="img">
 <title>오류가 나면 증상별로 위치 · log_parse.py · 들여쓰기를 확인하고 고친다</title>
-<desc>네 줄의 증상 · 확인 · 고치기 순서입니다. No module named log_parse 는 이 폴더에 log_parse.py 가 없다는 뜻이라 실습 1-1에서 만들고, 막히면 정답 레슨의 「실습 1-1 정답」으로 채웁니다.</desc>
+<desc>네 줄의 증상 · 확인 · 고치기 순서입니다. No module named log_parse 는 이 폴더에 log_parse.py 가 없다는 뜻이라 실습 1-1에서 만들고, 막히면 정답 펼침의 「실습 1-1 정답」으로 채웁니다.</desc>
 <defs><marker id="a-m4u02l01-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker><marker id="a-m4u02l01-p03-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0442e"/></marker></defs>
 <g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
 <text x="24" y="32" font-size="15" fill="#666660" font-weight="700">증상</text>
@@ -26,7 +26,7 @@
 <line x1="460" y1="152.0" x2="482" y2="152.0" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u02l01-p03)"/>
 <rect x="486" y="120" width="210" height="64" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="591.0" y="146.8" font-size="15" fill="#292929" text-anchor="middle">실습 1-1에서 만들기</text>
-<text x="591.0" y="167.8" font-size="15" fill="#292929" text-anchor="middle">막히면 정답 레슨</text>
+<text x="591.0" y="167.8" font-size="15" fill="#292929" text-anchor="middle">막히면 정답 펼침</text>
 <rect x="24" y="196" width="200" height="64" rx="8" fill="#f8e8e3" stroke="#e0442e" stroke-width="1.5"/>
 <text x="124.0" y="222.8" font-size="15" fill="#292929" text-anchor="middle">IndentationError</text>
 <text x="124.0" y="243.8" font-size="15" fill="#292929" text-anchor="middle">NameError</text>

@@ -81,10 +81,15 @@ time,account,event,ip_address,outcome
 
 2. **[터미널]** 두 파일의 줄 수를 확인합니다.
    ```bash
-   python -c "print(len(open('server_log.jsonl', encoding='utf-8').read().splitlines()))"
-   python -c "print(len(open('saas_events.csv', encoding='utf-8').read().splitlines()))"
+   python - <<'PY'
+from pathlib import Path
+
+for name in ("server_log.jsonl", "saas_events.csv"):
+    lines = Path(name).read_text(encoding="utf-8").splitlines()
+    print(name, len(lines))
+PY
    ```
-   - 명령 풀이: `python -c "…"` 따옴표 안의 파이썬 한 줄을 실행해 파일의 줄 수를 출력
+   - 명령 풀이: 여러 줄 Python 블록으로 두 파일의 줄 수를 출력
    - <mark>순서대로 `15` · `15` 가 나와야</mark> 합니다. 다르면 줄이 빠졌거나 빈 줄이 끼어든 것이니 다시 붙여 넣습니다.
 
 <!-- checklist optional -->
@@ -363,6 +368,8 @@ print(first_saas)                                                           # Sa
    - (가) 실행한 출력 전체를 붙여 넣고, 판정 서버와 SaaS 이벤트의 수와 성공 · 실패별 개수를 적어 주세요.
    - (나) [핵심 질문] 판정 서버 로그에는 접속 주소가 없어서 `ip` 를 `None` 으로 두었습니다. `None` 대신 가짜 주소 `0.0.0.0` 을 넣으면 주소별로 셀 때 어떤 문제가 생길까요? 이유도 함께 적어 주세요.
    - (다) [핵심 질문] 정규화하면서 공통 이벤트의 키에 들어가지 않은 정보를 판정 서버 로그에서 찾아 적고, 그 정보를 나중에 어디서 찾을 수 있는지 적어 주세요.
+
+<!-- answer: 07|응용 1-2 정답 -->
 
 ## 응용 1-2 정리
 
