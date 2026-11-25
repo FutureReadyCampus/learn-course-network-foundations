@@ -13,7 +13,7 @@ source:
 
 ## 목표: 회수 계획
 
-> **여유가 되면 해 보세요.** 핵심 실습 4-1 · 4-2와 글쓰기를 먼저 마칩니다. 이 응용에서는 제공 파일로 받아 쓴 `revoke_plan.py` 를 직접 써 봅니다. 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
+> **여유가 되면 해 보세요.** 핵심 실습 4-1 · 4-2와 글쓰기를 먼저 마칩니다. 이 응용에서는 핵심 준비 레슨에서 만든 `revoke_plan.py` 를 직접 써 봅니다. 하지 않아도 다음 Unit을 따라가는 데 문제가 없습니다.
 
 > **이번 실습에 들어온 일**
 >
@@ -34,7 +34,7 @@ source:
 
 - 사용 이력은 권한을 마지막으로 쓴 시각의 기록입니다.
 - 제외 리스트에는 3건이 있지만 dami 의 권한은 「퇴사한 계정」이라 제외하지 않습니다.
-- **남은 8건**은 제공 파일 `revoke_input.py` 의 `load_to_revoke` 가 리턴하는 리스트입니다. 코드에서는 `findings` 라고 부릅니다.
+- **남은 8건**은 핵심 준비 레슨의 `revoke_input.py` 의 `load_to_revoke` 가 리턴하는 리스트입니다. 코드에서는 `findings` 라고 부릅니다.
 - **판정 함수**: 실습 1-3의 `evaluate_access` 는 실습 4-2에서 회수 전후를 비교할 때 썼습니다.
 
 ## 왜 회수 계획이 필요한가
@@ -124,10 +124,10 @@ source:
 
 **할 일**
 
-1. 제공 파일로 받아 쓴 `revoke_plan.py` 의 내용을 아래 골격으로 바꾸고, `exception_id` · `count_users_by_role` · `build_plan` · `plan_revocation` 에서 직접 쓰는 곳 다섯 군데를 씁니다. 실행 파일 `apply4-1_run.py` 도 만듭니다.
+1. 핵심 준비 레슨에서 만든 `revoke_plan.py` 의 내용을 아래 골격으로 바꾸고, `exception_id` · `count_users_by_role` · `build_plan` · `plan_revocation` 에서 직접 쓰는 곳 다섯 군데를 씁니다. 실행 파일 `apply4-1_run.py` 도 만듭니다.
 2. 실행해서 <mark>회수 방법과 영향</mark>(단계 1: 계획), <mark>방법별 건수</mark>(단계 2: 집계), <mark>역할별 사용자 수와 이름</mark>(단계 3: 확인)를 읽습니다.
 
-**`revoke_plan.py`** — 제공 파일의 내용을 지우고 아래 골격을 붙여 넣습니다.
+**`revoke_plan.py`** — 핵심 준비 레슨에서 만든 내용을 지우고 아래 골격을 붙여 넣습니다.
 
 ```python
 def exception_id(source):                                        # "예외 3번" 모양 문자열을 받는 함수
@@ -228,7 +228,7 @@ def plan_revocation(findings, users, roles):                     # 회수 대상
 - **미리 채운 함수**
   - `make_plan`: 회수 대상을 복사해 세 키를 추가한 계획을 만듭니다(판단이 없는 복사라 미리 채움).
   - `count_users_by_role` 의 `for info in users.values():` 에서 `.values()` 는 딕셔너리의 값만 하나씩 꺼냅니다.
-- **`load_to_revoke`**: 제공 파일 `revoke_input.py` 에 들어 있고, 회수 대상 8건을 리턴합니다. 그대로 둡니다.
+- **`load_to_revoke`**: 핵심 준비 레슨의 `revoke_input.py` 에 들어 있고, 회수 대상 8건을 리턴합니다. 그대로 둡니다.
 - 이번 실습의 데이터에서 영향이 2건 이상인 계획은 dami 의 역할 해제 두 건(영향 2)이고, 실습 4-1에서 승인 대상이 된 것도 이 때문입니다.
 - 10번의 `elif not info["employed"]` 는 「재직 여부(`employed`)가 `False` 이면」입니다.
   - 주석 목록의 10번이 `elif` 입니다.
@@ -240,7 +240,7 @@ def plan_revocation(findings, users, roles):                     # 회수 대상
 
 ```python
 from rbac import USERS, ROLES                                    # 실습 1-2의 사용자 · 역할 딕셔너리를 불러온다
-from revoke_input import load_to_revoke                          # 제공 파일의 회수 대상 함수를 불러온다
+from revoke_input import load_to_revoke                          # 핵심 준비의 고정 회수 대상 함수를 불러온다
 from revoke_plan import plan_revocation                          # 방금 만든 회수 계획 함수를 불러온다
 
 to_revoke = load_to_revoke()                                     # Unit 3 점검 결과인 회수 대상 8건을 만든다
@@ -272,7 +272,7 @@ for role in names_by_role:                                       # 두 역할을
 
 1. **[VS Code]** 작업 폴더 `network-study-notes/access_control` 의 `revoke_plan.py` 를 열어 내용을 모두 지우고 위 `revoke_plan.py` 골격을 붙여 넣습니다. 실행 파일 `apply4-1_run.py` 도 만들어 위 `apply4-1_run.py` 코드 상자의 내용을 붙여 넣습니다.
    - `apply4-1_run.py` 는 `access_control` 폴더를 오른쪽 클릭 › **New File** 로 만듭니다.
-   - 다 채울 때까지 실습 4-1 · 4-2의 실행 파일은 오류가 납니다. 막히면 「제공 파일」 레슨의 완성본을 다시 붙여 넣으면 됩니다.
+   - 다 채울 때까지 실습 4-1 · 4-2의 실행 파일은 오류가 납니다. 막히면 핵심 준비 레슨의 코드을 다시 붙여 넣으면 됩니다.
 
 <!-- checklist optional -->
 - [ ] `revoke_plan.py` 의 내용을 골격으로 바꿔 붙여 넣고, `apply4-1_run.py` 를 만들어 붙여 넣었다
@@ -304,14 +304,10 @@ for role in names_by_role:                                       # 두 역할을
 - [ ] `python exercise4-2_run.py` 를 다시 실행해 실습 4-2 정답과 같은 출력이 나왔다
 <!-- /checklist -->
 
-6. **[보고서]** `report_u4.md` 의 `## 응용 4-1` 아래를 채웁니다(보고서 파일은 「보고서 쓰기」 레슨에서 만듭니다).
-   - (가) 실행한 출력 전체를 붙여 넣고, 회수 방법별 건수와 `finance` · `sales` 역할의 사용자 수를 적어 주세요.
-   - (나) [핵심 질문] dami 의 역할 `sales` 권한 `SALES:QUERY` 를 「`sales` 역할에서 `SALES:QUERY` 권한 빼기」로 회수했다면 누가 영향을 받았을까요? 코드가 퇴사한 dami 를 「역할 해제」로 정한 이유도 적어 주세요.
-   - (다) [핵심 질문] 회수 대상 8건 가운데 dami 의 권한이 3건입니다. 실제로 지우기 전에 회수 계획을 리스트로 먼저 만들어 보는 이유와, dami 3건을 처리하려고 데이터를 실제로 바꾸는 작업의 종류가 몇 가지인지(`users` 의 dami 정보를 바꾸는 일, 예외 리스트 `EXCEPTIONS` 에서 지우는 일 중 몇 가지가 필요한지) 적어 주세요.
+선택 응용의 결과와 판단 근거는 원하면 [문제 해결 과정을 블로그에 기록하기](__SITE__/exercises/module/3/unit/4/lesson/10/page/1)에 덧붙일 수 있습니다.
 
-<!-- checklist optional -->
-- [ ] `report_u4.md` 의 `## 응용 4-1` 답을 적었다
-<!-- /checklist -->
+<!-- answer: 08|응용 4-1 정답 -->
+
 
 ## 응용 4-1 정리
 

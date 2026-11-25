@@ -1,14 +1,14 @@
 ---
 id: m5-u02-l03
-title: 제공 파일
+title: 응용과 Unit 3에 필요한 처리 함수 준비
 render: markdown
 ---
 
-# 제공 파일
+# 응용과 Unit 3에 필요한 처리 함수 준비
 
-## 제공 파일 쓰는 법
+## 처리 함수를 준비하는 순서
 
-**실습 2-1 을 마친 뒤, 실습 2-2 를 시작하기 전에** 이 레슨의 파일 세 개를 만듭니다. 오늘 핵심 실습에서는 이 파일을 부르지 않지만, `audit.py` · `approvals.py` 는 응용 2-2 가, `ip_actions.py` 는 Unit 3 이 불러 씁니다. 그래서 응용을 하지 않아도 오늘 만들어 두고 함께 깃허브에 올립니다.
+핵심 실습과 포트폴리오 기록을 마친 뒤, 선택 응용이나 Unit 3의 핵심 실습에 필요한 함수를 준비합니다. 이 파일들은 오늘의 핵심 실습 2-1 · 2-2에는 필요하지 않습니다. `audit.py` · `approvals.py` 는 선택 응용 2-1 · 2-2에서, `ip_actions.py` 는 선택 응용 2-3과 Unit 3의 핵심 흐름에서 사용합니다. 선택 응용을 건너뛰어도 Unit 3을 할 때 `ip_actions.py` 를 준비할 수 있습니다.
 
 1. 파일은 모두 작업 폴더 `network-study-notes/soar_response` 바로 아래에 만듭니다(VS Code 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File**).
 2. 파일 이름을 그대로 적고, 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
@@ -20,16 +20,24 @@ render: markdown
    | `audit.py` | 감사 기록 한 건을 딕셔너리로 만드는 `log_line` | 없음 | `approvals.py`, 응용 2-2 `flow.py` |
    | `approvals.py` | 담당자의 승인 · 거절을 권한 확인 뒤 적용 | `audit.py`, Unit 1 실습 1-2 `incident.py` | 응용 2-2 |
 
-4. 세 파일을 다 만들었으면 아래 명령으로 확인하고 실습 2-2 로 갑니다.
+4. 세 파일을 다 만들었으면 아래 명령으로 확인합니다.
    ```bash
-   python -c "from ip_actions import check_ip_policy; from approvals import is_authorized; from audit import log_line; print('제공 파일 정상', check_ip_policy('192.0.2.10', ['192.0.2.10'], {}), is_authorized('intern01'))"
+   python - <<'PY'
+from ip_actions import check_ip_policy
+from approvals import is_authorized
+from audit import log_line
+
+reason = check_ip_policy('192.0.2.10', ['192.0.2.10'], {})
+entry = log_line({'id': 'INC-001', 'playbook': 'PB-001'}, '계정 잠금', '확인')
+print('IP 조치 함수 확인', reason, is_authorized('intern01'), entry['action'])
+PY
    ```
-   - `제공 파일 정상 허용 목록 IP 라서 차단하지 않음 False` 가 나오면 됩니다.
+   - `IP 조치 함수 확인 허용 목록 IP 라서 차단하지 않음 False 계정 잠금` 이 나오면 됩니다.
    - `ModuleNotFoundError: No module named 'containment_store'` 가 나오면 실습 2-1 의 `containment_store.py` 가 이 폴더에 없는 것입니다. 실습 2-1 을 먼저 합니다.
 
 > 시간이 남아 응용 2-1 이나 응용 2-3 을 하면, `audit.py` · `approvals.py` 나 `ip_actions.py` 를 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 그때는 다 채울 때까지 그 파일을 부르는 프로그램이 동작하지 않으니, 다 쓴 뒤 그 응용의 실행 파일로 결과가 정답과 같은지 확인합니다.
 
-**확인** — 4번 명령에서 `제공 파일 정상 허용 목록 IP 라서 차단하지 않음 False` 가 나오면 성공입니다. 안 나오면 오류에 나온 파일 이름의 페이지로 가서 코드 상자를 다시 복사해 붙여 넣습니다.
+**확인** — 4번 명령에서 `IP 조치 함수 확인 허용 목록 IP 라서 차단하지 않음 False` 가 나오면 성공입니다. 안 나오면 오류에 나온 파일 이름의 페이지로 가서 코드 상자를 다시 복사해 붙여 넣습니다.
 
 ## `ip_actions.py` 만들기
 
@@ -121,7 +129,15 @@ def expire_blocks(state, incident_id):                                          
 
 - 허용 목록과 공유 IP 를 왜 먼저 거르는지, 끝나는 시각을 어떻게 비교하는지는 응용 2-3 레슨에서 자세히 다룹니다.
 
-**확인** — `python -c "from ip_actions import check_ip_policy; print('ip_actions 정상')"` 를 쳐서 `ip_actions 정상` 이 나오면 성공입니다. `ModuleNotFoundError: No module named 'containment_store'` 가 나오면 실습 2-1 의 `containment_store.py` 를 먼저 만듭니다.
+**확인** — 아래 가져오기 명령에서 `ip_actions 정상` 이 나오면 성공입니다. `ModuleNotFoundError: No module named 'containment_store'` 가 나오면 실습 2-1 의 `containment_store.py` 를 먼저 만듭니다.
+
+```bash
+python - <<'PY'
+from ip_actions import check_ip_policy
+
+print('ip_actions 정상')
+PY
+```
 
 <!-- checklist -->
 - [ ] `ip_actions.py` 를 만들어 코드 상자를 붙여 넣고 저장한 뒤, 확인 명령으로 `ip_actions 정상` 이 나왔다
@@ -142,7 +158,20 @@ def log_line(item, action, text):  # 인시던트 · 액션 · 결과 문장을 
 
 - 모든 대응을 같은 모양으로 남겨 두면 승인 · 거절 · 실패를 한 목록에서 다시 볼 수 있습니다. `approvals.py` 와 응용 2-2 의 `flow.py` 가 이 함수를 씁니다.
 
-**확인** — `python -c "from audit import log_line; print(log_line({'id': 'INC-001', 'playbook': 'PB-001'}, '계정 잠금', '확인'))"` 를 쳐서 `{'incident': 'INC-001', 'playbook': 'PB-001', 'action': '계정 잠금', 'result': '확인'}` 이 나오면 성공입니다. 안 나오면 코드 상자를 다시 복사해 붙여 넣습니다.
+**확인** — 아래 명령에서 기록 한 건이 보이면 성공입니다. 안 나오면 코드 상자를 다시 복사해 붙여 넣습니다.
+
+```bash
+python - <<'PY'
+from audit import log_line
+
+record = log_line(
+    {'id': 'INC-001', 'playbook': 'PB-001'},
+    '계정 잠금',
+    '확인',
+)
+print(record)
+PY
+```
 
 <!-- checklist -->
 - [ ] `audit.py` 를 만들어 코드 상자를 붙여 넣고 저장한 뒤, 확인 명령으로 기록 딕셔너리 한 건이 나왔다
@@ -234,10 +263,23 @@ def finish_decision(item, decision, state, action_log):                         
 - [ ] `approvals.py` 를 만들어 코드 상자를 붙여 넣고 저장했다
 <!-- /checklist -->
 
-**확인** — 세 파일을 다 만든 뒤 이 레슨 첫 페이지 4번의 명령을 쳐서 `제공 파일 정상 허용 목록 IP 라서 차단하지 않음 False` 가 나오면 성공입니다. `ModuleNotFoundError: No module named 'audit'` 가 나오면 `audit.py` 가 `soar_response` 폴더에 있는지 봅니다.
+**확인** — 세 파일을 다 만든 뒤 이 레슨 첫 페이지 4번의 명령을 쳐서 `IP 조치 함수 확인 허용 목록 IP 라서 차단하지 않음 False` 가 나오면 성공입니다. `ModuleNotFoundError: No module named 'audit'` 가 나오면 `audit.py` 가 `soar_response` 폴더에 있는지 봅니다.
 
 <!-- checklist -->
-- [ ] 첫 페이지 4번 명령을 쳐 `제공 파일 정상 허용 목록 IP 라서 차단하지 않음 False` 가 나왔다
+- [ ] 첫 페이지 4번 명령을 쳐 `IP 조치 함수 확인 허용 목록 IP 라서 차단하지 않음 False` 가 나왔다
 <!-- /checklist -->
+
+## 함수 준비 내용을 코드 저장소에 반영하기
+
+세 함수를 준비하면 Unit 3에서 다시 사용할 수 있도록 저장소에 기록합니다. 핵심 실습 코드와 별도로 이 helper 파일만 반영합니다.
+
+```bash
+cd ..
+git status
+git add soar_response/ip_actions.py soar_response/audit.py soar_response/approvals.py
+git commit -m "Add M5 Unit 2 reusable response helpers"
+git push
+cd soar_response
+```
 
 ---

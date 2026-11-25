@@ -1,14 +1,14 @@
 ---
 id: m3-u05-l03
-title: 제공 파일
+title: 주간 보고서 생성 준비
 render: markdown
 ---
 
-# 제공 파일
+# 주간 보고서 생성 준비
 
-## 제공 파일 쓰는 법
+## 주간 보고서 생성 준비 쓰는 법
 
-**실습 5-1을 마친 뒤, 실습 5-2를 시작하기 전에** 이 레슨의 파일 세 개를 만들고 주간 보고서를 한 번 만들어 봅니다. 로그를 집계하는(세어서 합계를 내는) 함수는 응용 5-1에서 직접 쓰는 것이라, 오늘은 완성본을 받아 씁니다.
+**실습 5-1을 마친 뒤, 실습 5-2를 시작하기 전에** 이 레슨의 파일 세 개를 만들고 주간 보고서를 한 번 만들어 봅니다. 로그를 집계하는(세어서 합계를 내는) 함수는 응용 5-1에서 직접 쓰는 것이라, 오늘은 완성된 함수를 코드 상자에서 옮겨 사용합니다.
 
 1. 작업 폴더는 `network-study-notes/access_control` 이고, 파일은 모두 `access_control` 폴더 바로 아래에 만듭니다. 만드는 방법은 실습 5-1과 같습니다(VS Code 왼쪽 목록에서 `access_control` 폴더를 오른쪽 클릭 › **New File**).
 2. 아래 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
@@ -20,7 +20,7 @@ render: markdown
    | `weekly_report.py` | 함수 두 개 | 점검 결과와 로그 집계를 합쳐 보고서 문자열을 만들고 파일로 저장함 |
    | `weekly_run.py` | 실행 파일 | 위 두 파일과 실습 5-1의 `checklist.py` 를 불러 주간 보고서를 만듦 |
 
-4. `weekly_run.py` 는 실습 5-1의 `checklist.py` 를 불러옵니다. `access_control` 폴더의 터미널에서 `python exercise5-1_run.py` 가 정답 레슨 「실습 5-1 정답」의 출력과 같은 출력을 내는지 먼저 확인합니다. 아직 안 되면 정답 레슨의 「실습 5-1 정답」에 있는 채운 코드를 넣어 `checklist.py` 를 완성합니다.
+4. `weekly_run.py` 는 실습 5-1의 `checklist.py` 를 불러옵니다. `access_control` 폴더의 터미널에서 `python exercise5-1_run.py` 가 실습 5-1 바로 아래의 정답 펼침의 출력과 같은 출력을 내는지 먼저 확인합니다. 아직 안 되면 실습 5-1 정답 펼침의 채운 코드를 넣어 `checklist.py` 를 완성합니다.
 
 <!-- checklist -->
 - [ ] `python exercise5-1_run.py` 를 실행해 단계 2가 `['dami']` · 통과 · `['junho']` 세 줄로 나오는 것을 확인했다
@@ -30,7 +30,7 @@ render: markdown
 
 > 시간이 남아 응용 5-1을 하면, `log_summary.py` 를 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 그때는 다 채울 때까지 `weekly_run.py` 가 동작하지 않으니, 다 쓴 뒤 `weekly_run.py` 를 다시 실행해 보고서가 같은지 확인합니다.
 
-**확인** — `python exercise5-1_run.py` 의 단계 2가 `['dami']` · 통과 · `['junho']` 세 줄로 나오면 준비가 된 것입니다. 안 나오면 실습 5-1의 「직접 쓰는 곳」 확인을 다시 보거나, 정답 레슨 「실습 5-1 정답」의 ① ~ ③ 을 넣습니다.
+**확인** — `python exercise5-1_run.py` 의 단계 2가 `['dami']` · 통과 · `['junho']` 세 줄로 나오면 준비가 된 것입니다. 안 나오면 실습 5-1의 「직접 쓰는 곳」 확인을 다시 보거나, 실습 5-1 바로 아래의 정답 펼침의 ① ~ ③ 을 넣습니다.
 
 ## `log_summary.py` 만들기
 
@@ -121,7 +121,7 @@ def find_heavy_users(denied_counts, limit):                      # 사용자별 
 `access_control` 폴더를 오른쪽 클릭 › **New File** 로 **`weekly_report.py`** 를 만들고 아래 내용을 붙여 넣습니다. 점검 결과와 로그 집계를 합쳐 네 절(`## ` 로 시작하는 제목 하나와 그 아래 줄들)의 보고서 문자열을 만들고, 날짜가 들어간 `.md` 파일로 저장합니다.
 
 ```python
-from log_summary import count_by, filter_denied, deny_rate, find_heavy_users   # 제공 파일 log_summary.py 의 집계 함수를 불러온다
+from log_summary import count_by, filter_denied, deny_rate, find_heavy_users   # 주간 보고서 생성 준비 log_summary.py 의 집계 함수를 불러온다
 
 
 def build_report(results, entries, alert, today):                # 점검 결과 · 요청 리스트 · 경고 기준 · 날짜 문자열을 받는 함수
@@ -202,8 +202,8 @@ def save_report(text, today):                                    # 보고서 문
 import json                                                      # 경고 기준 파일을 읽는 데 쓴다
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
 from checklist import TIME_FORMAT, load_state, run_checklist     # 실습 5-1에서 만든 점검 함수를 불러온다
-from log_summary import read_log                                 # 제공 파일의 로그 읽기 함수를 불러온다
-from weekly_report import build_report, save_report             # 제공 파일의 보고서 함수를 불러온다
+from log_summary import read_log                                 # 주간 보고서 생성 준비의 로그 읽기 함수를 불러온다
+from weekly_report import build_report, save_report             # 주간 보고서 생성 준비의 보고서 함수를 불러온다
 
 TODAY = "2026-11-02"                                             # 보고서 날짜
 NOW = datetime.strptime(TODAY + " 10:00", TIME_FORMAT)           # 점검하는 시각

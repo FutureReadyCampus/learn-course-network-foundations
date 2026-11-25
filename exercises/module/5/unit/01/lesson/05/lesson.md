@@ -204,13 +204,10 @@ print("VIP 계정 알림", vip_count, "건")                        # VIP 계정
 - [ ] `python exercise1-3_run.py` 를 실행해 단계 3 에 `VIP 계정 알림 1 건` 이 나왔다
 <!-- /checklist -->
 
-5. **[보고서]** `soar_response/report_u1.md` 의 `## 실습 1-3` 아래를 채웁니다.
+5. **[실습 기록]** `soar_response/report_u1.md` 의 `## 실습 1-3` 아래를 채웁니다.
    - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 재직 여부가 「퇴사」인 알림과 VIP 가 「예」인 알림의 번호, 단계 3 의 VIP 계정 알림 수를 적어 주세요.
-   - (나) [응용] INC-005 는 맥락이 모두 초기값(`False` · `None`)으로 남았습니다. 그 원인을 `lookup_account` 와 `lookup_source_ip` 의 `if` 조건을 근거로 설명해 주세요. 또 INC-005 의 `employed` 가 `True`(재직)로 판정된다면 어떤 문제가 생기는지도 적어 주세요.
-   - (다) [응용] INC-002 와 INC-004 는 접속 IP 가 같고 둘 다 「신뢰 IP: 예」입니다. 두 알림의 `reasons`(알림을 발생시킨 탐지 규칙 이름 목록)를 비교해 보세요. 접속 IP 가 같은 신뢰 IP 라는 근거만으로 두 알림을 동일하게 처리해도 되는지 적어 주세요.
-   - (가)는 꼭 씁니다. (나) · (다)는 여유가 되면 하는 응용이고, 답은 보고서 틀의 `## 실습 응용 질문` 칸에 씁니다.
 
-**확인** — 단계 2 의 다섯 줄에서 INC-001 이 `재직: 퇴사`, INC-003 이 `VIP: 예`, INC-002 · INC-004 가 `신뢰 IP: 예` 이고, 단계 3 이 `VIP 계정 알림 1 건` 이면 성공입니다. 안 나오면 「정답」 레슨의 실습 1-3 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+**확인** — 단계 2 의 다섯 줄에서 INC-001 이 `재직: 퇴사`, INC-003 이 `VIP: 예`, INC-002 · INC-004 가 `신뢰 IP: 예` 이고, 단계 3 이 `VIP 계정 알림 1 건` 이면 성공입니다. 안 나오면 아래 실습 1-3 정답 펼침에서 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 ## 실습 1-3 정리
 
@@ -225,17 +222,16 @@ print("VIP 계정 알림", vip_count, "건")                        # VIP 계정
 
 ---
 
-## 이번 Unit 마무리 · 깃허브에 올리기
+## 핵심 결과 점검과 코드 저장소 반영
 
-하루를 닫는 마무리입니다(15분). 핵심 실습 세 개와 「제공 파일」을 끝낸 뒤 합니다. 응용은 하지 않아도 됩니다.
+핵심 실습의 코드와 결과를 확인하고 저장소에 기록합니다. 응용 실습은 이 절차에 포함되지 않습니다.
 
 **1. 오늘 한 일 확인**
 
 1. 플레이북 PB-003 을 직접 쓰고, 알림 두 건을 손으로 처리하며 고친 곳을 세었다 (실습 1-1)
 2. 실행기가 알림 5건을 처리하고, 승인이 필요한 건은 멈추고, 감사 기록을 남겼다 (실습 1-2)
 3. 알림마다 재직 · VIP · 접속 IP 맥락을 붙이고 VIP 계정 알림 수를 셌다 (실습 1-3)
-4. 「제공 파일」의 `routing.py` · `safe_runner.py` 를 만들었다
-5. 보고서 `report_u1.md` 에서 꼭 채울 다섯 칸(1-1 (가) · (나), 1-2 (가), 1-3 (가), 마무리 (가))의 `답:` 뒤가 비어 있지 않다
+4. 실습 기록 `report_u1.md` 의 핵심 항목에 실행 결과와 확인 내용을 적었다
 
 **2. 파일 확인** — **[터미널]** `soar_response` 폴더에서 확인합니다.
 
@@ -252,9 +248,8 @@ ls config
 |---|---|
 | 시작하기 | `incident_samples.json` · `system_state.json` · `users_info.json` · `source_ips.json` · `trusted_ips.json` |
 | 실습 1-2 | `incident.py` · `playbook_runner.py` · `exercise1-2_run.py` · `action_log.json`(실행하면 생김) |
-| 제공 파일 | `routing.py` · `safe_runner.py` |
 | 실습 1-3 | `enrichment.py` · `exercise1-3_run.py` |
-| 보고서 쓰기 | `report_u1.md` |
+| 실습 결과 기록 | `report_u1.md` |
 
 - `config` 안에는 `playbook_registry.json` 이 보여야 합니다.
 
@@ -283,7 +278,7 @@ ls config
 - [ ] `git status` 에서 `.env` · `.venv` 가 올라갈 목록에 없는 것을 확인했다(있으면 `.gitignore` 에 적었다)
 <!-- /checklist -->
 
-3. **[보고서]** `soar_response/report_u1.md` 의 `## 마무리` 아래 (가)를 채웁니다. <mark>올리기 전에 채워야</mark> 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
+3. **[실습 기록]** 핵심 결과와 막힌 부분을 `soar_response/report_u1.md` 에 기록하고 저장합니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
    ```bash
    git add .
@@ -311,13 +306,15 @@ ls config
 |---|---|
 | Module 5 끝까지 | `config/playbook_registry.json` · `incident.py` · `incident_samples.json` 을 그대로 불러 쓴다 |
 | Unit 2 응용 2-2 · Unit 3 응용 3-1 | `enrichment.py` 의 `enrich_incident` 와 `users_info.json` · `source_ips.json` · `trusted_ips.json` (알림에 맥락을 붙일 때) |
-| Unit 2 응용 2-2 · Unit 3 응용 3-1 | 「제공 파일」의 `routing.py` |
-| Unit 2 응용 2-2 | 「제공 파일」의 `safe_runner.py` |
+| Unit 2 응용 2-2 · Unit 3 응용 3-1 | 응용 준비 레슨의 `routing.py` |
+| Unit 2 응용 2-2 | 응용 준비 레슨의 `safe_runner.py` |
 
 - Unit 2 는 연습용 시스템에 적기만 하던 `계정 잠금` 을 실행한 뒤 정말 잠겼는지 다시 확인하고, 조치 전 · 후 상태를 기록으로 남깁니다.
 
 **확인** — 깃허브의 `soar_response` 폴더에 2번 표의 파일이 모두 보이고 `.env` 가 없으면 성공입니다. 안 보이는 파일이 있으면 `git status` 를 다시 쳐서 그 파일이 빨간 목록에 남아 있는지 보고 3번의 4단계(`git add .` 부터)를 다시 합니다.
 
 ---
+
+<!-- answer: 08|실습 1-3 정답 -->
 
 <!-- learn:answers -->

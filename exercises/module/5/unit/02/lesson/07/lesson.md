@@ -13,7 +13,7 @@ source:
 
 ## 목표: 예외 IP와 차단 만료
 
-> **여유가 되면 해 보세요.** 핵심 실습 2-1 · 2-2와 글쓰기를 먼저 마칩니다. 이 응용에서는 제공 파일로 받아 쓴 `ip_actions.py` 를 직접 써 봅니다. 실습 2-1 의 `containment_store.py` 를 쓰고, 실행하면 실습 2-2 가 저장한 상태 파일을 덮어쓰니 끝난 뒤 `exercise2-2_run.py` 를 한 번 더 실행합니다(순서 6번). 하지 않아도 Unit 3 을 따라가는 데 문제가 없습니다. 다만 <mark>시작했다가 다 채우지 못하고 멈추면 `ip_actions.py` 를 「제공 파일」 레슨의 완성본으로 되돌려 둡니다.</mark> Unit 3 이 이 파일을 불러 쓰기 때문입니다.
+> **여유가 되면 해 보세요.** 핵심 실습 2-1 · 2-2와 글쓰기를 먼저 마칩니다. 이 응용에서는 준비 레슨에서 만든 `ip_actions.py` 를 직접 써 봅니다. 실습 2-1 의 `containment_store.py` 를 쓰고, 실행하면 실습 2-2 가 저장한 상태 파일을 덮어쓰니 끝난 뒤 `exercise2-2_run.py` 를 한 번 더 실행합니다(순서 6번). 하지 않아도 Unit 3 을 따라가는 데 문제가 없습니다. 다만 <mark>시작했다가 다 채우지 못하고 멈추면 `ip_actions.py` 를 「응용과 Unit 3에 필요한 처리 함수 준비」 레슨의 완성본으로 되돌려 둡니다.</mark> Unit 3 이 이 파일을 불러 쓰기 때문입니다.
 
 > **오늘 들어온 일**
 >
@@ -58,7 +58,7 @@ ip_actions.py     is_in_allowlist    : 허용 목록에 있는지 확인한다 (
 
 **할 일**: 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 1 ~ 3 을 읽습니다.
 
-**`ip_actions.py`** — IP 차단과 만료된 차단의 자동 해제를 구현합니다. Unit 3 실습 3-1 도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 1 ~ 6번입니다. 「제공 파일」 레슨에서 이미 만든 파일이니, <mark>열어서 내용을 모두 지우고 아래 골격을 붙여 넣은 뒤</mark> 빈칸을 씁니다. 끝내 막히면 「제공 파일」 레슨의 완성본을 다시 붙여 넣어 되돌립니다.
+**`ip_actions.py`** — IP 차단과 만료된 차단의 자동 해제를 구현합니다. Unit 3 실습 3-1 도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 1 ~ 6번입니다. 「응용과 Unit 3에 필요한 처리 함수 준비」 레슨에서 이미 만든 파일이니, <mark>열어서 내용을 모두 지우고 아래 골격을 붙여 넣은 뒤</mark> 빈칸을 씁니다. 끝내 막히면 「응용과 Unit 3에 필요한 처리 함수 준비」 레슨의 완성본을 다시 붙여 넣어 되돌립니다.
 
 ```python
 from containment_store import make_record                                              # 기록 한 건을 만드는 함수를 불러온다
@@ -197,20 +197,19 @@ print("조치 기록:", len(load_json("containment_log.json")), "건")          
 - [ ] `apply2-3_run.py` 를 만들어 7 ~ 9번을 채우고, `python apply2-3_run.py` 로 네 단계 출력이 나왔다
 <!-- /checklist -->
 
-5. **[보고서]** `report_u2.md` 의 `## 응용 2-3` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣어 주세요. 그리고 단계 1 에서 실제로 차단된 IP 와, 차단하지 않은 IP 와 그 이유를 적어 주세요.
-   - (나) [핵심 질문] INC-008 의 `192.0.2.41` 은 차단되지 않았습니다. `ip_users.json` 의 값을 근거로 차단하지 않은 이유를 적고, 그대로 차단했다면 영향을 받았을 사용자와 그 영향을 적어 주세요.
-   - (다) [핵심 질문] 단계 2 의 만료 시각(120)과 단계 3 의 시계(120)를 근거로 `198.51.100.90` 이 자동 해제된 이유를 적어 주세요. 그리고 유효 기간이 있는 임시 차단이 영구 차단보다 나은 점도 적어 주세요.
-
-<!-- checklist optional -->
-- [ ] `report_u2.md` 의 `## 응용 2-3` 에 답을 썼다
-<!-- /checklist -->
-
-6. **[터미널]** 이 실행 파일은 실습 2-2 와 같은 파일(`containment_state.json` · `containment_log.json`)에 결과를 저장합니다. Unit 3 실습 3-1 은 실습 2-2 가 저장한 상태를 읽으니, 보고서를 채운 뒤 실습 2-2 실행 파일을 한 번 더 실행하고 확인합니다. 마지막 줄에 <mark>`['junho', 'dami'] 5`</mark> 가 나오면 됩니다.
-   - 1 ~ 9번을 다 채우지 못했거나 3번의 출력이 「정답」과 다르면, `ip_actions.py` 의 내용을 모두 지우고 「제공 파일」 레슨의 완성본을 다시 붙여 넣은 뒤 「제공 파일」 레슨 첫 페이지 4번 명령으로 `제공 파일 정상 …` 이 나오는지 봅니다. Unit 3 이 이 파일을 불러 씁니다.
+5. **[터미널]** 이 실행 파일은 실습 2-2 와 같은 파일(`containment_state.json` · `containment_log.json`)에 결과를 저장합니다. Unit 3 실습 3-1 은 실습 2-2 가 저장한 상태를 읽으니, 응용을 마친 뒤 실습 2-2 실행 파일을 한 번 더 실행하고 확인합니다. 마지막 줄에 <mark>`['junho', 'dami'] 5`</mark> 가 나오면 됩니다.
+   - 1 ~ 9번을 다 채우지 못했거나 3번의 출력이 「정답」과 다르면, `ip_actions.py` 의 내용을 모두 지우고 「응용과 Unit 3에 필요한 처리 함수 준비」 레슨의 완성본을 다시 붙여 넣은 뒤 「응용과 Unit 3에 필요한 처리 함수 준비」 레슨 첫 페이지 4번 명령으로 `함수 준비 확인 …` 이 나오는지 봅니다. Unit 3 이 이 파일을 불러 씁니다.
    ```bash
    python exercise2-2_run.py
-   python -c "import json; print(json.load(open('containment_state.json', encoding='utf-8'))['locked_users'], len(json.load(open('containment_log.json', encoding='utf-8'))))"
+   python - <<'PY'
+import json
+
+with open('containment_state.json', encoding='utf-8') as file:
+    state = json.load(file)
+with open('containment_log.json', encoding='utf-8') as file:
+    records = json.load(file)
+print(state['locked_users'], len(records))
+PY
    ```
 
 <!-- checklist optional -->
@@ -229,3 +228,5 @@ print("조치 기록:", len(load_json("containment_log.json")), "건")          
 | 빈 문자열과 같으면 | `if refusal == "":` |
 
 ---
+
+<!-- answer: 08|응용 2-3 정답 -->

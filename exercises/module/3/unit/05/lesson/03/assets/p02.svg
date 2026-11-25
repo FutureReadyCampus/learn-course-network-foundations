@@ -34,6 +34,6 @@
 <text x="124" y="262" font-size="14" text-anchor="middle" fill="#666660">전체 요청 수를</text>
 <text x="124" y="284" font-size="14" text-anchor="middle" fill="#666660">함께 봐야 합니다</text>
 <polyline points="256,180 228,180" fill="none" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#a-p02)"/>
-<text x="24" y="338" font-size="14" fill="#666660">초록 상자 = 제공 파일의 함수 · 응용 5-1에서는 이 다섯 함수의 빈칸을 직접 씁니다</text>
+<text x="24" y="338" font-size="14" fill="#666660">초록 상자 = 주간 보고서 생성 준비의 함수 · 응용 5-1에서는 이 다섯 함수의 빈칸을 직접 씁니다</text>
 </g>
 </svg>

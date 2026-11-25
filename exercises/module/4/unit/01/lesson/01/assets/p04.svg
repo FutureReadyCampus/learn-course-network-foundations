@@ -21,7 +21,7 @@
 <text x="214" y="249.2" font-size="15" fill="#292929" text-anchor="middle">access_sample.log (30줄)</text>
 <line x1="84" y1="244" x2="104" y2="244" stroke="#dededb" stroke-width="2"/>
 <rect x="104" y="276" width="220" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="214" y="301.2" font-size="15" fill="#292929" text-anchor="middle">report_u1.md (보고서 쓰기)</text>
+<text x="214" y="301.2" font-size="15" fill="#292929" text-anchor="middle">report_u1.md (실습 결과 기록 준비)</text>
 <line x1="84" y1="296" x2="104" y2="296" stroke="#dededb" stroke-width="2"/>
 <rect x="390" y="56" width="306" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="404" y="88.2" font-size="15" fill="#292929">1  mkdir -p anomaly_detection</text>

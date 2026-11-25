@@ -25,7 +25,7 @@
 <text x="482" y="102" font-size="15" fill="#292929">만들고 붙여 넣기</text>
 <line x1="574" y1="122" x2="574" y2="148" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l05-p02)"/>
 <rect x="452" y="150" width="244" height="72" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="468" y="178" font-size="15" fill="#292929">2  python -c "…len(…)"</text>
+<text x="468" y="178" font-size="15" fill="#292929">2  여러 줄 Python 블록 · 줄 수 확인</text>
 <text x="482" y="202" font-size="15" fill="#292929">파일마다 한 번</text>
 <line x1="574" y1="222" x2="574" y2="248" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l05-p02)"/>
 <rect x="452" y="250" width="244" height="98" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>

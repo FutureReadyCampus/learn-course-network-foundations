@@ -258,7 +258,13 @@ PB-003 은 위 파일의 맨 아래 `]` 앞에 한 건을 더합니다. <mark>PB
 
 3. **[터미널]** `soar_response` 폴더에서(`pwd` 가 `…/soar_response` 로 끝나는 곳) 등록 파일 `config/playbook_registry.json` 을 확인합니다. <mark>`['PB-001', 'PB-002', 'PB-003']` 이 나오면</mark> 됩니다. 오류가 나면 시작하기 레슨의 「오류가 나면」 에 있는 JSON 안내를 따릅니다.
    ```bash
-   python -c "import json; print([p['id'] for p in json.load(open('config/playbook_registry.json', encoding='utf-8'))])"
+   python - <<'PY'
+import json
+
+with open('config/playbook_registry.json', encoding='utf-8') as file:
+    playbooks = json.load(file)
+print([playbook['id'] for playbook in playbooks])
+PY
    ```
    - 명령 풀이: JSON 파일을 읽어 플레이북 번호만 모아 출력합니다. 쉼표나 괄호가 틀리면 여기서 오류가 납니다.
 
@@ -274,7 +280,13 @@ PB-003 은 위 파일의 맨 아래 `]` 앞에 한 건을 더합니다. <mark>PB
 
 5. **[터미널]** 수동 처리한 결과를 확인합니다. 아래 명령은 잠긴 계정 · 차단한 IP · 티켓 수를 한 줄로 보여 줍니다.
    ```bash
-   python -c "import json; s = json.load(open('system_state.json', encoding='utf-8')); print(s['locked_users'], s['blocked_ips'], len(s['tickets']))"
+   python - <<'PY'
+import json
+
+with open('system_state.json', encoding='utf-8') as file:
+    state = json.load(file)
+print(state['locked_users'], state['blocked_ips'], len(state['tickets']))
+PY
    ```
    - 명령 풀이: 상태 파일을 읽어 잠긴 계정 리스트, 차단한 IP 리스트, 티켓 개수를 출력합니다.
    - 나오는 것: 내가 정한 액션에 따라 다릅니다. 예를 들어 IP 차단과 티켓 생성을 골랐다면 <mark>`['dami'] ['198.51.100.90'] 2`</mark> 가 나옵니다.
@@ -283,11 +295,9 @@ PB-003 은 위 파일의 맨 아래 `]` 앞에 한 건을 더합니다. <mark>PB
 - [ ] 5번 확인 명령을 실행해 첫 리스트가 `['dami']`, 티켓 수가 `2` 로 나왔다
 <!-- /checklist -->
 
-6. **[보고서]** `soar_response/report_u1.md` 의 `## 실습 1-1` 아래를 채웁니다. 보고서 파일이 아직 없으면 지금 [「보고서 쓰기」 레슨의 「보고서 파일 만들기」 페이지](__SITE__/exercises/module/5/unit/1/lesson/9/page/1)로 가서 `report_u1.md` 를 만들고 돌아옵니다.
+6. **[실습 기록]** `soar_response/report_u1.md` 의 `## 실습 1-1` 아래를 채웁니다. 실습 기록 파일이 아직 없으면 지금 [「실습 결과 기록 준비」 페이지](__SITE__/exercises/module/5/unit/1/lesson/9/page/1)로 가서 `report_u1.md` 를 만들고 돌아옵니다.
    - (가) [핵심 질문] 내가 쓴 PB-003 의 액션과 승인을 적고, 5번 확인 명령의 출력을 붙여 넣어 주세요.
    - (나) [핵심 질문] 알림 두 건을 수동 처리하면서 `system_state.json` 을 직접 고친 곳이 모두 몇 군데였는지 적고, 알림이 100건이면 어떤 문제가 생길지 적어 주세요.
-   - (다) [응용] PB-003 의 승인 값을 그렇게 정한 이유를 적어 주세요. 대상이 사용자 계정이 아니라 IP 라는 점과 잘못 차단했을 때의 영향을 근거로 쓰세요.
-   - (가) · (나)는 꼭 씁니다. (다)는 여유가 되면 하는 응용이고, 답은 보고서 틀의 `## 실습 응용 질문` 칸에 씁니다.
 
 **확인** — 3번 명령에서 `['PB-001', 'PB-002', 'PB-003']` 이 나오고, 5번 명령에서 첫 리스트가 `['dami']`, 마지막 숫자(티켓 수)가 `2` 이면 성공입니다. 3번에서 `JSONDecodeError` 가 나면 PB-002 의 `}` 뒤 쉼표와 PB-003 뒤에 쉼표가 없는지 보고, 5번 숫자가 다르면 `tickets` 에 `TCK-1` · `TCK-2` 두 건을 넣었는지 봅니다.
 
@@ -302,3 +312,5 @@ PB-003 은 위 파일의 맨 아래 `]` 앞에 한 건을 더합니다. <mark>PB
 | JSON 쉼표 | 플레이북과 플레이북 사이에는 있고, 마지막 플레이북 뒤에는 없다 |
 
 ---
+
+<!-- answer: 08|실습 1-1 정답 -->

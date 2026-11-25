@@ -50,7 +50,7 @@ source:
 |---|---|---|
 | 실습 4-1 · 4-2 파일 | `approval_gate.py` · `config/approval_policy.json` · `false_positive.py` · `fp_state.json` · `fp_log.json` · `fp_reports.json` | |
 | Unit 2 · 3 파일 | `false_positive.py` 가 불러 쓰는 `rollback.py` 등 | 「시작하기」 레슨에서 확인 |
-| 응용 4-3 파일 | `report.py` | 「제공 파일」 레슨의 완성본 |
+| 응용 4-3 파일 | `report.py` | 「선택 과제용 에스컬레이션·리포트 함수 준비」 레슨의 완성본 |
 | 응용 4-3 파일 | `unit10_tickets.json` · `unit10_actions.json` | 응용 4-3 레슨의 코드 상자 |
 | 리포트 파일 | `incident_report_20261112.md` | 아래 내용으로 직접 만듦 |
 
@@ -251,7 +251,15 @@ print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")            
 1. **[터미널]** 판다스를 설치합니다. `report.py` 가 판다스를 쓰기 때문입니다. 이미 설치했다면 바로 다음 줄로 갑니다. 그다음 준비할 파일을 확인합니다. <mark>`점검 준비 정상` 이 나와야</mark> 합니다.
    ```bash
    python -m pip install pandas
-   python -c "import report, approval_gate, false_positive; open('incident_report_20261112.md', encoding='utf-8'); open('unit10_tickets.json', encoding='utf-8'); open('unit10_actions.json', encoding='utf-8'); print('점검 준비 정상')"
+   python - <<'PY'
+import report
+import approval_gate
+import false_positive
+
+for path in ['incident_report_20261112.md', 'unit10_tickets.json', 'unit10_actions.json']:
+    open(path, encoding='utf-8').close()
+print('점검 준비 정상')
+PY
    ```
    - `No module named '…'` 나 `FileNotFoundError` 가 나오면 위 「준비할 파일」에서 그 이름의 파일을 찾아 만듭니다.
 
@@ -283,15 +291,12 @@ print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")            
 - [ ] `python apply4-5_run.py` 를 실행해 단계 2 의 세 기준이 `통과` 로 나왔다
 <!-- /checklist -->
 
-6. **[보고서]** `report_u4.md` 의 `## 응용 4-5` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 세 기준의 결과와 `unit09_checklist.md` 의 줄 수를 적어 주세요.
-   - (나) [핵심 질문] `gate_cases.json` 에는 「대상 3개」와 「대상 4개」 사례가 함께 있습니다. 두 사례의 점수와 기대한 결정을 근거로, 경계값 분석에 따라 기준 숫자 바로 앞뒤 값(경계값)의 사례를 함께 넣는 이유를 적어 주세요.
-   - (다) [핵심 질문] ③ 기준은 오탐 신고를 처리한 뒤에도 정탐 계정 `dami` 의 잠금이 유지되는지 확인합니다. 오탐 복구 점검에 이 확인이 없으면 어떤 실수를 놓칠 수 있는지 적어 주세요. Unit 3 함수 `rollback_incident`(실습 4-2 에서 가져와 사용(import)하는 함수)가 어떻게 동작할 때 그 실수가 생기는지도 함께 적어 주세요.
+<!-- answer: 10|응용 4-5 정답 -->
 
-7. **[터미널]** 응용 파일도 깃허브에 올립니다. 실습 4-2 끝 「이번 Unit 마무리 · 깃허브에 올리기」에서 「3. 깃허브에 올리기」의 1 ~ 4번을 한 번 더 하고, 기록 설명은 `git commit -m "Add unit 4 apply tasks"` 처럼 바꿔 씁니다. 응용 4-1 · 4-2 를 했다면 서버 터미널에서 `Ctrl + C` 로 서버를 끈 뒤에 합니다.
+7. **[터미널]** 서버를 끈 뒤 저장소 루트 `network-study-notes` 에서 응용 파일을 올립니다.
 
 <!-- checklist optional -->
-- [ ] `report_u4.md` 의 `## 응용 4-5` 를 채우고 응용 파일을 깃허브에 올렸다
+- [ ] 응용 파일을 깃허브에 올렸다
 <!-- /checklist -->
 
 ## 응용 4-5 정리

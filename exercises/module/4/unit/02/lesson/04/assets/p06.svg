@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <title>마무리: git status 로 .env 를 확인하고 add·commit·push 로 깃허브에 올리기</title>
-<desc>오늘 만든 파일을 ls 로 확인하고 cd .. 와 pwd 로 network-study-notes 으로 옮깁니다. git status 에 .env 나 .venv 가 보이면 .gitignore 에 적고 다시 봅니다. 보고서를 채운 뒤 올리고 브라우저에서 확인합니다.</desc>
+<desc>오늘 만든 파일을 ls 로 확인하고 cd .. 와 pwd 로 network-study-notes 으로 옮깁니다. git status 에 .env 나 .venv 가 보이면 .gitignore 에 적고 다시 봅니다. 실습 결과 기록을 확인한 뒤 올리고 브라우저에서 확인합니다.</desc>
 <defs><marker id="a-p06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">마무리: 확인하고 깃허브에 올리기</text>
 <rect x="24" y="66" width="145.5" height="70" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
@@ -39,7 +39,7 @@
 <text x="359.5" y="338.8" font-size="15" fill="#666660" text-anchor="middle">commit → push</text>
 <line x1="256" y1="323" x2="228" y2="323" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
 <rect x="494" y="290" width="201" height="66" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="594.5" y="317.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">보고서 채우기</text>
+<text x="594.5" y="317.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">기록 확인</text>
 <text x="594.5" y="338.8" font-size="15" fill="#666660" text-anchor="middle">올리기 전에</text>
 <line x1="491" y1="323" x2="463" y2="323" stroke="#666660" stroke-width="2" marker-end="url(#a-p06)"/>
 <text x="24" y="392" font-size="14" fill="#666660" text-anchor="start">push 가 rejected 면: git pull --no-rebase 로 받아 온 뒤 git push 다시</text>

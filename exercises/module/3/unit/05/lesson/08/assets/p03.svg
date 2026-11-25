@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
 <title>막히면 글감마다 붙일 출력이나 코드 한 줄을 먼저 붙이고 그 뒤를 이어 쓴다</title>
-<desc>글감 1은 실습 5-1 출력 두 줄, 글감 2는 check_dept 의 비교 줄, 글감 3은 users.json 과 conditions.json 을 고친 상황, 응용 글감은 week_log.jsonl 의 dami 와 gaeun 줄을 먼저 붙입니다. 그 뒤에 그 줄이 말하는 것을 이어 씁니다. AI 도우미 프롬프트는 Unit 1 시작하기 레슨에 있고, 비밀키와 개인정보는 넣지 않습니다.</desc>
+<desc>글감 1은 실습 5-1 출력 두 줄, 글감 2는 check_dept 의 비교 줄, 글감 3은 users.json 과 conditions.json 을 고친 상황, 해결 후 확인은 weekly_run.py 의 dami 와 gaeun 줄을 먼저 붙입니다. 그 뒤에 그 줄이 말하는 것을 이어 씁니다. AI 도우미 프롬프트는 Unit 1 시작하기 레슨에 있고, 비밀키와 개인정보는 넣지 않습니다.</desc>
 <defs><marker id="a-u5w-p03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
 <text x="24" y="32" font-size="19" font-weight="700">막히면 · 먼저 붙이고, 그 뒤를 이어 쓰기</text>
@@ -33,14 +33,14 @@
 <text x="616" y="222" font-size="14" text-anchor="middle">영향이 한 사람인가</text>
 <text x="616" y="242" font-size="14" text-anchor="middle">모든 요청인가</text>
 <rect x="24" y="264" width="168" height="56" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="36" y="297" font-size="15" font-weight="700">응용 글감</text>
+<text x="36" y="297" font-size="15" font-weight="700">해결 후 확인</text>
 <rect x="212" y="264" width="300" height="56" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="226" y="288" font-size="14">week_log.jsonl 의</text>
-<text x="226" y="308" font-size="14">dami · gaeun 거부 줄 두세 개</text>
+<text x="226" y="288" font-size="14">weekly_run.py 의</text>
+<text x="226" y="308" font-size="14">보고서 생성 결과와 점검 출력</text>
 <line x1="514" y1="292" x2="530" y2="292" stroke="#666660" stroke-width="1.8" marker-end="url(#a-u5w-p03)"/>
 <rect x="536" y="264" width="160" height="56" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="616" y="288" font-size="14" text-anchor="middle">거부 사유가</text>
-<text x="616" y="308" font-size="14" text-anchor="middle">왜 다른지</text>
+<text x="616" y="288" font-size="14" text-anchor="middle">무엇이 바뀌었고</text>
+<text x="616" y="308" font-size="14" text-anchor="middle">기대한 결과와 맞는지</text>
 <rect x="24" y="336" width="672" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="40" y="361" font-size="15">AI 도우미 프롬프트 세 가지 · Unit 1 「시작하기」의 「쓰기 질문과 AI 도우미」</text>
 <text x="40" y="384" font-size="15" font-weight="700" fill="#9a6200">비밀키 · 토큰 · 이메일 · 실명은 붙여 넣지 않습니다</text>

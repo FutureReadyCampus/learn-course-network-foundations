@@ -65,23 +65,32 @@ source:
 
 **할 일**: 먼저 앞 Unit 파일을 확인하고, `soar_response` 폴더에 `drill.py` · `shift_report.py` · `apply3-1_run.py` 세 파일을 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 1 ~ 4 를 읽습니다.
 
-**먼저 확인할 파일** — 이 응용은 앞 Unit 파일을 많이 씁니다. 없는 파일은 그 레슨의 코드 상자로 만들고, 빈칸은 그 Unit 정답 레슨의 채운 코드로 채웁니다.
+**먼저 확인할 파일** — 이 응용은 앞 Unit 파일을 많이 씁니다. 없는 파일은 그 레슨의 코드 상자로 만들고, 빈칸은 그 Unit 해당 실습 아래의 정답 펼침의 채운 코드로 채웁니다.
 
 | Unit | 파일 | 만드는 레슨 |
 |---|---|---|
 | Unit 1 | `incident.py` 전체(`INCIDENTS_PATH` 가 있어야 함) | 실습 1-2 |
 | Unit 1 | `enrichment.py` | 실습 1-3 |
-| Unit 1 | `routing.py` | 「제공 파일」 레슨 |
+| M5 Unit 1 선택 과제 준비 | `routing.py` | Unit 1 Lesson 4 |
 | Unit 1 | `incident_samples.json` · `users_info.json` · `source_ips.json` · `trusted_ips.json` | 시작하기 레슨 |
 | Unit 2 | `containment_store.py` · `account_actions.py` | 실습 2-1 |
 | Unit 2 | `session_actions.py` · `containment.py` | 실습 2-2 |
-| Unit 2 | `ip_actions.py` | 「제공 파일」 레슨 |
+| M5 Unit 2 | `ip_actions.py` | Unit 2 Lesson 3 「응용과 Unit 3에 필요한 처리 함수 준비」 |
 | Unit 2 | `config/vip_accounts.json` · `config/allowlist_ips.json` · `ip_users.json` | 시작하기 레슨 |
 
 **[터미널]** 아래 명령으로 확인합니다. `앞 Unit 파일 정상` 이 나오면 됩니다. 시작하기 레슨의 두 함수짜리 `incident.py` 를 쓰고 있다면 `cannot import name 'INCIDENTS_PATH'` 가 나오니, Unit 1 실습 1-2의 `incident.py` 전체로 바꿉니다.
 
 ```bash
-python -c "from incident import load_json, save_json, INCIDENTS_PATH; from enrichment import enrich_incident; from routing import decide_route; from containment import contain_account; from containment_store import new_state; from ip_actions import check_ip_policy, block_ip; print('앞 Unit 파일 정상')"
+python - <<'PY'
+from incident import load_json, save_json, INCIDENTS_PATH
+from enrichment import enrich_incident
+from routing import decide_route
+from containment import contain_account
+from containment_store import new_state
+from ip_actions import check_ip_policy, block_ip
+
+print('앞 Unit 파일 정상')
+PY
 ```
 
 <!-- checklist optional -->
@@ -92,10 +101,10 @@ python -c "from incident import load_json, save_json, INCIDENTS_PATH; from enric
 
 ```python
 from enrichment import enrich_incident                                                      # Unit 1 실습 1-3 : 맥락 붙이기
-from routing import decide_route                                                            # Unit 1 제공 파일 : 경로 정하기
+from routing import decide_route                                                            # M5 Unit 1 선택 과제의 경로 정하기
 from containment_store import make_record                                                   # 기록 한 건을 만드는 함수를 불러온다
 from containment import contain_account                                                     # Unit 2 실습 2-2 : 잠금 → 세션 종료
-from ip_actions import check_ip_policy, block_ip, DEFAULT_TTL                               # Unit 2 제공 파일 : IP 차단
+from ip_actions import check_ip_policy, block_ip, DEFAULT_TTL                               # M5 Unit 2 Lesson 3의 IP 차단 함수
 
 CONTAINMENT_BY_RULE = {"퇴사한 계정": "계정 조치", "경로 스캔": "IP 차단"}                  # 탐지된 규칙에 따라 할 조치 : 이 표에 없는 규칙은 조치하지 않는다
 FIREWALL_DOWN_FOR = ["INC-005"]                                                             # 방화벽 연결이 끊긴 상황을 흉내 낼 인시던트 번호 : 이 인시던트의 IP 차단은 실패한다
@@ -248,16 +257,11 @@ for record in log:                                                              
 <!-- /checklist -->
 
 4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 8줄, 단계 2 는 5줄, 단계 3 은 3줄, 단계 4 는 4줄입니다.
-5. **[보고서]** `report_u3.md` 의 `## 응용 3-1` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣어 주세요. 그리고 단계 3 의 요약과 단계 4 의 건수를 적어 주세요.
-   - (나) [핵심 질문] INC-005 는 `조치 실패` 로 나왔고 요약의 `확인 실패` 가 1 입니다. 단계 2 의 줄을 근거로 이유를 적고, 6번(`is_failure`, 확인 실패인지 구하는 함수)이 없다면 이 건이 근무 보고에서 어떻게 보일지 적어 주세요.
-   - (다) [핵심 질문] INC-008 과 INC-009 는 모두 차단되지 않았습니다. INC-008 은 승인 대기이고 INC-009 는 조치하지 않음입니다. INC-003 과 INC-010 도 승인 대기입니다. INC-003 · INC-008 · INC-009 · INC-010 네 건이 왜 그렇게 나왔는지 단계 2 와 단계 4 의 줄을 근거로 적어 주세요. 또 이 네 건을 그대로 자동 처리했다면 누가 어떤 영향을 받았을지 적어 주세요.
 
-<!-- checklist optional -->
-- [ ] `report_u3.md` 의 `## 응용 3-1` 을 채웠다
-<!-- /checklist -->
 
 6. 만든 파일은 응용 3-3 끝의 「응용 파일 올리기」를 따라 깃허브에 올립니다. 응용 3-3을 하지 않아도 그 페이지의 순서만 따라 하면 됩니다.
+
+<!-- answer: 08|응용 3-1 정답 -->
 
 ## 응용 3-1 정리
 

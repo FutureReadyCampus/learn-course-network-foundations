@@ -41,7 +41,7 @@ source:
 |---|---|
 | Unit 3 「시작하기」 레슨 | `alerts_thu.json` · `config/escalation_rules.json` |
 | Unit 3 실습 3-2 | `ticketing.py` |
-| Unit 3 「제공 파일」 레슨 | `notifier.py` · `ticket_merge.py` · `ticket_notice.py` |
+| M5 Unit 3 「선택 과제용 티켓 병합·알림 함수 준비」 레슨 | `notifier.py` · `ticket_merge.py` · `ticket_notice.py` |
 | Unit 3 응용 3-3 레슨의 코드 상자 | `alert_server.py` |
 
 응용 3-3 을 하지 않았어도 그 레슨의 `alert_server.py` 상자만 복사해 만듭니다.
@@ -75,7 +75,16 @@ source:
 2. **[터미널]** 파일을 확인합니다. <mark style="background:#bde3ff">`응용 준비 정상 7` 이 나와야</mark> 합니다.
    ```bash
    pwd
-   python -c "import ticketing, ticket_merge, ticket_notice, notifier, alert_server; from incident import load_json; print('응용 준비 정상', len(load_json('tickets_unit09.json')))"
+   python - <<'PY'
+import ticketing
+import ticket_merge
+import ticket_notice
+import notifier
+import alert_server
+from incident import load_json
+
+print('응용 준비 정상', len(load_json('tickets_unit09.json')))
+PY
    ```
    - `No module named '…'` 가 나오면 1번 목록에서 그 이름의 파일을 찾아 만듭니다. `No module named 'requests'` 는 1번 설치를 다시 합니다.
 
@@ -119,7 +128,7 @@ source:
 - 이미 실행한 에스컬레이션 단계는 반복하지 않습니다. 티켓의 `escalation_level` 에 실행한 단계를 기록합니다. 그리고 기록된 단계보다 더 높은 단계에 해당할 때만 에스컬레이션합니다. 예를 들어 `escalation_level` 이 1 인 티켓은 1단계에 해당하는 동안 다시 통보하지 않고, 초과 시간이 30분 이상이 되어 2단계에 해당할 때 통보합니다. <mark style="background:#ffc4d6">점검할 때마다 같은 티켓을 반복해서 통보하면 상급자가 알림 피로를 겪어 알림을 무시하게 됩니다</mark>.
 - 등급 low 는 응답 기한이 240분입니다. 그래서 오늘 점검 시각(20 · 60 · 110분)은 모두 응답 기한 시각보다 이릅니다. 예를 들어 `TCK-2` 의 응답 기한 시각은 243분입니다. 따라서 등급 low 티켓은 에스컬레이션 대상이 아닙니다.
 - 점검 시각은 20분, 60분, 110분입니다(근무 시작 시점을 0분으로 하는 상대 시각). 이처럼 정해진 주기로 상태를 반복 조회하는 방식을 폴링(polling, 폴링: 일정한 간격으로 상태를 반복해서 확인하는 방식)이라고 합니다. 실제 운영에서는 몇 분마다 자동으로 점검합니다.
-- 상급자에게 통보하는 기능은 `send_with_retry`(알림 전송에 실패하면 최대 3회까지 재시도(retry)하는 함수)를 재사용합니다. 이 함수가 든 `ticket_notice.py` 는 Unit 3 「제공 파일」 레슨의 파일입니다(Unit 3 응용 3-3 에서 직접 써 보는 파일).
+- 상급자에게 통보하는 기능은 `send_with_retry`(알림 전송에 실패하면 최대 3회까지 재시도(retry)하는 함수)를 재사용합니다. 이 함수가 든 `ticket_notice.py` 는 M5 Unit 3 「선택 과제용 티켓 병합·알림 함수 준비」 레슨의 파일입니다(Unit 3 응용 3-3 에서 직접 써 보는 파일).
 
 아래 함수 네 개와 실행 파일 가운데 직접 쓰는 곳은 **아홉 군데**입니다.
 
@@ -141,7 +150,7 @@ escalation.py   overdue_minutes   : 응답 기한을 넘긴 시간(분)을 구�
 
 **할 일**: `soar_response` 폴더에 `escalation.py` · `apply4-1_run.py` 두 파일을 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 알림 서버를 실행한 상태에서 프로그램을 실행합니다. 그리고 단계 2 · 3 의 출력과 서버 터미널의 수신 로그를 해석합니다.
 
-**`escalation.py`** — 응답 기한이 지난 티켓을 상급자에게 올립니다. 응용 4-2에서도 이 파일을 가져와 사용(import)합니다. 「제공 파일」 레슨에서 완성본을 만들어 두었다면 그 파일을 아래 골격으로 바꿔 직접 써 봅니다. 직접 쓰는 곳은 1 ~ 6번입니다. 5번 아래에는 `if` 한 줄을, 6번 아래에는 한 단계 더 들여쓴 줄을 씁니다.
+**`escalation.py`** — 응답 기한이 지난 티켓을 상급자에게 올립니다. 응용 4-2에서도 이 파일을 가져와 사용(import)합니다. 「선택 과제용 에스컬레이션·리포트 함수 준비」 레슨에서 완성본을 만들어 두었다면 그 파일을 아래 골격으로 바꿔 직접 써 봅니다. 직접 쓰는 곳은 1 ~ 6번입니다. 5번 아래에는 `if` 한 줄을, 6번 아래에는 한 단계 더 들여쓴 줄을 씁니다.
 
 - 2번 아래에는 `if` 한 줄을 씁니다. 3번은 그 `if` 안쪽이라 주석 위치보다 한 단계(공백 4개) 더 들여 씁니다. 주석 `# 3.` 뒤의 빈칸이 그 표시입니다.
 - 미리 채운 `for index in range(len(steps)):` 는 0 부터 (단계 수 − 1) 까지의 번호를 차례로 꺼냅니다. `range(숫자)` 는 0 부터 그 숫자 바로 앞까지의 번호를 만듭니다. 리스트 번호는 0 부터 세므로 사람이 읽는 단계 번호는 `index + 1` 입니다.
@@ -261,14 +270,7 @@ for ticket in tickets:                                                          
 - [ ] `python apply4-1_run.py` 를 실행하고, 서버 터미널에 `[알림 받음]` 줄이 4개 새로 찍힌 것을 확인했다
 <!-- /checklist -->
 
-6. **[보고서]** `report_u4.md` 의 `## 응용 4-1` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣어 주세요. 그리고 알림 서버 터미널에 출력된 `[알림 받음]` 줄 수와 단계 3 의 올린 횟수(에스컬레이션 실행 횟수)를 적어 주세요.
-   - (나) [핵심 질문] `TCK-1` 은 20분 점검에서 1단계로 에스컬레이션되었지만, 60분 점검에서는 에스컬레이션되지 않았습니다. 그 이유를 설명해 주세요. 이때 25분에 변경된 상태와 `needs_escalation` 의 조건을 근거로 쓰고, 이 조건이 없을 때 발생하는 문제도 함께 설명해 주세요.
-   - (다) [핵심 질문] 110분 점검에서 `TCK-3` 은 2단계로, `TCK-6` 은 1단계로 에스컬레이션되었습니다. 두 티켓의 응답 기한과 초과 시간을 근거로 단계가 달라진 이유를 설명해 주세요. 또한 등급 low 인 `TCK-2` 가 에스컬레이션되지 않은 이유도 설명해 주세요.
-
-<!-- checklist optional -->
-- [ ] `report_u4.md` 의 `## 응용 4-1` 을 채웠다
-<!-- /checklist -->
+<!-- answer: 10|응용 4-1 정답 -->
 
 ## 응용 4-1 정리
 

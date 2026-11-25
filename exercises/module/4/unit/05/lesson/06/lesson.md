@@ -38,13 +38,13 @@ source:
 |---|---|---|
 | Unit 3 「시작하기」 | `normalized_events.json` · `rbac.py` · `config/users.json` · `config/roles.json` | 단계 1 의 입력 |
 | Unit 3 실습 3-2 | `access_detection.py` | 단계 1 · 2 |
-| Unit 4 「제공 파일」 | `saas_detection.py` · `malicious_detection.py` · `correlation.py` | 단계 2 |
+| Unit 4 응용 4-1 및 Unit 3 응용 3-2·3-3 | `saas_detection.py` · `malicious_detection.py` · `correlation.py` | 단계 2 |
 | Unit 4 실습 4-1 | `risk_scores.py` | 단계 2 |
 | 이 Unit 실습 5-1 | `event_summary.py` · `llm_client.py` | 단계 3 |
 | Unit 2 · 3 | `login_detection.py` · `traffic_detection.py` · `alerts.py` | **넣지 않음** |
 | Unit 4 | `evaluation.py` · `tuning.py` · `final_check.py` | **넣지 않음** |
 
-- **없는 파일이 있으면** 표의 「만든 곳」 레슨에서 만듭니다. 「시작하기」와 「제공 파일」은 코드 상자를 그대로 붙여 넣고, 실습 3-2 · 4-1 · 5-1은 그 레슨의 코드 칸에 정답 레슨의 「채운 코드」를 넣어 완성합니다. `llm_client.py` 는 이 Unit 시작하기 4번에 있습니다.
+- **없는 파일이 있으면** 표의 「만든 곳」 레슨에서 만듭니다. 선택 응용의 탐지 파일은 각각 그 응용 레슨에서 만듭니다. 핵심 실습 3-2 · 4-1 · 5-1에서 만든 파일은 해당 레슨에 있는 완성 코드를 사용합니다. `llm_client.py` 는 이 Unit 시작하기 4번에 있습니다.
 - 표에서 **넣지 않음** 으로 적은 파일은 이런 이유로 뺐습니다.
 
 | 넣지 않은 것 | 만든 곳 | 넣지 않은 이유 |
@@ -153,7 +153,7 @@ print(fruit_count_dict)                    # 딕셔너리를 출력한다
 ```python
 import json                                                                                # 보고서를 JSON 파일로 저장하기 위해 json 을 불러온다
 from access_detection import load_events, EVENTS_PATH                                      # Unit 3 실습 3-2 : 이벤트 파일을 읽는 함수를 불러온다
-from correlation import find_chains_in_events                                              # Unit 4 제공 파일 : 서로 다른 로그를 연결하는 함수를 불러온다
+from correlation import find_chains_in_events                                              # Unit 4 응용 4-1 : 서로 다른 로그를 연결하는 함수를 불러온다
 from risk_scores import collect_findings, score_findings, collect_reasons, make_records, save_records, RISK_PATH  # Unit 4 실습 4-1 : 탐지 · 점수 함수를 불러온다
 from event_summary import pick_records_to_summarize, summarize_record, FAIL_TEXT           # 실습 5-1 : Gemini API 를 활용한 AI 요약 함수를 불러온다
 
@@ -260,8 +260,16 @@ run_pipeline()                     # 읽기부터 보고서 저장까지 한 번
 
 0. **[터미널]** 앞 Unit의 파일이 모두 있는지 먼저 확인합니다. <mark>두 줄 모두 아무것도 나오지 않으면</mark> 됩니다. `ModuleNotFoundError` 나 `ImportError` 가 나오면 그 이름의 파일이 없거나 덜 만든 것이니 2.1 의 표에 적힌 레슨에서 만든 뒤 다시 칩니다. 단, <mark>`No module named 'pandas'` 이면 파일 문제가 아니라 판다스가 없는 것</mark>입니다. 가상환경을 쓰는 사람은 `network-study-notes` 폴더에서 `source .venv/Scripts/activate` 로 켜고, 쓰지 않는 사람은 `python -m pip install pandas` 로 설치한 뒤 다시 칩니다.
    ```bash
-   python -c "from access_detection import load_events, EVENTS_PATH; from saas_detection import pick_saas; from malicious_detection import pick_web_failures"
-   python -c "from correlation import find_chains_in_events; from risk_scores import collect_findings, save_records; from event_summary import summarize_record"
+   python - <<'PY'
+   from access_detection import load_events, EVENTS_PATH
+   from saas_detection import pick_saas
+   from malicious_detection import pick_web_failures
+   from correlation import find_chains_in_events
+   from risk_scores import collect_findings, save_records
+   from event_summary import summarize_record
+
+   print("pipeline imports ready")
+   PY
    ```
 
 <!-- checklist optional -->
@@ -290,30 +298,22 @@ run_pipeline()                     # 읽기부터 보고서 저장까지 한 번
    | 3 | 대상마다 요약 1줄 | 3 |
    | 5 | 대상마다 등급 · 대상 · 점수 1줄 | 5 |
 
-   <mark>AI 호출이 실패하면 `[LLM 호출 실패] …` 줄이 단계 3 제목 줄 위에 나오고, 요약은 대체 문장이 됩니다.</mark> 키가 없으면 `[LLM 호출 실패] API 키 없음` 이 세 줄 나오고 단계 3 제목 줄이 `(실패 3 건)` 으로 끝납니다. 이때 출력은 정답 레슨의 「키가 없을 때」와 같습니다.
+   <mark>AI 호출이 실패하면 `[LLM 호출 실패] …` 줄이 단계 3 제목 줄 위에 나오고, 요약은 대체 문장이 됩니다.</mark> 키가 없으면 `[LLM 호출 실패] API 키 없음` 이 세 줄 나오고 단계 3 제목 줄이 `(실패 3 건)` 으로 끝납니다. 이때 출력은 응용 5-3 정답 펼침의 「키가 없을 때」와 같습니다.
 5. **[VS Code]** 새로 생긴 `anomaly_detection_report_2026-11-02.json` 을 열어 `event_count` · `records` · `summaries` 를 확인합니다.
 
 <!-- checklist optional -->
 - [ ] `python apply5-3_run.py` 를 실행해 다섯 단계가 나오고 `anomaly_detection_report_2026-11-02.json` 이 생겼다
 <!-- /checklist -->
 
-6. **[보고서]** `report_u5.md` 의 `## 응용 5-3` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 보고서 파일의 `event_count` · `finding_count` 값과 `records` · `summaries` 의 건수를 적어 주세요.
-   - (나) [핵심 질문] 점수와 등급은 코드가 정하고 AI 에게는 요약만 시킨 이유를 적어 주세요. 단계 5 의 확인할 순서와 단계 3 의 요약을 근거로 쓰세요.
-   - (다) [핵심 질문] AI 호출이 실패해도 파이프라인이 멈추지 않고 대체 문장을 쓰게 만든 이유를 적어 주세요. 대체 문장이 들어간 대상을 담당자가 어떻게 처리해야 하는지도 적어 주세요.
-
-<!-- checklist optional -->
-- [ ] `report_u5.md` 의 `## 응용 5-3` 을 채웠다
-<!-- /checklist -->
-
 ## 응용 5-3 정리
 
 | 하려는 일 | 코드 · 말 |
 |---|---|
-| 앞 결과를 다음 함수에 전달 | `findings = collect_findings(events, chains)` |
+| 앞 결과를 다음 함수에 전달 | `findings = collect_findings(events)` |
 | 점수 합계 | `totals = score_findings(findings)` |
 | 로그 종류마다 개수 | `source_event_counts = events["source"].value_counts()` |
 | 시리즈를 딕셔너리로 | `source_count_dict = source_event_counts.to_dict()` |
 | 보고서 딕셔너리 | `report = {"date": REPORT_DATE, … "summaries": summaries}` |
 
 ---
+<!-- answer: 07|응용 5-3 정답 -->
