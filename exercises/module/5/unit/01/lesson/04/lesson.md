@@ -1,20 +1,20 @@
 ---
 id: m5-u01-l04
-title: 제공 파일
+title: 응용 실습용 처리 함수 준비
 render: markdown
 ---
 
-# 제공 파일
+# 응용 실습용 처리 함수 준비
 
-## 제공 파일 쓰는 법
+## 응용에서 사용할 처리 함수 준비
 
-**실습 1-3을 시작하기 전에** 이 레슨의 파일 두 개를 만듭니다. 두 파일은 응용 1-1 · 1-2에서 직접 쓰는 것인데, 다음 Unit의 응용에서도 불러 쓰므로 오늘은 완성본을 받아 둡니다.
+핵심 실습 1-1 · 1-2 · 1-3과 포트폴리오 기록을 마친 뒤, 응용 1-1 · 1-2를 선택할 때 이 레슨의 처리 함수를 준비합니다. 이 함수들은 응용 실습과 다음 Unit의 관련 응용에서 사용합니다. 핵심 실습을 끝내는 데는 필요하지 않습니다.
 
 1. 파일은 모두 `soar_response` 폴더 안에 만듭니다. 만드는 방법은 실습 1-2와 같습니다(VS Code 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File**, 파일 이름을 그대로 적기).
 2. 아래 코드 상자의 **복사** 버튼을 눌러 내용을 그대로 붙여 넣고 저장합니다. 고칠 곳은 없습니다.
 3. 만들 파일은 두 개입니다.
 
-   | 파일 | 들어 있는 것 | 하는 일 | 응용 |
+   | 파일 | 들어 있는 것 | 하는 일 | 사용할 응용 |
    |---|---|---|---|
    | `routing.py` | `decide_route` | 맥락이 붙은 알림을 `승인 필요` · `오탐 종료` · `기본` 세 경로 가운데 하나로 나눈다 | 1-1 |
    | `routing.py` | `apply_route` | 정한 경로를 적용하고 기록한다 | 1-1 |
@@ -24,7 +24,12 @@ render: markdown
 4. 두 파일 모두 실습 1-2의 `incident.py` 를 불러 씁니다. `incident.py` 가 같은 폴더에 있어야 합니다.
 5. 이 명령은 <mark>다음 두 쪽(「`routing.py` 만들기」 · 「`safe_runner.py` 만들기」)에서 두 파일을 다 만든 뒤에</mark> 칩니다. 지금 치면 `ModuleNotFoundError: No module named 'routing'` 이 나옵니다. 다 만들었으면 터미널에서 두 파일을 불러와 봅니다. <mark>`ok` 가 나오면</mark> 됩니다.
    ```bash
-   python -c "import routing, safe_runner; print('ok')"
+   python - <<'PY'
+import routing
+import safe_runner
+
+print('ok')
+PY
    ```
    - 명령 풀이: 두 파일을 불러와(import) 문법 오류가 없는지 확인합니다. `ModuleNotFoundError: No module named 'incident'` 가 나오면 실습 1-2의 `incident.py` 를 먼저 만듭니다.
 
@@ -85,10 +90,10 @@ def apply_route(incident, route, reason, incident_log):                     # �
 - [ ] `routing.py` 를 `soar_response` 폴더에 만들고 코드 상자 내용을 붙여 넣어 저장했다
 <!-- /checklist -->
 
-**확인** — 터미널에서 `python -c "import routing; print('ok')"` 를 쳐서 `ok` 가 나오면 성공입니다. `SyntaxError` 나 `IndentationError` 가 나오면 복사가 덜 된 것이니 파일 내용을 모두 지우고 코드 상자를 다시 복사해 붙여 넣습니다.
+**확인** — 터미널에서 아래 가져오기 확인 명령을 실행해 `ok` 가 나오면 성공입니다. `SyntaxError` 나 `IndentationError` 가 나오면 복사가 덜 된 것이니 파일 내용을 모두 지우고 코드 상자를 다시 복사해 붙여 넣습니다.
 
 <!-- checklist -->
-- [ ] `python -c "import routing; print('ok')"` 를 실행해 `ok` 가 나왔다
+- [ ] 가져오기 확인 명령을 실행해 `ok` 가 나왔다
 <!-- /checklist -->
 
 ## `safe_runner.py` 만들기
@@ -169,8 +174,8 @@ def process_safe(incidents, registry, state, action_log):                       
 - [ ] `safe_runner.py` 를 `soar_response` 폴더에 만들고 코드 상자 내용을 붙여 넣어 저장했다
 <!-- /checklist -->
 
-**확인** — 터미널에서 첫 쪽 5번의 `python -c "import routing, safe_runner; print('ok')"` 를 쳐서 `ok` 가 나오면 성공입니다. 오류가 나면 오류에 적힌 파일 이름(`routing.py` 또는 `safe_runner.py`)의 내용을 모두 지우고 코드 상자를 다시 복사해 붙여 넣습니다.
+**확인** — 터미널에서 첫 쪽 5번의 가져오기 확인 명령을 실행해 `ok` 가 나오면 성공입니다. 오류가 나면 오류에 적힌 파일 이름(`routing.py` 또는 `safe_runner.py`)의 내용을 모두 지우고 코드 상자를 다시 복사해 붙여 넣습니다.
 
 <!-- checklist -->
-- [ ] `python -c "import routing, safe_runner; print('ok')"` 를 실행해 `ok` 가 나왔다
+- [ ] 가져오기 확인 명령을 실행해 `ok` 가 나왔다
 <!-- /checklist -->
