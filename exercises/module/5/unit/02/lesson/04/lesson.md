@@ -74,7 +74,7 @@ containment.py      contain_account     : 계정을 잠그고, 잠금이 확인�
 
 **`session_actions.py`** — 세션 종료와 점검입니다. 직접 쓰는 곳은 ① 입니다.
 
-- `state["sessions"].get(user, [])` 는 그 계정의 세션 리스트를 꺼내고, 세션 기록이 없는 계정이면 빈 리스트 `[]` 를 꺼냅니다. 그래서 `len(…)` 이 오류 없이 0 이 됩니다. `str(before_count)` 는 「제공 파일」 레슨에서 본 대로 숫자를 글자로 바꿉니다.
+- `state["sessions"].get(user, [])` 는 그 계정의 세션 리스트를 꺼내고, 세션 기록이 없는 계정이면 빈 리스트 `[]` 를 꺼냅니다. 그래서 `len(…)` 이 오류 없이 0 이 됩니다. `str(before_count)` 는 「응용과 Unit 3에 필요한 처리 함수 준비」 레슨에서 본 대로 숫자를 글자로 바꿉니다.
 
 ```python
 from containment_store import make_record                  # 기록 한 건을 만드는 함수를 불러온다
@@ -198,12 +198,8 @@ print("조치 기록:", len(load_json("containment_log.json")), "건")          
 - [ ] `python exercise2-2_run.py` 를 채우기 전(`조치 기록: 3 건`)과 다 채운 뒤에 실행해, 채운 뒤 단계 3 에 `빈틈이 남은 계정: []`, 단계 4 에 `조치 기록: 5 건` 이 나왔다
 <!-- /checklist -->
 
-5. **[보고서]** `report_u2.md` 의 `## 실습 2-2` 아래를 채웁니다. (나)는 [응용]이라 틀의 `## 실습 응용 질문` 칸에 씁니다.
-   - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 단계 3 에서 빈틈이 남은 계정과 단계 4 의 잠긴 계정을 적어 주세요.
-   - (나) [응용] 단계 1 에서 `junho` 가 점검에서 발견된 이유를 적어 주세요. 그리고 `dami` 가 단계 2 에서 받은 두 가지 조치와, 잠금만 했다면 유효하게 남았을 접속(세션)을 적어 주세요.
-   - (다) [핵심 질문] `gaeun` 은 잠금도 세션 종료도 받지 않았습니다. `containment.py` ② 의 `if` 조건과 단계 2 의 출력 줄을 근거로 그 이유를 적어 주세요. 그리고 잠금이 적용되지 않은 계정의 세션을 종료하면 안 되는 이유도 적어 주세요.
-
-**확인** — 단계 2 가 다섯 줄(`dami` 잠금 · 세션 종료, `gaeun` 변경 없음, `junho` 잠김 → 잠김 · 세션 종료)이고, 단계 3 이 `빈틈이 남은 계정: []`, 단계 4 가 `잠긴 계정: ['junho', 'dami']` · `조치 기록: 5 건` 이면 성공입니다. 안 나오면 「정답」 레슨의 실습 2-2 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+5. **[실습 기록]** `report_u2.md` 의 `## 실습 2-2` 아래에 핵심 결과를 기록합니다.
+**확인** — 단계 2 가 다섯 줄(`dami` 잠금 · 세션 종료, `gaeun` 변경 없음, `junho` 잠김 → 잠김 · 세션 종료)이고, 단계 3 이 `빈틈이 남은 계정: []`, 단계 4 가 `잠긴 계정: ['junho', 'dami']` · `조치 기록: 5 건` 이면 성공입니다. 안 나오면 아래 실습 2-2 정답 펼침의 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 ## 실습 2-2 정리
 
@@ -218,32 +214,39 @@ print("조치 기록:", len(load_json("containment_log.json")), "건")          
 
 ---
 
-## 이번 Unit 마무리 · 깃허브에 올리기
+## 핵심 결과 점검과 코드 저장소 반영
 
-하루를 닫는 마무리입니다(15분). 핵심 실습 두 개와 보고서의 [핵심 질문], 글쓰기(「오늘의 글 쓰기」 세 문장 글)를 마친 뒤 이 페이지로 돌아와 합니다. 응용을 하지 않았어도 이대로 마무리합니다.
+핵심 실습의 결과와 작업 파일을 확인하고 저장소에 반영합니다. 선택 응용은 이 점검이 끝난 뒤 진행합니다.
 
-- 「오늘의 글 쓰기」 마지막 페이지에서 이미 `git push` 까지 했다면 파일은 깃허브에 올라가 있습니다. 그래도 아래 「1. 오늘 한 일 확인」 · 「2. 파일 확인」을 하고, 「3. 깃허브에 올리기」로 보고서 `## 마무리` (가)까지 채워 한 번 더 올립니다. 같은 날 여러 번 올려도 괜찮습니다.
+- 포트폴리오 글을 먼저 올렸더라도 아래 「1. 오늘 한 일 확인」 · 「2. 파일 확인」을 하고, 「3. 깃허브에 올리기」를 진행합니다.
 
 **1. 오늘 한 일 확인**
 
 1. 계정 잠금을 실행하고 사후 검증했으며, 조치 전 · 후 상태를 감사 기록으로 남겼다 (실습 2-1)
 2. 잠금 뒤 활성 세션을 종료하고, 빈틈(잔존 세션)이 남았는지 다시 점검했다 (실습 2-2)
-3. 「제공 파일」 레슨의 `ip_actions.py` · `audit.py` · `approvals.py` 를 만들고 `제공 파일 정상` 을 확인했다
-4. 보고서 `report_u2.md` 의 꼭 채울 칸(2-1 (가) · (다), 2-2 (가) · (다))에 `답:` 뒤가 비어 있지 않다
+3. 실습 결과 기록 `report_u2.md` 에 핵심 결과와 확인 내용을 기록했다
+4. 실습 기록 `report_u2.md` 의 네 핵심 결과 칸(2-1 (가) · (다), 2-2 (가) · (다))을 채웠다
 
 **2. 파일 확인** — **[터미널]** `soar_response` 폴더에서 확인합니다.
 
 ```bash
 ls
 ls config
-python -c "import json; print(json.load(open('containment_state.json', encoding='utf-8'))['locked_users'], len(json.load(open('containment_log.json', encoding='utf-8'))))"
+python - <<'PY'
+import json
+
+with open('containment_state.json', encoding='utf-8') as file:
+    state = json.load(file)
+with open('containment_log.json', encoding='utf-8') as file:
+    records = json.load(file)
+print(state['locked_users'], len(records))
+PY
 ```
 
-- `containment_store.py` · `account_actions.py` · `exercise2-1_run.py` · `session_actions.py` · `containment.py` · `exercise2-2_run.py` · `ip_actions.py` · `audit.py` · `approvals.py` · `ip_users.json` · `containment_state.json` · `containment_log.json` · `report_u2.md` 가 보여야 합니다.
+- `containment_store.py` · `account_actions.py` · `exercise2-1_run.py` · `session_actions.py` · `containment.py` · `exercise2-2_run.py` · `ip_users.json` · `containment_state.json` · `containment_log.json` · `report_u2.md` 가 보여야 합니다. 함수 준비 레슨의 helper 파일들은 뒤에서 별도로 저장합니다.
 - `config` 안에는 `vip_accounts.json` · `allowlist_ips.json` 이 새로 보여야 합니다.
 - 마지막 줄은 <mark>`['junho', 'dami'] 5`</mark> 여야 합니다. 실습 2-2 가 저장한 상태(잠긴 계정 두 개 · 조치 기록 5건)이고, Unit 3 실습 3-1 이 이 상태에서 시작합니다.
-  - 다른 값이 나오면(예: 응용 2-3 을 실습 2-2 뒤에 실행해 `['junho'] 4` 가 나옴) `python exercise2-2_run.py` 를 한 번 더 실행하고 다시 확인합니다. 응용 실행 파일도 같은 두 파일에 결과를 저장하기 때문입니다.
-- 응용 2-3 을 하다가 다 채우지 못했거나 출력이 「정답」과 다르면, `ip_actions.py` 의 내용을 모두 지우고 「제공 파일」 레슨의 완성본을 다시 붙여 넣은 뒤 「제공 파일」 레슨 첫 페이지 4번 명령을 다시 칩니다. Unit 3 이 이 파일을 불러 쓰기 때문입니다.
+  - 다른 값이 나오면 `python exercise2-2_run.py` 를 한 번 더 실행하고 다시 확인합니다.
 
 <!-- checklist -->
 - [ ] `soar_response` 폴더에서 파일 확인 명령을 쳐 마지막 줄에 `['junho', 'dami'] 5` 가 나왔다
@@ -266,11 +269,11 @@ python -c "import json; print(json.load(open('containment_state.json', encoding=
    - `.env` 가 보이면 VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래의 `.gitignore`(깃이 올리지 않을 파일 이름을 적어 두는 파일)를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
    - `soar_response/__pycache__/` 는 파이썬이 실행하면서 자동으로 만든 임시 폴더입니다. 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장합니다.
    - `soar_response/containment_state.json` · `soar_response/containment_log.json` 은 실습 2-2 에서 프로그램이 저장한 상태 파일입니다. 이것도 올라갑니다.
-3. **[보고서]** `report_u2.md` 의 `## 마무리` 아래 (가)를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다. 못 적은 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다.
+3. **[실습 기록]** 핵심 결과와 막힌 부분을 `report_u2.md` 에 기록하고 저장합니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
    ```bash
    git add .
-   git commit -m "Add SOAR unit 2 account lockout, session termination and provided files"
+   git commit -m "Add SOAR unit 2 containment and session termination"
    git push
    ```
    - 명령 풀이: `git add .` 바뀐 파일을 올릴 목록에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
@@ -293,8 +296,10 @@ python -c "import json; print(json.load(open('containment_state.json', encoding=
 **4. 이어지는 곳**
 
 1. 다음 Unit 3(되돌리고 티켓 남기기)의 실습 3-1 에서는 오늘 저장한 `containment_state.json` · `containment_log.json` 의 기록만 근거로 자동 조치를 **되돌립니다**(조치 전부터 잠겨 있던 `junho` 는 그대로 둡니다).
-2. 실습 3-1 은 오늘 만든 `containment_store.py` · `account_actions.py` 와 제공 파일 `ip_actions.py` 를 불러 씁니다. 실습 3-2 에서는 처리할 일을 티켓으로 만들고 응답 기한을 계산합니다.
+2. 실습 3-1 은 오늘 만든 `containment_store.py` · `account_actions.py` 와 처리 함수 준비 레슨의 `ip_actions.py` 를 불러 씁니다. 실습 3-2 에서는 처리할 일을 티켓으로 만들고 응답 기한을 계산합니다.
 
 ---
+
+<!-- answer: 08|실습 2-2 정답 -->
 
 <!-- learn:answers -->

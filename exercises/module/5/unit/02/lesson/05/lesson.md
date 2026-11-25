@@ -13,7 +13,7 @@ source:
 
 ## 이번 의뢰: 승인 결과 받기
 
-> **여유가 되면 해 보세요.** 핵심 실습 2-1 · 2-2와 글쓰기를 먼저 마칩니다. 이 응용에서는 제공 파일로 받아 쓴 `audit.py` · `approvals.py` 를 직접 써 봅니다. 실습 2-1 · 2-2 의 파일은 쓰지 않으므로 응용 2-1 만 따로 해도 됩니다. 하지 않아도 Unit 3 을 따라가는 데 문제가 없습니다.
+> **여유가 되면 해 보세요.** 핵심 실습 2-1 · 2-2와 글쓰기를 먼저 마칩니다. 이 응용에서는 준비 레슨에서 만든 `audit.py` · `approvals.py` 를 직접 써 봅니다. 실습 2-1 · 2-2 의 파일은 쓰지 않으므로 응용 2-1 만 따로 해도 됩니다. 하지 않아도 Unit 3 을 따라가는 데 문제가 없습니다.
 
 > **오늘 들어온 일**
 >
@@ -86,7 +86,7 @@ approvals.py    is_authorized     : 승인한 사람이 권한 목록에 있는�
 }
 </code></pre>
 
-**`audit.py`** 와 **`approvals.py`** 는 「제공 파일」 레슨에서 이미 만들었습니다. <mark>두 파일을 열어 내용을 모두 지우고 아래 골격을 붙여 넣은 뒤</mark> 빈칸을 씁니다. 다 쓸 때까지는 응용 2-2 가 동작하지 않습니다. 끝내 막히면 「제공 파일」 레슨의 완성본을 다시 붙여 넣어 되돌립니다.
+**`audit.py`** 와 **`approvals.py`** 는 「응용과 Unit 3에 필요한 처리 함수 준비」 레슨에서 이미 만들었습니다. <mark>두 파일을 열어 내용을 모두 지우고 아래 골격을 붙여 넣은 뒤</mark> 빈칸을 씁니다. 다 쓸 때까지는 응용 2-2 가 동작하지 않습니다. 끝내 막히면 「응용과 Unit 3에 필요한 처리 함수 준비」 레슨의 완성본을 다시 붙여 넣어 되돌립니다.
 
 **`audit.py`** — 감사 기록 한 건을 만듭니다. `approvals.py` 와 응용 2-2 `flow.py` 가 불러다 씁니다. 직접 쓰는 곳은 1번입니다.
 
@@ -211,7 +211,13 @@ for entry in action_log:                                                        
 1. **[VS Code]** 작업 폴더는 `network-study-notes/soar_response` 입니다. `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `pending.json` · `decisions.json` 을 만들어 위 내용을 붙여 넣고 저장합니다. 이어서 `soar_response` 폴더의 `audit.py` · `approvals.py` 는 열어서 골격으로 바꾸고, `apply2-1_run.py` 는 새로 만들어(파일 이름 그대로) 코드를 붙여 넣어 저장합니다.
    - **[터미널]** 데이터 파일을 확인합니다. <mark>`3 3` 이 나와야</mark> 합니다.
      ```bash
-     python -c "import json; print(len(json.load(open('pending.json', encoding='utf-8'))), len(json.load(open('decisions.json', encoding='utf-8'))))"
+     python - <<'PY'
+import json
+
+for name in ('pending.json', 'decisions.json'):
+    with open(name, encoding='utf-8') as file:
+        print(name, len(json.load(file)))
+PY
      ```
 
 <!-- checklist optional -->
@@ -236,15 +242,6 @@ for entry in action_log:                                                        
 - [ ] `apply2-1_run.py` 를 만들어 8 · 9번을 채우고, `python apply2-1_run.py` 로 네 단계 출력이 나왔다
 <!-- /checklist -->
 
-5. **[보고서]** `report_u2.md` 의 `## 응용 2-1` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 처리 뒤 티켓 수 · 담당자 알림 수 · `분류됨` 으로 남은 알림의 번호를 각각 적어 주세요.
-   - (나) [핵심 질문] INC-005 는 결정이 `승인` 인데 실행되지 않았습니다. 단계 2 와 단계 4 의 출력을 근거로 그 이유를 적어 주세요. 그리고 권한 확인이 없을 때 생길 위험도 적어 주세요.
-   - (다) [핵심 질문] INC-003 이 승인 대기가 된 이유(단계 1), 거절된 뒤의 상태, 감사 기록에 남은 내용을 각각 적어 주세요.
-
-<!-- checklist optional -->
-- [ ] `report_u2.md` 의 `## 응용 2-1` 에 답을 썼다
-<!-- /checklist -->
-
 ## 응용 2-1 정리
 
 | 하려는 일 | 코드 · 말 |
@@ -259,3 +256,5 @@ for entry in action_log:                                                        
 | 키가 있으면 | `if item["id"] in decisions:` |
 
 ---
+
+<!-- answer: 08|응용 2-1 정답 -->

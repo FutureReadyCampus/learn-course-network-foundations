@@ -13,7 +13,7 @@ source:
 
 ## 이번 의뢰: 티켓 서비스 장애
 
-> **여유가 되면 해 보세요.** 핵심 실습 2-1 · 2-2와 글쓰기를 먼저 마칩니다. 이 응용은 Unit 1 파일과 제공 파일 `audit.py` · `approvals.py`, 응용 2-1 레슨의 `decisions.json` 을 씁니다. 응용 2-1 을 건너뛰었다면 응용 2-1 레슨의 「응용 2-1 · 권한 확인 후 담당자 결정 적용」 페이지에서 `decisions.json` 만 만들고 옵니다. 하지 않아도 Unit 3 을 따라가는 데 문제가 없습니다.
+> **선택 응용입니다.** 핵심 실습과 포트폴리오 기록 뒤에 진행합니다. M5 Unit 1의 `routing.py` · `safe_runner.py`, 함수 준비 레슨의 `audit.py` · `approvals.py`, 이 Unit의 `decisions.json` 을 씁니다. 응용 2-1 을 건너뛰었다면 그 레슨에서 `decisions.json` 만 만들어 옵니다. 이 응용을 건너뛰어도 Unit 3의 핵심 흐름을 따라갈 수 있습니다.
 
 > **오늘 들어온 일**
 >
@@ -30,7 +30,7 @@ source:
 |---|---|---|
 | 잠깐 생긴 오류만 다시 시도한다 | 권한이 없다는 오류는 몇 번을 해도 같은 결과다 | 연결 오류(`ConnectionError`)가 날 때만 다시 시도한다 |
 | 최대 횟수를 정한다 | 서비스가 계속 멈춰 있어도 끝없이 반복하지 않는다 | 처음 시도를 포함해 `MAX_TRIES` 3번 |
-| 다시 해도 안전해야 한다 | 같은 계정을 두 번 잠그면 안 된다 | `safe_run_action`(Unit 1 제공 파일 `safe_runner.py`, 응용 1-2 에서 다룸)이 이미 잠긴 계정은 건너뛴다 |
+| 다시 해도 안전해야 한다 | 같은 계정을 두 번 잠그면 안 된다 | `safe_run_action`(M5 Unit 1 응용 준비 레슨의 `safe_runner.py`, 응용 1-2 에서 다룸)이 이미 잠긴 계정은 건너뛴다 |
 | 끝내 실패하면 숨기지 않는다 | — | 실패를 기록하고 담당자 확인 목록에 올린다 |
 
 - 오늘 수업은 <mark>서비스가 요청을 받기 전에 실패하는 경우만 흉내 냅니다.</mark> 실제로는 서비스가 티켓을 이미 만들었는데 「만들었다」는 응답만 우리 프로그램에 도착하지 않는 일도 있습니다. 프로그램은 실패로 알고 같은 요청을 다시 보내므로 티켓이 두 개 만들어질 수 있습니다. 이를 막으려면 같은 요청인지 알아보는 장치가 따로 필요합니다.
@@ -103,16 +103,28 @@ failure_report.py   collect_failures        : 기록에서 「실패」로 시�
 |---|---|
 | Unit 1 실습 1-2 | `incident.py` · `playbook_runner.py` |
 | Unit 1 실습 1-3 | `enrichment.py` |
-| Unit 1 「제공 파일」 레슨 | `routing.py` · `safe_runner.py` |
+| M5 Unit 1 응용 함수 준비 레슨 | `routing.py` · `safe_runner.py` |
 | Unit 1 시작하기 | `incident_samples.json` · `users_info.json` · `source_ips.json` · `trusted_ips.json` |
 | Unit 1 실습 1-1 | `config/playbook_registry.json` |
-| 이번 Unit 「제공 파일」 레슨 또는 응용 2-1 | `audit.py` · `approvals.py` |
+| 이번 Unit 「응용과 Unit 3에 필요한 처리 함수 준비」 레슨 또는 응용 2-1 | `audit.py` · `approvals.py` |
 | 이번 Unit 응용 2-1 레슨 | `decisions.json` |
 
 **[터미널]** 아래 명령으로 확인합니다. <mark>`준비 완료 ['PB-001', 'PB-002', 'PB-003'] 3`</mark> 이 나오면 됩니다. `ModuleNotFoundError` 나 `FileNotFoundError` 가 나오면 오류 끝에 적힌 이름의 파일을 위 표의 레슨에서 만듭니다.
 
 ```bash
-python -c "import json; from safe_runner import safe_run_action; from enrichment import enrich_incident; from routing import decide_route, apply_route; from approvals import apply_decision; print('준비 완료', [p['id'] for p in json.load(open('config/playbook_registry.json', encoding='utf-8'))], len(json.load(open('decisions.json', encoding='utf-8'))))"
+python - <<'PY'
+import json
+from safe_runner import safe_run_action
+from enrichment import enrich_incident
+from routing import decide_route, apply_route
+from approvals import apply_decision
+
+with open('config/playbook_registry.json', encoding='utf-8') as file:
+    playbooks = json.load(file)
+with open('decisions.json', encoding='utf-8') as file:
+    decisions = json.load(file)
+print('준비 완료', [item['id'] for item in playbooks], len(decisions))
+PY
 ```
 
 <!-- checklist optional -->
@@ -122,13 +134,13 @@ python -c "import json; from safe_runner import safe_run_action; from enrichment
 **`retry_runner.py`** — 실패를 흉내 내고 다시 시도합니다. 직접 쓰는 곳은 1 ~ 3번입니다.
 
 ```python
-from safe_runner import safe_run_action                                            # Unit 1 제공 파일의 안전한 액션 실행 함수를 불러온다
+from safe_runner import safe_run_action                                            # M5 Unit 1 응용 준비 레슨의 안전한 액션 실행 함수를 불러온다
 
 MAX_TRIES = 3                                                                      # 한 액션을 시도하는 최대 횟수
 
 
 def flaky_run_action(action, incident, state, fail_plan):                          # 액션 · 인시던트 · 연습용 시스템 · 실패 계획을 받는 함수
-    """실패 계획에 이 액션이 앞으로 실패할 횟수가 남아 있으면 연결 오류를 일으키고, 없으면 safe_run_action(Unit 1 제공 파일)으로 실행한다.
+    """실패 계획에 이 액션이 앞으로 실패할 횟수가 남아 있으면 연결 오류를 일으키고, 없으면 safe_run_action(M5 Unit 1 응용 준비 레슨)으로 실행한다.
     외부 서비스가 잠깐 응답하지 않는 상황을 흉내 낼 때 쓴다.
     """
     key = incident["id"] + "|" + action                                            # 실패 계획에서 찾을 이름 (인시던트 번호 | 액션)
@@ -160,9 +172,9 @@ def run_with_retry(action, incident, state, fail_plan, max_tries):              
 ```python
 from incident import change_status, match_playbooks                             # Unit 1 파일의 함수를 불러온다
 from enrichment import enrich_incident                                          # Unit 1 실습 1-3 : 맥락 붙이기
-from routing import decide_route, apply_route                                   # Unit 1 제공 파일 : 경로 정하기
-from approvals import hold_for_approval                                         # 제공 파일 : 승인 대기로 멈추기
-from audit import log_line                                                      # 제공 파일 : 감사 기록 한 건 만들기
+from routing import decide_route, apply_route                                   # M5 Unit 1 응용 준비 레슨 : 경로 정하기
+from approvals import hold_for_approval                                         # 승인 대기가 필요한 알림을 실행하지 않고 담당자에게 넘긴다
+from audit import log_line                                                      # 처리 결과를 감사 기록 한 건으로 만든다
 from retry_runner import run_with_retry, MAX_TRIES                              # 응용 2-2 : 재시도하며 실행하기
 
 VIP_REVIEW_ACTIONS = ["담당자 알림", "티켓 생성"]                               # VIP 계정 알림을 담당자가 승인하면 실행할 액션
@@ -233,7 +245,7 @@ def collect_failures(action_log):  # 감사 기록 리스트를 받는 함수
 
 ```python
 from incident import load_json, INCIDENTS_PATH                                              # Unit 1 파일의 함수를 불러온다
-from approvals import apply_decision                                                        # 제공 파일의 결정 적용 함수를 불러온다
+from approvals import apply_decision                                                        # 담당자의 승인 · 거절 결과를 적용하는 함수를 불러온다
 from retry_runner import run_with_retry, MAX_TRIES                                          # 방금 만든 재시도 함수를 불러온다
 from flow import run_day_flow                                                               # 하루 흐름 함수를 불러온다
 from failure_report import collect_failures                                                 # 실패한 기록을 모으는 함수를 불러온다
@@ -318,15 +330,6 @@ for item in pending:                                                            
 - [ ] `apply2-2_run.py` 를 만들어 8 · 9번을 채우고, `python apply2-2_run.py` 로 여섯 단계 출력이 나왔다
 <!-- /checklist -->
 
-5. **[보고서]** `report_u2.md` 의 `## 응용 2-2` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 단계 3 에서 `일부 실패` · `승인 대기` · `오탐 종료`(오탐: 위험하지 않은데 위험하다고 잘못 알린 경우) 인 알림의 번호를 각각 적어 주세요.
-   - (나) [핵심 질문] 단계 1 과 2 는 같은 `run_with_retry` 인데 결과가 다릅니다. 두 단계의 `fail_plan` 값을 근거로 이유를 적어 주세요. 그리고 최대 횟수가 없으면 서비스가 계속 멈춰 있을 때 어떤 문제가 생기는지도 적어 주세요.
-   - (다) [핵심 질문] 단계 3 에서 INC-001 은 계정은 잠겼는데 상태가 `조치됨` 이 아닙니다. 그 이유를 적어 주세요. 또 단계 6 의 출력이 담당자에게 무엇을 알려 주는지 적어 주세요. 마지막으로, 같은 `state` 로 다시 처리해도 `dami` 가 두 번 잠기지 않는 이유를 Unit 1 제공 파일 `safe_runner.py`(응용 1-2 에서 다룸)의 안전장치와 연결해 적어 주세요.
-
-<!-- checklist optional -->
-- [ ] `report_u2.md` 의 `## 응용 2-2` 에 답을 썼다
-<!-- /checklist -->
-
 ## 응용 2-2 정리
 
 | 하려는 일 | 코드 · 말 |
@@ -338,3 +341,5 @@ for item in pending:                                                            
 | 리스트에 추가 | `failures.append(entry)` |
 
 ---
+
+<!-- answer: 08|응용 2-2 정답 -->
