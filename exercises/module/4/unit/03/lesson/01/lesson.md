@@ -15,11 +15,12 @@ render: markdown
 | 순서 | 시간 | 하는 일 |
 |---|---|---|
 | 1. 시작 | 15분 | 이 레슨을 읽고 오늘 쓸 파일을 만듭니다 |
-| 2. 핵심 실습 | 약 110분 | 실습 3-1 · 3-2 (보고서도 실습 중에 씀) |
-| 3. 글쓰기 | 20분 | 「오늘의 글 쓰기」에서 세 문장 글 한 편 |
-| 4. 마무리 | 15분 | 「이번 Unit 마무리」에서 확인하고 올리기 |
+| 2. 핵심 실습 | 약 110분 | 실습 3-1 · 3-2 (결과는 실습 기록에 남김) |
+| 3. 결과 확인·반영 | 15분 | 실습 3-2에서 기술 기록과 실습 파일을 확인하고 저장소에 올리기 |
+| 4. 문제 해결 기록 | 20분 | 핵심 실습에서 고민한 내용과 근거를 블로그에 기록하기 |
+| 5. 선택 실습 | 여유 시간 | 응용 3-1 ~ 3-3 중 원하는 문제 해 보기 |
 
-보고서 `report_u3.md` 는 실습 시간 안에서, 실습 하나를 마칠 때마다 씁니다. 글쓰기 20분은 세 문장 글에만 씁니다. 하루 3시간에서 남는 20분쯤은 밀린 곳을 따라잡는 여유 시간입니다.
+각 실습의 실행 결과와 확인한 값은 실습 결과 기록에 남깁니다. 핵심 실습을 마치고 결과 파일을 저장소에 올린 뒤 블로그에 문제 해결 과정을 씁니다. 응용은 이 두 가지를 마친 다음 여유가 있을 때 선택합니다.
 
 **오늘 만들 것 두 가지**
 
@@ -31,7 +32,7 @@ render: markdown
 1. **실습 3-1**: 웹 서버 요청을 분마다 세고, 지난 7일 평균의 3배 이상으로 늘어난 분을 찾는 `traffic_detection.py` 를 씁니다.
 2. **실습 3-2**: 판정 서버(직원이 누른 기능을 허용할지 정하는 A사 서버)가 거절한 요청 9개에서 한 사용자가 3번 이상 거절당한 기록을 고르고, Module 3 의 권한 판정 함수 `check_permission` 으로 거절 이유를 붙여 순서를 정하는 `access_detection.py` 를 씁니다.
 
-**응용 3-1 ~ 3-3은 여유가 되면 해 보세요.** 핵심 실습 두 개와 글쓰기를 마치고 시간이 남을 때 합니다.
+**응용 3-1 ~ 3-3은 선택 실습입니다.** 핵심 실습과 문제 해결 기록을 마친 뒤 여유가 있을 때 합니다.
 
 | 응용 | 하는 일 |
 |---|---|
@@ -39,7 +40,7 @@ render: markdown
 | 응용 3-2 | SaaS 로그에서 업무 시간 밖 로그인 · 평소와 다른 IP · 파일 대량 다운로드를 규칙마다 따로 찾습니다 |
 | 응용 3-3 | 웹 로그에서 해킹 도구가 자주 요청하는 경로를 요청한 IP 를 찾습니다 |
 
-다음 Unit 은 실습 3-2 의 `access_detection.py` 를 여러 곳에서 불러 씁니다. 응용 3-2 · 3-3 의 파일은 다음 Unit 「제공 파일」 레슨에 완성본이 있으므로, 응용을 하지 않아도 다음 Unit 을 따라갈 수 있습니다.
+다음 Unit 은 핵심 실습 3-2에서 만든 `access_detection.py` 를 여러 곳에서 불러 씁니다. 응용 3-2 · 3-3 에서 만드는 파일은 핵심 실습이나 다음 Unit의 핵심 경로에 필요하지 않습니다.
 
 **오늘 지킬 것**
 
@@ -47,7 +48,7 @@ render: markdown
 - 이번 Unit 의 기준 숫자(급증은 평균의 3배, 반복 거절은 `REPEAT_LIMIT` 3번)는 **고정**하고, 값을 바꿔 가며 비교하지 않습니다.
 - 샘플 이벤트의 날짜는 모두 2026-11-02 이고, 이야기 속 「오늘」은 이 날입니다. 57개 중 웹 서버 28개 · 판정 서버 15개(`source` 가 `server`) · SaaS 14개입니다.
 - 코드 줄은 판다스로 쓰는 줄과 파이썬으로 쓰는 줄이 섞여 있습니다. 표를 읽고 고르고 세는 줄이 판다스이고, 판단 · 딕셔너리 · 리스트 · 함수 호출이 파이썬입니다.
-- 보고서에서 핵심 실습(실습 3-1 · 3-2 · 마무리)의 `[핵심 질문]` 표시가 붙은 질문은 꼭 채우고, 내 출력이나 샘플 데이터의 값을 근거로 이유까지 씁니다. `[응용]` 표시가 붙은 질문과 응용 3-1 ~ 3-3 의 질문(그 안의 `[핵심 질문]` 포함)은 여유가 되면 씁니다.
+- 실습 결과 기록에는 핵심 실습의 실행 결과와 확인 근거를 남깁니다. 문제를 이해하고 해결한 과정은 핵심 실습 뒤 GitHub 블로그에 기록합니다.
 
 ## 폴더 열고 이전 파일 확인하기
 
@@ -60,8 +61,8 @@ render: markdown
 | `config/users.json` · `config/roles.json` | Module 3 Unit 1 실습 1-1 | 실습 3-2 (`rbac.py` 가 읽음) | 다음 페이지에서 새로 만듭니다 |
 | `login_detection.py` | Unit 2 실습 2-3 | 응용 3-1 만 | 아래 설명을 따릅니다 |
 
-- Module 3 의 파일은 `network-study-notes/access_control` 폴더에 있고 오늘 작업 폴더는 `network-study-notes/anomaly_detection` 입니다. 그래서 `rbac.py` 와 설정 파일 두 개를 `access_control` 에서 가져오지 않고, 다음 페이지의 완성본으로 `anomaly_detection/rbac.py` · `anomaly_detection/config/users.json` · `anomaly_detection/config/roles.json` 에 **새로** 만듭니다. `access_control` 폴더의 파일은 그대로 둡니다. 두 JSON 파일은 Module 3 Unit 1 정답 레슨의 「실습 1-1 정답」과 같고, `rbac.py` 는 Module 3 Unit 1 실습 1-2 의 빈칸을 정답대로 채운 완성본과 같으니, Module 3 을 다 마쳤든 못 마쳤든 그대로 붙여 넣으면 됩니다.
-- `login_detection.py` 는 응용 3-1 에서만 씁니다. 없으면 `anomaly_detection` 폴더에 `login_detection.py` 를 만들어 Unit 2 실습 2-3 레슨의 `login_detection.py` 코드 상자를 붙여 넣고, Unit 2 정답 레슨의 「실습 2-3 정답」에 있는 채운 코드를 빈칸 자리에 넣어 완성합니다.
+- Module 3 의 파일은 `network-study-notes/access_control` 폴더에 있고 오늘 작업 폴더는 `network-study-notes/anomaly_detection` 입니다. 따라서 필요한 `rbac.py` 와 두 설정 JSON 은 이 레슨에서 `anomaly_detection` 안에 별도로 만듭니다. `access_control` 폴더의 파일은 그대로 둡니다. 두 JSON 값은 [M3 Unit 1 실습 1-1의 정답 접기](__SITE__/exercises/module/3/unit/1/lesson/2/page/7), `rbac.py` 의 빈칸은 [M3 Unit 1 실습 1-2의 정답 접기](__SITE__/exercises/module/3/unit/1/lesson/3/page/4)에서 확인합니다. Module 3 Unit 1을 다 마치지 않았어도 필요한 내용을 이 레슨에서 다시 준비할 수 있습니다.
+- `login_detection.py` 는 선택 실습 3-1에서만 씁니다. 만들 때는 [M4 Unit 2 실습 2-3의 코드와 정답 접기](__SITE__/exercises/module/4/unit/2/lesson/4/page/4)를 참고합니다.
 
 **순서**
 
@@ -70,7 +71,11 @@ render: markdown
    ```bash
    cd anomaly_detection
    pwd
-   python -c "import pandas; print(pandas.__version__)"
+   python - <<'PY'
+   import pandas
+
+   print(pandas.__version__)
+   PY
    ls
    ```
    - 명령 풀이: `cd` 폴더 안으로 들어감 · `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
@@ -80,10 +85,10 @@ render: markdown
 - [ ] `network-study-notes` 폴더에서 터미널을 열고 `anomaly_detection` 폴더로 들어가, 판다스 버전 번호가 나오는 것을 봤다
 <!-- /checklist -->
 
-3. **파일은 이렇게 만듭니다.** 따로 내려받는 파일은 없고, 모두 코드 상자에서 복사해 만듭니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
+3. **파일은 이렇게 만듭니다.** 모두 코드 상자에서 복사해 직접 만듭니다. 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
    1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다. 이미 있으면 새로 만들지 않고 그 파일을 엽니다.
    2. 코드 상자의 복사 버튼으로 내용을 복사해 붙여 넣고, `Ctrl + S` 로 저장합니다.
-   - 답을 적는 **보고서** `report_u3.md` 는 「보고서 쓰기」 레슨의 틀을 복사해 만듭니다.
+   - 실행 결과를 기록할 `practice_record_u3.md` 는 「실습 결과 기록 준비」 레슨의 틀을 복사해 만듭니다.
 4. 문제는 **할 일 → 순서**대로 하고, `[창 이름]` 이 지금 쓸 창입니다. 코드를 채울 때는 주석이 말하는 일을 하면 몇 줄이든 맞고, 막히면 이 Unit 뒤쪽의 정답을 봅니다.
 
 **확인** — `pwd` 가 `…/anomaly_detection` 으로 끝나고 판다스 버전 번호가 나오면 성공입니다. 안 나오면 이 레슨의 「오류가 나면」 페이지를 봅니다.
@@ -269,9 +274,18 @@ def check_permission(user, resource, action):                    # 사용자 · 
 
 3. **[터미널]** <mark>파일이 정상인지 확인합니다</mark>.
    ```bash
-   python -c "import json; print(len(json.load(open('normalized_events.json', encoding='utf-8'))))"
-   python -c "print(len(open('baseline_traffic.csv', encoding='utf-8').read().splitlines()))"
-   python -c "from rbac import check_permission; print(check_permission('dami', 'SALES', 'QUERY'))"
+   python - <<'PY'
+   import json
+   from pathlib import Path
+   from rbac import check_permission
+
+   with open("normalized_events.json", encoding="utf-8") as events_file:
+       print(len(json.load(events_file)))
+
+   traffic_lines = Path("baseline_traffic.csv").read_text(encoding="utf-8").splitlines()
+   print(len(traffic_lines))
+   print(check_permission("dami", "SALES", "QUERY"))
+   PY
    ```
    - <mark>순서대로 `57`, `8`(헤더 줄 포함), `(False, '퇴사한 계정')` 이 나와야</mark> 합니다.
 
@@ -297,10 +311,10 @@ def check_permission(user, resource, action):                    # 사용자 · 
 | `No module named 'login_detection'`(응용 3-1) | Unit 2 실습 2-3 의 `login_detection.py` 가 없습니다 | 「폴더 열고 이전 파일 확인하기」 페이지의 표 아래 설명대로 만듭니다 |
 
 - 가상환경을 쓴다면 판다스를 설치하기 전에 `network-study-notes` 폴더에서 가상환경을 켭니다(`source .venv/Scripts/activate`).
-- 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). <mark>막히면 이 Unit 뒤쪽의 「정답」을 보고</mark>, 풀리지 않으면 오류 전체를 메모해 두었다가, 보고서를 만든 뒤 `## 실습 3-1` 의 (가)에 「모름 — 막힌 곳: …」 이라고 쓰고 넘어갑니다.
+- 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 막히면 각 실습 아래 정답 접기를 보고, 풀리지 않으면 실습 결과 기록에 오류와 막힌 지점을 남깁니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다. 파일을 지금 위치 기준으로 찾기 때문입니다. **앞 Unit 과 Module 3 의 파일은 고치지 않습니다.**
 
-**확인** — 위 표대로 고친 뒤 「오늘 쓸 파일 만들기」 페이지 3번의 세 명령이 `57`, `8`, `(False, '퇴사한 계정')` 을 내면 성공입니다. 그래도 안 되면 오류 전체를 메모해 두었다가 보고서를 만든 뒤 `## 실습 3-1` 의 (가)에 「모름 — 막힌 곳: …」 으로 남기고 실습 3-1 로 넘어갑니다.
+**확인** — 위 표대로 고친 뒤 「오늘 쓸 파일 만들기」 페이지의 확인 코드가 `57`, `8`, `(False, '퇴사한 계정')` 을 내면 성공입니다. 그래도 안 되면 오류와 막힌 지점을 실습 결과 기록에 남기고 실습 3-1 로 넘어갑니다.
 
 ---
