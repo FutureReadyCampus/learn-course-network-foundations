@@ -13,7 +13,7 @@
 <text x="96" y="218" font-size="14" fill="#666660">경고 기준</text>
 <text x="56" y="252" font-size="15" fill="#2f6fd0">week_log.jsonl</text>
 <text x="76" y="276" font-size="14" fill="#666660">일주일 치 샘플 로그 40줄</text>
-<text x="56" y="310" font-size="15" fill="#292929">report_u5.md (보고서 쓰기에서)</text>
+<text x="56" y="310" font-size="15" fill="#292929">report_u5.md (실습 결과 기록 준비에서)</text>
 <text x="36" y="362" font-size="14" fill="#666660">config/ 를 붙여 적으면 폴더도 생김</text>
 <rect x="380" y="52" width="320" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="540" y="83.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">week_state.json · alert.json</text>
@@ -21,7 +21,7 @@
 <text x="540" y="128.6" font-size="15" fill="#292929" text-anchor="middle">→ 내용이 다시 나오면 정상</text>
 <rect x="380" y="164" width="320" height="96" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="540" y="195.6" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">week_log.jsonl</text>
-<text x="540" y="218.8" font-size="15" fill="#292929" text-anchor="middle">줄 수를 세는 python -c …</text>
+<text x="540" y="218.8" font-size="15" fill="#292929" text-anchor="middle">줄 수를 확인하는 Python 블록</text>
 <text x="540" y="240.6" font-size="15" fill="#292929" text-anchor="middle">→ 40 이 나오면 정상</text>
 <rect x="380" y="276" width="320" height="106" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="540" y="301.8" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">alert.json 의 경고 기준</text>

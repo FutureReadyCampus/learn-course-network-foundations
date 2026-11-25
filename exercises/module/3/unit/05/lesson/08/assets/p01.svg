@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
-<title>20분을 고르기 5분, 쓰기 10분, 점검·올리기 5분으로 나누고 글감 하나를 골라 세 문장 글을 쓴다</title>
-<desc>글쓰기 20분은 고르기 5분, post-short 글 틀로 세 문장 쓰기 10분, 점검과 올리기 5분입니다. 글감은 실습 5-1 · 5-2의 핵심 글감 세 개, 응용 5-1을 했을 때의 글감 두 개, Module 3 다섯 Unit을 돌아보는 글 중에서 하나를 고릅니다. 긴 글(post-practice)은 응용입니다.</desc>
+<title>출력 · 코드 · 판단 이유 문제와 근거를 골라 해결 과정을 세 문장으로 기록한다</title>
+<desc>글쓰기 20분은 고르기 5분, post-short 글 틀로 세 문장 쓰기 10분, 점검과 올리기 5분입니다. 글감은 실습 5-1 · 5-2의 핵심 글감 세 개, 핵심 실습에서 확인한 근거와 해결 방법 중 하나를 고릅니다. 세 문장에 문제·근거·해결 후 확인을 담습니다.</desc>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
-<text x="24" y="32" font-size="19" font-weight="700">글쓰기 20분 · 오늘의 글감 하나 고르기</text>
+<text x="24" y="32" font-size="19" font-weight="700">문제 해결 과정 기록 · 20분</text>
 <rect x="24" y="50" width="84" height="50" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="66" y="71" font-size="14" text-anchor="middle" font-weight="700">고르기</text>
 <text x="66" y="90" font-size="14" text-anchor="middle">5분</text>
@@ -16,13 +16,13 @@
 <text x="40" y="226" font-size="15">2  점검이 알려 주는 것 · 못 하는 것</text>
 <text x="40" y="262" font-size="15">3  데이터 고침과 규칙 고침 비교</text>
 <rect x="340" y="124" width="170" height="172" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="356" y="152" font-size="16" font-weight="700">응용 글감</text>
-<text x="356" y="172" font-size="14" fill="#666660">응용 5-1을 했다면</text>
-<text x="356" y="210" font-size="15">1  dami 와 gaeun</text>
-<text x="356" y="246" font-size="15">2  거부율 0% 읽기</text>
+<text x="356" y="152" font-size="16" font-weight="700">기록에 담을 근거</text>
+<text x="356" y="172" font-size="14" fill="#666660">출력 · 코드 · 판단 이유</text>
+<text x="356" y="210" font-size="15">1  판단한 근거</text>
+<text x="356" y="246" font-size="15">2  해결 뒤 결과 확인</text>
 <rect x="526" y="124" width="170" height="172" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="542" y="152" font-size="16" font-weight="700">Module 3 돌아보기</text>
-<text x="542" y="172" font-size="14" fill="#666660">마지막 Unit이라면</text>
+<text x="542" y="152" font-size="16" font-weight="700">해결이 남아 있다면</text>
+<text x="542" y="172" font-size="14" fill="#666660">다음에 확인할 일</text>
 <rect x="542" y="192" width="24" height="28" rx="4" fill="#f1f1ef" stroke="#dededb"/>
 <text x="554" y="211" font-size="14" text-anchor="middle">1</text>
 <rect x="572" y="192" width="24" height="28" rx="4" fill="#f1f1ef" stroke="#dededb"/>
@@ -36,6 +36,6 @@
 <text x="542" y="250" font-size="14">가장 오래 고민한</text>
 <text x="542" y="270" font-size="14">Unit 하나</text>
 <rect x="24" y="316" width="672" height="44" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360" y="344" font-size="15" text-anchor="middle">세 문장이면 충분합니다 · 긴 글(post-practice)은 응용입니다</text>
+<text x="360" y="344" font-size="15" text-anchor="middle">문제 · 근거 · 해결 후 확인을 기록합니다</text>
 </g>
 </svg>
