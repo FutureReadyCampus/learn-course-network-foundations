@@ -24,6 +24,6 @@
 <polyline points="220,162 266,156" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
 <polyline points="220,238 266,156" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
 <polyline points="460,156 496,156" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<text x="20" y="300" font-size="15" fill="#666660">도전 3-1 · 실습 3-2 의 점검도 이 리스트에서 시작합니다.</text>
+<text x="20" y="300" font-size="15" fill="#666660">실습 3-2 의 점검도 이 리스트에서 시작합니다.</text>
 </g>
 </svg>
