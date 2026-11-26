@@ -33,13 +33,13 @@ M3 Unit 3에서는 필요 없어진 권한 후보를 찾았습니다. Unit 4의 
    pwd
    ls config
    python - <<'PYTHON'
-from rbac import USERS, ROLES
-from exception_policy import EXCEPTIONS, TIME_FORMAT
-from policy import evaluate_access
-from config_loader import load_json
+   from rbac import USERS, ROLES
+   from exception_policy import EXCEPTIONS, TIME_FORMAT
+   from policy import evaluate_access
+   from config_loader import load_json
 
-print("Unit 1 설정 정상", len(USERS), len(ROLES), len(EXCEPTIONS))
-PYTHON
+   print("Unit 1 설정 정상", len(USERS), len(ROLES), len(EXCEPTIONS))
+   PYTHON
    ```
    맥북은 `python`을 `python3`로 바꿉니다. 사용자 6명 · 역할 5개 · 예외 5건이면 정상입니다. 파일이 없으면 위의 M3 Unit 1 링크에서 만듭니다.
 3. **파일 만들기**: 지정한 이름의 파일을 VS Code의 **New File**로 만들고, 해당 코드 상자 내용을 붙여 넣어 저장합니다. `Ctrl + S`(맥북은 `Cmd + S`)를 누릅니다.
