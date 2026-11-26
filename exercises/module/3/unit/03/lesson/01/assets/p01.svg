@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img">
 <title>Unit 2까지는 권한을 주는 흐름, Unit 3은 이미 부여된 권한을 점검한다</title>
-<desc>Unit 2와 Unit 2에서는 요청, 승인, 예외 권한 부여, 기한 점검, 기록 저장으로 권한을 주는 흐름을 만들었습니다. Unit 3에서는 현황 리스트를 만들고, 규칙으로 찾고, 규칙으로 못 찾는 권한을 찾습니다. 회수는 Unit 4에서 합니다.</desc>
+<desc>Unit 2에서는 요청, 승인, 예외 권한 부여, 기한 점검, 기록 저장으로 권한을 주는 흐름을 만들었습니다. Unit 3에서는 현황 리스트를 만들고, 핵심 점검 함수를 준비한 뒤 오래 쓰지 않은 권한을 찾습니다. 회수는 Unit 4에서 합니다.</desc>
 <defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="36" font-size="17" fill="#292929" font-weight="700">Unit 2 · Unit 2 · 권한을 주는 흐름</text>
+<text x="20" y="36" font-size="17" fill="#292929" font-weight="700">Unit 2 · 권한을 주는 흐름</text>
 <rect x="40" y="50" width="80" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="80" y="78.62" font-size="15" fill="#292929" text-anchor="middle">요청</text>
 <rect x="150" y="50" width="80" height="48" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
@@ -24,13 +24,13 @@
 <text x="95" y="219.32" font-size="15" fill="#292929" text-anchor="middle">현황 리스트</text>
 <text x="95" y="240.32" font-size="15" fill="#292929" text-anchor="middle">만들기</text>
 <rect x="200" y="164" width="150" height="100" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="275" y="198.628" font-size="16" fill="#9a6200" text-anchor="middle" font-weight="700">도전 3-1</text>
-<text x="275" y="220.02" font-size="15" fill="#292929" text-anchor="middle">규칙으로 찾기</text>
+<text x="275" y="198.628" font-size="16" fill="#9a6200" text-anchor="middle" font-weight="700">핵심 점검 준비</text>
+<text x="275" y="220.02" font-size="15" fill="#292929" text-anchor="middle">review_rules.py</text>
 <text x="275" y="240.012" font-size="14" fill="#666660" text-anchor="middle">퇴사 · 만료</text>
 <polyline points="173,214 196,214" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
 <rect x="380" y="164" width="160" height="100" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="460" y="197.928" font-size="16" fill="#9a6200" text-anchor="middle" font-weight="700">실습 3-2</text>
-<text x="460" y="219.32" font-size="15" fill="#292929" text-anchor="middle">규칙으로 못 찾는</text>
+<text x="460" y="219.32" font-size="15" fill="#292929" text-anchor="middle">90일 넘게 안 쓴</text>
 <text x="460" y="240.32" font-size="15" fill="#292929" text-anchor="middle">권한 찾기</text>
 <polyline points="353,214 376,214" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
 <rect x="590" y="164" width="110" height="100" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5" stroke-dasharray="6 4"/>

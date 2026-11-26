@@ -1,24 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img">
-<title>Unit 1~5 복습: 판정 함수, 예외와 최종 판정, 요청서 흐름 다음이 접근 점검</title>
-<desc>Unit 1은 역할·권한 파일과 check_permission, Unit 1·3은 기간 있는 예외와 evaluate_access, Unit 2·5는 요청서 접수부터 부여, SLA 점검, 이력 저장까지 만들었습니다. Unit 3은 부여된 권한을 점검합니다.</desc>
+<title>지난 Unit 복습: 판정 함수, 예외와 최종 판정, 요청서 흐름 다음이 접근 점검</title>
+<desc>Unit 1 에서는 역할·권한 파일과 check_permission, 기간이 정해진 예외와 evaluate_access 를 만들었고, Unit 2 에서는 요청서를 승인해 예외 권한을 주었습니다. Unit 3 은 부여된 권한을 점검합니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">Unit 1 ~ Unit 2 흐름 복습</text>
+<text x="20" y="30" font-size="19" fill="#292929" font-weight="700">지난 Unit 흐름 복습</text>
 <rect x="10" y="52" width="210" height="150" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="115" y="101.828" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 1</text>
 <text x="115" y="123.22" font-size="15" fill="#292929" text-anchor="middle">역할 · 권한 파일</text>
 <text x="115" y="143.212" font-size="14" fill="#292929" text-anchor="middle">check_permission</text>
 <text x="115" y="162.812" font-size="14" fill="#666660" text-anchor="middle">허용 리스트에 없으면 거부</text>
 <rect x="255" y="52" width="210" height="150" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="360" y="101.828" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 1 · Unit 1</text>
+<text x="360" y="101.828" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 1 · 예외</text>
 <text x="360" y="123.22" font-size="15" fill="#292929" text-anchor="middle">기간이 정해진 예외</text>
 <text x="360" y="143.212" font-size="14" fill="#292929" text-anchor="middle">evaluate_access</text>
 <text x="360" y="162.812" font-size="14" fill="#666660" text-anchor="middle">만료 · 퇴사면 거부</text>
 <polyline points="223,127 251,127" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>
 <rect x="500" y="52" width="210" height="150" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="605" y="91.328" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 2 · Unit 2</text>
+<text x="605" y="91.328" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">Unit 2 권한 주기</text>
 <text x="605" y="112.72" font-size="15" fill="#292929" text-anchor="middle">요청 → 승인 → 부여</text>
-<text x="605" y="133.72" font-size="15" fill="#292929" text-anchor="middle">SLA 점검 · 이력 저장</text>
+<text x="605" y="133.72" font-size="15" fill="#292929" text-anchor="middle">승인된 요청만 부여</text>
 <text x="605" y="153.712" font-size="14" fill="#666660" text-anchor="middle">reviewing → approved</text>
 <text x="605" y="173.312" font-size="14" fill="#666660" text-anchor="middle">→ granted</text>
 <polyline points="468,127 496,127" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p02)"/>

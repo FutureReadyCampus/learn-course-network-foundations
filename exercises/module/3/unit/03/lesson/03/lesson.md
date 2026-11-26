@@ -124,7 +124,9 @@ True
 
 **할 일**
 
-1. `config/access_log.json` · `review_unused.py` · `exercise3-2_run.py` 세 파일을 만들고, `find_unused` 본문을 직접 씁니다.
+먼저 [핵심 실습 점검 함수 준비](__SITE__/exercises/module/3/unit/3/lesson/4/page/1)에서 `review_rules.py`를 만들어 둡니다.
+
+1. `config/access_log.json` · `review_unused.py` · `exercise3-2_run.py` 세 파일을 만들고, `find_unused`의 ①·②를 채웁니다.
 2. 실행해서 <mark>안 쓴 일 수</mark>(단계 1: 현황)와 <mark>90일 넘게 안 쓴 후보</mark>(단계 2: 판정)를 읽습니다.
 
 **`config/access_log.json`** — 그대로 붙여 넣습니다. 사용 이력입니다. `access_control` 안의 `config` 폴더에 만듭니다.
@@ -184,24 +186,26 @@ def find_unused(access_list, last_used_map, now, limit_days):    # 현황 · 마
     후보마다 "last_used" 키에 마지막 사용 시각(없으면 None)을 적는다.
     안 쓰는 권한을 찾을 때 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. 후보를 담을 빈 리스트 unused 를 만든다
-    # 2. access_list 에서 entry 를 하나씩 꺼낸다
-    # 3.   entry["user"] 를 user 에, entry["permission"] 을 permission 에 담는다 (두 줄)
-    # 4.   f"{user}:{permission}" 를 key 에 담는다
-    # 5.   last_used_map.get(key) 를 used_text 에 담는다 (이력이 없으면 None)
-    # 6.   used_text 가 None 이면 (is None, 사용 이력이 없음)
-    # 7.     make_unused(entry, None) 을 unused_entry 에 담는다
-    # 8.     unused_entry 를 unused 에 추가한다
-    # 9.   아니고(elif), days_since(used_text, now) 가 limit_days 보다 크면 (>)
-    # 10.    make_unused(entry, used_text) 를 unused_entry 에 담는다
-    # 11.    unused_entry 를 unused 에 추가한다
-    # 12. unused 를 리턴한다
+    unused = []
+    for entry in access_list:
+        user = entry["user"]
+        permission = entry["permission"]
+        key = f"{user}:{permission}"
+        # ① last_used_map에서 key로 시각을 꺼내 used_text에 담습니다.
+
+        if used_text is None:
+            unused_entry = make_unused(entry, None)
+            unused.append(unused_entry)
+        # ② 아래의 False를 기준 일 수를 넘었는지 확인하는 조건으로 바꿉니다.
+        elif False:
+            unused_entry = make_unused(entry, used_text)
+            unused.append(unused_entry)
+    return unused
 ```
 
-- `find_unused` 의 본문은 함수 안이라 앞에 공백 4개를 넣고(Tab 키 한 번), `for` 안쪽은 공백 4개 더(8개), `if` · `elif` 안쪽은 또 4개 더(12개) 넣습니다. 마지막 `return` 은 `for` 밖이므로 공백 4개입니다. `load_last_used` · `make_unused` · `days_since` 는 미리 채워 두었으니 그대로 둡니다.
-- `used_text is None` 은 「값이 `None` 인가」를 묻는 것입니다. `.get(key)` 는 키가 없으면 `None` 을 주므로 `None` 이면 사용 이력이 없다는 뜻입니다. 그 경우에는 일 수를 계산할 수 없으니, `days_since` 는 사용 이력이 있을 때(`elif`)만 부릅니다. `elif` 는 준비 Lesson의 `find_stale` 에서 쓴 것과 같습니다.
-- 채우기 전에 실행하면 `TypeError: object of type 'NoneType' has no len()` 오류가 납니다. `find_unused` 가 아무것도 리턴하지 않기 때문입니다.
+- ①은 주석 바로 아래에 공백 8칸을 두고 씁니다. `.get(key)`를 쓰면 사용 이력이 없을 때 `None`을 받습니다.
+- ②는 `elif False:`에서 `False`를 바꿉니다. `days_since(used_text, now)`가 돌려준 일 수가 `limit_days`보다 큰지 `>`로 확인합니다. `elif`와 콜론은 그대로 둡니다.
+- ①만 채우고 실행하면 사용 이력이 없는 후보 **1건**이 나옵니다. ②까지 채우면 후보 **3건**이 나옵니다. 후보가 **4건**이라면 `>=` 때문에 정확히 90일인 권한까지 들어갔는지 확인합니다.
 
 **`exercise3-2_run.py`** — 그대로 붙여 넣습니다. 현황을 만들고, `review_rules.py`의 `find_stale`에 걸린 권한을 뺀 뒤, 남은 권한이 며칠째 안 쓰였는지 출력하고 `find_unused`로 후보를 찾습니다.
 
@@ -247,7 +251,7 @@ for entry in unused:                                             # 후보를 한
 
 **순서**
 
-1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 세 가지 방법 중 **하나만** 고릅니다.
+1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 아래 순서를 각 파일에 적용합니다.
    - **VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
      2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
@@ -256,7 +260,7 @@ for entry in unused:                                             # 후보를 한
 2. **[터미널]** 파일을 만든 뒤 `ls config` 를 쳐서 `access_log.json` 이 `users.json` 과 같은 `config` 폴더 안에 있는지 확인합니다.
    - `config` 안에 또 `config` 가 생겼다면 위치가 틀린 것이니 옮깁니다.
    - 붙여 넣은 내용이 맞는지 `python -m json.tool config/access_log.json` 으로 확인합니다(맥북은 `python3 -m json.tool …`). 여러 줄로 정리되어 출력되면 정상이고, 오류가 나면 붙여 넣을 때 글자가 빠진 것입니다. 깨진 채 두면 사용 이력을 못 읽어 모든 권한이 「이력 없음」으로 나옵니다.
-3. **[VS Code]** `review_unused.py` 의 `find_unused` 본문을 직접 씁니다. 3.1 의 표와 그림, 문법 상자를 보고 씁니다.
+3. **[VS Code]** 3.1의 표와 문법 예시를 참고해 `review_unused.py`의 ①·②를 채웁니다.
 4. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 이어서 실행합니다.
    ```bash
    pwd

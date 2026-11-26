@@ -19,21 +19,21 @@ source:
 > 「지난주에 감사팀이 물었습니다. "지금 우리 회사에서 누가 어떤 권한을 갖고 있나요?" 저는 사용자 파일, 역할 파일, 예외 파일을 하나씩 열어 맞춰 보느라 오래 걸렸고, 그래도 빠뜨린 것이 없는지 자신이 없었습니다.
 >
 > 판정 함수는 요청이 올 때 허용인지 거부인지는 잘 가려 줍니다. 하지만 권한이 지금 어떻게 부여돼 있는지를 한곳에서 보여 주지는 않습니다. 먼저 누가 어떤 권한을 어떤 방법(역할 · 예외)으로 갖고 있는지 한곳에서 볼 수 있는 리스트를 만들어 주세요.」
-> - **왜 중요한가**: 지금은 누가 어떤 권한을 갖고 있는지 파일 세 개를 열어 직접 맞춰 봐야 해서, 빠뜨린 권한이 있어도 알 수 없습니다. 리스트 하나로 모으면 ① 감사팀이 물을 때 바로 보여 줄 수 있고 ② 필요 없는 권한을 찾아 정리할 수 있습니다. 후속 점검의 점검도 이 리스트에서 시작합니다.
+> - **왜 중요한가**: 지금은 누가 어떤 권한을 갖고 있는지 파일 세 개를 열어 직접 맞춰 봐야 해서, 빠뜨린 권한이 있어도 알 수 없습니다. 리스트 하나로 모으면 ① 감사팀이 물을 때 바로 보여 줄 수 있고 ② 필요 없는 권한을 찾아 정리할 수 있습니다. 실습 3-2의 점검도 이 리스트에서 시작합니다.
 
 ## Unit 1 ~ Unit 2 흐름 복습
 
 | Unit | 만든 것 | 기억할 것 |
 |---|---|---|
 | Unit 1 | 역할 · 권한 파일, 판정 함수 `check_permission` | 허용 리스트에 없으면 모두 거부 |
-| Unit 1 · Unit 1 | 역할 부여 · 회수, 기간이 정해진 예외, 최종 판정 `evaluate_access` | 예외는 만료 시각이 지나면 거부, 퇴사한 사용자는 모두 거부 |
-| Unit 2 · Unit 2 | 요청서 접수 → 승인 · 반려 → 예외 권한 부여, 처리 기한(SLA) 점검, 이력 저장 | 요청서 상태는 `reviewing` → `approved` → `granted` |
+| Unit 1 · 예외 판정 | 역할 부여 · 회수, 기간이 정해진 예외, 최종 판정 `evaluate_access` | 예외는 만료 시각이 지나면 거부, 퇴사한 사용자는 모두 거부 |
+| Unit 2 | 요청서 접수 → 승인 · 반려 → 예외 권한 부여, 처리 기한(SLA) 점검, 이력 저장 | 요청서 상태는 `reviewing` → `approved` → `granted` |
 
 ## 왜 접근 점검이 필요한가
 
 1. 권한은 **부여할 때는 절차를 거치지만, 회수할 때는 아무도 확인하지 않는** 일이 많습니다. 퇴사 · 부서 이동 · 프로젝트 종료가 지나도 권한이 그대로 남습니다.
 2. 실제 업무에 필요한 것보다 많은 권한을 가진 상태를 **과다권한**(over-privilege · 오버 프리빌리지)이라고 합니다. 계정이 탈취되면 과다권한만큼 피해가 커집니다. 정기적으로 부여된 권한을 살펴보고 필요 없는 것을 가려내는 일을 **접근 점검**(access review · 액세스 리뷰)이라고 합니다.
-3. 이번 Unit의 점검은 두 갈래입니다. 응용 3-1에서는 파일에 적힌 사실로 걸러 냅니다(퇴사 · 만료). 실습 3-2에서는 규칙으로 못 거르는 권한을 찾습니다.
+3. `review_rules.py`로 퇴사·만료에 해당하는 권한을 가려낸 뒤, 실습 3-2에서 남은 권한의 사용 이력을 살펴봅니다.
 
 ## 1.1 현황 리스트의 한 건
 
@@ -53,27 +53,26 @@ source:
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="build_access_list 는 역할로 받은 권한과 예외로 받은 권한을 한 리스트로 모은다"></figure>
 
-**문법 상자 — 리스트 이어 붙이기**
+**문법 상자 — 리스트 이어 붙이기와 항목 추가**
 
 `+` 로 리스트 두 개를 이으면, 두 리스트의 값이 차례로 들어 있는 새 리스트가 됩니다.
 
 ```python
-first_list = ["QUERY", "CHANGE"]                                  # 첫째 리스트
-second_list = ["SETTLE"]                                         # 둘째 리스트
-print(first_list + second_list)                                  # 두 리스트를 이은 새 리스트를 출력한다
+first_list = ["QUERY", "CHANGE"]
+second_list = ["SETTLE"]
+first_list = first_list + second_list
+print(first_list)
 
-first_list = first_list + second_list                            # 이은 리스트를 first_list 에 다시 담는다
-print(first_list)                                                # first_list 가 길어진 것을 출력한다
+first_list.append("DELETE")
+print(first_list)
 ```
-
-실행 결과:
 
 ```
 ['QUERY', 'CHANGE', 'SETTLE']
-['QUERY', 'CHANGE', 'SETTLE']
+['QUERY', 'CHANGE', 'SETTLE', 'DELETE']
 ```
 
-- `role_list = role_entries(user, info)` 로 그 사용자의 권한 리스트를 만들고, `access_list = access_list + role_list` 로 `access_list` 뒤에 이어 붙인 리스트를 `access_list` 에 다시 담습니다.
+①에서는 `+`로 리스트 두 개를 이어 붙입니다. ②에서는 `.append()`로 리스트에 항목 하나를 더합니다.
 
 ## 실습 3-1 · 역할·예외 합친 권한 현황 만들기
 
@@ -86,7 +85,7 @@ print(first_list)                                                # first_list �
 
 **할 일**
 
-1. `review_list.py` 와 `exercise3-1_run.py` 두 파일을 만들고, `build_access_list` 본문을 직접 씁니다.
+1. `review_list.py` 와 `exercise3-1_run.py` 두 파일을 만들고, `build_access_list`의 ①·②에 한 줄씩 씁니다.
 2. 실행해서 <mark>부여돼 있는 권한 현황</mark>(단계 1: 현황)과 <mark>사용자별 권한 개수</mark>(단계 2: 점검)를 읽습니다.
 
 **`review_list.py`**
@@ -117,25 +116,33 @@ def build_access_list():                                         # 지금 부여
     """부여된 권한을 사용자별 · 권한별 리스트로 모은다.
     정기 점검을 시작할 때 누가 무엇을 갖고 있는지 정리하는 데 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. 현황을 담을 빈 리스트 access_list 를 만든다
-    # 2. USERS 에서 user, info 를 하나씩 꺼낸다 (.items())
-    # 3.   role_entries(user, info) 를 role_list 에 담는다 (그 사용자가 역할로 받은 권한 리스트)
-    # 4.   access_list 와 role_list 를 + 로 이은 리스트를 access_list 에 다시 담는다
-    # 5. EXCEPTIONS 에서 exception 을 하나씩 꺼낸다
-    # 6.   exception["user"] 를 user 에 담는다
-    # 7.   USERS[user] 를 user_info 에 담는다 (그 사용자의 정보 딕셔너리)
-    # 8.   exception["id"] 를 exception_id 에 담는다
-    # 9.   f"예외 {exception_id}번" 을 source_text 에 담는다 (받은 방식 문자열)
-    # 10.  딕셔너리 entry 를 만든다: "user" 는 user, "permission" 은 exception["permission"], "source" 는 source_text, "employed" 는 user_info["employed"]
-    # 11.  entry["expires"] 를 exception["expires"] 로 정한다 (예외에만 있는 키)
-    # 12.  access_list 에 entry 를 추가한다
-    # 13. access_list 를 리턴한다
+    access_list = []
+    for user, info in USERS.items():
+        role_list = role_entries(user, info)
+        # ① role_list를 access_list에 이어 붙이고 다시 담습니다.
+
+    for exception in EXCEPTIONS:
+        user = exception["user"]
+        user_info = USERS[user]
+        exception_id = exception["id"]
+        source_text = f"예외 {exception_id}번"
+        entry = {
+            "user": user,
+            "permission": exception["permission"],
+            "source": source_text,
+            "employed": user_info["employed"],
+        }
+        entry["expires"] = exception["expires"]
+        # ② entry 한 건을 access_list에 추가합니다.
+
+    return access_list
 ```
 
-- 본문은 모두 함수 안이라 앞에 공백 4개를 넣고(Tab 키 한 번), `for` 안쪽은 공백 4개 더(8개) 넣습니다. 마지막 `return` 은 `for` 밖이므로 공백 4개입니다. `role_entries` 는 미리 채워 두었으니 그대로 둡니다.
-- 10번의 딕셔너리는 한 줄에 쓰거나, `{ }` 안에서 `,` 뒤에 줄을 바꿔 써도 됩니다.
-- 채우기 전에 실행하면 `TypeError: object of type 'NoneType' has no len()` 오류가 납니다. 함수가 아무것도 리턴하지 않아 `len(access_list)` 를 셀 수 없기 때문입니다.
+①·②는 각각 `for` 안에 있으므로 해당 주석 바로 아래에 공백 8칸을 두고 씁니다.
+
+- 그대로 실행하면 **0건**과 빈 딕셔너리 `{}`가 나옵니다. 권한을 만들었지만 아직 목록에 담지 않았기 때문입니다.
+- ①만 채우면 역할로 받은 권한 **9건**이 나옵니다.
+- ②까지 채우면 전체 **14건**이 나옵니다. **10건**이면 ②가 반복문 밖에 있어 예외가 마지막 한 건만 추가됐는지 확인합니다.
 
 **`exercise3-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 단계 1은 현황을 한 줄씩 출력하고, 단계 2는 사용자별 권한 개수를 셉니다.
 
@@ -159,13 +166,13 @@ print(counts)                                                    # 사용자별 
 
 **순서**
 
-1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 세 가지 방법 중 **하나만** 고릅니다.
+1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 아래 순서를 두 파일에 각각 적용합니다.
    - **VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.
      1. VS Code 왼쪽 목록에서 `access_control` 폴더를 클릭해 선택합니다(선택하지 않으면 다른 폴더에 만들어집니다).
      2. 목록 위쪽의 **새 파일**(New File, 파일 모양에 `+`) 아이콘을 누릅니다.
      3. 이름 칸에 파일 이름을 입력하고 Enter 를 누릅니다. 이름은 차례로 `review_list.py` · `exercise3-1_run.py` 입니다.
      4. 열린 파일에 위 코드 상자의 내용을 복사해 붙여 넣고 저장합니다.
-2. **[VS Code]** `review_list.py` 의 `build_access_list` 본문을 직접 씁니다. 1.1 의 표와 그림을 보고 씁니다.
+2. **[VS Code]** 1.1의 문법 예시를 참고해 `review_list.py`의 ①·②를 채웁니다. 채우기 전이나 한 곳만 채운 상태에서도 아래 명령으로 건수를 확인할 수 있습니다.
 3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 이어서 실행합니다.
    ```bash
    pwd
