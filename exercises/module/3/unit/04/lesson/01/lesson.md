@@ -28,8 +28,10 @@ Unit 3에서는 필요 없어진 권한 후보를 찾았습니다. Unit 4의 핵
 ## 폴더 열고 이전 설정 확인하기
 
 1. **[VS Code]** 왼쪽 목록의 `access_control` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal**로 터미널을 엽니다.
-2. **[터미널]** 위치와 M3 Unit 1 파일을 확인합니다. 결과가 `…/security-agent-toolkit/access_control`로 끝나야 합니다.
+2. **[터미널]** 위치와 M3 Unit 1 파일을 확인합니다. 결과가 `…/network-study-notes/access_control`로 끝나야 합니다.
+
    ```bash
+   # 이 명령은 전체를 복사해 Git Bash에 붙여 넣어 실행하세요.
    pwd
    ls config
    python - <<'PYTHON'
@@ -41,7 +43,7 @@ Unit 3에서는 필요 없어진 권한 후보를 찾았습니다. Unit 4의 핵
    print("Unit 1 설정 정상", len(USERS), len(ROLES), len(EXCEPTIONS))
    PYTHON
    ```
-   맥북은 `python`을 `python3`로 바꿉니다. 사용자 6명 · 역할 5개 · 예외 5건이면 정상입니다. 파일이 없으면 위의 M3 Unit 1 링크에서 만듭니다.
+   맥북은 `python`을 `python3`로 바꿉니다. 사용자 6명 · 역할 5개 · 예외 5건이면 정상입니다. 파일이 없으면 위의 M3 Unit 1 링크에서 만든 뒤 이 블록 전체를 다시 실행합니다.
 3. **파일 만들기**: 지정한 이름의 파일을 VS Code의 **New File**로 만들고, 해당 코드 상자 내용을 붙여 넣어 저장합니다. `Ctrl + S`(맥북은 `Cmd + S`)를 누릅니다.
 4. 코드는 할 일 순서대로 작성합니다. 막히면 해당 실습 바로 뒤의 「정답과 해설 보기」를 확인합니다. 이전 Unit에서 만든 파일은 수정하지 않습니다.
 

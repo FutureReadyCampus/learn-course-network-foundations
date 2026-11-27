@@ -37,12 +37,8 @@ source:
 
 - 이력 한 건은 여섯 키로 이루어집니다: `time`(회수 시각) · `user` · `permission` · `method` · `approval`(승인 상태) · `result`(「실행」 또는 「대기」).
   - `result` 의 「대기」는 `approval` 이 「승인 대기」라서 실행하지 않았다는 뜻입니다.
-- **직접 쓰는 곳은 세 함수**입니다. 판단이 필요한 함수마다 3 ~ 5줄만 쓰고, 나머지는 미리 채웠습니다.
-  - `remove_exception`(1 ~ 3번): 번호가 같은 예외를 찾아 지웁니다(`리스트.remove(값)` 은 리스트에서 그 값을 지웁니다).
-  - `apply_plan`(4 ~ 8번): 회수 방법별로 실제로 지우는 일(세 곳)입니다.
-  - `execute_revocation`(9 ~ 13번): 계획마다 「대기」인지 「실행」인지 정합니다.
-- **미리 채운 함수**
-  - `save_log`: 이력을 JSON 파일로 저장합니다(판단이 없는 저장이라 미리 채움, Unit 2의 `save_requests` 와 같은 방법입니다).
+- 직접 쓰는 부분은 두 곳입니다. ①은 아직 승인 대기인지 가려내고, ②는 그 밖의 계획을 실행합니다.
+- `apply_plan`은 회수 방법에 따라 역할을 해제하거나 권한 또는 예외를 지웁니다. `save_log`는 이력을 JSON으로 저장합니다.
 - 회수한 뒤에 다시 판정하면 결과가 달라질 수 있습니다.
   - `execute_revocation` 이 바꾼 `USERS` · `ROLES` · `EXCEPTIONS` 를 `evaluate_access` 도 같은 것으로 읽기 때문입니다.
   - `evaluate_access(사용자, 자원, 행위, 시각)` 는 `(허용 여부, 이유)` 두 값을 리턴합니다(Unit 1).
@@ -65,85 +61,79 @@ source:
 
 **할 일**
 
-1. `revoke.py` 와 `exercise4-2_run.py` 두 파일을 만들고, `remove_exception` · `apply_plan` · `execute_revocation` 에서 직접 쓰는 곳 다섯 군데를 씁니다.
+1. `revoke.py`와 `exercise4-2_run.py`를 만들고 `revoke.py`의 ①·②를 채웁니다.
 2. 실행해서 <mark>회수 결과</mark>(단계 1: 실행), <mark>회수 전후의 판정</mark>(단계 2: 확인), <mark>저장한 이력</mark>(단계 3: 저장)을 읽고, 새로 생긴 `revocation_log.json` 파일도 열어 봅니다.
 
 **`revoke.py`**
 
 ```python
-import json                                                      # JSON 파일을 쓰는 모듈을 불러온다
+import json
 
 
-def remove_exception(exceptions, target_id):                     # 예외 리스트와 지울 예외 번호를 받는 함수
+def remove_exception(exceptions, target_id):
     """예외 리스트에서 번호가 target_id 인 예외를 지운다.
     지웠으면 True, 못 찾았으면 False 를 리턴한다.
     지원이 끝난 예외를 회수할 때 쓴다.
     """
-    for exception in exceptions:                                       # 예외를 하나씩 꺼낸다
-        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-        # 1. exception["id"] 가 target_id 와 같으면 (==)
-        # 2.   exceptions 에서 exception 를 지운다 (.remove)
-        # 3.   True 를 리턴한다 (지웠다고 알리고 함수를 끝낸다)
-    return False                                                 # 끝까지 못 찾았으면 False 를 리턴한다
+    for exception in exceptions:
+        if exception["id"] == target_id:
+            exceptions.remove(exception)
+            return True
+    return False
 
 
-def apply_plan(plan, users, roles, exceptions):                  # 계획 한 건 · 사용자 · 역할 · 예외 리스트를 받는 함수
+def apply_plan(plan, users, roles, exceptions):
     """계획 한 개의 방법대로 프로그램 안의 데이터를 바꾼다.
     승인된 회수를 실행할 때 쓰며, 승인 확인은 부르는 쪽이 한다.
     """
-    if plan["method"] == "예외 삭제":                            # 방법이 예외 삭제이면
-        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-        # 4. remove_exception(exceptions, plan["target"]) 을 호출한다 (예외 리스트에서 그 번호의 예외를 지운다)
-    elif plan["method"] == "역할 해제":                          # 방법이 역할 해제이면
-        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-        # 5. users[plan["target"]] 를 user_info 에 담는다 (그 사용자의 정보 딕셔너리)
-        # 6. user_info["role"] 을 빈 문자열 "" 로 바꾼다 (어떤 역할의 권한도 받지 않게 된다)
-    else:                                                        # 방법이 역할에서 권한 빼기이면
-        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-        # 7. roles[plan["target"]] 를 role_permissions 에 담는다 (그 역할의 권한 리스트)
-        # 8. role_permissions 에서 plan["permission"] 을 지운다 (.remove)
+    if plan["method"] == "예외 삭제":
+        remove_exception(exceptions, plan["target"])
+    elif plan["method"] == "역할 해제":
+        user_info = users[plan["target"]]
+        user_info["role"] = ""
+    else:
+        role_permissions = roles[plan["target"]]
+        role_permissions.remove(plan["permission"])
 
 
-def save_log(log, path):                                         # 이력 리스트와 저장할 파일 경로를 받는 함수
+def save_log(log, path):
     """이력 리스트를 JSON 파일로 저장하고 저장한 개수를 리턴한다(한글은 그대로).
     회수 이력을 나중에 확인할 수 있게 남길 때 쓴다.
     """
-    with open(path, "w", encoding="utf-8") as log_file:                 # 파일을 쓰기 모드("w")로 연다
-        json.dump(log, log_file, ensure_ascii=False, indent=2)          # 이력을 파일에 JSON 으로 쓴다
-    return len(log)                                              # 저장한 건수를 리턴한다
+    with open(path, "w", encoding="utf-8") as log_file:
+        json.dump(log, log_file, ensure_ascii=False, indent=2)
+    return len(log)
 
 
-def execute_revocation(plans, users, roles, exceptions, now):    # 계획 · 사용자 · 역할 · 예외 리스트 · 지금 시각 문자열을 받는 함수
+def execute_revocation(plans, users, roles, exceptions, now):
     """승인 불필요이거나 승인된 계획만 실행하고 이력 리스트를 리턴한다.
     승인 대기는 「대기」로 남기며, 회수를 집행할 때 쓴다.
     """
-    log = []                                                     # 이력을 담을 빈 리스트
-    for plan in plans:                                           # 계획을 하나씩 꺼낸다
-        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-        # 9. plan["approval"] 이 "승인 대기" 이면 (==)
-        # 10.  result 를 "대기" 로 정한다
-        # 11. 그렇지 않으면 (else)
-        # 12.  apply_plan(plan, users, roles, exceptions) 를 호출한다
-        # 13.  result 를 "실행" 으로 정한다
-        entry = {                                                 # 회수 이력 한 개의 값을 묶는다(여러 줄)
-            "time": now,                                         # 시각
-            "user": plan["user"],                                # 사용자
-            "permission": plan["permission"],                    # 권한
-            "method": plan["method"],                            # 회수 방법
-            "approval": plan["approval"],                        # 승인 상태
-            "result": result,                                    # 결과(실행 또는 대기)
+    log = []
+    for plan in plans:
+        # ① True를 승인 상태가 대기인지 확인하는 조건으로 바꿉니다.
+        if True:
+            result = "대기"
+        else:
+            # ② 이 줄을 실제 회수 함수 호출로 바꿉니다.
+            raise NotImplementedError("② 회수 함수 호출을 채워 주세요.")
+            result = "실행"
+        entry = {
+            "time": now,
+            "user": plan["user"],
+            "permission": plan["permission"],
+            "method": plan["method"],
+            "approval": plan["approval"],
+            "result": result,
         }
-        log.append(entry)                                        # 이력 한 건을 만들어 이력 리스트에 추가한다
-    return log                                                   # 이력 리스트를 리턴한다
+        log.append(entry)
+    return log
 
 ```
 
-- 직접 쓰는 곳은 세 함수이고, 모두 함수 안이라 앞에 공백 4개를 기본으로 넣습니다(Tab 키 한 번).
-  - `remove_exception` 안: 미리 채운 `for` 안쪽이라 1번 `if` 는 8개이고, 그 안쪽(2 · 3번)은 4개 더(12개)입니다.
-  - `apply_plan` 안: 미리 채운 `if` · `elif` · `else` 가 4개이고, 그 안쪽 줄(4 ~ 8번)은 4개 더(8개)입니다.
-  - `execute_revocation` 안: 미리 채운 `for` 안쪽이라 `if` · `else` 는 8개이고, 그 안쪽은 4개 더(12개)입니다.
-  - 나머지 줄은 미리 채워 두었으니 그대로 둡니다.
-- 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다(파이썬 버전에 따라 뒤에 `after 'if' statement on line …` 가 붙습니다). `remove_exception` 의 `for` 아래에 실행할 줄이 아직 없기 때문입니다.
+- ①에서는 `if True:`의 `True`를 바꿉니다. `plan["approval"]`이 `"승인 대기"`와 같은지 `==`로 확인합니다.
+- ②에서는 `raise` 줄 전체를 함수 호출 한 줄로 바꿉니다. 위에 있는 `apply_plan`에 `plan`, `users`, `roles`, `exceptions`를 차례로 넘깁니다.
+- 시작 코드 그대로 실행하면 수업용 계획은 모두 대기로 남습니다. ①만 채우면 실행할 계획에서 ②를 채우라는 메시지가 나옵니다. 두 곳을 다 채우면 **실행 7건, 대기 1건**, 이력 **8건**이 나옵니다.
 
 **`exercise4-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 4-1까지의 계획과 승인 상태를 만든 뒤 회수 전 판정을 모으고, `execute_revocation` 으로 회수하고, 회수 후 판정을 모아 비교하고, 이력을 저장합니다.
 
@@ -219,7 +209,7 @@ print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력
 
 1. **[VS Code]** 파일 `revoke.py` · `exercise4-2_run.py` 를 만들어 위 코드를 붙여 넣습니다. 
    - VS Code: `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력합니다.
-2. **[VS Code]** `revoke.py` 에서 `remove_exception` · `apply_plan` · `execute_revocation` 의 직접 쓰는 곳 다섯 군데를 씁니다. 3.1 의 표와 그림을 보고 씁니다.
+2. **[VS Code]** `revoke.py`의 ①·②를 채웁니다. 3.1의 표와 그림을 참고합니다.
 3. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
