@@ -57,16 +57,17 @@ Unit 5는 Module 4 **이상탐지**의 마지막 Unit입니다. 지금까지 로
    - 터미널 이름 칸에 **bash** 가 보이는지 봅니다. `powershell` 이 보이면 터미널 오른쪽 위 `+` 옆의 **∨** › **Git Bash** 로 새 터미널을 엽니다. 이 레슨의 명령은 모두 Git Bash 기준입니다.
 2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치를 확인하고, `llm_client.py` 가 쓰는 `requests` 를 설치합니다. <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나면</mark> 됩니다. Unit 2 에서 가상환경을 켜고 판다스를 설치했다면 <mark>첫 줄로 `network-study-notes` 폴더에서 같은 가상환경을 먼저 켭니다.</mark> 가상환경을 쓰지 않는 사람은 첫 줄을 건너뜁니다. 켜지 않고 설치하면 `requests` 와 판다스가 서로 다른 파이썬에 깔립니다.
    ```bash
+   # 이 명령은 전체를 복사해 Git Bash에 붙여 넣어 실행하세요.
    source .venv/Scripts/activate   # 가상환경을 쓰는 사람만 (network-study-notes 에서)
    cd anomaly_detection
    pwd
    ls
    python -m pip install requests
    python - <<'PY'
-import requests
+   import requests
 
-print(requests.__version__)
-PY
+   print(requests.__version__)
+   PY
    ```
    - 명령 풀이: `cd 폴더이름` 그 폴더로 이동 · `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기 · `python -m pip install requests` 인터넷으로 요청을 보내는 도구 `requests` 설치 · 마지막 Python 블록에서 설치한 `requests` 의 버전 출력
    - 설치가 끝나면 <mark>`Successfully installed …` 또는 `Requirement already satisfied` 가 나옵니다.</mark> 마지막에 `WARNING: You are using pip version …` 이 나와도 무시합니다.
@@ -218,17 +219,18 @@ def call_llm(question):                                              # 질문 �
 
 6. **[터미널]** 두 파일이 정상인지 확인합니다.
    ```bash
+   # 이 명령은 전체를 복사해 Git Bash에 붙여 넣어 실행하세요.
    python - <<'PY'
-import json
+   import json
 
-with open("unit05_risk_scores.json", encoding="utf-8") as file:
-    print(len(json.load(file)))
-PY
+   with open("unit05_risk_scores.json", encoding="utf-8") as file:
+       print(len(json.load(file)))
+   PY
    python - <<'PY'
-from llm_client import read_api_key
+   from llm_client import read_api_key
 
-print(read_api_key() is not None)
-PY
+   print(read_api_key() is not None)
+   PY
    ```
    - 첫 줄은 <mark>`5` 가 나오면</mark> 됩니다.
    - 둘째 줄은 `.env` 에서 키를 읽었는지 알려 줍니다. 키 값은 화면에 나오지 않습니다.
@@ -319,12 +321,13 @@ PY
 
 - **[터미널]** `anomaly_detection` 폴더에서 시작하기 6번의 둘째 명령을 다시 칩니다. <mark>`True` 가 나오면</mark> 됩니다. 키 값은 화면에 나오지 않습니다.
   ```bash
+  # 이 명령은 전체를 복사해 Git Bash에 붙여 넣어 실행하세요.
   pwd
   python - <<'PY'
-from llm_client import read_api_key
+  from llm_client import read_api_key
 
-print(read_api_key() is not None)
-PY
+  print(read_api_key() is not None)
+  PY
   ```
   - 명령 풀이: 여러 줄 Python 블록에서 점검 코드를 바로 실행
 
