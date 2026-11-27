@@ -51,12 +51,8 @@ source:
   - 예: `{"dami:SALES:QUERY": "승인"}` 처럼 키는 「사용자:권한」 문자열입니다. 여기에 없는 계획은 아직 결정하지 않은 것입니다.
   - dami 의 `SALES:QUERY` 계획은 둘(역할 해제, 예외 3번 삭제)이지만 결정 키 `dami:SALES:QUERY` 는 같습니다.
   - 이 키는 승인이 필요한 계획에서만 찾는데, 이번 데이터에서는 역할 해제 쪽만 승인이 필요합니다.
-- **직접 쓰는 곳은 세 함수**입니다. 판단이 필요한 함수마다 1 ~ 6줄만 쓰고, 나머지는 미리 채웠습니다.
-  - `plan_key`(1번): 계획에서 「사용자:권한」 문자열을 만듭니다(승인 결정을 찾는 키).
-  - `needs_approval`(2 ~ 4번): 민감한 권한이거나 영향이 2건 이상이면 `True` 를 리턴합니다.
-  - `mark_approvals`(5 ~ 10번): 계획마다 승인 상태(`approval`)를 정합니다.
-- **미리 채운 함수**
-  - `load_sensitive`: 민감한 권한 파일을 읽습니다(판단이 없는 읽기라 미리 채움).
+- 직접 쓰는 부분은 두 곳입니다. ①은 민감한 권한 또는 영향이 큰 계획을 가려내는 조건이고, ②는 해당 계획의 승인 결정을 찾는 줄입니다.
+- `plan_key`는 「사용자:권한」 키를 만듭니다. `mark_approvals`는 조건과 승인 결정을 보고 각 계획에 상태를 적습니다.
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="mark_approvals 는 계획마다 승인 필요 여부와 결정을 보고 승인 상태 세 가지 중 하나를 적는다"></figure>
 
@@ -72,7 +68,7 @@ source:
 
 **할 일**
 
-1. `config/sensitive.json` · `revoke_approve.py` · `exercise4-1_run.py` 세 파일을 만들고, `plan_key` · `needs_approval` · `mark_approvals` 에서 직접 쓰는 곳 세 군데를 씁니다.
+1. `config/sensitive.json`, `revoke_approve.py`, `exercise4-1_run.py`를 만들고 `revoke_approve.py`의 ①·②를 채웁니다.
 2. 실행해서 <mark>승인 상태</mark>(단계 1: 승인 상태)와 <mark>승인 상태별 건수</mark>(단계 2: 집계)를 읽습니다.
 
 **`config/sensitive.json`** — 그대로 붙여 넣습니다. 민감한 권한 리스트입니다. `access_control` 안의 `config` 폴더에 만듭니다.
@@ -84,64 +80,60 @@ source:
 **`revoke_approve.py`**
 
 ```python
-from config_loader import load_json                              # Unit 1에서 만든 안전한 읽기 함수를 불러온다
+from config_loader import load_json
 
 
-def load_sensitive(path):                                        # 민감한 권한 파일 경로를 받는 함수
+def load_sensitive(path):
     """민감한 권한 파일을 읽어 「자원:행위」 리스트로 리턴하고, 없거나 깨졌으면 빈 리스트를 리턴한다.
     승인이 필요한 회수를 가릴 때 쓴다.
     """
-    return load_json(path, [])                                   # 안전하게 읽어 그대로 리턴한다
+    return load_json(path, [])
 
 
-def plan_key(plan):                                              # 계획 한 건을 받는 함수
+def plan_key(plan):
     """「사용자:권한」 문자열(예: "dami:SALES:CHANGE")을 리턴한다.
     계획에 맞는 승인 결정을 찾는 키로 쓴다.
     """
-    user = plan["user"]                                          # 계획의 사용자
-    permission = plan["permission"]                              # 계획의 권한
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. f"{user}:{permission}" 을 리턴한다 (사용자와 권한을 : 로 이어 붙인 문자열)
+    user = plan["user"]
+    permission = plan["permission"]
+    return f"{user}:{permission}"
 
 
-def needs_approval(plan, sensitive):                             # 계획 한 건과 민감한 권한 리스트를 받는 함수
+def needs_approval(plan, sensitive):
     """민감한 권한이거나 영향이 2개 이상이면 True, 아니면 False 를 리턴한다.
     승인이 필요한 회수를 가려낼 때 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 2. plan["permission"] 이 sensitive 안에 있는지(in)를 is_sensitive 에 담는다
-    # 3. plan["impact"] 가 2 이상인지(>=)를 is_big_impact 에 담는다
-    # 4. is_sensitive 이거나 is_big_impact 이면 True 가 되도록 리턴한다 (or)
+    is_sensitive = plan["permission"] in sensitive
+    is_big_impact = plan["impact"] >= 2
+    # ① True를 민감한 권한 또는 영향이 큰지를 확인하는 식으로 바꿉니다.
+    return True
 
 
-def mark_approvals(plans, sensitive, decisions):                 # 계획 리스트 · 민감한 권한 리스트 · 승인 결정 딕셔너리를 받는 함수
+def mark_approvals(plans, sensitive, decisions):
     """계획마다 "approval" 키(승인 불필요 · 승인됨 · 승인 대기)를 적은 복사본 리스트를 리턴한다.
     어떤 회수가 보안 책임자의 승인을 기다려야 하는지 가를 때 쓴다.
     """
-    results = []                                                 # 결과를 담을 빈 리스트
-    for plan in plans:                                           # 계획을 하나씩 꺼낸다
-        item = plan.copy()                                       # 원래 계획은 바꾸지 않고 복사한다
-        key = plan_key(plan)                                     # 승인 결정을 찾는 「사용자:권한」 문자열을 만든다
-        decision = decisions.get(key)                            # 보안 책임자의 결정을 꺼낸다(결정이 없으면 None)
-        needs = needs_approval(plan, sensitive)                  # 승인이 필요한 계획인지 알아본다(True 또는 False)
-        # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-        # 5. needs 가 거짓이면 (not)
-        # 6.   item["approval"] 을 "승인 불필요" 로 정한다
-        # 7. 그렇지 않고 decision 이 "승인" 이면 (elif)
-        # 8.   item["approval"] 을 "승인됨" 으로 정한다
-        # 9. 그렇지 않으면 (else)
-        # 10.  item["approval"] 을 "승인 대기" 로 정한다
-        results.append(item)                                     # 승인 상태를 적은 복사본을 결과 리스트에 추가한다
-    return results                                               # 결과 리스트를 리턴한다
+    results = []
+    for plan in plans:
+        item = plan.copy()
+        key = plan_key(plan)
+        # ② None을 이 계획의 승인 결정을 꺼내는 식으로 바꿉니다.
+        decision = None
+        needs = needs_approval(plan, sensitive)
+        if not needs:
+            item["approval"] = "승인 불필요"
+        elif decision == "승인":
+            item["approval"] = "승인됨"
+        else:
+            item["approval"] = "승인 대기"
+        results.append(item)
+    return results
 
 ```
 
-- 직접 쓰는 곳은 세 함수이고, 모두 함수 안이라 앞에 공백 4개를 기본으로 넣습니다(Tab 키 한 번).
-  - `plan_key` · `needs_approval` 안: 1 ~ 4번은 모두 4개입니다.
-  - `mark_approvals` 안: 미리 채운 `for` 안쪽이라 `if` · `elif` · `else` 는 8개이고, 그 안쪽 `item["approval"] = …` 는 4개 더(12개)입니다. 위의 `key` · `decision` · `needs` 는 미리 채운 줄입니다.
-  - 나머지 줄은 미리 채워 두었으니 그대로 둡니다.
-- 5번의 `not needs` 는 「승인이 필요하지 않으면」입니다(`needs` 는 승인이 필요한지의 참 · 거짓). `not` 은 참과 거짓을 뒤집습니다.
-- 채우기 전에 실행하면 `KeyError: 'approval'` 오류가 납니다. 승인 상태(`approval`)를 아직 적지 않았기 때문입니다.
+- ①에서는 `return True`의 `True`를 `is_sensitive`와 `is_big_impact`를 `or`로 이은 식으로 바꿉니다.
+- ②에서는 `decision = None`의 `None`을 바꿉니다. `decisions.get(key)`는 아직 결정이 없는 경우 `None`을 돌려줍니다.
+- 시작 코드 그대로 실행하면 **8건 모두 승인 대기**입니다. ①만 채우면 **승인 불필요 5건, 승인 대기 3건**입니다. ②까지 채우면 **승인 불필요 5건, 승인됨 2건, 승인 대기 1건**이 나와야 합니다.
 
 **`exercise4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 준비 Lesson의 계획을 만든 뒤 `mark_approvals` 로 승인 상태를 정하고 두 단계로 출력합니다.
 
@@ -180,7 +172,7 @@ print(counts)                                                    # 승인 상태
    - VS Code: `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력합니다(`config/…` 이름은 이 폴더를 선택한 채 입력하면 `config` 폴더 안에 만들어집니다).
 2. **[터미널]** `ls config` 로 `sensitive.json` 이 `users.json` 과 같은 `config` 폴더에 있는지 보고, `python -m json.tool config/sensitive.json`(맥북은 `python3`)로 내용이 정상인지 확인합니다.
    - 깨진 채 두면 민감한 권한 리스트를 읽지 못해 junho 의 `SALES:CHANGE` 가 「승인 불필요」로 나오고, 승인이 필요한 계획이 3건에서 2건으로 줄어듭니다.
-3. **[VS Code]** `revoke_approve.py` 의 `plan_key` · `needs_approval` · `mark_approvals` 에서 직접 쓰는 곳 세 군데를 씁니다. 2.1 의 표와 그림을 보고 씁니다.
+3. **[VS Code]** `revoke_approve.py`의 ①·②를 채웁니다. 아래 명령을 실행해 단계 2의 건수를 위 안내와 비교합니다.
 4. **[터미널]** `pwd` 의 결과가 `access_control` 로 끝나는지 확인하고 실행합니다(맥북은 `python3`).
    ```bash
    pwd
