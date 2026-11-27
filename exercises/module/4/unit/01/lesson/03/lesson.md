@@ -218,8 +218,8 @@ for item in labeled:                                                            
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise1-2_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 세 단계입니다. <mark>단계 1은 한 줄, 단계 2는 의심 요청 여덟 줄, 단계 3은 오류 요청 다섯 줄입니다.</mark>
-5. **[실습 기록]** `report_u1.md` 의 `## 실습 1-2` 아래를 채웁니다.
-   - (가) 실행한 출력 전체를 붙여 넣고, 분류별 요청 수와, 의심으로 분류한 요청 중 같은 주소에서 반복된 것을 적어 주세요.
+5. 아래 질문을 살펴보고 내 판단을 가장 잘 보여 주는 로그나 출력 몇 줄을 골라 둡니다.
+   - (가) 분류별 요청 수는 어떻게 나오나요? 의심으로 분류한 요청 중 같은 주소에서 반복된 것은 무엇인가요?
    - (나) [핵심 질문] 상태 코드와 경로만으로 분류를 정하면 놓치는 것이 있습니다. 샘플 로그에서 놓친 예를 두 가지 찾아(정상이나 오류로 분류됐지만 살펴볼 만한 요청) 왜 놓쳤는지 적어 주세요.
    - (다) [핵심 질문] 실습 1-1 「현업에서 SIEM(심)을 쓰는 방식 여섯 가지」 표의 방식 중에서, 보안 전담 직원이 1명뿐이고 쓰는 서비스 대부분이 클라우드에 있는 작은 회사라면 어느 방식을 고를지 이유와 함께 적어 주세요. 고르지 않은 방식 하나가 왜 맞지 않는지도 적어 주세요.
 
@@ -238,102 +238,11 @@ for item in labeled:                                                            
 
 ---
 
-## 마무리 · 문제 해결 과정을 블로그에 남기고 코드를 올리기
+## 실행 결과 확인하고 기록으로 이어가기
 
-두 핵심 실습을 마친 뒤 실제로 확인한 문제와 근거를 GitHub 블로그에 기록하고, 실습 코드와 기록 파일도 저장소에 올립니다. 블로그에는 샘플에서 확인한 사실과 아직 추정인 내용을 구분해 씁니다. 실습 기록지 `report_u1.md`는 출력과 답을 보관하고, 블로그 글은 문제를 어떻게 이해하고 다시 확인했는지 남깁니다.
+두 실습을 끝냈다면 파서 출력에서 **28줄 읽기·2줄 건너뛰기**, 분류 출력에서 **정상 15건·오류 5건·의심 8건**을 확인합니다. 결과가 다르면 바로 위의 정답과 해설을 열고 샘플 로그, 상태 코드, 분류 순서를 비교합니다.
 
-### 문제 해결 과정을 GitHub 블로그에 기록하기
-
-M3 Unit 1에서 만든 `network-study-notes` 저장소의 `_posts` 폴더에 글을 씁니다. GitHub Pages와 Jekyll을 아직 설정하지 않았다면 [M3 Unit 1의 Jekyll/GitHub Pages 설정 안내](__SITE__/exercises/module/3/unit/1/lesson/1/page/4)를 먼저 따라갑니다.
-
-문제 상황, 확인한 근거, 가능한 원인, 선택한 조치와 이유, 다시 확인한 결과, 남은 질문을 적습니다. 예를 들어 같은 주소에서 `/.env` · `/wp-login.php` · `/phpmyadmin` 요청이 연달아 나타난 점이나, 로그인 실패 뒤에 성공 응답이 나온 흐름을 골라 정리할 수 있습니다. 이 Unit의 샘플에서 확인한 결과만 쓰고, 실제 회사 서버를 확인한 것처럼 쓰지 않습니다. AI의 도움을 받았다면 질문과 답변 중 직접 확인한 부분을 요약합니다.
-
-아래 틀을 복사해 `YYYY-MM-DD-m4-u1-log-analysis.md` 같은 파일 이름으로 저장합니다.
-
-<pre class="copyable"><code>---
-layout: post
-title: "연속된 접속 요청을 함께 살펴본 이유"
-date: YYYY-MM-DD
-module: 4
-unit: 1
----
-
-&#35;# 문제 상황
-무엇을 확인해야 했나요?
-
-&#35;# 확인한 근거
-어떤 로그 줄이나 실행 결과를 봤나요?
-
-&#35;# 가능한 원인
-어떤 설명을 고려했나요?
-
-&#35;# 선택과 이유
-어떤 규칙이나 확인 절차를 선택했고, 왜인가요?
-
-&#35;# 다시 확인한 결과
-샘플에서 무엇을 확인했나요?
-
-&#35;# 남은 질문
----</code></pre>
-
-블로그 저장소 루트에서 올릴 파일을 확인한 뒤 글을 게시합니다.
-
-```bash
-cd ~/network-study-notes
-git status --short
-git add _posts
-git commit -m "Record M4 Unit 1 problem solving"
-git push
-```
-
-GitHub Pages에서 새 글이 보이는지 확인합니다.
-
-**순서**
-
-0. **[터미널]** 이번 Unit에서 만든 파일이 있는지 `anomaly_detection` 폴더에서 확인합니다. `report_u1.md` 의 두 실습 칸에서 `답:` 뒤가 비어 있는 질문이 없는지도 봅니다.
-   ```bash
-   pwd
-   ls
-   ```
-   - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `ls` 폴더 안의 파일 이름 보기
-   - <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나야 합니다.</mark> 아니면 `cd anomaly_detection` 을 먼저 칩니다.
-   - `access_sample.log` · `log_parse.py` · `log_classify.py` · `exercise1-1_run.py` · `exercise1-2_run.py` 와 `report_u1.md` 가 보여야 합니다.
-1. **[터미널]** `security-agent-toolkit` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/security-agent-toolkit` 으로 끝나야 합니다.
-   ```bash
-   cd ..
-   pwd
-   ```
-   - 명령 풀이: `cd ..` 한 단계 위 폴더로 이동 · `pwd` 지금 위치 확인
-   - 결과가 다르면 VS Code 왼쪽 목록에서 `security-agent-toolkit` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 새로 엽니다.
-2. **[터미널]** 무엇이 바뀌었는지 먼저 봅니다. 빨간 글씨 줄에 <mark>`.env` 나 가상환경 폴더(`.venv` 등)가 보이면 올리지 않고 멈춥니다.</mark>
-   ```bash
-   git status
-   ```
-   - 명령 풀이: `git status` 올릴 파일의 상태를 봄
-   - Module 3에서 `access_control` 폴더에 만든 파일도 같은 저장소라서 이 올리기 한 번에 함께 올라갑니다(`git status` 에 `access_control/` 도 보입니다).
-   - `anomaly_detection/` 한 줄이 보이면 정상입니다(새 폴더라서 안의 파일이 한 줄로 묶여 보입니다).
-   - `.env` 가 보이면: VS Code 왼쪽 목록에서 `security-agent-toolkit` 바로 아래의 `.gitignore` 를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다.
-     - `.venv` 도 같은 방법으로 합니다. 가상환경 폴더 이름이 `.venv` 가 아니면 그 이름으로 적습니다.
-   - `anomaly_detection/` 안에는 파이썬이 실행하면서 만든 임시 폴더 `__pycache__/` 가 들어 있을 수 있어서 한 줄로 묶인 `git status` 에는 보이지 않습니다. `.gitignore` 맨 아래에 `__pycache__/` 한 줄도 적고 저장한 뒤 `git status` 를 다시 칩니다.
-3. **[실습 기록]** `report_u1.md` 의 `## 마무리` 아래를 채웁니다. 올리기 전에 채워야 깃허브에 빈칸 없이 올라갑니다.
-   - (가) `git status` 를 쳤을 때 `.env` 나 `.venv` 가 보였는지, 보였다면 어떻게 했는지 적어 주세요.
-   - 실습 1-1이나 실습 1-2에서 못 적은 기록 칸이 있으면 `모름 — 막힌 곳: …` 으로 적고 올립니다. 올린 뒤에 이어서 적어 다시 올려도 됩니다.
-4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
-   ```bash
-   git add .
-   git commit -m "Add anomaly detection unit 1"
-   git push
-   ```
-   - 명령 풀이: `git add .` 바뀐 파일을 올릴 대상에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
-   - `git push` 가 거절(`rejected`)되면 깃허브에 내 PC 에 없는 기록이 있다는 뜻입니다. <mark>`git pull` 을 입력해 받아 온 뒤 `git push` 를 다시 합니다.</mark>
-   - `git pull` 뒤에 편집기 화면이 뜨면 `Esc` 를 누르고 `:wq` 를 입력한 뒤 `Enter` 를 누릅니다.
-5. **[브라우저]** 깃허브의 내 저장소를 새로 고쳐 `anomaly_detection` 폴더를 열고, VS Code 왼쪽 목록의 `anomaly_detection` 폴더에 있는 파일들이 깃허브에도 보이는지 확인합니다. `__pycache__` 폴더는 없어도 됩니다.
-   - 빠진 이름이 있으면 VS Code 왼쪽 목록의 `anomaly_detection` 폴더에 내 PC 에도 있는지 봅니다.
-     - 없으면 다른 폴더에 만든 것이니 `anomaly_detection` 안으로 옮기고, `pwd` 로 위치를 확인한 뒤 2번의 `git status` 부터 다시 합니다.
-
-<!-- answer: 04|정답 마무리 -->
-
-다음 Unit 2에서는 이번 Unit의 웹서버 로그와 Module 3의 판정 서버 로그처럼 모양이 다른 로그를 같은 키로 맞추는 정규화를 합니다.
+출력에서 실제로 고민했던 부분을 하나 골라 [문제 해결 과정을 블로그에 기록하기](__SITE__/exercises/module/4/unit/1/lesson/5/page/1)로 이어갑니다. 다음 Unit 2에서는 서로 다른 로그 형식을 같은 키로 맞춥니다.
 
 ## 다음 Unit 준비 · 판다스 미리 설치하기 (선택)
 
@@ -344,7 +253,7 @@ GitHub Pages에서 새 글이 보이는지 확인합니다.
 1. **[터미널]** `anomaly_detection` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널(Git Bash)을 엽니다.
 2. **[터미널]** 가상환경이 켜져 있는지 봅니다.
    - 터미널 줄 맨 앞에 `(.venv)` 처럼 가상환경 이름이 붙어 있으면 켜진 것입니다.
-   - 표시가 없으면 `cd ..` 로 `security-agent-toolkit` 폴더에 올라가서(`pwd` 로 위치를 확인합니다) 아래를 칩니다. 맥북은 `Scripts` 를 `bin` 으로 바꿉니다. 가상환경 폴더 이름이 `.venv` 가 아니면 그 이름으로 바꿉니다.
+   - 표시가 없으면 `cd ..` 로 `network-study-notes` 폴더에 올라가서(`pwd` 로 위치를 확인합니다) 아래를 칩니다. 맥북은 `Scripts` 를 `bin` 으로 바꿉니다. 가상환경 폴더 이름이 `.venv` 가 아니면 그 이름으로 바꿉니다.
      ```bash
      source .venv/Scripts/activate
      ```

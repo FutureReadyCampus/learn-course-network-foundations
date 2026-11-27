@@ -235,15 +235,10 @@ GET /login HTTP/1.1
 | `read_request` | 요청 조각 | 방법과 경로 |
 | `read_status` | 뒤 조각 | 상태 코드(정수) |
 | `read_client` | 앞 조각 | 접속자 주소 |
-| `parse_line` | 로그 한 줄 | `{"ip", "method", "path", "status"}` 딕셔너리. 깨진 줄이면 `None` (8번만 직접 쓰고 나머지는 미리 채움) |
+| `parse_line` | 로그 한 줄 | `{"ip", "method", "path", "status"}` 딕셔너리. 깨진 줄이면 `None` |
 
-- **직접 쓰는 곳은 다섯 함수**(번호 1 ~ 8)입니다. 판단이 필요한 함수마다 1 ~ 3줄만 쓰고, 나머지는 미리 채웠습니다.
-  - `split_request`(1번): 큰따옴표로 세 조각으로 나눕니다.
-  - `read_request`(2번): 요청 조각에서 방법과 경로를 꺼냅니다.
-  - `read_status`(3 ~ 5번): 뒤 조각에서 상태 코드를 꺼내 숫자로 바꿉니다.
-  - `read_client`(6 · 7번): 앞 조각에서 접속자 주소를 꺼냅니다.
-  - `parse_line`(8번): 큰따옴표가 두 개보다 적은 깨진 줄은 읽기에 실패한 줄이라서 `None` 을 리턴합니다.
-- **미리 채운 것**: 세 조각을 꺼내 딕셔너리로 묶는 `parse_line` 의 나머지와 실행 파일입니다.
+- 직접 채울 부분은 두 줄입니다. ①에서 큰따옴표를 기준으로 줄을 세 조각으로 나누고, ②에서 상태 코드를 정수로 바꿉니다.
+- 그 밖의 함수는 미리 채웠습니다. 깨진 줄을 건너뛰는 조건과 네 값이 하나의 딕셔너리로 모이는 흐름을 먼저 읽어 보세요.
 
 ## 실습 1-1 · 로그 한 줄에서 네 값 꺼내기
 
@@ -258,78 +253,74 @@ GET /login HTTP/1.1
 
 **할 일**
 
-1. <mark>`log_parse.py` · `exercise1-1_run.py` 두 파일</mark>을 만들고, `log_parse.py` 의 `split_request` · `read_request` · `read_status` · `read_client` · `parse_line` 에서 **직접 쓰는 곳 다섯 군데**를 씁니다.
+1. `log_parse.py`와 `exercise1-1_run.py`를 만들고 `log_parse.py`의 ①·②를 채웁니다.
 2. 실행해서 <mark>읽기 성공 · 읽기 실패 줄 수</mark>(단계 1: 읽기), <mark>로그 첫 3줄을 읽은 결과</mark>(단계 2), <mark>값이 덧붙은 요청</mark>(단계 3)을 읽습니다.
 
 **`log_parse.py`**
 
 ```python
-def split_request(line):                                # 로그 한 줄(문자열)을 받는 함수
+def split_request(line):
     """로그 한 줄을 큰따옴표 기준으로 앞 · 요청 · 뒤 세 조각으로 나눈다.
     나뉘지 않은 하나의 문자열인 로그에서 값을 꺼내기 시작할 때 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 1. line 을 큰따옴표(")로 두 번만 나눠 prefix, request_text, suffix 세 이름에 담는다 (line.split('"', 2))
-    return prefix, request_text, suffix                 # 세 조각을 리턴한다
+    # ① 이 줄을 로그를 세 조각으로 나누는 한 줄로 바꿉니다.
+    raise NotImplementedError("① 로그 줄 나누기를 채워 주세요.")
+
+    return prefix, request_text, suffix
 
 
-def read_request(request_text):                         # 요청 조각(예: GET /login HTTP/1.1)을 받는 함수
+def read_request(request_text):
     """요청 조각에서 방법(method)과 경로(path)를 꺼낸다.
     무엇을 요청했는지 알고 싶을 때 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 2. request_text 를 공백 기준으로 나눠 method, path, protocol 세 이름에 담는다 (request_text.split())
-    return method, path                                 # 방법과 경로를 리턴한다
+    method, path, protocol = request_text.split()
+    return method, path
 
 
-def read_status(suffix):                                # 요청 뒤 조각(예:  401 312 "-" "Mozilla/5.0")을 받는 함수
+def read_status(suffix):
     """요청 뒤 조각에서 상태 코드를 꺼내 정수로 리턴한다.
     요청이 성공했는지 실패했는지 가를 때 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 3. suffix 를 공백 기준으로 나눠 parts 에 담는다 (suffix.split())
-    # 4. parts 의 첫 값을 status_text 에 담는다 (parts[0])
-    # 5. status_text 를 int 로 바꿔 status 에 담는다
-    return status                                       # 상태 코드(정수)를 리턴한다
+    parts = suffix.split()
+    status_text = parts[0]
+    # ② 이 줄을 상태 코드를 정수로 바꾸는 한 줄로 바꿉니다.
+    raise NotImplementedError("② 상태 코드 변환을 채워 주세요.")
+
+    return status
 
 
-def read_client(prefix):                                # 요청 앞 조각(예: 203.0.113.50 - - [02/Nov/2026:09:12:03 +0900] )을 받는 함수
+def read_client(prefix):
     """요청 앞 조각에서 접속자 주소를 꺼낸다.
     어느 주소가 요청했는지 알고 싶을 때 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 6. prefix 를 공백 기준으로 나눠 parts 에 담는다 (prefix.split())
-    # 7. parts 의 첫 값을 client_ip 에 담는다 (parts[0])
-    return client_ip                                    # 접속자 주소를 리턴한다
+    parts = prefix.split()
+    client_ip = parts[0]
+    return client_ip
 
 
-def parse_line(line):                                   # 로그 한 줄을 받는 함수
+def parse_line(line):
     """로그 한 줄을 ip · method · path · status 딕셔너리로 바꾼다.
     깨진 줄이면 None 을 리턴한다.
     접속 로그를 분석하기 전에 한 줄을 값으로 나눌 때 쓴다.
     """
-    # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
-    # 8. 큰따옴표가 두 개보다 적으면 (if line.count('"') < 2:)
-        return None                                     # 읽을 수 없으니 None 을 리턴한다
-    prefix, request_text, suffix = split_request(line)  # 세 조각으로 나눈다
-    method, path = read_request(request_text)           # 요청 조각에서 방법과 경로를 꺼낸다
-    status = read_status(suffix)                        # 뒤 조각에서 상태 코드를 꺼낸다
-    client_ip = read_client(prefix)                     # 앞 조각에서 접속자 주소를 꺼낸다
-    entry = {                                           # 꺼낸 값을 딕셔너리로 묶는다
-        "ip": client_ip,                                # 접속자 주소
-        "method": method,                               # 요청 방법
-        "path": path,                                   # 요청 경로
-        "status": status,                               # 상태 코드(정수)
+    if line.count('"') < 2:
+        return None
+    prefix, request_text, suffix = split_request(line)
+    method, path = read_request(request_text)
+    status = read_status(suffix)
+    client_ip = read_client(prefix)
+    entry = {
+        "ip": client_ip,
+        "method": method,
+        "path": path,
+        "status": status,
     }
-    return entry                                        # 딕셔너리를 리턴한다
+    return entry
 ```
 
-- <mark>들여쓰기는 미리 채운 줄에 맞춥니다.</mark> 번호 주석이 연달아 붙어 있어도 주석 사이마다 줄을 끼워 넣어 <mark>각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark> `if` 아래의 `return` 처럼 안쪽 줄은 `if` 보다 한 단계 안쪽으로 씁니다.
-  - 1 ~ 7번: 함수 안이라 앞에 공백 4개입니다.
-  - 8번: `parse_line` 안의 `if` 줄 하나만 쓰고, 그 아래 미리 채운 `return None` 이 `if` 안쪽이 됩니다.
-- 3 ~ 5번을 `suffix.split()[0]` 한 줄로 쓰지 않고 세 줄로 나눈 이유는, <mark>한 줄에 한 가지 일만 하면 어디서 틀렸는지 바로 보이기 때문입니다.</mark>
-- 8번의 `line.count('"')` 는 줄 안의 큰따옴표 개수를 셉니다. 정상 줄에는 여섯 개가 있고, 깨진 줄은 두 개보다 적습니다.
-- 채우기 전에 실행하면 먼저 **`IndentationError: unexpected indent` 오류가 납니다.** 8번을 아직 안 썼기 때문입니다. 8번을 쓴 뒤 1 ~ 7번 중 하나를 비워 두면 `NameError` 오류가 납니다(예: 1번을 비우면 `name 'prefix' is not defined`).
+- ①의 `raise` 줄을 바꿉니다. `line.split('"', 2)`로 큰따옴표에서 최대 두 번 나눈 뒤 결과를 `prefix`, `request_text`, `suffix`에 차례로 담습니다.
+- ②의 `raise` 줄을 바꿉니다. `int(status_text)`로 바꾼 숫자를 `status`에 담습니다.
+- 시작 코드는 채울 자리를 오류 메시지로 알려 줍니다. 두 줄을 다 채우면 샘플 30줄 중 **28줄을 읽고 2줄은 건너뜁니다.**
 
 **`exercise1-1_run.py`** — <mark>그대로 붙여 넣습니다.</mark> 학생이 쓰는 줄은 없습니다. 샘플 로그를 한 줄씩 읽어 세 단계로 출력합니다.
 
@@ -365,7 +356,7 @@ for entry in entries:                                                  # 읽은 
 **순서**
 
 1. **[VS Code]** 파일 `log_parse.py` · `exercise1-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
-2. **[VS Code]** `log_parse.py` 에서 직접 쓰는 곳 다섯 군데를 씁니다. 1.3 의 표와 그림, 문법 상자를 보고 씁니다.
+2. **[VS Code]** `log_parse.py`의 ①·②를 채웁니다. 1.3의 표와 그림을 참고합니다.
 3. **[터미널]** <mark>`pwd` 의 결과가 `anomaly_detection` 으로 끝나는지 확인하고</mark> 실행합니다(맥북은 `python3`).
    ```bash
    pwd
@@ -373,8 +364,8 @@ for entry in entries:                                                  # 읽은 
    ```
    - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise1-1_run.py` 파이썬으로 실행 파일 실행
 4. 출력은 세 단계입니다. `--- 단계` 제목 줄은 세지 않고, <mark>단계 1은 한 줄, 단계 2는 딕셔너리 세 줄, 단계 3은 두 줄입니다.</mark> 읽기 실패한 줄은 붙여 넣은 `access_sample.log` 에서 큰따옴표가 두 개보다 적은 줄을 찾습니다.
-5. **[실습 기록]** `report_u1.md` 의 `## 실습 1-1` 아래를 채웁니다(기록 파일은 앞의 「실습 결과 기록 준비」Lesson에서 만듭니다).
-   - (가) 실행한 출력 전체를 붙여 넣고, 읽기 성공한 줄과 읽기 실패한 줄이 각각 몇 줄인지, 읽기 실패한 줄이 어떤 줄인지 적어 주세요.
+5. 아래 질문을 참고해 출력에서 나중에 설명할 근거를 두세 줄 골라 둡니다.
+   - (가) 읽기 성공과 실패가 각각 몇 줄인가요? 실패한 줄은 정상 줄과 어떻게 다른가요?
    - (나) [핵심 질문] 로그 한 줄만 보고 알 수 있는 것과 알 수 없는 것을 구분해 적어 주세요. 예를 들어 203.0.113.50 의 요청에서 접속자가 누구인지, 로그인에 성공했는지는 알 수 있나요?
    - (다) [핵심 질문] 404 가 한 번 난 요청과, 같은 주소에서 `/.env` · `/wp-login.php` · `/phpmyadmin` 이 연달아 404 가 난 요청은 같은 일일까요? 샘플 로그에서 두 경우를 찾아 어떻게 다른지, 왜 한 줄만 봐서는 판단하기 어려운지 적어 주세요.
 
