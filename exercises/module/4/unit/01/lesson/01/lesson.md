@@ -255,12 +255,13 @@ XDR(엑스디알)은 PC · 서버 같은 여러 곳의 탐지를 이어서 보�
 
 5. **[터미널]** 파일이 30줄인지 확인합니다.
    ```bash
+   # 이 명령은 전체를 복사해 Git Bash에 붙여 넣어 실행하세요.
    python - <<'PY'
-from pathlib import Path
+   from pathlib import Path
 
-lines = Path("access_sample.log").read_text(encoding="utf-8").splitlines()
-print(len(lines))
-PY
+   lines = Path("access_sample.log").read_text(encoding="utf-8").splitlines()
+   print(len(lines))
+   PY
    ```
    - 명령 풀이: 여러 줄 Python 블록으로 `access_sample.log` 의 줄 수를 출력
    - <mark>`30` 이 나와야</mark> 합니다. 다르면 줄이 빠졌거나 빈 줄이 끼어든 것이니 다시 붙여 넣습니다.

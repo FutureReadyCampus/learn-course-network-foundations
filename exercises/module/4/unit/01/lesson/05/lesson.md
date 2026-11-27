@@ -81,13 +81,14 @@ time,account,event,ip_address,outcome
 
 2. **[터미널]** 두 파일의 줄 수를 확인합니다.
    ```bash
+   # 이 명령은 전체를 복사해 Git Bash에 붙여 넣어 실행하세요.
    python - <<'PY'
-from pathlib import Path
+   from pathlib import Path
 
-for name in ("server_log.jsonl", "saas_events.csv"):
-    lines = Path(name).read_text(encoding="utf-8").splitlines()
-    print(name, len(lines))
-PY
+   for name in ("server_log.jsonl", "saas_events.csv"):
+       lines = Path(name).read_text(encoding="utf-8").splitlines()
+       print(name, len(lines))
+   PY
    ```
    - 명령 풀이: 여러 줄 Python 블록으로 두 파일의 줄 수를 출력
    - <mark>순서대로 `15` · `15` 가 나와야</mark> 합니다. 다르면 줄이 빠졌거나 빈 줄이 끼어든 것이니 다시 붙여 넣습니다.
