@@ -168,6 +168,60 @@ print(text)                                                      # 이어 붙인
 
 ## 응용 5-1 · 거부율과 경고 여부 구하기
 
+### 응용 실습을 위한 데이터 준비
+
+`access_control`에서 아래 두 파일을 만듭니다. 핵심 점검에서 만든 `config/week_state.json`은 그대로 씁니다. 샘플 로그는 40줄입니다.
+
+**`config/alert.json`** — 경고 기준입니다. 거부율이 0.3(30%) 이상이면 경고이고, 사용자 한 명이 4번 이상 거부되면 눈여겨봅니다.
+
+<pre class="copyable"><code>{"deny_rate_limit": 0.3, "user_denied_limit": 4}
+</code></pre>
+
+**`week_log.jsonl`** — 일주일 치 샘플 로그입니다. 한 줄이 요청 한 개이고 JSON 한 줄입니다. `access_control` 폴더 바로 아래에 만듭니다.
+
+<pre class="copyable"><code>{"time": "2026-10-26T09:10", "user": "seoyeon", "permission": "SALES:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-10-26T09:40", "user": "seoyeon", "permission": "SALES:CHANGE", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-10-26T10:05", "user": "junho", "permission": "SETTLE:QUERY", "network": "vpn", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-10-26T10:30", "user": "gaeun", "permission": "ACCOUNT:CHANGE", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-10-26T14:20", "user": "tester", "permission": "SALES:QUERY", "network": "office", "allowed": false, "reason": "역할이 없음"}
+{"time": "2026-10-26T23:10", "user": "seoyeon", "permission": "SALES:CHANGE", "network": "external", "allowed": false, "reason": "업무 시간 밖"}
+{"time": "2026-10-27T09:05", "user": "seoyeon", "permission": "SALES:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-10-27T10:15", "user": "junho", "permission": "SETTLE:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-10-27T11:00", "user": "dami", "permission": "SALES:QUERY", "network": "office", "allowed": false, "reason": "퇴사한 계정"}
+{"time": "2026-10-27T13:45", "user": "gaeun", "permission": "ACCOUNT:CHANGE", "network": "vpn", "allowed": false, "reason": "허용되지 않은 접속 위치"}
+{"time": "2026-10-27T15:30", "user": "batch-night", "permission": "SETTLE:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-10-27T22:40", "user": "gaeun", "permission": "ACCOUNT:CHANGE", "network": "external", "allowed": false, "reason": "업무 시간 밖"}
+{"time": "2026-10-28T09:20", "user": "seoyeon", "permission": "SALES:CHANGE", "network": "vpn", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-10-28T10:00", "user": "junho", "permission": "SETTLE:QUERY", "network": "vpn", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-10-28T10:50", "user": "dami", "permission": "SALES:QUERY", "network": "vpn", "allowed": false, "reason": "퇴사한 계정"}
+{"time": "2026-10-28T14:10", "user": "seoyeon", "permission": "SALES:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-10-28T16:25", "user": "gaeun", "permission": "ACCOUNT:CHANGE", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-10-28T20:30", "user": "junho", "permission": "SETTLE:QUERY", "network": "vpn", "allowed": false, "reason": "업무 시간 밖"}
+{"time": "2026-10-29T09:00", "user": "seoyeon", "permission": "SALES:CHANGE", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-10-29T09:35", "user": "junho", "permission": "SETTLE:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-10-29T10:20", "user": "dami", "permission": "SALES:QUERY", "network": "external", "allowed": false, "reason": "퇴사한 계정"}
+{"time": "2026-10-29T11:10", "user": "tester", "permission": "SETTLE:QUERY", "network": "office", "allowed": false, "reason": "역할이 없음"}
+{"time": "2026-10-29T13:00", "user": "gaeun", "permission": "ACCOUNT:CHANGE", "network": "vpn", "allowed": false, "reason": "허용되지 않은 접속 위치"}
+{"time": "2026-10-29T15:45", "user": "seoyeon", "permission": "SALES:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-10-29T18:00", "user": "seoyeon", "permission": "SALES:CHANGE", "network": "office", "allowed": false, "reason": "업무 시간 밖"}
+{"time": "2026-10-30T09:15", "user": "junho", "permission": "SETTLE:QUERY", "network": "vpn", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-10-30T10:00", "user": "seoyeon", "permission": "SALES:CHANGE", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-10-30T10:30", "user": "gaeun", "permission": "ACCOUNT:CHANGE", "network": "external", "allowed": false, "reason": "허용되지 않은 접속 위치"}
+{"time": "2026-10-30T11:20", "user": "batch-night", "permission": "SETTLE:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-10-30T14:00", "user": "dami", "permission": "SALES:QUERY", "network": "office", "allowed": false, "reason": "퇴사한 계정"}
+{"time": "2026-10-30T19:30", "user": "junho", "permission": "SETTLE:QUERY", "network": "vpn", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-10-31T09:10", "user": "seoyeon", "permission": "SALES:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-10-31T09:50", "user": "gaeun", "permission": "ACCOUNT:CHANGE", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-10-31T10:40", "user": "junho", "permission": "SETTLE:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-10-31T13:15", "user": "tester", "permission": "SALES:QUERY", "network": "office", "allowed": false, "reason": "역할이 없음"}
+{"time": "2026-10-31T15:00", "user": "seoyeon", "permission": "SALES:CHANGE", "network": "external", "allowed": false, "reason": "허용되지 않은 접속 위치"}
+{"time": "2026-10-31T17:20", "user": "batch-night", "permission": "SETTLE:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-10-31T19:50", "user": "junho", "permission": "SETTLE:QUERY", "network": "vpn", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-11-01T09:30", "user": "seoyeon", "permission": "SALES:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
+{"time": "2026-11-01T10:10", "user": "gaeun", "permission": "ACCOUNT:CHANGE", "network": "vpn", "allowed": false, "reason": "허용되지 않은 접속 위치"}
+</code></pre>
+
+
 **이런 상황이 있습니다**
 
 - **지금은**: 로그 40줄을 사람이 하나씩 읽고 세야 합니다. 거부가 늘었는지, 누가 반복해서 거부됐는지 확인하려면 시간이 오래 걸립니다.
@@ -182,7 +236,7 @@ print(text)                                                      # 이어 붙인
 
 1. `log_summary.py` · `challenge5-1_run.py` 두 파일을 만들고, `log_summary.py` 의 `read_log` · `count_by` · `filter_denied` · `deny_rate` · `find_heavy_users` 에서 직접 쓰는 곳 다섯 군데를 씁니다.
 2. 실행해서 <mark>허용 · 거부 · 거부율</mark>(단계 1: 집계), <mark>거부 사유별 횟수</mark>(단계 2), <mark>경고 여부</mark>(단계 3: 경고 기준)를 읽습니다.
-3. `weekly_report.py` · `challenge5-1-2_run.py` 를 붙여 넣어 실행하고, 실습 5-1 점검 결과와 합친 <mark>주간 보고서</mark>(단계 3: 저장한 보고서 내용)를 읽습니다. 이 두 파일은 직접 쓰는 곳이 없습니다. 응용 5-1은 문제가 하나뿐이고, `challenge5-1-2_run.py` 는 그 문제의 두 번째 실행 파일입니다. 보고서 (가)의 「단계 3」은 `challenge5-1_run.py` 에서는 경고 여부, `challenge5-1-2_run.py` 에서는 저장한 보고서 내용입니다.
+3. `weekly_report.py` · `challenge5-1-2_run.py` 를 붙여 넣어 실행하고, 실습 5-1 점검 결과와 합친 <mark>주간 보고서</mark>(단계 3: 저장한 보고서 내용)를 읽습니다. 이 두 파일은 직접 쓰는 곳이 없습니다. 응용 5-1은 문제가 하나뿐이고, `challenge5-1-2_run.py` 는 그 문제의 두 번째 실행 파일입니다. 결과 검토의 「단계 3」은 `challenge5-1_run.py` 에서는 경고 여부, `challenge5-1-2_run.py` 에서는 저장한 보고서 내용입니다.
 
 **`log_summary.py`**
 
@@ -419,7 +473,7 @@ print(text)                                                      # 보고서 내
    grep dami week_log.jsonl
    ```
    - 명령 풀이: `grep 단어 파일` 파일에서 그 단어가 들어간 줄만 보여 줌
-7. **실습 기록**: 결과와 질문 답을 `report_u5.md`의 응용 5-1 칸에 적습니다.
+7. **결과 검토**: 주간 보고서와 로그를 대조해 아래 질문을 살펴봅니다.
    - (가) `challenge5-1_run.py` 의 출력과 `challenge5-1-2_run.py` 의 보고서 내용을 붙여 넣고, 허용 · 거부 · 거부율, 경고 여부, 거부 사유 중 가장 많은 것을 적어 주세요.
    - (나) [핵심 질문] 보고서 4절에 거부가 4번 이상인 사용자로 gaeun 과 dami 가 나왔습니다. 6번에서 찾은 두 사람의 요청을 비교해 주세요. 그리고 두 사람에게 같은 조치를 하면 안 되는 이유와, 각각 무엇부터 확인해야 하는지 적어 주세요.
    - (다) [핵심 질문] 서버가 멈춰서 로그가 빈 주에는 `deny_rate` 가 0.0 을 리턴해 보고서에 「거부율 0%」가 나옵니다. 이 보고서만 보고 「이번 주는 안전했다」고 판단해도 되는지 적어 주세요. 그리고 보고서에서 함께 확인해야 하는 정보와 그 이유도 적어 주세요.
@@ -442,19 +496,17 @@ print(text)                                                      # 보고서 내
 
 ## Module 3 폴더 구조 정리
 
-Module 3이 끝나면 `access_control` 폴더는 아래 모양이어야 합니다. 파일을 어디에 저장했는지 헷갈리면 내 VS Code 왼쪽 목록과 비교합니다.
+Module 3에서 만든 파일의 위치를 찾을 때 아래 구조를 참고합니다. 파일을 어디에 저장했는지 헷갈리면 내 VS Code 왼쪽 목록과 비교합니다.
 
 - **`config/` 안에는 JSON 설정 파일만** 둡니다. 이름이 `config/…` 로 시작하는 파일입니다.
-- **그 밖의 파일은 모두 `access_control/` 바로 아래**에 둡니다. 코드(`.py`), 실행 파일(`exerciseN-M_run.py`), Unit마다 직접 만든 보고서(`report_uN.md`), 실행하면 생기는 파일이 모두 해당합니다.
+- **그 밖의 파일은 모두 `access_control/` 바로 아래**에 둡니다. 코드(`.py`), 실행 파일(`exerciseN-M_run.py`), 실행하면 생기는 파일이 해당합니다. 블로그 글은 저장소 루트의 `_posts/`에 둡니다.
 - 하위 폴더를 따로 만들지 않습니다. 터미널은 항상 `…/access_control` 에서 실행합니다(`pwd` 로 확인).
 
 ```
-security-agent-toolkit/
-  .env
+network-study-notes/
   .gitignore
-  agent_core/
-  network_zt/
-  access_control/ (바로 아래 파일 66개 + config 11개 = 77개)    Module 3  ← 여기서 작업
+  _posts/
+  access_control/             Module 3  ← 여기서 작업
     config/ (11개)           ← JSON 설정만
       access_log.json
       alert.json
@@ -476,37 +528,27 @@ security-agent-toolkit/
     config_loader.py
     exercise1-2_run.py
     challenge1-1_audit.py
-    report_u1.md
     challenge1-2_run.py
     challenge1-3_run.py
     exercise1-3_run.py
     challenge1-4_broken.py
-    report_u1.md
-    report_u1.md
     exercise2-1_run.py
     exercise2-2_run.py
     challenge2-1_run.py
     challenge2-2_run.py
     challenge2-3_run.py
-    report_u2.md
-    report_u2.md
     exercise3-1_run.py
     challenge3-1_run.py
     exercise3-2_run.py
     challenge3-2_run.py
     challenge3-3_run.py
-    report_u3.md
-    report_u3.md
     challenge4-1_run.py
     exercise4-1_run.py
     exercise4-2_run.py
     challenge4-2_run.py
-    report_u4.md
-    report_u4.md
     exercise5-1_run.py
     challenge5-1_run.py
     challenge5-1-2_run.py
-    report_u5.md
     exception_policy.py
     log_summary.py
     overprivilege.py
@@ -537,7 +579,7 @@ security-agent-toolkit/
   anomaly_detection/         Module 4 (다음 Unit부터)
 ```
 
-- 개수는 보고서(`report_u1.md` ~ `report_u5.md`)를 포함해 세었습니다. 실행해야 생기는 파일(`requests.json` · `revocation_log.json` · `server_log.jsonl` · 주간 보고서)은 그 파일을 만드는 실행 파일을 돌리지 않았다면 내 폴더에 없을 수 있습니다.
+- 위 목록에는 응용 실습에서 만드는 파일도 포함돼 있습니다. 실행해야 생기는 파일(`requests.json` · `revocation_log.json` · `server_log.jsonl` · 주간 보고서)은 그 파일을 만드는 실행 파일을 돌리지 않았다면 내 폴더에 없을 수 있습니다.
 - `__pycache__/` 는 파이썬이 만드는 임시 폴더라서 신경 쓰지 않고 깃허브에도 올리지 않습니다.
 - 다른 Module 폴더는 일부만 적었습니다. 내 폴더에 `.venv`, `docs/` 같은 폴더가 더 있어도 괜찮습니다.
 
