@@ -66,20 +66,23 @@ M3 Unit 1에서 두 JSON 파일은 「실습 1-1」의 코드 상자와 「실�
 1. **[VS Code]** 왼쪽 목록의 `access_control` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다.
    - 터미널 오른쪽 위 이름 칸에 **bash** 가 보여야 합니다. 다른 이름(예: powershell)이면 `+` 옆의 **∨** 를 눌러 **Git Bash** 를 고른 뒤 `cd access_control` 로 작업 폴더에 들어갑니다.
 2. **[터미널]** 위치와 이전 파일을 확인합니다. `pwd` 의 결과가 `…/network-study-notes/access_control` 로 끝나야 합니다.
+   아래 코드 상자를 통째로 복사해 실행합니다.
+
    ```bash
+   # 이 명령은 전체를 복사해 Git Bash에 붙여 넣어 실행하세요.
    pwd
    ls
    ls config
    python - <<'PYTHON'
-from rbac import USERS, ROLES
-from exception_policy import EXCEPTIONS, TIME_FORMAT
-from config_loader import load_json
+   from rbac import USERS, ROLES
+   from exception_policy import EXCEPTIONS, TIME_FORMAT
+   from config_loader import load_json
 
-print("이전 파일 정상", len(USERS), len(ROLES), len(EXCEPTIONS))
-PYTHON
+   print("이전 파일 정상", len(USERS), len(ROLES), len(EXCEPTIONS))
+   PYTHON
    ```
-   - `python` 이 안 되고 `py` 가 되면 `python` 자리에 `py` 를 씁니다. 마지막 줄에 `이전 파일 정상 6 5 5`(사용자 6명 · 역할 5개 · 예외 5건)가 나와야 합니다.
-   - 오류가 나면 시작하기 첫 페이지의 「이번 Unit 에서 불러 쓰는 이전 파일」을 보고 빠진 파일을 만듭니다(`config` 안의 파일은 `config` 폴더에). 그다음 마지막 줄을 다시 칩니다.
+   - macOS에서는 `python3`를 씁니다. Windows에서 `python`이 안 되고 `py`가 되면 `python`을 `py`로 바꿉니다. 마지막 줄에 `이전 파일 정상 6 5 5`(사용자 6명 · 역할 5개 · 예외 5건)가 나와야 합니다.
+   - 오류가 나면 시작하기 첫 페이지의 「이번 Unit 에서 불러 쓰는 이전 파일」을 보고 빠진 파일을 만듭니다(`config` 안의 파일은 `config` 폴더에). 그다음 코드 상자 전체를 다시 실행합니다.
 3. **코드 파일은 이렇게 만듭니다.** 「`파일이름` 파일을 만들어 아래 내용을 붙여 넣습니다」라고 하면:
    1. **[VS Code]** 왼쪽 목록에서 알려 준 폴더를 오른쪽 클릭 › **New File** 을 누르고, 알려 준 **파일 이름을 그대로** 적고 Enter 를 칩니다.
    2. 코드 상자의 복사 버튼으로 내용을 복사해 새 파일에 붙여 넣고, `Ctrl + S` 로 저장합니다.
