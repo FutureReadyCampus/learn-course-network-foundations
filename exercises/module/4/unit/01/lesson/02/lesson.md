@@ -257,7 +257,9 @@ def parse_line(line):                                   # 로그 한 줄을 받�
 - ① 확인: ① 을 쓰고 실행하면 오류가 `NameError: name 'status' is not defined` 로 바뀌어야 합니다. ② 를 아직 안 써서 나는 오류이니 정상입니다. 막히면: 문법 상자 보기 2 의 `prefix, request_text, suffix = line.split('"', 2)` 를 그대로 씁니다.
 - ② 확인: ② 까지 쓰고 실행하면 단계 1 에 `읽기 성공 28 줄 · 읽기 실패 2 줄` 이 나오고, 단계 2 의 딕셔너리가 `'status': 200` 처럼 따옴표 없는 숫자로 끝나면 성공입니다. 막히면: 문법 상자 보기 3 의 `status = int(status_text)` 와 같은 모양입니다.
 
-**`exercise1-1_run.py`** — <mark>그대로 붙여 넣습니다.</mark> 학생이 쓰는 줄은 없습니다. 샘플 로그를 한 줄씩 읽어 세 단계로 출력합니다.
+<h3><code>exercise1-1_run.py</code></h3>
+
+<mark>그대로 붙여 넣습니다.</mark> 학생이 쓰는 줄은 없습니다. 샘플 로그를 한 줄씩 읽어 세 단계로 출력합니다.
 
 ```python
 from log_parse import parse_line                                       # 방금 만든 로그 한 줄 읽기 함수를 불러온다

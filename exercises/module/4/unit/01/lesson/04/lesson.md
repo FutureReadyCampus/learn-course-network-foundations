@@ -181,7 +181,9 @@ def count_groups(labeled):                                             # 분류�
 
 - 채우기 전에 실행하면 <mark>오류는 나지 않고, 단계 1에서 모든 요청이 「정상」으로 나오고 단계 2 · 3이 비어 있습니다.</mark>
 
-**`apply1-1_run.py`** — <mark>그대로 붙여 넣습니다.</mark> 학생이 쓰는 줄은 없습니다. 실습 1-1의 `parse_line` 으로 로그를 읽고, 방금 만든 함수로 가른 뒤 세 단계로 출력합니다.
+<h3><code>apply1-1_run.py</code></h3>
+
+<mark>그대로 붙여 넣습니다.</mark> 학생이 쓰는 줄은 없습니다. 실습 1-1의 `parse_line` 으로 로그를 읽고, 방금 만든 함수로 가른 뒤 세 단계로 출력합니다.
 
 ```python
 from log_parse import parse_line                                                # 실습 1-1에서 만든 로그 한 줄 읽기 함수를 불러온다

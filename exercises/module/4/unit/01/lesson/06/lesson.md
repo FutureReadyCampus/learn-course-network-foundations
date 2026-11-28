@@ -228,7 +228,9 @@ def save_events(events, path):                              # 이벤트 리스�
 - 번호 주석이 연달아 붙어 있어도(예: 3 · 4번), <mark>주석 사이마다 줄을 끼워 넣어 각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark>
 - **채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다.** `for` 아래와 `with` 아래가 주석뿐이기 때문입니다.
 
-**`apply1-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 세 로그를 읽어 합치고 네 단계로 출력합니다.
+<h3><code>apply1-3_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 세 로그를 읽어 합치고 네 단계로 출력합니다.
 
 ```python
 from normalize import load_web, merge_events, count_by_source, count_missing, save_events, EVENTS_PATH  # 방금 만든 함수를 불러온다

@@ -297,7 +297,9 @@ def normalize_web(line):                                                     # �
 - ① 확인: ① 만 쓰고 실행하면 아직 같은 `IndentationError: unexpected indent` 가 나옵니다. ② 를 아직 안 써서 나는 오류이니 정상입니다. 막히면: 「시각 문자열 바꾸기」 문법 상자의 `time_out = parsed.strftime("%Y-%m-%d %H:%M:%S")` 에서 `parsed` 자리에 `local_time`, 형식 자리에 `COMMON_TIME_FORMAT` 을 넣습니다.
 - ② 확인: ② 까지 쓰고 실행하면 단계 1 의 첫 이벤트가 `'time': '2026-11-02 09:01:05'` 로 시작하고, 단계 3 에 `{'성공': 15, '실패': 13}` 이 나오면 성공입니다. 막히면: `if status >= 400:` 처럼 비교 기호 `>=` 와 끝의 `:` 를 넣습니다. ① 을 비운 채 ② 만 쓰면 `NameError: name 'time_out' is not defined. Did you mean: 'time_text'?` 가 나옵니다. 끝의 `Did you mean …`(이 이름이 아니냐는 추측)은 따르지 말고 ① 을 채웁니다.
 
-**`exercise1-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 샘플 로그를 한 줄씩 공통 이벤트로 바꿔 세 단계로 출력합니다. `len(리스트)` 는 리스트의 개수입니다.
+<h3><code>exercise1-2_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 샘플 로그를 한 줄씩 공통 이벤트로 바꿔 세 단계로 출력합니다. `len(리스트)` 는 리스트의 개수입니다.
 
 - 단계 3의 `result_counts.get(result, 0) + 1` 은 Module 3에서 두 줄로 쓴 세는 방법(`old_count = counts.get(키, 0)` → `counts[키] = old_count + 1`)을 한 줄로 합친 것입니다.
 

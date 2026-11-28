@@ -313,7 +313,9 @@ def load_saas(path):                                             # SaaS CSV 파�
 - 번호 주석이 연달아 붙어 있어도(예: 4 · 5번), <mark>주석 사이마다 줄을 끼워 넣어 각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark>
 - **채우기 전에 실행하면 `NameError` 가 납니다.** 아직 값을 담지 않은 이름을 썼다는 오류입니다. 예를 들어 1 · 2번을 아직 안 썼으면 `NameError: name 'time_out' is not defined. Did you mean: 'time_text'?` 처럼 `time_out` 을 찾지 못합니다. 끝의 `Did you mean …` 은 따르지 말고 빈칸을 채웁니다.
 
-**`apply1-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 두 로그를 공통 이벤트로 바꿔 세 단계로 출력합니다.
+<h3><code>apply1-2_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 두 로그를 공통 이벤트로 바꿔 세 단계로 출력합니다.
 
 ```python
 from normalize_json_csv import load_server, load_saas                       # 방금 만든 파일 읽기 함수를 불러온다

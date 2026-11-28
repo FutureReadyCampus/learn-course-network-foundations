@@ -134,6 +134,10 @@ button { color: inherit; }
   .net-lesson { padding: 26px 20px 112px; }
   .page-nav { inset-inline-start: 0; }
 }
+@media (min-width: 561px) and (max-width: 700px) {
+  body:has(.exercise-heading-pilot) .preview-label { display: none; }
+  body:has(.exercise-heading-pilot) .topbar-location { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+}
 @media (max-width: 560px) {
   .exercise-heading-pilot {
     --page-heading-size: 1.625rem;
