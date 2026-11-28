@@ -1,24 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 364" role="img">
-<title>글쓰기 20분은 고르기, 쓰기, 점검으로 나누고 핵심 글감 세 가지 중 하나를 고릅니다</title>
-<desc>고르기 5분, 세 문장 쓰기 10분, 점검과 올리기 5분입니다. 핵심 글감은 VIP 계정을 두 곳에서 막는 이유, 잠금만으로 부족한 세션 문제, 세 조치 중 피해가 큰 것이고, 응용을 했다면 선택 글감도 있습니다.</desc>
-<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="24" y="34" font-size="19" fill="#292929" font-weight="700">오늘의 글 쓰기 20분</text>
-<rect x="24" y="56" width="216" height="64" rx="10" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="132.0" y="82.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="132.0" dy="0" font-weight="700">고르기 5분</tspan><tspan x="132.0" dy="21">글감 하나</tspan></text>
-<rect x="252" y="56" width="216" height="64" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="360.0" y="82.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">쓰기 10분</tspan><tspan x="360.0" dy="21">세 문장 글</tspan></text>
-<rect x="480" y="56" width="216" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="588.0" y="82.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="588.0" dy="0" font-weight="700">점검 · 올리기 5분</tspan><tspan x="588.0" dy="21">공개 전 점검</tspan></text>
-<line x1="240" y1="88" x2="250" y2="88" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<line x1="468" y1="88" x2="478" y2="88" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
-<rect x="24" y="150" width="216" height="96" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="132.0" y="182.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="132.0" dy="0" font-weight="700">글감 1</tspan><tspan x="132.0" dy="21">VIP 계정을</tspan><tspan x="132.0" dy="21">두 곳에서 막는 이유</tspan></text>
-<rect x="252" y="150" width="216" height="96" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360.0" y="182.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">글감 2</tspan><tspan x="360.0" dy="21">잠금만으로 부족한</tspan><tspan x="360.0" dy="21">세션 문제</tspan></text>
-<rect x="480" y="150" width="216" height="96" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="588.0" y="182.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="588.0" dy="0" font-weight="700">글감 3</tspan><tspan x="588.0" dy="21">세 조치 중</tspan><tspan x="588.0" dy="21">피해가 큰 것</tspan></text>
-<rect x="24" y="270" width="672" height="64" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="360.0" y="296.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">선택 글감 (응용 2-1 · 2-2 를 했다면)</tspan><tspan x="360.0" dy="21">권한 없는 승인 INC-005 · 재시도 횟수 3번</tspan></text>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 256" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+  <title>계정을 잠근 뒤에도 열린 세션을 확인한 이유</title>
+  <desc>이미 잠긴 계정에 열린 세션이 있었음. 잠금 확인 뒤 세션 종료와 재점검. 다시 확인한 잔존 세션 목록이 비었음.</desc>
+  <text x="20" y="35" font-size="20" font-weight="700">계정을 잠근 뒤에도 열린 세션을 확인한 이유</text>
+  <rect x="20" y="60" width="680" height="52" rx="8" fill="#f1f1ef" stroke="#dededb"/>
+  <text x="36" y="92" font-size="16" font-weight="700">관찰한 문제</text>
+  <text x="204" y="92" font-size="16">이미 잠긴 계정에 열린 세션이 있었음</text>
+  <rect x="20" y="122" width="680" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0"/>
+  <text x="36" y="154" font-size="16" font-weight="700">내가 고른 기준</text>
+  <text x="204" y="154" font-size="16">잠금 확인 뒤 세션 종료와 재점검</text>
+  <rect x="20" y="184" width="680" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a"/>
+  <text x="36" y="216" font-size="16" font-weight="700">다시 확인한 결과</text>
+  <text x="204" y="216" font-size="16">다시 확인한 잔존 세션 목록이 비었음</text>
 </svg>
