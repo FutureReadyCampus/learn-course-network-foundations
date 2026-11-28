@@ -12,7 +12,7 @@
 <text x="273" y="98" font-size="14" fill="#666660" text-anchor="middle">실습 5-1 · 5-2</text>
 <rect x="368" y="48" width="158" height="68" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="447" y="74" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">글쓰기 20분</text>
-<text x="447" y="98" font-size="14" fill="#666660" text-anchor="middle">세 문장 글 한 편</text>
+<text x="447" y="98" font-size="14" fill="#666660" text-anchor="middle">블로그 글 한 편</text>
 <rect x="542" y="48" width="158" height="68" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="621" y="74" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">마무리 15분</text>
 <text x="621" y="98" font-size="14" fill="#666660" text-anchor="middle">깃허브에 올리기</text>

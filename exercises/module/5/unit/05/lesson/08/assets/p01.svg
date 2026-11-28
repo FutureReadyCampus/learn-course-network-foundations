@@ -6,7 +6,7 @@
   <text x="36" y="92" font-size="16" font-weight="700">관찰한 문제</text>
   <text x="204" y="92" font-size="16">실습 로그에 모든 결정이 ‘자동’으로 적혀 있었음</text>
   <rect x="20" y="122" width="680" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0"/>
-  <text x="36" y="154" font-size="16" font-weight="700">내가 고른 기준</text>
+  <text x="36" y="154" font-size="16" font-weight="700">확인한 기준</text>
   <text x="204" y="154" font-size="16">저장된 요청으로 승인 결정을 다시 계산</text>
   <rect x="20" y="184" width="680" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a"/>
   <text x="36" y="216" font-size="16" font-weight="700">다시 확인한 결과</text>

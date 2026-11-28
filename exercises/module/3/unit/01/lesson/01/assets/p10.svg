@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <title>글 틀과 블로그 파일 구조를 미리 살펴봅니다</title>
-<desc>왼쪽은 글 틀 post-short(기본, 세 문장), post-stuck(막힌 일), post-practice(응용, 긴 글)입니다. 짧은 글은 문제, 선택 이유, 확인한 근거로 이어 씁니다. 이 페이지에서는 파일 구조를 살펴봅니다. 실습을 마친 뒤 문제 해결 기록 레슨에서 글을 작성합니다.</desc>
+<desc>왼쪽은 글 틀 post-short(기본, 짧은 글), post-stuck(막힌 일), post-practice(응용, 긴 글)입니다. 짧은 글은 문제, 선택 이유, 확인한 근거로 이어 씁니다. 이 페이지에서는 파일 구조를 살펴봅니다. 실습을 마친 뒤 문제 해결 기록 레슨에서 글을 작성합니다.</desc>
 <defs>
 <marker id="a-p09" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
 </defs>
@@ -13,7 +13,7 @@
 <text x="36" y="124" font-size="14" fill="#666660">응용 · 긴 글</text>
 <rect x="20" y="152" width="220" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="36" y="178" font-weight="700">post-short.md</text>
-<text x="36" y="202" font-size="14" fill="#666660">기본 · 세 문장</text>
+<text x="36" y="202" font-size="14" fill="#666660">기본 · 짧은 글</text>
 <rect x="20" y="230" width="220" height="64" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="36" y="256" font-weight="700">post-stuck.md</text>
 <text x="36" y="280" font-size="14" fill="#666660">막혔던 일 남기기</text>

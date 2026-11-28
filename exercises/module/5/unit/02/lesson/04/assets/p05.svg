@@ -11,7 +11,7 @@
 <rect x="366" y="54" width="159" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="445.5" y="80.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="445.5" dy="0" font-weight="700">제공 파일</tspan><tspan x="445.5" dy="21">세 개 · 정상</tspan></text>
 <rect x="537" y="54" width="159" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="616.5" y="80.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="616.5" dy="0" font-weight="700">보고서</tspan><tspan x="616.5" dy="21">report_u2.md</tspan></text>
+<text x="616.5" y="80.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="616.5" dy="0" font-weight="700">보고서</tspan><tspan x="616.5" dy="21">블로그 초안</tspan></text>
 <rect x="24" y="144" width="672" height="70" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="360.0" y="173.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="360.0" dy="0" font-weight="700">파일 확인: 상태 파일의 마지막 줄</tspan><tspan x="360.0" dy="21">[&#x27;junho&#x27;, &#x27;dami&#x27;] 5   (다르면 python exercise2-2_run.py 다시 실행)</tspan></text>
 <rect x="24" y="244" width="159" height="80" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>

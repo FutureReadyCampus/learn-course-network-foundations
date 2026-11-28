@@ -15,7 +15,7 @@
 <text font-size="15" fill="#292929">
 <tspan x="36" y="74" font-weight="700">1. [터미널] cd .. → pwd</tspan><tspan x="36" y="96" font-size="14" fill="#666660">anomaly_detection 에 있을 때만 cd ..</tspan>
 <tspan x="36" y="146" font-weight="700">2. [터미널] git status</tspan><tspan x="36" y="168" font-size="14" fill="#666660">올라갈 파일 이름 확인</tspan>
-<tspan x="36" y="218" font-weight="700">3. [보고서] 마무리 (가)</tspan><tspan x="36" y="240" font-size="14" fill="#666660">report_u5.md 의 ## 마무리</tspan>
+<tspan x="36" y="218" font-weight="700">3. [보고서] 마무리 (가)</tspan><tspan x="36" y="240" font-size="14" fill="#666660">블로그 초안 의 ## 마무리</tspan>
 <tspan x="36" y="290" font-weight="700">4. [터미널] 세 명령</tspan><tspan x="36" y="312" font-size="14">git add . → git commit -m "…"</tspan><tspan x="36" y="328" font-size="14">→ git push</tspan>
 <tspan x="36" y="374" font-weight="700">5. [브라우저] 저장소 확인</tspan><tspan x="36" y="396" font-size="14" fill="#666660">anomaly_detection 폴더 열기</tspan>
 </text>

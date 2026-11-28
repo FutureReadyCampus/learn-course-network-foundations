@@ -29,7 +29,7 @@
 <text x="456" y="80" font-size="16" font-weight="700">4</text>
 <text x="456" y="106">글 틀로</text>
 <text x="456" y="128">글 쓰기</text>
-<text x="456" y="152" font-size="14" fill="#666660">세 문장도 OK</text>
+<text x="456" y="152" font-size="14" fill="#666660">짧은 글도 OK</text>
 
 <rect x="586" y="52" width="126" height="120" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="600" y="80" font-size="16" font-weight="700">5</text>

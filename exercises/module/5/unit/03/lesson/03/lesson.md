@@ -251,7 +251,7 @@ for ticket in tickets:                                                          
 <!-- /checklist -->
 
 4. 출력은 네 단계입니다. 제목 줄은 줄 수에 넣지 않습니다. 단계 1 은 숫자가 제목 줄에 함께 나와 그 아래 줄이 없습니다. 단계 2 는 11줄, 단계 3 은 6줄, 단계 4 는 숫자가 제목 줄에 함께 나오고 그 아래 1줄입니다.
-5. **[실습 결과 기록]** `report_u3.md` 의 「실습 3-2 · 티켓 생성과 응답 기한」 아래에 실행 출력, 직접 확인이 필요한 티켓 번호, 가장 빠른 응답 기한을 기록합니다.
+5. 실행 결과에서 선택한 글감의 근거를 찾아 초안의 ‘검증 결과’에 메모합니다.
 
 <!-- answer: 08|실습 3-2 정답 -->
 
@@ -273,7 +273,7 @@ for ticket in tickets:                                                          
 
 ## 핵심 코드와 결과를 저장소에 반영하기
 
-핵심 실습에서 만든 코드, 입력 데이터, 실행 결과 기록을 저장소에 남깁니다. 선택 과제용 함수는 이 단계에서 만들지 않습니다.
+핵심 실습에서 만든 코드와 입력 데이터를 저장소에 남깁니다. 선택 과제용 함수는 이 단계에서 만들지 않습니다.
 
 1. **[터미널]** `soar_response` 폴더에서 핵심 파일과 입력 데이터를 확인합니다.
    ```bash
@@ -281,14 +281,14 @@ for ticket in tickets:                                                          
    ls
    ls config
    ```
-   `undo_actions.py` · `rollback.py` · `exercise3-1_run.py` · `ticketing.py` · `exercise3-2_run.py` · `alerts_thu.json` · `report_u3.md` 와 `config/escalation_rules.json` 이 있어야 합니다.
+   `undo_actions.py` · `rollback.py` · `exercise3-1_run.py` · `ticketing.py` · `exercise3-2_run.py` · `alerts_thu.json` 와 `config/escalation_rules.json` 이 있어야 합니다.
 2. 저장소 루트 `network-study-notes` 로 이동하고, 올릴 변경 목록을 확인합니다.
    ```bash
    cd ..
    git status
    ```
    `.env` 나 실제 비밀값이 보이면 올리지 말고 `.gitignore` 를 먼저 확인합니다.
-3. 기술 기록의 실행 출력과 최종 상태를 확인한 뒤, 저장소에 반영합니다.
+3. 실행 출력과 최종 상태를 확인한 뒤, 저장소에 반영합니다.
    ```bash
    git add soar_response
    git commit -m "Add SOAR unit 3 core rollback and ticketing"

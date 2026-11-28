@@ -15,7 +15,7 @@
 <text font-size="15" fill="#292929">
 <tspan x="62" y="78" font-weight="700">실습 5-1</tspan><tspan x="62" y="100" font-size="14" fill="#666660">대상 3명 AI 요약 · 실패하면 대체 문장</tspan>
 <tspan x="62" y="154" font-weight="700">실습 5-2 · Module 4 총정리</tspan><tspan x="62" y="176" font-size="14" fill="#666660">상황 8개 중 3개 이상 원인과 해결</tspan>
-<tspan x="62" y="230" font-weight="700">report_u5.md</tspan><tspan x="62" y="252" font-size="14" fill="#666660">꼭 채울 칸에 비어 있는 답: 없음</tspan>
+<tspan x="62" y="230" font-weight="700">블로그 초안</tspan><tspan x="62" y="252" font-size="14" fill="#666660">꼭 채울 칸에 비어 있는 답: 없음</tspan>
 <tspan x="62" y="306" font-weight="700">응용 5-1 ~ 5-3 (여유가 되면)</tspan><tspan x="62" y="328" font-size="14" fill="#666660">했다면 그 파일도 있음</tspan>
 </text>
 <text x="370" y="32" font-size="19" fill="#292929" font-weight="700">2. 파일 확인 (pwd · ls)</text>
@@ -28,7 +28,7 @@
 <tspan x="406" y="180">unit05_risk_scores.json</tspan>
 <tspan x="406" y="204">event_summary.py</tspan>
 <tspan x="406" y="228">exercise5-1_run.py</tspan>
-<tspan x="406" y="252">report_u5.md</tspan>
+<tspan x="406" y="252">블로그 초안</tspan>
 <tspan x="406" y="280" fill="#666660">(앞 Unit의 파일들)</tspan>
 <tspan x="406" y="308" fill="#666660">(응용을 했다면 그 파일들)</tspan>
 </text>

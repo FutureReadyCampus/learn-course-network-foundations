@@ -257,7 +257,7 @@ print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.
 - [ ] `python exercise4-2_run.py` 를 실행해 걸린 시간 `25 분` · `5 분` 과 `dami 는 아직 잠김: True` 가 나왔다
 <!-- /checklist -->
 
-5. **[실습 결과 기록]** `report_u4.md` 의 「실습 4-2 · 오탐 신고와 복구」에 실행 출력, 처리 시간, 복구 뒤 상태를 기록합니다.
+5. 실행 결과에서 선택한 글감의 근거를 찾아 초안의 ‘검증 결과’에 메모합니다.
 
 <!-- answer: 10|실습 4-2 정답 -->
 
@@ -279,7 +279,7 @@ print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.
 
 ## 핵심 코드와 결과를 저장소에 반영하기
 
-핵심 실습에서 만든 코드, 입력 데이터, 실행 결과 기록을 저장소에 남깁니다. 선택 과제용 헬퍼는 이 단계에서 만들지 않습니다.
+핵심 실습에서 만든 코드와 입력 데이터를 저장소에 남깁니다. 선택 과제용 헬퍼는 이 단계에서 만들지 않습니다.
 
 1. **[터미널]** `soar_response` 폴더에서 핵심 파일과 입력 데이터를 확인합니다.
    ```bash
@@ -287,7 +287,7 @@ print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.
    ls
    ls config
    ```
-   `approval_gate.py` · `exercise4-1_run.py` · `gate_requests.json` · `false_positive.py` · `exercise4-2_run.py` · `fp_state.json` · `fp_log.json` · `fp_reports.json` · `report_u4.md` 와 `config/approval_policy.json` 이 있어야 합니다.
+   `approval_gate.py` · `exercise4-1_run.py` · `gate_requests.json` · `false_positive.py` · `exercise4-2_run.py` · `fp_state.json` · `fp_log.json` · `fp_reports.json` 와 `config/approval_policy.json` 이 있어야 합니다.
 2. 저장소 루트 `network-study-notes` 로 이동하고 변경 목록을 확인합니다.
    ```bash
    cd ..
@@ -302,5 +302,5 @@ print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.
    ```
 
 <!-- checklist -->
-- [ ] 핵심 코드 · 입력 데이터 · 실행 결과 기록을 저장소에 올렸다
+- [ ] 핵심 코드와 입력 데이터를 저장소에 올렸다
 <!-- /checklist -->

@@ -11,7 +11,7 @@
 <rect x="32" y="236" width="296" height="136" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="44" y="258" font-size="14" text-anchor="start" fill="#292929"><tspan x="44" font-weight="bold">실습 4-2</tspan><tspan x="44" dy="23">false_positive.py · exercise4-2_run.py</tspan><tspan x="44" dy="23">fp_state.json · fp_log.json</tspan><tspan x="44" dy="23">fp_reports.json · fp_results.json</tspan><tspan x="44" dy="23">fp_state_after.json</tspan></text>
 <rect x="32" y="382" width="296" height="34" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="180.0" y="403.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="180.0">보고서 report_u4.md</tspan></text>
+<text x="180.0" y="403.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="180.0">블로그 초안</tspan></text>
 <text x="366" y="78" font-size="15" text-anchor="start" fill="#292929"><tspan x="366" font-weight="bold">3. 깃허브에 올리기</tspan></text>
 <rect x="366" y="90" width="334" height="54" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="533.0" y="111.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="533.0" font-weight="bold">cd ..  →  pwd</tspan><tspan x="533.0" dy="20">…/network-study-notes</tspan></text>

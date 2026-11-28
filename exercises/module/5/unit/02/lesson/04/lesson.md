@@ -198,7 +198,7 @@ print("조치 기록:", len(load_json("containment_log.json")), "건")          
 - [ ] `python exercise2-2_run.py` 를 채우기 전(`조치 기록: 3 건`)과 다 채운 뒤에 실행해, 채운 뒤 단계 3 에 `빈틈이 남은 계정: []`, 단계 4 에 `조치 기록: 5 건` 이 나왔다
 <!-- /checklist -->
 
-5. **[실습 기록]** `report_u2.md` 의 `## 실습 2-2` 아래에 핵심 결과를 기록합니다.
+5. 실행 결과에서 선택한 글감의 근거를 찾아 초안의 ‘검증 결과’에 메모합니다.
 **확인** — 단계 2 가 다섯 줄(`dami` 잠금 · 세션 종료, `gaeun` 변경 없음, `junho` 잠김 → 잠김 · 세션 종료)이고, 단계 3 이 `빈틈이 남은 계정: []`, 단계 4 가 `잠긴 계정: ['junho', 'dami']` · `조치 기록: 5 건` 이면 성공입니다. 안 나오면 아래 실습 2-2 정답 펼침의 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 ## 실습 2-2 정리
@@ -224,8 +224,7 @@ print("조치 기록:", len(load_json("containment_log.json")), "건")          
 
 1. 계정 잠금을 실행하고 사후 검증했으며, 조치 전 · 후 상태를 감사 기록으로 남겼다 (실습 2-1)
 2. 잠금 뒤 활성 세션을 종료하고, 빈틈(잔존 세션)이 남았는지 다시 점검했다 (실습 2-2)
-3. 실습 결과 기록 `report_u2.md` 에 핵심 결과와 확인 내용을 기록했다
-4. 실습 기록 `report_u2.md` 의 네 핵심 결과 칸(2-1 (가) · (다), 2-2 (가) · (다))을 채웠다
+3. 실행 결과에서 선택한 글감의 근거를 찾아 초안의 ‘검증 결과’에 메모합니다.
 
 **2. 파일 확인** — **[터미널]** `soar_response` 폴더에서 확인합니다.
 
@@ -243,7 +242,7 @@ print(state['locked_users'], len(records))
 PY
 ```
 
-- `containment_store.py` · `account_actions.py` · `exercise2-1_run.py` · `session_actions.py` · `containment.py` · `exercise2-2_run.py` · `ip_users.json` · `containment_state.json` · `containment_log.json` · `report_u2.md` 가 보여야 합니다. 함수 준비 레슨의 helper 파일들은 뒤에서 별도로 저장합니다.
+- `containment_store.py` · `account_actions.py` · `exercise2-1_run.py` · `session_actions.py` · `containment.py` · `exercise2-2_run.py` · `ip_users.json` · `containment_state.json` · `containment_log.json` 가 보여야 합니다. 함수 준비 레슨의 helper 파일들은 뒤에서 별도로 저장합니다.
 - `config` 안에는 `vip_accounts.json` · `allowlist_ips.json` 이 새로 보여야 합니다.
 - 마지막 줄은 <mark>`['junho', 'dami'] 5`</mark> 여야 합니다. 실습 2-2 가 저장한 상태(잠긴 계정 두 개 · 조치 기록 5건)이고, Unit 3 실습 3-1 이 이 상태에서 시작합니다.
   - 다른 값이 나오면 `python exercise2-2_run.py` 를 한 번 더 실행하고 다시 확인합니다.
@@ -269,7 +268,7 @@ PY
    - `.env` 가 보이면 VS Code 왼쪽 목록에서 `network-study-notes` 바로 아래의 `.gitignore`(깃이 올리지 않을 파일 이름을 적어 두는 파일)를 열어 맨 아래에 `.env` 한 줄을 적고 저장한 뒤 `git status` 를 다시 칩니다. `.venv` 는 `.venv/` 한 줄을 같은 방법으로 적습니다.
    - `soar_response/__pycache__/` 는 파이썬이 실행하면서 자동으로 만든 임시 폴더입니다. 보이면 `.gitignore` 맨 아래에 `__pycache__/` 한 줄을 적고 저장합니다.
    - `soar_response/containment_state.json` · `soar_response/containment_log.json` 은 실습 2-2 에서 프로그램이 저장한 상태 파일입니다. 이것도 올라갑니다.
-3. **[실습 기록]** 핵심 결과와 막힌 부분을 `report_u2.md` 에 기록하고 저장합니다.
+3. 실행 결과에서 선택한 글감의 근거를 찾아 초안의 ‘검증 결과’에 메모합니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
    ```bash
    git add .

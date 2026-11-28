@@ -9,7 +9,7 @@
 <text x="311.5" y="92" font-size="14" fill="#292929" text-anchor="middle">review_rules.py 준비 → 실습 3-1 → 실습 3-2</text>
 <rect x="543" y="48" width="93" height="56" rx="6" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="589.5" y="71" font-size="15" fill="#9a6200" text-anchor="middle" font-weight="700">블로그 기록 20분</text>
-<text x="589.5" y="92" font-size="14" fill="#292929" text-anchor="middle">세 문장 글</text>
+<text x="589.5" y="92" font-size="14" fill="#292929" text-anchor="middle">한 편의 글</text>
 <rect x="640" y="48" width="60" height="56" rx="6" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="670" y="71" font-size="14" fill="#292929" text-anchor="middle" font-weight="700">확인</text>
 <text x="670" y="92" font-size="14" fill="#666660" text-anchor="middle">15분</text>

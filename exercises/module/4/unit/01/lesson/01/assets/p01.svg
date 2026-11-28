@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img">
 <title>오늘은 약 2시간 40분 동안 실습 1-1 · 1-2를 만들고, Module 4 다섯 Unit 중 Unit 1을 한다</title>
-<desc>오늘 계획은 시작 15분, 실습 결과 기록 준비 10분, 핵심 실습 약 110분, 블로그 기록 20분 순서입니다. 응용 1-1 ~ 1-3은 핵심 학습과 기록 뒤에 선택으로 합니다. 아래는 Module 4 다섯 Unit 지도입니다.</desc>
+<desc>오늘 계획은 시작 15분, 블로그 초안 준비 10분, 핵심 실습 약 110분, 블로그 기록 20분 순서입니다. 응용 1-1 ~ 1-3은 핵심 학습과 기록 뒤에 선택으로 합니다. 아래는 Module 4 다섯 Unit 지도입니다.</desc>
 <defs><marker id="a-m4u01l01-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
 <text x="24" y="32" font-size="19" fill="#292929" text-anchor="start" font-weight="700">오늘의 계획 (약 2시간 40분)</text>
@@ -8,7 +8,7 @@
 <text x="80.0" y="71" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">시작</text>
 <text x="80.0" y="93" font-size="15" fill="#666660" text-anchor="middle">15분</text>
 <rect x="148" y="46" width="248" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="272.0" y="71" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">실습 기록 준비</text>
+<text x="272.0" y="71" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">블로그 초안 준비</text>
 <text x="272.0" y="93" font-size="15" fill="#666660" text-anchor="middle">10분</text>
 <rect x="408" y="46" width="164" height="60" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="490.0" y="71" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">핵심 실습</text>

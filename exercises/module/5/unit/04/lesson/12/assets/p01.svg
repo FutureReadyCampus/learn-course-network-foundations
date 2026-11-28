@@ -6,7 +6,7 @@
   <text x="36" y="92" font-size="16" font-weight="700">관찰한 문제</text>
   <text x="204" y="92" font-size="16">요청마다 여러 사용자가 영향을 받을 수 있음</text>
   <rect x="20" y="122" width="680" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0"/>
-  <text x="36" y="154" font-size="16" font-weight="700">내가 고른 기준</text>
+  <text x="36" y="154" font-size="16" font-weight="700">확인한 기준</text>
   <text x="204" y="154" font-size="16">위험 기준과 영향 범위를 조치 전에 확인</text>
   <rect x="20" y="184" width="680" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a"/>
   <text x="36" y="216" font-size="16" font-weight="700">다시 확인한 결과</text>

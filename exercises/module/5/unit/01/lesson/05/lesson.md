@@ -204,8 +204,8 @@ print("VIP 계정 알림", vip_count, "건")                        # VIP 계정
 - [ ] `python exercise1-3_run.py` 를 실행해 단계 3 에 `VIP 계정 알림 1 건` 이 나왔다
 <!-- /checklist -->
 
-5. **[실습 기록]** `soar_response/report_u1.md` 의 `## 실습 1-3` 아래를 채웁니다.
-   - (가) [핵심 질문] 실행한 출력 전체를 붙여 넣고, 재직 여부가 「퇴사」인 알림과 VIP 가 「예」인 알림의 번호, 단계 3 의 VIP 계정 알림 수를 적어 주세요.
+5. 실행 결과에서 선택한 글감의 근거를 찾아 초안의 ‘검증 결과’에 메모합니다.
+   - (가) [핵심 질문] 실행한 출력을 보고, 재직 여부가 「퇴사」인 알림과 VIP 가 「예」인 알림의 번호, 단계 3 의 VIP 계정 알림 수를 적어 주세요.
 
 **확인** — 단계 2 의 다섯 줄에서 INC-001 이 `재직: 퇴사`, INC-003 이 `VIP: 예`, INC-002 · INC-004 가 `신뢰 IP: 예` 이고, 단계 3 이 `VIP 계정 알림 1 건` 이면 성공입니다. 안 나오면 아래 실습 1-3 정답 펼침에서 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
@@ -231,7 +231,7 @@ print("VIP 계정 알림", vip_count, "건")                        # VIP 계정
 1. 플레이북 PB-003 을 직접 쓰고, 알림 두 건을 손으로 처리하며 고친 곳을 세었다 (실습 1-1)
 2. 실행기가 알림 5건을 처리하고, 승인이 필요한 건은 멈추고, 감사 기록을 남겼다 (실습 1-2)
 3. 알림마다 재직 · VIP · 접속 IP 맥락을 붙이고 VIP 계정 알림 수를 셌다 (실습 1-3)
-4. 실습 기록 `report_u1.md` 의 핵심 항목에 실행 결과와 확인 내용을 적었다
+4. 실행 결과에서 선택한 글감의 근거를 찾아 초안의 ‘검증 결과’에 메모합니다.
 
 **2. 파일 확인** — **[터미널]** `soar_response` 폴더에서 확인합니다.
 
@@ -249,7 +249,6 @@ ls config
 | 시작하기 | `incident_samples.json` · `system_state.json` · `users_info.json` · `source_ips.json` · `trusted_ips.json` |
 | 실습 1-2 | `incident.py` · `playbook_runner.py` · `exercise1-2_run.py` · `action_log.json`(실행하면 생김) |
 | 실습 1-3 | `enrichment.py` · `exercise1-3_run.py` |
-| 실습 결과 기록 | `report_u1.md` |
 
 - `config` 안에는 `playbook_registry.json` 이 보여야 합니다.
 
@@ -278,7 +277,7 @@ ls config
 - [ ] `git status` 에서 `.env` · `.venv` 가 올라갈 목록에 없는 것을 확인했다(있으면 `.gitignore` 에 적었다)
 <!-- /checklist -->
 
-3. **[실습 기록]** 핵심 결과와 막힌 부분을 `soar_response/report_u1.md` 에 기록하고 저장합니다.
+3. 실행 결과에서 선택한 글감의 근거를 찾아 초안의 ‘검증 결과’에 메모합니다.
 4. **[터미널]** 바뀐 파일을 모두 담고(`add`), 기록하고(`commit`), 올립니다(`push`).
    ```bash
    git add .

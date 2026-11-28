@@ -15,7 +15,7 @@
 <text x="450" y="108" font-size="14" fill="#666660" text-anchor="middle">깃허브에 올리기</text>
 <rect x="560" y="52" width="140" height="80" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text x="630" y="82" font-size="16" fill="#292929" text-anchor="middle" font-weight="700">마무리 15분</text>
-<text x="630" y="108" font-size="14" fill="#666660" text-anchor="middle">세 문장 글 한 편</text>
+<text x="630" y="108" font-size="14" fill="#666660" text-anchor="middle">블로그 글 한 편</text>
 <polyline points="162,92 196,92" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
 <polyline points="342,92 376,92" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>
 <polyline points="522,92 556,92" fill="none" stroke="#666660" stroke-width="1.8" marker-end="url(#a-p01)"/>

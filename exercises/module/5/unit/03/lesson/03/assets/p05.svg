@@ -25,7 +25,7 @@
 <rect x="541.0999999999999" y="200" width="161" height="100" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="621.5999999999999" y="234.2" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">5 · 보고서</text>
 <text x="621.5999999999999" y="255.2" font-size="15" fill="#666660" text-anchor="middle">마무리 (가)</text>
-<text x="621.5999999999999" y="276.2" font-size="15" fill="#666660" text-anchor="middle">report_u3.md</text>
+<text x="621.5999999999999" y="276.2" font-size="15" fill="#666660" text-anchor="middle">블로그 초안</text>
 <rect x="367.4" y="200" width="161" height="100" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="447.9" y="244.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">6 · git add</text>
 <text x="447.9" y="265.8" font-size="15" fill="#666660" text-anchor="middle">commit · push</text>

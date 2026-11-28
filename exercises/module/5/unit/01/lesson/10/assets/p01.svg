@@ -6,7 +6,7 @@
   <text x="36" y="92" font-size="16" font-weight="700">관찰한 문제</text>
   <text x="204" y="92" font-size="16">알림을 여러 건 처리할 때 승인도 확인해야 함</text>
   <rect x="20" y="122" width="680" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0"/>
-  <text x="36" y="154" font-size="16" font-weight="700">내가 고른 기준</text>
+  <text x="36" y="154" font-size="16" font-weight="700">확인한 기준</text>
   <text x="204" y="154" font-size="16">승인이 필요한 알림은 실행 전에 멈춤</text>
   <rect x="20" y="184" width="680" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a"/>
   <text x="36" y="216" font-size="16" font-weight="700">다시 확인한 결과</text>

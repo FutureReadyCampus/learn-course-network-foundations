@@ -8,7 +8,7 @@
 <text x="46" y="76" font-size="15" font-weight="700" fill="#292929">1. 오늘 한 일 확인</text>
 <text x="46" y="104" font-size="14" fill="#292929">실습 3-1 · 09:12 급증 분 찾기</text>
 <text x="46" y="128" font-size="14" fill="#292929">실습 3-2 · 반복 거절 7건 순서</text>
-<text x="46" y="152" font-size="14" fill="#292929">report_u3.md 빈 답: 없음</text>
+<text x="46" y="152" font-size="14" fill="#292929">블로그 초안의 근거 확인</text>
 <text x="46" y="176" font-size="14" fill="#666660">못 쓴 칸은 「모름 — 막힌 곳」</text>
 <rect x="30" y="206" width="300" height="160" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="46" y="232" font-size="15" font-weight="700" fill="#292929">2. 파일 확인 (ls · ls config)</text>

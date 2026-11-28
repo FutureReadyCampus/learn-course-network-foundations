@@ -9,7 +9,7 @@
 <rect x="195" y="56" width="159" height="64" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="274.5" y="82.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="274.5" dy="0" font-weight="700">핵심 실습 110분</tspan><tspan x="274.5" dy="21">2-1 · 2-2 · 보고서</tspan></text>
 <rect x="366" y="56" width="159" height="64" rx="10" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="445.5" y="82.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="445.5" dy="0" font-weight="700">글쓰기 20분</tspan><tspan x="445.5" dy="21">세 문장 글</tspan></text>
+<text x="445.5" y="82.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="445.5" dy="0" font-weight="700">글쓰기 20분</tspan><tspan x="445.5" dy="21">한 편의 글</tspan></text>
 <rect x="537" y="56" width="159" height="64" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="616.5" y="82.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="616.5" dy="0" font-weight="700">마무리 15분</tspan><tspan x="616.5" dy="21">확인 · 깃허브</tspan></text>
 <rect x="24" y="150" width="200" height="84" rx="10" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
