@@ -31,7 +31,9 @@ source:
 
 1. **[VS Code]** `anomaly_detection` 폴더에 `server_log.jsonl` 과 `saas_events.csv` 파일을 만들어 아래 내용을 그대로 붙여 넣고 저장합니다.
 
-**`server_log.jsonl`** — 판정 서버가 남긴 로그 샘플입니다. Module 3 응용 4-3의 판정 서버(`access_server.py`)가 남기는 로그와 같은 모양이고, 한 줄이 요청 1개인 JSON 입니다(15줄).
+<h2><code>server_log.jsonl</code></h2>
+
+판정 서버가 남긴 로그 샘플입니다. Module 3 응용 4-3의 판정 서버(`access_server.py`)가 남기는 로그와 같은 모양이고, 한 줄이 요청 1개인 JSON 입니다(15줄).
 
 아래 상자의 **복사**를 누르고 VS Code에서 `server_log.jsonl` 파일을 엽니다. 편집 영역을 클릭해 전체 선택(`Ctrl + A`) 후 붙여넣고(`Ctrl + V`) 저장합니다(`Ctrl + S`).
 
@@ -56,7 +58,9 @@ source:
 - [ ] `anomaly_detection` 폴더에 `server_log.jsonl` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
 <!-- /checklist -->
 
-**`saas_events.csv`** — SaaS 서비스가 내보낸 로그 샘플입니다. 첫 줄은 열 이름이고, 둘째 줄부터 한 줄이 이벤트 1개이며 값은 쉼표로 나뉩니다(첫 줄이 열 이름이라 이벤트는 14개이고, 파일은 15줄입니다). 시각은 내보낼 때 한국 시간으로 설정되어 있습니다.
+<h2><code>saas_events.csv</code></h2>
+
+SaaS 서비스가 내보낸 로그 샘플입니다. 첫 줄은 열 이름이고, 둘째 줄부터 한 줄이 이벤트 1개이며 값은 쉼표로 나뉩니다(첫 줄이 열 이름이라 이벤트는 14개이고, 파일은 15줄입니다). 시각은 내보낼 때 한국 시간으로 설정되어 있습니다.
 
 이번에는 아래 **복사**를 누르고 `saas_events.csv` 편집 탭에 붙여넣어 저장합니다. 열 이름이 적힌 첫 줄도 함께 복사됩니다.
 
@@ -112,7 +116,7 @@ source:
 
 ## CSV 읽기와 딕셔너리로 값 바꾸기
 
-**문법 상자 — CSV 파일을 딕셔너리로 읽기**
+<h2>문법 상자 — CSV 파일을 딕셔너리로 읽기</h2>
 
 **<mark>`csv.DictReader`</mark> 는 CSV 파일의 첫 줄을 열 이름으로 삼아, 둘째 줄부터 한 줄씩 「열 이름: 값」 딕셔너리로 읽어 줍니다**
 
@@ -150,7 +154,7 @@ CSV 한 줄이 딕셔너리 하나로 바뀌는 모양입니다.
 - `csv.DictReader(saas_file)` 로 만든 `reader` 를 `for row in reader:` 로 돌리면 행마다 `{"time": …, "account": …}` 딕셔너리가 나옵니다. <mark>그래서 `row["account"]` 처럼 이름으로 값을 꺼냅니다.</mark>
 - <mark>CSV 파일을 열 때는 `newline=""` 을 함께 씁니다.</mark> 줄바꿈을 csv 모듈이 직접 처리하게 하는 관례입니다.
 
-**문법 상자 — 딕셔너리로 값을 다른 값으로 바꾸기**
+<h2>문법 상자 — 딕셔너리로 값을 다른 값으로 바꾸기</h2>
 
 **딕셔너리에 「원래 값: 바꿀 값」을 짝지어 두면 <mark>`딕셔너리[키]`</mark> 한 줄로 값을 다른 값으로 바꿀 수 있습니다. 예: `"failure"` → `"실패"`**
 
@@ -183,7 +187,7 @@ print(allowed_result)                                # 바꾼 값을 출력한�
 - 판정 서버의 `allowed` 는 `true` / `false` 이고 파이썬에서는 `True` / `False` 입니다.
 - **딕셔너리에 없는 키로 꺼내면 `KeyError` 오류가 납니다.** 예상 못 한 값(`pending` 등)이 들어오면 멈추기 때문에 오류가 나는 것이 오히려 단서가 됩니다.
 
-**한 장 정리**
+<h2>한 장 정리</h2>
 
 | 함수 | 받는 것 | 리턴하는 것 | 직접 쓰는 곳 |
 |---|---|---|---|
@@ -198,7 +202,7 @@ print(allowed_result)                                # 바꾼 값을 출력한�
 
 ## 응용 1-2 · JSON·CSV 로그를 이벤트로
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: 판정 서버 로그는 시각 가운데에 `T` 가 있고 접속 주소가 없습니다. SaaS 로그는 사용자가 메일 주소이고 결과가 `success` / `failure` 입니다.
 - **그래서 만드는 것**: `normalize_json_csv.py` 입니다.
@@ -207,12 +211,12 @@ print(allowed_result)                                # 바꾼 값을 출력한�
 - **실행하면**: 단계 1: 판정 서버 이벤트 수와 성공 · 실패별 개수, 단계 2: SaaS 이벤트 수와 성공 · 실패별 개수, 단계 3: 각 로그의 첫 이벤트가 나옵니다.
 - **현업에서는**: 로그 종류가 늘면 변환 코드를 하나 더 만듭니다. <mark>결과 모양이 같아서 뒤의 탐지 코드는 고치지 않아도 됩니다.</mark>
 
-**할 일**
+<h2>할 일</h2>
 
 1. **`normalize_json_csv.py` · `apply1-2_run.py`** 두 파일을 만들고, `normalize_json_csv.py` 의 `convert_server_time` · `normalize_server` · `normalize_saas` 에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>판정 서버 이벤트 수와 성공 · 실패별 개수</mark>(단계 1), <mark>SaaS 이벤트 수와 성공 · 실패별 개수</mark>(단계 2), <mark>각 로그의 첫 이벤트</mark>(단계 3)를 읽습니다.
 
-**`normalize_json_csv.py`**
+<h3><code>normalize_json_csv.py</code></h3>
 
 ```python
 import csv                                                       # CSV 파일을 읽는 csv 모듈을 불러온다
@@ -309,7 +313,9 @@ def load_saas(path):                                             # SaaS CSV 파�
 - 번호 주석이 연달아 붙어 있어도(예: 4 · 5번), <mark>주석 사이마다 줄을 끼워 넣어 각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark>
 - **채우기 전에 실행하면 `NameError` 가 납니다.** 아직 값을 담지 않은 이름을 썼다는 오류입니다. 예를 들어 1 · 2번을 아직 안 썼으면 `NameError: name 'time_out' is not defined. Did you mean: 'time_text'?` 처럼 `time_out` 을 찾지 못합니다. 끝의 `Did you mean …` 은 따르지 말고 빈칸을 채웁니다.
 
-**`apply1-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 두 로그를 공통 이벤트로 바꿔 세 단계로 출력합니다.
+<h3><code>apply1-2_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 두 로그를 공통 이벤트로 바꿔 세 단계로 출력합니다.
 
 ```python
 from normalize_json_csv import load_server, load_saas                       # 방금 만든 파일 읽기 함수를 불러온다
@@ -340,7 +346,7 @@ print(first_server)                                                         # �
 print(first_saas)                                                           # SaaS 첫 이벤트를 출력한다
 ```
 
-**순서**
+<h2>순서 · 파일 작성과 터미널 실행</h2>
 
 1. **[VS Code]** `anomaly_detection` 폴더에 `normalize_json_csv.py` · `apply1-2_run.py` 두 파일을 만들어, 위의 같은 이름 코드 상자 내용을 각각 붙여 넣고 저장합니다.
 

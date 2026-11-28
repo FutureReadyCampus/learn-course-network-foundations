@@ -73,6 +73,22 @@ button { color: inherit; }
 .net-prose p { margin: 0 0 20px; }
 .net-prose h2 { margin: 34px 0 14px; font-size: 1.35rem; line-height: 1.45; }
 .net-prose h3 { margin: 25px 0 10px; font-size: 1.12rem; line-height: 1.5; }
+.exercise-heading-pilot {
+  --page-heading-size: 2rem;
+  --section-heading-size: 1.5rem;
+  --subsection-heading-size: 1.1875rem;
+}
+.exercise-heading-pilot > h1 {
+  max-width: 912px;
+  margin-inline: auto;
+  text-align: start;
+  font-size: var(--page-heading-size);
+  overflow-wrap: anywhere;
+}
+.exercise-heading-pilot :is(.net-prose, .exercise-answer) > :is(h2, h3) { font-weight: 700; line-height: 1.4; }
+.exercise-heading-pilot :is(.net-prose, .exercise-answer) > h2 { margin: 36px 0 10px; font-size: var(--section-heading-size); }
+.exercise-heading-pilot :is(.net-prose, .exercise-answer) > h3 { margin: 24px 0 8px; font-size: var(--subsection-heading-size); }
+.exercise-heading-pilot :is(.net-prose, .exercise-answer) > :is(h2, h3) code { font-size: inherit; }
 .ral-summary { max-width: 912px; margin: 34px auto 28px; padding: 22px; border: 1px solid var(--border); border-inline-start: 4px solid var(--accent); border-radius: 14px; background: var(--surface-muted); }
 .ral-summary__items { display: grid; gap: 10px; margin: 0 !important; padding: 0 !important; list-style: none; }
 .ral-summary__item { display: grid; grid-template-columns: max-content minmax(0, 1fr); align-items: start; gap: 12px; margin: 0 !important; padding: 14px !important; border: 1px solid var(--border); border-radius: 11px; background: var(--surface); }
@@ -118,7 +134,16 @@ button { color: inherit; }
   .net-lesson { padding: 26px 20px 112px; }
   .page-nav { inset-inline-start: 0; }
 }
+@media (min-width: 561px) and (max-width: 700px) {
+  body:has(.exercise-heading-pilot) .preview-label { display: none; }
+  body:has(.exercise-heading-pilot) .topbar-location { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+}
 @media (max-width: 560px) {
+  .exercise-heading-pilot {
+    --page-heading-size: 1.625rem;
+    --section-heading-size: 1.3125rem;
+    --subsection-heading-size: 1.125rem;
+  }
   .study-topbar { gap: 9px; padding-inline: 12px; }
   .topbar-course { display: none; }
   .topbar-location { min-width: 0; flex: 1; overflow: hidden; font-size: .6875rem; text-overflow: ellipsis; }
