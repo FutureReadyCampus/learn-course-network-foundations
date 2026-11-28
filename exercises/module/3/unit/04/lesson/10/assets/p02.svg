@@ -17,12 +17,12 @@
 <text x="268" y="32" font-size="16" font-weight="700" fill="#292929">2. 새 글 파일 (VS Code)</text>
 <rect x="268" y="46" width="220" height="188" rx="6" fill="#f1f1ef" stroke="#dededb"/>
 <text x="282" y="70" font-size="14" fill="#666660">_posts/</text>
-<text x="282" y="91" font-size="14" fill="#292929">2026-11-20-m3-u4-</text>
-<text x="282" y="111" font-size="14" fill="#292929">revoke-approval.md</text>
+<text x="282" y="91" font-size="14" fill="#292929">2026-11-24-</text>
+<text x="282" y="111" font-size="14" fill="#292929">pending-revocation.md</text>
 <rect x="282" y="126" width="192" height="94" rx="4" fill="#ffffff" stroke="#dededb"/>
 <text x="294" y="148" font-size="14" fill="#666660">---</text>
 <text x="294" y="168" font-size="14" font-weight="700" fill="#e0442e">title: 내 글 제목</text>
-<text x="294" y="188" font-size="14" font-weight="700" fill="#e0442e">date: 2026-11-20</text>
+<text x="294" y="188" font-size="14" font-weight="700" fill="#e0442e">date: 2026-11-24</text>
 <text x="294" y="208" font-size="14" fill="#666660">---</text>
 <line x1="494" y1="140" x2="530" y2="140" stroke="#666660" stroke-width="2" marker-end="url(#a-p02-u4w)"/>
 <text x="536" y="32" font-size="16" font-weight="700" fill="#292929">3. 1~2분 뒤 첫 화면</text>
@@ -30,13 +30,13 @@
 <text x="550" y="80" font-size="14" fill="#2f6fd0">전체 글</text>
 <text x="550" y="115" font-size="14" fill="#2f6fd0">권한 회수 승인</text>
 <text x="550" y="180" font-size="14" fill="#2f6fd0">제목을 눌러 본문 확인</text>
-<text x="30" y="282" font-size="16" font-weight="700" fill="#292929">코드는 옮기지 않고 경로만</text>
+<text x="30" y="282" font-size="16" font-weight="700" fill="#292929">판단에 쓴 코드 연결하기</text>
 <rect x="30" y="296" width="300" height="72" rx="6" fill="#e6eefb" stroke="#2f6fd0"/>
 <text x="44" y="322" font-size="14" fill="#292929">access_control/revoke_approve.py</text>
 <text x="44" y="348" font-size="14" fill="#292929">access_control/revoke.py</text>
 <line x1="336" y1="332" x2="372" y2="332" stroke="#666660" stroke-width="2" marker-end="url(#a-p02-u4w)"/>
 <rect x="378" y="296" width="318" height="72" rx="6" fill="#ffffff" stroke="#dededb"/>
 <text x="392" y="322" font-size="14" fill="#292929">글에는 핵심 몇 줄만 붙이고</text>
-<text x="392" y="348" font-size="14" fill="#292929">「전체 코드: access_control/…」</text>
+<text x="392" y="348" font-size="14" fill="#292929">GitHub의 코드 파일을 링크하기</text>
 </g>
 </svg>
