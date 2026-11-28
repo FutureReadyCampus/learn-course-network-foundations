@@ -107,8 +107,9 @@ render: markdown
 
 **`normalized_events.json`** — Unit 2 시작하기에서 만든 것과 같은 이벤트 샘플 57개입니다. 실습 3-1 · 3-2 와 응용이 모두 읽습니다. <mark>같은 이름의 파일이 이미 있어도 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다). `null` 은 그 값이 로그에 없다는 뜻입니다.
 
-```
-[
+아래 상자의 **복사**를 누르고 VS Code에서 `normalized_events.json` 파일을 엽니다. 편집 영역을 클릭해 전체 선택(`Ctrl + A`) 후 붙여넣고(`Ctrl + V`) 저장합니다(`Ctrl + S`).
+
+<pre class="copyable"><code>[
   {"time": "2026-11-02 02:14:08", "source": "saas", "user": "jiwoo", "ip": "203.0.113.80", "action": "login", "result": "실패"},
   {"time": "2026-11-02 09:01:05", "source": "web", "user": null, "ip": "198.51.100.21", "action": "GET /", "result": "성공"},
   {"time": "2026-11-02 09:01:06", "source": "web", "user": null, "ip": "198.51.100.21", "action": "GET /static/app.css", "result": "성공"},
@@ -167,7 +168,7 @@ render: markdown
   {"time": "2026-11-02 17:42:20", "source": "saas", "user": "seoyeon", "ip": "203.0.113.80", "action": "file.download", "result": "성공"},
   {"time": "2026-11-02 18:20:00", "source": "server", "user": "seoyeon", "ip": null, "action": "SALES:CHANGE", "result": "실패"}
 ]
-```
+</code></pre>
 
 <!-- checklist -->
 - [ ] `anomaly_detection` 폴더에 `normalized_events.json` 을 만들어 붙여 넣고 저장했다

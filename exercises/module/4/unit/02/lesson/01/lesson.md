@@ -87,8 +87,9 @@ CSV 파일은 값을 쉼표로 구분해 적은 텍스트 파일이고, 엑셀�
 
 **`normalized_events.json`** — 정규화된 이벤트 샘플입니다. 한 줄이 이벤트 1개이고, 시간순으로 정렬되어 있습니다. `raw`(원래 로그 한 줄 전체)는 길어서 이 파일에서 뺐습니다. `null` 은 그 값이 로그에 없다는 뜻입니다.
 
-```
-[
+아래 상자의 **복사**를 누르고 VS Code에서 `normalized_events.json` 파일을 엽니다. 편집 영역을 클릭해 전체 선택(`Ctrl + A`) 후 붙여넣고(`Ctrl + V`) 저장합니다(`Ctrl + S`).
+
+<pre class="copyable"><code>[
   {"time": "2026-11-02 02:14:08", "source": "saas", "user": "jiwoo", "ip": "203.0.113.80", "action": "login", "result": "실패"},
   {"time": "2026-11-02 09:01:05", "source": "web", "user": null, "ip": "198.51.100.21", "action": "GET /", "result": "성공"},
   {"time": "2026-11-02 09:01:06", "source": "web", "user": null, "ip": "198.51.100.21", "action": "GET /static/app.css", "result": "성공"},
@@ -147,7 +148,7 @@ CSV 파일은 값을 쉼표로 구분해 적은 텍스트 파일이고, 엑셀�
   {"time": "2026-11-02 17:42:20", "source": "saas", "user": "seoyeon", "ip": "203.0.113.80", "action": "file.download", "result": "성공"},
   {"time": "2026-11-02 18:20:00", "source": "server", "user": "seoyeon", "ip": null, "action": "SALES:CHANGE", "result": "실패"}
 ]
-```
+</code></pre>
 
 <!-- checklist -->
 - [ ] `anomaly_detection` 폴더에 `normalized_events.json` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다

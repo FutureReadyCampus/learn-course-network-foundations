@@ -33,8 +33,9 @@ source:
 
 **`server_log.jsonl`** — 판정 서버가 남긴 로그 샘플입니다. Module 3 응용 4-3의 판정 서버(`access_server.py`)가 남기는 로그와 같은 모양이고, 한 줄이 요청 1개인 JSON 입니다(15줄).
 
-```
-{"time": "2026-11-02T09:40", "user": "seoyeon", "permission": "SALES:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
+아래 상자의 **복사**를 누르고 VS Code에서 `server_log.jsonl` 파일을 엽니다. 편집 영역을 클릭해 전체 선택(`Ctrl + A`) 후 붙여넣고(`Ctrl + V`) 저장합니다(`Ctrl + S`).
+
+<pre class="copyable"><code>{"time": "2026-11-02T09:40", "user": "seoyeon", "permission": "SALES:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
 {"time": "2026-11-02T09:52", "user": "junho", "permission": "SALES:CHANGE", "network": "office", "allowed": true, "reason": "역할 권한"}
 {"time": "2026-11-02T10:05", "user": "gaeun", "permission": "ACCOUNT:CHANGE", "network": "vpn", "allowed": false, "reason": "허용되지 않은 접속 위치"}
 {"time": "2026-11-02T10:09", "user": "gaeun", "permission": "ACCOUNT:CHANGE", "network": "vpn", "allowed": false, "reason": "허용되지 않은 접속 위치"}
@@ -49,7 +50,7 @@ source:
 {"time": "2026-11-02T15:05", "user": "junho", "permission": "SALES:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
 {"time": "2026-11-02T16:10", "user": "gaeun", "permission": "SALES:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
 {"time": "2026-11-02T18:20", "user": "seoyeon", "permission": "SALES:CHANGE", "network": "vpn", "allowed": false, "reason": "업무 시간 밖"}
-```
+</code></pre>
 
 <!-- checklist optional -->
 - [ ] `anomaly_detection` 폴더에 `server_log.jsonl` 을 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
@@ -57,8 +58,9 @@ source:
 
 **`saas_events.csv`** — SaaS 서비스가 내보낸 로그 샘플입니다. 첫 줄은 열 이름이고, 둘째 줄부터 한 줄이 이벤트 1개이며 값은 쉼표로 나뉩니다(첫 줄이 열 이름이라 이벤트는 14개이고, 파일은 15줄입니다). 시각은 내보낼 때 한국 시간으로 설정되어 있습니다.
 
-```
-time,account,event,ip_address,outcome
+이번에는 아래 **복사**를 누르고 `saas_events.csv` 편집 탭에 붙여넣어 저장합니다. 열 이름이 적힌 첫 줄도 함께 복사됩니다.
+
+<pre class="copyable"><code>time,account,event,ip_address,outcome
 2026-11-02 02:14:08,jiwoo@a-corp.example,login,203.0.113.80,failure
 2026-11-02 09:05:30,seoyeon@a-corp.example,login,198.51.100.9,success
 2026-11-02 09:30:12,junho@a-corp.example,login,192.0.2.41,success
@@ -73,7 +75,7 @@ time,account,event,ip_address,outcome
 2026-11-02 17:41:05,seoyeon@a-corp.example,file.download,203.0.113.80,success
 2026-11-02 17:41:48,seoyeon@a-corp.example,file.download,203.0.113.80,success
 2026-11-02 17:42:20,seoyeon@a-corp.example,file.download,203.0.113.80,success
-```
+</code></pre>
 
 <!-- checklist optional -->
 - [ ] `anomaly_detection` 폴더에 `saas_events.csv` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다
