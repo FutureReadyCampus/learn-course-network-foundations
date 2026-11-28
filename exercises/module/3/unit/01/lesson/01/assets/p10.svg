@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <title>글 틀과 블로그 파일 구조를 미리 살펴봅니다</title>
-<desc>왼쪽은 글 틀 post-short(기본, 세 문장), post-stuck(막힌 일), post-practice(응용, 긴 글)입니다. 이 페이지에서는 파일 구조만 살펴봅니다. 실습을 마친 뒤 문제 해결 기록 레슨에서 글을 작성합니다.</desc>
+<desc>왼쪽은 글 틀 post-short(기본, 세 문장), post-stuck(막힌 일), post-practice(응용, 긴 글)입니다. 짧은 글은 문제, 선택 이유, 확인한 근거로 이어 씁니다. 이 페이지에서는 파일 구조를 살펴봅니다. 실습을 마친 뒤 문제 해결 기록 레슨에서 글을 작성합니다.</desc>
 <defs>
 <marker id="a-p09" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
 </defs>
@@ -25,7 +25,7 @@
 <line x1="292" y1="148" x2="490" y2="148" stroke="#dededb" stroke-width="1.5"/>
 <text x="292" y="176" font-size="14" fill="#666660">예:</text>
 <text x="292" y="198" font-size="14">_posts/</text>
-<text x="292" y="218" font-size="14">2026-01-15-first-post.md</text>
+<text x="292" y="218" font-size="14">2026-01-15-check-role.md</text>
 <text x="292" y="270" font-size="14" fill="#666660">글은 실습 후에 씁니다</text>
 
 <text x="542" y="62" font-size="14" fill="#666660">③ 내용 예시</text>
@@ -33,13 +33,13 @@
 <text x="558" y="104" font-weight="700">내 경험 적기</text>
 <text x="558" y="138">주석 안내를</text>
 <text x="558" y="160">읽고 내 말로</text>
-<text x="558" y="196" font-size="14" fill="#666660">무엇을 했나</text>
-<text x="558" y="218" font-size="14" fill="#666660">무엇을 골랐나</text>
-<text x="558" y="240" font-size="14" fill="#666660">왜 골랐나</text>
+<text x="558" y="196" font-size="14" fill="#666660">어떤 문제가 있었나</text>
+<text x="558" y="218" font-size="14" fill="#666660">무엇을 왜 골랐나</text>
+<text x="558" y="240" font-size="14" fill="#666660">무엇으로 확인했나</text>
 <text x="558" y="276" font-size="14" fill="#666660">(post-short 예)</text>
 
 <rect x="20" y="314" width="682" height="52" rx="10" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="36" y="346">실행 결과 화면은 이미지로 저장해 <tspan font-weight="700">assets/images/</tspan> 에 올리고 글에 연결</text>
+<text x="36" y="346">직접 확인한 출력 몇 줄을 인용하거나 글에서 코드로 링크합니다</text>
 </g>
 
 <path d="M241 106H258V262H241" stroke="#666660" stroke-width="2" fill="none"/>
