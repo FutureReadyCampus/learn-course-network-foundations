@@ -680,7 +680,23 @@
       answer.id = "current-exercise-answer";
       answerToggle.setAttribute("aria-controls", answer.id);
       const summary = answer.querySelector("summary");
+      const lines = [...prose.querySelectorAll("pre code [data-answer-line]")];
+      if (lines.length) {
+        const code = lines[0].closest("code");
+        code.id = "current-exercise-code";
+        answerToggle.setAttribute("aria-controls", code.id + " " + answer.id);
+      }
+      const inlineToggle = lines.length ? answerToggle.cloneNode() : null;
+      if (inlineToggle) {
+        (lines[0].closest(".code-wrap") || lines[0].closest("pre")).before(inlineToggle);
+        inlineToggle.addEventListener("click", () => answerToggle.click());
+      }
       const syncAnswerToggle = () => {
+        for (const line of lines) line.textContent = answer.open ? line.dataset.answerLine : "";
+        if (inlineToggle) {
+          inlineToggle.textContent = answer.open ? "정답 닫기" : "정답 보기";
+          inlineToggle.setAttribute("aria-expanded", String(answer.open));
+        }
         summary.textContent = answer.open ? "정답과 해설 닫기" : "정답과 해설 보기";
         answerToggle.textContent = answer.open ? "정답 닫기" : "정답 보기";
         answerToggle.setAttribute("aria-expanded", String(answer.open));
@@ -688,12 +704,14 @@
       answerToggle.addEventListener("click", () => {
         answer.open = !answer.open;
         if (answer.open) {
-          summary.focus({ preventScroll: true });
+          const first = lines[0] || summary;
+          if (lines.length) first.tabIndex = -1;
+          first.focus({ preventScroll: true });
         }
       });
       answer.addEventListener("toggle", () => {
         syncAnswerToggle();
-        if (answer.open) answer.scrollIntoView({ block: "start" });
+        if (answer.open) (lines[0] || answer).scrollIntoView({ block: "start" });
       });
       syncAnswerToggle();
       navFooter.classList.add("has-answer-toggle");

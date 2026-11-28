@@ -262,3 +262,18 @@ button { color: inherit; }
 .exercise-headings .exercise-answer[open] > summary { color: #165d47; }
 .exercise-headings .exercise-answer > summary:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 .page-nav .page-answer-toggle[aria-expanded="true"] { background: #165d47; border-color: #165d47; color: white; }
+
+.net-prose [data-answer-line]:not(:empty) {
+  scroll-margin-block-start: 5rem;
+  background: #d6f3e5;
+  color: #124632;
+  font-weight: 700;
+}
+.net-prose .page-answer-toggle {
+  padding: .4rem .85rem;
+  border: 1px solid var(--control-border);
+  border-radius: 6px;
+  background: var(--surface);
+  cursor: pointer;
+}
+.net-prose .page-answer-toggle[aria-expanded="true"] { background: #165d47; color: white; }
