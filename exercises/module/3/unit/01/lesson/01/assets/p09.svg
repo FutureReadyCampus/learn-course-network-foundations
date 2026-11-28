@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <title>첫 화면이 이렇게 보이면 성공이고, 막히면 Actions 탭에서 오류 줄을 읽습니다</title>
-<desc>왼쪽은 완성된 첫 화면입니다. 위쪽에 사이트 이름과 소개·홈 메뉴, 소개 문단, Module 3·4·5 각 5칸이 모두 회색인 나의 진행, 샘플 글 한 편이 있는 최신 글이 보입니다. 오른쪽은 확인할 세 가지와, 막힐 때 Actions 탭에서 가장 위 실행을 열어 빨간 ✗이면 오류 줄을 읽는 순서입니다.</desc>
+<desc>첫 화면에서 내가 쓴 소개를 읽고 소개 페이지를 엽니다. 주소가 열리지 않으면 Actions에서 최근 빌드 결과를 확인합니다.</desc>
 <defs>
 <marker id="a-p08" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
 </defs>
@@ -11,23 +11,10 @@
 <text x="36" y="76" font-size="16" font-weight="700">사이트 이름</text>
 <text x="324" y="76">소개</text>
 <text x="372" y="76">홈</text>
-<text x="36" y="116" font-size="14" fill="#666660">소개 문단</text>
-<rect x="36" y="126" width="360" height="10" rx="5" fill="#f1f1ef"/>
-<rect x="36" y="144" width="280" height="10" rx="5" fill="#f1f1ef"/>
-<text x="36" y="184" font-weight="700">나의 진행</text>
-<text x="36" y="212" font-size="14">Module 3</text>
-<text x="36" y="242" font-size="14">Module 4</text>
-<text x="36" y="272" font-size="14">Module 5</text>
-<g fill="#dededb">
-<rect x="112" y="196" width="22" height="22" rx="3"/><rect x="138" y="196" width="22" height="22" rx="3"/><rect x="164" y="196" width="22" height="22" rx="3"/><rect x="190" y="196" width="22" height="22" rx="3"/><rect x="216" y="196" width="22" height="22" rx="3"/>
-<rect x="112" y="226" width="22" height="22" rx="3"/><rect x="138" y="226" width="22" height="22" rx="3"/><rect x="164" y="226" width="22" height="22" rx="3"/><rect x="190" y="226" width="22" height="22" rx="3"/><rect x="216" y="226" width="22" height="22" rx="3"/>
-<rect x="112" y="256" width="22" height="22" rx="3"/><rect x="138" y="256" width="22" height="22" rx="3"/><rect x="164" y="256" width="22" height="22" rx="3"/><rect x="190" y="256" width="22" height="22" rx="3"/><rect x="216" y="256" width="22" height="22" rx="3"/>
-</g>
-<text x="36" y="314" font-weight="700">최신 글</text>
-<rect x="36" y="326" width="360" height="40" rx="6" fill="#f1f1ef"/>
-<text x="50" y="351">샘플 글 한 편</text>
-<text x="382" y="351" font-size="14" fill="#666660" text-anchor="end">sample: true</text>
-<text x="36" y="386" font-size="14" fill="#666660">Module 3·4·5 각 5칸, 모두 회색</text>
+<text x="36" y="132" font-size="18" font-weight="700">홈</text>
+<text x="36" y="174">네트워크 보안을 공부하는 민지입니다.</text>
+<text x="36" y="204">권한을 확인하며 알게 된 점을</text>
+<text x="36" y="230">이곳에 기록하려고 합니다.</text>
 <rect x="440" y="50" width="260" height="190" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="456" y="76" font-size="16" font-weight="700">이렇게 보이면 성공</text>
 <text x="456" y="104">① Settings → Pages에</text>

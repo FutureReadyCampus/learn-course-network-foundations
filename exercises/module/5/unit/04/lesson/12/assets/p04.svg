@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" role="img">
 <title>공개 전 점검 네 가지를 확인한 뒤 git push 로 올리기</title>
-<desc>글과 soar_response 파일에 비밀키 · 토큰 · .env 내용, 개인정보, 실제 사람의 이름이 없는지 보고 머리말이 module: 5, unit: 4 이며 sample: true 가 없는지 확인합니다. 네 칸을 모두 확인한 뒤 저장소 루트에서 git add, commit, push 로 올립니다.</desc>
+<desc>오탐 조치 복구 글과 코드에 비밀 값과 개인정보가 있는지 점검하고, 글 제목과 작성일을 확인한 뒤 올립니다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">공개 전 점검</tspan></text>
@@ -15,7 +15,7 @@
 <text x="64" y="196" font-size="15" text-anchor="start" fill="#292929"><tspan x="64">3. 실습 데이터가 아닌 실제 사람의 이름이 없다</tspan></text>
 <rect x="20" y="226" width="500" height="46" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <rect x="34" y="240" width="18" height="18" rx="3" fill="#ffffff" stroke="#666660" stroke-width="1.5"/>
-<text x="64" y="254" font-size="15" text-anchor="start" fill="#292929"><tspan x="64">4. 머리말이 module: 5, unit: 4 이고 sample: true 줄이 없다</tspan></text>
+<text x="64" y="254" font-size="15" text-anchor="start" fill="#292929"><tspan x="64">4. 제목과 작성일을 확인했다</tspan></text>
 <path d="M522 75 H560 V244 H522 M560 159 H584" fill="none" stroke="#666660" stroke-width="2"/>
 <line x1="584" y1="159" x2="596" y2="159" stroke="#666660" stroke-width="2" marker-end="url(#a-p04)"/>
 <rect x="600" y="129" width="100" height="60" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>

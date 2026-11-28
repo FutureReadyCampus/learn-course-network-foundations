@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>_posts 에 날짜-영문제목 파일을 만들고 module 5 · unit 1 을 적으면 Module 5 의 1번 칸이 채워진다</title>
-<desc>VS Code 에서 글 파일을 만드는 순서다. 글은 _posts 폴더에 만들고, 코드는 옮기지 않고 soar_response 폴더의 위치만 글에 적고, 머리말의 module 과 unit 이 첫 화면 나의 진행 칸을 채운다.</desc>
+<title>플레이북 실행 글을 올리고 전체 글 목록에서 열기</title>
+<desc>_posts 폴더에 글을 만들고 제목과 날짜를 적습니다. 플레이북 실행에서 확인한 내용을 저장해 올린 뒤, 전체 글 목록에서 제목을 눌러 본문을 확인합니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">글 틀로 쓰고 올리기</text>
 <rect x="20" y="54" width="460" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text y="78.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="250.0" dy="0" font-weight="700">1. _posts › New File (VS Code)</tspan><tspan x="250.0" dy="21.0">_posts/2026-11-20-m5-u1-playbook-runner.md</tspan></text>
 <line x1="250" y1="114" x2="250" y2="124" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
 <rect x="20" y="126" width="460" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text y="150.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="250.0" dy="0" font-weight="700">2. 글 틀 붙여 넣기 · 머리말 고치기</tspan><tspan x="250.0" dy="21.0">module: 5 · unit: 1 · date 는 파일 날짜</tspan></text>
+<text y="150.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="250.0" dy="0" font-weight="700">2. 글 틀 붙여 넣기 · 머리말 고치기</tspan><tspan x="250.0" dy="21.0">제목과 작성일 · date 는 파일 날짜</tspan></text>
 <line x1="250" y1="186" x2="250" y2="196" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
 <rect x="20" y="198" width="460" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text y="222.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="250.0" dy="0" font-weight="700">3. 빈칸 채우고 저장</tspan><tspan x="250.0" dy="21.0">올리기는 공개 전 점검 뒤</tspan></text>
@@ -17,6 +17,6 @@
 <rect x="500" y="54" width="200" height="132" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
 <text y="93.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="600.0" dy="0" font-weight="700">글 틀 고르기</tspan><tspan x="600.0" dy="21.0">post-short (기본)</tspan><tspan x="600.0" dy="21.0">post-stuck (막힘)</tspan><tspan x="600.0" dy="21.0">post-practice (응용)</tspan></text>
 <rect x="500" y="198" width="200" height="132" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text y="237.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="600.0" dy="0" font-weight="700">올린 뒤 확인</tspan><tspan x="600.0" dy="21.0">최신 글에 보임</tspan><tspan x="600.0" dy="21.0">Module 5 의</tspan><tspan x="600.0" dy="21.0">1번 칸이 채워짐</tspan></text>
+<text y="237.8" font-size="15" fill="#292929" text-anchor="middle"><tspan x="600.0" dy="0" font-weight="700">올린 뒤 확인</tspan><tspan x="600.0" dy="21.0">전체 글에서 찾기</tspan><tspan x="600.0" dy="21.0">제목을 눌러</tspan><tspan x="600.0" dy="21.0">본문을 확인</tspan></text>
 <text x="20" y="360" font-size="14" fill="#666660" text-anchor="start">포트폴리오 준비와 글 틀 내용: Module 3 Unit 1 시작하기의 4쪽 · 10쪽</text>
 </svg>

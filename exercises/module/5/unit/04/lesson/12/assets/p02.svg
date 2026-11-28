@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
-<title>글 틀을 골라 _posts 에 글을 만들고 코드는 위치만 적기</title>
-<desc>기본은 세 문장 글 post-short.md, 막혔으면 post-stuck.md, 응용으로 긴 글을 쓰면 post-practice.md 를 고르고, _posts 폴더에 날짜-영문제목.md 파일을 만들어 머리말을 module: 5, unit: 4 로 고칩니다. 코드는 옮기지 않고 soar_response 폴더의 위치만 글에 적은 뒤 저장합니다. 올리기는 공개 전 점검 뒤에 합니다.</desc>
+<title>오탐 조치 복구 글의 파일과 머리말 준비하기</title>
+<desc>_posts 폴더에 새 파일을 만들고 머리말에 제목과 작성일을 적습니다. 오탐 조치 복구에 쓴 코드를 확인할 수 있도록 글에 해당 파일의 위치를 적습니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">글 틀로 쓰고 올리기 (VS Code)</tspan></text>
@@ -25,7 +25,7 @@
 <text x="565.0" y="101.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="565.0" font-weight="bold">_posts › New File</tspan><tspan x="565.0" dy="20">날짜-영문제목.md</tspan></text>
 <line x1="565" y1="136" x2="565" y2="150" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
 <rect x="430" y="152" width="270" height="82" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="565.0" y="177.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="565.0" font-weight="bold">머리말 고치기</tspan><tspan x="565.0" dy="20">module: 5</tspan><tspan x="565.0" dy="20">unit: 4</tspan></text>
+<text x="565.0" y="177.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="565.0" font-weight="bold">머리말 고치기</tspan><tspan x="565.0" dy="20">title: 내 글 제목</tspan><tspan x="565.0" dy="20">date: 작성일</tspan></text>
 <line x1="565" y1="236" x2="565" y2="250" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
 <rect x="430" y="252" width="270" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="565.0" y="277.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="565.0" font-weight="bold">저장</tspan></text>
@@ -34,6 +34,6 @@
 <text x="212.0" y="304.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="212.0">soar_response/approval_gate.py</tspan><tspan x="212.0" dy="20">soar_response/false_positive.py</tspan></text>
 <text x="20" y="364" font-size="15" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">4. 확인하기</tspan></text>
 <rect x="20" y="376" width="680" height="38" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="360.0" y="399.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="360.0">VS Code 의 _posts 에 새 파일 · 머리말 module: 5 · unit: 4 → 올리기는 공개 전 점검 뒤</tspan></text>
+<text x="360.0" y="399.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="360.0">VS Code 의 _posts 에 새 파일 · 머리말의 제목과 작성일 → 올리기는 공개 전 점검 뒤</tspan></text>
 </g>
 </svg>
