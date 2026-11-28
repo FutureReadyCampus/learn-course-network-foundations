@@ -13,7 +13,7 @@ source:
 
 ## 목표: 요청서 접수·승인·부여
 
-**먼저 확인해 보세요.** Unit 1에서 GitHub Pages 포트폴리오를 만들고 내 사이트 주소를 열어 샘플 글이 보였나요? 아직 만들지 않았거나 화면이 나오지 않으면 [Unit 1 시작하기의 「내 기록 남기기: 소개」](__SITE__/exercises/module/3/unit/1/lesson/1/page/4)부터 설정하고, 「첫 화면 확인하고 막힐 때」까지 확인한 뒤 돌아옵니다. GitHub Pages에서 Jekyll을 쓰는 데 내 컴퓨터에 Jekyll을 따로 설치할 필요는 없습니다.
+**먼저 확인해 보세요.** Unit 1에서 GitHub Pages 포트폴리오를 만들고 내 사이트 주소를 열어 샘플 글이 보였나요? 아직 만들지 않았거나 화면이 나오지 않으면 [Unit 1 시작하기의 「자기소개 두 문장으로 시작하기」](__SITE__/exercises/module/3/unit/1/lesson/1/page/4)부터 설정하고, 「첫 화면 확인하고 막힐 때」까지 확인한 뒤 돌아옵니다. GitHub Pages에서 Jekyll을 쓰는 데 내 컴퓨터에 Jekyll을 따로 설치할 필요는 없습니다.
 
 Unit 2는 Module 3의 두 번째 단계인 **권한 주기**입니다. Unit 1 실습에서는 판정 함수 두 개를 만들었습니다.
 - `check_permission`(`rbac.py`): 사용자 파일과 역할 파일을 읽어 허용 · 거부를 정합니다.

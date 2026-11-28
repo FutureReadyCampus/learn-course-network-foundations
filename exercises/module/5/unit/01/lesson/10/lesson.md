@@ -32,7 +32,7 @@ render: markdown
 
 ## 글 틀로 쓰고 올리기
 
-설치할 것은 없습니다. 저장소 `network-study-notes` 를 연 VS Code 에서 글 파일을 만들고, 터미널에서 올립니다. 저장소 `network-study-notes` 가 아직 없으면 [Module 3 Unit 1 시작하기 레슨의 「내 기록 남기기: 소개」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/4)부터 준비하고, 글 틀 세 가지의 내용은 [Module 3 Unit 1 시작하기 레슨의 「글 틀로 글 쓰기」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/10)에 있습니다.
+설치할 것은 없습니다. 저장소 `network-study-notes` 를 연 VS Code 에서 글 파일을 만들고, 터미널에서 올립니다. 저장소 `network-study-notes` 가 아직 없으면 [Module 3 Unit 1 시작하기 레슨의 「자기소개 두 문장으로 시작하기」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/4)부터 준비하고, 글 틀 세 가지의 내용은 [Module 3 Unit 1 시작하기 레슨의 「글 틀로 글 쓰기」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/10)에 있습니다.
 
 **글 틀 고르기**
 
