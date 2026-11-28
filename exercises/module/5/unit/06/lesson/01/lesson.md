@@ -43,7 +43,9 @@ source:
 4. **[VS Code]** `soar_response` 폴더 안에 `alerts_thu.json` 을, `config` 폴더 안에 `escalation_rules.json` 을 만들고 아래 내용을 붙여 넣습니다. 각 파일은 해당 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적고 Enter 를 친 뒤, 코드 상자의 복사 버튼으로 복사해 붙여 넣고 `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다.
    - `config` 폴더가 없으면 터미널에서 `mkdir -p config` 로 만듭니다.
 
-**`alerts_thu.json`** — 이번 Unit의 근무 3시간 동안 들어온 알림 11건입니다.
+<h2><code>alerts_thu.json</code></h2>
+
+이번 Unit의 근무 3시간 동안 들어온 알림 11건입니다.
 
 - **무엇인가**:
   - 알림 한 건은 `id`(알림 번호), `minute`(알림 수신 시각), `entity`(대상: 사용자 이름 또는 IP), `rule`(탐지 규칙), `grade`(심각도 등급, severity)로 구성됩니다.
@@ -67,7 +69,9 @@ source:
 ]
 ```
 
-**`config/escalation_rules.json`** — 티켓 생성 · 병합 · 알림 전파에 적용하는 정책 설정(policy configuration, 폴리시 컨피규레이션: 코드를 수정하지 않고 값만 바꿔 동작을 조정하는 설정 파일)입니다.
+<h2><code>config/escalation_rules.json</code></h2>
+
+티켓 생성 · 병합 · 알림 전파에 적용하는 정책 설정(policy configuration, 폴리시 컨피규레이션: 코드를 수정하지 않고 값만 바꿔 동작을 조정하는 설정 파일)입니다.
 
 - **무엇인가**:
   - `sla_minutes` 는 등급별 응답 기한(SLA, 서비스 수준 협약)입니다. 알림을 수신한 뒤 담당자가 응답해야 하는 시간이며, 단위는 분입니다.
@@ -117,7 +121,9 @@ source:
 
 Unit 1을 하지 못했거나 파일을 지운 경우에만 만듭니다. **이미 있는 파일은 건너뜁니다.** **[VS Code]** 에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `incident.py` · `notifier.py` · `alert_server.py` 를 이름 그대로 만들고, 아래 코드 상자 세 개를 같은 이름의 파일에 붙여 넣고 저장합니다. 이미 있는 파일은 만들지도 붙여 넣지도 않습니다.
 
-**`incident.py`** — Unit 1 파일에서 이번 Unit에서 쓰는 두 함수(`load_json` · `save_json`)만 담았습니다. Unit 1 파일 전체가 있으면 그것을 그대로 씁니다.
+<h2><code>incident.py</code></h2>
+
+Unit 1 파일에서 이번 Unit에서 쓰는 두 함수(`load_json` · `save_json`)만 담았습니다. Unit 1 파일 전체가 있으면 그것을 그대로 씁니다.
 
 ```python
 import json                                                  # JSON 파일을 읽고 쓰기 위해 json 을 불러온다
@@ -140,7 +146,9 @@ def save_json(data, path):                                   # 저장할 값과 
         json.dump(data, file, ensure_ascii=False, indent=2)  # 한글은 그대로, 줄을 나눠 저장한다
 ```
 
-**`notifier.py`** — 알림 함수 `notify` 입니다. 메시지를 알림 서버로 보냅니다.
+<h2><code>notifier.py</code></h2>
+
+알림 함수 `notify` 입니다. 메시지를 알림 서버로 보냅니다.
 
 ```python
 import requests                                                # 인터넷으로 요청을 보내는 도구 (9/30)
@@ -155,7 +163,9 @@ def notify(message, url):                                      # 메시지를 �
         return False                                           # 못 보냈다 — 부른 쪽은 계속 간다
 ```
 
-**`alert_server.py`** — 알림 서버입니다. 실습 6-3과 Unit 7의 실습 7-1에서 알림을 받는 쪽입니다.
+<h2><code>alert_server.py</code></h2>
+
+알림 서버입니다. 실습 6-3과 Unit 7의 실습 7-1에서 알림을 받는 쪽입니다.
 
 ```python
 from flask import Flask, request        # 10/2 에 쓴 웹 서버 도구

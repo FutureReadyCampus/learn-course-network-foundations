@@ -48,7 +48,9 @@ source:
    - `No module named 'pandas'`(판다스가 설치되어 있지 않다는 뜻)가 나오면 터미널(가상환경이 켜진 상태)에서 `pip install pandas`(판다스를 설치하는 명령)를 입력한 뒤 다시 확인합니다.
 5. **[VS Code]** 실습 8-1 데이터 파일 두 개 `unit10_tickets.json` · `unit10_actions.json` 을 만듭니다. 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
 
-**`unit10_tickets.json`** — Unit 7의 근무 3시간 시뮬레이션이 끝났을 때의 티켓 7장입니다.
+<h2><code>unit10_tickets.json</code></h2>
+
+Unit 7의 근무 3시간 시뮬레이션이 끝났을 때의 티켓 7장입니다.
 
 - **무엇인가**:
   - Unit 7의 실습 7-2에서 저장한 `shift_tickets.json` 에서 리포트에 쓰는 키만 남긴 것입니다.
@@ -73,7 +75,9 @@ source:
 ]
 ```
 
-**`unit10_actions.json`** — 근무 중 자동 대응이 남긴 조치 기록 9건에, 설명을 위해 만든 `INC-212` 1건을 더한 10건입니다.
+<h2><code>unit10_actions.json</code></h2>
+
+근무 중 자동 대응이 남긴 조치 기록 9건에, 설명을 위해 만든 `INC-212` 1건을 더한 10건입니다.
 
 - **무엇인가**:
   - <mark style="background:#e0d4ff">Unit 4에서 만든 조치 기록</mark>(감사 기록, audit log: 조치를 순서대로 남긴 기록)에서 `reason` 키만 뺀 모양입니다. `before` 는 조치 전 상태, `after` 는 조치 후 상태입니다.
@@ -106,7 +110,9 @@ Unit 1 · Unit 4 · Unit 5 중 하지 못한 Unit이 있거나 파일을 지운 
 
 - 아래 코드 상자 여섯 개를 같은 이름의 파일에 순서대로 붙여 넣고 저장합니다. 이미 있는 파일은 새로 만들거나 붙여 넣지 않습니다. 실습 8-1 · 실습 8-2에는 `incident.py` 만 있으면 되고, 나머지 다섯 개는 실습 8-3에서 씁니다.
 
-**`incident.py`** — Unit 1 파일에서 오늘 쓰는 두 함수(`load_json` · `save_json`)만 담았습니다. Unit 1 파일 전체가 있으면 그것을 그대로 씁니다.
+<h2><code>incident.py</code></h2>
+
+Unit 1 파일에서 오늘 쓰는 두 함수(`load_json` · `save_json`)만 담았습니다. Unit 1 파일 전체가 있으면 그것을 그대로 씁니다.
 
 ```python
 import json                                                  # JSON 파일을 읽고 쓰기 위해 json 을 불러온다
@@ -129,7 +135,9 @@ def save_json(data, path):                                   # 저장할 값과 
         json.dump(data, file, ensure_ascii=False, indent=2)  # 한글은 그대로, 줄을 나눠 저장한다
 ```
 
-**`containment_store.py`** — Unit 4 파일입니다. 조치 기록 한 건을 만들고 조치 상태를 파일로 저장하고 읽습니다.
+<h2><code>containment_store.py</code></h2>
+
+Unit 4 파일입니다. 조치 기록 한 건을 만들고 조치 상태를 파일로 저장하고 읽습니다.
 
 ```python
 import copy                                                           # 처음 상태를 복사해 쓰기 위해 copy 를 불러온다
@@ -194,7 +202,9 @@ def append_log(record):                                               # 기록 �
     save_json(log, LOG_PATH)                                          # 기록 파일로 다시 저장한다
 ```
 
-**`account_actions.py`** — Unit 4 파일입니다. 계정을 잠그고 해제합니다.
+<h2><code>account_actions.py</code></h2>
+
+Unit 4 파일입니다. 계정을 잠그고 해제합니다.
 
 ```python
 from containment_store import make_record                                             # 기록 한 건을 만드는 함수를 불러온다
@@ -245,7 +255,9 @@ def unlock_account(user, state, incident_id, reason):                           
     return make_record("계정 해제", user, incident_id, "잠김", after, reason)         # 조치 전 · 후 상태와 함께 기록한다 — 미리 채운 줄
 ```
 
-**`ip_actions.py`** — Unit 4 파일입니다. IP 를 차단하고 해제합니다.
+<h2><code>ip_actions.py</code></h2>
+
+Unit 4 파일입니다. IP 를 차단하고 해제합니다.
 
 ```python
 from containment_store import make_record                                                     # 기록 한 건을 만드는 함수를 불러온다
@@ -312,7 +324,9 @@ def expire_blocks(state, incident_id):                                          
     return records                                                                            # 해제 기록 리스트를 리턴한다
 ```
 
-**`undo_actions.py`** — Unit 5 파일입니다. 조치 기록 한 건을 거꾸로 되돌립니다.
+<h2><code>undo_actions.py</code></h2>
+
+Unit 5 파일입니다. 조치 기록 한 건을 거꾸로 되돌립니다.
 
 ```python
 from account_actions import unlock_account  # 실습 8-1에 만든 계정 해제 함수를 불러온다
@@ -342,7 +356,9 @@ def undo_record(record, state):             # 되돌릴 조치 기록과 연습�
     return undo_ip(record, state)           # 아니면 IP 차단 기록이므로 IP 를 해제한다 — 미리 채운 줄
 ```
 
-**`rollback.py`** — Unit 5 파일입니다. 인시던트 한 건의 조치 기록을 찾아 되돌립니다.
+<h2><code>rollback.py</code></h2>
+
+Unit 5 파일입니다. 인시던트 한 건의 조치 기록을 찾아 되돌립니다.
 
 ```python
 from containment_store import make_record                                    # 기록 한 건을 만드는 함수를 불러온다

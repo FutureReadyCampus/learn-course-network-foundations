@@ -42,7 +42,7 @@ source:
 - 연습용 시스템의 상태 `state` 는 잠긴 계정(`locked_users`) · 차단한 IP · 열린 세션을 저장하는 딕셔너리입니다. 이 상태는 실행할 때마다 초기값에서 다시 시작하므로 결과를 똑같이 다시 만들 수 있습니다.
 - 조치 기록은 파일에 추가한 순서대로 남습니다. 그래서 이 기록은 감사 추적(audit trail, 오딧 트레일: 어떤 일이 어떤 순서로 있었는지 다시 짚어 볼 수 있게 남긴 시간순 기록)으로 쓸 수 있습니다.
 
-**문법 상자 — `리스트.remove(값)` 은 리스트에서 그 값을 제거한다**
+<h2>문법 상자 — <code>리스트.remove(값)</code> 은 리스트에서 그 값을 제거한다</h2>
 
 ```python
 locked = ["junho", "dami"]
@@ -68,7 +68,7 @@ account_actions.py    check_policy      : VIP 계정이면 자동 조치를 막�
 
 ## 실습 4-1 · 계정 잠금 실행과 감사 기록 남기기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>잠금 호출만 있고 사후 검증도 조치 전 상태 기록도 없어서, 「잠갔다」는 기록이 실제 상태를 입증하지 못합니다</mark>.
 - **만드는 것**: 조치 기록 생성과 기록 파일 추가(`containment_store.py`), VIP 정책 검사 · 잠금 사후 검증 · 잠금 · 해제(`account_actions.py`), 잠금 요청 처리(`exercise4-1_run.py`).
@@ -76,7 +76,9 @@ account_actions.py    check_policy      : VIP 계정이면 자동 조치를 막�
 
 **할 일**: 파일 세 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 ~ 4 를 읽습니다.
 
-**`containment_store.py`** — 연습용 시스템의 상태와 조치 기록 파일을 관리합니다. 실습 4-2 · 실습 4-3에서도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 1 · 2번입니다. `INITIAL_STATE` 의 `junho` 는 수업 전부터 잠겨 있는 계정입니다.
+<h3><code>containment_store.py</code></h3>
+
+연습용 시스템의 상태와 조치 기록 파일을 관리합니다. 실습 4-2 · 실습 4-3에서도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 1 · 2번입니다. `INITIAL_STATE` 의 `junho` 는 수업 전부터 잠겨 있는 계정입니다.
 
 ```python
 import copy  # 처음 상태를 복사해 쓰기 위해 copy 를 불러온다
@@ -149,7 +151,9 @@ def append_log(record):  # 기록 한 건을 받는 함수
     # 2. log 에 record 를 추가한다 (append)
     save_json(log, LOG_PATH)  # 기록 파일로 다시 저장한다
 ```
-**`account_actions.py`** — 계정 잠금과 해제를 구현합니다. 실습 4-3에서도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 3 ~ 7번입니다.
+<h3><code>account_actions.py</code></h3>
+
+계정 잠금과 해제를 구현합니다. 실습 4-3에서도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 3 ~ 7번입니다.
 
 ```python
 from containment_store import make_record  # 기록 한 건을 만드는 함수를 불러온다
@@ -203,7 +207,9 @@ def unlock_account(user, state, incident_id, reason):  # 계정 · 상태 · 인
         after = "잠김 (확인 실패)"  # 확인 실패라고 고쳐 적는다 — 미리 채운 줄
     return make_record("계정 해제", user, incident_id, "잠김", after, reason)  # 조치 전 · 후 상태와 함께 기록한다 — 미리 채운 줄
 ```
-**`exercise4-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+<h3><code>exercise4-1_run.py</code></h3>
+
+8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
 from incident import load_json  # Unit 1 파일의 함수를 불러온다
@@ -241,7 +247,7 @@ saved_log = load_json("containment_log.json")  # 저장한 기록 파일을 읽�
 print("잠긴 계정:", saved_state["locked_users"])  # 파일에 저장된 잠긴 계정을 출력한다
 print("조치 기록:", len(saved_log), "건")  # 파일에 저장된 기록 수를 출력한다
 ```
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `containment_store.py` · `account_actions.py` · `exercise4-1_run.py` 을(를) 하나씩 그대로 적어 세 개의 파일을 만듭니다. 각 파일에 이 페이지의 코드 상자를 복사해 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
 2. **[VS Code]** `containment_store.py` 1 · 2번, `account_actions.py` 3 ~ 7번, `exercise4-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「실습 4-1 정리」를 봅니다.

@@ -35,7 +35,7 @@ source:
 - 아직 확인하지 않은 티켓(미확인, unacknowledged)은 `acked_at` 이 `-1` 입니다. 그대로 빼면 확인까지 걸린 분이 <mark style="background:#ffc4d6">음수</mark>가 됩니다(예: `TCK-2` 는 −1 − 3 = −4분). 이 값이 평균에 들어가면 평균 확인 시간이 실제보다 짧게 계산되므로, 평균을 구하기 전에 <mark style="background:#ffdcb0">`acked_at` 이 0 이상인 행만 필터링</mark>합니다.
 - 확인은 했지만 아직 해결하지 않은 티켓(`TCK-4` · `TCK-7`)은 평균에 포함됩니다. 평균 확인 시간은 확인한 시각까지만 측정하는 지표이고, 해결까지 걸린 평균 시간(MTTR, Mean Time To Resolve, 엠티티알)과는 별개이기 때문입니다.
 
-**판다스 문법 상자 — 그룹마다 평균 `그룹["열"].mean()` 과 반올림 `.round(1)`**
+<h2>판다스 문법 상자 — 그룹마다 평균 <code>그룹[&quot;열&quot;].mean()</code> 과 반올림 <code>.round(1)</code></h2>
 
 ```python
 import pandas as pd
@@ -60,7 +60,7 @@ print(grade_means.round(1).to_dict())
 - 오늘 샘플에서 아직 확인하지 않은 티켓은 `TCK-2` · `TCK-5` 입니다. 근무는 180분에 끝났는데 둘의 응답 기한 시각은 243분 · 270분이라서, <mark style="background:#bde3ff">기한이 아직 지나지 않았으므로 위반으로 집계하지 않습니다</mark>.
 - `table[table["acked_at"] > table["sla_due"]]` 는 <mark style="background:#e0d4ff">Module 4에서 배운</mark> 「조건으로 행 필터링(filtering, 필터링: 조건에 맞는 행만 남기기)하기」와 같은 모양입니다. 여기서 `table` 은 DataFrame(데이터프레임: 행과 열로 이루어진 판다스의 표)입니다. 조건에 숫자 대신 다른 열을 쓴 것만 다릅니다. 바로 아래 문법 상자에서 작은 예로 확인합니다.
 
-**판다스 문법 상자 — 두 열로 계산하고 비교하기 `표["열1"] - 표["열2"]` · `표[표["열1"] > 표["열2"]]`**
+<h2>판다스 문법 상자 — 두 열로 계산하고 비교하기 <code>표[&quot;열1&quot;] - 표[&quot;열2&quot;]</code> · <code>표[표[&quot;열1&quot;] &gt; 표[&quot;열2&quot;]]</code></h2>
 
 판다스 표에서 두 열을 같은 행끼리 계산하면 그 결과를 새 열로 추가할 수 있고, 같은 행끼리 비교하면 조건에 맞는 행만 남길 수 있습니다(필터링, filtering). 두 경우 모두 행마다 두 열의 값을 하나씩 확인해서 처리합니다. 아래는 학생 네 명의 수학 · 영어 점수입니다.
 
@@ -143,7 +143,7 @@ report.py   make_ticket_table       : 티켓 리스트를 표로 바꾸고 확�
 
 ## 실습 8-1 · 초동 대응 리포트 파일 생성
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>티켓과 조치 기록이 JSON(제이슨: 키와 값으로 적은 데이터 파일 형식) 파일 두 개에 따로 있고, 사람이 읽을 리포트가 없습니다</mark>.
 - **만드는 것**: 표 만들기 · 규칙별 수 · 등급별 평균 · 기한 넘긴 티켓 · 티켓 없는 조치 찾기 · 리포트 줄 만들기(`report.py`), 리포트 파일 쓰기(`exercise8-1_run.py`).
@@ -151,7 +151,9 @@ report.py   make_ticket_table       : 티켓 리스트를 표로 바꾸고 확�
 
 **할 일**: 두 파일을 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행한 뒤 리포트 파일을 열어 읽습니다.
 
-**`report.py`** — 리포트를 만드는 함수 모음입니다. 직접 쓰는 곳은 1 ~ 8번입니다.
+<h3><code>report.py</code></h3>
+
+리포트를 만드는 함수 모음입니다. 직접 쓰는 곳은 1 ~ 8번입니다.
 
 ```python
 import pandas as pd                                                                        # 표를 다루기 위해 판다스를 pd 라는 이름으로 불러온다
@@ -274,7 +276,9 @@ def make_report_lines(tickets, actions, rule_counts, grade_means, late_tickets, 
     return lines                                                                           # 완성한 줄 리스트를 리턴한다 — 미리 채운 줄
 ```
 
-**`exercise8-1_run.py`** — 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+<h3><code>exercise8-1_run.py</code></h3>
+
+9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
 from incident import load_json                                                                # Unit 1 파일의 JSON 읽기 함수를 불러온다
@@ -314,7 +318,7 @@ with open(REPORT_PATH, "w", encoding="utf-8") as report_file:                   
 print("--- 단계 5: 리포트 파일", REPORT_PATH, "·", len(lines), "줄 저장")                     # 단계 5 시작을 알리는 줄과 저장한 줄 수
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 파일 두 개 `report.py` · `exercise8-1_run.py` 를 만듭니다. 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
 2. **[VS Code]** `report.py` 1 ~ 8번, `exercise8-1_run.py` 9번을 씁니다. 막히면 위 문법 상자와 아래 「실습 8-1 정리」를 봅니다.

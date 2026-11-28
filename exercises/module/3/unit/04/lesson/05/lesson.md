@@ -51,7 +51,7 @@ source:
     - `finding` 한 건에는 `user` · `permission` · `source`(권한을 받은 경로: 「예외 3번」 또는 「역할 sales」) · `reasons`(Unit 3의 점검에서 나온 이유의 리스트)가 들어 있습니다.
     - 회수 대상은 (사용자, 권한, 받은 경로)마다 한 건이라, 같은 방법의 계획이 여러 건 나올 수 있습니다(dami 의 역할 해제 2건).
 
-**방법 ① 예외 삭제 — 예외로 받은 권한**
+<h2>방법 ① 예외 삭제 — 예외로 받은 권한</h2>
 
 - **상황**: dami 가 예외 3번으로 `SALES:QUERY` 를 받았습니다.
 - **하는 일**: `EXCEPTIONS` 리스트에서 번호가 3인 예외를 지웁니다.
@@ -59,7 +59,7 @@ source:
 - **지울 대상**(`target`): 예외 번호 3
 - **왜 이 방법인가**: 예외 한 건에만 들어 있는 권한이라 그 예외만 지우면 됩니다.
 
-**방법 ② 역할 해제 — 퇴사한 사용자가 역할로 받은 권한**
+<h2>방법 ② 역할 해제 — 퇴사한 사용자가 역할로 받은 권한</h2>
 
 - **상황**: dami 는 퇴사했고, 역할 `sales` 로 `SALES:QUERY` · `SALES:CHANGE` 를 받았습니다.
 - **하는 일**: `USERS` 에서 dami 의 `role` 을 빈 문자열(`""`)로 바꿉니다. dami 는 어떤 역할의 권한도 받지 않게 됩니다.
@@ -67,7 +67,7 @@ source:
 - **지울 대상**(`target`): 사용자 이름 dami
 - **왜 이 방법인가**: 퇴사한 사람은 어떤 권한도 필요 없어서 역할째로 끊습니다. `sales` 역할에서 권한을 빼면 재직 중인 seoyeon 도 그 권한을 잃으므로, 역할이 아니라 dami 의 `role` 만 비웁니다.
 
-**방법 ③ 역할에서 권한 빼기 — 재직 중인 사용자가 역할로 받은 권한**
+<h2>방법 ③ 역할에서 권한 빼기 — 재직 중인 사용자가 역할로 받은 권한</h2>
 
 - **상황**: 재직 중인 junho 가 역할 `finance` 로 `SALES:QUERY` 를 받았습니다.
 - **하는 일**: `ROLES` 의 `finance` 권한 리스트에서 `SALES:QUERY` 를 뺍니다.
@@ -77,14 +77,14 @@ source:
 
 - **참고**: Unit 1의 `revoke_access` 는 `employed` 만 `False` 로 바꾸고 `role` 은 그대로 두었습니다. 이번의 역할 해제는 `role` 을 비웁니다.
 
-**어떤 방법을 고르나**
+<h2>어떤 방법을 고르나</h2>
 
 - 아래 「`plan_revocation` 의 흐름」 그림의 두 갈림길로 정합니다.
   - 예외로 받았나? 그렇다 → ① 예외 삭제
   - 아니고, 퇴사한 사용자인가? 그렇다 → ② 역할 해제
   - 그 밖(재직 중인 사용자의 역할 권한) → ③ 역할에서 권한 빼기
 
-**한 장 정리**
+<h2>한 장 정리</h2>
 
 | 받은 방식 | 쓰는 방법 | 지울 대상(`target`) | 사라지는 권한 수(`impact`) |
 |---|---|---|---|
@@ -100,7 +100,7 @@ source:
 
 ## 응용 4-1 · 회수 방법과 영향 범위 정하기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: Unit 3에서 찾은 회수 대상 8건이 리스트로만 있습니다. 각각 어떤 방법으로 지워야 하는지, 지우면 누가 영향을 받는지는 담당자가 파일을 열어 따져야 합니다.
 - **그래서 만드는 것**: `plan_revocation` 입니다.
@@ -110,14 +110,14 @@ source:
 - **실행하면**: 단계 1은 8건의 회수 방법과 영향을 출력하고, 단계 2는 방법별 건수, 단계 3은 `finance` · `sales` 역할의 사용자 수와 이름을 출력합니다.
 - **현업에서는**: 권한 회수 도구도 실제로 지우기 전에 「무엇을 어떻게 지울지」 계획을 먼저 보여 줍니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. `challenge_plan.py` · `challenge4-1_run.py` 두 파일을 만들고, `exception_id` · `count_users_by_role` · `build_plan` · `plan_revocation` 에서 직접 쓰는 곳 다섯 군데를 씁니다.
 2. 실행해서 <mark>회수 방법과 영향</mark>(단계 1: 계획), <mark>방법별 건수</mark>(단계 2: 집계), <mark>역할별 사용자 수와 이름</mark>(단계 3: 확인)를 읽습니다.
 
 **입력 준비** — 앞의 준비 Lesson에서 만든 `revoke_input.py`가 시나리오의 회수 대상 8건을 제공합니다. 이 optional 문제는 Unit 3 응용 파일을 다시 계산하지 않습니다.
 
-**`challenge_plan.py`**
+<h3><code>challenge_plan.py</code></h3>
 
 ```python
 def exception_id(source):                                        # "예외 3번" 모양 문자열을 받는 함수
@@ -214,7 +214,9 @@ def plan_revocation(findings, users, roles):                     # 회수 대상
 - 채우기 전에 실행하면 `NameError: name 'method' is not defined` 오류가 납니다.
   - 회수 방법(`method`)을 아직 정하지 않았는데 `build_plan` 에 전달하려 하기 때문입니다. 위의 `exception_id` · `count_users_by_role` · `build_plan` 은 채우기 전에도 오류가 나지 않습니다.
 
-**`challenge4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 준비된 M3 Unit 3 시나리오 입력으로 `plan_revocation`을 호출해 세 단계로 출력합니다.
+<h3><code>challenge4-1_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 준비된 M3 Unit 3 시나리오 입력으로 `plan_revocation`을 호출해 세 단계로 출력합니다.
 
 ```python
 from rbac import USERS, ROLES                                    # Unit 1에서 만든 사용자 · 역할 딕셔너리를 불러온다
@@ -246,7 +248,7 @@ for role in names_by_role:                                       # 두 역할을
     print(role, len(names), "명", names)                         # 역할 · 사용자 수 · 이름을 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `challenge_plan.py`와 `challenge4-1_run.py`를 만듭니다. `revoke_input.py`는 준비 Lesson에서 만든 고정 시나리오 입력을 사용합니다.
    - VS Code: `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력합니다.

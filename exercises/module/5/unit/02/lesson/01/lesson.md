@@ -33,7 +33,9 @@ source:
 3. **파일을 만드는 방법:** 「`파일이름`을 만들어 아래 내용을 붙여 넣습니다」라고 하면 **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름을 확장자까지 그대로 적어 Enter 를 칩니다. 코드 상자를 붙여 넣고 `Ctrl + S`(맥북은 `Cmd + S`)로 저장합니다. 실행 결과와 판단 근거를 기록할 `report_u2.md` 는 「실습 결과 기록 준비」에서 틀을 복사해 만듭니다.
 4. **[VS Code]** 데이터 파일 세 개 `users_info.json` · `source_ips.json` · `trusted_ips.json` 을 `soar_response` 폴더에 만들고, 아래 각 파일의 코드 상자 내용을 붙여 넣습니다.
 
-**`users_info.json`** — 계정 이름별 재직 여부(`employed`)와 VIP 계정(VIP account, 브이아이피 계정: 잠기면 업무에 미치는 영향이 큰 중요도가 높은 계정) 여부(`vip`)를 기록한 파일입니다. `true` 는 「그렇다」, `false` 는 「아니다」입니다. 실제 조직에서는 인사 시스템과 IAM(Identity and Access Management, 아이덴티티 앤 액세스 매니지먼트: 계정과 접근 권한을 관리하는 체계)이 보유한 정보이고, 오늘은 파일로 대신합니다. `dami` 는 퇴사자(`employed` 가 `false`), `gaeun` 은 VIP 계정(`vip` 가 `true`)입니다. 실습 2-1 ~ 실습 2-3에서 읽어 사용합니다.
+<h2><code>users_info.json</code></h2>
+
+계정 이름별 재직 여부(`employed`)와 VIP 계정(VIP account, 브이아이피 계정: 잠기면 업무에 미치는 영향이 큰 중요도가 높은 계정) 여부(`vip`)를 기록한 파일입니다. `true` 는 「그렇다」, `false` 는 「아니다」입니다. 실제 조직에서는 인사 시스템과 IAM(Identity and Access Management, 아이덴티티 앤 액세스 매니지먼트: 계정과 접근 권한을 관리하는 체계)이 보유한 정보이고, 오늘은 파일로 대신합니다. `dami` 는 퇴사자(`employed` 가 `false`), `gaeun` 은 VIP 계정(`vip` 가 `true`)입니다. 실습 2-1 ~ 실습 2-3에서 읽어 사용합니다.
 
 ```
 {
@@ -46,7 +48,9 @@ source:
 }
 ```
 
-**`source_ips.json`** — 사용자 이름별로 로그인에 사용한 접속 IP(source IP, 소스 아이피: 로그인 요청이 출발한 출발지 IP)를 기록한 파일입니다. 이 파일에 이름이 없는 사용자는 접속 IP 기록이 없는 사용자입니다. 실습 2-1에서 읽습니다.
+<h2><code>source_ips.json</code></h2>
+
+사용자 이름별로 로그인에 사용한 접속 IP(source IP, 소스 아이피: 로그인 요청이 출발한 출발지 IP)를 기록한 파일입니다. 이 파일에 이름이 없는 사용자는 접속 IP 기록이 없는 사용자입니다. 실습 2-1에서 읽습니다.
 
 ```
 {
@@ -57,7 +61,9 @@ source:
 }
 ```
 
-**`trusted_ips.json`** — **신뢰 IP**(trusted IP, 트러스티드 아이피: 정상 접속의 출처로 사전에 확인해 등록한 IP) 목록입니다. 협력사 사무실 IP 한 개가 등록되어 있고, `seoyeon` 과 `jiwoo` 가 이 IP 에서 접속합니다. 실습 2-1에서 읽습니다.
+<h2><code>trusted_ips.json</code></h2>
+
+**신뢰 IP**(trusted IP, 트러스티드 아이피: 정상 접속의 출처로 사전에 확인해 등록한 IP) 목록입니다. 협력사 사무실 IP 한 개가 등록되어 있고, `seoyeon` 과 `jiwoo` 가 이 IP 에서 접속합니다. 실습 2-1에서 읽습니다.
 
 ```
 [

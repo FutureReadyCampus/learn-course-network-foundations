@@ -45,7 +45,9 @@ Unit 1에서는 웹 서버 접속 로그 한 줄을 읽고 이상 징후를 구�
 4. 앞의 「실습 결과 기록 준비」에서 만든 기술 기록 파일(`report_u2.md`)을 엽니다.
 5. **[VS Code]** `anomaly_detection` 폴더에 `server_log.jsonl` 과 `saas_events.csv` 파일을 만들어 아래 내용을 그대로 붙여 넣습니다.
 
-**`server_log.jsonl`** — 판정 서버가 남긴 로그 샘플입니다. Module 3에서 만든 서버의 로그와 같은 모양이고, 한 줄이 요청 1개인 JSON 입니다(15줄).
+<h2><code>server_log.jsonl</code></h2>
+
+판정 서버가 남긴 로그 샘플입니다. Module 3에서 만든 서버의 로그와 같은 모양이고, 한 줄이 요청 1개인 JSON 입니다(15줄).
 
 ```
 {"time": "2026-11-02T09:40", "user": "seoyeon", "permission": "SALES:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
@@ -65,7 +67,9 @@ Unit 1에서는 웹 서버 접속 로그 한 줄을 읽고 이상 징후를 구�
 {"time": "2026-11-02T18:20", "user": "seoyeon", "permission": "SALES:CHANGE", "network": "vpn", "allowed": false, "reason": "업무 시간 밖"}
 ```
 
-**`saas_events.csv`** — SaaS 서비스가 내보낸 로그 샘플입니다. 첫 줄은 열 이름이고, 둘째 줄부터 한 줄이 이벤트 1개이며 값은 쉼표로 나뉩니다(첫 줄이 열 이름이라 이벤트는 14개이고, 파일은 15줄입니다). 시각은 내보낼 때 한국 시간으로 설정되어 있습니다.
+<h2><code>saas_events.csv</code></h2>
+
+SaaS 서비스가 내보낸 로그 샘플입니다. 첫 줄은 열 이름이고, 둘째 줄부터 한 줄이 이벤트 1개이며 값은 쉼표로 나뉩니다(첫 줄이 열 이름이라 이벤트는 14개이고, 파일은 15줄입니다). 시각은 내보낼 때 한국 시간으로 설정되어 있습니다.
 
 ```
 time,account,event,ip_address,outcome

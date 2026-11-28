@@ -54,7 +54,7 @@ ticket_notice.py   pick_recipients     : 등급에 맞는 수신자 리스트를
 
 ## 실습 6-3 · 등급별 알림 전파와 재시도 만들기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>티켓은 생성되지만 담당자에게 알림을 전파하는 단계가 없습니다. 그래서 담당자가 티켓 목록을 직접 조회하기 전에는 새 티켓이 생성된 것을 알 수 없습니다</mark>.
 - **만드는 것**: 수신자 선택 · 전송 여부 판정 · 최대 3번 재시도 전송(`ticket_notice.py`), 알림마다 담당자에게 알림을 전파하고 집계한 결과(`exercise6-3_run.py`).
@@ -62,7 +62,9 @@ ticket_notice.py   pick_recipients     : 등급에 맞는 수신자 리스트를
 
 **할 일**: 알림 서버를 켜고, 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 1 ~ 3 과 서버 터미널을 읽습니다.
 
-**`ticket_notice.py`** — 담당자에게 알림을 전파합니다. 직접 쓰는 곳은 1 ~ 6번입니다. 실습 6-2의 `ticket_merge.py` 와 `agent_core` 폴더에서 복사한 `notifier.py` 가 같은 폴더에 있어야 합니다.
+<h3><code>ticket_notice.py</code></h3>
+
+담당자에게 알림을 전파합니다. 직접 쓰는 곳은 1 ~ 6번입니다. 실습 6-2의 `ticket_merge.py` 와 `agent_core` 폴더에서 복사한 `notifier.py` 가 같은 폴더에 있어야 합니다.
 
 ```python
 from notifier import notify                                            # notifier.py 의 알림 함수를 불러온다 (성공하면 True, 실패하면 False)
@@ -122,7 +124,9 @@ def send_ticket_notice(ticket, now, rules):                            # 티켓 
     return "전송"                                                      # 「전송」을 리턴한다
 ```
 
-**`exercise6-3_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 7번 아래에는 `result = …` 를 씁니다. 8번 아래에는 `if … :` 를 씁니다. 9번 아래에는 한 단계 들여쓴 줄을 씁니다.
+<h3><code>exercise6-3_run.py</code></h3>
+
+7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 7번 아래에는 `result = …` 를 씁니다. 8번 아래에는 `if … :` 를 씁니다. 9번 아래에는 한 단계 들여쓴 줄을 씁니다.
 
 ```python
 from incident import load_json, save_json                                             # Unit 1 파일의 JSON 읽기 · 저장 함수를 불러온다
@@ -160,7 +164,7 @@ saved = load_json("tickets_unit09.json")                                        
 print("--- 단계 4: 파일에 저장된 티켓", len(saved), "장")                             # 단계 4 시작을 알리는 줄과 장수
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[터미널]** 알림 서버를 켭니다. 먼저 VS Code 터미널 창 오른쪽 위의 `+` 로 **새 터미널**을 하나 더 엽니다. 그 터미널에서 위치를 확인한 뒤 서버를 켭니다(맥북은 `python3`). <mark style="background:#bde3ff">`Running on http://127.0.0.1:5001` 이 보이면</mark> 됩니다. 이 터미널은 그대로 두고 쓰지 않습니다.
    ```bash

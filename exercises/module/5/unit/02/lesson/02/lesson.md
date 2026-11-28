@@ -54,7 +54,7 @@ enrichment.py   lookup_account   : 대상이 users_info 안에 있으면 재직 
 
 ## 실습 2-1 · 알림 5건 보강하고 VIP 알림 수 세기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>알림 5건에는 대상 이름과 위험 등급만 있어서 퇴사자 · VIP 계정 · 신뢰 IP 에서 온 접속을 구별할 수 없습니다</mark>.
 - **만드는 것**: 계정 정보 조회와 접속 IP 정보 조회(`enrichment.py`), 보강 함수 호출과 VIP 계정 알림 수 집계(`exercise2-1_run.py`).
@@ -62,7 +62,9 @@ enrichment.py   lookup_account   : 대상이 users_info 안에 있으면 재직 
 
 **할 일**: 두 파일을 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 · 3 을 읽습니다.
 
-**`enrichment.py`** — 알림에 맥락을 추가하는 보강 함수를 정의합니다. 실습 2-2 실행 파일도 `enrich_incident` 를 가져와 사용(import)합니다. 직접 쓰는 곳은 1 ~ 6번입니다.
+<h3><code>enrichment.py</code></h3>
+
+알림에 맥락을 추가하는 보강 함수를 정의합니다. 실습 2-2 실행 파일도 `enrich_incident` 를 가져와 사용(import)합니다. 직접 쓰는 곳은 1 ~ 6번입니다.
 
 ```python
 def lookup_account(entity, users_info):  # 대상 이름과 계정 정보 딕셔너리를 받는 함수
@@ -102,7 +104,9 @@ def enrich_incident(incident, users_info, source_ips, trusted_ips):  # 인시던
     return incident  # 맥락이 붙은 인시던트를 리턴한다
 ```
 
-**`exercise2-1_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 파일을 저장하지는 않습니다.
+<h3><code>exercise2-1_run.py</code></h3>
+
+7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 파일을 저장하지는 않습니다.
 
 ```python
 from incident import load_json, INCIDENTS_PATH  # Unit 1 파일의 함수를 불러온다
@@ -150,7 +154,7 @@ for incident in incidents:  # 인시던트를 하나씩 꺼낸다
 print("VIP 계정 알림", vip_count, "건")  # VIP 계정 알림 수를 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `enrichment.py` · `exercise2-1_run.py` 두 파일을 하나씩 만들고(파일 이름 그대로), 코드를 붙여 넣어 저장합니다.
 2. **[VS Code]** `enrichment.py` 1 ~ 6번, `exercise2-1_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「실습 2-1 정리」를 봅니다.

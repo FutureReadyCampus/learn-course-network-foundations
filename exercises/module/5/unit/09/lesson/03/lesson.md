@@ -33,7 +33,9 @@ source:
 - 오탐 복구 점검은 <mark style="background:#e0d4ff">Unit 8의 실습 8-3과 같은 입력으로 다시 처리한 결과</mark>를 대상으로 합니다. 같은 입력이면 같은 결과가 나오므로(재현성) Unit 8의 실습 8-3 출력과 같은 결과가 나와야 합니다.
 - 기준 숫자나 코드를 바꾼 뒤 같은 점검을 다시 실행해, 이전에 맞던 결과가 그대로 맞는지 확인하는 방식을 **회귀 시험**(regression test, 리그레션 테스트: 변경 뒤에 기존에 되던 것이 깨지지 않았는지 다시 확인하는 시험)이라고 합니다. 오늘의 점검 프로그램은 이 회귀 시험으로 쓸 수 있습니다.
 
-**`gate_cases.json`** — 승인 게이트 시험 사례 7개입니다. `case` 는 사례 이름, `expected` 는 기대한 결정(기대 결과), `request` 는 <mark style="background:#e0d4ff">Unit 8의 실습 8-2 요청</mark>에서 `incident` 만 뺀 형식의 조치 요청입니다.
+<h2><code>gate_cases.json</code></h2>
+
+승인 게이트 시험 사례 7개입니다. `case` 는 사례 이름, `expected` 는 기대한 결정(기대 결과), `request` 는 <mark style="background:#e0d4ff">Unit 8의 실습 8-2 요청</mark>에서 `incident` 만 뺀 형식의 조치 요청입니다.
 
 ```
 [
@@ -59,7 +61,7 @@ unit09_check.py   check_report    : 있어야 할 번호가 리포트에 없으�
 
 ## 실습 9-2 · 평가 기준 자동 점검과 점검 목록
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>리포트 · 승인 게이트 · 오탐 복구가 기준을 충족하는지 사람이 출력을 하나씩 읽어 수동으로 검증합니다</mark>.
 - **만드는 것**: 리포트 반영 · 승인 게이트 분기 · 오탐 복구 점검 함수(`unit09_check.py`), 점검 목록 출력과 저장(`exercise9-2_run.py`).
@@ -67,7 +69,9 @@ unit09_check.py   check_report    : 있어야 할 번호가 리포트에 없으�
 
 **할 일**: 데이터 파일 하나와 코드 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 를 읽습니다.
 
-**`unit09_check.py`** — 점검 함수 모음입니다. 직접 쓰는 곳은 1 ~ 7번입니다.
+<h3><code>unit09_check.py</code></h3>
+
+점검 함수 모음입니다. 직접 쓰는 곳은 1 ~ 7번입니다.
 
 - 4번과 5번은 `if` 한 줄만 씁니다. 그 아래 미리 채운 `append` 줄이 `if` 안쪽입니다.
 
@@ -132,7 +136,9 @@ def mark(problems):                                              # 문제 리스
     return "확인 필요"                                           # 문제가 있으면 확인 필요를 리턴한다
 ```
 
-**`exercise9-2_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+<h3><code>exercise9-2_run.py</code></h3>
+
+8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
 from incident import load_json                                                              # Unit 1 파일의 JSON 읽기 함수를 불러온다
@@ -184,7 +190,7 @@ with open("unit09_checklist.md", "w", encoding="utf-8") as check_file:          
 print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")                               # 단계 3 시작을 알리는 줄과 저장한 줄 수
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 파일 세 개 `gate_cases.json` · `unit09_check.py` · `exercise9-2_run.py` 를 만듭니다. 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
 2. **[VS Code]** `unit09_check.py` 1 ~ 7번, `exercise9-2_run.py` 8 · 9번을 씁니다. 막히면 아래 「실습 9-2 정리」를 봅니다.
@@ -218,13 +224,13 @@ print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")            
 
 <mark>문제가 아니라 오늘 한 일을 저장소에 올리는 마무리입니다.</mark> 실습 9-2 마지막 약 10분에 합니다. 어느 터미널을 써도 됩니다. 먼저 `pwd` 로 위치를 확인하고, 결과가 `soar_response` 로 끝나면 아래 1번의 `cd ..` 를 칩니다.
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>팀장이 「오늘 만든 리포트 · 승인 게이트 · 오탐 복구 · 리스크 평가 · 점검 코드와 문서를 저장소에 남겨 달라」고 합니다</mark>.
 - **그래서 하는 것**: `git status` 로 올라갈 파일을 확인한 뒤(`.env` 같은 비밀 키 파일이 섞이면 안 됩니다) `git add` → `git commit` → `git push` 순서로 올립니다.
 - **끝나면**: 깃허브 저장소의 `soar_response` 폴더에 `report.py` · `approval_gate.py` · `false_positive.py` · `risk_assessment.py` · `unit09_check.py` 와 `incident_report_20261112.md` · `risk_assessment.md` · `unit09_checklist.md` · `report_u8.md` · `report_u9.md` 가 보입니다.
 
-**순서**
+<h2>순서</h2>
 
 0. **[터미널]** 오늘 만든 파일이 있는지 `soar_response` 폴더에서 확인합니다. 두 명령을 하나씩 칩니다. Unit 8과 Unit 9의 모든 질문에서 `답:` 뒤와 코드 상자가 모두 채워졌는지도 확인합니다(마무리 (가)는 3번에서 채웁니다).
 

@@ -73,9 +73,9 @@ seoyeon:SALES:QUERY
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="find_unused 는 권한마다 사용 이력과 지난 일 수를 보고 오래 안 쓴 권한을 모은다"></figure>
 
-**문법 상자 — 안 쓴 일 수 구하기**
+<h2>문법 상자 — 안 쓴 일 수 구하기</h2>
 
-**① `.days` 는 시각 차이에서 「일」만 숫자로 알려 줍니다**
+<h2>① <code>.days</code> 는 시각 차이에서 「일」만 숫자로 알려 줍니다</h2>
 
 ```python
 from datetime import datetime                                       # 시각을 다루는 모듈에서 datetime 을 불러온다
@@ -115,21 +115,23 @@ True
 
 ## 실습 3-2 · 90일 넘게 안 쓴 권한 후보 찾기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: 규칙에 안 걸린 재직자의 권한 일곱 건은 겉으로는 문제가 없어 보여서, 쓰는 권한인지 안 쓰는 권한인지 알 수 없습니다.
 - **그래서 만드는 것**: `find_unused` 입니다. 현황 · 마지막 사용 시각 딕셔너리 · 지금 시각 · 기준 일 수를 받아, 마지막 사용이 기준 일 수보다 오래됐거나 사용 이력이 없는 권한을 복사해 `last_used` 키를 추가하고 리스트로 리턴합니다.
 - **실행하면**: 단계 1은 규칙에 안 걸린 권한 일곱 건이 며칠째 안 쓰였는지 출력하고, 단계 2는 90일 넘게 안 쓴 후보를 출력합니다. 규칙에 이미 걸린 권한은 실행 파일이 미리 뺍니다.
 - **현업에서는**: 접근 관리 도구도 「마지막 사용일」 기준(예: 90일)으로 안 쓰는 권한을 모아 담당자에게 확인을 요청합니다.
 
-**할 일**
+<h2>할 일</h2>
 
 먼저 [핵심 실습 점검 함수 준비](__SITE__/exercises/module/3/unit/3/lesson/4/page/1)에서 `review_rules.py`를 만들어 둡니다.
 
 1. `config/access_log.json` · `review_unused.py` · `exercise3-2_run.py` 세 파일을 만들고, `find_unused`의 ①·②를 채웁니다.
 2. 실행해서 <mark>안 쓴 일 수</mark>(단계 1: 현황)와 <mark>90일 넘게 안 쓴 후보</mark>(단계 2: 판정)를 읽습니다.
 
-**`config/access_log.json`** — 그대로 붙여 넣습니다. 사용 이력입니다. `access_control` 안의 `config` 폴더에 만듭니다.
+<h3><code>config/access_log.json</code></h3>
+
+그대로 붙여 넣습니다. 사용 이력입니다. `access_control` 안의 `config` 폴더에 만듭니다.
 
 ```json
 [
@@ -143,7 +145,7 @@ True
 ]
 ```
 
-**`review_unused.py`**
+<h3><code>review_unused.py</code></h3>
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
@@ -207,7 +209,9 @@ def find_unused(access_list, last_used_map, now, limit_days):    # 현황 · 마
 - ②는 `elif False:`에서 `False`를 바꿉니다. `days_since(used_text, now)`가 돌려준 일 수가 `limit_days`보다 큰지 `>`로 확인합니다. `elif`와 콜론은 그대로 둡니다.
 - ①만 채우고 실행하면 사용 이력이 없는 후보 **1건**이 나옵니다. ②까지 채우면 후보 **3건**이 나옵니다. 후보가 **4건**이라면 `>=` 때문에 정확히 90일인 권한까지 들어갔는지 확인합니다.
 
-**`exercise3-2_run.py`** — 그대로 붙여 넣습니다. 현황을 만들고, `review_rules.py`의 `find_stale`에 걸린 권한을 뺀 뒤, 남은 권한이 며칠째 안 쓰였는지 출력하고 `find_unused`로 후보를 찾습니다.
+<h3><code>exercise3-2_run.py</code></h3>
+
+그대로 붙여 넣습니다. 현황을 만들고, `review_rules.py`의 `find_stale`에 걸린 권한을 뺀 뒤, 남은 권한이 며칠째 안 쓰였는지 출력하고 `find_unused`로 후보를 찾습니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
@@ -249,7 +253,7 @@ for entry in unused:                                             # 후보를 한
     print(entry["user"], entry["permission"], "<-", entry["source"])   # 사용자 · 권한 <- 출처를 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 아래 순서를 각 파일에 적용합니다.
    - **VS Code 에서 만들기**: 파일마다 아래 네 가지를 반복합니다.

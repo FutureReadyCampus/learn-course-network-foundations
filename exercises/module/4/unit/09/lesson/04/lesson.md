@@ -36,7 +36,7 @@ curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8081
 ```
 - 명령 풀이: `docker ps --filter publish=포트번호` 그 포트를 쓰는 서버 확인(줄이 나오면 `docker stop 이름` 으로 끔) · `docker images 이름:버전` 받아 둔 이미지 확인(있으면 `docker pull` 은 건너뜀) · `docker compose up -d` 컴포즈 파일의 서버를 모두 백그라운드에서 켬 · `docker compose ps` 컴포즈로 켠 서버의 상태 보기 · `curl 주소` 그 주소에 요청을 보내 결과 번호 보기
 
-**결과**
+<h2>결과</h2>
 
 - (가) 서버 켜기 · 확인 명령과 결과를 친 순서대로 붙인 예입니다. 서비스 이름은 <mark style="background:#bde3ff">**`web1` · `web2`**</mark>, 포트는 <mark style="background:#bde3ff">**8080 · 8081**</mark>입니다.
 
@@ -87,11 +87,11 @@ curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8081
   - 서버 안이 그대로 `80` 인 이유: 콜론 <mark style="background:#bde3ff">왼쪽은 내 컴퓨터의 포트이고, 오른쪽은 서버(컨테이너) 안의 포트이기 때문입니다.</mark> 내 컴퓨터 쪽 번호만 바꿨으므로 서버 안은 달라지지 않습니다.
   - `curl` 이 달라지는 점: 요청 주소의 포트를 <mark style="background:#bde3ff">왼쪽 숫자로 바꿔서</mark> `curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8082` 로 칩니다. 다른 팀원은 그대로 `8081` 입니다.
 
-**왜**
+<h2>왜</h2>
 
 - <mark>서버 설정을 파일에 적어 두면 사람이 옵션을 외우거나 두 번 치지 않아도 되어서 실수가 줄고, 서버가 늘어도 명령은 그대로입니다.</mark>
 
-**자주 틀리는 곳**
+<h2>자주 틀리는 곳</h2>
 
 - 복습에서 켠 `web-run` 을 `docker stop web-run` 으로 끄지 않고 `docker compose up -d` 를 치면 <mark>**`web1` 서버가 켜지지 않습니다.**</mark> 같은 8080번 포트를 `web-run` 이 이미 쓰고 있기 때문입니다.
   - 이때 오류는 다음과 같습니다(<mark style="background:#ffc4d6">`port is already allocated`</mark> 가 나오면 이 실수입니다).
@@ -110,7 +110,7 @@ curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8081
   - 줄 번호는 사람마다 다릅니다.
 - `docker compose up -d` 를 `compose.yaml` 이 없는 폴더에서 치면 `no configuration file provided: not found` 가 나옵니다. <mark>`pwd` 로 `anomaly_detection` 폴더인지 먼저 봅니다.</mark>
 
-**관제에서는**
+<h2>관제에서는</h2>
 
 - 로그를 모으는 서버나 대응 대상 서버를 여러 대 켜야 할 때 컴포즈 파일 하나로 같은 환경을 다시 만듭니다. <mark>설정 파일을 저장소에 두면 누가 어느 PC 에서 켜도 같은 환경이 됩니다.</mark>
 
@@ -136,7 +136,7 @@ ls logs
 ```
 - 명령 풀이: `-f 파일이름` 사용할 컴포즈 파일 지정 · `127.0.0.1:` 포트 줄 앞에 붙여 내 PC 에서만 접속 · `grep "글자" 파일` 그 글자가 든 줄만 남김 · `wc -l` 줄 수 세기 · `>` 출력을 파일에 저장
 
-**결과**
+<h2>결과</h2>
 
 - (가) 1번 출력은 두 서버 모두 `0.0.0.0:` 으로 시작하고, 5번 출력은 다음과 같습니다. 접속 범위가 바뀐 서비스는 <mark style="background:#bde3ff">**`web2`**</mark> 이고, 새로 생긴 서비스는 <mark style="background:#bde3ff">**`web3`**</mark> 입니다.
 
@@ -152,11 +152,11 @@ ls logs
 - (다) `web1` 은 <mark style="background:#bde3ff">설정이 바뀌지 않아서 `Running`</mark>, `web2` 는 <mark style="background:#bde3ff">포트 줄이 바뀌어서 기존 서버를 새 설정으로 다시 만들어 `Recreated`</mark>, `web3` 은 <mark style="background:#bde3ff">새로 추가한 서버라서 `Created`</mark> 였습니다.
   - 도움이 되는 점: 설정을 바꿔도 <mark style="background:#bde3ff">바뀐 서버만 다시 켜지고 나머지는 끊기지 않습니다.</mark> 운영 중인 서비스(`web1`)를 멈추지 않고 보안 설정을 고칠 수 있습니다.
 
-**왜**
+<h2>왜</h2>
 
 - <mark>서버마다 접속 범위를 파일에 적어 두면 설정 실수를 검토하기 쉽고, 같은 `up -d` 로 바뀐 서버만 적용하면 운영 중인 서비스가 끊기지 않습니다.</mark> `volumes` 로 연결해 두면 서버를 지워도 접속 기록 파일을 내 폴더에 남겨 줍니다.
 
-**자주 틀리는 곳**
+<h2>자주 틀리는 곳</h2>
 
 - `up -d` 에 `-f compose.secure.yaml` 을 빼고 `docker compose up -d` 만 치면 <mark>**아무것도 바뀌지 않습니다.**</mark> 실습 9-1의 `compose.yaml` 이 그대로 적용되기 때문입니다.
   - 이때 `ps` 의 PORTS 가 다음처럼 둘 다 `0.0.0.0:` 인 것이 이 실수의 모습입니다. `-f compose.secure.yaml` 을 붙여 다시 칩니다.
@@ -176,7 +176,7 @@ ls logs
 
 - `web2` 의 포트 줄에서 `127.0.0.1:` 을 빼고 `"8081:80"` 으로 쓰면 <mark>오류는 나지 않지만 다시 모두에게 열립니다.</mark> 보안 설정은 오류가 나지 않아도 PORTS 로 확인해야 합니다.
 
-**관제에서는**
+<h2>관제에서는</h2>
 
 - 서버를 새로 켤 때 「누구에게 열지」를 먼저 정하고, 열어 둔 포트는 `ps` 의 PORTS 로 확인합니다. <mark>외부에 열린 포트를 점검하는 일은 보안 점검의 첫 단계입니다.</mark>
 

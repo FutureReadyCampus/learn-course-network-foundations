@@ -37,7 +37,7 @@ source:
 - 한도는 **잘못된 알림을 알아내지는 못합니다.** 잘못된 알림이 들어와도 잠기는 계정이 3개를 넘지 않게 제한할 뿐이며, 한도를 넘은 건은 「담당자 확인 필요」라고 기록합니다.
 - 오늘 `bulk_incidents.json` 은 인사 오류로 몰린 퇴사자 알림 7건(계정 6개, `dami` 알림이 두 건)입니다. `users_info.json` 의 `employed` 를 보면 <mark>실제 퇴사자는 `dami` 한 명뿐입니다.</mark>
 
-**문법 상자 — `startswith` 는 문자열이 지정한 문자열로 시작하는지 확인한다**
+<h2>문법 상자 — <code>startswith</code> 는 문자열이 지정한 문자열로 시작하는지 확인한다</h2>
 
 ```python
 result_text = "건너뜀: 이미 잠겨 있음"
@@ -61,7 +61,7 @@ safe_runner.py   find_skip_reason : 이미 잠긴 계정이면 (1 · 2번), 잠�
 
 ## 실습 2-3 · 중복 방지와 잠금 3개 제한
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>같은 알림을 두 번 처리하면 계정이 두 번 잠기고, 인사 오류 알림이 몰리면 모든 계정이 잠깁니다</mark>.
 - **만드는 것**: 건너뛸 이유 판정과 안전장치를 적용한 액션 실행(`safe_runner.py`), 건너뛴 액션 선별 출력(`exercise2-3_run.py`).
@@ -69,7 +69,9 @@ safe_runner.py   find_skip_reason : 이미 잠긴 계정이면 (1 · 2번), 잠�
 
 **할 일**: 파일 세 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 Unit 1 방식과 안전한 방식의 차이를 읽습니다.
 
-**`bulk_incidents.json`** — 인사 시스템 오류로 몰린 퇴사자 알림 7건입니다(모두 `퇴사한 계정` · `high`). `INC-B01` 과 `INC-B02` 는 같은 계정 `dami` 의 알림으로, 번호가 다른 알림 두 건이 같은 계정을 가리키는 경우를 일부러 만들어 둔 것입니다.
+<h3><code>bulk_incidents.json</code></h3>
+
+인사 시스템 오류로 몰린 퇴사자 알림 7건입니다(모두 `퇴사한 계정` · `high`). `INC-B01` 과 `INC-B02` 는 같은 계정 `dami` 의 알림으로, 번호가 다른 알림 두 건이 같은 계정을 가리키는 경우를 일부러 만들어 둔 것입니다.
 
 ```
 [
@@ -83,7 +85,9 @@ safe_runner.py   find_skip_reason : 이미 잠긴 계정이면 (1 · 2번), 잠�
 ]
 ```
 
-**`safe_runner.py`** — 안전장치를 건 실행기입니다. Unit 3의 실습 3-2에서 실패 처리를 더합니다. 직접 쓰는 곳은 1 ~ 7번입니다.
+<h3><code>safe_runner.py</code></h3>
+
+안전장치를 건 실행기입니다. Unit 3의 실습 3-2에서 실패 처리를 더합니다. 직접 쓰는 곳은 1 ~ 7번입니다.
 
 ```python
 from incident import change_status, match_playbooks, run_action, make_log_entry  # Unit 1 파일의 함수를 불러온다
@@ -157,7 +161,9 @@ def process_safe(incidents, registry, state, action_log):  # 인시던트 리스
     return counts  # 결과별 건수를 리턴한다
 ```
 
-**`exercise2-3_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. Unit 1의 `playbook_runner.py` 의 완성된 `run_playbook` 이 필요합니다.
+<h3><code>exercise2-3_run.py</code></h3>
+
+8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. Unit 1의 `playbook_runner.py` 의 완성된 `run_playbook` 이 필요합니다.
 
 ```python
 from incident import load_json, match_playbooks, INCIDENTS_PATH, REGISTRY_PATH  # Unit 1 파일의 함수를 불러온다
@@ -232,7 +238,7 @@ for entry in action_log:  # 기록을 하나씩 꺼낸다
     # 9.   entry["incident"] · entry["action"] · "->" · result_text 를 출력한다 (print)
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `bulk_incidents.json` · `safe_runner.py` · `exercise2-3_run.py` 세 파일을 하나씩 만들고(파일 이름 그대로), 코드를 붙여 넣어 저장합니다.
 2. **[VS Code]** `safe_runner.py` 1 ~ 7번, `exercise2-3_run.py` 8 · 9번을 씁니다. 막히면 아래 「실습 2-3 정리」를 봅니다.

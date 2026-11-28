@@ -42,7 +42,7 @@ source:
 - <mark>A6 은 같은 IP 에서 왔지만 진짜 문제입니다.</mark> 규칙을 가리지 않고 이 IP 의 알림을 모두 빼면 A6 까지 지워집니다.
 - <mark style="background:#ffc4d6">예외에는 위험도 있습니다. 믿는 IP 에서 누군가 계정을 도용해 로그인해도, 그 규칙은 알림을 내지 않습니다.</mark>
 
-**판다스 문법 상자 — 같은 값을 한 번씩만 꺼내기 `.unique()`**
+<h2>판다스 문법 상자 — 같은 값을 한 번씩만 꺼내기 <code>.unique()</code></h2>
 
 **<mark>`열.unique()`</mark> 는 열에서 같은 값을 한 번씩만 모아 줍니다**
 
@@ -86,7 +86,7 @@ print(users)                 # 사용자 이름을 출력한다
 - 읽는 법: 표에는 사용자가 다섯 번 나오지만, <mark style="background:#bde3ff">두 번째 출력에는 `dami` · `gaeun` · `seoyeon` 이 한 번씩만</mark> 나옵니다. 처음 나온 순서대로 나옵니다.
 - 출력의 `[` `]` 안에 따옴표로 묶인 이름이 공백으로 이어지는 모양은 정상입니다.
 
-**한 장 정리**
+<h2>한 장 정리</h2>
 
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
@@ -103,7 +103,7 @@ print(users)                 # 사용자 이름을 출력한다
 
 ## 실습 8-2 · 예외 규칙으로 오탐 줄이기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>협력사 사무실 IP 에서 온 'SaaS 평소와 다른 IP' 알림이 오탐으로 계속 쌓입니다</mark>.
 - **그래서 만드는 것**: `tuning.py` 입니다.
@@ -114,12 +114,12 @@ print(users)                 # 사용자 이름을 출력한다
 - **실행하면**: <mark>단계 1: 적용 전 알림 수와 오탐 수, 단계 2: 빠진 알림과 그 사용자, 단계 3: 적용 후 알림 수와 오탐 수, 단계 4: 빠진 알림 중 진짜 문제였던 알림 수(0이면 진짜 문제는 지워지지 않은 것)가 나옵니다.</mark>
 - **현업에서는**: 예외를 넣을 때마다 「빠진 알림 중 진짜 문제가 있는가」를 확인합니다. 예외 리스트는 근거(협력사 사무실 IP)와 함께 기록해 두어야 나중에 지울 수 있습니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. `tuning.py` · `exercise8-2_run.py` 두 파일을 만들고, `tuning.py` 의 세 함수에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>적용 전 오탐 수</mark>(단계 1), <mark>빠진 알림</mark>(단계 2), <mark>적용 후 오탐 수</mark>(단계 3), <mark>빠진 알림 중 진짜 문제였던 알림 수</mark>(단계 4)를 읽습니다.
 
-**`tuning.py`**
+<h3><code>tuning.py</code></h3>
 
 ```python
 import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
@@ -186,7 +186,9 @@ def find_removed_users(removed_alerts):               # 빼낸 알림 표를 받
 - 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
 - 채우기 전에 실행하면 `NameError: name 'is_removed' is not defined` 오류가 납니다. 3번을 아직 안 썼기 때문입니다.
 
-**`exercise8-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
+<h3><code>exercise8-2_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
 
 ```python
 from tuning import load_table, count_false_alarms, apply_exception, count_real_removed, find_removed_users, ALERTS_PATH  # 방금 만든 함수를 불러온다
@@ -219,7 +221,7 @@ print("--- 단계 4: 빠진 알림 중 진짜 문제였던 것 ---")  # 단계 4
 print("진짜 문제였던 알림 수:", real_removed_count)   # 0 이면 진짜 문제는 지워지지 않은 것이다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 파일 `tuning.py` · `exercise8-2_run.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `tuning.py` 에서 <mark>직접 쓰는 곳 일곱 군데를 씁니다</mark>. 실습 8-1에서 쓴 방식과 위 판다스 문법 상자, 2.1 의 표를 참고해 씁니다. 막히면 아래 「실습 8-2 정리」를 봅니다.

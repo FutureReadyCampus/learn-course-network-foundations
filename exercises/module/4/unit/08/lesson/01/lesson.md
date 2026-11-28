@@ -45,7 +45,9 @@ Unit 6과 Unit 7에서 만든 탐지 규칙은 알림을 냈지만, **그 알림
 5. **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 이번 Unit에서 쓸 JSON 파일 세 개 `review_alerts.json` · `problems.json` · `login_alerts.json` 을 만듭니다. 같은 이름의 파일이 이미 있으면 새로 만들지 않고 그 파일을 엽니다.
 6. **[VS Code]** 세 파일에 아래 내용을 그대로 붙여 넣습니다(<mark>파일 세 개를 모두 붙인 뒤 맨 아래 7번으로 확인합니다</mark>). <mark>같은 이름의 파일이 이미 있으면 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다). `null` 은 그 값이 없다는 뜻입니다.
 
-**`review_alerts.json`** — Unit 6과 Unit 7의 탐지 규칙이 11/2 에 낸 알림 7개이고, 사람이 조사한 결과가 붙어 있습니다. `real` 은 조사해 보니 진짜 문제였으면 `true`, `problem` 은 그 진짜 문제의 번호(`problems.json` 의 `id`), `memo` 는 조사 메모입니다.
+<h2><code>review_alerts.json</code></h2>
+
+Unit 6과 Unit 7의 탐지 규칙이 11/2 에 낸 알림 7개이고, 사람이 조사한 결과가 붙어 있습니다. `real` 은 조사해 보니 진짜 문제였으면 `true`, `problem` 은 그 진짜 문제의 번호(`problems.json` 의 `id`), `memo` 는 조사 메모입니다.
 
 ```
 [
@@ -59,7 +61,9 @@ Unit 6과 Unit 7에서 만든 탐지 규칙은 알림을 냈지만, **그 알림
 ]
 ```
 
-**`problems.json`** — 사람이 조사해서 확인한 11/2 의 진짜 문제 5개입니다.
+<h2><code>problems.json</code></h2>
+
+사람이 조사해서 확인한 11/2 의 진짜 문제 5개입니다.
 
 ```
 [
@@ -71,7 +75,9 @@ Unit 6과 Unit 7에서 만든 탐지 규칙은 알림을 냈지만, **그 알림
 ]
 ```
 
-**`login_alerts.json`** — 로그인 규칙(웹 로그인 반복 실패)이 낸 알림 1개입니다. 실습 8-3에서 씁니다.
+<h2><code>login_alerts.json</code></h2>
+
+로그인 규칙(웹 로그인 반복 실패)이 낸 알림 1개입니다. 실습 8-3에서 씁니다.
 
 ```
 [

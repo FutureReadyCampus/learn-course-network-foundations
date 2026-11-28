@@ -27,7 +27,9 @@ python exercise7-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise7-1_run.py` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
+<h2>채운 코드 (한 예)</h2>
+
+직접 쓰는 곳은 세 함수입니다.
 
 ① `attach_user_to_web` 안
 
@@ -52,7 +54,7 @@ python exercise7-1_run.py
 
 내가 채운 코드는 위의 코드입니다. <mark>줄 수가 달라도 주석이 말한 일을 하면 맞습니다.</mark>
 
-**결과**
+<h2>결과</h2>
 
 - (가) 출력은 다음과 같고, 연결된 사건은 <mark style="background:#bde3ff">**gaeun**</mark> 한 명이며 이유는 「서로 다른 로그 3종류 · 41분 안」입니다.
 
@@ -76,11 +78,11 @@ gaeun 의 이벤트 (시각 · 로그 · 행동 · 결과)
 - (다) seoyeon 은 단계 4 에서 <mark>로그 종류 2</mark>(서버 · SaaS)로 조건 ①(2 이상)을 만족하지만, 처음부터 마지막까지가 <mark>555분</mark>(09:05 ~ 18:20)으로 조건 ②(60분 이내)를 만족하지 못해 연결되지 않았습니다.
   - 하나의 사건으로 연결하지 않으면 서버의 `SETTLE:QUERY` 거절(권한 없음)과 실습 6-2에서 본 평소와 다른 IP · 대량 다운로드가 같은 사용자의 기록이라는 점을 <mark>탐지 결과에서 확인하기 어렵습니다.</mark>
 
-**왜**
+<h2>왜</h2>
 
 - <mark>서로 다른 로그와 짧은 시간, 두 조건이 함께 있어야 하나의 사건으로 연결합니다.</mark> 로그 종류만 보면 하루 종일 흩어진 일까지 연결되고, 시간만 보면 한 로그의 반복만 연결됩니다.
 
-**자주 틀리는 곳**
+<h2>자주 틀리는 곳</h2>
 
 - `pd.concat` 에 표를 쉼표로 따로 전달하면 `TypeError` 오류가 납니다. **표는 대괄호 `[ ]` 안에 넣어 리스트로 전달합니다.**
   - 실행하면 다음 오류가 납니다(<mark style="background:#ffc4d6">`concat() takes 1 positional argument but 3 were given`</mark> 가 나오면 이 실수입니다).
@@ -97,7 +99,7 @@ TypeError: concat() takes 1 positional argument but 3 were given
   - 줄 번호는 사람마다 다릅니다.
 - 정렬 결과를 다시 담지 않고 `timeline.sort_values(["user", "time"])` 만 쓰면 오류는 나지 않지만 **정렬한 결과가 사라져서** 단계 2 의 gaeun 이벤트가 시각 순서가 아닙니다(10:14 다음에 10:12 가 아니라 서버 이벤트가 먼저 나옵니다).
 
-**관제에서는**
+<h2>관제에서는</h2>
 
 - <mark>이벤트 하나씩이 아니라 사용자 단위의 사건으로 연결하면 담당자가 읽을 양이 줄어듭니다.</mark> 시간 기준 밖에 있는 이벤트는 따로 두고, 다른 사건과 섞이지 않게 합니다.
 
@@ -113,7 +115,9 @@ python exercise7-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise7-2_run.py` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
+<h2>채운 코드 (한 예)</h2>
+
+직접 쓰는 곳은 세 함수입니다.
 
 ① `score_findings` 안
 
@@ -137,7 +141,7 @@ python exercise7-2_run.py
 
 내가 채운 코드는 위의 코드입니다. <mark>줄 수가 달라도 주석이 말한 일을 하면 맞습니다.</mark>
 
-**결과**
+<h2>결과</h2>
 
 - (가) 출력은 다음과 같고, high 는 <mark style="background:#bde3ff">**dami**</mark>, mid 는 <mark style="background:#bde3ff">**seoyeon · gaeun · jiwoo**</mark>, low 는 <mark style="background:#bde3ff">**198.51.100.90**</mark> 입니다.
 
@@ -165,11 +169,11 @@ low 198.51.100.90 30 ['경로 스캔']
 - (다) 198.51.100.90 은 경로 스캔 30점뿐이라 <mark>mid 기준 35에 못 미쳐 low</mark> 입니다.
   - <mark>low 는 점수 기준상 낮은 등급이라는 뜻이고, 기록을 무시해도 된다는 뜻은 아닙니다.</mark> 샘플에서 이 IP 는 09:20:10 ~ 09:20:12 에 스캐너 경로 3종류를 요청했고 모두 실패했습니다. IP 에 적용되는 규칙은 경로 스캔(30점) 하나뿐이라 mid 기준 35 에 닿을 수 없어서 항상 low 입니다. 그래도 이 IP 의 이벤트는 다시 확인할 수 있게 남깁니다.
 
-**왜**
+<h2>왜</h2>
 
 - <mark>규칙이 겹칠수록 점수가 오릅니다.</mark> 사용자 하나에 여러 규칙이 겹치면 먼저 볼 이유가 늘고, 하나뿐이면 순서가 뒤로 갑니다. 이유를 같이 저장해 두면 그 순서를 설명할 수 있습니다.
 
-**자주 틀리는 곳**
+<h2>자주 틀리는 곳</h2>
 
 - `.sum()` 에서 괄호를 빼면 오류가 납니다. 괄호 없는 `grouped["points"].sum` 은 값이 아니라 메서드라서 다음 줄의 `totals.sort_values` 에서 `AttributeError` 가 납니다.
   - 실행하면 다음 오류가 납니다(<mark style="background:#ffc4d6">`'function' object has no attribute 'sort_values'`</mark> 또는 비슷한 문구가 나오면 이 실수입니다).
@@ -186,7 +190,7 @@ AttributeError: 'function' object has no attribute 'sort_values'
   - 줄 번호는 사람마다 다릅니다.
 - `make_grade` 는 **높은 기준부터 차례로 확인합니다.** high 기준을 먼저 확인하고, 아니면 mid 기준을 확인하는 순서입니다. 순서를 바꿔 mid 를 먼저 확인하면 높은 점수도 mid 가 됩니다.
 
-**관제에서는**
+<h2>관제에서는</h2>
 
 - <mark>점수와 등급 기준은 정해 둔 날과 이유를 남깁니다.</mark> 기준을 바꾸면 같은 로그에서 등급이 달라지기 때문입니다. Unit 8에서는 이 등급이 맞았는지 오탐과 미탐을 직접 세어 봅니다.
 

@@ -92,7 +92,7 @@ source:
 - 한 대상에 규칙이 여러 개이면 사실 문장도 여러 개입니다. 이 문장들을 한 줄로 이어 붙이는 데 아래 문법 상자의 `join` 을 씁니다.
 - AI 호출이 실패하면 빈 문자열이 돌아옵니다. 그대로 두면 요약 칸이 비므로, <mark>실패했다는 문장(`FAIL_TEXT`)으로 대신 채워</mark> 담당자가 그 대상은 점수와 이유를 직접 읽게 합니다.
 
-**문법 상자 — 리스트를 한 문자열로 이어 붙이기 `"구분 글자".join(리스트)`**
+<h2>문법 상자 — 리스트를 한 문자열로 이어 붙이기 <code>&quot;구분 글자&quot;.join(리스트)</code></h2>
 
 **<mark>`"구분 글자".join(리스트)`</mark> 는 리스트에 든 글자들을 구분 글자로 이어 붙여 글자 하나로 만듭니다**
 
@@ -132,7 +132,7 @@ print(slash_text)               # 이어 붙인 글자를 출력한다
 - **주의**:
   - <mark style="background:#ffc4d6">`join` 을 쓰지 않고 리스트를 그대로 출력하면 대괄호와 따옴표가 그대로 나옵니다.</mark> 예를 들어 `['사과', '배', '귤']` 처럼 보입니다.
 
-**한 장 정리**
+<h2>한 장 정리</h2>
 
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
@@ -150,7 +150,7 @@ print(slash_text)               # 이어 붙인 글자를 출력한다
 
 ## 실습 10-1 · 점수 파일 사실로 AI 요약 받기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>점수 기록 5건에 규칙 이름만 있어서 담당자가 왜 위험한지 바로 알 수 없습니다</mark>.
 - **그래서 만드는 것**: `event_summary.py` 입니다.
@@ -160,12 +160,12 @@ print(slash_text)               # 이어 붙인 글자를 출력한다
 - **실행하면**: <mark>단계 1: 불러온 기록 수, 단계 2: 요약할 대상, 단계 3: AI 에게 보내는 글(seoyeon), 단계 4: 대상별로 Gemini API 를 활용한 AI 요약이 나옵니다.</mark>
 - **현업에서는**: AI 에게 값만 보내고 판단은 코드가 하면, AI 가 틀린 말을 해도 점수와 등급은 그대로여서 담당자가 사실과 요약을 나란히 보고 확인할 수 있습니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. `event_summary.py` · `exercise10-1_run.py` 두 파일을 만들고, `event_summary.py` 의 네 함수에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>요약할 대상</mark>(단계 2), <mark>AI 에게 보내는 글</mark>(단계 3), <mark>Gemini API 를 활용한 AI 요약</mark>(단계 4)을 읽습니다. 단계 4 에서 Gemini API 를 3번 호출합니다.
 
-**`event_summary.py`**
+<h3><code>event_summary.py</code></h3>
 
 ```python
 import json                                             # JSON 파일을 읽기 위해 json 을 불러온다
@@ -255,7 +255,9 @@ def summarize_record(record):                           # 기록 하나를 받�
 - 4번의 문장은 따옴표 앞에 `f` 를 붙여야 `{entity}` 같은 부분이 값으로 바뀝니다. `f` 를 빼면 `{entity}` 라는 글자가 그대로 나갑니다.
 - 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다. `for` 안쪽의 1 · 2번이 비어 있기 때문입니다.
 
-**`exercise10-1_run.py`** — 그대로 붙여 넣습니다. 직접 쓰는 줄은 없습니다. `len(리스트)` 는 리스트의 개수입니다.
+<h3><code>exercise10-1_run.py</code></h3>
+
+그대로 붙여 넣습니다. 직접 쓰는 줄은 없습니다. `len(리스트)` 는 리스트의 개수입니다.
 
 ```python
 from event_summary import load_records, pick_records_to_summarize, summarize_record, build_prompt, RISK_PATH, SUMMARY_LIMIT  # 방금 만든 함수를 불러온다
@@ -281,7 +283,7 @@ for record in picked:                                                           
     print(record["entity"], ":", summary)                                         # 대상과 요약 문장을 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 파일 `event_summary.py` · `exercise10-1_run.py` 를 `anomaly_detection` 폴더에 만들어 위 코드를 붙여 넣습니다. `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 만듭니다.
 2. **[VS Code]** `event_summary.py` 에서 <mark>직접 쓰는 곳 일곱 군데를 씁니다</mark>. 위 문법 상자와 1.1 의 표를 참고해 씁니다. 막히면 아래 「실습 10-1 정리」를 봅니다.

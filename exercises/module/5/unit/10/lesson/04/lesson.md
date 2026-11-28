@@ -50,7 +50,7 @@ policy_check.py   count_executed         : 실행한 조치 수를 센다 (미�
 
 ## 실습 10-3 · 정책 준수 PASS · FAIL 표
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>엔진은 로그를 남기지만, 승인 게이트와 허용 목록 · VIP 예외가 지켜졌는지 자동으로 확인하는 점검이 없습니다</mark>.
 - **만드는 것**: 점검 네 가지와 PASS · FAIL 판정(`policy_check.py`), 로그 세 개를 읽어 점검하고 결과를 저장하기(`exercise10-3_run.py`).
@@ -58,7 +58,9 @@ policy_check.py   count_executed         : 실행한 조치 수를 센다 (미�
 
 **할 일**: 데이터 파일 한 개와 코드 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 를 읽은 뒤, 회고 문서를 쓰고 깃허브에 올립니다.
 
-**`gate_off_log.json`** — 시험 운영 때 승인 게이트를 끄고(모든 조치 요청의 결정을 「자동」으로 바꾸고) 알림 5건을 처리한 로그입니다.
+<h3><code>gate_off_log.json</code></h3>
+
+시험 운영 때 승인 게이트를 끄고(모든 조치 요청의 결정을 「자동」으로 바꾸고) 알림 5건을 처리한 로그입니다.
 
 - 알림 한 건이 한 줄입니다. 실습 10-1 `engine_log.json` 과 같은 꼴이고, 조치마다 `executed` · `before` · `after` 와 승인 게이트가 본 조치 요청 `request` 가 들어 있습니다.
 - 모든 `decision` 이 「자동」이고 이유가 「승인 게이트 끔」입니다.
@@ -73,7 +75,9 @@ policy_check.py   count_executed         : 실행한 조치 수를 센다 (미�
 ]
 ```
 
-**`policy_check.py`** — 정책 점검 함수 모음입니다. 직접 쓰는 곳은 1 ~ 6번입니다.
+<h3><code>policy_check.py</code></h3>
+
+정책 점검 함수 모음입니다. 직접 쓰는 곳은 1 ~ 6번입니다.
 
 - 2번 · 3번 · 4번 · 5번 · 6번은 `if` 한 줄만 쓰고, 그 아래 미리 채운 줄이 `if` 안쪽입니다. 1번과 2번은 같은 함수에 있고 둘 다 같은 들여쓰기에서 시작합니다.
 
@@ -153,7 +157,9 @@ def judge(violations):                                                          
     return "FAIL"                                                                          # 위반이 있으면 FAIL 을 리턴한다 — 미리 채운 줄
 ```
 
-**`exercise10-3_run.py`** — 7 · 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+<h3><code>exercise10-3_run.py</code></h3>
+
+7 · 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
 from incident import load_json, save_json                                                   # Unit 1 파일의 JSON 읽기 · 쓰기 함수를 불러온다
@@ -187,7 +193,7 @@ print("--- 단계 3: FAIL 이 나온 점검", fail_count, "개 · 전체 점검"
 print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")                                # 단계 4 시작을 알리는 줄과 저장한 수
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[터미널]** 먼저 실습 10-1 · 실습 10-2 로그가 있는지 확인합니다. <mark>`ls` 결과에 `engine_log.json` 과 `risk_engine_log.json` 이 보이면</mark> 됩니다. 없으면 `python exercise10-1_run.py` 와 `python exercise10-2_run.py` 를 먼저 실행합니다(맥북은 `python3`). 그다음 **[VS Code]** 에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `gate_off_log.json` · `policy_check.py` · `exercise10-3_run.py` 파일을 만들어 이 페이지의 코드 상자를 붙여 넣고 저장합니다.
    ```bash
@@ -270,13 +276,13 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
 
 <mark>문제가 아니라 Unit 1~10에서 만든 것을 저장소에 올리는 마무리입니다.</mark> 실습 10-3 마지막 약 10분에 합니다. 어느 터미널을 써도 됩니다. 먼저 `pwd` 로 위치를 확인하고, 결과가 `soar_response` 로 끝나면 아래 1번의 `cd ..` 를 칩니다.
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>팀장이 「Unit 1~10에서 만든 SOAR 모듈과 엔진 · 점검 · 회고 문서를 저장소에 남겨 달라」고 합니다</mark>.
 - **그래서 하는 것**: `git status` 로 올라갈 파일을 확인한 뒤(`.env` 같은 비밀 키 파일이 섞이면 안 됩니다) `git add` → `git commit` → `git push` 순서로 올립니다.
 - **끝나면**: 깃허브 저장소의 `soar_response` 폴더에 `soar_engine.py` · `engine_input.py` · `policy_check.py` · `unit10_final_retrospective.md` · `report_u10.md` 와 로그 · 요약 파일(`engine_log.json` · `risk_engine_log.json` · `engine_summary.json` · `policy_check.json`)이 보입니다.
 
-**순서**
+<h2>순서</h2>
 
 0. **[터미널]** 오늘 만든 파일이 있는지 `soar_response` 폴더에서 확인합니다. 두 명령을 하나씩 칩니다. Unit 10 의 모든 질문에서 `답:` 뒤와 코드 상자가 채워졌는지, `unit10_final_retrospective.md` 의 `…` 가 모두 채워졌는지도 확인합니다(마무리 (가)는 3번에서 채웁니다).
 

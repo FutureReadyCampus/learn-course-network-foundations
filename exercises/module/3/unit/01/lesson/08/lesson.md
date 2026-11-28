@@ -48,7 +48,7 @@ source:
 
 ## 2.2 문자열을 시각으로 바꿔 비교하기
 
-**문법 상자 — `datetime.strptime` 의 형식 문자열**
+<h2>문법 상자 — <code>datetime.strptime</code> 의 형식 문자열</h2>
 
 `datetime.strptime(문자열, 형식)` 은 문자열을 형식대로 읽어 비교할 수 있는 시각으로 바꿉니다. 오늘은 날짜와 시각을 함께 읽습니다.
 
@@ -95,14 +95,14 @@ False
 
 ## 응용 1-3 · 유효한 예외 찾기와 회수 대상 읽기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - `seoyeon` 은 영업 역할이라 정산 조회 권한이 없습니다. 그런데 오늘 18시까지 월말 정산 대조를 도와야 해서, 역할은 그대로 두고 이 사람에게만 정산 조회를 잠깐 허용했습니다. 이것이 예외입니다.
   정산 포털은 요청을 받을 때마다 「이 사람에게 지금 유효한 예외가 있나?」를 확인해야 합니다. 그래서 그 확인을 하는 함수가 필요합니다.
 - 예외는 만들기만 하고 정리하지 않으면 계속 쌓입니다. 이미 만료됐거나, 퇴사한 사람에게 남은 예외를 찾아 「회수 리스트」를 만듭니다.
 - 실제 회사의 임시 권한 기능(필요한 때만 잠깐 접근을 주는 방식)도 요청이 올 때마다 이 확인을 하고, 리스트 점검은 매일 돌립니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. `config/exceptions.json` 에 예외 세 건을 붙여 넣고, 2.1 의 표를 보고 **4번 · 5번 예외 두 건을 직접** 씁니다.
 2. `exception_policy.py` 를 만들고 `find_exception` 본문을 직접 씁니다.
@@ -110,7 +110,9 @@ False
 
 **예외 판정 준비와의 관계** — `config/exceptions.json` 과 `exception_policy.py` 는 「예외 판정 준비」 레슨에서 이미 완성본으로 만들었습니다. 이 응용에서는 두 파일의 내용을 아래 골격으로 **바꿔서(덮어써서)** 직접 써 봅니다. 본문을 다 채울 때까지는 실습 1-3의 `exercise1-3_run.py` 가 동작하지 않습니다. 다 쓴 뒤 `python exercise1-3_run.py` 를 다시 실행해 실습 1-3 정답의 출력과 같은지 확인합니다. 막히면 「예외 판정 준비」의 완성본을 다시 붙여 넣으면 됩니다.
 
-**`config/exceptions.json`** — 아래 세 건을 붙여 넣습니다.
+<h3><code>config/exceptions.json</code></h3>
+
+아래 세 건을 붙여 넣습니다.
 
 <pre class="copyable"><code>[
   {"id": 1, "user": "seoyeon", "permission": "SETTLE:QUERY", "expires": "2026-10-22 18:00", "reason": "월말 정산 대조 지원"},
@@ -130,7 +132,7 @@ False
 
 - 저장한 뒤 `python -m json.tool config/exceptions.json` 을 꼭 실행합니다. 실습 1-3의 `policy.py` 도 이 파일을 읽으므로, 오류가 나면 쉼표를 먼저 고칩니다.
 
-**`exception_policy.py`**
+<h3><code>exception_policy.py</code></h3>
 
 ```python
 import json                                                      # JSON 파일을 읽는 모듈을 불러온다
@@ -157,7 +159,9 @@ def find_exception(user, permission, now):                       # 사용자 · 
 
 - `find_exception` 의 들여쓰기: 1번 `for` 는 4칸, 2번 `if` 는 8칸, 3번은 12칸, 4번의 `if` 는 12칸이고 그 안의 `return` 은 16칸, 5번은 다시 4칸입니다.
 
-**`apply1-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 단계 1(판정)은 `find_exception` 으로 여섯 건을 판정하고, 단계 2(점검)는 2.3 의 순서대로 예외 리스트를 하나씩 점검해 회수할 것을 찾습니다.
+<h3><code>apply1-3_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 단계 1(판정)은 `find_exception` 으로 여섯 건을 판정하고, 단계 2(점검)는 2.3 의 순서대로 예외 리스트를 하나씩 점검해 회수할 것을 찾습니다.
 
 ```python
 import json                                                      # 사용자 파일을 읽는 데 쓴다
@@ -221,7 +225,7 @@ for exception in EXCEPTIONS:                                           # 예외�
 - 예외를 세 건만 넣고 실행하면 4번 · 5번 예외가 없어서 `batch-night` · `gaeun` 이 `(False, None)` 으로 나오고 단계 2 도 세 줄만 나옵니다. 다섯 건을 모두 쓴 뒤의 결과를 읽습니다.
 - 채우기 전에 실행해도 오류 없이 실행됩니다. 단계 1 은 여섯 줄 모두 `None` 이고, 단계 2 는 예외 리스트만 읽으므로 그대로 나옵니다.
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 세 파일을 만들고(이미 있으면 열고) 내용을 지운 뒤 각각 붙여 넣습니다.
    - 만드는 방법은 실습 1-2 의 순서 1번과 같습니다(VS Code 새 파일 아이콘). 만들 파일은 차례로 `access_control` 폴더 안의 `config` 폴더에 `exceptions.json`(경로 `config/exceptions.json`, `config` 폴더를 오른쪽 클릭 › **New File**), `access_control` 폴더 바로 아래에 `exception_policy.py` · `apply1-3_run.py` 입니다. 앞의 두 파일은 「예외 판정 준비」에서 이미 만들었으니 열어서 내용을 바꿉니다. 붙여 넣을 내용은 위 코드 상자입니다.

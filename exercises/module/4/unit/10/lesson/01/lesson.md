@@ -65,7 +65,9 @@ Unit 10은 실습 10-1 · 10-2 · 10-3으로 이루어져 있고, 다음 Unit부
    - 답을 적는 **보고서**(`report_u10.md`)도 이 Unit의 「보고서 쓰기」 레슨에서 복사해 만듭니다.
 5. **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `unit05_risk_scores.json` 을 만들고 아래 내용을 그대로 붙여 넣습니다. <mark>같은 이름의 파일이 이미 있으면 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다).
 
-**`unit05_risk_scores.json`** — Unit 7에서 저장한 대상별 점수 기록 5건입니다. `entity` 는 점수를 매긴 대상(사용자 또는 IP), `score` 는 점수, `grade` 는 등급, `reasons` 는 탐지된 규칙 이름입니다. 점수가 높은 순서로 저장돼 있습니다.
+<h2><code>unit05_risk_scores.json</code></h2>
+
+Unit 7에서 저장한 대상별 점수 기록 5건입니다. `entity` 는 점수를 매긴 대상(사용자 또는 IP), `score` 는 점수, `grade` 는 등급, `reasons` 는 탐지된 규칙 이름입니다. 점수가 높은 순서로 저장돼 있습니다.
 
 ```
 [

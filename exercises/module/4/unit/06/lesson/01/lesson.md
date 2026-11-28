@@ -56,7 +56,9 @@ Module 3(접근통제) 파일 세 개는 이번 Unit에서 <mark>**완성본을 
    - 명령 풀이: `mkdir config` 폴더 만들기 · `ls` 폴더 안의 파일 이름 보기
 6. **[VS Code]** `anomaly_detection` 폴더에 `normalized_events.json` · `rbac.py` 를, 그 안의 `config` 폴더에 `users.json` · `roles.json` 을 파일로 만들어 아래 내용을 그대로 붙여 넣습니다(<mark>파일 네 개를 모두 붙인 뒤 맨 아래 7번으로 확인합니다</mark>). `config` 폴더는 위 5번에서 만들었습니다.
 
-**`normalized_events.json`** — Unit 2에서 만든 이벤트 샘플 57개입니다. 이번 Unit에서는 모두 아래 내용으로 만듭니다. <mark>같은 이름의 파일이 이미 있으면 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다). 이벤트 날짜는 모두 2026-11-02 입니다. `null` 은 그 값이 로그에 없다는 뜻입니다.
+<h2><code>normalized_events.json</code></h2>
+
+Unit 2에서 만든 이벤트 샘플 57개입니다. 이번 Unit에서는 모두 아래 내용으로 만듭니다. <mark>같은 이름의 파일이 이미 있으면 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다). 이벤트 날짜는 모두 2026-11-02 입니다. `null` 은 그 값이 로그에 없다는 뜻입니다.
 
 ```
 [
@@ -120,7 +122,9 @@ Module 3(접근통제) 파일 세 개는 이번 Unit에서 <mark>**완성본을 
 ]
 ```
 
-**`rbac.py`** — Module 3(접근통제)에서 만든 권한 판정 파일의 완성본입니다. `check_permission(사용자, 자원, 행위)` 가 `(허용 여부, 이유)` 를 리턴합니다.
+<h2><code>rbac.py</code></h2>
+
+Module 3(접근통제)에서 만든 권한 판정 파일의 완성본입니다. `check_permission(사용자, 자원, 행위)` 가 `(허용 여부, 이유)` 를 리턴합니다.
 
 ```python
 import json                                                      # JSON 파일을 읽는 모듈을 불러온다
@@ -146,7 +150,9 @@ def check_permission(user, resource, action):                    # 사용자 · 
     return True, "허용"                                          # 모든 검사를 지나면 허용한다
 ```
 
-**`config/users.json`** — Module 3(접근통제)의 사용자 파일입니다. 사용자마다 역할과 재직 여부(`employed`)가 있습니다.
+<h2><code>config/users.json</code></h2>
+
+Module 3(접근통제)의 사용자 파일입니다. 사용자마다 역할과 재직 여부(`employed`)가 있습니다.
 
 ```
 {
@@ -159,7 +165,9 @@ def check_permission(user, resource, action):                    # 사용자 · 
 }
 ```
 
-**`config/roles.json`** — Module 3(접근통제)의 역할 파일입니다. 역할마다 허용된 권한 리스트가 있습니다.
+<h2><code>config/roles.json</code></h2>
+
+Module 3(접근통제)의 역할 파일입니다. 역할마다 허용된 권한 리스트가 있습니다.
 
 ```
 {

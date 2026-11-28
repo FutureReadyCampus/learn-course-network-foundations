@@ -45,7 +45,9 @@ M3 Unit 4까지 권한을 점검하고, 회수하고, 요청마다 조건을 확
 4. 문제는 **할 일 → 순서**대로 하고, `[창 이름]` 이 지금 쓸 창입니다. 코드를 채울 때는 주석이 말하는 일을 하면 몇 줄이든 맞고, 막히면 각 실습 바로 뒤의 「정답과 해설 보기」를 엽니다.
 5. **[VS Code]** 이번 Unit에서 쓸 데이터 파일 세 개를 만들어 아래 내용을 그대로 붙여 넣습니다. `access_control` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 아래 굵은 글씨의 **파일 이름을 그대로** 적습니다. `config/week_state.json` 처럼 `config/` 가 붙은 이름을 적으면 `config` 폴더 안에 만들어집니다(`config` 폴더가 없으면 함께 만들어집니다).
 
-**`config/week_state.json`** — 점검할 데이터입니다. 사용자 여섯 명 · 역할별 부서 · 예외 네 개가 들어 있습니다.
+<h2><code>config/week_state.json</code></h2>
+
+점검할 데이터입니다. 사용자 여섯 명 · 역할별 부서 · 예외 네 개가 들어 있습니다.
 
 ```json
 {
@@ -73,13 +75,17 @@ M3 Unit 4까지 권한을 점검하고, 회수하고, 요청마다 조건을 확
 }
 ```
 
-**`config/alert.json`** — 경고 기준입니다. 거부율이 0.3(30%) 이상이면 경고이고, 사용자 한 명이 4번 이상 거부되면 눈여겨봅니다.
+<h2><code>config/alert.json</code></h2>
+
+경고 기준입니다. 거부율이 0.3(30%) 이상이면 경고이고, 사용자 한 명이 4번 이상 거부되면 눈여겨봅니다.
 
 ```json
 {"deny_rate_limit": 0.3, "user_denied_limit": 4}
 ```
 
-**`week_log.jsonl`** — 일주일 치 샘플 로그입니다. 한 줄이 요청 한 개이고 JSON 한 줄입니다. `access_control` 폴더 바로 아래에 만듭니다.
+<h2><code>week_log.jsonl</code></h2>
+
+일주일 치 샘플 로그입니다. 한 줄이 요청 한 개이고 JSON 한 줄입니다. `access_control` 폴더 바로 아래에 만듭니다.
 
 ```
 {"time": "2026-10-26T09:10", "user": "seoyeon", "permission": "SALES:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
