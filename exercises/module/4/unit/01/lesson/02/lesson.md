@@ -184,13 +184,14 @@ True
 
 <h3><code>log_parse.py</code></h3>
 
-```python
-def split_request(line):                                # 로그 한 줄(문자열)을 받는 함수
+‘정답 보기’를 누르면 아래 코드의 ①과 ②에 정답 줄이 표시됩니다.
+
+<pre><code class="language-python">def split_request(line):                                # 로그 한 줄(문자열)을 받는 함수
     """로그 한 줄을 큰따옴표 기준으로 앞 · 요청 · 뒤 세 조각으로 나눈다.
     나뉘지 않은 하나의 문자열인 로그에서 값을 꺼내기 시작할 때 쓴다.
     """
     # ① line 을 큰따옴표(")로 두 번만 나눠 prefix, request_text, suffix 세 이름에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
-
+<span data-answer-line="    prefix, request_text, suffix = line.split(&#x27;&quot;&#x27;, 2)"></span>
     return prefix, request_text, suffix                 # 세 조각을 리턴한다
 
 
@@ -209,7 +210,7 @@ def read_status(suffix):                                # 요청 뒤 조각(예:
     parts = suffix.split()                              # 공백 기준으로 나눠 조각 리스트를 만든다
     status_text = parts[0]                              # 첫 조각이 상태 코드 문자열이다(예: '401')
     # ② status_text 를 정수로 바꿔 status 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
-
+<span data-answer-line="    status = int(status_text)"></span>
     return status                                       # 상태 코드(정수)를 리턴한다
 
 
@@ -227,7 +228,7 @@ def parse_line(line):                                   # 로그 한 줄을 받�
     깨진 줄이면 None 을 리턴한다.
     접속 로그를 분석하기 전에 한 줄을 값으로 나눌 때 쓴다.
     """
-    if line.count('"') < 2:                             # 큰따옴표가 두 개보다 적은 깨진 줄이면
+    if line.count('"') &lt; 2:                             # 큰따옴표가 두 개보다 적은 깨진 줄이면
         return None                                     # 읽을 수 없으니 None 을 리턴한다
     prefix, request_text, suffix = split_request(line)  # 세 조각으로 나눈다
     method, path = read_request(request_text)           # 요청 조각에서 방법과 경로를 꺼낸다
@@ -240,7 +241,7 @@ def parse_line(line):                                   # 로그 한 줄을 받�
         "status": status,                               # 상태 코드(정수)
     }
     return entry                                        # 딕셔너리를 리턴한다
-```
+</code></pre>
 
 - 주석 줄은 그대로 두고, **각 주석 바로 아래 줄**에 씁니다. ① · ② 모두 함수 안의 줄이라 앞에 공백 4개(4칸)에서 시작합니다.
 - 미리 채운 `read_request` · `read_status` · `read_client` 의 `split()` 처럼 괄호 안을 비우면 공백(띄어쓰기)을 기준으로 나눕니다. 공백이 여러 칸이거나 `suffix` 처럼 맨 앞에 공백이 있어도 빈 조각을 만들지 않습니다.
