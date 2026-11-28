@@ -31,14 +31,8 @@ render: markdown
 ## 글을 저장하고 올리기
 
 1. 저장소 `network-study-notes` 의 `_posts` 폴더에서 오늘 날짜로 시작하는 새 Markdown 파일을 만듭니다. 예: `_posts/2026-11-25-m5-u3-rollback-ticket.md`.
-2. 글 틀을 붙여 넣고 머리말을 이 Unit에 맞게 씁니다.
-
-   ```yaml
-   module: 5
-   unit: 3
-   ```
-
-3. 제목과 날짜를 고치고 세 문장을 저장합니다. 글 안에는 핵심 코드 몇 줄과 전체 파일 위치(`soar_response/rollback.py` 또는 `soar_response/ticketing.py`)를 함께 적을 수 있습니다.
+2. 글 틀을 붙여 넣고 머리말의 `title`에 글 제목을, `date`에 파일명의 날짜를 적습니다.
+3. 문제와 판단 근거, 확인한 결과를 세 문장으로 적고 저장합니다. 글 안에는 핵심 코드 몇 줄과 전체 파일 위치(`soar_response/rollback.py` 또는 `soar_response/ticketing.py`)를 함께 적을 수 있습니다.
 4. `network-study-notes` 저장소 루트에서 공개 전 점검을 실행하고 올립니다.
 
    ```bash

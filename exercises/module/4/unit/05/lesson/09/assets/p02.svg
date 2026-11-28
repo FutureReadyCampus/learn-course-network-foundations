@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 396" role="img">
-<title>글 틀을 _posts/ 새 파일에 붙이고 module: 4, unit: 5 로 쓰면 5번 칸이 채워진다</title>
-<desc>기본은 post-short 글 틀(세 문장)이고, 막혔으면 post-stuck, 긴 글은 응용으로 post-practice 를 골라 _posts/2026-11-20-m4-u5-ai-summary.md 새 파일에 붙여 넣고 머리말을 module: 4, unit: 5 로 고칩니다. 코드는 옮기지 않고 글에 anomaly_detection/event_summary.py 처럼 위치만 적습니다. 공개 전 점검 뒤 push 하면 1~2분 뒤 첫 화면 「나의 진행」의 Module 4 줄 5번 칸이 채워집니다.</desc>
+<title>이벤트 요약 검증 글을 올리고 전체 글 목록에서 열기</title>
+<desc>_posts 폴더에 글을 만들고 제목과 날짜를 적습니다. 이벤트 요약 검증에서 확인한 내용을 저장해 올린 뒤, 전체 글 목록에서 제목을 눌러 본문을 확인합니다.</desc>
 <defs><marker id="a-l09-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
 <text x="24" y="32" font-size="19" font-weight="700">VS Code 에서 글 한 편 쓰기</text>
@@ -13,9 +13,9 @@
 <rect x="252" y="52" width="444" height="128" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
 <text x="268" y="78" font-size="15" font-weight="700">2. _posts/2026-11-20-m4-u5-ai-summary.md</text>
 <rect x="268" y="92" width="412" height="74" rx="6" fill="#ffffff" stroke="#dededb"/>
-<text x="284" y="120" font-size="15" font-family="Menlo, Consolas, monospace">module: 4</text>
-<text x="284" y="150" font-size="15" font-family="Menlo, Consolas, monospace">unit: 5</text>
-<text x="420" y="120" font-size="14" fill="#2f6fd0">이 두 줄이 칸을 정합니다</text>
+<text x="284" y="120" font-size="15" font-family="Menlo, Consolas, monospace">title: 내 글 제목</text>
+<text x="284" y="150" font-size="15" font-family="Menlo, Consolas, monospace">date: 2026-11-20</text>
+<text x="420" y="120" font-size="14" fill="#2f6fd0">내 제목과 작성일을 적습니다</text>
 <text x="420" y="150" font-size="14" fill="#666660">title · date 도 바꾸기</text>
 <rect x="24" y="200" width="180" height="70" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="114" y="228" font-size="15" text-anchor="middle" font-weight="700">코드는 그대로</text>
@@ -27,19 +27,8 @@
 <line x1="474" y1="274" x2="474" y2="296" stroke="#666660" stroke-width="1.8" marker-end="url(#a-l09-p02)"/>
 <text x="486" y="292" font-size="14" fill="#666660">점검 뒤 push · 1~2분 뒤</text>
 <rect x="24" y="302" width="672" height="76" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="40" y="328" font-size="15" font-weight="700">4. 첫 화면 「나의 진행」</text>
+<text x="40" y="328" font-size="15" font-weight="700">4. 첫 화면 「전체 글」</text>
 <text x="680" y="328" font-size="14" text-anchor="end" fill="#666660">안 보이면 Actions 탭부터</text>
-<text x="40" y="360" font-size="15">Module 4</text>
-<rect x="124" y="340" width="30" height="30" rx="5" fill="#f1f1ef" stroke="#dededb"/>
-<text x="139" y="360" font-size="14" text-anchor="middle" fill="#666660">1</text>
-<rect x="160" y="340" width="30" height="30" rx="5" fill="#f1f1ef" stroke="#dededb"/>
-<text x="175" y="360" font-size="14" text-anchor="middle" fill="#666660">2</text>
-<rect x="196" y="340" width="30" height="30" rx="5" fill="#f1f1ef" stroke="#dededb"/>
-<text x="211" y="360" font-size="14" text-anchor="middle" fill="#666660">3</text>
-<rect x="232" y="340" width="30" height="30" rx="5" fill="#f1f1ef" stroke="#dededb"/>
-<text x="247" y="360" font-size="14" text-anchor="middle" fill="#666660">4</text>
-<rect x="268" y="340" width="30" height="30" rx="5" fill="#e0442e" stroke="#e0442e"/>
-<text x="283" y="360" font-size="14" text-anchor="middle" font-weight="700" fill="#ffffff">5</text>
-<text x="316" y="360" font-size="14">unit: 5 글을 올리면 5번 칸이 채워집니다</text>
+<text x="40" y="360" font-size="14" fill="#2f6fd0">이벤트 요약 검증 · 제목을 눌러 본문 확인</text>
 </g>
 </svg>

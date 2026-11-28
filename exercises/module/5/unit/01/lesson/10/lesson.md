@@ -45,7 +45,7 @@ render: markdown
 **올리는 순서**
 
 1. **[VS Code]** 왼쪽 목록의 `network-study-notes` 안 `_posts` 폴더를 오른쪽 클릭 › **New File** 로 `2026-11-20-m5-u1-playbook-runner.md` 처럼 만듭니다(경로 `_posts/2026-11-20-m5-u1-playbook-runner.md`). 앞은 오늘 날짜, 뒤는 영문 제목입니다.
-2. 고른 글 틀의 내용을 붙여 넣고, 맨 위 머리말(front matter)의 `module: 5`, `unit: 1` 을 이렇게 적습니다. 그래야 첫 화면 「나의 진행」에서 Module 5의 1번 칸이 채워집니다. `date:` 는 파일 이름의 날짜와 같게 씁니다. 날짜가 미래면 글이 목록에 나오지 않습니다.
+2. 고른 글 틀의 내용을 붙여 넣고, 맨 위 머리말(front matter)에 내 글의 제목을 적습니다. `date:` 는 파일 이름의 날짜와 같게 씁니다. 날짜가 미래면 글이 목록에 나오지 않습니다.
 
 <!-- checklist -->
 - [ ] `_posts` 폴더에 오늘 날짜 이름(예: `_posts/2026-11-20-m5-u1-playbook-runner.md`)으로 글 파일을 만들고 글 틀을 붙여 넣었다
@@ -54,12 +54,12 @@ render: markdown
 3. 빈칸을 채우고 저장합니다. 코드는 따로 옮기지 않습니다. 오늘 만든 `soar_response/playbook_runner.py` · `soar_response/enrichment.py` 가 같은 저장소에 이미 올라가 있으니, 글에는 `전체 코드: soar_response/playbook_runner.py` 처럼 위치만 적습니다.
 
 <!-- checklist -->
-- [ ] 머리말을 `module: 5` · `unit: 1` 과 내 `title` · `date` 로 고치고 세 칸을 채워 저장했다
+- [ ] 머리말을 내 글의 `title` · `date` 로 고치고 세 칸을 채워 저장했다
 <!-- /checklist -->
 
 4. 올리기는 이 레슨 마지막 페이지 「공개 전 점검」을 마친 뒤 그 페이지에서 합니다.
 
-> **확인** — VS Code 왼쪽 목록의 `_posts` 폴더 안에 오늘 글 파일이 있고, 맨 위 머리말에 `module: 5` · `unit: 1` 이 있으면 성공입니다. 없으면 오른쪽 클릭한 폴더가 `_posts` 인지 봅니다.
+> **확인** — VS Code 왼쪽 목록의 `_posts` 폴더 안에 오늘 글 파일이 있고, 머리말에 내 글의 제목과 작성일이 있으면 성공입니다. 없으면 오른쪽 클릭한 폴더가 `_posts` 인지 봅니다.
 
 ## 막힐 때 힌트
 
@@ -99,8 +99,8 @@ render: markdown
 
 올리고 1~2분 뒤 내 사이트 첫 화면을 엽니다.
 
-> **확인** — 최신 글에 오늘 글이 보이고 「나의 진행」의 Module 5 · Unit 1 칸이 채워지면 성공입니다. 안 보이면 [Module 3 Unit 1 시작하기 레슨의 「첫 화면 확인하고 막힐 때」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/9)의 「글이 목록에 안 나옴」 줄을 봅니다.
+> **확인** — 「전체 글」에서 오늘 올린 글의 제목을 눌러 본문이 열리면 성공입니다. 안 보이면 [Module 3 Unit 1 시작하기 레슨의 「첫 화면 확인하고 막힐 때」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/9)의 「글이 목록에 안 나옴」 줄을 봅니다.
 
 <!-- checklist -->
-- [ ] 내 사이트 첫 화면에서 오늘 글과 Module 5 · Unit 1 칸이 채워진 것을 보았다
+- [ ] 내 사이트의 「전체 글」에서 오늘 쓴 글의 제목을 눌러 본문을 확인했다
 <!-- /checklist -->

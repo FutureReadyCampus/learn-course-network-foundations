@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img">
-<title>글 틀을 골라 _posts/ 에 m4-u1 글을 만들면 첫 화면 Module 4의 1번 칸이 채워진다</title>
-<desc>핵심 실습을 바탕으로 post-short 를 쓰고, 해결되지 않은 문제는 post-stuck 으로 기록합니다. 글 틀 하나를 골라 VS Code 에서 _posts/ 폴더에 새 글로 만들고 머리말을 module: 4, unit: 1로 적습니다. 코드는 옮기지 않고 글에 anomaly_detection/normalize_web.py 처럼 위치만 적고, 공개 전 점검 뒤 push 하면 1~2분 뒤 첫 화면 「나의 진행」의 Module 4 · 1번 칸을 확인합니다.</desc>
+<title>로그 시각 정규화 글을 올리고 전체 글 목록에서 열기</title>
+<desc>_posts 폴더에 글을 만들고 제목과 날짜를 적습니다. 로그 시각 정규화에서 확인한 내용을 저장해 올린 뒤, 전체 글 목록에서 제목을 눌러 본문을 확인합니다.</desc>
 <defs><marker id="a-m4u01l09-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, &apos;Noto Sans KR&apos;, -apple-system, &apos;Segoe UI&apos;, sans-serif">
 <text x="30" y="32" font-size="16" font-weight="700" fill="#292929">1. 글 틀 고르기</text>
@@ -21,22 +21,15 @@
 <text x="282" y="111" font-size="14" fill="#292929">log-normalize.md</text>
 <rect x="282" y="126" width="192" height="94" rx="4" fill="#ffffff" stroke="#dededb"/>
 <text x="294" y="148" font-size="14" fill="#666660">---</text>
-<text x="294" y="168" font-size="14" font-weight="700" fill="#b32a17">module: 4</text>
-<text x="294" y="188" font-size="14" font-weight="700" fill="#b32a17">unit: 1</text>
+<text x="294" y="168" font-size="14" font-weight="700" fill="#b32a17">title: 내 글 제목</text>
+<text x="294" y="188" font-size="14" font-weight="700" fill="#b32a17">date: 2026-11-20</text>
 <text x="294" y="208" font-size="14" fill="#666660">---</text>
 <line x1="494" y1="140" x2="530" y2="140" stroke="#666660" stroke-width="2" marker-end="url(#a-m4u01l09-p02)"/>
 <text x="536" y="32" font-size="16" font-weight="700" fill="#292929">3. 1~2분 뒤 첫 화면</text>
 <rect x="536" y="46" width="160" height="188" rx="6" fill="#ffffff" stroke="#dededb"/>
-<text x="550" y="70" font-size="14" font-weight="700" fill="#292929">나의 진행</text>
-<text x="550" y="94" font-size="14" fill="#666660">Module 4</text>
-<rect x="550" y="104" width="22" height="22" rx="3" fill="#e0442e"/>
-<rect x="578" y="104" width="22" height="22" rx="3" fill="#dededb"/>
-<rect x="606" y="104" width="22" height="22" rx="3" fill="#dededb"/>
-<rect x="634" y="104" width="22" height="22" rx="3" fill="#dededb"/>
-<rect x="662" y="104" width="22" height="22" rx="3" fill="#dededb"/>
-<text x="561" y="146" font-size="14" fill="#b32a17" text-anchor="middle">1번</text>
-<text x="550" y="182" font-size="14" fill="#292929">최신 글에</text>
-<text x="550" y="202" font-size="14" fill="#292929">내 글이 보임</text>
+<text x="550" y="80" font-size="14" fill="#2f6fd0">전체 글</text>
+<text x="550" y="115" font-size="14" fill="#2f6fd0">로그 시각 정규화</text>
+<text x="550" y="180" font-size="14" fill="#2f6fd0">제목을 눌러 본문 확인</text>
 <text x="30" y="282" font-size="16" font-weight="700" fill="#292929">코드는 옮기지 않고 위치만</text>
 <rect x="30" y="296" width="300" height="72" rx="6" fill="#e6eefb" stroke="#2f6fd0"/>
 <text x="44" y="322" font-size="14" fill="#292929">anomaly_detection/log_parse.py</text>
