@@ -29,8 +29,8 @@ class M3FlowTest(unittest.TestCase):
                 self.assertNotIn("응용", rendered)
                 self.assertNotIn("report_u", rendered)
                 self.assertIn("_posts", rendered)
-                self.assertIn("## 문제 상황", rendered)
-                self.assertIn("## 확인한 결과", rendered)
+                for heading in ("문제", "선택과 이유", "검증 결과"):
+                    self.assertIn(f"## {heading}\n", rendered)
                 self.assertIn("python check_publish.py", rendered)
                 self.assertIn("git push", rendered)
                 self.assertNotIn("이번 Unit 마무리", rendered)
