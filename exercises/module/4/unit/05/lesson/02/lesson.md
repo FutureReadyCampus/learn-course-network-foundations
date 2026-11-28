@@ -53,7 +53,7 @@ source:
 - 이 규칙은 분마다 요청이 **몇 개**인지만 봅니다. <mark>요청의 내용(어떤 경로를 요청했는지)은 보지 않습니다.</mark>
 - 급증은 이상 징후(평소 범위를 벗어난 일)의 한 종류입니다. <mark>급증이 있다고 공격이 확정되는 것은 아니고,</mark> 먼저 확인할 대상이 정해질 뿐입니다.
 
-**판다스 문법 상자 — 시각에서 초를 버려 분으로 맞추기**
+<h2>판다스 문법 상자 — 시각에서 초를 버려 분으로 맞추기</h2>
 
 **<mark>`시각.dt.floor("min")`</mark> 은 시각에서 초를 버리고 분까지만 남깁니다. `09:12:03` 도 `09:12:15` 도 `09:12:00` 이 되어, 같은 분의 이벤트가 같은 값을 갖습니다**
 
@@ -110,7 +110,7 @@ Name: count, dtype: int64
 - **`.dt` 없이 `times.floor("min")` 으로 쓰면 오류가 납니다**(아래 「자주 틀리는 곳」). Unit 3에서 쓴 `times.dt.hour` 처럼 `.dt` 를 먼저 붙입니다.
 - 이 예는 연습용 작은 표이고, 문제에서는 웹 서버 이벤트의 시각을 이렇게 분으로 맞춰 셉니다.
 
-**알아 둘 것 — 출력 맨 아래의 `dtype: int64`**
+<h2>알아 둘 것 — 출력 맨 아래의 <code>dtype: int64</code></h2>
 
 `value_counts()` 나 `groupby().size()` 로 센 결과의 맨 아래에는 `dtype: int64` 가 함께 나옵니다. `dtype` 은 data type(데이터 타입)의 줄임말로 값의 종류를 뜻하고, `int64` 는 정수(소수점 없는 숫자)입니다. <mark>숫자 계산이 되는 정상 상태이므로 지금은 `int64` 가 보이면 됩니다.</mark> 자세한 쓰임은 다음에 차차 배웁니다.
 
@@ -142,7 +142,7 @@ Name: count, dtype: int64
 
 - 숫자인데 `object` 로 나오면 <mark>문자열로 읽힌 것이라 합계 · 비교가 맞지 않습니다.</mark>
 
-**한 장 정리**
+<h2>한 장 정리</h2>
 
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
@@ -160,7 +160,7 @@ Name: count, dtype: int64
 
 ## 실습 5-1 · 분마다 세어 요청 급증 분 찾기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: 웹 서버 이벤트 28개가 초 단위로 흩어져 있어서, 어느 1분에 요청이 늘었는지 한눈에 안 보입니다.
 - **그래서 만드는 것**: `traffic_detection.py` 입니다.
@@ -170,12 +170,12 @@ Name: count, dtype: int64
 - **실행하면**: 단계 1: 시각과 분 비교, 단계 2: 분당 요청 수, 단계 3: 급증 기준, 단계 4: 요청이 급증한 분이 나옵니다.
 - **현업에서는**: 트래픽 급증 규칙은 서버 장애와 공격을 함께 탐지하는 기본 규칙입니다. 알림이 오면 그 분의 요청을 누가 보냈는지부터 봅니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. `traffic_detection.py` · `exercise5-1_run.py` **두 파일**을 만들고, `traffic_detection.py` 의 **네 함수**에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>시각과 분의 차이</mark>(단계 1), <mark>분당 요청 수</mark>(단계 2), <mark>급증 기준</mark>(단계 3), <mark>요청이 급증한 분</mark>(단계 4)를 읽습니다.
 
-**`traffic_detection.py`**
+<h3><code>traffic_detection.py</code></h3>
 
 ```python
 import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
@@ -241,7 +241,9 @@ def pick_spike_minutes(minute_request_counts, limit):  # 분마다 요청 수와
 - 번호 주석이 연달아 붙어 있어도(예: 5 · 6번), <mark>주석 사이마다 줄을 끼워 넣어 각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark>
 - 채우기 전에 실행하면 `NameError: name 'minutes' is not defined` 오류가 납니다. 1번을 아직 안 써서 `minutes` 가 없기 때문입니다.
 
-**`exercise5-1_run.py`** — **그대로 붙여 넣습니다.** 직접 쓰는 줄은 없습니다. `.head(3)` 는 열의 처음 3개만 꺼냅니다.
+<h3><code>exercise5-1_run.py</code></h3>
+
+**그대로 붙여 넣습니다.** 직접 쓰는 줄은 없습니다. `.head(3)` 는 열의 처음 3개만 꺼냅니다.
 
 ```python
 from traffic_detection import load_events, add_minute_column, count_web_per_minute, make_traffic_limit, pick_spike_minutes, EVENTS_PATH, TRAFFIC_PATH, SPIKE_MULTIPLE  # 방금 만든 함수를 불러온다
@@ -268,7 +270,7 @@ print("--- 단계 4: 요청이 급증한 분")  # 단계 4 시작을 알리는 �
 print(spike_minutes)  # 요청이 급증한 분과 요청 수를 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 파일 `traffic_detection.py` · `exercise5-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `traffic_detection.py` 에서 직접 쓰는 곳 **여섯 군데**를 씁니다. 위 판다스 문법 상자를 보고 씁니다.

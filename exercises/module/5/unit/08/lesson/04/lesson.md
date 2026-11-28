@@ -53,7 +53,7 @@ false_positive.py   list_changes           : 바뀐 기록이면 (1번) 추가�
 
 ## 실습 8-3 · 오탐 신고 처리와 롤백 확인
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>롤백 함수는 있지만, 무엇이 바뀌었는지 확인하고(영향 확인), 실제로 복원됐는지 점검하고(복구 확인), 같은 오탐의 재발을 막을 규칙 조정을 제안하는 절차가 없습니다</mark>.
 - **만드는 것**: 영향 확인 · 복구 확인 · 규칙 조정 제안 · 신고 한 건 처리(`false_positive.py`), 신고마다 처리하고 저장하기(`exercise8-3_run.py`).
@@ -61,13 +61,17 @@ false_positive.py   list_changes           : 바뀐 기록이면 (1번) 추가�
 
 **할 일**: 데이터 파일 세 개와 코드 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 · 3 을 읽습니다.
 
-**`fp_state.json`** — 오탐을 처리하기 전 연습용 시스템 상태입니다. Unit 4의 `containment_state.json` 과 같은 모양입니다. `junho` 는 Unit 8을 시작하기 전부터 잠겨 있던 계정입니다. 연습용 시스템(실제 서버를 대신하는 시스템)의 시계(`clock`)는 0 에서 움직이지 않습니다. 끝난 차단을 해제하는 Unit 4의 함수 `expire_blocks` 도 호출하지 않습니다. 그래서 `block_expiry`(차단이 끝나는 시각)가 있어도 차단이 자동으로 풀리지 않습니다.
+<h3><code>fp_state.json</code></h3>
+
+오탐을 처리하기 전 연습용 시스템 상태입니다. Unit 4의 `containment_state.json` 과 같은 모양입니다. `junho` 는 Unit 8을 시작하기 전부터 잠겨 있던 계정입니다. 연습용 시스템(실제 서버를 대신하는 시스템)의 시계(`clock`)는 0 에서 움직이지 않습니다. 끝난 차단을 해제하는 Unit 4의 함수 `expire_blocks` 도 호출하지 않습니다. 그래서 `block_expiry`(차단이 끝나는 시각)가 있어도 차단이 자동으로 풀리지 않습니다.
 
 ```
 {"locked_users": ["junho", "dami", "jiwoo"], "blocked_ips": ["198.51.100.90"], "block_expiry": {"198.51.100.90": 120}, "clock": 0, "sessions": {"dami": [], "jiwoo": [], "junho": [], "hana": ["S-601"]}}
 ```
 
-**`fp_log.json`** — 자동 조치 기록 7건입니다. Unit 4의 `containment_log.json` 과 같은 모양입니다.
+<h3><code>fp_log.json</code></h3>
+
+자동 조치 기록 7건입니다. Unit 4의 `containment_log.json` 과 같은 모양입니다.
 
 ```
 [
@@ -81,7 +85,9 @@ false_positive.py   list_changes           : 바뀐 기록이면 (1번) 추가�
 ]
 ```
 
-**`fp_reports.json`** — 오탐 신고 2건입니다. `reported_at` 은 신고를 받은 시각(분)입니다.
+<h3><code>fp_reports.json</code></h3>
+
+오탐 신고 2건입니다. `reported_at` 은 신고를 받은 시각(분)입니다.
 
 ```
 [
@@ -90,7 +96,9 @@ false_positive.py   list_changes           : 바뀐 기록이면 (1번) 추가�
 ]
 ```
 
-**`false_positive.py`** — 오탐 처리 함수 모음입니다. 실습 9-2도 가져와 사용(import)합니다. Unit 5의 `rollback.py` 가 같은 폴더에 있어야 합니다. 직접 쓰는 곳은 1 ~ 7번입니다.
+<h3><code>false_positive.py</code></h3>
+
+오탐 처리 함수 모음입니다. 실습 9-2도 가져와 사용(import)합니다. Unit 5의 `rollback.py` 가 같은 폴더에 있어야 합니다. 직접 쓰는 곳은 1 ~ 7번입니다.
 
 - 3번과 4번은 `if` 한 줄만 씁니다. 그 아래 미리 채운 `remaining.append(target)` 줄이 `if` 안쪽입니다.
 
@@ -167,7 +175,9 @@ def handle_false_positive(report, log, state, now):                             
     return result                                                                    # 처리 결과를 리턴한다 — 미리 채운 줄
 ```
 
-**`exercise8-3_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+<h3><code>exercise8-3_run.py</code></h3>
+
+8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
 from incident import load_json, save_json                                                   # Unit 1 파일의 JSON 읽기 · 쓰기 함수를 불러온다
@@ -202,7 +212,7 @@ save_json(state, "fp_state_after.json")                                         
 print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.json 저장 · 기준", RECOVERY_LIMIT, "분")  # 단계 4 시작을 알리는 줄
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 파일 다섯 개 `fp_state.json` · `fp_log.json` · `fp_reports.json` · `false_positive.py` · `exercise8-3_run.py` 를 만듭니다. 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
 2. **[VS Code]** `false_positive.py` 1 ~ 7번, `exercise8-3_run.py` 8 · 9번을 씁니다. 막히면 아래 「실습 8-3 정리」를 봅니다.

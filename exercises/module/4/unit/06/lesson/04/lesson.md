@@ -45,7 +45,7 @@ source:
 - `SCANNER_PATTERN` 은 `"/.env|/wp-login|/phpmyadmin"` 입니다. 따옴표 안의 `|` 는 「또는」이라는 뜻이라, <mark>셋 중 하나가 들어 있으면</mark> 해당합니다. 조건끼리 합치는 기호가 아니라, 문자열 안에 쓴 글자일 뿐입니다.
 - 203.0.113.50 은 실패가 7번이지만 로그인과 관리자 화면 실패라서 스캐너 경로가 없습니다. 이 IP 는 로그인 실패 규칙에서 따로 다룹니다.
 
-**판다스 문법 상자 — 문자열이 들어 있는지 `str.contains`**
+<h2>판다스 문법 상자 — 문자열이 들어 있는지 <code>str.contains</code></h2>
 
 **<mark>`열.str.contains("문자열")`</mark> 은 열의 값 안에 그 문자열이 들어 있으면 `True`, 없으면 `False` 를 줍니다**
 
@@ -107,7 +107,7 @@ print(scanner_df)            # 남은 요청을 출력한다
 - 읽는 법: <mark>`/.env` 가 든 0번 행과 `/phpmyadmin` 이 든 2번 행이 `True`</mark> 입니다. 세 번째 출력은 그 두 행만 남은 표입니다.
 - 열의 문자열 기능은 `.str.` 을 먼저 쓰고 부릅니다.
 
-**한 장 정리**
+<h2>한 장 정리</h2>
 
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
@@ -121,7 +121,7 @@ print(scanner_df)            # 남은 요청을 출력한다
 
 ## 실습 6-3 · 웹 로그에서 경로를 스캔한 IP 찾기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>웹 실패 로그 13개에서 사용자의 잘못된 경로 요청과 스캐너 경로 요청이 섞여 있어, 먼저 확인할 IP 를 구분하기 어렵습니다</mark>.
 - **그래서 만드는 것**: `malicious_detection.py` 입니다.
@@ -131,13 +131,13 @@ print(scanner_df)            # 남은 요청을 출력한다
 - **실행하면**: <mark>단계 1: 웹 실패 수, 단계 2: 스캐너 경로를 요청한 IP 와 횟수, 단계 3: 스캔으로 본 IP 와 이유, 단계 4: 스캐너 경로가 없어 제외한 IP 가 나옵니다.</mark>
 - **현업에서는**: 경로 스캔은 알림으로 남기고, 로그인 실패만 있는 IP 는 따로 봅니다. 제외한 IP 와 이유를 기록해 두면 이후에 규칙을 검토할 때 참고할 수 있습니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. `malicious_detection.py` · `exercise6-3_run.py` 두 파일을 만들고, `malicious_detection.py` 의 두 함수에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>웹 실패 수</mark>(단계 1), <mark>스캐너 경로를 요청한 IP</mark>(단계 2), <mark>스캔으로 본 IP</mark>(단계 3), <mark>제외한 IP</mark>(단계 4)를 읽습니다.
 3. 마지막으로 `advanced_detection.py` 를 만들어 이번 Unit의 탐지 3개를 한 번에 돌려 봅니다.
 
-**`malicious_detection.py`**
+<h3><code>malicious_detection.py</code></h3>
 
 ```python
 import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
@@ -194,7 +194,9 @@ def explain_scan(ip, request_count):                  # IP 와 스캐너 경로 
 - 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
 - 채우기 전에 실행하면 `NameError: name 'scan_counts' is not defined` 오류가 납니다. 1 ~ 4번을 아직 안 썼기 때문입니다.
 
-**`exercise6-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
+<h3><code>exercise6-3_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
 
 ```python
 from malicious_detection import load_events, pick_web_failures, find_scan_ips, explain_scan, EVENTS_PATH  # 방금 만든 함수를 불러온다
@@ -221,7 +223,9 @@ for ip in all_ips:                                           # IP 를 하나씩 
         print(ip)                                            # 제외한 IP 를 출력한다
 ```
 
-**`advanced_detection.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 6-1 · 6-2 · 6-3에서 만든 함수를 모두 불러 한 번에 돌립니다. 실습 6-1 · 6-2 파일을 아직 완성하지 못했다면 지금은 이 파일을 건너뛰고, 완성한 뒤에 실행합니다.
+<h3><code>advanced_detection.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 6-1 · 6-2 · 6-3에서 만든 함수를 모두 불러 한 번에 돌립니다. 실습 6-1 · 6-2 파일을 아직 완성하지 못했다면 지금은 이 파일을 건너뛰고, 완성한 뒤에 실행합니다.
 
 ```python
 from access_detection import load_events, pick_server_failures, pick_suspicious, EVENTS_PATH  # 실습 6-1 함수를 불러온다
@@ -248,7 +252,7 @@ scan_ips, scan_counts = find_scan_ips(web_failures)          # 스캔으로 본 
 print("웹 서버: 스캔으로 본 IP", scan_ips)                   # 웹 탐지 결과를 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 파일 `malicious_detection.py` · `exercise6-3_run.py` · `advanced_detection.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `malicious_detection.py` 에서 <mark>직접 쓰는 곳 여섯 군데를 씁니다</mark>. 3.1 의 판다스 문법 상자와 표를 보고 씁니다.
@@ -280,7 +284,7 @@ print("웹 서버: 스캔으로 본 IP", scan_ips)                   # 웹 탐�
 
 이번 Unit의 작업을 깃허브에 올리는 일은 Unit 7의 실습 7-2 마지막에 한 번에 합니다. <mark>이번 Unit에서는 파일이 모두 있는지만 확인합니다</mark>.
 
-**순서**
+<h2>순서</h2>
 
 1. **[터미널]** `anomaly_detection` 폴더에서 <mark>이번 Unit에서 만든 파일이 있는지 확인합니다.</mark>
    ```bash

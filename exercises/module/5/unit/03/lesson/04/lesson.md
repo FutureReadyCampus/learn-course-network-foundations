@@ -19,7 +19,7 @@ source:
 
 ## 실습 3-1 정답
 
-**채운 코드** (한 예)
+<h2>채운 코드 (한 예)</h2>
 
 `audit.py` 의 1번입니다.
 
@@ -54,7 +54,7 @@ source:
         result_text = apply_decision(item, decisions[item["id"]], state, action_log)  # 결정을 적용한다
 ```
 
-**결과**
+<h2>결과</h2>
 
 - (가) 출력은 다음과 같습니다. 티켓은 <mark style="background:#bde3ff">**1건**</mark>, 담당자 알림은 <mark style="background:#bde3ff">**1건**</mark>이고, `분류됨` 으로 남은 건은 <mark style="background:#bde3ff">**INC-005**</mark> 입니다.
 
@@ -88,7 +88,7 @@ INC-005 PB-003 전체 : 권한 없음 — 승인 시도: intern01
 
 **왜**: <mark>승인은 「누가 눌렀는지 확인」과 「누가 눌렀는지 기록」이 둘 다 있어야 믿을 수 있습니다.</mark> 누른 사람이 누구인지 확인하지 않고 실행하면, 아무나 자동 대응을 실행시킬 수 있습니다. 누가 허락했는지 기록이 없으면, 나중에 누구 책임인지 설명할 수 없습니다.
 
-**자주 틀리는 곳**
+<h2>자주 틀리는 곳</h2>
 
 - 1번을 비워 두면 기록 한 건을 만들지 못해 오류가 납니다. <mark>**`entry` 변수에 딕셔너리를 저장해 두지 않으면 `return entry` 가 실패합니다.**</mark>
 
@@ -168,7 +168,7 @@ INC-005 198.51.100.90 -> 결정 없음 (상태: 분류됨)
 
 ## 실습 3-2 정답
 
-**채운 코드** (한 예)
+<h2>채운 코드 (한 예)</h2>
 
 `retry_runner.py` 의 1 ~ 3번입니다.
 
@@ -208,7 +208,7 @@ failures = collect_failures(action_log)                        # 실패한 기�
     print(incident_id, entry["action"], ":", entry["result"])  # 실패한 액션을 출력한다
 ```
 
-**결과**
+<h2>결과</h2>
 
 - (가) 출력은 다음과 같습니다. 단계 3 에서 `일부 실패` 는 <mark style="background:#bde3ff">**INC-001**</mark>, `승인 대기` 는 <mark style="background:#bde3ff">**INC-002 · INC-003 · INC-005**</mark>, `오탐 종료` 는 <mark style="background:#bde3ff">**INC-004**</mark> 입니다.
 
@@ -250,7 +250,7 @@ INC-005 승인 대기 : 플레이북 승인 값이 담당자 승인 필요
 
 **왜**: <mark>잠깐 생긴 실패는 정해진 횟수까지 다시 시도해서 해결하고, 끝내 실패하면 숨기지 않고 기록해 사람에게 넘겨야 합니다.</mark> 그래야 자동 대응이 일부만 실행된 채 아무도 모르게 남는 일이 없습니다.
 
-**자주 틀리는 곳**
+<h2>자주 틀리는 곳</h2>
 
 - `try` 아래를 비워 둔 채 실행하면 파이썬이 실행 전에 멈춥니다. `IndentationError`(인덴테이션 에러: 들여쓰기 오류)로 시작하는 오류입니다(문구는 버전마다 다릅니다).
 - 3번 자리에 `pass`(아무 일도 하지 않는 파이썬 문장)만 써 두면 오류는 나지 않지만 <mark>**실패 문장에 이유가 비어 나옵니다.**</mark> 담당자가 왜 실패했는지 알 수 없습니다. 아예 비워 두면 `except` 아래가 비어 `IndentationError` 가 납니다.

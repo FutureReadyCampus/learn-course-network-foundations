@@ -35,7 +35,7 @@ source:
 - **`fail_plan`**: 수업에서 일부러 실패를 일으키려고, 어떤 알림의 어떤 액션이 몇 번 실패할지 미리 적어 둔 딕셔너리입니다. 예: `{"INC-001|티켓 생성": 2}` 는 INC-001 의 티켓 생성이 2번 실패한다는 뜻입니다.
 - **`MAX_TRIES`**: 한 액션을 시도하는 최대 횟수이고 값은 3입니다. 처음 시도도 한 번으로 셉니다.
 
-**문법 상자 — `try` / `except` 는 오류가 나도 정해 둔 줄을 실행해 프로그램이 멈추지 않게 한다**
+<h2>문법 상자 — <code>try</code> / <code>except</code> 는 오류가 나도 정해 둔 줄을 실행해 프로그램이 멈추지 않게 한다</h2>
 
 ```python
 try:
@@ -69,7 +69,7 @@ failure_report.py   collect_failures        : 기록에서 「실패」로 시�
 
 ## 실습 3-2 · 최대 3번 재시도하고 실패 목록 만들기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>티켓 서비스가 잠깐 멈추면 프로그램이 그대로 멈추고, 실패한 일이 어디에도 남지 않습니다</mark>.
 - **만드는 것**: 재시도(`retry_runner.py`), 실패 표시(`flow.py`), 실패 목록(`failure_report.py`), 목록 출력(`exercise3-2_run.py`).
@@ -77,7 +77,9 @@ failure_report.py   collect_failures        : 기록에서 「실패」로 시�
 
 **할 일**: 파일 네 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 1 · 2 와 단계 6 을 읽습니다.
 
-**`retry_runner.py`** — 실패를 흉내 내고 다시 시도합니다. 직접 쓰는 곳은 1 ~ 3번입니다.
+<h3><code>retry_runner.py</code></h3>
+
+실패를 흉내 내고 다시 시도합니다. 직접 쓰는 곳은 1 ~ 3번입니다.
 
 ```python
 from safe_runner import safe_run_action  # Unit 2의 실습 2-3에서 만든 안전한 액션 실행 함수를 불러온다
@@ -112,7 +114,9 @@ def run_with_retry(action, incident, state, fail_plan, max_tries):  # 액션 · 
             # 3. str(error) 를 last_error 에 담는다 (오류 문장을 기억해 두고 다음 시도로 간다)
     return "실패: " + last_error + " (" + str(max_tries) + "회 모두 실패)"  # 모든 시도가 실패했으면 실패 문장을 리턴한다 — 미리 채운 줄
 ```
-**`flow.py`** — 하루 흐름 파일입니다. 줄 끝의 `[Unit 2 실습 2-1]` 같은 표시로 어느 실습에서 만든 함수인지 알 수 있습니다. 직접 쓰는 곳은 4 · 5번입니다.
+<h3><code>flow.py</code></h3>
+
+하루 흐름 파일입니다. 줄 끝의 `[Unit 2 실습 2-1]` 같은 표시로 어느 실습에서 만든 함수인지 알 수 있습니다. 직접 쓰는 곳은 4 · 5번입니다.
 
 ```python
 from incident import change_status, match_playbooks  # Unit 1 파일의 함수를 불러온다
@@ -192,7 +196,9 @@ def run_day_flow(incidents, registry, users_info, source_ips, trusted_ips, state
         print(incident["id"], incident["entity"], "->", result_text, "(상태: " + incident["status"] + ")")  # 한 줄로 출력한다
     return pending  # 승인 대기 리스트를 리턴한다
 ```
-**`failure_report.py`** — 실패한 기록만 모읍니다. 직접 쓰는 곳은 6 · 7번입니다.
+<h3><code>failure_report.py</code></h3>
+
+실패한 기록만 모읍니다. 직접 쓰는 곳은 6 · 7번입니다.
 
 ```python
 def collect_failures(action_log):  # 감사 기록 리스트를 받는 함수
@@ -206,7 +212,9 @@ def collect_failures(action_log):  # 감사 기록 리스트를 받는 함수
         # 7.   failures 에 entry 를 추가한다 (append)
     return failures  # 실패한 기록 리스트를 리턴한다
 ```
-**`exercise3-2_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+<h3><code>exercise3-2_run.py</code></h3>
+
+8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
 from incident import load_json, INCIDENTS_PATH  # Unit 1 파일의 함수를 불러온다
@@ -272,7 +280,7 @@ for item in pending:  # 승인 대기 건을 하나씩 꺼낸다
     if item["status"] == "분류됨":  # 아직 처리되지 않았으면
         print(item["id"], "승인 대기 :", item["why"])  # 승인 대기 건과 이유를 출력한다
 ```
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `retry_runner.py` · `flow.py` · `failure_report.py` · `exercise3-2_run.py` 네 파일을 하나씩 만들고(파일 이름 그대로), 코드를 붙여 넣어 저장합니다. <mark>실습 3-1의 `audit.py` · `approvals.py` 가 완성돼 있어야(`flow.py` 가 이 두 파일을 불러오기 때문)</mark> 합니다.
 2. **[VS Code]** `retry_runner.py` 1 ~ 3번, `flow.py` 4 · 5번, `failure_report.py` 6 · 7번, `exercise3-2_run.py` 8 · 9번을 씁니다. 막히면 아래 「실습 3-2 정리」를 봅니다.
@@ -304,13 +312,13 @@ for item in pending:  # 승인 대기 건을 하나씩 꺼낸다
 
 <mark>문제가 아니라 오늘 한 일을 저장소(repository, 리포지터리: 깃허브에 코드를 모아 두는 곳)에 올리는 마무리입니다.</mark> 실습 3-2를 마친 뒤 진행합니다. 어느 터미널을 써도 되고, 먼저 `pwd` 로 위치를 확인합니다. 결과가 `soar_response` 로 끝날 때만 아래 1번의 `cd ..` 를 칩니다.
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>팀장이 「오늘 만든 맥락 붙이기 · 경로 정하기 · 안전장치 · 승인 · 재시도 코드를 저장소에 남겨 달라」고 합니다</mark>.
 - **그래서 하는 것**: `git status` 로 올라갈 파일을 확인한 뒤(`.env` 같은 비밀 키 파일이 섞이면 안 됩니다) `git add`(올릴 파일 고르기) → `git commit`(설명을 붙여 저장) → `git push`(깃허브로 올리기) 순서로 올립니다.
 - **끝나면**: 깃허브 저장소의 `soar_response` 폴더에 `enrichment.py` · `routing.py` · `safe_runner.py` · `audit.py` · `approvals.py` · `retry_runner.py` · `flow.py` · `failure_report.py` · `report_u2.md` · `report_u3.md` 가 보입니다.
 
-**순서**
+<h2>순서</h2>
 
 0. **[터미널]** 오늘 만든 파일이 있는지 `soar_response` 폴더에서 확인합니다. 두 명령을 하나씩 칩니다. Unit 2 와 Unit 3 의 모든 질문에서 `답:` 뒤와 코드 상자가 모두 채워져 있는지도 봅니다. 단, 저장소 업로드 확인은 3번에서 채우니 지금은 비어 있어도 됩니다.
 

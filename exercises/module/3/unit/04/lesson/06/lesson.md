@@ -56,9 +56,9 @@ source:
   - `evaluate_conditional`(6 ~ 9번): 두 확인이 거짓이면 이유와 함께 거부합니다.
 - **미리 채운 것**: `load_rules` 와 `evaluate_conditional` 의 기본 판정 · 조건 찾기 반복 · 마지막 `return` 입니다.
 
-**문법 상자 — 범위 비교**
+<h2>문법 상자 — 범위 비교</h2>
 
-**① `a <= x < b` 는 x 가 a 이상이고 b 미만인지 한 번에 묻습니다**
+<h2>① <code>a &lt;= x &lt; b</code> 는 x 가 a 이상이고 b 미만인지 한 번에 묻습니다</h2>
 
 ```python
 hour = 10                                                            # 요청 시각의 시
@@ -89,7 +89,7 @@ False
 
 ## 응용 4-2 · 기본 판정 뒤 조건 확인하기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: 권한이 있는 사용자는 새벽이든 외부든 모두 허용됩니다. 탈취된 계정이 한밤중에 외부에서 들어와도 판정 함수로는 막을 수 없습니다.
 - **그래서 만드는 것**: `evaluate_conditional` 입니다.
@@ -98,12 +98,14 @@ False
 - **실행하면**: 단계 1은 요청 여덟 건의 판정, 단계 2는 조건 파일에 적힌 조건을 출력합니다.
 - **현업에서는**: 접근 제어 도구도 신원만 보지 않고 접속 시간, 위치, 기기 같은 조건을 함께 확인합니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. `config/conditions.json` · `conditional.py` · `challenge4-2_run.py` 세 파일을 만들고, `is_work_time` · `is_allowed_network` · `evaluate_conditional` 에서 직접 쓰는 곳 세 군데를 씁니다.
 2. 실행해서 <mark>요청 여덟 건의 판정</mark>(단계 1: 판정)과 <mark>조건 파일에 적힌 조건</mark>(단계 2: 확인)을 읽습니다.
 
-**`config/conditions.json`** — 그대로 붙여 넣습니다. 권한별 조건입니다. `access_control` 안의 `config` 폴더에 만듭니다.
+<h3><code>config/conditions.json</code></h3>
+
+그대로 붙여 넣습니다. 권한별 조건입니다. `access_control` 안의 `config` 폴더에 만듭니다.
 
 ```json
 [
@@ -113,7 +115,7 @@ False
 ]
 ```
 
-**`conditional.py`**
+<h3><code>conditional.py</code></h3>
 
 ```python
 from config_loader import load_json                              # Unit 1에서 만든 안전한 읽기 함수를 불러온다
@@ -174,7 +176,9 @@ def evaluate_conditional(user, resource, action, network, now, rules):   # 사�
 - 6번 · 8번의 `not` 은 함수가 리턴한 참과 거짓을 뒤집습니다.
 - 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다(파이썬 버전에 따라 뒤에 `after 'if' statement on line …` 가 붙습니다). `evaluate_conditional` 의 `if` 아래에 실행할 줄이 아직 없기 때문입니다. `is_work_time` · `is_allowed_network` 는 채우기 전에 아무것도 리턴하지 않습니다.
 
-**`challenge4-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 요청 여덟 건을 시각까지 정해 판정하고, 조건 파일의 조건을 출력합니다.
+<h3><code>challenge4-2_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 요청 여덟 건을 시각까지 정해 판정하고, 조건 파일의 조건을 출력합니다.
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
@@ -217,7 +221,7 @@ for rule in RULES:                                               # 조건을 하
     print(rule["permission"], "|", hours_text, "|", networks_text)  # 권한 | 시간대 | 허용 접속 위치를 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 파일 `config/conditions.json` · `conditional.py` · `challenge4-2_run.py` 를 만들어 위 코드를 붙여 넣습니다. 
    - VS Code: `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력합니다(`config/…` 이름은 이 폴더를 선택한 채 입력하면 `config` 폴더 안에 만들어집니다).

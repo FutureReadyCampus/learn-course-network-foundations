@@ -53,7 +53,7 @@ approval_gate.py   is_allowlisted  : 대상이 허용 목록에 있는지 리턴
 
 ## 실습 8-2 · 위험 점수로 조치 요청 분류하기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>승인이 필요한지는 플레이북마다 정한 값 하나로만 정해지고, 기준이 코드 안에 있습니다</mark>.
 - **만드는 것**: 허용 목록 확인 · 위험 점수 · 결정(`approval_gate.py`), 요청마다 결정하고 세기(`exercise8-2_run.py`).
@@ -61,7 +61,9 @@ approval_gate.py   is_allowlisted  : 대상이 허용 목록에 있는지 리턴
 
 **할 일**: 데이터 파일 두 개와 코드 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 ~ 4 를 읽습니다.
 
-**`config/approval_policy.json`** — 승인 게이트의 기준입니다. 점수 값은 위 2.1 표와 같습니다. 코드는 이 파일의 키 이름으로 읽습니다.
+<h3><code>config/approval_policy.json</code></h3>
+
+승인 게이트의 기준입니다. 점수 값은 위 2.1 표와 같습니다. 코드는 이 파일의 키 이름으로 읽습니다.
 
 ```
 {
@@ -77,7 +79,9 @@ approval_gate.py   is_allowlisted  : 대상이 허용 목록에 있는지 리턴
 }
 ```
 
-**`gate_requests.json`** — Unit 8에서 자동 대응이 실행하려는 조치 요청 8건입니다. `users_on_ip` 는 그 IP 를 쓰는 계정 수(계정 조치면 0), `target_count` 는 요청 하나가 한꺼번에 조치하는 대상 수입니다.
+<h3><code>gate_requests.json</code></h3>
+
+Unit 8에서 자동 대응이 실행하려는 조치 요청 8건입니다. `users_on_ip` 는 그 IP 를 쓰는 계정 수(계정 조치면 0), `target_count` 는 요청 하나가 한꺼번에 조치하는 대상 수입니다.
 
 ```
 [
@@ -92,7 +96,9 @@ approval_gate.py   is_allowlisted  : 대상이 허용 목록에 있는지 리턴
 ]
 ```
 
-**`approval_gate.py`** — 승인 게이트 함수 모음입니다. 실습 9-2도 가져와 사용(import)합니다. 직접 쓰는 곳은 1 ~ 7번입니다.
+<h3><code>approval_gate.py</code></h3>
+
+승인 게이트 함수 모음입니다. 실습 9-2도 가져와 사용(import)합니다. 직접 쓰는 곳은 1 ~ 7번입니다.
 
 - 3번 아래에는 `if` 한 줄을 씁니다. 그 아래 미리 채운 `reasons.append(…)` 줄은 4번과 함께 `if` 안쪽입니다.
 - 5번과 7번도 `if` 한 줄만 씁니다. 그 아래 미리 채운 `return` 줄이 `if` 안쪽입니다.
@@ -140,7 +146,9 @@ def decide_gate(request, policy):                                           # �
     return "자동", reasons                                                  # 기준보다 낮으면 자동으로 실행한다 — 미리 채운 줄
 ```
 
-**`exercise8-2_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+<h3><code>exercise8-2_run.py</code></h3>
+
+8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
 from incident import load_json, save_json                           # Unit 1 파일의 JSON 읽기 · 쓰기 함수를 불러온다
@@ -174,7 +182,7 @@ save_json(results, "gate_results.json")                             # 결정 리
 print("--- 단계 5: gate_results.json 에", len(results), "건 저장")  # 단계 5 시작을 알리는 줄과 저장한 수
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[터미널]** `config` 폴더가 없으면 만듭니다.
    ```bash

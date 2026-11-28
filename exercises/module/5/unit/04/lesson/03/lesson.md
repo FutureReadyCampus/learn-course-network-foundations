@@ -48,7 +48,7 @@ ip_actions.py     is_in_allowlist    : 허용 목록에 있는지 확인한다 (
 
 ## 실습 4-2 · 허용 IP 제외와 차단 자동 해제 만들기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>경로 스캔 알림 세 건을 모두 차단하면 점검 서버와 정상 사용자가 차단되고, 차단이 해제되지 않고 계속 유지됩니다</mark>.
 - **만드는 것**: 허용 목록 조회 · 사용 계정 수 집계 · 차단 · 만료된 차단 해제(`ip_actions.py`), 정책 검사와 차단 호출(`exercise4-2_run.py`).
@@ -56,7 +56,9 @@ ip_actions.py     is_in_allowlist    : 허용 목록에 있는지 확인한다 (
 
 **할 일**: 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 1 ~ 3 을 읽습니다.
 
-**`ip_actions.py`** — IP 차단과 만료된 차단의 자동 해제를 구현합니다. Unit 5에서도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 1 ~ 6번입니다.
+<h3><code>ip_actions.py</code></h3>
+
+IP 차단과 만료된 차단의 자동 해제를 구현합니다. Unit 5에서도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 1 ~ 6번입니다.
 
 ```python
 from containment_store import make_record  # 기록 한 건을 만드는 함수를 불러온다
@@ -133,7 +135,9 @@ def expire_blocks(state, incident_id):  # 상태와 인시던트 번호를 받�
         # 6.   unblock_ip(ip, state, incident_id, "차단 시간이 끝나 자동 해제") 의 결과를 records 에 추가한다 (append)
     return records  # 해제 기록 리스트를 리턴한다
 ```
-**`exercise4-2_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 7번 아래에는 막을 이유를 저장하는 `refusal = …`(`refusal` 은 영어로 「거절」이고, 막을 이유가 있으면 그 문장이 저장됩니다)을, 8번 아래에는 `if … :` 를, 9번 아래에는 한 단계 들여쓴 `record = …` 를 씁니다. 그 사이의 미리 채운 줄은 그대로 둡니다. 실습 4-1의 `containment_store.py` 가 같은 폴더에 있어야 합니다.
+<h3><code>exercise4-2_run.py</code></h3>
+
+7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 7번 아래에는 막을 이유를 저장하는 `refusal = …`(`refusal` 은 영어로 「거절」이고, 막을 이유가 있으면 그 문장이 저장됩니다)을, 8번 아래에는 `if … :` 를, 9번 아래에는 한 단계 들여쓴 `record = …` 를 씁니다. 그 사이의 미리 채운 줄은 그대로 둡니다. 실습 4-1의 `containment_store.py` 가 같은 폴더에 있어야 합니다.
 
 ```python
 from incident import load_json  # Unit 1 파일의 함수를 불러온다
@@ -176,7 +180,7 @@ print("--- 단계 4: 파일에 저장된 값 다시 읽기")  # 단계 4 시작�
 print("차단한 IP:", load_state()["blocked_ips"])  # 저장된 차단 IP 를 출력한다
 print("조치 기록:", len(load_json("containment_log.json")), "건")  # 저장된 기록 수를 출력한다
 ```
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `ip_actions.py` · `exercise4-2_run.py` 을(를) 하나씩 그대로 적어 두 개의 파일을 만듭니다. 각 파일에 이 페이지의 코드 상자를 복사해 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
 2. **[VS Code]** `ip_actions.py` 1 ~ 6번, `exercise4-2_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「실습 4-2 정리」를 봅니다.

@@ -27,7 +27,9 @@ python exercise5-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise5-1_run.py` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 네 함수입니다.
+<h2>채운 코드 (한 예)</h2>
+
+직접 쓰는 곳은 네 함수입니다.
 
 ① `add_minute_column` 안
 
@@ -55,7 +57,7 @@ python exercise5-1_run.py
     spike_minutes = minute_request_counts[is_spike]  # True 인 분만 남긴다
 ```
 
-**결과**
+<h2>결과</h2>
 
 - (가) 출력은 다음과 같고, 급증 기준은 <mark>**6.0번 이상**</mark>, 요청이 급증한 분은 <mark>**09:12(요청 9개)**</mark> 한 분입니다.
 
@@ -114,11 +116,11 @@ dtype: int64
   - 그 3개는 모두 198.51.100.90 이 09:20:10 ~ 09:20:12 에 보낸 `GET /.env` · `GET /wp-login.php` · `GET /phpmyadmin` 이고 모두 실패했습니다. 서로 다른 경로를 차례로 요청한 모양입니다.
   - 급증 규칙은 요청의 **수**만 보기 때문에, <mark>수가 적으면 요청의 내용과 상관없이 알리지 못합니다.</mark> 이런 경로 스캔(취약한 경로를 하나씩 찾아보는 시도)은 Unit 6에서 다른 규칙으로 찾습니다.
 
-**왜**
+<h2>왜</h2>
 
 - <mark>「짧은 시간에 늘어난 요청」은 시간을 일정한 구간(여기서는 1분)으로 나눠 구간마다 세어야 보입니다.</mark> 구간 길이를 정하는 일이 초를 버리는 일입니다.
 
-**자주 틀리는 곳**
+<h2>자주 틀리는 곳</h2>
 
 - `times.dt.floor("min")` 에서 **`.dt` 를 빠뜨리고 `times.floor("min")` 으로 쓰면 오류가 납니다.**
   - 실행하면 다음 오류가 납니다(<mark>`'Series' object has no attribute 'floor'`</mark> 가 나오면 이 실수입니다).
@@ -135,7 +137,7 @@ AttributeError: 'Series' object has no attribute 'floor'
   - 줄 번호는 사람마다 다릅니다.
 - <mark>요청이 하나도 없던 분은 결과에 나오지 않습니다.</mark> 분당 요청 수 14줄은 요청이 있던 분만 센 것입니다.
 
-**관제에서는**
+<h2>관제에서는</h2>
 
 - <mark>급증 기준은 요일 · 시간대마다 평소가 다르므로 시간대별 평소 평균을 따로 둡니다.</mark> 이 문서의 `baseline_traffic.csv`(지난 7일, 오전 9시대)는 연습용 하나뿐입니다.
 
@@ -151,7 +153,9 @@ python exercise5-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise5-2_run.py` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 네 함수입니다.
+<h2>채운 코드 (한 예)</h2>
+
+직접 쓰는 곳은 네 함수입니다.
 
 ① `make_alert` 안
 
@@ -179,7 +183,7 @@ python exercise5-2_run.py
         json.dump(alerts, file, ensure_ascii=False, indent=2)  # 한글은 그대로, 들여쓰기를 해서 파일에 쓴다
 ```
 
-**결과**
+<h2>결과</h2>
 
 - (가) 출력은 다음과 같고, 알림은 모두 <mark>**2건**</mark>(로그인 실패 1건 + 트래픽 급증 1건)입니다.
 
@@ -220,11 +224,11 @@ python exercise5-2_run.py
   - 알림을 지우지 않고 남겨 두면, 같은 주소에서 다시 알림이 났을 때 <mark>이전 조사 결과를 보고 빨리 판단할 수 있습니다.</mark> 같은 일이 자주 생기면 알림 기준을 고칠 근거도 됩니다.
   - 알림이 있어도 공격으로 확정된 것이 아니므로 <mark>조사 결과가 정상이든 공격이든 처리 상태는 「조사 완료」이고</mark>, 정상인지 대응이 필요한지는 `note` 에 적습니다.
 
-**왜**
+<h2>왜</h2>
 
 - <mark>알림의 모양을 하나로 맞추면 탐지 규칙이 늘어도 담당자의 처리 방법과 알림을 보내는 코드가 그대로입니다.</mark> `make_login_alerts` · `make_traffic_alerts` 처럼 규칙마다 알림을 만드는 함수 하나만 더 만들면 됩니다.
 
-**자주 틀리는 곳**
+<h2>자주 틀리는 곳</h2>
 
 - `target = str(minute)` 대신 **`target = minute` 으로 두면 `json.dump` 에서 오류가 납니다.** 판다스의 시각 값은 JSON 에 쓸 수 없습니다.
   - 실행하면 다음 오류가 납니다(<mark>`Object of type Timestamp is not JSON serializable`</mark> 이 나오면 이 실수입니다).
@@ -242,7 +246,7 @@ TypeError: Object of type Timestamp is not JSON serializable
 - `json.dump` 에서 `ensure_ascii=False` 를 빼면 한글이 `\ube44\uc815\uc0c1` 같은 코드(「비정상」을 코드로 쓴 모양)로 저장됩니다. <mark>오류는 나지 않지만 파일을 열어 보면 알림 내용을 알아볼 수 없습니다.</mark>
 - `with` 줄 아래의 6번 코드는 **공백 8개로 씁니다.** 4개로 쓰면 `IndentationError` 오류가 납니다. `with` 줄 끝의 `:` 도 빠뜨리지 않습니다.
 
-**관제에서는**
+<h2>관제에서는</h2>
 
 - 알림 파일에는 처리 상태 키(`status`)가 있어서, 담당자가 「확인 필요」 → 「조사 중」 → 「조사 완료」처럼 바꿔 가며 <mark>어디까지 봤는지 남깁니다.</mark>
 
@@ -268,15 +272,15 @@ git push
 ```
 - 명령 풀이: `git add .` 바뀐 파일을 올릴 대상에 담음 · `git commit -m "…"` 따옴표 안의 설명을 붙여 기록으로 저장 · `git push` 깃허브로 올림
 
-**결과**
+<h2>결과</h2>
 
 - (가) 한 예: 「`.env` · `.venv` 는 보이지 않았다」. 보였다면 `.gitignore` 에 `.env`(또는 `.venv`) 한 줄을 적고 저장한 뒤 `git status` 를 다시 쳤다고 적습니다.
 
-**왜**
+<h2>왜</h2>
 
 - <mark>올리기 전에 올라갈 파일을 확인해야 비밀 키가 섞이지 않습니다.</mark>
 
-**자주 틀리는 곳**
+<h2>자주 틀리는 곳</h2>
 
 - <mark>`.env` 가 보이는데 그대로 `git add .` 를 하는 실수가 가장 위험합니다.</mark>
   - `cd ..` 를 두 번 쳐서 `security-agent-toolkit` 바깥으로 나가는 경우도 있습니다. `pwd` 로 확인합니다.

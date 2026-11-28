@@ -27,7 +27,9 @@ python exercise8-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
+<h2>채운 코드 (한 예)</h2>
+
+직접 쓰는 곳은 세 함수입니다.
 
 ① `find_false_alarms` 안
 
@@ -53,7 +55,7 @@ python exercise8-1_run.py
 
 내가 채운 코드는 위의 코드입니다. <mark>줄 수가 달라도 주석이 말한 일을 하면 맞습니다.</mark>
 
-**결과**
+<h2>결과</h2>
 
 - (가) 출력은 다음과 같고, 알림은 <mark style="background:#bde3ff">**7개**</mark>, 오탐은 <mark style="background:#bde3ff">**4개**</mark>, 미탐은 <mark style="background:#bde3ff">**2개**</mark>입니다.
 
@@ -83,11 +85,11 @@ Name: count, dtype: int64
   - 필요한 규칙의 예: 정산처럼 중요한 자원에 권한 없이 접근을 시도하면 한 번만 거절돼도 알리는 규칙입니다.
   - 이런 규칙은 횟수가 아니라 대상의 중요도를 보기 때문에 오탐이 늘 수 있습니다.
 
-**왜**
+<h2>왜</h2>
 
 - <mark>오탐과 미탐은 줄여야 하는 방향이 반대입니다.</mark> 오탐을 줄이려고 규칙을 엄격하게 만들면 미탐이 늘고, 미탐을 줄이려고 규칙을 느슨하게 만들면 오탐이 늡니다. 그래서 둘을 따로 세어 둡니다.
 
-**자주 틀리는 곳**
+<h2>자주 틀리는 곳</h2>
 
 - `is_false = ~is_real` 대신 `not is_real` 이라고 쓰면 `ValueError` 오류가 납니다. <mark>**표의 열에는 `not` 이 아니라 `~` 를 씁니다.**</mark>
   - 실행하면 다음 오류가 납니다(<mark style="background:#ffc4d6">`The truth value of a Series is ambiguous`</mark> 가 나오면 이 실수입니다).
@@ -103,7 +105,7 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 - `is_real.sum()` 에서 괄호를 빼고 `is_real.sum` 으로 쓰면 오류는 나지 않지만 <mark>**숫자가 아니라 `<bound method Series.sum of …>` 라는 긴 글자가 나옵니다.**</mark> 단계 2의 `진짜 문제였던 알림 수:` 줄에 숫자 대신 `<bound method Series.sum of …>` 가 나오면 이 실수입니다. `.sum()` 은 괄호까지 써야 합니다.
 - `is_missed = ~is_caught` 에서 `~` 를 빼고 `is_missed = is_caught` 로 쓰면 오류는 나지 않지만 <mark>**단계 4의 `미탐 수:` 가 2가 아니라 3으로 나옵니다.**</mark> 알림이 난 P1 · P2 · P3 이 놓친 문제로 나오는 것이 이 실수의 모습입니다.
 
-**관제에서는**
+<h2>관제에서는</h2>
 
 - 오탐을 세는 것은 담당자의 시간을 지키는 일이고, 미탐을 세는 것은 놓친 위험을 줄이는 일입니다. <mark>규칙을 평가할 때는 이 두 숫자를 함께 보고합니다.</mark>
 
@@ -119,7 +121,9 @@ python exercise8-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
+<h2>채운 코드 (한 예)</h2>
+
+직접 쓰는 곳은 세 함수입니다.
 
 ① `apply_exception` 안
 
@@ -145,7 +149,7 @@ python exercise8-2_run.py
 
 내가 채운 코드는 위의 코드입니다. <mark>줄 수가 달라도 주석이 말한 일을 하면 맞습니다.</mark>
 
-**결과**
+<h2>결과</h2>
 
 - (가) 출력은 다음과 같고, 오탐은 <mark style="background:#bde3ff">**4개에서 2개**</mark>로 줄었고 빠진 알림은 <mark style="background:#bde3ff">**A4 · A5**</mark>(사용자 jiwoo · seoyeon), 빠진 진짜 문제 알림은 <mark style="background:#bde3ff">**0개**</mark>입니다.
 
@@ -170,11 +174,11 @@ python exercise8-2_run.py
 - (다) 믿는 IP 에서 <mark style="background:#bde3ff">계정이 도용되어 로그인해도</mark> 이 규칙은 알림을 내지 않습니다. 예를 들어 협력사 사무실에 있는 누군가가 다른 직원의 계정으로 접속해도 「평소와 다른 IP」 알림은 나지 않습니다.
   - 그래서 다른 규칙(대량 다운로드 등)은 예외에서 빼고 그대로 둡니다. 예외는 근거와 함께 기록하고 주기적으로 다시 검토합니다.
 
-**왜**
+<h2>왜</h2>
 
 - <mark>예외를 규칙 하나에만 적용하면 오탐은 줄이면서 다른 규칙이 찾는 진짜 문제는 지키는 효과가 있습니다.</mark> 단계 4의 `진짜 문제였던 알림 수:` 가 0인 것은 빠진 알림 A4 · A5 가 모두 오탐이었다는 뜻입니다.
 
-**자주 틀리는 곳**
+<h2>자주 틀리는 곳</h2>
 
 - `is_removed = is_ip_rule & is_trusted` 에서 `is_ip_rule &` 를 빼고 `is_removed = is_trusted` 로 쓰면 오류는 나지 않지만 <mark>**단계 4의 `진짜 문제였던 알림 수:` 가 0이 아니라 1로 나옵니다.**</mark> 같은 IP 에서 온 A3 · A6 까지 빠지고, 빠진 A6 은 진짜 문제입니다.
   - 이때 출력은 다음과 같습니다(<mark style="background:#ffc4d6">`빠진 알림 수: 4`</mark> 와 <mark style="background:#ffc4d6">`진짜 문제였던 알림 수: 1`</mark> 이 나오면 이 실수입니다).
@@ -197,7 +201,7 @@ python exercise8-2_run.py
 진짜 문제였던 알림 수: 1
 ```
 
-**관제에서는**
+<h2>관제에서는</h2>
 
 - 예외 규칙은 오탐을 빠르게 줄이는 방법이지만, <mark>예외를 넣은 뒤에는 빠진 알림 중 진짜 문제가 있는지 항상 확인합니다.</mark> 예외 리스트는 근거와 함께 기록해 두고, 협력사 계약이 끝나면 지웁니다.
 
@@ -213,7 +217,9 @@ python exercise8-3_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
+<h2>채운 코드 (한 예)</h2>
+
+직접 쓰는 곳은 세 함수입니다.
 
 ① `merge_alerts` 안
 
@@ -238,7 +244,7 @@ python exercise8-3_run.py
 
 내가 채운 코드는 위의 코드입니다. <mark>줄 수가 달라도 주석이 말한 일을 하면 맞습니다.</mark>
 
-**결과**
+<h2>결과</h2>
 
 - (가) 출력은 다음과 같고, 한 문장 요약은 <mark style="background:#bde3ff">**「알림 6개 중 오탐 2개 · 놓친 문제 1개」**</mark>입니다.
 
@@ -264,11 +270,11 @@ python exercise8-3_run.py
   - 그 규칙을 더하면 업무상 실수로 권한 없는 곳을 한 번 건드린 사용자까지 알림이 나서 <mark style="background:#bde3ff">오탐이 늘 수 있습니다.</mark>
   - 그래서 규칙을 더한 뒤에는 Unit 8에서 한 것처럼 오탐과 미탐을 다시 세어 봅니다.
 
-**왜**
+<h2>왜</h2>
 
 - <mark>규칙을 합치면 놓친 문제는 줄지만, 합친 뒤에 다시 세어 봐야 오탐이 늘지 않았는지 알 수 있습니다.</mark> 숫자 세 개를 한 문장으로 만들어 두면 다음에 규칙을 고칠 때 전후를 바로 비교할 수 있습니다.
 
-**자주 틀리는 곳**
+<h2>자주 틀리는 곳</h2>
 
 - `pd.concat([alerts, login_alerts])` 대신 `pd.concat(alerts, login_alerts)` 라고 쓰면 `TypeError` 오류가 납니다. <mark>**표는 대괄호 `[ ]` 안에 리스트로 묶어 전달합니다.**</mark>
   - 실행하면 다음 오류가 납니다(<mark style="background:#ffc4d6">`concat() takes 1 positional argument but 2 were given`</mark> 가 나오면 이 실수입니다).
@@ -294,7 +300,7 @@ TypeError: only list-like objects are allowed to be passed to isin(), you passed
   - 줄 번호는 사람마다 다릅니다.
 - `is_missed = ~is_caught` 에서 `~` 를 빼면 오류는 나지 않지만 <mark>**놓친 문제로 알림이 난 문제가 나옵니다.**</mark> 단계 4의 `놓친 문제:` 줄에 P1 · P2 · P3 · P4 가 나오는 것이 이 실수의 모습입니다.
 
-**관제에서는**
+<h2>관제에서는</h2>
 
 - 새 규칙을 운영에 넣기 전에 오탐과 미탐을 세어 전후를 비교하는 것은 흔한 절차입니다. <mark>숫자를 보고서에 한 줄로 남겨 두면 어떤 규칙이 효과가 있었는지 나중에 확인할 수 있습니다.</mark>
 

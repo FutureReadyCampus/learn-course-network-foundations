@@ -39,7 +39,7 @@ source:
 - 티켓의 시각은 엔진을 실행한 때를 0분으로 놓습니다(Unit 6 티켓처럼 분 단위 숫자입니다). 연습용 시스템(실제 서버를 대신하는 시스템)은 실행할 때마다 처음 상태(`junho` 만 잠김)에서 시작합니다.
 - 오늘 엔진에 연결하지 않은 것: Unit 3의 재시도(`run_with_retry`) · Unit 4의 세션 종료 · Unit 7의 에스컬레이션입니다.
 
-**문법 상자 — `except Exception as error` 는 어떤 종류의 오류든 받아서 프로그램이 멈추지 않게 한다**
+<h2>문법 상자 — <code>except Exception as error</code> 는 어떤 종류의 오류든 받아서 프로그램이 멈추지 않게 한다</h2>
 
 ```python
 students = [{"name": "민지", "score": 80}, {"name": "서준"}, {"name": "하은", "score": 95}]  # 서준에게는 score 키가 없다
@@ -82,7 +82,7 @@ soar_engine.py  load_context          : 설정 파일을 읽어 엔진 재료를
 
 ## 실습 10-1 · 알림 처리 통합 엔진 만들기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>플레이북 찾기 · 승인 게이트 · 조치 · 티켓이 파일마다 따로 있고, 한 알림의 오류가 전체 처리를 멈춥니다</mark>.
 - **만드는 것**: 조치 요청 · 조치 실행 · 승인 게이트 거치기 · 알림 한 건 처리 · 오류 격리(`soar_engine.py`), 처리 결과별 알림 수 세기(`exercise10-1_run.py`).
@@ -90,7 +90,9 @@ soar_engine.py  load_context          : 설정 파일을 읽어 엔진 재료를
 
 **할 일**: 두 파일을 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행한 뒤 단계 2 를 알림마다 읽습니다.
 
-**`soar_engine.py`** — 엔진 함수 모음입니다. 실습 10-2에서 가져와 사용(import)합니다. 실습 10-3에서는 이 파일을 가져오지 않고 엔진이 남긴 로그 파일을 읽습니다. 직접 쓰는 곳은 1 ~ 8번입니다.
+<h3><code>soar_engine.py</code></h3>
+
+엔진 함수 모음입니다. 실습 10-2에서 가져와 사용(import)합니다. 실습 10-3에서는 이 파일을 가져오지 않고 엔진이 남긴 로그 파일을 읽습니다. 직접 쓰는 곳은 1 ~ 8번입니다.
 
 - 1번 · 2번 · 3번은 `if` · `else` 줄이 미리 채워져 있어서 그 아래에 들여쓴 한 줄만 씁니다.
 - 5번과 6번은 `if` 한 줄만 씁니다. 그 아래 미리 채운 줄이 `if` 안쪽입니다.
@@ -270,7 +272,9 @@ def run_all(alerts, context):                                                   
     return results                                                                      # 결과 기록 리스트를 리턴한다 — 미리 채운 줄
 ```
 
-**`exercise10-1_run.py`** — 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+<h3><code>exercise10-1_run.py</code></h3>
+
+9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
 from incident import load_json, save_json                                                # Unit 1 파일의 JSON 읽기 · 쓰기 함수를 불러온다
@@ -309,7 +313,7 @@ save_json(context["tickets"], TICKET_PATH)                                      
 print("--- 단계 4:", LOG_PATH, "에", len(results), "건 ·", TICKET_PATH, "에 티켓", len(context["tickets"]), "장 저장")  # 단계 4 시작을 알리는 줄과 저장한 수
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `soar_engine.py` 와 `exercise10-1_run.py` 파일을 만들어 연 뒤, 이 페이지의 코드 상자를 붙여 넣고 저장합니다.
 2. **[VS Code]** `soar_engine.py` 1 ~ 8번, `exercise10-1_run.py` 9번을 씁니다. 막히면 위 문법 상자와 아래 「실습 10-1 정리」를 봅니다.

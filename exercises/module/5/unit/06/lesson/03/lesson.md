@@ -51,7 +51,7 @@ source:
 | 확인 중 | 해결 |
 | 해결 | 없음 (재개하지 않고 새 티켓을 생성한다) |
 
-**문법 상자 — `None` 은 「없다」는 값이고, `is None` 으로 확인한다**
+<h2>문법 상자 — <code>None</code> 은 「없다」는 값이고, <code>is None</code> 으로 확인한다</h2>
 
 ```python
 def find_name(names, target):
@@ -83,7 +83,7 @@ ticket_merge.py   find_open_ticket     : 합칠 수 있는 티켓을 찾는다 (
 
 ## 실습 6-2 · 중복 알림 병합과 티켓 상태 전이
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>알림 수만큼 티켓이 생성되므로 같은 사건의 티켓이 여러 장입니다. 또한 티켓 상태를 전이하는 방법도 없습니다</mark>.
 - **만드는 것**: 병합할 티켓 찾기 · 병합 · 알림 한 건 처리(`ticket_merge.py`). 상태 전이와 실행 파일은 미리 채워져 있습니다.
@@ -91,7 +91,9 @@ ticket_merge.py   find_open_ticket     : 합칠 수 있는 티켓을 찾는다 (
 
 **할 일**: 파일을 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행 파일은 그대로 붙여 넣습니다. 실행해서 단계 1 ~ 3 을 읽습니다.
 
-**`ticket_merge.py`** — 같은 사건의 알림을 티켓 한 장으로 병합합니다. 실습 6-3도 가져와 사용(import)합니다. 실습 6-1의 `ticketing.py` 가 같은 폴더에 있어야 합니다. 직접 쓰는 곳은 1 ~ 9번입니다.
+<h3><code>ticket_merge.py</code></h3>
+
+같은 사건의 알림을 티켓 한 장으로 병합합니다. 실습 6-3도 가져와 사용(import)합니다. 실습 6-1의 `ticketing.py` 가 같은 폴더에 있어야 합니다. 직접 쓰는 곳은 1 ~ 9번입니다.
 
 - 1번 아래에는 `if` 한 줄을 씁니다.
 - 2번 아래에는 `if` 한 줄을 씁니다. 1번 아래에 쓰는 `if` 안쪽에는 미리 채운 `if` 가 이미 한 단계 들어가 있습니다. 그래서 2번은 1번보다 두 단계 오른쪽에서 시작합니다.
@@ -170,7 +172,9 @@ def change_ticket_status(ticket, new_status, minute, who):                      
     return True                                                                      # 바꿨다고 True 를 리턴한다
 ```
 
-**`exercise6-2_run.py`** — 쓰는 줄이 없습니다. 그대로 붙여 넣습니다.
+<h3><code>exercise6-2_run.py</code></h3>
+
+쓰는 줄이 없습니다. 그대로 붙여 넣습니다.
 
 ```python
 from incident import load_json                                                              # Unit 1 파일의 JSON 읽기 함수를 불러온다
@@ -205,7 +209,7 @@ for comment in first["comments"]:                                               
     print(" -", comment)                                                                    # 댓글을 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `ticket_merge.py` 와 `exercise6-2_run.py` 를 이름 그대로 만들고, 위 코드 상자를 복사해 붙여 넣고 저장합니다.
 2. **[VS Code]** `ticket_merge.py` 1 ~ 9번을 씁니다. 막히면 아래 「실습 6-2 정리」를 봅니다.

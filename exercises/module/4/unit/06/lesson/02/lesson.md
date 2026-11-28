@@ -61,7 +61,7 @@ source:
 - 7개를 Module 3(접근통제) 규칙으로 판정하면 dami 는 「퇴사한 계정」으로 1순위, gaeun 은 「허용」으로 3순위입니다.
 - 이 판정은 거절이 규칙대로였는지 확인하는 것이고, **공격이라고 확정하는 것이 아닙니다.**
 
-**판다스 문법 상자 — 목록에 있는 사용자인지 `isin`**
+<h2>판다스 문법 상자 — 목록에 있는 사용자인지 <code>isin</code></h2>
 
 **<mark>`열.isin(리스트)`</mark> 는 열의 값이 리스트 안에 있으면 `True`, 없으면 `False` 를 줍니다**
 
@@ -126,7 +126,7 @@ print(blocked_df)            # 차단된 사용자의 기록을 출력한다
 
 - 읽는 법: 첫 번째 출력은 입력 표입니다. <mark>두 번째 출력에서 1번 행(dami) · 3번 행(junho) · 4번 행(dami)이 `True`</mark> 입니다. 세 번째 출력은 그 세 기록만 남은 표입니다. `Name: user, dtype: bool` 줄은 몰라도 됩니다.
 
-**판다스 문법 상자 — 센 결과에서 이름만 꺼내기 `.index`**
+<h2>판다스 문법 상자 — 센 결과에서 이름만 꺼내기 <code>.index</code></h2>
 
 **<mark>`센 결과.index`</mark> 는 `value_counts()` 로 센 결과에서 왼쪽에 나오는 이름들(인덱스)을 꺼냅니다. 사용자별로 센 결과라면 사용자 이름이 나옵니다**
 
@@ -188,7 +188,7 @@ print(names)                # 이름 리스트를 출력한다
 
 - 읽는 법: 첫 번째 출력은 입력 표입니다. 두 번째 출력은 사용자별 실패 횟수입니다(dami 3번 · gaeun 2번 · seoyeon 1번). <mark>세 번째 출력은 2번 이상 실패한 사용자 이름만 담은 리스트</mark>입니다.
 
-**한 장 정리**
+<h2>한 장 정리</h2>
 
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
@@ -203,7 +203,7 @@ print(names)                # 이름 리스트를 출력한다
 
 ## 실습 6-1 · 반복 거절 찾고 이유별 순서 정하기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>판정 서버의 거절 9건을 하나씩 읽어야 하고, 어느 것이 급한지 알 수 없습니다</mark>.
 - **그래서 만드는 것**: `access_detection.py` 입니다.
@@ -213,12 +213,12 @@ print(names)                # 이름 리스트를 출력한다
 - **실행하면**: <mark>단계 1: 서버 실패 이벤트 수, 단계 2: 먼저 확인할 이벤트 수, 단계 3: 순서대로 이벤트가 한 줄씩 나옵니다.</mark>
 - **현업에서는**: 같은 계정의 요청이 반복해서 거절되면 먼저 확인할 근거가 됩니다. 이유별로 순서를 정해 두면 퇴사자 계정처럼 급한 것을 빠뜨리지 않고, 서버 설정 문제는 따로 점검합니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. `access_detection.py` · `exercise6-1_run.py` 두 파일을 만들고, `access_detection.py` 의 두 함수에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>서버 실패 수</mark>(단계 1), <mark>먼저 확인할 이벤트 수</mark>(단계 2), <mark>이유별 순서</mark>(단계 3)를 읽습니다.
 
-**`access_detection.py`**
+<h3><code>access_detection.py</code></h3>
 
 ```python
 import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
@@ -284,7 +284,9 @@ def judge_failure(user, action):                      # 사용자와 행동을 �
 - 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
 - 채우기 전에 실행하면 `NameError: name 'suspicious' is not defined` 오류가 납니다. 1 ~ 3번을 아직 안 썼기 때문입니다.
 
-**`exercise6-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `len(표)` 는 표의 행 수입니다.
+<h3><code>exercise6-1_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `len(표)` 는 표의 행 수입니다.
 
 ```python
 from access_detection import load_events, pick_server_failures, pick_suspicious, judge_failure, EVENTS_PATH  # 방금 만든 함수를 불러온다
@@ -316,7 +318,7 @@ for priority in [1, 2, 3]:                                   # 우선순위대�
             print(priority, label, event["user"], event["action"], event["time"])  # 순서 · 이유 · 사용자 · 행동 · 시각을 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 파일 `access_detection.py` · `exercise6-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `access_detection.py` 에서 <mark>직접 쓰는 곳 여섯 군데를 씁니다</mark>. 위 판다스 문법 상자와 1.1 의 표를 참고해 씁니다. 막히면 아래 「실습 6-1 정리」를 봅니다.

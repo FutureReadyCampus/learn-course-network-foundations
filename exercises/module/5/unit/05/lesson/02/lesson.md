@@ -51,7 +51,7 @@ rollback.py       find_incident_records: 그 인시던트(알림 한 건)의 기
 
 ## 실습 5-1 · 기록을 보고 자동이 바꾼 것만 되돌리기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>오탐이 확인돼도 어느 것이 자동 조치인지 구분하는 기능이 없어서, 사람이 추측으로 풀고 있습니다</mark>.
 - **만드는 것**: 계정 · IP 되돌리기(`undo_actions.py`), 기록 찾기 · 되돌릴지 정하기 · 되돌리기(`rollback.py`), 기록 읽기(`exercise5-1_run.py`).
@@ -59,7 +59,9 @@ rollback.py       find_incident_records: 그 인시던트(알림 한 건)의 기
 
 **할 일**: 파일 세 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 ~ 5 를 읽습니다.
 
-**`undo_actions.py`** — 되돌리기 실행입니다. 직접 쓰는 곳은 1 · 2번입니다.
+<h3><code>undo_actions.py</code></h3>
+
+되돌리기 실행입니다. 직접 쓰는 곳은 1 · 2번입니다.
 
 ```python
 from account_actions import unlock_account  # Unit 4의 실습 4-1에서 만든 계정 해제 함수를 불러온다
@@ -91,7 +93,9 @@ def undo_record(record, state):             # 되돌릴 조치 기록과 연습�
     return undo_ip(record, state)           # 아니면 IP 차단 기록이므로 IP 를 해제한다 — 미리 채운 줄
 ```
 
-**`rollback.py`** — 기록을 찾고 되돌릴지 판단합니다. 직접 쓰는 곳은 3 ~ 8번입니다.
+<h3><code>rollback.py</code></h3>
+
+기록을 찾고 되돌릴지 판단합니다. 직접 쓰는 곳은 3 ~ 8번입니다.
 
 ```python
 from containment_store import make_record                                    # 기록 한 건을 만드는 함수를 불러온다
@@ -140,7 +144,9 @@ def rollback_incident(incident_id, log, state):                              # �
     return records                                                           # 되돌리기 기록 리스트를 리턴한다
 ```
 
-**`exercise5-1_run.py`** — 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이 실행 파일은 먼저 INC-005 의 IP 차단을 새로 실행해 기록에 추가한 뒤, 그것을 되돌립니다.
+<h3><code>exercise5-1_run.py</code></h3>
+
+9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이 실행 파일은 먼저 INC-005 의 IP 차단을 새로 실행해 기록에 추가한 뒤, 그것을 되돌립니다.
 
 ```python
 from incident import load_json                                                     # Unit 1 파일의 함수를 불러온다
@@ -173,7 +179,7 @@ print("잠긴 계정:", state["locked_users"])                                  
 print("차단한 IP:", state["blocked_ips"])                                          # 차단한 IP 를 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `undo_actions.py` · `rollback.py` · `exercise5-1_run.py` 을(를) 하나씩 그대로 적어 세 개의 파일을 만듭니다. 각 파일에 이 페이지의 코드 상자를 복사해 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
 2. **[VS Code]** `undo_actions.py` 1 · 2번, `rollback.py` 3 ~ 8번, `exercise5-1_run.py` 9번을 씁니다. 막히면 아래 「실습 5-1 정리」를 봅니다.

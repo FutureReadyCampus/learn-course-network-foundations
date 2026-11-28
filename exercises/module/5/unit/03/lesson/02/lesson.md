@@ -56,7 +56,7 @@ approvals.py    is_authorized     : 승인한 사람이 권한 목록에 있는�
 
 ## 실습 3-1 · 권한 확인 후 담당자 결정 적용
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>승인 대기 3건이 멈춰 있고, 담당자 결정 3건(승인 · 거절 · 권한 없는 승인)이 들어와 있습니다</mark>.
 - **만드는 것**: 기록 한 건 만들기(`audit.py`), 권한 확인 · 실행 · 종료(`approvals.py`), 결정을 적용하는 함수를 부르는 실행 파일(`exercise3-1_run.py`).
@@ -64,7 +64,9 @@ approvals.py    is_authorized     : 승인한 사람이 권한 목록에 있는�
 
 **할 일**: 파일 세 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 ~ 4 를 읽습니다.
 
-**`audit.py`** — 감사 기록 한 건을 만듭니다. `approvals.py` 와 실습 3-2 `flow.py` 가 불러다 씁니다. 직접 쓰는 곳은 1번입니다.
+<h3><code>audit.py</code></h3>
+
+감사 기록 한 건을 만듭니다. `approvals.py` 와 실습 3-2 `flow.py` 가 불러다 씁니다. 직접 쓰는 곳은 1번입니다.
 
 ```python
 def log_line(item, action, text):  # 인시던트 · 액션 · 결과 문장을 받는 함수
@@ -75,7 +77,9 @@ def log_line(item, action, text):  # 인시던트 · 액션 · 결과 문장을 
     # 1. 키 "incident"(item 의 "id"), "playbook"(item 의 "playbook"), "action"(action), "result"(text) 를 가진 딕셔너리를 entry 에 담는다
     return entry  # 기록 한 건을 리턴한다
 ```
-**`approvals.py`** — 권한을 확인하고 결정을 적용합니다. 실습 3-2 `flow.py` 도 불러다 씁니다. 직접 쓰는 곳은 2 ~ 7번입니다.
+<h3><code>approvals.py</code></h3>
+
+권한을 확인하고 결정을 적용합니다. 실습 3-2 `flow.py` 도 불러다 씁니다. 직접 쓰는 곳은 2 ~ 7번입니다.
 
 ```python
 from incident import change_status, run_action  # Unit 1 파일의 함수를 불러온다
@@ -147,7 +151,9 @@ def finish_decision(item, decision, state, action_log):  # 대기 건 · 담당�
     action_log.append(log_line(item, "전체", "거절됨 (승인: " + approver + " — " + decision["comment"] + ")"))  # 거절 사유를 기록한다 — 미리 채운 줄
     return "거절 처리"  # 거절 처리를 리턴한다 — 미리 채운 줄
 ```
-**`exercise3-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실행하면 결과를 출력합니다.
+<h3><code>exercise3-1_run.py</code></h3>
+
+8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실행하면 결과를 출력합니다.
 
 ```python
 from incident import load_json  # Unit 1 파일의 함수를 불러온다
@@ -179,7 +185,7 @@ print("--- 단계 4: 감사 기록")  # 단계 4 시작을 알리는 줄
 for entry in action_log:  # 기록을 하나씩 꺼낸다
     print(entry["incident"], entry["playbook"], entry["action"], ":", entry["result"])  # 인시던트 · 플레이북 · 액션 · 결과를 출력한다
 ```
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `audit.py` · `approvals.py` · `exercise3-1_run.py` 세 파일을 하나씩 만들고(파일 이름 그대로), 코드를 붙여 넣어 저장합니다.
 2. **[VS Code]** `audit.py` 1번, `approvals.py` 2 ~ 7번, `exercise3-1_run.py` 8 · 9번을 씁니다. 막히면 아래 「실습 3-1 정리」를 봅니다.

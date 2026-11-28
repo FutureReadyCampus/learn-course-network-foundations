@@ -53,7 +53,7 @@ source:
 
 ## 실습 4-2 · 회수 실행 후 판정과 이력 남기기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: 회수 계획과 승인 상태만 있고 실제로는 아무것도 지워지지 않았습니다. 지운 뒤에 정말 막혔는지 확인하는 방법도, 지운 기록도 없습니다.
 - **그래서 만드는 것**: `execute_revocation` 입니다.
@@ -63,12 +63,12 @@ source:
 - **실행하면**: 단계 1은 계획별 실행 결과, 단계 2는 회수 전후의 판정 비교, 단계 3은 `revocation_log.json` 저장과 다시 읽은 건수를 출력합니다.
 - **현업에서는**: 회수 도구도 실행한 뒤 다시 판정해 막혔는지 확인하고, 이력을 지우지 않고 보관합니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. `revoke.py` 와 `exercise4-2_run.py` 두 파일을 만들고, `remove_exception` · `apply_plan` · `execute_revocation` 에서 직접 쓰는 곳 다섯 군데를 씁니다.
 2. 실행해서 <mark>회수 결과</mark>(단계 1: 실행), <mark>회수 전후의 판정</mark>(단계 2: 확인), <mark>저장한 이력</mark>(단계 3: 저장)을 읽고, 새로 생긴 `revocation_log.json` 파일도 열어 봅니다.
 
-**`revoke.py`**
+<h3><code>revoke.py</code></h3>
 
 ```python
 import json                                                      # JSON 파일을 쓰는 모듈을 불러온다
@@ -145,7 +145,9 @@ def execute_revocation(plans, users, roles, exceptions, now):    # 계획 · 사
   - 나머지 줄은 미리 채워 두었으니 그대로 둡니다.
 - 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다(파이썬 버전에 따라 뒤에 `after 'if' statement on line …` 가 붙습니다). `remove_exception` 의 `for` 아래에 실행할 줄이 아직 없기 때문입니다.
 
-**`exercise4-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 4-1까지의 계획과 승인 상태를 만든 뒤 회수 전 판정을 모으고, `execute_revocation` 으로 회수하고, 회수 후 판정을 모아 비교하고, 이력을 저장합니다.
+<h3><code>exercise4-2_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 4-1까지의 계획과 승인 상태를 만든 뒤 회수 전 판정을 모으고, `execute_revocation` 으로 회수하고, 회수 후 판정을 모아 비교하고, 이력을 저장합니다.
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
@@ -215,7 +217,7 @@ saved = load_json("revocation_log.json", [])                     # 저장한 파
 print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력:", saved[0]["user"], saved[0]["permission"], saved[0]["result"])  # 건수와 첫 이력을 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 파일 `revoke.py` · `exercise4-2_run.py` 를 만들어 위 코드를 붙여 넣습니다. 
    - VS Code: `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력합니다.

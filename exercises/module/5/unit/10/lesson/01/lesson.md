@@ -55,7 +55,9 @@ source:
    ```
 5. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `engine_alerts.json` 파일을 만들어 아래 내용을 붙여 넣고 저장합니다.
 
-**`engine_alerts.json`** — 이번 Unit에서 들어온 알림 8건입니다.
+<h2><code>engine_alerts.json</code></h2>
+
+이번 Unit에서 들어온 알림 8건입니다.
 
 - **무엇인가**:
   - Unit 1의 `incident_samples.json` 과 같은 알림 모양입니다. 키는 `id`(알림 번호) · `entity`(대상 계정 또는 IP) · `grade`(등급) · `score`(점수) · `reasons`(탐지된 규칙 이름 리스트) · `status`(상태)입니다.
@@ -93,7 +95,9 @@ ls
 - 명령 풀이: `mkdir -p 폴더이름` 폴더가 없을 때만 만들기 · `ls` 폴더 안의 파일 이름 보기
 - 아래 코드 상자마다 **[VS Code]** 에서 `soar_response` 폴더(`config/` 로 시작하는 파일은 `config` 폴더)를 오른쪽 클릭 › **New File** 로 같은 이름의 파일을 만들어 붙여 넣고 저장합니다. 만들 파일은 `incident.py` · `containment_store.py` · `account_actions.py` · `ip_actions.py` · `ticketing.py` · `approval_gate.py` · `ip_users.json` · `config/playbook_registry.json` · `config/approval_policy.json` · `config/escalation_rules.json` 입니다. 이미 있는 파일은 만들지도 붙여 넣지도 않습니다(플레이북 등록 파일만 4번 점검 결과가 다를 때 덮어씁니다).
 
-**`incident.py`** — Unit 1 파일에서 이번 Unit에서 쓰는 부분(`load_json` · `save_json` · `match_playbooks` 와 그 함수가 쓰는 `is_grade_enough`)만 담았습니다. Unit 1 파일 전체가 있으면 그것을 그대로 씁니다.
+<h2><code>incident.py</code></h2>
+
+Unit 1 파일에서 이번 Unit에서 쓰는 부분(`load_json` · `save_json` · `match_playbooks` 와 그 함수가 쓰는 `is_grade_enough`)만 담았습니다. Unit 1 파일 전체가 있으면 그것을 그대로 씁니다.
 
 ```python
 import json                                                                   # JSON 파일을 읽고 쓰기 위해 json 을 불러온다
@@ -138,7 +142,9 @@ def match_playbooks(incident, registry):                                      # 
     return matched                                                            # 맞는 플레이북 리스트를 리턴한다
 ```
 
-**`config/playbook_registry.json`** — Unit 1의 플레이북 3개입니다. 이번 Unit의 엔진은 `trigger_rule` · `min_grade` · `actions` 만 읽습니다.
+<h2><code>config/playbook_registry.json</code></h2>
+
+Unit 1의 플레이북 3개입니다. 이번 Unit의 엔진은 `trigger_rule` · `min_grade` · `actions` 만 읽습니다.
 
 ```
 [
@@ -181,7 +187,9 @@ def match_playbooks(incident, registry):                                      # 
 ]
 ```
 
-**`containment_store.py`** — Unit 4 파일에서 이번 Unit에서 쓰는 부분(`new_state` · `make_record`)만 담았습니다. 조치 기록 한 건을 만들고 연습용 시스템의 처음 상태를 만듭니다. Unit 4 파일 전체가 있으면 그것을 그대로 씁니다.
+<h2><code>containment_store.py</code></h2>
+
+Unit 4 파일에서 이번 Unit에서 쓰는 부분(`new_state` · `make_record`)만 담았습니다. 조치 기록 한 건을 만들고 연습용 시스템의 처음 상태를 만듭니다. Unit 4 파일 전체가 있으면 그것을 그대로 씁니다.
 
 ```python
 import copy                                                           # 처음 상태를 복사해 쓰기 위해 copy 를 불러온다
@@ -210,7 +218,9 @@ def make_record(action, target, incident_id, before, after, reason):  # 조치 �
     return record                                                     # 기록 한 건을 리턴한다
 ```
 
-**`account_actions.py`** — Unit 4 파일에서 이번 Unit에서 쓰는 부분(`lock_account` 와 그 함수가 쓰는 `check_policy` · `verify_locked`)만 담았습니다. VIP 이면 잠그지 않고, 아니면 계정을 잠급니다.
+<h2><code>account_actions.py</code></h2>
+
+Unit 4 파일에서 이번 Unit에서 쓰는 부분(`lock_account` 와 그 함수가 쓰는 `check_policy` · `verify_locked`)만 담았습니다. VIP 이면 잠그지 않고, 아니면 계정을 잠급니다.
 
 ```python
 from containment_store import make_record                                             # 기록 한 건을 만드는 함수를 불러온다
@@ -248,7 +258,9 @@ def lock_account(user, state, vip_accounts, incident_id, reason):               
     return make_record("계정 잠금", user, incident_id, "잠기지 않음", after, reason)  # 조치 전 · 후 상태와 함께 기록한다 — 미리 채운 줄
 ```
 
-**`ip_actions.py`** — Unit 4 파일에서 이번 Unit에서 쓰는 부분(`block_ip` · `count_users_on_ip` · `DEFAULT_TTL`)만 담았습니다. IP 를 차단하고, 그 IP 를 쓰는 계정 수를 셉니다.
+<h2><code>ip_actions.py</code></h2>
+
+Unit 4 파일에서 이번 Unit에서 쓰는 부분(`block_ip` · `count_users_on_ip` · `DEFAULT_TTL`)만 담았습니다. IP 를 차단하고, 그 IP 를 쓰는 계정 수를 셉니다.
 
 ```python
 from containment_store import make_record             # 기록 한 건을 만드는 함수를 불러온다
@@ -275,13 +287,17 @@ def block_ip(ip, state, incident_id, reason, ttl):    # IP · 상태 · 인시�
     return make_record("IP 차단", ip, incident_id, "차단되지 않음", after, reason + " (" + str(ttl) + "분 뒤 자동 해제)")  # 조치 전 · 후 상태와 함께 기록한다 — 미리 채운 줄
 ```
 
-**`ip_users.json`** — Unit 4 파일입니다. IP 별로 그 IP 를 쓰는 계정 리스트입니다.
+<h2><code>ip_users.json</code></h2>
+
+Unit 4 파일입니다. IP 별로 그 IP 를 쓰는 계정 리스트입니다.
 
 ```
 {"203.0.113.80": ["seoyeon", "jiwoo"], "192.0.2.41": ["junho", "hana"]}
 ```
 
-**`ticketing.py`** — Unit 6 파일입니다. 알림 한 건으로 티켓 한 장을 만듭니다.
+<h2><code>ticketing.py</code></h2>
+
+Unit 6 파일입니다. 알림 한 건으로 티켓 한 장을 만듭니다.
 
 ```python
 DEFAULT_NEXT_STEP = "담당자가 알림 내용을 읽고 필요한 일을 정한다"                      # 알림 상태를 모를 때 쓰는 다음 할 일
@@ -358,7 +374,9 @@ def make_ticket(alert, ticket_no, rules, next_steps):                           
     return ticket                                                                       # 만든 티켓을 리턴한다
 ```
 
-**`config/escalation_rules.json`** — Unit 6 파일입니다. 이번 Unit에서는 등급별 응답 기한(`sla_minutes`)만 읽습니다.
+<h2><code>config/escalation_rules.json</code></h2>
+
+Unit 6 파일입니다. 이번 Unit에서는 등급별 응답 기한(`sla_minutes`)만 읽습니다.
 
 ```
 {
@@ -378,7 +396,9 @@ def make_ticket(alert, ticket_no, rules, next_steps):                           
 }
 ```
 
-**`approval_gate.py`** — Unit 8 파일입니다. 조치 요청 한 건을 자동 · 승인 필요 · 차단 금지로 정합니다.
+<h2><code>approval_gate.py</code></h2>
+
+Unit 8 파일입니다. 조치 요청 한 건을 자동 · 승인 필요 · 차단 금지로 정합니다.
 
 ```python
 def is_allowlisted(request, policy):                                        # 조치 요청 한 건과 승인 정책을 받는 함수
@@ -420,7 +440,9 @@ def decide_gate(request, policy):                                           # �
     return "자동", reasons                                                  # 기준보다 낮으면 자동으로 실행한다 — 미리 채운 줄
 ```
 
-**`config/approval_policy.json`** — Unit 8 파일입니다. 승인 게이트의 점수 기준입니다.
+<h2><code>config/approval_policy.json</code></h2>
+
+Unit 8 파일입니다. 승인 게이트의 점수 기준입니다.
 
 ```
 {

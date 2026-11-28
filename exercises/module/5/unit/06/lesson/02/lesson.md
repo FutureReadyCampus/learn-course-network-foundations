@@ -50,7 +50,7 @@ ticketing.py   make_title         : 등급 · 대상 · 규칙으로 티켓 제�
 
 ## 실습 6-1 · 티켓 생성과 응답 기한 계산하기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>알림 11건에는 조치 기록만 있고, 담당자의 후속 조치와 응답 기한이 기재되어 있지 않습니다</mark>.
 - **만드는 것**: 제목 · 후속 조치 · 수동 확인 표시 · 응답 기한(SLA)을 기재한 티켓을 생성하는 코드(`ticketing.py`)와, 알림마다 티켓을 생성해 리스트에 저장하는 코드(`exercise6-1_run.py`)입니다.
@@ -58,7 +58,9 @@ ticketing.py   make_title         : 등급 · 대상 · 규칙으로 티켓 제�
 
 **할 일**: 두 파일을 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 ~ 4 를 읽습니다.
 
-**`ticketing.py`** — 알림으로 티켓을 생성합니다. 실습 6-2 · 실습 6-3도 가져와 사용(import)합니다. 직접 쓰는 곳은 1 ~ 6번입니다.
+<h3><code>ticketing.py</code></h3>
+
+알림으로 티켓을 생성합니다. 실습 6-2 · 실습 6-3도 가져와 사용(import)합니다. 직접 쓰는 곳은 1 ~ 6번입니다.
 
 ```python
 DEFAULT_NEXT_STEP = "담당자가 알림 내용을 읽고 필요한 일을 정한다"                      # 알림 상태를 모를 때 쓰는 다음 할 일
@@ -139,7 +141,9 @@ def make_ticket(alert, ticket_no, rules, next_steps):                           
     return ticket                                                                       # 만든 티켓을 리턴한다
 ```
 
-**`exercise6-1_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. Unit 1의 `incident.py` 가 같은 폴더에 있어야 합니다.
+<h3><code>exercise6-1_run.py</code></h3>
+
+7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. Unit 1의 `incident.py` 가 같은 폴더에 있어야 합니다.
 
 ```python
 from incident import load_json                                                                # Unit 1 파일의 JSON 읽기 함수를 불러온다
@@ -177,7 +181,7 @@ for ticket in tickets:                                                          
         print(ticket["id"], ticket["title"], "→", ticket["next_step"])                        # 티켓과 다음 할 일을 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `ticketing.py` 와 `exercise6-1_run.py` 를 이름 그대로 만들고, 위 코드 상자를 복사해 붙여 넣고 저장합니다.
 2. **[VS Code]** `ticketing.py` 1 ~ 6번, `exercise6-1_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「실습 6-1 정리」를 봅니다.

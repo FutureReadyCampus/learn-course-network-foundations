@@ -39,7 +39,7 @@ source:
 - <mark>VIP 를 먼저 확인합니다.</mark> VIP 계정의 알림이 신뢰 IP 에서 접속했다는 이유만으로 자동으로 닫히면 안 되기 때문입니다.
 - <mark>탐지 규칙이 **모두** IP 관련일 때만 종료합니다.</mark> 신뢰 IP 에서 접속했어도 `대량 다운로드` 처럼 IP 와 무관한 규칙이 함께 탐지되었다면, 그 다운로드가 정상이라는 근거는 되지 못하기 때문입니다. `INC-002` 가 이에 해당합니다.
 
-**문법 상자 — 튜플 리턴과 언패킹(tuple unpacking): 두 값을 한 번에 리턴하고 한 번에 받는다**
+<h2>문법 상자 — 튜플 리턴과 언패킹(tuple unpacking): 두 값을 한 번에 리턴하고 한 번에 받는다</h2>
 
 ```python
 def check(score):
@@ -71,7 +71,7 @@ routing.py   is_only_ip_related : 규칙을 하나씩 꺼내 IP 관련이 아닌
 
 ## 실습 2-2 · 경로 분기하고 경로별 건수 세기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>알림을 규칙 이름과 등급만 보고 처리하므로 계정 관리자(VIP)의 알림과 협력사의 정상 접속 알림을 따로 다룰 수 없습니다</mark>.
 - **만드는 것**: 규칙이 모두 IP 관련인지 판별하는 함수와 처리 경로를 결정하는 함수(`routing.py`), 경로를 받아 적용하는 부분과 경로별 건수 집계(`exercise2-2_run.py`). 경로를 결정할 때마다 판정 이유도 문장으로 함께 리턴합니다.
@@ -79,7 +79,9 @@ routing.py   is_only_ip_related : 규칙을 하나씩 꺼내 IP 관련이 아닌
 
 **할 일**: 두 파일을 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 1 · 2 를 읽습니다.
 
-**`routing.py`** — 맥락을 보고 처리 경로를 정합니다. 이 파일이 정한 경로(`승인 필요` · `오탐 종료` · `기본`)를 Unit 3의 실습 3-1 이후에도 씁니다. 직접 쓰는 곳은 1 ~ 7번입니다.
+<h3><code>routing.py</code></h3>
+
+맥락을 보고 처리 경로를 정합니다. 이 파일이 정한 경로(`승인 필요` · `오탐 종료` · `기본`)를 Unit 3의 실습 3-1 이후에도 씁니다. 직접 쓰는 곳은 1 ~ 7번입니다.
 
 ```python
 from incident import change_status  # Unit 1 파일의 상태 바꾸기 함수를 불러온다
@@ -122,7 +124,9 @@ def apply_route(incident, route, reason, incident_log):  # 인시던트 · 경�
     incident_log.append(entry)  # 기록 리스트에 추가한다
 ```
 
-**`exercise2-2_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실습 2-1의 `enrichment.py` 가 같은 폴더에 있어야 합니다.
+<h3><code>exercise2-2_run.py</code></h3>
+
+8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실습 2-1의 `enrichment.py` 가 같은 폴더에 있어야 합니다.
 
 ```python
 from incident import load_json, INCIDENTS_PATH  # Unit 1 파일의 함수를 불러온다
@@ -150,7 +154,7 @@ for route in route_counts:  # 경로를 하나씩 꺼낸다
     print(route, route_counts[route], "건")  # 경로와 건수를 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `routing.py` · `exercise2-2_run.py` 두 파일을 하나씩 만들고(파일 이름 그대로), 코드를 붙여 넣어 저장합니다.
 2. **[VS Code]** `routing.py` 1 ~ 7번, `exercise2-2_run.py` 8 · 9번을 씁니다. 막히면 아래 「실습 2-2 정리」를 봅니다.

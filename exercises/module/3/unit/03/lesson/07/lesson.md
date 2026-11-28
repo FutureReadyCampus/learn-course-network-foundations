@@ -61,7 +61,7 @@ source:
 
 ## 응용 3-3 · 회수 대상과 회수 제외 나누기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: 응용 3-2 리포트의 후보 10건이 한 리스트에 섞여 있습니다. 회수하지 않을 권한을 담당자가 눈으로 골라야 합니다.
 - **그래서 만드는 것**: `split_by_exclude` 입니다.
@@ -70,12 +70,14 @@ source:
 - **실행하면**: 단계 1은 분류 건수, 단계 2는 회수 제외한 후보와 이유, 단계 3은 제외 리스트에 있지만 회수 대상으로 남은 후보를 출력합니다.
 - **현업에서는**: 자동 점검 도구도 회수 제외 리스트를 두고, 비상용 권한이나 사람이 아닌 프로그램용 계정의 권한을 회수 대상에서 뺍니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. `config/exclude_list.json` · `report_exclude.py` · `challenge3-3_run.py` 세 파일을 만들고, `exclude_key` · `load_exclude_map` · `can_exclude` · `split_by_exclude` 에서 직접 쓰는 곳 네 군데를 씁니다.
 2. 실행해서 <mark>분류 건수</mark>(단계 1: 분류), <mark>회수 제외한 후보</mark>(단계 2: 제외), <mark>회수 대상으로 남은 후보</mark>(단계 3: 확인)를 읽습니다.
 
-**`config/exclude_list.json`** — 그대로 붙여 넣습니다. 회수 제외 리스트입니다. `access_control` 안의 `config` 폴더에 만듭니다.
+<h3><code>config/exclude_list.json</code></h3>
+
+그대로 붙여 넣습니다. 회수 제외 리스트입니다. `access_control` 안의 `config` 폴더에 만듭니다.
 
 ```json
 [
@@ -85,7 +87,7 @@ source:
 ]
 ```
 
-**`report_exclude.py`**
+<h3><code>report_exclude.py</code></h3>
 
 ```python
 from config_loader import load_json                              # Unit 1에서 만든 안전한 읽기 함수를 불러온다
@@ -157,7 +159,9 @@ def split_by_exclude(findings, exclude_map):                     # 후보 리스
   - `split_by_exclude` 안: 미리 채운 `for` 안쪽이라 `if` · `else` 는 8개이고, 그 안쪽(8 ~ 10번, 12번)은 4개 더(12개)입니다.
 - 채우기 전에 실행하면 후보가 모두 `회수 제외 0 건` 으로 나옵니다. `can_exclude` 가 아무것도 리턴하지 않아 거짓으로 취급되기 때문입니다.
 
-**`challenge3-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 응용 3-2과 같은 방법으로 리포트를 만든 뒤, 회수 제외 리스트를 읽어 후보를 나누고 세 단계로 출력합니다.
+<h3><code>challenge3-3_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 응용 3-2과 같은 방법으로 리포트를 만든 뒤, 회수 제외 리스트를 읽어 후보를 나누고 세 단계로 출력합니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
@@ -193,7 +197,7 @@ for item in to_revoke:                                           # 회수 대상
         print(item["user"], item["permission"], "<-", item["source"], "|", reasons_text)  # 사용자 · 권한 <- 출처 | 이유들을 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 파일 `config/exclude_list.json` · `report_exclude.py` · `challenge3-3_run.py` 를 만들어 위 코드를 붙여 넣습니다. 
    - VS Code: `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력합니다(`config/…` 이름은 이 폴더를 선택한 채 입력하면 `config` 폴더 안에 만들어집니다).

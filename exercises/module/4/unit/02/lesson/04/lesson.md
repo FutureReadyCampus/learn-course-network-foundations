@@ -32,7 +32,7 @@ source:
 
 ## 3.1 이어 붙이기 · 정렬하기 · 저장하기
 
-**문법 상자 — 리스트를 이벤트의 time 값 순서로 정렬하기**
+<h2>문법 상자 — 리스트를 이벤트의 time 값 순서로 정렬하기</h2>
 
 **<mark>`리스트.sort(key=함수)`</mark> 는 각 이벤트를 함수에 전달해 리턴된 값의 순서로 리스트를 정렬합니다**
 
@@ -81,7 +81,7 @@ for event in merged:  # 이벤트를 하나씩 꺼낸다
 - `sort` 는 이 값을 서로 비교해 **작은 값부터 큰 값 순서(오름차순)** 로 놓습니다. 시각 문자열은 이른 시각일수록 작은 값이라서 <mark>이른 시각이 앞, 늦은 시각이 뒤에 옵니다.</mark> 결과는 `web`(09:12:03) → `saas`(10:12:55) → `server`(11:00:00) 순서입니다.
 - `sort` 는 리스트 자체를 바꾸고 **아무것도 리턴하지 않습니다.** **`events = events.sort(…)` 라고 쓰면 `events` 가 `None` 이 됩니다.**
 
-**문법 상자 — 리스트를 JSON 파일로 저장하기**
+<h2>문법 상자 — 리스트를 JSON 파일로 저장하기</h2>
 
 **<mark>`json.dump(값, 파일)`</mark> 은 파이썬 값을 JSON 형식으로 파일에 씁니다. `ensure_ascii=False` 는 한글을 그대로, `indent=2` 는 보기 좋게 들여쓰기를 합니다**
 
@@ -110,7 +110,7 @@ print(text)  # 파일 내용을 출력한다
 - `json.dumps` 는 값을 JSON **문자열**로 만들고, <mark>`json.dump` 는 값을 JSON **파일**에 바로 씁니다</mark>(`s` 가 없습니다).
 - **`ensure_ascii=False` 를 빼면 한글이 `성공` 같은 코드로 저장됩니다.**
 
-**한 장 정리**
+<h2>한 장 정리</h2>
 
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
@@ -127,7 +127,7 @@ print(text)  # 파일 내용을 출력한다
 
 ## 실습 2-3 · 이벤트를 합쳐 시간순 저장
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: 공통 이벤트가 로그 종류별로 따로 있어서, 같은 계정이 여러 곳에서 한 일을 시간순으로 볼 수 없습니다.
 - **그래서 만드는 것**: `normalize.py` 입니다.
@@ -137,12 +137,12 @@ print(text)  # 파일 내용을 출력한다
 - **실행하면**: 단계 1: 소스별 이벤트 수, 단계 2: `user` · `ip` 가 비어 있는 이벤트 수, 단계 3: gaeun 의 이벤트(시간순), 단계 4: 저장한 이벤트 수가 나옵니다.
 - **현업에서는**: <mark>같은 모양으로 맞춘 이벤트를 한곳에 쌓아 두면 탐지 규칙은 그곳만 읽으면 됩니다.</mark> 이렇게 쌓아 두는 곳이 SIEM(심)의 저장소입니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. **`normalize.py` · `exercise2-3_run.py`** 두 파일을 만들고, `normalize.py` 의 `merge_events` · `count_by_source` · `save_events` 에서 직접 쓰는 곳을 씁니다. 실습 2-1의 `normalize_web.py` 와 실습 2-2의 `normalize_json_csv.py` 가 필요합니다.
 2. 실행해서 <mark>소스별 이벤트 수</mark>(단계 1), <mark>값이 비어 있는 이벤트 수</mark>(단계 2), <mark>gaeun 의 이벤트</mark>(단계 3), <mark>저장된 이벤트 수</mark>(단계 4)를 읽습니다.
 
-**`normalize.py`**
+<h3><code>normalize.py</code></h3>
 
 ```python
 import json  # 파일에 JSON 으로 저장하는 json 모듈을 불러온다
@@ -220,7 +220,9 @@ def save_events(events, path):  # 이벤트 리스트와 저장할 파일 이름
 - 번호 주석이 연달아 붙어 있어도(예: 3 · 4번), <mark>주석 사이마다 줄을 끼워 넣어 각 주석 바로 아래 줄에 그 번호의 코드를 하나씩 씁니다.</mark>
 - **채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다.** `for` 아래와 `with` 아래가 주석뿐이기 때문입니다.
 
-**`exercise2-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 세 로그를 읽어 합치고 네 단계로 출력합니다.
+<h3><code>exercise2-3_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 세 로그를 읽어 합치고 네 단계로 출력합니다.
 
 ```python
 from normalize import load_web, merge_events, count_by_source, count_missing, save_events, EVENTS_PATH  # 방금 만든 함수를 불러온다
@@ -267,7 +269,7 @@ print("--- 단계 4: 저장한 파일", EVENTS_PATH)  # 단계 4 시작을 알�
 print("저장된 이벤트", saved_count, "개")  # 저장된 이벤트 수를 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 파일 `normalize.py` · `exercise2-3_run.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `normalize.py` 에서 직접 쓰는 곳 **다섯 군데**를 씁니다. 3.1 의 문법 상자를 보고 씁니다.
@@ -301,7 +303,7 @@ print("저장된 이벤트", saved_count, "개")  # 저장된 이벤트 수를 �
 
 이번 Unit의 작업을 깃허브에 올리는 일은 Unit 3의 실습 3-2 마지막에 한 번에 합니다. 여기서는 생성한 파일과 기술 실습 기록을 확인합니다.
 
-**순서**
+<h2>순서</h2>
 
 1. **[터미널]** `anomaly_detection` 폴더에서 이번 Unit에서 만든 파일이 있는지 확인합니다.
    ```bash

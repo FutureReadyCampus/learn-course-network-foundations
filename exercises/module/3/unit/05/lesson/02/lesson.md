@@ -55,7 +55,7 @@ source:
 | 만료 예외 점검 | 만료 시각이 지금과 같거나 지났는데 예외가 남아 있다 | 예외 번호(`id`) |
 | 부서와 역할 점검 | 사용자의 부서가 그 사용자 역할이 속해야 하는 부서와 다르다 | 사용자 이름 |
 
-**한 장 정리**
+<h2>한 장 정리</h2>
 
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
@@ -77,7 +77,7 @@ source:
 
 ## 실습 5-1 · 세 점검으로 통과·실패 가리기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: 점검은 사람이 `config/week_state.json` 같은 데이터 파일을 눈으로 읽어야 합니다. 사용자가 늘면 놓치기 쉽고, 지난주와 같은 기준으로 봤는지도 알 수 없습니다.
 - **그래서 만드는 것**: `checklist.py` 입니다.
@@ -86,12 +86,12 @@ source:
 - **실행하면**: 단계 1은 점검 대상의 수, 단계 2는 점검 세 가지의 통과와 실패, 그리고 문제 리스트를 출력합니다.
 - **현업에서는**: 접근 권한 점검도 점검할 것을 정해 두고 주기마다 반복하며, 결과(통과 · 실패와 대상)를 보고서에 남깁니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. `checklist.py` · `exercise5-1_run.py` 두 파일을 만들고, `checklist.py` 의 `check_employed` · `check_expired` · `check_dept` 에서 직접 쓰는 곳 세 군데를 씁니다.
 2. 실행해서 <mark>점검 대상의 수</mark>(단계 1: 점검 대상)와 <mark>점검 세 가지의 결과</mark>(단계 2: 점검 결과)를 읽습니다.
 
-**`checklist.py`**
+<h3><code>checklist.py</code></h3>
 
 ```python
 import json                                                      # JSON 파일을 읽는 모듈을 불러온다
@@ -169,7 +169,9 @@ def run_checklist(state, now):                                   # 읽은 데이
 - 6번의 `role_dept[info["role"]]` 는 키가 `info["role"]` 인 값을 찾습니다. 사용자의 역할이 `finance` 이면 `"재무"` 가 나옵니다.
 - 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다(파이썬 버전에 따라 뒤에 `after 'for' statement on line …` 가 붙습니다). `for` 아래에 실행할 줄이 아직 없기 때문입니다.
 
-**`exercise5-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 데이터 파일을 읽고 점검을 실행해 결과를 출력합니다.
+<h3><code>exercise5-1_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 데이터 파일을 읽고 점검을 실행해 결과를 출력합니다.
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
@@ -195,7 +197,7 @@ for result in results:                                           # 점검 결과
     print(name, "|", status, "|", problems)                      # 점검 이름 | 결과 | 문제 리스트를 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 파일 `checklist.py` · `exercise5-1_run.py` 를 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `checklist.py` 에서 직접 쓰는 곳 세 군데를 씁니다. 1.1 의 표와 그림을 보고 씁니다.

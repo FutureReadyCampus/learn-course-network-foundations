@@ -64,7 +64,9 @@ source:
      report_u1.md               「실습 결과 기록 준비」에서 만듦
    ```
 
-**`incident_samples.json`** — 오늘 처리할 알림 5건의 목록입니다.
+<h2><code>incident_samples.json</code></h2>
+
+오늘 처리할 알림 5건의 목록입니다.
 
 - **무엇인가**:
   - Module 4에서 저장한 대상별 점수 기록 5건에 인시던트 번호(`id`)와 처음 상태(`status`)를 붙인 것입니다.
@@ -132,7 +134,9 @@ source:
 ]
 ```
 
-**`system_state.json`** — 연습용 시스템의 상태를 적는 파일입니다.
+<h2><code>system_state.json</code></h2>
+
+연습용 시스템의 상태를 적는 파일입니다.
 
 - **무엇인가**:
   - 대응을 하면 바뀌는 것 네 가지를 적습니다. 잠긴 계정(`locked_users`) · 차단한 IP(`blocked_ips`) · 티켓(`tickets`) · 담당자 알림(`notifications`)입니다.

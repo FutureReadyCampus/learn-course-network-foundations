@@ -40,7 +40,7 @@ source:
 - 평균은 표본 크기(sample size, 샘플 사이즈: 평균을 계산한 티켓 수)와 함께 보고합니다. 티켓 5장으로 낸 평균보다 50장으로 낸 평균을 더 믿을 수 있기 때문입니다. 오늘 평균 확인 시간은 티켓 5장으로, 평균 해결 시간은 티켓 3장으로 계산한 평균입니다.
 - 근무 시뮬레이션에서도 Unit 6의 실습 6-2의 병합 규칙을 그대로 적용합니다. 이 규칙에서는 <mark style="background:#ffdcb0">해결된 티켓에 새 알림을 병합하지 않습니다</mark>. `TCK-1` 은 45분에 해결되었으므로, 95분에 같은 `dami` 알림(`INC-210`)이 수신되면 새 티켓 `TCK-7` 이 생성됩니다.
 
-**문법 상자 — `sum()` 은 리스트의 합계를, `%`(나머지 연산자, modulo operator) 는 나눗셈의 나머지를 구한다**
+<h2>문법 상자 — <code>sum()</code> 은 리스트의 합계를, <code>%</code>(나머지 연산자, modulo operator) 는 나눗셈의 나머지를 구한다</h2>
 
 ```python
 times = [10, 70, 40]
@@ -69,7 +69,7 @@ shift_metrics.py   average                 : 숫자 리스트의 평균을 구�
 
 ## 실습 7-2 · 근무 시뮬레이션과 대응 지표 산출
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>티켓 생성 · 병합 · 통지 · 에스컬레이션이 개별 기능으로만 있고, 근무 3시간을 연속 실행해 지표로 보고하는 코드가 없습니다</mark>.
 - **만드는 것**: 두 파일을 만듭니다. `shift_metrics.py` 는 평균을 계산하고, 확인 시간을 모으고, 응답 기한 위반 티켓 수를 셉니다. `exercise7-2_run.py` 는 확인까지 걸린 시간 리스트를 만들고 그 평균(평균 확인 시간)을 구합니다. 근무 3시간을 시뮬레이션하는 부분은 미리 채워져 있습니다.
@@ -77,7 +77,9 @@ shift_metrics.py   average                 : 숫자 리스트의 평균을 구�
 
 **할 일**: 두 파일을 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 알림 서버를 실행한 상태에서 프로그램을 실행합니다. 그리고 단계 1 ~ 3 의 출력을 해석합니다.
 
-**`shift_metrics.py`** — 근무 지표를 계산합니다. 직접 쓰는 곳은 1 ~ 7번입니다. 4번 아래에는 `if` 한 줄을, 5번 아래에는 한 단계 더 들여쓴 줄을 씁니다. 6번과 7번도 같은 모양입니다.
+<h3><code>shift_metrics.py</code></h3>
+
+근무 지표를 계산합니다. 직접 쓰는 곳은 1 ~ 7번입니다. 4번 아래에는 `if` 한 줄을, 5번 아래에는 한 단계 더 들여쓴 줄을 씁니다. 6번과 7번도 같은 모양입니다.
 
 ```python
 def average(numbers):                                                   # 숫자 리스트를 받는 함수
@@ -128,7 +130,9 @@ def count_sla_breaches(tickets, now):                                   # 티켓
     return late                                                         # 기한을 넘긴 티켓 수를 리턴한다 — 미리 채운 줄
 ```
 
-**`exercise7-2_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. Unit 6의 `ticket_merge.py` · `ticket_notice.py` 와 실습 7-1의 `escalation.py` 가 같은 폴더에 있어야 합니다.
+<h3><code>exercise7-2_run.py</code></h3>
+
+8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. Unit 6의 `ticket_merge.py` · `ticket_notice.py` 와 실습 7-1의 `escalation.py` 가 같은 폴더에 있어야 합니다.
 
 ```python
 from incident import load_json, save_json                                             # Unit 1 파일의 JSON 읽기 · 저장 함수를 불러온다
@@ -184,7 +188,7 @@ saved = load_json("shift_tickets.json")                                         
 print("--- 단계 4: 파일에 저장된 티켓", len(saved), "장")                             # 단계 4 시작을 알리는 줄과 장수
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `shift_metrics.py` 와 `exercise7-2_run.py` 를 이름 그대로 만들고, 위 코드 상자를 복사해 붙여 넣고 저장합니다.
 2. **[VS Code]** `shift_metrics.py` 1 ~ 7번, `exercise7-2_run.py` 8 · 9번을 씁니다. 막히면 아래 「실습 7-2 정리」를 봅니다.
@@ -216,13 +220,13 @@ print("--- 단계 4: 파일에 저장된 티켓", len(saved), "장")            
 
 <mark>오늘 구현한 코드를 원격 저장소(remote repository, 리모트 리포지토리: 깃허브에 있는 저장소)에 반영하는 마무리입니다.</mark> 실습 7-2 마지막 약 10분에 진행합니다. 알림 서버를 켜지 않은, 처음 쓰던 터미널에서 진행합니다. 먼저 `pwd` 로 위치를 확인하고, 결과가 `soar_response` 로 끝나면 아래 1번의 `cd ..` 를 실행합니다.
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>팀장이 「오늘 구현한 티켓 생성 · 병합 · 통지 · 에스컬레이션 · 지표 산출 코드를 저장소에 보관해 달라」고 요청합니다</mark>.
 - **진행 내용**: 먼저 `git status` 로 반영할 파일을 점검합니다. `.env` 같은 비밀 키(API 키) 파일이 포함되면 누구나 볼 수 있게 공개되어 보안 사고가 되므로 반드시 제외합니다. 점검한 뒤 `git add` → `git commit` → `git push` 순서로 반영합니다.
 - **끝나면**: 깃허브 저장소의 `soar_response` 폴더에 `ticketing.py` · `ticket_merge.py` · `ticket_notice.py` · `escalation.py` · `shift_metrics.py` 가 보입니다.
 
-**순서**
+<h2>순서</h2>
 
 0. **[터미널]** 오늘 구현한 파일이 있는지 `soar_response` 폴더에서 점검합니다. 두 명령을 하나씩 실행합니다. 이 단계에서 보고서(`report_u6.md` · `report_u7.md`)도 점검합니다. Unit 6과 Unit 7의 모든 질문에서 `답:` 뒤와 코드 상자가 모두 작성되었는지 확인합니다(마무리 (가)는 3번에서 작성합니다).
 

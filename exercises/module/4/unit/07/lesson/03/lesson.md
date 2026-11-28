@@ -44,7 +44,7 @@ source:
 - 대상은 사용자(`seoyeon` · `dami` …)와 IP(경로 스캔)입니다. 코드의 `entity`(엔티티, 점수를 매길 대상)가 이 대상입니다. 이 숫자들은 <mark>이번 실습에서 정해 고정한 값</mark>이고, 현업에서는 조직이 정합니다.
 - 출력 맨 아래의 `dtype: int64` 는 값이 정수라는 표시이고 읽지 않아도 됩니다(Unit 3과 Unit 5에서 본 줄과 같습니다).
 
-**판다스 문법 상자 — 그룹마다 합계 `sum`**
+<h2>판다스 문법 상자 — 그룹마다 합계 <code>sum</code></h2>
 
 **<mark>`그룹["열"].sum()`</mark> 은 `groupby` 로 만든 그룹마다 그 열의 숫자를 모두 더합니다**
 
@@ -90,7 +90,7 @@ Name: points, dtype: int64
 - 읽는 법: <mark style="background:#bde3ff">`seoyeon` 은 20 과 25 를 더한 45, `dami` 는 60</mark> 입니다. 문제에서는 딕셔너리 리스트로 표를 만드는 `pd.DataFrame(리스트)` 줄이 미리 채워져 있습니다.
 - <mark>`groupby` 결과는 이름순(dami → seoyeon)으로 나옵니다.</mark> 문제에서는 미리 채운 줄이 점수가 높은 순으로 다시 정렬합니다.
 
-**한 장 정리**
+<h2>한 장 정리</h2>
 
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
@@ -108,7 +108,7 @@ Name: points, dtype: int64
 
 ## 실습 7-2 · 위험 점수와 등급·이유 저장하기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>Unit 6과 실습 7-1에서 탐지된 규칙이 8건 있지만 대상별 우선순위가 정해져 있지 않습니다</mark>.
 - **그래서 만드는 것**: `risk_scores.py` 입니다.
@@ -118,14 +118,14 @@ Name: points, dtype: int64
 - **실행하면**: <mark>단계 1: 탐지된 규칙 수, 단계 2: 대상별 점수, 단계 3: 저장한 건수, 단계 4: 저장된 기록이 한 건씩 나옵니다.</mark>
 - **현업에서는**: 점수와 이유를 함께 남기면 등급이 올라간 근거를 설명할 수 있습니다. 조직은 필요에 따라 점수 기준을 바꿀 수 있고, 바꾼 날짜와 이유를 기록합니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. `risk_scores.py` · `exercise7-2_run.py` 두 파일을 만들고, `risk_scores.py` 의 세 함수에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>탐지된 규칙 수</mark>(단계 1), <mark>대상별 점수</mark>(단계 2), <mark>저장한 건수</mark>(단계 3), <mark>저장된 기록</mark>(단계 4)를 읽고, 새로 생긴 `unit05_risk_scores.json` 을 VS Code 에서 열어 봅니다.
 
 `collect_findings` 는 읽기만 하는 미리 채운 함수입니다. Unit 6의 탐지 결과를 (대상, 규칙) 쌍으로 모으는 일이라 직접 쓰는 곳이 없습니다.
 
-**`risk_scores.py`**
+<h3><code>risk_scores.py</code></h3>
 
 ```python
 import json                                        # 점수를 JSON 파일로 쓰기 위해 json 을 불러온다
@@ -257,7 +257,9 @@ def save_records(records, path):                       # 기록 리스트와 파
 - `collect_findings` 는 읽기만 하는 미리 채운 함수입니다. `SERVER_RULES.get(reason, reason)` 은 딕셔너리에서 reason 을 찾고, 없으면 reason 을 그대로 쓴다는 뜻입니다.
 - 채우기 전에 실행하면 `NameError: name 'points' is not defined` 오류가 납니다. 1번을 아직 안 썼기 때문입니다.
 
-**`exercise7-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `len(리스트)` 는 리스트의 개수입니다.
+<h3><code>exercise7-2_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `len(리스트)` 는 리스트의 개수입니다.
 
 ```python
 from access_detection import load_events, EVENTS_PATH  # 실습 6-1 함수를 불러온다
@@ -284,7 +286,7 @@ for record in records:                                 # 기록을 하나씩 꺼
     print(record["grade"], record["entity"], record["score"], record["reasons"])  # 등급 · 대상 · 점수 · 이유를 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 파일 `risk_scores.py` · `exercise7-2_run.py` 를 `anomaly_detection` 폴더에 만들어 위 코드를 붙여 넣습니다.
 2. **[VS Code]** `risk_scores.py` 에서 <mark>직접 쓰는 곳 다섯 군데를 씁니다</mark>. 2.1 의 표와 문법 상자를 보고 씁니다.
@@ -316,13 +318,13 @@ for record in records:                                 # 기록을 하나씩 꺼
 
 <mark>문제가 아니라 이번 Unit에서 한 일을 저장소에 올리는 마무리입니다.</mark> 실습 7-2 마지막 약 10분에 합니다. 어느 터미널을 써도 되고, `pwd` 로 위치를 먼저 확인한 뒤 결과가 `anomaly_detection` 으로 끝나면 아래 1번의 `cd ..` 를 칩니다.
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>팀장이 「이번 Unit에서 만든 탐지 코드와 점수 파일을 저장소에 남겨 달라」고 합니다</mark>.
 - **그래서 하는 것**: `git status` 로 올라갈 파일을 확인한 뒤(`.env` 같은 비밀 키 파일이 섞이면 안 됩니다) `git add` → `git commit` → `git push` 순서로 올립니다.
 - **끝나면**: 깃허브 저장소의 `anomaly_detection` 폴더에 Unit 6과 Unit 7에서 만든 파일이 보입니다.
 
-**순서**
+<h2>순서</h2>
 
 0. **[터미널]** 이번 Unit에서 만든 파일이 있는지 `anomaly_detection` 폴더에서 확인합니다. `report_u7.md` 의 실습 7-1 · 7-2 칸에서 `답:` 뒤와 코드 상자가 비어 있는 질문이 없는지도 봅니다(마무리 (가)는 3번에서 채웁니다).
    ```bash

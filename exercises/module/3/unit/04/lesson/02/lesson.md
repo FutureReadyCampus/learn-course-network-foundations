@@ -62,7 +62,7 @@ source:
 
 ## 실습 4-1 · 승인 필요 여부와 승인 상태 적기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: 준비 Lesson의 계획 8건이 모두 같은 리스트에 섞여 있습니다. 쓰기 권한처럼 승인이 필요한 것과 바로 회수해도 되는 것을 담당자가 눈으로 가려야 합니다.
 - **그래서 만드는 것**: `mark_approvals` 입니다.
@@ -70,18 +70,20 @@ source:
 - **실행하면**: 단계 1은 계획 8건의 승인 상태를 출력하고, 단계 2는 승인 상태별 건수를 출력합니다.
 - **현업에서는**: 접근 관리 도구도 중요한 권한의 변경은 승인자를 거치고, 승인 여부를 기록으로 남깁니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. `config/sensitive.json` · `revoke_approve.py` · `exercise4-1_run.py` 세 파일을 만들고, `plan_key` · `needs_approval` · `mark_approvals` 에서 직접 쓰는 곳 세 군데를 씁니다.
 2. 실행해서 <mark>승인 상태</mark>(단계 1: 승인 상태)와 <mark>승인 상태별 건수</mark>(단계 2: 집계)를 읽습니다.
 
-**`config/sensitive.json`** — 그대로 붙여 넣습니다. 민감한 권한 리스트입니다. `access_control` 안의 `config` 폴더에 만듭니다.
+<h3><code>config/sensitive.json</code></h3>
+
+그대로 붙여 넣습니다. 민감한 권한 리스트입니다. `access_control` 안의 `config` 폴더에 만듭니다.
 
 ```json
 ["SALES:CHANGE", "ACCOUNT:CHANGE", "SETTLE:CHANGE"]
 ```
 
-**`revoke_approve.py`**
+<h3><code>revoke_approve.py</code></h3>
 
 ```python
 from config_loader import load_json                              # Unit 1에서 만든 안전한 읽기 함수를 불러온다
@@ -143,7 +145,9 @@ def mark_approvals(plans, sensitive, decisions):                 # 계획 리스
 - 5번의 `not needs` 는 「승인이 필요하지 않으면」입니다(`needs` 는 승인이 필요한지의 참 · 거짓). `not` 은 참과 거짓을 뒤집습니다.
 - 채우기 전에 실행하면 `KeyError: 'approval'` 오류가 납니다. 승인 상태(`approval`)를 아직 적지 않았기 때문입니다.
 
-**`exercise4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 준비 Lesson의 계획을 만든 뒤 `mark_approvals` 로 승인 상태를 정하고 두 단계로 출력합니다.
+<h3><code>exercise4-1_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 준비 Lesson의 계획을 만든 뒤 `mark_approvals` 로 승인 상태를 정하고 두 단계로 출력합니다.
 
 ```python
 from rbac import USERS, ROLES                                    # Unit 1에서 만든 사용자 · 역할 딕셔너리를 불러온다
@@ -174,7 +178,7 @@ for item in results:                                             # 결과를 하
 print(counts)                                                    # 승인 상태별 건수를 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 파일 `config/sensitive.json` · `revoke_approve.py` · `exercise4-1_run.py` 를 만들어 위 코드를 붙여 넣습니다. 
    - VS Code: `access_control` 폴더를 선택하고 **새 파일**(New File) 아이콘을 눌러 이름을 입력합니다(`config/…` 이름은 이 폴더를 선택한 채 입력하면 `config` 폴더 안에 만들어집니다).

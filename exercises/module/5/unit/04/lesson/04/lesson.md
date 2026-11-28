@@ -45,7 +45,7 @@ containment.py      contain_account     : 계정을 잠그고 (4번), 잠금이 
 
 ## 실습 4-3 · 활성 세션 종료와 잔존 세션 점검하기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>계정만 잠그면 활성 세션이 잔존하고, 잔존 여부를 확인하는 점검도 없습니다</mark>.
 - **만드는 것**: 세션 종료와 빈틈 점검(`session_actions.py`), 잠금 → 세션 종료를 순서대로 수행하는 통합 함수(`containment.py`), 호출 · 재점검 · 저장(`exercise4-3_run.py`).
@@ -53,7 +53,9 @@ containment.py      contain_account     : 계정을 잠그고 (4번), 잠금이 
 
 **할 일**: 파일 세 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 1 ~ 3 을 읽습니다.
 
-**`session_actions.py`** — 세션 종료와 점검입니다. 직접 쓰는 곳은 1 ~ 3번입니다.
+<h3><code>session_actions.py</code></h3>
+
+세션 종료와 점검입니다. 직접 쓰는 곳은 1 ~ 3번입니다.
 
 ```python
 from containment_store import make_record  # 기록 한 건을 만드는 함수를 불러온다
@@ -89,7 +91,9 @@ def find_open_sessions(state):  # 연습용 시스템 상태를 받는 함수
         # 3.   gaps 에 user 를 추가한다 (append)
     return gaps  # 빈틈이 있는 계정 리스트를 리턴한다
 ```
-**`containment.py`** — 잠금과 세션 종료를 한 함수에서 순서대로 수행합니다. Unit 5에서도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 4 ~ 6번입니다.
+<h3><code>containment.py</code></h3>
+
+잠금과 세션 종료를 한 함수에서 순서대로 수행합니다. Unit 5에서도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 4 ~ 6번입니다.
 
 ```python
 from account_actions import lock_account  # 실습 4-1에 만든 계정 잠금 함수를 불러온다
@@ -108,7 +112,9 @@ def contain_account(user, state, vip_accounts, incident_id, reason):  # 계정 �
     # 6.   terminate_sessions(user, state, incident_id, reason) 의 결과를 records 에 추가한다 (append)
     return records  # 조치 기록 리스트를 리턴한다
 ```
-**`exercise4-3_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실습 4-1의 `containment_store.py` 와 `account_actions.py` 가 같은 폴더에 있어야 합니다.
+<h3><code>exercise4-3_run.py</code></h3>
+
+7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실습 4-1의 `containment_store.py` 와 `account_actions.py` 가 같은 폴더에 있어야 합니다.
 
 ```python
 from incident import load_json  # Unit 1 파일의 함수를 불러온다
@@ -147,7 +153,7 @@ print("--- 단계 4: 파일에 저장된 값 다시 읽기")  # 단계 4 시작�
 print("잠긴 계정:", load_state()["locked_users"])  # 저장된 잠긴 계정을 출력한다
 print("조치 기록:", len(load_json("containment_log.json")), "건")  # 저장된 기록 수를 출력한다
 ```
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `session_actions.py` · `containment.py` · `exercise4-3_run.py` 을(를) 하나씩 그대로 적어 세 개의 파일을 만듭니다. 각 파일에 이 페이지의 코드 상자를 복사해 붙여 넣고 저장합니다(`Ctrl + S`, 맥북은 `Cmd + S`).
 2. **[VS Code]** `session_actions.py` 1 ~ 3번, `containment.py` 4 ~ 6번, `exercise4-3_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「실습 4-3 정리」를 봅니다.
