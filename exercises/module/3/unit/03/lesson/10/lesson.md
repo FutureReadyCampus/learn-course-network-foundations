@@ -35,7 +35,7 @@ render: markdown
 
 ## 글 틀로 쓰고 올리기
 
-설치할 것은 없습니다. Unit 1 오늘의 글 쓰기에서 한 것처럼, 저장소 `network-study-notes` 를 연 VS Code 에서 글 파일을 만들고, 터미널에서 올리는 일은 「이번 Unit 마무리」에서 실습 파일과 함께 합니다. 아직 저장소가 없다면 [Unit 1 시작하기 레슨의 「내 기록 남기기: 소개」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/4)부터 따라 합니다.
+설치할 것은 없습니다. Unit 1 오늘의 글 쓰기에서 한 것처럼, 저장소 `network-study-notes` 를 연 VS Code 에서 글 파일을 만들고, 터미널에서 올리는 일은 「이번 Unit 마무리」에서 실습 파일과 함께 합니다. 아직 저장소가 없다면 [Unit 1 시작하기 레슨의 「자기소개 두 문장으로 시작하기」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/4)부터 따라 합니다.
 
 **1. 글 틀 고르기** — 아래 세 가지 중 하나를 고릅니다. 글 틀은 [Unit 1 시작하기 레슨의 「글 틀로 글 쓰기」 페이지](__SITE__/exercises/module/3/unit/1/lesson/1/page/10)의 글 틀 상자에서 복사해 붙여 넣습니다(내 저장소에 `_templates/` 폴더를 따로 만들어 두었다면 거기서 복사해도 됩니다).
 
