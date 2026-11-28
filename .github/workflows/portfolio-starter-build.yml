@@ -30,22 +30,35 @@ jobs:
           test -f _site/index.html
           grep -q "네트워크 실습 노트" _site/index.html
           test -f _site/about/index.html
-          # the sample post (dated in the past) must be published and listed on the first page
-          test -f _site/2026/01/01/hello.html
-          grep -q "hello.html" _site/index.html
-          # progress grid: the sample post is marked sample, so nothing is filled yet
-          grep -q "15개 Unit 중 0개" _site/index.html
+          python3 - <<'PYTHON'
+          from pathlib import Path
+          page = Path("_site/index.html").read_text()
+          assert "네트워크 보안을 공부하는 민지입니다" in page
+          assert "<h2>대표 글</h2>" not in page and "<h2>전체 글</h2>" not in page
+          assert not list(Path("_site").rglob("hello.html"))
+          PYTHON
           # files meant to stay out of the site
           test ! -e _site/README.md
           test ! -e _site/check_publish.py
           test ! -e _site/_templates
           echo "starter site OK"
 
-      - name: Add one real post to a copy of the starter
+      - name: Add a legacy post and a featured post
         run: |
           set -e
           cp -R portfolio-starter test-site
+          mkdir -p test-site/_posts
           printf -- '---\nlayout: post\ntitle: "Unit 3 test post"\ndate: 2026-01-02\nmodule: 4\nunit: 3\n---\n\nbody\n' > test-site/_posts/2026-01-02-unit3.md
+          cat > test-site/_posts/2026-01-03-verified.md <<'POST'
+          ---
+          layout: post
+          title: "권한 회수 확인"
+          date: 2026-01-03
+          featured: true
+          summary: "회수 전후의 출력을 비교했다."
+          ---
+          [확인한 코드]({{ "/access_control/rbac.py" | relative_url }})
+          POST
           # a module work folder sits in the same repo: its code is copied as-is
           mkdir -p test-site/access_control/config
           printf 'print("hi")\n' > test-site/access_control/rbac.py
@@ -58,15 +71,25 @@ jobs:
           source: ./test-site
           destination: ./_site_test
 
-      - name: Check the progress grid fills the right cell
+      - name: Check featured, all posts and project-relative evidence links
         run: |
           set -e
-          grep -q "15개 Unit 중 1개" _site_test/index.html
-          grep -q 'class="cell done"' _site_test/index.html
-          grep -q "unit3.html" _site_test/index.html
+          python3 - <<'PYTHON'
+          from pathlib import Path
+          site = Path("_site_test")
+          page = (site / "index.html").read_text()
+          featured, all_posts = page.split("<h2>대표 글</h2>")[1].split("<h2>전체 글</h2>")
+          new = "/network-study-notes/2026/01/03/verified.html"
+          old = "/network-study-notes/2026/01/02/unit3.html"
+          assert new in featured and old not in featured
+          assert "회수 전후의 출력을 비교했다." in featured
+          assert new in all_posts and old in all_posts
+          assert (site / "2026/01/02/unit3.html").is_file()
+          assert "/network-study-notes/access_control/rbac.py" in (site / "2026/01/03/verified.html").read_text()
+          PYTHON
           test -f _site_test/access_control/rbac.py
           test -f _site_test/access_control/config/users.json
           # module-folder .md (reports) stay out of the site, so Liquid-like text in them cannot break the build
           test ! -e _site_test/access_control/report_u1.md
           test ! -e _site_test/access_control/report_u1.html
-          echo "progress grid OK"
+          echo "portfolio links OK"

@@ -235,7 +235,7 @@ jekyll -v
 
 ### 글 한 편의 모양
 
-`_posts/` 의 글은 두 부분입니다. 맨 위 `---` 두 줄 사이가 **front matter**(머리말)이고, 그 아래가 본문입니다. Jekyll은 머리말을 읽어 제목 · 날짜를 붙이고, 첫 화면의 「나의 진행」 칸도 채웁니다.
+`_posts/` 의 글은 두 부분입니다. 맨 위 `---` 두 줄 사이가 **front matter**(머리말)이고, 그 아래가 본문입니다. Jekyll은 머리말을 읽어 첫 화면의 글 목록에 제목과 날짜를 표시합니다.
 
 ```
 ---
@@ -269,11 +269,10 @@ Jekyll을 깊이 배우지는 않습니다. 필요한 것만 하나씩 해 봅�
 
 ## 필수 파일 붙여 넣기
 
-저장소는 3쪽에서 이미 만들어 내려받았습니다. 이 페이지에서는 포트폴리오에 꼭 필요한 파일 다섯 개를 VS Code 에서 만들고 처음으로 올립니다(push). 다섯 개는 저장소 루트의 파일 네 개(`_config.yml` · `index.md` · `about.md` · `.gitignore`)와 `_posts` 폴더 안의 샘플 글 한 개(`2026-01-01-hello.md`)입니다.
+저장소는 3쪽에서 이미 만들어 내려받았습니다. 이 페이지에서는 포트폴리오에 꼭 필요한 파일 네 개를 VS Code에서 만들고 처음으로 올립니다(push). 첫 화면에는 내가 쓴 소개가 나옵니다.
 
-1. **[VS Code]** 아래 상자마다 파일을 만들어 내용을 붙여 넣고 저장합니다. 네 파일은 **`network-study-notes` 폴더 바로 아래**(저장소 루트)에, 샘플 글은 루트의 `_posts` 폴더 안에 만듭니다. `access_control` 폴더 안이 아닙니다.
+1. **[VS Code]** 아래 상자마다 파일을 만들어 내용을 붙여 넣고 저장합니다. 네 파일은 **`network-study-notes` 폴더 바로 아래**(저장소 루트)에 만듭니다. `access_control` 폴더 안이 아닙니다.
    - 왼쪽 목록 빈 곳(또는 `network-study-notes` 이름 줄)의 새 파일 아이콘으로 만들고, 이름은 상자 제목 그대로 적습니다.
-   - 4번 샘플 글은 먼저 새 폴더 아이콘으로 `_posts` 폴더를 만들고, 그 폴더를 오른쪽 클릭 › **New File** 로 `2026-01-01-hello.md` 를 만듭니다.
 2. **[터미널]** 맨 아래 「올리기」 상자대로 저장소 루트에서 처음으로 올립니다.
 
 10쪽과 「문제 해결 과정을 블로그에 기록하기」 레슨에 나오는 `_templates/post-short.md` · `_templates/post-stuck.md` · `_templates/post-practice.md` 는 **글 틀**입니다. 이름 앞의 `_templates/` 는 저장소 루트의 `_templates` 폴더라는 뜻이지만, 이 폴더와 글 틀 파일은 이 페이지에서 만들지 않습니다. 글을 쓸 때 10쪽의 상자에서 글 틀을 복사해 `_posts` 의 새 글 파일에 바로 붙여 넣으면 됩니다. 글 틀을 저장소에 두고 쓰고 싶으면 그때 루트에 `_templates` 폴더를 만들어 넣어도 됩니다(`_config.yml` 의 `exclude` 에 있어 사이트에는 나오지 않습니다).
@@ -282,24 +281,22 @@ Jekyll을 깊이 배우지는 않습니다. 필요한 것만 하나씩 해 봅�
 
 <!-- include: portfolio-starter/_config.yml -->
 
-**2. `index.md`** — 첫 화면입니다. 「나의 진행」 칸과 최신 글 목록이 자동으로 나옵니다.
+**2. `index.md`** — 첫 화면입니다. 소개가 보이고, 글을 게시하면 그 아래에 글 제목이 나타납니다.
 
 <!-- include: portfolio-starter/index.md -->
 
-**3. `about.md`** — 소개 페이지입니다. 빈칸 안내 문구는 나중에 내 소개로 바꿉니다.
+이미 운영 중인 블로그라면 내 설정과 소개, 기존 글 파일명은 그대로 둡니다. 기존 `index.md`에서 `## 나의 진행`부터 최신 글 목록 끝까지를 위 상자의 `{% assign posts`로 시작하는 줄부터 끝까지로 교체하세요. 예전 삭제용 샘플이 그대로라면 본문을 확인한 뒤 그 샘플만 지웁니다. 이미 내 글로 바꾼 경우에는 파일을 보존하고 머리말의 `sample: true`만 지우세요.
+
+**3. `about.md`** — 소개 페이지입니다. 설정에 쓴 소개가 여기에도 표시됩니다. 더 하고 싶은 이야기가 있으면 아래에 덧붙이세요.
 
 <!-- include: portfolio-starter/about.md -->
 
-**4. `_posts/2026-01-01-hello.md`** — 샘플 글입니다. 내 첫 글을 쓸 때는 날짜와 제목(영문 권장)을 바꿔 새 파일로 만듭니다.
-
-<!-- include: portfolio-starter/_posts/2026-01-01-hello.md -->
-
-**5. `.gitignore`** — 비밀키 파일이 실수로 올라가지 않게 막아 줍니다.
+**4. `.gitignore`** — 비밀키 파일이 실수로 올라가지 않게 막아 줍니다.
 
 <!-- include: portfolio-starter/.gitignore -->
 
 <!-- checklist -->
-- [ ] 저장소 루트에 `_config.yml` · `index.md` · `about.md` · `.gitignore` 네 파일을, `_posts` 폴더에 `2026-01-01-hello.md` 를 만들어 붙여 넣고 저장했다(모두 다섯 파일)
+- [ ] 저장소 루트에 `_config.yml` · `index.md` · `about.md` · `.gitignore` 네 파일을 만들고 내 소개를 넣어 저장했다
 <!-- /checklist -->
 
 **올리기** — **[터미널]** `network-study-notes` 폴더에서 칩니다.
@@ -320,10 +317,10 @@ cd access_control
 - `access_control/config` 는 아직 빈 폴더라 올라가지 않습니다. 실습 파일이 생기면 마무리 때 함께 올라갑니다.
 - `rejected` · `failed to push` 가 나오면 3쪽에서 저장소를 빈 채로(README 없이) 만들었는지 봅니다.
 
-> **확인** — GitHub 의 `network-study-notes` 저장소를 새로 고쳤을 때 루트에 `_config.yml` · `index.md` · `about.md` · `.gitignore` 네 파일과 `_posts` 폴더(눌러 보면 안에 `2026-01-01-hello.md`)가 보이면 성공입니다. 빠진 것이 있으면 VS Code 에서 그 파일이 `network-study-notes` 바로 아래에 있는지, 이름에 오타나 앞뒤 빈칸이 없는지 보고 다시 올립니다.
+> **확인** — GitHub 의 `network-study-notes` 저장소를 새로 고쳤을 때 루트에 `_config.yml` · `index.md` · `about.md` · `.gitignore` 네 파일이 보이면 성공입니다. 빠진 것이 있으면 VS Code 에서 그 파일이 `network-study-notes` 바로 아래에 있는지, 이름에 오타나 앞뒤 빈칸이 없는지 보고 다시 올립니다.
 
 <!-- checklist -->
-- [ ] `git add` · `git commit` · `git push -u origin main` 으로 올리고, GitHub 저장소 루트에 네 파일과 `_posts` 폴더(안에 샘플 글)가 보인다
+- [ ] `git add` · `git commit` · `git push -u origin main` 으로 올리고, GitHub 저장소 루트에 네 파일이 보인다
 <!-- /checklist -->
 
 ## 이름 바꾸고 Pages 켜기
@@ -339,10 +336,10 @@ VS Code 에서 `network-study-notes` 바로 아래의 `_config.yml` 을 엽니�
 | `author` | 내 이름 |
 | `baseurl` | 시작 파일에 이미 `"/network-study-notes"` 가 들어 있습니다. 저장소 이름을 `network-study-notes` 로 만들었다면 그대로 둡니다. 다른 이름으로 만들었다면 그 이름으로 바꿉니다(앞의 `/` 는 남깁니다) |
 
-`about.md`도 같은 방법으로 열어 빈칸 안내 문구를 내 소개로 바꿉니다. 두 파일을 저장한 뒤 **[터미널]** 저장소 루트에서 올립니다(`cd ..` → `git add .` → `git commit -m "Set site name"` → `git push` → `cd access_control`).
+소개에 더 덧붙일 이야기가 있으면 `about.md`에 적습니다. 바꾼 내용을 저장한 뒤 **[터미널]** 저장소 루트에서 올립니다(`cd ..` → `git add .` → `git commit -m "Set site name"` → `git push` → `cd access_control`).
 
 <!-- checklist -->
-- [ ] `_config.yml` 의 `title` · `description` · `author` 와 `about.md` 를 내 것으로 고치고, `baseurl` 이 내 저장소 이름과 같은지 확인해 저장하고 push 했다
+- [ ] `_config.yml` 의 `title` · `description` · `author`를 내 것으로 고치고, `baseurl` 이 내 저장소 이름과 같은지 확인해 저장하고 push 했다
 <!-- /checklist -->
 
 ### 이어서 Pages 켜기
@@ -370,10 +367,10 @@ https://<내 아이디>.github.io/<저장소 이름>/
 ### 이렇게 보이면 성공입니다
 
 1. 저장소의 **Settings → Pages** 위쪽에 **Your site is live at …** 라는 문구와 주소가 나옵니다.
-2. 그 주소를 열어 사이트 이름 아래에 4쪽에서 쓴 두 문장이 그대로 보이는지 읽습니다. 아래에는 **나의 진행** 칸(Module 3·4·5 각 Unit 5칸, 모두 회색), 최신 글의 샘플 한 편이 보입니다.
+2. 그 주소를 열어 사이트 이름 아래에 4쪽에서 쓴 두 문장이 그대로 보이는지 읽습니다.
 3. 위쪽의 **소개**를 누르면 `about.md`의 내용이 나옵니다.
 
-샘플 글에는 `sample: true`가 적혀 있어서 칸을 채우지 않습니다. 내 글을 쓰면 그 Unit의 칸이 채워집니다. 방법은 뒤의 「글 틀로 글 쓰기」에 있습니다.
+첫 게시에서는 소개만으로 충분합니다. 첫 글을 올리면 **전체 글** 목록이 생깁니다. 나중에 대표로 고른 글은 그 위에 나타납니다.
 
 ### 화면이 안 나오거나 이상할 때
 
@@ -404,7 +401,7 @@ https://<내 아이디>.github.io/<저장소 이름>/
 | `post-stuck.md` | 막혀서 끝내지 못한 날 |
 | `post-practice.md` | 응용. 여유가 있을 때 긴 글 |
 
-글 맨 위 머리말(front matter)의 `module`과 `unit` 숫자가 첫 화면의 「나의 진행」 칸을 채웁니다. 예를 들어 `module: 3`, `unit: 2`이면 Module 3의 2번 칸이 빨갛게 바뀝니다. 샘플 글에 있던 `sample: true` 줄은 내 글에는 넣지 않습니다.
+첫 글을 쓸 때 저장소 바로 아래에 `_posts` 폴더를 만듭니다. 날짜와 주제를 담은 파일에 아래 틀 하나를 붙여 넣으세요. 머리말에 `featured: true`를 추가하면 그 글은 홈의 **대표 글**에도 나옵니다. `summary:`에는 그 글을 고른 이유와 확인한 결과를 한 줄로 적을 수 있습니다.
 
 **`_templates/post-short.md`** — 기본 글 틀입니다. 「무엇을 했나 · 무엇을 골랐나 · 왜 골랐나」를 한 문장씩 씁니다.
 
@@ -418,9 +415,9 @@ https://<내 아이디>.github.io/<저장소 이름>/
 
 <!-- include: portfolio-starter/_templates/post-practice.md -->
 
-실행 결과 화면은 이미지로 저장해 `network-study-notes` 바로 아래 `assets/images/` 폴더(없으면 만듭니다)에 넣고 글에 연결합니다. 연결하는 방법은 샘플 글에 적혀 있습니다.
+실행 결과 화면은 이미지로 저장해 `network-study-notes` 바로 아래 `assets/images/` 폴더(없으면 만듭니다)에 넣고 글에 연결합니다. 예를 들어 `![권한 판정 결과]({{ "/assets/images/result.png" | relative_url }})`처럼 실제 파일 이름을 적습니다.
 
-> **확인** — 글의 맨 위 머리말에 `module`과 `unit`을 적는 이유를 설명할 수 있나요? 실제 글은 실습을 마친 뒤 작성합니다.
+> **확인** — 글 하나를 대표 글로 고를 때 머리말에 추가할 줄을 찾아봅니다. 실제 글은 실습을 마친 뒤 작성합니다.
 
 ## 쓰기 질문과 AI 도우미
 
