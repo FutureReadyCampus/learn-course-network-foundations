@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
 <title>오탐 조치 복구 글의 파일과 머리말 준비하기</title>
-<desc>_posts 폴더에 새 파일을 만들고 머리말에 제목과 작성일을 적습니다. 오탐 조치 복구에 쓴 코드를 확인할 수 있도록 글에 해당 파일의 위치를 적습니다.</desc>
+<desc>_posts 폴더에 새 파일을 만들고 머리말에 제목과 작성일을 적습니다. 오탐 조치 복구에 쓴 코드를 확인할 수 있도록 실행 결과와 해당 파일에 이르는 링크를 글에 넣습니다.</desc>
 <defs><marker id="a-p02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">글 틀로 쓰고 올리기 (VS Code)</tspan></text>
@@ -29,7 +29,7 @@
 <line x1="565" y1="236" x2="565" y2="250" stroke="#666660" stroke-width="2" marker-end="url(#a-p02)"/>
 <rect x="430" y="252" width="270" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="565.0" y="277.2" font-size="15" text-anchor="middle" fill="#292929"><tspan x="565.0" font-weight="bold">저장</tspan></text>
-<text x="20" y="266" font-size="15" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">3. 코드 위치 적기</tspan></text>
+<text x="20" y="266" font-size="15" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">3. 근거 링크 붙이기</tspan></text>
 <rect x="20" y="280" width="384" height="60" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
 <text x="212.0" y="304.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="212.0">soar_response/approval_gate.py</tspan><tspan x="212.0" dy="20">soar_response/false_positive.py</tspan></text>
 <text x="20" y="364" font-size="15" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">4. 확인하기</tspan></text>
