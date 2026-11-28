@@ -249,3 +249,16 @@ button { color: inherit; }
 .lesson-link.is-done .nav-number { font-size: 0; }
 .lesson-link.is-done .nav-number::before { font-size: .85rem; font-weight: 700; }
 .page-link.is-done::after { content: " ✓"; font-weight: 700; }
+
+.exercise-headings .exercise-answer {
+  margin-block: 1rem;
+  padding: .75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  scroll-margin-block-start: 72px;
+}
+.exercise-headings .exercise-answer > summary { cursor: pointer; font-weight: 700; }
+.exercise-headings .exercise-answer[open] { border-inline-start: 4px solid #167054; background: #edf8f3; color: #193e32; }
+.exercise-headings .exercise-answer[open] > summary { color: #165d47; }
+.exercise-headings .exercise-answer > summary:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.page-nav .page-answer-toggle[aria-expanded="true"] { background: #165d47; border-color: #165d47; color: white; }

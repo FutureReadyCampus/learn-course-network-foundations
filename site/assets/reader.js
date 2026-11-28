@@ -672,26 +672,29 @@
     };
     nextPage.addEventListener("click", goNext);
     navFooter.append(prevPage);
-    const answer = item.unit.id === "m4-u01" && prose.querySelector("details.exercise-answer");
+    const answer = prose.querySelector("details.exercise-answer");
     if (answer) {
       const answerToggle = document.createElement("button");
       answerToggle.type = "button";
       answerToggle.className = "page-answer-toggle";
       answer.id = "current-exercise-answer";
       answerToggle.setAttribute("aria-controls", answer.id);
+      const summary = answer.querySelector("summary");
       const syncAnswerToggle = () => {
+        summary.textContent = answer.open ? "정답과 해설 닫기" : "정답과 해설 보기";
         answerToggle.textContent = answer.open ? "정답 닫기" : "정답 보기";
         answerToggle.setAttribute("aria-expanded", String(answer.open));
       };
       answerToggle.addEventListener("click", () => {
         answer.open = !answer.open;
         if (answer.open) {
-          const summary = answer.querySelector("summary");
           summary.focus({ preventScroll: true });
-          summary.scrollIntoView({ block: "center" });
         }
       });
-      answer.addEventListener("toggle", syncAnswerToggle);
+      answer.addEventListener("toggle", () => {
+        syncAnswerToggle();
+        if (answer.open) answer.scrollIntoView({ block: "start" });
+      });
       syncAnswerToggle();
       navFooter.classList.add("has-answer-toggle");
       navFooter.append(answerToggle);
