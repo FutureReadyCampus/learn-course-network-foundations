@@ -66,7 +66,7 @@ enrichment.py   lookup_account   : 대상이 users_info 안에 있으면 재직 
 
 알림에 맥락을 추가하는 보강 함수를 정의합니다. 실습 2-2 실행 파일도 `enrich_incident` 를 가져와 사용(import)합니다. 직접 쓰는 곳은 1 ~ 6번입니다.
 
-```python
+```python exercise
 def lookup_account(entity, users_info):  # 대상 이름과 계정 정보 딕셔너리를 받는 함수
     """계정 정보 파일에서 이 대상이 재직 중인지, VIP 계정인지 찾아 딕셔너리로 리턴한다.
     파일에 이름이 없는 대상(IP 등)은 처음 값(False)을 그대로 리턴한다.
@@ -74,8 +74,11 @@ def lookup_account(entity, users_info):  # 대상 이름과 계정 정보 딕셔
     account = {"employed": False, "vip": False}  # 처음에는 모르는 상태로 시작한다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. entity 가 users_info 안에 있으면 (if, in)
+#|     if entity in users_info:
     # 2.   account 의 "employed" 에 users_info[entity]["employed"] 를 담는다
+#|         account["employed"] = users_info[entity]["employed"]
     # 3.   account 의 "vip" 에 users_info[entity]["vip"] 를 담는다
+#|         account["vip"] = users_info[entity]["vip"]
     return account  # 계정 정보를 리턴한다
 
 
@@ -86,8 +89,11 @@ def lookup_source_ip(entity, source_ips, trusted_ips):  # 대상 이름 · 접�
     ip_info = {"source_ip": None, "ip_trusted": False}  # 처음에는 모르는 상태로 시작한다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. entity 가 source_ips 안에 있으면 (if, in)
+#|     if entity in source_ips:
     # 5.   ip_info 의 "source_ip" 에 source_ips[entity] 를 담는다
+#|         ip_info["source_ip"] = source_ips[entity]
     # 6.   ip_info 의 "ip_trusted" 에 source_ips[entity] 가 trusted_ips 안에 있는지(in)의 결과를 담는다
+#|         ip_info["ip_trusted"] = source_ips[entity] in trusted_ips
     return ip_info  # 접속 IP 정보를 리턴한다
 
 
@@ -108,7 +114,7 @@ def enrich_incident(incident, users_info, source_ips, trusted_ips):  # 인시던
 
 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 파일을 저장하지는 않습니다.
 
-```python
+```python exercise
 from incident import load_json, INCIDENTS_PATH  # Unit 1 파일의 함수를 불러온다
 from enrichment import enrich_incident  # 방금 만든 함수를 불러온다
 
@@ -125,6 +131,7 @@ print("--- 단계 2: 알림마다 붙인 정보(재직 · VIP · 접속 IP)")  #
 for incident in incidents:  # 인시던트를 하나씩 꺼낸다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 7. enrich_incident(incident, users_info, source_ips, trusted_ips) 를 호출한다 (인시던트에 맥락이 붙는다)
+#|     enrich_incident(incident, users_info, source_ips, trusted_ips)
     context = incident["context"]  # 붙은 맥락을 꺼낸다
     if context["account_known"]:  # 계정 정보가 있으면
         if context["employed"]:  # 재직 중이면
@@ -150,7 +157,9 @@ for incident in incidents:  # 인시던트를 하나씩 꺼낸다
     context = incident["context"]  # 붙은 맥락을 꺼낸다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 8. context 의 "vip" 가 참이면 (if)
+#|     if context["vip"]:
     # 9.   vip_count 에 vip_count + 1 을 담는다 (1 늘린다)
+#|         vip_count = vip_count + 1
 print("VIP 계정 알림", vip_count, "건")  # VIP 계정 알림 수를 출력한다
 ```
 

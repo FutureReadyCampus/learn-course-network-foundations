@@ -90,7 +90,7 @@ print(first_list)
 
 <h3><code>review_list.py</code></h3>
 
-```python
+```python exercise
 from rbac import USERS, ROLES                                    # Unit 1에서 만든 사용자 · 역할 딕셔너리를 불러온다
 from exception_policy import EXCEPTIONS                          # Unit 1에서 만든 예외 리스트를 불러온다
 
@@ -120,6 +120,7 @@ def build_access_list():                                         # 지금 부여
     for user, info in USERS.items():
         role_list = role_entries(user, info)
         # ① role_list를 access_list에 이어 붙이고 다시 담습니다.
+#|         access_list = access_list + role_list
 
     for exception in EXCEPTIONS:
         user = exception["user"]
@@ -134,6 +135,7 @@ def build_access_list():                                         # 지금 부여
         }
         entry["expires"] = exception["expires"]
         # ② entry 한 건을 access_list에 추가합니다.
+#|         access_list.append(entry)
 
     return access_list
 ```

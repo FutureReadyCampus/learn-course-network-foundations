@@ -5,6 +5,8 @@ from __future__ import annotations
 
 import argparse
 import json
+from functools import partial
+from html import escape
 import re
 import warnings
 from pathlib import Path
@@ -552,12 +554,38 @@ def split_checklist(text: str, md) -> tuple[str, dict | None]:
     return rest, {"optional": all(flags), "items": items}
 
 
-def markdown_pages(path: Path, lesson_meta: dict | None = None) -> list[dict]:
+def highlight_exercise(code: str, language: str, attributes: str, *, preview_answers: bool) -> str:
+    """In an exercise fence, #| introduces a line revealed by the preview footer."""
+    if attributes != "exercise":
+        return ""
+    from markdown_it.common.utils import escapeHtml
+
+    parts = []
+    for line in code.splitlines(keepends=True):
+        if not preview_answers and line.startswith(("#| ", "#|= ")):
+            continue
+        if line.startswith("#|= "):
+            original = parts.pop()
+            parts.append(f'<span data-answer-line="{escape(line[4:])}">{original}</span>')
+        elif line.startswith("#| "):
+            parts.append(f'<span data-answer-line="{escape(line[3:])}"></span>')
+        else:
+            parts.append(escapeHtml(line))
+    class_attr = f' class="language-{escape(language)}"' if language != "plain" else ""
+    return f'<pre><code{class_attr}>{"".join(parts)}</code></pre>'
+
+
+def markdown_pages(path: Path, lesson_meta: dict | None = None, *, preview_answers: bool = False) -> list[dict]:
     """Exercise Lessons: each `## ` heading (outside code fences) is a Page rendered from full Markdown."""
     from markdown_it import MarkdownIt
 
-    md = MarkdownIt("commonmark", {"html": True}).enable("table")
+    highlight = partial(highlight_exercise, preview_answers=preview_answers)
+    md = MarkdownIt("commonmark", {"html": True, "highlight": highlight}).enable("table")
     _, source = read_front_matter(path)
+    if preview_answers:
+        source = source.replace("<!-- preview-answer: ", "<!-- answer: ")
+    else:
+        source = re.sub(r"(?m)^<!-- preview-answer: [^\n]+ -->\n", "", source)
     sections, fenced = [], False
     for line in source.split("\n"):
         fenced ^= line.startswith("```")
@@ -597,7 +625,7 @@ def markdown_pages(path: Path, lesson_meta: dict | None = None) -> list[dict]:
             source = path.parent.parent / lesson_number / "lesson.md"
             if source == path or not source.is_file():
                 raise ValueError(f"Answer lesson not found: {source}")
-            matches = [page for page in markdown_pages(source) if page["title"] == page_title]
+            matches = [page for page in markdown_pages(source, preview_answers=preview_answers) if page["title"] == page_title]
             if len(matches) != 1:
                 raise ValueError(f"Included page not found or duplicated: {page_title} in {source}")
             html = matches[0]["html"]
@@ -620,9 +648,9 @@ def markdown_pages(path: Path, lesson_meta: dict | None = None) -> list[dict]:
     return pages
 
 
-def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list[dict]:
+def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict, *, preview_answers: bool = False) -> list[dict]:
     if lesson_meta.get("render") == "markdown":
-        return markdown_pages(path, lesson_meta)
+        return markdown_pages(path, lesson_meta, preview_answers=preview_answers)
     if "pages" in lesson_meta and "concepts" in lesson_meta:
         return authored_reading_pages(path, lesson_meta, animation_assets)
     source = path.read_text(encoding="utf-8")
@@ -781,7 +809,7 @@ def reading_pages(path: Path, lesson_meta: dict, animation_assets: dict) -> list
     return pages
 
 
-def build(source_revision: str = "local-draft", source_label: str = "local draft", course_file: Path | None = None) -> dict:
+def build(source_revision: str = "local-draft", source_label: str = "local draft", course_file: Path | None = None, *, preview_answers: bool = False) -> dict:
     course_file = course_file or ROOT / "course.yaml"
     course_meta = yaml.safe_load(course_file.read_text(encoding="utf-8"))
     units = []
@@ -812,7 +840,7 @@ def build(source_revision: str = "local-draft", source_label: str = "local draft
                 **({"source_lesson_ids": lesson_meta["source_lesson_ids"]}
                    if lesson_meta.get("source_lesson_ids") else {}),
                 "terms": [],
-                "pages": reading_pages(ROOT / lesson_path, lesson_meta, course_meta.get("animation_assets", {})),
+                "pages": reading_pages(ROOT / lesson_path, lesson_meta, course_meta.get("animation_assets", {}), preview_answers=preview_answers),
                 "source": "oeweo-network-wiki",
                 "source_path": lesson_meta.get("source_wiki")
                 or (lesson_meta.get("source", {}).get("lesson_path", "")

@@ -60,7 +60,7 @@ ip_actions.py     is_in_allowlist    : 허용 목록에 있는지 확인한다 (
 
 IP 차단과 만료된 차단의 자동 해제를 구현합니다. Unit 5에서도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 1 ~ 6번입니다.
 
-```python
+```python exercise
 from containment_store import make_record  # 기록 한 건을 만드는 함수를 불러온다
 
 SHARED_IP_LIMIT = 2  # 한 IP 를 쓰는 계정이 이 수 이상이면 공유 IP 로 본다
@@ -73,6 +73,7 @@ def is_in_allowlist(ip, allowlist_ips):  # IP 와 허용 목록을 받는 함수
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. ip 가 allowlist_ips 안에 있는지(in)의 결과를 리턴한다
+#|     return ip in allowlist_ips
 
 
 def count_users_on_ip(ip, ip_users):  # IP 와 IP 별 사용 계정 딕셔너리를 받는 함수
@@ -81,6 +82,7 @@ def count_users_on_ip(ip, ip_users):  # IP 와 IP 별 사용 계정 딕셔너리
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 2. ip_users.get(ip, []) 의 개수(len)를 리턴한다 (목록에 없으면 빈 리스트로 본다)
+#|     return len(ip_users.get(ip, []))
 
 
 def check_ip_policy(ip, allowlist_ips, ip_users):  # IP · 허용 목록 · 사용 계정 딕셔너리를 받는 함수
@@ -100,7 +102,9 @@ def block_ip(ip, state, incident_id, reason, ttl):  # IP · 상태 · 인시던�
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 3. state["blocked_ips"] 에 ip 를 추가한다 (append)
+#|     state["blocked_ips"].append(ip)
     # 4. state["block_expiry"][ip] 에 state["clock"] + ttl 을 저장한다 (끝나는 시각)
+#|     state["block_expiry"][ip] = state["clock"] + ttl
     after = "차단됨"  # 조치 뒤 상태 : 일단 차단됐다고 적고 — 미리 채운 줄
     if ip not in state["blocked_ips"]:  # 실제로 확인해 차단되지 않았으면 — 미리 채운 줄
         after = "차단되지 않음 (확인 실패)"  # 확인 실패라고 고쳐 적는다 — 미리 채운 줄
@@ -132,14 +136,16 @@ def expire_blocks(state, incident_id):  # 상태와 인시던트 번호를 받�
         end_time = state["block_expiry"][ip]  # 그 IP 의 차단이 끝나는 시각 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 5. end_time 이 state["clock"] 이하이면 (if, <=)
+#|         if end_time <= state["clock"]:
         # 6.   unblock_ip(ip, state, incident_id, "차단 시간이 끝나 자동 해제") 의 결과를 records 에 추가한다 (append)
+#|             records.append(unblock_ip(ip, state, incident_id, "차단 시간이 끝나 자동 해제"))
     return records  # 해제 기록 리스트를 리턴한다
 ```
 <h3><code>exercise4-2_run.py</code></h3>
 
 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 7번 아래에는 막을 이유를 저장하는 `refusal = …`(`refusal` 은 영어로 「거절」이고, 막을 이유가 있으면 그 문장이 저장됩니다)을, 8번 아래에는 `if … :` 를, 9번 아래에는 한 단계 들여쓴 `record = …` 를 씁니다. 그 사이의 미리 채운 줄은 그대로 둡니다. 실습 4-1의 `containment_store.py` 가 같은 폴더에 있어야 합니다.
 
-```python
+```python exercise
 from incident import load_json  # Unit 1 파일의 함수를 불러온다
 from containment_store import new_state, save_state, load_state, reset_log, append_log, make_record  # 상태 · 기록 함수를 불러온다
 from ip_actions import check_ip_policy, block_ip, expire_blocks, DEFAULT_TTL  # 방금 만든 IP 조치 함수를 불러온다
@@ -158,9 +164,12 @@ print("--- 단계 1: 차단 요청 3건")  # 단계 1 시작을 알리는 줄
 for incident_id, ip, reason in requests:  # 요청을 하나씩 꺼낸다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 7. check_ip_policy(ip, allowlist_ips, ip_users) 의 결과를 refusal 에 저장한다
+#|     refusal = check_ip_policy(ip, allowlist_ips, ip_users)
     record = make_record("IP 차단", ip, incident_id, "변경 없음", "변경 없음", refusal)  # 먼저 「바꾸지 않음」 기록을 만들어 두고 — 미리 채운 줄
     # 8. refusal 이 빈 글자("")이면 (if, ==)
+#|     if refusal == "":
     # 9.   block_ip(ip, state, incident_id, reason, DEFAULT_TTL) 의 결과를 record 에 저장한다 (실제로 차단한 기록으로 바꾼다)
+#|         record = block_ip(ip, state, incident_id, reason, DEFAULT_TTL)
     append_log(record)  # 조치 기록을 파일에 남긴다
     print(record["incident"], record["target"], "·", record["before"], "→", record["after"], "·", record["reason"])  # 기록 한 건을 출력한다
 

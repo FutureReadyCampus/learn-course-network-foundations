@@ -62,7 +62,7 @@ ticketing.py   make_title         : 등급 · 대상 · 규칙으로 티켓 제�
 
 알림으로 티켓을 생성합니다. 실습 6-2 · 실습 6-3도 가져와 사용(import)합니다. 직접 쓰는 곳은 1 ~ 6번입니다.
 
-```python
+```python exercise
 DEFAULT_NEXT_STEP = "담당자가 알림 내용을 읽고 필요한 일을 정한다"                      # 알림 상태를 모를 때 쓰는 다음 할 일
 MANUAL_STEP = "조치가 확인되지 않았다. 담당자가 직접 계정이나 IP 상태를 보고 조치한다"  # 조치 확인에 실패한 티켓의 다음 할 일
 NEXT_STEPS = {                                                                          # 알림 상태마다 담당자가 할 다음 일
@@ -81,6 +81,7 @@ def make_title(alert):                                                          
     rule = alert["rule"]                                                                # 탐지된 규칙 이름 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. "[" + grade + "] " + entity + " — " + rule 을 이어 붙인 문자열를 리턴한다
+#|     return "[" + grade + "] " + entity + " — " + rule
 
 
 def find_next_step(alert, next_steps):                                                  # 알림 한 건과 다음 할 일 딕셔너리를 받는 함수
@@ -90,6 +91,7 @@ def find_next_step(alert, next_steps):                                          
     status = alert["status"]                                                            # 알림 상태(조치됨 · 승인 대기 · 조치 없음) — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 2. next_steps.get(status, DEFAULT_NEXT_STEP) 의 결과를 리턴한다 (키가 없으면 기본 문장)
+#|     return next_steps.get(status, DEFAULT_NEXT_STEP)
 
 
 def has_failed_action(done_list):                                                       # 조치 내역 문장 리스트를 받는 함수
@@ -99,7 +101,9 @@ def has_failed_action(done_list):                                               
     for text in done_list:                                                              # 조치 내역 문장을 하나씩 읽는다 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 3. text 안에 "확인 실패" 가 들어 있으면 (if, in)
+#|         if "확인 실패" in text:
             # 4. True 를 리턴한다
+#|             return True
     return False                                                                        # 하나도 없으면 False 를 리턴한다 — 미리 채운 줄
 
 
@@ -110,7 +114,9 @@ def make_ticket(alert, ticket_no, rules, next_steps):                           
     sla_table = rules["sla_minutes"]                                                    # 등급마다 정한 응답 기한(분) 표 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 5. sla_table[alert["grade"]] 를 sla_minutes 에 저장한다 (이 알림 등급의 응답 기한)
+#|     sla_minutes = sla_table[alert["grade"]]
     # 6. alert["minute"] + sla_minutes 를 sla_due 에 저장한다 (응답해야 하는 시각)
+#|     sla_due = alert["minute"] + sla_minutes
     needs_manual = has_failed_action(alert["done"])                                     # 조치 확인에 실패한 내역이 있는지 — 미리 채운 줄
     next_step = find_next_step(alert, next_steps)                                       # 다음 할 일 문장 — 미리 채운 줄
     if needs_manual:                                                                    # 확인 실패가 있으면 — 미리 채운 줄
@@ -145,7 +151,7 @@ def make_ticket(alert, ticket_no, rules, next_steps):                           
 
 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. Unit 1의 `incident.py` 가 같은 폴더에 있어야 합니다.
 
-```python
+```python exercise
 from incident import load_json                                                                # Unit 1 파일의 JSON 읽기 함수를 불러온다
 from ticketing import make_ticket, NEXT_STEPS                                                 # 방금 만든 티켓 함수를 불러온다
 
@@ -161,10 +167,13 @@ for alert in alerts:                                                            
     ticket_no = len(tickets) + 1                                                              # 티켓 번호는 지금까지 만든 수 + 1
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 7. make_ticket(alert, ticket_no, rules, NEXT_STEPS) 의 결과를 ticket 에 저장한다
+#|     ticket = make_ticket(alert, ticket_no, rules, NEXT_STEPS)
     # 8. tickets 리스트에 ticket 을 추가한다 (append)
+#|     tickets.append(ticket)
     print(ticket["id"], ticket["title"], "· 만든 시각", ticket["created_at"], "분 · 기한", ticket["sla_due"], "분")  # 티켓 한 줄을 출력한다
     if ticket["needs_manual"]:                                                                # 직접 확인이 필요하면
         # 9. manual_count 에 manual_count + 1 을 저장한다 (1 늘린다)
+#|         manual_count = manual_count + 1
 
 print("--- 단계 3: 티켓 본문 예 (TCK-1)")                                                     # 단계 3 시작을 알리는 줄
 first = tickets[0]                                                                            # 첫 번째 티켓을 꺼낸다
@@ -194,6 +203,7 @@ for ticket in tickets:                                                          
    - (가) 실행한 출력 전체를 붙여 넣어 주세요. 그리고 단계 4 에 나온 직접 확인이 필요한 티켓 번호를 적어 주세요. 마지막으로 응답 기한 시각(담당자가 응답해야 하는 시각)이 가장 이른 티켓 번호를 적어 주세요.
    - (나) [핵심 질문] `INC-207` 은 상태가 `조치됨` 인데, 티켓의 후속 조치(`next_step`)는 「조치됨」용 문장이 아닙니다. `done` 의 문장을 근거로 그 사유를 적어 주세요. 그다음 이 표시가 없으면 담당자가 무엇을 놓칠 수 있는지 적어 주세요.
    - (다) [핵심 질문] TCK-1 의 응답 기한 시각은 15분이고 TCK-2 는 243분입니다. 두 티켓의 등급과 만든 시각을 근거로 응답 기한 시각을 계산하는 방법을 적어 주세요. 그다음 모든 티켓에 같은 응답 기한을 적용하면 어떤 문제가 생기는지 적어 주세요.
+<!-- preview-answer: 05|실습 6-1 정답 -->
 
 ## 실습 6-1 정리
 

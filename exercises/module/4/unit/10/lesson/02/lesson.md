@@ -167,7 +167,7 @@ print(slash_text)               # 이어 붙인 글자를 출력한다
 
 <h3><code>event_summary.py</code></h3>
 
-```python
+```python exercise
 import json                                             # JSON 파일을 읽기 위해 json 을 불러온다
 from llm_client import call_llm                         # LLM 호출 함수를 불러온다
 
@@ -207,7 +207,9 @@ def pick_records_to_summarize(records):                 # 기록 리스트를 �
     for record in records:                              # 기록을 하나씩 꺼낸다
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 1. record["grade"] 가 "low" 가 아니고(!=) 그리고(and) picked 의 개수(len)가 SUMMARY_LIMIT 보다 작으면 (if)
+#|         if record["grade"] != "low" and len(picked) < SUMMARY_LIMIT:
         # 2.   picked 에 record 를 추가한다
+#|             picked.append(record)
     return picked                                       # 고른 기록을 리턴한다
 
 
@@ -220,6 +222,7 @@ def describe_reasons(reasons):                          # 탐지된 규칙 이�
         meanings.append(RULE_MEANING[rule])             # 그 규칙의 사실 문장을 추가한다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 3. "; " 에 .join(meanings) 를 붙여 사실 문장을 이어 붙인 결과를 meaning_text 에 담는다
+#|     meaning_text = "; ".join(meanings)
     return meaning_text                                 # 이어 붙인 문자열을 리턴한다
 
 
@@ -233,6 +236,7 @@ def build_prompt(record):                               # 기록 하나를 받�
     meaning_text = describe_reasons(record["reasons"])  # 탐지된 내용을 사실 문장으로 바꾼다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. f-문자열 f"[사실] 대상: {entity} / 등급: {grade} / 점수: {score}점 / 탐지된 내용: {meaning_text}" 의 결과를 facts 에 담는다
+#|     facts = f"[사실] 대상: {entity} / 등급: {grade} / 점수: {score}점 / 탐지된 내용: {meaning_text}"
     prompt = PROMPT_RULES + facts                       # 지시문과 사실을 이어 붙인다 — 미리 채운 줄
     return prompt                                       # AI 에게 보낼 글을 리턴한다
 
@@ -244,8 +248,11 @@ def summarize_record(record):                           # 기록 하나를 받�
     prompt = build_prompt(record)                       # AI 에게 보낼 글을 만든다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 5. call_llm(prompt) 의 결과를 summary 에 담는다
+#|     summary = call_llm(prompt)
     # 6. summary 가 빈 문자열("")이면 (if)
+#|     if summary == "":
     # 7.   FAIL_TEXT 를 summary 에 담는다
+#|         summary = FAIL_TEXT
     return summary                                      # 요약 문장을 리턴한다
 ```
 
@@ -298,6 +305,7 @@ for record in picked:                                                           
    - (가) 실행한 출력 전체를 붙여 넣고, 요약한 대상 수와 `(요약 실패 …)` 가 나온 대상 수를 적어 주세요.
    - (나) [핵심 질문] 단계 3 의 지시문이 AI 에게 하지 말라고 한 것 두 가지를 찾고, 각각 하면 왜 위험한지 적어 주세요.
    - (다) [핵심 질문] 단계 4 의 요약 하나를 골라 1.1 의 점수 기록 표(대상 · 점수 · 등급 · 탐지된 규칙)와 비교해, 표에 없는 내용이 들어 있는지 적어 주세요. 있으면 어떤 문장인지와 지시문을 어떻게 고칠지, 없으면 없다고 쓰고 탐지된 규칙이 모두 문장에 들어갔는지 적어 주세요.
+<!-- preview-answer: 05|실습 10-1 정답 -->
 
 ## 실습 10-1 정리
 

@@ -226,7 +226,7 @@ def make_log_entry(incident, playbook, action, result):  # 인시던트 · 플�
 - **무엇인가**: 플레이북 하나를 실행하는 **프로그램의 핵심**입니다. 승인을 확인하고, 액션을 차례로 실행하고, 기록을 남깁니다. 여기서 직접 6곳을 씁니다.
 - **어디에 쓰나**: 실행 파일이 인시던트 5건을 이 파일의 함수에 넘겨 처리합니다.
 
-```python
+```python exercise
 from incident import change_status, match_playbooks, run_action, make_log_entry  # 제공받은 함수를 불러온다
 
 
@@ -237,12 +237,18 @@ def run_playbook(incident, playbook, state, action_log):  # 인시던트 · 플�
     change_status(incident, "분류됨")  # 대응을 시작하기 전에 분류됨 상태로 옮긴다 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. playbook 의 "approval" 값이 "자동" 이 아니면 (if, !=)
+#|     if playbook["approval"] != "자동":
     # 2.   make_log_entry(incident, playbook, "전체", "승인 대기") 의 결과를 action_log 에 추가한다 (append)
+#|         action_log.append(make_log_entry(incident, playbook, "전체", "승인 대기"))
     # 3.   False 를 리턴한다 (실행하지 않았다)
+#|         return False
     for action in playbook["actions"]:  # 액션을 하나씩 꺼낸다
         # 4. run_action(action, incident, state) 의 결과를 result 에 담는다
+#|         result = run_action(action, incident, state)
         # 5. make_log_entry(incident, playbook, action, result) 의 결과를 action_log 에 추가한다 (append)
+#|         action_log.append(make_log_entry(incident, playbook, action, result))
     # 6. change_status(incident, "조치됨") 를 호출한다 (실행이 끝났으니 조치됨으로 옮긴다)
+#|     change_status(incident, "조치됨")
     return True  # 모두 실행했으니 True 를 리턴한다
 
 

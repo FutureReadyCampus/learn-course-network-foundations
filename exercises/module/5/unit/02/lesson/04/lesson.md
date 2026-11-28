@@ -89,7 +89,7 @@ safe_runner.py   find_skip_reason : 이미 잠긴 계정이면 (1 · 2번), 잠�
 
 안전장치를 건 실행기입니다. Unit 3의 실습 3-2에서 실패 처리를 더합니다. 직접 쓰는 곳은 1 ~ 7번입니다.
 
-```python
+```python exercise
 from incident import change_status, match_playbooks, run_action, make_log_entry  # Unit 1 파일의 함수를 불러온다
 
 DONE_STATUSES = ["조치됨", "보고됨", "종료"]  # 이미 대응이 끝난 상태들
@@ -102,9 +102,13 @@ def find_skip_reason(action, entity, state):  # 액션 · 대상 · 연습용 �
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. action 이 "계정 잠금" 이고(and) entity 가 state["locked_users"] 안에 있으면 (if, in)
+#|     if action == "계정 잠금" and entity in state["locked_users"]:
     # 2.   "건너뜀: 이미 잠겨 있음" 을 리턴한다
+#|         return "건너뜀: 이미 잠겨 있음"
     # 3. action 이 "계정 잠금" 이고(and) state["locked_users"] 의 개수(len)가 MAX_LOCKS_PER_RUN 이상이면 (if, >=)
+#|     if action == "계정 잠금" and len(state["locked_users"]) >= MAX_LOCKS_PER_RUN:
     # 4.   "건너뜀: 한 번에 잠글 수 있는 계정 수를 넘음 (담당자 확인 필요)" 를 리턴한다
+#|         return "건너뜀: 한 번에 잠글 수 있는 계정 수를 넘음 (담당자 확인 필요)"
     return ""  # 건너뛸 이유가 없으면 빈 글자를 리턴한다 — 미리 채운 줄
 
 
@@ -116,8 +120,11 @@ def safe_run_action(action, incident, state):  # 액션 · 인시던트 · 연�
     skip_reason = find_skip_reason(action, entity, state)  # 건너뛸 이유를 구한다 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 5. skip_reason 이 빈 글자("")가 아니면 (if, !=)
+#|     if skip_reason != "":
     # 6.   skip_reason 을 리턴한다
+#|         return skip_reason
     # 7. run_action(action, incident, state) 의 결과를 리턴한다 (건너뛸 이유가 없으면 원래대로 실행한다)
+#|     return run_action(action, incident, state)
 
 
 def run_playbook_safe(incident, playbook, state, action_log):  # 인시던트 · 플레이북 · 연습용 시스템 · 기록 리스트를 받는 함수
@@ -165,7 +172,7 @@ def process_safe(incidents, registry, state, action_log):  # 인시던트 리스
 
 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. Unit 1의 `playbook_runner.py` 의 완성된 `run_playbook` 이 필요합니다.
 
-```python
+```python exercise
 from incident import load_json, match_playbooks, INCIDENTS_PATH, REGISTRY_PATH  # Unit 1 파일의 함수를 불러온다
 from playbook_runner import run_playbook  # Unit 1에서 만든 실행기를 불러온다
 from safe_runner import process_safe, MAX_LOCKS_PER_RUN  # 방금 만든 안전한 실행기를 불러온다
@@ -235,7 +242,9 @@ for entry in action_log:  # 기록을 하나씩 꺼낸다
     result_text = entry["result"]  # 기록의 결과 문장
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 8. result_text 가 "건너뜀" 으로 시작하면 (if, startswith)
+#|     if result_text.startswith("건너뜀"):
     # 9.   entry["incident"] · entry["action"] · "->" · result_text 를 출력한다 (print)
+#|         print(entry["incident"], entry["action"], "->", result_text)
 ```
 
 <h2>순서</h2>

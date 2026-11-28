@@ -93,7 +93,7 @@ source:
 
 <h3><code>checklist.py</code></h3>
 
-```python
+```python exercise
 import json                                                      # JSON 파일을 읽는 모듈을 불러온다
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
 
@@ -116,7 +116,9 @@ def check_employed(users):                                       # 사용자 딕
     for name, info in users.items():                             # 사용자 이름과 사용자 정보를 하나씩 꺼낸다
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 1. info["employed"] 가 거짓이면 (if not …)
+#|         if not info["employed"]:
         # 2.   name 을 problems 에 추가한다
+#|             problems.append(name)
     return problems                                              # 문제가 있는 사용자 이름을 리턴한다
 
 
@@ -128,8 +130,11 @@ def check_expired(exceptions, now):                              # 예외 리스
     for exception in exceptions:                                       # 예외를 하나씩 꺼낸다
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 3. exception["expires"] 를 TIME_FORMAT 으로 읽어 시각 expires_at 에 담는다 (datetime.strptime)
+#|         expires_at = datetime.strptime(exception["expires"], TIME_FORMAT)
         # 4. expires_at 이 now 보다 이르거나 같으면 (<=)
+#|         if expires_at <= now:
         # 5.   exception["id"] 를 problems 에 추가한다
+#|             problems.append(exception["id"])
     return problems                                              # 문제가 있는 예외 번호를 리턴한다
 
 
@@ -141,8 +146,11 @@ def check_dept(users, role_dept):                                # 사용자 딕
     for name, info in users.items():                             # 사용자 이름과 사용자 정보를 하나씩 꺼낸다
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 6. role_dept 에서 info["role"] 의 부서를 찾아 expected_dept 에 담는다
+#|         expected_dept = role_dept[info["role"]]
         # 7. expected_dept 가 info["dept"] 와 다르면 (!=)
+#|         if expected_dept != info["dept"]:
         # 8.   name 을 problems 에 추가한다
+#|             problems.append(name)
     return problems                                              # 문제가 있는 사용자 이름을 리턴한다
 
 

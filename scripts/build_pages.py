@@ -100,7 +100,7 @@ def main() -> None:
     baseurl = "/" + args.baseurl.strip("/") if args.baseurl.strip("/") else ""
     course = build(args.source_revision, args.source_label)
     # Exercise courses (exercises/<id>/course.yaml) get their own reader copy under /exercises/<id>/.
-    exercises = {f.parent.relative_to(ROOT / "exercises").as_posix(): build(args.source_revision, args.source_label, f) for f in sorted((ROOT / "exercises").glob("module/*/course.yaml"))}
+    exercises = {f.parent.relative_to(ROOT / "exercises").as_posix(): build(args.source_revision, args.source_label, f, preview_answers=True) for f in sorted((ROOT / "exercises").glob("module/*/course.yaml"))}
     emit(course, output, baseurl, args.source_revision, {k: v["title"] for k, v in exercises.items()}, baseurl)
     for slug, exercise in exercises.items():
         emit(exercise, output / "exercises" / slug, f"{baseurl}/exercises/{slug}", args.source_revision, site=baseurl, no_copy=True)

@@ -102,7 +102,7 @@ false_positive.py   list_changes           : 바뀐 기록이면 (1번) 추가�
 
 - 3번과 4번은 `if` 한 줄만 씁니다. 그 아래 미리 채운 `remaining.append(target)` 줄이 `if` 안쪽입니다.
 
-```python
+```python exercise
 from rollback import find_incident_records, rollback_incident                        # Unit 5에서 만든 되돌리기 함수를 불러온다
 
 RECOVERY_LIMIT = 30                                                                  # 오탐 신고를 받은 뒤 복구를 끝내야 하는 시간(분)
@@ -116,7 +116,9 @@ def list_changes(log, incident_id):                                             
     for record in find_incident_records(log, incident_id):                           # 그 인시던트의 기록을 하나씩 읽는다 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 1. record["before"] 와 record["after"] 가 다르면 (if, !=)
+#|         if record["before"] != record["after"]:
             # 2. changes 에 record 를 추가한다 (append)
+#|             changes.append(record)
     return changes                                                                   # 실제로 바뀐 기록 리스트를 리턴한다 — 미리 채운 줄
 
 
@@ -129,8 +131,10 @@ def find_not_recovered(changes, state):                                         
         target = record["target"]                                                    # 조치 대상(계정 또는 IP) — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 3. record["action"] 이 "계정 잠금" 이고(and) target 이 state["locked_users"] 안에 있으면 (if, ==, in)
+#|         if record["action"] == "계정 잠금" and target in state["locked_users"]:
             remaining.append(target)                                                 # 아직 잠겨 있는 계정을 추가한다 — 미리 채운 줄
         # 4. record["action"] 이 "IP 차단" 이고(and) target 이 state["blocked_ips"] 안에 있으면 (if, ==, in)
+#|         if record["action"] == "IP 차단" and target in state["blocked_ips"]:
             remaining.append(target)                                                 # 아직 차단된 IP 를 추가한다 — 미리 채운 줄
     return remaining                                                                 # 복구되지 않은 대상 리스트를 리턴한다 — 미리 채운 줄
 
@@ -142,7 +146,9 @@ def make_tuning_note(changes):                                                  
     for record in changes:                                                           # 바뀐 기록을 하나씩 읽는다 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 5. record["action"] 이 "IP 차단" 이면 (if, ==)
+#|         if record["action"] == "IP 차단":
             # 6. "허용 목록에 추가 검토: " + record["target"] 을 리턴한다
+#|             return "허용 목록에 추가 검토: " + record["target"]
     first = changes[0]                                                               # 첫 번째 바뀐 기록 — 미리 채운 줄
     return "탐지 규칙 예외 검토: " + first["target"] + " (" + first["reason"] + ")"  # 계정이면 규칙 예외를 제안한다 — 미리 채운 줄
 
@@ -155,6 +161,7 @@ def handle_false_positive(report, log, state, now):                             
     changes = list_changes(log, incident_id)                                         # 영향 확인: 자동 조치가 실제로 바꾼 기록 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 7. rollback_incident(incident_id, log, state) 의 결과를 undo_records 에 저장한다 (되돌리기)
+#|     undo_records = rollback_incident(incident_id, log, state)
     remaining = find_not_recovered(changes, state)                                   # 복구 확인: 아직 남은 대상 — 미리 채운 줄
     changed = []                                                                     # 영향 받은 대상과 조치를 모을 빈 리스트 — 미리 채운 줄
     for record in changes:                                                           # 바뀐 기록을 하나씩 읽는다 — 미리 채운 줄
@@ -179,7 +186,7 @@ def handle_false_positive(report, log, state, now):                             
 
 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
-```python
+```python exercise
 from incident import load_json, save_json                                                   # Unit 1 파일의 JSON 읽기 · 쓰기 함수를 불러온다
 from false_positive import handle_false_positive, RECOVERY_LIMIT                            # 방금 만든 오탐 처리 함수를 불러온다
 
@@ -196,7 +203,9 @@ print("--- 단계 2: 신고마다 영향 확인 · 되돌리기 · 복구 확인
 for report in reports:                                                                      # 오탐 신고를 하나씩 읽는다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 8. handle_false_positive(report, log, state, NOW) 의 결과를 result 에 저장한다
+#|     result = handle_false_positive(report, log, state, NOW)
     # 9. results 에 result 를 추가한다 (append)
+#|     results.append(result)
     print("[" + result["incident"] + "] 신고:", report["reporter"], "—", report["reason"])  # 신고 내용을 출력한다
     print(" - 영향 확인:", result["changed"])                                               # 자동 조치가 바꾼 것을 출력한다
     print(" - 되돌리기:", result["undone"])                                                 # 되돌린 일을 출력한다
@@ -228,6 +237,7 @@ print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.
    - (가) 실행한 출력 전체를 붙여 넣고, 신고마다 걸린 시간과 처리 뒤 잠긴 계정을 적어 주세요.
    - (나) [핵심 질문] `INC-301` 의 영향 확인에 `IP 차단 198.51.100.120` 이 없습니다. `fp_log.json` 에서 `198.51.100.120` 의 IP 차단 기록이 가진 `before` · `after` 를 근거로 그 이유를 적고, `false_positive.py` 1번의 `if` 줄이 없으면 규칙 조정 제안이 어떻게 잘못되는지 적어 주세요.
    - (다) [핵심 질문] `INC-301` 의 되돌리기에 `되돌리기 불가 jiwoo` 가 있습니다. 무엇을 되돌릴 수 없는지(비가역 조치)와 담당자가 `jiwoo` 에게 따로 안내해야 할 것을 적어 주세요. 그리고 `dami` 가 처리 뒤에도 잠겨 있어야 하는 이유를 따로 적어 주세요.
+<!-- preview-answer: 05|실습 8-3 정답 -->
 
 ## 실습 8-3 정리
 

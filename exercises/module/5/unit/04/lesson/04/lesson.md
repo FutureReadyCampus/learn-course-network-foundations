@@ -57,7 +57,7 @@ containment.py      contain_account     : 계정을 잠그고 (4번), 잠금이 
 
 세션 종료와 점검입니다. 직접 쓰는 곳은 1 ~ 3번입니다.
 
-```python
+```python exercise
 from containment_store import make_record  # 기록 한 건을 만드는 함수를 불러온다
 
 
@@ -68,6 +68,7 @@ def terminate_sessions(user, state, incident_id, reason):  # 계정 · 상태 ·
     before_count = len(state["sessions"].get(user, []))  # 조치 전 세션 수 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. state["sessions"][user] 에 빈 리스트를 저장한다 (세션을 모두 종료한다)
+#|     state["sessions"][user] = []
     after_count = len(state["sessions"].get(user, []))  # 조치 뒤 세션 수를 다시 구한다 — 미리 채운 줄
     return make_record(
         "세션 종료",
@@ -88,14 +89,16 @@ def find_open_sessions(state):  # 연습용 시스템 상태를 받는 함수
         open_count = len(state["sessions"].get(user, []))  # 그 계정에 열린 세션 수 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 2. open_count 가 0 보다 크면 (if, >)
+#|         if open_count > 0:
         # 3.   gaps 에 user 를 추가한다 (append)
+#|             gaps.append(user)
     return gaps  # 빈틈이 있는 계정 리스트를 리턴한다
 ```
 <h3><code>containment.py</code></h3>
 
 잠금과 세션 종료를 한 함수에서 순서대로 수행합니다. Unit 5에서도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 4 ~ 6번입니다.
 
-```python
+```python exercise
 from account_actions import lock_account  # 실습 4-1에 만든 계정 잠금 함수를 불러온다
 from session_actions import terminate_sessions  # 방금 만든 세션 종료 함수를 불러온다
 
@@ -107,16 +110,19 @@ def contain_account(user, state, vip_accounts, incident_id, reason):  # 계정 �
     records = []  # 조치 기록을 저장할 빈 리스트
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. lock_account(user, state, vip_accounts, incident_id, reason) 의 결과를 lock_record 에 저장한다
+#|     lock_record = lock_account(user, state, vip_accounts, incident_id, reason)
     records.append(lock_record)  # 잠금 기록을 리스트에 추가한다 — 미리 채운 줄
     # 5. lock_record 의 "after" 가 "잠김" 이면 (if, ==)
+#|     if lock_record["after"] == "잠김":
     # 6.   terminate_sessions(user, state, incident_id, reason) 의 결과를 records 에 추가한다 (append)
+#|         records.append(terminate_sessions(user, state, incident_id, reason))
     return records  # 조치 기록 리스트를 리턴한다
 ```
 <h3><code>exercise4-3_run.py</code></h3>
 
 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실습 4-1의 `containment_store.py` 와 `account_actions.py` 가 같은 폴더에 있어야 합니다.
 
-```python
+```python exercise
 from incident import load_json  # Unit 1 파일의 함수를 불러온다
 from containment_store import new_state, save_state, load_state, reset_log, append_log  # 상태 · 기록 함수를 불러온다
 from session_actions import find_open_sessions  # 방금 만든 세션 점검 함수를 불러온다
@@ -138,6 +144,7 @@ print("--- 단계 2: 잠금 → 세션 종료")  # 단계 2 시작을 알리는 
 for incident_id, user, reason in requests:  # 요청을 하나씩 꺼낸다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 7. contain_account(user, state, vip_accounts, incident_id, reason) 의 결과를 records 에 저장한다
+#|     records = contain_account(user, state, vip_accounts, incident_id, reason)
     for record in records:  # 조치 기록을 하나씩 꺼낸다
         append_log(record)  # 조치 기록을 파일에 남긴다
         print(record["incident"], record["target"], "·", record["before"], "→", record["after"], "·", record["reason"])  # 기록 한 건을 출력한다
@@ -145,10 +152,12 @@ for incident_id, user, reason in requests:  # 요청을 하나씩 꺼낸다
 print("--- 단계 3: 조치 뒤 다시 점검")  # 단계 3 시작을 알리는 줄
 # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
 # 8. find_open_sessions(state) 의 결과를 gaps_after 에 저장한다
+#| gaps_after = find_open_sessions(state)
 print("빈틈이 남은 계정:", gaps_after)  # 점검 결과를 출력한다
 print("잠긴 계정:", state["locked_users"])  # 잠긴 계정을 출력한다
 
 # 9. save_state(state) 를 호출한다 (상태를 파일에 저장한다)
+#| save_state(state)
 print("--- 단계 4: 파일에 저장된 값 다시 읽기")  # 단계 4 시작을 알리는 줄
 print("잠긴 계정:", load_state()["locked_users"])  # 저장된 잠긴 계정을 출력한다
 print("조치 기록:", len(load_json("containment_log.json")), "건")  # 저장된 기록 수를 출력한다

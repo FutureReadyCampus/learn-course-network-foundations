@@ -107,7 +107,7 @@ source:
 
 <h3><code>access_server.py</code></h3>
 
-```python
+```python exercise
 import json                                                      # JSON 문자열을 만드는 모듈을 불러온다
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
 from flask import Flask, request                                 # 서버를 만드는 Flask 와 요청 정보를 담은 request 를 불러온다
@@ -130,9 +130,11 @@ def parse_time(text):                                            # 시각 문자
     try:                                                         # 아래를 시도한다 (미리 채움)
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 1. datetime.strptime(text, TIME_FORMAT) 의 결과(시각)를 리턴한다
+#|         return datetime.strptime(text, TIME_FORMAT)
     except ValueError:                                           # 모양이 틀렸으면 (미리 채움)
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 2. None 을 리턴한다 (없다고 알린다)
+#|         return None
 
 
 def write_log(entry):                                            # 로그에 쓸 딕셔너리를 받는 함수
@@ -141,6 +143,7 @@ def write_log(entry):                                            # 로그에 쓸
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 3. 파일을 여는 모드 "a"(덧붙이기: 기존 내용 뒤에 쓴다)를 mode 에 담는다
+#|     mode = "a"
     with open(LOG_PATH, mode, encoding="utf-8") as log_file:            # 파일을 mode(덧붙이기 모드)로 연다
         text = json.dumps(entry, ensure_ascii=False)             # 딕셔너리를 JSON 문자열로 만든다(한글은 그대로)
         log_file.write(text + "\n")                                     # 한 줄로 파일 끝에 쓴다
@@ -161,6 +164,7 @@ def check():                                                     # 요청 한 �
         return {"allowed": False, "reason": "입력이 잘못됨"}, 400   # 요청이 잘못됐다는 상태 코드 400 으로 답한다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. evaluate_conditional(user, resource, action, network, now, RULES) 의 결과를 allowed, reason 으로 받는다
+#|     allowed, reason = evaluate_conditional(user, resource, action, network, now, RULES)
     log_entry = {                                                 # 로그 한 줄에 담을 값을 묶는다(여러 줄)
         "time": request.args.get("time"),                        # 시각
         "user": user,                                            # 사용자
@@ -172,8 +176,11 @@ def check():                                                     # 요청 한 �
     write_log(log_entry)                                         # 요청 로그를 한 줄 덧붙인다 (미리 채움)
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 5. allowed 가 참이면
+#|     if allowed:
     # 6.   {"allowed": True, "reason": reason} 과 상태 코드 200 을 함께 리턴한다
+#|         return {"allowed": True, "reason": reason}, 200
     # 7. {"allowed": False, "reason": reason} 과 상태 코드 403 을 함께 리턴한다 (if 밖, 함수 안쪽 줄에 맞춘다)
+#|     return {"allowed": False, "reason": reason}, 403
 
 if __name__ == "__main__":                                       # 이 파일을 직접 실행했을 때만
     app.run(port=5001)                                           # 5001번 포트로 서버를 켠다

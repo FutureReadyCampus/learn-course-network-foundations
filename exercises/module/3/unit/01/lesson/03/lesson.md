@@ -125,7 +125,7 @@ ls config
 
 <h3><code>rbac.py</code></h3>
 
-```python
+```python exercise
 import json                                                      # JSON 파일을 읽는 모듈을 불러온다
 
 with open("config/roles.json", encoding="utf-8") as roles_file:           # 역할 파일을 연다
@@ -150,7 +150,9 @@ def check_permission(user, resource, action):                    # 사용자 · 
     # [4] 「자원:행위」가 그 역할의 권한 리스트에 있나
     permission = f"{resource}:{action}"                          # "자원:행위" 모양 문자열로 합친다
     # ① permission 이 ROLES[role] 리스트에 없으면   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     if permission not in ROLES[role]:
     # ② "권한 없음" 을 이유로 거부한다   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+#|         return False, "권한 없음"
 
     return True, "허용"                                          # 모든 검사를 지나면 허용한다
 ```

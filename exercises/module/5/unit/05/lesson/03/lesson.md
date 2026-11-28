@@ -64,7 +64,7 @@ shift_report.py   is_failure         : 조치 후 상태에 확인 실패가 있
 
 알림 한 건을 처리합니다. Unit 2의 `enrichment.py` · `routing.py` 와 Unit 4 파일을 불러옵니다(import). 직접 쓰는 곳은 1 ~ 5번입니다. `FIREWALL_DOWN_FOR` 는 방화벽 연결이 끊긴 상황을 흉내 내려고 수업에서만 쓰는 목록입니다.
 
-```python
+```python exercise
 from enrichment import enrich_incident                                                      # Unit 2의 실습 2-1 : 맥락 붙이기
 from routing import decide_route                                                            # Unit 2의 실습 2-2 : 경로 정하기
 from containment_store import make_record                                                   # 기록 한 건을 만드는 함수를 불러온다
@@ -81,8 +81,11 @@ def choose_containment(incident):                                               
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. incident["reasons"] 의 규칙을 하나씩 꺼낸다 (for, rule)
+#|     for rule in incident["reasons"]:
     # 2.   rule 이 CONTAINMENT_BY_RULE 안에 있으면 (if, in)
+#|         if rule in CONTAINMENT_BY_RULE:
     # 3.     CONTAINMENT_BY_RULE[rule] 을 리턴한다
+#|             return CONTAINMENT_BY_RULE[rule]
     return "없음"                                                                           # 조치 표에 있는 규칙이 없으면 「없음」을 리턴한다 — 미리 채운 줄
 
 
@@ -96,7 +99,9 @@ def handle_incident(incident, state, refs):                                     
         return "오탐 종료", []                                                              # 조치하지 않고 끝낸다 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. route 가 "승인 필요" 이면 (if, ==)
+#|     if route == "승인 필요":
     # 5.   "승인 대기" 와 빈 리스트 [] 를 쉼표로 이어 함께 리턴한다 (담당자가 허락하기 전에는 조치하지 않는다)
+#|         return "승인 대기", []
     kind = choose_containment(incident)                                                     # 할 조치 종류를 구한다 — 미리 채운 줄
     entity = incident["entity"]                                                             # 대응할 대상 — 미리 채운 줄
     if kind == "계정 조치":                                                                 # 계정 조치이면 — 미리 채운 줄
@@ -119,13 +124,14 @@ def handle_incident(incident, state, refs):                                     
 
 기록을 종류별로 셉니다. 직접 쓰는 곳은 6 ~ 8번입니다.
 
-```python
+```python exercise
 def is_failure(record):                                     # 기록 한 건을 받는 함수
     """기록의 조치 후 상태에 「확인 실패」가 들어 있으면 True, 아니면 False 를 리턴한다.
     조치했다고 했지만 실제로 바뀌지 않은 건을 찾아낼 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 6. "확인 실패" 가 record 의 "after" 안에 있는지(in)의 결과를 리턴한다
+#|     return "확인 실패" in record["after"]
 
 
 def is_unchanged(record):                                   # 기록 한 건을 받는 함수
@@ -134,6 +140,7 @@ def is_unchanged(record):                                   # 기록 한 건을 
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 7. record 의 "before" 와 "after" 가 같은지(==)의 결과를 리턴한다
+#|     return record["before"] == record["after"]
 
 
 def classify_record(record):                                # 기록 한 건을 받는 함수
@@ -156,6 +163,7 @@ def summarize(log):                                         # 기록 리스트�
         kind = classify_record(record)                      # 기록의 종류를 구한다 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 8. counts[kind] 에 counts[kind] + 1 을 담는다 (그 종류의 건수를 1 늘린다)
+#|         counts[kind] = counts[kind] + 1
     return counts                                           # 종류별 건수를 리턴한다
 ```
 
@@ -163,7 +171,7 @@ def summarize(log):                                         # 기록 리스트�
 
 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이번 근무의 기록은 `shift_log.json` 에 따로 저장하고, 실습 4-3이 저장한 파일은 건드리지 않습니다.
 
-```python
+```python exercise
 from incident import load_json, save_json, INCIDENTS_PATH                                 # Unit 1 파일의 함수를 불러온다
 from containment_store import new_state                                                   # Unit 4의 실습 4-1의 처음 상태 함수를 불러온다
 from drill import handle_incident                                                         # 방금 만든 사건 처리 함수를 불러온다
@@ -212,6 +220,7 @@ print("--- 단계 1: 알림 8건 처리")                                       
 for incident in incidents:                                                                # 알림을 하나씩 꺼낸다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 9. handle_incident(incident, state, refs) 가 리턴한 두 값을 status 와 records 에 한 번에 받는다
+#|     status, records = handle_incident(incident, state, refs)
     statuses[incident["id"]] = status                                                     # 처리 결과를 모아 둔다
     for record in records:                                                                # 조치 기록을 하나씩 꺼낸다
         log.append(record)                                                                # 이번 근무의 기록에 모은다

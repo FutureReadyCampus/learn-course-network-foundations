@@ -89,7 +89,7 @@ source:
 
 <h3><code>report_exclude.py</code></h3>
 
-```python
+```python exercise
 from config_loader import load_json                              # Unit 1에서 만든 안전한 읽기 함수를 불러온다
 
 
@@ -101,6 +101,7 @@ def exclude_key(entry):                                          # 사용자와 
     permission = entry["permission"]                             # 그 권한의 권한 이름
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. f"{user}:{permission}" 을 리턴한다 (사용자와 권한을 : 로 이어 붙인 문자열. 받은 방식 source 는 넣지 않는다)
+#|     return f"{user}:{permission}"
 
 
 def make_excluded(finding, reason):                              # 후보 한 건과 제외 이유 문자열을 받는 함수
@@ -121,6 +122,7 @@ def load_exclude_map(path):                                      # 회수 제외
         item_key = exclude_key(item)                             # 그 권한의 「사용자:권한」 문자열을 만든다
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 2. exclude_map 의 item_key 키에 item["reason"] 을 담는다 (제외 이유)
+#|         exclude_map[item_key] = item["reason"]
     return exclude_map                                           # 딕셔너리를 리턴한다
 
 
@@ -130,9 +132,13 @@ def can_exclude(finding, exclude_map):                           # 후보 한 �
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 3. exclude_key(finding) 을 key 에 담는다
+#|     key = exclude_key(finding)
     # 4. key 가 exclude_map 에 있는지 (in) 를 in_exclude_list 에 담는다
+#|     in_exclude_list = key in exclude_map
     # 5. "퇴사한 계정" 이 finding["reasons"] 에 있는지 (in) 를 is_resigned 에 담는다
+#|     is_resigned = "퇴사한 계정" in finding["reasons"]
     # 6. in_exclude_list 이고 is_resigned 가 아니면 True 가 되도록 리턴한다 (and not)
+#|     return in_exclude_list and not is_resigned
 
 
 def split_by_exclude(findings, exclude_map):                     # 후보 리스트와 제외 이유 딕셔너리를 받는 함수
@@ -145,11 +151,17 @@ def split_by_exclude(findings, exclude_map):                     # 후보 리스
         key = exclude_key(finding)                               # 「사용자:권한」 문자열을 만든다
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 7. can_exclude(finding, exclude_map) 가 참이면
+#|         if can_exclude(finding, exclude_map):
         # 8.   exclude_map[key] 를 reason 에 담는다
+#|             reason = exclude_map[key]
         # 9.   make_excluded(finding, reason) 을 excluded_entry 에 담는다
+#|             excluded_entry = make_excluded(finding, reason)
         # 10.  excluded_entry 를 excluded 에 추가한다
+#|             excluded.append(excluded_entry)
         # 11. 그렇지 않으면 (else)
+#|         else:
         # 12.   to_revoke 에 finding 을 추가한다
+#|             to_revoke.append(finding)
     return to_revoke, excluded                                   # 두 리스트를 함께 리턴한다
 ```
 

@@ -75,7 +75,7 @@ unit09_check.py   check_report    : 있어야 할 번호가 리포트에 없으�
 
 - 4번과 5번은 `if` 한 줄만 씁니다. 그 아래 미리 채운 `append` 줄이 `if` 안쪽입니다.
 
-```python
+```python exercise
 from report import find_missing_incidents                        # Unit 8의 실습 8-1의 티켓 없는 조치 찾기 함수를 불러온다
 from approval_gate import decide_gate                            # Unit 8의 실습 8-2의 승인 게이트 함수를 불러온다
 
@@ -93,7 +93,9 @@ def check_report(report_text, tickets, actions):                 # 리포트 문
     for number in expected:                                      # 있어야 할 번호를 하나씩 꺼낸다 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 1. number 가 report_text 안에 없으면 (if, not in)
+#|         if number not in report_text:
             # 2. not_found 에 number 를 추가한다 (append)
+#|             not_found.append(number)
     return not_found                                             # 리포트에 없는 번호 리스트를 리턴한다 — 미리 채운 줄
 
 
@@ -105,7 +107,9 @@ def check_gate(cases, policy):                                   # 시험 사례
     for case in cases:                                           # 시험 사례를 하나씩 꺼낸다 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 3. decide_gate(case["request"], policy) 의 두 결과를 decision, reasons 에 담는다
+#|         decision, reasons = decide_gate(case["request"], policy)
         # 4. decision 이 case["expected"] 와 다르면 (if, !=)
+#|         if decision != case["expected"]:
             wrong.append(case["case"] + " (기대 " + case["expected"] + ", 결과 " + decision + ")")  # 사례 이름과 두 결정을 추가한다 — 미리 채운 줄
     return wrong                                                 # 기대와 다른 사례 리스트를 리턴한다 — 미리 채운 줄
 
@@ -120,10 +124,13 @@ def check_recovery(results, state, true_positive_users):         # 오탐 처리
             problems.append(result["incident"] + " 복구 안 됨")  # 문제를 추가한다 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 5. result["in_time"] 이 False 이면 (if not)
+#|         if not result["in_time"]:
             problems.append(result["incident"] + " 30분 넘음")   # 문제를 추가한다 — 미리 채운 줄
     for user in true_positive_users:                             # 진짜 공격 계정을 하나씩 꺼낸다 — 미리 채운 줄
         # 6. user 가 state["locked_users"] 안에 없으면 (if, not in)
+#|         if user not in state["locked_users"]:
             # 7. problems 에 user + " 잠금이 풀림" 을 추가한다 (append)
+#|             problems.append(user + " 잠금이 풀림")
     return problems                                              # 문제 문장 리스트를 리턴한다 — 미리 채운 줄
 
 
@@ -140,7 +147,7 @@ def mark(problems):                                              # 문제 리스
 
 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
-```python
+```python exercise
 from incident import load_json                                                              # Unit 1 파일의 JSON 읽기 함수를 불러온다
 from false_positive import handle_false_positive                                            # Unit 8의 실습 8-3의 오탐 처리 함수를 불러온다
 from unit09_check import check_report, check_gate, check_recovery, mark                       # 방금 만든 점검 함수를 불러온다
@@ -159,6 +166,7 @@ with open(REPORT_PATH, encoding="utf-8") as report_file:                        
     report_text = report_file.read()                                                        # 파일 내용을 한 문자열로 읽는다
 # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
 # 8. check_report(report_text, tickets, actions) 의 결과를 report_problems 에 담는다
+#| report_problems = check_report(report_text, tickets, actions)
 gate_problems = check_gate(cases, policy)                                                   # 승인 게이트 점검
 
 state = load_json("fp_state.json")                                                          # 오탐 처리 전 연습용 시스템 상태를 읽는다
@@ -168,6 +176,7 @@ for report in load_json("fp_reports.json"):                                     
     result = handle_false_positive(report, log, state, NOW)                                 # 신고 한 건을 처리한다
     results.append(result)                                                                  # 처리 결과를 추가한다
 # 9. check_recovery(results, state, TRUE_POSITIVE_USERS) 의 결과를 recovery_problems 에 담는다
+#| recovery_problems = check_recovery(results, state, TRUE_POSITIVE_USERS)
 
 checks = [                                                                                  # 강의계획서 Unit 9 평가 기준마다 점검 결과
     {"title": "① 근무 데이터가 리포트에 빠짐없이 들어갔다", "problems": report_problems},  # 리포트 점검
@@ -205,6 +214,7 @@ print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")            
    - (가) 실행한 출력 전체를 붙여 넣고, 세 기준의 결과와 `unit09_checklist.md` 의 줄 수를 적어 주세요.
    - (나) [핵심 질문] `gate_cases.json` 에는 「대상 3개」와 「대상 4개」 사례가 함께 있습니다. 두 사례의 점수와 기대한 결정을 근거로, 경계값 분석에 따라 기준 숫자 바로 앞뒤 값(경계값)의 사례를 함께 넣는 이유를 적어 주세요.
    - (다) [핵심 질문] ③ 기준은 오탐 신고를 처리한 뒤에도 정탐 계정 `dami` 의 잠금이 유지되는지 확인합니다. 오탐 복구 점검에 이 확인이 없으면 어떤 실수를 놓칠 수 있는지 적어 주세요. Unit 5의 `rollback_incident`(Unit 8의 실습 8-3에서 가져와 사용(import)하는 함수)가 어떻게 동작할 때 그 실수가 생기는지도 함께 적어 주세요.
+<!-- preview-answer: 04|실습 9-2 정답 -->
 
 ## 실습 9-2 정리
 

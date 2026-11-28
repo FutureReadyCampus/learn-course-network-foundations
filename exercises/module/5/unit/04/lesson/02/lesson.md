@@ -80,7 +80,7 @@ account_actions.py    check_policy      : VIP 계정이면 자동 조치를 막�
 
 연습용 시스템의 상태와 조치 기록 파일을 관리합니다. 실습 4-2 · 실습 4-3에서도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 1 · 2번입니다. `INITIAL_STATE` 의 `junho` 는 수업 전부터 잠겨 있는 계정입니다.
 
-```python
+```python exercise
 import copy  # 처음 상태를 복사해 쓰기 위해 copy 를 불러온다
 from incident import load_json, save_json  # Unit 1 파일의 파일 읽기 · 쓰기 함수를 불러온다
 
@@ -136,6 +136,14 @@ def make_record(action, target, incident_id, before, after, reason):  # 조치 �
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. 키 "action"(action), "target"(target), "incident"(incident_id), "before"(before), "after"(after), "reason"(reason) 를 가진 딕셔너리를 record 에 저장한다
+#|     record = {
+#|         "action": action,
+#|         "target": target,
+#|         "incident": incident_id,
+#|         "before": before,
+#|         "after": after,
+#|         "reason": reason,
+#|     }
     return record  # 기록 한 건을 리턴한다
 
 
@@ -149,13 +157,14 @@ def append_log(record):  # 기록 한 건을 받는 함수
         log = []  # 빈 리스트로 시작한다 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 2. log 에 record 를 추가한다 (append)
+#|     log.append(record)
     save_json(log, LOG_PATH)  # 기록 파일로 다시 저장한다
 ```
 <h3><code>account_actions.py</code></h3>
 
 계정 잠금과 해제를 구현합니다. 실습 4-3에서도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 3 ~ 7번입니다.
 
-```python
+```python exercise
 from containment_store import make_record  # 기록 한 건을 만드는 함수를 불러온다
 
 
@@ -165,7 +174,9 @@ def check_policy(user, vip_accounts):  # 계정 이름과 VIP 계정 리스트�
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 3. user 가 vip_accounts 안에 있으면 (if, in)
+#|     if user in vip_accounts:
     # 4.   "VIP 계정이라 자동 조치 대상이 아님" 을 리턴한다
+#|         return "VIP 계정이라 자동 조치 대상이 아님"
     return ""  # 막을 이유가 없으면 빈 글자를 리턴한다 — 미리 채운 줄
 
 
@@ -175,6 +186,7 @@ def verify_locked(user, state):  # 계정 이름과 연습용 시스템 상태�
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 5. user 가 state["locked_users"] 안에 있는지(in)의 결과를 리턴한다
+#|     return user in state["locked_users"]
 
 
 def lock_account(user, state, vip_accounts, incident_id, reason):  # 계정 · 상태 · VIP 리스트 · 인시던트 번호 · 이유를 받는 함수
@@ -188,6 +200,7 @@ def lock_account(user, state, vip_accounts, incident_id, reason):  # 계정 · �
         return make_record("계정 잠금", user, incident_id, "잠김", "잠김", "이미 잠겨 있어 변경 없음")  # 바꾸지 않고 기록한다 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 6. state["locked_users"] 에 user 를 추가한다 (append)
+#|     state["locked_users"].append(user)
     after = "잠김"  # 조치 뒤 상태 : 일단 잠겼다고 적고 — 미리 채운 줄
     if not verify_locked(user, state):  # 실제로 확인해 잠기지 않았으면 — 미리 채운 줄
         after = "잠기지 않음 (확인 실패)"  # 확인 실패라고 고쳐 적는다 — 미리 채운 줄
@@ -202,6 +215,7 @@ def unlock_account(user, state, incident_id, reason):  # 계정 · 상태 · 인
         return make_record("계정 해제", user, incident_id, "잠기지 않음", "잠기지 않음", "잠겨 있지 않아 변경 없음")  # 바꾸지 않고 기록한다 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 7. state["locked_users"] 에서 user 를 제거한다 (remove)
+#|     state["locked_users"].remove(user)
     after = "잠기지 않음"  # 조치 뒤 상태 : 일단 해제됐다고 적고 — 미리 채운 줄
     if verify_locked(user, state):  # 실제로 확인해 아직 잠겨 있으면 — 미리 채운 줄
         after = "잠김 (확인 실패)"  # 확인 실패라고 고쳐 적는다 — 미리 채운 줄
@@ -211,7 +225,7 @@ def unlock_account(user, state, incident_id, reason):  # 계정 · 상태 · 인
 
 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
-```python
+```python exercise
 from incident import load_json  # Unit 1 파일의 함수를 불러온다
 from containment_store import new_state, save_state, load_state, reset_log, append_log  # 방금 만든 상태 · 기록 함수를 불러온다
 from account_actions import lock_account, unlock_account  # 방금 만든 계정 조치 함수를 불러온다
@@ -232,7 +246,9 @@ print("--- 단계 2: 잠금 요청 3건")  # 단계 2 시작을 알리는 줄
 for incident_id, user, reason in requests:  # 요청을 하나씩 꺼낸다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 8. lock_account(user, state, vip_accounts, incident_id, reason) 의 결과를 record 에 저장한다
+#|     record = lock_account(user, state, vip_accounts, incident_id, reason)
     # 9. append_log(record) 를 호출한다 (조치 기록을 파일에 남긴다)
+#|     append_log(record)
     print(record["incident"], record["target"], "·", record["before"], "→", record["after"], "·", record["reason"])  # 기록 한 건을 출력한다
 
 print("--- 단계 3: 오탐으로 확인되어 dami 해제")  # 단계 3 시작을 알리는 줄

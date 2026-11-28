@@ -270,7 +270,7 @@ False
 
 <h3><code>saas_detection.py</code></h3>
 
-```python
+```python exercise
 import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
 
 EVENTS_PATH = "normalized_events.json"                # 읽을 정규화 이벤트 파일 이름
@@ -317,7 +317,9 @@ def find_off_hours_logins(logins):                    # 로그인 표를 받는 
 
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. hours 가 BUSINESS_START 이상 BUSINESS_END 이하인지 between 으로 구해 is_business_hour 에 담는다
+#|     is_business_hour = hours.between(BUSINESS_START, BUSINESS_END)
     # 2. is_business_hour 의 반대를 ~ 로 구해 is_off_hours 에 담는다
+#|     is_off_hours = ~is_business_hour
     off_hours_logins = logins[is_off_hours]           # True 인 행만 골라 새 표로 만든다
     return off_hours_logins                           # 업무 시간 밖 로그인 표를 리턴한다
 
@@ -334,9 +336,12 @@ def find_new_ip_users(logins):                        # 로그인 표를 받는 
         usual_ip = USUAL_IPS.get(user)                # 그 사용자의 평소 IP(기록이 없으면 None)
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 3. usual_ip 가 None 이 아닌지 구해 has_usual_ip 에 담는다 (None 인지는 is None, 아닌지는 is not None)
+#|         has_usual_ip = usual_ip is not None
         # 4. ip 가 usual_ip 와 다른지 != 로 구해 is_new_ip 에 담는다 (같은지는 ==, 다른지는 !=)
+#|         is_new_ip = ip != usual_ip
         if has_usual_ip and is_new_ip:                # 평소 IP 기록이 있고, 이번 IP 가 평소와 다르면
             # 5. new_ip_users 에 user 를 추가한다
+#|             new_ip_users.append(user)
     return new_ip_users                               # 평소와 다른 IP 로 로그인한 사용자를 리턴한다
 
 
@@ -396,6 +401,7 @@ print("--- 단계 3: 파일을 5번 이상 내려받은 사용자", bulk_users) 
    - (가) 실행한 출력 전체를 붙여 넣고, 규칙마다 해당한 사용자를 적어 주세요.
    - (나) [핵심 질문] jiwoo 는 업무 시간 밖(02:14)과 평소와 다른 IP 두 규칙에 해당하지만 그 로그인은 실패였습니다. 이 기록만으로 계정 도용을 확정할 수 있나요? 그렇게 판단한 이유와, 샘플 로그에서 더 찾아볼 수 있는 것을 한 가지 적어 주세요.
    - (다) [핵심 질문] gaeun 은 평소 IP 기록이 없어 「평소와 다른 IP」 규칙에서 제외됩니다. 제외하지 않으면 어떤 일이 생기고, 제외하면 어떤 위험이 남나요?
+<!-- preview-answer: 05|실습 6-2 정답 -->
 
 ## 실습 6-2 정리
 

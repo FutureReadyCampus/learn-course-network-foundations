@@ -220,7 +220,7 @@ print(names)                # 이름 리스트를 출력한다
 
 <h3><code>access_detection.py</code></h3>
 
-```python
+```python exercise
 import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
 from rbac import check_permission                     # Module 3(접근통제)에서 만든 권한 판정 함수를 불러온다
 
@@ -261,8 +261,11 @@ def pick_suspicious(server_failures):                 # 서버 실패 표를 받
 
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. repeated_users 의 .index 를 repeated_names 에 담는다
+#|     repeated_names = repeated_users.index
     # 2. users 가 repeated_names 안에 있는지 isin 으로 구해 is_repeated_user 에 담는다
+#|     is_repeated_user = users.isin(repeated_names)
     # 3. server_failures 에서 is_repeated_user 가 True 인 행만 골라 suspicious 에 담는다
+#|     suspicious = server_failures[is_repeated_user]
     return suspicious                                 # 먼저 확인할 실패 이벤트 표를 리턴한다
 
 
@@ -272,11 +275,14 @@ def judge_failure(user, action):                      # 사용자와 행동을 �
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. action 을 ":" 기준으로 나눠 parts 에 담는다 (예: "SALES:QUERY" → ["SALES", "QUERY"]. 앞 조각이 자원, 뒤 조각이 행위)
+#|     parts = action.split(":")
     resource = parts[0]                               # 첫 번째 조각이 자원이다
     permission_action = parts[1]                      # 두 번째 조각이 행위이다
 
     # 5. check_permission 에 user, resource, permission_action 을 전달하고, 결과를 is_allowed 와 reason 에 나눠 담는다 (모양: is_allowed, reason = check_permission(...). is_allowed 는 이 문제에서 쓰지 않는다)
+#|     is_allowed, reason = check_permission(user, resource, permission_action)
     # 6. PRIORITY 에서 reason 의 순서를 꺼내 priority 에 담는다 (딕셔너리에 없는 이유이면 4 — .get(reason, 4))
+#|     priority = PRIORITY.get(reason, 4)
     return reason, priority                           # 판정 이유와 우선순위를 리턴한다
 ```
 
@@ -333,6 +339,7 @@ for priority in [1, 2, 3]:                                   # 우선순위대�
    - (가) 실행한 출력 전체를 붙여 넣고, 서버 실패 수와 먼저 확인할 이벤트 수, 1순위 사용자를 적어 주세요.
    - (나) [핵심 질문] ① dami 의 실패 4개는 Module 3(접근통제) 규칙으로 어떤 이유로 판정됐고, 왜 1순위일까요? ② gaeun 의 실패 3개는 규칙으로는 「허용」인데 서버가 거절했습니다. 공격이라고 확정할 수 있는지 적고, 먼저 무엇을 확인해야 하는지 적어 주세요.
    - (다) [핵심 질문] seoyeon 의 서버 실패 2건(11:40 `SETTLE:QUERY` · 18:20 `SALES:CHANGE`)은 먼저 확인할 이벤트에 들어가지 않았습니다. 들어가지 않은 이유를 이번 실습의 규칙(실패 3번 이상)으로 설명하고, 이 규칙 때문에 놓칠 수 있는 경우를 한 가지 적어 주세요.
+<!-- preview-answer: 05|실습 6-1 정답 -->
 
 ## 실습 6-1 정리
 

@@ -156,7 +156,7 @@ print(overdue)                                                      # 복사본�
 
 <h3><code>req_sla.py</code></h3>
 
-```python
+```python exercise
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
 # config_loader.py 의 안전한 읽기 함수를 불러온다
 from config_loader import load_json
@@ -172,15 +172,25 @@ def check_sla_breach(requests, now):                             # 요청서 리
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. 기한을 초과한 요청서를 담을 빈 리스트 breached 를 만든다
+#|     breached = []
     # 2. requests 에서 request 를 하나씩 꺼낸다
+#|     for request in requests:
     # 3.   request["status"] 가 "reviewing" 이면(검토 중인 것만 본다)
+#|         if request["status"] == "reviewing":
     # 4.     request["requested_at"] 을 TIME_FORMAT 으로 시각으로 바꿔 requested 에 담는다
+#|             requested = datetime.strptime(request["requested_at"], TIME_FORMAT)
     # 5.     (now - requested) 를 .total_seconds() 로 초 단위 숫자로 바꾸고 3600 으로 나눠 hours 에 담는다
+#|             hours = (now - requested).total_seconds() / 3600
     # 6.     hours 가 SLA_HOURS 보다 크면(같으면 아직 아니다)
+#|             if hours > SLA_HOURS:
     # 7.       request.copy() 로 요청서를 복사해 overdue 에 담는다
+#|                 overdue = request.copy()
     # 8.       overdue["wait_hours"] 를 round(hours, 1) 로 정한다 (지난 시간을 소수 첫째 자리까지 반올림)
+#|                 overdue["wait_hours"] = round(hours, 1)
     # 9.       breached 에 overdue 를 추가한다
+#|                 breached.append(overdue)
     # 10. 반복이 끝나면 breached 를 리턴한다
+#|     return breached
 ```
 
 - **영어 이름의 뜻**: `breach`(브리치)는 약속이나 기준을 「어기다」라는 뜻이고, `breached` 는 「어긴」입니다. 그래서 `check_sla_breach` 는 「SLA 를 어겼는지(기한을 초과했는지) 확인」, `breached` 는 「기한을 어긴 요청서를 담는 리스트」입니다.

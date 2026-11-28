@@ -83,7 +83,7 @@ routing.py   is_only_ip_related : 규칙을 하나씩 꺼내 IP 관련이 아닌
 
 맥락을 보고 처리 경로를 정합니다. 이 파일이 정한 경로(`승인 필요` · `오탐 종료` · `기본`)를 Unit 3의 실습 3-1 이후에도 씁니다. 직접 쓰는 곳은 1 ~ 7번입니다.
 
-```python
+```python exercise
 from incident import change_status  # Unit 1 파일의 상태 바꾸기 함수를 불러온다
 
 IP_RELATED_RULES = ["평소와 다른 IP", "업무 시간 밖 로그인"]  # 접속 IP 만 보고 낸 알림의 규칙 이름
@@ -95,8 +95,11 @@ def is_only_ip_related(incident):  # 인시던트 하나를 받는 함수
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. incident["reasons"] 의 규칙을 하나씩 꺼낸다 (for, rule)
+#|     for rule in incident["reasons"]:
     # 2.   rule 이 IP_RELATED_RULES 안에 없으면 (if, not in)
+#|         if rule not in IP_RELATED_RULES:
     # 3.     False 를 리턴한다 (IP 와 관계없는 다른 증거가 있다)
+#|             return False
     return True  # 모두 IP 관련이면 True 를 리턴한다 — 미리 채운 줄
 
 
@@ -107,9 +110,13 @@ def decide_route(incident):  # 맥락이 붙은 인시던트를 받는 함수
     context = incident["context"]  # 붙어 있는 맥락
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. context 의 "vip" 가 참이면 (if)
+#|     if context["vip"]:
     # 5.   "승인 필요" 와 "VIP 계정이라 담당자 승인이 필요함" 을 쉼표로 이어 함께 리턴한다
+#|         return "승인 필요", "VIP 계정이라 담당자 승인이 필요함"
     # 6. context 의 "ip_trusted" 가 참이고(and) is_only_ip_related(incident) 가 참이면 (if)
+#|     if context["ip_trusted"] and is_only_ip_related(incident):
     # 7.   "오탐 종료" 와 "신뢰 IP 에서 온 IP 관련 규칙뿐이라 정상 접속으로 봄" 을 쉼표로 이어 함께 리턴한다
+#|         return "오탐 종료", "신뢰 IP 에서 온 IP 관련 규칙뿐이라 정상 접속으로 봄"
     return "기본", "플레이북 기본 절차대로 처리함"  # 어느 경우도 아니면 기본 경로로 보낸다
 
 
@@ -128,7 +135,7 @@ def apply_route(incident, route, reason, incident_log):  # 인시던트 · 경�
 
 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실습 2-1의 `enrichment.py` 가 같은 폴더에 있어야 합니다.
 
-```python
+```python exercise
 from incident import load_json, INCIDENTS_PATH  # Unit 1 파일의 함수를 불러온다
 from enrichment import enrich_incident  # 실습 2-1에서 만든 함수를 불러온다
 from routing import decide_route, apply_route  # 방금 만든 함수를 불러온다
@@ -145,8 +152,10 @@ for incident in incidents:  # 인시던트를 하나씩 꺼낸다
     enrich_incident(incident, users_info, source_ips, trusted_ips)  # 맥락을 붙인다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 8. decide_route(incident) 가 리턴한 두 값을 route 와 reason 에 한 번에 받는다
+#|     route, reason = decide_route(incident)
     apply_route(incident, route, reason, incident_log)  # 경로를 적용하고 기록한다
     # 9. route_counts[route] 에 route_counts[route] + 1 을 담는다 (그 경로의 건수를 1 늘린다)
+#|     route_counts[route] = route_counts[route] + 1
     print(incident["id"], incident["entity"], incident["grade"], "->", route, "·", reason, "(상태: " + incident["status"] + ")")  # 한 줄로 출력한다
 
 print("--- 단계 2: 경로별 건수")  # 단계 2 시작을 알리는 줄

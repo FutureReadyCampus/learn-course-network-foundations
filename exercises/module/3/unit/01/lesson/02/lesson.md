@@ -256,9 +256,15 @@ JSON 을 쓸 때 지킬 규칙입니다.
    | 재직 | 재직 중 | `"employed": true` (퇴사면 `false`) |
 
    이 세 칸을 한 줄로 합치면 아래와 같습니다. `{` 는 파일 맨 위에 한 번 쓰는 시작 표시입니다. 이름 뒤의 `{"role": …, "employed": …}` 는 그 사람의 정보 두 가지를 묶은 것입니다.
-   ```json
+   ```json exercise
    {
      "seoyeon": {"role": "sales", "employed": true},
+   #|   "junho": {"role": "finance", "employed": true},
+   #|   "gaeun": {"role": "account_admin", "employed": true},
+   #|   "dami": {"role": "sales", "employed": false},
+   #|   "batch-night": {"role": "batch", "employed": true},
+   #|   "tester": {"role": "intern", "employed": true}
+   #| }
    ```
    표의 두 번째 줄 `junho` 부터 여섯 번째 줄 `tester` 까지 **다섯 명**을 같은 방법으로 한 줄씩 **직접** 이어서 씁니다. 사용자 이름과 역할은 표의 글자를 그대로 옮기고, 재직 칸만 보고 `true` 와 `false` 를 고릅니다.
    - 줄 끝마다 쉼표를 쓰고, **마지막 사용자 줄 뒤에는 쉼표 없이** 다음 줄에 `}` 를 씁니다(파일 맨 아래 닫는 표시).
@@ -276,10 +282,14 @@ JSON 을 쓸 때 지킬 규칙입니다.
    - `Expecting ',' delimiter: line 4` 처럼 나오면 그 줄 근처의 쉼표 · 따옴표를 봅니다.
 6. **[VS Code]** `access_control` 폴더 안의 `config` 폴더에 `roles.json` 파일을 만듭니다(경로 `config/roles.json`).
    - 같은 방법으로 `config` 폴더를 오른쪽 클릭 › **New File** 로 `roles.json` 을 만들고 아래 내용을 붙여 넣습니다.
-   ```json
+   ```json exercise
    {
      "sales": ["SALES:QUERY", "SALES:CHANGE"],
      "account_admin": ["ACCOUNT:QUERY", "ACCOUNT:CHANGE"]
+   #|=   "account_admin": ["ACCOUNT:QUERY", "ACCOUNT:CHANGE"],
+   #|   "finance": ["SALES:QUERY", "SETTLE:QUERY"],
+   #|   "batch": ["SETTLE:QUERY"],
+   #|   "auditor": ["SALES:QUERY", "SETTLE:QUERY", "ACCOUNT:QUERY"]
    }
    ```
    - 위 두 역할은 미리 적어 두었습니다. `"account_admin"` 줄 아래에 1.3 의 매트릭스를 보고 `finance` · `batch` · `auditor` 세 역할을 **직접** 씁니다. 권한은 매트릭스의 ○ 칸을 왼쪽부터 순서대로 씁니다.

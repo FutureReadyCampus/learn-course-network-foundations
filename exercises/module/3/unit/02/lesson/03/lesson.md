@@ -126,7 +126,7 @@ print(names, len(names))                                           # 리스트�
 
 <h3><code>req_create.py</code></h3>
 
-```python
+```python exercise
 from rbac import USERS                                           # rbac.py 의 사용자 딕셔너리를 불러온다
 
 # 접수한 요청서를 모아 두는 리스트(프로그램이 끝나면 사라진다)
@@ -143,7 +143,9 @@ def create_request(user, resource, action, until, reason, received_at):
     if reason == "":                                             # 이유가 비어 있으면
         return False, "이유가 없음"                                # 접수하지 않고 이유를 알린다
     # ① until 이 received_at 과 같거나 앞서면   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     if until <= received_at:
     # ② "만료 시각이 이미 지났음" 을 이유로 접수하지 않는다   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+#|         return False, "만료 시각이 이미 지났음"
     request_id = len(REQUESTS) + 1                               # 다음 요청 번호(지금 개수 + 1)
     permission = f"{resource}:{action}"                          # "자원:행위" 모양 권한 문자열
     request = {                                                  # 요청서 한 장. 상태는 검토 중으로 시작한다
@@ -158,6 +160,7 @@ def create_request(user, resource, action, until, reason, received_at):
         "status": "reviewing",                                   # 상태: 검토 중
     }
     # ③ REQUESTS 리스트 끝에 request 를 추가한다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     REQUESTS.append(request)
     return True, request                                         # 접수했다고 알리고 요청서를 리턴한다
 ```
 

@@ -81,7 +81,7 @@ policy_check.py   count_executed         : 실행한 조치 수를 센다 (미�
 
 - 2번 · 3번 · 4번 · 5번 · 6번은 `if` 한 줄만 쓰고, 그 아래 미리 채운 줄이 `if` 안쪽입니다. 1번과 2번은 같은 함수에 있고 둘 다 같은 들여쓰기에서 시작합니다.
 
-```python
+```python exercise
 from approval_gate import decide_gate                                                      # Unit 8 파일의 승인 게이트 함수를 불러온다
 
 
@@ -101,7 +101,9 @@ def find_gate_bypass(results, policy):                                          
         for step in result["steps"]:                                                       # 조치 결과를 하나씩 꺼낸다 — 미리 채운 줄
             # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
             # 1. decide_gate(step["request"], policy) 의 두 결과를 new_decision, new_reasons 에 저장한다
+#|             new_decision, new_reasons = decide_gate(step["request"], policy)
             # 2. new_decision 이 "자동" 이 아니고(and) step["executed"] 가 참이면 (if, !=, and)
+#|             if new_decision != "자동" and step["executed"]:
                 violations.append(result["incident"])                                      # 알림 번호를 위반 리스트에 추가한다 — 미리 채운 줄
     return violations                                                                      # 위반한 알림 번호 리스트를 리턴한다 — 미리 채운 줄
 
@@ -113,6 +115,7 @@ def find_allowlist_blocks(results, allowlist_ips):                              
         for step in result["steps"]:                                                       # 조치 결과를 하나씩 꺼낸다 — 미리 채운 줄
             # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
             # 3. step["target"] 이 allowlist_ips 안에 있고(and) step["after"] 가 "차단됨" 이면 (if, in, ==, and)
+#|             if step["target"] in allowlist_ips and step["after"] == "차단됨":
                 violations.append(result["incident"])                                      # 알림 번호를 위반 리스트에 추가한다 — 미리 채운 줄
     return violations                                                                      # 위반한 알림 번호 리스트를 리턴한다 — 미리 채운 줄
 
@@ -124,6 +127,7 @@ def find_vip_locks(results, vip_accounts):                                      
         for step in result["steps"]:                                                       # 조치 결과를 하나씩 꺼낸다 — 미리 채운 줄
             # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
             # 4. step["target"] 이 vip_accounts 안에 있고(and) step["after"] 가 "잠김" 이면 (if, in, ==, and)
+#|             if step["target"] in vip_accounts and step["after"] == "잠김":
                 violations.append(result["incident"])                                      # 알림 번호를 위반 리스트에 추가한다 — 미리 채운 줄
     return violations                                                                      # 위반한 알림 번호 리스트를 리턴한다 — 미리 채운 줄
 
@@ -135,6 +139,7 @@ def find_missing_tickets(results):                                              
         executed_count = count_executed(result)                                            # 실행한 조치 수를 센다 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 5. executed_count 가 0 보다 크고(and) result["ticket"] 이 "" 이면 (if, >, ==, and)
+#|         if executed_count > 0 and result["ticket"] == "":
             violations.append(result["incident"])                                          # 알림 번호를 위반 리스트에 추가한다 — 미리 채운 줄
     return violations                                                                      # 위반한 알림 번호 리스트를 리턴한다 — 미리 채운 줄
 
@@ -153,6 +158,7 @@ def judge(violations):                                                          
     """위반이 하나도 없으면 「PASS」, 하나라도 있으면 「FAIL」을 리턴한다. 점검 결과를 한눈에 보이게 출력할 때 쓴다."""
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 6. violations 가 빈 리스트 [] 이면 (if, ==)
+#|     if violations == []:
         return "PASS"                                                                      # 위반이 없으면 PASS 를 리턴한다 — 미리 채운 줄
     return "FAIL"                                                                          # 위반이 있으면 FAIL 을 리턴한다 — 미리 채운 줄
 ```
@@ -161,7 +167,7 @@ def judge(violations):                                                          
 
 7 · 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
-```python
+```python exercise
 from incident import load_json, save_json                                                   # Unit 1 파일의 JSON 읽기 · 쓰기 함수를 불러온다
 from policy_check import run_checks, judge                                                  # 방금 만든 점검 함수를 불러온다
 
@@ -177,12 +183,14 @@ print("--- 단계 2: 로그마다 점검 결과")                               
 for log_path in LOG_FILES:                                                                  # 로그 파일을 하나씩 꺼낸다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 7. load_json(log_path) 의 결과를 results 에 저장한다
+#|     results = load_json(log_path)
     checks = run_checks(results, policy)                                                    # 점검 네 가지를 실행한다 — 미리 채운 줄
     print("[" + log_path + "] 알림", len(results), "건")                                    # 로그 이름과 알림 수를 출력한다
     for check_name in checks:                                                               # 점검 이름을 하나씩 꺼낸다
         violations = checks[check_name]                                                     # 그 점검에서 위반한 알림 번호 리스트 — 미리 채운 줄
         verdict = judge(violations)                                                         # 통과 여부를 구한다 — 미리 채운 줄
         # 8. verdict 가 "FAIL" 이면 (if, ==)
+#|         if verdict == "FAIL":
             fail_count = fail_count + 1                                                     # FAIL 이 나온 점검 수를 1 늘린다 — 미리 채운 줄
         print("  ", check_name, ":", verdict, "· 위반", len(violations), "건", violations)  # 점검 이름 · 결과 · 위반한 알림 번호 리스트를 출력한다
         rows.append({"log": log_path, "check": check_name, "result": verdict, "violations": violations})  # 점검 결과 한 줄을 추가한다 — 미리 채운 줄
@@ -190,6 +198,7 @@ for log_path in LOG_FILES:                                                      
 print("--- 단계 3: FAIL 이 나온 점검", fail_count, "개 · 전체 점검", len(rows), "개")       # 단계 3 시작을 알리는 줄과 개수
 # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
 # 9. rows 를 CHECK_PATH 파일에 저장한다 (save_json)
+#| save_json(rows, CHECK_PATH)
 print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")                                # 단계 4 시작을 알리는 줄과 저장한 수
 ```
 
@@ -257,6 +266,7 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
    - (가) 실행한 출력 전체를 붙여 넣고, FAIL 이 나온 로그와 FAIL 이 나온 점검 이름 · 위반한 알림 번호를 적어 주세요.
    - (나) [핵심 질문] `gate_off_log.json` 의 `INC-405` 는 `decision` 이 「자동」인데 점검 ①에서 위반으로 나옵니다. 그 `request` 의 `users_on_ip` 와 승인 정책의 점수를 근거로 다시 구한 결정을 적고, 로그의 `decision` 만 읽으면 위반을 놓치는 이유를 적어 주세요.
    - (다) [핵심 질문] `INC-406`(`gaeun`)은 점검 ①은 FAIL 인데 점검 ③은 PASS 입니다. 그 알림의 `before` · `after` 를 근거로 `gaeun` 이 잠기지 않은 이유를 Unit 4의 `lock_account` 와 연결해 적고, 점검 ③이 게이트와 별도로 필요한 이유를 적어 주세요.
+<!-- preview-answer: 05|실습 10-3 정답 -->
 
 ## 실습 10-3 정리
 

@@ -328,7 +328,7 @@ dtype: int64
 
 <h3><code>login_detection.py</code></h3>
 
-```python
+```python exercise
 import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
 EVENTS_PATH = "normalized_events.json"  # 읽을 정규화 이벤트 파일 이름
@@ -349,11 +349,17 @@ def pick_login_failures(events):  # 이벤트 표를 받는 함수
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. events 의 "action" 열을 꺼내 actions 에 담는다
+#|     actions = events["action"]
     # 2. actions 가 "POST /login" 과 같은지 비교한 결과(==)를 is_login 에 담는다
+#|     is_login = actions == "POST /login"
     # 3. events 의 "result" 열을 꺼내 results 에 담는다
+#|     results = events["result"]
     # 4. results 가 "실패" 와 같은지 비교한 결과(==)를 is_fail 에 담는다
+#|     is_fail = results == "실패"
     # 5. is_login & is_fail 로 두 조건을 합쳐 both_true 에 담는다 (둘 다 True 인 행만 True)
+#|     both_true = is_login & is_fail
     # 6. events 에서 both_true 가 True 인 행만 골라 login_failures 에 담는다 (events[both_true])
+#|     login_failures = events[both_true]
     return login_failures  # 로그인 실패 이벤트만 담은 표를 리턴한다
 
 
@@ -371,7 +377,9 @@ def pick_alert_ips(ip_login_fail_counts, limit):  # 주소별 횟수와 알림 �
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 7. ip_login_fail_counts 가 limit 이상인지 비교한 결과(>=)를 is_many 에 담는다
+#|     is_many = ip_login_fail_counts >= limit
     # 8. ip_login_fail_counts 에서 is_many 가 True 인 것만 골라 alert_ips 에 담는다 (ip_login_fail_counts[is_many])
+#|     alert_ips = ip_login_fail_counts[is_many]
     return alert_ips  # 알림 기준 이상인 주소와 횟수를 리턴한다
 ```
 
