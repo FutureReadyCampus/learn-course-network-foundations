@@ -125,13 +125,15 @@ KeyError: 'approver'
 
 <h3><code>req_review.py</code></h3>
 
-```python
+```python exercise
 def approve_request(request, approver):                          # 요청서와 승인자 이름을 받는 함수
     """검토 중인 요청서를 승인한다.
     보안 담당자가 권한 요청을 처리할 때 쓰고 (성공 여부, 이유)를 리턴한다.
     """
     # ① request["status"] 가 "reviewing" 이 아니면   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     if request["status"] != "reviewing":
     # ② "검토 중이 아님" 을 이유로 처리하지 않는다   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+#|         return False, "검토 중이 아님"
     if request["user"] == approver:                              # 요청한 사람이 스스로 처리하려고 하면
         return False, "본인 요청은 처리할 수 없음"                  # 바꾸지 않고 이유를 알린다
     request["status"] = "approved"                               # 상태를 승인됨으로 바꾼다

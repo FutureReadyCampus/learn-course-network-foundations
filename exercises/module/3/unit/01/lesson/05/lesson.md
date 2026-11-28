@@ -113,7 +113,7 @@ ls config
 
 <h3><code>policy.py</code></h3>
 
-```python
+```python exercise
 from rbac import check_permission                                # 실습 1-2에서 만든 역할 판정 함수를 불러온다
 from exception_policy import find_exception                      # 예외 판정 준비의 예외 판정 함수를 불러온다
 
@@ -129,7 +129,9 @@ def evaluate_access(user, resource, action, now):                # 사용자 · 
         return True, "역할 권한"                                   # 역할 권한으로 허용한다
     # 3. 사용자 자체가 거부 대상이면(없음 · 퇴사 · 역할이 없음) 예외를 보지 않고 그 이유로 거부한다
     # ① reason 이 "권한 없음" 이 아니면   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     if reason != "권한 없음":
     # ② False 와 그 reason 을 그대로 리턴한다   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+#|         return False, reason
 
     # 4. 「권한 없음」일 때만 유효한 예외를 찾는다
     found, found_exception_id = find_exception(user, f"{resource}:{action}", now)   # 유효한 예외를 찾는다

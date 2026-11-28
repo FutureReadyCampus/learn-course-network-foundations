@@ -84,7 +84,7 @@ policy_check.py   count_executed         : 실행한 조치 수를 센다
 
 정책 점검 함수 모음입니다. 직접 쓰는 곳은 `find_gate_bypass` 의 ① · ② 두 줄입니다.
 
-```python
+```python exercise
 from approval_gate import decide_gate                                                      # Unit 4 파일의 승인 게이트 함수를 불러온다
 
 
@@ -103,7 +103,9 @@ def find_gate_bypass(results, policy):                                          
     for result in results:                                                                 # 결과 기록을 하나씩 꺼낸다 — 미리 채운 줄
         for step in result["steps"]:                                                       # 조치 결과를 하나씩 꺼낸다 — 미리 채운 줄
             # ① decide_gate(step["request"], policy) 의 두 결과를 new_decision, new_reasons 에 저장한다   # ← 이 주석 바로 아래 줄에 씁니다 (12칸)
+#|             new_decision, new_reasons = decide_gate(step["request"], policy)
             # ② new_decision 이 "자동" 이 아니고(and) step["executed"] 가 참이면 (if, !=, and)   # ← 이 주석 바로 아래 줄에 씁니다 (12칸)
+#|             if new_decision != "자동" and step["executed"]:
                 violations.append(result["incident"])                                      # 알림 번호를 위반 리스트에 추가한다 — 미리 채운 줄
     return violations                                                                      # 위반한 알림 번호 리스트를 리턴한다 — 미리 채운 줄
 
@@ -238,7 +240,7 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
    - 확인 질문: FAIL 이 나온 로그와 점검 이름을 출력에서 찾습니다. `INC-405` 의 `users_on_ip` 와 승인 정책 점수로 다시 구한 결정이 무엇인지, 저장된 `decision` 만 보면 위반을 놓치는 이유가 무엇인지 설명할 수 있는지 확인합니다. 답은 아래 펼침에서 확인합니다.
 
 
-**확인** — 단계 3 이 `FAIL 이 나온 점검 2 개 · 전체 점검 12 개` 이고, FAIL 두 줄이 모두 `[gate_off_log.json]` 아래에 있으면 성공입니다. 안 나오면 바로 아래 정답 펼침과 한 줄씩 맞춰 보고, `FAIL 이 나온 점검 4 개` 면 위 「직접 쓰는 곳」의 채우기 전 설명을 다시 봅니다.
+**확인** — 단계 3 이 `FAIL 이 나온 점검 2 개 · 전체 점검 12 개` 이고, FAIL 두 줄이 모두 `[gate_off_log.json]` 아래에 있으면 성공입니다. 안 나오면 바로 하단 바의 ‘정답 보기’와 한 줄씩 맞춰 보고, `FAIL 이 나온 점검 4 개` 면 위 「직접 쓰는 곳」의 채우기 전 설명을 다시 봅니다.
 
 ## 실습 5-2 정리
 

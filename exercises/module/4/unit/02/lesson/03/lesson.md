@@ -231,7 +231,7 @@ failed.to_csv("failed_events.csv", index=False)  # 표를 failed_events.csv 파�
 
 <h3><code>events_time.py</code></h3>
 
-```python
+```python exercise
 import pandas as pd                         # 판다스를 pd 라는 짧은 이름으로 불러온다
 
 EVENTS_PATH = "normalized_events.json"      # 읽을 정규화 이벤트 파일 이름
@@ -261,9 +261,11 @@ def count_by_user(failed):                  # 실패한 이벤트 표를 받는 
     누구에게 실패가 많이 났는지 볼 때 쓴다.
     """
     # ① failed 를 "user" 열 기준으로 묶어(groupby) grouped 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     grouped = failed.groupby("user")
 
     user_fail_counts = grouped.size()       # 그룹마다 행이 몇 개인지 센다
     # ② user_fail_counts 를 큰 값부터 정렬해(sort_values, ascending=False) sorted_user_fail_counts 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     sorted_user_fail_counts = user_fail_counts.sort_values(ascending=False)
 
     return sorted_user_fail_counts          # 많은 순서로 정렬한 개수를 리턴한다
 
@@ -364,7 +366,7 @@ print("저장된 행", saved_count, "개")          # 저장된 행 수를 출�
 
 6. 실행 결과에서 선택한 글감의 근거를 찾아 초안의 ‘검증 결과’에 메모합니다.
 
-**확인** — 단계 1이 dami 4 · gaeun 3 · seoyeon 2 · jiwoo 1 순서, 단계 2의 9시가 13, 단계 3이 `저장된 행 23 개` 이고 `failed_events.csv` 가 생겼으면 성공입니다. 안 나오면 위 정답 접기의 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+**확인** — 단계 1이 dami 4 · gaeun 3 · seoyeon 2 · jiwoo 1 순서, 단계 2의 9시가 13, 단계 3이 `저장된 행 23 개` 이고 `failed_events.csv` 가 생겼으면 성공입니다. 안 나오면 하단 바의 ‘정답 보기’로 연 해설의 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 <!-- answer: 07|실습 2-2 정답 -->
 

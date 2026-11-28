@@ -252,7 +252,7 @@ print(sorted_df)                              # 정렬한 표를 출력한다
 
 <h3><code>correlation.py</code></h3>
 
-```python
+```python exercise
 import pandas as pd                                    # 판다스를 pd 라는 짧은 이름으로 불러온다
 from access_detection import load_events, pick_server_failures, EVENTS_PATH  # 실습 3-2 함수를 불러온다
 from saas_detection import pick_saas, pick_logins      # saas_detection.py 의 함수를 불러온다
@@ -286,6 +286,7 @@ def attach_user_to_web(web_failures, ip_user):         # 웹 실패 표와 IP �
 
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. web_part 의 "ip" 열을 꺼내 .map(ip_user) 를 붙여 IP 마다 사용자를 구해 users 에 담는다
+#|     users = web_part["ip"].map(ip_user)
     web_part["user"] = users                           # 표에 user 열을 붙인다 — 미리 채운 줄
     return web_part                                    # user 열이 붙은 웹 이벤트 표를 리턴한다
 
@@ -296,7 +297,9 @@ def build_timeline(server_part, saas_part, web_part):  # 세 로그의 표를 �
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 2. pd.concat 에 [server_part, saas_part, web_part] 리스트를 전달해 timeline 에 담는다
+#|     timeline = pd.concat([server_part, saas_part, web_part])
     # 3. timeline 에 .sort_values 를 붙이고 ["user", "time"] 리스트를 전달해 사용자 순, 같은 사용자는 시각 순으로 정렬한 결과를 timeline 에 담는다
+#|     timeline = timeline.sort_values(["user", "time"])
     times = pd.to_datetime(timeline["time"])           # 문자열 시각을 시각 값으로 바꾼다
     hours = times.dt.hour                              # 시각 값에서 시(0~23)만 꺼낸다
     minutes = times.dt.minute                          # 시각 값에서 분(0~59)만 꺼낸다
@@ -324,7 +327,9 @@ def find_chains(timeline):                             # 정렬된 이벤트 표
         if has_many_sources and is_close:              # 로그 종류도 충분하고 60분 이내이면 — 미리 채운 줄
             # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
             # 4. "서로 다른 로그 " 와 str(source_count) 와 "종류 · " 와 str(span) 과 "분 안" 을 + 로 연결해 reason 에 담는다
+#|             reason = "서로 다른 로그 " + str(source_count) + "종류 · " + str(span) + "분 안"
             # 5. chains 에 키 "user" 에 user, 키 "reason" 에 reason 을 담은 딕셔너리를 추가한다
+#|             chains.append({"user": user, "reason": reason})
         if has_many_sources and not is_close:          # 로그 종류는 여럿인데 시간 차가 60분을 초과하면 — 미리 채운 줄
             not_chained.append({"user": user, "source_count": int(source_count), "span_minutes": int(span)})  # 연결되지 않은 사용자와 두 숫자를 추가한다
     return chains, not_chained                         # 연결된 사건과 연결되지 않은 사용자를 리턴한다

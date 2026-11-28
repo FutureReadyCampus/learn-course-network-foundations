@@ -107,7 +107,7 @@ soar_engine.py  load_context          : 설정 파일을 읽어 엔진 재료를
 
 - 코드가 길지만 처음부터 전부 이해하지 않아도 됩니다. 붙여 넣은 뒤 `run_step` 의 ① 과 `run_all` 의 ② 만 채웁니다. 나머지 함수는 실행한 뒤 출력과 맞춰 읽으면 됩니다.
 
-```python
+```python exercise
 from incident import load_json, match_playbooks                                         # Unit 1 파일의 JSON 읽기 · 플레이북 찾기 함수를 불러온다
 from containment_store import new_state                                                 # Unit 2 파일의 연습용 시스템 상태 함수를 불러온다
 from account_actions import lock_account                                                # Unit 2 파일의 계정 잠금 함수를 불러온다
@@ -176,6 +176,7 @@ def run_step(alert, action, context):                                           
         "request": request,                                                             # 승인 게이트가 본 조치 요청(나중에 점검할 때 다시 쓴다)
     }
     # ① decision 이 "자동" 이면 (if, ==)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     if decision == "자동":
         record = execute_action(request, context)                                       # 조치를 실행하고 조치 기록을 받는다 — 미리 채운 줄
         step["executed"] = True                                                         # 실행했다고 적는다 — 미리 채운 줄
         step["before"] = record["before"]                                               # 조치 전 상태를 적는다 — 미리 채운 줄
@@ -271,6 +272,7 @@ def run_all(alerts, context):                                                   
         try:                                                                            # 오류가 날 수 있는 처리를 시작한다 — 미리 채운 줄
             result = run_soar_pipeline(alert, context)                                  # 알림 한 건을 처음부터 끝까지 처리한다 — 미리 채운 줄
         # ② 어떤 종류의 오류든 error 에 저장해 받는다 (except, Exception, as)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+#|         except Exception as error:
             result = make_failure_result(alert, error)                                  # 실패 기록을 만든다 — 미리 채운 줄
         results.append(result)                                                          # 정상 결과든 실패 기록이든 결과 리스트에 추가한다 — 미리 채운 줄
     return results                                                                      # 결과 기록 리스트를 리턴한다 — 미리 채운 줄
@@ -362,7 +364,7 @@ print("--- 단계 4:", LOG_PATH, "에", len(results), "건 ·", TICKET_PATH, "�
    - 확인 질문: 처리 결과별 건수와 승인 대기 알림을 출력에서 찾습니다. `INC-402` 에서 오류가 나도 이후 알림이 처리된 까닭을 `except` 줄과 연결해 설명할 수 있는지 확인합니다. 답은 아래 펼침에서 확인합니다.
 
 
-**확인** — 단계 3 이 `자동 실행 : 2 건` · `승인 대기 : 2 건` · `차단 금지 : 1 건` · `조치 없음 : 2 건` · `실패 : 1 건` 이고, 단계 4 에 `티켓 7 장 저장` 이 나오면 성공입니다. 안 나오면 바로 아래 정답 펼침의 실습 5-1 출력과 비교하고, `실패` 가 6 건이면 「자주 틀리는 곳」의 `desicion` 오타 항목을 봅니다.
+**확인** — 단계 3 이 `자동 실행 : 2 건` · `승인 대기 : 2 건` · `차단 금지 : 1 건` · `조치 없음 : 2 건` · `실패 : 1 건` 이고, 단계 4 에 `티켓 7 장 저장` 이 나오면 성공입니다. 안 나오면 바로 하단 바의 ‘정답 보기’의 실습 5-1 출력과 비교하고, `실패` 가 6 건이면 「자주 틀리는 곳」의 `desicion` 오타 항목을 봅니다.
 
 ## 실습 5-1 정리
 

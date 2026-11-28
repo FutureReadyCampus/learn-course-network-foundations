@@ -114,7 +114,7 @@ print(exceptions)                                                  # 세 건이 
 
 <h3><code>req_grant.py</code></h3>
 
-```python
+```python exercise
 from rbac import check_permission                                # rbac.py 의 역할 판정 함수를 불러온다
 # exception_policy.py 의 예외 리스트를 불러온다
 from exception_policy import EXCEPTIONS
@@ -137,6 +137,26 @@ def grant_request(request):                                      # 요청서를 
     # 8. request["exception_id"] 를 exception["id"] 로 정한다 (어느 예외를 부여했는지 요청서에 적어 둔다)
     # 9. request["status"] 를 "granted" 로 바꾼다
     # 10. True, "부여" 를 리턴한다
+#|     if request["status"] != "approved":
+#|         return False, "승인되지 않음"
+#|     user = request["user"]
+#|     resource = request["resource"]
+#|     action = request["action"]
+#|     is_allowed, judge_reason = check_permission(user, resource, action)
+#|     if is_allowed or judge_reason != "권한 없음":
+#|         return False, f"부여하지 않음({judge_reason})"
+#|     exception_id = len(EXCEPTIONS) + 1
+#|     exception = {
+#|         "id": exception_id,
+#|         "user": request["user"],
+#|         "permission": request["permission"],
+#|         "expires": request["until"],
+#|         "reason": request["reason"],
+#|     }
+#|     EXCEPTIONS.append(exception)
+#|     request["exception_id"] = exception["id"]
+#|     request["status"] = "granted"
+#|     return True, "부여"
 ```
 
 - 본문은 모두 함수 안이라 4칸으로 쓰고, `if` 아래 `return` 은 4칸 더(8칸) 들어갑니다. 6번의 딕셔너리는 괄호 안이라 줄을 바꿔도 됩니다.

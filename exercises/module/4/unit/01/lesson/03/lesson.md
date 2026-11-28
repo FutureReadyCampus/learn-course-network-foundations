@@ -209,7 +209,7 @@ UTC+09:00
 
 <h3><code>normalize_web.py</code></h3>
 
-```python
+```python exercise
 from datetime import datetime                                                # 날짜와 시각을 다루는 datetime 클래스를 불러온다
 from log_parse import split_request, read_request, read_status, read_client  # 실습 1-1에서 만든 로그 읽기 함수를 불러온다
 
@@ -235,6 +235,7 @@ def convert_time(time_text):                                                 # n
     parsed = datetime.strptime(time_text, NGINX_TIME_FORMAT)                 # 문자열을 시각 값으로 바꾼다(시간대 +0900 포함)
     local_time = parsed.replace(tzinfo=None)                                 # 시간대 정보를 지우고 한국 시각만 남긴다
     # ① local_time 을 공통 모양(COMMON_TIME_FORMAT)의 문자열로 바꿔 time_out 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     time_out = local_time.strftime(COMMON_TIME_FORMAT)
 
     return time_out                                                          # 공통 모양의 시각 문자열을 리턴한다
 
@@ -244,6 +245,7 @@ def convert_result(status):                                                  # �
     웹 서버 로그의 결과를 공통 이벤트의 result 로 바꿀 때 쓴다.
     """
     # ② status 가 400 이상이면   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     if status >= 400:
 
         return "실패"                                                         # 실패를 리턴한다
     return "성공"                                                             # 그 밖에는 성공을 리턴한다
@@ -373,7 +375,7 @@ print(result_counts)                                                            
    - (나) [핵심 질문] 시각을 `02/Nov/2026:09:00:00 +0900` 모양 그대로 문자열로 정렬하면 12월 1일 요청(`01/Dec/2026:…`)과 11월 2일 요청(`02/Nov/2026:…`) 중 어느 쪽이 앞에 놓일지 예상하고, 공통 모양(`2026-11-02 09:00:00`)으로 바꾸면 무엇이 달라지는지 이유와 함께 적어 주세요.
    - (다) [응용] 이벤트에 원래 로그 줄(`raw`)을 그대로 남겨 두는 이유는 무엇인가요? 정규화하면 사라지는 정보를 한 가지 예로 들어 함께 적어 주세요.
 
-**확인** — 다시 실행했을 때 단계 1 에 `정규화한 이벤트 28 개 · 읽기 실패 2 줄`, 단계 3 에 `{'성공': 15, '실패': 13}` 이 나오면 성공입니다. 안 나오면 아래의 실습 1-2 정답 펼침과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+**확인** — 다시 실행했을 때 단계 1 에 `정규화한 이벤트 28 개 · 읽기 실패 2 줄`, 단계 3 에 `{'성공': 15, '실패': 13}` 이 나오면 성공입니다. 안 나오면 실습 1-2 하단 바의 ‘정답 보기’와 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 <!-- answer: 07|실습 1-2 정답 -->
 

@@ -93,9 +93,9 @@ safe_runner.py   find_skip_reason : 이미 잠긴 계정이면 (1 · 2번), 잠�
 
 안전장치를 건 실행기입니다. Unit 2 응용 2-2 의 `retry_runner.py` 가 이 파일의 `safe_run_action` 을 불러 재시도를 더합니다. 직접 쓰는 곳은 1 ~ 7번입니다.
 
-**응용 처리 함수와의 관계** — `safe_runner.py` 는 「응용 실습용 처리 함수 준비」 레슨에서 이미 완성본으로 만들었습니다. 이 응용에서는 그 내용을 아래 골격으로 **바꿔서(덮어써서)** 직접 써 봅니다. 다음 Unit에서도 이 파일을 쓰므로, 다 쓴 뒤 실행 결과가 아래 정답 펼침과 같은지 확인하고, 막히면 「응용 실습용 처리 함수 준비」의 완성본을 다시 붙여 넣습니다.
+**응용 처리 함수와의 관계** — `safe_runner.py` 는 「응용 실습용 처리 함수 준비」 레슨에서 이미 완성본으로 만들었습니다. 이 응용에서는 그 내용을 아래 골격으로 **바꿔서(덮어써서)** 직접 써 봅니다. 다음 Unit에서도 이 파일을 쓰므로, 다 쓴 뒤 실행 결과가 하단 바의 ‘정답 보기’와 같은지 확인하고, 막히면 「응용 실습용 처리 함수 준비」의 완성본을 다시 붙여 넣습니다.
 
-```python
+```python exercise
 from incident import change_status, match_playbooks, run_action, make_log_entry     # 실습 1-2 의 incident.py 에서 함수를 불러온다
 
 DONE_STATUSES = ["조치됨", "보고됨", "종료"]                                        # 이미 대응이 끝난 상태들
@@ -108,9 +108,13 @@ def find_skip_reason(action, entity, state):                                    
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. action 이 "계정 잠금" 이고(and) entity 가 state["locked_users"] 안에 있으면 (if, in)
+#|     if action == "계정 잠금" and entity in state["locked_users"]:
     # 2.   "건너뜀: 이미 잠겨 있음" 을 리턴한다
+#|         return "건너뜀: 이미 잠겨 있음"
     # 3. action 이 "계정 잠금" 이고(and) state["locked_users"] 의 개수(len)가 MAX_LOCKS_PER_RUN 이상이면 (if, >=)
+#|     if action == "계정 잠금" and len(state["locked_users"]) >= MAX_LOCKS_PER_RUN:
     # 4.   "건너뜀: 한 번에 잠글 수 있는 계정 수를 넘음 (담당자 확인 필요)" 를 리턴한다
+#|         return "건너뜀: 한 번에 잠글 수 있는 계정 수를 넘음 (담당자 확인 필요)"
     return ""                                                                       # 건너뛸 이유가 없으면 빈 글자를 리턴한다 — 미리 채운 줄
 
 
@@ -122,8 +126,11 @@ def safe_run_action(action, incident, state):                                   
     skip_reason = find_skip_reason(action, entity, state)                           # 건너뛸 이유를 구한다 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 5. skip_reason 이 빈 글자("")가 아니면 (if, !=)
+#|     if skip_reason != "":
     # 6.   skip_reason 을 리턴한다
+#|         return skip_reason
     # 7. run_action(action, incident, state) 의 결과를 리턴한다 (건너뛸 이유가 없으면 원래대로 실행한다)
+#|     return run_action(action, incident, state)
 
 
 def run_playbook_safe(incident, playbook, state, action_log):                       # 인시던트 · 플레이북 · 연습용 시스템 · 기록 리스트를 받는 함수
@@ -171,7 +178,7 @@ def process_safe(incidents, registry, state, action_log):                       
 
 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실습 1-2의 `playbook_runner.py` 에 채운 `run_playbook` 이 필요합니다.
 
-```python
+```python exercise
 from incident import load_json, match_playbooks, INCIDENTS_PATH, REGISTRY_PATH           # 실습 1-2 의 incident.py 에서 함수를 불러온다
 from playbook_runner import run_playbook                                                 # 실습 1-2에서 만든 실행기를 불러온다
 from safe_runner import process_safe, MAX_LOCKS_PER_RUN                                  # 방금 만든 안전한 실행기를 불러온다
@@ -241,7 +248,9 @@ for entry in action_log:                                                        
     result_text = entry["result"]                                                        # 기록의 결과 문장
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 8. result_text 가 "건너뜀" 으로 시작하면 (if, startswith)
+#|     if result_text.startswith("건너뜀"):
     # 9.   entry["incident"] · entry["action"] · "->" · result_text 를 출력한다 (print)
+#|         print(entry["incident"], entry["action"], "->", result_text)
 ```
 
 <h2>순서</h2>

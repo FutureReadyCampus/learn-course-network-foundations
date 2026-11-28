@@ -82,7 +82,7 @@ print("앞 Unit 파일 정상")
 PY
    ```
    - `ModuleNotFoundError: No module named '…'` 가 나오면 따옴표 안 이름의 파일이 이 폴더에 없는 것입니다. 다음 페이지 「이전 파일이 없을 때」에서 그 파일만 만들고 다시 칩니다. 승인 게이트 `approval_gate.py` 가 없으면 실습 5-1의 엔진이 시작부터 멈추니 꼭 만듭니다.
-   - `ImportError: cannot import name '…'` 가 나오면 파일은 있지만 그 이름의 함수가 없는 것이고, `IndentationError` 가 나오면 그 파일의 빈칸이 덜 채워진 것입니다. 그 Unit의 실습 아래 정답 펼침을 확인하거나, 다음 페이지의 코드 상자로 덮어씁니다.
+   - `ImportError: cannot import name '…'` 가 나오면 파일은 있지만 그 이름의 함수가 없는 것이고, `IndentationError` 가 나오면 그 파일의 빈칸이 덜 채워진 것입니다. 그 Unit의 실습 하단 바의 ‘정답 보기’를 확인하거나, 다음 페이지의 코드 상자로 덮어씁니다.
 
 <!-- checklist -->
 - [ ] `soar_response` 폴더에서 3번 명령을 실행해 `앞 Unit 파일 정상` 이 나왔다
@@ -564,11 +564,11 @@ Unit 4 실습 4-1 파일입니다. 승인 게이트의 점수 기준입니다.
 | `ModuleNotFoundError` | `No module named 'approval_gate'` 처럼 적힌 <mark style="background:#ffc4d6">그 이름의 파일이 이 폴더에 없다는 뜻</mark> | 「이전 파일이 없을 때」 페이지의 코드 상자로 만든다 |
 | `FileNotFoundError` | 오류 문장에 적힌 파일이 그 위치에 없다 | `ls` 와 `ls config` 로 확인한 뒤 「이전 파일이 없을 때」 페이지의 코드 상자로 만든다 |
 | `json.decoder.JSONDecodeError` | 붙여 넣은 JSON 파일에서 쉼표나 괄호가 빠졌거나 남았다 | 오류 문장의 `line` 숫자 근처를 보고, 모르겠으면 내용을 모두 지운 뒤 코드 상자를 다시 붙여 넣는다 |
-| `IndentationError` · `SyntaxError` | 앞 Unit 파일 이름과 함께 나오면 그 파일의 빈칸이 덜 채워졌다 | 그 Unit의 실습 아래 정답 펼침을 확인하거나, 「이전 파일이 없을 때」 페이지의 코드 상자로 덮어쓴다 |
+| `IndentationError` · `SyntaxError` | 앞 Unit 파일 이름과 함께 나오면 그 파일의 빈칸이 덜 채워졌다 | 그 Unit의 실습 하단 바의 ‘정답 보기’를 확인하거나, 「이전 파일이 없을 때」 페이지의 코드 상자로 덮어쓴다 |
 
 `FileNotFoundError` 에 적힐 수 있는 파일은 `ip_users.json` · `config/playbook_registry.json` · `config/approval_policy.json` · `config/escalation_rules.json` 입니다.
 
-- 먼저 오류 전체와 내가 친 명령을 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 그래도 막히면 각 실습 아래의 정답 펼침을 봅니다. 그래도 풀리지 않으면 초안에 「모름 — 막힌 곳: …」 이라고 씁니다.
+- 먼저 오류 전체와 내가 친 명령을 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 그래도 막히면 각 실습 하단 바의 ‘정답 보기’를 봅니다. 그래도 풀리지 않으면 초안에 「모름 — 막힌 곳: …」 이라고 씁니다.
 
 > 실행할 때마다 같은 입력 파일에서 시작해 같은 결과가 나옵니다.
 

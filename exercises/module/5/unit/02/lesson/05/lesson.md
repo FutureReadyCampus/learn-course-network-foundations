@@ -96,13 +96,14 @@ approvals.py    is_authorized     : 승인한 사람이 권한 목록에 있는�
 
 감사 기록 한 건을 만듭니다. `approvals.py` 와 응용 2-2 `flow.py` 가 불러다 씁니다. 직접 쓰는 곳은 1번입니다.
 
-```python
+```python exercise
 def log_line(item, action, text):  # 인시던트 · 액션 · 결과 문장을 받는 함수
     """감사 기록(어떤 알림에 · 어떤 액션을 해서 · 결과가 무엇인지) 한 건을 딕셔너리로 만들어 리턴한다.
     모든 대응을 같은 모양으로 남겨 두면 나중에 한 목록으로 되짚을 수 있어서 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. 키 "incident"(item 의 "id"), "playbook"(item 의 "playbook"), "action"(action), "result"(text) 를 가진 딕셔너리를 entry 에 담는다
+#|     entry = {"incident": item["id"], "playbook": item["playbook"], "action": action, "result": text}
     return entry                   # 기록 한 건을 리턴한다
 ```
 
@@ -110,7 +111,7 @@ def log_line(item, action, text):  # 인시던트 · 액션 · 결과 문장을 
 
 권한을 확인하고 결정을 적용합니다. 응용 2-2 `flow.py` 도 불러다 씁니다. 직접 쓰는 곳은 2 ~ 7번입니다.
 
-```python
+```python exercise
 from incident import change_status, run_action                                           # Unit 1 파일의 함수를 불러온다
 from audit import log_line                                                               # 방금 만든 기록 함수를 불러온다
 
@@ -135,6 +136,7 @@ def is_authorized(approver):                                                    
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 2. approver 가 APPROVERS 안에 있는지(in)의 결과를 리턴한다
+#|     return approver in APPROVERS
 
 
 def execute_actions(item, state, action_log, approver):                                  # 대기 건 · 연습용 시스템 · 기록 리스트 · 승인자를 받는 함수
@@ -144,6 +146,7 @@ def execute_actions(item, state, action_log, approver):                         
     for action in item["actions"]:                                                       # 액션을 하나씩 꺼낸다
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 3. run_action(action, item, state) 의 결과를 result 에 담는다
+#|         result = run_action(action, item, state)
         action_log.append(log_line(item, action, result + " (승인: " + approver + ")"))  # 승인자를 붙여 기록한다 — 미리 채운 줄
     change_status(item, "조치됨")                                                        # 모두 실행했으니 조치됨으로 옮긴다
     return "실행 완료"                                                                   # 실행 완료를 리턴한다
@@ -164,7 +167,9 @@ def apply_decision(item, decision, state, action_log):                          
     approver = decision["approver"]                                                      # 결정한 담당자 이름 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. is_authorized(approver) 가 거짓이면 (if, not)
+#|     if not is_authorized(approver):
     # 5.   reject_unauthorized(item, approver, action_log) 의 결과를 리턴한다
+#|         return reject_unauthorized(item, approver, action_log)
     return finish_decision(item, decision, state, action_log)                            # 권한이 있으면 결정을 적용한다 — 미리 채운 줄
 
 
@@ -175,7 +180,9 @@ def finish_decision(item, decision, state, action_log):                         
     approver = decision["approver"]                                                      # 결정한 담당자 이름 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 6. decision["result"] 가 "승인" 이면 (if, ==)
+#|     if decision["result"] == "승인":
     # 7.   execute_actions(item, state, action_log, approver) 의 결과를 리턴한다
+#|         return execute_actions(item, state, action_log, approver)
     change_status(item, "종료")                                                          # 승인이 아니면 거절로 보고 종료로 옮긴다 — 미리 채운 줄
     action_log.append(log_line(item, "전체", "거절됨 (승인: " + approver + " — " + decision["comment"] + ")"))  # 거절 사유를 기록한다 — 미리 채운 줄
     return "거절 처리"                                                                   # 거절 처리를 리턴한다 — 미리 채운 줄
@@ -185,7 +192,7 @@ def finish_decision(item, decision, state, action_log):                         
 
 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실행하면 결과를 출력합니다.
 
-```python
+```python exercise
 from incident import load_json                                                              # Unit 1 파일의 함수를 불러온다
 from approvals import apply_decision                                                        # 방금 만든 결정 적용 함수를 불러온다
 
@@ -203,7 +210,9 @@ for item in pending:                                                            
     result_text = "결정 없음"                                                               # 결정이 없으면 이 글자가 남는다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 8. item["id"] 가 decisions 안에 있으면 (if, in)
+#|     if item["id"] in decisions:
     # 9.   apply_decision(item, decisions[item["id"]], state, action_log) 의 결과를 result_text 에 담는다
+#|         result_text = apply_decision(item, decisions[item["id"]], state, action_log)
     print(item["id"], item["entity"], "->", result_text, "(상태: " + item["status"] + ")")  # 한 줄로 출력한다
 
 print("--- 단계 3: 처리 뒤 연습용 시스템 상태")                                             # 단계 3 시작을 알리는 줄

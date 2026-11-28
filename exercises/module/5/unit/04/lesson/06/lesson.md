@@ -101,15 +101,18 @@ shift_metrics.py   average                 : 숫자 리스트의 평균을 구�
 
 근무 지표를 계산합니다. 직접 쓰는 곳은 1 ~ 7번입니다. 4번 아래에는 `if` 한 줄을, 5번 아래에는 한 단계 더 들여쓴 줄을 씁니다. 6번과 7번도 같은 모양입니다. 1번과 2번도 마찬가지로, 1번 아래에 `if` 한 줄을 쓰고 2번은 그 안쪽이라 주석 위치보다 한 단계(공백 4개) 더 들여 씁니다.
 
-```python
+```python exercise
 def average(numbers):                                                   # 숫자 리스트를 받는 함수
     """숫자 리스트의 평균을 리턴한다. 리스트가 비어 있으면 0 을 리턴한다.
     평균 확인 시간과 평균 해결 시간을 계산할 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. numbers 의 개수(len)가 0 이면 (if, ==)
+#|     if len(numbers) == 0:
     # 2.   0 을 리턴한다 (비어 있으면 나눌 수 없다)
+#|         return 0
     # 3. sum(numbers) / len(numbers) 를 리턴한다 (합계를 개수로 나눈다)
+#|     return sum(numbers) / len(numbers)
 
 
 def collect_response_times(tickets):                                    # 티켓 리스트를 받는 함수
@@ -120,7 +123,9 @@ def collect_response_times(tickets):                                    # 티켓
     for ticket in tickets:                                              # 티켓을 하나씩 읽는다 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 4. ticket 의 "acked_at" 이 -1 이 아니면 (if, !=)
+#|         if ticket["acked_at"] != -1:
             # 5. times 리스트에 ticket["acked_at"] - ticket["created_at"] 을 추가한다 (append)
+#|             times.append(ticket["acked_at"] - ticket["created_at"])
     return times                                                        # 걸린 시간 리스트를 리턴한다 — 미리 채운 줄
 
 
@@ -146,7 +151,9 @@ def count_sla_breaches(tickets, now):                                   # 티켓
             checked_time = now                                          # 지금 시각에 확인한 것으로 본다 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 6. checked_time 이 ticket 의 "sla_due" 보다 크면 (if, >)
+#|         if checked_time > ticket["sla_due"]:
             # 7. late 에 late + 1 을 저장한다 (1 늘린다)
+#|             late = late + 1
     return late                                                         # 기한을 넘긴 티켓 수를 리턴한다 — 미리 채운 줄
 ```
 
@@ -154,7 +161,7 @@ def count_sla_breaches(tickets, now):                                   # 티켓
 
 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. Unit 3 파일 `ticket_merge.py` · `ticket_notice.py` 와 `escalation.py`(응용 4-1 또는 「선택 과제용 에스컬레이션·리포트 함수 준비」 레슨)가 같은 폴더에 있어야 합니다. 미리 채운 `for now in range(0, 181):` 는 0 부터 180 까지 1씩 늘어나는 숫자를 꺼냅니다(끝 숫자 181 은 들어가지 않습니다). 그래서 1분마다 그 시각에 온 알림과 담당자 동작을 처리합니다.
 
-```python
+```python exercise
 from incident import load_json, save_json                                             # Unit 1 파일의 JSON 읽기 · 저장 함수를 불러온다
 from ticket_merge import handle_alert, change_ticket_status                           # Unit 3 에 있는 병합 · 상태 바꾸기 함수를 불러온다
 from ticket_notice import send_ticket_notice                                          # Unit 3 에 있는 알리기 함수를 불러온다
@@ -189,7 +196,9 @@ for now in range(0, 181):                                                       
 print("--- 단계 2: 근무 지표")                                                        # 단계 2 시작을 알리는 줄
 # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
 # 8. collect_response_times(tickets) 의 결과를 ack_times 에 저장한다
+#| ack_times = collect_response_times(tickets)
 # 9. average(ack_times) 의 결과를 mean_ack_minutes 에 저장한다
+#| mean_ack_minutes = average(ack_times)
 resolve_times = collect_resolve_times(tickets)                                        # 해결한 티켓의 걸린 시간 리스트 — 미리 채운 줄
 mean_resolve_minutes = average(resolve_times)                                         # 평균 해결 시간(MTTR) — 미리 채운 줄
 late_count = count_sla_breaches(tickets, 180)                                         # 응답 기한을 넘긴 티켓 수 — 미리 채운 줄

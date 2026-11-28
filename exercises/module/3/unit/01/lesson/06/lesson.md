@@ -147,7 +147,7 @@ for role, role_permissions in ROLES.items():                      # 역할 이�
 
 <h3><code>apply1-1_audit.py</code></h3>
 
-```python
+```python exercise
 from rbac import check_permission, ROLES, USERS                  # 판정 함수와 역할 · 사용자 정보를 불러온다
 from access_log import LOG                                       # access_log.py 의 기록 리스트를 불러온다
 
@@ -163,6 +163,23 @@ used = {}                                                        # 역할 → �
 # 4. 같은 허용 기록에서, used 에 role 이 아직 없으면 used[role] = [] 로 빈 리스트를 먼저 만들고,
 #    used[role] 리스트에 "자원:행위" 문자열을 추가한다
 # 5. 아니면 denied 를 1 늘리고, "[거부]" 와 번호 · 시각 · 사용자 · 자원 · 행위 · 이유를 출력하고,
+#| for log_id, time, user, resource, action in LOG:
+#|     is_allowed, reason = check_permission(user, resource, action)
+#|     if is_allowed:
+#|         allowed = allowed + 1
+#|         count_key = user + " 허용"
+#|         old_count = counts.get(count_key, 0)
+#|         counts[count_key] = old_count + 1
+#|         role = USERS[user]["role"]
+#|         if role not in used:
+#|             used[role] = []
+#|         used[role].append(f"{resource}:{action}")
+#|     else:
+#|         denied = denied + 1
+#|         print("[거부]", log_id, time, user, resource, action, "-", reason)
+#|         count_key = user + " 거부"
+#|         old_count = counts.get(count_key, 0)
+#|         counts[count_key] = old_count + 1
 #    counts 의 "사용자 거부" 를 같은 방법(count_key · old_count)으로 1 늘린다
 
 print("허용", allowed, "거부", denied)                           # 전체 건수를 출력한다
@@ -171,6 +188,10 @@ print(counts)                                                    # 사용자별 
 # ← 단계 2 미사용 점검: 쓰이지 않은 권한 출력하기
 # 6. ROLES 에서 역할과 권한 리스트를 하나씩 꺼낸다
 # 7. 그 리스트의 권한을 하나씩 꺼내, used.get(역할, []) 에 없으면 "쓰이지 않음", 역할, 권한 을 출력한다
+#| for role, permissions in ROLES.items():
+#|     for permission in permissions:
+#|         if permission not in used.get(role, []):
+#|             print("쓰이지 않음", role, permission)
 ```
 
 - 키는 `user + " 허용"` 처럼 사용자 이름과 문자열을 합쳐 만듭니다. 문자열과 문자열은 `+` 로 이어 붙입니다(`"seoyeon" + " 허용"` 은 `seoyeon 허용`).

@@ -63,8 +63,8 @@ render: markdown
 | `config/users.json` · `config/roles.json` | Module 3 Unit 1 실습 1-1 | 실습 3-2 (`rbac.py` 가 읽음) | 다음 페이지에서 새로 만듭니다 |
 | `login_detection.py` | Unit 2 실습 2-3 | 응용 3-1 만 | 아래 설명을 따릅니다 |
 
-- Module 3 의 파일은 `network-study-notes/access_control` 폴더에 있고 오늘 작업 폴더는 `network-study-notes/anomaly_detection` 입니다. 따라서 필요한 `rbac.py` 와 두 설정 JSON 은 이 레슨에서 `anomaly_detection` 안에 별도로 만듭니다. `access_control` 폴더의 파일은 그대로 둡니다. 두 JSON 값은 [M3 Unit 1 실습 1-1의 정답 접기](__SITE__/exercises/module/3/unit/1/lesson/2/page/7), `rbac.py` 의 빈칸은 [M3 Unit 1 실습 1-2의 정답 접기](__SITE__/exercises/module/3/unit/1/lesson/3/page/4)에서 확인합니다. Module 3 Unit 1을 다 마치지 않았어도 필요한 내용을 이 레슨에서 다시 준비할 수 있습니다.
-- `login_detection.py` 는 선택 실습 3-1에서만 씁니다. 만들 때는 [M4 Unit 2 실습 2-3의 코드와 정답 접기](__SITE__/exercises/module/4/unit/2/lesson/4/page/4)를 참고합니다.
+- Module 3 의 파일은 `network-study-notes/access_control` 폴더에 있고 오늘 작업 폴더는 `network-study-notes/anomaly_detection` 입니다. 따라서 필요한 `rbac.py` 와 두 설정 JSON 은 이 레슨에서 `anomaly_detection` 안에 별도로 만듭니다. `access_control` 폴더의 파일은 그대로 둡니다. 두 JSON 값은 [M3 Unit 1 실습 1-1의 하단 바의 ‘정답 보기’](__SITE__/exercises/module/3/unit/1/lesson/2/page/7), `rbac.py` 의 빈칸은 [M3 Unit 1 실습 1-2의 하단 바의 ‘정답 보기’](__SITE__/exercises/module/3/unit/1/lesson/3/page/4)에서 확인합니다. Module 3 Unit 1을 다 마치지 않았어도 필요한 내용을 이 레슨에서 다시 준비할 수 있습니다.
+- `login_detection.py` 는 선택 실습 3-1에서만 씁니다. 만들 때는 [M4 Unit 2 실습 2-3의 코드와 하단 바의 ‘정답 보기’](__SITE__/exercises/module/4/unit/2/lesson/4/page/4)를 참고합니다.
 
 <h2>순서</h2>
 
@@ -324,7 +324,7 @@ Module 3 Unit 1 실습 1-1 의 역할 파일입니다. 역할마다 허용된 �
 | `No module named 'login_detection'`(응용 3-1) | Unit 2 실습 2-3 의 `login_detection.py` 가 없습니다 | 「폴더 열고 이전 파일 확인하기」 페이지의 표 아래 설명대로 만듭니다 |
 
 - 가상환경을 쓴다면 판다스를 설치하기 전에 `network-study-notes` 폴더에서 가상환경을 켭니다(`source .venv/Scripts/activate`).
-- 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 막히면 각 실습 아래 정답 접기를 보고, 풀리지 않으면 초안에 오류와 막힌 지점을 남깁니다.
+- 오류 전체를 친 명령과 함께 AI 에게 붙여 넣어 묻습니다(`.env` · API 키는 지웁니다). 막히면 각 실습 하단 바의 ‘정답 보기’를 보고, 풀리지 않으면 초안에 오류와 막힌 지점을 남깁니다.
 
 > 실행은 VS Code 의 ▶ 단추가 아니라 <mark>**터미널**에서</mark> 합니다. 파일을 지금 위치 기준으로 찾기 때문입니다. **앞 Unit 과 Module 3 의 파일은 고치지 않습니다.**
 

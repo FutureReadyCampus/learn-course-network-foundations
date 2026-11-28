@@ -218,17 +218,16 @@ source:
 
 PB-003 은 위 파일의 맨 아래 `]` 앞에 한 건을 더합니다. <mark>PB-002 의 닫는 중괄호 `}` 뒤에 쉼표를 붙이고, 새 건 뒤에는 쉼표를 붙이지 않습니다.</mark> `actions` · `approval` · `reason` 은 내가 정해 씁니다. 단, <mark>`actions` 에는 `티켓 생성` 을 꼭 넣고</mark>, 나머지 액션을 더 고릅니다(아래 표의 `TCK-2` 와 확인의 티켓 수 `2` 가 이것을 전제로 합니다).
 
-```
-  {
+<pre><code>  {
     "id": "PB-003",
     "name": "경로 스캔",
     "trigger_rule": "경로 스캔",
     "min_grade": "low",
-    "actions": [ 내가 정한 액션 이름들 ],
-    "approval": "내가 정한 승인 값",
-    "reason": "내가 정한 이유 한두 문장"
+    "actions": <span data-answer-line="[&quot;IP 차단&quot;, &quot;티켓 생성&quot;]">[ 내가 정한 액션 이름들 ]</span>,
+    "approval": <span data-answer-line="&quot;담당자 승인 필요&quot;">&quot;내가 정한 승인 값&quot;</span>,
+    "reason": <span data-answer-line="&quot;경로 스캔의 대상은 사용자가 아니라 IP 입니다. 같은 IP 를 여러 사람이 쓰고 있으면 차단했을 때 정상 사용자의 업무도 막히므로, 담당자가 확인한 뒤에 차단합니다.&quot;">&quot;내가 정한 이유 한두 문장&quot;</span>
   }
-```
+</code></pre>
 
 **수동 처리하는 방법** — 프로그램을 쓰지 않습니다. VS Code 에서 `system_state.json` 을 열어 아래 표대로 값을 직접 타이핑해 넣고 저장합니다.
 

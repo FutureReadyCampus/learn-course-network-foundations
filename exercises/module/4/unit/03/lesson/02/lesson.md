@@ -194,7 +194,7 @@ print(counts >= 2)               # 09:01 은 True, 09:20 은 False
 
 <h3><code>traffic_detection.py</code></h3>
 
-```python
+```python exercise
 import pandas as pd                                              # 판다스를 pd 라는 짧은 이름으로 불러온다
 
 EVENTS_PATH = "normalized_events.json"                           # 읽을 정규화 이벤트 파일 이름
@@ -216,6 +216,7 @@ def add_minute_column(events):                                   # 이벤트 표
     """
     times = pd.to_datetime(events["time"])                       # 문자열 시각을 시각 값으로 바꾼다
     # ① times 에 .dt.floor("min") 을 붙여 초를 버린 시각을 minutes 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     minutes = times.dt.floor("min")
 
     events["minute"] = minutes                                   # 표에 minute 열을 붙인다
     return events                                                # minute 열이 붙은 표를 리턴한다
@@ -246,6 +247,7 @@ def pick_spike_minutes(minute_request_counts, limit):            # 분마다 요
     알림을 보낼 분을 가릴 때 쓴다.
     """
     # ② minute_request_counts 가 limit 이상인지 비교한 결과(>=)를 is_spike 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     is_spike = minute_request_counts >= limit
 
     spike_minutes = minute_request_counts[is_spike]              # is_spike 가 True 인 분만 남긴다
     return spike_minutes                                         # 요청이 급증한 분과 요청 수를 리턴한다
@@ -330,7 +332,7 @@ print(spike_minutes)                                                            
    - [핵심 질문] 실행한 출력을 보고, 급증 기준과 요청이 급증한 분(시각과 요청 수)을 적어 주세요.
    - [핵심 판단 근거] `normalized_events.json` 에서 `time` 이 `2026-11-02 09:12` 로 시작하는 웹 서버(`source` 가 `web`) 줄을 찾아, ① 요청을 보낸 IP 주소와 ② 행동(`action`)별 횟수를 적어 주세요. 그리고 ③ 이 급증을 공격이라고 확정할 수 있는지 이유와 함께 적어 주세요.
 
-**확인** — 단계 3 제목 줄 끝에 `6.0 번 이상`, 단계 4 에 `2026-11-02 09:12:00    9` 한 줄만 나오면 성공입니다. 안 나오면 아래 정답 접기의 출력과 맞춰 보고, 판다스 3 에서 `dtype` 두 줄이 다르게 보여도 숫자가 맞으면 정상입니다.
+**확인** — 단계 3 제목 줄 끝에 `6.0 번 이상`, 단계 4 에 `2026-11-02 09:12:00    9` 한 줄만 나오면 성공입니다. 안 나오면 하단 바의 ‘정답 보기’로 연 해설의 출력과 맞춰 보고, 판다스 3 에서 `dtype` 두 줄이 다르게 보여도 숫자가 맞으면 정상입니다.
 
 <!-- answer: 07|실습 3-1 정답 -->
 

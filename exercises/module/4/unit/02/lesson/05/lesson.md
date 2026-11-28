@@ -263,7 +263,7 @@ print(average)                              # 2.4285714285714284 — 소수점 �
 
 <h3><code>baseline.py</code></h3>
 
-```python
+```python exercise
 import pandas as pd                 # 판다스를 pd 라는 짧은 이름으로 불러온다
 
 LOGIN_PATH = "baseline_logins.csv"  # 지난 7일의 하루 로그인 실패 횟수 파일 이름
@@ -275,6 +275,7 @@ def load_daily_failures(path):      # 파일 경로를 받는 함수
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. pd.read_csv 로 path 의 파일을 읽어 daily 에 담는다 (path 는 따옴표 없이 그대로 쓴다)
+#|     daily = pd.read_csv(path)
     return daily                    # 하루가 한 행인 표를 리턴한다
 
 
@@ -284,7 +285,9 @@ def average_failures(daily):        # 표를 받는 함수
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 2. daily 의 "failed_logins" 열을 꺼내 daily_failed_logins 에 담는다
+#|     daily_failed_logins = daily["failed_logins"]
     # 3. daily_failed_logins 의 평균을 .mean() 으로 구해 average 에 담는다
+#|     average = daily_failed_logins.mean()
     return average                  # 평균을 리턴한다
 
 
@@ -294,7 +297,9 @@ def maximum_failures(daily):        # 표를 받는 함수
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. daily 의 "failed_logins" 열을 꺼내 daily_failed_logins 에 담는다
+#|     daily_failed_logins = daily["failed_logins"]
     # 5. daily_failed_logins 의 최댓값을 .max() 로 구해 maximum 에 담는다
+#|     maximum = daily_failed_logins.max()
     return maximum                  # 최댓값을 리턴한다
 
 
@@ -304,6 +309,7 @@ def make_limit(maximum):            # 평소 최댓값을 받는 함수
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 6. maximum 에 1 을 더해 limit 에 담는다
+#|     limit = maximum + 1
     return limit                    # 알림 기준을 리턴한다
 ```
 

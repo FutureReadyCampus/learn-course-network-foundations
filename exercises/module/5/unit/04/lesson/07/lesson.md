@@ -234,7 +234,7 @@ report.py   make_ticket_table       : 티켓 리스트를 표로 바꾸고 확�
 - 미리 채운 `.to_dict()` 는 판다스 집계 결과를 `{"퇴사한 계정": 2, …}` 같은 딕셔너리로 바꿉니다. `.to_dict("records")` 는 표의 행마다 딕셔너리 하나로 바꾼 리스트를 돌려줍니다. 그래서 그 뒤에는 앞에서 쓰던 딕셔너리 · 리스트 문법으로 읽을 수 있습니다.
 - 8번이 들어가는 `for rule in rule_counts:` 는 딕셔너리를 `for` 로 돌리므로 키(규칙 이름)가 하나씩 나오고, `rule_counts[rule]` 로 그 규칙의 수를 읽습니다.
 
-```python
+```python exercise
 import pandas as pd                                                                        # 표를 다루기 위해 판다스를 pd 라는 이름으로 불러온다
 
 REPORT_TITLE = "# 초동 대응 리포트 — 2026-11-12(목) 오전 근무"                             # 리포트 맨 위 제목
@@ -247,6 +247,7 @@ def make_ticket_table(tickets):                                                 
     table = pd.DataFrame(tickets)                                                          # 티켓 리스트를 표로 바꾼다 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. table["acked_at"] - table["created_at"] 를 table["ack_minutes"] 에 저장한다 (확인까지 걸린 분)
+#|     table["ack_minutes"] = table["acked_at"] - table["created_at"]
     return table                                                                           # 열을 더한 표를 리턴한다 — 미리 채운 줄
 
 
@@ -256,6 +257,7 @@ def count_by_rule(table):                                                       
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 2. table["rule"].value_counts() 를 rule_counts 에 저장한다
+#|     rule_counts = table["rule"].value_counts()
     return rule_counts.to_dict()                                                           # 센 결과를 딕셔너리로 바꿔 리턴한다 — 미리 채운 줄
 
 
@@ -265,8 +267,10 @@ def mean_ack_by_grade(table):                                                   
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 3. table["acked_at"] >= 0 인 행만 남겨 acked 에 저장한다 (확인한 티켓만)
+#|     acked = table[table["acked_at"] >= 0]
     groups = acked.groupby("grade")                                                        # 등급이 같은 행끼리 묶는다 — 미리 채운 줄
     # 4. groups["ack_minutes"].mean() 을 grade_means 에 저장한다 (등급마다 평균)
+#|     grade_means = groups["ack_minutes"].mean()
     rounded = grade_means.round(1)                                                         # 소수 첫째 자리까지 반올림한다 — 미리 채운 줄
     return rounded.to_dict()                                                               # 등급별 평균을 딕셔너리로 바꿔 리턴한다 — 미리 채운 줄
 
@@ -277,6 +281,7 @@ def find_late_tickets(table):                                                   
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 5. table["acked_at"] > table["sla_due"] 인 행만 남겨 late 에 저장한다
+#|     late = table[table["acked_at"] > table["sla_due"]]
     return late.to_dict("records")                                                         # 남은 행을 딕셔너리 리스트로 바꿔 리턴한다 — 미리 채운 줄
 
 
@@ -292,7 +297,9 @@ def find_missing_incidents(actions, tickets):                                   
     for action in actions:                                                                 # 조치 기록을 하나씩 읽는다 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 6. action["incident"] 가 covered 안에 없으면 (if, not in)
+#|         if action["incident"] not in covered:
             # 7. missing 에 action 을 추가한다 (append)
+#|             missing.append(action)
     return missing                                                                         # 티켓이 없는 조치 기록 리스트를 리턴한다 — 미리 채운 줄
 
 
@@ -335,6 +342,7 @@ def make_report_lines(tickets, actions, rule_counts, grade_means, late_tickets, 
         count = rule_counts[rule]                                                          # 그 규칙의 티켓 수 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 8. "- " + rule + ": " + str(count) + "장" 을 lines 에 추가한다 (append)
+#|         lines.append("- " + rule + ": " + str(count) + "장")
     lines.append("")                                                                       # 빈 줄 — 미리 채운 줄
     lines.append("## 3. 등급별 평균 확인 시간(분)")                                        # 3절 제목 — 미리 채운 줄
     for grade in grade_means:                                                              # 등급을 하나씩 읽는다 — 미리 채운 줄
@@ -359,7 +367,7 @@ def make_report_lines(tickets, actions, rule_counts, grade_means, late_tickets, 
 
 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 끝부분의 `"\n".join(lines)` 는 줄 리스트를 줄바꿈 글자(`\n`)로 이어 한 문자열로 만듭니다. 그 문자열을 쓰기 모드(`"w"`, 파일이 있으면 지우고 새로 씀)로 연 파일에 `.write(…)` 로 씁니다.
 
-```python
+```python exercise
 from incident import load_json                                                                # Unit 1 파일의 JSON 읽기 함수를 불러온다
 from report import make_ticket_table, count_by_rule, mean_ack_by_grade, find_late_tickets, find_missing_incidents, make_report_lines  # 방금 만든 리포트 함수를 불러온다
 
@@ -371,6 +379,7 @@ print("--- 단계 1: 불러온 티켓", len(tickets), "장 · 조치 기록", le
 
 # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
 # 9. make_ticket_table(tickets) 의 결과를 table 에 저장한다
+#| table = make_ticket_table(tickets)
 rule_counts = count_by_rule(table)                                                            # 규칙별 티켓 수
 grade_means = mean_ack_by_grade(table)                                                        # 등급별 평균 확인 시간
 late_tickets = find_late_tickets(table)                                                       # 응답 기한을 넘겨 확인한 티켓

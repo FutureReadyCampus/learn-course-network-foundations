@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from html import escape
 import re
 import warnings
 from pathlib import Path
@@ -552,11 +553,24 @@ def split_checklist(text: str, md) -> tuple[str, dict | None]:
     return rest, {"optional": all(flags), "items": items}
 
 
+def highlight_exercise(code, language, attributes):
+    """In an exercise fence, #| introduces a line revealed by the preview footer."""
+    if attributes != "exercise":
+        return ""
+    parts = []
+    for line in code.splitlines(keepends=True):
+        if line.startswith("#| "):
+            parts.append(f'<span data-answer-line="{escape(line[3:])}"></span>')
+        else:
+            parts.append(escape(line))
+    return f'<pre><code class="language-{escape(language)}">{"".join(parts)}</code></pre>'
+
+
 def markdown_pages(path: Path, lesson_meta: dict | None = None) -> list[dict]:
     """Exercise Lessons: each `## ` heading (outside code fences) is a Page rendered from full Markdown."""
     from markdown_it import MarkdownIt
 
-    md = MarkdownIt("commonmark", {"html": True}).enable("table")
+    md = MarkdownIt("commonmark", {"html": True, "highlight": highlight_exercise}).enable("table")
     _, source = read_front_matter(path)
     sections, fenced = [], False
     for line in source.split("\n"):

@@ -20,7 +20,7 @@ render: markdown
    | `weekly_report.py` | 함수 두 개 | 점검 결과와 로그 집계를 합쳐 보고서 문자열을 만들고 파일로 저장함 |
    | `weekly_run.py` | 실행 파일 | 위 두 파일과 실습 5-1의 `checklist.py` 를 불러 주간 보고서를 만듦 |
 
-4. `weekly_run.py` 는 실습 5-1의 `checklist.py` 를 불러옵니다. `access_control` 폴더의 터미널에서 `python exercise5-1_run.py` 가 실습 5-1 바로 아래의 정답 펼침의 출력과 같은 출력을 내는지 먼저 확인합니다. 아직 안 되면 실습 5-1 정답 펼침의 채운 코드를 넣어 `checklist.py` 를 완성합니다.
+4. `weekly_run.py` 는 실습 5-1의 `checklist.py` 를 불러옵니다. `access_control` 폴더의 터미널에서 `python exercise5-1_run.py` 가 실습 5-1 바로 하단 바의 ‘정답 보기’로 연 해설의 출력과 같은 출력을 내는지 먼저 확인합니다. 아직 안 되면 실습 5-1 하단 바의 ‘정답 보기’의 채운 코드를 넣어 `checklist.py` 를 완성합니다.
 
 <!-- checklist -->
 - [ ] `python exercise5-1_run.py` 를 실행해 단계 2가 `['dami']` · 통과 · `['junho']` 세 줄로 나오는 것을 확인했다
@@ -30,7 +30,7 @@ render: markdown
 
 > 시간이 남아 응용 5-1을 하면, `log_summary.py` 를 빈칸이 있는 골격으로 바꿔 직접 써 봅니다. 그때는 다 채울 때까지 `weekly_run.py` 가 동작하지 않으니, 다 쓴 뒤 `weekly_run.py` 를 다시 실행해 보고서가 같은지 확인합니다.
 
-**확인** — `python exercise5-1_run.py` 의 단계 2가 `['dami']` · 통과 · `['junho']` 세 줄로 나오면 준비가 된 것입니다. 안 나오면 실습 5-1의 「직접 쓰는 곳」 확인을 다시 보거나, 실습 5-1 바로 아래의 정답 펼침의 ① ~ ③ 을 넣습니다.
+**확인** — `python exercise5-1_run.py` 의 단계 2가 `['dami']` · 통과 · `['junho']` 세 줄로 나오면 준비가 된 것입니다. 안 나오면 실습 5-1의 「직접 쓰는 곳」 확인을 다시 보거나, 실습 5-1 바로 하단 바의 ‘정답 보기’의 ① ~ ③ 을 넣습니다.
 
 ## `log_summary.py` 만들기
 

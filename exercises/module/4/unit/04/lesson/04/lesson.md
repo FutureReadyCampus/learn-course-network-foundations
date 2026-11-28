@@ -132,7 +132,7 @@ Length: 3, dtype: str
 
 <h3><code>tuning.py</code></h3>
 
-```python
+```python exercise
 import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
 
 ALERTS_PATH = "review_alerts.json"                    # 읽을 알림 파일 이름
@@ -165,7 +165,9 @@ def apply_exception(alerts):                          # 알림 표를 받는 함
     """
     is_ip_rule = alerts["rule"] == IP_RULE            # 각 알림이 IP 규칙의 알림인지 비교한다
     # ① alerts 의 "ip" 열이 TRUSTED_IPS 안에 있는지 isin 으로 구해 is_trusted 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     is_trusted = alerts["ip"].isin(TRUSTED_IPS)
     # ② is_ip_rule 과 is_trusted 가 모두 True 인 행을 & 로 구해 is_removed 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     is_removed = is_ip_rule & is_trusted
     removed_alerts = alerts[is_removed]               # 빼낼 알림만 골라 새 표로 만든다
     is_kept = ~is_removed                             # 빼지 않을 알림을 True 로 만든다
     kept_alerts = alerts[is_kept]                     # True 인 행만 골라 새 표로 만든다
@@ -187,6 +189,7 @@ def find_removed_users(removed_alerts):               # 빼낸 알림 표를 받
     예외로 빠진 알림이 누구의 것인지 확인할 때 쓴다.
     """
     # ③ removed_alerts 의 "user" 열에서 같은 값은 한 번씩만 .unique() 로 꺼내 removed_users 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     removed_users = removed_alerts["user"].unique()
     return removed_users                              # 중복 없는 사용자 이름을 리턴한다
 ```
 
@@ -267,7 +270,7 @@ print("진짜 문제였던 알림 수:", real_removed_count)   # 0 이면 진짜
    - (나) [핵심 질문] 예외 규칙을 적용한 뒤 오탐이 몇 개에서 몇 개로 줄었나요? A3(jiwoo 의 업무 시간 밖 로그인)은 같은 IP 인데 왜 줄어들지 않았는지도 적어 주세요.
    - (다) [응용] `SaaS 평소와 다른 IP` 규칙에서 `203.0.113.80` 을 믿는 IP 로 두면, 이 IP 에서 오는 진짜 공격을 그 규칙으로는 놓칠 수 있습니다. 어떤 경우인지 한 가지 적어 주세요.
 
-**확인** — 단계 3이 `알림 수: 5` · `오탐 수: 2` 이고 마지막 줄이 `진짜 문제였던 알림 수: 0` 이면 성공입니다. 안 나오면 아래 실습 4-2 정답 펼침의 출력과 한 줄씩 맞춰 보고, `빠진 알림 수: 4` 가 나오면 ② 에 `is_ip_rule &` 가 빠졌는지 봅니다.
+**확인** — 단계 3이 `알림 수: 5` · `오탐 수: 2` 이고 마지막 줄이 `진짜 문제였던 알림 수: 0` 이면 성공입니다. 안 나오면 실습 4-2 하단 바의 ‘정답 보기’로 연 해설의 출력과 한 줄씩 맞춰 보고, `빠진 알림 수: 4` 가 나오면 ② 에 `is_ip_rule &` 가 빠졌는지 봅니다.
 
 ## 실습 4-2 정리
 

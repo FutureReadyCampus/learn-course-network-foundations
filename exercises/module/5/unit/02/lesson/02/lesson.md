@@ -93,7 +93,7 @@ account_actions.py    check_policy      : VIP 계정이면 자동 조치를 막�
 - `new_state` 의 `copy.deepcopy(값)` 은 딕셔너리를 안쪽 리스트까지 통째로 새로 복사합니다. `INITIAL_STATE` 를 복사하지 않고 그대로 쓰면 잠금 · 해제가 처음 상태 자체를 바꿔 버려서, 실행할 때마다 같은 처음 상태에서 시작할 수 없기 때문입니다.
 - `append_log` 의 `try:` · `except FileNotFoundError:` 는 Module 4 Unit 5 에서 본 「해 보고, 이 오류가 나면 멈추지 않고 아래 줄을 실행한다」는 모양입니다. 기록 파일이 아직 없을 때 프로그램이 멈추지 않고 빈 리스트로 시작하게 합니다(읽기만 합니다).
 
-```python
+```python exercise
 import copy                                                           # 처음 상태를 복사해 쓰기 위해 copy 를 불러온다
 from incident import load_json, save_json                             # Unit 1 파일의 파일 읽기 · 쓰기 함수를 불러온다
 
@@ -153,6 +153,7 @@ def append_log(record):                                               # 기록 �
     except FileNotFoundError:                                         # 파일이 없으면
         log = []                                                      # 빈 리스트로 시작한다
     # ① log 리스트에 record 를 더한다 (append)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     log.append(record)
     save_json(log, LOG_PATH)                                          # 기록 파일로 다시 저장한다
 ```
 
@@ -160,7 +161,7 @@ def append_log(record):                                               # 기록 �
 
 계정 잠금과 해제를 구현합니다. 실습 2-2 와 Unit 3 실습 3-1 도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 ② · ③ 입니다.
 
-```python
+```python exercise
 from containment_store import make_record                                             # 기록 한 건을 만드는 함수를 불러온다
 
 
@@ -178,6 +179,7 @@ def verify_locked(user, state):                                                 
     잠그라고 호출한 것과 실제로 잠긴 것이 같은지 조치 뒤에 확인할 때 쓴다.
     """
     # ② user 가 state["locked_users"] 안에 있는지(in)의 결과를 리턴한다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     return user in state["locked_users"]
 
 
 def lock_account(user, state, vip_accounts, incident_id, reason):                     # 계정 · 상태 · VIP 리스트 · 인시던트 번호 · 이유를 받는 함수
@@ -190,6 +192,7 @@ def lock_account(user, state, vip_accounts, incident_id, reason):               
     if user in state["locked_users"]:                                                 # 이미 잠겨 있으면
         return make_record("계정 잠금", user, incident_id, "잠김", "잠김", "이미 잠겨 있어 변경 없음")  # 바꾸지 않고 기록한다
     # ③ state["locked_users"] 리스트에 user 를 더한다 (append · 잠그는 줄)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     state["locked_users"].append(user)
     after = "잠김"                                                                    # 조치 뒤 상태 : 일단 잠겼다고 적고
     if not verify_locked(user, state):                                                # 실제로 확인해 잠기지 않았으면
         after = "잠기지 않음 (확인 실패)"                                             # 확인 실패라고 고쳐 적는다
@@ -293,7 +296,7 @@ print("조치 기록:", len(saved_log), "건")                                  
 <!-- /checklist -->
 
 5. 실행 결과에서 선택한 글감의 근거를 찾아 초안의 ‘검증 결과’에 메모합니다.
-**확인** — 단계 2 가 `dami` 「잠기지 않음 → 잠김」 · `gaeun` 「변경 없음 → 변경 없음」 · `junho` 「잠김 → 잠김」 세 줄이고, 단계 4 가 `잠긴 계정: ['junho']` · `조치 기록: 4 건` 이면 성공입니다. 안 나오면 아래 실습 2-1 정답 펼침의 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+**확인** — 단계 2 가 `dami` 「잠기지 않음 → 잠김」 · `gaeun` 「변경 없음 → 변경 없음」 · `junho` 「잠김 → 잠김」 세 줄이고, 단계 4 가 `잠긴 계정: ['junho']` · `조치 기록: 4 건` 이면 성공입니다. 안 나오면 실습 2-1 하단 바의 ‘정답 보기’로 연 해설의 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 ## 실습 2-1 정리
 

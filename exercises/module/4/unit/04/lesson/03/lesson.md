@@ -133,7 +133,7 @@ Name: points, dtype: int64
 
 <h3><code>risk_scores.py</code></h3>
 
-```python
+```python exercise
 import json                                        # 점수를 JSON 파일로 쓰기 위해 json 을 불러온다
 import pandas as pd                                    # 판다스를 pd 라는 짧은 이름으로 불러온다
 from access_detection import pick_server_failures, pick_suspicious, judge_failure  # Module 3 Unit 3 핵심 탐지 함수를 불러온다
@@ -180,9 +180,11 @@ def score_findings(findings):                          # 탐지된 규칙 리스
     """
     findings_table = pd.DataFrame(findings)            # 딕셔너리 리스트를 표로 만든다
     # ① findings_table 의 "rule" 열에 .map(WEIGHTS) 를 붙여 규칙마다 점수를 구해 points 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     points = findings_table["rule"].map(WEIGHTS)
     findings_table["points"] = points                  # 표에 points 열을 붙인다
     grouped = findings_table.groupby("entity")         # entity 가 같은 행끼리 그룹으로 만든다
     # ② grouped 에서 "points" 열을 골라 .sum() 을 붙여 그룹마다 합계를 구해 totals 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     totals = grouped["points"].sum()
     totals = totals.sort_values(ascending=False)       # 점수가 높은 순으로 정렬한다
     return totals                                      # 대상별 점수를 리턴한다
 
@@ -316,7 +318,7 @@ for record in records:                                 # 기록을 하나씩 꺼
    - (다) [응용] 198.51.100.90 은 경로 스캔 하나에 해당하지만 low 입니다. low 는 점수 기준상 낮은 등급이라는 뜻입니다. low 인 이유를 점수와 기준으로 설명하고, 이 IP 의 기록을 무시해도 되는지 샘플의 값(그 IP 의 요청 3개의 `result`)으로 판단해 적어 주세요.
      - 요청 3개는 VS Code 로 `normalized_events.json` 을 열고 `Ctrl + F` 로 `198.51.100.90` 을 검색해 찾습니다.
 
-**확인** — 단계 4가 `high dami 60 ['퇴사한 계정']` 으로 시작하는 다섯 줄이고 맨 아래가 `low 198.51.100.90 30 ['경로 스캔']` 이면 성공입니다. 안 나오면 아래 실습 4-1 정답 펼침의 출력과 한 줄씩 맞춰 보고, 오류가 나면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+**확인** — 단계 4가 `high dami 60 ['퇴사한 계정']` 으로 시작하는 다섯 줄이고 맨 아래가 `low 198.51.100.90 30 ['경로 스캔']` 이면 성공입니다. 안 나오면 실습 4-1 하단 바의 ‘정답 보기’로 연 해설의 출력과 한 줄씩 맞춰 보고, 오류가 나면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 ## 실습 4-1 정리
 

@@ -243,7 +243,7 @@ dtype: int64
 
 <h3><code>login_detection.py</code></h3>
 
-```python
+```python exercise
 import pandas as pd                                             # 판다스를 pd 라는 짧은 이름으로 불러온다
 
 EVENTS_PATH = "normalized_events.json"                          # 읽을 정규화 이벤트 파일 이름
@@ -267,6 +267,7 @@ def pick_login_failures(events):                                # 이벤트 표�
     results = events["result"]                                  # result 열만 꺼낸다 — 성공 · 실패가 57개 나열된 열
     is_fail = results == "실패"                                 # 행마다 실패인지 비교해 True 또는 False 를 만든다
     # ① is_login 과 is_fail 을 & 로 합쳐 both_true 에 담는다 (둘 다 True 인 행만 True)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     both_true = is_login & is_fail
 
     login_failures = events[both_true]                          # True 인 행만 골라 새 표를 만든다
     return login_failures                                       # 로그인 실패 이벤트만 담은 표를 리턴한다
@@ -285,6 +286,7 @@ def pick_alert_ips(ip_login_fail_counts, limit):                # 주소별 횟�
     알림을 보낼 주소를 가릴 때 쓴다.
     """
     # ② ip_login_fail_counts 가 limit 이상인지 비교한 결과(>=)를 is_many 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     is_many = ip_login_fail_counts >= limit
 
     alert_ips = ip_login_fail_counts[is_many]                   # True 인 주소만 남긴다
     return alert_ips                                            # 알림 기준 이상인 주소와 횟수를 리턴한다
@@ -353,7 +355,7 @@ print(alert_ips)                                               # 알림을 보�
    - (나) [핵심 질문] 203.0.113.50 이 알림 대상이 되었습니다. 공격이라고 확정할 수 있는지 적고, 실습 2-3 3.1 의 표에서 시각 간격과 성공 뒤에 요청한 경로를 보고 의심스러운 점을 적어 주세요. 그리고 5번 실패가 공격인지 판단하려면 이 표에 없는 정보 중 무엇이 더 필요한지 한 가지 적어 주세요(예: 어떤 사용자 이름으로 시도했는지).
    - (다) [응용] 한 주소가 로그인에 4번 실패하고 5번째에 성공했습니다. 이 규칙(실패 5번 이상)으로 이 접속에 알림이 생성될까요? 생성된다 · 생성되지 않는다와 이유를 적고, 생성되지 않는다면 담당자가 확인하지 못하는 정보가 무엇인지 적어 주세요.
 
-**확인** — 단계 1이 `로그인 실패 이벤트 5 개` 이고, 단계 2 · 3 모두 `203.0.113.50    5` 한 줄이면 성공입니다. 안 나오면 위 정답 접기의 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+**확인** — 단계 1이 `로그인 실패 이벤트 5 개` 이고, 단계 2 · 3 모두 `203.0.113.50    5` 한 줄이면 성공입니다. 안 나오면 하단 바의 ‘정답 보기’로 연 해설의 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 <!-- answer: 07|실습 2-3 정답 -->
 

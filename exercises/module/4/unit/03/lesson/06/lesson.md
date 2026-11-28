@@ -149,7 +149,7 @@ print(scanner_df)            # 남은 요청을 출력한다
 
 <h3><code>malicious_detection.py</code></h3>
 
-```python
+```python exercise
 import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
 
 EVENTS_PATH = "normalized_events.json"                # 읽을 정규화 이벤트 파일 이름
@@ -183,9 +183,13 @@ def find_scan_ips(web_failures):                      # 웹 실패 표를 받는
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. web_failures 의 "action" 열을 꺼내 actions 에 담는다
+#|     actions = web_failures["action"]
     # 2. actions 에 .str.contains(SCANNER_PATTERN) 을 붙여 스캐너 경로가 들어 있는지 구해 is_scanner 에 담는다
+#|     is_scanner = actions.str.contains(SCANNER_PATTERN)
     # 3. web_failures 에서 is_scanner 가 True 인 행만 골라 scanner_rows 에 담는다
+#|     scanner_rows = web_failures[is_scanner]
     # 4. scanner_rows 의 "ip" 열에 .value_counts() 를 붙여 IP 별로 몇 번 요청했는지 세어 scan_counts 에 담는다
+#|     scan_counts = scanner_rows["ip"].value_counts()
     scan_ips = list(scan_counts.index)                # 스캔으로 보는 IP 이름만 리스트로 만든다
     return scan_ips, scan_counts                      # 스캔 IP 리스트와 IP 별 요청 횟수를 리턴한다
 
@@ -196,7 +200,9 @@ def explain_scan(ip, request_count):                  # IP 와 스캐너 경로 
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 5. "스캐너 경로를 " 와 str(request_count) 와 "번 요청" 을 + 로 연결해 reason 에 담는다 (문구는 복사해 붙여도 된다)
+#|     reason = "스캐너 경로를 " + str(request_count) + "번 요청"
     # 6. 키 "ip" 에 ip, 키 "reason" 에 reason 을 담은 딕셔너리를 scan_info 에 담는다
+#|     scan_info = {"ip": ip, "reason": reason}
     return scan_info                                  # 설명 딕셔너리를 리턴한다
 ```
 

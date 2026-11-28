@@ -86,9 +86,9 @@ routing.py   is_only_ip_related : 규칙을 하나씩 꺼내 IP 관련이 아닌
 
 맥락을 보고 처리 경로를 정합니다. 이 파일이 정한 경로(`승인 필요` · `오탐 종료` · `기본`)를 Unit 2 응용 2-2 와 Unit 3 응용 3-1 에서도 씁니다. 직접 쓰는 곳은 1 ~ 7번입니다.
 
-**응용 처리 함수와의 관계** — `routing.py` 는 「응용 실습용 처리 함수 준비」 레슨에서 이미 완성본으로 만들었습니다. 이 응용에서는 그 내용을 아래 골격으로 **바꿔서(덮어써서)** 직접 써 봅니다. 다음 Unit에서도 이 파일을 쓰므로, 다 쓴 뒤 실행 결과가 아래 정답 펼침과 같은지 확인하고, 막히면 「응용 실습용 처리 함수 준비」의 완성본을 다시 붙여 넣습니다.
+**응용 처리 함수와의 관계** — `routing.py` 는 「응용 실습용 처리 함수 준비」 레슨에서 이미 완성본으로 만들었습니다. 이 응용에서는 그 내용을 아래 골격으로 **바꿔서(덮어써서)** 직접 써 봅니다. 다음 Unit에서도 이 파일을 쓰므로, 다 쓴 뒤 실행 결과가 하단 바의 ‘정답 보기’와 같은지 확인하고, 막히면 「응용 실습용 처리 함수 준비」의 완성본을 다시 붙여 넣습니다.
 
-```python
+```python exercise
 from incident import change_status                                          # 실습 1-2 의 incident.py 에서 상태 바꾸기 함수를 불러온다
 
 IP_RELATED_RULES = ["평소와 다른 IP", "업무 시간 밖 로그인"]                # 접속 IP 만 보고 낸 알림의 규칙 이름
@@ -100,8 +100,11 @@ def is_only_ip_related(incident):                                           # �
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. incident["reasons"] 의 규칙을 하나씩 꺼낸다 (for, rule)
+#|     for rule in incident["reasons"]:
     # 2.   rule 이 IP_RELATED_RULES 안에 없으면 (if, not in)
+#|         if rule not in IP_RELATED_RULES:
     # 3.     False 를 리턴한다 (IP 와 관계없는 다른 증거가 있다)
+#|             return False
     return True                                                             # 모두 IP 관련이면 True 를 리턴한다 — 미리 채운 줄
 
 
@@ -112,9 +115,13 @@ def decide_route(incident):                                                 # �
     context = incident["context"]                                           # 붙어 있는 맥락
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. context 의 "vip" 가 참이면 (if)
+#|     if context["vip"]:
     # 5.   "승인 필요" 와 "VIP 계정이라 담당자 승인이 필요함" 을 쉼표로 이어 함께 리턴한다
+#|         return "승인 필요", "VIP 계정이라 담당자 승인이 필요함"
     # 6. context 의 "ip_trusted" 가 참이고(and) is_only_ip_related(incident) 가 참이면 (if)
+#|     if context["ip_trusted"] and is_only_ip_related(incident):
     # 7.   "오탐 종료" 와 "신뢰 IP 에서 온 IP 관련 규칙뿐이라 정상 접속으로 봄" 을 쉼표로 이어 함께 리턴한다
+#|         return "오탐 종료", "신뢰 IP 에서 온 IP 관련 규칙뿐이라 정상 접속으로 봄"
     return "기본", "플레이북 기본 절차대로 처리함"                          # 어느 경우도 아니면 기본 경로로 보낸다
 
 
@@ -133,7 +140,7 @@ def apply_route(incident, route, reason, incident_log):                     # �
 
 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실습 1-3의 `enrichment.py` 가 같은 폴더에 있어야 합니다.
 
-```python
+```python exercise
 from incident import load_json, INCIDENTS_PATH                      # 실습 1-2 의 incident.py 에서 함수를 불러온다
 from enrichment import enrich_incident                              # 실습 1-3에서 만든 함수를 불러온다
 from routing import decide_route, apply_route                       # 방금 만든 함수를 불러온다
@@ -150,8 +157,10 @@ for incident in incidents:                                          # 인시던�
     enrich_incident(incident, users_info, source_ips, trusted_ips)  # 맥락을 붙인다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 8. decide_route(incident) 가 리턴한 두 값을 route 와 reason 에 한 번에 받는다
+#|     route, reason = decide_route(incident)
     apply_route(incident, route, reason, incident_log)              # 경로를 적용하고 기록한다
     # 9. route_counts[route] 에 route_counts[route] + 1 을 담는다 (그 경로의 건수를 1 늘린다)
+#|     route_counts[route] = route_counts[route] + 1
     print(incident["id"], incident["entity"], incident["grade"], "->", route, "·", reason, "(상태: " + incident["status"] + ")")  # 한 줄로 출력한다
 
 print("--- 단계 2: 경로별 건수")                                    # 단계 2 시작을 알리는 줄

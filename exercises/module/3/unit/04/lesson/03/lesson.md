@@ -98,7 +98,7 @@ source:
 
 <h3><code>revoke_approve.py</code></h3>
 
-```python
+```python exercise
 from config_loader import load_json                              # Unit 1 핵심 준비의 안전한 읽기 함수를 불러온다
 
 
@@ -125,6 +125,7 @@ def needs_approval(plan, sensitive):                             # 계획 한 �
     is_sensitive = plan["permission"] in sensitive               # 권한이 민감한 권한 리스트에 있는지(True 또는 False)
     is_big_impact = plan["impact"] >= 2                          # 영향이 2건 이상인지(True 또는 False)
     # ① is_sensitive 이거나 is_big_impact 이면 True 가 되도록 리턴한다 (or)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     return is_sensitive or is_big_impact
 
 
 def mark_approvals(plans, sensitive, decisions):                 # 계획 리스트 · 민감한 권한 리스트 · 승인 결정 딕셔너리를 받는 함수
@@ -136,6 +137,7 @@ def mark_approvals(plans, sensitive, decisions):                 # 계획 리스
         item = plan.copy()                                       # 원래 계획은 바꾸지 않고 복사한다
         key = plan_key(plan)                                     # 승인 결정을 찾는 「사용자:권한」 문자열을 만든다
         # ② decisions 에서 key 의 결정을 꺼내 decision 에 담는다 (.get · 없으면 None)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+#|         decision = decisions.get(key)
         needs = needs_approval(plan, sensitive)                  # 승인이 필요한 계획인지 알아본다(True 또는 False)
         if not needs:                                            # 승인이 필요하지 않으면
             item["approval"] = "승인 불필요"                     # 바로 회수할 수 있다
@@ -249,7 +251,7 @@ print(counts)                                                    # 승인 상태
 
 7. 실습 4-2까지 마친 뒤 [문제 해결 과정을 블로그에 기록하기](__SITE__/exercises/module/3/unit/4/lesson/10/page/1)에서 승인 기준과 판단 근거를 함께 정리합니다.
 
-**확인** — 다시 실행했을 때 단계 2가 `{'승인 불필요': 5, '승인됨': 2, '승인 대기': 1}` 이고, 「승인 대기」 줄이 `junho SALES:CHANGE <- 예외 2번` 이면 성공입니다. 안 나오면 아래의 실습 4-1 정답 펼침과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+**확인** — 다시 실행했을 때 단계 2가 `{'승인 불필요': 5, '승인됨': 2, '승인 대기': 1}` 이고, 「승인 대기」 줄이 `junho SALES:CHANGE <- 예외 2번` 이면 성공입니다. 안 나오면 실습 4-1 하단 바의 ‘정답 보기’와 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 
 글감과 연결되는 입력이나 출력 한 줄을 골라 이번 유닛의 블로그 초안에 남깁니다.

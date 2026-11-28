@@ -134,7 +134,7 @@ False
 
 <h3><code>conditional.py</code></h3>
 
-```python
+```python exercise
 from config_loader import load_json                              # M3 Unit 1에서 만든 안전한 설정 읽기 함수를 불러온다
 from policy import evaluate_access                               # 실습 1-3의 기본 판정 함수를 불러온다
 
@@ -153,8 +153,11 @@ def is_work_time(rule, now):                                     # 조건 한 �
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. rule["hours"] 를 start_hour, end_hour 두 이름으로 받는다
+#|     start_hour, end_hour = rule["hours"]
     # 2. now.hour 를 hour 에 담는다
+#|     hour = now.hour
     # 3. start_hour <= hour < end_hour 의 결과(True 또는 False)를 리턴한다
+#|     return start_hour <= hour < end_hour
 
 
 def is_allowed_network(rule, network):                           # 조건 한 건과 접속 위치를 받는 함수
@@ -163,7 +166,9 @@ def is_allowed_network(rule, network):                           # 조건 한 �
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. rule["networks"] 를 allowed_networks 에 담는다
+#|     allowed_networks = rule["networks"]
     # 5. network 가 allowed_networks 안에 있는지(in)의 결과(True 또는 False)를 리턴한다
+#|     return network in allowed_networks
 
 
 def evaluate_conditional(user, resource, action, network, now, rules):   # 사용자 · 자원 · 행위 · 접속 위치 · 요청 시각(datetime) · 조건 리스트를 받는 함수
@@ -179,9 +184,13 @@ def evaluate_conditional(user, resource, action, network, now, rules):   # 사�
         if rule["permission"] == permission:                     # 이 권한에 걸린 조건이면
             # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
             # 6. is_work_time(rule, now) 가 거짓이면 (if not …)
+#|             if not is_work_time(rule, now):
             # 7.   False, "업무 시간 밖" 을 리턴한다
+#|                 return False, "업무 시간 밖"
             # 8. is_allowed_network(rule, network) 가 거짓이면 (if not …)
+#|             if not is_allowed_network(rule, network):
             # 9.   False, "허용되지 않은 접속 위치" 를 리턴한다
+#|                 return False, "허용되지 않은 접속 위치"
     return True, reason                                          # 어긋나는 조건이 없으면 기본 판정의 이유로 허용한다
 ```
 

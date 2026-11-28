@@ -257,23 +257,13 @@ button { color: inherit; }
   border-radius: 8px;
   scroll-margin-block-start: 72px;
 }
-.exercise-headings .exercise-answer > summary { cursor: pointer; font-weight: 700; }
-.exercise-headings .exercise-answer[open] { border-inline-start: 4px solid #167054; background: #edf8f3; color: #193e32; }
-.exercise-headings .exercise-answer[open] > summary { color: #165d47; }
-.exercise-headings .exercise-answer > summary:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.exercise-headings .exercise-answer:not([hidden]) { border-inline-start: 4px solid #167054; background: #edf8f3; color: #193e32; }
+.exercise-headings .exercise-answer > h2:first-child { color: #165d47; }
 .page-nav .page-answer-toggle[aria-expanded="true"] { background: #165d47; border-color: #165d47; color: white; }
 
-.net-prose [data-answer-line]:not(:empty) {
+.exercise-headings:has(.page-answer-toggle[aria-expanded="true"]) [data-answer-line] {
   scroll-margin-block-start: 5rem;
   background: #d6f3e5;
   color: #124632;
   font-weight: 700;
 }
-.net-prose .page-answer-toggle {
-  padding: .4rem .85rem;
-  border: 1px solid var(--control-border);
-  border-radius: 6px;
-  background: var(--surface);
-  cursor: pointer;
-}
-.net-prose .page-answer-toggle[aria-expanded="true"] { background: #165d47; color: white; }

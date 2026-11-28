@@ -108,7 +108,7 @@ print(alert["minute"] + 240)                       # 243  · 숫자끼리 + 는 
 
 알림으로 티켓을 생성합니다. 이 파일은 나중에 「선택 과제용 티켓 병합·알림 함수 준비」 레슨의 `ticket_merge.py` 와 Unit 5 실습 5-1이 가져다 씁니다(import). 직접 쓰는 곳은 `make_ticket` 의 ① · ② 입니다.
 
-```python
+```python exercise
 DEFAULT_NEXT_STEP = "담당자가 알림 내용을 읽고 필요한 일을 정한다"                      # 알림 상태를 모를 때 쓰는 다음 할 일
 MANUAL_STEP = "조치가 확인되지 않았다. 담당자가 직접 계정이나 IP 상태를 보고 조치한다"  # 조치 확인에 실패한 티켓의 다음 할 일
 NEXT_STEPS = {                                                                          # 알림 상태마다 담당자가 할 다음 일
@@ -152,7 +152,9 @@ def make_ticket(alert, ticket_no, rules, next_steps):                           
     """
     sla_table = rules["sla_minutes"]                                                    # 등급마다 정한 응답 기한(분) 표
     # ① sla_table[alert["grade"]] 를 sla_minutes 에 저장한다 (이 알림 등급의 응답 기한)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     sla_minutes = sla_table[alert["grade"]]
     # ② alert["minute"] + sla_minutes 를 sla_due 에 저장한다 (응답해야 하는 시각)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     sla_due = alert["minute"] + sla_minutes
     needs_manual = has_failed_action(alert["done"])                                     # 조치 확인에 실패한 내역이 있는지
     next_step = find_next_step(alert, next_steps)                                       # 다음 할 일 문장
     if needs_manual:                                                                    # 확인 실패가 있으면
@@ -261,7 +263,7 @@ for ticket in tickets:                                                          
 
 <!-- answer: 08|실습 3-2 정답 -->
 
-**확인** — 단계 2 에 티켓 11줄이 나오고 TCK-1 의 기한이 `15 분`, TCK-2 의 기한이 `243 분` 이며, 단계 4 가 `직접 확인이 필요한 티켓 1 건` 과 TCK-7 한 줄이면 성공입니다. 출력이 다르면 이 실습 바로 아래의 정답 펼침과 비교합니다.
+**확인** — 단계 2 에 티켓 11줄이 나오고 TCK-1 의 기한이 `15 분`, TCK-2 의 기한이 `243 분` 이며, 단계 4 가 `직접 확인이 필요한 티켓 1 건` 과 TCK-7 한 줄이면 성공입니다. 출력이 다르면 이 실습 바로 하단 바의 ‘정답 보기’와 비교합니다.
 
 ## 실습 3-2 정리
 

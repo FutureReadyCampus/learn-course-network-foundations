@@ -93,7 +93,7 @@ risk_assessment.py   make_risk_table        : 표로 바꾸고 위험 점수 열
 
 - 2번과 3번은 `if` 한 줄과 그 안의 `return` 한 줄입니다. 그 아래 미리 채운 `if score >= 3:` 은 2번과 같은 들여쓰기입니다.
 
-```python
+```python exercise
 import pandas as pd                                                         # 표를 다루기 위해 판다스를 pd 라는 이름으로 불러온다
 
 REQUIRED_CONTROLS = {                                                       # 위험 등급마다 반드시 있어야 하는 통제
@@ -110,6 +110,7 @@ def make_risk_table(risks):                                                 # �
     table = pd.DataFrame(risks)                                             # 위험 리스트를 표로 바꾼다 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. table["impact"] * table["likelihood"] 를 table["score"] 에 담는다 (위험 점수)
+#|     table["score"] = table["impact"] * table["likelihood"]
     return table                                                            # 점수 열을 더한 표를 리턴한다 — 미리 채운 줄
 
 
@@ -119,7 +120,9 @@ def risk_level(score):                                                      # �
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 2. score 가 6 이상이면 (if, >=)
+#|     if score >= 6:
         # 3. "높음" 을 리턴한다
+#|         return "높음"
     if score >= 3:                                                          # 3 이상이면 — 미리 채운 줄
         return "보통"                                                       # 보통을 리턴한다 — 미리 채운 줄
     return "낮음"                                                           # 그보다 낮으면 낮음을 리턴한다 — 미리 채운 줄
@@ -134,7 +137,9 @@ def find_missing_controls(level, controls):                                 # �
     for control in required:                                                # 있어야 하는 통제를 하나씩 꺼낸다 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 4. control 이 controls 안에 없으면 (if, not in)
+#|         if control not in controls:
             # 5. missing 에 control 을 추가한다 (append)
+#|             missing.append(control)
     return missing                                                          # 빠진 통제 리스트를 리턴한다 — 미리 채운 줄
 
 
@@ -144,10 +149,12 @@ def assess_risks(table):                                                    # �
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 6. table.sort_values("score", ascending=False) 를 sorted_table 에 담는다 (점수가 큰 것부터)
+#|     sorted_table = table.sort_values("score", ascending=False)
     rows = []                                                               # 평가 결과를 모을 빈 리스트 — 미리 채운 줄
     for row in sorted_table.to_dict("records"):                             # 표를 딕셔너리 리스트로 바꿔 하나씩 꺼낸다 — 미리 채운 줄
         level = risk_level(row["score"])                                    # 점수로 등급을 정한다 — 미리 채운 줄
         # 7. find_missing_controls(level, row["controls"]) 의 결과를 missing 에 담는다
+#|         missing = find_missing_controls(level, row["controls"])
         row["level"] = level                                                # 등급을 딕셔너리에 넣는다 — 미리 채운 줄
         row["missing"] = missing                                            # 빠진 통제를 딕셔너리에 넣는다 — 미리 채운 줄
         rows.append(row)                                                    # 평가 결과를 추가한다 — 미리 채운 줄
@@ -183,7 +190,7 @@ def make_assessment_lines(rows):                                            # �
 
 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
-```python
+```python exercise
 from incident import load_json                                                             # Unit 1 파일의 JSON 읽기 함수를 불러온다
 from risk_assessment import make_risk_table, assess_risks, make_assessment_lines           # 방금 만든 리스크 평가 함수를 불러온다
 
@@ -195,12 +202,14 @@ print("--- 단계 1: 불러온 자동 조치", len(risks), "개")               
 table = make_risk_table(risks)                                                             # 표로 바꾸고 점수 열을 더한다
 # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
 # 8. assess_risks(table) 의 결과를 rows 에 담는다
+#| rows = assess_risks(table)
 print("--- 단계 2: 점수가 큰 조치부터")                                                    # 단계 2 시작을 알리는 줄
 gap_count = 0                                                                              # 빠진 통제가 있는 조치 수 : 처음에는 0
 for row in rows:                                                                           # 평가 결과를 하나씩 꺼낸다
     print(row["action"], "· 점수", row["score"], "·", row["level"], "· 빠진 통제", row["missing"])  # 조치 한 줄을 출력한다
     if row["missing"] != []:                                                               # 빠진 통제가 있으면
         # 9. gap_count 에 gap_count + 1 을 담는다 (1 늘린다)
+#|         gap_count = gap_count + 1
 
 lines = make_assessment_lines(rows)                                                        # 문서의 줄 리스트를 만든다
 text = "\n".join(lines) + "\n"                                                             # 줄 리스트를 줄바꿈으로 이어 한 문자열로 만든다
