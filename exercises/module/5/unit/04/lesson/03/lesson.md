@@ -53,7 +53,7 @@ false_positive.py   list_changes           : 바뀐 기록이면 (①) 추가한
 실행 파일           exercise4-2_run.py       : 신고마다 처리하고 결과를 모은다 (미리 채움)
 ```
 
-#### 문법 상자 · 직접 쓰는 곳의 모양 (예시 값 · 읽기만 합니다)
+<h2>문법 상자 · 직접 쓰는 곳의 모양 (예시 값 · 읽기만 합니다)</h2>
 
 ```python
 record = {"before": "잠기지 않음", "after": "잠김"}   # 예시 값
@@ -69,24 +69,28 @@ print(len(found))                                   # 1
 
 ## 실습 4-2 · 오탐 신고 처리와 롤백 확인
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>롤백 함수는 있지만, 무엇이 바뀌었는지 확인하고(영향 확인), 실제로 복원됐는지 점검하고(복구 확인), 같은 오탐의 재발을 막을 규칙 조정을 제안하는 절차가 없습니다</mark>.
 - **만드는 것**: 영향 확인 · 복구 확인 · 규칙 조정 제안 · 신고 한 건 처리(`false_positive.py`), 신고마다 처리하고 저장하기(`exercise4-2_run.py`).
 - **실행하면**: <mark>단계 1: 신고 수와 처리 전 상태, 단계 2: 신고마다 영향 확인 · 되돌리기 · 복구 확인 · 규칙 조정 제안, 단계 3: 처리 뒤 상태, 단계 4: 저장한 파일이 나옵니다.</mark>
 
-**할 일**
+<h2>할 일</h2>
 
 1. `soar_response` 폴더에 데이터 파일 세 개(`fp_state.json` · `fp_log.json` · `fp_reports.json`)와 코드 파일 두 개(`false_positive.py` · `exercise4-2_run.py`)를 만들어 붙여 넣습니다.
 2. `false_positive.py` 에서 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
 3. 실행해서 단계 2 · 3 을 읽습니다.
 
-**`fp_state.json`** — 오탐을 처리하기 전 연습용 시스템 상태입니다. Unit 2 실습 2-1 의 `containment_state.json` 과 같은 모양입니다. `junho` 는 이 실습을 시작하기 전부터 잠겨 있던 계정입니다. 연습용 시스템(실제 서버를 대신하는 시스템)의 시계(`clock`)는 0 에서 움직이지 않습니다. 끝난 차단을 해제하는 `ip_actions.py` 의 함수 `expire_blocks` 도 호출하지 않습니다. 그래서 `block_expiry`(차단이 끝나는 시각)가 있어도 차단이 자동으로 풀리지 않습니다.
+<h3><code>fp_state.json</code></h3>
+
+오탐을 처리하기 전 연습용 시스템 상태입니다. Unit 2 실습 2-1 의 `containment_state.json` 과 같은 모양입니다. `junho` 는 이 실습을 시작하기 전부터 잠겨 있던 계정입니다. 연습용 시스템(실제 서버를 대신하는 시스템)의 시계(`clock`)는 0 에서 움직이지 않습니다. 끝난 차단을 해제하는 `ip_actions.py` 의 함수 `expire_blocks` 도 호출하지 않습니다. 그래서 `block_expiry`(차단이 끝나는 시각)가 있어도 차단이 자동으로 풀리지 않습니다.
 
 <pre class="copyable"><code>{"locked_users": ["junho", "dami", "jiwoo"], "blocked_ips": ["198.51.100.90"], "block_expiry": {"198.51.100.90": 120}, "clock": 0, "sessions": {"dami": [], "jiwoo": [], "junho": [], "hana": ["S-601"]}}
 </code></pre>
 
-**`fp_log.json`** — 자동 조치 기록 7건입니다. Unit 2 실습 2-1 의 `containment_log.json` 과 같은 모양입니다. 마지막 줄(`INC-205`)은 다른 인시던트의 기록이라 오늘 신고와 무관합니다(`find_incident_records` 가 신고된 인시던트의 기록만 골라 냅니다).
+<h3><code>fp_log.json</code></h3>
+
+자동 조치 기록 7건입니다. Unit 2 실습 2-1 의 `containment_log.json` 과 같은 모양입니다. 마지막 줄(`INC-205`)은 다른 인시던트의 기록이라 오늘 신고와 무관합니다(`find_incident_records` 가 신고된 인시던트의 기록만 골라 냅니다).
 
 <pre class="copyable"><code>[
   {"action": "계정 잠금", "target": "dami", "incident": "INC-201", "before": "잠기지 않음", "after": "잠김", "reason": "퇴사한 계정의 서버 요청"},
@@ -99,7 +103,9 @@ print(len(found))                                   # 1
 ]
 </code></pre>
 
-**`fp_reports.json`** — 오탐 신고 2건입니다. `reported_at` 은 신고를 받은 시각(분)입니다.
+<h3><code>fp_reports.json</code></h3>
+
+오탐 신고 2건입니다. `reported_at` 은 신고를 받은 시각(분)입니다.
 
 <pre class="copyable"><code>[
   {"incident": "INC-301", "reported_at": 20, "reporter": "영업팀장", "reason": "jiwoo 는 출장 중이고 출장 등록이 되어 있다"},
@@ -107,7 +113,9 @@ print(len(found))                                   # 1
 ]
 </code></pre>
 
-**`false_positive.py`** — 오탐 처리 함수 모음입니다. 응용 4-5 도 가져와 사용(import)합니다. Unit 3 파일 `rollback.py` 와 그 파일이 불러 쓰는 Unit 2 · 3 파일이 같은 폴더에 있어야 합니다(「시작하기」 레슨에서 확인). 직접 쓰는 곳은 `list_changes` 의 ① · ② 두 줄이고, 나머지는 미리 채운 줄입니다.
+<h3><code>false_positive.py</code></h3>
+
+오탐 처리 함수 모음입니다. 응용 4-5 도 가져와 사용(import)합니다. Unit 3 파일 `rollback.py` 와 그 파일이 불러 쓰는 Unit 2 · 3 파일이 같은 폴더에 있어야 합니다(「시작하기」 레슨에서 확인). 직접 쓰는 곳은 `list_changes` 의 ① · ② 두 줄이고, 나머지는 미리 채운 줄입니다.
 
 - `make_tuning_note` 는 `for` 안에서 `return` 합니다. `return` 하면 그 자리에서 함수가 끝나므로, IP 차단 기록을 하나 찾으면 바로 제안을 돌려줍니다. IP 차단 기록이 하나도 없으면 `for` 를 다 돈 뒤 아래 줄로 내려가, 첫 번째 기록(`changes[0]`)으로 계정 예외를 제안합니다.
 
@@ -181,7 +189,9 @@ def handle_false_positive(report, log, state, now):                             
     return result                                                                    # 처리 결과를 리턴한다 — 미리 채운 줄
 ```
 
-**`exercise4-2_run.py`** — 직접 쓰는 줄이 없습니다. 그대로 붙여 넣습니다. 두 번째 줄은 함수뿐 아니라 파일 맨 위에 적은 변수 `RECOVERY_LIMIT` 도 같은 `import` 로 불러옵니다.
+<h3><code>exercise4-2_run.py</code></h3>
+
+직접 쓰는 줄이 없습니다. 그대로 붙여 넣습니다. 두 번째 줄은 함수뿐 아니라 파일 맨 위에 적은 변수 `RECOVERY_LIMIT` 도 같은 `import` 로 불러옵니다.
 
 ```python
 from incident import load_json, save_json                                                   # Unit 1 파일의 JSON 읽기 · 쓰기 함수를 불러온다
@@ -218,7 +228,7 @@ print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.
 - 주석 줄은 그대로 두고, **각 주석 바로 아래 줄**에 씁니다. ① 은 `for` 안쪽의 `if` 줄이라 8칸, ② 는 그 `if` 안쪽 줄이라 12칸에서 시작합니다.
 - 바로 아래 `find_not_recovered` 의 미리 채운 `if …:` 와 `remaining.append(target)` 두 줄이 ① · ② 와 같은 모양입니다.
 
-**직접 쓰는 곳**
+<h3>직접 쓰는 곳</h3>
 
 | 빈칸 | 쓰는 줄 | 들여쓰기 |
 |---|---|---|
@@ -229,7 +239,7 @@ print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.
 - ① 확인: ① 만 쓰고 실행하면 `IndentationError: expected an indented block after 'if' statement` 가 나옵니다. ② 를 아직 안 써서 나는 오류이니 정상입니다. 막히면: 문법 상자의 `if record["before"] != record["after"]:` 를 그대로 8칸에 씁니다.
 - ② 확인: ② 까지 쓰고 실행하면 `INC-301` 의 영향 확인이 ` - 영향 확인: ['세션 종료 jiwoo', '계정 잠금 jiwoo']` 로 나오면 성공입니다. `IP 차단 198.51.100.120` 이 섞여 나오면 ① 의 `if` 줄을 썼는지, `!=` 인지 봅니다. 막히면: 문법 상자의 `found.append(record)` 에서 `found` 자리에 `changes` 를 씁니다.
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 파일 다섯 개 `fp_state.json` · `fp_log.json` · `fp_reports.json` · `false_positive.py` · `exercise4-2_run.py` 를 만듭니다. 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고 파일 이름을 그대로 적은 뒤, 코드 상자의 내용을 붙여 넣고 저장합니다(`Ctrl + S`).
 

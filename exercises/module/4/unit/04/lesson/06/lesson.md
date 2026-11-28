@@ -38,7 +38,7 @@ source:
 
 **먼저 `problems.json` 을 만듭니다.** 사람이 조사해서 확인한 11/2 의 진짜 문제 5개입니다. `anomaly_detection` 폴더에 만들고, 같은 이름의 파일이 이미 있으면 아래 내용으로 덮어씁니다. 응용 4-3에서도 이 파일을 씁니다.
 
-**`problems.json`**
+<h2><code>problems.json</code></h2>
 
 ```
 [
@@ -74,7 +74,7 @@ source:
 - `problems.json` 의 진짜 문제 P1 ~ P5 중 알림이 나온 것은 P1 · P2 · P3 이고, <mark>P4 · P5 는 알림이 나지 않았습니다(미탐)</mark>.
 - 오탐이라고 해서 알림을 만든 규칙이 잘못 작동한 것은 아닙니다. 규칙대로 찾았지만 조사해 보니 문제가 아니었다는 뜻입니다.
 
-**판다스 문법 상자 — 리스트에 없는 것 찾기 `~열.isin(리스트)`**
+<h2>판다스 문법 상자 — 리스트에 없는 것 찾기 <code>~열.isin(리스트)</code></h2>
 
 **<mark>`~열.isin(리스트)`</mark> 는 열의 값이 리스트 안에 없으면 `True`, 있으면 `False` 를 줍니다**
 
@@ -158,7 +158,7 @@ print(unchecked_df)              # 아직 확인하지 않은 사용자의 기�
 - 읽는 법: 두 번째 출력은 `isin` 의 결과이고, <mark style="background:#bde3ff">gaeun · seoyeon 의 행이 `True`</mark> 입니다. 세 번째 출력은 그 결과를 `~` 로 뒤집은 것이라 <mark style="background:#bde3ff">dami · junho 의 행이 `True`</mark> 입니다. 네 번째 출력은 그 `True` 인 세 행만 남은 표입니다.
 - `~is_checked` 는 「리스트에 없다」는 뜻입니다. 이번 실습에서는 이 방식으로 「알림이 하나도 나지 않은 진짜 문제」를 찾습니다.
 
-**판다스 문법 상자 — `True` 개수 세기에 쓰는 `.sum()` (복습)**
+<h2>판다스 문법 상자 — <code>True</code> 개수 세기에 쓰는 <code>.sum()</code> (복습)</h2>
 
 **<mark>`열.sum()`</mark> 은 열의 값을 모두 더합니다. `True · False` 열에 쓰면 `True` 의 개수를 셉니다(`True` 는 1, `False` 는 0)**
 
@@ -184,7 +184,7 @@ print(blocked_count)                                        # 차단된 기록 �
 
 - 읽는 법: 출력 <mark style="background:#bde3ff">`2`</mark> 는 `True` 가 두 개(dami 의 행 두 개)라는 뜻입니다. `.sum()` 은 괄호까지 써야 합니다.
 
-**한 장 정리**
+<h2>한 장 정리</h2>
 
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
@@ -205,7 +205,7 @@ print(blocked_count)                                        # 차단된 기록 �
 
 ## 응용 4-2 · 알림의 오탐과 미탐 세기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>실습 4-2에서 오탐 수는 셌지만, 알림이 나지 않은 진짜 문제(미탐)가 몇 개인지는 세어 보지 않았습니다</mark>.
 - **그래서 만드는 것**: `evaluation.py` 입니다.
@@ -215,12 +215,12 @@ print(blocked_count)                                        # 차단된 기록 �
 - **실행하면**: <mark>단계 1: 알림 수, 단계 2: 진짜 문제였던 알림 수, 단계 3: 오탐 수와 규칙별 개수, 단계 4: 놓친 진짜 문제가 나옵니다.</mark>
 - **현업에서는**: 알림을 낸 규칙마다 오탐 수를 세어 두면 어느 규칙부터 고칠지 정할 수 있고, 미탐은 새 규칙이 필요하다는 신호입니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. `evaluation.py` · `apply4-2_run.py` 두 파일을 만들고, `evaluation.py` 의 세 함수에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>알림 수</mark>(단계 1), <mark>진짜 문제였던 알림 수</mark>(단계 2), <mark>오탐</mark>(단계 3), <mark>미탐</mark>(단계 4)을 읽습니다.
 
-**`evaluation.py`**
+<h3><code>evaluation.py</code></h3>
 
 ```python
 import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
@@ -284,7 +284,9 @@ def count_real_alerts(alerts):                        # 알림 표를 받는 함
 - 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
 - 채우기 전에 실행하면 `NameError: name 'real_alert_count' is not defined` 오류가 납니다. 7번을 아직 안 썼기 때문입니다.
 
-**`apply4-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `len(표)` 는 표의 행 수입니다.
+<h3><code>apply4-2_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `len(표)` 는 표의 행 수입니다.
 
 ```python
 from evaluation import load_table, pick_real_alerts, find_false_alarms, find_missed, count_real_alerts, ALERTS_PATH, PROBLEMS_PATH  # 방금 만든 함수를 불러온다
@@ -316,7 +318,7 @@ for problem in missed_list:                           # 놓친 문제를 하나�
     print("놓친 문제:", problem["id"], problem["who"], problem["what"])  # 문제 번호 · 대상 · 내용을 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `evaluation.py` 와 `apply4-2_run.py` 를 만들어 위 코드를 각각 붙여 넣고 저장합니다.
 2. **[VS Code]** `evaluation.py` 에서 <mark>직접 쓰는 곳 일곱 군데를 씁니다</mark>. 위 판다스 문법 상자와 「알림 7개와 진짜 문제 5개」 쪽의 표를 참고해 씁니다. 막히면 아래 「응용 4-2 정리」를 봅니다.

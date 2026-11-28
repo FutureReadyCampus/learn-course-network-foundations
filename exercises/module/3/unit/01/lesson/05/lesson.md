@@ -87,20 +87,22 @@ source:
 
 ## 실습 1-3 · 최종 판정 함수와 아홉 건 읽기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - 지금은 역할을 확인하는 함수(`check_permission`)와 예외를 확인하는 함수(`find_exception`)가 따로 있습니다. 정산 포털 개발팀은 요청 하나를 넣으면 「허용인지 거부인지」와 「이유」가 한 번에 나오는 함수 하나를 원합니다. 두 확인을 3.1 의 순서대로 합칩니다.
 - 보안 담당은 하루가 끝나면 세 가지를 알고 싶어 합니다. 오늘 예외로 허용된 요청이 몇 건인지, 예외 번호마다 몇 번 쓰였는지, 이미 끝난 예외로 다시 시도한 요청이 있는지입니다. 오늘 요청 아홉 건을 그 시각대로 판정하면서 이 숫자를 셉니다.
 - 실제 회사에서는 이 집계(건수를 모아 세는 일)를 하루가 끝날 때 자동으로 만들어 보안 담당에게 보냅니다.
 - 오늘 만들 `evaluate_access` 처럼 여러 규칙을 정해진 순서로 합쳐 결과 하나를 내는 부분이, 실습 1-2에서 본 **판단 지점**입니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. 「예외 판정 준비」 레슨의 세 파일(`config/exceptions.json` · `exception_policy.py` · `config_loader.py`)이 있는지 확인합니다.
 2. `policy.py` 를 만들고 `evaluate_access` 의 `# ←` 두 곳(① · ②)을 한 줄씩 채웁니다.
 3. `exercise1-3_run.py` 를 실행해서 <mark>아홉 건의 결과</mark>, <mark>만료 뒤 시도</mark>, <mark>예외 번호별 사용 건수</mark>를 읽습니다.
 
-**준비** — `policy.py` 는 「예외 판정 준비」의 `exception_policy.py` 를 불러오고, 그 파일은 `config/exceptions.json` 을 읽습니다. 터미널이 `…/access_control` 위치인지 확인한 뒤 파일이 있는지 봅니다.
+<h2>준비</h2>
+
+`policy.py` 는 「예외 판정 준비」의 `exception_policy.py` 를 불러오고, 그 파일은 `config/exceptions.json` 을 읽습니다. 터미널이 `…/access_control` 위치인지 확인한 뒤 파일이 있는지 봅니다.
 
 ```bash
 ls
@@ -109,7 +111,7 @@ ls config
 
 - `exception_policy.py` 와 `config/exceptions.json` 이 보이지 않으면 「예외 판정 준비」 레슨에서 먼저 만듭니다. 없는 채로 실행하면 `ModuleNotFoundError: No module named 'exception_policy'` 나 `FileNotFoundError: … 'config/exceptions.json'` 오류가 납니다.
 
-**`policy.py`**
+<h3><code>policy.py</code></h3>
 
 ```python
 from rbac import check_permission                                # 실습 1-2에서 만든 역할 판정 함수를 불러온다
@@ -138,7 +140,9 @@ def evaluate_access(user, resource, action, now):                # 사용자 · 
     return False, "권한 없음"                                      # 둘 다 없으면 거부한다
 ```
 
-**`exercise1-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 이 파일은 오늘 요청 아홉 건을 그 시각대로 `evaluate_access` 로 판정합니다. 그리고 3.2 의 순서로 방식별 건수와 예외 번호별 사용 건수를 세고, 예외가 끝난 뒤의 시도를 알립니다.
+<h3><code>exercise1-3_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 이 파일은 오늘 요청 아홉 건을 그 시각대로 `evaluate_access` 로 판정합니다. 그리고 3.2 의 순서로 방식별 건수와 예외 번호별 사용 건수를 세고, 예외가 끝난 뒤의 시도를 알립니다.
 
 ```python
 from datetime import datetime                                    # 요청 시각을 만드는 데 쓴다
@@ -199,7 +203,9 @@ print(counts)                                                    # 방식별 건
 print("예외 사용", used)                                          # 예외 번호별 사용 건수를 출력한다
 ```
 
-**직접 쓰는 곳** — `policy.py` 의 3번 아래 두 줄입니다. 주석 줄은 그대로 두고 각 주석 바로 아래 줄에 씁니다.
+<h3>직접 쓰는 곳</h3>
+
+`policy.py` 의 3번 아래 두 줄입니다. 주석 줄은 그대로 두고 각 주석 바로 아래 줄에 씁니다.
 
 | 빈칸 | 쓰는 줄 | 들여쓰기 |
 |---|---|---|
@@ -210,7 +216,7 @@ print("예외 사용", used)                                          # 예외 �
 - ② 확인: ② 까지 쓰고 실행하면 `10:00 dami SALES QUERY -> False 퇴사한 계정` 이 나오면 성공입니다. `True 예외 3번` 이 나오면 줄 맨 앞에 `return` 이 있는지 봅니다. 막히면: 2번의 `return True, "역할 권한"` 과 같은 모양이고, `True` 가 `False` 로, 이유가 `reason` 으로 바뀝니다.
 - 채우기 전에 실행해도 오류 없이 돌아갑니다. 다만 퇴사자 `dami` 가 `True 예외 3번` 으로 허용되고, 마지막 줄 「예외 사용」에 `'예외 3번': 1` 이 섞여 나옵니다. 3번이 빠지면 퇴사자도 예외로 열린다는 것을 보여 주는 결과입니다.
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 두 파일을 만들고 각각 붙여 넣습니다.
    - 만드는 방법은 실습 1-2 의 순서 1번과 같습니다. VS Code 왼쪽 목록에서 `access_control` 폴더를 오른쪽 클릭 › **New File** 로 `access_control` 바로 아래에 만듭니다. 만들 파일 이름은 차례로 `policy.py` · `exercise1-3_run.py` 입니다. 붙여 넣을 내용은 위 코드 상자입니다.

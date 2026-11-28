@@ -49,7 +49,7 @@ source:
 - 이번에 새로 하는 것은 두 점검 결과를 권한 한 건마다 하나의 `reasons` 리스트로 합치는 것입니다.
   - 복사해서 키를 추가하는 `entry.copy()` 와 문자열로 이어 붙인 키로 찾는 방법은 실습 3-2 의 `review_unused.py` 와 같습니다.
 
-**식별 키**
+<h2>식별 키</h2>
 
 - 현황의 **권한 한 건**(`entry`)은 사용자 한 명의 권한 하나입니다.
   - `stale` 과 `unused` 의 권한은 현황의 권한을 **복사해서 `reason` 이나 `last_used` 키를 추가한 것**이라, 현황의 원래 권한과 `==`(두 값이 똑같은지 묻는 기호)로 비교하면 서로 다르다고 나옵니다. 키가 하나 더 붙었기 때문입니다.
@@ -68,7 +68,7 @@ source:
 - 이번 실습의 데이터에서는 이 두 건의 점검 결과가 같아서(둘 다 「퇴사한 계정」) `source` 가 없어도 출력은 같습니다.
   - 하지만 한쪽 권한만 만료되는 날처럼 두 건의 결과가 다르면, `source` 가 없을 때 한쪽 이유가 다른 쪽 권한에도 붙어 후보가 잘못 나옵니다.
 
-**미리 채워 둔 함수와 리포트의 이름들**
+<h2>미리 채워 둔 함수와 리포트의 이름들</h2>
 
 `reason` 과 `reasons` 는 한 글자 차이입니다. 후보에는 `reasons` 를 씁니다.
 
@@ -97,7 +97,7 @@ source:
 
 ## 응용 3-2 · 과다권한 후보 리포트 만들기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: 규칙에 걸린 권한과 90일 넘게 안 쓴 권한이 따로 출력됩니다.
   - 같은 권한이 두 점검에 모두 걸릴 수도 있어서, 담당자가 둘을 합쳐 「후보가 모두 몇 건이고 왜 걸렸나」를 직접 정리해야 합니다.
@@ -108,12 +108,12 @@ source:
   - 지금 시각은 `2026-10-29 14:00` 으로 고정합니다.
 - **현업에서는**: 접근 점검 도구도 여러 점검 결과를 한 장의 리포트로 합쳐 담당자에게 보냅니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. 이번 응용에서 만드는 `overprivilege.py` 의 내용을 모두 지우고 아래 골격으로 바꾼 뒤, `apply3-2_run.py` 를 새로 만듭니다. 그다음 `entry_key` · `make_stale_reason` · `make_unused_keys` · `collect_reasons` · `generate_report` 에서 직접 쓰는 곳 다섯 군데를 씁니다.
 2. 실행해서 <mark>리포트 요약과 후보</mark>(단계 1: 요약)와 <mark>후보가 아닌 권한</mark>(단계 2: 확인)을 읽습니다.
 
-**`overprivilege.py`**
+<h3><code>overprivilege.py</code></h3>
 
 ```python
 def entry_key(entry):                                            # 현황의 권한 한 건의 식별 키를 만드는 함수
@@ -204,7 +204,9 @@ def generate_report(access_list, stale, unused, days, generated_at):   # 현황 
 
 - 채우기 전에 실행해도 오류는 나지 않고 후보가 `0 건` 으로 나옵니다. 아직 이유를 모으지 않았기 때문입니다.
 
-**`apply3-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 3-1 · 3-2 와 `review_rules.py` 의 함수로 현황과 규칙 결과, 안 쓴 결과를 만든 뒤 `generate_report` 로 리포트를 만들어 출력합니다. 실행 파일의 `NOW.strftime(TIME_FORMAT)` 은 `strptime` 과 반대로, 시각을 `"2026-10-29 14:00"` 같은 문자열로 바꿉니다.
+<h3><code>apply3-2_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 3-1 · 3-2 와 `review_rules.py` 의 함수로 현황과 규칙 결과, 안 쓴 결과를 만든 뒤 `generate_report` 로 리포트를 만들어 출력합니다. 실행 파일의 `NOW.strftime(TIME_FORMAT)` 은 `strptime` 과 반대로, 시각을 `"2026-10-29 14:00"` 같은 문자열로 바꿉니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
@@ -241,7 +243,7 @@ for entry in access_list:                                        # 현황의 권
 print(names)                                                     # 후보가 아닌 권한을 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `overprivilege.py` 를 열어 내용을 모두 지우고 위 **`overprivilege.py`** 코드 상자의 골격을 붙여 넣고 저장합니다. 이어서 `access_control` 폴더를 오른쪽 클릭 › **New File** 로 `apply3-2_run.py` 를 만들어 붙여 넣고 저장합니다.
 

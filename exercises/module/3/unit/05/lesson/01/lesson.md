@@ -17,7 +17,7 @@ source:
 
 Unit 5는 Module 3 **접근통제 자동화**의 마지막 단계인 **결과 보고하기**입니다. 지금까지 권한을 정하고(Unit 1), 요청서로 주고(Unit 2), 안 쓰는 권한을 점검하고(Unit 3), 계획과 승인을 거쳐 거두었습니다(Unit 4). 이번 Unit에서는 그 결과가 **잘 지켜지고 있는지 매주 같은 기준으로 확인하고, 한 장짜리 주간 보고서로** 남깁니다. 주간 보고서는 일주일 동안 있었던 일을 숫자와 함께 한 장에 정리해, 책임자가 읽고 무엇을 처리할지 정하게 돕는 글입니다. 그리고 Module 3 전체를 상황별로 되짚어 정리합니다.
 
-**오늘의 계획 (약 2시간 40분)**
+<h2>오늘의 계획 (약 2시간 40분)</h2>
 
 | 단계 | 시간 | 할 일 |
 |---|---|---|
@@ -27,7 +27,7 @@ Unit 5는 Module 3 **접근통제 자동화**의 마지막 단계인 **결과 �
 | 글쓰기 | 20분 | 「오늘의 글 쓰기」에서 문제 해결 과정을 블로그에 기록 |
 
 
-**오늘 만들 것 세 가지**
+<h2>오늘 만들 것 세 가지</h2>
 
 | 레슨 | 만들 것 | 하는 일 |
 |---|---|---|
@@ -65,7 +65,9 @@ Unit 5는 Module 3 **접근통제 자동화**의 마지막 단계인 **결과 �
 4. 문제는 **할 일 → 순서**대로 하고, `[창 이름]` 이 지금 쓸 창입니다. 코드는 `# ←` 가 있는 번호 빈칸(① · ② …)만 한 줄씩 채우고, 막히면 빈칸마다 있는 힌트를 본 뒤 이 Unit 뒤쪽의 각 실습 바로 아래의 정답 펼침을 봅니다.
 5. **[VS Code]** 이번 Unit에서 쓸 데이터 파일 세 개를 만들어 아래 내용을 그대로 붙여 넣습니다. `access_control` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 아래 굵은 글씨의 **파일 이름을 그대로** 적습니다. `config/week_state.json` 처럼 `config/` 가 붙은 이름을 적으면 `config` 폴더 안에 만들어집니다(`config` 폴더가 없으면 함께 만들어집니다).
 
-**`config/week_state.json`** — 점검할 데이터입니다. 사용자 여섯 명 · 역할별 부서 · 예외 네 개가 들어 있습니다. `access_control` 폴더 안의 `config` 폴더에 `week_state.json` 으로 만들어집니다.
+<h2><code>config/week_state.json</code></h2>
+
+점검할 데이터입니다. 사용자 여섯 명 · 역할별 부서 · 예외 네 개가 들어 있습니다. `access_control` 폴더 안의 `config` 폴더에 `week_state.json` 으로 만들어집니다.
 
 <pre class="copyable"><code>{
   "users": {
@@ -92,12 +94,16 @@ Unit 5는 Module 3 **접근통제 자동화**의 마지막 단계인 **결과 �
 }
 </code></pre>
 
-**`config/alert.json`** — 경고 기준입니다. 거부율은 전체 요청 가운데 거부된 요청의 비율입니다. 거부율이 0.3(30%) 이상이면 경고이고, 사용자 한 명이 4번 이상 거부되면 눈여겨봅니다. `access_control` 폴더 안의 `config` 폴더에 `alert.json` 으로 만들어집니다.
+<h2><code>config/alert.json</code></h2>
+
+경고 기준입니다. 거부율은 전체 요청 가운데 거부된 요청의 비율입니다. 거부율이 0.3(30%) 이상이면 경고이고, 사용자 한 명이 4번 이상 거부되면 눈여겨봅니다. `access_control` 폴더 안의 `config` 폴더에 `alert.json` 으로 만들어집니다.
 
 <pre class="copyable"><code>{"deny_rate_limit": 0.3, "user_denied_limit": 4}
 </code></pre>
 
-**`week_log.jsonl`** — 일주일 치 샘플 로그입니다. 한 줄이 요청 한 개이고 JSON 한 줄입니다. 이름 끝의 `.jsonl` 은 이렇게 한 줄에 JSON 한 건씩 적은 파일이라는 뜻입니다(JSON Lines · 제이슨 라인즈). `access_control` 폴더 바로 아래에 만듭니다.
+<h2><code>week_log.jsonl</code></h2>
+
+일주일 치 샘플 로그입니다. 한 줄이 요청 한 개이고 JSON 한 줄입니다. 이름 끝의 `.jsonl` 은 이렇게 한 줄에 JSON 한 건씩 적은 파일이라는 뜻입니다(JSON Lines · 제이슨 라인즈). `access_control` 폴더 바로 아래에 만듭니다.
 
 <pre class="copyable"><code>{"time": "2026-10-26T09:10", "user": "seoyeon", "permission": "SALES:QUERY", "network": "office", "allowed": true, "reason": "역할 권한"}
 {"time": "2026-10-26T09:40", "user": "seoyeon", "permission": "SALES:CHANGE", "network": "office", "allowed": true, "reason": "역할 권한"}

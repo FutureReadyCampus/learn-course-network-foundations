@@ -585,7 +585,7 @@
     const sourceUrl = course.preview_source?.url;
     banner.innerHTML = `<strong>Learn 콘텐츠 후보</strong><span>${esc(course.preview_source?.label || "develop 미리보기")}</span>${sourceUrl ? `<a href="${esc(sourceUrl)}" target="_blank" rel="noreferrer" title="${esc(sha)}">${esc(sha.slice(0, 12))}</a>` : ""}`;
     const main = document.getElementById("network-lesson");
-    main.classList.toggle("exercise-heading-pilot", item.unit.id === "m4-u01");
+    main.classList.toggle("exercise-headings", /^m[345]-u\d+$/.test(item.unit.id));
     main.replaceChildren();
     const title = document.createElement("h1");
     title.textContent = page.title;

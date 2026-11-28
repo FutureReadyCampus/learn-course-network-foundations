@@ -54,7 +54,7 @@ source:
 - 이 규칙은 분마다 요청이 **몇 개**인지만 봅니다. <mark>요청의 내용(어떤 경로를 요청했는지)은 보지 않습니다.</mark>
 - 급증은 이상 징후(평소 범위를 벗어난 일)의 한 종류입니다. <mark>급증이 있다고 공격이 확정되는 것은 아니고,</mark> 먼저 확인할 대상이 정해질 뿐입니다.
 
-**판다스 문법 상자 — 시각에서 초를 버려 분으로 맞추기**
+<h2>판다스 문법 상자 — 시각에서 초를 버려 분으로 맞추기</h2>
 
 **<mark>`시각.dt.floor("min")`</mark> 은 시각에서 초를 버리고 분까지만 남깁니다. `09:12:03` 도 `09:12:15` 도 `09:12:00` 이 되어, 같은 분의 이벤트가 같은 값을 갖습니다**
 
@@ -111,7 +111,7 @@ Name: count, dtype: int64
 - **`.dt` 없이 `times.floor("min")` 으로 쓰면 오류가 납니다.** `times.dt.hour` 처럼 `.dt` 를 먼저 붙입니다.
 - 이 예는 연습용 작은 표이고, 문제에서는 웹 서버 이벤트의 시각을 이렇게 분으로 맞춰 셉니다.
 
-**알아 둘 것 — 출력 맨 아래의 `dtype: int64`**
+<h2>알아 둘 것 — 출력 맨 아래의 <code>dtype: int64</code></h2>
 
 `value_counts()` 나 `groupby().size()` 로 센 결과의 맨 아래에는 `dtype: int64` 가 함께 나옵니다. `dtype` 은 data type(데이터 타입)의 줄임말로 값의 종류를 뜻하고, `int64` 는 정수(소수점 없는 숫자)입니다. <mark>숫자 계산이 되는 정상 상태이므로 지금은 `int64` 가 보이면 됩니다.</mark> 자세한 쓰임은 다음에 차차 배웁니다.
 
@@ -145,7 +145,7 @@ Name: count, dtype: int64
 
 - 숫자인데 `object` 로 나오면 <mark>문자열로 읽힌 것이라 합계 · 비교가 맞지 않습니다.</mark>
 
-**한 장 정리**
+<h2>한 장 정리</h2>
 
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
@@ -166,7 +166,7 @@ Name: count, dtype: int64
 
 - `read_csv` 는 `read_json` 처럼 CSV 파일을 표로 읽고, `.mean()` 은 열에 있는 숫자들의 평균을 구합니다.
 
-**문법 상자 · ② 의 모양 (예시 값 · 읽기만 합니다)**
+<h2>문법 상자 · ② 의 모양 (예시 값 · 읽기만 합니다)</h2>
 
 센 결과에 `>=` 를 쓰면 줄마다 「기준 이상인가?」를 비교해 `True` · `False` 를 만듭니다. 실습 2-3 의 `is_many = ip_login_fail_counts >= limit` 와 같은 모양입니다.
 
@@ -177,7 +177,7 @@ print(counts >= 2)               # 09:01 은 True, 09:20 은 False
 
 ## 실습 3-1 · 분마다 세어 요청 급증 분 찾기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: 웹 서버 이벤트 28개가 초 단위로 흩어져 있어서, 어느 1분에 요청이 늘었는지 한눈에 안 보입니다.
 - **그래서 만드는 것**: `traffic_detection.py` 입니다.
@@ -187,12 +187,12 @@ print(counts >= 2)               # 09:01 은 True, 09:20 은 False
 - **실행하면**: 단계 1: 시각과 분 비교, 단계 2: 분당 요청 수, 단계 3: 급증 기준, 단계 4: 요청이 급증한 분이 나옵니다.
 - **현업에서는**: 트래픽 급증 규칙은 서버 장애와 공격을 함께 탐지하는 기본 규칙입니다. 알림이 오면 그 분의 요청을 누가 보냈는지부터 봅니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. 작업 폴더 `network-study-notes/anomaly_detection` 에 `traffic_detection.py` · `exercise3-1_run.py` **두 파일**을 만들고, `traffic_detection.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
 2. 실행해서 <mark>시각과 분의 차이</mark>(단계 1), <mark>분당 요청 수</mark>(단계 2), <mark>급증 기준</mark>(단계 3), <mark>요청이 급증한 분</mark>(단계 4)를 읽습니다.
 
-**`traffic_detection.py`**
+<h3><code>traffic_detection.py</code></h3>
 
 ```python
 import pandas as pd                                              # 판다스를 pd 라는 짧은 이름으로 불러온다
@@ -254,7 +254,7 @@ def pick_spike_minutes(minute_request_counts, limit):            # 분마다 요
 - 주석 줄은 그대로 두고, **각 주석 바로 아래의 빈 줄**에 씁니다. ① · ② 는 모두 함수 안이라 앞에 공백 4개(4칸)입니다.
 - 미리 채운 두 줄은 동작 두 개를 점으로 이은 한 줄입니다. <mark>왼쪽부터 차례로 읽습니다.</mark> `web_events.groupby("minute").size()` 는 minute 이 같은 행끼리 그룹을 만든 뒤 그룹마다 행 수를 세고, `baseline["requests_per_minute"].mean()` 은 분당 요청 수 열을 꺼낸 뒤 평균을 구합니다.
 
-**직접 쓰는 곳**
+<h3>직접 쓰는 곳</h3>
 
 | 빈칸 | 쓰는 줄 | 들여쓰기 |
 |---|---|---|
@@ -265,7 +265,9 @@ def pick_spike_minutes(minute_request_counts, limit):            # 분마다 요
 - ① 확인: ① 만 쓰고 실행하면 단계 1 ~ 3 이 나온 뒤 `NameError: name 'is_spike' is not defined` 가 나와야 합니다. ② 를 아직 안 써서 나는 오류이니 정상입니다. 막히면: 위 문법 상자의 `minutes = times.dt.floor("min")` 을 그대로 씁니다.
 - ② 확인: ② 까지 쓰고 실행하면 단계 4 에 `2026-11-02 09:12:00    9` 한 줄이 나오면 성공입니다. 막히면: 위 ② 문법 상자의 `counts >= 2` 에서 `counts` 자리에 `minute_request_counts`, `2` 자리에 `limit` 을 넣고 앞에 `is_spike =` 를 붙입니다.
 
-**`exercise3-1_run.py`** — **그대로 붙여 넣습니다.** 직접 쓰는 줄은 없습니다. `.head(3)` 는 열의 처음 3개만 꺼냅니다.
+<h3><code>exercise3-1_run.py</code></h3>
+
+**그대로 붙여 넣습니다.** 직접 쓰는 줄은 없습니다. `.head(3)` 는 열의 처음 3개만 꺼냅니다.
 
 ```python
 from traffic_detection import load_events, add_minute_column, count_web_per_minute, make_traffic_limit, pick_spike_minutes, EVENTS_PATH, TRAFFIC_PATH, SPIKE_MULTIPLE  # 방금 만든 함수를 불러온다
@@ -292,7 +294,7 @@ print("--- 단계 4: 요청이 급증한 분")                                  
 print(spike_minutes)                                                                 # 요청이 급증한 분과 요청 수를 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `traffic_detection.py` 와 `exercise3-1_run.py` 를 만들고, 위의 같은 이름 코드 상자를 각각 붙여 넣어 저장합니다.
 2. **[VS Code]** `traffic_detection.py` 의 `# ←` 두 곳(① · ②)을 채웁니다. 위 판다스 문법 상자와 ② 문법 상자를 보고 씁니다.

@@ -50,7 +50,7 @@ ip_actions.py     is_in_allowlist    : 허용 목록에 있는지 확인한다 (
 
 ## 응용 2-3 · 허용 IP 제외와 차단 자동 해제 만들기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>경로 스캔 알림 세 건을 모두 차단하면 점검 서버와 정상 사용자가 차단되고, 차단이 해제되지 않고 계속 유지됩니다</mark>.
 - **만드는 것**: 허용 목록 조회 · 사용 계정 수 집계 · 차단 · 만료된 차단 해제(`ip_actions.py`), 정책 검사와 차단 호출(`apply2-3_run.py`).
@@ -58,7 +58,9 @@ ip_actions.py     is_in_allowlist    : 허용 목록에 있는지 확인한다 (
 
 **할 일**: 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 1 ~ 3 을 읽습니다.
 
-**`ip_actions.py`** — IP 차단과 만료된 차단의 자동 해제를 구현합니다. Unit 3 실습 3-1 도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 1 ~ 6번입니다. 「응용과 Unit 3에 필요한 처리 함수 준비」 레슨에서 이미 만든 파일이니, <mark>열어서 내용을 모두 지우고 아래 골격을 붙여 넣은 뒤</mark> 빈칸을 씁니다. 끝내 막히면 「응용과 Unit 3에 필요한 처리 함수 준비」 레슨의 완성본을 다시 붙여 넣어 되돌립니다.
+<h3><code>ip_actions.py</code></h3>
+
+IP 차단과 만료된 차단의 자동 해제를 구현합니다. Unit 3 실습 3-1 도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 1 ~ 6번입니다. 「응용과 Unit 3에 필요한 처리 함수 준비」 레슨에서 이미 만든 파일이니, <mark>열어서 내용을 모두 지우고 아래 골격을 붙여 넣은 뒤</mark> 빈칸을 씁니다. 끝내 막히면 「응용과 Unit 3에 필요한 처리 함수 준비」 레슨의 완성본을 다시 붙여 넣어 되돌립니다.
 
 ```python
 from containment_store import make_record                                              # 기록 한 건을 만드는 함수를 불러온다
@@ -129,7 +131,9 @@ def expire_blocks(state, incident_id):                                          
     return records                                                                     # 해제 기록 리스트를 리턴한다
 ```
 
-**`apply2-3_run.py`** — 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실습 2-1의 `containment_store.py` 가 같은 폴더에 있어야 합니다.
+<h3><code>apply2-3_run.py</code></h3>
+
+7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실습 2-1의 `containment_store.py` 가 같은 폴더에 있어야 합니다.
 
 | 번호 | 그 아래에 쓰는 줄 |
 |---|---|
@@ -177,7 +181,7 @@ print("차단한 IP:", load_state()["blocked_ips"])                             
 print("조치 기록:", len(load_json("containment_log.json")), "건")                        # 저장된 기록 수를 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 작업 폴더 `network-study-notes/soar_response` 의 `ip_actions.py` 를 열어 내용을 모두 지우고 위 골격을 붙여 넣습니다. 이어서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `apply2-3_run.py` 를 만들어(파일 이름 그대로) 코드를 붙여 넣습니다. 두 파일 모두 저장합니다(`Ctrl + S`).
 2. **[VS Code]** `ip_actions.py` 1 ~ 6번, `apply2-3_run.py` 7 ~ 9번을 씁니다. 막히면 아래 「응용 2-3 정리」를 봅니다.

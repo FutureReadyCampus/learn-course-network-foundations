@@ -12,7 +12,7 @@ render: markdown
 
 이번 Unit 1로 Module 5 **자동 대응**을 시작합니다. Module 4에서는 로그를 읽어 **위험한 대상을 찾아 점수와 등급을 매겼습니다.** Module 5는 그 **알림이 난 뒤에 하는 일**을 다룹니다. 계정을 잠그고, **티켓**(ticket, 티켓: 처리할 일 한 건을 적어 두고 누가 맡았는지와 처리됐는지를 추적하는 기록)을 만들고, 담당자에게 알리는 일을 정해 둔 절차대로 프로그램이 실행하게 만듭니다. 회사는 이번에도 **A사**입니다.
 
-**오늘의 계획 (약 2시간 40분)**
+<h2>오늘의 계획 (약 2시간 40분)</h2>
 
 | 순서 | 시간 | 하는 일 |
 |---|---|---|
@@ -24,7 +24,7 @@ render: markdown
 
 실습 중에는 초안에 근거를 메모하고 글쓰기 시간에 같은 파일을 다듬습니다. 하루 3시간에서 남는 20분쯤은 밀린 곳을 따라잡는 여유 시간입니다.
 
-**오늘 만들 것 세 가지**
+<h2>오늘 만들 것 세 가지</h2>
 
 **플레이북**(playbook, 플레이북)은 「이런 알림이 오면 이렇게 대응한다」를 미리 적어 둔 대응 절차서입니다.
 
@@ -36,7 +36,9 @@ render: markdown
 
 **응용 1-1 · 1-2는 여유가 되면 해 보세요.** 핵심 실습 세 개와 결과 점검, 「문제 해결 기록을 포트폴리오에 남기기」를 마친 뒤 응용 레슨을 선택합니다. 응용에서 쓰는 `routing.py` · `safe_runner.py` 는 뒤의 「응용 실습용 처리 함수 준비」에서 만듭니다.
 
-**Module 5 전체 지도** — 알림이 오면 보안 담당자는 알림을 분류하고, 조치하고, 기록을 남기고, 잘못된 조치를 되돌립니다. Module 5에서는 이 일을 다섯 단계로 나눠 코드로 자동화합니다.
+<h2>Module 5 전체 지도</h2>
+
+알림이 오면 보안 담당자는 알림을 분류하고, 조치하고, 기록을 남기고, 잘못된 조치를 되돌립니다. Module 5에서는 이 일을 다섯 단계로 나눠 코드로 자동화합니다.
 
 | Unit | 이름 | 하는 일 |
 |---|---|---|
@@ -112,7 +114,9 @@ render: markdown
      trusted_ips.json           지금 만듦
    ```
 
-**`incident_samples.json`** — 오늘 처리할 알림 5건입니다. 앞 페이지의 점수 기록 5건에 `id` 와 `status` 를 붙였습니다. 실습 1-2의 실행기와 실습 1-3의 보강 프로그램이 이 파일을 읽습니다.
+<h2><code>incident_samples.json</code></h2>
+
+오늘 처리할 알림 5건입니다. 앞 페이지의 점수 기록 5건에 `id` 와 `status` 를 붙였습니다. 실습 1-2의 실행기와 실습 1-3의 보강 프로그램이 이 파일을 읽습니다.
 
 <pre class="copyable"><code>[
   {
@@ -175,7 +179,9 @@ render: markdown
 - [ ] `soar_response/incident_samples.json` 을 만들고 코드 상자 내용을 붙여 넣어 저장했다
 <!-- /checklist -->
 
-**`system_state.json`** — 연습용 시스템(실제 서버와 계정 대신 파일로 흉내 낸 시스템)의 상태입니다. 잠긴 계정(`locked_users`) · 차단한 IP(`blocked_ips`) · 티켓(`tickets`) · 담당자 알림(`notifications`) 네 가지를 적고, 처음에는 모두 비어 있습니다. 실습 1-1에서는 이 파일을 직접 고치고, 실습 1-2에서는 실행기가 결과를 덮어써 저장합니다.
+<h2><code>system_state.json</code></h2>
+
+연습용 시스템(실제 서버와 계정 대신 파일로 흉내 낸 시스템)의 상태입니다. 잠긴 계정(`locked_users`) · 차단한 IP(`blocked_ips`) · 티켓(`tickets`) · 담당자 알림(`notifications`) 네 가지를 적고, 처음에는 모두 비어 있습니다. 실습 1-1에서는 이 파일을 직접 고치고, 실습 1-2에서는 실행기가 결과를 덮어써 저장합니다.
 
 <pre class="copyable"><code>{
   "locked_users": [],
@@ -189,7 +195,9 @@ render: markdown
 - [ ] `soar_response/system_state.json` 을 만들고 코드 상자 내용을 붙여 넣어 저장했다
 <!-- /checklist -->
 
-**`users_info.json`** — 계정 이름별 재직 여부(`employed`)와 **VIP 계정**(VIP account, 브이아이피 계정: 잠기면 업무에 미치는 영향이 큰 중요한 계정) 여부(`vip`)입니다. `true` 는 「그렇다」, `false` 는 「아니다」입니다. 실제 조직에서는 인사 시스템과 IAM(Identity and Access Management, 아이덴티티 앤 액세스 매니지먼트: 계정과 접근 권한을 관리하는 체계)이 가진 정보이고, 오늘은 파일로 대신합니다. `dami` 는 퇴사자, `gaeun` 은 VIP 계정입니다. 실습 1-3에서 읽습니다.
+<h2><code>users_info.json</code></h2>
+
+계정 이름별 재직 여부(`employed`)와 **VIP 계정**(VIP account, 브이아이피 계정: 잠기면 업무에 미치는 영향이 큰 중요한 계정) 여부(`vip`)입니다. `true` 는 「그렇다」, `false` 는 「아니다」입니다. 실제 조직에서는 인사 시스템과 IAM(Identity and Access Management, 아이덴티티 앤 액세스 매니지먼트: 계정과 접근 권한을 관리하는 체계)이 가진 정보이고, 오늘은 파일로 대신합니다. `dami` 는 퇴사자, `gaeun` 은 VIP 계정입니다. 실습 1-3에서 읽습니다.
 
 <pre class="copyable"><code>{
   "dami": {"employed": false, "vip": false},
@@ -201,7 +209,9 @@ render: markdown
 }
 </code></pre>
 
-**`source_ips.json`** — 사용자 이름별로 로그인에 쓴 접속 IP(source IP, 소스 아이피: 로그인 요청이 출발한 IP)입니다. 이 파일에 이름이 없는 사용자는 접속 IP 기록이 없는 사용자입니다. 실습 1-3에서 읽습니다.
+<h2><code>source_ips.json</code></h2>
+
+사용자 이름별로 로그인에 쓴 접속 IP(source IP, 소스 아이피: 로그인 요청이 출발한 IP)입니다. 이 파일에 이름이 없는 사용자는 접속 IP 기록이 없는 사용자입니다. 실습 1-3에서 읽습니다.
 
 <pre class="copyable"><code>{
   "seoyeon": "203.0.113.80",
@@ -211,7 +221,9 @@ render: markdown
 }
 </code></pre>
 
-**`trusted_ips.json`** — **신뢰 IP**(trusted IP, 트러스티드 아이피: 정상 접속의 출처로 미리 확인해 등록한 IP) 목록입니다. 협력사 사무실 IP 한 개가 있고, `seoyeon` 과 `jiwoo` 가 이 IP 에서 접속합니다. 실습 1-3에서 읽습니다.
+<h2><code>trusted_ips.json</code></h2>
+
+**신뢰 IP**(trusted IP, 트러스티드 아이피: 정상 접속의 출처로 미리 확인해 등록한 IP) 목록입니다. 협력사 사무실 IP 한 개가 있고, `seoyeon` 과 `jiwoo` 가 이 IP 에서 접속합니다. 실습 1-3에서 읽습니다.
 
 <pre class="copyable"><code>[
   "203.0.113.80"

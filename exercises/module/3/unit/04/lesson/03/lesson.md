@@ -76,7 +76,7 @@ source:
 
 ## 실습 4-1 · 승인 필요 여부와 승인 상태 적기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: 회수 계획 8건이 모두 같은 리스트에 섞여 있습니다. 쓰기 권한처럼 승인이 필요한 것과 바로 회수해도 되는 것을 담당자가 눈으로 가려야 합니다.
 - **그래서 만드는 것**: `mark_approvals` 입니다.
@@ -84,17 +84,19 @@ source:
 - **실행하면**: 단계 1은 계획 8건의 승인 상태를 출력하고, 단계 2는 승인 상태별 건수를 출력합니다.
 - **현업에서는**: 접근 관리 도구도 중요한 권한의 변경은 승인자를 거치고, 승인 여부를 기록으로 남깁니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. 작업 폴더 `network-study-notes/access_control` 안에 `config/sensitive.json` · `revoke_approve.py` · `exercise4-1_run.py` 세 파일을 만들고, `revoke_approve.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
 2. 채우기 <mark>전과 후</mark>에 실행해서 승인 상태(단계 1)와 승인 상태별 건수(단계 2)를 비교합니다.
 
-**`config/sensitive.json`** — 그대로 붙여 넣습니다. 민감한 권한 리스트입니다. `access_control` 안의 `config` 폴더에 만듭니다.
+<h3><code>config/sensitive.json</code></h3>
+
+그대로 붙여 넣습니다. 민감한 권한 리스트입니다. `access_control` 안의 `config` 폴더에 만듭니다.
 
 <pre class="copyable"><code>["SALES:CHANGE", "ACCOUNT:CHANGE", "SETTLE:CHANGE"]
 </code></pre>
 
-**`revoke_approve.py`**
+<h3><code>revoke_approve.py</code></h3>
 
 ```python
 from config_loader import load_json                              # Unit 1 핵심 준비의 안전한 읽기 함수를 불러온다
@@ -148,14 +150,14 @@ def mark_approvals(plans, sensitive, decisions):                 # 계획 리스
 
 - 주석 줄은 그대로 두고, **각 주석 바로 아래 줄**에 씁니다. ① 은 함수 바로 안쪽이라 4칸, ② 는 `for` 안쪽이라 8칸에서 시작합니다.
 
-**직접 쓰는 곳**
+<h3>직접 쓰는 곳</h3>
 
 | 빈칸 | 쓰는 줄 | 들여쓰기 |
 |---|---|---|
 | ① | 둘 중 하나라도 참이면 `True` 를 리턴 (`return … or …`) | 4칸 |
 | ② | `decisions` 에서 결정을 꺼내 `decision` 에 담기 (`.get`) | 8칸 |
 
-#### 문법 상자 · 직접 쓰는 곳의 모양 (예시 값 · 읽기만 합니다)
+<h3>문법 상자 · 직접 쓰는 곳의 모양 (예시 값 · 읽기만 합니다)</h3>
 
 ```python
 print(True or False)                      # True  · 둘 중 하나라도 참이면 참
@@ -174,7 +176,9 @@ print(decisions.get("junho:SALES:CHANGE")) # None · 키가 없으면 오류 대
 - ① 확인: ① 만 쓰고 실행하면 `NameError: name 'decision' is not defined` 가 나옵니다(파이썬 버전에 따라 뒤에 `Did you mean: 'decisions'?` 가 붙습니다). ② 를 아직 안 써서 나는 오류이니 정상입니다. 막히면: 바로 위 두 줄이 만든 `is_sensitive` 와 `is_big_impact` 를 `or` 로 잇고 앞에 `return` 을 붙입니다.
 - ② 확인: ② 까지 쓰고 실행하면 단계 2가 `{'승인 불필요': 5, '승인됨': 2, '승인 대기': 1}` 이면 성공입니다. `KeyError: 'junho:SALES:QUERY'` 가 나오면 `decisions[key]` 로 쓴 것이니 `.get` 으로 바꿉니다. 막히면: 위 문법 상자의 `decisions.get("dami:SALES:QUERY")` 에서 따옴표 문자열 자리에 `key` 를 넣고, 앞에 `decision = ` 을 붙입니다.
 
-**`exercise4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 핵심 준비 레슨에서 만든 회수 계획을 불러온 뒤 `mark_approvals` 로 승인 상태를 정하고 두 단계로 출력합니다.
+<h3><code>exercise4-1_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 핵심 준비 레슨에서 만든 회수 계획을 불러온 뒤 `mark_approvals` 로 승인 상태를 정하고 두 단계로 출력합니다.
 
 ```python
 from rbac import USERS, ROLES                                    # 실습 1-2의 사용자 · 역할 딕셔너리를 불러온다
@@ -205,7 +209,7 @@ for item in results:                                             # 결과를 하
 print(counts)                                                    # 승인 상태별 건수를 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[터미널]** 핵심 준비 레슨에서 만든 `revoke_input.py` · `revoke_plan.py` 가 `access_control` 안에 있는지 `ls` 로 확인합니다.
 2. **[VS Code]** 파일 `config/sensitive.json` · `revoke_approve.py` · `exercise4-1_run.py` 를 만들고, 위에서 같은 이름이 붙은 코드 상자의 내용을 붙여 넣어 저장합니다.

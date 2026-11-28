@@ -65,7 +65,7 @@ source:
 - 7개를 Module 3 규칙으로 판정하면 dami 는 「퇴사한 계정」으로 1순위, gaeun 은 「허용」으로 3순위입니다. dami 는 `users.json` 에서 `employed` 가 `false` 이고, gaeun 의 역할 `account_admin` 은 `roles.json` 에 `ACCOUNT:CHANGE` 권한이 있기 때문입니다.
 - 이 판정은 거절이 규칙대로였는지 확인하는 것이고, **공격이라고 확정하는 것이 아닙니다.**
 
-**판다스 문법 상자 — 목록에 있는 사용자인지 `isin`**
+<h2>판다스 문법 상자 — 목록에 있는 사용자인지 <code>isin</code></h2>
 
 **<mark>`열.isin(리스트)`</mark> 는 열의 값이 리스트 안에 있으면 `True`, 없으면 `False` 를 줍니다**
 
@@ -130,7 +130,7 @@ print(blocked_df)            # 차단된 사용자의 기록을 출력한다
 
 - 읽는 법: 첫 번째 출력은 입력 표입니다. <mark>두 번째 출력에서 1번 행(dami) · 3번 행(junho) · 4번 행(dami)이 `True`</mark> 입니다. 세 번째 출력은 그 세 기록만 남은 표입니다. `Name: user, dtype: bool` 줄은 몰라도 됩니다.
 
-**판다스 문법 상자 — 센 결과에서 이름만 꺼내기 `.index`**
+<h2>판다스 문법 상자 — 센 결과에서 이름만 꺼내기 <code>.index</code></h2>
 
 **<mark>`센 결과.index`</mark> 는 `value_counts()` 로 센 결과에서 왼쪽에 나오는 이름들(인덱스)을 꺼냅니다. 사용자별로 센 결과라면 사용자 이름이 나옵니다**
 
@@ -193,7 +193,7 @@ print(names)                # 이름 리스트를 출력한다
 - 읽는 법: 첫 번째 출력은 입력 표입니다. 두 번째 출력은 사용자별 실패 횟수입니다(dami 3번 · gaeun 2번 · seoyeon 1번). <mark>세 번째 출력은 2번 이상 실패한 사용자 이름만 담은 리스트</mark>입니다.
 - 여기서는 눈으로 보기 쉽게 `list()` 로 리스트를 만들었습니다. 실습에서는 `list()` 없이 `.index` 를 그대로 `isin` 에 넣어도 됩니다.
 
-**한 장 정리**
+<h2>한 장 정리</h2>
 
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
@@ -211,7 +211,7 @@ print(names)                # 이름 리스트를 출력한다
 
 ## 실습 3-2 · 반복 거절 찾고 이유별 순서 정하기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>판정 서버의 거절 9건을 하나씩 읽어야 하고, 어느 것이 급한지 알 수 없습니다</mark>.
 - **그래서 만드는 것**: `access_detection.py` 입니다.
@@ -221,12 +221,12 @@ print(names)                # 이름 리스트를 출력한다
 - **실행하면**: <mark>단계 1: 서버 실패 이벤트 수, 단계 2: 먼저 확인할 이벤트 수, 단계 3: 순서대로 이벤트가 한 줄씩 나옵니다.</mark>
 - **현업에서는**: 같은 계정의 요청이 반복해서 거절되면 먼저 확인할 근거가 됩니다. 이유별로 순서를 정해 두면 퇴사자 계정처럼 급한 것을 빠뜨리지 않고, 서버 설정 문제는 따로 점검합니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. 작업 폴더 `network-study-notes/anomaly_detection` 에 `access_detection.py` · `exercise3-2_run.py` 두 파일을 만들고, `access_detection.py` 의 `# ←` 가 있는 <mark>세 곳</mark>(① ~ ③)을 한 줄씩 채웁니다.
 2. 실행해서 <mark>서버 실패 수</mark>(단계 1), <mark>먼저 확인할 이벤트 수</mark>(단계 2), <mark>이유별 순서</mark>(단계 3)를 읽습니다.
 
-**`access_detection.py`**
+<h3><code>access_detection.py</code></h3>
 
 ```python
 import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
@@ -293,7 +293,7 @@ def judge_failure(user, action):                      # 사용자와 행동을 �
 - 뒤 조각을 `action` 이 아니라 `permission_action` 에 담는 것은 `action` 이라는 이름이 이미 `"SALES:QUERY"` 전체를 담고 있기 때문입니다.
 - `PRIORITY.get(reason, 4)` 는 키가 딕셔너리에 없으면 기본값 4 를 돌려줍니다(Module 3 실습 1-3 의 `counts.get(키, 0)` 과 같은 모양).
 
-**문법 상자 · ③ 의 모양 (예시 값 · 읽기만 합니다)**
+<h2>문법 상자 · ③ 의 모양 (예시 값 · 읽기만 합니다)</h2>
 
 `check_permission` 은 값 두 개를 함께 돌려주므로, `=` 왼쪽에 이름 두 개를 쉼표로 적어 나눠 받습니다(Module 3 실습 1-2).
 
@@ -302,7 +302,7 @@ is_allowed, reason = check_permission("dami", "SALES", "QUERY")  # 판정 결과
 print(is_allowed, reason)                                         # False 퇴사한 계정
 ```
 
-**직접 쓰는 곳**
+<h3>직접 쓰는 곳</h3>
 
 | 빈칸 | 쓰는 줄 | 들여쓰기 |
 |---|---|---|
@@ -315,7 +315,9 @@ print(is_allowed, reason)                                         # False 퇴사
 - ② 확인: ② 까지 쓰고 실행하면 `--- 단계 2: 먼저 확인할 실패 이벤트 7 개` 가 나온 뒤 `NameError: name 'reason' is not defined` 가 나와야 합니다. ③ 을 아직 안 써서 나는 오류입니다. 7 이 아니라 0 이면 ① 에 `.index` 가 빠졌습니다. 막히면: `isin` 문법 상자의 `df["user"].isin(blocked_users)` 에서 `df["user"]` 자리에 `users`, `blocked_users` 자리에 `repeated_names` 를 넣습니다.
 - ③ 확인: ③ 까지 쓰고 실행하면 단계 3 에 일곱 줄이 나오고 첫 줄이 `1 퇴사한 계정 dami SALES:QUERY 2026-11-02 11:02:00` 이면 성공입니다. 막히면: 위 ③ 문법 상자에서 `"dami", "SALES", "QUERY"` 자리에 `user, resource, permission_action` 을 넣습니다.
 
-**`exercise3-2_run.py`** — 그대로 붙여 넣습니다. 직접 쓰는 줄은 없습니다. 처음 보는 줄은 이렇게 읽습니다.
+<h3><code>exercise3-2_run.py</code></h3>
+
+그대로 붙여 넣습니다. 직접 쓰는 줄은 없습니다. 처음 보는 줄은 이렇게 읽습니다.
 
 | 코드 | 뜻 |
 |---|---|
@@ -357,7 +359,7 @@ for priority in [1, 2, 3]:                                   # 우선순위대�
             print(priority, label, event["user"], event["action"], event["time"])  # 순서 · 이유 · 사용자 · 행동 · 시각을 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `access_detection.py` 와 `exercise3-2_run.py` 를 만들고, 위의 같은 이름 코드 상자를 각각 붙여 넣어 저장합니다. `access_detection.py` 의 `from rbac import check_permission` 은 시작하기에서 새로 만든 `anomaly_detection/rbac.py` 를 불러옵니다(`access_control/rbac.py` 가 아닙니다). 그래서 `anomaly_detection` 폴더에 `rbac.py` 와 `config/users.json` · `config/roles.json` 이 있어야 합니다.
 2. **[VS Code]** `access_detection.py` 의 `# ←` <mark>세 곳(① ~ ③)을 채웁니다</mark>. 위 판다스 문법 상자와 ③ 문법 상자를 참고해 씁니다. 막히면 아래 「실습 3-2 정리」를 봅니다.
@@ -402,13 +404,15 @@ for priority in [1, 2, 3]:                                   # 우선순위대�
 
 핵심 실습을 마친 뒤 실행 결과를 확인해 저장소에 반영합니다. 이 단계는 블로그 문제 해결 기록과 응용 실습보다 먼저 합니다.
 
-**1. 오늘 한 일 확인**
+<h2>1. 오늘 한 일 확인</h2>
 
 1. 웹 서버 요청을 분마다 세고, 평소 평균의 3배(6.0번) 이상인 분을 찾았다 (실습 3-1)
 2. 판정 서버 거절 9건 중 반복된 7건을 Module 3 의 `check_permission` 으로 다시 판정하고, 이유로 순서를 정했다 (실습 3-2)
 3. 실행 결과에서 선택한 글감의 근거를 찾아 초안의 ‘검증 결과’에 메모합니다.
 
-**2. 파일 확인** — **[터미널]** 작업 폴더 `network-study-notes/anomaly_detection` 에서 확인합니다.
+<h2>2. 파일 확인</h2>
+
+**[터미널]** 작업 폴더 `network-study-notes/anomaly_detection` 에서 확인합니다.
 
 ```bash
 pwd
@@ -421,7 +425,7 @@ ls config
 - `config` 안에는 `users.json` · `roles.json` 이 보여야 합니다.
 - `__pycache__` 폴더는 파이썬이 실행하면서 만든 임시 폴더라 있어도 됩니다.
 
-**3. 깃허브에 올리기**
+<h2>3. 깃허브에 올리기</h2>
 
 1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. <mark>결과가 `…/network-study-notes` 으로 끝나야 합니다.</mark>
    ```bash
@@ -464,7 +468,7 @@ ls config
 
 **확인** — 깃허브의 `anomaly_detection` 폴더에 2번에서 본 핵심 실습 파일이 보이고 `.env` 가 없으면 성공입니다. 안 보이면 `git status` 를 다시 쳐서 빨간 목록이 남아 있는지 보고, 남아 있으면 3번의 4를 다시 합니다.
 
-**4. 이어지는 곳**
+<h2>4. 이어지는 곳</h2>
 
 1. 다음 Unit 4(위험 점수 매기고 오탐 줄이기)에서는 이번 Unit 의 탐지 결과를 **같은 사용자의 기록끼리 이어서 함께 보고**, 위험 점수를 매겨 등급으로 나눕니다.
 2. 오늘 만든 `access_detection.py` 는 다음 Unit 에서 여러 번 불러 씁니다. 파일 이름과 함수 이름을 바꾸지 않습니다.

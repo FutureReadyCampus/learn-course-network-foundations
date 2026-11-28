@@ -45,19 +45,19 @@ source:
 
 ## 응용 3-1 · 퇴사 계정과 만료 예외 찾기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: 현황 리스트에 열네 건이 있고, 관제 담당이 건마다 퇴사 여부를 보고 예외 파일을 열어 만료 시각을 눈으로 확인합니다. 시간이 걸리고 놓칠 수 있습니다.
 - **그래서 만드는 것**: `find_stale` 입니다. 현황 리스트와 지금 시각을 받아, 규칙에 걸린 권한을 복사해 `reason` 키를 추가하고 리스트로 리턴합니다. 원래 현황 권한은 바꾸지 않습니다.
 - **실행하면**: 단계 1은 규칙에 걸린 권한을 이유와 함께 출력하고, 단계 2는 이유별 건수를 출력합니다. 지금 시각은 `2026-10-29 10:00` 으로 고정합니다.
 - **현업에서는**: 계정 관리 도구도 퇴사 처리(그만둔 사람의 계정과 권한을 닫는 일)가 안 된 계정과 기한이 지난 임시 권한을 정기 점검 리스트로 뽑아 담당자에게 보냅니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. 핵심 준비 레슨에서 만든 `review_rules.py` 의 내용을 모두 지우고 아래 골격으로 바꾼 뒤, `find_stale` 본문을 직접 씁니다. `apply3-1_run.py` 는 새로 만듭니다.
 2. 실행해서 <mark>규칙에 걸린 권한</mark>(단계 1: 판정)과 <mark>이유별 건수</mark>(단계 2: 점검)를 읽습니다.
 
-**`review_rules.py`**
+<h3><code>review_rules.py</code></h3>
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
@@ -99,7 +99,9 @@ def find_stale(access_list, now):                                # 현황 리스
 - 순서는 「`expires` 가 `None` 이 아니다(6번) → 그러면 시각으로 바꾸고(7번) → 지금과 비교한다(8번)」입니다. `None` 일 때는 `strptime` 이 오류를 내므로, 6번 안쪽에서만 시각으로 바꿉니다.
 - 채우기 전에 실행하면 `TypeError: object of type 'NoneType' has no len()` 오류가 납니다. `find_stale` 이 아무것도 리턴하지 않기 때문입니다. `return` 이 없는 함수는 `None`(값 없음)을 돌려주고, 실행 파일의 `len(stale)` 이 `None` 의 개수를 세려다 멈춥니다.
 
-**`apply3-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 3-1의 `build_access_list` 로 현황을 만든 뒤 `find_stale` 로 규칙에 걸린 권한을 찾아 출력합니다.
+<h3><code>apply3-1_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 3-1의 `build_access_list` 로 현황을 만든 뒤 `find_stale` 로 규칙에 걸린 권한을 찾아 출력합니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
@@ -124,7 +126,7 @@ for entry in stale:                                              # 걸린 권한
 print(counts)                                                    # 이유별 건수를 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `review_rules.py` 를 열어 내용을 모두 지우고(`Ctrl + A` 뒤 `Delete`) 위 **`review_rules.py`** 코드 상자의 골격을 붙여 넣고 저장합니다. 이어서 `access_control` 폴더를 오른쪽 클릭 › **New File** 로 `apply3-1_run.py` 를 만들어 붙여 넣고 저장합니다.
 

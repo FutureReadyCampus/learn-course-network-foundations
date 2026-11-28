@@ -55,7 +55,7 @@ engine_input.py   find_schema_problem  : 필수 키가 없으면 (1번) · 모�
 
 ## 응용 5-1 · 탐지 결과 연결과 운영 요약
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>Module 4 탐지 결과 파일은 있지만 엔진이 읽는 알림 모양이 아니고, 엔진을 실행한 결과를 한눈에 보고할 요약이 없습니다</mark>.
 - **만드는 것**: 모양 점검 · 알림으로 바꾸기 · 기록 나누기 · 운영 요약(`engine_input.py`), 엔진 실행과 출력(`apply5-1_run.py`).
@@ -63,7 +63,9 @@ engine_input.py   find_schema_problem  : 필수 키가 없으면 (1번) · 모�
 
 **할 일**: 데이터 파일 한 개와 코드 파일 두 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 3 ~ 5 를 읽습니다.
 
-**`unit05_risk_scores.json`** — Module 4 Unit 4 실습 4-1 파일입니다. Module 4 폴더(`network-study-notes/anomaly_detection`)에 이 파일이 있으면 **[터미널]** 의 `soar_response` 폴더에서 `cp ../anomaly_detection/unit05_risk_scores.json .` 으로 복사하고, 없으면 `soar_response` 폴더에 같은 이름의 파일을 만들어 아래 내용을 붙여 넣습니다. 두 방법 모두 내용이 같습니다.
+<h3><code>unit05_risk_scores.json</code></h3>
+
+Module 4 Unit 4 실습 4-1 파일입니다. Module 4 폴더(`network-study-notes/anomaly_detection`)에 이 파일이 있으면 **[터미널]** 의 `soar_response` 폴더에서 `cp ../anomaly_detection/unit05_risk_scores.json .` 으로 복사하고, 없으면 `soar_response` 폴더에 같은 이름의 파일을 만들어 아래 내용을 붙여 넣습니다. 두 방법 모두 내용이 같습니다.
 
 | 키 | 뜻 |
 |---|---|
@@ -119,7 +121,9 @@ engine_input.py   find_schema_problem  : 필수 키가 없으면 (1번) · 모�
 ]
 </code></pre>
 
-**`engine_input.py`** — Module 4 연결 함수 모음입니다. 실습 5-2에서는 가져오지 않습니다. 직접 쓰는 곳은 1 ~ 8번입니다.
+<h3><code>engine_input.py</code></h3>
+
+Module 4 연결 함수 모음입니다. 실습 5-2에서는 가져오지 않습니다. 직접 쓰는 곳은 1 ~ 8번입니다.
 
 | 번호 | 쓰는 것 |
 |---|---|
@@ -190,7 +194,9 @@ def summarize(results):                                              # 엔진 �
     return summary                                                   # 요약을 리턴한다 — 미리 채운 줄
 ```
 
-**`apply5-1_run.py`** — 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+<h3><code>apply5-1_run.py</code></h3>
+
+9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
 from incident import load_json, save_json                                                    # Unit 1 파일의 JSON 읽기 · 쓰기 함수를 불러온다
@@ -236,7 +242,7 @@ save_json(context["tickets"], "risk_tickets.json")                              
 print("--- 단계 6: risk_engine_log.json · engine_summary.json · risk_tickets.json 저장")     # 단계 6 시작을 알리는 줄
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `unit05_risk_scores.json` · `engine_input.py` · `apply5-1_run.py` 파일을 만들어 이 페이지의 코드 상자를 붙여 넣고 저장합니다. Module 4 파일을 복사해 왔으면 `unit05_risk_scores.json` 은 만들지 않습니다.
 

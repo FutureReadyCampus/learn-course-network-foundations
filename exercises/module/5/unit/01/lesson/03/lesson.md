@@ -90,7 +90,7 @@ source:
 
 - **직접 쓰는 곳은 두 군데**(① · ②)이고, 함수 한 개(`run_playbook`) 안의 승인 확인 부분입니다.
 
-#### 문법 상자 · 직접 쓰는 곳의 모양 (예시 값 · 읽기만 합니다)
+<h2>문법 상자 · 직접 쓰는 곳의 모양 (예시 값 · 읽기만 합니다)</h2>
 
 ```python
 playbook = {"id": "PB-002", "approval": "담당자 승인 필요"}   # 예시 값
@@ -108,7 +108,7 @@ def stop_here():                         # return 을 만나면 그 자리에서
 
 ## 실습 1-2 · 실행기로 알림 5건 처리하기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>알림 5건이 모두 `탐지됨` 상태이고, 실습 1-1처럼 수동 처리하면 번거롭습니다. 또 승인이 필요한 건을 구별하기 어렵습니다</mark>.
 - **그래서 만드는 것**: `playbook_runner.py` 의 `run_playbook` 입니다.
@@ -116,12 +116,14 @@ def stop_here():                         # return 을 만나면 그 자리에서
   - 자동으로 해도 되는 플레이북은 액션을 차례로 실행하고 한 건씩 기록합니다.
 - **실행하면**: <mark>단계 1: 불러온 인시던트와 플레이북 수, 단계 2: 실행 전 연습용 시스템 상태, 단계 3: 인시던트마다 실행 결과, 단계 4: 실행 후 상태, 단계 5: 승인 대기 건, 단계 6: 감사 기록이 나옵니다.</mark>
 
-**할 일**
+<h2>할 일</h2>
 
 1. `incident.py` · `playbook_runner.py` · `exercise1-2_run.py` 세 파일을 만듭니다. `incident.py` 와 실행 파일은 그대로 붙여 넣고, `playbook_runner.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
 2. 실행해서 <mark>인시던트마다 실행 결과</mark>(단계 3), <mark>실행 전후 상태</mark>(단계 2 · 4), <mark>승인 대기</mark>(단계 5), <mark>감사 기록</mark>(단계 6)를 읽습니다.
 
-**`incident.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
+<h3><code>incident.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
 
 - **무엇인가**: 플레이북을 실행할 때 쓰는 **도구 모음**입니다. 상태 바꾸기, 맞는 플레이북 찾기, 액션 하나 실행하기, 기록 한 건 만들기 함수가 들어 있습니다.
 - **어디에 쓰나**: `playbook_runner.py` 와 실행 파일이 이 파일의 함수를 불러다 씁니다. 오늘은 읽기만 하고 고치지 않습니다.
@@ -240,7 +242,7 @@ def make_log_entry(incident, playbook, action, result):                         
 
 - 숫자는 글자와 `+` 로 바로 이어 붙일 수 없어서 `"TCK-" + str(1)` 처럼 바꾼 뒤 이어 붙입니다.
 
-**`playbook_runner.py`**
+<h3><code>playbook_runner.py</code></h3>
 
 - **무엇인가**: 플레이북 하나를 실행하는 **프로그램의 핵심**입니다. 승인을 확인하고, 액션을 차례로 실행하고, 기록을 남깁니다. 승인을 확인하는 두 줄(① · ②)을 직접 씁니다.
 - **어디에 쓰나**: 실행 파일이 인시던트 5건을 이 파일의 함수에 넘겨 처리합니다.
@@ -287,7 +289,7 @@ def process_incidents(incidents, registry, state, action_log):                  
     return pending                                                               # 승인 대기 리스트를 리턴한다
 ```
 
-**직접 쓰는 곳**
+<h3>직접 쓰는 곳</h3>
 
 | 빈칸 | 쓰는 줄 | 들여쓰기 |
 |---|---|---|
@@ -299,7 +301,9 @@ def process_incidents(incidents, registry, state, action_log):                  
 - ① 확인: ① 만 쓰고 실행하면 오류 없이 끝나지만, 단계 3 에 `INC-002 seoyeon mid -> PB-002 실행 완료 (상태: 조치됨)` 가 나오고 단계 5 는 `승인 대기 0 건` 입니다. 승인 대기 기록은 남겼는데 멈추지 않고 액션까지 실행한 것입니다. ② 를 아직 안 써서 생기는 결과이니 정상입니다. 막히면: 위 문법 상자의 `playbook["approval"] != "자동"` 앞에 `if`, 끝에 `:` 를 붙입니다.
 - ② 확인: ② 까지 쓰고 실행하면 단계 3 에 `INC-002 seoyeon mid -> PB-002 승인 대기 (상태: 분류됨)` 가 나와야 합니다. 그래도 `실행 완료` 가 나오면 ② 의 들여쓰기가 8칸인지 봅니다. 막히면: `return` 뒤에 한 칸 띄우고 `False` 를 씁니다. 앞의 `change_status` 처럼 `True` · `False` 를 리턴하는 함수와 같은 모양입니다.
 
-**`exercise1-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `len(리스트)` 는 리스트의 개수입니다.
+<h3><code>exercise1-2_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `len(리스트)` 는 리스트의 개수입니다.
 
 - **무엇인가**: 알림 5건 처리를 한 번에 실행하는 **시작 파일**입니다. 파일을 읽고, 실행기에 넘겨 처리하고, 결과를 출력하고 저장합니다.
 - **어디에 쓰나**: 터미널에서 `python exercise1-2_run.py` 로 실행합니다. 실행하면 `system_state.json` 과 `action_log.json` 이 새로 저장됩니다.
@@ -342,7 +346,7 @@ for entry in action_log:                                                        
     print(entry["incident"], entry["playbook"], entry["action"], ":", entry["result"])  # 번호 · 플레이북 · 액션 · 결과를 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `incident.py` · `playbook_runner.py` · `exercise1-2_run.py` 세 파일을 하나씩 만들고(파일 이름 그대로), 위에서 같은 이름의 코드 상자를 붙여 넣어 저장합니다. <mark>`config/playbook_registry.json` 에 PB-001 ~ PB-003 이 있어야</mark> 합니다.
 

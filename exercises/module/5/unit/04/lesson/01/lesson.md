@@ -12,7 +12,7 @@ render: markdown
 
 지난 Unit 들에서 계정 잠금 · IP 차단 같은 자동 조치를 실행하고, 잘못된 조치를 되돌리고, 사건마다 티켓을 남겼습니다. 오늘은 자동 조치가 **실행되기 직전**과 **실행된 뒤**를 다룹니다. 실행 직전에는 사람의 승인이 필요한 조치를 가려내고(승인 게이트), 실행된 뒤에 오탐으로 밝혀지면 원래 상태로 되돌립니다.
 
-**오늘의 계획 (약 2시간 40분)**
+<h2>오늘의 계획 (약 2시간 40분)</h2>
 
 | 순서 | 시간 | 하는 일 |
 |---|---|---|
@@ -23,7 +23,7 @@ render: markdown
 | 5. 포트폴리오 기록 | 20분 | 문제와 판단 근거를 같은 초안에 남깁니다 |
 
 
-**오늘 만들 것 두 가지**
+<h2>오늘 만들 것 두 가지</h2>
 
 1. **실습 4-1**: 조치 요청마다 위험 점수(risk score, 리스크 스코어: 조치의 위험을 점수로 나타낸 값)를 더해 「자동 · 승인 필요 · 차단 금지」로 나누는 승인 게이트를 만듭니다. <mark style="background:#ffdcb0">승인 기준은 설정 파일에 따로 둡니다</mark>(코드 `approval_gate.py`, 설정 `config/approval_policy.json`).
 2. **실습 4-2**: 오탐(false positive, 폴스 포지티브: 위협이 아닌 활동을 위협으로 잘못 판정한 알림) 신고를 받으면 먼저 영향 확인(impact assessment: 조치가 실제로 바꾼 대상을 파악하는 일)을 합니다. 그다음 <mark style="background:#e0d4ff">Unit 3 실습 3-1 의 되돌리기 함수</mark>로 롤백(rollback, 롤백: 조치 이전 상태로 되돌리는 일)하고, 복구 확인(recovery verification: 실제 상태가 되돌아왔는지 다시 점검하는 일)까지 합니다(`false_positive.py`).
@@ -42,7 +42,9 @@ render: markdown
 - 핵심 실습마다 직접 쓰는 곳은 두 줄(① · ②)입니다. 나머지는 미리 채워 두었습니다. 번호 주석 바로 아래에 한 줄을 쓰고, 들여쓰기(줄 앞의 빈칸)는 주석 끝 괄호에 적힌 칸 수(예: `(8칸)`)를 따릅니다. 주석은 지우지 않습니다.
 - 실습의 [핵심 질문] 표시가 붙은 질문은 <mark>내 출력 값을 근거로</mark> 씁니다.
 
-**줄임말 이름 안내** — 응용 4-1 ~ 4-3 의 코드와 파일에는 줄임말로 된 이름이 있습니다. 이미 배포한 파일과 맞추려고 이름은 그대로 쓰고 뜻만 풀어 둡니다.
+<h2>줄임말 이름 안내</h2>
+
+응용 4-1 ~ 4-3 의 코드와 파일에는 줄임말로 된 이름이 있습니다. 이미 배포한 파일과 맞추려고 이름은 그대로 쓰고 뜻만 풀어 둡니다.
 
 | 이름 | 원래 말 | 이 문서에서의 뜻 |
 |---|---|---|
@@ -66,7 +68,7 @@ render: markdown
 | M5 Unit 2 「응용과 Unit 3에 필요한 처리 함수 준비」 | `ip_actions.py` | 실습 4-2 |
 | Unit 3 실습 3-1 | `undo_actions.py` · `rollback.py` | 실습 4-2 |
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `network-study-notes` 폴더를 연 VS Code 창에서 메뉴 **Terminal › New Terminal** 로 터미널을 엽니다. 새 터미널은 `network-study-notes` 폴더에서 열립니다. 터미널 이름 칸이 **bash** 가 아니면 터미널 오른쪽 위 `+` 옆의 **∨** 에서 **Git Bash** 를 고릅니다.
 2. **[터미널]** `soar_response` 폴더로 들어가 파일을 확인합니다.
@@ -110,7 +112,9 @@ PY
 
 앞 Unit 을 하지 못했거나 파일을 지운 경우에만 만듭니다. **이미 있는 파일은 건너뜁니다.** 파일 이름은 `incident.py` · `containment_store.py` · `account_actions.py` · `ip_actions.py` · `undo_actions.py` · `rollback.py` 이고, 앞 페이지의 4번 방법으로 하나씩 만듭니다.
 
-**`incident.py`** — Unit 1 파일에서 오늘 쓰는 두 함수(`load_json` · `save_json`)만 담았습니다. Unit 1 파일 전체가 있으면 그것을 그대로 씁니다.
+<h2><code>incident.py</code></h2>
+
+Unit 1 파일에서 오늘 쓰는 두 함수(`load_json` · `save_json`)만 담았습니다. Unit 1 파일 전체가 있으면 그것을 그대로 씁니다.
 
 ```python
 import json                                                  # JSON 파일을 읽고 쓰기 위해 json 을 불러온다
@@ -133,7 +137,9 @@ def save_json(data, path):                                   # 저장할 값과 
         json.dump(data, file, ensure_ascii=False, indent=2)  # 한글은 그대로, 줄을 나눠 저장한다
 ```
 
-**`containment_store.py`** — Unit 2 실습 2-1 파일입니다. 조치 기록 한 건을 만들고 조치 상태를 파일로 저장하고 읽습니다.
+<h2><code>containment_store.py</code></h2>
+
+Unit 2 실습 2-1 파일입니다. 조치 기록 한 건을 만들고 조치 상태를 파일로 저장하고 읽습니다.
 
 ```python
 import copy                                                           # 처음 상태를 복사해 쓰기 위해 copy 를 불러온다
@@ -198,7 +204,9 @@ def append_log(record):                                               # 기록 �
     save_json(log, LOG_PATH)                                          # 기록 파일로 다시 저장한다
 ```
 
-**`account_actions.py`** — Unit 2 실습 2-1 파일입니다. 계정을 잠그고 해제합니다.
+<h2><code>account_actions.py</code></h2>
+
+Unit 2 실습 2-1 파일입니다. 계정을 잠그고 해제합니다.
 
 ```python
 from containment_store import make_record                                             # 기록 한 건을 만드는 함수를 불러온다
@@ -249,7 +257,9 @@ def unlock_account(user, state, incident_id, reason):                           
     return make_record("계정 해제", user, incident_id, "잠김", after, reason)         # 조치 전 · 후 상태와 함께 기록한다
 ```
 
-**`ip_actions.py`** — Unit 2 「선택 과제용 에스컬레이션·리포트 함수 준비」 레슨의 파일입니다. IP 를 차단하고 해제합니다.
+<h2><code>ip_actions.py</code></h2>
+
+Unit 2 「선택 과제용 에스컬레이션·리포트 함수 준비」 레슨의 파일입니다. IP 를 차단하고 해제합니다.
 
 ```python
 from containment_store import make_record                                                     # 기록 한 건을 만드는 함수를 불러온다
@@ -316,7 +326,9 @@ def expire_blocks(state, incident_id):                                          
     return records                                                                            # 해제 기록 리스트를 리턴한다
 ```
 
-**`undo_actions.py`** — Unit 3 실습 3-1 파일입니다. 조치 기록 한 건을 거꾸로 되돌립니다.
+<h2><code>undo_actions.py</code></h2>
+
+Unit 3 실습 3-1 파일입니다. 조치 기록 한 건을 거꾸로 되돌립니다.
 
 ```python
 from account_actions import unlock_account  # Unit 2 에 있는 계정 해제 함수를 불러온다
@@ -346,7 +358,9 @@ def undo_record(record, state):             # 되돌릴 조치 기록과 연습�
     return undo_ip(record, state)           # 아니면 IP 차단 기록이므로 IP 를 해제한다
 ```
 
-**`rollback.py`** — Unit 3 실습 3-1 파일입니다. 인시던트 한 건의 조치 기록을 찾아 되돌립니다.
+<h2><code>rollback.py</code></h2>
+
+Unit 3 실습 3-1 파일입니다. 인시던트 한 건의 조치 기록을 찾아 되돌립니다.
 
 ```python
 from containment_store import make_record                                    # 기록 한 건을 만드는 함수를 불러온다

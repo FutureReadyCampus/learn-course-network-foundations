@@ -52,19 +52,21 @@ policy_check.py   count_executed         : 실행한 조치 수를 센다
 
 ## 실습 5-2 · 정책 준수 PASS · FAIL 표
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>엔진은 로그를 남기지만, 승인 게이트와 허용 목록 · VIP 예외가 지켜졌는지 자동으로 확인하는 점검이 없습니다</mark>.
 - **만드는 것**: 점검 네 가지와 PASS · FAIL 판정(`policy_check.py`), 로그 세 개를 읽어 점검하고 결과를 저장하기(`exercise5-2_run.py`).
 - **실행하면**: <mark>단계 1: 점검할 로그 수, 단계 2: 로그마다 네 점검의 PASS · FAIL 과 위반한 알림 번호, 단계 3: FAIL 이 나온 점검 수, 단계 4: 저장한 파일이 나옵니다.</mark>
 
-**할 일**
+<h2>할 일</h2>
 
 1. 데이터 파일 한 개와 코드 파일 두 개를 만들어 붙여 넣습니다.
 2. `policy_check.py` 의 `# ←` 두 곳(① · ②)을 한 줄씩 채웁니다.
 3. 실행해서 단계 2 를 읽고 결과를 기록합니다.
 
-**`gate_off_log.json`** — 시험 운영 때 승인 게이트를 끄고(모든 조치 요청의 결정을 「자동」으로 바꾸고) 알림 5건을 처리한 로그입니다.
+<h3><code>gate_off_log.json</code></h3>
+
+시험 운영 때 승인 게이트를 끄고(모든 조치 요청의 결정을 「자동」으로 바꾸고) 알림 5건을 처리한 로그입니다.
 
 - 알림 한 건이 한 줄입니다. 실습 5-1 `engine_log.json` 과 같은 꼴이고, 조치마다 `executed` · `before` · `after` 와 승인 게이트가 본 조치 요청 `request` 가 들어 있습니다.
 - 모든 `decision` 이 「자동」이고 이유가 「승인 게이트 끔」입니다.
@@ -78,7 +80,9 @@ policy_check.py   count_executed         : 실행한 조치 수를 센다
 ]
 </code></pre>
 
-**`policy_check.py`** — 정책 점검 함수 모음입니다. 직접 쓰는 곳은 `find_gate_bypass` 의 ① · ② 두 줄입니다.
+<h3><code>policy_check.py</code></h3>
+
+정책 점검 함수 모음입니다. 직접 쓰는 곳은 `find_gate_bypass` 의 ① · ② 두 줄입니다.
 
 ```python
 from approval_gate import decide_gate                                                      # Unit 4 파일의 승인 게이트 함수를 불러온다
@@ -151,7 +155,9 @@ def judge(violations):                                                          
     return "FAIL"                                                                          # 위반이 있으면 FAIL 을 리턴한다 — 미리 채운 줄
 ```
 
-**`exercise5-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 로그 세 개를 차례로 읽어 점검 네 가지를 실행하고, FAIL 이 나온 점검 수를 센 뒤 결과를 `policy_check.json` 에 저장합니다.
+<h3><code>exercise5-2_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 로그 세 개를 차례로 읽어 점검 네 가지를 실행하고, FAIL 이 나온 점검 수를 센 뒤 결과를 `policy_check.json` 에 저장합니다.
 
 ```python
 from incident import load_json, save_json                                                   # Unit 1 파일의 JSON 읽기 · 쓰기 함수를 불러온다
@@ -183,7 +189,9 @@ save_json(rows, CHECK_PATH)                                                     
 print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")                                # 단계 4 시작을 알리는 줄과 저장한 수
 ```
 
-**직접 쓰는 곳** — `policy_check.py` 의 `find_gate_bypass` 안 두 줄입니다. 주석 줄은 그대로 두고 각 주석 바로 아래 줄에 씁니다.
+<h3>직접 쓰는 곳</h3>
+
+`policy_check.py` 의 `find_gate_bypass` 안 두 줄입니다. 주석 줄은 그대로 두고 각 주석 바로 아래 줄에 씁니다.
 
 | 빈칸 | 쓰는 줄 | 들여쓰기 |
 |---|---|---|
@@ -194,7 +202,7 @@ print("--- 단계 4:", CHECK_PATH, "에", len(rows), "개 저장")              
 - ② 확인: ② 까지 쓰고 실행하면 `[gate_off_log.json]` 아래 `게이트 우회 실행 : FAIL · 위반 3 건 ['INC-404', 'INC-405', 'INC-406']` 이 나오고, 앞의 두 로그는 PASS 면 성공입니다. 막히면: 「아니고」는 `!=`, 「그리고」는 `and` 입니다. `step["executed"]` 는 이미 참 · 거짓이라 `== True` 를 붙이지 않아도 됩니다.
 - 채우기 전에 실행해도 오류 없이 돌아갑니다. 다만 ① · ② 자리가 비어 있으면 미리 채운 `violations.append(…)` 가 `for` 바로 안쪽에서 조치마다 실행되어, <mark style="background:#ffc4d6">조치가 있는 알림이 세 로그 모두 게이트 우회로 나오고</mark> 단계 3 이 `FAIL 이 나온 점검 4 개` 입니다. 결정을 다시 구해 비교하는 두 줄이 빠지면 정상 로그와 위반 로그를 가르지 못한다는 것을 보여 주는 결과입니다.
 
-**순서**
+<h2>순서</h2>
 
 1. **[터미널]** 먼저 점검할 로그 두 개가 있는지 확인합니다. <mark>`ls` 결과에 `engine_log.json` 과 `risk_engine_log.json` 이 보이면</mark> 됩니다. `engine_log.json` 이 없으면 `python exercise5-1_run.py` 를 먼저 실행하고, `risk_engine_log.json` 이 없으면 「실습 5-2 핵심 입력 · Module 4 탐지 로그」 레슨에서 준비합니다. 그다음 **[VS Code]** 에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `gate_off_log.json` · `policy_check.py` · `exercise5-2_run.py` 파일을 만들어 이 페이지의 코드 상자를 붙여 넣고 저장합니다.
    ```bash

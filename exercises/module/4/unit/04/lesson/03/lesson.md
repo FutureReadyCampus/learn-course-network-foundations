@@ -46,7 +46,7 @@ source:
 - 대상은 사용자(`seoyeon` · `dami` …)와 IP(경로 스캔)입니다. 코드의 `entity`(엔티티, 점수를 매길 대상)가 이 대상입니다. 이 숫자들은 <mark>이번 실습에서 정해 고정한 값</mark>이고, 현업에서는 조직이 정합니다.
 - 출력 맨 아래의 `dtype: int64` 는 값이 정수라는 표시이고 읽지 않아도 됩니다.
 
-**판다스 문법 상자 — 규칙마다 점수 붙이기 `map` 과 그룹마다 합계 `sum`**
+<h2>판다스 문법 상자 — 규칙마다 점수 붙이기 <code>map</code> 과 그룹마다 합계 <code>sum</code></h2>
 
 **<mark>`열.map(딕셔너리)`</mark> 는 열의 값을 딕셔너리에서 찾아 짝지어진 값으로 바꾸고, <mark>`그룹["열"].sum()`</mark> 은 `groupby` 로 만든 그룹마다 그 열의 숫자를 모두 더합니다**
 
@@ -95,7 +95,7 @@ Name: points, dtype: int64
 - 문제에서는 딕셔너리 리스트로 표를 만드는 `pd.DataFrame(리스트)` 줄과 points 열을 붙이는 줄이 미리 채워져 있습니다. 리스트 안의 딕셔너리 하나가 표의 한 행이 되고, 딕셔너리의 키(`entity` · `rule`)가 열 이름이 됩니다. 직접 쓰는 것은 `map` 한 줄과 `sum` 한 줄입니다.
 - <mark>`groupby` 결과는 이름순(dami → seoyeon)으로 나옵니다.</mark> 문제에서는 미리 채운 줄이 점수가 높은 순으로 다시 정렬합니다.
 
-**한 장 정리**
+<h2>한 장 정리</h2>
 
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
@@ -114,7 +114,7 @@ Name: points, dtype: int64
 
 ## 실습 4-1 · 위험 점수와 등급·이유 저장하기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>세 로그의 탐지 결과와 로그 연결 결과에서 탐지된 규칙이 8건 있지만 대상별 우선순위가 정해져 있지 않습니다</mark>. 8건은 (대상, 규칙) 쌍의 수입니다. 위 점수표의 규칙도 8개이지만 표의 규칙이 모두 탐지된 것은 아닙니다(오늘 데이터에서는 「권한 없음」이 나오지 않아 서로 다른 규칙은 7개입니다).
 - **그래서 만드는 것**: `risk_scores.py` 입니다.
@@ -124,14 +124,14 @@ Name: points, dtype: int64
 - **실행하면**: <mark>단계 1: 탐지된 규칙 수, 단계 2: 대상별 점수, 단계 3: 저장한 건수, 단계 4: 저장된 기록이 한 건씩 나옵니다.</mark>
 - **현업에서는**: 점수와 이유를 함께 남기면 등급이 올라간 근거를 설명할 수 있습니다. 조직은 필요에 따라 점수 기준을 바꿀 수 있고, 바꾼 날짜와 이유를 기록합니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. `risk_scores.py` · `exercise4-1_run.py` 두 파일을 만들고, `risk_scores.py` 의 `score_findings` 에서 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다. 나머지 함수는 모두 미리 채워 두었습니다.
 2. 실행해서 <mark>탐지된 규칙 수</mark>(단계 1), <mark>대상별 점수</mark>(단계 2), <mark>저장한 건수</mark>(단계 3), <mark>저장된 기록</mark>(단계 4)를 읽고, 새로 생긴 `unit05_risk_scores.json` 을 VS Code 에서 열어 봅니다.
 
 `score_findings` 의 두 곳 말고는 모두 읽기만 하는 미리 채운 줄입니다. 가장 긴 `collect_findings` 는 Module 3 Unit 3 핵심 서버 탐지와 `risk_inputs.json` 의 고정 시나리오 입력을 (대상, 규칙) 쌍으로 모읍니다.
 
-**`risk_scores.py`**
+<h3><code>risk_scores.py</code></h3>
 
 ```python
 import json                                        # 점수를 JSON 파일로 쓰기 위해 json 을 불러온다
@@ -235,7 +235,7 @@ def save_records(records, path):                       # 기록 리스트와 파
 
 - 주석 줄은 그대로 두고, **각 주석 바로 아래 줄**에 씁니다. ① · ② 모두 함수 안이라 앞에 공백 4칸입니다.
 
-**직접 쓰는 곳**
+<h3>직접 쓰는 곳</h3>
 
 | 빈칸 | 쓰는 줄 | 들여쓰기 |
 |---|---|---|
@@ -246,7 +246,7 @@ def save_records(records, path):                       # 기록 리스트와 파
 - ① 확인: ① 만 쓰고 실행하면 `UnboundLocalError: cannot access local variable 'totals' …` 가 나옵니다. ② 를 아직 안 써서 나는 오류이니 정상입니다. 막히면: 문법 상자의 `df["rule"].map(weights)` 에서 `df` 를 `findings_table`, `weights` 를 `WEIGHTS` 로 바꿉니다.
 - ② 확인: ② 까지 쓰고 실행하면 단계 2에 `dami 60` 부터 `198.51.100.90 30` 까지 다섯 줄이 나오면 성공입니다. 막히면: 문법 상자의 `grouped["points"].sum()` 과 같은 모양이고, 끝의 괄호 `()` 까지 씁니다.
 
-**미리 채운 줄 읽기**
+<h2>미리 채운 줄 읽기</h2>
 
 - `make_grade` 는 `return` 을 만나면 함수가 바로 끝납니다. 그래서 high 이면 아래의 mid 검사까지 가지 않습니다.
 - `make_records` 의 `int(score)` 는 <mark>판다스의 숫자를 파이썬 정수로 바꾸는 것</mark>입니다. 이번 데이터에서는 빼도 오류가 나지 않지만, 판다스가 돌려준 숫자(`int64`)를 그대로 JSON 으로 저장하려고 하면 `TypeError: Object of type int64 is not JSON serializable` 가 날 수 있어서 미리 바꿔 둡니다.
@@ -255,7 +255,9 @@ def save_records(records, path):                       # 기록 리스트와 파
   - `scan_ips, many_kinds = find_scan_ips(…)` 는 함수가 리턴한 두 값(스캔 IP 리스트, IP 별 요청 횟수)을 나눠 받습니다. 두 번째 값은 이 함수에서 쓰지 않습니다.
   - `add_finding` 의 `if finding not in findings:` 는 같은 (대상, 규칙) 쌍이 이미 리스트에 있으면 다시 넣지 않습니다. 그래서 dami 의 서버 요청 4번이 모두 「퇴사한 계정」으로 판정되어도 점수는 60 한 번만 더해집니다.
 
-**`exercise4-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `len(리스트)` 는 리스트의 개수입니다.
+<h3><code>exercise4-1_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `len(리스트)` 는 리스트의 개수입니다.
 
 ```python
 from access_detection import load_events, EVENTS_PATH  # 실습 3-2 함수를 불러온다
@@ -280,7 +282,7 @@ for record in records:                                 # 기록을 하나씩 꺼
     print(record["grade"], record["entity"], record["score"], record["reasons"])  # 등급 · 대상 · 점수 · 이유를 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `risk_scores.py` 와 `exercise4-1_run.py` 를 만들어 위 코드를 각각 붙여 넣고 저장합니다.
 2. **[VS Code]** `risk_scores.py` 의 <mark>`# ←` 두 곳(① · ②)을 채웁니다</mark>. 문법 상자의 `map` 줄과 `sum` 줄을 보고 씁니다.

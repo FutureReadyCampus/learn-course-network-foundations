@@ -38,12 +38,12 @@ source:
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="검토 중인 요청서 가운데 SLA_HOURS 보다 오래 걸린 것만 골라 리턴한다"></figure>
 
-**문법 상자 — 걸린 시간을 시간 단위 숫자로 바꾸기**
+<h2>문법 상자 — 걸린 시간을 시간 단위 숫자로 바꾸기</h2>
 
 - `datetime.strptime(문자열, 형식)` 은 시각 문자열을 계산할 수 있는 시각으로 바꿉니다. `exception_policy.py` 에서 쓴 것과 같습니다.
 - 형식 문자열 `"%Y-%m-%d %H:%M"` 은 「연-월-일 시:분」 모양이라는 뜻입니다. `exception_policy.py` 의 `TIME_FORMAT` 에 이미 적혀 있어서 오늘은 그것을 불러다 씁니다. 아래 상자에서는 그 모양을 그대로 볼 수 있습니다.
 
-**① 시각에서 시각을 빼면 「걸린 시간」이 나옵니다**
+<h2>① 시각에서 시각을 빼면 「걸린 시간」이 나옵니다</h2>
 
 ```python
 from datetime import datetime                                       # 시각을 다루는 모듈에서 datetime 을 불러온다
@@ -62,7 +62,7 @@ print(gap)                                                          # 시:분:�
 
 - 걸린 시간은 `4:45:00` 처럼 「시:분:초」 모양입니다. 숫자가 아니라서 `SLA_HOURS`(4)와 `>` 로 비교할 수 없습니다.
 
-**② `.total_seconds()` 로 걸린 시간을 초 단위 숫자로 바꿉니다**
+<h2>② <code>.total_seconds()</code> 로 걸린 시간을 초 단위 숫자로 바꿉니다</h2>
 
 ```python
 from datetime import datetime                                       # 시각을 다루는 모듈에서 datetime 을 불러온다
@@ -84,7 +84,7 @@ print(seconds)
 - `.total_seconds()` 는 걸린 시간을 전부 초로 세어 숫자로 줍니다. 4시간 45분은 4 × 3600 + 45 × 60 = 17100초입니다.
 - 실제 코드에서는 `gap` 없이 한 줄로 `(now - requested).total_seconds()` 처럼 씁니다. 뺄셈을 괄호로 묶은 뒤에 `.total_seconds()` 를 붙이는 것입니다. 괄호 없이 `now - requested.total_seconds()` 로 쓰면 `requested` 에 먼저 `.total_seconds()` 가 붙어 오류가 납니다.
 
-**③ 3600 으로 나눠 시간 단위 숫자로 만듭니다**
+<h2>③ 3600 으로 나눠 시간 단위 숫자로 만듭니다</h2>
 
 ```python
 from datetime import datetime                                       # 시각을 다루는 모듈에서 datetime 을 불러온다
@@ -107,7 +107,7 @@ print(hours)                                                     # 1시간은 36
 - 3600 으로 나누는 것을 빼먹으면 숫자가 초 단위(17100.0)라서 항상 4보다 커집니다.
 - 걸린 시간이 SLA 시간보다 「큰」 것만 초과로 셉니다. 정확히 4시간이면 초과가 아닙니다(`4.0 > 4` 는 거짓).
 
-**④ `.copy()` 로 복사하면 원래 요청서는 그대로 두고, `round(숫자, 1)` 은 소수 첫째 자리로 반올림합니다**
+<h2>④ <code>.copy()</code> 로 복사하면 원래 요청서는 그대로 두고, <code>round(숫자, 1)</code> 은 소수 첫째 자리로 반올림합니다</h2>
 
 ```python
 request = {"id": 1, "status": "reviewing"}                          # 요청서 한 장
@@ -134,7 +134,7 @@ print(overdue)                                                      # 복사본�
 
 ## 응용 2-2 · 처리 기한 초과 요청 찾기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: 요청서를 접수해 놓고 승인자가 오래 확인하지 않으면 요청자의 일이 막힙니다. 지금은 사람이 리스트를 눈으로 훑어서 오래된 요청을 찾기 때문에 놓치기 쉽습니다.
 - **그래서 만드는 것**: `check_sla_breach` 입니다. 요청서 리스트와 지금 시각을 받아, **검토 중이고 접수한 지 SLA 시간(4시간)을 초과한** 요청서만 골라 리스트로 리턴합니다. SLA 시간은 코드에 쓰지 않고 `config/sla.json` 에서 읽습니다.
@@ -142,17 +142,19 @@ print(overdue)                                                      # 복사본�
 - **실행하면**: 단계 1은 요청서 현황(번호 · 요청자 · 상태 · 접수 시각), 단계 2는 SLA 를 초과한 요청서와 접수한 뒤 지난 시간이 나옵니다.
 - **현업에서는**: 신청 처리 도구도 접수 후 정해진 시간이 지난 신청에 알림을 보내거나 윗사람에게 넘깁니다(에스컬레이션).
 
-**할 일**
+<h2>할 일</h2>
 
 1. `req_sla.py` · `config/sla.json` · `apply2-2_run.py` 세 파일을 만들고, `check_sla_breach` 본문을 직접 씁니다.
 2. 실행해서 <mark>요청서 현황</mark>(단계 1: 현황)과 <mark>기한을 초과한 요청</mark>(단계 2: 판정)을 읽습니다.
 
-**`config/sla.json`** — 그대로 붙여 넣습니다. 처리 기한(시간)을 적은 설정 파일이고, `access_control` 안의 `config` 폴더(`users.json` 이 있는 곳)에 만듭니다.
+<h3><code>config/sla.json</code></h3>
+
+그대로 붙여 넣습니다. 처리 기한(시간)을 적은 설정 파일이고, `access_control` 안의 `config` 폴더(`users.json` 이 있는 곳)에 만듭니다.
 
 <pre class="copyable"><code>{"hours": 4}
 </code></pre>
 
-**`req_sla.py`**
+<h3><code>req_sla.py</code></h3>
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
@@ -195,7 +197,9 @@ def check_sla_breach(requests, now):                             # 요청서 리
 - `SLA_HOURS` 와 `TIME_FORMAT` 은 파일 위쪽에 이미 있습니다. 새로 만들지 않고 그대로 씁니다.
 - 채우기 전에 실행하면 단계 1은 정상으로 나오고, 단계 2에서 `TypeError: 'NoneType' object is not iterable` 오류가 납니다. 함수가 아무것도 리턴하지 않아 `for` 가 돌 리스트가 없기 때문입니다.
 
-**`apply2-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 요청 여섯 건을 접수하고 4번을 승인한 뒤, 단계 1은 요청서 현황을 출력하고 단계 2는 `check_sla_breach` 로 기한을 초과한 요청서를 출력합니다.
+<h3><code>apply2-2_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 요청 여섯 건을 접수하고 4번을 승인한 뒤, 단계 1은 요청서 현황을 출력하고 단계 2는 `check_sla_breach` 로 기한을 초과한 요청서를 출력합니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
@@ -242,7 +246,7 @@ for request in check_sla_breach(REQUESTS, NOW):                  # 기한을 초
     )
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 세 가지를 반복합니다(시작하기 4번과 같은 방법입니다).
    1. VS Code 왼쪽 목록에서 `access_control` 폴더를 오른쪽 클릭 › **New File** 을 누릅니다(다른 폴더를 누르면 그 폴더에 만들어집니다).
