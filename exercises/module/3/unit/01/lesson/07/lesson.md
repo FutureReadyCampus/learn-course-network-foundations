@@ -101,7 +101,7 @@ print(users)                                                     # 함수 밖의
 
 <h3><code>role_admin.py</code></h3>
 
-```python
+```python exercise
 # 실습 1-2의 rbac.py 가 읽어 둔 역할 딕셔너리를 불러온다
 from rbac import ROLES
 
@@ -114,6 +114,10 @@ def assign_role(users, name, role):                              # 사용자 딕
     # 1. role 이 ROLES 에 없으면 False, "없는 역할" 을 리턴한다
     # 2. users[name] 을 {"role": role, "employed": True} 로 바꾼다(새 사용자도, 이동하는 사용자도 같은 줄이다)
     # 3. True, "부여" 를 리턴한다
+#|     if role not in ROLES:
+#|         return False, "없는 역할"
+#|     users[name] = {"role": role, "employed": True}
+#|     return True, "부여"
 
 
 def revoke_access(users, name):                                  # 사용자 딕셔너리 · 이름을 받는 함수
@@ -125,6 +129,10 @@ def revoke_access(users, name):                                  # 사용자 딕
     # 1. name 이 users 에 없으면 False, "없는 사용자" 를 리턴한다
     # 2. users[name]["employed"] 를 False 로 바꾼다
     # 3. True, "회수" 를 리턴한다
+#|     if name not in users:
+#|         return False, "없는 사용자"
+#|     users[name]["employed"] = False
+#|     return True, "회수"
 ```
 
 - 코드에서 거짓은 첫 글자가 대문자인 `False` 입니다. 소문자 `false` 는 JSON 파일 안에서만 쓰고, 코드에 쓰면 `NameError`(정해 둔 적 없는 이름을 썼다는 오류)가 납니다.

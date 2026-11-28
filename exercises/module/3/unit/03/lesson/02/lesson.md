@@ -101,7 +101,7 @@ print(first_list)                                                # 하나 더 �
 
 <h3><code>review_list.py</code></h3>
 
-```python
+```python exercise
 from rbac import USERS, ROLES                                    # rbac.py 의 사용자 · 역할 딕셔너리를 불러온다
 from exception_policy import EXCEPTIONS                          # exception_policy.py 의 예외 리스트를 불러온다
 
@@ -131,6 +131,7 @@ def build_access_list():                                         # 지금 부여
     for user, info in USERS.items():                             # 사용자를 한 명씩 꺼낸다
         role_list = role_entries(user, info)                     # 그 사용자가 역할로 받은 권한 리스트를 만든다
         # ① access_list 와 role_list 를 + 로 이은 리스트를 access_list 에 다시 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+#|         access_list = access_list + role_list
 
     for exception in EXCEPTIONS:                                 # 예외를 하나씩 꺼낸다
         user = exception["user"]                                 # 예외를 받은 사용자 이름을 꺼낸다
@@ -145,6 +146,7 @@ def build_access_list():                                         # 지금 부여
         }
         entry["expires"] = exception["expires"]                  # 예외에만 있는 만료 시각 키를 추가한다
         # ② access_list 에 entry 를 추가한다 (.append)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+#|         access_list.append(entry)
 
     return access_list                                           # 현황을 리턴한다
 ```
@@ -223,7 +225,7 @@ print(counts)                                                    # 사용자별 
      - 현황에 권한이 하나도 없는 사용자는 `config/users.json` 의 사용자와 출력의 사용자를 비교해 찾고, 이유는 그 사용자의 역할이 `config/roles.json` 에 있는지 열어 확인합니다.
    - 응용 질문은 선택입니다. 해 본 경우 결과와 판단 근거를 블로그 글에 덧붙일 수 있습니다.
 
-**확인** — 다시 실행했을 때 `부여돼 있는 권한 14 건` 이 나오고, 마지막 줄이 `{'seoyeon': 3, 'junho': 3, 'gaeun': 3, 'dami': 3, 'batch-night': 2}` 이면 성공입니다. 안 나오면 아래의 실습 3-1 정답 펼침 출력과 한 줄씩 맞춰 보고, 건수가 다르면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+**확인** — 다시 실행했을 때 `부여돼 있는 권한 14 건` 이 나오고, 마지막 줄이 `{'seoyeon': 3, 'junho': 3, 'gaeun': 3, 'dami': 3, 'batch-night': 2}` 이면 성공입니다. 안 나오면 실습 3-1 하단 바의 ‘정답 보기’ 출력과 한 줄씩 맞춰 보고, 건수가 다르면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 
 글감과 연결되는 입력이나 출력 한 줄을 골라 이번 유닛의 블로그 초안에 남깁니다.

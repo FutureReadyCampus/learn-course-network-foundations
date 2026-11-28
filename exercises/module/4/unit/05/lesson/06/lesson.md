@@ -150,7 +150,7 @@ print(fruit_count_dict)                    # 딕셔너리를 출력한다
 
 <h3><code>pipeline.py</code></h3>
 
-```python
+```python exercise
 import json                                                                                # 보고서를 JSON 파일로 저장하기 위해 json 을 불러온다
 from access_detection import load_events, EVENTS_PATH                                      # Unit 3 실습 3-2 : 이벤트 파일을 읽는 함수를 불러온다
 from correlation import find_chains_in_events                                              # Unit 4 응용 4-1 : 서로 다른 로그를 연결하는 함수를 불러온다
@@ -167,9 +167,13 @@ def analyze_events(events):                                                     
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. events 를 find_chains_in_events 에 전달해 연결된 사건을 구해 chains 에 담는다
+#|     chains = find_chains_in_events(events)
     # 2. events 와 chains 를 collect_findings 에 전달해 탐지된 규칙 리스트를 구해 findings 에 담는다
+#|     findings = collect_findings(events, chains)
     # 3. findings 를 score_findings 에 전달해 대상별 점수를 구해 totals 에 담는다
+#|     totals = score_findings(findings)
     # 4. findings 를 collect_reasons 에 전달해 대상별 규칙 이름을 구해 reasons 에 담는다
+#|     reasons = collect_reasons(findings)
     records = make_records(totals, reasons)                                                # 점수 · 등급 · 이유 기록을 만든다 — 미리 채운 줄
     return findings, records                                                               # 탐지된 규칙 리스트와 기록을 리턴한다
 
@@ -206,6 +210,10 @@ def build_report(events, findings, records, summaries):                         
     # 5. events 의 "source" 열을 꺼내 .value_counts() 를 붙여 로그 종류마다 이벤트 수를 구해 source_event_counts 에 담는다
     # 6. source_event_counts 에 .to_dict() 를 붙여 JSON 에 저장할 수 있는 딕셔너리로 바꿔 source_count_dict 에 담는다
     # 7. 키 "date" 에 REPORT_DATE, "event_count" 에 len(events), "source_event_counts" 에 source_count_dict, "finding_count" 에 len(findings), "records" 에 records, "summaries" 에 summaries 를 담은 딕셔너리를 report 에 담는다
+#|     source_event_counts = events["source"].value_counts()
+#|     source_count_dict = source_event_counts.to_dict()
+#|     report = {"date": REPORT_DATE, "event_count": len(events), "source_event_counts": source_count_dict,
+#|               "finding_count": len(findings), "records": records, "summaries": summaries}
     return report                                                                          # 보고서 딕셔너리를 리턴한다
 
 
@@ -300,7 +308,7 @@ run_pipeline()                     # 읽기부터 보고서 저장까지 한 번
    | 3 | 대상마다 요약 1줄 | 3 |
    | 5 | 대상마다 등급 · 대상 · 점수 1줄 | 5 |
 
-   <mark>AI 호출이 실패하면 `[LLM 호출 실패] …` 줄이 단계 3 제목 줄 위에 나오고, 요약은 대체 문장이 됩니다.</mark> 키가 없으면 `[LLM 호출 실패] API 키 없음` 이 세 줄 나오고 단계 3 제목 줄이 `(실패 3 건)` 으로 끝납니다. 이때 출력은 응용 5-3 정답 펼침의 「키가 없을 때」와 같습니다.
+   <mark>AI 호출이 실패하면 `[LLM 호출 실패] …` 줄이 단계 3 제목 줄 위에 나오고, 요약은 대체 문장이 됩니다.</mark> 키가 없으면 `[LLM 호출 실패] API 키 없음` 이 세 줄 나오고 단계 3 제목 줄이 `(실패 3 건)` 으로 끝납니다. 이때 출력은 응용 5-3 하단 바의 ‘정답 보기’의 「키가 없을 때」와 같습니다.
 5. **[VS Code]** 새로 생긴 `anomaly_detection_report_2026-11-02.json` 을 열어 `event_count` · `records` · `summaries` 를 확인합니다.
 
 <!-- checklist optional -->

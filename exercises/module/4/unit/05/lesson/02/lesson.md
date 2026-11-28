@@ -173,7 +173,7 @@ print(slash_text)               # 이어 붙인 글자를 출력한다
 
 <h3><code>event_summary.py</code></h3>
 
-```python
+```python exercise
 import json                                             # JSON 파일을 읽기 위해 json 을 불러온다
 from llm_client import call_llm                         # LLM 호출 함수를 불러온다
 
@@ -224,6 +224,7 @@ def describe_reasons(reasons):                          # 탐지된 규칙 이�
     for rule in reasons:                                # 규칙 이름을 하나씩 꺼낸다
         meanings.append(RULE_MEANING[rule])             # 그 규칙의 사실 문장을 추가한다
     # ① "; " 에 .join(meanings) 를 붙여, 사실 문장을 이어 붙인 결과를 meaning_text 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     meaning_text = "; ".join(meanings)
 
     return meaning_text                                 # 이어 붙인 문자열을 리턴한다
 
@@ -248,7 +249,9 @@ def summarize_record(record):                           # 기록 하나를 받�
     prompt = build_prompt(record)                       # AI 에게 보낼 글을 만든다
     summary = call_llm(prompt)                          # AI 에게 보낼 글을 전달해 요약을 받는다(실패하면 빈 문자열 "")
     # ② summary 가 빈 문자열("")이면   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     if summary == "":
     # ③ FAIL_TEXT 를 summary 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+#|         summary = FAIL_TEXT
 
     return summary                                      # 요약 문장을 리턴한다
 ```
@@ -325,7 +328,7 @@ for record in picked:                                                           
    | 4 | 대상마다 요약 1줄 | 3 |
 
    <mark>단계 4 의 문장은 사람마다, 실행할 때마다 다릅니다.</mark>
-   - 키가 없거나 호출이 실패하면 단계 4 의 대상 줄마다 바로 위에 `[LLM 호출 실패] …` 한 줄이 붙어 6줄이 되고, 대상 줄은 `dami : (요약 실패 — 점수와 이유를 직접 확인)` 처럼 나옵니다. 해당 실습의 정답 펼침의 「키가 없을 때」 출력과 같으면 맞습니다.
+   - 키가 없거나 호출이 실패하면 단계 4 의 대상 줄마다 바로 위에 `[LLM 호출 실패] …` 한 줄이 붙어 6줄이 되고, 대상 줄은 `dami : (요약 실패 — 점수와 이유를 직접 확인)` 처럼 나옵니다. 해당 실습의 하단 바의 ‘정답 보기’의 「키가 없을 때」 출력과 같으면 맞습니다.
 
 <!-- checklist -->
 - [ ] `python exercise5-1_run.py` 를 실행해 단계 2 에 dami · seoyeon · gaeun 세 줄, 단계 4 에 대상 세 줄이 나왔다
@@ -334,7 +337,7 @@ for record in picked:                                                           
 5. 실행 결과에서 선택한 글감의 근거를 찾아 초안의 ‘검증 결과’에 메모합니다.
    - (가) 실행한 출력을 보고, 요약한 대상 수와 `(요약 실패 …)` 가 나온 대상 수를 적어 주세요.
    - (나) [핵심 질문] 단계 3 의 지시문이 AI 에게 하지 말라고 한 것 두 가지를 찾고, 각각 하면 왜 위험한지 적어 주세요.
-**확인** — 단계 2 에 `high dami 60` · `mid seoyeon 45` · `mid gaeun 40` 세 줄이 나오고, 단계 4 에 대상 세 명의 줄이 모두 나오면 성공입니다(키가 없으면 세 줄 모두 대체 문장). 안 나오면 해당 실습의 정답 펼침의 실습 5-1 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+**확인** — 단계 2 에 `high dami 60` · `mid seoyeon 45` · `mid gaeun 40` 세 줄이 나오고, 단계 4 에 대상 세 명의 줄이 모두 나오면 성공입니다(키가 없으면 세 줄 모두 대체 문장). 안 나오면 해당 실습의 하단 바의 ‘정답 보기’의 실습 5-1 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 ## 실습 5-1 정리
 

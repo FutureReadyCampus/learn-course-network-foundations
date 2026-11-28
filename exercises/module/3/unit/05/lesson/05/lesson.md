@@ -190,7 +190,7 @@ print(text)                                                      # 이어 붙인
 
 핵심 과정에서 준비한 완성 코드를 모두 지우고 아래 골격을 붙여 넣습니다. 완성본이 다시 필요하면 「주간 보고서 생성 준비」 레슨에서 복사하면 됩니다.
 
-```python
+```python exercise
 import json                                                      # JSON 문자열을 딕셔너리로 바꾸는 모듈을 불러온다
 
 
@@ -203,7 +203,9 @@ def read_log(path):                                              # 로그 파일
         for line in log_file:                                           # 파일에서 한 줄씩 꺼낸다
             # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
             # 1. line 의 JSON 문자열을 json.loads 로 딕셔너리 entry 로 바꾼다
+#|             entry = json.loads(line)
             # 2. entry 를 entries 에 추가한다
+#|             entries.append(entry)
     return entries                                               # 요청 리스트를 리턴한다
 
 
@@ -216,8 +218,11 @@ def count_by(entries, key):                                      # 요청 리스
     for entry in entries:                                        # 요청을 하나씩 꺼낸다
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 3. entry[key] 를 value 에 담는다
+#|         value = entry[key]
         # 4. counts 에서 value 의 지금 횟수를 old_count 에 담는다 (없으면 0: counts.get(value, 0))
+#|         old_count = counts.get(value, 0)
         # 5. counts[value] 에 old_count + 1 을 넣는다
+#|         counts[value] = old_count + 1
     return counts                                                # 값별 횟수를 리턴한다
 
 
@@ -229,7 +234,9 @@ def filter_denied(entries):                                      # 요청 리스
     for entry in entries:                                        # 요청을 하나씩 꺼낸다
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 6. entry["allowed"] 가 거짓이면 (if not …)
+#|         if not entry["allowed"]:
         # 7.   entry 를 denied 에 추가한다
+#|             denied.append(entry)
     return denied                                                # 거부된 요청 리스트를 리턴한다
 
 
@@ -240,7 +247,9 @@ def deny_rate(entries):                                          # 요청 리스
     total = len(entries)                                         # 전체 요청 수
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 8. total 이 0 이면 (==)
+#|     if total == 0:
     # 9.   0.0 을 리턴한다 (0 으로 나눌 수 없으므로)
+#|         return 0.0
     denied_entries = filter_denied(entries)                      # 거부된 요청 리스트
     denied = len(denied_entries)                                 # 거부된 요청 수
     return denied / total                                        # 거부 수를 전체 수로 나눈 비율을 리턴한다
@@ -254,7 +263,9 @@ def find_heavy_users(denied_counts, limit):                      # 사용자별 
     for user, count in denied_counts.items():                    # 사용자 이름과 거부 횟수를 하나씩 꺼낸다
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 10. count 가 limit 이상이면 (>=)
+#|         if count >= limit:
         # 11.   user 를 heavy 에 추가한다
+#|             heavy.append(user)
     return heavy                                                 # 기준에 걸린 사용자 이름을 리턴한다
 ```
 
@@ -269,7 +280,7 @@ def find_heavy_users(denied_counts, limit):                      # 사용자별 
 | 9번 | 8번 `if` 안쪽의 `return` | 8개 |
 
 - 4번의 `counts.get(value, 0)` 은 문법 상자 ③의 `get` 과 같습니다. 처음 나온 값은 0 에서 시작합니다.
-- 8 · 9번은 요청이 하나도 없을 때 0 으로 나누는 오류를 막는 줄입니다. 로그가 비는 경우의 결과는 아래의 정답 펼침 「응용 5-1 정답」의 「자주 틀리는 곳」에서 읽습니다.
+- 8 · 9번은 요청이 하나도 없을 때 0 으로 나누는 오류를 막는 줄입니다. 로그가 비는 경우의 결과는 하단 바의 ‘정답 보기’ 「응용 5-1 정답」의 「자주 틀리는 곳」에서 읽습니다.
 - 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다.
   - 다만 `deny_rate` 의 8 · 9번만 비워 두면 오류가 나지 않습니다. 그 아래에 미리 채운 줄이 있어 들여쓰기 오류가 없고, 이번 로그는 비어 있지 않아 0 으로 나누지도 않기 때문입니다. 로그가 빈 날에만 문제가 드러납니다.
 

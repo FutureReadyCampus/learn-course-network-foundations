@@ -175,7 +175,7 @@ print(message)                                               # 이어 붙인 글
 
 <h3><code>alerts.py</code></h3>
 
-```python
+```python exercise
 import json                                                                             # 알림을 JSON 파일로 쓰기 위해 json 을 불러온다
 
 ALERTS_PATH = "alerts.json"                                                             # 알림을 모아 저장할 파일 이름
@@ -187,6 +187,7 @@ def make_alert(alert_type, target, count, note):                                
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. 딕셔너리를 alert 에 담는다: 키 "type" 에는 alert_type, "target" 에는 target, "count" 에는 count, "note" 에는 note, "status" 에는 "확인 필요" 를 넣는다 (여러 줄로 나눠 써도 된다)
+#|     alert = {"type": alert_type, "target": target, "count": count, "note": note, "status": "확인 필요"}
     return alert                                                                        # 알림 한 건을 리턴한다
 
 
@@ -199,6 +200,7 @@ def make_login_alerts(alert_ips):                                               
         note = "로그인 실패가 기준 이상 — 공격 확정이 아니라 먼저 살펴볼 곳"            # 담당자에게 보일 메모
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 2. make_alert 에 "비정상 로그인" · ip_address · count · note 를 전달해 alert 에 담는다
+#|         alert = make_alert("비정상 로그인", ip_address, count, note)
         alerts.append(alert)                                                            # 알림을 리스트에 추가한다
     return alerts                                                                       # 로그인 실패 알림 리스트를 리턴한다
 
@@ -212,7 +214,9 @@ def make_traffic_alerts(spike_minutes):                                         
         note = "요청이 평소의 3배 이상으로 늘어남 — 공격 확정이 아니라 먼저 살펴볼 곳"  # 담당자에게 보일 메모
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 3. str(minute) 로 시각 값을 문자열로 바꿔 target 에 담는다
+#|         target = str(minute)
         # 4. make_alert 에 "트래픽 급증" · target · count · note 를 전달해 alert 에 담는다
+#|         alert = make_alert("트래픽 급증", target, count, note)
         alerts.append(alert)                                                            # 알림을 리스트에 추가한다
     return alerts                                                                       # 트래픽 급증 알림 리스트를 리턴한다
 
@@ -223,7 +227,9 @@ def save_alerts(alerts, path):                                                  
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 5. path 파일을 쓰기 모드("w")로 열고 file 변수로 쓴다 (with open(path, "w", encoding="utf-8") as file:)
+#|     with open(path, "w", encoding="utf-8") as file:
     # 6. json.dump 에 alerts, file 을 이 순서로 전달하고, 뒤에 ensure_ascii=False, indent=2 를 붙여 쓴다 (한글은 그대로, 줄을 나눠 저장)
+#|         json.dump(alerts, file, ensure_ascii=False, indent=2)
     saved_count = len(alerts)                                                           # 저장한 알림이 몇 건인지 센다
     return saved_count                                                                  # 저장한 건수를 리턴한다
 ```

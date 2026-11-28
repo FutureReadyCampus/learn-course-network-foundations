@@ -137,7 +137,7 @@ PY
 
 실패를 흉내 내고 다시 시도합니다. 직접 쓰는 곳은 1 ~ 3번입니다.
 
-```python
+```python exercise
 from safe_runner import safe_run_action                                            # M5 Unit 1 응용 준비 레슨의 안전한 액션 실행 함수를 불러온다
 
 MAX_TRIES = 3                                                                      # 한 액션을 시도하는 최대 횟수
@@ -164,10 +164,13 @@ def run_with_retry(action, incident, state, fail_plan, max_tries):              
         try:                                                                       # 오류가 날 수 있는 부분을 시작한다 — 미리 채운 줄
             # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
             # 1. flaky_run_action(action, incident, state, fail_plan) 의 결과를 result 에 담는다
+#|             result = flaky_run_action(action, incident, state, fail_plan)
             # 2. result + " (시도 " + str(attempt) + "회)" 를 리턴한다 (성공하면 여기서 끝난다)
+#|             return result + " (시도 " + str(attempt) + "회)"
         except ConnectionError as error:                                           # 연결 오류가 나면 — 미리 채운 줄
             # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
             # 3. str(error) 를 last_error 에 담는다 (오류 문장을 기억해 두고 다음 시도로 간다)
+#|             last_error = str(error)
     return "실패: " + last_error + " (" + str(max_tries) + "회 모두 실패)"         # 모든 시도가 실패했으면 실패 문장을 리턴한다 — 미리 채운 줄
 ```
 
@@ -175,7 +178,7 @@ def run_with_retry(action, incident, state, fail_plan, max_tries):              
 
 하루 흐름 파일입니다. 줄 끝의 `[Unit 1 실습 1-3]` 같은 표시로 어느 실습에서 만든 함수인지 알 수 있습니다. 직접 쓰는 곳은 4 · 5번입니다.
 
-```python
+```python exercise
 from incident import change_status, match_playbooks                             # Unit 1 파일의 함수를 불러온다
 from enrichment import enrich_incident                                          # Unit 1 실습 1-3 : 맥락 붙이기
 from routing import decide_route, apply_route                                   # M5 Unit 1 응용 준비 레슨 : 경로 정하기
@@ -197,7 +200,9 @@ def run_playbook_with_retry(incident, playbook, state, action_log, fail_plan):  
         result = run_with_retry(action, incident, state, fail_plan, MAX_TRIES)  # 재시도하며 실행한다
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 4. result 가 "실패" 로 시작하면 (if, startswith)
+#|         if result.startswith("실패"):
         # 5.   failed 에 True 를 담는다 (실패한 액션이 있다고 적는다)
+#|             failed = True
         action_log.append(log_line(incident, action, result))                   # 결과를 기록에 추가한다 — 미리 채운 줄
     if failed:                                                                  # 실패한 액션이 있으면
         return "일부 실패"                                                      # 조치됨으로 옮기지 않고 일부 실패를 리턴한다
@@ -236,7 +241,7 @@ def run_day_flow(incidents, registry, users_info, source_ips, trusted_ips, state
 
 실패한 기록만 모읍니다. 직접 쓰는 곳은 6 · 7번입니다.
 
-```python
+```python exercise
 def collect_failures(action_log):  # 감사 기록 리스트를 받는 함수
     """감사 기록에서 결과가 「실패」로 시작하는 기록만 골라 리스트로 리턴한다.
     담당자가 아침에 가장 먼저 볼 「확인이 필요한 건」 목록을 만들 때 쓴다.
@@ -245,7 +250,9 @@ def collect_failures(action_log):  # 감사 기록 리스트를 받는 함수
     for entry in action_log:       # 기록을 하나씩 꺼낸다
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 6. entry["result"] 가 "실패" 로 시작하면 (if, startswith)
+#|         if entry["result"].startswith("실패"):
         # 7.   failures 에 entry 를 추가한다 (append)
+#|             failures.append(entry)
     return failures                # 실패한 기록 리스트를 리턴한다
 ```
 
@@ -253,7 +260,7 @@ def collect_failures(action_log):  # 감사 기록 리스트를 받는 함수
 
 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
-```python
+```python exercise
 from incident import load_json, INCIDENTS_PATH                                              # Unit 1 파일의 함수를 불러온다
 from approvals import apply_decision                                                        # 담당자의 승인 · 거절 결과를 적용하는 함수를 불러온다
 from retry_runner import run_with_retry, MAX_TRIES                                          # 방금 만든 재시도 함수를 불러온다
@@ -309,10 +316,12 @@ print("티켓:", len(state["tickets"]), "건 · 담당자 알림:", len(state["n
 print("--- 단계 6: 담당자 확인이 필요한 건")                                                # 단계 6 시작을 알리는 줄
 # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
 # 8. collect_failures(action_log) 의 결과를 failures 에 담는다
+#| failures = collect_failures(action_log)
 for entry in failures:                                                                      # 실패한 기록을 하나씩 꺼낸다
     incident_id = entry["incident"]                                                         # 실패한 인시던트 번호
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 9. incident_id · entry["action"] · ":" · entry["result"] 를 출력한다 (print)
+#|     print(incident_id, entry["action"], ":", entry["result"])
 for item in pending:                                                                        # 승인 대기 건을 하나씩 꺼낸다
     if item["status"] == "분류됨":                                                          # 아직 처리되지 않았으면
         print(item["id"], "승인 대기 :", item["why"])                                       # 승인 대기 건과 이유를 출력한다

@@ -78,7 +78,7 @@ containment.py      contain_account     : 계정을 잠그고, 잠금이 확인�
 
 - `state["sessions"].get(user, [])` 는 그 계정의 세션 리스트를 꺼내고, 세션 기록이 없는 계정이면 빈 리스트 `[]` 를 꺼냅니다. 그래서 `len(…)` 이 오류 없이 0 이 됩니다. `str(before_count)` 는 「응용과 Unit 3에 필요한 처리 함수 준비」 레슨에서 본 대로 숫자를 글자로 바꿉니다.
 
-```python
+```python exercise
 from containment_store import make_record                  # 기록 한 건을 만드는 함수를 불러온다
 
 
@@ -88,6 +88,7 @@ def terminate_sessions(user, state, incident_id, reason):  # 계정 · 상태 ·
     """
     before_count = len(state["sessions"].get(user, []))    # 조치 전 세션 수
     # ① state["sessions"][user] 에 빈 리스트를 저장한다 (세션을 모두 종료한다)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     state["sessions"][user] = []
     after_count = len(state["sessions"].get(user, []))     # 조치 뒤 세션 수를 다시 구한다
     return make_record("세션 종료", user, incident_id, "세션 " + str(before_count) + "개", "세션 " + str(after_count) + "개", reason)  # 조치 전 · 후 세션 수와 함께 기록한다
 
@@ -108,7 +109,7 @@ def find_open_sessions(state):                             # 연습용 시스템
 
 잠금과 세션 종료를 한 함수에서 순서대로 수행합니다. Unit 3 응용 3-1 도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 ② · ③ 입니다.
 
-```python
+```python exercise
 from account_actions import lock_account                              # 실습 2-1에 만든 계정 잠금 함수를 불러온다
 from session_actions import terminate_sessions                        # 방금 만든 세션 종료 함수를 불러온다
 
@@ -121,7 +122,9 @@ def contain_account(user, state, vip_accounts, incident_id, reason):  # 계정 �
     lock_record = lock_account(user, state, vip_accounts, incident_id, reason)  # 계정을 먼저 잠그고 기록을 받는다
     records.append(lock_record)                                       # 잠금 기록을 리스트에 추가한다
     # ② lock_record 의 "after" 가 "잠김" 이면 (if, ==)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     if lock_record["after"] == "잠김":
     # ③ terminate_sessions(user, state, incident_id, reason) 의 결과를 records 에 추가한다 (append)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+#|         records.append(terminate_sessions(user, state, incident_id, reason))
     return records                                                    # 조치 기록 리스트를 리턴한다
 ```
 
@@ -205,7 +208,7 @@ print("조치 기록:", len(load_json("containment_log.json")), "건")          
 <!-- /checklist -->
 
 5. 실행 결과에서 선택한 글감의 근거를 찾아 초안의 ‘검증 결과’에 메모합니다.
-**확인** — 단계 2 가 다섯 줄(`dami` 잠금 · 세션 종료, `gaeun` 변경 없음, `junho` 잠김 → 잠김 · 세션 종료)이고, 단계 3 이 `빈틈이 남은 계정: []`, 단계 4 가 `잠긴 계정: ['junho', 'dami']` · `조치 기록: 5 건` 이면 성공입니다. 안 나오면 아래 실습 2-2 정답 펼침의 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+**확인** — 단계 2 가 다섯 줄(`dami` 잠금 · 세션 종료, `gaeun` 변경 없음, `junho` 잠김 → 잠김 · 세션 종료)이고, 단계 3 이 `빈틈이 남은 계정: []`, 단계 4 가 `잠긴 계정: ['junho', 'dami']` · `조치 기록: 5 건` 이면 성공입니다. 안 나오면 실습 2-2 하단 바의 ‘정답 보기’로 연 해설의 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 ## 실습 2-2 정리
 

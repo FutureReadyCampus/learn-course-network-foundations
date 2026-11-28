@@ -672,48 +672,44 @@
     };
     nextPage.addEventListener("click", goNext);
     navFooter.append(prevPage);
-    const answer = prose.querySelector("details.exercise-answer");
-    if (answer) {
+    const disclosure = prose.querySelector("details.exercise-answer");
+    let explanation;
+    if (disclosure) {
+      explanation = document.createElement("section");
+      explanation.className = "exercise-answer";
+      explanation.id = "current-exercise-answer";
+      explanation.hidden = true;
+      const title = document.createElement("h2");
+      title.textContent = "정답과 해설";
+      disclosure.querySelector("summary").replaceWith(title);
+      explanation.append(...disclosure.childNodes);
+      disclosure.replaceWith(explanation);
+    }
+    const lines = [...prose.querySelectorAll("pre code [data-answer-line]")];
+    if (explanation || lines.length) {
       const answerToggle = document.createElement("button");
       answerToggle.type = "button";
       answerToggle.className = "page-answer-toggle";
-      answer.id = "current-exercise-answer";
-      answerToggle.setAttribute("aria-controls", answer.id);
-      const summary = answer.querySelector("summary");
-      const lines = [...prose.querySelectorAll("pre code [data-answer-line]")];
-      if (lines.length) {
-        const code = lines[0].closest("code");
-        code.id = "current-exercise-code";
-        answerToggle.setAttribute("aria-controls", code.id + " " + answer.id);
-      }
-      const inlineToggle = lines.length ? answerToggle.cloneNode() : null;
-      if (inlineToggle) {
-        (lines[0].closest(".code-wrap") || lines[0].closest("pre")).before(inlineToggle);
-        inlineToggle.addEventListener("click", () => answerToggle.click());
-      }
-      const syncAnswerToggle = () => {
-        for (const line of lines) line.textContent = answer.open ? line.dataset.answerLine : "";
-        if (inlineToggle) {
-          inlineToggle.textContent = answer.open ? "정답 닫기" : "정답 보기";
-          inlineToggle.setAttribute("aria-expanded", String(answer.open));
-        }
-        summary.textContent = answer.open ? "정답과 해설 닫기" : "정답과 해설 보기";
-        answerToggle.textContent = answer.open ? "정답 닫기" : "정답 보기";
-        answerToggle.setAttribute("aria-expanded", String(answer.open));
-      };
+      const codeBoxes = [...new Set(lines.map(line => line.closest("code")))];
+      const controlled = codeBoxes.map((code, index) => code.id = "exercise-answer-code-" + index);
+      if (explanation) controlled.push(explanation.id);
+      answerToggle.setAttribute("aria-controls", controlled.join(" "));
+      answerToggle.setAttribute("aria-expanded", "false");
+      answerToggle.textContent = "정답 보기";
+      const original = lines.map(line => line.textContent);
       answerToggle.addEventListener("click", () => {
-        answer.open = !answer.open;
-        if (answer.open) {
-          const first = lines[0] || summary;
-          if (lines.length) first.tabIndex = -1;
+        const open = answerToggle.getAttribute("aria-expanded") === "false";
+        lines.forEach((line, index) => { line.textContent = open ? line.dataset.answerLine : original[index]; });
+        if (explanation) explanation.hidden = !open;
+        answerToggle.setAttribute("aria-expanded", String(open));
+        answerToggle.textContent = open ? "정답 닫기" : "정답 보기";
+        if (open) {
+          const first = lines[0] || explanation;
+          first.tabIndex = -1;
           first.focus({ preventScroll: true });
+          first.scrollIntoView({ block: "start" });
         }
       });
-      answer.addEventListener("toggle", () => {
-        syncAnswerToggle();
-        if (answer.open) (lines[0] || answer).scrollIntoView({ block: "start" });
-      });
-      syncAnswerToggle();
       navFooter.classList.add("has-answer-toggle");
       navFooter.append(answerToggle);
     }

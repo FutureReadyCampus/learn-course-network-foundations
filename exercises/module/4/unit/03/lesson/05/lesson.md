@@ -287,7 +287,7 @@ False
 
 <h3><code>saas_detection.py</code></h3>
 
-```python
+```python exercise
 import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
 
 EVENTS_PATH = "normalized_events.json"                # 읽을 정규화 이벤트 파일 이름
@@ -334,7 +334,9 @@ def find_off_hours_logins(logins):                    # 로그인 표를 받는 
 
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. hours 가 BUSINESS_START 이상 BUSINESS_END 이하인지 between 으로 구해 is_business_hour 에 담는다
+#|     is_business_hour = hours.between(BUSINESS_START, BUSINESS_END)
     # 2. is_business_hour 의 반대를 ~ 로 구해 is_off_hours 에 담는다
+#|     is_off_hours = ~is_business_hour
     off_hours_logins = logins[is_off_hours]           # True 인 행만 골라 새 표로 만든다
     return off_hours_logins                           # 업무 시간 밖 로그인 표를 리턴한다
 
@@ -351,9 +353,12 @@ def find_new_ip_users(logins):                        # 로그인 표를 받는 
         usual_ip = USUAL_IPS.get(user)                # 그 사용자의 평소 IP(기록이 없으면 None)
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 3. usual_ip 가 None 이 아닌지 구해 has_usual_ip 에 담는다 (None 인지는 is None, 아닌지는 is not None)
+#|         has_usual_ip = usual_ip is not None
         # 4. ip 가 usual_ip 와 다른지 != 로 구해 is_new_ip 에 담는다 (같은지는 ==, 다른지는 !=)
+#|         is_new_ip = ip != usual_ip
         if has_usual_ip and is_new_ip:                # 평소 IP 기록이 있고, 이번 IP 가 평소와 다르면
             # 5. new_ip_users 에 user 를 추가한다
+#|             new_ip_users.append(user)
     return new_ip_users                               # 평소와 다른 IP 로 로그인한 사용자를 리턴한다
 
 

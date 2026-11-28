@@ -131,7 +131,7 @@ Module 4 연결 함수 모음입니다. 실습 5-2에서는 가져오지 않습�
 | 3번 · 5번 · 7번 | 한 줄 |
 | 4번 | 딕셔너리라서 줄을 나눠 씀 |
 
-```python
+```python exercise
 REQUIRED_KEYS = ["entity", "score", "grade", "reasons"]              # Module 4 결과 기록에 반드시 있어야 하는 키
 GRADES = ["high", "mid", "low"]                                      # 엔진이 읽을 수 있는 등급 이름
 FIRST_NUMBER = 501                                                   # 엔진이 붙이는 알림 번호의 시작 (INC-501 부터)
@@ -142,8 +142,10 @@ def find_schema_problem(record):                                     # Module 4 
     for key in REQUIRED_KEYS:                                        # 필수 키를 하나씩 꺼낸다 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 1. key 가 record 안에 없으면 (if, not in)   (8칸)
+#|         if key not in record:
             return "필수 키 없음: " + key                            # 어떤 키가 없는지 이유로 리턴한다 — 미리 채운 줄
     # 2. record["grade"] 가 GRADES 안에 없으면 (if, not in)   (4칸)
+#|     if record["grade"] not in GRADES:
         return "알 수 없는 등급: " + record["grade"]                 # 등급 이름을 이유로 리턴한다 — 미리 채운 줄
     if record["reasons"] == []:                                      # 탐지된 규칙 리스트가 비어 있으면 — 미리 채운 줄
         return "탐지된 규칙이 없음"                                  # 이유를 리턴한다 — 미리 채운 줄
@@ -154,7 +156,16 @@ def make_alert(record, number):                                      # Module 4 
     """Module 4 결과 기록(대상 · 점수 · 등급 · 이유)에 알림 번호와 상태를 붙여 Unit 1 인시던트 모양의 딕셔너리로 리턴한다. Module 4 파일의 기록을 엔진의 입력으로 바꿀 때 쓴다."""
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 3. "INC-" 뒤에 str(number) 를 이어 붙여 alert_id 에 저장한다   (4칸)
+#|     alert_id = "INC-" + str(number)
     # 4. 키 "id"(alert_id) · "entity" · "grade" · "score" · "reasons"(record 의 같은 이름 키의 값), "status"("탐지됨") 를 가진 딕셔너리를 alert 에 저장한다   (4칸)
+#|     alert = {
+#|         "id": alert_id,
+#|         "entity": record["entity"],
+#|         "grade": record["grade"],
+#|         "score": record["score"],
+#|         "reasons": record["reasons"],
+#|         "status": "탐지됨",
+#|     }
     return alert                                                     # 엔진이 읽을 알림을 리턴한다 — 미리 채운 줄
 
 
@@ -166,7 +177,9 @@ def split_records(records):                                          # Module 4 
     for record in records:                                           # 기록을 하나씩 꺼낸다 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 5. find_schema_problem(record) 의 결과를 problem 에 저장한다   (8칸)
+#|         problem = find_schema_problem(record)
         # 6. problem 이 "" 이면 (if, ==)   (8칸)
+#|         if problem == "":
             alert = make_alert(record, number)                       # 알림 모양으로 바꾼다 — 미리 채운 줄
             alerts.append(alert)                                     # 알림 리스트에 추가한다 — 미리 채운 줄
             number = number + 1                                      # 다음 번호로 넘어간다 — 미리 채운 줄
@@ -184,10 +197,12 @@ def summarize(results):                                              # 엔진 �
         outcome = result["outcome"]                                  # 이 알림의 처리 결과 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 7. outcome_counts[outcome] 에 outcome_counts[outcome] + 1 을 저장한다 (1 늘린다)   (8칸)
+#|         outcome_counts[outcome] = outcome_counts[outcome] + 1
         if result["ticket"] != "":                                   # 티켓이 있으면 — 미리 채운 줄
             ticket_count = ticket_count + 1                          # 티켓 수를 1 늘린다 — 미리 채운 줄
         for step in result["steps"]:                                 # 조치 결과를 하나씩 꺼낸다 — 미리 채운 줄
             # 8. step["executed"] 가 참이면 (if)   (12칸)
+#|             if step["executed"]:
                 action_text = result["incident"] + " " + step["action"] + " " + step["target"] + ": " + step["before"] + " → " + step["after"]  # 알림 · 조치 · 대상 · 전 · 후 상태를 한 문장으로 만든다 — 미리 채운 줄
                 executed_actions.append(action_text)                 # 문장을 추가한다 — 미리 채운 줄
     summary = {"outcome_counts": outcome_counts, "ticket_count": ticket_count, "executed_actions": executed_actions}  # 요약 딕셔너리 — 미리 채운 줄
@@ -198,7 +213,7 @@ def summarize(results):                                              # 엔진 �
 
 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
-```python
+```python exercise
 from incident import load_json, save_json                                                    # Unit 1 파일의 JSON 읽기 · 쓰기 함수를 불러온다
 from soar_engine import load_context, run_all                                                # 실습 5-1에 만든 엔진 함수를 불러온다
 from engine_input import find_schema_problem, split_records, summarize                       # 방금 만든 연결 함수를 불러온다
@@ -224,6 +239,7 @@ for alert in alerts:                                                            
 context = load_context()                                                                     # 엔진이 쓰는 재료를 읽는다
 # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
 # 9. run_all(alerts, context) 의 결과를 results 에 저장한다   (0칸)
+#| results = run_all(alerts, context)
 print("--- 단계 4: 엔진 처리 결과")                                                          # 단계 4 시작을 알리는 줄
 for result in results:                                                                       # 결과 기록을 하나씩 꺼낸다
     print(result["incident"], result["entity"], "→", result["outcome"], "·", result["playbook"], "· 티켓", result["ticket"])  # 알림 · 대상 · 처리 결과 · 플레이북 · 티켓을 출력한다
@@ -280,7 +296,7 @@ print("--- 단계 6: risk_engine_log.json · engine_summary.json · risk_tickets
 - [ ] `risk_engine_log.json` 과 `engine_summary.json` 에 응용 실행 결과가 저장되었다
 <!-- /checklist -->
 
-**확인** — 단계 3 이 `엔진에 넣을 알림 5 건 · 거절한 기록 0 건` 이고, 단계 5 가 `자동 실행 2 건 · 승인 대기 0 건 · 차단 금지 0 건 · 조치 없음 3 건 · 실패 0 건` 이면 성공입니다. 안 나오면 이 레슨 아래의 응용 5-1 정답 펼침과 한 줄씩 맞춰 보고, 오류가 나면 이 레슨의 「자주 틀리는 곳」을 봅니다.
+**확인** — 단계 3 이 `엔진에 넣을 알림 5 건 · 거절한 기록 0 건` 이고, 단계 5 가 `자동 실행 2 건 · 승인 대기 0 건 · 차단 금지 0 건 · 조치 없음 3 건 · 실패 0 건` 이면 성공입니다. 안 나오면 이 레슨 응용 5-1 하단 바의 ‘정답 보기’와 한 줄씩 맞춰 보고, 오류가 나면 이 레슨의 「자주 틀리는 곳」을 봅니다.
 
 ## 응용 5-1 정리
 

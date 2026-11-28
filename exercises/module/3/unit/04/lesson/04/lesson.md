@@ -89,7 +89,7 @@ source:
 
 <h3><code>revoke.py</code></h3>
 
-```python
+```python exercise
 import json                                                      # JSON 파일을 쓰는 모듈을 불러온다
 
 
@@ -135,9 +135,11 @@ def execute_revocation(plans, users, roles, exceptions, now):    # 계획 · 사
     log = []                                                     # 이력을 담을 빈 리스트
     for plan in plans:                                           # 계획을 하나씩 꺼낸다
         # ① plan["approval"] 이 "승인 대기" 이면 (==)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+#|         if plan["approval"] == "승인 대기":
             result = "대기"                                      # 실행하지 않고 대기로 남긴다
         else:                                                    # 승인 불필요이거나 승인됨이면
             # ② apply_plan 에 plan, users, roles, exceptions 를 넘겨 호출한다   # ← 이 주석 바로 아래 줄에 씁니다 (12칸)
+#|             apply_plan(plan, users, roles, exceptions)
             result = "실행"                                      # 실행했다고 남긴다
         entry = {                                                 # 회수 이력 한 개의 값을 묶는다(여러 줄)
             "time": now,                                         # 시각
@@ -290,7 +292,7 @@ print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력
 
 6. [문제 해결 과정을 블로그에 기록하기](__SITE__/exercises/module/3/unit/4/lesson/10/page/1)에서 회수 전후 판정과 이력으로 확인한 내용을 실습 4-1 기록과 함께 정리합니다.
 
-**확인** — 다 채운 뒤 실행했을 때 `실행 7 건, 대기 1 건`, 단계 2의 `바뀜` 이 junho 의 `SALES:QUERY` 한 줄, 마지막 줄이 `저장 8 건, 다시 읽은 건수 8 건, 첫 이력: junho SALES:QUERY 실행` 이면 성공입니다. 안 나오면 아래의 실습 4-2 정답 펼침과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+**확인** — 다 채운 뒤 실행했을 때 `실행 7 건, 대기 1 건`, 단계 2의 `바뀜` 이 junho 의 `SALES:QUERY` 한 줄, 마지막 줄이 `저장 8 건, 다시 읽은 건수 8 건, 첫 이력: junho SALES:QUERY 실행` 이면 성공입니다. 안 나오면 실습 4-2 하단 바의 ‘정답 보기’와 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 
 글감과 연결되는 입력이나 출력 한 줄을 골라 이번 유닛의 블로그 초안에 남깁니다.

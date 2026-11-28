@@ -112,7 +112,7 @@ SIEM(심)이 무엇인지와 현업에서 쓰는 방식은 시작하기 레슨�
 
 <h3><code>log_classify.py</code></h3>
 
-```python
+```python exercise
 SUSPICIOUS_STATUS = (401, 403)                                         # 의심으로 보는 상태 코드(로그인 실패 · 접근 거부)
 
 
@@ -122,8 +122,11 @@ def is_suspicious(entry):                                              # 읽은 
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. entry["status"] 가 SUSPICIOUS_STATUS 안에 있는지(in)의 결과를 bad_status 에 담는다
+#|     bad_status = entry["status"] in SUSPICIOUS_STATUS
     # 2. entry["path"] 안에 "/admin" 이 들어 있는지(in)의 결과를 admin_path 에 담는다
+#|     admin_path = "/admin" in entry["path"]
     # 3. bad_status 또는 admin_path 가 참인지(or)의 결과를 리턴한다
+#|     return bad_status or admin_path
 
 
 def is_error(entry):                                                   # 읽은 요청 딕셔너리를 받는 함수
@@ -132,6 +135,7 @@ def is_error(entry):                                                   # 읽은 
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. entry["status"] 가 400 이상인지의 결과(True 또는 False)를 리턴한다
+#|     return entry["status"] >= 400
 
 
 def classify_line(entry):                                              # 읽은 요청 딕셔너리를 받는 함수
@@ -140,9 +144,13 @@ def classify_line(entry):                                              # 읽은 
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 5. is_suspicious(entry) 가 참이면 (if)
+#|     if is_suspicious(entry):
     # 6.   "의심" 을 리턴한다
+#|         return "의심"
     # 7. is_error(entry) 가 참이면 (if)
+#|     if is_error(entry):
     # 8.   "오류" 를 리턴한다
+#|         return "오류"
     return "정상"                                                      # 어느 조건에도 안 맞으면 정상이다
 
 
@@ -228,7 +236,7 @@ for item in labeled:                                                            
 
 <h2>순서 · 파일 작성과 터미널 실행</h2>
 
-1. **[VS Code]** `anomaly_detection` 폴더에 `log_classify.py` · `apply1-1_run.py` 두 파일을 만들어, 위의 같은 이름 코드 상자 내용을 각각 붙여 넣고 저장합니다. 같은 폴더에 있는 실습 1-1의 `log_parse.py` 를 불러오므로 <mark>없으면 실습 1-1 레슨에서 먼저 만듭니다</mark>(채우다 막히면 정답 펼침의 「실습 1-1 정답」을 봅니다).
+1. **[VS Code]** `anomaly_detection` 폴더에 `log_classify.py` · `apply1-1_run.py` 두 파일을 만들어, 위의 같은 이름 코드 상자 내용을 각각 붙여 넣고 저장합니다. 같은 폴더에 있는 실습 1-1의 `log_parse.py` 를 불러오므로 <mark>없으면 실습 1-1 레슨에서 먼저 만듭니다</mark>(채우다 막히면 하단 바의 ‘정답 보기’의 「실습 1-1 정답」을 봅니다).
 
 <!-- checklist optional -->
 - [ ] `anomaly_detection` 폴더에 `log_classify.py` 를 만들고 코드 상자 내용을 붙여 넣은 뒤 저장했다

@@ -265,7 +265,7 @@ print(failed_shape)                              # (23, 6) — 실패한 이벤�
 
 <h3><code>events_basic.py</code></h3>
 
-```python
+```python exercise
 import pandas as pd                     # 판다스를 pd 라는 짧은 이름으로 불러온다
 
 EVENTS_PATH = "normalized_events.json"  # 읽을 정규화 이벤트 파일 이름
@@ -276,6 +276,7 @@ def load_events(path):                  # 파일 경로를 받는 함수
     분석을 시작할 때 맨 먼저 쓴다.
     """
     # ① pd.read_json 으로 path 의 파일을 읽어 events 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     events = pd.read_json(path)
 
     return events                       # 표를 리턴한다
 
@@ -306,6 +307,7 @@ def count_values(table, column):        # 표와 열 이름을 받는 함수
     """
     values = table[column]              # column 열 하나를 꺼낸다
     # ② values 에서 값별 개수를 value_counts() 로 세어 value_event_counts 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     value_event_counts = values.value_counts()
 
     return value_event_counts           # 값별 개수를 리턴한다
 ```
@@ -377,7 +379,7 @@ print(source_event_counts)                                                      
 
 5. 실행 결과에서 선택한 글감의 근거를 찾아 초안의 ‘검증 결과’에 메모합니다.
 
-**확인** — 단계 1이 `(57, 6)`, 단계 2가 성공 34 · 실패 23, 단계 3의 제목 줄에 `23 개` 가 나오고 web 13 · server 9 · saas 1 이면 성공입니다. 안 나오면 위 정답 접기의 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+**확인** — 단계 1이 `(57, 6)`, 단계 2가 성공 34 · 실패 23, 단계 3의 제목 줄에 `23 개` 가 나오고 web 13 · server 9 · saas 1 이면 성공입니다. 안 나오면 하단 바의 ‘정답 보기’로 연 해설의 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 <!-- answer: 07|실습 2-1 정답 -->
 

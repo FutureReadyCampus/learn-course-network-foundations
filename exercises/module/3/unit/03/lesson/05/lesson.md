@@ -59,7 +59,7 @@ source:
 
 <h3><code>review_rules.py</code></h3>
 
-```python
+```python exercise
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
 from exception_policy import TIME_FORMAT                         # 시각 문자열의 형식("%Y-%m-%d %H:%M")을 불러온다
 
@@ -83,6 +83,21 @@ def find_stale(access_list, now):                                # 현황 리스
     # 12.    stale_entry["reason"] 을 reason 으로 정한다
     # 13.    stale 에 stale_entry 를 추가한다
     # 14. stale 을 리턴한다
+#|     stale = []
+#|     for entry in access_list:
+#|         expires = entry.get("expires")
+#|         reason = ""
+#|         if not entry["employed"]:
+#|             reason = "퇴사한 계정"
+#|         elif expires is not None:
+#|             expires_at = datetime.strptime(expires, TIME_FORMAT)
+#|             if expires_at <= now:
+#|                 reason = "만료된 예외"
+#|         if reason != "":
+#|             stale_entry = entry.copy()
+#|             stale_entry["reason"] = reason
+#|             stale.append(stale_entry)
+#|     return stale
 ```
 
 - `find_stale` 본문의 들여쓰기는 아래와 같습니다. 공백 4개는 Tab 키 한 번입니다.

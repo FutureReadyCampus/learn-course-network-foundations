@@ -119,7 +119,7 @@ print(len(found))                                   # 1
 
 - `make_tuning_note` 는 `for` 안에서 `return` 합니다. `return` 하면 그 자리에서 함수가 끝나므로, IP 차단 기록을 하나 찾으면 바로 제안을 돌려줍니다. IP 차단 기록이 하나도 없으면 `for` 를 다 돈 뒤 아래 줄로 내려가, 첫 번째 기록(`changes[0]`)으로 계정 예외를 제안합니다.
 
-```python
+```python exercise
 from rollback import find_incident_records, rollback_incident                        # Unit 3 실습 3-1 의 되돌리기 함수를 불러온다
 
 RECOVERY_LIMIT = 30                                                                  # 오탐 신고를 받은 뒤 복구를 끝내야 하는 시간(분)
@@ -132,7 +132,9 @@ def list_changes(log, incident_id):                                             
     changes = []                                                                     # 실제로 바뀐 기록을 모을 빈 리스트 — 미리 채운 줄
     for record in find_incident_records(log, incident_id):                           # 그 인시던트의 기록을 하나씩 읽는다 — 미리 채운 줄
         # ① record["before"] 와 record["after"] 가 다르면 (if, !=)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+#|         if record["before"] != record["after"]:
         # ② changes 에 record 를 추가한다 (append)   # ← 이 주석 바로 아래 줄에 씁니다 (12칸)
+#|             changes.append(record)
 
     return changes                                                                   # 실제로 바뀐 기록 리스트를 리턴한다 — 미리 채운 줄
 
@@ -271,7 +273,7 @@ print("--- 단계 4: fp_results.json 에", len(results), "건 · fp_state_after.
 
 <!-- answer: 10|실습 4-2 정답 -->
 
-**확인** — 단계 2 에 두 신고 처리 결과가, 단계 3 에 처리 뒤 상태가 나오고 단계 4 에 두 건이 저장되면 성공입니다. 출력이 다르면 이 실습 바로 아래의 정답 펼침과 비교합니다.
+**확인** — 단계 2 에 두 신고 처리 결과가, 단계 3 에 처리 뒤 상태가 나오고 단계 4 에 두 건이 저장되면 성공입니다. 출력이 다르면 이 실습 바로 하단 바의 ‘정답 보기’와 비교합니다.
 
 ## 실습 4-2 정리
 

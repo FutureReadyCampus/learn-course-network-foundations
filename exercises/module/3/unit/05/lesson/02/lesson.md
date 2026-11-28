@@ -108,7 +108,7 @@ source:
 
 <h3><code>checklist.py</code></h3>
 
-```python
+```python exercise
 import json                                                      # JSON 파일을 읽는 모듈을 불러온다
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
 
@@ -130,6 +130,7 @@ def check_employed(users):                                       # 사용자 딕
     problems = []                                                # 문제가 있는 사용자 이름을 모을 리스트
     for name, info in users.items():                             # 사용자 이름과 사용자 정보를 하나씩 꺼낸다
         # ① info["employed"] 가 거짓이면 (if not …)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+#|         if not info["employed"]:
             problems.append(name)                                # 이름을 문제 리스트에 추가한다
     return problems                                              # 문제가 있는 사용자 이름을 리턴한다
 
@@ -142,6 +143,7 @@ def check_expired(exceptions, now):                              # 예외 리스
     for exception in exceptions:                                       # 예외를 하나씩 꺼낸다
         expires_at = datetime.strptime(exception["expires"], TIME_FORMAT)   # 만료 시각 문자열을 시각으로 바꾼다
         # ② expires_at 이 now 보다 이르거나 같으면 (<=)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+#|         if expires_at <= now:
             problems.append(exception["id"])                           # 예외 번호를 문제 리스트에 추가한다
     return problems                                              # 문제가 있는 예외 번호를 리턴한다
 
@@ -153,6 +155,7 @@ def check_dept(users, role_dept):                                # 사용자 딕
     problems = []                                                # 문제가 있는 사용자 이름을 모을 리스트
     for name, info in users.items():                             # 사용자 이름과 사용자 정보를 하나씩 꺼낸다
         # ③ role_dept 에서 info["role"] 의 부서를 찾아 expected_dept 에 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+#|         expected_dept = role_dept[info["role"]]
         if expected_dept != info["dept"]:                        # 사용자의 부서와 다르면
             problems.append(name)                                # 이름을 문제 리스트에 추가한다
     return problems                                              # 문제가 있는 사용자 이름을 리턴한다
@@ -261,7 +264,7 @@ for result in results:                                           # 점검 결과
    - (나) [핵심 질문] 만료 예외 점검은 「통과」인데, 예외 3번은 퇴사한 dami 의 예외입니다. 「통과」를 「문제 없음」으로만 읽으면 안 되는 이유와, 이 예외를 볼 때 함께 읽어야 하는 다른 점검을 적어 주세요.
    - (다) [응용] 점검은 junho 가 영업 부서인데 역할은 `finance` 라고 알려 줍니다. 점검 코드가 알려 주는 것과 알려 주지 못하는 것을 구분해 주세요. 그리고 이 결과를 받은 담당자가 무엇을 확인해야 하는지, 코드가 바로 권한을 회수하면 안 되는 이유가 무엇인지 적어 주세요.
 
-**확인** — 단계 1에 `사용자 6 명 · 예외 4 개`, 단계 2에 실패 두 줄(`['dami']` · `['junho']`)과 통과 한 줄(만료 예외 점검)이 나오면 성공입니다. 안 나오면 아래의 정답 펼침의 실습 5-1 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다. 퇴사자 계정 점검에 여섯 명이 모두 나오면 ① 이 빠진 것이고, dami 만 빼고 다섯 명이 나오면 ① 에서 `not` 이 빠진 것입니다.
+**확인** — 단계 1에 `사용자 6 명 · 예외 4 개`, 단계 2에 실패 두 줄(`['dami']` · `['junho']`)과 통과 한 줄(만료 예외 점검)이 나오면 성공입니다. 안 나오면 하단 바의 ‘정답 보기’의 실습 5-1 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다. 퇴사자 계정 점검에 여섯 명이 모두 나오면 ① 이 빠진 것이고, dami 만 빼고 다섯 명이 나오면 ① 에서 `not` 이 빠진 것입니다.
 
 <!-- answer: 06|실습 5-1 정답 -->
 

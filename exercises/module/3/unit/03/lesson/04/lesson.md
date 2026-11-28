@@ -161,7 +161,7 @@ ls
 
 <h3><code>review_unused.py</code></h3>
 
-```python
+```python exercise
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
 from config_loader import load_json                              # config_loader.py 의 안전한 읽기 함수를 불러온다
 from exception_policy import TIME_FORMAT                         # 시각 문자열의 형식("%Y-%m-%d %H:%M")을 불러온다
@@ -208,11 +208,13 @@ def find_unused(access_list, last_used_map, now, limit_days):    # 현황 · 마
         permission = entry["permission"]                         # 그 권한의 권한 이름
         key = f"{user}:{permission}"                             # 그 권한의 「사용자:권한」 문자열을 만든다
         # ① last_used_map 에서 key 로 마지막 사용 시각을 꺼내 used_text 에 담는다 (.get, 이력이 없으면 None)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+#|         used_text = last_used_map.get(key)
 
         if used_text is None:                                    # 사용 이력이 없으면
             unused_entry = make_unused(entry, None)              # 안 쓴 권한 한 건을 만든다
             unused.append(unused_entry)                          # 마지막 사용 시각을 None 으로 적은 복사본을 후보에 추가한다
         # ② 아니고(elif), days_since(used_text, now) 가 limit_days 보다 크면 (>)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+#|         elif days_since(used_text, now) > limit_days:
 
             unused_entry = make_unused(entry, used_text)         # 안 쓴 권한 한 건을 만든다
             unused.append(unused_entry)                          # 마지막 사용 시각을 적은 복사본을 후보에 추가한다
@@ -319,7 +321,7 @@ for entry in unused:                                             # 후보를 한
    - (나) [응용] junho 의 `SETTLE:QUERY` 는 마지막 사용이 90일 전이라 후보에서 빠졌고, 같은 junho 의 `SALES:QUERY` 는 91일 전이라 후보에 들어갔습니다. 하루 차이로 나누는 기준은 합리적일까요? 경계 부근(후보가 되고 안 되고가 갈리는 90일 근처)에서 담당자가 추가로 확인할 것도 적어 주세요.
    - (다) [응용] 사용 이력이 없는 권한을 바로 지우면 위험한 경우가 있습니다. 어떤 경우인지 예를 들고, 지우기 전에 무엇을 확인해야 하는지 적어 주세요.
 
-**확인** — 실행했을 때 단계 1 이 일곱 줄이고, 단계 2 가 `90일 넘게 안 쓴 후보 3 건` 아래 `seoyeon SALES:CHANGE` · `junho SALES:QUERY` · `gaeun ACCOUNT:CHANGE` 세 줄이면 성공입니다. 안 나오면 아래의 실습 3-2 정답 펼침 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+**확인** — 실행했을 때 단계 1 이 일곱 줄이고, 단계 2 가 `90일 넘게 안 쓴 후보 3 건` 아래 `seoyeon SALES:CHANGE` · `junho SALES:QUERY` · `gaeun ACCOUNT:CHANGE` 세 줄이면 성공입니다. 안 나오면 실습 3-2 하단 바의 ‘정답 보기’ 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 
 글감과 연결되는 입력이나 출력 한 줄을 골라 이번 유닛의 블로그 초안에 남깁니다.

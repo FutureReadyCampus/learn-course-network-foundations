@@ -134,7 +134,7 @@ False
 
 <h3><code>exception_policy.py</code></h3>
 
-```python
+```python exercise
 import json                                                      # JSON 파일을 읽는 모듈을 불러온다
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
 
@@ -155,6 +155,12 @@ def find_exception(user, permission, now):                       # 사용자 · 
     # 3.     exception 의 "expires" 를 TIME_FORMAT 으로 시각으로 바꿔 expires 에 담는다
     # 4.     now 가 expires 보다 앞이면 True 와 exception 의 "id" 를 리턴한다
     # 5. 반복이 끝날 때까지 못 찾았으면 False, None 을 리턴한다
+#|     for exception in EXCEPTIONS:
+#|         if exception["user"] == user and exception["permission"] == permission:
+#|             expires = datetime.strptime(exception["expires"], TIME_FORMAT)
+#|             if now < expires:
+#|                 return True, exception["id"]
+#|     return False, None
 ```
 
 - `find_exception` 의 들여쓰기: 1번 `for` 는 4칸, 2번 `if` 는 8칸, 3번은 12칸, 4번의 `if` 는 12칸이고 그 안의 `return` 은 16칸, 5번은 다시 4칸입니다.

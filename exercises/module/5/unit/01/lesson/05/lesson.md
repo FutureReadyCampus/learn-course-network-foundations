@@ -82,13 +82,14 @@ print(is_trusted)                         # True
 
 알림에 맥락을 추가하는 보강 함수를 정의합니다. 응용 1-1 실행 파일도 `enrich_incident` 를 가져와 사용(import)합니다. 직접 쓰는 곳은 ① · ② 두 곳입니다.
 
-```python
+```python exercise
 def lookup_account(entity, users_info):                              # 대상 이름과 계정 정보 딕셔너리를 받는 함수
     """계정 정보 파일에서 이 대상이 재직 중인지, VIP 계정인지 찾아 딕셔너리로 리턴한다.
     파일에 이름이 없는 대상(IP 등)은 처음 값(False)을 그대로 리턴한다.
     """
     account = {"employed": False, "vip": False}                      # 처음에는 모르는 상태로 시작한다
     # ① entity 가 users_info 안에 있으면 (if, in)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     if entity in users_info:
         account["employed"] = users_info[entity]["employed"]         # 재직 여부를 담는다
         account["vip"] = users_info[entity]["vip"]                   # VIP 여부를 담는다
     return account                                                   # 계정 정보를 리턴한다
@@ -102,6 +103,7 @@ def lookup_source_ip(entity, source_ips, trusted_ips):               # 대상 �
     if entity in source_ips:                                         # 접속 IP 를 아는 대상이면
         ip_info["source_ip"] = source_ips[entity]                    # 접속 IP 를 담는다
         # ② ip_info 의 "ip_trusted" 에 source_ips[entity] 가 trusted_ips 안에 있는지(in)의 결과를 담는다   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+#|         ip_info["ip_trusted"] = source_ips[entity] in trusted_ips
     return ip_info                                                   # 접속 IP 정보를 리턴한다
 
 
@@ -122,7 +124,7 @@ def enrich_incident(incident, users_info, source_ips, trusted_ips):  # 인시던
 
 ③ 한 곳만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이 실행 파일은 결과를 JSON 파일로 저장하지 않고 화면에만 출력합니다.
 
-```python
+```python exercise
 from incident import load_json, INCIDENTS_PATH                 # 실습 1-2 의 incident.py 에서 함수를 불러온다
 from enrichment import enrich_incident                         # 방금 만든 함수를 불러온다
 
@@ -138,6 +140,7 @@ print("--- 단계 1: 불러온 알림", incident_count, "건 · 계정 정보", 
 print("--- 단계 2: 알림마다 붙인 정보(재직 · VIP · 접속 IP)")  # 단계 2 시작을 알리는 줄
 for incident in incidents:                                     # 인시던트를 하나씩 꺼낸다
     # ③ enrich_incident(incident, users_info, source_ips, trusted_ips) 를 호출한다 (인시던트에 맥락이 붙는다)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     enrich_incident(incident, users_info, source_ips, trusted_ips)
     context = incident["context"]                              # 붙은 맥락을 꺼낸다
     if context["account_known"]:                               # 계정 정보가 있으면
         if context["employed"]:                                # 재직 중이면
@@ -211,7 +214,7 @@ print("VIP 계정 알림", vip_count, "건")                        # VIP 계정
 5. 실행 결과에서 선택한 글감의 근거를 찾아 초안의 ‘검증 결과’에 메모합니다.
    - (가) [핵심 질문] 실행한 출력을 보고, 재직 여부가 「퇴사」인 알림과 VIP 가 「예」인 알림의 번호, 단계 3 의 VIP 계정 알림 수를 적어 주세요.
 
-**확인** — 단계 2 의 다섯 줄에서 INC-001 이 `재직: 퇴사`, INC-003 이 `VIP: 예`, INC-002 · INC-004 가 `신뢰 IP: 예` 이고, 단계 3 이 `VIP 계정 알림 1 건` 이면 성공입니다. 안 나오면 아래 실습 1-3 정답 펼침에서 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
+**확인** — 단계 2 의 다섯 줄에서 INC-001 이 `재직: 퇴사`, INC-003 이 `VIP: 예`, INC-002 · INC-004 가 `신뢰 IP: 예` 이고, 단계 3 이 `VIP 계정 알림 1 건` 이면 성공입니다. 안 나오면 실습 1-3 하단 바의 ‘정답 보기’에서 출력과 한 줄씩 맞춰 보고, 다른 줄이 있으면 위 「직접 쓰는 곳」의 확인을 다시 봅니다.
 
 ## 실습 1-3 정리
 

@@ -159,7 +159,7 @@ escalation.py   overdue_minutes   : 응답 기한을 넘긴 시간(분)을 구�
 - 2번 아래에는 `if` 한 줄을 씁니다. 3번은 그 `if` 안쪽이라 주석 위치보다 한 단계(공백 4개) 더 들여 씁니다. 주석 `# 3.` 뒤의 빈칸이 그 표시입니다.
 - 미리 채운 `for index in range(len(steps)):` 는 0 부터 (단계 수 − 1) 까지의 번호를 차례로 꺼냅니다. `range(숫자)` 는 0 부터 그 숫자 바로 앞까지의 번호를 만듭니다. 리스트 번호는 0 부터 세므로 사람이 읽는 단계 번호는 `index + 1` 입니다.
 
-```python
+```python exercise
 from ticket_notice import send_with_retry, MAX_TRIES                                       # Unit 3 에 있는 재시도 함수를 불러온다
 
 
@@ -169,6 +169,7 @@ def overdue_minutes(ticket, now):                                               
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. now 에서 ticket["sla_due"] 를 뺀 값을 리턴한다
+#|     return now - ticket["sla_due"]
 
 
 def needs_escalation(ticket, now):                                                         # 티켓과 지금 시각(분)을 받는 함수
@@ -177,8 +178,11 @@ def needs_escalation(ticket, now):                                              
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 2. ticket 의 "status" 가 "열림" 이 아니면 (if, !=)
+#|     if ticket["status"] != "열림":
     # 3.   False 를 리턴한다
+#|         return False
     # 4. overdue_minutes(ticket, now) 가 0 이상인지(>=)의 결과를 리턴한다
+#|     return overdue_minutes(ticket, now) >= 0
 
 
 def pick_level(overdue, steps):                                                            # 넘긴 시간과 올림 단계 리스트를 받는 함수
@@ -190,7 +194,9 @@ def pick_level(overdue, steps):                                                 
         step = steps[index]                                                                # 그 번호의 올림 단계 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 5. overdue 가 step 의 "overdue_minutes" 이상이면 (if, >=)
+#|         if overdue >= step["overdue_minutes"]:
             # 6. level 에 index + 1 을 저장한다
+#|             level = index + 1
     return level                                                                           # 가장 높은 단계 번호를 리턴한다 — 미리 채운 줄
 
 
@@ -218,7 +224,7 @@ def escalate_ticket(ticket, now, rules):                                        
 
 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 7번 아래에는 `if` 한 줄을, 8번 아래에는 한 단계 더 들여쓴 줄을, 9번 아래에는 또 한 단계 들여쓴 줄을 씁니다. 그 사이의 미리 채운 줄은 그대로 둡니다.
 
-```python
+```python exercise
 from incident import load_json                                                       # Unit 1 파일의 JSON 읽기 함수를 불러온다
 from ticket_merge import change_ticket_status                                        # Unit 3 에 있는 상태 바꾸기 함수를 불러온다
 from escalation import overdue_minutes, needs_escalation, escalate_ticket            # 방금 만든 함수를 불러온다
@@ -235,11 +241,14 @@ for now in [20, 60, 110]:                                                       
     for ticket in tickets:                                                           # 티켓을 하나씩 읽는다
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 7. needs_escalation(ticket, now) 가 참이면 (if)
+#|         if needs_escalation(ticket, now):
             # 8. escalate_ticket(ticket, now, rules) 의 결과를 result 에 저장한다
+#|             result = escalate_ticket(ticket, now, rules)
             overdue = overdue_minutes(ticket, now)                                   # 기한을 얼마나 넘겼는지 구한다 — 미리 채운 줄
             print(ticket["id"], ticket["title"], "→", result, "· 기한을", overdue, "분 넘김 · 올림 단계", ticket["escalation_level"])  # 결과를 출력한다 — 미리 채운 줄
             if result == "올림":                                                     # 올렸으면 — 미리 채운 줄
                 # 9. escalated_count 에 escalated_count + 1 을 저장한다 (1 늘린다)
+#|                 escalated_count = escalated_count + 1
     if now == 20:                                                                    # 20분 점검이 끝나면 — 미리 채운 줄
         change_ticket_status(tickets[0], "확인 중", 25, "kim.sec")                   # 25분에 kim.sec 이 TCK-1 을 확인하기 시작한다 — 미리 채운 줄
         print("[25분] TCK-1 → 확인 중 · kim.sec")                                    # 담당자의 동작을 출력한다 — 미리 채운 줄

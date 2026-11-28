@@ -135,7 +135,7 @@ def pick(score):                           # 예시 함수
 
 - 미리 채운 줄의 `str(score)` 는 숫자를 문자열(글자로 된 값)로 바꿉니다. 숫자는 `+` 로 문자열과 바로 이어 붙일 수 없어서 먼저 바꿉니다.
 
-```python
+```python exercise
 def is_allowlisted(request, policy):                                        # 조치 요청 한 건과 승인 정책을 받는 함수
     """조치 대상이 허용 목록에 있으면 True, 없으면 False 를 리턴한다.
     협력사 사무실이나 점검 서버처럼 지금 정책에서 차단하지 않기로 등록한 대상을 먼저 가려낼 때 쓴다.
@@ -171,7 +171,9 @@ def decide_gate(request, policy):                                           # �
     score, reasons = risk_score(request, policy)                            # 위험 점수와 이유 리스트를 함께 받는다 — 미리 채운 줄
     reasons.append("합계 " + str(score) + "점")                             # 합계 점수를 이유에 추가한다 — 미리 채운 줄
     # ① score 가 policy["approval_score"] 이상이면 (if, >=)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     if score >= policy["approval_score"]:
     # ② "승인 필요" 와 reasons 를 함께 리턴한다   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+#|         return "승인 필요", reasons
 
     return "자동", reasons                                                  # 기준보다 낮으면 자동으로 실행한다 — 미리 채운 줄
 ```
@@ -267,7 +269,7 @@ print("--- 단계 5: gate_results.json 에", len(results), "건 저장")  # 단�
 
 <!-- answer: 10|실습 4-1 정답 -->
 
-**확인** — 단계 3 이 `자동 : 3 건` · `승인 필요 : 3 건` · `차단 금지 : 2 건` 이고, 단계 4 에 `REQ-2` · `REQ-5` · `REQ-6` 세 줄이 나오면 성공입니다. 출력이 다르면 이 실습 바로 아래의 정답 펼침과 비교합니다.
+**확인** — 단계 3 이 `자동 : 3 건` · `승인 필요 : 3 건` · `차단 금지 : 2 건` 이고, 단계 4 에 `REQ-2` · `REQ-5` · `REQ-6` 세 줄이 나오면 성공입니다. 출력이 다르면 이 실습 바로 하단 바의 ‘정답 보기’와 비교합니다.
 
 ## 실습 4-1 정리
 

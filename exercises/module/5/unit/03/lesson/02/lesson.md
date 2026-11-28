@@ -115,7 +115,7 @@ def undo_record(record, state):             # 되돌릴 조치 기록과 연습�
 
 기록을 찾고 되돌릴지 판단합니다. 직접 쓰는 곳은 `should_undo` 의 ① · ② 입니다.
 
-```python
+```python exercise
 from containment_store import make_record                                    # 기록 한 건을 만드는 함수를 불러온다
 from undo_actions import undo_record                                         # 방금 만든 되돌리기 함수를 불러온다
 
@@ -138,7 +138,9 @@ def should_undo(record):                                                     # �
     조치 전부터 그 상태였던 것과 확인에 실패한 조치는 되돌리지 않으려고 쓴다.
     """
     # ① record 의 "before" 와 "after" 가 같으면 (if, ==)   # ← 이 주석 바로 아래 줄에 씁니다 (4칸)
+#|     if record["before"] == record["after"]:
     # ② False 를 리턴한다 (바뀐 것이 없으니 되돌릴 것도 없다)   # ← 이 주석 바로 아래 줄에 씁니다 (8칸)
+#|         return False
     if "확인 실패" in record["after"]:                                       # 확인에 실패한 조치이면
         return False                                                         # 실제로 바뀌지 않았으니 되돌리지 않는다
     return record["action"] in UNDOABLE_ACTIONS                              # 해제로 되돌릴 수 있는 조치 종류인지의 결과를 리턴한다
@@ -235,7 +237,7 @@ print("차단한 IP:", state["blocked_ips"])                                    
 
 <!-- answer: 08|실습 3-1 정답 -->
 
-**확인** — 다시 실행했을 때 단계 2 에 `되돌리기 불가` · `계정 해제` 두 줄, 단계 3 에 `되돌리기 불가` 한 줄, 단계 4 에 `IP 해제` 한 줄이 나오고, 단계 5 가 `잠긴 계정: ['junho']` · `차단한 IP: []` 이면 성공입니다. 출력이 다르면 이 실습 바로 아래의 정답 펼침과 비교합니다.
+**확인** — 다시 실행했을 때 단계 2 에 `되돌리기 불가` · `계정 해제` 두 줄, 단계 3 에 `되돌리기 불가` 한 줄, 단계 4 에 `IP 해제` 한 줄이 나오고, 단계 5 가 `잠긴 계정: ['junho']` · `차단한 IP: []` 이면 성공입니다. 출력이 다르면 이 실습 바로 하단 바의 ‘정답 보기’와 비교합니다.
 
 ## 실습 3-1 정리
 
