@@ -147,7 +147,7 @@ True
 
 <h3><code>review_unused.py</code></h3>
 
-```python
+```python exercise
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
 from config_loader import load_json                              # Unit 1에서 만든 안전한 읽기 함수를 불러온다
 from exception_policy import TIME_FORMAT                         # 시각 문자열의 형식("%Y-%m-%d %H:%M")을 불러온다
@@ -194,12 +194,14 @@ def find_unused(access_list, last_used_map, now, limit_days):    # 현황 · 마
         permission = entry["permission"]
         key = f"{user}:{permission}"
         # ① last_used_map에서 key로 시각을 꺼내 used_text에 담습니다.
+#|         used_text = last_used_map.get(key)
 
         if used_text is None:
             unused_entry = make_unused(entry, None)
             unused.append(unused_entry)
         # ② 아래의 False를 기준 일 수를 넘었는지 확인하는 조건으로 바꿉니다.
         elif False:
+#|=         elif days_since(used_text, now) > limit_days:
             unused_entry = make_unused(entry, used_text)
             unused.append(unused_entry)
     return unused

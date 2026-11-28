@@ -63,7 +63,7 @@ rollback.py       find_incident_records: 그 인시던트(알림 한 건)의 기
 
 되돌리기 실행입니다. 직접 쓰는 곳은 1 · 2번입니다.
 
-```python
+```python exercise
 from account_actions import unlock_account  # Unit 4의 실습 4-1에서 만든 계정 해제 함수를 불러온다
 from ip_actions import unblock_ip           # Unit 4의 실습 4-2에서 만든 IP 해제 함수를 불러온다
 
@@ -74,6 +74,7 @@ def undo_account(record, state):            # 되돌릴 조치 기록과 연습�
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. unlock_account(record["target"], state, record["incident"], "되돌리기: " + record["reason"]) 의 결과를 리턴한다
+#|     return unlock_account(record["target"], state, record["incident"], "되돌리기: " + record["reason"])
 
 
 def undo_ip(record, state):                 # 되돌릴 조치 기록과 연습용 시스템 상태를 받는 함수
@@ -82,6 +83,7 @@ def undo_ip(record, state):                 # 되돌릴 조치 기록과 연습�
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 2. unblock_ip(record["target"], state, record["incident"], "되돌리기: " + record["reason"]) 의 결과를 리턴한다
+#|     return unblock_ip(record["target"], state, record["incident"], "되돌리기: " + record["reason"])
 
 
 def undo_record(record, state):             # 되돌릴 조치 기록과 연습용 시스템 상태를 받는 함수
@@ -97,7 +99,7 @@ def undo_record(record, state):             # 되돌릴 조치 기록과 연습�
 
 기록을 찾고 되돌릴지 판단합니다. 직접 쓰는 곳은 3 ~ 8번입니다.
 
-```python
+```python exercise
 from containment_store import make_record                                    # 기록 한 건을 만드는 함수를 불러온다
 from undo_actions import undo_record                                         # 방금 만든 되돌리기 함수를 불러온다
 
@@ -113,7 +115,9 @@ def find_incident_records(log, incident_id):                                 # �
         action_name = record["action"]                                       # 기록의 조치 이름 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 3. record 의 "incident" 가 incident_id 와 같으면 (if, ==)
+#|         if record["incident"] == incident_id:
         # 4.   found 에 record 를 추가한다 (append)
+#|             found.append(record)
     return list(reversed(found))                                             # 순서를 뒤집어 리턴한다 — 미리 채운 줄
 
 
@@ -123,7 +127,9 @@ def should_undo(record):                                                     # �
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 5. record 의 "before" 와 "after" 가 같으면 (if, ==)
+#|     if record["before"] == record["after"]:
     # 6.   False 를 리턴한다 (바뀐 것이 없으니 되돌릴 것도 없다)
+#|         return False
     if "확인 실패" in record["after"]:                                       # 확인에 실패한 조치이면 — 미리 채운 줄
         return False                                                         # 실제로 바뀌지 않았으니 되돌리지 않는다 — 미리 채운 줄
     return record["action"] in UNDOABLE_ACTIONS                              # 해제로 되돌릴 수 있는 조치 종류인지의 결과를 리턴한다 — 미리 채운 줄
@@ -137,7 +143,9 @@ def rollback_incident(incident_id, log, state):                              # �
     for record in find_incident_records(log, incident_id):                   # 그 인시던트의 기록을 하나씩 꺼낸다
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 7. should_undo(record) 가 참이면 (if)
+#|         if should_undo(record):
         # 8.   undo_record(record, state) 의 결과를 records 에 추가한다 (append)
+#|             records.append(undo_record(record, state))
         if record["before"] != record["after"] and not should_undo(record):  # 바뀌었는데 되돌릴 수 없는 조치이면 — 미리 채운 줄
             note = "되돌릴 수 없는 조치(" + record["action"] + ") — 사용자가 다시 로그인해야 함"  # 이유 문장을 만들고 — 미리 채운 줄
             records.append(make_record("되돌리기 불가", record["target"], incident_id, record["before"], record["after"], note))  # 기록으로 남긴다 — 미리 채운 줄
@@ -148,7 +156,7 @@ def rollback_incident(incident_id, log, state):                              # �
 
 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이 실행 파일은 먼저 INC-005 의 IP 차단을 새로 실행해 기록에 추가한 뒤, 그것을 되돌립니다.
 
-```python
+```python exercise
 from incident import load_json                                                     # Unit 1 파일의 함수를 불러온다
 from containment_store import load_state, LOG_PATH                                 # 실습 4-3이 저장한 상태 · 기록 파일을 읽는 함수를 불러온다
 from ip_actions import block_ip, DEFAULT_TTL                                       # Unit 4의 실습 4-2의 IP 차단 함수를 불러온다
@@ -157,6 +165,7 @@ from rollback import rollback_incident                                          
 state = load_state()                                                               # 실습 4-3이 저장한 연습용 시스템 상태를 읽는다
 # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
 # 9. load_json(LOG_PATH) 의 결과를 log 에 저장한다 (실습 4-3이 저장한 조치 기록을 읽는다)
+#| log = load_json(LOG_PATH)
 
 print("--- 단계 1: 실습 4-3이 남긴 파일")                                             # 단계 1 시작을 알리는 줄
 print("잠긴 계정:", state["locked_users"])                                         # 잠긴 계정을 출력한다

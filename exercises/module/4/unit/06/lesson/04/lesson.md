@@ -139,7 +139,7 @@ print(scanner_df)            # 남은 요청을 출력한다
 
 <h3><code>malicious_detection.py</code></h3>
 
-```python
+```python exercise
 import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
 
 EVENTS_PATH = "normalized_events.json"                # 읽을 정규화 이벤트 파일 이름
@@ -173,9 +173,13 @@ def find_scan_ips(web_failures):                      # 웹 실패 표를 받는
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. web_failures 의 "action" 열을 꺼내 actions 에 담는다
+#|     actions = web_failures["action"]
     # 2. actions 에 .str.contains(SCANNER_PATTERN) 을 붙여 스캐너 경로가 들어 있는지 구해 is_scanner 에 담는다
+#|     is_scanner = actions.str.contains(SCANNER_PATTERN)
     # 3. web_failures 에서 is_scanner 가 True 인 행만 골라 scanner_rows 에 담는다
+#|     scanner_rows = web_failures[is_scanner]
     # 4. scanner_rows 의 "ip" 열에 .value_counts() 를 붙여 IP 별로 몇 번 요청했는지 세어 scan_counts 에 담는다
+#|     scan_counts = scanner_rows["ip"].value_counts()
     scan_ips = list(scan_counts.index)                # 스캔으로 보는 IP 이름만 리스트로 만든다
     return scan_ips, scan_counts                      # 스캔 IP 리스트와 IP 별 요청 횟수를 리턴한다
 
@@ -186,7 +190,9 @@ def explain_scan(ip, request_count):                  # IP 와 스캐너 경로 
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 5. "스캐너 경로를 " 와 str(request_count) 와 "번 요청" 을 + 로 연결해 reason 에 담는다 (문구는 복사해 붙여도 된다)
+#|     reason = "스캐너 경로를 " + str(request_count) + "번 요청"
     # 6. 키 "ip" 에 ip, 키 "reason" 에 reason 을 담은 딕셔너리를 scan_info 에 담는다
+#|     scan_info = {"ip": ip, "reason": reason}
     return scan_info                                  # 설명 딕셔너리를 리턴한다
 ```
 
@@ -268,6 +274,7 @@ print("웹 서버: 스캔으로 본 IP", scan_ips)                   # 웹 탐�
    - (가) 실행한 출력 전체를 붙여 넣고, 스캔으로 본 IP 와 이유를 적어 주세요.
    - (나) [핵심 질문] 203.0.113.50 은 실패한 요청이 7번 있지만 스캔에서 제외됐습니다. 제외된 이유와, 제외하지 않으면 담당자에게 어떤 일이 생기는지 적어 주세요.
    - (다) [핵심 질문] 198.51.100.21 의 `GET /board/99` 실패 1건은 이 규칙에서 어떤 조건 때문에 제외되나요? 그리고 해킹 도구가 `SCANNER_PATTERN` 에 없는 경로(예: `/backup.zip`)를 요청하면 이 규칙이 탐지하지 못한다는 점을 설명해 주세요.
+<!-- preview-answer: 05|실습 6-3 정답 -->
 
 ## 실습 6-3 정리
 

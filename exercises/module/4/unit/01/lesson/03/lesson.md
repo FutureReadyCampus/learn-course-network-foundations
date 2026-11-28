@@ -101,7 +101,7 @@ SIEM(심)이 무엇인지와 현업에서 쓰는 방식은 실습 1-1 맨 위에
 
 <h3><code>log_classify.py</code></h3>
 
-```python
+```python exercise
 SUSPICIOUS_STATUS = (401, 403)                                         # 의심으로 보는 상태 코드(로그인 실패 · 접근 거부)
 
 
@@ -111,8 +111,11 @@ def is_suspicious(entry):                                              # 읽은 
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. entry["status"] 가 SUSPICIOUS_STATUS 안에 있는지(in)의 결과를 bad_status 에 담는다
+#|     bad_status = entry["status"] in SUSPICIOUS_STATUS
     # 2. entry["path"] 안에 "/admin" 이 들어 있는지(in)의 결과를 admin_path 에 담는다
+#|     admin_path = "/admin" in entry["path"]
     # 3. bad_status 또는 admin_path 가 참인지(or)의 결과를 리턴한다
+#|     return bad_status or admin_path
 
 
 def is_error(entry):                                                   # 읽은 요청 딕셔너리를 받는 함수
@@ -121,6 +124,7 @@ def is_error(entry):                                                   # 읽은 
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. entry["status"] 가 400 이상인지의 결과(True 또는 False)를 리턴한다
+#|     return entry["status"] >= 400
 
 
 def classify_line(entry):                                              # 읽은 요청 딕셔너리를 받는 함수
@@ -129,9 +133,13 @@ def classify_line(entry):                                              # 읽은 
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 5. is_suspicious(entry) 가 참이면 (if)
+#|     if is_suspicious(entry):
     # 6.   "의심" 을 리턴한다
+#|         return "의심"
     # 7. is_error(entry) 가 참이면 (if)
+#|     if is_error(entry):
     # 8.   "오류" 를 리턴한다
+#|         return "오류"
     return "정상"                                                      # 어느 조건에도 안 맞으면 정상이다
 
 

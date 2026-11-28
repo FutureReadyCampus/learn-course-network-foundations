@@ -98,7 +98,7 @@ soar_engine.py  load_context          : 설정 파일을 읽어 엔진 재료를
 - 5번과 6번은 `if` 한 줄만 씁니다. 그 아래 미리 채운 줄이 `if` 안쪽입니다.
 - 7번은 `try:` 아래에 한 줄, 8번은 `except` 줄 한 줄을 씁니다. 8번 아래 미리 채운 줄이 `except` 안쪽입니다.
 
-```python
+```python exercise
 from incident import load_json, match_playbooks                                         # Unit 1 파일의 JSON 읽기 · 플레이북 찾기 함수를 불러온다
 from containment_store import new_state                                                 # Unit 4 파일의 연습용 시스템 상태 함수를 불러온다
 from account_actions import lock_account                                                # Unit 4 파일의 계정 잠금 함수를 불러온다
@@ -130,6 +130,7 @@ def make_request(alert, action, context):                                       
     if action == "IP 차단":                                                             # 조치가 IP 차단이면 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 1. count_users_on_ip(alert["entity"], context["ip_users"]) 의 결과를 users_on_ip 에 저장한다
+#|         users_on_ip = count_users_on_ip(alert["entity"], context["ip_users"])
     request = {                                                                         # 승인 게이트가 읽는 조치 요청 한 건 — 미리 채운 줄
         "id": alert["id"],                                                              # 요청 번호는 알림 번호를 쓴다
         "incident": alert["id"],                                                        # 인시던트 번호
@@ -149,8 +150,10 @@ def execute_action(request, context):                                           
     if request["action"] == "계정 잠금":                                                # 조치가 계정 잠금이면 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 2. lock_account(request["target"], state, vip_accounts, request["incident"], ENGINE_REASON) 의 결과를 record 에 저장한다
+#|         record = lock_account(request["target"], state, vip_accounts, request["incident"], ENGINE_REASON)
     else:                                                                               # 아니면 IP 차단이다 — 미리 채운 줄
         # 3. block_ip(request["target"], state, request["incident"], ENGINE_REASON, DEFAULT_TTL) 의 결과를 record 에 저장한다
+#|         record = block_ip(request["target"], state, request["incident"], ENGINE_REASON, DEFAULT_TTL)
     return record                                                                       # 조치 기록을 리턴한다 — 미리 채운 줄
 
 
@@ -159,6 +162,7 @@ def run_step(alert, action, context):                                           
     request = make_request(alert, action, context)                                      # 승인 게이트에 보낼 조치 요청을 만든다 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. decide_gate(request, context["policy"]) 의 두 결과를 decision, reasons 에 저장한다
+#|     decision, reasons = decide_gate(request, context["policy"])
     step = {                                                                            # 조치 하나의 결과 : 처음에는 실행하지 않은 것으로 적는다 — 미리 채운 줄
         "action": action,                                                               # 조치 이름
         "target": alert["entity"],                                                      # 조치 대상
@@ -170,6 +174,7 @@ def run_step(alert, action, context):                                           
         "request": request,                                                             # 승인 게이트가 본 조치 요청(나중에 점검할 때 다시 쓴다)
     }
     # 5. decision 이 "자동" 이면 (if, ==)
+#|     if decision == "자동":
         record = execute_action(request, context)                                       # 조치를 실행하고 조치 기록을 받는다 — 미리 채운 줄
         step["executed"] = True                                                         # 실행했다고 적는다 — 미리 채운 줄
         step["before"] = record["before"]                                               # 조치 전 상태를 적는다 — 미리 채운 줄
@@ -225,6 +230,7 @@ def run_soar_pipeline(alert, context):                                          
         for action in playbook["actions"]:                                              # 플레이북의 액션을 하나씩 꺼낸다 — 미리 채운 줄
             # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
             # 6. action 이 CONTAINMENT_ACTIONS 안에 있으면 (if, in)
+#|             if action in CONTAINMENT_ACTIONS:
                 step = run_step(alert, action, context)                                 # 승인 게이트를 거쳐 실행한다 — 미리 채운 줄
                 steps.append(step)                                                      # 조치 결과를 추가한다 — 미리 채운 줄
     outcome = decide_outcome(steps)                                                     # 알림 전체의 처리 결과를 정한다 — 미리 채운 줄
@@ -266,7 +272,9 @@ def run_all(alerts, context):                                                   
         try:                                                                            # 오류가 날 수 있는 처리를 시작한다 — 미리 채운 줄
             # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
             # 7. run_soar_pipeline(alert, context) 의 결과를 result 에 저장한다
+#|             result = run_soar_pipeline(alert, context)
         # 8. 어떤 종류의 오류든 error 에 저장해 받는다 (except, Exception, as)
+#|         except Exception as error:
             result = make_failure_result(alert, error)                                  # 실패 기록을 만든다 — 미리 채운 줄
         results.append(result)                                                          # 정상 결과든 실패 기록이든 결과 리스트에 추가한다 — 미리 채운 줄
     return results                                                                      # 결과 기록 리스트를 리턴한다 — 미리 채운 줄
@@ -276,7 +284,7 @@ def run_all(alerts, context):                                                   
 
 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
-```python
+```python exercise
 from incident import load_json, save_json                                                # Unit 1 파일의 JSON 읽기 · 쓰기 함수를 불러온다
 from soar_engine import load_context, run_all                                            # 방금 만든 엔진 함수를 불러온다
 
@@ -294,6 +302,7 @@ for result in results:                                                          
     outcome = result["outcome"]                                                          # 이 알림의 처리 결과 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 9. counts[outcome] 에 counts[outcome] + 1 을 저장한다 (1 늘린다)
+#|     counts[outcome] = counts[outcome] + 1
     if outcome == "실패":                                                                # 처리하지 못한 알림이면
         print(result["incident"], result["entity"], "→", outcome, "·", result["error"])  # 알림과 오류를 출력한다
     else:                                                                                # 처리한 알림이면
@@ -329,6 +338,7 @@ print("--- 단계 4:", LOG_PATH, "에", len(results), "건 ·", TICKET_PATH, "�
    - (가) 실행한 출력 전체를 붙여 넣고, 처리 결과별 알림 수와 승인 대기인 알림 번호를 적어 주세요.
    - (나) [핵심 질문] `INC-402` 는 실패인데 `INC-403` ~ `INC-408` 은 처리됐습니다. 단계 2 의 `INC-402` 오류 문장과 `run_all` 의 `except` 줄을 근거로 그 이유를 적고, `try` / `except` 가 없으면 `INC-402` 이후의 알림이 어떻게 되는지 적어 주세요.
    - (다) [핵심 질문] `INC-404` 와 `INC-406` 은 둘 다 high 등급인데 결과가 「차단 금지」와 「승인 대기」로 다릅니다. 단계 2 의 결정 이유를 근거로 그 차이를 적고, 승인 게이트가 `execute_action` 보다 먼저 와야 하는 이유도 적어 주세요.
+<!-- preview-answer: 05|실습 10-1 정답 -->
 
 ## 실습 10-1 정리
 

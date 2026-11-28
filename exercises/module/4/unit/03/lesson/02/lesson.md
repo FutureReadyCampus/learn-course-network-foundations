@@ -299,7 +299,7 @@ print(failed_shape)  # (23, 6) — 실패한 이벤트 23개, 열은 그대로 6
 
 <h3><code>events_basic.py</code></h3>
 
-```python
+```python exercise
 import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
 EVENTS_PATH = "normalized_events.json"  # 읽을 정규화 이벤트 파일 이름
@@ -311,6 +311,7 @@ def load_events(path):  # 파일 경로를 받는 함수
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. pd.read_json 으로 path 의 파일을 읽어 events 에 담는다
+#|     events = pd.read_json(path)
     return events  # 표를 리턴한다
 
 
@@ -321,6 +322,7 @@ def describe_events(events):  # 표를 받는 함수
     shape = events.shape  # 표의 크기 (행 수, 열 수) — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 2. events 의 "time" 열을 꺼내 times 에 담는다 (events["time"])
+#|     times = events["time"]
     first_times = times.head(3)  # 그 열의 앞 3개만 남긴다 — 미리 채운 줄
     return shape, first_times  # 크기와 처음 3개를 리턴한다
 
@@ -341,7 +343,9 @@ def count_values(table, column):  # 표와 열 이름을 받는 함수
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 3. table 의 column 열을 꺼내 values 에 담는다
+#|     values = table[column]
     # 4. values 에서 값별 개수를 value_counts() 로 세어 value_event_counts 에 담는다
+#|     value_event_counts = values.value_counts()
     return value_event_counts  # 값별 개수를 리턴한다
 ```
 

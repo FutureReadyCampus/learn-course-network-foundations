@@ -101,7 +101,7 @@ source:
 
 <h3><code>overprivilege.py</code></h3>
 
-```python
+```python exercise
 def entry_key(entry):                                            # 현황의 권한 한 건의 식별 키를 만드는 함수
     """현황의 권한 한 개의 식별 키를 리턴한다.
     키는 user:permission:source 를 이어 붙인 문자열이다.
@@ -110,6 +110,7 @@ def entry_key(entry):                                            # 현황의 권
     key = entry["user"] + ":" + entry["permission"]              # 사용자와 권한을 : 로 이어 붙이고
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. key 뒤에 ":" 와 entry["source"] 를 이어 붙인 문자열을 key 에 다시 담는다 (받은 방식까지 넣어 식별 키를 만든다)
+#|     key = key + ":" + entry["source"]
     return key                                                   # 식별 키를 리턴한다
 
 
@@ -122,6 +123,7 @@ def make_stale_reason(stale):                                    # 규칙에 걸
         item_key = entry_key(item)                               # 그 권한의 식별 키를 만든다
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 2. stale_reason 의 item_key 키에 item["reason"] 을 담는다 (식별 키로 걸린 이유를 찾을 수 있게)
+#|         stale_reason[item_key] = item["reason"]
     return stale_reason                                          # 딕셔너리를 리턴한다
 
 
@@ -134,6 +136,7 @@ def make_unused_keys(unused):                                    # 안 쓴 권�
         item_key = entry_key(item)                               # 식별 키를 만든다
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 3. unused_keys 에 item_key 를 추가한다 (.append)
+#|         unused_keys.append(item_key)
     return unused_keys                                           # 리스트를 리턴한다
 
 
@@ -144,9 +147,13 @@ def collect_reasons(key, stale_reason, unused_keys, days):       # 식별 키 ·
     reasons = []                                                 # 이유를 담을 빈 리스트
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. key 가 stale_reason 에 있으면 (in)
+#|     if key in stale_reason:
     # 5.   reasons 에 stale_reason[key] 를 추가한다
+#|         reasons.append(stale_reason[key])
     # 6. key 가 unused_keys 에 있으면 (in)
+#|     if key in unused_keys:
     # 7.   reasons 에 f"{days}일 넘게 안 씀(이력 없음 포함)" 을 추가한다
+#|         reasons.append(f"{days}일 넘게 안 씀(이력 없음 포함)")
     return reasons                                               # 이유 리스트를 리턴한다
 
 
@@ -162,9 +169,13 @@ def generate_report(access_list, stale, unused, days, generated_at):   # 현황 
         reasons = collect_reasons(key, stale_reason, unused_keys, days)   # 그 권한에 해당하는 이유를 모은다
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 8. reasons 의 개수가 0 보다 크면 (len(reasons) > 0)
+#|         if len(reasons) > 0:
         # 9.   entry.copy() 를 finding 에 담는다
+#|             finding = entry.copy()
         # 10.  finding["reasons"] 를 reasons 로 정한다
+#|             finding["reasons"] = reasons
         # 11.  findings 에 finding 을 추가한다
+#|             findings.append(finding)
     report = {                                                   # 리포트 딕셔너리를 만든다
         "generated_at": generated_at,                            # 리포트를 만든 시각
         "total": len(access_list),                               # 점검한 전체 권한 수

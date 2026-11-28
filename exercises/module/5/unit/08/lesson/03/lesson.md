@@ -103,13 +103,14 @@ Unit 8에서 자동 대응이 실행하려는 조치 요청 8건입니다. `user
 - 3번 아래에는 `if` 한 줄을 씁니다. 그 아래 미리 채운 `reasons.append(…)` 줄은 4번과 함께 `if` 안쪽입니다.
 - 5번과 7번도 `if` 한 줄만 씁니다. 그 아래 미리 채운 `return` 줄이 `if` 안쪽입니다.
 
-```python
+```python exercise
 def is_allowlisted(request, policy):                                        # 조치 요청 한 건과 승인 정책을 받는 함수
     """조치 대상이 허용 목록에 있으면 True, 없으면 False 를 리턴한다.
     협력사 사무실이나 점검 서버처럼 지금 정책에서 차단하지 않기로 등록한 대상을 먼저 가려낼 때 쓴다.
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. request["target"] 이 policy["allowlist_ips"] 안에 있는지(in)의 결과를 리턴한다
+#|     return request["target"] in policy["allowlist_ips"]
 
 
 def risk_score(request, policy):                                            # 조치 요청 한 건과 승인 정책을 받는 함수
@@ -119,9 +120,12 @@ def risk_score(request, policy):                                            # �
     grade_table = policy["grade_points"]                                    # 등급마다 정한 점수 표 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 2. grade_table[request["grade"]] 를 score 에 저장한다 (등급 점수로 시작한다)
+#|     score = grade_table[request["grade"]]
     reasons = ["등급 " + request["grade"] + " +" + str(score)]              # 점수를 더한 이유 리스트 — 미리 채운 줄
     # 3. request["target"] 이 policy["vip_accounts"] 안에 있으면 (if, in)
+#|     if request["target"] in policy["vip_accounts"]:
         # 4. score 에 score + policy["vip_points"] 를 저장한다 (VIP 점수를 더한다)
+#|         score = score + policy["vip_points"]
         reasons.append("VIP 계정 +" + str(policy["vip_points"]))            # 이유를 추가한다 — 미리 채운 줄
     if request["users_on_ip"] >= policy["shared_ip_limit"]:                 # 여러 계정이 함께 쓰는 IP 이면 — 미리 채운 줄
         score = score + policy["shared_ip_points"]                          # 함께 쓰는 IP 점수를 더한다 — 미리 채운 줄
@@ -138,10 +142,13 @@ def decide_gate(request, policy):                                           # �
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 5. is_allowlisted(request, policy) 가 참이면 (if)
+#|     if is_allowlisted(request, policy):
         return "차단 금지", ["허용 목록 대상"]                              # 결정과 이유를 함께 리턴한다 — 미리 채운 줄
     # 6. risk_score(request, policy) 의 두 결과를 score, reasons 에 저장한다
+#|     score, reasons = risk_score(request, policy)
     reasons.append("합계 " + str(score) + "점")                             # 합계 점수를 이유에 추가한다 — 미리 채운 줄
     # 7. score 가 policy["approval_score"] 이상이면 (if, >=)
+#|     if score >= policy["approval_score"]:
         return "승인 필요", reasons                                         # 결정과 이유를 함께 리턴한다 — 미리 채운 줄
     return "자동", reasons                                                  # 기준보다 낮으면 자동으로 실행한다 — 미리 채운 줄
 ```
@@ -150,7 +157,7 @@ def decide_gate(request, policy):                                           # �
 
 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
-```python
+```python exercise
 from incident import load_json, save_json                           # Unit 1 파일의 JSON 읽기 · 쓰기 함수를 불러온다
 from approval_gate import decide_gate                               # 방금 만든 승인 게이트 함수를 불러온다
 
@@ -164,7 +171,9 @@ print("--- 단계 2: 요청마다 결정과 이유")                           #
 for request in requests:                                            # 조치 요청을 하나씩 읽는다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 8. decide_gate(request, policy) 의 두 결과를 decision, reasons 에 저장한다
+#|     decision, reasons = decide_gate(request, policy)
     # 9. counts[decision] 에 counts[decision] + 1 을 저장한다 (1 늘린다)
+#|     counts[decision] = counts[decision] + 1
     reason_text = ", ".join(reasons)                                # 이유 리스트를 쉼표로 이어 한 문자열로 만든다
     print(request["id"], request["action"], request["target"], "→", decision, "·", reason_text)  # 요청과 결정을 출력한다
     results.append({"id": request["id"], "incident": request["incident"], "action": request["action"], "target": request["target"], "decision": decision})  # 결정을 추가한다
@@ -204,6 +213,7 @@ print("--- 단계 5: gate_results.json 에", len(results), "건 저장")  # 단�
    - (가) 실행한 출력 전체를 붙여 넣고, 결정별 요청 수를 적고, 승인 필요인 요청 번호도 적어 주세요.
    - (나) [핵심 질문] `REQ-1`(`dami`)과 `REQ-6`(`minsu`)은 둘 다 high 등급의 계정 잠금인데 결정이 다릅니다. 단계 2 의 이유를 근거로 결정이 달라진 이유를 적어 주세요. 그리고 대상 수(영향 범위)를 위험 점수에 반영해야 하는 이유도 적어 주세요.
    - (다) [핵심 질문] `REQ-3` 은 high 등급이고 함께 쓰는 IP 인데 차단 금지입니다. `decide_gate` 가 허용 목록을 점수보다 먼저 확인하는 이유를 적고, 승인 기준(임계값)을 코드가 아니라 설정 파일로 분리하면 무엇이 좋은지 적어 주세요.
+<!-- preview-answer: 05|실습 8-2 정답 -->
 
 ## 실습 8-2 정리
 

@@ -69,7 +69,7 @@ escalation.py   overdue_minutes   : 응답 기한을 넘긴 시간(분)을 구�
 
 응답 기한이 지난 티켓을 상급자에게 올립니다. 실습 7-2에서도 이 파일을 가져와 사용(import)합니다. 직접 쓰는 곳은 1 ~ 6번입니다. 5번 아래에는 `if` 한 줄을, 6번 아래에는 한 단계 더 들여쓴 줄을 씁니다.
 
-```python
+```python exercise
 from ticket_notice import send_with_retry, MAX_TRIES                                       # 실습 6-3에 만든 재시도 함수를 불러온다
 
 
@@ -79,6 +79,7 @@ def overdue_minutes(ticket, now):                                               
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. now 에서 ticket["sla_due"] 를 뺀 값을 리턴한다
+#|     return now - ticket["sla_due"]
 
 
 def needs_escalation(ticket, now):                                                         # 티켓과 지금 시각(분)을 받는 함수
@@ -87,8 +88,11 @@ def needs_escalation(ticket, now):                                              
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 2. ticket 의 "status" 가 "열림" 이 아니면 (if, !=)
+#|     if ticket["status"] != "열림":
     # 3.   False 를 리턴한다
+#|         return False
     # 4. overdue_minutes(ticket, now) 가 0 이상인지(>=)의 결과를 리턴한다
+#|     return overdue_minutes(ticket, now) >= 0
 
 
 def pick_level(overdue, steps):                                                            # 넘긴 시간과 올림 단계 리스트를 받는 함수
@@ -100,7 +104,9 @@ def pick_level(overdue, steps):                                                 
         step = steps[index]                                                                # 그 번호의 올림 단계 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 5. overdue 가 step 의 "overdue_minutes" 이상이면 (if, >=)
+#|         if overdue >= step["overdue_minutes"]:
             # 6. level 에 index + 1 을 저장한다
+#|             level = index + 1
     return level                                                                           # 가장 높은 단계 번호를 리턴한다 — 미리 채운 줄
 
 
@@ -128,7 +134,7 @@ def escalate_ticket(ticket, now, rules):                                        
 
 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 7번 아래에는 `if` 한 줄을, 8번 아래에는 한 단계 더 들여쓴 줄을, 9번 아래에는 또 한 단계 들여쓴 줄을 씁니다. 그 사이의 미리 채운 줄은 그대로 둡니다.
 
-```python
+```python exercise
 from incident import load_json                                                       # Unit 1 파일의 JSON 읽기 함수를 불러온다
 from ticket_merge import change_ticket_status                                        # 실습 6-2에 만든 상태 바꾸기 함수를 불러온다
 from escalation import overdue_minutes, needs_escalation, escalate_ticket            # 방금 만든 함수를 불러온다
@@ -145,11 +151,14 @@ for now in [20, 60, 110]:                                                       
     for ticket in tickets:                                                           # 티켓을 하나씩 읽는다
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 7. needs_escalation(ticket, now) 가 참이면 (if)
+#|         if needs_escalation(ticket, now):
             # 8. escalate_ticket(ticket, now, rules) 의 결과를 result 에 저장한다
+#|             result = escalate_ticket(ticket, now, rules)
             overdue = overdue_minutes(ticket, now)                                   # 기한을 얼마나 넘겼는지 구한다 — 미리 채운 줄
             print(ticket["id"], ticket["title"], "→", result, "· 기한을", overdue, "분 넘김 · 올림 단계", ticket["escalation_level"])  # 결과를 출력한다 — 미리 채운 줄
             if result == "올림":                                                     # 올렸으면 — 미리 채운 줄
                 # 9. escalated_count 에 escalated_count + 1 을 저장한다 (1 늘린다)
+#|                 escalated_count = escalated_count + 1
     if now == 20:                                                                    # 20분 점검이 끝나면 — 미리 채운 줄
         change_ticket_status(tickets[0], "확인 중", 25, "kim.sec")                   # 25분에 kim.sec 이 TCK-1 을 확인하기 시작한다 — 미리 채운 줄
         print("[25분] TCK-1 → 확인 중 · kim.sec")                                    # 담당자의 동작을 출력한다 — 미리 채운 줄
@@ -173,6 +182,7 @@ for ticket in tickets:                                                          
    - (가) 실행한 출력 전체를 붙여 넣어 주세요. 그리고 알림 서버 터미널에 출력된 `[알림 받음]` 줄 수와 단계 3 의 올린 횟수(에스컬레이션 실행 횟수)를 적어 주세요.
    - (나) [핵심 질문] `TCK-1` 은 20분 점검에서 1단계로 에스컬레이션되었지만, 60분 점검에서는 에스컬레이션되지 않았습니다. 그 이유를 설명해 주세요. 이때 25분에 변경된 상태와 `needs_escalation` 의 조건을 근거로 쓰고, 이 조건이 없을 때 발생하는 문제도 함께 설명해 주세요.
    - (다) [핵심 질문] 110분 점검에서 `TCK-3` 은 2단계로, `TCK-6` 은 1단계로 에스컬레이션되었습니다. 두 티켓의 응답 기한과 초과 시간을 근거로 단계가 달라진 이유를 설명해 주세요. 또한 등급 low 인 `TCK-2` 가 에스컬레이션되지 않은 이유도 설명해 주세요.
+<!-- preview-answer: 04|실습 7-1 정답 -->
 
 ## 실습 7-1 정리
 

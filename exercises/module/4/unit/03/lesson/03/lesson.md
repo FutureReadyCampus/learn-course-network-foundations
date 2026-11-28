@@ -342,7 +342,7 @@ failed.to_csv("failed_events.csv", index=False)  # 표를 failed_events.csv 파�
 
 <h3><code>events_time.py</code></h3>
 
-```python
+```python exercise
 import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
 EVENTS_PATH = "normalized_events.json"  # 읽을 정규화 이벤트 파일 이름
@@ -373,8 +373,11 @@ def count_by_user(failed):  # 실패한 이벤트 표를 받는 함수
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. failed 를 "user" 열 기준으로 묶어(groupby) grouped 에 담는다
+#|     grouped = failed.groupby("user")
     # 2. grouped.size() 의 결과를 user_fail_counts 에 담는다
+#|     user_fail_counts = grouped.size()
     # 3. user_fail_counts 를 큰 값부터 정렬해(sort_values, ascending=False) sorted_user_fail_counts 에 담는다
+#|     sorted_user_fail_counts = user_fail_counts.sort_values(ascending=False)
     return sorted_user_fail_counts  # 많은 순서로 정렬한 개수를 리턴한다
 
 
@@ -394,7 +397,9 @@ def count_by_hour(failed):  # 실패한 이벤트 표를 받는 함수
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. failed 를 "hour" 열 기준으로 묶어 grouped 에 담는다
+#|     grouped = failed.groupby("hour")
     # 5. grouped.size() 의 결과를 hour_fail_counts 에 담는다
+#|     hour_fail_counts = grouped.size()
     return hour_fail_counts  # 시간대별 개수를 리턴한다
 
 

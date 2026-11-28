@@ -127,7 +127,7 @@ Name: points, dtype: int64
 
 <h3><code>risk_scores.py</code></h3>
 
-```python
+```python exercise
 import json                                        # 점수를 JSON 파일로 쓰기 위해 json 을 불러온다
 import pandas as pd                                    # 판다스를 pd 라는 짧은 이름으로 불러온다
 from access_detection import load_events, pick_server_failures, pick_suspicious, judge_failure, EVENTS_PATH  # 실습 6-1 함수를 불러온다
@@ -196,9 +196,11 @@ def score_findings(findings):                          # 탐지된 규칙 리스
     findings_table = pd.DataFrame(findings)            # 딕셔너리 리스트를 표로 만든다 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. findings_table 의 "rule" 열을 꺼내 .map(WEIGHTS) 를 붙여 규칙마다 점수를 구해 points 에 담는다
+#|     points = findings_table["rule"].map(WEIGHTS)
     findings_table["points"] = points                  # 표에 points 열을 붙인다 — 미리 채운 줄
     grouped = findings_table.groupby("entity")         # entity 가 같은 행끼리 그룹으로 만든다
     # 2. grouped 에서 "points" 열을 골라 .sum() 을 붙여 그룹마다 점수 합계를 구해 totals 에 담는다
+#|     totals = grouped["points"].sum()
     totals = totals.sort_values(ascending=False)       # 점수가 높은 순으로 정렬한다 — 미리 채운 줄
     return totals                                      # 대상별 점수를 리턴한다
 
@@ -209,7 +211,9 @@ def make_grade(score):                                 # 점수를 받는 함수
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 3. if 로 시작한다: score 가 HIGH_LIMIT 이상이면
+#|     if score >= HIGH_LIMIT:
     # 4.   그 if 안쪽에서 "high" 를 리턴한다
+#|         return "high"
     if score >= MID_LIMIT:                             # 점수가 mid 기준 이상이면 — 미리 채운 줄 (위 high 와 같은 모양)
         return "mid"                                   # mid 이다 — 미리 채운 줄
     return "low"                                       # 둘 다 아니면 low 이다
@@ -237,6 +241,7 @@ def make_records(totals, reasons):                     # 대상별 점수와 이
         grade = make_grade(score)                      # 점수로 등급을 정한다
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 5. 키 "entity" 에 entity, "score" 에 int(score), "grade" 에 grade, "reasons" 에 reasons[entity] 를 담은 딕셔너리를 record 에 담는다 (int 는 JSON 저장용)
+#|         record = {"entity": entity, "score": int(score), "grade": grade, "reasons": reasons[entity]}
         records.append(record)                         # 기록을 리스트에 추가한다
     return records                                     # 기록 리스트를 리턴한다
 
@@ -302,6 +307,7 @@ for record in records:                                 # 기록을 하나씩 꺼
    - (가) 실행한 출력 전체를 붙여 넣고, high · mid · low 에 각각 어떤 대상이 들어갔는지 적어 주세요.
    - (나) [핵심 질문] seoyeon 의 점수가 어떤 규칙의 점수를 더해 나왔는지 적고, 점수만 저장하지 않고 이유(`reasons`)를 함께 저장하는 까닭을 적어 주세요.
    - (다) [핵심 질문] 198.51.100.90 은 경로 스캔 하나에 해당하지만 low 입니다. low 는 점수 기준상 낮은 등급이라는 뜻입니다. low 인 이유를 점수와 기준으로 설명하고, 이 IP 의 기록을 무시해도 되는지 샘플의 값(그 IP 의 요청 3개의 `result`)으로 판단해 적어 주세요.
+<!-- preview-answer: 04|실습 7-2 정답 -->
 
 ## 실습 7-2 정리
 

@@ -144,7 +144,7 @@ print(text)  # 파일 내용을 출력한다
 
 <h3><code>normalize.py</code></h3>
 
-```python
+```python exercise
 import json  # 파일에 JSON 으로 저장하는 json 모듈을 불러온다
 from normalize_web import normalize_web  # 웹 서버 로그 정규화 함수를 불러온다
 from normalize_json_csv import load_server, load_saas  # 판정 서버 · SaaS 로그 읽기 함수를 불러온다
@@ -178,7 +178,9 @@ def merge_events(web, server, saas):  # 세 이벤트 리스트를 받는 함수
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. web, server, saas 를 + 로 이어 붙여 events 에 담는다
+#|     events = web + server + saas
     # 2. events.sort(key=get_time) 로 time 이 이른 것부터(오름차순) 정렬한다 (sort 는 events 자체를 바꾸고 아무것도 리턴하지 않는다)
+#|     events.sort(key=get_time)
     return events  # 시간순으로 정렬한 이벤트 리스트를 리턴한다
 
 
@@ -190,7 +192,9 @@ def count_by_source(events):  # 이벤트 리스트를 받는 함수
     for event in events:  # 이벤트를 하나씩 꺼낸다
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 3. event 의 "source" 값을 source 에 담는다
+#|         source = event["source"]
         # 4. source_event_counts 에서 source 의 현재 횟수(없으면 0)에 1 을 더합니다.
+#|         source_event_counts[source] = source_event_counts.get(source, 0) + 1
         # 결과를 source_event_counts[source] 에 담습니다 (source_event_counts.get).
     return source_event_counts  # 소스별 개수를 리턴한다
 
@@ -213,6 +217,7 @@ def save_events(events, path):  # 이벤트 리스트와 저장할 파일 이름
     with open(path, "w", encoding="utf-8") as events_file:  # 파일을 쓰기 모드("w")로 연다
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 5. json.dump(events, events_file, ensure_ascii=False, indent=2) 로 events 를 events_file 에 저장한다
+#|         json.dump(events, events_file, ensure_ascii=False, indent=2)
 ```
 
 - 들여쓰기는 **미리 채운 줄에 맞춥니다.** 1 · 2번은 함수 안이라 앞에 공백 4개이고, 3 · 4번은 `for` 안쪽이라 8개이고, 5번은 `with` 안쪽이라 8개입니다.

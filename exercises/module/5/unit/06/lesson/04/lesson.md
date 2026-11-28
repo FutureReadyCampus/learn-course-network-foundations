@@ -66,7 +66,7 @@ ticket_notice.py   pick_recipients     : 등급에 맞는 수신자 리스트를
 
 담당자에게 알림을 전파합니다. 직접 쓰는 곳은 1 ~ 6번입니다. 실습 6-2의 `ticket_merge.py` 와 `agent_core` 폴더에서 복사한 `notifier.py` 가 같은 폴더에 있어야 합니다.
 
-```python
+```python exercise
 from notifier import notify                                            # notifier.py 의 알림 함수를 불러온다 (성공하면 True, 실패하면 False)
 
 MAX_TRIES = 3                                                          # 알림을 보내 보는 최대 횟수
@@ -79,6 +79,7 @@ def pick_recipients(grade, rules):                                     # 등급�
     table = rules["recipients"]                                        # 등급마다 정한 수신자 표 — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. table[grade] 를 리턴한다 (이 등급의 수신자 리스트)
+#|     return table[grade]
 
 
 def should_send(ticket, now, gap):                                     # 티켓 · 지금 시각(분) · 알림 간격(분)을 받는 함수
@@ -87,9 +88,12 @@ def should_send(ticket, now, gap):                                     # 티켓 
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 2. ticket 의 "notified_count" 가 0 이면 (if, ==) 처음 보내는 것이다
+#|     if ticket["notified_count"] == 0:
     # 3.   True 를 리턴한다
+#|         return True
     elapsed = now - ticket["last_notified"]                            # 마지막으로 보낸 뒤 몇 분 지났는지 — 미리 채운 줄
     # 4. elapsed 가 gap 이상인지(>=)의 결과를 리턴한다
+#|     return elapsed >= gap
 
 
 def send_with_retry(message, url, max_tries):                          # 메시지 · 알림 주소 · 최대 횟수를 받는 함수
@@ -99,7 +103,9 @@ def send_with_retry(message, url, max_tries):                          # 메시�
     for attempt in range(1, max_tries + 1):                            # 시도 번호를 1 부터 최대 횟수까지 하나씩 읽는다 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 5. notify(message, url) 의 결과가 참이면 (if)
+#|         if notify(message, url):
             # 6. attempt 를 리턴한다
+#|             return attempt
     return 0                                                           # 모두 실패했으면 0 을 리턴한다 — 미리 채운 줄
 
 
@@ -128,7 +134,7 @@ def send_ticket_notice(ticket, now, rules):                            # 티켓 
 
 7 ~ 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 7번 아래에는 `result = …` 를 씁니다. 8번 아래에는 `if … :` 를 씁니다. 9번 아래에는 한 단계 들여쓴 줄을 씁니다.
 
-```python
+```python exercise
 from incident import load_json, save_json                                             # Unit 1 파일의 JSON 읽기 · 저장 함수를 불러온다
 from ticket_merge import handle_alert                                                 # 실습 6-2에 만든 알림 처리 함수를 불러온다
 from ticket_notice import send_ticket_notice, send_with_retry, MAX_TRIES              # 방금 만든 알림 함수를 불러온다
@@ -144,9 +150,12 @@ for alert in alerts:                                                            
     ticket, action = handle_alert(alert, tickets, rules)                              # 알림을 처리하고 티켓과 처리 방식을 받는다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 7. send_ticket_notice(ticket, alert["minute"], rules) 의 결과를 result 에 저장한다
+#|     result = send_ticket_notice(ticket, alert["minute"], rules)
     print(alert["id"], "->", ticket["id"], action, "· 담당자 알리기:", result)        # 알림 한 건의 결과를 출력한다
     # 8. result 가 "전송" 이면 (if, ==)
+#|     if result == "전송":
         # 9. sent_count 에 sent_count + 1 을 저장한다 (1 늘린다)
+#|         sent_count = sent_count + 1
     if result == "건너뜀":                                                            # 건너뛰었으면 — 미리 채운 줄
         skipped_count = skipped_count + 1                                             # 건너뛴 수를 1 늘린다 — 미리 채운 줄
 
@@ -184,6 +193,7 @@ print("--- 단계 4: 파일에 저장된 티켓", len(saved), "장")            
    - (가) 실행한 출력 전체를 붙여 넣고, 알림 서버 터미널에 출력된 `[알림 받음]` 줄 수와, 단계 2 의 전송 건수 · 건너뜀 건수를 적어 주세요.
    - (나) [핵심 질문] `INC-205` 와 `INC-206` 은 전송을 생략했고 `INC-209` 와 `INC-210` 은 전송했습니다. 각각 전송을 생략한 사유와 전송한 사유를 적어 주세요. 근거는 각 알림이 수신된 시각과 해당 티켓의 마지막 전송 시각입니다. 그다음 전송 간격을 제한하지 않으면 담당자에게 어떤 일이 생기는지 적어 주세요.
    - (다) [핵심 질문] 단계 3 에서 꺼진 주소로 3번 전송을 시도했고 모두 실패했습니다. `[알림 실패] ConnectionError`(연결 오류: 서버에 연결하지 못했을 때 발생하는 오류 이름)가 3번 출력된 사유를 적어 주세요. 그다음 3번 모두 실패한 알림이 누락되지 않게 하려면, 실제 관제에서 무엇을 추가로 해야 하는지 적어 주세요.
+<!-- preview-answer: 05|실습 6-3 정답 -->
 
 ## 실습 6-3 정리
 

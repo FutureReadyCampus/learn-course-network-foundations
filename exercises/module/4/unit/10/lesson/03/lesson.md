@@ -136,7 +136,7 @@ print(fruit_count_dict)                    # 딕셔너리를 출력한다
 
 <h3><code>pipeline.py</code></h3>
 
-```python
+```python exercise
 import json                                                                                # 보고서를 JSON 파일로 저장하기 위해 json 을 불러온다
 from access_detection import load_events, EVENTS_PATH                                      # Unit 6 : 이벤트 파일을 읽는 함수를 불러온다
 from correlation import find_chains_in_events                                              # Unit 7 : 서로 다른 로그를 연결하는 함수를 불러온다
@@ -153,9 +153,13 @@ def analyze_events(events):                                                     
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. events 를 find_chains_in_events 에 전달해 연결된 사건을 구해 chains 에 담는다
+#|     chains = find_chains_in_events(events)
     # 2. events 와 chains 를 collect_findings 에 전달해 탐지된 규칙 리스트를 구해 findings 에 담는다
+#|     findings = collect_findings(events, chains)
     # 3. findings 를 score_findings 에 전달해 대상별 점수를 구해 totals 에 담는다
+#|     totals = score_findings(findings)
     # 4. findings 를 collect_reasons 에 전달해 대상별 규칙 이름을 구해 reasons 에 담는다
+#|     reasons = collect_reasons(findings)
     records = make_records(totals, reasons)                                                # 점수 · 등급 · 이유 기록을 만든다 — 미리 채운 줄
     return findings, records                                                               # 탐지된 규칙 리스트와 기록을 리턴한다
 
@@ -192,6 +196,10 @@ def build_report(events, findings, records, summaries):                         
     # 5. events 의 "source" 열을 꺼내 .value_counts() 를 붙여 로그 종류마다 이벤트 수를 구해 source_event_counts 에 담는다
     # 6. source_event_counts 에 .to_dict() 를 붙여 JSON 에 저장할 수 있는 딕셔너리로 바꿔 source_count_dict 에 담는다
     # 7. 키 "date" 에 REPORT_DATE, "event_count" 에 len(events), "source_event_counts" 에 source_count_dict, "finding_count" 에 len(findings), "records" 에 records, "summaries" 에 summaries 를 담은 딕셔너리를 report 에 담는다
+#|     source_event_counts = events["source"].value_counts()
+#|     source_count_dict = source_event_counts.to_dict()
+#|     report = {"date": REPORT_DATE, "event_count": len(events), "source_event_counts": source_count_dict,
+#|               "finding_count": len(findings), "records": records, "summaries": summaries}
     return report                                                                          # 보고서 딕셔너리를 리턴한다
 
 
@@ -260,6 +268,7 @@ run_pipeline()                     # 읽기부터 보고서 저장까지 한 번
    - (가) 실행한 출력 전체를 붙여 넣고, 보고서 파일의 `event_count` · `finding_count` 값과 `records` · `summaries` 의 건수를 적어 주세요.
    - (나) [핵심 질문] 점수와 등급은 코드가 정하고 AI 에게는 요약만 시킨 이유를 적어 주세요. 단계 5 의 확인할 순서와 단계 3 의 요약을 근거로 쓰세요.
    - (다) [핵심 질문] AI 호출이 실패해도 파이프라인이 멈추지 않고 대체 문장을 쓰게 만든 이유를 적어 주세요. 대체 문장이 들어간 대상을 담당자가 어떻게 처리해야 하는지도 적어 주세요.
+<!-- preview-answer: 05|실습 10-2 정답 -->
 
 ## 실습 10-2 정리
 

@@ -100,7 +100,7 @@ ticket_merge.py   find_open_ticket     : 합칠 수 있는 티켓을 찾는다 (
 - 3번 아래에는 2번보다 한 단계 오른쪽에 `return` 한 줄을 씁니다.
 - 8번도 `if` 한 줄만 씁니다. 그 아래 미리 채운 줄들이 `if` 안쪽입니다.
 
-```python
+```python exercise
 from ticketing import make_ticket, has_failed_action, NEXT_STEPS, MANUAL_STEP        # 실습 6-1에 만든 함수와 문장을 불러온다
 
 ALLOWED_MOVES = {                                                                    # 티켓 상태마다 옮겨 갈 수 있는 상태의 리스트
@@ -117,10 +117,13 @@ def find_open_ticket(tickets, alert, window):                                   
     for ticket in tickets:                                                           # 티켓을 하나씩 읽는다 — 미리 채운 줄
         # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
         # 1. ticket 의 "entity" 가 alert 의 "entity" 와 같고(and) ticket 의 "rule" 도 alert 의 "rule" 과 같으면 (if, ==)
+#|         if ticket["entity"] == alert["entity"] and ticket["rule"] == alert["rule"]:
             if ticket["status"] != "해결":                                           # 해결되지 않은 티켓이면 — 미리 채운 줄
                 gap = alert["minute"] - ticket["updated_at"]                         # 마지막 갱신 뒤 몇 분 지났는지 — 미리 채운 줄
                 # 2. gap 이 window 이하이면 (if, <=)
+#|                 if gap <= window:
                     # 3. ticket 을 리턴한다
+#|                     return ticket
     return None                                                                      # 맞는 티켓이 없으면 None 을 리턴한다 — 미리 채운 줄
 
 
@@ -130,8 +133,11 @@ def merge_alert(ticket, alert):                                                 
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. ticket 의 "count" 에 ticket["count"] + 1 을 저장한다 (1 늘린다)
+#|     ticket["count"] = ticket["count"] + 1
     # 5. ticket 의 "incidents" 리스트에 alert 의 "id" 를 추가한다 (append)
+#|     ticket["incidents"].append(alert["id"])
     # 6. ticket 의 "updated_at" 에 alert 의 "minute" 을 저장한다
+#|     ticket["updated_at"] = alert["minute"]
     ticket["done"] = ticket["done"] + alert["done"]                                  # 새 알림의 조치 내역을 티켓의 조치 내역 뒤에 이어 붙인다 — 미리 채운 줄
     if has_failed_action(alert["done"]):                                             # 새 알림의 조치 확인이 실패했으면 — 미리 채운 줄
         ticket["needs_manual"] = True                                                # 직접 확인이 필요하다고 표시하고 — 미리 채운 줄
@@ -145,12 +151,15 @@ def handle_alert(alert, tickets, rules):                                        
     window = rules["merge_window_minutes"]                                           # 같은 사건으로 보는 시간(분) — 미리 채운 줄
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 7. find_open_ticket(tickets, alert, window) 의 결과를 existing 에 저장한다
+#|     existing = find_open_ticket(tickets, alert, window)
     # 8. existing 이 None 이면 (if, is)
+#|     if existing is None:
         ticket_no = len(tickets) + 1                                                 # 새 티켓 번호 — 미리 채운 줄
         ticket = make_ticket(alert, ticket_no, rules, NEXT_STEPS)                    # 새 티켓을 만들고 — 미리 채운 줄
         tickets.append(ticket)                                                       # 티켓 리스트에 추가한다 — 미리 채운 줄
         return ticket, "새 티켓"                                                     # 티켓과 「새 티켓」을 함께 리턴하고 끝낸다 — 미리 채운 줄
     # 9. merge_alert(existing, alert) 를 호출한다 (합칠 티켓이 있을 때만 여기까지 온다)
+#|     merge_alert(existing, alert)
     return existing, "병합"                                                          # 티켓과 「병합」을 함께 리턴한다 — 미리 채운 줄
 
 
@@ -222,6 +231,7 @@ for comment in first["comments"]:                                               
    - (가) 실행한 출력 전체를 붙여 넣어 주세요. 그리고 단계 2 의 티켓 수와 TCK-1 에 병합된 알림 번호를 적어 주세요.
    - (나) [핵심 질문] `INC-210` 은 TCK-1 에 병합됐고 `INC-211` 은 새 티켓이 생성됐습니다. 각각 그렇게 처리된 사유를 적어 주세요. 근거는 두 알림이 수신된 시각과 TCK-1 의 마지막 갱신 시각입니다. 그다음 60분을 티켓 생성 시각(0분)부터 계산한다면 `INC-210` 이 어떻게 처리될지 적어 주세요.
    - (다) [핵심 질문] 단계 3 에서 `해결 → 열림` 전이가 거절됐습니다. 이 전이를 허용하면 어떤 문제가 생기는지 적어 주세요. 그다음 병합 조건에서 `해결` 확인을 제외한다고 가정합니다. 이때 해결 후에 수신된 같은 알림이 어떻게 처리되는지 적어 주세요.
+<!-- preview-answer: 05|실습 6-2 정답 -->
 
 ## 실습 6-2 정리
 

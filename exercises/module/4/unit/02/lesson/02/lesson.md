@@ -203,7 +203,7 @@ UTC+09:00
 
 <h3><code>normalize_web.py</code></h3>
 
-```python
+```python exercise
 from datetime import datetime  # 날짜와 시각을 다루는 datetime 클래스를 불러온다
 from log_parse import split_request, read_request, read_status, read_client  # Unit 1에서 만든 로그 읽기 함수를 불러온다
 
@@ -228,8 +228,11 @@ def convert_time(time_text):  # nginx 시각 문자열을 받는 함수
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. datetime.strptime(time_text, NGINX_TIME_FORMAT) 의 결과를 parsed 에 담는다
+#|     parsed = datetime.strptime(time_text, NGINX_TIME_FORMAT)
     # 2. parsed.replace(tzinfo=None) 의 결과를 local_time 에 담는다 (+0900 정보를 떼고 한국 시각만 남긴다)
+#|     local_time = parsed.replace(tzinfo=None)
     # 3. local_time.strftime(COMMON_TIME_FORMAT) 의 결과를 time_out 에 담는다
+#|     time_out = local_time.strftime(COMMON_TIME_FORMAT)
     return time_out  # 공통 모양의 시각 문자열을 리턴한다
 
 
@@ -239,8 +242,11 @@ def convert_result(status):  # 상태 코드(정수)를 받는 함수
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. status 가 400 이상이면 (if)
+#|     if status >= 400:
     # 5.   "실패" 를 리턴한다
+#|         return "실패"
     # 6. 그 밖에는 "성공" 을 리턴한다
+#|     return "성공"
 
 
 def normalize_web(line):  # 로그 한 줄을 받는 함수

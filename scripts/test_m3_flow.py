@@ -8,6 +8,17 @@ ROOT = Path(__file__).resolve().parents[1] / "exercises/module/3/unit"
 
 
 class M3FlowTest(unittest.TestCase):
+    def test_inline_answers_are_preview_only(self):
+        lesson = ROOT / "03/lesson/03/lesson.md"
+        catalog = markdown_pages(lesson)
+        preview = markdown_pages(lesson, preview_answers=True)
+        self.assertEqual([p["title"] for p in catalog], [p["title"] for p in preview])
+        index = next(i for i, p in enumerate(preview) if "data-answer-line=" in p["html"])
+        self.assertEqual(preview[index]["html"].count("data-answer-line="), 2)
+        self.assertIn("elif False:", catalog[index]["html"])
+        self.assertNotIn("data-answer-line=", catalog[index]["html"])
+        self.assertNotIn("#|", catalog[index]["html"])
+
     def test_answers_render_in_exercise_pages(self):
         lessons = {"01": ("02", "03", "05", "06", "07", "08", "09", "10"),
                    "02": ("03", "04", "06", "07", "08")}

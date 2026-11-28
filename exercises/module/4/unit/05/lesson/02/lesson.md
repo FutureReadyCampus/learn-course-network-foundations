@@ -177,7 +177,7 @@ Name: count, dtype: int64
 
 <h3><code>traffic_detection.py</code></h3>
 
-```python
+```python exercise
 import pandas as pd  # 판다스를 pd 라는 짧은 이름으로 불러온다
 
 EVENTS_PATH = "normalized_events.json"  # 읽을 정규화 이벤트 파일 이름
@@ -200,6 +200,7 @@ def add_minute_column(events):  # 이벤트 표를 받는 함수
     times = pd.to_datetime(events["time"])  # 문자열 시각을 시각 값으로 바꾼다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. times 에 .dt.floor("min") 을 붙여 초를 버린 시각을 minutes 에 담는다
+#|     minutes = times.dt.floor("min")
     events["minute"] = minutes  # 표에 minute 열을 붙인다 — 미리 채운 줄
     return events  # minute 열이 붙은 표를 리턴한다
 
@@ -210,7 +211,9 @@ def count_web_per_minute(events):  # minute 열이 있는 이벤트 표를 받�
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 2. events["source"] == "web" 으로 행마다 True 또는 False 를 구해 is_web 에 담는다 (웹 서버 이벤트이면 True)
+#|     is_web = events["source"] == "web"
     # 3. events 에서 is_web 이 True 인 행만 골라 web_events 에 담는다 (events[is_web])
+#|     web_events = events[is_web]
     minute_request_counts = web_events.groupby("minute").size()  # minute 값이 같은 행끼리 그룹으로 만들고(groupby) 바로 그룹마다 행이 몇 개인지(그 분의 요청 수) 센다(size)
     return minute_request_counts  # 분마다 요청 수를 리턴한다
 
@@ -223,6 +226,7 @@ def make_traffic_limit(path, multiple):  # 파일 경로와 몇 배인지를 받
     average = baseline["requests_per_minute"].mean()  # 분당 요청 수 열을 꺼내(["requests_per_minute"]) 바로 7개의 평균을 구한다(mean)
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. average 에 multiple 을 곱해 limit 에 담는다
+#|     limit = average * multiple
     return limit  # 급증 기준을 리턴한다
 
 
@@ -232,7 +236,9 @@ def pick_spike_minutes(minute_request_counts, limit):  # 분마다 요청 수와
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 5. minute_request_counts 가 limit 이상인지 비교한 결과(>=)를 is_spike 에 담는다
+#|     is_spike = minute_request_counts >= limit
     # 6. minute_request_counts 에서 is_spike 가 True 인 것만 골라 spike_minutes 에 담는다 (minute_request_counts[is_spike])
+#|     spike_minutes = minute_request_counts[is_spike]
     return spike_minutes  # 요청이 급증한 분과 요청 수를 리턴한다
 ```
 

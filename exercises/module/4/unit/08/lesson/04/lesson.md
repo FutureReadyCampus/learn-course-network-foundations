@@ -184,7 +184,7 @@ Name: problem, dtype: object
 
 <h3><code>final_check.py</code></h3>
 
-```python
+```python exercise
 import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
 
 ALERTS_PATH = "review_alerts.json"                    # 읽을 알림 파일 이름
@@ -221,6 +221,7 @@ def merge_alerts(alerts, login_alerts):               # 알림 표 두 개를 �
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. pd.concat 에 두 표를 대괄호 리스트로 묶어 전달하고, 합친 표를 all_alerts 에 담는다 (모양: pd.concat([표1, 표2]))
+#|     all_alerts = pd.concat([alerts, login_alerts])
     return all_alerts                                 # 합친 알림 표를 리턴한다
 
 
@@ -234,9 +235,13 @@ def evaluate(all_alerts, problems):                   # 알림 표와 진짜 문
     false_alarm_count = len(false_alarms)             # 오탐이 몇 개인지 센다
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 2. all_alerts 의 "problem" 열에서 빈 값을 .dropna() 로 지워 caught_ids 에 담는다
+#|     caught_ids = all_alerts["problem"].dropna()
     # 3. problems 의 "id" 열이 caught_ids 안에 있는지 isin 으로 구해 is_caught 에 담는다
+#|     is_caught = problems["id"].isin(caught_ids)
     # 4. is_caught 를 ~ 로 뒤집어 is_missed 에 담는다
+#|     is_missed = ~is_caught
     # 5. problems 에서 is_missed 가 True 인 행만 골라 missed_problems 에 담는다
+#|     missed_problems = problems[is_missed]
     return false_alarm_count, missed_problems         # 오탐 수와 놓친 문제 표를 리턴한다
 
 
@@ -246,6 +251,7 @@ def make_summary(alert_count, false_alarm_count, missed_count):  # 세 개수를
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 6. "알림 " 과 알림 수, "개 중 오탐 " 과 오탐 수, "개 · 놓친 문제 " 와 놓친 문제 수, "개" 를 + 로 이어 summary 에 담는다 (숫자는 str() 로 문자열로 바꿔서 이어 붙인다)
+#|     summary = "알림 " + str(alert_count) + "개 중 오탐 " + str(false_alarm_count) + "개 · 놓친 문제 " + str(missed_count) + "개"
     return summary                                    # 한 문장을 리턴한다
 ```
 
@@ -307,6 +313,7 @@ print(summary)                                        # 요약 문장을 출력�
    - (가) 실행한 출력 전체를 붙여 넣고, 한 문장 요약을 적어 주세요.
    - (나) [핵심 질문] 로그인 규칙의 알림을 합치자 놓친 문제가 몇 개에서 몇 개로 줄었나요? P4 가 잡힌 이유와, 오탐이 늘지 않은 이유를 함께 적어 주세요.
    - (다) [핵심 질문] 아직 놓친 P5(seoyeon 의 권한 없는 정산 조회 시도)를 찾으려면 어떤 규칙이 필요하고, 그 규칙을 더하면 오탐이 늘 수 있는 이유는 무엇인지 적어 주세요.
+<!-- preview-answer: 05|실습 8-3 정답 -->
 
 ## 실습 8-3 정리
 

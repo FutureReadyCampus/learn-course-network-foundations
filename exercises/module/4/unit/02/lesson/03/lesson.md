@@ -130,7 +130,7 @@ print(allowed_result)  # 바꾼 값을 출력한다
 
 <h3><code>normalize_json_csv.py</code></h3>
 
-```python
+```python exercise
 import csv  # CSV 파일을 읽는 csv 모듈을 불러온다
 import json  # JSON 을 다루는 json 모듈을 불러온다
 from datetime import datetime  # 날짜와 시각을 다루는 datetime 클래스를 불러온다
@@ -148,7 +148,9 @@ def convert_server_time(time_text):  # 판정 서버 시각 문자열을 받는 
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 1. datetime.strptime(time_text, SERVER_TIME_FORMAT) 의 결과를 parsed 에 담는다
+#|     parsed = datetime.strptime(time_text, SERVER_TIME_FORMAT)
     # 2. parsed.strftime(COMMON_TIME_FORMAT) 의 결과를 time_out 에 담는다
+#|     time_out = parsed.strftime(COMMON_TIME_FORMAT)
     return time_out  # 공통 모양의 시각 문자열을 리턴한다
 
 
@@ -161,6 +163,7 @@ def normalize_server(line):  # 판정 서버 로그 한 줄(JSON 문자열)을 �
     allowed = item["allowed"]  # 허용이었는지(True 또는 False)
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 3. ALLOWED_MAP 에서 allowed 에 해당하는 값을 꺼내 result 에 담는다 (ALLOWED_MAP[allowed])
+#|     result = ALLOWED_MAP[allowed]
     raw_text = line.strip()  # 원래 줄(양끝 공백과 줄바꿈 뺀 것)을 보관한다
     event = {  # 공통 이벤트의 키로 묶는다
         "time": time_out,  # 일어난 시각
@@ -180,9 +183,12 @@ def normalize_saas(row):  # SaaS CSV 한 행(딕셔너리)을 받는 함수
     """
     # ← 아래를 직접 씁니다 (주석은 두고 각 주석 바로 아래 줄에 씁니다)
     # 4. row["account"] 를 "@" 기준으로 나눠 account_parts 에 담는다 (account 예: seoyeon@a-corp.example)
+#|     account_parts = row["account"].split("@")
     # 5. account_parts 의 첫 값을 user 에 담는다
+#|     user = account_parts[0]
     outcome = row["outcome"]  # success 또는 failure
     # 6. RESULT_MAP 에서 outcome 에 해당하는 값을 꺼내 result 에 담는다
+#|     result = RESULT_MAP[outcome]
     event = {  # 공통 이벤트의 키로 묶는다
         "time": row["time"],  # SaaS 시각은 이미 공통 모양이라 그대로 쓴다
         "source": "saas",  # 어느 로그에서 왔는지
