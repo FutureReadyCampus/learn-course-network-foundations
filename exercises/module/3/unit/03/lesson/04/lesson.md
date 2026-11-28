@@ -80,9 +80,9 @@ seoyeon:SALES:QUERY
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="find_unused 는 권한마다 사용 이력과 지난 일 수를 보고 오래 안 쓴 권한을 모은다"></figure>
 
-**문법 상자 — 안 쓴 일 수 구하기**
+<h2>문법 상자 — 안 쓴 일 수 구하기</h2>
 
-**① `.days` 는 시각 차이에서 「일」만 숫자로 알려 줍니다**
+<h2>① <code>.days</code> 는 시각 차이에서 「일」만 숫자로 알려 줍니다</h2>
 
 ```python
 from datetime import datetime                                       # 시각을 다루는 모듈에서 datetime 을 불러온다
@@ -122,20 +122,22 @@ False
 
 ## 실습 3-2 · 90일 넘게 안 쓴 권한 후보 찾기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: 규칙에 안 걸린 재직자의 권한 일곱 건은 겉으로는 문제가 없어 보여서, 쓰는 권한인지 안 쓰는 권한인지 알 수 없습니다.
 - **그래서 만드는 것**: `find_unused` 입니다. 현황 · 마지막 사용 시각 딕셔너리 · 지금 시각 · 기준 일 수(90)를 받습니다. 마지막 사용이 90일보다 오래됐거나 사용 이력이 없는 권한을 골라, 복사본에 `last_used` 키를 더해 리스트로 리턴합니다. 키를 만들고 후보를 더하는 줄은 미리 써 두었고, 마지막 사용 시각을 꺼내는 줄과 기준을 넘었는지 보는 줄이 빠져 있습니다.
 - **실행하면**: 단계 1은 규칙에 안 걸린 권한 일곱 건이 며칠째 안 쓰였는지 출력하고, 단계 2는 90일 넘게 안 쓴 후보를 출력합니다. 규칙에 이미 걸린 권한은 실행 파일이 미리 뺍니다.
 - **현업에서는**: 접근 관리 도구도 「마지막 사용일」 기준(예: 90일)으로 안 쓰는 권한을 모아 담당자에게 확인을 요청합니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. [핵심 실습 점검 함수 준비](__SITE__/exercises/module/3/unit/3/lesson/3/page/1)에서 `review_rules.py`를 만듭니다. 이 핵심 실습은 이 파일의 `find_stale` 함수만 사용합니다. 선택 응용에서 필요한 파일과 데이터는 각각의 응용 레슨에 있습니다.
 2. 작업 폴더 `network-study-notes/access_control` 에 `config/access_log.json` · `review_unused.py` · `exercise3-2_run.py` 세 파일을 만들고(`access_log.json` 은 `config` 폴더 안, 나머지 둘은 `access_control` 바로 아래), `review_unused.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
 3. 실행해서 <mark>안 쓴 일 수</mark>(단계 1: 현황)와 <mark>90일 넘게 안 쓴 후보</mark>(단계 2: 판정)를 읽습니다.
 
-**준비** — 터미널이 `…/access_control` 위치인지 확인한 뒤 핵심 실습 준비가 되었는지 봅니다.
+<h2>준비</h2>
+
+터미널이 `…/access_control` 위치인지 확인한 뒤 핵심 실습 준비가 되었는지 봅니다.
 
 ```bash
 ls
@@ -143,7 +145,9 @@ ls
 
 - `review_rules.py` 가 보이지 않으면 핵심 준비 레슨에서 먼저 만듭니다. 없는 채로 실행하면 `ModuleNotFoundError: No module named 'review_rules'` 오류가 납니다.
 
-**`config/access_log.json`** — 그대로 붙여 넣습니다. 사용 이력입니다. `access_control` 안의 `config` 폴더에 만듭니다.
+<h3><code>config/access_log.json</code></h3>
+
+그대로 붙여 넣습니다. 사용 이력입니다. `access_control` 안의 `config` 폴더에 만듭니다.
 
 <pre class="copyable"><code>[
   {"user": "seoyeon", "permission": "SALES:QUERY", "last_used": "2026-10-27 09:10"},
@@ -155,7 +159,7 @@ ls
   {"user": "dami", "permission": "SALES:QUERY", "last_used": "2026-10-10 13:00"}
 ]</code></pre>
 
-**`review_unused.py`**
+<h3><code>review_unused.py</code></h3>
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
@@ -217,7 +221,7 @@ def find_unused(access_list, last_used_map, now, limit_days):    # 현황 · 마
 
 - 주석 줄은 그대로 두고, **각 주석 바로 아래 줄**에 씁니다. ① · ② 는 모두 `for` 안쪽 줄이라 8칸(Tab 키 두 번)에서 시작합니다. ② 는 위의 `if used_text is None:` 과 같은 8칸이고, 그 아래 12칸 두 줄이 ② 의 안쪽입니다. `load_last_used` · `make_unused` · `days_since` 와 나머지 줄은 미리 채워 두었으니 그대로 둡니다.
 
-**직접 쓰는 곳**
+<h3>직접 쓰는 곳</h3>
 
 아래 확인은 한 곳씩 채우며 중간에 실행해 볼 때나, 막혔을 때 참고합니다. 「순서」대로 두 곳을 다 채운 뒤 처음 실행해도 됩니다.
 
@@ -232,7 +236,9 @@ def find_unused(access_list, last_used_map, now, limit_days):    # 현황 · 마
 - `used_text is None` 은 「값이 `None` 인가」를 묻는 것입니다. `.get(key)` 는 키가 없으면 `None` 을 주므로 `None` 이면 사용 이력이 없다는 뜻입니다. 그 경우에는 일 수를 계산할 수 없으니, `days_since` 는 사용 이력이 있을 때(`elif`)만 부릅니다. `elif` 는 「앞의 `if` 가 아니고, 이 조건이면」이라는 뜻입니다.
 - 채우기 전에 실행하면 단계 1 일곱 줄은 나오고, 그 뒤 `NameError: name 'used_text' is not defined` 오류로 멈춥니다. ① 이 비어 있어 `used_text` 를 만든 적이 없는데 `if used_text is None:` 에서 쓰려 했기 때문입니다.
 
-**`exercise3-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 현황을 만들고, `review_rules.py`의 `find_stale` 에 걸린 권한을 뺀 뒤, 남은 권한이 며칠째 안 쓰였는지 출력하고 `find_unused` 로 후보를 찾습니다.
+<h3><code>exercise3-2_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 현황을 만들고, `review_rules.py`의 `find_stale` 에 걸린 권한을 뺀 뒤, 남은 권한이 며칠째 안 쓰였는지 출력하고 `find_unused` 로 후보를 찾습니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
@@ -274,7 +280,7 @@ for entry in unused:                                             # 후보를 한
     print(entry["user"], entry["permission"], "<-", entry["source"])   # 사용자 · 권한 <- 출처를 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 파일을 만들고 각각 붙여 넣습니다. 파일마다 아래 세 가지를 반복합니다.
    1. VS Code 왼쪽 목록에서 만들 폴더를 오른쪽 클릭 › **New File** 을 누릅니다. `access_log.json` 은 `access_control` 안의 `config` 폴더, 나머지 둘은 `access_control` 폴더입니다(다른 폴더를 오른쪽 클릭하면 그 폴더에 만들어집니다).

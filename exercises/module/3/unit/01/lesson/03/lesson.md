@@ -31,7 +31,7 @@ source:
 - 위에서부터 검사하다가 하나라도 걸리면 그 자리에서 거부를 리턴하고 끝납니다.
 - 네 검사를 모두 지나야만 허용입니다. 검사 하나를 빼먹으면 그 경우는 **잘못 허용됩니다.** 경비원이 자리를 비운 문으로 아무나 지나가는 것과 같습니다. 이렇게 검사가 빠진 자리가 저절로 허용이 되는 위험을 **열림 기본 값**(fail-open · 페일 오픈)이라고 합니다.
 
-#### 걸리면 바로 끝내는 이유
+<h2>걸리면 바로 끝내는 이유</h2>
 
 뒤 검사는 앞 검사를 통과한 요청에만 할 수 있습니다. 앞에서 걸러 주지 않으면 코드가 멈춥니다.
 
@@ -43,7 +43,7 @@ source:
 - `KeyError` 는 딕셔너리에 없는 키를 꺼내려 할 때 파이썬이 내는 오류입니다.
 - 하나만 걸려도 결론은 거부라서 남은 검사를 더 볼 필요가 없습니다. 끝까지 다 지난 요청만 허용하는 것이 기본 거부입니다.
 
-#### 거부 이유 네 가지 — 감사 때 하는 말
+<h3>거부 이유 네 가지 — 감사 때 하는 말</h3>
 
 | 거부 이유 | 어디서 막혔나 | 감사 때 하는 말 · 고칠 곳 |
 |---|---|---|
@@ -87,7 +87,7 @@ is_allowed, reason = check_permission("minsu", "SALES", "QUERY")  # 판정 결�
 print(is_allowed, reason)                     # False 등록되지 않은 사용자
 ```
 
-#### 문법 상자 · 직접 쓰는 곳의 모양 (예시 값 · 읽기만 합니다)
+<h3>문법 상자 · 직접 쓰는 곳의 모양 (예시 값 · 읽기만 합니다)</h3>
 
 직접 쓰는 곳은 `[4]` 권한 검사 하나입니다. 그 모양입니다.
 
@@ -101,18 +101,20 @@ print(permission not in ROLES["finance"]) # True  · finance 에는 없음
 
 ## 실습 1-2 · 권한 판정 함수 직접 쓰기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - 판정 함수의 검사 [1] ~ [3] 과 권한 문자열을 만드는 줄은 미리 써 두었습니다. 빠진 것은 마지막 [4] 권한 검사입니다. 이 검사가 없으면 seoyeon 의 정산 조회가 다시 통과합니다.
 - 실제 회사의 접근통제 코드도 이렇게 검사를 위에서부터 차례로 걸고, 끝까지 지난 경우에만 허용합니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. 아래 코드로 `rbac.py` 를 만들고, `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
 2. 요청 아홉 건을 판정하는 `exercise1-2_run.py` 를 만들어 실행합니다.
 3. 채운 <mark>뒤</mark>의 판정을 확인합니다. (응용) 채우기 전과 후의 비교는 선택 질문에서만 다룹니다. 지금은 건너뛰어도 됩니다.
 
-**준비** — 아래 `rbac.py` 는 실습 1-1에서 만든 두 파일 `config/users.json` 과 `config/roles.json` 을 **읽습니다.** 그 파일이 없으면 코드가 시작하자마자 멈춥니다. 터미널이 `…/access_control` 위치인지 확인한 뒤(`…/network-study-notes` 에 있다면 `cd access_control` 로 들어갑니다) 두 파일이 있는지 봅니다.
+<h2>준비</h2>
+
+아래 `rbac.py` 는 실습 1-1에서 만든 두 파일 `config/users.json` 과 `config/roles.json` 을 **읽습니다.** 그 파일이 없으면 코드가 시작하자마자 멈춥니다. 터미널이 `…/access_control` 위치인지 확인한 뒤(`…/network-study-notes` 에 있다면 `cd access_control` 로 들어갑니다) 두 파일이 있는지 봅니다.
 
 ```bash
 ls config
@@ -121,7 +123,7 @@ ls config
 - 명령 풀이: `ls` 폴더 안의 파일 이름 리스트 · `config` 볼 폴더
 - `roles.json` 과 `users.json` 두 개가 나와야 합니다. 없으면 실습 1-1로 돌아가 만듭니다. 없는 채로 실행하면 `FileNotFoundError: [Errno 2] No such file or directory: 'config/roles.json'` 오류가 납니다.
 
-**`rbac.py`**
+<h3><code>rbac.py</code></h3>
 
 ```python
 import json                                                      # JSON 파일을 읽는 모듈을 불러온다
@@ -153,7 +155,7 @@ def check_permission(user, resource, action):                    # 사용자 · 
     return True, "허용"                                          # 모든 검사를 지나면 허용한다
 ```
 
-**`exercise1-2_run.py`**
+<h3><code>exercise1-2_run.py</code></h3>
 
 ```python
 from rbac import check_permission                                # rbac.py 의 판정 함수를 불러온다
@@ -181,7 +183,7 @@ for user, resource, action in REQUESTS:                          # 요청을 하
 - 주석 줄은 그대로 두고, **각 주석 바로 아래 줄**에 씁니다. ① 은 `if` 줄이라 4칸, ② 는 그 `if` 안쪽의 `return` 줄이라 8칸에서 시작합니다.
 - 출력 한 줄의 모양은 `사용자 자원 행위 -> True(또는 False) 이유` 이고, 요청이 아홉 건이라 아홉 줄이 나옵니다.
 
-**직접 쓰는 곳**
+<h3>직접 쓰는 곳</h3>
 
 | 빈칸 | 쓰는 줄 | 들여쓰기 |
 |---|---|---|
@@ -192,7 +194,7 @@ for user, resource, action in REQUESTS:                          # 요청을 하
 - ② 확인: ② 까지 쓰고 실행하면 `seoyeon SETTLE QUERY -> False 권한 없음` 이 나오면 성공입니다. 그래도 `True 허용` 이 나오면 줄 맨 앞에 `return` 이 있는지 봅니다. 막히면: 바로 위 `[3]` 의 `return False, "역할이 없음"` 과 같은 모양이고 이유만 다릅니다.
 - 채우기 전에 실행해도 오류 없이 돌아갑니다. 검사 [1] ~ [3] 이 있어서 `minsu` · `dami` · `tester` 는 거부되지만, `seoyeon` 의 정산 조회와 `junho` 의 영업 실적 변경은 `True 허용` 으로 나옵니다. 검사 하나가 빠지면 그 경우가 그대로 통과한다는 것을 보여 주는 결과입니다.
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 작업 폴더 `access_control` 바로 아래에 `rbac.py` 를 만들고 위 코드를 붙여 넣습니다.
    - **VS Code 에서 만들기**

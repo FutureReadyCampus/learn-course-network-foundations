@@ -33,7 +33,7 @@ source:
 
 **먼저 `login_alerts.json` 을 만듭니다.** 로그인 규칙(웹 로그인 반복 실패)이 낸 알림 1개입니다. `anomaly_detection` 폴더에 만들고, 같은 이름의 파일이 이미 있으면 아래 내용으로 덮어씁니다. `problems.json` 이 아직 없으면 응용 4-2 레슨의 「알림 7개와 진짜 문제 5개」 페이지에서 먼저 만듭니다.
 
-**`login_alerts.json`**
+<h2><code>login_alerts.json</code></h2>
 
 ```
 [
@@ -62,7 +62,7 @@ source:
 - 오탐은 A8 이 진짜 문제(`real` 이 `True`)라서 늘지 않습니다. 오탐은 실습 4-2에서 줄인 2개(A2 · A3) 그대로입니다.
 - <mark>P5 는 이번 실습의 규칙으로는 찾을 수 없습니다.</mark> 자기 점검 질문 (다)에서 어떤 규칙이 필요한지 생각해 봅니다.
 
-**판다스 문법 상자 — 표 두 개를 이어 붙이기 `pd.concat`**
+<h2>판다스 문법 상자 — 표 두 개를 이어 붙이기 <code>pd.concat</code></h2>
 
 **<mark>`pd.concat([표1, 표2])`</mark> 는 열 이름이 같은 표 두 개를 위아래로 이어 붙여 표 하나로 만듭니다**
 
@@ -124,7 +124,7 @@ print(merged_alerts)                                      # 합친 표를 출력
 - 읽는 법: 세 번째 출력에는 알림 세 개(A1 · A2 · A8)가 모두 들어 있습니다. <mark style="background:#bde3ff">왼쪽 번호는 각 표의 번호를 그대로 가져와서 `0` 이 두 번 나오지만</mark> 내용은 모두 합쳐진 것입니다.
 - 열 이름이 같아야 같은 열끼리 이어 붙습니다. 이름이 다르면 빈 값(`NaN`)이 생깁니다.
 
-**판다스 문법 상자 — 빈 값 지우기 `.dropna()`**
+<h2>판다스 문법 상자 — 빈 값 지우기 <code>.dropna()</code></h2>
 
 **<mark>`열.dropna()`</mark> 는 열에서 비어 있는 값(`None` 또는 `NaN`)을 지우고 나머지만 남깁니다. 비어 있는 값이 `None` 으로 보일지 `NaN` 으로 보일지는 판다스 버전에 따라 다릅니다**
 
@@ -169,7 +169,7 @@ Name: problem, dtype: str
 - 읽는 법: 첫 번째 출력에서 `problem` 이 비어 있는 행은 `NaN` 으로 보입니다(판다스 2 에서는 `None`). <mark style="background:#bde3ff">두 번째 출력에는 번호가 있는 0번 행(P1)과 2번 행(P3)만</mark> 남았습니다. `Name: problem, dtype: str` 줄은 몰라도 됩니다(판다스 2 에서는 `dtype: object`).
 - `.dropna()` 는 괄호까지 써야 합니다. 괄호를 빼면 `isin` 에 넣을 때 오류가 납니다.
 
-**한 장 정리**
+<h2>한 장 정리</h2>
 
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
@@ -190,7 +190,7 @@ Name: problem, dtype: str
 
 ## 응용 4-3 · 규칙 합쳐 놓친 문제 다시 세기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>예외 규칙으로 오탐은 줄였지만, 놓친 진짜 문제 2개는 그대로입니다</mark>.
 - **그래서 만드는 것**: `final_check.py` 입니다.
@@ -200,12 +200,12 @@ Name: problem, dtype: str
 - **실행하면**: <mark>단계 1: 예외 규칙으로 빠진 알림과 남은 알림, 단계 2: 합친 알림 수, 단계 3: 오탐 수, 단계 4: 아직 놓친 문제, 단계 5: 한 문장 요약이 나옵니다.</mark>
 - **현업에서는**: 규칙을 고치거나 더할 때마다 오탐과 미탐을 다시 세어 전후 숫자를 보고서에 남깁니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. `final_check.py` · `apply4-3_run.py` 두 파일을 만들고, `final_check.py` 의 세 함수에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>합친 알림 수</mark>(단계 2), <mark>오탐 수</mark>(단계 3), <mark>아직 놓친 문제</mark>(단계 4), <mark>한 문장 요약</mark>(단계 5)을 읽습니다.
 
-**`final_check.py`**
+<h3><code>final_check.py</code></h3>
 
 ```python
 import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
@@ -276,7 +276,9 @@ def make_summary(alert_count, false_alarm_count, missed_count):  # 세 개수를
 - 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
 - 채우기 전에 실행하면 `NameError: name 'all_alerts' is not defined` 오류가 납니다. 1번을 아직 안 썼기 때문입니다.
 
-**`apply4-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
+<h3><code>apply4-3_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다.
 
 ```python
 from final_check import load_table, apply_exception, merge_alerts, evaluate, make_summary, ALERTS_PATH, LOGIN_ALERTS_PATH, PROBLEMS_PATH  # 방금 만든 함수를 불러온다
@@ -313,7 +315,7 @@ print("--- 단계 5: 한 문장 요약 ---")                 # 단계 5 제목
 print(summary)                                        # 요약 문장을 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `final_check.py` 와 `apply4-3_run.py` 를 만들어 위 코드를 각각 붙여 넣고 저장합니다.
 2. **[VS Code]** `final_check.py` 에서 <mark>직접 쓰는 곳 여섯 군데를 씁니다</mark>. 위 판다스 문법 상자와 「진짜 문제 5개를 어느 규칙이 찾는가」 쪽의 표를 참고해 씁니다. 막히면 아래 「응용 4-3 정리」를 봅니다.

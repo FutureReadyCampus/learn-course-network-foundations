@@ -148,7 +148,9 @@ def change_ticket_status(ticket, new_status, minute, who):                     #
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `notifier.py` 를 만들고 아래 `notifier.py` 상자를 붙여 넣고 저장합니다. 이미 `soar_response` 에 `notifier.py` 가 있으면 건너뜁니다.
 2. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `ticket_notice.py` 를 만들고 맨 아래 `ticket_notice.py` 상자를 붙여 넣고 저장합니다.
 
-**`notifier.py`** — 알림 함수 `notify` 입니다. 메시지를 알림 서버로 보내고, 보내면 `True`, 실패하면 `[알림 실패]` 와 오류 이름을 출력하고 `False` 를 리턴합니다.
+<h2><code>notifier.py</code></h2>
+
+알림 함수 `notify` 입니다. 메시지를 알림 서버로 보내고, 보내면 `True`, 실패하면 `[알림 실패]` 와 오류 이름을 출력하고 `False` 를 리턴합니다.
 
 ```python
 import requests                                                # 인터넷으로 요청을 보내는 도구
@@ -167,7 +169,9 @@ def notify(message, url):                                      # 메시지를 �
 - [ ] `notifier.py` 를 `soar_response` 폴더에 만들었다(`agent_core` 에서 복사하거나 코드 상자를 붙여 넣고 저장)
 <!-- /checklist -->
 
-**`ticket_notice.py`** — 티켓 알림을 보낼지 정하고 보냅니다.
+<h2><code>ticket_notice.py</code></h2>
+
+티켓 알림을 보낼지 정하고 보냅니다.
 
 | 함수 | 하는 일 |
 |---|---|

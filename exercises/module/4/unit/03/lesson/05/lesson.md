@@ -58,7 +58,7 @@ source:
 - `USUAL_IPS` 에 평소 IP 를 둔 사용자는 3명(seoyeon · junho · jiwoo)입니다.
 - <mark>규칙에 해당한다고 계정이 도용됐다는 뜻은 아니고,</mark> **먼저 확인할 대상**이라는 뜻입니다.
 
-**알아 둘 것 — 미리 채운 줄의 `pd.to_datetime` 과 `.dt.hour`**
+<h2>알아 둘 것 — 미리 채운 줄의 <code>pd.to_datetime</code> 과 <code>.dt.hour</code></h2>
 
 `pd.to_datetime(열)` 로 문자열 시각을 시각 값으로 바꾼 뒤 `.dt.hour` 를 붙이면 시(0 ~ 23)만 숫자로 꺼냅니다(예: 21:40 의 시는 21). `.dt` 는 시각 값에만 쓸 수 있어서 문자열 시각을 먼저 바꿉니다. 문제에서는 이 두 줄이 미리 채워져 있어서 직접 쓰지 않고 읽기만 합니다. 자세한 쓰임은 다음에 차차 배웁니다.
 
@@ -118,7 +118,7 @@ Name: time, dtype: int32
 
 - 읽는 법: 첫 번째 출력은 시각 값이 된 `time` 열이고, 두 번째 출력은 거기서 시만 꺼낸 값입니다(<mark>02:14 → 2, 09:05 → 9, 21:40 → 21</mark>).
 
-**판다스 문법 상자 — 범위 안인지 `between`**
+<h2>판다스 문법 상자 — 범위 안인지 <code>between</code></h2>
 
 **<mark>`열.between(작은 값, 큰 값)`</mark> 은 열의 값이 작은 값 이상이고 큰 값 이하이면 `True`, 아니면 `False` 를 줍니다. 작은 값과 큰 값 자체도 포함합니다**
 
@@ -164,7 +164,7 @@ Name: hour, dtype: bool
 
 - 읽는 법: 9시와 20시는 `True`, 2시와 21시는 `False` 입니다. <mark>20시도 `True` 인 것은 8 과 20 자체도 사이에 포함하기 때문입니다.</mark>
 
-**판다스 문법 상자 — 조건 뒤집기 `~`**
+<h2>판다스 문법 상자 — 조건 뒤집기 <code>~</code></h2>
 
 **<mark>`~조건`</mark> 은 `True` 는 `False` 로, `False` 는 `True` 로 뒤집습니다**
 
@@ -211,7 +211,7 @@ Name: hour, dtype: bool
 
 - 읽는 법: <mark>두 출력이 서로 반대입니다.</mark> 업무 시간 안이던 0 · 2번 행은 `False` 가 되고, 밖이던 1 · 3번 행은 `True` 가 됩니다.
 
-**문법 상자 — 다른지 `!=` 와 값이 있는지 `is not None`**
+<h2>문법 상자 — 다른지 <code>!=</code> 와 값이 있는지 <code>is not None</code></h2>
 
 **<mark>`a != b`</mark> 는 두 값이 다르면 `True`, 같으면 `False` 입니다. <mark>`값 is not None`</mark> 은 값이 `None`(값이 없다는 표시)이 아니면 `True` 입니다**
 
@@ -250,7 +250,7 @@ False
 - 읽는 법: 평소 IP 와 이번 IP 가 달라서 `True` 이고, <mark>값이 `None`(평소 기록 없음)이라 「값이 있는가」를 묻는 결과는 `False`</mark> 입니다.
 - `None` 은 어떤 IP 와도 같지 않아서 `ip != None` 은 항상 `True` 입니다. <mark>그래서 평소 기록이 없는 사용자는 `is not None` 으로 먼저 제외합니다.</mark>
 
-**한 장 정리**
+<h2>한 장 정리</h2>
 
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
@@ -270,7 +270,7 @@ False
 
 ## 응용 3-2 · SaaS 이상 사용 세 가지 찾기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>SaaS 로그 14개를 사람이 읽어서 이상 사용을 찾고 있고, 어떤 기준으로 볼지 정해져 있지 않습니다</mark>.
 - **그래서 만드는 것**: `saas_detection.py` 입니다.
@@ -280,12 +280,12 @@ False
 - **실행하면**: <mark>단계 1: 업무 시간 밖 로그인, 단계 2: 평소와 다른 IP 사용자, 단계 3: 대량 다운로드 사용자가 나옵니다.</mark>
 - **현업에서는**: 규칙마다 따로 찾아 두면 Unit 4 실습 4-1 처럼 규칙마다 점수를 줄 수 있습니다. 평소 기록이 없는 사용자는 기록이 쌓인 뒤에 규칙을 적용합니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. 작업 폴더 `network-study-notes/anomaly_detection` 에 `saas_detection.py` · `apply3-2_run.py` 두 파일을 만들고, `saas_detection.py` 의 두 함수에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>업무 시간 밖 로그인</mark>(단계 1), <mark>평소와 다른 IP 사용자</mark>(단계 2), <mark>대량 다운로드 사용자</mark>(단계 3)를 읽습니다.
 
-**`saas_detection.py`**
+<h3><code>saas_detection.py</code></h3>
 
 ```python
 import pandas as pd                                   # 판다스를 pd 라는 짧은 이름으로 불러온다
@@ -382,7 +382,9 @@ def find_bulk_download_users(saas):                   # SaaS 이벤트 표를 �
 - 각 번호 주석 바로 아래에 새 줄을 만들어 그 번호의 코드를 한 줄 씁니다. **주석은 지우지 않습니다.**
 - 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다(파이썬 버전에 따라 뒤에 `after 'if' statement on line …` 이 붙기도 합니다). `if` 안쪽의 5번이 비어 있기 때문입니다.
 
-**`apply3-2_run.py`** — 그대로 붙여 넣습니다. 직접 쓰는 줄은 없습니다.
+<h3><code>apply3-2_run.py</code></h3>
+
+그대로 붙여 넣습니다. 직접 쓰는 줄은 없습니다.
 
 ```python
 from saas_detection import load_events, pick_saas, pick_logins, find_off_hours_logins, find_new_ip_users, find_bulk_download_users, EVENTS_PATH  # 방금 만든 함수를 불러온다
@@ -403,7 +405,7 @@ bulk_users = find_bulk_download_users(saas)                  # 파일을 대량�
 print("--- 단계 3: 파일을 5번 이상 내려받은 사용자", bulk_users)  # 단계 3 시작을 알리는 줄과 사용자
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `saas_detection.py` 와 `apply3-2_run.py` 를 만들고, 위의 같은 이름 코드 상자를 각각 붙여 넣어 저장합니다.
 2. **[VS Code]** `saas_detection.py` 에서 <mark>직접 쓰는 곳 다섯 군데를 씁니다</mark>. 2.1 의 문법 상자를 보고 씁니다.

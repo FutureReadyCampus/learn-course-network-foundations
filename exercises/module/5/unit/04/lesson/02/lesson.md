@@ -68,7 +68,7 @@ approval_gate.py   is_allowlisted  : 대상이 허용 목록에 있는지 리턴
 실행 파일          exercise4-1_run.py : 요청마다 결정을 받아 결정별로 센다 (미리 채움)
 ```
 
-#### 문법 상자 · 직접 쓰는 곳의 모양 (예시 값 · 읽기만 합니다)
+<h2>문법 상자 · 직접 쓰는 곳의 모양 (예시 값 · 읽기만 합니다)</h2>
 
 ```python
 score = 4                                  # 예시 값
@@ -84,19 +84,21 @@ def pick(score):                           # 예시 함수
 
 ## 실습 4-1 · 위험 점수로 조치 요청 분류하기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>승인이 필요한지는 플레이북마다 정한 값 하나로만 정해지고, 기준이 코드 안에 있습니다</mark>.
 - **만드는 것**: 허용 목록 확인 · 위험 점수 · 결정(`approval_gate.py`), 요청마다 결정하고 세기(`exercise4-1_run.py`).
 - **실행하면**: <mark>단계 1: 불러온 요청 수와 기준 점수, 단계 2: 요청마다 결정과 이유, 단계 3: 결정별 요청 수, 단계 4: 담당자에게 보낼 승인 요청, 단계 5: 저장한 결정 수가 나옵니다.</mark>
 
-**할 일**
+<h2>할 일</h2>
 
 1. `soar_response` 폴더에 데이터 파일 두 개(`config/approval_policy.json` · `gate_requests.json`)와 코드 파일 두 개(`approval_gate.py` · `exercise4-1_run.py`)를 만들어 붙여 넣습니다.
 2. 채우기 <mark>전에</mark> 한 번 실행해 봅니다.
 3. `approval_gate.py` 에서 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채우고 다시 실행해 단계 2 ~ 4 를 읽습니다.
 
-**`config/approval_policy.json`** — 승인 게이트의 기준입니다. 점수 값은 위 2.1 표와 같습니다. 코드는 이 파일의 키 이름으로 읽습니다.
+<h3><code>config/approval_policy.json</code></h3>
+
+승인 게이트의 기준입니다. 점수 값은 위 2.1 표와 같습니다. 코드는 이 파일의 키 이름으로 읽습니다.
 
 <pre class="copyable"><code>{
   "allowlist_ips": ["203.0.113.80", "192.0.2.10"],
@@ -111,7 +113,9 @@ def pick(score):                           # 예시 함수
 }
 </code></pre>
 
-**`gate_requests.json`** — 오늘 자동 대응이 실행하려는 조치 요청 8건입니다. `users_on_ip` 는 그 IP 를 쓰는 계정 수(계정 조치면 0), `target_count` 는 요청 하나가 한꺼번에 조치하는 대상 수입니다. `REQ-6` 처럼 `target` 에는 대표 계정 하나(`minsu`)만 적고, 실제로는 `target_count` 만큼(6개) 잠그는 요청도 있습니다.
+<h3><code>gate_requests.json</code></h3>
+
+오늘 자동 대응이 실행하려는 조치 요청 8건입니다. `users_on_ip` 는 그 IP 를 쓰는 계정 수(계정 조치면 0), `target_count` 는 요청 하나가 한꺼번에 조치하는 대상 수입니다. `REQ-6` 처럼 `target` 에는 대표 계정 하나(`minsu`)만 적고, 실제로는 `target_count` 만큼(6개) 잠그는 요청도 있습니다.
 
 <pre class="copyable"><code>[
   {"id": "REQ-1", "incident": "INC-311", "action": "계정 잠금", "target": "dami", "grade": "high", "users_on_ip": 0, "target_count": 1},
@@ -125,7 +129,9 @@ def pick(score):                           # 예시 함수
 ]
 </code></pre>
 
-**`approval_gate.py`** — 승인 게이트 함수 모음입니다. Unit 5 와 응용 4-5 도 가져와 사용(import)합니다. 직접 쓰는 곳은 `decide_gate` 의 ① · ② 두 줄이고, 나머지는 미리 채운 줄입니다.
+<h3><code>approval_gate.py</code></h3>
+
+승인 게이트 함수 모음입니다. Unit 5 와 응용 4-5 도 가져와 사용(import)합니다. 직접 쓰는 곳은 `decide_gate` 의 ① · ② 두 줄이고, 나머지는 미리 채운 줄입니다.
 
 - 미리 채운 줄의 `str(score)` 는 숫자를 문자열(글자로 된 값)로 바꿉니다. 숫자는 `+` 로 문자열과 바로 이어 붙일 수 없어서 먼저 바꿉니다.
 
@@ -170,7 +176,9 @@ def decide_gate(request, policy):                                           # �
     return "자동", reasons                                                  # 기준보다 낮으면 자동으로 실행한다 — 미리 채운 줄
 ```
 
-**`exercise4-1_run.py`** — 직접 쓰는 줄이 없습니다. 그대로 붙여 넣습니다. 단계 3 의 `for decision in counts:` 처럼 딕셔너리를 `for` 로 돌리면 키(여기서는 결정 이름)가 하나씩 나옵니다.
+<h3><code>exercise4-1_run.py</code></h3>
+
+직접 쓰는 줄이 없습니다. 그대로 붙여 넣습니다. 단계 3 의 `for decision in counts:` 처럼 딕셔너리를 `for` 로 돌리면 키(여기서는 결정 이름)가 하나씩 나옵니다.
 
 ```python
 from incident import load_json, save_json                           # Unit 1 파일의 JSON 읽기 · 쓰기 함수를 불러온다
@@ -206,7 +214,7 @@ print("--- 단계 5: gate_results.json 에", len(results), "건 저장")  # 단�
 - 주석 줄은 그대로 두고, **각 주석 바로 아래 줄**에 씁니다. ① 은 `if` 줄이라 4칸, ② 는 그 `if` 안쪽의 `return` 줄이라 8칸에서 시작합니다.
 - 바로 위의 미리 채운 `if is_allowlisted(request, policy):` 와 그 아래 `return "차단 금지", …` 가 ① · ② 와 같은 모양입니다.
 
-**직접 쓰는 곳**
+<h3>직접 쓰는 곳</h3>
 
 | 빈칸 | 쓰는 줄 | 들여쓰기 |
 |---|---|---|
@@ -217,8 +225,7 @@ print("--- 단계 5: gate_results.json 에", len(results), "건 저장")  # 단�
 - ② 확인: ② 까지 쓰고 실행하면 `REQ-2 계정 잠금 gaeun → 승인 필요 · 등급 mid +1, VIP 계정 +3, 합계 4점` 이 나오면 성공입니다. 막히면: 맨 아래 미리 채운 `return "자동", reasons` 와 같은 모양이고 `"자동"` 만 `"승인 필요"` 로 바뀝니다.
 - 채우기 전에 실행해도 오류 없이 돌아갑니다. 다만 허용 목록 대상 두 건 말고는 모두 「자동」이라 단계 3 이 `자동 : 6 건` · `승인 필요 : 0 건` 이고, 단계 4 에는 줄이 하나도 없습니다. VIP 계정 잠금(`REQ-2`)과 계정 6개 잠금(`REQ-6`)도 사람의 승인 없이 실행된다는 것을 보여 주는 결과입니다.
 
-**순서**
-
+<h2>순서</h2>
 
 1. **[터미널]** `config` 폴더가 없으면 만듭니다.
    ```bash

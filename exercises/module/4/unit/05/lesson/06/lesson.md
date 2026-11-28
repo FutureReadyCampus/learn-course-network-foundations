@@ -66,7 +66,7 @@ source:
 
 - 단계 3 이 실패해도 단계 4 가 이어지도록 <mark>요약 함수는 오류를 내지 않고 `FAIL_TEXT` 를 리턴</mark>합니다. 그래서 점수와 등급은 항상 보고서에 들어갑니다.
 
-**판다스 문법 상자 — 시리즈를 딕셔너리로 바꾸기 `시리즈.to_dict()`**
+<h2>판다스 문법 상자 — 시리즈를 딕셔너리로 바꾸기 <code>시리즈.to_dict()</code></h2>
 
 **<mark>`시리즈.to_dict()`</mark> 는 시리즈의 이름(인덱스)을 키로, 값을 값으로 하는 딕셔너리를 만듭니다**
 
@@ -111,7 +111,7 @@ print(fruit_count_dict)                    # 딕셔너리를 출력한다
   - <mark style="background:#ffc4d6">`json.dump` 에 시리즈를 그대로 전달하면 `TypeError` 오류가 납니다.</mark>
   - `.to_dict()` 는 괄호까지 써야 합니다.
 
-**한 장 정리**
+<h2>한 장 정리</h2>
 
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
@@ -131,7 +131,7 @@ print(fruit_count_dict)                    # 딕셔너리를 출력한다
 
 ## 응용 5-3 · pipeline.py 로 탐지부터 보고서까지
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>탐지를 확인하려면 파일을 따로따로 실행해야 하고, AI 호출이 실패하면 결과를 한 번에 남길 방법이 없습니다</mark>.
 - **그래서 만드는 것**: `pipeline.py` 입니다.
@@ -141,14 +141,14 @@ print(fruit_count_dict)                    # 딕셔너리를 출력한다
 - **실행하면**: <mark>단계 1: 읽은 이벤트 수, 단계 2: 탐지된 규칙과 점수 기록 수, 단계 3: Gemini API 를 활용한 AI 요약, 단계 4: 보고서 저장, 단계 5: 확인할 순서가 나옵니다.</mark>
 - **현업에서는**: 파이프라인을 정해진 시각에 자동으로 실행하고 보고서 파일을 담당자에게 보냅니다. 자동 실행은 AI 가 없는 날에도 멈추지 않아야 해서 실패한 단계를 대체 값으로 넘깁니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. `pipeline.py` · `apply5-3_run.py` 두 파일을 만들고, `pipeline.py` 의 두 함수에서 직접 쓰는 곳을 씁니다.
 2. 실행해서 <mark>읽은 이벤트 수</mark>(단계 1), <mark>탐지된 규칙과 점수 기록 수</mark>(단계 2), <mark>Gemini API 를 활용한 AI 요약</mark>(단계 3), <mark>보고서 저장</mark>(단계 4), <mark>확인할 순서</mark>(단계 5)를 읽고, 새로 생긴 `anomaly_detection_report_2026-11-02.json` 을 VS Code 에서 열어 봅니다.
 
 `summarize_records` · `count_failed` · `save_report` · `run_pipeline` 은 읽기만 하는 미리 채운 함수입니다. 실습 5-1에서 쓴 방식과 같아서 직접 쓰는 곳이 없습니다.
 
-**`pipeline.py`**
+<h3><code>pipeline.py</code></h3>
 
 ```python
 import json                                                                                # 보고서를 JSON 파일로 저장하기 위해 json 을 불러온다
@@ -248,7 +248,9 @@ def run_pipeline():                                                             
 - 함수에 전달하는 순서는 주석에 적힌 순서입니다. <mark>2번은 `events` 다음에 `chains` 입니다.</mark>
 - 채우기 전에 실행하면 `NameError: name 'totals' is not defined` 오류가 납니다. `totals` 를 만드는 3번을 아직 안 썼기 때문입니다.
 
-**`apply5-3_run.py`** — 그대로 붙여 넣습니다. 직접 쓰는 줄은 없습니다.
+<h3><code>apply5-3_run.py</code></h3>
+
+그대로 붙여 넣습니다. 직접 쓰는 줄은 없습니다.
 
 ```python
 from pipeline import run_pipeline  # 방금 만든 파이프라인 함수를 불러온다
@@ -256,7 +258,7 @@ from pipeline import run_pipeline  # 방금 만든 파이프라인 함수를 불
 run_pipeline()                     # 읽기부터 보고서 저장까지 한 번에 실행한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 0. **[터미널]** 앞 Unit의 파일이 모두 있는지 먼저 확인합니다. <mark>두 줄 모두 아무것도 나오지 않으면</mark> 됩니다. `ModuleNotFoundError` 나 `ImportError` 가 나오면 그 이름의 파일이 없거나 덜 만든 것이니 2.1 의 표에 적힌 레슨에서 만든 뒤 다시 칩니다. 단, <mark>`No module named 'pandas'` 이면 파일 문제가 아니라 판다스가 없는 것</mark>입니다. 가상환경을 쓰는 사람은 `network-study-notes` 폴더에서 `source .venv/Scripts/activate` 로 켜고, 쓰지 않는 사람은 `python -m pip install pandas` 로 설치한 뒤 다시 칩니다.
    ```bash

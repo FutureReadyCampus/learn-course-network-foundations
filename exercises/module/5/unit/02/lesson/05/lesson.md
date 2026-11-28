@@ -60,7 +60,7 @@ approvals.py    is_authorized     : 승인한 사람이 권한 목록에 있는�
 
 ## 응용 2-1 · 권한 확인 후 담당자 결정 적용
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>승인 대기 3건이 멈춰 있고, 담당자 결정 3건(승인 · 거절 · 권한 없는 승인)이 들어와 있습니다</mark>.
 - **만드는 것**: 기록 한 건 만들기(`audit.py`), 권한 확인 · 실행 · 종료(`approvals.py`), 결정을 적용하는 함수를 부르는 실행 파일(`apply2-1_run.py`).
@@ -68,7 +68,9 @@ approvals.py    is_authorized     : 승인한 사람이 권한 목록에 있는�
 
 **할 일**: 데이터 파일 두 개를 만들고, 파일 세 개를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 ~ 4 를 읽습니다.
 
-**`pending.json`** — 승인을 기다리는 건 3건입니다(경로 정하기에서 `승인 필요` 경로로 간 VIP 알림 1건과, 플레이북이 승인을 요구해 멈춘 2건). `INC-002` 같은 번호는 **인시던트**(incident, 보안 알림 가운데 사람이 확인하고 대응해야 하는 사건 한 건)에 붙인 관리 번호입니다. 각 건에는 어떤 플레이북 때문에 멈췄는지, 승인되면 어떤 액션을 실행하는지, 왜 승인이 필요한지가 적혀 있습니다. 응용 2-1 은 이 파일을 읽어서 씁니다. 응용 2-2 하루 흐름은 이 파일을 읽지 않고, 코드가 같은 내용을 직접 만듭니다. `soar_response` 폴더에 만듭니다.
+<h3><code>pending.json</code></h3>
+
+승인을 기다리는 건 3건입니다(경로 정하기에서 `승인 필요` 경로로 간 VIP 알림 1건과, 플레이북이 승인을 요구해 멈춘 2건). `INC-002` 같은 번호는 **인시던트**(incident, 보안 알림 가운데 사람이 확인하고 대응해야 하는 사건 한 건)에 붙인 관리 번호입니다. 각 건에는 어떤 플레이북 때문에 멈췄는지, 승인되면 어떤 액션을 실행하는지, 왜 승인이 필요한지가 적혀 있습니다. 응용 2-1 은 이 파일을 읽어서 씁니다. 응용 2-2 하루 흐름은 이 파일을 읽지 않고, 코드가 같은 내용을 직접 만듭니다. `soar_response` 폴더에 만듭니다.
 
 <pre class="copyable"><code>[
   {"id": "INC-002", "entity": "seoyeon", "playbook": "PB-002", "actions": ["담당자 알림", "티켓 생성"], "why": "플레이북 승인 값이 담당자 승인 필요", "status": "분류됨"},
@@ -77,7 +79,9 @@ approvals.py    is_authorized     : 승인한 사람이 권한 목록에 있는�
 ]
 </code></pre>
 
-**`decisions.json`** — 담당자가 메신저에서 누른 승인 · 거절 결과를 파일로 흉내 낸 것입니다. 건마다 적힌 것은 세 가지입니다. 누가 눌렀는지(`approver`), 승인과 거절 중 무엇을 눌렀는지(`result`), 남긴 말(`comment`)입니다. 권한이 있는 담당자는 `kim.sec` · `lee.soc` 이고 `intern01` 은 권한이 없습니다. 응용 2-1 과 응용 2-2 가 읽습니다. `soar_response` 폴더에 만듭니다.
+<h3><code>decisions.json</code></h3>
+
+담당자가 메신저에서 누른 승인 · 거절 결과를 파일로 흉내 낸 것입니다. 건마다 적힌 것은 세 가지입니다. 누가 눌렀는지(`approver`), 승인과 거절 중 무엇을 눌렀는지(`result`), 남긴 말(`comment`)입니다. 권한이 있는 담당자는 `kim.sec` · `lee.soc` 이고 `intern01` 은 권한이 없습니다. 응용 2-1 과 응용 2-2 가 읽습니다. `soar_response` 폴더에 만듭니다.
 
 <pre class="copyable"><code>{
   "INC-002": {"approver": "kim.sec", "result": "승인", "comment": "대량 다운로드 사유를 확인해야 함"},
@@ -88,7 +92,9 @@ approvals.py    is_authorized     : 승인한 사람이 권한 목록에 있는�
 
 **`audit.py`** 와 **`approvals.py`** 는 「응용과 Unit 3에 필요한 처리 함수 준비」 레슨에서 이미 만들었습니다. <mark>두 파일을 열어 내용을 모두 지우고 아래 골격을 붙여 넣은 뒤</mark> 빈칸을 씁니다. 다 쓸 때까지는 응용 2-2 가 동작하지 않습니다. 끝내 막히면 「응용과 Unit 3에 필요한 처리 함수 준비」 레슨의 완성본을 다시 붙여 넣어 되돌립니다.
 
-**`audit.py`** — 감사 기록 한 건을 만듭니다. `approvals.py` 와 응용 2-2 `flow.py` 가 불러다 씁니다. 직접 쓰는 곳은 1번입니다.
+<h3><code>audit.py</code></h3>
+
+감사 기록 한 건을 만듭니다. `approvals.py` 와 응용 2-2 `flow.py` 가 불러다 씁니다. 직접 쓰는 곳은 1번입니다.
 
 ```python
 def log_line(item, action, text):  # 인시던트 · 액션 · 결과 문장을 받는 함수
@@ -100,7 +106,9 @@ def log_line(item, action, text):  # 인시던트 · 액션 · 결과 문장을 
     return entry                   # 기록 한 건을 리턴한다
 ```
 
-**`approvals.py`** — 권한을 확인하고 결정을 적용합니다. 응용 2-2 `flow.py` 도 불러다 씁니다. 직접 쓰는 곳은 2 ~ 7번입니다.
+<h3><code>approvals.py</code></h3>
+
+권한을 확인하고 결정을 적용합니다. 응용 2-2 `flow.py` 도 불러다 씁니다. 직접 쓰는 곳은 2 ~ 7번입니다.
 
 ```python
 from incident import change_status, run_action                                           # Unit 1 파일의 함수를 불러온다
@@ -173,7 +181,9 @@ def finish_decision(item, decision, state, action_log):                         
     return "거절 처리"                                                                   # 거절 처리를 리턴한다 — 미리 채운 줄
 ```
 
-**`apply2-1_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실행하면 결과를 출력합니다.
+<h3><code>apply2-1_run.py</code></h3>
+
+8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 실행하면 결과를 출력합니다.
 
 ```python
 from incident import load_json                                                              # Unit 1 파일의 함수를 불러온다
@@ -206,7 +216,7 @@ for entry in action_log:                                                        
     print(entry["incident"], entry["playbook"], entry["action"], ":", entry["result"])      # 인시던트 · 플레이북 · 액션 · 결과를 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 작업 폴더는 `network-study-notes/soar_response` 입니다. `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `pending.json` · `decisions.json` 을 만들어 위 내용을 붙여 넣고 저장합니다. 이어서 `soar_response` 폴더의 `audit.py` · `approvals.py` 는 열어서 골격으로 바꾸고, `apply2-1_run.py` 는 새로 만들어(파일 이름 그대로) 코드를 붙여 넣어 저장합니다.
    - **[터미널]** 데이터 파일을 확인합니다. <mark>`3 3` 이 나와야</mark> 합니다.

@@ -74,7 +74,7 @@ source:
 
 ## 응용 3-3 · 회수 대상과 회수 제외 나누기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: 과다권한 후보 리포트의 후보 10건이 한 리스트에 섞여 있습니다. 회수하지 않을 권한을 담당자가 눈으로 골라야 합니다.
 - **그래서 만드는 것**: `split_by_exclude` 입니다.
@@ -83,12 +83,14 @@ source:
 - **실행하면**: 단계 1은 분류 건수, 단계 2는 회수 제외한 후보와 이유, 단계 3은 제외 리스트에 있지만 회수 대상으로 남은 후보를 출력합니다.
 - **현업에서는**: 자동 점검 도구도 회수 제외 리스트를 두고, 비상용 권한이나 사람이 아닌 프로그램용 계정의 권한을 회수 대상에서 뺍니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. `config/exclude_list.json`을 아래 JSON 코드 상자로 만들고 저장합니다. `report_exclude.py`는 이 응용에서 새 파일로 만들고 아래 골격을 붙인 뒤, `apply3-3_run.py`도 새로 만듭니다. 그다음 `exclude_key` · `load_exclude_map` · `can_exclude` · `split_by_exclude` 에서 직접 쓰는 곳 네 군데를 씁니다.
 2. 실행해서 <mark>분류 건수</mark>(단계 1: 분류), <mark>회수 제외한 후보</mark>(단계 2: 제외), <mark>회수 대상으로 남은 후보</mark>(단계 3: 확인)를 읽습니다.
 
-**`config/exclude_list.json`** — 담당자가 회수하지 않을 권한과 이유를 기록하는 이 응용의 입력 데이터입니다. `access_control/config` 폴더에 아래 내용을 저장합니다.
+<h3><code>config/exclude_list.json</code></h3>
+
+담당자가 회수하지 않을 권한과 이유를 기록하는 이 응용의 입력 데이터입니다. `access_control/config` 폴더에 아래 내용을 저장합니다.
 
 ```json
 [
@@ -98,7 +100,7 @@ source:
 ]
 ```
 
-**`report_exclude.py`**
+<h3><code>report_exclude.py</code></h3>
 
 ```python
 from config_loader import load_json                              # config_loader.py 의 안전한 읽기 함수를 불러온다
@@ -176,7 +178,9 @@ def split_by_exclude(findings, exclude_map):                     # 후보 리스
 
 - 채우기 전에 실행하면 회수 대상도 회수 제외도 `0 건` 으로 나옵니다. `split_by_exclude` 의 7 ~ 12번을 아직 쓰지 않아 후보가 어느 리스트에도 들어가지 않기 때문입니다.
 
-**`apply3-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `overprivilege.py` 의 `generate_report` 로 리포트를 만든 뒤, 회수 제외 리스트를 읽어 후보를 나누고 세 단계로 출력합니다.
+<h3><code>apply3-3_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. `overprivilege.py` 의 `generate_report` 로 리포트를 만든 뒤, 회수 제외 리스트를 읽어 후보를 나누고 세 단계로 출력합니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
@@ -212,7 +216,7 @@ for item in to_revoke:                                           # 회수 대상
         print(item["user"], item["permission"], "<-", item["source"], "|", reasons_text)  # 사용자 · 권한 <- 출처 | 이유들을 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `report_exclude.py` 를 열어 내용을 모두 지우고 위 **`report_exclude.py`** 코드 상자의 골격을 붙여 넣고 저장합니다. 이어서 `access_control` 폴더를 오른쪽 클릭 › **New File** 로 `apply3-3_run.py` 를 만들어 붙여 넣고 저장합니다.
 

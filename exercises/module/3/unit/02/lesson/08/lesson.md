@@ -44,11 +44,11 @@ source:
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="여섯 건을 접수해 처리·점검한 뒤 requests.json 에 저장하고 다시 읽어 확인한다"></figure>
 
-**문법 상자 — 파일에 JSON 쓰기**
+<h2>문법 상자 — 파일에 JSON 쓰기</h2>
 
 아래 코드는 읽기만 합니다. 따라 치지 않습니다.
 
-**① `"w"` 로 열고 `json.dump` 로 쓰기**
+<h2>① <code>&quot;w&quot;</code> 로 열고 <code>json.dump</code> 로 쓰기</h2>
 
 ```python
 import json                                                         # JSON 을 다루는 모듈을 불러온다
@@ -72,7 +72,7 @@ print(text)                                                      # 쓴 파일을
 ]
 ```
 
-**② `ensure_ascii=False` 를 빼면 한글이 `\uXXXX` 문자열로 바뀌어 사람이 읽을 수 없습니다**
+<h2>② <code>ensure_ascii=False</code> 를 빼면 한글이 <code>\uXXXX</code> 문자열로 바뀌어 사람이 읽을 수 없습니다</h2>
 
 ```python
 import json                                                         # JSON 을 다루는 모듈을 불러온다
@@ -103,19 +103,19 @@ print(text)                                                      # 쓴 파일을
 
 ## 응용 2-3 · 요청서 저장하고 상태별 건수 세기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: 접수 · 승인 · 부여 · 기한 점검 결과가 프로그램이 켜져 있는 동안에만 남아 있어서, 프로그램을 끄면 모두 사라집니다. 관제 담당은 상태별로 몇 건인지도 숫자로 보고 싶어 하는데, 손으로 세면 틀리기 쉽습니다.
 - **그래서 만드는 것**: `save_requests`(요청서 전체를 `requests.json` 파일에 저장하고 저장한 건수를 리턴)와 `count_by_status`(상태별 건수를 딕셔너리로 리턴)입니다.
 - **실행하면**: 세 단계가 나옵니다. 단계 1은 요청 여섯 건의 처리 결과, 단계 2는 상태별 건수와 SLA 초과 요청 번호, 단계 3은 저장 결과입니다. 끝나면 `requests.json` 을 열어 한글이 그대로 저장됐는지 봅니다.
 - **현업에서는**: 신청 도구도 신청 기록을 지우지 않고 보관하고, 상태별 건수를 날마다 세어 보냅니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. `request_flow.py` 와 `apply2-3_run.py` 두 파일을 만들고, `save_requests` 와 `count_by_status` 본문을 직접 씁니다.
 2. 실행해서 <mark>처리 결과</mark>(단계 1: 처리), <mark>상태별 건수와 SLA 초과</mark>(단계 2: 점검), <mark>저장 결과</mark>(단계 3: 저장)를 읽습니다. `requests.json` 파일도 열어 봅니다.
 
-**`request_flow.py`**
+<h3><code>request_flow.py</code></h3>
 
 ```python
 import json                                                      # JSON 파일을 쓰는 모듈을 불러온다
@@ -154,7 +154,9 @@ def count_by_status(requests):                                   # 요청서 리
 | 단계 3 | `저장 함수가 리턴한 건수: None` | `save_requests` 가 파일을 만들지 않음 |
 | 단계 3 (이어서) | `[경고] 설정 파일 없음: requests.json` 뒤에 `IndexError` | `save_requests` 가 파일을 만들지 않음 |
 
-**`apply2-3_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 요청 여섯 건을 접수하고 처리한 뒤, 단계 1은 승인 · 반려 · 부여 결과를 출력하고, 단계 2는 상태별 건수와 SLA 초과 요청을 출력합니다. 단계 3은 `requests.json` 으로 저장한 뒤 다시 읽어 확인합니다.
+<h3><code>apply2-3_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 요청 여섯 건을 접수하고 처리한 뒤, 단계 1은 승인 · 반려 · 부여 결과를 출력하고, 단계 2는 상태별 건수와 SLA 초과 요청을 출력합니다. 단계 3은 `requests.json` 으로 저장한 뒤 다시 읽어 확인합니다.
 
 ```python
 from datetime import datetime                                    # 지금 시각을 만드는 데 쓴다
@@ -202,7 +204,7 @@ saved = load_json("requests.json", [])                           # 저장한 파
 print("저장한 요청서", len(saved), "건, 첫 요청서의 상태:", saved[0]["status"])   # 건수와 첫 요청서의 상태를 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 0. **[터미널]** 불러 쓸 파일이 있는지 먼저 확인합니다. `pwd` 가 `…/access_control` 로 끝나는지 보고(`…/network-study-notes` 면 `cd access_control`), 아래를 칩니다. 마지막 줄에 `앞 파일 정상` 이 나와야 합니다.
    ```bash

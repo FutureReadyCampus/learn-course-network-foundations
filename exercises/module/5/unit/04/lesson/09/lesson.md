@@ -56,7 +56,9 @@ source:
 
 리포트 파일은 응용 4-3 의 `apply4-3_run.py` 를 실행하면 생깁니다. 응용 4-3 을 하지 않았다면 아래 내용으로 직접 만듭니다. 응용 4-3 을 정답대로 실행했을 때 저장되는 파일과 내용이 같습니다(32줄).
 
-**`incident_report_20261112.md`** — 응용 4-3 이 만드는 초동 대응 리포트입니다.
+<h2><code>incident_report_20261112.md</code></h2>
+
+응용 4-3 이 만드는 초동 대응 리포트입니다.
 
 <pre class="copyable"><code>&#35; 초동 대응 리포트 — 2026-11-12(목) 오전 근무
 
@@ -92,7 +94,9 @@ source:
 - TCK-7 · dami: 95분 티켓 생성 → 105분 담당자 확인
 </code></pre>
 
-**`gate_cases.json`** — 승인 게이트 시험 사례 7개입니다. `case` 는 사례 이름, `expected` 는 기대한 결정(기대 결과), `request` 는 <mark style="background:#e0d4ff">실습 4-1 요청</mark>에서 `incident` 만 뺀 형식의 조치 요청입니다.
+<h2><code>gate_cases.json</code></h2>
+
+승인 게이트 시험 사례 7개입니다. `case` 는 사례 이름, `expected` 는 기대한 결정(기대 결과), `request` 는 <mark style="background:#e0d4ff">실습 4-1 요청</mark>에서 `incident` 만 뺀 형식의 조치 요청입니다.
 
 <pre class="copyable"><code>[
   {"case": "high 등급 한 명", "expected": "자동", "request": {"id": "T-1", "action": "계정 잠금", "target": "dami", "grade": "high", "users_on_ip": 0, "target_count": 1}},
@@ -121,7 +125,7 @@ unit09_check.py   check_report    : 있어야 할 번호가 리포트에 없으�
 
 ## 응용 4-5 · 평가 기준 자동 점검과 점검 목록
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>리포트 · 승인 게이트 · 오탐 복구가 기준을 충족하는지 사람이 출력을 하나씩 읽어 수동으로 검증합니다</mark>.
 - **만드는 것**: 리포트 반영 · 승인 게이트 분기 · 오탐 복구 점검 함수(`unit09_check.py`), 점검 목록 출력과 저장(`apply4-5_run.py`).
@@ -129,7 +133,9 @@ unit09_check.py   check_report    : 있어야 할 번호가 리포트에 없으�
 
 **할 일**: `soar_response` 폴더에 데이터 파일 하나(`gate_cases.json`)와 코드 파일 두 개(`unit09_check.py` · `apply4-5_run.py`)를 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행해서 단계 2 를 읽습니다.
 
-**`unit09_check.py`** — 점검 함수 모음입니다. 직접 쓰는 곳은 1 ~ 7번입니다. 파일 이름 속 `unit09` 는 원래 자료의 번호라서, Unit 4 와 숫자가 달라도 바꾸지 않고 그대로 씁니다(`unit09_checklist.md` 도 같습니다).
+<h3><code>unit09_check.py</code></h3>
+
+점검 함수 모음입니다. 직접 쓰는 곳은 1 ~ 7번입니다. 파일 이름 속 `unit09` 는 원래 자료의 번호라서, Unit 4 와 숫자가 달라도 바꾸지 않고 그대로 씁니다(`unit09_checklist.md` 도 같습니다).
 
 - 4번과 5번은 `if` 한 줄만 씁니다. 그 아래 미리 채운 `append` 줄이 `if` 안쪽입니다.
 
@@ -194,7 +200,9 @@ def mark(problems):                                              # 문제 리스
     return "확인 필요"                                           # 문제가 있으면 확인 필요를 리턴한다
 ```
 
-**`apply4-5_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+<h3><code>apply4-5_run.py</code></h3>
+
+8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
 from incident import load_json                                                              # Unit 1 파일의 JSON 읽기 함수를 불러온다
@@ -246,7 +254,7 @@ with open("unit09_checklist.md", "w", encoding="utf-8") as check_file:          
 print("--- 단계 3: unit09_checklist.md", len(lines), "줄 저장")                               # 단계 3 시작을 알리는 줄과 저장한 줄 수
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[터미널]** 판다스를 설치합니다. `report.py` 가 판다스를 쓰기 때문입니다. 이미 설치했다면 바로 다음 줄로 갑니다. 그다음 준비할 파일을 확인합니다. <mark>`점검 준비 정상` 이 나와야</mark> 합니다.
    ```bash

@@ -42,7 +42,7 @@ source:
 - 연습용 시스템의 상태 `state` 는 잠긴 계정(`locked_users`) · 차단한 IP · 열린 세션을 저장하는 딕셔너리입니다. 이 상태는 실행할 때마다 초기값에서 다시 시작하므로 결과를 똑같이 다시 만들 수 있습니다.
 - 조치 기록은 파일에 추가한 순서대로 남습니다. 그래서 이 기록은 감사 추적(audit trail, 오딧 트레일: 어떤 일이 어떤 순서로 있었는지 다시 짚어 볼 수 있게 남긴 시간순 기록)으로 쓸 수 있습니다.
 
-**문법 상자 · 직접 쓰는 곳의 모양 (예시 값 · 읽기만 합니다)**
+<h2>문법 상자 · 직접 쓰는 곳의 모양 (예시 값 · 읽기만 합니다)</h2>
 
 직접 쓰는 세 곳은 이 두 모양만 씁니다.
 
@@ -75,18 +75,20 @@ account_actions.py    check_policy      : VIP 계정이면 자동 조치를 막�
 
 ## 실습 2-1 · 계정 잠금 실행과 감사 기록 남기기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>잠금 호출만 있고 사후 검증도 조치 전 상태 기록도 없어서, 「잠갔다」는 기록이 실제 상태를 입증하지 못합니다</mark>.
 - **만드는 것**: 조치 기록 생성과 기록 파일 추가(`containment_store.py`), VIP 정책 검사 · 잠금 사후 검증 · 잠금 · 해제(`account_actions.py`), 잠금 요청 처리(`exercise2-1_run.py`).
 - **실행하면**: <mark>단계 1: 조치 전 잠긴 계정, 단계 2: 잠금 요청 3건의 조치 전 → 후, 단계 3: 해제, 단계 4: 파일에 저장해 둔 잠긴 계정과 조치 기록 수를 다시 읽은 결과가 나옵니다.</mark>
 
-**할 일**
+<h2>할 일</h2>
 
 1. 작업 폴더 `network-study-notes/soar_response` 에 아래 코드로 `containment_store.py` · `account_actions.py` · `exercise2-1_run.py` 세 파일을 만들고, `# ←` 가 있는 <mark>세 곳</mark>(① · ② · ③)을 한 줄씩 채웁니다.
 2. 채우기 <mark>전과 후</mark>에 한 번씩 실행해 단계 2 ~ 4 를 비교합니다.
 
-**`containment_store.py`** — 연습용 시스템의 상태와 조치 기록 파일을 관리합니다. 실습 2-2 와 처리 함수 준비 레슨의 `ip_actions.py`, Unit 3 실습 3-1 도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 ① 입니다. `INITIAL_STATE` 의 `junho` 는 수업 전부터 잠겨 있는 계정입니다.
+<h3><code>containment_store.py</code></h3>
+
+연습용 시스템의 상태와 조치 기록 파일을 관리합니다. 실습 2-2 와 처리 함수 준비 레슨의 `ip_actions.py`, Unit 3 실습 3-1 도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 ① 입니다. `INITIAL_STATE` 의 `junho` 는 수업 전부터 잠겨 있는 계정입니다.
 
 - `new_state` 의 `copy.deepcopy(값)` 은 딕셔너리를 안쪽 리스트까지 통째로 새로 복사합니다. `INITIAL_STATE` 를 복사하지 않고 그대로 쓰면 잠금 · 해제가 처음 상태 자체를 바꿔 버려서, 실행할 때마다 같은 처음 상태에서 시작할 수 없기 때문입니다.
 - `append_log` 의 `try:` · `except FileNotFoundError:` 는 Module 4 Unit 5 에서 본 「해 보고, 이 오류가 나면 멈추지 않고 아래 줄을 실행한다」는 모양입니다. 기록 파일이 아직 없을 때 프로그램이 멈추지 않고 빈 리스트로 시작하게 합니다(읽기만 합니다).
@@ -154,7 +156,9 @@ def append_log(record):                                               # 기록 �
     save_json(log, LOG_PATH)                                          # 기록 파일로 다시 저장한다
 ```
 
-**`account_actions.py`** — 계정 잠금과 해제를 구현합니다. 실습 2-2 와 Unit 3 실습 3-1 도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 ② · ③ 입니다.
+<h3><code>account_actions.py</code></h3>
+
+계정 잠금과 해제를 구현합니다. 실습 2-2 와 Unit 3 실습 3-1 도 이 파일의 함수를 불러와 사용합니다. 직접 쓰는 곳은 ② · ③ 입니다.
 
 ```python
 from containment_store import make_record                                             # 기록 한 건을 만드는 함수를 불러온다
@@ -205,7 +209,9 @@ def unlock_account(user, state, incident_id, reason):                           
     return make_record("계정 해제", user, incident_id, "잠김", after, reason)         # 조치 전 · 후 상태와 함께 기록한다
 ```
 
-**`exercise2-1_run.py`** — 직접 쓰는 곳 없이 그대로 붙여 넣습니다.
+<h3><code>exercise2-1_run.py</code></h3>
+
+직접 쓰는 곳 없이 그대로 붙여 넣습니다.
 
 - `requests` 의 괄호 하나 `("INC-001", "dami", "퇴사한 계정의 서버 요청")` 가 요청 한 건이고, 값 세 개를 괄호로 묶은 이 모양을 튜플(tuple)이라고 합니다. `for incident_id, user, reason in requests:` 는 한 건을 꺼낼 때마다 세 값을 순서대로 세 변수에 나눠 담습니다.
 - `INC-003` 의 이유 `여러 로그 연결` 은 Module 4 Unit 4 의 탐지 규칙 이름입니다. 서버 · SaaS · 웹 로그에 같은 계정(`gaeun`)의 기록이 60분 안에 함께 나타났다는 뜻입니다.
@@ -245,7 +251,7 @@ print("조치 기록:", len(saved_log), "건")                                  
 
 - 주석 줄은 그대로 두고, **각 주석 바로 아래 줄**에 씁니다. 세 곳 모두 함수 바로 안쪽 줄이라 4칸에서 시작합니다.
 
-**직접 쓰는 곳**
+<h3>직접 쓰는 곳</h3>
 
 | 빈칸 | 파일 · 함수 | 쓰는 줄 | 들여쓰기 |
 |---|---|---|---|
@@ -258,7 +264,7 @@ print("조치 기록:", len(saved_log), "건")                                  
 - ② 확인: ② 까지 채워도 단계 2 의 `dami` 는 아직 `확인 실패` 입니다. ③ 잠그는 줄이 아직 없어서 실제로 안 잠긴 것을, 방금 쓴 사후 검증이 잡아낸 것이니 정상입니다. 막히면: 문법 상자의 `"dami" in locked` 에서 `"dami"` 자리에 `user`, `locked` 자리에 `state["locked_users"]` 를 넣고 앞에 `return` 을 붙입니다.
 - ③ 확인: ③ 까지 채우고 실행하면 단계 2 가 `INC-001 dami · 잠기지 않음 → 잠김 · 퇴사한 계정의 서버 요청` 으로 나와야 합니다. 그래도 `확인 실패` 면 ② 의 줄 맨 앞에 `return` 이 있는지 봅니다. 막히면: ① 과 같은 `append` 모양이고, 리스트가 `state["locked_users"]`, 넣을 값이 `user` 입니다.
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `containment_store.py` · `account_actions.py` · `exercise2-1_run.py` 를 하나씩 그대로 적어 세 개의 파일을 만듭니다. 각 파일에 이 페이지의 코드 상자를 복사해 붙여 넣고 저장합니다(`Ctrl + S`).
 

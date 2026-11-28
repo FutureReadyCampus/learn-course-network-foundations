@@ -65,7 +65,7 @@ risk_assessment.py   make_risk_table        : 표로 바꾸고 위험 점수 열
 
 ## 응용 4-4 · 자동 조치 리스크 평가 문서 작성
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>자동 조치마다 위험이 얼마나 큰지, 필요한 통제가 갖춰져 있는지 정리한 리스크 평가 문서가 없습니다</mark>.
 - **만드는 것**: 위험 점수 산출 · 등급 분류 · 통제 갭 분석 · 위험도순 정렬(`risk_assessment.py`), 평가 결과 출력과 리스크 평가 문서 저장(`apply4-4_run.py`).
@@ -73,7 +73,9 @@ risk_assessment.py   make_risk_table        : 표로 바꾸고 위험 점수 열
 
 **할 일**: 데이터 파일 하나(`config/automation_risks.json`)와 코드 파일 두 개(`risk_assessment.py` · `apply4-4_run.py`)를 `soar_response` 폴더에 만들어 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행한 뒤 문서 파일 `risk_assessment.md` 를 열어 읽습니다.
 
-**`config/automation_risks.json`** — 자동 조치 6가지의 영향도 · 발생 가능성 · 지금 있는 통제(existing control, 이그지스팅 컨트롤: 이미 적용된 통제)를 적은 입력 데이터입니다.
+<h3><code>config/automation_risks.json</code></h3>
+
+자동 조치 6가지의 영향도 · 발생 가능성 · 지금 있는 통제(existing control, 이그지스팅 컨트롤: 이미 적용된 통제)를 적은 입력 데이터입니다.
 
 <pre class="copyable"><code>[
   {"action": "계정 잠금", "impact": 3, "likelihood": 2, "controls": ["승인 게이트", "되돌리기", "감사 기록", "VIP 예외"]},
@@ -85,7 +87,9 @@ risk_assessment.py   make_risk_table        : 표로 바꾸고 위험 점수 열
 ]
 </code></pre>
 
-**`risk_assessment.py`** — 리스크 평가 함수 모음입니다. 직접 쓰는 곳은 1 ~ 7번입니다.
+<h3><code>risk_assessment.py</code></h3>
+
+리스크 평가 함수 모음입니다. 직접 쓰는 곳은 1 ~ 7번입니다.
 
 - 2번과 3번은 `if` 한 줄과 그 안의 `return` 한 줄입니다. 그 아래 미리 채운 `if score >= 3:` 은 2번과 같은 들여쓰기입니다.
 
@@ -175,7 +179,9 @@ def make_assessment_lines(rows):                                            # �
     return lines                                                            # 완성한 줄 리스트를 리턴한다
 ```
 
-**`apply4-4_run.py`** — 8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
+<h3><code>apply4-4_run.py</code></h3>
+
+8 · 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다.
 
 ```python
 from incident import load_json                                                             # Unit 1 파일의 JSON 읽기 함수를 불러온다
@@ -203,7 +209,7 @@ with open(DOC_PATH, "w", encoding="utf-8") as doc_file:                         
 print("--- 단계 3: 바로 보완할 조치", gap_count, "개 ·", DOC_PATH, len(lines), "줄 저장")  # 단계 3 시작을 알리는 줄
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[터미널]** 판다스를 설치합니다. 이미 설치했다면 바로 다음 줄로 갑니다.
    ```bash

@@ -57,7 +57,7 @@ source:
 
 ## 응용 3-1 · 알림 8건 처리와 확인 목록 만들기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>알림 8건을 판단하는 함수와 조치하는 함수가 따로 있을 뿐, 한 번에 처리하고 근무 보고로 요약하는 흐름이 없습니다</mark>.
 - **만드는 것**: 규칙에 맞는 조치 고르기와 VIP 승인 대기(`drill.py`), 기록 종류 나누기와 세기(`shift_report.py`), 처리 결과 받기(`apply3-1_run.py`).
@@ -97,7 +97,9 @@ PY
 - [ ] `soar_response` 폴더에서 「먼저 확인할 파일」 명령을 실행해 `앞 Unit 파일 정상` 이 나왔다
 <!-- /checklist -->
 
-**`drill.py`** — 알림 한 건을 처리합니다. Unit 1 `enrichment.py` · `routing.py` 와 Unit 2 파일을 불러옵니다(import). 직접 쓰는 곳은 1 ~ 5번입니다. `FIREWALL_DOWN_FOR` 는 방화벽 연결이 끊긴 상황을 흉내 내려고 수업에서만 쓰는 목록입니다.
+<h3><code>drill.py</code></h3>
+
+알림 한 건을 처리합니다. Unit 1 `enrichment.py` · `routing.py` 와 Unit 2 파일을 불러옵니다(import). 직접 쓰는 곳은 1 ~ 5번입니다. `FIREWALL_DOWN_FOR` 는 방화벽 연결이 끊긴 상황을 흉내 내려고 수업에서만 쓰는 목록입니다.
 
 ```python
 from enrichment import enrich_incident                                                      # Unit 1 실습 1-3 : 맥락 붙이기
@@ -150,7 +152,9 @@ def handle_incident(incident, state, refs):                                     
     return "조치하지 않음", []                                                              # 자동 조치 대상이 아니면 조치하지 않는다 — 미리 채운 줄
 ```
 
-**`shift_report.py`** — 기록을 종류별로 셉니다. 직접 쓰는 곳은 6 ~ 8번입니다.
+<h3><code>shift_report.py</code></h3>
+
+기록을 종류별로 셉니다. 직접 쓰는 곳은 6 ~ 8번입니다.
 
 ```python
 def is_failure(record):                                     # 기록 한 건을 받는 함수
@@ -192,7 +196,9 @@ def summarize(log):                                         # 기록 리스트�
     return counts                                           # 종류별 건수를 리턴한다
 ```
 
-**`apply3-1_run.py`** — 9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이번 근무의 기록은 `shift_log.json` 에 따로 저장하고, 실습 2-2가 저장한 파일은 건드리지 않습니다.
+<h3><code>apply3-1_run.py</code></h3>
+
+9번만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이번 근무의 기록은 `shift_log.json` 에 따로 저장하고, 실습 2-2가 저장한 파일은 건드리지 않습니다.
 
 ```python
 from incident import load_json, save_json, INCIDENTS_PATH                                 # Unit 1 파일의 함수를 불러온다
@@ -237,7 +243,7 @@ for record in log:                                                              
         print(record["incident"], record["target"], ": 조치 후 확인 실패 —", record["reason"])  # 이유와 함께 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 왼쪽 목록에서 `soar_response` 폴더를 오른쪽 클릭 › **New File** 을 누르고, 파일 이름 `drill.py` · `shift_report.py` · `apply3-1_run.py` 를 하나씩 그대로 적어 세 개의 파일을 만듭니다. 각 파일에 이 페이지의 코드 상자를 복사해 붙여 넣고 저장합니다(`Ctrl + S`).
 2. **[VS Code]** `drill.py` 1 ~ 5번, `shift_report.py` 6 ~ 8번, `apply3-1_run.py` 9번을 씁니다. 막히면 아래 「응용 3-1 정리」를 봅니다.

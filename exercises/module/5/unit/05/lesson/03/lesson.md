@@ -34,7 +34,9 @@ PY
 
 ## `risk_engine_log.json` 만들기
 
-**`risk_engine_log.json`** — Module 4 Unit 4 실습 4-1에서 저장한 탐지 결과 5건(`unit05_risk_scores.json`)을 알림 `INC-501` ~ `INC-505` 로 바꿔, 실습 5-1 엔진(`run_all`)으로 처리한 결과 로그입니다.
+<h2><code>risk_engine_log.json</code></h2>
+
+Module 4 Unit 4 실습 4-1에서 저장한 탐지 결과 5건(`unit05_risk_scores.json`)을 알림 `INC-501` ~ `INC-505` 로 바꿔, 실습 5-1 엔진(`run_all`)으로 처리한 결과 로그입니다.
 
 - **무엇인가**:
   - 실습 5-1의 `engine_log.json` 과 같은 꼴입니다. 알림 한 건이 한 줄이고, 조치마다 `decision`(승인 게이트의 결정) · `executed`(실행했는지) · `before` · `after` 와 승인 게이트가 본 조치 요청 `request` 가 들어 있습니다.

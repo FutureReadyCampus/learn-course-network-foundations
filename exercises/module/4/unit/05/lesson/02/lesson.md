@@ -97,7 +97,7 @@ source:
 - 한 대상에 규칙이 여러 개이면 사실 문장도 여러 개입니다. 이 문장들을 한 줄로 이어 붙이는 데 아래 문법 상자의 `join` 을 씁니다.
 - AI 호출이 실패하면 빈 문자열이 돌아옵니다. 그대로 두면 요약 칸이 비므로, <mark>실패했다는 문장(`FAIL_TEXT`)으로 대신 채워</mark> 담당자가 그 대상은 점수와 이유를 직접 읽게 합니다.
 
-**문법 상자 — 리스트를 한 문자열로 이어 붙이기 `"구분 글자".join(리스트)`**
+<h2>문법 상자 — 리스트를 한 문자열로 이어 붙이기 <code>&quot;구분 글자&quot;.join(리스트)</code></h2>
 
 **<mark>`"구분 글자".join(리스트)`</mark> 는 리스트에 든 글자들을 구분 글자로 이어 붙여 글자 하나로 만듭니다**
 
@@ -137,7 +137,7 @@ print(slash_text)               # 이어 붙인 글자를 출력한다
 - **주의**:
   - <mark style="background:#ffc4d6">`join` 을 쓰지 않고 리스트를 그대로 출력하면 대괄호와 따옴표가 그대로 나옵니다.</mark> 예를 들어 `['사과', '배', '귤']` 처럼 보입니다.
 
-**한 장 정리**
+<h2>한 장 정리</h2>
 
 | 함수 | 받는 것 | 리턴하는 것 |
 |---|---|---|
@@ -156,7 +156,7 @@ print(slash_text)               # 이어 붙인 글자를 출력한다
 
 ## 실습 5-1 · 점수 파일 사실로 AI 요약 받기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>점수 기록 5건에 규칙 이름만 있어서 담당자가 왜 위험한지 바로 알 수 없습니다</mark>.
 - **그래서 만드는 것**: `event_summary.py` 입니다.
@@ -166,12 +166,12 @@ print(slash_text)               # 이어 붙인 글자를 출력한다
 - **실행하면**: <mark>단계 1: 불러온 기록 수, 단계 2: 요약할 대상, 단계 3: AI 에게 보내는 글(seoyeon), 단계 4: 대상별로 Gemini API 를 활용한 AI 요약이 나옵니다.</mark>
 - **현업에서는**: AI 에게 값만 보내고 판단은 코드가 하면, AI 가 틀린 말을 해도 점수와 등급은 그대로여서 담당자가 사실과 요약을 나란히 보고 확인할 수 있습니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. `event_summary.py` · `exercise5-1_run.py` 두 파일을 만들고, `event_summary.py` 의 `# ←` 가 있는 <mark>세 곳</mark>(① · ② · ③)을 한 줄씩 채웁니다.
 2. 실행해서 <mark>요약할 대상</mark>(단계 2), <mark>AI 에게 보내는 글</mark>(단계 3), <mark>Gemini API 를 활용한 AI 요약</mark>(단계 4)을 읽습니다. 단계 4 에서 Gemini API 를 3번 호출합니다. <mark>키가 없으면 호출하지 않고 대체 문장으로 끝까지 실행됩니다</mark>(시작하기 「API 키가 없어도 끝까지 할 수 있습니다」).
 
-**`event_summary.py`**
+<h3><code>event_summary.py</code></h3>
 
 ```python
 import json                                             # JSON 파일을 읽기 위해 json 을 불러온다
@@ -258,7 +258,7 @@ def summarize_record(record):                           # 기록 하나를 받�
 - `PROMPT_RULES` 끝의 `\n` 은 줄을 바꾸는 글자입니다. 그래서 지시문 다음 줄에 [사실]이 이어지고, 단계 3 의 출력이 2줄이 됩니다.
 - 미리 채운 `facts` 줄은 따옴표 앞에 `f` 가 있어서 `{entity}` 같은 부분이 점수 파일의 값으로 바뀝니다.
 
-**직접 쓰는 곳**
+<h3>직접 쓰는 곳</h3>
 
 | 빈칸 | 쓰는 줄 | 들여쓰기 |
 |---|---|---|
@@ -271,7 +271,9 @@ def summarize_record(record):                           # 기록 하나를 받�
 - ③ 확인: ③ 까지 쓰고 실행하면 키가 없을 때 `dami : (요약 실패 — 점수와 이유를 직접 확인)` 이 나오면 성공입니다. 키가 있으면 AI 가 쓴 요약 문장이 나옵니다. 막히면: 미리 채운 `summary = call_llm(prompt)` 와 같은 모양이고, 오른쪽만 `FAIL_TEXT` 입니다.
 - 채우기 전에 실행하면 단계 1 · 2 는 나오고, 단계 3 에서 `NameError: name 'meaning_text' is not defined` 오류가 나며 멈춥니다. `meaning_text` 를 만드는 ① 을 아직 안 썼기 때문입니다.
 
-**`exercise5-1_run.py`** — 그대로 붙여 넣습니다. 직접 쓰는 줄은 없습니다. `len(리스트)` 는 리스트의 개수입니다.
+<h3><code>exercise5-1_run.py</code></h3>
+
+그대로 붙여 넣습니다. 직접 쓰는 줄은 없습니다. `len(리스트)` 는 리스트의 개수입니다.
 
 ```python
 from event_summary import load_records, pick_records_to_summarize, summarize_record, build_prompt, RISK_PATH, SUMMARY_LIMIT  # 방금 만든 함수를 불러온다
@@ -297,7 +299,7 @@ for record in picked:                                                           
     print(record["entity"], ":", summary)                                         # 대상과 요약 문장을 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `anomaly_detection` 폴더 바로 아래에 `event_summary.py` · `exercise5-1_run.py` 두 파일을 만들어, 각 파일에 위의 같은 이름 코드 상자(**`event_summary.py`** · **`exercise5-1_run.py`**)를 붙여 넣습니다. `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 만듭니다.
 2. **[VS Code]** `event_summary.py` 의 `# ←` 세 곳(① · ② · ③)을 채웁니다. 위 문법 상자와 「직접 쓰는 곳」의 확인을 보며 씁니다. 막히면 아래 「실습 5-1 정리」를 봅니다.

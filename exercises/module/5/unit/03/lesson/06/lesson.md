@@ -64,7 +64,7 @@ source:
 | 확인 중 | 해결 |
 | 해결 | 없음 (재개하지 않고 새 티켓을 생성한다) |
 
-**문법 상자 — `None` 은 「없다」는 값이고, `is None` 으로 확인한다**
+<h2>문법 상자 — <code>None</code> 은 「없다」는 값이고, <code>is None</code> 으로 확인한다</h2>
 
 ```python
 def find_name(names, target):
@@ -103,7 +103,7 @@ print(found is None)
 
 ## 응용 3-2 · 중복 알림 병합과 티켓 상태 전이
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>알림 수만큼 티켓이 생성되므로 같은 사건의 티켓이 여러 장입니다. 또한 티켓 상태를 전이하는 방법도 없습니다</mark>.
 - **만드는 것**: 병합할 티켓 찾기 · 병합 · 알림 한 건 처리(`ticket_merge.py`). 상태 전이와 실행 파일은 미리 채워져 있습니다.
@@ -111,7 +111,9 @@ print(found is None)
 
 **할 일**: `soar_response` 폴더의 `ticket_merge.py` 에 골격을 붙여 넣고 번호 주석 바로 아래에 직접 코드를 씁니다. 실행 파일은 그대로 붙여 넣습니다. 실행해서 단계 1 ~ 3 을 읽습니다.
 
-**`ticket_merge.py`** — 같은 사건의 알림을 티켓 한 장으로 병합합니다. 응용 3-3과 Unit 4 응용도 가져와 사용(import)합니다. 실습 3-2의 `ticketing.py` 가 같은 폴더에 있어야 합니다. 직접 쓰는 곳은 1 ~ 9번입니다.
+<h3><code>ticket_merge.py</code></h3>
+
+같은 사건의 알림을 티켓 한 장으로 병합합니다. 응용 3-3과 Unit 4 응용도 가져와 사용(import)합니다. 실습 3-2의 `ticketing.py` 가 같은 폴더에 있어야 합니다. 직접 쓰는 곳은 1 ~ 9번입니다.
 
 - 「선택 과제용 티켓 병합·알림 함수 준비」 레슨에서 만든 완성본이 있으면, 그 파일의 내용을 모두 지우고 아래 골격을 붙여 넣은 뒤 씁니다. 다 쓸 때까지는 이 파일을 쓰는 응용 3-3도 동작하지 않습니다.
 
@@ -196,7 +198,9 @@ def change_ticket_status(ticket, new_status, minute, who):                      
     return True                                                                      # 바꿨다고 True 를 리턴한다
 ```
 
-**`apply3-2_run.py`** — 쓰는 줄이 없습니다. 그대로 붙여 넣습니다.
+<h3><code>apply3-2_run.py</code></h3>
+
+쓰는 줄이 없습니다. 그대로 붙여 넣습니다.
 
 ```python
 from incident import load_json                                                              # Unit 1 파일의 JSON 읽기 함수를 불러온다
@@ -231,7 +235,7 @@ for comment in first["comments"]:                                               
     print(" -", comment)                                                                    # 댓글을 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `apply3-2_run.py` 를 이름 그대로 만들고 위 `apply3-2_run.py` 코드 상자를 복사해 붙여 넣고 저장합니다. `ticket_merge.py` 는 「선택 과제용 티켓 병합·알림 함수 준비」 레슨에서 이미 만들었으니 새로 만들지 않고, 열어서 안의 내용을 위 골격으로 바꿔 저장합니다.
 

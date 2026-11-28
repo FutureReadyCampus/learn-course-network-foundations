@@ -26,7 +26,9 @@ python exercise4-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python exercise4-1_run.py` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — `score_findings` 안의 두 곳입니다.
+<h2>채운 코드 (한 예)</h2>
+
+`score_findings` 안의 두 곳입니다.
 
 ① 은 `# ①` 주석 바로 아래(4칸)에 씁니다.
 
@@ -42,7 +44,7 @@ python exercise4-1_run.py
 
 내가 채운 코드는 위의 코드입니다. <mark>줄 수가 달라도 주석이 말한 일을 하면 맞습니다.</mark>
 
-**결과**
+<h2>결과</h2>
 
 - (가) 출력은 다음과 같고, high 는 <mark style="background:#bde3ff">**dami**</mark>, mid 는 <mark style="background:#bde3ff">**seoyeon · gaeun · jiwoo**</mark>, low 는 <mark style="background:#bde3ff">**198.51.100.90**</mark> 입니다.
 
@@ -70,11 +72,11 @@ low 198.51.100.90 30 ['경로 스캔']
 - (다) 198.51.100.90 은 경로 스캔 30점뿐이라 <mark>mid 기준 35에 못 미쳐 low</mark> 입니다.
   - <mark>low 는 점수 기준상 낮은 등급이라는 뜻이고, 기록을 무시해도 된다는 뜻은 아닙니다.</mark> 샘플에서 이 IP 는 09:20:10 ~ 09:20:12 에 스캐너 경로 3종류를 요청했고 모두 실패했습니다. IP 에 적용되는 규칙은 경로 스캔(30점) 하나뿐이라 mid 기준 35 에 닿을 수 없어서 항상 low 입니다. 그래도 이 IP 의 이벤트는 다시 확인할 수 있게 남깁니다.
 
-**왜**
+<h2>왜</h2>
 
 - <mark>규칙이 겹칠수록 점수가 오릅니다.</mark> 사용자 하나에 여러 규칙이 겹치면 먼저 볼 이유가 늘고, 하나뿐이면 순서가 뒤로 갑니다. 이유를 같이 저장해 두면 그 순서를 설명할 수 있습니다.
 
-**자주 틀리는 곳**
+<h2>자주 틀리는 곳</h2>
 
 - ① 에서 `WEIGHTS` 를 따옴표로 묶어 `.map("WEIGHTS")` 로 쓰면 `TypeError: 'str' object is not callable` 오류가 납니다. **`WEIGHTS` 는 딕셔너리 변수 이름이라 따옴표 없이 씁니다.**
 - ② `.sum()` 에서 괄호를 빼면 오류가 납니다. 괄호 없는 `grouped["points"].sum` 은 합계 값이 아니라 아직 실행하지 않은 메서드(method · 메서드, 점 뒤에 붙여 쓰는 함수)라서 다음 줄의 `totals.sort_values` 에서 `AttributeError` 가 납니다.
@@ -92,7 +94,7 @@ AttributeError: 'function' object has no attribute 'sort_values'
   - 줄 번호는 사람마다 다릅니다.
 - 미리 채운 `make_grade` 는 **높은 기준부터 차례로 확인합니다.** high 기준을 먼저 확인하고, 아니면 mid 기준을 확인하는 순서입니다. 순서를 바꿔 mid 를 먼저 확인하면 높은 점수도 mid 가 됩니다.
 
-**관제에서는**
+<h2>관제에서는</h2>
 
 - <mark>점수와 등급 기준은 정해 둔 날과 이유를 남깁니다.</mark> 기준을 바꾸면 같은 로그에서 등급이 달라지기 때문입니다. 실습 4-2에서는 알림이 맞았는지 세고, 같은 원인의 틀린 알림을 줄입니다.
 
@@ -108,7 +110,9 @@ python exercise4-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — `apply_exception` 안의 두 곳과 `find_removed_users` 안의 한 곳입니다.
+<h2>채운 코드 (한 예)</h2>
+
+`apply_exception` 안의 두 곳과 `find_removed_users` 안의 한 곳입니다.
 
 `apply_exception` 안
 
@@ -128,7 +132,7 @@ python exercise4-2_run.py
 
 내가 채운 코드는 위의 코드입니다. <mark>줄 수가 달라도 주석이 말한 일을 하면 맞습니다.</mark>
 
-**결과**
+<h2>결과</h2>
 
 - (가) 출력은 다음과 같고, 오탐은 <mark style="background:#bde3ff">**4개에서 2개**</mark>로 줄었고 빠진 알림은 <mark style="background:#bde3ff">**A4 · A5**</mark>(사용자 jiwoo · seoyeon), 빠진 진짜 문제 알림은 <mark style="background:#bde3ff">**0개**</mark>입니다.
 
@@ -153,11 +157,11 @@ python exercise4-2_run.py
 - (다) 믿는 IP 에서 <mark style="background:#bde3ff">계정이 도용되어 로그인해도</mark> 이 규칙은 알림을 내지 않습니다. 예를 들어 협력사 사무실에 있는 누군가가 다른 직원의 계정으로 접속해도 「평소와 다른 IP」 알림은 나지 않습니다.
   - 그래서 다른 규칙(대량 다운로드 등)은 예외에서 빼고 그대로 둡니다. 예외는 근거와 함께 기록하고 주기적으로 다시 검토합니다.
 
-**왜**
+<h2>왜</h2>
 
 - <mark>예외를 규칙 하나에만 적용하면 오탐은 줄이면서 다른 규칙이 찾는 진짜 문제는 지키는 효과가 있습니다.</mark> 단계 4의 `진짜 문제였던 알림 수:` 가 0인 것은 빠진 알림 A4 · A5 가 모두 오탐이었다는 뜻입니다.
 
-**자주 틀리는 곳**
+<h2>자주 틀리는 곳</h2>
 
 - ② `is_removed = is_ip_rule & is_trusted` 에서 `is_ip_rule &` 를 빼고 `is_removed = is_trusted` 로 쓰면 오류는 나지 않지만 <mark>**단계 4의 `진짜 문제였던 알림 수:` 가 0이 아니라 1로 나옵니다.**</mark> 같은 IP 에서 온 A3 · A6 까지 빠지고, 빠진 A6 은 진짜 문제입니다.
   - 이때 출력은 다음과 같습니다(<mark style="background:#ffc4d6">`빠진 알림 수: 4`</mark> 와 <mark style="background:#ffc4d6">`진짜 문제였던 알림 수: 1`</mark> 이 나오면 이 실수입니다).
@@ -190,7 +194,7 @@ python exercise4-2_run.py
 
 - ① 리스트 안에 있는지는 `==` 가 아니라 `.isin(리스트)` 로 구합니다. ② 표의 열 두 개를 합칠 때는 `and` 가 아니라 `&` 를 씁니다. ③ `.unique()` 는 괄호까지 써야 값이 나옵니다.
 
-**관제에서는**
+<h2>관제에서는</h2>
 
 - 예외 규칙은 오탐을 빠르게 줄이는 방법이지만, <mark>예외를 넣은 뒤에는 빠진 알림 중 진짜 문제가 있는지 항상 확인합니다.</mark> 예외 리스트는 근거와 함께 기록해 두고, 협력사 계약이 끝나면 지웁니다.
 
@@ -208,7 +212,9 @@ python apply4-1_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python apply4-1_run.py` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
+<h2>채운 코드 (한 예)</h2>
+
+직접 쓰는 곳은 세 함수입니다.
 
 ① `attach_user_to_web` 안
 
@@ -239,7 +245,7 @@ python apply4-1_run.py
 
 내가 채운 코드는 위의 코드입니다. <mark>줄 수가 달라도 주석이 말한 일을 하면 맞습니다.</mark>
 
-**결과**
+<h2>결과</h2>
 
 - (가) 출력은 다음과 같고, 연결된 사건은 <mark style="background:#bde3ff">**gaeun**</mark> 한 명이며 이유는 「서로 다른 로그 3종류 · 41분 안」입니다.
 
@@ -263,11 +269,11 @@ gaeun 의 이벤트 (시각 · 로그 · 행동 · 결과)
 - (다) seoyeon 은 단계 4 에서 <mark>로그 종류 2</mark>(서버 · SaaS)로 조건 ①(2 이상)을 만족하지만, 처음부터 마지막까지가 <mark>555분</mark>(09:05 ~ 18:20)으로 조건 ②(60분 이내)를 만족하지 못해 연결되지 않았습니다.
   - 하나의 사건으로 연결하지 않으면 서버의 `SETTLE:QUERY` 거절(권한 없음)과 실습 4-1에서 본 seoyeon 의 이유(평소와 다른 IP · 대량 다운로드)가 같은 사용자의 기록이라는 점을 <mark>탐지 결과에서 확인하기 어렵습니다.</mark>
 
-**왜**
+<h2>왜</h2>
 
 - <mark>서로 다른 로그와 짧은 시간, 두 조건이 함께 있어야 하나의 사건으로 연결합니다.</mark> 로그 종류만 보면 하루 종일 흩어진 일까지 연결되고, 시간만 보면 한 로그의 반복만 연결됩니다.
 
-**자주 틀리는 곳**
+<h2>자주 틀리는 곳</h2>
 
 - `pd.concat` 에 표를 쉼표로 따로 전달하면 `TypeError` 오류가 납니다. **표는 대괄호 `[ ]` 안에 넣어 리스트로 전달합니다.**
   - 실행하면 다음 오류가 납니다(<mark style="background:#ffc4d6">`concat() takes 1 positional argument but 3 were given`</mark> 가 나오면 이 실수입니다).
@@ -284,7 +290,7 @@ TypeError: concat() takes 1 positional argument but 3 were given
   - 줄 번호는 사람마다 다릅니다.
 - 정렬 결과를 다시 담지 않고 `timeline.sort_values(["user", "time"])` 만 쓰면 오류는 나지 않지만 **정렬한 결과가 사라져서** 단계 2 의 gaeun 이벤트가 시각 순서가 아닙니다. 서버 이벤트 3개(10:05 · 10:09 · 10:14)가 먼저 나오고, 그 뒤에 SaaS 10:12, 웹 09:33 이 나오면 이 실수입니다.
 
-**관제에서는**
+<h2>관제에서는</h2>
 
 - <mark>이벤트 하나씩이 아니라 사용자 단위의 사건으로 연결하면 담당자가 읽을 양이 줄어듭니다.</mark> 시간 기준 밖에 있는 이벤트는 따로 두고, 다른 사건과 섞이지 않게 합니다.
 
@@ -300,7 +306,9 @@ python apply4-2_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
+<h2>채운 코드 (한 예)</h2>
+
+직접 쓰는 곳은 세 함수입니다.
 
 ① `find_false_alarms` 안
 
@@ -338,7 +346,7 @@ python apply4-2_run.py
 
 내가 채운 코드는 위의 코드입니다. <mark>줄 수가 달라도 주석이 말한 일을 하면 맞습니다.</mark>
 
-**결과**
+<h2>결과</h2>
 
 - (가) 출력은 다음과 같고, 알림은 <mark style="background:#bde3ff">**7개**</mark>, 오탐은 <mark style="background:#bde3ff">**4개**</mark>, 미탐은 <mark style="background:#bde3ff">**2개**</mark>입니다.
 
@@ -368,11 +376,11 @@ Name: count, dtype: int64
   - 필요한 규칙의 예: 정산처럼 중요한 자원에 권한 없이 접근을 시도하면 한 번만 거절돼도 알리는 규칙입니다.
   - 이런 규칙은 횟수가 아니라 대상의 중요도를 보기 때문에 오탐이 늘 수 있습니다.
 
-**왜**
+<h2>왜</h2>
 
 - <mark>오탐과 미탐은 줄여야 하는 방향이 반대입니다.</mark> 오탐을 줄이려고 규칙을 엄격하게 만들면 미탐이 늘고, 미탐을 줄이려고 규칙을 느슨하게 만들면 오탐이 늡니다. 그래서 둘을 따로 세어 둡니다.
 
-**자주 틀리는 곳**
+<h2>자주 틀리는 곳</h2>
 
 - `is_false = ~is_real` 대신 `not is_real` 이라고 쓰면 `ValueError` 오류가 납니다. <mark>**표의 열에는 `not` 이 아니라 `~` 를 씁니다.**</mark>
   - 실행하면 다음 오류가 납니다(<mark style="background:#ffc4d6">`The truth value of a Series is ambiguous`</mark> 가 나오면 이 실수입니다).
@@ -395,7 +403,7 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.item(), a.a
 
 - `.sum()` 은 괄호까지 써야 숫자가 나옵니다. 괄호를 빼면 숫자가 아니라 `<bound method Series.sum of …>` 라는 긴 글자가 나옵니다.
 
-**관제에서는**
+<h2>관제에서는</h2>
 
 - 오탐을 세는 것은 담당자의 시간을 지키는 일이고, 미탐을 세는 것은 놓친 위험을 줄이는 일입니다. <mark>규칙을 평가할 때는 이 두 숫자를 함께 보고합니다.</mark>
 
@@ -411,7 +419,9 @@ python apply4-3_run.py
 ```
 - 명령 풀이: `pwd` 지금 있는 폴더의 위치 확인 · `python 파일이름` 파이썬으로 실행 파일 실행
 
-**채운 코드** (한 예) — 직접 쓰는 곳은 세 함수입니다.
+<h2>채운 코드 (한 예)</h2>
+
+직접 쓰는 곳은 세 함수입니다.
 
 ① `merge_alerts` 안
 
@@ -436,7 +446,7 @@ python apply4-3_run.py
 
 내가 채운 코드는 위의 코드입니다. <mark>줄 수가 달라도 주석이 말한 일을 하면 맞습니다.</mark>
 
-**결과**
+<h2>결과</h2>
 
 - (가) 출력은 다음과 같고, 한 문장 요약은 <mark style="background:#bde3ff">**「알림 6개 중 오탐 2개 · 놓친 문제 1개」**</mark>입니다.
 
@@ -462,11 +472,11 @@ python apply4-3_run.py
   - 그 규칙을 더하면 업무상 실수로 권한 없는 곳을 한 번 건드린 사용자까지 알림이 나서 <mark style="background:#bde3ff">오탐이 늘 수 있습니다.</mark>
   - 그래서 규칙을 더한 뒤에는 응용 4-2에서 한 것처럼 오탐과 미탐을 다시 세어 봅니다.
 
-**왜**
+<h2>왜</h2>
 
 - <mark>규칙을 합치면 놓친 문제는 줄지만, 합친 뒤에 다시 세어 봐야 오탐이 늘지 않았는지 알 수 있습니다.</mark> 숫자 세 개를 한 문장으로 만들어 두면 다음에 규칙을 고칠 때 전후를 바로 비교할 수 있습니다.
 
-**자주 틀리는 곳**
+<h2>자주 틀리는 곳</h2>
 
 - `pd.concat([alerts, login_alerts])` 대신 `pd.concat(alerts, login_alerts)` 라고 쓰면 `TypeError` 오류가 납니다. <mark>**표는 대괄호 `[ ]` 안에 리스트로 묶어 전달합니다.**</mark>
   - 실행하면 다음 오류가 납니다(<mark style="background:#ffc4d6">`concat() takes 1 positional argument but 2 were given`</mark> 가 나오면 이 실수입니다).
@@ -492,7 +502,7 @@ TypeError: only list-like objects are allowed to be passed to isin(), you passed
   - 줄 번호는 사람마다 다릅니다.
 - `is_missed = ~is_caught` 에서 `~` 를 빼면 오류는 나지 않지만 <mark>**놓친 문제로 알림이 난 문제가 나옵니다.**</mark> 단계 4의 `놓친 문제:` 줄에 P1 · P2 · P3 · P4 가 나오는 것이 이 실수의 모습입니다.
 
-**관제에서는**
+<h2>관제에서는</h2>
 
 - 새 규칙을 운영에 넣기 전에 오탐과 미탐을 세어 전후를 비교하는 것은 흔한 절차입니다. <mark>숫자를 보고서에 한 줄로 남겨 두면 어떤 규칙이 효과가 있었는지 나중에 확인할 수 있습니다.</mark>
 

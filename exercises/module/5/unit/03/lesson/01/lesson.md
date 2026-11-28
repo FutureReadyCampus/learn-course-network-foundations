@@ -12,7 +12,7 @@ render: markdown
 
 Unit 2 실습 2-1 · 2-2에서는 계정 잠금과 세션 종료(세션, session: 로그인한 뒤 서버에 이어져 있는 접속 상태)를 실행하고, 조치 전 · 후 상태를 기록으로 남겼습니다. 오늘은 그 기록을 써서 두 가지를 합니다. 오탐으로 확인된 조치는 **안전하게 되돌리고**(롤백, rollback: 조치 이전 상태로 복원하는 일), 알림은 담당자가 바로 읽을 수 있는 **티켓**으로 남깁니다.
 
-**오늘의 계획 (약 2시간 40분)**
+<h2>오늘의 계획 (약 2시간 40분)</h2>
 
 | 순서 | 시간 | 하는 일 |
 |---|---|---|
@@ -63,7 +63,7 @@ Unit 2 실습 2-1 · 2-2에서는 계정 잠금과 세션 종료(세션, session
 
 실습 3-1이 실습 2-2 결과 파일 두 개를 읽습니다.
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 왼쪽 목록의 `network-study-notes` 안에 있는 `soar_response` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다. 이렇게 열면 터미널이 처음부터 `soar_response` 에 있습니다.
 2. **[터미널]** `soar_response` 폴더에 있는지 보고 파일을 확인합니다.
@@ -133,7 +133,9 @@ PY
 
 Unit 1 파일이 아예 없으면 `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `incident.py` 를 만들고, 오늘 쓰는 두 함수만 담은 아래 상자를 붙여 넣어도 핵심 실습 두 개를 할 수 있습니다. 선택 과제 3-1은 Unit 1 파일 전체가 있어야 합니다.
 
-**`incident.py`** — Unit 1 파일에서 오늘 쓰는 두 함수(`load_json` · `save_json`)만 담았습니다. Unit 1 파일 전체가 있으면 그것을 그대로 씁니다.
+<h2><code>incident.py</code></h2>
+
+Unit 1 파일에서 오늘 쓰는 두 함수(`load_json` · `save_json`)만 담았습니다. Unit 1 파일 전체가 있으면 그것을 그대로 씁니다.
 
 ```python
 import json                                                  # JSON 파일을 읽고 쓰기 위해 json 을 불러온다
@@ -158,13 +160,17 @@ def save_json(data, path):                                   # 저장할 값과 
 
 **실습 2-2 결과 파일** — Unit 2 파일이 있으면 `python exercise2-2_run.py` 를 한 번 실행하는 것이 가장 쉽습니다. 실습 2-2를 하지 못했다면 `soar_response` 폴더에 `containment_state.json` 과 `containment_log.json` 을 만들고 아래 두 상자를 하나씩 붙여 넣고 저장합니다. 실습 2-2 실행 파일이 저장하는 내용과 같습니다.
 
-**`containment_state.json`** — 실습 2-2가 끝난 뒤의 연습용 시스템 상태입니다. `junho` 는 수업 전부터, `dami` 는 실습 2-2에서 잠겼고, 두 계정의 세션은 모두 종료됐습니다.
+<h2><code>containment_state.json</code></h2>
+
+실습 2-2가 끝난 뒤의 연습용 시스템 상태입니다. `junho` 는 수업 전부터, `dami` 는 실습 2-2에서 잠겼고, 두 계정의 세션은 모두 종료됐습니다.
 
 ```
 {"locked_users": ["junho", "dami"], "blocked_ips": [], "block_expiry": {}, "clock": 0, "sessions": {"dami": [], "seoyeon": ["S-201"], "gaeun": ["S-301"], "jiwoo": ["S-401"], "junho": [], "hana": ["S-601"]}}
 ```
 
-**`containment_log.json`** — 실습 2-2가 남긴 조치 기록 5건입니다. 기록마다 조치 전(`before`)과 조치 후(`after`) 상태가 들어 있습니다.
+<h2><code>containment_log.json</code></h2>
+
+실습 2-2가 남긴 조치 기록 5건입니다. 기록마다 조치 전(`before`)과 조치 후(`after`) 상태가 들어 있습니다.
 
 ```
 [

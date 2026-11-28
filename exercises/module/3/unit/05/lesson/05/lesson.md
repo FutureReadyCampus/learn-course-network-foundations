@@ -47,7 +47,7 @@ source:
 - 이 샘플 로그의 허용 이유는 `역할 권한` 하나이고, 거부 이유는 네 가지입니다.
   - `퇴사한 계정` · `역할이 없음`(사용자의 역할이 역할 파일에 없음) · `업무 시간 밖` · `허용되지 않은 접속 위치`
 
-**한 장 정리**
+<h2>한 장 정리</h2>
 
 | 함수 | 받는 것 | 리턴하는 것 | 직접 쓰는 곳 |
 |---|---|---|---|
@@ -63,9 +63,9 @@ source:
 
 <figure class="page-figure"><img src="assets/f01.svg" alt="요청 로그를 읽어 거부 요청을 세고, 거부율로 경고를 정하는 함수 흐름"></figure>
 
-**문법 상자 — JSON 한 줄 읽기 · 퍼센트 만들기 · 값별로 세기**
+<h2>문법 상자 — JSON 한 줄 읽기 · 퍼센트 만들기 · 값별로 세기</h2>
 
-**① `json.loads` 는 JSON 문자열을 딕셔너리로 바꿉니다**
+<h2>① <code>json.loads</code> 는 JSON 문자열을 딕셔너리로 바꿉니다</h2>
 
 ```python
 import json                                                      # JSON 문자열을 딕셔너리로 바꾸는 모듈을 불러온다
@@ -84,7 +84,7 @@ dami False
 - JSON 의 `false` 가 파이썬에서는 `False` 가 됩니다.
 - 로그 파일을 `for line in log_file:` 로 읽으면 한 줄씩 꺼내지고, 각 줄을 `json.loads(line)` 으로 바꾸면 요청 한 개가 딕셔너리가 됩니다.
 
-**② `round(숫자)` 는 소수를 가장 가까운 정수로 반올림합니다**
+<h2>② <code>round(숫자)</code> 는 소수를 가장 가까운 정수로 반올림합니다</h2>
 
 ```python
 rate = 16 / 40                                                   # 거부 16개를 전체 40개로 나눈 비율
@@ -120,7 +120,7 @@ print(percent_text)                                              # 만든 문자
 - 거부율은 0 ~ 1 사이 소수로 계산하고, 보여 줄 때만 100 을 곱해 퍼센트로 바꿉니다.
 - 경고 기준과 비교할 때는 퍼센트가 아니라 소수(`rate >= limit`)를 그대로 비교합니다.
 
-**③ `counts.get(값, 0)` 으로 값별 횟수를 셉니다**
+<h2>③ <code>counts.get(값, 0)</code> 으로 값별 횟수를 셉니다</h2>
 
 ```python
 names = ["dami", "gaeun", "dami"]                               # 거부된 사용자 이름 리스트
@@ -146,7 +146,7 @@ print(junho_count)                                               # 없는 이름
 - `count_by` 는 이 두 줄을 `entry[key]` 로 꺼낸 값에 그대로 씁니다.
 - 반복할 때마다 `counts` 가 어떻게 바뀌는지 그려 보고 싶으면 AI 에게 「이 코드에서 for 가 한 번 돌 때마다 counts 가 어떻게 바뀌는지 표로 보여 줘」라고 코드와 함께 물어보세요.
 
-**④ `"\n".join(리스트)` 는 리스트의 문자열을 줄바꿈으로 이어 붙입니다**
+<h2>④ <code>&quot;\n&quot;.join(리스트)</code> 는 리스트의 문자열을 줄바꿈으로 이어 붙입니다</h2>
 
 ```python
 lines = ["# 제목", "- 첫째 줄", "- 둘째 줄"]                          # 보고서 줄을 모은 리스트
@@ -167,7 +167,7 @@ print(text)                                                      # 이어 붙인
 
 ## 응용 5-1 · 거부율과 경고 여부 구하기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: 로그 40줄을 사람이 하나씩 읽고 세야 합니다. 거부가 늘었는지, 누가 반복해서 거부됐는지 확인하려면 시간이 오래 걸립니다.
 - **그래서 만드는 것**: `log_summary.py` 입니다.
@@ -178,13 +178,17 @@ print(text)                                                      # 이어 붙인
 - **실행하면**: 단계 1은 허용 · 거부 · 거부율, 단계 2는 거부 사유별 횟수, 단계 3은 경고 여부와 거부가 많은 사용자를 출력합니다.
 - **현업에서는**: 로그를 집계하는 일은 관제(시스템과 로그를 지켜보며 이상한 일을 찾는 일)의 기본입니다. 경고 기준은 코드에 직접 적지 않고 `config/alert.json` 같은 설정 파일에 두어, 쓰다가 필요할 때 바꿉니다.
 
-**할 일** — 작업 폴더는 `network-study-notes/access_control` 이고, 고치는 `log_summary.py` 와 새로 만드는 `apply5-1_run.py` 모두 `access_control` 폴더 바로 아래에 있습니다.
+<h2>할 일</h2>
+
+작업 폴더는 `network-study-notes/access_control` 이고, 고치는 `log_summary.py` 와 새로 만드는 `apply5-1_run.py` 모두 `access_control` 폴더 바로 아래에 있습니다.
 
 1. `log_summary.py` 의 내용을 아래 골격으로 바꾸고 `apply5-1_run.py` 를 만든 뒤, `read_log` · `count_by` · `filter_denied` · `deny_rate` · `find_heavy_users` 에서 직접 쓰는 곳 다섯 군데를 씁니다.
 2. 실행해서 <mark>허용 · 거부 · 거부율</mark>(단계 1: 집계), <mark>거부 사유별 횟수</mark>(단계 2), <mark>경고 여부</mark>(단계 3: 경고 기준)를 읽습니다.
 3. 준비한 `weekly_run.py` 를 다시 실행해 <mark>주간 보고서</mark>가 「주간 보고서 생성 준비」 레슨의 실행 결과와 같은지 확인합니다.
 
-**`log_summary.py`** — 핵심 과정에서 준비한 완성 코드를 모두 지우고 아래 골격을 붙여 넣습니다. 완성본이 다시 필요하면 「주간 보고서 생성 준비」 레슨에서 복사하면 됩니다.
+<h3><code>log_summary.py</code></h3>
+
+핵심 과정에서 준비한 완성 코드를 모두 지우고 아래 골격을 붙여 넣습니다. 완성본이 다시 필요하면 「주간 보고서 생성 준비」 레슨에서 복사하면 됩니다.
 
 ```python
 import json                                                      # JSON 문자열을 딕셔너리로 바꾸는 모듈을 불러온다
@@ -269,7 +273,9 @@ def find_heavy_users(denied_counts, limit):                      # 사용자별 
 - 채우기 전에 실행하면 `IndentationError: expected an indented block` 오류가 납니다.
   - 다만 `deny_rate` 의 8 · 9번만 비워 두면 오류가 나지 않습니다. 그 아래에 미리 채운 줄이 있어 들여쓰기 오류가 없고, 이번 로그는 비어 있지 않아 0 으로 나누지도 않기 때문입니다. 로그가 빈 날에만 문제가 드러납니다.
 
-**`apply5-1_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 샘플 로그를 집계해 세 단계로 출력합니다.
+<h3><code>apply5-1_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 샘플 로그를 집계해 세 단계로 출력합니다.
 
 ```python
 import json                                                      # 경고 기준 파일을 읽는 데 쓴다
@@ -306,7 +312,7 @@ heavy = find_heavy_users(user_counts, user_limit)                # 기준 이상
 print("거부", user_limit, "번 이상 사용자:", heavy)                  # 사용자 이름을 출력한다
 ```
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `access_control` 폴더의 `log_summary.py` 를 열어 내용을 모두 지우고(`Ctrl + A` 뒤 `Delete`) 위 `log_summary.py` 골격을 붙여 넣고 저장합니다. 이어서 `access_control` 폴더를 오른쪽 클릭 › **New File** 로 `apply5-1_run.py` 를 만들어 `apply5-1_run.py` 코드 상자의 내용을 붙여 넣고 저장합니다.
 

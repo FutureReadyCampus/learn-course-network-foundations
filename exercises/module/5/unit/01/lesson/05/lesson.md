@@ -51,7 +51,7 @@ enrichment.py   lookup_account   : 대상이 users_info 안에 있으면 (① �
 실행 파일       exercise1-3_run.py : 알림마다 맥락을 붙이는 함수를 호출하고 (③ 직접 씀), VIP 이면 VIP 알림 수를 1 늘린다 (미리 채움)
 ```
 
-#### 문법 상자 · 직접 쓰는 곳의 모양 (예시 값 · 읽기만 합니다)
+<h2>문법 상자 · 직접 쓰는 곳의 모양 (예시 값 · 읽기만 합니다)</h2>
 
 ```python
 users_info = {"gaeun": {"employed": True, "vip": True}}   # 예시 값
@@ -70,7 +70,7 @@ print(is_trusted)                         # True
 
 ## 실습 1-3 · 알림 5건 보강하고 VIP 알림 수 세기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: <mark>알림 5건에는 대상 이름과 위험 등급만 있어서 퇴사자 · VIP 계정 · 신뢰 IP 에서 온 접속을 구별할 수 없습니다</mark>.
 - **만드는 것**: 계정 정보 조회와 접속 IP 정보 조회(`enrichment.py`), 보강 함수 호출과 VIP 계정 알림 수 집계(`exercise1-3_run.py`).
@@ -78,7 +78,9 @@ print(is_trusted)                         # True
 
 **할 일**: 두 파일을 만들어 붙여 넣고, `# ←` 가 있는 <mark>세 곳</mark>(① · ② · ③)을 한 줄씩 채웁니다. 실행해서 단계 2 · 3 을 읽습니다.
 
-**`enrichment.py`** — 알림에 맥락을 추가하는 보강 함수를 정의합니다. 응용 1-1 실행 파일도 `enrich_incident` 를 가져와 사용(import)합니다. 직접 쓰는 곳은 ① · ② 두 곳입니다.
+<h3><code>enrichment.py</code></h3>
+
+알림에 맥락을 추가하는 보강 함수를 정의합니다. 응용 1-1 실행 파일도 `enrich_incident` 를 가져와 사용(import)합니다. 직접 쓰는 곳은 ① · ② 두 곳입니다.
 
 ```python
 def lookup_account(entity, users_info):                              # 대상 이름과 계정 정보 딕셔너리를 받는 함수
@@ -116,7 +118,9 @@ def enrich_incident(incident, users_info, source_ips, trusted_ips):  # 인시던
     return incident                                                  # 맥락이 붙은 인시던트를 리턴한다
 ```
 
-**`exercise1-3_run.py`** — ③ 한 곳만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이 실행 파일은 결과를 JSON 파일로 저장하지 않고 화면에만 출력합니다.
+<h3><code>exercise1-3_run.py</code></h3>
+
+③ 한 곳만 직접 쓰고 나머지는 그대로 붙여 넣습니다. 이 실행 파일은 결과를 JSON 파일로 저장하지 않고 화면에만 출력합니다.
 
 ```python
 from incident import load_json, INCIDENTS_PATH                 # 실습 1-2 의 incident.py 에서 함수를 불러온다
@@ -162,7 +166,7 @@ for incident in incidents:                                     # 인시던트를
 print("VIP 계정 알림", vip_count, "건")                        # VIP 계정 알림 수를 출력한다
 ```
 
-**직접 쓰는 곳**
+<h3>직접 쓰는 곳</h3>
 
 | 빈칸 | 파일 · 쓰는 줄 | 들여쓰기 |
 |---|---|---|
@@ -178,7 +182,7 @@ print("VIP 계정 알림", vip_count, "건")                        # VIP 계정
 
 - `if context["source_ip"]:` 처럼 `if` 뒤에 비교 없이 값만 쓰면, 파이썬은 `None` 을 거짓으로, `"203.0.113.80"` 처럼 글자가 들어 있는 값을 참으로 봅니다. 그래서 접속 IP 를 찾은 알림만 그 IP 를 적고, 못 찾은 알림은 「없음」으로 남습니다.
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `soar_response` 폴더를 오른쪽 클릭 › **New File** 로 `enrichment.py` · `exercise1-3_run.py` 두 파일을 하나씩 만들고(파일 이름 그대로), 위에서 같은 이름의 코드 상자를 붙여 넣어 저장합니다.
 2. **[VS Code]** `enrichment.py` 의 ① · ②, `exercise1-3_run.py` 의 ③ 을 채웁니다. 막히면 위 「직접 쓰는 곳」의 확인과 힌트를 봅니다.
@@ -226,14 +230,16 @@ print("VIP 계정 알림", vip_count, "건")                        # VIP 계정
 
 핵심 실습의 코드와 결과를 확인하고 저장소에 기록합니다. 응용 실습은 이 절차에 포함되지 않습니다.
 
-**1. 오늘 한 일 확인**
+<h2>1. 오늘 한 일 확인</h2>
 
 1. 플레이북 PB-003 을 직접 쓰고, 알림 두 건을 손으로 처리하며 고친 곳을 세었다 (실습 1-1)
 2. 실행기가 알림 5건을 처리하고, 승인이 필요한 건은 멈추고, 감사 기록을 남겼다 (실습 1-2)
 3. 알림마다 재직 · VIP · 접속 IP 맥락을 붙이고 VIP 계정 알림 수를 셌다 (실습 1-3)
 4. 실행 결과에서 선택한 글감의 근거를 찾아 초안의 ‘검증 결과’에 메모합니다.
 
-**2. 파일 확인** — **[터미널]** `soar_response` 폴더에서 확인합니다.
+<h2>2. 파일 확인</h2>
+
+**[터미널]** `soar_response` 폴더에서 확인합니다.
 
 ```bash
 pwd
@@ -256,7 +262,9 @@ ls config
 - [ ] `soar_response` 폴더와 `config` 폴더에 2번 표의 파일이 모두 있는 것을 확인했다
 <!-- /checklist -->
 
-**3. 깃허브에 올리기** — Module 5 폴더를 처음 올리는 날이므로 올라가는 파일 목록을 꼭 확인합니다.
+<h2>3. 깃허브에 올리기</h2>
+
+Module 5 폴더를 처음 올리는 날이므로 올라가는 파일 목록을 꼭 확인합니다.
 
 1. **[터미널]** `network-study-notes` 폴더로 옮기고 위치를 확인합니다. 결과가 `…/network-study-notes` 으로 끝나야 합니다.
    ```bash
@@ -299,7 +307,7 @@ ls config
 
 - 시간이 남아 응용을 했다면 응용 파일까지 만든 뒤 이 「3. 깃허브에 올리기」의 1 ~ 4번(`cd ..` 부터 `git push` 까지, 그림의 3 ~ 5)을 한 번 더 하면 됩니다. 같은 날 여러 번 올려도 괜찮습니다.
 
-**4. 이어지는 곳**
+<h2>4. 이어지는 곳</h2>
 
 | 다시 쓰는 곳 | 오늘 만든 것 |
 |---|---|

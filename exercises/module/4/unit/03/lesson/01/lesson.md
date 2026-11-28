@@ -12,7 +12,7 @@ render: markdown
 
 실습 2-3 에서는 같은 주소가 로그인에 몇 번 실패했는지 세어 알림 기준을 정했습니다. 오늘은 탐지 규칙을 두 개 더 만듭니다. 하나는 **요청이 갑자기 늘어난 때(트래픽 급증, traffic spike)** 를 찾는 규칙이고, 다른 하나는 **같은 사람이 여러 번 거절당한 기록**을 찾아 거절 이유로 순서를 정하는 규칙입니다.
 
-**오늘의 계획 (약 2시간 40분)**
+<h2>오늘의 계획 (약 2시간 40분)</h2>
 
 | 순서 | 시간 | 하는 일 |
 |---|---|---|
@@ -24,7 +24,7 @@ render: markdown
 
 초안에 확인한 값을 메모하고, 핵심 실습 뒤에 그 값이 질문에 어떻게 답하는지 씁니다. 응용은 이 두 가지를 마친 다음 여유가 있을 때 선택합니다.
 
-**오늘 만들 것 두 가지**
+<h2>오늘 만들 것 두 가지</h2>
 
 | 실습 | 직접 쓰는 것 | 하는 일 |
 |---|---|---|
@@ -44,7 +44,7 @@ render: markdown
 
 다음 Unit 은 핵심 실습 3-2에서 만든 `access_detection.py` 를 여러 곳에서 불러 씁니다. 응용 3-2 · 3-3 에서 만드는 파일은 핵심 실습이나 다음 Unit의 핵심 경로에 필요하지 않습니다.
 
-**오늘 지킬 것**
+<h2>오늘 지킬 것</h2>
 
 - 쓰는 도구는 **파이썬 · 판다스 · VS Code · 터미널 · git** 입니다.
 - 이번 Unit 의 기준 숫자(급증은 평균의 3배, 반복 거절은 `REPEAT_LIMIT` 3번)는 **고정**하고, 값을 바꿔 가며 비교하지 않습니다.
@@ -66,7 +66,7 @@ render: markdown
 - Module 3 의 파일은 `network-study-notes/access_control` 폴더에 있고 오늘 작업 폴더는 `network-study-notes/anomaly_detection` 입니다. 따라서 필요한 `rbac.py` 와 두 설정 JSON 은 이 레슨에서 `anomaly_detection` 안에 별도로 만듭니다. `access_control` 폴더의 파일은 그대로 둡니다. 두 JSON 값은 [M3 Unit 1 실습 1-1의 정답 접기](__SITE__/exercises/module/3/unit/1/lesson/2/page/7), `rbac.py` 의 빈칸은 [M3 Unit 1 실습 1-2의 정답 접기](__SITE__/exercises/module/3/unit/1/lesson/3/page/4)에서 확인합니다. Module 3 Unit 1을 다 마치지 않았어도 필요한 내용을 이 레슨에서 다시 준비할 수 있습니다.
 - `login_detection.py` 는 선택 실습 3-1에서만 씁니다. 만들 때는 [M4 Unit 2 실습 2-3의 코드와 정답 접기](__SITE__/exercises/module/4/unit/2/lesson/4/page/4)를 참고합니다.
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** `network-study-notes` 폴더를 오른쪽 클릭 › **Open in Integrated Terminal** 로 터미널을 엽니다. 터미널 오른쪽 위 이름 칸에 **bash** 가 보이는지 확인합니다. `powershell` 이면 `+` 옆의 **∨** 를 눌러 **Git Bash** 를 고릅니다. 새 터미널은 저장소 맨 위 폴더(`…/network-study-notes`)에서 열립니다(Module 3 Unit 1 시작하기에서 한 방법과 같습니다).
 2. **[터미널]** `anomaly_detection` 폴더로 들어가 위치를 확인하고, 판다스가 설치돼 있는지 봅니다. <mark>`pwd` 가 `…/anomaly_detection` 으로 끝나고, 마지막에 버전 번호(예: `2.3.3` 또는 `3.1.1`)가 나오면</mark> 됩니다. 판다스 3(`3.` 으로 시작)이면 일부 출력의 `dtype` 이름이 문서와 조금 다르게 나오고, 그 자리마다 따로 적어 두었습니다. `No module named 'pandas'` 가 나오면 이 레슨의 「오류가 나면」 둘째 줄을 따릅니다.
@@ -107,7 +107,9 @@ render: markdown
    - 명령 풀이: `mkdir config` 폴더 만들기 · `ls` 폴더 안의 파일 이름 보기
 2. **[VS Code]** 왼쪽 목록에서 `anomaly_detection` 폴더를 오른쪽 클릭 › **New File** 로 `normalized_events.json` · `baseline_traffic.csv` · `rbac.py` 를 만들고, `anomaly_detection` 폴더 안의 `config` 폴더를 오른쪽 클릭 › **New File** 로 `users.json` · `roles.json` 을 만들어 아래 내용을 그대로 붙여 넣습니다. `rbac.py` 는 `access_control` 이 아니라 `anomaly_detection` 바로 아래(`anomaly_detection/rbac.py`)에 둡니다.
 
-**`normalized_events.json`** — Unit 2 시작하기에서 만든 것과 같은 이벤트 샘플 57개입니다. 실습 3-1 · 3-2 와 응용이 모두 읽습니다. <mark>같은 이름의 파일이 이미 있어도 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다). `null` 은 그 값이 로그에 없다는 뜻입니다.
+<h2><code>normalized_events.json</code></h2>
+
+Unit 2 시작하기에서 만든 것과 같은 이벤트 샘플 57개입니다. 실습 3-1 · 3-2 와 응용이 모두 읽습니다. <mark>같은 이름의 파일이 이미 있어도 아래 내용으로 덮어씁니다</mark>(출력이 문서와 같아야 하기 때문입니다). `null` 은 그 값이 로그에 없다는 뜻입니다.
 
 아래 상자의 **복사**를 누르고 VS Code에서 `normalized_events.json` 파일을 엽니다. 편집 영역을 클릭해 전체 선택(`Ctrl + A`) 후 붙여넣고(`Ctrl + V`) 저장합니다(`Ctrl + S`).
 
@@ -176,7 +178,9 @@ render: markdown
 - [ ] `anomaly_detection` 폴더에 `normalized_events.json` 을 만들어 붙여 넣고 저장했다
 <!-- /checklist -->
 
-**`baseline_traffic.csv`** — 실습 3-1 에서 씁니다. 지난 7일 동안 오전 9시대에 웹 서버로 들어온 요청이 **1분에 평균 몇 번**이었는지 적은 연습용 숫자입니다. 첫 줄은 헤더(열 이름이 적힌 줄)이고, 둘째 줄부터 한 줄이 하루입니다. 샘플의 웹 서버 이벤트도 모두 9시대입니다.
+<h2><code>baseline_traffic.csv</code></h2>
+
+실습 3-1 에서 씁니다. 지난 7일 동안 오전 9시대에 웹 서버로 들어온 요청이 **1분에 평균 몇 번**이었는지 적은 연습용 숫자입니다. 첫 줄은 헤더(열 이름이 적힌 줄)이고, 둘째 줄부터 한 줄이 하루입니다. 샘플의 웹 서버 이벤트도 모두 9시대입니다.
 
 ```
 date,requests_per_minute
@@ -193,7 +197,9 @@ date,requests_per_minute
 - [ ] `anomaly_detection` 폴더에 `baseline_traffic.csv` 를 만들어 붙여 넣고 저장했다
 <!-- /checklist -->
 
-**`rbac.py`** — 실습 3-2 에서 씁니다. Module 3 Unit 1 실습 1-2 에서 만든 권한 판정 파일의 완성본입니다. `check_permission(사용자, 자원, 행위)` 가 `(허용 여부, 이유)` 를 리턴합니다.
+<h2><code>rbac.py</code></h2>
+
+실습 3-2 에서 씁니다. Module 3 Unit 1 실습 1-2 에서 만든 권한 판정 파일의 완성본입니다. `check_permission(사용자, 자원, 행위)` 가 `(허용 여부, 이유)` 를 리턴합니다.
 
 ```python
 import json                                                      # JSON 파일을 읽는 모듈을 불러온다
@@ -246,7 +252,9 @@ def check_permission(user, resource, action):                    # 사용자 · 
 - [ ] `anomaly_detection` 폴더에 `rbac.py` 를 만들어 붙여 넣고 저장했다
 <!-- /checklist -->
 
-**`config/users.json`** — Module 3 Unit 1 실습 1-1 의 사용자 파일입니다. 사용자마다 역할과 재직 여부(`employed`)가 있습니다.
+<h2><code>config/users.json</code></h2>
+
+Module 3 Unit 1 실습 1-1 의 사용자 파일입니다. 사용자마다 역할과 재직 여부(`employed`)가 있습니다.
 
 ```
 {
@@ -259,7 +267,9 @@ def check_permission(user, resource, action):                    # 사용자 · 
 }
 ```
 
-**`config/roles.json`** — Module 3 Unit 1 실습 1-1 의 역할 파일입니다. 역할마다 허용된 권한 리스트가 있습니다.
+<h2><code>config/roles.json</code></h2>
+
+Module 3 Unit 1 실습 1-1 의 역할 파일입니다. 역할마다 허용된 권한 리스트가 있습니다.
 
 ```
 {

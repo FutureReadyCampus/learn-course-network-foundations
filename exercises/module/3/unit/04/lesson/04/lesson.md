@@ -72,7 +72,7 @@ source:
 
 ## 실습 4-2 · 회수 실행 후 판정과 이력 남기기
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: 회수 계획과 승인 상태만 있고 실제로는 아무것도 지워지지 않았습니다. 지운 뒤에 정말 막혔는지 확인하는 방법도, 지운 기록도 없습니다.
 - **그래서 만드는 것**: `execute_revocation` 입니다.
@@ -82,12 +82,12 @@ source:
 - **실행하면**: 단계 1은 계획별 실행 결과, 단계 2는 회수 전후의 판정 비교, 단계 3은 `revocation_log.json` 저장과 다시 읽은 건수를 출력합니다.
 - **현업에서는**: 회수 도구도 실행한 뒤 다시 판정해 막혔는지 확인하고, 이력을 지우지 않고 보관합니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. 작업 폴더 `network-study-notes/access_control` 안에 `revoke.py` 와 `exercise4-2_run.py` 두 파일을 만들고, `revoke.py` 의 `# ←` 가 있는 <mark>두 곳</mark>(① · ②)을 한 줄씩 채웁니다.
 2. 실행해서 <mark>회수 결과</mark>(단계 1: 실행), <mark>회수 전후의 판정</mark>(단계 2: 확인), <mark>저장한 이력</mark>(단계 3: 저장)을 읽고, 새로 생긴 `revocation_log.json` 파일도 열어 봅니다.
 
-**`revoke.py`**
+<h3><code>revoke.py</code></h3>
 
 ```python
 import json                                                      # JSON 파일을 쓰는 모듈을 불러온다
@@ -155,14 +155,14 @@ def execute_revocation(plans, users, roles, exceptions, now):    # 계획 · 사
 - 주석 줄은 그대로 두고, **각 주석 바로 아래 줄**에 씁니다. ① 은 `for` 안쪽의 `if` 줄이라 8칸, ② 는 `else` 안쪽이라 12칸에서 시작합니다.
 - 미리 채운 `save_log` 의 `json.dump(log, log_file, …)` 는 리스트를 JSON 글자로 바꿔 파일에 씁니다. `ensure_ascii=False` 는 한글을 `\uXXXX` 같은 기호로 바꾸지 않고 그대로 쓰게 하고, `indent=2` 는 사람이 읽기 좋게 두 칸씩 들여 씁니다.
 
-**직접 쓰는 곳**
+<h3>직접 쓰는 곳</h3>
 
 | 빈칸 | 쓰는 줄 | 들여쓰기 |
 |---|---|---|
 | ① | 승인 상태가 「승인 대기」이면 (`if … == …:`) | 8칸 |
 | ② | `apply_plan` 을 불러 실제로 회수 | 12칸 |
 
-#### 문법 상자 · 직접 쓰는 곳의 모양 (예시 값 · 읽기만 합니다)
+<h3>문법 상자 · 직접 쓰는 곳의 모양 (예시 값 · 읽기만 합니다)</h3>
 
 ```python
 plan = {"user": "junho", "approval": "승인 대기"}  # 예시 값
@@ -177,7 +177,9 @@ print(plan["approval"] == "대기")                   # False · 글자가 하�
 - ① 확인: ① 만 쓰고 실행하면 오류 없이 돌아가고 `실행 7 건, 대기 1 건` 이 나옵니다. 그런데 단계 2의 여덟 줄이 모두 `그대로` 이고 junho 의 `SALES:QUERY` 도 `허용(역할 권한) -> 허용(역할 권한)` 입니다. 이력에는 「실행」이라고 적혔지만 실제로는 아무것도 지우지 않은 것입니다. 막히면: 위 문법 상자의 `plan["approval"] == "승인 대기"` 앞에 `if`, 끝에 `:` 를 붙입니다.
 - ② 확인: ② 까지 쓰고 실행하면 단계 2의 첫 줄이 `junho SALES:QUERY | 허용(역할 권한) -> 거부(권한 없음) | 바뀜` 이면 성공입니다. `NameError` 가 나오면 함수 이름이나 넘기는 값의 이름에 오타가 있는 것입니다. 막히면: `revoke.py` 의 `def apply_plan(…)` 줄을 보고 괄호 안의 이름 네 개를 그대로 옮깁니다.
 
-**`exercise4-2_run.py`** — 그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 4-1까지의 계획과 승인 상태를 만든 뒤 회수 전 판정을 모으고, `execute_revocation` 으로 회수하고, 회수 후 판정을 모아 비교하고, 이력을 저장합니다.
+<h3><code>exercise4-2_run.py</code></h3>
+
+그대로 붙여 넣습니다. 학생이 쓰는 줄은 없습니다. 실습 4-1까지의 계획과 승인 상태를 만든 뒤 회수 전 판정을 모으고, `execute_revocation` 으로 회수하고, 회수 후 판정을 모아 비교하고, 이력을 저장합니다.
 
 ```python
 from datetime import datetime                                    # 문자열을 시각으로 바꾸는 데 쓴다
@@ -250,7 +252,7 @@ print("저장", count, "건, 다시 읽은 건수", len(saved), "건, 첫 이력
 - `judge` 의 `plan["permission"].split(":")` 는 문자열을 `:` 자리에서 잘라 리스트로 만듭니다. `"SALES:QUERY"` 는 `["SALES", "QUERY"]` 가 되고, 그 두 값을 `resource, action` 두 이름으로 한꺼번에 받습니다.
 - 단계 2의 `range(plan_count)` 는 0부터 `plan_count - 1` 까지의 번호를 차례로 만듭니다(계획이 8건이면 0 ~ 7). 리스트 번호도 0부터 시작하므로 `before[index]` 와 `after[index]` 는 같은 계획의 회수 전 판정과 회수 후 판정입니다.
 
-**순서**
+<h2>순서</h2>
 
 1. **[VS Code]** 파일 `revoke.py` · `exercise4-2_run.py` 를 만들고, 위에서 같은 이름이 붙은 코드 상자의 내용을 붙여 넣어 저장합니다.
    - 두 파일 모두 `access_control` 폴더를 오른쪽 클릭 › **New File** 로 만듭니다.
