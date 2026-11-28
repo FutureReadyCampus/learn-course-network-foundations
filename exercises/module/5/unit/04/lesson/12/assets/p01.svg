@@ -1,34 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
-<title>20분 글쓰기: 글감 하나 고르고, 세 문장 쓰고, 점검해 올리기</title>
-<desc>위는 고르기 5분, 세 문장 쓰기 10분, 점검 · 올리기 5분의 순서입니다. 아래 왼쪽은 실습 4-1 · 4-2 글감 네 가지, 오른쪽은 응용을 했을 때 고를 수 있는 선택 글감입니다.</desc>
-<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker></defs>
-<g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<text x="20" y="32" font-size="19" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">오늘 쓸 글 고르기 (20분)</tspan></text>
-<rect x="20" y="52" width="212" height="58" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="126.0" y="75.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="126.0" font-weight="bold">고르기</tspan><tspan x="126.0" dy="21">5분</tspan></text>
-<rect x="252" y="52" width="212" height="58" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="358.0" y="75.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="358.0" font-weight="bold">세 문장 쓰기</tspan><tspan x="358.0" dy="21">10분</tspan></text>
-<line x1="234" y1="81" x2="250" y2="81" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<rect x="484" y="52" width="212" height="58" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="590.0" y="75.8" font-size="15" text-anchor="middle" fill="#292929"><tspan x="590.0" font-weight="bold">점검 · 올리기</tspan><tspan x="590.0" dy="21">5분</tspan></text>
-<line x1="466" y1="81" x2="482" y2="81" stroke="#666660" stroke-width="2" marker-end="url(#a-p01)"/>
-<text x="20" y="140" font-size="15" text-anchor="start" fill="#292929"><tspan x="20" font-weight="bold">오늘의 글감 (핵심 실습)</tspan></text>
-<rect x="20" y="152" width="420" height="52" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="32" y="172.9" font-size="14" text-anchor="start" fill="#292929"><tspan x="32" font-weight="bold">1. 영향 범위</tspan><tspan x="32" dy="20">REQ-1 · REQ-6 결정이 다른 까닭</tspan></text>
-<rect x="20" y="214" width="420" height="52" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="32" y="234.9" font-size="14" text-anchor="start" fill="#292929"><tspan x="32" font-weight="bold">2. 허용 목록과 설정 파일</tspan><tspan x="32" dy="20">두 결정이 막는 실수</tspan></text>
-<rect x="20" y="276" width="420" height="52" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="32" y="296.9" font-size="14" text-anchor="start" fill="#292929"><tspan x="32" font-weight="bold">3. 롤백만 하면 놓치는 것</tspan><tspan x="32" dy="20">영향 확인 · 복구 확인 · 규칙 조정</tspan></text>
-<rect x="20" y="338" width="420" height="52" rx="8" fill="#ffffff" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="32" y="358.9" font-size="14" text-anchor="start" fill="#292929"><tspan x="32" font-weight="bold">4. 되돌릴 수 없는 조치</tspan><tspan x="32" dy="20">jiwoo 의 세션 종료</tspan></text>
-<text x="470" y="140" font-size="15" text-anchor="start" fill="#292929"><tspan x="470" font-weight="bold">선택 글감 (응용을 했다면)</tspan></text>
-<rect x="470" y="152" width="230" height="52" rx="8" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="482" y="172.9" font-size="14" text-anchor="start" fill="#292929"><tspan x="482" font-weight="bold">응용 4-1</tspan><tspan x="482" dy="20">상태가 바뀐 티켓</tspan></text>
-<rect x="470" y="214" width="230" height="52" rx="8" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="482" y="234.9" font-size="14" text-anchor="start" fill="#292929"><tspan x="482" font-weight="bold">응용 4-3</tspan><tspan x="482" dy="20">low 등급이 빠진 이유</tspan></text>
-<rect x="470" y="276" width="230" height="52" rx="8" fill="#ffffff" stroke="#9a6200" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="482" y="296.9" font-size="14" text-anchor="start" fill="#292929"><tspan x="482" font-weight="bold">응용 4-4</tspan><tspan x="482" dy="20">세션 종료만 통제 갭</tspan></text>
-<rect x="470" y="338" width="230" height="52" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="585.0" y="358.9" font-size="14" text-anchor="middle" fill="#292929"><tspan x="585.0">세 문장도 한 편</tspan><tspan x="585.0" dy="20">막힌 이야기도 좋은 글</tspan></text>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 256" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+  <title>자동 조치 전에 위험 점수와 영향 범위를 확인한 이유</title>
+  <desc>요청마다 여러 사용자가 영향을 받을 수 있음. 위험 기준과 영향 범위를 조치 전에 확인. 샘플 8건을 자동 3·승인 3·금지 2로 분류.</desc>
+  <text x="20" y="35" font-size="20" font-weight="700">자동 조치 전에 위험 점수와 영향 범위를 확인한 이유</text>
+  <rect x="20" y="60" width="680" height="52" rx="8" fill="#f1f1ef" stroke="#dededb"/>
+  <text x="36" y="92" font-size="16" font-weight="700">관찰한 문제</text>
+  <text x="204" y="92" font-size="16">요청마다 여러 사용자가 영향을 받을 수 있음</text>
+  <rect x="20" y="122" width="680" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0"/>
+  <text x="36" y="154" font-size="16" font-weight="700">내가 고른 기준</text>
+  <text x="204" y="154" font-size="16">위험 기준과 영향 범위를 조치 전에 확인</text>
+  <rect x="20" y="184" width="680" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a"/>
+  <text x="36" y="216" font-size="16" font-weight="700">다시 확인한 결과</text>
+  <text x="204" y="216" font-size="16">샘플 8건을 자동 3·승인 3·금지 2로 분류</text>
 </svg>
