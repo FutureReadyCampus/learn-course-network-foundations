@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 190" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
   <title>게시한 글을 고르고 한 줄 요약을 붙인 뒤 첫 화면과 근거 링크를 확인한다</title>
-  <desc>직접 판단하고 검증한 글을 한 편에서 세 편까지 고른다. 글의 머리말에 featured와 summary를 적는다. 비공개 창에서 제목, 요약, 코드와 실행 근거 링크를 확인한다.</desc>
+  <desc>직접 판단하고 검증한 글을 모듈마다 한 편씩 고른다. 글의 머리말에 featured와 summary를 적는다. 비공개 창에서 제목, 요약, 코드와 실행 근거 링크를 확인한다.</desc>
   <text x="20" y="35" font-size="20" font-weight="700">대표 글을 첫 화면에 보여 주기</text>
   <rect x="20" y="60" width="210" height="108" rx="8" fill="#f1f1ef" stroke="#dededb"/>
   <rect x="255" y="60" width="210" height="108" rx="8" fill="#e6eefb" stroke="#2f6fd0"/>
   <rect x="490" y="60" width="210" height="108" rx="8" fill="#e4f3ea" stroke="#1f7a4a"/>
   <g text-anchor="middle" font-size="15">
-    <text x="125" y="91" font-weight="700">게시한 글 1~3편</text>
+    <text x="125" y="91" font-weight="700">모듈마다 한 편</text>
     <text x="125" y="119">내가 한 판단</text>
     <text x="125" y="143">직접 확인한 결과</text>
     <text x="360" y="91" font-weight="700">글의 머리말</text>
