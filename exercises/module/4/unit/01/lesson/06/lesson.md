@@ -39,7 +39,7 @@ source:
 
 ## 이어 붙이기 · 정렬하기 · 저장하기
 
-**문법 상자 — 리스트를 이벤트의 time 값 순서로 정렬하기**
+<h2>문법 상자 — 리스트를 이벤트의 time 값 순서로 정렬하기</h2>
 
 **<mark>`리스트.sort(key=함수)`</mark> 는 각 이벤트를 함수에 전달해 리턴된 값의 순서로 리스트를 정렬합니다**
 
@@ -85,7 +85,7 @@ for event in merged:                                               # 이벤트�
 - `sort` 는 이 값을 서로 비교해 **작은 값부터 큰 값 순서(오름차순)** 로 놓습니다. 시각 문자열은 이른 시각일수록 작은 값이라서 <mark>이른 시각이 앞, 늦은 시각이 뒤에 옵니다.</mark> 결과는 `web`(09:12:03) → `saas`(10:12:55) → `server`(11:00:00) 순서입니다.
 - `sort` 는 리스트 자체를 바꾸고 **아무것도 리턴하지 않습니다.** **`events = events.sort(…)` 라고 쓰면 `events` 가 `None` 이 됩니다.**
 
-**문법 상자 — 리스트를 JSON 파일로 저장하기**
+<h2>문법 상자 — 리스트를 JSON 파일로 저장하기</h2>
 
 **<mark>`json.dump(값, 파일)`</mark> 은 파이썬 값을 JSON 형식으로 파일에 씁니다. `ensure_ascii=False` 는 한글을 그대로, `indent=2` 는 보기 좋게 들여쓰기를 합니다**
 
@@ -121,7 +121,7 @@ print(text)                                                         # 파일 내
 
 - **`ensure_ascii=False` 를 빼면 한글이 `\uc131\uacf5` 같은 코드로 저장됩니다.**
 
-**한 장 정리**
+<h2>한 장 정리</h2>
 
 | 함수 | 받는 것 | 리턴하는 것 | 직접 쓰는 번호 |
 |---|---|---|---|
@@ -136,7 +136,7 @@ print(text)                                                         # 파일 내
 
 ## 응용 1-3 · 이벤트를 합쳐 시간순 저장
 
-**이런 상황이 있습니다**
+<h2>이런 상황이 있습니다</h2>
 
 - **지금은**: 공통 이벤트가 로그 종류별로 따로 있어서, 같은 계정이 여러 곳에서 한 일을 시간순으로 볼 수 없습니다.
 - **그래서 만드는 것**: `normalize.py` 입니다.
@@ -146,12 +146,12 @@ print(text)                                                         # 파일 내
 - **실행하면**: 단계 1: 소스별 이벤트 수, 단계 2: `user` · `ip` 가 비어 있는 이벤트 수, 단계 3: gaeun 의 이벤트(시간순), 단계 4: 저장한 이벤트 수가 나옵니다.
 - **현업에서는**: <mark>같은 모양으로 맞춘 이벤트를 한곳에 쌓아 두면 탐지 규칙은 그곳만 읽으면 됩니다.</mark> 이렇게 쌓아 두는 곳이 SIEM(심)의 저장소입니다.
 
-**할 일**
+<h2>할 일</h2>
 
 1. **`normalize.py` · `apply1-3_run.py`** 두 파일을 만들고, `normalize.py` 의 `merge_events` · `count_by_source` · `save_events` 에서 직접 쓰는 곳을 씁니다. 실습 1-2의 `normalize_web.py` 와 응용 1-2의 `normalize_json_csv.py` 가 필요합니다.
 2. 실행해서 <mark>소스별 이벤트 수</mark>(단계 1), <mark>값이 비어 있는 이벤트 수</mark>(단계 2), <mark>gaeun 의 이벤트</mark>(단계 3), <mark>저장된 이벤트 수</mark>(단계 4)를 읽습니다.
 
-**`normalize.py`**
+<h3><code>normalize.py</code></h3>
 
 ```python
 import json                                                 # 파일에 JSON 으로 저장하는 json 모듈을 불러온다
@@ -275,7 +275,7 @@ print("--- 단계 4: 저장한 파일", EVENTS_PATH)                            
 print("저장된 이벤트", saved_count, "개")                                                               # 저장된 이벤트 수를 출력한다
 ```
 
-**순서**
+<h2>순서 · 파일 작성과 터미널 실행</h2>
 
 1. **[VS Code]** `anomaly_detection` 폴더에 `normalize.py` · `apply1-3_run.py` 두 파일을 만들어, 위의 같은 이름 코드 상자 내용을 각각 붙여 넣고 저장합니다. 같은 폴더에 `normalize_web.py` · `normalize_json_csv.py` · `access_sample.log` · `server_log.jsonl` · `saas_events.csv` 가 있어야 합니다.
 
