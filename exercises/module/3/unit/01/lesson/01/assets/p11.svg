@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>질문 하나를 골라 짧은 글으로 답하고, 필요할 때만 AI 도우미로 정리합니다</title>
+<title>질문 하나를 골라 짧은 글로 답하고, 필요할 때만 AI 도우미로 정리합니다</title>
 <desc>먼저 공통 질문이나 Unit 끝의 글감 질문 중 하나를 고르고, 문제, 선택 이유, 직접 확인한 결과를 써 봅니다. 필요하면 코드 설명 정리, 초안 다듬기, 내 글 점검 도우미에 붙여 넣습니다. 붙이기 전에 비밀키·개인정보를 빼고, 내 코드와 내 생각만 바탕으로 합니다.</desc>
 <defs>
 <marker id="a-p10" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#666660"/></marker>
@@ -17,7 +17,7 @@
 <text x="40" y="236" font-size="14" fill="#666660">「오늘의 글 쓰기」</text>
 
 <rect x="255" y="52" width="210" height="220" rx="10" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
-<text x="271" y="82" font-size="16" font-weight="700">② 답을 짧은 글으로</text>
+<text x="271" y="82" font-size="16" font-weight="700">② 답을 짧은 글로</text>
 <text x="271" y="120">어떤 문제가 있었나</text>
 <text x="271" y="150">무엇을 왜 선택했나</text>
 <text x="271" y="180">무엇으로 확인했나</text>

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img">
 <title>이번 Unit 마무리: 오늘 한 일 체크와 anomaly_detection 폴더의 파일 배치</title>
-<desc>왼쪽은 실습 5-1 · 5-2와 보고서를 끝냈는지 확인하는 목록입니다. 오른쪽은 pwd · ls 로 볼 파일입니다. config/ 안에는 JSON 설정 파일만 두고, 그 밖의 파일은 모두 anomaly_detection/ 바로 아래에 둡니다.</desc>
+<desc>왼쪽은 실습 5-1 · 5-2를 마쳤는지 확인하는 목록입니다. 오른쪽은 pwd · ls 로 볼 파일입니다. config/ 안에는 JSON 설정 파일만 두고, 그 밖의 파일은 모두 anomaly_detection/ 바로 아래에 둡니다.</desc>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">1. 오늘 한 일 확인</text>
 <g fill="#ffffff" stroke="#dededb" stroke-width="1.5">
@@ -15,7 +15,7 @@
 <text font-size="15" fill="#292929">
 <tspan x="62" y="78" font-weight="700">실습 5-1</tspan><tspan x="62" y="100" font-size="14" fill="#666660">대상 3명 AI 요약 · 실패하면 대체 문장</tspan>
 <tspan x="62" y="154" font-weight="700">실습 5-2 · Module 4 총정리</tspan><tspan x="62" y="176" font-size="14" fill="#666660">상황 8개 중 3개 이상 원인과 해결</tspan>
-<tspan x="62" y="230" font-weight="700">블로그 초안</tspan><tspan x="62" y="252" font-size="14" fill="#666660">꼭 채울 칸에 비어 있는 답: 없음</tspan>
+<tspan x="62" y="230" font-weight="700">_posts의 초안</tspan><tspan x="62" y="252" font-size="14" fill="#666660">꼭 채울 칸에 비어 있는 답: 없음</tspan>
 <tspan x="62" y="306" font-weight="700">응용 5-1 ~ 5-3 (여유가 되면)</tspan><tspan x="62" y="328" font-size="14" fill="#666660">했다면 그 파일도 있음</tspan>
 </text>
 <text x="370" y="32" font-size="19" fill="#292929" font-weight="700">2. 파일 확인 (pwd · ls)</text>
@@ -28,7 +28,7 @@
 <tspan x="406" y="180">unit05_risk_scores.json</tspan>
 <tspan x="406" y="204">event_summary.py</tspan>
 <tspan x="406" y="228">exercise5-1_run.py</tspan>
-<tspan x="406" y="252">블로그 초안</tspan>
+<tspan x="406" y="252">_posts의 초안</tspan>
 <tspan x="406" y="280" fill="#666660">(앞 Unit의 파일들)</tspan>
 <tspan x="406" y="308" fill="#666660">(응용을 했다면 그 파일들)</tspan>
 </text>

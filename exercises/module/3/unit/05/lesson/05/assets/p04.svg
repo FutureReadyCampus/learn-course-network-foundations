@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img">
 <title>응용 5-1은 골격으로 바꿔 쓰고, 집계 실행, 보고서 다시 실행, grep 확인 순서로 한다</title>
-<desc>log_summary.py 의 내용을 골격으로 바꿔 다섯 함수를 쓰고 apply5-1_run.py 로 집계 출력을 봅니다. 그다음 주간 보고서 생성 코드 weekly_run.py 를 다시 실행해 보고서가 같은지 보고, grep 으로 gaeun 과 dami 의 요청을 찾아 보고서 (가)~(다)를 씁니다.</desc>
+<desc>log_summary.py 의 내용을 골격으로 바꿔 다섯 함수를 쓰고 apply5-1_run.py 로 집계 출력을 봅니다. 그다음 주간 보고서 생성 코드 weekly_run.py 를 다시 실행해 보고서가 같은지 보고, grep 으로 gaeun 과 dami 의 요청을 찾아 서로 비교합니다.</desc>
 <defs><marker id="a-p04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
 <text x="24" y="34" font-size="19" font-weight="700">응용 5-1 · 순서</text>
@@ -17,6 +17,6 @@
 <text x="44" y="288" font-size="15" font-weight="700">4. grep gaeun · grep dami</text>
 <text x="44" y="309" font-size="14">보고서 4절에 나온 두 사람의 요청을 로그에서 찾아 비교합니다</text>
 <rect x="24" y="334" width="672" height="36" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="360" y="357" font-size="14" text-anchor="middle">블로그 초안 의 응용 5-1 (가) · (나) · (다)를 채웁니다</text>
+<text x="360" y="357" font-size="14" text-anchor="middle">로그와 집계 결과를 비교합니다</text>
 </g>
 </svg>

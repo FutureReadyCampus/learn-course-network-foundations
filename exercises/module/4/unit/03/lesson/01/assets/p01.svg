@@ -12,7 +12,7 @@
 <text x="289" y="93" font-size="14" fill="#666660" text-anchor="middle">약 110분</text>
 <rect x="428" y="50" width="130" height="54" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
 <text x="493" y="73" font-size="15" font-weight="700" fill="#292929" text-anchor="middle">글쓰기</text>
-<text x="493" y="93" font-size="14" fill="#666660" text-anchor="middle">20분 · 한 편의</text>
+<text x="493" y="93" font-size="14" fill="#666660" text-anchor="middle">20분 · 글 다듬기</text>
 <rect x="572" y="50" width="118" height="54" rx="8" fill="#e4f3ea" stroke="#1f7a4a" stroke-width="1.5"/>
 <text x="631" y="73" font-size="15" font-weight="700" fill="#292929" text-anchor="middle">마무리</text>
 <text x="631" y="93" font-size="14" fill="#666660" text-anchor="middle">15분 · 깃허브</text>

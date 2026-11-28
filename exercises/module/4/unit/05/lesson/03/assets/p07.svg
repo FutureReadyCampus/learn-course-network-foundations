@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img">
-<title>깃허브에 올리기: 위치 이동, git status 확인, 보고서 마무리, add · commit · push, 브라우저 확인</title>
-<desc>network-study-notes 으로 옮긴 뒤 git status 에 .env 나 .venv 가 보이면 .gitignore 를 고칩니다. 보고서 마무리 (가)를 채우고 git add, git commit, git push 로 올린 뒤 브라우저에서 확인합니다.</desc>
+<title>깃허브에 올리기: 위치 이동, git status 확인, 공개 파일 확인, add · commit · push, 브라우저 확인</title>
+<desc>network-study-notes 으로 옮긴 뒤 git status 에 .env 나 .venv 가 보이면 .gitignore 를 고칩니다. 공개 파일을 확인하고 git add, git commit, git push 로 올린 뒤 브라우저에서 확인합니다.</desc>
 <defs><marker id="a-p07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#666660"/></marker></defs>
 <g font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
 <text x="20" y="32" font-size="19" fill="#292929" font-weight="700">Module 4 작업을 깃허브에 올리는 순서</text>
@@ -15,7 +15,7 @@
 <text font-size="15" fill="#292929">
 <tspan x="36" y="74" font-weight="700">1. [터미널] cd .. → pwd</tspan><tspan x="36" y="96" font-size="14" fill="#666660">anomaly_detection 에 있을 때만 cd ..</tspan>
 <tspan x="36" y="146" font-weight="700">2. [터미널] git status</tspan><tspan x="36" y="168" font-size="14" fill="#666660">올라갈 파일 이름 확인</tspan>
-<tspan x="36" y="218" font-weight="700">3. [보고서] 마무리 (가)</tspan><tspan x="36" y="240" font-size="14" fill="#666660">블로그 초안 의 ## 마무리</tspan>
+<tspan x="36" y="218" font-weight="700">3. 공개 파일 확인</tspan><tspan x="36" y="240" font-size="14" fill="#666660">공개할 근거 확인</tspan>
 <tspan x="36" y="290" font-weight="700">4. [터미널] 세 명령</tspan><tspan x="36" y="312" font-size="14">git add . → git commit -m "…"</tspan><tspan x="36" y="328" font-size="14">→ git push</tspan>
 <tspan x="36" y="374" font-weight="700">5. [브라우저] 저장소 확인</tspan><tspan x="36" y="396" font-size="14" fill="#666660">anomaly_detection 폴더 열기</tspan>
 </text>
