@@ -1,31 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif">
-<title>글쓰기 20분: 고르기 5분 · 쓰기 10분 · 점검 · 올리기 5분과 글감 다섯 개</title>
-<desc>20분은 고르기 5분, 쓰기 10분(post-short 세 문장), 점검 · 올리기 5분으로 나눈다. 글감은 핵심 실습 3-1 · 3-2에서 세 개, 응용을 했다면 고를 수 있는 선택 글감 두 개가 있다.</desc>
-<defs><marker id="a-p01" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666660"/></marker></defs>
-<text x="20" y="32.0" font-size="18" fill="#292929" font-weight="700">20분 나누기 · 세 문장 글</text>
-<rect x="20" y="50" width="165" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="102.5" y="74.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">고르기</text>
-<text x="102.5" y="95.8" font-size="15" fill="#666660" text-anchor="middle">5분</text>
-<rect x="195" y="50" width="330" height="60" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="360.0" y="74.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">쓰기</text>
-<text x="360.0" y="95.8" font-size="15" fill="#666660" text-anchor="middle">10분 · post-short</text>
-<rect x="535" y="50" width="165" height="60" rx="8" fill="#f1f1ef" stroke="#dededb" stroke-width="1.5"/>
-<text x="617.5" y="74.8" font-size="15" fill="#292929" text-anchor="middle" font-weight="700">점검 · 올리기</text>
-<text x="617.5" y="95.8" font-size="15" fill="#666660" text-anchor="middle">5분</text>
-<rect x="20" y="135" width="440" height="190" rx="8" fill="#e6eefb" stroke="#2f6fd0" stroke-width="1.5"/>
-<text x="36" y="160.0" font-size="15" fill="#292929" font-weight="700">오늘의 글감 (핵심 실습 3-1 · 3-2)</text>
-<rect x="36" y="174" width="408" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="240.0" y="199.2" font-size="15" fill="#292929" text-anchor="middle">1 · junho 가 잠겨 있던 이유</text>
-<rect x="36" y="222" width="408" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="240.0" y="247.2" font-size="15" fill="#292929" text-anchor="middle">2 · before · after 기록</text>
-<rect x="36" y="270" width="408" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="240.0" y="295.2" font-size="15" fill="#292929" text-anchor="middle">3 · 등급별 응답 기한 · INC-207</text>
-<rect x="480" y="135" width="220" height="190" rx="8" fill="#fbf0dc" stroke="#9a6200" stroke-width="1.5"/>
-<text x="496" y="160.0" font-size="15" fill="#292929" font-weight="700">선택 글감</text>
-<text x="496" y="182.0" font-size="14" fill="#666660">(응용을 했다면)</text>
-<rect x="496" y="222" width="188" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="590.0" y="247.2" font-size="15" fill="#292929" text-anchor="middle">1 · 병합과 새 티켓</text>
-<rect x="496" y="270" width="188" height="40" rx="8" fill="#ffffff" stroke="#dededb" stroke-width="1.5"/>
-<text x="590.0" y="295.2" font-size="15" fill="#292929" text-anchor="middle">2 · 30분 간격</text>
-<text x="360" y="355.0" font-size="15" fill="#666660" text-anchor="middle">세 문장이면 충분 · 막힌 이야기도 좋은 글 · 긴 글은 응용</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 256" role="img" font-family="Pretendard, 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif" fill="#292929">
+  <title>자동 조치만 되돌리고 기존 잠금은 유지한 이유</title>
+  <desc>자동 조치를 되돌릴 때 기존 잠금도 풀릴 수 있음. 조치 전후를 비교해 바뀐 상태만 복구. 처음부터 잠겨 있던 계정의 잠금을 유지함.</desc>
+  <text x="20" y="35" font-size="20" font-weight="700">자동 조치만 되돌리고 기존 잠금은 유지한 이유</text>
+  <rect x="20" y="60" width="680" height="52" rx="8" fill="#f1f1ef" stroke="#dededb"/>
+  <text x="36" y="92" font-size="16" font-weight="700">관찰한 문제</text>
+  <text x="204" y="92" font-size="16">자동 조치를 되돌릴 때 기존 잠금도 풀릴 수 있음</text>
+  <rect x="20" y="122" width="680" height="52" rx="8" fill="#e6eefb" stroke="#2f6fd0"/>
+  <text x="36" y="154" font-size="16" font-weight="700">내가 고른 기준</text>
+  <text x="204" y="154" font-size="16">조치 전후를 비교해 바뀐 상태만 복구</text>
+  <rect x="20" y="184" width="680" height="52" rx="8" fill="#e4f3ea" stroke="#1f7a4a"/>
+  <text x="36" y="216" font-size="16" font-weight="700">다시 확인한 결과</text>
+  <text x="204" y="216" font-size="16">처음부터 잠겨 있던 계정의 잠금을 유지함</text>
 </svg>
